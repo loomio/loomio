@@ -9,7 +9,7 @@ export default
     colors: AppConfig.pollColors.count
   methods:
     percentComplete: (index) ->
-      "#{100 * @poll.stanceCounts[index] / @poll.goal()}%"
+      "#{100 * @poll.stanceCounts[index] / @poll.stancesCount}%"
 </script>
 
 <template lang="pug">
@@ -21,8 +21,8 @@ export default
       .poll-count-chart-panel__no(:style="{'flex-basis': percentComplete(1), 'background-color': colors[1]}")
       .poll-count-chart-panel__yes(:style="{'flex-basis': percentComplete(0), 'background-color': colors[0]}")
     .poll-count-chart-panel__data
-      .poll-count-chart-panel__numerator {{poll.stancesCount}}
-      .poll-count-chart-panel__denominator(v-t="{ path: 'poll_count_chart_panel.out_of', args: { goal: poll.goal() } }")
+      .poll-count-chart-panel__numerator {{poll.participantsCount}}
+      .poll-count-chart-panel__denominator(v-t="{ path: 'poll_count_chart_panel.out_of', args: { goal: poll.stancesCount } }")
 </template>
 <style lang="sass">
 .poll-count-chart-panel__chart-container

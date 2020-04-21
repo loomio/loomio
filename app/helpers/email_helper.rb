@@ -49,10 +49,6 @@ module EmailHelper
     "\"#{I18n.transliterate(model.discussion.group.full_name).truncate(50)}\" <#{reply_to_address(model: model, user: user)}>"
   end
 
-  def render_email_plaintext(text)
-    Rinku.auto_link(simple_format(html_escape(text)), :all, 'target="_blank"').html_safe
-  end
-
   def mark_summary_as_read_url_for(user, format: nil)
      email_actions_mark_summary_email_as_read_url(unsubscribe_token: user.unsubscribe_token,
                                                   time_start: @time_start.utc.to_i,

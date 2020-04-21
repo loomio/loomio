@@ -30,7 +30,7 @@ class Comment < ApplicationRecord
   validate :parent_comment_belongs_to_same_discussion
   validate :documents_owned_by_author
 
-  default_scope { includes(:user).includes(:documents).includes(:discussion) }
+  default_scope { includes(:user).includes(:documents) }
 
   scope :in_organisation, ->(group) { joins(:discussion).where("discussions.group_id": group.id) }
 

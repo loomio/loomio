@@ -1,5 +1,4 @@
-class StanceSerializer < ActiveModel::Serializer
-  embed :ids, include: true
+class StanceSerializer < ApplicationSerializer
   attributes :id,
              :reason,
              :reason_format,
@@ -13,7 +12,8 @@ class StanceSerializer < ActiveModel::Serializer
              :attachments,
              :volume,
              :inviter_id,
-             :revoked_at
+             :revoked_at,
+             :participant_id
 
   has_one :poll, serializer: PollSerializer
   has_one :participant, serializer: UserSerializer, root: :users
@@ -28,6 +28,6 @@ class StanceSerializer < ActiveModel::Serializer
   end
 
   def include_participant?
-    participant.present?
+    super && participant.present?
   end
 end

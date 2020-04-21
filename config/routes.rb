@@ -75,8 +75,6 @@ Loomio::Application.routes.draw do
       end
     end
 
-    resources :group_identities, only: [:create, :destroy]
-
     resources :memberships, only: [:index, :create, :update, :destroy] do
       collection do
         post :add_to_subgroup
@@ -189,8 +187,6 @@ Loomio::Application.routes.draw do
       post :add_options, on: :member
       post :toggle_subscription, on: :member
       get  :closed, on: :collection
-      get  :search, on: :collection
-      get  :search_results_count, on: :collection
     end
 
     resource :outcomes,     only: [:create, :update]

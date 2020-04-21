@@ -15,6 +15,7 @@ import MembershipModal from '@/components/group/membership_modal'
 import ChangePasswordForm from '@/components/profile/change_password_form'
 import PollCommonOutcomeModal from '@/components/poll/common/outcome_modal'
 import PollCommonReopenModal from '@/components/poll/common/reopen_modal'
+import PollCommonStartForm from '@/components/poll/common/start_form'
 import AnnouncementForm from '@/components/announcement/form'
 import AnnouncementHistory from '@/components/announcement/history'
 import MoveThreadForm from '@/components/thread/move_thread_form'
@@ -54,6 +55,7 @@ export default
     AnnouncementHistory
     MoveThreadForm
     PollCommonAddOptionModal
+    PollCommonStartForm
     RevisionHistoryModal
     TagsModal
     WebhookForm

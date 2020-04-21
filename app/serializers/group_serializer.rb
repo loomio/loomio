@@ -1,4 +1,4 @@
-class GroupSerializer < Simple::GroupSerializer
+class GroupSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
   attributes :id,
@@ -45,6 +45,7 @@ class GroupSerializer < Simple::GroupSerializer
              :open_discussions_count,
              :closed_discussions_count,
              :recent_activity_count,
+             :is_visible_to_public,
              :is_subgroup_of_hidden_parent,
              :is_visible_to_parent_members,
              :parent_members_can_see_discussions,
@@ -62,7 +63,15 @@ class GroupSerializer < Simple::GroupSerializer
              :subscription_info
 
   has_one :parent, serializer: GroupSerializer, root: :groups
+  has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
 
+  def current_user_membership
+    @current_user_membership ||= object.membership_for(scope[:current_user])
+  end
+
+  def include_current_user_membership?
+    scope && scope[:current_user]
+  end
 
   def tag_names
     object.info['tag_names'] || []

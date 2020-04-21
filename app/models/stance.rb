@@ -37,9 +37,11 @@ class Stance < ApplicationRecord
   update_counter_cache :poll, :stances_count
   update_counter_cache :poll, :undecided_count
 
+  default_scope { includes(:stance_choices) }
   scope :latest,         -> { where(latest: true).where(revoked_at: nil) }
   scope :admin,         ->  { where(admin: true) }
-  scope :newest_first,   -> { order(created_at: :desc) }
+  scope :newest_first,   -> { order("cast_at DESC NULLS LAST") }
+  scope :undecided_first, -> { order("cast_at DESC NULLS FIRST") }
   scope :oldest_first,   -> { order(created_at: :asc) }
   scope :priority_first, -> { joins(:poll_options).order('poll_options.priority ASC') }
   scope :priority_last,  -> { joins(:poll_options).order('poll_options.priority DESC') }
@@ -81,7 +83,7 @@ class Stance < ApplicationRecord
   end
 
   def choice=(choice)
-    self.cast_at = Time.zone.now
+    self.cast_at ||= Time.zone.now
     if choice.kind_of?(Hash)
       self.stance_choices_attributes = poll.poll_options.where(name: choice.keys).map do |option|
         {poll_option_id: option.id,

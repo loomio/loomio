@@ -56,17 +56,13 @@ export default new class Session
     Vue.set(AppConfig, 'pendingIdentity', data.pending_identity)
     Records.import(data)
 
-    # afterSignIn() if typeof afterSignIn is 'function'
-    # setDefaultParams()
-
     user = @user()
-    if @isSignedIn()
-      @updateLocale(user.locale)
+    @updateLocale(user.locale)
 
+    if @isSignedIn()
       if user.timeZone != AppConfig.timeZone
         user.timeZone = AppConfig.timeZone
         Records.users.updateProfile(user)
-
       EventBus.$emit('signedIn', user)
 
     user
@@ -92,21 +88,3 @@ export default new class Session
 
   pendingInvitation: ->
     AppConfig.pendingIdentity.identity_type == 'membership'
-
-setDefaultParams = (params) ->
-  endpoints = ['stances', 'polls', 'discussions', 'events', 'reactions', 'documents']
-  defaultParams = pickBy(params, identity)
-  endpoints.forEach (endpoint) ->
-    Records[endpoint].remote.defaultParams = defaultParams
-
-# loggedIn: ->
-#   Flash.success AppConfig.userPayload.flash.notice
-# $scope.pageError = null
-# $scope.refreshing  = true
-# $injector.get('$timeout') ->
-#   $scope.refreshing = false
-  # Flash.success AppConfig.userPayload.flash.notice
-#   delete AppConfig.userPayload.flash.notice
-# if LmoUrlService.params().set_password
-#   delete LmoUrlService.params().set_password
-#   ModalService.open 'ChangePasswordForm'

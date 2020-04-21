@@ -8,14 +8,13 @@ class API::StancesController < API::RestfulController
 
   private
   def accessible_records
-    apply_order load_and_authorize(:poll).stances.latest
+    load_and_authorize(:poll).stances.latest.includes(:stance_choices, :participant)
   end
 
-  def apply_order(collection)
-    if resource_class::ORDER_SCOPES.include?(params[:order].to_s)
-      collection.send(params[:order])
-    else
-      collection
-    end
+  def valid_orders
+    [
+      'cast_at DESC NULLS LAST', # lastest stances
+      'cast_at DESC NULLS FIRST' # undecided first
+    ]
   end
 end

@@ -13,9 +13,7 @@ export default
 
   computed:
     eventable: -> @event.model()
-    choiceInHeadline: ->
-      @eventable.poll().hasOptionIcons() &&
-      @eventable.stanceChoices().length == 1
+    poll: -> @eventable.poll()
     canEdit: ->
 
     componentType:  ->
@@ -62,10 +60,14 @@ export default
 thread-item.stance-created(:event="event" :is-returning="isReturning")
   template(v-slot:actions)
     action-dock(:model="eventable" :actions="actions")
-  template(v-if="choiceInHeadline" v-slot:headline)
+  template(v-if="eventable.singleChoice()" v-slot:headline)
     component(:is="componentType" :to="event.actor() && urlFor(event.actor())") {{event.actorName()}}
     space
-    poll-common-stance-choice(:stance-choice="eventable.stanceChoices()[0]")
-  poll-common-stance(:stance="eventable" :reason-only="choiceInHeadline")
+    poll-common-stance-choice(:poll="poll" :stance-choice="eventable.stanceChoice()")
+  .poll-common-stance
+    span.caption(v-if='eventable.castAt && eventable.totalScore() == 0' v-t="'poll_common_votes_panel.none_of_the_above'" )
+    v-layout(v-if="!eventable.singleChoice()" wrap align-center)
+      poll-common-stance-choice(:poll="poll" :stance-choice='choice' v-if='choice.show()' v-for='choice in eventable.orderedStanceChoices()' :key='choice.id')
+    formatted-text.poll-common-stance-created__reason(:model="eventable" column="reason")
   attachment-list(:attachments="eventable.attachments")
 </template>

@@ -1,4 +1,3 @@
-class Events::DiscussionItemsSerializer < ActiveModel::Serializer
-  embed :ids, include: true
+class Events::DiscussionItemsSerializer < ApplicationSerializer
   has_many :items, root: :events
 end

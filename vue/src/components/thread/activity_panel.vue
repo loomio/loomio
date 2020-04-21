@@ -3,7 +3,6 @@ import Vue from 'vue'
 import AppConfig                from '@/shared/services/app_config'
 import EventBus                 from '@/shared/services/event_bus'
 import RecordLoader             from '@/shared/services/record_loader'
-import ModalService             from '@/shared/services/modal_service'
 import AbilityService           from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
 import Records from '@/shared/services/records'
@@ -32,6 +31,8 @@ export default
   mounted: ->
     @loader = new RecordLoader
       collection: 'events'
+        params:
+          exclude_types: 'group discussion membership'
 
     @watchRecords
       key: @discussion.id
@@ -64,15 +65,7 @@ export default
       @fetchEvent(args.column, args.id).then (event) =>
         if event
           @focalEvent = event
-          if args.scrollTo
-            @scrollTo "#sequence-#{event.sequenceId}", =>
-              setTimeout =>
-                @focalEvent = null
-              , 1000
-          else
-            setTimeout =>
-              @focalEvent = null
-            , 1000
+          @scrollTo "#sequence-#{@focalEvent.sequenceId}" if args.scrollTo
         else
           Flash.error('thread_context.item_maybe_deleted')
 
@@ -87,6 +80,7 @@ export default
           when 'position' then 'from_sequence_id_of_position'
 
         @loader.fetchRecords(
+          exclude_types: 'discussion group'
           discussion_id: @discussion.id
           order: 'sequence_id'
           per: 5
@@ -115,9 +109,15 @@ export default
         # console.log "finding: ", args
         Records.events.find(args)[0]
 
+    refocus: ->
+      if @focalEvent
+        @$vuetify.goTo("#sequence-#{@focalEvent.sequenceId}", duration: 0)
+        @focalEvent = null
+
     fetch: (slots, padding) ->
       return unless slots.length
-      @loader.fetchRecords
+      @loader.fetchRecords(
+        exclude_types: 'discussion group'
         comment_id: null
         from: null
         from_unread: null
@@ -125,7 +125,7 @@ export default
         order: 'sequence_id'
         from_sequence_id_of_position: first(slots)
         until_sequence_id_of_position: last(slots)
-        per: padding * 4
+        per: padding * 4).then @refocus
 
     openArrangementForm: ->
       ThreadService.actions(@discussion, @)['edit_arrangement'].perform()

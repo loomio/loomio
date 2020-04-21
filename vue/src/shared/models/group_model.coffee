@@ -52,7 +52,7 @@ export default class GroupModel extends BaseModel
     @belongsTo 'parent', from: 'groups'
 
   parentOrSelf: ->
-    if @isParent() then @ else @parent()
+    if @parent() then @parent() else @
 
   group: -> @
 

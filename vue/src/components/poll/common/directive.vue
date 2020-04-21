@@ -9,7 +9,6 @@ import PollMeetingForm from '@/components/poll/meeting/form.vue'
 import PollRankedChoiceForm from '@/components/poll/ranked_choice/form.vue'
 import PollCommonChangeYourVote from '@/components/poll/common/change_your_vote.vue'
 import PollProposalChartPanel from '@/components/poll/proposal/chart_panel.vue'
-import PollCommonVotesPanelStance from '@/components/poll/common/votes_panel_stance.vue'
 import PollCountChartPanel from '@/components/poll/count/chart_panel.vue'
 import PollPollVoteForm from '@/components/poll/poll/vote_form.vue'
 import PollDotVoteVoteForm from '@/components/poll/dot_vote/vote_form.vue'
@@ -22,7 +21,6 @@ import PollCommonStanceChoice from '@/components/poll/common/stance_choice.vue'
 import PollRankedChoiceVoteForm from '@/components/poll/ranked_choice/vote_form.vue'
 import PollMeetingVoteForm from '@/components/poll/meeting/vote_form.vue'
 import PollMeetingChartPanel from '@/components/poll/meeting/chart_panel.vue'
-import PollMeetingVotesPanelStance from '@/components/poll/meeting/votes_panel_stance.vue'
 import PollCommonVotesPanel from '@/components/poll/common/votes_panel.vue'
 import PollRankedChoiceChartPanel from '@/components/poll/ranked_choice/chart_panel'
 
@@ -38,7 +36,6 @@ export default
     'poll-ranked_choice-form': PollRankedChoiceForm
     'poll-common-change-your-vote': PollCommonChangeYourVote
     'poll-proposal-chart-panel': PollProposalChartPanel
-    'poll-common-votes-panel-stance': PollCommonVotesPanelStance
     'poll-count-chart-panel': PollCountChartPanel
     'poll-poll-vote-form': PollPollVoteForm
     'poll-dot_vote-vote-form': PollDotVoteVoteForm
@@ -51,7 +48,6 @@ export default
     'poll-ranked_choice-vote-form': PollRankedChoiceVoteForm
     'poll-meeting-vote-form': PollMeetingVoteForm
     'poll-meeting-chart-panel': PollMeetingChartPanel
-    'poll-meeting-votes-panel-stance': PollMeetingVotesPanelStance
     'poll-common-votes-panel': PollCommonVotesPanel
     'poll-ranked_choice-chart-panel': PollRankedChoiceChartPanel
 
