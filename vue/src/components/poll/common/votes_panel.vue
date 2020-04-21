@@ -66,7 +66,7 @@ export default
   .poll-common-votes-panel__has-votes(v-if='poll.stancesCount')
     v-list
       .poll-common-votes-panel__stance(v-for='stance in latestStances' :key='stance.id')
-        v-list-item-avatar
+        v-list-item-avatar(v-if='stance.participant()')
           user-avatar.lmo-flex__no-shrink(:user='stance.participant()' size='thirtysix')
         .poll-common-votes-panel__stance-content
           .poll-common-votes-panel__stance-name-and-option
