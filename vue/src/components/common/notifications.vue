@@ -25,7 +25,7 @@ export default
         Records.notifications.viewed()
 
   created: ->
-    # Records.notifications.fetchNotifications()
+    Records.notifications.fetchNotifications()
     @watchRecords
       collections: ['notifications']
       query: (store) =>
