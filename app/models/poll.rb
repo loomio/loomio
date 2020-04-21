@@ -67,6 +67,7 @@ class Poll < ApplicationRecord
 
   has_many :documents, as: :model, dependent: :destroy
 
+  default_scope { includes(:poll_options) }
   scope :active, -> { where(closed_at: nil) }
   scope :closed, -> { where("closed_at IS NOT NULL") }
   scope :search_for, ->(fragment) { where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
