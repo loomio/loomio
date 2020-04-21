@@ -56,7 +56,6 @@ export default
 
 <template lang='pug'>
 form.poll-score-vote-form(@submit.prevent='submit()')
-  span {{stanceChoices}}
   poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   .poll-score-vote-form__options
     .poll-score-vote-form__option(v-for='choice in orderedStanceChoices', :key='choice.poll_option_id')
