@@ -24,6 +24,8 @@ class Discussion < ApplicationRecord
 
   scope :last_activity_after, -> (time) { where('last_activity_at > ?', time) }
   scope :order_by_latest_activity, -> { order('discussions.last_activity_at DESC') }
+  scope :recent, -> { where('last_activity_at > ?', 6.weeks.ago) }
+  scope :order_by_importance, -> { order(importance: :desc, last_activity_at: :desc) }
 
   scope :visible_to_public, -> { where(private: false) }
   scope :not_visible_to_public, -> { where(private: true) }

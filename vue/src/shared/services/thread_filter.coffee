@@ -22,8 +22,6 @@ export default (store, options) ->
         when 'show_opened'    then chain.find(closedAt: null)
         when 'show_pinned'    then chain.find(pinned: true)
         when 'hide_pinned'    then chain.find(pinned: false)
-        when 'show_muted'     then chain.where (thread) -> thread.volume() == 'mute'
-        when 'hide_muted'     then chain.where (thread) -> thread.volume() != 'mute'
         when 'show_proposals' then chain.where (thread) -> thread.hasDecision()
         when 'hide_proposals' then chain.where (thread) -> !thread.hasDecision()
         when 'only_threads_in_my_groups'

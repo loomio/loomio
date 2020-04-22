@@ -7,10 +7,10 @@ describe DiscussionQuery do
   let(:discussion) { create :discussion, group: group, author: author, private: true }
 
   subject do
-    DiscussionQuery.visible_to(user: user, group_ids: [group.id], show_public: true)
+    DiscussionQuery.visible_to(user: user, group_ids: [group.id])
   end
 
-  describe 'sorted_by_importance' do
+  describe 'order_by_importance' do
     let(:group) { create(:group, is_visible_to_public: true) }
     let!(:no_importance) { create :discussion, private: false, group: group }
     let!(:has_decision)  { create :discussion, private: false, group: group }
@@ -22,8 +22,7 @@ describe DiscussionQuery do
 
     it 'orders discussions by importance when logged out' do
       [pinned, has_decision, no_importance].map(&:update_importance)
-      query = DiscussionQuery.visible_to(user: LoggedOutUser.new, show_public: true)
-      query = DiscussionQuery.sorted_by_importance(query).to_a
+      query = DiscussionQuery.visible_to.order_by_importance.to_a
       expect(query[0]).to eq pinned
       expect(query[1]).to eq has_decision
       expect(query[2]).to eq no_importance
@@ -33,8 +32,7 @@ describe DiscussionQuery do
       group.add_admin! user
 
       [pinned, has_decision, no_importance].map(&:update_importance)
-      query = DiscussionQuery.visible_to(user: user)
-      query = DiscussionQuery.sorted_by_importance(query).to_a
+      query = DiscussionQuery.visible_to(user: user).order_by_importance.to_a
       expect(query[0]).to eq pinned
       expect(query[1]).to eq has_decision
       expect(query[2]).to eq no_importance
@@ -42,27 +40,26 @@ describe DiscussionQuery do
   end
 
   describe 'logged out' do
-    let(:logged_out_user) { LoggedOutUser.new }
     let!(:public_discussion) { create(:discussion, private: false, group: create(:group, is_visible_to_public: true)) }
     let!(:another_public_discussion) { create(:discussion, private: false, group: create(:group, is_visible_to_public: true)) }
     let!(:private_discussion) { create(:discussion, group: create(:group, is_visible_to_public: false)) }
 
     it 'shows groups visible to public if no groups are specified' do
-      query = DiscussionQuery.visible_to(user: logged_out_user, show_public: true)
+      query = DiscussionQuery.visible_to
       expect(query).to include public_discussion
       expect(query).to include another_public_discussion
       expect(query).to_not include private_discussion
     end
 
     it 'shows specified groups if they are public' do
-      query = DiscussionQuery.visible_to(user: logged_out_user, group_ids: [public_discussion.group_id], show_public: true)
+      query = DiscussionQuery.visible_to(group_ids: [public_discussion.group_id])
       expect(query).to include public_discussion
       expect(query).to_not include another_public_discussion
       expect(query).to_not include private_discussion
     end
 
     it 'shows nothing if no public groups are specified' do
-      query = DiscussionQuery.visible_to(user: logged_out_user, group_ids: [private_discussion.group_id], show_public: true)
+      query = DiscussionQuery.visible_to(group_ids: [private_discussion.group_id])
       expect(query).to_not include public_discussion
       expect(query).to_not include another_public_discussion
       expect(query).to_not include private_discussion
@@ -79,13 +76,12 @@ describe DiscussionQuery do
     end
 
     it 'unread discussions with no comments' do
-      #user.discussions.should include discussion
-      DiscussionQuery.unread(subject).should include discussion
+      DiscussionQuery.visible_to(user: user, only_unread: true).should include discussion
     end
 
     it 'does not include dismissed discussions' do
       DiscussionReader.for(discussion: discussion, user: user).dismiss!
-      DiscussionQuery.unread(subject).should_not include discussion
+      DiscussionQuery.visible_to(user: user, only_unread: true).should_not include discussion
     end
   end
 

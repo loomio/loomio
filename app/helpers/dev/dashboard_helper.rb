@@ -18,14 +18,6 @@ module Dev::DashboardHelper
     create_discussion!(:old_discussion) { |discussion| discussion.update last_activity_at: 2.years.ago }
   end
 
-  def muted_discussion
-    create_discussion!(:muted_discussion) { |discussion| mute!(discussion) }
-  end
-
-  def muted_group_discussion
-    create_discussion!(:muted_group_discussion, group: muted_create_group)
-  end
-
   def create_discussion!(name, group: create_group, author: patrick)
     var_name = :"@#{name}"
     if existing = instance_variable_get(var_name)
@@ -40,10 +32,6 @@ module Dev::DashboardHelper
 
   def pin!(discussion)
     DiscussionService.pin(discussion: discussion, actor: discussion.author)
-  end
-
-  def mute!(discussion, user: patrick)
-    DiscussionService.update_reader(discussion: discussion, params: {volume: DiscussionReader.volumes[:mute]}, actor: patrick)
   end
 
   def add_poll!(discussion, name: 'Test poll', actor: jennifer)
