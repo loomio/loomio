@@ -159,7 +159,7 @@ class DiscussionService
     time_finish = Time.at(params[:time_finish].to_i).utc
     time_range = time_start..time_finish
 
-    Queries::VisibleDiscussions.new(user: user).
+    DiscussionQuery.visible_to(user: user).
                                     unread.
                                     last_activity_after(time_start).each do |discussion|
       sequence_ids = discussion.items.where("events.created_at": time_range).pluck(:sequence_id)

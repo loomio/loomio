@@ -15,7 +15,12 @@ export default
     pollTypes: AppConfig.pollTypes
 
   created: ->
+    @onQueryInput = debounce (val) =>
+      @$router.replace(@mergeQuery(q: val))
+    , 500
+
     @group = Records.groups.find(@$route.params.key)
+    
     @initLoader().fetchRecords().then =>
       EventBus.$emit 'currentComponent',
         page: 'groupPage'
@@ -45,8 +50,6 @@ export default
                      props:
                        group: @group
                        isModal: true
-
-    onQueryInput: (val) -> @$router.replace(@mergeQuery(q: val))
 
     findRecords: ->
       groupIds = switch @$route.query.subgroups

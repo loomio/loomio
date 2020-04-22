@@ -19,6 +19,10 @@ export default
     from: 0
 
   created: ->
+    @onQueryInput = debounce (val) =>
+      @$router.replace({ query: { q: val } })
+    , 500
+
     @group = Records.groups.fuzzyFind(@$route.params.key)
 
     EventBus.$emit 'currentComponent',
@@ -53,11 +57,10 @@ export default
     @fetch()
 
   watch:
-    '$route.query.q': debounce (val) ->
+    '$route.query.q': (val) ->
       @searchQuery = val || ''
       @fetch()
       @query()
-    , 500
 
   methods:
     query: ->
@@ -78,16 +81,12 @@ export default
 
       @items = orderBy(documents.concat(attachments), 'createdAt', 'desc')
 
-    fetch: debounce ->
+    fetch: ->
       @loader.fetchRecords
         q: @searchQuery
 
       @attachmentLoader.fetchRecords
         q: @searchQuery
-    , 500
-
-    handleSearchQueryChange: (val) ->
-      @$router.replace({ query: { q: val } })
 
   computed:
     showLoadMore: -> !@loader.exhausted && !@attachmentLoader.exhausted
@@ -99,7 +98,7 @@ export default
 <template lang="pug">
 div
   v-layout.py-2(align-center wrap)
-    v-text-field(clearable hide-details solo @change="handleSearchQueryChange" :placeholder="$t('navbar.search_files', {name: group.name})" append-icon="mdi-magnify")
+    v-text-field(clearable hide-details solo @input="onQueryInput" :placeholder="$t('navbar.search_files', {name: group.name})" append-icon="mdi-magnify")
   v-card.group-files-panel(outlined)
     div(v-if="loader.status == 403")
       p.pa-4.text-center(v-t="'error_page.forbidden'")

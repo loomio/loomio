@@ -29,10 +29,9 @@ class SearchVector < ApplicationRecord
   validates :search_vector, presence: true
 
   scope :search_for, ->(query, user, opts = {}) do
-    Queries::VisibleDiscussions.apply_privacy_sql(
+    DiscussionQuery.visible_to(chain: search_without_privacy!(query),
       user: user,
       group_ids: user.group_ids,
-      relation: search_without_privacy!(query)
     ).offset(opts.fetch(:from, 0)).limit(opts.fetch(:per, 10))
   end
 

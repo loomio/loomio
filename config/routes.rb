@@ -169,8 +169,6 @@ Loomio::Application.routes.draw do
       get :inbox, on: :collection
     end
 
-    resources :discussion_tags, only: [:create, :destroy]
-
     resources :tags do
       collection do
         post :update_model
@@ -249,7 +247,6 @@ Loomio::Application.routes.draw do
     get "identities/:id/:command", to: "identities#command"
   end
 
-  get '/tags/:id/(:stub)', to: 'application#index'
   post '/direct_uploads', to: 'direct_uploads#create'
 
   get '/users/sign_in', to: redirect('/dashboard')

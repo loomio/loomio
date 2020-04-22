@@ -1,16 +1,16 @@
 require 'rails_helper'
 
-describe Queries::VisibleDiscussions do
+describe DiscussionQuery do
   let(:user) { create :user }
   let(:group) { create :group, discussion_privacy_options: 'public_or_private' }
   let(:author) { create :user }
   let(:discussion) { create :discussion, group: group, author: author, private: true }
 
   subject do
-    Queries::VisibleDiscussions.new(user: user, group_ids: [group.id], show_public: true)
+    DiscussionQuery.visible_to(user: user, group_ids: [group.id])
   end
 
-  describe 'sorted_by_importance' do
+  describe 'order_by_importance' do
     let(:group) { create(:group, is_visible_to_public: true) }
     let!(:no_importance) { create :discussion, private: false, group: group }
     let!(:has_decision)  { create :discussion, private: false, group: group }
@@ -22,7 +22,7 @@ describe Queries::VisibleDiscussions do
 
     it 'orders discussions by importance when logged out' do
       [pinned, has_decision, no_importance].map(&:update_importance)
-      query = Queries::VisibleDiscussions.new(user: LoggedOutUser.new, show_public: true).sorted_by_importance.to_a
+      query = DiscussionQuery.visible_to.order_by_importance.to_a
       expect(query[0]).to eq pinned
       expect(query[1]).to eq has_decision
       expect(query[2]).to eq no_importance
@@ -32,7 +32,7 @@ describe Queries::VisibleDiscussions do
       group.add_admin! user
 
       [pinned, has_decision, no_importance].map(&:update_importance)
-      query = Queries::VisibleDiscussions.new(user: user).sorted_by_importance.to_a
+      query = DiscussionQuery.visible_to(user: user).order_by_importance.to_a
       expect(query[0]).to eq pinned
       expect(query[1]).to eq has_decision
       expect(query[2]).to eq no_importance
@@ -40,27 +40,26 @@ describe Queries::VisibleDiscussions do
   end
 
   describe 'logged out' do
-    let(:logged_out_user) { LoggedOutUser.new }
     let!(:public_discussion) { create(:discussion, private: false, group: create(:group, is_visible_to_public: true)) }
     let!(:another_public_discussion) { create(:discussion, private: false, group: create(:group, is_visible_to_public: true)) }
     let!(:private_discussion) { create(:discussion, group: create(:group, is_visible_to_public: false)) }
 
     it 'shows groups visible to public if no groups are specified' do
-      query = Queries::VisibleDiscussions.new(user: logged_out_user, show_public: true)
+      query = DiscussionQuery.visible_to
       expect(query).to include public_discussion
       expect(query).to include another_public_discussion
       expect(query).to_not include private_discussion
     end
 
     it 'shows specified groups if they are public' do
-      query = Queries::VisibleDiscussions.new(user: logged_out_user, group_ids: [public_discussion.group_id], show_public: true)
+      query = DiscussionQuery.visible_to(group_ids: [public_discussion.group_id])
       expect(query).to include public_discussion
       expect(query).to_not include another_public_discussion
       expect(query).to_not include private_discussion
     end
 
     it 'shows nothing if no public groups are specified' do
-      query = Queries::VisibleDiscussions.new(user: logged_out_user, group_ids: [private_discussion.group_id], show_public: true)
+      query = DiscussionQuery.visible_to(group_ids: [private_discussion.group_id])
       expect(query).to_not include public_discussion
       expect(query).to_not include another_public_discussion
       expect(query).to_not include private_discussion
@@ -77,13 +76,12 @@ describe Queries::VisibleDiscussions do
     end
 
     it 'unread discussions with no comments' do
-      #user.discussions.should include discussion
-      subject.unread.should include discussion
+      DiscussionQuery.visible_to(user: user, only_unread: true).should include discussion
     end
 
     it 'does not include dismissed discussions' do
       DiscussionReader.for(discussion: discussion, user: user).dismiss!
-      subject.unread.should_not include discussion
+      DiscussionQuery.visible_to(user: user, only_unread: true).should_not include discussion
     end
   end
 
@@ -196,12 +194,28 @@ describe Queries::VisibleDiscussions do
     let(:discussion) { create :discussion, author: author, private: true }
     it 'returns discussions via discussion reader' do
       discussion.add_guest!(user, discussion.author)
-      Queries::VisibleDiscussions.new(user: user).should include discussion
+      DiscussionQuery.visible_to(user: user).should include discussion
     end
 
     it 'returns discussions via discussion reader' do
       discussion
-      Queries::VisibleDiscussions.new(user: user).should_not include discussion
+      DiscussionQuery.visible_to(user: user).should_not include discussion
+    end
+  end
+
+  describe 'tags' do
+    let!(:tagged_discussion) { create :discussion, author: author, private: true, group: group }
+    let!(:untagged_discussion) { create :discussion, author: author, private: true, group: group }
+    let!(:group) { create :group }
+
+    before do
+      group.add_member! user
+      TagService.update_model(discussion: tagged_discussion, tags: ['test'])
+    end
+
+    it 'returns tagged discussions' do
+      DiscussionQuery.visible_to(user: user, tags: ['test']).should include tagged_discussion
+      DiscussionQuery.visible_to(user: user, tags: ['test']).should_not include untagged_discussion
     end
   end
 end

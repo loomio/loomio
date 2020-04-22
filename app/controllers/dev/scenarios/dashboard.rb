@@ -7,8 +7,6 @@ module Dev::Scenarios::Dashboard
     pinned_discussion
     poll_discussion
     recent_discussion
-    muted_discussion
-    muted_group_discussion
     redirect_to dashboard_url
   end
 

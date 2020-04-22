@@ -21,19 +21,22 @@ class API::DiscussionsController < API::RestfulController
 
   def index
     load_and_authorize(:group, optional: true)
-    instantiate_collection { |collection| collection_for_index collection }
+    instantiate_collection do |collection|
+      DiscussionQuery.filter(chain: collection, filter: params[:filter])
+    end
     respond_with_collection
   end
 
   def dashboard
     raise CanCan::AccessDenied.new unless current_user.is_logged_in?
-    instantiate_collection { |collection| collection_for_dashboard collection }
+    instantiate_collection { |collection| collection.is_open.order_by_importance }
     respond_with_collection
   end
 
   def inbox
     raise CanCan::AccessDenied.new unless current_user.is_logged_in?
-    instantiate_collection { |collection| collection_for_inbox collection }
+    @accessible_records = DiscussionQuery.visible_to(user: current_user, group_ids: group_ids, tags: split_tags, only_unread: true)
+    instantiate_collection { |collection| collection.recent.order_by_latest_activity }
     respond_with_collection scope: default_scope.merge(
       poll_cache:   Caches::Poll.new(parents: collection),
       reader_cache: Caches::DiscussionReader.new(user: current_user, parents: collection)
@@ -115,7 +118,7 @@ class API::DiscussionsController < API::RestfulController
     if params.has_key?(:include_subgroups) && params[:include_subgroups] == 'false'
       [@group&.id]
     else
-      @group&.id_and_subgroup_ids
+      Array(@group&.id_and_subgroup_ids)
     end
   end
 
@@ -128,32 +131,11 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def accessible_records
-    Queries::VisibleDiscussions.new(user: current_user, group_ids: group_ids, tags: split_tags)
+    @accessible_records ||= DiscussionQuery.visible_to(user: current_user, group_ids: group_ids, tags: split_tags)
   end
 
   def update_reader(params = {})
     service.update_reader discussion: load_resource, params: params, actor: current_user
     respond_with_resource
-  end
-
-  def collection_for_index(collection, filter: params[:filter])
-    collection = Queries::VisibleDiscussions.new(user: current_user, group_ids: group_ids, tags: split_tags, show_public: true)
-    case filter
-    when 'show_closed' then collection.is_closed
-    when 'all' then collection
-    else collection.is_open
-    end.sorted_by_importance
-  end
-
-  def collection_for_dashboard(collection, filter: params[:filter])
-    collection = Queries::VisibleDiscussions.new(user: current_user)
-    case filter
-    when 'show_muted'  then collection.is_open.muted.sorted_by_latest_activity
-    else                    collection.is_open.not_muted.sorted_by_importance
-    end
-  end
-
-  def collection_for_inbox(collection)
-    collection.recent.not_muted.unread.sorted_by_latest_activity.includes(:group, :author)
   end
 end
