@@ -56,7 +56,6 @@ export default
 
   methods:
     openIfPinned: ->
-      console.log '@$vuetify.breakpoint', @$vuetify.breakpoint
       @open = Session.isSignedIn() && !!Session.user().experiences['sidebar'] && @$vuetify.breakpoint.mdAndUp
 
     fetchData: ->
