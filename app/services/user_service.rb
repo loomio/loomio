@@ -4,6 +4,7 @@ class UserService
     user.require_valid_signup = true
     user.require_recaptcha = true
     user.save.tap do
+      user.update_attachments!
       EventBus.broadcast 'user_create', user
     end
   end
@@ -81,6 +82,7 @@ class UserService
     actor.ability.authorize! :update, user
     HasRichText.assign_attributes_and_update_files(user, params)
     user.save
+    user.update_attachments!
     EventBus.broadcast('user_update', user, actor, params)
   end
 

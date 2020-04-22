@@ -6,6 +6,7 @@ class PollService
 
     return false unless poll.valid?
     poll.save!
+    poll.update_attachments!
 
     Stance.create!(participant: actor, poll: poll, admin: true, reason_format: actor.default_format)
     EventBus.broadcast('poll_create', poll, actor)
@@ -89,6 +90,7 @@ class PollService
 
     return false unless poll.valid?
     poll.save!
+    poll.update_attachments!
 
     EventBus.broadcast('poll_update', poll, actor)
     Events::PollEdited.publish!(poll, actor) if is_new_version

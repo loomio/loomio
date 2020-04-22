@@ -25,7 +25,6 @@ module HasRichText
   included do
     has_many_attached :files
     has_many_attached :image_files
-    before_save :update_attachments!
   end
 
   def associate_attachments_with_group

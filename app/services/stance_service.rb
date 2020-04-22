@@ -21,6 +21,7 @@ class StanceService
 
     stance.poll.stances.where(participant: actor).update_all(latest: false)
     stance.save!
+    stance.update_attachments!
     stance.participant.save!
     EventBus.broadcast 'stance_create', stance, actor
     Events::StanceCreated.publish! stance
@@ -31,6 +32,7 @@ class StanceService
     HasRichText.assign_attributes_and_update_files(stance, params)
     return false unless stance.valid?
     stance.save!
+    stance.update_attachments!
 
     EventBus.broadcast 'stance_update', stance, actor
   end

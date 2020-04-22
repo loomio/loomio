@@ -40,6 +40,7 @@ module GroupService
     end
 
     group.save!
+    group.update_attachments!
     group.add_admin!(actor)
 
     EventBus.broadcast('group_create', group, actor)
@@ -55,6 +56,7 @@ module GroupService
 
     return false unless group.valid?
     group.save!
+    group.update_attachments!
     privacy_change.commit!
 
     EventBus.broadcast('group_update', group, params, actor)
