@@ -30,15 +30,6 @@ describe API::DiscussionsController do
     group.add_admin! user
   end
 
-  describe 'tags' do
-    it 'fetches discussions by tag' do
-      tag = Tag.create(group: discussion.group, name: 'some tag', color: '#333')
-      dtag = DiscussionTag.create(tag: tag, discussion: discussion)
-      get :tags, params: { id: tag.id }
-      expect(response.status).to eq 200
-    end
-  end
-
   describe 'inbox' do
     context 'logged out' do
       it 'responds with forbidden for logged out users' do
