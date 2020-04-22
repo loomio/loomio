@@ -167,7 +167,6 @@ Loomio::Application.routes.draw do
       get :search, on: :collection
       get :dashboard, on: :collection
       get :inbox, on: :collection
-      get '/tags/:id/(:stub)', action: :tags, on: :collection
     end
 
     resources :discussion_tags, only: [:create, :destroy]

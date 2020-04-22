@@ -13,14 +13,6 @@ class API::DiscussionsController < API::RestfulController
     respond_with_resource
   end
 
-  def tags
-    instantiate_collection do |collection|
-      collection.sorted_by_latest_activity.joins(:discussion_tags)
-      .where('discussion_tags.tag_id': load_and_authorize(:tag).id)
-    end
-    respond_with_collection
-  end
-
   def show
     load_and_authorize(:discussion)
     accept_pending_membership
