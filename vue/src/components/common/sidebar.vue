@@ -30,7 +30,7 @@ export default
     EventBus.$on 'toggleSidebar', => @open = !@open
 
     EventBus.$on 'currentComponent', (data) =>
-      @open = Session.isSignedIn() && Session.user().experiences['sidebar'] || false
+      @openIfPinned()
       @group = data.group
       if @group
         @organization = data.group.parentOrSelf()
@@ -44,7 +44,7 @@ export default
 
     EventBus.$on 'signedIn', (user) =>
       @fetchData()
-      @open = Session.user().experiences['sidebar'] || false
+      @openIfPinned()
 
     @fetchData() if Session.isSignedIn()
 
@@ -55,6 +55,10 @@ export default
       EventBus.$emit("sidebarOpen", val)
 
   methods:
+    openIfPinned: ->
+      console.log '@$vuetify.breakpoint', @$vuetify.breakpoint
+      @open = Session.isSignedIn() && !!Session.user().experiences['sidebar'] && @$vuetify.breakpoint.mdAndUp
+
     fetchData: ->
       Records.users.fetchGroups().then =>
         if @$router.history.current.path == "/dashboard" && Session.user().membershipsCount == 1
