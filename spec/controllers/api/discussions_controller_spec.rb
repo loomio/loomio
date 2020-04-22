@@ -70,22 +70,6 @@ describe API::DiscussionsController do
         expect(json['discussions']).to be_blank
       end
 
-      # it 'does not return threads in muted discussions' do
-      #   CommentService.create(comment: new_comment, actor: another_user)
-      #   DiscussionService.update_reader(discussion: discussion, params: { volume: :mute}, actor: user)
-      #   get :inbox
-      #   json = JSON.parse(response.body)
-      #   expect(json['discussions']).to be_blank
-      # end
-      #
-      # it 'does not return threads in muted groups' do
-      #   CommentService.create(comment: new_comment, actor: another_user)
-      #   Membership.find_by(user: user, group: group).set_volume! :mute
-      #   get :inbox
-      #   json = JSON.parse(response.body)
-      #   expect(json['discussions']).to be_blank
-      # end
-
       it 'includes active polls' do
         poll
         CommentService.create(comment: new_comment, actor: another_user)
