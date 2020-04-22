@@ -11,7 +11,11 @@ import Session from '@/shared/services/session'
 export default
   mixins: [DiscussionModalMixin]
 
-  created: -> @init()
+  created: ->
+    @onQueryInput = debounce (val) =>
+      @$router.replace(@mergeQuery(q: val))
+    , 500
+    @init()
 
   data: ->
     group: null
@@ -115,8 +119,6 @@ export default
         else
           'discussions_panel.open'
 
-    onQueryInput: (val) ->
-      @$router.replace(@mergeQuery(q: val))
 
   watch:
     '$route.params': 'init'

@@ -19,11 +19,11 @@ class DiscussionQuery
     chain = chain.joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = discussions.id AND (dr.user_id = #{user.id || 0} #{or_discussion_reader_token})")
                  .joins("LEFT OUTER JOIN memberships m ON m.user_id = #{user.id || 0} AND m.group_id = discussions.group_id")
                  .where("groups.archived_at IS NULL")
-                 .where("#{'discussions.group_id IN (:group_ids) AND' if group_ids.any?}
-                         (discussions.private = false) OR
+                 .where("(discussions.private = false) OR
                          (m.id IS NOT NULL AND m.archived_at IS NULL) OR
                          (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
-                         (groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids))", user_group_ids: user.group_ids, group_ids: group_ids)
+                         (groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids))", user_group_ids: user.group_ids)
+    chain = chain.where("discussions.group_id IN (?)", group_ids) if group_ids.any?
     if only_unread
       chain = chain.where('(dr.dismissed_at IS NULL) OR (dr.dismissed_at < discussions.last_activity_at)').
         where('dr.last_read_at IS NULL OR (dr.last_read_at < discussions.last_activity_at)')
