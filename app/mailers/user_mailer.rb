@@ -33,7 +33,7 @@ class UserMailer < BaseMailer
     @time_finish = Time.zone.now
     @time_frame = @time_start...@time_finish
 
-    @discussions = Queries::VisibleDiscussions.new(user: user)
+    @discussions = DiscussionQuery.visible_to(user: user)
                     .not_muted
                     .unread
                     .last_activity_after(@time_start)
