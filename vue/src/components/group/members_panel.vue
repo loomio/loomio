@@ -24,6 +24,9 @@ export default
     memberships: []
 
   created: ->
+    @onQueryInput = debounce (val) =>
+      @$router.replace(@mergeQuery(q: val))
+    , 500
 
     Records.groups.findOrFetch(@$route.params.key).then (group) =>
       @group = group
@@ -117,8 +120,6 @@ export default
                       props:
                         announcement: Records.announcements.buildFromModel(@group))
 
-    onQueryInput: (val) -> @$router.replace(@mergeQuery(q: val))
-
   computed:
     membershipRequestsPath: -> LmoUrlService.membershipRequest(@group)
     currentUserIsAdmin: -> Session.user().membershipFor(@group).admin
@@ -136,9 +137,7 @@ export default
       (@group.adminMembershipsCount < 2) && ((@group.membershipsCount - @group.adminMembershipsCount) > 0)
 
   watch:
-    '$route.query': debounce ->
-      @refresh()
-    , 500, {leading: false, trailing: true}
+    '$route.query': 'refresh'
 
 
 </script>

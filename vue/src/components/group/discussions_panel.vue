@@ -97,7 +97,7 @@ export default
 
         @discussions = chain.data()
 
-    fetch: debounce ->
+    fetch: ->
       if @$route.query.q
         @searchLoader.fetchRecords(q: @$route.query.q)
       else
@@ -107,8 +107,6 @@ export default
         params.subgroups = @$route.query.subgroups || 'mine'
         params.tags = @$route.query.tag
         @loader.fetchRecords(params)
-    ,
-      300
 
     filterName: (filter) ->
       switch filter
