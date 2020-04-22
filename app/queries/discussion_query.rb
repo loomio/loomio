@@ -1,5 +1,5 @@
 class DiscussionQuery
-  def start
+  def self.start
     Discussion.
       joins(:group).
       where('groups.archived_at IS NULL').
@@ -7,58 +7,36 @@ class DiscussionQuery
       includes(:author, :polls, {group: [:parent]})
   end
 
-  def visible_to(chain: start, user:, group_ids: [], tags: [], show_public: false)
+  def self.visible_to(chain: start, user:, group_ids: [], tags: [], show_public: false)
     user = user || LoggedOutUser.new
     group_ids = group_ids || []
 
     if tags.any?
       chain = chain.joins(:tags).where("tags.name IN (?)", tags)
-      # chain = chain.where("(discussions.info->'tags')::jsonb ?& ARRAY[:tags]", tags: tags)
     end
 
-    chain = apply_privacy_sql(user: @user, group_ids: @group_ids, relation: chain, show_public: show_public)
+    chain = apply_privacy_sql(user: user, group_ids: group_ids, relation: chain, show_public: show_public)
   end
 
-  def unread(chain)
-    return chain unless @user.is_logged_in?
+  def self.unread(chain)
     chain.
       where('(dr.dismissed_at IS NULL) OR (dr.dismissed_at < discussions.last_activity_at)').
       where('dr.last_read_at IS NULL OR (dr.last_read_at < discussions.last_activity_at)')
   end
 
-  def muted(chain)
-    return chain unless @user.is_logged_in?
-    chain.where('(dr.volume = :mute) OR (dr.volume IS NULL AND m.volume = :mute) ',
-                {mute: DiscussionReader.volumes[:mute]})
-  end
-
-  def not_muted(chain)
-    return chain unless @user.is_logged_in?
-    chain.where('(dr.volume > :mute) OR (dr.volume IS NULL AND m.volume > :mute)',
-                                {mute: DiscussionReader.volumes[:mute]})
-  end
-
-  def recent(chain)
+  def self.recent(chain)
     chain.where('last_activity_at > ?', 6.weeks.ago)
   end
 
-  def is_open(chain)
-    chain.is_open
-  end
-
-  def is_closed(chain)
-    chain.is_closed
-  end
-
-  def sorted_by_latest_activity(chain)
+  def self.sorted_by_latest_activity(chain)
     chain.order(last_activity_at: :desc)
   end
 
-  def sorted_by_importance(chain)
+  def self.sorted_by_importance(chain)
     chain.order(importance: :desc, last_activity_at: :desc)
   end
 
-  def apply_privacy_sql(user: nil, group_ids: [], relation: nil, show_public: false)
+  def self.apply_privacy_sql(user: nil, group_ids: [], relation: nil, show_public: false)
     user ||= LoggedOutUser.new
 
     if user.discussion_reader_token

@@ -22,7 +22,8 @@ describe DiscussionQuery do
 
     it 'orders discussions by importance when logged out' do
       [pinned, has_decision, no_importance].map(&:update_importance)
-      query = DiscussionQuery.visible_to(user: LoggedOutUser.new, show_public: true).sorted_by_importance.to_a
+      query = DiscussionQuery.visible_to(user: LoggedOutUser.new, show_public: true)
+      query = DiscussionQuery.sorted_by_importance(query).to_a
       expect(query[0]).to eq pinned
       expect(query[1]).to eq has_decision
       expect(query[2]).to eq no_importance
@@ -32,7 +33,8 @@ describe DiscussionQuery do
       group.add_admin! user
 
       [pinned, has_decision, no_importance].map(&:update_importance)
-      query = DiscussionQuery.visible_to(user: user).sorted_by_importance.to_a
+      query = DiscussionQuery.visible_to(user: user)
+      query = DiscussionQuery.sorted_by_importance(query).to_a
       expect(query[0]).to eq pinned
       expect(query[1]).to eq has_decision
       expect(query[2]).to eq no_importance
@@ -78,12 +80,12 @@ describe DiscussionQuery do
 
     it 'unread discussions with no comments' do
       #user.discussions.should include discussion
-      subject.unread.should include discussion
+      DiscussionQuery.unread(subject).should include discussion
     end
 
     it 'does not include dismissed discussions' do
       DiscussionReader.for(discussion: discussion, user: user).dismiss!
-      subject.unread.should_not include discussion
+      DiscussionQuery.unread(subject).should_not include discussion
     end
   end
 
@@ -211,6 +213,7 @@ describe DiscussionQuery do
     let!(:group) { create :group }
 
     before do
+      group.add_member! user
       TagService.update_model(discussion: tagged_discussion, tags: ['test'])
     end
 
