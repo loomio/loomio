@@ -11,6 +11,10 @@ export default
     loading: true
 
   created: ->
+    @onQueryInput = debounce (val) =>
+      @$router.replace(@mergeQuery(q: val))
+    , 500
+
     Records.groups.findOrFetch(@$route.params.key).then (group) =>
       @group = group
 
@@ -34,9 +38,6 @@ export default
       AbilityService.canCreateSubgroups(@group)
 
   methods:
-    onQueryInput: (val) ->
-      @$router.replace(@mergeQuery(q: val))
-
     findRecords: ->
       chain = Records.groups.collection.chain().
                      find(parentId: @group.id).

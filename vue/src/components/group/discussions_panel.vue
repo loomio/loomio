@@ -11,7 +11,11 @@ import Session from '@/shared/services/session'
 export default
   mixins: [DiscussionModalMixin]
 
-  created: -> @init()
+  created: ->
+    @onQueryInput = debounce (val) =>
+      @$router.replace(@mergeQuery(q: val))
+    , 500
+    @init()
 
   data: ->
     group: null
@@ -93,7 +97,7 @@ export default
 
         @discussions = chain.data()
 
-    fetch: debounce ->
+    fetch: ->
       if @$route.query.q
         @searchLoader.fetchRecords(q: @$route.query.q)
       else
@@ -103,8 +107,6 @@ export default
         params.subgroups = @$route.query.subgroups || 'mine'
         params.tags = @$route.query.tag
         @loader.fetchRecords(params)
-    ,
-      300
 
     filterName: (filter) ->
       switch filter
@@ -115,8 +117,6 @@ export default
         else
           'discussions_panel.open'
 
-    onQueryInput: (val) ->
-      @$router.replace(@mergeQuery(q: val))
 
   watch:
     '$route.params': 'init'
