@@ -17,7 +17,7 @@ export default
     group: Object
   methods:
     openPollModal: (pollType) ->
-      EventBus.$emit('openModal',
+      EventBus.$emit 'openModal',
         component: 'PollCommonModal'
         props:
           poll: @newPoll(pollType)

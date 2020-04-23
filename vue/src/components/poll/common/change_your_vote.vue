@@ -1,9 +1,5 @@
 <script lang="coffee">
-import PollModalMixin from '@/mixins/poll_modal'
-import {sortBy} from 'lodash-es'
-
 export default
-  mixins: [ PollModalMixin ]
   props:
     stance: Object
 </script>
