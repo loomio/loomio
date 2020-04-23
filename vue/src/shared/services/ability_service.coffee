@@ -7,9 +7,6 @@ export default new class AbilityService
   isNotEmailVerified: ->
     Session.isSignedIn() and !Session.user().emailVerified
 
-  isSiteAdmin: ->
-    Session.isSignedIn() and Session.user().isAdmin
-
   isEmailVerified: ->
     Session.isSignedIn() && Session.user().emailVerified
 
