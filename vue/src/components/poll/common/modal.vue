@@ -1,12 +1,11 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
-import AnnouncementModalMixin from '@/mixins/announcement_modal'
+import EventBus from '@/shared/services/event_bus'
 import Flash  from '@/shared/services/flash'
 import { iconFor }                from '@/shared/helpers/poll'
 import { onError } from '@/shared/helpers/form'
 
 export default
-  mixins: [AnnouncementModalMixin]
   props:
     poll: Object
     close: Function
@@ -38,7 +37,10 @@ export default
             @$router.replace(@urlFor(poll)).catch (err) => {}
           Flash.success "poll_#{poll.pollType}_form.#{poll.pollType}_#{actionName}"
           @close()
-          @openAnnouncementModal(Records.announcements.buildFromModel(poll))
+          EventBus.$emit 'openModal',
+            component: 'AnnouncementForm',
+            props: { announcement: Records.announcements.buildFromModel(poll) }
+
       .catch onError(@poll)
 
     icon: ->
