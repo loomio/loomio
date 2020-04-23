@@ -5,7 +5,7 @@ import HasTranslations  from '@/shared/mixins/has_translations'
 import EventBus         from '@/shared/services/event_bus'
 import I18n             from '@/i18n'
 import { addDays, startOfHour } from 'date-fns'
-import { head, orderBy, map, includes, difference, invokeMap, each, max } from 'lodash'
+import { head, orderBy, map, includes, difference, invokeMap, each, max, slice, sortBy } from 'lodash'
 
 export default class PollModel extends BaseModel
   @singular: 'poll'
@@ -97,7 +97,7 @@ export default class PollModel extends BaseModel
         existing.push(stance.participantId)
 
   latestStances: (order = '-createdAt', limit) ->
-    _.slice(_.sortBy(@recordStore.stances.find(pollId: @id, latest: true), order), 0, limit)
+    slice(sortBy(@recordStore.stances.find(pollId: @id, latest: true), order), 0, limit)
 
   hasDescription: ->
     !!@details

@@ -25,12 +25,12 @@ export default class DocumentRecordsInterface extends BaseRecordsInterface
 
   buildFromModel: (model) ->
     @build
-      modelId:   model.id
-      modelType: _.capitalize model.constructor.singular
+      modelId: model.id
+      modelType: capitalize model.constructor.singular
 
   upload: (file, progress) =>
     @remote.upload '', file,
-      fileField:     'document[file]'
+      fileField: 'document[file]'
       filenameField: 'document[title]'
     , progress
 
