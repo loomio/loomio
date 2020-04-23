@@ -34,13 +34,7 @@ export default
     uploadedAvatarUrl: ->
       return unless @user.avatarKind == 'uploaded'
       return @user.avatarUrl if typeof @user.avatarUrl is 'string'
-      @user.avatarUrl[@imageSize]
-
-    imageSize: ->
-      if ['large', 'featured'].includes(@size) or is2x()
-        'large'
-      else
-        'medium'
+      @user.avatarUrl['large']
 
     componentType:  ->
       if @noLink

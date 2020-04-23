@@ -7,7 +7,7 @@ class AuthorSerializer < ApplicationSerializer
     (include_email? && email) ||
     placeholder_name
   end
-  
+
   def include_email?
     false
   end
@@ -30,10 +30,7 @@ class AuthorSerializer < ApplicationSerializer
 
   def avatar_url
     {
-      small:    object.avatar_url(:small),
-      medium:   object.avatar_url(:medium),
-      large:    object.avatar_url(:large),
-      original: object.avatar_url(:original)
+      large:    object.avatar_url(:large)
     }
   end
 
