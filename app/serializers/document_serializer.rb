@@ -1,6 +1,8 @@
-class DocumentSerializer < ActiveModel::Serializer
-  embed :ids, include: true
-  attributes :id, :title, :icon, :color, :url, :web_url, :thumb_url, :model_id, :model_type, :created_at, :group_id, :manual_url
+class DocumentSerializer < ApplicationSerializer
+  attributes :id, :title, :icon, :color, :url,
+             :web_url, :thumb_url, :model_id, :model_type,
+             :created_at, :group_id, :manual_url
+
   has_one :author, serializer: UserSerializer, root: :users
 
   def group_id

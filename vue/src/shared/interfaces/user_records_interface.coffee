@@ -10,7 +10,10 @@ export default class UserRecordsInterface extends BaseRecordsInterface
     @remote.fetch path: "time_zones"
 
   fetchGroups: ->
-    @remote.fetch path: "groups"
+    @remote.fetch
+      path: "groups"
+      params:
+        exclude_types: 'user'
 
   fetchMentionable: (q, model) =>
     model = model.discussion() if !model.id? && model.discussionId

@@ -34,4 +34,4 @@ export default (callback) ->
         link.href = AppConfig.theme.icon_src
         document.getElementsByTagName('head')[0].appendChild(link)
 
-      callback()
+      callback(appConfig)

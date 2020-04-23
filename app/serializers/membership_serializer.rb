@@ -15,6 +15,6 @@ class MembershipSerializer < ApplicationSerializer
   has_one :inviter, serializer: UserSerializer, root: :users
 
   def include_inviter?
-    [nil, true].include? (scope || {})[:include_inviter]
+    super && ([nil, true].include? (scope || {})[:include_inviter])
   end
 end

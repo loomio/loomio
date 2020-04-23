@@ -24,10 +24,6 @@ module Boot
           isAvailable:       TranslationService.translator.present?,
           supportedLangs:    AppConfig.translate_languages
         },
-        flashTimeout: {
-          short:           ENV.fetch('FLASH_TIMEOUT_SHORT', 3500).to_i,
-          long:            ENV.fetch('FLASH_TIMEOUT_LONG', 2147483645).to_i
-        },
         pollTemplates:     AppConfig.poll_templates,
         pollTypes:         AppConfig.poll_types,
         pollColors:        AppConfig.colors,

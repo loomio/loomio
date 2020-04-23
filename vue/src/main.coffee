@@ -53,19 +53,18 @@ Vue.config.productionTip = false
 import boot from '@/shared/helpers/boot'
 import Session from '@/shared/services/session'
 
-boot ->
-  Session.fetch().then (data) ->
-    Session.apply(data)
+boot (data) ->
+  Session.apply(data)
 
-    if AppConfig.sentry_dsn
-      Sentry.configureScope (scope) ->
-        scope.setUser pick(Session.user(), ['id', 'email', 'username'])
+  if AppConfig.sentry_dsn
+    Sentry.configureScope (scope) ->
+      scope.setUser pick(Session.user(), ['id', 'email', 'username'])
 
-    initLiveUpdate()
-    initContent()
-    new Vue(
-      render: (h) -> h(app)
-      router: router
-      vuetify: vuetify
-      i18n: i18n
-    ).$mount('#app')
+  initLiveUpdate()
+  initContent()
+  new Vue(
+    render: (h) -> h(app)
+    router: router
+    vuetify: vuetify
+    i18n: i18n
+  ).$mount('#app')
