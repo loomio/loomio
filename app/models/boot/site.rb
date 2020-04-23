@@ -7,7 +7,7 @@ module Boot
       @payload ||= {
         version:             Loomio::Version.current,
         environment:         Rails.env,
-        # permittedParams:     PermittedParamsSerializer.new({}),
+        permittedParams:     PermittedParamsSerializer.new({}),
         locales:             ActiveModel::ArraySerializer.new(supported_locales, each_serializer: LocaleSerializer, root: false),
         defaultLocale:       I18n.locale,
         momentLocales:       AppConfig.moment_locales,
