@@ -1,6 +1,5 @@
-class NotificationSerializer < ActiveModel::Serializer
-  embed :ids, include: true
-  attributes :id, :viewed, :created_at, :url, :kind, :translation_values
+class NotificationSerializer < AppplicationSerializer
+  attributes :id, :viewed, :created_at, :url, :kind, :translation_values, :actor_id, :event_id
 
   def kind
     case object.kind

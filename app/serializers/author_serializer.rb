@@ -7,6 +7,10 @@ class AuthorSerializer < ApplicationSerializer
     (include_email? && email) ||
     placeholder_name
   end
+  
+  def include_email?
+    false
+  end
 
   def email_hash
     Digest::MD5.hexdigest(object.email.to_s.downcase)
