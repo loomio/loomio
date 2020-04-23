@@ -13,7 +13,6 @@ import GroupPollsPanel from './components/group/polls_panel'
 import MembersPanel from './components/group/members_panel'
 import GroupSubgroupsPanel from './components/group/subgroups_panel'
 import GroupFilesPanel from './components/group/files_panel'
-# import InvitationsPanel from './components/group/invitations_panel'
 import MembershipRequestsPanel from './components/group/requests_panel'
 import GroupSettingsPanel from './components/group/settings_panel'
 
