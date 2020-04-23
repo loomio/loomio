@@ -7,7 +7,10 @@ import Flash           from '@/shared/services/flash'
 
 export default
   props:
-    group: Object
+    group:
+      required: true
+      type: Object
+
     block: Boolean
 
   data: ->
@@ -34,7 +37,7 @@ export default
         else
           EventBus.$emit('openModal',
                           component: 'MembershipRequestForm',
-                          props: { group: group })
+                          props: { group: @group })
       else
         EventBus.$emit('openModal', component: 'AuthModal')
 
