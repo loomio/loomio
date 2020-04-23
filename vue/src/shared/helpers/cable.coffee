@@ -7,7 +7,7 @@ import AuthService    from '@/shared/services/auth_service'
 import AbilityService from '@/shared/services/ability_service'
 
 import { hardReload } from '@/shared/helpers/window'
-import { each } from 'lodash'
+import { each } from 'lodash-es'
 
 export subscribeTo = (model) ->
   switch model.constructor.singular

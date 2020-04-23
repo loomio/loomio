@@ -5,7 +5,7 @@ import Records       from '@/shared/services/records'
 import EventBus      from '@/shared/services/event_bus'
 import ThreadFilter from '@/shared/services/thread_filter'
 import GroupModalMixin from '@/mixins/group_modal.coffee'
-import {each, keys, sum, values, sortBy} from 'lodash'
+import {each, keys, sum, values, sortBy} from 'lodash-es'
 
 export default
   mixins: [ GroupModalMixin ]

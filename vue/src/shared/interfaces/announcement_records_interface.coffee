@@ -1,6 +1,6 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
 import AnnouncementModel    from '@/shared/models/announcement_model'
-import {includes, merge} from 'lodash'
+import {includes, merge} from 'lodash-es'
 
 kindForTarget = (target) ->
   if includes(['poll_edited', 'discussion_edited'], target.kind)

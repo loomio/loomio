@@ -1,5 +1,5 @@
 import Records from '@/shared/services/records'
-import {includes} from 'lodash'
+import {includes} from 'lodash-es'
 
 # a series of helpers related to getting a translation string to translate, such
 # as the headline of an event or the helptext strings on the discussion or group forms

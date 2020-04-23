@@ -1,7 +1,7 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
 import Records   from '@/shared/services/records'
-import { max, values, orderBy, map, find } from 'lodash'
+import { max, values, orderBy, map, find } from 'lodash-es'
 
 export default
   props:

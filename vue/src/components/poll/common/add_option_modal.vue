@@ -4,7 +4,7 @@ import AppConfig  from '@/shared/services/app_config'
 import EventBus from '@/shared/services/event_bus'
 import PollModalMixin from '@/mixins/poll_modal'
 import Flash  from '@/shared/services/flash'
-import {uniq, without, isEqual} from 'lodash'
+import {uniq, without, isEqual} from 'lodash-es'
 import { onError } from '@/shared/helpers/form'
 
 export default

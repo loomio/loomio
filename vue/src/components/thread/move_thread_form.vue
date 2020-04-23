@@ -5,7 +5,7 @@ import I18n           from '@/i18n'
 import WatchRecords from '@/mixins/watch_records'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
 import Flash from '@/shared/services/flash'
-import { filter } from 'lodash'
+import { filter } from 'lodash-es'
 import { onError } from '@/shared/helpers/form'
 
 export default

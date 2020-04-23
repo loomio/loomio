@@ -2,7 +2,7 @@ import BaseModel        from '@/shared/record_store/base_model'
 import AppConfig        from '@/shared/services/app_config'
 import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
-import {capitalize} from 'lodash'
+import {capitalize} from 'lodash-es'
 
 export default class OutcomeModel extends BaseModel
   @singular: 'outcome'

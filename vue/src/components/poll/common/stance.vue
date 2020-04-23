@@ -1,6 +1,6 @@
 <script lang="coffee">
 import Session from '@/shared/services/session'
-import { orderBy } from 'lodash'
+import { orderBy } from 'lodash-es'
 
 export default
   components:

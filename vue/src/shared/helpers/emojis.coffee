@@ -1,4 +1,4 @@
-import { each, keys } from 'lodash'
+import { each, keys } from 'lodash-es'
 import emojiUnicode from 'emoji-unicode'
 import emojisByCategory from './emoji_table'
 import AppConfig      from '@/shared/services/app_config'

@@ -1,7 +1,7 @@
 <script lang="coffee">
 import ThreadService  from '@/shared/services/thread_service'
 import { exact }      from '@/shared/helpers/format_time'
-import { map, compact, pick } from 'lodash'
+import { map, compact, pick } from 'lodash-es'
 import EventBus from '@/shared/services/event_bus'
 import openModal      from '@/shared/helpers/open_modal'
 

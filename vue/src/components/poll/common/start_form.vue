@@ -6,7 +6,7 @@ import { fieldFromTemplate } from '@/shared/helpers/poll'
 import PollModalMixin from '@/mixins/poll_modal'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
 
-import {map, without} from 'lodash'
+import {map, without} from 'lodash-es'
 
 export default
   mixins: [ PollModalMixin ]

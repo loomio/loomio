@@ -1,6 +1,6 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
 import DocumentModel        from '@/shared/models/document_model'
-import {flatten, capitalize, includes} from 'lodash'
+import {flatten, capitalize, includes} from 'lodash-es'
 
 export default class DocumentRecordsInterface extends BaseRecordsInterface
   model: DocumentModel

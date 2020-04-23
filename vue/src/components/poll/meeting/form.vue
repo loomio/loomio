@@ -3,7 +3,7 @@ import AppConfig from '@/shared/services/app_config'
 import EventBus  from '@/shared/services/event_bus'
 import { addDays } from 'date-fns'
 
-import { pull } from 'lodash'
+import { pull } from 'lodash-es'
 
 export default
   props:

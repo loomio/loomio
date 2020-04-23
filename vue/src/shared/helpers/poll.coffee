@@ -1,7 +1,7 @@
 import AppConfig from '@/shared/services/app_config'
 import Records   from '@/shared/services/records'
 import i18n from '@/i18n.coffee'
-import {compact, head, sortBy} from 'lodash'
+import {compact, head, sortBy} from 'lodash-es'
 
 export optionColors = ->
   agree: AppConfig.pollColors.proposal[0]

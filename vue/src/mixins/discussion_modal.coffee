@@ -3,7 +3,7 @@ import AbilityService from '@/shared/services/ability_service'
 import Records        from '@/shared/services/records'
 import Session        from '@/shared/services/session'
 
-import { some } from 'lodash'
+import { some } from 'lodash-es'
 
 export default
   methods:

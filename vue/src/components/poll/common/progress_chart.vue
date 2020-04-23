@@ -1,7 +1,7 @@
 <script lang="coffee">
 import svg from 'svg.js'
 import AppConfig from '@/shared/services/app_config'
-import { each, max, sum } from 'lodash'
+import { each, max, sum } from 'lodash-es'
 
 export default
   props:

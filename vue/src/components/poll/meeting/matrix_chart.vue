@@ -1,6 +1,6 @@
 <script lang="coffee">
 import svg from 'svg.js'
-import { each, isEmpty, max, times } from 'lodash'
+import { each, isEmpty, max, times } from 'lodash-es'
 
 export default
   props:

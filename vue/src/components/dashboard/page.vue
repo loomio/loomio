@@ -7,7 +7,7 @@ import AbilityService     from '@/shared/services/ability_service'
 import RecordLoader       from '@/shared/services/record_loader'
 import ThreadFilter       from '@/shared/services/thread_filter'
 import GroupModalMixin    from '@/mixins/group_modal.coffee'
-import { capitalize, take, keys, every, orderBy, debounce } from 'lodash'
+import { capitalize, take, keys, every, orderBy, debounce } from 'lodash-es'
 import { subDays, addDays, subWeeks, subMonths } from 'date-fns'
 
 export default

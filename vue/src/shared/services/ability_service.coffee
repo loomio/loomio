@@ -2,7 +2,7 @@ import AppConfig     from '@/shared/services/app_config'
 import Records       from '@/shared/services/records'
 import Session       from '@/shared/services/session'
 import LmoUrlService from '@/shared/services/lmo_url_service'
-import {intersection} from 'lodash'
+import {intersection} from 'lodash-es'
 
 export default new class AbilityService
   isNotEmailVerified: ->

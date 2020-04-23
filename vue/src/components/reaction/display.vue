@@ -1,7 +1,7 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
-import {merge, capitalize, difference, keys, throttle, startsWith, each, compact} from 'lodash'
+import {merge, capitalize, difference, keys, throttle, startsWith, each, compact} from 'lodash-es'
 import { colonToUnicode, stripColons, imgForEmoji, srcForEmoji, emojiSupported } from '@/shared/helpers/emojis'
 
 export default

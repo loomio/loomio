@@ -1,6 +1,6 @@
 import BaseModel from '@/shared/record_store/base_model'
 import AppConfig from '@/shared/services/app_config'
-import { capitalize } from 'lodash'
+import { capitalize } from 'lodash-es'
 
 export default class MembershipRequestModel extends BaseModel
   @singular: 'membershipRequest'

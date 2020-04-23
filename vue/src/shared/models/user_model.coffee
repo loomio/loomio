@@ -1,6 +1,6 @@
 import BaseModel from '@/shared/record_store/base_model'
 import AppConfig from '@/shared/services/app_config'
-import { find, invokeMap, filter, flatten, uniq, head, compact, some, map } from 'lodash'
+import { find, invokeMap, filter, flatten, uniq, head, compact, some, map } from 'lodash-es'
 
 export default class UserModel extends BaseModel
   @singular: 'user'

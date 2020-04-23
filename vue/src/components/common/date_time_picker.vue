@@ -1,7 +1,7 @@
 <script lang="coffee">
 import Records     from '@/shared/services/records'
 import { format, parse }  from 'date-fns'
-import { times } from 'lodash'
+import { times } from 'lodash-es'
 import { hoursOfDay } from '@/shared/helpers/format_time'
 
 export default

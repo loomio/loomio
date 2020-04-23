@@ -4,7 +4,7 @@ import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import PollCommonDirective from '@/components/poll/common/directive'
 import PollService from '@/shared/services/poll_service'
-import { pick } from 'lodash'
+import { pick } from 'lodash-es'
 
 export default
   components:

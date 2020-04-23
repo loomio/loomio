@@ -6,7 +6,7 @@ import Flash  from '@/shared/services/flash'
 import Session from '@/shared/services/session'
 import { iconFor }                from '@/shared/helpers/poll'
 import { fieldFromTemplate } from '@/shared/helpers/poll'
-import { map } from 'lodash'
+import { map } from 'lodash-es'
 import { onError } from '@/shared/helpers/form'
 import AppConfig from '@/shared/services/app_config'
 

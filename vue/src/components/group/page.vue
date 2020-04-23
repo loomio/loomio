@@ -8,7 +8,7 @@ import AbilityService    from '@/shared/services/ability_service'
 import LmoUrlService     from '@/shared/services/lmo_url_service'
 import GroupModalMixin from '@/mixins/group_modal'
 import { subscribeTo }   from '@/shared/helpers/cable'
-import {compact, head, includes, filter} from 'lodash'
+import {compact, head, includes, filter} from 'lodash-es'
 import ahoy from 'ahoy.js'
 
 export default

@@ -1,5 +1,5 @@
 <script lang="coffee">
-import { some } from 'lodash'
+import { some } from 'lodash-es'
 export default
   props:
     actions: Object

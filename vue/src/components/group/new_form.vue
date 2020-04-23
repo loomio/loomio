@@ -5,7 +5,7 @@ import Records  from '@/shared/services/records'
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
 import Flash   from '@/shared/services/flash'
-import { isEmpty, compact, debounce } from 'lodash'
+import { isEmpty, compact, debounce } from 'lodash-es'
 import { onError } from '@/shared/helpers/form'
 import openModal from '@/shared/helpers/open_modal'
 

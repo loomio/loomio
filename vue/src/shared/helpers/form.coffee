@@ -1,4 +1,4 @@
-import {includes} from 'lodash'
+import {includes} from 'lodash-es'
 export onError = (model, cb) ->
   (response) ->
     cb(response) if typeof cb is 'function'

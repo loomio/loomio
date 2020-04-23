@@ -5,7 +5,7 @@ import EventBus           from '@/shared/services/event_bus'
 import RecordLoader       from '@/shared/services/record_loader'
 import ThreadFilter       from '@/shared/services/thread_filter'
 import DiscussionModalMixin     from '@/mixins/discussion_modal'
-import { map, debounce, orderBy, intersection, compact, omit, filter, concat, uniq } from 'lodash'
+import { map, debounce, orderBy, intersection, compact, omit, filter, concat, uniq } from 'lodash-es'
 import Session from '@/shared/services/session'
 
 export default

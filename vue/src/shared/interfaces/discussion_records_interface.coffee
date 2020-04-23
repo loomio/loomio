@@ -2,7 +2,7 @@ import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
 import DiscussionModel      from '@/shared/models/discussion_model'
 import Session              from '@/shared/services/session'
 import EventBus             from '@/shared/services/event_bus'
-import { includes } from 'lodash'
+import { includes } from 'lodash-es'
 
 export default class DiscussionRecordsInterface extends BaseRecordsInterface
   model: DiscussionModel

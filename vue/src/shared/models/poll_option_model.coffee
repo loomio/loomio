@@ -1,5 +1,5 @@
 import BaseModel  from  '@/shared/record_store/base_model'
-import {map} from 'lodash'
+import {map} from 'lodash-es'
 
 export default class PollOptionModel extends BaseModel
   @singular: 'pollOption'

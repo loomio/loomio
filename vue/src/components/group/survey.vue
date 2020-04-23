@@ -3,7 +3,7 @@ import AppConfig      from '@/shared/services/app_config'
 import AbilityService from '@/shared/services/ability_service'
 import Records  from '@/shared/services/records'
 import Flash   from '@/shared/services/flash'
-import { isEmpty, compact } from 'lodash'
+import { isEmpty, compact } from 'lodash-es'
 import { onError } from '@/shared/helpers/form'
 import i18n from '@/i18n.coffee'
 
