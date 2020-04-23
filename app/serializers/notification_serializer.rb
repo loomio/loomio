@@ -9,7 +9,7 @@ class NotificationSerializer < ActiveModel::Serializer
     end
   end
 
-  has_one :actor, serializer: UserSerializer, root: :users
+  has_one :actor, serializer: AuthorSerializer, root: :users
 
   def actor
     if object.kind == 'stance_created'

@@ -3,7 +3,7 @@ class DocumentSerializer < ApplicationSerializer
              :web_url, :thumb_url, :model_id, :model_type,
              :created_at, :group_id, :manual_url
 
-  has_one :author, serializer: UserSerializer, root: :users
+  has_one :author, serializer: AuthorSerializer, root: :users
 
   def group_id
     object.group&.id

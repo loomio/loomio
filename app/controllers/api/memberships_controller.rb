@@ -16,7 +16,7 @@ class API::MembershipsController < API::RestfulController
         collection.pending
       else
         collection.active
-      end.where(group: model.group).order('admin desc, created_at desc')
+      end.where(group: model.group).order('memberships.admin desc, memberships.created_at desc')
     end
     respond_with_collection(scope: index_scope)
   end
@@ -112,7 +112,7 @@ class API::MembershipsController < API::RestfulController
 
   private
   def valid_orders
-    ['created_at', 'created_at desc', 'users.name', 'admin desc', 'accepted_at desc', 'accepted_at']
+    ['memberships.created_at', 'memberships.created_at desc', 'users.name', 'admin desc', 'accepted_at desc', 'accepted_at']
   end
 
   def index_scope
@@ -126,7 +126,7 @@ class API::MembershipsController < API::RestfulController
   end
 
   def accessible_records
-    visible = resource_class.joins(:group).joins(:user).includes(:inviter, {group: [:parent]})
+    visible = resource_class.joins(:group).joins(:user).includes(:user, :inviter, {group: [:parent]})
     if current_user.group_ids.any?
       visible.where("group_id IN (#{current_user.group_ids.join(',')}) OR
                      groups.parent_id IN (#{ids_or_null(current_user.adminable_group_ids)}) OR

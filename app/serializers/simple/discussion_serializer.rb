@@ -42,7 +42,7 @@ class Simple::DiscussionSerializer < ApplicationSerializer
                          :dismissed_at,
                          :read_ranges
 
-  has_one :author, serializer: UserSerializer, root: :users
+  has_one :author, serializer: AuthorSerializer, root: :users
   has_one :group, serializer: ::GroupSerializer, root: :groups
   has_one :created_event, serializer: Events::CreatedSerializer, root: :events
 

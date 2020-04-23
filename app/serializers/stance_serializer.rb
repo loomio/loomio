@@ -13,10 +13,11 @@ class StanceSerializer < ApplicationSerializer
              :volume,
              :inviter_id,
              :revoked_at,
-             :participant_id
+             :participant_id,
+             :poll_id
 
   has_one :poll, serializer: PollSerializer
-  has_one :participant, serializer: UserSerializer, root: :users
+  has_one :participant, serializer: AuthorSerializer, root: :users
   has_many :stance_choices, serializer: StanceChoiceSerializer, root: :stance_choices
 
   def volume

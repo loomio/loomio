@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_23_040359) do
+ActiveRecord::Schema.define(version: 2020_04_23_081241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -165,7 +165,7 @@ ActiveRecord::Schema.define(version: 2020_04_23_040359) do
     t.datetime "updated_at"
   end
 
-  create_table "discussion_readers", id: :serial, force: :cascade do |t|
+  create_table "discussion_readers", id: :integer, default: -> { "nextval('motion_read_logs_id_seq'::regclass)" }, force: :cascade do |t|
     t.integer "user_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -547,13 +547,6 @@ ActiveRecord::Schema.define(version: 2020_04_23_040359) do
     t.string "statement_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
     t.index ["poll_id"], name: "index_outcomes_on_poll_id"
-  end
-
-  create_table "poll_did_not_votes", id: :serial, force: :cascade do |t|
-    t.integer "poll_id"
-    t.integer "user_id"
-    t.index ["poll_id"], name: "index_poll_did_not_votes_on_poll_id"
-    t.index ["user_id"], name: "index_poll_did_not_votes_on_user_id"
   end
 
   create_table "poll_options", id: :serial, force: :cascade do |t|

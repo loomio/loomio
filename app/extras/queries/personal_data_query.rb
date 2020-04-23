@@ -73,10 +73,6 @@ class Queries::PersonalDataQuery
     Outcome.where(author_id: user.id)
   end
 
-  def self.poll_did_not_votes(user)
-    PollDidNotVote.where(user_id: user.id)
-  end
-
   def self.poll_unsubscriptions(user)
     PollUnsubscription.where(user_id: user.id)
   end

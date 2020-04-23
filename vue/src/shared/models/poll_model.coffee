@@ -47,7 +47,6 @@ export default class PollModel extends BaseModel
     @belongsTo 'group'
     @hasMany   'pollOptions', orderBy: 'priority'
     @hasMany   'stances'
-    @hasMany   'pollDidNotVotes'
     @hasMany   'versions'
 
   voters: ->
@@ -78,13 +77,6 @@ export default class PollModel extends BaseModel
   # who's voted?
   participants: ->
     @recordStore.users.find(@participantIds())
-
-  # who hasn't voted?
-  undecided: ->
-    if @isActive()
-      difference(@members(), @participants())
-    else
-      invokeMap @pollDidNotVotes(), 'user'
 
   membersCount: ->
     # NB: this won't work for people who vote, then leave the group.

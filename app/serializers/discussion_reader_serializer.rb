@@ -12,7 +12,7 @@ class DiscussionReaderSerializer < ActiveModel::Serializer
              :admin,
              :revoked_at
 
-  has_one :user, serializer: UserSerializer, root: :users
+  has_one :user, serializer: AuthorSerializer, root: :users
 
   def volume
     object[:volume]

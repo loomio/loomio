@@ -3,7 +3,7 @@ class Events::BaseSerializer < ApplicationSerializer
     :discussion_id, :created_at, :eventable_id, :eventable_type, :custom_fields,
     :pinned, :pinned_title, :actor_id, :parent_id
 
-  has_one :actor, serializer: UserSerializer, root: :users
+  has_one :actor, serializer: AuthorSerializer, root: :users
   has_one :eventable, polymorphic: true
   has_one :discussion, serializer: Simple::DiscussionSerializer, root: :discussions
   has_one :parent, serializer: Events::BaseSerializer, root: :events
@@ -11,7 +11,7 @@ class Events::BaseSerializer < ApplicationSerializer
   def actor_id
     object.user_id
   end
-  
+
   def actor
     object.user || object.eventable&.user
   end

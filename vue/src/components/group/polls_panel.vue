@@ -20,16 +20,19 @@ export default
     , 500
 
     @group = Records.groups.find(@$route.params.key)
+
+    @initLoader()
     
-    @initLoader().fetchRecords().then =>
+    @watchRecords
+      collections: ['polls', 'groups', 'memberships']
+      query: => @findRecords()
+
+    @loader.fetchRecords().then =>
       EventBus.$emit 'currentComponent',
         page: 'groupPage'
         title: @group.name
         group: @group
 
-      @watchRecords
-        collections: ['polls', 'groups', 'memberships']
-        query: => @findRecords()
 
   methods:
     initLoader: ->

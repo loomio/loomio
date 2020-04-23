@@ -9,7 +9,7 @@ class PollSerializer < ApplicationSerializer
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_one :created_event, serializer: Events::BaseSerializer, root: :events
   has_one :group, serializer: GroupSerializer, root: :groups
-  has_one :author, serializer: UserSerializer, root: :users
+  has_one :author, serializer: AuthorSerializer, root: :users
   has_one :current_outcome, serializer: OutcomeSerializer, root: :outcomes
   has_one :my_stance, serializer: StanceSerializer, root: :stances
   has_many :poll_options, serializer: PollOptionSerializer, root: :poll_options

@@ -44,9 +44,9 @@ class DiscussionSerializer < ApplicationSerializer
                          :inviter_id,
                          :admin
 
-  has_one :author, serializer: UserSerializer, root: :users
+  has_one :author, serializer: AuthorSerializer, root: :users
   has_one :group, serializer: GroupSerializer, root: :groups
-  has_many :active_polls, serializer: Full::PollSerializer, root: :polls
+  has_many :active_polls, serializer: PollSerializer, root: :polls
   has_one :created_event, serializer: Events::BaseSerializer, root: :events
   has_one :forked_event, serializer: Events::BaseSerializer, root: :events
 

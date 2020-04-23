@@ -1,6 +1,4 @@
 class API::PollsController < API::RestfulController
-  include UsesFullSerializer
-
   def show
     self.resource = load_and_authorize(:poll)
     respond_with_resource

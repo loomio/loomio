@@ -17,8 +17,8 @@ export default
     order: 'created_at desc'
     orders: [
       {text: @$t('members_panel.order_by_name'),  value:'users.name' }
-      {text: @$t('members_panel.order_by_created'), value:'created_at' }
-      {text: @$t('members_panel.order_by_created_desc'), value:'created_at desc' }
+      {text: @$t('members_panel.order_by_created'), value:'memberships.created_at' }
+      {text: @$t('members_panel.order_by_created_desc'), value:'memberships.created_at desc' }
       {text: @$t('members_panel.order_by_admin_desc'), value:'admin desc' }
     ]
     memberships: []
