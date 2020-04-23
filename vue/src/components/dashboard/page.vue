@@ -117,7 +117,7 @@ export default
 
     viewNames: -> keys(@views)
     loadingViewNames: -> take @viewNames, 3
-    noGroups: -> !Session.user().hasAnyGroups()
+    noGroups: -> Session.user().groups().length == 0
     promptStart: ->
       @noGroups && AbilityService.canStartGroups()
     noThreads: -> every @views, (view) => view.length == 0
