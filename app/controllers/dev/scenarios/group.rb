@@ -35,16 +35,6 @@ module Dev::Scenarios::Group
     redirect_to group_url(create_group)
   end
 
-  def setup_group_with_empty_draft
-    sign_in patrick
-    @group = Group.create!(name: 'Secret Dirty Dancing Shoes',
-                                group_privacy: 'secret')
-    @group.add_admin! patrick
-    membership = Membership.find_by(user: patrick, group: @group)
-    create_empty_draft
-    redirect_to group_url(create_group)
-  end
-
   def visit_group_as_subgroup_member
     sign_in jennifer
     create_subgroup.add_member! jennifer

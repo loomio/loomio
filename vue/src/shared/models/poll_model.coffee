@@ -11,8 +11,6 @@ export default class PollModel extends BaseModel
   @singular: 'poll'
   @plural: 'polls'
   @indices: ['discussionId', 'authorId', 'latest']
-  @draftParent: 'draftParent'
-  @draftPayloadAttributes: ['title', 'details']
 
   afterConstruction: ->
     HasDocuments.apply @, showTitle: true
@@ -20,9 +18,6 @@ export default class PollModel extends BaseModel
 
   pollTypeKey: ->
     "poll_types.#{@pollType}"
-
-  draftParent: ->
-    @discussion() or @author()
 
   poll: -> @
 
@@ -166,7 +161,7 @@ export default class PollModel extends BaseModel
 
   hasOptionIcons: ->
     AppConfig.pollTemplates[@pollType]['has_option_icons']
-    
+
   singleChoice: ->
     AppConfig.pollTemplates[@pollType]['single_choice']
 

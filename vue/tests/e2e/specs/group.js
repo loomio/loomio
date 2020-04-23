@@ -346,20 +346,6 @@ module.exports = {
     page.expectText('.context-panel__description', "I've had the time of my life" )
   },
 
-  // 'automatically_saves_drafts': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('setup_group')
-  //   page.click('.discussions-panel__new-thread-button')
-  //   page.fillIn('.discussion-form__title-input', 'Nobody puts baby in a corner')
-  //   page.fillIn('.discussion-form .lmo-textarea div[contenteditable=true]', "I've had the time of my life")
-  //   page.click('.dismiss-modal-button')
-  //   page.pause()
-  //   page.click('.discussions-panel__new-thread-button')
-  //   page.expectValue('.discussion-form__title-input', 'Nobody puts baby in a corner' )
-  //   page.expectValue('.discussion-form .lmo-textarea div[contenteditable=true]', "I've had the time of my life" )
-  // },
-
   'lets_you_change_membership_volume': (test) => {
     page = pageHelper(test)
 

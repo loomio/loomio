@@ -8,8 +8,6 @@ export default class StanceModel extends BaseModel
   @singular: 'stance'
   @plural: 'stances'
   @indices: ['pollId']
-  @draftParent: 'poll'
-  @draftPayloadAttributes: ['reason']
 
   afterConstruction: ->
     HasTranslations.apply @

@@ -1,6 +1,5 @@
 class Group < ApplicationRecord
   include HasTimeframe
-  include HasDrafts
   include HasRichText
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
@@ -20,7 +19,6 @@ class Group < ApplicationRecord
   alias_method :author, :creator
 
   belongs_to :parent, class_name: 'Group'
-  alias_method :draft_parent, :parent
 
   has_many :discussions,             foreign_key: :group_id, dependent: :destroy
   has_many :public_discussions, -> { visible_to_public }, foreign_key: :group_id, dependent: :destroy, class_name: 'Discussion'

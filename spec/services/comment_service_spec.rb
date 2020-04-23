@@ -52,12 +52,6 @@ describe 'CommentService' do
       CommentService.create(comment: comment, actor: user)
     end
 
-    it 'clears out the draft' do
-      draft = create(:draft, user: user, draftable: comment.discussion, payload: { comment: { body: 'body draft' } })
-      CommentService.create(comment: comment, actor: user)
-      expect(draft.reload.payload['comment']).to be_blank
-    end
-
     context 'comment is valid' do
       before do
         comment.stub(:valid?).and_return(true)

@@ -8,11 +8,6 @@ export default class GroupModel extends BaseModel
   @plural: 'groups'
   @uniqueIndices: ['id', 'key']
   @indices: ['parentId']
-  @draftParent: 'draftParent'
-  @draftPayloadAttributes: ['name', 'description']
-
-  draftParent: ->
-    @parent() or @recordStore.users.find(AppConfig.currentUserId)
 
   defaultValues: ->
     parentId: null

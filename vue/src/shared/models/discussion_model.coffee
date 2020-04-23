@@ -11,8 +11,6 @@ export default class DiscussionModel extends BaseModel
   @plural: 'discussions'
   @uniqueIndices: ['id', 'key']
   @indices: ['groupId', 'authorId']
-  @draftParent: 'group'
-  @draftPayloadAttributes: ['title', 'description']
 
   afterConstruction: ->
     @private = @privateDefaultValue() if @isNew()

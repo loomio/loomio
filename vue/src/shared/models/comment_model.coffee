@@ -7,9 +7,7 @@ export default class CommentModel extends BaseModel
   @singular: 'comment'
   @plural: 'comments'
   @indices: ['discussionId', 'authorId']
-  @draftParent: 'discussion'
-  @draftPayloadAttributes: ['body', 'document_ids']
-
+  
   afterConstruction: ->
     HasDocuments.apply @
     HasTranslations.apply @

@@ -25,13 +25,5 @@ module Boot
         root: :users
       ).as_json
     end
-
-    def serializer_scope
-      { identities: identities }.compact
-    end
-
-    def identities
-      @identities ||= user.identities.order(created_at: :desc) unless user.restricted
-    end
   end
 end

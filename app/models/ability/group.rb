@@ -31,10 +31,7 @@ module Ability::Group
     end
 
     can [:members_autocomplete,
-         :set_volume,
-         :see_members,
-         :make_draft,
-         :view_previous_proposals], ::Group do |group|
+         :set_volume], ::Group do |group|
       user.email_verified? && group.members.exists?(user.id)
     end
 

@@ -7,8 +7,6 @@ export default class OutcomeModel extends BaseModel
   @singular: 'outcome'
   @plural: 'outcomes'
   @indices: ['pollId', 'authorId']
-  @draftParent: 'poll'
-  @draftPayloadAttributes: ['statement']
 
   defaultValues: ->
     statement: ''

@@ -4,7 +4,6 @@ class Poll < ApplicationRecord
   include ReadableUnguessableUrls
   include HasEvents
   include HasMentions
-  include HasDrafts
   include MessageChannel
   include SelfReferencing
   include UsesOrganisationScope
@@ -104,7 +103,6 @@ class Poll < ApplicationRecord
   validate :discussion_group_is_poll_group
 
   alias_method :user, :author
-  alias_method :draft_parent, :discussion
 
   has_paper_trail only: [:title, :details, :closing_at, :group_id]
 

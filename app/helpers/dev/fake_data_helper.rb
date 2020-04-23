@@ -65,12 +65,6 @@ module Dev::FakeDataHelper
     }.merge(args))
   end
 
-  def fake_draft(args = {})
-    Draft.new({
-      draftable: fake_group
-    }.merge(args))
-  end
-
   def option_names(option_count)
     seed = (0..20).to_a.sample
     {

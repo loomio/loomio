@@ -110,9 +110,6 @@ export default
       @$t groupPrivacyStatement(@clone),
         parent: @clone.parentName()
 
-    showGroupFeatures: ->
-      AbilityService.isSiteAdmin() and some(@featureNames)
-
     groupNamePlaceholder: ->
       if @clone.parentId
         'group_form.group_name_placeholder'
