@@ -29,14 +29,14 @@ class API::DiscussionsController < API::RestfulController
 
   def dashboard
     raise CanCan::AccessDenied.new unless current_user.is_logged_in?
-    @accessible_records = DiscussionQuery.visible_to(user: current_user, group_ids: current_user.group_ids)
+    @accessible_records = DiscussionQuery.visible_to(user: current_user, or_public: false)
     instantiate_collection { |collection| collection.is_open.order_by_importance }
     respond_with_collection
   end
 
   def inbox
     raise CanCan::AccessDenied.new unless current_user.is_logged_in?
-    @accessible_records = DiscussionQuery.visible_to(user: current_user, group_ids: current_user.group_ids, tags: split_tags, only_unread: true)
+    @accessible_records = DiscussionQuery.visible_to(user: current_user, only_unread: true, or_public: false)
     instantiate_collection { |collection| collection.recent.order_by_latest_activity }
     respond_with_collection scope: default_scope.merge(
       poll_cache:   Caches::Poll.new(parents: collection),
