@@ -122,7 +122,6 @@ export default
 
   computed:
     membershipRequestsPath: -> LmoUrlService.membershipRequest(@group)
-    currentUserIsAdmin: -> Session.user().membershipFor(@group).admin
     showLoadMore: -> !@loader.exhausted
     totalRecords: ->
       if @pending

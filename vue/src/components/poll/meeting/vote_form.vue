@@ -16,8 +16,11 @@ export default
     canRespondMaybe: null
     stanceValues: []
 
+  beforeDestroy: ->
+    EventBus.$off 'timeZoneSelected', @setTimeZone
+
   created: ->
-    EventBus.$on 'timeZoneSelected', (e, zone) => @zone = zone
+    EventBus.$on 'timeZoneSelected', @setTimeZone
     done = false
     @watchRecords
       collections: ['poll_options', 'poll']
@@ -35,6 +38,9 @@ export default
             score: lastChoice.score
 
   methods:
+    setTimeZone: (e, zone) ->
+      @zone = zone
+
     submit: ->
       @stance.id = null
 

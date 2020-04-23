@@ -19,13 +19,15 @@ export default
     groups: []
   created: ->
     @init()
-    EventBus.$on 'signedIn', => @init()
+    EventBus.$on 'signedIn', @init
     @watchRecords
       collections: ['groups', 'memberships']
       query: (store) =>
         groups = Session.user().groups()
         user = Session.user()
         @groups = sortBy groups, 'fullName'
+  beforeDestroy: ->
+    EventBus.$off 'signedIn', @init
 
   mounted: ->
     EventBus.$emit 'currentComponent', { titleKey: 'email_settings_page.header', page: 'emailSettingsPage'}

@@ -20,7 +20,11 @@ export default
 
   created: ->
     @init()
-    EventBus.$on 'signedIn', => @init()
+    EventBus.$on 'signedIn', @init
+
+  beforeDestroy: ->
+    EventBus.$off 'signedIn', @init
+
 
   watch:
     '$route.params.key': 'init'

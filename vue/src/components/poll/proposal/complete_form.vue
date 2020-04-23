@@ -42,6 +42,7 @@ export default
         @reset()
         pollKey = data.polls[0].key
         Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
+          EventBus.$emit 'pollSaved', poll
           Flash.success "poll_#{poll.pollType}_form.#{poll.pollType}_created"
           @openAnnouncementModal(Records.announcements.buildFromModel(poll))
       .catch onError(@poll)

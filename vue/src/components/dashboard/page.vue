@@ -29,7 +29,11 @@ export default
 
   created: ->
     @init()
-    EventBus.$on 'signedIn', => @init()
+    EventBus.$on 'signedIn', @init
+
+  beforeDestroy: ->
+    EventBus.$off 'signedIn', @init
+
 
   mounted: ->
     EventBus.$emit('content-title-visible', false)

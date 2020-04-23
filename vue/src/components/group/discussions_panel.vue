@@ -26,6 +26,9 @@ export default
     groupIds: []
 
   methods:
+    beforeDestroy: ->
+      EventBus.$off 'joinedGroup'
+
     init: ->
       Records.groups.findOrFetch(@$route.params.key).then (group) =>
         @group = group

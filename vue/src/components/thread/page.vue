@@ -26,6 +26,9 @@ export default
 
   mounted: -> @init()
 
+  beforeDestroy: ->
+    EventBus.$off 'visibleSlots'
+
   watch:
     '$route.params.key': 'init'
     '$route.params.comment_id': 'init'

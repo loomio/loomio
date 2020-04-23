@@ -26,6 +26,9 @@ export default
     EventBus.$on 'pollSaved', =>
       @currentAction = 'add-comment'
 
+  beforeDestroy: ->
+    EventBus.$off 'pollSaved'
+
   methods:
     init: ->
       @watchRecords
