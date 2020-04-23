@@ -20,7 +20,6 @@ module Boot
 
     def user_payload
       ActiveModel::ArraySerializer.new(Array(@user),
-        scope:           serializer_scope,
         each_serializer: (user.restricted ? Restricted::UserSerializer : Full::UserSerializer),
         root: :users
       ).as_json
