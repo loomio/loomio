@@ -21,6 +21,7 @@ bin/
 .powenv
 .byebug_history
 
+/client
 public/client
 public/system
 public/uploads
