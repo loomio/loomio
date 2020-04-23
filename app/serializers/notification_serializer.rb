@@ -1,4 +1,4 @@
-class NotificationSerializer < AppplicationSerializer
+class NotificationSerializer < ApplicationSerializer
   attributes :id, :viewed, :created_at, :url, :kind, :translation_values, :actor_id, :event_id
 
   def kind
