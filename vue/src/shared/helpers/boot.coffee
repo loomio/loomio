@@ -34,9 +34,4 @@ export default (callback) ->
         link.href = AppConfig.theme.icon_src
         document.getElementsByTagName('head')[0].appendChild(link)
 
-      forEach Records, (recordInterface, k) ->
-        model = Object.getPrototypeOf(recordInterface).model
-        if model && AppConfig.permittedParams[model.singular]
-          model.serializableAttributes = AppConfig.permittedParams[model.singular]
-
       callback()
