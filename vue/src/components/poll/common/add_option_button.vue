@@ -9,7 +9,7 @@ export default
       EventBus.$emit 'openModal',
         component: 'PollCommonAddOptionModal'
         props:
-          poll: poll.clone()
+          poll: @poll.clone()
 </script>
 
 <template lang='pug'>
