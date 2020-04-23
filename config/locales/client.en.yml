@@ -997,45 +997,6 @@ en:
     manage_requests: Manage requests
     manage_requests_with_count: Manage requests ({{count}})
 
-  # documents_page:
-  #   title: Attachments
-  #   fragment_placeholder: Search for attachments...
-  #   add_document: Add attachment
-  #   no_documents: No attachments found for this group. Click 'Add Attachment' above to add one.
-  #   no_documents_from_fragment: No attachments found named '{{fragment}}'
-  #   confirm_remove_title: Remove attachment
-  #   confirm_remove_helptext: Are you sure you want to remove this attachment?
-  #   document_removed: Attachment removed
-  #
-  # document:
-  #   error:
-  #     invalid_format: Oops! Your URL is invalid. Ensure it begins with http:// or https://
-  #   card:
-  #     no_documents: No attachments have been uploaded into this group yet
-  #     view_documents: View all
-  #   list:
-  #     title: Attachments
-  #     no_group_documents: No attachments have been uploaded to the group description yet
-  #   management:
-  #     content_header: All attachments
-  #     uploaded_to: in
-  #   modal:
-  #     title: Add an attachment
-  #   method_form:
-  #     helptext: Attach files or links to share them with the group.
-  #     url_helptext: Link to websites and online resources
-  #     file_helptext: Upload files from your computer
-  #   form:
-  #     url_label: URL
-  #     helptext: Click here, paste, or drop file to upload
-  #     url_placeholder: E.g. https://www.example.com/attachment.zip
-  #     title_helptext: What should we call this attachment?
-  #     title_label: Name
-  #     title_placeholder: E.g. 'Community Guidelines'
-  #   flash:
-  #     success: Attachment saved
-  #     destroyed: Attachment removed
-
   membership_requests_page:
     heading: Membership Requests
     approve: Approve
