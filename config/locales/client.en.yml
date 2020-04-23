@@ -1829,15 +1829,6 @@ en:
     title: Delete decision
     success: Successfully deleted
 
-  poll_common_unsubscribe_form:
-    title: Receive updates
-    label: Receive email updates about this decision
-    tooltip: Email updates keep you informed about this decision, such as when it is edited, when it expires, or when an outcome has been set. Unchecking this box ensures that you won't receive further email notifications for decision.
-    helptext_on: You will receive emails about activity in this decision
-    helptext_off: You will not receive any emails about this decision
-    subscribed: Successfully subscribed
-    unsubscribed: Successfully unsubscribed
-
   poll_common_form:
     title: Title
     details: Details
@@ -2083,20 +2074,6 @@ en:
     stance_created:                "<strong><a href='/u/{{username}}'>{{author}}</a></strong> voted on: <strong>{{title}}</strong>"
     event_removed:                 "Removed from thread"
 
-  poll_admin_page:
-    title: Admin - {{title}}
-
-  poll_common_publish_facebook_preview:
-    shared_a: shared a
-    link: link
-    just_now: Just now
-
-  poll_common_publish_slack_preview:
-    poll_published: "published a poll:"
-    poll_published_with_discussion: "published a poll in <strong>{{discussion}}</strong>:"
-    view_it_on_loomio: View it on {{site_name}}
-    timestamp: Today at {{timestamp}}
-
   poll_common_subscribe_form:
     receive_updates_title: Your vote has been recorded
     receive_updates_helptext: If you'd like to receive an email about the outcome of this poll, enter your email address below
@@ -2226,28 +2203,12 @@ en:
     message: "IMPORTANT! You are using an outdated browser ({{name}} {{version}}) which is not supported by {{site}}."
     link: Please switch to another browser
 
-  slack_added_modal:
-    title: Success!
-    helptext: |
-      You've successfully added Slack to your group <strong>{{name}}</strong>.
-      Now, whenever anyone starts a poll in this group, they'll have the option to
-      post updates about that poll into a channel in your slack team.
-    start_poll_now: Make a decision now
-
   powered_by:
     slogan: Better decisions together
     powered_by_loomio: Powered by Loomio
     privacy_policy: Privacy policy
     terms_of_service: Terms of service
     front_page: Front page
-
-  vue_upgraded_modal:
-    use_old_loomio: Use old Loomio
-    title: You're on Loomio 2.0!
-    body: |
-      <p>It's a faster, better Loomio!</p>
-      <p>We think you'll love it, but if you need to, you can switch back to the old version from the sidebar.</p>
-      <p><a href="{{link}}" target="_blank">Find out what's new.</a></p>
 
   group_survey:
     title: Success! Just a few more details
