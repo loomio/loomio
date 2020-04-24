@@ -39,8 +39,8 @@ module GroupService
       ExampleContent.new(group).add_to_group! if AppConfig.app_features[:example_content]
     end
 
-    group.save!
     group.update_attachments!
+    group.save!
     group.add_admin!(actor)
 
     EventBus.broadcast('group_create', group, actor)
@@ -55,8 +55,8 @@ module GroupService
     privacy_change = PrivacyChange.new(group)
 
     return false unless group.valid?
-    group.save!
     group.update_attachments!
+    group.save!
     privacy_change.commit!
 
     EventBus.broadcast('group_update', group, params, actor)
