@@ -138,7 +138,7 @@ describe API::StancesController do
       end
     end
 
-    it 'includes the participant of the stance for anonymous polls' do
+    it 'includes the participant when current_user' do
       poll.update(anonymous: true)
       user.update(email_verified: true)
       sign_in user
@@ -146,8 +146,8 @@ describe API::StancesController do
       post :create, params: { stance: stance_params }
       json = JSON.parse(response.body)
       expect(response.status).to eq 200
-      expect(json['stances'][0]['participant_id']).to eq user.id
-      expect(json['users']).to be_present
+      expect(json['stances'][0]['participant_id']).to be user.id
+      expect(json['events'][0]['actor_id']).to be user.id
     end
 
     describe 'poll.group.members_can_vote false' do

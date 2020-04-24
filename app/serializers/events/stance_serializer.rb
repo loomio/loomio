@@ -1,5 +1,10 @@
 class Events::StanceSerializer < Events::BaseSerializer
   def include_actor?
-    scope && object.eventable.participant_for_client(user: scope[:current_user]).presence
+    super &&
+    if eventable.poll.anonymous
+      scope && actor == scope[:current_user]
+    else
+      true
+    end
   end
 end

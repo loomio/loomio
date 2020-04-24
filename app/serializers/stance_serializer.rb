@@ -13,7 +13,6 @@ class StanceSerializer < ApplicationSerializer
              :volume,
              :inviter_id,
              :revoked_at,
-             :participant_id,
              :poll_id
 
   has_one :poll, serializer: PollSerializer
@@ -24,11 +23,12 @@ class StanceSerializer < ApplicationSerializer
     object[:volume]
   end
 
-  def participant
-    scope && object.participant_for_client(user: scope[:current_user]).presence
-  end
-
   def include_participant?
-    super && participant.present?
+    super &&
+    if object.poll.anonymous
+      scope && object.participant == scope[:current_user]
+    else
+      true
+    end
   end
 end
