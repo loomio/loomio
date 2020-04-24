@@ -146,9 +146,8 @@ describe API::StancesController do
       post :create, params: { stance: stance_params }
       json = JSON.parse(response.body)
       expect(response.status).to eq 200
-      p json
       expect(json['stances'][0]['participant_id']).to be nil
-      expect(json['users']).to be_empty
+      expect(json['events'][0]['actor_id']).to be nil
     end
 
     describe 'poll.group.members_can_vote false' do
