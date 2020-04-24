@@ -4,12 +4,6 @@ class Full::UserSerializer < UserSerializer
              :locale, :default_membership_volume, :experiences,
              :email_newsletter, :is_admin, :memberships_count
 
-  has_many :identities,         serializer: IdentitySerializer, root: :identities
-
-  def identities
-    from_scope :identities
-  end
-
   def include_email?
     true
   end
