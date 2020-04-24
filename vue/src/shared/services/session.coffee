@@ -76,5 +76,6 @@ export default new class Session
     loadLocale(locale)
 
   providerIdentity: ->
+    return unless AppConfig.pendingIdentity
     validProviders = AppConfig.identityProviders.map (p) -> p.name
     AppConfig.pendingIdentity if validProviders.includes(AppConfig.pendingIdentity.identity_type)
