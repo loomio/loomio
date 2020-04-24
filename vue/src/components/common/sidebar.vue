@@ -22,6 +22,7 @@ export default
     organizations: []
     unreadCounts: {}
     expandedGroupIds: []
+    fetched: false
 
   created: ->
     EventBus.$on 'toggleSidebar', => @open = !@open
@@ -40,27 +41,27 @@ export default
       query: (store) => @updateGroups()
 
     EventBus.$on 'signedIn', (user) =>
-      @fetchData()
+      @fetchData() if @open
       @openIfPinned()
-
-    @fetchData() if Session.isSignedIn()
 
   watch:
     organization: 'updateGroups'
 
-    open: (val) ->
-      EventBus.$emit("sidebarOpen", val)
+    open:
+      immediate: true
+      handler: (val) ->
+        EventBus.$emit("sidebarOpen", val)
+        @fetchData() if @open && Session.isSignedIn()
 
   methods:
     openIfPinned: ->
       @open = Session.isSignedIn() && !!Session.user().experiences['sidebar'] && @$vuetify.breakpoint.mdAndUp
 
     fetchData: ->
-      Records.users.fetchGroups().then =>
-        if @$router.history.current.path == "/dashboard" && Session.user().membershipsCount == 1
-          @$router.replace("/g/#{Session.user().groups()[0].key}")
-
-      InboxService.load()
+      if !@fetched
+        Records.users.fetchGroups().then =>
+          InboxService.load(exclude_types: 'group membership').then =>
+            @fetched = true
 
     unreadCountFor: (group, isOpen) ->
       if !isOpen
@@ -124,7 +125,6 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   v-list-item(dense to="/inbox")
     v-list-item-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
   v-divider
-
   v-treeview.sidebar__groups(hoverable dense :items="tree" :active="activeGroup" :open="expandedGroupIds" style="width: 100%")
     template(v-slot:append="{item, open}")
       div(v-if="item.click")
@@ -149,6 +149,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   v-divider
   v-list-item(dense to="/explore")
     v-list-item-title(v-t="'sidebar.explore_groups'")
+  loading(v-if="!fetched")
 </template>
 <style lang="sass">
 .sidebar-item

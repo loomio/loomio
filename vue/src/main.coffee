@@ -39,8 +39,10 @@ import UrlFor from '@/mixins/url_for'
 import FormatDate from '@/mixins/format_date'
 import Vue2TouchEvents from 'vue2-touch-events'
 import { initContent } from '@/shared/services/ssr_content'
+import VueRouterReferer from '@tozd/vue-router-referer'
 
 Vue.use(Vue2TouchEvents)
+Vue.use(VueRouterReferer)
 
 Vue.mixin(CloseModal)
 Vue.mixin(WatchRecords)

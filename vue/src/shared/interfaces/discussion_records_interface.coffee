@@ -34,8 +34,4 @@ export default class DiscussionRecordsInterface extends BaseRecordsInterface
   fetchInbox: (options = {}) ->
     @fetch
       path: 'inbox'
-      params:
-        from: options['from'] or 0
-        per: options['per'] or 100
-        # since: options['since'] or moment().startOf('day').subtract(6, 'week').toDate()
-        # timeframe_for: options['timeframe_for'] or 'last_activity_at'
+      params: options
