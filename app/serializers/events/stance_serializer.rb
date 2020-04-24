@@ -1,5 +1,5 @@
 class Events::StanceSerializer < Events::BaseSerializer
   def include_actor?
-    scope && object.eventable.participant_for_client(user: scope[:current_user]).presence
+    scope && !eventable.poll.anonymous
   end
 end
