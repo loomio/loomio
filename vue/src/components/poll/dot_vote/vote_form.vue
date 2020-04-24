@@ -2,7 +2,7 @@
 import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
-import { sum, map, head, filter, without, sortBy } from 'lodash'
+import { sum, map, head, filter, without, sortBy } from 'lodash-es'
 import { onError } from '@/shared/helpers/form'
 
 export default

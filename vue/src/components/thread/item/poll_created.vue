@@ -1,17 +1,15 @@
 <script lang="coffee">
 import PollService    from '@/shared/services/poll_service'
 import AbilityService from '@/shared/services/ability_service'
-import PollModalMixin from '@/mixins/poll_modal'
 import EventBus       from '@/shared/services/event_bus'
 import EventService from '@/shared/services/event_service'
 import { myLastStanceFor }  from '@/shared/helpers/poll'
-import { pick, assign } from 'lodash'
+import { pick, assign } from 'lodash-es'
 
 export default
   components:
     ThreadItem: -> import('@/components/thread/item.vue')
 
-  mixins: [PollModalMixin]
   props:
     event: Object
     isReturning: Boolean

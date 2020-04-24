@@ -33,7 +33,6 @@ class MigrateUserWorker
     oauth_applications: :owner_id,
     omniauth_identities: :user_id,
     outcomes: :author_id,
-    poll_did_not_votes: :user_id,
     poll_unsubscriptions: :user_id,
     polls: :author_id,
     versions: :whodunnit,

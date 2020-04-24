@@ -4,13 +4,10 @@ import AbilityService     from '@/shared/services/ability_service'
 import EventBus           from '@/shared/services/event_bus'
 import RecordLoader       from '@/shared/services/record_loader'
 import ThreadFilter       from '@/shared/services/thread_filter'
-import DiscussionModalMixin     from '@/mixins/discussion_modal'
-import { map, debounce, orderBy, intersection, compact, omit, filter, concat, uniq } from 'lodash'
+import { map, debounce, orderBy, intersection, compact, omit, filter, concat, uniq } from 'lodash-es'
 import Session from '@/shared/services/session'
 
 export default
-  mixins: [DiscussionModalMixin]
-
   created: ->
     @onQueryInput = debounce (val) =>
       @$router.replace(@mergeQuery(q: val))
@@ -26,6 +23,14 @@ export default
     groupIds: []
 
   methods:
+    openStartDiscussionModal: ->
+      EventBus.$emit 'openModal',
+        component: 'DiscussionForm'
+        props:
+          discussion: Records.discussions.build
+            descriptionFormat: Session.defaultFormat()
+            groupId: @group.id
+
     beforeDestroy: ->
       EventBus.$off 'joinedGroup'
 
@@ -189,7 +194,7 @@ div.discussions-panel(v-if="group")
         v-list-item(v-for="tag in groupTags" :key="tag" :to="mergeQuery({tag: tag})")
           v-list-item-title {{tag}}
     v-text-field.mr-2.flex-grow-1(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_threads', {name: group.name})" append-icon="mdi-magnify")
-    v-btn.discussions-panel__new-thread-button(@click='openStartDiscussionModal(group)' color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
+    v-btn.discussions-panel__new-thread-button(@click='openStartDiscussionModal()' color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
 
   v-card.discussions-panel(outlined)
     div(v-if="loader.status == 403")
@@ -205,7 +210,7 @@ div.discussions-panel(v-if="group")
             thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in regularDiscussions" :key="thread.id" :thread="thread" group-page)
 
           v-layout(justify-center)
-            v-btn.my-2.discussions-panel__show-more(outlined color='accent' v-if="!loader.exhausted" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
+            v-btn.my-2.discussions-panel__show-more(outlined color='accent' v-if="!loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords()" v-t="'common.action.load_more'")
 
           .lmo-hint-text.discussions-panel__no-more-threads.text-center.pa-1(v-t="{ path: 'group_page.no_more_threads' }", v-if='loader.numLoaded > 0 && loader.exhausted')
 

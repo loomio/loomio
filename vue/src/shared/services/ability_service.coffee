@@ -2,6 +2,7 @@ import AppConfig     from '@/shared/services/app_config'
 import Records       from '@/shared/services/records'
 import Session       from '@/shared/services/session'
 import LmoUrlService from '@/shared/services/lmo_url_service'
+import {intersection} from 'lodash-es'
 
 export default new class AbilityService
   isNotEmailVerified: ->
@@ -16,7 +17,7 @@ export default new class AbilityService
   canContactUser: (user) ->
     Session.isSignedIn() &&
     Session.user().id != user.id &&
-    _.intersection(Session.user().groupIds(), user.groupIds()).length
+    intersection(Session.user().groupIds(), user.groupIds()).length
 
   canAddComment: (thread) ->
     thread.membersInclude(Session.user())
@@ -186,8 +187,6 @@ export default new class AbilityService
   canTranslate: (model) ->
     AppConfig.inlineTranslation.isAvailable and
     Object.keys(model.translation).length == 0
-    # _.includes(AppConfig.inlineTranslation.supportedLangs, Session.user().locale) and
-    # !model.translation and Session.user().locale != model.author().locale
 
   canSubscribeToPoll: (poll) ->
     poll.membersInclude(Session.user())

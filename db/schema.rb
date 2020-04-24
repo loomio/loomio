@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_19_032701) do
+ActiveRecord::Schema.define(version: 2020_04_23_081241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -262,14 +262,6 @@ ActiveRecord::Schema.define(version: 2020_04_19_032701) do
     t.index ["group_id"], name: "index_documents_on_group_id"
     t.index ["model_id"], name: "index_documents_on_model_id"
     t.index ["model_type"], name: "index_documents_on_model_type"
-  end
-
-  create_table "drafts", id: :serial, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "draftable_id"
-    t.string "draftable_type"
-    t.json "payload", default: {}, null: false
-    t.index ["user_id", "draftable_type", "draftable_id"], name: "index_drafts_on_user_id_and_draftable_type_and_draftable_id", unique: true
   end
 
   create_table "events", id: :serial, force: :cascade do |t|
@@ -555,13 +547,6 @@ ActiveRecord::Schema.define(version: 2020_04_19_032701) do
     t.string "statement_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
     t.index ["poll_id"], name: "index_outcomes_on_poll_id"
-  end
-
-  create_table "poll_did_not_votes", id: :serial, force: :cascade do |t|
-    t.integer "poll_id"
-    t.integer "user_id"
-    t.index ["poll_id"], name: "index_poll_did_not_votes_on_poll_id"
-    t.index ["user_id"], name: "index_poll_did_not_votes_on_user_id"
   end
 
   create_table "poll_options", id: :serial, force: :cascade do |t|

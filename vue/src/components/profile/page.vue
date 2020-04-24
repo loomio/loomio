@@ -9,7 +9,7 @@ import openModal      from '@/shared/helpers/open_modal'
 import UserService    from '@/shared/services/user_service'
 import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
-import { includes, uniq, debounce } from 'lodash'
+import { includes, uniq, debounce } from 'lodash-es'
 
 export default
   data: ->

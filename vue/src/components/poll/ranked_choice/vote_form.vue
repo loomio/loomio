@@ -2,7 +2,7 @@
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
-import { sortBy, find, matchesProperty, take, map } from 'lodash'
+import { sortBy, find, matchesProperty, take, map } from 'lodash-es'
 
 export default
   props:

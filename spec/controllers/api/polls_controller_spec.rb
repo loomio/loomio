@@ -336,7 +336,6 @@ describe API::PollsController do
     let(:poll_params) {{
       closing_at: 1.day.from_now
     }}
-    let!(:did_not_vote) { PollDidNotVote.create(poll: poll, user: another_user) }
     before { poll.update(closed_at: 1.day.ago) }
 
     it 'can reopen a poll' do

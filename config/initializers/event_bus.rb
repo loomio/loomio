@@ -20,12 +20,6 @@ EventBus.configure do |config|
     end
   end
 
-  # Purge drafts after model creation
-  config.listen('group_create',
-                'discussion_create',
-                'comment_create',
-                'poll_create') { |model, actor| model.perform_draft_purge!(actor) }
-
   # Index search vectors after model creation
   config.listen('discussion_create',
                 'discussion_update',

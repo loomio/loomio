@@ -4,14 +4,13 @@ import Records         from '@/shared/services/records'
 import EventBus        from '@/shared/services/event_bus'
 import AbilityService  from '@/shared/services/ability_service'
 import Flash           from '@/shared/services/flash'
-import AuthModalMixin  from '@/mixins/auth_modal'
-import GroupModalMixin from '@/mixins/group_modal'
-import WatchRecords    from '@/mixins/watch_records'
 
 export default
-  mixins: [AuthModalMixin, GroupModalMixin, WatchRecords]
   props:
-    group: Object
+    group:
+      required: true
+      type: Object
+
     block: Boolean
 
   data: ->
@@ -19,13 +18,14 @@ export default
     hasRequestedMembership: false
 
   created: ->
-    Records.membershipRequests.fetchMyPendingByGroup(@group.key)
+    if !Session.user().membershipFor(@group)
+      Records.membershipRequests.fetchMyPendingByGroup(@group.key)
 
-    @watchRecords
-      collections: ['memberships', "membershipRequests"]
-      query: =>
-        @hasRequestedMembership = @group.hasPendingMembershipRequestFrom(Session.user())
-        @membership = Session.user().membershipFor(@group)
+      @watchRecords
+        collections: ['memberships', "membershipRequests"]
+        query: =>
+          @hasRequestedMembership = @group.hasPendingMembershipRequestFrom(Session.user())
+          @membership = Session.user().membershipFor(@group)
 
   methods:
     join: ->
@@ -35,9 +35,11 @@ export default
             EventBus.$emit 'joinedGroup', {group: @group}
             Flash.success('join_group_button.messages.joined_group', group: @group.fullName)
         else
-          @openMembershipRequestModal(@group)
+          EventBus.$emit('openModal',
+                          component: 'MembershipRequestForm',
+                          props: { group: @group })
       else
-        @openAuthModal()
+        EventBus.$emit('openModal', component: 'AuthModal')
 
   computed:
     label: ->

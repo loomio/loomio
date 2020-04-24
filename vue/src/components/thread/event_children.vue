@@ -2,7 +2,7 @@
 import AppConfig         from '@/shared/services/app_config'
 import RecordLoader from '@/shared/services/record_loader'
 
-import { debounce, first, last } from 'lodash'
+import { debounce, first, last } from 'lodash-es'
 
 export default
   components:

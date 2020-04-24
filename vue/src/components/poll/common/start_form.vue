@@ -2,14 +2,11 @@
 import AppConfig    from '@/shared/services/app_config'
 import Session      from '@/shared/services/session'
 import Records      from '@/shared/services/records'
+import EventBus     from '@/shared/services/event_bus'
 import { fieldFromTemplate } from '@/shared/helpers/poll'
-import PollModalMixin from '@/mixins/poll_modal'
-import AnnouncementModalMixin from '@/mixins/announcement_modal'
-
-import {map, without} from 'lodash'
+import {map, without} from 'lodash-es'
 
 export default
-  mixins: [ PollModalMixin ]
   props:
     isModal:
       type: Boolean
@@ -20,7 +17,10 @@ export default
     group: Object
   methods:
     openPollModal: (pollType) ->
-      @openStartPollModal(@newPoll(pollType))
+      EventBus.$emit 'openModal',
+        component: 'PollCommonModal'
+        props:
+          poll: @newPoll(pollType)
 
     pollTypes: ->
       if @isModal
@@ -52,24 +52,6 @@ export default
         .group-form__group-title
           h1.headline Choose poll type
         dismiss-modal-button
-    //- v-list-item
-    //-   v-list-item-avatar
-    //-     v-icon
-    //-   v-list-item-title Update the context
-    //- v-list-item
-    //-   v-list-item-avatar
-    //-     v-icon
-    //-   v-list-item-title Add an outcome
-    //- v-list-item
-    //-   v-list-item-avatar
-    //-     v-icon
-    //-   v-list-item-title Schedule review
-    //- v-list-item(@click="openAnnouncementModal()")
-    //-   v-list-item-avatar
-    //-     v-icon mdi-bullhorn
-    //-   v-list-item-content
-    //-     v-list-item-title Add people
-    //-     v-list-item-subtitle Let people know that you want them to participate
     v-list-item.decision-tools-card__poll-type(:class="'decision-tools-card__poll-type--' + pollType", @click='openPollModal(pollType)', v-for='(pollType, index) in pollTypes()', :key='index', :aria-label='getAriaLabelForPollType(pollType)')
       v-list-item-avatar
         v-icon {{callFieldFromTemplate(pollType, 'material_icon')}}

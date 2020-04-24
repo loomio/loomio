@@ -2,13 +2,12 @@ import BaseModel       from '@/shared/record_store/base_model'
 import AppConfig       from '@/shared/services/app_config'
 import HasDocuments    from '@/shared/mixins/has_documents'
 import HasTranslations from '@/shared/mixins/has_translations'
+import {capitalize, map, last, invokeMap} from 'lodash-es'
 
 export default class CommentModel extends BaseModel
   @singular: 'comment'
   @plural: 'comments'
   @indices: ['discussionId', 'authorId']
-  @draftParent: 'discussion'
-  @draftPayloadAttributes: ['body', 'document_ids']
 
   afterConstruction: ->
     HasDocuments.apply @
@@ -36,7 +35,7 @@ export default class CommentModel extends BaseModel
   reactions: ->
     @recordStore.reactions.find
       reactableId: @id
-      reactableType: _.capitalize(@constructor.singular)
+      reactableType: capitalize(@constructor.singular)
 
   group: ->
     @discussion().group()
@@ -45,7 +44,7 @@ export default class CommentModel extends BaseModel
     @discussion().memberIds()
 
   isMostRecent: ->
-    _.last(@discussion().comments()) == @
+    last(@discussion().comments()) == @
 
   isReply: ->
     @parentId?
@@ -57,7 +56,7 @@ export default class CommentModel extends BaseModel
     @recordStore.comments.find(@parentId)
 
   reactors: ->
-    @recordStore.users.find(_.map(@reactions(), 'userId'))
+    @recordStore.users.find(map(@reactions(), 'userId'))
 
   authorName: ->
     @author().nameWithTitle(@discussion()) if @author()
@@ -69,4 +68,4 @@ export default class CommentModel extends BaseModel
     @author().avatarOrInitials()
 
   beforeDestroy: ->
-    _.invokeMap @recordStore.events.find(kind: 'new_comment', eventableId: @id), 'remove'
+    invokeMap @recordStore.events.find(kind: 'new_comment', eventableId: @id), 'remove'

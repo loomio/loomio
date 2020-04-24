@@ -8,7 +8,7 @@ import Session from '@/shared/services/session'
 import AppConfig      from '@/shared/services/app_config'
 import Flash   from '@/shared/services/flash'
 import { audiencesFor, audienceValuesFor } from '@/shared/helpers/announcement'
-import {each , sortBy, includes, map, pull, uniq, throttle, debounce, merge} from 'lodash'
+import {each , sortBy, includes, map, pull, uniq, throttle, debounce, merge} from 'lodash-es'
 import { encodeParams } from '@/shared/helpers/encode_params'
 
 

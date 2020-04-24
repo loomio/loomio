@@ -16,7 +16,6 @@ module Ability::User
 
     can [:update,
          :see_notifications_for,
-         :make_draft,
          :subscribe_to], ::User do |u|
       user == u
     end

@@ -133,15 +133,6 @@ Loomio::Application.routes.draw do
       patch :remove_from_thread, on: :member
     end
 
-    resources :drafts do
-      collection do
-        get    '/:draftable_type/:draftable_id', action: :show
-        post   '/:draftable_type/:draftable_id', action: :update
-        patch  '/:draftable_type/:draftable_id', action: :update
-        put    '/:draftable_type/:draftable_id', action: :update
-      end
-    end
-
     resources :discussions, only: [:show, :index, :create, :update, :destroy] do
       patch :mark_as_seen, on: :member
       patch :dismiss, on: :member
@@ -194,8 +185,6 @@ Loomio::Application.routes.draw do
     end
 
     resources :outcomes,    only: [:create, :update]
-
-    resources :poll_did_not_votes, only: :index
 
     resources :comments,    only: [:create, :update, :destroy]
     resources :reactions,   only: [:create, :update, :index, :destroy]

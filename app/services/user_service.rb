@@ -3,8 +3,8 @@ class UserService
     user.attributes = params.slice(:name, :email, :recaptcha, :legal_accepted, :email_newsletter)
     user.require_valid_signup = true
     user.require_recaptcha = true
+    user.update_attachments!
     user.save.tap do
-      user.update_attachments!
       EventBus.broadcast 'user_create', user
     end
   end
@@ -81,8 +81,8 @@ class UserService
   def self.update(user:, actor:, params:)
     actor.ability.authorize! :update, user
     HasRichText.assign_attributes_and_update_files(user, params)
-    user.save
     user.update_attachments!
+    user.save
     EventBus.broadcast('user_update', user, actor, params)
   end
 

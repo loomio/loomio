@@ -50,10 +50,7 @@ module Ability::Discussion
       can?(:move, discussion)
     end
 
-    can [:set_volume,
-         :show_description_history,
-         :preview_version,
-         :make_draft], ::Discussion do |discussion|
+    can [:set_volume], ::Discussion do |discussion|
       discussion.members.exists?(user.id)
     end
 

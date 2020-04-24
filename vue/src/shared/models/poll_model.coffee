@@ -5,14 +5,12 @@ import HasTranslations  from '@/shared/mixins/has_translations'
 import EventBus         from '@/shared/services/event_bus'
 import I18n             from '@/i18n'
 import { addDays, startOfHour } from 'date-fns'
-import { head, orderBy, map, includes, difference, invokeMap, each, max } from 'lodash'
+import { head, orderBy, map, includes, difference, invokeMap, each, max, slice, sortBy } from 'lodash-es'
 
 export default class PollModel extends BaseModel
   @singular: 'poll'
   @plural: 'polls'
   @indices: ['discussionId', 'authorId', 'latest']
-  @draftParent: 'draftParent'
-  @draftPayloadAttributes: ['title', 'details']
 
   afterConstruction: ->
     HasDocuments.apply @, showTitle: true
@@ -20,9 +18,6 @@ export default class PollModel extends BaseModel
 
   pollTypeKey: ->
     "poll_types.#{@pollType}"
-
-  draftParent: ->
-    @discussion() or @author()
 
   poll: -> @
 
@@ -52,7 +47,6 @@ export default class PollModel extends BaseModel
     @belongsTo 'group'
     @hasMany   'pollOptions', orderBy: 'priority'
     @hasMany   'stances'
-    @hasMany   'pollDidNotVotes'
     @hasMany   'versions'
 
   voters: ->
@@ -84,13 +78,6 @@ export default class PollModel extends BaseModel
   participants: ->
     @recordStore.users.find(@participantIds())
 
-  # who hasn't voted?
-  undecided: ->
-    if @isActive()
-      difference(@members(), @participants())
-    else
-      invokeMap @pollDidNotVotes(), 'user'
-
   membersCount: ->
     # NB: this won't work for people who vote, then leave the group.
     @stancesCount + @undecidedCount
@@ -110,7 +97,7 @@ export default class PollModel extends BaseModel
         existing.push(stance.participantId)
 
   latestStances: (order = '-createdAt', limit) ->
-    _.slice(_.sortBy(@recordStore.stances.find(pollId: @id, latest: true), order), 0, limit)
+    slice(sortBy(@recordStore.stances.find(pollId: @id, latest: true), order), 0, limit)
 
   hasDescription: ->
     !!@details
@@ -166,7 +153,7 @@ export default class PollModel extends BaseModel
 
   hasOptionIcons: ->
     AppConfig.pollTemplates[@pollType]['has_option_icons']
-    
+
   singleChoice: ->
     AppConfig.pollTemplates[@pollType]['single_choice']
 

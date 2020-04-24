@@ -5,7 +5,7 @@ import AbilityService from '@/shared/services/ability_service'
 import FlashService   from '@/shared/services/flash'
 import ConfirmModalMixin from '@/mixins/confirm_modal'
 import MembershipModalMixin from '@/mixins/membership_modal'
-import { snakeCase } from 'lodash'
+import { snakeCase } from 'lodash-es'
 
 export default
   mixins: [ConfirmModalMixin, MembershipModalMixin]

@@ -2,17 +2,13 @@ import BaseModel    from '@/shared/record_store/base_model'
 import AppConfig    from '@/shared/services/app_config'
 import HasDocuments from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
+import {filter, some, map, each} from 'lodash-es'
 
 export default class GroupModel extends BaseModel
   @singular: 'group'
   @plural: 'groups'
   @uniqueIndices: ['id', 'key']
   @indices: ['parentId']
-  @draftParent: 'draftParent'
-  @draftPayloadAttributes: ['name', 'description']
-
-  draftParent: ->
-    @parent() or @recordStore.users.find(AppConfig.currentUserId)
 
   defaultValues: ->
     parentId: null
@@ -63,38 +59,38 @@ export default class GroupModel extends BaseModel
     @remote.postMember(@id, 'reset_token').then => @token
 
   pendingMembershipRequests: ->
-    _.filter @membershipRequests(), (membershipRequest) ->
+    filter @membershipRequests(), (membershipRequest) ->
       membershipRequest.isPending()
 
   hasPendingMembershipRequests: ->
-    _.some @pendingMembershipRequests()
+    some @pendingMembershipRequests()
 
   hasPendingMembershipRequestFrom: (user) ->
-    _.some @pendingMembershipRequests(), (request) ->
+    some @pendingMembershipRequests(), (request) ->
       request.requestorId == user.id
 
   previousMembershipRequests: ->
-    _.filter @membershipRequests(), (membershipRequest) ->
+    filter @membershipRequests(), (membershipRequest) ->
       !membershipRequest.isPending()
 
   hasPreviousMembershipRequests: ->
-    _.some @previousMembershipRequests()
+    some @previousMembershipRequests()
 
   pendingInvitations: ->
-    _.filter @invitations(), (invitation) ->
+    filter @invitations(), (invitation) ->
       invitation.isPending() and invitation.singleUse
 
   hasPendingInvitations: ->
-    _.some @pendingInvitations()
+    some @pendingInvitations()
 
   hasSubgroups: ->
     @isParent() && @subgroups().length
 
   publicOrganisationIds: ->
-    _.map(_.filter(@subgroups().concat(@), (group) -> group.groupPrivacy == 'open'), 'id')
+    map(filter(@subgroups().concat(@), (group) -> group.groupPrivacy == 'open'), 'id')
 
   organisationIds: ->
-    _.map(@subgroups(), 'id').concat(@id)
+    map(@subgroups(), 'id').concat(@id)
 
   membershipFor: (user) ->
     @recordStore.memberships.find(groupId: @id, userId: user.id)[0]
@@ -114,10 +110,10 @@ export default class GroupModel extends BaseModel
     @recordStore.users.find(id: {$in: @adminIds()})
 
   memberIds: ->
-    _.map @memberships(), 'userId'
+    map @memberships(), 'userId'
 
   adminIds: ->
-    _.map @adminMemberships(), 'userId'
+    map @adminMemberships(), 'userId'
 
   parentName: ->
     @parent().name if @parent()?
@@ -154,7 +150,7 @@ export default class GroupModel extends BaseModel
   archive: =>
     @remote.patchMember(@key, 'archive').then =>
       @remove()
-      _.each @memberships(), (m) -> m.remove()
+      each @memberships(), (m) -> m.remove()
 
   export: =>
     @remote.postMember(@id, 'export')

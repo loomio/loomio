@@ -2,14 +2,12 @@ import BaseModel       from '@/shared/record_store/base_model'
 import AppConfig       from '@/shared/services/app_config'
 import HasTranslations from '@/shared/mixins/has_translations'
 import i18n from '@/i18n.coffee'
-import { sumBy, map, head, each, compact, flatten, includes, find, orderBy } from 'lodash'
+import { sumBy, map, head, each, compact, flatten, includes, find, orderBy } from 'lodash-es'
 
 export default class StanceModel extends BaseModel
   @singular: 'stance'
   @plural: 'stances'
   @indices: ['pollId']
-  @draftParent: 'poll'
-  @draftPayloadAttributes: ['reason']
 
   afterConstruction: ->
     HasTranslations.apply @

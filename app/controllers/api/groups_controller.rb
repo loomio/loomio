@@ -1,6 +1,4 @@
 class API::GroupsController < API::RestfulController
-  include UsesFullSerializer
-
   def token
     self.resource = load_and_authorize(:group, :invite_people)
     respond_with_resource scope: {include_token: true}

@@ -1,15 +1,14 @@
 <script lang="coffee">
 import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
-import { map, sortBy, filter } from 'lodash'
+import { map, sortBy, filter } from 'lodash-es'
 import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
-import AnnouncementModalMixin from '@/mixins/announcement_modal'
+import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
 
 export default
-  mixins: [AnnouncementModalMixin]
   props:
     discussion: Object
     close: Function
@@ -37,7 +36,10 @@ export default
           if @discussion.isNew()
             @$router.push @urlFor(discussion)
             if AbilityService.canAnnounceTo(discussion)
-              @openAnnouncementModal(Records.announcements.buildFromModel(discussion))
+              EventBus.$emit 'openModal',
+                component: 'AnnouncementForm',
+                props:
+                  announcement: Records.announcements.buildFromModel(discussion)
       .catch onError(@discussion)
 
 

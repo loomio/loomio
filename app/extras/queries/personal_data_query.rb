@@ -31,10 +31,6 @@ class Queries::PersonalDataQuery
     Event.where(user_id: user.id)
   end
 
-  def self.drafts(user)
-    Draft.where(user_id: user.id)
-  end
-
   def self.group_identities(user)
     GroupIdentity.where(identity_id: user.identity_ids)
   end
@@ -75,10 +71,6 @@ class Queries::PersonalDataQuery
 
   def self.outcomes(user)
     Outcome.where(author_id: user.id)
-  end
-
-  def self.poll_did_not_votes(user)
-    PollDidNotVote.where(user_id: user.id)
   end
 
   def self.poll_unsubscriptions(user)

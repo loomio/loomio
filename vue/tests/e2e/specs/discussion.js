@@ -58,15 +58,6 @@ module.exports = {
     page.expectFlash('Thread reopened')
   },
 
-  // 'doesnt store drafts after submission': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('setup_discussion')
-  //   page.fillIn('.comment-form textarea', 'This is a comment')
-  //   page.click('.comment-form__submit-button')
-  //   page.expectNoText('.comment-form textarea', 'This is a comment')
-  // },
-
   'lets_you_edit_title_and_context': (test) => {
     page = pageHelper(test)
 

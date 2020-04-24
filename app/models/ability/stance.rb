@@ -10,7 +10,7 @@ module Ability::Stance
       user.email_verified? && stance.participant == user && stance.latest?
     end
 
-    can [:make_draft, :create], ::Stance do |stance|
+    can [:create], ::Stance do |stance|
       user.can? :vote_in, stance.poll
     end
 

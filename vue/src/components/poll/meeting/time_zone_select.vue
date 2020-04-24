@@ -1,6 +1,7 @@
 <script lang="coffee">
 import AppConfig   from '@/shared/services/app_config'
 import EventBus    from '@/shared/services/event_bus'
+import {uniq, values} from 'lodash-es'
 
 export default
   props:
@@ -11,7 +12,7 @@ export default
     dzone: @zone
   methods:
     names: ->
-      _.uniq(_.values(AppConfig.timeZones)).sort()
+      uniq(values(AppConfig.timeZones)).sort()
     selectChanged: ->
       EventBus.$emit @, 'timeZoneSelected', @dzone
 

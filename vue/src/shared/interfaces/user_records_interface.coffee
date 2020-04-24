@@ -1,6 +1,6 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
 import UserModel            from '@/shared/models/user_model'
-import {map, includes} from 'lodash'
+import {map, includes, merge, pickBy, identity} from 'lodash-es'
 
 export default class UserRecordsInterface extends BaseRecordsInterface
   model: UserModel
@@ -10,7 +10,10 @@ export default class UserRecordsInterface extends BaseRecordsInterface
     @remote.fetch path: "time_zones"
 
   fetchGroups: ->
-    @remote.fetch path: "groups"
+    @remote.fetch
+      path: "groups"
+      params:
+        exclude_types: 'user'
 
   fetchMentionable: (q, model) =>
     model = model.discussion() if !model.id? && model.discussionId
@@ -23,7 +26,7 @@ export default class UserRecordsInterface extends BaseRecordsInterface
 
   updateProfile: (user) =>
     user.processing = true
-    @remote.post('update_profile', _.merge(user.serialize(), {unsubscribe_token: user.unsubscribeToken })).finally -> user.processing = false
+    @remote.post('update_profile', merge(user.serialize(), {unsubscribe_token: user.unsubscribeToken })).finally -> user.processing = false
 
   uploadAvatar: (file) =>
     @remote.upload 'upload_avatar', file
@@ -52,7 +55,7 @@ export default class UserRecordsInterface extends BaseRecordsInterface
   emailStatus: (email, token) ->
     @fetch
       path: 'email_status'
-      params: _.pickBy({email: email, token: token}, _.identity)
+      params: pickBy({email: email, token: token}, identity)
 
   checkEmailExistence: (email) ->
     @fetch

@@ -1,6 +1,5 @@
-class NotificationSerializer < ActiveModel::Serializer
-  embed :ids, include: true
-  attributes :id, :viewed, :created_at, :url, :kind, :translation_values
+class NotificationSerializer < ApplicationSerializer
+  attributes :id, :viewed, :created_at, :url, :kind, :translation_values, :actor_id, :event_id
 
   def kind
     case object.kind
@@ -9,7 +8,7 @@ class NotificationSerializer < ActiveModel::Serializer
     end
   end
 
-  has_one :actor, serializer: UserSerializer, root: :users
+  has_one :actor, serializer: AuthorSerializer, root: :users
 
   def actor
     if object.kind == 'stance_created'

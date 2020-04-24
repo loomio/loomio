@@ -1,6 +1,7 @@
 import AppConfig from '@/shared/services/app_config'
 import Records   from '@/shared/services/records'
 import i18n from '@/i18n.coffee'
+import {compact, head, sortBy} from 'lodash-es'
 
 export optionColors = ->
   agree: AppConfig.pollColors.proposal[0]
@@ -30,7 +31,7 @@ export iconFor = (poll) ->
   fieldFromTemplate(poll.pollType, 'material_icon')
 
 export settingsFor = (poll) ->
-  _.compact [
+  compact [
     ('multipleChoice'        if poll.pollType == 'poll'),
     'notifyOnParticipate',
     ('canRespondMaybe'       if poll.pollType == 'meeting'),
@@ -40,7 +41,7 @@ export settingsFor = (poll) ->
   ]
 
 export myLastStanceFor = (poll) ->
-  _.head _.sortBy(Records.stances.find(
+  head sortBy(Records.stances.find(
     latest: true
     pollId: poll.id
     participantId: AppConfig.currentUserId

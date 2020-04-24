@@ -4,7 +4,7 @@ import Records       from '@/shared/services/records'
 import EventBus      from '@/shared/services/event_bus'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 
-import {compact, isEmpty}  from 'lodash'
+import {compact, isEmpty}  from 'lodash-es'
 
 import { subscribeTo }     from '@/shared/helpers/cable'
 import { myLastStanceFor } from '@/shared/helpers/poll'

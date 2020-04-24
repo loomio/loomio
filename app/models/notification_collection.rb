@@ -3,7 +3,7 @@ class NotificationCollection
 
   def initialize(user, limit: 30)
     @notifications = user.notifications
-                         .includes(:actor)
+                         .includes(:actor, :user)
                          .order(created_at: :desc)
                          .limit(limit)
   end

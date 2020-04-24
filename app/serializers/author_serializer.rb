@@ -1,12 +1,15 @@
-class UserSerializer < ApplicationSerializer
-  attributes :id, :name, :username, :short_bio, :short_bio_format, :avatar_initials, :avatar_kind,
-             :avatar_url, :email_hash, :time_zone, :locale, :location, :created_at,
-             :email_verified, :has_password, :email, :attachments
+class AuthorSerializer < ApplicationSerializer
+  attributes :id, :name, :username, :avatar_initials, :avatar_kind,
+             :avatar_url, :email_hash, :time_zone, :locale, :created_at,
 
   def name
     object.name ||
     (include_email? && email) ||
     placeholder_name
+  end
+
+  def include_email?
+    false
   end
 
   def email_hash
@@ -27,23 +30,12 @@ class UserSerializer < ApplicationSerializer
 
   def avatar_url
     {
-      small:    object.avatar_url(:small),
-      medium:   object.avatar_url(:medium),
-      large:    object.avatar_url(:large),
-      original: object.avatar_url(:original)
+      large:    object.avatar_url(:large)
     }
   end
 
   def include_avatar_url?
     object.avatar_kind == 'uploaded'
-  end
-
-  def include_has_password?
-    scope[:include_password_status]
-  end
-
-  def include_email?
-    scope[:email_user_ids].to_a.include? object.id
   end
 
   private
@@ -55,5 +47,4 @@ class UserSerializer < ApplicationSerializer
   def scope
     super || {}
   end
-
 end

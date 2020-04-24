@@ -5,7 +5,7 @@ import Records from '@/shared/services/records'
 import RecordLoader from '@/shared/services/record_loader'
 import EventBus       from '@/shared/services/event_bus'
 import Session       from '@/shared/services/session'
-import { debounce, some, every, compact, omit, values, keys, intersection } from 'lodash'
+import { debounce, some, every, compact, omit, values, keys, intersection } from 'lodash-es'
 
 export default
   data: ->
@@ -20,16 +20,19 @@ export default
     , 500
 
     @group = Records.groups.find(@$route.params.key)
+
+    @initLoader()
     
-    @initLoader().fetchRecords().then =>
+    @watchRecords
+      collections: ['polls', 'groups', 'memberships']
+      query: => @findRecords()
+
+    @loader.fetchRecords().then =>
       EventBus.$emit 'currentComponent',
         page: 'groupPage'
         title: @group.name
         group: @group
 
-      @watchRecords
-        collections: ['polls', 'groups', 'memberships']
-        query: => @findRecords()
 
   methods:
     initLoader: ->

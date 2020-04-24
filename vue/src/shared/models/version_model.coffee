@@ -1,4 +1,5 @@
 import BaseModel from '@/shared/record_store/base_model'
+import {filter, keys, includes} from 'lodash-es'
 
 export default class VersionModel extends BaseModel
   @singular: 'version'
@@ -12,11 +13,11 @@ export default class VersionModel extends BaseModel
     @belongsTo 'author', from: 'users', by: 'whodunnit'
 
   editedAttributeNames: ->
-    _.filter _.keys(@changes).sort(), (key) ->
-      _.includes ['title', 'name', 'description', 'closing_at', 'private', 'document_ids'], key
+    filter keys(@changes).sort(), (key) ->
+      includes ['title', 'name', 'description', 'closing_at', 'private', 'document_ids'], key
 
   attributeEdited: (name) ->
-     _.includes(_.keys(@changes), name)
+     includes(keys(@changes), name)
 
   authorName: ->
     @author().nameWithTitle(@model()) if @author()

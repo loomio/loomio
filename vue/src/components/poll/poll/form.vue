@@ -1,5 +1,5 @@
 <script lang="coffee">
-import {keys, intersection, uniq, without, compact, map, every} from 'lodash'
+import {keys, intersection, uniq, without, compact, map, every} from 'lodash-es'
 import AppConfig  from '@/shared/services/app_config'
 import Vue from 'vue'
 

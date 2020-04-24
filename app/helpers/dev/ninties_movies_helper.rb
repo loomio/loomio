@@ -232,13 +232,6 @@ module Dev::NintiesMoviesHelper
                                               group: create_group, inviter: patrick)
   end
 
-  def create_empty_draft
-    unless @empty_draft
-      @empty_draft = Draft.create(draftable: create_group, user: patrick, payload: { discussion: { title: "", private: nil }})
-    end
-    @empty_draft
-  end
-
   def create_comment
     unless @create_comment
       @create_comment ||= Comment.create!(

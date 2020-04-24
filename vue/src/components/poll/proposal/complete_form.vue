@@ -1,17 +1,15 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
-import AnnouncementModalMixin from '@/mixins/announcement_modal'
-import EventBus                 from '@/shared/services/event_bus'
-import Flash  from '@/shared/services/flash'
+import EventBus from '@/shared/services/event_bus'
+import Flash from '@/shared/services/flash'
 import Session from '@/shared/services/session'
-import { iconFor }                from '@/shared/helpers/poll'
+import { iconFor } from '@/shared/helpers/poll'
 import { fieldFromTemplate } from '@/shared/helpers/poll'
-import { map } from 'lodash'
+import { map } from 'lodash-es'
 import { onError } from '@/shared/helpers/form'
 import AppConfig from '@/shared/services/app_config'
 
 export default
-  mixins: [AnnouncementModalMixin]
   props:
     discussion: Object
     close: Function
@@ -44,7 +42,10 @@ export default
         Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
           EventBus.$emit 'pollSaved', poll
           Flash.success "poll_#{poll.pollType}_form.#{poll.pollType}_created"
-          @openAnnouncementModal(Records.announcements.buildFromModel(poll))
+          EventBus.$emit 'openModal',
+            component: 'AnnouncementForm',
+            props: { announcement: Records.announcements.buildFromModel(poll) }
+
       .catch onError(@poll)
 
     init: ->

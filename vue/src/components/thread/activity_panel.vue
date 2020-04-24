@@ -10,7 +10,7 @@ import Flash   from '@/shared/services/flash'
 import { print } from '@/shared/helpers/window'
 import ThreadService  from '@/shared/services/thread_service'
 
-import { pickBy, identity, camelCase, first, last, isNumber } from 'lodash'
+import { pickBy, identity, camelCase, first, last, isNumber } from 'lodash-es'
 
 export default
   components:

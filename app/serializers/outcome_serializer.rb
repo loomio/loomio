@@ -4,11 +4,11 @@ class OutcomeSerializer < ApplicationSerializer
     :event_location, :poll_id, :author_id
 
   has_one :poll_option, serializer: PollOptionSerializer, root: :poll_options
-  has_one :author, serializer: UserSerializer, root: :users
+  has_one :author, serializer: AuthorSerializer, root: :users
   has_many :reactions, serializer: ReactionSerializer, root: :reactions
 
   def include_reactions?
-    scope.dig(:cache, :reactions).present?
+    super &&  scope.dig(:cache, :reactions).present?
   end
 
   def reactions

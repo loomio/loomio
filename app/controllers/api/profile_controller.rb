@@ -6,7 +6,7 @@ class API::ProfileController < API::RestfulController
 
   def groups
     self.collection = GroupQuery.visible_to(user: current_user)
-    respond_with_collection serializer: Full::GroupSerializer, root: :groups
+    respond_with_collection serializer: GroupSerializer, root: :groups
   end
 
   def time_zones

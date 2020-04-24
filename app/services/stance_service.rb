@@ -20,8 +20,8 @@ class StanceService
     return false unless stance.valid?
 
     stance.poll.stances.where(participant: actor).update_all(latest: false)
-    stance.save!
     stance.update_attachments!
+    stance.save!
     stance.participant.save!
     EventBus.broadcast 'stance_create', stance, actor
     Events::StanceCreated.publish! stance
@@ -31,8 +31,8 @@ class StanceService
     actor.ability.authorize! :update, stance
     HasRichText.assign_attributes_and_update_files(stance, params)
     return false unless stance.valid?
-    stance.save!
     stance.update_attachments!
+    stance.save!
 
     EventBus.broadcast 'stance_update', stance, actor
   end

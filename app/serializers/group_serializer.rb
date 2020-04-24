@@ -1,6 +1,4 @@
-class GroupSerializer < ActiveModel::Serializer
-  embed :ids, include: true
-
+class GroupSerializer < ApplicationSerializer
   attributes :id,
              :key,
              :handle,
@@ -60,7 +58,12 @@ class GroupSerializer < ActiveModel::Serializer
              :subscription_expires_at,
              :subscription_state,
              :subscription_created_at,
-             :subscription_info
+             :subscription_info,
+             :complete
+
+  def complete
+    true
+  end
 
   has_one :parent, serializer: GroupSerializer, root: :groups
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
@@ -70,7 +73,7 @@ class GroupSerializer < ActiveModel::Serializer
   end
 
   def include_current_user_membership?
-    scope && scope[:current_user]
+    super && scope && scope[:current_user]
   end
 
   def tag_names

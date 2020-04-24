@@ -3,7 +3,7 @@ import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import RecordLoader from '@/shared/services/record_loader'
 import EventHeights from '@/shared/services/event_heights'
-import { reverse, groupBy, filter, compact, clone, debounce, range, min, max, map, keys, first, last, sortedUniq, sortBy, difference, isEqual, without } from 'lodash'
+import { reverse, groupBy, filter, compact, clone, debounce, range, min, max, map, keys, first, last, sortedUniq, sortBy, difference, isEqual, without } from 'lodash-es'
 
 export default
   props:

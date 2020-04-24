@@ -2,8 +2,7 @@
 import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
-import GroupModalMixin from '@/mixins/group_modal'
-import { debounce, some, every } from 'lodash'
+import { debounce, some, every } from 'lodash-es'
 
 export default
   data: ->

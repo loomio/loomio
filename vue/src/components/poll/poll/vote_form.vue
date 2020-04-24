@@ -1,7 +1,7 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
-import { compact, sortBy, without } from 'lodash'
+import { compact, sortBy, without } from 'lodash-es'
 import { onError } from '@/shared/helpers/form'
 
 export default

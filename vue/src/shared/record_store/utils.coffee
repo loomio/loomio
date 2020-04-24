@@ -1,5 +1,5 @@
 import parseISO from 'date-fns/parseISO'
-import { each, keys, map, camelCase } from 'lodash'
+import { each, keys, map, camelCase } from 'lodash-es'
 
 export default new class Utils
   parseJSONList: (data) -> map(data, @parseJSON)

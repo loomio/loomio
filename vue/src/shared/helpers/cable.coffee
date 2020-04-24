@@ -7,6 +7,7 @@ import AuthService    from '@/shared/services/auth_service'
 import AbilityService from '@/shared/services/ability_service'
 
 import { hardReload } from '@/shared/helpers/window'
+import { each } from 'lodash-es'
 
 export subscribeTo = (model) ->
   switch model.constructor.singular
@@ -18,10 +19,9 @@ export initLiveUpdate = ->
 
   if Session.isSignedIn()
     subscribeToUser()
-    _.each Session.user().groups(), subscribeToGroup
+    each Session.user().groups(), subscribeToGroup
   else
     subscribeToMembership()
-
 
 subscribeToGroup = (group) ->
   ensureConnection().subscriptions.create { channel: "GroupChannel", group_id: group.id },

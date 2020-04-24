@@ -3,7 +3,6 @@ class Comment < ApplicationRecord
   include Translatable
   include Reactable
   include HasMentions
-  include HasDrafts
   include HasCreatedEvent
   include HasEvents
   include HasRichText
@@ -21,7 +20,6 @@ class Comment < ApplicationRecord
 
   alias_attribute :author, :user
   alias_attribute :author_id, :user_id
-  alias_method :draft_parent, :discussion
 
   has_many :documents, as: :model, dependent: :destroy
 
@@ -62,10 +60,6 @@ class Comment < ApplicationRecord
     else
       discussion.created_event
     end
-  end
-
-  def purge_drafts_asynchronously?
-    false
   end
 
   def created_event_kind

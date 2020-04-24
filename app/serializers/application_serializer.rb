@@ -5,6 +5,14 @@ class ApplicationSerializer < ActiveModel::Serializer
     !Array((scope || {})[:exclude_types]).include?(type)
   end
 
+  def include_reactions?
+    include_type?('reaction')
+  end
+
+  def include_current_user_membership?
+    include_type?('membership')
+  end
+
   def include_discussion?
     include_type?('discussion')
   end

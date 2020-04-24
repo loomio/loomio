@@ -2,10 +2,6 @@ module Ability::Poll
   def initialize(user)
     super(user)
 
-    can :make_draft, ::Poll do |poll|
-      user.is_logged_in? && can?(:show, poll)
-    end
-
     can :add_options, ::Poll do |poll|
       user_is_author_of?(poll) || (user.can?(:vote_in, poll) && poll.voter_can_add_options)
     end

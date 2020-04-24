@@ -1,5 +1,6 @@
 import BaseModel from '@/shared/record_store/base_model'
 import i18n from '@/i18n.coffee'
+import {invokeMap, without} from 'lodash-es'
 
 export default class EventModel extends BaseModel
   @singular: 'event'
@@ -61,7 +62,7 @@ export default class EventModel extends BaseModel
     @discussion().markAsRead(@sequenceId) if @discussion()
 
   beforeRemove: ->
-    _.invokeMap(@notifications(), 'remove')
+    invokeMap(@notifications(), 'remove')
 
   removeFromThread: =>
     @remote.patchMember(@id, 'remove_from_thread').then => @remove()
@@ -99,7 +100,7 @@ export default class EventModel extends BaseModel
 
   toggleFromFork: ->
     if @isForking()
-      @discussion().update(forkedEventIds: _.without @discussion().forkedEventIds, @id)
+      @discussion().update(forkedEventIds: without @discussion().forkedEventIds, @id)
     else
       @discussion().update(isForking: true)
       @discussion().forkedEventIds.push @id

@@ -1,6 +1,7 @@
 import BaseModel from '@/shared/record_store/base_model'
 import AppConfig from '@/shared/services/app_config'
 import compareAsc from 'date-fns/compareAsc'
+import {each, invokeMap} from 'lodash-es'
 
 export default class MembershipModel extends BaseModel
   @singular: 'membership'
@@ -34,10 +35,10 @@ export default class MembershipModel extends BaseModel
     ).then =>
       if applyToAll
         @recordStore.discussions.collection.find({ groupId: { $in: @group().organisationIds() } }).forEach((discussion) -> discussion.update(discussionReaderVolume: null))
-        _.each @user().memberships(), (membership) ->
+        each @user().memberships(), (membership) ->
           membership.update(volume: volume)
       else
-        _.each @group().discussions(), (discussion) ->
+        each @group().discussions(), (discussion) ->
           discussion.update(discussionReaderVolume: null)
     .finally =>
       @processing = false
@@ -50,4 +51,4 @@ export default class MembershipModel extends BaseModel
     @volume == 'mute'
 
   beforeRemove: ->
-    _.invokeMap(@recordStore.events.find('eventable.type': 'membership', 'eventable.id': @id), 'remove')
+    invokeMap(@recordStore.events.find('eventable.type': 'membership', 'eventable.id': @id), 'remove')

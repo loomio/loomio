@@ -3,30 +3,20 @@ class CommentSerializer < ApplicationSerializer
              :created_at, :updated_at, :parent_id,
              :versions_count, :attachments, :author_id
 
-  # has_one :author, serializer: UserSerializer, root: :users
+  # has_one :author, serializer: AuthorSerializer, root: :users
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_many :reactions, serializer: ReactionSerializer, root: :reactions
-  has_many :documents, serializer: DocumentSerializer, root: :documents
 
   def reactions
     scope.dig(:cache, :reactions).get_for(object, hydrate_on_miss: false)
-  end
-
-  def include_documents?
-    (object.created_at > Date.parse("2019-11-01")) &&
-    from_cache(:documents).present?
   end
 
   def mentioned_usernames
     from_cache :mentions
   end
 
-  def documents
-    from_cache :documents
-  end
-
   def include_reactions?
-    scope.dig(:cache, :reactions).present?
+    super && scope.dig(:cache, :reactions).present?
   end
 
   def include_mentioned_usernames?

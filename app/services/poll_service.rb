@@ -5,8 +5,8 @@ class PollService
     poll.assign_attributes(author: actor)
 
     return false unless poll.valid?
-    poll.save!
     poll.update_attachments!
+    poll.save!
 
     Stance.create!(participant: actor, poll: poll, admin: true, reason_format: actor.default_format)
     EventBus.broadcast('poll_create', poll, actor)
@@ -89,8 +89,8 @@ class PollService
     is_new_version = poll.is_new_version?
 
     return false unless poll.valid?
-    poll.save!
     poll.update_attachments!
+    poll.save!
 
     EventBus.broadcast('poll_update', poll, actor)
     Events::PollEdited.publish!(poll, actor) if is_new_version

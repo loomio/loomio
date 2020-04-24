@@ -4,7 +4,7 @@ import WatchRecords from '@/mixins/watch_records'
 import AppConfig from '@/shared/services/app_config'
 import Session from '@/shared/services/session'
 
-import {sum, map, sortBy, find, compact, uniq} from 'lodash'
+import {sum, map, sortBy, find, compact, uniq} from 'lodash-es'
 
 export default
   mixins: [WatchRecords]

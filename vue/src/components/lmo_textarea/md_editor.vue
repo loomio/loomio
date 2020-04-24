@@ -5,7 +5,7 @@ import Records from '@/shared/services/records'
 import FilesList from './files_list.vue'
 import SuggestionList from './suggestion_list'
 import Attaching from './attaching.coffee'
-import {escapeRegExp} from 'lodash'
+import {escapeRegExp} from 'lodash-es'
 
 export default
   mixins: [CommonMentioning, MdMentioning, Attaching]

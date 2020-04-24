@@ -3,7 +3,7 @@ class PermittedParams < Struct.new(:params)
     user membership_request membership poll outcome
     stance invitation group_request group discussion discussion_reader comment
     contact_message user_deactivation_response announcement document
-    draft oauth_application group_identity webhook contact_request reaction
+    oauth_application group_identity webhook contact_request reaction
     tag discussion_tag group_survey
   )
 
@@ -136,10 +136,6 @@ class PermittedParams < Struct.new(:params)
 
   def user_deactivation_response_attributes
     [:body]
-  end
-
-  def draft_attributes
-    [:payload]
   end
 
   def oauth_application_attributes

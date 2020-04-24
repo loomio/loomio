@@ -11,10 +11,10 @@ require 'rails_helper'
     let(:notification) { create :notification, user: user }
     let(:identity) { create :slack_identity, user: user }
 
-    describe 'data' do
-      it 'returns the current users identities' do
-        identity
-        expect(subject.payload[:identities].map { |i| i[:id] }).to include identity.id
-      end
-    end
+    # describe 'data' do
+    #   it 'returns the current users identities' do
+    #     identity
+    #     expect(subject.payload[:identities].map { |i| i[:id] }).to include identity.id
+    #   end
+    # end
  end

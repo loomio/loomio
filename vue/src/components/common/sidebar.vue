@@ -6,14 +6,11 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import InboxService   from '@/shared/services/inbox_service'
-import GroupModalMixin from '@/mixins/group_modal.coffee'
-import DiscussionModalMixin from '@/mixins/discussion_modal.coffee'
 
-import { isUndefined, sortBy, filter, find, head, uniq, map, sum, compact, concat, intersection, difference, orderBy } from 'lodash'
+import { isUndefined, sortBy, filter, find, head, uniq, map, sum, compact,
+         concat, intersection, difference, orderBy } from 'lodash-es'
 
 export default
-  mixins: [ GroupModalMixin, DiscussionModalMixin ]
-
   data: ->
     organization: null
     open: false
@@ -90,7 +87,10 @@ export default
       @tree = orderBy( @organizations.map((group) -> groupAsItem(group)), ['name'], ['asc'])
 
     startOrganization: ->
-      @canStartGroup() && @openStartGroupModal()
+     if AbilityService.canStartGroups()
+      EventBus.$emit 'openModal',
+        component: 'GroupNewForm',
+          props: { group: Records.groups.build() }
 
     unreadThreadCount: ->
       InboxService.unreadCount()

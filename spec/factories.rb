@@ -220,12 +220,6 @@ FactoryBot.define do
     cover_photo_updated_at { 10.days.ago }
   end
 
-  factory :draft do
-    user
-    association :draftable, factory: :discussion
-    payload {{ payload: 'payload' }}
-  end
-
   factory :poll_option do
     name { "Plan A" }
   end
