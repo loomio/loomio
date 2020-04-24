@@ -68,19 +68,15 @@ group :development, :test do
   gem 'faker'
   gem 'dotenv-rails'
   gem 'database_cleaner'
-  gem 'derailed'
   gem 'rails-controller-testing'
 end
 
 group :development do
   gem 'spring'
   gem "spring-commands-rspec"
-  gem 'awesome_print'
 end
 
 group :test do
-  gem 's3_uploader'
-  gem 'poltergeist'
   gem 'webmock'
   gem 'rack_session_access'
   gem 'rspec-rails', '~> 4.0.0'
