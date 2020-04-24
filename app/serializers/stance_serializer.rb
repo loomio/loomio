@@ -24,6 +24,11 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def include_participant?
-    super && !object.poll.anonymous?
+    super &&
+    if object.poll.anonymous
+      scope && object.participant == scope[:current_user]
+    else
+      true
+    end
   end
 end
