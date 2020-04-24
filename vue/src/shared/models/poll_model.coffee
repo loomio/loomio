@@ -57,10 +57,10 @@ export default class PollModel extends BaseModel
 
   adminsInclude: (user) ->
     stance = @stanceFor(user)
-    @authorIs(user) || (stance && stance.admin) || @group().adminsInclude(user)
+    @authorIs(user) || (stance && stance.admin) || (@group && @group().adminsInclude(user))
 
   membersInclude: (user) ->
-    @stanceFor(user) || @group().membersInclude(user)
+    @stanceFor(user) || (@group && @group().membersInclude(user))
 
   stanceFor: (user) ->
     head orderBy(@recordStore.stances.find(latest: true, pollId: @id, participantId: user.id), 'createdAt', 'desc')
