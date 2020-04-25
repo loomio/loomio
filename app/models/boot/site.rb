@@ -16,6 +16,16 @@ module Boot
         baseUrl:             root_url,
         contactEmail:        ENV['SUPPORT_EMAIL'],
         theme:               AppConfig.theme,
+
+        # these can be deleted after angular is really really gone
+        flashTimeout:        { long: 9999999, short: 999999 },
+        pageSize:            { default: 10, groupThreads: 10, threadItems: 10, exploreGroups: 10 },
+        drafts:              { debounce: 1000},
+        searchFilters:       { status: %w(active closed) },
+        emojis:              { defaults:  [] },
+        notifications:       { kinds: [] },
+        # these can be deleted after angular is really really gone
+
         sentry_dsn:          ENV['SENTRY_PUBLIC_DSN'],
         features: {
           app:               AppConfig.app_features
