@@ -8,10 +8,10 @@ export default
   props:
     close: Function
     group: Object
+    model: Object
 
   data: ->
-    webhook: Records.webhooks.build
-      groupId: @group.id
+    webhook: @model || Records.webhooks.build(groupId: @group.id)
     kinds: AppConfig.webhookEventKinds
     formats: [
       {text: @$t('webhook.formats.markdown'), value: "markdown"}
@@ -38,6 +38,7 @@ v-card.webhook-form
     validation-errors(:subject='webhook' field='name')
     v-text-field.webhook-form__url(type="url" v-model='webhook.url' :label="$t('webhook.url_label')" :placeholder="$t('webhook.url_placeholder')")
     validation-errors(:subject='webhook' field='url')
+    v-checkbox.webhook-form__include-body(v-model="webhook.includeBody" :label="$t('webhook.include_body_label')")
     p.lmo-hint-text(v-t="'webhook.event_kind_helptext'")
     v-checkbox.webhook-form__event-kind(hide-details v-for='kind in kinds' v-model='webhook.eventKinds' :key="kind" :label="$t('webhook.event_kinds.' + kind)" :value="kind")
   v-card-actions

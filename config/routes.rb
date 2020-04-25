@@ -48,7 +48,7 @@ Loomio::Application.routes.draw do
   namespace :api, path: '/api/v1', defaults: {format: :json} do
     resources :saml_providers, only: [:create, :destroy, :index]
     resources :attachments, only: :index
-    resources :webhooks, only: [:create, :destroy, :index]
+    resources :webhooks, only: [:create, :destroy, :index, :update]
 
     resources :boot, only: [] do
       get :site, on: :collection

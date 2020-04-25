@@ -27,6 +27,12 @@ export default
         component: 'WebhookForm'
         props:
           group: @group
+    edit: (webhook)->
+      openModal
+        component: 'WebhookForm'
+        props:
+          group: @group
+          model: webhook
 
     confirmRemove: (webhook) ->
       openModal
@@ -56,6 +62,9 @@ v-card.webhook-list
           v-list-item-title {{webhook.name}}
           v-list-item-subtitle(v-t="'webhook.formats.'+webhook.format")
           v-list-item-subtitle {{webhook.url}}
+        v-list-item-action
+          v-btn(icon @click="edit(webhook)" :title="$t('common.action.edit')")
+            v-icon(color="accent") mdi-pencil
         v-list-item-action
           v-btn(icon @click="confirmRemove(webhook)" :title="$t('common.action.delete')")
             v-icon(color="warning") mdi-delete

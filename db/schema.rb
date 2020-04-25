@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_23_081241) do
+ActiveRecord::Schema.define(version: 2020_04_25_071335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -801,6 +801,7 @@ ActiveRecord::Schema.define(version: 2020_04_23_081241) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "format", default: "markdown", null: false
+    t.boolean "include_body", default: false
     t.index ["group_id"], name: "index_webhooks_on_group_id"
   end
 
