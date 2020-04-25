@@ -23,7 +23,6 @@ module Boot
         drafts:              { debounce: 1000},
         searchFilters:       { status: %w(active closed) },
         emojis:              { defaults:  [] },
-        notifications:       { kinds: [] },
         # these can be deleted after angular is really really gone
 
         sentry_dsn:          ENV['SENTRY_PUBLIC_DSN'],
