@@ -33,7 +33,11 @@ class UserMailer < BaseMailer
     @time_finish = Time.zone.now
     @time_frame = @time_start...@time_finish
 
-    @discussions = DiscussionQuery.visible_to(user: user, only_unread: true).last_activity_after(@time_start)
+    @discussions = DiscussionQuery.visible_to(
+      user: user,
+      only_unread: true,
+      or_public: false,
+      or_subgroups: false).last_activity_after(@time_start)
     @groups = @user.groups.order(full_name: :asc)
 
     @reader_cache = Caches::DiscussionReader.new(user: @user, parents: @discussions)
