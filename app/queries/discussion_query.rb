@@ -7,7 +7,7 @@ class DiscussionQuery
       includes(:author, :active_polls, {group: [:parent]})
   end
 
-  def self.visible_to(chain: start, user: LoggedOutUser.new, group_ids: [], tags: [], only_unread: false, or_public: true)
+  def self.visible_to(chain: start, user: LoggedOutUser.new, group_ids: [], tags: [], only_unread: false, or_public: true, or_subgroups: true)
     if tags.any?
       chain = chain.joins(:tags).where("tags.name IN (?)", tags)
     end
@@ -21,8 +21,8 @@ class DiscussionQuery
                  .where("groups.archived_at IS NULL")
                  .where("#{'(discussions.private = false) OR ' if or_public}
                          (m.id IS NOT NULL AND m.archived_at IS NULL) OR
-                         (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
-                         (groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids))", user_group_ids: user.group_ids)
+                         (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL)
+                         #{'OR (groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids))' if or_subgroups}", user_group_ids: user.group_ids)
     chain = chain.where("discussions.group_id IN (?)", group_ids) if group_ids.any?
     if only_unread
       chain = chain.where('(dr.dismissed_at IS NULL) OR (dr.dismissed_at < discussions.last_activity_at)').
