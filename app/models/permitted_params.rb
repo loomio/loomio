@@ -1,10 +1,9 @@
 class PermittedParams < Struct.new(:params)
   MODELS = %w(
-    user membership_request membership poll outcome
-    stance invitation group_request group discussion discussion_reader comment
+    user group membership_request membership poll outcome
+    stance discussion discussion_reader comment
     contact_message user_deactivation_response announcement document
-    oauth_application group_identity webhook contact_request reaction
-    tag discussion_tag group_survey
+    webhook contact_request reaction tag discussion_tag group_survey
   )
 
   MODELS.each do |kind|
@@ -70,14 +69,6 @@ class PermittedParams < Struct.new(:params)
     [:discussion_id, :volume]
   end
 
-  def invitation_attributes
-    [:recipient_email, :recipient_name, :intent, :group_id]
-  end
-
-  def group_request_attributes
-    [:name, :admin_name, :admin_email, :description]
-  end
-
   def group_attributes
     [:parent_id, :name, :handle, :group_privacy, :is_visible_to_public, :discussion_privacy_options,
      :members_can_add_members, :members_can_announce, :members_can_edit_discussions, :members_can_edit_comments, :motions_can_be_edited,
@@ -94,14 +85,8 @@ class PermittedParams < Struct.new(:params)
     [:kind, :recipients, {recipients: [{user_ids: []}, {emails: []}]}, :invited_group_ids, {invited_group_ids: []}]
   end
 
-  def group_identity_attributes
-   [:group_id, :identity_type, :webhook_url, :make_announcement,
-    :custom_fields, custom_fields: [:slack_channel_name, :slack_channel_id, :event_kinds, event_kinds: []]
-   ]
-  end
-
   def webhook_attributes
-   [:group_id, :url, :name, :format, :event_kinds, {event_kinds: []}]
+   [:group_id, :url, :name, :format, :include_body, :event_kinds, {event_kinds: []}]
   end
 
   def discussion_attributes
@@ -136,10 +121,6 @@ class PermittedParams < Struct.new(:params)
 
   def user_deactivation_response_attributes
     [:body]
-  end
-
-  def oauth_application_attributes
-    [:name, :redirect_uri, :logo]
   end
 
   def contact_request_attributes

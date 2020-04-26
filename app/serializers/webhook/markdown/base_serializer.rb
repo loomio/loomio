@@ -26,11 +26,7 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
   end
 
   def has_body
-    %w[new_discussion
-       new_comment
-       outcome_created
-       poll_created
-       stance_created].include? object.kind
+    scope[:webhook] && scope[:webhook].include_body
   end
 
   def headline

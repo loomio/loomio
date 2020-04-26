@@ -2045,6 +2045,7 @@ en:
       poll_closed_by_user: A poll is closed before it's deadline
       poll_reopened: A poll is re-opened for voting
       outcome_created: An outcome has been shared
+    include_body_label: Include message body with notification
 
   configure_sso:
     redirecting: Please wait, redirecting to sign-in provider
