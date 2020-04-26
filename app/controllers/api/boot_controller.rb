@@ -4,6 +4,7 @@ class API::BootController < API::RestfulController
   end
 
   def user
+    flash[:notice] = "Loomio error! Hold shift key and press refresh button."
     render json: user_payload
   end
 

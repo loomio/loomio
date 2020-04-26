@@ -9,7 +9,8 @@ export default
     unread: Boolean
   methods:
     membershipRequestActor: ->
-      name = (@notification.translationValues.name || @notification.translationValues.email || '').toString()
+      values = (@notification.translationValues || {})
+      name = (values.name || values.email || '').toString()
       Records.users.build
         name: name
         avatarInitials: name.split(' ').map((n) -> n[0]).join('')
