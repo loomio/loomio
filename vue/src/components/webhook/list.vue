@@ -56,12 +56,10 @@ v-card.webhook-list
     p.lmo-hint-text(v-t="'webhook.subtitle'")
     p.lmo-hint-text(v-html="$t('webhook.we_have_guides', {url: 'https://help.loomio.org/en/user_manual/groups/integrations/'})")
     loading(v-if="loading")
-    v-list(three-line v-if="!loading")
+    v-list(v-if="!loading")
       v-list-item(v-for="webhook in webhooks" :key="webhook.id")
         v-list-item-content
           v-list-item-title {{webhook.name}}
-          v-list-item-subtitle(v-t="'webhook.formats.'+webhook.format")
-          v-list-item-subtitle {{webhook.url}}
         v-list-item-action
           v-btn(icon @click="edit(webhook)" :title="$t('common.action.edit')")
             v-icon(color="accent") mdi-pencil
