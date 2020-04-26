@@ -6,7 +6,6 @@ const components = require('./src/components.coffee');
 const Fiber = require('fibers');
 
 module.exports = {
-  mode: 'development',
   entry: ['./src/main.coffee'],
   devtool: 'inline-source-map',
   resolve: {
