@@ -100,6 +100,7 @@ export default
 
   computed:
     user: -> Session.user()
+    isSignedIn: -> Session.isSignedIn()
     activeGroup: -> if @group then [@group.id] else []
     logoUrl: -> AppConfig.theme.app_logo_src
 
@@ -149,7 +150,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   v-divider
   v-list-item(dense to="/explore")
     v-list-item-title(v-t="'sidebar.explore_groups'")
-  loading(v-if="!fetched")
+  loading(v-if="isSignedIn && !fetched")
 </template>
 <style lang="sass">
 .sidebar-item

@@ -59,7 +59,7 @@ div(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @ke
       v-checkbox.auth-signup-form__legal-accepted(v-model='vars.legalAccepted' hide-details)
         template(v-slot:label)
           span(v-html="$t('auth_form.i_accept', { termsUrl: termsUrl, privacyUrl: privacyUrl })")
-      validation-errors(:subject='user', field='legalAccepted')
+      validation-errors.mt-6(:subject='user', field='legalAccepted')
     .auth-signup-form__newsletter(v-if='newsletterEnabled')
       v-checkbox.auth-signup-form__newsletter-accepted(v-model='vars.emailNewsletter' hide-details)
         template(v-slot:label)
