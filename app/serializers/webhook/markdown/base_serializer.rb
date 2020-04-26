@@ -41,7 +41,8 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
       title: title,
       body: body,
       url: polymorphic_url(eventable, default_url_options),
-      poll_type: poll_type
+      poll_type: poll_type,
+      group: eventable.group.name
     }.compact
   end
 

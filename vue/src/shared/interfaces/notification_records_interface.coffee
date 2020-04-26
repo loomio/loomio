@@ -5,7 +5,6 @@ export default class NotificationRecordsInterface extends BaseRecordsInterface
   model: NotificationModel
 
   fetchNotifications: (query, options = {}) ->
-    options['q'] = query
     @fetch
       params: options
 

@@ -9,6 +9,9 @@ class NotifyWebhooksWorker
         i.notify!(event) if i.respond_to? :notify!
       end
       eventable.group.webhooks.each { |w| w.publish!(event) }
+      if eventable.group.parent
+        eventable.group.parent.webhooks.include_subgroups.each { |w| w.publish!(event) }
+      end
     end
   end
 end

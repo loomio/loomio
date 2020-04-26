@@ -86,7 +86,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def webhook_attributes
-   [:group_id, :url, :name, :format, :include_body, :event_kinds, {event_kinds: []}]
+   [:group_id, :url, :name, :format, :include_body, :include_subgroups, :event_kinds, {event_kinds: []}]
   end
 
   def discussion_attributes
