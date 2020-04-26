@@ -39,7 +39,7 @@ v-card.webhook-form
     v-text-field.webhook-form__url(type="url" v-model='webhook.url' :label="$t('webhook.url_label')" :placeholder="$t('webhook.url_placeholder')")
     validation-errors(:subject='webhook' field='url')
     v-checkbox.webhook-form__include-body(v-model="webhook.includeBody" :label="$t('webhook.include_body_label')" hide-details)
-    v-checkbox.webhook-form__include-body(v-model="webhook.includeSubgroups" :label="$t('webhook.include_subgroups_label')" hide-details)
+    v-checkbox.webhook-form__include-body(v-if="group.subgroupsCount" v-model="webhook.includeSubgroups" :label="$t('webhook.include_subgroups_label')" hide-details)
     p.mt-4.lmo-hint-text(v-t="'webhook.event_kind_helptext'")
     v-checkbox.webhook-form__event-kind(hide-details v-for='kind in kinds' v-model='webhook.eventKinds' :key="kind" :label="$t('webhook.event_kinds.' + kind)" :value="kind")
 
