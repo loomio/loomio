@@ -57,7 +57,7 @@ export default
 
     fetchData: ->
       Records.users.fetchGroups().then =>
-        if @$router.history.current.path == "/dashboard" && Session.user().membershipsCount == 1
+        if @$router.history.current.path == "/dashboard" && Session.user().groups().length == 1
           @$router.replace("/g/#{Session.user().groups()[0].key}")
 
       InboxService.load()
