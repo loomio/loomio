@@ -37,8 +37,6 @@ ml:
       discussions: 'ചര്‍ച്ചകള്‍'
   notifications:
     header: "അറിയിപ്പുകള്‍"
-  position_buttons_panel:
-    heading: താങ്കള്‍ക്ക് പറയാനുള്ളത്
   discussion_form:
     group_label: 'കൂട്ടം'
     title_label: 'തലക്കെട്ട്'
@@ -59,9 +57,6 @@ ml:
       edit_group: 'കൂട്ടത്തിന്റെ ക്രമീകരണങ്ങള്‍ മാറ്റുക'
       email_settings: 'ഈമെയില്‍ മുന്‍ഗണനകള്‍'
       leave_group: 'കൂട്ടം വിടുക'
-  document:
-    form:
-      title_label: പേരു്
   membership_requests_page:
     approve: സ്ഥിരീകരിക്കുക
     ignore: നിരസ്സിക്കുക
@@ -86,9 +81,6 @@ ml:
     title: 'അഭിപ്രായം നീക്കം ചെയ്യുക'
     question: 'തീര്‍ച്ചയായും ഈ അഭിപ്രായം കളയണോ? '
     confirm: 'അഭിപ്രായം നീക്കം ചെയ്യുക'
-  new_comment_item:
-    context_menu:
-      delete_comment: 'അഭിപ്രായം നീക്കം ചെയ്യുക'
   contact_message_form:
     subject_label: "വിഷയം"
   hint:
@@ -111,6 +103,8 @@ ml:
   poll_count_options:
     'yes': 'അതെ'
     'no': 'അല്ല'
+  webhook:
+    name_label: പേരു്
   group_survey:
     categories:
       other: മറ്റുള്ളത്

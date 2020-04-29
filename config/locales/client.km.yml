@@ -36,8 +36,6 @@ km:
       discussions: 'ការពិភាក្សារ'
   notifications:
     header: "ការជូនដំណឹង"
-  position_buttons_panel:
-    heading: ការនិយាយរបស់អ្នក
   discussion_form:
     group_label: 'ក្រុម'
     title_label: 'ចំណងជើង'
@@ -58,9 +56,6 @@ km:
       edit_group: 'កំណត់ការកែសម្រួលក្រុម'
       email_settings: 'ចំណង់ចំណូលចិត្តអ៊ីម៉ែល '
       leave_group: 'ចាកចេញពីក្រុម'
-  document:
-    form:
-      title_label: ឈ្មោះ
   membership_requests_page:
     approve: 'អនុម័ត '
     ignore: មិនអើពើ
@@ -84,9 +79,6 @@ km:
     title: 'លុបមតិយោបល់ '
     question: 'តើអ្នកប្រាកដថាអ្នកចង់លុបមតិយោបល់នេះ?'
     confirm: 'លុបមតិយោបល់ '
-  new_comment_item:
-    context_menu:
-      delete_comment: 'លុបមតិយោបល់ '
   contact_message_form:
     subject_label: "ប្រធានបទ​"
   hint:
@@ -109,6 +101,8 @@ km:
   poll_count_options:
     'yes': 'បាទ/ចាស!'
     'no': 'ទេ'
+  webhook:
+    name_label: ឈ្មោះ
   group_survey:
     categories:
       other: 'ផ្សេងទៀត '

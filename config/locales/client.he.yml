@@ -396,16 +396,6 @@ he:
     outcome_created: "<strong>{{name}}</strong> שיתפ/ה את התוצאה: <strong>{{title}}</strong>"
     outcome_announced: "<strong>{{name}}</strong> שיתפ/ה את התוצאה: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> השתתף ב: <strong>{{title}}</strong>"
-  position_buttons_panel:
-    heading: חייב להגיד
-  extend_proposal_form:
-    aria_label: שנה זמן סגירה
-    title: 'שנה זמן סגירה'
-    success: 'זמן סגירה של ההצעה עודכן'
-    submit: 'עדכן שעת סגירה'
-  discussion_record:
-    created: 'השיחה {{title}} נוצרה בהצלחה ב{{groupName}}'
-    updated: 'שמור שינויים ל{{title}}'
   discussion_fork_actions:
     move: העבר
   discussion_form:
@@ -430,10 +420,9 @@ he:
   announcement:
     audiences:
       parent_group: משתתפי ה{{name}}
-      formal_group: משתתפי ה{{name}}
+      group: משתתפי ה{{name}}
       discussion_group: חברי השיחה
       voters: אנשים שהצביעו
-      non_voters: אנשים שלא הצביעו
     form:
       too_many_invitations: |
           הגעת לגבול ההזמנות המותר. <a href="{{upgradeUrl}}" target="_blank">שדרג</a>
@@ -717,43 +706,6 @@ he:
     heading: 'בקשות חברות'
     manage_requests: ניהול בקשות
     manage_requests_with_count: ניהול בקשות ({{count}})
-  documents_page:
-    title: קבצים מצורפים
-    fragment_placeholder: חפש קבצים מצורפים...
-    add_document: הוסף קובץ
-    no_documents: לא נמצאו קבצים מצורפים בקבוצה. להוספה, לחץ על 'הוסף קובץ' למעלה.
-    no_documents_from_fragment: אין קבצים מצורפים בשם '{{fragment}}'
-    confirm_remove_title: הסרת קובץ מצורף
-    confirm_remove_helptext: אתה בטוח שברצונך להסיר את הקובץ המצורף?
-    document_removed: קובץ הוסר
-  document:
-    error:
-      invalid_format: אופס, כתובת הURL בלתי חוקית. ודא שהכתובת מתחילה עם http:// או https://
-    card:
-      no_documents: עוד לא נוספו קבצים לקבוצה זו
-      view_documents: צפה בכל
-    list:
-      title: קבצים מצורפים
-      no_group_documents: עוד לא נוספו קבצים לקבוצה זו
-    management:
-      content_header: כל הקבצים המצורפים
-      uploaded_to: ב
-    modal:
-      title: צרוף קובץ
-    method_form:
-      helptext: צרף קבצים או לינקים לשיתופם בקבוצה.
-      url_helptext: קישורים לאתרים ולמקורות מידע ברשת
-      file_helptext: העלה קבצים מהמחשב שלך
-    form:
-      url_label: כתובת URL
-      helptext: לחץ לחיפוש בתיקיות המחשב, העתק והדבק לפה או גרור לכאן את קובץ להעלאה
-      url_placeholder: 'למשל: https://www.example.com/attachment.zip'
-      title_helptext: איך נקרא לקובץ המצורף?
-      title_label: שם
-      title_placeholder: 'למשל: ''הנחיות לקהילה'''
-    flash:
-      success: קובץ נשמר
-      destroyed: קובץ הוסר
   membership_requests_page:
     heading: בקשות חברות
     approve: אישור
@@ -796,13 +748,6 @@ he:
       invitations_sent: '{{count}} הזמנה נשלחה.'
       no_invitations: 'אוי לא! אנא ודא שכתובת המייל שלך נכונה ותקנית ונסה שוב.'
       max_invitations: 'אם אתה רוצה לשלוח יותר מ100 הזמנות, השתמש בלינק צוות.'
-  add_members_modal:
-    aria_label: 'הוסף חברים לקבוצת האב'
-    heading: 'הוסף אנשים מ{{name}}'
-    add_members: 'הוסף חברים'
-    user_added_to_subgroup: '{{name}} הוסף לתת הקבוצה'
-    users_added_to_subgroup: '{{count}} משתמשים הוספו לתת הקבוצה'
-    no_members_to_add: 'כל המשתתפים של {{parent}} שייכים לתת קבוצה זו'
   memberships_page:
     members: 'חברים'
     name_label: 'שם'
@@ -826,30 +771,11 @@ he:
   membership_form:
     modal_title:
       group: תן שם לקבוצה
-      discussion: תן שם לשיחה
-      poll: תן שם ל{{pollType}}
     title_helptext:
       group: שם זה יופיע לצד השם של {{name}} בתוך קבוצה זו. השתמש בזה כדי ליידע את האנשים על תפקידם.
-      discussion: שם זה יופיע לצד השם של {{name}} בתוך שיחה זו. השתמש בזה כדי ליידע את האנשים על תפקידם.
-      poll: שם זה יופיע לצד השם של {{name}} בתוך {{pollType}} זה. השתמש בזה כדי ליידע את האנשים על תפקידם.
     title_label: כותרת
     title_placeholder: 'לדוגמא: מתאם או מאפשר'
     updated: כותרת החברות עודכנה
-  pending_invitations_card:
-    heading: הזמנות ממתינות
-    email: דואר אלקטרוני
-    invitation_link: לינק הזמנה
-    sent: נשלח
-    sent_at: נשלח {{date}}
-    copy_url: העתק כתובת הדף
-    revoke_invitation: הסר הרשאה
-  cancel_invitation_form:
-    heading: בטל הזמנה
-    question: האם אתה בטוח שברצונך לבטל את ההזמנה?
-    submit: "כן, בטל הזמנה"
-    cancel: 'לא'
-    messages:
-      success: הזמנה בוטלה
   user_page:
     contact_user: 'צור קשר עם {{name}}'
     location_field: 'מיקום: {{value}}'
@@ -1063,59 +989,10 @@ he:
     confirm_change_to_private_thread: '{{groupName}} הינה קבוצה פתוחה. אם אתה ממשיך, השיחה הזו תהיה פומבית.'
     messages:
       success: השיחה הועברה ל{{name}}
-  print_modal:
-    load_discussion: מעלה את כל הדיון
-    helptext: רק שניה, אנחנו מביאים את כל האירועים בשיחה הזו להדפסה...
   delete_comment_dialog:
     title: 'מחקו תגובה'
     question: 'למחוק את התגובה? בטוחים?'
     confirm: 'מחקו תגובה'
-  new_comment_item:
-    aria_label: 'הערות ע"י {{author}}'
-    context_menu:
-      aria_label: 'אפשרויות להערות'
-      edit_comment: 'ערוך הערה'
-      delete_comment: 'מחקו תגובה'
-    in_reply_to: 'בתגובה ל<strong>{{recipient}}</strong>'
-    edited: 'ערוך'
-  new_vote_item:
-    agree: 'מוסכם'
-    abstain: 'נמנע'
-    disagree: 'לא מסכים'
-    block: 'נחסם'
-    agree_with_statement: 'מוסכם: <span>{{statement}}</span>'
-    abstain_with_statement: 'נמנע: <span>{{statement}}</span>'
-    disagree_with_statement: 'לא מסכים: <span>{{statement}}</span>'
-    block_with_statement: 'נחסם: <span>{{statement}}</span>'
-  new_proposal_item:
-    author_created_proposal: 'התחל הצעה: <span>{{title}}</span>'
-  proposal_closed_item:
-    proposal_closed: 'ההצעה נסגרה: <span>{{title}}</span>'
-  proposal_closed_by_user_item:
-    proposal_closed_by_user: 'סגר את ההצעה: <span>{{title}}</span>'
-  proposal_edited_item:
-    name: 'עדכן את כותרת ההצעה: <span>{{title}}</span>'
-    description: 'עדכן את תיאור ההצעה'
-    closing_at: 'עדכן את ההצעה כך שתסגר ב<span>{{time}}</span>'
-    description_name: 'נושא ותיאור ההצעה עודכן'
-    closing_at_name: 'נושא ושעת סיום ההצעה עודכן'
-    closing_at_description: 'תיאור וזמן סגירת ההצעה עודכנו'
-    closing_at_description_name: 'נושא, תיאור וזמן סגירת ההצעה עודכנו'
-  proposal_outcome_created_item:
-    proposal_outcome_created: 'פורסם תוצר להצעה:'
-  proposal_outcome_updated_item:
-    proposal_outcome_updated: 'עודכן תוצר ההצעה:'
-  discussion_edited_item:
-    attachment_ids: 'עודכנו הקבצים המצורפים לשיחה'
-    title: 'נושא השיחה עודכן: <span>{{title}}</span>'
-    description: 'תוכן השיחה עודכן'
-    description_title: 'נושא ותוכן השיחה עודכנו'
-    private: 'הפרטיות של השיחה עודכנה ל'
-    public_to_private: 'פרטי'
-    private_to_public: 'פומבי'
-    private_title: 'נושא ופרטיות השיחה עודכנו'
-    description_private: 'תוכן ופרטיות השיחה עודכנו'
-    description_private_title: 'נושא, תוכן ופרטיות השיחה עודכנו'
   contact_message_form:
     title: "היי! איך נוכל לעזור?"
     read_the_manual: |
@@ -1154,46 +1031,6 @@ he:
     messages:
       app_update: 'גרסה חדשה של האפליקציה זמינה לעדכון'
       reload: 'טען מחדש'
-  authorized_apps_page:
-    title: אפליקציות מורשות
-    no_applications: "לא נתת הרשאה לאף אפליקציית צד שלישי עוד."
-    notice: "נתת הרשאה לאפליקציות צד שלישי הבאות להשתמש בחשבונך. לחץ בטל הרשאה לנטרולם."
-    revoke: הסר הרשאה
-  registered_apps_page:
-    title: אפליקציות רשומות
-    no_applications: "עוד אין לך אפליקציות עם OAuth. לחץ למטה ליצירת אחת."
-    name: שם
-    redirect_uris: הפניית כתובות אינטרנט
-    create_new_application: אפליקציה חדשה
-  registered_app_page:
-    uid: מספר זיהוי האפליקציה
-    secret: סוד האפליקציה
-  registered_app_form:
-    new_application_title: אפליקציה חדשה
-    edit_application_title: עדכון האפליקציה
-    name_label: שם
-    name_placeholder: איך קוראים לאפליקציה שלך?
-    redirect_uri_label: הפניה לכתובות
-    redirect_uri_placeholder: "כתובת לקריאה לאפליקציה שלך, לדוגמא: https://myapplication.com/loomio/callback"
-    redirect_uri_note: (שורה אחת לכל כתובת, התשמש ב'urn:ietf:wg:oauth:2.0:oob' לבדיקות מקומיות)
-    new_application_submit: צור אפליקציה
-    edit_application_submit: עדכון האפליקציה
-    messages:
-      logo_changed: לוגו עודכן.
-      created: "'{{name}}' נוצר "
-      updated: "'{{name}}' עודכן "
-  remove_app_form:
-    title: '{{name}} הושבת'
-    question: "אתה בטוח שאתה רוצה להשבית את האפליקציה '{{name}}'? לא ניתן לחזור אחורה מהפעולה."
-    submit: השבת
-    messages:
-      success: "'{{name}}' הושבת בהצלחה"
-  revoke_app_form:
-    title: בטל הרשאה ל{{name}}
-    question: "אתה בטוח שברצונך למנוע מ'{{name}}' להשתמש בחשבונך?"
-    submit: בטל הרשאה
-    messages:
-      success: "'{{name}}' אינו מורשה להשתמש בחשבונך יותר."
   decision_tools_card:
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">עזרה</a>
     proposal_title: הצעה
@@ -1374,14 +1211,6 @@ he:
     question: אתה בטוח שברצונך למחוק את זה?
     title: מחק החלטה
     success: נמחק בהצלחה
-  poll_common_unsubscribe_form:
-    title: קבל עדכונים
-    label: קבל מייל עדכונים על החלטה זו
-    tooltip: 'אם תסיר את הסימון מהצ''קבוקס הזה לא תקבל עדכונים על החלטה זו (כגון עריכתה, כשפג תוקפה או התוצאה שלה). '
-    helptext_on: תקבל עדכונים במייל על פעילות בהחלטה זו
-    helptext_off: לא תקבל עדכונים במייל על החלטה זו
-    subscribed: הרשמה בוצעה בהצלחה
-    unsubscribed: ביטול ההרשמה בוצע בהצלחה
   poll_common_form:
     title: כותרת
     details: פירוט
@@ -1550,17 +1379,6 @@ he:
     stance_updated: בחירה עודכנה
   thread_item:
     event_removed: "הוסר מהשיחה"
-  poll_admin_page:
-    title: אדמין (מנהל) - {{title}}
-  poll_common_publish_facebook_preview:
-    shared_a: שיתף את
-    link: לינק
-    just_now: ממש עכשיו
-  poll_common_publish_slack_preview:
-    poll_published: "פרסם סקר:"
-    poll_published_with_discussion: "פרסם סקר ב<strong>{{discussion}}</strong>:"
-    view_it_on_loomio: צפה באתר {{site_name}}
-    timestamp: היום ב{{timestamp}}
   poll_common_subscribe_form:
     receive_updates_title: הצבעתך תועדה ונשמרה במערכת
     receive_updates_helptext: אם ברצונך לקבל מייל על התוצאה של סקר זה, הכנס את המייל שלך למטה
@@ -1622,22 +1440,9 @@ he:
     email: דואר אלקטרוני
     password: סיסמה
     reactivate: אקטב מחדש את החשבון
-  install_microsoft:
-    modal_title: התקן Microsoft Teams
-    card:
-      install_title: התחבר לMicrosoft Teams
-      install_helptext: הבוט של Loomio הודיע לקבוצה שלך על הדיונים וההחלטות בLoomio
-      installed_title: מחובר לMicrosoft Teams
-      installed_helptext: אירועים מקבוצה זו יישלחו לMicrosoft Teams שלך.
-      confirm_remove_helptext: |
-          ערוץ הMicrosoft Teams שלך לא יקבל עוד עדכונים על קבוצה זו.
-          אתה יכול תמיד להחזיר אותו שוב.
-      identity_removed: אינטגרציה הוסרה
-    form:
-      webhook_label: Webhook URL
-      webhook_installed: מחובר לMicrosoft Teams
-      webhook_placeholder: https://outlook.office.com/...
-      event_kind_helptext: אילו אירועים צריכים להתפרסם בערוץ הצוותים?
+  webhook:
+    url_label: Webhook URL
+    name_label: שם
     event_kinds:
       new_discussion: שירשור חדש נפתח
       new_comment: 'נוספה תגובה חדשה '
@@ -1646,61 +1451,9 @@ he:
       poll_closing_soon: הסקר מסתיים בקרוב
       poll_expired: סקר הסתיים
       outcome_created: שותפה תוצאה
-  install_slack:
-    login_to_slack: התחבר לSlack
-    card:
-      install_title: קשר לSlack
-      install_helptext: הבוט של לומיו מודיע לצוות הSlack שלך על דיונים והחלטות בלומיו. אתה יכול גם להתחיל החלטות ולהצביע עליהם מתוך Slack.
-      installed_title: מקושר לSlack
-      installed_helptext: קבוצה זו מחוברת לצוות סלאק<strong><a target='_blank' href='https://{{team}}.slack.com'>{{team}}</a></strong>. אירועים בקבוצה יופיעו בערוץ <strong>{{channel}}</strong>.
-      install_slack: קשר את Slack
-      remove_identity: הסר אינטגרציה זו
-      confirm_remove_title: הסר אינטגרציה עם סלאק
-      confirm_remove_helptext: |
-          הערוץ Slack שלך לא יקבל עוד עדכונים על קבוצה זו.
-          אתה תמיד יכול לחזור ולהוסיף אותה שוב.
-      identity_removed: אינטגרציה הוסרה
-    progress:
-      install: התקן
-      invite: הזמן
-      decide: החלט
-    install:
-      heading: 'שלב 1: בחר את קבוצת הלומיו לאינטגרציה'
-      tooltip_heading: לומיו וSlack עובדים מעולה ביחד
-      it_does_this: משוך את תשומת לב המשתמשים איפה שהם
-      and_also_this: התחל סקרים מייד וקבל פידבק בזמן אמת
-      and_also_also_this: תן לאנשים לדעת את התוצאה ואיטרציה של מחשבותיך במהרה
-      add_to_group_helptext: בחר קבוצה לממשק לסלאק
-      create_new_group_helptext: אין לך קבוצת לומיו? הכנס שם ונייצר לך אחת בשבילך בקלות
-      group_name: שם הקבוצה
-      group_name_placeholder: תן שם לקבוצה החדשה
-      slack_installed: סלאק הותקן
-      install_slack: התקן סלאק עכשיו
-      start_new_group: התחל קבוצה חדשה
-      use_existing_group: השתמש בקבוצה קיימת
-    invite:
-      heading: 'שלב 2: הגדר ערוץ סלאק'
-      select_a_channel: בחר ערוץ
-      publish_group: פרסם הודעת פתיחה
-      publish_group_helptext_on: אנחנו נפרסם הודעה לתוך ערוץ זה כדי להדריך אנשים איך להשתמש בבוט של לומיו.
-      publish_group_helptext_off: אנחנו לא נפרסם כלום עד שתייצר סקר.
-      custom_message: הודעה אישית
-      set_channel: הגדר ערוץ
-    decide:
-      heading: 'שלב 3: קבלו החלטה יחדיו'
-      helptext: "עכשיו כשהכל מוכן, הגיע הזמן להתחיל לקבל החלטות. בחר באחת מהאפשרויות הבאות:"
-    common:
-      do_it_later: אני אעשה זאת אחר כך
   browser_warning:
     message: "חשוב מאוד! אתה משתמש בגרסת דפדפן ישנה ({{name}} {{version}}) שלא נתמכת ע\"י {{site}}."
     link: אנא החלף לדפדפן אחר
-  slack_added_modal:
-    title: הצלחה!
-    helptext: |
-        הוספת את הSlack בהצלחה לקבוצה <strong>{{name}}</strong>.
-        עכשיו, כשמישהו יפתח סקר בקבוצה, תהיה להם האפשרות
-        לפרסם עדכונים על הסקר בתוך הערוץ של צוות הSlack שלך.
-    start_poll_now: קבל החלטה עכשיו
   powered_by:
     powered_by_loomio: מופעל ע"י לומיו
     privacy_policy: מדיניות פרטיות

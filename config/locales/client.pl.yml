@@ -317,15 +317,6 @@ pl:
     new_motion: "{{name}} stworzył/a propozycję {{title}}"
     motion_closed: "Propozycja zamknięta: {{title}}"
     publish_outcome: "Opublikuj rezultat"
-  position_buttons_panel:
-    heading: Wypowiedz się
-  extend_proposal_form:
-    title: 'Zmiana terminu zamknięcia'
-    success: 'Zmieniono czas zamknięcia rekomendacji'
-    submit: 'Zmiana terminu zamknięcia'
-  discussion_record:
-    created: 'Wątek {{title}} został pomyślnie utworzony w  {{groupName}}'
-    updated: 'Zapisano zmiany w {{title}}'
   discussion_form:
     messages:
       created: 'Wątek rozpoczęty'
@@ -484,11 +475,6 @@ pl:
     privacy: 'Prywatność'
     profile: Profil
     submit_update: 'Zaktualizuj ustawienia'
-  documents_page:
-    confirm_remove_title: Usunięcie załącznika
-  document:
-    form:
-      title_label: Nazwa
   membership_requests_page:
     heading: Zgłoszenia Członkostwa
     approve: Akceptacja
@@ -517,8 +503,6 @@ pl:
     membership:
       title: Usunięcie członka
       submit: Usunięcie członka
-  cancel_invitation_form:
-    heading: Anuluj zaproszenie
   profile_page:
     messages:
       updated: 'Profil zmieniony'
@@ -602,11 +586,6 @@ pl:
     title: 'Usuń komentarz'
     question: 'Czy na pewno chcesz usunąć ten komentarz?'
     confirm: 'Usuń komentarz'
-  new_comment_item:
-    context_menu:
-      aria_label: 'Opcje komentarzy'
-      edit_comment: 'Edycja komentarza'
-      delete_comment: 'Usuń komentarz'
   contact_message_form:
     contact_us: 'Kontakt'
     name_label: 'Twoja nazwa'
@@ -657,6 +636,7 @@ pl:
     start_new_poll: Nowa decyzja
   auth_form:
     name_placeholder: Twoja nazwa
-  install_slack:
-    progress:
-      invite: Zaproś
+  webhook:
+    name_label: Nazwa
+  configure_sso:
+    title: Single sign-on

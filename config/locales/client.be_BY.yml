@@ -65,8 +65,6 @@ be_BY:
       proposals: 'Прапановы'
   notifications:
     header: "Апавяшчэнні"
-  position_buttons_panel:
-    heading: Скажыце сваё слова
   discussion_form:
     group_label: 'Група'
     title_label: 'Назва'
@@ -99,16 +97,11 @@ be_BY:
     group_name_placeholder: 'Як завецца Вашая група?'
     description_placeholder: 'Апішыце мэты вашай групы, каб чальцы групы ведалі, навошта яны тут.'
     profile: Профіль
-  document:
-    form:
-      title_label: Імя
   membership_requests_page:
     approve: Пацвердзіць
     ignore: Ігнараваць
   invitation_form:
     invite_people: 'Запрасіць людзей'
-  add_members_modal:
-    user_added_to_subgroup: '{{name}} дададзены ў падгрупу'
   memberships_page:
     members: 'Удзельнікі'
     name_label: 'Імя'
@@ -117,10 +110,6 @@ be_BY:
     membership:
       title: Выдаліць удзельніка
       submit: Выдаліць удзельніка
-  pending_invitations_card:
-    heading: Актуальныя запрашэнні
-  cancel_invitation_form:
-    cancel: 'Не'
   profile_page:
     profile: 'Профіль'
     picture_label: 'Фота'
@@ -152,10 +141,6 @@ be_BY:
     title: 'Выдаліць каментар'
     question: 'Вы ўпэўнены, што хаціце выдаліць гэты каментар?'
     confirm: 'Выдаліць каментар'
-  new_comment_item:
-    context_menu:
-      edit_comment: 'Рэдагаваць каментар'
-      delete_comment: 'Выдаліць каментар'
   contact_message_form:
     name_label: 'Ваша імя'
     subject_label: "Тэма"
@@ -186,6 +171,8 @@ be_BY:
     'no': 'Не'
   auth_form:
     name_placeholder: Ваша імя
+  webhook:
+    name_label: Імя
   group_survey:
     categories:
       business: Бізнес

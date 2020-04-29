@@ -162,15 +162,6 @@ sr:
     header: "Obaveštenja"
     no_notifications: "Nemate nikakvih obaveštenja"
     publish_outcome: "Objavi jedan ishod"
-  position_buttons_panel:
-    heading: Recite šta imate
-  extend_proposal_form:
-    title: 'Promeni vreme isteka'
-    success: 'Vreme zatvaranja predloga je osveženo'
-    submit: 'Promeni vreme zatvaranja'
-  discussion_record:
-    created: 'Nit {{title}} je uspešno kreirana u {{groupName}}'
-    updated: 'Sačuvane promene za {{title}}'
   discussion_fork_actions:
     move: Premesti
   discussion_form:
@@ -302,11 +293,6 @@ sr:
     heading: 'Zahtevi'
     manage_requests: Upravljanje zahtevima
     manage_requests_with_count: Upravljanje zahtevima ({{count}})
-  documents_page:
-    confirm_remove_title: Ukloni dodatak
-  document:
-    form:
-      title_label: Ime
   membership_requests_page:
     heading: Zahtevi
     approve: Odobri
@@ -342,12 +328,6 @@ sr:
       invitation_sent: 'Poziv poslat.'
       invitations_sent: '{{count}} pozivnica poslato.'
       max_invitations: 'Ako želite da pošaljete više od 100 pozivnica, upotrebite tim vezu.'
-  add_members_modal:
-    heading: 'Dodaj ljude iz {{name}}'
-    add_members: 'Dodaj članove'
-    user_added_to_subgroup: '{{name}} je u Podgrupi'
-    users_added_to_subgroup: '{{count}} Korisnika dodato u Podgrupu'
-    no_members_to_add: 'Svi članovi {{parent}} pripadaju ovoj podgrupi'
   memberships_page:
     members: 'Članovi'
     name_label: 'Ime'
@@ -363,18 +343,6 @@ sr:
     membership:
       title: Ukloni člana
       submit: Ukloni člana
-  pending_invitations_card:
-    heading: Pozivnice na čekanju
-    email: ePoruka
-    invitation_link: Pozivna veza
-    sent: Poslato
-  cancel_invitation_form:
-    heading: Otkaži pozivnicu
-    question: Da li ste sigurni da želite otkazati ovu pozivnicu?
-    submit: "Da, otkaži pozivnicu"
-    cancel: 'Ne'
-    messages:
-      success: Poziv otkazan
   profile_page:
     messages:
       updated: 'Profil izmenjen'
@@ -487,52 +455,6 @@ sr:
     title: 'Obriši komentar'
     question: 'Da li ste sigurni da želite obrisati ovaj komentar?'
     confirm: 'Obriši komentar'
-  new_comment_item:
-    aria_label: 'Komentar od {{author}}'
-    context_menu:
-      aria_label: 'Opcije komentara'
-      edit_comment: 'Izmeni komentar'
-      delete_comment: 'Obriši komentar'
-    in_reply_to: 'kao odgovor <strong>{{recipient}}</strong>'
-    edited: 'Izmenjeno'
-  new_vote_item:
-    agree: 'slažu se'
-    abstain: 'susdražani'
-    disagree: 'ne slaže se'
-    block: 'blokira'
-    agree_with_statement: 'saglasno: <span>{{statement}}</span>'
-    abstain_with_statement: 'uzdržano: <span>{{statement}}</span>'
-    disagree_with_statement: 'nesaglasno: <span>{{statement}}</span>'
-    block_with_statement: 'blokira: <span>{{statement}}</span>'
-  new_proposal_item:
-    author_created_proposal: 'pokrenulo predlog: <span>{{title}}</span>'
-  proposal_closed_item:
-    proposal_closed: 'Predlog je istekao: <span>{{title}}</span>'
-  proposal_closed_by_user_item:
-    proposal_closed_by_user: 'zatvorilo predlog: <span>{{title}}</span>'
-  proposal_edited_item:
-    name: 'ažuriralo naslov predloga: <span>{{title}}</span>'
-    description: 'ažirirao/la opis predloga'
-    closing_at: 'ažurirao/la rok isteka predloga za <span>{{time}}</span>'
-    description_name: 'ažirirao/la naslov predloga i opis'
-    closing_at_name: 'ažurirao/la naslov predloga i datum isteka'
-    closing_at_description: 'ažurirao/la opis predloga i datum isteka'
-    closing_at_description_name: 'ažurirao/la naslov predloga, opis i datum zatvaranja'
-  proposal_outcome_created_item:
-    proposal_outcome_created: 'objavio/la ishod predloga:'
-  proposal_outcome_updated_item:
-    proposal_outcome_updated: 'ažurirao/la ishod predloga:'
-  discussion_edited_item:
-    attachment_ids: 'ažurirao/la priloge niti'
-    title: 'ažurirao/la naslov niti: <span>{{title}}</span>'
-    description: 'ažurirao/la  kontekst niti'
-    description_title: 'ažurirao/la naslov niti i kontekst'
-    private: 'ažurirao/la privatnost niti kao'
-    public_to_private: 'privatno'
-    private_to_public: 'javno'
-    private_title: 'ažurirao/la  naslov i privatnost niti'
-    description_private: 'ažurirao/la kontekst i privatnost niti'
-    description_private_title: 'ažurirao/la  naslov niti, kontekst i privatnost'
   contact_message_form:
     contact_us: 'Kontakiraj nas'
     name_label: 'Tvoje ime'
@@ -554,45 +476,6 @@ sr:
   global:
     messages:
       reload: 'Osveži'
-  authorized_apps_page:
-    title: Odobrene Aplikacije
-    no_applications: "Niste odobrili ni jednu aplikaciju treće strane još uvek."
-    revoke: Povuci
-  registered_apps_page:
-    title: Registrovane Aplikacije
-    no_applications: "Nemate ni jednu OAuth aplikaciju još uvek! Škljocnite ispod da kreirate jednu."
-    name: Ime
-    redirect_uris: URI preusmeravanja
-    create_new_application: Nova Aplikacija
-  registered_app_page:
-    uid: ID Aplikacije
-    secret: Tajna Aplikacije
-  registered_app_form:
-    new_application_title: Nova Aplikacija
-    edit_application_title: Osveži aplikaciju
-    name_label: Ime
-    name_placeholder: Kako se zove Vaša aplikacija?
-    redirect_uri_label: Preusmeri URI
-    redirect_uri_placeholder: "Pozivni URI Vaše aplikacije, npr: https://mojaaplikacija.com/lumio/poziv"
-    redirect_uri_note: (jedna linija po URI, koristi 'urn:ietf:wg:oauth:2.0:oob' za lokalne testove)
-    new_application_submit: Kreiraj Aplikaciju
-    edit_application_submit: Osveži aplikaciju
-    messages:
-      logo_changed: Logo je ažuriran.
-      created: "Napravljeno '{{name}}'"
-      updated: "Ažurirano '{{name}}'"
-  remove_app_form:
-    title: Deaktiviraj {{name}}
-    question: "Da li ste sigurni da želite deajtivirati aplikaciju '{{name}}'? Ova akcija se ne može opozvati."
-    submit: Deaktiviraj
-    messages:
-      success: "'{{name}}' je uspešno deaktivirano"
-  revoke_app_form:
-    title: Ukini pristup za {{name}}
-    question: "Da li ste sigurni da želite onemogućiti '{{name}}' da koristi Vaš nalog?"
-    submit: Ukini pristup
-    messages:
-      success: "'{{name}}' ne može više koristiti Vaš nalog."
   poll_common:
     save_changes: Snimi
   discussions_panel:
@@ -614,6 +497,10 @@ sr:
     'no': 'Ne'
   auth_form:
     name_placeholder: Tvoje ime
+  webhook:
+    name_label: Ime
+  configure_sso:
+    title: Jednokratni upis
   group_survey:
     categories:
       business: Poslovanje

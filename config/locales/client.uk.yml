@@ -487,16 +487,6 @@ uk:
     outcome_created: "<strong>{{name}}</strong> опублікував(ла) результат: <strong>{{title}}</strong>"
     outcome_announced: "<strong>{{name}}</strong> опублікував(ла) результат: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> долучився(лась) до: <strong>{{title}}</strong>"
-  position_buttons_panel:
-    heading: Висловіть свою думку
-  extend_proposal_form:
-    aria_label: Змінити термін закриття
-    title: 'Змінити термін закриття'
-    success: 'Термін закриття пропозиції оновлено'
-    submit: 'Оновити термін закриття'
-  discussion_record:
-    created: 'Тему {{title}} було успішно створено у {{groupName}}'
-    updated: 'Зберегти зміни у {{title}}'
   discussion_fork_actions:
     helptext: Оберіть елементи які ви хочете перенести в іншу гілку
     move: Перемістити
@@ -544,10 +534,9 @@ uk:
     inviting_guests_to_thread: Люди, які не є учасниками {{group}}, будуть додані до цієї теми як гості та не будуть мати доступ до інших тем групи.
     audiences:
       parent_group: Учасник {{name}}
-      formal_group: Учасник {{name}}
+      group: Учасник {{name}}
       discussion_group: Учасники теми
       voters: Люди, які проголосували
-      non_voters: Люди, які не проголосували
     form:
       too_many_invitations: |
           Перевищено ліміт запрошень. <a href="{{upgradeUrl}}" target="_blank">Оновити план</a>
@@ -750,7 +739,6 @@ uk:
     options:
       label: 'Додатково'
       edit_group: 'Редагувати налаштування групи'
-      open_group_wizard: 'Майстер налаштування групи'
       export_data: Експортувати дані групи
       manage_members: 'Керувати учасниками'
       add_subgroup: 'Додати підгрупу'
@@ -884,43 +872,6 @@ uk:
     heading: 'Запити на приєднання'
     manage_requests: Керування запитами
     manage_requests_with_count: Керування ({{count}}) запитами
-  documents_page:
-    title: Вкладення
-    fragment_placeholder: Шукати вкладення...
-    add_document: Додати вкладення
-    no_documents: Не знайдено жодних вкладень у цій групі. Натисніть "Додати вкладення" вище, щоб додати щось.
-    no_documents_from_fragment: Не знайдено вкладень з назвою '{{fragment}}'
-    confirm_remove_title: Видалити вкладення
-    confirm_remove_helptext: Ви дійсно хочете видалити це вкладення?
-    document_removed: Вкладення видалено
-  document:
-    error:
-      invalid_format: Отакої! Ваша URL-адреса не дійсна. Переконайтеся, що вона починається з http:// або https://
-    card:
-      no_documents: До цієї групи ще не додано вкладень
-      view_documents: Переглянути всі
-    list:
-      title: Вкладення
-      no_group_documents: До опису цієї групи ще не додано вкладень
-    management:
-      content_header: Всі вкладення
-      uploaded_to: в
-    modal:
-      title: Додати вкладення
-    method_form:
-      helptext: Додайте файли або посилання щоб поділитись ними з групою.
-      url_helptext: Посилання на веб-сайти та онлайн ресурси
-      file_helptext: Завантажте файли з комп'ютера
-    form:
-      url_label: URL-адреса
-      helptext: Натисніть тут, вставте або перетягніть файли для завантаження
-      url_placeholder: Напр. https://www.example.com/attachment.zip
-      title_helptext: Як назвати це вкладення?
-      title_label: Ім’я
-      title_placeholder: Наприклад "Правила спільноти"
-    flash:
-      success: Вкладення збережено
-      destroyed: Вкладення видалено
   membership_requests_page:
     heading: Запити на приєднання
     approve: Підтримую
@@ -966,13 +917,6 @@ uk:
       invitations_sent: '{{count}} запрошень надіслано.'
       no_invitations: 'Ой! Будь ласка, перевірте правильність адреси електронної пошти і спробуйте ще раз.'
       max_invitations: 'Якщо Ви хочете надіслати більш ніж 100 запрошень, використовуйте посилання для команди.'
-  add_members_modal:
-    aria_label: 'Додати учасників з батьківської групи'
-    heading: 'Додати людей з {{name}}'
-    add_members: 'Додати учасників'
-    user_added_to_subgroup: '{{name}} додано до Підгрупи'
-    users_added_to_subgroup: '{{count}} учасників додано до Підгрупи'
-    no_members_to_add: 'Всі учасники з {{parent}} входять до цієї підгрупи'
   memberships_page:
     members: 'Учасники'
     name_label: 'Ім’я'
@@ -1005,30 +949,11 @@ uk:
   membership_form:
     modal_title:
       group: Вкажіть назву групи
-      discussion: Вкажіть назву теми
-      poll: Вкажіть назву {{pollType}}
     title_helptext:
       group: Ця назва з'явиться поруч із іменем {{name}} у цій групі. Використовуйте її щоб люди розуміли свою роль.
-      discussion: Ця назва з'явиться поруч із іменем {{name}} у цій темі. Використовуйте її щоб люди розуміли свою роль.
-      poll: Ця назва з'явиться поруч із іменем {{name}} у цьому {{pollType}}. Використовуйте її щоб люди розуміли свою роль.
     title_label: назва
     title_placeholder: Напр. "Координатор" або "Фасілітатор"
     updated: Назву учасника оновлено
-  pending_invitations_card:
-    heading: Запрошення в очікуванні
-    email: Електронна пошта
-    invitation_link: Посилання на запрошення
-    sent: Відправити
-    sent_at: Відправлено {{date}}
-    copy_url: Скопіювати URL
-    revoke_invitation: Скасувати
-  cancel_invitation_form:
-    heading: Скасувати запрошення
-    question: Ви дійсно хочете скасувати запрошення?
-    submit: "Так, скасувати запрошення"
-    cancel: 'Ні'
-    messages:
-      success: Зпрошення скасовано
   user_page:
     contact_user: 'Зв''язатись з {{name}}'
     location_field: 'Місцезнаходження: {{value}}'
@@ -1288,59 +1213,10 @@ uk:
     confirm_change_to_private_thread: 'Група {{groupName}} є відкритою. Якщо ви продовжите, ця тема стане загальнодоступною.'
     messages:
       success: Тема була переміщена до {{name}}
-  print_modal:
-    load_discussion: Відображення всієї дискусії
-    helptext: Секунду, ми вибираємо всі події в цій темі для друку ...
   delete_comment_dialog:
     title: 'Видалити коментар'
     question: 'Ви впевнені, що хочете видалити цей коментар?'
     confirm: 'Видалити коментар'
-  new_comment_item:
-    aria_label: 'Прокоментовано {{author}}'
-    context_menu:
-      aria_label: 'Налаштування коментаря'
-      edit_comment: 'Редагувати коментар'
-      delete_comment: 'Видалити коментар'
-    in_reply_to: 'у відповідь на <strong>{{recipient}}</strong>'
-    edited: 'Відредаговано'
-  new_vote_item:
-    agree: 'згоден(на)'
-    abstain: 'утримався(лась)'
-    disagree: 'не згоден(на)'
-    block: 'заблокував(ла)'
-    agree_with_statement: 'згоден(на): <span>{{statement}}</span>'
-    abstain_with_statement: 'утримався(лась): <span>{{statement}}</span>'
-    disagree_with_statement: 'не згоден(на): <span>{{statement}}</span>'
-    block_with_statement: 'блокує: <span>{{statement}}</span>'
-  new_proposal_item:
-    author_created_proposal: 'вніс(ла) пропозицію: <span>{{title}}</span>'
-  proposal_closed_item:
-    proposal_closed: 'Було закрито пропозицію: <span>{{title}}</span>'
-  proposal_closed_by_user_item:
-    proposal_closed_by_user: 'закрив(ла) пропозицію: <span>{{title}}</span>'
-  proposal_edited_item:
-    name: 'оновив(ла) назву пропозиції: <span>{{title}}</span>'
-    description: 'оновив(ла) опис пропозиції'
-    closing_at: 'оновив(ла) час закриття пропозиції на <span>{{time}}</span>'
-    description_name: 'оновив(ла) назву та опис пропозиції'
-    closing_at_name: 'оновив(ла) назву та час закриття пропозиції'
-    closing_at_description: 'оновив(ла) опис та час закриття пропозиції'
-    closing_at_description_name: 'оновив(ла) назву, опис та час закриття пропозиції'
-  proposal_outcome_created_item:
-    proposal_outcome_created: 'опублікував(ла) результат щодо пропозиції:'
-  proposal_outcome_updated_item:
-    proposal_outcome_updated: 'оновив(ла) результат щодо пропозиції:'
-  discussion_edited_item:
-    attachment_ids: 'оновив(ла) вкладення до теми'
-    title: 'оновив(ла) назву пропозиції: <span>{{title}}</span>'
-    description: 'оновлено контекст теми'
-    description_title: 'оновити назву теми та контекст'
-    private: 'оновити конфіденційність теми на'
-    public_to_private: 'закрита'
-    private_to_public: 'відкрита'
-    private_title: 'оновити назву теми та конфіденційність'
-    description_private: 'оновлено контекст теми та конфіденційність'
-    description_private_title: 'оновити назву теми, контекст та конфіденційність'
   contact_message_form:
     title: "Привіт! Чим ми можемо допомогти?"
     read_the_manual: |
@@ -1380,46 +1256,6 @@ uk:
     messages:
       app_update: 'Доступна нова версія додатку'
       reload: 'Перезавантажити'
-  authorized_apps_page:
-    title: Підключені додатки
-    no_applications: "Ви ще не підключили жодного з сторонніх додатків."
-    notice: "Ви надали дозвіл наступним додаткам сторонніх розробників використовувати ваш обліковий запис. Натисніть «Скасувати», щоб відключити їх."
-    revoke: Скасувати
-  registered_apps_page:
-    title: Зареєстровані додатки
-    no_applications: "У вас ще немає жодного OAuth додатку! Натисніть нижче, щоб додати перший."
-    name: Назва
-    redirect_uris: URI-адреса для перенаправлення
-    create_new_application: Новий додаток
-  registered_app_page:
-    uid: ID додатку
-    secret: Закритий ключ додатку
-  registered_app_form:
-    new_application_title: Новий додаток
-    edit_application_title: Оновити додаток
-    name_label: Назва
-    name_placeholder: Як називається Ваш додаток?
-    redirect_uri_label: Перенаправити Uris
-    redirect_uri_placeholder: "URI-адреси для зворотнього виклику вашого додатку, наприклад https://myapplication.com/loomio/callback"
-    redirect_uri_note: (по одному рядку на кожен URI, використовуйте 'urn:ietf:wg:oauth:2.0:oob' для локальних тестів)
-    new_application_submit: Створити додаток
-    edit_application_submit: Оновити додаток
-    messages:
-      logo_changed: Логотип оновлено.
-      created: "'{{name}}' створено"
-      updated: "'{{name}}' оновлено"
-  remove_app_form:
-    title: Відключити {{name}}
-    question: "Ви впевнені, що хочете відключити додаток '{{name}}'? Ця дія незворотня."
-    submit: Відключити
-    messages:
-      success: "'{{name}}' було успішно відключено"
-  revoke_app_form:
-    title: Скасувати доступ для {{name}}
-    question: "Ви впевнені, що хочете заборонити '{{name}}' використовувати ваш обліковий запис?"
-    submit: Скасувати доступ
-    messages:
-      success: "'{{name}}' не буде далі використовувати ваш обліковий запис."
   decision_tools_card:
     title: Сприяти
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Допомога</a>
@@ -1650,14 +1486,6 @@ uk:
     question: Ви впевнені що хочете видалити це?
     title: Видалити рішення
     success: Видалено успішно
-  poll_common_unsubscribe_form:
-    title: Отримувати оновлення
-    label: Отримуйте сповіщення на електронну пошту про це рішення
-    tooltip: Поштові повідомлення інформують вас щодо процедури проходження цього рішення, а саме, у разі його редагування, коли спливає термін, або щодо оголошеного результату. Прибравши пташку ви не будете отримувати сповіщення на пошту щодо рішення.
-    helptext_on: Вас буде сповіщено поштою про оновлення щодо цього рішення
-    helptext_off: Вас не будете отримувати жодних сповіщень на пошту щодо цього рішення
-    subscribed: Ви підписались успішно
-    unsubscribed: Підписку скасовано
   poll_common_form:
     title: Назва
     details: Деталі
@@ -1829,8 +1657,6 @@ uk:
     reason_placeholder: Якщо бажаєте, залиште повідомлення
     stance_created: Голосування створено
     stance_updated: Голосування оновлено
-  poll_common_percent_voted:
-    sentence: "{{numerator}} людей проголосували ({{percent}}%)"
   poll_count_chart_panel:
     out_of: з {{goal}}
   poll_meeting_chart_panel:
@@ -1881,17 +1707,6 @@ uk:
     poll_expired: "{{polltype}} закрито"
     stance_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> проголосував(ла): <strong>{{title}}</strong>"
     event_removed: "Видалені з теми"
-  poll_admin_page:
-    title: Координатор - {{title}}
-  poll_common_publish_facebook_preview:
-    shared_a: поділився(лась)
-    link: посилання
-    just_now: Прямо зараз
-  poll_common_publish_slack_preview:
-    poll_published: "опублікував(ла) опитування:"
-    poll_published_with_discussion: "опублікував(ла) опитування в <strong>{{discussion}}</strong>:"
-    view_it_on_loomio: Переглянути її на {{site_name}}
-    timestamp: Сьогодні о {{timestamp}}
   poll_common_subscribe_form:
     receive_updates_title: Ваш голос було враховано
     receive_updates_helptext: Якщо бажаєте отримати поштове сповіщення щодо результатів цього опитування, залиште вашу поштову адресу нижче
@@ -1964,24 +1779,11 @@ uk:
     email: Електронна адреса
     password: Пароль
     reactivate: Відновити обліковий запис
-  install_microsoft:
-    modal_title: Встановити Microsoft Teams
-    card:
-      install_title: Підключити до Microsoft Teams
-      install_helptext: Бот Loomio повідомить вашу команду про обговорення та рішення у Loomio.
-      installed_title: Підключено до Microsoft Teams
-      installed_helptext: Події з цієї групи будуть надіслані до вашої Microsoft Team.
-      install_microsoft: Інтеграція з Microsoft Teams
-      remove_identity: Видалити цю інтеграцію з  Microsoft Teams
-      confirm_remove_title: Видалити цю інтеграцію з  Microsoft Teams
-      confirm_remove_helptext: |
-          Ваш канал Microsoft Teams більше не отримуватиме оновлення з цієї групи.
-          Ви завжди можете повернутися та додати її знов.
-      identity_removed: Інтеграцію видалено
-    form:
-      webhook_installed: Підключено до Microsoft Teams
-      webhook_placeholder: https://outlook.office.com/...
-      event_kind_helptext: Які події слід розмістити у каналі Команди?
+  webhook:
+    formats:
+      microsoft: Microsoft Teams
+      slack: Slack
+    name_label: Ім'я
     event_kinds:
       new_discussion: Створено нову тему
       new_comment: Додано новий коментарій
@@ -1990,78 +1792,15 @@ uk:
       poll_closing_soon: Опитування скоро закривається
       poll_expired: Опитування закінчилось
       outcome_created: Результат оприлюднено
-  install_slack:
-    modal_title: Інтеграція зі Slack
-    modal_helptext: Спочатку вам потрібно ввійти у Slack. Натисніть кнопку нижче, щоб продовжити.
-    login_to_slack: Увійти до Slack
-    remove_slack: Видалити інтеграцію зі Slack
-    card:
-      install_title: Підключити Slack
-      install_helptext: Бот Loomio сповіщатиме вашу команду Slack щодо обговорень та рішень в Loomio. Ви також можете розпочати обговорення та голосувати безпосередньо зі Slack.
-      installed_title: Підключено до Slack
-      installed_helptext: Ця група була підключена до команди slack <strong><a target='_blank' href='https://{{team}}.slack.com'>{{team}}</a></strong>. Події з цієї групи з'являтимуться в каналі <strong>{{channel}}</strong>.
-      install_slack: Підключити Slack
-      remove_identity: Видалити цю інтеграцію
-      confirm_remove_title: Видалити інтеграцію зі slack
-      confirm_remove_helptext: |
-          Ваш канал slack більше не отримуватиме оновлення про цю групу
-          Ви завжди можете повернутися і додати його знову
-      identity_removed: Інтеграцію видалено
-    progress:
-      install: Встановити
-      invite: Запросити
-      decide: Вирішити
-    install:
-      heading: 'Крок 1: Оберіть групу Loomio для інтеграції'
-      tooltip_heading: Loomio та Slack чудово працюють разом
-      it_does_this: Залучайте користувачів, там де вони зараз
-      and_also_this: Починайте опитування одразу і отримайте зворотній зв'язок в режимі реального часу
-      and_also_also_this: Повідомте людей про результат і зробіть своє мислення швидким
-      add_to_group_helptext: Виберіть групу для підключення до Slack
-      create_new_group_helptext: Не маєте групи в Loomio? Просто введіть назву, і ми зробимо її для вас
-      group_name: Назва групи
-      group_name_placeholder: Назвіть вашу нову групу...
-      slack_installed: Slack встановлено
-      install_slack: Встановити Slack зараз
-      start_new_group: Створити нову групу
-      use_existing_group: Використати існуючу групу
-    invite:
-      heading: 'Крок 2: Налаштувати канал в Slack'
-      helptext: Оберіть канал, на який ми маємо публікували оновлення.
-      select_a_channel: Вибрати канал
-      publish_group: Дати вітальне повідомлення
-      publish_group_helptext_on: Ми будемо публікувати повідомлення в цей канал, щоб навчати людей, як використовувати LoomioBot.
-      publish_group_helptext_off: Ми не будемо нічого публікувати до того часу, поки ви не створили опитування.
-      custom_message: Додайте повідомлення
-      set_channel: Налаштувати канал
-    decide:
-      heading: 'Крок 3: Прийміть рішення спільно'
-      helptext: "Тепер, коли ви все нелаштували, прийшов час почати приймати рішення. Виберіть один з наступних варіантів:"
-    common:
-      do_it_later: Я зроблю це пізніше
   browser_warning:
     message: "ВАЖЛИВО! Ви використовуєте застарілий веб-переглядач ({{name}} {{version}}), який не підтримується {{site}}."
     link: Будь ласка змініть веб-переглядач
-  slack_added_modal:
-    title: Успішно!
-    helptext: |
-        Ви успішно додали Slack до своєї групи <strong>{{name}}</strong>.
-        Тепер, коли хтось починає опитування в цій групі, він/вона матимуть можливість
-        публікувати оновлення про це опитування у каналі у вашої команди в slack
-    start_poll_now: Прийміть рішення зараз
   powered_by:
     slogan: Кращі рішення приймаються разом
     powered_by_loomio: Працює на Loomio
     privacy_policy: Політика конфіденційності
     terms_of_service: Умови використання
     front_page: Перша сторінка
-  vue_upgraded_modal:
-    use_old_loomio: Використовувати стару Loomio
-    title: Ви використовуєте Loomio 2.0!
-    body: |
-        <p>Це швидша та краща Loomio!</p>
-        <p>Ми сподіваємось, що вона сподобається вам, та за потреби, ви можете перейти на попередню версію у бічній панелі.</p>
-        <p><a href="{{link}}" target="_blank">Дізнайтесь, що нового.</a></p>
   group_survey:
     categories:
       business: Бізнес

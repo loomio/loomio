@@ -39,8 +39,6 @@ mk:
       discussions: 'Дискусии'
   notifications:
     header: "Известувања"
-  position_buttons_panel:
-    heading: Кажете што имате
   discussion_form:
     group_label: 'Група'
     title_label: 'Наслов'
@@ -66,9 +64,6 @@ mk:
   group_form:
     group_name_placeholder: 'Кое е името на твојата група?'
     profile: Профил
-  document:
-    form:
-      title_label: Име
   membership_requests_page:
     approve: Одобри
     ignore: Игнорирај
@@ -101,10 +96,6 @@ mk:
     title: 'Избриши го коментарот'
     question: 'Дали си сигурен/а дека сакаш да го избришиш коментарот?'
     confirm: 'Избриши го коментарот'
-  new_comment_item:
-    context_menu:
-      edit_comment: 'Измени го коментарот'
-      delete_comment: 'Избриши го коментарот'
   contact_message_form:
     name_label: 'Твоето име'
     subject_label: "Тема"
@@ -126,6 +117,8 @@ mk:
     'no': 'Не'
   auth_form:
     name_placeholder: Твоето име
+  webhook:
+    name_label: Име
   group_survey:
     categories:
       business: Бизнис

@@ -203,8 +203,6 @@ eo:
     sign_out: 'Elsaluti'
   notifications:
     header: "Sciigoj"
-  position_buttons_panel:
-    heading: Donu vian opinion
   discussion_fork_actions:
     move: Movi
   discussion_form:
@@ -258,11 +256,6 @@ eo:
     group_name_placeholder: 'Kio estas la nomo de via grupo?'
     privacy: 'Privateco'
     profile: Profilo
-  documents_page:
-    confirm_remove_title: Forigu alkroĉaĵon.
-  document:
-    form:
-      title_label: Nomo
   membership_requests_page:
     approve: Aprobi
     ignore: Ignori
@@ -274,10 +267,6 @@ eo:
     members: 'Membroj'
     name_label: 'Nomo'
     remove_member_label: 'Forviŝi'
-  pending_invitations_card:
-    email: Retadreso
-  cancel_invitation_form:
-    cancel: 'Ne'
   profile_page:
     change_picture_link: 'Ŝanĝi bildon'
     profile: 'Profilo'
@@ -338,17 +327,6 @@ eo:
     title: 'Forigi komenton'
     question: 'Ĉu vi certas, ke vi volas forigi tiun ĉi komenton?'
     confirm: 'Forigi komenton'
-  new_comment_item:
-    context_menu:
-      edit_comment: 'Redakti komenton'
-      delete_comment: 'Forigi komenton'
-    edited: 'Redaktita'
-  new_vote_item:
-    agree: 'konsentita'
-    disagree: 'malkonsentita'
-  discussion_edited_item:
-    public_to_private: 'nepublika'
-    private_to_public: 'publika'
   contact_message_form:
     title: "Saluton! Kiel ni povas helpi?"
     contact_us: 'Kontakti nin'
@@ -369,10 +347,6 @@ eo:
   global:
     messages:
       reload: 'Reŝarĝi'
-  registered_apps_page:
-    name: Nomo
-  registered_app_form:
-    name_label: Nomo
   decision_tools_card:
     proposal_title: Propozicio
     count_title: Kontroli
@@ -446,11 +420,6 @@ eo:
   poll_dot_vote_vote_form:
     stance_created: Voĉdono kreis
     stance_updated: Voĉdono ĝisdatigita
-  poll_common_publish_facebook_preview:
-    link: ligilo
-    just_now: Ĝuste nun
-  poll_common_publish_slack_preview:
-    timestamp: Hodiaŭ je {{timestamp}}
   polls_page:
     heading: Decidoj
   auth_form:
@@ -465,24 +434,10 @@ eo:
     name: Nomo
     email: Retadreso
     password: Pasvorto
-  install_slack:
-    login_to_slack: Ensaluti al Slack
-    card:
-      install_title: Konekti al Slack
-      installed_title: Konektita al Slack
-      install_slack: Konektigi Slack
-    progress:
-      install: Instali
-      invite: Inviti
-      decide: Decidi
-    install:
-      group_name_placeholder: Nomi vian novan grupon…
-    common:
-      do_it_later: Mi faros ĉi tio poste
+  webhook:
+    name_label: Nomo
   browser_warning:
     link: Bonvolu komuti al alia retumilo
-  slack_added_modal:
-    title: Sukceso!
   group_survey:
     categories:
       business: Entrepreno

@@ -487,16 +487,6 @@ es:
     outcome_created: "<strong>{{name}}</strong> compartió un resultado: <strong>{{title}}</strong>"
     outcome_announced: "<strong>{{name}}</strong> compartió un resultado: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> participó en: <strong>{{title}}</strong>"
-  position_buttons_panel:
-    heading: Denos su opinión
-  extend_proposal_form:
-    aria_label: Cambiar fecha de cierre
-    title: 'Cambiar fecha de cierre'
-    success: 'Fecha de cierre de la propuesta actualizada'
-    submit: 'Actualizar la fecha de cierre'
-  discussion_record:
-    created: 'El hilo {{title}} ha sido creado con éxito en {{groupName}}'
-    updated: 'Guardar cambios en {{title}}'
   discussion_fork_actions:
     move: Mover
     start_new_thread: O empieza un nuevo hilo
@@ -524,10 +514,9 @@ es:
     send_group: Invita a gente a {{nombre}}
     audiences:
       parent_group: Integrantes de {{name}}
-      formal_group: 'Integrantes de {{name}} '
+      group: 'Integrantes de {{name}} '
       discussion_group: Integrantes del hilo
       voters: Gente que ha votado
-      non_voters: Gente que no ha votado
     form:
       too_many_invitations: |
           Límite de invitaciones excedido. <a href="{{upgradeUrl}}" target="_blank">Mejore su abono</a>
@@ -819,43 +808,6 @@ es:
     heading: 'Pedidos de membresía '
     manage_requests: 'Gestionar peticiones '
     manage_requests_with_count: Gestionar peticiones ({{count}})
-  documents_page:
-    title: Adjuntos
-    fragment_placeholder: Buscar archivos adjuntos ...
-    add_document: Añadir archivo adjunto
-    no_documents: No se encontraron archivos adjuntos para este grupo. Haga click en 'Agregar archivo adjunto' arriba para agregar uno.
-    no_documents_from_fragment: No se encontraron archivos adjuntos con nombre '{{fragment}}'
-    confirm_remove_title: Quitar archivo adjunto
-    confirm_remove_helptext: ¿Seguro que quieres eliminar este archivo adjunto?
-    document_removed: Archivo adjunto eliminado
-  document:
-    error:
-      invalid_format: ¡Vaya! su URL es inválida. Asegúrese de que empieza por http:// ó https://
-    card:
-      no_documents: Aún no se han cargado archivos adjuntos a este grupo
-      view_documents: Ver todo
-    list:
-      title: Adjuntos
-      no_group_documents: Aún no se han cargado archivos adjuntos a esta decisión grupal
-    management:
-      content_header: Todos los adjuntos
-      uploaded_to: en
-    modal:
-      title: Agregar archivo adjunto
-    method_form:
-      helptext: Adjunta archivos o enlaces para compartirlos con el grupo.
-      url_helptext: Enlaces a páginas web o recursos online
-      file_helptext: Adjunte archivos desde su ordenador
-    form:
-      url_label: URL
-      helptext: Clic aquí, pegue, o arrastre archivos para cargarlos
-      url_placeholder: E.j. https://www.example.com/attachment.zip
-      title_helptext: ¿Cómo llamamos este adjunto?
-      title_label: Nombre
-      title_placeholder: 'E.j. ''Guías Comunitarias'' '
-    flash:
-      success: Adjunto guardado
-      destroyed: Archivo adjunto eliminado
   membership_requests_page:
     heading: Solicitudes de ingreso
     approve: 'Aprobar '
@@ -900,13 +852,6 @@ es:
       invitations_sent: '{{count}} invitaciones enviadas.'
       no_invitations: '¡Uh oh! Comprueba que la dirección de correo electrónico es correcta e inténtalo de nuevo.'
       max_invitations: 'Si quiere enviar mas de 100 invitaciones, utilice un enlace de grupo.'
-  add_members_modal:
-    aria_label: 'Añadir integrantes del grupo principal'
-    heading: 'Adherir integrantes de {{name}}'
-    add_members: 'Incluye integrantes '
-    user_added_to_subgroup: '{{name}} incluido al Subgrupo '
-    users_added_to_subgroup: '{{count}} Usuarios incluidos al Subgrupo '
-    no_members_to_add: 'Todos los integrantes de {{parent}} pertenecen a este subgrupo'
   memberships_page:
     members: 'Integrantes'
     name_label: 'Nombre'
@@ -930,30 +875,11 @@ es:
   membership_form:
     modal_title:
       group: Añadir título del grupo
-      discussion: Añadir título al hilo
-      poll: 'Añadir título a {{pollType}} '
     title_helptext:
       group: Este título será mostrado junto al nombre de {{name}} dentro de este grupo. Úselo para que otros integrantes conozcan su cargo.
-      discussion: Este título será mostrado junto al nombre de {{name}} dentro de este hilo. Úselo para que otros integrantes conozcan su cargo.
-      poll: Este título será mostrado junto al nombre de {{name}} dentro de este {{pollType}}. Úselo para que otros integrantes conozcan su cargo.
     title_label: Título
     title_placeholder: ej. ´Coordinadora´o ´Facilitadora´
     updated: Título del integrante actualizado
-  pending_invitations_card:
-    heading: Invitaciones pendientes
-    email: 'correo electrónico '
-    invitation_link: Enlace a la invitación
-    sent: 'Enviado '
-    sent_at: Enviado {{date}}
-    copy_url: Copiar URL
-    revoke_invitation: Remover
-  cancel_invitation_form:
-    heading: Cancelar invitación
-    question: ¿Está seguro de que quiere cancelar esta invitación?
-    submit: "Si, cancelar la invitación"
-    cancel: 'No '
-    messages:
-      success: Invitación cancelada
   user_page:
     contact_user: 'Contactar {{name}}'
     location_field: 'Ubicación: {{value}}'
@@ -1179,59 +1105,10 @@ es:
     confirm_change_to_private_thread: '{{groupName}} es un grupo público. Si continuas, este hilo se hará público.'
     messages:
       success: El hilo ha sido movido a {{name}}
-  print_modal:
-    load_discussion: 'Cargando discusión entera '
-    helptext: 'Un momento, estamos cargando todos los eventos en este hilo para impresión... '
   delete_comment_dialog:
     title: 'Borrar comentario'
     question: '¿Estás seguro de que quieres borrar este comentario?'
     confirm: 'Borrar comentario'
-  new_comment_item:
-    aria_label: 'Comentario de {{author}}'
-    context_menu:
-      aria_label: 'Opciones de comentario'
-      edit_comment: 'Editar comentario'
-      delete_comment: 'Borrar comentario'
-    in_reply_to: 'en respuesta a <strong>{{recipient}}</strong>'
-    edited: 'Editado'
-  new_vote_item:
-    agree: 'de acuerdo'
-    abstain: 'abstiene'
-    disagree: 'en desacuerdo'
-    block: 'bloqueado'
-    agree_with_statement: 'de acuerdo: <span>{{statement}}</span>'
-    abstain_with_statement: 'abstiene: <span>{{statement}}</span>'
-    disagree_with_statement: 'en desacuerdo: <span>{{statement}}</span>'
-    block_with_statement: 'bloqueo: <span>{{statement}}</span>'
-  new_proposal_item:
-    author_created_proposal: 'comenzó una propuesta: <span>{{title}}</span>'
-  proposal_closed_item:
-    proposal_closed: 'La propuesta <strong>{{title}}</strong> está cerrada.'
-  proposal_closed_by_user_item:
-    proposal_closed_by_user: 'cerró la propuesta: <span>{{title}}</span>'
-  proposal_edited_item:
-    name: 'actualizó el título de la propuesta: <span>{{title}}</span>'
-    description: 'actualizó la descripción de la propuesta'
-    closing_at: 'actualizó la propuesta para que cierre <span>{{time}}</span>'
-    description_name: 'actualizó el título y la descripción de la propuesta'
-    closing_at_name: 'actualizó el título y el tiempo de cierre de la propuesta'
-    closing_at_description: 'actualizó la descripción y el tiempo de cierre de la propuesta'
-    closing_at_description_name: 'actualizó el título, la descripción y el tiempo de cierre de la propuesta'
-  proposal_outcome_created_item:
-    proposal_outcome_created: 'publicó el resultado de la propuesta:'
-  proposal_outcome_updated_item:
-    proposal_outcome_updated: 'actualizó el resultado de la propuesta'
-  discussion_edited_item:
-    attachment_ids: 'actualizó los archivos adjuntos del hilo'
-    title: 'actualizó el título del hilo: <span>{{title}}</span>'
-    description: 'actualizó el contexto del hilo'
-    description_title: 'actualizó el título y el contexto del hilo'
-    private: 'actualizó la privacidad del hilo a'
-    public_to_private: 'privado'
-    private_to_public: 'público'
-    private_title: 'actualizó el título y la privacidad del hilo'
-    description_private: 'actualizó el contexto y la privacidad del hilo'
-    description_private_title: 'actualizó el título, el contexto y la privacidad del hilo'
   contact_message_form:
     title: "¡Hola! ¿Cómo podemos ayudarle?"
     read_the_manual: |
@@ -1270,46 +1147,6 @@ es:
     messages:
       app_update: 'Una nueva versión de la app está disponible '
       reload: 'Actualizar'
-  authorized_apps_page:
-    title: 'Apps autorizados '
-    no_applications: "No has autorizado ningún app de terceros todavía."
-    notice: "Ha dado el permiso a aplicaciones de terceros para usar su cuenta. Haga clic en \"Revocar\" para desactivarlos."
-    revoke: Remover
-  registered_apps_page:
-    title: 'Aplicaciones registradas '
-    no_applications: "No tienes ninguna aplicación OAuth todavía. Haz clic debajo para crear una."
-    name: Nombre
-    redirect_uris: Redireccionar URLs
-    create_new_application: 'Nueva aplicación '
-  registered_app_page:
-    uid: ID de la aplicación
-    secret: Secreto de la aplicación
-  registered_app_form:
-    new_application_title: 'Nueva aplicación '
-    edit_application_title: Actualizar la aplicación
-    name_label: 'Nombre '
-    name_placeholder: ¿Cómo se llama su aplicación?
-    redirect_uri_label: Redireccionar Uris
-    redirect_uri_placeholder: "La Uri de respuesta de su aplicación, p. ej.: https://myapplication.com/loomio/callback"
-    redirect_uri_note: (una línea por URI, usa 'urn:ietf:wg:oauth:2.0:oob' para pruebas locales)
-    new_application_submit: Crear aplicación
-    edit_application_submit: Actualizar la aplicación
-    messages:
-      logo_changed: El logo ha sido actualizado.
-      created: "'{{name}}' creado"
-      updated: "'{{name}}' actualizado"
-  remove_app_form:
-    title: Desactivar {{name}}
-    question: "¿Estás seguro de que quieres desactivar la aplicación '{{name}}'? Esta acción no puede ser deshecha. "
-    submit: Desactivar
-    messages:
-      success: "'{{name}}' ha sido desactivada satisfactoriamente"
-  revoke_app_form:
-    title: Acceso revocado para {{name}}
-    question: "¿Está seguro que quieres rechazar que '{{name}}' use su cuenta?"
-    submit: 'Revocar acceso '
-    messages:
-      success: "'{{name}}' ya no puede usar su cuenta."
   decision_tools_card:
     title: Facilitar
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Ayuda</a>
@@ -1498,14 +1335,6 @@ es:
     question: ¿Estás seguro que quieres eliminar esto?
     title: 'Eliminar decisión '
     success: Eliminada con éxito.
-  poll_common_unsubscribe_form:
-    title: Recibir actualizaciones
-    label: Recibir actualizaciones por correo electrónico sobre esta decisión
-    tooltip: 'Las actualizaciones por correo electrónico le mantienen informado sobre la decisión, p. ej.: cuándo es editada, cuándo finaliza, o cuándo se publica el resultado. Desmarcar esta casilla le asegura no recibir ninguna notificación por correo electrónico al respecto. '
-    helptext_on: 'Recibirás correos electrónicos sobre actividad en esta decisión. '
-    helptext_off: 'No recibirás correos electrónicos sobre actividad en esta decisión. '
-    subscribed: Suscripción exitosa
-    unsubscribed: Cancelación de la suscripción exitosa
   poll_common_form:
     title: Título
     details: Detalles
@@ -1676,17 +1505,6 @@ es:
     stance_updated: Opción actualizada
   thread_item:
     event_removed: "Eliminado del hilo"
-  poll_admin_page:
-    title: Administrador - {{title}}
-  poll_common_publish_facebook_preview:
-    shared_a: Comparte un
-    link: enlace
-    just_now: Ahora
-  poll_common_publish_slack_preview:
-    poll_published: "publicar encuesta"
-    poll_published_with_discussion: "publicó una encuesta en <strong>{{discussion}}</strong>:"
-    view_it_on_loomio: Verlo en {{site_name}}
-    timestamp: Hoy en {{timestamp}}
   poll_common_subscribe_form:
     receive_updates_title: Su voto ha sido enviado
     receive_updates_helptext: Si desea recibir un correo con los resultados de esta encuesta, introduzca su dirección de correo electrónico debajo
@@ -1748,22 +1566,11 @@ es:
     email: Correo Electrónico
     password: Contraseña
     reactivate: 'Reactiva la cuenta '
-  install_microsoft:
-    modal_title: Instala Equipos de Microsoft
-    card:
-      install_title: Conecta a Equipos de Microsoft
-      install_helptext: El robot de Loomio notifica a tu equipo acerca de discusiones y decisiones en Loomio.
-      installed_title: Conectado a los Equipos de Microsoft
-      installed_helptext: Se enviarán eventos de este grupo a tu Equipo de Microsoft.
-      confirm_remove_helptext: |
-          Tu canal de equipos de microsoft ya no recibirá actualizaciones del grupo.
-          Siempre puedes retroceder y añadirlo de nuevo.
-      identity_removed: 'Integración eliminada '
-    form:
-      webhook_label: Webhook URL
-      webhook_installed: Conectado a los Equipos de Microsoft
-      webhook_placeholder: https://outlook.office.com/...
-      event_kind_helptext: ¿Que eventos se deberían publicar en el canal de los equipos?
+  webhook:
+    formats:
+      microsoft: Equipos Microsoft
+    url_label: Webhook URL
+    name_label: Nombre
     event_kinds:
       new_discussion: Se ha iniciado un nuevo hilo
       new_comment: Se ha hecho un nuevo comentario
@@ -1772,61 +1579,11 @@ es:
       poll_closing_soon: Una encuesta está próxima a expirar
       poll_expired: Ha expirado una encuesta 
       outcome_created: Se ha compartido un resultado
-  install_slack:
-    login_to_slack: Ingresar en Slack
-    card:
-      install_title: Conectar a Slack
-      install_helptext: Loomio bot notifica al grupo de Slack de las discusiones y decisiones en Loomio. También puede iniciar decisiones y votar desde Slack.
-      installed_title: Conectado a Slack
-      installed_helptext: Este grupo ha sido conectado al <strong><a target='_blank' href='https://{{team}}.slack.com'>{{team}}</a></strong> equipo en Slack. Eventos de este grupo aparecerán en el canal <strong>{{channel}}</strong>.
-      install_slack: Conectar a Slack
-      remove_identity: Eliminar esta integración
-      confirm_remove_title: Eliminar integración con Slack
-      confirm_remove_helptext: |
-          Su canal Slack ya no recibirá actualizaciones sobre el grupo.
-          Siempre podrá volver y añadirlo otra vez.
-      identity_removed: 'Integración eliminada '
-    progress:
-      install: Instalar
-      invite: Invitar
-      decide: Decide
-    install:
-      heading: 'Primer paso: Selecciona un grupo de Loomio al que unirte'
-      tooltip_heading: Loomio y Slack funcionan muy bien juntos.
-      it_does_this: 'Incluye a las personas desde donde estén '
-      and_also_this: Inicia encuestas instantáneamente y recibe respuestas en tiempo real.
-      and_also_also_this: Comunica el resultado con los integrantes y mejora las ideas rápidamente
-      add_to_group_helptext: Selecciona un grupo para enlazarlo con Slack
-      create_new_group_helptext: ¿No tienes un grupo en Loomio? Simplemente ingresa un nombre, y crearemos uno para ti
-      group_name: Nombre del grupo
-      group_name_placeholder: Dé un nombre al nuevo grupo...
-      slack_installed: Slack integrado
-      install_slack: Instalar Slack ahora
-      start_new_group: Empezar un nuevo grupo
-      use_existing_group: 'Usa un grupo ya existente '
-    invite:
-      heading: 'Paso 2: Crea un canal en Slack'
-      select_a_channel: Selecciona un canal
-      publish_group: Publica un mensaje de bienvenida
-      publish_group_helptext_on: Publicaremos un mensaje en ese canal para informarle a la gente como usar Loomio Bot.
-      publish_group_helptext_off: No Publicaremos nada hasta que creés una encuesta.
-      custom_message: 'Mensaje personalizado '
-      set_channel: Selecciona un canal
-    decide:
-      heading: 'Paso 3: Toma decisiones juntos '
-      helptext: "Ahora que ya está todo listo, es tiempo de empezar a tomar decisiones. Selecciona una de las opciones debajo:"
-    common:
-      do_it_later: Lo haré luego
+  configure_sso:
+    title: Entrada de validación única
   browser_warning:
     message: "IMPORTANTE: estas usando un navegador anticuado ({{name}} {{version}}) que no es soportado por {{site}}."
     link: 'Por favor intenta con otro navegador '
-  slack_added_modal:
-    title: Hecho!
-    helptext: |
-        Ha añadido Slack al grupo <strong>{{name}}</strong> satisfactoriamente.
-        Desde ahora cuando cualquier persona use una de las herramientas de decisión en este grupo, tendrán la opción de
-        publicar actualizaciones sobre la misma en un canal de su equipo Slack.
-    start_poll_now: Toma una decisión ahora
   powered_by:
     powered_by_loomio: Creado por Loomio
     privacy_policy: Política de privacidad

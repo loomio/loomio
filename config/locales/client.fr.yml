@@ -488,16 +488,6 @@ fr:
     outcome_created: "<strong>{{name}}</strong> a renseigné un résultat <strong>{{title}}</strong>"
     outcome_announced: "<strong>{{name}}</strong> a renseigné un résultat <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> a participé à : <strong>{{title}}</strong>"
-  position_buttons_panel:
-    heading: Prenez la parole
-  extend_proposal_form:
-    aria_label: Changer la date de clôture
-    title: 'Modifier l’heure de fermeture'
-    success: 'L’heure de fermeture de la proposition a été modifiée'
-    submit: 'Modifier l’heure de fermeture'
-  discussion_record:
-    created: 'La discussion {{title}} a bien été créée dans {{groupName}}'
-    updated: 'Modifications de {{title}} enregistrées'
   discussion_fork_actions:
     helptext: 'Sélectionnez les éléments que vous souhaitez placer dans d''autres discussions '
     move: Déplacer
@@ -545,10 +535,9 @@ fr:
     inviting_guests_to_thread: Les personnes n'étant pas membres de {{group}} seront ajoutés en tant qu'invités et n'auront pas accès aux autres discussions du groupe
     audiences:
       parent_group: Membres de {{name}}
-      formal_group: Membres de {{name}}
+      group: Membres de {{name}}
       discussion_group: Membres de la discussion
       voters: Personnes qui ont voté
-      non_voters: Personnes qui n'ont pas voté
     form:
       too_many_invitations: |
           Invitations maximum atteintes. <a href="{{upgradeUrl}}" target="_blank">Mettre à jour</a>
@@ -751,7 +740,6 @@ fr:
     options:
       label: 'Options'
       edit_group: 'Modifier les paramètres du groupe'
-      open_group_wizard: 'Assistant de configuration de groupe '
       export_data: Exporter les données de votre groupe
       manage_members: 'Gérer les membres'
       add_subgroup: 'Ajouter un sous-groupe'
@@ -885,43 +873,6 @@ fr:
     heading: 'Demandes d’ajout'
     manage_requests: Gérer les demandes
     manage_requests_with_count: Gérer les demandes ({{count}})
-  documents_page:
-    title: Pièces jointes
-    fragment_placeholder: Rechercher dans les documents…
-    add_document: Ajouter un document
-    no_documents: Aucun document trouvé pour ce groupe. Utilisez « Ajouter un document » ci-dessus.
-    no_documents_from_fragment: Aucun document trouvé pour « {{fragment}} »
-    confirm_remove_title: Enlever la pièce jointe
-    confirm_remove_helptext: Êtes-vous sûr·e de vouloir supprimer ce document ?
-    document_removed: Document supprimé
-  document:
-    error:
-      invalid_format: Oups, votre URL n'est pas correcte. Elle doit commencer par http:// ou https://
-    card:
-      no_documents: Aucun document n'a été ajouté à ce groupe pour le moment.
-      view_documents: Tout voir
-    list:
-      title: Pièces jointes
-      no_group_documents: Il n'y a pas encore de document joint à la description du groupe
-    management:
-      content_header: Tous les documents
-      uploaded_to: dans
-    modal:
-      title: Ajouter un document
-    method_form:
-      helptext: Ajoutez des fichiers ou des liens pour les partager avec votre groupe.
-      url_helptext: Lien vers des sites ou des outils en ligne
-      file_helptext: Ajoutez des fichiers depuis votre ordinateur ou votre mobile
-    form:
-      url_label: URL
-      helptext: Cliquez, collez ou déposez des fichiers ici pour les partager
-      url_placeholder: par exemple « https://www.exemple.com/piecejointe.zip »
-      title_helptext: Comment nommer ce document ?
-      title_label: Nom
-      title_placeholder: Par exemple « Règles du groupe »
-    flash:
-      success: Document enregistré
-      destroyed: Document supprimé
   membership_requests_page:
     heading: Demandes d’ajout
     approve: Approuver
@@ -967,13 +918,6 @@ fr:
       invitations_sent: '{{count}} invitation(s) envoyée(s).'
       no_invitations: 'Oh-oh ! Merci de vérifier l’adresse e-mail puis de réessayer.'
       max_invitations: 'Si vous voulez envoyer plus de 100 invitations, vous devez utiliser un lien d’invitation.'
-  add_members_modal:
-    aria_label: 'Ajoutez des membres du groupe parent'
-    heading: 'Ajouter des personnes de {{name}}'
-    add_members: 'Ajouter des membres'
-    user_added_to_subgroup: '{{name}} ajouté au sous-groupe'
-    users_added_to_subgroup: '{{count}} utilisateur(s) ajouté(s) au sous-groupe'
-    no_members_to_add: 'Tous les membres de {{parent}} appartiennent à ce sous-groupe'
   memberships_page:
     members: 'Les membres'
     name_label: 'Nom'
@@ -1006,30 +950,11 @@ fr:
   membership_form:
     modal_title:
       group: Définir un rôle dans ce groupe
-      discussion: Définir un rôle dans cette discussion
-      poll: Définir un rôle dans ce {{pollType}}
     title_helptext:
       group: Ce rôle apparaîtra après le nom de {{name}} dans ce groupe. Utilisez-le pour informer les personnes de leur rôle.
-      discussion: Ce rôle apparaîtra après le nom de {{name}} dans cette discussion. Utilisez-le pour informer les personnes de leur rôle.
-      poll: Ce rôle apparaîtra après le nom de {{name}} dans ce {{pollType}}. Utilisez-le pour informer les personnes de leur rôle.
     title_label: rôle
     title_placeholder: Par exemple, « Coordinateur » ou « Facilitateur »
     updated: Rôle mis à jour
-  pending_invitations_card:
-    heading: Invitations en attente
-    email: Adresse e-mail
-    invitation_link: Lien d’invitation
-    sent: Envoyé
-    sent_at: Envoyé le {{date}}
-    copy_url: Copier l’URL
-    revoke_invitation: Annuler
-  cancel_invitation_form:
-    heading: Annuler l’invitation
-    question: Êtes-vous certain de vouloir annuler cette invitation ?
-    submit: "Oui, annuler l’invitation"
-    cancel: 'Non'
-    messages:
-      success: Invitation annulée
   user_page:
     contact_user: 'Contacter {{name}}'
     location_field: 'Lieu: {{value}}'
@@ -1289,59 +1214,10 @@ fr:
     confirm_change_to_private_thread: '{{groupName}}  est un groupe ouvert. Si vous confirmez, cette discussion sera rendue publique.'
     messages:
       success: La discussion a été déplacée vers {{name}}
-  print_modal:
-    load_discussion: Chargement de toute la discussion
-    helptext: Juste un moment, nous récupérons tous les évènements de cette discussion pour l’impression…
   delete_comment_dialog:
     title: 'Effacer le commentaire'
     question: 'Êtes-vous sûr de vouloir effacer ce commentaire ?'
     confirm: 'Effacer le commentaire'
-  new_comment_item:
-    aria_label: 'Commenté par {{author}}'
-    context_menu:
-      aria_label: 'Options du commentaire'
-      edit_comment: 'Modifier le commentaire'
-      delete_comment: 'Effacer le commentaire'
-    in_reply_to: ' en réponse à <strong>{{recipient}}</strong>'
-    edited: 'Modifié'
-  new_vote_item:
-    agree: 'd’accord'
-    abstain: 's’abstient'
-    disagree: 'pas d’accord'
-    block: 'bloque'
-    agree_with_statement: 'd’accord sur : <span>{{statement}}</span>'
-    abstain_with_statement: 's’abstient sur : <span>{{statement}}</span>'
-    disagree_with_statement: 'pas d’accord sur : <span>{{statement}}</span>'
-    block_with_statement: 'bloque sur : <span>{{statement}}</span>'
-  new_proposal_item:
-    author_created_proposal: 'a démarré une proposition : <span>{{title}}</span>'
-  proposal_closed_item:
-    proposal_closed: 'La proposition <span>{{title}}</span> est fermée'
-  proposal_closed_by_user_item:
-    proposal_closed_by_user: 'a fermé la proposition : <span>{{title}}</span>'
-  proposal_edited_item:
-    name: 'a mis à jour le titre de la proposition: <span>{{title}}</span>'
-    description: 'a mis à jour la description de la proposition'
-    closing_at: 'a modifié la fermeture de la proposition à <span>{{time}}</span>'
-    description_name: 'a modifié le titre et la description de la proposition'
-    closing_at_name: 'a modifié le titre et l’heure de clôture de la proposition'
-    closing_at_description: 'a modifié la description et l’heure de clôture de la proposition'
-    closing_at_description_name: 'a modifié les titre, description et heure de clôture de la proposition'
-  proposal_outcome_created_item:
-    proposal_outcome_created: 'a publié le résultat de la proposition'
-  proposal_outcome_updated_item:
-    proposal_outcome_updated: 'a mis à jour le résultat de la proposition'
-  discussion_edited_item:
-    attachment_ids: 'a modifié les pièces attachées de la discussion'
-    title: 'a modifié le titre de la discussion : <span>{{title}}</span>'
-    description: 'a modifié le contexte de la discussion'
-    description_title: 'a modifié les titre et contexte de la discussion'
-    private: 'a modifié la confidentialité de la discussion à'
-    public_to_private: 'privée'
-    private_to_public: 'publique'
-    private_title: 'a modifié titre et confidentialité de la discussion'
-    description_private: 'a modifié contexte et confidentialité de la discussion'
-    description_private_title: 'a modifié titre, contexte et confidentialité de la discussion'
   contact_message_form:
     title: "Salut ! Comment puis-je vous aider ?"
     read_the_manual: |
@@ -1381,46 +1257,6 @@ fr:
     messages:
       app_update: 'Une nouvelle version de l’application est disponible'
       reload: 'Recharger'
-  authorized_apps_page:
-    title: Applications autorisées
-    no_applications: "Vous n’avez pas encore autorisé d’application tierce."
-    notice: "Vous avez pas encore autorisé les applications tierces suivantes à utiliser votre compte. Cliquez sur « Révoquer » pour les désactiver."
-    revoke: Révoquer
-  registered_apps_page:
-    title: Applications enregistrées
-    no_applications: "Aucune application OAuth ! Cliquez ci-dessous pour en créer une."
-    name: Nom
-    redirect_uris: Redirection des URIs
-    create_new_application: Nouvelle application
-  registered_app_page:
-    uid: ID de l’application
-    secret: Application secrète
-  registered_app_form:
-    new_application_title: Nouvelle application
-    edit_application_title: Mettre à jour l’application
-    name_label: Nom
-    name_placeholder: Quel est le nom de votre application ?
-    redirect_uri_label: Redirection des URIs
-    redirect_uri_placeholder: "L’URI de retour pour votre application, ex : https://myapplication.com/loomio/callback"
-    redirect_uri_note: (une ligne par URI, utiliser 'urn:ietf:wg:oauth:2.0:oob' pour des tests locaux)
-    new_application_submit: Créer l’application
-    edit_application_submit: Mettre à jour l’application
-    messages:
-      logo_changed: Logo mis à jour.
-      created: "« {{name}} » créé"
-      updated: "« {{name}} » mis à jour"
-  remove_app_form:
-    title: Désactiver {{name}}
-    question: "Êtes-vous sûr de vouloir désactiver l’application « {{name}} » ? Cette action est irréversible."
-    submit: Désactiver
-    messages:
-      success: "« {{name}} » a été désactivé avec succès"
-  revoke_app_form:
-    title: Refuser l’accès à {{name}}
-    question: "Voulez-vous vraiment cesser d’autoriser « {{name}} » à utiliser votre compte ?"
-    submit: Révoquer l’accès
-    messages:
-      success: "« {{name}} » ne peut plus utiliser votre compte."
   decision_tools_card:
     title: 'Simplifier '
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Aide</a>
@@ -1651,14 +1487,6 @@ fr:
     question: Êtes-vous sûr·e de vouloir supprimer cela ?
     title: Supprimer le choix
     success: Supprimer avec succès
-  poll_common_unsubscribe_form:
-    title: Recevoir les mises à jour
-    label: Recevoir des courriels quand cette décision est mise à jour
-    tooltip: Les notifications par courriel vous tiennent informé⋅e à propos de cette décision, par exemple quand elle est modifiée, quand elle se termine, ou quand un résultat a été atteint. En décochant cette case, vous ne recevrez plus de nouveaux courriels de notification pour cette décision.
-    helptext_on: Vous recevrez un courriel lorsqu’il y aura une activité dans cette décision
-    helptext_off: Vous ne recevrez aucun courriel concernant cette décision
-    subscribed: Vous vous êtes abonné·e avec succès
-    unsubscribed: Vous vous êtes désabonné·e avec succès
   poll_common_form:
     title: Titre
     details: Détails
@@ -1829,8 +1657,6 @@ fr:
     reason_placeholder: Laissez un message si vous le voulez
     stance_created: Vote créé
     stance_updated: Vote mis à jour
-  poll_common_percent_voted:
-    sentence: "{{numerator}} personnes ont votées ({{percent}}%)"
   poll_count_chart_panel:
     out_of: sur {{goal}}
   poll_meeting_chart_panel:
@@ -1881,17 +1707,6 @@ fr:
     poll_expired: "{{polltype}} fermé"
     stance_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>a voté pour : <strong>{{title}}</strong>"
     event_removed: "retiré de la discussion"
-  poll_admin_page:
-    title: Administration - {{title}}
-  poll_common_publish_facebook_preview:
-    shared_a: a partagé un
-    link: lien
-    just_now: À l’instant
-  poll_common_publish_slack_preview:
-    poll_published: "a publié un sondage"
-    poll_published_with_discussion: "a publié un sondage dans <strong>{{discussion}}</strong>:"
-    view_it_on_loomio: Voir sur {{site_name}}
-    timestamp: Aujourd’hui à {{timestamp}}
   poll_common_subscribe_form:
     receive_updates_title: Votre vote a bien été enregistré
     receive_updates_helptext: Pour recevoir le résultat de ce sondage par courriel, merci de renseigner votre adresse e-mail ci-dessous
@@ -1964,26 +1779,11 @@ fr:
     email: Adresse e-mail
     password: Mot de passe
     reactivate: Réactiver le compte
-  install_microsoft:
-    modal_title: Installer Microsoft Teams
-    card:
-      install_title: Se connecter à Microsoft Teams
-      install_helptext: Le robot Loomio envoie des notifications à votre équipe concernant les discussions et les décisions qui ont lieu sur Loomio.
-      installed_title: Connecté·e à Microsoft Teams
-      installed_helptext: Les événements de ce groupe seront envoyés vers votre équipe Microsoft Team.
-      install_microsoft: Intégrer Microsoft Teams
-      remove_identity: Retirer l'intégration de Microsoft Teams
-      confirm_remove_title: Retirer l'intégration de Microsoft Teams
-      confirm_remove_helptext: |
-          Votre canal d'équipes Microsoft ne recevra plus les mises à jour de ce groupe.
-          Vous pourrez toujours les ajouter de nouveau.
-      identity_removed: Intégration retirée
-    form:
-      webhook_helptext: Entrez l'URL webhook fournie par la chaîne de vos équipes. <a href="https://help.loomio.org/en/user_manual/groups/integrations/#microsoft-teams">Apprenez en plus sur comment paramétrez Microsoft Soft Teams avec Loomio</a>
-      webhook_label: L'URL webhook
-      webhook_installed: Connecté·e à Microsoft Teams
-      webhook_placeholder: https://outlook.office.com/...
-      event_kind_helptext: Quels événements devraient être postés dans le canal des équipes ?
+  webhook:
+    formats:
+      slack: Slack
+    url_label: L'URL webhook
+    name_label: Nom
     event_kinds:
       new_discussion: Une nouvelle discussion a été commencée
       new_comment: Un nouveau commentaire a été publié
@@ -1992,76 +1792,15 @@ fr:
       poll_closing_soon: Un sondage sera bientôt terminé
       poll_expired: Un sondage est achevé
       outcome_created: Un bilan a été partagé
-  install_slack:
-    modal_title: Intégrer Slack
-    modal_helptext: Tout d'abord, vous devez vous connectez à Slack. Cliquez sur le bouton ci-dessous pour continuer.
-    login_to_slack: Se connecter à Slack
-    remove_slack: Retirer l'intégration de Slack
-    card:
-      install_title: Se connecter à Slack
-      install_helptext: Le robot Loomio notifie votre équipe Slack des discussions et décisions sur Loomio. Vous pouvez aussi démarrer des décisions et voter depuis Slack.
-      installed_title: Connecté à Slack
-      installed_helptext: Ce groupe a été connecté à l’équipe Slack <strong><a target='_blank' href='https://{{team}}.slack.com'>{{team}}</a></strong>. Les évenements de ce groupe s’afficheront dans la chaîne<strong>{{channel}}</strong>.
-      install_slack: Se connecter à Slack
-      remove_identity: Retirer cette intégration
-      confirm_remove_title: Retirer l’intégration à Slack
-      confirm_remove_helptext: |
-          Votre chaîne Slack ne recevra plus de notifications à propos de ce groupe. Vous pouvez toujours revenir en arrière et réactiver l’intégration.
-      identity_removed: Intégration retirée
-    progress:
-      install: Installer
-      invite: Inviter
-      decide: Décider
-    install:
-      heading: 'Étape 1 : Choisir un groupe Loomio à rejoindre'
-      tooltip_heading: Loomio et Slack fonctionnent bien ensemble
-      it_does_this: 'Impliquez les utilisateurs où qu’ils soient '
-      and_also_this: Démarrez un sondage immédiatement et recevez les retours en temps réel
-      and_also_also_this: Laissez les gens voir les résultats et itérez rapidement votre réflexion
-      add_to_group_helptext: Sélectionnez un groupe à lier avec Slack
-      create_new_group_helptext: Vous n’avez pas de groupe Loomio ? Saisissez simplement un nom et nous en créerons un pour vous
-      group_name: Nom du groupe
-      group_name_placeholder: Donnez un nom à votre nouveau groupe…
-      slack_installed: Slack installé
-      install_slack: Installez Slack maintenant
-      start_new_group: Créez un nouveau groupe
-      use_existing_group: Utilisez un groupe existant
-    invite:
-      heading: 'Étape2 : Paramétrez une chaîne Slack'
-      helptext: Sélectionnez un canal sur lequel vous souhaiteriez que nous publiions des mises à jour
-      select_a_channel: Sélectionnez une chaîne
-      publish_group: Envoyez un message de bienvenue
-      publish_group_helptext_on: Nous enverrons les messages sur cette chaîne pour expliquer comment utiliser LoomioBot.
-      publish_group_helptext_off: Nous n’enverrons rien avant que vous n’ayez créé un sondage.
-      custom_message: Message personnalisé
-      set_channel: Définir la chaîne
-    decide:
-      heading: 'Étape 3 : Prendre une décision ensemble'
-      helptext: "Maintenant que tout est configuré, il est temps de commencer à prendre des décisions. Sélectionnez une des options ci-dessous :"
-    common:
-      do_it_later: Je le ferai plus tard
   browser_warning:
     message: "IMPORTANT: votre navigateur ({{name}} {{version}})  est obsolète et n'est pas compatible avec {{site}}."
     link: Merci de mettre à jour ou de changer de navigateur
-  slack_added_modal:
-    title: Réussite!
-    helptext: |
-        Vous avez ajouté Slack à votre groupe <strong>{{name}}</strong>.
-        Maintenant, dès que quelqu’un démarre un sondage dans ce groupe, il ou elle pourra choisir de notifier la chaîne de votre équipe Slack.
-    start_poll_now: Prendre une décision maintenant
   powered_by:
     slogan: De meilleures décisions ensemble
     powered_by_loomio: Propulsé par Loomio
     privacy_policy: Politique de confidentialité
     terms_of_service: Conditions d'utilisation
     front_page: Première page
-  vue_upgraded_modal:
-    use_old_loomio: Utilisez l'ancien Loomio
-    title: Vous êtes sur Loomio 2.0!
-    body: |
-        <p>C'est un Loomio encore plus rapide et amélioré!</p>
-        <p>On pense que vous adorerez cette version, mais si vous le voulez, vous pouvez retourner à tout moment à l'ancienne, depuis la barre latérale.</p>
-        <p><a href="{{link}}" target="_blank">Découvrez les nouveautés.</a></p>
   group_survey:
     categories:
       business: Business

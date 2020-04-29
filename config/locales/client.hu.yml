@@ -464,16 +464,6 @@ hu:
     invitation_accepted: "<strong>{{name}}</strong> elfogadta a csatlakozási kérelmed itt: <strong>{{title}}</strong>"
     poll_closing_soon: "A {{poll_type}} hamarosan lezárul: <strong> {{title}} </strong>"
     poll_expired: "{{poll_type}} lezárult: <strong>{{title}}</strong>"
-  position_buttons_panel:
-    heading: Mondd el a véleményed
-  extend_proposal_form:
-    aria_label: Határidő módosítása
-    title: 'Határidő módosítása'
-    success: 'A javaslat határideje frissítve'
-    submit: 'Frissítsd a határidőt'
-  discussion_record:
-    created: 'A(z) {{title}} témát sikeresen létrehoztuk itt: {{groupName}}'
-    updated: 'Mentett változások a következőhöz: {{title}}'
   discussion_fork_actions:
     move: Mozgat
   discussion_form:
@@ -508,10 +498,9 @@ hu:
     history_error: Valami elromlott! Nem tudtuk betölteni az előzményeket.
     audiences:
       parent_group: A(z) {{name}} tagjai
-      formal_group: A(z) {{name}} tagjai
+      group: A(z) {{name}} tagjai
       discussion_group: A téma tagjai
       voters: Emberek, akik szavaztak
-      non_voters: Emberek, akik nem szavaztak
     form:
       too_many_invitations: |
           A meghívási korlátot meghaladtad. <a href="{{upgradeUrl}}" target="_blank"> Frissítés </a>
@@ -709,7 +698,6 @@ hu:
     options:
       label: 'Lehetőségek'
       edit_group: 'A csoportbeállítások szerkesztése'
-      open_group_wizard: 'Csoportbeállítás varázsló'
       export_data: Csoport adatok letöltése
       manage_members: 'Tagok kezelése'
       add_subgroup: 'Alcsoport hozzáadása'
@@ -826,43 +814,6 @@ hu:
     heading: 'Tagsági kérelmek'
     manage_requests: Kezeld a kéréseket
     manage_requests_with_count: Kezeld a kérelmeket ({{count}})
-  documents_page:
-    title: Mellékletek
-    fragment_placeholder: Mellékletek keresése ...
-    add_document: Melléklet hozzáadása
-    no_documents: Ehhez a csoporthoz nem található melléklet. Kattintson a fenti "Melléklet hozzáadása" elemre a hozzáadáshoz.
-    no_documents_from_fragment: Nem található „{{fragment}}” nevű melléklet
-    confirm_remove_title: Csatolmány eltávolítása
-    confirm_remove_helptext: Biztos benne, hogy el akarja távolítani ezt a mellékletet?
-    document_removed: A melléklet eltávolítva
-  document:
-    error:
-      invalid_format: 'Hoppá! URL-je érvénytelen. Győződjön meg arról, hogy a következővel kezdődik:'
-    card:
-      no_documents: Még egyetlen mellékletet sem töltöttek fel ebbe a csoportba
-      view_documents: Összes megtekintése
-    list:
-      title: Mellékletek
-      no_group_documents: Még egyetlen mellékletet sem töltöttek fel a csoportleírásba
-    management:
-      content_header: Minden melléklet
-      uploaded_to: itt
-    modal:
-      title: Adjon hozzá egy mellékletet
-    method_form:
-      helptext: Csatoljon fájlokat vagy linkeket, hogy megossza őket a csoporttal.
-      url_helptext: Link a webhelyekre és az online forrásokra
-      file_helptext: Tölts fel fájlokat a számítógépéről
-    form:
-      url_label: URL
-      helptext: Kattintson ide, illessze be vagy dobja el a fájlt a feltöltéshez
-      url_placeholder: Például https://www.example.com/attachment.zip
-      title_helptext: Mi nevezzük ezt a mellékletet?
-      title_label: Név
-      title_placeholder: Például. „Közösségi iránymutatások”
-    flash:
-      success: A melléklet elmentve
-      destroyed: A melléklet eltávolítva
   membership_requests_page:
     heading: Tagsági kérelmek
     approve: Érvényesítés
@@ -908,13 +859,6 @@ hu:
       invitations_sent: '{{count}} meghívó elküldve.'
       no_invitations: 'UH Oh! Ellenőrizze, hogy az e-mail cím helyes-e, és próbálja újra.'
       max_invitations: 'Ha több mint 100 meghívót szeretne küldeni, használjon egy csapat linket.'
-  add_members_modal:
-    aria_label: 'Vegye fel a szülőcsoport tagjait'
-    heading: 'Adjon hozzá embereket a következőhöz: {{name}}'
-    add_members: 'Tagok felvétele'
-    user_added_to_subgroup: 'A(z) {{name}} hozzáadva az alcsoporthoz'
-    users_added_to_subgroup: '{{count}} A felhasználók hozzáadtak az alcsoporthoz'
-    no_members_to_add: 'A(z) {{parent}} összes tagja ebbe az alcsoportba tartozik'
   memberships_page:
     members: 'Tagok'
     name_label: 'Név'
@@ -946,30 +890,11 @@ hu:
   membership_form:
     modal_title:
       group: Állítsa be a csoport címét
-      discussion: Állítsa be a téma címét
-      poll: Állítsa be a(z) {{pollType}} címet
     title_helptext:
       group: Ez a cím a csoporton belül a {{name}} neve mellett jelenik meg. Használja azt, hogy megtudja az emberek szerepét.
-      discussion: Ez a cím a {{name}} név mellett jelenik meg ebben a témákban. Használja azt, hogy megtudja az emberek szerepét.
-      poll: Ez a cím a {{name}} név mellett jelenik meg ezen a {{pollType}} oldalon. Használja azt, hogy megtudja az emberek szerepét.
     title_label: cím
     title_placeholder: Például. „Koordinátor” vagy „Levezető”
     updated: A tagság címe frissítve
-  pending_invitations_card:
-    heading: Függő meghívók
-    email: E-mail
-    invitation_link: Meghívó link
-    sent: Küldött
-    sent_at: 'Elküldve: {{date}}'
-    copy_url: URL másolása
-    revoke_invitation: visszavon
-  cancel_invitation_form:
-    heading: Meghívás elvetése
-    question: Biztosan visszavonja ezt a meghívást?
-    submit: "Igen, visszavonja a meghívást"
-    cancel: 'Nem'
-    messages:
-      success: A meghívó visszavonva
   user_page:
     contact_user: 'Kapcsolattartó: {{name}}'
     location_field: 'Hely: {{value}}'
@@ -1215,59 +1140,10 @@ hu:
     confirm_change_to_private_thread: 'A {{groupName}} egy nyitott csoport. Ha folytatja, ezt a témát nyilvánosságra hozzák.'
     messages:
       success: A téma áthelyezve a(z) {{name}} mappába
-  print_modal:
-    load_discussion: A teljes beszélgetés betöltése
-    helptext: Csak egy pillanatra lehívjuk a témák összes eseményét a nyomtatáshoz ...
   delete_comment_dialog:
     title: 'Hozzászólás törlése'
     question: 'Biztosan törölni akarod ezt a hozzászólást?'
     confirm: 'Hozzászólás törlése'
-  new_comment_item:
-    aria_label: '{{author}} hozzászólása'
-    context_menu:
-      aria_label: 'Megjegyzés lehetőségei'
-      edit_comment: 'Hozzászólást módosít'
-      delete_comment: 'Hozzászólás törlése'
-    in_reply_to: 'válaszul neki <strong> {{recipient}} </strong>'
-    edited: 'szerkesztette'
-  new_vote_item:
-    agree: 'egyetért'
-    abstain: 'tartózkodott'
-    disagree: 'nem értett egyet'
-    block: 'zárolt'
-    agree_with_statement: 'egyetértett: <span>{{statement}}</span>'
-    abstain_with_statement: 'tartózkodott: <span>{{statement}}</span>'
-    disagree_with_statement: 'nem értett egyet: <span>{{statement}}</span>'
-    block_with_statement: 'vétózva: <span>{{statement}}</span>'
-  new_proposal_item:
-    author_created_proposal: 'javaslatot indított: <span>{{title}}</span>'
-  proposal_closed_item:
-    proposal_closed: 'A javaslat lezárult: <span>{{title}}</span>'
-  proposal_closed_by_user_item:
-    proposal_closed_by_user: 'lezárta a javaslatot: <span>{{title}}</span>'
-  proposal_edited_item:
-    name: 'frissítette a javaslat címét: <span>{{title}}</span>'
-    description: 'frissítette a javaslat leírását'
-    closing_at: 'frissítette a záró javaslatot ekkor: <span>{{time}}</span>'
-    description_name: 'frissítette a javaslat címét és leírását'
-    closing_at_name: 'frissítette a javaslat címét és a beadási időt'
-    closing_at_description: 'frissítette a javaslat leírását és a befejezési időt'
-    closing_at_description_name: 'frissítette a javaslat címét, leírását és a beadási időt'
-  proposal_outcome_created_item:
-    proposal_outcome_created: 'közzétette a javaslat eredményét:'
-  proposal_outcome_updated_item:
-    proposal_outcome_updated: 'frissítette a javaslat eredményét:'
-  discussion_edited_item:
-    attachment_ids: 'frissítette a témák csatolásait'
-    title: 'frissítette a téma címét: <span>{{title}}</span>'
-    description: 'frissítette a téma hátterét'
-    description_title: 'frissítette a téma címét és környezetét'
-    private: 'frissítette a téma adatvédelmét'
-    public_to_private: 'magán'
-    private_to_public: 'nyilvános'
-    private_title: 'frissítette a téma címét és az adatvédelmet'
-    description_private: 'frissítette a téma hátterét és az adatvédelmet'
-    description_private_title: 'frissítette a téma címét, kontextusát és adatvédelmét'
   contact_message_form:
     title: "Szia! Hogyan segíthetünk?"
     read_the_manual: |
@@ -1306,46 +1182,6 @@ hu:
     messages:
       app_update: 'Az alkalmazás új verziója elérhető'
       reload: 'Reload'
-  authorized_apps_page:
-    title: Engedélyezett alkalmazások
-    no_applications: "Még nem engedélyezte harmadik fél alkalmazását."
-    notice: "A következő harmadik féltől származó alkalmazásokat engedélyezte fiókjának használatához. Kattintson a 'Visszavonás' gombra a letiltáshoz."
-    revoke: visszavon
-  registered_apps_page:
-    title: Regisztrált alkalmazások
-    no_applications: "Még nincs OAuth alkalmazás! Kattintson az alábbiakra egy létrehozásához."
-    name: Név
-    redirect_uris: Átirányítás URI-k
-    create_new_application: Új alkalmazás
-  registered_app_page:
-    uid: Alkalmazás azonosítója
-    secret: Alkalmazási titok
-  registered_app_form:
-    new_application_title: Új alkalmazás
-    edit_application_title: Frissítse az alkalmazást
-    name_label: Név
-    name_placeholder: Mi az Ön neve?
-    redirect_uri_label: Átirányítsa az Urist
-    redirect_uri_placeholder: "Az alkalmazás visszahívási uri, pl .: https:"
-    redirect_uri_note: '(URI-nként egy sor, helyi vizsgálatokhoz használjon „urn: ietf: wg: oauth: 2.0: oob”)'
-    new_application_submit: Alkalmazás létrehozása
-    edit_application_submit: Frissítse az alkalmazást
-    messages:
-      logo_changed: Logó frissítve.
-      created: "Létrehozta a(z) „{{name}}”"
-      updated: "Frissítve '{{name}}'"
-  remove_app_form:
-    title: A {{name}} kikapcsolása
-    question: "Biztosan kikapcsolja a(z) '{{name}}' alkalmazást? Ez a művelet nem visszavonható."
-    submit: kikapcsolása
-    messages:
-      success: "'{{name}}' sikeresen deaktivált"
-  revoke_app_form:
-    title: Visszavonja a(z) {{name}} hozzáférést
-    question: "Biztosan tiltja a(z) „{{name}}” fiókjának használatát?"
-    submit: Hozzáférés visszavonása
-    messages:
-      success: "A(z) „{{name}}” már nem tudja használni a fiókját."
   decision_tools_card:
     title: Döntéstámogatás
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Súgó</a>
@@ -1565,14 +1401,6 @@ hu:
     question: Biztosan törli ezt?
     title: Törölje a döntést
     success: Sikeresen törölve
-  poll_common_unsubscribe_form:
-    title: Frissítések fogadása
-    label: Kapjon e-mail frissítéseket erről a döntésről
-    tooltip: Az e-mail frissítések folyamatosan tájékoztatják a döntésről, például amikor megváltoztatják, mikor jár le, vagy amikor az eredményt meghatározták. A négyzet bejelölésével biztosítva lesz, hogy további e-mail értesítéseket nem kap a döntéshoz.
-    helptext_on: E-maileket kap a döntéssel kapcsolatos tevékenységekről
-    helptext_off: Nem kapsz e-mailt a döntésről
-    subscribed: Sikeres feliratkozás
-    unsubscribed: Sikeresen leiratkozott
   poll_common_form:
     title: Cím
     details: Részletek
@@ -1736,8 +1564,6 @@ hu:
     reason_placeholder: Ha szeretne, hagyjon üzenetet
     stance_created: Szavazás létrehozva
     stance_updated: Szavazás frissítve
-  poll_common_percent_voted:
-    sentence: "{{numerator}} ember szavazott ({{percent}}%)"
   poll_count_chart_panel:
     out_of: a(z) {{goal}} közül
   poll_meeting_chart_panel:
@@ -1768,17 +1594,6 @@ hu:
     stance_updated: A választás frissítve
   thread_item:
     event_removed: "Eltávolítva a témából"
-  poll_admin_page:
-    title: Rendszergazda - {{title}}
-  poll_common_publish_facebook_preview:
-    shared_a: megosztott a
-    link: link
-    just_now: Pont most
-  poll_common_publish_slack_preview:
-    poll_published: "közzétett egy szavazást:"
-    poll_published_with_discussion: "közzétett egy szavazást itt: <strong> {{discussion}} </strong>"
-    view_it_on_loomio: Tekintse meg a(z) {{site_name}} oldalon
-    timestamp: Ma {{timestamp}}
   poll_common_subscribe_form:
     receive_updates_title: Szavazatát rögzítették
     receive_updates_helptext: Ha e-mailt szeretne kapni a szavazás eredményéről, írja be az e-mail címét alább
@@ -1847,24 +1662,12 @@ hu:
     email: E-mail
     password: Jelszó
     reactivate: A fiók újraaktiválása
-  install_microsoft:
-    modal_title: Telepítse a Microsoft Teams programot
-    card:
-      install_title: A Microsoft Teams csatlakoztatása
-      install_helptext: A Loomio bot értesíti a csapata megbeszéléseit és döntéseit a Loomio-ról.
-      installed_title: Csatlakoztatva van a Microsoft csapatokhoz
-      installed_helptext: A csoport eseményeit elküldjük a Microsoft csapatának.
-      install_microsoft: A Microsoft Teams összekapcsolása
-      remove_identity: Távolítsd el a Microsoft Teams összekapcsolást
-      confirm_remove_title: Távolítsd el a Microsoft Teams összekapcsolást
-      confirm_remove_helptext: |-
-          A microsoft team-csatornád már nem kap frissítéseket erről a csoportról.Mindig visszatérhet, és újra hozzáadhatja.
-      identity_removed: Az összekapcsolás eltávolítva
-    form:
-      webhook_label: Webhook URL
-      webhook_installed: Csatlakoztatva van a Microsoft csapatokhoz
-      webhook_placeholder: 'https:'
-      event_kind_helptext: Mely eseményeket kell közzétenni a Teams csatornán?
+  webhook:
+    formats:
+      microsoft: Microsoft csapatok
+      slack: Laza
+    url_label: Webhook URL
+    name_label: Név
     event_kinds:
       new_discussion: Új téma elindult
       new_comment: Új megjegyzés történt
@@ -1873,73 +1676,17 @@ hu:
       poll_closing_soon: A szavazás hamarosan lejár
       poll_expired: A szavazás lejárt
       outcome_created: Az eredmény megosztásra került
-  install_slack:
-    modal_title: Csatlakoztasd a Slack-et
-    modal_helptext: Először be kell jelentkeznie a Slack használatához. A folytatáshoz kattintson az alábbi gombra.
-    login_to_slack: Jelentkezzen be a Slack-ba
-    remove_slack: Távolítsd el a Slack összekapcsolást
-    card:
-      install_title: A Slack csatlakoztatása
-      install_helptext: A Loomio bot értesíti a Slack csapatát a Loomioról folytatott megbeszélésekről és döntésekről. A Slackon belül döntéseket is indíthat és szavazhat.
-      installed_title: Csatlakoztatva a Slack-hoz
-      installed_helptext: 'Ez a csoport kapcsolódik ehhez a Slack csapathoz <strong><a target=''_blank'' href=''https://{{team}}.slack.com''>{{team}}</a></strong>. Események ebből a csoportból meg fognak jelenni ebben a csoportban: <strong>{{channel}}</strong> '
-      install_slack: A Slack csatlakoztatása
-      remove_identity: Távolítsa el ezt az integrációt
-      confirm_remove_title: Távolítsd el a Slack összekapcsolást
-      confirm_remove_helptext: |
-          A Slack csatornád már nem kap frissítéseket erről a csoportról. Bármikor visszatérhetsz, és újra hozzáadhatod.
-      identity_removed: Az összekapcsolás eltávolítva
-    progress:
-      install: Telepítés
-      invite: Meghív
-      decide: Döntsd el
-    install:
-      heading: '1. lépés: Válassz egy Loomio csoportot az összekapcsoláshoz'
-      tooltip_heading: A Loomio és a Slack nagyszerűen működnek együtt
-      it_does_this: Vegye fel a felhasználókat, ahol vannak
-      and_also_this: Szavazások azonnali indítása, és valós időben kaphatsz visszajelzéseket
-      and_also_also_this: Mondja meg az embereknek az eredményt, és gyorsítsa fel a gondolkodását
-      add_to_group_helptext: Válasszon egy csoportot, amelyet a Slack-tal összekapcsol
-      create_new_group_helptext: Még nincs Loomio csoportja? Egyszerűen írjon be egy nevet, és elkészítjük neked
-      group_name: Csoport név
-      group_name_placeholder: Nevezze meg új csoportját ...
-      slack_installed: Slack telepítve
-      install_slack: Slack telepítése most
-      start_new_group: Új csoport indítása
-      use_existing_group: Használjon egy meglévő csoportot
-    invite:
-      heading: '2. lépés: Állítson be egy Slack csatornát'
-      helptext: Válasszon egy csatornát, amelybe frissítéseket szeretne küldeni.
-      select_a_channel: Válasszon csatornát
-      publish_group: Üdvözlő üzenet küldése
-      publish_group_helptext_on: Az üzenetet elküldjük erre a csatornára, hogy megtanítsuk az embereknek a LoomioBot használatát.
-      publish_group_helptext_off: Addig nem küldünk semmit, amíg nem készít szavazást.
-      custom_message: Egyéni üzenet
-      set_channel: Állítsd be a csatornát
-    decide:
-      heading: '3. lépés: Döntsetek együtt'
-      helptext: "Most, hogy készen állsz, ideje elkezdeni a döntések meghozatalát. Válasszon az alábbi lehetőségek közül:"
-    common:
-      do_it_later: Később megcsinálom
+  configure_sso:
+    title: Egyszeri felíratkozás
   browser_warning:
     message: "FONTOS! Egy elavult böngészőt használsz ({{name}} {{version}}), amelyet a {{site}} nem támogat."
     link: Kérünk válts egy másik böngészőre
-  slack_added_modal:
-    title: Siker!
-    helptext: |
-        A Slacket sikeresen hozzáadtad ide: <strong>{{name}}</strong>.
-        Most, amikor valaki elindít szavazást ebben a csoportban, lehetőséged van arra,
-        hogy frissítéseket tegyél közzé a szavazásról az egyik Slack csatornádon.
-    start_poll_now: Hozz egy döntést most
   powered_by:
     slogan: Jobb döntések közösen
     powered_by_loomio: A Loomio az oldal motorja
     privacy_policy: Adatvédelmi irányelvek
     terms_of_service: Szolgáltatási feltételek
     front_page: Címlap
-  vue_upgraded_modal:
-    use_old_loomio: Váltás a régi Loomio-ra
-    title: A Loomio 2.0-t használod!
   group_survey:
     success: Köszi!
     categories:

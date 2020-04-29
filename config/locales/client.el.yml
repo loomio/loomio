@@ -207,16 +207,6 @@ el:
   notifications:
     header: "Ειδοποιήσεις"
     no_notifications: "Δεν έχετε καμία ειδοποίηση"
-  position_buttons_panel:
-    heading: Πείτε την γνώμη σας
-  extend_proposal_form:
-    aria_label: Αλλαγή ώρας κλεισίματος
-    title: 'Άλλαξε την ώρα κλεισίματος'
-    success: 'Η ώρα κλεισίματος της πρότασης ανανεώθηκε'
-    submit: 'Ανανέωση ώρα κλεισίματος'
-  discussion_record:
-    created: 'Το θέμα {{title}} δημιουργήθηκε επιτυχώς στην ομάδα {{groupName}}'
-    updated: 'Οι αλλαγές αποθηκεύτηκαν στον τίτλο {{title}}'
   discussion_form:
     aria_label: 'Φόρμα θέματος'
     messages:
@@ -356,11 +346,6 @@ el:
     heading: 'Αιτήσεις εγγραφής μελών'
     manage_requests: Διαχείριση αιτήσεων
     manage_requests_with_count: Διαχείριση αιτήσεων ({{count}})
-  documents_page:
-    confirm_remove_title: Αφαίρεσε συννημένο
-  document:
-    form:
-      title_label: Όνομα
   membership_requests_page:
     heading: Αιτήσεις εγγραφής μελών
     approve: Έγκριση
@@ -413,10 +398,6 @@ el:
     title: 'Διαγραφή σχόλιου'
     question: 'Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το σχόλιο?'
     confirm: 'Διαγραφή σχόλιου'
-  new_comment_item:
-    context_menu:
-      edit_comment: 'Επεξεργαστείτε σχόλιο'
-      delete_comment: 'Διαγραφή σχόλιου'
   contact_message_form:
     name_label: 'Το όνομα σας'
     subject_label: "Θέμα"
@@ -468,9 +449,8 @@ el:
   auth_form:
     email_placeholder: you@example.com
     name_placeholder: Το όνομα σας
-  install_slack:
-    progress:
-      invite: Πρόσκληση
+  webhook:
+    name_label: Όνομα
   group_survey:
     success: Ευχαριστούμε!
     categories:

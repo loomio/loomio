@@ -72,9 +72,6 @@ gl:
   group_form:
     group_name_placeholder: 'Cal é o nome do teu grupo?'
     profile: Perfil
-  document:
-    form:
-      title_label: Nome
   membership_requests_page:
     approve: Dar o visto bo
     ignore: ignorar
@@ -109,10 +106,6 @@ gl:
   delete_comment_dialog:
     title: 'Borrar comentario'
     confirm: 'Borrar comentario'
-  new_comment_item:
-    context_menu:
-      edit_comment: 'Editar commentario'
-      delete_comment: 'Borrar comentario'
   contact_message_form:
     name_label: 'O teu nome'
     subject_label: "Tema"
@@ -141,6 +134,8 @@ gl:
     'no': 'Non'
   auth_form:
     name_placeholder: O teu nome
+  webhook:
+    name_label: Nome
   group_survey:
     categories:
       business: Negocio

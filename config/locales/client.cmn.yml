@@ -425,15 +425,6 @@ cmn:
     poll_expired: "{{poll_type}} 已关闭：<strong>{{title}}</strong>"
     poll_option_added: "<strong>{{name}}</strong>新增选项至：<strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> 已参与：<strong>{{title}}</strong>"
-  position_buttons_panel:
-    heading: 拥有发言权
-  extend_proposal_form:
-    aria_label: 修改截止时间
-    title: '修改截止时间'
-    success: '提案截止时间已更新'
-    submit: '更新截止时间'
-  discussion_record:
-    created: '讨论串 {{title}} 已在 {{groupName}} 中成功的被建立'
   discussion_fork_actions:
     search_placeholder: 搜索话题标题
     moved: 正在移动留言，这可能需要一点时间
@@ -471,10 +462,9 @@ cmn:
     inviting_guests_to_thread: 不是 {{group}} 成员的伙伴将会被以访客的身份新增到此话题，但不会取得对群组中其他话题的访问权。
     audiences:
       parent_group: '{{name}} 的成员'
-      formal_group: '{{name}} 的成员'
+      group: '{{name}} 的成员'
       discussion_group: 话题的成员
       voters: 已经投票的伙伴
-      non_voters: 尚未投票的伙伴
     form:
       too_many_invitations: |
           已超过邀请限制。<a href="{{upgradeUrl}}" target="_blank">升级</a>
@@ -600,7 +590,6 @@ cmn:
     options:
       label: '选项'
       edit_group: '编辑团队设置'
-      open_group_wizard: '群组设定向导'
       export_data: 导出群组资料
       manage_members: '管理成员'
       leave_group: '离开团队'
@@ -696,33 +685,6 @@ cmn:
     nested_comments: 启用嵌套式的评论视图
   membership_requests_card:
     heading: '申请成员资格'
-  documents_page:
-    title: 附件
-    no_documents: 在此群组中还没有附件。点击“上传附件”来新增一个。
-    no_documents_from_fragment: 找不到名为“{{fragment}}”的附件
-    confirm_remove_title: 移除附件
-    confirm_remove_helptext: 您确定您想要删除这个附件吗？
-    document_removed: 附件已删除
-  document:
-    error:
-      invalid_format: 喔喔！您的 URL 是无效的。请确定它以 http:// 或 https:// 开始
-    card:
-      no_documents: 还没有已被上传至此群组的附件
-      view_documents: 查看全部
-    list:
-      title: 附件
-    management:
-      content_header: 所有附件
-    method_form:
-      url_helptext: 链接到网站和在线资源
-      file_helptext: 从本机上传文件
-    form:
-      helptext: 点选这里、粘贴或是拖放文件以上传
-      title_label: 名字
-      title_placeholder: 例如：“社群指南”
-    flash:
-      success: 附件已保存
-      destroyed: 附件已删除
   membership_requests_page:
     heading: 申请成员资格
     approve: 批准
@@ -759,11 +721,6 @@ cmn:
     done: '完成'
     messages:
       no_invitations: '喔喔！请检查您的电子邮件地址是否正确，并再试一次。'
-  add_members_modal:
-    aria_label: '从父群组加入成员'
-    heading: '从 {{name}} 加入伙伴'
-    add_members: '添加成员'
-    users_added_to_subgroup: '{{count}} 个使用者已加入至子群组'
   memberships_page:
     members: '成员'
     name_label: '名字'
@@ -794,29 +751,10 @@ cmn:
   membership_form:
     modal_title:
       group: 设置群组标题
-      discussion: 设置话题的标题
-      poll: 设定 {{pollType}} 标题
     title_helptext:
       group: 这个标题会出现在这个群组中的 {{name}} 名称旁。使用它来让伙伴们知道他们的角色。
-      discussion: 这个标题会出现在这个话题中的 {{name}} 名称旁。使用它来让伙伴们知道他们的角色。
-      poll: 这个标题会出现在这个 {{pollType}} 中的 {{name}} 名称旁。使用它来让伙伴们知道他们的角色。
     title_label: 标题
     title_placeholder: 例子：“协调者”或“主持人”
-  pending_invitations_card:
-    heading: 还未确认的邀请
-    email: 电子邮件
-    invitation_link: 邀请链接
-    sent: 已发送
-    sent_at: '{{date}} 已发送'
-    copy_url: 复制 URL
-    revoke_invitation: 撤销
-  cancel_invitation_form:
-    heading: 取消邀请
-    question: 您确定您想要取消此邀请吗？
-    submit: "是的，取消邀请"
-    cancel: '否'
-    messages:
-      success: 邀请已取消
   user_page:
     locale_field: '语言：{{value}}'
     invited: '已邀请 {{value}}'
@@ -999,22 +937,10 @@ cmn:
     confirm_change_to_private_thread: '{{groupName}} 是一个公开的群组，若您继续，这个话题将会变为公开。'
     messages:
       success: 话题已被移动到 {{name}}
-  print_modal:
-    helptext: 稍等，我们正在抓取所有在此话题的动态以供打印……
   delete_comment_dialog:
     title: '删除意见'
     question: '你确定你想要删除这条意见吗？'
     confirm: '删除意见'
-  new_comment_item:
-    context_menu:
-      edit_comment: '编辑意见'
-      delete_comment: '删除意见'
-  new_vote_item:
-    agree: '同意'
-    abstain: '弃权'
-    disagree: '反对'
-  new_proposal_item:
-    author_created_proposal: '已发起一个提案：<span>{{title}}</span>'
   contact_message_form:
     subject_label: "主题"
   hint:
@@ -1024,12 +950,6 @@ cmn:
     header: 探索群组
     search_placeholder: 搜索公开群组
     no_results_found: "<strong>找不到您要找的群组吗？</strong>如果群组的隐私设置为“私密”，那它就不会在此出现。"
-  authorized_apps_page:
-    revoke: 撤销
-  registered_apps_page:
-    name: 名称
-  registered_app_form:
-    name_label: 名称
   decision_tools_card:
     proposal_title: 提案
   poll_common:
@@ -1113,13 +1033,6 @@ cmn:
     question: 您确定要删除这个吗？
     title: 删除决策
     success: 删除成功
-  poll_common_unsubscribe_form:
-    title: 接收更新
-    label: 接收关于此决策的电子邮件更新
-    tooltip: 电子邮件更新让您了解此决策，如它何时被编辑，何时过期，或是何时做出了决策。取消勾选此框可以确保您不会再收到关于此决策的电子邮件通知。
-    helptext_on: 您将会收到关于此决策动态的电子邮件
-    helptext_off: 您将不会收到任何关于此决策的电子邮件
-    unsubscribed: 成功取消订阅
   poll_common_form:
     title: 标题
     details: 详细内容
@@ -1229,24 +1142,11 @@ cmn:
     set_password: 设置密码
     name: 名称
     email: 电子邮件
-  install_microsoft:
-    form:
-      event_kind_helptext: 应该将哪些活动张贴至 Teams 频道中？
+  webhook:
+    name_label: 名称
     event_kinds:
       new_discussion: 已发起新的话题
       poll_created: 已创建投票
-  install_slack:
-    card:
-      install_helptext: Loomio 机器人会通知您的 Slack 团队在 Loomio 上的讨论与决策。您也可以从 Slack 上启动讨论与投票。
-      confirm_remove_helptext: |
-          您的 Slack 频道不再收到关于此群组的更新。
-          您还是可以回来并再次把它加回来。
-    progress:
-      invite: 邀请
-    invite:
-      custom_message: 自定义消息
-  slack_added_modal:
-    title: 成功！
   group_survey:
     categories:
       other: 其他的

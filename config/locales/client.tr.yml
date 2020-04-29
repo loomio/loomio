@@ -284,16 +284,6 @@ tr:
   notifications:
     header: "Bildirimler"
     publish_outcome: "Bir sonuç yayınla"
-  position_buttons_panel:
-    heading: Söz sahibi ol
-  extend_proposal_form:
-    aria_label: Kapanış saatini değiştir
-    title: 'Kapanış saatini değiştir'
-    success: 'Öneri kapanış süresi güncellendi'
-    submit: 'Kapanış saatini güncelle'
-  discussion_record:
-    created: '{{title}} müzakeresi {{groupName}} grubunda başarıyla oluşturuldu '
-    updated: 'Değişiklikleri {{title}} konusuna kaydet'
   discussion_fork_actions:
     move: Taşı
   discussion_form:
@@ -453,14 +443,6 @@ tr:
     heading: 'Üyelik talepleri'
     manage_requests: Talepleri yönet
     manage_requests_with_count: Talepleri yönet ({{count}})
-  documents_page:
-    title: Ekler
-    confirm_remove_title: Eki kaldır
-  document:
-    list:
-      title: Ekler
-    form:
-      title_label: İsim
   membership_requests_page:
     heading: Üyelik talepleri
     approve: Onayla
@@ -496,12 +478,6 @@ tr:
       invitation_sent: 'Davetiye gönderildi.'
       invitations_sent: '{{count}} davetiye gönderildi.'
       max_invitations: 'Eğer 100''den fazla davetiye göndermek istiyorsanız, bir takım linki kullanınız.'
-  add_members_modal:
-    heading: '{{name}} grubundan kişileri ekle'
-    add_members: 'Üyeleri ekle'
-    user_added_to_subgroup: '{{name}} Alt Gruba eklendi'
-    users_added_to_subgroup: '{{count}} kullanıcı Alt Gruba eklendi'
-    no_members_to_add: '{{parent}} grubunun tüm üyeleri bu alt gruba ait'
   memberships_page:
     members: 'Üyeler'
     name_label: 'İsim'
@@ -517,18 +493,6 @@ tr:
     membership:
       title: Üyeyi kaldır
       submit: Üyeyi kaldır
-  pending_invitations_card:
-    heading: Bekleyen davetler
-    email: E-posta
-    invitation_link: Davetiye linki
-    sent: Gönderildi
-  cancel_invitation_form:
-    heading: Davetiyeyi iptal et
-    question: Bu davetiyeyi iptal etmek istediğinizden emin misiniz?
-    submit: "Evet, davetiyeyi iptal et"
-    cancel: 'Hayır'
-    messages:
-      success: Davetiye iptal edildi
   profile_page:
     messages:
       updated: 'Profil güncellendi'
@@ -640,49 +604,6 @@ tr:
     title: 'Yorumu sil'
     question: 'Bu yorumu silmek istediğinden emin misin?'
     confirm: 'Yorumu sil'
-  new_comment_item:
-    aria_label: '{{author}} tarafından yapılan yorum'
-    context_menu:
-      aria_label: 'Yorum seçenekleri'
-      edit_comment: 'Yorumu düzenle'
-      delete_comment: 'Yorumu sil'
-    in_reply_to: '<strong>{{recipient}}</strong> kişisine cevaben'
-    edited: 'Düzenlendi'
-  new_vote_item:
-    agree: 'katıldın'
-    abstain: 'çekimser kaldın'
-    disagree: 'katılmadın'
-    block: 'itiraz ettin'
-    agree_with_statement: 'katıldı: <span>{{statement}}</span>'
-    abstain_with_statement: 'çekimser kaldı: <span>{{statement}}</span>'
-    disagree_with_statement: 'katılmadı: <span>{{statement}}</span>'
-    block_with_statement: 'itiraz etti: <span>{{statement}}</span>'
-  new_proposal_item:
-    author_created_proposal: 'bir öneri başlattı: <span>{{title}}</span>'
-  proposal_closed_item:
-    proposal_closed: 'Öneri kapatıldı: <span>{{title}}</span>'
-  proposal_closed_by_user_item:
-    proposal_closed_by_user: 'öneriyi kapattı: <span>{{title}}</span>'
-  proposal_edited_item:
-    name: 'önerinin başlığını güncelledi: <span>{{title}}</span>'
-    description: 'önerinin tanımını düzenledi'
-    closing_at: 'önerinin kapanış zamanını <span>{{time}}</span> olarak güncelledi '
-    description_name: 'önerinin başlığını ve tanımını güncelledi'
-    closing_at_name: 'önerinin başlığını ve kapanış zamanını güncelledi'
-    closing_at_description: 'önerinin tanımını ve kapanış zamanını güncelledi'
-    closing_at_description_name: 'önerinin başlığını, tanımını ve kapanış zamanını güncelledi'
-  proposal_outcome_created_item:
-    proposal_outcome_created: 'öneri için bir sonuç yayınladı:'
-  proposal_outcome_updated_item:
-    proposal_outcome_updated: 'önerinin sonucu güncellendi:'
-  discussion_edited_item:
-    title: 'müzakere başlığı güncellendi: <span>{{title}}</span>'
-    description: 'müzakere içeriği güncellendi'
-    description_title: 'müzakere başlığı ve içerik güncellendi'
-    private: 'konu gizliliği güncellendi: '
-    public_to_private: 'gizli'
-    private_to_public: 'genel'
-    description_private_title: 'konu başlığı, içerik ve gizlilik güncellendi'
   contact_message_form:
     contact_us: 'Bizimle iletişime geçin'
     name_label: 'Adın'
@@ -701,10 +622,6 @@ tr:
   global:
     messages:
       reload: 'Tekrar yükle'
-  registered_apps_page:
-    name: İsim
-  registered_app_form:
-    name_label: İsim
   decision_tools_card:
     proposal_title: Öneri
     count_title: Kontrol et
@@ -745,6 +662,8 @@ tr:
   auth_form:
     name_placeholder: Adın
     name: İsim
+  webhook:
+    name_label: İsim
   group_survey:
     categories:
       business: İş hayatı

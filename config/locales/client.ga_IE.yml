@@ -226,16 +226,6 @@ ga_IE:
     motion_closed: "Dúnadh an togra: <strong>{{title}}</strong>"
     publish_outcome: "Foilsigh toradh"
     poll_expired: "Tá {{poll_type}} dúnta: <strong>{{title}}</strong>"
-  position_buttons_panel:
-    heading: Abair leat
-  extend_proposal_form:
-    aria_label: Athraigh an t-am a dhúnfar é
-    title: 'Athraigh an t-am a dhúnfar an togra'
-    success: 'Nuashonraíodh an t-am a dhúnfar an togra'
-    submit: 'Nuashonraigh an t-am a dhúnfar an togra'
-  discussion_record:
-    created: 'Cruthaíodh an tsnáithe {{title}} go rathúil i {{groupName}}'
-    updated: 'Taisc na hathruithe ar an {{title}}'
   discussion_fork_actions:
     move: Bog é
   discussion_form:
@@ -342,14 +332,6 @@ ga_IE:
   membership_requests_card:
     heading: 'Iarratais le bheith mar chomhalta'
     manage_requests: Riar na hiarratais
-  documents_page:
-    title: Ceangaltáin
-    confirm_remove_title: Bain ceangaltán
-  document:
-    list:
-      title: Ceangaltáin
-    form:
-      title_label: Ainm
   membership_requests_page:
     heading: Iarratais le bheith mar chomhalta
     approve: Ceadaigh
@@ -378,8 +360,6 @@ ga_IE:
     messages:
       invitation_sent: 'Seoladh an cuireadh.'
       invitations_sent: 'Seoladh {{count}} cuireadh'
-  add_members_modal:
-    add_members: 'Cuir comhaltaí leis'
   memberships_page:
     members: 'Comhaltaí'
     name_label: 'Ainm'
@@ -395,18 +375,6 @@ ga_IE:
     membership:
       title: Bain comhalta
       submit: Bain comhalta
-  pending_invitations_card:
-    heading: Cuirí ar feitheamh
-    email: Ríomhphost
-    invitation_link: Nasc chuig an cuireadh
-    sent: Seolta
-  cancel_invitation_form:
-    heading: Cealaigh an cuireadh
-    question: An bhfuil tú cinnte gur mian leat an cuireadh seo a chur ar ceal?
-    submit: "Cealaigh an cuireadh"
-    cancel: 'Ná cealaigh é'
-    messages:
-      success: Cuireadh curtha ar ceal
   profile_page:
     messages:
       updated: 'Nuashonraíodh an bheathaisnéisín'
@@ -515,17 +483,6 @@ ga_IE:
     title: 'Scrios an trácht'
     question: 'An bhfuil tú cinnte go dteastaíonn uait an trácht seo a scriosadh?'
     confirm: 'Scrios an trácht'
-  new_comment_item:
-    context_menu:
-      aria_label: 'Roghanna na dtráchtanna'
-      edit_comment: 'Déan eagarthóireacht ar an trácht'
-      delete_comment: 'Scrios an trácht'
-    edited: 'Curtha in eagar'
-  new_vote_item:
-    agree: 'aontaíodh'
-    block: 'bac curtha air'
-  discussion_edited_item:
-    private_to_public: 'poiblí'
   contact_message_form:
     contact_us: 'Déan teagmháil linn'
     name_label: 'D''ainm'
@@ -543,18 +500,6 @@ ga_IE:
   global:
     messages:
       reload: 'Athluchtaigh é'
-  registered_apps_page:
-    name: Ainm
-    create_new_application: Feidhmchlár Nua
-  registered_app_form:
-    new_application_title: Feidhmchlár Nua
-    edit_application_title: Nuashonraigh Feidhmchlár
-    name_label: Ainm
-    name_placeholder: Cad is ainm do d'fheidhmchlár?
-    new_application_submit: Cruthaigh Feidhmchlár
-    edit_application_submit: Nuashonraigh Feidhmchlár
-  remove_app_form:
-    submit: Díghníomhachtaigh
   decision_tools_card:
     proposal_title: Togra
     count_title: Dearbháil
@@ -605,17 +550,8 @@ ga_IE:
     name: Ainm
     email: Seoladh ríomhphoist
     password: Focal faire
-  install_slack:
-    progress:
-      install: Suiteáil
-      invite: Tabhair cuireadh
-      decide: Déan cinneadh
-    install:
-      install_slack: Suiteáil Slack anois
-    common:
-      do_it_later: Déanfaidh mé sin ar ball
-  slack_added_modal:
-    title: D'éirigh leis!
+  webhook:
+    name_label: Ainm
   group_survey:
     categories:
       business: Gnó

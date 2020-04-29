@@ -30,8 +30,6 @@ bg_BG:
       discussions: 'Дискусии'
   notifications:
     header: "Известия"
-  position_buttons_panel:
-    heading: Кажете си думата
   discussion_form:
     group_label: 'Група'
     title_label: 'Заглавие'
@@ -52,9 +50,6 @@ bg_BG:
       leave_group: 'Напусни групата'
   group_form:
     group_name_placeholder: 'Какво е името на вашата група?'
-  document:
-    form:
-      title_label: Име
   membership_requests_page:
     approve: Одобряване
     ignore: Игнориране
@@ -77,9 +72,6 @@ bg_BG:
     title: 'Изтрий коментар'
     question: 'Сигурни ли сте, че искате да изтриете този коментар?'
     confirm: 'Изтрий коментар'
-  new_comment_item:
-    context_menu:
-      delete_comment: 'Изтрий коментар'
   contact_message_form:
     subject_label: "Тема"
   hint:
@@ -100,6 +92,8 @@ bg_BG:
     closed: 'Затворен'
   poll_common_form:
     closed: Затворен
+  webhook:
+    name_label: Име
   group_survey:
     categories:
       other: Друго

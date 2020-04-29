@@ -34,8 +34,6 @@ vi:
       discussions: 'Các phần thảo luận'
   notifications:
     header: "Thông báo"
-  position_buttons_panel:
-    heading: Phát biểu ý kiến của bạn
   discussion_form:
     group_label: 'Nhóm'
     title_label: 'Tiêu đề'
@@ -57,9 +55,6 @@ vi:
       leave_group: 'Rời khỏi nhóm'
   group_form:
     group_name_placeholder: 'Tên của nhóm bạn là gì?'
-  document:
-    form:
-      title_label: Tên
   membership_requests_page:
     approve: Chấp thuậ
     ignore: Bỏ qua
@@ -82,9 +77,6 @@ vi:
     title: 'Xóa bình luận'
     question: 'Bạn có chắc muốn xóa bình luận này?'
     confirm: 'Xóa bình luận'
-  new_comment_item:
-    context_menu:
-      delete_comment: 'Xóa bình luận'
   contact_message_form:
     subject_label: "Chủ đề"
   hint:
@@ -108,6 +100,8 @@ vi:
   poll_count_options:
     'yes': 'Đồng Ý'
     'no': 'Không đồng ý'
+  webhook:
+    name_label: Tên
   group_survey:
     categories:
       other: Khác

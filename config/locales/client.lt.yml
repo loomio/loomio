@@ -150,8 +150,6 @@ lt:
     cancel_invitation: Atsisakyti pakvietimo
   notifications:
     header: "Pranešimai"
-  position_buttons_panel:
-    heading: Tarkite savo žodį
   discussion_form:
     new_discussion_title: 'Kurti naują giją'
     edit_discussion_title: 'Redaguoti giją'
@@ -201,12 +199,6 @@ lt:
     members_can_create_subgroups: 'Nariai gali kurti pogrupius.'
     members_can_edit_comments: 'Nariai gali bet kuriuo metu redaguoti savo komentarus.'
     submit_update: 'Atnaujinti nustatymus'
-  documents_page:
-    title: Priedai
-    confirm_remove_title: Šalinti priedą
-  document:
-    list:
-      title: Priedai
   group_previous_proposals_card:
     heading: Ankstesni pasiūlymai
   invitation_form:
@@ -224,15 +216,6 @@ lt:
     membership:
       title: Šalinti narį
       submit: Šalinti narį
-  pending_invitations_card:
-    email: El. paštas
-  cancel_invitation_form:
-    heading: Atsisakyti pakvietimo
-    question: Ar tikrai norite atsisakyti šio pakvietimo?
-    submit: "Taip, atsisakyti pakvietimo"
-    cancel: 'Ne'
-    messages:
-      success: Pakvietimo atsisakyta
   profile_page:
     messages:
       updated: 'Profilis atnaujintas'
@@ -289,10 +272,6 @@ lt:
     title: 'Ištrinti komentarą'
     question: 'Jūs tikrai norite ištrinti šį komentarą?'
     confirm: 'Ištrinti komentarą'
-  new_comment_item:
-    context_menu:
-      edit_comment: 'Redaguoti komentarą'
-      delete_comment: 'Ištrinti komentarą'
   contact_message_form:
     email_label: 'Jūsų el. pašto adresas'
     email_placeholder: 'Įveskite savo el. pašto adresą...'

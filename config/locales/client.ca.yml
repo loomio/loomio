@@ -222,15 +222,6 @@ ca:
     header: "Notificacions"
     no_notifications: "No teniu cap notificació"
     publish_outcome: "Publica un resultat"
-  position_buttons_panel:
-    heading: Doneu la opinió
-  extend_proposal_form:
-    title: 'Canvia la data de tancament'
-    success: 'Data de tancament de la proposta actualitzada'
-    submit: 'Actualitza la data de tancament'
-  discussion_record:
-    created: 'La discussió {{title}} s''ha creat correctament a {{groupName}}'
-    updated: 'Canvis desats a {{title}}'
   discussion_fork_actions:
     move: Mou
   discussion_form:
@@ -356,11 +347,6 @@ ca:
     heading: 'Sol·licitud de pertinença'
     manage_requests: Administració de sol·licituds
     manage_requests_with_count: Administració de sol·licituds ({{count}})
-  documents_page:
-    confirm_remove_title: Elimina un fitxer adjunt
-  document:
-    form:
-      title_label: Nom
   membership_requests_page:
     heading: Sol·licitud de pertinença
     approve: Aprova
@@ -396,12 +382,6 @@ ca:
       invitation_sent: 'Invitació enviada.'
       invitations_sent: '{{count}} invitacions enviades.'
       max_invitations: 'Si voleu enviar més de 100 invitacions, utilitzeu l''enllaç d''equip.'
-  add_members_modal:
-    heading: 'Afegeix gent de {{name}}'
-    add_members: 'Afegeix membres'
-    user_added_to_subgroup: '{{name}} afegits al subgrup'
-    users_added_to_subgroup: '{{count}} usuaris afegits al subgrup'
-    no_members_to_add: 'Tots els membres de {{parent}} pertànyen a aquest subgrup'
   memberships_page:
     members: 'Membres'
     name_label: 'Nom'
@@ -417,18 +397,6 @@ ca:
     membership:
       title: Elimina un membre
       submit: Elimina un membre
-  pending_invitations_card:
-    heading: Invitacions pendents
-    email: Correu electrònic
-    invitation_link: Enllaç d'invitació
-    sent: Enviada
-  cancel_invitation_form:
-    heading: Cancel·la la invitació
-    question: Esteu segur de cancel·lar aquesta invitació?
-    submit: "Si, cancel·la la invitació"
-    cancel: 'No'
-    messages:
-      success: Invitació cancel·lada
   profile_page:
     messages:
       updated: 'Perfil actualitzat'
@@ -541,52 +509,6 @@ ca:
     title: 'Eliminar comentari'
     question: 'Esteu segur d''eliminar aquest comentari?'
     confirm: 'Elimina el comentari'
-  new_comment_item:
-    aria_label: 'Comentat per {{author}}'
-    context_menu:
-      aria_label: 'Opcions de comentari'
-      edit_comment: 'Edita el comentari'
-      delete_comment: 'Elimina el comentari'
-    in_reply_to: 'com a resposta a <strong>{{recipient}}</strong>'
-    edited: 'Editat'
-  new_vote_item:
-    agree: 'està d''acord'
-    abstain: 's''absté'
-    disagree: 'està en desacord'
-    block: 'bloqueja'
-    agree_with_statement: 'està d''acord: <span>{{statement}}</span>'
-    abstain_with_statement: 's''ha abstingut: <span>{{statement}}</span>'
-    disagree_with_statement: 'està en desacord: <span>{{statement}}</span>'
-    block_with_statement: 'ha bloquejat: <span>{{statement}}</span>'
-  new_proposal_item:
-    author_created_proposal: 'proposta creada:  <span>{{title}}</span>'
-  proposal_closed_item:
-    proposal_closed: 'S''ha tancat la proposta: <span>{{title}}</span>'
-  proposal_closed_by_user_item:
-    proposal_closed_by_user: 'proposta tancada: <span>{{title}}</span>'
-  proposal_edited_item:
-    name: 'títol de la proposta actualitzat: <span>{{title}}</span>'
-    description: 'descripció de la proposta actualitzada'
-    closing_at: 'data de tancament de la proposta actualitzada a les <span>{{time}}</span>'
-    description_name: 'títol i descripció de la proposta actualitzats'
-    closing_at_name: 'títol de la proposta i data de tancament actualitzats'
-    closing_at_description: 'descripció de la proposta i data de tancament actualitzats'
-    closing_at_description_name: 'títol de la proposta, descripció i data de tancament actualitzats'
-  proposal_outcome_created_item:
-    proposal_outcome_created: 'resultat de la proposta publicat:'
-  proposal_outcome_updated_item:
-    proposal_outcome_updated: 'resultat de la proposta actualitzat:'
-  discussion_edited_item:
-    attachment_ids: 'fitxers adjunts de la discussió actualitzats'
-    title: 'títol de la discussió actualitzat: <span>{{title}}</span>'
-    description: 'context de la discussió actualitzat'
-    description_title: 'títol de la discussió i context actualitzats'
-    private: 'privacitat de la discussió actualitzat a'
-    public_to_private: 'privada'
-    private_to_public: 'pública'
-    private_title: 'títol de la discussió i privacitat actualitzats'
-    description_private: 'context de la discussió i privacitat actualitzats'
-    description_private_title: 'títol de la discussió, context i privacitat actualitzats'
   contact_message_form:
     contact_us: 'Contacteu amb nosaltres'
     name_label: 'El teu nom'
@@ -608,38 +530,6 @@ ca:
   global:
     messages:
       reload: 'Recarrega'
-  authorized_apps_page:
-    title: Aplicacions autoritzades
-    no_applications: "Encara no heu autoritzat cap aplicació d'un tercer."
-    revoke: Revoca
-  registered_apps_page:
-    title: Aplicacions registrades
-    no_applications: "Encara no teniu cap aplicació OAuth. Cliqueu a sota per crear-ne una."
-    name: Nom
-    create_new_application: Nova aplicació
-  registered_app_form:
-    new_application_title: Nova aplicació
-    edit_application_title: Actualitza l'aplicació
-    name_label: Nom
-    name_placeholder: Com es diu la vostra aplicació?
-    new_application_submit: Crea l'aplicació
-    edit_application_submit: Actualitza l'aplicació
-    messages:
-      logo_changed: Logo actualitzat.
-      created: "'{{name}}' creada"
-      updated: "'{{name}}' actualitzada"
-  remove_app_form:
-    title: '''{{name}}'' desactivada'
-    question: "Esteu segur que voleu desactivar l'applicació '{{name}}'? Aquesta acció no es podrà desfer."
-    submit: Desactiva
-    messages:
-      success: "'{{name}}' s'ha desactivat correctament"
-  revoke_app_form:
-    title: Revocar l'accés de {{name}}
-    question: "Esteu segur de no permetre a '{{name}}' utilitzar el compte?"
-    submit: Revocar accés
-    messages:
-      success: "'{{name}}' ja no pot utilitzar el vostre compte."
   decision_tools_card:
     poll_title: Enquesta
   poll_common:
@@ -669,6 +559,8 @@ ca:
   auth_form:
     name_placeholder: El teu nom
     name: Nom
+  webhook:
+    name_label: Nom
   group_survey:
     categories:
       business: Empresa

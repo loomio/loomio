@@ -110,9 +110,6 @@ te:
       leave_group: 'సమూహాన్ని వదిలివెళ్ళండి'
   group_form:
     privacy: 'అంతరంగికత'
-  document:
-    form:
-      title_label: పేరు
   membership_requests_page:
     approve: ఆమోదించండి
     ignore: విస్మరించు
@@ -129,8 +126,6 @@ te:
     invitation:
       title: ఆహ్వానం రద్దుచేయి
       submit: ఆహ్వానం రద్దుచేయి
-  cancel_invitation_form:
-    heading: ఆహ్వానం రద్దుచేయి
   profile_page:
     picture_label: 'చిత్రం'
     name_label: 'పేరు'
@@ -152,20 +147,11 @@ te:
   delete_comment_dialog:
     title: 'వ్యాఖ్యను తొలగించు'
     confirm: 'వ్యాఖ్యను తొలగించు'
-  new_comment_item:
-    context_menu:
-      delete_comment: 'వ్యాఖ్యను తొలగించు'
   contact_message_form:
     name_label: 'మీ పేరు'
     subject_label: "విషయం"
     email_label: 'మీ ఈమెయిలు చిరునామా'
     message_label: 'మీ సందేశం'
-  registered_apps_page:
-    name: పేరు
-    create_new_application: kotta firyaadu
-  registered_app_form:
-    new_application_title: కొత్త ఫిర్యాదు
-    name_label: పేరు
   poll_common:
     save_changes: భద్రపరుచు
   discussions_panel:
@@ -188,9 +174,8 @@ te:
     heading: నిర్ణయాలు
   auth_form:
     name_placeholder: మీ పేరు
-  install_slack:
-    progress:
-      invite: ఆహ్నానించు
+  webhook:
+    name_label: పేరు
   group_survey:
     categories:
       other: ఇతరాలు

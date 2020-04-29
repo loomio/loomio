@@ -55,8 +55,6 @@ ja:
       discussions: 'ディスカッション'
   notifications:
     header: "通知"
-  position_buttons_panel:
-    heading: 意見を言う
   discussion_form:
     group_label: 'グルブ'
     title_label: 'タイトル'
@@ -82,9 +80,6 @@ ja:
     privacy: 'プライバシー'
     profile: プロフィール
     submit_update: '設定更新'
-  document:
-    form:
-      title_label: 氏名
   membership_requests_page:
     approve: 承認
     ignore: 拒否
@@ -115,9 +110,6 @@ ja:
     title: 'コメントを削除します'
     question: '本当にコメントを削除しますか？'
     confirm: 'コメントを削除します'
-  new_comment_item:
-    context_menu:
-      delete_comment: 'コメントを削除します'
   contact_message_form:
     name_label: 'あなたの名前'
     subject_label: "主題"
@@ -147,6 +139,8 @@ ja:
     'no': 'いいえ'
   auth_form:
     name_placeholder: あなたの名前
+  webhook:
+    name_label: 氏名
   group_survey:
     categories:
       other: その他

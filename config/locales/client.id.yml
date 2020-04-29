@@ -37,8 +37,6 @@ id:
       discussions: 'Diskusi'
   notifications:
     header: "Notifikasi"
-  position_buttons_panel:
-    heading: Berikan pendapat Anda
   discussion_form:
     group_label: 'Kelompok'
     title_label: 'Judul'
@@ -59,9 +57,6 @@ id:
       edit_group: 'Ubah setelan kelompok'
       email_settings: 'Preferensi surel'
       leave_group: 'Tinggalkan kelompok'
-  document:
-    form:
-      title_label: Nama
   membership_requests_page:
     approve: Setuju
     ignore: Abaikan
@@ -86,9 +81,6 @@ id:
     title: 'Hapus komentar'
     question: 'Apakah Anda ingin menghapus komentar ini?'
     confirm: 'Hapus komentar'
-  new_comment_item:
-    context_menu:
-      delete_comment: 'Hapus komentar'
   contact_message_form:
     subject_label: "Perihal"
   hint:
@@ -111,6 +103,8 @@ id:
   poll_count_options:
     'yes': 'Ya'
     'no': 'Tidak'
+  webhook:
+    name_label: Nama
   group_survey:
     categories:
       other: Lainnya

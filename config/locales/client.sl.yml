@@ -196,8 +196,6 @@ sl:
     cancel_invitation: Prekliči povabilo
   notifications:
     header: "Obvestila"
-  position_buttons_panel:
-    heading: Izrazi svoje mnenje
   discussion_form:
     group_label: 'Skupina'
     group_placeholder: 'Izberi skupino'
@@ -297,16 +295,6 @@ sl:
     group_name_placeholder: 'Kako se imenuje tvoja skupina?'
     privacy: 'Zasebnost'
     profile: Profil
-  documents_page:
-    title: Priloge
-    confirm_remove_title: Odstrani prilogo
-  document:
-    list:
-      title: Priloge
-    modal:
-      title: Dodaj priponko
-    form:
-      title_label: Ime
   membership_requests_page:
     approve: Potrdi
     ignore: Prezri
@@ -322,15 +310,6 @@ sl:
       title: Prekliči povabilo
       flash: Povabilo preklicano
       submit: Prekliči povabilo
-  pending_invitations_card:
-    email: Email
-  cancel_invitation_form:
-    heading: Prekliči povabilo
-    question: Ali res želite preklicati to povabilo?
-    submit: "Da, prekliči povabilo"
-    cancel: 'Ne'
-    messages:
-      success: Povabilo preklicano
   profile_page:
     profile: 'Profil'
     picture_label: 'Slika'
@@ -374,10 +353,6 @@ sl:
     title: 'Izbriši komentar'
     question: 'Si prepričan/a, da želiš izbrisati ta komentar?'
     confirm: 'Izbriši komentar'
-  new_comment_item:
-    context_menu:
-      edit_comment: 'Uredi komentar'
-      delete_comment: 'Izbriši komentar'
   contact_message_form:
     name_label: 'Tvoje ime'
     subject_label: "Naslov"
@@ -390,10 +365,6 @@ sl:
     invitation: 'Nasveti za pisanje prepričljivih vabil'
     proposal: 'Nasveti za pisanje jasnih predlogov'
     vote: 'Svojo odločitev lahko spremeniš kadarkoli'
-  registered_apps_page:
-    name: Ime
-  registered_app_form:
-    name_label: Ime
   decision_tools_card:
     proposal_title: Predlog
     poll_title: Anketa
@@ -427,9 +398,8 @@ sl:
   auth_form:
     name_placeholder: Tvoje ime
     name: Ime
-  install_slack:
-    progress:
-      invite: Povabi
+  webhook:
+    name_label: Ime
   group_survey:
     categories:
       business: Podjetništvo

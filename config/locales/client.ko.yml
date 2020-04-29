@@ -204,16 +204,6 @@ ko:
     header: "알림"
     no_notifications: "알림이 없습니다."
     publish_outcome: "결과 인쇄하기"
-  position_buttons_panel:
-    heading: 한말씀
-  extend_proposal_form:
-    aria_label: 종료 시간 변경
-    title: '종료 시간 변경'
-    success: '제안 종료 시간 변경 완료'
-    submit: '종료 시간을 수정합니다'
-  discussion_record:
-    created: '해당 쓰레드 {{title}}은 {{groupName}}에 성공적으로 생성되었습니다.'
-    updated: '제목을 {{title}}으로 바꾸었습니다.'
   discussion_fork_actions:
     move: 이동
   discussion_form:
@@ -374,11 +364,6 @@ ko:
     heading: '멤버십 요청'
     manage_requests: 요청 관리
     manage_requests_with_count: 요청 관리 ({{count}})
-  documents_page:
-    confirm_remove_title: 첨부파일 삭제
-  document:
-    form:
-      title_label: 이름
   membership_requests_page:
     heading: 멤버십 요청
     approve: 승인
@@ -415,13 +400,6 @@ ko:
       invitation_sent: '초대가 전송됨'
       invitations_sent: '{{count}}개의 초대장 발송'
       max_invitations: '만일 100개 이상의 초대장을 보내려면 팀 링크를 사용하세요.'
-  add_members_modal:
-    aria_label: '상위그룹에 있는 멤버추가'
-    heading: '{{name}}에서 인원 추가'
-    add_members: '멤버 추가'
-    user_added_to_subgroup: '{{name}}님을 소그룹에 추가하였습니다.'
-    users_added_to_subgroup: '{{count}}명의 사용자가 소그룹에 추가되었습니다.'
-    no_members_to_add: '{{parent}}의 모든 멤버가 이 소그룹에 속합니다.'
   memberships_page:
     members: '멤버'
     name_label: '이름'
@@ -437,18 +415,6 @@ ko:
     membership:
       title: 멤버 삭제
       submit: 멤버 삭제
-  pending_invitations_card:
-    heading: 대기 중인 초대
-    email: 이메일
-    invitation_link: 초대 링크
-    sent: 발송 완료
-  cancel_invitation_form:
-    heading: 초대 취소
-    question: 이 초대를 취소하시겠습니까?
-    submit: "네, 초대를 취소합니다."
-    cancel: '아니요'
-    messages:
-      success: 초대를 취소했습니다.
   profile_page:
     messages:
       updated: '프로필을 수정했습니다.'
@@ -568,44 +534,6 @@ ko:
     title: '댓글삭제'
     question: '댓글을 지우시겠습니까?'
     confirm: '댓글삭제'
-  new_comment_item:
-    aria_label: '{{author}}의 댓글'
-    context_menu:
-      aria_label: '댓글 옵션'
-      edit_comment: '댓글 수정'
-      delete_comment: '댓글삭제'
-    in_reply_to: '<strong>{{recipient}}</strong>에 대한 답변:'
-  new_vote_item:
-    agree: '동의'
-    abstain: '기권함'
-    disagree: '반대'
-    block: '차단됨'
-    agree_with_statement: '동의: <span>{{statement}}</span>'
-    abstain_with_statement: '기권: <span>{{statement}}</span>'
-    disagree_with_statement: '반대: <span>{{statement}}</span>'
-    block_with_statement: '차단: <span>{{statement}}</span>'
-  new_proposal_item:
-    author_created_proposal: '제안 시작: <span>{{title}}</span>'
-  proposal_closed_item:
-    proposal_closed: '제안 종료 되었습니다: <span>{{title}}</span>'
-  proposal_closed_by_user_item:
-    proposal_closed_by_user: '제안 종료: <span>{{title}}</span>'
-  proposal_edited_item:
-    name: '제안 제목 수정: <span>{{title}}</span>'
-    description: '제안 설명 수정 완료'
-    closing_at: '<span>{{time}}</span>에 종료되도록 제안 수정 완료'
-    description_name: '제안 제목과 설명 수정 완료'
-    closing_at_name: '제안 제목과 종료시간 수정 완료'
-    closing_at_description: '제안 설명과 종료시간 수정 완료'
-    closing_at_description_name: '제안 제목, 설명, 종료시간 수정 완료'
-  proposal_outcome_created_item:
-    proposal_outcome_created: '제안 결과 공표 완료:'
-  proposal_outcome_updated_item:
-    proposal_outcome_updated: '제안 결과 수정 완료:'
-  discussion_edited_item:
-    title: '주제 제목 수정 완료: <span>{{title}}</span>'
-    description: '주제 컨텍스트 수정 완료'
-    description_title: '주제 제목과 컨텍스트 수정 완료'
   contact_message_form:
     contact_us: '연락하기'
     name_label: '이름'
@@ -643,6 +571,8 @@ ko:
     'no': '아니요'
   auth_form:
     name_placeholder: 이름
+  webhook:
+    name_label: 이름
   group_survey:
     categories:
       other: 다른것

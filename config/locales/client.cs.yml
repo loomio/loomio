@@ -283,16 +283,6 @@ cs:
     user_added_to_group: "Uživatel <strong>{{name}}</strong> Vás přidal do skupiny <strong>{{title}}</strong>"
     user_added_to_group_no_inviter: "Byli jste přidáni do skupiny <strong>{{title}}</strong>"
     motion_closing_soon: "Návrh brzy končí: <strong>{{title}}</strong>"
-  position_buttons_panel:
-    heading: Vyjádřete svůj názor
-  extend_proposal_form:
-    aria_label: Změnit čas uzavření
-    title: 'Změnit čas uzavření'
-    success: 'Čas uzavření aktualizován'
-    submit: 'Aktualizovat čas uzavření'
-  discussion_record:
-    created: 'Vlákno {{title}} bylo úspěšně vytvořeno v {{groupName}}'
-    updated: 'Změny k {{title}} uloženy'
   discussion_fork_actions:
     move: Přesunout
   discussion_form:
@@ -439,11 +429,6 @@ cs:
     submit_update: 'Aktualizovat nastavení'
     messages:
       group_updated: 'Skupina aktualizována'
-  documents_page:
-    confirm_remove_title: Odebrat přílohu
-  document:
-    form:
-      title_label: Jméno
   membership_requests_page:
     heading: Žádosti o členství
     approve: Schválit
@@ -471,11 +456,6 @@ cs:
     messages:
       invitation_sent: 'Pozvánka odeslána.'
       invitations_sent: 'Odesláno {{count}} pozvánek.'
-  add_members_modal:
-    aria_label: 'Přidat členy z nadřazené skupiny'
-    add_members: 'Přidat členy'
-    user_added_to_subgroup: 'Skupina {{name}} byla přidána do podskupiny'
-    users_added_to_subgroup: '{{count}} uživatelů bylo přidáno do podskupiny'
   memberships_page:
     members: 'Členové'
     name_label: 'Jméno'
@@ -493,20 +473,6 @@ cs:
   membership_form:
     modal_title:
       group: Nastavit název skupiny
-  pending_invitations_card:
-    heading: Nevyřízené pozvánky
-    email: Email
-    invitation_link: Odkaz na pozvánku
-    sent: Odesláno
-    copy_url: Kopírovat URL
-    revoke_invitation: Revokovat
-  cancel_invitation_form:
-    heading: Stornovat pozvánku
-    question: Opravdu chcete stornovat tuto pozvánku?
-    submit: "Ano, strnovat pozvánku"
-    cancel: 'Ne'
-    messages:
-      success: Pozvánka stornována
   profile_page:
     messages:
       updated: 'Profil aktualizován'
@@ -623,13 +589,6 @@ cs:
     title: 'Odstranit komentář'
     question: 'Opravdu chcete odstranit tento komentář?'
     confirm: 'Odstranit komentář'
-  new_comment_item:
-    aria_label: 'Komentář od {{author}}'
-    context_menu:
-      aria_label: 'Možnosti komentáře'
-      edit_comment: 'Upravit komentář'
-      delete_comment: 'Odstranit komentář'
-    edited: 'Upraveno'
   contact_message_form:
     contact_us: 'Kontakt'
     name_label: 'Vaše jméno'
@@ -650,14 +609,6 @@ cs:
   global:
     messages:
       reload: 'Znovu načíst'
-  authorized_apps_page:
-    revoke: Revokovat
-  registered_apps_page:
-    name: Jméno
-  registered_app_form:
-    name_label: Jméno
-    messages:
-      logo_changed: Logo aktualizováno.
   decision_tools_card:
     proposal_title: Návrh
     count_title: Kontrola
@@ -741,10 +692,6 @@ cs:
     'no': 'Ne'
   poll_meeting_chart_panel:
     total: Celkem
-  poll_admin_page:
-    title: Admin - {{title}}
-  poll_common_publish_facebook_preview:
-    just_now: Právě teď
   poll_common_subscribe_form:
     receive_updates_title: Vaše hlasování bylo zaznamenáno
     receive_updates_helptext: Chcete-li obdržet e-mail s výsledky tohoto hlasování, zadejte níže svou e-mailovou adresu
@@ -775,28 +722,8 @@ cs:
     name: Jméno
     email: Email
     password: Heslo
-  install_slack:
-    progress:
-      install: Instalovat
-      invite: Pozvat
-      decide: Rozhodněte se
-    install:
-      group_name: Název skupiny
-      group_name_placeholder: Název nové skupiny...
-      start_new_group: Založte novou skupinu
-      use_existing_group: Použijte existující skupinu
-    invite:
-      publish_group: Uveďte uvítací zprávu
-      custom_message: Vlastní zpráva
-      set_channel: Nastavte kanál
-    decide:
-      heading: 'Krok 3: Vytvořte společné rozhodnutí'
-      helptext: "Nyní, když jste všechno připraveno, je čas začít rozhodovat. Vyberte jednu z následujících možností:"
-    common:
-      do_it_later: Udělám to později
-  slack_added_modal:
-    title: Úspěch!
-    start_poll_now: Rozhodněte se nyní
+  webhook:
+    name_label: Název
   group_survey:
     categories:
       business: Obchod

@@ -46,8 +46,6 @@ sk:
       discussions: 'Diskusie'
   notifications:
     header: "Upozornenie"
-  position_buttons_panel:
-    heading: Vyjadrite svoj názor
   discussion_form:
     group_label: 'Skupina'
     title_label: 'Názov'
@@ -75,9 +73,6 @@ sk:
   group_form:
     group_name_placeholder: 'Aký je názov vašej skupiny?'
     profile: Profil
-  document:
-    form:
-      title_label: Meno
   membership_requests_page:
     approve: Schváliť
     ignore: Ignorovať
@@ -114,10 +109,6 @@ sk:
     title: 'Odstrániť komentár'
     question: 'Naozaj chcete odstrániť tento komentár?'
     confirm: 'Odstrániť komentár'
-  new_comment_item:
-    context_menu:
-      edit_comment: 'Upraviť komentár'
-      delete_comment: 'Odstrániť komentár'
   contact_message_form:
     name_label: 'Vaše meno'
     subject_label: "Téma"
@@ -148,6 +139,8 @@ sk:
     'no': 'Nie'
   auth_form:
     name_placeholder: Vaše meno
+  webhook:
+    name_label: Meno
   group_survey:
     categories:
       business: Obchod

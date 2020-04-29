@@ -632,6 +632,17 @@ zh_TW:
     poll_closing_soon: "%{poll_type} 即將在 24 小時內關閉"
     poll_expired: "%{poll_type} 已關閉"
     group_identity_created: "從 %{group} 而來的動態現在將會顯示在此頻道中"
+  webhook:
+    markdown:
+      new_discussion: "**%{actor}** 在 %{group}開始了討論：[%{title}](%{url})"
+      new_comment: "**%{actor}** 在 [%{title}](%{url}) 中留言"
+      outcome_created: "**%{actor}** 已分享 %{poll_type} 的結果：[%{title}](%{url})"
+      poll_created: "**%{actor}** 在 %{group} 中開始了 %{poll_type}：[%{title}](%{url})"
+      stance_created: "**%{actor}** 在 [%{title}](%{url}) 中投票了"
+      poll_closing_soon: "剩下 24 小時：[%{title}](%{url})"
+      poll_expired: "%{poll_type}：[%{title}](%{url}) 已關閉"
+      poll_closed_by_user: "**%{actor}** 關閉了 %{poll_type}：[%{title}](%{url})"
+      poll_reopened: "**%{actor}** 重開了 %{poll_type}：[%{title}](%{url})"
   slack:
     new_discussion: "在 *%{group}* 中的新討論串：*%{discussion}*"
     outcome_created: "在 *%{group}* 中的結果已貼出：*%{poll}*"

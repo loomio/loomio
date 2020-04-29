@@ -512,16 +512,6 @@ de:
     outcome_announced: "<strong>{{name}}</strong> hat ein Ergebnis mitgeteilt: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> hat in <strong>{{title}}</strong> teilgenommen"
     group_announced: "<strong>{{name}}</strong> hat dich zu der Gruppe <strong>{{title}}</strong> eingeladen"
-  position_buttons_panel:
-    heading: Teile deine Meinung
-  extend_proposal_form:
-    aria_label: Endzeitpunkt ändern
-    title: 'Endzeitpunkt ändern'
-    success: 'Vorschlagsende wurde aktualisiert'
-    submit: 'Endzeitpunkt aktualisieren'
-  discussion_record:
-    created: 'Die Diskussion {{title}} wurde erfolgreich in {{groupName}} erstellt'
-    updated: 'Änderungen für {{title}} gespeichert'
   discussion_fork_actions:
     helptext: Wähle Einträge aus, die du zu einer anderen Diskussioen verschieben willst
     move: Verschieben
@@ -572,10 +562,9 @@ de:
     inviting_guests_to_thread: 'Personen die keine Mitglieder von {{group}} sind werden zu dieser Diskussion als Gäste eingeladen, aber kein Zugang zu anderen Diskussionen erhalten. '
     audiences:
       parent_group: Mitglieder von {{name}}
-      formal_group: Mitglieder von {{name}}
+      group: Mitglieder von {{name}}
       discussion_group: Diskussionsteilnehmer
       voters: Personen die abgestimmt haben
-      non_voters: Personen die noch nicht abgestimmt haben
     form:
       too_many_invitations: |
           Die Einladungsgrenze ist erreicht. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
@@ -792,7 +781,6 @@ de:
     options:
       label: 'Optionen'
       edit_group: 'Gruppeneinstellungen bearbeiten'
-      open_group_wizard: 'Assistent für die Gruppenerstellung'
       become_coordinator: Gruppenmoderator werden
       export_data: Gruppendaten exportieren
       export_data_as_json: Gruppendaten exportieren als JSON
@@ -933,43 +921,6 @@ de:
     heading: 'Mitgliedschaftsanfragen'
     manage_requests: Anfragen verwalten
     manage_requests_with_count: ({{count}}) Anfragen verwalten
-  documents_page:
-    title: Anhänge
-    fragment_placeholder: nach Anhängen suchen...
-    add_document: Anhang hinzufügen
-    no_documents: In dieser Gruppe sind keine Anhänge vorhanden. Klicke auf "Hinzufügen", um Anhänge hinzuzufügen.
-    no_documents_from_fragment: Keine Anhänge mit dem Namen '{{fragment}}' gefunden
-    confirm_remove_title: Anhang entfernen
-    confirm_remove_helptext: Bist du sicher, dass du diesen Anhang entfernen möchtest?
-    document_removed: Anhang entfernt
-  document:
-    error:
-      invalid_format: Ups! Die URL ist ungültig. Stelle sicher, dass die URL mit http:// oder https:// beginnt
-    card:
-      no_documents: In dieser Gruppe wurden noch keine Anhänge hinzugefügt.
-      view_documents: Alle/s sehen
-    list:
-      title: 'Anhänge '
-      no_group_documents: Bisher wurden keine Anhänge in die Gruppenbeschreibung hochgeladen.
-    management:
-      content_header: Alle Anhänge
-      uploaded_to: in
-    modal:
-      title: Anhang hinzufügen
-    method_form:
-      helptext: Füge Dateien oder Links hinzu um sie mit der Gruppe zu teilen.
-      url_helptext: Link zu Internetseiten und Online-Angeboten
-      file_helptext: Dateien vom Computer hochladen
-    form:
-      url_label: URL
-      helptext: Klicke hier, füge die Datei ein oder setze sie hier ab um sie hochzuladen
-      url_placeholder: zum Beispiel https://www.example.com/attachment.zip
-      title_helptext: Wie soll dieser Anhang benannt werden?
-      title_label: Name
-      title_placeholder: zum Beispiel 'allgemeine Richtlinien'
-    flash:
-      success: Anhang gespeichert
-      destroyed: Anhang entfernt
   membership_requests_page:
     heading: Mitgliedschaftsanfragen
     approve: Zustimmen
@@ -1022,13 +973,6 @@ de:
       invitations_sent: '{{count}} Einladungen versendet.'
       no_invitations: 'Bitte überprüfe, dass dein Mailadresse korrekt ist und probiere es erneut.'
       max_invitations: 'Verwenden einen Team-Link, wenn du mehr als 100 Einladungen verschicken möchtest.'
-  add_members_modal:
-    aria_label: 'Mitglieder vom Mutterkonzern hinzufügen'
-    heading: 'Mitglieder der Gruppe {{name}} hinzufügen'
-    add_members: 'Mitglieder hinzufügen'
-    user_added_to_subgroup: '{{name}} zur Untergruppe hinzugefügt'
-    users_added_to_subgroup: '{{count}} Mitglieder zur Untergruppe hinzugefügt'
-    no_members_to_add: 'Alle Mitglieder von {{parent}} gehören dieser Untergruppe an'
   memberships_page:
     members: 'Mitglieder'
     name_label: 'Name'
@@ -1061,30 +1005,11 @@ de:
   membership_form:
     modal_title:
       group: Titel innerhalb der Gruppe festlegen
-      discussion: Diskussions-Titel festlegen
-      poll: Lege den {{pollType}} Titel fest
     title_helptext:
       group: Dieser Titel wird neben dem Namen von {{name}} angezeigt, um die offizielle Funktion innerhalb der Gruppe näher zu beschreiben.
-      discussion: 'Dieser Titel wird neben {{name}}s Name in dieser Diskussion angezeigt. Er ist hilfreich dafür, anderen Personen dessen Rolle zu kommunizieren. '
-      poll: 'Dieser Titel wird innerhalb dieses {{pollType}} neben dem Namen von {{name}} angezeigt. Er ist hilfreich dafür, anderen dessen Rolle zu kommunizieren. '
     title_label: Titel
     title_placeholder: z. B. "Projektkoordinator" oder "Moderator"
     updated: Mitgliedstchaftstitel überarbeitet
-  pending_invitations_card:
-    heading: Ausstehende Einladungen
-    email: E-Mail
-    invitation_link: Link zur Einladung
-    sent: Senden
-    sent_at: Gesendet am {{date}}
-    copy_url: URL kopieren
-    revoke_invitation: Zurückziehen
-  cancel_invitation_form:
-    heading: Einladung abbrechen
-    question: Bist du sicher, dass du diese Einladung zurückziehen möchtest?
-    submit: "Ja, Einladung zurückziehen"
-    cancel: 'Nein'
-    messages:
-      success: Einladung zurückgezogen
   user_page:
     contact_user: '{{name}} kontaktieren'
     location_field: 'Ort: {{value}}'
@@ -1347,59 +1272,10 @@ de:
     confirm_change_to_private_thread: '{{groupName}} ist eine öffentliche Gruppe. Wenn Sie fortfahren, wird diese Diskussion veröffentlicht.'
     messages:
       success: Diskussion wurde nach {{name}} verschoben
-  print_modal:
-    load_discussion: vollständige Diskussion laden
-    helptext: Nur eine Sekunde, wir bereiten alle Ereignisse in dieser Diskussion zum Drucken vor ...
   delete_comment_dialog:
     title: 'Kommentar löschen'
     question: 'Bist du sicher, dass du dieses Kommentar löschen möchtest?'
     confirm: 'Kommentar löschen'
-  new_comment_item:
-    aria_label: 'Kommentar von {{author}}'
-    context_menu:
-      aria_label: 'Kommentar-Optionen'
-      edit_comment: 'Kommentar bearbeiten'
-      delete_comment: 'Kommentar löschen'
-    in_reply_to: 'In Antwort zu <strong>{{recipient}}</strong>'
-    edited: 'Bearbeitet'
-  new_vote_item:
-    agree: 'hat zugestimmt'
-    abstain: 'hat sich enthalten'
-    disagree: 'hat abgelehnt'
-    block: 'hat Veto eingelegt'
-    agree_with_statement: 'hat zugestimmt: <span>{{statement}}</span>'
-    abstain_with_statement: 'hat sich enthalten: <span>{{statement}}</span>'
-    disagree_with_statement: 'hat abgelehnt: <span>{{statement}}</span>'
-    block_with_statement: 'hat ein Veto eingelegt: <span>{{statement}}</span>'
-  new_proposal_item:
-    author_created_proposal: 'hat einen Vorschlag erstellt: <span>{{title}}</span>'
-  proposal_closed_item:
-    proposal_closed: 'Der Vorschlag ist beendet: <span>{{title}}</span>'
-  proposal_closed_by_user_item:
-    proposal_closed_by_user: 'hat den Vorschlag geschlossen: <span>{{title}}</span>'
-  proposal_edited_item:
-    name: 'hat den Titel des Vorschlags aktualisiert: <span>{{title}}</span>'
-    description: 'aktualisierte die Vorschlagsbeschreibung'
-    closing_at: 'hat das Ende des Vorschlags auf <span>{{time}}</span> geändert'
-    description_name: 'aktualisierte Vorschlagtitel und -beschreibung'
-    closing_at_name: 'aktualisierte Vorschlagtitel und Ende'
-    closing_at_description: 'aktualisierte Vorschlagsbeschreibung und Ende'
-    closing_at_description_name: 'aktualisierte Vorschlagtitel, -beschreibung und Ende'
-  proposal_outcome_created_item:
-    proposal_outcome_created: 'veröffentlichte ein Vorschlagsbeschluss:'
-  proposal_outcome_updated_item:
-    proposal_outcome_updated: 'hat das Abstimmungsergebnis aktualisiert:'
-  discussion_edited_item:
-    attachment_ids: 'hat die Diskussionsbeschreibung aktualisiert'
-    title: 'hat den Titel der Diskussion geändert: <span>{{title}}</span>'
-    description: 'hat die Diskussionsbeschreibung aktualisiert'
-    description_title: 'hat den Diskussionstitel und die Diskussionsbeschreibung aktualisiert'
-    private: 'aktualisierte die Diskussions-Privatsphäre zu'
-    public_to_private: 'Privat'
-    private_to_public: 'Öffentlich'
-    private_title: 'aktualisierte Diskussionstitel und Privatsphäre'
-    description_private: 'hat die Diskussionsbeschreibung und die Datenschutzeinstellungen aktualisiert'
-    description_private_title: 'hat den Diskussionstitel, die Diskussionsbeschreibung und die Datenschutzeinstellungen aktualisiert '
   contact_message_form:
     title: "Hey! Wie können wir dir helfen?"
     read_the_manual: |
@@ -1441,46 +1317,6 @@ de:
     messages:
       app_update: 'Eine neue Version der App ist verfügbar'
       reload: 'Reload'
-  authorized_apps_page:
-    title: Autorisierte Apps
-    no_applications: "Sie haben bisher keine Drittanbieter-Apps autorisiert."
-    notice: "Sie haben den folgenden Drittanbieter-Apps die Berechtigung zur Verwendung Ihres Kontos erteilt. Klicken Sie auf \"Widerrufen\", um sie zu deaktivieren."
-    revoke: Widerrufen
-  registered_apps_page:
-    title: Registrierte Anwendungen
-    no_applications: "Sie haben bislang keine OAuth-Anwendungen! Unten klicken, um eine einzurichten."
-    name: Name
-    redirect_uris: Umleitungs-URLs
-    create_new_application: Neue Anwendung
-  registered_app_page:
-    uid: Anwendungs-ID
-    secret: Anwendungsgeheimnis
-  registered_app_form:
-    new_application_title: Neue Anwendung
-    edit_application_title: Anwendung aktualisieren
-    name_label: Name
-    name_placeholder: Wie heisst Ihre App?
-    redirect_uri_label: Umleitungs-Uris
-    redirect_uri_placeholder: "Die Callback-uri für Ihre App, z.B.: https://myapplication.com/loomio/callback"
-    redirect_uri_note: (Eine Zeile pro URI, benutze 'urn:ietf:wg:oauth:2.0:oob' für lokale Tests)
-    new_application_submit: Erstelle App
-    edit_application_submit: Anwendung aktualisieren
-    messages:
-      logo_changed: Logo wurde aktualisiert.
-      created: "'{{name}}' erstellt"
-      updated: "'{{name}}' aktualisiert"
-  remove_app_form:
-    title: '{{name}} deaktivieren'
-    question: "Sind Sie sicher, dass Sie die App '{{name}}' deaktivieren möchten? Dieser Schritt kann nicht mehr rückgängig gemacht werden."
-    submit: Deaktivieren
-    messages:
-      success: "'{{name}}' wurde erfolgreich deaktiviert"
-  revoke_app_form:
-    title: Zugriff für '{{name}}' widerrufen
-    question: "Sind Sie sicher, dass Sie '{{name}}' den Zugriff auf Ihr Benutzerkonto verweigern möchten?"
-    submit: Zugriff widerrufen
-    messages:
-      success: "'{{name}}' kann Ihr Konto nicht mehr nutzen."
   decision_tools_card:
     title: Ermöglichen
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Hilfe</a>
@@ -1711,14 +1547,6 @@ de:
     question: Wirklich löschen?
     title: Abstimmung löschen
     success: Erfolgreich gelöscht
-  poll_common_unsubscribe_form:
-    title: Aktualisierungen erhalten
-    label: Mail-Updates über diese Entscheidungen erhalten
-    tooltip: E-Mail-Updates halten Sie über diese Entscheidung auf dem Laufenden, z.B. wann sie bearbeitet wird, wann sie abläuft oder wann ein Ergebnis festgelegt wurde. Wenn Sie dieses Kontrollkästchen deaktivieren, wird sichergestellt, dass Sie keine weiteren E-Mail-Benachrichtigungen zur Entscheidung erhalten.
-    helptext_on: Sie werden über die Ereignisse in dieser Diskussion per E-Mail informiert
-    helptext_off: Sie werden keine Mails über diese Entscheidung erhalten.
-    subscribed: erfolgreich unterschrieben
-    unsubscribed: erfolgreich abgemeldet
   poll_common_form:
     title: Titel
     details: Details
@@ -1895,8 +1723,6 @@ de:
     reason_placeholder: Hinterlassen Sie eine Nachricht, wenn Sie möchten
     stance_created: Wahl erstellt
     stance_updated: Wahl aktualisiert
-  poll_common_percent_voted:
-    sentence: "{{numerator}} Personen haben ({{percent}}%) abgestimmt"
   poll_count_chart_panel:
     out_of: von {{goal}}
   poll_meeting_chart_panel:
@@ -1947,17 +1773,6 @@ de:
     poll_expired: "{{polltype}} beendet"
     stance_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat in <strong>{{title}}</strong> abgestimmt"
     event_removed: "Von der Diskussion entfernt"
-  poll_admin_page:
-    title: Administator - {{title}}
-  poll_common_publish_facebook_preview:
-    shared_a: teilte ein
-    link: Verknüpfung
-    just_now: Nur jetzt
-  poll_common_publish_slack_preview:
-    poll_published: "veröffentlichte eine Umfrage:"
-    poll_published_with_discussion: "veröffentlichte eine Umfrage in <strong>{{discussion}}</strong>:"
-    view_it_on_loomio: Schau es dir auf {{site_name}} an
-    timestamp: Heute um {{timestamp}}
   poll_common_subscribe_form:
     receive_updates_title: Ihre Wahl wurde aufgenommen.
     receive_updates_helptext: Wenn Sie eine Mail zum Ergebnis der Umfrage erhalten wollen, geben Sie Ihre Mailadresse unten ein
@@ -2030,26 +1845,12 @@ de:
     email: E-Mail
     password: Passwort
     reactivate: Account wieder aktivieren
-  install_microsoft:
-    modal_title: Microsoft Teams installieren
-    card:
-      install_title: Mit Microsoft Teams verbinden
-      install_helptext: 'Der Loomio bot informiert dein Team über Diskussionen und Entscheidungen die Loomio passieren. '
-      installed_title: Mit Microsoft Teams verbunden
-      installed_helptext: Ereignisse aus dieser Gruppe werden an Ihr Microsoft Team gesendet.
-      install_microsoft: Microsoft-Teams konfigurieren
-      remove_identity: Microsoft-Teams Konfiguration entfernen
-      confirm_remove_title: Microsoft-Teams Konfiguration entfernen
-      confirm_remove_helptext: |
-          Dein Microsoft Teams Kanal wird keine Updates mehr zu dieser Gruppe erhalten.
-          Du kannst sie natürlich jederzeit wieder hinzufügen.
-      identity_removed: Eingliederung entfernt
-    form:
-      webhook_helptext: Gib bitte die von deinem Teams-Channel bereitgestellte WebHooks-URL ein. <a href="https://help.loomio.org/en/user_manual/groups/integrations/#microsoft-teams">Weitere Informationen zur Konfiguration von Microsoft Teams für die Verwendung mit Loomio</a>
-      webhook_label: WebHooks-URL
-      webhook_installed: Mit Microsoft Teams verbunden
-      webhook_placeholder: https://outlook.office.com/...
-      event_kind_helptext: 'Welche Ereignisse sollen im Teams-Channel veröffentlicht werden? '
+  webhook:
+    formats:
+      microsoft: Microsoft Teams
+      slack: Slack
+    url_label: WebHooks-URL
+    name_label: Name
     event_kinds:
       new_discussion: 'Ein neue Diskussion wurde eröffnet '
       new_comment: 'Es gibt einen neuen Kommentar '
@@ -2060,7 +1861,7 @@ de:
       outcome_created: 'Ein Ergebnis wurde mitgeteilt  '
   configure_sso:
     redirecting: TODO_DE_Please wait, redirecting to sign-in provider
-    title: TODO_DE_Configure single sign-on
+    title: Einfaches Registrieren
     enabled: TODO_DE_Single sign-on is enabled
     helptext: TODO_DE_Integrate with OneLogin, Auth0, Microsoft Active Directory, or any other SAML Provider. <a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">Learn more</a>.
     warning_helptext: "TODO_DE_Warning: You'll be required to authenticate with your provider after you click save."
@@ -2071,78 +1872,15 @@ de:
     destroyed: TODO_DE_Single sign-on removed
     invalid_idp_metadata_url: TODO_DE_Invalid IDP metadata URL
     sp_metadata_url: TODO_DE_SP Metadata URL
-  install_slack:
-    modal_title: Mit Slack verbinden
-    modal_helptext: 'Zuerst musst du dich bei Slack anmelden. Klicke auf den Button unten, um fortzufahren.  '
-    login_to_slack: bei Slack einloggen
-    remove_slack: Slack-Konfigurierung entfernen
-    card:
-      install_title: Mit Slack verbinden
-      install_helptext: Der Loomio-Bot benachrichtigt Ihr Slack-Team über Diskussionen und Beschlüsse auf Loomio. Sie können in Slack auch neue Beschlüsse anfangen und wählen.
-      installed_title: Mit Slack verbunden
-      installed_helptext: Diese Gruppe wurde mit dem slack team <strong><a target='_blank' href='https://{{team}}.slack.com'>{{team}}</a></strong> verbunden. Ereignisse aus dieser Gruppe werden im <strong>Kanal  {{channel}} angezeigt.
-      install_slack: Slack verbinden
-      remove_identity: Diese Eingliederung entfernen
-      confirm_remove_title: Slack Eingliederung entfernen
-      confirm_remove_helptext: |
-          Ihr Slack-Kanal empfängt keine Updates mehr über diese Gruppe.
-          Sie können jederzeit zurückgehen und die Gruppe erneut hinzufügen.
-      identity_removed: Eingliederung entfernt
-    progress:
-      install: Installieren
-      invite: Einladen
-      decide: Entscheiden
-    install:
-      heading: 'Schritt 1: Wählen Sie eine Loomio-Gruppe zum Einbgliedern'
-      tooltip_heading: Loomio und Slack arbeiten gut zusammen
-      it_does_this: Engagieren Sie Benutzer dort, wo sie sind
-      and_also_this: Starten Sie sofort eine Umfrage und erhalten Sie in Echtzeit Rückmeldung
-      and_also_also_this: Lassen Sie die Leute die Ergebnisse erfahren und iterieren Sie Ihr Denken schnell
-      add_to_group_helptext: wählen Sie eine Gruppe aus um sie mit Slack zu verknüpfen
-      create_new_group_helptext: Sie haben keine Loomio Gruppe? Geben Sie einfach einen Namen ein und wir werden eine für Sie erstellen
-      group_name: Gruppen-Name
-      group_name_placeholder: Bennen Sie Ihre neue Gruppe...
-      slack_installed: Slack wurde installiert
-      install_slack: Slack jetzt installieren
-      start_new_group: Eine neue Gruppe eröffnen
-      use_existing_group: eine bereits existierende Gruppe nutzen
-    invite:
-      heading: 'Schritt 2: Richten Sie einen Slack-Kanal ein'
-      helptext: 'Wähle den Kanal, durch den wir Aktualisierungen mit dir teilen können.  '
-      select_a_channel: Wählen Sie einen Kanal aus
-      publish_group: Eine Willkommens-Nachricht verfassen
-      publish_group_helptext_on: Wir werden eine Nachricht in diesen Kanal posten um zu erklären, wie LoomioBot genutzt wird.
-      publish_group_helptext_off: Wir werden bis Sie eine Umfrage erstellt haben nichts posten.
-      custom_message: benutzerspezifische Nachricht
-      set_channel: Kanal bestimmen
-    decide:
-      heading: 'Schritt 3: Zusammen eine Entscheidung treffen'
-      helptext: "Jetzt, da alles eingerichtet ist, ist es an der Zeit, Entscheidungen zu treffen. Wählen Sie eine der folgenden Optionen:"
-    common:
-      do_it_later: ich mache es später
   browser_warning:
     message: "WICHTIG! Sie verwenden einen veralteten Browser ({{name}} {{version}}), der von {{site}} nicht unterstützt wird."
     link: Bitte wechseln Sie zu einem anderen Browser
-  slack_added_modal:
-    title: Erfolg!
-    helptext: |
-        Sie haben Slack erfolgreich zur Ihrer Gruppe <strong>{{name}}</strong> hinzugefügt.
-        Wenn jetzt jemand eine Umfrage in der Gruppe beginnt, hat man die Option
-        Aktualisierungen der Umfrage in einen Kanal in Ihrem Slack-Team zu posten.
-    start_poll_now: Jetzt eine Entscheidung machen
   powered_by:
     slogan: Bessere Entscheidungen gemeinsam treffen
     powered_by_loomio: Powered by Loomio
     privacy_policy: Datenschutz-Bestimmungen
     terms_of_service: Nutzungsbedingungen
     front_page: Titelseite
-  vue_upgraded_modal:
-    use_old_loomio: Das alte Loomio verwenden
-    title: Du verwendest Loomio 2.0!
-    body: |
-        <p>Es ist ein schnelleres, besseres Loomio!</p>
-        <p>Wir glauben du wirst es lieben, aber wenn du musst, kannst du zurück zur alten Version über die Seitennavigation wechseln.</p>
-        <p><a href="{{link}}" target="_blank">Finde raus was sich geändert hat.</a></p>
   group_survey:
     title: Geschafft! Nur noch einige Details
     subtitle: Bitte hilf uns dich besser kennen zu lernen. Wir werden keine Informationen teile ohne deine Einwilligung.

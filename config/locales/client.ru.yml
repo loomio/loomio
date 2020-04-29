@@ -325,14 +325,6 @@ ru:
   notifications:
     header: "Уведомления"
     no_notifications: "У Вас нет уведомлений"
-  position_buttons_panel:
-    heading: Выразить свое мнение
-  extend_proposal_form:
-    aria_label: Изменить время закрытия
-    title: 'Изменить время закрытия'
-    submit: 'Обновить время закрытия'
-  discussion_record:
-    updated: 'Сохранить изменения для {{title}}'
   discussion_fork_actions:
     move: Переместить
   discussion_form:
@@ -350,7 +342,6 @@ ru:
   announcement:
     audiences:
       voters: Люди, которые проголосовали
-      non_voters: Люди, которые не голосовали
     form:
       group_announced:
         title: Пригласите в группу
@@ -447,13 +438,6 @@ ru:
     public_threads: 'Только публичные темы'
     public_or_private_threads: 'Разрешить публичные и закрытые темы'
     submit_update: 'Обновить настройки'
-  documents_page:
-    confirm_remove_title: Удалить вложение
-  document:
-    modal:
-      title: Добавить приложение
-    form:
-      title_label: Имя
   membership_requests_page:
     approve: Подтвердить
     ignore: Игнорировать
@@ -467,16 +451,10 @@ ru:
     done: 'Сделано'
     messages:
       invitation_sent: 'Приглашение отправлено'
-  add_members_modal:
-    aria_label: 'Добавить участников из основной группы'
-    heading: 'Добавить участников из {{name}}'
-    add_members: 'Добавить участников'
   memberships_page:
     members: 'Участники'
     name_label: 'Имя'
     remove_member_label: 'Удалить'
-  pending_invitations_card:
-    copy_url: Скопировать ссылку
   profile_page:
     profile: 'Профиль'
     name_label: 'Имя'
@@ -541,15 +519,6 @@ ru:
     title: 'Удалить комментарий'
     question: 'Вы уверены что хотите удалить комментарий?'
     confirm: 'Удалить комментарий'
-  new_comment_item:
-    context_menu:
-      edit_comment: 'Редактировать коментарий'
-      delete_comment: 'Удалить комментарий'
-  new_vote_item:
-    block: 'заблокировано'
-  discussion_edited_item:
-    public_to_private: 'приватная'
-    private_to_public: 'публичная'
   contact_message_form:
     contact_us: 'Наши контакты'
     name_label: 'Ваше имя'
@@ -565,18 +534,6 @@ ru:
     invitation: 'Подсказки для написания отличного приглашения'
     proposal: 'Подсказки для написания понятного предложения'
     vote: 'Вы можете изменить вашу позицию в любое время'
-  registered_apps_page:
-    name: Имя
-  registered_app_form:
-    name_label: Имя
-    messages:
-      logo_changed: Лого обновлено.
-      created: "Создано '{{name}}'"
-      updated: "Обновить '{{name}}'"
-  remove_app_form:
-    title: Деактивировать {{name}}
-    question: "Вы действительно желаете деактивироать приложение '{{name}}'? Это действие необратимо."
-    submit: Деактивировать
   decision_tools_card:
     proposal_title: Предложение
     count_title: Проверка
@@ -627,40 +584,14 @@ ru:
     email_placeholder: You@example.com
     name_placeholder: Ваше имя
     name: Название
-  install_slack:
-    progress:
-      invite: Приглашать
-      decide: Принять решение
-    install:
-      heading: 'Шаг 1. Выберите группу Loomio для интеграции'
-      tooltip_heading: Loomio и Slack-мессенджер отлично работают вместе
-      and_also_this: Начните опросы мгновенно и получите обратную связь в режиме реального времени
-      add_to_group_helptext: Выберите группу, чтобы связать со Slack-мессенджером
-      group_name: Название группы
-      group_name_placeholder: Придумайте имя для новой группы...
-      slack_installed: Slack-мессенджер устновлен
-      install_slack: Установить Slack-мессенджер сейчас
-      start_new_group: Создать новую группу
-      use_existing_group: Использовать существующую группу
-    invite:
-      heading: 'Шаг 2: Настройте канал Slack-мессенджера'
-      select_a_channel: Выбрать канал
-      publish_group: Отправить приветственное сообщение
-      publish_group_helptext_on: Мы отправим сообщение на этот канал, чтобы проинструктировать людей о том, как использовать LoomioBot.
-      publish_group_helptext_off: Мы ничего не будем публиковать, пока Вы не создадите опрос.
-      custom_message: Сообщение от пользователя
-      set_channel: Установить канал
-    decide:
-      heading: 'Шаг 3: Примите решение совместно'
-      helptext: "Теперь, когда Вы определились, пришло время принимать решения. Выберите один из следующих вариантов:"
-    common:
-      do_it_later: Я сделаю это позже
+  webhook:
+    formats:
+      microsoft: Microsoft Teams
+      slack: Slack
+    name_label: Название
   browser_warning:
     message: "ВАЖНО! Вы используете устаревший браузер ({{имя}} {{версия}}), который нами не поддерживается {{сайт}}."
     link: Пожалуйста, используйте другой браузер
-  slack_added_modal:
-    title: Успешно!
-    start_poll_now: Принять решение сейчас
   powered_by:
     privacy_policy: Политика конфиденциальности
     terms_of_service: Условия использования

@@ -426,16 +426,6 @@ it:
     outcome_created: "<strong>{{name}}</strong> ha condiviso un risultato: <strong>{{title}}</strong>"
     outcome_announced: "<strong>{{name}}</strong> ha condiviso un risultato: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong>ha partecipato a:<strong>{{title}}</strong>"
-  position_buttons_panel:
-    heading: Dite la vostra
-  extend_proposal_form:
-    aria_label: Cambia data di chiusura
-    title: 'Cambia data di chiusura'
-    success: 'Scadenza della proposta aggiornata'
-    submit: 'Modifica la scadenza'
-  discussion_record:
-    created: 'La discussione {{title}} è stata creata con successo nel gruppo {{groupName}}.'
-    updated: 'Salva i cambiamenti a {{title}}'
   discussion_fork_actions:
     move: Sposta
   discussion_form:
@@ -460,10 +450,9 @@ it:
   announcement:
     audiences:
       parent_group: Membri di {{name}}
-      formal_group: Membri di {{name}}
+      group: Membri di {{name}}
       discussion_group: Membri della discussione
       voters: Persone che hanno votato
-      non_voters: Persone che non hanno votato
     form:
       too_many_invitations: |
           Hai superato il limite di inviti. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
@@ -702,39 +691,6 @@ it:
     heading: 'Richieste di partecipazione'
     manage_requests: Gestisci richieste
     manage_requests_with_count: Gestisci richieste ({{count}})
-  documents_page:
-    title: Allegati
-    fragment_placeholder: Cerca allegati..
-    add_document: Aggiungi allegato
-    no_documents: Non ci sono allegati in questo gruppo. Clicca su 'Aggiungi allegato' qui sotto, per aggiungerne uno.
-    no_documents_from_fragment: Non sono stati trovati allegati con nome '{{fragment}}'
-    confirm_remove_title: Rimuovi l'allegato
-    confirm_remove_helptext: Sei sicuro di voler rimuovere questo allegato?
-    document_removed: Allegato rimosso
-  document:
-    card:
-      no_documents: Nessun allegato è stato ancora inserito nel gruppo
-    list:
-      title: Allegati
-      no_group_documents: Nessun allegato è stato ancora inserito nella descrizione del gruppo
-    management:
-      uploaded_to: in
-    modal:
-      title: Aggiungi allegato
-    method_form:
-      helptext: Inserisci files o links da condividere con il gruppo
-      url_helptext: Links a siti o risorse in rete
-      file_helptext: Allega files dal tuo computer
-    form:
-      url_label: URL
-      helptext: Clicca qui, incolla o trascina files per allegarli
-      url_placeholder: 'Ad esempio: https://www.esempio.com/allegato.zip'
-      title_helptext: Come vuoi nominare questo allegato?
-      title_label: Nome
-      title_placeholder: 'Ad esempio: ''Linee Guida della Comunità'''
-    flash:
-      success: Allegato salvato
-      destroyed: Allegato rimosso
   membership_requests_page:
     heading: Richieste di partecipazione
     approve: Approva
@@ -777,13 +733,6 @@ it:
       invitations_sent: '{{count}} inviti spediti.'
       no_invitations: 'Oh-oh! Per favore verifica che l''indirizzo email è corretto e riprova.'
       max_invitations: 'Se vuoi inviare più di 100 inviti, usa un team link.'
-  add_members_modal:
-    aria_label: 'Aggiungi membri dal gruppo padre'
-    heading: 'Aggiungi persone da  {{name}}'
-    add_members: 'Aggiungi membri'
-    user_added_to_subgroup: '{{name}} aggiunto al Sottogruppo'
-    users_added_to_subgroup: '{{count}} utenti aggiunti al Sottogruppo'
-    no_members_to_add: 'Tutti i mebri del gruppo {{parent}} fanno parte di questo sottogruppo'
   memberships_page:
     members: 'Membri'
     name_label: 'Nome'
@@ -809,29 +758,10 @@ it:
   membership_form:
     modal_title:
       group: Imposta il nome del gruppo
-      discussion: Imposta titolo
-      poll: 'Imposta il nome del {{pollType}} '
     title_helptext:
       group: Questo titolo apparirà prima del nome {{name}} inserito in questo gruppo. Usalo per assegnare un ruolo alla persona.
-      discussion: Questo titolo apparirà prima del nome {{name}} inserito in questa discussione. Usalo per assegnare un ruolo alla persona.
-      poll: Questo titolo apparirà prima del nome {{name}} inserito nel sondaggio  {{pollType}}. Usalo per assegnare un ruolo alla persona.
     title_label: titolo
     title_placeholder: 'Ad esempio: ''Coordinatore'' o ''Facilitatore''.'
-  pending_invitations_card:
-    heading: Inviti in sospeso
-    email: Email
-    invitation_link: Link di invito
-    sent: Inviato
-    sent_at: Inviato il {{date}}
-    copy_url: Copia URL
-    revoke_invitation: Revoca
-  cancel_invitation_form:
-    heading: Revoca invito
-    question: Sicuro/a di volere revocare questo invito?
-    submit: "Sì, cancella l'invito"
-    cancel: 'No'
-    messages:
-      success: Invito cancellato
   user_page:
     contact_user: 'Contatto {{name}}'
     location_field: 'Luogo: {{value}}'
@@ -1014,35 +944,6 @@ it:
     title: 'Cancella il commento'
     question: 'Sei sicuro che vuoi cancellare questo commento?'
     confirm: 'Cancella il commento'
-  new_comment_item:
-    aria_label: 'Commento di {{author}}'
-    context_menu:
-      aria_label: 'Opzioni dei commenti'
-      edit_comment: 'Modifica commento'
-      delete_comment: 'Cancella il commento'
-    in_reply_to: 'In risposta a <strong>{{recipient}}</strong>'
-    edited: 'Modificato'
-  new_vote_item:
-    agree: 'è d''accordo'
-    abstain: 'astenuto'
-    disagree: 'non è d''accordo'
-    block: 'bloccato'
-    agree_with_statement: 'è d''accordo: <span>{{statement}}</span>'
-    abstain_with_statement: 'astenuto, perchè: <span>{{statement}}</span>'
-    disagree_with_statement: 'non è d''accordo: <span>{{statement}}</span>'
-    block_with_statement: 'bloccato, perchè: <span>{{statement}}</span>'
-  new_proposal_item:
-    author_created_proposal: 'ha lanciato la proposta: <span>{{title}}</span>'
-  proposal_closed_item:
-    proposal_closed: 'La proposta è chiusa: <span>{{title}}</span>'
-  proposal_closed_by_user_item:
-    proposal_closed_by_user: 'ha chiuso la proposta: <span>{{title}}</span>'
-  proposal_edited_item:
-    name: 'ha aggiornato la proposta: <span>{{title}}</span>'
-    description: 'ha aggiornato la descrizione della proposta'
-  discussion_edited_item:
-    public_to_private: 'privato'
-    private_to_public: 'pubblico'
   contact_message_form:
     contact_us: 'Contattaci'
     name_label: 'Nominativo'
@@ -1062,12 +963,6 @@ it:
     header: Esplora gruppi
     search_placeholder: Cerca tra i gruppi pubblici
     newest_first: I voti più nuovi prima
-  authorized_apps_page:
-    revoke: Revoca
-  registered_apps_page:
-    name: Nome
-  registered_app_form:
-    name_label: Nome
   decision_tools_card:
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Aiuto</a>
     proposal_title: Proposta
@@ -1301,21 +1196,13 @@ it:
     set_password: Imposta password
     check_your_email: Guarda nella tua casella di posta!
     name: Nome
-  install_slack:
-    card:
-      install_slack: Connetti Slack
-    invite:
-      heading: 'Passo 2: Setup di un canale Slack'
-      select_a_channel: Seleziona un canale
-      publish_group: Posta un messaggio di benvenuto
-    common:
-      do_it_later: Lo farò più tradi
+  webhook:
+    name_label: Nome
+  configure_sso:
+    title: Single sign-on
   browser_warning:
     message: "IMPORTANTE! Tu stai usando un browser obsoleto ({{name}} {{version}}) che non è supportato da {{site}}."
     link: Per favore passa a un altro browser
-  slack_added_modal:
-    title: Successo!
-    start_poll_now: Prendi una decisione
   powered_by:
     powered_by_loomio: Fatto con Loomio
     privacy_policy: Policy della Privacy

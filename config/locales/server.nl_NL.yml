@@ -62,6 +62,9 @@ nl_NL:
           Hallo %{name},
           Je twee Loomio accounts zijn samengevoegd tot één account.
           Gelieve vanaf nu <strong>%{email}</strong> te gebruiken om op Loomio in te loggen.
+    merge_verification:
+      confirm_page:
+        merge: Accounts samenvoegen
   email:
     common:
       resend: Deze link vervalt binnen 24 uur en kan slechts éénmalig gebruikt worden.

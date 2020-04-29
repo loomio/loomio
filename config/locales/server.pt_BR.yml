@@ -15,7 +15,7 @@ pt_BR:
       spoofed_media_type: 'O conteúdo daquele arquivo não corresponde ao nome do arquivo '
   group:
     stats:
-      members: Membros ({{count}})
+      members: Membros
       subgroups: Subgrupos
       threads: Conversas
       votes: Votos
@@ -91,6 +91,9 @@ pt_BR:
           Olá %{name},
           Suas duas contas de usuário do Loomio foram integradas em uma única conta.
           Para acessar o Loomio a partir de agora utilize %{email} ao fazer o login.
+    merge_verification:
+      confirm_page:
+        merge: Mesclar contas
   email:
     common:
       or_enter_code: Ou insira o código abaixo

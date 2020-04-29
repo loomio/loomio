@@ -46,8 +46,6 @@ an:
       discussions: 'Discusions'
   notifications:
     header: "Notificacions"
-  position_buttons_panel:
-    heading: 'Da a tuya opinión '
   discussion_form:
     group_label: 'Grupo'
     title_label: 'Titol'
@@ -75,9 +73,6 @@ an:
   group_form:
     group_name_placeholder: 'Quál ye o nombre d''o tuyo grupo?'
     profile: Perfil
-  document:
-    form:
-      title_label: Nombre
   membership_requests_page:
     approve: Aprebar
     ignore: Ignorar
@@ -114,10 +109,6 @@ an:
     title: 'Borrar comentario'
     question: 'Yes seguro que quiers borrar iste comentario?'
     confirm: 'Borrar comentario'
-  new_comment_item:
-    context_menu:
-      edit_comment: 'Editar comentario'
-      delete_comment: 'Borrar comentario'
   contact_message_form:
     name_label: 'O tuyo nombre'
     subject_label: "Titol"
@@ -148,6 +139,8 @@ an:
     'no': 'No'
   auth_form:
     name_placeholder: O tuyo nombre
+  webhook:
+    name_label: Nombre
   group_survey:
     categories:
       business: Negocios

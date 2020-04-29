@@ -9,9 +9,12 @@ nl_NL:
         invite_people_in: Nodig mensen uit
         start_thread: Start een discussiebord
         make_decision: Start een beslissing
+      learn_more: Meer informatie bij Loomio Hulp
+      celebration_message: Fijn! Je groep is klaar voor gebruik! 🎉
       dismiss_this_card: Deze kaart afwijzen
   plan_names:
     free: Gratis
+    trial: Uitproberen
     small: Klein
     medium: Medium
     large: Groot
@@ -19,6 +22,20 @@ nl_NL:
     yearly: Jaarlijks
   current_plan_button:
     upgrade: Upgrade
+    free_trial: Gratis uitproberen. {{days}} dagen resterend.
+    trial_expired: De uitprobeerperiode is afgelopen. Upgrade om Loomio verder te gebruiken.
+    tooltip: "Onze prijzen zijn geweldig! Upgrade vandaag en beleef plezier van wat Loomio je groep kan bieden."
+    was_gift_trial: "Je groep heeft Loomio gratis gebruikt sinds {{createdDate}}. We kunnen dit niet langer gratis aanbieden. Upgrade alsjeblieft om Loomio te blijven gebruiken. <a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>Meer lezen.</a>"
+    was_gift_remaining: "{{days}} dagen resterend."
+    was_gift_expired: "Het gratis abonnement is nu verlopen."
+  subscription_status:
+    plan: "Abonnement"
+    state: "Status"
+    active_members: "Actieve leden"
+    max_threads: "Maximum aantal borden"
+    max_members: "Maximum aantal leden"
+    expires_at: "Verloopt"
+    renews_at: "Vernieuwd"
   loomio_tags:
     all_tags: Alle labels
     tags: Labels
@@ -31,10 +48,10 @@ nl_NL:
     modal_edit_title: Label bewerken
     modal_destroy_title: Label verwijderen
     destroy_tag: Label verwijderen
-    destroy_helptext: Hierdoor zal het label vernietigd worden en het uit alle borden in de groep verwijderen. Ben je zeker dat je dit wilt doen?
+    destroy_helptext: Hierdoor zal het label vernietigd worden en het van alle borden in de groep verwijderen. Ben je zeker dat je dit wilt doen?
     helptext: Labels laten je toe conversaties te categoriseren en deze later sneller terug te vinden
     discussions_count_singular: ({{count}} thread)
-    discussions_count_plural: ({{count}} threads)
+    discussions_count_plural: ({{count}} borden)
     tag_created: Label opgeslagen
     tag_destroyed: Label verwijderd
     tags_marked: 'Borden gemarkeerd met ''{{name}}'' in {{groupName}} '
@@ -70,9 +87,31 @@ nl_NL:
     metal: Metaal
     ok_hand: Ok
     wave: Golf
+    thumbsup: Duim omhoog
+    thumbsdown: Duim omlaag
+  poll_types:
+    proposal: voorstel
+    poll: peiling
+    dot_vote: punt stem
+    meeting: tijd peiling
+    ranked_choice: gerangschikte keuze
+  new_poll_types:
+    proposal: voorstel
+    count: telling
+    poll: keuze
+    score: score
+    ranked_choice: plaats
+    dot_vote: toekennen
+    meeting: tijd peiling
   timezones:
     local: Plaatselijke tijd ({{value}})
   common:
+    empty: Leeg
+    no_results_found: Geen resultaten gevonden
+    view: Beeld
+    history: Geschiedenis
+    option: Optie
+    add: Toevoegen
     you: Jij
     expand: Meer
     all_day: Hele dag
@@ -82,6 +121,7 @@ nl_NL:
     time_zone: Tijdzone
     local_time: Plaatselijke tijd
     attachments: Bijlagen
+    active_time_ago: Laatst actief {{time_ago}}
     confirm_discard_changes: Wijzigingen verwijderen?
     time:
       am: am
@@ -92,11 +132,14 @@ nl_NL:
     notification_volume: 'Meldingenvolume'
     group: 'Groep'
     groups: 'Groepen'
+    organization: "Organisatie"
+    organizations: "Organisaties"
     threads: 'Borden'
     decisions: 'Beslissingen'
     settings: 'Instellingen'
     help: 'Help'
     anonymous: Anoniem
+    required: Verplicht
     privacy:
       privacy: 'Privacy'
       public: 'Openbaar'
@@ -165,6 +208,7 @@ nl_NL:
       last_seen: Laatst gezien
       invite: Uitnodigen
       resent: Uitnodiging opniew verstuurd
+      export: Export
       apply: Toepassen
       add_people: Mensen toevoegen
     formatting_help:
@@ -172,7 +216,12 @@ nl_NL:
       title: 'Leer hoe je Markdown kan gebruiken om tekst op te maken'
   merge_accounts:
     modal:
+      title: Accounts samenvoegen
+      helptext: "Je kunt het account van <strong>{{sourceEmail}}</strong> toevoegen aan dat van <strong>{{targetEmail}}</strong>. Klik op Bevestigen en het proces wordt gestart met een controle e-mail naar {{targetEmail}}."
       submit: Bevestigen
+      flash: Bevestigingse-mail verstuurd!
+    email_taken: Sorry, dat e-mailadres is al in gebruik door een andere gebruiker. Is dat jouw e-mailadres?
+    find_out_more: Meer informatie
   emoji_picker:
     search: Zoek
     common: Vaak gebruikt
@@ -215,6 +264,9 @@ nl_NL:
     title: Pin vast aan de tijdslijn
     title_label: Titel
   change_volume_form:
+    explain_scope:
+      thread: Dit veranderd zodra je een melding krijgt over dit bord
+      group: Dit veranderd zodra je een melding krijgt over alle borden in de groep
     simple:
       label: Meldingen
       loud: Geabonneerd
@@ -229,25 +281,36 @@ nl_NL:
     normal_label: "Aankondigingen"
     quiet_label: "Geen e-mails"
     mute_label: "Dempen"
-    saved: "Notificatie instellingen aangepast"
+    saved: "Melding instellingen aangepast"
     discussion:
-      apply_to_all: "Pas deze instellingen toe op alle discussies in deze groep"
+      title: "Bord meldingen"
+      loud_description: "Je ontvangt een e-mail voor alle activiteiten van dit bord."
+      normal_description: "Je ontvangt een e-mail voor belangrijke activiteiten van dit bord."
+      quiet_description: "Je ontvangt geen e-mails over dit bord."
+      apply_to_all: "Pas deze instellingen toe op alle borden in deze groep."
+      only_this_thread: "Alleen op dit bord van toepassing"
       group: "Verander de meldingen van deze groep"
+      user: "Verander gebruiker melding instellingen"
       messages:
         loud: "Activiteit op dit bord zal je per mail gemeld worden."
         normal: "Je zal ge-e-maild worden over voorstellen op dit bord."
         quiet: "Je ontvangt geen e-mails over dit bord. "
     membership:
+      title: "Meldingen voor {{title}}"
       loud_description: "Je onvangt een e-mail zodra er activiteit is in deze groep"
       normal_description: "Je onvangt een e-mail zodra er activiteit is in deze groep"
       quiet_description: "Je krijgt geen e-mails over activiteit in deze groep."
       apply_to_all: "Pas deze instellingen toe op al mijn groepen"
+      apply_to_organization: "Pas toe op alle groepen in {{organization}}"
       messages:
         loud: "Je zal e-mails krijgen over alle activiteiten in deze groep."
         normal: "Enkel de aankondigingen in deze groep zullen je ge-e-mailed worden. "
         quiet: "Je krijgt geen e-mails over deze groep"
     all_groups:
+      title: "Melding instellingen voor alle borden"
       loud_description: "Je zal e-mails krijgen over alle activiteiten in al je groepen."
+      normal_description: "Je wordt enkel via e-mail op de hoogte gehouden van belangrijke activiteiten uit al je groepen"
+      quiet_description: "Activiteiten van jouw groepen worden niet geëmaild."
       messages:
         loud: "Je zal e-mails krijgen over alle activiteiten in al je groepen."
         normal: "Enkel de aankondigingen in al je groepen zullen je ge-e-mailed worden. "
@@ -262,13 +325,24 @@ nl_NL:
         loud: "Je krijgt e-mails van alle activiteiten in nieuwe groepen."
         normal: "Je zal e-mails krijgen over aankondigingen in nieuwe groepen."
         quiet: "Je zal geen e-mails krijgen over nieuwe groepen."
+  close_explanation_modal:
+    aria_label: Sluit bord
+    close_thread: Sluit bord
+    body: |
+        <p>Sluit oude of onbelangrijke borden zodat deze niet meer zichtbaar zijn, en om aan te geven dat de discussie gesloten is.</p>
+        <p>Op een gesloten bord kan nog steeds iedereen commenteer plaatsen of een peiling starten, maar deze zullen niet verschijnen op de groep's bordenlijst, of op het dashboard.</p>
+    image_alt: Sluit alle borden
   mute_explanation_modal:
     aria_label: Bord dempen
     mute_thread: Bord dempen
+    body_html: |
+        Dempen betekend dat je <strong>geen meldingen krijgt over voorstellen</strong>, noch alle andere activiteiten op dit bord, tenzij iemand je <strong>@noemt</strong>.
+    body_html_2: |
+        'Gedempte borden' zijn ook verborgen op <strong>Recente</strong> en <strong>Ongelezen</strong> pagina's. Selecteer de <strong>Dedempt</strong> optie in de zijbalk om gedempte borden te vinden
     image_alt: '''Gedempte borden'' optie is terug te vinden in de zijbalk'
   dismiss_explanation_modal:
     aria_label: Bord afwijzen
-    dismiss_thread: Negeer discussie
+    dismiss_thread: 'Negeer bord '
     body_html: |
         <p>Het afwijzen van een bord verwijdert deze uit je ongelezen items. Wanneer er nieuwe
         activiteit is op het bord verschijnt deze opnieuw als ongelezen.</p>
@@ -327,6 +401,8 @@ nl_NL:
       groups_list: 'Groepen'
       user_list: 'Gebruikersacties'
   navbar:
+    search_all_threads: Zoek in alle borden
+    search_threads: 'Zoek borden in {{name}}'
     recent_title: 'Ga naar dashboard'
     unread_title: 'Bekijk ongelezen activiteit'
     start_thread: 'Nieuw bord'
@@ -334,11 +410,11 @@ nl_NL:
     search:
       label: 'Zoekveld; zoek naar groepen en borden'
       results_aria_label: 'Zoekresultaten'
-      no_results: 'Geen discussies gevonden'
+      no_results: 'Geen borden gevonden'
       close: 'Sluit zoekscherm'
       placeholder: 'Zoek'
       loading: 'Laad resultaten...'
-      discussions: 'Discussies'
+      discussions: 'Borden'
       proposals: 'Voorstellen'
       comments: 'Commentaren'
     sign_in: 'Inloggen'
@@ -356,8 +432,10 @@ nl_NL:
     sign_out: 'Uitloggen'
   membership_card:
     group_members: "Groepsleden"
+    discussion_members: "Bord leden"
     poll_members: "{{pollType}} gebruikers"
     invite_to_group: "Nodig voor uit voor de groep"
+    invite_to_discussion: "Voor bord uitnodigen"
     invite_to_poll: "Nodig uit om te stemmen"
     invitations: "Uitnodigingen"
   membership_dropdown:
@@ -365,9 +443,12 @@ nl_NL:
     resend: "Uitnodiging opnieuw sturen"
     invitation_resent: "Uitnodiging opniew verstuurd"
     make_coordinator: 'Admin maken'
+    remove_from:
+      discussion: "Van bord verwijderen"
     cancel_invitation: Annuleer uitnodiging
   notification_models:
-    poll: 'besluit:'
+    discussion: 'bord:'
+    poll: 'beslissing:'
     outcome: 'uitkomst:'
   notifications:
     header: "Meldingen"
@@ -399,24 +480,20 @@ nl_NL:
     outcome_created: "<strong>{{name}}</strong> heeft een uitkomst gedeeld <strong>{{title}}</strong>"
     outcome_announced: "<strong>{{name}}</strong> heeft een uitkomst gedeeld <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> heeft geparticipeerd aan: <strong>{{title}}</strong>"
-  position_buttons_panel:
-    heading: Laat je horen
-  extend_proposal_form:
-    aria_label: Verander sluitingstermijn
-    title: 'Verander sluitingstermijn'
-    success: 'Sluitingstermijn voorstel aangepast'
-    submit: 'Pas sluitingstermijn aan'
-  discussion_record:
-    created: 'De discussie {{title}} is met succes aangemaakt in {{groupName}}'
-    updated: 'Wijzigingen aan {{title}} opgeslagen'
   discussion_fork_actions:
+    helptext: Selecteer items die je wilt verplaatsen naar een ander bord
     move: Verplaatsen
+    search_placeholder: Vind een bord op titel
+    move_to_existing_thread: Verplaats naar een bestaand bord
+    start_new_thread: Of, start een nieuw bord
   discussion_form:
-    aria_label: 'Discussieformulier'
+    aria_label: 'Bordformulier'
     messages:
       created: 'Bord gestart'
       updated: 'Bord geactualiseerd'
+      forked: 'Bord gesplitst'
     new_discussion_title: 'Nieuw bord starten'
+    moving_items_title: 'Verplaats items naar een nieuw bord'
     edit_discussion_title: 'Bord bewerken'
     group_label: 'Groep'
     group_placeholder: 'Selecteer een groep'
@@ -425,30 +502,66 @@ nl_NL:
     context_label: 'Beschrijving'
     context_placeholder: 'Geef voldoende achtergrondinformatie voor de groep om een productief gesprek te hebben. De info kan worden aangevuld als het gesprek voortgaat'
     privacy_label: 'Privacy'
-    privacy_public: 'Iedereen kan de discussie zien. Alleen leden kunnen deelnemen.'
-    privacy_private: 'De discussie zal enkel zichtbaar zijn voor leden van {{group}}'
+    privacy_public: 'Iedereen kan het bord zien. Alleen leden kunnen deelnemen.'
+    privacy_private: 'Het bord is enkel zichtbaar voor leden van {{group}}'
     privacy_organisation: 'Het bord zal zichtbaar zijn voor leden van {{parent}} en leden van {{group}}'
+    fork_notice: 'Een nieuw bord wordt gemaakt met {{count}} items van {{title}}'
   announcement:
+    send_discussion: Bord verzenden
     send_discussion_explain: Nodig mensen uit op te participeren in de discussie
     send_group: Nodig mensen uit voor {{name}}
     send_poll: Verstuur {{type}}
     send_outcome: Stuur de uitkomst
+    send_outcome_explain: Meld mensen over de uitkomst van {{type}}
+    discussion_notification_history: Bord meldingen geschiedenis
+    poll_notification_history: Peiling meldingen geschiedenis
+    outcome_notification_history: Uitkomst meldingen geschiedenis
+    comment_notification_history: Commentaar meldingen geschiedenis
+    notification_history_explanation: ✓ geeft aan dat de melding is gelezen of dat de e-mail is geopend
+    notified_people: "{{name}} is gemeld bij {{length}} mensen:"
+    no_notifications_sent: Geen meldingen zijn verzonden
+    inviting_guests_to_thread: Mensen die geen lid zijn van {{group}} worden als gast toegevoegd aan dit bord. Zij krijgen geen toegang tot andere borden in de groep.
+    audiences:
+      discussion_group: Leden van het bord
     form:
+      no_invitations_remaining: |
+          <p>Je hebt alle {{maxMembers}} uitnodigingen gebruikt die voor deze groep beschikbaar zijn.</p>
+          <p><a href="{{upgradeUrl}}" target="_blank">Kies een abonnement</a> om te blijven samenwerken op Loomio.</p>
       group_announced:
         title: Nodig voor uit voor de groep
+      discussion_announced:
+        title: Voor bord uitnodigen
+        helptext: Wie wil je uitnodigen tot het bord?
+      discussion_edited:
+        title: Wijzigingen melden
+        helptext: Wie wil je meldingen laten krijgen over jouw veranderingen?
       poll_announced:
         title: Nodig uit om te stemmen
+      poll:
+        title: Wijzigingen melden
+        helptext: Wie wil je meldingen laten krijgen over jouw veranderingen?
+      poll_edited:
+        title: Wijzigingen melden
+        helptext: Wie wil je meldingen laten krijgen over jouw veranderingen?
       outcome_announced:
         title: Deel uitkomst
       anyone_can_participate: Iedereen met een link kan deelnemen
+      notified_singular: '1 persoon krijgt een melding:'
+    members_list:
+      last_notified: Gemeld
+      not_notified: Nog niet gemeld
     group_form:
-      members_count: '{{count}} mensen zullen op de hoogte gebracht worden'
+      members_count: '{{count}} mensen zullen een melding krijgen'
+    flash:
+      success: '{{count}} meldingen verzonden'
   action_dock:
+    notify: Meld
     add_resource: Bijlage toevoegen
     edit_group: Groepsbeschrijving bijwerken
     add_comment: Becommentarieer
     copy_url: Link kopieren
     edit_thread: Beschrijving bijwerken
+    announce_thread: Bord verzenden
     invite_guests: Nodig gasten uit
     translate_thread: Beschrijving vertalen
     edit_poll: '''Peiling'' bewerken'
@@ -458,6 +571,7 @@ nl_NL:
     edit_comment: Commentaar bewerken
     delete_comment: Commentaar verwijderen
     reply_to_comment: Antwoord
+    fork_comment: Splits bord
     translate_comment: Commentaar vertalen
     edit_outcome: Uitkomst bewerken
     translate_outcome: Uitkomst vertalen
@@ -466,7 +580,11 @@ nl_NL:
     pin_thread: Bord vastprikken
     unpin_thread: Bord ontprikken
     pin_event: Pin vast aan de tijdslijn
+    poll_copied: Beslissing-URL naar het klembord gekopieerd
+    discussion_copied: Bord-URL naar het klembord gekopieerd
     tag_thread: Labels beheren
+    close_thread: Sluit bord
+    reopen_thread: Heropen bord
     delete_thread: Bord verwijderen
   formatting:
     attach: Bijlage toevoegen
@@ -514,11 +632,16 @@ nl_NL:
   context_panel:
     thread_status:
       pinned: "Dit bord is vastgeprikt. Het zal voor alle gebruikers bovenaan de lijst van borden van de groepslijst blijven staan."
+      closed: "Dit bord is gesloten. Het verschijnt niet langer op het dashboard, en het staat onder 'gesloten' op de groep pagina"
   group_page:
     threads: Borden
     members: Leden
     settings: Instellingen
     subgroups: Subgroepen
+    no_threads_here: Geen borden te zien hier!
+    search_threads: Zoeken voor borden...
+    private_threads: Je moet lid zijn om de privé borden in deze groep te zien.
+    no_more_threads: Dat zijn alle borden in deze groep!
     messages:
       privacy:
         members: 'Deze groep is nu uitsluitend zichtbaar voor leden'
@@ -529,6 +652,8 @@ nl_NL:
     new_photo: 'nieuwe foto'
     new_cover_photo: 'Nieuwe groepsfoto uploaden'
     new_group_logo: 'Upload een nieuw groepslogo'
+    open_discussions: 'Open borden'
+    closed_discussions: 'Gesloten borden'
     discussions_placeholder: 'Op een bord kan iedereen over een onderwerp discussiëren en gezamenlijk beslissingen nemen.'
     members_placeholder: 'Je bent de enige hier: nodig mensen uit om zich bij je aan te sluiten!'
     member_options: Opties voor leden
@@ -578,6 +703,7 @@ nl_NL:
     question: 'Weet je zeker dat je de groep wil deactiveren?'
     submit: 'Ja, deactiveer deze groep'
   group_form:
+    thread_defaults_help: Standaard instellingen voor nieuwe borden
     aria_label: 'Groepsformulier'
     start_group_heading: 'Een groep starten'
     start_subgroup_heading: 'Begin een subgroep'
@@ -592,20 +718,20 @@ nl_NL:
       private_to_group: 'Naam en beschrijving zijn uitsluitend zichtbaar voor leden.'
       private_to_parent_members: 'Naam en beschrijving zijn zichtbaar voor leden van {{parent}}'
     privacy: 'Privacy'
-    group_privacy_is_open_description: "Iedereen kan de groep vinden en vragen om mee te doen. Alleen leden kunnen zien wie er in de groep zit. Alle discussies zijn openbaar."
+    group_privacy_is_open_description: "Iedereen kan de groep vinden en vragen om mee te doen. Alleen leden kunnen zien wie er in de groep zit. Alle borden zijn openbaar."
     group_privacy_is_closed_description: "Iedereen kan de groep vinden en vragen om mee te doen. Alleen leden kunnen zien wie er in de groep zit. Alle discussies zijn privé."
-    group_privacy_is_closed_public_threads_description: "Iedereen kan de groep vinden en vragen om mee te doen. Alleen leden kunnen zien wie er in de groep zit. Alle discussies kunnen openbaar of privé zijn."
+    group_privacy_is_closed_public_threads_description: "Iedereen kan de groep vinden en vragen om mee te doen. Alleen leden kunnen zien wie er in de groep zit. Alle borden kunnen openbaar of privé zijn."
     group_privacy_is_secret_description: "Alleen uitgenodigde leden kunnen de groep vinden, zien wie er in zit en borden bekijken."
     confirm_change_to_secret: "Als je verder gaat worden alle borden in deze groep en in de subgroepen privé gemaakt."
     confirm_change_to_secret_subgroup: 'Als je verder gaat worden alle borden privé gemaakt.'
     confirm_change_to_public: 'Als je verder gaat worden alle borden in deze groep openbaar gemaakt op het internet.'
     confirm_change_to_private_discussions_only: 'Als je verder gaat worden alle openbare borden in deze groep privé gemaakt.'
     profile: Profiel
-    subgroup_privacy_is_open_description: "Iedereen kan deze subgroep vinden en vragen om mee te mogen doen. Alleen leden kunnen zien wie er in de groep zit. Alle discussies zijn openbaar."
+    subgroup_privacy_is_open_description: "Iedereen kan deze subgroep vinden en vragen om mee te mogen doen. Alleen leden kunnen zien wie er in de groep zit. Alle borden zijn openbaar."
     subgroup_privacy_is_closed_description: "Iedereen kan deze subgroep vinden en vragen om mee te doen. Alleen leden kunnen zie wie er in de groep zit. Alle discussies zijn privé."
-    subgroup_privacy_is_closed_public_threads_description: "Iedereen kan deze subgroep vinden en vragen om mee te doen. Alleen leden kunnen zie wie er in de groep zit. Discussies kunnen openbaar of privé zijn."
-    subgroup_privacy_is_closed_secret_parent_description: "Leden van {{parent}} kunnen deze subgroep vinden en vragen om mee te doen. Alle discussies zijn privé. Alleen leden kunnen zien wie er in de groep zit."
-    subgroup_privacy_is_secret_description: 'Alleen uitgenodigde leden kunnen deze subgroep vinden, zien wie er in zit en discussies zien.'
+    subgroup_privacy_is_closed_public_threads_description: "Iedereen kan deze subgroep vinden en vragen om mee te doen. Alleen leden kunnen zie wie er in de groep zit. Borden kunnen openbaar of privé zijn."
+    subgroup_privacy_is_closed_secret_parent_description: "Leden van {{parent}} kunnen deze subgroep vinden en vragen om mee te doen. Alle borden zijn privé. Alleen leden kunnen zien wie er in de groep zit."
+    subgroup_privacy_is_secret_description: 'Alleen uitgenodigde leden kunnen deze subgroep vinden, zien wie er in zit en borden zien.'
     advanced_settings: "Geavanceerde instellingen"
     how_do_people_join: "Hoe sluiten mensen aan?"
     membership_granted_upon_request: 'Iedereen kan zich bij de groep aansluiten.'
@@ -638,29 +764,6 @@ nl_NL:
     heading: 'Lidmaatschapsverzoeken'
     manage_requests: Beheer verzoeken
     manage_requests_with_count: Beheer verzoeken ({{count}})
-  documents_page:
-    title: Bijlagen
-    fragment_placeholder: Zoek naar bijlagen
-    add_document: Bijlage toevoegen
-    no_documents: Geen bijlagen gevonden voor deze groep. Klik hierboven op 'Bijlage toevoegen' om er een toe te voegen.
-    no_documents_from_fragment: 'Geen bijlagen genaamd ''{{fragment}}'' gevonden '
-    confirm_remove_title: Bijlage verwijderen
-    confirm_remove_helptext: Ben je zeker dat je deze bijlage wilt verwijderen?
-    document_removed: Bijlage verwijderd
-  document:
-    list:
-      title: Bijlagen
-    management:
-      uploaded_to: in
-    modal:
-      title: Een bijlage toevoegen
-    form:
-      title_helptext: Hou zouden we deze bijlage noemen?
-      title_label: Naam
-      title_placeholder: Bijv. 'Community Guidelines'
-    flash:
-      success: Bijlage opgeslagen
-      destroyed: Bijlage verwijderd
   membership_requests_page:
     heading: Lidmaatschapsverzoeken
     approve: Goedkeuren
@@ -704,13 +807,6 @@ nl_NL:
       invitations_sent: '{{count}} uitnodigingen verstuurd.'
       no_invitations: 'Uhoh! Controleer alsjeblieft of het e-mailadres correct is en probeer het opnieuw.'
       max_invitations: 'Alls je meer dan 100 uitnodigingen wil versturen, gebruik een team link.'
-  add_members_modal:
-    aria_label: 'Voeg leden toe uit de hoofdgroep'
-    heading: 'Voeg mensen toe uit {{name}}'
-    add_members: 'Voeg leden toe'
-    user_added_to_subgroup: '{{name}} toegevoegd aan Subgroep'
-    users_added_to_subgroup: '{{count}} Gebruikers toegevoegd aan Subgroep'
-    no_members_to_add: 'Alle leden van {{parent}} horen bij deze subgroep'
   memberships_page:
     members: 'Leden'
     name_label: 'Naam'
@@ -725,22 +821,8 @@ nl_NL:
       submit: Annuleer uitnodiging
     membership:
       title: Verwijder lid
+      impact_for_group: Dit zal hun toegang tot alle borden en beslissingen in de groep verwijderen.
       submit: Verwijder lid
-  pending_invitations_card:
-    heading: Uitnodigingen in behandeling
-    email: Email
-    invitation_link: Uitnodiging link
-    sent: Verstuurd
-    sent_at: Verstuurd op {{date}}
-    copy_url: Kopieer URL
-    revoke_invitation: Intrekken
-  cancel_invitation_form:
-    heading: Annuleer uitnodiging
-    question: Weet je zeker dat je deze uitnodigigng wil annuleren?
-    submit: "Ja, annuleer uitnodiging"
-    cancel: 'Nee'
-    messages:
-      success: Uitnodiging geannuleerd
   user_page:
     contact_user: 'Contacteer {{name}}'
     location_field: 'Locatie: {{value}}'
@@ -757,6 +839,7 @@ nl_NL:
       picture_changed: 'Profielfoto geüpload'
       password_changed: 'Wachtwoord bijgewerkt'
       deactivated: 'Account gedeactiveerd'
+    merge_accounts: Accounts samenvoegen
     change_picture_link: 'Wijzigen afbeelding:'
     change_password_link: 'Wachtwoord resetten'
     profile: 'Profiel'
@@ -797,7 +880,7 @@ nl_NL:
     daily_summary_label: Dagelijkse samenvatting per e-mail
     daily_summary_description: "Iedere morgen krijg je een e-mail met de gemiste activiteiten van de dag ervoor. Zo is het gemakkelijk om op de hoogte te blijven van alle activiteiten."
     on_participation_label: Abonneer op deelname
-    on_participation_description: "Als je deelneemt aan een discussie, wordt alle verdere activiteit direct naar je gemaild."
+    on_participation_description: "Als je deelneemt aan een bord, wordt alle verdere activiteit direct naar je gemaild."
     announcement_label: Aankondigingen
     update_settings: Bewaar veranderingen
     specific_groups: Instellingen voor specifieke groepen
@@ -812,7 +895,7 @@ nl_NL:
   dashboard_page:
     aria_label: 'Dashboard'
     no_groups:
-      show_muted: Je hebt geen gedempte discussies, omdat je geen lid bent van een groep.
+      show_muted: Je hebt geen gedempte borden, omdat je geen lid bent van een groep.
     no_threads:
       show_all: Je hebt geen recente borden.
       show_proposals: Er zijn geen voorstellen actief op dit moment.
@@ -821,26 +904,29 @@ nl_NL:
     load_more: Laad meer borden
     mark_as_read: Markeer als gelezen
     dismiss: Afwijzen
+    thread_dismissed: Bord gemarkeerd als gelezen
+    thread_recalled: Bord teruggeroepen
     explain_mute:
       title: Je hebt nog geen borden gedempt.
       explanation_html: |
-          Dempen is een manier om discussies te verbergen of stil te maken waar je geen interesse in hebt.
-          Dempen betekent dat je het de discussie niet ziet in <strong>Recent</strong> of <strong>Ongelezen</strong> en dat je geen melding krijgt over activiteit in die discussies, zoals voorstellen.
-          Je wordt alleen geïnformeerd als iemand je naam <strong>@vermeldt</strong>.
+          Dempen is een manier om borden waar je geen interesse in hebt te verbergen of stil te maken.
+          Dempen betekent dat je het niet ziet in <strong>Recent</strong> of <strong>Ongelezen</strong> en dat je geen melding krijgt over activiteiten in dat bord zoals voorstellen.
+          Je wordt alleen geïnformeerd als iemand je naam <strong>@noemt</strong>.
       instructions: 'Om een bord te dempen zoek je deze op en klik je op het icoon dempen.'
-      see_muted_html: 'Om je gedempte discussies te zien, klik je op <strong>"Gedempt"</strong>. Je kunt dempen opheffen door op het bijbehorende pictogram te klikken.'
+      see_muted_html: 'Om je gedempte borden te zien, klik je op <strong>"Gedempt"</strong>. Je kunt dempen opheffen door op het bijbehorende pictogram te klikken.'
     filtering:
       filter_threads: Borden filteren
       filter_threads_aria_label: Borden filteren
       dropdown_heading: Filter dashboard
       all: Recente borden
-      all_aria_label: Toont momenteel recente discussies
+      all_aria_label: Toont momenteel recente borden
       all_description: Bekijk recente borden
       proposals: Voorstellen
-      proposals_aria_label: Toont momentel discussies met actieve voorstellen
-      proposals_description: Bekijk alleen discussies met actieve voorstellen
+      proposals_aria_label: Toont momenteel borden met actieve voorstellen
+      proposals_description: Bekijk alleen borden met actieve voorstellen
+      muted: Gedempte borden
       muted_aria_label: Toont de momenteel gedempte borden
-      muted_description: Bekijk alleen discussies die gedempt zijn
+      muted_description: Bekijk alleen borden die gedempt zijn
     aria_thread:
       unread: '{{count}} ongelezen items.'
       current_proposal: 'Lopend voorstel: {{name}}.'
@@ -852,22 +938,25 @@ nl_NL:
       group: 'Borden van'
       pinned: 'Vastgeprikte borden'
       proposals: 'Borden met actieve beslissingen'
-      starred: 'Gemarkeerde discussies'
+      starred: 'Gemarkeerde borden'
       today: 'Vandaag'
       yesterday: 'Gisteren'
       thisweek: 'Deze week'
       thismonth: 'Deze maand'
       older: 'Ouder dan een maand'
   inbox_page:
-    no_threads: Woehoe! Je hebt alle discussies in je postvak gelezen.
+    no_threads: Woehoe! Je hebt alle borden in je postvak gelezen.
     unread_threads: Ongelezen borden
     view_more: Bekijk meer
     no_groups:
-      explanation: Je hebt geen ongelezen discussies, omdat je geen lid bent van een groep.
+      explanation: Je hebt geen ongelezen borden, omdat je geen lid bent van een groep.
       start: Start
       or: of
       join_group: <a href="/explore">word lid</a> van een groep om borden te zien.
   discussion:
+    max_threads_reached: |
+        <p>Je hebt alle {{maxThreads}} borden gebruikt die voor deze groep beschikbaar zijn.</p>
+        <p><a href="{{upgradeUrl}}" target="_blank">Kies een abonnement</a> om te blijven samenwerken op Loomio.</p>
     activity: 'Activiteit'
     activity_placeholder: 'Nog geen activiteit!'
     load_previous: 'Laad eerdere activiteit'
@@ -876,7 +965,11 @@ nl_NL:
       pinned: 'Bord vastgeprikt'
       unpinned: 'Bord ontprikt'
     volume:
-      unmute_message: 'Discussie demping uit'
+      mute_message: 'Bord gedempt.'
+      unmute_message: 'Bord demping uit'
+    closed:
+      reopened: 'Bord heropend'
+      closed: 'Bord gesloten'
   activity_card:
     beginning: Eerste
     latest: Laatste
@@ -893,7 +986,8 @@ nl_NL:
   thread_group:
     aria_label: 'Groepsnaam'
   thread_context:
-    aria_label: 'Discussie context'
+    item_maybe_deleted: "De gevraagde locatie konden we niet vinden op het bord. Het zou verwijderd kunnen zijn."
+    aria_label: 'Bordbeschrijving'
     thread_options: 'Bord opties'
     email_settings: 'Melding instellingen'
     edit: 'Bewerk'
@@ -914,11 +1008,12 @@ nl_NL:
     helptext_two: "Je mag op ieder moment prikkers verwijderen door 'Ontprikken' te selecteren bij het bord dropdown menu"
     pin_thread: Bord vastprikken
   thread_arrangement_form:
+    title: Bord layout
     nested_once: Genesteld
   delete_thread_form:
     aria_label: 'Bord verwijderen'
     title: Bord verwijderen
-    body: Weet je zeker dat je deze discussie wil verwijderen?
+    body: Weet je zeker dat je dit bord wil verwijderen?
     confirm: 'Bord verwijderen'
     messages:
       success: Bord verwijderd
@@ -929,57 +1024,11 @@ nl_NL:
     confirm: Bord verplaatsen
     confirm_change_to_private_thread: '{{groupName}} is een open groep. Als je verder gaat zal dit bord openbaar gemaakt worden.'
     messages:
-      success: Discussie is verplaatst naar {{name}}
+      success: Bord is verplaatst naar {{name}}
   delete_comment_dialog:
     title: 'Verwijder reactie'
     question: 'Weet je zeker dat je deze reactie wilt verwijderen?'
     confirm: 'Verwijder reactie'
-  new_comment_item:
-    aria_label: 'Opmerking door {{author}}'
-    context_menu:
-      aria_label: 'Opmerking opties'
-      edit_comment: 'Bewerk reactie'
-      delete_comment: 'Verwijder reactie'
-    in_reply_to: 'in reactie op <strong>{{recipient}}</strong>'
-    edited: 'Bewerkt'
-  new_vote_item:
-    agree: 'eens'
-    abstain: 'onthouden'
-    disagree: 'oneens'
-    block: 'geblokkeerd'
-    agree_with_statement: 'eens: <span>{{statement}}</span>'
-    abstain_with_statement: 'onthouden: <span>{{statement}}</span>'
-    disagree_with_statement: 'oneens: <span>{{statement}}</span>'
-    block_with_statement: 'geblokkeerd: <span>{{statement}}</span>'
-  new_proposal_item:
-    author_created_proposal: 'voorstel gestart: <span>{{title}}</span>'
-  proposal_closed_item:
-    proposal_closed: 'Dit voorstel werd gesloten:<span>{{title}}</span>'
-  proposal_closed_by_user_item:
-    proposal_closed_by_user: 'voorstel gesloten: <span>{{title}}</span>'
-  proposal_edited_item:
-    name: 'voorstel titel geactualiseerd: <span>{{title}}</span>'
-    description: 'voorstel omschrijving bijgewerkt'
-    closing_at: 'voorstel bijgewerkt om te sluiten op <span>{{time}}</span>'
-    description_name: 'voorstel titel en omschrijving bijgewerkt'
-    closing_at_name: 'voorstel titel en sluitingstijd bijgewerkt'
-    closing_at_description: 'voorstel omschrijving en sluitingstijd bijgewerkt'
-    closing_at_description_name: 'voorstel titel, omschrijving en sluitingstijd bijgewerkt'
-  proposal_outcome_created_item:
-    proposal_outcome_created: 'uitkomst voorstel gepubliceerd:'
-  proposal_outcome_updated_item:
-    proposal_outcome_updated: 'uitkomst voorstel bijgewerkt:'
-  discussion_edited_item:
-    attachment_ids: 'de discussie bijlagen bijgewerkt'
-    title: 'bordtitel werd geactualiseerd: <span>{{title}}</span>'
-    description: 'discussie context bijgewerkt'
-    description_title: 'discussie titel en context bijgewerkt'
-    private: 'discussie privacy bijgewerkt naar '
-    public_to_private: 'privé'
-    private_to_public: 'openbaar'
-    private_title: 'de discussie titel en privacy bijgewerkt'
-    description_private: 'de discussie context en privacy bijgewerkt'
-    description_private_title: 'de discussie titel, context en privacy bijgewerkt'
   contact_message_form:
     contact_us: 'Neem contact met ons op'
     name_label: 'Je naam'
@@ -1005,47 +1054,8 @@ nl_NL:
     messages:
       app_update: 'Er is een nieuwe versie van de app beschikbaar'
       reload: 'Herladen'
-  authorized_apps_page:
-    title: Toegestane apps
-    no_applications: "Je hebt nog geen andere apps toestemming gegeven."
-    notice: "Je hebt de volgende derde partij apps toestemming gegeven om je account te gebruiken. Klik ' Intrekken' om ze uit te schakelen."
-    revoke: Intrekken
-  registered_apps_page:
-    title: Geregistreerde applicaties
-    no_applications: "Je hebt nog geen OAuth applicaties! Klik hieronder om er een te maken."
-    name: Naam
-    redirect_uris: URIs omleiden
-    create_new_application: Nieuwe applicatie
-  registered_app_page:
-    uid: Applicatie ID
-    secret: Applicatie geheim
-  registered_app_form:
-    new_application_title: Nieuwe applicatie
-    edit_application_title: Applicatie actualiseren
-    name_label: Naam
-    name_placeholder: Hoe heet je applicatie?
-    redirect_uri_label: Uris omleiden
-    redirect_uri_placeholder: "De call uri voor je applicatie, bijv.: https://myapplication.com/loomio/callback"
-    redirect_uri_note: (een lijn per URI, gebruik 'urn:ietf:wg:oauth:2.0:oob' voor lokale tests)
-    new_application_submit: Applicatie aanmaken
-    edit_application_submit: Applicatie bijwerken
-    messages:
-      logo_changed: Logo bijgewerkt
-      created: "'{{name}}' aangemaakt"
-      updated: "'{{name}}' geactualiseerd"
-  remove_app_form:
-    title: Deactiveer {{name}}
-    question: "Weet je zeker dat je de applicatie '{{name}}' wil deactiveren? Dit kan niet ongedaan worden gemaakt."
-    submit: Deactiveer
-    messages:
-      success: "'{{name}}' is succesvol gedeactiveerd"
-  revoke_app_form:
-    title: Trek toegang in voor {{name}}
-    question: "Weet je zeker dat je '{{name}}' geen gebruik meer wil laten maken van je account?"
-    submit: Trek toegang in
-    messages:
-      success: "'{{name}}' kan geen gebruik meer maken van je account."
   decision_tools_card:
+    help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Hulp</a>
     proposal_title: Voorstel
     count_title: Check
     poll_title: Peiling
@@ -1088,6 +1098,7 @@ nl_NL:
     show_results: Toon resultaten
   poll_common_index_card:
     title: Vorige beslissingen
+    no_polls: Geen oudere beslissingen gevonden
     count: "Zie alles: ({{count}}) beslissingen"
   discussions_panel:
     open: Openen
@@ -1153,6 +1164,9 @@ nl_NL:
     dot_vote_closed: '''Dotmocracy'' gesloten'
     meeting_closed: '''Moment bevragen'' gesloten'
     ranked_choice_closed: De peiling 'Keuzes rangschikken' is gesloten
+  poll_common_reopen_form:
+    title: Heropen een gesloten beslissing
+    helptext: Werd een beslissing gesloten voordat je klaar was? Heropen om meer standpunten uit de groep te verzamelen.
   poll_common_closing_at_field:
     closing: Sluit
   poll_card:
@@ -1194,14 +1208,6 @@ nl_NL:
     question: Ben je zeker dat je dit wilt verwijderen?
     title: Beslissing verwijderen
     success: Succesvol verwijderd
-  poll_common_unsubscribe_form:
-    title: Ontvang updates
-    label: Ontvang e-mails updates over deze beslissing
-    tooltip: E-mail updates houden je op de hoogte van deze beslissing, zoals wanneer het bewerkt is, wanneer het vervalt, of wanneer een uikomst bepaald werd. Dit vak ontvinken zorgt ervoor dat je geen e-mail meldingen meer over beslissingen zult ontvangen.
-    helptext_on: Je zal e-mails ontvangen over activiteit in deze beslissing
-    helptext_off: Je zal geen e-mails ontvangen over deze beslissing
-    subscribed: Inschrijven voltooid
-    unsubscribed: Uitschrijven voltooid
   poll_common_form:
     title: Titel
     details: Details
@@ -1211,6 +1217,8 @@ nl_NL:
     closed: Gesloten
     start: Starten
     update: Updaten
+    loomio_school_link: |
+        <p>Meer informatie op <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio Hulp</a>.</p>
   poll_proposal_form:
     tool_tip_expanded: |
         <p>Een 'Voorstel' is een instrument om een gemeenschappelijk akkoord te bekomen over een stelling of verloop.</p>
@@ -1220,6 +1228,7 @@ nl_NL:
         <p>Als er goed deelgenomen word is een 'Voorstel' een krachtig instrument om actie te ondernemen.</p>
     start_header: '''Voorstel'' starten'
     edit_header: Voorstel bewerken
+    tip: Zoek collectieve overeenkomst door een proces waar alle stemmen in gehoord kunnen worden. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Meer leren</a>
     title_placeholder: M.a.w. Laten we naar de maan gaan!
     details_placeholder: Geef genoeg informatie, zodat iedereen weet wat het inhoudt om het eens of oneens te zijn
     proposal_created: '''Voorstel'' aangemaakt'
@@ -1354,17 +1363,17 @@ nl_NL:
     helptext: Sleep en drop opties in de volgorde van voorkeur (waarbij 1 de meest geprefereerde optie is). Je {{count}}  beste keuzes zullen worden opgenomen.
     stance_created: Keuze opgenomen
     stance_updated: Keuze upgedatet
-  poll_admin_page:
-    title: Administrator - {{title}}
-  poll_common_publish_facebook_preview:
-    shared_a: deelde een
-    link: link
-    just_now: Zojuist
-  poll_common_publish_slack_preview:
-    poll_published: "een peiling gepubliceerd:"
-    poll_published_with_discussion: "een peiling gepubliceerd in <strong>{{discussion}}</strong>:"
-    view_it_on_loomio: Bekijk het op {{site_name}}
-    timestamp: Vandaag om {{timestamp}}
+  thread_item:
+    discussion_title_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> bewerkte de bordtitel"
+    discussion_context_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> bewerkte de bordomschrijving"
+    discussion_attachments_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> bewerkte de bijlagen van het bord"
+    discussion_privacy_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> veranderde de zichtbaarheid van het bord"
+    discussion_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> bewerkte het bord"
+    discussion_moved: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> verplaatste het bord van <strong>{{title}}</strong>"
+    discussion_closed: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> sloot het bord"
+    discussion_reopened: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> heropende het bord"
+    discussion_forked: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> heeft het bord <strong><a href='d/{{key}}'>{{title}}</a></strong> gesplitst"
+    event_removed: "Van bord verwijderd"
   poll_common_subscribe_form:
     receive_updates_title: Je stem is opgenomen
     receive_updates_helptext: Als je een e-mail wil krijgen over de uitkomst van deze peiling, voer dan je e-mail adres hieronder in.
@@ -1409,64 +1418,22 @@ nl_NL:
     name: Naam
     email: E-mail
     password: Wachtwoord
-  install_microsoft:
-    card:
-      identity_removed: Verbinding beëindigd
-  install_slack:
-    login_to_slack: Log in op Slack
-    card:
-      install_title: Connecteer met Slack
-      install_helptext: De Loomio bot meld aan je Slack team de discussies en beslissingen van Loomio. Je kan ook beslissingen opstarten en stemmen vanuit Slack.
-      installed_title: Geconnecteerd met Slack
-      installed_helptext: Deze groep is geconnecteerd met het slack team <strong><a target='_blank' href='https://{{team}}.slack.com'>{{team}}</a></strong>. Evenementen van deze groep zullen verschijnen op het <strong>{{channel}}</strong> kanaal.
-      install_slack: Slack verbinden
-      remove_identity: Verwijder deze verbinding
-      confirm_remove_title: Verwijder de slack verbinding
-      confirm_remove_helptext: |
-          Je slack kanaal zal niet langer updates ontvangen over deze groep. Je kan altijd nog terug en het opnieuw toevoegen.
-      identity_removed: Verbinding beëindigd
-    progress:
-      install: Installeren
-      invite: Uitnodigen
-      decide: Beslissen
-    install:
-      heading: 'Stap 1: Selecteer een Loomio groep om te integreren'
-      tooltip_heading: Loomio en Slack werken geweldig samen
-      it_does_this: Betrek gebruikers waar ze zijn
-      and_also_this: Start peilingen onmiddelijk en krijg feedback in real time
-      and_also_also_this: Breng de mensen op de hoogte van de uitkomst en herhaal vlug je gedachtengang
-      add_to_group_helptext: Selecteer een groep om te linken met Slack
-      create_new_group_helptext: Heb je geen Loomio groep? Geef dan een naam in en we maken er een voor je.
-      group_name: Groepsnaam
-      group_name_placeholder: Geef je nieuwe groep een naam...
-      slack_installed: Slack geinstalleerd
-      install_slack: Installeer nu slack
-      start_new_group: Start een nieuwe groep
-      use_existing_group: Gebruik een bestaande groep
-    invite:
-      heading: 'Stap 2: Stel een Slack kanaal op'
-      select_a_channel: Kies een kanaal
-      publish_group: Post een welkomstbericht
-      publish_group_helptext_on: We zullen het bericht op dit kanaal posten om mensen te instrueren hoe ze LoomioBot kunnen gebruiken.
-      publish_group_helptext_off: We zullen niets posten totdat je een peiling hebt opgesteld.
-      custom_message: Persoonlijk bericht
-      set_channel: Stel het kanaal in
-    decide:
-      heading: 'Stap 3: Maak samen een beslissing'
-      helptext: "Nu dat alles ingesteld is is het tijd om te starten met het maken van beslissingen. Selecteer uit een van onderstaande opties:"
-    common:
-      do_it_later: Ik zal dit later doen
-  slack_added_modal:
-    title: Succes!
-    helptext: |
-        Je bent erin geslaagd Slack toe te voegen aan je groep <strong>{{name}}</strong>.
-        Als nu eender wie een peiling start in deze group, zullen ze de optie hebben om updates over die peiling te posten op een kanaal van je slack team.
-    start_poll_now: Maak nu een beslissing
+  webhook:
+    name_label: Naam
+    event_kinds:
+      new_discussion: Een nieuw bord is gestart
+  configure_sso:
+    title: Enkelvoudig aanmelden
+  powered_by:
+    slogan: Samen betere beslissingen
   group_survey:
     categories:
       business: Zakelijk
       other: Andere
     uses:
+      decision_making: Beslissings-proces (Advies, Toestemming)
+      funding: Steun beslissingen
       other: Andere
     referrers:
       other: Andere
+    usage: "Hoe ga je Loomio gebruiken? Kies wat het beste past"

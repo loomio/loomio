@@ -512,16 +512,6 @@ zh_TW:
     outcome_announced: "<strong>{{name}}</strong> 分享了成果：<strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> 已參與：<strong>{{title}}</strong>"
     group_announced: "<strong>{{name}}</strong> 邀請您加入群組 <strong>{{title}}</strong>"
-  position_buttons_panel:
-    heading: 擁有發言權
-  extend_proposal_form:
-    aria_label: 變更定案時間
-    title: '變更定案時間'
-    success: '提案關閉時間已更新'
-    submit: '更新定案時間'
-  discussion_record:
-    created: '討論串 {{title}} 已在 {{groupName}} 中成功的被建立'
-    updated: '儲存變更到 {{title}}'
   discussion_fork_actions:
     helptext: 選取您想要移動到其他討論串的項目
     move: 移動
@@ -572,10 +562,11 @@ zh_TW:
     inviting_guests_to_thread: 不是 {{group}} 成員的夥伴將會被以訪客的身份新增到此討論串，但不會取得對群組中其他討論串的存取權。
     audiences:
       parent_group: '{{name}} 的成員'
-      formal_group: '{{name}} 的成員'
+      group: '{{name}} 的成員'
       discussion_group: 討論串的成員
       voters: 已經投票的夥伴
-      non_voters: 尚未投票的夥伴
+      undecided: 未決定的夥伴
+      non_voters: 尚未邀請
     form:
       too_many_invitations: |
           已超過邀請限制。<a href="{{upgradeUrl}}" target="_blank">升級</a>
@@ -792,7 +783,6 @@ zh_TW:
     options:
       label: '選項'
       edit_group: '編輯群組設定'
-      open_group_wizard: '群組設定精靈'
       become_coordinator: 成為管理員
       export_data: 匯出群組資料
       export_data_as_json: 匯出群組資料為 JSON
@@ -933,43 +923,6 @@ zh_TW:
     heading: '申請成員資格'
     manage_requests: 管理申請
     manage_requests_with_count: 管理申請 ({{count}})
-  documents_page:
-    title: 附件
-    fragment_placeholder: 搜尋附件……
-    add_document: 新增附件
-    no_documents: 在此群組中找不到附件。點選「新增附件」來新增一個。
-    no_documents_from_fragment: 找不到名為「{{fragment}}」的附件
-    confirm_remove_title: 移除附件
-    confirm_remove_helptext: 您確定您想要移除附件嗎？
-    document_removed: 附件已移除
-  document:
-    error:
-      invalid_format: 喔喔！您的 URL 是無效的。請確定它以 http:// 或 https:// 開始
-    card:
-      no_documents: 未有已被上傳至此群組的附件
-      view_documents: 檢視全部
-    list:
-      title: 附件
-      no_group_documents: 仍無附件被上傳至群組描述
-    management:
-      content_header: 所有附件
-      uploaded_to: 在
-    modal:
-      title: 新增附件
-    method_form:
-      helptext: 附加檔案或連結以將它們與群組分享。
-      url_helptext: 到網頁與線上資源的連結
-      file_helptext: 從您的電腦上傳檔案
-    form:
-      url_label: URL
-      helptext: 點選這裡、貼上或是拖曳檔案以上傳
-      url_placeholder: 例如：https://www.example.com/attachment.zip
-      title_helptext: 我們應該叫這個附件什麼名字？
-      title_label: 名稱
-      title_placeholder: 例如：「社群指南」
-    flash:
-      success: 附件已儲存
-      destroyed: 附件已移除
   membership_requests_page:
     heading: 申請成員資格
     approve: 批准
@@ -1022,13 +975,6 @@ zh_TW:
       invitations_sent: '{{count}} 封邀請函已寄出。'
       no_invitations: '喔喔！請檢查您的電子郵件地址是否正確，並再試一次。'
       max_invitations: '若您想要寄出多於 100 封邀請函，使用團隊連結。'
-  add_members_modal:
-    aria_label: '從主群組加入成員'
-    heading: '從 {{name}} 加入夥伴'
-    add_members: '增加成員'
-    user_added_to_subgroup: '{{name}} 已加入到子群組中'
-    users_added_to_subgroup: '{{count}} 個使用者已加入至子群組'
-    no_members_to_add: '{{parent}} 的所有成員都屬於此子群組'
   memberships_page:
     members: '成員'
     name_label: '名字'
@@ -1061,30 +1007,11 @@ zh_TW:
   membership_form:
     modal_title:
       group: 設定群組標題
-      discussion: 設定討論串標題
-      poll: 設定 {{pollType}} 標題
     title_helptext:
       group: 這個標題會出現在這個群組中的 {{name}} 名稱旁。使用它來讓夥伴們知道他們的角色。
-      discussion: 這個標題會出現在這個討論串中的 {{name}} 名稱旁。使用它來讓夥伴們知道他們的角色。
-      poll: 這個標題會出現在這個 {{pollType}} 中的 {{name}} 名稱旁。使用它來讓夥伴們知道他們的角色。
     title_label: 標題
     title_placeholder: 例子：「協調者」或「主持人」
     updated: 成員標題已更新
-  pending_invitations_card:
-    heading: 擱置中的邀請函
-    email: 電子郵件
-    invitation_link: 邀請連結
-    sent: 已寄出
-    sent_at: '{{date}} 已傳送'
-    copy_url: 複製 URL
-    revoke_invitation: 撤銷
-  cancel_invitation_form:
-    heading: 取消邀請函
-    question: 您確定您想要取消此邀請函嗎？
-    submit: "是的，取消邀請"
-    cancel: '否'
-    messages:
-      success: 邀請函已取消
   user_page:
     contact_user: '連絡 {{name}}'
     location_field: '位置：{{value}}'
@@ -1348,59 +1275,10 @@ zh_TW:
     confirm_change_to_private_thread: '{{groupName}} 是一個公開的群組，若您繼序，這個討論串將會變為公開。'
     messages:
       success: 討論串已被移動到 {{name}}
-  print_modal:
-    load_discussion: 正在載入整個討論
-    helptext: 只要一秒，我們正在抓取所有在此討論串的動態以供印出……
   delete_comment_dialog:
     title: '刪除意見'
     question: '您確定要刪除這個意見嗎？'
     confirm: '刪除意見'
-  new_comment_item:
-    aria_label: '{{author}} 的意見'
-    context_menu:
-      aria_label: '意見選項'
-      edit_comment: '編輯意見'
-      delete_comment: '刪除意見'
-    in_reply_to: '回覆給 <strong>{{recipient}}</strong>'
-    edited: '已編輯'
-  new_vote_item:
-    agree: '同意'
-    abstain: '棄權'
-    disagree: '反對'
-    block: '阻擋'
-    agree_with_statement: '同意：<span>{{statement}}</span>'
-    abstain_with_statement: '棄權：<span>{{statement}}</span>'
-    disagree_with_statement: '反對：<span>{{statement}}</span>'
-    block_with_statement: '阻擋：<span>{{statement}}</span>'
-  new_proposal_item:
-    author_created_proposal: '已啟動一個提案：<span>{{title}}</span>'
-  proposal_closed_item:
-    proposal_closed: '提案已定案：<span>{{title}}</span>'
-  proposal_closed_by_user_item:
-    proposal_closed_by_user: '已定案一個提案：<span>{{title}}</span>'
-  proposal_edited_item:
-    name: '已更新提案標題：<span>{{title}}</span>'
-    description: '已更新提案描述'
-    closing_at: '已更新的提案以在 <span>{{time}}</span> 定案'
-    description_name: '已更新提案標題與描述'
-    closing_at_name: '已更新提案標題與定案時間'
-    closing_at_description: '已更新提案描述與定案時間'
-    closing_at_description_name: '已更新提案標題、描述與定案時間'
-  proposal_outcome_created_item:
-    proposal_outcome_created: '已發表提案成果：'
-  proposal_outcome_updated_item:
-    proposal_outcome_updated: '已更新提案結果：'
-  discussion_edited_item:
-    attachment_ids: '已更新討論串附件'
-    title: '已更新討論串標題：<span>{{title}}</span>'
-    description: '已更新討論串內容'
-    description_title: '已更新討論串標題與內容'
-    private: '更新討論串隱私設定為'
-    public_to_private: '私人'
-    private_to_public: '公開'
-    private_title: '更新討論串標題與隱私設定'
-    description_private: '更新討論串內容與隱私設定'
-    description_private_title: '更新討論串標題、內容與隱私設定'
   contact_message_form:
     title: "嗨，您好！我們可以怎麼協助您？"
     read_the_manual: |
@@ -1442,46 +1320,6 @@ zh_TW:
     messages:
       app_update: '新版的應用程式已經可用'
       reload: '重新整理'
-  authorized_apps_page:
-    title: 已授權的應用程式
-    no_applications: "您尚未授權任何第三方的應用程式。"
-    notice: "您已給予下列的第三方應用程式使用您的帳號的權限。點選「撤銷」來停用它們。"
-    revoke: 撤銷
-  registered_apps_page:
-    title: 已註冊的應用程式
-    no_applications: "您尚未有任何 OAuth 應用程式！點選下面這裡以建立一個。"
-    name: 名稱
-    redirect_uris: 重新導向 URI
-    create_new_application: 新應用程式
-  registered_app_page:
-    uid: 應用程式 ID
-    secret: 應用程式祕密
-  registered_app_form:
-    new_application_title: 新應用程式
-    edit_application_title: 更新應用程式
-    name_label: 名稱
-    name_placeholder: 您的應用程式叫什麼？
-    redirect_uri_label: 重新導向 URI
-    redirect_uri_placeholder: "您應用程式呼叫的網址。例如：https://myapplication.com/loomio/callback"
-    redirect_uri_note: （每個 URI 一行，在本機測試使用「urn:ietf:wg:oauth:2.0:oob」）
-    new_application_submit: 建立應用程式
-    edit_application_submit: 更新應用程式
-    messages:
-      logo_changed: 標誌已更新
-      created: "建立「{{name}}」"
-      updated: "已更新「{{name}}」"
-  remove_app_form:
-    title: 停用「{{name}}」
-    question: "您確定要停用應用程式「{{name}}」？這個動作無法復原。"
-    submit: 停用
-    messages:
-      success: "「{{name}}」已成功停用"
-  revoke_app_form:
-    title: 撤銷{{name}}的存取權
-    question: "您確定您要取消允許「{{name}}」使用您的帳號？"
-    submit: 撤銷存取權
-    messages:
-      success: "「{{name}}」已無法使用您的帳號"
   decision_tools_card:
     title: 促進
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">說明</a>
@@ -1673,10 +1511,12 @@ zh_TW:
   poll_card:
     started_by: 由 {{name}} 啟動
   poll_common_votes_panel:
+    undecided: 未決定
     newest_first: 最新的放在最前面
     oldest_first: 最舊的放在最前面
     priority_first: 同意的放在最前面
     priority_last: 阻擋的放在最前面
+    undecided_first: 未決定優先
     no_votes_yet: 尚未有人投票。
     change_results_order: 變更您的結果順序
     none_of_the_above: （以上皆非）
@@ -1712,14 +1552,6 @@ zh_TW:
     question: 您確定要刪除這個嗎？
     title: 刪除決策
     success: 成功刪除
-  poll_common_unsubscribe_form:
-    title: 接收更新
-    label: 接收關於此決策的電子郵件更新
-    tooltip: 電子郵件更新讓您了解此決策，如它何時被編輯，何時過期，或是何時做出了決策。取消勾選此框可以確保您不會再收到關於此決策的電子郵件通知。
-    helptext_on: 您將會收到關於此決策動態的電子郵件
-    helptext_off: 您將不會收到任何關於此決策的電子郵件
-    subscribed: 成功訂閱
-    unsubscribed: 成功取消訂閱
   poll_common_form:
     title: 標題
     details: 詳細內容
@@ -1892,7 +1724,7 @@ zh_TW:
     stance_created: 已建立投票
     stance_updated: 已更新投票
   poll_common_percent_voted:
-    sentence: "{{numerator}} 個人已經投票了 ({{percent}}%)"
+    sentence: "{{denominator}} 中的 {{numerator}} 個夥伴已投票 ({{percent}}%)"
   poll_count_chart_panel:
     out_of: 沒有 {{goal}}
   poll_meeting_chart_panel:
@@ -1943,17 +1775,6 @@ zh_TW:
     poll_expired: "{{polltype}} 已關閉"
     stance_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>投票給：<strong>{{title}}</strong>"
     event_removed: "從討論串中移除"
-  poll_admin_page:
-    title: 管理 - {{title}}
-  poll_common_publish_facebook_preview:
-    shared_a: 分享一個
-    link: 連結
-    just_now: 就是現在
-  poll_common_publish_slack_preview:
-    poll_published: "發佈投票："
-    poll_published_with_discussion: "在 <strong>{{discussion}}</strong> 中發佈投票。"
-    view_it_on_loomio: 在 {{site_name}} 上檢視
-    timestamp: 今日 {{timestamp}}
   poll_common_subscribe_form:
     receive_updates_title: 您的投票已記錄
     receive_updates_helptext: 若您想要收到關於此投票的結果的電子郵件，在下面輸入您的電子郵件
@@ -1975,6 +1796,7 @@ zh_TW:
   auth_form:
     code: '000000'
     sign_in_to_loomio: 登入到 {{site_name}}
+    sign_in_help: 無法登入？
     sign_in: 登入
     continue: 繼續
     create_account: 建立帳號
@@ -1997,6 +1819,7 @@ zh_TW:
     check_spam_folder: 如果電子郵件未在短時間內抵達，請檢查您的垃圾信資料夾。
     sign_up_helptext: 請完成此表單以建立使用者帳號
     i_accept: "我接受<a href='{{termsUrl}}' target='_blank'>服務條款</a>與<a href='{{privacyUrl}}' target='_blank'>隱私權政策</a>"
+    newsletter_label: "我想要收到 <a href='https://help.loomio.org/en/newsletter/' target='_blank'>Loomio 電子報</a>"
     name_placeholder: 您的大名
     name_required: 請輸入名稱
     terms_required: 您必須同意服務條款
@@ -2026,37 +1849,42 @@ zh_TW:
     email: 電子郵件
     password: 密碼
     reactivate: 重新啟用帳號
-  install_microsoft:
-    modal_title: 安裝 Microsoft Teams
-    card:
-      install_title: 連線到 Microsoft Teams
-      install_helptext: Loomio 機器人會通知您的團隊在 Loomio 上的討論與決策。
-      installed_title: 已連線至 Microsoft Teams
-      installed_helptext: 此群組中的活動會傳送到您的 Microsoft Team。
-      install_microsoft: 整合 Microsoft Teams
-      remove_identity: 移除 Microsoft Teams 整合
-      confirm_remove_title: 移除 Microsoft Teams 整合
-      confirm_remove_helptext: |
-          您的 Microsoft Teams 頻道將不會再收到關於此群組的更新。
-          您還是可以回來並將其重新加入。
-      identity_removed: 已移除整合
-    form:
-      webhook_helptext: 輸入您的 Teams 頻道提供的 webhook URL。<a href="https://help.loomio.org/en/user_manual/groups/integrations/#microsoft-teams">取得更多關於在 Loomio 上設定 Microsoft Teams 的資訊</a>
-      webhook_label: Webhook URL
-      webhook_installed: 已連線至 Microsoft Teams
-      webhook_placeholder: https://outlook.office.com/...
-      event_kind_helptext: 應該將哪些活動張貼至 Teams 頻道中？
+  webhook:
+    integrations: 整合
+    webhooks: Webhooks
+    format: 格式
+    formats:
+      markdown: Markdown（供 Mattermost、Zapier 與其他服務使用）
+      microsoft: Microsoft Teams
+      slack: Slack
+    subtitle: 連線至 Slack、Microsoft Teams、Mattermost、Zapier 或任何支援 webhooks 的服務
+    we_have_guides: |
+        看我們的 <a href="{{url}}" target="_blank">webhook 設定指南</a>來取得連線到您服務的說明。
+    add_webhook: 新增 webhook
+    success: 已新增 webhook！
+    remove: 移除 webhook
+    confirm_remove: "您確定您想要移除 webhook：{{name}} 嗎？"
+    removed: 已移除 webhook
+    url_label: Webhook URL
+    url_placeholder: https://hooks.example.com/...
+    name_label: 名稱
+    name_placeholder: 給這個 webhook 一個名稱，這樣您就可以在稍後識別它
+    event_kind_helptext: 您想要哪些活動發出通知？
     event_kinds:
-      new_discussion: 已開啟新的討論串
-      new_comment: 已做出新的評論
-      poll_created: 已建立投票
-      stance_created: 已經投了新的一票
-      poll_closing_soon: 投票即將過期
+      new_discussion: 開始新討論串
+      new_comment: 有新的留言
+      poll_created: 建立投票
+      stance_created: 進行新投票
+      poll_closing_soon: 快過期的投票
       poll_expired: 投票已過期
-      outcome_created: 結果已分享
+      poll_closed_by_user: 投票在其截止時間前關閉
+      poll_reopened: 重新開始投票
+      outcome_created: 已分享結果
+    include_body_label: 在通知中包含訊息正文
+    include_subgroups_label: 中繼來自子群組的事件
   configure_sso:
     redirecting: 請稍候，正在重新島向到登入提供者
-    title: 設定單一登入
+    title: 單一登入
     enabled: 單一登入已啟用
     helptext: 整合 OneLogin、Auth0、Microsoft Active Directory 或其他 SAML 提供者。<a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">取得更多資訊</a>。
     warning_helptext: "警告：點擊儲存後，您將必須與提供商進行身份驗證。"
@@ -2067,78 +1895,15 @@ zh_TW:
     destroyed: 已移除單一登入
     invalid_idp_metadata_url: 無效的 IDP 詮釋資料 URL
     sp_metadata_url: SP 詮釋資料 URL
-  install_slack:
-    modal_title: 整合 Slack
-    modal_helptext: 首先，您必須登入到 Slack。點選下方的按鈕以繼續。
-    login_to_slack: 登入到 Slack
-    remove_slack: 移除 Slack 整合
-    card:
-      install_title: 連線至 Slack
-      install_helptext: Loomio 機器人會通知您的 Slack 團隊在 Loomio 上的討論與決策。您也可以從 Slack 上啟動討論與投票。
-      installed_title: 已連線至 Slack
-      installed_helptext: 這個群組已經連到 Slack 團隊 <strong><a target='_blank' href='https://{{team}}.slack.com'>{{team}}</a></strong>。此群組的動態將會在 <strong>{{channel}}</strong> 頻道中出現。
-      install_slack: 連線至 Slack
-      remove_identity: 移除這個整合
-      confirm_remove_title: 移除 Slack 整合
-      confirm_remove_helptext: |
-          您的 Slack 頻道不再收到關於此群組的更新。
-          您還是可以回來並再次把它加回來。
-      identity_removed: 已移除整合
-    progress:
-      install: 安裝
-      invite: 邀請
-      decide: 決定
-    install:
-      heading: '第一步：選取要整合的 Loomio 群組'
-      tooltip_heading: Loomio 和 Slack 可以協同運作的很好
-      it_does_this: 吸引使用者
-      and_also_this: 立刻啟動投票並即時取得回應
-      and_also_also_this: 讓夥伴們知道結果，並快速更新您的想法
-      add_to_group_helptext: 選取要連結到 Slack 的群組
-      create_new_group_helptext: 沒有 Loomio 群組？簡單地輸入一個名字，然後我們就會為您打造一個
-      group_name: 群組名稱
-      group_name_placeholder: 為您的新群組命名……
-      slack_installed: Slack 已安裝
-      install_slack: 現在安裝 Slack
-      start_new_group: 啟動新群組
-      use_existing_group: 使用已有的群組
-    invite:
-      heading: '第二步：設定 Slack 頻道'
-      helptext: 選取您想要讓我們張貼更新訊息的頻道。
-      select_a_channel: 選取頻道
-      publish_group: 貼出歡迎訊息
-      publish_group_helptext_on: 我們將會貼出一則訊息到這個頻道裡以讓夥伴們知道如何使用 LoomioBot。
-      publish_group_helptext_off: 我們不會在您建立投票前貼出任何東西。
-      custom_message: 自訂訊息
-      set_channel: 設定頻道
-    decide:
-      heading: '第三步：共同做出決策'
-      helptext: "現在您都設定好了，是時候開始做決策了。從下面的選項中選取一個："
-    common:
-      do_it_later: 我將會稍候處理
   browser_warning:
     message: "重要！您正在使用已不被 {{site}} 支援的舊版瀏覽器 ({{name}} {{version}})。"
     link: 請切換到其他瀏覽器
-  slack_added_modal:
-    title: 成功！
-    helptext: |
-        您已經成功新增 Slack 到您的群組 <strong>{{name}}</strong>。
-        現在，無論任何人在此群組中啟動投票，他們都將會有
-        選項來貼出投票的更新到您 Slack 團隊中的頻道。
-    start_poll_now: 現在做決策
   powered_by:
     slogan: 一起做出更好的決策
     powered_by_loomio: 威力本源 Loomio
     privacy_policy: 隱私權政策
     terms_of_service: 服務條款
     front_page: 首頁
-  vue_upgraded_modal:
-    use_old_loomio: 使用舊版 Loomio
-    title: 您已在使用 Loomio 2.0 了！
-    body: |
-        <p>這是更快更好的 Loomio！</p>
-        <p>我們覺得您會喜歡它，不過如果您想要的話，您還是可以從側邊欄切換回舊版。</p>
-        <p><a href="{{link}}" target="_blank">看看有什麼新東西。</a></p>
   group_survey:
     title: 成功！只要再一些詳細資訊
     subtitle: 請協助我們更了解您。未經您的許可，我們不會將您的任何資訊分享其他人。

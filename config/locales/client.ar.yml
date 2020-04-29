@@ -173,16 +173,6 @@ ar:
   notifications:
     header: "تبليغات"
     publish_outcome: "قم بنشر النتيجة"
-  position_buttons_panel:
-    heading: شارك برأيك
-  extend_proposal_form:
-    aria_label: قم بتغيير زمن الإغلاق
-    title: 'قم بتغيير زمن الإغلاق'
-    success: 'تم تحديث زمن إغلاق المقترح'
-    submit: 'قم بتحديث زمن الإغلاق'
-  discussion_record:
-    created: 'تم بدء موضوع {{title}} في مجموعة {{groupName}} بنجاح.'
-    updated: 'حفظ التغييرات في {{title}}'
   discussion_fork_actions:
     move: نقل
   discussion_form:
@@ -323,14 +313,6 @@ ar:
     heading: 'طلبات العضوية'
     manage_requests: إدارة الطلبات
     manage_requests_with_count: إدارة الطلبات ({{count}})
-  documents_page:
-    title: المرفقات
-    confirm_remove_title: حذف المرفق
-  document:
-    list:
-      title: المرفقات
-    form:
-      title_label: 'الاسم '
   membership_requests_page:
     heading: طلبات العضوية
     approve: موافقة
@@ -367,12 +349,6 @@ ar:
       invitation_sent: 'تم إرسال الدعوة.'
       invitations_sent: 'تم إرسال {{count}} دعوات.'
       max_invitations: 'إن كنت تريد إرسال أكثر من 100 دعوة، قم باستخدام رابط فريق.'
-  add_members_modal:
-    heading: 'قم بإضافة أشخاص من {{name}}'
-    add_members: 'قم بإضافة أعضاء.'
-    user_added_to_subgroup: 'تمت إضافة {{name}} للمجموعة الفرعية'
-    users_added_to_subgroup: 'تمت إضافة {{count}} أعضاء للمجموعة الفرعية'
-    no_members_to_add: 'كافة أعضاء {{parent}} ينتمون لهذه المجموعة الفرعية.'
   memberships_page:
     members: 'الأعضاء'
     name_label: 'الإسم'
@@ -388,18 +364,6 @@ ar:
     membership:
       title: إزالة عضو
       submit: إزالة عضو
-  pending_invitations_card:
-    heading: دعوات في الانتظار
-    email: بريد الكتروني
-    invitation_link: رابط الدعوة
-    sent: تم الإرسال
-  cancel_invitation_form:
-    heading: إلغاء الدعوة
-    question: هل أنت متأكد من أنك تريد إلغاء الدعوة؟
-    submit: "أجل، قم بإلغاء الدعوة"
-    cancel: 'لا'
-    messages:
-      success: تم إلغاء الدعوة
   profile_page:
     messages:
       updated: 'تم تحديث الملف الشخصي'
@@ -513,49 +477,6 @@ ar:
     title: 'احذف التعليق'
     question: 'هل أنت متأكد من أنك تريد حذف هذا التعليق؟'
     confirm: 'احذف التعليق'
-  new_comment_item:
-    aria_label: 'تعليق من قبل {{author}}'
-    context_menu:
-      aria_label: 'خيارات التعليقات'
-      edit_comment: 'تعديل التعليق'
-      delete_comment: 'احذف التعليق'
-    in_reply_to: 'رداً على <strong>{{recipient}}</strong>'
-    edited: 'معدّل '
-  new_vote_item:
-    agree: 'موافق'
-    abstain: 'يمتنع'
-    disagree: 'غير موافق'
-    block: 'أعترض'
-    agree_with_statement: 'موافق: <span>{{statement}}</span>'
-    abstain_with_statement: 'يمتنع: <span>{{statement}}</span>'
-    disagree_with_statement: 'غير موافق: <span>{{statement}}</span>'
-    block_with_statement: 'يعترض: <span>{{statement}}</span>'
-  new_proposal_item:
-    author_created_proposal: 'بدأ مقترحاً: <span>{{title}}</span>'
-  proposal_closed_item:
-    proposal_closed: 'تم إغلاق المقترح: <span>{{title}}</span>'
-  proposal_closed_by_user_item:
-    proposal_closed_by_user: 'تم إغلاق المقترح: <span>{{title}}</span>'
-  proposal_edited_item:
-    name: 'تم تحديث عنوان المقترح: <span>{{title}}</span>'
-    description: 'تم تحديث وصف المقترح'
-    closing_at: 'تم تحديث المقترح ليغلق في <span>{{time}}</span>'
-    description_name: 'تم تحديث عنوان ووصف المقترح'
-    closing_at_name: 'تم تحديث عنوان المقترح ووقت الإغلاق'
-    closing_at_description: 'تم تحديث وصف المقترح ووقت الإغلاق'
-    closing_at_description_name: 'تم تحديث عنوان المقترح، الوصف ووقت الإغلاق'
-  proposal_outcome_created_item:
-    proposal_outcome_created: 'تم نشر نتيجة مقترح: '
-  proposal_outcome_updated_item:
-    proposal_outcome_updated: 'تم تحديث نتيجة المقترح:'
-  discussion_edited_item:
-    title: 'تم تحديث عنوان الموضوع: <span>{{title}}</span>'
-    description: 'تم تحديث سياق الموضوع'
-    description_title: 'تم تحديث عنوان و سياق الموضوع'
-    private: 'تم تحديث خصوصية الموضوع إلى'
-    public_to_private: 'خاص'
-    private_to_public: 'عام'
-    description_private_title: 'تم تحديث عنوان الموضوع، السياق و الخصوصية.'
   contact_message_form:
     contact_us: 'اتصل بنا'
     name_label: 'اسمك'
@@ -575,45 +496,6 @@ ar:
     messages:
       app_update: 'هناك نسخة جديدة متوفرة من التطبيق'
       reload: 'إعادة تحميل'
-  authorized_apps_page:
-    title: التطبيقات المخولة
-    no_applications: "لم تقم بتخويل أي تطبيقات من طرف ثالث بعد."
-    revoke: سحب
-  registered_apps_page:
-    title: التطبيقات المسجلة
-    no_applications: "ليس لديك أي تطبيقات ل OAuth بعد! اضغط في الأسفل لتنشئ واحداً."
-    name: الاسم
-    redirect_uris: إعادة توجيه الرابط
-    create_new_application: طلب جديد
-  registered_app_page:
-    uid: هوية الطلب
-    secret: طلب سري
-  registered_app_form:
-    new_application_title: 'طلب جديد '
-    edit_application_title: تحديث الطلب
-    name_label: 'الاسم '
-    name_placeholder: ماذا يدعى طلبك؟
-    redirect_uri_label: 'إعادة توجيه معرف الموارد '
-    redirect_uri_placeholder: "إعادة الاتصال من قبل معرف الموارد بشأن طلبك، مثال:  https://myapplication.com/loomio/callback"
-    redirect_uri_note: (سطر واحد لكل معرف موارد، استخدم 'urn:ietf:wg:oauth:2.0:oob' من أجل الفحوصات المحلية)
-    new_application_submit: انشئ طلباً
-    edit_application_submit: 'تحديث الطلب '
-    messages:
-      logo_changed: تم تحديث الشعار
-      created: "تم إنشاء '{{name}}'"
-      updated: "تم تحديث '{{name}}'"
-  remove_app_form:
-    title: تمت إزالة '{{name}}'
-    question: "هل أنت متأكد أنك تريد إلغاء طلبك '{{name}}'؟ لن يكون بإمكانك التراجع."
-    submit: إلغاء
-    messages:
-      success: "تم إلغاء '{{name}}' بنجاح"
-  revoke_app_form:
-    title: قم بسحب إمكانية الدخول ل'{{name}}'
-    question: "هل أنت واثق أنك تريد منع '{{name}}' من استخدام حسابك؟"
-    submit: سحب إمكانية الدخول
-    messages:
-      success: "لن يستطيع '{{name}}' استخدام حسابك بعد الآن."
   decision_tools_card:
     proposal_title: اقتراح
     poll_title: استطلاع رأي
@@ -669,13 +551,8 @@ ar:
     name: 'الاسم '
     email: البريد الإلكتروني
     password: الكلمة السرية
-  install_slack:
-    progress:
-      invite: دعوة
-    install:
-      group_name: اسم الفريق
-    invite:
-      custom_message: رسالة مخصصة
+  webhook:
+    name_label: 'الاسم '
   powered_by:
     privacy_policy: سياسة الخصوصية
   group_survey:

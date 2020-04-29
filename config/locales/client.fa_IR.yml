@@ -192,3 +192,5 @@ fa_IR:
     subscribe: دنبال کردن
   polls_page:
     heading: تصمیمات
+  configure_sso:
+    title: ورود یک‌پارچه

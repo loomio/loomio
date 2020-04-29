@@ -285,8 +285,6 @@ sv:
     invitation_resent: "Inbjudan skickad igen"
   notifications:
     header: "Notifieringar"
-  position_buttons_panel:
-    heading: Gör din röst hörd
   discussion_form:
     group_label: 'Grupp'
     title_label: 'Titel'
@@ -335,11 +333,6 @@ sv:
     profile: Profil
     submit_start_group: 'Startgrupp'
     submit_update: 'Uppdatera inställningar'
-  documents_page:
-    confirm_remove_title: Ta bort bifogning
-  document:
-    form:
-      title_label: Namn
   membership_requests_page:
     approve: Godkänn
     ignore: Ignorera
@@ -389,10 +382,6 @@ sv:
     title: 'Ta bort kommentaren'
     question: 'Är du säker på att du vill ta bort denna kommentaren?'
     confirm: 'Ta bort kommentaren'
-  new_comment_item:
-    context_menu:
-      edit_comment: 'Edit kommentar'
-      delete_comment: 'Ta bort kommentaren'
   contact_message_form:
     name_label: 'Ditt namn'
     subject_label: "Ämne"
@@ -442,9 +431,8 @@ sv:
     start_new_poll: Nytt beslut
   auth_form:
     name_placeholder: Ditt namn
-  install_slack:
-    progress:
-      invite: Bjud in
+  webhook:
+    name_label: Namn
   group_survey:
     categories:
       business: Företag
