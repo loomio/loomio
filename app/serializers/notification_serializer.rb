@@ -2,9 +2,10 @@ class NotificationSerializer < ApplicationSerializer
   attributes :id, :viewed, :created_at, :url, :kind, :translation_values, :actor_id, :event_id
 
   def kind
-    case object.kind
-    when 'announcement_created' then object.event.custom_fields['kind']
-    else                             object.kind
+    if object.kind == "announcement_created"
+      object.event.custom_fields['kind'] || "group_announced"
+    else
+      object.kind
     end
   end
 
