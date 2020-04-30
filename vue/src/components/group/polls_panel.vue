@@ -22,7 +22,7 @@ export default
     @group = Records.groups.find(@$route.params.key)
 
     @initLoader()
-    
+
     @watchRecords
       collections: ['polls', 'groups', 'memberships']
       query: => @findRecords()
@@ -39,7 +39,7 @@ export default
       @loader = new RecordLoader
         collection: 'polls'
         params:
-          exclude_types: 'discussion group'
+          exclude_types: 'group'
           group_key: @$route.params.key
           status: @$route.query.status
           poll_type: @$route.query.poll_type
