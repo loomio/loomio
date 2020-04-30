@@ -9,7 +9,7 @@ module Events::Notify::Mentions
     return unless eventable.newly_mentioned_users.any?
     if eventable.respond_to?(:discussion)
       eventable.newly_mentioned_users.each do |guest|
-        if !eventable.group.members.exists?(guest)
+        if !eventable.group.members.exists?(guest.id)
           eventable.discussion.add_guest!(guest, user)
         end
       end
