@@ -205,7 +205,7 @@ GEM
     formtastic_i18n (0.6.0)
     friendly_id (5.3.0)
       activerecord (>= 4.0.0)
-    geocoder (1.6.2)
+    geocoder (1.6.3)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     google-cloud-core (1.5.0)
@@ -542,7 +542,7 @@ DEPENDENCIES
   faker
   fog-aws
   friendly_id (~> 5.3.0)
-  geocoder (= 1.6.2)
+  geocoder (= 1.6.3)
   google-cloud-translate (= 1.4.0)
   gravtastic
   griddler!
