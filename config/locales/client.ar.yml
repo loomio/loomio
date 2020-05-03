@@ -8,6 +8,7 @@ ar:
         invite_people_in: قم بدعوة أشخاص
   plan_names:
     free: مجاني
+    trial: محاكمة
   current_plan_button:
     upgrade: تحديث
   loomio_tags:
@@ -59,6 +60,7 @@ ar:
       proposal: 'مقترح'
     copy: 'نسخ'
     copied: 'تم النسخ'
+    total: مجموع
     action:
       print: طباعة
       preview: معاينة
@@ -139,6 +141,8 @@ ar:
     private_privacy_notice: 'تعليقك سيظهر فقط لأعضاء مجموعة {{groupName}} '
     public_privacy_notice: 'تعليقك سيظهر للجميع'
     sign_in: "قم بتسجيل الدخول للانضمام إلى المحادثة"
+  thread_nav:
+    participants: المشاركين
   sidebar:
     threads: 'المواضيع'
     start_group: 'منظمة جديدة'
@@ -221,7 +225,9 @@ ar:
   reactions_display:
     you: "أنت"
   group_page:
+    stats: إحصائيات المجموعة
     threads: المواضيع
+    polls: استطلاعات
     members: أعضاء
     settings: الإعدادات
     subgroups: الفِرَق الفرعية
@@ -499,6 +505,7 @@ ar:
   decision_tools_card:
     proposal_title: اقتراح
     poll_title: استطلاع رأي
+    meeting_title: استطلاع الوقت
   poll_common:
     reason: السبب
     results: النتائج
@@ -532,11 +539,15 @@ ar:
     closed: مغلقة
   poll_poll_form:
     edit_header: تعديل استطلاع الرأي
+  poll_ranked_choice_form:
+    rank: 'مرتبة '
   poll_proposal_vote_form:
     vote: صوت
   poll_count_options:
     'yes': 'نعم'
     'no': 'لا'
+  poll_meeting_chart_panel:
+    total: مجموع
   poll_common_subscribe_form:
     no_thanks: لا شكرًا
   polls_page:
@@ -545,6 +556,7 @@ ar:
   auth_form:
     sign_in: تسجيل الدخول
     more_providers: المزيد
+    invalid_password: "عذرًا ، كلمة المرور هذه لا تتطابق مع كلمة المرور المسجلة لدينا"
     email_placeholder: you@example.com
     name_placeholder: اسمك
     hello: "أهلا {{name}}!"
@@ -558,3 +570,50 @@ ar:
   group_survey:
     categories:
       business: أعمال
+      bcorp: ب- كورب أو مؤسسة اجتماعية
+      cooperative: 'تعاوني '
+      consultant: خدمات أو وكالة استشارية
+      government: الحكومة / الحكومة المحلية
+      nonprofit: غير ربحية
+      union: 'اتحاد '
+      party: 'حزب سياسي '
+      activist: منظمة ناشطة
+      community: مجتمع أو جماعي
+      education: التعليم أو البحث
+      faith: الإيمان أو المجموعة الروحية
+      volunteer: 'منظمة طوعية '
+      other: اخر
+    sizes:
+      ten: "<10"
+      twenty: "11-20"
+      fifty: "21-50"
+      two_hundred: "51-200"
+      five_hundred: "201-500"
+      two_thousand: "501-2000"
+      else: ">2000"
+    uses:
+      governance: الحوكمة لمجلس الإدارة أو اللجنة أو الأمانة
+      collaboration: مجموعة عمل تعاونية
+      engagement: مشاركة أصحاب المصلحة أو الأعضاء
+      self_management: الإدارة الذاتية (مكان العمل التعاوني)
+      remote: العمل عن بعد
+      document: تطوير المستندات التعاونية ، على سبيل المثال  خطة إستراتيجية
+      decision_making: عمليات صنع القرار (نصيحة ، موافقة)
+      funding: قرارات التمويل أو المنح
+      project: 'فريق المشروع '
+      forum: المنتدى
+      other: اخر
+    referrers:
+      google: 'بحث غوغيل '
+      invitation: مدعو الى مجموعة لوميو
+      referral: الإحالة
+      social: وسائل التواصل الاجتماعي (Facebook و Twitter و LinkedIn)
+      capterra: كابترا
+      other: اخر
+    location: أين مقر مجموعتك؟
+    purpose: "ما هو هدف مجموعتك؟"
+    category_question: "حدد أفضل فئة تصف مجموعتك"
+    anything_else: "هل هناك أي شيء آخر تود إخبارنا به؟"
+    size_question: "كم عدد الأشخاص في مجموعتك؟"
+    usage: "كيف تخطط لاستخدام Loomio؟  اختر الأنسب"
+    referrer: "كيف سمعت عن Loomio؟"

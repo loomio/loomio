@@ -15,19 +15,23 @@ pt_BR:
       spoofed_media_type: 'O conteúdo daquele arquivo não corresponde ao nome do arquivo '
   group:
     stats:
+      group_stats: Estatísticas do grupo
       members: Membros
       subgroups: Subgrupos
       threads: Conversas
       votes: Votos
       comments: Comentários
+      polls: Enquetes
       poll_types:
         proposal: Proposta
+        rank: Classificar
         time: Tempo de votação
   user:
     deleted_user: "Usuário excluído"
     placeholder_name: "Usuário convidado (%{hostname})"
     error:
       recaptcha: "Não pudemos verificar que você não é um robô, por favor tente novamente."
+      bad_login: "Desculpe, essa senha não confere com a que temos em arquivo"
       username_must_be_alphanumeric: "Nomes de usuário devem conter apenas letras minúsculas e números"
   attachment:
     error:

@@ -1,19 +1,88 @@
 ar:
+  explore:
+    header: استكشف المجموعات العامة
+  saml_providers:
+    invitation_created:
+      success: "نجاح!  يرجى التحقق من البريد الوارد%{email} الخاص بك للحصول على رابط للانضمام إلى%{group_name}."
+      error: "تعذر على مقدم خدمة SAML مصادقة%{email} لـ%{group_name}."
+  activerecord:
+    errors:
+      messages:
+        blank: لا يمكن أن تكون فارغة
+        invalid: ليست قيمة صالحة
+  errors:
+    noscript: Loomio يتطلب جافا سكريبت للعمل!  يرجى تمكين جافا سكريبت في متصفحك للمتابعة
+    return_home: العودة إلى المنزل
+    not_found: 404 الملف غير موجود.
+    messages:
+      email: البريد الإلكتروني غير صالح
+      spoofed_media_type: لا تتطابق محتويات هذا الملف مع اسم الملف الخاص به
   group:
+    error:
+      handle_must_begin_with_parent_handle: "يجب أن تبدأ بـ%{parent_handle}-"
     stats:
+      group_stats: إحصائيات المجموعة
+      org_stats: إحصائيات المنظمة (بما في ذلك المجموعات الفرعية)
+      visits: الزيارات
       members: أعضاء
       subgroups: الفِرَق الفرعية
       threads: المواضيع
       votes: أصوات
       comments: التعليقات
+      general: جنرال لواء
+      polls: استطلاعات
       poll_types:
         proposal: اقتراح
+        count: العد
+        choose: 'أختر '
+        allocate: تخصيص
+        score: 'نتيجة '
+        rank: 'مرتبة '
+        time: استطلاع الوقت
+  user:
+    deleted_user: "مستخدم محذوف "
+    placeholder_name: "المستخدم المدعو (%{hostname}) "
+    error:
+      sign_in_required_html: |
+          يجب تسجيل الدخول للمتابعة.
+          يرجى <a href="/dashboard" target="_blank">تسجيل الدخول</a> ثم إعادة تحميل هذه الصفحة للمتابعة.
+      recaptcha: "لم نتمكن من التحقق من أنك لست روبوتًا.  حاول مرة اخرى!"
+      bad_login: "عذرًا ، كلمة المرور هذه لا تتطابق مع كلمة المرور المسجلة لدينا"
+      username_must_be_alphanumeric: "يجب أن تكون أسماء المستخدمين أحرف وأرقام صغيرة فقط"
+  attachment:
+    error:
+      too_large: الملف الذي حاولت إرفاقه أكبر من 100 ميغابايت ، يرجى اختيار ملف أصغر.
   poll:
+    error:
+      cannot_add_options: لا يمكن إضافة خيارات لهذا الاستطلاع
+      cannot_remove_options: لا يمكن إزالة الخيارات من هذا الاستطلاع
+      must_have_options: يجب أن يكون لديك خيار استطلاع واحد على الأقل
     export:
+      percent_voted: "%{num}/%{denom}(%{percent}) أعلن الأعضاء موقفهم"
       title: العنوان
+      author: مؤلف
+      created_at: أنشئت في
+      closing_at: إغلاق في
+      closed_at: مغلق في
+      is_latest: ' الأحدث'
+      engagement: الارتباط
+      stances: المواقف
+      participants: المشاركين
       details: التفاصيل
       group_name: اسم المجموعة
+      discussion_title: عنوان الموضوع
+      poll_url: عنوان URL للاستطلاع
       reason: السبب
+      participant: مشارك
+      also_available: متوفر أيضًا في
+      total: مجموع
+  stance:
+    error:
+      too_short: يرجى الاختيار
+  invitation:
+    invitation_cancelled: عذرًا ، تم إلغاء هذه الدعوة من قبل منسق المجموعة.  يرجى طلب دعوة أخرى من مجموعتك.
+  subscriptions:
+    active: 'نشيط '
   email:
     custom: "%{text}"
     group_email:
