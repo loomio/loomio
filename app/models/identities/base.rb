@@ -17,9 +17,7 @@ class Identities::Base < ApplicationRecord
   end
 
   def find_or_create_user!
-    User.find_or_create_by(email: self.email) do |user|
-      user.name = self.name
-    end.associate_with_identity(self)
+    User.find_or_create_by(email: self.email).associate_with_identity(self)
   end
 
   def assign_logo!
