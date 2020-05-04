@@ -4,7 +4,7 @@ import Flash   from '@/shared/services/flash'
 import { exact }   from '@/shared/helpers/format_time'
 
 import { format, utcToZonedTime } from 'date-fns-tz'
-import { isSameYear }  from 'date-fns'
+import { isSameYear, startOfHour }  from 'date-fns'
 
 export default
   props:
@@ -14,7 +14,7 @@ export default
     Records.users.fetchTimeZones().then (data) => @zoneCounts = data
 
   data: ->
-    value: new Date
+    value: startOfHour(new Date)
     min: new Date
     zoneCounts: []
 
