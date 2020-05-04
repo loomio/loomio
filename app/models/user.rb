@@ -210,12 +210,13 @@ class User < ApplicationRecord
   def associate_with_identity(identity)
     if existing = identities.find_by(user: self, uid: identity.uid, identity_type: identity.identity_type)
       existing.update(access_token: identity.access_token)
-      existing.assign_logo!
+      identity = existing
     else
       identities.push(identity)
-      identity.assign_logo!
     end
 
+    update(name: identity.name) if self.name.nil?
+    identity.assign_logo! if self.avatar_url.nil?
     self
   end
 

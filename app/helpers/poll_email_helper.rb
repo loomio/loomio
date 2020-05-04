@@ -10,7 +10,7 @@ module PollEmailHelper
   end
 
   def anonymous_or_actor_for(event)
-    @actor ||= if event.eventable.is_a?(Stance)
+    if event.eventable.is_a?(Stance)
       event.eventable.participant_for_client
     else
       event.user || LoggedOutUser.new
