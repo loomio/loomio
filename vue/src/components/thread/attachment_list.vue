@@ -1,12 +1,24 @@
 <script lang="coffee">
-
+import EventBus       from '@/shared/services/event_bus'
+import AbilityService from '@/shared/services/ability_service'
 import prettyBytes from 'pretty-bytes'
 
 export default
   props:
     attachments: [Array, Object]
+    group:
+      default: null
+      type: Object
   methods:
     prettifyBytes: (s) -> prettyBytes(s)
+    deleteDocument: ->
+      EventBus.$emit 'openModal',
+        component: 'GroupForm'
+        props:
+          group: @group
+  computed:
+    canDelete: ->
+      @group && AbilityService.canEditGroup(@group)
 </script>
 <template lang="pug">
 .attachment-list
@@ -20,6 +32,9 @@ export default
           span {{ attachment.filename }}
         space
         span.lmo-grey-on-white ({{ prettifyBytes(attachment.byte_size) }})
+        v-btn.ml-2(v-if="group && canDelete" icon :aria-label="$t('common.action.delete')" @click='deleteDocument')
+          v-icon(size="medium") mdi-delete
+
 </template>
 <style lang="sass">
 .attachment-list__item

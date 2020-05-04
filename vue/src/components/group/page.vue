@@ -84,7 +84,7 @@ v-content
     group-onboarding-card(:group="group")
     formatted-text.group-page__description(v-if="group" :model="group" column="description")
     document-list(:model='group')
-    attachment-list(:attachments="group.attachments")
+    attachment-list(:attachments="group.attachments" :group="group")
     v-divider.mt-4
     v-tabs(v-model="activeTab" center-active background-color="transparent" centered grow show-arrows)
       v-tabs-slider
