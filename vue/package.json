@@ -46,7 +46,7 @@
     "tiptap-extensions": "1.29.1",
     "turndown": "^6.0.0",
     "turndown-plugin-gfm": "^1.0.2",
-    "url-search-params-polyfill": "^8.0.0",
+    "url-search-params-polyfill": "^8.1.0",
     "vinyl-source-stream": "^2.0.0",
     "vue": "^2.6.11",
     "vue-clipboard2": "^0.3.1",
