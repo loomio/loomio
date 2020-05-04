@@ -57,7 +57,7 @@ export default class PollModel extends BaseModel
 
   adminsInclude: (user) ->
     stance = @stanceFor(user)
-    @authorIs(user) || (stance && stance.admin) || (@group && @group().adminsInclude(user))
+    @authorIs(user) || (stance && stance.admin) || (@group() && @group().adminsInclude(user))
 
   membersInclude: (user) ->
     @stanceFor(user) || (@group && @group().membersInclude(user))
