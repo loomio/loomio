@@ -2,7 +2,15 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
   include PrettyUrlHelper
   include PollEmailHelper
 
-  attributes :text, :icon_url, :username
+  attributes :text,
+             :icon_url,
+             :username,
+             :kind,
+             :url,
+             :group_name,
+             :actor_name,
+             :poll_type,
+             :title
 
   def icon_url
     url = object.eventable.group.logo.url(:medium)
@@ -37,13 +45,25 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
 
   def text_options
     {
-      actor: user.name,
+      actor: actor_name,
       title: title,
       body: body,
-      url: polymorphic_url(eventable, default_url_options),
+      url: url,
       poll_type: poll_type,
-      group: eventable.group.name
+      group: group_name
     }.compact
+  end
+
+  def url
+    polymorphic_url(eventable, default_url_options)
+  end
+
+  def actor_name
+    user.name
+  end
+
+  def group_name
+    eventable.group.name
   end
 
   def poll_type
