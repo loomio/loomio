@@ -32,7 +32,7 @@ gem 'image_processing', '~> 1.10'
 gem "sentry-raven"
 gem 'sequenced', '~> 3.2.0'
 gem 'http_accept_language'
-gem 'sprockets', '3.7.2'
+gem 'sprockets', '4.0.0'
 gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'uglifier'
 gem 'sass-rails'
