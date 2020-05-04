@@ -73,7 +73,7 @@ export default
     isOpen: false
     componentName: ""
     componentProps: {}
-    maxWidth: 600
+    maxWidth: 640
 
   created: ->
     EventBus.$on('openModal', @openModal)
@@ -81,7 +81,7 @@ export default
 
   methods:
     openModal: (opts) ->
-      @maxWidth = opts.maxWidth || 600
+      @maxWidth = opts.maxWidth || 640
       @isOpen = true
       @componentName = opts.component
       @componentProps = opts.props
