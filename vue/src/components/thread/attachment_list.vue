@@ -26,7 +26,7 @@ export default
     a.lmo-pointer(v-if="attachment.preview_url" :href='attachment.download_url', target='_blank')
       img.attachment-list__preview(:src="attachment.preview_url")
     .attachment-list__item-details
-      v-icon(v-if="attachment.icon") {{ `mdi-${attachment.icon}` }}
+      v-icon.mr-2(v-if="attachment.icon") {{ `mdi-${attachment.icon}` }}
       div
         a(:href="attachment.download_url")
           span {{ attachment.filename }}

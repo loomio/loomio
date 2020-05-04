@@ -66,7 +66,7 @@ section.document-list
         v-btn.ml-2(v-if="canDelete" icon :aria-label="$t('common.action.delete')" @click='deleteDocument(document)')
           v-icon(size="medium") mdi-delete
       v-layout.attachment-list__item-details
-        v-icon {{ `mdi-${document.icon}` }}
+        v-icon.mr-2 {{ `mdi-${document.icon}` }}
         a.document-list__title(:href='document.url' target='_blank') {{ document.title }}
         v-btn.ml-2(v-if="canDelete" icon :aria-label="$t('common.action.delete')" @click='deleteDocument(document)')
           v-icon(size="medium") mdi-delete
