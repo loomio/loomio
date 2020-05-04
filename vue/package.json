@@ -73,7 +73,7 @@
     "chromedriver": "^81.0.0",
     "coffee-loader": "latest",
     "coffeescript": "^2.5.1",
-    "fibers": "^4.0.2",
+    "fibers": "^5.0.0",
     "js-yaml-loader": "^1.2.2",
     "sass": "^1.26.3",
     "sass-loader": "^8.0.2",
