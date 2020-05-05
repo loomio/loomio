@@ -11,6 +11,14 @@ export default
       type: Function
   methods:
     prettifyBytes: (s) -> prettyBytes(s)
+    deleteDocument: ->
+      EventBus.$emit 'openModal',
+        component: 'GroupForm'
+        props:
+          group: @group
+  computed:
+    canDelete: ->
+      @group && AbilityService.canEditGroup(@group)
 </script>
 <template lang="pug">
 .attachment-list
