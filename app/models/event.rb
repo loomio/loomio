@@ -31,6 +31,7 @@ class Event < ApplicationRecord
 
   scope :sequenced, -> { where.not(sequence_id: nil).order(sequence_id: :asc) }
   scope :thread_events, -> { where.not(kind: BLACKLISTED_KINDS) }
+  scope :unreadable, -> { where.not(kind: 'discussion_closed') } 
 
   scope :invitations_in_period, ->(since, till) {
     where(kind: :announcement_created, eventable_type: 'Group').within(since.beginning_of_hour, till.beginning_of_hour)
