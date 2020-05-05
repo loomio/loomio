@@ -49,7 +49,7 @@ export default
       # move this to activity panel.
       Records.events.fetch
         params:
-          exclude_types: 'group discussion poll_option stance'
+          exclude_types: 'group discussion'
           discussion_id: @discussion.id
           pinned: true
           per: 200

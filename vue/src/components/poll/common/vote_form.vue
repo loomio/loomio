@@ -12,6 +12,16 @@ export default
     optionColors: optionColors()
     optionImages: optionImages()
     debug: @$route.query.debug
+    optionGroups: []
+  created: ->
+    @watchRecords
+      collections: ['poll_options']
+      query: (records) =>
+        options = @stance.poll().pollOptions()
+        @optionGroups = if options.length == 4
+          [[options[0], options[1]], [options[2], options[3]]]
+        else
+          [options]
 
   methods:
     submit: ->
@@ -35,14 +45,6 @@ export default
     select: (option) ->
       @selectedOptionId = option.id
       @$nextTick => EventBus.$emit 'focusTextarea'
-
-  computed:
-    optionGroups: ->
-      options = @stance.poll().pollOptions()
-      if options.length == 4
-        [[options[0], options[1]], [options[2], options[3]]]
-      else
-        [options]
 </script>
 
 <template lang="pug">
