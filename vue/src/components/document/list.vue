@@ -41,10 +41,10 @@ export default
           confirm:
             submit: document.destroy
             text:
-              title:    'attachments.confirm.title'
-              raw_helptext: @$t("attachments.confirm.helptext", { name: document.title })
-              submit:   'attachments.confirm.submit'
-              flash:    'attachments.confirm.flash'
+              title:    'comment_form.attachments.remove_attachment'
+              helptext: 'poll_common_delete_modal.question'
+              submit:   'common.action.delete'
+              flash:    'poll_common_delete_modal.success'
 
   computed:
     showTitle: ->

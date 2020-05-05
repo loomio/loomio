@@ -2072,13 +2072,6 @@ en:
     terms_of_service: Terms of service
     front_page: Front page
 
-  attachments:
-    confirm:
-      title: Delete attachment
-      helptext: "Are you sure you would like to delete this attachment, '{{name}}'?"
-      submit: Delete
-      flash: Attachment deleted
-
   group_survey:
     title: Success! Just a few more details
     subtitle: Please help us get to know you better. We will not share any information provided in this form without your permission.
