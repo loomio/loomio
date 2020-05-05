@@ -2,7 +2,7 @@
 import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
-import { sum, map, head, filter, without, sortBy } from 'lodash-es'
+import { sum, map, head, filter, without, sortBy, isEqual } from 'lodash-es'
 import { onError } from '@/shared/helpers/form'
 
 export default
@@ -14,13 +14,11 @@ export default
     stanceChoices: []
 
   created: ->
-    done = false
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
-        @pollOptions = @stance.poll().pollOptions()
-        if !done
-          done = true
+        if !isEqual map(@pollOptions, 'name'), map(@stance.poll().pollOptions(), 'name')
+          @pollOptions = @stance.poll().pollOptions()
           @stanceChoices = map @pollOptions, (option) =>
             poll_option_id: option.id
             score: @stanceChoiceFor(option).score

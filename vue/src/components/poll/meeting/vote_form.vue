@@ -4,7 +4,7 @@ import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
 import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
-import {compact, map, toPairs, fromPairs, some, sortBy} from 'lodash-es'
+import {compact, map, toPairs, fromPairs, some, sortBy, isEqual} from 'lodash-es'
 
 export default
   props:
@@ -21,15 +21,13 @@ export default
 
   created: ->
     EventBus.$on 'timeZoneSelected', @setTimeZone
-    done = false
     @watchRecords
       collections: ['poll_options', 'poll']
       query: (records) =>
         @canRespondMaybe =  @stance.poll().customFields.can_respond_maybe
         @stanceValues = if @stance.poll().customFields.can_respond_maybe then [2,1,0] else [2, 0]
-        @pollOptions = sortBy @stance.poll().pollOptions(), 'name'
-        if !done
-          done = true
+        if !isEqual map(@pollOptions, 'name'), map(@stance.poll().pollOptions(), 'name')
+          @pollOptions = sortBy @stance.poll().pollOptions(), 'name'
           @stanceChoices = @pollOptions.map (option) =>
             lastChoice = @stance.stanceChoices().find((sc) => sc.pollOptionId == option.id) || {score: 0}
             id: option.id
