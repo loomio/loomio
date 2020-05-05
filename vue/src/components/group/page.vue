@@ -65,6 +65,13 @@ export default
     titleVisible: (visible) ->
       EventBus.$emit('content-title-visible', visible)
 
+    openGroupSettingsModal: ->
+      return null unless AbilityService.canEditGroup(@group)
+      EventBus.$emit 'openModal',
+        component: 'GroupForm'
+        props:
+          group: @group
+
 </script>
 
 <template lang="pug">
@@ -84,7 +91,7 @@ v-content
     group-onboarding-card(:group="group")
     formatted-text.group-page__description(v-if="group" :model="group" column="description")
     document-list(:model='group')
-    attachment-list(:attachments="group.attachments" :group="group")
+    attachment-list(:attachments="group.attachments" :edit="openGroupSettingsModal")
     v-divider.mt-4
     v-tabs(v-model="activeTab" center-active background-color="transparent" centered grow show-arrows)
       v-tabs-slider
