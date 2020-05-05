@@ -15,6 +15,7 @@ module Boot
         recaptchaKey:        ENV['RECAPTCHA_APP_KEY'],
         baseUrl:             root_url,
         contactEmail:        ENV['SUPPORT_EMAIL'],
+        plugins:             { installed: [], outlets: [], routes: [] },
         theme:               AppConfig.theme,
 
         # these can be deleted after angular is really really gone
