@@ -6,9 +6,9 @@ import prettyBytes from 'pretty-bytes'
 export default
   props:
     attachments: [Array, Object]
-    group:
+    edit:
       default: null
-      type: Object
+      type: Function
   methods:
     prettifyBytes: (s) -> prettyBytes(s)
     deleteDocument: ->
@@ -32,7 +32,7 @@ export default
           span {{ attachment.filename }}
         space
         span.lmo-grey-on-white ({{ prettifyBytes(attachment.byte_size) }})
-        v-btn.ml-2(v-if="group && canDelete" icon :aria-label="$t('common.action.delete')" @click='deleteDocument')
+        v-btn.ml-2(v-if="edit" icon :aria-label="$t('common.action.delete')" @click='edit')
           v-icon(size="medium") mdi-delete
 
 </template>
