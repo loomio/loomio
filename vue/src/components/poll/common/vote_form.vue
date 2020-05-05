@@ -54,13 +54,9 @@ export default
     v-layout.mb-4(justify-space-around v-for='(optionGroup, index) in optionGroups' :key="index")
       v-btn.poll-common-vote-form__button.poll-proposal-vote-form__button(color="accent" :style="style(option)" text outlined v-for='option in optionGroup' :key='option.id' @click='select(option)')
         v-layout(column align-center)
-          //- v-badge(overlap)
-          //-   template(v-slot:badge)
-          //-     span.poll-common-vote-form__chosen-option--name(v-t="'poll_' + stance.poll().pollType + '_options.' + option.name")
           v-avatar(size="52px")
             img(:src="'/img/' + optionImages[option.name] + '.svg'")
-          span {{option.name}}
-          //- // <md-tooltip md-delay="750" class="poll-common-vote-form__tooltip"><span translate="poll_{{stance.poll().pollType}}_options.{{option.name}}_meaning"></span></md-tooltip>
+          span(v-t="'poll_' + stance.poll().pollType + '_options.' + option.name")
   poll-common-stance-reason.animated(:stance='stance', v-show='selectedOptionId', v-if='stance')
   v-card-actions
     v-spacer
