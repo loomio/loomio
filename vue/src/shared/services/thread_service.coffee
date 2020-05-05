@@ -134,10 +134,11 @@ export default new class ThreadService
       icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditThread(discussion)
       perform: ->
-        openModal
-          component: 'DiscussionForm',
-          props:
-            discussion: discussion.clone()
+        Records.discussions.remote.fetchById(discussion.key, {exclude_types: 'group user poll event'}).then ->
+          openModal
+            component: 'DiscussionForm',
+            props:
+              discussion: discussion.clone()
 
     edit_arrangement:
       icon: 'mdi-directions-fork'

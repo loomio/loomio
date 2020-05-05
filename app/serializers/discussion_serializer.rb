@@ -65,7 +65,7 @@ class DiscussionSerializer < ApplicationSerializer
   end
 
   def include_active_polls?
-    scope[:poll_cache].present?
+    super && scope[:poll_cache].present?
   end
 
   def reader
