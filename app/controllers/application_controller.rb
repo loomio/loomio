@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_version
   helper_method :bundle_asset_path
   helper_method :supported_locales
+  helper_method :is_old_browser?
 
   after_action :associate_user_to_visit
 
@@ -67,12 +68,8 @@ class ApplicationController < ActionController::Base
   def boot_app(status: 200)
     expires_now
     prevent_caching
-    if should_redirect_to_browser_upgrade?
-      render file: 'public/417.html', status: 417
-    else
-      template = File.read(Rails.root.join('public/client/vue/index.html'))
-      render inline: template, layout: false, status: status
-    end
+    template = File.read(Rails.root.join('public/client/vue/index.html')).gsub('<div class=upgrade-browser></div>', '<%= render "application/upgrade_browser" %>')
+    render inline: template, layout: false, status: status
   end
 
   def redirect_to(url, opts = {})
@@ -87,14 +84,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def should_redirect_to_browser_upgrade?
-    !params[:skip_browser_upgrade] &&
-    !@skip_browser_upgrade &&
-    !request.xhr? &&
+  def is_old_browser?
     (browser.ie? ||
     (browser.chrome?  && browser.version.to_i < 50) ||
     (browser.firefox? && !browser.platform.ios? && browser.version.to_i < 50) ||
     (browser.safari?  && browser.version.to_i < 11) ||
-    (browser.edge?    && browser.version.to_i < 17))
+    (browser.edge?    && browser.version.to_i < 18))
   end
 end

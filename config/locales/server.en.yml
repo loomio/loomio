@@ -15,6 +15,8 @@ en:
 
   errors:
     noscript: Loomio requires javascript to work! Please enable javascript in your browser to continue
+    upgrade_browser: |
+      Uh oh! Your web browser is too old and Loomio may not work properly. Please <a href="https://browser-update.org/update.html">upgrade your browser.</a>
     return_home: Return home
     not_found: 404 file not found.
     messages:
