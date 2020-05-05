@@ -297,7 +297,7 @@ div
               v-btn(icon @click="convertToMd" :title="$t('formatting.edit_markdown')")
                 v-icon mdi-markdown
             //- expand button
-            v-btn(icon @click="toggleExpanded")
+            v-btn.html-editor__expand(icon @click="toggleExpanded")
               v-icon(v-if="!expanded") mdi-chevron-right
               v-icon(v-if="expanded") mdi-chevron-left
           //- save button?

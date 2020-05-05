@@ -209,7 +209,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.click('i.mdi-chevron-right')
+    page.click('.html-editor__expand')
     page.click('i.mdi-markdown')
     page.acceptConfirm()
     page.fillIn('.comment-form .lmo-textarea textarea', '@jennifer')
