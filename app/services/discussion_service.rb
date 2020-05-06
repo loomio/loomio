@@ -85,6 +85,7 @@ class DiscussionService
 
     discussion.update group: destination, private: moved_discussion_privacy_for(discussion, destination)
     discussion.polls.each { |poll| poll.update(group: destination) }
+    ActiveStorage::Attachment.where(record: discussion.items.map(&:eventable).concat([discussion])).update_all(group_id: destination.id)
 
     EventBus.broadcast('discussion_move', discussion, params, actor)
     Events::DiscussionMoved.publish!(discussion, actor, source)
