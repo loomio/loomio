@@ -43,8 +43,8 @@ module HasRichText
     end
 
     if self.respond_to?(:group) && group
-      files.update_all(group_id: group.id)
-      image_files.update_all(group_id: group.id)
+      files.each { |f| f.group_id = group.id }
+      image_files.each { |f| f.group_id = group.id }
     end
 
   end
