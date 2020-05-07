@@ -16,7 +16,7 @@ cache:
 addons:
   firefox: latest
   postgresql: "9.6"
-  chrome: stable
+  chrome: beta
   artifacts:
     paths:
       - vue/tests/reports/
