@@ -1,5 +1,6 @@
 var selenium = require('selenium-server-standalone-jar');
 var chromedriver = require('chromedriver');
+var geckodriver = require('geckodriver');
 
 var chromeOptions = ["window-size=1280,1500"]
 if (process.env.RAILS_ENV == 'test') { chromeOptions.push("headless") }
@@ -13,7 +14,7 @@ module.exports = {
     log_path: './tests/reports',
     cli_args: {
       'webdriver.chrome.driver': chromedriver.path,
-      'webdriver.ie.driver': ''
+      'webdriver.gecko.driver': geckodriver.path
     }
   },
   test_settings: {
@@ -29,11 +30,15 @@ module.exports = {
       selenium_port: 4444,
       selenium_host: 'localhost',
       desiredCapabilities: {
-        browserName: 'chrome',
-        chromeOptions : { w3c: false, args: chromeOptions },
-        javascriptEnabled: true,
-        acceptSslCerts: true
+        browserName: 'firefox',
+        acceptInsecureCerts: true,
       },
+      // desiredCapabilities: {
+      //   browserName: 'chrome',
+      //   chromeOptions : { w3c: false, args: chromeOptions },
+      //   javascriptEnabled: true,
+      //   acceptSslCerts: true
+      // },
     }
   }
 };
