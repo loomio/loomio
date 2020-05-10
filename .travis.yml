@@ -2,7 +2,7 @@ language: ruby
 rvm:
   - 2.6.6
 
-dist: trusty
+dist: bionic
 sudo: required
 
 group: edge
@@ -14,6 +14,11 @@ cache:
     - vue/node_modules
 
 addons:
+  # apt:
+  #   sources:
+  #     - google-chrome
+  #   packages:
+  #     - google-chrome-stable
   chrome: stable
   postgresql: "9.6"
   artifacts:
