@@ -45,7 +45,7 @@ RUN npm rebuild node-sass
 WORKDIR /loomio
 
 WORKDIR /loomio/vue
-RUN npm install --only=production
+RUN npm install
 RUN npm run build
 WORKDIR /loomio
 
