@@ -54,7 +54,8 @@ class DiscussionService
     rearrange = discussion.max_depth_changed?
     discussion.update_attachments!
     discussion.save!
-    EventService.delay(queue: :low_priority).rearrange_events(discussion) if rearrange
+
+    RearrangeEventsWorker.perform_async(discussion.id) if rearrange
 
     version_service.handle_version_update!
     EventBus.broadcast('discussion_update', discussion, actor, params)

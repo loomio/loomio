@@ -14,7 +14,11 @@ class Memos::CommentDestroyed < Memo
   end
 
   def data
-    {comment_id: @comment.id}
+    {
+      comment_id: @comment.id,
+      discussion_id: @comment.discussion_id,
+      event_id: @comment.created_event.id
+    }
   end
 
   def message_channel

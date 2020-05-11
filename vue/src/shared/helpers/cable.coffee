@@ -29,8 +29,9 @@ subscribeToGroup = (group) ->
       if data.memo?
         switch data.memo.kind
           when 'comment_destroyed'
-            if comment = Records.comments.find(data.memo.data.comment_id)
-              comment.destroy()
+            # flash to the user or refresh the records
+            # if comment = Records.comments.find(data.memo.data.comment_id)
+            #   comment.destroy()
       Records.import(data)
 
 subscribeToUser = ->

@@ -12,8 +12,14 @@ class CommentService
 
   def self.destroy(comment:, actor:)
     actor.ability.authorize!(:destroy, comment)
+    
+    Memos::CommentDestroyed.publish!(comment)
+
     comment.destroy
-    EventBus.broadcast('comment_destroy', comment)
+
+
+    Comment.where(parent_id: comment.id).update_all(parent_id: nil)
+    RearrangeEventsWorker.perform_async(comment.discussion_id)
   end
 
   def self.update(comment:, params:, actor:)
