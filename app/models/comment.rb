@@ -1,4 +1,5 @@
 class Comment < ApplicationRecord
+  include Discard::Model
   include CustomCounterCache::Model
   include Translatable
   include Reactable
@@ -7,7 +8,7 @@ class Comment < ApplicationRecord
   include HasEvents
   include HasRichText
 
-  has_paper_trail only: [:body, :body_format]
+  has_paper_trail only: [:body, :body_format, :user_id, :discarded_at, :discarded_by]
 
   is_translatable on: :body
   is_mentionable  on: :body
@@ -23,10 +24,10 @@ class Comment < ApplicationRecord
 
   has_many :documents, as: :model, dependent: :destroy
 
-  validates_presence_of :user
-  validate :has_body_or_document
+  validates_presence_of :user, unless: :discarded_at
+  validates_presence_of :body, unless: :discarded_at
+  
   validate :parent_comment_belongs_to_same_discussion
-  validate :documents_owned_by_author
 
   default_scope { includes(:user).includes(:documents) }
 
@@ -44,10 +45,6 @@ class Comment < ApplicationRecord
   delegate :title, to: :discussion
 
   define_counter_cache(:versions_count) { |comment| comment.versions.count }
-
-  def self.always_versioned_fields
-    [:body]
-  end
 
   def should_pin
     return false if body_format != "html"
@@ -84,22 +81,11 @@ class Comment < ApplicationRecord
 
   private
 
-  def documents_owned_by_author
-    return if documents.pluck(:author_id).select { |user_id| user_id != user.id }.empty?
-    errors.add(:documents, "Attachments must be owned by author")
-  end
-
   def parent_comment_belongs_to_same_discussion
     if self.parent.present?
       unless discussion_id == parent.discussion_id
         errors.add(:parent, "Needs to have same discussion id")
       end
-    end
-  end
-
-  def has_body_or_document
-    if body.blank? && documents.blank?
-      errors.add(:body, "Comment cannot be empty")
     end
   end
 end

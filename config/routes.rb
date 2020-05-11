@@ -186,7 +186,9 @@ Loomio::Application.routes.draw do
 
     resources :outcomes,    only: [:create, :update]
 
-    resources :comments,    only: [:create, :update, :destroy]
+    resources :comments,    only: [:create, :update, :destroy] do
+      delete :discard, on: :member
+    end
     resources :reactions,   only: [:create, :update, :index, :destroy]
 
     resources :documents, only: [:create, :update, :destroy, :index] do

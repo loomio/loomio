@@ -10,13 +10,24 @@ class CommentService
     Events::NewComment.publish!(comment)
   end
 
+  def self.discard(comment:, actor:)
+    actor.ability.authorize!(:destroy, comment)
+
+    comment.update(user_id: nil,
+                   body: nil,
+                   discarded_at: Time.now,
+                   discarded_by: actor.id)
+
+    comment.created_event.update(user_id: nil)
+    comment.created_event
+  end
+
   def self.destroy(comment:, actor:)
     actor.ability.authorize!(:destroy, comment)
-    
+
     Memos::CommentDestroyed.publish!(comment)
 
     comment.destroy
-
 
     Comment.where(parent_id: comment.id).update_all(parent_id: nil)
     RearrangeEventsWorker.perform_async(comment.discussion_id)
