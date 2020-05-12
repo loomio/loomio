@@ -25,12 +25,15 @@ export default
     searchResults: []
 
   created: ->
+    @onQueryInput = debounce (val) =>
+      @$router.replace(@mergeQuery(q: val))
+    , 500
+
     @init()
     EventBus.$on 'signedIn', @init
 
   beforeDestroy: ->
     EventBus.$off 'signedIn', @init
-
 
   mounted: ->
     EventBus.$emit('content-title-visible', false)
@@ -67,7 +70,7 @@ export default
       @fetch()
       @query()
 
-    fetch: debounce ->
+    fetch: ->
       return unless @loader
       if @$route.query.q
         @searchLoader.fetchRecords(q: @$route.query.q).then =>
@@ -75,7 +78,6 @@ export default
           @query()
       else
         @loader.fetchRecords().then => @dashboardLoaded = true
-    , 300
 
     query: ->
       if @$route.query.q
@@ -91,8 +93,6 @@ export default
         @views.thismonth = ThreadFilter(Records, filters: @filters('hide_proposals'), from: subMonths(now, 1),  to: subWeeks(now, 1))
         @views.older     = ThreadFilter(Records, filters: @filters('hide_proposals'), from: subMonths(now, 12),  to: subMonths(now, 1))
 
-
-
     viewName: (name) ->
       if @filter == 'show_muted'
         "dashboard#{capitalize(name)}Muted"
@@ -102,8 +102,6 @@ export default
     filters: (filters) ->
       ['only_threads_in_my_groups', 'show_opened', @filter].concat(filters)
 
-    onQueryInput: (val) ->
-      @$router.replace(@mergeQuery(q: val))
 
   computed:
     titleKey: ->
