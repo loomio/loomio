@@ -25,8 +25,6 @@ class CommentService
   def self.destroy(comment:, actor:)
     actor.ability.authorize!(:destroy, comment)
 
-    Memos::CommentDestroyed.publish!(comment)
-
     comment.destroy
 
     Comment.where(parent_id: comment.id).update_all(parent_id: nil)
