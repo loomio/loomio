@@ -264,4 +264,35 @@ module.exports = {
     page.expectNoText('.activity-panel', 'original comment right thur')
     page.expectText('.activity-panel', 'Item removed')
   },
+
+  'sign_in_from_discussion_announced_email': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('setup_discussion_mailer_discussion_announced_email')
+    page.expectText('.thread-mailer__subject', "invited you to join")
+    page.expectText('.thread-mailer__body', "A description for this discussion. Should this be rich?")
+    page.click('.thread-mailer__subject a', 2000)
+    page.expectText('.context-panel__heading', 'go to the moon')
+    page.expectText('.context-panel__description', 'A description for this discussion')
+    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Hello world!')
+    page.click('.comment-form__submit-button')
+    page.expectText('.thread-item__title', 'Jennifer Grey', 10000)
+    page.expectText('.thread-item__body', 'Hello world!')
+    page.expectText('.context-panel__breadcrumbs', 'Girdy Dancing Shoes')
+  },
+
+  'sign_up_from_invitation_created_email': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('setup_discussion_mailer_invitation_created_email')
+    page.expectText('.thread-mailer__subject', "invited you to join")
+    page.expectText('.thread-mailer__body', "A description for this discussion. Should this be rich?")
+    page.click('.thread-mailer__subject a', 2000)
+    page.expectValue('.auth-email-form__email input', 'jen@example.com')
+    page.signUpViaInvitation("Jennifer")
+    page.expectFlash('Signed in successfully')
+    page.expectText('.context-panel__heading', 'go to the moon', 10000)
+    page.expectText('.context-panel__description', 'A description for this discussion')
+    page.expectText('.new-comment__body', 'body of the comment')
+  },
 }
