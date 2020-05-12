@@ -259,8 +259,9 @@ module.exports = {
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'original comment right hur')
     page.click('.comment-form__submit-button')
     page.click('.thread-item .action-menu')
-    page.click('.action-dock__button--delete_comment')
+    page.click('.action-dock__button--discard_comment')
     page.click('.confirm-modal__submit')
     page.expectNoText('.activity-panel', 'original comment right thur')
+    page.expectText('.activity-panel', 'Item removed')
   },
 }
