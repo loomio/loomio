@@ -47,9 +47,8 @@ describe API::CommentsController do
           comment_params[:body] = ''
           put :update, params: { id: comment.id, comment: comment_params }
           expect(response.status).to eq 422
-
           json = JSON.parse(response.body)
-          expect(json['errors']['body']).to include 'Comment cannot be empty'
+          expect(json['errors']['body']).to include "can't be blank"
         end
       end
     end
@@ -138,7 +137,7 @@ describe API::CommentsController do
           post :create, params: { comment: comment_params }
           json = JSON.parse(response.body)
           expect(response.status).to eq 422
-          expect(json['errors']['body']).to include 'Comment cannot be empty'
+          expect(json['errors']['body']).to include "can't be blank"
         end
       end
     end
