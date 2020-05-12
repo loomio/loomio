@@ -65,6 +65,22 @@ export default new class CommentService
           props:
             model: comment
 
+    discard_comment:
+      icon: 'mdi-delete'
+      name: 'common.action.delete'
+      canPerform: -> AbilityService.canDeleteComment(comment)
+      perform: ->
+        openModal
+          component: 'ConfirmModal',
+          props:
+            confirm:
+              submit: -> comment.discard()
+              text:
+                title: 'delete_comment_dialog.title'
+                helptext: 'delete_comment_dialog.question'
+                confirm: 'delete_comment_dialog.confirm'
+                flash: 'comment_form.messages.destroyed'
+
     delete_comment:
       icon: 'mdi-delete'
       canPerform: -> AbilityService.canDeleteComment(comment)

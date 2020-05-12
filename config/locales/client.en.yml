@@ -1912,6 +1912,7 @@ en:
     stance_updated: Choice updated
 
   thread_item:
+    removed: "Item removed"
     comment_replied_to:            "<strong><a href='/u/{{username}}'>{{author}}</a></strong> in reply to <strong>{{title}}</strong>"
     discussion_title_edited:       "<strong><a href='/u/{{username}}'>{{author}}</a></strong> edited the thread title"
     discussion_context_edited:     "<strong><a href='/u/{{username}}'>{{author}}</a></strong> edited the thread context"
