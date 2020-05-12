@@ -22,6 +22,8 @@ class DiscussionMailer < BaseMailer
     headers['X-Auto-Response-Suppress'] = 'OOF'
     headers['Auto-Submitted'] = 'auto-generated'
 
+    return if @event.eventable.discarded?
+
     send_single_mail  to: @recipient.email,
                       from: from_user_via_loomio(@event.user),
                       reply_to: reply_to_address_with_group_name(model: @event.eventable, user: @recipient),

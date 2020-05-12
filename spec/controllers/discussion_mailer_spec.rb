@@ -9,6 +9,11 @@ def expect_element(selector)
 end
 
 describe Dev::NightwatchController do
+  it 'catch_up' do
+    get :setup_thread_catch_up
+    expect_text('.thread-mailer__body', "Item removed")
+    expect_text('.thread-mailer__body', "A description for this discussion. Should this be rich?")
+  end
   it 'discussion_announced' do
     get :setup_discussion_mailer_discussion_announced_email
     expect_text('.thread-mailer__subject', "invited you to join")
