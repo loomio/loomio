@@ -20,7 +20,6 @@ describe API::VersionsController do
       CommentService.create(comment: comment, actor: user)
       get :show, params: {comment_id: comment.id}
       expect(response.status).to eq 200
-      puts response.body
     end
 
     it "discarded comment" do
@@ -28,7 +27,6 @@ describe API::VersionsController do
       CommentService.discard(comment: comment, actor: user)
       get :show, params: {comment_id: comment.id}
       expect(response.status).to eq 403
-      puts response.body
     end
   end
 end
