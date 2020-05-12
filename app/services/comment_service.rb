@@ -24,11 +24,12 @@ class CommentService
 
   def self.destroy(comment:, actor:)
     actor.ability.authorize!(:destroy, comment)
-
+    comment_id = comment.id
+    discussion_id = comment.discussion.id
     comment.destroy
 
-    Comment.where(parent_id: comment.id).update_all(parent_id: nil)
-    RearrangeEventsWorker.perform_async(comment.discussion_id)
+    Comment.where(parent_id: comment_id).update_all(parent_id: nil)
+    # RearrangeEventsWorker.perform_async(discussion_id)
   end
 
   def self.update(comment:, params:, actor:)

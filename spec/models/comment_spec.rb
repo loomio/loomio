@@ -41,15 +41,6 @@ describe Comment do
     end
   end
 
-  describe "validate documents_owned_by_author" do
-    it "raises error if author does not own documents" do
-      document = create(:document)
-      comment.documents << document
-      comment.save
-      comment.should have(1).errors_on(:documents)
-    end
-  end
-
   describe "#mentioned_users" do
     before do
       @group = create :group
