@@ -15,6 +15,10 @@ describe 'CommentService' do
 
   describe 'destroy' do
 
+    before do
+      DiscussionService.create(discussion: discussion, actor: user)
+    end
+
     it 'checks the actor has permission' do
       user.ability.should_receive(:authorize!).with(:destroy, comment)
       CommentService.destroy(comment: comment, actor: user)

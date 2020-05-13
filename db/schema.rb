@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_26_055839) do
+ActiveRecord::Schema.define(version: 2020_05_11_213014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -142,7 +142,7 @@ ActiveRecord::Schema.define(version: 2020_04_26_055839) do
   create_table "comments", id: :serial, force: :cascade do |t|
     t.integer "discussion_id", default: 0
     t.text "body", default: ""
-    t.integer "user_id", default: 0, null: false
+    t.integer "user_id", default: 0
     t.integer "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -153,6 +153,8 @@ ActiveRecord::Schema.define(version: 2020_04_26_055839) do
     t.integer "versions_count", default: 0
     t.string "body_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
+    t.datetime "discarded_at"
+    t.integer "discarded_by"
     t.index ["discussion_id"], name: "index_comments_on_discussion_id"
   end
 

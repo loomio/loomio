@@ -170,6 +170,11 @@ export default class BaseModel
 
   beforeRemove: =>
 
+  discard: =>
+    @processing = true
+    @remote.discard(@keyOrId()).finally =>
+      @processing = false
+
   save: =>
     @processing = true
 

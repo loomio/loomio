@@ -47,9 +47,8 @@ describe API::CommentsController do
           comment_params[:body] = ''
           put :update, params: { id: comment.id, comment: comment_params }
           expect(response.status).to eq 422
-
           json = JSON.parse(response.body)
-          expect(json['errors']['body']).to include 'Comment cannot be empty'
+          expect(json['errors']['body']).to include "can't be blank"
         end
       end
     end
@@ -138,13 +137,51 @@ describe API::CommentsController do
           post :create, params: { comment: comment_params }
           json = JSON.parse(response.body)
           expect(response.status).to eq 422
-          expect(json['errors']['body']).to include 'Comment cannot be empty'
+          expect(json['errors']['body']).to include "can't be blank"
+        end
+      end
+    end
+
+    describe 'discard' do
+      context 'allowed to discard' do
+        it 'discards the comment' do
+          body = comment.body
+          CommentService.create(comment: comment, actor: user)
+          delete :discard, params: { id: comment.id }
+          expect(response.status).to eq 200
+          comment.reload
+          expect(comment.discarded?).to be true
+          expect(comment.discarded_by).to eq user.id
+          expect(comment.body).to be nil
+          expect(comment.user_id).to be nil
+          expect(comment.created_event.user_id).to be nil
+          diff = comment.versions.last.object_changes
+          expect(diff['body'][0]).to eq body
+          expect(diff['user_id'][0]).to eq user.id
+        end
+      end
+
+      context 'not allowed to discard' do
+        it 'discards the comment' do
+          sign_in another_user
+          CommentService.create(comment: comment, actor: user)
+          delete :discard, params: { id: comment.id }
+          expect(response.status).to eq 403
+          comment.reload
+          expect(comment.discarded?).to be false
+          expect(comment.body).to_not be nil
+          expect(comment.user_id).to_not be nil
+          expect(comment.created_event.user_id).to_not be nil
         end
       end
     end
 
     describe 'destroy' do
       context 'allowed to delete' do
+        # NOTE
+        # we may want to spec what happens to replies and events
+        # however for now: replies are turned into comments directly on discussion
+        # and their events are reparented appropriately
         it "destroys a comment" do
           CommentService.create(comment: comment, actor: user)
           delete :destroy, params: { id: comment.id }

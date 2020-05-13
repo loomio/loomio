@@ -37,7 +37,9 @@ module Dev::Scenarios::Discussion
 
   def setup_thread_catch_up
     jennifer.update(email_catch_up: true)
-    CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion), actor: patrick)
+    CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion, body: "first comment"), actor: patrick)
+    event = CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion, body: "removed comment"), actor: patrick)
+    CommentService.discard(comment: event.eventable, actor: event.user)
     DiscussionService.close(discussion: create_discussion, actor: patrick)
     UserMailer.catch_up(jennifer.id, 1.hour.ago).deliver_now
     last_email

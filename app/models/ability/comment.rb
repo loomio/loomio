@@ -15,7 +15,7 @@ module Ability::Comment
     end
 
     can [:show], ::Comment do |comment|
-      can?(:show, comment.discussion)
+      can?(:show, comment.discussion) && comment.kept?
     end
   end
 end

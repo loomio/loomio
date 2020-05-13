@@ -26,11 +26,6 @@ export initLiveUpdate = ->
 subscribeToGroup = (group) ->
   ensureConnection().subscriptions.create { channel: "GroupChannel", group_id: group.id },
     received: (data) ->
-      if data.memo?
-        switch data.memo.kind
-          when 'comment_destroyed'
-            if comment = Records.comments.find(data.memo.data.comment_id)
-              comment.destroy()
       Records.import(data)
 
 subscribeToUser = ->
