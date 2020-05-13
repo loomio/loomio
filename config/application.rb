@@ -103,16 +103,26 @@ module Loomio
 
     if ENV['SMTP_SERVER']
       config.action_mailer.delivery_method = :smtp
-      config.action_mailer.smtp_settings = {
-        address: ENV['SMTP_SERVER'],
-        port: ENV['SMTP_PORT'],
-        authentication: ENV['SMTP_AUTH'],
-        user_name: ENV['SMTP_USERNAME'],
-        password: ENV['SMTP_PASSWORD'],
-        domain: ENV['SMTP_DOMAIN'],
-        ssl: ENV['SMTP_USE_SSL'],
-        openssl_verify_mode: ENV.fetch('SMTP_SSL_VERIFY_MODE', 'none')
-      }.compact
+      if ENV['SMTP_AUTH']
+        config.action_mailer.smtp_settings = {
+          address: ENV['SMTP_SERVER'],
+          port: ENV['SMTP_PORT'],
+          authentication: ENV['SMTP_AUTH'],
+          user_name: ENV['SMTP_USERNAME'],
+          password: ENV['SMTP_PASSWORD'],
+          domain: ENV['SMTP_DOMAIN'],
+          ssl: ENV['SMTP_USE_SSL'],
+          openssl_verify_mode: ENV.fetch('SMTP_SSL_VERIFY_MODE', 'none')
+        }.compact
+      else
+        config.action_mailer.smtp_settings = {
+          address: ENV['SMTP_SERVER'],
+          port: ENV['SMTP_PORT'],
+          domain: ENV['SMTP_DOMAIN'],
+          ssl: ENV['SMTP_USE_SSL'],
+          openssl_verify_mode: ENV.fetch('SMTP_SSL_VERIFY_MODE', 'none')
+        }.compact
+      end
     else
       config.action_mailer.delivery_method = :test
     end
