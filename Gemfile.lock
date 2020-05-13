@@ -281,6 +281,12 @@ GEM
       activerecord
       kaminari-core (= 1.2.0)
     kaminari-core (1.2.0)
+    kt-paperclip (6.2.2)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      mime-types
+      mimemagic (~> 0.3.0)
+      terrapin (~> 0.6.0)
     loofah (2.5.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -313,12 +319,6 @@ GEM
     paper_trail (10.3.1)
       activerecord (>= 4.2)
       request_store (~> 1.1)
-    paperclip (6.1.0)
-      activemodel (>= 4.2.0)
-      activesupport (>= 4.2.0)
-      mime-types
-      mimemagic (~> 0.3.0)
-      terrapin (~> 0.6.0)
     pg (1.2.3)
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
@@ -546,13 +546,13 @@ DEPENDENCIES
   httparty (~> 0.18.0)
   icalendar
   image_processing (~> 1.10)
+  kt-paperclip
   maxminddb
   mini_magick
   newrelic_rpm
   nokogiri
   oj
   paper_trail (~> 10.3.1)
-  paperclip (~> 6.1.0)
   pg
   premailer-rails
   puma
@@ -589,7 +589,7 @@ DEPENDENCIES
   webmock
 
 RUBY VERSION
-   ruby 2.6.6p146
+   ruby 2.7.1p83
 
 BUNDLED WITH
    2.1.4
