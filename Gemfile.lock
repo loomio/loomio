@@ -1,15 +1,4 @@
 GIT
-  remote: https://github.com/kreeti/kt-paperclip
-  revision: 2f8aef813bcfbec82bf28d64d3d13909646bfc44
-  specs:
-    kt-paperclip (6.2.2)
-      activemodel (>= 4.2.0)
-      activesupport (>= 4.2.0)
-      mime-types
-      mimemagic (~> 0.3.0)
-      terrapin (~> 0.6.0)
-
-GIT
   remote: https://github.com/loomio/custom_counter_cache.git
   revision: 7a4ed2c70c6a00cbee468d81295bdb3d4a86f2a7
   branch: rails5
@@ -292,6 +281,12 @@ GEM
       activerecord
       kaminari-core (= 1.2.0)
     kaminari-core (1.2.0)
+    kt-paperclip (6.2.2)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      mime-types
+      mimemagic (~> 0.3.0)
+      terrapin (~> 0.6.0)
     loofah (2.5.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -551,7 +546,7 @@ DEPENDENCIES
   httparty (~> 0.18.0)
   icalendar
   image_processing (~> 1.10)
-  kt-paperclip!
+  kt-paperclip
   maxminddb
   mini_magick
   newrelic_rpm
