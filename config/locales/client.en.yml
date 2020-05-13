@@ -2037,6 +2037,7 @@ en:
     event_kind_helptext: Which events do you want to be notified of?
     event_kinds:
       new_discussion: A new thread is started
+      discussion_edited: A thread title or context is updated
       new_comment: A new comment has been made
       poll_created: A poll is created
       stance_created: A new vote has been cast
