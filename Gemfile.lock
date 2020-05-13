@@ -1,4 +1,15 @@
 GIT
+  remote: https://github.com/kreeti/kt-paperclip
+  revision: 2f8aef813bcfbec82bf28d64d3d13909646bfc44
+  specs:
+    kt-paperclip (6.2.2)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      mime-types
+      mimemagic (~> 0.3.0)
+      terrapin (~> 0.6.0)
+
+GIT
   remote: https://github.com/loomio/custom_counter_cache.git
   revision: 7a4ed2c70c6a00cbee468d81295bdb3d4a86f2a7
   branch: rails5
@@ -313,12 +324,6 @@ GEM
     paper_trail (10.3.1)
       activerecord (>= 4.2)
       request_store (~> 1.1)
-    paperclip (6.1.0)
-      activemodel (>= 4.2.0)
-      activesupport (>= 4.2.0)
-      mime-types
-      mimemagic (~> 0.3.0)
-      terrapin (~> 0.6.0)
     pg (1.2.3)
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
@@ -546,13 +551,13 @@ DEPENDENCIES
   httparty (~> 0.18.0)
   icalendar
   image_processing (~> 1.10)
+  kt-paperclip!
   maxminddb
   mini_magick
   newrelic_rpm
   nokogiri
   oj
   paper_trail (~> 10.3.1)
-  paperclip (~> 6.1.0)
   pg
   premailer-rails
   puma
