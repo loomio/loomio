@@ -13,7 +13,7 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
              :title
 
   def icon_url
-    url = object.eventable.group.logo.url(:medium)
+    url = object.eventable.group.logo.variant(resize: "100x100#")
     if url.starts_with?('http')
       url
     else

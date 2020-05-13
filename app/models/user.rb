@@ -49,16 +49,7 @@ class User < ApplicationRecord
   validates :legal_accepted,     presence: true, if: :require_legal_accepted
   validate  :validate_recaptcha,                 if: :require_recaptcha
 
-  has_attached_file :uploaded_avatar,
-    styles: {
-      small:  "#{AVATAR_SIZES[:small]}x#{AVATAR_SIZES[:small]}#",
-      medium: "#{AVATAR_SIZES[:medium]}x#{AVATAR_SIZES[:medium]}#",
-      large:  "#{AVATAR_SIZES[:large]}x#{AVATAR_SIZES[:large]}#",
-    }
-
-  validates_attachment :uploaded_avatar,
-    size: { in: 0..MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
-    content_type: { content_type: /\Aimage/ }
+  has_one_attached :uploaded_avatar
 
   validates_uniqueness_of :email, conditions: -> { where(email_verified: true) }, if: :email_verified?
   validates_uniqueness_of :username, if: :email_verified

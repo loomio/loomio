@@ -124,25 +124,18 @@ class Group < ApplicationRecord
   delegate :slack_team_name, to: :slack_identity, allow_nil: true
   delegate :slack_channel_name, to: :slack_identity, allow_nil: true
 
-  has_attached_file    :cover_photo,
-                       url: "/system/groups/:attachment/:id_partition/:style/:filename",
-                       styles: {largedesktop: "1400x320#", desktop: "970x200#", card: "460x94#"},
-                       default_url: :default_cover_photo
-  has_attached_file    :logo,
-                       url: "/system/groups/:attachment/:id_partition/:style/:filename",
-                       styles: { card: "67x67#", medium: "100x100#" },
-                       default_url: AppConfig.theme[:icon_src]
+  has_one_attached :cover_photo
+  has_one_attached :logo
 
-  validates_attachment :cover_photo,
-    size: { in: 0..100.megabytes },
-    content_type: { content_type: /\Aimage/ },
-    file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
-
-  validates_attachment :logo,
-    size: { in: 0..100.megabytes },
-    content_type: { content_type: /\Aimage/ },
-    file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
-
+  # has_attached_file    :cover_photo,
+  #                      url: "/system/groups/:attachment/:id_partition/:style/:filename",
+  #                      styles: {largedesktop: "1400x320#", desktop: "970x200#", card: "460x94#"},
+  #                      default_url: :default_cover_photo
+  # has_attached_file    :logo,
+  #                      url: "/system/groups/:attachment/:id_partition/:style/:filename",
+  #                      styles: { card: "67x67#", medium: "100x100#" },
+  #                      default_url: AppConfig.theme[:icon_src]
+  
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
   before_validation :ensure_handle_is_not_empty
 

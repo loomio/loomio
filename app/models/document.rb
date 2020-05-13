@@ -9,14 +9,7 @@ class Document < ApplicationRecord
 
   before_save :set_group_id
 
-  has_attached_file :file, styles: lambda { |f|
-    if f.instance.is_an_image?
-      { thumb: '100x100#', web: '600x>' }
-    else
-      {}
-    end
-  }
-  do_not_validate_attachment_file_type :file
+  has_one_attached :file
   after_create :set_initial_url
 
   scope :search_for, ->(query) {
@@ -33,14 +26,6 @@ class Document < ApplicationRecord
 
   [:group, :discussion, :poll].map do |model_type|
     define_method model_type, -> { self.model.send(model_type) if self.model.respond_to?(model_type) }
-  end
-
-  def sync_urls!
-    update(
-      url:       file.url,
-      web_url:   (file.url(:web) if is_an_image?),
-      thumb_url: (file.url(:thumb) if is_an_image?)
-    ) unless manual_url?
   end
 
   def is_an_image?

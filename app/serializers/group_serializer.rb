@@ -130,7 +130,7 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def logo_url_medium
-    object.logo.url(:medium)
+    object.logo.variant(resize: "100x100#")
   end
 
   def include_logo_url_medium?
@@ -139,10 +139,10 @@ class GroupSerializer < ApplicationSerializer
 
   def cover_urls
     {
-      small:      cover_photo.url(:desktop),
-      medium:     cover_photo.url(:largedesktop),
-      large:      cover_photo.url(:largedesktop),
-      extralarge: cover_photo.url(:largedesktop)
+      small:      cover_photo.url.variant(resize: "970x200#"),
+      medium:     cover_photo.url.variant(resize: "1400x320#"),
+      large:      cover_photo.url.variant(resize: "1400x320#"),
+      extralarge: cover_photo.url.variant(resize: "1400x320#")
     }
   end
 

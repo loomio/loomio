@@ -2,7 +2,7 @@
   %tr
     %td
       - if logo = discussion.group.logo_or_parent_logo.presence
-        %img.poll-mailer-common-avatar__image{src: asset_url(logo.url(:card))}
+        %img.poll-mailer-common-avatar__image{src: asset_url(logo.variant(resize: "100x100#"))}
       - else
         %img.poll-mailer-common-avatar__image{src: asset_url(AppConfig.theme[:icon_src])}
     %td

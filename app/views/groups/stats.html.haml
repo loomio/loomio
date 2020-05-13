@@ -3,7 +3,7 @@
     .container.max-width-1024
       .v-responsive.v-image{:style => "border-radius: 8px;"}
         .v-responsive__sizer{:style => "padding-bottom: 20.4082%;"}
-        .v-image__image.v-image__image--cover{:style => "background-image: url(#{@group.cover_photo.url(:largedesktop)}); background-position: center center;"}
+        .v-image__image.v-image__image--cover{:style => "background-image: url(#{@group.cover_photo.variant(resize: "1400x320#")}); background-position: center center;"}
       %h1.display-1.my-4
         %span.group-page__name.mr-4= @group.full_name
       %hr.mt-4.v-divider.theme--light{"aria-orientation" => "horizontal", :role => "separator"}/

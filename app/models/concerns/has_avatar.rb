@@ -36,7 +36,7 @@ module HasAvatar
   def avatar_url(size = :medium)
     case avatar_kind.to_sym
     when :gravatar then gravatar_url(size: AVATAR_SIZES[size])
-    when :uploaded then uploaded_avatar.url(size)
+    when :uploaded then uploaded_avatar.variant(resize: "#{size}x#{size}")
     end
   end
 
