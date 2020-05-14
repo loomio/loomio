@@ -15,7 +15,6 @@ describe Group do
 
     it 'returns the default cover photo for the group' do
       group = create :group
-      byebug
       expect(group.cover_urls[:small]).to include "default_group_cover.png"
     end
 
