@@ -35,7 +35,7 @@ class API::ProfileController < API::RestfulController
   end
 
   def update_profile
-    service.update(current_user_params)
+    service.update(**current_user_params)
     respond_with_resource
   end
 
@@ -50,7 +50,7 @@ class API::ProfileController < API::RestfulController
   end
 
   def deactivate
-    service.deactivate(current_user_params)
+    service.deactivate(**current_user_params)
     respond_with_resource
   end
 

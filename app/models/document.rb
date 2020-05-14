@@ -10,7 +10,6 @@ class Document < ApplicationRecord
   before_save :set_group_id
 
   has_one_attached :file
-  after_create :set_initial_url
 
   scope :search_for, ->(query) {
     if query.present?
@@ -44,13 +43,6 @@ class Document < ApplicationRecord
 
   def set_group_id
     self.group_id = model.group_id if model && model.respond_to?(:group_id)
-  end
-
-  # need this to save model with upload correctly and get metadata,
-  # we'll set the finalized path later in set_final_urls
-  def set_initial_url
-    self.url = file.url unless manual_url?
-    self.save!
   end
 
   def set_metadata

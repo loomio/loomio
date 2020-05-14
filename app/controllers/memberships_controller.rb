@@ -29,7 +29,7 @@ class MembershipsController < ApplicationController
 
   def back_to_url
     @back_to_url ||= begin
-      url = URI.unescape params[:back_to].to_s
+      url = CGI.unescape params[:back_to].to_s
       url if url.match(/^http[s]?:\/\/#{ENV['CANONICAL_HOST']}/)
     end
   end

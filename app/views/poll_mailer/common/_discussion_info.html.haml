@@ -1,10 +1,7 @@
 %table.poll-mailer-common__discussion-info
   %tr
     %td
-      - if logo = discussion.group.logo_or_parent_logo.presence
-        %img.poll-mailer-common-avatar__image{src: asset_url(logo.variant(resize: "100x100#"))}
-      - else
-        %img.poll-mailer-common-avatar__image{src: asset_url(AppConfig.theme[:icon_src])}
+      %img.poll-mailer-common-avatar__image{src: asset_url(discussion.group.logo_urls[:small])}
     %td
       = link_to discussion.group.full_name, target_url(args: {back_to: group_url(discussion.group)}, poll: poll, recipient: recipient)
       %span -

@@ -62,7 +62,6 @@ class Group < ApplicationRecord
   has_one :saml_provider, required: false, foreign_key: :group_id
   has_one :group_survey, required: false, foreign_key: :group_id
 
-  belongs_to :default_group_cover
   belongs_to :subscription
 
   has_many :subgroups,
@@ -127,17 +126,40 @@ class Group < ApplicationRecord
   has_one_attached :cover_photo
   has_one_attached :logo
 
-  # has_attached_file    :cover_photo,
-  #                      url: "/system/groups/:attachment/:id_partition/:style/:filename",
-  #                      styles: {largedesktop: "1400x320#", desktop: "970x200#", card: "460x94#"},
-  #                      default_url: :default_cover_photo
-  # has_attached_file    :logo,
-  #                      url: "/system/groups/:attachment/:id_partition/:style/:filename",
-  #                      styles: { card: "67x67#", medium: "100x100#" },
-  #                      default_url: AppConfig.theme[:icon_src]
-  
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
   before_validation :ensure_handle_is_not_empty
+
+  def logo_urls
+    if parent_or_self.logo.attached?
+      {
+        small: variant_path(parent_or_self.logo.variant(resize: "256x256#")),
+        medium: variant_path(parent_or_self.logo.variant(resize: "512x512#")),
+        large: variant_path(parent_or_self.logo.variant(resize: "1024x1024#"))
+      }
+    else
+      {
+        small: AppConfig.theme[:icon_src],
+        medium: AppConfig.theme[:icon_src],
+        large: AppConfig.theme[:icon_src]
+      }
+    end
+  end
+
+  def cover_urls
+    if parent_or_self.cover_photo.attached?
+      {
+        small: variant_path(parent_or_self.cover_photo.variant(resize: "970x200#")),
+        medium: variant_path(parent_or_self.cover_photo.variant(resize: "1400x320#")),
+        large: variant_path(parent_or_self.cover_photo.variant(resize: "1400x320#"))
+      }
+    else
+      {
+        small: AppConfig.theme[:default_group_cover_src],
+        medium: AppConfig.theme[:default_group_cover_src],
+        large: AppConfig.theme[:default_group_cover_src]
+      }
+    end
+  end
 
   def discussion_id
     nil
@@ -193,26 +215,6 @@ class Group < ApplicationRecord
 
   def ensure_handle_is_not_empty
     self.handle = nil if self.handle.to_s.strip == ""
-  end
-
-  def logo_or_parent_logo
-    if is_parent?
-      logo
-    else
-      logo.presence || parent.logo
-    end
-  end
-
-  # default_cover_photo is the name of the proc used to determine the url for the default cover photo
-  # default_group_cover is the associated DefaultGroupCover object from which we get our default cover photo
-  def default_cover_photo
-    if is_subgroup?
-      self.parent.default_cover_photo
-    elsif self.default_group_cover
-      /^.*(?=\?)/.match(self.default_group_cover.cover_photo.url).to_s
-    else
-      AppConfig.theme[:default_group_cover_src]
-    end
   end
 
   def archive!
@@ -282,6 +284,9 @@ class Group < ApplicationRecord
   end
 
   private
+  def variant_path(variant)
+    Rails.application.routes.url_helpers.rails_representation_path(variant, only_path: true)
+  end
 
   def handle_is_valid
     self.handle = nil if self.handle.to_s.strip == "" || (is_subgroup? && parent.handle.nil?)
