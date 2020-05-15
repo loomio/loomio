@@ -132,9 +132,9 @@ class Group < ApplicationRecord
   def logo_urls
     if parent_or_self.logo.attached?
       {
-        small: variant_path(parent_or_self.logo.variant(resize: "256x256#")),
-        medium: variant_path(parent_or_self.logo.variant(resize: "512x512#")),
-        large: variant_path(parent_or_self.logo.variant(resize: "1024x1024#"))
+        small: variant_path(parent_or_self.logo.variant(resize: "256x256")),
+        medium: variant_path(parent_or_self.logo.variant(resize: "512x512")),
+        large: variant_path(parent_or_self.logo.variant(resize: "1024x1024"))
       }
     else
       {
@@ -148,9 +148,9 @@ class Group < ApplicationRecord
   def cover_urls
     if parent_or_self.cover_photo.attached?
       {
-        small: variant_path(parent_or_self.cover_photo.variant(resize: "970x200#")),
-        medium: variant_path(parent_or_self.cover_photo.variant(resize: "1400x320#")),
-        large: variant_path(parent_or_self.cover_photo.variant(resize: "1400x320#"))
+        small: variant_path(parent_or_self.cover_photo.variant(resize: "970x200")),
+        medium: variant_path(parent_or_self.cover_photo.variant(resize: "1400x320")),
+        large: variant_path(parent_or_self.cover_photo.variant(resize: "1400x320"))
       }
     else
       {
