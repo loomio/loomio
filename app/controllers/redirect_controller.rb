@@ -14,6 +14,6 @@ class RedirectController < ApplicationController
   private
 
   def redirect(model: action_name, to: ModelLocator.new(model, params).locate)
-    redirect_to send(:"#{model}_url", to, status: :moved_permanently)
+    redirect_to send(:"#{model}_url", to), status: :moved_permanently
   end
 end
