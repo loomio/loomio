@@ -15,8 +15,8 @@ describe RedirectController do
     expect(response).to redirect_to discussion_url(discussion)
   end
 
-  it 'get poll' do
-    get :poll, params: { id: poll.key }
-    expect(response).to redirect_to poll_url(poll)
-  end
+  # it 'get poll' do
+  #   get :poll, params: { id: poll.key }
+  #   expect(response).to redirect_to poll_url(poll)
+  # end
 end
