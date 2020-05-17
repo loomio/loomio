@@ -187,14 +187,6 @@ ActiveAdmin.register Group, as: 'Group' do
       end
     end
 
-    panel 'Set handle / subdomain' do
-      form action: handle_admin_group_path(group), method: :post do |f|
-        f.label "Handle"
-        f.input name: :handle, value: group.handle
-        f.input type: :submit, value: "Set handle"
-      end
-    end
-
     render 'delete_group', { group: group }
     render 'export_group', { group: group }
   end
