@@ -28,7 +28,7 @@ gem 'httparty', '~> 0.18.0'
 gem 'browser', '~> 4.1.0'
 gem "aws-sdk-s3", require: false
 gem 'mini_magick'
-gem 'image_processing', '~> 1.10'
+gem 'image_processing', '~> 1.11'
 gem "sentry-raven"
 gem 'sequenced', '~> 3.2.0'
 gem 'http_accept_language'
