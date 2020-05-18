@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 ruby '2.6.6'
 gem 'rack', '2.0.8'
-gem 'rails', '5.2.4.2'
+gem 'rails', '5.2.4.3'
 gem 'actioncable'
 gem 'rake'
 gem 'pg'
