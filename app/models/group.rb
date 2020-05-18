@@ -242,6 +242,11 @@ class Group < ApplicationRecord
     Membership.active.where(group_id: id_and_subgroup_ids).count('distinct user_id')
   end
 
+  def org_active_members_by_event_last_30_days_count
+    member_ids = Membership.active.where(group_id: id_and_subgroup_ids).pluck(:user_id).uniq.compact
+    Event.where(user_id: member_ids).where('created_at > ?', 30.days.ago).count('distinct user_id')
+  end
+
   def org_discussions_count
     Group.where(id: id_and_subgroup_ids).sum(:discussions_count)
   end
