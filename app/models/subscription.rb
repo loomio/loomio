@@ -21,7 +21,7 @@ class Subscription < ApplicationRecord
   end
 
   def calculate_members_count
-    if ['active-monthly', 'active-annual', 'active-community-annual'].include? self.plan
+    if ['ap-active-monthly', 'ap-active-annual', 'ap-active-community'].include? self.plan
       calculate_active_members_last_30_days_count
     else
       Group.where(subscription_id: self.id).map(&:org_members_count).sum
