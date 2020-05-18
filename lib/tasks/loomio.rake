@@ -48,9 +48,15 @@ namespace :loomio do
   end
 
   task update_subscription_members_counts: :environment do
+    # run only once a month
+    if Date.today.day == 1
+      SubscriptionService.delay.update_changed_members_counts(['active-monthly', 'active-annual', 'active-community-annual']) 
+    end
+    # run only once a week on wednesday
     if Date.today.wday == 3
       SubscriptionService.delay.update_changed_members_counts(['pp-basic-annual', 'pp-pro-annual', 'pp-community-annual'])
     end
+    # run daily
     SubscriptionService.delay.update_changed_members_counts(['pp-basic-monthly', 'pp-pro-monthly'])
   end
 

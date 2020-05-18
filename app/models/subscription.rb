@@ -21,6 +21,20 @@ class Subscription < ApplicationRecord
   end
 
   def calculate_members_count
-    Group.where(subscription_id: self.id).map(&:org_members_count).sum
+    if ['active-monthly', 'active-annual', 'active-community-annual'].include? self.plan
+      calculate_active_members_last_30_days_count
+    else
+      Group.where(subscription_id: self.id).map(&:org_members_count).sum
+    end
   end
+
+  def calculate_active_members_last_30_days_count
+    Group.where(subscription_id: self.id, parent_id: nil).map { |parent_group| calculate_active_members_last_30_days_count_for(parent_group) }.sum
+  end
+
+  def calculate_active_members_last_30_days_count_for(parent_group)
+    member_ids = Membership.active.where(group_id: parent_group.id_and_subgroup_ids).pluck(:user_id).uniq.compact
+    Event.where(user_id: member_ids).where('created_at > ?', 30.days.ago).count('distinct user_id')
+  end
+
 end
