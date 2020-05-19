@@ -22,14 +22,14 @@ class Subscription < ApplicationRecord
 
   def calculate_members_count
     if ['ap-active-monthly', 'ap-active-annual', 'ap-community-annual'].include? self.plan
-      calculate_active_members_last_30_days_count
+      calculate_active_members_since_last_renewal_date_count
     else
       Group.where(subscription_id: self.id).map(&:org_members_count).sum
     end
   end
 
-  def calculate_active_members_last_30_days_count
-    Group.where(subscription_id: self.id).map(&:org_active_members_by_event_last_30_days_count).sum
+  def calculate_active_members_since_last_renewal_date_count
+    Group.where(subscription_id: self.id).map(&:org_active_members_by_event_since_last_renewal_count).sum
   end
 
 end
