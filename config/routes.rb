@@ -28,12 +28,6 @@ Loomio::Application.routes.draw do
 
   mount ActionCable.server => '/cable'
 
-  constraints(GroupSubdomainConstraints) do
-    get '/',              to: 'redirect#subdomain'
-    get '/d/:id(/:slug)', to: 'redirect#discussion'
-    get '/g/:id(/:slug)', to: 'redirect#group'
-    get '/p/:id(/:slug)', to: 'redirect#poll'
-  end
   get '/discussions/:id', to: 'redirect#discussion'
   get '/groups/:id',      to: 'redirect#group'
 

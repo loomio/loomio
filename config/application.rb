@@ -109,7 +109,6 @@ module Loomio
     }.compact
 
     config.action_mailer.asset_host = lmo_asset_host
-    config.action_dispatch.tld_length = (ENV['TLD_LENGTH'] || 1).to_i
 
     config.action_controller.include_all_helpers = false
 
