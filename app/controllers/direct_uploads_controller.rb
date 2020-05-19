@@ -10,10 +10,10 @@ class DirectUploadsController < ActiveStorage::DirectUploadsController
         headers: blob.service_headers_for_direct_upload
     })
 
-    json.merge!(download_url: url_for(blob))
+    json.merge!(download_url: url_for(blob, only_path: true))
 
     if blob.representable?
-      json.merge!(preview_url: rails_representation_url(blob.representation(HasRichText::PREVIEW_OPTIONS)))
+      json.merge!(preview_url: rails_representation_url(blob.representation(HasRichText::PREVIEW_OPTIONS), only_path: true))
     end
     json
   end
