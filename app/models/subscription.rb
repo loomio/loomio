@@ -28,8 +28,8 @@ class Subscription < ApplicationRecord
     end
   end
 
-  def calculate_active_members_since_last_renewal_date_count
-    Group.where(subscription_id: self.id).map(&:org_active_members_by_event_since_last_renewal_count).sum
+  def calculate_active_members_since_renewal
+    Group.where(subscription_id: self.id).map(&:org_active_members_by_event_since_renewal).sum
   end
 
 end

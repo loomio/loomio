@@ -242,7 +242,7 @@ class Group < ApplicationRecord
     Membership.active.where(group_id: id_and_subgroup_ids).count('distinct user_id')
   end
 
-  def org_active_members_by_event_since_last_renewal_count
+  def org_active_members_by_event_since_renewal
     member_ids = Membership.active.where(group_id: id_and_subgroup_ids).pluck(:user_id).uniq.compact
     renewed_at = subscription.renewed_at ? subscription.renewed_at - 1.day : created_at
     renews_at = subscription.renews_at - 1.day
