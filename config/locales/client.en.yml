@@ -2036,15 +2036,17 @@ en:
     name_placeholder: Give this webhook a name so you can identify it later on
     event_kind_helptext: Which events do you want to be notified of?
     event_kinds:
-      new_discussion: A new thread is started
-      new_comment: A new comment has been made
-      poll_created: A poll is created
-      stance_created: A new vote has been cast
+      new_discussion: A thread is started
+      discussion_edited: A thread is edited
+      poll_edited: A poll is edited
+      new_comment: A comment is made
+      poll_created: A poll is started
+      stance_created: A vote is cast
       poll_closing_soon: A poll is expiring soon
-      poll_expired: A poll has expired
-      poll_closed_by_user: A poll is closed before it's deadline
+      poll_expired: A poll expires
+      poll_closed_by_user: A poll is closed manually
       poll_reopened: A poll is re-opened for voting
-      outcome_created: An outcome has been shared
+      outcome_created: An outcome is shared
     include_body_label: Include message body with notification
     include_subgroups_label: Relay events from subgroups
 

@@ -10,7 +10,8 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
              :group_name,
              :actor_name,
              :poll_type,
-             :title
+             :title,
+             :attachments
 
   def icon_url
     url = object.eventable.group.logo.url(:medium)
@@ -19,6 +20,10 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
     else
       "https://#{ENV['CANONICAL_HOST']}#{url}"
     end
+  end
+
+  def attachments
+    object.eventable.attachments
   end
 
   def username
