@@ -2,6 +2,7 @@
 - discussion_edited
 - new_comment
 - poll_created
+- poll_edited
 - poll_closing_soon
 - poll_expired
 - poll_closed_by_user
