@@ -21,8 +21,9 @@ class Subscription < ApplicationRecord
   end
 
   def calculate_members_count
+    # TODO: this won't be true for the annual plans. we'll need to calculate the counts differently
     if ['ap-active-monthly', 'ap-active-annual', 'ap-community-annual'].include? self.plan
-      calculate_active_members_since_last_renewal_date_count
+      calculate_active_members_since_renewal
     else
       Group.where(subscription_id: self.id).map(&:org_members_count).sum
     end
