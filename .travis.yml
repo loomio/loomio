@@ -35,7 +35,6 @@ env:
     - FEATURES_GROUP_SSO=1
   matrix:
     - TASK=rspec
-    - TASK=plugins
     - TASK=vue
 
 before_install:
@@ -51,14 +50,12 @@ before_script:
   - cp config/database.yml.$DB config/database.yml
   - createdb loomio_test
   - bundle exec rake db:setup
-  - if [ "$TASK" = "plugins" ]; then bundle exec rake plugins:fetch plugins:install; fi
   - if [ "$TASK" = "vue" ]; then bundle exec rails server -b 0.0.0.0 > log/server.log & fi
   - cd vue && npm run build && cd ..
   - if [ "$TASK" = "vue" ]; then wget http://localhost:3000/; fi
 
 script:
   - if [ "$TASK" = "rspec" ];   then bundle exec rspec; fi
-  - if [ "$TASK" = "plugins" ]; then bundle exec rspec plugins; fi
   - if [ "$TASK" = "vue" ];     then cd vue && npm run test:e2e:standalone && cd .. ;  fi
 
 after_script:
