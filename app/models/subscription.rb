@@ -19,18 +19,4 @@ class Subscription < ApplicationRecord
     # allow groups in dunning or on hold to continue using the app
     self.state == 'active' or self.state == 'past_due' or self.state == 'on_hold' or (self.state == 'trialing' && self.expires_at > Time.current)
   end
-
-  def calculate_members_count
-    # TODO: this won't be true for the annual plans. we'll need to calculate the counts differently
-    if ['ap-active-monthly', 'ap-active-annual', 'ap-community-annual'].include? self.plan
-      calculate_active_members_since_renewal
-    else
-      Group.where(subscription_id: self.id).map(&:org_members_count).sum
-    end
-  end
-
-  def calculate_active_members_since_renewal
-    Group.where(subscription_id: self.id).map(&:org_active_members_by_event_since_renewal).sum
-  end
-
 end
