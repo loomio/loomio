@@ -52,7 +52,8 @@ before_script:
   - createdb loomio_test
   - bundle exec rake db:setup
   - if [ "$TASK" = "plugins" ]; then bundle exec rake plugins:fetch plugins:install; fi
-  - if [ "$TASK" = "vue" ]; then bundle exec rails server -b 0.0.0.0 > log/server.log & fi
+  # - if [ "$TASK" = "vue" ]; then bundle exec rails server -b 0.0.0.0 > log/server.log & fi
+  - if [ "$TASK" = "vue" ]; then bundle exec rails server -b 0.0.0.0 &
   - cd vue && npm run build && cd ..
   - if [ "$TASK" = "vue" ]; then wget http://localhost:3000/; fi
 
