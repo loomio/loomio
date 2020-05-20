@@ -1,9 +1,8 @@
 .base-mailer__avatar
   - if user
-    = link_to user_url(user) do
-      - if user.avatar_url(:medium)
-        = image_tag user.avatar_url(:medium), alt: "#{user.name}", class: "base-mailer__avatar-image"
-      - else
-        .base-mailer__avatar-initials= user.avatar_initials
+    - if user.avatar_url(:medium)
+      = image_tag user.avatar_url(:medium), alt: "#{user.name}", class: "base-mailer__avatar-image"
+    - else
+      .base-mailer__avatar-initials= user.avatar_initials
   - else
     .base-mailer__avatar-initials 👤
