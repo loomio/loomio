@@ -10,9 +10,6 @@ export default
   methods:
     snakify: (setting) ->
       _snakeCase setting
-  watch:
-    'poll.anonymous': (val) ->
-      @settings = settingsFor @poll
 </script>
 
 <template lang="pug">

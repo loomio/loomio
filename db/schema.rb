@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_11_213014) do
+ActiveRecord::Schema.define(version: 2020_05_21_082353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -638,7 +638,7 @@ ActiveRecord::Schema.define(version: 2020_05_11_213014) do
 
   create_table "stances", id: :serial, force: :cascade do |t|
     t.integer "poll_id", null: false
-    t.integer "participant_id", null: false
+    t.integer "participant_id"
     t.string "reason"
     t.boolean "latest", default: true, null: false
     t.datetime "created_at"

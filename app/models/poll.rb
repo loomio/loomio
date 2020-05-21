@@ -101,10 +101,13 @@ class Poll < ApplicationRecord
   validate :closes_in_future
   validate :require_custom_fields
   validate :discussion_group_is_poll_group
+  validate :cannot_deanonymize
 
   alias_method :user, :author
 
-  has_paper_trail only: [:title, :details, :closing_at, :group_id]
+  has_paper_trail only: [:title, :details, :details_format, :closing_at,
+    :group_id, :anonymous, :voter_can_add_options, :anyone_can_participate,
+    :notify_on_participate]
 
   def self.always_versioned_fields
     [:title, :details]
@@ -281,6 +284,12 @@ class Poll < ApplicationRecord
   end
 
   private
+
+  def cannot_deanonymize
+    if anonymous_changed? && anonymous_was == true
+      errors.add :anonymous, :cannot_deanonymize
+    end
+  end
 
   # provides a base hash of 0's to merge with stance data
   def zeroed_poll_options

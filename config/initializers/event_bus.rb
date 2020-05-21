@@ -69,10 +69,6 @@ EventBus.configure do |config|
                 'poll_destroy',
                 'poll_expire') { |model| model.discussion&.update_importance }
 
-  # de-anonymize polls after close
-  config.listen('poll_close') { |poll| poll.update(anonymous: false) if poll.deanonymize_after_close }
-
-
   # collect user deactivation response
   config.listen('user_deactivate') { |user, actor, params| UserDeactivationResponse.create(user: user, body: params[:deactivation_response]) }
 

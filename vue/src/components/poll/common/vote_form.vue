@@ -50,7 +50,7 @@ export default
 <template lang="pug">
 .poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value="stance.processing")
-  poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
+  .poll-common-action-panel__anonymous-message.pb-3.caption(v-t="'poll_common_action_panel.anonymous'" v-if='stance.poll().anonymous')
   span(v-if="debug") {{stance}}
   v-layout(wrap)
     v-layout.mb-4(justify-space-around v-for='(optionGroup, index) in optionGroups' :key="index")

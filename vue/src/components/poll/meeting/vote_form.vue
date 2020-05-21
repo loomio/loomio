@@ -85,7 +85,7 @@ export default
 <template lang='pug'>
 form.poll-meeting-vote-form(@submit.prevent='submit()')
   h3.lmo-card-subheading.lmo-flex__grow(v-t="'poll_meeting_vote_form.your_response'")
-  poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
+  .poll-common-action-panel__anonymous-message.pb-3.caption(v-t="'poll_common_action_panel.anonymous'" v-if='stance.poll().anonymous')
   p(v-t="{path: 'poll_meeting_vote_form.local_time_zone', args: {zone: currentUserTimeZone}}")
   .poll-common-vote-form__options
     //- h3.lmo-h3.poll-meeting-vote-form--box(v-t="'poll_meeting_vote_form.can_attend'")

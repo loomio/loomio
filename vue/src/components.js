@@ -78,7 +78,6 @@ module.exports = {
   PollProposalCompleteForm: 'poll/proposal/complete_form',
   PollCommonActionPanel: 'poll/common/action_panel',
   PollCommonAddOptionButton: 'poll/common/add_option_button',
-  PollCommonAnonymousHelptext: 'poll/common/anonymous_helptext',
   PollCommonBarChart: 'poll/common/bar_chart',
   PollCommonBarChartPanel: 'poll/common/bar_chart_panel',
   PollCommonCalendarInvite: 'poll/common/calendar_invite',
