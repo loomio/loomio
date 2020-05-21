@@ -60,7 +60,6 @@ class Stance < ApplicationRecord
   validate :participant_is_complete
   validates :reason, length: { maximum: 500 }
 
-  delegate :locale,         to: :author
   delegate :group,          to: :poll, allow_nil: true
   delegate :mailer,         to: :poll, allow_nil: true
   delegate :group_id,       to: :poll
@@ -69,6 +68,10 @@ class Stance < ApplicationRecord
   delegate :title,          to: :poll
 
   alias :author :participant
+
+  def locale
+    author&.locale || group&.locale
+  end
 
   def body
     reason
