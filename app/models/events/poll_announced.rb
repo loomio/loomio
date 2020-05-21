@@ -19,6 +19,6 @@ class Events::PollAnnounced < Event
   end
 
   def notification_recipients
-    User.active.joins(:stances).where('stances.id IN (?)', custom_fields['stance_ids'])
+    User.active.distinct.joins(:stances).where('stances.id IN (?)', custom_fields['stance_ids'])
   end
 end
