@@ -7,7 +7,7 @@ module GroupExportRelations
     has_many :tags
     # polls
     has_many :discussion_polls, through: :discussions
-    has_many :exportable_polls, -> { where anonymous: false }, class_name: 'Poll', foreign_key: :group_id
+    has_many :exportable_polls, -> { where("anonymous = false OR closed_at is not null") }, class_name: 'Poll', foreign_key: :group_id
 
     has_many :exportable_poll_options,          through: :exportable_polls, source: :poll_options
     has_many :exportable_poll_unsubscriptions,  through: :exportable_polls, source: :poll_unsubscriptions
