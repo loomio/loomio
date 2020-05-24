@@ -7,7 +7,7 @@
 
 - user = AnonymousUser.new if user.nil?
 
-.v-avatar{:href => user_url(user), :title => user.name, :style => style}
+.v-avatar{:title => user.name, :style => style}
   - if user.avatar_url(size)
     = image_tag user.avatar_url(size), alt: user.name
   - else
