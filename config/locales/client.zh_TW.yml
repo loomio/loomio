@@ -1754,6 +1754,7 @@ zh_TW:
     stance_created: 已記錄選擇
     stance_updated: 已更新選擇
   thread_item:
+    removed: "項目已移除"
     comment_replied_to: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> 在回覆 <strong>{{title}}</strong>"
     discussion_title_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> 已編輯討論串標題"
     discussion_context_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> 編輯了討論內容"
@@ -1871,13 +1872,15 @@ zh_TW:
     name_placeholder: 給這個 webhook 一個名稱，這樣您就可以在稍後識別它
     event_kind_helptext: 您想要哪些活動發出通知？
     event_kinds:
-      new_discussion: 開始新討論串
-      new_comment: 有新的留言
-      poll_created: 建立投票
-      stance_created: 進行新投票
+      new_discussion: 討論串已啟動
+      discussion_edited: 討論串已編輯
+      poll_edited: 投票已編輯
+      new_comment: 已留言
+      poll_created: 投票已啟動
+      stance_created: 投票了
       poll_closing_soon: 快過期的投票
-      poll_expired: 投票已過期
-      poll_closed_by_user: 投票在其截止時間前關閉
+      poll_expired: 投票過期
+      poll_closed_by_user: 投票被手動關閉
       poll_reopened: 重新開始投票
       outcome_created: 已分享結果
     include_body_label: 在通知中包含訊息正文

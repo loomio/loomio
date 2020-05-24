@@ -12,6 +12,8 @@ es:
         invalid: No es un valor válido.
   errors:
     noscript: Loomio necesita javascript para funcionar. Porfavor permite javascript en tu navegador para continuar
+    upgrade_browser: |
+        Oh! Tu buscador es demasiado viejo y puede que Loomio no funcione correctamente. Por favor <a href="https://browser-update.org/update.html">actualiza tu buscador.</a>
     return_home: Volver a la página principal
     not_found: 404 archivo no encontrado
     messages:
@@ -35,6 +37,8 @@ es:
         proposal: Propuesta
         count: Cuenta
         choose: Elegir
+        allocate: Asignar
+        score: 'Puntuación '
         rank: Rango
         time: Coordinar horario
   user:
@@ -289,7 +293,7 @@ es:
     description: |
         Esto es una **Propuesta**, donde pueden tomar decisiones conjuntamente. Puede iniciar un propuesta en cuanto haya una discusión iniciada.
 
-        Se solicita a todos los integrantes del grupo a que **tomen posición** antes de la **fecha de cierre**. Puede extender la fecha de cierre si lo necesita o cerrar la propuesta con antelación.
+        Se solicita a todos los integrantes del grupo a que **tomen una posición** antes de la **fecha de cierre**. Puede extender la fecha de cierre si lo necesita o cerrar la propuesta con antelación.
 
         Puede que reconsidere su posición al escuchar a otros, podrás **cambiar de posición** en cualquier momento en que la propuesta esté activa.
 
@@ -390,7 +394,7 @@ es:
         user_mentioned: '%{actor} te mencionó en:%{title}'
         user_reminded: '%{actor} te está recordando que votes en %{title} '
       header:
-        poll_created: '<strong>%{actor}</strong> inicio una propuesta'
+        poll_created: '<strong>%{actor}</strong> inició una propuesta'
         poll_edited: '<strong>%{actor}</strong> edito la propuesta'
         poll_announced: '<strong>%{actor}</strong> te invitó a votar en una propuesta'
         poll_closing_soon: 'La propuesta de <strong>%{actor}</strong> cierra en 24 horas. Ahora es un buen momento para votar, cambiar su voto o motivar a otros a participar.'
@@ -631,6 +635,19 @@ es:
     poll_closing_soon: "%{poll_type}cerrará en 24 horas"
     poll_expired: "%{poll_type} ha cerrado"
     group_identity_created: "Los eventos desde %{group} no aparecerán en este canal"
+  webhook:
+    markdown:
+      new_discussion: "**%{actor}**inició un debate en %{group}:[%{title}](%{url})"
+      discussion_edited: "**%{actor}** editó un debate en %{group}:[%{title}](%{url})"
+      new_comment: "**%{actor}** ha comentado en [%{title}] (%{url})"
+      outcome_created: "**%{actor}** ha compartido un resultado del %{poll_type}:[%{title}](%{url})"
+      poll_created: "**%{actor}** ha iniciado un %{poll_type} en %{group} : [%{title}](%{url})"
+      poll_edited: "**%{actor}** editó un %{poll_type}en%{group}:`[%{title}](%{url})"
+      stance_created: "**%{actor}** ha votado en [%{title}](%{url})"
+      poll_closing_soon: "Quedan 24 horas: [%{title}](%{url})"
+      poll_expired: "%{poll_type}:[%{title}](%{url})ha cerrado"
+      poll_closed_by_user: "**%{actor}** ha cerrado el %{poll_type}: [%{title}](%{url})"
+      poll_reopened: "**%{actor}** ha reabierto%{poll_type}: [%{title}](%{url})"
   slack:
     new_discussion: "Nuevo hilo en *%{group}*: *%{discussion}* "
     outcome_created: "Resultado publicado en *%{group}*: *%{poll}*"
