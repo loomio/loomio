@@ -249,6 +249,27 @@ module.exports = {
     page.expectText('.poll-common-details-panel__details p', 'Some details')
     page.click('.show-results-button')
     page.expectText('.poll-common-action-panel__anonymous-message', 'Votes will be anonymous')
+
+    // show the votes are anonymous on the thread page and the poll page
+  },
+
+  'can_start_a_results_hidden_until_closed_poll': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('/polls/test_discussion')
+    page.click('.activity-panel__add-proposal')
+    page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
+    page.fillIn('.poll-common-form-fields .lmo-textarea div[contenteditable=true]', 'Some details')
+    page.click('.poll-settings-hide-results-until-closed')
+
+    page.click('.poll-common-form__submit')
+    page.expectElement('.announcement-form__submit')
+    page.click('.dismiss-modal-button')
+
+    page.expectText('.poll-common-card__title', 'A new proposal')
+    page.expectText('.poll-common-details-panel__details p', 'Some details')
+    page.click('.show-results-button')
+    page.expectText('.poll-common-action-panel__anonymous-message', 'Votes will be anonymous')
   },
 
   'can_send_a_calendar_invite': (test) => {

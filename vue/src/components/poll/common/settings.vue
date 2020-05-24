@@ -1,23 +1,25 @@
 <script lang="coffee">
-import { settingsFor } from '@/shared/helpers/poll'
-import _snakeCase from 'lodash/snakeCase'
+import { compact, snakeCase } from 'lodash-es'
+import { fieldFromTemplate } from '@/shared/helpers/poll'
 
 export default
   props:
     poll: Object
   data: ->
-    settings: settingsFor @poll
+    settings:
+      compact [
+        ('multipleChoice'        if @poll.pollType == 'poll'),
+        'notifyOnParticipate',
+        ('canRespondMaybe'       if @poll.pollType == 'meeting'),
+        ('anonymous'             if !fieldFromTemplate(@poll.pollType, 'prevent_anonymous')),
+        ('hideResultsUntilClosed' if !fieldFromTemplate(@poll.pollType, 'prevent_anonymous')),
+        ('voterCanAddOptions'    if fieldFromTemplate(@poll.pollType, 'can_add_options') && @poll.pollType != 'proposal')
+      ]
   methods:
-    snakify: (setting) ->
-      _snakeCase setting
+    snakify: (setting) -> snakeCase setting
 </script>
 
 <template lang="pug">
-v-list.poll-common-settings(two-line)
-  v-list-item.poll-common-checkbox-option(v-for="(setting, index) in settings", :key="index")
-    v-list-item-action
-      v-checkbox(v-model="poll[setting]" :class="'poll-settings-' + setting")
-    v-list-item-content
-      v-list-item-title(v-t="'poll_common_settings.' + snakify(setting) + '.title'")
-      v-list-item-subtitle(v-t="'poll_common_settings.' + snakify(setting) + '.helptext_on'")
+.poll-common-settings
+  v-checkbox.poll-common-checkbox-option(v-for="(setting, index) in settings" hide-details :key="index" v-model="poll[setting]" :class="'poll-settings-' + setting" :label="$t('poll_common_settings.' + snakify(setting) + '.title')")
 </template>

@@ -3,7 +3,7 @@ class PollSerializer < ApplicationSerializer
              :stance_data, :stance_counts, :matrix_counts, :anyone_can_participate, :voter_can_add_options,
              :closed_at, :closing_at, :stances_count, :participants_count, :undecided_count, :cast_stances_pct, :versions_count,
              :created_at, :multiple_choice, :custom_fields, :poll_option_names,
-             :notify_on_participate, :anonymous, :can_respond_maybe,
+             :notify_on_participate, :anonymous, :can_respond_maybe, :hide_results_until_closed,
              :attachments, :mentioned_usernames, :author_id, :complete
 
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
@@ -24,6 +24,18 @@ class PollSerializer < ApplicationSerializer
 
   def include_group?
     super && object.group_id
+  end
+
+  def include_stance_data?
+    !object.hide_results_until_closed?
+  end
+
+  def include_stance_counts?
+    !object.hide_results_until_closed?
+  end
+
+  def include_matrix_counts?
+    !object.hide_results_until_closed?
   end
 
   # def my_stance
