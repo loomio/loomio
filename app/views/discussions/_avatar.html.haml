@@ -5,8 +5,6 @@
   - style = "height: 40px; min-width: 40px; width: 40px;"
   - size = :medium
 
-- user = AnonymousUser.new if user.nil?
-
 .v-avatar{:title => user.name, :style => style}
   - if user.avatar_url(size)
     = image_tag user.avatar_url(size), alt: user.name

@@ -106,6 +106,10 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
 
+  def author
+    super || AnonymousUser.new
+  end
+
   def members
     # User.where(id: group.members.pluck(:id).concat(guests.pluck(:id)).uniq)
     User.active.
