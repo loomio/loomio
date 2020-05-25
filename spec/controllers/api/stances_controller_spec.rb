@@ -125,7 +125,8 @@ describe API::StancesController do
       json = JSON.parse(response.body)
       expect(response.status).to eq 200
       expect(json['stances'][0]['participant_id']).to be user.id
-      expect(json['events'][0]['actor_id']).to be user.id
+      # only stance, not event.. but was user.id
+      expect(json['events'][0]['actor_id']).to be nil
     end
 
     describe 'poll.group.members_can_vote false' do
