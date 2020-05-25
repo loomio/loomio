@@ -1,20 +1,8 @@
 module PollEmailHelper
   include Routing
 
-  # def login_token(redirect_path: poll_path(@poll))
-  #   @token ||= @recipient.login_tokens.create!(redirect: redirect_path)
-  # end
-
   def login_token(recipient, redirect_path)
     recipient.login_tokens.create!(redirect: redirect_path)
-  end
-
-  def anonymous_or_actor_for(event)
-    if event.eventable.is_a?(Stance)
-      event.eventable.participant_for_client
-    else
-      event.user || LoggedOutUser.new
-    end
   end
 
   def recipient_stance(recipient, poll)

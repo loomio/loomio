@@ -23,12 +23,11 @@ class StanceSerializer < ApplicationSerializer
     object[:volume]
   end
 
-  def include_participant?
-    super &&
-    if object.poll.anonymous
-      scope && object.participant == scope[:current_user]
+  def participant
+    if scope && scope[:current_user] && object[:participant_id] == scope[:current_user]&.id
+      object.real_participant
     else
-      true
+      object.participant
     end
   end
 

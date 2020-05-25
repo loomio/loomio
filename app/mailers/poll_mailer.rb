@@ -40,7 +40,7 @@ class PollMailer < BaseMailer
       locale:        @recipient.locale,
       to:            @recipient.email,
       subject_key:   @event.email_subject_key || "poll_mailer.#{@poll.poll_type}.subject.#{@action_name}",
-      subject_params: { title: @poll.title, actor: anonymous_or_actor_for(@event).name },
+      subject_params: { title: @poll.title, actor: @event.user.name },
       layout:        'base_mailer'
     )
   end

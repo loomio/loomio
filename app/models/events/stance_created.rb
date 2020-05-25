@@ -8,7 +8,7 @@ class Events::StanceCreated < Event
 
   def self.publish!(stance)
     super stance,
-          user: stance.participant,
+          user: stance.participant.presence,
           discussion: stance.poll.discussion
   end
 
@@ -16,14 +16,15 @@ class Events::StanceCreated < Event
     false
   end
 
-  private
-  def author
-    User.active.verified.find_by(email: eventable.participant.email) || eventable.participant
+  def user
+    super || AnonymousUser.new
   end
+
+  private
 
   def notification_translation_values
     {
-      name: eventable.participant_for_client.name,
+      name: eventable.participant.name,
       title: eventable.poll.title
     }
   end
@@ -34,11 +35,11 @@ class Events::StanceCreated < Event
 
   def notification_recipients
     if poll.notify_on_participate?
-      User.where(id: poll.author_id).where.not(id: eventable.participant)
+      User.where(id: poll.author_id).where.not(id: eventable[:participant_id])
     else
       User.none
     end
   end
-  alias :email_recipients :notification_recipients
 
+  alias :email_recipients :notification_recipients
 end

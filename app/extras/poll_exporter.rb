@@ -44,7 +44,7 @@ class PollExporter
 
     ## for each participant show the
     @poll.stances.latest.each do |stance|
-      user = stance.participant_for_client
+      user = stance.participant
       row = [user.name]
 
       @poll.poll_options.each do |poll_option|
@@ -67,7 +67,7 @@ class PollExporter
 
     ## for each stance in chronological order
     @poll.stances.sort_by(&:created_at).each do |stance|
-      user = stance.participant_for_client
+      user = stance.participant
       row = [stance.created_at, user.name, stance.latest]
 
       @poll.poll_options.each do |poll_option|

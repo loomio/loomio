@@ -102,7 +102,7 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
   end
 
   def user
-    anonymous_or_actor_for(object)
+    object.user || object.eventable.author
   end
 
   def eventable
