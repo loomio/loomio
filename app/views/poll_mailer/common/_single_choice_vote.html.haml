@@ -5,6 +5,9 @@
   - else
     %h3= t(:"poll_mailer.common.please_respond")
 
+  - if poll.anonymous?
+    %p= t(:"poll_common_action_panel.anonymous")
+
   - if recipient_stance.cast_at
     = render 'poll_mailer/common/stance', stance: recipient_stance, poll: poll, recipient: recipient
   - else
