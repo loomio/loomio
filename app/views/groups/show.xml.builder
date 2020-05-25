@@ -3,7 +3,7 @@ atom_feed do |feed|
   feed.subtitle @group.description
   feed.updated(@group.discussions.maximum(:created_at))
 
-  @group.discussions.visible_to_public.each do |discussion|
+  @group.discussions.order('created_at desc').limit(50).visible_to_public.includes(:author).each do |discussion|
     feed.entry(discussion) do |entry|
       entry.title     discussion.title
       entry.content   discussion.description, type: :text
@@ -12,4 +12,4 @@ atom_feed do |feed|
       entry.author { |author| author.name discussion.author.name }
     end
   end
-end if @group.is_visible_to_public?
+end

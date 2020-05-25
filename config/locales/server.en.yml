@@ -14,6 +14,32 @@ en:
         invalid: is not a valid value
 
   errors:
+    400:
+      title: Bad request
+      body: Sorry, we weren't able to understand that request
+    403:
+      title: Forbidden
+      body: You are not permitted to access this page. You may need to sign in.
+    404:
+      title: Not found
+      body: Sorry, the page you were looking for doesn't exist. You may have mistyped the address or the page may have moved or been deleted.
+    410:
+      title: Gone
+      body: This page no longer exists
+    417:
+      title: Browser incompatible
+      body: |
+        Please <a href="https://browser-update.org/update.html?force_outdated=true">Upgrade your browser</a> to use Loomio
+    422:
+      title: Unprocessable Entity
+      body: The change you wanted was rejected. Maybe you tried to change something you didn't have access to.
+    429:
+      title: Too Many Requests
+      body: Sorry, you have exceeded the maximum allowed requests per minute for this action. Please wait a while and try again.
+    500:
+      title: Internal Server Error
+      body: We're sorry, but something went wrong. We've been notified about this issue and we'll take a look at it shortly.
+
     noscript: Loomio requires javascript to work! Please enable javascript in your browser to continue
     upgrade_browser: |
       Uh oh! Your web browser is too old and Loomio may not work properly. Please <a href="https://browser-update.org/update.html">upgrade your browser.</a>
