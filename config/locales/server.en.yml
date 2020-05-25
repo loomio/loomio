@@ -22,7 +22,7 @@ en:
       body: You are not permitted to access this page. You may need to sign in.
     404:
       title: Not found
-      body: Sorry, the page you were looking for doesn't exist. You may have mistyped the address or the page may have moved or been deleted.
+      body: Sorry, the page you were looking for doesn't exist. You may have mistyped the address or the page may have been moved or deleted.
     410:
       title: Gone
       body: This page no longer exists
