@@ -15,7 +15,7 @@
     - if !params[:export] && !browser.bot?
       = raw vue_js_includes
   %body
-    = render 'application/upgrade_browser', formats: [:html]
+    = render 'application/upgrade_browser'
     #app
     #ssr.v-application.v-application--is-ltr.theme--light
       %div.v-application--wrap
