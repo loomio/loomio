@@ -12,6 +12,8 @@ zh_TW:
         invalid: 不是有效的值
   errors:
     noscript: Loomio 需要 JavaScript！請在您的瀏覽器中啟用 JavaScript 以繼續
+    upgrade_browser: |
+        喔喔！您的網路瀏覽器太舊了，Loomio 可能無法正常運作。請<a href="https://browser-update.org/update.html">升級您的瀏覽器。</a>
     return_home: 回到首頁
     not_found: 404 檔案找不到。
     messages:
@@ -635,9 +637,11 @@ zh_TW:
   webhook:
     markdown:
       new_discussion: "**%{actor}** 在 %{group}開始了討論：[%{title}](%{url})"
+      discussion_edited: "**%{actor}** 編輯了在 %{group} 中的討論：[%{title}](%{url})"
       new_comment: "**%{actor}** 在 [%{title}](%{url}) 中留言"
       outcome_created: "**%{actor}** 已分享 %{poll_type} 的結果：[%{title}](%{url})"
       poll_created: "**%{actor}** 在 %{group} 中開始了 %{poll_type}：[%{title}](%{url})"
+      poll_edited: "**%{actor}** 編輯了 %{poll_type} 在 %{group} 之中：[%{title}](%{url})"
       stance_created: "**%{actor}** 在 [%{title}](%{url}) 中投票了"
       poll_closing_soon: "剩下 24 小時：[%{title}](%{url})"
       poll_expired: "%{poll_type}：[%{title}](%{url}) 已關閉"

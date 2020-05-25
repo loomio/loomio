@@ -1785,13 +1785,7 @@ fr:
     url_label: L'URL webhook
     name_label: Nom
     event_kinds:
-      new_discussion: Une nouvelle discussion a été commencée
-      new_comment: Un nouveau commentaire a été publié
-      poll_created: Un sondage a été créé
-      stance_created: Un nouveau vote a été exprimé
       poll_closing_soon: Un sondage sera bientôt terminé
-      poll_expired: Un sondage est achevé
-      outcome_created: Un bilan a été partagé
   browser_warning:
     message: "IMPORTANT: votre navigateur ({{name}} {{version}})  est obsolète et n'est pas compatible avec {{site}}."
     link: Merci de mettre à jour ou de changer de navigateur

@@ -56,7 +56,7 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
       url: url,
       poll_type: poll_type,
       group: group_name
-    }.compact
+    }
   end
 
   def url
@@ -64,7 +64,7 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
   end
 
   def actor_name
-    user.name
+    user&.name || eventable.author.name
   end
 
   def group_name
