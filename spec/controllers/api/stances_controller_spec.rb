@@ -72,28 +72,6 @@ describe API::StancesController do
       expect(user_ids).to_not include other_stance.participant_id
     end
 
-    # it 'can order by priority asc' do
-    #   sign_in user
-    #   high_priority_stance; low_priority_stance
-    #   get :index, params: { poll_id: poll.id, order: 'poll_options.priority'}
-    #   expect(response.status).to eq 200
-    #   json = JSON.parse(response.body)
-    #
-    #   expect(json['stances'][0]['id']).to eq high_priority_stance.id
-    #   expect(json['stances'][1]['id']).to eq low_priority_stance.id
-    # end
-    #
-    # it 'can order by priority desc' do
-    #   sign_in user
-    #   high_priority_stance; low_priority_stance
-    #   get :index, params: { poll_id: poll.id, order: 'poll_options.priority DESC'}
-    #   expect(response.status).to eq 200
-    #   json = JSON.parse(response.body)
-    #
-    #   expect(json['stances'][0]['id']).to eq low_priority_stance.id
-    #   expect(json['stances'][1]['id']).to eq high_priority_stance.id
-    # end
-
     it 'does not allow unauthorized users to get stances' do
       get :index, params: { poll_id: poll.id }
       expect(response.status).to eq 403
