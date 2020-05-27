@@ -80,6 +80,8 @@ describe UserMailer do
     before { group.add_member! user }
 
     let(:some_content) do
+      group.add_member! discussion.author
+      group.add_member! comment.author
       DiscussionService.create(discussion: discussion, actor: discussion.author)
       PollService.create(poll: poll, actor: discussion.author)
       CommentService.create(comment: comment, actor: comment.author)
