@@ -48,12 +48,7 @@ namespace :loomio do
   end
 
   task update_subscription_members_counts: :environment do
-    # run only once a week on wednesday
-    if Date.today.wday == 3
-      SubscriptionService.delay.run_weekly_checks_on_member_counts
-    end
-    # run daily
-    SubscriptionService.delay.run_daily_checks_on_member_counts
+    SubscriptionService.update_member_counts
   end
 
   task refresh_expiring_chargify_management_links: :environment do
