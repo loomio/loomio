@@ -30,7 +30,7 @@ export default
         state: @planStatus
         expires_at: @expiresAt if @group.subscriptionPlan == 'trial'
         renews_at: @renewalDate if @renewalDate
-        active_members: @group.orgMembersCount
+        active_members: @group.subscriptionMembersCount
         max_members: @group.subscriptionMaxMembers if @group.subscriptionMaxMembers
         max_threads: @group.subscriptionMaxThreads if @group.subscriptionMaxThreads
         referral_code: "<strong>#{@group.subscriptionInfo.chargify_referral_code}</strong>" if @hasReferralCode
