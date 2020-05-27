@@ -35,7 +35,7 @@ export default
         active_members: @group.orgMembersCount
         max_members: @group.subscriptionMaxMembers if @group.subscriptionMaxMembers
         max_threads: @group.subscriptionMaxThreads if @group.subscriptionMaxThreads
-        referral_code: "<strong>#{@group.subscriptionInfo.chargify_referral_code}</strong> (#{@referralCodeExtra})" if @hasReferralCode
+        referral_code: "<strong>#{@group.subscriptionInfo.chargify_referral_code}</strong> - <a href='https://help.loomio.org/en/subscriptions/referral_code/' target=_blank>#{@referralCodeExtra}</a>" if @hasReferralCode
         chargify_link: "<a href=#{@group.subscriptionInfo.chargify_management_link} target=_blank>#{@group.subscriptionInfo.chargify_management_link}</a>" if @hasChargifyLink
       }
 </script>
