@@ -38,6 +38,7 @@ zh_TW:
     renews_at: "續訂"
     referral_code: "儲值推薦代碼"
     chargify_link: "儲值計費入口"
+    referral_code_help: "給朋友折扣，也為您贏得一些可用餘額！"
   loomio_tags:
     all_tags: 所有標籤
     tags: 標籤

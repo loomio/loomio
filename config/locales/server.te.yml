@@ -1,4 +1,7 @@
 te:
+  errors:
+    404:
+      title: కనబడలేదు
   group:
     stats:
       members: సభ్యులు

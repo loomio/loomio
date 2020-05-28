@@ -1,4 +1,7 @@
 lt:
+  errors:
+    404:
+      title: Nerastas
   group:
     stats:
       subgroups: Pogrupiai
