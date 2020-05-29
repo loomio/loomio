@@ -1,4 +1,3 @@
-- raise "No emails sent!" unless @email
 <!DOCTYPE HTML>
 %html
   %head
@@ -8,30 +7,33 @@
 
   %body
     %main
-      - if @scenario
-        .i18n-params{style: 'display: none'}
-          .group= @scenario[:group]&.name
-          .discussion= @scenario[:discussion]&.title
-          .actor= @scenario[:actor]&.name
-          .poll= @scenario[:poll]&.title
-          .title= @scenario[:poll]&.title
+      - if @email.nil?
+        %p.error no emails sent
+      - else
+        - if @scenario
+          .i18n-params{style: 'display: none'}
+            .group= @scenario[:group]&.name
+            .discussion= @scenario[:discussion]&.title
+            .actor= @scenario[:actor]&.name
+            .poll= @scenario[:poll]&.title
+            .title= @scenario[:poll]&.title
 
-      %p.email-to
-        to:
-        = @email.to
+        %p.email-to
+          to:
+          = @email.to
 
-      %p.email-from
-        from:
-        = @email.from
+        %p.email-from
+          from:
+          = @email.from
 
-      %p.email-subject
-        subject:
-        = @email.subject
+        %p.email-subject
+          subject:
+          = @email.subject
 
-      %p.email-reply-to
-        reply to:
-        = @email.reply_to
+        %p.email-reply-to
+          reply to:
+          = @email.reply_to
 
-      %p.email-body
-        body:
-        =  raw @email.body.parts.last.decoded
+        %p.email-body
+          body:
+          =  raw @email.body.parts.last.decoded

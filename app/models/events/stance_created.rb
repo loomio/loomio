@@ -11,6 +11,11 @@ class Events::StanceCreated < Event
           discussion: stance.poll.discussion
   end
 
+  def notify_mentions!
+    return if eventable.poll.anonymous?
+    super
+  end
+
   def real_user
     eventable.real_participant
   end

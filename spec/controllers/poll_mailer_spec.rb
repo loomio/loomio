@@ -153,10 +153,6 @@ describe Dev::PollsController do
       expect_text('.poll-mailer__vote', "Please respond")
     end
 
-    # anonymous poll_closing_soon_author email
-
-    # results hidden poll_closing_soon_author email
-
     it "#{poll_type} poll_user_mentioned_email" do
       get :test_poll_scenario, params: {scenario: 'poll_user_mentioned', poll_type: poll_type, email: true}
       expect_subject("poll_mailer.#{poll_type}.header.user_mentioned")
@@ -165,14 +161,14 @@ describe Dev::PollsController do
     end
 
     it "anonymous #{poll_type} poll_user_mentioned_email" do
-      get :test_poll_scenario, params: {scenario: 'poll_user_mentioned', poll_type: poll_type, email: true}
-      expect_subject("poll_mailer.#{poll_type}.header.user_mentioned")
-      expect_element('.poll-mailer-common-summary')
-      expect_text('.poll-mailer__vote', "Please respond")
+      get :test_poll_scenario, params: {scenario: 'poll_user_mentioned', anonymous: true, poll_type: poll_type, email: true}
+      expect_text('.error', "no emails sent")
     end
 
-    # results hidden poll_user_mentioned_email
-    # is that possible?
+    it "hidden #{poll_type} poll_user_mentioned_email" do
+      get :test_poll_scenario, params: {scenario: 'poll_user_mentioned', hide_results_until_closed: true, poll_type: poll_type, email: true}
+      expect_text('.error', "no emails sent")
+    end
 
     it "#{poll_type} poll_expired_author_email" do
       get :test_poll_scenario, params: {scenario: 'poll_expired_author', poll_type: poll_type, email: true}
@@ -190,9 +186,8 @@ describe Dev::PollsController do
       expect_element('.poll-mailer-common-summary')
       expect_element('.poll-mailer-common-responses')
       expect_text('.poll-mailer__results-chart', "Results")
+      expect_text('.poll-mailer-common-responses', "Anonymous")
     end
-
-    # results hidden poll_expired_author_email
 
     it "#{poll_type} poll_options_added_author_email" do
       next if poll_type != "poll"
@@ -205,7 +200,7 @@ describe Dev::PollsController do
 
     it "anonymous #{poll_type} poll_options_added_author_email" do
       next if poll_type != "poll"
-      get :test_poll_scenario, params: {scenario: 'poll_options_added_author', poll_type: poll_type, email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_options_added_author', anonymous: true, poll_type: poll_type, email: true}
       expect_text('.poll-mailer__subject', "added options to")
       expect_subject("poll_mailer.#{poll_type}.header.poll_option_added_author")
       expect_element('.poll-mailer-common-option-added')
