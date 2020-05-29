@@ -6,7 +6,8 @@ class Dev::PollsController < Dev::NightwatchController
 
     scenario = send(:"#{params[:scenario]}_scenario", {
                       poll_type: params[:poll_type],
-                      anonymous: !!params[:anonymous]
+                      anonymous: !!params[:anonymous],
+                      hide_results_until_closed: !!params[:hide_results_until_closed]
                     })
 
     sign_in(scenario[:observer]) if scenario[:observer].is_a?(User)
