@@ -53,13 +53,6 @@ describe Dev::PollsController do
       expect_text('.poll-mailer__vote', "Please respond")
     end
 
-    it "hide results #{poll_type} created email" do
-      get :test_poll_scenario, params: {scenario: 'poll_created', poll_type: poll_type, email: true, hide_results_until_closed: true}
-      expect_subject("poll_mailer.#{poll_type}.header.poll_announced")
-      expect_text('.poll-mailer__vote', I18n.t("poll_common_action_panel.results_hidden_until_closed", poll_type: I18n.t("poll_types.#{poll_type}")))
-      expect_text('.poll-mailer__vote', "Please respond")
-    end
-
     it "#{poll_type} outcome_created email" do
       get :test_poll_scenario, params: {scenario: 'poll_outcome_created', poll_type: poll_type, email: true}
       expect_subject("poll_mailer.#{poll_type}.header.outcome_created")
@@ -69,11 +62,11 @@ describe Dev::PollsController do
     end
 
     it "anonymous #{poll_type} outcome_created email" do
-      get :test_poll_scenario, params: {scenario: 'poll_outcome_created', poll_type: poll_type, email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_outcome_created', poll_type: poll_type, anonymous: true, email: true}
       expect_subject("poll_mailer.#{poll_type}.header.outcome_created")
-      expect_text('.poll-mailer__vote', I18n.t("poll_common_action_panel.anonymous"))
       expect_text('.poll-mailer-common-summary', "Outcome")
       expect_text('.poll-mailer__results-chart', "Results")
+      expect_text('.poll-mailer-common-responses', I18n.t("poll_common_action_panel.anonymous"))
       expect_text('.poll-mailer-common-responses', "Responses")
       expect_text('.poll-mailer-common-responses', "Anonymous")
     end
@@ -121,6 +114,34 @@ describe Dev::PollsController do
       expect_text('.poll-mailer__vote', "Please respond")
     end
 
+    it "#{poll_type} poll_closing_soon_with_vote email" do
+      next unless AppConfig.poll_templates.dig(poll_type, 'voters_review_responses')
+      get :test_poll_scenario, params: {scenario: 'poll_closing_soon_with_vote', poll_type: poll_type, email: true}
+      expect_subject("poll_mailer.#{poll_type}.header.poll_closing_soon")
+      expect_element('.poll-mailer-common-summary')
+      expect_text('.poll-mailer__vote', "You voted:")
+    end
+
+    it "anonymous #{poll_type} poll_closing_soon_with_vote email" do
+      next unless AppConfig.poll_templates.dig(poll_type, 'voters_review_responses')
+      get :test_poll_scenario, params: {scenario: 'poll_closing_soon_with_vote', poll_type: poll_type, anonymous: true, email: true}
+      expect_subject("poll_mailer.#{poll_type}.header.poll_closing_soon")
+      expect_element('.poll-mailer-common-summary')
+      expect_text('.poll-mailer__vote', "You voted:")
+      expect_text('.poll-mailer-common-responses', "Responses")
+      expect_text('.poll-mailer-common-responses', "Anonymous")
+    end
+
+    it "hide_results #{poll_type} poll_closing_soon_with_vote email" do
+      next unless AppConfig.poll_templates.dig(poll_type, 'voters_review_responses')
+      get :test_poll_scenario, params: {scenario: 'poll_closing_soon_with_vote', poll_type: poll_type, anonymous: true, email: true}
+      expect_subject("poll_mailer.#{poll_type}.header.poll_closing_soon")
+      expect_text('.poll-mailer-common-summary', 'poll_common_action_panel.results_hidden_until_closed')
+      expect_text('.poll-mailer__vote', "You voted:")
+      expect_text('.poll-mailer-common-responses', "Responses")
+      expect_text('.poll-mailer-common-responses', "Undecided")
+    end
+
     it "#{poll_type} poll_closing_soon_author email" do
       get :test_poll_scenario, params: {scenario: 'poll_closing_soon_author', poll_type: poll_type, email: true}
       expect_subject("poll_mailer.#{poll_type}.header.poll_closing_soon_author")
@@ -159,7 +180,7 @@ describe Dev::PollsController do
     end
 
     it "anonymous #{poll_type} poll_expired_author_email" do
-      get :test_poll_scenario, params: {scenario: 'poll_expired_author', poll_type: poll_type, email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_expired_author', poll_type: poll_type, anonymous: true, email: true}
       expect_subject("poll_mailer.#{poll_type}.header.poll_expired_author")
       expect_element('.poll-mailer__create_outcome')
       expect_element('.poll-mailer-common-summary')

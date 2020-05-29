@@ -14,5 +14,5 @@
             = render "discussions/thread_items/poll_created", item: @poll.created_event
             -# -# = render "poll_mailer/common/stance_table", rows: @exporter.stance_list
             -# = render "poll_mailer/#{@info.poll_type}/chart"
-            = render "poll_mailer/#{@poll.poll_type}/responses", poll: @poll, recipient: @recipient, event: @poll.created_event
+            = render "poll_mailer/common/responses", poll: @poll, recipient: @recipient, event: @poll.created_event
             = render "poll_mailer/common/undecided", poll: @poll

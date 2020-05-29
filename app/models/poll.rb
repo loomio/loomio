@@ -131,6 +131,10 @@ class Poll < ApplicationRecord
     ((participants_count.to_f / stances_count) * 100).to_i
   end
 
+  def undecided
+    anonymous? ? User.none : super
+  end
+
   def body
     details
   end
@@ -141,6 +145,10 @@ class Poll < ApplicationRecord
 
   def time_zone
     custom_fields.fetch('time_zone', author.time_zone)
+  end
+
+  def show_results?
+    closed? || !hide_results_until_closed
   end
 
   def parent_event

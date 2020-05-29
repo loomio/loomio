@@ -1,5 +1,5 @@
-- if poll.undecided.any?
-  %h3= t(:"poll_mailer.common.undecided_members", count: poll.undecided.count)
+- if poll.undecided_count > 0
+  %h3= t(:"poll_mailer.common.undecided_members", count: poll.undecided_count)
   %table
     - poll.undecided.each do |user|
       %tr

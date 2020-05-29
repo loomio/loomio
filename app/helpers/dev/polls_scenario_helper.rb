@@ -16,13 +16,14 @@ module Dev::PollsScenarioHelper
     recipients = {user_ids: [user.id], emails: [user.email]}
     PollService.announce(poll: poll, params: recipients, actor: actor)
 
-    {discussion: discussion,
-     group: discussion.group,
-     observer: user,
-     poll: event.eventable,
-     title: event.eventable.title,
-     actor: actor,
-     params: {share: true}}
+    {
+      discussion: discussion,
+      group: discussion.group,
+      observer: user,
+      poll: event.eventable,
+      title: event.eventable.title,
+      actor: actor,
+    }
   end
 
   def poll_closed_scenario(params)
@@ -145,7 +146,7 @@ module Dev::PollsScenarioHelper
                                                      closing_at: 1.day.from_now))
 
     PollService.create(poll: poll, actor: actor)
-    PollService.announce(poll: poll, params: {user_ids: [non_voter.id], emails: [non_voter.email], kind: "poll_announced"}, actor: actor)
+    PollService.announce(poll: poll, params: {user_ids: [non_voter.id], kind: "poll_announced"}, actor: actor)
 
     PollService.publish_closing_soon
 
@@ -173,11 +174,11 @@ module Dev::PollsScenarioHelper
                                                      hide_results_until_closed: !!params[:hide_results_until_closed],
                                                      discussion: discussion,
                                                      closing_at: 1.day.from_now))
-    voter      = poll.stances.last.participant
-    discussion.group.add_member! voter
+    voter      = poll.stances.last.real_participant
+    discussion.add_guest! voter, discussion.author
     PollService.create(poll: poll, actor: actor)
+    PollService.announce(poll: poll, params: {user_ids: [voter.id],  kind: "poll_announced"}, actor: actor)
     PollService.publish_closing_soon
-    PollService.announce(poll: poll, params: {user_ids: [voter.id], emails: [voter.email],  kind: "poll_announced"}, actor: actor)
 
     { discussion: discussion,
       group: discussion.group,
