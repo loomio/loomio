@@ -12,7 +12,7 @@ class Events::StanceCreated < Event
   end
 
   def notify_mentions!
-    return if eventable.poll.anonymous?
+    return if eventable.poll.anonymous? || eventable.poll.hide_results_until_closed?
     super
   end
 
