@@ -134,7 +134,7 @@ FactoryBot.define do
     description { 'A description for this discussion. Should this be *rich*?' }
     uses_markdown { true }
     private { true }
-    after(:build) do |discussion|
+    before(:create) do |discussion|
       discussion.group.parent&.add_member!(discussion.author)
       discussion.group.add_member!(discussion.author)
     end
@@ -153,7 +153,7 @@ FactoryBot.define do
     discussion
     body { 'body of the comment' }
 
-    after(:build) do |comment|
+    before(:create) do |comment|
       comment.discussion.group.parent.add_member!(comment.user) if comment.discussion.group.parent
       comment.discussion.group.add_member!(comment.user)
     end
