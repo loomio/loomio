@@ -10,13 +10,13 @@ EventBus.configure do |config|
                 'outcome_created_event',
                 'poll_closed_by_user_event') do |event|
     if event.discussion
-      reader = DiscussionReader.for_model(event.discussion, event.user)
+      reader = DiscussionReader.for_model(event.discussion, event.real_user)
                                .update_reader(ranges: event.sequence_id,
                                               volume: :loud)
       MessageChannelService.publish_data(ActiveModel::ArraySerializer.new([reader],
                                          each_serializer: DiscussionReaderSerializer,
                                          root: :discussions).as_json,
-                                         to: reader.message_channel)
+                                         to: event.real_user.message_channel)
     end
   end
 

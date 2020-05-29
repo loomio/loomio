@@ -78,6 +78,10 @@ class Event < ApplicationRecord
     super || AnonymousUser.new
   end
 
+  def real_user
+    user
+  end
+
   def actor
     user
   end

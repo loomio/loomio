@@ -4,7 +4,6 @@ class Events::StanceCreated < Event
   include Events::Notify::InApp
   include Events::Notify::Mentions
   include Events::Notify::ThirdParty
-  include Events::Notify::Author
 
   def self.publish!(stance)
     super stance,
@@ -12,12 +11,8 @@ class Events::StanceCreated < Event
           discussion: stance.poll.discussion
   end
 
-  def notify_author?
-    false
-  end
-
-  def user
-    super || AnonymousUser.new
+  def real_user
+    eventable.real_participant
   end
 
   private

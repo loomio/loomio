@@ -12,6 +12,7 @@ class Dev::PollsController < Dev::NightwatchController
     sign_in(scenario[:observer]) if scenario[:observer].is_a?(User)
 
     if params[:email]
+      @scenario = scenario
       last_email to: scenario[:observer]
     else
       redirect_to poll_url(scenario[:poll], Hash(scenario[:params]))

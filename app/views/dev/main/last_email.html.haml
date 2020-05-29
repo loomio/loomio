@@ -1,6 +1,6 @@
 - raise "No emails sent!" unless @email
 <!DOCTYPE HTML>
-%html{'ng-app' => 'lastEmail'}
+%html
   %head
     = stylesheet_link_tag 'email'
     = stylesheet_link_tag 'poll_mailer'
@@ -8,6 +8,14 @@
 
   %body
     %main
+      - if @scenario
+        .i18n-params{style: 'display: none'}
+          .group= @scenario[:group]&.name
+          .discussion= @scenario[:discussion]&.title
+          .actor= @scenario[:actor]&.name
+          .poll= @scenario[:poll]&.title
+          .title= @scenario[:poll]&.title
+
       %p.email-to
         to:
         = @email.to

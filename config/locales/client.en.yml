@@ -987,10 +987,6 @@ en:
     submit: Start export
     flash: Group data export started
 
-  group_features:
-    useAnonymous: Enable anonymous polling
-    nested_comments: Enable nested comment view
-
   membership_requests_card:
     heading: 'Membership Requests'
     manage_requests: Manage requests
@@ -1549,8 +1545,8 @@ en:
     group_without_subgroups: '{{name}} without subgroups'
 
   poll_common_action_panel:
-    anonymous: Votes will be anonymous
-    anonymous_until_close: Votes will be anonymous until this poll closes
+    anonymous: Voters are anonymous
+    results_hidden_until_closed: Results are hidden until the %{poll_type} has closed
     unable_to_vote: You do not have permission to vote in this decision.
 
   current_polls_card:

@@ -21,7 +21,7 @@ class StanceService
     stance.poll.stances.where(participant: actor).update_all(latest: false)
     stance.update_attachments!
     stance.save!
-    EventBus.broadcast 'stance_create', stance, actor
+    EventBus.broadcast 'stance_create', stance
     Events::StanceCreated.publish! stance
   end
 
