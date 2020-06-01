@@ -28,12 +28,6 @@ Loomio::Application.routes.draw do
 
   mount ActionCable.server => '/cable'
 
-  constraints(GroupSubdomainConstraints) do
-    get '/',              to: 'redirect#subdomain'
-    get '/d/:id(/:slug)', to: 'redirect#discussion'
-    get '/g/:id(/:slug)', to: 'redirect#group'
-    get '/p/:id(/:slug)', to: 'redirect#poll'
-  end
   get '/discussions/:id', to: 'redirect#discussion'
   get '/groups/:id',      to: 'redirect#group'
 
@@ -298,6 +292,7 @@ Loomio::Application.routes.draw do
   get 'p/:key(/:slug)'                     => 'polls#show',                  as: :poll
   get 'vote/:key(/:slug)'                  => 'polls#show'
   get 'u/undefined'                        => redirect('404.html')
+  get 'u/anonymous'                        => redirect('404.html')
   get 'u/:username/'                       => 'users#show',                  as: :user
 
   get '/login_tokens/:token'               => 'login_tokens#show',           as: :login_token
@@ -360,5 +355,5 @@ Loomio::Application.routes.draw do
     get :metadata,                        to: 'identities/saml#metadata', as: :saml_metadata
   end
 
-  get ":id", to: 'groups#show', as: :group_handle, format: :html
+  get ":id", to: 'groups#show', as: :group_handle
 end

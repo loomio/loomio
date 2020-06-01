@@ -7,6 +7,8 @@ cs:
         blank: nemůže být prázdné
         invalid: není platná hodnota
   errors:
+    404:
+      title: Nenalezeno
     not_found: 404 soubor nebyl nalezen.
     messages:
       email: není platnou e-mailovou adresou

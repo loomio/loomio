@@ -7,6 +7,8 @@ he:
         blank: לא ניתן להשאיר ריק
         invalid: ערך לא תקין
   errors:
+    404:
+      title: לא נמצא
     noscript: לומיו זקוקה לJavascript כדי לעבוד! אנא אפשר Javascript בדפדפן שלך כדי להמשיך
     return_home: חזור הביתה
     not_found: 404 קובץ לא נמצא.

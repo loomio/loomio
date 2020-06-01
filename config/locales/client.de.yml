@@ -1852,13 +1852,7 @@ de:
     url_label: WebHooks-URL
     name_label: Name
     event_kinds:
-      new_discussion: 'Ein neue Diskussion wurde eröffnet '
-      new_comment: 'Es gibt einen neuen Kommentar '
-      poll_created: Eine neue Abstimmung wurde erstellt
-      stance_created: Eine neue Stimme wurde abgegeben
       poll_closing_soon: Eine Umfrage läuft bald ab
-      poll_expired: Eine Abstimmung wurde beendet.
-      outcome_created: 'Ein Ergebnis wurde mitgeteilt  '
   configure_sso:
     redirecting: TODO_DE_Please wait, redirecting to sign-in provider
     title: Einfaches Registrieren

@@ -1,4 +1,7 @@
 tr:
+  errors:
+    404:
+      title: Bulunamadı
   group:
     stats:
       members: Üyeler

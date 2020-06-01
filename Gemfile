@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 ruby '2.6.6'
 gem 'rack', '2.0.8'
-gem 'rails', '5.2.4.2'
+gem 'rails', '5.2.4.3'
 gem 'actioncable'
 gem 'rake'
 gem 'pg'
@@ -28,7 +28,7 @@ gem 'httparty', '~> 0.18.0'
 gem 'browser', '~> 4.1.0'
 gem "aws-sdk-s3", require: false
 gem 'mini_magick'
-gem 'image_processing', '~> 1.10'
+gem 'image_processing', '~> 1.11'
 gem "sentry-raven"
 gem 'sequenced', '~> 3.2.0'
 gem 'http_accept_language'
@@ -46,9 +46,8 @@ gem 'custom_counter_cache', github: "loomio/custom_counter_cache", branch: "rail
 gem 'premailer-rails'
 gem 'griddler', github: 'loomio/griddler'
 gem "griddler-mailin", github: 'loomio/griddler-mailin'
-gem 'activerecord-import', '1.0.4'
+gem 'activerecord-import', '1.0.5'
 gem 'discriminator', '~> 0.1.1'
-gem 'has_secure_token'
 gem "autoprefixer-rails"
 gem 'icalendar'
 gem 'rack-attack'
@@ -79,7 +78,7 @@ end
 group :test do
   gem 'webmock'
   gem 'rack_session_access'
-  gem 'rspec-rails', '~> 4.0.0'
+  gem 'rspec-rails', '~> 4.0.1'
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'rspec-activemodel-mocks'

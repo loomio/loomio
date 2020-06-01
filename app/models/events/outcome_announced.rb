@@ -15,6 +15,6 @@ class Events::OutcomeAnnounced < Event
   end
 
   def notification_recipients
-    User.active.where(id: custom_fields['user_ids'])
+    User.active.distinct.where(id: custom_fields['user_ids'])
   end
 end

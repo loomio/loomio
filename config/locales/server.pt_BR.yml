@@ -1,6 +1,9 @@
 pt_BR:
   explore:
     header: Explore grupos publicos
+  saml_providers:
+    invitation_created:
+      success: "Sucesso! Por favor verifique seu %{email}email com o link para se juntar ao %{group_name}."
   activerecord:
     errors:
       messages:
@@ -14,22 +17,33 @@ pt_BR:
       email: Não é um endereço de e-mail válido
       spoofed_media_type: 'O conteúdo daquele arquivo não corresponde ao nome do arquivo '
   group:
+    error:
+      handle_must_begin_with_parent_handle: "Deve começar com %{parent_handle}-"
     stats:
       group_stats: Estatísticas do grupo
+      visits: Visitas
       members: Membros
       subgroups: Subgrupos
       threads: Conversas
       votes: Votos
       comments: Comentários
+      general: Geral
       polls: Enquetes
       poll_types:
         proposal: Proposta
+        count: Contagem
+        choose: Escolha
+        allocate: Aloque
+        score: Pontuação
         rank: Classificar
         time: Tempo de votação
   user:
     deleted_user: "Usuário excluído"
     placeholder_name: "Usuário convidado (%{hostname})"
     error:
+      sign_in_required_html: |
+          Você deve entrar para seguir.
+          Por favor <a href="/dashboard" target="_blank">entre </a> e então recarregue essa página para continuar.
       recaptcha: "Não pudemos verificar que você não é um robô, por favor tente novamente."
       bad_login: "Desculpe, essa senha não confere com a que temos em arquivo"
       username_must_be_alphanumeric: "Nomes de usuário devem conter apenas letras minúsculas e números"
@@ -96,8 +110,13 @@ pt_BR:
           Suas duas contas de usuário do Loomio foram integradas em uma única conta.
           Para acessar o Loomio a partir de agora utilize %{email} ao fazer o login.
     merge_verification:
+      subject: "Verifique seu %{site_name}email para mesclar."
+      verify: Verificar o email e seguir
       confirm_page:
+        confirm: Confirmar a mescla
         merge: Mesclar contas
+      complete_page:
+        title: Mescla bem sucedida!
   email:
     common:
       or_enter_code: Ou insira o código abaixo
@@ -146,6 +165,7 @@ pt_BR:
       invitation_text_html: "convidou você para um grupo no Loomio"
       link_help: "Clique no link abaixo para aceitar o convite:"
       accept_invitation: "Aceitar convite"
+      stop_emails: "Para de receber emails de %{site_name}"
     resend_to_join_group:
       subject: "%{member} está esperando você entrar em %{group_name} no %{site_name}"
     user_added_to_group:
@@ -431,6 +451,7 @@ pt_BR:
         poll_closing_soon: 'A checagem de <strong>%{actor}</strong> encerrará em 24 horas'
         poll_closing_soon_author: 'Sua checagem encerrará em 24 horas - agora é um bom momento para lembrar as pessoas de participarem, ou ampliar o período de participação se necessário.'
         poll_expired: "A checagem %{title} de <strong>%{actor}</strong> encerrou."
+        poll_expired_author: 'Sua verificação fechou. Se necessário, <strong>compartilhe um resultado</strong> para deixar as pessoas saberem o que acontecerá.'
         outcome_created: '<strong>%{actor}</strong> criou uma proposta.'
         outcome_announced: '<strong>%{actor}</strong> criou uma proposta.'
         stance_created: "<strong>%{actor}</strong> participou em %{title}"
@@ -555,6 +576,15 @@ pt_BR:
     helptext: Você não receberá mais e-mails sobre essa decisão.
     visit_poll: Ver enquete
     go_to_dashboad: Ir à visualização geral
+  microsoft:
+    new_discussion: "Nova conversa em %{group}"
+    new_comment: "Novo comentário em %{group}"
+    outcome_created: "Resultado publicado em %{group}"
+    poll_created: "Nova %{poll_type} em %{group}"
+    stance_created: "Nova resposta à %{poll}"
+  webhook:
+    markdown:
+      poll_closing_soon: "24 horas sobrando: [%{title}](%{url})"
   slack:
     new_discussion: "Novo tópico em *%{group}*: *%{discussion}*"
     outcome_created: "Proposta criada em *%{group}*> *%{poll}*"
@@ -567,6 +597,10 @@ pt_BR:
         Gostaria de tentar executar "/loomio" em um dos canais a seguir?
         %{integrations}
     stance_not_valid: "Desculpe, não foi possível criar um posicionamento em *%{poll}*. <%{url}|Clique aqui> para votar diretamente na enquete."
+    group_identity_created: |
+        Olá! Eu sou o Loomio Bot! *%{author}* me adicionou.
+        Eu avisarei você sempre que houver uma nova conversa ou enquete dentro do *%{group}*
+        Se você não assinou *%{group}* ainda, <%{url}|Clique aqui> para fazê-lo.
     request_authorization_message: "Só mais uma etapa: <%{url}|clique aqui> para autorizar a sua conta do Slack a acessar o Loomio (você só precisará fazer isso uma vez)."
     poll_closed: "*%{title}* Já encerrou! <%{url}|Clique aqui> para ver os resultados."
     go_to_slack: Ir pro Slack

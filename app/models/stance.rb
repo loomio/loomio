@@ -97,11 +97,15 @@ class Stance < ApplicationRecord
     end
   end
 
+  def participant
+    super || AnonymousUser.new
+  end
+
   def participant_for_client(user: nil)
     if !self.poll.anonymous || (user&.id == self.participant_id)
       self.participant
     else
-      LoggedOutUser.new(name: I18n.t(:"common.anonymous"))
+      AnonymousUser.new
     end
   end
 

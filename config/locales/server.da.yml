@@ -1,4 +1,7 @@
 da:
+  errors:
+    404:
+      title: Ingen resultater fundet
   group:
     stats:
       members: Medlemmer

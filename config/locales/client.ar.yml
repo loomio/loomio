@@ -84,7 +84,11 @@ ar:
       translate: 'ترجم'
       upload: 'تحميل'
       uploading: 'تحميل'
+      unsubscribe: إلغاء الاشتراك
       invite: دعوة
+  merge_accounts:
+    modal:
+      title: دمج الحسابات
   emoji_picker:
     search: بحث
   error_page:
@@ -376,6 +380,7 @@ ar:
       picture_changed: 'تم تحديث صورة الملف الشخصي'
       password_changed: 'تم تحديث كلمة المرور'
       deactivated: 'تم إلغاء الحساب'
+    merge_accounts: دمج الحسابات
     change_picture_link: 'تغيير الصورة'
     change_password_link: 'إعادة تعيين الكلمة السرية'
     profile: 'الملف الشخصي'
@@ -509,6 +514,7 @@ ar:
   poll_common:
     reason: السبب
     results: النتائج
+    responses: استجابات
     vote: صوت
     votes: أصوات
     details: التفاصيل

@@ -7,6 +7,8 @@ ro:
         blank: nu poate fi necompletat
         invalid: nu este o valoare valida
   errors:
+    404:
+      title: Nu am găsit
     messages:
       spoofed_media_type: Continutul acelui fisier nu corespunde cu numele lui
   group:

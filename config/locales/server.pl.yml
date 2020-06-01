@@ -1,4 +1,7 @@
 pl:
+  errors:
+    404:
+      title: Nie znaleziono
   group:
     stats:
       members: Członkowie

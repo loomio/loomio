@@ -34,8 +34,7 @@ export default class StanceModel extends BaseModel
   reactions: ->
     @recordStore.reactions.find(reactableId: @id, reactableType: "Stance")
 
-  singleChoice: ->
-    @poll().singleChoice() && !!@castAt
+  singleChoice: -> @poll().singleChoice()
 
   memberIds: ->
     @poll().memberIds()
