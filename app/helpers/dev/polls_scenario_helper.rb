@@ -49,7 +49,7 @@ module Dev::PollsScenarioHelper
     scenario = poll_stance_created_scenario(params)
     scenario[:poll].update(voter_can_add_options: true)
     PollService.add_options(poll: scenario[:poll],
-                            actor: scenario[:actor],
+                            actor: scenario[:real_actor],
                             params: {poll_option_names: option_names(2)[params[:poll_type]]})
 
     scenario.merge(observer: scenario[:voter])
@@ -117,6 +117,7 @@ module Dev::PollsScenarioHelper
     event = StanceService.create(stance: fake_stance(poll: scenario[:poll]), actor: voter)
     scenario[:stance] = event.eventable
     scenario[:actor] = event.eventable.participant
+    scenario[:real_actor] = voter
 
     scenario.merge(observer: scenario[:poll].author, voter: voter)
   end
