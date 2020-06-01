@@ -39,7 +39,6 @@ class PermittedParams < Struct.new(:params)
 
   def stance_attributes
     [:poll_id, :reason, :reason_format,
-     :visitor_attributes, {visitor_attributes: [:name, :email, :legal_accepted, :recaptcha]},
      :stance_choices_attributes, {stance_choices_attributes: [:score, :poll_option_id]},
      :files, :image_files, {files: []}, {image_files: []}
    ]

@@ -16,12 +16,6 @@ describe API::StancesController do
   }}
   let(:public_poll) { create :poll, discussion: nil, anyone_can_participate: true }
   let(:public_poll_option) { create :poll_option, poll: public_poll }
-  let(:visitor_stance_params) {{
-    poll_id: public_poll.id,
-    stance_choices_attributes: [{poll_option_id: public_poll_option.id}],
-    visitor_attributes: { name: "Johnny Doe", email: "john@doe.ninja", legal_accepted: true }
-  }}
-
 
   describe 'index' do
     before { group.add_member! user }
@@ -85,11 +79,6 @@ describe API::StancesController do
     let(:user)       { create :user, name: "unverified", email: 'user@example.com', email_verified: false }
     let(:poll)       { create :poll }
     let(:poll_option) { create :poll_option, poll: poll }
-    let(:visitor_stance_params) {{
-      poll_id: poll.id,
-      stance_choices_attributes: [{poll_option_id: poll_option.id}],
-      visitor_attributes: { name: "Johnny Doe, not logged in", email: "user@example.com", legal_accepted: true}
-    }}
 
     it 'returns 403 for logged out users' do
       post :create, params: { stance: stance_params }
