@@ -3,10 +3,8 @@ import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import {flatten, capitalize, includes} from 'lodash-es'
-import WatchRecords from '@/mixins/watch_records'
 
 export default
-  mixins: [WatchRecords]
   props:
     model: Object
     showEdit: Boolean
@@ -60,34 +58,10 @@ section.document-list
   p.caption(v-if='!model.hasDocuments() && placeholder', v-t='placeholder')
   .document-list__documents
     .attachment-list__item(:class="{'document-list__document--image': document.isAnImage() && !hidePreview}", v-for='document in documents', :key='document.id')
-      v-layout.attachment-list__preview(column align-center v-if='document.isAnImage() && !hidePreview')
-        a.lmo-pointer(:href='document.url' target='_blank')
-          img(:src='document.webUrl', :alt='document.title')
-        v-btn.ml-2(v-if="canDelete" icon :aria-label="$t('common.action.delete')" @click='deleteDocument(document)')
-          v-icon(size="medium") mdi-delete
-      v-layout.attachment-list__item-details
-        v-icon.mr-2 {{ `mdi-${document.icon}` }}
+      a.attachment-list__preview(v-if='document.isAnImage() && !hidePreview' :href='document.url' target='_blank')
+        img(:src='document.webUrl', :alt='document.title')
+      .attachment-list__item-details
         a.document-list__title(:href='document.url' target='_blank') {{ document.title }}
         v-btn.ml-2(v-if="canDelete" icon :aria-label="$t('common.action.delete')" @click='deleteDocument(document)')
           v-icon(size="medium") mdi-delete
 </template>
-
-<style lang="sass">
-.attachment-list__item
-  display: flex
-  flex-direction: column
-  margin: 8px 0
-  line-height: 32px
-  background: #f6f6f6
-  border-radius: 2px
-
-.attachment-list__item-details
-  display: flex
-  flex-direction: row
-  align-items: center
-
-.attachment-list__preview
-  max-height: 320px
-  max-width: 100%
-
-</style>

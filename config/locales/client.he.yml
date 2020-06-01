@@ -1444,13 +1444,7 @@ he:
     url_label: Webhook URL
     name_label: שם
     event_kinds:
-      new_discussion: שירשור חדש נפתח
-      new_comment: 'נוספה תגובה חדשה '
-      poll_created: נוצר סקר
-      stance_created: בוצעה הצבעה חדשה
       poll_closing_soon: הסקר מסתיים בקרוב
-      poll_expired: סקר הסתיים
-      outcome_created: שותפה תוצאה
   browser_warning:
     message: "חשוב מאוד! אתה משתמש בגרסת דפדפן ישנה ({{name}} {{version}}) שלא נתמכת ע\"י {{site}}."
     link: אנא החלף לדפדפן אחר

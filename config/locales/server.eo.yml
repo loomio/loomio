@@ -1,4 +1,7 @@
 eo:
+  errors:
+    404:
+      title: Ne trovebla
   group:
     stats:
       members: Membroj

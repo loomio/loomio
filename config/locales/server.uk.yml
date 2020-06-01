@@ -7,6 +7,8 @@ uk:
         blank: не може бути порожнім
         invalid: не є допустимим значенням
   errors:
+    404:
+      title: Не знайдено
     noscript: Для роботи Loomio потрібний JavaScript! Щоб продовжити, увімкніть JavaScript у веб-переглядачі
     return_home: Повернутися додому
     not_found: Файл 404 не знайдено.

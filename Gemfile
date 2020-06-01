@@ -23,7 +23,7 @@ gem 'paper_trail', '~> 10.3.1'
 gem 'sidekiq'
 gem 'friendly_id', '~> 5.3.0'
 gem 'httparty', '~> 0.18.0'
-gem 'browser', '~> 4.1.0'
+gem 'browser', '~> 4.2.0'
 gem "aws-sdk-s3", require: false
 gem 'mini_magick'
 gem 'image_processing', '~> 1.11'
@@ -44,7 +44,7 @@ gem 'custom_counter_cache', github: "loomio/custom_counter_cache", branch: "rail
 gem 'premailer-rails'
 gem 'griddler', github: 'loomio/griddler'
 gem "griddler-mailin", github: 'loomio/griddler-mailin'
-gem 'activerecord-import', '1.0.4'
+gem 'activerecord-import', '1.0.5'
 gem 'discriminator', '~> 0.1.1'
 gem "autoprefixer-rails"
 gem 'icalendar'

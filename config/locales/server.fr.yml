@@ -335,6 +335,7 @@ fr:
       verify_stance_for_unverified_user: "Merci d'avoir voté pour %{title}. Merci de vérifier votre adresse e-mail, pour que l'on puisse vous envoyer les résultats quand ils seront prêts."
       verify_stance_for_verified_user: "On dirait que vous avez voté sur %{title}. Si c'était bien vous, merci de cliquer sur le lien ci-dessous pour confirmer votre vote."
       you_have_until: Vous avez jusqu'à %{when} pour participer.
+      people_have_voted: "personnes ont voté."
     proposal:
       subject:
         poll_created: '%{actor} a lancé une proposition : %{title}'

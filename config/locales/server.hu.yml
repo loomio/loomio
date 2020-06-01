@@ -7,6 +7,8 @@ hu:
         blank: nem lehet üres
         invalid: nem érvényes érték
   errors:
+    404:
+      title: Nem található
     noscript: A Loomio működéséhez javascript szükséges. A folytatáshoz kérjük engedélyezze a javascriptet böngészőjében
     return_home: Vissza a kezdőoldalra
     not_found: 404-es hiba - a fájl nem található.

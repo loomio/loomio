@@ -7,6 +7,8 @@ de:
         blank: Darf nicht leer sein
         invalid: ist kein gültiger Wert
   errors:
+    404:
+      title: Nicht gefunden
     noscript: Loomio benötigt Javascript zum funktionieren! Bitte aktiviere Javascript in deinem  Browser um fortzufahren
     return_home: zurück zu Home
     not_found: 404 Datei wurde nicht gefunden.

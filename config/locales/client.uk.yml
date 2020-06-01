@@ -1785,13 +1785,7 @@ uk:
       slack: Slack
     name_label: Ім'я
     event_kinds:
-      new_discussion: Створено нову тему
-      new_comment: Додано новий коментарій
-      poll_created: Створено опитування
-      stance_created: Віддано новий голос
       poll_closing_soon: Опитування скоро закривається
-      poll_expired: Опитування закінчилось
-      outcome_created: Результат оприлюднено
   browser_warning:
     message: "ВАЖЛИВО! Ви використовуєте застарілий веб-переглядач ({{name}} {{version}}), який не підтримується {{site}}."
     link: Будь ласка змініть веб-переглядач

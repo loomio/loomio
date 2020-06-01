@@ -97,7 +97,7 @@ div
     div(v-else)
       v-layout.lmo-action-dock-wrapper(:style="{'margin-left': indentSize+'px'}"  :id="'sequence-' + event.sequenceId")
         .thread-item__avatar.mr-3.mt-0
-          user-avatar(v-if='!event.isForkable() && event.actor()' :user='event.actor()' :size='iconSize')
+          user-avatar(v-if='!event.isForkable()' :user='event.actor()' :size='iconSize')
           v-checkbox.thread-item__is-forking(v-if="event.isForkable()" @change="event.toggleFromFork()" :disabled="event.forkingDisabled()" v-model="event.isForking()")
         v-layout.thread-item__body(column)
           v-layout.align-center.wrap

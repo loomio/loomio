@@ -1,4 +1,7 @@
 fa_IR:
+  errors:
+    404:
+      title: پیدا نشد
   group:
     stats:
       members: اعضا

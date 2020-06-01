@@ -1669,13 +1669,7 @@ hu:
     url_label: Webhook URL
     name_label: Név
     event_kinds:
-      new_discussion: Új téma elindult
-      new_comment: Új megjegyzés történt
-      poll_created: Létrehoznak egy szavazást
-      stance_created: Új szavazást tartottak
       poll_closing_soon: A szavazás hamarosan lejár
-      poll_expired: A szavazás lejárt
-      outcome_created: Az eredmény megosztásra került
   configure_sso:
     title: Egyszeri felíratkozás
   browser_warning:

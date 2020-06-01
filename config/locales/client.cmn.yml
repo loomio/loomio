@@ -1144,9 +1144,6 @@ cmn:
     email: 电子邮件
   webhook:
     name_label: 名称
-    event_kinds:
-      new_discussion: 已发起新的话题
-      poll_created: 已创建投票
   group_survey:
     categories:
       other: 其他的

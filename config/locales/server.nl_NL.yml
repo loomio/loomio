@@ -11,13 +11,16 @@ nl_NL:
       spoofed_media_type: De inhoud van dat bestand komt niet overeen met de bestandsnaam
   group:
     stats:
+      group_stats: Groep statistieken
       members: Leden
       subgroups: Subgroepen
       threads: Borden
       votes: Stemmen
       comments: Commentaren
+      polls: Peilingen
       poll_types:
         proposal: Voorstel
+        rank: Volgorde
         time: Moment bevragen
   user:
     error:
@@ -33,6 +36,7 @@ nl_NL:
     export:
       title: Titel
       author: Auteur
+      participants: Deelnemers
       details: Details
       group_name: Groepsnaam
       reason: Reden
