@@ -161,11 +161,17 @@ describe PollService do
       PollService.create(poll: poll_created, actor: user)
       stance
 
-      StanceService.create(stance: stance, actor: stance.participant)
-      expect(stance.participant).to be_present
+      StanceService.create(stance: stance, actor: stance.real_participant)
+      expect(stance.real_participant).to be_present
+      expect(stance.participant_id).to_not be nil
+      expect(stance.created_event.user_id).to be nil
+      expect(stance.participant).to be_a AnonymousUser
+      expect(stance.created_event.user).to be_a AnonymousUser
       PollService.close(poll: poll_created, actor: user)
       expect(stance.reload.participant).to be_a AnonymousUser
       expect(stance.created_event.reload.user).to be_a AnonymousUser
+      expect(stance.participant_id).to be nil
+      expect(stance.created_event.user_id).to be nil
     end
 
     it 'does not removes user from stance when no anonymous' do
