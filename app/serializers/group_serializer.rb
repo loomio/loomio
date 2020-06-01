@@ -115,7 +115,6 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def subscription_members_count
-    byebug
     subscription.members_count
   end
 
