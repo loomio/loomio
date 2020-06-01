@@ -155,7 +155,10 @@ export default class PollModel extends BaseModel
     AppConfig.pollTemplates[@pollType]['has_option_icons']
 
   singleChoice: ->
-    AppConfig.pollTemplates[@pollType]['single_choice']
+    if @pollType == 'poll'
+      !@multipleChoice
+    else
+      AppConfig.pollTemplates[@pollType]['single_choice']
 
   translateOptionName: ->
     AppConfig.pollTemplates[@pollType]['translate_option_name']
