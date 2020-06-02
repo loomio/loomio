@@ -113,8 +113,8 @@ describe API::StancesController do
       post :create, params: { stance: stance_params }
       json = JSON.parse(response.body)
       expect(response.status).to eq 200
-      expect(json['stances'][0]['participant_id']).to be user.id
-      # only stance, not event.. but was user.id
+      expect(json['stances'][0]['my_stance']).to be true
+      expect(json['stances'][0]['participant_id']).to be nil
       expect(json['events'][0]['actor_id']).to be nil
     end
 

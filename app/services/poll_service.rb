@@ -85,6 +85,7 @@ class PollService
       poll.stances.update_all(participant_id: nil)
       Event.where(kind: "stance_created", eventable_id: poll.stance_ids).update_all(user_id: nil)
     end
+    # poll.update_stance_data
   end
 
   def self.update(poll:, params:, actor:)

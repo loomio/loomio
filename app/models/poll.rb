@@ -198,7 +198,7 @@ class Poll < ApplicationRecord
         GROUP BY poll_options.name
       }).map { |row| [row['name'], row['total'].to_i] }.to_h))
 
-    update_attribute(:stance_counts, poll_options.pluck(:name).map { |name| stance_data[name] })
+    update_attribute(:stance_counts, poll_options.pluck(:name).map { |name| self[:stance_data][name] })
     poll_options.map(&:update_option_score_counts) if poll.has_option_score_counts
 
     # TODO: convert this to a SQL query (CROSS JOIN?)

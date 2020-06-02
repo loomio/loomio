@@ -204,10 +204,10 @@ describe PollService do
 
       PollService.close(poll: poll_created, actor: user)
 
-      poll.reload
-      expect(poll.stance_counts).to_not eq []
-      expect(poll.stance_data).to_not eq({})
-      expect(poll.matrix_counts).to_not eq []
+      poll_created.reload
+      expect(poll_created.stance_counts).to_not eq []
+      expect(poll_created.stance_data).to_not eq({})
+      # expect(poll_created.matrix_counts).to_not eq []
     end
 
     it 'disallows the creation of new stances' do
