@@ -13,7 +13,8 @@ class StanceSerializer < ApplicationSerializer
              :volume,
              :inviter_id,
              :revoked_at,
-             :poll_id
+             :poll_id,
+             :my_stance
 
   has_one :poll, serializer: PollSerializer
   has_one :participant, serializer: AuthorSerializer, root: :users
@@ -23,12 +24,8 @@ class StanceSerializer < ApplicationSerializer
     object[:volume]
   end
 
-  def participant
-    if scope && scope[:current_user] && object[:participant_id] == scope[:current_user]&.id
-      object.real_participant
-    else
-      object.participant
-    end
+  def my_stance
+    scope && scope[:current_user] && object[:participant_id] == scope[:current_user]&.id
   end
 
   def include_reason?

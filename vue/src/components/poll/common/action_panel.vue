@@ -30,7 +30,7 @@ export default
 
   methods:
     lastStanceOrNew: ->
-      @poll.stanceFor(Session.user()) || @newStance
+      @poll.myStance() || @newStance
 
 </script>
 

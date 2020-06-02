@@ -38,10 +38,6 @@ class PollSerializer < ApplicationSerializer
     !object.hide_results_until_closed?
   end
 
-  # def my_stance
-  #   object.stances.latest.find_by(participant: scope[:current_user]) if scope[:current_user]
-  # end
-
   def my_stance
     @my_stances_cache ||= scope[:my_stances_cache].get_for(object) if scope && scope[:my_stances_cache]
   end
