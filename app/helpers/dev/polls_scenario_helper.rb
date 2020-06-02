@@ -30,11 +30,14 @@ module Dev::PollsScenarioHelper
     observer = saved fake_user
     group = create_group_with_members
     group.add_admin!(observer)
-    event = PollService.create(poll: fake_poll(poll_type: params[:poll_type],
-                                               anonymous: !!params[:anonymous],
-                                               hide_results_until_closed: !!params[:hide_results_until_closed],
-                                               group: group, discussion: nil), actor: observer)
-    PollService.close(poll: scenario[:poll], actor: scenario[:actor])
+    poll = fake_poll(poll_type: params[:poll_type],
+                     anonymous: !!params[:anonymous],
+                     hide_results_until_closed: !!params[:hide_results_until_closed],
+                     group: group,
+                     discussion: nil)
+    event = PollService.create(poll: poll, actor: observer)
+
+    PollService.close(poll: poll, actor: observer)
 
     {
       observer: observer,

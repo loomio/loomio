@@ -1,5 +1,5 @@
 <script lang="coffee">
-import { compact, snakeCase } from 'lodash-es'
+import { compact, snakeCase, kebabCase } from 'lodash-es'
 import { fieldFromTemplate } from '@/shared/helpers/poll'
 
 export default
@@ -17,9 +17,10 @@ export default
       ]
   methods:
     snakify: (setting) -> snakeCase setting
+    kebabify: (setting) -> kebabCase setting
 </script>
 
 <template lang="pug">
 .poll-common-settings
-  v-checkbox.poll-common-checkbox-option(v-for="(setting, index) in settings" hide-details :key="index" v-model="poll[setting]" :class="'poll-settings-' + setting" :label="$t('poll_common_settings.' + snakify(setting) + '.title')")
+  v-checkbox.poll-common-checkbox-option(v-for="(setting, index) in settings" hide-details :key="index" v-model="poll[setting]" :class="'poll-settings-' + kebabify(setting)" :label="$t('poll_common_settings.' + snakify(setting) + '.title')")
 </template>

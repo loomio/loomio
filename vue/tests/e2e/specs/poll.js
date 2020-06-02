@@ -195,7 +195,7 @@ module.exports = {
   'can_set_an_outcome': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('polls/test_proposal_poll_closed')
+    page.loadPath('polls/test_poll_scenario?scenario=poll_closed&poll_type=proposal')
     page.click('.poll-common-set-outcome-panel__submit')
 
     page.fillIn('.poll-common-outcome-form__statement .lmo-textarea div[contenteditable=true]', 'This is an outcome')
