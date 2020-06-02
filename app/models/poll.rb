@@ -49,6 +49,7 @@ class Poll < ApplicationRecord
   belongs_to :group, class_name: "Group"
 
 
+  before_save :set_stances_in_discussion
   after_update :remove_poll_options
 
   has_many :stances, dependent: :destroy
@@ -304,6 +305,9 @@ class Poll < ApplicationRecord
   end
 
   private
+  def set_stances_in_discussion
+    self.stances_in_discussion = false if anonymous or hide_results_until_closed
+  end
 
   def cannot_deanonymize
     if anonymous_changed? && anonymous_was == true
