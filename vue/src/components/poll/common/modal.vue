@@ -37,7 +37,7 @@ export default
             @$router.replace(@urlFor(poll)).catch (err) => {}
           Flash.success "poll_#{poll.pollType}_form.#{poll.pollType}_#{actionName}"
           @close()
-          return if actionName == 'created'
+          return if actionName == 'updated'
           EventBus.$emit 'openModal',
             component: 'AnnouncementForm',
             props: { announcement: Records.announcements.buildFromModel(poll) }
