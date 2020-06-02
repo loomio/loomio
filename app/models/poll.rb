@@ -102,6 +102,7 @@ class Poll < ApplicationRecord
   validate :require_custom_fields
   validate :discussion_group_is_poll_group
   validate :cannot_deanonymize
+  validate :cannot_reveal_results_early
 
   alias_method :user, :author
 
@@ -174,6 +175,18 @@ class Poll < ApplicationRecord
     super || NullGroup.new
   end
 
+  def stance_data
+    show_results? ? super : {}
+  end
+
+  def stance_counts
+    show_results? ? super : []
+  end
+
+  def matrix_counts
+    show_results? ? super : []
+  end
+
   def update_stance_data
     update_attribute(:stance_data, zeroed_poll_options.merge(
       self.class.connection.select_all(%{
@@ -229,8 +242,6 @@ class Poll < ApplicationRecord
       where('(m.id IS NOT NULL AND m.archived_at IS NULL) AND (s.id IS NULL)')
   end
 
-
-
   def add_guest!(user, author)
     stances.create!(participant_id: user.id, inviter: author, volume: DiscussionReader.volumes[:normal])
   end
@@ -252,6 +263,7 @@ class Poll < ApplicationRecord
   end
 
   def meeting_score_tallies
+    return [] unless show_results?
     poll_options.map do |option|
       [option.id, {
         maybe:    option.stance_choices.latest.where(score: 1).count,
@@ -296,6 +308,12 @@ class Poll < ApplicationRecord
   def cannot_deanonymize
     if anonymous_changed? && anonymous_was == true
       errors.add :anonymous, :cannot_deanonymize
+    end
+  end
+
+  def cannot_reveal_results_early
+    if hide_results_until_closed_changed? && hide_results_until_closed_was == true
+      errors.add :hide_results_until_closed, :cannot_show_results_early
     end
   end
 

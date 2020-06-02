@@ -26,23 +26,7 @@ class PollSerializer < ApplicationSerializer
     super && object.group_id
   end
 
-  def include_stance_data?
-    !object.hide_results_until_closed?
-  end
-
-  def include_stance_counts?
-    !object.hide_results_until_closed?
-  end
-
-  def include_matrix_counts?
-    !object.hide_results_until_closed?
-  end
-
   def my_stance
     @my_stances_cache ||= scope[:my_stances_cache].get_for(object) if scope && scope[:my_stances_cache]
-  end
-
-  def include_matrix_counts?
-    object.chart_type == 'matrix'
   end
 end
