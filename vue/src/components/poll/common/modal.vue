@@ -2,7 +2,6 @@
 import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import Flash  from '@/shared/services/flash'
-import { iconFor }                from '@/shared/helpers/poll'
 import { onError } from '@/shared/helpers/form'
 
 export default
@@ -43,9 +42,6 @@ export default
             props: { announcement: Records.announcements.buildFromModel(poll) }
 
       .catch onError(@poll)
-
-    icon: ->
-      iconFor(@poll)
 
 </script>
 <template lang="pug">
