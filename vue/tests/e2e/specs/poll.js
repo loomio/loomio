@@ -248,7 +248,7 @@ module.exports = {
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
     page.click('.show-results-button')
-    page.expectText('.poll-common-action-panel__anonymous-message', 'Votes will be anonymous')
+    page.expectText('.poll-common-action-panel__anonymous-message', 'Votes are anonymous')
 
     // show the votes are anonymous on the thread page and the poll page
   },
@@ -269,7 +269,7 @@ module.exports = {
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
     page.click('.show-results-button')
-    page.expectText('.poll-common-action-panel__anonymous-message', 'Votes will be anonymous')
+    page.expectText('.poll-common-action-panel__anonymous-message', 'Votes are anonymous')
   },
 
   'can_send_a_calendar_invite': (test) => {

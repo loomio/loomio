@@ -1545,7 +1545,7 @@ en:
     group_without_subgroups: '{{name}} without subgroups'
 
   poll_common_action_panel:
-    anonymous: Votes will be anonymous
+    anonymous: Votes are anonymous
     results_hidden_until_closed: Results are hidden until the %{poll_type} has closed
     unable_to_vote: You do not have permission to vote in this decision.
 

@@ -49,7 +49,6 @@ export default
 <template lang="pug">
 .poll-poll-vote-form
   submit-overlay(:value="stance.processing")
-  .poll-common-action-panel__anonymous-message.pb-3.caption(v-t="'poll_common_action_panel.anonymous'" v-if='stance.poll().anonymous')
   v-list(column)
     v-list-item.poll-common-vote-form__button(align-center @click='select(option)' v-for='option in pollOptions' :key='option.id')
       v-list-item-title
