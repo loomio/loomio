@@ -59,26 +59,25 @@ export default
 <template lang="pug">
 .poll-common-votes-panel
   v-layout.poll-common-votes-panel__header
-    v-subheader(v-t="'poll_common.votes'")
+    .subtitle-1(v-t="'poll_common.votes'")
     v-spacer
-    v-select(style="max-width: 200px" small solo v-model='order' :items="sortOptions" @change='refresh()' aria-label="$t('poll_common_votes_panel.change_results_order')")
+    v-select(style="max-width: 200px" dense solo v-model='order' :items="sortOptions" @change='refresh()' aria-label="$t('poll_common_votes_panel.change_results_order')")
   .poll-common-votes-panel__no-votes(v-if='!poll.stancesCount' v-t="'poll_common_votes_panel.no_votes_yet'")
   .poll-common-votes-panel__has-votes(v-if='poll.stancesCount')
-    v-list
-      .poll-common-votes-panel__stance(v-for='stance in latestStances' :key='stance.id')
-        v-list-item-avatar(v-if='stance.participant()')
-          user-avatar.lmo-flex__no-shrink(:user='stance.participant()' size='thirtysix')
-        .poll-common-votes-panel__stance-content
-          .poll-common-votes-panel__stance-name-and-option
-            v-layout(align-center)
-              strong.pr-2 {{ stance.participantName() }}
-              poll-common-stance-choice(v-if="stance.castAt && poll.singleChoice()" :poll="poll" :stance-choice="stance.stanceChoice()")
-              span.caption(v-if='!stance.castAt' v-t="'poll_common_votes_panel.undecided'" )
-          .poll-common-stance(v-if="stance.castAt")
-            span.caption(v-if='stance.totalScore() == 0' v-t="'poll_common_votes_panel.none_of_the_above'" )
-            v-layout(v-if="!poll.singleChoice()" wrap align-center)
-              poll-common-stance-choice(:stance-choice='choice' :poll='poll' v-if='choice.show()' v-for='choice in stance.orderedStanceChoices()' :key='choice.id')
-            formatted-text.poll-common-stance-created__reason(:model="stance" column="reason")
+    .poll-common-votes-panel__stance(v-for='stance in latestStances' :key='stance.id')
+      .poll-common-votes-panel__avatar.pr-3
+        user-avatar(:user='stance.participant()' size='24')
+      .poll-common-votes-panel__stance-content
+        .poll-common-votes-panel__stance-name-and-option
+          v-layout.body-2(align-center)
+            .pr-2 {{ stance.participantName() }}
+            poll-common-stance-choice(v-if="stance.castAt && poll.singleChoice()" :poll="poll" :stance-choice="stance.stanceChoice()")
+            span.caption(v-if='!stance.castAt' v-t="'poll_common_votes_panel.undecided'" )
+        .poll-common-stance(v-if="stance.castAt")
+          span.caption(v-if='stance.totalScore() == 0' v-t="'poll_common_votes_panel.none_of_the_above'" )
+          v-layout(v-if="!poll.singleChoice()" wrap align-center)
+            poll-common-stance-choice(:stance-choice='choice' :poll='poll' v-if='choice.show()' v-for='choice in stance.orderedStanceChoices()' :key='choice.id')
+          formatted-text.poll-common-stance-created__reason(:model="stance" column="reason")
     v-btn(v-if='loader.limit() < poll.stancesCount' v-t="'common.action.load_more'" @click='loader.fetchRecords()')
 </template>
 
