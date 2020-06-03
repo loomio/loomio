@@ -109,11 +109,7 @@ class Poll < ApplicationRecord
 
   has_paper_trail only: [:title, :details, :details_format, :closing_at,
     :group_id, :anonymous, :voter_can_add_options, :anyone_can_participate,
-    :notify_on_participate]
-
-  def self.always_versioned_fields
-    [:title, :details]
-  end
+    :notify_on_participate, :hide_results_until_closed]
 
   update_counter_cache :group, :polls_count
   update_counter_cache :group, :closed_polls_count

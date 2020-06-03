@@ -26,10 +26,6 @@ class Stance < ApplicationRecord
 
   define_counter_cache(:versions_count)  { |stance| stance.versions.count }
 
-  def self.always_versioned_fields
-    [:reason]
-  end
-
   accepts_nested_attributes_for :stance_choices
 
   belongs_to :participant, class_name: 'User', required: true
