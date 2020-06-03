@@ -111,6 +111,9 @@ export default class PollModel extends BaseModel
   isClosed: ->
     @closedAt?
 
+  showResults: ->
+    @closedAt? || !@hideResultsUntilClosed
+
   close: =>
     @processing = true
     @remote.postMember(@key, 'close').finally => @processing = false
