@@ -29,18 +29,18 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def include_reason?
-    poll.show_results?
+    my_stance || poll.show_results?
   end
 
   def include_stance_choices?
-    poll.show_results?
+    include_reason?
   end
 
   def include_mentioned_usernames?
-    poll.show_results?
+    include_reason?
   end
 
   def include_attachments?
-    poll.show_results?
+    include_reason?
   end
 end
