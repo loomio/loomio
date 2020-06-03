@@ -29,18 +29,18 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def include_reason?
-    !object.poll.hide_results_until_closed?
+    poll.show_results?
   end
 
   def include_stance_choices?
-    !object.poll.hide_results_until_closed?
+    poll.show_results?
   end
 
   def include_mentioned_usernames?
-    include_reason?
+    poll.show_results?
   end
 
   def include_attachments?
-    include_reason?
+    poll.show_results?
   end
 end
