@@ -20,7 +20,7 @@ class PollService
                                          emails: params[:emails],
                                          user_ids: params[:user_ids])
 
-    new_stances =  users.map do |user|
+    new_stances = users.where("id not in (?)", poll.voter_ids).map do |user|
       Stance.new(participant: user, poll: poll, inviter: actor, volume: DiscussionReader.volumes[:normal], reason_format: user.default_format)
     end
     Stance.import(new_stances, on_duplicate_key_ignore: true)
@@ -32,7 +32,6 @@ class PollService
 
       DiscussionReader.import(new_discussion_readers, on_duplicate_key_ignore: true)
     end
-
 
     stances = Stance.where(participant_id: users.pluck(:id), poll: poll)
     poll.update_stances_count
