@@ -57,10 +57,7 @@ namespace :loomio do
   end
 
   task update_subscription_members_counts: :environment do
-    if Date.today.wday == 3
-      SubscriptionService.delay.update_changed_members_counts(['pp-basic-annual', 'pp-pro-annual', 'pp-community-annual'])
-    end
-    SubscriptionService.delay.update_changed_members_counts(['pp-basic-monthly', 'pp-pro-monthly'])
+    SubscriptionService.update_member_counts
   end
 
   task refresh_expiring_chargify_management_links: :environment do
