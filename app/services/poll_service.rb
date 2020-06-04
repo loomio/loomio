@@ -20,12 +20,10 @@ class PollService
                                          emails: params[:emails],
                                          user_ids: params[:user_ids])
 
-    users = users.where("id not in (?)", poll.voter_ids) if poll.voter_ids.present?
-
-    new_stances = users.map do |user|
+    new_stances = users.where.not(id: poll.voter_ids).map do |user|
       Stance.new(participant: user, poll: poll, inviter: actor, volume: DiscussionReader.volumes[:normal], reason_format: user.default_format)
     end
-    
+
     Stance.import(new_stances, on_duplicate_key_ignore: true)
 
     if poll.discussion
