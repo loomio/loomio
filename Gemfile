@@ -25,7 +25,7 @@ gem 'paper_trail', '~> 10.3.1'
 gem 'sidekiq'
 gem 'friendly_id', '~> 5.3.0'
 gem 'httparty', '~> 0.18.0'
-gem 'browser', '~> 4.1.0'
+gem 'browser', '~> 4.2.0'
 gem "aws-sdk-s3", require: false
 gem 'mini_magick'
 gem 'image_processing', '~> 1.11'

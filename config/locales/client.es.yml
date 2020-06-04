@@ -725,7 +725,7 @@ es:
     stance_header: Historial de revisión de posturas
     started_by: 'Iniciado por <strong>{{name}}</strong>'
     edited_by: 'Editado por <strong>{{name}}</strong>'
-    edit_by: "Editar por {{nombre}} · {{fecha}}"
+    edit_by: "Editar por {{name}} · {{date}}"
     posted: Enviado
     original_text: Original
     current_revision: Últimos
@@ -984,8 +984,8 @@ es:
     only_one_admin: Solamente hay un administrador en este grupo. Se recomienda que elijáis al menos otro miembro como administrador.
     messages:
       remove_member_success: '{{name}} eliminado'
-      make_admin_success: '{{nombre}} es ahora un administrador'
-      remove_admin_success: '{{nombre}} ya no es un administrador'
+      make_admin_success: '{{name}} es ahora un administrador'
+      remove_admin_success: '{{name}} ya no es un administrador'
     remove_admin_from_self:
       question: '¿Estás seguro de que ya no quieres ser administrador?'
   membership_remove_modal:
@@ -1061,7 +1061,7 @@ es:
     use_initials: 'Usar iniciales'
     use_gravatar: 'Usar Gravatar'
     use_uploaded: 'Cargar nueva foto'
-    use_provider: 'Usa {{proveedor}} foto'
+    use_provider: 'Usa {{provider}} foto'
   change_password_form:
     set_password_title: Establece tu contraseña
     set_password_helptext: Por favor introduce una contraseña - mínimo 8 dígitos
@@ -1112,8 +1112,8 @@ es:
       updated: Configuración del correo electrónico actualizada
     learn_more: Aprende más sobre la configuración de correo electrónico...
   thread_preview:
-    replies_count: "{{conteo}} respuestas"
-    unread_count: "{{count} no leídos"
+    replies_count: "{{count}} respuestas"
+    unread_count: "{{count}} no leídos"
   dashboard_page:
     aria_label: 'Escritorio'
     no_groups:
@@ -1200,7 +1200,7 @@ es:
     title: Visto por
     no_one: Nadie ha visto esto todavía
   activity_card:
-    count_responses: "{{conteo}} respuestas"
+    count_responses: "{{count}} respuestas"
     event_pinned: "Anclado para cronograma"
     event_unpinned: "Desanclado de cronograma"
     beginning: 'Inicio '
@@ -1299,7 +1299,7 @@ es:
         Al contactar con nosotros autorizas que nuestro personal acceda a tu cuenta si fuera necesario. <br />
         Nuestro equipo de apoyo habla Inglés y si fuera necesario traducirá tu mensaje con el Traductor de Google. <br />
         Esperamos responder todos nuestros mensajes en el espacio de 24 horas.
-    success: "Gracias por tu mensaje,{{nombre}}. Nos pondremos en contacto contigo."
+    success: "Gracias por tu mensaje, {{name}}. Nos pondremos en contacto contigo."
   hint:
     context: 'Consejos para usar el panel de contexto'
     discussion: 'Consejos para empezar una discusión participativa'
@@ -1361,7 +1361,7 @@ es:
     max_score: Máximo marcador
     min_score: Mínimo Marcador
     too_long: Demasiado largo
-    edit_warning: Solamente se recomienda editar para cambios menores o arreglar errores ortográficos. Para cambios significantes, cierra este {{tipoEncuesta}} y empieza uno nuevo.
+    edit_warning: Solamente se recomienda editar para cambios menores o arreglar errores ortográficos. Para cambios significantes, cierra este {{pollType}} y empieza uno nuevo.
     no_voting: 'Para discusión solamente, el voto deshabilitado '
   poll_common_attachment_form:
     label: Adjuntos
@@ -1382,11 +1382,11 @@ es:
   discussions_panel:
     open: Abierto
     all: Todos/as
-    unread: No leídos {{count}
+    unread: No leídos ({{count}})
     closed: 'Cerrado '
-    include_subgroups_mine: '{{nombre}} y mis subgrupos'
-    include_subgroups_all: '{{nombre}} y todos los subgrupos'
-    no_results_found: No hay resultados para "{{búsqueda}}""
+    include_subgroups_mine: '{{name}} y mis subgrupos'
+    include_subgroups_all: '{{name}} y todos los subgrupos'
+    no_results_found: No hay resultados para "{{search}}""
   members_panel:
     no_results: 'No se han encontrado miembros'
     everyone: 'Todos'
@@ -1823,7 +1823,7 @@ es:
     name_placeholder: Su nombre
     name_required: Por favor ingresa un nombre
     terms_required: 'Debes aceptar los Términos del Servicio '
-    account_inactive: '¡Vaya! parece que la cuenta de {{correo electrónico}} está desactivada. '
+    account_inactive: '¡Vaya! parece que la cuenta de {{email}} está desactivada. '
     privacy_notice: "Nunca venderemos sus datos. <br><a href='{{privacyUrl}}' target='_blank'>Privacy policy</a>"
     welcome: ¿Es nuevo en {{siteName}}?
     welcome_back: Bienvenido nuevamente, {{name}}!
@@ -1837,11 +1837,11 @@ es:
     email_address_of_existing_account: Introduce la dirección de correo electrónico de tu cuenta existente.
     link_accounts: Enlazar cuentas
     check_your_email: ¡Revise su correo electrónico!
-    login_link_sent: "Enviamos un correo electrónico a {{correo electrónico}}"
+    login_link_sent: "Enviamos un correo electrónico a {{email}}"
     instructions: "Haz clic en el enlace para entrar, o ingresa el siguiente código:"
     too_many_attempts: "Demasiados intentos, haz clic en el enlace en el correo electrónico para entrar. "
     invalid_code: "Lo lamentamos, ese código no coincide. Mira el correo electrónico e intenta de nuevo"
-    password_link_sent: "Le hemos enviado un correo electrónico a {{correo electrónico}}, con instrucciones para configurar su contraseña."
+    password_link_sent: "Le hemos enviado un correo electrónico a {{email}}, con instrucciones para configurar su contraseña."
     reactivate_link_sent: "Te hemos enviado un email con instrucciones para reactivar tu cuenta"
     signed_in: Entraste exitosamente
     email_verified: Correo electrónico verificado
@@ -1863,7 +1863,7 @@ es:
     add_webhook: Añadir webhook
     success: Webhook añadido!
     remove: Eliminar webhook
-    confirm_remove: "¿Estás seguro de que quieres eliminar el webhook: {{nombre}}?"
+    confirm_remove: "¿Estás seguro de que quieres eliminar el webhook: {{name}}?"
     removed: Webhook eliminado
     url_label: Webhook URL
     url_placeholder: https://hooks.example.com/...

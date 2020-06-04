@@ -8,7 +8,13 @@ export default
     isHtml: -> @format == 'html'
     translated: ->
       @model.translation[@field]
-    format: -> @model[@field+"Format"]
+    format: ->
+      # not all fields this is being used for has a corresponding _format column, for example, discussion.title
+      # in the situation in which there is no _format column, fall back to html
+      if @model[@field+"Format"]
+        @model[@field+"Format"]
+      else
+        'html'
 </script>
 
 <template lang="pug">

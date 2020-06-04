@@ -1,4 +1,7 @@
 ca:
+  errors:
+    404:
+      title: No s'ha trobat
   group:
     stats:
       members: Membres

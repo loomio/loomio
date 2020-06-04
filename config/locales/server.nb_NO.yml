@@ -1,4 +1,7 @@
 nb_NO:
+  errors:
+    404:
+      title: Ikke funnet
   group:
     stats:
       threads: Tråder

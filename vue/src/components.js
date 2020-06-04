@@ -165,7 +165,6 @@ module.exports = {
   ThreadSearchResult: 'thread/search_result',
   PinEventForm: 'thread/pin_event_form',
   TimeAgo: 'common/time_ago',
-  TimeZoneSelect: 'poll/meeting/time_zone_select',
   Translation: 'common/translation',
   TrialBanner: 'group/trial_banner',
   UserAvatar: 'user/avatar',

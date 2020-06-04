@@ -40,6 +40,7 @@ en:
     renews_at: "Renews"
     referral_code: "Chargify referral code"
     chargify_link: "Chargify billing portal"
+    referral_code_help: "Give a friend a discount, get yourself some credit!"
 
   loomio_tags:
     all_tags: All tags

@@ -337,34 +337,39 @@ en:
   how_it_works_thread:
     title: How to use Loomio
     description: |
-      Welcome to Loomio, an online place to make decisions together.
+      Welcome to Loomio, an online place for communicating and making decisions.
 
-      This is an example discussion **thread**. You can add comments below. A thread is a conversation on a given topic. This thread is about how Loomio works, so post questions about that here.
+      This is an example discussion **thread**. You can add comments below. Threads are for discussing topics and getting clear outcomes. This thread is about how Loomio works, so post questions about that here.
 
-      You are currently reading the thread **context**, a space for background information. You can update it as the discussion progresses.
+      You are currently reading the thread **context**, which can be kept up to date with key information and questions that help people engage.
 
       To get started with Loomio:
-      1. Upload a [profile picture](/profile)
-      2. Post in existing threads, or start a new one
-
+      <ul>
+        <li>Try commenting in an existing thread, or this one.</li>
+      </ul>
       Tips for posting on Loomio:
-      * To notify a specific person, type @ followed by their name.
-      * Click the paperclip icon to add attachments.
+      <ul>
+        <li>To notify a specific person, type @ followed by their name</li>
+        <li>Drag and drop pictures and attachments or click the paperclip icon</li>
+        <li>See 5 ways to use threads for some ideas and tips</li>
+      </ul>
 
-      If you’ve got questions, check the [Loomio help manual](http://help.loomio.org).
+      If you have any questions, see [Loomio Help](http://help.loomio.org).
 
   first_proposal:
-    name: Demonstration proposal
+    name: Have any questions about using Loomio?
     description: |
-      This is a **proposal**, where you can make a decision together. You can start a proposal once a discussion is underway.
+      _If yes, share your question. If no, you’re ready to comment in your group’s threads!_
 
-      Everyone is asked to **state a position** by the **deadline**. You can extend the deadline if you need to, or close a proposal early.
+      This **Check poll** is asking whether you or anyone here has any questions about using Loomio.
 
-      You can **change your position** while the proposal is open. You might reconsider your view as you listen to others.
+      <ul><li>Go ahead and try it using the buttons and text field below.</li></ul>
 
-      Sometimes groups work through a **series of proposals** to build solutions together. You can raise sequential proposals in this thread.
+      As with any decision or facilitation tool, you will need to respond before it closes.
 
-      **Try participating! Click one of the four buttons**.
+      You can change your position while it is open (perhaps responding to new info).
+
+      **Try participating! Click one of the buttons.**
 
   markdown:
     intro:

@@ -677,6 +677,8 @@ ActiveRecord::Schema.define(version: 2020_06_02_220450) do
     t.jsonb "info"
     t.datetime "canceled_at"
     t.datetime "activated_at"
+    t.datetime "renews_at"
+    t.datetime "renewed_at"
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
   end
 

@@ -7,6 +7,8 @@ ru:
         blank: не может быть пусто
         invalid: не является допустимым значением
   errors:
+    404:
+      title: Не найдено
     noscript: Для работы Loomio требуется Javascript! Включите, пожалуйста, Javascript в своем браузере.
     return_home: Вернуться к началу
     not_found: 404 файл не найден
