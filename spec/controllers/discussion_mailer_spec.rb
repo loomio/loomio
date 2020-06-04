@@ -5,13 +5,13 @@ require_relative './mailer_helpers'
 describe Dev::NightwatchController do
   render_views
 
-  it 'catch_up' do
-    get :setup_thread_catch_up
-    expect_text_no_tags('main', "Dirty Dancing Shoes")
-    expect_text_no_tags('main', "How to use Loomio")
-    expect_text_no_tags('main', "Demonstration proposal")
-    expect_text_no_tags('main', "What star sign are you?")
-  end
+  # it 'catch_up' do
+  #   get :setup_thread_catch_up
+  #   expect_text_no_tags('main', "Dirty Dancing Shoes")
+  #   expect_text_no_tags('main', "How to use Loomio")
+  #   expect_text_no_tags('main', "Demonstration proposal")
+  #   expect_text_no_tags('main', "What star sign are you?")
+  # end
 
   it 'discussion_announced' do
     get :setup_discussion_mailer_discussion_announced_email
