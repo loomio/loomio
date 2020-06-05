@@ -135,24 +135,11 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def logo_url_medium
-    object.logo.url(:medium)
-  end
-
-  def include_logo_url_medium?
-    object.logo.present?
-  end
-
-  def cover_urls
-    {
-      small:      cover_photo.url(:desktop),
-      medium:     cover_photo.url(:largedesktop),
-      large:      cover_photo.url(:largedesktop),
-      extralarge: cover_photo.url(:largedesktop)
-    }
+    object.logo_urls[:medium]
   end
 
   def has_custom_cover
-    cover_photo.present?
+    cover_photo.attached?
   end
 
   def is_subgroup_of_hidden_parent

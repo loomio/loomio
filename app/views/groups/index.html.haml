@@ -10,7 +10,7 @@
                 %a.explore-page__group.my-4.v-card.v-card--link.v-sheet.theme--light{ href: group_url(group) }
                   .v-responsive.v-image.explore-page__group-cover
                     .v-responsive__sizer{style: "padding-bottom: 20.6186%;"}
-                    .v-image__image.v-image__image--cover{style: "background-image: url(#{group.logo_or_parent_logo}); background-position: center center;" }
+                    .v-image__image.v-image__image--cover{style: "background-image: url(#{group.logo_urls[:medium]}); background-position: center center;" }
                     .v-responsive__content{style: "width: 970px;"}
                   .v-card__title= group.name
                   .v-card__text

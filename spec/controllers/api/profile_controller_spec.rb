@@ -108,21 +108,10 @@ describe API::ProfileController do
     context 'success' do
       it 'updates a users profile picture when uploaded' do
         user.update avatar_kind: 'gravatar'
-        allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(true)
         post :upload_avatar, params: { file: fixture_for('images/strongbad.png') }
         expect(response.status).to eq 200
         expect(user.reload.avatar_kind).to eq 'uploaded'
-        expect(user.reload.uploaded_avatar).to be_present
-      end
-    end
-
-    context 'failure' do
-      it 'does not upload an invalid file' do
-        user.update avatar_kind: 'gravatar'
-        post :upload_avatar, params: { file: fixture_for('images/strongmad.pdf') }
-        expect(response.status).to_not eq 200
-        expect(user.reload.avatar_kind).to eq 'gravatar'
-        expect(user.reload.uploaded_avatar).to be_blank
+        expect(user.reload.uploaded_avatar.attached?).to be true
       end
     end
   end

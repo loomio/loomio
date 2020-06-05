@@ -24,15 +24,15 @@ class API::RestfulController < API::SnorlaxBase
   end
 
   def create_action
-    @event = service.create({resource_symbol => resource, actor: current_user})
+    @event = service.create(**{resource_symbol => resource, actor: current_user})
   end
 
   def update_action
-    @event = service.update({resource_symbol => resource, params: resource_params, actor: current_user})
+    @event = service.update(**{resource_symbol => resource, params: resource_params, actor: current_user})
   end
 
   def destroy_action
-    service.destroy({resource_symbol => resource, actor: current_user})
+    service.destroy(**{resource_symbol => resource, actor: current_user})
   end
 
   def permitted_params

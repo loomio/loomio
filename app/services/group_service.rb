@@ -1,4 +1,27 @@
+# require 'uri'
+
 module GroupService
+
+  def self.remote_cover_photo
+    # id like to use unsplash api but need to work out how to meet their attribution requirements
+    [
+      "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/001/original/open-uri20150904-3-16e2exd?1441337903",
+      "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/002/original/open-uri20150904-3-rdqbrq?1441337903",
+      "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/003/original/open-uri20150904-3-1oppl5v?1441337903",
+      "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/004/original/open-uri20150904-3-pk5rt7?1441337903",
+      "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/005/original/open-uri20150904-3-llrp8p?1441337904",
+      "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/006/original/open-uri20150904-3-12f1pb7?1441337904",
+      "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/007/original/open-uri20150904-3-mnvdi7?1441337904",
+      "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/008/original/open-uri20150904-3-ug7qk8?1441337904",
+      "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/009/original/open-uri20150904-3-kxuccv?1441337904",
+      "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/010/original/open-uri20150904-3-1v5vy0t?1441337904",
+      "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/011/original/open-uri20150904-3-nk5ttf?1441337905",
+      "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/012/original/open-uri20150904-3-12mh2l4?1441337905",
+      "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/013/original/open-uri20150904-3-1rh3y2o?1441337905",
+      "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/014/original/open-uri20150904-3-18nwpr9?1441337905"
+    ].sample
+  end
+
   def self.announce(group:, params:, actor:)
     actor.ability.authorize! :announce, group
 
@@ -32,10 +55,14 @@ module GroupService
     return false unless group.valid?
 
     group.is_referral = actor.groups.size > 0
+    group.creator = actor if actor.is_logged_in?
 
     if group.is_parent?
-      group.default_group_cover = DefaultGroupCover.sample
-      group.creator             = actor if actor.is_logged_in?
+      if Rails.env.production?
+        url = remote_cover_photo
+        group.cover_photo.attach(io: URI.open(url), filename: File.basename(URI.parse(url).path))
+      end
+
       ExampleContent.new(group).add_to_group! if AppConfig.app_features[:example_content]
     end
 

@@ -9,15 +9,12 @@ class PollExporter
     "#{@poll.title.parameterize}-#{I18n.t("common.action.export").downcase}.csv"
   end
 
-  def label(key, *opts)
-    I18n.t("poll.export.#{key}", *opts)
+  def label(key, **opts)
+    I18n.t("poll.export.#{key}", **opts)
   end
 
   def meta_table
     outcome = @poll.current_outcome
-    voted = @poll.stances_count
-    total = @poll.members.count
-    engagement =  label('percent_voted', num:voted ,denom:total, percent:"#{(voted*100/total)}%") if total > 0
 
     {
       title: @poll.title,
@@ -25,7 +22,7 @@ class PollExporter
       created_at: @poll.created_at,
       closing_at:  (@poll.closing_at unless @poll.closed_at),
       closed_at: @poll.closed_at,
-      engagement:engagement,
+      engagement: I18n.t("poll.export.percent_voted", num: @poll.participants_count, denom: @poll.stances_count, percent: "#{@poll.cast_stances_pct}%"),
       stances: @poll.stances_count,
       participants: @poll.members.count,
       details: @poll.details,
@@ -40,7 +37,7 @@ class PollExporter
 
   def stance_matrix
     rows = []
-    rows << [label("participant"), @poll.poll_options.map(&:display_name), label("reason")].flatten
+    rows << [I18n.t("poll.export.participant"), @poll.poll_options.map(&:display_name), I18n.t("poll.export.reason")].flatten
 
     ## for each participant show the
     @poll.stances.latest.each do |stance|
