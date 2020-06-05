@@ -44,7 +44,7 @@ export default
       )
     dockActions: ->
       assign(
-        pick PollService.actions(@poll, @), ['announce_poll', 'edit_poll', 'close_poll', 'reopen_poll']
+        pick PollService.actions(@poll, @), ['edit_stance', 'announce_poll', 'edit_poll', 'close_poll', 'reopen_poll']
       ,
         pick EventService.actions(@event, @), ['pin_event', 'unpin_event']
       )
