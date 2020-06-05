@@ -59,6 +59,7 @@ class GroupSerializer < ApplicationSerializer
              :subscription_state,
              :subscription_created_at,
              :subscription_info,
+             :subscription_members_count,
              :subgroups_count,
              :complete
 
@@ -111,6 +112,10 @@ class GroupSerializer < ApplicationSerializer
 
   def subscription_info
     subscription.info
+  end
+
+  def subscription_members_count
+    subscription.members_count
   end
 
   def subscription

@@ -17,8 +17,8 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.10.1",
-    "@sentry/browser": "5.15.5",
-    "@sentry/integrations": "5.15.5",
+    "@sentry/browser": "5.16.1",
+    "@sentry/integrations": "5.16.1",
     "actioncable": "^5.2.2",
     "activestorage": "^5.2.2",
     "ahoy.js": "^0.3.5",

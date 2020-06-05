@@ -19,8 +19,4 @@ class Subscription < ApplicationRecord
     # allow groups in dunning or on hold to continue using the app
     self.state == 'active' or self.state == 'past_due' or self.state == 'on_hold' or (self.state == 'trialing' && self.expires_at > Time.current)
   end
-
-  def calculate_members_count
-    Group.where(subscription_id: self.id).map(&:org_members_count).sum
-  end
 end
