@@ -15,13 +15,13 @@ class Events::PollClosingSoon < Event
   def email_recipients
     notification_recipients
   end
-  
+
   def notification_recipients
     users = Queries::UsersByVolumeQuery.normal_or_loud(poll)
     if poll.voters_review_responses
       users
     else
-      users.where.not(id: poll.participants)
+      users.where.not(id: poll.participant_ids)
     end
   end
 

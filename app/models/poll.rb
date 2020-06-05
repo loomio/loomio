@@ -133,6 +133,18 @@ class Poll < ApplicationRecord
     anonymous? ? User.none : super
   end
 
+  def participants
+    anonymous? ? User.none : super
+  end
+
+  def voters
+    anonymous? ? User.none : super
+  end
+
+  def non_voters
+    anonymous? ? User.none : super
+  end
+
   def body
     details
   end
