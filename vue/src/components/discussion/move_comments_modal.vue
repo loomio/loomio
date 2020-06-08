@@ -55,7 +55,7 @@ export default
           .find(groupId: @groupId)
           .find({ id: { $ne: @discussion.id } })
           .find(title: { $regex: [@searchFragment, 'i'] })
-          .where((d) -> AbilityService.canMoveThread(d))
+          .where((d) -> !!AbilityService.canAddComment(d))
           .simplesort('title')
           .data()
     , 500
