@@ -167,6 +167,11 @@ ActiveAdmin.register Group, as: 'Group' do
       row :logo_content_type
       row :logo_file_size
       row :logo_updated_at
+      row :psp_links do |group|
+        Array(SubscriptionService::USABLE_PLANS).map do |key|
+          SubscriptionService.psp_url(group, group.creator, key)
+        end.join(" ")
+      end
     end
 
     if group.archived_at.nil?
