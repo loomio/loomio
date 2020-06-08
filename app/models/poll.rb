@@ -73,8 +73,7 @@ class Poll < ApplicationRecord
   scope :search_for, ->(fragment) { where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
   scope :lapsed_but_not_closed, -> { active.where("polls.closing_at < ?", Time.now) }
   scope :active_or_closed_after, ->(since) { where("closed_at IS NULL OR closed_at > ?", since) }
-  scope :participation_by, ->(participant) { joins(:stances).where("stances.participant_id": participant.id) }
-  scope :authored_by, ->(user) { where(author: user) }
+  
   scope :with_includes, -> { includes(
     :documents,
     :poll_options,
