@@ -96,7 +96,7 @@ GEM
       addressable (>= 2.3.2)
       nokogiri
       safely_block (>= 0.1.1)
-    ahoy_matey (3.0.3)
+    ahoy_matey (3.0.4)
       activesupport (>= 5)
       device_detector
       geocoder (>= 1.4.5)
@@ -247,7 +247,7 @@ GEM
     httparty (0.18.0)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
-    i18n (1.8.2)
+    i18n (1.8.3)
       concurrent-ruby (~> 1.0)
     icalendar (2.6.1)
       ice_cube (~> 0.16)
@@ -512,7 +512,7 @@ DEPENDENCIES
   activerecord-import (= 1.0.5)
   activerecord-nulldb-adapter
   ahoy_email (~> 1.1.0)
-  ahoy_matey (~> 3.0.3)
+  ahoy_matey (~> 3.0.4)
   autoprefixer-rails
   aws-sdk-s3
   bootsnap
