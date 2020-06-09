@@ -11,6 +11,31 @@ es:
         blank: no puede estar vacío
         invalid: No es un valor válido.
   errors:
+    400:
+      title: Mala petición
+      body: Lo sentimos, no pudimos entender esa petición
+    403:
+      title: Prohibido
+      body: No tienes permiso para acceder a esta página. Tal vez necesitas iniciar sesión.
+    404:
+      title: 'No encontrado '
+      body: Disculpa, la página que estás buscando no existe. Tal vez has escrito una dirección incorrecta o la página se ha movido o ha sido eliminada.
+    410:
+      title: Desaparecido
+      body: Esta página ya no existe
+    417:
+      title: Navegador incompatible
+      body: |
+          Por favor <a href="https://browser-update.org/update.html?force_outdated=true"> actualice su navegador</a> para usar Loomio
+    422:
+      title: Institución  que no se puede procesar
+      body: Se ha denegado el cambio que querías. Quizás intentaste cambiar algo a lo que no tenías acceso.
+    429:
+      title: Demasiadas peticiones
+      body: Lo sentimos, has excedido el máximo de solicitudes permitidas por minuto para esta acción. Por favor espera un momento y vuélvelo a intentar.
+    500:
+      title: Error interno del servidor
+      body: Lo sentimos, pero algo fue mal. Se nos ha notificado sobre este problema y echaremos un vistazo lo antes posible.
     noscript: Loomio necesita javascript para funcionar. Porfavor permite javascript en tu navegador para continuar
     upgrade_browser: |
         Oh! Tu buscador es demasiado viejo y puede que Loomio no funcione correctamente. Por favor <a href="https://browser-update.org/update.html">actualiza tu buscador.</a>
@@ -272,34 +297,38 @@ es:
   how_it_works_thread:
     title: Cómo usar Loomio
     description: |
-        Bienvenido a Loomio, un lugar online para toma de decisiones.
+        Bienvenidos a Loomio, un sitio online para comunicarse y tomar decisiones.
 
-        Este es un ejemplo de **hilo** de discusión. Puedes añadir comentarios debajo. Un hilo es una conversación de un tema dado. Este hilo trata de como trabaja Loomio, así que pon preguntas sobre el tema aquí.
+        Esto es un ejemplo de una discusión **hilo**. Puedes añadir comentarios abajo. Los hilos son para debatir temas y obtener resultados claros. Este hilo es acerca de cómo funciona Loomio, así que puedes escribir preguntas acerca de eso aquí.
 
-        En estos momentos estás leyendo **contexto**, un espacio para la información de trasfondo. Puedes actualizarlo según la conversación vaya progresando.
+        En estos momentos estás leyendo el hilo **contexto**, el cual puede mantenerse actualizado con las información clave y las preguntas que ayudan a la gente a involucrarse.
 
         Para empezar con Loomio:
-        1. Carga una [foto de perfil](/perfil)
-        2. Publica en hilos que ya existan o empieza uno nuevo
-
+        <ul>
+        Intenta comentar en un hilo existente o este mismo.
+        </ul>
         Trucos para publicar en Loomio:
-        *Para notificar a una persona específica, escribe  @  seguido de su nombre.
-        *Clica el icono del clip para añadir adjuntos.
+        <ul>
+        <li>Para notificar a una persona en particular escribe @ seguido de su nombre </li>
+        <li>Arrastrar y soltar fotos y adjuntos o clica el icono de clip</li>
+        <li>Ve 5 maneras de usar los hilos para unas ideas y consejos </li>
+        </ul>
 
-
-        Si tienes preguntas, revisa el [Manual de ayuda de Loomio] (http://help.loomio.org).
+        Si tienes alguna pregunta mira [Loomio Help] (http://help.loomio.org
   first_proposal:
-    name: Propuesta de demostración
+    name: ¿Tienes alguna pregunta acerca de cómo usar Loomio?
     description: |
-        Esto es una **Propuesta**, donde pueden tomar decisiones conjuntamente. Puede iniciar un propuesta en cuanto haya una discusión iniciada.
+        _En el caso de si, comparte tu pregunta. En el caso de no, estás preparado para comentar en los hilos de tu grupo!_
 
-        Se solicita a todos los integrantes del grupo a que **tomen una posición** antes de la **fecha de cierre**. Puede extender la fecha de cierre si lo necesita o cerrar la propuesta con antelación.
+        Esta **encuesta de verificación** está preguntado si tú o alguien aquí tiene alguna pregunta acerca de cómo usar Loomio.
 
-        Puede que reconsidere su posición al escuchar a otros, podrás **cambiar de posición** en cualquier momento en que la propuesta esté activa.
+        <ul><li>Adelante e intenta usar los botones y el area de texto debajo.</li></ul>
 
-        Los grupos pueden trabajar con una **serie de propuestas** para construir una solución entre todos. Puedes crear una serie de propuestas en este hilo.
+        Con cualquier decisión o herramienta de facilitación, necesitarás responder antes de que cierre.
 
-        **Pruebe a participar, haga clic en uno de los 4 botones**
+        Puedes cambiar tu posición mientras está abierto (quizás respondiendo a nueva información).
+
+        **Intenta participar! Clica uno de los botones.**
   markdown:
     intro:
       title: |

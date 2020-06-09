@@ -169,7 +169,7 @@ hu:
       join_group: "Csoporthoz csatlakozás"
     membership_request:
       intro_html: hozzáférést kért az egyik csoportodhoz.
-      subject: "%{who} csatlakozást kért a(z)%{who_group} oldalhoz"
+      subject: "%{who} csatlakozást kért a(z)%{which_group} oldalhoz"
       view_group: Itt jóváhagyhatod vagy elutasíthatod a kérelmet
       button_text: Kérés megtekintése
   announcement_count_emails: "%{count} e-mail"

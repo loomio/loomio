@@ -108,7 +108,14 @@ export default new class PollService
       canPerform: ->
         AbilityService.canExportPoll(poll)
       perform: ->
-        hardReload LmoUrlService.poll(poll, {export: 1}, action: 'export', absolute: true)
+        hardReload LmoUrlService.poll(poll, {export: 1}, {action: 'export', ext: 'csv', absolute: true})
+
+    print_poll:
+      name: 'common.action.print'
+      canPerform: ->
+        AbilityService.canExportPoll(poll)
+      perform: ->
+        hardReload LmoUrlService.poll(poll, {export: 1}, {action: 'export', ext: 'html', absolute: true})
 
     delete_poll:
       name: 'common.action.delete'

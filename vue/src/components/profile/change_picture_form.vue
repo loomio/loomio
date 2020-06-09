@@ -40,6 +40,7 @@ export default
       @uploading = true
       Records.users.remote.onUploadSuccess = (response) =>
         Records.import response
+        EventBus.$emit 'updateProfile'
         EventBus.$emit 'closeModal'
         @uploading = false
       Records.users.remote.upload('upload_avatar', @$refs.fileInput.files[0], {}, (args) => @progress = args.loaded / args.total * 100)
@@ -49,6 +50,7 @@ export default
       Records.users.updateProfile(@user)
       .then =>
         Flash.success 'profile_page.messages.picture_changed'
+        EventBus.$emit 'updateProfile'
         EventBus.$emit 'closeModal'
       .catch onError(@user)
 

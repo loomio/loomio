@@ -6,13 +6,19 @@
         %th Id
         %th plan
         %th state
+        %th members_count
         %th expires_at
-        %th Chargify Subscription Id
+        %th renews_at
+        %th renewed_at
+        %th Chargify Id
       %tr
         %td= link_to subscription.id, admin_subscription_path(subscription.id)
         %td= subscription.plan
         %td= subscription.state
+        %td= subscription.members_count
         %td= subscription.expires_at
+        %td= subscription.renews_at
+        %td= subscription.renewed_at
         - if subscription.chargify_subscription_id.present?
           %td= link_to subscription.chargify_subscription_id, "https://loomio.chargify.com/subscriptions/#{subscription.chargify_subscription_id}"
         - else

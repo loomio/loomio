@@ -11,6 +11,29 @@ ar:
         blank: لا يمكن أن تكون فارغة
         invalid: ليست قيمة صالحة
   errors:
+    400:
+      title: 'اقتراح غير جيد '
+      body: عذرًا ، لم نتمكن من فهم هذا الطلب
+    403:
+      title: 'ممنوع '
+      body: .لا يسمح لك بالوصول إلى هذه الصفحة.  قد تحتاج لتسجيل الدخول
+    404:
+      title: 'غير موجود '
+      body: "عذرًا ، الصفحة التي تبحث عنها غير موجودة.  ربما تكون قد أخطأت في كتابة العنوان. \nأو ربما تم نقل الصفحة أو حذفها"
+    410:
+      title: 'ذهب '
+      body: 'هذه الصفحة لم تعد موجودة '
+    417:
+      title: المتصفح غير متوافق
+    422:
+      title: كيان غير قابل للمعالجة
+      body: .تم رفض التغيير الذي تريده.  ربما حاولت تغيير شيء لم يكن لديك حق الوصول إليه
+    429:
+      title: طلبات كثيرة جدا
+      body: عذرًا ، لقد تجاوزت الحد الأقصى للطلبات المسموح بها في الدقيقة لهذا الإجراء.  يرجى الانتظار لحظة وحاول مرة أخرى
+    500:
+      title: خطأ في المخدم الداخلي
+      body: نحن نعتذر، ولكن حدث خطأ ما.  لقد تم إعلامنا بهذه المشكلة وسنلقي نظرة عليها قريبًا
     noscript: Loomio يتطلب جافا سكريبت للعمل!  يرجى تمكين جافا سكريبت في متصفحك للمتابعة
     upgrade_browser: |
         عذرًا!  متصفح الويب الخاص بك قديم جدًا وقد لا يعمل Loomio بشكل صحيح.  من فضلك <a href="https://browser-update.org/update.html">قم بتحديث المتصفح الخاص بك.</a>
@@ -210,6 +233,7 @@ ar:
       subject: "[%{group}] %{discussion}"
     new_comment:
       subject: "[%{group}] %{discussion}"
+      subject_html: "%{discussion}:علق في<strong>%{actor}</strong>"
     reply_or_view_online_html: قم بالرد مباشرة على هذه الرسالة أو <a href='%{url}'>استعرضها على %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>أطفئ الرسائل الالكترونية</a> لهذا النقاش."
   footer:
@@ -246,8 +270,6 @@ ar:
         ما هو دورك أو مقربتك للمشاركة في هذه المجموعة؟  ما الذي يجب أن يعرفه الأشخاص عنك لفهم من أين أنت؟
   how_it_works_thread:
     title: كيفية استخدام لوميو
-  first_proposal:
-    name: اقتراح مظاهرة
   markdown:
     intro:
       body: |
@@ -275,3 +297,31 @@ ar:
       please_respond: يرجى الرد
       time_zone: '(الأوقات المعروضة في %{zone}) '
       undecided_members: 'الأعضاء غير محددين (%{count}) '
+      undecided_visitors: 'ضيوف غير محددين ( %{count}) '
+    proposal:
+      subject:
+        poll_closing_soon: 'العرض يغلق خلال 24 ساعة: %{title}'
+        poll_closing_soon_author: 'عرضك يغلق خلال 24 ساعة: %{title}'
+        poll_expired: "العرض أغلق: %{title}"
+    poll:
+      subject:
+        poll_closing_soon: '%{title}:الاستطلاع يغلق خلال 25 ساعة'
+        poll_expired: "نتائج الاستطلاع:%{title}"
+      header:
+        poll_closing_soon: 'يتم إغلاق الاستطلاع خلال 24 ساعة. الآن هو الوقت المناسب للتصويت أو تغيير رأيك أو تشجيع الآخرين على المشاركة.<strong>%{actor}</strong>'
+        poll_closing_soon_author: 'سيتم إغلاق الاستطلاع خلال 24 ساعة - الآن هو وقت رائع لتذكير الناس به أو تمديد الموعد النهائي إذا لزم الأمر'
+    score:
+      subject:
+        poll_announced: '%{actor}دعوتك للتصويت في استطلاع نقاط:%{title}'
+        poll_closing_soon: '%{title}:الاستطلاع يغلق خلال 25 ساعة'
+        poll_expired: "نتائج الاستطلاع:%{title}"
+      header:
+        poll_closing_soon: 'يتم إغلاق الاستطلاع خلال 24 ساعة. الآن هو الوقت المناسب للتصويت أو تغيير رأيك أو تشجيع الآخرين على المشاركة.<strong>%{actor}</strong>'
+        poll_closing_soon_author: 'سيتم إغلاق الاستطلاع خلال 24 ساعة - الآن هو وقت رائع لتذكير الناس به أو تمديد الموعد النهائي إذا لزم الأمر'
+    ranked_choice:
+      subject:
+        poll_expired: " %{title}:نتائج الاختيار المرتبة"
+      header:
+        outcome_created_author: '.لقد شاركت نتيجة اختيار مرتبة'
+  poll_unsubscribe:
+    visit_poll: مشاهدة الاستطلاع

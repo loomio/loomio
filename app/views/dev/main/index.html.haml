@@ -3,3 +3,15 @@
     %li
       %a{href: route}
         = route
+
+%h2 poll scenarios
+
+add &anonymous=1 or &hide_results_until_closed=1 if you like
+
+- poll_types = %w[proposal poll dot_vote score count meeting ranked_choice]
+- poll_scenarios = %w[poll_created poll_outcome_created poll_stance_created poll_closing_soon poll_closing_soon_with_vote poll_closing_soon_author poll_user_mentioned poll_expired_author poll_options_added_author]
+%ul
+  - poll_types.each do |poll_type|
+    - poll_scenarios.each do |scenario|
+      %li
+        %a{href: "/dev/polls/test_poll_scenario?poll_type=#{poll_type}&scenario=#{scenario}&email=1"}= "#{poll_type} #{scenario}"
