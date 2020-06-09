@@ -80,7 +80,9 @@ class PollService
   end
 
   def self.do_closing_work(poll:)
-    poll.update(closed_at: Time.now) unless poll.closed_at.present?
+    return if poll.closed_at
+    poll.stances.update_all(participant_id: nil) if poll.anonymous
+    poll.update(closed_at: Time.now)
   end
 
   def self.update(poll:, params:, actor:)

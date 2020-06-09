@@ -16,7 +16,7 @@ class Dev::BaseController < ApplicationController
 
   def last_email(to: nil)
     @email = if to.present?
-      ActionMailer::Base.deliveries.select { |email| Array(email.to).include?(to.email) }
+      ActionMailer::Base.deliveries.filter { |email| Array(email.to).include?(to.email) }
     else
       ActionMailer::Base.deliveries
     end.last

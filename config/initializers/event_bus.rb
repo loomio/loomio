@@ -10,13 +10,13 @@ EventBus.configure do |config|
                 'outcome_created_event',
                 'poll_closed_by_user_event') do |event|
     if event.discussion
-      reader = DiscussionReader.for_model(event.discussion, event.user)
+      reader = DiscussionReader.for_model(event.discussion, event.real_user)
                                .update_reader(ranges: event.sequence_id,
                                               volume: :loud)
       MessageChannelService.publish_data(ActiveModel::ArraySerializer.new([reader],
                                          each_serializer: DiscussionReaderSerializer,
                                          root: :discussions).as_json,
-                                         to: reader.message_channel)
+                                         to: event.real_user.message_channel)
     end
   end
 
@@ -68,10 +68,6 @@ EventBus.configure do |config|
                 'poll_close',
                 'poll_destroy',
                 'poll_expire') { |model| model.discussion&.update_importance }
-
-  # de-anonymize polls after close
-  config.listen('poll_close') { |poll| poll.update(anonymous: false) if poll.deanonymize_after_close }
-
 
   # collect user deactivation response
   config.listen('user_deactivate') { |user, actor, params| UserDeactivationResponse.create(user: user, body: params[:deactivation_response]) }

@@ -1,0 +1,12 @@
+.poll-mailer__vote
+  - stance = recipient_stance(recipient, poll)
+
+  - if stance.cast_at
+    %h3= t(:"poll_mailer.common.your_response")
+  - else
+    %h3= t(:"poll_mailer.common.please_respond")
+
+  - if poll.anonymous?
+    %p= t(:"poll_common_action_panel.anonymous")
+
+  = render "poll_mailer/#{poll.poll_type}/vote", poll: poll, stance: stance, recipient: recipient

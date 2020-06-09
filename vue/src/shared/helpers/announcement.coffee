@@ -16,7 +16,7 @@ export audienceSize = (model, audience) ->
   youUndecided = 0
 
   if model.isA('poll')
-    stance = model.poll().stanceFor(Session.user())
+    stance = model.poll().myStance()
     youParticipated = 1 if stance && stance.castAt
     youUndecided = 1 if stance && !stance.castAt
 

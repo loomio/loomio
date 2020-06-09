@@ -65,6 +65,9 @@ export default class PollModel extends BaseModel
   stanceFor: (user) ->
     head orderBy(@recordStore.stances.find(latest: true, pollId: @id, participantId: user.id), 'createdAt', 'desc')
 
+  myStance: ->
+    head orderBy(@recordStore.stances.find(latest: true, pollId: @id, myStance: true), 'createdAt', 'desc')
+
   authorName: ->
     @author().nameWithTitle(@)
 
@@ -107,6 +110,9 @@ export default class PollModel extends BaseModel
 
   isClosed: ->
     @closedAt?
+
+  showResults: ->
+    @closedAt? || !@hideResultsUntilClosed
 
   close: =>
     @processing = true

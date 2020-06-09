@@ -2,7 +2,6 @@
 import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import Flash  from '@/shared/services/flash'
-import { iconFor }                from '@/shared/helpers/poll'
 import { onError } from '@/shared/helpers/form'
 
 export default
@@ -37,14 +36,12 @@ export default
             @$router.replace(@urlFor(poll)).catch (err) => {}
           Flash.success "poll_#{poll.pollType}_form.#{poll.pollType}_#{actionName}"
           @close()
+          return if actionName == 'updated'
           EventBus.$emit 'openModal',
             component: 'AnnouncementForm',
             props: { announcement: Records.announcements.buildFromModel(poll) }
 
       .catch onError(@poll)
-
-    icon: ->
-      iconFor(@poll)
 
 </script>
 <template lang="pug">

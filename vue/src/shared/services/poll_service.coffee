@@ -13,12 +13,12 @@ export default new class PollService
       name: 'poll_common.change_vote'
       icon: 'mdi-pencil'
       canPerform: =>
-        poll.isActive() && Session.user() && poll.stanceFor(Session.user()) && poll.stanceFor(Session.user()).castAt
+        poll.isActive() && Session.user() && poll.myStance() && poll.myStance().castAt
       perform: =>
         openModal
           component: 'PollCommonEditVoteModal',
           props:
-            stance: poll.stanceFor(Session.user()).clone()
+            stance: poll.myStance().clone()
 
     notification_history:
       name: 'action_dock.notification_history'

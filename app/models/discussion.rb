@@ -43,10 +43,6 @@ class Discussion < ApplicationRecord
   is_rich_text    on: :description
   has_paper_trail only: [:title, :description, :private, :group_id]
 
-  def self.always_versioned_fields
-    [:title, :description]
-  end
-
   belongs_to :group, class_name: 'Group'
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id'

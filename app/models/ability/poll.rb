@@ -7,6 +7,7 @@ module Ability::Poll
     end
 
     can :vote_in, ::Poll do |poll|
+      user.is_logged_in? &&
       poll.active? &&
       (poll.anyone_can_participate ||
       (poll.group.members_can_vote && poll.members.exists?(user.id)) ||

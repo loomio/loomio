@@ -45,7 +45,6 @@ export default
 
 <template lang='pug'>
 .poll-ranked-choice-vote-form.lmo-relative
-  poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   p.lmo-hint-text(v-t="{ path: 'poll_ranked_choice_vote_form.helptext', args: { count: numChoices } }")
   sortable-list(v-model="pollOptions")
     sortable-item(v-for="(option, index) in pollOptions" :index="index" :key="option.id" :item="option")
