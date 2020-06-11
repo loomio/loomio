@@ -5,6 +5,7 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
+import i18n          from '@/i18n'
 import { hardReload } from '@/shared/helpers/window'
 
 export default new class PollService
@@ -89,7 +90,7 @@ export default new class PollService
                       statementFormat: Session.defaultFormat()
               text:
                 title: 'poll_common_close_form.title'
-                helptext: 'poll_common_close_form.helptext'
+                raw_helptext: i18n.t('poll_common_close_form.helptext', poll_type: i18n.t(poll.pollTypeKey()))
                 confirm: 'poll_common_close_form.close_poll'
                 flash: 'poll_common_close_form.poll_closed'
 
