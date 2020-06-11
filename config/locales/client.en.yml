@@ -1827,6 +1827,7 @@ en:
     points: Points
 
   poll_meeting_time_field:
+    add_time_slot: Add time slot
     new_time_slot: New time slot
     closing_hour: Closing hour
 

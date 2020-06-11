@@ -29,22 +29,16 @@ export default
 
 </script>
 <template lang="pug">
-v-sheet
-  v-card-title
-    v-subheader(v-t="'poll_meeting_form.add_option_placeholder'")
-    v-spacer
-    v-btn.dismiss-modal-button(icon :aria-label="$t('common.action.cancel')" @click='$emit("close")')
-      v-icon mdi-window-close
-  v-card-text
-    date-time-picker(v-model="value" :min="min")
-    v-simple-table(dense style="max-height: 100px; overflow-y: scroll;")
-      tbody
-        tr(v-for="z in zoneCounts" :key="z[0]")
-          td {{z[0].replace('_',' ')}}
-          td {{timeInZone(z[0])}}
+.poll-meeting-add-option-menu
+  v-subheader(v-t="'poll_meeting_form.add_option_placeholder'")
+  date-time-picker(v-model="value" :min="min")
+  v-simple-table(dense style="max-height: 100px; overflow-y: scroll;")
+    tbody
+      tr(v-for="z in zoneCounts" :key="z[0]")
+        td {{z[0].replace('_',' ')}}
+        td {{timeInZone(z[0])}}
 
-  v-card-actions
-    v-spacer
-    v-btn.poll-meeting-form__option-button(color="accent" @click='addOption()' v-t="'common.add'")
+  .d-flex.justify-end
+    v-btn.poll-meeting-form__option-button(color="accent" @click='addOption()' v-t="'poll_meeting_time_field.add_time_slot'")
 
 </template>
