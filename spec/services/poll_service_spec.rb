@@ -149,19 +149,73 @@ describe PollService do
       expect(poll_created.reload.closed_at).to be_present
     end
 
-    it 'reveals voters if option is set' do
+    it 'does not allow change from anonymous to normal' do
       poll_created.anonymous = true
-      poll_created.custom_fields[:deanonymize_after_close] = true
-      PollService.create(poll: poll_created, actor: user)
-      PollService.close(poll: poll_created, actor: user)
-      expect(poll_created.reload.anonymous).to eq false
+      expect(poll_created.save).to eq true
+      poll_created.anonymous = false
+      expect(poll_created.save).to eq false
     end
 
-    it 'does not reveal voters if option is unset' do
+    it 'does not allow results early if hidden' do
+      poll_created.hide_results_until_closed = true
+      expect(poll_created.save).to eq true
+      poll_created.hide_results_until_closed = false
+      expect(poll_created.save).to eq false
+    end
+
+
+    it 'removes user from stance and event after close' do
       poll_created.anonymous = true
       PollService.create(poll: poll_created, actor: user)
+      stance
+
+      StanceService.create(stance: stance, actor: stance.real_participant)
+      expect(stance.real_participant).to be_present
+      expect(stance.participant_id).to_not be nil
+      expect(stance.created_event.user_id).to be nil
+      expect(stance.participant).to be_a AnonymousUser
+      expect(stance.created_event.user).to be_a AnonymousUser
       PollService.close(poll: poll_created, actor: user)
-      expect(poll_created.reload.anonymous).to eq true
+      expect(stance.reload.participant).to be_a AnonymousUser
+      expect(stance.created_event.reload.user).to be_a AnonymousUser
+      expect(stance.participant_id).to be nil
+      expect(stance.created_event.user_id).to be nil
+    end
+
+
+    it 'does not removes user from stance when no anonymous' do
+      PollService.create(poll: poll_created, actor: user)
+      stance
+      StanceService.create(stance: stance, actor: stance.participant)
+      expect(stance.participant).to be_present
+      PollService.close(poll: poll_created, actor: user)
+      expect(stance.reload.participant).to be_present
+      expect(stance.created_event.reload.user).to be_present
+    end
+
+    it 'stances_in_discussion is false' do
+      poll_created.hide_results_until_closed = true
+      PollService.create(poll: poll_created, actor: user)
+      expect(poll_created.reload.stances_in_discussion).to be false
+      event = StanceService.create(stance: stance, actor: stance.participant)
+      expect(event.discussion).to be nil
+    end
+
+    it 'hides and reveals results correctly' do
+      poll_created.hide_results_until_closed = true
+      PollService.create(poll: poll_created, actor: user)
+
+      StanceService.create(stance: stance, actor: stance.participant)
+      expect(poll.stance_counts).to eq []
+      expect(poll.stance_data).to eq({})
+      expect(poll.matrix_counts).to eq []
+
+      PollService.close(poll: poll_created, actor: user)
+
+      poll_created.reload
+      expect(poll_created.stance_counts).to_not eq []
+      expect(poll_created.stance_data).to_not eq({})
+      # expect(poll_created.matrix_counts).to_not eq []
     end
 
     it 'disallows the creation of new stances' do

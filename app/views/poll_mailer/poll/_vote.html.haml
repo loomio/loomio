@@ -1,4 +1,4 @@
 - if poll.multiple_choice
-  = render "poll_mailer/common/multiple_choice_vote", poll: poll, recipient: recipient
+  = render "poll_mailer/common/multiple_choice_vote", poll: poll, recipient: recipient, stance: stance
 - else
-  = render "poll_mailer/common/single_choice_vote", poll: poll, recipient: recipient, action_name: action_name
+  = render "poll_mailer/common/single_choice_vote", poll: poll, recipient: recipient, stance: stance, action_name: action_name

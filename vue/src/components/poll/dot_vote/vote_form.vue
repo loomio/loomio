@@ -83,7 +83,6 @@ export default
 
 <template lang="pug">
 .poll-dot-vote-vote-form
-  poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   v-subheader.poll-dot-vote-vote-form__dots-remaining(v-t="{ path: 'poll_dot_vote_vote_form.dots_remaining', args: { count: dotsRemaining } }")
   .poll-dot-vote-vote-form__options
     .poll-dot-vote-vote-form__option(v-for='choice in orderedStanceChoices', :key='choice.poll_option_id')

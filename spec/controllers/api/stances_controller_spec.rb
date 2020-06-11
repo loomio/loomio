@@ -16,12 +16,6 @@ describe API::StancesController do
   }}
   let(:public_poll) { create :poll, discussion: nil, anyone_can_participate: true }
   let(:public_poll_option) { create :poll_option, poll: public_poll }
-  let(:visitor_stance_params) {{
-    poll_id: public_poll.id,
-    stance_choices_attributes: [{poll_option_id: public_poll_option.id}],
-    visitor_attributes: { name: "Johnny Doe", email: "john@doe.ninja", legal_accepted: true }
-  }}
-
 
   describe 'index' do
     before { group.add_member! user }
@@ -72,28 +66,6 @@ describe API::StancesController do
       expect(user_ids).to_not include other_stance.participant_id
     end
 
-    # it 'can order by priority asc' do
-    #   sign_in user
-    #   high_priority_stance; low_priority_stance
-    #   get :index, params: { poll_id: poll.id, order: 'poll_options.priority'}
-    #   expect(response.status).to eq 200
-    #   json = JSON.parse(response.body)
-    #
-    #   expect(json['stances'][0]['id']).to eq high_priority_stance.id
-    #   expect(json['stances'][1]['id']).to eq low_priority_stance.id
-    # end
-    #
-    # it 'can order by priority desc' do
-    #   sign_in user
-    #   high_priority_stance; low_priority_stance
-    #   get :index, params: { poll_id: poll.id, order: 'poll_options.priority DESC'}
-    #   expect(response.status).to eq 200
-    #   json = JSON.parse(response.body)
-    #
-    #   expect(json['stances'][0]['id']).to eq low_priority_stance.id
-    #   expect(json['stances'][1]['id']).to eq high_priority_stance.id
-    # end
-
     it 'does not allow unauthorized users to get stances' do
       get :index, params: { poll_id: poll.id }
       expect(response.status).to eq 403
@@ -107,11 +79,6 @@ describe API::StancesController do
     let(:user)       { create :user, name: "unverified", email: 'user@example.com', email_verified: false }
     let(:poll)       { create :poll }
     let(:poll_option) { create :poll_option, poll: poll }
-    let(:visitor_stance_params) {{
-      poll_id: poll.id,
-      stance_choices_attributes: [{poll_option_id: poll_option.id}],
-      visitor_attributes: { name: "Johnny Doe, not logged in", email: "user@example.com", legal_accepted: true}
-    }}
 
     it 'returns 403 for logged out users' do
       post :create, params: { stance: stance_params }
@@ -146,8 +113,9 @@ describe API::StancesController do
       post :create, params: { stance: stance_params }
       json = JSON.parse(response.body)
       expect(response.status).to eq 200
-      expect(json['stances'][0]['participant_id']).to be user.id
-      expect(json['events'][0]['actor_id']).to be user.id
+      expect(json['stances'][0]['my_stance']).to be true
+      expect(json['stances'][0]['participant_id']).to be nil
+      expect(json['events'][0]['actor_id']).to be nil
     end
 
     describe 'poll.group.members_can_vote false' do

@@ -30,16 +30,6 @@ export fieldFromTemplate = (pollType, field) ->
 export iconFor = (poll) ->
   fieldFromTemplate(poll.pollType, 'material_icon')
 
-export settingsFor = (poll) ->
-  compact [
-    ('multipleChoice'        if poll.pollType == 'poll'),
-    'notifyOnParticipate',
-    ('canRespondMaybe'       if poll.pollType == 'meeting'),
-    ('anonymous'             if !fieldFromTemplate(poll.pollType, 'prevent_anonymous')),
-    ('deanonymizeAfterClose' if poll.anonymous),
-    ('voterCanAddOptions'    if fieldFromTemplate(poll.pollType, 'can_add_options') && poll.pollType != 'proposal')
-  ]
-
 export myLastStanceFor = (poll) ->
   head sortBy(Records.stances.find(
     latest: true

@@ -23,4 +23,5 @@ class Events::BaseSerializer < ApplicationSerializer
   def include_custom_fields?
     ["poll_edited", "discussion_edited"].include? object.kind
   end
+
 end

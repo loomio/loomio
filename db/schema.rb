@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_19_030325) do
+ActiveRecord::Schema.define(version: 2020_06_02_220450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -600,6 +600,8 @@ ActiveRecord::Schema.define(version: 2020_05_19_030325) do
     t.string "details_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
     t.boolean "anyone_can_participate", default: false, null: false
+    t.boolean "hide_results_until_closed", default: false, null: false
+    t.boolean "stances_in_discussion", default: true, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["discussion_id"], name: "index_polls_on_discussion_id"
     t.index ["group_id"], name: "index_polls_on_group_id"
@@ -638,7 +640,7 @@ ActiveRecord::Schema.define(version: 2020_05_19_030325) do
 
   create_table "stances", id: :serial, force: :cascade do |t|
     t.integer "poll_id", null: false
-    t.integer "participant_id", null: false
+    t.integer "participant_id"
     t.string "reason"
     t.boolean "latest", default: true, null: false
     t.datetime "created_at"

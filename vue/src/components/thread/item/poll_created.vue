@@ -3,7 +3,6 @@ import PollService    from '@/shared/services/poll_service'
 import AbilityService from '@/shared/services/ability_service'
 import EventBus       from '@/shared/services/event_bus'
 import EventService from '@/shared/services/event_service'
-import { myLastStanceFor }  from '@/shared/helpers/poll'
 import { pick, assign } from 'lodash-es'
 
 export default
@@ -20,7 +19,7 @@ export default
     @watchRecords
       collections: ["stances"]
       query: (records) =>
-        @myLastStance = myLastStanceFor(@poll)?
+        @myStance = @poll.myStance()
 
   beforeDestroy: ->
     EventBus.$off 'showResults'
@@ -28,24 +27,24 @@ export default
 
   data: ->
     buttonPressed: false
-    myLastStance: null
+    myStance: null
 
   computed:
     eventable: -> @event.model()
     poll: -> @eventable
 
     showResults: ->
-      @buttonPressed || @myLastStance || @poll.isClosed()
+      (@buttonPressed || (@myStance && @myStance.castAt)) && @poll.showResults()
 
     menuActions: ->
       assign(
-        pick PollService.actions(@poll, @), ['show_history', 'export_poll', 'delete_poll', 'translate_poll']
+        pick PollService.actions(@poll, @), ['show_history', 'export_poll', 'print_poll', 'delete_poll', 'translate_poll']
       ,
         pick EventService.actions(@event, @), ['move_event', 'copy_url']
       )
     dockActions: ->
       assign(
-        pick PollService.actions(@poll, @), ['announce_poll', 'edit_poll', 'close_poll', 'reopen_poll']
+        pick PollService.actions(@poll, @), ['edit_stance', 'announce_poll', 'edit_poll', 'close_poll', 'reopen_poll']
       ,
         pick EventService.actions(@event, @), ['pin_event', 'unpin_event']
       )
@@ -72,4 +71,6 @@ thread-item.poll-created(:event="event" :is-returning="isReturning")
     poll-common-action-panel(:poll='poll')
   template(v-slot:actions)
     action-dock(:actions="dockActions" :menu-actions="menuActions")
+  template(v-if="!poll.stancesInDiscussion && poll.showResults()" v-slot:afterActions)
+    poll-common-votes-panel(v-if :poll="poll")
 </template>

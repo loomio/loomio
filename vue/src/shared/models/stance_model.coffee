@@ -15,7 +15,6 @@ export default class StanceModel extends BaseModel
   defaultValues: ->
     reason: ''
     reasonFormat: 'html'
-    visitorAttributes: {}
     files: []
     imageFiles: []
     attachments: []

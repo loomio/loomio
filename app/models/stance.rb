@@ -18,19 +18,18 @@ class Stance < ApplicationRecord
 
   belongs_to :poll, required: true
   belongs_to :inviter, class_name: 'User'
+
   has_many :stance_choices, dependent: :destroy
   has_many :poll_options, through: :stance_choices
 
   has_paper_trail only: [:reason]
+
   define_counter_cache(:versions_count)  { |stance| stance.versions.count }
-  def self.always_versioned_fields
-    [:reason]
-  end
 
   accepts_nested_attributes_for :stance_choices
-  attr_accessor :visitor_attributes
 
   belongs_to :participant, class_name: 'User', required: true
+
   alias :user :participant
   alias :author :participant
 
@@ -47,8 +46,8 @@ class Stance < ApplicationRecord
   scope :priority_last,  -> { joins(:poll_options).order('poll_options.priority DESC') }
   scope :with_reason,    -> { where("reason IS NOT NULL OR reason != ''") }
   scope :in_organisation, ->(group) { joins(:poll).where("polls.group_id": group.id_and_subgroup_ids) }
-  scope :decided,        -> { where("cast_at IS NOT NULL") }
-  scope :undecided,      -> { where("cast_at IS NULL") }
+  scope :decided,        -> { where("stances.cast_at IS NOT NULL") }
+  scope :undecided,      -> { where("stances.cast_at IS NULL") }
 
   scope :redeemable, -> { where('stances.inviter_id IS NOT NULL
                              AND stances.cast_at IS NULL
@@ -57,10 +56,8 @@ class Stance < ApplicationRecord
 
   validate :enough_stance_choices
   validate :total_score_is_valid
-  validate :participant_is_complete
   validates :reason, length: { maximum: 500 }
 
-  delegate :locale,         to: :author
   delegate :group,          to: :poll, allow_nil: true
   delegate :mailer,         to: :poll, allow_nil: true
   delegate :group_id,       to: :poll
@@ -69,6 +66,10 @@ class Stance < ApplicationRecord
   delegate :title,          to: :poll
 
   alias :author :participant
+
+  def locale
+    author&.locale || group&.locale
+  end
 
   def body
     reason
@@ -98,15 +99,11 @@ class Stance < ApplicationRecord
   end
 
   def participant
-    super || AnonymousUser.new
+    poll.anonymous? ? AnonymousUser.new : super
   end
 
-  def participant_for_client(user: nil)
-    if !self.poll.anonymous || (user&.id == self.participant_id)
-      self.participant
-    else
-      AnonymousUser.new
-    end
+  def real_participant
+    User.find_by(id: self[:participant_id])
   end
 
   def score_for(option)
@@ -136,9 +133,5 @@ class Stance < ApplicationRecord
     if stance_choices.map(&:score).sum > poll.dots_per_person.to_i
       errors.add(:dots_per_person, "Too many dots")
     end
-  end
-
-  def participant_is_complete
-    participant.tap(&:valid?).errors.map { |key, err| errors.add(:"participant_#{key}", err)}
   end
 end

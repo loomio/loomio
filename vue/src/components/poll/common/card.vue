@@ -20,7 +20,7 @@ export default
     @watchRecords
       collections: ["stances", "outcomes"]
       query: (records) =>
-        @myStance = @poll.stanceFor(Session.user()) || Records.stances.build()
+        @myStance = @poll.myStance() || Records.stances.build()
         @outcome = @poll.outcome()
 
   data: ->
@@ -34,11 +34,11 @@ export default
 
   computed:
     showResults: ->
-      @buttonPressed || @myStance.castAt || @poll.isClosed()
+      (@buttonPressed || @myStance.castAt) && @poll.showResults()
 
     menuActions: ->
       @myStance
-      pick PollService.actions(@poll, @), ['edit_poll', 'close_poll', 'reopen_poll', 'export_poll', 'delete_poll', 'translate_poll']
+      pick PollService.actions(@poll, @), ['edit_poll', 'close_poll', 'reopen_poll', 'export_poll', 'print_poll', 'delete_poll', 'translate_poll']
 
     dockActions: ->
       @myStance

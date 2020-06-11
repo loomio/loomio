@@ -117,6 +117,7 @@ div
           .default-slot(ref="defaultSlot")
             slot
           slot(name="actions")
+          slot(name="afterActions")
   slot(name="append")
 </template>
 <style lang="sass">

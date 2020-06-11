@@ -5,6 +5,7 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
+import i18n          from '@/i18n'
 import { hardReload } from '@/shared/helpers/window'
 
 export default new class PollService
@@ -13,12 +14,12 @@ export default new class PollService
       name: 'poll_common.change_vote'
       icon: 'mdi-pencil'
       canPerform: =>
-        poll.isActive() && Session.user() && poll.stanceFor(Session.user()) && poll.stanceFor(Session.user()).castAt
+        poll.isActive() && Session.user() && poll.myStance() && poll.myStance().castAt
       perform: =>
         openModal
           component: 'PollCommonEditVoteModal',
           props:
-            stance: poll.stanceFor(Session.user()).clone()
+            stance: poll.myStance().clone()
 
     notification_history:
       name: 'action_dock.notification_history'
@@ -89,7 +90,7 @@ export default new class PollService
                       statementFormat: Session.defaultFormat()
               text:
                 title: 'poll_common_close_form.title'
-                helptext: 'poll_common_close_form.helptext'
+                raw_helptext: i18n.t('poll_common_close_form.helptext', poll_type: i18n.t(poll.pollTypeKey()))
                 confirm: 'poll_common_close_form.close_poll'
                 flash: 'poll_common_close_form.poll_closed'
 
@@ -108,7 +109,14 @@ export default new class PollService
       canPerform: ->
         AbilityService.canExportPoll(poll)
       perform: ->
-        hardReload LmoUrlService.poll(poll, {export: 1}, action: 'export', absolute: true)
+        hardReload LmoUrlService.poll(poll, {export: 1}, {action: 'export', ext: 'csv', absolute: true})
+
+    print_poll:
+      name: 'common.action.print'
+      canPerform: ->
+        AbilityService.canExportPoll(poll)
+      perform: ->
+        hardReload LmoUrlService.poll(poll, {export: 1}, {action: 'export', ext: 'html', absolute: true})
 
     delete_poll:
       name: 'common.action.delete'
