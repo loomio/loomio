@@ -313,7 +313,8 @@ module.exports = {
       page.click('.poll-common-add-option-button button')
     })
 
-    page.fillInAndEnter('.poll-poll-form__add-option-input', 'Yet another option')
+    page.click('.poll-poll-form__add-option-input')
+    page.fillInAndEnter('.poll-poll-form__add-option-input input', 'Yet another option')
     page.click('.poll-add-option__submit')
     page.expectFlash('New options added')
   },
