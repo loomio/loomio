@@ -1,4 +1,5 @@
 export getEmbedLink = (link) ->
+  link = link || ""
   if link.includes("youtube.com") || link.includes("youtu.be")
     getYoutubeEmbedLink(link)
   else if link.includes("vimeo.com/")
