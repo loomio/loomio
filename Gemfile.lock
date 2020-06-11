@@ -146,7 +146,7 @@ GEM
       addressable
     database_cleaner (1.8.5)
     device_detector (1.0.3)
-    devise (4.7.1)
+    devise (4.7.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
@@ -400,7 +400,7 @@ GEM
       redis (>= 4, < 5)
     request_store (1.5.0)
       rack (>= 1.4)
-    responders (3.0.0)
+    responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
     reverse_markdown (2.0.0)
@@ -522,7 +522,7 @@ DEPENDENCIES
   coffee-rails
   custom_counter_cache!
   database_cleaner
-  devise (~> 4.7.1)
+  devise (~> 4.7.2)
   devise-i18n
   discard (~> 1.2)
   discriminator (~> 0.1.1)
