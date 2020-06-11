@@ -1606,7 +1606,7 @@ en:
 
   poll_common_close_form:
     title: Close a poll early
-    helptext: Are you sure you're ready to close early? (You can re-open it later if you like)
+    helptext: Are you sure you want to close this %{poll_type} early?
     close_proposal: Close proposal
     close_poll: Close poll
     close_count: Close check
@@ -1827,6 +1827,7 @@ en:
     points: Points
 
   poll_meeting_time_field:
+    add_time_slot: Add time slot
     new_time_slot: New time slot
     closing_hour: Closing hour
 
