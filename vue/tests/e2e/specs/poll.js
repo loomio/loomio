@@ -296,6 +296,7 @@ module.exports = {
     // page.click(".poll-common-tool-tip__collapse")
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields .lmo-textarea div[contenteditable=true]', 'Some details')
+    page.click('.poll-poll-form__add-option-input')
     page.fillInAndEnter('.poll-poll-form__add-option-input input', 'An option')
     page.fillInAndEnter('.poll-poll-form__add-option-input input', 'Another option')
     page.click('.poll-settings-voter-can-add-options')
@@ -310,7 +311,8 @@ module.exports = {
       page.click('.poll-common-add-option-button button')
     })
 
-    page.fillInAndEnter('.poll-poll-form__add-option-input', 'Yet another option')
+    page.click('.poll-poll-form__add-option-input')
+    page.fillInAndEnter('.poll-poll-form__add-option-input input', 'Yet another option')
     page.click('.poll-add-option__submit')
     page.expectFlash('New options added')
   },
