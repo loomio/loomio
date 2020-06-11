@@ -42,7 +42,7 @@ module PrettyUrlHelper
     when PaperTrail::Version   then model.item.title
     when Comment, Discussion   then model.discussion.title
     when Poll, Outcome, Stance then model.poll.title
-    when Reaction              then model.reactable.discussion.title # TODO: deal with polymorphic reactions here
+    when Reaction              then model.reactable.title
     when Group                 then model.full_name
     when Membership            then polymorphic_title(model.group)
     end
