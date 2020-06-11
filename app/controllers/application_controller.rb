@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
       end
     else
       # should deliver a static error page with defered boot
-      if current_user.is_logged_in? and request.format.html?
+      if request.format.html?
         boot_app(status: 403)
       else
         respond_with_error(status: 403)
