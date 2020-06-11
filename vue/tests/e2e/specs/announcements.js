@@ -12,7 +12,7 @@ module.exports = {
     page.fillIn('.announcement-form__input input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
-    page.click('.headline')
+    page.expectElement('.headline')
     page.click('.announcement-form__submit')
     page.expectFlash('1 notifications sent')
   },
@@ -42,7 +42,7 @@ module.exports = {
     page.fillIn('.announcement-form__input input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
-    page.click('.headline')
+    page.expectElement('.headline')
     page.click('.announcement-form__submit')
     page.expectFlash('1 notifications sent')
   },
@@ -61,7 +61,7 @@ module.exports = {
     page.fillIn('.announcement-form__input input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
-    page.click('.headline')
+    page.expectElement('.headline')
     page.click('.announcement-form__submit')
     page.expectFlash('1 notifications sent')
   },
