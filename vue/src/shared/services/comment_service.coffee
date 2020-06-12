@@ -15,10 +15,10 @@ export default new class CommentService
           component: 'AnnouncementHistory'
           props:
             model: comment
-      canPerform: -> true
+      canPerform: -> !comment.discardedAt
 
     react:
-      canPerform: -> AbilityService.canAddComment(comment.discussion())
+      canPerform: -> !comment.discardedAt && AbilityService.canAddComment(comment.discussion())
 
     reply_to_comment:
       icon: 'mdi-reply'
@@ -56,9 +56,11 @@ export default new class CommentService
 
     show_history:
       icon: 'mdi-history'
-      name: 'action_dock.edited'
+      name: 'action_dock.history'
       menu: true
-      canPerform: -> comment.edited()
+      canPerform: ->
+        comment.edited() && (!comment.discardedAt ||
+                             comment.discussion().adminsInclude(Session.user()))
       perform: ->
         openModal
           component: 'RevisionHistoryModal'
@@ -67,8 +69,8 @@ export default new class CommentService
 
     discard_comment:
       icon: 'mdi-delete'
-      name: 'common.action.delete'
-      canPerform: -> AbilityService.canDeleteComment(comment)
+      name: 'common.action.remove'
+      canPerform: -> AbilityService.canDiscardComment(comment)
       perform: ->
         openModal
           component: 'ConfirmModal',
@@ -76,14 +78,20 @@ export default new class CommentService
             confirm:
               submit: -> comment.discard()
               text:
-                title: 'delete_comment_dialog.title'
-                helptext: 'delete_comment_dialog.question'
-                confirm: 'delete_comment_dialog.confirm'
-                flash: 'comment_form.messages.destroyed'
+                title: 'discard_comment_dialog.title'
+                helptext: 'discard_comment_dialog.question'
+                confirm: 'discard_comment_dialog.title'
+                flash: 'comment_form.messages.removed'
 
+    undiscard_comment:
+      icon: 'mdi-delete-restore'
+      name: 'common.action.undo_remove'
+      canPerform: -> AbilityService.canUndiscardComment(comment)
+      perform: -> comment.undiscard()
+      
     delete_comment:
       icon: 'mdi-delete'
-      canPerform: -> AbilityService.canDeleteComment(comment)
+      canPerform: -> AbilityService.canDiscardComment(comment)
       perform: ->
         openModal
           component: 'ConfirmModal',

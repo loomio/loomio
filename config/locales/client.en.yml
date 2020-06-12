@@ -193,6 +193,7 @@ en:
       reply: 'Reply'
       edit: 'Edit'
       remove: 'Remove'
+      undo_remove: 'Undo remove'
       like: 'Like'
       unlike: 'Unlike'
       update: 'Update'
@@ -413,6 +414,7 @@ en:
       replied: '{{name}} notified of reply'
       updated: 'Comment updated'
       destroyed: 'Comment deleted'
+      removed: 'Comment removed'
     say_something: Say something...
     edit_comment: 'Edit comment'
     delete_comment: 'Delete comment'
@@ -688,6 +690,7 @@ en:
     translate_outcome: Translate outcome
     show_history: Show edit history
     edited: Edited
+    history: History
     pin_thread: Pin thread
     unpin_thread: Un-pin thread
     pin_event: Pin to timeline
@@ -1377,9 +1380,12 @@ en:
 
   delete_comment_dialog:
     title: 'Delete comment'
-    question: 'Are you sure you want to delete this comment?'
+    question: 'Are you sure you want to delete this comment? (This cannot be undone)'
     confirm: 'Delete comment'
 
+  discard_comment_dialog:
+    title: 'Remove comment'
+    question: 'Are you sure you want to remove this comment? (This can be undone later)'
 
   contact_message_form:
     title: "Hi there! How can we help?"

@@ -82,42 +82,35 @@ export default
 <template lang="pug">
 div
   .thread-item.px-3.pb-1(:class="[{'thread-item--unread': isUnread}, focusStyleClass]" v-observe-visibility="{callback: viewed, once: true}")
-    div(v-if="eventable.discardedAt")
-      v-layout.lmo-action-dock-wrapper(:style="{'margin-left': indentSize+'px'}"  :id="'sequence-' + event.sequenceId")
-        .thread-item__avatar.mr-3.mt-0
-          user-avatar(v-if='!event.isForkable()' :user='event.actor()' :size='iconSize')
-          v-checkbox.thread-item__is-forking(v-if="event.isForkable()" @change="event.toggleFromFork()" :disabled="event.forkingDisabled()" v-model="event.isForking()")
-        v-layout.thread-item__body(column)
-          v-layout.align-center.wrap
-            h3.thread-item__title.body-2(:id="'event-' + event.id")
+    v-layout.lmo-action-dock-wrapper(:style="{'margin-left': indentSize+'px'}"  :id="'sequence-' + event.sequenceId")
+      .thread-item__avatar.mr-3.mt-0
+        user-avatar(v-if='!event.isForkable()' :user='event.actor()' :size='iconSize')
+        v-checkbox.thread-item__is-forking(v-if="event.isForkable()" @change="event.toggleFromFork()" :disabled="event.forkingDisabled()" v-model="event.isForking()")
+      v-layout.thread-item__body(column)
+        v-layout.align-center.wrap
+          h3.thread-item__title.body-2(:id="'event-' + event.id")
+            //- div
+              | id: {{event.id}}
+              | pos {{event.position}}
+              | sid {{event.sequenceId}}
+              | depth: {{event.depth}}
+              | childCount: {{event.childCount}}
+              | eid: {{event.eventableId}}
+            div(v-if="eventable.discardedAt")
               span.grey--text(v-t="'thread_item.removed'")
               mid-dot
               router-link.grey--text(:to='link')
                 time-ago(:date='eventable.discardedAt')
-    div(v-else)
-      v-layout.lmo-action-dock-wrapper(:style="{'margin-left': indentSize+'px'}"  :id="'sequence-' + event.sequenceId")
-        .thread-item__avatar.mr-3.mt-0
-          user-avatar(v-if='!event.isForkable()' :user='event.actor()' :size='iconSize')
-          v-checkbox.thread-item__is-forking(v-if="event.isForkable()" @change="event.toggleFromFork()" :disabled="event.forkingDisabled()" v-model="event.isForking()")
-        v-layout.thread-item__body(column)
-          v-layout.align-center.wrap
-            h3.thread-item__title.body-2(:id="'event-' + event.id")
-              //- div
-                | id: {{event.id}}
-                | pos {{event.position}}
-                | sid {{event.sequenceId}}
-                | depth: {{event.depth}}
-                | childCount: {{event.childCount}}
-                | eid: {{event.eventableId}}
+            div(v-else)
               slot(name="headline")
                 span(v-html='headline')
               mid-dot
               router-link.grey--text.body-2(:to='link')
                 time-ago(:date='event.createdAt')
-          .default-slot(ref="defaultSlot")
-            slot
-          slot(name="actions")
-          slot(name="afterActions")
+        .default-slot(v-if="!eventable.discardedAt" ref="defaultSlot")
+          slot
+        slot(name="actions")
+        slot(name="afterActions")
   slot(name="append")
 </template>
 <style lang="sass">

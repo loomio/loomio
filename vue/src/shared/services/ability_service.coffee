@@ -23,6 +23,7 @@ export default new class AbilityService
     thread.membersInclude(Session.user())
 
   canRespondToComment: (comment) ->
+    !comment.discardedAt &&
     comment.discussion().membersInclude(Session.user())
 
   canStartPoll: (model) ->
@@ -68,6 +69,7 @@ export default new class AbilityService
   canExportThread: (thread) -> thread.adminsInclude(Session.user())
 
   canPinEvent: (event) ->
+    !event.model().discardedAt &&
     !event.pinned && event.isSurface() && @canEditThread(event.discussion())
 
   canUnpinEvent: (event) ->
@@ -135,6 +137,11 @@ export default new class AbilityService
     comment.discussion().membersInclude(Session.user())
 
   canDeleteComment: (comment) ->
+    !comment.discardedAt &&
+    comment.authorIs(Session.user()) or comment.discussion().adminsInclude(Session.user())
+
+  canUndoRemove: (comment) ->
+    comment.discardedAt &&
     comment.authorIs(Session.user()) or comment.discussion().adminsInclude(Session.user())
 
   canRemoveMembership: (membership) ->
