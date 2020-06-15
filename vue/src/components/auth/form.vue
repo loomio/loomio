@@ -27,6 +27,12 @@ export default
     loginComplete: ->
       @user.sentLoginLink or @user.sentPasswordLink
 
+    pendingDiscussion: ->
+      AppConfig.pending_identity.identity_type == 'discussion_reader'
+
+    pendingPoll: ->
+      AppConfig.pending_identity.identity_type == 'stance'
+
 </script>
 <template lang="pug">
 .auth-form
@@ -34,6 +40,8 @@ export default
   .auth-form__logging-in(v-if='!loginComplete')
     .auth-form__email-not-set(v-if='!user.emailStatus')
       p.text-center(v-if="pendingGroup" v-t="{path: 'auth_form.youre_invited', args: {group_name: pendingGroup.name}}")
+      p.text-center(v-if="pendingDiscussion" v-t="'auth_form.youre_invited_discussion'")
+      p.text-center(v-if="pendingPoll" v-t="'auth_form.youre_invited_poll'")
       auth-provider-form(:user='user')
       auth-email-form(:user='user' v-if='emailLogin')
       .text-center.caption.mt-4
