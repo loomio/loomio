@@ -6,21 +6,34 @@ export default
   props:
     user: Object
     preventClose: Boolean
+
   data: ->
     emailLogin: AppConfig.features.app.email_login
     siteName: AppConfig.theme.site_name
     privacyUrl: AppConfig.theme.privacy_url
     pendingProviderIdentity: Session.providerIdentity()
     isDisabled: false
+    pendingGroup: null
+
+  created: ->
+    @watchRecords
+      key: 'authForm'
+      collections: ['groups']
+      query: (store) =>
+        return unless AppConfig.pending_identity
+        @pendingGroup = store.groups.find(AppConfig.pending_identity.group_id)
+
   computed:
     loginComplete: ->
       @user.sentLoginLink or @user.sentPasswordLink
+
 </script>
 <template lang="pug">
 .auth-form
   submit-overlay(:value='isDisabled')
   .auth-form__logging-in(v-if='!loginComplete')
     .auth-form__email-not-set(v-if='!user.emailStatus')
+      p.text-center(v-if="pendingGroup" v-t="{path: 'auth_form.youre_invited', args: {group_name: pendingGroup.name}}")
       auth-provider-form(:user='user')
       auth-email-form(:user='user' v-if='emailLogin')
       .text-center.caption.mt-4

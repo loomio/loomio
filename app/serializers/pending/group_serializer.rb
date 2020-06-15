@@ -1,5 +1,5 @@
 class Pending::GroupSerializer < Pending::BaseSerializer
-  attribute :token
+  attributes :token, :group_id
 
   def has_token
     true
@@ -27,5 +27,9 @@ class Pending::GroupSerializer < Pending::BaseSerializer
 
   def identity_type
     :group
+  end
+
+  def group_id
+    object.id
   end
 end
