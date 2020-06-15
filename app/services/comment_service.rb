@@ -13,11 +13,7 @@ class CommentService
   def self.discard(comment:, actor:)
     actor.ability.authorize!(:destroy, comment)
 
-    comment.update(user_id: nil,
-                   body: nil,
-                   discarded_at: Time.now,
-                   discarded_by: actor.id)
-
+    comment.update(discarded_at: Time.now, discarded_by: actor.id)
     comment.created_event.update(user_id: nil)
     comment.created_event
   end

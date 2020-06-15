@@ -83,10 +83,22 @@ class Comment < ApplicationRecord
     User.where(username: parent&.author&.username)
   end
 
+  def body
+    discarded_at ? nil : super
+  end
+
+  def user_id
+    discarded_at ? nil : super
+  end
+
+  def user
+    discarded_at ? nil : super
+  end
+
   private
 
   def has_body_or_attachment
-    if body_blank? && files.empty? && image_files.empty?
+    if !discarded_at && body_blank? && files.empty? && image_files.empty?
       errors.add(:body, I18n.t(:"activerecord.errors.messages.blank"))
     end
   end

@@ -155,9 +155,6 @@ describe API::CommentsController do
           expect(comment.body).to be nil
           expect(comment.user_id).to be nil
           expect(comment.created_event.user_id).to be nil
-          diff = comment.versions.last.object_changes
-          expect(diff['body'][0]).to eq body
-          expect(diff['user_id'][0]).to eq user.id
         end
       end
 
