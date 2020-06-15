@@ -86,9 +86,13 @@ class Comment < ApplicationRecord
   private
 
   def has_body_or_attachment
-    if body.to_s.empty? && files.empty? && image_files.empty?
+    if body_blank? && files.empty? && image_files.empty?
       errors.add(:body, I18n.t(:"activerecord.errors.messages.blank"))
     end
+  end
+
+  def body_blank?
+    body.to_s.empty? || body.to_s == "<p></p>"
   end
 
   def parent_comment_belongs_to_same_discussion
