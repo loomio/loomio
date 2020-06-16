@@ -312,6 +312,18 @@ class Poll < ApplicationRecord
     self.custom_fields.fetch('minimum_stance_choices', 1).to_i
   end
 
+  def details
+    discarded_at ? nil : super
+  end
+
+  def author_id
+    discarded_at ? nil : super
+  end
+
+  def author
+    discarded_at ? nil : super
+  end
+
   private
   def set_stances_in_discussion
     self.stances_in_discussion = false if anonymous or hide_results_until_closed
