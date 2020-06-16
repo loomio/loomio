@@ -27,6 +27,9 @@ export default
     '$route.params.key': 'init'
 
   computed:
+    canEditGroup: ->
+      AbilityService.canEditGroup(@group)
+
     tabs: ->
       return unless @group
       query = ''
@@ -66,7 +69,7 @@ export default
       EventBus.$emit('content-title-visible', visible)
 
     openGroupSettingsModal: ->
-      return null unless AbilityService.canEditGroup(@group)
+      return null unless @canEditGroup
       EventBus.$emit 'openModal',
         component: 'GroupForm'
         props:
@@ -91,7 +94,7 @@ v-content
     group-onboarding-card(:group="group")
     formatted-text.group-page__description(v-if="group" :model="group" column="description")
     document-list(:model='group')
-    attachment-list(:attachments="group.attachments" :edit="openGroupSettingsModal")
+    attachment-list(:attachments="group.attachments" :edit="canEditGroup && openGroupSettingsModal")
     v-divider.mt-4
     v-tabs(v-model="activeTab" center-active background-color="transparent" centered grow show-arrows)
       v-tabs-slider
