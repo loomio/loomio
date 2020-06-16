@@ -42,7 +42,7 @@ class Poll < ApplicationRecord
   is_translatable on: [:title, :details]
   is_mentionable on: :details
 
-  belongs_to :author, class_name: "User", required: true
+  belongs_to :author, class_name: "User"
   has_many   :outcomes, dependent: :destroy
   has_one    :current_outcome, -> { where(latest: true) }, class_name: 'Outcome'
 
