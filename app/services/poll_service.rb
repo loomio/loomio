@@ -43,6 +43,14 @@ class PollService
     stances
   end
 
+  def self.discard(poll:, actor:)
+    actor.ability.authorize!(:destroy, poll)
+
+    poll.update(discarded_at: Time.now, discarded_by: actor.id)
+    poll.created_event.update(user_id: nil)
+    poll.created_event
+  end
+
   def self.close(poll:, actor:)
     actor.ability.authorize! :close, poll
     do_closing_work(poll: poll)

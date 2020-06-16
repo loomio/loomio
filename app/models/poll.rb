@@ -11,6 +11,7 @@ class Poll < ApplicationRecord
   include Reactable
   include HasCreatedEvent
   include HasRichText
+  include Discard::Model
 
   is_rich_text    on: :details
 
@@ -73,7 +74,7 @@ class Poll < ApplicationRecord
   scope :search_for, ->(fragment) { where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
   scope :lapsed_but_not_closed, -> { active.where("polls.closing_at < ?", Time.now) }
   scope :active_or_closed_after, ->(since) { where("closed_at IS NULL OR closed_at > ?", since) }
-  
+
   scope :with_includes, -> { includes(
     :documents,
     :poll_options,
