@@ -34,9 +34,7 @@ class API::PollsController < API::RestfulController
   def discard
     load_resource
     @event = service.discard(poll: resource, actor: current_user)
-    respond_with_resource(scope: default_scope,
-                          serializer: resource_serializer,
-                          root: serializer_root)
+    respond_with_resource
   end
 
   private
