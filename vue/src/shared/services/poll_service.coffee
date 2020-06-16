@@ -117,7 +117,7 @@ export default new class PollService
         AbilityService.canExportPoll(poll)
       perform: ->
         hardReload LmoUrlService.poll(poll, {export: 1}, {action: 'export', ext: 'html', absolute: true})
-
+        
     delete_poll:
       name: 'common.action.delete'
       canPerform: ->
@@ -127,7 +127,7 @@ export default new class PollService
           component: 'ConfirmModal'
           props:
             confirm:
-              submit: -> poll.destroy()
+              submit: -> poll.discard()
               text:
                 title: 'poll_common_delete_modal.title'
                 confirm: 'poll_common_delete_modal.question'
