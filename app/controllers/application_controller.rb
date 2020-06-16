@@ -40,12 +40,7 @@ class ApplicationController < ActionController::Base
         format.xml
       end
     else
-      # should deliver a static error page with defered boot
-      if request.format.html?
-        boot_app(status: 403)
-      else
-        respond_with_error(status: 403)
-      end
+      boot_app(status: 403)
     end
   end
 
@@ -72,7 +67,12 @@ class ApplicationController < ActionController::Base
   def boot_app(status: 200)
     expires_now
     prevent_caching
-    template = File.read(Rails.root.join('public/client/vue/index.html')).gsub('<div class=upgrade-browser></div>', '<%= render "application/upgrade_browser" %>')
+    template = File.read(Rails.root.join('public/client/vue/index.html'))
+
+    if request.format.html?
+      template.gsub!('<div class=upgrade-browser></div>', '<%= render "application/upgrade_browser" %>')
+    end
+    
     render inline: template, layout: false, status: status
   end
 

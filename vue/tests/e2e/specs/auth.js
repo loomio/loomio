@@ -49,6 +49,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('view_closed_group_with_shareable_link')
+    page.expectText('.auth-form', 'You have been invited to join Dirty Dancing Shoes')
     page.fillIn('.auth-email-form__email input', 'max_von_sydow@example.com')
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signup-form__name input', 'Max Von Sydow')
@@ -202,6 +203,7 @@ module.exports = {
     page.loadPathNoApp('setup_invitation_email_to_visitor')
     page.expectText('.invite-people-mailer__body', 'Accept invitation')
     page.click('.base-mailer__button--primary', 2000)
+    page.expectText('.auth-form', 'You have been invited to join Dirty Dancing Shoes')
     page.click('.auth-email-form__submit')
     page.expectText('.auth-signup-form', 'New to')
     page.fillIn('.auth-signup-form__name input', 'Billy Jeans')
