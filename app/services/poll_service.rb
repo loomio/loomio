@@ -47,7 +47,9 @@ class PollService
     actor.ability.authorize!(:destroy, poll)
 
     poll.update(discarded_at: Time.now, discarded_by: actor.id)
-    poll.created_event.update(user_id: nil)
+    Event.where(kind: "stance_created", eventable_id: poll.stances.pluck(:id)).update_all(discussion_id: nil)
+    poll.created_event.update(user_id: nil, child_count: 0)
+    MessageChannelService.publish_event(poll.created_event)
     poll.created_event
   end
 
