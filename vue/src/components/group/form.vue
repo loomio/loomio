@@ -188,6 +188,7 @@ v-card.group-form
           v-checkbox.group-form__members-can-edit-comments(hide-details v-model='clone["membersCanEditComments"]' :label="$t('group_form.members_can_edit_comments')")
           v-checkbox.group-form__members-can-raise-motions(hide-details v-model='clone["membersCanRaiseMotions"]' :label="$t('group_form.members_can_raise_motions')")
           v-checkbox.group-form__members-can-vote(hide-details v-model='clone["membersCanVote"]' :label="$t('group_form.members_can_vote')")
+          v-checkbox.group-form__admins-can-edit-user-content(hide-details v-model='clone["adminsCanEditUserContent"]' :label="$t('group_form.admins_can_edit_user_content')")
 
       v-tab-item.mt-8
         .group-form__section.group-form__defaults

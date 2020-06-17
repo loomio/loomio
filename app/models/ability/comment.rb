@@ -7,7 +7,8 @@ module Ability::Comment
     end
 
     can [:update], ::Comment do |comment|
-      comment.discussion.members.exists?(user.id) && comment.author == user && comment.can_be_edited?
+      (comment.discussion.members.exists?(user.id) && comment.author == user && comment.can_be_edited?) ||
+      (comment.discussion.admins.exists?(user.id) && comment.group.admins_can_edit_user_content)
     end
 
     can [:destroy], ::Comment do |comment|
