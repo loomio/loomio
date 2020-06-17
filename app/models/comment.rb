@@ -25,9 +25,9 @@ class Comment < ApplicationRecord
   has_many :documents, as: :model, dependent: :destroy
 
   validates_presence_of :user, unless: :discarded_at
-  validates_presence_of :body, unless: :discarded_at
-  
+
   validate :parent_comment_belongs_to_same_discussion
+  validate :has_body_or_attachment
 
   default_scope { includes(:user).includes(:documents) }
 
@@ -83,10 +83,32 @@ class Comment < ApplicationRecord
     User.where(username: parent&.author&.username)
   end
 
+  def body
+    discarded_at ? nil : super
+  end
+
+  def user_id
+    discarded_at ? nil : super
+  end
+
+  def user
+    discarded_at ? nil : super
+  end
+
   private
 
+  def has_body_or_attachment
+    if !discarded_at && body_blank? && files.empty? && image_files.empty?
+      errors.add(:body, I18n.t(:"activerecord.errors.messages.blank"))
+    end
+  end
+
+  def body_blank?
+    body.to_s.empty? || body.to_s == "<p></p>"
+  end
+
   def parent_comment_belongs_to_same_discussion
-    if self.parent.present?
+    if parent.present?
       unless discussion_id == parent.discussion_id
         errors.add(:parent, "Needs to have same discussion id")
       end
