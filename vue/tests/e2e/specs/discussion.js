@@ -52,10 +52,8 @@ module.exports = {
     page.click('.action-menu')
     page.click('.action-dock__button--close_thread')
     page.expectFlash('Thread closed')
-
-    page.pause(500)
-    page.click('.flash-root__action')
-    page.expectFlash('Thread reopened')
+    // page.click('.flash-root__action')
+    // page.expectFlash('Thread reopened')
   },
 
   'lets_you_edit_title_and_context': (test) => {
