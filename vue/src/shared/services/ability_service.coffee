@@ -130,9 +130,11 @@ export default new class AbilityService
     group.adminsInclude(Session.user())
 
   canEditComment: (comment) ->
-    comment.authorIs(Session.user()) and
-    (comment.isMostRecent() or comment.group().membersCanEditComments) and
-    comment.discussion().membersInclude(Session.user())
+    (comment.discussion().adminsInclude(Session.user()) and comment.group().adminsCanEditUserContent) or
+
+    (comment.authorIs(Session.user()) and
+     (comment.isMostRecent() or comment.group().membersCanEditComments) and
+     comment.discussion().membersInclude(Session.user()))
 
   canDeleteComment: (comment) ->
     comment.authorIs(Session.user()) or comment.discussion().adminsInclude(Session.user())
