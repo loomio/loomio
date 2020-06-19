@@ -786,7 +786,6 @@ fr:
     submit: 'Oui, désactiver ce groupe'
   group_form:
     click_to_change_image: Image de couverture et logo (cliquer pour modifier)
-    permissions_explaination: 'Les membres d''un groupe peuvent avoir deux statuts : administrateur ou membre. Les administrateurs ont tous les accès et autorisations. Sélectionnez les accès et autorisations des membres :'
     aria_label: 'Forme du groupe'
     new_organisation: Nouvelle organisation
     start_group_heading: 'Créer un groupe'
@@ -866,9 +865,6 @@ fr:
         </p>
     submit: Démarrer l'export
     flash: L'export des données du groupe a démarré
-  group_features:
-    useAnonymous: Ne pas afficher les votes des membres
-    nested_comments: Afficher les commentaires en mode discussion
   membership_requests_card:
     heading: 'Demandes d’ajout'
     manage_requests: Gérer les demandes
@@ -1366,8 +1362,6 @@ fr:
     search_subgroups_of_name: 'Rechercher des sous-groupes de {{name}}'
     group_without_subgroups: '{{name}} sans sous-groupes'
   poll_common_action_panel:
-    anonymous: Les votes seront anonymes
-    anonymous_until_close: Les votes seront anonymes jusqu'à la clôture du sondage
     unable_to_vote: Vous n’êtes pas autorisé à voter dans cette décision.
   current_polls_card:
     title: Décisions en cours
@@ -1400,7 +1394,7 @@ fr:
       title: Choix multiple
       helptext_on: Si coché, les participants pourront choisir plusieurs options.
     anyone_can_participate:
-      title: Tout le monde peut participer
+      title: N’importe qui ayant un lien peut participer.
       helptext_on: Si coché, n'importe qui disposant du lien de ce sondage pourra participer.
     notify_on_participate:
       title: M’avertir lorsque des gens participent
@@ -1408,9 +1402,6 @@ fr:
     anonymous:
       title: Participants anonymes
       helptext_on: Si coché, le nom du participant ne sera pas affiché sur sa réponse.
-    deanonymize_after_close:
-      title: Montrer les votes après la fermeture du sondage
-      helptext_on: Si coché, les votes ne seront plus anonymes après la fermeture du sondage
     voter_can_add_options:
       title: Permettre aux participants d’ajouter des options
       helptext_on: Si coché, les participants peuvent ajouter leurs propres options en votant.
@@ -1419,7 +1410,6 @@ fr:
       helptext_on: Les participants peuvent indiquer « si besoin » sur des horaires
   poll_common_close_form:
     title: Fermer un sondage en avance
-    helptext: Etes-vous sûrs d'être prêts à clôturer plus tôt ? (Vous pouvez ré-ouvrir ceci plus tard si vous le souhaitez)
     close_proposal: Clôturer la proposition
     close_poll: Fermer le sondage
     close_count: Clôturer la vérification

@@ -685,8 +685,6 @@ it:
       group_updated: 'Gruppo aggiornato'
   group_export_modal:
     title: Esporta i dati del gruppo
-  group_features:
-    nested_comments: Abilita la vista nidificata dei commenti
   membership_requests_card:
     heading: 'Richieste di partecipazione'
     manage_requests: Gestisci richieste
@@ -1032,6 +1030,7 @@ it:
       title: Scelta multipla
       helptext_on: Quando selezionato, i partecipanti potranno selezionare opzioni multiple.
     anyone_can_participate:
+      title: Chiunque con un link può partecipare
       helptext_on: Quando selezionato, chiunque abbia il link al sondaggio potrà partecipare.
     notify_on_participate:
       title: Inviami notifica quando le persone partecipano
@@ -1039,8 +1038,6 @@ it:
     anonymous:
       title: Votanti anonimi
       helptext_on: Quando selezionato, le informazioni sui partecipanti non saranno mostrate con ogni risposta.
-    deanonymize_after_close:
-      helptext_on: Quando selezionato, l'esistenza di votanti anonimi viene rivelata dopo la chiusura del sondaggio
     voter_can_add_options:
       title: I votanti possono aggiungere opzioni
       helptext_on: Quando selezionato, i partecipanti potranno aggiungere le proprie opzioni al momento del voto.

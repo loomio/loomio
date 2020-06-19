@@ -38,6 +38,7 @@ nl_NL:
     renews_at: "Vernieuwd"
     referral_code: "Verwijzingscode opladen"
     chargify_link: "Rekeningenportaal opladen"
+    referral_code_help: "Geef een vriend korting, krijg zelf wat kudo's!"
   loomio_tags:
     all_tags: Alle labels
     tags: Labels
@@ -95,7 +96,7 @@ nl_NL:
     proposal: voorstel
     count: controleer
     poll: peiling
-    dot_vote: punt stem
+    dot_vote: dotmocracy
     meeting: tijd peiling
     ranked_choice: gerangschikte keuze
     score: resultaat peiling
@@ -475,7 +476,7 @@ nl_NL:
     discussion: 'bord:'
     comment: 'Geef commentaar in'
     poll: 'beslissing:'
-    outcome: 'uitkomst:'
+    outcome: 'resultaat:'
   notifications:
     header: "Meldingen"
     no_notifications: "Je hebt geen meldingen"
@@ -483,7 +484,7 @@ nl_NL:
     discussion_announced: "<strong>{{name}}</strong> deelde een discussie <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> heeft een voorstel gemaakt <strong>{{title}}</strong>"
     motion_closed: "Voorstel gesloten: <strong>{{title}}</strong>"
-    publish_outcome: "Publiceer een uitkomst"
+    publish_outcome: "Publiceer een resultaat"
     motion_closed_by_user: "<strong>{{name}}</strong> heeft het voorstel gesloten <strong>{{title}}</strong>"
     motion_closed_by_expiry: "Voorstel is gesloten: <strong>{{title}}</strong>"
     new_vote: "<strong>{{name}}</strong> {{position}} ten aanzien van het voorstel <strong>{{title}}</strong>"
@@ -498,8 +499,8 @@ nl_NL:
     user_added_to_group: "<strong>{{name}}</strong> heeft je toegevoegd aan de groep <strong>{{title}}</strong>"
     user_added_to_group_no_inviter: "Je bent toegevoegd aan de groep <strong>{{title}}</strong>"
     motion_closing_soon: "Voorstel sluit binnenkort: <strong>{{title}}</strong>"
-    motion_outcome_created: "<strong>{{name}}</strong> heeft een uitkomst gepubliceerd voor het voorstel <strong>{{title}}</strong>"
-    motion_outcome_updated: "<strong>{{name}}</strong> heeft de uitkomst voor het voorstel <strong>{{title}}</strong> geactualiseerd"
+    motion_outcome_created: "<strong>{{name}}</strong> heeft een resultaat gepubliceerd voor het voorstel <strong>{{title}}</strong>"
+    motion_outcome_updated: "<strong>{{name}}</strong> heeft de resultaat voor het voorstel <strong>{{title}}</strong> geactualiseerd"
     invitation_accepted: "<strong>{{name}}</strong> heeft je uitnodiging geaccepteerd om deel te nemen aan <strong>{{title}}</strong>"
     new_coordinator: "<strong>{{name}}</strong> maakte van jou een admin in <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> heeft een {{poll_type}} gestart <strong>{{title}}</strong>"
@@ -508,8 +509,8 @@ nl_NL:
     poll_closing_soon: "{{poll_type}} sluit binnenkort <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} gesloten: <strong>{{title}}</strong>"
     poll_option_added: "<strong>{{name}}</strong> voegde opties toe: {{title}}</strong>"
-    outcome_created: "<strong>{{name}}</strong> heeft een uitkomst gedeeld <strong>{{title}}</strong>"
-    outcome_announced: "<strong>{{name}}</strong> heeft een uitkomst gedeeld <strong>{{title}}</strong>"
+    outcome_created: "<strong>{{name}}</strong> heeft een resultaat gedeeld <strong>{{title}}</strong>"
+    outcome_announced: "<strong>{{name}}</strong> heeft een resultaat gedeeld <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> heeft geparticipeerd aan: <strong>{{title}}</strong>"
     group_announced: "<strong>{{name}}</strong> heeft je uitgenodigd voor de groep <strong>{{title}}</strong>"
   discussion_fork_actions:
@@ -545,12 +546,12 @@ nl_NL:
     send_group: Nodig mensen uit voor {{name}}
     send_poll: Verstuur {{type}}
     send_poll_explain: Nodig mensen uit om te participeren in {{type}}
-    send_outcome: Stuur de uitkomst
-    send_outcome_explain: Meld mensen over de uitkomst van {{type}}
+    send_outcome: Stuur de resultaat
+    send_outcome_explain: Meld mensen over de resultaat van {{type}}
     discussion_notification_history: Bord meldingen geschiedenis
     group_notification_history: Groep uitnodigingen
     poll_notification_history: Peiling meldingen geschiedenis
-    outcome_notification_history: Uitkomst meldingen geschiedenis
+    outcome_notification_history: Resultaat meldingen geschiedenis
     comment_notification_history: Commentaar meldingen geschiedenis
     notification_history_explanation: ✓ geeft aan dat de melding is gelezen of dat de e-mail is geopend
     quick_add: "Snelle toevoeging:"
@@ -593,8 +594,8 @@ nl_NL:
         title: Wijzigingen melden
         helptext: Wie wil je meldingen laten krijgen over jouw veranderingen?
       outcome_announced:
-        title: Deel uitkomst
-        helptext: Met wie zou de je uitkomst willen delen?
+        title: Deel resultaat
+        helptext: Met wie zou je het resultaat willen delen?
       anyone_can_participate: Iedereen met een link kan deelnemen
       placeholder: Voeg namen of e-mailadressen in...
       notified_empty: 'Nog niemand geselecteerd.'
@@ -635,10 +636,10 @@ nl_NL:
     reply_to_comment: Antwoord
     fork_comment: Splits bord
     translate_comment: Commentaar vertalen
-    edit_outcome: Uitkomst bewerken
-    announce_outcome: Maak een melding aan over deze uitkomst
+    edit_outcome: Resultaat bewerken
+    announce_outcome: Meld het resultaat
     announce_outcome_active: (Nog niemand werd op de hoogte gebracht van dit resultaat)
-    translate_outcome: Uitkomst vertalen
+    translate_outcome: Resultaat vertalen
     show_history: Toon bewerkingsgeschiedenis
     edited: Bewerkt
     pin_thread: Bord vastprikken
@@ -799,8 +800,8 @@ nl_NL:
       loud: E-mail als er activiteit is.
       loud_aria_description: Je notificatievolume voor deze groep staat op Luid. Je ontvangt een e-mailbericht als er activiteit is.
       loud_message: Je zal e-mails krijgen over alle activiteiten in "{{name}}"
-      normal: 'E-mail alleen belangrijke activiteiten: Nieuwe borden, voorstellen, uitkomsten enz.'
-      normal_aria_description: Je meldingsgeluid voor deze groep staat ingesteld op Normaal. Je zal enkel belangrijke activiteiten per e-mail toegestuurd krijgen. Zoals wanneer iemand een nieuw bord start, een voorstel doet of een uitkomst toekent.
+      normal: 'E-mail alleen belangrijke activiteiten: Nieuwe borden, voorstellen, resultaten enz.'
+      normal_aria_description: Je meldingsgeluid voor deze groep staat ingesteld op Normaal. Je zal enkel belangrijke activiteiten per e-mail toegestuurd krijgen. Zoals wanneer iemand een nieuw bord start, een voorstel doet of een resultaat vaststeld.
       normal_message: 'Je zal enkel ge-e-maild worden over belangrijke gebeurtenissen in "{{name}}".'
       quiet: Niet e-mailen over deze groep. Activiteit wordt weergegeven op het dashboard.
       quiet_aria_description: Je notificatievolume voor deze groep staat op Stil. Je krijgt geen e-mail over activiteit in deze groep. Groepsactiviteit wordt getoond op je dashboard.
@@ -836,7 +837,6 @@ nl_NL:
   group_form:
     thread_defaults_help: Standaard instellingen voor nieuwe borden
     click_to_change_image: Cover-afbeelding en logo (klik om te wijzigen)
-    permissions_explaination: 'Er zijn twee niveau''s van lidmaatschap: admin en lid. Admins hebben alle rechten. Kies leden-rechten:'
     aria_label: 'Groepsformulier'
     new_organisation: Nieuwe Organisatie
     start_group_heading: 'Een groep starten'
@@ -916,9 +916,6 @@ nl_NL:
         </p>
     submit: Start export
     flash: Groep data export gestart
-  group_features:
-    useAnonymous: Activeer anonieme peiling
-    nested_comments: Activeer geneste commentaar view
   membership_requests_card:
     heading: 'Lidmaatschapsverzoeken'
     manage_requests: Beheer verzoeken
@@ -1217,7 +1214,7 @@ nl_NL:
     n_more: 'Laad {{count}} antwoorden'
     add_comment: Opmerking toevoegen
     add_poll: Voeg peiling toe
-    add_outcome: Voeg uitkomst toe
+    add_outcome: Voeg resultaat toe
     comment: Becommentarieer
     facilitate: Faciliteren
   thread_group:
@@ -1292,8 +1289,13 @@ nl_NL:
     email_label: 'Je e-mailadres'
     email_placeholder: 'Voer je e-mailadres in...'
     message_label: 'Je bericht'
+    message_placeholder: 'Als je ondersteuning vraagt, geef dan alsjeblieft zo veel informatie als je kunt.'
     send_message: 'Stuur bericht'
     new_contact_message: "Bedankt voor uw bericht; we zullen snel reageren!"
+    consent_message: |
+        Door met ons contact te zoeken, geef je toestemming aan onze medewerkers om jouw account te bekijken voor zover dat nodig is. <br />
+        Ons ondersteuningsteam spreekt Engels en zal Google Translate gebruiken indien nodig. <br />
+        We proberen binnen 24 uur te reageren op alle berichten.
     success: "Bedankt voor je bericht, {{name}}. We zullen snel reageren."
   hint:
     context: 'Tips voor het gebruik van het omschrijvingenveld'
@@ -1337,8 +1339,8 @@ nl_NL:
     participate: Bijdragen
     vote: Stem
     votes: Stemmen
-    update_outcome: Uitkomst actualiseren
-    outcome: Uitkomst
+    update_outcome: Resultaat vernieuwen
+    outcome: Resultaat
     statement: Verklaring
     change_your_stance: Bewerk antwoord
     load_more: Laad meer
@@ -1423,8 +1425,8 @@ nl_NL:
     search_subgroups_of_name: 'Doorzoek subgroepen van {{name}}'
     group_without_subgroups: '{{name}} zonder subgroepen'
   poll_common_action_panel:
-    anonymous: Stemmen zullen anoniem zijn
-    anonymous_until_close: Stemmen zullen anoniem blijven tot de peiling sluit
+    anonymous: Stemmen zijn anoniem
+    results_hidden_until_closed: Resultaten zijn verborgen totdat de %{poll_type} is gesloten
     unable_to_vote: Je hebt geen toestemming om een stem uit te brengen voor deze beslissing.
   current_polls_card:
     title: Lopende beslissingen
@@ -1441,7 +1443,7 @@ nl_NL:
     members_count: "{{count}} mensen zullen op de hoogte gebracht worden"
     participants_count: "De{{count}} mensen die gestemd hebben zullen op de hoogte gebracht worden"
   poll_common_calendar_invite:
-    calendar_invite: Voeg een kalenderuitnodiging toe met deze uitkomst
+    calendar_invite: Voeg een kalenderuitnodiging toe met dit resultaat
     poll_option_id: Tijd van de vergadering
     helptext_on: Gebruikers zullen deze vergadering kunnen toevoegen aan hun kalender
     helptext_off: Er zal geen vergaderverzoek verstuurd worden
@@ -1457,20 +1459,23 @@ nl_NL:
       title: Meerkeuze
       helptext_on: Indien geselecteerd, zullen participanten meerdere opties kunnen selecteren.
     anyone_can_participate:
-      title: Iedereen kan meedoen
+      title: Iedereen met een link kan deelnemen
       helptext_on: Indien geselecteerd, kan iedereen met de link participeren in de peiling.
     notify_on_participate:
       title: Meld me wanneer er mensen deelnemen
       helptext_on: Indien geselecteerd, zal je een melding ontvangen wanneer iemand participeert.
     anonymous:
       title: Anonieme stemmers
-    deanonymize_after_close:
-      title: Toon stemmers na sluiting
+      helptext_on: Als geselecteerd, wordt informatie van deelnemers niet bij elke reactie getoond.
     voter_can_add_options:
       title: Kiezers mogen opties toevoegen
+      helptext_on: Als geselecteerd, kunnen deelnemers hun eigen opties toevoegen bij het stemmen.
     can_respond_maybe:
       title: Stemmers kunnen reageren met "indien nodig"
       helptext_on: Stemmers kunnen tijden aanduiden met "indien nodig"
+    hide_results_until_closed:
+      title: Verberg resultaten tot sluiting van de peiling
+      helptext_on: Toon niet hoe mensen stemmen tot de peiling gesloten is
   poll_common_close_form:
     title: Sluit een peiling voortijdig
     close_proposal: Voorstel sluiten
@@ -1491,6 +1496,7 @@ nl_NL:
     proposal_reopened: Voorstel heropend
     poll_reopened: Peiling heropend
     count_reopened: Check heropend
+    dot_vote_reopened: Dotmocracy heropend
     meeting_reopened: Tijd peiling heropend
     ranked_choice_reopened: Gerangschikte keuze peiling heropend
   poll_common_closing_at_field:
@@ -1519,21 +1525,22 @@ nl_NL:
     reminded: Herinnering gestuurd!
     reminder_sent: Herinneringsmelding verstuurd
   poll_common_set_outcome_panel:
-    enter_outcome: Voer uitkomst in
-    share_outcome: Deel uitkomst
-    poll: 'Deze peiling is gesloten. <strong>Deel de uitkomst</strong> met de groep.'
-    proposal: 'Dit voorstel is gesloten. Denk na over wat er gezegd is en <strong>deel een uitkomst</strong>, zodat mensen weten wat er daarna gebeurt.'
-    count: 'Deze ''Check'' werd gesloten. <strong>Deel de uitkomst </strong> om het proces af te sluiten.'
-    meeting: 'Dit ''Moment bevragen'' is gesloten. <strong>Deel een uitkomst </strong> om anderen op te laten weten wanneer de vergadering plaats zal vinden.'
-    dot_vote: 'Deze ''Dotmocracy'' werd gesloten. <storng>Deel een uitkomst</strong> met je groep.'
-    ranked_choice: 'Deze ''Keuzes rangschikken'' peiling werd gesloten<strong> Deel een uitkomst </strong> met de groep.'
+    enter_outcome: Voer resultaat in
+    share_outcome: Deel resultaat
+    poll: 'Deze peiling is gesloten. <strong>Deel het resultaat</strong> met de groep.'
+    proposal: 'Dit voorstel is gesloten. Denk na over wat er gezegd is en <strong>deel een resultaat</strong>, zodat mensen weten wat er daarna gebeurt.'
+    count: 'Deze ''Check'' werd gesloten. <strong>Deel het resultaat</strong> om het proces af te sluiten.'
+    meeting: 'Dit ''Moment bevragen'' is gesloten. <strong>Deel een resultaat </strong> om anderen op te laten weten wanneer de vergadering plaats zal vinden.'
+    dot_vote: 'Deze ''Dotmocracy'' werd gesloten. <storng>Deel het resultaat</strong> met je groep.'
+    ranked_choice: 'Deze ''Keuzes rangschikken'' peiling werd gesloten<strong> Deel het resultaat</strong> met de groep.'
+    score: 'De score peiling is gesloten. <strong>Deel het resultaat</strong> met de groep.'
   poll_common_outcome_form:
-    new_title: Voer een uitkomst in
-    update_title: Uitkomst actualiseren
-    outcome_created: Uitkomst aangemaakt
-    outcome_updated: Uitkomst bijgewerkt
+    new_title: Voer een resultaat in
+    update_title: Resultaat vernieuwen
+    outcome_created: Resultaat aangemaakt
+    outcome_updated: Resultaat bijgewerkt
     statement_placeholder: Vat de reacties samen en leg uit wat er daarna gebeurt.
-    submit: Deel uitkomst
+    submit: Deel resultaat
   poll_common_outcome_panel:
     authored_by: 'Door {{name}}'
   poll_common_delete_modal:
@@ -1560,6 +1567,7 @@ nl_NL:
         <p>Een taartgrafiek geeft het overzicht van de standpunten in de groep, terwijl de opmerkingen de individuele stemmen een platform geeft. </p>
         <p>Laat je niet ontmoedigen als er in het begin geen akkoord zichtbaar is, voorstellen zijn ontworpen om problemen aan de oppervlakte te brengen.</p>
         <p>Als er goed deelgenomen word is een 'Voorstel' een krachtig instrument om actie te ondernemen.</p>
+    tool_tip_collapsed: Zoek overeenstemming of feedback van anderen.
     start_header: '''Voorstel'' starten'
     edit_header: Voorstel bewerken
     tip: Zoek collectieve overeenkomst door een proces waar alle stemmen in gehoord kunnen worden. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Meer leren</a>
@@ -1610,9 +1618,13 @@ nl_NL:
     details_placeholder: Geef verhelderende details die mensen nodig kunnen hebben om mee te kunnen doen
     add_option_placeholder: Optie toevoegen
     dots_per_person: Punten per persoon
+    dots_per_person_helptext: Het aantal punten dat elk persoon mag toekennen.
     dot_vote_created: '''Dotmocracy'' aangemaakt'
     dot_vote_updated: '''Dotmocracy'' geactualiseerd'
   poll_score_form:
+    tool_tip_expanded: |
+        <p>Score peilingen maken het mogelijk om mensen hun mate van voorkeur te geven voor elke optie.</p>
+        <p>De totale score van elke optie is onderdeel van het resultaat.</p>
     tool_tip_collapsed: Scoor punten op een schaal
     start_header: Start peilingsscore
     edit_header: Bewerk peilingsscore
@@ -1630,13 +1642,16 @@ nl_NL:
         <p>Wanneer je nieuwe tijden tijdens een 'Moment afspreken' toevoegt worden de mensen die al gekozen hadden gevraagd hun keuze te actualiseren.</p>
         <p>Zo krijg je een overzicht van wie het wanneer past en kan je kiezen wanneer je de vergadering wilt houden.</p>
         <p>Tijden worden automatisch aangepast aan de tijdzone van de deelnemers.</p>
+    tool_tip_collapsed: Zoek uit wanneer mensen beschikbaar zijn voor een ontmoeting
     start_header: '''Moment bevragen'' starten'
     edit_header: '''Moment bevragen'' bewerken'
+    tip: Zoek uit wanneer mensen beschikbaar zijn voor een ontmoeting
     title_placeholder: M.a.w. Wanneer moeten we weer bij elkaar komen?
     details_placeholder: Geef verhelderende details die mensen nodig kunnen hebben om mee te kunnen doen
     meeting_created: '''Moment bevragen'' aangemaakt'
     meeting_updated: '''Moment bevragen'' geactualiseerd'
     timeslots: Tijdvensters
+    no_options: Ingevulde tijden zijn in je huidige tijdzone ({{zone}}). Deelnemers zien deze tijd vertaald naar hun eigen tijdzone.
     meeting_duration: Duur van de vergadering
     add_option_placeholder: Voeg nieuwe tijd toe
     time_slot_added: Tijdsslot toegevoegd
@@ -1682,7 +1697,7 @@ nl_NL:
     agree_meaning: dit voorstel is goed genoeg om door de groep over te worden genomen
     abstain: Onthouden
     abstain_verb: "onthouden"
-    abstain_meaning: Weet niet zeker, weet niet, of maakt niet uit. Steun de uitkomst toch wel
+    abstain_meaning: Weet niet zeker, weet niet, of maakt niet uit. Steun het resultaat toch wel
     disagree: Oneens
     disagree_verb: "niet ingestemd"
     disagree_meaning: Ik steun het voorstel niet. Het zou niet door moeten gaan.
@@ -1746,7 +1761,7 @@ nl_NL:
     discussion_reopened: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> heropende het bord"
     discussion_forked: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> heeft het bord <strong><a href='d/{{key}}'>{{title}}</a></strong> gesplitst"
     new_comment: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>"
-    outcome_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> deelde een uitkomst"
+    outcome_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> deelde een resultaat"
     poll_reopened: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> heropende het {{polltype}}"
     poll_closed_by_user: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> sloot de {{polltype}}"
     poll_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> startte een {{polltype}}"
@@ -1758,8 +1773,8 @@ nl_NL:
     event_removed: "Van bord verwijderd"
   poll_common_subscribe_form:
     receive_updates_title: Je stem is opgenomen
-    receive_updates_helptext: Als je een e-mail wil krijgen over de uitkomst van deze peiling, voer dan je e-mail adres hieronder in.
-    email_saved: Je krijgt een e-mail over de uitkomst van deze peiling
+    receive_updates_helptext: Als je een e-mail wil krijgen over het resultaat van deze peiling, voer dan je e-mail adres hieronder in.
+    email_saved: Je krijgt een e-mail over het resultaat van deze peiling
     subscribe: Schrijf in
     no_thanks: Nee dankjewel
   poll_common_example_card:
@@ -1835,9 +1850,12 @@ nl_NL:
     webhooks: Webhooks
     format: Formateer
     formats:
+      markdown: Markdown (voor Mattermost, Zapier en anderen)
       microsoft: Microsoft Teams
       slack: Slack
     subtitle: Verbind met Slack, Microsoft Teams, Mattermost, Zapier of met eender wat dat webhooks ondersteunt.
+    we_have_guides: |
+        Zie onze <a href="{{url}}" target="_blank">webhook setup handleiding</a> voor hulp met het verbinden van jouw dienst.
     add_webhook: Voeg webhook toe
     success: Webhook toegevoegd!
     remove: Verwijder webhook
@@ -1846,6 +1864,8 @@ nl_NL:
     url_label: Webhook URL
     url_placeholder: https://hooks.example.com/...
     name_label: Naam
+    name_placeholder: Geeft deze webhook een naam
+    event_kind_helptext: Voor welk soort gebeurtenissen wil je een melding?
     event_kinds:
       new_discussion: Een bord is gestart
       discussion_edited: Een bord is gewijzigd
@@ -1857,12 +1877,19 @@ nl_NL:
       poll_expired: Een peiling verloopt
       poll_closed_by_user: Een peiling is handmatig gesloten
       poll_reopened: Een peiling werd heropend om te stemmen
-      outcome_created: Een uitkomst is gedeeld
+      outcome_created: Een resultaat is gedeeld
+    include_body_label: inclusief message body met melding
+    include_subgroups_label: Inclusief gebeurtenissen van sub-groepen
   configure_sso:
+    redirecting: Even geduld, je wordt omgeleid naar je sign-in leverancier
     title: Enkelvoudig aanmelden
     enabled: Single sign-on werd geactiveerd
+    helptext: Integreer met OneLogin, Auth0, Microsoft Active Directory, of elke andere SAML Provider. <a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">Meer informatie</a>.
+    warning_helptext: "Waarschuwing: Je moet jezelf nu authenticeren bij de provider nadat je op bewaren klikt."
     idp_metadata_url: IDP Metadata URL
     idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
+    pro_plan_only: Dit feature is alleen beschikbaar voor Pro abonnement klanten. Kijk op onze <a href="/upgrade" target="_blank">upgrade pagina</a> voor meer details.
+    success: Single sign-on is geconfigureerd.
     destroyed: Single sign-on verwijderd
     invalid_idp_metadata_url: Ongeldige IDP metadata URL
     sp_metadata_url: SP Metadata URL
@@ -1882,7 +1909,10 @@ nl_NL:
     success: Bedankt!
     categories:
       business: Zakelijk
+      bcorp: B-Corp of sociale onderneming
       cooperative: Coöperatie
+      consultant: Consultancy diensten
+      government: Overheid/lokale overheid
       nonprofit: Nonprofit
       union: Vakbond
       party: Politieke partij
@@ -1901,7 +1931,12 @@ nl_NL:
       two_thousand: "501 - 2000"
       else: "> 2000"
     uses:
+      governance: Besturen van raad, commissie of stichting
+      collaboration: Collaboratieve werkgroep
+      engagement: Belanghebbenden of deelnemer engagement
+      self_management: Zelf-bestuurd (collaboratieve werkplaats)
       remote: Telewerk
+      document: Collaboratieve document ontwikkeling, bijvoorbeeld een strategisch plan
       decision_making: Beslissings-proces (Advies, Toestemming)
       funding: Steun beslissingen
       project: Project team

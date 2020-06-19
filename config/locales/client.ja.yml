@@ -1,6 +1,18 @@
 ja:
+  plan_names:
+    free: 無料
+    trial: トライヤル
+    small: 小
+    medium: 中
+    large: 大
   loomio_tags:
+    all_tags: 全タグ
+    tags: タグ
     name_label: 氏名
+    color_label: 色
+    modal_title: 新しいタグを作る
+    modal_destroy_title: タグの削除
+    destroy_tag: タグの削除
   common:
     confirm_discard_changes: 編集内容を破棄しますか？
     time:
@@ -8,6 +20,8 @@ ja:
       pm: 午後
     group: 'グループ'
     groups: 'グループ'
+    organization: "組織"
+    organizations: "組織"
     privacy:
       privacy: 'プライバシー'
       public: '公開'
@@ -56,7 +70,7 @@ ja:
   notifications:
     header: "通知"
   discussion_form:
-    group_label: 'グルブ'
+    group_label: 'グループ'
     title_label: 'タイトル'
     privacy_label: '個人情報'
   join_group_button:
@@ -85,6 +99,7 @@ ja:
     ignore: 拒否
   invitation_form:
     invite_people: 'メンバーを招待する'
+    group: 'グループ'
   memberships_page:
     members: 'メンバー'
     name_label: '氏名'
@@ -132,6 +147,8 @@ ja:
   polls_panel:
     open: '議論中'
     closed: '議論終了'
+  poll_common_select_group:
+    loomio_group: グループ
   poll_common_form:
     closed: 議論終了
   poll_count_options:
