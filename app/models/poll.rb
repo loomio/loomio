@@ -68,7 +68,8 @@ class Poll < ApplicationRecord
 
   has_many :documents, as: :model, dependent: :destroy
 
-  default_scope { includes(:poll_options).where(discarded_at: nil) }
+  default_scope { includes(:poll_options) }
+  scope :kept, -> { where(discarded_at: nil) }
   scope :active, -> { where(closed_at: nil) }
   scope :closed, -> { where("closed_at IS NOT NULL") }
   scope :search_for, ->(fragment) { where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
@@ -93,7 +94,6 @@ class Poll < ApplicationRecord
                       events.kind           = 'poll_closing_soon')", recency_threshold)
   end
 
-  validates :title, presence: true
   validates :poll_type, inclusion: { in: AppConfig.poll_templates.keys }
   validates :details, length: {maximum: Rails.application.secrets.max_message_length }
 
@@ -104,6 +104,7 @@ class Poll < ApplicationRecord
   validate :discussion_group_is_poll_group
   validate :cannot_deanonymize
   validate :cannot_reveal_results_early
+  validate :title_if_not_discarded
 
   alias_method :user, :author
 
@@ -329,6 +330,13 @@ class Poll < ApplicationRecord
   end
 
   private
+
+  def title_if_not_discarded
+    if !discarded_at && title.to_s.empty?
+      errors.add(:title, I18n.t(:"activerecord.errors.messages.blank"))
+    end
+  end
+
   def set_stances_in_discussion
     self.stances_in_discussion = false if anonymous or hide_results_until_closed
   end
