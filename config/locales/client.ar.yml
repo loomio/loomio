@@ -81,12 +81,16 @@ ar:
       show_more: "أظهر المزيد"
       view_all: "استعراض الكل"
       new_thread: "موضوع جديد"
+      add_subgroup: 'مجموعة فرعية جديدة'
       loading: 'تحميل'
       translate: 'ترجم'
       upload: 'تحميل'
       uploading: 'تحميل'
       unsubscribe: إلغاء الاشتراك
       invite: دعوة
+    formatting_help:
+      label: 'التنسيق'
+      title: 'تعرف على كيفية استخدام Markdown لتنسيق النص الخاص بك'
   merge_accounts:
     modal:
       title: دمج الحسابات
@@ -111,10 +115,44 @@ ar:
       quiet: تجاهل
     loud_label: "كافة النشاط"
     normal_label: "الإعلانات"
+    quiet_label: "لا يوجد رسائل بريد إلكتروني "
     mute_label: "كتم"
+    discussion:
+      title: "إخطارات الموضوع"
+      loud_description: "سيتم إرسال جميع الأنشطة في هذا الموضوع عبر البريد الإلكتروني"
+      normal_description: "سيتم إرسال بريد إلكتروني إلى النشاط المهم فقط في هذا الموضوع"
+      quiet_description: "لن يتم إرسال أي نشاط في هذا الموضوع"
+      apply_to_all: "قم بتطبيق هذه الإعدادات على كافة سلاسل الرسائل في هذه المجموعة"
+      messages:
+        loud: "سيتم إرسال نشاط عبر البريد الإلكتروني في هذا الموضوع"
+        normal: "سيتم إرسال بريد إلكتروني حول المقترحات في هذا الموضوع"
+        quiet: "لن يتم إرسال بريد إلكتروني حول هذا الموضوع"
     membership:
+      title: " {{title}} إخطارات"
       loud_description: "ستتلقى رسالة إلكترونية بأي نشاط في هذه المجموعة"
       normal_description: "ستتلقى رسالة إلكترونية بأي نشاط في هذه المجموعة"
+      quiet_description: "لن يتم إرسال بريد إلكتروني حول النشاط في هذه المجموعة"
+      apply_to_all: "تطبيق هذه الإعدادات على كل مجموعاتي"
+      messages:
+        loud: "سيتم إرسال جميع الأنشطة في هذه المجموعة عبر البريد الإلكتروني"
+        normal: "سيتم إرسال الإعلانات عبر البريد الإلكتروني فقط في هذه المجموعة"
+        quiet: "لن يتم إرسال بريد إلكتروني حول هذه المجموعة"
+    all_groups:
+      loud_description: "سيتم إرسال جميع الأنشطة في جميع مجموعاتك عبر البريد الإلكتروني"
+      messages:
+        loud: "سيتم إرسال جميع الأنشطة في جميع مجموعاتك عبر البريد الإلكتروني"
+        normal: "سيتم إرسال الإعلانات عبر البريد الإلكتروني فقط في جميع مجموعاتك"
+        quiet: "لن يتم إرسال بريد إلكتروني حول أي من مجموعاتك"
+    user:
+      title: إعدادات البريد الإلكتروني للمجموعات الجديدة
+      loud_description: "سيتم إرسال بريد إلكتروني إليك عندما يكون هناك نشاط في أي مجموعات جديدة تنضم إليها"
+      normal_description: "سيتم إرسال بريد إلكتروني حول الإعلانات في أي مجموعات جديدة تنضم إليها"
+      quiet_description: "لن يتم إرسال بريد إلكتروني حول النشاط في أي مجموعات جديدة تنضم إليها"
+      apply_to_all: "تطبيق هذه الإعدادات على كل مجموعاتي"
+      messages:
+        loud: "سيتم إرسال جميع الأنشطة في مجموعات جديدة عبر البريد الإلكتروني"
+        normal: "سيتم إرسال بريد إلكتروني إليك عن الإعلانات في مجموعات جديدة"
+        quiet: "لن يتم إرسال بريد إلكتروني حول المجموعات الجديدة"
   mute_explanation_modal:
     aria_label: كتم الخيط
     mute_thread: كتم الخيط
@@ -151,6 +189,8 @@ ar:
   sidebar:
     threads: 'المواضيع'
     start_group: 'منظمة جديدة'
+    start_subgroup: 'مجموعة فرعية جديدة'
+    explore_groups: استكشف المجموعات
     start_thread: موضوع جديد
     start_decision: قرار جديد
     aria_labels:
@@ -172,6 +212,7 @@ ar:
     sign_in: 'تسجيل الدخول'
     logo_title: 'الصفحة الرئيسية'
   user_dropdown:
+    email_settings: 'إعدادات الإشعار'
     help: 'المساعدة'
     sign_out: 'الخروج'
   membership_card:
@@ -181,7 +222,21 @@ ar:
     cancel_invitation: إلغاء الدعوة
   notifications:
     header: "تبليغات"
+    new_discussion: "<strong>{{name}}</strong> ابدأ مناقشة <strong>{{title}} </strong>"
+    new_motion: "<strong> {{name}} </strong>انشاء اقتراح <strong>{{title}} </strong>"
+    motion_closed: "<strong>{{title}}</strong> :تم إغلاق الاقتراح"
     publish_outcome: "قم بنشر النتيجة"
+    motion_closed_by_user: "<strong>{{title}}</strong>  إغلاق الاقتراح <strong>{{name}}</strong> "
+    motion_closed_by_expiry: "<strong>{{title}}</strong> الاقتراح أغلق "
+    new_vote: "<strong>{{title}}</strong> موقع}} على الاقتراح}} <strong>{{name}} </strong>"
+    new_comment: "<strong>{{title}}</strong>  علق على <strong>{{name}}</strong>"
+    comment_replied_to: "<strong>{{title}} </strong> رد على تعليقك في <strong>{{name}}</strong>"
+    user_mentioned: "<strong>{{title}}</strong> اشار اليك في <strong>{{name}}</strong> "
+    membership_requested: "<strong>{{title}}</strong> طلب العضوية إلى <strong>{{name}}</strong>"
+    membership_request_approved: '<strong>{{title}}</strong> وافق على طلبك للانضمام <strong>{{name}}</strong> '
+    user_added_to_group: "<strong>{{title}}</strong> أضافك إلى المجموعة <strong>{{name}}</strong> "
+    invitation_accepted: "<strong>{{title}}</strong> لقد قبل طلبك للانضمام إلى <strong>{{name}}</strong>"
+    new_coordinator: "<strong>{{title}}</strong> جعلك مشرف على <strong>{{name}}</strong>"
   discussion_fork_actions:
     move: نقل
   discussion_form:
@@ -223,6 +278,7 @@ ar:
     messages:
       membership_requested: 'لقد قمت بطلب الانضمام لمجموعة {{group}}'
   revision_history_modal:
+    comment_header: سجل مراجعة التعليقات
     started_by: 'تم بدؤه من قبل <strong>{{name}}</strong>'
     edited_by: 'تم تعديله من قبل <strong>{{name}}</strong>'
     posted: تم النشر
@@ -247,6 +303,7 @@ ar:
     discussions_placeholder: 'الموضوع هو حيث يمكن للجميع مناقشة نقاط معينة و صنع قرارات معاً.'
     members_placeholder: 'أنت الشخص الوحيد هنا: قم بدعوة أشخاص للانضمام!'
     member_options: خيارات الأعضاء
+    subgroups_placeholder: 'تمنح المجموعات الفرعية الفرق مساحة خاصة بها وتركز الإشعارات على الأشخاص المناسبين'
     invite_people: 'دعوة'
     visibility_label: 'الظهور'
     options_label: 'الخيارات'
@@ -255,6 +312,7 @@ ar:
       edit_group: 'تعديل إعدادات المجموعة'
       manage_members: 'إدارة الأعضاء'
       add_subgroup: 'أضف فريقا فرعيا'
+      manage_subscription: 'إدارة اشتراك المجموعة'
       email_settings: 'إعدادات البريد الإلكتروني'
       leave_group: 'غادر المجموعة'
       deactivate_group: 'إلغاء المجموعة'
@@ -283,22 +341,34 @@ ar:
     edit_subgroup_heading: 'تعديل إعدادات المجموعة الفرعية'
     group_name: 'اسم المجموعة'
     start_organization_heading: منظمة جديدة
+    group_name_placeholder: 'ما اسم مجموعتك؟'
     subgroup_name: 'اسم المجموعة الفرعية'
     description: 'وصف '
     description_placeholder: 'قم بوصف هدف هذه المجموعة ليستطيع أعضاء مجموعتك معرفة لماذا هم هنا.'
     privacy_statement:
+      public_on_web: 'سيكون الاسم والوصف والمرفقات لسياق المجموعة مرئيين للجمهور'
       private_to_group: 'سيكون اسم ووصف المجموعة ظاهرين لأعضاء المجموعة فقط.'
       private_to_parent_members: 'اسم ووصف المجموعة سيكونون ظاهرين لأعضاء {{parent}}'
     privacy: 'الخصوصية'
+    group_privacy_is_open_description: "يمكن لأي شخص العثور على المجموعة وطلب الانضمام.  يمكن للأعضاء فقط رؤية من في المجموعة.  جميع المواضيع العامة"
+    group_privacy_is_closed_description: "يمكن لأي شخص العثور على المجموعة وطلب الانضمام.  يمكن للأعضاء فقط رؤية من في المجموعة.  جميع المواضيع خاصة"
+    group_privacy_is_closed_public_threads_description: "يمكن لأي شخص العثور على المجموعة وطلب الانضمام.  يمكن للأعضاء فقط رؤية من في المجموعة.  يمكن أن تكون المواضيع عامة أو خاصة."
+    group_privacy_is_secret_description: "يمكن فقط للأعضاء المدعوين العثور على المجموعة ومعرفة من فيها ومشاهدة المواضيع"
     confirm_change_to_secret: "في حالة الاستمرار، سيتم تحويل كل الموضوعات في المجموعة و المجموعات الفرعية لموضوعات خاصة."
     confirm_change_to_secret_subgroup: 'في حالة الاستمرار سيتم تحويل كافة المواضيع إلى خاصة.'
     confirm_change_to_public: 'في حالة الاستمرار سيتم تحويل كافة المواضيع إلى عامة على الشبكة.'
     confirm_change_to_private_discussions_only: 'في حالة الاستمرار سيتم تحويل كافة المواضيع العامة في المجموعة إلى خاصة.'
     profile: الملف الشخصي
+    subgroup_privacy_is_open_description: "يمكن لأي شخص العثور على هذه المجموعة الفرعية وطلب الانضمام.  يمكن للأعضاء فقط رؤية من في المجموعة.  جميع المواضيع العامة"
+    subgroup_privacy_is_closed_description: "يمكن لأي شخص العثور على هذه المجموعة الفرعية وطلب الانضمام.  يمكن للأعضاء فقط رؤية من في المجموعة.  جميع المواضيع خاصة"
+    subgroup_privacy_is_closed_public_threads_description: "يمكن لأي شخص العثور على هذه المجموعة الفرعية وطلب الانضمام.  يمكن للأعضاء فقط رؤية من في المجموعة.  يمكن أن تكون المواضيع عامة أو خاصة"
+    subgroup_privacy_is_closed_secret_parent_description: "يمكن لأعضاء {{الأباء}} العثور على هذه المجموعة الفرعية وطلب الانضمام.  جميع المواضيع خاصة.  يمكن للأعضاء فقط رؤية من في المجموعة"
+    subgroup_privacy_is_secret_description: 'يمكن فقط للأعضاء المدعوين العثور على هذه المجموعة الفرعية ، ومعرفة من فيها والاطلاع على سلاسل المحادثات'
     advanced_settings: "إعدادات متقدمة"
     how_do_people_join: "كيف يمكن للأشخاص الانضمام؟"
     membership_granted_upon_request: 'يمكن لأي شخص الانضمام'
     membership_granted_upon_approval: 'يمكن لأي شخص طلب الانضمام و لكن يجب الموافقة على طلب الانضمام.'
+    membership_granted_upon_approval_secret_parent: 'حسب الطلب<strong> يمكن لأي شخص من {{الأب}} أن يطلب الانضمام إلى المجموعة</strong>'
     permissions: 'السماح'
     thread_privacy: 'خصوصية المواضيع'
     public_threads: 'المواضيع العامة فقط'
@@ -346,6 +416,7 @@ ar:
     copy_link: 'نسخ'
     email_addresses: 'عناوين البريد الإلكتروني'
     email_addresses_placeholder: 'مثال: helperbot@loomio.org, friendlybot@loomio.org'
+    email_explanation: 'بدلاً من ذلك ، أدخل عناوين البريد الإلكتروني أدناه لإرسال الدعوات عبر البريد الإلكتروني'
     add_custom_message: 'قم بجعل دعوتك شخصية،'
     add_custom_message_link: 'قم بإضافة رسالة مخصصة.'
     custom_message: 'تخصيص الرسالة'
@@ -359,14 +430,20 @@ ar:
     messages:
       invitation_sent: 'تم إرسال الدعوة.'
       invitations_sent: 'تم إرسال {{count}} دعوات.'
+      no_invitations: 'عذرًا!  يرجى التحقق من صحة عنوان البريد الإلكتروني والمحاولة مرة أخرى'
       max_invitations: 'إن كنت تريد إرسال أكثر من 100 دعوة، قم باستخدام رابط فريق.'
   memberships_page:
     members: 'الأعضاء'
     name_label: 'الإسم'
+    coordinator_label: 'مسؤل '
     remove_member_label: 'إزالة'
     fragment_placeholder: 'اختيار المستخدمين حسب الاسم أو اسم المستخدم..'
     messages:
       remove_member_success: 'تمت إزالة {{name}}'
+      make_admin_success: ' هو الان المسؤل {{name}} '
+      remove_admin_success: 'لم يعد مسؤل {{name}} '
+    remove_admin_from_self:
+      question: 'هل أنت متأكد أنك لم تعد تريد أن تكون مسؤولاً؟'
   membership_remove_modal:
     invitation:
       title: إلغاء الدعوة
@@ -396,10 +473,16 @@ ar:
     title: 'إيقاف الحساب'
     submit: 'إيقاف الحساب'
   email_settings_page:
+    header: إعدادات الإشعار
     daily_summary_label: الرسالة الكترونية للملخص اليومي
+    daily_summary_description: "كل صباح ، ستتلقى بريدًا إلكترونيًا يحتوي على أي نشاط فاتك في اليوم السابق هذا يجعل من السهل مواكبة النشاط"
+    on_participation_label: الاشتراك على المشاركة
+    on_participation_description: "عند المشاركة في سلسلة رسائل ، سيتم إرسال جميع الأنشطة الأخرى إليك عبر البريد الإلكتروني على الفور"
     announcement_label: الإعلانات
     mentioned_label: الإشارات والردود
+    mentioned_description: "عندما يذكرك أحد الأشخاص في تعليق أو يرد عليك ، ستتلقى رسالة بريد إلكتروني للإعلام"
     update_settings: حفظ التغييرات
+    specific_groups: إعدادات مجموعات محددة
     edit: تعديل
     messages:
       updated: تم تحديث إعدادات البريد الإلكتروني
@@ -432,6 +515,7 @@ ar:
       you_voted: 'لقد قمت بالتصويت: {{position}}.'
     threads_from:
       group: 'المواضيع من'
+      proposals: 'المواضيع ذات القرارات النشطة'
       starred: 'المواضيع المميزة'
       today: 'اليوم'
       yesterday: 'أمس'
@@ -463,6 +547,7 @@ ar:
   thread_context:
     aria_label: 'سياق الموضوع'
     thread_options: 'خيارات الموضوع'
+    email_settings: 'إعدادات الإشعار'
     edit: 'تعديل'
     edit_thread: 'تعديل'
     close_thread: 'مغلق'
@@ -498,12 +583,15 @@ ar:
     email_placeholder: 'ادخل عنوان بريدك الالكتروني...'
     message_label: 'رسالتك'
     send_message: 'أرسل الرسالة'
+    new_contact_message: "!شكرا لتواصلك؛  سنعود إليك قريبا"
   hint:
     context: 'نصائح حول استخدام منصة السياق'
     discussion: 'نصائح للبدء بنقاش تشاركي'
     invitation: 'نصائح لكتابة دعوة رائعة'
     proposal: 'نصائح لكتابة مقترح واضح'
     vote: 'يمكنك تغيير رأيك في أي وقت'
+  explore_page:
+    header: استكشف المجموعات
   global:
     messages:
       app_update: 'هناك نسخة جديدة متوفرة من التطبيق'
@@ -531,6 +619,7 @@ ar:
     header_name: 'الاسم '
     header_username: 'إسم المستخدم'
     invitations: 'الدعوات'
+    admin: 'مسؤل '
   polls_panel:
     all: 'الكل'
     open: 'مفتوحة'

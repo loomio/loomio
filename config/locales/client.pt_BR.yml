@@ -112,7 +112,7 @@ pt_BR:
   common:
     empty: Vazio
     no_results_found: Nenhum resultado encontrado
-    view: Visualisar
+    view: Visualizar
     history: Histórico
     option: Opção
     add: Somar
@@ -555,7 +555,7 @@ pt_BR:
     quick_add: "Convidar: "
     any_other_groups: "Algum outro grupo?"
     notified_people: "{{name}} notificou {{length}} pessoas:"
-    preview: Visualisar Email
+    preview: Visualizar Email
     no_notifications_sent: Nenhuma notificação foi enviada
     history_error: Algo deu errado! Não foi possível carregar o histórico.
     inviting_guests_to_thread: 'As pessoas que não são membros do {{group}} serão adicionadas a essa conversa como visitas, e não receberão acesso às outras conversas no grupo. '
