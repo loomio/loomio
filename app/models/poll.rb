@@ -312,6 +312,10 @@ class Poll < ApplicationRecord
     self.custom_fields.fetch('minimum_stance_choices', 1).to_i
   end
 
+  def title
+    discarded_at ? nil : super
+  end
+
   def details
     discarded_at ? nil : super
   end

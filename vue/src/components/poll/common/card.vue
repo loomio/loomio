@@ -49,23 +49,27 @@ export default
 <template lang="pug">
 v-card
   poll-common-card-header(:poll='poll')
-  v-card-title
-    h1.poll-common-card__title.display-1(v-observe-visibility="{callback: titleVisible}")
-      span(v-if='!poll.translation.title') {{poll.title}}
-      translation(v-if="poll.translation.title" :model='poll', field='title')
-      v-chip.ml-3(outlined small color="info" v-t="'poll_types.' + poll.pollType")
-  v-card-text
-    poll-common-set-outcome-panel(:poll='poll')
-    poll-common-outcome-panel(:poll='poll', v-if='outcome')
-    poll-common-details-panel(:poll='poll')
-    .poll-common-card__results-shown(v-if='showResults')
-      poll-common-directive(:poll='poll', name='chart-panel')
-      poll-common-percent-voted(:poll='poll')
-    poll-common-action-panel(:poll='poll')
-    action-dock(:actions="dockActions" :menu-actions="menuActions")
+  div(v-if="poll.discardedAt")
+    v-card-text
+      .grey--text(v-t="'poll_common_card.discarded'")
+  div(v-else)
+    v-card-title
+      h1.poll-common-card__title.display-1(v-observe-visibility="{callback: titleVisible}")
+        span(v-if='!poll.translation.title') {{poll.title}}
+        translation(v-if="poll.translation.title" :model='poll', field='title')
+        v-chip.ml-3(outlined small color="info" v-t="'poll_types.' + poll.pollType")
+    v-card-text
+      poll-common-set-outcome-panel(:poll='poll')
+      poll-common-outcome-panel(:poll='poll', v-if='outcome')
+      poll-common-details-panel(:poll='poll')
+      .poll-common-card__results-shown(v-if='showResults')
+        poll-common-directive(:poll='poll', name='chart-panel')
+        poll-common-percent-voted(:poll='poll')
+      poll-common-action-panel(:poll='poll')
+      action-dock(:actions="dockActions" :menu-actions="menuActions")
 
-    .poll-common-card__results-shown.mt-4(v-if='showResults')
-      poll-common-votes-panel(:poll='poll')
+      .poll-common-card__results-shown.mt-4(v-if='showResults')
+        poll-common-votes-panel(:poll='poll')
 </template>
 <style lang="sass">
 .v-card__title .poll-common-card__title

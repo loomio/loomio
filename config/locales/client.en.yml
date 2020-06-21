@@ -1489,6 +1489,7 @@ en:
 
   poll_common_card:
     show_results: Show results
+    discarded: This poll has been discarded
 
   poll_common_index_card:
     title: Previous decisions
@@ -1954,15 +1955,6 @@ en:
 
   share_poll_page:
     title: Share poll - {{title}}
-
-  polls_page:
-    heading: Decisions
-    heading_with_group: Decisions in {{name}}
-    search_placeholder: Search for polls...
-    polls_count: Displaying {{count}} of {{total}} polls
-    start_new_poll: New decision
-    filter_placeholder: (All polls)
-    groups_placeholder: (All groups)
 
   auth_form:
     code: '000000'
