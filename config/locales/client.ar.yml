@@ -23,6 +23,7 @@ ar:
   common:
     you: أنت
     learn_more: تعلم المزيد
+    not_found: 'غير موجود '
     local_time: الوقت الحالي
     attachments: المرفقات
     confirm_discard_changes: إلغاء التغييرات؟

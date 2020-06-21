@@ -837,7 +837,8 @@ zh_TW:
   group_form:
     thread_defaults_help: 新討論串的預設設定
     click_to_change_image: 封面圖片與圖示（點擊以變更）
-    permissions_explaination: '有兩種等級的成員資格：管理員與成員。管理員擁有所有權限。選取成員權限：'
+    permissions_explaination: |
+        群組中一個人可能會有兩種成員等級：管理員與成員
     aria_label: '群組表單'
     new_organisation: 新組織
     start_group_heading: '啟動群組'
@@ -896,6 +897,7 @@ zh_TW:
     members_can_start_discussions: '成員可以啟動新的討論串。'
     members_can_vote: '成員可以在提案上投票。'
     members_can_raise_motions: '成員可以啟動新的討論串。'
+    admins_can_edit_user_content: "管理員可以編輯使用者的留言與投票"
     submit_start_group: '建立新群組'
     submit_start_subgroup: '建立子群組'
     submit_update: '更新設定'
@@ -917,9 +919,6 @@ zh_TW:
         </p>
     submit: 開始匯出
     flash: 群組資料匯出開始
-  group_features:
-    useAnonymous: 啟用匿名投票
-    nested_comments: 啟用巢狀評論檢視
   membership_requests_card:
     heading: '申請成員資格'
     manage_requests: 管理申請
@@ -1430,8 +1429,8 @@ zh_TW:
     search_subgroups_of_name: '搜尋 {{name}} 的子群組'
     group_without_subgroups: '{{name}} 無子群組'
   poll_common_action_panel:
-    anonymous: 投票將會是匿名的
-    anonymous_until_close: 在此投票結束前都會是匿名的
+    anonymous: 匿名投票
+    results_hidden_until_closed: 結果會一直隱藏到 %{poll_type} 關閉
     unable_to_vote: 您沒有在此決策中投票的權限。
   current_polls_card:
     title: 目前的決策
@@ -1464,7 +1463,7 @@ zh_TW:
       title: 多選
       helptext_on: 在選取時，參與者可以選取多個選項。
     anyone_can_participate:
-      title: 任何人皆可參與
+      title: 任何有連結的人都可以參與
       helptext_on: 當選取時，任何有投票連結的人都可以參與。
     notify_on_participate:
       title: 當夥伴參與時通知我
@@ -1472,18 +1471,18 @@ zh_TW:
     anonymous:
       title: 匿名投票者
       helptext_on: 當選取時，參與者資訊將不會在每個回應上顯示。
-    deanonymize_after_close:
-      title: 關閉後顯示投票者
-      helptext_on: 當選取時，匿名的投票者將會在投票關閉後顯示
     voter_can_add_options:
       title: 投票者可以新增選項
       helptext_on: 當選取時，參與者可以在投票時加新增他們自己的選項。
     can_respond_maybe:
       title: 投票者可以回應「如果需要的話」
       helptext_on: 投票者可以將次數表示為「如果需要的話」
+    hide_results_until_closed:
+      title: 隱藏結果直到關閉
+      helptext_on: 在投票關閉前，不要顯示有多少人已投票
   poll_common_close_form:
     title: 提前關閉投票
-    helptext: 您確定您準備好提早關閉了嗎？（如果您想要的話，您也可以在稍後重新開啟）
+    helptext: 您確定您想要提早關閉此 %{poll_type}？
     close_proposal: 提議定案
     close_poll: 關閉投票
     close_count: 關閉勾選
@@ -1685,6 +1684,7 @@ zh_TW:
     rank: 排名
     points: 點
   poll_meeting_time_field:
+    add_time_slot: 新增時間欄位
     new_time_slot: 新時間欄位
     closing_hour: 關閉時間
   poll_proposal_vote_form:
@@ -1797,6 +1797,9 @@ zh_TW:
     groups_placeholder: （所有群組）
   auth_form:
     code: '000000'
+    youre_invited: 您已被邀請加入 {{group_name}}。登入以繼續
+    youre_invited_discussion: 您已被邀請加入討論。登入以繼續
+    youre_invited_poll: 您已被邀請投票。登入以繼續
     sign_in_to_loomio: 登入到 {{site_name}}
     sign_in_help: 無法登入？
     sign_in: 登入

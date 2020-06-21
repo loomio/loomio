@@ -899,7 +899,8 @@ en:
   group_form:
     thread_defaults_help: Default settings for new threads
     click_to_change_image: Cover Image and Logo (click to change)
-    permissions_explaination: 'There are two levels of membership: admin and member. Admins have all permissions. Select member permissions:'
+    permissions_explaination: |
+      There are two levels of membership a person can have to a group: admin and member
     aria_label: 'Group form'
     new_organisation: New Organization
     start_group_heading: 'Start a group'
@@ -963,6 +964,7 @@ en:
     members_can_start_discussions: 'Members can start new threads.'
     members_can_vote: 'Members can vote on proposals.'
     members_can_raise_motions: 'Members can start proposals.'
+    admins_can_edit_user_content: "Admins can edit other user's comments and polls"
 
     submit_start_group: 'Start group'
     submit_start_subgroup: 'Start subgroup'
@@ -1964,6 +1966,9 @@ en:
 
   auth_form:
     code: '000000'
+    youre_invited: You have been invited to join {{group_name}}. Sign in to continue
+    youre_invited_discussion: You have been invited to join the discussion. Sign in to continue
+    youre_invited_poll: You have been invited to vote. Sign in to continue
     sign_in_to_loomio: Sign into {{site_name}}
     sign_in_help: Trouble signing in?
     sign_in: Sign in

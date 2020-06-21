@@ -729,6 +729,8 @@ da:
   poll_common_settings:
     multiple_choice:
       title: Tillad flere valg
+    anyone_can_participate:
+      title: Alle kan deltage
     notify_on_participate:
       title: Send en notifikation til mig når folk deltager
   poll_common_close_form:

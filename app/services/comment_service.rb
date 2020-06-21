@@ -14,7 +14,7 @@ class CommentService
     actor.ability.authorize!(:destroy, comment)
 
     comment.update(discarded_at: Time.now, discarded_by: actor.id)
-    comment.created_event.update(user_id: nil)
+    comment.created_event.update(user_id: nil, pinned: false)
     comment.created_event
   end
 

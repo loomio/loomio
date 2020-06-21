@@ -835,7 +835,6 @@ pt_BR:
   group_form:
     thread_defaults_help: Configuração padrão para novas conversas
     click_to_change_image: Image da Capa e Logo (clicar para mudar)
-    permissions_explaination: 'Há dois tipos de perfil: admin e membros. Os admins tem todas as permissões. Selecione as permissões dos membros:'
     aria_label: 'Formulário do grupo'
     new_organisation: Nova Organização
     start_group_heading: 'Iniciar um grupo'
@@ -915,9 +914,6 @@ pt_BR:
         </p>
     submit: Iniciar exportação
     flash: Exportação dos dados do grupo iniciada
-  group_features:
-    useAnonymous: Habilitar enquete anônima
-    nested_comments: Habilitar visão de comentários aninhados
   membership_requests_card:
     heading: 'Pedidos para inclusão de membros'
     manage_requests: Gerenciar solicitações
@@ -1427,8 +1423,6 @@ pt_BR:
     search_subgroups_of_name: 'Buscar nos subgrupos de {{name}}'
     group_without_subgroups: '{{name}} sem subgrupos'
   poll_common_action_panel:
-    anonymous: Votos serão anônimos
-    anonymous_until_close: Votos permanecerão anônimos até essa consulta encerrar.
     unable_to_vote: Você não tem direito de voto nessa decisão.
   current_polls_card:
     title: Decisões atuais
@@ -1461,7 +1455,7 @@ pt_BR:
       title: Múltipla escolha
       helptext_on: Quando selecionado, eleitores poderão escolher múltiplas opções.
     anyone_can_participate:
-      title: Qualquer um pode participar
+      title: Qualquer pessoa com o link pode participar
       helptext_on: Quando selecionado, qualquer pessoa com o link para a consulta poderá participar.
     notify_on_participate:
       title: Me avisar quando as pessoas participarem
@@ -1469,9 +1463,6 @@ pt_BR:
     anonymous:
       title: Eleitores anônimos
       helptext_on: Quando selecionado, as informações dos eleitores não serão exibidas a cada resposta.
-    deanonymize_after_close:
-      title: Revelar votos depois de encerrado
-      helptext_on: Quando selecionado, as eleitores anônimos serão revelados depois que a consulta encerre.
     voter_can_add_options:
       title: Eleitores podem adicionar opções
       helptext_on: Quando selecionado, eleitores poderão adicionar suas próprias opções enquanto votam.
@@ -1480,7 +1471,6 @@ pt_BR:
       helptext_on: Eleitores podem indicar horários como "caso seja necessário".
   poll_common_close_form:
     title: Encerrar uma consulta antes
-    helptext: Você tem certeza que quer fechar a enquete antes da data marcada? (Você poderá reabri-la mais tarde, se quiser)
     close_proposal: Encerrar proposta
     close_poll: Fechar enquete de escolha
     close_count: Fechar enquete de verificação

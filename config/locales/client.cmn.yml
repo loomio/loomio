@@ -621,7 +621,6 @@ cmn:
     question: '您确定您想要停用此群组吗？'
     submit: '是的，停用此群组'
   group_form:
-    permissions_explaination: '有两种等级的成员资格：管理员与成员。管理员拥有所有权限。选取成员权限：'
     new_organisation: 新组织
     group_name: '群组名称'
     organization_name: '组织名称'
@@ -680,9 +679,6 @@ cmn:
         </p>
     submit: 开始导出
     flash: 群组资料导出开始
-  group_features:
-    useAnonymous: 启用匿名投票
-    nested_comments: 启用嵌套式的评论视图
   membership_requests_card:
     heading: '申请成员资格'
   membership_requests_page:
@@ -977,8 +973,6 @@ cmn:
     open: '开放'
     closed: '已关闭'
   poll_common_action_panel:
-    anonymous: 投票将会是匿名的
-    anonymous_until_close: 在此投票结束前都会是匿名的
     unable_to_vote: 您没有在此决策中投票的权限。
   current_polls_card:
     title: 当前的决策
@@ -996,12 +990,9 @@ cmn:
     multiple_choice:
       title: 多选
     anyone_can_participate:
-      title: 任何人皆可参与
+      title: 任何有链接的人都可以参与
     anonymous:
       title: 匿名投票者
-    deanonymize_after_close:
-      title: 关闭后显示投票者
-      helptext_on: 当选取时，匿名的投票者将会在投票关闭后显示身份
     voter_can_add_options:
       title: 投票者可以新增选项
       helptext_on: 当选取时，参与者可以在投票时加新增他们自己的选项。

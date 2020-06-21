@@ -581,6 +581,9 @@ nb_NO:
     loomio_group: Gruppe
   poll_common_notify_group:
     members_count: "{{count}} folk vil bli varslet"
+  poll_common_settings:
+    anyone_can_participate:
+      title: Alle med link kan delta
   poll_common_set_outcome_panel:
     share_outcome: Del resultat
   poll_common_outcome_form:

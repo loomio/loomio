@@ -9,18 +9,23 @@ class LoggedOutUser
     Tag.none
   end
 
-  def initialize(name: nil, email: nil, token: nil, locale: I18n.locale, params: {})
+  def initialize(name: nil, email: nil, token: nil, locale: I18n.locale, params: {}, session: {})
     @name = name
     @email = email
     @token = token
     @locale = locale
     @params = params
+    @session = session
     apply_null_methods!
     set_avatar_initials if (@name || @email)
   end
 
+  def group_token
+    @params[:group_token] || @session[:pending_group_token]
+  end
+
   def membership_token
-    @params[:membership_token]
+    @params[:membership_token] || @session[:pending_membership_token]
   end
 
   def stance_token

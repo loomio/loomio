@@ -834,7 +834,6 @@ de:
   group_form:
     thread_defaults_help: Standarteinstellungen für neue Diskussionen
     click_to_change_image: Cover Bild and Logo (zum Ändern klicken)
-    permissions_explaination: 'Es gibt zwei Arten der Mitgliedschaft: Admin und Mitglied. Admins haben immer alle alle Freigaben. Wähle die Freigaben für Mitglieder:'
     aria_label: 'Gruppenform'
     new_organisation: Neue Organisation
     start_group_heading: 'Gruppe erstellen'
@@ -914,9 +913,6 @@ de:
         </p>
     submit: Mit Export beginnen
     flash: Export der Gruppendaten hat begonnen
-  group_features:
-    useAnonymous: Anonyme Umfragen aktivieren
-    nested_comments: verschachtelte Kommentaransicht aktivieren
   membership_requests_card:
     heading: 'Mitgliedschaftsanfragen'
     manage_requests: Anfragen verwalten
@@ -1426,8 +1422,6 @@ de:
     search_subgroups_of_name: 'Durchsuche Untergruppen von {{name}}'
     group_without_subgroups: '{{name}} ohne Untergruppen'
   poll_common_action_panel:
-    anonymous: Stimmen werden anonym sein
-    anonymous_until_close: Stimmen werden anonym bleiben, bis diese Umfrage endet
     unable_to_vote: Sie sind nicht berechtigt, an dieser Entscheidung teilzunehmen.
   current_polls_card:
     title: Aktuelle Abstimmungen
@@ -1460,7 +1454,7 @@ de:
       title: Mehrfachauswahl
       helptext_on: Wenn ausgewählt, können die Teilnehmer mehrere Optionen auswählen
     anyone_can_participate:
-      title: Jeder kann teilnehmen
+      title: Alle, die Zugriff auf den Link haben, können abstimmen
       helptext_on: Wenn ausgewählt, kann jeder mit dem Link zur Umfrage teilnehmen.
     notify_on_participate:
       title: Mich benachrichtigen, wenn jemand abstimmt
@@ -1468,9 +1462,6 @@ de:
     anonymous:
       title: Anonyme Teilnahme
       helptext_on: Wenn diese Option aktiviert ist, werden keine Informationen zu den Abstimmungsteilnehmern angezeigt.
-    deanonymize_after_close:
-      title: Wahl der Teilnehmer nach Abschluss anzeigen
-      helptext_on: Wenn diese Option aktiviert ist, werden vormals anonyme Teilnehmer nach Abschluss der Umfrage öffentlich angezeigt
     voter_can_add_options:
       title: Teilnehmervorschläge erlauben
       helptext_on: Wenn diese Option aktiviert ist, können die Teilnehmer ihre eigenen Entscheidungsalternativen hinzufügen, wenn sie abstimmen.
@@ -1479,7 +1470,6 @@ de:
       helptext_on: Teilnehmer können "wenn nötig" angeben
   poll_common_close_form:
     title: Umfrage früher beenden
-    helptext: Bist du sicher das du die Umfrage früher beenden willst? (Du kannst sie später wiedereröffnen)
     close_proposal: Vorschlag schließen
     close_poll: Abstimmung vorzeitig beenden
     close_count: Bestätigung vorzeitig beenden

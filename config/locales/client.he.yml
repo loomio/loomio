@@ -699,9 +699,6 @@ he:
         </p>
     submit: התחל יצוא
     flash: יצוא תוכן הקבוצה החלה
-  group_features:
-    useAnonymous: אפשר סקר אנונימי
-    nested_comments: אקטב צפיה של הערות מקוננות
   membership_requests_card:
     heading: 'בקשות חברות'
     manage_requests: ניהול בקשות
@@ -1097,8 +1094,6 @@ he:
     open: 'פתוח'
     closed: 'סגור'
   poll_common_action_panel:
-    anonymous: ההצבעות יהיו אנונימיות
-    anonymous_until_close: ההצבעות יהיו אנונימיות עד לסגירת הסקר
     unable_to_vote: אין לך הרשאה להצביע על החלטה זו.
   current_polls_card:
     title: החלטות עדכניות
@@ -1130,7 +1125,7 @@ he:
       title: ריבוי אפשרויות
       helptext_on: כשמסומן, משתתפים יוכלו לבחור כמה אפשרויות.
     anyone_can_participate:
-      title: כל אחד יכול להשתתף
+      title: כל אחד עם לינק יכול להשתתף
       helptext_on: כשנבחר, כל אחד עם הלינק לסקר יכול להשתתף.
     notify_on_participate:
       title: עדכן אותי כשאנשים משתתפים
@@ -1138,9 +1133,6 @@ he:
     anonymous:
       title: מצביעים אנונימיים
       helptext_on: כשנבחר, מידע על המשתתפים לא יוצג עם כל תגובה.
-    deanonymize_after_close:
-      title: הצג מצביעים אחרי סגירה
-      helptext_on: כשנבחר, מצביעים אנונימיים יוצגו אחרי סגירת הסקר
     voter_can_add_options:
       title: מצביעים יכולים להוסיף אפשרויות
       helptext_on: כשנבחר, משתתפים יכולים להוסיף אפשרויות משלהם בעת ההצבעה.
