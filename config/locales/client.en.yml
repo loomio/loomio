@@ -226,6 +226,7 @@ en:
       fork: Fork
       apply: Apply
       add_people: Add People
+      discard: Discard
     formatting_help:
       label: 'Formatting'
       title: 'Learn how to use Markdown to format your text'
@@ -1488,6 +1489,7 @@ en:
 
   poll_common_card:
     show_results: Show results
+    discarded: This poll has been discarded
 
   poll_common_index_card:
     title: Previous decisions
@@ -1686,8 +1688,13 @@ en:
 
   poll_common_delete_modal:
     question: Are you sure you want to delete this?
-    title: Delete decision
+    title: Delete poll
     success: Successfully deleted
+
+  poll_common_discard_modal:
+    question: Are you sure you want to discard this?
+    title: Discard poll
+    success: Successfully discarded
 
   poll_common_form:
     title: Title
@@ -1948,15 +1955,6 @@ en:
 
   share_poll_page:
     title: Share poll - {{title}}
-
-  polls_page:
-    heading: Decisions
-    heading_with_group: Decisions in {{name}}
-    search_placeholder: Search for polls...
-    polls_count: Displaying {{count}} of {{total}} polls
-    start_new_poll: New decision
-    filter_placeholder: (All polls)
-    groups_placeholder: (All groups)
 
   auth_form:
     code: '000000'
