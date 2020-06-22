@@ -51,7 +51,7 @@ v-card
   poll-common-card-header(:poll='poll')
   div(v-if="poll.discardedAt")
     v-card-text
-      .grey--text(v-t="'poll_common_card.discarded'")
+      .grey--text(v-t="'poll_common_card.deleted'")
   div(v-else)
     v-card-title
       h1.poll-common-card__title.display-1(v-observe-visibility="{callback: titleVisible}")

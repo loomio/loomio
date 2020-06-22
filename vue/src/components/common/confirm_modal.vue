@@ -28,7 +28,7 @@ export default
 v-card.confirm-modal
   submit-overlay(:value='isDisabled')
   v-card-title
-    h1.headline(v-t="confirm.text.title")
+    h1.headline(v-html="confirm.text.raw_title || $t(confirm.text.title)", v-if="confirm.text.raw_title || confirm.text.title")
     v-spacer
     dismiss-modal-button(v-if="!confirm.forceSubmit", :close="close")
   v-card-text
