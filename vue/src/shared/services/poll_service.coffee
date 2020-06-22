@@ -134,7 +134,7 @@ export default new class PollService
                 flash: 'poll_common_delete_modal.success'
 
     discard_poll:
-      name: 'common.action.discard'
+      name: 'common.action.delete'
       canPerform: ->
         AbilityService.canDeletePoll(poll)
       perform: ->
@@ -144,6 +144,6 @@ export default new class PollService
             confirm:
               submit: -> poll.discard()
               text:
-                title: 'poll_common_discard_modal.title'
-                helptext: 'poll_common_discard_modal.question'
-                flash: 'poll_common_discard_modal.success'
+                raw_title: i18n.t('poll_common_delete_modal.title', pollType: i18n.t(poll.pollTypeKey()))
+                helptext: 'poll_common_delete_modal.question'
+                flash: 'poll_common_delete_modal.success'
