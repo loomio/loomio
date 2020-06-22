@@ -226,7 +226,6 @@ en:
       fork: Fork
       apply: Apply
       add_people: Add People
-      discard: Discard
     formatting_help:
       label: 'Formatting'
       title: 'Learn how to use Markdown to format your text'
@@ -1690,11 +1689,6 @@ en:
     question: Are you sure you want to delete this?
     title: Delete {{pollType}}
     success: Successfully deleted
-
-  poll_common_discard_modal:
-    question: Are you sure you want to discard this?
-    title: Discard poll
-    success: Successfully discarded
 
   poll_common_form:
     title: Title
