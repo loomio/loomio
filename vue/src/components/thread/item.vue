@@ -51,9 +51,11 @@ export default
       !RangeSet.includesValue(@discussion.readRanges, @event.sequenceId)
 
     headline: ->
+      anonymousUser = {name: @$t('common.anonymous'), username: null }
+      actor = (@event.actor() || @eventable.author() || anonymousUser)
       @$t eventHeadline(@event, true ), # useNesting
-        author:   @event.actorName() || @$t('common.anonymous')
-        username: @event.actorUsername()
+        author:   actor.name
+        username: actor.username
         key:      @event.model().key
         title:    eventTitle(@event)
         polltype: @$t(eventPollType(@event)).toLowerCase()
@@ -97,7 +99,7 @@ div
     div(v-else)
       v-layout.lmo-action-dock-wrapper(:style="{'margin-left': indentSize+'px'}"  :id="'sequence-' + event.sequenceId")
         .thread-item__avatar.mr-3.mt-0
-          user-avatar(v-if='!event.isForkable()' :user='event.actor()' :size='iconSize')
+          user-avatar(v-if='!event.isForkable()' :user='event.actor() || eventable.author()' :size='iconSize')
           v-checkbox.thread-item__is-forking(v-if="event.isForkable()" @change="event.toggleFromFork()" :disabled="event.forkingDisabled()" v-model="event.isForking()")
         v-layout.thread-item__body(column)
           v-layout.align-center.wrap
