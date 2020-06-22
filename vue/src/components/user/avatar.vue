@@ -41,7 +41,7 @@ export default
       @user.avatarUrl['large']
 
     componentType:  ->
-      if @noLink
+      if @noLink or !@user.username
         'div'
       else
         'router-link'
