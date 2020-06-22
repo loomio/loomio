@@ -465,18 +465,18 @@ en:
 
     proposal:
       subject:
-        poll_created: '%{actor} started a proposal: %{title}'
-        poll_edited: '%{actor} edited the proposal: %{title}'
-        poll_announced: '%{actor} invited you to vote on a proposal: %{title}'
-        poll_closing_soon: 'Proposal closing in 24 hours: %{title}'
-        poll_closing_soon_author: 'Your proposal closes in 24 hours: %{title}'
-        poll_expired: "Proposal closed: %{title}"
-        poll_expired_author: 'Your proposal has closed. Share an outcome for: %{title}'
-        outcome_created: '%{actor} shared a proposal outcome: %{title}'
-        outcome_announced: '%{actor} shared a proposal outcome: %{title}'
-        stance_created: "%{actor} voted on: %{title}"
-        user_mentioned: '%{actor} mentioned you in: %{title}'
-        user_reminded: '%{actor} is reminding you to vote in: %{title}'
+        poll_created: '[%{group}] %{actor} started a proposal: %{title}'
+        poll_edited: '[%{group}] %{actor} edited the proposal: %{title}'
+        poll_announced: '[%{group}] %{actor} invited you to vote on a proposal: %{title}'
+        poll_closing_soon: '[%{group}] Proposal closing in 24 hours: %{title}'
+        poll_closing_soon_author: '[%{group}] Your proposal closes in 24 hours: %{title}'
+        poll_expired: "[%{group}] Proposal closed: %{title}"
+        poll_expired_author: '[%{group}] Your proposal has closed. Share an outcome for: %{title}'
+        outcome_created: '[%{group}] %{actor} shared a proposal outcome: %{title}'
+        outcome_announced: '[%{group}] %{actor} shared a proposal outcome: %{title}'
+        stance_created: "[%{group}] %{actor} voted on: %{title}"
+        user_mentioned: '[%{group}] %{actor} mentioned you in: %{title}'
+        user_reminded: '[%{group}] %{actor} is reminding you to vote in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a proposal'
@@ -497,21 +497,21 @@ en:
 
     poll:
       subject:
-        poll_created: '%{actor} started a poll: %{title}'
-        poll_edited: '%{actor} edited the poll: %{title}'
-        poll_announced: '%{actor} invited you to vote in a poll: %{title}'
-        poll_closing_soon: 'Poll closing in 24 hours: %{title}'
-        poll_closing_soon_author: 'Your poll closes in 24 hours: %{title}'
-        poll_expired: "Poll results: %{title}"
-        poll_expired_author: 'Your poll has closed. Share an outcome for: %{title}'
-        poll_option_added: '%{actor} added options to: %{title}'
-        poll_option_added_author: '%{actor} added options to: %{title}'
-        outcome_created: '%{actor} shared a poll outcome: %{title}'
-        outcome_announced: '%{actor} shared a poll outcome: %{title}'
-        stance_created: "%{actor} voted on: %{title}"
-        stance_created_author: "Please verify your vote on: %{title}"
-        user_mentioned: '%{actor} mentioned you in: %{title}'
-        user_reminded: '%{actor} is reminding you to vote in: %{title}'
+        poll_created: '[%{group}] %{actor} started a poll: %{title}'
+        poll_edited: '[%{group}] %{actor} edited the poll: %{title}'
+        poll_announced: '[%{group}] %{actor} invited you to vote in a poll: %{title}'
+        poll_closing_soon: '[%{group}] Poll closing in 24 hours: %{title}'
+        poll_closing_soon_author: '[%{group}] Your poll closes in 24 hours: %{title}'
+        poll_expired: "[%{group}] Poll results: %{title}"
+        poll_expired_author: '[%{group}] Your poll has closed. Share an outcome for: %{title}'
+        poll_option_added: '[%{group}] %{actor} added options to: %{title}'
+        poll_option_added_author: '[%{group}] %{actor} added options to: %{title}'
+        outcome_created: '[%{group}] %{actor} shared a poll outcome: %{title}'
+        outcome_announced: '[%{group}] %{actor} shared a poll outcome: %{title}'
+        stance_created: "[%{group}] %{actor} voted on: %{title}"
+        stance_created_author: "[%{group}] Please verify your vote on: %{title}"
+        user_mentioned: '[%{group}] %{actor} mentioned you in: %{title}'
+        user_reminded: '[%{group}] %{actor} is reminding you to vote in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a poll'
@@ -534,21 +534,21 @@ en:
 
     score:
       subject:
-        poll_created: '%{actor} started a poll: %{title}'
-        poll_edited: '%{actor} edited the poll: %{title}'
-        poll_announced: '%{actor} invited you to vote in a score poll: %{title}'
-        poll_closing_soon: 'Poll closing in 24 hours: %{title}'
-        poll_closing_soon_author: 'Your poll closes in 24 hours: %{title}'
-        poll_expired: "Poll results: %{title}"
-        poll_expired_author: 'Your poll has closed. Share an outcome for: %{title}'
-        poll_option_added: '%{actor} added options to: %{title}'
-        poll_option_added_author: '%{actor} added options to: %{title}'
-        outcome_created: '%{actor} shared a poll outcome: %{title}'
-        outcome_announced: '%{actor} shared a poll outcome: %{title}'
-        stance_created: "%{actor} voted on: %{title}"
-        stance_created_author: "Please verify your vote on: %{title}"
-        user_mentioned: '%{actor} mentioned you in: %{title}'
-        user_reminded: '%{actor} is reminding you to vote in: %{title}'
+        poll_created: '[%{group}] %{actor} started a poll: %{title}'
+        poll_edited: '[%{group}] %{actor} edited the poll: %{title}'
+        poll_announced: '[%{group}] %{actor} invited you to vote in a score poll: %{title}'
+        poll_closing_soon: '[%{group}] Poll closing in 24 hours: %{title}'
+        poll_closing_soon_author: '[%{group}] Your poll closes in 24 hours: %{title}'
+        poll_expired: "[%{group}] Poll results: %{title}"
+        poll_expired_author: '[%{group}] Your poll has closed. Share an outcome for: %{title}'
+        poll_option_added: '[%{group}] %{actor} added options to: %{title}'
+        poll_option_added_author: '[%{group}] %{actor} added options to: %{title}'
+        outcome_created: '[%{group}] %{actor} shared a poll outcome: %{title}'
+        outcome_announced: '[%{group}] %{actor} shared a poll outcome: %{title}'
+        stance_created: "[%{group}] %{actor} voted on: %{title}"
+        stance_created_author: "[%{group}] Please verify your vote on: %{title}"
+        user_mentioned: '[%{group}] %{actor} mentioned you in: %{title}'
+        user_reminded: '[%{group}] %{actor} is reminding you to vote in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a poll'
@@ -571,19 +571,19 @@ en:
 
     count:
       subject:
-        poll_created: '%{actor} is checking: %{title}'
-        poll_edited: '%{actor} edited the check: %{title}'
-        poll_announced: '%{actor} invited you to participate in a count: %{title}'
-        poll_closing_soon: '24 hours left to check: %{title}'
-        poll_closing_soon_author: 'Your check closes in 24 hours: %{title}'
-        poll_expired: "Check closed: %{title}"
-        poll_expired_author: 'Your check has closed. Share an outcome for: %{title}'
-        outcome_created: '%{actor} shared an outcome: %{title}'
-        outcome_announced: '%{actor} shared an outcome: %{title}'
-        stance_created: "%{actor} participated in: %{title}"
-        stance_created_author: "Please verify your vote on: %{title}"
-        user_mentioned: '%{actor} mentioned you in: %{title}'
-        user_reminded: '%{actor} is reminding you to participate in: %{title}'
+        poll_created: '[%{group}] %{actor} is checking: %{title}'
+        poll_edited: '[%{group}] %{actor} edited the check: %{title}'
+        poll_announced: '[%{group}] %{actor} invited you to participate in a count: %{title}'
+        poll_closing_soon: '[%{group}] 24 hours left to check: %{title}'
+        poll_closing_soon_author: '[%{group}] Your check closes in 24 hours: %{title}'
+        poll_expired: "[%{group}] Check closed: %{title}"
+        poll_expired_author: '[%{group}] Your check has closed. Share an outcome for: %{title}'
+        outcome_created: '[%{group}] %{actor} shared an outcome: %{title}'
+        outcome_announced: '[%{group}] %{actor} shared an outcome: %{title}'
+        stance_created: "[%{group}] %{actor} participated in: %{title}"
+        stance_created_author: "[%{group}] Please verify your vote on: %{title}"
+        user_mentioned: '[%{group}] %{actor} mentioned you in: %{title}'
+        user_reminded: '[%{group}] %{actor} is reminding you to participate in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> is checking'
@@ -604,21 +604,21 @@ en:
 
     dot_vote:
       subject:
-        poll_created: '%{actor} started a dot vote: %{title}'
-        poll_edited: '%{actor} edited the dot vote: %{title}'
-        poll_announced: '%{actor} invited you to participate in a dot vote: %{title}'
-        poll_closing_soon: 'Dot vote closing in 24 hours: %{title}'
-        poll_closing_soon_author: 'Your dot vote closes in 24 hours: %{title}'
-        poll_expired: "Dot vote results: %{title}"
-        poll_expired_author: 'Your dot vote has closed. Share an outcome for: %{title}'
-        poll_option_added: '%{actor} added options to: %{title}'
-        poll_option_added_author: '%{actor} added options to: %{title}'
-        outcome_created: '%{actor} shared an outcome: %{title}'
-        outcome_announced: '%{actor} shared an outcome: %{title}'
-        stance_created: "%{actor} voted on: %{title}"
-        stance_created_author: "Please verify your vote on: %{title}"
-        user_mentioned: '%{actor} mentioned you in: %{title}'
-        user_reminded: '%{actor} is reminding you to vote in: %{title}'
+        poll_created: '[%{group}] %{actor} started a dot vote: %{title}'
+        poll_edited: '[%{group}] %{actor} edited the dot vote: %{title}'
+        poll_announced: '[%{group}] %{actor} invited you to participate in a dot vote: %{title}'
+        poll_closing_soon: '[%{group}] Dot vote closing in 24 hours: %{title}'
+        poll_closing_soon_author: '[%{group}] Your dot vote closes in 24 hours: %{title}'
+        poll_expired: "[%{group}] Dot vote results: %{title}"
+        poll_expired_author: '[%{group}] Your dot vote has closed. Share an outcome for: %{title}'
+        poll_option_added: '[%{group}] %{actor} added options to: %{title}'
+        poll_option_added_author: '[%{group}] %{actor} added options to: %{title}'
+        outcome_created: '[%{group}] %{actor} shared an outcome: %{title}'
+        outcome_announced: '[%{group}] %{actor} shared an outcome: %{title}'
+        stance_created: "[%{group}] %{actor} voted on: %{title}"
+        stance_created_author: "[%{group}] Please verify your vote on: %{title}"
+        user_mentioned: '[%{group}] %{actor} mentioned you in: %{title}'
+        user_reminded: '[%{group}] %{actor} is reminding you to vote in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a dot vote'
@@ -641,22 +641,22 @@ en:
 
     meeting:
       subject:
-        poll_created: '%{actor} started a time poll: %{title}'
-        poll_edited: '%{actor} edited the time poll: %{title}'
-        poll_announced: '%{actor} invited you to participate in a time poll: %{title}'
-        poll_closing_soon: 'Time poll closing in 24 hours: %{title}'
-        poll_closing_soon_author: 'Your time poll closes in 24 hours: %{title}'
-        poll_expired: "Time poll results: %{title}"
-        poll_expired_author: 'Your time poll has closed. Share an outcome for: %{title}'
-        poll_option_added: '%{actor} added options to: %{title}'
-        poll_option_added_author: '%{actor} added options to: %{title}'
-        outcome_created: '%{actor} shared an outcome: %{title}'
-        outcome_created_author: 'You shared an outcome: %{title}'
-        outcome_announced: '%{actor} shared an outcome: %{title}'
-        stance_created: '%{actor} participated in: %{title}'
-        stance_created_author: "Please verify your vote on: %{title}"
-        user_mentioned: '%{actor} mentioned you in: %{title}'
-        user_reminded: '%{actor} is reminding you to vote in: %{title}'
+        poll_created: '[%{group}] %{actor} started a time poll: %{title}'
+        poll_edited: '[%{group}] %{actor} edited the time poll: %{title}'
+        poll_announced: '[%{group}] %{actor} invited you to participate in a time poll: %{title}'
+        poll_closing_soon: '[%{group}] Time poll closing in 24 hours: %{title}'
+        poll_closing_soon_author: '[%{group}] Your time poll closes in 24 hours: %{title}'
+        poll_expired: "[%{group}] Time poll results: %{title}"
+        poll_expired_author: '[%{group}] Your time poll has closed. Share an outcome for: %{title}'
+        poll_option_added: '[%{group}] %{actor} added options to: %{title}'
+        poll_option_added_author: '[%{group}] %{actor} added options to: %{title}'
+        outcome_created: '[%{group}] %{actor} shared an outcome: %{title}'
+        outcome_created_author: '[%{group}] You shared an outcome: %{title}'
+        outcome_announced: '[%{group}] %{actor} shared an outcome: %{title}'
+        stance_created: '[%{group}] %{actor} participated in: %{title}'
+        stance_created_author: "[%{group}] Please verify your vote on: %{title}"
+        user_mentioned: '[%{group}] %{actor} mentioned you in: %{title}'
+        user_reminded: '[%{group}] %{actor} is reminding you to vote in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a time poll'
@@ -680,22 +680,22 @@ en:
 
     ranked_choice:
       subject:
-        poll_created: '%{actor} started a ranked choice: %{title}'
-        poll_edited: '%{actor} edited the ranked choice: %{title}'
-        poll_announced: '%{actor} invited you to rank options in a poll: %{title}'
-        poll_closing_soon: 'Ranked choice closing in 24 hours: %{title}'
-        poll_closing_soon_author: 'Your ranked choice closes in 24 hours: %{title}'
-        poll_expired: "Ranked choice results: %{title}"
-        poll_expired_author: 'Your ranked choice has closed. Share an outcome for: %{title}'
-        poll_option_added: '%{actor} added options to: %{title}'
-        poll_option_added_author: '%{actor} added options to: %{title}'
-        outcome_created: '%{actor} shared an outcome: %{title}'
-        outcome_created_author: 'You shared an outcome: %{title}'
-        outcome_announced: '%{actor} shared a ranked choice outcome.'
-        stance_created: '%{actor} participated in: %{title}'
-        stance_created_author: "Please verify your vote on: %{title}"
-        user_mentioned: '%{actor} mentioned you in: %{title}'
-        user_reminded: '%{actor} is reminding you to vote in: %{title}'
+        poll_created: [%{group}] '%{actor} started a ranked choice: %{title}'
+        poll_edited: '[%{group}] %{actor} edited the ranked choice: %{title}'
+        poll_announced: '[%{group}] %{actor} invited you to rank options in a poll: %{title}'
+        poll_closing_soon: '[%{group}] Ranked choice closing in 24 hours: %{title}'
+        poll_closing_soon_author: '[%{group}] Your ranked choice closes in 24 hours: %{title}'
+        poll_expired: "[%{group}] Ranked choice results: %{title}"
+        poll_expired_author: '[%{group}] Your ranked choice has closed. Share an outcome for: %{title}'
+        poll_option_added: '[%{group}] %{actor} added options to: %{title}'
+        poll_option_added_author: '[%{group}] %{actor} added options to: %{title}'
+        outcome_created: '[%{group}] %{actor} shared an outcome: %{title}'
+        outcome_created_author: '[%{group}] You shared an outcome: %{title}'
+        outcome_announced: '[%{group}] %{actor} shared a ranked choice outcome.'
+        stance_created: '[%{group}] %{actor} participated in: %{title}'
+        stance_created_author: "[%{group}] Please verify your vote on: %{title}"
+        user_mentioned: '[%{group}] %{actor} mentioned you in: %{title}'
+        user_reminded: '[%{group}] %{actor} is reminding you to vote in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a ranked choice'

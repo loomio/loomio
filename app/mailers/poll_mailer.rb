@@ -42,7 +42,7 @@ class PollMailer < BaseMailer
       from: from_user_via_loomio(@event.user),
       subject_key:   @event.email_subject_key || "poll_mailer.#{@poll.poll_type}.subject.#{@action_name}",
       subject_params: {
-        # group: @poll.group.full_name,
+        group: @poll.group.full_name,
         title: @poll.title,
         actor: @event.user.name },
       layout:        'base_mailer'
