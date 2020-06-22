@@ -132,3 +132,18 @@ export default new class PollService
                 title: 'poll_common_delete_modal.title'
                 confirm: 'poll_common_delete_modal.question'
                 flash: 'poll_common_delete_modal.success'
+
+    discard_poll:
+      name: 'common.action.discard'
+      canPerform: ->
+        AbilityService.canDeletePoll(poll)
+      perform: ->
+        openModal
+          component: 'ConfirmModal'
+          props:
+            confirm:
+              submit: -> poll.discard()
+              text:
+                title: 'poll_common_discard_modal.title'
+                helptext: 'poll_common_discard_modal.question'
+                flash: 'poll_common_discard_modal.success'

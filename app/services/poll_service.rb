@@ -43,6 +43,16 @@ class PollService
     stances
   end
 
+  def self.discard(poll:, actor:)
+    actor.ability.authorize!(:destroy, poll)
+
+    poll.update(discarded_at: Time.now, discarded_by: actor.id)
+    Event.where(kind: "stance_created", eventable_id: poll.stances.pluck(:id)).update_all(discussion_id: nil)
+    poll.created_event.update(user_id: nil, child_count: 0)
+    MessageChannelService.publish_event(poll.created_event)
+    poll.created_event
+  end
+
   def self.close(poll:, actor:)
     actor.ability.authorize! :close, poll
     do_closing_work(poll: poll)
