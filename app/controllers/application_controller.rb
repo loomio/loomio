@@ -72,7 +72,7 @@ class ApplicationController < ActionController::Base
     if request.format.html?
       template.gsub!('<div class=upgrade-browser></div>', '<%= render "application/upgrade_browser" %>')
     end
-    
+
     render inline: template, layout: false, status: status
   end
 
@@ -92,7 +92,7 @@ class ApplicationController < ActionController::Base
     (browser.ie? ||
     (browser.chrome?  && browser.version.to_i < 50) ||
     (browser.firefox? && !browser.platform.ios? && browser.version.to_i < 50) ||
-    (browser.safari?  && browser.version.to_i < 11) ||
+    (browser.safari?  && browser.version.to_i < 12) ||
     (browser.edge?    && browser.version.to_i < 18))
   end
 end
