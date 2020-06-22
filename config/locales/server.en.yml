@@ -680,7 +680,7 @@ en:
 
     ranked_choice:
       subject:
-        poll_created: [%{group}] '%{actor} started a ranked choice: %{title}'
+        poll_created: '[%{group}] %{actor} started a ranked choice: %{title}'
         poll_edited: '[%{group}] %{actor} edited the ranked choice: %{title}'
         poll_announced: '[%{group}] %{actor} invited you to rank options in a poll: %{title}'
         poll_closing_soon: '[%{group}] Ranked choice closing in 24 hours: %{title}'
