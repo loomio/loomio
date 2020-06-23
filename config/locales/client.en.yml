@@ -1543,6 +1543,8 @@ en:
     filename: Filename
     uploaded_by: Uploaded by
     uploaded_at: Uploaded at
+    delete_confirmation: |
+      Are you sure you want to delete this attachment? It will be removed from any associated comment or thread. This cannot be undone.
 
   subgroups_panel:
     search_subgroups_of_name: 'Search subgroups of {{name}}'
