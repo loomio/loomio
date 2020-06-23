@@ -93,7 +93,7 @@ ActiveAdmin.register Group, as: 'Group' do
         column(:name)        { |m| link_to m.user.name, admin_user_path(m.user) }
         column(:email)       { |m| m.user.email }
         column(:coordinator) { |m| m.admin }
-        column(:invter)      { |m| m.inviter.try(:name) }
+        column(:inviter)     { |m| m.inviter.try(:name) }
         column(:created_at)  { |m| m.created_at }
         column(:accepted_at) { |m| m.accepted_at }
         column(:archived_at) { |m| m.archived_at }

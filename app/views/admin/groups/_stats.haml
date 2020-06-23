@@ -8,8 +8,6 @@
         %td
           %h2{ style: "text-align: center"}= group.org_memberships_count
         %td
-          %h2{ style: "text-align: center"}= group.subscription && group.subscription.count_members
-        %td
           %h2{ style: "text-align: center"}= group.subgroups.count
         %td
           %h2{ style: "text-align: center"}= Queries::AdminGroupPage.discussions_count(group)
@@ -23,8 +21,6 @@
           %h4{ style: "text-align: center" } Visits
         %th
           %h4{ style: "text-align: center" } Accepted members
-        %th
-          %h4{ style: "text-align: center" } Active members
         %th
           %h4{ style: "text-align: center" } Subgroups
         %th
