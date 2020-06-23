@@ -8,6 +8,8 @@
         %td
           %h2{ style: "text-align: center"}= group.org_memberships_count
         %td
+          %h2{ style: "text-align: center"}= group.org_members_count
+        %td
           %h2{ style: "text-align: center"}= group.subgroups.count
         %td
           %h2{ style: "text-align: center"}= Queries::AdminGroupPage.discussions_count(group)
@@ -19,6 +21,8 @@
       %tr
         %th
           %h4{ style: "text-align: center" } Visits
+        %th
+          %h4{ style: "text-align: center" } Invited members
         %th
           %h4{ style: "text-align: center" } Accepted members
         %th
