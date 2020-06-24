@@ -62,7 +62,7 @@
   },
   "devDependencies": {
     "@mdi/font": "^3.8.95",
-    "@vue/cli-plugin-babel": "^4.4.4",
+    "@vue/cli-plugin-babel": "^4.4.6",
     "@vue/cli-plugin-e2e-nightwatch": "^4.4.6",
     "@vue/cli-plugin-pwa": "^4.4.4",
     "@vue/cli-service": "4.4.4",
