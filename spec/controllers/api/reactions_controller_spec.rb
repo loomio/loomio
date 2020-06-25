@@ -40,7 +40,7 @@ describe API::ReactionsController do
       comment.discussion.group.add_member! user
       sign_in user
 
-      get :index, params: { comment_ids: [comment.id], discussion_ids: [comment.discussion.id]}
+      get :index, params: { comment_ids: comment.id, discussion_ids: comment.discussion.id}
 
       expect(JSON.parse(response.body)['reactions'].length).to eq 2
     end
