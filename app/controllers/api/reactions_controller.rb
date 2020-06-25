@@ -4,7 +4,7 @@ class API::ReactionsController < API::RestfulController
   def index
     %w[comment_ids discussion_ids outcome_ids poll_ids].each do |key|
       next unless params.has_key? key
-      params[key] = JSON.parse(params[key]).map(&:to_i)
+      params[key] = params[key].split('x').map(&:to_i)
     end
     ReactionQuery.authorize!(user: current_user, params: params)
     self.collection = ReactionQuery.unsafe_where(params)
