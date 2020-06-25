@@ -50,7 +50,7 @@ describe API::ReactionsController do
       discussion_reaction = create :reaction, user: user, reactable: comment.discussion
       sign_in user
 
-      get :index, params: { comment_ids: [comment.id], discussion_ids: [comment.discussion.id]}
+      get :index, params: { comment_ids: comment.id, discussion_ids: comment.discussion.id}
       expect(response.status).to eq 403
     end
   end
