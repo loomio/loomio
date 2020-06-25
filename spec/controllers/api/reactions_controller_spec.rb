@@ -27,21 +27,32 @@ describe API::ReactionsController do
       it "responds with an error when the user is unauthorized" do
         sign_in another_user
         post :create, params: { reaction: reaction_params }
+        expect(response.status).to eq 403
         expect(JSON.parse(response.body)['exception']).to include 'CanCan::AccessDenied'
       end
     end
   end
 
-  # TODO: support for deleting likes
-  # describe 'unlike' do
-  #   context 'success' do
-  #     it "unlikes the comment" do
-  #       comment.reactions << reaction
-  #       sign_in user
-  #       delete :destroy, id: reaction.id
-  #       expect(response.status).to eq 200
-  #       expect(comment.reload.reactors).to_not include user
-  #     end
-  #   end
-  # end
+  describe 'index' do
+    it "fetches reactions for multiple records at once" do
+      comment_reaction = create :reaction, user: user, reactable: comment
+      discussion_reaction = create :reaction, user: user, reactable: comment.discussion
+      comment.discussion.group.add_member! user
+      sign_in user
+
+      get :index, params: { comment_ids: comment.id, discussion_ids: comment.discussion.id}
+
+      expect(JSON.parse(response.body)['reactions'].length).to eq 2
+    end
+
+    it "denies access correctly" do
+      comment_reaction = create :reaction, user: user, reactable: comment
+      discussion_reaction = create :reaction, user: user, reactable: comment.discussion
+      sign_in user
+
+      get :index, params: { comment_ids: comment.id, discussion_ids: comment.discussion.id}
+      expect(response.status).to eq 403
+    end
+  end
+
 end
