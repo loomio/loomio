@@ -2,4 +2,4 @@
   %tr
     %td= render "avatar", user: event.user
     %td
-      %span=raw t(:"poll_mailer.#{poll.poll_type}.header.#{action_name}", actor: event.user.name, title: poll.title)
+      %span=raw t(:"poll_mailer.header.#{action_name}", actor: event.user.name, title: poll.title, poll_type: t("poll_types.#{poll.poll_type}"))

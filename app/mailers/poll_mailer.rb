@@ -40,10 +40,11 @@ class PollMailer < BaseMailer
       locale:        @recipient.locale,
       to:            @recipient.email,
       from: from_user_via_loomio(@event.user),
-      subject_key:   @event.email_subject_key || "poll_mailer.#{@poll.poll_type}.subject.#{@action_name}",
+      subject_key:   @event.email_subject_key || "poll_mailer.subject.#{@action_name}",
       subject_params: {
         group: @poll.group.full_name,
         title: @poll.title,
+        poll_type: I18n.t("poll_types.#{@poll.poll_type}"),
         actor: @event.user.name },
       layout:        'base_mailer'
     )
