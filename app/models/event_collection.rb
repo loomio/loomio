@@ -16,18 +16,7 @@ class EventCollection
   private
 
   def default_scope
-    { cache: { documents: documents, mentions: mentions } }
-  end
-
-  def mentions
-    @mentions ||= Comment.find(event_comment_ids).map { |c| [c.id, c.mentioned_usernames] }.to_h
-  end
-
-  def documents
-    @documents ||= Document.where(
-      model_type: "Comment",
-      model_id: event_comment_ids
-    ).group_by(&:model_id)
+    { cache: {} }
   end
 
   def eventables

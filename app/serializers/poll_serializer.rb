@@ -19,6 +19,10 @@ class PollSerializer < ApplicationSerializer
     true
   end
 
+  def include_mentioned_usernames?
+    details_format == "md"
+  end
+
   def removed_poll_option_ids
     object.poll_option_attributes.select { |attr| attr[:_destroy] }.map { |attr| attr[:id] }
   end
