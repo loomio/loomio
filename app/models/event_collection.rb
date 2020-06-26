@@ -16,11 +16,7 @@ class EventCollection
   private
 
   def default_scope
-    { cache: { reactions: reaction_cache, documents: documents, mentions: mentions } }
-  end
-
-  def reaction_cache
-    @reaction_cache ||= Caches::Reaction.new(parents: eventables)
+    { cache: { documents: documents, mentions: mentions } }
   end
 
   def mentions
