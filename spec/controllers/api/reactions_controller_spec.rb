@@ -4,6 +4,8 @@ describe API::ReactionsController do
   let(:user) { create :user }
   let(:another_user) { create :user }
   let(:comment) { create :comment }
+  let(:poll) { create :poll, discussion: comment.discussion }
+  let(:outcome) { create :outcome, poll: poll}
   let(:reaction) { create :reaction, user: user, reactable: comment }
   let(:reaction_params) { {
     reaction: '+1',
@@ -37,12 +39,17 @@ describe API::ReactionsController do
     it "fetches reactions for multiple records at once" do
       comment_reaction = create :reaction, user: user, reactable: comment
       discussion_reaction = create :reaction, user: user, reactable: comment.discussion
+      poll_reaction = create :reaction, user: user, reactable: poll
+      outcome_reaction = create :reaction, user: user, reactable: outcome
+
       comment.discussion.group.add_member! user
       sign_in user
 
-      get :index, params: { comment_ids: comment.id, discussion_ids: comment.discussion.id}
+      get :index, params: { comment_ids: comment.id,
+                            discussion_ids: comment.discussion.id,
+                            poll_ids: poll.id, outcome_ids: poll.current_outcome.id }
 
-      expect(JSON.parse(response.body)['reactions'].length).to eq 2
+      expect(JSON.parse(response.body)['reactions'].length).to eq 4
     end
 
     it "denies access correctly" do
