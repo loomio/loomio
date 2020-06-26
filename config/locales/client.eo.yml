@@ -420,8 +420,6 @@ eo:
   poll_dot_vote_vote_form:
     stance_created: Voĉdono kreis
     stance_updated: Voĉdono ĝisdatigita
-  polls_page:
-    heading: Decidoj
   auth_form:
     sign_in: Registriĝi
     create_account: Krei konton

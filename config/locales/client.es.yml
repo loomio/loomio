@@ -837,6 +837,8 @@ es:
   group_form:
     thread_defaults_help: Ajustes predeterminados para nuevos hilos
     click_to_change_image: Cubre imagen y logo (clicar para cambiar)
+    permissions_explaination: |
+        Una persona puede hacerse dos tipos de miembro en un grupo: administrador y miembro
     aria_label: 'Formulario de grupo'
     new_organisation: Nueva organización
     start_group_heading: 'Crea un grupo'
@@ -895,6 +897,7 @@ es:
     members_can_start_discussions: 'Los integrantes pueden iniciar hilos nuevos.'
     members_can_vote: 'Los integrantes pueden votar en las propuestas.'
     members_can_raise_motions: 'Los integrantes pueden iniciar propuestas.'
+    admins_can_edit_user_content: "Administradores pueden editar los comentarios de otros usuarios y los sondeos"
     submit_start_group: 'Crear grupo'
     submit_start_subgroup: 'Crear subgrupos'
     submit_update: 'Actualizar preferencias'
@@ -1372,6 +1375,7 @@ es:
       options_added: Nuevas opciones añadidas
   poll_common_card:
     show_results: Mostrar resultados
+    deleted: Este sondeo ha sido eliminado
   poll_common_index_card:
     title: Decisiones anteriores
     no_polls: No se encontraron decisiones previas
@@ -1546,7 +1550,7 @@ es:
     authored_by: 'Por {{name}}'
   poll_common_delete_modal:
     question: ¿Estás seguro que quieres eliminar esto?
-    title: 'Eliminar decisión '
+    title: Eliminar {{pollType}}
     success: Eliminada con éxito.
   poll_common_form:
     title: Título
@@ -1783,14 +1787,6 @@ es:
     what_is_this: "Este es un ejemplo en vivo de {{type}}. Usted es un participante - ¡Inténtelo!"
   share_poll_page:
     title: Compartir encuesta - {{title}}
-  polls_page:
-    heading: Decisiones
-    heading_with_group: Decisiones en {{name}}
-    search_placeholder: Buscar encuestas...
-    polls_count: Mostrando {{count}} de {{total}} encuestas
-    start_new_poll: Nueva decisión
-    filter_placeholder: (todas las encuestas)
-    groups_placeholder: (todos los grupos)
   auth_form:
     code: '000000'
     youre_invited: Se te ha invitado a unirte a {{group-name}}. Iniciar sesión para continuar

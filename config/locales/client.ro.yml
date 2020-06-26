@@ -560,9 +560,6 @@ ro:
     total: Total
   poll_common_subscribe_form:
     subscribe: Subscrie
-  polls_page:
-    heading: Decizii
-    start_new_poll: Decizie noua
   auth_form:
     name_placeholder: Nume
     name: Nume

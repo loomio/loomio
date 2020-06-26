@@ -716,8 +716,6 @@ tr:
     total: Toplam
   poll_common_subscribe_form:
     subscribe: Abone ol
-  polls_page:
-    heading: Kararlar
   auth_form:
     name_placeholder: Adın
     name: İsim
