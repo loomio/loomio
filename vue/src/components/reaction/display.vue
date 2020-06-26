@@ -1,6 +1,7 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
+import ReactionService from '@/shared/services/reaction_service'
 import {merge, capitalize, difference, keys, throttle, startsWith, each, compact} from 'lodash-es'
 import { colonToUnicode, stripColons, imgForEmoji, srcForEmoji, emojiSupported } from '@/shared/helpers/emojis'
 
@@ -13,6 +14,9 @@ export default
     maxNamesCount: 10
     reactionHash: {all: []}
     emojiSupported: emojiSupported
+
+  created: ->
+    ReactionService.enqueueFetch(@model)
 
   mounted: ->
     @watchRecords
