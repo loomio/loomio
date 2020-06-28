@@ -576,9 +576,6 @@ ru:
     total: Всего
   poll_common_subscribe_form:
     subscribe: Подписаться
-  polls_page:
-    heading: Решения
-    start_new_poll: Новое решение
   auth_form:
     invalid_password: "Извините, этот пароль не совпадает с тем, который у нас есть в файле"
     email_placeholder: You@example.com

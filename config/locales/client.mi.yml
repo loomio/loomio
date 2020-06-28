@@ -212,8 +212,6 @@ mi:
     total: Tapeke
   poll_common_subscribe_form:
     subscribe: Ohauru
-  polls_page:
-    heading: Ngā whakatau
   webhook:
     name_label: Ingoa
   group_survey:

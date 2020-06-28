@@ -443,9 +443,6 @@ el:
     'no': 'Όχι'
   poll_common_subscribe_form:
     subscribe: Εγγραφή
-  polls_page:
-    heading: Αποφάσεις
-    start_new_poll: Νέα απόφαση
   auth_form:
     email_placeholder: you@example.com
     name_placeholder: Το όνομα σας

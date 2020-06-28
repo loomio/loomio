@@ -83,6 +83,10 @@ class Stance < ApplicationRecord
     poll.created_event
   end
 
+  def discarded?
+    false
+  end
+
   def choice=(choice)
     self.cast_at ||= Time.zone.now
     if choice.kind_of?(Hash)

@@ -4,18 +4,22 @@
     %table{ id: 'subscription-table' }
       %tr
         %th Id
-        %th plan
-        %th state
-        %th members_count
-        %th expires_at
-        %th renews_at
-        %th renewed_at
+        %th Groups count
+        %th Plan
+        %th Status
+        %th Accepted members count
+        %th= "Active members count (since #{subscription.active_member_date_range.first})"
+        %th Expires at
+        %th Renews at
+        %th Renewed at
         %th Chargify Id
       %tr
         %td= link_to subscription.id, admin_subscription_path(subscription.id)
+        %td= Group.where(subscription_id: subscription.id).count
         %td= subscription.plan
         %td= subscription.state
-        %td= subscription.members_count
+        %td= subscription.count_accepted_members
+        %td= subscription.count_active_members
         %td= subscription.expires_at
         %td= subscription.renews_at
         %td= subscription.renewed_at

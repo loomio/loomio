@@ -34,7 +34,7 @@ export default
 
   computed:
     showResults: ->
-      (@buttonPressed || @myStance.castAt) && @poll.showResults()
+      (@poll.isClosed() || @buttonPressed || @myStance.castAt) && @poll.showResults()
 
     menuActions: ->
       @myStance
