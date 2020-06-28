@@ -91,16 +91,6 @@ export default
 
     actionsFor: (item) ->
       AttachmentService.actions(item)
-      # EventBus.$emit 'openModal',
-      #   component: 'ConfirmModal'
-      #   props:
-      #     confirm:
-      #       submit: attachment.destroy
-      #       text:
-      #         title:    'comment_form.attachments.remove_attachment'
-      #         helptext: 'group_files_panel.delete_confirmation'
-      #         submit:   'common.action.delete'
-      #         flash:    'poll_common_delete_modal.success'
 
   computed:
     showLoadMore: -> !@loader.exhausted && !@attachmentLoader.exhausted
@@ -135,8 +125,8 @@ div
               user-avatar(:user="item.author()")
             td
               time-ago(:date="item.createdAt")
-            td(v-if="canAdminister && Object.keys(actionsFor(item)).length")
-              action-menu(:actions="actionsFor(item)")
+            td(v-if="canAdminister")
+              action-menu(v-if="Object.keys(actionsFor(item)).length" :actions="actionsFor(item)")
 
       v-layout(justify-center)
         v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loading" @click="fetch()" v-t="'common.action.load_more'")
