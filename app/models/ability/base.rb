@@ -19,6 +19,7 @@ module Ability
     prepend Ability::DiscussionTag
     prepend Ability::Event
     prepend Ability::Webhook
+    prepend Ability::Attachment
 
 
     def initialize(user)
