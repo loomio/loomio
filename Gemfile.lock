@@ -107,8 +107,8 @@ GEM
     autoprefixer-rails (9.8.4)
       execjs
     aws-eventstream (1.1.0)
-    aws-partitions (1.333.0)
-    aws-sdk-core (3.101.0)
+    aws-partitions (1.335.0)
+    aws-sdk-core (3.102.1)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
       aws-sigv4 (~> 1.1)
@@ -116,11 +116,11 @@ GEM
     aws-sdk-kms (1.35.0)
       aws-sdk-core (~> 3, >= 3.99.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.70.0)
-      aws-sdk-core (~> 3, >= 3.99.0)
+    aws-sdk-s3 (1.71.1)
+      aws-sdk-core (~> 3, >= 3.102.1)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.1)
-    aws-sigv4 (1.2.0)
+    aws-sigv4 (1.2.1)
       aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.13)
     bootsnap (1.4.6)
@@ -330,7 +330,7 @@ GEM
     public_suffix (4.0.4)
     puma (4.3.5)
       nio4r (~> 2.0)
-    rack (2.1.4)
+    rack (2.2.3)
     rack-attack (6.3.1)
       rack (>= 1.0, < 3)
     rack-protection (2.0.8.1)
@@ -553,7 +553,7 @@ DEPENDENCIES
   pg
   premailer-rails
   puma
-  rack (= 2.1.4)
+  rack (= 2.2.3)
   rack-attack
   rack-timeout
   rack_session_access
