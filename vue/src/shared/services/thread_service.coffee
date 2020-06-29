@@ -5,7 +5,6 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
-import ConfirmModalMixin from '@/mixins/confirm_modal'
 import { hardReload } from '@/shared/helpers/window'
 
 export default new class ThreadService

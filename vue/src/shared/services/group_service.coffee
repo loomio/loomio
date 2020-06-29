@@ -6,6 +6,7 @@ import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
 import AppConfig      from '@/shared/services/app_config'
+import i18n from '@/i18n.coffee'
 
 export default new class GroupService
   actions: (group, vm) ->
@@ -119,4 +120,24 @@ export default new class GroupService
                 title:    'archive_group_form.title'
                 helptext: 'archive_group_form.question'
                 flash:    'group_page.messages.archive_group_success'
+              redirect:   '/dashboard'
+
+    destroy_group:
+      name: 'delete_group_modal.title'
+      icon: 'mdi-delete'
+      canPerform: ->
+        AbilityService.canArchiveGroup(group)
+      perform: ->
+        openModal
+          component: 'ConfirmModal'
+          props:
+            confirm:
+              submit: group.destroy
+              text:
+                title:    'delete_group_modal.title'
+                helptext: 'delete_group_modal.body'
+                raw_confirm_text_placeholder: i18n.t('delete_group_modal.confirm', name: group.name)
+                confirm_text: group.name
+                flash:    'delete_group_modal.success'
+                submit:   'common.action.delete'
               redirect:   '/dashboard'

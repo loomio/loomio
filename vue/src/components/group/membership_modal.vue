@@ -1,11 +1,9 @@
 <script lang="coffee">
 import { submitMembership } from '@/shared/helpers/form'
-import MembershipModalMixin from '@/mixins/membership_modal'
 import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
 
 export default
-  mixins: [MembershipModalMixin]
   props:
     membership: Object
     close: Function

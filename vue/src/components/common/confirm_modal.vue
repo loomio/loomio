@@ -6,11 +6,11 @@ export default
   props:
     close: Function
     confirm: Object
+
   data: ->
     isDisabled: false
-  computed:
-    fragment: ->
-      "generated/components/fragments/#{@confirm.text.fragment}.html" if @confirm.text.fragment
+    confirmText: ''
+
   methods:
     submit: ->
       @isDisabled = true
@@ -21,6 +21,13 @@ export default
         Flash.success @confirm.text.flash if @confirm.text.flash
       .finally =>
         @isDisabled = false
+
+  computed:
+    canProceed: ->
+      if @confirm.text.confirm_text
+        @confirmText != @confirm.text.confirm_text
+      else
+        true
 
 </script>
 
@@ -33,8 +40,9 @@ v-card.confirm-modal
     dismiss-modal-button(v-if="!confirm.forceSubmit", :close="close")
   v-card-text
     p(v-html="confirm.text.raw_helptext || $t(confirm.text.helptext)", v-if="confirm.text.raw_helptext || confirm.text.helptext")
+    v-text-field(v-if="confirm.text.confirm_text" :placeholder="$t(confirm.text.raw_confirm_text_placeholder)" v-model="confirmText")
   v-card-actions
     v-btn(text v-if="!confirm.forceSubmit" @click="close()" v-t="'common.action.cancel'")
     v-spacer
-    v-btn.confirm-modal__submit(color="primary" @click="(confirm.submit && submit()) || close()" v-t="confirm.text.submit || 'common.action.ok'")
+    v-btn.confirm-modal__submit(:disabled="canProceed" color="primary" @click="(confirm.submit && submit()) || close()" v-t="confirm.text.submit || 'common.action.ok'")
 </template>

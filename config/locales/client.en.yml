@@ -801,6 +801,12 @@ en:
       pinned: "This thread has been pinned. It will remain at the top of the group's list of threads for all users."
       closed: "This thread has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page"
 
+  delete_group_modal:
+    title: Delete group
+    body: Are you sure you want to delete this group? This cannot be undone. All threads, polls and other group content will be permanently deleted.
+    confirm: "Type '%{name}' to confirm you want to delete this group."
+    success: This group will be deleted in a minute or two
+
   group_page:
     stats: Group stats
     threads: Threads
