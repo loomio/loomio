@@ -59,8 +59,6 @@ Loomio::Application.routes.draw do
         post :reset_token
         get :subgroups
         post :export
-        patch :archive
-        put :archive
         post 'upload_photo/:kind', action: :upload_photo
       end
       collection do
