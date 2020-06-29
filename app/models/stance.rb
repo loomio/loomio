@@ -83,6 +83,10 @@ class Stance < ApplicationRecord
     poll.created_event
   end
 
+  def discarded?
+    false
+  end
+
   def choice=(choice)
     self.cast_at ||= Time.zone.now
     if choice.kind_of?(Hash)
@@ -99,11 +103,11 @@ class Stance < ApplicationRecord
   end
 
   def participant
-    poll.anonymous? ? AnonymousUser.new : super
+    (!participant_id || poll.anonymous?) ? AnonymousUser.new : super
   end
 
   def real_participant
-    User.find_by(id: self[:participant_id])
+    User.find_by(id: participant_id)
   end
 
   def score_for(option)

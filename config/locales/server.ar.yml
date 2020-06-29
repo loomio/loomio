@@ -270,6 +270,8 @@ ar:
         ما هو دورك أو مقربتك للمشاركة في هذه المجموعة؟  ما الذي يجب أن يعرفه الأشخاص عنك لفهم من أين أنت؟
   how_it_works_thread:
     title: كيفية استخدام لوميو
+  first_proposal:
+    name: ' ؟ Loomio هل لديك أي أسئلة حول استخدام '
   markdown:
     intro:
       body: |
@@ -313,7 +315,7 @@ ar:
     score:
       subject:
         poll_announced: '%{actor}دعوتك للتصويت في استطلاع نقاط:%{title}'
-        poll_closing_soon: '%{title}:الاستطلاع يغلق خلال 25 ساعة'
+        poll_closing_soon: '%{title}:الاستطلاع يغلق خلال 24 ساعة'
         poll_expired: "نتائج الاستطلاع:%{title}"
       header:
         poll_closing_soon: 'يتم إغلاق الاستطلاع خلال 24 ساعة. الآن هو الوقت المناسب للتصويت أو تغيير رأيك أو تشجيع الآخرين على المشاركة.<strong>%{actor}</strong>'

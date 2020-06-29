@@ -51,9 +51,11 @@ export default
       !RangeSet.includesValue(@discussion.readRanges, @event.sequenceId)
 
     headline: ->
+      anonymousUser = {name: @$t('common.anonymous'), username: null }
+      actor = (@event.actor() || @eventable.author() || anonymousUser)
       @$t eventHeadline(@event, true ), # useNesting
-        author:   @event.actorName() || @$t('common.anonymous')
-        username: @event.actorUsername()
+        author:   actor.name
+        username: actor.username
         key:      @event.model().key
         title:    eventTitle(@event)
         polltype: @$t(eventPollType(@event)).toLowerCase()

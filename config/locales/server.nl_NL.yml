@@ -7,24 +7,52 @@ nl_NL:
         blank: mag niet leeg gelaten worden
         invalid: is geen geldige waarde
   errors:
+    403:
+      title: Verboden
+      body: Je hebt geen toegang tot deze pagina. Misschien moet je inloggen.
+    404:
+      title: Niet gevonden
+      body: Sorry, de pagina die je zocht bestaat niet. Misschien heb je het adres verkeerd getypt of de pagina kan verplaatst of verwijderd zijn.
+    410:
+      title: Weg
+      body: Deze pagina bestaat niet meer
+    417:
+      title: Browser is niet compatibel
+      body: |
+          Gebruik <a href="https://browser-update.org/update.html?force_outdated=true">een nieuwere browser</a> voor Loomio
+    500:
+      body: Sorry, er ging iets fout. We hebben melding van het probleem en we zullen er snel naar kijken.
+    noscript: Loomio vereist javascript! Zet aub javascript aan in je browser om door te gaan
+    upgrade_browser: |
+        Oh oh! Jouw browser is te oud en Loomio werkt hier waarschijnlijk niet goed op. <a href="https://browser-update.org/update.html">Upgrade je browser.</a>
     messages:
+      email: geen geldig e-mail adres
       spoofed_media_type: De inhoud van dat bestand komt niet overeen met de bestandsnaam
   group:
     stats:
       group_stats: Groep statistieken
+      visits: Bezoeken
       members: Leden
       subgroups: Subgroepen
       threads: Borden
       votes: Stemmen
       comments: Commentaren
+      general: Algemeen
       polls: Peilingen
       poll_types:
         proposal: Voorstel
+        count: Aantal
+        choose: Kies
+        allocate: Toekennen
+        score: Score
         rank: Volgorde
         time: Moment bevragen
   user:
+    deleted_user: "Verwijderde gebruiker"
+    placeholder_name: "Uitgenodigde gebruiker (%{hostname})"
     error:
       bad_login: "Mijn excuses, het wachtwoord komt niet overeen met degene die we hebben"
+      username_must_be_alphanumeric: "Gebruikersnamen mogen alleen uit kleine letters en cijfers bestaan"
   attachment:
     error:
       too_large: Het bestand dat je probeerde bij te voegen is groter dan 100 Megabyte, gelieve een kleiner bestand te kiezen.
@@ -36,10 +64,22 @@ nl_NL:
     export:
       title: Titel
       author: Auteur
+      created_at: Gemaakt op
+      closing_at: Sluit op
+      closed_at: Gesloten op
+      is_latest: Is meest recente
+      stances: Standpunten
       participants: Deelnemers
       details: Details
       group_name: Groepsnaam
+      discussion_title: Bordnaam
+      outcome_author: Resultaat auteur
+      outcome_created_at: Resultaat gemaakt op
+      outcome_statement: Resultaat verklaring
+      poll_url: Peiling URL
       reason: Reden
+      participant: Deelnemer
+      also_available: Ook beschikbaar in
       total: Totaal
   stance:
     error:
@@ -59,7 +99,14 @@ nl_NL:
     motion:
       must_close_in_future: '''Voorstel'' moet in de toekomst sluiten.'
       one_at_a_time: Er is een ander 'Voorstel' actief.
+  subscriptions:
+    active: Actief
+    inactive: Inactief
   user_mailer:
+    group_export_ready:
+      subject: Groep data export voor %{group_name}
+      body_html: |
+          Download jouw groep data <a href="%{url}">hier</a>. Merk op dat deze link maar 1 week geldig is.
     accounts_merged:
       subject: "Je gebruikersaccounts van %{site_name} werden samengevoegd."
       body_html: |
@@ -67,15 +114,36 @@ nl_NL:
           Je twee Loomio accounts zijn samengevoegd tot één account.
           Gelieve vanaf nu <strong>%{email}</strong> te gebruiken om op Loomio in te loggen.
     merge_verification:
+      subject: "Verifieer je %{site_name} e-mail adres voor het samenvoegen"
+      body_html: |
+          <p>Hoi %{name},</p>
+          <p>Er is een verzoek gedaan om jouw account met e-mailadres <strong>%{source_email}</strong> samen te voegen met het account dat het e-mailadres <strong>%{target_email}</strong> heeft,</p>
+          <p>Na het samenvoegen kun je niet meer inloggen met <strong>%{source_email}</strong>, en alleen met <strong>%{target_email}</strong>.</p>
+          <p>Bevestig aub dat dit de bedoeling is.</p>
       confirm_page:
+        confirm: Bevestig samenvoegen
+        body_html: |
+            <p>Bevestig aub dat je het account met e-mailadres <strong>%{source_email}</strong> wil samenvoegen naar het account met e-mailadres <strong>%{target_email}</strong>.</p>
+            <p>Het account met <strong>%{source_email}</strong> zal worden verwijderd. Je kunt hierna alleen inloggen met <strong>%{target_email}</strong>.</p>
+            <p>Deze wijziging kan niet ongedaan worden gemaakt.</p>
         merge: Accounts samenvoegen
+      complete_page:
+        title: Samenvoegen gelukt!
+        body_html: |
+            <p>Het samenvoegen van jouw accounts is gelukt. Je krijgt een bevestigingse-mail op <strong>%{target_email}</strong> .</p>
+            <p>Neem aub <a href="/contact" target="_blank">contact op</a> als je nog vragen hebt.</p>
   email:
     common:
+      or_enter_code: Of, voer de code hieronder in
       resend: Deze link vervalt binnen 24 uur en kan slechts éénmalig gebruikt worden.
     login:
       subject: Log in op %{site_name}
       intro: Hallo %{name}, hier is een link om in te loggen op je%{site_name} account.
       login: Log in als %{name}
+    reactivate:
+      subject: Je account %{site_name} heractiveren
+      intro: Hallo %{name}, hier is een link om je account%{site_name} te heractiveren.
+      login: Heractiveer %{name}
     contact_request:
       subject: "%{name} zou graag in contact staan met jou op %{site_name}!"
       intro: "%{name} (%{email}) heeft een verzoek gestuurd om met jou in contact te komen staan."
@@ -190,18 +258,6 @@ nl_NL:
         Wat is je rol of of bedoeling bij deelname aan deze groep? Wat moeten mensen over jou weten om te begrijpen wat je bedoeling is?
   how_it_works_thread:
     title: Hoe gebruik je Loomio
-  first_proposal:
-    name: Demonstratievoorstel
-    description: |
-        Dit is een **voorstel**, waar je samen een beslissing kunt nemen. Je kunt een voorstel beginnen als er een gesprek op gang is gekomen.
-
-        Iedereen wordt gevraagd om een**standpunt in te nemen** voor de **deadline**. je kunt de deadline verzetten als dat nodig is, of een voorstel vervroegd afsluiten.
-
-        Je kunt **van standpunt wijzigen** terwijl het voorstel open staat. Je kunt je immers bedenken terwijl je naar andere aan het luisteren bent.
-
-        Soms werkt een groep met een **reeks van voorstellen** om samen oplossingen te bedenken. Je kunt opeenvolgende voorstellen voorleggen in deze discussie.
-
-        **Probeer mee te doen! Klik op een van de vier knoppen**.
   markdown:
     intro:
       title: |

@@ -29,6 +29,25 @@ describe API::CommentsController do
         end
       end
 
+      describe 'admins_can_edit_user_content' do
+        before do
+          sign_out user
+          sign_in group.admins.first
+        end
+
+        it 'true' do
+          group.update(admins_can_edit_user_content: true)
+          post :update, params: { id: comment.id, comment: comment_params }
+          expect(response.status).to eq 200
+          expect(comment.reload.body).to eq comment_params[:body]
+        end
+
+        it 'false' do
+          post :update, params: { id: comment.id, comment: comment_params }
+          expect(response.status).to eq 403
+        end
+      end
+
       context 'failures' do
         it "responds with an error when there are unpermitted params" do
           comment_params[:dontmindme] = 'wild wooly byte virus'
@@ -155,9 +174,6 @@ describe API::CommentsController do
           expect(comment.body).to be nil
           expect(comment.user_id).to be nil
           expect(comment.created_event.user_id).to be nil
-          diff = comment.versions.last.object_changes
-          expect(diff['body'][0]).to eq body
-          expect(diff['user_id'][0]).to eq user.id
         end
       end
 

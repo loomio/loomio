@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_02_220450) do
+ActiveRecord::Schema.define(version: 2020_06_17_030449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -387,6 +387,7 @@ ActiveRecord::Schema.define(version: 2020_06_02_220450) do
     t.jsonb "info", default: {}, null: false
     t.integer "new_threads_max_depth", default: 2, null: false
     t.boolean "new_threads_newest_first", default: false, null: false
+    t.boolean "admins_can_edit_user_content", default: false, null: false
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["category_id"], name: "index_groups_on_category_id"
     t.index ["cohort_id"], name: "index_groups_on_cohort_id"
@@ -602,6 +603,8 @@ ActiveRecord::Schema.define(version: 2020_06_02_220450) do
     t.boolean "anyone_can_participate", default: false, null: false
     t.boolean "hide_results_until_closed", default: false, null: false
     t.boolean "stances_in_discussion", default: true, null: false
+    t.datetime "discarded_at"
+    t.integer "discarded_by"
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["discussion_id"], name: "index_polls_on_discussion_id"
     t.index ["group_id"], name: "index_polls_on_group_id"

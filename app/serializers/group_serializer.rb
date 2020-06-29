@@ -17,6 +17,7 @@ class GroupSerializer < ApplicationSerializer
              :members_can_edit_comments,
              :members_can_raise_motions,
              :members_can_vote,
+             :admins_can_edit_user_content,
              :token,
              :polls_count,
              :closed_polls_count,
@@ -71,7 +72,11 @@ class GroupSerializer < ApplicationSerializer
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
 
   def current_user_membership
-    @current_user_membership ||= object.membership_for(scope[:current_user])
+    scope && scope[:current_user] && object.membership_for(scope[:current_user])
+  end
+
+  def include_subscription_info?
+    current_user_membership
   end
 
   def include_current_user_membership?

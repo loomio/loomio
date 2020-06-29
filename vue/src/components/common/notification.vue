@@ -67,6 +67,9 @@ component(:is="componentType" :to="isRouterLink && url" :href="!isRouterLink && 
 </template>
 
 <style lang="sass">
+.notification__content::first-letter
+  text-transform: capitalize
+
 .notification:hover
   background-color: var(--v-accent-lighten5)
 

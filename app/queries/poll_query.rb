@@ -1,6 +1,6 @@
 class PollQuery
   def self.start
-    Poll.includes(:poll_options, :group, :author)
+    Poll.distinct.kept.includes(:poll_options, :group, :author)
   end
 
   def self.visible_to(user: LoggedOutUser.new,

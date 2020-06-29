@@ -738,7 +738,6 @@ hu:
     question: 'Biztosan kikapcsolja ezt a csoportot?'
     submit: 'Igen, deaktiválja ezt a csoportot'
   group_form:
-    permissions_explaination: 'A tagságnak két szintje van: admin és tag. A rendszergazdáknak minden engedélyük van. Válassza ki a tagsági engedélyeket:'
     aria_label: 'Csoport forma'
     new_organisation: Új szervezet
     start_group_heading: 'Indíts egy csoportot'
@@ -807,9 +806,6 @@ hu:
     title: Csoport adatok letöltése
     submit: Letöltés indítása
     flash: A csoport adatok exportálása megkezdődött
-  group_features:
-    useAnonymous: Anonim szavazás engedélyezése
-    nested_comments: Beágyazott megjegyzés nézet engedélyezése
   membership_requests_card:
     heading: 'Tagsági kérelmek'
     manage_requests: Kezeld a kéréseket
@@ -1282,8 +1278,6 @@ hu:
     uploaded_by: Feltöltötte
     uploaded_at: Feltöltve
   poll_common_action_panel:
-    anonymous: A szavazatok névtelenek lesznek
-    anonymous_until_close: A szavazás anonim lesz, amíg a szavazás lezárul
     unable_to_vote: Nincs engedélye szavazni ebben a döntésben.
   current_polls_card:
     title: Jelenlegi döntések
@@ -1316,7 +1310,7 @@ hu:
       title: Több választási lehetőség
       helptext_on: Ha kiválasztod, a résztvevők több lehetőséget is kiválaszthatnak.
     anyone_can_participate:
-      title: Bárki részt vehet
+      title: Bárki részt vehet, akinek megvan ez a link
       helptext_on: Ha kiválasztod, bárki részt vehet a szavazási hivatkozással
     notify_on_participate:
       title: Értesíts engem, ha az emberek részt vesznek
@@ -1324,9 +1318,6 @@ hu:
     anonymous:
       title: Névtelen szavazók
       helptext_on: Ha kiválasztja, a résztvevő információk nem kerülnek megjelenítésre minden válasznál.
-    deanonymize_after_close:
-      title: Mutassa be a szavazók zárása után
-      helptext_on: Kiválasztásuk után a névtelen szavazók nyilvánosságra kerülnek a szavazás befejezése után
     voter_can_add_options:
       title: A szavazók lehetőségeket vehetnek fel
       helptext_on: Ha kiválasztják, a résztvevők saját szavazati lehetőségeket is felvehetnek.

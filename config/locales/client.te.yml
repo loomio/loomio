@@ -170,8 +170,6 @@ te:
     'no': 'కాదు'
   poll_meeting_chart_panel:
     total: మొత్తం
-  polls_page:
-    heading: నిర్ణయాలు
   auth_form:
     name_placeholder: మీ పేరు
   webhook:

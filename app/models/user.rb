@@ -32,6 +32,7 @@ class User < ApplicationRecord
   attr_accessor :restricted
   attr_accessor :token
   attr_accessor :membership_token
+  attr_accessor :group_token
   attr_accessor :discussion_reader_token
   attr_accessor :stance_token
 

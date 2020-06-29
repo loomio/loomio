@@ -137,6 +137,33 @@ describe API::PollsController do
         expect(poll_ids).to_not include participated_poll.id
         expect(poll_ids).to_not include another_poll.id
       end
+
+      describe 'discard' do
+        context 'allowed to discard' do
+          it 'discards the poll' do
+            PollService.create(poll: poll, actor: user)
+            delete :discard, params: { id: poll.id }
+            expect(response.status).to eq 200
+            poll.reload
+            expect(poll.discarded?).to be true
+            expect(poll.discarded_by).to eq user.id
+            expect(poll.created_event.user_id).to be nil
+          end
+        end
+
+        context 'not allowed to discard' do
+          it 'discards the poll' do
+            sign_in another_user
+            PollService.create(poll: poll, actor: user)
+            delete :discard, params: { id: poll.id }
+            expect(response.status).to eq 403
+            poll.reload
+            expect(poll.discarded?).to be false
+            expect(poll.created_event.user_id).to_not be nil
+          end
+        end
+      end
+
     end
   end
 

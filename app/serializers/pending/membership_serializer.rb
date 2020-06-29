@@ -1,5 +1,5 @@
 class Pending::MembershipSerializer < Pending::BaseSerializer
-  attribute :token
+  attributes :token, :group_id
 
   def identity_type
     :membership
@@ -23,6 +23,10 @@ class Pending::MembershipSerializer < Pending::BaseSerializer
 
   def email
     object.user.email
+  end
+
+  def group_id
+    object.group_id
   end
 
   private

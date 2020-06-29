@@ -1,0 +1,12 @@
+.item-removed
+  .thread-item.px-3.pb-1
+    %div
+      .layout.lmo-action-dock-wrapper{:style => "margin-left: 0px;"}
+        .thread-item__avatar.mr-3.mt-0
+          .user-avatar{:style => "width: 40px; margin: 0px;", :to => "/u/undefined"}
+            .v-avatar{:style => "height: 40px; min-width: 40px; width: 40px;"}
+              %i.v-icon.notranslate.mdi.mdi-account.theme--light{"aria-hidden" => "true"}
+        .layout.thread-item__body.column
+          .layout.align-center.wrap
+            %h3.thread-item__title.body-2
+              %span.grey--text=t("thread_item.removed")

@@ -11,6 +11,7 @@ class Poll < ApplicationRecord
   include Reactable
   include HasCreatedEvent
   include HasRichText
+  include Discard::Model
 
   is_rich_text    on: :details
 
@@ -41,7 +42,7 @@ class Poll < ApplicationRecord
   is_translatable on: [:title, :details]
   is_mentionable on: :details
 
-  belongs_to :author, class_name: "User", required: true
+  belongs_to :author, class_name: "User"
   has_many   :outcomes, dependent: :destroy
   has_one    :current_outcome, -> { where(latest: true) }, class_name: 'Outcome'
 
@@ -73,7 +74,7 @@ class Poll < ApplicationRecord
   scope :search_for, ->(fragment) { where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
   scope :lapsed_but_not_closed, -> { active.where("polls.closing_at < ?", Time.now) }
   scope :active_or_closed_after, ->(since) { where("closed_at IS NULL OR closed_at > ?", since) }
-  
+
   scope :with_includes, -> { includes(
     :documents,
     :poll_options,
@@ -92,7 +93,6 @@ class Poll < ApplicationRecord
                       events.kind           = 'poll_closing_soon')", recency_threshold)
   end
 
-  validates :title, presence: true
   validates :poll_type, inclusion: { in: AppConfig.poll_templates.keys }
   validates :details, length: {maximum: Rails.application.secrets.max_message_length }
 
@@ -103,6 +103,7 @@ class Poll < ApplicationRecord
   validate :discussion_group_is_poll_group
   validate :cannot_deanonymize
   validate :cannot_reveal_results_early
+  validate :title_if_not_discarded
 
   alias_method :user, :author
 
@@ -312,6 +313,13 @@ class Poll < ApplicationRecord
   end
 
   private
+
+  def title_if_not_discarded
+    if !discarded_at && title.to_s.empty?
+      errors.add(:title, I18n.t(:"activerecord.errors.messages.blank"))
+    end
+  end
+
   def set_stances_in_discussion
     self.stances_in_discussion = false if anonymous or hide_results_until_closed
   end

@@ -658,6 +658,8 @@ cs:
   poll_common_notify_group:
     notify_group: Oznámení
   poll_common_settings:
+    anyone_can_participate:
+      title: Kdokoli s odkazem se může účastnit
     voter_can_add_options:
       title: Hlasující mohou přidávat nové možnosti
   poll_common_close_form:

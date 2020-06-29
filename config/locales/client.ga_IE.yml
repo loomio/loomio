@@ -537,9 +537,6 @@ ga_IE:
     total: Iomlán
   poll_common_subscribe_form:
     subscribe: Liostáil
-  polls_page:
-    heading: Cinntí
-    start_new_poll: Cinneadh nua
   auth_form:
     more_providers: Tusa
     email_not_present: Tá seoladh ríomhphoist de dhíth

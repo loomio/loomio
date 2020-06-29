@@ -47,23 +47,12 @@ export colonsToUnicode = (str) ->
 
 export srcForEmoji = (char, set) ->
   char = char.match(rx)[0]
-  switch set
-    when 'openmoji-svg'
-      prefix = 'https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/'
-      suffix = '.svg'
-      prefix + emojiUnicode(char).toUpperCase().replace(' ', '-') + suffix
-    when 'openmoji-png'
-      prefix = 'https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/72x72/'
-      suffix = '.png'
-      prefix + emojiUnicode(char).toUpperCase().replace(' ', '-') + suffix
-    when 'twemoji-svg'
-      prefix = 'https://twemoji.maxcdn.com/v/latest/svg/'
-      suffix = '.svg'
-      prefix + emojiUnicode(char).toLowerCase().replace(' ', '-') + suffix
-    else
-      prefix = 'https://twemoji.maxcdn.com/v/latest/72x72/'
-      suffix = '.png'
-      prefix + emojiUnicode(char).toLowerCase().replace(' ', '-') + suffix
+  # prefix = 'https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/'
+  # suffix = '.svg'
+  # prefix + emojiUnicode(char).toUpperCase().replace(' ', '-') + suffix
+  prefix = '/img/emojis/'
+  suffix = '.png'
+  prefix + emojiUnicode(char).toLowerCase().replace(' ', '-') + suffix
 
 export imgForEmoji = (char) ->
   '<img class="emoji" src="' + srcForEmoji(char) + '">'

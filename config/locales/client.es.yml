@@ -38,6 +38,7 @@ es:
     renews_at: "Renueva"
     referral_code: "Código de referencia chargify"
     chargify_link: "Portal de facturación chargify"
+    referral_code_help: "Da a un amigo un descuento, consigue para ti un crédito"
   loomio_tags:
     all_tags: Todas las etiquetas
     tags: Etiquetas
@@ -836,7 +837,8 @@ es:
   group_form:
     thread_defaults_help: Ajustes predeterminados para nuevos hilos
     click_to_change_image: Cubre imagen y logo (clicar para cambiar)
-    permissions_explaination: 'Hay dos niveles de afiliación: administrador y miembro. Los administradores tienen todos los permisos. Selecciona los permisos de los miembros.'
+    permissions_explaination: |
+        Una persona puede hacerse dos tipos de miembro en un grupo: administrador y miembro
     aria_label: 'Formulario de grupo'
     new_organisation: Nueva organización
     start_group_heading: 'Crea un grupo'
@@ -895,6 +897,7 @@ es:
     members_can_start_discussions: 'Los integrantes pueden iniciar hilos nuevos.'
     members_can_vote: 'Los integrantes pueden votar en las propuestas.'
     members_can_raise_motions: 'Los integrantes pueden iniciar propuestas.'
+    admins_can_edit_user_content: "Administradores pueden editar los comentarios de otros usuarios y los sondeos"
     submit_start_group: 'Crear grupo'
     submit_start_subgroup: 'Crear subgrupos'
     submit_update: 'Actualizar preferencias'
@@ -916,9 +919,6 @@ es:
         </p>
     submit: Iniciar la exportación
     flash: Iniciada la exportación de datos del grupo
-  group_features:
-    useAnonymous: 'Activar votos anónimos '
-    nested_comments: Activar comentarios agrupados
   membership_requests_card:
     heading: 'Pedidos de membresía '
     manage_requests: 'Gestionar peticiones '
@@ -1375,6 +1375,7 @@ es:
       options_added: Nuevas opciones añadidas
   poll_common_card:
     show_results: Mostrar resultados
+    deleted: Este sondeo ha sido eliminado
   poll_common_index_card:
     title: Decisiones anteriores
     no_polls: No se encontraron decisiones previas
@@ -1428,8 +1429,8 @@ es:
     search_subgroups_of_name: 'Subgrupos de búsqueda de {{name}}'
     group_without_subgroups: '{{name}} sin subgrupos'
   poll_common_action_panel:
-    anonymous: 'Votos serán anónimos '
-    anonymous_until_close: Votos serán anónimos hasta que cierre la encuesta
+    anonymous: Los votos son anónimos
+    results_hidden_until_closed: Los resultados se esconden hasta que el %{poll_type} ha cerrado
     unable_to_vote: No tienes permiso para votar en esta desición
   current_polls_card:
     title: Decisiones actuales
@@ -1462,7 +1463,7 @@ es:
       title: Opción multiple
       helptext_on: Si es seleccionado, los participantes podrán seleccionar múltiples opciones
     anyone_can_participate:
-      title: Cualquiera puede participar
+      title: Cualquiera con el enlace puede paticipar
       helptext_on: Si es seleccionado, cualquiera con el enlace a la encuesta podrá participar
     notify_on_participate:
       title: Notificarme cuando participe gente
@@ -1470,18 +1471,18 @@ es:
     anonymous:
       title: Votantes anónimos
       helptext_on: Si es seleccionado, la información del participante no será mostrada con cada respuesta
-    deanonymize_after_close:
-      title: 'Revelar votantes luego del cierre '
-      helptext_on: Si es seleccionado, los votantes anónimos serán revelados luego del cierre 
     voter_can_add_options:
       title: Los votantes pueden añadir opciones
       helptext_on: 'Si es seleccionado, los participantes podrán añadir sus propias opciones al votar '
     can_respond_maybe:
       title: Los votantes pueden responder 'de ser necesario'
       helptext_on: Los votantes pueden indicar tiempos como 'de ser necesario'
+    hide_results_until_closed:
+      title: Oculta resultados hasta el cierre
+      helptext_on: No muestra como la gente ha votado hasta que se cierre el sondeo
   poll_common_close_form:
     title: Cerrar una encuesta antes
-    helptext: ¿Estás seguro de que estás listo para cerrar pronto? (Puedes reabrirlo después si así lo deseas)
+    helptext: ¿Estás seguro de que quieres cerrar este %{poll_type}pronto?
     close_proposal: Cerrar la propuesta
     close_poll: Cerrar la encuesta
     close_count: Cerrar comprobación
@@ -1549,7 +1550,7 @@ es:
     authored_by: 'Por {{name}}'
   poll_common_delete_modal:
     question: ¿Estás seguro que quieres eliminar esto?
-    title: 'Eliminar decisión '
+    title: Eliminar {{pollType}}
     success: Eliminada con éxito.
   poll_common_form:
     title: Título
@@ -1683,6 +1684,7 @@ es:
     rank: Rango
     points: Puntos
   poll_meeting_time_field:
+    add_time_slot: Añadir intervalo de tiempo
     new_time_slot: Nuevo horario
     closing_hour: Hora de finalización
   poll_proposal_vote_form:
@@ -1785,16 +1787,11 @@ es:
     what_is_this: "Este es un ejemplo en vivo de {{type}}. Usted es un participante - ¡Inténtelo!"
   share_poll_page:
     title: Compartir encuesta - {{title}}
-  polls_page:
-    heading: Decisiones
-    heading_with_group: Decisiones en {{name}}
-    search_placeholder: Buscar encuestas...
-    polls_count: Mostrando {{count}} de {{total}} encuestas
-    start_new_poll: Nueva decisión
-    filter_placeholder: (todas las encuestas)
-    groups_placeholder: (todos los grupos)
   auth_form:
     code: '000000'
+    youre_invited: Se te ha invitado a unirte a {{group-name}}. Iniciar sesión para continuar
+    youre_invited_discussion: Se te ha invitado a unirte al debate. Iniciar sesión para continuar
+    youre_invited_poll: Se te ha invitado a votar. Iniciar sesión para continuar
     sign_in_to_loomio: Entrar a {{site_name}}
     sign_in_help: ¿Problemas para iniciar sesión?
     sign_in: Entrar

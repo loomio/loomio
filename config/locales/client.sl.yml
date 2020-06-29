@@ -392,9 +392,6 @@ sl:
   poll_count_options:
     'yes': 'Da'
     'no': 'Ne'
-  polls_page:
-    heading: Odločitve
-    start_new_poll: Nova odločitev
   auth_form:
     name_placeholder: Tvoje ime
     name: Ime

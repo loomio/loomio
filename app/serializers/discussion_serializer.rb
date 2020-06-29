@@ -68,6 +68,10 @@ class DiscussionSerializer < ApplicationSerializer
     super && scope[:poll_cache].present?
   end
 
+  def include_mentioned_usernames?
+    description_format == "md"
+  end
+
   def reader
     @reader ||= scope[:reader_cache].get_for(object) if scope[:reader_cache]
   end

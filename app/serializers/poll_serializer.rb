@@ -4,7 +4,8 @@ class PollSerializer < ApplicationSerializer
              :closed_at, :closing_at, :stances_count, :participants_count, :undecided_count, :cast_stances_pct, :versions_count,
              :created_at, :multiple_choice, :custom_fields, :poll_option_names,
              :notify_on_participate, :anonymous, :can_respond_maybe, :hide_results_until_closed,
-             :attachments, :mentioned_usernames, :author_id, :complete, :stances_in_discussion
+             :attachments, :mentioned_usernames, :author_id, :complete, :stances_in_discussion,
+             :discarded_at, :discarded_by
 
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_one :created_event, serializer: Events::BaseSerializer, root: :events
@@ -16,6 +17,10 @@ class PollSerializer < ApplicationSerializer
 
   def complete
     true
+  end
+
+  def include_mentioned_usernames?
+    details_format == "md"
   end
 
   def removed_poll_option_ids
