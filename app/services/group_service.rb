@@ -68,6 +68,12 @@ module GroupService
     EventBus.broadcast('group_archive', group, actor)
   end
 
+  def self.destroy(group:, actor:)
+    actor.ability.authorize! :destroy, group
+    DestroyGroupWorker.perform_async(group.id)
+    EventBus.broadcast('group_destroy', group, actor)
+  end
+
   def self.move(group:, parent:, actor:)
     actor.ability.authorize! :move, group
     group.update(handle: "#{parent.handle}-#{group.handle}") if group.handle?
