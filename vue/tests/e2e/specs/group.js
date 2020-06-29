@@ -375,8 +375,8 @@ module.exports = {
     page.click('.group-page-settings-tab')
     page.click('.group-page-actions__destroy_group')
 
-    page.fillIn('.confirm-text-field', 'Dirty Dancing Shoes')
-    page.click('.group-form__submit-button')
+    page.fillIn('.confirm-text-field input', 'Dirty Dancing Shoes')
+    page.click('.confirm-modal__submit')
 
     page.pause(500)
     page.expectFlash('This group will be deleted in a minute or two')
