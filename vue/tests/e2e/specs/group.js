@@ -373,7 +373,7 @@ module.exports = {
 
     page.loadPath('setup_group_super_admin')
     page.click('.group-page-settings-tab')
-    page.click('.group-page-actions__delete_group')
+    page.click('.group-page-actions__destroy_group')
 
     page.fillIn('.confirm-text-field', 'Dirty Dancing Shoes')
     page.click('.group-form__submit-button')
