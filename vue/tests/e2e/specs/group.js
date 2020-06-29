@@ -366,5 +366,19 @@ module.exports = {
     page.click('.members-panel__filters')
     page.click('.members-panel__filters-invitations')
     page.expectText('.members-panel .v-card .v-list-item__title', 'shown@test.com')
+  },
+
+  'delete_group': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group_super_admin')
+    page.click('.group-page-settings-tab')
+    page.click('.group-page-actions__delete_group')
+
+    page.fillIn('.confirm-text-field', 'Dirty Dancing Shoes')
+    page.click('.group-form__submit-button')
+
+    page.pause(500)
+    page.expectFlash('This group will be deleted in a minute or two')
   }
 }
