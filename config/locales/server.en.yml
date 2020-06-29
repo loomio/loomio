@@ -464,21 +464,21 @@ en:
       people_have_voted: "%{num} people have voted (%{pct}%)"
 
     subject:
-      poll_created: '[%{group}] %{actor} started a %{poll_type}: %{title}'
-      poll_edited: '[%{group}] %{actor} edited the %{poll_type}: %{title}'
-      poll_announced: '[%{group}] %{actor} invited you to vote in a %{poll_type}: %{title}'
-      poll_closing_soon: '[%{group}] %{poll_type} closing in 24 hours: %{title}'
-      poll_closing_soon_author: '[%{group}] Your %{poll_type} closes in 24 hours: %{title}'
-      poll_expired: "[%{group}] %{poll_type} closed: %{title}"
-      poll_expired_author: '[%{group}] Your %{poll_type} has closed. Share an outcome for: %{title}'
-      poll_option_added: '[%{group}] %{actor} added options to: %{title}'
-      poll_option_added_author: '[%{group}] %{actor} added options to: %{title}'
-      outcome_created: '[%{group}] %{actor} shared a %{poll_type} outcome: %{title}'
-      outcome_announced: '[%{group}] %{actor} shared a %{poll_type} outcome: %{title}'
-      stance_created: "[%{group}] %{actor} voted on: %{title}"
-      stance_created_author: "[%{group}] Please verify your vote on: %{title}"
-      user_mentioned: '[%{group}] %{actor} mentioned you in: %{title}'
-      user_reminded: '[%{group}] %{actor} is reminding you to vote in: %{title}'
+      poll_created: '%{actor} started a %{poll_type}: %{title}'
+      poll_edited: '%{actor} edited the %{poll_type}: %{title}'
+      poll_announced: '%{actor} invited you to vote in a %{poll_type}: %{title}'
+      poll_closing_soon: '%{poll_type} closing in 24 hours: %{title}'
+      poll_closing_soon_author: 'Your %{poll_type} closes in 24 hours: %{title}'
+      poll_expired: "%{poll_type} closed: %{title}"
+      poll_expired_author: 'Your %{poll_type} has closed. Share an outcome for: %{title}'
+      poll_option_added: '%{actor} added options to: %{title}'
+      poll_option_added_author: '%{actor} added options to: %{title}'
+      outcome_created: '%{actor} shared a %{poll_type} outcome: %{title}'
+      outcome_announced: '%{actor} shared a %{poll_type} outcome: %{title}'
+      stance_created: "%{actor} voted on: %{title}"
+      stance_created_author: "Please verify your vote on: %{title}"
+      user_mentioned: '%{actor} mentioned you in: %{title}'
+      user_reminded: '%{actor} is reminding you to vote in: %{title}'
 
     header:
       poll_created: '<strong>%{actor}</strong> started a %{poll_type}'

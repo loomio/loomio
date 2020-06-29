@@ -7,10 +7,6 @@ class Events::MembershipResent < Event
           custom_fields: { membership_id: membership.id }
   end
 
-  def email_subject_key
-    "#{eventable_key}_mailer.resend"
-  end
-
   private
 
   def email_method

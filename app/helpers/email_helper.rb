@@ -56,11 +56,6 @@ module EmailHelper
                                                   format: format)
   end
 
-  def formatted_time_in_zone(time, zone)
-    return unless time && zone
-    time.in_time_zone(TimeZoneToCity.convert zone).strftime('%l:%M%P - %A %-d %b %Y')
-  end
-
   def google_pie_chart_url(poll)
     URI.escape("https://chart.googleapis.com/chart?cht=p&chma=0,0,0,0|0,0&chs=200x200&chd=t:#{proposal_sparkline(poll)}&chco=#{proposal_colors(poll)}")
   end
