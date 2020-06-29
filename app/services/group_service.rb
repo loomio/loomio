@@ -62,15 +62,10 @@ module GroupService
     EventBus.broadcast('group_update', group, params, actor)
   end
 
-  def self.archive(group:, actor:)
-    actor.ability.authorize! :archive, group
-    group.archive!
-    EventBus.broadcast('group_archive', group, actor)
-  end
-
   def self.destroy(group:, actor:)
     actor.ability.authorize! :destroy, group
-    DestroyGroupWorker.perform_async(group.id)
+    group.archive!
+    DestroyGroupWorker.perform_in(2.weeks, group.id)
     EventBus.broadcast('group_destroy', group, actor)
   end
 
