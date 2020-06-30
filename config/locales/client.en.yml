@@ -2122,6 +2122,10 @@ en:
       project: Project team
       forum: Forum
       other: Other
+    desired_features:
+      polls: Running polls for my team to vote on
+      discussions: Holding discussions online and getting input
+      archive: Recording decisions we make or archiving information
     referrers:
       google: Google search
       invitation: Invited to a Loomio group
@@ -2137,4 +2141,5 @@ en:
     role: "What is your role in the group?"
     website: "Website URL"
     usage: "How do you plan to use Loomio? Choose the best fit"
+    desired_feature: "What is the number one thing you're looking to use Loomio for?"
     referrer: "How did you hear about Loomio?"
