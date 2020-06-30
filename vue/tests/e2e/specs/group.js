@@ -366,8 +366,6 @@ module.exports = {
 
     page.fillIn('.confirm-text-field input', 'Dirty Dancing Shoes')
     page.click('.confirm-modal__submit')
-
-    page.pause(500)
-    page.expectFlash('This group will be deleted in a minute or two')
+    page.expectFlash("This group has been archived and is scheduled for permanent deletion in 2 weeks.")
   }
 }
