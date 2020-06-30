@@ -175,6 +175,11 @@ export default class BaseModel
     @remote.discard(@keyOrId()).finally =>
       @processing = false
 
+  undiscard: =>
+    @processing = true
+    @remote.undiscard(@keyOrId()).finally =>
+      @processing = false
+
   save: =>
     @processing = true
 
