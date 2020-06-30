@@ -52,11 +52,6 @@ export default new class CommentService
           props:
             comment: comment.clone()
 
-    move_comments:
-      icon: 'mdi-call-split'
-      canPerform: -> AbilityService.canMoveComment(comment)
-      perform: -> comment.createdEvent().toggleFromFork()
-
     translate_comment:
       icon: 'mdi-translate'
       canPerform: ->
