@@ -41,7 +41,8 @@ export default new class UserService
             confirm:
               text:
                 title: 'deactivation_modal.aria_label'
-                raw_helptext: "<p>#{vm.$t('deactivation_modal.introduction')}:</p>
+                raw_helptext: "
+                  <p>#{vm.$t('deactivation_modal.introduction')}:</p>
                   <ul>
                     <li>#{vm.$t('deactivation_modal.no_longer_group_member')}</li>
                     <li>#{vm.$t('deactivation_modal.name_removed')}</li>
@@ -51,21 +52,6 @@ export default new class UserService
                 submit: 'deactivation_modal.submit'
               submit: -> Records.users.deactivate(Session.user())
               successCallback: hardReload
-
-    reactivate_user:
-      icon: 'mdi-account-check'
-      name: 'auth_form.reactivate'
-      canPerform: -> user.deactivatedAt
-      perform: ->
-        EventBus.$emit 'openModal',
-          component: 'ConfirmModal',
-          props:
-            confirm:
-              text:
-                title: 'auth_form.reactivate'
-                submit: 'auth_form.reactivate'
-              submit: -> Records.users.reactivate(Session.user())
-              successCallback: -> Flash.success('auth_form.reactivate_link_sent')
 
     delete_user:
       icon: 'mdi-account-off'
@@ -87,3 +73,18 @@ export default new class UserService
                 submit: 'delete_user_modal.submit'
               submit: -> Records.users.destroy()
               successCallback: hardReload
+
+    reactivate_user:
+      icon: 'mdi-account-check'
+      name: 'auth_form.reactivate'
+      canPerform: -> user.deactivatedAt
+      perform: ->
+        EventBus.$emit 'openModal',
+          component: 'ConfirmModal',
+          props:
+            confirm:
+              text:
+                title: 'auth_form.reactivate'
+                submit: 'auth_form.reactivate'
+              submit: -> Records.users.reactivate(Session.user())
+              successCallback: -> Flash.success('auth_form.reactivate_link_sent')

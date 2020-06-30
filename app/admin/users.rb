@@ -167,9 +167,8 @@ ActiveAdmin.register User do
   end
 
   member_action :deactivate, method: :put do
-    user = User.friendly.find(params[:id])
-    user.deactivate!
-    redirect_to admin_users_path, :notice => "User account deactivated"
+    DeactivateUserWorker.perform_later(params[:id])
+    redirect_to admin_users_path, :notice => "User scheduled for deactivation immediately"
   end
 
   member_action :reactivate, method: :put do
@@ -178,10 +177,8 @@ ActiveAdmin.register User do
     redirect_to admin_users_path, :notice => "User account activated"
   end
 
-  member_action :reset_password, method: :post do
-    user = User.friendly.find(params[:id])
-    raw = user.send(:set_reset_password_token)
-
-    render plain: edit_user_password_path(reset_password_token: raw)
+  member_action :destroy, method: :delete do
+    DestroyUserWorker.perform_later(params[:id])
+    redirect_to admin_users_path, :notice => "User scheduled for deletion immediately"
   end
 end

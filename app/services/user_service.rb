@@ -40,33 +40,23 @@ class UserService
     User.where('name like ?', "%#{name_fragment}%").order('id asc').limit(2000).each { |user| delete_spam(user) }
   end
 
-  def self.delete_spam(user)
-    # destroyed (cascade delete)
-    raise "no deletey admin plezse" if user.is_admin?
-
-    Group.where(creator_id: user.id).destroy_all
-    Poll.where(author_id: user.id).destroy_all
-    Discussion.where(author_id: user.id).destroy_all
-
-    # deleted (fast delete)
-    Event.where(user_id: user.id).delete_all
-    Notification.where(actor_id: user.id).delete_all
-
-    user.destroy
-    EventBus.broadcast('user_delete_spam', user)
-  end
-
   def self.deactivate(user:, actor:, params:)
     actor.ability.authorize! :deactivate, user
-    user.deactivate!
-    EventBus.broadcast('user_deactivate', user, actor, params)
+    DeactivateUserWorker.perform_later(user.id)
   end
 
-  def self.reactivate(user:, actor:)
-    actor.ability.authorize! :reactivate, user
-    EventBus.broadcast('user_reactivate', user, actor)
-    Events::UserReactivated.publish!(user)
+  def self.destroy(user:, actor:, params:)
+    actor.ability.authorize! :destroy, user
+    DestroyUserWorker.perform_later(user.id)
   end
+
+  # def self.reactivate(user:, actor:)
+  #   actor.ability.authorize! :reactivate, user
+  #   user.update_attribute(:deactivated_at, nil)
+  #   user.archived_memberships.update_all(archived_at: nil)
+  #   EventBus.broadcast('user_reactivate', user, actor)
+  #   Events::UserReactivated.publish!(user)
+  # end
 
   def self.set_volume(user:, actor:, params:)
     actor.ability.authorize! :update, user
