@@ -80,7 +80,7 @@ export default new class CommentService
     discard_comment:
       icon: 'mdi-delete'
       name: 'common.action.remove'
-      canPerform: -> AbilityService.canDiscardComment(comment)
+      canPerform: -> AbilityService.canDeleteComment(comment)
       perform: ->
         openModal
           component: 'ConfirmModal',
@@ -98,7 +98,7 @@ export default new class CommentService
       name: 'common.action.undo_remove'
       canPerform: -> AbilityService.canUndiscardComment(comment)
       perform: -> comment.undiscard()
-      
+
     delete_comment:
       icon: 'mdi-delete'
       canPerform: -> AbilityService.canDiscardComment(comment)
