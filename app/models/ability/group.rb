@@ -27,6 +27,7 @@ module Ability::Group
     can [:update,
          :email_members,
          :archive,
+         :destroy,
          :publish,
          :export,
          :view_pending_invitations,

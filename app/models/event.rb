@@ -117,10 +117,6 @@ class Event < ApplicationRecord
     nil # only for announcement_created events for outcomes
   end
 
-  def email_subject_key
-    nil
-  end
-
   def find_parent_event
     case kind
     when 'discussion_closed'   then eventable.created_event

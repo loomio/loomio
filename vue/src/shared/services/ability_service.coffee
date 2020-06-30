@@ -129,6 +129,9 @@ export default new class AbilityService
   canArchiveGroup: (group) ->
     group.adminsInclude(Session.user())
 
+  canEditOwnComment: (comment) ->
+    comment.authorIs(Session.user()) && @canEditComment(comment)
+
   canEditComment: (comment) ->
     (comment.discussion().adminsInclude(Session.user()) and comment.group().adminsCanEditUserContent) or
 

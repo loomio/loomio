@@ -5,7 +5,8 @@ def i18n_params
    voter:      parsed.css('.i18n-params .voter').text,
    poll:       parsed.css('.i18n-params .poll').text,
    title:     parsed.css('.i18n-params .poll').text,
-   actor:   parsed.css('.i18n-params .actor').text}
+   actor:   parsed.css('.i18n-params .actor').text,
+   poll_type:   parsed.css('.i18n-params .poll_type').text}
 end
 
 def body

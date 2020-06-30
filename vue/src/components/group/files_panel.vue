@@ -1,9 +1,10 @@
 <script lang="coffee">
-import Records        from '@/shared/services/records'
-import RecordLoader   from '@/shared/services/record_loader'
-import EventBus       from '@/shared/services/event_bus'
-import AbilityService from '@/shared/services/ability_service'
-import Session       from '@/shared/services/session'
+import Records           from '@/shared/services/records'
+import RecordLoader      from '@/shared/services/record_loader'
+import EventBus          from '@/shared/services/event_bus'
+import AbilityService    from '@/shared/services/ability_service'
+import Session           from '@/shared/services/session'
+import AttachmentService from '@/shared/services/attachment_service'
 
 import { isEmpty, intersection, debounce, filter, some, orderBy } from 'lodash-es'
 
@@ -88,6 +89,9 @@ export default
       @attachmentLoader.fetchRecords
         q: @searchQuery
 
+    actionsFor: (item) ->
+      AttachmentService.actions(item)
+
   computed:
     showLoadMore: -> !@loader.exhausted && !@attachmentLoader.exhausted
     loading: -> @loader.loading || @attachmentLoader.loading
@@ -110,6 +114,7 @@ div
             th(v-t="'group_files_panel.filename'")
             th(v-t="'group_files_panel.uploaded_by'")
             th(v-t="'group_files_panel.uploaded_at'")
+            th(v-if="canAdminister")
         tbody
           tr(v-for="item in items" :key="item.id")
             td
@@ -120,6 +125,9 @@ div
               user-avatar(:user="item.author()")
             td
               time-ago(:date="item.createdAt")
+            td(v-if="canAdminister")
+              action-menu(v-if="Object.keys(actionsFor(item)).length" :actions="actionsFor(item)")
+
       v-layout(justify-center)
         v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loading" @click="fetch()" v-t="'common.action.load_more'")
 </template>

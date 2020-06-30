@@ -1,4 +1,4 @@
-%div.poll-mailer__results-chart
+.poll-mailer__results-chart
   - if poll.show_results?
     %h3= t('poll_mailer.common.results')
     = render "poll_mailer/#{poll.poll_type}/chart", poll: poll, recipient: recipient

@@ -10,7 +10,7 @@ class GroupMailer < BaseMailer
                      locale: recipient.locale,
                      from:   from_user_via_loomio(@inviter),
                      reply_to: @inviter.name_and_email,
-                     subject_key: event.email_subject_key || "email.to_join_group.subject",
+                     subject_key: "email.to_join_group.subject",
                      subject_params: {member: @inviter.name,
                                       group_name: @membership.group.full_name,
                                       site_name: AppConfig.theme[:site_name]}

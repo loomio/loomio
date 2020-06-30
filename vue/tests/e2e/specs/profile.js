@@ -107,8 +107,9 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_group_with_multiple_coordinators')
-    page.pause(300)
+    page.pause(500)
     page.ensureSidebar()
+
     page.click('.sidebar__user-dropdown')
     page.click('.user-dropdown__list-item-button--profile')
     page.click('.user-page__deactivate_user')
@@ -120,6 +121,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_group_with_multiple_coordinators')
+    page.pause(500)
     page.ensureSidebar()
     page.click('.sidebar__user-dropdown')
     page.click('.user-dropdown__list-item-button--profile')
@@ -131,6 +133,7 @@ module.exports = {
   'merges_accounts': (test) => {
     page = pageHelper(test)
     page.loadPath('setup_group')
+    page.pause(500)
     page.ensureSidebar()
     page.click('.sidebar__user-dropdown')
     page.click('.user-dropdown__list-item-button--profile')

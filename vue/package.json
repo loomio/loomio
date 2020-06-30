@@ -17,8 +17,8 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.10.1",
-    "@sentry/browser": "5.18.0",
-    "@sentry/integrations": "5.18.0",
+    "@sentry/browser": "5.18.1",
+    "@sentry/integrations": "5.18.1",
     "actioncable": "^5.2.2",
     "activestorage": "^5.2.2",
     "ahoy.js": "^0.3.6",
@@ -57,7 +57,7 @@
     "vue-slicksort": "^1.1.3",
     "vue2-touch-events": "^2.2.1",
     "vuetify": "2.3.2",
-    "whatwg-fetch": "^3.0.0",
+    "whatwg-fetch": "^3.1.0",
     "md5": "2.2.1"
   },
   "devDependencies": {

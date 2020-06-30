@@ -57,7 +57,7 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   def preview
-    event = MockEvent.new(target_model, nil, current_user , 1)
+    event = target_model.created_event
     @email = target_model.send(:mailer).send(params[:kind], current_user, event)
     @email.perform_deliveries = false
 
