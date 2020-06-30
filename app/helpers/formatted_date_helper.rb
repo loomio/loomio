@@ -1,53 +1,39 @@
 module FormattedDateHelper
-  def display_time(value, zone)
-    apply_format parse_date_string(value, zone), '%l:%M %P'
+  def format_iso8601_for_humans(str, zone)
+    format_date_for_humans(parse_date_or_datetime(str), zone)
   end
 
-  def display_day(value, zone)
-    apply_format parse_date_string(value, zone), '%a'
+  def format_date_for_humans(date, zone = nil)
+    if zone
+      date.in_time_zone(zone)
+    else
+      date
+    end.strftime(date_or_datetime_format(date)).strip
   end
 
-  def display_date(value, zone)
-    apply_format parse_date_string(value, zone), '%-d %b'
-  end
-
-  def has_time?(value)
-    !!date_time(value)
-  rescue ArgumentError
-    false
-  end
-
-  private
-
-  def parse_date_string(value, zone)
-    if has_time? value
-      date_time(value).in_time_zone(zone)
+  def parse_date_or_datetime(value)
+    if is_datetime_string? value
+      parse_datetime(value)
     else
       value.to_date
     end
   end
 
-  def apply_format(date, format)
-    date.strftime(format).strip
+  def is_datetime_string?(value)
+    !!parse_datetime(value)
+  rescue ArgumentError
+    false
   end
 
-  def formatted_datetime(value, zone)
-    if has_time? value
-      date_time(value).in_time_zone(zone).strftime(date_time_format(value)).strip
-    else
-      value.to_date.strftime(date_format(value)).strip
-    end
-  end
-
-  def date_time(value)
+  def parse_datetime(value)
     DateTime.strptime(value.sub('.000Z', 'Z'))
   end
 
-  def date_time_format(value)
-    Date.today.year == value.to_date.year ? "%a %-d %b %l:%M %P" : "%a %-d %b %Y %l:%M %P"
-  end
-
-  def date_format(value)
-    Date.today.year == value.to_date.year ? "%a %-d %b" : "%a %-d %b %Y"
+  def date_or_datetime_format(value)
+    if value.is_a? DateTime
+      Date.today.year == value.to_date.year ? "%a %-d %b, %H:%M" : "%a %-d %b %Y, %H:%M"
+    else
+      Date.today.year == value.to_date.year ? "%a %-d %b" : "%a %-d %b %Y"
+    end
   end
 end

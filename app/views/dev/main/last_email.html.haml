@@ -17,6 +17,7 @@
             .actor= @scenario[:actor]&.name
             .poll= @scenario[:poll]&.title
             .title= @scenario[:poll]&.title
+            .poll_type= t("poll_types.#{@scenario[:poll]&.poll_type}")
 
         %p.email-to
           to:
