@@ -53,14 +53,12 @@ Loomio::Application.routes.draw do
 
     resources :usage_reports, only: [:create]
 
-    resources :groups, only: [:index, :show, :create, :update] do
+    resources :groups, only: [:index, :show, :create, :update, :destroy] do
       member do
         get :token
         post :reset_token
         get :subgroups
         post :export
-        patch :archive
-        put :archive
         post 'upload_photo/:kind', action: :upload_photo
       end
       collection do

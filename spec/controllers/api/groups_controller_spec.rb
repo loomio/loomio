@@ -26,6 +26,31 @@ describe API::GroupsController do
     end
   end
 
+  describe "destroy" do
+    context "signed in" do
+      before do
+        sign_in user
+      end
+      it 'destroys my group' do
+        delete :destroy, params: { id: group.id }
+        expect(response.status).to eq 200
+        expect { group.reload }.to raise_error ActiveRecord::RecordNotFound
+      end
+
+      it 'does not destroy another group' do
+        delete :destroy, params: { id: another_group.id }
+        expect(response.status).to eq 403
+      end
+    end
+
+    context "not signed in" do
+      it 'returns 403' do
+        delete :destroy, params: { id: group.id }
+        expect(response.status).to eq 403
+      end
+    end
+  end
+
   describe 'suggest_handle' do
     before do
       sign_in user
