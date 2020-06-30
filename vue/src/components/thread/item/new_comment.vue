@@ -19,7 +19,7 @@ export default
     eventActions: -> EventService.actions(@event, @)
     eventable: -> @event.model()
     dockActions: ->
-      if @eventable.authorIs(Session.user()) && AbilityService.canEditComment(@eventable)
+      if AbilityService.canEditOwnComment(@eventable)
         edit_comment = 'edit_comment'
       else
         reply_to_comment = 'reply_to_comment'
@@ -32,7 +32,7 @@ export default
       )
 
     menuActions: ->
-      if !@eventable.authorIs(Session.user()) && AbilityService.canEditComment(@eventable)
+      if AbilityService.canEditOwnComment(@eventable)
         show_history = 'show_history'
         reply_to_comment = 'reply_to_comment'
 
