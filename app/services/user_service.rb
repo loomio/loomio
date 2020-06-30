@@ -40,11 +40,33 @@ class UserService
     User.where('name like ?', "%#{name_fragment}%").order('id asc').limit(2000).each { |user| delete_spam(user) }
   end
 
+  # UserService#deactivate
+  # When someone no longer wants to be on the system, this is the way to remove them.
+  #
+  # It nulls any personally identifying user record columns
+  # it deletes any login_tokens, identities, etc
+  # it deactivates membership records
+  # it preserves authored discussions, comments, polls, stances, reactions, files
+  #
+  # it should, ideally, also send an undo link to the email address on file,
+  # which is the only way for someone to claim this user account again
   def self.deactivate(user:, actor:, params:)
     actor.ability.authorize! :deactivate, user
     DeactivateUserWorker.perform_later(user.id)
   end
 
+  # UserService#destroy
+  # Only intended to be used in a case where a script has created trash records and you
+  # want to make it as if it never happened. We almost never want to destroy a user.
+  # it will destroy
+  # - all groups they created
+  # - all discussions they authored
+  # - all polls they authored
+  # - all comments they created
+  # - all stances they created
+  # - all memberships they have
+  # # all discussion_readers they have
+  # you get the point.
   def self.destroy(user:, actor:, params:)
     actor.ability.authorize! :destroy, user
     DestroyUserWorker.perform_later(user.id)
