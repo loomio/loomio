@@ -6,7 +6,6 @@ class PollsController < ApplicationController
 
   helper PollEmailHelper
   helper :email
-  helper :formatted_date
 
   def export
     @exporter = PollExporter.new(load_and_authorize(:poll, :export))

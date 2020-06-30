@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   include EmailHelper
   include ApplicationHelper
   helper :email
+  helper :formatted_date
 
   around_action :process_time_zone          # LocalesHelper
   around_action :use_preferred_locale       # LocalesHelper
@@ -72,7 +73,7 @@ class ApplicationController < ActionController::Base
     if request.format.html?
       template.gsub!('<div class=upgrade-browser></div>', '<%= render "application/upgrade_browser" %>')
     end
-    
+
     render inline: template, layout: false, status: status
   end
 
