@@ -3,12 +3,10 @@ import Session        from '@/shared/services/session'
 import Records        from '@/shared/services/records'
 import AbilityService from '@/shared/services/ability_service'
 import FlashService   from '@/shared/services/flash'
-import ConfirmModalMixin from '@/mixins/confirm_modal'
-import MembershipModalMixin from '@/mixins/membership_modal'
+import EventBus from '@/shared/services/event_bus'
 import { snakeCase } from 'lodash-es'
 
 export default
-  mixins: [ConfirmModalMixin, MembershipModalMixin]
   props:
     membership: Object
   methods:
@@ -22,7 +20,10 @@ export default
       AbilityService.canSetMembershipTitle(@membership)
 
     setTitle: ->
-      @openMembershipModal(@membership.clone())
+      EventBus.$emit 'openModal',
+                      component: 'MembershipModal',
+                      props:
+                        membership: @membership.clone()
 
     canResendMembership: ->
       AbilityService.canResendMembership(@membership)
@@ -37,20 +38,19 @@ export default
 
     removeMembership: ->
       namespace = if @membership.acceptedAt then 'membership' else 'invitation'
-      @openConfirmModal(
-        scope:
-          namespace: namespace
-          user: @membership.user()
-          group: @membership.group()
-          membership: @membership
-        text:
-          title:    "membership_remove_modal.#{namespace}.title"
-          raw_helptext: @$t("membership_remove_modal.#{namespace}.message", { name: @membership.user().name })
-          flash:    "membership_remove_modal.#{namespace}.flash"
-          submit:   "membership_remove_modal.#{namespace}.submit"
-        submit:     @membership.destroy
-        redirect:   ('dashboard' if @membership.user() == Session.user())
-      )
+
+      EventBus.$emit 'openModal',
+                      component: 'ConfirmModal',
+                      props:
+                        confirm:
+                          membership: @membership.clone()
+                          text:
+                            title:    "membership_remove_modal.#{namespace}.title"
+                            raw_helptext: @$t("membership_remove_modal.#{namespace}.message", { name: @membership.user().name })
+                            flash:    "membership_remove_modal.#{namespace}.flash"
+                            submit:   "membership_remove_modal.#{namespace}.submit"
+                          submit:     @membership.destroy
+                          redirect:   ('dashboard' if @membership.user() == Session.user())
 
     canToggleAdmin: ->
       (@membership.group().adminMembershipsCount == 0 and @membership.user() == Session.user()) or
@@ -64,6 +64,7 @@ export default
       Records.memberships[method](@membership).then =>
         FlashService.success "memberships_page.messages.#{snakeCase method}_success", name: (@membership.userName() || @membership.userEmail())
 </script>
+
 <template lang="pug">
 .membership-dropdown.lmo-no-print(v-if='canPerformAction()')
   v-menu.lmo-dropdown-menu(offset-y)
