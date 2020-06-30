@@ -4,6 +4,7 @@ import AbilityService from '@/shared/services/ability_service'
 import { pick, assign, compact } from 'lodash-es'
 import CommentService from '@/shared/services/comment_service'
 import EventService from '@/shared/services/event_service'
+import Session from '@/shared/services/session'
 
 export default
   components:
@@ -18,7 +19,7 @@ export default
     eventActions: -> EventService.actions(@event, @)
     eventable: -> @event.model()
     dockActions: ->
-      if AbilityService.canEditComment(@eventable)
+      if AbilityService.canEditOwnComment(@eventable)
         edit_comment = 'edit_comment'
       else
         reply_to_comment = 'reply_to_comment'
@@ -31,12 +32,12 @@ export default
       )
 
     menuActions: ->
-      if AbilityService.canEditComment(@eventable)
+      if AbilityService.canEditOwnComment(@eventable)
         show_history = 'show_history'
         reply_to_comment = 'reply_to_comment'
 
       assign(
-        pick @commentActions, compact [reply_to_comment, show_history, 'notification_history', 'translate_comment' , 'discard_comment']
+        pick @commentActions, compact [reply_to_comment, show_history, 'admin_edit_comment', 'notification_history', 'translate_comment' , 'discard_comment']
       ,
         pick @eventActions, ['move_event', 'copy_url']
       )

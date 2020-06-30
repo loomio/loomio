@@ -7,6 +7,15 @@ class API::AttachmentsController < API::RestfulController
   end
 
   def accessible_records
-     ActiveStorage::Attachment.where(group_id: current_user.group_ids)
+    ActiveStorage::Attachment.where(group_id: current_user.group_ids)
+  end
+
+  def destroy
+    attachment = load_and_authorize :attachment, :destroy
+    record = attachment.record
+    attachment.purge_later
+    record.update_attachments!
+    serializer = "#{record.class.to_s}Serializer".constantize
+    render json: serializer.new(record).as_json
   end
 end

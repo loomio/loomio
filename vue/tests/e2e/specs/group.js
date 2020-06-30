@@ -322,17 +322,6 @@ module.exports = {
     page.expectText('.dashboard-page__empty', 'Welcome! You are not a member of any groups yet.')
   },
 
-  'allows_a_coordinator_to_archive_a_group': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_group')
-    page.click('.group-page-settings-tab')
-    page.click('.group-page-actions__archive_group')
-    page.click('.confirm-modal__submit')
-    page.expectFlash('This group has been deactivated')
-    page.expectText('.dashboard-page__empty', 'Welcome! You are not a member of any groups yet.')
-  },
-
   'successfully_starts_a_discussion': (test) => {
     page = pageHelper(test)
 
@@ -377,8 +366,6 @@ module.exports = {
 
     page.fillIn('.confirm-text-field input', 'Dirty Dancing Shoes')
     page.click('.confirm-modal__submit')
-
-    page.pause(500)
-    page.expectFlash('This group will be deleted in a minute or two')
+    page.expectFlash("This group has been archived and is scheduled for permanent deletion in 2 weeks.")
   }
 }

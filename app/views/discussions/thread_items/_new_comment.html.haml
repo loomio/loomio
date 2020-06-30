@@ -3,7 +3,7 @@
   .thread-item.px-3.pb-1
     #sequence-2.layout.lmo-action-dock-wrapper{:style => "margin-left: 0px;"}
       .thread-item__avatar.mr-3.mt-0
-        = render "discussions/avatar", user: comment.author
+        = render "base_mailer/avatar", user: comment.author
       .layout.thread-item__body.column
         .layout.align-center.wrap
           %h3.thread-item__title.body-2{id: "event-#{item.id}"}

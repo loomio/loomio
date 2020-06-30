@@ -230,6 +230,7 @@ FactoryBot.define do
     details { "with a description" }
     association :author, factory: :user
     poll_option_names { ["engage"] }
+    closing_at { 5.days.from_now }
   end
 
   factory :poll_proposal, class: Poll do
@@ -238,6 +239,7 @@ FactoryBot.define do
     details { "with a description" }
     association :author, factory: :user
     poll_option_names { %w[agree abstain disagree block] }
+    closing_at { 5.days.from_now }
   end
 
   factory :poll_dot_vote, class: Poll do
@@ -247,6 +249,7 @@ FactoryBot.define do
     association :author, factory: :user
     poll_option_names { %w(apple banana orange) }
     custom_fields { { dots_per_person: 8 } }
+    closing_at { 5.days.from_now }
   end
 
   factory :poll_meeting, class: Poll do
@@ -256,6 +259,7 @@ FactoryBot.define do
     association :author, factory: :user
     poll_option_names { ['01-01-2015'] }
     custom_fields { { can_respond_maybe: false } }
+    closing_at { 5.days.from_now }
   end
 
   factory :poll_ranked_choice, class: Poll do
@@ -265,6 +269,7 @@ FactoryBot.define do
     association :author, factory: :user
     poll_option_names { %w(apple banana orange) }
     custom_fields { { minimum_stance_choices: 2 } }
+    closing_at { 5.days.from_now }
   end
 
   factory :outcome do

@@ -31,11 +31,6 @@ class API::GroupsController < API::RestfulController
     render json: { count: Queries::ExploreGroups.new.search_for(params[:q]).count }
   end
 
-  def archive
-    service.archive(group: load_resource, actor: current_user)
-    respond_with_resource
-  end
-
   def subgroups
     self.collection = load_and_authorize(:group).subgroups.select { |g| current_user.can? :show, g }
     respond_with_collection

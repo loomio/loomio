@@ -41,7 +41,7 @@ Loomio::Application.routes.draw do
 
   namespace :api, path: '/api/v1', defaults: {format: :json} do
     resources :saml_providers, only: [:create, :destroy, :index]
-    resources :attachments, only: :index
+    resources :attachments, only: [:index, :destroy]
     resources :webhooks, only: [:create, :destroy, :index, :update]
 
     resources :boot, only: [] do
@@ -59,8 +59,6 @@ Loomio::Application.routes.draw do
         post :reset_token
         get :subgroups
         post :export
-        patch :archive
-        put :archive
         post 'upload_photo/:kind', action: :upload_photo
       end
       collection do

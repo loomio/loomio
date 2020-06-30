@@ -11,11 +11,6 @@ module Events::Notify::ByEmail
     end
   end
 
-  # override to specify a custom subject for emails sent by this event
-  def email_subject_key
-    nil
-  end
-
   private
   def email_method
     kind
