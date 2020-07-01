@@ -57,6 +57,24 @@ class Membership < ApplicationRecord
     "membership-#{token}"
   end
 
+  def accept!
+    expires_at = if group.parent_or_self.saml_provider
+      Time.current
+    else
+      nil
+    end
+
+    transaction do
+      update!(user: user, accepted_at: DateTime.now, saml_session_expires_at: expires_at)
+
+      if inviter
+        inviter.groups.where(id: Array(experiences['invited_group_ids'])).each do |group|
+          group.add_member!(user, inviter: inviter) if inviter.can?(:add_members, group)
+        end
+      end
+    end
+  end
+
   def make_admin!
     update_attribute(:admin, true)
   end
