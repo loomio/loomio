@@ -52,7 +52,7 @@ class UserService
   # which is the only way for someone to claim this user account again
   def self.deactivate(user:, actor:, params:)
     actor.ability.authorize! :deactivate, user
-    DeactivateUserWorker.perform_later(user.id)
+    DeactivateUserWorker.perform_async(user.id)
   end
 
   # UserService#destroy
@@ -69,7 +69,7 @@ class UserService
   # you get the point.
   def self.destroy(user:, actor:, params:)
     actor.ability.authorize! :destroy, user
-    DestroyUserWorker.perform_later(user.id)
+    DestroyUserWorker.perform_async(user.id)
   end
 
   # def self.reactivate(user:, actor:)

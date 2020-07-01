@@ -117,19 +117,6 @@ module.exports = {
     page.expectText('.auth-modal', 'Sign into Loomio')
   },
 
-  'deletes_the_account': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_group_with_multiple_coordinators')
-    page.pause(500)
-    page.ensureSidebar()
-    page.click('.sidebar__user-dropdown')
-    page.click('.user-dropdown__list-item-button--profile')
-    page.click('.user-page__delete_user')
-    page.click('.confirm-modal__submit')
-    page.expectText('.auth-modal', 'Sign into Loomio', 12000)
-  },
-
   'merges_accounts': (test) => {
     page = pageHelper(test)
     page.loadPath('setup_group')

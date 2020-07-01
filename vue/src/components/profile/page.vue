@@ -131,16 +131,9 @@ v-content
             v-list-item-icon
               v-icon {{action.icon}}
             v-list-item-title(v-t="action.name")
-        //-
-        //-   v-btn.profile-page__change-password(color="accent" outlined @click='changePassword()' v-t="'profile_page.change_password_link'")
-        //- v-card-text
-        //-   h3.lmo-h3(v-t="'profile_page.deactivate_account'")
-        //-   v-btn.profile-page__deactivate(outlined color="warning" @click='openConfirmModal(deactivateUserConfirmOpts)', v-t="'profile_page.deactivate_account'")
-        //-
-        //-   h3.lmo-h3(v-t="'profile_page.delete_account'")
-        //-   v-btn.profile-page__delete(outlined color="warning" @click='openConfirmModal(deleteUserConfirmOpts)', v-t="'profile_page.delete_user_link'")
 
 </template>
+
 <style lang="sass">
 .profile-page__avatar
   cursor: pointer

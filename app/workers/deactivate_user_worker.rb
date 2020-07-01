@@ -2,19 +2,22 @@ class DeactivateUserWorker
   include Sidekiq::Worker
 
   def perform(user_id)
-    user = User.find_by!(id: user_id)
+    user = User.find(user_id)
 
     User.transaction do
+      email = user.email
+      locale = user.locale
+
       user.update_attributes(name: nil,
                              email: "deactivated-user-#{SecureRandom.uuid}@example.com",
-                             short_bio: nil,
+                             short_bio: '',
                              username: nil,
                              avatar_kind: "initials",
                              avatar_initials: nil,
                              country: nil,
                              region: nil,
                              city: nil,
-                             location: nil,
+                             location: '',
                              email_newsletter: false,
                              unlock_token: nil,
                              current_sign_in_ip: nil,
@@ -33,8 +36,9 @@ class DeactivateUserWorker
       group_ids = Membership.where(user_id: user_id).pluck(:group_id)
       Group.where(id: group_ids).map(&:update_memberships_count)
 
-      MembershipRequest.where(user_id: user_id, responded_at: nil).destroy_all
+      MembershipRequest.where(requestor_id: user_id, responded_at: nil).destroy_all
       Ahoy::Message.where(user_id: user_id).delete_all
+      UserMailer.deactivated(email, user.email, locale).deliver_now
     end
   end
 end
