@@ -11,7 +11,7 @@ module Ability::Comment
       (comment.discussion.admins.exists?(user.id) && comment.group.admins_can_edit_user_content)
     end
 
-    can [:destroy], ::Comment do |comment|
+    can [:destroy, :discard, :undiscard], ::Comment do |comment|
       (comment.author == user && comment.discussion.members.exists?(user.id)) or comment.discussion.admins.exists?(user.id)
     end
 

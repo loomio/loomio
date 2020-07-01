@@ -193,6 +193,7 @@ en:
       reply: 'Reply'
       edit: 'Edit'
       remove: 'Remove'
+      undo_remove: 'Undo remove'
       like: 'Like'
       unlike: 'Unlike'
       update: 'Update'
@@ -413,6 +414,7 @@ en:
       replied: '{{name}} notified of reply'
       updated: 'Comment updated'
       destroyed: 'Comment deleted'
+      removed: 'Comment removed'
     say_something: Say something...
     edit_comment: 'Edit comment'
     delete_comment: 'Delete comment'
@@ -688,6 +690,7 @@ en:
     translate_outcome: Translate outcome
     show_history: Show edit history
     edited: Edited
+    history: History
     pin_thread: Pin thread
     unpin_thread: Un-pin thread
     pin_event: Pin to timeline
@@ -1388,9 +1391,12 @@ en:
 
   delete_comment_dialog:
     title: 'Delete comment'
-    question: 'Are you sure you want to delete this comment?'
+    question: 'Are you sure you want to delete this comment? (This cannot be undone)'
     confirm: 'Delete comment'
 
+  discard_comment_dialog:
+    title: 'Remove comment'
+    question: 'Are you sure you want to remove this comment? (This can be undone later)'
 
   contact_message_form:
     title: "Hi there! How can we help?"
@@ -2122,6 +2128,10 @@ en:
       project: Project team
       forum: Forum
       other: Other
+    desired_features:
+      polls: Running polls for my team to vote on
+      discussions: Holding discussions online and getting input
+      archive: Recording decisions we make or archiving information
     referrers:
       google: Google search
       invitation: Invited to a Loomio group
@@ -2137,4 +2147,5 @@ en:
     role: "What is your role in the group?"
     website: "Website URL"
     usage: "How do you plan to use Loomio? Choose the best fit"
+    desired_feature: "What is the number one thing you're looking to use Loomio for?"
     referrer: "How did you hear about Loomio?"

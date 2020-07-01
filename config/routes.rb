@@ -181,6 +181,7 @@ Loomio::Application.routes.draw do
 
     resources :comments,    only: [:create, :update, :destroy] do
       delete :discard, on: :member
+      post :undiscard, on: :member
     end
     resources :reactions,   only: [:create, :update, :index, :destroy]
 
