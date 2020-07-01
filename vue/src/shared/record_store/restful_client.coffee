@@ -87,6 +87,9 @@ export default class RestfulClient
   discard: (id, params) ->
     @delete(id+'/discard', params)
 
+  undiscard: (id, params) ->
+    @post(id+'/undiscard', params)
+
   upload: (path, file, options = {}, onProgress) ->
     new Promise (resolve, reject) =>
       data = new FormData()

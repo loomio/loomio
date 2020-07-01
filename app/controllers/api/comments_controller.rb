@@ -9,6 +9,14 @@ class API::CommentsController < API::RestfulController
                           root: serializer_root)
   end
 
+  def undiscard
+    load_resource
+    @event = service.undiscard(comment: resource, actor: current_user)
+    respond_with_resource(scope: default_scope.merge(exclude_types: %w[discussion group user]),
+                          serializer: resource_serializer,
+                          root: serializer_root)
+  end
+
   def destroy
     load_resource
     @event = @comment.created_event.parent

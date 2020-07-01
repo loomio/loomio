@@ -37,7 +37,7 @@ export default
         reply_to_comment = 'reply_to_comment'
 
       assign(
-        pick @commentActions, compact [reply_to_comment, show_history, 'admin_edit_comment', 'notification_history', 'translate_comment' , 'discard_comment']
+        pick @commentActions, compact [reply_to_comment, show_history, 'admin_edit_comment', 'notification_history', 'translate_comment' , 'discard_comment', 'undiscard_comment']
       ,
         pick @eventActions, ['move_event', 'copy_url']
       )

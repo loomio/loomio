@@ -11,7 +11,7 @@ export default new class EventService
         event.toggleFromFork()
 
       canPerform: ->
-        AbilityService.canMoveThread(event.discussion())
+        !event.model().discardedAt && AbilityService.canMoveThread(event.discussion())
 
     remove_event:
       perform: ->
@@ -19,6 +19,7 @@ export default new class EventService
           Flash.success 'thread_item.event_removed'
 
       canPerform: ->
+        !event.model().discardedAt &&
         event.kind == 'discussion_edited' &&
         AbilityService.canAdminister(event.discussion())
 
@@ -40,7 +41,7 @@ export default new class EventService
 
     copy_url:
       icon: 'mdi-link'
-      canPerform: -> true
+      canPerform: -> !event.model().discardedAt
       perform:    ->
         link = LmoUrlService.event(event, {}, absolute: true)
         vm.$copyText(link).then (e) ->

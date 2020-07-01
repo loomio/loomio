@@ -11,10 +11,20 @@ class CommentService
   end
 
   def self.discard(comment:, actor:)
-    actor.ability.authorize!(:destroy, comment)
+    actor.ability.authorize!(:discard, comment)
+    ActiveRecord::Base.transaction do
+      comment.update(discarded_at: Time.now, discarded_by: actor.id)
+      comment.created_event.update(user_id: nil, pinned: false)
+    end
+    comment.created_event
+  end
 
-    comment.update(discarded_at: Time.now, discarded_by: actor.id)
-    comment.created_event.update(user_id: nil, pinned: false)
+  def self.undiscard(comment:, actor:)
+    actor.ability.authorize!(:undiscard, comment)
+    ActiveRecord::Base.transaction do
+      comment.update(discarded_at: nil, discarded_by: nil)
+      comment.created_event.update(user_id: comment.user_id)
+    end
     comment.created_event
   end
 
