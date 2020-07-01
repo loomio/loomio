@@ -75,7 +75,7 @@ v-card.group-survey
       v-radio-group.group-survey__category(v-model='survey.category' :label="$t('group_survey.category_question')" :rules="[rules.required]")
         v-radio(v-for='category in categories' :key='category' :value='category' :aria-label='category' :label="$t('group_survey.categories.' + category)" :class="'group-survey__category-' + category")
 
-      v-radio-group.group-survey__usage(v-model='survey.desiredFeature' :label="$t('group_survey.desired_feature')" :rules="[rules.required]")
+      v-radio-group.group-survey__desired-feature(v-model='survey.desiredFeature' :label="$t('group_survey.desired_feature')" :rules="[rules.required]")
         v-radio(v-for='feature in desiredFeatures' :key='feature' :value='feature' :aria-label='feature' :label="$t('group_survey.desired_features.' + feature)" :class="'group-survey__desired-feature-' + feature")
 
       v-radio-group.group-survey__size(v-model='survey.size' :label="$t('group_survey.size_question')" :rules="[rules.required]")
