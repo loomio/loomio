@@ -7,7 +7,7 @@ class API::AttachmentsController < API::RestfulController
   end
 
   def accessible_records
-    ActiveStorage::Attachment.where(group_id: current_user.group_ids)
+    ActiveStorage::Attachment.includes(:blob).where(group_id: current_user.group_ids, name: "files")
   end
 
   def destroy
