@@ -1,9 +1,8 @@
 - comment = item.eventable
-- user = comment.user
 %table
   %tr
     %td.icon
-      = render "avatar", user: user
+      = render "avatar", user: comment.author
     %td.content
       - if comment.discarded?
         = t(:'thread_item.removed')

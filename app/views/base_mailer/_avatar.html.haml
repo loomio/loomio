@@ -6,7 +6,7 @@
   - size = :medium
 
 .base-mailer__avatar.v-avatar{:title => user.name, :style => style}
-  - if user
+  - if user.presence
     - if user.avatar_url(:medium)
       = image_tag user.avatar_url(:medium), alt: "#{user.avatar_initials}", class: "base-mailer__avatar-image"
     - else
