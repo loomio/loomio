@@ -18,12 +18,17 @@ module GroupService
 
     Membership.import(new_memberships, on_duplicate_key_ignore: true)
 
-    memberships = Membership.where(group: group, user_id: users.pluck(:id))
+    existing_parent_members = group.parent_or_self.accepted_members.where(id: users.pluck(:id))
+
+    Membership.not_archived.where(group_id: group.id, user_id: existing_parent_members.pluck(:id)).each do |m|
+      AcceptMembershipWorker.perform_async(m.id)
+    end
 
     group.update_pending_memberships_count
     group.update_memberships_count
-    Events::AnnouncementCreated.publish!(group, actor, memberships)
-    Membership.where(user_id: users.pluck(:id), group_id: group.id)
+    all_memberships = Membership.not_archived.where(group_id: group.id, user_id: users.pluck(:id))
+    Events::AnnouncementCreated.publish!(group, actor, all_memberships)
+    all_memberships
   end
 
   def self.create(group:, actor: )
