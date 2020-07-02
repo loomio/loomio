@@ -107,7 +107,6 @@ sk:
     close_thread: 'Uzatvoriť'
   delete_comment_dialog:
     title: 'Odstrániť komentár'
-    question: 'Naozaj chcete odstrániť tento komentár?'
     confirm: 'Odstrániť komentár'
   contact_message_form:
     name_label: 'Vaše meno'

@@ -94,7 +94,6 @@ mk:
     close_thread: 'Затвори'
   delete_comment_dialog:
     title: 'Избриши го коментарот'
-    question: 'Дали си сигурен/а дека сакаш да го избришиш коментарот?'
     confirm: 'Избриши го коментарот'
   contact_message_form:
     name_label: 'Твоето име'

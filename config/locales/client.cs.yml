@@ -587,7 +587,6 @@ cs:
       success: Téma bylo přesunuto {{name}}
   delete_comment_dialog:
     title: 'Odstranit komentář'
-    question: 'Opravdu chcete odstranit tento komentář?'
     confirm: 'Odstranit komentář'
   contact_message_form:
     contact_us: 'Kontakt'
@@ -699,11 +698,6 @@ cs:
     receive_updates_helptext: Chcete-li obdržet e-mail s výsledky tohoto hlasování, zadejte níže svou e-mailovou adresu
     subscribe: Přihlásit odběr
     no_thanks: Ne, díky
-  polls_page:
-    heading: Rozhodnutí
-    start_new_poll: Nové rozhodnutí
-    filter_placeholder: (Všechna hlasování)
-    groups_placeholder: (Všechny skupiny)
   auth_form:
     sign_in: Přihlásit se
     create_account: Vytvořit účet

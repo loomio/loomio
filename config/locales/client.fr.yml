@@ -321,6 +321,9 @@ fr:
   close_explanation_modal:
     aria_label: Clore la discussion
     close_thread: Clore la discussion
+    body: |
+        <p>Fermer les discussions anciennes ou non pertinentes pour les supprimer de la vue et indiquer que la discussion a été clôturée.</p>
+        <p>N'importe qui peut toujours commenter ou démarrer un sondage sur une discussion close, mais elle n'apparaitra pas dans la liste des discussion du groupe ni sur le tableau de bord.</p>
     image_alt: Clore toutes les discussions
   mute_explanation_modal:
     aria_label: Ignorer la discussion
@@ -493,6 +496,8 @@ fr:
     move: Déplacer
     search_placeholder: Retrouvez une discussion par son titre
     moved: Déplacer des commentaires, cette action peut prendre un moment
+    move_to_existing_thread: Déplacer vers une discussion existante
+    start_new_thread: Ou démarrer une nouvelle discussion
   discussion_form:
     aria_label: 'Forme de la discussion'
     messages:
@@ -500,6 +505,7 @@ fr:
       updated: 'Discussion mise à jour'
       forked: 'Discussion scindée'
     new_discussion_title: 'Créer une nouvelle discussion'
+    moving_items_title: 'Bouger les éléments vers une nouvelle discussion'
     edit_discussion_title: 'Modifier la discussion'
     group_label: 'Groupe'
     group_placeholder: 'Sélectionner un groupe'
@@ -611,6 +617,7 @@ fr:
     translate_outcome: Afficher une traduction automatique du résultat
     show_history: Montrer l’historique des modifications
     edited: Modifié
+    history: Historique
     pin_thread: Mettre en avant la discussion
     unpin_thread: Ne plus mettre en avant la discussion
     pin_event: 'Epingler dans la timeline '
@@ -785,6 +792,7 @@ fr:
     question: 'Êtes-vous sûr de vouloir désactiver ce groupe ?'
     submit: 'Oui, désactiver ce groupe'
   group_form:
+    thread_defaults_help: Paramètres par défaut pour les nouvelles discussions
     click_to_change_image: Image de couverture et logo (cliquer pour modifier)
     aria_label: 'Forme du groupe'
     new_organisation: Nouvelle organisation
@@ -1212,7 +1220,6 @@ fr:
       success: La discussion a été déplacée vers {{name}}
   delete_comment_dialog:
     title: 'Effacer le commentaire'
-    question: 'Êtes-vous sûr de vouloir effacer ce commentaire ?'
     confirm: 'Effacer le commentaire'
   contact_message_form:
     title: "Salut ! Comment puis-je vous aider ?"
@@ -1358,6 +1365,8 @@ fr:
     filename: Nom de fichier
     uploaded_by: Ajouté par
     uploaded_at: 'Ajouté à '
+    delete_confirmation: |
+        Êtes-vous sûr de vouloir supprimer cette pièce jointe ? Elle sera supprimée de tous les commentaires et discussions liés. Cette action ne peut être annulée.
   subgroups_panel:
     search_subgroups_of_name: 'Rechercher des sous-groupes de {{name}}'
     group_without_subgroups: '{{name}} sans sous-groupes'
@@ -1475,7 +1484,6 @@ fr:
     authored_by: 'Par {{name}}'
   poll_common_delete_modal:
     question: Êtes-vous sûr·e de vouloir supprimer cela ?
-    title: Supprimer le choix
     success: Supprimer avec succès
   poll_common_form:
     title: Titre
@@ -1707,14 +1715,6 @@ fr:
     what_is_this: "Ceci est un exemple de {{type}}. Vous êtes participant — essayez !"
   share_poll_page:
     title: Partager le sondage - {{title}}
-  polls_page:
-    heading: Décisions
-    heading_with_group: Décisions de {{name}}
-    search_placeholder: Chercher des sondages…
-    polls_count: '{{count}} sondages sur {{total}} affichés'
-    start_new_poll: Nouvelle décision
-    filter_placeholder: (Tous les sondages)
-    groups_placeholder: (Tous les groupes)
   auth_form:
     code: '000000'
     sign_in_to_loomio: Identifiez-vous sur {{site_name}}
@@ -1775,6 +1775,8 @@ fr:
     url_label: L'URL webhook
     name_label: Nom
     event_kinds:
+      new_discussion: 'Une discussion a été commencée '
+      discussion_edited: Une discussion a été modifiée
       poll_closing_soon: Un sondage sera bientôt terminé
   browser_warning:
     message: "IMPORTANT: votre navigateur ({{name}} {{version}})  est obsolète et n'est pas compatible avec {{site}}."
@@ -1792,9 +1794,31 @@ fr:
       faith: Foi ou groupe spirituel
       volunteer: Organisme bénévole
       other: Autre
+    sizes:
+      ten: "< 10"
+      twenty: "11 - 20"
+      fifty: "21 - 50"
+      two_hundred: "51 - 200"
+      five_hundred: "201 - 500"
+      two_thousand: "501 - 2000"
+      else: "> 2000"
     uses:
+      remote: Travail à distance
+      document: Création de documents collaboratifs, par ex. un plan stratégique.
+      project: Équipe de projet
+      forum: Forum
       other: Autre
     referrers:
+      google: Recherche google
+      invitation: Invité dans un groupe Loomio
+      social: Média sociaux (Facebook, Twitter, Linkedin)
       other: Autre
+    location: Où est basé votre groupe ?
+    purpose: "Quel est le but de votre groupe ?"
     category_question: "Choisissez la catégorie qui décrit le mieux votre groupe"
     anything_else: "Y a-t-il autre chose que vous aimeriez nous dire ?"
+    size_question: "De combien de personnes est composé votre groupe ?"
+    role: "Quel est votre rôle au sein du groupe ?"
+    website: "URL du site internet"
+    usage: "Comment planifiez-vous d'utiliser Loomio ? Choisissez la meilleure réponse"
+    referrer: "Comment avez-vous entendu parler de Loomio ?"

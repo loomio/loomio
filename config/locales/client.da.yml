@@ -650,7 +650,6 @@ da:
       success: Debatten er flyttet til {{name}}
   delete_comment_dialog:
     title: 'Slet kommentar'
-    question: 'Er du sikker på at du vil slette denne kommentar?'
     confirm: 'Slet kommentar'
   contact_message_form:
     contact_us: 'Kontakt os'
@@ -874,11 +873,6 @@ da:
     no_thanks: Nej tak
   share_poll_page:
     title: Del måling - {{title}}
-  polls_page:
-    heading: Beslutninger
-    search_placeholder: Søg efter meningsmålinger...
-    polls_count: Viser {{count}} af {{total}} meningsmålinger
-    start_new_poll: Ny måling
   auth_form:
     email_placeholder: you@example.com
     name_placeholder: Dit navn

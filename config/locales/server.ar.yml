@@ -300,30 +300,5 @@ ar:
       time_zone: '(الأوقات المعروضة في %{zone}) '
       undecided_members: 'الأعضاء غير محددين (%{count}) '
       undecided_visitors: 'ضيوف غير محددين ( %{count}) '
-    proposal:
-      subject:
-        poll_closing_soon: 'العرض يغلق خلال 24 ساعة: %{title}'
-        poll_closing_soon_author: 'عرضك يغلق خلال 24 ساعة: %{title}'
-        poll_expired: "العرض أغلق: %{title}"
-    poll:
-      subject:
-        poll_closing_soon: '%{title}:الاستطلاع يغلق خلال 25 ساعة'
-        poll_expired: "نتائج الاستطلاع:%{title}"
-      header:
-        poll_closing_soon: 'يتم إغلاق الاستطلاع خلال 24 ساعة. الآن هو الوقت المناسب للتصويت أو تغيير رأيك أو تشجيع الآخرين على المشاركة.<strong>%{actor}</strong>'
-        poll_closing_soon_author: 'سيتم إغلاق الاستطلاع خلال 24 ساعة - الآن هو وقت رائع لتذكير الناس به أو تمديد الموعد النهائي إذا لزم الأمر'
-    score:
-      subject:
-        poll_announced: '%{actor}دعوتك للتصويت في استطلاع نقاط:%{title}'
-        poll_closing_soon: '%{title}:الاستطلاع يغلق خلال 24 ساعة'
-        poll_expired: "نتائج الاستطلاع:%{title}"
-      header:
-        poll_closing_soon: 'يتم إغلاق الاستطلاع خلال 24 ساعة. الآن هو الوقت المناسب للتصويت أو تغيير رأيك أو تشجيع الآخرين على المشاركة.<strong>%{actor}</strong>'
-        poll_closing_soon_author: 'سيتم إغلاق الاستطلاع خلال 24 ساعة - الآن هو وقت رائع لتذكير الناس به أو تمديد الموعد النهائي إذا لزم الأمر'
-    ranked_choice:
-      subject:
-        poll_expired: " %{title}:نتائج الاختيار المرتبة"
-      header:
-        outcome_created_author: '.لقد شاركت نتيجة اختيار مرتبة'
   poll_unsubscribe:
     visit_poll: مشاهدة الاستطلاع

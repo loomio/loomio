@@ -642,6 +642,7 @@ zh_TW:
     translate_outcome: 翻譯結果
     show_history: 顯示編輯歷史
     edited: 已編輯
+    history: 歷史
     pin_thread: 釘選討論串
     unpin_thread: 取消釘選討論串
     pin_event: 釘選到時間軸
@@ -745,6 +746,14 @@ zh_TW:
     thread_status:
       pinned: "這個討論串已被釘選。它將會保留在群組討論串清單的頂部供所有使用者閱讀。"
       closed: "這個討論串已經關閉。它將不會再出現在儀表板上，並將會在群組頁面中列在「已關閉」下。"
+  delete_group_modal:
+    title: 刪除群組
+    body: |
+        您確定您想要刪除此群組嗎？
+        所有討論串、投票、檔案與其他群組內容都將會永久刪除。
+        建議您在繼續前手動匯出群組資料並手動下載所有重要檔案。
+    confirm: "輸入「%{name}」以確認您想要刪除此群組。"
+    success: 此群組已被封存，並計劃於 2 週內永久刪除。
   group_page:
     stats: 群組統計
     threads: 討論串
@@ -1277,7 +1286,6 @@ zh_TW:
       success: 討論串已被移動到 {{name}}
   delete_comment_dialog:
     title: '刪除意見'
-    question: '您確定要刪除這個意見嗎？'
     confirm: '刪除意見'
   contact_message_form:
     title: "嗨，您好！我們可以怎麼協助您？"
@@ -1376,6 +1384,7 @@ zh_TW:
       options_added: 已加入新選項
   poll_common_card:
     show_results: 顯示結果
+    deleted: 此投票已刪除
   poll_common_index_card:
     title: 之前的決策
     no_polls: 找不到先前的決策
@@ -1425,6 +1434,8 @@ zh_TW:
     filename: 檔案名稱
     uploaded_by: 上傳由
     uploaded_at: 上傳於
+    delete_confirmation: |
+        您確定您想要刪除此附件嗎？其將會從任何相關的留言或討論串中移除。此動作無法復原。
   subgroups_panel:
     search_subgroups_of_name: '搜尋 {{name}} 的子群組'
     group_without_subgroups: '{{name}} 無子群組'
@@ -1550,7 +1561,7 @@ zh_TW:
     authored_by: '由 {{name}}'
   poll_common_delete_modal:
     question: 您確定要刪除這個嗎？
-    title: 刪除決策
+    title: 刪除 {{pollType}}
     success: 成功刪除
   poll_common_form:
     title: 標題
@@ -1787,14 +1798,6 @@ zh_TW:
     what_is_this: "這裡有五個 {{type}} 的範例。您是參與者，來試試看吧！"
   share_poll_page:
     title: 分享投票 - {{title}}
-  polls_page:
-    heading: 決策
-    heading_with_group: '{{name}} 的決策'
-    search_placeholder: 搜尋投票⋯
-    polls_count: 顯示 {{total}} 裡的 {{count}} 個投票
-    start_new_poll: 新決策
-    filter_placeholder: （所有投票）
-    groups_placeholder: （所有群組）
   auth_form:
     code: '000000'
     youre_invited: 您已被邀請加入 {{group_name}}。登入以繼續

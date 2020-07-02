@@ -364,6 +364,7 @@ ru:
     edit_outcome: Редактировать результат
     translate_outcome: Перевести результат
     edited: Изменено
+    history: История
     pin_thread: Закрепить тему
     tag_thread: Управлять метками
     close_thread: Закрыть тему
@@ -517,7 +518,6 @@ ru:
       success: Тема удалена
   delete_comment_dialog:
     title: 'Удалить комментарий'
-    question: 'Вы уверены что хотите удалить комментарий?'
     confirm: 'Удалить комментарий'
   contact_message_form:
     contact_us: 'Наши контакты'

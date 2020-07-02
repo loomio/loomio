@@ -380,7 +380,6 @@ sv:
     delete_thread: 'Radera'
   delete_comment_dialog:
     title: 'Ta bort kommentaren'
-    question: 'Är du säker på att du vill ta bort denna kommentaren?'
     confirm: 'Ta bort kommentaren'
   contact_message_form:
     name_label: 'Ditt namn'

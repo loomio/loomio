@@ -270,7 +270,6 @@ lt:
       success: Gija ištrinta
   delete_comment_dialog:
     title: 'Ištrinti komentarą'
-    question: 'Jūs tikrai norite ištrinti šį komentarą?'
     confirm: 'Ištrinti komentarą'
   contact_message_form:
     email_label: 'Jūsų el. pašto adresas'

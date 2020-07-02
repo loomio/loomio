@@ -231,18 +231,6 @@ he:
         מה תפקידך או מהו אופן השתתפותך בקבוצה זו? מה אנשים צריכים לדעת עלייך כדי להבין מאיפה אתה בא?
   how_it_works_thread:
     title: איך להשתמש בלומיו
-  first_proposal:
-    name: הדגמת הצעה
-    description: |
-        זוהי **הצעה**, שבה תוכלו לקבל החלטה ביחד. אתה יכול להתחיל הצעה לאחר שהדיון יוצא לדרך.
-
-        כולם מתבקשים **לציין עמדה** עד ל**מועד האחרון** (הדדליין). אתה יכול להאריך את המועד האחרון אם אתה צריך, או לסגור הצעה מוקדם.
-
-        אתה יכול **לשנות את עמדתך** כל עוד ההצעה פתוחה. אתה יכול לשקול מחדש את עמדתך בזמן שאתה מקשיב לאחרים.
-
-        לפעמים קבוצות עובדות באמצעות **סדרה של הצעות** כדי לבנות פתרונות ביחד. באפשרותך להעלות כמה הצעות עוקבות בשירשור זה.
-
-        **נסה להשתתף! לחץ על אחד מארבעת הלחצנים**.
   markdown:
     intro:
       title: |
@@ -313,234 +301,21 @@ he:
       verify_stance_for_unverified_user: "תודה על שבחרת ב-%{title}. אנא אשר את הכתובת הדואר שלך, כך שנוכל לשלוח לך את התוצאות כשהן תהיינה מוכנות."
       verify_stance_for_verified_user: "נראה שהצבעת ב-%{title}. אם זה אכן היית אתה, אנא הקלק על הלינק מטה לאישור הצבעתך."
       you_have_until: יש לך עד %{when} להשתתף.
-    proposal:
-      subject:
-        poll_created: '%{actor} התחיל הצעה: %{title}'
-        poll_edited: '%{actor} ערך את ההצעהl: %{title}'
-        poll_announced: '%{actor} הזמין אותך להצביע על הצעה: %{title}'
-        poll_closing_soon: 'הצעה נסגרת בעוד 24 שעות: %{title}'
-        poll_closing_soon_author: 'הצעתך נסגרת בעוד 24 שעות: %{title}'
-        poll_expired: "הצעה נסגרה: %{title}"
-        poll_expired_author: 'הצעתך נסגרה. שתף את התוצאה ל:%{title}'
-        outcome_created: '%{actor} שיתף בתוצאות הצעה: %{title}'
-        outcome_announced: '%{actor} שיתף בתוצאות הצעה: %{title}'
-        stance_created: "%{actor} הצביע על: %{title}"
-        user_mentioned: '%{actor} הזכיר אותך ב: %{title}'
-        user_reminded: '%{actor} מזכיר לך להצביע ב:%{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> התחיל הצעה'
-        poll_edited: '<strong>%{actor}</strong> ערך את ההצעה'
-        poll_announced: '<strong>%{actor}</strong> הזמין אותך להצביע על הצעה'
-        poll_closing_soon: 'הצעתו של <strong>%{actor}</strong> נסגרת בעוד 24 שעות. עכשיו הזמן להצביע, לשנות את דעתך או לעודד אחרים להשתתף.'
-        poll_closing_soon_author: 'הצעתך נסגרת בעוד 24 שעות. עכשיו הזמן להזכיר לאנשים על כך או להאריך את הדדליין אם צריך.'
-        poll_expired: "הצעתו של <strong>%{actor}</strong> נסגרה:%{title}"
-        poll_expired_author: 'הצעתך <strong>נסגרה</strong>. קח רגע לשקול מה נאמר בה ו<strong>שתף את התוצאה</strong> עם הקבוצה , כך שאנשים ידעו מה השלב הבא.'
-        outcome_created: '<strong>%{actor}</strong> שיתף תוצאות הצעה.'
-        outcome_announced: '<strong>%{actor}</strong> שיתף תוצאות הצעה.'
-        stance_created: "<strong>%{actor}</strong> הצביע על: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> ציין אותך ב:%{title}'
-        user_reminded: '<strong>%{actor}</strong> מזכיר לך להצביע ב:%{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    poll:
-      subject:
-        poll_created: '%{actor} התחיל סקר: %{title}'
-        poll_edited: '%{actor} ערך את הסקר: %{title}'
-        poll_announced: '%{actor} הזמין אותך להצביע על סקר: %{title}'
-        poll_closing_soon: 'סקר נסגר בעוד 24 שעות: %{title}'
-        poll_closing_soon_author: 'הסקר שלך נסגר בעוד 24 שעות: %{title}'
-        poll_expired: "תוצאות הסקר: %{title}"
-        poll_expired_author: 'הסקר שלך נסגר. שתף את התוצאה ל:%{title}'
-        poll_option_added: '%{actor} הוסיף אפשרויות ל:%{title}'
-        poll_option_added_author: '%{actor} הוסיף אפשרויות ל:%{title}'
-        outcome_created: '%{actor} שיתף את תוצאת הסקר: %{title}'
-        outcome_announced: '%{actor} שיתף את תוצאת הסקר: %{title}'
-        stance_created: "%{actor} הצביע על: %{title}"
-        stance_created_author: "אנא אשר את הצבעתך ב:%{title}"
-        user_mentioned: '%{actor} הזכיר אותך ב: %{title}'
-        user_reminded: '%{actor} מזכיר לך להצביע ב: %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> התחיל סקר'
-        poll_edited: '<strong>%{actor}</strong> ערך את הסקר'
-        poll_announced: '<strong>%{actor}</strong> הזמין אותך להצביע בסקר'
-        poll_closing_soon: 'הסקר של <strong>%{actor}</strong> נסגרת בעוד 24 שעות. עכשיו הזמן להצביע, לשנות את דעתך או לעודד אחרים להשתתף.'
-        poll_closing_soon_author: 'הסקר שלך נסגר בעוד 24 שעות - עכשיו הזמן להזכיר לאנשים על כך או להאריך את הדדליין אם נדרש.'
-        poll_expired: "הסקר של <strong>%{actor}</strong> נסגר: %{title}"
-        poll_expired_author: 'הסקר שלך  <strong>נסגר</strong>. קח את הזמן לנתח מה היה בו ו <strong>שתף את התוצאה</strong> עם הקבוצה, כך שאנשים ידעו מה השלב הבא.'
-        poll_option_added: '<strong>%{actor}</strong> הוסיף אפשרויות ל:%{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> הוסיף אפשרויות ל:%{title}'
-        outcome_created: '<strong>%{actor}</strong> שיתף את תוצאות הסקר.'
-        outcome_announced: '<strong>%{actor}</strong> שיתף את תוצאות הסקר.'
-        stance_created: "<strong>%{actor}</strong> הצביע על: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> ציין אותך ב:%{title}'
-        user_reminded: '<strong>%{actor}</strong> מזכיר לך להצביע ב:%{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    score:
-      subject:
-        poll_created: '%{actor} התחיל סקר: %{title}'
-        poll_edited: '%{actor} ערך את הסקר: %{title}'
-        poll_closing_soon: 'סקר נסגר בעוד 24 שעות: %{title}'
-        poll_closing_soon_author: 'הסקר שלך נסגר בעוד 24 שעות: %{title}'
-        poll_expired: "תוצאות הסקר: %{title}"
-        poll_expired_author: 'הסקר שלך נסגר. שתף את התוצאה ל:%{title}'
-        poll_option_added: '%{actor} הוסיף אפשרויות ל:%{title}'
-        poll_option_added_author: '%{actor} הוסיף אפשרויות ל:%{title}'
-        outcome_created: '%{actor} שיתף את תוצאת הסקר: %{title}'
-        outcome_announced: '%{actor} שיתף את תוצאת הסקר: %{title}'
-        stance_created: "%{actor} הצביע על: %{title}"
-        stance_created_author: "אנא אשר את הצבעתך ב:%{title}"
-        user_mentioned: '%{actor} הזכיר אותך ב: %{title}'
-        user_reminded: '%{actor} מזכיר לך להצביע ב: %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> התחיל סקר'
-        poll_edited: '<strong>%{actor}</strong> ערך את הסקר'
-        poll_closing_soon: 'הסקר של <strong>%{actor}</strong> נסגרת בעוד 24 שעות. עכשיו הזמן להצביע, לשנות את דעתך או לעודד אחרים להשתתף.'
-        poll_closing_soon_author: 'הסקר שלך נסגר בעוד 24 שעות - עכשיו הזמן להזכיר לאנשים על כך או להאריך את הדדליין אם נדרש.'
-        poll_expired: "הסקר של <strong>%{actor}</strong> נסגר: %{title}"
-        poll_expired_author: 'הסקר שלך  <strong>נסגר</strong>. קח את הזמן לנתח מה היה בו ו <strong>שתף את התוצאה</strong> עם הקבוצה, כך שאנשים ידעו מה השלב הבא.'
-        poll_option_added: '<strong>%{actor}</strong> הוסיף אפשרויות ל:%{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> הוסיף אפשרויות ל:%{title}'
-        outcome_created: '<strong>%{actor}</strong> שיתף את תוצאות הסקר.'
-        outcome_announced: '<strong>%{actor}</strong> שיתף את תוצאות הסקר.'
-        stance_created: "<strong>%{actor}</strong> הצביע על: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> ציין אותך ב:%{title}'
-        user_reminded: '<strong>%{actor}</strong> מזכיר לך להצביע ב:%{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    count:
-      subject:
-        poll_created: '%{actor} בודק את: %{title}'
-        poll_edited: '%{actor} ערך את הבדיקה: %{title}'
-        poll_closing_soon: '24 שעות נותרו לבדוק את: %{title}'
-        poll_closing_soon_author: 'בדיקתך נסגרת בעוד 24 שעות: %{title}'
-        poll_expired: "בדיקה נסגרה: %{title}"
-        poll_expired_author: 'בדיקתך נסגרה. שתף את התוצאה של: %{title}'
-        outcome_created: '%{actor} שיתף את התוצאה: %{title}'
-        outcome_announced: '%{actor} שיתף את התוצאה: %{title}'
-        stance_created: "%{actor} השתתף ב: %{title}"
-        stance_created_author: "אנא אשר את הצבעתך ב:%{title}"
-        user_mentioned: '%{actor} הזכיר אותך ב: %{title}'
-        user_reminded: '%{actor} מזכיר לך להשתתף ב: %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> עורך בדיקה'
-        poll_edited: '<strong>%{actor}</strong> ערך את הבדיקה'
-        poll_closing_soon: 'בדיקתו של <strong>%{actor}</strong> מסתיימת בתוך 24 שעות.'
-        poll_closing_soon_author: 'בדיקתך נסגרת בעוד 24 שעות - עכשיו זה זמן טוב להזכיר לאנשים על כך או להאריך את זמן הסגירה אם נדרש.'
-        poll_expired: "בדיקתו של <strong>%{actor}</strong> נסגרה: %{title}"
-        outcome_created: '<strong>%{actor}</strong> שיתף תוצאה.'
-        outcome_announced: '<strong>%{actor}</strong> שיתף תוצאה.'
-        stance_created: "<strong>%{actor}</strong> השתתף ב: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> ציין אותך ב:%{title}'
-        user_reminded: '<strong>%{actor}</strong> מזכיר לך להשתתף ב: %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    dot_vote:
-      subject:
-        poll_created: '%{actor} פתח הצבעה על נקודות: %{title}'
-        poll_edited: '%{actor} ערך הצבעה על נקודות: %{title}'
-        poll_announced: '%{actor} הזמין אותך להשתתף בהצבעת נקודות: %{title}'
-        poll_closing_soon: 'הצבעת נקודות נסגרת בעוד 24 שעות: %{title}'
-        poll_closing_soon_author: 'הצבעת הנקודות שלך נסגרת בעוד 24 שעות: %{title}'
-        poll_expired: "תוצאות הצבעת הנקודות: %{title}"
-        poll_expired_author: 'הצבעת הנקודות שלך נסגרה. שתף תוצאה עבור: %{title}'
-        poll_option_added: '%{actor} הוסיף אפשרויות ל:%{title}'
-        poll_option_added_author: '%{actor} הוסיף אפשרויות ל:%{title}'
-        outcome_created: '%{actor} שתף תוצאה: %{title}'
-        outcome_announced: '%{actor} שיתף את התוצאה: %{title}'
-        stance_created: "%{actor} הצביע על: %{title}"
-        stance_created_author: "אנא אשר את הצבעתך ב:%{title}"
-        user_mentioned: '%{actor} הזכיר אותך ב: %{title}'
-        user_reminded: '%{actor} מזכיר לך להצביע ב: %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> פתח הצבעת נקודות'
-        poll_edited: '<strong>%{actor}</strong> ערך את הצבעת הנקודות'
-        poll_announced: '<strong>%{actor}</strong> הזמין אותך להשתתף בהצבעה על נקודות'
-        poll_closing_soon: 'הצבעת הנקודות של <strong>%{actor}</strong> נסגרת בעוד 24 שעות. עכשיו זה זמן טוב להצביע, לשנות את דעתך, ולעודד אחרים להשתתף.'
-        poll_closing_soon_author: 'הצבעת הנקודות שלך נסגרת בעוד 24 שעות - אולי תרצה להזכיר לאנשים על כך או להאריך את הדדליין אם צריך.'
-        poll_expired: "תוצאות עבור הצבעת הנקודות של <strong>%{actor}</strong> עבור %{title}"
-        poll_expired_author: 'הצבעת הנקודות שלך  <strong>נסגרה</strong>. תשקול מה נאמר בה ו<strong>שתף תוצאה</strong> עם הקבוצה, כדי שאנשים ידעו מה השלב הבא.'
-        poll_option_added: '<strong>%{actor}</strong> הוסיף אפשרויות ל:%{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> הוסיף אפשרויות ל:%{title}'
-        outcome_created: '<strong>%{actor}</strong> שיתף את תוצאת הצבעת הנקודות.'
-        outcome_announced: '<strong>%{actor}</strong> שיתף את תוצאת הצבעת הנקודות.'
-        stance_created: "<strong>%{actor}</strong> הצביע על: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> ציין אותך ב:%{title}'
-        user_reminded: '<strong>%{actor}</strong> מזכיר לך להצביע ב:%{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    meeting:
-      subject:
-        poll_created: '%{actor} התחיל סקר זמן: %{title}'
-        poll_edited: '%{actor} ערך סקר זמן: %{title}'
-        poll_announced: '%{actor} הזמין אותך להשתתף בסקר זמן: %{title}'
-        poll_closing_soon: 'סקר זמן נסגרת בעוד 24 שעות: %{title}'
-        poll_closing_soon_author: 'סקר הזמן שלך נסגר בעוד 24 שעות:%{title}'
-        poll_expired: "תוצאות סקר הזמן: %{title}"
-        poll_expired_author: 'סקר הזמן שלך נסגר. שתף תוצאה עבור: %{title}'
-        poll_option_added: '%{actor} הוסיף אפשרויות ל:%{title}'
-        poll_option_added_author: '%{actor} הוסיף אפשרויות ל:%{title}'
-        outcome_created: '%{actor} שיתף את התוצאה: %{title}'
-        outcome_created_author: 'שיתפת תוצאה: %{title}'
-        outcome_announced: '%{actor} שיתף את התוצאה: %{title}'
-        stance_created: '%{actor} השתתף ב: %{title}'
-        stance_created_author: "אנא אשר את הצבעתך ב:%{title}"
-        user_mentioned: '%{actor} הזכיר אותך ב: %{title}'
-        user_reminded: '%{actor} מזכיר לך להצביע ב: %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong>התחיל סקר זמן'
-        poll_edited: '<strong>%{actor}</strong> ערך סקר זמן'
-        poll_announced: '<strong>%{actor}</strong> הזמין אותך להשתתף בסקר זמן'
-        poll_closing_soon: 'סקר הזמן של <strong>%{actor}</strong> נסגר בעוד 24 שעות. עכשיו זה זמן טוב להצביע, לשנות את דעתך או לעודד אחרים להשתתף.'
-        poll_closing_soon_author: 'סקר הזמן שלך נסגר בעוד 24 שעות - יתכן ותרצה להזכיר לאנשים על כך או להאריך את הדדליין אם צריך.'
-        poll_expired: "סקר הזמן של <strong>%{actor}</strong> נסגר"
-        poll_expired_author: 'סקר הזמן שלך  <strong>נסגר</strong>. תשקול מה נאמר בו ו<strong>שתף תוצאה</strong> עם הקבוצה, כדי שאנשים יוכלו לדעת מה הצעד הבא.'
-        poll_option_added: '<strong>%{actor}</strong> הוסיף אפשרויות ל:%{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> הוסיף אפשרויות ל:%{title}'
-        outcome_created: '<strong>%{actor}</strong> שיתף תוצאת סקר זמן.'
-        outcome_created_author: 'שיתפת תוצאת סקר זמן.'
-        outcome_announced: '<strong>%{actor}</strong> שיתף תוצאת סקר זמן.'
-        stance_created: "<strong>%{actor}</strong> השתתף ב: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> ציין אותך ב:%{title}'
-        user_reminded: '<strong>%{actor}</strong> מזכיר לך להצביע ב:%{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    ranked_choice:
-      subject:
-        poll_created: '%{actor} פתח בחירה מדורגת: %{title}'
-        poll_edited: '%{actor} ערך את הבחירה המדורגת: %{title}'
-        poll_announced: '%{actor} הזמין אותך לדרג אפשרויות עבור סקר: %{title}'
-        poll_closing_soon: 'דירוג אפשרויות נסגרת בעוד 24 שעות: %{title}'
-        poll_closing_soon_author: 'סקר דירוג האפשרויות שלך נסגרת בעוד 24 שעות: %{title}'
-        poll_expired: "תוצאות סקר דירוג האפשרויות: %{title}"
-        poll_expired_author: 'סקר דירוג האפשרויות שלך נסגר. שתף תוצאה עבור: %{title}'
-        poll_option_added: '%{actor} הוסיף אפשרויות ל:%{title}'
-        poll_option_added_author: '%{actor} הוסיף אפשרויות ל:%{title}'
-        outcome_created: '%{actor} שיתף את התוצאה: %{title}'
-        outcome_created_author: 'שיתפת תוצאה: %{title}'
-        outcome_announced: '%{actor} שיתף את תוצאת סקר בחירה מדורגת.'
-        stance_created: '%{actor} השתתף ב: %{title}'
-        stance_created_author: "אנא אשר את הצבעתך ב:%{title}"
-        user_mentioned: '%{actor} הזכיר אותך ב: %{title}'
-        user_reminded: '%{actor} מזכיר לך להצביע ב: %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> פתח סקר בחירה מדורגת'
-        poll_edited: '<strong>%{actor}</strong> ערך סקר בחירה מדורגת'
-        poll_announced: '<strong>%{actor}</strong> הזמין אותך לדרג אפשרויות בסקר'
-        poll_closing_soon: 'סקר בחירה מדורגת של <strong>%{actor}</strong> נסגרת בעוד 24 שעות. עכשיו זה זמן טוב להצביע, לשנות את דעתך או לעודד אחרים להשתתף.'
-        poll_closing_soon_author: 'סקר בחירה מדורגת נסגר בעוד 24 שעות - יתכן ותרצה להזכיר לאנשים על כך או להאריך את הדדליין אם נדרש.'
-        poll_expired: "סקר הבחירה המדורגת של <strong>%{actor}</strong> נסגר"
-        poll_expired_author: 'סקר הבחירה המדורגת שלך <strong>נסגר</strong>. תשקול מה נאמר בו ו<strong>שתף תוצאה</strong> עם הקבוצה, כדי שאנשים ידעו מה השלב הבא.'
-        poll_option_added: '<strong>%{actor}</strong> הוסיף אפשרויות ל:%{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> הוסיף אפשרויות ל:%{title}'
-        outcome_created: '<strong>%{actor}</strong> שיתף את תוצאת סקר הבחירה המדורגת.'
-        outcome_created_author: 'שיתפת את תוצאת סקר הבחירה המדורגת.'
-        outcome_announced: '<strong>%{actor}</strong> שיתף את תוצאת סקר הבחירה המדורגת.'
-        stance_created: "<strong>%{actor}</strong> השתתף ב: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> ציין אותך ב:%{title}'
-        user_reminded: '<strong>%{actor}</strong> מזכיר לך להצביע ב:%{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
+    subject:
+      poll_option_added: '%{actor} הוסיף אפשרויות ל:%{title}'
+      poll_option_added_author: '%{actor} הוסיף אפשרויות ל:%{title}'
+      stance_created: "%{actor} הצביע על: %{title}"
+      stance_created_author: "אנא אשר את הצבעתך ב:%{title}"
+      user_mentioned: '%{actor} הזכיר אותך ב: %{title}'
+      user_reminded: '%{actor} מזכיר לך להצביע ב:%{title}'
+    header:
+      poll_option_added: '<strong>%{actor}</strong> הוסיף אפשרויות ל:%{title}'
+      poll_option_added_author: '<strong>%{actor}</strong> הוסיף אפשרויות ל:%{title}'
+      stance_created: "<strong>%{actor}</strong> הצביע על: %{title}"
+      user_mentioned: '<strong>%{actor}</strong> ציין אותך ב:%{title}'
+      user_reminded: '<strong>%{actor}</strong> מזכיר לך להצביע ב:%{title}'
+    body:
+      voted: '<strong>%{participant}</strong>:'
   comment_by: תגובה של %{comment_author}
   notified:
     no_matches_found: "לא נמצאו תוצאות התואמות ל'%{query}'"

@@ -396,7 +396,6 @@ el:
     delete_thread: 'Διαγραφή'
   delete_comment_dialog:
     title: 'Διαγραφή σχόλιου'
-    question: 'Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το σχόλιο?'
     confirm: 'Διαγραφή σχόλιου'
   contact_message_form:
     name_label: 'Το όνομα σας'

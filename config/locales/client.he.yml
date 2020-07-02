@@ -988,7 +988,6 @@ he:
       success: השיחה הועברה ל{{name}}
   delete_comment_dialog:
     title: 'מחקו תגובה'
-    question: 'למחוק את התגובה? בטוחים?'
     confirm: 'מחקו תגובה'
   contact_message_form:
     title: "היי! איך נוכל לעזור?"
@@ -1201,7 +1200,6 @@ he:
     authored_by: 'לפי {{name}}'
   poll_common_delete_modal:
     question: אתה בטוח שברצונך למחוק את זה?
-    title: מחק החלטה
     success: נמחק בהצלחה
   poll_common_form:
     title: כותרת
@@ -1381,14 +1379,6 @@ he:
     what_is_this: "זוהי דוגמא חיה של {{type}}. אתה משתתף - נסה אותה!"
   share_poll_page:
     title: שתף סקר - {{title}}
-  polls_page:
-    heading: דיונים
-    heading_with_group: החלטות ב{{name}}
-    search_placeholder: חפס סקרים...
-    polls_count: הצג {{count}} של {{total}} הסקרים
-    start_new_poll: החלטה חדשה
-    filter_placeholder: (כל הסקרים)
-    groups_placeholder: (כל הקבוצות)
   auth_form:
     sign_in_to_loomio: התחבר ל{{site_name}}
     sign_in: התחבר

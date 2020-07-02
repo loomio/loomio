@@ -139,7 +139,6 @@ be_BY:
     close_thread: 'Зачыніць'
   delete_comment_dialog:
     title: 'Выдаліць каментар'
-    question: 'Вы ўпэўнены, што хаціце выдаліць гэты каментар?'
     confirm: 'Выдаліць каментар'
   contact_message_form:
     name_label: 'Ваша імя'

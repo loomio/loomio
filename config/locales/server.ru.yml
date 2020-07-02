@@ -233,18 +233,6 @@ ru:
         Какова ваша роль или подход к участию в этой группе? Что людям стоит о вас знать, чтобы понимать, из чего вы исходите?
   how_it_works_thread:
     title: Как пользоваться Loomio
-  first_proposal:
-    name: Предложение-образец
-    description: |
-        Это **предложение**, где вы можете совместно принять решение. Вы можете выдвинуть предложение, когда идет дискуссия.
-
-        Каждого попросят **заявить позицию** до **дедлайна**. Если надо, можно сдвинуть дедлайн или закрыть предложение до срока.
-
-        Вы можете **изменить свою позицию**, пока предложение открыто.  Мы можете пересмотреть свой взгляд, послушав остальных.
-
-        Иногда группы работают через **ряд предложений**, чтобы вместе выстроить решение. Вы можете поднимать следующие предложения в этой ветке.
-
-        **Попробуйте поучаствовать! Нажмите одну из четырех кнопок**.
   markdown:
     intro:
       title: |
@@ -315,234 +303,21 @@ ru:
       verify_stance_for_unverified_user: "Спасибо, что проголосовали в %{title}. Подтвердите, пожалуйста, свой адрес электронной почты, и мы сможем послать вам результаты, когда они будут готовы."
       verify_stance_for_verified_user: "Кажется, вы проголосовали в %{title}. Если это и правда были вы, щелкните, пожалуйста, по ссылке внизу, чтобы подтвердить свой голос."
       you_have_until: Поучаствовать можно до %{when}.
-    proposal:
-      subject:
-        poll_created: '%{actor} открыли предложение: %{title}'
-        poll_edited: '%{actor} отредактировали предложение: %{title}'
-        poll_announced: '%{actor} приглашает вас проголосовать по предложению: %{title}'
-        poll_closing_soon: 'Предложение закроется через 24 часа: %{title}'
-        poll_closing_soon_author: 'Ваше предложение закроется через 24 часа: %{title}'
-        poll_expired: "Предложение закрыто: %{title}"
-        poll_expired_author: 'Ваше предложение закрылось. Поделитесь результатом: %{title}'
-        outcome_created: '%{actor} поделились результатом предложения: %{title}'
-        outcome_announced: '%{actor} поделились результатом предложения: %{title}'
-        stance_created: "%{actor} проголосовали в: %{title}"
-        user_mentioned: '%{actor} упомянули вас в: %{title}'
-        user_reminded: '%{actor} напоминает, чтобы вы проголосовали за: %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> открыли предложения'
-        poll_edited: '<strong>%{actor}</strong> отредактировали предложение'
-        poll_announced: '<strong>%{actor}</strong> приглашает вас проголосовать по предложению'
-        poll_closing_soon: 'Предложение <strong>%{actor}</strong> закрывается через 24 часа. Хорошее время, чтобы проголосовать, изменить свое мнение или пригласить других поучаствовать.'
-        poll_closing_soon_author: 'Ваше предложение закрывается через 24 часа — хорошее время, чтобы напомнить о нем людям или продлить сроки голосования, если нужно.'
-        poll_expired: "Предложение <strong>%{actor}</strong> закрылось: %{title}"
-        poll_expired_author: 'Ваше предложения <strong>закрылось</strong>. Найдите, пожалуйста, время обдумать то, чтобы было сказано и <strong>поделиться результатом</strong> с группой, чтобы люди знали, что будет дальше.'
-        outcome_created: '<strong>%{actor}</strong> поделились результатом предложения.'
-        outcome_announced: '<strong>%{actor}</strong> поделились результатом предложения.'
-        stance_created: "<strong>%{actor}</strong> проголосовали в: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> упомянули вас в: %{title}'
-        user_reminded: '<strong>%{actor}</strong> напоминает, чтобы вы проголосовали в: %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    poll:
-      subject:
-        poll_created: '%{actor} открыли опрос: %{title}'
-        poll_edited: '%{actor} отредактировали опрос: %{title}'
-        poll_announced: '%{actor} приглашает вас проголосовать в опросе: %{title}'
-        poll_closing_soon: 'Опрос закрывается через 24 часа: %{title}'
-        poll_closing_soon_author: 'Ваш опрос закрывается через 24 часа: %{title}'
-        poll_expired: "Результаты опроса: %{title}"
-        poll_expired_author: 'Ваш опрос закрылся. Поделитесь результатом: %{title}'
-        poll_option_added: '%{actor} добавили вариантов к: %{title}'
-        poll_option_added_author: '%{actor} добавили вариантов к: %{title}'
-        outcome_created: '%{actor} поделились результатом опроса: %{title}'
-        outcome_announced: '%{actor} поделились результатом опроса: %{title}'
-        stance_created: "%{actor} проголосовали в: %{title}"
-        stance_created_author: "Подтвердите, пожалуйста, ваш голос в: %{title}"
-        user_mentioned: '%{actor} упомянули вас в: %{title}'
-        user_reminded: '%{actor} напоминает, чтобы вы проголосовали за: %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> открыли опрос'
-        poll_edited: '<strong>%{actor}</strong> отредактировали опрос'
-        poll_announced: '<strong>%{actor}</strong> приглашает вас проголосовать в опросе'
-        poll_closing_soon: 'Опрос <strong>%{actor}</strong> закрывается через 24 часа. Хорошее время, чтобы проголосовать, изменить свое мнение или пригласить других поучаствовать.'
-        poll_closing_soon_author: 'Ваш опрос закрывается через 24 часа — хорошее время, чтобы напомнить о нем людям или продлить сроки голосования, если нужно.'
-        poll_expired: "Опрос <strong>%{actor}</strong> закрылся: %{title}"
-        poll_expired_author: 'Ваш опрос <strong>закрылся</strong>. Найдите, пожалуйста, время обдумать то, чтобы было сказано и <strong>поделиться результатом</strong> с группой, чтобы люди знали, что будет дальше.'
-        poll_option_added: '<strong>%{actor}</strong> добавили вариантов к: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> добавили вариантов к: %{title}'
-        outcome_created: '<strong>%{actor}</strong> поделились результатом опроса.'
-        outcome_announced: '<strong>%{actor}</strong> поделились результатом опроса.'
-        stance_created: "<strong>%{actor}</strong> проголосовали в: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> упомянули вас в: %{title}'
-        user_reminded: '<strong>%{actor}</strong> напоминает, чтобы вы проголосовали в: %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    score:
-      subject:
-        poll_created: '%{actor} открыли опрос: %{title}'
-        poll_edited: '%{actor} отредактировали опрос: %{title}'
-        poll_closing_soon: 'Опрос закрывается через 24 часа: %{title}'
-        poll_closing_soon_author: 'Ваш опрос закрывается через 24 часа: %{title}'
-        poll_expired: "Результаты опроса: %{title}"
-        poll_expired_author: 'Ваш опрос закрылся. Поделитесь результатом: %{title}'
-        poll_option_added: '%{actor} добавили вариантов к: %{title}'
-        poll_option_added_author: '%{actor} добавили вариантов к: %{title}'
-        outcome_created: '%{actor} поделились результатом опроса: %{title}'
-        outcome_announced: '%{actor} поделились результатом опроса: %{title}'
-        stance_created: "%{actor} проголосовали в: %{title}"
-        stance_created_author: "Подтвердите, пожалуйста, ваш голос в: %{title}"
-        user_mentioned: '%{actor} упомянули вас в: %{title}'
-        user_reminded: '%{actor} напоминает, чтобы вы проголосовали за: %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> открыли опрос'
-        poll_edited: '<strong>%{actor}</strong> отредактировали опрос'
-        poll_closing_soon: 'Опрос <strong>%{actor}</strong> закрывается через 24 часа. Хорошее время, чтобы проголосовать, изменить свое мнение или пригласить других поучаствовать.'
-        poll_closing_soon_author: 'Ваш опрос закрывается через 24 часа — хорошее время, чтобы напомнить о нем людям или продлить сроки голосования, если нужно.'
-        poll_expired: "Опрос <strong>%{actor}</strong> закрылся: %{title}"
-        poll_expired_author: 'Ваш опрос <strong>закрылся</strong>. Найдите, пожалуйста, время обдумать то, чтобы было сказано и <strong>поделиться результатом</strong> с группой, чтобы люди знали, что будет дальше.'
-        poll_option_added: '<strong>%{actor}</strong> добавили вариантов к: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> добавили вариантов к: %{title}'
-        outcome_created: '<strong>%{actor}</strong> поделились результатом опроса.'
-        outcome_announced: '<strong>%{actor}</strong> поделились результатом опроса.'
-        stance_created: "<strong>%{actor}</strong> проголосовали в: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> упомянули вас в: %{title}'
-        user_reminded: '<strong>%{actor}</strong> напоминает, чтобы вы проголосовали в: %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    count:
-      subject:
-        poll_created: '%{actor} проводит перекличку: %{title}'
-        poll_edited: '%{actor} отредактировали перекличку: %{title}'
-        poll_closing_soon: 'Осталось 24 часа, чтобы откликнуться: %{title}'
-        poll_closing_soon_author: 'Ваша перекличку закроется через 24 часа: %{title}'
-        poll_expired: "Перекличка закрыта: %{title}"
-        poll_expired_author: 'Ваша перекличка закрыта. Поделитесь результатом: %{title}'
-        outcome_created: '%{actor} поделились результатом: %{title}'
-        outcome_announced: '%{actor} поделились результатом: %{title}'
-        stance_created: "%{actor} поучаствовали в: %{title}"
-        stance_created_author: "Подтвердите, пожалуйста, ваш голос в: %{title}"
-        user_mentioned: '%{actor} упомянули вас в: %{title}'
-        user_reminded: '%{actor} напоминает, чтобы вы поучаствовали в: %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> проводит перекличку'
-        poll_edited: '<strong>%{actor}</strong> отредактировали перекличку'
-        poll_closing_soon: 'Перекличка <strong>%{actor}</strong> закроется через 24 часа'
-        poll_closing_soon_author: 'Ваша перекличка закроется через 24 часа — самое время напомнить о ней людям или продлить сроки, если надо.'
-        poll_expired: "Перекличка <strong>%{actor}</strong> закрыта: %{title}"
-        outcome_created: '<strong>%{actor}</strong> поделились результатом.'
-        outcome_announced: '<strong>%{actor}</strong> поделились результатом.'
-        stance_created: "<strong>%{actor}</strong> поучаствовали в: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> упомянули вас в: %{title}'
-        user_reminded: '<strong>%{actor}</strong> напоминает, чтобы вы поучаствовали в: %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    dot_vote:
-      subject:
-        poll_created: '%{actor} открыли точечное голосование: %{title}'
-        poll_edited: '%{actor} отредактировали точечное голосование: %{title}'
-        poll_announced: '%{actor} приглашает вас поучаствовать в точечном голосовании: %{title}'
-        poll_closing_soon: 'Точечное голосование закрывается через 24 часа: %{title}'
-        poll_closing_soon_author: 'Ваше точечное голосование закрывается через 24 часа: %{title}'
-        poll_expired: "Результаты точечного голосования: %{title}"
-        poll_expired_author: 'Ваше точечное голосование закрылось. Поделитесь результатами: %{title}'
-        poll_option_added: '%{actor} добавили вариантов к: %{title}'
-        poll_option_added_author: '%{actor} добавили вариантов к: %{title}'
-        outcome_created: '%{actor} поделились результатом: %{title}'
-        outcome_announced: '%{actor} поделились результатом: %{title}'
-        stance_created: "%{actor} проголосовали в: %{title}"
-        stance_created_author: "Подтвердите, пожалуйста, ваш голос в: %{title}"
-        user_mentioned: '%{actor} упомянули вас в: %{title}'
-        user_reminded: '%{actor} напоминает, чтобы вы проголосовали за: %{title}'
-      header:
-        poll_created: '%{actor} открыли точечное голосование'
-        poll_edited: '<strong>%{actor}</strong> отредактировали точечное голосование'
-        poll_announced: '<strong>%{actor}</strong> приглашает вас поучаствовать в точечном голосовании'
-        poll_closing_soon: 'Точечное голосование <strong>%{actor}</strong> закрывается через 24 часа. Самое время проголосовать, изменить свой голос или призвать других поучаствовать.'
-        poll_closing_soon_author: 'Ваше точечное голосование закрывается через 24 часа — возможно, вы захотите напомнить о нем людям или продлить срок голосования, если нужно.'
-        poll_expired: "Результаты точечного голосования %{actor}: %{title}"
-        poll_expired_author: 'Ваше точечное голосование <strong>закрыто</strong>. Обдумайте то, что было сказано и <strong>поделитесь результатом</strong> с группой, чтобы люди знали, что дальше.'
-        poll_option_added: '<strong>%{actor}</strong> добавили вариантов к: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> добавили вариантов к: %{title}'
-        outcome_created: '<strong>%{actor}</strong> поделились результатом точечного голосования.'
-        outcome_announced: '<strong>%{actor}</strong> поделились результатом точечного голосования.'
-        stance_created: "<strong>%{actor}</strong> проголосовали в: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> упомянули вас в: %{title}'
-        user_reminded: '<strong>%{actor}</strong> напоминает, чтобы вы проголосовали в: %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    meeting:
-      subject:
-        poll_created: '%{actor} открыли опрос о времени: %{title}'
-        poll_edited: '%{actor} отредактировали опрос о времени: %{title}'
-        poll_announced: '%{actor} приглашает вас принять участие в опросе по времени: %{title}'
-        poll_closing_soon: 'Опрос о времени закрывается через 24 часа: %{title}'
-        poll_closing_soon_author: 'Ваш опрос о времени закрывается через 24 часа: %{title}'
-        poll_expired: "Результаты опроса о времени: %{title}"
-        poll_expired_author: 'Ваш опрос о времени закрылся. Поделитесь результатом: %{title}'
-        poll_option_added: '%{actor} добавили вариантов к: %{title}'
-        poll_option_added_author: '%{actor} добавили вариантов к: %{title}'
-        outcome_created: '%{actor} поделились результатом: %{title}'
-        outcome_created_author: 'Вы поделились результатом: %{title}'
-        outcome_announced: '%{actor} поделились результатом: %{title}'
-        stance_created: '%{actor} поучаствовали в: %{title}'
-        stance_created_author: "Подтвердите, пожалуйста, ваш голос в: %{title}"
-        user_mentioned: '%{actor} упомянули вас в: %{title}'
-        user_reminded: '%{actor} напоминает, чтобы вы проголосовали за: %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> открыли опрос о времени'
-        poll_edited: '<strong>%{actor}</strong> отредактировали опрос о времени'
-        poll_announced: '<strong>%{actor}</strong> приглашает вас поучаствовать в опросе о времени'
-        poll_closing_soon: 'Опрос о времени <strong>%{actor}</strong> закроется через 24 часа. Хорошее время, чтобы проголосовать, изменить свою позицию или призвать других поучаствовать.'
-        poll_closing_soon_author: 'Ваш опрос о времени закрывается через 24 часа — возможно, вы захотите напомнить о нем людям или продлить срок голосования, если нужно.'
-        poll_expired: "Опрос о времени <strong>%{actor}</strong> закрыт"
-        poll_expired_author: 'Ваш опрос о времени <strong>закрыт</strong>. Обдумайте то, что было сказано и <strong>поделитесь результатом</strong> с группой, чтобы люди знали, что дальше.'
-        poll_option_added: '<strong>%{actor}</strong> добавили вариантов к: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> добавили вариантов к: %{title}'
-        outcome_created: '<strong>%{actor}</strong> поделились результатом опроса о времени.'
-        outcome_created_author: 'Вы поделились результатом опроса.'
-        outcome_announced: 'Результаты опроса о времени <strong>%{actor}</strong>.'
-        stance_created: "<strong>%{actor}</strong> поучаствовали в: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> упомянули вас в: %{title}'
-        user_reminded: '<strong>%{actor}</strong> напоминает, чтобы вы проголосовали в: %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    ranked_choice:
-      subject:
-        poll_created: '%{actor} открыли ранжированное голосование: %{title}'
-        poll_edited: '%{actor} отредактировали ранжированное голосование: %{title}'
-        poll_announced: '%{actor} приглашает вас проранжировать варианты в опросе: %{title}'
-        poll_closing_soon: 'Ранжированное голосование закрывается через 24 часа: %{title}'
-        poll_closing_soon_author: 'Ваше ранжированное голосование закрывается через 24 часа: %{title}'
-        poll_expired: "Результаты ранжированного голосования: %{title}"
-        poll_expired_author: 'Ваше ранжированное голосование закрыто. Поделитесь результатом: %{title}'
-        poll_option_added: '%{actor} добавили вариантов к: %{title}'
-        poll_option_added_author: '%{actor} добавили вариантов к: %{title}'
-        outcome_created: '%{actor} поделились результатом: %{title}'
-        outcome_created_author: 'Вы поделились результатом: %{title}'
-        outcome_announced: '%{actor} поделились результатом ранжированного голосования: %{title}'
-        stance_created: '%{actor} поучаствовали в: %{title}'
-        stance_created_author: "Подтвердите, пожалуйста, ваш голос в: %{title}"
-        user_mentioned: '%{actor} упомянули вас в: %{title}'
-        user_reminded: '%{actor} напоминает, чтобы вы проголосовали за: %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> открыли ранжированное голосование'
-        poll_edited: ' <strong>%{actor}</strong> отредактировали ранжированное голосование'
-        poll_announced: '<strong>%{actor}</strong> приглашает вас проранжировать варианты в опросе'
-        poll_closing_soon: 'Ранжированный опрос <strong>%{actor}</strong> закрывается через 24 часа. Самое время проголосовать, изменить свой голос или призвать других поучаствовать.'
-        poll_closing_soon_author: 'Ваше ранжированное голосование закрывается через 24 часа — возможно, вы захотите напомнить о нем людям или продлить срок голосования, если нужно.'
-        poll_expired: "Ранжированный опрос <strong>%{actor}</strong> закрылся"
-        poll_expired_author: 'Ваш ранжированный опрос <strong>закрыт</strong>. Обдумайте то, что было сказано и <strong>поделитесь результатом</strong> с группой, чтобы люди знали, что дальше.'
-        poll_option_added: '<strong>%{actor}</strong> добавили вариантов к: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> добавили вариантов к: %{title}'
-        outcome_created: '<strong>%{actor}</strong> поделились результатом ранжированного голосования.'
-        outcome_created_author: 'Вы поделились результатом ранжированного голосования.'
-        outcome_announced: '<strong>%{actor}</strong> поделились результатом ранжированного голосования.'
-        stance_created: "<strong>%{actor}</strong> поучаствовали в: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> упомянули вас в: %{title}'
-        user_reminded: '<strong>%{actor}</strong> напоминает, чтобы вы проголосовали в: %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
+    subject:
+      poll_option_added: '%{actor} добавили вариантов к: %{title}'
+      poll_option_added_author: '%{actor} добавили вариантов к: %{title}'
+      stance_created: "%{actor} проголосовали в: %{title}"
+      stance_created_author: "Подтвердите, пожалуйста, ваш голос в: %{title}"
+      user_mentioned: '%{actor} упомянули вас в: %{title}'
+      user_reminded: '%{actor} напоминает, чтобы вы проголосовали за: %{title}'
+    header:
+      poll_option_added: '<strong>%{actor}</strong> добавили вариантов к: %{title}'
+      poll_option_added_author: '<strong>%{actor}</strong> добавили вариантов к: %{title}'
+      stance_created: "<strong>%{actor}</strong> проголосовали в: %{title}"
+      user_mentioned: '<strong>%{actor}</strong> упомянули вас в: %{title}'
+      user_reminded: '<strong>%{actor}</strong> напоминает, чтобы вы проголосовали в: %{title}'
+    body:
+      voted: '<strong>%{participant}</strong>:'
   comment_by: Комментарий %{comment_author}
   personal_data:
     title: Личные данные %{user_name} на %{host_name}

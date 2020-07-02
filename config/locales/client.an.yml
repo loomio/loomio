@@ -107,7 +107,6 @@ an:
     close_thread: 'Zarrar'
   delete_comment_dialog:
     title: 'Borrar comentario'
-    question: 'Yes seguro que quiers borrar iste comentario?'
     confirm: 'Borrar comentario'
   contact_message_form:
     name_label: 'O tuyo nombre'

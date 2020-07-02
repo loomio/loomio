@@ -641,6 +641,7 @@ pl:
     translate_outcome: Przetłumacz rezultat
     show_history: Pokaż historię edycji
     edited: Edytowane
+    history: Historia
     pin_thread: Przypnij wątek
     unpin_thread: Odepnij wątek
     pin_event: Przypnij do osi czasu
@@ -1272,7 +1273,6 @@ pl:
       success: Wątek został przeniesiony do {{name}}
   delete_comment_dialog:
     title: 'Usuń komentarz'
-    question: 'Czy na pewno chcesz usunąć ten komentarz?'
     confirm: 'Usuń komentarz'
   contact_message_form:
     title: "Cześć! Jak możemy pomóc?"
@@ -1452,9 +1452,6 @@ pl:
     discussion_context_edited: "<strong><a href='/u/{{username}}'>{{autor}}</a></strong> edytował kontekst wątku"
   poll_common_subscribe_form:
     subscribe: Subskrybuj
-  polls_page:
-    heading: Decyzje
-    start_new_poll: Nowa decyzja
   auth_form:
     invalid_password: "Przepraszamy, to hasło nie zgadza się z tym, które mamy zapisane"
     name_placeholder: Twoja nazwa

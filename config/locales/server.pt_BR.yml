@@ -10,6 +10,8 @@ pt_BR:
         blank: não pode deixar em branco
         invalid: não é um valor válido
   errors:
+    404:
+      title: Não encontrado
     noscript: O Loomio precisa de Javascript para funcionar. Por favor habilite o Javascript no seu navegador para continuar.
     return_home: Retornar à tela inicial
     not_found: 'Erro 404: arquivo não encontrado.'
@@ -255,18 +257,6 @@ pt_BR:
         Qual é o seu papel ou caminho até chegar a participar deste grupo? O que as pessoas precisam saber de você para entender de onde você veio?
   how_it_works_thread:
     title: Como utilizar o Loomio
-  first_proposal:
-    name: Proposta de demonstração
-    description: |
-        Esta é uma **proposta**, na qual você pode tomar uma decisão conjunta. Você pode iniciar uma proposta assim que a discussão estiver em andamento.
-
-        Todos são solicitados a **definir uma posição** até o **prazo final**. Você pode estender o prazo final se necessário, ou concluir a proposta antes do prazo.
-
-        Você pode **mudar sua posição** enquanto a proposta estiver aberta. Você pode reconsiderar a sua visão na medida em que ouve visões dos demais.
-
-        Às vezes, grupos funcionam por meio de uma **série de propostas** para construir soluções conjuntas. Você pode criar propostas em série neste tópico.
-
-        **Tente participar! Clique em um dos quatro botões**.
   markdown:
     intro:
       title: |
@@ -336,235 +326,21 @@ pt_BR:
       verify_stance_for_unverified_user: "Obrigado por votar em %{title}. Fique de olho no seu e-mail, para que possamos lhe enviar os resultados ao fim da votação."
       verify_stance_for_verified_user: "Parece que você votou em %{title}. Se foi você, por favor clique no link abaixo para confirmar seu voto."
       you_have_until: Você tem até %{when} para participar.
-    proposal:
-      subject:
-        poll_created: '%{actor} iniciou uma enquete: %{title}'
-        poll_edited: '%{actor} editou a enquete %{title}'
-        poll_announced: '%{actor} lhe convidou para votar na enquete %{title}'
-        poll_closing_soon: 'Enquete encerrando em 24 horas: %{title}'
-        poll_closing_soon_author: 'Sua enquete encerra em 24 horas: %{title}'
-        poll_expired: "Enquete encerrada: %{title}"
-        poll_expired_author: 'Sua enquete encerrou. Crie uma proposta de resolução para %{title}'
-        outcome_created: '%{actor} criou uma proposta de resolução: %{title}'
-        outcome_announced: '%{actor} criou uma proposta de resolução: %{title}'
-        stance_created: "%{actor} votou em %{title}"
-        user_mentioned: '%{actor} mencionou você em %{title}'
-        user_reminded: '%{actor} lembrou você de votar em %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> criou uma enquete'
-        poll_edited: '<strong>%{actor}</strong> editou a enquete'
-        poll_announced: '<strong>%{actor}</strong> lhe convidou para votar em uma enquete'
-        poll_closing_soon: 'A enquete de <strong>%{actor}</strong> encerrará em 24 horas. Este é um bom momento para votar, mudar de opção ou encorajar outras pessoas a participar.'
-        poll_closing_soon_author: 'Sua enquete encerrará em 24 horas - agora é um bom momento para lembrar as pessoas de votarem, ou ampliar o período de votação se necessário.'
-        poll_expired: "A enquete %{title} de  <strong>%{actor}</strong> encerrou."
-        poll_expired_author: 'Sua enquete <strong>encerrou</strong>. Por favor tome algum tempo para considerar o que foi discutido e <strong>compartilhe uma proposta de resolução</strong> com o grupo, para que as pessoas saibam o que irá acontecer em seguida.'
-        outcome_created: '<strong>%{actor}</strong> criou uma proposta de resolução.'
-        outcome_announced: '<strong>%{actor}</strong> criou uma proposta de resolução.'
-        stance_created: "<strong>%{actor}</strong> votou em %{title}"
-        user_mentioned: '<strong>%{actor}</strong> mencionou você em %{title}'
-        user_reminded: '<strong>%{actor}</strong> está lhe lembrando de votar em %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    poll:
-      subject:
-        poll_created: '%{actor} iniciou uma enquete: %{title}'
-        poll_edited: '%{actor} editou a enquete %{title}'
-        poll_announced: '%{actor} convidou você para votar na enquete %{title}'
-        poll_closing_soon: 'Enquete encerrando em 24 horas: %{title}'
-        poll_closing_soon_author: 'Sua enquete %{title} encerra em 24 horas'
-        poll_expired: "Resultados da enquete %{title}"
-        poll_expired_author: 'Sua enquete encerrou. Crie uma proposta de resolução para %{title}'
-        poll_option_added: '%{actor} adicionou opções em %{title}'
-        poll_option_added_author: '%{actor} adicionou opções em %{title}'
-        outcome_created: '%{actor} criou uma proposta de resolução para a enquete %{title}'
-        outcome_announced: '%{actor} criou uma proposta de resolução para a enquete %{title}'
-        stance_created: "%{actor} votou em %{title}"
-        stance_created_author: "Por favor verifique seu voto em %{title}"
-        user_mentioned: '%{actor} mencionou você em %{title}'
-        user_reminded: '%{actor} lembrou você de votar em %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> iniciou uma enquete'
-        poll_edited: '<strong>%{actor}</strong> editou a enquete'
-        poll_announced: '<strong>%{actor}</strong> convidou você para votar na enquete'
-        poll_closing_soon: 'A enquete de <strong>%{actor}</strong> encerrará em 24 horas. Este é um bom momento para votar, mudar de opção ou encorar outras pessoas a participar.'
-        poll_closing_soon_author: 'Sua enquete encerrará em 24 horas - agora é um bom momento para lembrar as pessoas de votarem, ou ampliar o período de votação se necessário.'
-        poll_expired: "A enquete %{title} de <strong>%{actor}</strong> encerrou."
-        poll_expired_author: 'Sua enquete <strong>encerrou</strong>. Por favor tome algum tempo para considerar o que foi discutido e <strong>compartilhe uma proposta de resolução</strong> com o grupo, para que as pessoas saibam o que irá acontecer em seguida.'
-        poll_option_added: '<strong>%{actor}</strong> adicionou opções a %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> adicionou opções a %{title}'
-        outcome_created: '<strong>%{actor}</strong> criou uma proposta de resolução.'
-        outcome_announced: '<strong>%{actor}</strong> criou uma proposta de resolução.'
-        stance_created: "<strong>%{actor}</strong> votou em %{title}"
-        user_mentioned: '<strong>%{actor}</strong> mencionou você em %{title}'
-        user_reminded: '<strong>%{actor}</strong> está lhe lembrando de votar em %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    score:
-      subject:
-        poll_created: '%{actor} iniciou uma enquete: %{title}'
-        poll_edited: '%{actor} editou a enquete %{title}'
-        poll_closing_soon: 'Enquete encerrando em 24 horas: %{title}'
-        poll_closing_soon_author: 'Sua enquete %{title} encerra em 24 horas'
-        poll_expired: "Resultados da enquete %{title}"
-        poll_expired_author: 'Sua enquete encerrou. Crie uma proposta de resolução para %{title}'
-        poll_option_added: '%{actor} adicionou opções em %{title}'
-        poll_option_added_author: '%{actor} adicionou opções em %{title}'
-        outcome_created: '%{actor} criou uma proposta de resolução para a enquete %{title}'
-        outcome_announced: '%{actor} criou uma proposta de resolução para a enquete %{title}'
-        stance_created: "%{actor} votou em %{title}"
-        stance_created_author: "Por favor verifique seu voto em %{title}"
-        user_mentioned: '%{actor} mencionou você em %{title}'
-        user_reminded: '%{actor} lembrou você de votar em %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> iniciou uma enquete'
-        poll_edited: '<strong>%{actor}</strong> editou a enquete'
-        poll_closing_soon: 'A enquete de <strong>%{actor}</strong> encerrará em 24 horas. Este é um bom momento para votar, mudar de opção ou encorar outras pessoas a participar.'
-        poll_closing_soon_author: 'Sua enquete encerrará em 24 horas - agora é um bom momento para lembrar as pessoas de votarem, ou ampliar o período de votação se necessário.'
-        poll_expired: "A enquete %{title} de <strong>%{actor}</strong> encerrou."
-        poll_expired_author: 'Sua enquete <strong>encerrou</strong>. Por favor tome algum tempo para considerar o que foi discutido e <strong>compartilhe uma proposta de resolução</strong> com o grupo, para que as pessoas saibam o que irá acontecer em seguida.'
-        poll_option_added: '<strong>%{actor}</strong> adicionou opções a %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> adicionou opções a %{title}'
-        outcome_created: '<strong>%{actor}</strong> criou uma proposta de resolução.'
-        outcome_announced: '<strong>%{actor}</strong> criou uma proposta de resolução.'
-        stance_created: "<strong>%{actor}</strong> votou em %{title}"
-        user_mentioned: '<strong>%{actor}</strong> mencionou você em %{title}'
-        user_reminded: '<strong>%{actor}</strong> está lhe lembrando de votar em %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    count:
-      subject:
-        poll_created: '%{actor} criou uma checagem: %{title}'
-        poll_edited: '%{actor} editou a checagem %{title}'
-        poll_closing_soon: 'Checagem encerrando em 24 horas: %{title}'
-        poll_closing_soon_author: 'Sua checagem %{title} encerra em 24 horas.'
-        poll_expired: "Checagem %{title} encerrada."
-        poll_expired_author: 'Sua checagem %{title} encerrou. Crie uma proposta para ela.'
-        outcome_created: '%{actor} criou uma proposta: %{title}'
-        outcome_announced: '%{actor} criou uma proposta: %{title}'
-        stance_created: "%{actor} participou em %{title}"
-        stance_created_author: "Por favor verifique seu voto em %{title}"
-        user_mentioned: '%{actor} mencionou você em %{title}'
-        user_reminded: '%{actor} lembrou você de votar em %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> iniciou uma checagem'
-        poll_edited: '<strong>%{actor}</strong> editou a checagem'
-        poll_closing_soon: 'A checagem de <strong>%{actor}</strong> encerrará em 24 horas'
-        poll_closing_soon_author: 'Sua checagem encerrará em 24 horas - agora é um bom momento para lembrar as pessoas de participarem, ou ampliar o período de participação se necessário.'
-        poll_expired: "A checagem %{title} de <strong>%{actor}</strong> encerrou."
-        poll_expired_author: 'Sua verificação fechou. Se necessário, <strong>compartilhe um resultado</strong> para deixar as pessoas saberem o que acontecerá.'
-        outcome_created: '<strong>%{actor}</strong> criou uma proposta.'
-        outcome_announced: '<strong>%{actor}</strong> criou uma proposta.'
-        stance_created: "<strong>%{actor}</strong> participou em %{title}"
-        user_mentioned: '<strong>%{actor}</strong> mencionou você em %{title}'
-        user_reminded: '<strong>%{actor}</strong> está lhe lembrando de participar em %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    dot_vote:
-      subject:
-        poll_created: '%{actor} iniciou uma votação por pontos: %{title}'
-        poll_edited: '%{actor} editou a votação por pontos %{title}'
-        poll_announced: '%{actor} convidou você para participar na votação por pontos %{title}'
-        poll_closing_soon: 'Votação por pontos encerrando em 24 horas: %{title}'
-        poll_closing_soon_author: 'Sua votação por pontos %{title} encerra em 24 horas.'
-        poll_expired: "Resultados da votação por pontos %{title}"
-        poll_expired_author: 'Sua votação por pontos %{title} encerrou. Crie uma proposta de encaminhamento.'
-        poll_option_added: '%{actor} adicionou opções em %{title}'
-        poll_option_added_author: '%{actor} adicionou opções em %{title}'
-        outcome_created: '%{actor} criou uma proposta: %{title}'
-        outcome_announced: '%{actor} criou uma proposta: %{title}'
-        stance_created: "%{actor} votou em %{title}"
-        stance_created_author: "Por favor verifique seu voto em %{title}"
-        user_mentioned: '%{actor} mencionou você em %{title}'
-        user_reminded: '%{actor} lembrou você de votar em %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> criou uma votação por pontos'
-        poll_edited: '<strong>%{actor}</strong> editou a votação por pontos'
-        poll_announced: '<strong>%{actor}</strong> convidou você para participar em uma votação por pontos'
-        poll_closing_soon: 'A votação por pontos de <strong>%{actor}</strong> encerrará em 24 horas. Este é um bom momento para votar, mudar de opção ou encorajar outras pessoas a participar.'
-        poll_closing_soon_author: 'Sua votação por pontos encerrará em 24 horas - você pode querer lembrar às pessoas para que votem, ou ampliar o período de votação se necessário.'
-        poll_expired: "Resultados da votação por pontos %{title} de <strong>%{actor}</strong>:"
-        poll_expired_author: 'Sua votação por pontos <strong>encerrou</strong>. Considere o que foi discutido e <strong>compartilhe uma proposta de resolução</strong> com o grupo, para que as pessoas saibam o que irá acontecer em seguida.'
-        poll_option_added: '<strong>%{actor}</strong> adicionou opções a %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> adicionou opções a %{title}'
-        outcome_created: '<strong>%{actor}</strong> criou uma proposta de resolução para a votação por pontos'
-        outcome_announced: '<strong>%{actor}</strong> criou uma proposta de resolução para a votação por pontos'
-        stance_created: "<strong>%{actor}</strong> votou em %{title}"
-        user_mentioned: '<strong>%{actor}</strong> mencionou você em %{title}'
-        user_reminded: '<strong>%{actor}</strong> está lhe lembrando de votar em %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    meeting:
-      subject:
-        poll_created: '%{actor} iniciou uma escolha de horário: %{title}'
-        poll_edited: '%{actor} editou a escolha de horário %{title}'
-        poll_announced: '%{actor} lhe convidou para participar na escolha de horário %{title}'
-        poll_closing_soon: 'Escolha de horário %{title} encerrando em 24 horas'
-        poll_closing_soon_author: 'Sua escolha de horário %{title} encerra em 24 horas'
-        poll_expired: "Resultados da escolha de horário %{title}:"
-        poll_expired_author: 'Sua escolha de horário %{title} encerrou. Crie uma proposta.'
-        poll_option_added: '%{actor} adicionou opções em %{title}'
-        poll_option_added_author: '%{actor} adicionou opções em %{title}'
-        outcome_created: '%{actor} criou uma proposta: %{title}'
-        outcome_created_author: 'Você criou uma proposta: %{title}'
-        outcome_announced: '%{actor} criou uma proposta: %{title}'
-        stance_created: '%{actor} participou em %{title}'
-        stance_created_author: "Por favor verifique seu voto em %{title}"
-        user_mentioned: '%{actor} mencionou você em %{title}'
-        user_reminded: '%{actor} lembrou você de votar em %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> iniciou uma escolha de horário'
-        poll_edited: '<strong>%{actor}</strong> editou a escolha de horário'
-        poll_announced: '<strong>%{actor}</strong> convidou você para participar em uma escolha de horário'
-        poll_closing_soon: 'A escolha de horário de <strong>%{actor}</strong> encerrará em 24 horas. Este é um bom momento para votar, mudar de opção ou encorajar outras pessoas a participar.'
-        poll_closing_soon_author: 'Sua escolha de horário encerrará em 24 horas - agora é um bom momento para lembrar as pessoas de votarem, ou ampliar o período de votação se necessário.'
-        poll_expired: "A escolha de horário de <strong>%{actor}</strong> encerrou."
-        poll_expired_author: 'Sua escolha de horário <strong>encerrou</strong>. Considere o que foi discutido e <strong>compartilhe uma proposta</strong> com o grupo, para que as pessoas saibam o que irá acontecer em seguida.'
-        poll_option_added: '<strong>%{actor}</strong> adicionou opções a %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> adicionou opções a %{title}'
-        outcome_created: '<strong>%{actor}</strong> criou uma proposta sobre a escolha de horário'
-        outcome_created_author: 'Você criou uma proposta sobre a escolha de horário'
-        outcome_announced: '<strong>%{actor}</strong> criou uma proposta sobre a escolha de horário'
-        stance_created: "<strong>%{actor}</strong> participou em %{title}"
-        user_mentioned: '<strong>%{actor}</strong> mencionou você em %{title}'
-        user_reminded: '<strong>%{actor}</strong> está lhe lembrando de votar em %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    ranked_choice:
-      subject:
-        poll_created: '%{actor} criou uma escolha classificada: %{title}'
-        poll_edited: '%{actor} editou a escolha classificada %{title}'
-        poll_announced: '%{actor} convidou você para classificar opções em uma enquete: %{title}'
-        poll_closing_soon: 'Escolha classificada %{title} encerrando em 24 horas'
-        poll_closing_soon_author: 'Sua escolha classificada %{title} encerra em 24 horas'
-        poll_expired: "Resultados da escolha classificada %{title}:"
-        poll_expired_author: 'Sua escolha classificada encerrou. Crie uma proposta de encaminhamento para %{title}'
-        poll_option_added: '%{actor} adicionou opções em %{title}'
-        poll_option_added_author: '%{actor} adicionou opções em %{title}'
-        outcome_created: '%{actor} criou uma proposta: %{title}'
-        outcome_created_author: 'Você criou uma proposta: %{title}'
-        outcome_announced: '%{actor} criou uma proposta para a escolha classificada'
-        stance_created: '%{actor} participou em %{title}'
-        stance_created_author: "Por favor verifique seu voto em %{title}"
-        user_mentioned: '%{actor} mencionou você em %{title}'
-        user_reminded: '%{actor} lembrou você de votar em %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> criou uma escolha classificada'
-        poll_edited: '<strong>%{actor}</strong> editou a escolha classificada'
-        poll_announced: '<strong>%{actor}</strong> convidou você para classificar opções em uma enquete '
-        poll_closing_soon: 'A escolha classificada de <strong>%{actor}</strong> encerrará em 24 horas. Este é um bom momento para votar, mudar de opções ou encorajar outras pessoas a participar.'
-        poll_closing_soon_author: 'Sua escolha classificada encerrará em 24 horas - você pode querer lembrar às pessoas para que votem, ou ampliar o período de votação se necessário.'
-        poll_expired: "A escolha classificada de <strong>%{actor}</strong> encerrou."
-        poll_expired_author: 'Sua escolha classificada <strong>encerrou</strong>. Considere o que foi discutido e <strong>compartilhe uma proposta</strong> com o grupo, para que as pessoas saibam o que irá acontecer em seguida.'
-        poll_option_added: '<strong>%{actor}</strong> adicionou opções a %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> adicionou opções a %{title}'
-        outcome_created: '<strong>%{actor}</strong> criou uma proposta de resolução para a escolha classificada.'
-        outcome_created_author: 'Você criou uma proposta para a escolha classificada.'
-        outcome_announced: '<strong>%{actor}</strong> criou uma proposta de resolução para a escolha classificada.'
-        stance_created: "<strong>%{actor}</strong> participou em %{title}"
-        user_mentioned: '<strong>%{actor}</strong> mencionou você em %{title}'
-        user_reminded: '<strong>%{actor}</strong> está lhe lembrando de votar em %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
+    subject:
+      poll_option_added: '%{actor} adicionou opções em %{title}'
+      poll_option_added_author: '%{actor} adicionou opções em %{title}'
+      stance_created: "%{actor} votou em %{title}"
+      stance_created_author: "Por favor verifique seu voto em %{title}"
+      user_mentioned: '%{actor} mencionou você em %{title}'
+      user_reminded: '%{actor} lembrou você de votar em %{title}'
+    header:
+      poll_option_added: '<strong>%{actor}</strong> adicionou opções a %{title}'
+      poll_option_added_author: '<strong>%{actor}</strong> adicionou opções a %{title}'
+      stance_created: "<strong>%{actor}</strong> votou em %{title}"
+      user_mentioned: '<strong>%{actor}</strong> mencionou você em %{title}'
+      user_reminded: '<strong>%{actor}</strong> está lhe lembrando de votar em %{title}'
+    body:
+      voted: '<strong>%{participant}</strong>:'
   comment_by: Comentário por %{comment_author}
   notified:
     no_matches_found: "Nenhum resultado encontrado para '%{query}'"

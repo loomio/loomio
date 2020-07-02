@@ -185,6 +185,7 @@ es:
       reply: 'Responder'
       edit: 'Editar'
       remove: 'Eliminar'
+      undo_remove: 'Deshacer eliminar'
       like: 'Me gusta'
       unlike: 'Ya no me gusta'
       update: 'Actualizar '
@@ -384,6 +385,7 @@ es:
       replied: '{{name}} ha sido notificado de la respuesta '
       updated: 'Comentario actualizado'
       destroyed: 'Comentario eliminado'
+      removed: 'Comentario eliminado'
     say_something: Diga algo...
     edit_comment: 'Editar comentario'
     delete_comment: 'Borrar comentario'
@@ -642,6 +644,7 @@ es:
     translate_outcome: Traducir resultado
     show_history: Ver historial de revisión
     edited: Editado
+    history: Historia
     pin_thread: Anclar hilo
     unpin_thread: Soltar hilo
     pin_event: 'Indicio para la próxima vez: Intenta subrayar algo de texto antes de clicar "Pin".'
@@ -745,6 +748,14 @@ es:
     thread_status:
       pinned: "Este hilo ha sido fijado. Permanecerá en la parte superior de la lista de hilos del grupo para todos los integrantes."
       closed: "Este hilo ha sido cerrado. Ya no aparecerá en el escritorio, y será listado bajo 'Cerrado' en la página principal del grupo"
+  delete_group_modal:
+    title: Eliminar grupo
+    body: |
+        ¿Estás seguro de que quieres eliminar este grupo?
+        Todos los hilos, sondeos, archivos y otros contenidos del grupo se borrarán permanentemente.
+        Se recomienda que exportes los datos del grupo y descargues manualmente cualquier archivo importante antes de continuar.
+    confirm: "Escribe '%{name}' para confirmar que quieres borrar este grupo."
+    success: 'Se ha archivado este grupo y se ha programado eliminarlo permanentemente en 2 semanas. '
   group_page:
     stats: Estadísticas de grupo
     threads: Hilos
@@ -1276,8 +1287,11 @@ es:
       success: El hilo ha sido movido a {{name}}
   delete_comment_dialog:
     title: 'Borrar comentario'
-    question: '¿Estás seguro de que quieres borrar este comentario?'
+    question: '¿Estás seguro de que quieres borrar este comentario? (Esto no se puede deshacer)'
     confirm: 'Borrar comentario'
+  discard_comment_dialog:
+    title: 'Eliminar comentario'
+    question: '¿Estás seguro de que quieres eliminar este comentario? (esto se puede deshacer más tarde)'
   contact_message_form:
     title: "¡Hola! ¿Cómo podemos ayudarle?"
     read_the_manual: |
@@ -1425,6 +1439,8 @@ es:
     filename: Nombre de archivo
     uploaded_by: Cargado por
     uploaded_at: Cargado en
+    delete_confirmation: |
+        ¿Estás seguro de que quieres eliminar este adjunto? Se borrará de cualquier comentario o hilo asociado. Esto no puede deshacerse.
   subgroups_panel:
     search_subgroups_of_name: 'Subgrupos de búsqueda de {{name}}'
     group_without_subgroups: '{{name}} sin subgrupos'
@@ -1943,6 +1959,10 @@ es:
       project: Equipo de proyecto
       forum: Foro
       other: Otro
+    desired_features:
+      polls: Organizar sondeos para que mi equipo voten en
+      discussions: Mantener discusiones en linea y obtener comentarios
+      archive: Grabar decisiones que hacemos o archivar información
     referrers:
       google: Búsqueda Google
       invitation: Invitado a un grupo de Loomio
@@ -1958,4 +1978,5 @@ es:
     role: "¿Cuál es tu función en el grupo?"
     website: "Página web URL"
     usage: "¿Cómo has planeado usar Loomio? Elige lo que más encaja."
+    desired_feature: "¿Cuál es la razón número uno por la que estás buscando usar Loomio? "
     referrer: "¿Cómo supiste de Loomio?"

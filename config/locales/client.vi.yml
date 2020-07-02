@@ -75,7 +75,6 @@ vi:
     close_thread: 'Đóng lại'
   delete_comment_dialog:
     title: 'Xóa bình luận'
-    question: 'Bạn có chắc muốn xóa bình luận này?'
     confirm: 'Xóa bình luận'
   contact_message_form:
     subject_label: "Chủ đề"

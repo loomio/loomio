@@ -110,8 +110,6 @@ cs:
     title: Vítejte! Prosím, představte se
   how_it_works_thread:
     title: Jak používat Loomio
-  first_proposal:
-    name: Ukázkový návrh
   markdown:
     intro:
       title: |
@@ -135,8 +133,3 @@ cs:
       please_respond: Prosím odpovězte
       more_undecided: "%{count} více..."
       vote_now: Hlasovat nyní
-    proposal:
-      subject:
-        poll_created: '%{actor} vytvořil návrh: %{title}'
-        poll_closing_soon: 'Návrhy uzavřené během 24 hodin: %{title}'
-        poll_expired: "Uzavření návrhu: %{title}"

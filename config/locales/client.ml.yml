@@ -79,7 +79,6 @@ ml:
     close_thread: 'അടക്കുക'
   delete_comment_dialog:
     title: 'അഭിപ്രായം നീക്കം ചെയ്യുക'
-    question: 'തീര്‍ച്ചയായും ഈ അഭിപ്രായം കളയണോ? '
     confirm: 'അഭിപ്രായം നീക്കം ചെയ്യുക'
   contact_message_form:
     subject_label: "വിഷയം"

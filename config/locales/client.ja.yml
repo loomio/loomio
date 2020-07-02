@@ -123,7 +123,6 @@ ja:
     close_thread: '締め切り'
   delete_comment_dialog:
     title: 'コメントを削除します'
-    question: '本当にコメントを削除しますか？'
     confirm: 'コメントを削除します'
   contact_message_form:
     name_label: 'あなたの名前'

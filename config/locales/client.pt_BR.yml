@@ -640,6 +640,7 @@ pt_BR:
     translate_outcome: Traduzir resultado
     show_history: Mostrar histórico de edições
     edited: Editado
+    history: Histórico
     pin_thread: Afixar conversa
     unpin_thread: Desafixar conversa
     pin_event: Fixar na timeline
@@ -1271,7 +1272,6 @@ pt_BR:
       success: Essa conversa foi movida para {{name}}
   delete_comment_dialog:
     title: 'Apagar comentário'
-    question: 'Você tem certeza que deseja apagar este comentário?'
     confirm: 'Apagar comentário'
   contact_message_form:
     title: "Olá! Como podemos ajudar?"
@@ -1538,7 +1538,6 @@ pt_BR:
     authored_by: 'Por {{name}}'
   poll_common_delete_modal:
     question: Tem certeza que você quer apagar isso?
-    title: Apagar decisão
     success: Apagado com sucesso
   poll_common_form:
     title: Título
@@ -1773,14 +1772,6 @@ pt_BR:
     what_is_this: "Isso é um exemplo ao vivo de {{type}}. Você está participando – experimente!"
   share_poll_page:
     title: Compartilhar enquete - {{title}}
-  polls_page:
-    heading: Decisões
-    heading_with_group: Decisão em {{name}}
-    search_placeholder: Buscar por consultas…
-    polls_count: Mostrando {{count}} de {{total}} consultas
-    start_new_poll: Nova decisão
-    filter_placeholder: (Todas consultas)
-    groups_placeholder: (Todos os grupos)
   auth_form:
     code: '000000'
     sign_in_to_loomio: Entrar no {{site_name}}

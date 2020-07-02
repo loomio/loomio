@@ -20,6 +20,8 @@ ar:
     card_title: فئة الوسوم
     modal_title: إنشاء وسم جديد
     modal_edit_title: تعديل الوسم
+  reactions:
+    ok_hand: نعم
   common:
     you: أنت
     learn_more: تعلم المزيد
@@ -86,6 +88,7 @@ ar:
       translate: 'ترجم'
       upload: 'تحميل'
       uploading: 'تحميل'
+      ok: نعم
       unsubscribe: إلغاء الاشتراك
       invite: دعوة
     formatting_help:
@@ -96,6 +99,9 @@ ar:
       title: دمج الحسابات
   emoji_picker:
     search: بحث
+  devise:
+    failure:
+      inactive: 'هناك حساب تم إلغاء تنشيطه مرتبط بعنوان البريد الإلكتروني هذا.  إذا كنت تريد إعادة تنشيط حسابك ، تواصل بنا'
   error_page:
     forbidden: 'ليس لديك صلاحية للقيام بذلك.'
     page_not_found: 'لم نستطع إيجاد ذلك. من الممكن أن يكون قد جرى حذفه أو نقله.'
@@ -163,6 +169,11 @@ ar:
     closing_in: 'الإغلاق'
   sign_up_form:
     password_label: 'الكلمة السرية:'
+    password_confirmation_label: ':كلمة المرور مرة أخرى'
+  signed_out_modal:
+    title: "جلستك انتهت"
+    message: "لقد تم تسجيل خروجك من نافذة أخرى.  يرجى تسجيل الدخول مرة أخرى للمتابعة"
+    ok: "نعم"
   comment_form:
     aria_label: 'إضافة تعليق'
     attachments:
@@ -190,11 +201,15 @@ ar:
     threads: 'المواضيع'
     start_group: 'منظمة جديدة'
     start_subgroup: 'مجموعة فرعية جديدة'
+    explore: 'المجموعات العامة'
     explore_groups: استكشف المجموعات
     start_thread: موضوع جديد
     start_decision: قرار جديد
     aria_labels:
+      heading: 'الشريط الجانبي'
+      threads_list: 'إجراءات الخيوط'
       groups_list: 'الفِرَق'
+      user_list: 'إجراءات المستخدم'
   navbar:
     recent_title: 'اذهب إلى لوحة التحكم'
     unread_title: 'أظهر النشاطات الغير مقروءة'
@@ -210,6 +225,7 @@ ar:
       proposals: 'المقترحات'
       comments: 'التعليقات'
     sign_in: 'تسجيل الدخول'
+    toggle_sidebar: 'تبديل الشريط الجانبي'
     logo_title: 'الصفحة الرئيسية'
   user_dropdown:
     email_settings: 'إعدادات الإشعار'
@@ -222,6 +238,7 @@ ar:
     cancel_invitation: إلغاء الدعوة
   notifications:
     header: "تبليغات"
+    no_notifications: "ليس لديك أي إشعارات"
     new_discussion: "<strong>{{name}}</strong> ابدأ مناقشة <strong>{{title}} </strong>"
     new_motion: "<strong> {{name}} </strong>انشاء اقتراح <strong>{{title}} </strong>"
     motion_closed: "<strong>{{title}}</strong> :تم إغلاق الاقتراح"
@@ -488,6 +505,8 @@ ar:
       updated: تم تحديث إعدادات البريد الإلكتروني
   dashboard_page:
     aria_label: 'لوحة التحكم'
+    no_groups:
+      show_muted: ليس لديك أي سلاسل رسائل تم تجاهلها لأنك لست عضوًا في أي مجموعة
     no_threads:
       show_all: ليس لديك أي مواضيع حديثة.
       show_proposals: ليس هناك أي مقترحات نشطة حالياً.
@@ -513,6 +532,8 @@ ar:
       unread: '{{count}} مادة غير مقروءة'
       current_proposal: 'الموضوع الحالي: {{name}}.'
       you_voted: 'لقد قمت بالتصويت: {{position}}.'
+    thread_preview:
+      you_voted: ' {{position}} انت ادليت بصوتك'
     threads_from:
       group: 'المواضيع من'
       proposals: 'المواضيع ذات القرارات النشطة'
@@ -527,6 +548,7 @@ ar:
     unread_threads: المواضيع الغير مقروءة
     view_more: إظهار المزيد
     no_groups:
+      explanation: ليس لديك مواضيع غير مقروءة لأنك لست عضوا في أي مجموعة
       or: أو
   discussion:
     activity: 'النشاط'
@@ -572,7 +594,6 @@ ar:
       success: تم نقل الموضوع إلى {{name}}
   delete_comment_dialog:
     title: 'احذف التعليق'
-    question: 'هل أنت متأكد من أنك تريد حذف هذا التعليق؟'
     confirm: 'احذف التعليق'
   contact_message_form:
     contact_us: 'اتصل بنا'
@@ -592,6 +613,7 @@ ar:
     vote: 'يمكنك تغيير رأيك في أي وقت'
   explore_page:
     header: استكشف المجموعات
+    search_placeholder: ابحث عن المجموعات العامة
   global:
     messages:
       app_update: 'هناك نسخة جديدة متوفرة من التطبيق'
@@ -646,9 +668,6 @@ ar:
     total: مجموع
   poll_common_subscribe_form:
     no_thanks: لا شكرًا
-  polls_page:
-    heading: القرارات
-    start_new_poll: قرار جديد
   auth_form:
     sign_in: تسجيل الدخول
     more_providers: المزيد

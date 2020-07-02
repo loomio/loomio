@@ -940,7 +940,6 @@ it:
     confirm: 'Cancella discussione'
   delete_comment_dialog:
     title: 'Cancella il commento'
-    question: 'Sei sicuro che vuoi cancellare questo commento?'
     confirm: 'Cancella il commento'
   contact_message_form:
     contact_us: 'Contattaci'
@@ -1179,9 +1178,6 @@ it:
     receive_updates_title: Il tuo voto è stato acquisito
     receive_updates_helptext: Se vuoi ricevere un'email sul risultato del sondaggio, inserisci la tua email qui sotto
     subscribe: Iscriviti
-  polls_page:
-    heading: Decisioni
-    start_new_poll: Nuova decisione
   auth_form:
     sign_in_to_loomio: Iscriviti a {{site_name}}
     sign_in: Iscriviti

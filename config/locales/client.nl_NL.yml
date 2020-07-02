@@ -642,6 +642,7 @@ nl_NL:
     translate_outcome: Resultaat vertalen
     show_history: Toon bewerkingsgeschiedenis
     edited: Bewerkt
+    history: Geschiedenis
     pin_thread: Bord vastprikken
     unpin_thread: Bord ontprikken
     pin_event: Pin vast aan de tijdslijn
@@ -1273,7 +1274,6 @@ nl_NL:
       success: Bord is verplaatst naar {{name}}
   delete_comment_dialog:
     title: 'Verwijder reactie'
-    question: 'Weet je zeker dat je deze reactie wilt verwijderen?'
     confirm: 'Verwijder reactie'
   contact_message_form:
     title: "Hallo! Hoe kunnen we helpen?"
@@ -1545,7 +1545,6 @@ nl_NL:
     authored_by: 'Door {{name}}'
   poll_common_delete_modal:
     question: Ben je zeker dat je dit wilt verwijderen?
-    title: Beslissing verwijderen
     success: Succesvol verwijderd
   poll_common_form:
     title: Titel
@@ -1781,14 +1780,6 @@ nl_NL:
     what_is_this: "Dit is een live voorbeeld van een {{type}}. Je ben een deelnemer - doe eens een poging!"
   share_poll_page:
     title: Deel peiling - {{title}}
-  polls_page:
-    heading: Beslissingen
-    heading_with_group: Beslissingen in {{name}}
-    search_placeholder: Zoek naar peilingen...
-    polls_count: '{{count}} van de {{total}} peilingen worden getoond'
-    start_new_poll: Nieuwe beslissing
-    filter_placeholder: (Alle peilingen)
-    groups_placeholder: (Alle groepen)
   auth_form:
     code: '000000'
     sign_in_to_loomio: Log in op {{site_name}}

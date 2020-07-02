@@ -610,6 +610,7 @@ uk:
     translate_outcome: Перекласти результат
     show_history: Показати історію змін
     edited: Відредаговано
+    history: Історія
     pin_thread: Закріпити тему
     unpin_thread: Відкріпити тему
     pin_event: Закріпити на часовій шкалі
@@ -1211,7 +1212,6 @@ uk:
       success: Тема була переміщена до {{name}}
   delete_comment_dialog:
     title: 'Видалити коментар'
-    question: 'Ви впевнені, що хочете видалити цей коментар?'
     confirm: 'Видалити коментар'
   contact_message_form:
     title: "Привіт! Чим ми можемо допомогти?"
@@ -1474,7 +1474,6 @@ uk:
     authored_by: 'від {{name}}'
   poll_common_delete_modal:
     question: Ви впевнені що хочете видалити це?
-    title: Видалити рішення
     success: Видалено успішно
   poll_common_form:
     title: Назва
@@ -1707,14 +1706,6 @@ uk:
     what_is_this: "Це реальний приклад {{type}}. Ви учасник - спробуйте!"
   share_poll_page:
     title: Поширити опитування - {{title}}
-  polls_page:
-    heading: Рішення
-    heading_with_group: Рішення {{name}}
-    search_placeholder: Шукати опитування...
-    polls_count: Відображені {{count}} з {{total}} опитувань
-    start_new_poll: Нове рішення
-    filter_placeholder: (Всі опитування)
-    groups_placeholder: (Всі групи)
   auth_form:
     code: '000000'
     sign_in_to_loomio: Увійти до {{site_name}}

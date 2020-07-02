@@ -532,7 +532,6 @@ ko:
       success: 쓰레드가 {{name}} 으로 이동되었습니다.
   delete_comment_dialog:
     title: '댓글삭제'
-    question: '댓글을 지우시겠습니까?'
     confirm: '댓글삭제'
   contact_message_form:
     contact_us: '연락하기'

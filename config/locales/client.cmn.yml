@@ -517,6 +517,7 @@ cmn:
     translate_comment: 翻译意见
     edit_outcome: 编辑成果
     announce_outcome_active: （尚未通知任何人这个成果）
+    history: 历史
     pin_thread: 话题置顶
     unpin_thread: 话题取消置顶
     move_thread: 移动到群组
@@ -935,7 +936,6 @@ cmn:
       success: 话题已被移动到 {{name}}
   delete_comment_dialog:
     title: '删除意见'
-    question: '你确定你想要删除这条意见吗？'
     confirm: '删除意见'
   contact_message_form:
     subject_label: "主题"
@@ -1022,7 +1022,6 @@ cmn:
     submit: 分享成果
   poll_common_delete_modal:
     question: 您确定要删除这个吗？
-    title: 删除决策
     success: 删除成功
   poll_common_form:
     title: 标题
@@ -1123,9 +1122,6 @@ cmn:
     helptext: 拖放偏好顺序的选项（1 是您最偏好的选项）。您的前 {{count}} 个选项将会被记录。
   poll_common_subscribe_form:
     subscribe: 订阅
-  polls_page:
-    heading: 决策
-    start_new_poll: 新决策
   auth_form:
     invalid_email: "抱歉，这看起来不是有效的电子邮件地址"
     account_locked: "您的帐号因为太多次失败的登入尝试而被锁定。请检查您的电子邮件以取得解锁连结"

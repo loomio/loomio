@@ -360,6 +360,7 @@ tr:
   action_dock:
     edit_stance: Konumunu değiştir
     edited: Düzenlendi
+    history: Geçmiş
     pin_event: Zaman çizelgesine sabitle
     tag_thread: Etiketleri yönet
     delete_thread: Müzakereyi sil
@@ -661,7 +662,6 @@ tr:
       success: 'Müzakere {{name}} grubuna taşındı '
   delete_comment_dialog:
     title: 'Yorumu sil'
-    question: 'Bu yorumu silmek istediğinden emin misin?'
     confirm: 'Yorumu sil'
   contact_message_form:
     contact_us: 'Bizimle iletişime geçin'

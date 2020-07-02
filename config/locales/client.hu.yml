@@ -570,6 +570,7 @@ hu:
     translate_outcome: Az eredmény lefordítása
     show_history: A szerkesztési előzmények megjelenítése
     edited: Szerkesztette
+    history: Előzmény
     pin_thread: Téma rögzítése
     unpin_thread: Téma rögzítésének megszüntetése
     pin_event: Rögzítse az idővonalhoz
@@ -1138,7 +1139,6 @@ hu:
       success: A téma áthelyezve a(z) {{name}} mappába
   delete_comment_dialog:
     title: 'Hozzászólás törlése'
-    question: 'Biztosan törölni akarod ezt a hozzászólást?'
     confirm: 'Hozzászólás törlése'
   contact_message_form:
     title: "Szia! Hogyan segíthetünk?"
@@ -1390,7 +1390,6 @@ hu:
     authored_by: 'tőle: {{name}}'
   poll_common_delete_modal:
     question: Biztosan törli ezt?
-    title: Törölje a döntést
     success: Sikeresen törölve
   poll_common_form:
     title: Cím
@@ -1595,14 +1594,6 @@ hu:
     what_is_this: "Ez a {{type}} élő példája. Ön résztvevő - próbáld ki!"
   share_poll_page:
     title: Közvélemény-kutatás megosztása - {{title}}
-  polls_page:
-    heading: Döntések
-    heading_with_group: Döntések a(z) {{name}} -ban
-    search_placeholder: Szavazások keresése ...
-    polls_count: A(z) {{összes}} szavazás {{száma}} megjelenítése
-    start_new_poll: Új döntés
-    filter_placeholder: (Összes szavazás)
-    groups_placeholder: (Összes csoport)
   auth_form:
     code: '000000'
     sign_in_to_loomio: 'Bejelentkezés a következőhöz: {{site_name}}'

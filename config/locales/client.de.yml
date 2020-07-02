@@ -639,6 +639,7 @@ de:
     translate_outcome: Ergebnis übersetzen
     show_history: Bearbeitungsverlauf anzeigen
     edited: Bearbeitet
+    history: 'Vergangenheit '
     pin_thread: Diskussion anheften
     unpin_thread: Diskussion nicht mehr anheften
     pin_event: An Timeline anheften
@@ -1270,7 +1271,6 @@ de:
       success: Diskussion wurde nach {{name}} verschoben
   delete_comment_dialog:
     title: 'Kommentar löschen'
-    question: 'Bist du sicher, dass du dieses Kommentar löschen möchtest?'
     confirm: 'Kommentar löschen'
   contact_message_form:
     title: "Hey! Wie können wir dir helfen?"
@@ -1535,7 +1535,6 @@ de:
     authored_by: 'Von {{name}}'
   poll_common_delete_modal:
     question: Wirklich löschen?
-    title: Abstimmung löschen
     success: Erfolgreich gelöscht
   poll_common_form:
     title: Titel
@@ -1773,14 +1772,6 @@ de:
     what_is_this: "Dies ist ein Live-Beispiel für {{type}}. Sie sind Teilnehmer - probieren Sie es aus!"
   share_poll_page:
     title: Abstimmung {{title}} teilen
-  polls_page:
-    heading: Abstimmungen
-    heading_with_group: Entscheidungen in {{name}}
-    search_placeholder: Abstimmungen durchsuchen...
-    polls_count: '{{count}} von {{total}} Abstimmungen werden angezeigt'
-    start_new_poll: Neue Abstimmung
-    filter_placeholder: (Alle Abstimmungen)
-    groups_placeholder: (Alle Gruppen)
   auth_form:
     code: '000000'
     sign_in_to_loomio: Einloggen bei {{site_name}}

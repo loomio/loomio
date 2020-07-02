@@ -309,139 +309,16 @@ nl_NL:
       your_response: "Jij stemde:"
       please_respond: Graag antwoorden
       vote_now: Stem nu
-    proposal:
-      subject:
-        poll_created: '%{actor} startte een voorstel: %{title}'
-        poll_closing_soon: 'Voorstel sluit over 24 uur: %{title}'
-        poll_closing_soon_author: 'Je voorstel sluit over 24 uur: %{title}'
-        poll_expired: "Voorstel gesloten: %{title}"
-        poll_expired_author: 'Je voorstel werd gesloten. Deel een uitkomst van: %{title}'
-        outcome_created: '%{actor} deelde de uitkomst van een voorstel: %{title}'
-        outcome_announced: '%{actor} deelde de uitkomst van een voorstel: %{title}'
-        stance_created: "%{actor} stemde op: %{title}"
-      header:
-        poll_created: '<strong>%{actor}</strong> heeft een voorstel gestart'
-        poll_closing_soon: '<strong>%{actor}</strong>''s voorstel sluit over 24 uur. Nu is een goed moment om te stemmen, je te bedenken, of anderen aan te moedigen om deel te nemen.'
-        poll_closing_soon_author: 'Je voorstel sluit over 24 uur - nu is een goed moment om mensen er aan te herinneren of de deadline op te schuiven indien nodig.'
-        poll_expired: "<strong>%{actor}'s</strong> voorstel werd gesloten: %{title}"
-        outcome_created: '<strong>%{actor}</strong> heeft een uitkomst van een voorstel gedeeld.'
-        outcome_announced: '<strong>%{actor}</strong> heeft een uitkomst van een voorstel gedeeld.'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    poll:
-      subject:
-        poll_created: ' %{actor} heeft een peiling gestart: %{title}'
-        poll_edited: '%{actor} bewerkte de peiling: %{title}'
-        poll_closing_soon: 'Peiling sluit over 24 uur: %{title}'
-        poll_closing_soon_author: 'Je peiling sluit over 24 uur: %{title}'
-        poll_expired: "Peilingsresultaten: %{title}"
-        poll_expired_author: 'Je peiling werd gesloten. Deel een uitkomst van: %{title}'
-        poll_option_added: '%{actor} voegde opties toe aan: %{title}'
-        poll_option_added_author: '%{actor} voegde opties toe aan: %{title}'
-        outcome_created: '%{actor} heeft een uitkomst van een peiling gedeeld: %{title}'
-        outcome_announced: '%{actor} heeft een uitkomst van een peiling gedeeld: %{title}'
-        stance_created: "%{actor} stemde op: %{title}"
-        stance_created_author: "Gelieve je stem te bevestigen op: %{title}"
-      header:
-        poll_created: '<strong>%{actor}</strong> heeft een peiling gestart'
-        poll_closing_soon: '<strong>%{actor}</strong> ''s peiling sluit over 24 uur. Nu is een goed moment om te stemmen, je te bedenken, of anderen aan te moedigen om deel te nemen.'
-        poll_closing_soon_author: 'Je peiling sluit over 24 uur - nu is een goed moment om mensen er aan te herinneren of de deadline op te schuiven indien nodig.'
-        poll_option_added: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
-        outcome_created: '<strong>%{actor}</strong> heeft een uitkomst van een peiling gedeeld.'
-        outcome_announced: '<strong>%{actor}</strong> heeft een uitkomst van een peiling gedeeld.'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    score:
-      subject:
-        poll_created: ' %{actor} heeft een peiling gestart: %{title}'
-        poll_edited: '%{actor} bewerkte de peiling: %{title}'
-        poll_closing_soon: 'Peiling sluit over 24 uur: %{title}'
-        poll_closing_soon_author: 'Je peiling sluit over 24 uur: %{title}'
-        poll_expired: "Peilingsresultaten: %{title}"
-        poll_expired_author: 'Je peiling werd gesloten. Deel een uitkomst van: %{title}'
-        poll_option_added: '%{actor} voegde opties toe aan: %{title}'
-        poll_option_added_author: '%{actor} voegde opties toe aan: %{title}'
-        outcome_created: '%{actor} heeft een uitkomst van een peiling gedeeld: %{title}'
-        outcome_announced: '%{actor} heeft een uitkomst van een peiling gedeeld: %{title}'
-        stance_created: "%{actor} stemde op: %{title}"
-        stance_created_author: "Gelieve je stem te bevestigen op: %{title}"
-      header:
-        poll_created: '<strong>%{actor}</strong> heeft een peiling gestart'
-        poll_edited: '<strong>%{actor}</strong> heeft een peiling aangepast'
-        poll_closing_soon: '<strong>%{actor}</strong> ''s peiling sluit over 24 uur. Nu is een goed moment om te stemmen, je te bedenken, of anderen aan te moedigen om deel te nemen.'
-        poll_closing_soon_author: 'Je peiling sluit over 24 uur - nu is een goed moment om mensen er aan te herinneren of de deadline op te schuiven indien nodig.'
-        poll_expired_author: 'Je peiling is <strong>gesloten</strong>. Neem alstublieft de tijd om na te gaan wat er gezegd is en <strong>deel een uitkomst</strong> met de groep, zodat mensen weten wat er hierna gebeurt.'
-        poll_option_added: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
-        outcome_created: '<strong>%{actor}</strong> heeft een uitkomst van een peiling gedeeld.'
-        outcome_announced: '<strong>%{actor}</strong> heeft een uitkomst van een peiling gedeeld.'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    count:
-      subject:
-        poll_expired: "Check gesloten: %{title}"
-        poll_expired_author: 'Je Check werd gesloten. Deel een uitkomst van: %{title}'
-        outcome_created: '%{actor} heeft een uitkomst gedeeld: %{title}'
-        outcome_announced: '%{actor} deelde een uitkomst: %{title}'
-        stance_created: "%{actor} heeft deelgenomen aan: %{title}"
-        stance_created_author: "Gelieve je stem te bevestigen op: %{title}"
-      header:
-        outcome_created: '<strong>%{actor}</strong> heeft een uitkomst gedeeld.'
-        outcome_announced: '<strong>%{actor}</strong> heeft een uitkomst gedeeld.'
-        stance_created: "<strong>%{actor}</strong> heeft deelgenomen aan: %{title}"
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    dot_vote:
-      subject:
-        poll_created: '%{actor} heeft een stippen stemming gestart: %{title}'
-        poll_closing_soon: 'Stippen stemming sluit over 24 uur: %{title}'
-        poll_closing_soon_author: 'Je stippen stemming sluit over 24 uur: %{title}'
-        poll_expired_author: 'Je Dotmocracy werd gesloten. Deel een uitkomst van: %{title}'
-        poll_option_added: '%{actor} voegde opties toe aan: %{title}'
-        poll_option_added_author: '%{actor} voegde opties toe aan: %{title}'
-        outcome_created: '%{actor} deelde een uitkomst: %{title}'
-        outcome_announced: '%{actor} deelde een uitkomst: %{title}'
-        stance_created: "%{actor} stemde op: %{title}"
-        stance_created_author: "Gelieve je stem te bevestigen op: %{title}"
-      header:
-        poll_created: '<strong>%{actor}</strong> startte een stippen stemming'
-        poll_closing_soon: '<strong>%{actor}</strong>''s stippen stemming sluit over 24 uur. Dit is een goed moment om te stemmen, van gedachten te veranderen, of anderen aan te moedigen om mee te doen.'
-        poll_closing_soon_author: 'Je stippen stemming sluit over 24 uur - misschien wil je mensen er aan herinneren of de deadline opschuiven indien nodig.'
-        poll_option_added: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
-        outcome_created: '<strong>%{actor}</strong> deelde de uitkomst van een stippen stemming.'
-        outcome_announced: '<strong>%{actor}</strong> deelde de uitkomst van een stippen stemming.'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    meeting:
-      subject:
-        poll_expired_author: 'Je moment bevragen werd gesloten. Deel de uitkomst van: %{title}'
-        poll_option_added: '%{actor} voegde opties toe aan: %{title}'
-        poll_option_added_author: '%{actor} voegde opties toe aan: %{title}'
-        outcome_created: '%{actor} heeft een uitkomst gedeeld: %{title}'
-        outcome_announced: '%{actor} deelde een uitkomst: %{title}'
-        stance_created: '%{actor} heeft deelgenomen aan: %{title}'
-        stance_created_author: "Gelieve je stem te bevestigen op: %{title}"
-      header:
-        poll_expired: "<strong>%{actor}'s</strong> moment bevragen werd gesloten"
-        poll_option_added: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
-        stance_created: "<strong>%{actor}</strong> heeft deelgenomen aan: %{title}"
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    ranked_choice:
-      subject:
-        poll_expired_author: 'Je keuzes rangschikken werd gesloten. Deel de uitkomst van: %{title}'
-        poll_option_added: '%{actor} voegde opties toe aan: %{title}'
-        poll_option_added_author: '%{actor} voegde opties toe aan: %{title}'
-        stance_created: '%{actor} heeft deelgenomen aan: %{title}'
-        stance_created_author: "Gelieve je stem te bevestigen op: %{title}"
-      header:
-        poll_expired: "<strong>%{actor}'s</strong>keuze rangschikken werd gesloten"
-        poll_option_added: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
-        stance_created: "<strong>%{actor}</strong> heeft deelgenomen aan: %{title}"
+    subject:
+      poll_option_added: '%{actor} voegde opties toe aan: %{title}'
+      poll_option_added_author: '%{actor} voegde opties toe aan: %{title}'
+      stance_created: "%{actor} stemde op: %{title}"
+      stance_created_author: "Gelieve je stem te bevestigen op: %{title}"
+    header:
+      poll_option_added: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
+      poll_option_added_author: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
+    body:
+      voted: '<strong>%{participant}</strong>:'
   comment_by: Reactie door %{comment_author}
   poll_unsubscribe:
     visit_poll: Peiling bekijken

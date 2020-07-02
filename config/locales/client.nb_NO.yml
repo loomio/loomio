@@ -555,7 +555,6 @@ nb_NO:
     pin_thread: Fest tråd
   delete_comment_dialog:
     title: 'Slett kommentar'
-    question: 'Er du sikker på at du vil slette denne kommentaren?'
     confirm: 'Slett kommentar'
   decision_tools_card:
     proposal_title: Forslag
@@ -599,9 +598,6 @@ nb_NO:
     total: Totalt
   poll_common_subscribe_form:
     subscribe: Meld deg på
-  polls_page:
-    heading: Beslutninger
-    start_new_poll: Ny beslutning
   auth_form:
     name: Navn
     email: E-post

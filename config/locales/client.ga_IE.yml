@@ -481,7 +481,6 @@ ga_IE:
     confirm: Bog an snáithe
   delete_comment_dialog:
     title: 'Scrios an trácht'
-    question: 'An bhfuil tú cinnte go dteastaíonn uait an trácht seo a scriosadh?'
     confirm: 'Scrios an trácht'
   contact_message_form:
     contact_us: 'Déan teagmháil linn'
