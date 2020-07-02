@@ -46,8 +46,8 @@ class Comment < ApplicationRecord
 
   define_counter_cache(:versions_count) { |comment| comment.versions.count }
 
-  def author
-    user || AnonymousUser.new
+  def user
+    super || AnonymousUser.new
   end
 
   def should_pin
