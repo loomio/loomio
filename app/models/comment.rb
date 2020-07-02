@@ -19,7 +19,6 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :parent, class_name: 'Comment'
 
-  alias_attribute :author, :user
   alias_attribute :author_id, :user_id
 
   has_many :documents, as: :model, dependent: :destroy
@@ -48,6 +47,10 @@ class Comment < ApplicationRecord
 
   def user
     super || AnonymousUser.new
+  end
+
+  def author
+    user
   end
 
   def should_pin
