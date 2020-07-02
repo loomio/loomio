@@ -19,14 +19,15 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :parent, class_name: 'Comment'
 
-  alias_attribute :author_id, :user_id
-
   has_many :documents, as: :model, dependent: :destroy
 
   validates_presence_of :user, unless: :discarded_at
 
   validate :parent_comment_belongs_to_same_discussion
   validate :has_body_or_attachment
+
+  alias_attribute :author, :user
+  alias_attribute :author_id, :user_id
 
   default_scope { includes(:user).includes(:documents) }
 
@@ -47,10 +48,6 @@ class Comment < ApplicationRecord
 
   def user
     super || AnonymousUser.new
-  end
-
-  def author
-    user
   end
 
   def should_pin
@@ -84,18 +81,6 @@ class Comment < ApplicationRecord
 
   def users_to_not_mention
     User.where(username: parent&.author&.username)
-  end
-
-  def body
-    discarded_at ? nil : super
-  end
-
-  def user_id
-    discarded_at ? nil : super
-  end
-
-  def user
-    discarded_at ? nil : super
   end
 
   private
