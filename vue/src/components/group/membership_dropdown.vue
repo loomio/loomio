@@ -62,7 +62,7 @@ export default
       method = if @membership.admin then 'removeAdmin' else 'makeAdmin'
       return if @membership.admin and @membership.user() == Session.user() and !confirm(@$t('memberships_page.remove_admin_from_self.question'))
       Records.memberships[method](@membership).then =>
-        FlashService.success "memberships_page.messages.#{snakeCase method}_success", name: (@membership.userName() || @membership.userEmail())
+        FlashService.success "memberships_page.messages.#{snakeCase method}_success", name: (@membership.user().name || @membership.user().email)
 </script>
 
 <template lang="pug">
