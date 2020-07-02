@@ -17,13 +17,19 @@ export default class RecordStore
 
   import: (data) ->
     return if isEmpty(data)
+
+    imported = []
+
     each @collectionNames, (name) =>
       snakeName = snakeCase(name)
       camelName = camelCase(name)
       if data[snakeName]?
-        each data[snakeName], (recordData) =>
-          @[camelName].importJSON(recordData)
+        each data[snakeName], (row) =>
+          imported.push([@[camelName].importJSON(row), row])
           true
+
+    each imported, (pair) ->
+      pair[0].afterUpdate(pair[1])
 
     @afterImport(data)
 

@@ -95,6 +95,8 @@ class Poll < ApplicationRecord
 
   validates :poll_type, inclusion: { in: AppConfig.poll_templates.keys }
   validates :details, length: {maximum: Rails.application.secrets.max_message_length }
+  
+  validates_presence_of :closing_at
 
   validate :poll_options_are_valid
   validate :valid_minimum_stance_choices

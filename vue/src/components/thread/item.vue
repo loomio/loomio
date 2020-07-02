@@ -53,8 +53,8 @@ export default
     headline: ->
       anonymousUser = {name: @$t('common.anonymous'), username: null }
       actor = (@event.actor() || @eventable.author() || anonymousUser)
-      @$t eventHeadline(@event, true ), # useNesting
-        author:   actor.name
+      @$t eventHeadline(@event, true ),
+        author:   actor.nameWithTitle(@eventable.group())
         username: actor.username
         key:      @event.model().key
         title:    eventTitle(@event)

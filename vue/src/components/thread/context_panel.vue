@@ -13,6 +13,9 @@ export default
     actions: ThreadService.actions(@discussion, @)
 
   computed:
+    author: ->
+      @discussion.author()
+
     arrangementAction: -> @actions['edit_arrangement']
 
     editThread: -> @actions['edit_thread']
@@ -71,9 +74,9 @@ export default
 
   div.mx-3.mb-2
     .context-panel__details.my-2.body-2(align-center)
-      user-avatar.mr-4(:user='discussion.author()', :size='40')
+      user-avatar.mr-4(:user='author', :size='40')
       span
-        router-link(:to="urlFor(discussion.author())") {{discussion.authorName()}}
+        router-link(:to="urlFor(author)") {{ author.nameWithTitle(discussion) }}
         mid-dot
         span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private(v-show='discussion.private')
           i.mdi.mdi-lock-outline

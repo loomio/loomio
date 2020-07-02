@@ -156,9 +156,25 @@ describe API::MembershipsController do
         users = json['users'].map { |c| c['id'] }
         groups = json['groups'].map { |g| g['id'] }
         expect(users).to include user_named_biff.id
+        expect(users).to include user_named_bang.id
         expect(users).to_not include alien_named_biff.id
         expect(users).to_not include pending_named_barb.id
         expect(groups).to include group.id
+      end
+
+      it 'returns users filtered by group and user_ids' do
+        get :index, params: { group_id: group.id, user_xids: user_named_biff.id.to_s, exclude_types: 'user group'}, format: :json
+
+        json = JSON.parse(response.body)
+        expect(json.keys).to include *(%w[memberships])
+        expect(json.keys).to_not include *(%w[groups])
+
+        user_ids = json['memberships'].map { |c| c['user_id'] }
+        expect(user_ids.length).to eq 1
+        expect(user_ids).to include user_named_biff.id
+        expect(user_ids).to_not include user_named_bang.id
+        expect(user_ids).to_not include alien_named_biff.id
+        expect(user_ids).to_not include pending_named_barb.id
       end
 
       it 'returns pending users' do

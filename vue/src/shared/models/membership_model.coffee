@@ -2,6 +2,7 @@ import BaseModel from '@/shared/record_store/base_model'
 import AppConfig from '@/shared/services/app_config'
 import compareAsc from 'date-fns/compareAsc'
 import {each, invokeMap} from 'lodash-es'
+import Vue from 'vue'
 
 export default class MembershipModel extends BaseModel
   @singular: 'membership'
@@ -14,17 +15,10 @@ export default class MembershipModel extends BaseModel
     @belongsTo 'user'
     @belongsTo 'inviter', from: 'users'
 
-  userName: ->
-    @user().nameWithTitle(@group()) if @user()
-
-  userUsername: ->
-    @user().username
-
-  userEmail: ->
-    @user().email
-
-  groupName: ->
-    @group().name
+  afterUpdate: ->
+    console.log "setting title:", @user().name, @groupId, @title
+    Vue.set(@user().titles, @groupId, @title) if @title
+    console.log @user()
 
   saveVolume: (volume, applyToAll = false) ->
     @processing = true

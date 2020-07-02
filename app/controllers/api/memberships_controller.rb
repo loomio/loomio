@@ -12,12 +12,18 @@ class API::MembershipsController < API::RestfulController
 
   def index
     instantiate_collection do |collection|
+      if params[:user_xids]
+        collection = collection.where(user_id: params[:user_xids].split('x').map(&:to_i))
+      end
+
       if params[:pending]
         collection.pending
       else
         collection.active
       end.where(group: model.group).order('memberships.admin desc, memberships.created_at desc')
     end
+
+
     respond_with_collection(scope: index_scope)
   end
 
@@ -128,11 +134,12 @@ class API::MembershipsController < API::RestfulController
   def accessible_records
     visible = resource_class.joins(:group).joins(:user).includes(:user, :inviter, {group: [:parent]})
     if current_user.group_ids.any?
-      visible.where("group_id IN (#{current_user.group_ids.join(',')}) OR
-                     groups.parent_id IN (#{ids_or_null(current_user.adminable_group_ids)}) OR
-                     groups.is_visible_to_public = 't'")
+      visible.where("group_id IN (:group_ids) OR
+                     groups.parent_id IN (:parent_group_ids) OR
+                     groups.is_visible_to_public = 't'",
+                     group_ids: current_user.group_ids,
+                     parent_group_ids: ids_or_null(current_user.adminable_group_ids))
     else
-      # why do we do this?
       visible.where("groups.is_visible_to_public = 't'")
     end
   end
@@ -141,9 +148,10 @@ class API::MembershipsController < API::RestfulController
     if ids.length == 0
       'null'
     else
-      ids.join(',')
+      ids
     end
   end
+
   def visible_invitables
     load_and_authorize :group, :invite_people
     Queries::VisibleInvitableMemberships.new(group: @group, user: current_user, query: params[:q])

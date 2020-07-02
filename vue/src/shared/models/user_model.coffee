@@ -1,5 +1,6 @@
 import BaseModel from '@/shared/record_store/base_model'
 import AppConfig from '@/shared/services/app_config'
+import MembershipService from '@/shared/services/membership_service'
 import { find, invokeMap, filter, flatten, uniq, head, compact, some, map } from 'lodash-es'
 
 export default class UserModel extends BaseModel
@@ -8,11 +9,7 @@ export default class UserModel extends BaseModel
 
   relationships: ->
     @hasMany 'memberships'
-  #   @hasMany 'notifications'
-  #   @hasMany 'contacts'
-  #   @hasMany 'versions'
-  #   @hasMany 'reactions'
-
+    
   defaultValues: ->
     shortBio: ''
     shortBioFormat: 'html'
@@ -21,6 +18,7 @@ export default class UserModel extends BaseModel
     attachments: []
     locale: AppConfig.defaultLocale
     experiences: []
+    titles: {}
 
   localeName: ->
     (find(AppConfig.locales, (h) => h.key == @locale) or {}).name
@@ -90,8 +88,13 @@ export default class UserModel extends BaseModel
     @avatarUrl[size]
 
   nameWithTitle: (model) ->
-    compact([@name, @titleFor(model)]).join(' · ')
+    group_id = model.group().id
+    @ensureTitleForGroupId(group_id)
+    compact([@name, @titles[group_id]]).join(' · ')
 
-  titleFor: (model) ->
-    return unless model && model.group()
-    (model.group().membershipFor(@) || {}).title
+  ensureTitleForGroupId: (group_id) ->
+    if @titles[group_id]?
+      @titles[group_id]
+    else
+      MembershipService.enqueueFetch(@id, group_id)
+      @titles[group_id] = ''

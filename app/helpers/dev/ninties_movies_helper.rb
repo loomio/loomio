@@ -249,7 +249,8 @@ module Dev::NintiesMoviesHelper
       poll_type: :proposal,
       poll_option_names: %w(agree abstain disagree block),
       author: patrick,
-      title: "Let's go to the moon!"
+      title: "Let's go to the moon!",
+      closing_at: 3.days.from_now
     )
   end
 
