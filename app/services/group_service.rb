@@ -19,7 +19,7 @@ module GroupService
     Membership.import(new_memberships, on_duplicate_key_ignore: true)
 
     if group.parent
-      existing_parent_members = group.parent.accepted_members.where(id: users.pluck(:id))
+      existing_parent_members = group.parent.accepted_members.where(id: users.verified.pluck(:id))
       Membership.not_archived.where(group_id: group.id, user_id: existing_parent_members.pluck(:id)).each do |m|
         AcceptMembershipWorker.perform_async(m.id)
       end
