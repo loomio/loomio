@@ -1969,9 +1969,9 @@ en:
 
   auth_form:
     code: '000000'
-    youre_invited: You have been invited to join {{group_name}}. Sign in to continue
-    youre_invited_discussion: You have been invited to join the discussion. Sign in to continue
-    youre_invited_poll: You have been invited to vote. Sign in to continue
+    youre_invited: You have been invited to join {{group_name}}.
+    youre_invited_discussion: You have been invited to join the discussion.
+    youre_invited_poll: You have been invited to vote.
     sign_in_to_loomio: Sign into {{site_name}}
     sign_in_help: Trouble signing in?
     sign_in: Sign in
