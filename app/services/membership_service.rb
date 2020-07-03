@@ -30,8 +30,11 @@ class MembershipService
 
   def self.update_user_titles_and_broadcast(membership_id)
     membership = Membership.find(membership_id)
+
     user = membership.user
     group = membership.group
+
+    return unless user && group
 
     titles = (user.experiences['titles'] || {})
     titles[group.id] = membership.title
