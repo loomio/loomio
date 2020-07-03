@@ -20,18 +20,20 @@ export default
       key: 'authForm'
       collections: ['groups']
       query: (store) =>
-        return unless AppConfig.pending_identity
-        @pendingGroup = store.groups.find(AppConfig.pending_identity.group_id)
+        @pendingGroup = store.groups.find(@pendingIdentity.group_id)
 
   computed:
     loginComplete: ->
       @user.sentLoginLink or @user.sentPasswordLink
 
     pendingDiscussion: ->
-      AppConfig.pending_identity.identity_type == 'discussion_reader'
+      @pendingIdentity.identity_type == 'discussion_reader'
 
     pendingPoll: ->
-      AppConfig.pending_identity.identity_type == 'stance'
+      @pendingIdentity.identity_type == 'stance'
+
+    pendingIdentity: ->
+      (AppConfig.pending_identity || {})
 
 </script>
 <template lang="pug">
