@@ -26,7 +26,7 @@ export default class StanceModel extends BaseModel
 
   participantName: ->
     if @participant()
-      @participant().nameWithTitle(@poll())
+      @participant().nameWithTitle(@poll().group())
     else
       i18n.t('common.anonymous')
 

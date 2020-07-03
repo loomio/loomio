@@ -89,9 +89,5 @@ export default class UserModel extends BaseModel
     return @avatarUrl if typeof @avatarUrl is 'string'
     @avatarUrl[size]
 
-  nameWithTitle: (model) ->
-    compact([@name, @titleFor(model)]).join(' · ')
-
-  titleFor: (model) ->
-    return unless model && model.group()
-    (model.group().membershipFor(@) || {}).title
+  nameWithTitle: (group) ->
+    compact([@name, (@titles[group.id] || @titles[group.parentId])]).join(' · ')

@@ -30,9 +30,9 @@ export default class BaseModel
     Object.defineProperty(@, 'recordsInterface', value: recordsInterface, enumerable: false)
     Object.defineProperty(@, 'recordStore', value: recordsInterface.recordStore, enumerable: false)
     Object.defineProperty(@, 'remote', value: recordsInterface.remote, enumerable: false)
+    @buildRelationships() if @relationships?
     @update(@defaultValues())
     @update(attributes)
-    @buildRelationships() if @relationships?
     @afterConstruction()
 
   bumpVersion: ->

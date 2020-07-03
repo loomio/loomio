@@ -88,7 +88,7 @@ export default class DiscussionModel extends BaseModel
     groupName: @groupName()
 
   authorName: ->
-    @author().nameWithTitle(@)
+    @author().nameWithTitle(@group())
 
   groupName: ->
     @group().name if @group()

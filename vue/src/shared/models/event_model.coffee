@@ -45,7 +45,7 @@ export default class EventModel extends BaseModel
 
   actorName: ->
     if @actor()
-      @actor().nameWithTitle(@discussion())
+      @actor().nameWithTitle(@discussion().group())
     else
       i18n.t('common.anonymous')
 

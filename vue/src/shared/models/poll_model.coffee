@@ -69,7 +69,7 @@ export default class PollModel extends BaseModel
     head orderBy(@recordStore.stances.find(latest: true, pollId: @id, myStance: true), 'createdAt', 'desc')
 
   authorName: ->
-    @author().nameWithTitle(@)
+    @author().nameWithTitle(@group())
 
   reactions: ->
     @recordStore.reactions.find(reactableId: @id, reactableType: "Poll")

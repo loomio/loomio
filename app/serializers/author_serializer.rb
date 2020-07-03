@@ -1,6 +1,6 @@
 class AuthorSerializer < ApplicationSerializer
   attributes :id, :name, :username, :avatar_initials, :avatar_kind,
-             :avatar_url, :email_hash, :time_zone, :locale, :created_at,
+             :avatar_url, :email_hash, :time_zone, :locale, :created_at, :titles
 
   def name
     object.name ||
@@ -8,8 +8,8 @@ class AuthorSerializer < ApplicationSerializer
     placeholder_name
   end
 
-  def include_email?
-    false
+  def titles
+    object.experiences['titles'] || {}
   end
 
   def email_hash

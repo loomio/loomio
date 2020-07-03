@@ -15,7 +15,7 @@ export default class MembershipModel extends BaseModel
     @belongsTo 'inviter', from: 'users'
 
   userName: ->
-    @user().nameWithTitle(@group()) if @user()
+    @user().nameWithTitle(@group())
 
   userUsername: ->
     @user().username
