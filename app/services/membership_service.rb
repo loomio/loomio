@@ -6,12 +6,8 @@ class MembershipService
   def self.redeem(membership:, actor:)
     raise Membership::InvitationAlreadyUsed.new(membership) if membership.accepted_at
 
-    if existing_membership = Membership.accepted.find_by(group_id: membership.group_id, user_id: actor.id)
-      membership.destroy
-      return false
-    end
 
-    membership.accept!
+    membership.accept!(actor)
 
     Events::InvitationAccepted.publish!(membership)
   end
