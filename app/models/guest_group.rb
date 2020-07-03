@@ -1,0 +1,2 @@
+class GuestGroup < Group
+end

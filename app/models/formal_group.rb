@@ -1,0 +1,2 @@
+class FormalGroup < Group
+end
