@@ -23,7 +23,21 @@ class MembershipService
     return false unless membership.valid?
     membership.save!
 
+    update_user_titles_and_broadcast(membership.id)
+
     EventBus.broadcast 'membership_update', membership, params, actor
+  end
+
+  def self.update_user_titles_and_broadcast(membership_id)
+    membership = Membership.find(membership_id)
+    user = membership.user
+    group = membership.group
+
+    titles = (user.experiences['titles'] || {})
+    titles[group.id] = membership.title
+    user.experiences['titles'] = titles
+    user.save!
+    MessageChannelService.publish_data(AuthorSerializer.new(user).as_json, to: group.message_channel)
   end
 
   def self.set_volume(membership:, params:, actor:)

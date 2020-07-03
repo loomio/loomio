@@ -22,7 +22,7 @@ export default class DocumentModel extends BaseModel
       when 'Poll'       then @model().title
 
   authorName: ->
-    @author().nameWithTitle(@model()) if @author()
+    @author().nameWithTitle(@model().group()) if @author()
 
   isAnImage: ->
     @icon == 'image'

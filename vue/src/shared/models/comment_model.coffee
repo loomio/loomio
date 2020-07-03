@@ -59,7 +59,7 @@ export default class CommentModel extends BaseModel
     @recordStore.users.find(map(@reactions(), 'userId'))
 
   authorName: ->
-    @author().nameWithTitle(@discussion()) if @author()
+    @author().nameWithTitle(@discussion().group()) if @author()
 
   authorUsername: ->
     @author().username

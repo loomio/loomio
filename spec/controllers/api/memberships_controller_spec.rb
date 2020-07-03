@@ -39,6 +39,16 @@ describe API::MembershipsController do
     end
   end
 
+  describe 'update' do
+    it 'updates membership title, user titles, and broadcasts author to group' do
+      m = group.membership_for(user_named_biff)
+      post :update, params: { id: m.id, membership: {title: 'dr' } }
+      expect(response.status).to eq 200
+      expect(m.reload.title).to eq 'dr'
+      expect(user_named_biff.reload.experiences['titles'][m.group_id.to_s]).to eq 'dr'
+    end
+  end
+
   describe 'resend' do
     let(:group) { create :group }
     let(:discussion) { create :discussion }

@@ -28,7 +28,7 @@ v-card.membership-modal
   v-card-text.membership-form
     p.lmo-hint-text.membership-form__helptext(v-t="{ path: 'membership_form.title_helptext.group', args: { name: membership.user().name } }")
     label(for='membership-title', v-t="'membership_form.title_label'")
-    v-text-field#membership-title.membership-form__title-input.lmo-primary-form-input(:placeholder="$t('membership_form.title_placeholder')" v-model='membership.title', maxlength='255')
+    v-text-field#membership-title.membership-form__title-input.lmo-primary-form-input(autofocus v-on:keyup.enter="submit" :placeholder="$t('membership_form.title_placeholder')" v-model='membership.title', maxlength='255')
     validation-errors(:subject='membership', field='title')
   v-card-actions.membership-form-actions
     v-spacer

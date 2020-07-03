@@ -20,7 +20,7 @@ export default class VersionModel extends BaseModel
      includes(keys(@changes), name)
 
   authorName: ->
-    @author().nameWithTitle(@model()) if @author()
+    @author().nameWithTitle(@model().group()) if @author()
 
   model: ->
     @recordStore["#{@itemType.toLowerCase()}s"].find(@itemId)

@@ -32,7 +32,7 @@ export default class OutcomeModel extends BaseModel
       reactableType: capitalize(@constructor.singular)
 
   authorName: ->
-    @author().nameWithTitle(@poll()) if @author()
+    @author().nameWithTitle(@poll().group())
 
   group: ->
     @poll().group() if @poll()
