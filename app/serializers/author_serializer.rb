@@ -8,6 +8,10 @@ class AuthorSerializer < ApplicationSerializer
     placeholder_name
   end
 
+  def include_email?
+    false
+  end
+
   def titles
     object.experiences['titles'] || {}
   end

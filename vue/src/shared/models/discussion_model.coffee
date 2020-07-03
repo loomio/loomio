@@ -91,7 +91,7 @@ export default class DiscussionModel extends BaseModel
     @author().nameWithTitle(@group())
 
   groupName: ->
-    @group().name if @group()
+    (@group() || {}).name
 
   activePolls: ->
     filter @polls(), (poll) ->
