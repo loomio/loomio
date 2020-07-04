@@ -14,16 +14,17 @@ class MembershipService
     end
 
     existing_membership = Membership.where("id != ?", membership.id).where(group_id: membership.group_id, user_id: actor.id).first
-
-    membership.update(user: actor, accepted_at: DateTime.now, saml_session_expires_at: expires_at)
+    update_success = membership.update(user: actor, accepted_at: DateTime.now, saml_session_expires_at: expires_at)
 
     if membership.inviter
       membership.inviter.groups.where(id: Array(membership.experiences['invited_group_ids'])).each do |group|
-        membership.group.add_member!(actor, inviter: membership.inviter) if membership.inviter.can?(:add_members, membership.group)
+        group.add_member!(actor, inviter: membership.inviter) if membership.inviter.can?(:add_members, membership.group)
       end
     end
 
-    membership.destroy if existing_membership
+    if existing_membership && !update_success
+      membership.destroy
+    end
 
     Events::InvitationAccepted.publish!(membership) if notify
   end
