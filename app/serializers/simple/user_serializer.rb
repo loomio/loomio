@@ -6,6 +6,10 @@ class Simple::UserSerializer < ActiveModel::Serializer
   def email_hash
     Digest::MD5.hexdigest(object.email.to_s.downcase)
   end
+  
+  def titles
+    object.experiences['titles'] || {}
+  end
 
   def include_email_hash?
     object.avatar_kind == 'gravatar'

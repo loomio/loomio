@@ -2,6 +2,8 @@ class AcceptMembershipWorker
   include Sidekiq::Worker
 
   def perform(membership_id, user_id)
-    Membership.find(membership_id).accept!(User.find(user_id))
+    membership = Membership.find(membership_id)
+    user = User.find(user_id)
+    MembershipService.redeem(membership: membership, actor: user, notify: false)
   end
 end
