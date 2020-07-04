@@ -71,7 +71,8 @@ class Membership < ApplicationRecord
 
 
     transaction do
-      update!(user: actor, accepted_at: DateTime.now, saml_session_expires_at: expires_at)
+      update(user: actor)
+      update!(accepted_at: DateTime.now, saml_session_expires_at: expires_at)
 
       if inviter
         inviter.groups.where(id: Array(experiences['invited_group_ids'])).each do |group|
