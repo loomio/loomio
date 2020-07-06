@@ -23,6 +23,9 @@ export default
     groupIds: []
 
   methods:
+    routeQuery: (o) ->
+      @$router.replace(@mergeQuery(o))
+
     openStartDiscussionModal: ->
       EventBus.$emit 'openModal',
         component: 'DiscussionForm'
@@ -171,15 +174,15 @@ div.discussions-panel(v-if="group")
           span(v-t="{path: filterName($route.query.t), args: {count: unreadCount}}")
           v-icon mdi-menu-down
       v-list(dense)
-        v-list-item.discussions-panel__filters-open(:to="mergeQuery({t: null})")
+        v-list-item.discussions-panel__filters-open(@click="routeQuery({t: null})")
           v-list-item-title(v-t="'discussions_panel.open'")
-        v-list-item.discussions-panel__filters-all(:to="mergeQuery({t: 'all'})")
+        v-list-item.discussions-panel__filters-all(@click="routeQuery({t: 'all'})")
           v-list-item-title(v-t="'discussions_panel.all'")
-        v-list-item.discussions-panel__filters-closed(:to="mergeQuery({t: 'closed'})")
+        v-list-item.discussions-panel__filters-closed(@click="routeQuery({t: 'closed'})")
           v-list-item-title(v-t="'discussions_panel.closed'")
-        v-list-item.discussions-panel__filters-unread(:to="mergeQuery({t: 'unread'})")
+        v-list-item.discussions-panel__filters-unread(@click="routeQuery({t: 'unread'})")
           v-list-item-title(v-t="{path: 'discussions_panel.unread', args: { count: unreadCount }}")
-        //- v-list-item(:to="mergeQuery({t: 'subscribed'})")
+        //- v-list-item(@click="routeQuery({t: 'subscribed'})")
         //-   v-list-item-title(v-t="'change_volume_form.simple.loud'")
 
     v-menu
@@ -188,10 +191,11 @@ div.discussions-panel(v-if="group")
           span(v-if="$route.query.tag") {{$route.query.tag}}
           span(v-else v-t="'loomio_tags.all_tags'")
           v-icon mdi-menu-down
+
       v-list(dense)
-        v-list-item(:to="mergeQuery({tag: null})")
+        v-list-item(@click="routeQuery({tag: null})" key="all")
           v-list-item-title(v-t="'loomio_tags.all_tags'")
-        v-list-item(v-for="tag in groupTags" :key="tag" :to="mergeQuery({tag: tag})")
+        v-list-item(v-for="tag in groupTags" :key="tag" @click="routeQuery({tag: tag})")
           v-list-item-title {{tag}}
     v-text-field.mr-2.flex-grow-1(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_threads', {name: group.name})" append-icon="mdi-magnify")
     v-btn.discussions-panel__new-thread-button(@click='openStartDiscussionModal()' color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
