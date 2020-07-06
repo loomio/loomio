@@ -105,23 +105,6 @@ export default new class GroupService
                 flash:    'group_page.messages.leave_group_success'
               redirect: '/dashboard'
 
-    archive_group:
-      name: 'group_page.options.deactivate_group'
-      icon: 'mdi-archive'
-      canPerform: ->
-        AbilityService.canArchiveGroup(group)
-      perform: ->
-        openModal
-          component: 'ConfirmModal'
-          props:
-            confirm:
-              submit:     group.archive
-              text:
-                title:    'archive_group_form.title'
-                helptext: 'archive_group_form.question'
-                flash:    'group_page.messages.archive_group_success'
-              redirect:   '/dashboard'
-
     destroy_group:
       name: 'delete_group_modal.title'
       icon: 'mdi-delete'
