@@ -128,11 +128,6 @@ class User < ApplicationRecord
 
   has_many :tags, through: :groups
 
-
-  has_one :deactivation_response,
-          class_name: 'UserDeactivationResponse',
-          dependent: :destroy
-
   before_save :set_avatar_initials
   initialized_with_token :unsubscribe_token,        -> { Devise.friendly_token }
   initialized_with_token :email_api_key,            -> { SecureRandom.hex(16) }

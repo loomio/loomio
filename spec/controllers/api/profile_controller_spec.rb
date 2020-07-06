@@ -131,20 +131,12 @@ describe API::ProfileController do
     before { sign_in user }
     context 'success' do
       it "deactivates the users account" do
-        post :deactivate, params: {user: {deactivation_response: '' }}, format: :json
+        post :deactivate, format: :json
         expect(response.status).to eq 200
         json = JSON.parse(response.body)
         user_emails = json['users'].map { |v| v['email'] }
         expect(user_emails).to include user.email
         expect(user.reload.deactivated_at).to be_present
-        expect(UserDeactivationResponse.last).to be_blank
-      end
-
-      it 'can record a deactivation response' do
-        post :deactivate, params: { user: { deactivation_response: '(╯°□°)╯︵ ┻━┻'} }, format: :json
-        deactivation_response = UserDeactivationResponse.last
-        expect(deactivation_response.body).to eq '(╯°□°)╯︵ ┻━┻'
-        expect(deactivation_response.user).to eq user
       end
     end
   end

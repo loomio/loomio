@@ -2,7 +2,7 @@ class PermittedParams < Struct.new(:params)
   MODELS = %w(
     user group membership_request membership poll outcome
     stance discussion discussion_reader comment
-    contact_message user_deactivation_response announcement document
+    contact_message announcement document
     webhook contact_request reaction tag discussion_tag group_survey
   )
 
@@ -116,10 +116,6 @@ class PermittedParams < Struct.new(:params)
 
   def contact_message_attributes
     [:email, :subject, :user_id, :message, :name]
-  end
-
-  def user_deactivation_response_attributes
-    [:body]
   end
 
   def contact_request_attributes

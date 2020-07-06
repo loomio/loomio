@@ -89,10 +89,6 @@ class Queries::PersonalDataQuery
     Stance.where(participant_id: user.id)
   end
 
-  def self.deactivation_responses(user)
-    UserDeactivationResponse.where(user_id: user.id)
-  end
-
   def self.users(user)
     User.where(email: user.email)
   end

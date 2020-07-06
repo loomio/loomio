@@ -270,7 +270,7 @@ describe API::MembershipsController do
       end
 
       it 'does not return deactivated users' do
-        alien_named_biff.deactivate!
+        DeactivateUserWorker.new.perform(alien_named_biff.id)
         get :invitables, params: { group_id: group.id, q: 'beef' }, format: :json
         json = JSON.parse(response.body)
         users = json['users'].map { |c| c['id'] }
