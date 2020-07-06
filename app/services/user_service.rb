@@ -9,9 +9,6 @@ class UserService
     end
   end
 
-  def self.destroy(user:)
-    DestroyUserWorker.perform_async(user.id)
-  end
 
   def self.verify(user: )
     return user if user.email_verified?
@@ -50,8 +47,8 @@ class UserService
   #
   # it should, ideally, also send an undo link to the email address on file,
   # which is the only way for someone to claim this user account again
-  def self.deactivate(user:, actor:, params:)
-    actor.ability.authorize! :deactivate, user
+  def self.deactivate(user:)
+    user.ability.authorize! :deactivate, user
     DeactivateUserWorker.perform_async(user.id)
   end
 
@@ -67,18 +64,9 @@ class UserService
   # - all memberships they have
   # # all discussion_readers they have
   # you get the point.
-  def self.destroy(user:, actor:, params:)
-    actor.ability.authorize! :destroy, user
+  def self.destroy(user:)
     DestroyUserWorker.perform_async(user.id)
   end
-
-  # def self.reactivate(user:, actor:)
-  #   actor.ability.authorize! :reactivate, user
-  #   user.update_attribute(:deactivated_at, nil)
-  #   user.archived_memberships.update_all(archived_at: nil)
-  #   EventBus.broadcast('user_reactivate', user, actor)
-  #   Events::UserReactivated.publish!(user)
-  # end
 
   def self.set_volume(user:, actor:, params:)
     actor.ability.authorize! :update, user

@@ -10,7 +10,7 @@ class MigrateUserWorker
     operations.each { |operation| ActiveRecord::Base.connection.execute(operation) }
     migrate_stances
     update_counters
-    DeactivateUserWorker.perform(source_id)
+    DeactivateUserWorker.new.perform(source_id)
     UserMailer.delay.accounts_merged(destination.id)
   end
 

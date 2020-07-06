@@ -74,8 +74,7 @@ class User < ApplicationRecord
 
   has_many :admin_memberships,
            -> { where('memberships.admin = ?', true) },
-           class_name: 'Membership',
-           dependent: :destroy
+           class_name: 'Membership'
 
   has_many :memberships, -> { where(archived_at: nil) }, dependent: :destroy
 
@@ -106,11 +105,11 @@ class User < ApplicationRecord
            -> { where archived_at: nil },
            through: :memberships
 
-  has_many :discussions,
-           through: :groups
+  has_many :discussions, through: :groups
 
   has_many :authored_discussions, class_name: 'Discussion', foreign_key: 'author_id', dependent: :destroy
   has_many :authored_polls, class_name: 'Poll', foreign_key: :author_id, dependent: :destroy
+  has_many :created_groups, class_name: 'Group', foreign_key: :creator_id, dependent: :destroy
 
   has_many :identities, class_name: "Identities::Base", dependent: :destroy
 

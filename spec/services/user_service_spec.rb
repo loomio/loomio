@@ -1,7 +1,7 @@
 require 'rails_helper'
 describe UserService do
 
-  describe 'destroy' do
+  describe 'deactivate' do
     before do
       @user = FactoryBot.create :user
       @group = FactoryBot.create :group
@@ -10,21 +10,14 @@ describe UserService do
     end
 
     it "deactivates the user" do
-      zombie = UserService.destroy(user: @user)
+      zombie = UserService.deactivate(user: @user)
       expect(@membership.reload.archived_at).to be_present
     end
 
-    it "migrates all their records to a zombie" do
-      UserService.destroy(user: @user)
-      zombie = User.last
-      expect(zombie.email).to match /deleted-user-.+@example.com/
-      expect(zombie.archived_memberships.count).to eq 1
-      expect(zombie.authored_discussions.count).to eq 1
-    end
-
-    it "deletes the user" do
-      UserService.destroy(user: @user)
-      expect { @user.reload }.to raise_error(ActiveRecord::RecordNotFound)
+    it "changes their email address" do
+      UserService.deactivate(user: @user)
+      @user.reload
+      expect(@user.email).to match /deactivated-user-.+@example.com/
     end
   end
 
@@ -67,7 +60,7 @@ describe UserService do
       # spam the loomio communie discussion with comments
       CommentService.create(comment: spam_comment, actor: spam_user)
 
-      UserService.delete_spam(spam_user)
+      UserService.destroy(user: spam_user)
     end
 
     it 'destroys the groups created by the user' do
@@ -76,7 +69,7 @@ describe UserService do
     end
 
     it 'destroys the user' do
-      spam_user.persisted?.should be false
+      expect { spam_user.reload }.to raise_error ActiveRecord::RecordNotFound
     end
 
     it 'destroys the discussions in the spammy groups' do

@@ -131,23 +131,12 @@ describe API::ProfileController do
     before { sign_in user }
     context 'success' do
       it "deactivates the users account" do
-        post :deactivate, format: :json
+        post :destroy, format: :json
         expect(response.status).to eq 200
         json = JSON.parse(response.body)
         user_emails = json['users'].map { |v| v['email'] }
         expect(user_emails).to include user.email
         expect(user.reload.deactivated_at).to be_present
-      end
-    end
-  end
-
-  describe 'delete' do
-    before { sign_in user }
-    context 'success' do
-      it "deletes the users account" do
-        post :destroy
-        expect(response.status).to eq 200
-        expect {user.reload}.to raise_error ActiveRecord::RecordNotFound
       end
     end
   end
