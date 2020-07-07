@@ -158,12 +158,5 @@ ActiveAdmin.register User do
     panel 'experiences' do
       p user.experiences
     end
-
-    if user.deactivation_response.present?
-      panel("Deactivation query response") do
-        div "#{user.deactivation_response.body}"
-      end
-    end
   end
-
 end
