@@ -185,16 +185,11 @@ describe API::MembershipsController do
         before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
         let(:private_group) { create(:group, is_visible_to_public: false) }
 
-        it 'returns users filtered by group for a public group' do
+        it 'returns no users for a public group' do
           group.update(group_privacy: 'open')
           get :index, params: { group_id: group.id }, format: :json
           json = JSON.parse(response.body)
-          expect(json.keys).to include *(%w[users memberships groups])
-          users = json['users'].map { |c| c['id'] }
-          groups = json['groups'].map { |g| g['id'] }
-          expect(users).to include user_named_biff.id
-          expect(users).to_not include alien_named_biff.id
-          expect(groups).to include group.id
+          expect(json['memberships'].length).to eq 0
         end
 
         it 'responds with unauthorized for private groups' do
