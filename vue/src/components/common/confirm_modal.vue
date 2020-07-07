@@ -40,7 +40,7 @@ v-card.confirm-modal
     dismiss-modal-button(v-if="!confirm.forceSubmit", :close="close")
   v-card-text
     p(v-html="confirm.text.raw_helptext || $t(confirm.text.helptext)", v-if="confirm.text.raw_helptext || confirm.text.helptext")
-    v-text-field.confirm-text-field(v-if="confirm.text.confirm_text" :placeholder="$t(confirm.text.raw_confirm_text_placeholder)" v-model="confirmText")
+    v-text-field.confirm-text-field(v-if="confirm.text.confirm_text" :placeholder="$t(confirm.text.raw_confirm_text_placeholder)" v-model="confirmText" v-on:keyup.enter="canProceed && submit()")
   v-card-actions
     v-btn(text v-if="!confirm.forceSubmit" @click="close()" v-t="'common.action.cancel'")
     v-spacer
