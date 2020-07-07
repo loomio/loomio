@@ -129,11 +129,9 @@ class API::MembershipsController < API::RestfulController
     visible = resource_class.joins(:group).joins(:user).includes(:user, :inviter, {group: [:parent]})
     if current_user.group_ids.any?
       visible.where("group_id IN (#{current_user.group_ids.join(',')}) OR
-                     groups.parent_id IN (#{ids_or_null(current_user.adminable_group_ids)}) OR
-                     groups.is_visible_to_public = 't'")
+                     groups.parent_id IN (#{ids_or_null(current_user.adminable_group_ids)})")
     else
-      # why do we do this?
-      visible.where("groups.is_visible_to_public = 't'")
+      Membership.none
     end
   end
 
