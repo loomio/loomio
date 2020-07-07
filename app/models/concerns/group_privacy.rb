@@ -20,12 +20,14 @@ module GroupPrivacy
     when 'open'
       self.is_visible_to_public = true
       self.discussion_privacy_options = 'public_only'
+      self.listed_in_explore = true
       unless %w[approval request].include?(self.membership_granted_upon)
         self.membership_granted_upon = 'approval'
       end
     when 'closed'
       self.is_visible_to_public = true
       self.membership_granted_upon = 'approval'
+      self.listed_in_explore = false
       unless %w[private_only public_or_private].include?(self.discussion_privacy_options)
         self.discussion_privacy_options = 'private_only'
       end
@@ -37,6 +39,7 @@ module GroupPrivacy
       end
     when 'secret'
       self.is_visible_to_public = false
+      self.listed_in_explore = false
       self.discussion_privacy_options = 'private_only'
       self.membership_granted_upon = 'invitation'
       self.is_visible_to_parent_members = false

@@ -7,6 +7,7 @@ describe Queries::ExploreGroups do
 
   before do
     group.update_attribute(:is_visible_to_public, true)
+    group.update_attribute(:listed_in_explore, true)
     second_group.update_attribute(:is_visible_to_public, true)
     archived_group.update_attribute(:is_visible_to_public, true)
     group.update_attribute(:memberships_count, 5)
@@ -30,14 +31,15 @@ describe Queries::ExploreGroups do
       expect(Queries::ExploreGroups.new).to_not include archived_group
     end
 
-    it 'only shows groups that are visible to public' do
-      group.update_attribute(:is_visible_to_public, false)
+    it 'only shows groups that are listed_in_explore' do
+      group.update_attribute(:listed_in_explore, false)
       expect(Queries::ExploreGroups.new).to_not include group
     end
 
     it 'only shows parent groups' do
       subgroup = FactoryBot.create(:group, parent: group)
       subgroup.update_attribute(:is_visible_to_public, true)
+      subgroup.update_attribute(:listed_in_explore, true)
       expect(Queries::ExploreGroups.new).to_not include subgroup
     end
   end

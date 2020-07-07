@@ -935,10 +935,10 @@ en:
       private_to_group: 'Name and description will only be visible to members.'
       private_to_parent_members: 'Name and description will be visible to members of {{parent}}'
     privacy: 'Privacy'
-    group_privacy_is_open_description: "Anyone can find the group and ask to join. Only members can see who is in the group. All threads are public."
-    group_privacy_is_closed_description: "Anyone can find the group and ask to join. Only members can see who is in the group. All threads are private."
-    group_privacy_is_closed_public_threads_description: "Anyone can find the group and ask to join. Only members can see who is in the group. Threads can be public or private."
-    group_privacy_is_secret_description: "Only invited members can find the group, see who is in it and see threads."
+    group_privacy_is_open_description: "Publicly listed. Anyone can ask to join. All threads are public."
+    group_privacy_is_closed_description: "Unlisted. Anyone with the link can ask to join. All threads are private."
+    group_privacy_is_closed_public_threads_description: "Unlisted. Anyone with the link can ask to join. Threads can be public or private."
+    group_privacy_is_secret_description: "Only invited people can find the group. All threads are private."
     confirm_change_to_secret: "If you proceed, all threads in this group and its subgroups will be made private."
     confirm_change_to_secret_subgroup: 'If you proceed, all threads will be made private.'
     confirm_change_to_public: 'If you proceed, all threads in this group will be made public on the web.'
