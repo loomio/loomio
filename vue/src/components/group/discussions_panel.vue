@@ -134,6 +134,10 @@ export default
     '$route.query': 'refresh'
 
   computed:
+    showViewClosedThreads: -> @noMoreToLoad && !@$route.query.t
+    viewClosedThreadsUrl: -> @urlFor(@group) + "?t=closed"
+    noMoreToLoad: -> @loader.numLoaded > 0 && @loader.exhausted
+
     pinnedDiscussions: ->
       orderBy(@discussions.filter((discussion) -> discussion.pinned), ['title'], ['asc'])
 
@@ -216,7 +220,8 @@ div.discussions-panel(v-if="group")
           v-layout(justify-center)
             v-btn.my-2.discussions-panel__show-more(outlined color='accent' v-if="!loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords()" v-t="'common.action.load_more'")
 
-          .lmo-hint-text.discussions-panel__no-more-threads.text-center.pa-1(v-t="{ path: 'group_page.no_more_threads' }", v-if='loader.numLoaded > 0 && loader.exhausted')
+          .discussions-panel__no-more-threads.text-center.pa-1(v-t="{ path: 'group_page.no_more_threads' }" v-if='noMoreToLoad')
+          .discussions-panel__view-closed-threads.text-center.pa-1(v-html="$t('group_page.view_closed_threads', {url: viewClosedThreadsUrl })" v-if="showViewClosedThreads")
 
       .discussions-panel__content.pa-4(v-if="$route.query.q")
         p.text-center.discussions-panel__list--empty(v-if='!searchResults.length && !searchLoader.loading' v-t="{path: 'discussions_panel.no_results_found', args: {search: $route.query.q}}")

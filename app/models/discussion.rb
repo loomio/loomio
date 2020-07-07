@@ -30,7 +30,7 @@ class Discussion < ApplicationRecord
   scope :not_visible_to_public, -> { where(private: true) }
 
   scope :is_open, -> { where(closed_at: nil) }
-  scope :is_closed, -> { where.not(closed_at: nil) }
+  scope :is_closed, -> { where("closed_at is not null") }
 
   validates_presence_of :title, :group, :author
   validate :private_is_not_nil
