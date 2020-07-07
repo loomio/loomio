@@ -75,7 +75,7 @@
     "fibers": "^5.0.0",
     "js-yaml-loader": "^1.2.2",
     "sass": "^1.26.10",
-    "sass-loader": "^8.0.2",
+    "sass-loader": "^9.0.2",
     "selenium-server-standalone-jar": "latest",
     "vue-cli-plugin-coffee": "0.5.12",
     "vue-cli-plugin-pug": "^1.0.7",
