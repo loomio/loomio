@@ -122,5 +122,5 @@ export default new class GroupService
                 raw_confirm_text_placeholder: i18n.t('delete_group_modal.confirm', name: group.name)
                 confirm_text: group.name
                 flash:    'delete_group_modal.success'
-                submit:   'common.action.delete'
+                submit:   'delete_group_modal.title'
               redirect:   '/dashboard'
