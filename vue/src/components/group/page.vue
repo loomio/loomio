@@ -78,7 +78,7 @@ export default
 </script>
 
 <template lang="pug">
-v-content
+v-main
   loading(v-if="!group")
   v-container.group-page.max-width-1024(v-if="group")
     v-img(style="border-radius: 8px" :src="coverImageSrc" eager)

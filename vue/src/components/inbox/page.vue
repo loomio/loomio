@@ -51,7 +51,7 @@ export default
 </script>
 
 <template lang="pug">
-v-content
+v-main
   v-container.inbox-page.thread-preview-collection__container.max-width-1024(grid-list-lg)
     section.dashboard-page__loading(v-if='unreadCount == 0 && loading', aria-hidden='true')
       .thread-previews-container

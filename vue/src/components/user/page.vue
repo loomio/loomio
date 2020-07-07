@@ -47,7 +47,7 @@ export default
 </script>
 
 <template lang="pug">
-v-content.user-page__profile
+v-main.user-page__profile
   v-container.user-page.max-width-800.mt-4
     loading(v-if='isEmptyUser')
     div(v-else).user-page__content

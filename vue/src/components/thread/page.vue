@@ -59,7 +59,7 @@ export default
 
 <template lang="pug">
 .thread-page
-  v-content
+  v-main
     loading(:until="discussion")
       v-container.thread-page.max-width-800(v-if="discussion")
         thread-current-poll-banner(:discussion="discussion")

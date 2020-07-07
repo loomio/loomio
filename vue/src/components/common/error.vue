@@ -3,7 +3,7 @@ export default
   props: ['error']
 </script>
 <template lang="pug">
-v-content.pb-12
+v-main.pb-12
   v-container
     .error-page.text-center
       .error-page__forbidden(v-t="'error_page.forbidden'" v-if="error.status == 403")
