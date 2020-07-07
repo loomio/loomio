@@ -20,7 +20,7 @@ module GroupService
 
     if group.parent
       existing_parent_members = group.parent.accepted_members.where(id: users.verified.pluck(:id))
-      Membership.not_archived.where(group_id: group.id, user_id: existing_parent_members.pluck(:id)).each do |m|
+      Membership.pending.where(group_id: group.id, user_id: existing_parent_members.pluck(:id)).each do |m|
         AcceptMembershipWorker.perform_async(m.id, m.user_id)
       end
     end
