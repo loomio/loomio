@@ -41,7 +41,7 @@ export default
 </script>
 
 <template lang="pug">
-v-content
+v-main
   v-container.contact-page
     v-card.contact-form(v-show='!submitted')
       submit-overlay(:value='message.processing')

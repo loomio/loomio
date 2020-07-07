@@ -81,7 +81,7 @@ export default
 
 </script>
 <template lang="pug">
-v-content
+v-main
   v-container.profile-page.max-width-1024
     loading(v-if='!user')
     div(v-if='user')

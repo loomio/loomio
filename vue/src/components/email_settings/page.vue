@@ -61,7 +61,7 @@ export default
 </script>
 
 <template lang="pug">
-v-content
+v-main
   v-container.email-settings-page.max-width-1024(v-if='user')
 
     v-card.mb-4(v-if="user.deactivatedAt")

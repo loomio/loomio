@@ -25,7 +25,7 @@ export default
 
 </script>
 <template lang="pug">
-v-content
+v-main
   v-container.start-discussion-page.max-width-1024
     h2.headline(v-t="'discussion_form.new_discussion_title'")
     .discussion-start-discussion
