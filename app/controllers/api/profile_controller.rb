@@ -49,18 +49,8 @@ class API::ProfileController < API::RestfulController
     respond_with_resource
   end
 
-  def deactivate
-    service.deactivate(current_user_params)
-    respond_with_resource
-  end
-
   def destroy
-    service.destroy(user: current_user)
-    respond_with_resource
-  end
-
-  def reactivate
-    service.reactivate(user:deactivated_user, actor: current_user)
+    service.deactivate(user: current_user)
     respond_with_resource
   end
 

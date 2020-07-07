@@ -40,15 +40,7 @@ export default class UserRecordsInterface extends BaseRecordsInterface
     @remote.post('change_password', user.serialize()).finally ->
       user.processing = false
 
-  deactivate: (user) =>
-    user.processing = true
-    @remote.post('deactivate', user.serialize()).finally -> user.processing = false
-
   destroy: => @remote.delete '/'
-
-  reactivate: (user) =>
-    user.processing = true
-    @remote.post('reactivate', user.serialize()).finally -> user.processing = false
 
   saveExperience: (experience) =>
     @remote.post('save_experience', experience: experience)

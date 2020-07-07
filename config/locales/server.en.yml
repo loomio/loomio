@@ -147,6 +147,13 @@ en:
       body_html: |
         Download your group data <a href="%{url}">here</a>. Please note that this link will expire in one week's time.
 
+    deactivated:
+      subject: "Your %{site_name} user account has been deactivated."
+      body_html: |
+        <p>You, or someone with access to your account, has deactivated your Loomio user account.</p>
+        <p>All personal data has been removed from the system.</p>
+        <p>If you wish to recover this user account and associated comments and votes, please contact support and reference: %{recovery_code}</p>
+
     accounts_merged:
       subject: "Your %{site_name} user accounts have been merged."
       body_html: |

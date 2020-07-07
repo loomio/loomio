@@ -69,9 +69,6 @@ EventBus.configure do |config|
                 'poll_destroy',
                 'poll_expire') { |model| model.discussion&.update_importance }
 
-  # collect user deactivation response
-  config.listen('user_deactivate') { |user, actor, params| UserDeactivationResponse.create(user: user, body: params[:deactivation_response]) }
-
   # move events to new discussion on fork
   config.listen('discussion_fork') { |source, target| DiscussionForker.new(source, target).fork! }
 end

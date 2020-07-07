@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  actions :index, :edit, :show, :destroy
+  actions :index, :show, :edit
 
   filter :name
   filter :username
@@ -68,12 +68,6 @@ ActiveAdmin.register User do
     render plain: emails.join("\n")
   end
 
-  member_action :delete_spam, method: :post do
-    user = User.friendly.find(params[:id])
-    UserService.delete_spam(user)
-    redirect_to admin_users_path, notice: 'User and the groups they created deleted'
-  end
-
   member_action :update, :method => :put do
     user = User.friendly.find(params[:id])
     user.name = params[:user][:name]
@@ -89,6 +83,23 @@ ActiveAdmin.register User do
     @token = @user.login_tokens.create
   end
 
+  member_action :merge, method: :post do
+    source = User.friendly.find(params[:id])
+    destination = User.find_by!(email: params[:destination_email].strip)
+    MigrateUserWorker.perform_async(source.id, destination.id)
+    redirect_to admin_user_path(destination)
+  end
+
+  member_action :deactivate, method: :put do
+    DeactivateUserWorker.perform_async(params[:id])
+    redirect_to admin_users_path, :notice => "User scheduled for deactivation immediately"
+  end
+
+  member_action :delete_spam, method: :delete do
+    DestroyUserWorker.perform_async(params[:id])
+    redirect_to admin_users_path, :notice => "User scheduled for deletion immediately"
+  end
+
   show do |user|
     attributes_table do
       user.attributes.each do |k,v|
@@ -100,10 +111,10 @@ ActiveAdmin.register User do
       panel("Deactivate") do
         button_to 'Deactivate User', deactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to deactivate this user?'}
       end
-    else
-      panel("Reactivate") do
-        button_to 'Reactivate User', reactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to reactivate this user?'}
-      end
+    end
+
+    panel("Destroy") do
+      button_to 'Destroy spam User', delete_spam_admin_user_path(user), method: :delete, data: {confirm: 'Are you sure you want to destroy this user and all their groups?'}
     end
 
     panel("Memberships") do
@@ -128,10 +139,6 @@ ActiveAdmin.register User do
         column :name
         column :email
       end
-    end
-
-    panel("Reset Password") do
-      button_to 'Get link to reset password', reset_password_admin_user_path(user), method: :post
     end
 
     panel 'Merge into another user' do
@@ -159,29 +166,4 @@ ActiveAdmin.register User do
     end
   end
 
-  member_action :merge, method: :post do
-    source = User.friendly.find(params[:id])
-    destination = User.find_by!(email: params[:destination_email].strip)
-    MigrateUserWorker.perform_async(source.id, destination.id)
-    redirect_to admin_user_path(destination)
-  end
-
-  member_action :deactivate, method: :put do
-    user = User.friendly.find(params[:id])
-    user.deactivate!
-    redirect_to admin_users_path, :notice => "User account deactivated"
-  end
-
-  member_action :reactivate, method: :put do
-    user = User.friendly.find(params[:id])
-    user.reactivate!
-    redirect_to admin_users_path, :notice => "User account activated"
-  end
-
-  member_action :reset_password, method: :post do
-    user = User.friendly.find(params[:id])
-    raw = user.send(:set_reset_password_token)
-
-    render plain: edit_user_password_path(reset_password_token: raw)
-  end
 end

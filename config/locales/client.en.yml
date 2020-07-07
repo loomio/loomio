@@ -1169,24 +1169,12 @@ en:
   deactivation_modal:
     aria_label: 'Deactivate user account'
     introduction: 'When you deactivate your account:'
-    no_longer_group_member: 'You will no longer be listed as a member of any groups'
+    you_will_be_deleted: "Your user account including your name, email address and other personally identifying data will be deleted from our systems."
     name_removed: 'Comments, proposals and discussions you’ve made will remain but your name will be removed from them'
+    no_longer_group_member: 'You will no longer be listed as a member of any groups'
     no_emails: 'You will no longer receive notification emails'
     you_can_reactivate: "You can reactivate your account later if you wish"
     submit: 'Yes, I want to deactivate'
-
-  delete_user_modal:
-    title: 'Delete user account'
-    irreversable: "WARNING: This cannot be undone. If you proceed:"
-    you_will_be_deleted: "Your user account including your name, email address and other personally identifying data will be deleted from our systems."
-    submit: 'Yes, delete my account'
-
-  deactivate_user_form:
-    aria_label: 'Deactivate account confirm'
-    title: 'Deactivate account'
-    question: 'Would you tell us why you are deactivating?'
-    placeholder: 'Answering this question is optional. Any information you share will help us to improve :)'
-    submit: 'Deactivate account'
 
   email_settings_page:
     header: Notification settings
