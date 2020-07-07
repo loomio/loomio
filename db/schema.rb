@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_03_033800) do
+ActiveRecord::Schema.define(version: 2020_07_07_041345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -389,6 +389,7 @@ ActiveRecord::Schema.define(version: 2020_07_03_033800) do
     t.integer "new_threads_max_depth", default: 2, null: false
     t.boolean "new_threads_newest_first", default: false, null: false
     t.boolean "admins_can_edit_user_content", default: false, null: false
+    t.boolean "listed_in_explore", default: false, null: false
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["category_id"], name: "index_groups_on_category_id"
     t.index ["cohort_id"], name: "index_groups_on_cohort_id"
