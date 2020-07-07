@@ -32,7 +32,7 @@ export default new class UserService
 
     deactivate_user:
       icon: 'mdi-exit-run'
-      name: 'deactivate_user_form.title'
+      name: 'deactivation_modal.aria_label'
       canPerform: -> !user.deactivatedAt
       perform: ->
         EventBus.$emit 'openModal',
@@ -48,8 +48,7 @@ export default new class UserService
                     <li>#{vm.$t('deactivation_modal.name_removed')}</li>
                     <li>#{vm.$t('deactivation_modal.no_longer_group_member')}</li>
                     <li>#{vm.$t('deactivation_modal.no_emails')}</li>
-                    <li>#{vm.$t('deactivation_modal.you_can_reactivate')}</li>
                   </ul>"
                 submit: 'deactivation_modal.submit'
-              submit: -> Records.users.deactivate(Session.user())
+              submit: -> Records.users.destroy()
               successCallback: hardReload

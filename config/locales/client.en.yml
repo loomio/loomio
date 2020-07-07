@@ -1173,13 +1173,6 @@ en:
     you_can_reactivate: "You can reactivate your account later if you wish"
     submit: 'Yes, I want to deactivate'
 
-  deactivate_user_form:
-    aria_label: 'Deactivate account confirm'
-    title: 'Deactivate account'
-    question: 'Would you tell us why you are deactivating?'
-    placeholder: 'Answering this question is optional. Any information you share will help us to improve :)'
-    submit: 'Deactivate account'
-
   email_settings_page:
     header: Notification settings
     account_deactivated: Your account has been deactivated. You will not receive any emails, ever.
