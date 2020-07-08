@@ -34,7 +34,7 @@ export default new class PollService
     announce_poll:
       icon: 'mdi-send'
       canPerform: ->
-        AbilityService.canAnnounceTo(poll)
+        !poll.discardedAt && AbilityService.canAnnounceTo(poll)
       perform: ->
         openModal
           component: 'AnnouncementForm'
@@ -45,7 +45,7 @@ export default new class PollService
       name: 'common.action.edit'
       icon: 'mdi-pencil'
       canPerform: ->
-        AbilityService.canEditPoll(poll)
+        !poll.discardedAt && AbilityService.canEditPoll(poll)
       perform: ->
         openModal
           component: 'PollCommonModal'
@@ -65,7 +65,8 @@ export default new class PollService
     translate_poll:
       icon: 'mdi-translate'
       menu: true
-      canPerform: -> AbilityService.canTranslate(poll)
+      canPerform: ->
+        !poll.discardedAt && AbilityService.canTranslate(poll)
       perform: -> Session.user() && poll.translate(Session.user().locale)
 
     close_poll:
@@ -74,7 +75,7 @@ export default new class PollService
         path: 'poll_common.close_poll_type'
         args: {'poll-type': vm.$t(poll.pollTypeKey())}
       canPerform: ->
-        AbilityService.canClosePoll(poll)
+        !poll.discardedAt && AbilityService.canClosePoll(poll)
       perform: ->
         openModal
           component: 'ConfirmModal',
@@ -98,7 +99,7 @@ export default new class PollService
       icon: 'mdi-refresh'
       name: 'common.action.reopen'
       canPerform: ->
-        AbilityService.canReopenPoll(poll)
+        !poll.discardedAt && AbilityService.canReopenPoll(poll)
       perform: ->
         openModal
           component: 'PollCommonReopenModal'
@@ -107,21 +108,21 @@ export default new class PollService
     export_poll:
       name: 'common.action.export'
       canPerform: ->
-        AbilityService.canExportPoll(poll)
+        !poll.discardedAt && AbilityService.canExportPoll(poll)
       perform: ->
         hardReload LmoUrlService.poll(poll, {export: 1}, {action: 'export', ext: 'csv', absolute: true})
 
     print_poll:
       name: 'common.action.print'
       canPerform: ->
-        AbilityService.canExportPoll(poll)
+        !poll.discardedAt && AbilityService.canExportPoll(poll)
       perform: ->
         hardReload LmoUrlService.poll(poll, {export: 1}, {action: 'export', ext: 'html', absolute: true})
 
     delete_poll:
       name: 'common.action.delete'
       canPerform: ->
-        AbilityService.canDeletePoll(poll)
+        !poll.discardedAt && AbilityService.canDeletePoll(poll)
       perform: ->
         openModal
           component: 'ConfirmModal'
@@ -136,7 +137,7 @@ export default new class PollService
     discard_poll:
       name: 'common.action.delete'
       canPerform: ->
-        AbilityService.canDeletePoll(poll)
+        !poll.discardedAt && AbilityService.canDeletePoll(poll)
       perform: ->
         openModal
           component: 'ConfirmModal'

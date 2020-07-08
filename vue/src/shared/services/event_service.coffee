@@ -26,7 +26,7 @@ export default new class EventService
     pin_event:
       name: 'common.action.pin'
       icon: 'mdi-pin'
-      canPerform: -> AbilityService.canPinEvent(event)
+      canPerform: -> !event.model().discardedAt && AbilityService.canPinEvent(event)
       perform: ->
         openModal
           component: 'PinEventForm',
@@ -35,7 +35,7 @@ export default new class EventService
     unpin_event:
       name: 'common.action.unpin'
       icon: 'mdi-pin-off'
-      canPerform: -> AbilityService.canUnpinEvent(event)
+      canPerform: -> !event.model().discardedAt && AbilityService.canUnpinEvent(event)
       perform: -> event.unpin().then -> Flash.success('activity_card.event_unpinned')
 
 
