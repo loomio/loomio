@@ -488,7 +488,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
-    uuidtools (2.1.5)
+    uuidtools (2.2.0)
     warden (1.2.8)
       rack (>= 2.0.6)
     webmock (3.8.3)
