@@ -107,6 +107,7 @@ export default new class AbilityService
     (group.membersInclude(Session.user()) and group.membersCanStartDiscussions)
 
   canAnnounceTo: (model) ->
+    return false if model.discardedAt
     if model.group()
       model.group().adminsInclude(Session.user()) or
       (model.membersInclude(Session.user()) and model.group().membersCanAnnounce)
@@ -198,6 +199,7 @@ export default new class AbilityService
     !@canJoinGroup(group)
 
   canTranslate: (model) ->
+    return false if model.discardedAt
     AppConfig.inlineTranslation.isAvailable and
     Object.keys(model.translation).length == 0
 
@@ -208,16 +210,16 @@ export default new class AbilityService
     poll.isActive() and poll.adminsInclude(Session.user())
 
   canDeletePoll: (poll) ->
-    poll.adminsInclude(Session.user())
+    !poll.discardedAt && poll.adminsInclude(Session.user())
 
   canExportPoll: (poll) ->
-    poll.adminsInclude(Session.user())
+    !poll.discardedAt && poll.adminsInclude(Session.user())
 
   canSetPollOutcome: (poll) ->
-    poll.isClosed() and poll.adminsInclude(Session.user())
+    !poll.discardedAt && poll.isClosed() && poll.adminsInclude(Session.user())
 
   canClosePoll: (poll) ->
     @canEditPoll(poll)
 
   canReopenPoll: (poll) ->
-    poll.isClosed() and poll.adminsInclude(Session.user())
+    !poll.discardedAt && poll.isClosed() and poll.adminsInclude(Session.user())

@@ -106,7 +106,7 @@ export default class PollModel extends BaseModel
     !!@details
 
   isActive: ->
-    !@closedAt?
+    !poll.discardedAt && !@closedAt?
 
   isClosed: ->
     @closedAt?
