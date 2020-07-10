@@ -285,6 +285,7 @@ describe API::AnnouncementsController do
     describe 'group' do
       let(:group) { create :group, creator: user}
       let(:subgroup) { create :group, parent: group, creator: user}
+      let(:subgroup2) { create :group, parent: group, creator: user}
 
       it 'does not permit non author to announce' do
         sign_in create(:user)
@@ -307,6 +308,30 @@ describe API::AnnouncementsController do
         expect(email_user.email_verified).to be false
         expect(email_user.memberships.pending.count).to eq 1
         expect(group.members).to include email_user
+      end
+
+      it 'supports inviting to multiple groups at once' do
+        group.add_member! member
+        subgroup.add_admin! user
+        subgroup2.add_admin! user
+        expect(member.memberships.accepted.count).to eq 1
+
+        post :create, params: {group_id: group.id, user_ids: member.id, invited_group_ids: [subgroup.id, subgroup2.id]}
+
+        expect(response.status).to eq 200
+        expect(group.members).to include(member)
+        expect(member.memberships.accepted.count).to eq 3
+        expect(member.memberships.pending.count).to eq 0
+      end
+
+      it 'supports inviting to multiple auto accepting subgroups' do
+        subgroup.add_admin! user
+        expect(member.memberships.accepted.count).to eq 0
+        post :create, params: {group_id: group.id, user_ids: member.id, invited_group_ids: [group.id, subgroup.id]}
+
+        expect(response.status).to eq 200
+        expect(member.notifications.count).to eq 1
+        expect(member.memberships.pending.count).to eq 2
       end
 
       it 'auto accepts subgroup invitiations to existing members' do
