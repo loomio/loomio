@@ -155,9 +155,10 @@ img.emoji
     table-layout: fixed
     width: 100%
     margin-bottom: 10px
+    border-collapse: collapse
 
   table td
-    padding: 6px 13px
+    padding: 4px 4px
     border: 1px solid #ddd
 
   thead td
