@@ -25,7 +25,7 @@ export default
   computed:
     canProceed: ->
       if @confirm.text.confirm_text
-        @confirmText == @confirm.text.confirm_text
+        @confirmText.trim()  == @confirm.text.confirm_text.trim()
       else
         true
 
