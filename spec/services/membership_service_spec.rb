@@ -53,12 +53,14 @@ describe MembershipService do
 
     before do
       subgroup.add_admin! admin
-      MembershipService.redeem(membership: membership, actor: user)
     end
 
     it 'adds them to the subgroup' do
-      expect(group.members).to include user
-      expect(subgroup.members).to include user
+      expect(group.members).to_not include user
+      expect(subgroup.members).to_not include user
+      MembershipService.redeem(membership: membership, actor: user)
+      expect(group.members.reload).to include user
+      expect(subgroup.members.reload).to include user
     end
   end
 

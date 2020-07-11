@@ -6,7 +6,6 @@ class MembershipService
   def self.redeem(membership:, actor:, notify: true)
     raise Membership::InvitationAlreadyUsed.new(membership) if membership.accepted_at
 
-
     expires_at = if membership.group.parent_or_self.saml_provider
       Time.current
     else
@@ -17,8 +16,8 @@ class MembershipService
     update_success = membership.update(user: actor, accepted_at: DateTime.now, saml_session_expires_at: expires_at)
 
     if membership.inviter
-      membership.inviter.groups.where(id: Array(membership.experiences['invited_group_ids'])).each do |group|
-        group.add_member!(actor, inviter: membership.inviter) if membership.inviter.can?(:add_members, membership.group)
+      Group.where(id: Array(membership.experiences['invited_group_ids'])).each do |group|
+        group.add_member!(actor, inviter: membership.inviter) if membership.inviter.can?(:add_members, group)
       end
     end
 
