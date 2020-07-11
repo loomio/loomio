@@ -56,7 +56,7 @@ export default new class PollService
       name: 'common.action.move'
       icon: 'mdi-folder-swap-outline'
       canPerform: ->
-        AbilityService.canEditPoll(poll)
+        !poll.discussionId && AbilityService.canEditPoll(poll)
       perform: ->
         openModal
           component: 'PollCommonMoveForm'
