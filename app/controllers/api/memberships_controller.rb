@@ -116,7 +116,7 @@ class API::MembershipsController < API::RestfulController
   end
 
   def index_scope
-    default_scope.merge({ email_user_ids: collection.select { |m| m.inviter_id == current_user.id }.map(&:user_id), include_inviter: true })
+    default_scope.merge({ include_email: model.admins.exists?(current_user.id), include_inviter: true })
   end
 
   def model
@@ -142,6 +142,7 @@ class API::MembershipsController < API::RestfulController
       ids.join(',')
     end
   end
+
   def visible_invitables
     load_and_authorize :group, :invite_people
     Queries::VisibleInvitableMemberships.new(group: @group, user: current_user, query: params[:q])
