@@ -188,6 +188,7 @@ en:
       close: 'Close'
       reopen: 'Reopen'
       save: 'Save'
+      move: 'Move'
       save_changes: 'Save changes'
       update_settings: 'Update settings'
       reply: 'Reply'
@@ -1372,7 +1373,7 @@ en:
   move_thread_form:
     aria_label: Move thread
     title: Move thread
-    body: 'Destination group:'
+    body: Destination group
     confirm: Move thread
     confirm_change_to_private_thread: '{{groupName}} is an open group. If you proceed, this thread will be made public.'
     messages:
@@ -1638,6 +1639,10 @@ en:
     dot_vote_reopened: Dote vote reopened
     meeting_reopened: Time poll reopened
     ranked_choice_reopened: Ranked choice poll reopened
+
+  poll_common_move_form:
+    title: "Move {{poll_type}}"
+    success: "{{poll_type}} moved to {{group}}"
 
   poll_common_closing_at_field:
     closing: Closing

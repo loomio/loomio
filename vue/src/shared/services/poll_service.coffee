@@ -52,6 +52,17 @@ export default new class PollService
           props:
             poll: poll.clone()
 
+    move_poll:
+      name: 'common.action.move'
+      icon: 'mdi-folder-swap-outline'
+      canPerform: ->
+        AbilityService.canEditPoll(poll)
+      perform: ->
+        openModal
+          component: 'PollCommonMoveForm'
+          props:
+            poll: poll.clone()
+
     show_history:
       icon: 'mdi-history'
       name: 'action_dock.edited'
