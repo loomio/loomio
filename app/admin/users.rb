@@ -124,6 +124,7 @@ ActiveAdmin.register User do
           link_to group.full_name, admin_group_path(group)
         end
         column :admin
+        column :accepted_at
       end
     end
 
