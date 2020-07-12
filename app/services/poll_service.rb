@@ -48,7 +48,7 @@ class PollService
 
     poll.update(discarded_at: Time.now, discarded_by: actor.id)
     Event.where(kind: "stance_created", eventable_id: poll.stances.pluck(:id)).update_all(discussion_id: nil)
-    poll.created_event.update(user_id: nil, child_count: 0)
+    poll.created_event.update(user_id: nil, child_count: 0, pinned: false)
     MessageChannelService.publish_event(poll.created_event)
     poll.created_event
   end

@@ -35,7 +35,7 @@ export default new class CommentService
     edit_comment:
       name: 'common.action.edit'
       icon: 'mdi-pencil'
-      canPerform: -> comment.authorIs(Session.user()) && AbilityService.canEditComment(comment)
+      canPerform: -> !comment.discardedAt && comment.authorIs(Session.user()) && AbilityService.canEditComment(comment)
       perform: ->
         openModal
           component: 'EditCommentForm'
