@@ -1,3 +1,21 @@
+## 2020-07-13 (Loomio 2.2.3)
+- Added: Feature to move proposals between groups and subgroups
+- Added: Feature to add standalone polls to a thread
+- Added: Automatically accept pending membership in poll
+- Improved: Combined user deactivation and delete features
+- Improved: Invitations for members of parent group added to subgroup automatically accepted
+- Improved: Language and flags around Open, Closed and Secret groups
+- Improved: End of search results message suggests looking at closed threads
+- Improved: Better format "You're invited" text during sign-in
+- Improved: Do not show inline image attachments in group files panel
+- Fixed: Notification history not showing some events
+- Fixed: Group members showing
+- Fixed: Null author issue on comments
+- Fixed: Member title display in threads
+- Fixed: Filters dropdown on group page for tags and open/closed threads
+- Fixed: Delete group modal
+- Fixed: Fix layout of proposal thread item headline
+
 ## 2020-04-14 (Loomio 2.1.5)
 
 - Simplified architecture for adding guests to discussions and polls
