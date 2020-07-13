@@ -76,7 +76,8 @@ export default new class PollService
     translate_poll:
       icon: 'mdi-translate'
       menu: true
-      canPerform: -> AbilityService.canTranslate(poll)
+      canPerform: ->
+        AbilityService.canTranslate(poll)
       perform: -> Session.user() && poll.translate(Session.user().locale)
 
     close_poll:
