@@ -71,7 +71,6 @@ ActiveAdmin.register Subscription do
       input :max_orgs
       input :chargify_subscription_id, label: "Chargify Subscription Id"
       input :owner_id, label: "Owner Id"
-      input :info
     end
     f.actions
   end
