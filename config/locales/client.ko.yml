@@ -55,6 +55,7 @@ ko:
       back: '이전'
       close: '닫기'
       save: '저장'
+      move: '이동'
       save_changes: '수정 저장하기'
       update_settings: '설정 저장'
       reply: '답글'
@@ -436,10 +437,6 @@ ko:
     introduction: '계정 비활성화된 때 '
     no_longer_group_member: '당신은 모든 그룹에서 탈퇴됩니다.'
     submit: '네, 비활성화하겠습니다.'
-  deactivate_user_form:
-    aria_label: '계정 비활성화가 확인됨.'
-    title: '계정 비활성화'
-    submit: '계정 비활성화'
   email_settings_page:
     daily_summary_label: 일별 요약 이메일
     on_participation_description: "모둠에 참여하면, 더욱 많은 행동들이 즉시 당신에게 이메일로 전송됩니다. "
@@ -525,7 +522,6 @@ ko:
       success: 쓰레드가 삭제되었습니다.
   move_thread_form:
     title: 쓰레드 이동
-    body: '이동할 그룹'
     confirm: 쓰레드 이동
     confirm_change_to_private_thread: '{{groupName}}은 공개 그룹입니다. 이 주제도 공개됩니다. 계속 하시겠습니까?'
     messages:

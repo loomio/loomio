@@ -180,6 +180,7 @@ nl_NL:
       close: 'Sluiten'
       reopen: 'Heropen'
       save: 'Bewaren'
+      move: 'Verplaatsen'
       save_changes: 'Wijzigingen bewaren'
       update_settings: 'Instellingen bijwerken'
       reply: 'Antwoorden'
@@ -759,7 +760,6 @@ nl_NL:
     no_threads_here: Geen borden te zien hier!
     search_threads: Zoeken voor borden...
     private_threads: Je moet lid zijn om de privé borden in deze groep te zien.
-    no_more_threads: Dat zijn alle borden in deze groep!
     messages:
       privacy:
         members: 'Deze groep is nu uitsluitend zichtbaar voor leden'
@@ -860,10 +860,6 @@ nl_NL:
       private_to_group: 'Naam en beschrijving zijn uitsluitend zichtbaar voor leden.'
       private_to_parent_members: 'Naam en beschrijving zijn zichtbaar voor leden van {{parent}}'
     privacy: 'Privacy'
-    group_privacy_is_open_description: "Iedereen kan de groep vinden en vragen om mee te doen. Alleen leden kunnen zien wie er in de groep zit. Alle borden zijn openbaar."
-    group_privacy_is_closed_description: "Iedereen kan de groep vinden en vragen om mee te doen. Alleen leden kunnen zien wie er in de groep zit. Alle discussies zijn privé."
-    group_privacy_is_closed_public_threads_description: "Iedereen kan de groep vinden en vragen om mee te doen. Alleen leden kunnen zien wie er in de groep zit. Alle borden kunnen openbaar of privé zijn."
-    group_privacy_is_secret_description: "Alleen uitgenodigde leden kunnen de groep vinden, zien wie er in zit en borden bekijken."
     confirm_change_to_secret: "Als je verder gaat worden alle borden in deze groep en in de subgroepen privé gemaakt."
     confirm_change_to_secret_subgroup: 'Als je verder gaat worden alle borden privé gemaakt.'
     confirm_change_to_public: 'Als je verder gaat worden alle borden in deze groep openbaar gemaakt op het internet.'
@@ -1068,22 +1064,12 @@ nl_NL:
   deactivation_modal:
     aria_label: 'Deactiveer gebruikersaccount'
     introduction: 'Als je je account deactiveert:'
-    no_longer_group_member: 'Je staat bij geen enkele groep meer geregistreerd als lid '
+    you_will_be_deleted: "Jouw gebruikersnaam inclusief jouw naam, e-mailadres en andere persoonlijke identificeerbare data zullen verwijderd worden uit onze systemen."
     name_removed: 'Opmerkingen, voorstellen en gesprekken die je gemaakt hebt blijven bewaard, maar je naam wordt erbij verwijderd'
+    no_longer_group_member: 'Je staat bij geen enkele groep meer geregistreerd als lid '
     no_emails: 'Je zal niet langer meldings e-mails ontvangen'
     you_can_reactivate: "Je kan je account later activeren indien gewenst"
     submit: 'Ja ik wil deactiveren'
-  delete_user_modal:
-    title: 'Verwijder gebruikersaccount'
-    irreversable: "WAARSCHUWING: Dit kan niet ongedaan worden. Als je verdergaat:"
-    you_will_be_deleted: "Jouw gebruikersnaam inclusief jouw naam, e-mailadres en andere persoonlijke identificeerbare data zullen verwijderd worden uit onze systemen."
-    submit: 'Ja, verwijder mijn account'
-  deactivate_user_form:
-    aria_label: 'Bevestig deactivatie account'
-    title: 'Deactiveer account'
-    question: 'Wil je ons vertellen waarom je wil deactiveren?'
-    placeholder: 'Deze vraag beantwoorden is optioneel. Elke informatie die je wil delen zal ons helpen nog te verbeteren :)'
-    submit: 'Deactiveer account'
   email_settings_page:
     header: Melding instellingen
     account_deactivated: Jouw account werd gedeactiveerd. Je zult nooit e-mails ontvangen.
@@ -1267,7 +1253,6 @@ nl_NL:
   move_thread_form:
     aria_label: Bord verplaatsen
     title: Bord verplaatsen
-    body: 'Bestemming groep:'
     confirm: Bord verplaatsen
     confirm_change_to_private_thread: '{{groupName}} is een open groep. Als je verder gaat zal dit bord openbaar gemaakt worden.'
     messages:

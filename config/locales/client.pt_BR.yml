@@ -179,6 +179,7 @@ pt_BR:
       close: 'Encerrar'
       reopen: 'Reaberto'
       save: 'Salvar'
+      move: 'Mover'
       save_changes: 'Salvar mudanças'
       update_settings: 'Atualizar configurações'
       reply: 'Responder'
@@ -757,7 +758,6 @@ pt_BR:
     no_threads_here: Nenhuma conversa para ler aqui!
     search_threads: Buscar por conversas…
     private_threads: 'Você precisa ser membro para ver conversas privadas nesse grupo. '
-    no_more_threads: Estas são todas as conversas nesse grupo!
     messages:
       privacy:
         members: 'Este grupo agora está visível apenas para membros'
@@ -858,10 +858,6 @@ pt_BR:
       private_to_group: 'Nome e descrição estarão visíveis apenas para membros'
       private_to_parent_members: 'Nome e descrição estarão visíveis para membros de {{parent}}'
     privacy: 'Privacidade'
-    group_privacy_is_open_description: "Qualquer pessoa pode encontrar o grupo e pedir para participar. Somente membros podem ver quem está no grupo. Todas as conversas são públicas."
-    group_privacy_is_closed_description: "Qualquer pessoa pode encontrar o grupo e pedir para participar. Somente membros podem ver quem está no grupo. Todas as conversas são privados."
-    group_privacy_is_closed_public_threads_description: "Qualquer pessoa pode encontrar o grupo e pedir para participar. Somente membros podem ver quem está no grupo. Conversas podem ser públicas ou privadas."
-    group_privacy_is_secret_description: "Somente membros convidados podem encontrar o grupo, ver quem faz parte e ver as conversas."
     confirm_change_to_secret: "Se você continuar, todos as conversas neste grupo e seus subgrupos serão privadas."
     confirm_change_to_secret_subgroup: 'Se você continuar, todas as conversas serão privadas.'
     confirm_change_to_public: 'Se você continuar, as conversas neste grupo serão públicas na web.'
@@ -1066,22 +1062,12 @@ pt_BR:
   deactivation_modal:
     aria_label: 'Desativar conta de usuário'
     introduction: 'Quando você desativa sua conta:'
-    no_longer_group_member: 'Você deixará de ser listado como membro de todos os grupos'
+    you_will_be_deleted: "Sua conta de usuário, incluindo seu nome, endereço de email e outras informações e dados pessoais serão removidas do nosso sistema."
     name_removed: 'Comentários, propostas e discussões feitas por você permanecerão, mas seu nome será removido dos mesmos'
+    no_longer_group_member: 'Você deixará de ser listado como membro de todos os grupos'
     no_emails: 'Você não receberá mais notificações por email'
     you_can_reactivate: "Você poderá reativar sua conta de usuário depois, se quiser"
     submit: 'Sim, eu quero desativar'
-  delete_user_modal:
-    title: 'Apagar conta do usuário'
-    irreversable: "ATENÇÃO: Isso não poderá ser desfeito, se você seguir adiante:"
-    you_will_be_deleted: "Sua conta de usuário, incluindo seu nome, endereço de email e outras informações e dados pessoais serão removidas do nosso sistema."
-    submit: 'Sim, apague minha conta'
-  deactivate_user_form:
-    aria_label: 'Confirmação de desativação da conta'
-    title: 'Desativar conta'
-    question: 'Você pode nos contar porque está desativando?'
-    placeholder: 'Responder a essa pergunta é opcional. Qualquer informação que você possa compartilhar irá nos ajudar a melhorar :) '
-    submit: 'Desativar conta'
   email_settings_page:
     header: Configurações de notificação
     account_deactivated: Sua conta seu desativada. Você nunca mais receberá qualquer email nosso.
@@ -1265,7 +1251,6 @@ pt_BR:
   move_thread_form:
     aria_label: Mudar conversa
     title: Mudar conversa
-    body: 'Grupo de destino:'
     confirm: Mudar conversa
     confirm_change_to_private_thread: '{{groupName}} é um grupo aberto. Se você continuar, esta conversa será público.'
     messages:

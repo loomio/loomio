@@ -180,6 +180,7 @@ es:
       close: 'Cerrar'
       reopen: 'Reabierto'
       save: 'Guardar'
+      move: 'Mover'
       save_changes: 'Guardar cambios'
       update_settings: 'Actualizar preferencias'
       reply: 'Responder'
@@ -769,7 +770,8 @@ es:
     no_threads_here: Ningún hilo para ver aquí!
     search_threads: Buscar hilos ...
     private_threads: Usted debe ser un integrante para ver los hilos privados de este grupo
-    no_more_threads: Esos son todos los hilos en este grupo!
+    no_more_threads: No más hilos para cargar
+    view_closed_threads: 'Echas en falta algo? <a href="{{url}}">Ver hilos cerrados</a>'
     messages:
       privacy:
         members: 'Ahora este grupo es visible sólo para integrantes.'
@@ -872,10 +874,10 @@ es:
       private_to_group: 'El nombre y la descripción solo serán visibles para integrantes. '
       private_to_parent_members: 'El nombre y la descripción serán visibles para los integrantes de {{parent}}'
     privacy: 'Privacidad'
-    group_privacy_is_open_description: "Cualquier persona puede encontrar el grupo y pedir membresía. Solo los integrantes pueden ver quien pertenece al grupo. Todos los hilos son públicos."
-    group_privacy_is_closed_description: "Cualquier persona puede encontrar este grupo y pedir membresía. Sólo los integrantes pueden ver quien pertenece al mismo. Todos los hilos son privados."
-    group_privacy_is_closed_public_threads_description: "Cualquier persona puede encontrar este grupo y pedir membresía. Sólo los integrantes pueden ver quien pertenece al mismo. Los hilos pueden ser públicos o privados."
-    group_privacy_is_secret_description: "Sólo integrantes invitados pueden encontrar este grupo, ver sus integrantes y sus hilos."
+    group_privacy_is_open_description: "Listada públicamente. Cualquiera puede pedir unirse. Todos los hilos son públicos."
+    group_privacy_is_closed_description: "Sin listar. Cualquiera con el enlace puede pedir unirse. Todos los hilos son privados."
+    group_privacy_is_closed_public_threads_description: "Sin listar. Cualquiera con el enlace puede pedir unirse. Los hilos pueden ser públicos o privados."
+    group_privacy_is_secret_description: "Sólo la gente a la que han invitado puede encontrar el grupo. Todos los hilos son privados"
     confirm_change_to_secret: "Si procedes, todos los hilo en este grupo y sus subgrupos se harán privados."
     confirm_change_to_secret_subgroup: 'Si continuas todos los hilos se harán privados.'
     confirm_change_to_public: 'Si continúas, todos los hilos de este grupo se harán públicos en internet.  '
@@ -1081,22 +1083,12 @@ es:
   deactivation_modal:
     aria_label: 'Desactivar la cuenta de usuario'
     introduction: 'Cuando desactiva su cuenta:'
-    no_longer_group_member: 'Ya no serás listado como miembro en ningún grupo'
+    you_will_be_deleted: "Su cuenta de usuario, incluyendo nombre, correo electrónico y otros datos personales serán eliminados del sistema."
     name_removed: 'Los comentarios, propuestas e hilos que ha realizado permanecerán, pero su nombre será retirado de los mismos'
+    no_longer_group_member: 'Ya no serás listado como miembro en ningún grupo'
     no_emails: 'Ya no recibirás notificaciones por correo electrónico'
     you_can_reactivate: "Podrá reactivar su cuenta si lo desea"
     submit: 'Si, quiero desactivar mi cuenta'
-  delete_user_modal:
-    title: 'Eliminar cuenta de usuario'
-    irreversable: "ADVERTENCIA: Esto es permanente, si continuas: "
-    you_will_be_deleted: "Su cuenta de usuario, incluyendo nombre, correo electrónico y otros datos personales serán eliminados del sistema."
-    submit: 'Sí, elimina mi cuenta '
-  deactivate_user_form:
-    aria_label: 'Confirmar la desactivación de la cuenta '
-    title: 'Desactiva cuenta '
-    question: '¿Nos contaría por qué desactiva su cuenta?'
-    placeholder: 'Contestar a esta pregunta es opcional. Cualquier información que compartas nos ayudará a mejorar :)'
-    submit: 'Desactiva cuenta '
   email_settings_page:
     header: Ajustes de notificación
     account_deactivated: Tu cuenta ha sido desactivada. Ya nunca recibirás más emails.
@@ -1280,7 +1272,6 @@ es:
   move_thread_form:
     aria_label: Mover hilo
     title: Mover hilo
-    body: 'Grupo de destino:'
     confirm: 'Mover hilo '
     confirm_change_to_private_thread: '{{groupName}} es un grupo público. Si continuas, este hilo se hará público.'
     messages:
@@ -1805,9 +1796,9 @@ es:
     title: Compartir encuesta - {{title}}
   auth_form:
     code: '000000'
-    youre_invited: Se te ha invitado a unirte a {{group-name}}. Iniciar sesión para continuar
-    youre_invited_discussion: Se te ha invitado a unirte al debate. Iniciar sesión para continuar
-    youre_invited_poll: Se te ha invitado a votar. Iniciar sesión para continuar
+    youre_invited: Te han invitado a unirte al grupo {{group_name}}.
+    youre_invited_discussion: Te han invitado a unirte a la conversación.
+    youre_invited_poll: Te han invitado a votar.
     sign_in_to_loomio: Entrar a {{site_name}}
     sign_in_help: ¿Problemas para iniciar sesión?
     sign_in: Entrar

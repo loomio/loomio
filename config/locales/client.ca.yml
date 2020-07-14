@@ -84,6 +84,7 @@ ca:
       back: 'Enrere'
       close: 'Tanca'
       save: 'Desa'
+      move: 'Mou'
       save_changes: 'Desa els canvis'
       update_settings: 'Actualitza la configuració'
       reply: 'Respon'
@@ -500,7 +501,6 @@ ca:
       success: Discussió eliminada
   move_thread_form:
     title: Mou la discussió
-    body: 'Grup destí:'
     confirm: Mou la discussió
     confirm_change_to_private_thread: '{{groupName}} és un grup obert. Si continueu, aquesta discussió serà pública.'
     messages:

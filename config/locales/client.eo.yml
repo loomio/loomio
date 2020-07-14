@@ -112,6 +112,7 @@ eo:
       next: 'Sekva'
       close: 'Fermigi'
       save: 'Konservi'
+      move: 'Movi'
       save_changes: 'Konservi ŝanĝojn'
       update_settings: 'Ĝisdatigi agordojn'
       reply: 'Respondi'
