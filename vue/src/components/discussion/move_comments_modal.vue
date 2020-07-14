@@ -72,14 +72,14 @@ export default
 </script>
 <template lang="pug">
 v-card
-  submit-overlay(:value='loading')
+  submit-overlay(:value='selectedDiscussion && selectedDiscussion.processing')
   v-card-title
     h1.headline(v-t="'action_dock.move_items'")
     v-spacer
     dismiss-modal-button(aria-hidden='true', :close='close')
   v-card-text
     v-select(v-model="groupId" :items="groups" item-text="name" item-value="id")
-    v-autocomplete(hide-no-data return-object v-model="selectedDiscussion" :search-input.sync="searchFragment" :items="searchResults" item-text="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')")
+    v-autocomplete(hide-no-data return-object v-model="selectedDiscussion" :search-input.sync="searchFragment" :items="searchResults" item-text="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading")
   v-card-actions
     v-spacer
     v-btn(color="accent" @click="startNewThread()" v-t="'discussion_fork_actions.start_new_thread'")
