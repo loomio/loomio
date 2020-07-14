@@ -14,6 +14,7 @@ export default
     searchResults: []
     groupId: @discussion.groupId
     groups: Session.user().groups()
+    loading: false
 
   props:
     discussion: Object
@@ -35,8 +36,10 @@ export default
                       })
 
     submit: ->
+      @loading = true
       @selectedDiscussion.moveComments()
       .then =>
+        @loading = false
         @resetSourceDiscussion()
         @selectedDiscussion.update(forkedEventIds: [])
         @selectedDiscussion.update(isForking: false)
@@ -50,7 +53,9 @@ export default
 
     fetch: debounce ->
       return unless @searchFragment
+      @loading = true
       Records.discussions.search(@groupId, @searchFragment).then (data) =>
+        @loading = false
         @searchResults = Records.discussions.collection.chain()
           .find(groupId: @groupId)
           .find({ id: { $ne: @discussion.id } })
@@ -67,7 +72,7 @@ export default
 </script>
 <template lang="pug">
 v-card
-  submit-overlay(:value='discussion.processing')
+  submit-overlay(:value='loading')
   v-card-title
     h1.headline(v-t="'action_dock.move_items'")
     v-spacer
