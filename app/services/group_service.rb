@@ -21,8 +21,7 @@ module GroupService
       if g.parent
         parent_members = g.parent.accepted_members.where(id: users.verified.pluck(:id))
         Membership.pending.where(group_id: g.id,
-                                 user_id: parent_members.pluck(:id),
-                                 accepted_at: nil).update_all(accepted_at: Time.now)
+                                 user_id: parent_members.pluck(:id)).update_all(accepted_at: Time.now)
       end
 
       g.update_pending_memberships_count
