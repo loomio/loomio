@@ -707,6 +707,7 @@ en:
     delete_thread: Delete thread
     notification_history: Notification history
     move_item: Move item
+    add_poll_to_thread: Add poll to thread
 
   formatting:
     bold: Bold

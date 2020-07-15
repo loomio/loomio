@@ -215,6 +215,9 @@ export default new class AbilityService
   canExportPoll: (poll) ->
     !poll.discardedAt && poll.adminsInclude(Session.user())
 
+  canAddPollToThread: (poll) ->
+    !poll.discardedAt && !poll.discussionId && poll.adminsInclude(Session.user())
+
   canSetPollOutcome: (poll) ->
     !poll.discardedAt && poll.isClosed() && poll.adminsInclude(Session.user())
 
