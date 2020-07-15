@@ -156,7 +156,7 @@ describe API::DiscussionsController do
       it 'does not return a deleted discussion' do
         get :show, params: { id: deleted_discussion.key }
         json = JSON.parse(response.body)
-        expect(json['discussions']).to eq []
+        expect(json['discussions']).to eq nil
       end
 
       it 'displays discussion to guest group members' do
