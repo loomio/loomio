@@ -28,7 +28,7 @@ describe API::SearchController do
     end
 
     it "does not return deleted discussions" do
-      json = search_for('find')
+      json = search_for('Deleted')
       result_keys = fields_for(json, 'search_results', 'key')
       expect(result_keys).to_not include deleted_discussion.key
     end
