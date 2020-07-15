@@ -22,17 +22,11 @@ export default
 
   methods:
     submit: ->
-      console.log 'submitting'
-      # @loading = true
-      # @selectedDiscussion.moveComments()
-      # .then =>
-      #   @loading = false
-      #   @resetSourceDiscussion()
-      #   @selectedDiscussion.update(forkedEventIds: [])
-      #   @selectedDiscussion.update(isForking: false)
-      #   @close()
-      #   Flash.success("discussion_fork_actions.moved")
-      # .catch onError(@selectedDiscussion)
+      @poll.addToThread(@selectedDiscussion.id)
+      .then =>
+        @close()
+        Flash.success("add_poll_to_thread_modal.success")
+      .catch onError(@poll)
 
     fetch: debounce ->
       return unless @searchFragment
@@ -53,7 +47,7 @@ export default
 </script>
 <template lang="pug">
 v-card
-  submit-overlay(:value='loading')
+  submit-overlay(:value='poll.processing')
   v-card-title
     h1.headline(v-t="'action_dock.add_poll_to_thread'")
     v-spacer

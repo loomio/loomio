@@ -707,7 +707,7 @@ en:
     delete_thread: Delete thread
     notification_history: Notification history
     move_item: Move item
-    add_poll_to_thread: Add poll to thread
+    add_poll_to_thread: Add to thread
 
   formatting:
     bold: Bold
@@ -1961,6 +1961,9 @@ en:
 
   share_poll_page:
     title: Share poll - {{title}}
+
+  add_poll_to_thread_modal:
+    success: "Success! Poll added to thread"
 
   auth_form:
     code: '000000'
