@@ -18,8 +18,7 @@ class Discussion < ApplicationRecord
   include Discard::Model
 
   no_spam_for :title, :description
-
-  scope :archived, -> { where('archived_at is not null') }
+  default_scope { kept }
 
   scope :last_activity_after, -> (time) { where('last_activity_at > ?', time) }
   scope :order_by_latest_activity, -> { order('discussions.last_activity_at DESC') }
