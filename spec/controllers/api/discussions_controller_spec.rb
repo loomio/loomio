@@ -7,7 +7,7 @@ describe API::DiscussionsController do
   let(:another_user) { create :user }
   let(:group) { create :group }
   let(:discussion) { create_discussion group: group }
-  let(:deleted_discussion) { create_discussion group: group, discarded_at: Time.now, title: "Deleted Discussion" }
+  let(:deleted_discussion) { create_discussion group: group, title: "Deleted Discussion" }
   let(:poll) { create :poll, discussion: discussion }
   let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
   let(:another_discussion) { create_discussion }
@@ -28,6 +28,7 @@ describe API::DiscussionsController do
 
   before do
     CommentService.create(comment: comment, actor: comment.author)
+    deleted_discussion.update(discarded_at: Time.now)
     group.add_admin! user
   end
 
