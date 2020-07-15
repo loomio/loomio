@@ -13,7 +13,7 @@ export default
     searchFragment: ''
     searchResults: []
     groupId: @discussion.groupId
-    groups: sortBy(Session.user().groups(), 'name')
+    groups: sortBy(Session.user().groups(), 'fullName')
     loading: false
 
   props:
@@ -78,7 +78,7 @@ v-card
     v-spacer
     dismiss-modal-button(aria-hidden='true', :close='close')
   v-card-text
-    v-select(v-model="groupId" :items="groups" item-text="name" item-value="id")
+    v-select(v-model="groupId" :items="groups" item-text="fullName" item-value="id")
     v-autocomplete(hide-no-data return-object v-model="selectedDiscussion" :search-input.sync="searchFragment" :items="searchResults" item-text="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading")
   v-card-actions
     v-spacer
