@@ -7,6 +7,7 @@ describe API::DiscussionsController do
   let(:another_user) { create :user }
   let(:group) { create :group }
   let(:discussion) { create_discussion group: group }
+  let(:deleted_discussion) { create_discussion group: group, discarded_at: Time.now, title: "Deleted Discussion" }
   let(:poll) { create :poll, discussion: discussion }
   let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
   let(:another_discussion) { create_discussion }
@@ -149,6 +150,12 @@ describe API::DiscussionsController do
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[users groups discussions])
         expect(json['discussions'][0].keys).to include *(%w[id key title description last_activity_at created_at updated_at items_count private author_id group_id ])
+      end
+
+      it 'does not return a deleted discussion' do
+        get :show, params: { id: deleted_discussion.key }
+        json = JSON.parse(response.body)
+        expect(json['discussions']).to eq []
       end
 
       it 'displays discussion to guest group members' do
@@ -295,6 +302,7 @@ describe API::DiscussionsController do
           json = JSON.parse(response.body)
           discussions = json['discussions'].map { |v| v['id'] }
           expect(discussions).to_not include cant_see_me.id
+          expect(discussions).to_not include deleted_discussion.id
         end
 
         it 'can display content from a specified public group' do
@@ -880,4 +888,12 @@ describe API::DiscussionsController do
     end
   end
 
+  describe 'search' do
+    it 'does not return deleted discussions' do
+      get :search, params: { group_id: group.id, q: "Deleted" }
+      json = JSON.parse(response.body)
+      discussion_ids = json['discussions'].map { |d| d['id'] }
+      expect(discussion_ids).to_not include deleted_discussion.id
+    end
+  end
 end

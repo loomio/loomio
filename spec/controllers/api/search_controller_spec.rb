@@ -4,6 +4,7 @@ describe API::SearchController do
   let(:user)    { create :user }
   let(:group)   { create :group }
   let(:discussion) { create :discussion, group: group }
+  let(:deleted_discussion) { create :discussion, group: group, title: "Deleted Discussion" }
   let(:comment) { create :comment, discussion: discussion }
 
   describe 'index' do
@@ -24,6 +25,12 @@ describe API::SearchController do
 
       expect(@result_keys).to include discussion.key
       expect(@ranks).to include SearchVector::WEIGHT_VALUES[3] * SearchVector::RECENCY_VALUES[0]
+    end
+
+    it "does not return deleted discussions" do
+      json = search_for('find')
+      result_keys = fields_for(json, 'search_results', 'key')
+      expect(result_keys).to_not include deleted_discussion.key
     end
 
     # TODO: Pull this stuff out so it's not so magic number-y
