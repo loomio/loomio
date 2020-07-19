@@ -35,6 +35,7 @@ export default
 
   methods:
     openThreadNav: -> EventBus.$emit('toggleThreadNav')
+    scrollThreadNav: -> EventBus.$emit('scrollThreadNav')
 
     init: ->
       Records.samlProviders.authenticateForDiscussion(@$route.params.key)
@@ -61,7 +62,7 @@ export default
 .thread-page
   v-main
     loading(:until="discussion")
-      v-container.thread-page.max-width-800(v-if="discussion")
+      v-container.thread-page.max-width-800(v-if="discussion" v-scroll="scrollThreadNav")
         thread-current-poll-banner(:discussion="discussion")
         discussion-fork-actions(:discussion='discussion' :key="'fork-actions'+ discussion.id")
         thread-card(:discussion='discussion' :key="discussion.id")

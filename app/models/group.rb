@@ -224,7 +224,6 @@ class Group < ApplicationRecord
 
   def archive!
     self.update_attribute(:archived_at, DateTime.now)
-    self.update_attribute(:handle, nil)
     memberships.update_all(archived_at: DateTime.now)
     subgroups.map(&:archive!)
   end
