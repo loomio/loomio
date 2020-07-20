@@ -12,7 +12,6 @@ import MembershipRequestRecordsInterface from '@/shared/interfaces/membership_re
 import NotificationRecordsInterface from '@/shared/interfaces/notification_records_interface'
 import UserRecordsInterface from '@/shared/interfaces/user_records_interface'
 import SearchResultRecordsInterface from '@/shared/interfaces/search_result_records_interface'
-import ContactRecordsInterface from '@/shared/interfaces/contact_records_interface'
 import VersionRecordsInterface from '@/shared/interfaces/version_records_interface'
 import TranslationRecordsInterface from '@/shared/interfaces/translation_records_interface'
 import SessionRecordsInterface from '@/shared/interfaces/session_records_interface'
@@ -48,7 +47,6 @@ records.addRecordsInterface MembershipRequestRecordsInterface
 records.addRecordsInterface NotificationRecordsInterface
 records.addRecordsInterface UserRecordsInterface
 records.addRecordsInterface SearchResultRecordsInterface
-records.addRecordsInterface ContactRecordsInterface
 records.addRecordsInterface VersionRecordsInterface
 records.addRecordsInterface TranslationRecordsInterface
 records.addRecordsInterface SessionRecordsInterface
