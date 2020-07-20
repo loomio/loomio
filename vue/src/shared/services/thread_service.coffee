@@ -188,6 +188,22 @@ export default new class ThreadService
                 flash: 'delete_thread_form.messages.success'
               redirect: LmoUrlService.group discussion.group()
 
+    discard_thread:
+      menu: true
+      canPerform: -> AbilityService.canDeleteThread(discussion)
+      perform: ->
+        openModal
+          component: 'ConfirmModal',
+          props:
+            confirm:
+              submit: discussion.discard
+              text:
+                title: 'discard_thread_form.title'
+                helptext: 'discard_thread_form.body'
+                submit: 'discard_thread_form.confirm'
+                flash: 'discard_thread_form.messages.success'
+              redirect: LmoUrlService.group discussion.group()
+
   mute: (thread, override = false) ->
     if !Session.user().hasExperienced("mutingThread") and !override
       Records.users.saveExperience("mutingThread")
