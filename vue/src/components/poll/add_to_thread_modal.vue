@@ -55,8 +55,8 @@ v-card
     dismiss-modal-button(aria-hidden='true', :close='close')
   v-card-text
     v-select(v-model="groupId" :items="groups" item-text="fullName" item-value="id")
-    v-autocomplete(hide-no-data return-object v-model="selectedDiscussion" :search-input.sync="searchFragment" :items="searchResults" item-text="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading")
+    v-autocomplete.add-to-thread-modal__search(hide-no-data return-object v-model="selectedDiscussion" :search-input.sync="searchFragment" :items="searchResults" item-text="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading")
   v-card-actions
     v-spacer
-    v-btn(color="primary" @click="submit()" v-t="'common.action.save'" :disabled="!selectedDiscussion")
+    v-btn.add-to-thread-modal__submit(color="primary" @click="submit()" v-t="'common.action.save'" :disabled="!selectedDiscussion")
 </template>

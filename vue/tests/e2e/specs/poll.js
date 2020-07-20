@@ -319,6 +319,19 @@ module.exports = {
     page.expectFlash('New options added')
   },
 
+  'can_add_standalone_poll_to_thread': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/test_poll_scenario?poll_type=proposal&scenario=poll_created&standalone=1&admin=1')
+    page.click('.action-menu')
+    page.click('.action-dock__button--add_poll_to_thread')
+    page.fillIn('.add-to-thread-modal__search input', "Some")
+    page.pause(1000)
+    page.click('.v-autocomplete__content .v-list-item__content')
+    page.click('.add-to-thread-modal__submit')
+    page.expectFlash("Success, proposal added to thread!")
+  },
+
   // 'can_edit_a_vote': (test) => {
   //   page = pageHelper(test)
   //
