@@ -18,18 +18,17 @@ class Discussion < ApplicationRecord
   include Discard::Model
 
   no_spam_for :title, :description
-  default_scope { kept }
 
   scope :last_activity_after, -> (time) { where('last_activity_at > ?', time) }
   scope :order_by_latest_activity, -> { order('discussions.last_activity_at DESC') }
   scope :recent, -> { where('last_activity_at > ?', 6.weeks.ago) }
   scope :order_by_importance, -> { order(importance: :desc, last_activity_at: :desc) }
 
-  scope :visible_to_public, -> { where(private: false) }
-  scope :not_visible_to_public, -> { where(private: true) }
+  scope :visible_to_public, -> { kept.where(private: false) }
+  scope :not_visible_to_public, -> { kept.where(private: true) }
 
-  scope :is_open, -> { where(closed_at: nil) }
-  scope :is_closed, -> { where("closed_at is not null") }
+  scope :is_open, -> { kept.where(closed_at: nil) }
+  scope :is_closed, -> { kept.where("closed_at is not null") }
 
   validates_presence_of :title, :group, :author
   validate :private_is_not_nil
@@ -67,6 +66,7 @@ class Discussion < ApplicationRecord
 
   scope :search_for, ->(fragment) do
      joins("INNER JOIN users ON users.id = discussions.author_id")
+    .kept
     .where("discussions.title ilike :fragment OR users.name ilike :fragment", fragment: "%#{fragment}%")
   end
 
@@ -76,6 +76,7 @@ class Discussion < ApplicationRecord
     .select("ts_headline(discussions.description, plainto_tsquery(#{query}), 'ShortWord=0') as blurb")
     .from(SearchVector.search_for(query, user, opts))
     .joins("INNER JOIN discussions on subquery.discussion_id = discussions.id")
+    .kept
     .where('rank > 0')
     .order('rank DESC, last_activity_at DESC')
   end
