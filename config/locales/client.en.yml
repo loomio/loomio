@@ -1963,7 +1963,7 @@ en:
     title: Share poll - {{title}}
 
   add_poll_to_thread_modal:
-    success: "Success! Poll added to thread"
+    success: "Success, {{pollType}} added to thread!"
 
   auth_form:
     code: '000000'

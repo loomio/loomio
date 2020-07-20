@@ -4,6 +4,7 @@ import Session from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
 import Flash   from '@/shared/services/flash'
 import EventBus          from '@/shared/services/event_bus'
+import I18n           from '@/i18n'
 import { onError } from '@/shared/helpers/form'
 import { sortBy, debounce } from 'lodash-es'
 
@@ -25,7 +26,7 @@ export default
       @poll.addToThread(@selectedDiscussion.id)
       .then =>
         @close()
-        Flash.success("add_poll_to_thread_modal.success")
+        Flash.success(I18n.t('add_poll_to_thread_modal.success', pollType: I18n.t(@poll.pollTypeKey())))
       .catch onError(@poll)
 
     fetch: debounce ->
