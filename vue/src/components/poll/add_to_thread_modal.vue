@@ -26,7 +26,7 @@ export default
       @poll.addToThread(@selectedDiscussion.id)
       .then =>
         @close()
-        Flash.success(I18n.t('add_poll_to_thread_modal.success', pollType: I18n.t(@poll.pollTypeKey())))
+        Flash.success('add_poll_to_thread_modal.success', pollType: @poll.translatedPollType())
       .catch onError(@poll)
 
     fetch: debounce ->
