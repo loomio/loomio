@@ -157,6 +157,47 @@ describe API::MembershipsController do
     end
   end
 
+  describe 'search via index' do
+    let(:emrob_jones) { create :user, name: 'emrob jones' }
+    let(:rob_jones) { create :user, name: 'rob jones' }
+    let(:jim_robinson) { create :user, name: 'jim robinson' }
+    let(:jim_emrob) { create :user, name: 'jim emrob' }
+    let(:rob_othergroup) { create :user, name: 'rob othergroup' }
+
+    context 'success' do
+      before do
+        emrob_jones
+        rob_jones
+        jim_robinson
+        jim_emrob
+        group.add_member!(emrob_jones)
+        group.add_member!(rob_jones)
+        group.add_member!(jim_robinson)
+        group.add_member!(jim_emrob)
+        another_group.add_member!(rob_othergroup)
+      end
+      it 'returns users filtered by query' do
+        get :index, params: { group_id: group.id, q: 'rob' }, format: :json
+
+        user_ids = JSON.parse(response.body)['users'].map{|c| c['id']}
+
+        expect(user_ids).to_not include emrob_jones.id
+        expect(user_ids).to include rob_jones.id
+        expect(user_ids).to include jim_robinson.id
+        expect(user_ids).to_not include jim_emrob.id
+        expect(user_ids).to_not include rob_othergroup.id
+      end
+    end
+
+    context 'failure' do
+      it 'does not allow access to an unauthorized group' do
+        cant_see_me = create :group
+        get :index, params: { group_id: cant_see_me.id }
+        expect(JSON.parse(response.body)['exception']).to include 'CanCan::AccessDenied'
+      end
+    end
+  end
+
   describe 'index' do
     context 'success' do
       it 'returns users filtered by group' do
@@ -167,19 +208,19 @@ describe API::MembershipsController do
         groups = json['groups'].map { |g| g['id'] }
         expect(users).to include user_named_biff.id
         expect(users).to_not include alien_named_biff.id
-        expect(users).to_not include pending_named_barb.id
+        expect(users).to include pending_named_barb.id
         expect(groups).to include group.id
       end
 
-      it 'returns pending users' do
-        get :index, params: { group_id: group.id, pending: true }, format: :json
-        json = JSON.parse(response.body)
-
-        user_ids = json['users'].map { |c| c['id'] }
-        groups = json['groups'].map { |g| g['id'] }
-        expect(user_ids).to include pending_named_barb.id
-        expect(groups).to include group.id
-      end
+      # it 'returns pending users' do
+      #   get :index, params: { group_id: group.id, pending: true }, format: :json
+      #   json = JSON.parse(response.body)
+      #
+      #   user_ids = json['users'].map { |c| c['id'] }
+      #   groups = json['groups'].map { |g| g['id'] }
+      #   expect(user_ids).to include pending_named_barb.id
+      #   expect(groups).to include group.id
+      # end
 
       context 'logged out' do
         before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
@@ -218,94 +259,6 @@ describe API::MembershipsController do
     end
   end
 
-  describe 'autocomplete' do
-    let(:emrob_jones) { create :user, name: 'emrob jones' }
-    let(:rob_jones) { create :user, name: 'rob jones' }
-    let(:jim_robinson) { create :user, name: 'jim robinson' }
-    let(:jim_emrob) { create :user, name: 'jim emrob' }
-    let(:rob_othergroup) { create :user, name: 'rob othergroup' }
-
-    context 'success' do
-      before do
-        emrob_jones
-        rob_jones
-        jim_robinson
-        jim_emrob
-        group.add_member!(emrob_jones)
-        group.add_member!(rob_jones)
-        group.add_member!(jim_robinson)
-        group.add_member!(jim_emrob)
-        another_group.add_member!(rob_othergroup)
-      end
-      it 'returns users filtered by query' do
-        get :autocomplete, params: { group_id: group.id, q: 'rob' }, format: :json
-
-        user_ids = JSON.parse(response.body)['users'].map{|c| c['id']}
-
-        expect(user_ids).to_not include emrob_jones.id
-        expect(user_ids).to include rob_jones.id
-        expect(user_ids).to include jim_robinson.id
-        expect(user_ids).to_not include jim_emrob.id
-        expect(user_ids).to_not include rob_othergroup.id
-      end
-    end
-
-    context 'failure' do
-      it 'does not allow access to an unauthorized group' do
-        cant_see_me = create :group
-        get :autocomplete, params: { group_id: cant_see_me.id }
-        expect(JSON.parse(response.body)['exception']).to include 'CanCan::AccessDenied'
-      end
-    end
-  end
-
-  describe 'invitables' do
-
-    context 'success' do
-      it 'returns users in shared groups' do
-        get :invitables, params: { group_id: group.id, q: 'beef' }, format: :json
-        json = JSON.parse(response.body)
-        expect(json.keys).to include *(%w[users memberships groups])
-        users = json['users'].map { |c| c['id'] }
-        groups = json['groups'].map { |g| g['id'] }
-        expect(users).to include alien_named_biff.id
-        expect(users).to include alien_named_bang.id
-        expect(users).to_not include user_named_biff.id
-        expect(groups).to include another_group.id
-      end
-
-      it 'does not return deactivated users' do
-        DeactivateUserWorker.new.perform(alien_named_biff.id)
-        get :invitables, params: { group_id: group.id, q: 'beef' }, format: :json
-        json = JSON.parse(response.body)
-        users = json['users'].map { |c| c['id'] }
-        expect(users).to_not include alien_named_biff.id
-      end
-
-      it 'can search by email address' do
-        get :invitables, params: { group_id: group.id, q: 'beef@biff' }, format: :json
-        json = JSON.parse(response.body)
-        users = json['users'].map { |c| c['id'] }
-        groups = json['groups'].map { |g| g['id'] }
-        expect(users).to include alien_named_biff.id
-      end
-
-      it 'does not return duplicate users' do
-        third_group = create(:group)
-        third_group.add_member! user
-        third_group.add_member! user_named_biff
-        another_group.add_member! user_named_biff
-
-        get :invitables, params: { group_id: group.id, q: 'biff' }, format: :json
-        json = JSON.parse(response.body)
-        memberships = json['memberships'].map { |m| m['id'] }
-        users = json['users'].map { |u| u['id'] }
-        expect(users).to include user_named_biff.id
-        expect(users.length).to eq memberships.length
-      end
-
-    end
-  end
 
   describe 'save_experience' do
 

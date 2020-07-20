@@ -40,11 +40,9 @@ export default
 
       @loader = new RecordLoader
         collection: 'memberships'
-        path: 'autocomplete'
         params:
           exclude_types: 'group'
           group_id: @group.id
-          pending: true
           per: @per
           from: @from
           order: @order
@@ -174,11 +172,11 @@ export default
         p.pa-4.text-center(v-t="'error_page.forbidden'")
       div(v-else)
         p.pa-4.text-center(v-if="!memberships.length" v-t="'common.no_results_found'")
-        v-list(v-else three-line)
+        v-list(v-else two-line)
           v-list-item(v-for="membership in memberships" :key="membership.id")
-            v-list-item-avatar(size='48')
+            v-list-item-avatar(size='32')
               router-link(:to="urlFor(membership.user())")
-                user-avatar(:user='membership.user()' size='48')
+                user-avatar(:user='membership.user()' size='32')
             v-list-item-content
               v-list-item-title
                 router-link(:to="urlFor(membership.user())") {{ membership.user().name }}
