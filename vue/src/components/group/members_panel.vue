@@ -167,31 +167,39 @@ export default
       shareable-link-modal(:group="group")
       v-btn.group-page__requests-tab(:to="urlFor(group, 'members/requests')" v-t="'members_panel.requests'")
 
-    v-card(outlined)
-      div(v-if="loader.status == 403")
-        p.pa-4.text-center(v-t="'error_page.forbidden'")
-      div(v-else)
-        p.pa-4.text-center(v-if="!memberships.length" v-t="'common.no_results_found'")
-        v-list(v-else two-line)
-          v-list-item(v-for="membership in memberships" :key="membership.id")
-            v-list-item-avatar(size='32')
-              router-link(:to="urlFor(membership.user())")
+    div(v-if="loader.status == 403")
+      p.pa-4.text-center(v-t="'error_page.forbidden'")
+    div(v-else)
+      p.pa-4.text-center(v-if="!memberships.length" v-t="'common.no_results_found'")
+      v-simple-table(v-else)
+        template(v-slot:default)
+          tbody
+            tr(v-for="membership in memberships" :key="membership.id")
+              td.shrink
                 user-avatar(:user='membership.user()' size='32')
-            v-list-item-content
-              v-list-item-title
+              td
                 router-link(:to="urlFor(membership.user())") {{ membership.user().name }}
-                space
-                span.caption(v-if="$route.query.subgroups") {{membership.group().name}}
-                space
-                span.title.caption {{membership.title}}
-                space
+                span(v-if="membership.title")
+                  mid-dot
+                  span {{membership.title}}
+                span(v-if="membership.user().shortBio")
+                  space
+                  span.caption.grey--text {{ membership.user().simpleBio() }}
+              td.shrink(v-if="$route.query.subgroups") {{membership.group().name}}
+              td.shrink
                 v-chip(v-if="membership.admin" small outlined label v-t="'members_panel.admin'")
-              v-list-item-subtitle(v-if="membership.acceptedAt") {{ (membership.user().shortBio || '').replace(/<\/?[^>]+(>|$)/g, "") }}
-              v-list-item-subtitle(v-if="!membership.acceptedAt")
-                span(v-if="membership.inviter()" v-t="{path: 'members_panel.invited_by_name', args: {name: membership.inviter().name}}")
-            v-list-item-action
-              membership-dropdown(:membership="membership")
-        v-layout(justify-center)
-          v-btn.my-2(outlined color='accent' v-if="showLoadMore" :loading="loader.loading" @click="loader.fetchRecords()" v-t="'common.action.load_more'")
+              td.shrink
+                membership-dropdown(:membership="membership")
+      v-layout(justify-center)
+        v-btn.my-2(outlined color='accent' v-if="showLoadMore" :loading="loader.loading" @click="loader.fetchRecords()" v-t="'common.action.load_more'")
 
 </template>
+
+<style lang="sass">
+.members-panel
+  .grow
+    width: 100%
+  .shrink
+    width: 0.1%
+    white-space: nowrap
+</style>

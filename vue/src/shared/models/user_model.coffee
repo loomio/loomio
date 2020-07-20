@@ -1,6 +1,6 @@
 import BaseModel from '@/shared/record_store/base_model'
 import AppConfig from '@/shared/services/app_config'
-import { find, invokeMap, filter, flatten, uniq, head, compact, some, map } from 'lodash-es'
+import { find, invokeMap, filter, flatten, uniq, head, compact, some, map, truncate } from 'lodash-es'
 
 export default class UserModel extends BaseModel
   @singular: 'user'
@@ -21,6 +21,10 @@ export default class UserModel extends BaseModel
     attachments: []
     locale: AppConfig.defaultLocale
     experiences: []
+
+
+  simpleBio: ->
+    truncate((@shortBio || '').replace(/<\/?[^>]+(>|$)/g, ""), length: 70)
 
   localeName: ->
     (find(AppConfig.locales, (h) => h.key == @locale) or {}).name
