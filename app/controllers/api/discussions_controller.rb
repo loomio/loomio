@@ -115,7 +115,8 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def discard
-    service.discard discussion: load_resource, actor: current_user
+    @discussion = load_resource
+    service.discard discussion: @discussion, actor: current_user
     respond_with_resource
   end
 
