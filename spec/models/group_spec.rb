@@ -4,7 +4,7 @@ describe Group do
   let(:user) { create(:user) }
   let(:group) { create(:group) }
   let(:discussion) { create :discussion, group: group }
-  let(:deleted_discussion) { create :discussion, group: group, discarded_at: Time.now }
+  let(:discarded_discussion) { create :discussion, group: group, discarded_at: Time.now }
 
   context 'default cover photo' do
 
@@ -128,10 +128,10 @@ describe Group do
   describe 'cached discussions counts' do
     before do
       discussion
-      deleted_discussion
+      discarded_discussion
     end
 
-    it 'does not count a deleted discussion' do
+    it 'does not count a discarded discussion' do
       expect(group.public_discussions_count).to eq 0
       expect(group.open_discussions_count).to eq 1
       expect(group.closed_discussions_count).to eq 0
