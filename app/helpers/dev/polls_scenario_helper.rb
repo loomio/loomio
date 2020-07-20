@@ -7,7 +7,7 @@ module Dev::PollsScenarioHelper
     user  = saved(fake_user(time_zone: "America/New_York"))
     discussion.group.add_member! user
 
-    poll = fake_poll(discussion: discussion,
+    poll = fake_poll(discussion: !!params[:standalone] ? nil : discussion,
                      poll_type: params[:poll_type],
                      hide_results_until_closed: !!params[:hide_results_until_closed],
                      anonymous: !!params[:anonymous])
