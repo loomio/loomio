@@ -149,12 +149,8 @@ class PollService
     actor.ability.authorize! :update, poll
     actor.ability.authorize! :update, discussion
     ActiveRecord::Base.transaction do
-      poll.update(discussion_id: discussion.id, group_id: discussion.group.id)
+      poll.update(discussion_id: discussion.id, group_id: discussion.group.id, stances_in_discussion: false)
       poll.created_event.update(discussion_id: discussion.id, parent_id: discussion.created_event.id, pinned: true)
-      Event.reorder_with_parent_id(discussion.created_event.id)
-      discussion.update_sequence_info!
-      discussion.created_event.update_child_count
-      discussion.update_items_count
       poll.created_event
     end
   end
