@@ -46,7 +46,7 @@ module PendingActionsHelper
   end
 
   def consume_pending_discussion_reader(user)
-    if reader = (pending_discussion_reader || pending_guest_membership)
+    if reader = pending_discussion_reader
       DiscussionReaderService.redeem(discussion_reader: reader, actor: user)
     end
   end
@@ -69,10 +69,6 @@ module PendingActionsHelper
 
   def pending_membership
     Membership.pending.find_by(token: pending_membership_token) if pending_membership_token
-  end
-
-  def pending_guest_membership
-    pending_membership_token && DiscussionReader.redeemable.find_by(token: pending_membership_token)
   end
 
   def pending_discussion_reader_token
