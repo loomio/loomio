@@ -1,4 +1,5 @@
-supported: [en, zh_TW, es, fr, de, uk, pt_BR, it, he, hu]
+supported: [en, zh_TW, es, fr, de, uk, pt_BR, it, he, hu, nl_NL]
 fallbacks:
   zh: zh_TW
   pt: pt_BR
+  nl: nl_NL

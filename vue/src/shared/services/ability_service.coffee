@@ -206,6 +206,9 @@ export default new class AbilityService
   canSubscribeToPoll: (poll) ->
     poll.membersInclude(Session.user())
 
+  canMovePoll: (poll) ->
+    !poll.discussionId && poll.adminsInclude(Session.user())
+
   canEditPoll: (poll) ->
     poll.isActive() and poll.adminsInclude(Session.user())
 

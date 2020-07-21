@@ -10,7 +10,7 @@ export default
     referralCodeExtra: ->
       @$t('subscription_status.referral_code_help')
     canSee: ->
-      AbilityService.canAdminister(@group)
+      !@group.parentId && AbilityService.canAdminister(@group)
     expiresAt: ->
       @exactDate(@group.subscriptionExpiresAt)
     planName: ->
