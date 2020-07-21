@@ -92,8 +92,8 @@ export default
         @searchResults = orderBy(chain, 'rank', 'desc')
       else
         chain = Records.discussions.collection.chain()
-        chain = chain.find(groupId: {$in: @groupIds})
         chain = chain.find(discardedAt: null)
+        chain = chain.find(groupId: {$in: @groupIds})
 
         switch @$route.query.t
           when 'unread'
