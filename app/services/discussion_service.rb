@@ -42,6 +42,13 @@ class DiscussionService
     EventBus.broadcast('discussion_destroy', discussion, actor)
   end
 
+  def self.discard(discussion:, actor:)
+    actor.ability.authorize!(:discard, discussion)
+    discussion.discard!
+    EventBus.broadcast('discussion_discard', discussion, actor)
+    discussion.created_event
+  end
+
   def self.update(discussion:, params:, actor:)
     actor.ability.authorize! :update, discussion
 

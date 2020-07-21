@@ -32,7 +32,8 @@ class DiscussionSerializer < ApplicationSerializer
              :mentioned_usernames,
              :tag_names,
              :newest_first,
-             :max_depth
+             :max_depth,
+             :discarded_at
 
 
   attributes_from_reader :discussion_reader_id,

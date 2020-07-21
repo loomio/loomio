@@ -109,7 +109,7 @@ module.exports = {
 
     page.loadPath('setup_discussion')
     page.click('.action-menu')
-    page.click('.action-dock__button--delete_thread')
+    page.click('.action-dock__button--discard_thread')
     page.click('.confirm-modal__submit')
 
     page.expectFlash('Thread deleted')
