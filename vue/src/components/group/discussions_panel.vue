@@ -84,13 +84,14 @@ export default
         when 'all' then @group.organisationIds()
         else [@group.id]
 
+      chain = Records.searchResults.collection.chain()
+      chain = chain.find(discardedAt: null)
+
       if @$route.query.q
-        chain = Records.searchResults.collection.chain().where((d) -> !d.discardedAt)
         chain = chain.find(resultGroupId: {$in: @group.parentOrSelf().organisationIds()})
         chain = chain.find(query: @$route.query.q).data()
         @searchResults = orderBy(chain, 'rank', 'desc')
       else
-        chain = Records.discussions.collection.chain().where((d) -> !d.discardedAt)
         chain = chain.find(groupId: {$in: @groupIds})
 
         switch @$route.query.t

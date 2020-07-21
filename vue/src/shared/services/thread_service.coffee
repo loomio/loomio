@@ -172,21 +172,21 @@ export default new class ThreadService
           props: { discussion: discussion.clone() }
       canPerform: -> AbilityService.canMoveThread(discussion)
 
-    delete_thread:
-      menu: true
-      canPerform: -> AbilityService.canDeleteThread(discussion)
-      perform: ->
-        openModal
-          component: 'ConfirmModal',
-          props:
-            confirm:
-              submit: discussion.destroy
-              text:
-                title: 'delete_thread_form.title'
-                helptext: 'delete_thread_form.body'
-                submit: 'delete_thread_form.confirm'
-                flash: 'delete_thread_form.messages.success'
-              redirect: LmoUrlService.group discussion.group()
+    # delete_thread:
+    #   menu: true
+    #   canPerform: -> AbilityService.canDeleteThread(discussion)
+    #   perform: ->
+    #     openModal
+    #       component: 'ConfirmModal',
+    #       props:
+    #         confirm:
+    #           submit: discussion.destroy
+    #           text:
+    #             title: 'delete_thread_form.title'
+    #             helptext: 'delete_thread_form.body'
+    #             submit: 'delete_thread_form.confirm'
+    #             flash: 'delete_thread_form.messages.success'
+    #           redirect: LmoUrlService.group discussion.group()
 
     discard_thread:
       menu: true
@@ -198,10 +198,10 @@ export default new class ThreadService
             confirm:
               submit: discussion.discard
               text:
-                title: 'discard_thread_form.title'
-                helptext: 'discard_thread_form.body'
-                submit: 'discard_thread_form.confirm'
-                flash: 'discard_thread_form.messages.success'
+                title: 'delete_thread_form.title'
+                helptext: 'delete_thread_form.body'
+                submit: 'delete_thread_form.confirm'
+                flash: 'delete_thread_form.messages.success'
               redirect: LmoUrlService.group discussion.group()
 
   mute: (thread, override = false) ->

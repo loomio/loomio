@@ -112,7 +112,7 @@ module.exports = {
     page.click('.action-dock__button--discard_thread')
     page.click('.confirm-modal__submit')
 
-    page.expectFlash('Thread discarded')
+    page.expectFlash('Thread deleted')
     page.expectText('.group-page__name', 'Dirty Dancing Shoes')
     page.expectNoText('.discussions-panel', 'What star sign are you?')
   },

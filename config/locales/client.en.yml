@@ -705,7 +705,6 @@ en:
     close_thread: Close thread
     reopen_thread: Re-open thread
     delete_thread: Delete thread
-    discard_thread: Discard thread
     notification_history: Notification history
     move_item: Move item
 
@@ -1370,14 +1369,6 @@ en:
     confirm: 'Delete thread'
     messages:
       success: Thread deleted
-
-  discard_thread_form:
-    aria_label: 'Discard thread'
-    title: Discard thread
-    body: Are you sure you want to discard this thread?
-    confirm: 'Discard thread'
-    messages:
-      success: Thread discarded
 
   move_thread_form:
     aria_label: Move thread

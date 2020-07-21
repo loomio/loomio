@@ -43,9 +43,9 @@ class DiscussionService
   end
 
   def self.discard(discussion:, actor:)
-    actor.ability.authorize!(:destroy, discussion)
+    actor.ability.authorize!(:discard, discussion)
     discussion.discard!
-    EventBus.broadcast('discussion_destroy', discussion, actor)
+    EventBus.broadcast('discussion_discard', discussion, actor)
     discussion.created_event
   end
 
