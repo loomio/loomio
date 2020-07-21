@@ -1,21 +1,12 @@
-class NotificationSerializer < ActiveModel::Serializer
-  embed :ids, include: true
-  attributes :id, :viewed, :created_at, :url, :kind, :translation_values
+class NotificationSerializer < ApplicationSerializer
+  attributes :id, :viewed, :created_at, :url, :kind, :translation_values, :actor_id, :event_id
+  has_one :actor, serializer: AuthorSerializer, root: :users
 
   def kind
-    case object.kind
-    when 'announcement_created' then object.event.custom_fields['kind']
-    else                             object.kind
-    end
-  end
-
-  has_one :actor, serializer: UserSerializer, root: :users
-
-  def actor
-    if object.kind == 'stance_created'
-      object.eventable.participant_for_client
+    if object.kind == "announcement_created"
+      object.event.custom_fields['kind'] || "group_announced"
     else
-      object.actor
+      object.kind
     end
   end
 end

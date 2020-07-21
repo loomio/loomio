@@ -1,12 +1,9 @@
 <script lang="coffee">
 import Records   from '@/shared/services/records'
 import AppConfig from '@/shared/services/app_config'
-import WatchRecords from '@/mixins/watch_records'
-import {compact, orderBy} from 'lodash'
+import {compact, orderBy} from 'lodash-es'
 
 export default
-  mixins: [WatchRecords]
-
   data: ->
     notifications: []
     unread: []
@@ -20,7 +17,7 @@ export default
         @unreadIds = []
         @unreadCount = 0
       if newVal && !oldVal
-        @unread = Records.notifications.find(kind: {$in: AppConfig.notifications.kinds}, viewed: { $ne: true })
+        @unread = Records.notifications.find(viewed: { $ne: true })
         @unreadIds = @unread.map (n) -> n.id
         Records.notifications.viewed()
 
@@ -29,8 +26,8 @@ export default
     @watchRecords
       collections: ['notifications']
       query: (store) =>
-        @notifications = orderBy(store.notifications.find(kind: {$in: AppConfig.notifications.kinds}), ['createdAt'], ['desc'])
-        @unread = store.notifications.find(kind: {$in: AppConfig.notifications.kinds}, viewed: { $ne: true })
+        @notifications = store.notifications.collection.chain().simplesort('id', true).data()
+        @unread = store.notifications.find(viewed: { $ne: true })
         @unreadCount = @unreadCount
 
 </script>

@@ -48,8 +48,8 @@ describe Event do
     discussion.group.add_member!(user_thread_normal).set_volume! :mute
     discussion.group.add_member!(user_thread_quiet).set_volume! :mute
     discussion.group.add_member!(user_thread_mute).set_volume! :mute
-    discussion.group.add_member!(user_mentioned)
-    discussion.group.add_member!(user_unsubscribed)
+    discussion.group.add_member!(user_mentioned).set_volume! :mute
+    discussion.group.add_member!(user_unsubscribed).set_volume! :mute
 
     DiscussionReader.for(discussion: discussion, user: user_thread_loud).set_volume! :loud
     DiscussionReader.for(discussion: discussion, user: user_thread_normal).set_volume! :normal
@@ -65,7 +65,6 @@ describe Event do
     # set email motion closing soon
     discussion.group.add_member!(user_motion_closing_soon).set_volume! :mute
 
-    # add the loomio group community to poll
     poll.save
 
     # create an unsubscription for a poll user
@@ -201,11 +200,6 @@ describe Event do
         emailed_users.should_not include user_thread_quiet
       end
     end
-
-    it 'does not email helper bot' do
-      poll.update(author: User.helper_bot)
-      expect { Events::PollClosingSoon.publish!(poll) }.to_not change { emails_sent }
-    end
   end
 
   describe 'poll_expired' do
@@ -218,11 +212,6 @@ describe Event do
       n = Notification.last
       expect(n.user).to eq poll.author
       expect(n.kind).to eq 'poll_expired'
-    end
-
-    it 'does not notify loomio helper bot' do
-      poll.author = User.helper_bot
-      expect { Events::PollExpired.publish!(poll) }.to_not change { ActionMailer::Base.deliveries.count }
     end
   end
 

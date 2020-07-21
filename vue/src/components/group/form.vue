@@ -5,7 +5,7 @@ import Records  from '@/shared/services/records'
 import Flash   from '@/shared/services/flash'
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
-import { isEmpty, some } from 'lodash'
+import { isEmpty, some, debounce } from 'lodash-es'
 import { onError } from '@/shared/helpers/form'
 
 export default
@@ -26,6 +26,19 @@ export default
   mounted: ->
     @featureNames = AppConfig.features.group
     @suggestHandle()
+
+  created: ->
+    @suggestHandle = debounce ->
+      # if group is new, suggest handle whenever name changes
+      # if group is old, suggest handle only if handle is empty
+      if @group.isNew() or isEmpty(@group.handle)
+        parentHandle = if @group.parent()
+          @group.parent().handle
+        else
+          null
+        Records.groups.getHandle(name: @group.name, parentHandle: parentHandle).then (data) =>
+          @clone.handle = data.handle
+    , 500
 
   methods:
     submit: ->
@@ -49,16 +62,6 @@ export default
         @$router.push("/g/#{groupKey}")
       .catch onError(@clone)
 
-    suggestHandle: ->
-      # if group is new, suggest handle whenever name changes
-      # if group is old, suggest handle only if handle is empty
-      if @group.isNew() or isEmpty(@group.handle)
-        parentHandle = if @group.parent()
-          @group.parent().handle
-        else
-          null
-        Records.groups.getHandle(name: @group.name, parentHandle: parentHandle).then (data) =>
-          @clone.handle = data.handle
 
     expandForm: ->
       @isExpanded = true
@@ -106,9 +109,6 @@ export default
     privacyStatement: ->
       @$t groupPrivacyStatement(@clone),
         parent: @clone.parentName()
-
-    showGroupFeatures: ->
-      AbilityService.isSiteAdmin() and some(@featureNames)
 
     groupNamePlaceholder: ->
       if @clone.parentId
@@ -188,6 +188,7 @@ v-card.group-form
           v-checkbox.group-form__members-can-edit-comments(hide-details v-model='clone["membersCanEditComments"]' :label="$t('group_form.members_can_edit_comments')")
           v-checkbox.group-form__members-can-raise-motions(hide-details v-model='clone["membersCanRaiseMotions"]' :label="$t('group_form.members_can_raise_motions')")
           v-checkbox.group-form__members-can-vote(hide-details v-model='clone["membersCanVote"]' :label="$t('group_form.members_can_vote')")
+          v-checkbox.group-form__admins-can-edit-user-content(hide-details v-model='clone["adminsCanEditUserContent"]' :label="$t('group_form.admins_can_edit_user_content')")
 
       v-tab-item.mt-8
         .group-form__section.group-form__defaults

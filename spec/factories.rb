@@ -134,7 +134,7 @@ FactoryBot.define do
     description { 'A description for this discussion. Should this be *rich*?' }
     uses_markdown { true }
     private { true }
-    after(:build) do |discussion|
+    before(:create) do |discussion|
       discussion.group.parent&.add_member!(discussion.author)
       discussion.group.add_member!(discussion.author)
     end
@@ -153,7 +153,7 @@ FactoryBot.define do
     discussion
     body { 'body of the comment' }
 
-    after(:build) do |comment|
+    before(:create) do |comment|
       comment.discussion.group.parent.add_member!(comment.user) if comment.discussion.group.parent
       comment.discussion.group.add_member!(comment.user)
     end
@@ -220,12 +220,6 @@ FactoryBot.define do
     cover_photo_updated_at { 10.days.ago }
   end
 
-  factory :draft do
-    user
-    association :draftable, factory: :discussion
-    payload {{ payload: 'payload' }}
-  end
-
   factory :poll_option do
     name { "Plan A" }
   end
@@ -236,6 +230,7 @@ FactoryBot.define do
     details { "with a description" }
     association :author, factory: :user
     poll_option_names { ["engage"] }
+    closing_at { 5.days.from_now }
   end
 
   factory :poll_proposal, class: Poll do
@@ -244,6 +239,7 @@ FactoryBot.define do
     details { "with a description" }
     association :author, factory: :user
     poll_option_names { %w[agree abstain disagree block] }
+    closing_at { 5.days.from_now }
   end
 
   factory :poll_dot_vote, class: Poll do
@@ -253,6 +249,7 @@ FactoryBot.define do
     association :author, factory: :user
     poll_option_names { %w(apple banana orange) }
     custom_fields { { dots_per_person: 8 } }
+    closing_at { 5.days.from_now }
   end
 
   factory :poll_meeting, class: Poll do
@@ -262,6 +259,7 @@ FactoryBot.define do
     association :author, factory: :user
     poll_option_names { ['01-01-2015'] }
     custom_fields { { can_respond_maybe: false } }
+    closing_at { 5.days.from_now }
   end
 
   factory :poll_ranked_choice, class: Poll do
@@ -271,6 +269,7 @@ FactoryBot.define do
     association :author, factory: :user
     poll_option_names { %w(apple banana orange) }
     custom_fields { { minimum_stance_choices: 2 } }
+    closing_at { 5.days.from_now }
   end
 
   factory :outcome do

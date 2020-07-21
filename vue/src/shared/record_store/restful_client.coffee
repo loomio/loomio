@@ -1,5 +1,5 @@
 import { encodeParams } from '@/shared/helpers/encode_params'
-import { omitBy, snakeCase, compact, isString, defaults, pickBy, isNil, identity } from 'lodash'
+import { omitBy, snakeCase, compact, isString, defaults, pickBy, isNil, identity } from 'lodash-es'
 
 export default class RestfulClient
   defaultParams: {}
@@ -83,6 +83,12 @@ export default class RestfulClient
 
   destroy: (id, params) ->
     @delete(id, params)
+
+  discard: (id, params) ->
+    @delete(id+'/discard', params)
+
+  undiscard: (id, params) ->
+    @post(id+'/undiscard', params)
 
   upload: (path, file, options = {}, onProgress) ->
     new Promise (resolve, reject) =>

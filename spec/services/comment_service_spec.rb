@@ -15,6 +15,10 @@ describe 'CommentService' do
 
   describe 'destroy' do
 
+    before do
+      DiscussionService.create(discussion: discussion, actor: user)
+    end
+
     it 'checks the actor has permission' do
       user.ability.should_receive(:authorize!).with(:destroy, comment)
       CommentService.destroy(comment: comment, actor: user)
@@ -50,12 +54,6 @@ describe 'CommentService' do
     it 'saves the comment' do
       comment.should_receive(:save!).and_return(true)
       CommentService.create(comment: comment, actor: user)
-    end
-
-    it 'clears out the draft' do
-      draft = create(:draft, user: user, draftable: comment.discussion, payload: { comment: { body: 'body draft' } })
-      CommentService.create(comment: comment, actor: user)
-      expect(draft.reload.payload['comment']).to be_blank
     end
 
     context 'comment is valid' do

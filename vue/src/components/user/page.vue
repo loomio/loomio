@@ -2,10 +2,9 @@
 import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
-import ModalService   from '@/shared/services/modal_service'
 import UserModalMixin from '@/mixins/user_modal'
 
-import { isEmpty }     from 'lodash'
+import { isEmpty }     from 'lodash-es'
 import { approximate } from '@/shared/helpers/format_time'
 
 export default
@@ -48,7 +47,7 @@ export default
 </script>
 
 <template lang="pug">
-v-content.user-page__profile
+v-main.user-page__profile
   v-container.user-page.max-width-800.mt-4
     loading(v-if='isEmptyUser')
     div(v-else).user-page__content

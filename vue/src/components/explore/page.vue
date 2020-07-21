@@ -7,7 +7,7 @@ import _truncate from 'lodash/truncate'
 import _map      from 'lodash/map'
 import marked    from 'marked'
 
-import { debounce, camelCase, orderBy } from 'lodash'
+import { debounce, camelCase, orderBy } from 'lodash-es'
 
 export default
   mixins: [UrlFor]
@@ -93,7 +93,7 @@ export default
 </script>
 
 <template lang='pug'>
-v-content
+v-main
   v-container.explore-page.max-width-1024
     //- h1.headline(v-t="'explore_page.header'")
     v-text-field(v-model="query" :placeholder="$t('explore_page.search_placeholder')" id="search-field" append-icon="mdi-magnify")

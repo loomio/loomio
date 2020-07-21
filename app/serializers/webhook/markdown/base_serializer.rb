@@ -2,7 +2,16 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
   include PrettyUrlHelper
   include PollEmailHelper
 
-  attributes :text, :icon_url, :username
+  attributes :text,
+             :icon_url,
+             :username,
+             :kind,
+             :url,
+             :group_name,
+             :actor_name,
+             :poll_type,
+             :title,
+             :attachments
 
   def icon_url
     url = object.eventable.group.logo.url(:medium)
@@ -11,6 +20,10 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
     else
       "https://#{ENV['CANONICAL_HOST']}#{url}"
     end
+  end
+
+  def attachments
+    object.eventable.attachments
   end
 
   def username
@@ -26,11 +39,7 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
   end
 
   def has_body
-    %w[new_discussion
-       new_comment
-       outcome_created
-       poll_created
-       stance_created].include? object.kind
+    scope[:webhook] && scope[:webhook].include_body
   end
 
   def headline
@@ -41,12 +50,25 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
 
   def text_options
     {
-      actor: user.name,
+      actor: actor_name,
       title: title,
       body: body,
-      url: polymorphic_url(eventable, default_url_options),
-      poll_type: poll_type
-    }.compact
+      url: url,
+      poll_type: poll_type,
+      group: group_name
+    }
+  end
+
+  def url
+    polymorphic_url(eventable, default_url_options)
+  end
+
+  def actor_name
+    user&.name || eventable.author.name
+  end
+
+  def group_name
+    eventable.group.name
   end
 
   def poll_type
@@ -80,7 +102,7 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
   end
 
   def user
-    anonymous_or_actor_for(object)
+    object.user || object.eventable.author
   end
 
   def eventable

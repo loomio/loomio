@@ -4,7 +4,6 @@ class Poll < ApplicationRecord
   include ReadableUnguessableUrls
   include HasEvents
   include HasMentions
-  include HasDrafts
   include MessageChannel
   include SelfReferencing
   include UsesOrganisationScope
@@ -12,6 +11,7 @@ class Poll < ApplicationRecord
   include Reactable
   include HasCreatedEvent
   include HasRichText
+  include Discard::Model
 
   is_rich_text    on: :details
 
@@ -42,7 +42,7 @@ class Poll < ApplicationRecord
   is_translatable on: [:title, :details]
   is_mentionable on: :details
 
-  belongs_to :author, class_name: "User", required: true
+  belongs_to :author, class_name: "User"
   has_many   :outcomes, dependent: :destroy
   has_one    :current_outcome, -> { where(latest: true) }, class_name: 'Outcome'
 
@@ -50,6 +50,7 @@ class Poll < ApplicationRecord
   belongs_to :group, class_name: "Group"
 
 
+  before_save :set_stances_in_discussion
   after_update :remove_poll_options
 
   has_many :stances, dependent: :destroy
@@ -67,13 +68,13 @@ class Poll < ApplicationRecord
 
   has_many :documents, as: :model, dependent: :destroy
 
+  default_scope { includes(:poll_options) }
   scope :active, -> { where(closed_at: nil) }
   scope :closed, -> { where("closed_at IS NOT NULL") }
   scope :search_for, ->(fragment) { where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
   scope :lapsed_but_not_closed, -> { active.where("polls.closing_at < ?", Time.now) }
   scope :active_or_closed_after, ->(since) { where("closed_at IS NULL OR closed_at > ?", since) }
-  scope :participation_by, ->(participant) { joins(:stances).where("stances.participant_id": participant.id) }
-  scope :authored_by, ->(user) { where(author: user) }
+
   scope :with_includes, -> { includes(
     :documents,
     :poll_options,
@@ -92,7 +93,6 @@ class Poll < ApplicationRecord
                       events.kind           = 'poll_closing_soon')", recency_threshold)
   end
 
-  validates :title, presence: true
   validates :poll_type, inclusion: { in: AppConfig.poll_templates.keys }
   validates :details, length: {maximum: Rails.application.secrets.max_message_length }
 
@@ -101,15 +101,15 @@ class Poll < ApplicationRecord
   validate :closes_in_future
   validate :require_custom_fields
   validate :discussion_group_is_poll_group
+  validate :cannot_deanonymize
+  validate :cannot_reveal_results_early
+  validate :title_if_not_discarded
 
   alias_method :user, :author
-  alias_method :draft_parent, :discussion
 
-  has_paper_trail only: [:title, :details, :closing_at, :group_id]
-
-  def self.always_versioned_fields
-    [:title, :details]
-  end
+  has_paper_trail only: [:title, :details, :details_format, :closing_at,
+    :group_id, :anonymous, :voter_can_add_options, :anyone_can_participate,
+    :notify_on_participate, :hide_results_until_closed]
 
   update_counter_cache :group, :polls_count
   update_counter_cache :group, :closed_polls_count
@@ -129,6 +129,22 @@ class Poll < ApplicationRecord
     ((participants_count.to_f / stances_count) * 100).to_i
   end
 
+  def undecided
+    anonymous? ? User.none : super
+  end
+
+  def participants
+    anonymous? ? User.none : super
+  end
+
+  def voters
+    anonymous? ? User.none : super
+  end
+
+  def non_voters
+    anonymous? ? User.none : super
+  end
+
   def body
     details
   end
@@ -139,6 +155,10 @@ class Poll < ApplicationRecord
 
   def time_zone
     custom_fields.fetch('time_zone', author.time_zone)
+  end
+
+  def show_results?
+    closed? || !hide_results_until_closed
   end
 
   def parent_event
@@ -164,6 +184,18 @@ class Poll < ApplicationRecord
     super || NullGroup.new
   end
 
+  def stance_data
+    show_results? ? super : {}
+  end
+
+  def stance_counts
+    show_results? ? super : []
+  end
+
+  def matrix_counts
+    show_results? ? super : []
+  end
+
   def update_stance_data
     update_attribute(:stance_data, zeroed_poll_options.merge(
       self.class.connection.select_all(%{
@@ -175,7 +207,7 @@ class Poll < ApplicationRecord
         GROUP BY poll_options.name
       }).map { |row| [row['name'], row['total'].to_i] }.to_h))
 
-    update_attribute(:stance_counts, poll_options.pluck(:name).map { |name| stance_data[name] })
+    update_attribute(:stance_counts, poll_options.pluck(:name).map { |name| self[:stance_data][name] })
     poll_options.map(&:update_option_score_counts) if poll.has_option_score_counts
 
     # TODO: convert this to a SQL query (CROSS JOIN?)
@@ -219,8 +251,6 @@ class Poll < ApplicationRecord
       where('(m.id IS NOT NULL AND m.archived_at IS NULL) AND (s.id IS NULL)')
   end
 
-
-
   def add_guest!(user, author)
     stances.create!(participant_id: user.id, inviter: author, volume: DiscussionReader.volumes[:normal])
   end
@@ -242,6 +272,7 @@ class Poll < ApplicationRecord
   end
 
   def meeting_score_tallies
+    return [] unless show_results?
     poll_options.map do |option|
       [option.id, {
         maybe:    option.stance_choices.latest.where(score: 1).count,
@@ -282,6 +313,29 @@ class Poll < ApplicationRecord
   end
 
   private
+
+  def title_if_not_discarded
+    if !discarded_at && title.to_s.empty?
+      errors.add(:title, I18n.t(:"activerecord.errors.messages.blank"))
+    end
+  end
+
+  def set_stances_in_discussion
+    return unless has_attribute?(:stances_in_discussion) # allow older migrations to pass
+    self.stances_in_discussion = false if anonymous or hide_results_until_closed
+  end
+
+  def cannot_deanonymize
+    if anonymous_changed? && anonymous_was == true
+      errors.add :anonymous, :cannot_deanonymize
+    end
+  end
+
+  def cannot_reveal_results_early
+    if hide_results_until_closed_changed? && hide_results_until_closed_was == true
+      errors.add :hide_results_until_closed, :cannot_show_results_early
+    end
+  end
 
   # provides a base hash of 0's to merge with stance data
   def zeroed_poll_options

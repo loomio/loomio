@@ -1,4 +1,5 @@
-import AppConfig             from '@/shared/services/app_config'
+import AppConfig from '@/shared/services/app_config'
+import {keys, map} from 'lodash-es'
 
 export default class LmoUrlService
   @shareableLink: (model) ->
@@ -61,11 +62,11 @@ export default class LmoUrlService
     result += "#{key}"
     result += "/" + @stub(name)             unless !name? or options.noStub?
     result += "." + options.ext             if options.ext?
-    result += "?" + @queryStringFor(params) if _.keys(params).length
+    result += "?" + @queryStringFor(params) if keys(params).length
     result
 
   @stub: (name) ->
     name.replace(/[^a-z0-9\-_]+/gi, '-').replace(/-+/g, '-').toLowerCase()
 
   @queryStringFor: (params = {}) ->
-    _.map(params, (value, key) -> "#{key}=#{value}").join('&')
+    map(params, (value, key) -> "#{key}=#{value}").join('&')

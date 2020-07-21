@@ -11,7 +11,34 @@ es:
         blank: no puede estar vacío
         invalid: No es un valor válido.
   errors:
+    400:
+      title: Mala petición
+      body: Lo sentimos, no pudimos entender esa petición
+    403:
+      title: Prohibido
+      body: No tienes permiso para acceder a esta página. Tal vez necesitas iniciar sesión.
+    404:
+      title: 'No encontrado '
+      body: Disculpa, la página que estás buscando no existe. Tal vez has escrito una dirección incorrecta o la página se ha movido o ha sido eliminada.
+    410:
+      title: Desaparecido
+      body: Esta página ya no existe
+    417:
+      title: Navegador incompatible
+      body: |
+          Por favor <a href="https://browser-update.org/update.html?force_outdated=true"> actualice su navegador</a> para usar Loomio
+    422:
+      title: Institución  que no se puede procesar
+      body: Se ha denegado el cambio que querías. Quizás intentaste cambiar algo a lo que no tenías acceso.
+    429:
+      title: Demasiadas peticiones
+      body: Lo sentimos, has excedido el máximo de solicitudes permitidas por minuto para esta acción. Por favor espera un momento y vuélvelo a intentar.
+    500:
+      title: Error interno del servidor
+      body: Lo sentimos, pero algo fue mal. Se nos ha notificado sobre este problema y echaremos un vistazo lo antes posible.
     noscript: Loomio necesita javascript para funcionar. Porfavor permite javascript en tu navegador para continuar
+    upgrade_browser: |
+        Oh! Tu buscador es demasiado viejo y puede que Loomio no funcione correctamente. Por favor <a href="https://browser-update.org/update.html">actualiza tu buscador.</a>
     return_home: Volver a la página principal
     not_found: 404 archivo no encontrado
     messages:
@@ -35,6 +62,8 @@ es:
         proposal: Propuesta
         count: Cuenta
         choose: Elegir
+        allocate: Asignar
+        score: 'Puntuación '
         rank: Rango
         time: Coordinar horario
   user:
@@ -103,6 +132,12 @@ es:
       subject: Exportar datos del grupo para %{group_name}
       body_html: |
           Descarga tus datos <a href="%{url}">aquí</a>. Por favor toma nota que este link caducará en una semana.
+    deactivated:
+      subject: "Tu %{site_name}cuenta de usuario ha sido desactivada."
+      body_html: |
+          <p>Tú, o alguien con acceso a tu cuenta, ha desactivado tu cuenta de usuario Loomio.</p>
+          <p>Todos los datos personales han sido eliminados del sistema.</p>
+          <p>Si deseas recuperar esta cuenta de usuario y los comentarios y votos asociados, por favor contacta apoyo y referencia:%{recovery_code}</p>
     accounts_merged:
       subject: "Tus %{site_name} cuentas de usuario han sido unificadas. "
       body_html: |
@@ -268,34 +303,38 @@ es:
   how_it_works_thread:
     title: Cómo usar Loomio
     description: |
-        Bienvenido a Loomio, un lugar online para toma de decisiones.
+        Bienvenidos a Loomio, un sitio online para comunicarse y tomar decisiones.
 
-        Este es un ejemplo de **hilo** de discusión. Puedes añadir comentarios debajo. Un hilo es una conversación de un tema dado. Este hilo trata de como trabaja Loomio, así que pon preguntas sobre el tema aquí.
+        Esto es un ejemplo de una discusión **hilo**. Puedes añadir comentarios abajo. Los hilos son para debatir temas y obtener resultados claros. Este hilo es acerca de cómo funciona Loomio, así que puedes escribir preguntas acerca de eso aquí.
 
-        En estos momentos estás leyendo **contexto**, un espacio para la información de trasfondo. Puedes actualizarlo según la conversación vaya progresando.
+        En estos momentos estás leyendo el hilo **contexto**, el cual puede mantenerse actualizado con las información clave y las preguntas que ayudan a la gente a involucrarse.
 
         Para empezar con Loomio:
-        1. Carga una [foto de perfil](/perfil)
-        2. Publica en hilos que ya existan o empieza uno nuevo
-
+        <ul>
+        Intenta comentar en un hilo existente o este mismo.
+        </ul>
         Trucos para publicar en Loomio:
-        *Para notificar a una persona específica, escribe  @  seguido de su nombre.
-        *Clica el icono del clip para añadir adjuntos.
+        <ul>
+        <li>Para notificar a una persona en particular escribe @ seguido de su nombre </li>
+        <li>Arrastrar y soltar fotos y adjuntos o clica el icono de clip</li>
+        <li>Ve 5 maneras de usar los hilos para unas ideas y consejos </li>
+        </ul>
 
-
-        Si tienes preguntas, revisa el [Manual de ayuda de Loomio] (http://help.loomio.org).
+        Si tienes alguna pregunta mira [Loomio Help] (http://help.loomio.org
   first_proposal:
-    name: Propuesta de demostración
+    name: ¿Tienes alguna pregunta acerca de cómo usar Loomio?
     description: |
-        Esto es una **Propuesta**, donde pueden tomar decisiones conjuntamente. Puede iniciar un propuesta en cuanto haya una discusión iniciada.
+        _En el caso de si, comparte tu pregunta. En el caso de no, estás preparado para comentar en los hilos de tu grupo!_
 
-        Se solicita a todos los integrantes del grupo a que **tomen posición** antes de la **fecha de cierre**. Puede extender la fecha de cierre si lo necesita o cerrar la propuesta con antelación.
+        Esta **encuesta de verificación** está preguntado si tú o alguien aquí tiene alguna pregunta acerca de cómo usar Loomio.
 
-        Puede que reconsidere su posición al escuchar a otros, podrás **cambiar de posición** en cualquier momento en que la propuesta esté activa.
+        <ul><li>Adelante e intenta usar los botones y el area de texto debajo.</li></ul>
 
-        Los grupos pueden trabajar con una **serie de propuestas** para construir una solución entre todos. Puedes crear una serie de propuestas en este hilo.
+        Con cualquier decisión o herramienta de facilitación, necesitarás responder antes de que cierre.
 
-        **Pruebe a participar, haga clic en uno de los 4 botones**
+        Puedes cambiar tu posición mientras está abierto (quizás respondiendo a nueva información).
+
+        **Intenta participar! Clica uno de los botones.**
   markdown:
     intro:
       title: |
@@ -375,239 +414,39 @@ es:
       verify_stance_for_verified_user: "Parece que has votado en %{title}. Si fuiste tu, por favor haz clic en el siguiente enlace para confirmar tu voto. "
       you_have_until: 'Tienes hasta %{when} para participar '
       people_have_voted: "%{num}la gente ha votado (%{pct}%)"
-    proposal:
-      subject:
-        poll_created: '*%{actor} comenzó una propuesta: %{title}'
-        poll_edited: '%{actor} editó la propuesta: %{title}'
-        poll_announced: '%{actor} te invitó a participar en una propuesta: %{title}'
-        poll_closing_soon: 'Propuesta cerrando en 24hr: %{title}'
-        poll_closing_soon_author: 'Su propuesta cierra en 24hr: %{title}'
-        poll_expired: "Propuesta cerrada: %{title}"
-        poll_expired_author: ' Tu propuesta ha cerrado. Comparte un resultado para: %{title}'
-        outcome_created: '%{actor} publicó el resultado de la propuesta: %{title}'
-        outcome_announced: '%{actor} publicó el resultado de la propuesta: %{title}'
-        stance_created: "%{actor} votó en: %{title}"
-        user_mentioned: '%{actor} te mencionó en:%{title}'
-        user_reminded: '%{actor} te está recordando que votes en %{title} '
-      header:
-        poll_created: '<strong>%{actor}</strong> inicio una propuesta'
-        poll_edited: '<strong>%{actor}</strong> edito la propuesta'
-        poll_announced: '<strong>%{actor}</strong> te invitó a votar en una propuesta'
-        poll_closing_soon: 'La propuesta de <strong>%{actor}</strong> cierra en 24 horas. Ahora es un buen momento para votar, cambiar su voto o motivar a otros a participar.'
-        poll_closing_soon_author: 'Su propuesta cierra en 24 horas. Ahora es un buen momento para motivar a otros a participar o alargar la fecha de cierre.'
-        poll_expired: "<strong>%{actor}</strong> propuesta cerrada: %{title}"
-        poll_expired_author: 'Tu propuesta ha <strong>cerrado</strong>. Por favor tomate el tiempo para considerar lo que se ha dicho y <strong>compartir el resultado</strong> con el grupo para que todos estén informados.  '
-        outcome_created: '<strong>%{actor}</strong> publicó el resultado de la propuesta.'
-        outcome_announced: '<strong>%{actor}</strong> publicó el resultado de la propuesta.'
-        stance_created: "<strong>%{actor} </strong> votó en: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> te mencionó en: %{title}'
-        user_reminded: '<strong>%{actor} </strong> te está recordando que votes en %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    poll:
-      subject:
-        poll_created: '*%{actor} comenzó una encuesta: %{title}'
-        poll_edited: '%{actor} editó la encuesta: %{title}'
-        poll_announced: '%{actor} te invitó a votar en una encuesta: %{title}'
-        poll_closing_soon: 'Encuesta cerrando en 24hr: %{title}'
-        poll_closing_soon_author: 'Su encuesta cierra en 24hr: %{title}'
-        poll_expired: "Resultado de la encuesta: %{title}"
-        poll_expired_author: ' Tu encuesta ha cerrado. Comparte el resultado para: %{title}'
-        poll_option_added: '%{actor} ha añadido opciones en: %{title} '
-        poll_option_added_author: '%{actor} ha añadido opciones en: %{title}'
-        outcome_created: '%{actor} publicó el resultado de la encuesta: %{title}'
-        outcome_announced: '%{actor} publicó el resultado de la encuesta: %{title}'
-        stance_created: "%{actor} votó en: %{title}"
-        stance_created_author: "Por favor verifica tu voto en: %{title} "
-        user_mentioned: '%{actor} te mencionó en:%{title} '
-        user_reminded: '%{actor} te está recordando que votes en %{title} '
-      header:
-        poll_created: '<strong>%{actor}</strong> inicio una encuesta'
-        poll_edited: '<strong>%{actor}</strong> edito la encuesta'
-        poll_announced: '<strong>%{actor}</strong> te invitó a votar en una encuesta'
-        poll_closing_soon: 'La encuesta de <strong>%{actor}</strong> cierra en 24 horas. Ahora es un buen momento para votar, cambiar su voto o motivar a otros a participar.'
-        poll_closing_soon_author: 'Su encuesta cierra en 24 horas. Ahora es un buen momento para motivar a otros a participar o alargar la fecha de cierre.'
-        poll_expired: "La propuesta %{title} de <strong>%{actor}</strong> está cerrada"
-        poll_expired_author: 'Tu encuesta ha <strong>cerrado</strong>. Por favor tomate el tiempo para considerar lo que se ha dicho y <strong>compartir el resultado</strong> con el grupo para que todos estén informados.  '
-        poll_option_added: '<strong>%{actor}</strong> ha añadido opciones en: %{title} '
-        poll_option_added_author: '<strong>%{actor}</strong> ha añadido opciones en: %{title}'
-        outcome_created: '<strong>%{actor}</strong> publicó el resultado de la encuesta.'
-        outcome_announced: '<strong>%{actor}</strong> publicó el resultado de la encuesta.'
-        stance_created: "<strong>%{actor} </strong> votó en: %{title} "
-        user_mentioned: '<strong>%{actor}</strong> te mencionó en: %{title} '
-        user_reminded: '<strong>%{actor} </strong> te está recordando que votes en %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    score:
-      subject:
-        poll_created: '*%{actor} comenzó una encuesta: %{title}'
-        poll_edited: '%{actor} editó la encuesta: %{title}'
-        poll_announced: '%{actor}te invitó para votar en un sondeo de puntuación: %{title}'
-        poll_closing_soon: 'Encuesta cerrando en 24hr: %{title}'
-        poll_closing_soon_author: 'Tu encuesta cierra en 24hr: %{title}'
-        poll_expired: "Resultado de la encuesta: %{title}"
-        poll_expired_author: ' Tu encuesta ha cerrado. Comparte el resultado para: %{title}'
-        poll_option_added: '%{actor} añadió opciones en: %{title}'
-        poll_option_added_author: '%{actor} añadió opciones en: %{title}'
-        outcome_created: '%{actor} publicó el resultado de la encuesta: %{title}'
-        outcome_announced: '%{actor} publicó el resultado de la encuesta: %{title}'
-        stance_created: "%{actor} votó en: %{title}"
-        stance_created_author: "Por favor verifica tu voto en: %{title}"
-        user_mentioned: '%{actor} te mencionó en:%{title} '
-        user_reminded: '%{actor} te está recordando que votes en %{title} '
-      header:
-        poll_created: '<strong>%{actor}</strong> inicio una encuesta'
-        poll_edited: '<strong>%{actor}</strong> edito la encuesta'
-        poll_announced: '<strong>%{actor}</strong>te invitó para votar en un sondeo de puntuación'
-        poll_closing_soon: 'La encuesta de <strong>%{actor}</strong> cierra en 24 horas. Ahora es un buen momento para votar, cambiar su voto o motivar a otros a participar. '
-        poll_closing_soon_author: 'Tu encuesta cierra en 24 horas. Ahora es un buen momento para motivar a otros a participar o alargar la fecha de cierre.'
-        poll_expired: "La propuesta de<strong>%{actor}</strong> ha cerrado: %{title}"
-        poll_expired_author: 'Tu encuesta ha <strong>cerrado</strong>. Por favor tomate el tiempo para considerar lo que se ha dicho y <strong>compartir el resultado</strong> con el grupo para que todos estén informados.  '
-        poll_option_added: '<strong>%{actor}</strong> ha añadido opciones en: %{title} '
-        poll_option_added_author: '<strong>%{actor}</strong> ha añadido opciones en: %{title} '
-        outcome_created: '<strong>%{actor}</strong> publicó el resultado de la encuesta.'
-        outcome_announced: '<strong>%{actor}</strong> publicó el resultado de la encuesta.'
-        stance_created: "<strong>%{actor} </strong> votó en: %{title} "
-        user_mentioned: '<strong>%{actor}</strong> te mencionó en: %{title} '
-        user_reminded: '<strong>%{actor} </strong> te está recordando que votes en %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    count:
-      subject:
-        poll_created: '%{actor} está mirando: %{title}'
-        poll_edited: '%{actor} editó la comprobación: %{title}'
-        poll_announced: '%{actor}te invitó a participar en un escrutinio: %{title}'
-        poll_closing_soon: 'Quedan 24 horas para participar en: %{title}'
-        poll_closing_soon_author: 'Su comprobación %{title} cierra en 24 horas'
-        poll_expired: "Comprobación %{title} cerrada"
-        poll_expired_author: ' Tu comprobación ha cerrado. Comparte el resultado para: %{title}'
-        outcome_created: '%{actor} publicó el resultado: %{title}'
-        outcome_announced: '%{actor} publicó el resultado: %{title}'
-        stance_created: "%{actor} participó en: %{title}"
-        stance_created_author: "Por favor verifica tu voto en: %{title} "
-        user_mentioned: '%{actor} te mencionó en:%{title}'
-        user_reminded: '%{actor} te está recordando que participes en: %{title} '
-      header:
-        poll_created: '<strong>%{actor}</strong> esta mirando'
-        poll_edited: '<strong>%{actor}</strong> editó la comprobación'
-        poll_announced: '<strong>%{actor}</strong>te invitó a participar en un escrutinio.'
-        poll_closing_soon: 'La comprobació de <strong>%{actor}</strong> cierra en 24 horas.'
-        poll_closing_soon_author: 'Su comprobación cierra en 24 horas. Ahora es un buen momento para motivar a otros a participar o alargar la fecha de cierre.'
-        poll_expired: "La comprobación %{title} de<strong>%{actor}</strong> ha cerrado"
-        poll_expired_author: 'Tu chequeo se ha cerrado. Si es necesario, <strong>comparte un resultado</strong> para hacer saber a la gente lo que pasará luego.'
-        outcome_created: '<strong>%{actor}</strong> publicó el resultado.'
-        outcome_announced: '<strong>%{actor}</strong> publicó el resultado.'
-        stance_created: "<strong>%{actor}</strong> participó en: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> te mencionó en: %{title}'
-        user_reminded: '<strong>%{actor}</strong> te está recordando que participes en: %{title} '
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    dot_vote:
-      subject:
-        poll_created: '%{actor} inició un voto de puntos: %{title}'
-        poll_edited: '%{actor} editó un voto de puntos: %{title}'
-        poll_announced: '%{actor} te invitó a participar en el voto de puntos: %{title}'
-        poll_closing_soon: 'Voto de puntos %{title} cerrando en 24 horas'
-        poll_closing_soon_author: 'Tu voto de puntos %{title} cierra en 24 horas'
-        poll_expired: "Resultado del voto de puntos: %{title}"
-        poll_expired_author: ' Tu voto de puntos ha cerrado. Comparte un resultado para: %{title}'
-        poll_option_added: '%{actor} ha añadido opciones en: %{title}'
-        poll_option_added_author: '%{actor} ha añadido opciones en: %{title}'
-        outcome_created: '%{actor} publicó el resultado: %{title}'
-        outcome_announced: '%{actor} publicó el resultado: %{title}'
-        stance_created: "%{actor} votó en: %{title}"
-        stance_created_author: "Por favor verifica tu voto en: %{title}"
-        user_mentioned: '%{actor} te mencionó en:%{title}'
-        user_reminded: '%{actor} te está recordando que votes en %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> inició un voto de puntos'
-        poll_edited: '<strong>%{actor}</strong> editó el voto de puntos'
-        poll_announced: '<strong>%{actor}</strong> te invitó a participar en un voto de puntos'
-        poll_closing_soon: 'El voto de puntos de <strong>%{actor}</strong> cierra en 24 horas. Ahora es un buen momento para votar, cambiar su voto o motivar a otros a participar. '
-        poll_closing_soon_author: 'Tu voto de puntos cierra en 24 horas. Ahora es un buen momento para motivar a otros a participar o alargar la fecha de cierre.'
-        poll_expired: "Resultados para el voto de puntos: %{title} de <strong>%{actor}</strong>"
-        poll_expired_author: 'Tu voto de puntos ha <strong>cerrado</strong>. Considera lo que se ha dicho y <strong>comparte el resultado</strong> con el grupo para que todos sepan que sucederá a continuación.  '
-        poll_option_added: '<strong>%{actor}</strong> ha añadido opciones en: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> ha añadido opciones en: %{title}'
-        outcome_created: '<strong>%{actor}</strong> publicó el resultado del voto de puntos.'
-        outcome_announced: '<strong>%{actor}</strong> publicó el resultado del voto de puntos.'
-        stance_created: "<strong>%{actor} </strong> votó en: %{title} "
-        user_mentioned: '<strong>%{actor}</strong> te mencionó en: %{title}'
-        user_reminded: '<strong>%{actor} </strong> te está recordando que votes en %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    meeting:
-      subject:
-        poll_created: '%{actor}inició la coordinación de horario: %{title}'
-        poll_edited: '%{actor} editó la coordinación de horario: %{title}'
-        poll_announced: '%{actor} te invitó a participar en una coordinación horaria: %{title}'
-        poll_closing_soon: 'Coordinación de horario cerrando en 24hr: %{title}'
-        poll_closing_soon_author: 'Tu coordinación de horario cierra en 24hr: %{title}'
-        poll_expired: "Resultado de la coordinación de horario: %{title}"
-        poll_expired_author: ' Tu coordinación de horario ha cerrado. Comparte el resultado para: %{title}'
-        poll_option_added: '%{actor} añadió opciones en: %{title} '
-        poll_option_added_author: '%{actor} añadió opciones en: %{title} '
-        outcome_created: '%{actor} publicó el resultado: %{title}'
-        outcome_created_author: 'Compartiste el resultado para: %{title}'
-        outcome_announced: '%{actor} publicó el resultado: %{title}'
-        stance_created: '%{actor} participó en: %{title}'
-        stance_created_author: "Por favor verifica tu voto en: %{title}"
-        user_mentioned: '%{actor} te mencionó en:%{title}'
-        user_reminded: '%{actor} te está recordando que votes en %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> inició una coordinación de horario'
-        poll_edited: '<strong>%{actor}</strong> editó la coordinación de horario'
-        poll_announced: '<strong>%{actor}</strong> te invitó a participar en una coordinación horaria'
-        poll_closing_soon: 'La coordinación de horario de <strong>%{actor}</strong> cierra en 24 horas. Ahora es un buen momento para votar, cambiar su voto o motivar a otros a participar. '
-        poll_closing_soon_author: 'Tu coordinación de horario cierra en 24 horas. Ahora es un buen momento para motivar a otros a participar o alargar la fecha de cierre.'
-        poll_expired: "La coordinación de horario de<strong>%{actor}</strong> ha cerrado"
-        poll_expired_author: 'Tu coordinación de horario ha <strong>cerrado</strong>. Considerar lo que se ha dicho y <strong>compartir el resultado</strong> con el grupo para que todos sepan que pasará a continuación.  '
-        poll_option_added: '<strong>%{actor}</strong> ha añadido opciones en: %{title} '
-        poll_option_added_author: '<strong>%{actor}</strong> ha añadido opciones en: %{title}'
-        outcome_created: '<strong>%{actor}</strong> publicó el resultado de la coordinación de horario'
-        outcome_created_author: 'Compartiste el resultado de la coordinación de horario'
-        outcome_announced: '<strong>%{actor}</strong> publicó el resultado de la coordinación de horario'
-        stance_created: "<strong>%{actor}</strong> participó en: %{title} "
-        user_mentioned: '<strong>%{actor}</strong> te mencionó en: %{title}'
-        user_reminded: '<strong>%{actor} </strong> te está recordando que votes en %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    ranked_choice:
-      subject:
-        poll_created: '%{actor} inició una opción priorizada: %{title}'
-        poll_edited: '%{actor} editó la opción priorizada: %{title}'
-        poll_announced: '%{actor} ite invitó a una opción priorizada: %{title}'
-        poll_closing_soon: 'opción priorizada cerrando en 24hr: %{title}'
-        poll_closing_soon_author: 'Tu opción priorizada cierra en 24hr: %{title}'
-        poll_expired: "Resultado de la opción priorizada: %{title}"
-        poll_expired_author: ' Tu opción priorizada ha cerrado. Comparte el resultado para: %{title}'
-        poll_option_added: '%{actor} añadió opciones en: %{title} '
-        poll_option_added_author: '%{actor} añadió opciones en: %{title}'
-        outcome_created: '%{actor} publicó el resultado: %{title}'
-        outcome_created_author: 'Compartiste el resultado para: %{title}'
-        outcome_announced: '%{actor} publicó el resultado de una opción priorizada.'
-        stance_created: '%{actor} participó en: %{title}'
-        stance_created_author: "Por favor verifica tu voto en: %{title}"
-        user_mentioned: '%{actor} te mencionó en:%{title}'
-        user_reminded: '%{actor} te está recordando que votes en %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> inició una opción priorizada'
-        poll_edited: '<strong>%{actor}</strong> editó la opción priorizada '
-        poll_announced: '<strong>%{actor}</strong> te invitó a votar en una encuesta'
-        poll_closing_soon: 'La opción priorizada de <strong>%{actor}</strong> cierra en 24 horas. Ahora es un buen momento para votar, cambiar su voto o motivar a otros a participar.'
-        poll_closing_soon_author: 'Tu opción priorizada cierra en 24 horas. Ahora es un buen momento para motivar a otros a participar o alargar la fecha de cierre.'
-        poll_expired: "La opción priorizada de<strong>%{actor}</strong> ha cerrado"
-        poll_expired_author: 'Tu opción priorizada ha <strong>cerrado</strong>. Considerar lo que se ha dicho y <strong>compartir el resultado</strong> con el grupo para que todos estén informados.  '
-        poll_option_added: '<strong>%{actor}</strong> ha añadido opciones en: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> ha añadido opciones en: %{title} '
-        outcome_created: '<strong>%{actor}</strong> publicó el resultado de una opción priorizada.'
-        outcome_created_author: 'Compartiste el resultado de la opción priorizada.'
-        outcome_announced: '<strong>%{actor}</strong> publicó el resultado de una opción priorizada.'
-        stance_created: "<strong>%{actor}</strong> participó en: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> te mencionó en: %{title}'
-        user_reminded: '<strong>%{actor} </strong> te está recordando que votes en %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
+    subject:
+      poll_created: '%{actor}comenzó en %{poll_type}:%{title}'
+      poll_edited: '%{actor}editado el%{poll_type}:%{title}'
+      poll_announced: '%{actor}te invitó a votar en un %{poll_type}:%{title}'
+      poll_closing_soon: '%{poll_type}cierra en 24 horas:%{title}'
+      poll_closing_soon_author: 'Tu %{poll_type}cierra en 24 horas:%{title}'
+      poll_expired: "%{poll_type}ha cerrado:%{title}"
+      poll_expired_author: 'Tu %{poll_type}ha cerrado. Comparte un resultado para:%{title}'
+      poll_option_added: '%{actor} añadió opciones en: %{title}'
+      poll_option_added_author: '%{actor} añadió opciones en: %{title}'
+      outcome_created: '%{actor}compartió un %{poll_type} resultado:%{title}'
+      outcome_announced: '%{actor}compartió un %{poll_type} resultado:%{title}'
+      stance_created: "%{actor} votó en: %{title}"
+      stance_created_author: "Por favor verifica tu voto en: %{title}"
+      user_mentioned: '%{actor} te mencionó en:%{title} '
+      user_reminded: '%{actor} te está recordando que votes en %{title} '
+    header:
+      poll_created: '<strong>%{actor}</strong>comenzó un %{poll_type}'
+      poll_edited: '<strong>%{actor}</strong>editado un%{poll_type}'
+      poll_announced: '<strong>%{actor}</strong>te invitó a votar en un %{poll_type}'
+      poll_closing_soon: '<strong>%{actor}</strong>''s%{poll_type} cerrará en 24 horas. Ahora es una buena oportunidad para votar, cambiar de opinión o animar a otros para que participen.'
+      poll_closing_soon_author: 'Tu %{poll_type}cerrará en 24 horas - ahora es una oportunidad estupenda para recordar a la gente de esto o prolongar la fecha límite si fuera necesario.'
+      poll_expired: "<strong>%{actor}'s</strong>%{poll_type} ha cerrado:%{title}"
+      poll_expired_author: 'Tu %{poll_type} ha <strong>cerrado</strong>. Por favor toma tiempo para considerar lo que se ha dicho y <strong>compartir un resultado</strong> con el grupo, por lo que la gente sabrá lo que pasará después.'
+      poll_option_added: '<strong>%{actor}</strong> ha añadido opciones en: %{title} '
+      poll_option_added_author: '<strong>%{actor}</strong> ha añadido opciones en: %{title} '
+      outcome_created: '<strong>%{actor}</strong>ha compartido un %{poll_type} resultado.'
+      outcome_announced: '<strong>%{actor}</strong>ha compartido un %{poll_type} resultado.'
+      stance_created: "<strong>%{actor} </strong> votó en: %{title} "
+      user_mentioned: '<strong>%{actor}</strong> te mencionó en: %{title} '
+      user_reminded: '<strong>%{actor} </strong> te está recordando que votes en %{title}'
+    body:
+      voted: '<strong>%{participant}</strong>:'
   comment_by: Comentario de %{comment_author}
   personal_data:
     title: Datos personales de %{user_name}en%{host_name}
@@ -631,6 +470,19 @@ es:
     poll_closing_soon: "%{poll_type}cerrará en 24 horas"
     poll_expired: "%{poll_type} ha cerrado"
     group_identity_created: "Los eventos desde %{group} no aparecerán en este canal"
+  webhook:
+    markdown:
+      new_discussion: "**%{actor}**inició un debate en %{group}:[%{title}](%{url})"
+      discussion_edited: "**%{actor}** editó un debate en %{group}:[%{title}](%{url})"
+      new_comment: "**%{actor}** ha comentado en [%{title}] (%{url})"
+      outcome_created: "**%{actor}** ha compartido un resultado del %{poll_type}:[%{title}](%{url})"
+      poll_created: "**%{actor}** ha iniciado un %{poll_type} en %{group} : [%{title}](%{url})"
+      poll_edited: "**%{actor}** editó un %{poll_type}en%{group}:`[%{title}](%{url})"
+      stance_created: "**%{actor}** ha votado en [%{title}](%{url})"
+      poll_closing_soon: "Quedan 24 horas: [%{title}](%{url})"
+      poll_expired: "%{poll_type}:[%{title}](%{url})ha cerrado"
+      poll_closed_by_user: "**%{actor}** ha cerrado el %{poll_type}: [%{title}](%{url})"
+      poll_reopened: "**%{actor}** ha reabierto%{poll_type}: [%{title}](%{url})"
   slack:
     new_discussion: "Nuevo hilo en *%{group}*: *%{discussion}* "
     outcome_created: "Resultado publicado en *%{group}*: *%{poll}*"

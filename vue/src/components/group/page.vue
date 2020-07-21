@@ -6,13 +6,11 @@ import Records           from '@/shared/services/records'
 import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
 import LmoUrlService     from '@/shared/services/lmo_url_service'
-import GroupModalMixin from '@/mixins/group_modal'
 import { subscribeTo }   from '@/shared/helpers/cable'
-import {compact, head, includes, filter} from 'lodash'
+import {compact, head, includes, filter} from 'lodash-es'
 import ahoy from 'ahoy.js'
 
 export default
-  mixins: [GroupModalMixin]
   data: ->
     group: null
     activeTab: ''
@@ -20,12 +18,18 @@ export default
 
   created: ->
     @init()
-    EventBus.$on 'signedIn', => @init()
+    EventBus.$on 'signedIn', @init
+
+  beforeDestroy: ->
+    EventBus.$off 'signedIn', @init
 
   watch:
     '$route.params.key': 'init'
 
   computed:
+    canEditGroup: ->
+      AbilityService.canEditGroup(@group)
+
     tabs: ->
       return unless @group
       query = ''
@@ -64,12 +68,19 @@ export default
     titleVisible: (visible) ->
       EventBus.$emit('content-title-visible', visible)
 
+    openGroupSettingsModal: ->
+      return null unless @canEditGroup
+      EventBus.$emit 'openModal',
+        component: 'GroupForm'
+        props:
+          group: @group
+
 </script>
 
 <template lang="pug">
-v-content
+v-main
   loading(v-if="!group")
-  v-container.group-page.max-width-1024(v-else)
+  v-container.group-page.max-width-1024(v-if="group")
     v-img(style="border-radius: 8px" :src="coverImageSrc" eager)
     h1.display-1.my-4(v-observe-visibility="{callback: titleVisible}")
       span(v-if="group && group.parent()")
@@ -80,10 +91,10 @@ v-content
       span.group-page__name.mr-4
         | {{group.name}}
     trial-banner(:group="group")
-    group-onboarding-card(v-if="group" :group="group")
+    group-onboarding-card(:group="group")
     formatted-text.group-page__description(v-if="group" :model="group" column="description")
     document-list(:model='group')
-    attachment-list(:attachments="group.attachments")
+    attachment-list(:attachments="group.attachments" :edit="canEditGroup && openGroupSettingsModal")
     v-divider.mt-4
     v-tabs(v-model="activeTab" center-active background-color="transparent" centered grow show-arrows)
       v-tabs-slider

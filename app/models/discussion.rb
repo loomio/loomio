@@ -7,7 +7,6 @@ class Discussion < ApplicationRecord
   include HasTimeframe
   include HasEvents
   include HasMentions
-  include HasDrafts
   include HasImportance
   include MessageChannel
   include SelfReferencing
@@ -24,12 +23,14 @@ class Discussion < ApplicationRecord
 
   scope :last_activity_after, -> (time) { where('last_activity_at > ?', time) }
   scope :order_by_latest_activity, -> { order('discussions.last_activity_at DESC') }
+  scope :recent, -> { where('last_activity_at > ?', 6.weeks.ago) }
+  scope :order_by_importance, -> { order(importance: :desc, last_activity_at: :desc) }
 
   scope :visible_to_public, -> { where(private: false) }
   scope :not_visible_to_public, -> { where(private: true) }
 
   scope :is_open, -> { where(closed_at: nil) }
-  scope :is_closed, -> { where.not(closed_at: nil) }
+  scope :is_closed, -> { where("closed_at is not null") }
 
   validates_presence_of :title, :group, :author
   validate :private_is_not_nil
@@ -41,10 +42,6 @@ class Discussion < ApplicationRecord
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
   is_rich_text    on: :description
   has_paper_trail only: [:title, :description, :private, :group_id]
-
-  def self.always_versioned_fields
-    [:title, :description]
-  end
 
   belongs_to :group, class_name: 'Group'
   belongs_to :author, class_name: 'User'
@@ -92,8 +89,6 @@ class Discussion < ApplicationRecord
   delegate :name_and_email, to: :author, prefix: :author
   delegate :locale, to: :author
 
-  alias_method :draft_parent, :group
-
   after_create :set_last_activity_at_to_created_at
 
   define_counter_cache(:closed_polls_count)   { |discussion| discussion.polls.closed.count }
@@ -106,6 +101,10 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :open_discussions_count
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
+
+  def author
+    super || AnonymousUser.new
+  end
 
   def members
     # User.where(id: group.members.pluck(:id).concat(guests.pluck(:id)).uniq)
@@ -152,7 +151,7 @@ class Discussion < ApplicationRecord
   def update_sequence_info!
     discussion.ranges_string =
      RangeSet.serialize RangeSet.reduce RangeSet.ranges_from_list discussion.items.order(:sequence_id).pluck(:sequence_id)
-    discussion.last_activity_at = discussion.items.order(:sequence_id).last&.created_at || created_at
+    discussion.last_activity_at = discussion.items.unreadable.order(:sequence_id).last&.created_at || created_at
     update_columns(ranges_string: discussion.ranges_string, last_activity_at: discussion.last_activity_at)
   end
 

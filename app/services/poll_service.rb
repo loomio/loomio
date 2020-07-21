@@ -5,6 +5,7 @@ class PollService
     poll.assign_attributes(author: actor)
 
     return false unless poll.valid?
+    poll.update_attachments!
     poll.save!
 
     Stance.create!(participant: actor, poll: poll, admin: true, reason_format: actor.default_format)
@@ -19,9 +20,10 @@ class PollService
                                          emails: params[:emails],
                                          user_ids: params[:user_ids])
 
-    new_stances =  users.map do |user|
+    new_stances = users.where.not(id: poll.voter_ids).map do |user|
       Stance.new(participant: user, poll: poll, inviter: actor, volume: DiscussionReader.volumes[:normal], reason_format: user.default_format)
     end
+
     Stance.import(new_stances, on_duplicate_key_ignore: true)
 
     if poll.discussion
@@ -32,7 +34,6 @@ class PollService
       DiscussionReader.import(new_discussion_readers, on_duplicate_key_ignore: true)
     end
 
-
     stances = Stance.where(participant_id: users.pluck(:id), poll: poll)
     poll.update_stances_count
     poll.update_undecided_count
@@ -40,6 +41,16 @@ class PollService
 
     Events::PollAnnounced.publish!(poll, actor, stances)
     stances
+  end
+
+  def self.discard(poll:, actor:)
+    actor.ability.authorize!(:destroy, poll)
+
+    poll.update(discarded_at: Time.now, discarded_by: actor.id)
+    Event.where(kind: "stance_created", eventable_id: poll.stances.pluck(:id)).update_all(discussion_id: nil)
+    poll.created_event.update(user_id: nil, child_count: 0, pinned: false)
+    MessageChannelService.publish_event(poll.created_event)
+    poll.created_event
   end
 
   def self.close(poll:, actor:)
@@ -79,7 +90,9 @@ class PollService
   end
 
   def self.do_closing_work(poll:)
-    poll.update(closed_at: Time.now) unless poll.closed_at.present?
+    return if poll.closed_at
+    poll.stances.update_all(participant_id: nil) if poll.anonymous
+    poll.update(closed_at: Time.now)
   end
 
   def self.update(poll:, params:, actor:)
@@ -88,6 +101,7 @@ class PollService
     is_new_version = poll.is_new_version?
 
     return false unless poll.valid?
+    poll.update_attachments!
     poll.save!
 
     EventBus.broadcast('poll_update', poll, actor)

@@ -6,8 +6,6 @@ module Ability
     prepend Ability::DiscussionReader
     prepend Ability::Discussion
     prepend Ability::Document
-    prepend Ability::Draft
-    prepend Ability::GroupIdentity
     prepend Ability::Group
     prepend Ability::Identity
     prepend Ability::MembershipRequest
@@ -21,6 +19,7 @@ module Ability
     prepend Ability::DiscussionTag
     prepend Ability::Event
     prepend Ability::Webhook
+    prepend Ability::Attachment
 
 
     def initialize(user)

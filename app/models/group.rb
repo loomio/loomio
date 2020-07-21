@@ -1,6 +1,5 @@
 class Group < ApplicationRecord
   include HasTimeframe
-  include HasDrafts
   include HasRichText
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
@@ -20,7 +19,6 @@ class Group < ApplicationRecord
   alias_method :author, :creator
 
   belongs_to :parent, class_name: 'Group'
-  alias_method :draft_parent, :parent
 
   has_many :discussions,             foreign_key: :group_id, dependent: :destroy
   has_many :public_discussions, -> { visible_to_public }, foreign_key: :group_id, dependent: :destroy, class_name: 'Discussion'
@@ -225,15 +223,13 @@ class Group < ApplicationRecord
   end
 
   def archive!
-    self.update_attribute(:archived_at, DateTime.now)
-    memberships.update_all(archived_at: DateTime.now)
-    subgroups.map(&:archive!)
+    Group.where(id: id_and_subgroup_ids).update_all(archived_at: DateTime.now)
+    Membership.where(group_id: id_and_subgroup_ids).update_all(archived_at: DateTime.now)
   end
 
   def unarchive!
-    self.update_attribute(:archived_at, nil)
-    all_memberships.update_all(archived_at: nil)
-    all_subgroups.update_all(archived_at: nil)
+    Group.where(id: all_subgroup_ids.concat([id])).update_all(archived_at: nil)
+    Membership.where(group_id: all_subgroup_ids.concat([id])).update_all(archived_at: nil)
   end
 
   def org_memberships_count
@@ -279,7 +275,7 @@ class Group < ApplicationRecord
   end
 
   def id_and_subgroup_ids
-    @id_and_subgroup_ids ||= (Array(id) | subgroup_ids)
+    subgroup_ids.concat([id])
   end
 
   def slack_identity

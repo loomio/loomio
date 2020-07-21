@@ -2,7 +2,7 @@
 import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
-import { sum, map, head, filter, without, sortBy } from 'lodash'
+import { sum, map, head, filter, without, sortBy, isEqual } from 'lodash-es'
 import { onError } from '@/shared/helpers/form'
 
 export default
@@ -14,13 +14,11 @@ export default
     stanceChoices: []
 
   created: ->
-    done = false
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
-        @pollOptions = @stance.poll().pollOptions()
-        if !done
-          done = true
+        if !isEqual map(@pollOptions, 'name'), map(@stance.poll().pollOptions(), 'name')
+          @pollOptions = @stance.poll().pollOptions()
           @stanceChoices = map @pollOptions, (option) =>
             poll_option_id: option.id
             score: @stanceChoiceFor(option).score
@@ -85,7 +83,6 @@ export default
 
 <template lang="pug">
 .poll-dot-vote-vote-form
-  poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   v-subheader.poll-dot-vote-vote-form__dots-remaining(v-t="{ path: 'poll_dot_vote_vote_form.dots_remaining', args: { count: dotsRemaining } }")
   .poll-dot-vote-vote-form__options
     .poll-dot-vote-vote-form__option(v-for='choice in orderedStanceChoices', :key='choice.poll_option_id')

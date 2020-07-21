@@ -1,12 +1,16 @@
 <script lang="coffee">
 import { is2x } from '@/shared/helpers/window'
 import Gravatar from 'vue-gravatar';
+import Records from '@/shared/services/records'
 
 export default
   components:
     'v-gravatar': Gravatar
   props:
-    user: Object
+    user:
+      type: Object
+      default: -> Records.users.build()
+
     coordinator: Boolean
     size:
       type: [String, Number]
@@ -34,16 +38,10 @@ export default
     uploadedAvatarUrl: ->
       return unless @user.avatarKind == 'uploaded'
       return @user.avatarUrl if typeof @user.avatarUrl is 'string'
-      @user.avatarUrl[@imageSize]
-
-    imageSize: ->
-      if ['large', 'featured'].includes(@size) or is2x()
-        'large'
-      else
-        'medium'
+      @user.avatarUrl['large']
 
     componentType:  ->
-      if @noLink
+      if @noLink or !@user.username
         'div'
       else
         'router-link'
@@ -56,5 +54,5 @@ component.user-avatar(:is="componentType" :to="!noLink && urlFor(user)" :style="
     v-gravatar(v-if="user.avatarKind === 'gravatar'" :hash='user.emailHash' :gravatar-size='gravatarSize' :alt='user.avatarInitials')
     img(v-else-if="user.avatarKind === 'uploaded'" :alt='user.avatarInitials' :src='uploadedAvatarUrl')
     span(v-else-if="user.avatarKind === 'initials'" :style="{width: width+'px'}") {{user.avatarInitials}}
-    v-icon(v-else) {{user.avatarKind}}
+    v-icon(v-else) mdi-account
 </template>

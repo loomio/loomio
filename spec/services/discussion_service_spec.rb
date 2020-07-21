@@ -26,12 +26,6 @@ describe 'DiscussionService' do
                                actor: user)
     end
 
-    it 'clears out the draft' do
-      draft = create(:draft, user: user, draftable: discussion.group, payload: { discussion: { name: 'name draft' } })
-      DiscussionService.create(discussion: discussion, actor: user)
-      expect(draft.reload.payload['discussion']).to be_blank
-    end
-
     it 'does not email people' do
       expect { DiscussionService.create(discussion: discussion, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
     end

@@ -21,7 +21,9 @@ bin/
 .powenv
 .byebug_history
 
+/client
 public/client
+public/assets
 public/system
 public/uploads
 public/service-worker.js

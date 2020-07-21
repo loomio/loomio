@@ -28,6 +28,17 @@ tr:
     was_gift_trial: "{{CreatedDate}} tarihinden beri grubunuz Loomio'yu ücretsiz kullanıyor. Ücretsiz bir hizmet sunmaya devam edemiyoruz. Loomio'yu kullanmaya devam etmek için lütfen paketinizi yükseltin. <a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>Daha fazla bilgi.</a>"
     was_gift_remaining: "{{days}} gün kaldı."
     was_gift_expired: "Ücretsiz planınızın süresi doldu."
+  subscription_status:
+    plan: "Plan"
+    state: "Statü"
+    active_members: "Aktif üyeler"
+    max_threads: "Maks. konular"
+    max_members: "Maks. üyeler"
+    expires_at: "Süre sonu"
+    renews_at: "Yenileme"
+    referral_code: "Chargify yönlendirme kodu"
+    chargify_link: "Chargify faturalandırma portalı"
+    referral_code_help: "Bir arkadaşınıza indirim verin, kendinize kredi kazanın!"
   loomio_tags:
     all_tags: Tüm etiketler
     tags: Etiketler
@@ -100,6 +111,7 @@ tr:
   timezones:
     local: Yerel saat ({{value}})
   common:
+    empty: Boş
     no_results_found: Sonuç bulunamadı
     view: İncele
     history: Geçmiş
@@ -132,6 +144,7 @@ tr:
     settings: 'Ayarlar'
     help: 'Yardım'
     anonymous: Anonim
+    required: Zorunlu
     privacy:
       privacy: 'Gizlilik'
       public: 'Genel'
@@ -158,6 +171,8 @@ tr:
     action:
       print: Yazdır
       preview: Ön izleme
+      pin: Sabitle
+      unpin: Sabitlemeyi kaldır
       search: 'Arama'
       filter: 'Filtrele'
       back: 'Geri'
@@ -165,6 +180,7 @@ tr:
       close: 'Kapat'
       reopen: 'Yeniden aç'
       save: 'Kaydet'
+      move: 'Taşı'
       save_changes: 'Değişiklikleri kaydet'
       update_settings: 'Ayarları güncelle'
       reply: 'Cevapla'
@@ -191,23 +207,61 @@ tr:
       delete: Sil
       unsubscribe: Aboneliği iptal et
       subscribe: Abone ol
+      unignore: Yoksayılanlardan çıkar
       remind: Hatırlat
       resend: Yeniden gönder
       send: Gönder
+      joined: Katılım
+      last_seen: Son görüldüğü tarih
       invite: Davet et
+      resent: Davetiye tekrar gönderildi
+      export: Dışa aktarım
+      fork: Çatal
+      apply: Uygula
+      add_people: Kişileri ekle
     formatting_help:
       label: 'Biçimlendirme'
+      title: 'Metninizi biçimlendirmek için Markdown''u nasıl kullanacağınızı öğrenin'
+  merge_accounts:
+    modal:
+      title: Hesapları birleştir
+      submit: Doğrula
+      flash: Doğrulama e-postası gönderildi!
+    email_taken: Üzgünüz, bu e-posta zaten başka bir kullanıcıyla ilişkilendirilmiş. Bu e-posta size mi ait?
+    find_out_more: Daha fazla bilgi.
   emoji_picker:
     search: Arama
+    common: Sıklıkla kullanılan
+    hands: Eller
+    people: Yüzler ve insanlar
+    nature: Doğa
+    objects: Eşyalar
+    places: Mekanlar
+  ordinal:
+    _1: 1'nci
+    _2: 2'nci
+    _3: 3'ncü
+    _4: 4'ncü
+    _5: 5'nci
+    _6: 6'ncı
+    _7: 7'nci
+    _8: 8'nci
+    _9: 9'ncu
+    _10: 10'ncu
   devise:
+    sessions:
+      signed_up: Başarılı bir şekilde kaydoldunuz!
     failure:
       inactive: 'Bu e-posta adresiyle ilişkili devre dışı bırakılmış bir hesap var. Hesabınızı yeniden etkinleştirmek istiyorsanız, bizimle iletişime geçin.'
   error_page:
     forbidden: 'Bunu yapmaya yetkin bulunmuyor.'
     page_not_found: 'Bulunamadı. Bu taşınmış veya silinmiş olabilir.'
     internal_server_error: 'Üzgünüz, yanlış giden birşeyler oldu. Lütfen tekrar deneyin.'
+  verify_email_notice:
+    please_verify: Katıldığınız için teşekkürler! Oyunuzu doğrulamak için lütfen e-postanızı kontrol edin.
   previous_polls_page:
     heading: '{{name}} içindeki etkinlikler'
+    search_activities: Kararları ara
   volume_levels:
     loud: 'Yüksek sesli'
     normal: 'Normal'
@@ -215,6 +269,7 @@ tr:
     mute: 'Sesi kıs'
     unmute: 'Sesi aç'
   pin_event_form:
+    title: Zaman çizelgesine sabitle
     title_label: Başlık
   change_volume_form:
     simple:
@@ -280,20 +335,11 @@ tr:
     sign_in: 'Oturum aç'
     logo_title: 'Ana sayfa'
   membership_dropdown:
+    invitation_resent: "Davetiye tekrar gönderildi"
     cancel_invitation: Davetiyeyi iptal et
   notifications:
     header: "Bildirimler"
     publish_outcome: "Bir sonuç yayınla"
-  position_buttons_panel:
-    heading: Söz sahibi ol
-  extend_proposal_form:
-    aria_label: Kapanış saatini değiştir
-    title: 'Kapanış saatini değiştir'
-    success: 'Öneri kapanış süresi güncellendi'
-    submit: 'Kapanış saatini güncelle'
-  discussion_record:
-    created: '{{title}} müzakeresi {{groupName}} grubunda başarıyla oluşturuldu '
-    updated: 'Değişiklikleri {{title}} konusuna kaydet'
   discussion_fork_actions:
     move: Taşı
   discussion_form:
@@ -315,6 +361,8 @@ tr:
   action_dock:
     edit_stance: Konumunu değiştir
     edited: Düzenlendi
+    history: Geçmiş
+    pin_event: Zaman çizelgesine sabitle
     tag_thread: Etiketleri yönet
     delete_thread: Müzakereyi sil
   formatting:
@@ -410,10 +458,6 @@ tr:
       private_to_group: 'Ad ve açıklama sadece grup üyelerine görünür olacaktır.'
       private_to_parent_members: 'Ad ve açıklama sadece {{parent}} grubunun üyelerine görünür olacaktır.'
     privacy: 'Gizlilik'
-    group_privacy_is_open_description: "Herkes grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler kamuya açıktır."
-    group_privacy_is_closed_description: "Herkes grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler gizlidir."
-    group_privacy_is_closed_public_threads_description: "Herkes grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler kamuya açık veya gizli olabilir."
-    group_privacy_is_secret_description: "Sadece davet edilen üyeler grubu bulabilir, kimlerin gruba dahil olduğunu ve müzakereleri görebilir."
     confirm_change_to_secret: "Eğer devam ederseniz, bu gruptaki tüm müzakereler ve onların alt grupları gizlenecektir."
     confirm_change_to_secret_subgroup: 'Eğer devam ederseniz, tüm müzakereler gizli yapılacaktır.'
     confirm_change_to_public: 'Eğer devam ederseniz, bu gruptaki tüm müzakereler web üzerinde herkese açık olacaktır.'
@@ -453,14 +497,6 @@ tr:
     heading: 'Üyelik talepleri'
     manage_requests: Talepleri yönet
     manage_requests_with_count: Talepleri yönet ({{count}})
-  documents_page:
-    title: Ekler
-    confirm_remove_title: Eki kaldır
-  document:
-    list:
-      title: Ekler
-    form:
-      title_label: İsim
   membership_requests_page:
     heading: Üyelik talepleri
     approve: Onayla
@@ -496,12 +532,6 @@ tr:
       invitation_sent: 'Davetiye gönderildi.'
       invitations_sent: '{{count}} davetiye gönderildi.'
       max_invitations: 'Eğer 100''den fazla davetiye göndermek istiyorsanız, bir takım linki kullanınız.'
-  add_members_modal:
-    heading: '{{name}} grubundan kişileri ekle'
-    add_members: 'Üyeleri ekle'
-    user_added_to_subgroup: '{{name}} Alt Gruba eklendi'
-    users_added_to_subgroup: '{{count}} kullanıcı Alt Gruba eklendi'
-    no_members_to_add: '{{parent}} grubunun tüm üyeleri bu alt gruba ait'
   memberships_page:
     members: 'Üyeler'
     name_label: 'İsim'
@@ -517,24 +547,13 @@ tr:
     membership:
       title: Üyeyi kaldır
       submit: Üyeyi kaldır
-  pending_invitations_card:
-    heading: Bekleyen davetler
-    email: E-posta
-    invitation_link: Davetiye linki
-    sent: Gönderildi
-  cancel_invitation_form:
-    heading: Davetiyeyi iptal et
-    question: Bu davetiyeyi iptal etmek istediğinizden emin misiniz?
-    submit: "Evet, davetiyeyi iptal et"
-    cancel: 'Hayır'
-    messages:
-      success: Davetiye iptal edildi
   profile_page:
     messages:
       updated: 'Profil güncellendi'
       picture_changed: 'Profil resmi güncellendi'
       password_changed: 'Şifre güncellendi'
       deactivated: 'Hesap devre dışı bırakıldı'
+    merge_accounts: Hesapları birleştir
     change_picture_link: 'Resmi değiştir'
     profile: 'Profil'
     edit_profile: 'Profili düzenle'
@@ -617,6 +636,8 @@ tr:
     edit_thread: 'Düzenle'
     close_thread: 'Kapat'
     reopen_thread: 'Yeniden aç'
+    pin_thread: 'Pin'
+    unpin_thread: 'Sabitlemeyi kaldır'
     mute_thread: 'Sesi kıs'
     move_thread: 'Taşı'
     print_thread: 'Yazdır'
@@ -631,58 +652,13 @@ tr:
   move_thread_form:
     aria_label: Müzakereyi taşı
     title: Müzakereyi taşı
-    body: 'Hedef grup:'
     confirm: Müzakereyi taşı
     confirm_change_to_private_thread: '{{groupName}} açık bir gruptur. Eğer devam ederseniz, müzakere herkese açılacaktır.'
     messages:
       success: 'Müzakere {{name}} grubuna taşındı '
   delete_comment_dialog:
     title: 'Yorumu sil'
-    question: 'Bu yorumu silmek istediğinden emin misin?'
     confirm: 'Yorumu sil'
-  new_comment_item:
-    aria_label: '{{author}} tarafından yapılan yorum'
-    context_menu:
-      aria_label: 'Yorum seçenekleri'
-      edit_comment: 'Yorumu düzenle'
-      delete_comment: 'Yorumu sil'
-    in_reply_to: '<strong>{{recipient}}</strong> kişisine cevaben'
-    edited: 'Düzenlendi'
-  new_vote_item:
-    agree: 'katıldın'
-    abstain: 'çekimser kaldın'
-    disagree: 'katılmadın'
-    block: 'itiraz ettin'
-    agree_with_statement: 'katıldı: <span>{{statement}}</span>'
-    abstain_with_statement: 'çekimser kaldı: <span>{{statement}}</span>'
-    disagree_with_statement: 'katılmadı: <span>{{statement}}</span>'
-    block_with_statement: 'itiraz etti: <span>{{statement}}</span>'
-  new_proposal_item:
-    author_created_proposal: 'bir öneri başlattı: <span>{{title}}</span>'
-  proposal_closed_item:
-    proposal_closed: 'Öneri kapatıldı: <span>{{title}}</span>'
-  proposal_closed_by_user_item:
-    proposal_closed_by_user: 'öneriyi kapattı: <span>{{title}}</span>'
-  proposal_edited_item:
-    name: 'önerinin başlığını güncelledi: <span>{{title}}</span>'
-    description: 'önerinin tanımını düzenledi'
-    closing_at: 'önerinin kapanış zamanını <span>{{time}}</span> olarak güncelledi '
-    description_name: 'önerinin başlığını ve tanımını güncelledi'
-    closing_at_name: 'önerinin başlığını ve kapanış zamanını güncelledi'
-    closing_at_description: 'önerinin tanımını ve kapanış zamanını güncelledi'
-    closing_at_description_name: 'önerinin başlığını, tanımını ve kapanış zamanını güncelledi'
-  proposal_outcome_created_item:
-    proposal_outcome_created: 'öneri için bir sonuç yayınladı:'
-  proposal_outcome_updated_item:
-    proposal_outcome_updated: 'önerinin sonucu güncellendi:'
-  discussion_edited_item:
-    title: 'müzakere başlığı güncellendi: <span>{{title}}</span>'
-    description: 'müzakere içeriği güncellendi'
-    description_title: 'müzakere başlığı ve içerik güncellendi'
-    private: 'konu gizliliği güncellendi: '
-    public_to_private: 'gizli'
-    private_to_public: 'genel'
-    description_private_title: 'konu başlığı, içerik ve gizlilik güncellendi'
   contact_message_form:
     contact_us: 'Bizimle iletişime geçin'
     name_label: 'Adın'
@@ -701,10 +677,6 @@ tr:
   global:
     messages:
       reload: 'Tekrar yükle'
-  registered_apps_page:
-    name: İsim
-  registered_app_form:
-    name_label: İsim
   decision_tools_card:
     proposal_title: Öneri
     count_title: Kontrol et
@@ -740,11 +712,11 @@ tr:
     total: Toplam
   poll_common_subscribe_form:
     subscribe: Abone ol
-  polls_page:
-    heading: Kararlar
   auth_form:
     name_placeholder: Adın
     name: İsim
+  webhook:
+    name_label: İsim
   group_survey:
     categories:
       business: İş hayatı

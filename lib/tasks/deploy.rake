@@ -47,18 +47,6 @@ namespace :deploy do
     at_exit { run_commands("git branch -D #{deploy_branch}") }
   end
 
-  desc "Bump version of repository if pushing to production"
-  task :bump_version do
-    puts "Bumping version from #{loomio_version}..."
-    run_commands(
-      "git checkout master",
-      "git reset --hard",
-      "ruby script/bump_version.rb patch",
-      "git add lib/version",
-      "git commit -m 'bump version to #{loomio_version}'",
-      "git push origin master")
-  end
-
   desc "Commits built assets to deployment branch"
   task :commit do
     puts "Committing assets to deployment branch..."
@@ -82,8 +70,8 @@ namespace :deploy do
   task :cleanup do
     puts "Migrating heroku..."
     run_commands(
-      "#{heroku_cli} run rake db:migrate -a #{heroku_remote}"
-      #"#{heroku_cli} restart -a #{heroku_remote}"
+      "#{heroku_cli} run rake db:migrate -a #{heroku_remote}",
+      "#{heroku_cli} restart -a #{heroku_remote}"
     )
   end
 end

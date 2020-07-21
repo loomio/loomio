@@ -12,8 +12,7 @@ module.exports = {
     server_path: selenium.path,
     log_path: './tests/reports',
     cli_args: {
-      'webdriver.chrome.driver': chromedriver.path,
-      'webdriver.ie.driver': ''
+      'webdriver.chrome.driver': chromedriver.path
     }
   },
   test_settings: {

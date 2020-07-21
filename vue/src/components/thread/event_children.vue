@@ -2,7 +2,7 @@
 import AppConfig         from '@/shared/services/app_config'
 import RecordLoader from '@/shared/services/record_loader'
 
-import { debounce, first, last } from 'lodash'
+import { debounce, first, last } from 'lodash-es'
 
 export default
   components:
@@ -22,6 +22,7 @@ export default
       # console.log "fetch parent pid #{@parentEvent.id}, missing: #{slots}"
       return unless slots.length
       @loader.fetchRecords(
+        exclude_types: 'group discussion'
         comment_id: null
         from_unread: null
         discussion_id: @parentEvent.discussionId

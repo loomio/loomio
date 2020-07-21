@@ -6,7 +6,7 @@ import Records from '@/shared/services/records'
 import i18n from '@/i18n.coffee'
 import * as Sentry from '@sentry/browser'
 import * as Integrations from '@sentry/integrations'
-import { forEach } from 'lodash'
+import { forEach } from 'lodash-es'
 
 export default (callback) ->
   client = new RestfulClient('boot')
@@ -39,4 +39,4 @@ export default (callback) ->
         if model && AppConfig.permittedParams[model.singular]
           model.serializableAttributes = AppConfig.permittedParams[model.singular]
 
-      callback()
+      callback(appConfig)

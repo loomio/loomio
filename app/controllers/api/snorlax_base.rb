@@ -63,7 +63,7 @@ class API::SnorlaxBase < ActionController::Base
 
   def instantiate_collection
     collection = accessible_records
-    collection = yield collection                if block_given?
+    collection = yield collection if block_given?
     collection = timeframe_collection collection
     collection = page_collection collection
     collection = order_collection collection
@@ -94,7 +94,6 @@ class API::SnorlaxBase < ActionController::Base
       collection
     end
   end
-
 
   def accessible_records
     if current_user.is_logged_in?
@@ -131,6 +130,7 @@ class API::SnorlaxBase < ActionController::Base
   def success_response
     render json: {success: 'success'}
   end
+
   def load_resource
     self.resource = resource_class.find(params[:id])
   end

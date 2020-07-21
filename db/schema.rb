@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_16_222426) do
+ActiveRecord::Schema.define(version: 2020_07_08_045103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -142,7 +142,7 @@ ActiveRecord::Schema.define(version: 2020_04_16_222426) do
   create_table "comments", id: :serial, force: :cascade do |t|
     t.integer "discussion_id", default: 0
     t.text "body", default: ""
-    t.integer "user_id", default: 0, null: false
+    t.integer "user_id", default: 0
     t.integer "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -153,6 +153,8 @@ ActiveRecord::Schema.define(version: 2020_04_16_222426) do
     t.integer "versions_count", default: 0
     t.string "body_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
+    t.datetime "discarded_at"
+    t.integer "discarded_by"
     t.index ["discussion_id"], name: "index_comments_on_discussion_id"
   end
 
@@ -264,14 +266,6 @@ ActiveRecord::Schema.define(version: 2020_04_16_222426) do
     t.index ["model_type"], name: "index_documents_on_model_type"
   end
 
-  create_table "drafts", id: :serial, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "draftable_id"
-    t.string "draftable_type"
-    t.json "payload", default: {}, null: false
-    t.index ["user_id", "draftable_type", "draftable_id"], name: "index_drafts_on_user_id_and_draftable_type_and_draftable_id", unique: true
-  end
-
   create_table "events", id: :serial, force: :cascade do |t|
     t.string "kind", limit: 255
     t.datetime "created_at"
@@ -323,6 +317,7 @@ ActiveRecord::Schema.define(version: 2020_04_16_222426) do
     t.text "misc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "desired_feature"
     t.index ["group_id"], name: "index_group_surveys_on_group_id"
   end
 
@@ -393,6 +388,8 @@ ActiveRecord::Schema.define(version: 2020_04_16_222426) do
     t.jsonb "info", default: {}, null: false
     t.integer "new_threads_max_depth", default: 2, null: false
     t.boolean "new_threads_newest_first", default: false, null: false
+    t.boolean "admins_can_edit_user_content", default: false, null: false
+    t.boolean "listed_in_explore", default: false, null: false
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["category_id"], name: "index_groups_on_category_id"
     t.index ["cohort_id"], name: "index_groups_on_cohort_id"
@@ -557,13 +554,6 @@ ActiveRecord::Schema.define(version: 2020_04_16_222426) do
     t.index ["poll_id"], name: "index_outcomes_on_poll_id"
   end
 
-  create_table "poll_did_not_votes", id: :serial, force: :cascade do |t|
-    t.integer "poll_id"
-    t.integer "user_id"
-    t.index ["poll_id"], name: "index_poll_did_not_votes_on_poll_id"
-    t.index ["user_id"], name: "index_poll_did_not_votes_on_user_id"
-  end
-
   create_table "poll_options", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.integer "poll_id"
@@ -613,6 +603,10 @@ ActiveRecord::Schema.define(version: 2020_04_16_222426) do
     t.string "details_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
     t.boolean "anyone_can_participate", default: false, null: false
+    t.boolean "hide_results_until_closed", default: false, null: false
+    t.boolean "stances_in_discussion", default: true, null: false
+    t.datetime "discarded_at"
+    t.integer "discarded_by"
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["discussion_id"], name: "index_polls_on_discussion_id"
     t.index ["group_id"], name: "index_polls_on_group_id"
@@ -651,7 +645,7 @@ ActiveRecord::Schema.define(version: 2020_04_16_222426) do
 
   create_table "stances", id: :serial, force: :cascade do |t|
     t.integer "poll_id", null: false
-    t.integer "participant_id", null: false
+    t.integer "participant_id"
     t.string "reason"
     t.boolean "latest", default: true, null: false
     t.datetime "created_at"
@@ -688,6 +682,8 @@ ActiveRecord::Schema.define(version: 2020_04_16_222426) do
     t.jsonb "info"
     t.datetime "canceled_at"
     t.datetime "activated_at"
+    t.datetime "renews_at"
+    t.datetime "renewed_at"
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
   end
 
@@ -816,6 +812,8 @@ ActiveRecord::Schema.define(version: 2020_04_16_222426) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "format", default: "markdown", null: false
+    t.boolean "include_body", default: false
+    t.boolean "include_subgroups", default: false, null: false
     t.index ["group_id"], name: "index_webhooks_on_group_id"
   end
 

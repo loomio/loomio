@@ -15,9 +15,11 @@ import MembershipModal from '@/components/group/membership_modal'
 import ChangePasswordForm from '@/components/profile/change_password_form'
 import PollCommonOutcomeModal from '@/components/poll/common/outcome_modal'
 import PollCommonReopenModal from '@/components/poll/common/reopen_modal'
+import PollCommonStartForm from '@/components/poll/common/start_form'
 import AnnouncementForm from '@/components/announcement/form'
 import AnnouncementHistory from '@/components/announcement/history'
 import MoveThreadForm from '@/components/thread/move_thread_form'
+import PollCommonMoveForm from '@/components/poll/common/move_form'
 import PollCommonAddOptionModal from '@/components/poll/common/add_option_modal'
 import RevisionHistoryModal from '@/components/revision_history/modal'
 import TagsModal from '@/components/tags/modal'
@@ -29,7 +31,6 @@ import PinEventForm from '@/components/thread/pin_event_form'
 import MoveCommentsModal from '@/components/discussion/move_comments_modal'
 import SeenByModal from '@/components/thread/seen_by_modal'
 import ExportDataModal from '@/components/group/export_data_modal'
-import VueUpgradedModal from '@/components/user/vue_upgraded_modal'
 import InstallSamlProviderModal from '@/components/install_saml_provider/modal'
 import GroupSurvey from '@/components/group/survey'
 
@@ -49,11 +50,13 @@ export default
     ChangePasswordForm
     PollCommonOutcomeModal
     PollCommonReopenModal
+    PollCommonMoveForm
     ArrangementForm
     AnnouncementForm
     AnnouncementHistory
     MoveThreadForm
     PollCommonAddOptionModal
+    PollCommonStartForm
     RevisionHistoryModal
     TagsModal
     WebhookForm
@@ -64,7 +67,6 @@ export default
     MoveCommentsModal
     SeenByModal
     ExportDataModal
-    VueUpgradedModal
     InstallSamlProviderModal
     GroupSurvey
   }
@@ -73,7 +75,7 @@ export default
     isOpen: false
     componentName: ""
     componentProps: {}
-    maxWidth: 600
+    maxWidth: 640
 
   created: ->
     EventBus.$on('openModal', @openModal)
@@ -81,7 +83,7 @@ export default
 
   methods:
     openModal: (opts) ->
-      @maxWidth = opts.maxWidth || 600
+      @maxWidth = opts.maxWidth || 640
       @isOpen = true
       @componentName = opts.component
       @componentProps = opts.props

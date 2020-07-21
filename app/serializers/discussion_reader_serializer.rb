@@ -2,6 +2,7 @@ class DiscussionReaderSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
   attributes :id,
+             :user_id,
              :discussion_id,
              :read_ranges,
              :last_read_at,
@@ -11,7 +12,7 @@ class DiscussionReaderSerializer < ActiveModel::Serializer
              :admin,
              :revoked_at
 
-  has_one :user, serializer: UserSerializer, root: :users
+  has_one :user, serializer: AuthorSerializer, root: :users
 
   def volume
     object[:volume]

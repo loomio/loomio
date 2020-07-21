@@ -167,52 +167,6 @@ describe User do
     end
   end
 
-  describe "deactivation" do
-
-    before do
-      @membership = group.add_member!(user)
-    end
-
-    describe "#deactivate!" do
-
-      it "sets deactivated_at to (Time.now)" do
-        user.deactivate!
-        user.deactivated_at.should be_present
-      end
-
-      it "archives the user's memberships" do
-        user.deactivate!
-        user.archived_memberships.should include(@membership)
-      end
-
-      it "should update group.memberships_count" do
-        expect{user.deactivate!}.to change{group.reload.memberships_count}.by(-1)
-      end
-    end
-
-    describe "#reactivate!" do
-
-      before do
-        user.reactivate!
-      end
-
-      it "unsets deactivated_at (nil)" do
-        user.deactivated_at.should be_nil
-      end
-
-      it "restores the user's memberships" do
-        user.memberships.should include(@membership)
-      end
-    end
-  end
-
-  describe 'find_by_email' do
-    it 'is case insensitive' do
-      user = create(:user, email: "bob@bob.com")
-      expect(User.find_by(email: "BOB@bob.com")).to eq user
-    end
-  end
-
   describe "usernames" do
     before do
       @user1 = User.new(name: "Test User", email: "test1@example.com", password: "passwordXYZ123")

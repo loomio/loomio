@@ -1,6 +1,4 @@
-class GroupSerializer < Simple::GroupSerializer
-  embed :ids, include: true
-
+class GroupSerializer < ApplicationSerializer
   attributes :id,
              :key,
              :handle,
@@ -19,6 +17,7 @@ class GroupSerializer < Simple::GroupSerializer
              :members_can_edit_comments,
              :members_can_raise_motions,
              :members_can_vote,
+             :admins_can_edit_user_content,
              :token,
              :polls_count,
              :closed_polls_count,
@@ -45,6 +44,7 @@ class GroupSerializer < Simple::GroupSerializer
              :open_discussions_count,
              :closed_discussions_count,
              :recent_activity_count,
+             :is_visible_to_public,
              :is_subgroup_of_hidden_parent,
              :is_visible_to_parent_members,
              :parent_members_can_see_discussions,
@@ -59,10 +59,29 @@ class GroupSerializer < Simple::GroupSerializer
              :subscription_expires_at,
              :subscription_state,
              :subscription_created_at,
-             :subscription_info
+             :subscription_info,
+             :subscription_members_count,
+             :subgroups_count,
+             :complete
 
-  has_one :parent, serializer: GroupSerializer, root: :groups
+  def complete
+    true
+  end
 
+  has_one :parent, serializer: GroupSerializer, root: :parent_groups
+  has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
+
+  def current_user_membership
+    scope && scope[:current_user] && object.membership_for(scope[:current_user])
+  end
+
+  def include_subscription_info?
+    current_user_membership
+  end
+
+  def include_current_user_membership?
+    super && scope && scope[:current_user]
+  end
 
   def tag_names
     object.info['tag_names'] || []
@@ -98,6 +117,10 @@ class GroupSerializer < Simple::GroupSerializer
 
   def subscription_info
     subscription.info
+  end
+
+  def subscription_members_count
+    subscription.members_count
   end
 
   def subscription

@@ -1,11 +1,10 @@
 <script lang="coffee">
 import Records        from '@/shared/services/records'
 import AbilityService from '@/shared/services/ability_service'
-import ModalService   from '@/shared/services/modal_service'
 import RecordLoader   from '@/shared/services/record_loader'
 import Session        from '@/shared/services/session'
 import EventBus       from '@/shared/services/event_bus'
-import {includes, some, compact, intersection, orderBy, slice, debounce, min, escapeRegExp} from 'lodash'
+import {includes, some, compact, intersection, orderBy, slice, debounce, min, escapeRegExp} from 'lodash-es'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 import { exact, approximate } from '@/shared/helpers/format_time'
 
@@ -18,13 +17,16 @@ export default
     order: 'created_at desc'
     orders: [
       {text: @$t('members_panel.order_by_name'),  value:'users.name' }
-      {text: @$t('members_panel.order_by_created'), value:'created_at' }
-      {text: @$t('members_panel.order_by_created_desc'), value:'created_at desc' }
+      {text: @$t('members_panel.order_by_created'), value:'memberships.created_at' }
+      {text: @$t('members_panel.order_by_created_desc'), value:'memberships.created_at desc' }
       {text: @$t('members_panel.order_by_admin_desc'), value:'admin desc' }
     ]
     memberships: []
 
   created: ->
+    @onQueryInput = debounce (val) =>
+      @$router.replace(@mergeQuery(q: val))
+    , 500
 
     Records.groups.findOrFetch(@$route.params.key).then (group) =>
       @group = group
@@ -40,6 +42,7 @@ export default
         collection: 'memberships'
         path: 'autocomplete'
         params:
+          exclude_types: 'group'
           group_id: @group.id
           pending: true
           per: @per
@@ -111,20 +114,14 @@ export default
         filter: @$route.query.filter
         subgroups: @$route.query.subgroups
 
-    recordsDisplayed: ->
-      min [@loader.numRequested, @recordCount()]
-
     invite: ->
       EventBus.$emit('openModal',
                       component: 'AnnouncementForm',
                       props:
                         announcement: Records.announcements.buildFromModel(@group))
 
-    onQueryInput: (val) -> @$router.replace(@mergeQuery(q: val))
-
   computed:
     membershipRequestsPath: -> LmoUrlService.membershipRequest(@group)
-    currentUserIsAdmin: -> Session.user().membershipFor(@group).admin
     showLoadMore: -> !@loader.exhausted
     totalRecords: ->
       if @pending
@@ -139,9 +136,7 @@ export default
       (@group.adminMembershipsCount < 2) && ((@group.membershipsCount - @group.adminMembershipsCount) > 0)
 
   watch:
-    '$route.query': debounce ->
-      @refresh()
-    , 500, {leading: false, trailing: true}
+    '$route.query': 'refresh'
 
 
 </script>
@@ -199,6 +194,6 @@ export default
             v-list-item-action
               membership-dropdown(:membership="membership")
         v-layout(justify-center)
-          v-btn.my-2(outlined color='accent' v-if="showLoadMore" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
+          v-btn.my-2(outlined color='accent' v-if="showLoadMore" :loading="loader.loading" @click="loader.fetchRecords()" v-t="'common.action.load_more'")
 
 </template>

@@ -30,15 +30,6 @@ describe API::DiscussionsController do
     group.add_admin! user
   end
 
-  describe 'tags' do
-    it 'fetches discussions by tag' do
-      tag = Tag.create(group: discussion.group, name: 'some tag', color: '#333')
-      dtag = DiscussionTag.create(tag: tag, discussion: discussion)
-      get :tags, params: { id: tag.id }
-      expect(response.status).to eq 200
-    end
-  end
-
   describe 'inbox' do
     context 'logged out' do
       it 'responds with forbidden for logged out users' do
@@ -79,22 +70,6 @@ describe API::DiscussionsController do
         expect(json['discussions']).to be_blank
       end
 
-      it 'does not return threads in muted discussions' do
-        CommentService.create(comment: new_comment, actor: another_user)
-        DiscussionService.update_reader(discussion: discussion, params: { volume: :mute}, actor: user)
-        get :inbox
-        json = JSON.parse(response.body)
-        expect(json['discussions']).to be_blank
-      end
-
-      it 'does not return threads in muted groups' do
-        CommentService.create(comment: new_comment, actor: another_user)
-        Membership.find_by(user: user, group: group).set_volume! :mute
-        get :inbox
-        json = JSON.parse(response.body)
-        expect(json['discussions']).to be_blank
-      end
-
       it 'includes active polls' do
         poll
         CommentService.create(comment: new_comment, actor: another_user)
@@ -127,41 +102,22 @@ describe API::DiscussionsController do
     end
 
     describe 'filtering' do
-      let(:subgroup_discussion) { create_discussion group: subgroup }
-      let(:muted_discussion) { create_discussion group: group }
-      let(:old_discussion) { create_discussion group: group, created_at: 4.months.ago, last_activity_at: 4.months.ago }
-      let(:motionless_discussion) { create_discussion group: group }
+      let!(:subgroup_discussion) { create_discussion group: subgroup }
+      let!(:old_discussion) { create_discussion group: group, created_at: 4.months.ago, last_activity_at: 4.months.ago }
+      let!(:motionless_discussion) { create_discussion group: group }
 
       before do
         sign_in user
         another_group.add_member! user
         subgroup.add_member! user
         discussion.reload
-        [subgroup_discussion, muted_discussion, old_discussion, motionless_discussion].each do |d|
+        [subgroup_discussion, old_discussion, motionless_discussion].each do |d|
           DiscussionService.create(discussion: d, actor: d.author)
         end
-        DiscussionReader.for(user: user, discussion: muted_discussion).set_volume! 'mute'
-      end
-
-      it 'does not return muted discussions by default' do
-        muted_discussion.reload
-        get :dashboard
-        json = JSON.parse(response.body)
-        ids = json['discussions'].map { |v| v['id'] }
-        expect(ids).to_not include muted_discussion.id
-      end
-
-      it 'can filter by muted' do
-        muted_discussion.reload
-        get :dashboard, params: { filter: :show_muted }
-        json = JSON.parse(response.body)
-        ids = json['discussions'].map { |v| v['id'] }
-        expect(ids).to include muted_discussion.id
-        expect(ids).to_not include discussion.id
+        old_discussion.reload
       end
 
       it 'can filter since a certain date' do
-        old_discussion.reload
         get :dashboard, params: { since: 3.months.ago }
         json = JSON.parse(response.body)
         ids = json['discussions'].map { |v| v['id'] }
@@ -170,7 +126,6 @@ describe API::DiscussionsController do
       end
 
       it 'can filter until a certain date' do
-        old_discussion.reload
         get :dashboard, params: { until: 3.months.ago }
         json = JSON.parse(response.body)
         ids = json['discussions'].map { |v| v['id'] }
@@ -179,7 +134,6 @@ describe API::DiscussionsController do
       end
 
       it 'can limit collection size' do
-        discussion; old_discussion; muted_discussion
         get :dashboard, params: { per: 2 }
         json = JSON.parse(response.body)
         expect(json['discussions'].count).to eq 2

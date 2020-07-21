@@ -107,8 +107,8 @@ module.exports = {
     page.expectElement('.group-survey')
     page.fillIn('.group-survey__location input', "Los Angeles")
     page.click('.group-survey__category-business')
+    page.click('.group-survey__desired-feature-polls')
     page.click('.group-survey__size-ten')
-    page.click('.group-survey__usage-governance')
     page.click('.group-survey__referrer-google')
     page.fillIn('.group-survey__role input', "Queen")
     page.fillIn('.group-survey__website input', "dirtydancing.com")
@@ -322,17 +322,6 @@ module.exports = {
     page.expectText('.dashboard-page__empty', 'Welcome! You are not a member of any groups yet.')
   },
 
-  'allows_a_coordinator_to_archive_a_group': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_group')
-    page.click('.group-page-settings-tab')
-    page.click('.group-page-actions__archive_group')
-    page.click('.confirm-modal__submit')
-    page.expectFlash('This group has been deactivated')
-    page.expectText('.dashboard-page__empty', 'Welcome! You are not a member of any groups yet.')
-  },
-
   'successfully_starts_a_discussion': (test) => {
     page = pageHelper(test)
 
@@ -345,20 +334,6 @@ module.exports = {
     page.expectText('.context-panel__heading', 'Nobody puts baby in a corner' )
     page.expectText('.context-panel__description', "I've had the time of my life" )
   },
-
-  // 'automatically_saves_drafts': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('setup_group')
-  //   page.click('.discussions-panel__new-thread-button')
-  //   page.fillIn('.discussion-form__title-input', 'Nobody puts baby in a corner')
-  //   page.fillIn('.discussion-form .lmo-textarea div[contenteditable=true]', "I've had the time of my life")
-  //   page.click('.dismiss-modal-button')
-  //   page.pause()
-  //   page.click('.discussions-panel__new-thread-button')
-  //   page.expectValue('.discussion-form__title-input', 'Nobody puts baby in a corner' )
-  //   page.expectValue('.discussion-form .lmo-textarea div[contenteditable=true]', "I've had the time of my life" )
-  // },
 
   'lets_you_change_membership_volume': (test) => {
     page = pageHelper(test)
@@ -380,5 +355,17 @@ module.exports = {
     page.click('.members-panel__filters')
     page.click('.members-panel__filters-invitations')
     page.expectText('.members-panel .v-card .v-list-item__title', 'shown@test.com')
+  },
+
+  'delete_group': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group_super_admin')
+    page.click('.group-page-settings-tab')
+    page.click('.group-page-actions__destroy_group')
+
+    page.fillIn('.confirm-text-field input', 'Dirty Dancing Shoes')
+    page.click('.confirm-modal__submit')
+    page.expectFlash("This group has been archived and is scheduled for permanent deletion in 2 weeks.")
   }
 }

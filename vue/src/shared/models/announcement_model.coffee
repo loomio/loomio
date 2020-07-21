@@ -1,6 +1,6 @@
 import BaseModel from '@/shared/record_store/base_model'
 import AppConfig from '@/shared/services/app_config'
-import {isNumber, compact, map} from 'lodash'
+import {isNumber, compact, map} from 'lodash-es'
 
 export default class AnnouncementModel extends BaseModel
   @singular: 'announcement'

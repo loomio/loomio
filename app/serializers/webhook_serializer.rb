@@ -1,4 +1,3 @@
-class WebhookSerializer < ActiveModel::Serializer
-  embed :ids, include: true
-  attributes :id, :name, :url, :format, :group_id
+class WebhookSerializer < ApplicationSerializer
+  attributes :id, :name, :url, :format, :group_id, :include_body, :include_subgroups, :event_kinds
 end

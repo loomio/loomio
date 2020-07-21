@@ -10,7 +10,7 @@ class MigrateUserWorker
     operations.each { |operation| ActiveRecord::Base.connection.execute(operation) }
     migrate_stances
     update_counters
-    source.deactivate!
+    DeactivateUserWorker.new.perform(source_id)
     UserMailer.delay.accounts_merged(destination.id)
   end
 
@@ -33,11 +33,9 @@ class MigrateUserWorker
     oauth_applications: :owner_id,
     omniauth_identities: :user_id,
     outcomes: :author_id,
-    poll_did_not_votes: :user_id,
     poll_unsubscriptions: :user_id,
     polls: :author_id,
-    versions: :whodunnit,
-    user_deactivation_responses: :user_id
+    versions: :whodunnit
   }.freeze
 
   def delete_duplicates
@@ -78,7 +76,7 @@ class MigrateUserWorker
     end
 
     [
-      destination.polls,
+      destination.authored_polls,
       destination.group_polls,
       destination.participated_polls
     ].flatten.uniq.each do |poll|

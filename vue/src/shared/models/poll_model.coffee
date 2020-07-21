@@ -5,14 +5,12 @@ import HasTranslations  from '@/shared/mixins/has_translations'
 import EventBus         from '@/shared/services/event_bus'
 import I18n             from '@/i18n'
 import { addDays, startOfHour } from 'date-fns'
-import { head, orderBy, map, includes, difference, invokeMap, each, max } from 'lodash'
+import { head, orderBy, map, includes, difference, invokeMap, each, max, slice, sortBy } from 'lodash-es'
 
 export default class PollModel extends BaseModel
   @singular: 'poll'
   @plural: 'polls'
   @indices: ['discussionId', 'authorId', 'latest']
-  @draftParent: 'draftParent'
-  @draftPayloadAttributes: ['title', 'details']
 
   afterConstruction: ->
     HasDocuments.apply @, showTitle: true
@@ -20,9 +18,6 @@ export default class PollModel extends BaseModel
 
   pollTypeKey: ->
     "poll_types.#{@pollType}"
-
-  draftParent: ->
-    @discussion() or @author()
 
   poll: -> @
 
@@ -52,7 +47,6 @@ export default class PollModel extends BaseModel
     @belongsTo 'group'
     @hasMany   'pollOptions', orderBy: 'priority'
     @hasMany   'stances'
-    @hasMany   'pollDidNotVotes'
     @hasMany   'versions'
 
   voters: ->
@@ -63,16 +57,19 @@ export default class PollModel extends BaseModel
 
   adminsInclude: (user) ->
     stance = @stanceFor(user)
-    @authorIs(user) || (stance && stance.admin) || @group().adminsInclude(user)
+    @authorIs(user) || (stance && stance.admin) || (@group() && @group().adminsInclude(user))
 
   membersInclude: (user) ->
-    @stanceFor(user) || @group().membersInclude(user)
+    @stanceFor(user) || (@group && @group().membersInclude(user))
 
   stanceFor: (user) ->
     head orderBy(@recordStore.stances.find(latest: true, pollId: @id, participantId: user.id), 'createdAt', 'desc')
 
+  myStance: ->
+    head orderBy(@recordStore.stances.find(latest: true, pollId: @id, myStance: true), 'createdAt', 'desc')
+
   authorName: ->
-    @author().nameWithTitle(@)
+    @author().nameWithTitle(@group())
 
   reactions: ->
     @recordStore.reactions.find(reactableId: @id, reactableType: "Poll")
@@ -83,13 +80,6 @@ export default class PollModel extends BaseModel
   # who's voted?
   participants: ->
     @recordStore.users.find(@participantIds())
-
-  # who hasn't voted?
-  undecided: ->
-    if @isActive()
-      difference(@members(), @participants())
-    else
-      invokeMap @pollDidNotVotes(), 'user'
 
   membersCount: ->
     # NB: this won't work for people who vote, then leave the group.
@@ -103,26 +93,26 @@ export default class PollModel extends BaseModel
 
   clearStaleStances: ->
     existing = []
-    each @latestStances('-createdAt'), (stance) ->
-      if includes(existing, stance.participant())
+    each @latestStances(), (stance) ->
+      if includes(existing, stance.participantId)
         stance.latest = false
       else
-        existing.push(stance.participant())
+        existing.push(stance.participantId)
 
   latestStances: (order = '-createdAt', limit) ->
-    _.slice(_.sortBy(@recordStore.stances.find(pollId: @id, latest: true), order), 0, limit)
+    slice(sortBy(@recordStore.stances.find(pollId: @id, latest: true), order), 0, limit)
 
   hasDescription: ->
     !!@details
 
   isActive: ->
-    !@closedAt?
+    !@discardedAt && !@closedAt?
 
   isClosed: ->
     @closedAt?
 
-  goal: ->
-    @customFields.goal or @membersCount()
+  showResults: ->
+    @closedAt? || !@hideResultsUntilClosed
 
   close: =>
     @processing = true
@@ -169,6 +159,12 @@ export default class PollModel extends BaseModel
 
   hasOptionIcons: ->
     AppConfig.pollTemplates[@pollType]['has_option_icons']
+
+  singleChoice: ->
+    if @pollType == 'poll'
+      !@multipleChoice
+    else
+      AppConfig.pollTemplates[@pollType]['single_choice']
 
   translateOptionName: ->
     AppConfig.pollTemplates[@pollType]['translate_option_name']

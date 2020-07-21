@@ -1,6 +1,7 @@
 <script lang="coffee">
 import svg from 'svg.js'
 import AppConfig from '@/shared/services/app_config'
+import { take, map, max, each} from 'lodash-es'
 
 export default
   props:
@@ -11,10 +12,10 @@ export default
     shapes: []
   computed:
     scoreData: ->
-      _.take(_.map(this.stanceCounts, (score, index) ->
+      take(map(this.stanceCounts, (score, index) ->
         { color: AppConfig.pollColors.poll[index], index: index, score: score }), 5)
     scoreMaxValue: ->
-      _.max _.map(this.scoreData, (data) -> data.score)
+      max map(this.scoreData, (data) -> data.score)
   methods:
     draw: ->
       if this.scoreData.length > 0 and this.scoreMaxValue > 0
@@ -22,22 +23,22 @@ export default
       else
         this.drawPlaceholder()
     drawPlaceholder: ->
-      _.each this.shapes, (shape) -> shape.remove()
+      each this.shapes, (shape) -> shape.remove()
       barHeight = this.size / 3
       barWidths =
         0: this.size
         1: 2 * this.size / 3
         2: this.size / 3
-      _.each barWidths, (width, index) =>
+      each barWidths, (width, index) =>
         this.svgEl.rect(width, barHeight - 2)
             .fill("#ebebeb")
             .x(0)
             .y(index * barHeight)
     drawChart: ->
-      _.each this.shapes, (shape) -> shape.remove()
+      each this.shapes, (shape) -> shape.remove()
       barHeight = this.size / this.scoreData.length
-      _.map this.scoreData, (scoreDatum) =>
-        barWidth = _.max([(this.size * scoreDatum.score) / this.scoreMaxValue, 2])
+      map this.scoreData, (scoreDatum) =>
+        barWidth = max([(this.size * scoreDatum.score) / this.scoreMaxValue, 2])
         this.svgEl.rect(barWidth, barHeight-2)
             .fill(scoreDatum.color)
             .x(0)

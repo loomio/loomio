@@ -1,23 +1,22 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
-import {merge, capitalize, difference, keys, throttle, startsWith, each, compact} from 'lodash'
-import WatchRecords from '@/mixins/watch_records'
+import ReactionService from '@/shared/services/reaction_service'
+import {merge, capitalize, difference, keys, throttle, startsWith, each, compact} from 'lodash-es'
 import { colonToUnicode, stripColons, imgForEmoji, srcForEmoji, emojiSupported } from '@/shared/helpers/emojis'
 
 export default
-  mixins: [WatchRecords]
   props:
     model: Object
-    fetch:
-      type: Boolean
-      default: false
 
   data: ->
     diameter: 20
     maxNamesCount: 10
     reactionHash: {all: []}
     emojiSupported: emojiSupported
+
+  created: ->
+    ReactionService.enqueueFetch(@model)
 
   mounted: ->
     @watchRecords
@@ -32,12 +31,7 @@ export default
           @reactionHash['all'].push(user)
           true
 
-    if @fetch
-      Records.reactions.fetch
-        params:
-          reactable_type: capitalize(@model.constructor.singular)
-          reactable_id: @model.id
-
+    # Records.reactions.enqueueFetch(@reactionParams)
 
   computed:
     reactionParams: ->

@@ -4,9 +4,13 @@ module Ability::Group
 
     can [:show], ::Group do |group|
       !group.archived_at &&
-      (group.is_visible_to_public? or
-       user_is_member_of?(group.id) or
-       (group.is_visible_to_parent_members? and user_is_member_of?(group.parent_id)))
+      (
+        group.is_visible_to_public? or
+        group.members.exists?(user.id) or
+        (group.is_visible_to_parent_members? and user_is_member_of?(group.parent_id)) or
+        (user.group_token && user.group_token == group.token) or
+        (user.membership_token && group.memberships.pending.find_by(token: user.membership_token))
+      )
     end
 
     can [:vote_in], ::Group do |group|
@@ -23,6 +27,7 @@ module Ability::Group
     can [:update,
          :email_members,
          :archive,
+         :destroy,
          :publish,
          :export,
          :view_pending_invitations,
@@ -31,10 +36,7 @@ module Ability::Group
     end
 
     can [:members_autocomplete,
-         :set_volume,
-         :see_members,
-         :make_draft,
-         :view_previous_proposals], ::Group do |group|
+         :set_volume], ::Group do |group|
       user.email_verified? && group.members.exists?(user.id)
     end
 

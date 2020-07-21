@@ -1,6 +1,6 @@
 .group-page.mt-12
-  %main.v-content
-    .v-content__wrap
+  %main.v-main
+    .v-main__wrap
       %div
         .container.gruop-page.max-width-1024
           .v-responsive.v-image{:style => "border-radius: 8px;"}
@@ -57,7 +57,7 @@
                       - @group.discussions.where(private: false).order('last_activity_at desc').limit(50).each do |discussion|
                         %a.thread-preview.thread-preview__link.v-list-item.v-list-item--link.theme--light{:href => discussion_url(discussion), :role => "listitem", :tabindex => "0"}
                           .v-list-item__avatar
-                            = render 'discussions/avatar', user: discussion.author
+                            = render 'base_mailer/avatar', user: discussion.author
                           .v-list-item__content
                             .v-list-item__title{:style => "align-items: center;"}
                               %span.thread-preview__title= discussion.title

@@ -1,14 +1,14 @@
 class Comment < ApplicationRecord
+  include Discard::Model
   include CustomCounterCache::Model
   include Translatable
   include Reactable
   include HasMentions
-  include HasDrafts
   include HasCreatedEvent
   include HasEvents
   include HasRichText
 
-  has_paper_trail only: [:body, :body_format]
+  has_paper_trail only: [:body, :body_format, :user_id, :discarded_at, :discarded_by]
 
   is_translatable on: :body
   is_mentionable  on: :body
@@ -19,18 +19,17 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :parent, class_name: 'Comment'
 
-  alias_attribute :author, :user
-  alias_attribute :author_id, :user_id
-  alias_method :draft_parent, :discussion
-
   has_many :documents, as: :model, dependent: :destroy
 
-  validates_presence_of :user
-  validate :has_body_or_document
-  validate :parent_comment_belongs_to_same_discussion
-  validate :documents_owned_by_author
+  validates_presence_of :user, unless: :discarded_at
 
-  default_scope { includes(:user).includes(:documents).includes(:discussion) }
+  validate :parent_comment_belongs_to_same_discussion
+  validate :has_body_or_attachment
+
+  alias_attribute :author, :user
+  alias_attribute :author_id, :user_id
+
+  default_scope { includes(:user).includes(:documents) }
 
   scope :in_organisation, ->(group) { joins(:discussion).where("discussions.group_id": group.id) }
 
@@ -47,8 +46,8 @@ class Comment < ApplicationRecord
 
   define_counter_cache(:versions_count) { |comment| comment.versions.count }
 
-  def self.always_versioned_fields
-    [:body]
+  def user
+    super || AnonymousUser.new
   end
 
   def should_pin
@@ -62,10 +61,6 @@ class Comment < ApplicationRecord
     else
       discussion.created_event
     end
-  end
-
-  def purge_drafts_asynchronously?
-    false
   end
 
   def created_event_kind
@@ -90,22 +85,21 @@ class Comment < ApplicationRecord
 
   private
 
-  def documents_owned_by_author
-    return if documents.pluck(:author_id).select { |user_id| user_id != user.id }.empty?
-    errors.add(:documents, "Attachments must be owned by author")
-  end
-
-  def parent_comment_belongs_to_same_discussion
-    if self.parent.present?
-      unless discussion_id == parent.discussion_id
-        errors.add(:parent, "Needs to have same discussion id")
-      end
+  def has_body_or_attachment
+    if !discarded_at && body_blank? && files.empty? && image_files.empty?
+      errors.add(:body, I18n.t(:"activerecord.errors.messages.blank"))
     end
   end
 
-  def has_body_or_document
-    if body.blank? && documents.blank?
-      errors.add(:body, "Comment cannot be empty")
+  def body_blank?
+    body.to_s.empty? || body.to_s == "<p></p>"
+  end
+
+  def parent_comment_belongs_to_same_discussion
+    if parent.present?
+      unless discussion_id == parent.discussion_id
+        errors.add(:parent, "Needs to have same discussion id")
+      end
     end
   end
 end

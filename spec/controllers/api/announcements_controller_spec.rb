@@ -284,6 +284,7 @@ describe API::AnnouncementsController do
 
     describe 'group' do
       let(:group) { create :group, creator: user}
+      let(:subgroup) { create :group, parent: group, creator: user}
 
       it 'does not permit non author to announce' do
         sign_in create(:user)
@@ -306,6 +307,46 @@ describe API::AnnouncementsController do
         expect(email_user.email_verified).to be false
         expect(email_user.memberships.pending.count).to eq 1
         expect(group.members).to include email_user
+      end
+
+      it 'auto accepts subgroup invitiations to existing members' do
+        group.add_member! member
+        subgroup.add_admin! user
+        expect(member.memberships.accepted.count).to eq 1
+        post :create, params: {group_id: subgroup.id, user_ids: member.id}
+
+        expect(response.status).to eq 200
+        member.reload
+        expect(member.notifications.count).to eq 1
+        expect(member.memberships.accepted.count).to eq 2
+        expect(subgroup.accepted_members).to include member
+      end
+
+      it 'does not auto accept subgroup invitiations to not accepted members' do
+        membership = group.add_member! member
+        membership.update(accepted_at: nil)
+        subgroup.add_admin! user
+        post :create, params: {group_id: subgroup.id, user_ids: member.id}
+
+        expect(response.status).to eq 200
+        member.reload
+        expect(member.notifications.count).to eq 1
+        expect(member.memberships.count).to eq 2
+        expect(member.memberships.accepted.count).to eq 0
+        expect(subgroup.accepted_members).to_not include member
+      end
+
+      it 'does not auto accept subgroup invitiations to unverified users' do
+        group.add_member! member
+        subgroup.add_admin! user
+        member.update(email_verified: false)
+        post :create, params: {group_id: subgroup.id, user_ids: member.id}
+
+        expect(response.status).to eq 200
+        member.reload
+        expect(member.notifications.count).to eq 1
+        expect(member.memberships.accepted.count).to eq 1
+        expect(subgroup.accepted_members).to_not include member
       end
 
       it 'notify existing user by email' do

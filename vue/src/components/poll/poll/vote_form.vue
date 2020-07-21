@@ -1,7 +1,7 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
-import { compact, sortBy, without } from 'lodash'
+import { compact, sortBy, without } from 'lodash-es'
 import { onError } from '@/shared/helpers/form'
 
 export default
@@ -49,7 +49,6 @@ export default
 <template lang="pug">
 .poll-poll-vote-form
   submit-overlay(:value="stance.processing")
-  poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   v-list(column)
     v-list-item.poll-common-vote-form__button(align-center @click='select(option)' v-for='option in pollOptions' :key='option.id')
       v-list-item-title

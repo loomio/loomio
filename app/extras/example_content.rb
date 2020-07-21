@@ -19,8 +19,8 @@ ExampleContent = Struct.new(:group) do
 
   def example_proposal
     @example_proposal ||= how_it_works_thread.polls.build(
-      poll_type:         :proposal,
-      poll_option_names: %w[agree abstain disagree block],
+      poll_type:         :count,
+      poll_option_names: %w[yes no],
       author:            helper_bot,
       title:             I18n.t('first_proposal.name'),
       details:           I18n.t('first_proposal.description'),

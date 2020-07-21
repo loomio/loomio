@@ -1,17 +1,14 @@
 <script lang="coffee">
 import PollService    from '@/shared/services/poll_service'
 import AbilityService from '@/shared/services/ability_service'
-import PollModalMixin from '@/mixins/poll_modal'
 import EventBus       from '@/shared/services/event_bus'
 import EventService from '@/shared/services/event_service'
-import { myLastStanceFor }  from '@/shared/helpers/poll'
-import { pick, assign } from 'lodash'
+import { pick, assign } from 'lodash-es'
 
 export default
   components:
     ThreadItem: -> import('@/components/thread/item.vue')
 
-  mixins: [PollModalMixin]
   props:
     event: Object
     isReturning: Boolean
@@ -22,7 +19,7 @@ export default
     @watchRecords
       collections: ["stances"]
       query: (records) =>
-        @myLastStance = myLastStanceFor(@poll)?
+        @myStance = @poll.myStance()
 
   beforeDestroy: ->
     EventBus.$off 'showResults'
@@ -30,24 +27,24 @@ export default
 
   data: ->
     buttonPressed: false
-    myLastStance: null
+    myStance: null
 
   computed:
     eventable: -> @event.model()
     poll: -> @eventable
 
     showResults: ->
-      @buttonPressed || @myLastStance || @poll.isClosed()
+      (@buttonPressed || (@myStance && @myStance.castAt)) && @poll.showResults()
 
     menuActions: ->
       assign(
-        pick PollService.actions(@poll, @), ['show_history', 'export_poll', 'delete_poll', 'translate_poll']
+        pick PollService.actions(@poll, @), ['show_history', 'export_poll', 'print_poll', 'discard_poll', 'translate_poll']
       ,
         pick EventService.actions(@event, @), ['move_event', 'copy_url']
       )
     dockActions: ->
       assign(
-        pick PollService.actions(@poll, @), ['announce_poll', 'edit_poll', 'close_poll', 'reopen_poll']
+        pick PollService.actions(@poll, @), ['edit_stance', 'announce_poll', 'edit_poll', 'close_poll', 'reopen_poll']
       ,
         pick EventService.actions(@event, @), ['pin_event', 'unpin_event']
       )
@@ -58,7 +55,7 @@ export default
 thread-item.poll-created(:event="event" :is-returning="isReturning")
   v-layout(justify-space-between)
     h1.poll-common-card__title.headline
-      span(v-if='!poll.translation.title') {{poll.title}}
+      router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
       translation(v-if="poll.translation.title" :model='poll', field='title')
       poll-common-closing-at.ml-2(:poll='poll')
   poll-common-set-outcome-panel(:poll='poll')
@@ -74,4 +71,6 @@ thread-item.poll-created(:event="event" :is-returning="isReturning")
     poll-common-action-panel(:poll='poll')
   template(v-slot:actions)
     action-dock(:actions="dockActions" :menu-actions="menuActions")
+  template(v-if="!poll.stancesInDiscussion && poll.showResults()" v-slot:afterActions)
+    poll-common-votes-panel(v-if :poll="poll")
 </template>

@@ -20,6 +20,7 @@ proposal:
     - oldest_first
     - priority_first
     - priority_last
+    - undecided_first
 
 count:
   poll_options_attributes:
@@ -38,6 +39,7 @@ count:
     - oldest_first
     - priority_first
     - priority_last
+    - undecided_first
 
 poll:
   poll_options_attributes: []
@@ -51,6 +53,7 @@ poll:
   sort_options:
     - newest_first
     - oldest_first
+    - undecided_first
 
 dot_vote:
   poll_options_attributes: []
@@ -66,6 +69,7 @@ dot_vote:
   sort_options:
     - newest_first
     - oldest_first
+    - undecided_first
 
 score:
   poll_options_attributes: []
@@ -81,6 +85,7 @@ score:
   sort_options:
     - newest_first
     - oldest_first
+    - undecided_first
 
 ranked_choice:
   poll_options_attributes: []
@@ -98,6 +103,7 @@ ranked_choice:
   sort_options:
     - newest_first
     - oldest_first
+    - undecided_first
 
 meeting:
   poll_options_attributes: []
@@ -118,3 +124,4 @@ meeting:
   sort_options:
     - newest_first
     - oldest_first
+    - undecided_first

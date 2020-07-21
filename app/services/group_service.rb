@@ -18,12 +18,18 @@ module GroupService
 
     Membership.import(new_memberships, on_duplicate_key_ignore: true)
 
-    memberships = Membership.where(group: group, user_id: users.pluck(:id))
+    if group.parent
+      existing_parent_members = group.parent.accepted_members.where(id: users.verified.pluck(:id))
+      Membership.pending.where(group_id: group.id, user_id: existing_parent_members.pluck(:id)).each do |m|
+        AcceptMembershipWorker.perform_async(m.id, m.user_id)
+      end
+    end
 
     group.update_pending_memberships_count
     group.update_memberships_count
-    Events::AnnouncementCreated.publish!(group, actor, memberships)
-    Membership.where(user_id: users.pluck(:id), group_id: group.id)
+    all_memberships = Membership.not_archived.where(group_id: group.id, user_id: users.pluck(:id))
+    Events::AnnouncementCreated.publish!(group, actor, all_memberships)
+    all_memberships
   end
 
   def self.create(group:, actor: )
@@ -39,6 +45,7 @@ module GroupService
       ExampleContent.new(group).add_to_group! if AppConfig.app_features[:example_content]
     end
 
+    group.update_attachments!
     group.save!
     group.add_admin!(actor)
 
@@ -54,16 +61,18 @@ module GroupService
     privacy_change = PrivacyChange.new(group)
 
     return false unless group.valid?
+    group.update_attachments!
     group.save!
     privacy_change.commit!
 
     EventBus.broadcast('group_update', group, params, actor)
   end
 
-  def self.archive(group:, actor:)
-    actor.ability.authorize! :archive, group
+  def self.destroy(group:, actor:)
+    actor.ability.authorize! :destroy, group
     group.archive!
-    EventBus.broadcast('group_archive', group, actor)
+    DestroyGroupWorker.perform_in(2.weeks, group.id)
+    EventBus.broadcast('group_destroy', group, actor)
   end
 
   def self.move(group:, parent:, actor:)

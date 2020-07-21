@@ -3,7 +3,7 @@ import Records           from '@/shared/services/records'
 import Session           from '@/shared/services/session'
 import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
-import { first, last } from 'lodash'
+import { first, last } from 'lodash-es'
 import ahoy from 'ahoy.js'
 
 export default
@@ -26,16 +26,20 @@ export default
 
   mounted: -> @init()
 
+  beforeDestroy: ->
+    EventBus.$off 'visibleSlots'
+
   watch:
     '$route.params.key': 'init'
     '$route.params.comment_id': 'init'
 
   methods:
     openThreadNav: -> EventBus.$emit('toggleThreadNav')
+    scrollThreadNav: -> EventBus.$emit('scrollThreadNav')
 
     init: ->
       Records.samlProviders.authenticateForDiscussion(@$route.params.key)
-      Records.discussions.findOrFetchById(@$route.params.key)
+      Records.discussions.findOrFetchById(@$route.params.key, exclude_types: 'poll outcome')
       .then (discussion) =>
         @discussion = discussion
         ahoy.trackView
@@ -56,9 +60,9 @@ export default
 
 <template lang="pug">
 .thread-page
-  v-content
+  v-main
     loading(:until="discussion")
-      v-container.thread-page.max-width-800(v-if="discussion")
+      v-container.thread-page.max-width-800(v-if="discussion" v-scroll="scrollThreadNav")
         thread-current-poll-banner(:discussion="discussion")
         discussion-fork-actions(:discussion='discussion' :key="'fork-actions'+ discussion.id")
         thread-card(:discussion='discussion' :key="discussion.id")

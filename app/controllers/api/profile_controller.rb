@@ -5,9 +5,8 @@ class API::ProfileController < API::RestfulController
   end
 
   def groups
-    ids = current_user.groups.pluck(:id)
-    self.collection = Group.published.where(id: ids).or(Group.published.where('parent_id in (:ids)', ids: ids).where('is_visible_to_parent_members = true or is_visible_to_public = true'))
-    respond_with_collection serializer: Full::GroupSerializer, root: :groups
+    self.collection = GroupQuery.visible_to(user: current_user)
+    respond_with_collection serializer: GroupSerializer, root: :groups
   end
 
   def time_zones
@@ -50,18 +49,8 @@ class API::ProfileController < API::RestfulController
     respond_with_resource
   end
 
-  def deactivate
-    service.deactivate(current_user_params)
-    respond_with_resource
-  end
-
   def destroy
-    service.destroy(user: current_user)
-    respond_with_resource
-  end
-
-  def reactivate
-    service.reactivate(user:deactivated_user, actor: current_user)
+    service.deactivate(user: current_user)
     respond_with_resource
   end
 

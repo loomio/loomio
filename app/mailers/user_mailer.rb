@@ -1,6 +1,14 @@
 class UserMailer < BaseMailer
   helper PollEmailHelper
-  layout 'invite_people_mailer', only: [:membership_request_approved, :contact_request, :user_added_to_group, :login, :start_decision, :accounts_merged, :user_reactivated, :group_export_ready]
+  layout 'invite_people_mailer', only: [:deactivated, :membership_request_approved, :contact_request, :user_added_to_group, :login, :start_decision, :accounts_merged, :user_reactivated, :group_export_ready]
+
+  def deactivated(email, recovery_code, locale)
+    @recovery_code = recovery_code
+    send_single_mail to: email,
+                     subject_key: "user_mailer.deactivated.subject",
+                     subject_params: { site_name: AppConfig.theme[:site_name] },
+                     locale: locale
+  end
 
   def accounts_merged(user_id)
     @user = User.find(user_id)
@@ -33,10 +41,11 @@ class UserMailer < BaseMailer
     @time_finish = Time.zone.now
     @time_frame = @time_start...@time_finish
 
-    @discussions = Queries::VisibleDiscussions.new(user: user)
-                    .not_muted
-                    .unread
-                    .last_activity_after(@time_start)
+    @discussions = DiscussionQuery.visible_to(
+      user: user,
+      only_unread: true,
+      or_public: false,
+      or_subgroups: false).last_activity_after(@time_start)
     @groups = @user.groups.order(full_name: :asc)
 
     @reader_cache = Caches::DiscussionReader.new(user: @user, parents: @discussions)

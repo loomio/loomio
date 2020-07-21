@@ -1,6 +1,7 @@
 import AppConfig from '@/shared/services/app_config'
 import Records   from '@/shared/services/records'
 import i18n from '@/i18n.coffee'
+import {compact, head, sortBy} from 'lodash-es'
 
 export optionColors = ->
   agree: AppConfig.pollColors.proposal[0]
@@ -29,25 +30,9 @@ export fieldFromTemplate = (pollType, field) ->
 export iconFor = (poll) ->
   fieldFromTemplate(poll.pollType, 'material_icon')
 
-export settingsFor = (poll) ->
-  _.compact [
-    ('multipleChoice'        if poll.pollType == 'poll'),
-    'notifyOnParticipate',
-    ('canRespondMaybe'       if poll.pollType == 'meeting'),
-    ('anonymous'             if !fieldFromTemplate(poll.pollType, 'prevent_anonymous')),
-    ('deanonymizeAfterClose' if poll.anonymous),
-    ('voterCanAddOptions'    if fieldFromTemplate(poll.pollType, 'can_add_options') && poll.pollType != 'proposal')
-  ]
-
 export myLastStanceFor = (poll) ->
-  _.head _.sortBy(Records.stances.find(
+  head sortBy(Records.stances.find(
     latest: true
     pollId: poll.id
     participantId: AppConfig.currentUserId
   ), 'createdAt')
-
-export participantName = (stance) ->
-  if stance.participant()
-    stance.participant().nameWithTitle(stance.poll())
-  else
-    i18n.t('common.anonymous')

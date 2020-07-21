@@ -40,7 +40,7 @@ module PendingActionsHelper
 
   # memberships are valid even if not accepted, but this lets us know if people are using them
   def accept_pending_membership
-    group = @group or (@discussion && @discussion.group)
+    group = @group or (@discussion && @discussion.group) or (@poll && @poll.group)
     return unless group
     MembershipService.redeem_if_pending!(group.membership_for(current_user))
   end

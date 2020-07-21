@@ -29,7 +29,7 @@ class Membership < ApplicationRecord
   scope :active,        -> { not_archived.accepted }
   scope :archived,      -> { where('archived_at IS NOT NULL') }
   scope :not_archived,  -> { where(archived_at: nil) }
-  scope :pending,       -> { where(accepted_at: nil) }
+  scope :pending,       -> { where(accepted_at: nil).where("user_id is not null") }
   scope :accepted,      -> { where('accepted_at IS NOT NULL') }
 
   scope :search_for, ->(query) { joins(:user).where("users.name ilike :query or users.username ilike :query or users.email ilike :query", query: "%#{query}%") }

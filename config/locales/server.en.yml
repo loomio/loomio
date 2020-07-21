@@ -14,7 +14,35 @@ en:
         invalid: is not a valid value
 
   errors:
+    400:
+      title: Bad request
+      body: Sorry, we weren't able to understand that request
+    403:
+      title: Forbidden
+      body: You are not permitted to access this page. You may need to sign in.
+    404:
+      title: Not found
+      body: Sorry, the page you were looking for doesn't exist. You may have mistyped the address or the page may have been moved or deleted.
+    410:
+      title: Gone
+      body: This page no longer exists
+    417:
+      title: Browser incompatible
+      body: |
+        Please <a href="https://browser-update.org/update.html?force_outdated=true">Upgrade your browser</a> to use Loomio
+    422:
+      title: Unprocessable Entity
+      body: The change you wanted was rejected. Maybe you tried to change something you didn't have access to.
+    429:
+      title: Too Many Requests
+      body: Sorry, you have exceeded the maximum allowed requests per minute for this action. Please wait a while and try again.
+    500:
+      title: Internal Server Error
+      body: We're sorry, but something went wrong. We've been notified about this issue and we'll take a look at it shortly.
+
     noscript: Loomio requires javascript to work! Please enable javascript in your browser to continue
+    upgrade_browser: |
+      Uh oh! Your web browser is too old and Loomio may not work properly. Please <a href="https://browser-update.org/update.html">upgrade your browser.</a>
     return_home: Return home
     not_found: 404 file not found.
     messages:
@@ -118,6 +146,13 @@ en:
       subject: Group data export for %{group_name}
       body_html: |
         Download your group data <a href="%{url}">here</a>. Please note that this link will expire in one week's time.
+
+    deactivated:
+      subject: "Your %{site_name} user account has been deactivated."
+      body_html: |
+        <p>You, or someone with access to your account, has deactivated your Loomio user account.</p>
+        <p>All personal data has been removed from the system.</p>
+        <p>If you wish to recover this user account and associated comments and votes, please contact support and reference: %{recovery_code}</p>
 
     accounts_merged:
       subject: "Your %{site_name} user accounts have been merged."
@@ -309,34 +344,39 @@ en:
   how_it_works_thread:
     title: How to use Loomio
     description: |
-      Welcome to Loomio, an online place to make decisions together.
+      Welcome to Loomio, an online place for communicating and making decisions.
 
-      This is an example discussion **thread**. You can add comments below. A thread is a conversation on a given topic. This thread is about how Loomio works, so post questions about that here.
+      This is an example discussion **thread**. You can add comments below. Threads are for discussing topics and getting clear outcomes. This thread is about how Loomio works, so post questions about that here.
 
-      You are currently reading the thread **context**, a space for background information. You can update it as the discussion progresses.
+      You are currently reading the thread **context**, which can be kept up to date with key information and questions that help people engage.
 
       To get started with Loomio:
-      1. Upload a [profile picture](/profile)
-      2. Post in existing threads, or start a new one
-
+      <ul>
+        <li>Try commenting in an existing thread, or this one.</li>
+      </ul>
       Tips for posting on Loomio:
-      * To notify a specific person, type @ followed by their name.
-      * Click the paperclip icon to add attachments.
+      <ul>
+        <li>To notify a specific person, type @ followed by their name</li>
+        <li>Drag and drop pictures and attachments or click the paperclip icon</li>
+        <li>See 5 ways to use threads for some ideas and tips</li>
+      </ul>
 
-      If you’ve got questions, check the [Loomio help manual](http://help.loomio.org).
+      If you have any questions, see [Loomio Help](http://help.loomio.org).
 
   first_proposal:
-    name: Demonstration proposal
+    name: Have any questions about using Loomio?
     description: |
-      This is a **proposal**, where you can make a decision together. You can start a proposal once a discussion is underway.
+      _If yes, share your question. If no, you’re ready to comment in your group’s threads!_
 
-      Everyone is asked to **state a position** by the **deadline**. You can extend the deadline if you need to, or close a proposal early.
+      This **Check poll** is asking whether you or anyone here has any questions about using Loomio.
 
-      You can **change your position** while the proposal is open. You might reconsider your view as you listen to others.
+      <ul><li>Go ahead and try it using the buttons and text field below.</li></ul>
 
-      Sometimes groups work through a **series of proposals** to build solutions together. You can raise sequential proposals in this thread.
+      As with any decision or facilitation tool, you will need to respond before it closes.
 
-      **Try participating! Click one of the four buttons**.
+      You can change your position while it is open (perhaps responding to new info).
+
+      **Try participating! Click one of the buttons.**
 
   markdown:
     intro:
@@ -430,259 +470,43 @@ en:
       you_have_until: You have until %{when} to participate.
       people_have_voted: "%{num} people have voted (%{pct}%)"
 
-    proposal:
-      subject:
-        poll_created: '%{actor} started a proposal: %{title}'
-        poll_edited: '%{actor} edited the proposal: %{title}'
-        poll_announced: '%{actor} invited you to vote on a proposal: %{title}'
-        poll_closing_soon: 'Proposal closing in 24 hours: %{title}'
-        poll_closing_soon_author: 'Your proposal closes in 24 hours: %{title}'
-        poll_expired: "Proposal closed: %{title}"
-        poll_expired_author: 'Your proposal has closed. Share an outcome for: %{title}'
-        outcome_created: '%{actor} shared a proposal outcome: %{title}'
-        outcome_announced: '%{actor} shared a proposal outcome: %{title}'
-        stance_created: "%{actor} voted on: %{title}"
-        user_mentioned: '%{actor} mentioned you in: %{title}'
-        user_reminded: '%{actor} is reminding you to vote in: %{title}'
+    subject:
+      poll_created: '%{actor} started a %{poll_type}: %{title}'
+      poll_edited: '%{actor} edited the %{poll_type}: %{title}'
+      poll_announced: '%{actor} invited you to vote in a %{poll_type}: %{title}'
+      poll_closing_soon: '%{poll_type} closing in 24 hours: %{title}'
+      poll_closing_soon_author: 'Your %{poll_type} closes in 24 hours: %{title}'
+      poll_expired: "%{poll_type} closed: %{title}"
+      poll_expired_author: 'Your %{poll_type} has closed. Share an outcome for: %{title}'
+      poll_option_added: '%{actor} added options to: %{title}'
+      poll_option_added_author: '%{actor} added options to: %{title}'
+      outcome_created: '%{actor} shared a %{poll_type} outcome: %{title}'
+      outcome_created_author: 'You shared a %{poll_type} outcome: %{title}'
+      outcome_announced: '%{actor} shared a %{poll_type} outcome: %{title}'
+      stance_created: "%{actor} voted on: %{title}"
+      stance_created_author: "Please verify your vote on: %{title}"
+      user_mentioned: '%{actor} mentioned you in: %{title}'
+      user_reminded: '%{actor} is reminding you to vote in: %{title}'
 
-      header:
-        poll_created: '<strong>%{actor}</strong> started a proposal'
-        poll_edited: '<strong>%{actor}</strong> edited the proposal'
-        poll_announced: '<strong>%{actor}</strong> invited you to vote on a proposal'
-        poll_closing_soon: '<strong>%{actor}</strong>''s proposal is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
-        poll_closing_soon_author: 'Your proposal is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
-        poll_expired: "<strong>%{actor}'s</strong> proposal has closed: %{title}"
-        poll_expired_author: 'Your proposal has <strong>closed</strong>. Please take time to consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
-        outcome_created: '<strong>%{actor}</strong> shared a proposal outcome.'
-        outcome_announced: '<strong>%{actor}</strong> shared a proposal outcome.'
-        stance_created: "<strong>%{actor}</strong> voted on: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
-        user_reminded: '<strong>%{actor}</strong> is reminding you to vote in: %{title}'
+    header:
+      poll_created: '<strong>%{actor}</strong> started a %{poll_type}'
+      poll_edited: '<strong>%{actor}</strong> edited a %{poll_type}'
+      poll_announced: '<strong>%{actor}</strong> invited you to vote in a %{poll_type}'
+      poll_closing_soon: '<strong>%{actor}</strong>''s %{poll_type} is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
+      poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
+      poll_expired: "<strong>%{actor}'s</strong> %{poll_type} has closed: %{title}"
+      poll_expired_author: 'Your %{poll_type} has <strong>closed</strong>. Please take time to consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
+      poll_option_added: '<strong>%{actor}</strong> added options to: %{title}'
+      poll_option_added_author: '<strong>%{actor}</strong> added options to: %{title}'
+      outcome_created: '<strong>%{actor}</strong> shared a %{poll_type} outcome.'
+      outcome_created_author: 'You shared a %{poll_type} outcome.'
+      outcome_announced: '<strong>%{actor}</strong> shared a %{poll_type} outcome.'
+      stance_created: "<strong>%{actor}</strong> voted on: %{title}"
+      user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
+      user_reminded: '<strong>%{actor}</strong> is reminding you to vote in: %{title}'
 
-      body:
-        voted: '<strong>%{participant}</strong>:'
-
-    poll:
-      subject:
-        poll_created: '%{actor} started a poll: %{title}'
-        poll_edited: '%{actor} edited the poll: %{title}'
-        poll_announced: '%{actor} invited you to vote in a poll: %{title}'
-        poll_closing_soon: 'Poll closing in 24 hours: %{title}'
-        poll_closing_soon_author: 'Your poll closes in 24 hours: %{title}'
-        poll_expired: "Poll results: %{title}"
-        poll_expired_author: 'Your poll has closed. Share an outcome for: %{title}'
-        poll_option_added: '%{actor} added options to: %{title}'
-        poll_option_added_author: '%{actor} added options to: %{title}'
-        outcome_created: '%{actor} shared a poll outcome: %{title}'
-        outcome_announced: '%{actor} shared a poll outcome: %{title}'
-        stance_created: "%{actor} voted on: %{title}"
-        stance_created_author: "Please verify your vote on: %{title}"
-        user_mentioned: '%{actor} mentioned you in: %{title}'
-        user_reminded: '%{actor} is reminding you to vote in: %{title}'
-
-      header:
-        poll_created: '<strong>%{actor}</strong> started a poll'
-        poll_edited: '<strong>%{actor}</strong> edited the poll'
-        poll_announced: '<strong>%{actor}</strong> invited you to vote in a poll'
-        poll_closing_soon: '<strong>%{actor}</strong>''s poll is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
-        poll_closing_soon_author: 'Your poll is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
-        poll_expired: "<strong>%{actor}'s</strong> poll closed: %{title}"
-        poll_expired_author: 'Your poll has <strong>closed</strong>. Please take time to consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
-        poll_option_added: '<strong>%{actor}</strong> added options to: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> added options to: %{title}'
-        outcome_created: '<strong>%{actor}</strong> shared a poll outcome.'
-        outcome_announced: '<strong>%{actor}</strong> shared a poll outcome.'
-        stance_created: "<strong>%{actor}</strong> voted on: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
-        user_reminded: '<strong>%{actor}</strong> is reminding you to vote in: %{title}'
-
-      body:
-        voted: '<strong>%{participant}</strong>:'
-
-    score:
-      subject:
-        poll_created: '%{actor} started a poll: %{title}'
-        poll_edited: '%{actor} edited the poll: %{title}'
-        poll_announced: '%{actor} invited you to vote in a score poll: %{title}'
-        poll_closing_soon: 'Poll closing in 24 hours: %{title}'
-        poll_closing_soon_author: 'Your poll closes in 24 hours: %{title}'
-        poll_expired: "Poll results: %{title}"
-        poll_expired_author: 'Your poll has closed. Share an outcome for: %{title}'
-        poll_option_added: '%{actor} added options to: %{title}'
-        poll_option_added_author: '%{actor} added options to: %{title}'
-        outcome_created: '%{actor} shared a poll outcome: %{title}'
-        outcome_announced: '%{actor} shared a poll outcome: %{title}'
-        stance_created: "%{actor} voted on: %{title}"
-        stance_created_author: "Please verify your vote on: %{title}"
-        user_mentioned: '%{actor} mentioned you in: %{title}'
-        user_reminded: '%{actor} is reminding you to vote in: %{title}'
-
-      header:
-        poll_created: '<strong>%{actor}</strong> started a poll'
-        poll_edited: '<strong>%{actor}</strong> edited the poll'
-        poll_announced: '<strong>%{actor}</strong> invited you to vote in a score poll'
-        poll_closing_soon: '<strong>%{actor}</strong>''s poll is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
-        poll_closing_soon_author: 'Your poll is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
-        poll_expired: "<strong>%{actor}'s</strong> poll closed: %{title}"
-        poll_expired_author: 'Your poll has <strong>closed</strong>. Please take time to consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
-        poll_option_added: '<strong>%{actor}</strong> added options to: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> added options to: %{title}'
-        outcome_created: '<strong>%{actor}</strong> shared a poll outcome.'
-        outcome_announced: '<strong>%{actor}</strong> shared a poll outcome.'
-        stance_created: "<strong>%{actor}</strong> voted on: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
-        user_reminded: '<strong>%{actor}</strong> is reminding you to vote in: %{title}'
-
-      body:
-        voted: '<strong>%{participant}</strong>:'
-
-    count:
-      subject:
-        poll_created: '%{actor} is checking: %{title}'
-        poll_edited: '%{actor} edited the check: %{title}'
-        poll_announced: '%{actor} invited you to participate in a count: %{title}'
-        poll_closing_soon: '24 hours left to check: %{title}'
-        poll_closing_soon_author: 'Your check closes in 24 hours: %{title}'
-        poll_expired: "Check closed: %{title}"
-        poll_expired_author: 'Your check has closed. Share an outcome for: %{title}'
-        outcome_created: '%{actor} shared an outcome: %{title}'
-        outcome_announced: '%{actor} shared an outcome: %{title}'
-        stance_created: "%{actor} participated in: %{title}"
-        stance_created_author: "Please verify your vote on: %{title}"
-        user_mentioned: '%{actor} mentioned you in: %{title}'
-        user_reminded: '%{actor} is reminding you to participate in: %{title}'
-
-      header:
-        poll_created: '<strong>%{actor}</strong> is checking'
-        poll_edited: '<strong>%{actor}</strong> edited the check'
-        poll_announced: '<strong>%{actor}</strong> invited you to participate in a count'
-        poll_closing_soon: '<strong>%{actor}</strong>''s check is closing in 24 hours.'
-        poll_closing_soon_author: 'Your check is closing in 24 hours - now is a great time to remind people about it or extend the closing time if necessary.'
-        poll_expired: "<strong>%{actor}'s</strong> check closed: %{title}"
-        poll_expired_author: 'Your check has closed. If necessary, <strong>share an outcome</strong> to let people know what’ll happen next.'
-        outcome_created: '<strong>%{actor}</strong> shared an outcome.'
-        outcome_announced: '<strong>%{actor}</strong> shared an outcome.'
-        stance_created: "<strong>%{actor}</strong> participated in: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
-        user_reminded: '<strong>%{actor}</strong> is reminding you to participate in: %{title}'
-
-      body:
-        voted: '<strong>%{participant}</strong>:'
-
-    dot_vote:
-      subject:
-        poll_created: '%{actor} started a dot vote: %{title}'
-        poll_edited: '%{actor} edited the dot vote: %{title}'
-        poll_announced: '%{actor} invited you to participate in a dot vote: %{title}'
-        poll_closing_soon: 'Dot vote closing in 24 hours: %{title}'
-        poll_closing_soon_author: 'Your dot vote closes in 24 hours: %{title}'
-        poll_expired: "Dot vote results: %{title}"
-        poll_expired_author: 'Your dot vote has closed. Share an outcome for: %{title}'
-        poll_option_added: '%{actor} added options to: %{title}'
-        poll_option_added_author: '%{actor} added options to: %{title}'
-        outcome_created: '%{actor} shared an outcome: %{title}'
-        outcome_announced: '%{actor} shared an outcome: %{title}'
-        stance_created: "%{actor} voted on: %{title}"
-        stance_created_author: "Please verify your vote on: %{title}"
-        user_mentioned: '%{actor} mentioned you in: %{title}'
-        user_reminded: '%{actor} is reminding you to vote in: %{title}'
-
-      header:
-        poll_created: '<strong>%{actor}</strong> started a dot vote'
-        poll_edited: '<strong>%{actor}</strong> edited the dot vote'
-        poll_announced: '<strong>%{actor}</strong> invited you to participate in a dot vote'
-        poll_closing_soon: '<strong>%{actor}</strong>''s dot vote is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
-        poll_closing_soon_author: 'Your dot vote is closing in 24 hours - you may wish to remind people about it or extend the deadline if necessary.'
-        poll_expired: "Results for <strong>%{actor}'s</strong> dot vote: %{title}"
-        poll_expired_author: 'Your dot vote has <strong>closed</strong>. Consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
-        poll_option_added: '<strong>%{actor}</strong> added options to: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> added options to: %{title}'
-        outcome_created: '<strong>%{actor}</strong> shared a dot vote outcome.'
-        outcome_announced: '<strong>%{actor}</strong> shared a dot vote outcome.'
-        stance_created: "<strong>%{actor}</strong> voted on: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
-        user_reminded: '<strong>%{actor}</strong> is reminding you to vote in: %{title}'
-
-      body:
-        voted: '<strong>%{participant}</strong>:'
-
-    meeting:
-      subject:
-        poll_created: '%{actor} started a time poll: %{title}'
-        poll_edited: '%{actor} edited the time poll: %{title}'
-        poll_announced: '%{actor} invited you to participate in a time poll: %{title}'
-        poll_closing_soon: 'Time poll closing in 24 hours: %{title}'
-        poll_closing_soon_author: 'Your time poll closes in 24 hours: %{title}'
-        poll_expired: "Time poll results: %{title}"
-        poll_expired_author: 'Your time poll has closed. Share an outcome for: %{title}'
-        poll_option_added: '%{actor} added options to: %{title}'
-        poll_option_added_author: '%{actor} added options to: %{title}'
-        outcome_created: '%{actor} shared an outcome: %{title}'
-        outcome_created_author: 'You shared an outcome: %{title}'
-        outcome_announced: '%{actor} shared an outcome: %{title}'
-        stance_created: '%{actor} participated in: %{title}'
-        stance_created_author: "Please verify your vote on: %{title}"
-        user_mentioned: '%{actor} mentioned you in: %{title}'
-        user_reminded: '%{actor} is reminding you to vote in: %{title}'
-
-      header:
-        poll_created: '<strong>%{actor}</strong> started a time poll'
-        poll_edited: '<strong>%{actor}</strong> edited the time poll'
-        poll_announced: '<strong>%{actor}</strong> invited you to participate in a time poll'
-        poll_closing_soon: '<strong>%{actor}</strong>''s time poll is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
-        poll_closing_soon_author: 'Your time poll is closing in 24 hours - you may wish to remind people about it or extend the deadline if necessary.'
-        poll_expired: "<strong>%{actor}'s</strong> time poll has closed"
-        poll_expired_author: 'Your time poll has <strong>closed</strong>. Consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
-        poll_option_added: '<strong>%{actor}</strong> added options to: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> added options to: %{title}'
-        outcome_created: '<strong>%{actor}</strong> shared a time poll outcome.'
-        outcome_created_author: 'You shared a time poll outcome.'
-        outcome_announced: '<strong>%{actor}</strong> shared a time poll outcome.'
-        stance_created: "<strong>%{actor}</strong> participated in: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
-        user_reminded: '<strong>%{actor}</strong> is reminding you to vote in: %{title}'
-
-      body:
-        voted: '<strong>%{participant}</strong>:'
-
-    ranked_choice:
-      subject:
-        poll_created: '%{actor} started a ranked choice: %{title}'
-        poll_edited: '%{actor} edited the ranked choice: %{title}'
-        poll_announced: '%{actor} invited you to rank options in a poll: %{title}'
-        poll_closing_soon: 'Ranked choice closing in 24 hours: %{title}'
-        poll_closing_soon_author: 'Your ranked choice closes in 24 hours: %{title}'
-        poll_expired: "Ranked choice results: %{title}"
-        poll_expired_author: 'Your ranked choice has closed. Share an outcome for: %{title}'
-        poll_option_added: '%{actor} added options to: %{title}'
-        poll_option_added_author: '%{actor} added options to: %{title}'
-        outcome_created: '%{actor} shared an outcome: %{title}'
-        outcome_created_author: 'You shared an outcome: %{title}'
-        outcome_announced: '%{actor} shared a ranked choice outcome.'
-        stance_created: '%{actor} participated in: %{title}'
-        stance_created_author: "Please verify your vote on: %{title}"
-        user_mentioned: '%{actor} mentioned you in: %{title}'
-        user_reminded: '%{actor} is reminding you to vote in: %{title}'
-
-      header:
-        poll_created: '<strong>%{actor}</strong> started a ranked choice'
-        poll_edited: '<strong>%{actor}</strong> edited the ranked choice'
-        poll_announced: '<strong>%{actor}</strong> invited you to rank options in a poll'
-        poll_closing_soon: '<strong>%{actor}</strong>''s ranked choice is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
-        poll_closing_soon_author: 'Your ranked choice is closing in 24 hours - you may wish to remind people about it or extend the deadline if necessary.'
-        poll_expired: "<strong>%{actor}'s</strong> ranked choice has closed"
-        poll_expired_author: 'Your ranked choice has <strong>closed</strong>. Consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
-        poll_option_added: '<strong>%{actor}</strong> added options to: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> added options to: %{title}'
-        outcome_created: '<strong>%{actor}</strong> shared a ranked choice outcome.'
-        outcome_created_author: 'You shared a ranked choice outcome.'
-        outcome_announced: '<strong>%{actor}</strong> shared a ranked choice outcome.'
-        stance_created: "<strong>%{actor}</strong> participated in: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
-        user_reminded: '<strong>%{actor}</strong> is reminding you to vote in: %{title}'
-
-      body:
-        voted: '<strong>%{participant}</strong>:'
+    body:
+      voted: '<strong>%{participant}</strong>:'
 
   comment_by: Comment by %{comment_author}
 
@@ -714,10 +538,12 @@ en:
 
   webhook:
     markdown:
-      new_discussion: "**%{actor}** started a discussion: [%{title}](%{url})"
+      new_discussion: "**%{actor}** started a discussion in %{group}: [%{title}](%{url})"
+      discussion_edited: "**%{actor}** edited a discussion in %{group}: [%{title}](%{url})"
       new_comment: "**%{actor}** commented in [%{title}](%{url})"
       outcome_created: "**%{actor}** shared an outcome of the %{poll_type}: [%{title}](%{url})"
-      poll_created: "**%{actor}** started a %{poll_type}: [%{title}](%{url})"
+      poll_created: "**%{actor}** started a %{poll_type} in %{group}: [%{title}](%{url})"
+      poll_edited: "**%{actor}** edited a %{poll_type} in %{group}: [%{title}](%{url})"
       stance_created: "**%{actor}** voted in [%{title}](%{url})"
       poll_closing_soon: "24 hours remaining: [%{title}](%{url})"
       poll_expired: "%{poll_type}: [%{title}](%{url}) has closed"

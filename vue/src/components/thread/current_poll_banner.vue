@@ -1,6 +1,6 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
-import { find } from 'lodash'
+import { find } from 'lodash-es'
 
 export default
   props:

@@ -91,10 +91,6 @@ fi:
   delete_comment_dialog:
     title: 'Poista kommentti'
     confirm: 'Poista kommentti'
-  new_comment_item:
-    context_menu:
-      edit_comment: 'Muokkaa kommenttia'
-      delete_comment: 'Poista kommentti'
   poll_common:
     save_changes: Tallenna
   discussions_panel:

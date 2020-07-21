@@ -3,7 +3,7 @@ import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
-import { head, filter, map, sortBy } from 'lodash'
+import { head, filter, map, sortBy, isEqual } from 'lodash-es'
 
 export default
   props:
@@ -14,14 +14,11 @@ export default
     stanceChoices: []
 
   created: ->
-    done = false
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
-        @pollOptions = @poll.pollOptions()
-
-        if !done
-          done = true
+        if !isEqual map(@pollOptions, 'name'), map(@stance.poll().pollOptions(), 'name')
+          @pollOptions = @poll.pollOptions()
           @stanceChoices = map @pollOptions, (option) =>
               poll_option_id: option.id
               score: @stanceChoiceFor(option).score
@@ -56,8 +53,6 @@ export default
 
 <template lang='pug'>
 form.poll-score-vote-form(@submit.prevent='submit()')
-  span {{stanceChoices}}
-  poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   .poll-score-vote-form__options
     .poll-score-vote-form__option(v-for='choice in orderedStanceChoices', :key='choice.poll_option_id')
       v-subheader.poll-score-vote-form__option-label {{ optionFor(choice).name }}

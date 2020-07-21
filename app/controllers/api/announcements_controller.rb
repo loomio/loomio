@@ -38,7 +38,7 @@ class API::AnnouncementsController < API::RestfulController
   def history
     notifications = {}
 
-    events = Event.where(kind: ['announcement_created', 'user_mentioned', 'announcement_resend'], eventable: history_model).order('id').limit(50)
+    events = Event.where(kind: ['announcement_created', 'user_mentioned', 'announcement_resend', 'discussion_announced', 'poll_announced', 'outcome_announced', 'comment_replied_to', 'poll_closing_soon'], eventable: history_model).order('id').limit(50)
 
     Notification.includes(:user).where(event_id: events.pluck(:id)).order('users.name, users.email').each do |notification|
       next unless notification.user
@@ -49,6 +49,7 @@ class API::AnnouncementsController < API::RestfulController
       {event_id: event.id,
        created_at: event.created_at,
        author_name: event.user.name,
+       kind: event.kind,
        notifications: notifications[event.id] || [] }
     end
 
@@ -56,7 +57,7 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   def preview
-    event = MockEvent.new(target_model, nil, current_user , 1)
+    event = target_model.created_event
     @email = target_model.send(:mailer).send(params[:kind], current_user, event)
     @email.perform_deliveries = false
 

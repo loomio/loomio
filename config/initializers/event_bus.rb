@@ -10,21 +10,15 @@ EventBus.configure do |config|
                 'outcome_created_event',
                 'poll_closed_by_user_event') do |event|
     if event.discussion
-      reader = DiscussionReader.for_model(event.discussion, event.user)
+      reader = DiscussionReader.for_model(event.discussion, event.real_user)
                                .update_reader(ranges: event.sequence_id,
                                               volume: :loud)
       MessageChannelService.publish_data(ActiveModel::ArraySerializer.new([reader],
                                          each_serializer: DiscussionReaderSerializer,
                                          root: :discussions).as_json,
-                                         to: reader.message_channel)
+                                         to: event.real_user.message_channel)
     end
   end
-
-  # Purge drafts after model creation
-  config.listen('group_create',
-                'discussion_create',
-                'comment_create',
-                'poll_create') { |model, actor| model.perform_draft_purge!(actor) }
 
   # Index search vectors after model creation
   config.listen('discussion_create',
@@ -37,7 +31,6 @@ EventBus.configure do |config|
                 'poll_update') { |model| SearchIndexWorker.perform_async(Array(model.discussion_id)) }
 
   # send memos to client side after comment change
-  config.listen('comment_destroy')  { |comment|  Memos::CommentDestroyed.publish!(comment) }
   config.listen('reaction_destroy') { |reaction| Memos::ReactionDestroyed.publish!(reaction: reaction) }
 
   config.listen('event_remove_from_thread') do |event|
@@ -75,15 +68,6 @@ EventBus.configure do |config|
                 'poll_close',
                 'poll_destroy',
                 'poll_expire') { |model| model.discussion&.update_importance }
-
-  # de-anonymize polls after close
-  config.listen('poll_close') { |poll| poll.update(anonymous: false) if poll.deanonymize_after_close }
-
-  # nullify parent_id on children of destroyed comment
-  config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }
-
-  # collect user deactivation response
-  config.listen('user_deactivate') { |user, actor, params| UserDeactivationResponse.create(user: user, body: params[:deactivation_response]) }
 
   # move events to new discussion on fork
   config.listen('discussion_fork') { |source, target| DiscussionForker.new(source, target).fork! }

@@ -1,6 +1,18 @@
 ja:
+  plan_names:
+    free: 無料
+    trial: トライヤル
+    small: 小
+    medium: 中
+    large: 大
   loomio_tags:
+    all_tags: 全タグ
+    tags: タグ
     name_label: 氏名
+    color_label: 色
+    modal_title: 新しいタグを作る
+    modal_destroy_title: タグの削除
+    destroy_tag: タグの削除
   common:
     confirm_discard_changes: 編集内容を破棄しますか？
     time:
@@ -8,6 +20,8 @@ ja:
       pm: 午後
     group: 'グループ'
     groups: 'グループ'
+    organization: "組織"
+    organizations: "組織"
     privacy:
       privacy: 'プライバシー'
       public: '公開'
@@ -55,10 +69,8 @@ ja:
       discussions: 'ディスカッション'
   notifications:
     header: "通知"
-  position_buttons_panel:
-    heading: 意見を言う
   discussion_form:
-    group_label: 'グルブ'
+    group_label: 'グループ'
     title_label: 'タイトル'
     privacy_label: '個人情報'
   join_group_button:
@@ -82,14 +94,12 @@ ja:
     privacy: 'プライバシー'
     profile: プロフィール
     submit_update: '設定更新'
-  document:
-    form:
-      title_label: 氏名
   membership_requests_page:
     approve: 承認
     ignore: 拒否
   invitation_form:
     invite_people: 'メンバーを招待する'
+    group: 'グループ'
   memberships_page:
     members: 'メンバー'
     name_label: '氏名'
@@ -113,11 +123,7 @@ ja:
     close_thread: '締め切り'
   delete_comment_dialog:
     title: 'コメントを削除します'
-    question: '本当にコメントを削除しますか？'
     confirm: 'コメントを削除します'
-  new_comment_item:
-    context_menu:
-      delete_comment: 'コメントを削除します'
   contact_message_form:
     name_label: 'あなたの名前'
     subject_label: "主題"
@@ -140,6 +146,8 @@ ja:
   polls_panel:
     open: '議論中'
     closed: '議論終了'
+  poll_common_select_group:
+    loomio_group: グループ
   poll_common_form:
     closed: 議論終了
   poll_count_options:
@@ -147,6 +155,8 @@ ja:
     'no': 'いいえ'
   auth_form:
     name_placeholder: あなたの名前
+  webhook:
+    name_label: 氏名
   group_survey:
     categories:
       other: その他

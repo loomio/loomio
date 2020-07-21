@@ -6,14 +6,11 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import InboxService   from '@/shared/services/inbox_service'
-import GroupModalMixin from '@/mixins/group_modal.coffee'
-import DiscussionModalMixin from '@/mixins/discussion_modal.coffee'
 
-import { isUndefined, sortBy, filter, find, head, uniq, map, sum, compact, concat, intersection, difference, orderBy } from 'lodash'
+import { isUndefined, sortBy, filter, find, head, uniq, map, sum, compact,
+         concat, intersection, difference, orderBy } from 'lodash-es'
 
 export default
-  mixins: [ GroupModalMixin, DiscussionModalMixin, ]
-
   data: ->
     organization: null
     open: false
@@ -30,7 +27,7 @@ export default
     EventBus.$on 'toggleSidebar', => @open = !@open
 
     EventBus.$on 'currentComponent', (data) =>
-      @open = Session.isSignedIn() && Session.user().experiences['sidebar'] || false
+      @openIfPinned()
       @group = data.group
       if @group
         @organization = data.group.parentOrSelf()
@@ -44,7 +41,7 @@ export default
 
     EventBus.$on 'signedIn', (user) =>
       @fetchData()
-      @open = Session.user().experiences['sidebar'] || false
+      @openIfPinned()
 
     @fetchData() if Session.isSignedIn()
 
@@ -55,10 +52,13 @@ export default
       EventBus.$emit("sidebarOpen", val)
 
   methods:
+    openIfPinned: ->
+      @open = Session.isSignedIn() && !!Session.user().experiences['sidebar'] && @$vuetify.breakpoint.mdAndUp
+
     fetchData: ->
       Records.users.fetchGroups().then =>
-        if @$router.history.current.path == "/dashboard" && Session.user().membershipsCount == 1
-          @$router.replace("/g/#{Session.user().memberships()[0].group().key}")
+        if @$router.history.current.path == "/dashboard" && Session.user().groups().length == 1
+          @$router.replace("/g/#{Session.user().groups()[0].key}")
 
       InboxService.load()
 
@@ -87,7 +87,10 @@ export default
       @tree = orderBy( @organizations.map((group) -> groupAsItem(group)), ['name'], ['asc'])
 
     startOrganization: ->
-      @canStartGroup() && @openStartGroupModal()
+     if AbilityService.canStartGroups()
+      EventBus.$emit 'openModal',
+        component: 'GroupNewForm',
+          props: { group: Records.groups.build() }
 
     unreadThreadCount: ->
       InboxService.unreadCount()

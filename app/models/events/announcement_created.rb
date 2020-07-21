@@ -23,6 +23,6 @@ class Events::AnnouncementCreated < Event
   end
 
   def notification_recipients
-    User.active.where(id: memberships.pluck(:user_id))
+    User.active.distinct.where(id: memberships.pluck(:user_id))
   end
 end

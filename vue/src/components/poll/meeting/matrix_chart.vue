@@ -1,5 +1,6 @@
 <script lang="coffee">
 import svg from 'svg.js'
+import { each, isEmpty, max, times } from 'lodash-es'
 
 export default
   props:
@@ -13,19 +14,19 @@ export default
     this.draw()
   methods:
     draw: ->
-      _.each this.shapes, (shape) -> shape.remove()
-      if _.isEmpty(this.matrixCounts)
+      each this.shapes, (shape) -> shape.remove()
+      if isEmpty(this.matrixCounts)
         this.drawPlaceholder()
       else
         this.drawChart()
     drawChart: ->
-      width = this.size / _.max([this.matrixCounts.length, this.matrixCounts[0].length])
-      _.each this.matrixCounts, (values, row) =>
-        _.each values, (value, col) =>
+      width = this.size / max([this.matrixCounts.length, this.matrixCounts[0].length])
+      each this.matrixCounts, (values, row) =>
+        each values, (value, col) =>
           this.drawShape(row, col, width, value)
     drawPlaceholder: ->
-      _.each _.times(5), (row) =>
-        _.each _.times(5), (col) =>
+      each times(5), (row) =>
+        each times(5), (col) =>
           this.drawShape(row, col, this.size / 5, 0)
     drawShape: (row, col, width, value) ->
       color = ['#ebebeb','#f3b300','#00e572'][value]

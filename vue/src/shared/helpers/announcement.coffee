@@ -1,5 +1,5 @@
 import Session from '@/shared/services/session'
-import { compact } from 'lodash'
+import { compact } from 'lodash-es'
 
 export audiencesFor = (model) ->
   compact [
@@ -16,7 +16,7 @@ export audienceSize = (model, audience) ->
   youUndecided = 0
 
   if model.isA('poll')
-    stance = model.poll().stanceFor(Session.user())
+    stance = model.poll().myStance()
     youParticipated = 1 if stance && stance.castAt
     youUndecided = 1 if stance && !stance.castAt
 

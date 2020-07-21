@@ -10,6 +10,7 @@ export default class WebhookModel extends BaseModel
     url: null
     format: null
     eventKinds: AppConfig.webhookEventKinds
+    includeBody: false
 
   relationships: ->
     @belongsTo 'group'

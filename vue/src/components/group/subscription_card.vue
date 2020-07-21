@@ -1,5 +1,5 @@
 <script lang="coffee">
-import { startCase } from 'lodash'
+import { startCase } from 'lodash-es'
 import parseISO from 'date-fns/parseISO'
 import AbilityService from '@/shared/services/ability_service'
 
@@ -7,8 +7,10 @@ export default
   props:
     group: Object
   computed:
+    referralCodeExtra: ->
+      @$t('subscription_status.referral_code_help')
     canSee: ->
-      AbilityService.canAdminister(@group)
+      !@group.parentId && AbilityService.canAdminister(@group)
     expiresAt: ->
       @exactDate(@group.subscriptionExpiresAt)
     planName: ->
@@ -30,10 +32,10 @@ export default
         state: @planStatus
         expires_at: @expiresAt if @group.subscriptionPlan == 'trial'
         renews_at: @renewalDate if @renewalDate
-        active_members: @group.orgMembersCount
+        active_members: @group.subscriptionMembersCount
         max_members: @group.subscriptionMaxMembers if @group.subscriptionMaxMembers
         max_threads: @group.subscriptionMaxThreads if @group.subscriptionMaxThreads
-        referral_code: "<strong>#{@group.subscriptionInfo.chargify_referral_code}</strong>" if @hasReferralCode
+        referral_code: "<strong>#{@group.subscriptionInfo.chargify_referral_code}</strong> - <a href='https://help.loomio.org/en/subscriptions/referral_code/' target=_blank>#{@referralCodeExtra}</a>" if @hasReferralCode
         chargify_link: "<a href=#{@group.subscriptionInfo.chargify_management_link} target=_blank>#{@group.subscriptionInfo.chargify_management_link}</a>" if @hasChargifyLink
       }
 </script>

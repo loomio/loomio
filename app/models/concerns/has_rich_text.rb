@@ -8,12 +8,10 @@ module HasRichText
       define_singleton_method :rich_text_fields, -> { Array on }
       rich_text_fields.each do |field|
         define_method "sanitize_#{field}!" do
-          if self["#{field}_format"] == "html"
-            tags = %w[strong em b i p s code pre big div small hr br span h1 h2 h3 h4 h5 h6 ul ol li abbr a img blockquote table thead th tr td iframe u]
-            attributes = %w[href src alt title class data-type data-done data-mention-id width height target colspan rowspan]
-            self[field] = Rails::Html::WhiteListSanitizer.new.sanitize(self[field], tags: tags, attributes: attributes)
-            self[field] = add_required_link_attributes(self[field])
-          end
+          tags = %w[strong em b i p s code pre big div small hr br span h1 h2 h3 h4 h5 h6 ul ol li abbr a img blockquote table thead th tr td iframe u]
+          attributes = %w[href src alt title class data-type data-done data-mention-id width height target colspan rowspan]
+          self[field] = Rails::Html::WhiteListSanitizer.new.sanitize(self[field], tags: tags, attributes: attributes)
+          self[field] = add_required_link_attributes(self[field])
         end
         before_save :"sanitize_#{field}!"
         validates field, {length: {maximum: Rails.application.secrets.max_message_length}}
@@ -25,7 +23,6 @@ module HasRichText
   included do
     has_many_attached :files
     has_many_attached :image_files
-    before_save :update_attachments!
   end
 
   def associate_attachments_with_group
@@ -44,8 +41,8 @@ module HasRichText
     end
 
     if self.respond_to?(:group) && group
-      files.update_all(group_id: group.id)
-      image_files.update_all(group_id: group.id)
+      files.each { |f| f.group_id = group.id }
+      image_files.each { |f| f.group_id = group.id }
     end
 
   end

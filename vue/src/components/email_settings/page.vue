@@ -6,7 +6,7 @@ import AbilityService from '@/shared/services/ability_service'
 import AppConfig      from '@/shared/services/app_config'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
-import { uniq, compact, concat, sortBy, map, pick } from 'lodash'
+import { uniq, compact, concat, sortBy, map, pick } from 'lodash-es'
 import UserService from '@/shared/services/user_service'
 import Flash from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
@@ -19,13 +19,15 @@ export default
     groups: []
   created: ->
     @init()
-    EventBus.$on 'signedIn', => @init()
+    EventBus.$on 'signedIn', @init
     @watchRecords
       collections: ['groups', 'memberships']
       query: (store) =>
         groups = Session.user().groups()
         user = Session.user()
         @groups = sortBy groups, 'fullName'
+  beforeDestroy: ->
+    EventBus.$off 'signedIn', @init
 
   mounted: ->
     EventBus.$emit 'currentComponent', { titleKey: 'email_settings_page.header', page: 'emailSettingsPage'}
@@ -59,7 +61,7 @@ export default
 </script>
 
 <template lang="pug">
-v-content
+v-main
   v-container.email-settings-page.max-width-1024(v-if='user')
 
     v-card.mb-4(v-if="user.deactivatedAt")

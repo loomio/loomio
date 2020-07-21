@@ -25,7 +25,7 @@ class Queries::VisibleAutocompletes < Delegator
     if query.to_s.length > 0
       @relation = @relation.order('users.name')
     else
-      @relation = @relation.order('created_at desc')
+      @relation = @relation.order('memberships.created_at desc')
     end
 
     @relation = @relation.limit(limit).offset(offset)

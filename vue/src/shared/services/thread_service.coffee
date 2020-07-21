@@ -5,7 +5,6 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
-import ConfirmModalMixin from '@/mixins/confirm_modal'
 import { hardReload } from '@/shared/helpers/window'
 
 export default new class ThreadService
@@ -134,10 +133,11 @@ export default new class ThreadService
       icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditThread(discussion)
       perform: ->
-        openModal
-          component: 'DiscussionForm',
-          props:
-            discussion: discussion.clone()
+        Records.discussions.remote.fetchById(discussion.key, {exclude_types: 'group user poll event'}).then ->
+          openModal
+            component: 'DiscussionForm',
+            props:
+              discussion: discussion.clone()
 
     edit_arrangement:
       icon: 'mdi-directions-fork'
@@ -192,13 +192,15 @@ export default new class ThreadService
     if !Session.user().hasExperienced("mutingThread") and !override
       Records.users.saveExperience("mutingThread")
       Records.users.updateProfile(Session.user()).then ->
-        ConfirmModalMixin.methods.openConfirmModal(
-          submit: -> thread.saveVolume('mute', true)
-          text:
-            title: 'mute_explanation_modal.mute_thread'
-            flash: 'discussion.volume.mute_message'
-            fragment: 'mute_thread'
-        )
+        openModal
+          component: 'ConfirmModal'
+          props:
+            confirm:
+              submit: -> thread.saveVolume('mute', true)
+              text:
+                title: 'mute_explanation_modal.mute_thread'
+                flash: 'discussion.volume.mute_message'
+                fragment: 'mute_thread'
     else
       previousVolume = thread.volume()
       thread.saveVolume('mute').then =>
@@ -216,13 +218,15 @@ export default new class ThreadService
     if !Session.user().hasExperienced("closingThread")
       Records.users.saveExperience("closingThread")
       Records.users.updateProfile(Session.user()).then ->
-        ConfirmModalMixin.methods.openConfirmModal(
-          submit: thread.close
-          text:
-            title: 'close_explanation_modal.close_thread'
-            helptext: 'close_explanation_modal.body'
-            flash: 'discussion.closed.closed'
-        )
+        openModal
+          component: 'ConfirmModal'
+          props:
+            confirm:
+              submit: thread.close
+              text:
+                title: 'close_explanation_modal.close_thread'
+                helptext: 'close_explanation_modal.body'
+                flash: 'discussion.closed.closed'
     else
       thread.close().then =>
         Flash.success "discussion.closed.closed", {}, 'undo', => @reopen(thread)
@@ -234,14 +238,16 @@ export default new class ThreadService
   dismiss: (thread) ->
     if !Session.user().hasExperienced("dismissThread")
       Records.users.saveExperience("dismissThread")
-      ConfirmModalMixin.methods.openConfirmModal(
-        submit: => @dismiss(thread)
-        text:
-          title: 'dismiss_explanation_modal.dismiss_thread'
-          helptext: 'dismiss_explanation_modal.body_html'
-          submit: 'dismiss_explanation_modal.dismiss_thread'
-          flash: 'dashboard_page.thread_dismissed'
-      )
+      openModal
+        component: 'ConfirmModal'
+        props:
+          confirm:
+            submit: => @dismiss(thread)
+            text:
+              title: 'dismiss_explanation_modal.dismiss_thread'
+              helptext: 'dismiss_explanation_modal.body_html'
+              submit: 'dismiss_explanation_modal.dismiss_thread'
+              flash: 'dashboard_page.thread_dismissed'
     else
       thread.dismiss().then =>
         Flash.success "dashboard_page.thread_dismissed", {}, 'undo', => @recall(thread)
@@ -253,13 +259,15 @@ export default new class ThreadService
   pin: (thread) ->
     if !Session.user().hasExperienced("pinningThread")
       Records.users.saveExperience("pinningThread").then ->
-        ConfirmModalMixin.methods.openConfirmModal(
-          submit: thread.savePin
-          text:
-            title: 'pin_thread_modal.title'
-            flash: 'discussion.pin.pinned'
-            helptext: 'pin_thread_modal.helptext'
-        )
+        openModal
+          component: 'ConfirmModal'
+          props:
+            confirm:
+              submit: thread.savePin
+              text:
+                title: 'pin_thread_modal.title'
+                flash: 'discussion.pin.pinned'
+                helptext: 'pin_thread_modal.helptext'
     else
       thread.savePin().then =>
         Flash.success "discussion.pin.pinned", 'undo', => @unpin(thread)

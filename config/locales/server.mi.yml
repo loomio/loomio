@@ -1,4 +1,7 @@
 mi:
+  errors:
+    404:
+      title: Kāhore e kitea ana
   group:
     stats:
       members: Ngā Mema

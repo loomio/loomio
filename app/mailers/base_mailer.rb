@@ -5,6 +5,7 @@ class BaseMailer < ActionMailer::Base
   include LocalesHelper
 
   helper :email
+  helper :formatted_date
 
   add_template_helper(PrettyUrlHelper)
 
@@ -32,10 +33,10 @@ class BaseMailer < ActionMailer::Base
     "\"#{user.name} (#{AppConfig.theme[:site_name]})\" <#{NOTIFICATIONS_EMAIL_ADDRESS}>"
   end
 
-  def send_single_mail(locale: , to:, subject_key:, subject_params: {}, **options)
+  def send_single_mail(locale: , to:, subject_key:, subject_params: {}, subject_prefix: '', **options)
     return if (to.end_with?("@example.com")) && (Rails.env.production?)
     I18n.with_locale(first_supported_locale(locale)) do
-      mail options.merge(to: to, subject: I18n.t(subject_key, subject_params))
+      mail options.merge(to: to, subject: subject_prefix + I18n.t(subject_key, subject_params))
     end unless self.class.disabled
   rescue Net::SMTPSyntaxError, Net::SMTPFatalError => e
     raise "SMTP error to: '#{to}' from: '#{options[:from]}' action: #{action_name} mailer: #{mailer_name} error: #{e}"

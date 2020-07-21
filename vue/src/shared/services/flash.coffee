@@ -5,7 +5,7 @@ createFlashLevel = (level, duration) ->
   (translateKey, translateValues, actionKey, actionFn) ->
     EventBus.$emit("flashMessage",
       level:     level
-      duration:  duration or AppConfig.flashTimeout.short
+      duration:  duration or 3500
       message:   translateKey
       options:   translateValues
       action:    actionKey

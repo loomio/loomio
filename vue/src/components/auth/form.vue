@@ -6,21 +6,44 @@ export default
   props:
     user: Object
     preventClose: Boolean
+
   data: ->
     emailLogin: AppConfig.features.app.email_login
     siteName: AppConfig.theme.site_name
     privacyUrl: AppConfig.theme.privacy_url
     pendingProviderIdentity: Session.providerIdentity()
     isDisabled: false
+    pendingGroup: null
+
+  created: ->
+    @watchRecords
+      key: 'authForm'
+      collections: ['groups']
+      query: (store) =>
+        @pendingGroup = store.groups.find(@pendingIdentity.group_id)
+
   computed:
     loginComplete: ->
       @user.sentLoginLink or @user.sentPasswordLink
+
+    pendingDiscussion: ->
+      @pendingIdentity.identity_type == 'discussion_reader'
+
+    pendingPoll: ->
+      @pendingIdentity.identity_type == 'stance'
+
+    pendingIdentity: ->
+      (AppConfig.pending_identity || {})
+
 </script>
 <template lang="pug">
 .auth-form
   submit-overlay(:value='isDisabled')
   .auth-form__logging-in(v-if='!loginComplete')
     .auth-form__email-not-set(v-if='!user.emailStatus')
+      p.headline.text-center(v-if="pendingGroup" v-t="{path: 'auth_form.youre_invited', args: {group_name: pendingGroup.name}}")
+      p.headline.text-center(v-if="pendingDiscussion" v-t="'auth_form.youre_invited_discussion'")
+      p.headline.text-center(v-if="pendingPoll" v-t="'auth_form.youre_invited_poll'")
       auth-provider-form(:user='user')
       auth-email-form(:user='user' v-if='emailLogin')
       .text-center.caption.mt-4

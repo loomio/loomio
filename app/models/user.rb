@@ -32,6 +32,7 @@ class User < ApplicationRecord
   attr_accessor :restricted
   attr_accessor :token
   attr_accessor :membership_token
+  attr_accessor :group_token
   attr_accessor :discussion_reader_token
   attr_accessor :stance_token
 
@@ -73,8 +74,7 @@ class User < ApplicationRecord
 
   has_many :admin_memberships,
            -> { where('memberships.admin = ?', true) },
-           class_name: 'Membership',
-           dependent: :destroy
+           class_name: 'Membership'
 
   has_many :memberships, -> { where(archived_at: nil) }, dependent: :destroy
 
@@ -105,12 +105,11 @@ class User < ApplicationRecord
            -> { where archived_at: nil },
            through: :memberships
 
-  has_many :discussions,
-           through: :groups
+  has_many :discussions, through: :groups
 
   has_many :authored_discussions, class_name: 'Discussion', foreign_key: 'author_id', dependent: :destroy
-
-  has_many :polls, foreign_key: :author_id
+  has_many :authored_polls, class_name: 'Poll', foreign_key: :author_id, dependent: :destroy
+  has_many :created_groups, class_name: 'Group', foreign_key: :creator_id, dependent: :destroy
 
   has_many :identities, class_name: "Identities::Base", dependent: :destroy
 
@@ -120,18 +119,13 @@ class User < ApplicationRecord
   has_many :group_polls, through: :groups, source: :polls
 
   has_many :discussion_readers, dependent: :destroy
-
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :documents, foreign_key: :author_id, dependent: :destroy
-  has_many :drafts, dependent: :destroy
   has_many :login_tokens, dependent: :destroy
+  has_many :events, dependent: :destroy
+
   has_many :tags, through: :groups
-
-
-  has_one :deactivation_response,
-          class_name: 'UserDeactivationResponse',
-          dependent: :destroy
 
   before_save :set_avatar_initials
   initialized_with_token :unsubscribe_token,        -> { Devise.friendly_token }
@@ -211,12 +205,13 @@ class User < ApplicationRecord
   def associate_with_identity(identity)
     if existing = identities.find_by(user: self, uid: identity.uid, identity_type: identity.identity_type)
       existing.update(access_token: identity.access_token)
-      existing.assign_logo!
+      identity = existing
     else
       identities.push(identity)
-      identity.assign_logo!
     end
 
+    update(name: identity.name) if self.name.nil?
+    identity.assign_logo! if self.avatar_url.nil?
     self
   end
 
@@ -306,19 +301,6 @@ class User < ApplicationRecord
     end
   end
 
-  def deactivate!
-    return if self.deactivated_at
-    former_group_ids = group_ids
-    update_attributes(deactivated_at: Time.now, avatar_kind: "initials")
-    memberships.update_all(archived_at: Time.now)
-    Group.where(id: former_group_ids).map(&:update_memberships_count)
-    membership_requests.where("responded_at IS NULL").destroy_all
-  end
-
-  def reactivate!
-    update_attribute(:deactivated_at, nil)
-    archived_memberships.update_all(archived_at: nil)
-  end
 
   # http://stackoverflow.com/questions/5140643/how-to-soft-delete-user-with-devise/8107966#8107966
   def active_for_authentication?

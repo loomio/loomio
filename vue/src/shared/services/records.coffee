@@ -14,7 +14,6 @@ import UserRecordsInterface from '@/shared/interfaces/user_records_interface'
 import SearchResultRecordsInterface from '@/shared/interfaces/search_result_records_interface'
 import ContactRecordsInterface from '@/shared/interfaces/contact_records_interface'
 import VersionRecordsInterface from '@/shared/interfaces/version_records_interface'
-import DraftRecordsInterface from '@/shared/interfaces/draft_records_interface'
 import TranslationRecordsInterface from '@/shared/interfaces/translation_records_interface'
 import SessionRecordsInterface from '@/shared/interfaces/session_records_interface'
 import RegistrationRecordsInterface from '@/shared/interfaces/registration_records_interface'
@@ -23,8 +22,6 @@ import PollOptionRecordsInterface from '@/shared/interfaces/poll_option_records_
 import StanceRecordsInterface from '@/shared/interfaces/stance_records_interface'
 import StanceChoiceRecordsInterface from '@/shared/interfaces/stance_choice_records_interface'
 import OutcomeRecordsInterface from '@/shared/interfaces/outcome_records_interface'
-import PollDidNotVoteRecordsInterface from '@/shared/interfaces/poll_did_not_vote_records_interface'
-import IdentityRecordsInterface from '@/shared/interfaces/identity_records_interface'
 import ContactMessageRecordsInterface from '@/shared/interfaces/contact_message_records_interface'
 import ReactionRecordsInterface from '@/shared/interfaces/reaction_records_interface'
 import ContactRequestRecordsInterface from '@/shared/interfaces/contact_request_records_interface'
@@ -32,7 +29,6 @@ import DocumentRecordsInterface from '@/shared/interfaces/document_records_inter
 import AttachmentRecordsInterface from '@/shared/interfaces/attachment_records_interface'
 import LoginTokenRecordsInterface from '@/shared/interfaces/login_token_records_interface'
 import MessageChannelRecordsInterface from '@/shared/interfaces/message_channel_records_interface'
-import MemberRecordsInterface from '@/shared/interfaces/member_records_interface'
 import DiscussionTagRecordsInterface from '@/shared/interfaces/discussion_tag_records_interface'
 import TagRecordsInterface from '@/shared/interfaces/tag_records_interface'
 import SamlProviderRecordsInterface from '@/shared/interfaces/saml_provider_records_interface'
@@ -54,7 +50,6 @@ records.addRecordsInterface UserRecordsInterface
 records.addRecordsInterface SearchResultRecordsInterface
 records.addRecordsInterface ContactRecordsInterface
 records.addRecordsInterface VersionRecordsInterface
-records.addRecordsInterface DraftRecordsInterface
 records.addRecordsInterface TranslationRecordsInterface
 records.addRecordsInterface SessionRecordsInterface
 records.addRecordsInterface RegistrationRecordsInterface
@@ -63,8 +58,6 @@ records.addRecordsInterface PollOptionRecordsInterface
 records.addRecordsInterface StanceRecordsInterface
 records.addRecordsInterface StanceChoiceRecordsInterface
 records.addRecordsInterface OutcomeRecordsInterface
-records.addRecordsInterface PollDidNotVoteRecordsInterface
-records.addRecordsInterface IdentityRecordsInterface
 records.addRecordsInterface ContactMessageRecordsInterface
 records.addRecordsInterface ReactionRecordsInterface
 records.addRecordsInterface ContactRequestRecordsInterface
@@ -72,7 +65,6 @@ records.addRecordsInterface DocumentRecordsInterface
 records.addRecordsInterface AttachmentRecordsInterface
 records.addRecordsInterface LoginTokenRecordsInterface
 records.addRecordsInterface MessageChannelRecordsInterface
-records.addRecordsInterface MemberRecordsInterface
 records.addRecordsInterface DiscussionTagRecordsInterface
 records.addRecordsInterface TagRecordsInterface
 records.addRecordsInterface SamlProviderRecordsInterface

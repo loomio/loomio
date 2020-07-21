@@ -1,0 +1,8 @@
+<%
+  begin
+    render partial: "poll_mailer/#{poll_type}/#{name}"
+  rescue ActionView::MissingTemplate
+    # handle the specific case of the partial being missing
+    render partial: "poll_mailer/common/#{name}"
+  end
+%>

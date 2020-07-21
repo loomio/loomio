@@ -19,10 +19,12 @@ export default
     background: lighten(green, 50%)
     margin: 2px
     padding: 0 4px
+    text-decoration: none
   del
     background: lighten(red, 20%)
     margin: 2px
     padding: 0 4px
+    text-decoration: none
   td.diff-ins
     background: lighten(green, 55%)
   td.diff-del

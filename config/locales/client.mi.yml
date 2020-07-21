@@ -155,9 +155,6 @@ mi:
   group_form:
     privacy: 'Matatapu'
     submit_update: 'Whakahoungia nga ritenga'
-  document:
-    form:
-      title_label: Ingoa
   invitation_form:
     copy_link: 'Tārua'
     send: 'Tukua'
@@ -215,11 +212,8 @@ mi:
     total: Tapeke
   poll_common_subscribe_form:
     subscribe: Ohauru
-  polls_page:
-    heading: Ngā whakatau
-  install_slack:
-    progress:
-      invite: Pōwhiri
+  webhook:
+    name_label: Ingoa
   group_survey:
     categories:
       other: Ētahi atu

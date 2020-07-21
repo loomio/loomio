@@ -23,7 +23,6 @@ describe MigrateUserWorker do
   let!(:pending_membership) { saved fake_membership(inviter: patrick, group: group, user: saved(fake_user(email_verified: false))) }
   let!(:membership_request) { saved fake_membership_request(requestor: patrick, group: group) }
   let!(:identity)           { saved fake_identity(user: patrick) }
-  let!(:draft)              { saved fake_draft(user: patrick, draftable: group) }
   let(:membership)          { group.memberships.find_by(user: jennifer) }
   let(:notification)        { patrick.notifications.last }
   let(:version)             { discussion.versions.last }
@@ -53,7 +52,9 @@ describe MigrateUserWorker do
   end
 
   it 'updates user_id references from old to new' do
-    expect {MigrateUserWorker.perform_async(patrick.id, jennifer.id)}.to change {ActionMailer::Base.deliveries.count}.by(1)
+    expect {MigrateUserWorker.perform_async(patrick.id, jennifer.id)}.to change {ActionMailer::Base.deliveries.count}.by(2)
+    # one email to say this account is deactivated
+    # one email to say this account has had another merged in.
     patrick.reload
     jennifer.reload
 

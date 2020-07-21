@@ -2,13 +2,11 @@ import AppConfig     from '@/shared/services/app_config'
 import Records       from '@/shared/services/records'
 import Session       from '@/shared/services/session'
 import LmoUrlService from '@/shared/services/lmo_url_service'
+import {intersection} from 'lodash-es'
 
 export default new class AbilityService
   isNotEmailVerified: ->
     Session.isSignedIn() and !Session.user().emailVerified
-
-  isSiteAdmin: ->
-    Session.isSignedIn() and Session.user().isAdmin
 
   isEmailVerified: ->
     Session.isSignedIn() && Session.user().emailVerified
@@ -19,12 +17,13 @@ export default new class AbilityService
   canContactUser: (user) ->
     Session.isSignedIn() &&
     Session.user().id != user.id &&
-    _.intersection(Session.user().groupIds(), user.groupIds()).length
+    intersection(Session.user().groupIds(), user.groupIds()).length
 
   canAddComment: (thread) ->
     thread.membersInclude(Session.user())
 
   canRespondToComment: (comment) ->
+    !comment.discardedAt &&
     comment.discussion().membersInclude(Session.user())
 
   canStartPoll: (model) ->
@@ -70,6 +69,7 @@ export default new class AbilityService
   canExportThread: (thread) -> thread.adminsInclude(Session.user())
 
   canPinEvent: (event) ->
+    !event.model().discardedAt &&
     !event.pinned && event.isSurface() && @canEditThread(event.discussion())
 
   canUnpinEvent: (event) ->
@@ -107,6 +107,7 @@ export default new class AbilityService
     (group.membersInclude(Session.user()) and group.membersCanStartDiscussions)
 
   canAnnounceTo: (model) ->
+    return false if model.discardedAt
     if model.group()
       model.group().adminsInclude(Session.user()) or
       (model.membersInclude(Session.user()) and model.group().membersCanAnnounce)
@@ -131,13 +132,24 @@ export default new class AbilityService
   canArchiveGroup: (group) ->
     group.adminsInclude(Session.user())
 
+  canEditOwnComment: (comment) ->
+    comment.authorIs(Session.user()) && @canEditComment(comment)
+
   canEditComment: (comment) ->
-    comment.authorIs(Session.user()) and
-    (comment.isMostRecent() or comment.group().membersCanEditComments) and
-    comment.discussion().membersInclude(Session.user())
+    (comment.discussion().adminsInclude(Session.user()) and comment.group().adminsCanEditUserContent) or
+
+    (comment.authorIs(Session.user()) and
+     (comment.isMostRecent() or comment.group().membersCanEditComments) and
+     comment.discussion().membersInclude(Session.user()))
 
   canDeleteComment: (comment) ->
     comment.authorIs(Session.user()) or comment.discussion().adminsInclude(Session.user())
+
+  canDiscardComment: (comment) ->
+    !comment.discardedAt && @canDeleteComment(comment)
+
+  canUndiscardComment: (comment) ->
+    comment.discardedAt && @canDeleteComment(comment)
 
   canRemoveMembership: (membership) ->
     membership and
@@ -187,28 +199,30 @@ export default new class AbilityService
     !@canJoinGroup(group)
 
   canTranslate: (model) ->
+    return false if model.discardedAt
     AppConfig.inlineTranslation.isAvailable and
     Object.keys(model.translation).length == 0
-    # _.includes(AppConfig.inlineTranslation.supportedLangs, Session.user().locale) and
-    # !model.translation and Session.user().locale != model.author().locale
 
   canSubscribeToPoll: (poll) ->
     poll.membersInclude(Session.user())
+
+  canMovePoll: (poll) ->
+    !poll.discussionId && poll.adminsInclude(Session.user())
 
   canEditPoll: (poll) ->
     poll.isActive() and poll.adminsInclude(Session.user())
 
   canDeletePoll: (poll) ->
-    poll.adminsInclude(Session.user())
+    !poll.discardedAt && poll.adminsInclude(Session.user())
 
   canExportPoll: (poll) ->
-    poll.adminsInclude(Session.user())
+    !poll.discardedAt && poll.adminsInclude(Session.user())
 
   canSetPollOutcome: (poll) ->
-    poll.isClosed() and poll.adminsInclude(Session.user())
+    !poll.discardedAt && poll.isClosed() && poll.adminsInclude(Session.user())
 
   canClosePoll: (poll) ->
     @canEditPoll(poll)
 
   canReopenPoll: (poll) ->
-    poll.isClosed() and poll.adminsInclude(Session.user())
+    !poll.discardedAt && poll.isClosed() and poll.adminsInclude(Session.user())

@@ -1,4 +1,7 @@
 tr:
+  errors:
+    404:
+      title: Bulunamadı
   group:
     stats:
       members: Üyeler
@@ -21,6 +24,10 @@ tr:
     motion:
       must_close_in_future: Teklif gelecekte kapatılmalıdır.
       one_at_a_time: Başka bir aktif teklif var.
+  user_mailer:
+    merge_verification:
+      confirm_page:
+        merge: Hesapları birleştir
   email:
     reset_password:
       link_text: Parolanızı sıfırlayın

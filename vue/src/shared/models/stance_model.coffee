@@ -1,14 +1,13 @@
 import BaseModel       from '@/shared/record_store/base_model'
 import AppConfig       from '@/shared/services/app_config'
 import HasTranslations from '@/shared/mixins/has_translations'
-import { sumBy, map, head, each, compact, flatten, includes, find } from 'lodash'
+import i18n from '@/i18n.coffee'
+import { sumBy, map, head, each, compact, flatten, includes, find, orderBy } from 'lodash-es'
 
 export default class StanceModel extends BaseModel
   @singular: 'stance'
   @plural: 'stances'
   @indices: ['pollId']
-  @draftParent: 'poll'
-  @draftPayloadAttributes: ['reason']
 
   afterConstruction: ->
     HasTranslations.apply @
@@ -16,7 +15,6 @@ export default class StanceModel extends BaseModel
   defaultValues: ->
     reason: ''
     reasonFormat: 'html'
-    visitorAttributes: {}
     files: []
     imageFiles: []
     attachments: []
@@ -26,8 +24,16 @@ export default class StanceModel extends BaseModel
     @hasMany 'stanceChoices'
     @belongsTo 'participant', from: 'users'
 
+  participantName: ->
+    if @participant()
+      @participant().nameWithTitle(@poll().group())
+    else
+      i18n.t('common.anonymous')
+
   reactions: ->
     @recordStore.reactions.find(reactableId: @id, reactableType: "Stance")
+
+  singleChoice: -> @poll().singleChoice()
 
   memberIds: ->
     @poll().memberIds()
@@ -49,6 +55,13 @@ export default class StanceModel extends BaseModel
 
   pollOptions: ->
     @recordStore.pollOptions.find(@pollOptionIds())
+
+  orderedStanceChoices: ->
+    order = if @poll().pollType == 'ranked_choice'
+      'asc'
+    else
+      'desc'
+    orderBy @stanceChoices(), 'rankOrScore', order
 
   stanceChoiceNames: ->
     map(@pollOptions(), 'name')

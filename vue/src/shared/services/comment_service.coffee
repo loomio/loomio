@@ -15,10 +15,10 @@ export default new class CommentService
           component: 'AnnouncementHistory'
           props:
             model: comment
-      canPerform: -> true
+      canPerform: -> !comment.discardedAt
 
     react:
-      canPerform: -> AbilityService.canAddComment(comment.discussion())
+      canPerform: -> !comment.discardedAt && AbilityService.canAddComment(comment.discussion())
 
     reply_to_comment:
       icon: 'mdi-reply'
@@ -35,17 +35,23 @@ export default new class CommentService
     edit_comment:
       name: 'common.action.edit'
       icon: 'mdi-pencil'
-      canPerform: -> AbilityService.canEditComment(comment)
+      canPerform: -> !comment.discardedAt && comment.authorIs(Session.user()) && AbilityService.canEditComment(comment)
       perform: ->
         openModal
           component: 'EditCommentForm'
           props:
             comment: comment.clone()
 
-    move_comments:
-      icon: 'mdi-call-split'
-      canPerform: -> AbilityService.canMoveComment(comment)
-      perform: -> comment.createdEvent().toggleFromFork()
+    admin_edit_comment:
+      name: 'common.action.edit'
+      icon: 'mdi-pencil'
+      canPerform: ->
+        !comment.authorIs(Session.user()) && AbilityService.canEditComment(comment)
+      perform: ->
+        openModal
+          component: 'EditCommentForm'
+          props:
+            comment: comment.clone()
 
     translate_comment:
       icon: 'mdi-translate'
@@ -56,14 +62,38 @@ export default new class CommentService
 
     show_history:
       icon: 'mdi-history'
-      name: 'action_dock.edited'
+      name: 'action_dock.history'
       menu: true
-      canPerform: -> comment.edited()
+      canPerform: ->
+        comment.edited() && (!comment.discardedAt ||
+                             comment.discussion().adminsInclude(Session.user()))
       perform: ->
         openModal
           component: 'RevisionHistoryModal'
           props:
             model: comment
+
+    discard_comment:
+      icon: 'mdi-delete'
+      name: 'common.action.remove'
+      canPerform: -> AbilityService.canDiscardComment(comment)
+      perform: ->
+        openModal
+          component: 'ConfirmModal',
+          props:
+            confirm:
+              submit: -> comment.discard()
+              text:
+                title: 'discard_comment_dialog.title'
+                helptext: 'discard_comment_dialog.question'
+                confirm: 'discard_comment_dialog.title'
+                flash: 'comment_form.messages.removed'
+
+    undiscard_comment:
+      icon: 'mdi-delete-restore'
+      name: 'common.action.undo_remove'
+      canPerform: -> AbilityService.canUndiscardComment(comment)
+      perform: -> comment.undiscard()
 
     delete_comment:
       icon: 'mdi-delete'

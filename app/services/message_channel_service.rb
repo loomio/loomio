@@ -10,4 +10,9 @@ class MessageChannelService
   def self.publish_data(data, to: message_channel)
     ActionCable.server.broadcast to, data if to
   end
+
+  def self.publish_event(event)
+    event_data = Events::BaseSerializer.new(event).to_json
+    ActionCable.server.broadcast(event.eventable.group.message_channel, event_data)
+  end
 end

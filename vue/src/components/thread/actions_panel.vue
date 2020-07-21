@@ -2,13 +2,12 @@
 import AppConfig                from '@/shared/services/app_config'
 import EventBus                 from '@/shared/services/event_bus'
 import RecordLoader             from '@/shared/services/record_loader'
-import ModalService             from '@/shared/services/modal_service'
 import AbilityService           from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
 import AuthModalMixin from '@/mixins/auth_modal'
 import Records from '@/shared/services/records'
 import { print } from '@/shared/helpers/window'
-import { compact, snakeCase, camelCase, max, map } from 'lodash'
+import { compact, snakeCase, camelCase, max, map } from 'lodash-es'
 import ThreadActivityMixin from '@/mixins/thread_activity'
 
 export default
@@ -26,6 +25,9 @@ export default
     @init()
     EventBus.$on 'pollSaved', =>
       @currentAction = 'add-comment'
+
+  beforeDestroy: ->
+    EventBus.$off 'pollSaved'
 
   methods:
     init: ->

@@ -40,6 +40,7 @@ en:
     renews_at: "Renews"
     referral_code: "Chargify referral code"
     chargify_link: "Chargify billing portal"
+    referral_code_help: "Give a friend a discount, get yourself some credit!"
 
   loomio_tags:
     all_tags: All tags
@@ -187,11 +188,13 @@ en:
       close: 'Close'
       reopen: 'Reopen'
       save: 'Save'
+      move: 'Move'
       save_changes: 'Save changes'
       update_settings: 'Update settings'
       reply: 'Reply'
       edit: 'Edit'
       remove: 'Remove'
+      undo_remove: 'Undo remove'
       like: 'Like'
       unlike: 'Unlike'
       update: 'Update'
@@ -412,6 +415,7 @@ en:
       replied: '{{name}} notified of reply'
       updated: 'Comment updated'
       destroyed: 'Comment deleted'
+      removed: 'Comment removed'
     say_something: Say something...
     edit_comment: 'Edit comment'
     delete_comment: 'Delete comment'
@@ -550,19 +554,6 @@ en:
     stance_created: "<strong>{{name}}</strong> participated in: <strong>{{title}}</strong>"
     group_announced: "<strong>{{name}}</strong> invited you to the group <strong>{{title}}</strong>"
 
-  position_buttons_panel:
-    heading: Have your say
-
-  extend_proposal_form:
-    aria_label: Change close time
-    title: 'Change close time'
-    success: 'Proposal close time updated'
-    submit: 'Update closing time'
-
-  discussion_record:
-    created: 'The thread {{title}} was successfully created in {{groupName}}'
-    updated: 'Saved changes to {{title}}'
-
   discussion_fork_actions:
     helptext: Select items you'd like to move to another thread
     move: Move
@@ -700,6 +691,7 @@ en:
     translate_outcome: Translate outcome
     show_history: Show edit history
     edited: Edited
+    history: History
     pin_thread: Pin thread
     unpin_thread: Un-pin thread
     pin_event: Pin to timeline
@@ -813,6 +805,15 @@ en:
       pinned: "This thread has been pinned. It will remain at the top of the group's list of threads for all users."
       closed: "This thread has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page"
 
+  delete_group_modal:
+    title: Delete group
+    body: |
+      Are you sure you want to delete this group?
+      All threads, polls, files and other group content will be permanently deleted.
+      It is recommended that you export the group data and manually download any important files before you continue.
+    confirm: "Type '%{name}' to confirm you want to delete this group."
+    success: This group has been archived and is scheduled for permanent deletion in 2 weeks.
+
   group_page:
     stats: Group stats
     threads: Threads
@@ -826,7 +827,8 @@ en:
     no_threads_here: No threads to see here!
     search_threads: Search for threads...
     private_threads: You'll need to be a member to view private threads in this group
-    no_more_threads: That's all the threads in this group!
+    no_more_threads: No more threads to load
+    view_closed_threads: 'Missing something? <a href="{{url}}">View closed threads</a>'
     messages:
       privacy:
         members: 'This group is now visible only to members'
@@ -852,7 +854,6 @@ en:
     options:
       label: 'Options'
       edit_group: 'Edit group settings'
-      open_group_wizard: 'Group Setup Wizard'
       become_coordinator: Become admin
       export_data: Export group data
       export_data_as_json: Export group data as JSON
@@ -911,7 +912,8 @@ en:
   group_form:
     thread_defaults_help: Default settings for new threads
     click_to_change_image: Cover Image and Logo (click to change)
-    permissions_explaination: 'There are two levels of membership: admin and member. Admins have all permissions. Select member permissions:'
+    permissions_explaination: |
+      There are two levels of membership a person can have to a group: admin and member
     aria_label: 'Group form'
     new_organisation: New Organization
     start_group_heading: 'Start a group'
@@ -934,10 +936,10 @@ en:
       private_to_group: 'Name and description will only be visible to members.'
       private_to_parent_members: 'Name and description will be visible to members of {{parent}}'
     privacy: 'Privacy'
-    group_privacy_is_open_description: "Anyone can find the group and ask to join. Only members can see who is in the group. All threads are public."
-    group_privacy_is_closed_description: "Anyone can find the group and ask to join. Only members can see who is in the group. All threads are private."
-    group_privacy_is_closed_public_threads_description: "Anyone can find the group and ask to join. Only members can see who is in the group. Threads can be public or private."
-    group_privacy_is_secret_description: "Only invited members can find the group, see who is in it and see threads."
+    group_privacy_is_open_description: "Publicly listed. Anyone can ask to join. All threads are public."
+    group_privacy_is_closed_description: "Unlisted. Anyone with the link can ask to join. All threads are private."
+    group_privacy_is_closed_public_threads_description: "Unlisted. Anyone with the link can ask to join. Threads can be public or private."
+    group_privacy_is_secret_description: "Only invited people can find the group. All threads are private."
     confirm_change_to_secret: "If you proceed, all threads in this group and its subgroups will be made private."
     confirm_change_to_secret_subgroup: 'If you proceed, all threads will be made private.'
     confirm_change_to_public: 'If you proceed, all threads in this group will be made public on the web.'
@@ -975,6 +977,7 @@ en:
     members_can_start_discussions: 'Members can start new threads.'
     members_can_vote: 'Members can vote on proposals.'
     members_can_raise_motions: 'Members can start proposals.'
+    admins_can_edit_user_content: "Admins can edit other user's comments and polls"
 
     submit_start_group: 'Start group'
     submit_start_subgroup: 'Start subgroup'
@@ -1001,53 +1004,10 @@ en:
     submit: Start export
     flash: Group data export started
 
-  group_features:
-    useAnonymous: Enable anonymous polling
-    nested_comments: Enable nested comment view
-
   membership_requests_card:
     heading: 'Membership Requests'
     manage_requests: Manage requests
     manage_requests_with_count: Manage requests ({{count}})
-
-  documents_page:
-    title: Attachments
-    fragment_placeholder: Search for attachments...
-    add_document: Add attachment
-    no_documents: No attachments found for this group. Click 'Add Attachment' above to add one.
-    no_documents_from_fragment: No attachments found named '{{fragment}}'
-    confirm_remove_title: Remove attachment
-    confirm_remove_helptext: Are you sure you want to remove this attachment?
-    document_removed: Attachment removed
-
-  document:
-    error:
-      invalid_format: Oops! Your URL is invalid. Ensure it begins with http:// or https://
-    card:
-      no_documents: No attachments have been uploaded into this group yet
-      view_documents: View all
-    list:
-      title: Attachments
-      no_group_documents: No attachments have been uploaded to the group description yet
-    management:
-      content_header: All attachments
-      uploaded_to: in
-    modal:
-      title: Add an attachment
-    method_form:
-      helptext: Attach files or links to share them with the group.
-      url_helptext: Link to websites and online resources
-      file_helptext: Upload files from your computer
-    form:
-      url_label: URL
-      helptext: Click here, paste, or drop file to upload
-      url_placeholder: E.g. https://www.example.com/attachment.zip
-      title_helptext: What should we call this attachment?
-      title_label: Name
-      title_placeholder: E.g. 'Community Guidelines'
-    flash:
-      success: Attachment saved
-      destroyed: Attachment removed
 
   membership_requests_page:
     heading: Membership Requests
@@ -1105,14 +1065,6 @@ en:
       no_invitations: 'Uhoh! Please verify the email address is correct and try again.'
       max_invitations: 'If you want to send more than 100 invitations, use a team link.'
 
-  add_members_modal:
-    aria_label: 'Add members from parent group'
-    heading: 'Add people from {{name}}'
-    add_members: 'Add members'
-    user_added_to_subgroup: '{{name}} added to Subgroup'
-    users_added_to_subgroup: '{{count}} Users added to Subgroup'
-    no_members_to_add: 'All members of {{parent}} belong to this subgroup'
-
   memberships_page:
     members: 'Members'
     name_label: 'Name'
@@ -1149,32 +1101,11 @@ en:
   membership_form:
     modal_title:
       group:      Set group title
-      discussion: Set thread title
-      poll:       Set {{pollType}} title
     title_helptext:
       group:      This title will appear beside {{name}}'s name within this group. Use it to let people know their role.
-      discussion: This title will appear beside {{name}}'s name within this thread. Use it to let people know their role.
-      poll:       This title will appear beside {{name}}'s name within this {{pollType}}. Use it to let people know their role.
     title_label: title
     title_placeholder: E.g. 'Coordinator', or 'Facilitator'
     updated: Membership title updated
-
-  pending_invitations_card:
-    heading: Pending invitations
-    email: Email
-    invitation_link: Invitation link
-    sent: Sent
-    sent_at: Sent {{date}}
-    copy_url: Copy URL
-    revoke_invitation: Revoke
-
-  cancel_invitation_form:
-    heading: Cancel invitation
-    question: Are you sure you want to cancel this invitation?
-    submit: "Yes, cancel invitation"
-    cancel: 'No'
-    messages:
-      success: Invitation cancelled
 
   user_page:
     contact_user: 'Contact {{name}}'
@@ -1240,24 +1171,12 @@ en:
   deactivation_modal:
     aria_label: 'Deactivate user account'
     introduction: 'When you deactivate your account:'
-    no_longer_group_member: 'You will no longer be listed as a member of any groups'
+    you_will_be_deleted: "Your user account including your name, email address and other personally identifying data will be deleted from our systems."
     name_removed: 'Comments, proposals and discussions you’ve made will remain but your name will be removed from them'
+    no_longer_group_member: 'You will no longer be listed as a member of any groups'
     no_emails: 'You will no longer receive notification emails'
     you_can_reactivate: "You can reactivate your account later if you wish"
     submit: 'Yes, I want to deactivate'
-
-  delete_user_modal:
-    title: 'Delete user account'
-    irreversable: "WARNING: This cannot be undone. If you proceed:"
-    you_will_be_deleted: "Your user account including your name, email address and other personally identifying data will be deleted from our systems."
-    submit: 'Yes, delete my account'
-
-  deactivate_user_form:
-    aria_label: 'Deactivate account confirm'
-    title: 'Deactivate account'
-    question: 'Would you tell us why you are deactivating?'
-    placeholder: 'Answering this question is optional. Any information you share will help us to improve :)'
-    submit: 'Deactivate account'
 
   email_settings_page:
     header: Notification settings
@@ -1288,6 +1207,7 @@ en:
   thread_preview:
     replies_count: "{{count}} replies"
     unread_count: "{{count}} unread"
+
   dashboard_page:
     aria_label: 'Dashboard'
     no_groups:
@@ -1453,76 +1373,20 @@ en:
   move_thread_form:
     aria_label: Move thread
     title: Move thread
-    body: 'Destination group:'
+    body: Destination group
     confirm: Move thread
     confirm_change_to_private_thread: '{{groupName}} is an open group. If you proceed, this thread will be made public.'
     messages:
       success: Thread has been moved to {{name}}
 
-
-  print_modal:
-    load_discussion: Loading entire discussion
-    helptext: Just a second, we're fetching all of the events in this thread for printing...
-
   delete_comment_dialog:
     title: 'Delete comment'
-    question: 'Are you sure you want to delete this comment?'
+    question: 'Are you sure you want to delete this comment? (This cannot be undone)'
     confirm: 'Delete comment'
 
-  new_comment_item:
-    aria_label: 'Comment by {{author}}'
-    context_menu:
-      aria_label: 'Comment options'
-      edit_comment: 'Edit comment'
-      delete_comment: 'Delete comment'
-    in_reply_to: 'in reply to <strong>{{recipient}}</strong>'
-    edited: 'Edited'
-
-  new_vote_item:
-    agree: 'agreed'
-    abstain: 'abstained'
-    disagree: 'disagreed'
-    block: 'blocked'
-    agree_with_statement: 'agreed: <span>{{statement}}</span>'
-    abstain_with_statement: 'abstained: <span>{{statement}}</span>'
-    disagree_with_statement: 'disagreed: <span>{{statement}}</span>'
-    block_with_statement: 'blocked: <span>{{statement}}</span>'
-
-  new_proposal_item:
-    author_created_proposal: 'started a proposal: <span>{{title}}</span>'
-
-  proposal_closed_item:
-    proposal_closed: 'The proposal has closed: <span>{{title}}</span>'
-
-  proposal_closed_by_user_item:
-    proposal_closed_by_user: 'closed the proposal: <span>{{title}}</span>'
-
-  proposal_edited_item:
-    name: 'updated the proposal title: <span>{{title}}</span>'
-    description: 'updated the proposal description'
-    closing_at: 'updated the proposal to close at <span>{{time}}</span>'
-    description_name: 'updated the proposal title and description'
-    closing_at_name: 'updated the proposal title and closing time'
-    closing_at_description: 'updated the proposal description and closing time'
-    closing_at_description_name: 'updated the proposal title, description and closing time'
-
-  proposal_outcome_created_item:
-    proposal_outcome_created: 'published a proposal outcome:'
-
-  proposal_outcome_updated_item:
-    proposal_outcome_updated: 'updated the proposal outcome:'
-
-  discussion_edited_item:
-    attachment_ids: 'updated the thread attachments'
-    title: 'updated the thread title: <span>{{title}}</span>'
-    description: 'updated the thread context'
-    description_title: 'updated the thread title and context'
-    private: 'updated the thread privacy to'
-    public_to_private: 'private'
-    private_to_public: 'public'
-    private_title: 'updated the thread title and privacy'
-    description_private: 'updated the thread context and privacy'
-    description_private_title: 'updated the thread title, context and privacy'
+  discard_comment_dialog:
+    title: 'Remove comment'
+    question: 'Are you sure you want to remove this comment? (This can be undone later)'
 
   contact_message_form:
     title: "Hi there! How can we help?"
@@ -1568,52 +1432,6 @@ en:
     messages:
       app_update: 'A new version of the app is available'
       reload: 'Reload'
-
-  authorized_apps_page:
-    title: Authorized Apps
-    no_applications: "You haven't authorized any third party apps yet."
-    notice: "You've given the following thirdparty apps permission to use your account. Click 'Revoke' to disable them."
-    revoke: Revoke
-
-  registered_apps_page:
-    title: Registered Applications
-    no_applications: "You don't have any OAuth applications yet! Click below to create one."
-    name: Name
-    redirect_uris: Redirect URIs
-    create_new_application: New Application
-
-  registered_app_page:
-    uid: Application ID
-    secret: Application Secret
-
-  registered_app_form:
-    new_application_title: New Application
-    edit_application_title: Update Application
-    name_label: Name
-    name_placeholder: What is your application called?
-    redirect_uri_label: Redirect Uris
-    redirect_uri_placeholder: "The callback uri for your application, Eg: https://myapplication.com/loomio/callback"
-    redirect_uri_note: (one line per URI, use 'urn:ietf:wg:oauth:2.0:oob' for local tests)
-    new_application_submit: Create Application
-    edit_application_submit: Update Application
-    messages:
-      logo_changed: Logo updated.
-      created: "Created '{{name}}'"
-      updated: "Updated '{{name}}'"
-
-  remove_app_form:
-    title: Deactivate {{name}}
-    question: "Are you sure you want to deactivate the application '{{name}}'? This action cannot be undone."
-    submit: Deactivate
-    messages:
-      success: "'{{name}}' was successfully deactivated"
-
-  revoke_app_form:
-    title: Revoke access for {{name}}
-    question: "Are you sure you disallow '{{name}}' to use your account?"
-    submit: Revoke Access
-    messages:
-      success: "'{{name}}' can no longer use your account."
 
   decision_tools_card:
     title: Facilitate
@@ -1675,6 +1493,7 @@ en:
 
   poll_common_card:
     show_results: Show results
+    deleted: This poll has been deleted
 
   poll_common_index_card:
     title: Previous decisions
@@ -1729,14 +1548,16 @@ en:
     filename: Filename
     uploaded_by: Uploaded by
     uploaded_at: Uploaded at
+    delete_confirmation: |
+      Are you sure you want to delete this attachment? It will be removed from any associated comment or thread. This cannot be undone.
 
   subgroups_panel:
     search_subgroups_of_name: 'Search subgroups of {{name}}'
     group_without_subgroups: '{{name}} without subgroups'
 
   poll_common_action_panel:
-    anonymous: Votes will be anonymous
-    anonymous_until_close: Votes will be anonymous until this poll closes
+    anonymous: Votes are anonymous
+    results_hidden_until_closed: Results are hidden until the %{poll_type} has closed
     unable_to_vote: You do not have permission to vote in this decision.
 
   current_polls_card:
@@ -1775,7 +1596,7 @@ en:
       title: Multiple choice
       helptext_on: When selected, participants will be able to select multiple options.
     anyone_can_participate:
-      title: Anyone can participate
+      title: Anyone with link can participate
       helptext_on: When selected, anyone with the link to the poll can participate.
     notify_on_participate:
       title: Notify me when people participate
@@ -1783,18 +1604,19 @@ en:
     anonymous:
       title: Anonymous voters
       helptext_on: When selected, participant info will not be shown with each response.
-    deanonymize_after_close:
-      title: Reveal voters after close
-      helptext_on: When selected, anonymous voters will be revealed after the poll closes
     voter_can_add_options:
       title: Voters may add options
       helptext_on: When selected, participants may add their own options when voting.
     can_respond_maybe:
       title: Voters can respond "if need be"
-      helptext_on:  Voters can indicate times as "If need be"
+      helptext_on: Voters can indicate times as "If need be"
+    hide_results_until_closed:
+      title: Hide results until closed
+      helptext_on: Don't show the how people have voted until the poll is closed
+
   poll_common_close_form:
     title: Close a poll early
-    helptext: Are you sure you're ready to close early? (You can re-open it later if you like)
+    helptext: Are you sure you want to close this %{poll_type} early?
     close_proposal: Close proposal
     close_poll: Close poll
     close_count: Close check
@@ -1809,14 +1631,13 @@ en:
     ranked_choice_closed: Ranked choice poll closed
 
   poll_common_reopen_form:
-    title: Reopen a closed decision
-    helptext: Did a decision close before you were ready? Reopen to gather more stances from the group.
-    proposal_reopened: Proposal reopened
-    poll_reopened: Poll reopened
-    count_reopened: Check reopened
-    dot_vote_reopened: Dote vote reopened
-    meeting_reopened: Time poll reopened
-    ranked_choice_reopened: Ranked choice poll reopened
+    title: "Reopen {{poll_type}}"
+    helptext: "Reopen the {{poll_type}} if people need more time to participate"
+    success: "{{poll_type}} reopened"
+
+  poll_common_move_form:
+    title: "Move {{poll_type}}"
+    success: "{{poll_type}} moved to {{group}}"
 
   poll_common_closing_at_field:
     closing: Closing
@@ -1827,10 +1648,12 @@ en:
     started_by: Started by {{name}}
 
   poll_common_votes_panel:
+    undecided: Undecided
     newest_first: Newest first
     oldest_first: Oldest first
     priority_first: Agree first
     priority_last: Block first
+    undecided_first: Undecided first
     no_votes_yet: No votes have been placed yet.
     change_results_order: Change results order
     none_of_the_above: (None of the above)
@@ -1870,17 +1693,8 @@ en:
 
   poll_common_delete_modal:
     question: Are you sure you want to delete this?
-    title: Delete decision
+    title: Delete {{pollType}}
     success: Successfully deleted
-
-  poll_common_unsubscribe_form:
-    title: Receive updates
-    label: Receive email updates about this decision
-    tooltip: Email updates keep you informed about this decision, such as when it is edited, when it expires, or when an outcome has been set. Unchecking this box ensures that you won't receive further email notifications for decision.
-    helptext_on: You will receive emails about activity in this decision
-    helptext_off: You will not receive any emails about this decision
-    subscribed: Successfully subscribed
-    unsubscribed: Successfully unsubscribed
 
   poll_common_form:
     title: Title
@@ -2022,6 +1836,7 @@ en:
     points: Points
 
   poll_meeting_time_field:
+    add_time_slot: Add time slot
     new_time_slot: New time slot
     closing_hour: Closing hour
 
@@ -2105,6 +1920,7 @@ en:
     stance_updated: Choice updated
 
   thread_item:
+    removed: "Item removed"
     comment_replied_to:            "<strong><a href='/u/{{username}}'>{{author}}</a></strong> in reply to <strong>{{title}}</strong>"
     discussion_title_edited:       "<strong><a href='/u/{{username}}'>{{author}}</a></strong> edited the thread title"
     discussion_context_edited:     "<strong><a href='/u/{{username}}'>{{author}}</a></strong> edited the thread context"
@@ -2127,20 +1943,6 @@ en:
     stance_created:                "<strong><a href='/u/{{username}}'>{{author}}</a></strong> voted on: <strong>{{title}}</strong>"
     event_removed:                 "Removed from thread"
 
-  poll_admin_page:
-    title: Admin - {{title}}
-
-  poll_common_publish_facebook_preview:
-    shared_a: shared a
-    link: link
-    just_now: Just now
-
-  poll_common_publish_slack_preview:
-    poll_published: "published a poll:"
-    poll_published_with_discussion: "published a poll in <strong>{{discussion}}</strong>:"
-    view_it_on_loomio: View it on {{site_name}}
-    timestamp: Today at {{timestamp}}
-
   poll_common_subscribe_form:
     receive_updates_title: Your vote has been recorded
     receive_updates_helptext: If you'd like to receive an email about the outcome of this poll, enter your email address below
@@ -2154,17 +1956,11 @@ en:
   share_poll_page:
     title: Share poll - {{title}}
 
-  polls_page:
-    heading: Decisions
-    heading_with_group: Decisions in {{name}}
-    search_placeholder: Search for polls...
-    polls_count: Displaying {{count}} of {{total}} polls
-    start_new_poll: New decision
-    filter_placeholder: (All polls)
-    groups_placeholder: (All groups)
-
   auth_form:
     code: '000000'
+    youre_invited: You have been invited to join {{group_name}}.
+    youre_invited_discussion: You have been invited to join the discussion.
+    youre_invited_poll: You have been invited to vote.
     sign_in_to_loomio: Sign into {{site_name}}
     sign_in_help: Trouble signing in?
     sign_in: Sign in
@@ -2242,15 +2038,19 @@ en:
     name_placeholder: Give this webhook a name so you can identify it later on
     event_kind_helptext: Which events do you want to be notified of?
     event_kinds:
-      new_discussion: A new thread is started
-      new_comment: A new comment has been made
-      poll_created: A poll is created
-      stance_created: A new vote has been cast
+      new_discussion: A thread is started
+      discussion_edited: A thread is edited
+      poll_edited: A poll is edited
+      new_comment: A comment is made
+      poll_created: A poll is started
+      stance_created: A vote is cast
       poll_closing_soon: A poll is expiring soon
-      poll_expired: A poll has expired
-      poll_closed_by_user: A poll is closed before it's deadline
+      poll_expired: A poll expires
+      poll_closed_by_user: A poll is closed manually
       poll_reopened: A poll is re-opened for voting
-      outcome_created: An outcome has been shared
+      outcome_created: An outcome is shared
+    include_body_label: Include message body with notification
+    include_subgroups_label: Relay events from subgroups
 
   configure_sso:
     redirecting: Please wait, redirecting to sign-in provider
@@ -2270,28 +2070,12 @@ en:
     message: "IMPORTANT! You are using an outdated browser ({{name}} {{version}}) which is not supported by {{site}}."
     link: Please switch to another browser
 
-  slack_added_modal:
-    title: Success!
-    helptext: |
-      You've successfully added Slack to your group <strong>{{name}}</strong>.
-      Now, whenever anyone starts a poll in this group, they'll have the option to
-      post updates about that poll into a channel in your slack team.
-    start_poll_now: Make a decision now
-
   powered_by:
     slogan: Better decisions together
     powered_by_loomio: Powered by Loomio
     privacy_policy: Privacy policy
     terms_of_service: Terms of service
     front_page: Front page
-
-  vue_upgraded_modal:
-    use_old_loomio: Use old Loomio
-    title: You're on Loomio 2.0!
-    body: |
-      <p>It's a faster, better Loomio!</p>
-      <p>We think you'll love it, but if you need to, you can switch back to the old version from the sidebar.</p>
-      <p><a href="{{link}}" target="_blank">Find out what's new.</a></p>
 
   group_survey:
     title: Success! Just a few more details
@@ -2333,6 +2117,10 @@ en:
       project: Project team
       forum: Forum
       other: Other
+    desired_features:
+      polls: Running polls for my team to vote on
+      discussions: Holding discussions online and getting input
+      archive: Recording decisions we make or archiving information
     referrers:
       google: Google search
       invitation: Invited to a Loomio group
@@ -2348,4 +2136,5 @@ en:
     role: "What is your role in the group?"
     website: "Website URL"
     usage: "How do you plan to use Loomio? Choose the best fit"
+    desired_feature: "What is the number one thing you're looking to use Loomio for?"
     referrer: "How did you hear about Loomio?"

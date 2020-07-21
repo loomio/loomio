@@ -1,1 +1,13 @@
-= render "poll_mailer/common/responses", poll: poll, recipient: recipient, event: event
+%table
+  - poll.stances.latest.each do |stance|
+    %tr
+      %td
+        %table
+          %td= render 'base_mailer/avatar', user: stance.participant
+          %td.poll-mailer-common-responses__reason
+            %strong
+              #{stance.participant.name}:
+    %tr
+      %td= render_rich_text(stance.reason, stance.reason_format)
+    %tr
+      %td= render 'poll_mailer/dot_vote/stance_chart', stance: stance

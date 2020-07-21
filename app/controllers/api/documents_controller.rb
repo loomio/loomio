@@ -2,7 +2,7 @@ class API::DocumentsController < API::RestfulController
 
   def for_group
     self.collection = page_collection(for_group_documents).search_for(params[:q])
-    respond_with_collection scope: { group_id: @group.id }, serializer: Full::DocumentSerializer
+    respond_with_collection scope: { group_id: @group.id }, serializer: DocumentSerializer
   end
 
   def for_discussion

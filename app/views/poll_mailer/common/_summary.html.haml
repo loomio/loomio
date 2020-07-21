@@ -15,11 +15,11 @@
 
   %p= render_rich_text(poll.details, poll.details_format)
 
-  %p
-    - if poll.active?
-      = t(:"poll_mailer.common.you_have_until", when: formatted_time_in_zone(poll.closing_at, time_zone(recipient, poll)))
-    - else
+  - if poll.active?
+    %p= t(:"poll_mailer.common.you_have_until", when: format_date_for_humans(poll.closing_at, time_zone(recipient, poll)))
+  - else
+    %p
       = t(:"poll_common_form.closed")
-      = formatted_time_in_zone(poll.closed_at, time_zone(recipient, poll))
+      = format_date_for_humans(poll.closed_at, time_zone(recipient, poll))
 
   = render "discussion_mailer/attachments", resource: poll

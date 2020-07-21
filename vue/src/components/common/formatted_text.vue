@@ -40,7 +40,7 @@ img.emoji
   span.mention
     color: var(--v-anchor-base)
 
-  blockquote, h1, h2, h3, ol, p, pre, ul
+  blockquote, h1, h2, h3, ol, p, pre
     margin: 1rem 0
 
   blockquote:first-child, h1:first-child, h2:first-child, h3:first-child, ol:first-child, p:first-child, pre:first-child, ul:first-child
@@ -155,12 +155,20 @@ img.emoji
     table-layout: fixed
     width: 100%
     margin-bottom: 10px
+    border-collapse: collapse
 
   table td
-    padding: 6px 13px
+    padding: 4px 4px
     border: 1px solid #ddd
 
   thead td
     font-weight: bold
+
+  table
+    p
+      margin-bottom: 0
+
+    p:last-child
+      margin-bottom: 0
 
 </style>

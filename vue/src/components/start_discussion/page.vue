@@ -1,6 +1,5 @@
 <script lang="coffee">
 import Records       from '@/shared/services/records'
-import ModalService  from '@/shared/services/modal_service'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 import EventBus      from '@/shared/services/event_bus'
 
@@ -26,7 +25,7 @@ export default
 
 </script>
 <template lang="pug">
-v-content
+v-main
   v-container.start-discussion-page.max-width-1024
     h2.headline(v-t="'discussion_form.new_discussion_title'")
     .discussion-start-discussion

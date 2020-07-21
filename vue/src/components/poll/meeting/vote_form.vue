@@ -4,7 +4,7 @@ import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
 import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
-import {compact, map, toPairs, fromPairs, some, sortBy} from 'lodash'
+import {compact, map, toPairs, fromPairs, some, sortBy, isEqual} from 'lodash-es'
 
 export default
   props:
@@ -16,17 +16,18 @@ export default
     canRespondMaybe: null
     stanceValues: []
 
+  beforeDestroy: ->
+    EventBus.$off 'timeZoneSelected', @setTimeZone
+
   created: ->
-    EventBus.$on 'timeZoneSelected', (e, zone) => @zone = zone
-    done = false
+    EventBus.$on 'timeZoneSelected', @setTimeZone
     @watchRecords
       collections: ['poll_options', 'poll']
       query: (records) =>
         @canRespondMaybe =  @stance.poll().customFields.can_respond_maybe
         @stanceValues = if @stance.poll().customFields.can_respond_maybe then [2,1,0] else [2, 0]
-        @pollOptions = sortBy @stance.poll().pollOptions(), 'name'
-        if !done
-          done = true
+        if !isEqual map(@pollOptions, 'name'), map(@stance.poll().pollOptions(), 'name')
+          @pollOptions = sortBy @stance.poll().pollOptions(), 'name'
           @stanceChoices = @pollOptions.map (option) =>
             lastChoice = @stance.stanceChoices().find((sc) => sc.pollOptionId == option.id) || {score: 0}
             id: option.id
@@ -35,6 +36,9 @@ export default
             score: lastChoice.score
 
   methods:
+    setTimeZone: (e, zone) ->
+      @zone = zone
+
     submit: ->
       @stance.id = null
 
@@ -80,8 +84,6 @@ export default
 
 <template lang='pug'>
 form.poll-meeting-vote-form(@submit.prevent='submit()')
-  h3.lmo-card-subheading.lmo-flex__grow(v-t="'poll_meeting_vote_form.your_response'")
-  poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   p(v-t="{path: 'poll_meeting_vote_form.local_time_zone', args: {zone: currentUserTimeZone}}")
   .poll-common-vote-form__options
     //- h3.lmo-h3.poll-meeting-vote-form--box(v-t="'poll_meeting_vote_form.can_attend'")
@@ -89,7 +91,7 @@ form.poll-meeting-vote-form(@submit.prevent='submit()')
     //- h3.lmo-h3.poll-meeting-vote-form--box(v-t="'poll_meeting_vote_form.unable'")
     //- time-zone-select.lmo-margin-left
     v-layout.poll-common-vote-form__option(wrap v-for='choice in stanceChoices' :key='choice.id')
-      poll-common-stance-choice(:stance-choice='choice' :zone='zone' @click="incrementScore(choice)")
+      poll-common-stance-choice(:poll="stance.poll()" :stance-choice='choice' :zone='zone' @click="incrementScore(choice)")
       v-spacer
       v-btn.poll-meeting-vote-form--box(icon :style="buttonStyleFor(choice, i)" v-for='i in stanceValues', :key='i', @click='choice.score = i')
         v-avatar(:size="36")

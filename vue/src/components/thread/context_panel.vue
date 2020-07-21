@@ -1,7 +1,7 @@
 <script lang="coffee">
 import ThreadService  from '@/shared/services/thread_service'
 import { exact }      from '@/shared/helpers/format_time'
-import { map, compact, pick } from 'lodash'
+import { map, compact, pick } from 'lodash-es'
 import EventBus from '@/shared/services/event_bus'
 import openModal      from '@/shared/helpers/open_modal'
 
@@ -22,18 +22,6 @@ export default
 
     menuActions: ->
       pick @actions, ['edit_tags',  'notification_history', 'translate_thread', 'close_thread', 'reopen_thread', 'move_thread', 'delete_thread', 'export_thread']
-
-    status: ->
-      return 'pinned' if @discussion.pinned
-
-    statusTitle: ->
-      @$t("context_panel.thread_status.#{@status}")
-
-    groups: ->
-      map compact([@discussion.group().parent(), @discussion.group()]), (group) =>
-        text: group.name
-        disabled: false
-        to: @urlFor(group)
 
     status: ->
       return 'pinned' if @discussion.pinned

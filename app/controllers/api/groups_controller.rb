@@ -1,6 +1,4 @@
 class API::GroupsController < API::RestfulController
-  include UsesFullSerializer
-
   def token
     self.resource = load_and_authorize(:group, :invite_people)
     respond_with_resource scope: {include_token: true}
@@ -31,11 +29,6 @@ class API::GroupsController < API::RestfulController
 
   def count_explore_results
     render json: { count: Queries::ExploreGroups.new.search_for(params[:q]).count }
-  end
-
-  def archive
-    service.archive(group: load_resource, actor: current_user)
-    respond_with_resource
   end
 
   def subgroups

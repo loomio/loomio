@@ -1,4 +1,5 @@
 import Records from '@/shared/services/records'
+import {includes} from 'lodash-es'
 
 # a series of helpers related to getting a translation string to translate, such
 # as the headline of an event or the helptext strings on the discussion or group forms
@@ -25,7 +26,7 @@ export eventTitle = (event) ->
         event.model().title
 
 export eventPollType = (event) ->
-  return "" unless _.includes ['Poll', 'Stance', 'Outcome'], event.eventableType
+  return "" unless includes ['Poll', 'Stance', 'Outcome'], event.eventableType
   "poll_types.#{event.model().poll().pollType}"
 
 export emojiTitle = (shortname) ->
@@ -96,13 +97,13 @@ stanceCreatedKey = (event, useNesting) ->
 
 discussionEditedKey = (event) ->
   changes = event.customFields.changed_keys
-  if _.includes(changes, 'title')
+  if includes(changes, 'title')
     'discussion_title_edited'
-  else if _.includes(changes, 'private')
+  else if includes(changes, 'private')
     'discussion_privacy_edited'
-  else if _.includes(changes, 'description')
+  else if includes(changes, 'description')
     'discussion_context_edited'
-  else if _.includes(changes, 'document_ids')
+  else if includes(changes, 'document_ids')
     'discussion_attachments_edited'
   else
     'discussion_edited'

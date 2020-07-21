@@ -77,6 +77,7 @@ da:
       next: 'Næste'
       close: 'Luk'
       save: 'Gem'
+      move: 'Flyt'
       save_changes: 'Gem ændringer'
       update_settings: 'Opdater indstillinger'
       reply: 'Svar'
@@ -269,16 +270,6 @@ da:
     outcome_created: "<strong>{{name}}</strong> delte er resultat: <strong>{{title}}</strong>"
     outcome_announced: "<strong>{{name}}</strong> delte er resultat: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> deltog i: <strong>{{title}}</strong>"
-  position_buttons_panel:
-    heading: Giv din mening til kende
-  extend_proposal_form:
-    aria_label: Rediger sluttidspunkt
-    title: 'Rediger sluttidspunkt'
-    success: 'Forslags sluttidspunkt gemt'
-    submit: 'Gem sluttidspunkt'
-  discussion_record:
-    created: 'Debatter {{title}} blev oprettet i {{groupName}}'
-    updated: '{{title}} blev gemt'
   discussion_fork_actions:
     move: Flyt
   discussion_form:
@@ -420,10 +411,6 @@ da:
       private_to_group: 'Navn og beskrivelse er kun tilgængelige for medlemmer.'
       private_to_parent_members: 'Navn og beskrivelse er kun tilgængelige for medlemmer af {{parent}}'
     privacy: 'Privatindstillinger'
-    group_privacy_is_open_description: "Alle kan finde gruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i gruppen. Alle debatter er offentlige (alle på internettet kan læse dem)."
-    group_privacy_is_closed_description: "Alle kan finde gruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i gruppen. Alle debatter er private."
-    group_privacy_is_closed_public_threads_description: "Alle kan finde gruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i gruppen.  Debatter kan være offentlige eller private."
-    group_privacy_is_secret_description: "Det er kun inviterede medlemmer der kan finde gruppen, se hvem der er medlem og se debatter."
     confirm_change_to_secret: "Hvis du fortsætter så vil alle debatter i denne gruppe og undergrupper være private."
     confirm_change_to_secret_subgroup: 'vis du fortsætter så vil alle debatter i denne gruppe være private.'
     confirm_change_to_public: 'Hvis du fortsætter så vil alle debatter i denne gruppe være offentlige (alle på internettet kan læse dem).'
@@ -464,14 +451,6 @@ da:
     heading: 'Anmodninger om medlemskab'
     manage_requests: Administrer anmodninger
     manage_requests_with_count: Administrer anmodninger ({{count}})
-  documents_page:
-    title: Vedhæftede filer
-    confirm_remove_title: Slet vedhæftning
-  document:
-    list:
-      title: Vedhæftede filer
-    form:
-      title_label: Navn
   membership_requests_page:
     heading: Anmodninger om medlemskab
     approve: Godkend
@@ -510,13 +489,6 @@ da:
       invitations_sent: '{{count}} invitationer sendt.'
       no_invitations: 'Uha! Kontroller venligst at emailadressen er korrekt og prøv igen.'
       max_invitations: 'Hvis du ønsker at sende mere end 100 invitationer, så benyt et delbart link.'
-  add_members_modal:
-    aria_label: 'Tilføj medlemmer fra overgruppen'
-    heading: 'Tilføj folk fra {{name}}'
-    add_members: 'Tilføj medlemmer'
-    user_added_to_subgroup: '{{name}} tilføjet til undergrupper'
-    users_added_to_subgroup: '{{count}} brugere tilføjet til undergruppen'
-    no_members_to_add: 'Alle medlemmer af {{parent}} er medlemmer af denne undergruppe'
   memberships_page:
     members: 'Medlemmer'
     name_label: 'Navn'
@@ -532,18 +504,6 @@ da:
     membership:
       title: Slet medlem
       submit: Slet medlem
-  pending_invitations_card:
-    heading: Afventende invitationer
-    email: Email
-    invitation_link: Invitations link
-    sent: Sendt
-  cancel_invitation_form:
-    heading: Fortryd invitation
-    question: Er du sikker på at du ønsker at fortryde denne invitation?
-    submit: "Ja, fortryd invitation"
-    cancel: 'Nej'
-    messages:
-      success: Invitation fortrudt
   profile_page:
     messages:
       updated: 'Profile gemt'
@@ -566,13 +526,9 @@ da:
     use_gravatar: 'Brug Gravatar'
   deactivation_modal:
     introduction: 'Når du deaktiverer din konto:'
-    no_longer_group_member: 'Du vil ikke længere bliver vist som medlem i nogen grupper'
     name_removed: 'Kommentarer, forslag og debatter som du har lavet vil forblive men dit navn vil blive fjernet fra dem'
+    no_longer_group_member: 'Du vil ikke længere bliver vist som medlem i nogen grupper'
     submit: 'Ja, jeg vil stadig gerne deaktivere'
-  deactivate_user_form:
-    aria_label: 'Bekræft deaktiver konto'
-    title: 'Deaktiver konto'
-    submit: 'Deaktiver konto'
   email_settings_page:
     daily_summary_label: Send resumé email hver dag
     on_participation_label: Abonnér ved deltagelse
@@ -680,61 +636,13 @@ da:
   move_thread_form:
     aria_label: Flyt debat
     title: Flyt debat
-    body: 'Destinations gruppe:'
     confirm: Flyt debat
     confirm_change_to_private_thread: '{{groupName}} er ern offentlig gruppe. Hvis du fortsætter, så vil denne debat bliver gjort offentlig.'
     messages:
       success: Debatten er flyttet til {{name}}
   delete_comment_dialog:
     title: 'Slet kommentar'
-    question: 'Er du sikker på at du vil slette denne kommentar?'
     confirm: 'Slet kommentar'
-  new_comment_item:
-    aria_label: 'Kommentar af {{author}}'
-    context_menu:
-      aria_label: 'Kommentar handlinger'
-      edit_comment: 'Rediger kommentar'
-      delete_comment: 'Slet kommentar'
-    in_reply_to: 'som svar til <strong>{{recipient}}</strong>'
-    edited: 'Redigeret'
-  new_vote_item:
-    agree: 'enig'
-    abstain: 'blankt'
-    disagree: 'uenig'
-    block: 'blokkerer'
-    agree_with_statement: 'enig: <span>{{statement}}</span>'
-    abstain_with_statement: 'blankt: <span>{{statement}}</span>'
-    disagree_with_statement: 'uenig: <span>{{statement}}</span>'
-    block_with_statement: 'blokkeret: <span>{{statement}}</span>'
-  new_proposal_item:
-    author_created_proposal: 'oprettede et forslag: <span>{{title}}</span>'
-  proposal_closed_item:
-    proposal_closed: 'Forslaget: <span>{{title}}</span> er lukket'
-  proposal_closed_by_user_item:
-    proposal_closed_by_user: 'lukkede forslaget: <span>{{title}}</span>'
-  proposal_edited_item:
-    name: 'redigerede forslagets titel: <span>{{title}}</span>'
-    description: 'redigerede forslagets beskrivelse'
-    closing_at: 'redigerede forslagets sluttidspunkt <span>{{time}}</span>'
-    description_name: 'redigerede forslagets title og beskrivelse'
-    closing_at_name: 'redigerede forslagets title og sluttidspunkt'
-    closing_at_description: 'redigerede forslagets beskrivelse og sluttidspunkt'
-    closing_at_description_name: 'redigerede forslagets title, beskrivelse og sluttidspunkt'
-  proposal_outcome_created_item:
-    proposal_outcome_created: 'publicerede resultatet af et forslag:'
-  proposal_outcome_updated_item:
-    proposal_outcome_updated: 'redigerede resultatet af et forslag:'
-  discussion_edited_item:
-    attachment_ids: 'redigerede debattens vedhæftede filer'
-    title: 'redigerede debattens titel: <span>{{title}}</span>'
-    description: 'redigerede debattens beskrivelse'
-    description_title: 'redigerede debattens titel og beskrivelse'
-    private: 'redigerede debattens privatindstillinger til'
-    public_to_private: 'privat'
-    private_to_public: 'offentlig'
-    private_title: 'redigerede debattens titel og privatindstillinger'
-    description_private: 'redigerede debattens beskrivelse og privatindstillinger'
-    description_private_title: 'redigerede debattens titel, beskrivelse og privatindstillinger'
   contact_message_form:
     contact_us: 'Kontakt os'
     name_label: 'Dit navn'
@@ -757,46 +665,6 @@ da:
   global:
     messages:
       reload: 'Genopfrisk'
-  authorized_apps_page:
-    title: Godkendte apps
-    no_applications: "Du har ikke godkendt nogle 3parts apps endnu."
-    notice: "Du har givet tilladelse til at de følgende 3parts apps kan bruge din konto. Klik på 'Slet tilladelse' for at deaktivere dem."
-    revoke: Slet tilladelse
-  registered_apps_page:
-    title: Registrerede applikationer
-    no_applications: "Du har ikke nogen OAuth applikationer endnu! Klik herunder for at oprette en."
-    name: Navn
-    redirect_uris: Redirigerings URI
-    create_new_application: Opret applikation
-  registered_app_page:
-    uid: Applikations ID
-    secret: Applickations Hemmelighed
-  registered_app_form:
-    new_application_title: Opret applikation
-    edit_application_title: Rediger applikation
-    name_label: Navn
-    name_placeholder: Hvad hedder din applikation?
-    redirect_uri_label: Redirigerings URI
-    redirect_uri_placeholder: "Callback uri for din applikation, f.eks: https://myapplication.com/loomio/callback"
-    redirect_uri_note: (en linie per URI, benyt 'urn:ietf:wg:oauth:2.0:oob' for lokal test)
-    new_application_submit: Opret applikation
-    edit_application_submit: Rediger applikation
-    messages:
-      logo_changed: Logo redigeret.
-      created: "'{{name}}' oprettet"
-      updated: "'{{name}}' gemt"
-  remove_app_form:
-    title: Deaktiver {{name}}
-    question: "Er du sikker på at du vil deaktivere applikationen '{{name}}'? Du kan ikke fortryde denne handling."
-    submit: Deaktiver
-    messages:
-      success: "'{{name}}' blev deaktiveret"
-  revoke_app_form:
-    title: Slet tilladelse for {{name}}
-    question: "Er du sikker på at du vil fjerne tilladelsen for '{{name}}' til at bruge din konto?"
-    submit: Slet tilladelse
-    messages:
-      success: "'{{name}}' kan ikke længere bruge din konto."
   decision_tools_card:
     proposal_title: Forslag
     count_title: Checkmåling
@@ -852,6 +720,8 @@ da:
   poll_common_settings:
     multiple_choice:
       title: Tillad flere valg
+    anyone_can_participate:
+      title: Alle kan deltage
     notify_on_participate:
       title: Send en notifikation til mig når folk deltager
   poll_common_close_form:
@@ -987,16 +857,6 @@ da:
   poll_dot_vote_vote_form:
     stance_created: Stemme afgivet
     stance_updated: Stemme redigeret
-  poll_admin_page:
-    title: Admin - {{title}}
-  poll_common_publish_facebook_preview:
-    shared_a: delte en
-    link: link
-    just_now: Lige nu
-  poll_common_publish_slack_preview:
-    poll_published: "publicerede en måling:"
-    poll_published_with_discussion: "publicerede en måling i <strong>{{discussion}}</strong>:"
-    timestamp: I dag kl. {{timestamp}}
   poll_common_subscribe_form:
     receive_updates_title: Din stemme er noteret
     receive_updates_helptext: Hvis du ønsker at modtage en email om resultatet af denne måling, så indtast venligst din email herunder
@@ -1005,21 +865,13 @@ da:
     no_thanks: Nej tak
   share_poll_page:
     title: Del måling - {{title}}
-  polls_page:
-    heading: Beslutninger
-    search_placeholder: Søg efter meningsmålinger...
-    polls_count: Viser {{count}} af {{total}} meningsmålinger
-    start_new_poll: Ny måling
   auth_form:
     email_placeholder: you@example.com
     name_placeholder: Dit navn
     name: Navn
     email: Email
-  install_slack:
-    progress:
-      invite: Inviter
-    invite:
-      custom_message: Personlig besked
+  webhook:
+    name_label: Navn
   group_survey:
     categories:
       business: Virksomhed
