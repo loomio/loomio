@@ -1272,6 +1272,7 @@ es:
   move_thread_form:
     aria_label: Mover hilo
     title: Mover hilo
+    body: Grupo destino
     confirm: 'Mover hilo '
     confirm_change_to_private_thread: '{{groupName}} es un grupo público. Si continuas, este hilo se hará público.'
     messages:
@@ -1511,6 +1512,9 @@ es:
     dot_vote_reopened: Voto de puntos reabierto
     meeting_reopened: Coordinación horaria reabierta
     ranked_choice_reopened: Opción priorizada reabierta
+  poll_common_move_form:
+    title: "Mover {{poll_type}}"
+    success: "{{poll_type}} se ha movido a {{group}}"
   poll_common_closing_at_field:
     closing: Cerrando
     closing_hour: Hora de clausura

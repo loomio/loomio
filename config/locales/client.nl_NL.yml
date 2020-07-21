@@ -186,6 +186,7 @@ nl_NL:
       reply: 'Antwoorden'
       edit: 'Bewerken'
       remove: 'Verwijderen'
+      undo_remove: 'Verwijderen ongedaan maken'
       like: 'Vind ik leuk'
       unlike: 'Vind ik niet meer leuk'
       update: 'Bijwerken'
@@ -344,7 +345,7 @@ nl_NL:
     close_thread: Sluit bord
     body: |
         <p>Sluit oude of onbelangrijke borden zodat deze niet meer zichtbaar zijn, en om aan te geven dat de discussie gesloten is.</p>
-        <p>Op een gesloten bord kan nog steeds iedereen commenteer plaatsen of een peiling starten, maar deze zullen niet verschijnen op de groep's bordenlijst, of op het dashboard.</p>
+        <p>Op een gesloten bord kan nog steeds iedereen reacties plaatsen of een peiling starten, maar deze zullen niet verschijnen op de groep's bordenlijst, of op het dashboard.</p>
     image_alt: Sluit alle borden
   mute_explanation_modal:
     aria_label: Bord dempen
@@ -376,7 +377,7 @@ nl_NL:
   comment_reply_form:
     aria_label: 'Een atwoord toevoegen'
   comment_form:
-    aria_label: 'Commentaar toevoegen'
+    aria_label: 'Reactie toevoegen'
     attachments:
       add_attachment: 'Bijlage toevoegen'
       remove_attachment: 'Bijlage verwijderen'
@@ -384,19 +385,20 @@ nl_NL:
       created: 'Reactie toegevoegd'
       replied: '{{name}} op de hoogte gebracht van antwoord'
       updated: 'Reactie bijgewerkt'
-      destroyed: 'Commentaar verwijderd'
+      destroyed: 'Reactie verwijderd'
+      removed: 'Reactie verwijderd'
     say_something: Zeg iets...
-    edit_comment: 'Commentaar bewerken'
-    delete_comment: 'Commentaar verwijderen'
+    edit_comment: 'Reactie bewerken'
+    delete_comment: 'Reactie verwijderen'
     cancel_reply: 'Antwoord annuleren'
     confirm_delete_message: 'Weet je zeker dat je deze reactie wilt verwijderen?'
-    confirm_delete: 'Commentaar verwijderen'
+    confirm_delete: 'Reactie verwijderen'
     in_reply_to: "Antwoord aan {{name}}"
-    write_a_comment: "Schrijf commentaar..."
+    write_a_comment: "Schrijf reactie..."
     submit_button:
       label: 'Plaatsen'
-    private_privacy_notice: 'Je commentaar is alleen zichtbaar voor leden van {{groupName}}.'
-    public_privacy_notice: 'Je commentaar is zichtbaar voor iedereen op het web.'
+    private_privacy_notice: 'Je reactie is alleen zichtbaar voor leden van {{groupName}}.'
+    public_privacy_notice: 'Je reactie is zichtbaar voor iedereen op het web.'
     sign_in: "Log in om mee te praten"
   thread_nav:
     participants: Deelnemers
@@ -440,7 +442,7 @@ nl_NL:
       loading: 'Laad resultaten...'
       discussions: 'Borden'
       proposals: 'Voorstellen'
-      comments: 'Commentaren'
+      comments: 'Reacties'
     sign_in: 'Inloggen'
     toggle_sidebar: 'Sleep zijbalk'
     logo_title: 'Homepage'
@@ -475,7 +477,7 @@ nl_NL:
     cancel_invitation: Annuleer uitnodiging
   notification_models:
     discussion: 'bord:'
-    comment: 'Geef commentaar in'
+    comment: 'reactie in'
     poll: 'beslissing:'
     outcome: 'resultaat:'
   notifications:
@@ -490,7 +492,7 @@ nl_NL:
     motion_closed_by_expiry: "Voorstel is gesloten: <strong>{{title}}</strong>"
     new_vote: "<strong>{{name}}</strong> {{position}} ten aanzien van het voorstel <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> heeft gereageerd op <strong>{{title}}</strong>"
-    comment_replied_to: "<strong>{{name}}</strong> heeft geantwoord op je opmerking in <strong>{{title}}</strong>"
+    comment_replied_to: "<strong>{{name}}</strong> heeft geantwoord op je reactie in <strong>{{title}}</strong>"
     reaction_created: "<strong>{{name}}</strong> reageerde<img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> op jouw {{model}}<strong>{{title}}</strong>"
     reaction_created_vue: "<strong>{{name}}</strong> heeft gereageerd {{reaction}} op je {{model}}<strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> heeft je vermeld in <strong>{{title}}</strong>"
@@ -518,7 +520,7 @@ nl_NL:
     helptext: Selecteer items die je wilt verplaatsen naar een ander bord
     move: Verplaatsen
     search_placeholder: Vind een bord op titel
-    moved: Commentaren aan het verplaatsen, dit kan even duren
+    moved: Reacties aan het verplaatsen, dit kan even duren
     move_to_existing_thread: Verplaats naar een bestaand bord
     start_new_thread: Of, start een nieuw bord
   discussion_form:
@@ -553,7 +555,7 @@ nl_NL:
     group_notification_history: Groep uitnodigingen
     poll_notification_history: Peiling meldingen geschiedenis
     outcome_notification_history: Resultaat meldingen geschiedenis
-    comment_notification_history: Commentaar meldingen geschiedenis
+    comment_notification_history: Reactie meldingen geschiedenis
     notification_history_explanation: ✓ geeft aan dat de melding is gelezen of dat de e-mail is geopend
     quick_add: "Snelle toevoeging:"
     any_other_groups: "Nog meer groepen?"
@@ -619,7 +621,7 @@ nl_NL:
     notify: Meld
     add_resource: Bijlage toevoegen
     edit_group: Groepsbeschrijving bijwerken
-    add_comment: Becommentarieer
+    add_comment: Geeft reactie
     copy_url: Link kopieren
     edit_thread: Beschrijving bijwerken
     announce_thread: Bord verzenden
@@ -632,11 +634,11 @@ nl_NL:
     translate_poll: '''Peiling'' vertalen'
     edit_stance: Verander standpunt
     translate_stance: Stem vertalen
-    edit_comment: Commentaar bewerken
-    delete_comment: Commentaar verwijderen
+    edit_comment: Reactie bewerken
+    delete_comment: Reactie verwijderen
     reply_to_comment: Antwoord
     fork_comment: Splits bord
-    translate_comment: Commentaar vertalen
+    translate_comment: Reactie vertalen
     edit_outcome: Resultaat bewerken
     announce_outcome: Meld het resultaat
     announce_outcome_active: (Nog niemand werd op de hoogte gebracht van dit resultaat)
@@ -648,7 +650,7 @@ nl_NL:
     unpin_thread: Bord ontprikken
     pin_event: Pin vast aan de tijdslijn
     unpin_event: Ontpin van tijdslijn
-    comment_copied: Commentaar URL gekopieerd naar het klembord
+    comment_copied: Reactie URL gekopieerd naar het klembord
     move_thread: Verplaats naar groep
     poll_copied: Beslissing-URL naar het klembord gekopieerd
     discussion_copied: Bord-URL naar het klembord gekopieerd
@@ -747,6 +749,14 @@ nl_NL:
     thread_status:
       pinned: "Dit bord is vastgeprikt. Het zal voor alle gebruikers bovenaan de lijst van borden van de groepslijst blijven staan."
       closed: "Dit bord is gesloten. Het verschijnt niet langer op het dashboard, en het staat onder 'gesloten' op de groep pagina"
+  delete_group_modal:
+    title: Groep verwijderen
+    body: |
+        Weet je zeker dat je de groep wilt verwijderen?
+        Alle borden, peilingen en andere data van de groep zullen permanent worden verwijderd.
+        We bevelen aan dat je, voordat je door gaat, eerst de data van de groep exporteert en handmatig alle belangrijke bestanden download.
+    confirm: "Type '%{name}' om te bevestigen dat je groep wilt verwijderen."
+    success: De groep is gearchiveerd en zal over 2 weken permanent verwijderd worden.
   group_page:
     stats: Groep statistieken
     threads: Borden
@@ -760,6 +770,8 @@ nl_NL:
     no_threads_here: Geen borden te zien hier!
     search_threads: Zoeken voor borden...
     private_threads: Je moet lid zijn om de privé borden in deze groep te zien.
+    no_more_threads: Geen borden meer
+    view_closed_threads: 'Mis je iets? <a href="{{url}}">Zie gesloten borden</a>'
     messages:
       privacy:
         members: 'Deze groep is nu uitsluitend zichtbaar voor leden'
@@ -838,6 +850,8 @@ nl_NL:
   group_form:
     thread_defaults_help: Standaard instellingen voor nieuwe borden
     click_to_change_image: Cover-afbeelding en logo (klik om te wijzigen)
+    permissions_explaination: |
+        Er zijn twee niveaus van lidmaatschap van een groep: admin en lid
     aria_label: 'Groepsformulier'
     new_organisation: Nieuwe Organisatie
     start_group_heading: 'Een groep starten'
@@ -860,6 +874,10 @@ nl_NL:
       private_to_group: 'Naam en beschrijving zijn uitsluitend zichtbaar voor leden.'
       private_to_parent_members: 'Naam en beschrijving zijn zichtbaar voor leden van {{parent}}'
     privacy: 'Privacy'
+    group_privacy_is_open_description: "Openbaar. Iedereen kan de groep vinden en vragen om mee te doen. Alle borden zijn openbaar."
+    group_privacy_is_closed_description: "Besloten. Iedereen met de link kan vragen om mee te doen. Alle borden zijn privé."
+    group_privacy_is_closed_public_threads_description: "Besloten. Iedereen met de link kan vragen om mee te doen. Borden zijn publiek of privé."
+    group_privacy_is_secret_description: "Alleen uitgenodigde mensen kunnen de groep vinden. Alle borden zijn privé."
     confirm_change_to_secret: "Als je verder gaat worden alle borden in deze groep en in de subgroepen privé gemaakt."
     confirm_change_to_secret_subgroup: 'Als je verder gaat worden alle borden privé gemaakt.'
     confirm_change_to_public: 'Als je verder gaat worden alle borden in deze groep openbaar gemaakt op het internet.'
@@ -888,10 +906,11 @@ nl_NL:
     members_can_add_members: 'Leden kunnen mensen uitnodigen en instemmen met verzoeken om deelname.'
     members_can_create_subgroups: 'Leden kunnen subgroepen aanmaken.'
     members_can_edit_discussions: 'Leden kunnen de beschrijving en de titel van elk bord updaten.'
-    members_can_edit_comments: 'Leden kunnen hun eigen opmerkingen altijd bewerken.'
+    members_can_edit_comments: 'Leden kunnen hun eigen reacties altijd bewerken.'
     members_can_start_discussions: 'Leden kunnen nieuwe borden starten.'
     members_can_vote: 'Leden kunnen stemmen op voorstellen.'
     members_can_raise_motions: 'Leden kunnen voorstellen starten.'
+    admins_can_edit_user_content: "Admins kunnen reacties en peilingen van anderen wijzigen."
     submit_start_group: 'Start groep'
     submit_start_subgroup: 'Start subgroep'
     submit_update: 'Instellingen bijwerken'
@@ -1065,7 +1084,7 @@ nl_NL:
     aria_label: 'Deactiveer gebruikersaccount'
     introduction: 'Als je je account deactiveert:'
     you_will_be_deleted: "Jouw gebruikersnaam inclusief jouw naam, e-mailadres en andere persoonlijke identificeerbare data zullen verwijderd worden uit onze systemen."
-    name_removed: 'Opmerkingen, voorstellen en gesprekken die je gemaakt hebt blijven bewaard, maar je naam wordt erbij verwijderd'
+    name_removed: 'Reacties, voorstellen en gesprekken die je gemaakt hebt blijven bewaard, maar je naam wordt erbij verwijderd'
     no_longer_group_member: 'Je staat bij geen enkele groep meer geregistreerd als lid '
     no_emails: 'Je zal niet langer meldings e-mails ontvangen'
     you_can_reactivate: "Je kan je account later activeren indien gewenst"
@@ -1084,7 +1103,7 @@ nl_NL:
     announcement_label: Aankondigingen
     announcement_description: "Je zult een e-mail ontvangen over alle inhoud die door personen werden aangekondigd in jouw groepen."
     mentioned_label: Vermeldingen & Antwoorden
-    mentioned_description: "Als iemand jou in een commentaar vermeld of op jou antwoord, ontvang je een e-mailmelding"
+    mentioned_description: "Als iemand jou in een reactie vermeld of op jou antwoord, ontvang je een e-mailmelding"
     update_settings: Bewaar veranderingen
     specific_groups: Instellingen voor specifieke groepen
     default_settings:
@@ -1199,10 +1218,10 @@ nl_NL:
       image_alt: 'Toegevoegde afbeelding'
     n_previous: 'Laad {{count}} eerdere antwoorden'
     n_more: 'Laad {{count}} antwoorden'
-    add_comment: Opmerking toevoegen
+    add_comment: Reactie toevoegen
     add_poll: Voeg peiling toe
     add_outcome: Voeg resultaat toe
-    comment: Becommentarieer
+    comment: Geef reactie
     facilitate: Faciliteren
   thread_group:
     aria_label: 'Groepsnaam'
@@ -1221,7 +1240,7 @@ nl_NL:
     move_thread: 'Verplaatsen'
     print_thread: 'Afdrukken'
     delete_thread: 'Verwijderen'
-    add_comment: 'Becommentarieer'
+    add_comment: 'Geef reactie'
     seen_by_count: 'Gezien door {{count}} mensen'
     forked_from: "Geforked van"
   pin_thread_modal:
@@ -1253,13 +1272,18 @@ nl_NL:
   move_thread_form:
     aria_label: Bord verplaatsen
     title: Bord verplaatsen
+    body: Doel groep
     confirm: Bord verplaatsen
     confirm_change_to_private_thread: '{{groupName}} is een open groep. Als je verder gaat zal dit bord openbaar gemaakt worden.'
     messages:
       success: Bord is verplaatst naar {{name}}
   delete_comment_dialog:
     title: 'Verwijder reactie'
+    question: 'Weet je zeker dat je deze reactie wil verwijderen? (Dit kan niet ongedaan worden gemaakt)'
     confirm: 'Verwijder reactie'
+  discard_comment_dialog:
+    title: 'Reactie verwijderen'
+    question: 'Weet je zeker dat je deze reactie wil verwijderen? (Dit kan niet ongedaan worden gemaakt)'
   contact_message_form:
     title: "Hallo! Hoe kunnen we helpen?"
     read_the_manual: |
@@ -1315,7 +1339,7 @@ nl_NL:
     your_response: Je antwoord
     change_your_response: Bewerk antwoord
     reason: Reden
-    reason_placeholder: Nog bijkomend commentaar?
+    reason_placeholder: Nog meer reacties?
     message: Bericht
     results: Resultaten
     responses: Antwoorden
@@ -1357,6 +1381,7 @@ nl_NL:
       options_added: Nieuwe opties toegevoegd
   poll_common_card:
     show_results: Toon resultaten
+    deleted: Deze peiling is verwijderd
   poll_common_index_card:
     title: Vorige beslissingen
     no_polls: Geen oudere beslissingen gevonden
@@ -1406,6 +1431,8 @@ nl_NL:
     filename: Bestandsnaam
     uploaded_by: Geupload door
     uploaded_at: Geupload op
+    delete_confirmation: |
+        Weet je zeker dat je deze bijlage wil verwijderen? Het zal verwijderd worden van gerelateerde reacties en borden. Dit kan niet ongedaan worden gemaakt.
   subgroups_panel:
     search_subgroups_of_name: 'Doorzoek subgroepen van {{name}}'
     group_without_subgroups: '{{name}} zonder subgroepen'
@@ -1463,6 +1490,7 @@ nl_NL:
       helptext_on: Toon niet hoe mensen stemmen tot de peiling gesloten is
   poll_common_close_form:
     title: Sluit een peiling voortijdig
+    helptext: Weet je zeker dat je deze %{poll_type} vervroegd wil sluiten?
     close_proposal: Voorstel sluiten
     close_poll: Peiling sluiten
     close_count: '''Check'' sluiten'
@@ -1484,6 +1512,9 @@ nl_NL:
     dot_vote_reopened: Dotmocracy heropend
     meeting_reopened: Tijd peiling heropend
     ranked_choice_reopened: Gerangschikte keuze peiling heropend
+  poll_common_move_form:
+    title: "Verplaats {{poll_type}}"
+    success: "{{poll_type}} verplaatst naar {{group}}"
   poll_common_closing_at_field:
     closing: Sluit
     closing_hour: Sluitingstijd
@@ -1530,6 +1561,7 @@ nl_NL:
     authored_by: 'Door {{name}}'
   poll_common_delete_modal:
     question: Ben je zeker dat je dit wilt verwijderen?
+    title: '{{pollType}} verwijderen'
     success: Succesvol verwijderd
   poll_common_form:
     title: Titel
@@ -1638,8 +1670,8 @@ nl_NL:
     no_options: Ingevulde tijden zijn in je huidige tijdzone ({{zone}}). Deelnemers zien deze tijd vertaald naar hun eigen tijdzone.
     meeting_duration: Duur van de vergadering
     add_option_placeholder: Voeg nieuwe tijd toe
-    time_slot_added: Tijdsslot toegevoegd
-    time_slot_already_added: Tijdsslot reeds toegevoegd
+    time_slot_added: Tijdvenster toegevoegd
+    time_slot_already_added: Tijdvenster reeds toegevoegd
   poll_ranked_choice_form:
     tool_tip_expanded: |
         <p>'Keuzes rangschikken' is een kiesmethode die toelaat om iedere kiezer zijn voorkeuren te laten rangschikken.</p>
@@ -1663,6 +1695,7 @@ nl_NL:
     rank: Volgorde
     points: Punten
   poll_meeting_time_field:
+    add_time_slot: Tijdvenster toevoegen
     new_time_slot: Nieuw tijdvenster
     closing_hour: Sluitingsuur
   poll_proposal_vote_form:
@@ -1767,6 +1800,9 @@ nl_NL:
     title: Deel peiling - {{title}}
   auth_form:
     code: '000000'
+    youre_invited: Je bent uitgenodigd om lid te worden van {{group_name}}.
+    youre_invited_discussion: Je bent uitgenodigd om mee te doen met de discussie.
+    youre_invited_poll: Je bent uitgenodigd om te stemmen.
     sign_in_to_loomio: Log in op {{site_name}}
     sign_in_help: Moeite om in te schrijven?
     sign_in: Inloggen
@@ -1846,7 +1882,7 @@ nl_NL:
       new_discussion: Een bord is gestart
       discussion_edited: Een bord is gewijzigd
       poll_edited: Een peiling is gewijzigd
-      new_comment: Commentaar geplaatst
+      new_comment: Reactie geplaatst
       poll_created: Een peiling is gestart
       stance_created: Een stem is uitgebracht
       poll_closing_soon: Een peiling eindigt binnenkort
@@ -1918,6 +1954,10 @@ nl_NL:
       project: Project team
       forum: Forum
       other: Andere
+    desired_features:
+      polls: Houd peilingen waar mijn team op kan stemmen
+      discussions: Houd discussies online en verzamel input
+      archive: Leg gemaakte besluiten vast of archiveer informatie
     referrers:
       google: Google search
       invitation: Uitgenodigd op een Loomio groep
@@ -1933,4 +1973,5 @@ nl_NL:
     role: "Wat is jouw rol in de groep?"
     website: "Website URL"
     usage: "Hoe ga je Loomio gebruiken? Kies wat het beste past"
+    desired_feature: "Wat is het meest belangrijke waar je Loomio voor wil gebruiken?"
     referrer: "Hoe heb je van Loomio eerst gehoord?"
