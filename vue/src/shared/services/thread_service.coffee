@@ -188,7 +188,7 @@ export default new class ThreadService
     #             flash: 'delete_thread_form.messages.success'
     #           redirect: LmoUrlService.group discussion.group()
 
-    discard_thread:
+    delete_thread:
       menu: true
       canPerform: -> AbilityService.canDeleteThread(discussion)
       perform: ->
