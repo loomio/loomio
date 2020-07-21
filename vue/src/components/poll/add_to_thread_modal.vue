@@ -37,7 +37,7 @@ export default
         @searchResults = Records.discussions.collection.chain()
           .find(groupId: @groupId)
           .find(title: { $regex: [@searchFragment, 'i'] })
-          .where((d) -> !!AbilityService.canAddComment(d))
+          .where((d) -> !!AbilityService.canStartPoll(d))
           .simplesort('title')
           .data()
     , 500

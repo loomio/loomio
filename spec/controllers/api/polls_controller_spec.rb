@@ -20,7 +20,6 @@ describe API::PollsController do
     poll_option_names: ["agree", "abstain", "disagree", "block"],
     closing_at: 3.days.from_now
   }}
-  let(:standalone_poll) { create :poll, title: "Standalone Complex", group: group, author: user }
 
   before { group.add_member! user }
 
@@ -417,53 +416,38 @@ describe API::PollsController do
 
   describe 'add_to_thread' do
     let(:comment) { create :comment, discussion: discussion, author: user }
+    let(:poll) { create :poll, title: "Standalone Complex", group: group, author: user }
 
     before do
       group.add_admin! user
       DiscussionService.create(discussion: discussion, actor: discussion.author)
-      PollService.create(poll: standalone_poll, actor: poll.author)
+      PollService.create(poll: poll, actor: poll.author)
       CommentService.create(comment: comment, actor: user)
     end
 
     it "adds poll to thread" do
       sign_in user
-      patch :add_to_thread, params: { id: standalone_poll.key, discussion_id: discussion.id }
+
+      expect(poll.created_event.discussion_id).to be nil
+      expect(poll.created_event.parent_id).to be nil
+      expect(poll.created_event.sequence_id).to be nil
+      expect(poll.created_event.position).to be 0
+
+      patch :add_to_thread, params: { id: poll.key, discussion_id: discussion.id }
+
+      poll.reload
+      discussion.reload
+
       json = JSON.parse(response.body)
-      poll = Poll.find (json['polls'][0]['id'])
+      expect(json.keys).to include 'polls'
+      expect(json.keys).to include 'events'
+      
       expect(poll.created_event.discussion_id).to eq discussion.id
       expect(poll.created_event.parent_id).to eq discussion.created_event.id
-    end
-
-    it "poll created event correct sequence_id" do
-      sign_in user
-      patch :add_to_thread, params: { id: standalone_poll.key, discussion_id: discussion.id }
-      json = JSON.parse(response.body)
-      poll = Poll.find (json['polls'][0]['id'])
       expect(poll.created_event.sequence_id).to eq 2
-    end
-
-    it "poll created event correct position" do
-      sign_in user
-      patch :add_to_thread, params: { id: standalone_poll.key, discussion_id: discussion.id }
-      json = JSON.parse(response.body)
-      poll = Poll.find (json['polls'][0]['id'])
       expect(poll.created_event.position).to eq 2
-    end
-
-    it "discussion created event correct children count" do
-      sign_in user
-      patch :add_to_thread, params: { id: standalone_poll.key, discussion_id: discussion.id }
-      json = JSON.parse(response.body)
-      poll = Poll.find (json['polls'][0]['id'])
-      expect(discussion.reload.created_event.children.count).to eq 2
-    end
-
-    it "discussion correct items count" do
-      sign_in user
-      patch :add_to_thread, params: { id: standalone_poll.key, discussion_id: discussion.id }
-      json = JSON.parse(response.body)
-      poll = Poll.find (json['polls'][0]['id'])
-      expect(discussion.reload.items_count).to eq 2
+      expect(discussion.created_event.children.count).to eq 2
+      expect(discussion.items_count).to eq 2
     end
   end
 
