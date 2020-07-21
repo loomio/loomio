@@ -223,15 +223,13 @@ class Group < ApplicationRecord
   end
 
   def archive!
-    self.update_attribute(:archived_at, DateTime.now)
-    memberships.update_all(archived_at: DateTime.now)
-    subgroups.map(&:archive!)
+    Group.where(id: id_and_subgroup_ids).update_all(archived_at: DateTime.now)
+    Membership.where(group_id: id_and_subgroup_ids).update_all(archived_at: DateTime.now)
   end
 
   def unarchive!
-    self.update_attribute(:archived_at, nil)
-    all_memberships.update_all(archived_at: nil)
-    all_subgroups.update_all(archived_at: nil)
+    Group.where(id: all_subgroup_ids.concat([id])).update_all(archived_at: nil)
+    Membership.where(group_id: all_subgroup_ids.concat([id])).update_all(archived_at: nil)
   end
 
   def org_memberships_count
@@ -277,7 +275,7 @@ class Group < ApplicationRecord
   end
 
   def id_and_subgroup_ids
-    @id_and_subgroup_ids ||= (Array(id) | subgroup_ids)
+    subgroup_ids.concat([id])
   end
 
   def slack_identity
