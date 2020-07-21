@@ -4,10 +4,8 @@ module Dev::PollsScenarioHelper
   def poll_created_scenario(params)
     group = create_group_with_members
 
-    unless params[:standalone]
-      discussion = fake_discussion(group: group, title: "Some discussion")
-      DiscussionService.create(discussion: discussion, actor: group.members.first)
-    end
+    discussion = fake_discussion(group: group, title: "Some discussion")
+    DiscussionService.create(discussion: discussion, actor: group.members.first)
 
     actor = group.admins.first
     user  = saved(fake_user(time_zone: "America/New_York"))
@@ -16,7 +14,7 @@ module Dev::PollsScenarioHelper
     group.add_admin! user if params[:admin]
 
     poll = fake_poll(group: group,
-                     discussion: discussion,
+                     discussion: params[:standalone] ? nil : discussion,
                      poll_type: params[:poll_type],
                      hide_results_until_closed: !!params[:hide_results_until_closed],
                      anonymous: !!params[:anonymous])
