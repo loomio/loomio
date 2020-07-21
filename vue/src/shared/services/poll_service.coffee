@@ -159,3 +159,13 @@ export default new class PollService
                 raw_title: i18n.t('poll_common_delete_modal.title', pollType: i18n.t(poll.pollTypeKey()))
                 helptext: 'poll_common_delete_modal.question'
                 flash: 'poll_common_delete_modal.success'
+
+    add_poll_to_thread:
+      name: 'action_dock.add_poll_to_thread'
+      canPerform: ->
+        AbilityService.canAddPollToThread(poll)
+      perform: ->
+        openModal
+          component: 'AddPollToThreadModal'
+          props:
+            poll: poll
