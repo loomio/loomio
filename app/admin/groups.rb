@@ -89,7 +89,7 @@ ActiveAdmin.register Group, as: 'Group' do
     end
 
     panel("Members") do
-      table_for group.all_memberships.includes(:user).order(created_at: :desc).each do
+      table_for group.all_memberships.includes(:user, :inviter).order(created_at: :desc).filter{|m| m.user }.each do |membership|
         column(:name)        { |m| link_to m.user.name, admin_user_path(m.user) }
         column(:email)       { |m| m.user.email }
         column(:coordinator) { |m| m.admin }
