@@ -34,7 +34,7 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def include_eventable?
-    include_type?(object.eventable_type.downcase)
+    true
   end
 
   def include_poll_options?
