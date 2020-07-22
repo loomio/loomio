@@ -68,15 +68,15 @@ class GroupSerializer < ApplicationSerializer
 
   def subscription
     sub = Subscription.for(object)
-    if current_user_membership
+    if (current_user_membership && sub)
       {
         max_members:     sub.max_members,
         max_threads:     sub.max_threads,
         plan:            sub.plan,
         active:          sub.is_active?,
         renews_at:       sub.renews_at,
-        management_link: sub.info['chargify_management_link'],
-        referral_code:   sub.info['chargify_referral_code'],
+        management_link: (sub.info || {})['chargify_management_link'],
+        referral_code:   (sub.info || {})['chargify_referral_code'],
         members_count:   sub.members_count
       }
     else
