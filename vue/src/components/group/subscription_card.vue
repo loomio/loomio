@@ -42,5 +42,5 @@ v-card.my-6(v-if="canSee" outlined)
             td(v-html="val")
   v-card-actions(v-if="showUpgradeButton")
     v-spacer
-    v-btn(color="primary" href="/upgrade" target="_blank") Upgrade
+    v-btn(color="primary" href="/upgrade" target="_blank" v-t="'current_plan_button.upgrade'")
 </template>
