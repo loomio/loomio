@@ -14,7 +14,7 @@ module Ability::Poll
       poll.admins.exists?(user.id))
     end
 
-    can [:show, :toggle_subscription, :subscribe_to], ::Poll do |poll|
+    can [:show, :toggle_subscription, :subscribe_to, :export], ::Poll do |poll|
       PollQuery.visible_to(user: user, show_public: true).exists?(poll.id)
       # poll.anyone_can_participate ||
       # user_is_author_of?(poll) ||
@@ -38,7 +38,7 @@ module Ability::Poll
       end
     end
 
-    can [:update, :share, :remind, :destroy, :export], ::Poll do |poll|
+    can [:update, :share, :remind, :destroy], ::Poll do |poll|
       poll.author == user || poll.admins.exists?(user.id)
     end
 
