@@ -80,7 +80,12 @@ class GroupSerializer < ApplicationSerializer
         members_count:   sub.members_count
       }
     else
-      {}
+      {
+        max_members:     sub.max_members,
+        max_threads:     sub.max_threads,
+        active:          sub.is_active?,
+        members_count:   sub.members_count
+      }
     end
   end
 
