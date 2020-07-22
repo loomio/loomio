@@ -86,7 +86,6 @@ export default
 
       if @$route.query.q
         chain = Records.searchResults.collection.chain()
-        chain = chain.find(discardedAt: null)
         chain = chain.find(resultGroupId: {$in: @group.parentOrSelf().organisationIds()})
         chain = chain.find(query: @$route.query.q).data()
         @searchResults = orderBy(chain, 'rank', 'desc')
@@ -203,7 +202,7 @@ div.discussions-panel(v-if="group")
           v-list-item-title(v-t="'loomio_tags.all_tags'")
         v-list-item(v-for="tag in groupTags" :key="tag" @click="routeQuery({tag: tag})")
           v-list-item-title {{tag}}
-    v-text-field.mr-2.flex-grow-1(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_threads', {name: group.name})" append-icon="mdi-magnify")
+    v-text-field.mr-2.flex-grow-1(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_threads', {name: group.name})" append-icon="mdi-magnify" :loading="searchLoader.loading")
     v-btn.discussions-panel__new-thread-button(@click='openStartDiscussionModal()' color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
 
   v-card.discussions-panel(outlined)
