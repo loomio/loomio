@@ -1,5 +1,6 @@
 <script lang="coffee">
 import { differenceInDays, format } from 'date-fns'
+import Session         from '@/shared/services/session'
 export default
   props:
     group: Object
@@ -7,7 +8,7 @@ export default
     isWasGift: ->
       @group.subscription.plan == 'was-gift'
     isTrialing: ->
-      @group.subscription.plan == 'trial'
+      @group.membersInclude(Session.user()) && @group.subscription.plan == 'trial'
     isExpired: ->
       @isTrialing && !@group.subscription.active
     daysRemaining: ->

@@ -156,21 +156,21 @@ export default new class ThreadService
 
     close_thread:
       menu: true
-      perform: => @close(discussion)
       canPerform: -> !discussion.closedAt
+      perform: => @close(discussion)
 
     reopen_thread:
       menu: true
-      perform: => @reopen(discussion)
       canPerform: -> AbilityService.canReopenThread(discussion)
+      perform: => @reopen(discussion)
 
     move_thread:
       menu: true
+      canPerform: -> AbilityService.canMoveThread(discussion)
       perform: ->
         openModal
           component: 'MoveThreadForm'
           props: { discussion: discussion.clone() }
-      canPerform: -> AbilityService.canMoveThread(discussion)
 
     # delete_thread:
     #   menu: true
@@ -188,7 +188,8 @@ export default new class ThreadService
     #             flash: 'delete_thread_form.messages.success'
     #           redirect: LmoUrlService.group discussion.group()
 
-    delete_thread:
+    discard_thread:
+      name: 'action_dock.delete_thread'
       menu: true
       canPerform: -> AbilityService.canDeleteThread(discussion)
       perform: ->

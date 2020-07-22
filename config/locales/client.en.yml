@@ -760,6 +760,7 @@ en:
     upload_success: 'Logo successfully updated'
 
   join_group_button:
+    not_a_member: "You're not currently a member of this group."
     join_group: Join group
     membership_requested: Membership requested
     messages:
