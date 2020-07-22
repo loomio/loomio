@@ -6,13 +6,13 @@ export default
     group: Object
   computed:
     isWasGift: ->
-      @group.subscriptionPlan == 'was-gift'
+      @group.subscription.plan == 'was-gift'
     isTrialing: ->
-      @group.membersInclude(Session.user()) && @group.subscriptionState == 'trialing'
+      @group.membersInclude(Session.user()) && @group.subscription.plan == 'trial'
     isExpired: ->
-      @isTrialing && !@group.subscriptionActive
+      @isTrialing && !@group.subscription.active
     daysRemaining: ->
-      differenceInDays(@group.subscriptionExpiresAt, new Date) + 1
+      differenceInDays(@group.subscription.expires_at, new Date) + 1
     createdDate: ->
       format(new Date(@group.createdAt), 'do LLLL yyyy')
 </script>

@@ -38,9 +38,10 @@ en:
     max_members: "Max members"
     expires_at: "Expires"
     renews_at: "Renews"
-    referral_code: "Chargify referral code"
-    chargify_link: "Chargify billing portal"
+    referral_code: "Referral code"
+    chargify_link: "Billing portal"
     referral_code_help: "Give a friend a discount, get yourself some credit!"
+    manage_payment_details: "Manage payment details"
 
   loomio_tags:
     all_tags: All tags
@@ -2065,7 +2066,6 @@ en:
     warning_helptext: "Warning: You'll be required to authenticate with your provider after you click save."
     idp_metadata_url: IDP Metadata URL
     idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
-    pro_plan_only: This feature is only available to Pro plan customers. Please check out our <a href="/upgrade" target="_blank">upgrade page</a> for more details.
     success: Single sign-on successfully configured
     destroyed: Single sign-on removed
     invalid_idp_metadata_url: Invalid IDP metadata URL

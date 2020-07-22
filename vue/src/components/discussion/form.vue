@@ -71,7 +71,7 @@ export default
 
     maxThreads: ->
       return null unless @discussion.group()
-      @discussion.group().parentOrSelf().subscriptionMaxThreads
+      @discussion.group().parentOrSelf().subscription.max_threads
 
     threadCount: ->
       return unless @discussion.group()
@@ -82,7 +82,7 @@ export default
 
     subscriptionActive: ->
       return true unless @discussion.group()
-      @discussion.group().parentOrSelf().subscriptionActive
+      @discussion.group().parentOrSelf().subscription.active
 
     canStartThread: ->
       @subscriptionActive && !@maxThreadsReached

@@ -35,22 +35,22 @@ export default
 
   created: ->
     @searchResults = if @invitingToGroup then [] else @announcement.model.members()
-    @maxMembers = @announcement.model.group().parentOrSelf().subscriptionMaxMembers || 0
+    @maxMembers = @announcement.model.group().parentOrSelf().subscription.max_members || 0
     if @invitingToGroup
       @announcement.model.fetchToken()
 
     if @announcement.model.group()
       @invitationsRemaining =
-        (@announcement.model.group().parentOrSelf().subscriptionMaxMembers || 0) -
+        (@announcement.model.group().parentOrSelf().subscription.max_members || 0) -
         @announcement.model.group().parentOrSelf().orgMembershipsCount
 
       @showInvitationsRemaining =
         @invitingToGroup &&
-        @announcement.model.group().parentOrSelf().subscriptionMaxMembers
+        @announcement.model.group().parentOrSelf().subscription.max_members
 
-      @subscriptionActive = @announcement.model.group().parentOrSelf().subscriptionActive
+      @subscriptionActive = @announcement.model.group().parentOrSelf().subscription.active
 
-      @canInvite = @subscriptionActive && (!@announcement.model.group().parentOrSelf().subscriptionMaxMembers || @invitationsRemaining > 0)
+      @canInvite = @subscriptionActive && (!@announcement.model.group().parentOrSelf().subscription.max_members || @invitationsRemaining > 0)
 
   methods:
     submit: ->
