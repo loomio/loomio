@@ -454,7 +454,7 @@ GEM
       activerecord (>= 3.0)
       activesupport (>= 3.0)
     sexp_processor (4.14.1)
-    sidekiq (6.1.0)
+    sidekiq (6.1.1)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
