@@ -90,10 +90,10 @@ v-main
         space
       span.group-page__name.mr-4
         | {{group.name}}
-    join-group-button(:group='group')
     trial-banner(:group="group")
     group-onboarding-card(:group="group")
     formatted-text.group-page__description(v-if="group" :model="group" column="description")
+    join-group-button(:group='group')
     document-list(:model='group')
     attachment-list(:attachments="group.attachments" :edit="canEditGroup && openGroupSettingsModal")
     v-divider.mt-4
