@@ -4,7 +4,7 @@ class API::CommentsController < API::RestfulController
   def discard
     load_resource
     @event = service.discard(comment: resource, actor: current_user)
-    respond_with_resource(scope: default_scope.merge(exclude_types: %w[discussion group user]),
+    respond_with_resource(scope: {exclude_types: %w[discussion group user]},
                           serializer: resource_serializer,
                           root: serializer_root)
   end
@@ -12,7 +12,7 @@ class API::CommentsController < API::RestfulController
   def undiscard
     load_resource
     @event = service.undiscard(comment: resource, actor: current_user)
-    respond_with_resource(scope: default_scope.merge(exclude_types: %w[discussion group user]),
+    respond_with_resource(scope: {exclude_types: %w[discussion group user]},
                           serializer: resource_serializer,
                           root: serializer_root)
   end

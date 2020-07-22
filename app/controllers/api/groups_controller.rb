@@ -1,7 +1,7 @@
 class API::GroupsController < API::RestfulController
   def token
     self.resource = load_and_authorize(:group, :invite_people)
-    respond_with_resource scope: {include_token: true}
+    respond_with_resource scope: {include_token: true, exclude_types: ['membership', 'user']}
   end
 
   def suggest_handle
@@ -11,7 +11,7 @@ class API::GroupsController < API::RestfulController
   def reset_token
     self.resource = load_and_authorize(:group, :invite_people)
     resource.update(token: resource.class.generate_unique_secure_token)
-    respond_with_resource scope: {include_token: true}
+    respond_with_resource scope: {include_token: true, exclude_types: ['membership', 'user']}
   end
 
   def show

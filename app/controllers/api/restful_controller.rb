@@ -47,9 +47,9 @@ class API::RestfulController < API::SnorlaxBase
     resource_class.visible_to_public.order(created_at: :desc)
   end
 
-  def respond_with_resource(scope: default_scope, serializer: resource_serializer, root: serializer_root)
+  def respond_with_resource(scope: {}, serializer: resource_serializer, root: serializer_root)
     if resource.errors.empty?
-      respond_with_collection scope: scope, serializer: serializer, root: root
+      respond_with_collection scope: default_scope.merge(scope), serializer: serializer, root: root
     else
       respond_with_errors
     end

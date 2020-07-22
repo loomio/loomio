@@ -46,10 +46,6 @@ export default
         @close()
       .catch => alert "Something went wrong. Email contact@loomio.org for support."
 
-  computed:
-    isProPlan: ->
-      @group.subscriptionPlan == 'pp-pro-monthly' || @group.subscriptionPlan == 'pp-pro-annual'
-
 </script>
 <template lang="pug">
 v-card.install-saml-modal
@@ -77,10 +73,9 @@ v-card.install-saml-modal
   div(v-else)
     v-card-text(v-if="!loading")
       p.helptext(v-html="$t('configure_sso.helptext')")
-      p(v-if="!isProPlan" v-html="$t('configure_sso.pro_plan_only')")
-      v-text-field(v-if="isProPlan" v-model='idpMetadataUrl' :label="$t('configure_sso.idp_metadata_url')" :placeholder="$t('configure_sso.idp_metadata_url_placeholder')")
+      v-text-field(v-model='idpMetadataUrl' :label="$t('configure_sso.idp_metadata_url')" :placeholder="$t('configure_sso.idp_metadata_url_placeholder')")
       p(v-t="'configure_sso.warning_helptext'")
-    v-card-actions(v-if="!loading && isProPlan")
+    v-card-actions(v-if="!loading")
       v-spacer
       v-btn(color='primary' @click='submit()' v-t="'common.action.save'")
 </template>
