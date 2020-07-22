@@ -65,7 +65,7 @@ class API::EventsController < API::RestfulController
 
   def accessible_records
     load_and_authorize(:discussion)
-    records = @discussion.items.includes(:user, :discussion, :eventable, parent: [:user, :eventable])
+    records = @discussion.items.includes(:user, :discussion, :eventable)
 
     records = records.where("#{order} >= ?", from)
 
