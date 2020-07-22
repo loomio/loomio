@@ -75,7 +75,7 @@ export default new class CommentService
 
     discard_comment:
       icon: 'mdi-delete'
-      name: 'common.action.remove'
+      name: 'common.action.delete'
       canPerform: -> AbilityService.canDiscardComment(comment)
       perform: ->
         openModal
@@ -84,10 +84,10 @@ export default new class CommentService
             confirm:
               submit: -> comment.discard()
               text:
-                title: 'discard_comment_dialog.title'
-                helptext: 'discard_comment_dialog.question'
-                confirm: 'discard_comment_dialog.title'
-                flash: 'comment_form.messages.removed'
+                title: 'delete_comment_dialog.title'
+                helptext: 'delete_comment_dialog.question'
+                confirm: 'delete_comment_dialog.confirm'
+                flash: 'comment_form.messages.destroyed'
 
     undiscard_comment:
       icon: 'mdi-delete-restore'
@@ -95,17 +95,17 @@ export default new class CommentService
       canPerform: -> AbilityService.canUndiscardComment(comment)
       perform: -> comment.undiscard()
 
-    delete_comment:
-      icon: 'mdi-delete'
-      canPerform: -> AbilityService.canDeleteComment(comment)
-      perform: ->
-        openModal
-          component: 'ConfirmModal',
-          props:
-            confirm:
-              submit: -> comment.destroy()
-              text:
-                title: 'delete_comment_dialog.title'
-                helptext: 'delete_comment_dialog.question'
-                confirm: 'delete_comment_dialog.confirm'
-                flash: 'comment_form.messages.destroyed'
+    # delete_comment:
+    #   icon: 'mdi-delete'
+    #   canPerform: -> AbilityService.canDeleteComment(comment)
+    #   perform: ->
+    #     openModal
+    #       component: 'ConfirmModal',
+    #       props:
+    #         confirm:
+    #           submit: -> comment.destroy()
+    #           text:
+    #             title: 'delete_comment_dialog.title'
+    #             helptext: 'delete_comment_dialog.question'
+    #             confirm: 'delete_comment_dialog.confirm'
+    #             flash: 'comment_form.messages.destroyed'

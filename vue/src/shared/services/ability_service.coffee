@@ -66,7 +66,8 @@ export default new class AbilityService
   canUnpinThread: (thread) ->
     !thread.closedAt && thread.pinned && thread.adminsInclude(Session.user())
 
-  canExportThread: (thread) -> thread.adminsInclude(Session.user())
+  canExportThread: (thread) ->
+    !thread.discardedAt && thread.membersInclude(Session.user())
 
   canPinEvent: (event) ->
     !event.model().discardedAt &&
@@ -216,7 +217,7 @@ export default new class AbilityService
     !poll.discardedAt && poll.adminsInclude(Session.user())
 
   canExportPoll: (poll) ->
-    !poll.discardedAt && poll.adminsInclude(Session.user())
+    !poll.discardedAt && poll.membersInclude(Session.user())
 
   canAddPollToThread: (poll) ->
     !poll.discardedAt && !poll.discussionId && poll.adminsInclude(Session.user())
