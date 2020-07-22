@@ -90,6 +90,7 @@ v-main
         space
       span.group-page__name.mr-4
         | {{group.name}}
+    join-group-button(:group='group')
     trial-banner(:group="group")
     group-onboarding-card(:group="group")
     formatted-text.group-page__description(v-if="group" :model="group" column="description")
@@ -100,7 +101,6 @@ v-main
       v-tabs-slider
       v-tab(v-for="tab of tabs" :key="tab.id" :to="tab.route" :class="'group-page-' + tab.name + '-tab' " exact)
         span(v-t="'group_page.'+tab.name")
-    join-group-button(:group='group')
     router-view
 </template>
 

@@ -40,7 +40,7 @@ module Ability::Discussion
       discussion.admins.exists?(user.id)
     end
 
-    can [:destroy, :move, :move_comments], ::Discussion do |discussion|
+    can [:destroy, :move, :move_comments, :discard], ::Discussion do |discussion|
       discussion.author == user or discussion.admins.exists?(user.id)
     end
 

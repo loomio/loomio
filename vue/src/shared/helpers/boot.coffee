@@ -18,6 +18,10 @@ export default (callback) ->
 
       if AppConfig.sentry_dsn
         Sentry.init
+          ignoreErrors: [
+            "Avoided redundant navigation to current location",
+            "NotFoundError: Node.removeChild"
+          ]
           dsn: AppConfig.sentry_dsn
           integrations: [
             new Integrations.Vue
@@ -25,6 +29,7 @@ export default (callback) ->
               attachProps: true
               logErrors: true
           ]
+
         Sentry.configureScope (scope) ->
           scope.setTag("loomio_version", AppConfig.version)
 

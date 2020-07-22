@@ -126,6 +126,10 @@ export default class PollModel extends BaseModel
     @processing = true
     @remote.postMember(@key, 'add_options', poll_option_names: @pollOptionNames).finally => @processing = false
 
+  addToThread: (discussionId) =>
+    @processing = true
+    @remote.patchMember(@keyOrId(), 'add_to_thread', { discussion_id: discussionId }).finally => @processing = false
+
   toggleSubscription: =>
     @remote.postMember(@key, 'toggle_subscription')
 

@@ -144,4 +144,15 @@ class PollService
     Poll.where(example: true).where('created_at < ?', 1.day.ago).destroy_all
   end
 
+  def self.add_to_thread(poll:, params:, actor:)
+    discussion = Discussion.find(params[:discussion_id])
+    actor.ability.authorize! :update, poll
+    actor.ability.authorize! :update, discussion
+    ActiveRecord::Base.transaction do
+      poll.update(discussion_id: discussion.id, group_id: discussion.group.id, stances_in_discussion: false)
+      poll.created_event.update(discussion_id: discussion.id, parent_id: discussion.created_event.id, pinned: true)
+    end
+    poll.created_event
+  end
+
 end

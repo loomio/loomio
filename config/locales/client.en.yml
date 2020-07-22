@@ -707,6 +707,7 @@ en:
     delete_thread: Delete thread
     notification_history: Notification history
     move_item: Move item
+    add_poll_to_thread: Add to thread
 
   formatting:
     bold: Bold
@@ -758,6 +759,7 @@ en:
     upload_success: 'Logo successfully updated'
 
   join_group_button:
+    not_a_member: "You're not currently a member of this group."
     join_group: Join group
     membership_requested: Membership requested
     messages:
@@ -1955,6 +1957,9 @@ en:
 
   share_poll_page:
     title: Share poll - {{title}}
+
+  add_poll_to_thread_modal:
+    success: "Success, {{pollType}} added to thread!"
 
   auth_form:
     code: '000000'
