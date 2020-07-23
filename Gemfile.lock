@@ -503,7 +503,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  actioncable
   active_model_serializers (~> 0.8.1)
   activeadmin (~> 2.7.0)
   activerecord-import (= 1.0.5)
