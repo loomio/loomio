@@ -1,5 +1,5 @@
 <script lang="coffee">
-import { differenceInDays, format } from 'date-fns'
+import { differenceInDays, format, parseISO } from 'date-fns'
 import Session         from '@/shared/services/session'
 export default
   props:
@@ -12,7 +12,7 @@ export default
     isExpired: ->
       @isTrialing && !@group.subscription.active
     daysRemaining: ->
-      differenceInDays(@group.subscription.expires_at, new Date) + 1
+      differenceInDays(parseISO(@group.subscription.expires_at), new Date) + 1
     createdDate: ->
       format(new Date(@group.createdAt), 'do LLLL yyyy')
 </script>
