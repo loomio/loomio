@@ -20,7 +20,8 @@ export default (callback) ->
         Sentry.init
           ignoreErrors: [
             "Avoided redundant navigation to current location",
-            "NotFoundError: Node.removeChild"
+            "NotFoundError: Node.removeChild",
+            "ResizeObserver loop limit exceeded"
           ]
           dsn: AppConfig.sentry_dsn
           integrations: [
