@@ -21,6 +21,8 @@ if !Object.entries
     resArray
 
 import Vue from 'vue'
+import MessageBus from '@/shared/message_bus'
+import MessageBusAjax from '@/shared/message_bus_ajax'
 import AppConfig from '@/shared/services/app_config'
 import vuetify from '@/vuetify'
 import router from '@/routes.coffee'
@@ -29,7 +31,7 @@ import app from '@/app.vue'
 import marked from '@/marked'
 import '@/observe_visibility'
 # import './registerServiceWorker'
-import { initLiveUpdate } from '@/shared/helpers/cable'
+import { initLiveUpdate } from '@/shared/helpers/message_bus'
 import { pick } from 'lodash-es'
 import * as Sentry from '@sentry/browser'
 import VueClipboard from 'vue-clipboard2'

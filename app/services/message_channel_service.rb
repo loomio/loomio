@@ -4,11 +4,11 @@ class MessageChannelService
     root       ||= model.class.to_s.pluralize.downcase
     to         ||= model.group.message_channel
     data       =   ActiveModel::ArraySerializer.new([model], each_serializer: serializer, root: root).as_json
-    Array(to).each { |channel| publish_data(data, to: channel) }
+    Array(to).each { |channel| MessageBus.publish channel, data }
   end
 
-  def self.publish_data(data, to: message_channel)
-    MessageBus.publish message_channel, data
+  def self.publish_data(data, to:)
+    MessageBus.publish to, data
   end
 
   def self.publish_event(event)

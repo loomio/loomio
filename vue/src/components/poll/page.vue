@@ -6,7 +6,7 @@ import LmoUrlService from '@/shared/services/lmo_url_service'
 
 import {compact, isEmpty}  from 'lodash-es'
 
-import { subscribeTo }     from '@/shared/helpers/cable'
+import { subscribeTo }     from '@/shared/helpers/message_bus'
 import { myLastStanceFor } from '@/shared/helpers/poll'
 
 export default
