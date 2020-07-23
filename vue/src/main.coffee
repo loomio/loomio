@@ -1,25 +1,3 @@
-import 'url-search-params-polyfill'
-import '@babel/polyfill'
-
-window.Promise = window.Promise or require 'promise-polyfill' # polyfill for Promise object
-require('promise.prototype.finally').shim()                   # polyfill for Promise.finally
-require('whatwg-fetch')                                       # polyfill for Fetch API
-require('intersection-observer')
-
-# polyfill for Object.entries
-if !Object.entries
-  Object.entries = (obj) ->
-    ownProps = Object.keys(obj)
-    i = ownProps.length
-    resArray = new Array(i)
-    # preallocate the Array
-    while i--
-      resArray[i] = [
-        ownProps[i]
-        obj[ownProps[i]]
-      ]
-    resArray
-
 import Vue from 'vue'
 import MessageBus from '@/shared/message_bus'
 import MessageBusAjax from '@/shared/message_bus_ajax'
