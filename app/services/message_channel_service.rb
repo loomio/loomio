@@ -7,8 +7,8 @@ class MessageChannelService
     Array(to).each { |channel| MessageBus.publish channel, data }
   end
 
-  def self.publish_data(data, to:)
-    MessageBus.publish to, data
+  def self.publish_records(data, group_ids: [], user_ids: [])
+    MessageBus.publish '/record_store', data, group_ids: group_ids, user_ids: user_ids
   end
 
   def self.publish_event(event)

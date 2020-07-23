@@ -13,10 +13,10 @@ EventBus.configure do |config|
       reader = DiscussionReader.for_model(event.discussion, event.real_user)
                                .update_reader(ranges: event.sequence_id,
                                               volume: :loud)
-      MessageChannelService.publish_data(ActiveModel::ArraySerializer.new([reader],
+      MessageChannelService.publish_records(ActiveModel::ArraySerializer.new([reader],
                                          each_serializer: DiscussionReaderSerializer,
                                          root: :discussions).as_json,
-                                         to: event.real_user.message_channel)
+                                         user_ids: [event.real_user.id])
     end
   end
 
@@ -40,7 +40,7 @@ EventBus.configure do |config|
   config.listen('discussion_mark_as_read',
                 'discussion_dismiss',
                 'discussion_mark_as_seen') do |reader|
-    MessageChannelService.publish_data(ActiveModel::ArraySerializer.new([reader], each_serializer: DiscussionReaderSerializer, root: :discussions).as_json, to: reader.message_channel)
+    MessageChannelService.publish_records(ActiveModel::ArraySerializer.new([reader], each_serializer: DiscussionReaderSerializer, root: :discussions).as_json, user_ids: reader.id)
   end
 
   # config.listen('discussion_mark_as_seen') do |reader|
@@ -49,7 +49,7 @@ EventBus.configure do |config|
 
   # alert clients that notifications have been read
   config.listen('notification_viewed') do |actor|
-    MessageChannelService.publish_data(NotificationCollection.new(actor).serialize!, to: actor.message_channel)
+    MessageChannelService.publish_records(NotificationCollection.new(actor).serialize!, user_ids: [actor.id])
   end
 
   # update discussion or comment versions_count when title or description edited
