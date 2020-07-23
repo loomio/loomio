@@ -10,9 +10,9 @@ export default class GroupRecordsInterface extends BaseRecordsInterface
     # could be id or key or handle
     @find(id) || head(@find(handle: id))
 
-  findOrFetch: (id, options = {}, ensureComplete = false) ->
+  findOrFetch: (id, options = {}) ->
     record = @fuzzyFind(id)
-    if record && (!ensureComplete || record.complete)
+    if record
       @remote.fetchById(id, options)
       Promise.resolve(record)
     else

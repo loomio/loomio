@@ -65,7 +65,8 @@ class API::EventsController < API::RestfulController
 
   def accessible_records
     load_and_authorize(:discussion)
-    records = @discussion.items.includes(:user, :discussion, :eventable, parent: [:user, :eventable])
+    records = Event.where(discussion_id: @discussion.id).thread_events.
+                    includes(:user, :discussion, :eventable, parent: [:user, :eventable])
 
     records = records.where("#{order} >= ?", from)
 
@@ -99,26 +100,6 @@ class API::EventsController < API::RestfulController
   def default_page_size
     30
   end
-
-  # def associations_for_serializion(collection)
-  #   collection.map(&:discussion).map(:author_id)
-  #   discussion_readers = ...
-  #   eventables = collection.map(&:eventable)
-  #   # then manually invoke serializers
-  #   {
-  #     users: UserSerializer.serialize User.where(id: collection.pluck(:author_id), asdkjaldsjasdlkj)
-  #     events: EventSerializer collection,
-  #     reactions: RectionSerializer Reaction.where(reactable: collection.map(:eventable))
-  #     discussions:
-  #     documents: DocumentSerializer
-  #     tags:
-  #     comments:
-  #     polls:
-  #     stances
-  #     memberships:
-  #     groups:
-  #   }
-  # end
 
   # we always want to serialize out events in the events controller
   alias :events_to_serialize :resources_to_serialize

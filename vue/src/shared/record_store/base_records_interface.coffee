@@ -53,9 +53,9 @@ export default class BaseRecordsInterface
       record = @create(attributes)
     record
 
-  findOrFetchById: (id, params = {}, ensureComplete = false) ->
+  findOrFetchById: (id, params = {}) ->
     record = @find(id)
-    if record and (!ensureComplete || record.complete)
+    if record
       @remote.fetchById(id, params)
       Promise.resolve(record)
     else
