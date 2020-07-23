@@ -8,7 +8,7 @@ class API::StancesController < API::RestfulController
 
   private
   def accessible_records
-    load_and_authorize(:poll).stances.latest.includes(:stance_choices, :participant)
+    load_and_authorize(:poll).stances.latest.includes({poll: [:poll_options]}, :stance_choices, :participant)
   end
 
   def valid_orders
