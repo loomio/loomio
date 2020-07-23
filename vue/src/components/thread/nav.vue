@@ -21,7 +21,7 @@ export default
   mounted: ->
     EventBus.$on 'toggleThreadNav', => @open = !@open
     EventBus.$on 'scrollThreadNav', =>
-      return if @knobVisible
+      return if @knobVisible or !document.querySelector('.thread-sidebar .v-navigation-drawer__content')
       @$vuetify.goTo('.thread-nav__knob', { container: '.thread-sidebar .v-navigation-drawer__content', offset: 100 })
 
     EventBus.$on 'currentComponent', (options) =>
