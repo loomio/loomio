@@ -256,7 +256,6 @@ describe API::StancesController do
       json = JSON.parse(response.body)
       expect(json['stances'].length).to eq 1
       expect(json['stances'][0]['id']).to eq stance.id
-      expect(json['poll_options'].map { |o| o['name'] }).to include poll_option.name
     end
 
     it 'overwrites existing stances' do
