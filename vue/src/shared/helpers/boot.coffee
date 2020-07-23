@@ -1,4 +1,3 @@
-import 'url-search-params-polyfill'
 import Vue from 'vue'
 import RestfulClient from '@/shared/record_store/restful_client'
 import AppConfig from '@/shared/services/app_config'
