@@ -3,9 +3,8 @@ class CommentSerializer < ApplicationSerializer
              :created_at, :updated_at, :parent_id,
              :versions_count, :attachments, :author_id, :discarded_at
 
-  # has_one :author, serializer: AuthorSerializer, root: :users
-  # has_one :discussion, serializer: DiscussionSerializer, root: :discussions
-
+  has_one :author, serializer: AuthorSerializer, root: :users
+  
   def include_mentioned_usernames?
     body_format == "md"
   end
