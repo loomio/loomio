@@ -77,6 +77,7 @@ da:
       next: 'Næste'
       close: 'Luk'
       save: 'Gem'
+      move: 'Flyt'
       save_changes: 'Gem ændringer'
       update_settings: 'Opdater indstillinger'
       reply: 'Svar'
@@ -410,10 +411,6 @@ da:
       private_to_group: 'Navn og beskrivelse er kun tilgængelige for medlemmer.'
       private_to_parent_members: 'Navn og beskrivelse er kun tilgængelige for medlemmer af {{parent}}'
     privacy: 'Privatindstillinger'
-    group_privacy_is_open_description: "Alle kan finde gruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i gruppen. Alle debatter er offentlige (alle på internettet kan læse dem)."
-    group_privacy_is_closed_description: "Alle kan finde gruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i gruppen. Alle debatter er private."
-    group_privacy_is_closed_public_threads_description: "Alle kan finde gruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i gruppen.  Debatter kan være offentlige eller private."
-    group_privacy_is_secret_description: "Det er kun inviterede medlemmer der kan finde gruppen, se hvem der er medlem og se debatter."
     confirm_change_to_secret: "Hvis du fortsætter så vil alle debatter i denne gruppe og undergrupper være private."
     confirm_change_to_secret_subgroup: 'vis du fortsætter så vil alle debatter i denne gruppe være private.'
     confirm_change_to_public: 'Hvis du fortsætter så vil alle debatter i denne gruppe være offentlige (alle på internettet kan læse dem).'
@@ -529,13 +526,9 @@ da:
     use_gravatar: 'Brug Gravatar'
   deactivation_modal:
     introduction: 'Når du deaktiverer din konto:'
-    no_longer_group_member: 'Du vil ikke længere bliver vist som medlem i nogen grupper'
     name_removed: 'Kommentarer, forslag og debatter som du har lavet vil forblive men dit navn vil blive fjernet fra dem'
+    no_longer_group_member: 'Du vil ikke længere bliver vist som medlem i nogen grupper'
     submit: 'Ja, jeg vil stadig gerne deaktivere'
-  deactivate_user_form:
-    aria_label: 'Bekræft deaktiver konto'
-    title: 'Deaktiver konto'
-    submit: 'Deaktiver konto'
   email_settings_page:
     daily_summary_label: Send resumé email hver dag
     on_participation_label: Abonnér ved deltagelse
@@ -643,7 +636,6 @@ da:
   move_thread_form:
     aria_label: Flyt debat
     title: Flyt debat
-    body: 'Destinations gruppe:'
     confirm: Flyt debat
     confirm_change_to_private_thread: '{{groupName}} er ern offentlig gruppe. Hvis du fortsætter, så vil denne debat bliver gjort offentlig.'
     messages:

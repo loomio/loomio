@@ -17,6 +17,13 @@ export default class RecordStore
 
   import: (data) ->
     return if isEmpty(data)
+
+    # hack just to get around AMS
+    if data['parent_groups']?
+      each data['parent_groups'], (recordData) =>
+        @groups.importJSON(recordData)
+        true
+
     each @collectionNames, (name) =>
       snakeName = snakeCase(name)
       camelName = camelCase(name)

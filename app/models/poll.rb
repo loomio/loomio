@@ -321,6 +321,7 @@ class Poll < ApplicationRecord
   end
 
   def set_stances_in_discussion
+    return unless has_attribute?(:stances_in_discussion) # allow older migrations to pass
     self.stances_in_discussion = false if anonymous or hide_results_until_closed
   end
 

@@ -130,6 +130,7 @@ he:
       close: 'סגור'
       reopen: 'פתח מחדש'
       save: 'שמירה'
+      move: 'העבר'
       save_changes: 'שמור שינויים'
       update_settings: 'עדכן הגדרות'
       reply: 'השב'
@@ -564,7 +565,6 @@ he:
     no_threads_here: אין שיחות פה!
     search_threads: חפש/י שיחות....
     private_threads: אתם צריכים להיות חבר לצפיה בשיחות פרטיות של הקבוצה
-    no_more_threads: זה כל השיחות בקבוצה זו!
     messages:
       privacy:
         members: 'רק חברים יכולים לצפות בקבוצה'
@@ -644,10 +644,6 @@ he:
       private_to_group: 'שם ותאור יהיו זמינים לצפיה רק לחברים.'
       private_to_parent_members: 'שם ותאור יהיו זמינים לחברי {{parent}}'
     privacy: 'פרטיות'
-    group_privacy_is_open_description: "כל אחד יכול למצוא את הקבוצה ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. כל השיחות פומביות."
-    group_privacy_is_closed_description: "כל אחד יכול למצוא את הקבוצה ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. כל השיחות פרטיות."
-    group_privacy_is_closed_public_threads_description: "כל אחד יכול למצוא את הקבוצה ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. שיחות יכולות להיות פרטיות או פומביות."
-    group_privacy_is_secret_description: "רק חברים מוזמנים יכולים למצוא את הקבוצה, לראות מי בה ולראות את השיחות שבה."
     confirm_change_to_secret: "אם אתה ממשיך, כל השיחות בקבוצה ובתת הקבוצות שלה יהיו פרטיות."
     confirm_change_to_secret_subgroup: 'אם אתה ממשיך, כל השיחות בו יהיו פרטיות.'
     confirm_change_to_public: 'אם אתה ממשיך, כל השיחות בקבוצה יהיו פומביים וזמינים ברשת.'
@@ -820,21 +816,12 @@ he:
     password_changed: סיסמתך עודכנה
   deactivation_modal:
     introduction: 'כשאתה משבית את חשבונך:'
-    no_longer_group_member: 'אתה לא תהיה רשום יותר כמשתתף באף קבוצה'
+    you_will_be_deleted: "חשבון המשתמש שלך כולל שמך, כתובת הדוא\"ל ופרטי זיהוי נוספים ימחקו מהמערכות שלנו."
     name_removed: 'הערות, הצעות ודיונים שביצעת ישראו אבל השם שלך יוסר מהם'
+    no_longer_group_member: 'אתה לא תהיה רשום יותר כמשתתף באף קבוצה'
     no_emails: 'לא תקבל/י יותר עדכונים במייל.'
     you_can_reactivate: "אם תרצה, תוכל לאקטב את החשבון שלך מחדש בשלב מאוחר יותר "
     submit: 'כן, אני רוצה להשבית'
-  delete_user_modal:
-    irreversable: "אזהרה: פעולה זו לא ניתנת לביטול. אם אתה ממשיך:"
-    you_will_be_deleted: "חשבון המשתמש שלך כולל שמך, כתובת הדוא\"ל ופרטי זיהוי נוספים ימחקו מהמערכות שלנו."
-    submit: 'כן, מחק את חשבון המשתמש שלי'
-  deactivate_user_form:
-    aria_label: 'אישור השבתת החשבון'
-    title: 'השבת חשבון'
-    question: 'תוכל לספר לנו למה אתה משבית את החשבון?'
-    placeholder: 'שאלת רשות. כל מידע שתשתף איתנו יעזור לנו להשתפר :)'
-    submit: 'השבת חשבון'
   email_settings_page:
     email_newsletter: הניוזלטר של לומיו
     email_newsletter_description: "קבל עדכונים על פיצ'רים חדשים, הדרכות, אירועים בעיר שלך ועתיד לומיו. בד\"כ 2-3 מיילים בשנה."
@@ -981,7 +968,6 @@ he:
   move_thread_form:
     aria_label: העבר שיחה
     title: העבר שיחה
-    body: 'קבוצת היעד:'
     confirm: העבר שיחה
     confirm_change_to_private_thread: '{{groupName}} הינה קבוצה פתוחה. אם אתה ממשיך, השיחה הזו תהיה פומבית.'
     messages:

@@ -414,6 +414,43 @@ describe API::PollsController do
 
   end
 
+  describe 'add_to_thread' do
+    let(:comment) { create :comment, discussion: discussion, author: user }
+    let(:poll) { create :poll, title: "Standalone Complex", group: group, author: user }
+
+    before do
+      group.add_admin! user
+      DiscussionService.create(discussion: discussion, actor: discussion.author)
+      PollService.create(poll: poll, actor: poll.author)
+      CommentService.create(comment: comment, actor: user)
+    end
+
+    it "adds poll to thread" do
+      sign_in user
+
+      expect(poll.created_event.discussion_id).to be nil
+      expect(poll.created_event.parent_id).to be nil
+      expect(poll.created_event.sequence_id).to be nil
+      expect(poll.created_event.position).to be 0
+
+      patch :add_to_thread, params: { id: poll.key, discussion_id: discussion.id }
+
+      poll.reload
+      discussion.reload
+
+      json = JSON.parse(response.body)
+      expect(json.keys).to include 'polls'
+      expect(json.keys).to include 'events'
+      
+      expect(poll.created_event.discussion_id).to eq discussion.id
+      expect(poll.created_event.parent_id).to eq discussion.created_event.id
+      expect(poll.created_event.sequence_id).to eq 2
+      expect(poll.created_event.position).to eq 2
+      expect(discussion.created_event.children.count).to eq 2
+      expect(discussion.items_count).to eq 2
+    end
+  end
+
   describe 'toggle_subscription' do
     it 'creates an unsubscription if one does not exist' do
       sign_in user

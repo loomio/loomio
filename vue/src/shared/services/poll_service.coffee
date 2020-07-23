@@ -52,6 +52,17 @@ export default new class PollService
           props:
             poll: poll.clone()
 
+    move_poll:
+      name: 'common.action.move'
+      icon: 'mdi-folder-swap-outline'
+      canPerform: ->
+        AbilityService.canMovePoll(poll)
+      perform: ->
+        openModal
+          component: 'PollCommonMoveForm'
+          props:
+            poll: poll.clone()
+
     show_history:
       icon: 'mdi-history'
       name: 'action_dock.edited'
@@ -65,7 +76,8 @@ export default new class PollService
     translate_poll:
       icon: 'mdi-translate'
       menu: true
-      canPerform: -> AbilityService.canTranslate(poll)
+      canPerform: ->
+        AbilityService.canTranslate(poll)
       perform: -> Session.user() && poll.translate(Session.user().locale)
 
     close_poll:
@@ -147,3 +159,13 @@ export default new class PollService
                 raw_title: i18n.t('poll_common_delete_modal.title', pollType: i18n.t(poll.pollTypeKey()))
                 helptext: 'poll_common_delete_modal.question'
                 flash: 'poll_common_delete_modal.success'
+
+    add_poll_to_thread:
+      name: 'action_dock.add_poll_to_thread'
+      canPerform: ->
+        AbilityService.canAddPollToThread(poll)
+      perform: ->
+        openModal
+          component: 'AddPollToThreadModal'
+          props:
+            poll: poll

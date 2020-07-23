@@ -180,6 +180,7 @@ tr:
       close: 'Kapat'
       reopen: 'Yeniden aç'
       save: 'Kaydet'
+      move: 'Taşı'
       save_changes: 'Değişiklikleri kaydet'
       update_settings: 'Ayarları güncelle'
       reply: 'Cevapla'
@@ -457,10 +458,6 @@ tr:
       private_to_group: 'Ad ve açıklama sadece grup üyelerine görünür olacaktır.'
       private_to_parent_members: 'Ad ve açıklama sadece {{parent}} grubunun üyelerine görünür olacaktır.'
     privacy: 'Gizlilik'
-    group_privacy_is_open_description: "Herkes grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler kamuya açıktır."
-    group_privacy_is_closed_description: "Herkes grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler gizlidir."
-    group_privacy_is_closed_public_threads_description: "Herkes grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler kamuya açık veya gizli olabilir."
-    group_privacy_is_secret_description: "Sadece davet edilen üyeler grubu bulabilir, kimlerin gruba dahil olduğunu ve müzakereleri görebilir."
     confirm_change_to_secret: "Eğer devam ederseniz, bu gruptaki tüm müzakereler ve onların alt grupları gizlenecektir."
     confirm_change_to_secret_subgroup: 'Eğer devam ederseniz, tüm müzakereler gizli yapılacaktır.'
     confirm_change_to_public: 'Eğer devam ederseniz, bu gruptaki tüm müzakereler web üzerinde herkese açık olacaktır.'
@@ -655,7 +652,6 @@ tr:
   move_thread_form:
     aria_label: Müzakereyi taşı
     title: Müzakereyi taşı
-    body: 'Hedef grup:'
     confirm: Müzakereyi taşı
     confirm_change_to_private_thread: '{{groupName}} açık bir gruptur. Eğer devam ederseniz, müzakere herkese açılacaktır.'
     messages:

@@ -38,9 +38,10 @@ en:
     max_members: "Max members"
     expires_at: "Expires"
     renews_at: "Renews"
-    referral_code: "Chargify referral code"
-    chargify_link: "Chargify billing portal"
+    referral_code: "Referral code"
+    chargify_link: "Billing portal"
     referral_code_help: "Give a friend a discount, get yourself some credit!"
+    manage_payment_details: "Manage payment details"
 
   loomio_tags:
     all_tags: All tags
@@ -188,6 +189,7 @@ en:
       close: 'Close'
       reopen: 'Reopen'
       save: 'Save'
+      move: 'Move'
       save_changes: 'Save changes'
       update_settings: 'Update settings'
       reply: 'Reply'
@@ -706,6 +708,7 @@ en:
     delete_thread: Delete thread
     notification_history: Notification history
     move_item: Move item
+    add_poll_to_thread: Add to thread
 
   formatting:
     bold: Bold
@@ -757,6 +760,7 @@ en:
     upload_success: 'Logo successfully updated'
 
   join_group_button:
+    not_a_member: "You're not currently a member of this group."
     join_group: Join group
     membership_requested: Membership requested
     messages:
@@ -1372,7 +1376,7 @@ en:
   move_thread_form:
     aria_label: Move thread
     title: Move thread
-    body: 'Destination group:'
+    body: Destination group
     confirm: Move thread
     confirm_change_to_private_thread: '{{groupName}} is an open group. If you proceed, this thread will be made public.'
     messages:
@@ -1630,14 +1634,13 @@ en:
     ranked_choice_closed: Ranked choice poll closed
 
   poll_common_reopen_form:
-    title: Reopen a closed decision
-    helptext: Did a decision close before you were ready? Reopen to gather more stances from the group.
-    proposal_reopened: Proposal reopened
-    poll_reopened: Poll reopened
-    count_reopened: Check reopened
-    dot_vote_reopened: Dote vote reopened
-    meeting_reopened: Time poll reopened
-    ranked_choice_reopened: Ranked choice poll reopened
+    title: "Reopen {{poll_type}}"
+    helptext: "Reopen the {{poll_type}} if people need more time to participate"
+    success: "{{poll_type}} reopened"
+
+  poll_common_move_form:
+    title: "Move {{poll_type}}"
+    success: "{{poll_type}} moved to {{group}}"
 
   poll_common_closing_at_field:
     closing: Closing
@@ -1956,6 +1959,9 @@ en:
   share_poll_page:
     title: Share poll - {{title}}
 
+  add_poll_to_thread_modal:
+    success: "Success, {{pollType}} added to thread!"
+
   auth_form:
     code: '000000'
     youre_invited: You have been invited to join {{group_name}}.
@@ -2060,7 +2066,6 @@ en:
     warning_helptext: "Warning: You'll be required to authenticate with your provider after you click save."
     idp_metadata_url: IDP Metadata URL
     idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
-    pro_plan_only: This feature is only available to Pro plan customers. Please check out our <a href="/upgrade" target="_blank">upgrade page</a> for more details.
     success: Single sign-on successfully configured
     destroyed: Single sign-on removed
     invalid_idp_metadata_url: Invalid IDP metadata URL

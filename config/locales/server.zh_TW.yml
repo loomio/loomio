@@ -132,6 +132,12 @@ zh_TW:
       subject: 匯出「%{group_name}」的群組資料
       body_html: |
           <a href="%{url}">在此</a>下載您群組的資料。請注意，此連結將會在一週後過期。
+    deactivated:
+      subject: "您的 %{site_name} 使用者帳號已被停用。"
+      body_html: |
+          <p>您或某個可以存取您帳號的人已停用您的 Loomio 使用者帳號。</p>
+          <p>所有個人資料都已從系統移除。</p>
+          <p>如果您想要復原您的使用者帳號與相關的留言與投票，請聯絡客服並參考： %{recovery_code}</p>
     accounts_merged:
       subject: "您的 %{site_name} 使用者帳號已經合併。"
       body_html: |
@@ -408,15 +414,33 @@ zh_TW:
       you_have_until: 您到 %{when} 前都可以參與。
       people_have_voted: "%{num} 個夥伴已投票 (%{pct}%)"
     subject:
+      poll_created: '%{actor} 啟動了一個 %{poll_type}：%{title}'
+      poll_edited: '%{actor} 編輯了 %{poll_type}：%{title}l'
+      poll_announced: '%{actor} 邀請您在 %{poll_type} 投票：%{title}'
+      poll_closing_soon: '%{poll_type} 將於24小時內關閉：%{title}'
+      poll_closing_soon_author: '您的 %{poll_type} 將於24小時內關閉：%{title}'
+      poll_expired: "%{poll_type} 已關閉：%{title}"
+      poll_expired_author: '您的 %{poll_type} 已關閉。請分享結果：%{title}'
       poll_option_added: '%{actor} 新增選項給：%{title}'
       poll_option_added_author: '%{actor} 新增選項給：%{title}'
+      outcome_created: '%{actor} 分享了 %{poll_type} 的結果：%{title} '
+      outcome_announced: '%{actor} 分享了 %{poll_type} 的結果：%{title}'
       stance_created: "%{actor} 已經投票：%{title}"
       stance_created_author: "請驗證您的投票：%{title}"
       user_mentioned: '%{actor} 提到您在：%{title}'
       user_reminded: '%{actor} 正在提醒您要投票：%{title}'
     header:
+      poll_created: '<strong>%{actor}</strong> 啟動了一個 %{poll_type}'
+      poll_edited: '<strong>%{actor}</strong> 編輯了一個 %{poll_type}'
+      poll_announced: '<strong>%{actor}</strong> 邀請您在 %{poll_type} 投票'
+      poll_closing_soon: '<strong>%{actor}</strong> 的 %{poll_type} 將於24小時內關閉。現在正是投票、變更您的心意或是鼓勵其他人來參與的好時機。'
+      poll_closing_soon_author: '您的 %{poll_type} 將於24小時內關閉 ── 現在正是您提醒其他人關於這個投票或是展延期限的絕佳時機。'
+      poll_expired: "<strong>%{actor} 的</strong> %{poll_type} 已關閉：%{title}"
+      poll_expired_author: '您的 %{poll_type} 已<strong>關閉</strong>。請花點時間考慮要說些什麼，以及與群組<strong>分享結果</strong>，這樣其他人才能知道接下來會發生什麼事情。'
       poll_option_added: '<strong>%{actor}</strong> 新增選項給：%{title}'
       poll_option_added_author: '<strong>%{actor}</strong> 新增選項給：%{title}'
+      outcome_created: '<strong>%{actor}</strong> 已分享 %{poll_type} 的結果。'
+      outcome_announced: '<strong>%{actor}</strong> 已分享 %{poll_type} 的結果。'
       stance_created: "<strong>%{actor}</strong> 已經投票：%{title}"
       user_mentioned: '<strong>%{actor}</strong> 提到您在：%{title}'
       user_reminded: '<strong>%{actor}</strong>正在提醒您要投票：%{title}'

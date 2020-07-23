@@ -180,11 +180,13 @@ zh_TW:
       close: '關閉'
       reopen: '重新開啟'
       save: '儲存'
+      move: '移動'
       save_changes: '儲存變更'
       update_settings: '更新設定'
       reply: '回覆'
       edit: '編輯'
       remove: '移除'
+      undo_remove: '撤銷移除'
       like: '讚'
       unlike: '收回讚'
       update: '更新'
@@ -384,6 +386,7 @@ zh_TW:
       replied: '{{name}} 回覆通知'
       updated: '意見已更新'
       destroyed: '意見已刪除'
+      removed: '留言已移除'
     say_something: 留下些想法⋯
     edit_comment: '編輯意見'
     delete_comment: '刪除意見'
@@ -767,7 +770,8 @@ zh_TW:
     no_threads_here: 這裡沒有討論串可以檢視！
     search_threads: 搜尋討論串……
     private_threads: 您需要是成員才能檢視群組中的私密討論串
-    no_more_threads: 這就是所有在此群組中的討論串了！
+    no_more_threads: 無更多討論串可載入
+    view_closed_threads: '漏掉了什麼嗎？<a href="{{url}}">檢視已關閉的討論串</a>'
     messages:
       privacy:
         members: '這個群組現在只對成員可見'
@@ -870,10 +874,10 @@ zh_TW:
       private_to_group: '名稱與描述都將只會對成員可見。'
       private_to_parent_members: '名稱與描述將會對 {{parent}} 的成員可見'
     privacy: '隱私權'
-    group_privacy_is_open_description: "任何人都可以找到這個群組並要求加入。只有成員才能看見誰在群組裡。所有的討論串都是公開的。"
-    group_privacy_is_closed_description: "任何人都可以找到這個群組並要求加入。只有成員才能看見誰在群組裡。所有的討論串都是私密的。"
-    group_privacy_is_closed_public_threads_description: "任何人都可以找到這個群組並要求加入。只有成員才能看見誰在群組裡。討論串可以是公開或私密的。"
-    group_privacy_is_secret_description: "只有被邀請的成員才能找到此群組，並檢視有誰在裡面以及觀看討論串。"
+    group_privacy_is_open_description: "公開列出。任何人都可以要求加入。所有討論串都是公開的。"
+    group_privacy_is_closed_description: "不列出。任何有連結的人都可以要求加入。所有討論串都是私密的。"
+    group_privacy_is_closed_public_threads_description: "不列出。任何有連結的人都可以要求加入。討論串可以是公開或私密的。"
+    group_privacy_is_secret_description: "僅被邀請的夥伴才能找到群組。所有討論串都是私密的。"
     confirm_change_to_secret: "若您繼續，所有在此群組及其子群組的討論串都會變為非公開。"
     confirm_change_to_secret_subgroup: '若您繼續，所有的討論串都會變為非公開。'
     confirm_change_to_public: '若您繼續，所有在此群組的討論串都將會變為公開在網路上。'
@@ -1079,22 +1083,12 @@ zh_TW:
   deactivation_modal:
     aria_label: '停用使用者帳號'
     introduction: '當您停用您的帳號：'
-    no_longer_group_member: '您將不會再被任何群組列為成員'
+    you_will_be_deleted: "您的使用者帳號，包含您的名字、電子郵件地址與其他可識別個人的資料，都將會從我們的系統中刪除。"
     name_removed: '您在群組中作出的意見、提案與討論串會留下，但您的大名將會從中移除。'
+    no_longer_group_member: '您將不會再被任何群組列為成員'
     no_emails: '您將不會再收到電子郵件通知'
     you_can_reactivate: "如果您想要的話，您可以在稍後重新啟用您的帳號"
     submit: '是的，我想要停用'
-  delete_user_modal:
-    title: '刪除使用者帳號'
-    irreversable: "警告：這無法復原。如果您要繼續的話："
-    you_will_be_deleted: "您的使用者帳號，包含您的名字、電子郵件地址與其他可識別個人的資料，都將會從我們的系統中刪除。"
-    submit: '是的，刪除我的帳號'
-  deactivate_user_form:
-    aria_label: '確認凍結帳號'
-    title: '凍結帳號'
-    question: '您可以告訴我們為何您要凍結您的帳號嗎？'
-    placeholder: '回答這個問題是選擇性的。您分享的任何資訊都可以協助我們改善服務 :)'
-    submit: '凍結帳號'
   email_settings_page:
     header: 通知設定
     account_deactivated: 您的帳號已被停用。您將不會再收到任何電子郵件。
@@ -1279,14 +1273,18 @@ zh_TW:
   move_thread_form:
     aria_label: 移動討論串
     title: 移動討論串
-    body: '目標群組：'
+    body: 目標群組
     confirm: 移動討論串
     confirm_change_to_private_thread: '{{groupName}} 是一個公開的群組，若您繼序，這個討論串將會變為公開。'
     messages:
       success: 討論串已被移動到 {{name}}
   delete_comment_dialog:
     title: '刪除意見'
+    question: '您確定您想要刪除此留言？（此動作無法復原）'
     confirm: '刪除意見'
+  discard_comment_dialog:
+    title: '移除留言'
+    question: '您確定您想要移除此留言？（此動作無法在稍後復原）'
   contact_message_form:
     title: "嗨，您好！我們可以怎麼協助您？"
     read_the_manual: |
@@ -1515,6 +1513,9 @@ zh_TW:
     dot_vote_reopened: 已重新開啟點投票
     meeting_reopened: 已重新開啟時間投票
     ranked_choice_reopened: 已重新開啟排名選擇投票
+  poll_common_move_form:
+    title: "移動 {{poll_type}}"
+    success: "{{poll_type}} 已移動至 {{group}}"
   poll_common_closing_at_field:
     closing: 關閉
     closing_hour: 關閉時間
@@ -1800,9 +1801,9 @@ zh_TW:
     title: 分享投票 - {{title}}
   auth_form:
     code: '000000'
-    youre_invited: 您已被邀請加入 {{group_name}}。登入以繼續
-    youre_invited_discussion: 您已被邀請加入討論。登入以繼續
-    youre_invited_poll: 您已被邀請投票。登入以繼續
+    youre_invited: 您已被邀請加入 {{group_name}}。
+    youre_invited_discussion: 您已被邀請加入討論。
+    youre_invited_poll: 您已被邀請加入投票。
     sign_in_to_loomio: 登入到 {{site_name}}
     sign_in_help: 無法登入？
     sign_in: 登入
@@ -1954,6 +1955,10 @@ zh_TW:
       project: 專案團隊
       forum: 論壇
       other: 其他
+    desired_features:
+      polls: 進行民調以供我的團隊投票
+      discussions: 線上討論並獲得意見
+      archive: 紀錄我們做出的決策或封存資訊
     referrers:
       google: Google 搜尋
       invitation: 邀請加入 Loomio 群組
@@ -1969,4 +1974,5 @@ zh_TW:
     role: "您在群組中的角色是什麼？"
     website: "網站 URL"
     usage: "您打算如何使用 Loomio？選擇最適合您的"
+    desired_feature: "您使用 Loomio 第一件想做的事情是什麼？"
     referrer: "您是如何得知 Loomio 的？"

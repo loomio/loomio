@@ -12,6 +12,8 @@ import ThreadService  from '@/shared/services/thread_service'
 
 import { pickBy, identity, camelCase, first, last, isNumber } from 'lodash-es'
 
+excludeTypes = 'group discussion author'
+
 export default
   components:
     ThreadRenderer: -> import('@/components/thread/renderer.vue')
@@ -32,7 +34,7 @@ export default
     @loader = new RecordLoader
       collection: 'events'
         params:
-          exclude_types: 'group discussion membership'
+          exclude_types: excludeTypes
 
     @watchRecords
       key: @discussion.id
@@ -80,7 +82,7 @@ export default
           when 'position' then 'from_sequence_id_of_position'
 
         @loader.fetchRecords(
-          exclude_types: 'discussion group'
+          exclude_types: excludeTypes
           discussion_id: @discussion.id
           order: 'sequence_id'
           per: 5
@@ -117,7 +119,7 @@ export default
     fetch: (slots, padding) ->
       return unless slots.length
       @loader.fetchRecords(
-        exclude_types: 'discussion group'
+        exclude_types: excludeTypes
         comment_id: null
         from: null
         from_unread: null

@@ -109,10 +109,9 @@ class Group < ApplicationRecord
   define_counter_cache(:pending_memberships_count) { |group| group.memberships.pending.count }
   define_counter_cache(:admin_memberships_count)   { |group| group.admin_memberships.count }
   define_counter_cache(:public_discussions_count)  { |group| group.discussions.visible_to_public.count }
-  define_counter_cache(:discussions_count)         { |group| group.discussions.count }
+  define_counter_cache(:discussions_count)         { |group| group.discussions.kept.count }
   define_counter_cache(:open_discussions_count)    { |group| group.discussions.is_open.count }
   define_counter_cache(:closed_discussions_count)  { |group| group.discussions.is_closed.count }
-  define_counter_cache(:discussions_count)         { |group| group.discussions.count }
   define_counter_cache(:subgroups_count)           { |group| group.subgroups.published.count }
   update_counter_cache(:parent, :subgroups_count)
 
@@ -223,16 +222,15 @@ class Group < ApplicationRecord
   end
 
   def archive!
-    self.update_attribute(:archived_at, DateTime.now)
-    self.update_attribute(:handle, nil)
-    memberships.update_all(archived_at: DateTime.now)
-    subgroups.map(&:archive!)
+    Group.where(id: id_and_subgroup_ids).update_all(archived_at: DateTime.now)
+    Membership.where(group_id: id_and_subgroup_ids).update_all(archived_at: DateTime.now)
+    reload
   end
 
   def unarchive!
-    self.update_attribute(:archived_at, nil)
-    all_memberships.update_all(archived_at: nil)
-    all_subgroups.update_all(archived_at: nil)
+    Group.where(id: all_subgroup_ids.concat([id])).update_all(archived_at: nil)
+    Membership.where(group_id: all_subgroup_ids.concat([id])).update_all(archived_at: nil)
+    reload
   end
 
   def org_memberships_count
@@ -278,7 +276,7 @@ class Group < ApplicationRecord
   end
 
   def id_and_subgroup_ids
-    @id_and_subgroup_ids ||= (Array(id) | subgroup_ids)
+    subgroup_ids.concat([id]).compact
   end
 
   def slack_identity

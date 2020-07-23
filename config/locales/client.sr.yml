@@ -38,6 +38,7 @@ sr:
       back: 'Nazad'
       close: 'Zatvori'
       save: 'Snimi'
+      move: 'Premesti'
       save_changes: 'Sačuvaj promene'
       update_settings: 'Izmeni podešavanja'
       reply: 'Odgovori'
@@ -446,7 +447,6 @@ sr:
       success: Nit je obrisana
   move_thread_form:
     title: Premesti nit
-    body: 'Odredišna grupa:'
     confirm: Premesti nit
     confirm_change_to_private_thread: '{{groupName}} je jedna otvorena grupa. Ako nastavite, ova nit će postati javna.'
     messages:

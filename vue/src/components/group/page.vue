@@ -93,6 +93,7 @@ v-main
     trial-banner(:group="group")
     group-onboarding-card(:group="group")
     formatted-text.group-page__description(v-if="group" :model="group" column="description")
+    join-group-button(:group='group')
     document-list(:model='group')
     attachment-list(:attachments="group.attachments" :edit="canEditGroup && openGroupSettingsModal")
     v-divider.mt-4
@@ -100,7 +101,6 @@ v-main
       v-tabs-slider
       v-tab(v-for="tab of tabs" :key="tab.id" :to="tab.route" :class="'group-page-' + tab.name + '-tab' " exact)
         span(v-t="'group_page.'+tab.name")
-    join-group-button(:group='group')
     router-view
 </template>
 

@@ -34,7 +34,7 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def include_eventable?
-    include_type?(object.eventable_type.downcase)
+    true
   end
 
   def include_poll_options?
@@ -54,7 +54,7 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def include_participant?
-    include_type?('user')
+    include_author?
   end
 
   def include_user?
@@ -62,7 +62,11 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def include_author?
-    include_type?('user')
+    include_type?('user') and include_type?('author')
+  end
+
+  def include_parent?
+    include_type?('parent')
   end
 
   def include_actor?

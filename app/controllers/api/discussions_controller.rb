@@ -114,6 +114,12 @@ class API::DiscussionsController < API::RestfulController
     update_reader volume: params[:volume]
   end
 
+  def discard
+    @discussion = load_resource
+    service.discard discussion: @discussion, actor: current_user
+    respond_with_resource
+  end
+
   private
   def group_ids
     if params.has_key?(:include_subgroups) && params[:include_subgroups] == 'false'

@@ -102,7 +102,7 @@ div
               mid-dot
               router-link.grey--text(:to='link')
                 time-ago(:date='eventable.discardedAt')
-            div(v-else)
+            div.d-flex.align-center(v-else)
               slot(name="headline")
                 span(v-html='headline')
               mid-dot

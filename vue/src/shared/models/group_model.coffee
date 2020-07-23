@@ -31,6 +31,7 @@ export default class GroupModel extends BaseModel
     files: []
     imageFiles: []
     attachments: []
+    subscription: {}
 
   afterConstruction: ->
     if @privacyIsClosed()

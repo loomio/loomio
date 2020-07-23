@@ -1,6 +1,7 @@
 class API::PollsController < API::RestfulController
   def show
     self.resource = load_and_authorize(:poll)
+    accept_pending_membership
     respond_with_resource
   end
 
@@ -34,6 +35,11 @@ class API::PollsController < API::RestfulController
   def discard
     load_resource
     @event = service.discard(poll: resource, actor: current_user)
+    respond_with_resource
+  end
+
+  def add_to_thread
+    @event = service.add_to_thread(poll: load_resource, params: params, actor: current_user)
     respond_with_resource
   end
 

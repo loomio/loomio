@@ -87,6 +87,7 @@ cs:
       next: 'Další'
       close: 'Zavřít'
       save: 'Uložit'
+      move: 'Přesunout'
       save_changes: 'Uložit změny'
       update_settings: 'Aktualizovat nastavení'
       reply: 'Odpovědět'
@@ -408,9 +409,6 @@ cs:
     description: 'Popis'
     description_placeholder: 'Můžete popsat účel vaší skupiny, takže Vaši členové skupiny budou vědět, proč jsou tady.'
     privacy: 'Soukromí'
-    group_privacy_is_open_description: "Kdokoli může najít skupinu a požádat o členství. Pouze členové mohou vidět, kdo je ve skupině. Všechny vlákna jsou veřejná."
-    group_privacy_is_closed_public_threads_description: "Kdokoli může najít skupinu a požádat o členství. Pouze členové mohou vidět, kdo je ve skupině. Vlákna mohou být veřejná nebo soukromá."
-    group_privacy_is_secret_description: "Pouze pozvaní členové mohou najít skupinu, zjistit, kdo je v ní a vidět vlákna."
     profile: Profil
     advanced_settings: "Pokročilé nastavení"
     how_do_people_join: "Jak se lidé připojí?"
@@ -497,9 +495,6 @@ cs:
   change_password_form:
     set_password: Nastavení hesla
     password_changed: Vaše heslo bylo aktualizováno
-  deactivate_user_form:
-    title: 'Deaktivovat účet'
-    submit: 'Deaktivovat účet'
   email_settings_page:
     daily_summary_label: Denní souhrnný e-mail
     announcement_label: Oznámení
@@ -581,7 +576,6 @@ cs:
   move_thread_form:
     aria_label: Přesunout vlákno
     title: Přesunout téma
-    body: 'Cílová skupina:'
     confirm: Přesunout téma
     messages:
       success: Téma bylo přesunuto {{name}}

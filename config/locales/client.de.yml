@@ -179,6 +179,7 @@ de:
       close: 'Schliessen'
       reopen: 'Erneut öffnen'
       save: 'Speichern'
+      move: 'Verschieben'
       save_changes: 'Änderungen speichern'
       update_settings: 'Einstellungen aktualisieren'
       reply: 'Antworten'
@@ -756,7 +757,6 @@ de:
     no_threads_here: Keine Diskussionen vorhanden!
     search_threads: Diskussionen durchsuchen...
     private_threads: Du musst Mitglied sein, um private Diskussionsbeiträge in dieser Gruppe sehen zu können
-    no_more_threads: Das sind alle in dieser Gruppe vorhandenen Diskussionen!
     messages:
       privacy:
         members: 'Diese Gruppe ist nun nur für Mitglieder sichtbar'
@@ -857,10 +857,6 @@ de:
       private_to_group: 'Name und Beschreibung sind nur für Mitglieder sichtbar'
       private_to_parent_members: 'Name und Beschreibung sind nur für Mitglieder von {{parent}} sichtbar'
     privacy: 'Sichtbarkeit '
-    group_privacy_is_open_description: "Die Gruppe ist für alle sichtbar und kann von allen betreten werden. Nur Gruppenmitglieder können sehen, wer Mitglied in dieser Gruppe ist. Alle Diskussionen sind öffentlich."
-    group_privacy_is_closed_description: "Jeder kann die Gruppe finden und dich um Beitritt bitten. Nur Mitglieder können sehen, wer in der Gruppe ist. Alle Diskussionen sind privat."
-    group_privacy_is_closed_public_threads_description: "Jeder kann die Gruppe finden und dich nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Diskussionen können privat oder öffentlich sein."
-    group_privacy_is_secret_description: "Nur eingeladene Mitglieder können die Gruppe finden und die Teilnehmer und Diskussionsbeiträge der Gruppe sehen."
     confirm_change_to_secret: "Wenn du fortfährst werden alle Diskussionen dieser Gruppe und all ihrer Untergruppen privat."
     confirm_change_to_secret_subgroup: 'Wenn du fortfährst werden alle Diskussionen privat.'
     confirm_change_to_public: 'Wenn du fortfährst alle Diskussionen in der Gruppe öffentlich sichtbar im Web.'
@@ -1065,22 +1061,12 @@ de:
   deactivation_modal:
     aria_label: 'Benutzerkonto deaktivieren'
     introduction: 'Wenn du dein Benutzerkonto deaktivierst'
-    no_longer_group_member: 'Du wirst nicht mehr als Mitglied in deinen Gruppen angezeigt'
+    you_will_be_deleted: "Ihr Account mit Name, Mailadresse und anderen persönlichen Daten wird vom System gelöscht werden"
     name_removed: 'Deine bereits erstellten Kommentare, Vorschläge und Diskussionen bleiben weiterhin sichtbar, allerdings wird dabei dein Name nicht mehr angezeigt'
+    no_longer_group_member: 'Du wirst nicht mehr als Mitglied in deinen Gruppen angezeigt'
     no_emails: 'Du wirst keine Benachrichtigungs-E-Mails mehr erhalten.'
     you_can_reactivate: "Du kannst dein Benutzerkonto zu einem späteren Zeitpunkt jederzeit wieder aktivieren."
     submit: 'Ja, deaktiveren'
-  delete_user_modal:
-    title: 'Benutzerkonto löschen'
-    irreversable: "WARNUNG: Dies kann nicht rückgängig gemacht werden. Wenn Sie fortfahren:"
-    you_will_be_deleted: "Ihr Account mit Name, Mailadresse und anderen persönlichen Daten wird vom System gelöscht werden"
-    submit: 'JA, meinen Account löschen'
-  deactivate_user_form:
-    aria_label: 'Account-Bestätigung deaktivieren'
-    title: 'Benutzerkonto deaktivieren'
-    question: 'Würden Sie uns den Grund nenne, weswegen Sie Ihren Account deaktivieren?'
-    placeholder: 'Diese Frage zu beantworten ist optional. Jegliche Informationen, die Sie mit uns teilen, helfen uns zu verbessern :)'
-    submit: 'Benutzerkonto deaktivieren'
   email_settings_page:
     header: Benachrichtigungseinstellungen
     account_deactivated: 'Dein Konto wurde deaktiviert. Du wirst ab jetzt keine E-mails mehr erhalten. '
@@ -1264,7 +1250,6 @@ de:
   move_thread_form:
     aria_label: Diskussion verschieben
     title: Diskussion verschieben
-    body: 'Neue Zielgruppe:'
     confirm: Diskussion verschieben
     confirm_change_to_private_thread: '{{groupName}} ist eine öffentliche Gruppe. Wenn Sie fortfahren, wird diese Diskussion veröffentlicht.'
     messages:
