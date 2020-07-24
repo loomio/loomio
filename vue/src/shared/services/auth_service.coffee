@@ -13,10 +13,13 @@ export default new class AuthService
       @applyEmailStatus(user, head(data.users))
 
   applyEmailStatus: (user, data = {}) ->
+    console.log "pendingIdentity:", AppConfig.pendingIdentity
     vals = ['name', 'email', 'avatar_kind', 'avatar_initials', 'email_hash',
             'avatar_url', 'has_password', 'email_status', 'email_verified',
             'legal_accepted_at', 'auth_form']
-    user.update pickBy(mapKeys(pick(data, vals), (v,k) -> camelCase(k)), identity)
+    console.log "before", user
+    user.update pickBy(mapKeys(pick(data, vals), (v,k) -> camelCase(k)), (val) -> !!val)
+    console.log "after", user
     user.update(hasToken: data.has_token)
     user
 
@@ -52,7 +55,7 @@ export default new class AuthService
         @authSuccess(data)
         onSuccess(data)
       else
-        user.update({sentLoginLink: true})
+        user.update({authForm: 'complete', sentLoginLink: true})
       data
 
   reactivate: (user) ->
@@ -61,7 +64,7 @@ export default new class AuthService
 
   sendLoginLink: (user) ->
     Records.loginTokens.fetchToken(user.email).then ->
-      user.update({sentLoginLink: true})
+      user.update({authForm: 'complete', sentLoginLink: true})
 
   validSignup: (vars, user) ->
     user.errors = {}

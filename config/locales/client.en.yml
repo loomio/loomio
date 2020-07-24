@@ -154,6 +154,7 @@ en:
     help: 'Help'
     anonymous: Anonymous
     required: Required
+    email_address: Email address
     privacy:
       privacy: 'Privacy'
       public: 'Public'
@@ -1967,15 +1968,17 @@ en:
     youre_invited: You have been invited to join {{group_name}}.
     youre_invited_discussion: You have been invited to join the discussion.
     youre_invited_poll: You have been invited to vote.
-    sign_in_to_loomio: Sign into {{site_name}}
+    sign_in_to_loomio: Sign in to {{site_name}}
     sign_in_help: Trouble signing in?
     sign_in: Sign in
     continue: Continue
     create_account: Create account
+    sign_up_as: Sign up as {{email}}
     sign_in_as: Sign in as {{name}}
     continue_with_provider: Sign in with {{provider}}
-    continue_with_email: Sign in with email
+    continue_with_email: Continue with email
     or_enter_your_email: Or, enter your email address
+    enter_your_name: Enter your name to continue
     invitation_required: You need an invitation to create an account.
     more_providers: More
     email_not_present: An email address is required
@@ -1987,7 +1990,7 @@ en:
     email_placeholder: you@example.com
     login_with_token: You're all set! Click the link below to continue.
     login_link_helptext: Click the button below and we'll send you a link to sign in.
-    login_link_helptext_with_password: "Enter your password, or sign in via email."
+    enter_your_password: "Enter your password to continue"
     check_spam_folder: If the email does not arrive soon, check your spam folder.
     sign_up_helptext: Please complete this form to create a user account
     i_accept: "I accept the <a href='{{termsUrl}}' target='_blank'>Terms of service</a> and <a href='{{privacyUrl}}' target='_blank'>Privacy policy</a>"
