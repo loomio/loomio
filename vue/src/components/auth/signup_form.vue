@@ -27,11 +27,9 @@ export default
     submitForm: (recaptcha) ->
       @user.recaptcha = recaptcha
       if AuthService.validSignup(@vars, @user)
-        # EventBus.emit $scope, 'processing'
         @loading = true
         AuthService.signUp(@user).finally =>
           @loading = false
-          # EventBus.emit $scope, 'doneProcessing'
   computed:
     recaptchaKey: -> AppConfig.recaptchaKey
     termsUrl: -> AppConfig.theme.terms_url
@@ -41,7 +39,7 @@ export default
     allow: ->
       AppConfig.features.app.create_user or AppConfig.pendingIdentity.identity_type?
     useRecaptcha: ->
-      @recaptchaKey && !@user.hasToken
+      @recaptchaKey && !@user.hasToken && !(AppConfig.pendingIdentity || {}).has_token
 
 </script>
 <template lang="pug">
