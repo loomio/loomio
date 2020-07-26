@@ -54,14 +54,14 @@ export default
 </script>
 
 <template lang="pug">
-.context-panel.lmo-action-dock-wrapper#context(v-observe-visibility="{callback: viewed, once: true}" v-on:dblclick="editThread.canPerform() && editThread.perform()")
+.context-panel.lmo-action-dock-wrapper#context(aria-label="Discussion context" v-observe-visibility="{callback: viewed, once: true}" v-on:dblclick="editThread.canPerform() && editThread.perform()")
   v-layout(align-center mr-3 ml-2 pt-2 wrap)
-    v-breadcrumbs.context-panel__breadcrumbs(:items="groups" divider=">")
+    v-breadcrumbs.context-panel__breadcrumbs(aria-label="Group" :items="groups" divider=">")
     tags-display(:discussion="discussion")
     span
     v-spacer
     span.grey--text.body-2
-      time-ago(:date='discussion.createdAt')
+      time-ago(aria-label="Thread started" :date='discussion.createdAt')
 
   h1.display-1.context-panel__heading.px-3#sequence-0(v-observe-visibility="{callback: titleVisible}")
     i.mdi.mdi-pin.context-panel__heading-pin(v-if="status == 'pinned'")
@@ -73,14 +73,15 @@ export default
     .context-panel__details.my-2.body-2(align-center)
       user-avatar.mr-4(:user='discussion.author()', :size='40')
       span
-        router-link(:to="urlFor(discussion.author())") {{discussion.authorName()}}
+        router-link(:to="urlFor(discussion.author())" title="Thread author") {{discussion.authorName()}}
         mid-dot
-        span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private(v-show='discussion.private')
-          i.mdi.mdi-lock-outline
-          span(v-t="'common.privacy.private'")
-        span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public(v-show='!discussion.private')
-          i.mdi.mdi-earth
-          span(v-t="'common.privacy.public'")
+        span(aria-label="Thread privacy")
+          span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private(v-show='discussion.private')
+            i.mdi.mdi-lock-outline
+            span(v-t="'common.privacy.private'")
+          span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public(v-show='!discussion.private')
+            i.mdi.mdi-earth
+            span(v-t="'common.privacy.public'")
         span(v-show='discussion.seenByCount > 0')
           mid-dot
           a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
@@ -90,7 +91,7 @@ export default
           router-link(:to='urlFor(discussion.forkedEvent())') {{discussion.forkedEvent().discussion().title}}
       .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'" v-if='discussion.closedAt')
         v-tooltip(bottom) {{ exact(discussion.closedAt) }}
-    formatted-text.context-panel__description(:model="discussion" column="description")
+    formatted-text.context-panel__description(:model="discussion" column="description" aria-label="Discussion context")
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
     action-dock(:model='discussion' :actions='dockActions' :menu-actions='menuActions' fetch-reactions)

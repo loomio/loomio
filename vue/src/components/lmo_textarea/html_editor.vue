@@ -98,6 +98,10 @@ export default
   mounted: ->
     @expanded = Session.user().experiences['html-editor.expanded']
     @updateModel()
+    EventBus.$on 'focusTextarea', (model) =>
+      if model == @model
+        @editor.focus()
+
 
   watch:
     'shouldReset': 'reset'
@@ -147,6 +151,9 @@ export default
 
     updateModel: ->
       @model[@field] = @editor.getHTML()
+      setTimeout =>
+        @$refs.editor.$el.children[0].setAttribute("role", "textbox")
+        @$refs.editor.$el.children[0].setAttribute("aria-label", @placeholder)
       @updateFiles()
 
   beforeDestroy: ->
@@ -157,7 +164,7 @@ export default
 div
   label.caption.v-label.v-label--active {{label}}
   .editor.mb-3
-    editor-content.html-editor__textarea(:editor='editor').lmo-markdown-wrapper
+    editor-content.html-editor__textarea(ref="editor" :editor='editor').lmo-markdown-wrapper
     editor-menu-bar(:editor='editor' v-slot='{ commands, isActive, focused }')
       div
         v-layout.menubar(align-center v-if="isActive.table()")
@@ -296,10 +303,12 @@ div
               //- markdown (save experience)
               v-btn(icon @click="convertToMd" :title="$t('formatting.edit_markdown')")
                 v-icon mdi-markdown
-            //- expand button
-            v-btn.html-editor__expand(icon @click="toggleExpanded")
-              v-icon(v-if="!expanded") mdi-chevron-right
-              v-icon(v-if="expanded") mdi-chevron-left
+
+            v-btn.html-editor__expand(v-if="!expanded" icon @click="toggleExpanded" :aria-label="$t('formatting.expand')")
+              v-icon mdi-chevron-right
+
+            v-btn.html-editor__expand(v-if="expanded" icon @click="toggleExpanded" :aria-label="$t('formatting.collapse')")
+              v-icon mdi-chevron-left
           //- save button?
           slot(name="actions")
     v-alert(v-if="maxLength && model[field] && model[field].length > maxLength" color='error')

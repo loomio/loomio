@@ -665,6 +665,8 @@ en:
       success: '{{count}} notifications sent'
 
   action_dock:
+    actions_menu: Actions menu
+    more_actions: More actions
     react: React
     notify: Notify
     add_resource: Add an attachment
@@ -712,8 +714,11 @@ en:
     add_poll_to_thread: Add to thread
 
   formatting:
+    expand: Show more formatting tools
+    collapse: Show fewer formatting tools
     bold: Bold
     italicize: Italicize
+    blockquote: Quote
     strikethrough: Strikethrough
     underline: Underline
     link: Insert link
@@ -805,6 +810,8 @@ en:
     name_and_count_more: "{{name}} and {{count}} more"
 
   context_panel:
+    aria-intro: |
+      Thread context. Started by {{author}} in group {{group}} at {{started}}.
     thread_status:
       pinned: "This thread has been pinned. It will remain at the top of the group's list of threads for all users."
       closed: "This thread has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page"
@@ -1327,6 +1334,7 @@ en:
     aria_label: 'Group name'
 
   thread_context:
+    current_poll_type_banner: Current {{pollType}} banner
     item_maybe_deleted: "Cannot find the requested location within the thread. It may have been deleted."
     aria_label: 'Thread context'
     thread_options: 'Thread options'
@@ -1452,7 +1460,7 @@ en:
     your_response: Your response
     change_your_response: Edit response
     reason: Reason
-    reason_placeholder: Any additional comments?
+    reason_placeholder: In a sentence or two, explain why you voted this way.
     message: Message
     results: Results
     responses: Responses
@@ -1924,6 +1932,13 @@ en:
     stance_updated: Choice updated
 
   thread_item:
+    aria:
+      deleted: Item deleted
+      new_comment: "{{actor}} commented. {{when}}"
+      poll_created: "{{actor}} started a {{pollType}}. {{when}}"
+      stance_created: "{{actor}} voted. {{when}}"
+      outcome_created: "{{actor}} shared an outcome. {{when}}"
+      poll_expired: "{{pollType}} closed. {{when}}"
     removed: "Item removed"
     comment_replied_to:            "<strong><a href='/u/{{username}}'>{{author}}</a></strong> in reply to <strong>{{title}}</strong>"
     discussion_title_edited:       "<strong><a href='/u/{{username}}'>{{author}}</a></strong> edited the thread title"

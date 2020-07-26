@@ -4,6 +4,7 @@ import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
+import { approximate } from '@/shared/helpers/format_time'
 
 import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext'
 import { includes, camelCase } from 'lodash-es'
@@ -23,6 +24,7 @@ export default
     focusStyleClass: null
 
   methods:
+    approximate: approximate
     viewed: (viewed) -> @event.markAsRead() if viewed
     focusThenFade: ->
       @focusStyleClass = 'thread-item--focused'
@@ -31,7 +33,15 @@ export default
       , 5000
 
   computed:
+    ariaTranslationKey: ->
+      if @eventable.discardedAt
+        'thread_item.aria.deleted'
+      else
+        'thread_item.aria.'+@event.kind
     eventable: -> @event.model()
+
+    translatedPollType: ->
+      @eventable.translatedPollType() if @eventable && @eventable.pollType
 
     indentSize: ->
       switch @event.depth
@@ -81,7 +91,7 @@ export default
 </script>
 
 <template lang="pug">
-div
+section(:aria-label="$t(ariaTranslationKey, {actor: event.actorName(), pollType: translatedPollType, when: approximate(event.createdAt) })")
   .thread-item.px-3.pb-1(:class="[{'thread-item--unread': isUnread}, focusStyleClass]" v-observe-visibility="{callback: viewed, once: true}")
     v-layout.lmo-action-dock-wrapper(:style="{'margin-left': indentSize+'px'}"  :id="'sequence-' + event.sequenceId")
       .thread-item__avatar.mr-3.mt-0

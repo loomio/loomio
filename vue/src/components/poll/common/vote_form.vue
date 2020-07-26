@@ -44,7 +44,7 @@ export default
 
     select: (option) ->
       @selectedOptionId = option.id
-      @$nextTick => EventBus.$emit 'focusTextarea'
+      setTimeout => EventBus.$emit 'focusTextarea', @stance.poll()
 </script>
 
 <template lang="pug">
@@ -58,7 +58,7 @@ export default
           v-avatar(size="52px")
             img(:src="'/img/' + optionImages[option.name] + '.svg'")
           span(v-t="'poll_' + stance.poll().pollType + '_options.' + option.name")
-  poll-common-stance-reason.animated(:stance='stance', v-show='selectedOptionId', v-if='stance')
+  poll-common-stance-reason.animated(:stance='stance' v-if='stance')
   v-card-actions
     v-spacer
     poll-common-show-results-button(v-if='!stance.castAt')

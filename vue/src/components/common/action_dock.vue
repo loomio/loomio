@@ -8,7 +8,7 @@ export default
 </script>
 
 <template lang="pug">
-div.d-flex.justify-end.align-center.flex-wrap
+section.d-flex.justify-end.align-center.flex-wrap(:aria-label="$t('action_dock.actions_menu')")
   reaction-display(:model="model" v-if="Object.keys(actions).includes('react')" :fetch="fetchReactions")
   .action-dock__action(v-for='(action, name) in actions' v-if='action.canPerform()' :key="name")
     reaction-input.action-dock__button--react(:model="model" v-if="name == 'react'")

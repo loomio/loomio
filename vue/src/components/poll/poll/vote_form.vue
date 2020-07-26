@@ -39,7 +39,7 @@ export default
           @selectedOptionIds.push option.id
         else
           @selectedOptionIds = [option.id]
-      @$nextTick => @$emit 'focusTextarea'
+      @$nextTick => @$emit('focusTextarea', @stance.poll())
 
     isSelected: (option) ->
       @selectedOptionIds.includes(option.id)
