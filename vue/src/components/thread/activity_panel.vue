@@ -112,7 +112,7 @@ export default
         Records.events.find(args)[0]
 
     refocus: ->
-      if @focalEvent
+      if @focalEvent and document.querySelector("#sequence-#{@focalEvent.sequenceId}")
         @$vuetify.goTo("#sequence-#{@focalEvent.sequenceId}", duration: 0)
         @focalEvent = null
 
