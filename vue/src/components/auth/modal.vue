@@ -31,7 +31,7 @@ export default
 </script>
 <template lang="pug">
 .auth-modal
-  auth-form(v-if="!user.authForm" :user='user')
+  auth-form(v-if="!user.authForm" :user='user' :prevent-close="preventClose")
   auth-signin-form(v-if='user.authForm == "signIn"' :user='user')
   auth-signup-form(v-if='user.authForm == "signUp"' :user='user')
   auth-identity-form(v-if='user.authForm == "identity"' :user='user' :identity='pendingProviderIdentity')

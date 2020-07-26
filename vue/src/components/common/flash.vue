@@ -16,7 +16,7 @@ export default
 
 <template lang="pug">
 v-snackbar.flash-root(v-model="isOpen" :timeout="timeout" top)
-  span.flash-root__message(v-t="{path: flash.message, args: flash.options}")
+  span.flash-root__message(role="status" aria-live="polite" v-t="{path: flash.message, args: flash.options}")
   .flash-root__action(v-if="flash.actionFn")
     a(@click="flash.actionFn()", v-t="flash.action")
 </template>

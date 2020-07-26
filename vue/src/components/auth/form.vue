@@ -38,15 +38,16 @@ export default
 <template lang="pug">
 v-card.auth-form
   v-card-title
-    h1.headline(v-t="{ path: 'auth_form.sign_in_to_loomio', args: { site_name: siteName } }")
+    h1.headline(role="status" aria-live="polite" v-t="{ path: 'auth_form.sign_in_to_loomio', args: { site_name: siteName } }")
     v-spacer
     dismiss-modal-button(v-if='!preventClose')
-  p.headline.text-center(v-if="pendingGroup" v-t="{path: 'auth_form.youre_invited', args: {group_name: pendingGroup.name}}")
-  p.headline.text-center(v-if="pendingDiscussion" v-t="'auth_form.youre_invited_discussion'")
-  p.headline.text-center(v-if="pendingPoll" v-t="'auth_form.youre_invited_poll'")
-  auth-provider-form(:user='user')
-  auth-email-form(:user='user' v-if='emailLogin')
-  .text-center.caption.mt-4
-    a.auth-form__sign-in-help(href="https://help.loomio.org/en/user_manual/users/sign_in/" target="_blank" v-t="'auth_form.sign_in_help'")
-  .auth-form__privacy-notice.caption.text-center.mt-4(v-if='privacyUrl' v-html="$t('auth_form.privacy_notice', { siteName: siteName, privacyUrl: privacyUrl })")
+  v-sheet.py-4.pb-4
+    p.headline.text-center(v-if="pendingGroup" v-t="{path: 'auth_form.youre_invited', args: {group_name: pendingGroup.name}}")
+    p.headline.text-center(v-if="pendingDiscussion" v-t="'auth_form.youre_invited_discussion'")
+    p.headline.text-center(v-if="pendingPoll" v-t="'auth_form.youre_invited_poll'")
+    auth-provider-form(:user='user')
+    auth-email-form(:user='user' v-if='emailLogin')
+    .text-center.caption.mt-4
+      a.auth-form__sign-in-help(href="https://help.loomio.org/en/user_manual/users/sign_in/" target="_blank" v-t="'auth_form.sign_in_help'")
+    .auth-form__privacy-notice.caption.text-center.mt-4(v-if='privacyUrl' v-html="$t('auth_form.privacy_notice', { siteName: siteName, privacyUrl: privacyUrl })")
 </template>

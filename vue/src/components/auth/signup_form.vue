@@ -52,7 +52,7 @@ export default
 <template lang="pug">
 v-card.auth-signup-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
   v-card-title(v-if='!allow')
-    h1.headline(v-t="'auth_form.invitation_required'")
+    h1.headline(role="status" aria-live="polite" v-t="'auth_form.invitation_required'")
   v-card-title(v-if='allow')
     h1.headline(v-t="{ path: 'auth_form.welcome', args: { siteName: siteName } }")
     v-spacer
@@ -62,7 +62,7 @@ v-card.auth-signup-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.ca
     .auth-signup-form__welcome.text-center.my-2
       p(v-t="{path: 'auth_form.sign_up_as', args: {email: user.email}}")
     .auth-signup-form__name
-      v-text-field(type='text' :label="$t('auth_form.name_placeholder')" :placeholder="$t('auth_form.enter_your_name')" outlined v-model='vars.name' required='true')
+      v-text-field(type='text' autofocus :label="$t('auth_form.name_placeholder')" :placeholder="$t('auth_form.enter_your_name')" outlined v-model='vars.name' required='true')
     .auth-signup-form__consent(v-if='termsUrl')
       v-checkbox.auth-signup-form__legal-accepted(v-model='vars.legalAccepted' hide-details)
         template(v-slot:label)
