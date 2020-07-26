@@ -87,7 +87,6 @@ module PendingActionsHelper
     Stance.redeemable.find_by(token: pending_stance_token) if pending_stance_token
   end
 
-
   def pending_identity
     Identities::Base.find_by(id: session[:pending_identity_id]) if session[:pending_identity_id]
   end
