@@ -14,11 +14,8 @@ export default
   methods:
     submit: ->
       return unless @validateEmail()
-      # EventBus.emit $scope, 'processing'
       @user.email = @email
-      AuthService.emailStatus(@user).finally =>
-        console.log 'doneProcessing'
-        # EventBus.emit $scope, 'doneProcessing'
+      AuthService.emailStatus(@user)
     validateEmail: ->
       @user.errors = {}
       if !@email

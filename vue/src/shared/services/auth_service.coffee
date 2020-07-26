@@ -13,13 +13,10 @@ export default new class AuthService
       @applyEmailStatus(user, head(data.users))
 
   applyEmailStatus: (user, data = {}) ->
-    console.log "pendingIdentity:", AppConfig.pendingIdentity
     vals = ['name', 'email', 'avatar_kind', 'avatar_initials', 'email_hash',
             'avatar_url', 'has_password', 'email_status', 'email_verified',
             'legal_accepted_at', 'auth_form']
-    console.log "before", user
     user.update pickBy(mapKeys(pick(data, vals), (v,k) -> camelCase(k)), (val) -> !!val)
-    console.log "after", user
     user.update(hasToken: data.has_token)
     user
 
@@ -31,6 +28,7 @@ export default new class AuthService
     if user && !user.hasProfilePhoto() && !user.hasExperienced('changePicture')
       EventBus.$emit 'openModal', {component: 'ChangePictureForm'}
 
+
   signIn: (user = {} , onSuccess = -> , onFailure = ->) ->
     Records.sessions.build(
       pick(user, ['email', 'name', 'password', 'code'])
@@ -39,7 +37,6 @@ export default new class AuthService
       onSuccess(data)
       data
     , (err) ->
-      console.log 'error signing in'
       err.json().then (data) ->
         errors = if user.hasToken
           { token: [i18n.t('auth_form.invalid_token')] }

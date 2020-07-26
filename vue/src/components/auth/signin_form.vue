@@ -24,8 +24,11 @@ export default
         @loading = false
 
     signInAndSetPassword: ->
-      @$router.replace(query: {set_password: true})
-      @signIn()
+      @signIn().then =>
+        EventBus.$emit 'openModal',
+          component: 'ChangePasswordForm'
+          props:
+            user: Session.user()
 
     sendLoginLink: ->
       AuthService.sendLoginLink(@user).finally =>
@@ -46,7 +49,7 @@ v-card.auth-signin-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.ca
     v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
       v-icon mdi-close
 
-  v-sheet.mx-4
+  v-sheet.mx-4.pb-4
     v-layout(justify-center)
       auth-avatar(:user='user')
     .auth-signin-form__token.text-center(v-if='user.hasToken')
@@ -56,7 +59,7 @@ v-card.auth-signin-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.ca
       v-btn.my-4.auth-signin-form__submit(color="primary" @click='sendLoginLink()' v-if='user.errors.token' :loading="loading")
         span(v-t="'auth_form.login_link'")
       p
-        span(v-t="'auth_form.set_password_helptext'")
+        span(v-t="'auth_form.set_password_helptext'").mr-1
         a.lmo-pointer(@click='signInAndSetPassword()' v-t="'auth_form.set_password'")
     .auth-signin-form__no-token(v-if='!user.hasToken')
       .auth-signin-form__password(v-if='user.hasPassword')
@@ -70,8 +73,8 @@ v-card.auth-signin-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.ca
           v-btn.auth-signin-form__submit(:color="user.hasPassword ? 'primary' : ''" v-t="'auth_form.sign_in'" @click='submit()' :disabled='!user.password' v-if='user.hasPassword' :loading="user.password && loading")
 
       .auth-signin-form__no-password(v-if='!user.hasPassword')
-        v-layout(justify-center)
-          v-btn.auth-signin-form__submit(color="primary" @click='sendLoginLink()' v-t="'auth_form.login_link'" :loading="loading")
+        v-card-actions.justify-space-around
+          v-btn.auth-signin-form__submit(color="primary" @click='sendLoginLink()' v-t="'auth_form.sign_in_via_email'" :loading="loading")
 </template>
 
 <style lang="sass">

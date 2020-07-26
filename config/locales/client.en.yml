@@ -1978,7 +1978,7 @@ en:
     continue_with_provider: Sign in with {{provider}}
     continue_with_email: Continue with email
     or_enter_your_email: Or, enter your email address
-    enter_your_name: Enter your name to continue
+    enter_your_name: Enter your name
     invitation_required: You need an invitation to create an account.
     more_providers: More
     email_not_present: An email address is required
@@ -2004,6 +2004,7 @@ en:
     welcome_back: Welcome back, {{name}}!
     forgot_password: Forgot password
     login_link: Send sign in email
+    sign_in_via_email: Sign in via email
     set_password: Set password
     set_password_helptext: Want to use a password next time?
     hello: "Hello, {{name}}!"

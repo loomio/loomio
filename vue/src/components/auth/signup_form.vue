@@ -21,7 +21,7 @@ export default
 
   data: ->
     siteName: AppConfig.theme.site_name
-    vars: {name: @name, site_name: AppConfig.theme.site_name}
+    vars: {name: @user.name, site_name: AppConfig.theme.site_name}
     loading: false
 
   methods:
@@ -43,7 +43,6 @@ export default
     termsUrl: -> AppConfig.theme.terms_url
     privacyUrl: -> AppConfig.theme.privacy_url
     newsletterEnabled: -> AppConfig.newsletterEnabled
-    name: -> @user.name
     allow: ->
       AppConfig.features.app.create_user or AppConfig.pendingIdentity.identity_type?
     useRecaptcha: ->
@@ -63,7 +62,6 @@ v-card.auth-signup-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.ca
     .auth-signup-form__welcome.text-center.my-2
       p(v-t="{path: 'auth_form.sign_up_as', args: {email: user.email}}")
     .auth-signup-form__name
-      //- label(v-t="'auth_form.name'")
       v-text-field(type='text' :label="$t('auth_form.name_placeholder')" :placeholder="$t('auth_form.enter_your_name')" outlined v-model='vars.name' required='true')
     .auth-signup-form__consent(v-if='termsUrl')
       v-checkbox.auth-signup-form__legal-accepted(v-model='vars.legalAccepted' hide-details)

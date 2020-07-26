@@ -17,11 +17,6 @@ export default
     isDisabled: false
     pendingProviderIdentity: Session.providerIdentity()
 
-  created: ->
-    EventBus.$on 'set-auth-modal-title', (key) =>
-      console.log "event"
-      @titleKey = key
-
   mounted: ->
     AuthService.applyEmailStatus(@user, AppConfig.pendingIdentity)
 
@@ -39,6 +34,6 @@ export default
   auth-form(v-if="!user.authForm" :user='user')
   auth-signin-form(v-if='user.authForm == "signIn"' :user='user')
   auth-signup-form(v-if='user.authForm == "signUp"' :user='user')
-  auth-identity-form(v-if='user.authForm == "provider"' :user='user' :identity='pendingProviderIdentity')
+  auth-identity-form(v-if='user.authForm == "identity"' :user='user' :identity='pendingProviderIdentity')
   auth-complete(v-if='user.authForm == "complete"', :user='user')
 </template>
