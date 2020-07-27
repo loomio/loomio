@@ -49,7 +49,9 @@ export default new class PollService
             announcement: Records.announcements.buildFromModel(poll)
 
     edit_poll:
-      name: 'common.action.edit'
+      name: 'action_dock.edit_poll_type'
+      nameArgs: ->
+        {pollType: poll.translatedPollType()}
       icon: 'mdi-pencil'
       canPerform: ->
         AbilityService.canEditPoll(poll)

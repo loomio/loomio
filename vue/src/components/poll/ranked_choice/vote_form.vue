@@ -18,7 +18,6 @@ export default
 
   methods:
     submit: ->
-      @stance.id = null
       selected = take @pollOptions, @numChoices
       @stance.stanceChoicesAttributes = map selected, (option, index) =>
         poll_option_id: option.id

@@ -12,7 +12,7 @@ section.d-flex.justify-end.align-center.flex-wrap(:aria-label="$t('action_dock.a
   reaction-display(:model="model" v-if="Object.keys(actions).includes('react')" :fetch="fetchReactions")
   .action-dock__action(v-for='(action, name) in actions' v-if='action.canPerform()' :key="name")
     reaction-input.action-dock__button--react(:model="model" v-if="name == 'react'")
-    action-button(v-if="name != 'react'" :action="action" :name="name")
+    action-button(v-if="name != 'react'" :action="action" :name="name" :nameArgs="action.nameArgs && action.nameArgs()")
   action-menu(v-if="menuActions" :actions='menuActions')
 </template>
 

@@ -26,7 +26,6 @@ export default
 
   methods:
     submit: ->
-      @stance.id = null
       if sum(map(@stanceChoices, 'score')) > 0
         @stance.stanceChoicesAttributes = map @stanceChoices, (choice) =>
           poll_option_id: choice.poll_option_id
