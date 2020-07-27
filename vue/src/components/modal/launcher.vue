@@ -89,7 +89,6 @@ export default
       @isOpen = true
       @componentName = opts.component
       @componentProps = opts.props
-      @$refs.modalLauncher.focus()
 
     doCloseModal: -> @isOpen = false
 
