@@ -11,14 +11,13 @@ export default
   computed:
     referralCodeExtra: -> @$t('subscription_status.referral_code_help')
     canSee: -> !@group.parentId && AbilityService.canAdminister(@group)
-    expiresAt: -> @exactDate(@group.subscription.expires_at)
     showUpgradeButton: -> @group.subscription.plan == "trial"
     tableData: ->
       {
         plan: startCase(@group.subscription.plan)
         state: startCase(@group.subscription.state)
-        expires_at: @displayDate(@group.subscription.expires_at) if @group.subscription.plan == 'trial'
-        renews_at: @displayDate(@group.subscription.renews_at)
+        expires_at: @displayDate(@group.subscription.expires_at) if @group.subscription.plan == 'trial' && @group.subscription.expires_at
+        renews_at: @displayDate(@group.subscription.renews_at) if @group.subscription.renews_at
         active_members: @group.subscription.members_count
         max_members: @group.subscription.max_members if @group.subscription.max_members
         max_threads: @group.subscription.max_threads if @group.subscription.max_threads
