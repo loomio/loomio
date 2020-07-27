@@ -56,6 +56,5 @@ export default
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
     v-spacer
-    poll-common-show-results-button(v-if='!stance.castAt')
     v-btn.poll-common-vote-form__submit(color="primary" @click='submit()', v-t="'poll_common.vote'", aria-label="$t( 'poll_poll_vote_form.vote')")
 </template>

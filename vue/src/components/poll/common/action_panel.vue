@@ -40,9 +40,8 @@ export default
   .poll-common-action-panel__anonymous-message.py-1.caption(v-t="'poll_common_action_panel.anonymous'" v-if='stance.poll().anonymous')
   .poll-common-action-panel__results-hidden-until-closed.py-1.caption(v-t="{path: 'poll_common_action_panel.results_hidden_until_closed', args: {poll_type: stance.poll().pollType}}" v-if='stance.poll().hideResultsUntilClosed')
   div(v-show='!stance.castAt')
-    h3.py-3(v-t="'poll_common.your_response'")
+    h3.py-3(v-t="'poll_common.have_your_say'")
     poll-common-directive(v-if='userCanParticipate' :stance='stance' name='vote-form')
     .poll-common-unable-to-vote(v-if='!userCanParticipate')
       p.lmo-hint-text(v-t="'poll_common_action_panel.unable_to_vote'")
-      poll-common-show-results-button
 </template>

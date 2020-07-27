@@ -10,6 +10,13 @@ import { hardReload } from '@/shared/helpers/window'
 
 export default new class PollService
   actions: (poll, vm) ->
+    show_results:
+      name: 'poll_common_card.show_results'
+      canPerform: ->
+        !poll.stancesInDiscussion && !(poll.myStance() || {}).castAt && !poll.showResults
+      perform: ->
+        poll.showResults = true
+
     edit_stance:
       name: 'poll_common.change_vote'
       icon: 'mdi-pencil'

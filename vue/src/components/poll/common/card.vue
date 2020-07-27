@@ -15,7 +15,6 @@ export default
     isPage: Boolean
 
   created: ->
-    EventBus.$on 'showResults', => @buttonPressed = true
     EventBus.$on 'stanceSaved', => EventBus.$emit 'refreshStance'
     @watchRecords
       collections: ["stances", "outcomes"]
@@ -42,7 +41,7 @@ export default
 
     dockActions: ->
       @myStance
-      pick PollService.actions(@poll, @), ['announce_poll', 'edit_stance']
+      pick PollService.actions(@poll, @), ['show_results', 'announce_poll', 'edit_stance']
 
 </script>
 

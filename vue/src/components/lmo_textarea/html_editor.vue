@@ -166,7 +166,7 @@ div
   .editor.mb-3
     editor-content.html-editor__textarea(ref="editor" :editor='editor').lmo-markdown-wrapper
     editor-menu-bar(:editor='editor' v-slot='{ commands, isActive, focused }')
-      div
+      section(:aria-label="$t('formatting.formatting_tools')")
         v-layout.menubar(align-center v-if="isActive.table()")
           v-btn(icon @click="commands.deleteTable" :title="$t('formatting.remove_table')")
             v-icon mdi-table-remove

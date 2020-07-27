@@ -714,6 +714,7 @@ en:
     add_poll_to_thread: Add to thread
 
   formatting:
+    formatting_tools: Text formatting tools
     expand: Show more formatting tools
     collapse: Show fewer formatting tools
     bold: Bold
@@ -1457,6 +1458,8 @@ en:
     ranked_choice_title: Ranked choice
 
   poll_common:
+    vote_now: Vote now
+    have_your_say: Have your say
     your_response: Your response
     change_your_response: Edit response
     reason: Reason
@@ -1477,6 +1480,8 @@ en:
     details: Details
     participant_name: Your name
     participant_email: Email address
+    submit_vote: Submit vote
+    update_vote: Update vote
     share_poll: Share poll
     share_proposal: Share proposal
     share_count: Share check
