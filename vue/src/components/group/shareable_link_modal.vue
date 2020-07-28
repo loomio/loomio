@@ -14,7 +14,7 @@ export default
   data: ->
     dialog: false
 
-  created: ->
+  mounted: ->
     @group.fetchToken()
 
   methods:
