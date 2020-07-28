@@ -510,9 +510,6 @@ en:
 
   comment_by: Comment by %{comment_author}
 
-  personal_data:
-    title: Personal data of %{user_name} on %{host_name}
-
   notified:
     no_matches_found: "No results found matching '%{query}'"
     group_users: "(%{count} people)"
