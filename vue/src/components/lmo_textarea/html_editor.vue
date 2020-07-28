@@ -148,7 +148,7 @@ export default
     updateModel: ->
       @model[@field] = @editor.getHTML()
       setTimeout =>
-        if @$refs.editor.$el
+        if @$refs.editor && @$refs.editor.$el
           @$refs.editor.$el.children[0].setAttribute("role", "textbox")
           @$refs.editor.$el.children[0].setAttribute("aria-label", @placeholder) if @placeholder
       @updateFiles()
