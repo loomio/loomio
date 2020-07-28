@@ -23,10 +23,10 @@ export default
     poll: -> @stance.poll()
     optionSelected: -> @selectedOptionIds.length or @selectedOptionId
     submitText: ->
-      if @stance.isNew()
-        'poll_common.submit_vote'
-      else
+      if @stance.castAt
         'poll_common.update_vote'
+      else
+        'poll_common.submit_vote'
 
   methods:
     submit: ->
