@@ -148,8 +148,9 @@ export default
     updateModel: ->
       @model[@field] = @editor.getHTML()
       setTimeout =>
-        @$refs.editor.$el.children[0].setAttribute("role", "textbox")
-        @$refs.editor.$el.children[0].setAttribute("aria-label", @placeholder) if @placeholder
+        if @$refs.editor.$el
+          @$refs.editor.$el.children[0].setAttribute("role", "textbox")
+          @$refs.editor.$el.children[0].setAttribute("aria-label", @placeholder) if @placeholder
       @updateFiles()
 
   beforeDestroy: ->
