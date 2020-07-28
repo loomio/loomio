@@ -20,7 +20,11 @@ export default (callback) ->
           ignoreErrors: [
             "Avoided redundant navigation to current location",
             "NotFoundError: Node.removeChild",
-            "ResizeObserver loop limit exceeded"
+            "NotFoundError: Failed to execute 'removeChild' on 'Node'",
+            "NotFoundError: The object can not be found here.",
+            "NotFoundError: Node was not found",
+            "ResizeObserver loop limit exceeded",
+            "MetaMask detected another web3"
           ]
           dsn: AppConfig.sentry_dsn
           integrations: [
