@@ -32,8 +32,9 @@ export default
         props: { group: Records.groups.build() }
 
     init: (options = {}) ->
-      @loading = true
-      Records.discussions.fetchInbox(options).then => @loading = false
+      if Session.isSignedIn()
+        @loading = true
+        Records.discussions.fetchInbox(options).then => @loading = false
 
       EventBus.$emit 'currentComponent',
         titleKey: 'inbox_page.unread_threads'
