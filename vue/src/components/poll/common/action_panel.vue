@@ -34,7 +34,6 @@ export default
 
 <template lang="pug">
 .poll-common-action-panel(v-if='!poll.closedAt')
-  //- poll-common-directive(v-if='userHasVoted', :stance='stance', name='change-your-vote')
   .poll-common-action-panel__anonymous-message.py-1.caption(v-t="'poll_common_action_panel.anonymous'" v-if='stance.poll().anonymous')
   .poll-common-action-panel__results-hidden-until-closed.py-1.caption(v-t="{path: 'poll_common_action_panel.results_hidden_until_closed', args: {poll_type: stance.poll().pollType}}" v-if='stance.poll().hideResultsUntilClosed')
   div(v-show='!stance.castAt')
