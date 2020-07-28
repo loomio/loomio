@@ -29,7 +29,6 @@ export default
       if @useRecaptcha
         @$refs.invisibleRecaptcha.execute()
       else
-        console.log "here"
         @submitForm()
 
     submitForm: (recaptcha) ->
@@ -52,13 +51,14 @@ export default
 <template lang="pug">
 v-card.auth-signup-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
   v-card-title(v-if='!allow')
-    h1.headline(role="status" aria-live="polite" v-t="'auth_form.invitation_required'")
+    h1.headline(role="status" aria-live="assertive" v-t="'auth_form.invitation_required'")
   v-card-title(v-if='allow')
-    h1.headline(v-t="{ path: 'auth_form.welcome', args: { siteName: siteName } }")
+    h1.headline(role="status" aria-live="assertive" v-t="{ path: 'auth_form.welcome', args: { siteName: siteName } }")
     v-spacer
     v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
       v-icon mdi-close
   v-sheet.mx-4
+    submit-overlay(:value='loading')
     .auth-signup-form__welcome.text-center.my-2
       p(v-t="{path: 'auth_form.sign_up_as', args: {email: user.email}}")
     .auth-signup-form__name

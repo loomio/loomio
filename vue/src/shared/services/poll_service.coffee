@@ -91,9 +91,9 @@ export default new class PollService
 
     close_poll:
       icon: 'mdi-close-circle-outline'
-      name:
-        path: 'poll_common.close_poll_type'
-        args: {'poll-type': vm.$t(poll.pollTypeKey())}
+      name: 'poll_common.close_poll_type'
+      nameArgs: ->
+        {pollType: poll.translatedPollType()}
       canPerform: ->
         AbilityService.canClosePoll(poll)
       perform: ->

@@ -14,7 +14,6 @@ export default
     isReturning: Boolean
 
   created: ->
-    EventBus.$on 'showResults', => @buttonPressed = true
     EventBus.$on 'stanceSaved', => EventBus.$emit 'refreshStance'
     @watchRecords
       collections: ["stances"]

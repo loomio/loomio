@@ -7,6 +7,8 @@ export default
     user: Object
   data: ->
     email: @user.email
+    loading: false
+    
   watch:
     # GK: NB: not sure why this hack is necessary, but email is not set otherwise
     'user.email': ->
@@ -15,7 +17,8 @@ export default
     submit: ->
       return unless @validateEmail()
       @user.email = @email
-      AuthService.emailStatus(@user)
+      @loading = true
+      AuthService.emailStatus(@user).finally => @loading = false
     validateEmail: ->
       @user.errors = {}
       if !@email
@@ -29,7 +32,7 @@ export default
   .auth-email-form__email
     v-text-field#email.lmo-primary-form-input(outlined name='email' type='email' :placeholder="$t('auth_form.email_placeholder')" :label="$t('common.email_address')" v-model='email' autocomplete="username email")
     validation-errors(:subject='user' field='email')
-    v-btn.auth-email-form__submit(color="primary" @click='submit()' :disabled='!email' v-t="'auth_form.continue_with_email'")
+    v-btn.auth-email-form__submit(color="primary" @click='submit()' :disabled='!email' v-t="'auth_form.continue_with_email'" :loading="loading")
 </template>
 
 <style lang="sass">

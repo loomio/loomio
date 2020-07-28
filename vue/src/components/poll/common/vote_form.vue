@@ -46,24 +46,21 @@ export default
       else
         ['elevation-1']
 
-    select: (option) ->
-      @selectedOptionId = option.id
-      setTimeout => EventBus.$emit 'focusTextarea', @stance.poll()
 </script>
 
 <template lang="pug">
-.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
+form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value="stance.processing")
   span(v-if="debug") {{stance}}
   v-layout(wrap)
     v-layout.mb-4(justify-space-around v-for='(optionGroup, index) in optionGroups' :key="index")
       label.poll-common-vote-form__button.poll-proposal-vote-form__button.rounded-lg.pa-2(:class="classes(option)" v-for='option in optionGroup' :key='option.id')
-        input(type="radio" v-model="selectedOptionId" :value="option.id" :name="$t('poll_' + stance.poll().pollType + '_options.' + option.name)" :aria-label="$t('poll_' + stance.poll().pollType + '_options.' + option.name)")
+        input(type="radio" v-model="selectedOptionId" :value="option.id" name="name" :aria-label="$t('poll_' + stance.poll().pollType + '_options.' + option.name)")
         v-layout(column align-center)
           v-avatar(size="52px")
             img(aria-hidden="true" :src="'/img/' + optionImages[option.name] + '.svg'")
           span(aria-hidden="true" v-t="'poll_' + stance.poll().pollType + '_options.' + option.name")
-  poll-common-stance-reason.animated(:stance='stance' v-if='stance')
+  poll-common-stance-reason(:stance='stance' v-if='stance')
   v-card-actions
     v-spacer
     v-btn.poll-common-vote-form__submit(color="primary" @click='submit()' v-t="'poll_common.submit_vote'" :disabled='!selectedOptionId')

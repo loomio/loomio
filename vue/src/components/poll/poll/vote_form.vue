@@ -54,7 +54,7 @@ export default
     v-radio.poll-common-vote-form__button(v-for='option in pollOptions' :key='option.id' :value="option.id" :label="option.name" hide-details :color="option.color")
   poll-common-add-option-button(:poll='stance.poll()')
   validation-errors(:subject='stance', field='stanceChoices')
-  poll-common-stance-reason.animated(:stance='stance' v-show='optionSelected')
+  poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
     v-spacer
     v-btn.poll-common-vote-form__submit(:disabled='!optionSelected' color="primary" @click='submit()' v-t="submitText")

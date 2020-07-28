@@ -16,17 +16,19 @@ export default
   methods:
     submit: ->
       @loading = true
-      andThen = => @loading = false
-      AuthService.signIn(@user, andThen, ( => @attempts += 1; andThen()) )
+      AuthService.signIn(@user).finally =>
+        @attempts += 1
+        @loading = false
 </script>
 <template lang="pug">
 v-card.auth-complete.text-center(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
   v-card-title
-    h1.headline(role="status" aria-live="polite" v-t="'auth_form.check_your_email'")
+    h1.headline(role="status" aria-live="assertive" v-t="'auth_form.check_your_email'")
     v-spacer
     v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
       v-icon mdi-close
   v-sheet.mx-4
+    submit-overlay(:value='loading')
     p.mb-4(v-if='user.sentLoginLink')
       span(v-t="{ path: 'auth_form.login_link_sent', args: { email: user.email }}")
       br

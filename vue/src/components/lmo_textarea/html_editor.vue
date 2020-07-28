@@ -98,10 +98,6 @@ export default
   mounted: ->
     @expanded = Session.user().experiences['html-editor.expanded']
     @updateModel()
-    EventBus.$on 'focusTextarea', (model) =>
-      if model == @model
-        @editor.focus()
-
 
   watch:
     'shouldReset': 'reset'
@@ -153,7 +149,7 @@ export default
       @model[@field] = @editor.getHTML()
       setTimeout =>
         @$refs.editor.$el.children[0].setAttribute("role", "textbox")
-        @$refs.editor.$el.children[0].setAttribute("aria-label", @placeholder)
+        @$refs.editor.$el.children[0].setAttribute("aria-label", @placeholder) if @placeholder
       @updateFiles()
 
   beforeDestroy: ->
@@ -162,11 +158,10 @@ export default
 
 <template lang="pug">
 div
-  label.caption.v-label.v-label--active {{label}}
   .editor.mb-3
     editor-content.html-editor__textarea(ref="editor" :editor='editor').lmo-markdown-wrapper
     editor-menu-bar(:editor='editor' v-slot='{ commands, isActive, focused }')
-      section(:aria-label="$t('formatting.formatting_tools')")
+      div
         v-layout.menubar(align-center v-if="isActive.table()")
           v-btn(icon @click="commands.deleteTable" :title="$t('formatting.remove_table')")
             v-icon mdi-table-remove
@@ -184,8 +179,9 @@ div
             v-icon mdi-table-row-remove
           v-btn(icon @click="commands.toggleCellMerge" :title="$t('formatting.merge_selected')")
             v-icon mdi-table-merge-cells
-        v-layout.menubar.py-2(align-center)
-          v-layout(wrap)
+
+        v-layout.menubar.py-2.justify-space-between.flex-wrap(align-center)
+          section.d-flex.flex-wrap(:aria-label="$t('formatting.formatting_tools')")
             //- attach
             v-btn(icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")
               v-icon mdi-paperclip
@@ -310,6 +306,7 @@ div
             v-btn.html-editor__expand(v-if="expanded" icon @click="toggleExpanded" :aria-label="$t('formatting.collapse')")
               v-icon mdi-chevron-left
           //- save button?
+          v-spacer
           slot(name="actions")
     v-alert(v-if="maxLength && model[field] && model[field].length > maxLength" color='error')
       span( v-t="'poll_common.too_long'")

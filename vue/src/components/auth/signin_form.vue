@@ -20,22 +20,25 @@ export default
   methods:
     signIn: ->
       @user.name = @vars.name if @vars.name?
+      @loading = true
       AuthService.signIn(@user).finally =>
         @loading = false
 
     signInAndSetPassword: ->
+      @loading = true
       @signIn().then =>
+        @loading = false
         EventBus.$emit 'openModal',
           component: 'ChangePasswordForm'
           props:
             user: Session.user()
 
     sendLoginLink: ->
+      @loading = true
       AuthService.sendLoginLink(@user).finally =>
         @loading = false
 
     submit: ->
-      @loading = true
       if @user.hasPassword or @user.hasToken
         @signIn()
       else
@@ -44,12 +47,13 @@ export default
 <template lang="pug">
 v-card.auth-signin-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
   v-card-title
-    h1.headline(role="status" aria-live="polite" v-t="{ path: 'auth_form.welcome_back', args: { name: user.name } }")
+    h1.headline(role="status" aria-live="assertive" v-t="{ path: 'auth_form.welcome_back', args: { name: user.name } }")
     v-spacer
     v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
       v-icon mdi-close
 
   v-sheet.mx-4.pb-4
+    submit-overlay(:value='loading')
     v-layout(justify-center)
       auth-avatar(:user='user')
     .auth-signin-form__token.text-center(v-if='user.hasToken')

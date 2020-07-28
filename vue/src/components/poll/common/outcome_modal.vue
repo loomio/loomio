@@ -80,7 +80,7 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
     .poll-common-calendar-invite(v-if='datesAsOptions()')
       .poll-common-calendar-invite__checkbox.poll-common-checkbox-option
         v-checkbox(v-model='clone.calendarInvite' :label="$t('poll_common_calendar_invite.calendar_invite')")
-      .poll-common-calendar-invite__form.animated(v-if='clone.calendarInvite')
+      .poll-common-calendar-invite__form(v-if='clone.calendarInvite')
         .poll-common-calendar-invite--pad-top
           v-select.lmo-flex__grow(v-model='clone.pollOptionId' :items="options" item-value="id" item-text="value" :label="$t('poll_common_calendar_invite.poll_option_id')")
         .poll-common-calendar-invite--pad-top

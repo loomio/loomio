@@ -426,6 +426,7 @@ en:
     confirm_delete: 'Delete comment'
     in_reply_to: "Reply to {{name}}"
     write_a_comment: "Write a comment..."
+    post_comment: "Post comment"
     submit_button:
       label: 'Post'
     private_privacy_notice: 'Your comment will only be visible to members of {{groupName}}.'
@@ -566,6 +567,7 @@ en:
 
   discussion_form:
     aria_label: 'Thread form'
+    start_thread: Start thread
     messages:
       created: 'Thread started'
       updated: 'Thread updated'
@@ -812,8 +814,7 @@ en:
     name_and_count_more: "{{name}} and {{count}} more"
 
   context_panel:
-    aria-intro: |
-      Thread context. Started by {{author}} in group {{group}} at {{started}}.
+    aria_intro: "Thread context by {{author}}"
     thread_status:
       pinned: "This thread has been pinned. It will remain at the top of the group's list of threads for all users."
       closed: "This thread has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page"
@@ -1311,6 +1312,7 @@ en:
     no_one: No one has seen this yet
 
   activity_card:
+    aria_label: "Comment or start poll"
     count_responses: "{{count}} responses"
     event_pinned: "Pinned to timeline"
     event_unpinned: "Unpinned from timeline"
@@ -1336,7 +1338,7 @@ en:
     aria_label: 'Group name'
 
   thread_context:
-    current_poll_type_banner: Current {{pollType}} banner
+    current_poll_type_banner: Current {{pollType}}
     item_maybe_deleted: "Cannot find the requested location within the thread. It may have been deleted."
     aria_label: 'Thread context'
     thread_options: 'Thread options'
@@ -1464,7 +1466,7 @@ en:
     your_response: Your response
     change_your_response: Edit response
     reason: Reason
-    reason_placeholder: In a sentence or two, explain why you voted this way.
+    reason_placeholder: Briefly explain why you voted this way
     message: Message
     results: Results
     responses: Responses
@@ -1723,6 +1725,7 @@ en:
     closing: Closing
     closed: Closed
     start: Start
+    start_poll_type: Start {{poll_type}}
     update: Update
     reminder_note: 24 hours before closing, a reminder will be sent to all participants
     loomio_school_link: |
