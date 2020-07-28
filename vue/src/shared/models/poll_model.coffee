@@ -37,6 +37,7 @@ export default class PollModel extends BaseModel
     files: []
     imageFiles: []
     attachments: []
+    pleaseShowResults: false
 
   audienceValues: ->
     name: @group().name

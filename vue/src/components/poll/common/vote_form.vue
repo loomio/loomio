@@ -63,7 +63,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop
   poll-common-stance-reason(:stance='stance' v-if='stance')
   v-card-actions
     v-spacer
-    v-btn.poll-common-vote-form__submit(color="primary" @click='submit()' v-t="'poll_common.submit_vote'" :disabled='!selectedOptionId')
+    v-btn.poll-common-vote-form__submit(color="primary" @click='submit()' v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'" :disabled='!selectedOptionId')
 </template>
 <style lang="sass">
 

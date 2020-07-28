@@ -41,7 +41,7 @@ export default
 
     dockActions: ->
       @myStance
-      pick PollService.actions(@poll, @), ['show_results', 'hide_results', 'announce_poll', 'edit_stance']
+      pick PollService.actions(@poll, @), ['show_results', 'hide_results', 'edit_stance', 'announce_poll']
 
 </script>
 
@@ -58,10 +58,6 @@ v-card
         translation(v-if="poll.translation.title" :model='poll', field='title')
         v-chip.ml-3(outlined small color="info" v-t="'poll_types.' + poll.pollType")
     v-card-text
-      | hideResultsUntilClosed: {{!!poll.hideResultsUntilClosed}}
-      | showResults: {{!!poll.showResults()}}
-      | pleaseShowResults: {{!!poll.pleaseShowResults}}
-      | castAt: {{!!(poll.myStance() || {}).castAt}}
       poll-common-set-outcome-panel(:poll='poll')
       poll-common-outcome-panel(:poll='poll', v-if='outcome')
       poll-common-details-panel(:poll='poll')

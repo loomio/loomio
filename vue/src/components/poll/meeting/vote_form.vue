@@ -99,5 +99,5 @@ form.poll-meeting-vote-form(@submit.prevent='submit()')
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
     v-spacer
-    v-btn.poll-common-vote-form__submit(color="primary" type='submit' v-t="'poll_common.vote'")
+    v-btn.poll-common-vote-form__submit(color="primary" type='submit' v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
 </template>
