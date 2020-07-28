@@ -24,8 +24,9 @@ describe Event do
   let(:comment) { create :comment, parent: parent_comment, discussion: discussion, body: 'hey @sam' }
   let(:poll) { create :poll, discussion: discussion, details: user_mentioned_text, author: author }
   let(:outcome) { create :outcome, poll: poll, statement: user_mentioned_text, author: author }
-
-  let(:guest_user) { create :user }
+  let!(:markdown_webhook) { create(:webhook, group: discussion.group, format: 'markdown') }
+  let!(:slack_webhook) { create(:webhook, group: discussion.group, format: 'slack') }
+  let!(:microsoft_webhook) { create(:webhook, group: discussion.group, format: 'microsoft') }
 
   def emails_sent
     ActionMailer::Base.deliveries.count
@@ -47,8 +48,8 @@ describe Event do
     discussion.group.add_member!(user_thread_normal).set_volume! :mute
     discussion.group.add_member!(user_thread_quiet).set_volume! :mute
     discussion.group.add_member!(user_thread_mute).set_volume! :mute
-    discussion.group.add_member!(user_mentioned)
-    discussion.group.add_member!(user_unsubscribed)
+    discussion.group.add_member!(user_mentioned).set_volume! :mute
+    discussion.group.add_member!(user_unsubscribed).set_volume! :mute
 
     DiscussionReader.for(discussion: discussion, user: user_thread_loud).set_volume! :loud
     DiscussionReader.for(discussion: discussion, user: user_thread_normal).set_volume! :normal
@@ -64,7 +65,6 @@ describe Event do
     # set email motion closing soon
     discussion.group.add_member!(user_motion_closing_soon).set_volume! :mute
 
-    # add the loomio group community to poll
     poll.save
 
     # create an unsubscription for a poll user
@@ -126,18 +126,9 @@ describe Event do
       expect(Events::UserMentioned.last.custom_fields['user_ids']).to include user_mentioned.id
     end
 
-    it 'notifies microsoft webhook if one exists' do
-      identity = create(:microsoft_identity, custom_fields: { event_kinds: ['poll_created'] })
-      gi = create(:group_identity, identity: identity, group: poll.group)
+    it 'notifies webhook if one exists' do
       Events::PollCreated.publish!(poll, poll.author)
-      expect(WebMock).to have_requested(:post, identity.access_token)
-    end
-
-    it 'does not notify microsoft webhook if event kind is not included' do
-      identity = create(:microsoft_identity, custom_fields: { event_kinds: ['outcome_created'] })
-      gi = create(:group_identity, identity: identity, group: poll.group)
-      Events::PollCreated.publish!(poll, poll.author)
-      expect(WebMock).to_not have_requested(:post, identity.access_token)
+      expect(WebMock).to have_requested(:post, markdown_webhook.url).at_least_once
     end
   end
 
@@ -151,19 +142,18 @@ describe Event do
   end
 
   describe 'poll_closing_soon' do
-    describe 'voters_review_responses', focus: true do
-      let(:group_notified) {{
-        id: discussion.group_id,
-        type: "FormalGroup",
-        notified_ids: [user_thread_loud.id, user_thread_normal.id]
-      }.with_indifferent_access}
-
+    describe 'voters_review_responses' do
       it 'should notify previously notified users when voters_review_responses is true' do
         poll = create(:poll_proposal, discussion: discussion)
-        create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
-        Events::AnnouncementCreated.publish!(poll, poll.author, poll.group.memberships.where(user: [user_thread_loud, user_thread_normal]), "poll_created")
+        stances = [
+          create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud),
+          create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_normal)
+        ]
+
+        Events::PollAnnounced.publish!(poll, poll.author, stances)
 
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
+
 
         notified_users = Events::PollClosingSoon.last.send(:notification_recipients)
         notified_users.should include user_thread_loud
@@ -189,10 +179,13 @@ describe Event do
 
       it 'should notify previously notified users who have not participated when voters_review_responses is false' do
         # a loud user participates, so they dont get a closing soon announcement
-        create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
+        stances = [
+          create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud),
+          create(:stance, poll: poll, participant: user_thread_normal)
+        ]
 
         # quiet user who has been announced to before
-        Events::AnnouncementCreated.publish!(poll, poll.author, poll.group.memberships.where(user: [user_thread_loud, user_thread_normal]), "poll_created")
+        Events::PollAnnounced.publish!(poll, poll.author, stances)
 
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
 
@@ -207,11 +200,6 @@ describe Event do
         emailed_users.should_not include user_thread_quiet
       end
     end
-
-    it 'does not email helper bot' do
-      poll.update(author: User.helper_bot)
-      expect { Events::PollClosingSoon.publish!(poll) }.to_not change { emails_sent }
-    end
   end
 
   describe 'poll_expired' do
@@ -225,19 +213,12 @@ describe Event do
       expect(n.user).to eq poll.author
       expect(n.kind).to eq 'poll_expired'
     end
-
-    it 'does not notify loomio helper bot' do
-      poll.author = User.helper_bot
-      expect { Events::PollExpired.publish!(poll) }.to_not change { ActionMailer::Base.deliveries.count }
-    end
   end
 
   describe 'outcome_created' do
     let(:poll_meeting) { create :poll_meeting, discussion: discussion }
 
     before do
-      poll_meeting.guest_group.add_member! guest_user
-      poll_meeting.poll_unsubscriptions.create(user: user_unsubscribed)
       outcome.update(poll: poll_meeting, calendar_invite: "SOME_EVENT_INFO")
     end
 
@@ -247,38 +228,6 @@ describe Event do
       recipients = ActionMailer::Base.deliveries.map(&:to).flatten
       expect(recipients).to include user_mentioned.email
       expect(recipients).to include outcome.author.email
-    end
-
-    it 'notifies microsoft webhook if one exists' do
-      identity = create(:microsoft_identity, custom_fields: { event_kinds: ['outcome_created'] })
-      gi = create(:group_identity, identity: identity, group: outcome.group)
-      Events::OutcomeCreated.publish!(outcome)
-      expect(WebMock).to have_requested(:post, identity.access_token)
-    end
-
-    it 'does not notify microsoft webhook if event kind is not included' do
-      identity = create(:microsoft_identity, custom_fields: { event_kinds: ['poll_created'] })
-      gi = create(:group_identity, identity: identity, group: outcome.group)
-      Events::OutcomeCreated.publish!(outcome)
-      expect(WebMock).to_not have_requested(:post, identity.access_token)
-    end
-  end
-
-  describe 'invitation_accepted' do
-    let(:poll) { create :poll }
-    let(:guest_membership) { create :pending_membership, group: poll.guest_group }
-    let(:formal_membership) { create :pending_membership, group: create(:formal_group) }
-
-    it 'links to a group for a guest group invitation' do
-      event = Events::InvitationAccepted.publish!(guest_membership)
-      expect(event.send(:notification_url)).to match "p/#{poll.key}"
-      expect(event.send(:notification_translation_title)).to eq poll.title
-    end
-
-    it 'links to an invitation target for a formal group invitation' do
-      event = Events::InvitationAccepted.publish!(formal_membership)
-      expect(event.send(:notification_url)).to match formal_membership.group.handle
-      expect(event.send(:notification_translation_title)).to eq formal_membership.group.full_name
     end
   end
 
@@ -323,31 +272,40 @@ describe Event do
     let(:poll) { create :poll, discussion: discussion }
     let(:poll_meeting) { create :poll_meeting, discussion: discussion }
     let(:outcome) { create :outcome, poll: poll_meeting }
-    let(:invitation) { create :invitation, group: poll.guest_group }
 
-    def publish_announcement_for(model, users, kind = "poll_created")
-      Events::AnnouncementCreated.publish!(model, model.author, poll.group.memberships.where(user: Array(users)), kind)
+    def stance_for(user)
+      Stance.create(participant: user, poll: poll)
     end
 
     it 'does not email people with thread quiet' do
-      expect { publish_announcement_for(poll, user_thread_quiet) }.to_not change { emails_sent }
+      expect {
+        Events::PollAnnounced.publish!(poll, poll.author, [stance_for(user_thread_quiet)])
+      }.to_not change { emails_sent }
     end
 
     it 'does not email people with group quiet' do
-      expect { publish_announcement_for(poll, user_membership_quiet) }.to_not change { emails_sent }
+      expect {
+        Events::PollAnnounced.publish!(poll, poll.author, [stance_for(user_membership_quiet)])
+      }.to_not change { emails_sent }
     end
 
     it 'sends invitations' do
-      expect { publish_announcement_for(poll, user_thread_normal) }.to change { emails_sent }.by(1)
+      expect {
+        Events::PollAnnounced.publish!(poll, poll.author, [stance_for(user_thread_normal)])
+      }.to change { emails_sent }.by(1)
     end
 
     it 'notifies the author if the eventable is an appropriate outcome' do
-      expect { publish_announcement_for(outcome, user_thread_normal, "outcome_created") }.to change { emails_sent }.by(1)
+      expect {
+        Events::OutcomeAnnounced.publish!(outcome, poll.author, [user_thread_normal])
+      }.to change { emails_sent }.by(1)
     end
 
     it 'can send an ical attachment with an outcome' do
       outcome.update(poll: poll_meeting, calendar_invite: "SOME_EVENT_INFO")
-      expect { publish_announcement_for(outcome, user_thread_normal, "outcome_created") }.to change { emails_sent }
+      expect {
+        Events::OutcomeAnnounced.publish!(outcome, poll.author, [user_thread_normal])
+      }.to change { emails_sent }
       mail = ActionMailer::Base.deliveries.last
       expect(mail.attachments).to have(1).attachment
       expect(mail.attachments.first).to be_a Mail::Part

@@ -5,6 +5,9 @@ import { optionColors, optionImages } from '@/shared/helpers/poll'
 
 export default
   props:
+    poll:
+      type: Object
+      required: true
     stanceChoice: Object
     size:
       type: Number
@@ -18,9 +21,6 @@ export default
     optionImages: optionImages()
 
   computed:
-    poll: ->
-      @stanceChoice.poll()
-
     color: ->
       @pollOption.color
 
@@ -55,6 +55,7 @@ export default
       img(:src="'/img/' + optionImages[pollOption.name] + '.svg'", :alt='optionName')
     span.body-2(v-if='!poll.hasOptionIcons()')
       span {{ optionName }}
+      mid-dot(v-if="poll.pollType == 'poll' && poll.multipleChoice")
       span(v-if="!hideScore && poll.hasVariableScore()")
         mid-dot
         span {{stanceChoice.rankOrScore}}

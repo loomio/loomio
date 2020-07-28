@@ -19,9 +19,8 @@ class Outcome < ApplicationRecord
   has_many :documents, as: :model, dependent: :destroy
 
   %w(
-    title poll_type dates_as_options group group_id groups discussion discussion_id
-    locale mailer guest_group guest_group_id guest_members guest_invitations anyone_can_participate
-    members
+    title poll_type dates_as_options group group_id discussion discussion_id
+    locale mailer anyone_can_participate members
   ).each { |message| delegate message, to: :poll }
 
   is_mentionable on: :statement
@@ -30,6 +29,10 @@ class Outcome < ApplicationRecord
   validates :statement, presence: true, length: { maximum: Rails.application.secrets.max_message_length }
   validate :has_valid_poll_option
 
+  def body_format
+    statement_format
+  end
+  
   def parent_event
     poll.created_event
   end

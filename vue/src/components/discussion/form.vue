@@ -1,15 +1,14 @@
 <script lang="coffee">
 import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
-import { map, sortBy, filter } from 'lodash'
+import { map, sortBy, filter } from 'lodash-es'
 import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
-import AnnouncementModalMixin from '@/mixins/announcement_modal'
+import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
 
 export default
-  mixins: [AnnouncementModalMixin]
   props:
     discussion: Object
     close: Function
@@ -23,7 +22,7 @@ export default
     @watchRecords
       collections: ['groups', 'memberships']
       query: (store) =>
-        @availableGroups = filter(Session.user().formalGroups(), (group) -> AbilityService.canStartThread(group))
+        @availableGroups = filter(Session.user().groups(), (group) -> AbilityService.canStartThread(group))
 
   methods:
     submit: ->
@@ -36,8 +35,11 @@ export default
           Flash.success("discussion_form.messages.#{actionName}")
           if @discussion.isNew()
             @$router.push @urlFor(discussion)
-            if AbilityService.canAnnounceThread(discussion)
-              @openAnnouncementModal(Records.announcements.buildFromModel(discussion))
+            if AbilityService.canAnnounceTo(discussion)
+              EventBus.$emit 'openModal',
+                component: 'AnnouncementForm',
+                props:
+                  announcement: Records.announcements.buildFromModel(discussion)
       .catch onError(@discussion)
 
 
@@ -69,7 +71,7 @@ export default
 
     maxThreads: ->
       return null unless @discussion.group()
-      @discussion.group().parentOrSelf().subscriptionMaxThreads
+      @discussion.group().parentOrSelf().subscription.max_threads
 
     threadCount: ->
       return unless @discussion.group()
@@ -80,7 +82,7 @@ export default
 
     subscriptionActive: ->
       return true unless @discussion.group()
-      @discussion.group().parentOrSelf().subscriptionActive
+      @discussion.group().parentOrSelf().subscription.active
 
     canStartThread: ->
       @subscriptionActive && !@maxThreadsReached
@@ -114,7 +116,7 @@ v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.cap
       validation-errors(:subject='discussion', field='title')
       lmo-textarea(:model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")
         template(v-slot:actions)
-          v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled || !discussion.groupId" v-t="'common.action.start'" v-if="discussion.isNew()")
+          v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled || !discussion.groupId" v-t="'discussion_form.start_thread'" v-if="discussion.isNew()")
           v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-t="'common.action.save'" v-if="!discussion.isNew()")
       v-list-item.discussion-form__privacy-notice
         v-list-item-avatar

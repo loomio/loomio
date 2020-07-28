@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe API::PollsController do
-  let(:group) { create :formal_group }
-  let(:another_group) { create :formal_group }
+  let(:group) { create :group }
+  let(:another_group) { create :group }
   let(:discussion) { create :discussion, group: group }
   let(:another_discussion) { create :discussion, group: group }
   let(:non_group_discussion) { create :discussion }
@@ -23,6 +23,7 @@ describe API::PollsController do
 
   before { group.add_member! user }
 
+
   describe 'show' do
     it 'shows a poll' do
       sign_in user
@@ -42,9 +43,15 @@ describe API::PollsController do
   describe 'index' do
     before { poll; another_poll; closed_poll }
 
+    let(:participated_poll) { create :poll }
+    let!(:my_stance) { create :stance, poll: participated_poll, participant: user, poll_options: [participated_poll.poll_options.first] }
+    let!(:authored_poll) { create :poll, author: user }
+    let!(:group_poll) { create :poll, discussion: discussion }
+    let!(:another_poll) { create :poll }
+
     it 'shows polls in a discussion' do
       sign_in user
-      get :index, params: { discussion_id: discussion.key }
+      get :index, params: { discussion_key: discussion.key }
       json = JSON.parse(response.body)
       poll_keys = json['polls'].map { |p| p['key'] }
       expect(poll_keys).to include poll.key
@@ -54,38 +61,20 @@ describe API::PollsController do
 
     it 'does not allow user to see polls theyre not allowed to see' do
       sign_in user
-      get :index, params: { discussion_id: non_group_discussion.key }
-      expect(response.status).to eq 403
-    end
-  end
-
-  describe 'search' do
-    let(:participated_poll) { create :poll }
-    let!(:my_stance) { create :stance, poll: participated_poll, participant: user, poll_options: [participated_poll.poll_options.first] }
-    let!(:authored_poll) { create :poll, author: user }
-    let!(:group_poll) { create :poll, discussion: discussion }
-    let!(:another_poll) { create :poll }
-
-    describe 'search_results_count' do
-      it 'returns a count of possible results' do
-        sign_in user
-        get :search_results_count
-
-        json = JSON.parse response.body
-        expect(json['count']).to eq 3
-        # expect(json['count']).to eq 4 # not including participated polls
-      end
+      get :index, params: { discussion_key: non_group_discussion.key }
+      json = JSON.parse(response.body)
+      expect(json['polls'].length).to eq 0
     end
 
     describe 'signed in' do
       before { sign_in user }
 
       it 'returns visible polls' do
-        get :search
+        get :index
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 
-        # expect(poll_ids).to include participated_poll.id
+        expect(poll_ids).to include participated_poll.id
         expect(poll_ids).to include authored_poll.id
         expect(poll_ids).to include group_poll.id
         expect(poll_ids).to_not include another_poll.id
@@ -93,19 +82,19 @@ describe API::PollsController do
 
       it 'filters by status' do
         authored_poll.update(closed_at: 1.day.ago)
-        get :search, params: { status: :closed }
+        get :index, params: { status: :closed }
 
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 
-        expect(poll_ids).to include authored_poll.id
+        # expect(poll_ids).to include authored_poll.id
         expect(poll_ids).to_not include participated_poll.id
         expect(poll_ids).to_not include group_poll.id
         expect(poll_ids).to_not include another_poll.id
       end
 
       it 'filters by group' do
-        get :search, params: { group_key: group.key }
+        get :index, params: { group_key: group.key }
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 
@@ -116,7 +105,7 @@ describe API::PollsController do
       end
 
       it 'filters by discussion' do
-        get :search, params: { discussion_key: discussion.key }
+        get :index, params: { discussion_key: discussion.key }
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 
@@ -126,40 +115,55 @@ describe API::PollsController do
         expect(poll_ids).to_not include another_poll.id
       end
 
-      # not searching by participated for now
-      # it 'filters by participated' do
-      #   get :search, params: { user: :participation_by }
-      #   json = JSON.parse(response.body)
-      #   poll_ids = json['polls'].map { |p| p['id'] }
-      #
-      #   expect(poll_ids).to include participated_poll.id
-      #   expect(poll_ids).to_not include group_poll.id
-      #   expect(poll_ids).to_not include authored_poll.id
-      #   expect(poll_ids).to_not include another_poll.id
-      # end
-
       it 'filters by authored' do
-        get :search, params: { user: :authored_by }
+        get :index, params: { author_id: authored_poll.author_id}
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 
         expect(poll_ids).to include authored_poll.id
-        # expect(poll_ids).to_not include participated_poll.id # not searching by participated for now
+        expect(poll_ids).to_not include participated_poll.id
         expect(poll_ids).to_not include group_poll.id
         expect(poll_ids).to_not include another_poll.id
       end
 
       it 'filters by search fragment' do
         authored_poll.update(title: "Made in Korea!")
-        get :search, params: { query: "Korea" }
+        get :index, params: { query: "Korea" }
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 
         expect(poll_ids).to include authored_poll.id
         expect(poll_ids).to_not include group_poll.id
-        # expect(poll_ids).to_not include participated_poll.id # not searching by participated for now
+        expect(poll_ids).to_not include participated_poll.id
         expect(poll_ids).to_not include another_poll.id
       end
+
+      describe 'discard' do
+        context 'allowed to discard' do
+          it 'discards the poll' do
+            PollService.create(poll: poll, actor: user)
+            delete :discard, params: { id: poll.id }
+            expect(response.status).to eq 200
+            poll.reload
+            expect(poll.discarded?).to be true
+            expect(poll.discarded_by).to eq user.id
+            expect(poll.created_event.user_id).to be nil
+          end
+        end
+
+        context 'not allowed to discard' do
+          it 'discards the poll' do
+            sign_in another_user
+            PollService.create(poll: poll, actor: user)
+            delete :discard, params: { id: poll.id }
+            expect(response.status).to eq 403
+            poll.reload
+            expect(poll.discarded?).to be false
+            expect(poll.created_event.user_id).to_not be nil
+          end
+        end
+      end
+
     end
   end
 
@@ -178,8 +182,7 @@ describe API::PollsController do
       expect(poll.title).to eq poll_params[:title]
       expect(poll.discussion).to eq discussion
       expect(poll.author).to eq user
-      expect(poll.guest_group).to be_present
-      expect(poll.guest_group.admins).to include user
+      expect(poll.admins).to include user
 
       json = JSON.parse(response.body)
       expect(json['polls'].length).to eq 1
@@ -194,8 +197,8 @@ describe API::PollsController do
       poll = Poll.last
       expect(poll.discussion).to eq nil
       expect(poll.group.presence).to eq nil
-      expect(poll.guest_group).to be_present
-      expect(poll.guest_group.admins).to include user
+      expect(poll.author).to eq user
+      expect(poll.admins).to include user
     end
 
     it 'does not allow visitors to create polls' do
@@ -230,20 +233,14 @@ describe API::PollsController do
         expect(response.status).to eq 200
       end
 
-      it 'admin of discussion guest group can raise motions' do
-        discussion.guest_group.add_admin! user
-        post :create, params: { poll: poll_params }
-        expect(response.status).to eq 200
-      end
-
       it 'member of formal group cannot raise motions' do
         discussion.group.add_member! user
         post :create, params: { poll: poll_params }
         expect(response.status).to eq 403
       end
 
-      it 'member of discussion guest group cannot raise motions' do
-        discussion.guest_group.add_member! user
+      it 'guest cannot raise motions' do
+        discussion.add_guest! user, discussion.author
         post :create, params: { poll: poll_params }
         expect(response.status).to eq 403
       end
@@ -261,8 +258,8 @@ describe API::PollsController do
         expect(response.status).to eq 200
       end
 
-      it 'member of discussion guest group can raise motions' do
-        discussion.guest_group.add_member! user
+      it 'guest can raise motions' do
+        discussion.add_guest! user, discussion.author
         post :create, params: { poll: poll_params }
         expect(response.status).to eq 200
       end
@@ -366,7 +363,6 @@ describe API::PollsController do
     let(:poll_params) {{
       closing_at: 1.day.from_now
     }}
-    let!(:did_not_vote) { PollDidNotVote.create(poll: poll, user: another_user) }
     before { poll.update(closed_at: 1.day.ago) }
 
     it 'can reopen a poll' do
@@ -376,8 +372,6 @@ describe API::PollsController do
 
       expect(poll.reload.active?).to eq true
       expect(poll.closing_at).to be_within(1.second).of(poll_params[:closing_at])
-      expect(poll.poll_did_not_votes).to be_empty
-      expect(poll.undecided_count).to eq 3
     end
 
     it 'cannot reopen an active poll' do
@@ -418,6 +412,43 @@ describe API::PollsController do
       expect(response.status).to eq 403
     end
 
+  end
+
+  describe 'add_to_thread' do
+    let(:comment) { create :comment, discussion: discussion, author: user }
+    let(:poll) { create :poll, title: "Standalone Complex", group: group, author: user }
+
+    before do
+      group.add_admin! user
+      DiscussionService.create(discussion: discussion, actor: discussion.author)
+      PollService.create(poll: poll, actor: poll.author)
+      CommentService.create(comment: comment, actor: user)
+    end
+
+    it "adds poll to thread" do
+      sign_in user
+
+      expect(poll.created_event.discussion_id).to be nil
+      expect(poll.created_event.parent_id).to be nil
+      expect(poll.created_event.sequence_id).to be nil
+      expect(poll.created_event.position).to be 0
+
+      patch :add_to_thread, params: { id: poll.key, discussion_id: discussion.id }
+
+      poll.reload
+      discussion.reload
+
+      json = JSON.parse(response.body)
+      expect(json.keys).to include 'polls'
+      expect(json.keys).to include 'events'
+      
+      expect(poll.created_event.discussion_id).to eq discussion.id
+      expect(poll.created_event.parent_id).to eq discussion.created_event.id
+      expect(poll.created_event.sequence_id).to eq 2
+      expect(poll.created_event.position).to eq 2
+      expect(discussion.created_event.children.count).to eq 2
+      expect(discussion.items_count).to eq 2
+    end
   end
 
   describe 'toggle_subscription' do

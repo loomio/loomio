@@ -1,4 +1,6 @@
 import BaseModel  from  '@/shared/record_store/base_model'
+import Records  from  '@/shared/services/records'
+import {map} from 'lodash-es'
 
 export default class PollOptionModel extends BaseModel
   @singular: 'pollOption'
@@ -10,11 +12,8 @@ export default class PollOptionModel extends BaseModel
     @hasMany   'stanceChoices'
 
   stances: ->
-    _.chain(@stanceChoices())
-     .map((stanceChoice) -> stanceChoice.stance())
-     .filter((stance) -> stance.latest)
-     .compact()
-     .value()
+    stanceIds = map @stanceChoices(), 'stanceId'
+    Records.stances.find(latest: true, id: {$in: stanceIds})
 
   beforeRemove: ->
-    _.each @stances(), (stance) -> stance.remove()
+    @stances().each (stance) -> stance.remove()

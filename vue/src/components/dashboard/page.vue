@@ -6,13 +6,10 @@ import EventBus           from '@/shared/services/event_bus'
 import AbilityService     from '@/shared/services/ability_service'
 import RecordLoader       from '@/shared/services/record_loader'
 import ThreadFilter       from '@/shared/services/thread_filter'
-import GroupModalMixin    from '@/mixins/group_modal.coffee'
-import { capitalize, take, keys, every, orderBy, debounce } from 'lodash'
+import { capitalize, take, keys, every, orderBy, debounce } from 'lodash-es'
 import { subDays, addDays, subWeeks, subMonths } from 'date-fns'
 
 export default
-  mixins: [GroupModalMixin]
-
   data: ->
     dashboardLoaded: Records.discussions.collection.data.length > 0
     filter: @$route.params.filter || 'hide_muted'
@@ -28,8 +25,15 @@ export default
     searchResults: []
 
   created: ->
+    @onQueryInput = debounce (val) =>
+      @$router.replace(@mergeQuery(q: val))
+    , 500
+
     @init()
-    EventBus.$on 'signedIn', => @init()
+    EventBus.$on 'signedIn', @init
+
+  beforeDestroy: ->
+    EventBus.$off 'signedIn', @init
 
   mounted: ->
     EventBus.$emit('content-title-visible', false)
@@ -66,7 +70,7 @@ export default
       @fetch()
       @query()
 
-    fetch: debounce ->
+    fetch: ->
       return unless @loader
       if @$route.query.q
         @searchLoader.fetchRecords(q: @$route.query.q).then =>
@@ -74,7 +78,6 @@ export default
           @query()
       else
         @loader.fetchRecords().then => @dashboardLoaded = true
-    , 300
 
     query: ->
       if @$route.query.q
@@ -90,8 +93,6 @@ export default
         @views.thismonth = ThreadFilter(Records, filters: @filters('hide_proposals'), from: subMonths(now, 1),  to: subWeeks(now, 1))
         @views.older     = ThreadFilter(Records, filters: @filters('hide_proposals'), from: subMonths(now, 12),  to: subMonths(now, 1))
 
-
-
     viewName: (name) ->
       if @filter == 'show_muted'
         "dashboard#{capitalize(name)}Muted"
@@ -101,8 +102,6 @@ export default
     filters: (filters) ->
       ['only_threads_in_my_groups', 'show_opened', @filter].concat(filters)
 
-    onQueryInput: (val) ->
-      @$router.replace(@mergeQuery(q: val))
 
   computed:
     titleKey: ->
@@ -113,7 +112,7 @@ export default
 
     viewNames: -> keys(@views)
     loadingViewNames: -> take @viewNames, 3
-    noGroups: -> !Session.user().hasAnyGroups()
+    noGroups: -> Session.user().groups().length == 0
     promptStart: ->
       @noGroups && AbilityService.canStartGroups()
     noThreads: -> every @views, (view) => view.length == 0
@@ -123,7 +122,7 @@ export default
 </script>
 
 <template lang="pug">
-v-content
+v-main
   v-container.dashboard-page.max-width-1024
     //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.all'")
     //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.all'" v-show="filter == 'hide_muted'")

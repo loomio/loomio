@@ -2,7 +2,7 @@
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
-import { sortBy, find, matchesProperty, take, map } from 'lodash'
+import { sortBy, find, matchesProperty, take, map } from 'lodash-es'
 
 export default
   props:
@@ -18,12 +18,11 @@ export default
 
   methods:
     submit: ->
-      @stance.id = null
       selected = take @pollOptions, @numChoices
       @stance.stanceChoicesAttributes = map selected, (option, index) =>
         poll_option_id: option.id
         score:         @numChoices - index
-      actionName = if @stance.isNew() then 'created' else 'updated'
+      actionName = if !@stance.castAt then 'created' else 'updated'
       @stance.save()
       .then =>
         @stance.poll().clearStaleStances()
@@ -45,7 +44,6 @@ export default
 
 <template lang='pug'>
 .poll-ranked-choice-vote-form.lmo-relative
-  poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   p.lmo-hint-text(v-t="{ path: 'poll_ranked_choice_vote_form.helptext', args: { count: numChoices } }")
   sortable-list(v-model="pollOptions")
     sortable-item(v-for="(option, index) in pollOptions" :index="index" :key="option.id" :item="option")
@@ -57,6 +55,5 @@ export default
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
     v-spacer
-    poll-common-show-results-button(v-if='stance.isNew()')
-    v-btn.poll-common-vote-form__submit(color="primary" @click='submit()', v-t="'poll_common.vote'", aria-label="$t( 'poll_poll_vote_form.vote')")
+    v-btn.poll-common-vote-form__submit(color="primary" @click='submit()' v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
 </template>

@@ -2,14 +2,12 @@
 import Session        from '@/shared/services/session'
 import Records        from '@/shared/services/records'
 import I18n           from '@/i18n'
-import WatchRecords from '@/mixins/watch_records'
-import AnnouncementModalMixin from '@/mixins/announcement_modal'
+import EventBus from '@/shared/services/event_bus'
 import Flash from '@/shared/services/flash'
-import { filter } from 'lodash'
+import { filter } from 'lodash-es'
 import { onError } from '@/shared/helpers/form'
 
 export default
-  mixins: [WatchRecords, AnnouncementModalMixin]
   props:
     discussion: Object
     close: Function
@@ -21,7 +19,7 @@ export default
     @watchRecords
       collections: ['groups', 'memberships']
       query: (store) =>
-        @availableGroups = filter(Session.user().formalGroups(), (group) => group.id != @discussion.groupId)
+        @availableGroups = filter(Session.user().groups(), (group) => group.id != @discussion.groupId)
   methods:
     submit: ->
       @discussion.move()
@@ -31,9 +29,11 @@ export default
         Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
           @close()
           @$router.push("/d/#{discussionKey}")
-          @openAnnouncementModal(Records.announcements.buildFromModel(discussion))
+          EventBus.$emit 'openModal',
+            component: 'AnnouncementForm',
+            props: { announcement: Records.announcements.buildFromModel(discussion) }
       .catch onError(@discussion)
-      
+
     updateTarget: ->
       @targetGroup = Records.groups.find(@discussion.groupId)
 

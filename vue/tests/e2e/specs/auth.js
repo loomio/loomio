@@ -49,6 +49,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('view_closed_group_with_shareable_link')
+    page.expectText('.auth-form', 'You have been invited to join Dirty Dancing Shoes')
     page.fillIn('.auth-email-form__email input', 'max_von_sydow@example.com')
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signup-form__name input', 'Max Von Sydow')
@@ -93,26 +94,20 @@ module.exports = {
     page.loadPath('setup_used_login_token')
     page.click('.auth-signin-form__submit')
     page.expectText('.lmo-validation-error__message', 'Click below to send another one')
-    page.click('.auth-signin-form__submit')
-    page.loadPath('use_last_login_token')
-    page.pause(1000)
-    page.click('.auth-signin-form__submit')
-    page.pause()
-    page.expectFlash('Signed in successfully')
+    // page.click('.auth-signin-form__submit')
+    // page.loadPath('use_last_login_token')
+    // page.pause(1000)
+    // page.click('.auth-signin-form__submit')
+    // page.pause()
+    // page.expectFlash('Signed in successfully')
   },
 
   'can_login_from_the_dashboard': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_dashboard_as_visitor')
-    page.fillIn('.auth-email-form__email input', 'jennifer_grey@example.com')
-    page.click('.auth-email-form__submit')
-    page.click('.auth-signin-form__submit')
-    page.expectText('.auth-complete', 'Check your email')
-    page.loadPath('use_last_login_token')
-    page.click('.auth-signin-form__submit')
-    page.expectFlash('Signed in successfully')
-    // page.expectText('.dashboard-page__heading', 'Recent Threads')
+    page.signInViaEmail('jennifer_grey@example.com')
+    page.expectElement('.group-page')
   },
 
   'can_login_from_a_discussion_page': (test) => {
@@ -185,33 +180,38 @@ module.exports = {
     page.expectText('.group-page__name', 'Secret Dirty Dancing Shoes')
   },
 
-  'can_invite_existing_user': (test) => {
+  'invite_existing_user': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_invitation_to_user_with_password')
+    page.loadPathNoApp('setup_invitation_email_to_user_with_password')
+    page.expectText('.invite-people-mailer__body', 'Accept invitation')
+    page.click('.base-mailer__button--primary', 2000)
     page.click('.auth-email-form__submit')
-    page.expectText('.auth-signin-form', 'Welcome back, Jennifer!')
+    page.expectText('.auth-signin-form', 'Welcome back,')
     page.click('.auth-signin-form__submit')
     page.expectText('.auth-complete', 'Check your email')
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
     page.expectFlash('Signed in successfully')
-    // page.expectText('.group-page__name', 'Dirty Dancing Shoes')
-    // page.expectNoElement('.join-group-button')
+    page.expectText('.group-page__name', 'Dirty Dancing Shoes')
+    page.expectNoElement('.join-group-button')
   },
 
-  'can_invite_new_user': (test) => {
+  'invite_new_user': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_invitation_to_visitor')
+    page.loadPathNoApp('setup_invitation_email_to_visitor')
+    page.expectText('.invite-people-mailer__body', 'Accept invitation')
+    page.click('.base-mailer__button--primary', 2000)
+    page.expectText('.auth-form', 'You have been invited to join Dirty Dancing Shoes')
     page.click('.auth-email-form__submit')
     page.expectText('.auth-signup-form', 'New to')
     page.fillIn('.auth-signup-form__name input', 'Billy Jeans')
     page.click('.auth-signup-form__legal-accepted .v-input--selection-controls__input')
     page.click('.auth-signup-form__submit')
     page.expectFlash('Signed in successfully')
-    // page.expectText('.group-page__name', 'Dirty Dancing Shoes')
-  },
+    page.expectText('.group-page__name', 'Dirty Dancing Shoes')
+  }
 
   // // commented out because selenium clearValue is broken on Chrome.
   // 'requires_verification_if_email_is_changed': (test) => {
@@ -228,23 +228,4 @@ module.exports = {
   //   page.click('.auth-signup-form__submit')
   //   page.expectText('.auth-complete', 'Check your email')
   // },
-
-  'prompts_reactivation_if_required': (test) => {
-    page = pageHelper(test)
-    page.loadPath('setup_deactivated_user')
-    page.fillIn('.auth-email-form__email input', 'patrick_swayze@example.com')
-    page.click('.auth-email-form__submit')
-    page.expectText('.auth-inactive-form', 'has been deactivated')
-    page.expectElement('.auth-inactive-form__reactivate')
-  },
-
-  'can_reactivate_the_account': (test) =>  {
-    page = pageHelper(test)
-
-    page.loadPathNoApp('setup_user_reactivation_email')
-    page.click('.base-mailer__button')
-    page.click('.auth-signin-form__submit')
-    page.expectFlash('Signed in successfully')
-  }
-
 }

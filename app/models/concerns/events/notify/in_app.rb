@@ -15,7 +15,7 @@ module Events::Notify::InApp
   private
 
   def built_notifications
-    @built ||= notification_recipients.active.where.not(id: user).map { |recipient| notification_for(recipient) }
+    @built ||= notification_recipients.active.where.not(id: user.id || 0).map { |recipient| notification_for(recipient) }
   end
 
   def notification_for(recipient)
@@ -37,12 +37,12 @@ module Events::Notify::InApp
 
   # defines the avatar which appears next to the notification
   def notification_actor
-    @notification_actor ||= user || eventable&.author
+    user.presence || eventable&.author
   end
 
   # defines the link that clicking on the notification takes you to
   def notification_url
-    @notification_url ||= polymorphic_path(eventable)
+    polymorphic_path(eventable)
   end
 
   # defines the values that are passed to the translation for notification text

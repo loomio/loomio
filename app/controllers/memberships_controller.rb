@@ -2,28 +2,29 @@ class MembershipsController < ApplicationController
   include PrettyUrlHelper
 
   def join
-    session[:pending_group_token] = join_target.guest_group.token
-    redirect_to back_to_url || polymorphic_url(join_target)
+    group = Group.published.find_by!(token: params.require(:token))
+    session[:pending_group_token] = group.token
+    redirect_to back_to_url || polymorphic_url(group)
   end
 
   def show
     session[:pending_membership_token] = membership.token
-    redirect_to back_to_url || polymorphic_url(membership.target_model)
+    redirect_to back_to_url || polymorphic_url(target_for(membership))
   rescue ActiveRecord::RecordNotFound
     redirect_to join_url(Group.find_by!(token: params[:token]))
   end
 
   private
 
-  def membership
-    @membership ||= Membership.find_by!(token: params[:token])
+  def target_for(membership)
+    group_id = membership.group_id
+    Group.find_by(id: group_id) ||
+    Discussion.find_by(guest_group_id: group_id) ||
+    Poll.find_by(guest_group_id: group_id)
   end
 
-  def join_target
-    @join_target ||= params
-      .require(:model)
-      .classify.constantize
-      .find_by!(token: params.require(:token))
+  def membership
+    @membership ||= Membership.find_by!(token: params[:token])
   end
 
   def back_to_url

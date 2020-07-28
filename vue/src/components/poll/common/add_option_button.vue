@@ -1,13 +1,15 @@
 <script lang="coffee">
-import PollModalMixin from '@/mixins/poll_modal'
+import EventBus from '@/shared/services/event_bus'
 
 export default
-  mixins: [PollModalMixin]
   props:
     poll: Object
   methods:
     open: ->
-      @openAddOptionModal(@poll)
+      EventBus.$emit 'openModal',
+        component: 'PollCommonAddOptionModal'
+        props:
+          poll: @poll.clone()
 </script>
 
 <template lang='pug'>

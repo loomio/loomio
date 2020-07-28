@@ -2,7 +2,7 @@
 import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
-import { sum, map, head, filter, without } from 'lodash'
+import { sum, map, head, filter, without, sortBy, isEqual } from 'lodash-es'
 import { onError } from '@/shared/helpers/form'
 
 export default
@@ -17,16 +17,20 @@ export default
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
-        @pollOptions = @stance.poll().pollOptions()
-        @stanceChoices = map @pollOptions, (option) =>
-          poll_option_id: option.id
-          score: @stanceChoiceFor(option).score
+        if !isEqual map(@pollOptions, 'name'), map(@stance.poll().pollOptions(), 'name')
+          @pollOptions = @stance.poll().pollOptions()
+          @stanceChoices = map @pollOptions, (option) =>
+            poll_option_id: option.id
+            score: @stanceChoiceFor(option).score
+            name: option.name
 
   methods:
     submit: ->
-      @stance.id = null
-      @stance.stanceChoicesAttributes = @stanceChoices if sum(map(@stanceChoices, 'score')) > 0
-      actionName = if @stance.isNew() then 'created' else 'updated'
+      if sum(map(@stanceChoices, 'score')) > 0
+        @stance.stanceChoicesAttributes = map @stanceChoices, (choice) =>
+          poll_option_id: choice.poll_option_id
+          score: choice.score
+      actionName = if !@stance.castAt then 'created' else 'updated'
       @stance.save()
       .then =>
         @stance.poll().clearStaleStances()
@@ -72,14 +76,15 @@ export default
     dotsPerPerson: ->
       @stance.poll().customFields.dots_per_person
 
+    orderedStanceChoices: -> sortBy @stanceChoices, 'name'
+
 </script>
 
 <template lang="pug">
 .poll-dot-vote-vote-form
-  poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   v-subheader.poll-dot-vote-vote-form__dots-remaining(v-t="{ path: 'poll_dot_vote_vote_form.dots_remaining', args: { count: dotsRemaining } }")
   .poll-dot-vote-vote-form__options
-    .poll-dot-vote-vote-form__option(v-for='choice in stanceChoices', :key='choice.poll_option_id')
+    .poll-dot-vote-vote-form__option(v-for='choice in orderedStanceChoices', :key='choice.poll_option_id')
       v-subheader.poll-dot-vote-vote-form__option-label {{ optionFor(choice).name }}
       v-layout(row align-center)
         v-slider.poll-dot-vote-vote-form__slider.mr-4(v-model='choice.score' :rules="rulesForChoice(choice)" :color="optionFor(choice).color" :thumb-color="optionFor(choice).color" :track-color="optionFor(choice).color" :height="4" :thumb-size="24" :thumb-label="(choice.score > 0) ? 'always' : true" :min="0" :max="dotsPerPerson" :readonly="false")
@@ -89,6 +94,5 @@ export default
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
     v-spacer
-    poll-common-show-results-button(v-if='stance.isNew()')
-    v-btn.poll-common-vote-form__submit(color="primary" :disabled="dotsRemaining < 0" @click="submit()" v-t="'poll_common.vote'")
+    v-btn.poll-common-vote-form__submit(color="primary" :disabled="dotsRemaining < 0" @click="submit()" v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
 </template>

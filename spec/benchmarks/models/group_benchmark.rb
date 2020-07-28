@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Group do
   describe '#add_member!' do
-    let(:group) { build :formal_group }
+    let(:group) { build :group }
     let(:user)  { create :user }
 
     it 'adds a member' do

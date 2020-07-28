@@ -6,7 +6,7 @@ import EventBus      from '@/shared/services/event_bus'
 import i18n          from '@/i18n'
 import Vue from 'vue'
 import { hardReload } from '@/shared/helpers/window'
-import { pickBy, identity, compact } from 'lodash'
+import { pickBy, identity, compact } from 'lodash-es'
 
 loadedLocales = ['en']
 
@@ -22,6 +22,7 @@ loomioLocale = (locale) ->
   locale.replace('-', '_')
 
 dateFnsLocale = (locale) ->
+  return 'nl' if locale.startsWith('nl')
   locale.replace('_','-')
 
 loadLocale = (locale) ->
@@ -44,34 +45,24 @@ export default new class Session
     else
       'html'
 
-  fetch: ->
-    # unsubscribe_token = new URLSearchParams(location.search).get('unsubscribe_token')
-    # membership_token  = new URLSearchParams(location.search).get('membership_token')
-    client = new RestfulClient('boot')
-    # client.get('user', unsubscribe_token: unsubscribe_token, membership_token: membership_token).then (res) -> res.json()
-    client.get('user').then (res) -> res.json()
-
   apply: (data) ->
     Vue.set(AppConfig, 'currentUserId', data.current_user_id)
     Vue.set(AppConfig, 'pendingIdentity', data.pending_identity)
     Records.import(data)
 
-    # afterSignIn() if typeof afterSignIn is 'function'
-    # setDefaultParams()
-
     user = @user()
-    if @isSignedIn()
-      @updateLocale(user.locale)
+    @updateLocale(user.locale)
 
+    if @isSignedIn()
       if user.timeZone != AppConfig.timeZone
         user.timeZone = AppConfig.timeZone
         Records.users.updateProfile(user)
-
       EventBus.$emit('signedIn', user)
 
     user
 
   signOut: ->
+    AppConfig.currentUserId = null
     Records.sessions.remote.destroy('').then -> hardReload('/')
 
   isSignedIn: ->
@@ -87,26 +78,6 @@ export default new class Session
     loadLocale(locale)
 
   providerIdentity: ->
+    return unless AppConfig.pendingIdentity
     validProviders = AppConfig.identityProviders.map (p) -> p.name
     AppConfig.pendingIdentity if validProviders.includes(AppConfig.pendingIdentity.identity_type)
-
-  pendingInvitation: ->
-    AppConfig.pendingIdentity.identity_type == 'membership'
-
-setDefaultParams = (params) ->
-  endpoints = ['stances', 'polls', 'discussions', 'events', 'reactions', 'documents']
-  defaultParams = pickBy(params, identity)
-  endpoints.forEach (endpoint) ->
-    Records[endpoint].remote.defaultParams = defaultParams
-
-# loggedIn: ->
-#   Flash.success AppConfig.userPayload.flash.notice
-# $scope.pageError = null
-# $scope.refreshing  = true
-# $injector.get('$timeout') ->
-#   $scope.refreshing = false
-  # Flash.success AppConfig.userPayload.flash.notice
-#   delete AppConfig.userPayload.flash.notice
-# if LmoUrlService.params().set_password
-#   delete LmoUrlService.params().set_password
-#   ModalService.open 'ChangePasswordForm'

@@ -11,7 +11,7 @@ module HasMentions
 
   def mentioned_usernames
     if text_format == "md"
-      extract_mentioned_screen_names(mentionable_text).uniq - [self.author.username]
+      extract_mentioned_screen_names(mentionable_text).uniq - [self.author&.username]
     else
       Nokogiri::HTML(mentionable_text).search("span.mention[data-mention-id]").map do |el|
         el['data-mention-id']

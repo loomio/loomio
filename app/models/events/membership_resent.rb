@@ -2,13 +2,9 @@ class Events::MembershipResent < Event
   include Events::Notify::ByEmail
 
   def self.publish!(membership, actor)
-    super membership.target_model,
+    super membership.group,
           user: actor,
           custom_fields: { membership_id: membership.id }
-  end
-
-  def email_subject_key
-    "#{eventable_key}_mailer.resend"
   end
 
   private
@@ -22,7 +18,7 @@ class Events::MembershipResent < Event
   end
 
   def eventable_key
-    return :group if eventable.is_a?(FormalGroup)
+    return :group if eventable.is_a?(Group)
     eventable.class.to_s.downcase
   end
 

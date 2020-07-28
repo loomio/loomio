@@ -1,4 +1,7 @@
 ga_IE:
+  errors:
+    404:
+      title: Níor aimsíodh é
   group:
     stats:
       members: Comhaltaí

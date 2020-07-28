@@ -20,23 +20,26 @@ module GroupPrivacy
     when 'open'
       self.is_visible_to_public = true
       self.discussion_privacy_options = 'public_only'
+      self.listed_in_explore = true
       unless %w[approval request].include?(self.membership_granted_upon)
         self.membership_granted_upon = 'approval'
       end
     when 'closed'
       self.is_visible_to_public = true
       self.membership_granted_upon = 'approval'
+      self.listed_in_explore = false
       unless %w[private_only public_or_private].include?(self.discussion_privacy_options)
         self.discussion_privacy_options = 'private_only'
       end
 
       # closed subgroup of hidden parent means parent members can seeee it!
-      if is_formal_group? && is_subgroup_of_hidden_parent?
+      if is_subgroup_of_hidden_parent?
         self.is_visible_to_parent_members = true
         self.is_visible_to_public = false
       end
     when 'secret'
       self.is_visible_to_public = false
+      self.listed_in_explore = false
       self.discussion_privacy_options = 'private_only'
       self.membership_granted_upon = 'invitation'
       self.is_visible_to_parent_members = false
@@ -48,7 +51,7 @@ module GroupPrivacy
   def group_privacy
     if is_visible_to_public?
       self.public_discussions_only? ? 'open' : 'closed'
-    elsif is_formal_group? && is_subgroup_of_hidden_parent? && is_visible_to_parent_members?
+    elsif is_subgroup_of_hidden_parent? && is_visible_to_parent_members?
       'closed'
     else
       'secret'

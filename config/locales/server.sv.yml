@@ -1,4 +1,7 @@
 sv:
+  errors:
+    404:
+      title: Inte hittad
   group:
     stats:
       members: Medlemmar

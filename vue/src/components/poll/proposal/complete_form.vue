@@ -1,16 +1,15 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
-import AnnouncementModalMixin from '@/mixins/announcement_modal'
-import EventBus                 from '@/shared/services/event_bus'
-import Flash  from '@/shared/services/flash'
+import EventBus from '@/shared/services/event_bus'
+import Flash from '@/shared/services/flash'
 import Session from '@/shared/services/session'
-import { iconFor }                from '@/shared/helpers/poll'
+import { iconFor } from '@/shared/helpers/poll'
 import { fieldFromTemplate } from '@/shared/helpers/poll'
-import { map } from 'lodash'
+import { map } from 'lodash-es'
 import { onError } from '@/shared/helpers/form'
+import AppConfig from '@/shared/services/app_config'
 
 export default
-  mixins: [AnnouncementModalMixin]
   props:
     discussion: Object
     close: Function
@@ -41,8 +40,12 @@ export default
         @reset()
         pollKey = data.polls[0].key
         Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
+          EventBus.$emit 'pollSaved', poll
           Flash.success "poll_#{poll.pollType}_form.#{poll.pollType}_created"
-          @openAnnouncementModal(Records.announcements.buildFromModel(poll))
+          EventBus.$emit 'openModal',
+            component: 'AnnouncementForm',
+            props: { announcement: Records.announcements.buildFromModel(poll) }
+
       .catch onError(@poll)
 
     init: ->
@@ -52,11 +55,16 @@ export default
       @shouldReset = !@shouldReset
 
     newPoll: ->
+      pollOptionNames = if AppConfig.features.app.proposal_consent_default
+        ['consent', 'abstain', 'objection']
+      else
+        map fieldFromTemplate('proposal', 'poll_options_attributes'), 'name'
+
       Records.polls.build
         pollType: 'proposal'
         discussionId: @discussion.id
         groupId: @discussion.groupId
-        pollOptionNames: map fieldFromTemplate('proposal', 'poll_options_attributes'), 'name'
+        pollOptionNames: pollOptionNames
         detailsFormat: Session.defaultFormat()
 
     icon: ->
@@ -73,5 +81,5 @@ export default
     poll-common-directive(:poll='poll', name='form' :should-reset="shouldReset")
   v-card-actions.poll-common-form-actions
     v-spacer
-    v-btn.poll-common-form__submit(color="primary" @click='submit()' v-t="'poll_common_form.start'")
+    v-btn.poll-common-form__submit(color="primary" @click='submit()' v-t="{path: 'poll_common_form.start_poll_type', args: {poll_type: poll.translatedPollType()}}")
 </template>

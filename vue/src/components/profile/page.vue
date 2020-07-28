@@ -4,13 +4,12 @@ import Session        from '@/shared/services/session'
 import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
-import ModalService   from '@/shared/services/modal_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
 import UserService    from '@/shared/services/user_service'
 import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
-import { includes, uniq, debounce } from 'lodash'
+import { includes, uniq, debounce } from 'lodash-es'
 
 export default
   data: ->
@@ -21,8 +20,12 @@ export default
   created: ->
     @init()
     EventBus.$emit 'currentComponent', { titleKey: 'profile_page.edit_profile', page: 'profilePage'}
-    EventBus.$on 'updateProfile', => @init()
-    EventBus.$on 'signedIn', => @init()
+    EventBus.$on 'updateProfile', @init
+    EventBus.$on 'signedIn', @init
+
+  beforeDestroy: ->
+    EventBus.$off 'updateProfile', @init
+    EventBus.$off 'signedIn', @init
 
   computed:
     showHelpTranslate: -> AppConfig.features.app.help_link
@@ -78,7 +81,7 @@ export default
 
 </script>
 <template lang="pug">
-v-content
+v-main
   v-container.profile-page.max-width-1024
     loading(v-if='!user')
     div(v-if='user')
@@ -128,16 +131,9 @@ v-content
             v-list-item-icon
               v-icon {{action.icon}}
             v-list-item-title(v-t="action.name")
-        //-
-        //-   v-btn.profile-page__change-password(color="accent" outlined @click='changePassword()' v-t="'profile_page.change_password_link'")
-        //- v-card-text
-        //-   h3.lmo-h3(v-t="'profile_page.deactivate_account'")
-        //-   v-btn.profile-page__deactivate(outlined color="warning" @click='openConfirmModal(deactivateUserConfirmOpts)', v-t="'profile_page.deactivate_account'")
-        //-
-        //-   h3.lmo-h3(v-t="'profile_page.delete_account'")
-        //-   v-btn.profile-page__delete(outlined color="warning" @click='openConfirmModal(deleteUserConfirmOpts)', v-t="'profile_page.delete_user_link'")
 
 </template>
+
 <style lang="sass">
 .profile-page__avatar
   cursor: pointer

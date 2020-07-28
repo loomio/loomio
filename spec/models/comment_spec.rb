@@ -41,23 +41,14 @@ describe Comment do
     end
   end
 
-  describe "validate documents_owned_by_author" do
-    it "raises error if author does not own documents" do
-      document = create(:document)
-      comment.documents << document
-      comment.save
-      comment.should have(1).errors_on(:documents)
-    end
-  end
-
   describe "#mentioned_users" do
     before do
-      @group = create :formal_group
+      @group = create :group
       @member = create :user
       @group.add_member! @member
 
       # there's another group current_user belongs to, they want to mention someone from that group
-      @another_group = create :formal_group
+      @another_group = create :group
       @another_member = create :user
       @another_group.add_member! @another_member
       @another_group.add_member! user

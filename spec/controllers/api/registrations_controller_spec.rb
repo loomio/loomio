@@ -97,11 +97,6 @@ describe API::RegistrationsController do
       expect(response.status).to eq 422
     end
 
-    it 'sends a login email and a welcome email' do
-      Clients::Recaptcha.any_instance.stub(:validate) { true }
-      expect { post :create, params: { user: registration_params } }.to change { ActionMailer::Base.deliveries.count }.by(2)
-    end
-
     describe 'RECAPTCHA env present' do
       before { ENV['RECAPTCHA_APP_KEY'] = 'huzzah' }
       after  { ENV.delete('RECAPTCHA_APP_KEY') }

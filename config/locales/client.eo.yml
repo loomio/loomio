@@ -5,6 +5,7 @@ eo:
       activities:
         invite_people_in: Inviti homojn
         make_decision: Komenci decidon
+      celebration_message: Bone farite!  Via grupo nun estas preta! 🎉
   plan_names:
     free: Senpaga
     trial: Provo
@@ -33,7 +34,7 @@ eo:
     laughing: Ridi
     clap: Klapi
     hugging: Brakumi
-    sunglasses: Mojoze
+    sunglasses: Mojose
     wink: Palpebrumi
     nerd: Saĝe
     relieved: Trankvilige
@@ -56,6 +57,8 @@ eo:
     fingers_crossed: Bonŝancon!
     v: Pacon!
     ok_hand: Bone!
+  poll_types:
+    dot_vote: punkto-voĉdonado
   common:
     you: Vi
     expand: Klarigu!
@@ -100,15 +103,18 @@ eo:
     copy: 'Kopii'
     copy_text: 'Kopii tekston'
     copied: 'Kopiite al la tondaĵ-poŝo'
-    points_abbrev: Ĉiu voĉo valoras {{score}} poentojn
+    points_abbrev: Ĉiu voĉdono valoras {{score}} poentojn
     total: Entute
     action:
       print: Presi
+      preview: Antaŭkontrolo
       search: 'Serĉi'
       next: 'Sekva'
       close: 'Fermigi'
       save: 'Konservi'
+      move: 'Movi'
       save_changes: 'Konservi ŝanĝojn'
+      update_settings: 'Ĝisdatigi agordojn'
       reply: 'Respondi'
       edit: 'Redakti'
       like: 'Ŝati'
@@ -120,9 +126,14 @@ eo:
       new_thread: "Nova fadeno"
       loading: 'Ŝargiĝas'
       translate: 'Traduki'
+      upload: 'Alŝuti'
       uploading: 'Alŝutiĝas'
-      ok: Bone!
+      load_more: 'Montri pli'
+      ok: Enorde
       retry: Reprovi
+      done: Fini
+      send: Sendi
+      joined: Aliĝis
       invite: Inviti
   emoji_picker:
     search: Serĉi
@@ -141,6 +152,8 @@ eo:
     forbidden: 'Vi ne havas permeson fari ĉi tion'
     page_not_found: 'Ni ne sukcesis trovi tion. Eble oni forigis aŭ translokigis ĝin.'
     internal_server_error: 'Ni bedaŭras, sed io misfunkciis/okazis fuŝaĵo. Bonvolu provi denove.'
+  verify_email_notice:
+    please_verify: Dankon por partopreni!  Bonvolu kontroli vian retpoŝtilon por ligilo per kiu vi povos certigi vian voĉdonon.
   volume_levels:
     loud: 'Brua'
     normal: 'Normala'
@@ -200,10 +213,10 @@ eo:
     help: 'Helpo'
     contact_site_name: 'Kontakti {{site_name}}'
     sign_out: 'Elsaluti'
+  membership_card:
+    invite_to_poll: "Inviti homojn voĉdoni"
   notifications:
     header: "Sciigoj"
-  position_buttons_panel:
-    heading: Donu vian opinion
   discussion_fork_actions:
     move: Movi
   discussion_form:
@@ -211,12 +224,20 @@ eo:
     title_label: 'Titolo'
     context_label: 'Kunteksto'
     privacy_label: 'Privateco'
+  announcement:
+    audiences:
+      voters: Homoj, kiuj jam voĉdonis
+    form:
+      poll_announced:
+        title: Inviti homojn voĉdoni
+        helptext: Kiun vi volas inviti voĉdoni?
   action_dock:
     add_comment: Komenti
     copy_url: Kopii ligilon
     edit_poll: Redakti enketon
-    move_items: Movi
+    announce_poll: Inviti homojn voĉdoni
     translate_poll: Traduki enketon
+    translate_stance: Traduki voĉdonon
     delete_comment: Forigi la komenton
     edited: Redaktita
     close_thread: Fermigi fadenon
@@ -251,16 +272,15 @@ eo:
     options_label: 'Opcioj'
     options:
       label: 'Opcioj'
+      edit_group: 'Redakti la grupajn agordojn'
       email_settings: 'Retpoŝtaj preferoj'
+      leave_group: 'Elirii grupon'
   group_form:
     group_name_placeholder: 'Kio estas la nomo de via grupo?'
     privacy: 'Privateco'
     profile: Profilo
-  documents_page:
-    confirm_remove_title: Forigu alkroĉaĵon.
-  document:
-    form:
-      title_label: Nomo
+    members_can_vote: 'Grupanoj rajtas voĉdoni en proponoj.'
+    submit_update: 'Ŝanĝi agordojn'
   membership_requests_page:
     approve: Aprobi
     ignore: Ignori
@@ -268,14 +288,13 @@ eo:
     invite_people: 'Inviti personojn'
     group: 'Grupo'
     copy_link: 'Kopii'
+    send: 'Sendi'
+    done: 'Fine'
   memberships_page:
     members: 'Membroj'
     name_label: 'Nomo'
+    coordinator_label: 'Administranto'
     remove_member_label: 'Forviŝi'
-  pending_invitations_card:
-    email: Retadreso
-  cancel_invitation_form:
-    cancel: 'Ne'
   profile_page:
     change_picture_link: 'Ŝanĝi bildon'
     profile: 'Profilo'
@@ -305,6 +324,10 @@ eo:
       all_aria_label: Nun montras lastatempajn fadenojn
       all_description: Montri lastatempajn fadenojn
       proposals: Propozicioj
+    aria_thread:
+      you_voted: 'Vi voĉdonis: {{position}}.'
+    thread_preview:
+      you_voted: 'Vi voĉdonis {{position}}'
     threads_from:
       today: 'Hodiaŭ'
       yesterday: 'Hieraŭ'
@@ -334,19 +357,7 @@ eo:
     confirm: Movi fadenon
   delete_comment_dialog:
     title: 'Forigi komenton'
-    question: 'Ĉu vi certas, ke vi volas forigi tiun ĉi komenton?'
     confirm: 'Forigi komenton'
-  new_comment_item:
-    context_menu:
-      edit_comment: 'Redakti komenton'
-      delete_comment: 'Forigi komenton'
-    edited: 'Redaktita'
-  new_vote_item:
-    agree: 'konsentita'
-    disagree: 'malkonsentita'
-  discussion_edited_item:
-    public_to_private: 'nepublika'
-    private_to_public: 'publika'
   contact_message_form:
     title: "Saluton! Kiel ni povas helpi?"
     contact_us: 'Kontakti nin'
@@ -367,14 +378,11 @@ eo:
   global:
     messages:
       reload: 'Reŝarĝi'
-  registered_apps_page:
-    name: Nomo
-  registered_app_form:
-    name_label: Nomo
   decision_tools_card:
     proposal_title: Propozicio
     count_title: Kontroli
     poll_title: Enketo
+    dot_vote_title: Punkto-Voĉdonado
   poll_common:
     your_response: Via respondo
     reason: Kialo
@@ -389,33 +397,66 @@ eo:
     participant_email: Retadreso
     start_poll: Komenci decidon
     save_changes: Konservi
+    change_vote: Ŝanĝi la voĉdonon
   discussions_panel:
     open: Malfermita
     all: Ĉiuj
     closed: Fermita
   members_panel:
+    everyone: 'Ĉiuj'
     order_by_name: 'Nomo'
     header_name: 'Nomo'
     header_username: 'Uzantnomo'
+    header_actions: 'Agoj'
+    admin: 'Administranto'
   polls_panel:
     all: 'Ĉiuj'
     open: 'Malfermita'
     closed: 'Fermita'
+  poll_common_action_panel:
+    anonymous: Voĉdonoj ne montros uzantnomojn
+    unable_to_vote: Vi ne rajtas voĉdoni pri ĉi tiu decido.
   poll_common_select_group:
     loomio_group: Grupo
   poll_common_calendar_invite:
     event_duration: Daŭro
+  poll_common_settings:
+    anonymous:
+      title: Nescieblaj voĉdonantoj
+    voter_can_add_options:
+      title: Voĉdonantoj rajtas aldoni elektojn
+  poll_common_close_form:
+    close_dot_vote: Fermigi la punkto-voĉdonadon
+    dot_vote_closed: Fermiĝis la punkto-voĉdonado
+  poll_common_reopen_form:
+    dot_vote_reopened: Remalfermiĝis la punkto-voĉdonado
+  poll_common_votes_panel:
+    no_votes_yet: Ĝis nun, neniu voĉdonis.
+  poll_common_set_outcome_panel:
+    dot_vote: 'Ĉi tiu punkto-voĉdonado fermiĝis. <storng>Konigu rezulton</strong> al la grupo.'
   poll_common_form:
     title: Titolo
     details: Detaloj
     closed: Fermita
+  poll_proposal_form:
+    title_placeholder: 'Jen ekzemplo: Ni iru al la luno!'
   poll_poll_form:
     edit_header: Redakti enketon
+    add_option_placeholder: Aldoni elekton
+    remove_option: Forigi elekton
+  poll_dot_vote_form:
+    start_header: Komenci punkto-voĉdonadon
+    edit_header: Agordi la punkto-voĉdonadon
+    add_option_placeholder: Aldoni elekton
+    dot_vote_created: Komenciĝis la punkto-voĉdonado
+    dot_vote_updated: Ĝisdatiĝis la punkto-voĉdonado
+  poll_score_form:
+    add_option_placeholder: Aldoni elekton
   poll_meeting_time_field:
     closing_hour: Horo de fermo
   poll_proposal_vote_form:
     stance_created: Voĉdono kreis
-    stance_updated: Voĉdono ĝisdatigita
+    stance_updated: Voĉdono nun ĝisdatigita
     vote: Voĉdono
   poll_proposal_options:
     agree: Konsenti
@@ -444,13 +485,6 @@ eo:
   poll_dot_vote_vote_form:
     stance_created: Voĉdono kreis
     stance_updated: Voĉdono ĝisdatigita
-  poll_common_publish_facebook_preview:
-    link: ligilo
-    just_now: Ĝuste nun
-  poll_common_publish_slack_preview:
-    timestamp: Hodiaŭ je {{timestamp}}
-  polls_page:
-    heading: Decidoj
   auth_form:
     sign_in: Registriĝi
     create_account: Krei konton
@@ -463,21 +497,15 @@ eo:
     name: Nomo
     email: Retadreso
     password: Pasvorto
-  install_slack:
-    login_to_slack: Ensaluti al Slack
-    card:
-      install_title: Konekti al Slack
-      installed_title: Konektita al Slack
-      install_slack: Konektigi Slack
-    progress:
-      install: Instali
-      invite: Inviti
-      decide: Decidi
-    install:
-      group_name_placeholder: Nomi vian novan grupon…
-    common:
-      do_it_later: Mi faros ĉi tio poste
+  webhook:
+    name_label: Nomo
   browser_warning:
     link: Bonvolu komuti al alia retumilo
-  slack_added_modal:
-    title: Sukceso!
+  group_survey:
+    categories:
+      business: Entrepreno
+      other: Alia
+    uses:
+      other: Alia
+    referrers:
+      other: Alia

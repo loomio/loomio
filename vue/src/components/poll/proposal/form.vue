@@ -1,6 +1,6 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
-import { intersection } from 'lodash'
+import { intersection } from 'lodash-es'
 import { optionColors, optionImages } from '@/shared/helpers/poll'
 
 export default

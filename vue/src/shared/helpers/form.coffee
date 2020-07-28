@@ -1,7 +1,8 @@
+import {includes} from 'lodash-es'
 export onError = (model, cb) ->
   (response) ->
     cb(response) if typeof cb is 'function'
-    setErrors(model, response) if _.includes([401, 422], response.status)
+    setErrors(model, response) if includes([401, 422], response.status)
 
 setErrors = (model, response) ->
   response.json().then (r) ->

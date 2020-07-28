@@ -3,7 +3,7 @@ import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
-import { head, filter, map } from 'lodash'
+import { head, filter, map, sortBy, isEqual } from 'lodash-es'
 
 export default
   props:
@@ -17,16 +17,18 @@ export default
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
-        @pollOptions = @poll.pollOptions()
-
-        @stanceChoices = map @pollOptions, (option) =>
-            poll_option_id: option.id
-            score: @stanceChoiceFor(option).score
+        if !isEqual map(@pollOptions, 'name'), map(@stance.poll().pollOptions(), 'name')
+          @pollOptions = @poll.pollOptions()
+          @stanceChoices = map @pollOptions, (option) =>
+              poll_option_id: option.id
+              score: @stanceChoiceFor(option).score
+              name: option.name
   methods:
     submit: ->
-      @stance.id = null
-      @stance.stanceChoicesAttributes = @stanceChoices
-      actionName = if @stance.isNew() then 'created' else 'updated'
+      @stance.stanceChoicesAttributes = map @stanceChoices, (choice) =>
+        poll_option_id: choice.poll_option_id
+        score: choice.score
+      actionName = if !@stance.castAt then 'created' else 'updated'
       @stance.save()
       .then =>
         @stance.poll().clearStaleStances()
@@ -44,13 +46,14 @@ export default
 
   computed:
     poll: -> @stance.poll()
+
+    orderedStanceChoices: -> sortBy @stanceChoices, 'name'
 </script>
 
 <template lang='pug'>
 form.poll-score-vote-form(@submit.prevent='submit()')
-  poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   .poll-score-vote-form__options
-    .poll-score-vote-form__option(v-for='choice in stanceChoices', :key='choice.poll_option_id')
+    .poll-score-vote-form__option(v-for='choice in orderedStanceChoices', :key='choice.poll_option_id')
       v-subheader.poll-score-vote-form__option-label {{ optionFor(choice).name }}
       v-slider.poll-score-vote-form__score-slider(v-model='choice.score' :color="optionFor(choice).color" :thumb-color="optionFor(choice).color" :track-color="optionFor(choice).color" :height="4" :thumb-size="24" :thumb-label="(choice.score > 0) ? 'always' : true" :min="poll.customFields.min_score" :max="poll.customFields.max_score")
         //- template(v-slot:append)
@@ -60,6 +63,5 @@ form.poll-score-vote-form(@submit.prevent='submit()')
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
     v-spacer
-    poll-common-show-results-button(v-if='stance.isNew()')
     v-btn.poll-common-vote-form__submit(color="primary" type='submit' v-t="'poll_common.vote'")
 </template>

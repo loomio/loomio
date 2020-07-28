@@ -4,14 +4,15 @@ import AbilityService     from '@/shared/services/ability_service'
 import EventBus           from '@/shared/services/event_bus'
 import RecordLoader       from '@/shared/services/record_loader'
 import ThreadFilter       from '@/shared/services/thread_filter'
-import DiscussionModalMixin     from '@/mixins/discussion_modal'
-import { map, debounce, orderBy, intersection, compact, omit, filter, concat, uniq } from 'lodash'
+import { map, debounce, orderBy, intersection, compact, omit, filter, concat, uniq } from 'lodash-es'
 import Session from '@/shared/services/session'
 
 export default
-  mixins: [DiscussionModalMixin]
-
-  created: -> @init()
+  created: ->
+    @onQueryInput = debounce (val) =>
+      @$router.replace(@mergeQuery(q: val))
+    , 500
+    @init()
 
   data: ->
     group: null
@@ -22,6 +23,20 @@ export default
     groupIds: []
 
   methods:
+    routeQuery: (o) ->
+      @$router.replace(@mergeQuery(o))
+
+    openStartDiscussionModal: ->
+      EventBus.$emit 'openModal',
+        component: 'DiscussionForm'
+        props:
+          discussion: Records.discussions.build
+            descriptionFormat: Session.defaultFormat()
+            groupId: @group.id
+
+    beforeDestroy: ->
+      EventBus.$off 'joinedGroup'
+
     init: ->
       Records.groups.findOrFetch(@$route.params.key).then (group) =>
         @group = group
@@ -39,10 +54,12 @@ export default
           collection: 'discussions'
           params:
             group_id: @group.id
+            exclude_types: 'group outcome'
 
         @searchLoader = new RecordLoader
           collection: 'searchResults'
           params:
+            exclude_types: 'group stance outcome poll'
             subgroups: @$route.query.subgroups || 'all'
             group_id: @group.id
 
@@ -74,6 +91,7 @@ export default
         @searchResults = orderBy(chain, 'rank', 'desc')
       else
         chain = Records.discussions.collection.chain()
+        chain = chain.find(discardedAt: null)
         chain = chain.find(groupId: {$in: @groupIds})
 
         switch @$route.query.t
@@ -89,11 +107,9 @@ export default
         if @$route.query.tag
           chain = chain.find({tagNames: {'$contains': @$route.query.tag}})
 
-        chain = chain.compoundsort([['pinned', true], ['lastActivityAt', true]])
-
         @discussions = chain.data()
 
-    fetch: debounce ->
+    fetch: ->
       if @$route.query.q
         @searchLoader.fetchRecords(q: @$route.query.q)
       else
@@ -103,8 +119,6 @@ export default
         params.subgroups = @$route.query.subgroups || 'mine'
         params.tags = @$route.query.tag
         @loader.fetchRecords(params)
-    ,
-      300
 
     filterName: (filter) ->
       switch filter
@@ -115,14 +129,22 @@ export default
         else
           'discussions_panel.open'
 
-    onQueryInput: (val) ->
-      @$router.replace(@mergeQuery(q: val))
 
   watch:
     '$route.params': 'init'
     '$route.query': 'refresh'
 
   computed:
+    showViewClosedThreads: -> @noMoreToLoad && !@$route.query.t
+    viewClosedThreadsUrl: -> @urlFor(@group) + "?t=closed"
+    noMoreToLoad: -> @loader.numLoaded > 0 && @loader.exhausted
+
+    pinnedDiscussions: ->
+      orderBy(@discussions.filter((discussion) -> discussion.pinned), ['title'], ['asc'])
+
+    regularDiscussions: ->
+      orderBy(@discussions.filter((discussion) -> !discussion.pinned), ['lastActivityAt'], ['desc'])
+
     groupTags: ->
       @group && @group.parentOrSelf().tagNames || []
 
@@ -157,15 +179,15 @@ div.discussions-panel(v-if="group")
           span(v-t="{path: filterName($route.query.t), args: {count: unreadCount}}")
           v-icon mdi-menu-down
       v-list(dense)
-        v-list-item.discussions-panel__filters-open(:to="mergeQuery({t: null})")
+        v-list-item.discussions-panel__filters-open(@click="routeQuery({t: null})")
           v-list-item-title(v-t="'discussions_panel.open'")
-        v-list-item.discussions-panel__filters-all(:to="mergeQuery({t: 'all'})")
+        v-list-item.discussions-panel__filters-all(@click="routeQuery({t: 'all'})")
           v-list-item-title(v-t="'discussions_panel.all'")
-        v-list-item.discussions-panel__filters-closed(:to="mergeQuery({t: 'closed'})")
+        v-list-item.discussions-panel__filters-closed(@click="routeQuery({t: 'closed'})")
           v-list-item-title(v-t="'discussions_panel.closed'")
-        v-list-item.discussions-panel__filters-unread(:to="mergeQuery({t: 'unread'})")
+        v-list-item.discussions-panel__filters-unread(@click="routeQuery({t: 'unread'})")
           v-list-item-title(v-t="{path: 'discussions_panel.unread', args: { count: unreadCount }}")
-        //- v-list-item(:to="mergeQuery({t: 'subscribed'})")
+        //- v-list-item(@click="routeQuery({t: 'subscribed'})")
         //-   v-list-item-title(v-t="'change_volume_form.simple.loud'")
 
     v-menu
@@ -174,13 +196,14 @@ div.discussions-panel(v-if="group")
           span(v-if="$route.query.tag") {{$route.query.tag}}
           span(v-else v-t="'loomio_tags.all_tags'")
           v-icon mdi-menu-down
+
       v-list(dense)
-        v-list-item(:to="mergeQuery({tag: null})")
+        v-list-item(@click="routeQuery({tag: null})" key="all")
           v-list-item-title(v-t="'loomio_tags.all_tags'")
-        v-list-item(v-for="tag in groupTags" :key="tag" :to="mergeQuery({tag: tag})")
+        v-list-item(v-for="tag in groupTags" :key="tag" @click="routeQuery({tag: tag})")
           v-list-item-title {{tag}}
-    v-text-field.mr-2.flex-grow-1(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_threads', {name: group.name})" append-icon="mdi-magnify")
-    v-btn.discussions-panel__new-thread-button(@click='openStartDiscussionModal(group)' color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
+    v-text-field.mr-2.flex-grow-1(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_threads', {name: group.name})" append-icon="mdi-magnify" :loading="searchLoader.loading")
+    v-btn.discussions-panel__new-thread-button(@click='openStartDiscussionModal()' color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
 
   v-card.discussions-panel(outlined)
     div(v-if="loader.status == 403")
@@ -192,12 +215,14 @@ div.discussions-panel(v-if="group")
           p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_threads'")
         .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
           v-list.thread-previews(two-line)
-            thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in discussions" :key="thread.id" :thread="thread" group-page)
+            thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in pinnedDiscussions" :key="thread.id" :thread="thread" group-page)
+            thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in regularDiscussions" :key="thread.id" :thread="thread" group-page)
 
           v-layout(justify-center)
-            v-btn.my-2.discussions-panel__show-more(outlined color='accent' v-if="!loader.exhausted" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
+            v-btn.my-2.discussions-panel__show-more(outlined color='accent' v-if="!loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords()" v-t="'common.action.load_more'")
 
-          .lmo-hint-text.discussions-panel__no-more-threads.text-center.pa-1(v-t="{ path: 'group_page.no_more_threads' }", v-if='loader.numLoaded > 0 && loader.exhausted')
+          .discussions-panel__no-more-threads.text-center.pa-1(v-t="{ path: 'group_page.no_more_threads' }" v-if='noMoreToLoad')
+          .discussions-panel__view-closed-threads.text-center.pa-1(v-html="$t('group_page.view_closed_threads', {url: viewClosedThreadsUrl })" v-if="showViewClosedThreads")
 
       .discussions-panel__content.pa-4(v-if="$route.query.q")
         p.text-center.discussions-panel__list--empty(v-if='!searchResults.length && !searchLoader.loading' v-t="{path: 'discussions_panel.no_results_found', args: {search: $route.query.q}}")

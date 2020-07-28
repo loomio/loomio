@@ -1,16 +1,23 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
 import UserModel            from '@/shared/models/user_model'
-import {map, includes} from 'lodash'
+import AnonymousUserModel   from '@/shared/models/anonymous_user_model'
+import {map, includes, merge, pickBy, identity} from 'lodash-es'
 
 export default class UserRecordsInterface extends BaseRecordsInterface
   model: UserModel
   apiEndPoint: 'profile'
 
+  anonymous: ->
+    new AnonymousUserModel()
+
   fetchTimeZones: ->
     @remote.fetch path: "time_zones"
 
   fetchGroups: ->
-    @remote.fetch path: "groups"
+    @remote.fetch
+      path: "groups"
+      params:
+        exclude_types: 'user'
 
   fetchMentionable: (q, model) =>
     model = model.discussion() if !model.id? && model.discussionId
@@ -23,7 +30,7 @@ export default class UserRecordsInterface extends BaseRecordsInterface
 
   updateProfile: (user) =>
     user.processing = true
-    @remote.post('update_profile', _.merge(user.serialize(), {unsubscribe_token: user.unsubscribeToken })).finally -> user.processing = false
+    @remote.post('update_profile', merge(user.serialize(), {unsubscribe_token: user.unsubscribeToken })).finally -> user.processing = false
 
   uploadAvatar: (file) =>
     @remote.upload 'upload_avatar', file
@@ -33,15 +40,7 @@ export default class UserRecordsInterface extends BaseRecordsInterface
     @remote.post('change_password', user.serialize()).finally ->
       user.processing = false
 
-  deactivate: (user) =>
-    user.processing = true
-    @remote.post('deactivate', user.serialize()).finally -> user.processing = false
-
   destroy: => @remote.delete '/'
-
-  reactivate: (user) =>
-    user.processing = true
-    @remote.post('reactivate', user.serialize()).finally -> user.processing = false
 
   saveExperience: (experience) =>
     @remote.post('save_experience', experience: experience)
@@ -52,7 +51,7 @@ export default class UserRecordsInterface extends BaseRecordsInterface
   emailStatus: (email, token) ->
     @fetch
       path: 'email_status'
-      params: _.pickBy({email: email, token: token}, _.identity)
+      params: pickBy({email: email, token: token}, identity)
 
   checkEmailExistence: (email) ->
     @fetch

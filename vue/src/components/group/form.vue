@@ -5,7 +5,7 @@ import Records  from '@/shared/services/records'
 import Flash   from '@/shared/services/flash'
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
-import { isEmpty, some } from 'lodash'
+import { isEmpty, some, debounce } from 'lodash-es'
 import { onError } from '@/shared/helpers/form'
 
 export default
@@ -26,6 +26,19 @@ export default
   mounted: ->
     @featureNames = AppConfig.features.group
     @suggestHandle()
+
+  created: ->
+    @suggestHandle = debounce ->
+      # if group is new, suggest handle whenever name changes
+      # if group is old, suggest handle only if handle is empty
+      if @group.isNew() or isEmpty(@group.handle)
+        parentHandle = if @group.parent()
+          @group.parent().handle
+        else
+          null
+        Records.groups.getHandle(name: @group.name, parentHandle: parentHandle).then (data) =>
+          @clone.handle = data.handle
+    , 500
 
   methods:
     submit: ->
@@ -49,16 +62,6 @@ export default
         @$router.push("/g/#{groupKey}")
       .catch onError(@clone)
 
-    suggestHandle: ->
-      # if group is new, suggest handle whenever name changes
-      # if group is old, suggest handle only if handle is empty
-      if @group.isNew() or isEmpty(@group.handle)
-        parentHandle = if @group.parent()
-          @group.parent().handle
-        else
-          null
-        Records.groups.getHandle(name: @group.name, parentHandle: parentHandle).then (data) =>
-          @clone.handle = data.handle
 
     expandForm: ->
       @isExpanded = true
@@ -98,7 +101,7 @@ export default
         "group_form.subgroup_name"
 
     privacyOptions: ->
-      if @clone.isSubgroup() && @clone.parent().groupPrivacy == 'secret'
+      if @clone.parent() && @clone.parent().groupPrivacy == 'secret'
         ['closed', 'secret']
       else
         ['open', 'closed', 'secret']
@@ -106,9 +109,6 @@ export default
     privacyStatement: ->
       @$t groupPrivacyStatement(@clone),
         parent: @clone.parentName()
-
-    showGroupFeatures: ->
-      AbilityService.isSiteAdmin() and some(@featureNames)
 
     groupNamePlaceholder: ->
       if @clone.parentId
@@ -140,6 +140,7 @@ v-card.group-form
       v-tab(v-t="'group_form.profile'")
       v-tab.group-form__privacy-tab(v-t="'group_form.privacy'")
       v-tab.group-form__permissions-tab(v-t="'group_form.permissions'")
+      v-tab.group-form__thread-defaults-tab(v-t="'common.threads'")
 
       v-tab-item.mt-8
         .v-input
@@ -178,7 +179,7 @@ v-card.group-form
         .group-form__section.group-form__permissions
           p.group-form__privacy-statement.body-2(v-t="'group_form.permissions_explaination'")
           //- v-checkbox.group-form__allow-public-threads(hide-details v-model='group["allowPublicThreads"]' :label="$t('group_form.allow_public_threads')" v-if='clone.privacyIsClosed() && !clone.isSubgroupOfSecretParent()')
-          v-checkbox.group-form__parent-members-can-see-discussions(hide-details v-model='clone["parentMembersCanSeeDiscussions"]' :label="$t('group_form.parent_members_can_see_discussions', {parent: clone.parent().name})" v-if='clone.isSubgroup() && clone.privacyIsClosed()')
+          v-checkbox.group-form__parent-members-can-see-discussions(hide-details v-model='clone["parentMembersCanSeeDiscussions"]' :label="$t('group_form.parent_members_can_see_discussions', {parent: clone.parent().name})" v-if='clone.parent() && clone.privacyIsClosed()')
           v-checkbox.group-form__members-can-add-members(hide-details v-model='clone["membersCanAddMembers"]' :label="$t('group_form.members_can_add_members')")
           v-checkbox.group-form__members-can-announce(hide-details v-model='clone["membersCanAnnounce"]' :label="$t('group_form.members_can_announce')")
           v-checkbox.group-form__members-can-create-subgroups(hide-details v-model='clone["membersCanCreateSubgroups"]' v-if='clone.isParent()' :label="$t('group_form.members_can_create_subgroups')")
@@ -187,8 +188,52 @@ v-card.group-form
           v-checkbox.group-form__members-can-edit-comments(hide-details v-model='clone["membersCanEditComments"]' :label="$t('group_form.members_can_edit_comments')")
           v-checkbox.group-form__members-can-raise-motions(hide-details v-model='clone["membersCanRaiseMotions"]' :label="$t('group_form.members_can_raise_motions')")
           v-checkbox.group-form__members-can-vote(hide-details v-model='clone["membersCanVote"]' :label="$t('group_form.members_can_vote')")
+          v-checkbox.group-form__admins-can-edit-user-content(hide-details v-model='clone["adminsCanEditUserContent"]' :label="$t('group_form.admins_can_edit_user_content')")
 
+      v-tab-item.mt-8
+        .group-form__section.group-form__defaults
+          p(v-t="'group_form.thread_defaults_help'")
+          v-card-subtitle(v-t="'thread_arrangement_form.sorting'")
+          v-radio-group(v-model="clone.newThreadsNewestFirst")
+            v-radio(:value="false")
+              template(v-slot:label)
+                strong(v-t="'thread_arrangement_form.earliest'")
+                space
+                | -
+                space
+                span(v-t="'thread_arrangement_form.earliest_description'")
 
+            v-radio(:value="true")
+              template(v-slot:label)
+                strong(v-t="'thread_arrangement_form.latest'")
+                space
+                | -
+                space
+                span(v-t="'thread_arrangement_form.latest_description'")
+
+          v-subheader(v-t="'thread_arrangement_form.replies'")
+          v-radio-group(v-model="clone.newThreadsMaxDepth")
+            v-radio(:value="1")
+              template(v-slot:label)
+                strong(v-t="'thread_arrangement_form.linear'")
+                space
+                | -
+                space
+                span(v-t="'thread_arrangement_form.linear_description'")
+            v-radio(:value="2")
+              template(v-slot:label)
+                strong(v-t="'thread_arrangement_form.nested_once'")
+                space
+                | -
+                space
+                span(v-t="'thread_arrangement_form.nested_once_description'")
+            //- v-radio(:value="3")
+            //-   template(v-slot:label)
+            //-     strong(v-t="'thread_arrangement_form.nested_twice'")
+            //-     space
+            //-     | -
+            //-     space
+            //-     span(v-t="'thread_arrangement_form.nested_twice_description'")
 
   v-card-actions
     v-spacer

@@ -1,6 +1,6 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
 import MemberhipModel       from '@/shared/models/membership_model'
-import {includes} from 'lodash'
+import {includes} from 'lodash-es'
 
 export default class MemberhipRecordsInterface extends BaseRecordsInterface
   model: MemberhipModel

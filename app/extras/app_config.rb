@@ -1,5 +1,6 @@
 class AppConfig
   CONFIG_FILES = %w(
+    webhook_event_kinds
     colors
     durations
     emojis
@@ -79,7 +80,7 @@ class AppConfig
   def self.app_features
     {
       env: Rails.env,
-      subscriptions:              ENV.fetch('FEATURES_SUBSCRIPTIONS', false),
+      subscriptions:              !!ENV.fetch('CHARGIFY_API_KEY', false),
       email_login:                !ENV['FEATURES_DISABLE_EMAIL_LOGIN'],
       create_user:                !ENV['FEATURES_DISABLE_CREATE_USER'],
       create_group:               !ENV['FEATURES_DISABLE_CREATE_GROUP'],
@@ -87,10 +88,10 @@ class AppConfig
       ahoy_tracking:              !ENV['FEATURES_DISABLE_AHOY_TRACKING'],
       help_link:                  !ENV['FEATURES_DISABLE_HELP_LINK'],
       example_content:            !ENV['FEATURES_DISABLE_EXAMPLE_CONTENT'],
-      nested_comments:            ENV.fetch('FEATURES_NESTED_COMMENTS_FOR_ALL',    false),
-      default_thread_render_mode: ENV.fetch('FEATURES_DEFAULT_THREAD_RENDER_MODE', 'chronological'),
-      show_microsoft_card:        ENV.fetch('FEATURES_ENABLE_MICROSOFT_TEAMS',     false),
-      show_contact_consent:       ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT',       false)
+      proposal_consent_default:   ENV.fetch('FEATURES_PROPOSAL_CONSENT_DEFAULT', false),
+      show_contact_consent:       ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT',       false),
+      group_survey:               ENV.fetch('FEATURES_GROUP_SURVEY', false),
+      group_sso:                  ENV.fetch('FEATURES_GROUP_SSO', false)
     }
   end
 

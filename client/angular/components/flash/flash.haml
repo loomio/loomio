@@ -1,9 +1,0 @@
-.flash-root{aria-live: "{{ariaLive()}}", role: "alert"}
-  .flash-root__container.animated{ng-if: "display()", ng-animate: "'enter'", class: "alert-{{flash.level}}"}
-    .flash-root__message--loading.lmo-flex.lmo-flex__center{ng-if: "loading()"}
-      %md-progress-circular.md-accent.flash-root__loading.lmo-margin-right{md-diameter: "25"}
-      {{ flash.message | translate:flash.options }}
-    .flash-root__message.lmo-flex.lmo-flex__center.lmo-margin-right{ng-if: "!loading()"}
-      {{ flash.message | translate:flash.options }}
-    .flash-root__action{ng-if: "flash.actionFn"}
-      %a{md-colors: "{color: 'accent'}", ng-click: "flash.actionFn()", translate: "{{flash.action}}"}

@@ -7,6 +7,8 @@ export default
     user: Object
   data: ->
     email: @user.email
+    loading: false
+    
   watch:
     # GK: NB: not sure why this hack is necessary, but email is not set otherwise
     'user.email': ->
@@ -14,11 +16,9 @@ export default
   methods:
     submit: ->
       return unless @validateEmail()
-      # EventBus.emit $scope, 'processing'
       @user.email = @email
-      AuthService.emailStatus(@user).finally =>
-        console.log 'doneProcessing'
-        # EventBus.emit $scope, 'doneProcessing'
+      @loading = true
+      AuthService.emailStatus(@user).finally => @loading = false
     validateEmail: ->
       @user.errors = {}
       if !@email
@@ -30,9 +30,9 @@ export default
 <template lang="pug">
 .auth-email-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
   .auth-email-form__email
-    v-text-field#email.lmo-primary-form-input(outlined name='email' type='email' :placeholder="$t('auth_form.email_placeholder')" v-model='email')
+    v-text-field#email.lmo-primary-form-input(outlined name='email' type='email' :placeholder="$t('auth_form.email_placeholder')" :label="$t('common.email_address')" v-model='email' autocomplete="username email")
     validation-errors(:subject='user' field='email')
-    v-btn.auth-email-form__submit(color="primary" @click='submit()' :disabled='!email' v-t="'auth_form.continue_with_email'")
+    v-btn.auth-email-form__submit(color="primary" @click='submit()' :disabled='!email' v-t="'auth_form.continue_with_email'" :loading="loading")
 </template>
 
 <style lang="sass">
@@ -40,7 +40,7 @@ export default
   text-align: center
 
 .auth-email-form
-  max-width: 256px
+  max-width: 400px
   margin: 0 auto
 .auth-email-form__submit
   margin: 0 auto

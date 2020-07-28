@@ -24,3 +24,7 @@ v-list-item.poll-common-preview(:to='urlFor(poll)')
       space
       poll-common-closing-at(:poll='poll' approximate)
 </template>
+<style lang="sass">
+.poll-common-preview .v-avatar
+  overflow: visible! important
+</style>

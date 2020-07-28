@@ -12,5 +12,7 @@ export default class StanceChoiceModel extends BaseModel
     @belongsTo 'pollOption'
     @belongsTo 'stance'
 
-  poll: ->
-    @stance().poll() if @stance()
+  poll: -> @stance().poll()
+
+  show: ->
+    (@score > 0) or @poll().pollType == "score"

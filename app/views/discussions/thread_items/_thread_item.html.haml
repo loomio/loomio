@@ -1,0 +1,4 @@
+- if item.eventable.discarded?
+  = render "discussions/thread_items/removed", item: item
+- else
+  = render "discussions/thread_items/#{item.kind}", item: item

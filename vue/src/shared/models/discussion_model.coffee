@@ -1,24 +1,23 @@
 import BaseModel        from '@/shared/record_store/base_model'
 import AppConfig        from '@/shared/services/app_config'
+import Session          from '@/shared/services/session'
 import RangeSet         from '@/shared/services/range_set'
 import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
-import HasGuestGroup    from '@/shared/mixins/has_guest_group'
-import { isEqual, isAfter } from 'date-fns'
+import { isAfter } from 'date-fns'
+import dateIsEqual from 'date-fns/isEqual'
+import { isEqual, isEmpty, filter, some, head, last, sortBy, find, min, max, isArray, throttle } from 'lodash-es'
 
 export default class DiscussionModel extends BaseModel
   @singular: 'discussion'
   @plural: 'discussions'
   @uniqueIndices: ['id', 'key']
   @indices: ['groupId', 'authorId']
-  @draftParent: 'group'
-  @draftPayloadAttributes: ['title', 'description']
 
   afterConstruction: ->
     @private = @privateDefaultValue() if @isNew()
     HasDocuments.apply @, showTitle: true
     HasTranslations.apply @
-    HasGuestGroup.apply @
 
   defaultValues: ->
     private: null
@@ -60,13 +59,26 @@ export default class DiscussionModel extends BaseModel
 
   discussion: -> @
 
+  members: ->
+    # pull out the discussion_readers user_ids
+    @recordStore.users.find(@group().memberIds())
+
+  membersInclude: (user) ->
+    (@inviterId && !@revokedAt && Session.user() == user) or
+    @group().membersInclude(user)
+
+  adminsInclude: (user) ->
+    @author() == user or
+    (@inviterId && @admin && !@revokedAt && Session.user() == user) or
+    @group().adminsInclude(user)
+
   createdEvent: ->
     res = @recordStore.events.find(kind: 'new_discussion', eventableId: @id)
-    res[0] unless _.isEmpty(res)
+    res[0] unless isEmpty(res)
 
   forkedEvent: ->
     res = @recordStore.events.find(kind: 'discussion_forked', eventableId: @id)
-    res[0] unless _.isEmpty(res)
+    res[0] unless isEmpty(res)
 
   reactions: ->
     @recordStore.reactions.find(reactableId: @id, reactableType: "Discussion")
@@ -76,27 +88,27 @@ export default class DiscussionModel extends BaseModel
     groupName: @groupName()
 
   authorName: ->
-    @author().nameWithTitle(@)
+    @author().nameWithTitle(@group())
 
   groupName: ->
-    @group().name if @group()
+    (@group() || {}).name
 
   activePolls: ->
-    _.filter @polls(), (poll) ->
+    filter @polls(), (poll) ->
       poll.isActive()
 
   hasActivePoll: ->
-    _.some @activePolls()
+    some @activePolls()
 
   hasDecision: ->
     @hasActivePoll()
 
   closedPolls: ->
-    _.filter @polls(), (poll) ->
+    filter @polls(), (poll) ->
       !poll.isActive()
 
   activePoll: ->
-    _.head @activePolls()
+    head @activePolls()
 
   isUnread: ->
     !@isDismissed() and
@@ -104,7 +116,7 @@ export default class DiscussionModel extends BaseModel
 
   isDismissed: ->
     @discussionReaderId? and @dismissedAt? and
-    (isEqual(@dismissedAt, @lastActivityAt) or isAfter(@dismissedAt, @lastActivityAt))
+    (dateIsEqual(@dismissedAt, @lastActivityAt) or isAfter(@dismissedAt, @lastActivityAt))
 
   hasUnreadActivity: ->
     @isUnread() && @unreadItemsCount() > 0
@@ -114,14 +126,14 @@ export default class DiscussionModel extends BaseModel
 
   requireReloadFor: (event) ->
     return false if !event or event.discussionId != @id or event.sequenceId
-    _.find @events(), (e) -> e.kind == 'new_comment' and e.eventable.id == event.eventable.id
+    find @events(), (e) -> e.kind == 'new_comment' and e.eventable.id == event.eventable.id
 
   minLoadedSequenceId: ->
-    item = _.min @events(), (event) -> event.sequenceId or Number.MAX_VALUE
+    item = min @events(), (event) -> event.sequenceId or Number.MAX_VALUE
     item.sequenceId
 
   maxLoadedSequenceId: ->
-    item = _.max @events(), (event) -> event.sequenceId or 0
+    item = max @events(), (event) -> event.sequenceId or 0
     item.sequenceId
 
   allEventsLoaded: ->
@@ -160,12 +172,12 @@ export default class DiscussionModel extends BaseModel
     @updateReadRanges()
 
   update: (attributes) ->
-    if _.isArray(@readRanges) && _.isArray(attributes.readRanges) && !_.isEqual(attributes.readRanges, @readRanges)
+    if isArray(@readRanges) && isArray(attributes.readRanges) && !isEqual(attributes.readRanges, @readRanges)
       attributes.readRanges = RangeSet.reduce(@readRanges.concat(attributes.readRanges))
     @baseUpdate(attributes)
     @readRanges = RangeSet.intersectRanges(@readRanges, @ranges)
 
-  updateReadRanges: _.throttle ->
+  updateReadRanges: throttle ->
     @remote.patchMember @keyOrId(), 'mark_as_read', ranges: RangeSet.serialize(@readRanges)
   , 2000
 
@@ -179,13 +191,13 @@ export default class DiscussionModel extends BaseModel
     RangeSet.length(@readRanges)
 
   firstSequenceId: ->
-    (_.head(@ranges) || [])[0]
+    (head(@ranges) || [])[0]
 
   lastSequenceId: ->
-    (_.last(@ranges) || [])[1]
+    (last(@ranges) || [])[1]
 
   lastReadSequenceId: ->
-    (_.last(@readRanges) || [])[1]
+    (last(@readRanges) || [])[1]
 
   firstUnreadSequenceId: ->
     RangeSet.firstMissing(@ranges, @readRanges)
@@ -228,7 +240,7 @@ export default class DiscussionModel extends BaseModel
   #   @forkedEventIds.length > 0
 
   forkedEvents: ->
-    _.sortBy(@recordStore.events.find(@forkedEventIds), 'sequenceId')
+    sortBy(@recordStore.events.find(@forkedEventIds), 'sequenceId')
 
   forkTarget: ->
-    @forkedEvents()[0].model() if _.some @forkedEvents()
+    @forkedEvents()[0].model() if some @forkedEvents()

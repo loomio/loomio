@@ -5,10 +5,52 @@ class PollService
     poll.assign_attributes(author: actor)
 
     return false unless poll.valid?
+    poll.update_attachments!
     poll.save!
 
+    Stance.create!(participant: actor, poll: poll, admin: true, reason_format: actor.default_format)
     EventBus.broadcast('poll_create', poll, actor)
     Events::PollCreated.publish!(poll, actor)
+  end
+
+  def self.announce(poll:, actor:, params:)
+    actor.ability.authorize! :announce, poll
+
+    users = UserInviter.where_or_create!(inviter: actor,
+                                         emails: params[:emails],
+                                         user_ids: params[:user_ids])
+
+    new_stances = users.where.not(id: poll.voter_ids).map do |user|
+      Stance.new(participant: user, poll: poll, inviter: actor, volume: DiscussionReader.volumes[:normal], reason_format: user.default_format)
+    end
+
+    Stance.import(new_stances, on_duplicate_key_ignore: true)
+
+    if poll.discussion
+      new_discussion_readers = users.map do |user|
+        DiscussionReader.new(user: user, discussion: poll.discussion, inviter: actor, volume: DiscussionReader.volumes[:normal])
+      end
+
+      DiscussionReader.import(new_discussion_readers, on_duplicate_key_ignore: true)
+    end
+
+    stances = Stance.where(participant_id: users.pluck(:id), poll: poll)
+    poll.update_stances_count
+    poll.update_undecided_count
+    poll.update_stance_data
+
+    Events::PollAnnounced.publish!(poll, actor, stances)
+    stances
+  end
+
+  def self.discard(poll:, actor:)
+    actor.ability.authorize!(:destroy, poll)
+
+    poll.update(discarded_at: Time.now, discarded_by: actor.id)
+    Event.where(kind: "stance_created", eventable_id: poll.stances.pluck(:id)).update_all(discussion_id: nil)
+    poll.created_event.update(user_id: nil, child_count: 0, pinned: false)
+    MessageChannelService.publish_event(poll.created_event)
+    poll.created_event
   end
 
   def self.close(poll:, actor:)
@@ -25,8 +67,6 @@ class PollService
     return false unless poll.valid?
 
     poll.save!
-    poll.poll_did_not_votes.delete_all
-    poll.update_undecided_count
 
     EventBus.broadcast('poll_reopen', poll, actor)
     Events::PollReopened.publish!(poll, actor)
@@ -50,10 +90,9 @@ class PollService
   end
 
   def self.do_closing_work(poll:)
-    poll.poll_did_not_votes.delete_all
-    poll.poll_did_not_votes.import poll.undecided.map { |user| PollDidNotVote.new(user: user, poll: poll) }, validate: false
-    poll.update(closed_at: Time.now) unless poll.closed_at.present?
-    poll.update_undecided_count
+    return if poll.closed_at
+    poll.stances.update_all(participant_id: nil) if poll.anonymous
+    poll.update(closed_at: Time.now)
   end
 
   def self.update(poll:, params:, actor:)
@@ -62,6 +101,7 @@ class PollService
     is_new_version = poll.is_new_version?
 
     return false unless poll.valid?
+    poll.update_attachments!
     poll.save!
 
     EventBus.broadcast('poll_update', poll, actor)
@@ -102,6 +142,17 @@ class PollService
 
   def self.cleanup_examples
     Poll.where(example: true).where('created_at < ?', 1.day.ago).destroy_all
+  end
+
+  def self.add_to_thread(poll:, params:, actor:)
+    discussion = Discussion.find(params[:discussion_id])
+    actor.ability.authorize! :update, poll
+    actor.ability.authorize! :update, discussion
+    ActiveRecord::Base.transaction do
+      poll.update(discussion_id: discussion.id, group_id: discussion.group.id, stances_in_discussion: false)
+      poll.created_event.update(discussion_id: discussion.id, parent_id: discussion.created_event.id, pinned: true)
+    end
+    poll.created_event
   end
 
 end

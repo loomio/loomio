@@ -1,12 +1,12 @@
 <script lang="coffee">
-import Records        from '@/shared/services/records'
-import RecordLoader   from '@/shared/services/record_loader'
-import EventBus       from '@/shared/services/event_bus'
-import AbilityService from '@/shared/services/ability_service'
-import ModalService   from '@/shared/services/modal_service'
-import Session       from '@/shared/services/session'
+import Records           from '@/shared/services/records'
+import RecordLoader      from '@/shared/services/record_loader'
+import EventBus          from '@/shared/services/event_bus'
+import AbilityService    from '@/shared/services/ability_service'
+import Session           from '@/shared/services/session'
+import AttachmentService from '@/shared/services/attachment_service'
 
-import { isEmpty, intersection, debounce, filter, some, orderBy } from 'lodash'
+import { isEmpty, intersection, debounce, filter, some, orderBy } from 'lodash-es'
 
 export default
   data: ->
@@ -20,6 +20,10 @@ export default
     from: 0
 
   created: ->
+    @onQueryInput = debounce (val) =>
+      @$router.replace({ query: { q: val } })
+    , 500
+
     @group = Records.groups.fuzzyFind(@$route.params.key)
 
     EventBus.$emit 'currentComponent',
@@ -54,11 +58,10 @@ export default
     @fetch()
 
   watch:
-    '$route.query.q': debounce (val) ->
+    '$route.query.q': (val) ->
       @searchQuery = val || ''
       @fetch()
       @query()
-    , 500
 
   methods:
     query: ->
@@ -79,34 +82,27 @@ export default
 
       @items = orderBy(documents.concat(attachments), 'createdAt', 'desc')
 
-    fetch: debounce ->
+    fetch: ->
       @loader.fetchRecords
         q: @searchQuery
-        from: @from
 
       @attachmentLoader.fetchRecords
         q: @searchQuery
-        from: @from
-    , 500
 
-    loadMore: ->
-      @from += @per
-      @fetch()
-
-    handleSearchQueryChange: (val) ->
-      @$router.replace({ query: { q: val } })
+    actionsFor: (item) ->
+      AttachmentService.actions(item)
 
   computed:
     showLoadMore: -> !@loader.exhausted && !@attachmentLoader.exhausted
     loading: -> @loader.loading || @attachmentLoader.loading
-    canAdministerGroup: -> AbilityService.canAdministerGroup(@group)
+    canAdminister: -> AbilityService.canAdminister(@group)
 
 </script>
 
 <template lang="pug">
 div
   v-layout.py-2(align-center wrap)
-    v-text-field(clearable hide-details solo @change="handleSearchQueryChange" :placeholder="$t('navbar.search_files', {name: group.name})" append-icon="mdi-magnify")
+    v-text-field(clearable hide-details solo @input="onQueryInput" :placeholder="$t('navbar.search_files', {name: group.name})" append-icon="mdi-magnify")
   v-card.group-files-panel(outlined)
     div(v-if="loader.status == 403")
       p.pa-4.text-center(v-t="'error_page.forbidden'")
@@ -118,6 +114,7 @@ div
             th(v-t="'group_files_panel.filename'")
             th(v-t="'group_files_panel.uploaded_by'")
             th(v-t="'group_files_panel.uploaded_at'")
+            th(v-if="canAdminister")
         tbody
           tr(v-for="item in items" :key="item.id")
             td
@@ -128,6 +125,9 @@ div
               user-avatar(:user="item.author()")
             td
               time-ago(:date="item.createdAt")
+            td(v-if="canAdminister")
+              action-menu(v-if="Object.keys(actionsFor(item)).length" :actions="actionsFor(item)")
+
       v-layout(justify-center)
-        v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loading" @click="loadMore()" v-t="'common.action.load_more'")
+        v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loading" @click="fetch()" v-t="'common.action.load_more'")
 </template>

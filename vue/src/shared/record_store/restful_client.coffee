@@ -1,5 +1,5 @@
 import { encodeParams } from '@/shared/helpers/encode_params'
-import { omitBy, snakeCase, compact, isString, defaults, pickBy, isNil, identity } from 'lodash'
+import { omitBy, snakeCase, compact, isString, defaults, pickBy, isNil, identity } from 'lodash-es'
 
 export default class RestfulClient
   defaultParams: {}
@@ -16,6 +16,8 @@ export default class RestfulClient
   constructor: (resourcePlural) ->
     @defaultParams.unsubscribe_token = new URLSearchParams(location.search).get('unsubscribe_token')
     @defaultParams.membership_token = new URLSearchParams(location.search).get('membership_token')
+    @defaultParams.stance_token = new URLSearchParams(location.search).get('stance_token')
+    @defaultParams.discussion_reader_token = new URLSearchParams(location.search).get('discussion_reader_token')
     @defaultParams = omitBy(@defaultParams, isNil)
     @processing = []
     @resourcePlural = snakeCase(resourcePlural)
@@ -82,7 +84,14 @@ export default class RestfulClient
   destroy: (id, params) ->
     @delete(id, params)
 
+  discard: (id, params) ->
+    @delete(id+'/discard', params)
+
+  undiscard: (id, params) ->
+    @post(id+'/undiscard', params)
+
   upload: (path, file, options = {}, onProgress) ->
+    return unless file
     new Promise (resolve, reject) =>
       data = new FormData()
       data.append(options.fileField     || 'file',     file)

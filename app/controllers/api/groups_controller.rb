@@ -1,10 +1,7 @@
 class API::GroupsController < API::RestfulController
-  include UsesFullSerializer
-  after_action :track_visit, only: :show
-
   def token
-    self.resource = load_and_authorize(:formal_group, :invite_people)
-    respond_with_resource scope: {include_token: true}
+    self.resource = load_and_authorize(:group, :invite_people)
+    respond_with_resource scope: {include_token: true, exclude_types: ['membership', 'user']}
   end
 
   def suggest_handle
@@ -12,13 +9,14 @@ class API::GroupsController < API::RestfulController
   end
 
   def reset_token
-    self.resource = load_and_authorize(:formal_group, :invite_people)
+    self.resource = load_and_authorize(:group, :invite_people)
     resource.update(token: resource.class.generate_unique_secure_token)
-    respond_with_resource scope: {include_token: true}
+    respond_with_resource scope: {include_token: true, exclude_types: ['membership', 'user']}
   end
 
   def show
-    self.resource = load_and_authorize(:formal_group)
+    self.resource = load_and_authorize(:group)
+    accept_pending_membership
     respond_with_resource
   end
 
@@ -31,11 +29,6 @@ class API::GroupsController < API::RestfulController
 
   def count_explore_results
     render json: { count: Queries::ExploreGroups.new.search_for(params[:q]).count }
-  end
-
-  def archive
-    service.archive(group: load_resource, actor: current_user)
-    respond_with_resource
   end
 
   def subgroups
@@ -55,10 +48,6 @@ class API::GroupsController < API::RestfulController
   end
 
   private
-  def track_visit
-    VisitService.record(group: resource, visit: current_visit, user: current_user)
-  end
-
   def ensure_photo_params
     params.require(:file)
     raise ActionController::UnpermittedParameters.new([:kind]) unless ['logo', 'cover_photo'].include? params.require(:kind)
@@ -69,7 +58,7 @@ class API::GroupsController < API::RestfulController
   end
 
   def resource_class
-    FormalGroup
+    Group
   end
 
   # serialize out the parent with the group

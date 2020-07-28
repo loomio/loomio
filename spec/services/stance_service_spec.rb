@@ -3,7 +3,7 @@ require 'rails_helper'
 describe StanceService do
   let(:agree) { create :poll_option, poll: poll, name: "agree" }
   let(:disagree) { create :poll_option, poll: poll, name: "disagree" }
-  let(:group) { create :formal_group }
+  let(:group) { create :group }
   let(:discussion) { create :discussion, group: group }
   let(:poll) { create :poll, discussion: discussion }
   let(:proposal) { create :poll_proposal, discussion: discussion }
@@ -51,7 +51,7 @@ describe StanceService do
     end
 
     it 'does not create a stance for a logged out user' do
-      expect { StanceService.create(stance: public_stance, actor: LoggedOutUser.new) }.to_not change { Stance.count }
+      expect { StanceService.create(stance: public_stance, actor: LoggedOutUser.new) }.to raise_error { CanCan::AccessDenied }
     end
 
     it 'does not allow visitors to create unauthorized stances' do

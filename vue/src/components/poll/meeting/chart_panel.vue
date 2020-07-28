@@ -1,13 +1,11 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
-import WatchRecords from '@/mixins/watch_records'
 import AppConfig from '@/shared/services/app_config'
 import Session from '@/shared/services/session'
 
-import {sum, map, sortBy, find, compact, uniq} from 'lodash'
+import {sum, map, sortBy, find, compact, uniq} from 'lodash-es'
 
 export default
-  mixins: [WatchRecords]
   props:
     poll: Object
     zone: Object
@@ -72,9 +70,6 @@ export default
         when 0 then 'poll-meeting-chart__cell--no'
 
   computed:
-    orderedPollOptions: ->
-      sortBy @pollOptions, 'name'
-
     currentUserTimeZone: ->
       Session.user().timeZone
 </script>
@@ -89,7 +84,7 @@ export default
           user-avatar(:user="user")
         td.total(v-t="'common.total'")
     tbody
-      tr(v-for="option in orderedPollOptions" :key="option.id")
+      tr(v-for="option in pollOptions" :key="option.id")
         td.poll-meeting-chart__meeting-time
           poll-meeting-time(:name='option.name' :zone='zone')
 

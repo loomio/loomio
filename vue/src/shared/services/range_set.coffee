@@ -1,4 +1,4 @@
-import {each, isEqual, last, max, map, sum, some, filter, compact, sortBy, inRange} from 'lodash'
+import {each, isEqual, last, max, map, sum, some, filter, compact, sortBy, inRange} from 'lodash-es'
 
 export default new class RangeSet
   parse: (outer) ->

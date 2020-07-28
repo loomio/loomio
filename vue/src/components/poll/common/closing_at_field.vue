@@ -14,6 +14,7 @@ export default
     times: hoursOfDay
     timeZone: AppConfig.timeZone
     isShowingDatePicker: false
+    validDate: => isValid(parse("#{@closingDate} #{@closingHour}", "yyyy-MM-dd HH:mm", new Date()))
 
   methods:
     exact: exact
@@ -21,8 +22,6 @@ export default
       date = parse("#{@closingDate} #{@closingHour}", "yyyy-MM-dd HH:mm", new Date())
       if isValid(date)
         @poll.closingAt = date
-      else
-        alert(@$t('poll_common_closing_at_field.invalid_date'))
 
   computed:
     label: ->
@@ -43,7 +42,7 @@ export default
       v-flex
         v-menu(ref='menu' v-model='isShowingDatePicker' :close-on-content-click='false' offset-y)
           template(v-slot:activator='{ on }')
-            v-text-field(v-model='closingDate' v-on='on' prepend-icon="mdi-calendar")
+            v-text-field(v-model='closingDate' :rules="[validDate]" placeholder="2000-12-30" v-on='on' prepend-icon="mdi-calendar")
               template(v-slot:label)
                 span(v-t="{ path: 'common.closing_in', args: { time: label } }" :title="exact(poll.closingAt)")
           v-date-picker.poll-common-closing-at-field__datepicker(v-model='closingDate' :min='dateToday' no-title @input="isShowingDatePicker = false")

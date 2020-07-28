@@ -1,4 +1,3 @@
-import 'url-search-params-polyfill'
 import Vue from 'vue'
 import RestfulClient from '@/shared/record_store/restful_client'
 import AppConfig from '@/shared/services/app_config'
@@ -6,7 +5,7 @@ import Records from '@/shared/services/records'
 import i18n from '@/i18n.coffee'
 import * as Sentry from '@sentry/browser'
 import * as Integrations from '@sentry/integrations'
-import { forEach } from 'lodash'
+import { forEach } from 'lodash-es'
 
 export default (callback) ->
   client = new RestfulClient('boot')
@@ -18,6 +17,16 @@ export default (callback) ->
 
       if AppConfig.sentry_dsn
         Sentry.init
+          ignoreErrors: [
+            "Avoided redundant navigation to current location",
+            "NotFoundError: Node.removeChild",
+            "NotFoundError: Failed to execute 'removeChild' on 'Node'",
+            "NotFoundError: The object can not be found here.",
+            "NotFoundError: Node was not found",
+            "ResizeObserver loop limit exceeded",
+            "MetaMask detected another web3",
+            "AbortError: The operation was aborted"
+          ]
           dsn: AppConfig.sentry_dsn
           integrations: [
             new Integrations.Vue
@@ -25,6 +34,7 @@ export default (callback) ->
               attachProps: true
               logErrors: true
           ]
+
         Sentry.configureScope (scope) ->
           scope.setTag("loomio_version", AppConfig.version)
 
@@ -39,4 +49,4 @@ export default (callback) ->
         if model && AppConfig.permittedParams[model.singular]
           model.serializableAttributes = AppConfig.permittedParams[model.singular]
 
-      callback()
+      callback(appConfig)

@@ -1,7 +1,7 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
-import { debounce, truncate, first, last, some, drop, min, compact } from 'lodash'
+import { debounce, truncate, first, last, some, drop, min, compact } from 'lodash-es'
 
 export default
 
@@ -16,9 +16,13 @@ export default
     position: 1
     minUnitHeight: 24
     presets: []
+    knobVisible: false
 
   mounted: ->
     EventBus.$on 'toggleThreadNav', => @open = !@open
+    EventBus.$on 'scrollThreadNav', =>
+      return if @knobVisible or !document.querySelector('.thread-sidebar .v-navigation-drawer__content')
+      @$vuetify.goTo('.thread-nav__knob', { container: '.thread-sidebar .v-navigation-drawer__content', offset: 100 })
 
     EventBus.$on 'currentComponent', (options) =>
       @discussion = options.discussion
@@ -49,6 +53,7 @@ export default
       # move this to activity panel.
       Records.events.fetch
         params:
+          exclude_types: 'group discussion'
           discussion_id: @discussion.id
           pinned: true
           per: 200
@@ -63,6 +68,9 @@ export default
         @knobHeight = @unitHeight * (last(slots) - first(slots) + 1)
 
   methods:
+    setKnobVisible: (visible) ->
+      @knobVisible = visible
+
     setHeight: ->
       @trackHeight = 400
       while ((@minOffset() || @minUnitHeight) < @minUnitHeight) && (@trackHeight < 100000)
@@ -180,7 +188,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
       router-link.thread-nav__preset(v-for="event in presets" :key="event.id" :to="urlFor(event)" :style="{top: offsetFor(event.position)+'px'}")
         .thread-nav__preset--line
         .thread-nav__preset--title {{event.pinnedTitle || event.suggestedTitle()}}
-    .thread-nav__knob(:style="{top: knobOffset+'px', height: knobHeight+'px'}" ref="knob" @mousedown="onMouseDown" v-touch:start="onTouchStart")
+    .thread-nav__knob(:style="{top: knobOffset+'px', height: knobHeight+'px'}" ref="knob" @mousedown="onMouseDown" v-touch:start="onTouchStart" v-observe-visibility="{callback: setKnobVisible}")
   router-link.thread-nav__date(:to="{query:{p: bottomPosition}, params: {sequence_id: null}}") {{approximateDate(bottomDate)}}
 </template>
 

@@ -11,11 +11,11 @@ module Dev::FakeDataHelper
     User.new({
       name: Faker::Name.name,
       email: Faker::Internet.email,
-      password: Faker::Internet.password,
+      password: 'loginlogin',
       detected_locale: 'en',
-      is_admin: true,
       email_verified: true,
-      legal_accepted: true
+      legal_accepted: true,
+      experiences: {changePicture: true}
     }.merge(args))
   end
 
@@ -27,10 +27,10 @@ module Dev::FakeDataHelper
     }.merge(args))
   end
 
-  # todo fake_formal_group ?
+  # todo fake_group ?
   def fake_group(args = {})
     name = Faker::Company.name
-    FormalGroup.new({name: name, handle: name.parameterize,
+    Group.new({name: name, handle: name.parameterize,
       features: {use_polls: true, enable_communities: true}}.merge(args))
   end
 
@@ -65,12 +65,6 @@ module Dev::FakeDataHelper
     }.merge(args))
   end
 
-  def fake_draft(args = {})
-    Draft.new({
-      draftable: fake_group
-    }.merge(args))
-  end
-
   def option_names(option_count)
     seed = (0..20).to_a.sample
     {
@@ -78,7 +72,7 @@ module Dev::FakeDataHelper
       proposal: %w[agree abstain disagree block],
       count: %w[yes no],
       dot_vote: option_count.times.map{ Faker::Artist.name },
-      meeting: option_count.times.map { |i| (seed+i).days.from_now.to_date},
+      meeting: option_count.times.map { |i| (seed+i).days.from_now.to_date.iso8601},
       # meeting: option_count.times.map { |i| (seed+i).hours.from_now.utc.iso8601},
       ranked_choice: option_count.times.map { Faker::Food.ingredient },
       score: option_count.times.map{ Faker::Food.ingredient }

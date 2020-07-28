@@ -4,13 +4,12 @@ import AbilityService from '@/shared/services/ability_service'
 import Records  from '@/shared/services/records'
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
-import GroupModalMixin from '@/mixins/group_modal'
 import Flash   from '@/shared/services/flash'
-import { isEmpty, compact } from 'lodash'
+import { isEmpty, compact, debounce } from 'lodash-es'
 import { onError } from '@/shared/helpers/form'
+import openModal from '@/shared/helpers/open_modal'
 
 export default
-  mixins: [GroupModalMixin]
   props:
     parentId: Number
     close:
@@ -25,6 +24,18 @@ export default
     progress: 0
 
   created: ->
+    @suggestHandle = debounce ->
+      # if group is new, suggest handle whenever name changes
+      # if group is old, suggest handle only if handle is empty
+      if @group.isNew() or isEmpty(@group.handle)
+        parentHandle = if @group.parent()
+          @group.parent().handle
+        else
+          null
+        Records.groups.getHandle(name: @group.name, parentHandle: parentHandle).then (data) =>
+          @group.handle = data.handle
+    , 500
+
     @group = Records.groups.build
       name: @$route.params.name
       parentId: @parentId
@@ -54,18 +65,13 @@ export default
         Records.groups.findOrFetchById(groupKey, {}, true).then (group) =>
           @close()
           @$router.push("/g/#{groupKey}")
+          if group.isParent() && AppConfig.features.app.group_survey
+            openModal
+              component: 'GroupSurvey'
+              props:
+                group: group
       .catch onError(@group)
 
-    suggestHandle: ->
-      # if group is new, suggest handle whenever name changes
-      # if group is old, suggest handle only if handle is empty
-      if @group.isNew() or isEmpty(@group.handle)
-        parentHandle = if @group.parent()
-          @group.parent().handle
-        else
-          null
-        Records.groups.getHandle(name: @group.name, parentHandle: parentHandle).then (data) =>
-          @group.handle = data.handle
 
     privacyStringFor: (privacy) ->
       @$t groupPrivacy(@group, privacy),
@@ -82,7 +88,7 @@ export default
         "group_form.subgroup_name"
 
     privacyOptions: ->
-      if @group.isSubgroup() && @group.parent().groupPrivacy == 'secret'
+      if @group.parent() && @group.parent().groupPrivacy == 'secret'
         ['closed', 'secret']
       else
         ['open', 'closed', 'secret']

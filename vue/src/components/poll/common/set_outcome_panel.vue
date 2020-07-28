@@ -1,11 +1,10 @@
 <script lang="coffee">
 import Records        from '@/shared/services/records'
 import AbilityService from '@/shared/services/ability_service'
-import PollModalMixin from '@/mixins/poll_modal'
 import Session        from '@/shared/services/session'
+import EventBus from '@/shared/services/event_bus'
 
 export default
-  mixins: [PollModalMixin]
   props:
     poll: Object
   methods:
@@ -17,7 +16,10 @@ export default
       Records.outcomes.build
         pollId: @poll.id
         statementFormat: Session.defaultFormat()
-      @openPollOutcomeModal(outcome)
+      EventBus.$emit 'openModal',
+        component: 'PollCommonOutcomeModal'
+        props:
+          outcome: outcome
 
 </script>
 

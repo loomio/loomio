@@ -7,8 +7,27 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   def create
-    self.collection = service.create(model: target_model, params: resource_params, actor: current_user).memberships
-    respond_with_collection serializer: MembershipSerializer, root: :memberships, scope: create_scope
+    current_user.ability.authorize! :announce, target_model
+
+    # juggle data
+    if params[:announcement]
+      params[:emails] = params.dig(:announcement, :recipients, :emails)
+      params[:user_ids] = params.dig(:announcement, :recipients, :user_ids)
+    end
+
+    if target_model.is_a?(Group)
+      self.collection = GroupService.announce(group: target_model, actor: current_user, params: params)
+      respond_with_collection serializer: MembershipSerializer, root: :memberships
+    elsif target_model.is_a?(Discussion)
+      self.collection = DiscussionService.announce(discussion: target_model, actor: current_user, params: params)
+      respond_with_collection serializer: DiscussionReaderSerializer, root: :discussion_readers
+    elsif target_model.is_a?(Poll)
+      self.collection = PollService.announce(poll: target_model, actor: current_user, params: params)
+      respond_with_collection serializer: StanceSerializer, root: :stances
+    elsif target_model.is_a?(Outcome)
+      self.collection = OutcomeService.announce(outcome: target_model, actor: current_user, params: params)
+      respond_with_collection serializer: UserSerializer, root: :users
+    end
   end
 
   def search
@@ -19,7 +38,7 @@ class API::AnnouncementsController < API::RestfulController
   def history
     notifications = {}
 
-    events = Event.where(kind: ['announcement_created', 'user_mentioned', 'announcement_resend'], eventable: history_model).order('id').limit(50)
+    events = Event.where(kind: ['announcement_created', 'user_mentioned', 'announcement_resend', 'discussion_announced', 'poll_announced', 'outcome_announced', 'comment_replied_to', 'poll_closing_soon'], eventable: history_model).order('id').limit(50)
 
     Notification.includes(:user).where(event_id: events.pluck(:id)).order('users.name, users.email').each do |notification|
       next unless notification.user
@@ -30,6 +49,7 @@ class API::AnnouncementsController < API::RestfulController
       {event_id: event.id,
        created_at: event.created_at,
        author_name: event.user.name,
+       kind: event.kind,
        notifications: notifications[event.id] || [] }
     end
 
@@ -37,7 +57,7 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   def preview
-    event = MockEvent.new(target_model, nil, current_user , 1)
+    event = target_model.created_event
     @email = target_model.send(:mailer).send(params[:kind], current_user, event)
     @email.perform_deliveries = false
 
@@ -45,10 +65,6 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   private
-
-  def create_scope
-    { email_user_ids: collection.pending.pluck(:user_id) }
-  end
 
   def target_model
     @target_model ||=

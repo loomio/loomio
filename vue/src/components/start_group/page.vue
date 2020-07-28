@@ -14,7 +14,7 @@ export default
 </script>
 
 <template lang="pug">
-v-content
+v-main
   v-container.max-width-800.start-group-page
     group-new-form
 </template>

@@ -63,7 +63,7 @@ class API::SnorlaxBase < ActionController::Base
 
   def instantiate_collection
     collection = accessible_records
-    collection = yield collection                if block_given?
+    collection = yield collection if block_given?
     collection = timeframe_collection collection
     collection = page_collection collection
     collection = order_collection collection
@@ -95,7 +95,6 @@ class API::SnorlaxBase < ActionController::Base
     end
   end
 
-
   def accessible_records
     if current_user.is_logged_in?
       visible_records
@@ -125,6 +124,10 @@ class API::SnorlaxBase < ActionController::Base
   end
 
   def destroy_response
+    success_response
+  end
+
+  def success_response
     render json: {success: 'success'}
   end
 
@@ -150,18 +153,6 @@ class API::SnorlaxBase < ActionController::Base
 
   def resource_serializer
     "#{resource_name}_serializer".camelize.constantize
-  end
-
-  def respond_with_resource(scope: default_scope, serializer: resource_serializer, root: serializer_root)
-    if resource.errors.empty?
-      respond_with_collection(resources: [resource], scope: scope, serializer: serializer, root: root)
-    else
-      respond_with_errors
-    end
-  end
-
-  def respond_with_collection(resources: collection, scope: default_scope, serializer: resource_serializer, root: serializer_root)
-    render json: resources, scope: scope, each_serializer: serializer, root: root
   end
 
   def respond_with_standard_error(error, status)

@@ -10,11 +10,12 @@ class MigrateUserWorker
     operations.each { |operation| ActiveRecord::Base.connection.execute(operation) }
     migrate_stances
     update_counters
-    source.deactivate!
+    DeactivateUserWorker.new.perform(source_id)
     UserMailer.delay.accounts_merged(destination.id)
   end
 
   SCHEMA = {
+    ahoy_visits: :user_id,
     ahoy_events: :user_id,
     ahoy_messages: :user_id,
     attachments: :user_id,
@@ -24,7 +25,6 @@ class MigrateUserWorker
     discussion_readers: :user_id,
     discussions: :author_id,
     events: :user_id,
-    group_visits: :user_id,
     groups: :creator_id,
     login_tokens: :user_id,
     membership_requests: [:requestor_id, :responder_id],
@@ -32,14 +32,10 @@ class MigrateUserWorker
     notifications: :user_id,
     oauth_applications: :owner_id,
     omniauth_identities: :user_id,
-    organisation_visits: :user_id,
     outcomes: :author_id,
-    poll_did_not_votes: :user_id,
     poll_unsubscriptions: :user_id,
     polls: :author_id,
-    versions: :whodunnit,
-    visits: :user_id,
-    user_deactivation_responses: :user_id
+    versions: :whodunnit
   }.freeze
 
   def delete_duplicates
@@ -63,15 +59,12 @@ class MigrateUserWorker
   end
 
   def migrate_stances
-    poll_ids = source.participated_poll_ids & destination.participated_poll_ids
     Stance.where(participant: source).update_all(participant_id: destination.id)
-    Stance.where(participant: destination, poll_id: poll_ids).update_all(latest: false)
+    Stance.where(participant: destination).update_all(latest: false)
 
+    poll_ids = Stance.where(participant: destination).pluck(:poll_id).uniq
     Poll.where(id: poll_ids).each do |poll|
-      poll.stances.where(participant: destination)
-                  .order(created_at: :desc)
-                  .first
-                  .update_attribute(:latest, true)
+      poll.stances.where(participant: destination).order(:created_at).last.update_attribute(:latest, true)
     end
   end
 
@@ -83,7 +76,7 @@ class MigrateUserWorker
     end
 
     [
-      destination.polls,
+      destination.authored_polls,
       destination.group_polls,
       destination.participated_polls
     ].flatten.uniq.each do |poll|

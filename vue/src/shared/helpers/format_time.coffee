@@ -18,7 +18,7 @@ export approximate = (date, zone) ->
   if differenceInHours(now, date) < 24
     formatDistanceStrict(date, new Date(), {addSuffix: true, locale: i18n.dateLocale})
   else if isSameYear(date, now)
-    format(date, "MMMM d", {locale: i18n.dateLocale})
+    format(date, "MMM d", {locale: i18n.dateLocale})
   else
     format(date, "yyyy-MM-dd")
 
@@ -26,9 +26,9 @@ export exact = (date, zone = AppConfig.timeZone) ->
   throw {"invalid date", date} unless isValid(date)
   now = new Date
   formatStr = if isSameYear(date, now)
-    'MMMM d, HH:mm'
+    'EEE MMM d HH:mm'
   else
-    'yyyy MMMM d, HH:mm'
+    'yyyy EEE MMM d HH:mm'
   format(utcToZonedTime(date, zone), formatStr, {timeZone: zone, locale: i18n.dateLocale})
 
 export timeline = (date) -> format(date, "yyyy-MM-dd")

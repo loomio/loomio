@@ -22,6 +22,22 @@ de:
     yearly: Jährlich
   current_plan_button:
     upgrade: Upgrade
+    free_trial: Kostenloser Test. {{days}} Tage verbleiben.
+    trial_expired: Dein Test ist abgelaufen. Upgrade um Loomio weiter zu nutzen.
+    tooltip: "Unsere Preise sind fantastisch! Upgrade heute und geniesse was Loomio deiner Gruppe bieten kann."
+    was_gift_trial: "Deine Gruppe nutzt Loomio kostenlos seit {{createdDate}}. Es ist uns unmöglich diesen freien Service weiterhin zu bieten. Bitte upgrade um Loomio weiterhin zu nutzen. <a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>Mehr Informationen.</a>"
+    was_gift_remaining: "{{days}} Tage verbleiben."
+    was_gift_expired: "Dein kostenloser Test ist abgelaufen."
+  subscription_status:
+    plan: "Plan"
+    state: "Status"
+    active_members: "Aktive Mitglieder"
+    max_threads: "Max Diskussionen"
+    max_members: "Max Mitglieder"
+    expires_at: "Verfällt"
+    renews_at: "Verlängern"
+    referral_code: "Empfehlungs-Codes aufladen"
+    chargify_link: "Bezahl-Portal aufladen"
   loomio_tags:
     all_tags: Alle Schlagwörter
     tags: Schlagwörter
@@ -81,6 +97,8 @@ de:
     poll: Abstimmung
     dot_vote: Punktabstimmung
     meeting: Zeitumfrage
+    ranked_choice: Prioritäten setzen
+    score: Ergebnis
   new_poll_types:
     proposal: Vorschlag
     count: zählen
@@ -92,7 +110,9 @@ de:
   timezones:
     local: Ortszeit ({{value}})
   common:
+    empty: Leer
     no_results_found: Keine Ergebnisse gefunden
+    view: Ansicht
     history: 'Vergangenheit '
     option: Option
     add: Hinzufügen
@@ -119,10 +139,11 @@ de:
     organization: "Organisation"
     organizations: "Organisationen"
     threads: 'Diskussionen '
-    decisions: 'Abstimungen'
+    decisions: 'Abstimmungen'
     settings: 'Einstellungen'
     help: 'Hilfe'
     anonymous: Anonym
+    required: Notwendig
     privacy:
       privacy: 'Datenschutz'
       public: 'Öffentlich'
@@ -148,6 +169,7 @@ de:
     total: Gesamt
     action:
       print: Drucken
+      preview: Vorschau
       pin: Anheften
       unpin: Anheften deaktivieren
       search: 'Suchen'
@@ -157,6 +179,7 @@ de:
       close: 'Schliessen'
       reopen: 'Erneut öffnen'
       save: 'Speichern'
+      move: 'Verschieben'
       save_changes: 'Änderungen speichern'
       update_settings: 'Einstellungen aktualisieren'
       reply: 'Antworten'
@@ -183,6 +206,7 @@ de:
       delete: Löschen
       unsubscribe: Benachrichtigungen deaktivieren
       subscribe: Beitreten
+      unignore: Wieder bemerken
       remind: Erinnern
       resend: Neu senden
       send: Senden
@@ -197,6 +221,17 @@ de:
     formatting_help:
       label: 'Markdown-Formatierung'
       title: 'Mehr über die Textformatierung mit Markdown lernen'
+  merge_accounts:
+    modal:
+      title: Benutzerkonten zusammenführen
+      helptext: "Du kannst das Benutzerkonto mit der Email <strong>{{sourceEmail}}</strong> mit dem Konto von <strong>{{targetEmail}}</strong> zusammenführen. Drücke auf überprüfen und eine Bestättigungsmail wird an {{targetEmail}} geschickt um den Prozess zu beginnen."
+      submit: überprüfen
+      flash: Bestättigungsmail geschickt!
+    email_taken: Entschuldige, diese Email ist bereits mit einem anderen Nutzerkonto verbunden. Gehört diese Email zu dir?
+    find_out_more: Finde mehr heraus.
+    placeholder_modal_text: |
+        <p>Wenn du zwei Konten zusammenführen willst, gib einfach die Email-Adresse (des anderen Kontos) in dein Profil Email-Feld ein und folge den dann erscheinenden Anweisungen.</p>
+        <p>Brauchst du mehr Hilfe? <a href="/contact" target="_blank">Kontaktiere uns</a>.
   emoji_picker:
     search: Suchen
     common: 'Oft verwendet '
@@ -240,13 +275,19 @@ de:
   pin_event_form:
     title: An Timeline anheften
     title_label: Titel
+    hint: 'Hinweis für nächstes Mal: Versuche etwas Text auszuwählen, bevor du auf "Anheften" klickst.'
   change_volume_form:
+    explain_scope:
+      thread: Dies wird sich ändern wenn du benachrichtigt wirst über diese Diskussion
+      group: Dies wird sich ändern wenn du benachrichtigt wirst über alle Diskussionen in der Gruppe
     simple:
       label: Benachrichtigungen
       loud: Abonniert
       normal: Normal
       quiet: Ignorieren
+      question: Wann willst du benachrichtigt werden?
       loud_explain: wenn Aktivitäten stattfinden
+      normal_explain: wenn jemand nach deiner Aufmerksamkeit fragt
       quiet_explain: 'keine Benachrichtigungen '
     aria_label: "E-Mail-Einstellungen ändern"
     loud_label: "Alle Aktivitäten"
@@ -261,6 +302,8 @@ de:
       quiet_description: "Du bekommst keine E-mails bezüglich Aktivitäten in dieser Diskussionen "
       apply_to_all: "Diese Einstellungen für alle Diskussionen in dieser Gruppe übernehmen."
       only_this_thread: "Trifft nur auf diese Diskussion zu"
+      group: "Ändere Benachrichtigungen für die Gruppe"
+      user: "Ändere Benutzer Benachrichtigungseinstellungen"
       messages:
         loud: "Sie werden per E-Mail benachrichtigt, sobald in dieser Diskussion etwas passiert.  "
         normal: "Sie werden per E-Mail über Vorschläge in dieser Diskussion benachrichtigt."
@@ -298,10 +341,9 @@ de:
   close_explanation_modal:
     aria_label: Diskussion schließen
     close_thread: Diskussion schließen
-    body_header: |
-        <p>Schließe alte oder irrelevante Diskussionen, um sie aus der Ansicht zu entfernen und bekanntzugeben, dass die Diskussion beendet ist.</p>
-    body_footer: |
-        <p>Teilnehmer können immer noch in in abgeschlossenen Diskussionen Kommentare abgeben oder Umfragen starten, diese werden aber nicht mehr in der Diskussionsliste oder im Dashboard angezeigt.</p>
+    body: |
+        <p>Schliesse alte oder irrelevante Diskussionen um sie aus der Ansicht zu entfernen und um anzuzeigen das die Diskussion beendet wurde.</p>
+        <p>Alle können auch weiterhin in geschlossenen Diskussionen Kommentare verfassen oder Umfragen starten, aber die Diskussion wird nicht mehr in der Diskussionsliste der Gruppe oder dem Schreibtisch erscheinen.</p>
     image_alt: Alle Diskussionen schließen
   mute_explanation_modal:
     aria_label: Diskussion stummschalten
@@ -315,7 +357,8 @@ de:
     aria_label: Diskussion ausblenden
     dismiss_thread: Diskussion ausblenden
     body_html: |
-        <p>Eine ausgeblendete Diskussion wird aus der ungelesenen Diskussionen-Übersicht entfernt. Erst bei neuen Aktivitäten wird die Diskussion wieder als ungelesen angezeigt.</p>
+        <p>Eine ausgeblendete Diskussion wird aus der ungelesenen Diskussionen-Übersicht entfernt.
+        Erst bei neuen Aktivitäten wird die Diskussion wieder als ungelesen angezeigt.</p>
   inbox:
     clear: 'Löschen '
     latest: 'Letzte'
@@ -371,7 +414,6 @@ de:
     start_thread: Neue Diskussion
     start_decision: Neue Abstimmung
     more_groups: Mehr Gruppen
-    try_beta: Loomio 2.0 beta ausprobieren!
     aria_labels:
       heading: 'Sidebar'
       threads_list: 'Diskussions-Aktionen'
@@ -403,6 +445,8 @@ de:
     logo_title: 'Startseite'
     group_and_subgroups: '{{group}}  & Untergruppen'
   user_dropdown:
+    pin_sidebar: "Seitenleiste verankern"
+    unpin_sidebar: "Seitenleiste lösen"
     button_label: 'Benutzermenü'
     edit_profile: 'Profil bearbeiten'
     email_settings: 'Benachrichtigungseinstellungen'
@@ -468,18 +512,14 @@ de:
     outcome_created: "<strong>{{name}}</strong> hat ein Ergebnis mitgeteilt: <strong>{{title}}</strong>"
     outcome_announced: "<strong>{{name}}</strong> hat ein Ergebnis mitgeteilt: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> hat in <strong>{{title}}</strong> teilgenommen"
-  position_buttons_panel:
-    heading: Teile deine Meinung
-  extend_proposal_form:
-    aria_label: Endzeitpunkt ändern
-    title: 'Endzeitpunkt ändern'
-    success: 'Vorschlagsende wurde aktualisiert'
-    submit: 'Endzeitpunkt aktualisieren'
-  discussion_record:
-    created: 'Die Diskussion {{title}} wurde erfolgreich in {{groupName}} erstellt'
-    updated: 'Änderungen für {{title}} gespeichert'
+    group_announced: "<strong>{{name}}</strong> hat dich zu der Gruppe <strong>{{title}}</strong> eingeladen"
   discussion_fork_actions:
+    helptext: Wähle Einträge aus, die du zu einer anderen Diskussioen verschieben willst
     move: Verschieben
+    search_placeholder: Finde eine Diskussion an Hand des Titels
+    moved: Kommentare bewegen, dies kann einen Moment dauern
+    move_to_existing_thread: Zu existierender Diskussion verschieben
+    start_new_thread: Oder eine neue Diskussion starten
   discussion_form:
     aria_label: 'Diskussions-Formular'
     messages:
@@ -487,7 +527,7 @@ de:
       updated: 'Diskussion aktualisiert'
       forked: 'Diskussion aufgespaltet'
     new_discussion_title: 'Neue Diskussion beginnen'
-    fork_discussion_title: 'Diskussion aufspalten'
+    moving_items_title: 'Bewege Einträge zu einer neuen Diskussion'
     edit_discussion_title: 'Diskussion bearbeiten'
     group_label: 'Gruppe'
     group_placeholder: 'Gruppe auswählen'
@@ -517,15 +557,15 @@ de:
     quick_add: "Schnelles Hinzufügen:"
     any_other_groups: "Noch andere Gruppen?"
     notified_people: "{{name}} hat {{length}} Personen benachrichtigt:"
+    preview: Vorschau Email
     no_notifications_sent: Es wurden keine Benachrichtigungen geschickt
     history_error: 'Etwas ist schief gelaufen! Der Verlauf konnte nicht geladen werden. '
     inviting_guests_to_thread: 'Personen die keine Mitglieder von {{group}} sind werden zu dieser Diskussion als Gäste eingeladen, aber kein Zugang zu anderen Diskussionen erhalten. '
     audiences:
       parent_group: Mitglieder von {{name}}
-      formal_group: Mitglieder von {{name}}
+      group: Mitglieder von {{name}}
       discussion_group: Diskussionsteilnehmer
       voters: Personen die abgestimmt haben
-      non_voters: Personen die noch nicht abgestimmt haben
     form:
       too_many_invitations: |
           Die Einladungsgrenze ist erreicht. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
@@ -573,6 +613,7 @@ de:
       success: '{{count}} Benachrichtigungen gesendet'
   action_dock:
     react: Reagieren
+    notify: Benachrichtigen
     add_resource: Anhang hinzufügen
     edit_group: Gruppenbeschreibung bearbeiten
     add_comment: Kommentieren
@@ -582,7 +623,7 @@ de:
     invite_guests: Gäste einladen
     translate_thread: Beschreibung übersetzen
     edit_poll: Umfrage bearbeiten
-    move_items: Verschieben
+    move_items: Einträge bewegen
     announce_poll: Personen zur Umfrage einladen
     announce_poll_active: (bis jetzt wurde niemand eingeladen)
     translate_poll: Umfrage übersetzen
@@ -599,37 +640,56 @@ de:
     translate_outcome: Ergebnis übersetzen
     show_history: Bearbeitungsverlauf anzeigen
     edited: Bearbeitet
+    history: 'Vergangenheit '
     pin_thread: Diskussion anheften
     unpin_thread: Diskussion nicht mehr anheften
     pin_event: An Timeline anheften
     unpin_event: Von Timeline lösen
     comment_copied: Kommentar-URL in die Zwischenablage kopiert
-    move_thread: 'Grupperverschieben '
+    move_thread: 'Diskussion verschieben '
     poll_copied: Entscheidungs-URL in die Zwischenablage kopiert
     discussion_copied: Diskussions-URL in die Zwischenablage kopiert
+    url_copied: Link in die Zwischenablage kopiert
     tag_thread: Schlagwörter verwalten
     close_thread: Diskussion schließen
     reopen_thread: Diskussion wieder öffnen
     delete_thread: Diskussion löschen
     notification_history: Benachrichtigungs-Verlauf
+    move_item: Eintrag bewegen
   formatting:
     bold: Fett
     italicize: Kursiv
     strikethrough: Durchgestrichen
     underline: Unterstrichen
+    link: Link einfügen
     code_block: Code-Block
+    insert_image: Bild einfügen
+    insert_emoji: Emoji einfügen
     attach: Datei anhängen
-    heading1: Überschrift groß
-    heading2: Überschrift mittel
-    heading3: Überschrift klein
+    heading_size: Überschrift Grösse
+    heading1: Überschrift 1
+    heading2: Überschrift 2
+    heading3: Überschrift 3
+    paragraph: Absatz
     bullet_list: Aufzählung
     number_list: Nummerierte Aufzählung
     check_list: Checkliste
     quote: Zitat
-    embed: Einfügen
+    embed: Video einfügen
     divider: Horizontale Linie
     add_table: Tabelle einfügen
     remove_table: Tabelle entfernen
+    add_column_before: Spalte davor einfügen
+    add_column_after: Spalte danach einfügen
+    remove_column: Spalte entfernen
+    add_row_before: Zeile davor einfügen
+    add_row_after: Zeile danach einfügen
+    remove_row: Zeile entfernen
+    merge_selected: Ausgewählte Zellen zusammenführen
+    wysiwyg: wysiwyg
+    edit_markdown: Markdown bearbeiten
+    markdown_confirm: Einige Formatierungen können verloren gehen wenn wysiwyg Inhalte zu markdown konvertiert werden.
+    upload_failed: Hochladen fehlgeschlagen
   cover_photo_form:
     aria_label: 'Titelfoto Form ändern'
     heading: 'Neues Titelfoto'
@@ -662,6 +722,7 @@ de:
     discussion_header: Diskussions-Revisionsverlauf
     comment_header: Kommentar-Revisionsverlauf
     poll_header: Änderungsverlauf der Umfrage
+    stance_header: Stimme-Revisionsverlauf
     started_by: 'Erstellt von <strong>{{name}}</strong>'
     edited_by: 'Bearbeitet von <strong>{{name}}</strong>'
     edit_by: "Änderung von {{name}} · {{date}}"
@@ -684,6 +745,7 @@ de:
       pinned: "Diese Diskussion wurde angeheftet. Sie wird für alle Nutzer an oberster Stelle in der Diskussionsliste angezeigt."
       closed: "Diese Diskussion wurde geschlossen. Sie wird nicht mehr auf dem Dashboard angezeigt und auf der Gruppenseite unter \"Geschlossen\" angezeigt"
   group_page:
+    stats: Gruppen-Statistik
     threads: Diskussionen
     polls: Abstimmungen
     members: Mitglieder
@@ -695,7 +757,6 @@ de:
     no_threads_here: Keine Diskussionen vorhanden!
     search_threads: Diskussionen durchsuchen...
     private_threads: Du musst Mitglied sein, um private Diskussionsbeiträge in dieser Gruppe sehen zu können
-    no_more_threads: Das sind alle in dieser Gruppe vorhandenen Diskussionen!
     messages:
       privacy:
         members: 'Diese Gruppe ist nun nur für Mitglieder sichtbar'
@@ -721,18 +782,18 @@ de:
     options:
       label: 'Optionen'
       edit_group: 'Gruppeneinstellungen bearbeiten'
-      open_group_wizard: 'Assistent für die Gruppenerstellung'
-      become_coordinator: Admin werden
+      become_coordinator: Gruppenmoderator werden
       export_data: Gruppendaten exportieren
-      export_data_as_json: Gruppendaten im JSON-Format exportieren
-      export_data_as_csv: Gruppendaten im CSV-Format exportieren
-      export_data_as_html: Gruppendaten im HTML-Format exportieren
+      export_data_as_json: Gruppendaten exportieren als JSON
+      export_data_as_csv: Gruppendaten exportieren als CSV
+      export_data_as_html: Gruppendaten exportieren als HTML
       manage_members: 'Mitglieder verwalten'
       add_subgroup: 'Untergruppe anlegen'
-      manage_subscription: 'Gruppenbenachrichtigungen verwalten'
+      manage_subscription: 'Gruppen-Einladungen verwalten'
       email_settings: 'E-Mail-Einstellungen'
       leave_group: 'Gruppe verlassen'
       deactivate_group: 'Gruppe deaktivieren'
+      subscription_status: 'Status der Einladungen'
     volume:
       loud: E-Mail senden, sobald es Aktuelles gibt.
       loud_aria_description: Deine Benachrichtigungseinstellungen für diese Gruppe steht auf "Laut". Du wirst per E-Mail benachrichtigt, sobald etwas in der Gruppe geschieht.
@@ -751,6 +812,11 @@ de:
       parent_members: 'Sichtbarkeit: Diese Gruppe ist nur für Mitglieder von {{parentGroupName}} und {{groupName}} sichtbar.'
       public: 'Sichtbarkeit: Diese Gruppe ist im Web sichtbar'
       aria_label: 'Sichtbarkeit der Gruppe: {{privacy}}'
+  export_data_modal:
+    title: Wie willst du deine Daten benutzen?
+    as_csv: In einer Tabellenkalkulation öffnen
+    as_html: In einem Browser öffnen
+    as_json: Diese Gruppe auf meinem eigen Server hosten
   description_card:
     title: 'Gruppenbeschreibung'
     placeholder: 'Als Gruppen Admin kannst du hier den Zielsetzung der Gruppe beschreiben and deine  Mitglieder mitteilen. '
@@ -767,7 +833,8 @@ de:
     question: 'Bist du dir sicher, dass du diese Gruppe deaktivieren möchtest?'
     submit: 'Ja, diese Gruppe deaktivieren'
   group_form:
-    permissions_explaination: 'Es gibt zwei Arten der Mitgliedschaft: Admin und Mitglied. Admins haben immer alle alle Freigaben. Wähle die Freigaben für Mitglieder:'
+    thread_defaults_help: Standarteinstellungen für neue Diskussionen
+    click_to_change_image: Cover Bild and Logo (zum Ändern klicken)
     aria_label: 'Gruppenform'
     new_organisation: Neue Organisation
     start_group_heading: 'Gruppe erstellen'
@@ -775,10 +842,13 @@ de:
     edit_group_heading: 'Gruppeneinstellungen bearbeiten'
     edit_subgroup_heading: 'Untergruppeneinstellungen bearbeiten'
     group_name: 'Name der Gruppe'
+    handle: Händler
+    group_handle_placeholder: "Für URL und Email, z.B. loomio.org/Händler and Händler@loomio.org"
     organization_name: 'Name der Organisation'
     start_organization_heading: Neue Organisation
     edit_organization_heading: Organisationseinstellungen ändern
     group_name_placeholder: 'Wie heißt deine Gruppe?'
+    organization_name_placeholder: 'Wie heißt deine Organisation?'
     subgroup_name: 'Name der Untergruppe'
     description: 'Beschreibung'
     description_placeholder: 'Beschreibe die Zielsetzung der Gruppe, damit die Mitglieder wissen, weshalb sie hier sind.'
@@ -787,10 +857,6 @@ de:
       private_to_group: 'Name und Beschreibung sind nur für Mitglieder sichtbar'
       private_to_parent_members: 'Name und Beschreibung sind nur für Mitglieder von {{parent}} sichtbar'
     privacy: 'Sichtbarkeit '
-    group_privacy_is_open_description: "Die Gruppe ist für alle sichtbar und kann von allen betreten werden. Nur Gruppenmitglieder können sehen, wer Mitglied in dieser Gruppe ist. Alle Diskussionen sind öffentlich."
-    group_privacy_is_closed_description: "Jeder kann die Gruppe finden und dich um Beitritt bitten. Nur Mitglieder können sehen, wer in der Gruppe ist. Alle Diskussionen sind privat."
-    group_privacy_is_closed_public_threads_description: "Jeder kann die Gruppe finden und dich nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Diskussionen können privat oder öffentlich sein."
-    group_privacy_is_secret_description: "Nur eingeladene Mitglieder können die Gruppe finden und die Teilnehmer und Diskussionsbeiträge der Gruppe sehen."
     confirm_change_to_secret: "Wenn du fortfährst werden alle Diskussionen dieser Gruppe und all ihrer Untergruppen privat."
     confirm_change_to_secret_subgroup: 'Wenn du fortfährst werden alle Diskussionen privat.'
     confirm_change_to_public: 'Wenn du fortfährst alle Diskussionen in der Gruppe öffentlich sichtbar im Web.'
@@ -841,52 +907,13 @@ de:
         <p>
         Abhängig von der Größe deiner Gruppe, dauert der Vorgang einige Minuten.
         Sobald es fertig ist, schicken wir dir eine E-mail mit dem Link zum Herunterladen.
+        </p>
     submit: Mit Export beginnen
     flash: Export der Gruppendaten hat begonnen
-  group_features:
-    useAnonymous: Anonyme Umfragen aktivieren
-    nested_comments: verschachtelte Kommentaransicht aktivieren
   membership_requests_card:
     heading: 'Mitgliedschaftsanfragen'
     manage_requests: Anfragen verwalten
     manage_requests_with_count: ({{count}}) Anfragen verwalten
-  documents_page:
-    title: Anhänge
-    fragment_placeholder: nach Anhängen suchen...
-    add_document: Anhang hinzufügen
-    no_documents: In dieser Gruppe sind keine Anhänge vorhanden. Klicke auf "Hinzufügen", um Anhänge hinzuzufügen.
-    no_documents_from_fragment: Keine Anhänge mit dem Namen '{{fragment}}' gefunden
-    confirm_remove_title: Anhang entfernen
-    confirm_remove_helptext: Bist du sicher, dass du diesen Anhang entfernen möchtest?
-    document_removed: Anhang entfernt
-  document:
-    error:
-      invalid_format: Ups! Die URL ist ungültig. Stelle sicher, dass die URL mit http:// oder https:// beginnt
-    card:
-      no_documents: In dieser Gruppe wurden noch keine Anhänge hinzugefügt.
-      view_documents: Alle/s sehen
-    list:
-      title: 'Anhänge '
-      no_group_documents: Bisher wurden keine Anhänge in die Gruppenbeschreibung hochgeladen.
-    management:
-      content_header: Alle Anhänge
-      uploaded_to: in
-    modal:
-      title: Anhang hinzufügen
-    method_form:
-      helptext: Füge Dateien oder Links hinzu um sie mit der Gruppe zu teilen.
-      url_helptext: Link zu Internetseiten und Online-Angeboten
-      file_helptext: Dateien vom Computer hochladen
-    form:
-      url_label: URL
-      helptext: Klicke hier, füge die Datei ein oder setze sie hier ab um sie hochzuladen
-      url_placeholder: zum Beispiel https://www.example.com/attachment.zip
-      title_helptext: Wie soll dieser Anhang benannt werden?
-      title_label: Name
-      title_placeholder: zum Beispiel 'allgemeine Richtlinien'
-    flash:
-      success: Anhang gespeichert
-      destroyed: Anhang entfernt
   membership_requests_page:
     heading: Mitgliedschaftsanfragen
     approve: Zustimmen
@@ -904,6 +931,9 @@ de:
   group_decisions_card:
     see_more: "Zeige alle ({{count}}) Entscheidungen"
   invitation_form:
+    group_url: Gruppen URL
+    reusable_invitation_link: Wiederverwendabrer Einladungslink
+    error: "Fehler beim Kopieren in die Zwischenablage"
     aria_label: 'Einladungsformular'
     invite_people: 'Leute einladen'
     invite_guests: 'Gäste einladen'
@@ -912,10 +942,13 @@ de:
     group: 'Gruppe'
     group_placeholder: 'Gruppe auswählen'
     shareable_link: 'Teilbarer Link'
+    share_group: 'Teile deine Gruppe'
     copy_link: 'Kopieren'
     email_addresses: 'E-Mail-Adressen'
     email_addresses_placeholder: 'z. B. helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: 'Jeder mit einem teilbaren Link kann dieser Gruppe als Mitglied beitreten. Bitte teile ihn nicht mit Personen die du nicht in deiner Gruppe haben möchtest. '
+    secret_group_url_explanation: "Dieses ist die Adresse deiner Gruppe. Nur eingeladenen Mitglieder werden deine Gruppe sehen können."
+    shareable_group_url_explanation: 'Du kannst diesen Link öffentlich teilen. Menschen können eine Mitgliedschaft anfragen und du kannst diese annehmen oder ablehnen.'
+    shareable_invitation_explanation: 'Teile diesen Link nicht öffentlich. Mit ihm könnnen alle Mitglieder der Gruppe werden ohne dein Einverständnis. Teile diesen Link nur in privaten Kommunikationeninnerhalb deiner Organisation.'
     shareable_link_reset: 'Der teilbare Link wurde zurückgesetzt. Der vorherige Link funktioniert nicht mehr.'
     email_explanation: 'Alternativ kannst du im Folgenden E-Mail-Adressen eingeben, um Einladungen per E-Mail zu senden.'
     add_custom_message: 'Mache die Einladung persönlicher'
@@ -933,13 +966,6 @@ de:
       invitations_sent: '{{count}} Einladungen versendet.'
       no_invitations: 'Bitte überprüfe, dass dein Mailadresse korrekt ist und probiere es erneut.'
       max_invitations: 'Verwenden einen Team-Link, wenn du mehr als 100 Einladungen verschicken möchtest.'
-  add_members_modal:
-    aria_label: 'Mitglieder vom Mutterkonzern hinzufügen'
-    heading: 'Mitglieder der Gruppe {{name}} hinzufügen'
-    add_members: 'Mitglieder hinzufügen'
-    user_added_to_subgroup: '{{name}} zur Untergruppe hinzugefügt'
-    users_added_to_subgroup: '{{count}} Mitglieder zur Untergruppe hinzugefügt'
-    no_members_to_add: 'Alle Mitglieder von {{parent}} gehören dieser Untergruppe an'
   memberships_page:
     members: 'Mitglieder'
     name_label: 'Name'
@@ -972,30 +998,11 @@ de:
   membership_form:
     modal_title:
       group: Titel innerhalb der Gruppe festlegen
-      discussion: Diskussions-Titel festlegen
-      poll: Lege den {{pollType}} Titel fest
     title_helptext:
       group: Dieser Titel wird neben dem Namen von {{name}} angezeigt, um die offizielle Funktion innerhalb der Gruppe näher zu beschreiben.
-      discussion: 'Dieser Titel wird neben {{name}}s Name in dieser Diskussion angezeigt. Er ist hilfreich dafür, anderen Personen dessen Rolle zu kommunizieren. '
-      poll: 'Dieser Titel wird innerhalb dieses {{pollType}} neben dem Namen von {{name}} angezeigt. Er ist hilfreich dafür, anderen dessen Rolle zu kommunizieren. '
     title_label: Titel
     title_placeholder: z. B. "Projektkoordinator" oder "Moderator"
     updated: Mitgliedstchaftstitel überarbeitet
-  pending_invitations_card:
-    heading: Ausstehende Einladungen
-    email: E-Mail
-    invitation_link: Link zur Einladung
-    sent: Senden
-    sent_at: Gesendet am {{date}}
-    copy_url: URL kopieren
-    revoke_invitation: Zurückziehen
-  cancel_invitation_form:
-    heading: Einladung abbrechen
-    question: Bist du sicher, dass du diese Einladung zurückziehen möchtest?
-    submit: "Ja, Einladung zurückziehen"
-    cancel: 'Nein'
-    messages:
-      success: Einladung zurückgezogen
   user_page:
     contact_user: '{{name}} kontaktieren'
     location_field: 'Ort: {{value}}'
@@ -1013,6 +1020,7 @@ de:
       picture_changed: 'Profil-Bild aktualisiert'
       password_changed: 'Passwort aktualisiert'
       deactivated: 'Benutzerkonto deaktiviert'
+    merge_accounts: Benutzerkonten zusammenführen
     change_picture_link: 'Profilbild ändern'
     change_password_link: 'Passwort zurücksetzen'
     delete_account: 'Benutzerkonto dauerhaft löschen'
@@ -1032,9 +1040,9 @@ de:
     location_placeholder: 'Wo wohnst du?'
     update_profile: 'Profil aktualisieren'
     deactivate_account: 'Benutzerkonto deaktivieren'
-    help_translate: "Hilf mit, Loomio zu übersetzen"
+    help_translate: "Hilf mit Loomio zu übersetzen"
   text_editor:
-    select_text_to_link: Text zum verlinken markieren
+    select_text_to_link: Zuerst Text zum Verlinken auswählen
     insert_link: Link einfügen
     insert_embedded_url: Video einfügen
   change_picture_form:
@@ -1053,22 +1061,12 @@ de:
   deactivation_modal:
     aria_label: 'Benutzerkonto deaktivieren'
     introduction: 'Wenn du dein Benutzerkonto deaktivierst'
-    no_longer_group_member: 'Du wirst nicht mehr als Mitglied in deinen Gruppen angezeigt'
+    you_will_be_deleted: "Ihr Account mit Name, Mailadresse und anderen persönlichen Daten wird vom System gelöscht werden"
     name_removed: 'Deine bereits erstellten Kommentare, Vorschläge und Diskussionen bleiben weiterhin sichtbar, allerdings wird dabei dein Name nicht mehr angezeigt'
+    no_longer_group_member: 'Du wirst nicht mehr als Mitglied in deinen Gruppen angezeigt'
     no_emails: 'Du wirst keine Benachrichtigungs-E-Mails mehr erhalten.'
     you_can_reactivate: "Du kannst dein Benutzerkonto zu einem späteren Zeitpunkt jederzeit wieder aktivieren."
     submit: 'Ja, deaktiveren'
-  delete_user_modal:
-    title: 'Benutzerkonto löschen'
-    irreversable: "WARNUNG: Dies kann nicht rückgängig gemacht werden. Wenn Sie fortfahren:"
-    you_will_be_deleted: "Ihr Account mit Name, Mailadresse und anderen persönlichen Daten wird vom System gelöscht werden"
-    submit: 'JA, meinen Account löschen'
-  deactivate_user_form:
-    aria_label: 'Account-Bestätigung deaktivieren'
-    title: 'Benutzerkonto deaktivieren'
-    question: 'Würden Sie uns den Grund nenne, weswegen Sie Ihren Account deaktivieren?'
-    placeholder: 'Diese Frage zu beantworten ist optional. Jegliche Informationen, die Sie mit uns teilen, helfen uns zu verbessern :)'
-    submit: 'Benutzerkonto deaktivieren'
   email_settings_page:
     header: Benachrichtigungseinstellungen
     account_deactivated: 'Dein Konto wurde deaktiviert. Du wirst ab jetzt keine E-mails mehr erhalten. '
@@ -1163,6 +1161,9 @@ de:
     max_threads_reached: |
         Diese Gruppe ist auf {{maxDiskussionen}] Diskussionen begrenzt.<p>
         <p>Nächster Schritt<a href="{{upgradeUrl}}" target="_blank">wähle einen Tarif </a>um weiter mit Loomio zu arbeiten. </p>
+    subscription_canceled: |
+        <p>Deine Einschreibung ist nicht aktiv.</p>
+        <p>Bitte <a href="{{upgradeUrl}}" target="_blank">nachbestellen</a> um Loomio weiter zu benutzen.</p>
     activity: 'Beiträge'
     activity_placeholder: 'Noch keine Beiträge vorhanden!'
     load_previous: 'Ältere Beiträge laden'
@@ -1176,6 +1177,9 @@ de:
     closed:
       reopened: 'Diskussion wieder geöffnet'
       closed: 'Diskussion geschlossen'
+  discussion_last_seen_by:
+    title: Angesehen von
+    no_one: Bisher hat niemand dieses gesehen
   activity_card:
     count_responses: "{{count}} Antworten"
     event_pinned: "In der Timeline angeheftet"
@@ -1200,6 +1204,7 @@ de:
   thread_group:
     aria_label: 'Gruppen-Name'
   thread_context:
+    item_maybe_deleted: "Konnte nicht die gewünschte Stelle in der Diskussion finden. Vielleicht wurde sie gelöscht."
     aria_label: 'Diskussionsbeschreibung'
     thread_options: 'Diskussionsoptionen'
     email_settings: 'Benachrichtigungseinstellungen'
@@ -1230,9 +1235,11 @@ de:
     earliest: 'Älteste '
     earliest_description: Von Anfang bis Ende lesen
     replies: Wie sollen Antworten angezeigt werden?
+    linear: Flache Liste
     linear_description: Einträge in der Reihenfolge des Erstellens auflisten
     nested_once: Verschachtelt
     nested_once_description: Antworten unter dem Originaleintrag eingerückt darstellen
+    changing_nesting_is_slow: Änderungen an der Verschachtelung können bei der Verarbeitung einige Minuten dauern.
   delete_thread_form:
     aria_label: 'Diskussion löschen'
     title: Diskussion löschen
@@ -1243,64 +1250,13 @@ de:
   move_thread_form:
     aria_label: Diskussion verschieben
     title: Diskussion verschieben
-    body: 'Neue Zielgruppe:'
     confirm: Diskussion verschieben
     confirm_change_to_private_thread: '{{groupName}} ist eine öffentliche Gruppe. Wenn Sie fortfahren, wird diese Diskussion veröffentlicht.'
     messages:
       success: Diskussion wurde nach {{name}} verschoben
-  print_modal:
-    load_discussion: vollständige Diskussion laden
-    helptext: Nur eine Sekunde, wir bereiten alle Ereignisse in dieser Diskussion zum Drucken vor ...
   delete_comment_dialog:
     title: 'Kommentar löschen'
-    question: 'Bist du sicher, dass du dieses Kommentar löschen möchtest?'
     confirm: 'Kommentar löschen'
-  new_comment_item:
-    aria_label: 'Kommentar von {{author}}'
-    context_menu:
-      aria_label: 'Kommentar-Optionen'
-      edit_comment: 'Kommentar bearbeiten'
-      delete_comment: 'Kommentar löschen'
-    in_reply_to: 'In Antwort zu <strong>{{recipient}}</strong>'
-    edited: 'Bearbeitet'
-  new_vote_item:
-    agree: 'hat zugestimmt'
-    abstain: 'hat sich enthalten'
-    disagree: 'hat abgelehnt'
-    block: 'hat Veto eingelegt'
-    agree_with_statement: 'hat zugestimmt: <span>{{statement}}</span>'
-    abstain_with_statement: 'hat sich enthalten: <span>{{statement}}</span>'
-    disagree_with_statement: 'hat abgelehnt: <span>{{statement}}</span>'
-    block_with_statement: 'hat ein Veto eingelegt: <span>{{statement}}</span>'
-  new_proposal_item:
-    author_created_proposal: 'hat einen Vorschlag erstellt: <span>{{title}}</span>'
-  proposal_closed_item:
-    proposal_closed: 'Der Vorschlag ist beendet: <span>{{title}}</span>'
-  proposal_closed_by_user_item:
-    proposal_closed_by_user: 'hat den Vorschlag geschlossen: <span>{{title}}</span>'
-  proposal_edited_item:
-    name: 'hat den Titel des Vorschlags aktualisiert: <span>{{title}}</span>'
-    description: 'aktualisierte die Vorschlagsbeschreibung'
-    closing_at: 'hat das Ende des Vorschlags auf <span>{{time}}</span> geändert'
-    description_name: 'aktualisierte Vorschlagtitel und -beschreibung'
-    closing_at_name: 'aktualisierte Vorschlagtitel und Ende'
-    closing_at_description: 'aktualisierte Vorschlagsbeschreibung und Ende'
-    closing_at_description_name: 'aktualisierte Vorschlagtitel, -beschreibung und Ende'
-  proposal_outcome_created_item:
-    proposal_outcome_created: 'veröffentlichte ein Vorschlagsbeschluss:'
-  proposal_outcome_updated_item:
-    proposal_outcome_updated: 'hat das Abstimmungsergebnis aktualisiert:'
-  discussion_edited_item:
-    attachment_ids: 'hat die Diskussionsbeschreibung aktualisiert'
-    title: 'hat den Titel der Diskussion geändert: <span>{{title}}</span>'
-    description: 'hat die Diskussionsbeschreibung aktualisiert'
-    description_title: 'hat den Diskussionstitel und die Diskussionsbeschreibung aktualisiert'
-    private: 'aktualisierte die Diskussions-Privatsphäre zu'
-    public_to_private: 'Privat'
-    private_to_public: 'Öffentlich'
-    private_title: 'aktualisierte Diskussionstitel und Privatsphäre'
-    description_private: 'hat die Diskussionsbeschreibung und die Datenschutzeinstellungen aktualisiert'
-    description_private_title: 'hat den Diskussionstitel, die Diskussionsbeschreibung und die Datenschutzeinstellungen aktualisiert '
   contact_message_form:
     title: "Hey! Wie können wir dir helfen?"
     read_the_manual: |
@@ -1336,50 +1292,12 @@ de:
     multiple_search_results: "{{resultCount}} öffentliche Gruppen für <strong>{{searchTerm}}</strong> gefunden:"
     no_results_found: "<strong>Kannst die Gruppe die du suchst nicht finden?</strong> Wenn eine Gruppe als 'privat' eingestellt ist, wird sie hier nicht erscheinen. "
     newest_first: Neueste zuerst
+    biggest_first: Grösste zuerst
+    order_by: Sortiere Gruppen nach
   global:
     messages:
       app_update: 'Eine neue Version der App ist verfügbar'
       reload: 'Reload'
-  authorized_apps_page:
-    title: Autorisierte Apps
-    no_applications: "Sie haben bisher keine Drittanbieter-Apps autorisiert."
-    notice: "Sie haben den folgenden Drittanbieter-Apps die Berechtigung zur Verwendung Ihres Kontos erteilt. Klicken Sie auf \"Widerrufen\", um sie zu deaktivieren."
-    revoke: Widerrufen
-  registered_apps_page:
-    title: Registrierte Anwendungen
-    no_applications: "Sie haben bislang keine OAuth-Anwendungen! Unten klicken, um eine einzurichten."
-    name: Name
-    redirect_uris: Umleitungs-URLs
-    create_new_application: Neue Anwendung
-  registered_app_page:
-    uid: Anwendungs-ID
-    secret: Anwendungsgeheimnis
-  registered_app_form:
-    new_application_title: Neue Anwendung
-    edit_application_title: Anwendung aktualisieren
-    name_label: Name
-    name_placeholder: Wie heisst Ihre App?
-    redirect_uri_label: Umleitungs-Uris
-    redirect_uri_placeholder: "Die Callback-uri für Ihre App, z.B.: https://myapplication.com/loomio/callback"
-    redirect_uri_note: (Eine Zeile pro URI, benutze 'urn:ietf:wg:oauth:2.0:oob' für lokale Tests)
-    new_application_submit: Erstelle App
-    edit_application_submit: Anwendung aktualisieren
-    messages:
-      logo_changed: Logo wurde aktualisiert.
-      created: "'{{name}}' erstellt"
-      updated: "'{{name}}' aktualisiert"
-  remove_app_form:
-    title: '{{name}} deaktivieren'
-    question: "Sind Sie sicher, dass Sie die App '{{name}}' deaktivieren möchten? Dieser Schritt kann nicht mehr rückgängig gemacht werden."
-    submit: Deaktivieren
-    messages:
-      success: "'{{name}}' wurde erfolgreich deaktiviert"
-  revoke_app_form:
-    title: Zugriff für '{{name}}' widerrufen
-    question: "Sind Sie sicher, dass Sie '{{name}}' den Zugriff auf Ihr Benutzerkonto verweigern möchten?"
-    submit: Zugriff widerrufen
-    messages:
-      success: "'{{name}}' kann Ihr Konto nicht mehr nutzen."
   decision_tools_card:
     title: Ermöglichen
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Hilfe</a>
@@ -1423,6 +1341,7 @@ de:
     min_score: Minimale Ergebnis
     too_long: Zu lang
     edit_warning: 'Wir empfehlen dir Änderungen nur durchzuführen wenn es kleine Schreib-oder Grammatikfehler sind. Für grössere Inhaltsänderungen, schliesse diese {{pollType}} und beginne eine neue. '
+    no_voting: Nur für Diskussionen, Wahlen abgeschaltet
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:
@@ -1448,6 +1367,7 @@ de:
     include_subgroups_all: '{{name}} und alle Untergruppen'
     no_results_found: 'Keine Ergebnisse für "{{search}}" gefunden '
   members_panel:
+    no_results: 'Keine Mitglieder gefunden'
     everyone: 'Jeder'
     sort: 'Ordnen'
     order_label: "Ordnung"
@@ -1469,8 +1389,11 @@ de:
     admin: 'Admin'
     sharable_link: 'Teilbarer link'
     last_seen: 'Zuletzt gesehen am {{date}}'
+    invited_by_name: 'Eingeladen von {{name}}'
   polls_panel:
     new_poll: Neue Umfrage
+    any_type: 'Alle Typen'
+    any_status: 'Alle Stati'
     all: 'Alle'
     open: 'Offen'
     closed: 'Geschlossen'
@@ -1480,9 +1403,10 @@ de:
     filename: Dateiname
     uploaded_by: Hochgeladen von
     uploaded_at: Hochgeladen am
+  subgroups_panel:
+    search_subgroups_of_name: 'Durchsuche Untergruppen von {{name}}'
+    group_without_subgroups: '{{name}} ohne Untergruppen'
   poll_common_action_panel:
-    anonymous: Stimmen werden anonym sein
-    anonymous_until_close: Stimmen werden anonym bleiben, bis diese Umfrage endet
     unable_to_vote: Sie sind nicht berechtigt, an dieser Entscheidung teilzunehmen.
   current_polls_card:
     title: Aktuelle Abstimmungen
@@ -1504,6 +1428,7 @@ de:
     helptext_on: Benutzer können dieses Meeting zu ihrem Kalender hinzufügen
     helptext_off: Es wird keine Besprechungseinladung gesendet
     event_duration: Dauer
+    event_summary: Name des Treffens
     event_summary_placeholder: Wie möchten Sie dieses Treffen nennen?
     event_description: Meeting-Beschreibung
     event_description_placeholder: Was ist die Tagesordnung für dieses Treffen?
@@ -1514,7 +1439,7 @@ de:
       title: Mehrfachauswahl
       helptext_on: Wenn ausgewählt, können die Teilnehmer mehrere Optionen auswählen
     anyone_can_participate:
-      title: Jeder kann teilnehmen
+      title: Alle, die Zugriff auf den Link haben, können abstimmen
       helptext_on: Wenn ausgewählt, kann jeder mit dem Link zur Umfrage teilnehmen.
     notify_on_participate:
       title: Mich benachrichtigen, wenn jemand abstimmt
@@ -1522,9 +1447,6 @@ de:
     anonymous:
       title: Anonyme Teilnahme
       helptext_on: Wenn diese Option aktiviert ist, werden keine Informationen zu den Abstimmungsteilnehmern angezeigt.
-    deanonymize_after_close:
-      title: Wahl der Teilnehmer nach Abschluss anzeigen
-      helptext_on: Wenn diese Option aktiviert ist, werden vormals anonyme Teilnehmer nach Abschluss der Umfrage öffentlich angezeigt
     voter_can_add_options:
       title: Teilnehmervorschläge erlauben
       helptext_on: Wenn diese Option aktiviert ist, können die Teilnehmer ihre eigenen Entscheidungsalternativen hinzufügen, wenn sie abstimmen.
@@ -1578,6 +1500,7 @@ de:
     reminded: Erinnerung gesendet!
     reminder_sent: Erinnerungsbenachrichtigung gesendet
   poll_common_set_outcome_panel:
+    enter_outcome: Abstimmungsergebnis eingeben
     share_outcome: Abstimmungsergebnis bekanntgeben
     poll: 'Diese Abstimmung ist beendet. Informiere die Gruppe über das<strong>Ergebnis</strong>.'
     proposal: 'Dieser Vorschlag wurde geschlossen. Bitte beachten Sie, was gesagt wurde und <strong>verkünden Sie das Ergebnis</strong>, damit die Leute wissen, was als nächstes passieren wird.'
@@ -1585,6 +1508,7 @@ de:
     meeting: 'Diese Zeitumfrage ist abgeschlossen. <strong>Teile ein Ergebnis</strong>, um andere wissen zu lassen, wann das Treffen stattfinden wird.'
     dot_vote: 'Diese Punktabstimmung wurde abgeschlossen. <storng>Teile ein Ergebnis</strong> mit der Gruppe.'
     ranked_choice: 'Diese Prioritätensetzung wurde beendet. <strong>Verkünde das Ergebnis</strong> mit der Gruppe.'
+    score: 'Diese Bewertungsumfrage ist abgeschlossen. <storng>Teile ein Ergebnis</strong> mit der Gruppe.'
   poll_common_outcome_form:
     new_title: 'Ergebnis einfügen '
     update_title: Abstimmungsergebnis aktualisieren
@@ -1596,16 +1520,7 @@ de:
     authored_by: 'Von {{name}}'
   poll_common_delete_modal:
     question: Wirklich löschen?
-    title: Abstimmung löschen
     success: Erfolgreich gelöscht
-  poll_common_unsubscribe_form:
-    title: Aktualisierungen erhalten
-    label: Mail-Updates über diese Entscheidungen erhalten
-    tooltip: E-Mail-Updates halten Sie über diese Entscheidung auf dem Laufenden, z.B. wann sie bearbeitet wird, wann sie abläuft oder wann ein Ergebnis festgelegt wurde. Wenn Sie dieses Kontrollkästchen deaktivieren, wird sichergestellt, dass Sie keine weiteren E-Mail-Benachrichtigungen zur Entscheidung erhalten.
-    helptext_on: Sie werden über die Ereignisse in dieser Diskussion per E-Mail informiert
-    helptext_off: Sie werden keine Mails über diese Entscheidung erhalten.
-    subscribed: erfolgreich unterschrieben
-    unsubscribed: erfolgreich abgemeldet
   poll_common_form:
     title: Titel
     details: Details
@@ -1629,9 +1544,12 @@ de:
     tool_tip_collapsed: Frage nach Zustimmung oder Feedback von anderen.
     start_header: Abstimmung starten
     edit_header: Angebot bearbeiten
-    tip: 'Triff gemeinsam Entscheidungen durch ein Verfahren, dass alle Stimmen mit einbezieht. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">
+    tip: '''Triff gemeinsam Entscheidungen durch ein Verfahren, dass alle Stimmen mit einbezieht. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">
 
-      Mehr erfahren '
+
+      Mehr erfahren ''
+
+      '
     title_placeholder: z. B. Lasst uns zum Mond fliegen!
     details_placeholder: Geben Sie genügend Informationen, damit jeder weiß, was es bedeutet, zuzustimmen oder zu widersprechen
     proposal_created: Vorschlag gestartet
@@ -1779,8 +1697,6 @@ de:
     reason_placeholder: Hinterlassen Sie eine Nachricht, wenn Sie möchten
     stance_created: Wahl erstellt
     stance_updated: Wahl aktualisiert
-  poll_common_percent_voted:
-    sentence: "{{numerator}} Personen haben ({{percent}}%) abgestimmt"
   poll_count_chart_panel:
     out_of: von {{goal}}
   poll_meeting_chart_panel:
@@ -1817,24 +1733,20 @@ de:
     discussion_privacy_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat die Datenschutzeinstellungen der Diskussion bearbeitet "
     discussion_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat die Diskussion bearbeitet"
     discussion_moved: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat die Diskussion von <strong>{{title}}</strong>verschoben"
-    discussion_closed: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat die Diskussion beendet. "
+    discussion_closed: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat die Diskussion beendet "
     discussion_reopened: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat die Diskussion neu eröffnet"
     discussion_forked: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat eine Abzweigung für die <strong><a href='d/{{key}}'>{{title}}</a></strong>  Diskussion erstellt"
     new_comment: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>"
+    outcome_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> hat ein Ergebnis geteilt"
+    poll_reopened: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> hat {{polltype}} wider geöffnet"
+    poll_closed_by_user: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> hat {{polltype}} geschlossen"
+    poll_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> hat {{polltype}} gestartet"
+    poll_created_no_title: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> hat {{polltype}} gestartet"
+    poll_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> hat {{polltype}} bearbeitet"
+    poll_option_added: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> hat Optionen zu {{polltype}} hinzugefügt"
     poll_expired: "{{polltype}} beendet"
     stance_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat in <strong>{{title}}</strong> abgestimmt"
     event_removed: "Von der Diskussion entfernt"
-  poll_admin_page:
-    title: Administator - {{title}}
-  poll_common_publish_facebook_preview:
-    shared_a: teilte ein
-    link: Verknüpfung
-    just_now: Nur jetzt
-  poll_common_publish_slack_preview:
-    poll_published: "veröffentlichte eine Umfrage:"
-    poll_published_with_discussion: "veröffentlichte eine Umfrage in <strong>{{discussion}}</strong>:"
-    view_it_on_loomio: Schau es dir auf {{site_name}} an
-    timestamp: Heute um {{timestamp}}
   poll_common_subscribe_form:
     receive_updates_title: Ihre Wahl wurde aufgenommen.
     receive_updates_helptext: Wenn Sie eine Mail zum Ergebnis der Umfrage erhalten wollen, geben Sie Ihre Mailadresse unten ein
@@ -1845,14 +1757,6 @@ de:
     what_is_this: "Dies ist ein Live-Beispiel für {{type}}. Sie sind Teilnehmer - probieren Sie es aus!"
   share_poll_page:
     title: Abstimmung {{title}} teilen
-  polls_page:
-    heading: Abstimmungen
-    heading_with_group: Entscheidungen in {{name}}
-    search_placeholder: Abstimmungen durchsuchen...
-    polls_count: '{{count}} von {{total}} Abstimmungen werden angezeigt'
-    start_new_poll: Neue Abstimmung
-    filter_placeholder: (Alle Abstimmungen)
-    groups_placeholder: (Alle Gruppen)
   auth_form:
     code: '000000'
     sign_in_to_loomio: Einloggen bei {{site_name}}
@@ -1882,11 +1786,17 @@ de:
     name_required: Bitte geben Sie einen Namen ein.
     terms_required: Sie müssen die Nutzungsbedingungen bestätigen.
     account_inactive: Es scheint als wurde das Benutzerkonto für {{email}} deaktiviert.
+    privacy_notice: "Wir verkaufen niemals deine Daten. <br><a href='{{privacyUrl}}' target='_blank'>Datenschutzerklärung</a>"
     welcome: Neu bei {{siteName}}?
     welcome_back: Willkommen zurück, {{name}}!
+    forgot_password: Passwort vergessen
+    login_link: Sende eine Email zum anmelden
     set_password: Passwort festlegen
     set_password_helptext: Möchtest du beim nächsten Login ein Passwort verwenden?
     hello: "Hallo, {{name}}!"
+    new_to_loomio: Erstes Mal auf {{site_name}}?
+    already_a_user: Hast du bereits ein Konto?
+    email_address_of_existing_account: Gib die Email deines bestehenden Kontos ein
     link_accounts: Verbinden
     check_your_email: Überprüfen Sie Ihren E-Mail-Posteingang
     login_link_sent: "Wir haben eine E-Mail an {{email}} gesendet."
@@ -1901,97 +1811,89 @@ de:
     email: E-Mail
     password: Passwort
     reactivate: Account wieder aktivieren
-  install_microsoft:
-    modal_title: Microsoft Teams installieren
-    card:
-      install_title: Mit Microsoft Teams verbinden
-      install_helptext: 'Der Loomio bot informiert dein Team über Diskussionen und Entscheidungen die Loomio passieren. '
-      installed_title: Mit Microsoft Teams verbunden
-      installed_helptext: Ereignisse aus dieser Gruppe werden an Ihr Microsoft Team gesendet.
-      install_microsoft: Microsoft-Teams konfigurieren
-      remove_identity: Microsoft-Teams Konfiguration entfernen
-      confirm_remove_title: Microsoft-Teams Konfiguration entfernen
-      confirm_remove_helptext: |
-          Dein Microsoft Teams Kanal wird keine Updates mehr zu dieser Gruppe erhalten.
-          Du kannst sie natürlich jederzeit wieder hinzufügen.
-      identity_removed: Eingliederung entfernt
-    form:
-      webhook_helptext: Gib bitte die von deinem Teams-Channel bereitgestellte WebHooks-URL ein. <a href="https://help.loomio.org/en/user_manual/groups/integrations/#microsoft-teams">Weitere Informationen zur Konfiguration von Microsoft Teams für die Verwendung mit Loomio</a>
-      webhook_label: WebHooks-URL
-      webhook_installed: Mit Microsoft Teams verbunden
-      webhook_placeholder: https://outlook.office.com/...
-      event_kind_helptext: 'Welche Ereignisse sollen im Teams-Channel veröffentlicht werden? '
+  webhook:
+    formats:
+      microsoft: Microsoft Teams
+      slack: Slack
+    url_label: WebHooks-URL
+    name_label: Name
     event_kinds:
-      new_discussion: 'Ein neue Diskussion wurde eröffnet '
-      new_comment: 'Es gibt einen neuen Kommentar '
-      poll_created: Eine neue Abstimmung wurde erstellt
-      stance_created: Eine neue Stimme wurde abgegeben
       poll_closing_soon: Eine Umfrage läuft bald ab
-      poll_expired: Eine Abstimmung wurde beendet.
-      outcome_created: 'Ein Ergebnis wurde mitgeteilt  '
-  install_slack:
-    modal_title: Mit Slack verbinden
-    modal_helptext: 'Zuerst musst du dich bei Slack anmelden. Klicke auf den Button unten, um fortzufahren.  '
-    login_to_slack: bei Slack einloggen
-    remove_slack: Slack-Konfigurierung entfernen
-    card:
-      install_title: Mit Slack verbinden
-      install_helptext: Der Loomio-Bot benachrichtigt Ihr Slack-Team über Diskussionen und Beschlüsse auf Loomio. Sie können in Slack auch neue Beschlüsse anfangen und wählen.
-      installed_title: Mit Slack verbunden
-      installed_helptext: Diese Gruppe wurde mit dem slack team <strong><a target='_blank' href='https://{{team}}.slack.com'>{{team}}</a></strong> verbunden. Ereignisse aus dieser Gruppe werden im <strong>Kanal  {{channel}} angezeigt.
-      install_slack: Slack verbinden
-      remove_identity: Diese Eingliederung entfernen
-      confirm_remove_title: Slack Eingliederung entfernen
-      confirm_remove_helptext: |
-          Ihr Slack-Kanal empfängt keine Updates mehr über diese Gruppe.
-          Sie können jederzeit zurückgehen und die Gruppe erneut hinzufügen.
-      identity_removed: Eingliederung entfernt
-    progress:
-      install: Installieren
-      invite: Einladen
-      decide: Entscheiden
-    install:
-      heading: 'Schritt 1: Wählen Sie eine Loomio-Gruppe zum Einbgliedern'
-      tooltip_heading: Loomio und Slack arbeiten gut zusammen
-      it_does_this: Engagieren Sie Benutzer dort, wo sie sind
-      and_also_this: Starten Sie sofort eine Umfrage und erhalten Sie in Echtzeit Rückmeldung
-      and_also_also_this: Lassen Sie die Leute die Ergebnisse erfahren und iterieren Sie Ihr Denken schnell
-      add_to_group_helptext: wählen Sie eine Gruppe aus um sie mit Slack zu verknüpfen
-      create_new_group_helptext: Sie haben keine Loomio Gruppe? Geben Sie einfach einen Namen ein und wir werden eine für Sie erstellen
-      group_name: Gruppen-Name
-      group_name_placeholder: Bennen Sie Ihre neue Gruppe...
-      slack_installed: Slack wurde installiert
-      install_slack: Slack jetzt installieren
-      start_new_group: Eine neue Gruppe eröffnen
-      use_existing_group: eine bereits existierende Gruppe nutzen
-    invite:
-      heading: 'Schritt 2: Richten Sie einen Slack-Kanal ein'
-      helptext: 'Wähle den Kanal, durch den wir Aktualisierungen mit dir teilen können.  '
-      select_a_channel: Wählen Sie einen Kanal aus
-      publish_group: Eine Willkommens-Nachricht verfassen
-      publish_group_helptext_on: Wir werden eine Nachricht in diesen Kanal posten um zu erklären, wie LoomioBot genutzt wird.
-      publish_group_helptext_off: Wir werden bis Sie eine Umfrage erstellt haben nichts posten.
-      custom_message: benutzerspezifische Nachricht
-      set_channel: Kanal bestimmen
-    decide:
-      heading: 'Schritt 3: Zusammen eine Entscheidung treffen'
-      helptext: "Jetzt, da alles eingerichtet ist, ist es an der Zeit, Entscheidungen zu treffen. Wählen Sie eine der folgenden Optionen:"
-    common:
-      do_it_later: ich mache es später
+  configure_sso:
+    redirecting: TODO_DE_Please wait, redirecting to sign-in provider
+    title: Einfaches Registrieren
+    enabled: TODO_DE_Single sign-on is enabled
+    helptext: TODO_DE_Integrate with OneLogin, Auth0, Microsoft Active Directory, or any other SAML Provider. <a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">Learn more</a>.
+    warning_helptext: "TODO_DE_Warning: You'll be required to authenticate with your provider after you click save."
+    idp_metadata_url: TODO_DE_IDP Metadata URL
+    idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
+    pro_plan_only: TODO_DE_This feature is only available to Pro plan customers. Please check out our <a href="/upgrade" target="_blank">upgrade page</a> for more details.
+    success: TODO_DE_Single sign-on successfully configured
+    destroyed: TODO_DE_Single sign-on removed
+    invalid_idp_metadata_url: TODO_DE_Invalid IDP metadata URL
+    sp_metadata_url: TODO_DE_SP Metadata URL
   browser_warning:
     message: "WICHTIG! Sie verwenden einen veralteten Browser ({{name}} {{version}}), der von {{site}} nicht unterstützt wird."
     link: Bitte wechseln Sie zu einem anderen Browser
-  slack_added_modal:
-    title: Erfolg!
-    helptext: |
-        Sie haben Slack erfolgreich zur Ihrer Gruppe <strong>{{name}}</strong> hinzugefügt.
-        Wenn jetzt jemand eine Umfrage in der Gruppe beginnt, hat man die Option
-        Aktualisierungen der Umfrage in einen Kanal in Ihrem Slack-Team zu posten.
-    start_poll_now: Jetzt eine Entscheidung machen
   powered_by:
+    slogan: Bessere Entscheidungen gemeinsam treffen
     powered_by_loomio: Powered by Loomio
     privacy_policy: Datenschutz-Bestimmungen
     terms_of_service: Nutzungsbedingungen
     front_page: Titelseite
-  vue_upgraded_modal:
-    use_old_loomio: Das alte Loomio verwenden
+  group_survey:
+    title: Geschafft! Nur noch einige Details
+    subtitle: Bitte hilf uns dich besser kennen zu lernen. Wir werden keine Informationen teile ohne deine Einwilligung.
+    validation_error: Bitte fülle alle notwendigen Felder aus.
+    success: Danke schön!
+    categories:
+      business: Business
+      bcorp: B-Corp oder Social enterprise
+      cooperative: Genossenschaft
+      consultant: Berater oder Agentur
+      government: Regierung/Örtliche Regierung
+      nonprofit: Non-Profit-Organisation
+      union: Gewerkschaft
+      party: Politische Partei
+      activist: Aktivistorganisation
+      community: Gemeinschaft oder Kollektiv
+      education: Bildung oder Lehre
+      faith: Religiöse oder spirituelle Gemeinschaft
+      volunteer: Gemeinnützige Organisation
+      other: Andere
+    sizes:
+      ten: "< 10"
+      twenty: "11 - 20"
+      fifty: "21 - 50"
+      two_hundred: "51 - 200"
+      five_hundred: "201 - 500"
+      two_thousand: "501 - 2000"
+      else: "> 2000"
+    uses:
+      governance: Governance for Board, Committee or Trust
+      collaboration: Collaborative working group
+      engagement: Stakeholder or member engagement
+      self_management: Self-management (collaborative workplace)
+      remote: Remote working
+      document: Collaborative document development, e.g. a strategic plan
+      decision_making: Decision-making processes (Advice, Consent)
+      funding: Funding or Grant decisions
+      project: Project team
+      forum: Forum
+      other: Andere
+    referrers:
+      google: Google search
+      invitation: Invited to a Loomio group
+      referral: Referral
+      social: Social media (Facebook, Twitter, LinkedIn)
+      capterra: Capterra
+      other: Andere
+    location: Woher kommt deine Gruppe?
+    purpose: "Was ist der Sinn der Gruppe?"
+    category_question: "Wähle aus, welche Kategorie deine Gruppe am ehesten beschreibt"
+    anything_else: "Gibt es noch etwas, dass du uns mitteilen möchtest?"
+    size_question: "Aus wieviele Menschen besteht die Gruppe?"
+    role: "Was ist deine Rolle in der Gruppe?"
+    website: "Website URL"
+    usage: "Wie planst du Loomio einzusetzen? Wähle aus was am ehesten passt"
+    referrer: "Wie hast du von Loomio gehört?"

@@ -1,7 +1,7 @@
 <script lang="coffee">
 import ThreadService from '@/shared/services/thread_service'
 import AbilityService from '@/shared/services/ability_service'
-import { pick, some } from 'lodash'
+import { pick, some } from 'lodash-es'
 
 export default
   props:
@@ -22,14 +22,14 @@ export default
     menuActions: ->
       actions = if @groupPage
         if @$vuetify.breakpoint.smAndDown
-          ['dismiss_thread','pin_thread', 'unpin_thread', "edit_tags", 'move_thread', 'close_thread', 'delete_thread']
+          ['dismiss_thread','pin_thread', 'unpin_thread', "edit_tags", 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
         else
-          ['pin_thread', 'unpin_thread', "edit_tags", 'move_thread', 'close_thread', 'delete_thread']
+          ['pin_thread', 'unpin_thread', "edit_tags", 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
       else
         if @$vuetify.breakpoint.smAndDown
-          ['dismiss_thread', "edit_tags", 'close_thread']
+          ['dismiss_thread', "edit_tags", 'close_thread', 'reopen_thread']
         else
-          ["edit_tags", 'close_thread']
+          ["edit_tags", 'close_thread', 'reopen_thread']
       pick(ThreadService.actions(@thread, @), actions)
 
     canPerformAny: ->

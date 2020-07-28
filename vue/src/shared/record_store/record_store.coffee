@@ -1,5 +1,5 @@
 import RecordView from '@/shared/record_store/record_view'
-import { snakeCase, isEmpty, camelCase, map, keys, each, intersection } from 'lodash'
+import { snakeCase, isEmpty, camelCase, map, keys, each, intersection } from 'lodash-es'
 
 export default class RecordStore
   constructor: (db) ->
@@ -17,6 +17,13 @@ export default class RecordStore
 
   import: (data) ->
     return if isEmpty(data)
+
+    # hack just to get around AMS
+    if data['parent_groups']?
+      each data['parent_groups'], (recordData) =>
+        @groups.importJSON(recordData)
+        true
+
     each @collectionNames, (name) =>
       snakeName = snakeCase(name)
       camelName = camelCase(name)

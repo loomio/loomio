@@ -2,12 +2,11 @@ module Dev::Scenarios::Dashboard
   include Dev::DashboardHelper
 
   def setup_dashboard
+    ENV['FEATURES_GROUP_SURVEY'] = params[:features_group_survey]
     sign_in patrick
     pinned_discussion
     poll_discussion
     recent_discussion
-    muted_discussion
-    muted_group_discussion
     redirect_to dashboard_url
   end
 

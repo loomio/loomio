@@ -6,16 +6,16 @@ FactoryBot.define do
 
   factory :membership do |m|
     m.user { |u| u.association(:user)}
-    m.group { |g| g.association(:formal_group)}
+    m.group { |g| g.association(:group)}
   end
 
   factory :pending_membership, class: Membership do |m|
     m.user { |u| u.association(:unverified_user)}
-    m.group { |g| g.association(:formal_group)}
+    m.group { |g| g.association(:group)}
   end
 
   factory :tag, class: Tag do
-    association :group, factory: :formal_group
+    association :group, factory: :group
     # name "metatag"
     # color "#656565"
   end
@@ -80,21 +80,7 @@ FactoryBot.define do
     custom_fields { { facebook_group_id: "G123" } }
   end
 
-  factory :microsoft_identity, class: Identities::Microsoft do
-    user
-    identity_type { "microsoft" }
-    access_token { "https://outlook.office.com/webhook.url" }
-    uid { "https://outlook.office.com/webhook.url" }
-  end
-
-  factory :contact do
-    user
-    sequence(:email) { Faker::Internet.email }
-    sequence(:name) { Faker::Name.name }
-    source { 'gmail' }
-  end
-
-  factory :formal_group do
+  factory :group do
     sequence(:name) { Faker::Name.name }
     description { 'A description for this group' }
     handle { GroupService.suggest_handle(name: name, parent_handle: parent&.handle) }
@@ -108,12 +94,16 @@ FactoryBot.define do
     end
   end
 
-  factory :guest_group do
-    group_privacy { 'closed' }
+  factory :webhook do
+    name {"webhook"}
+    url {"https://outlook.office.com/webhook.url"}
+    event_kinds {['poll_created']}
+    format {"markdown"}
+    association :group
   end
 
   factory :group_identity do
-    association :group, factory: :formal_group
+    association :group, factory: :group
     association :identity, factory: :slack_identity
   end
 
@@ -139,13 +129,12 @@ FactoryBot.define do
 
   factory :discussion do
     association :author, :factory => :user
-    association :group, :factory => :formal_group
-    association :guest_group, factory: :guest_group
+    association :group, :factory => :group
     title { Faker::Name.name }
     description { 'A description for this discussion. Should this be *rich*?' }
     uses_markdown { true }
     private { true }
-    after(:build) do |discussion|
+    before(:create) do |discussion|
       discussion.group.parent&.add_member!(discussion.author)
       discussion.group.add_member!(discussion.author)
     end
@@ -164,7 +153,7 @@ FactoryBot.define do
     discussion
     body { 'body of the comment' }
 
-    after(:build) do |comment|
+    before(:create) do |comment|
       comment.discussion.group.parent.add_member!(comment.user) if comment.discussion.group.parent
       comment.discussion.group.add_member!(comment.user)
     end
@@ -184,14 +173,14 @@ FactoryBot.define do
     single_use { true }
     intent {'join_group'}
     association :inviter, factory: :user
-    association :group, factory: :formal_group
+    association :group, factory: :group
   end
 
   factory :membership_request do
     introduction { Faker::Lorem.sentence }
     email { Faker::Internet.email }
     name { Faker::Name.name }
-    association :group,     factory: :formal_group
+    association :group,     factory: :group
     association :requestor, factory: :user
   end
 
@@ -224,24 +213,11 @@ FactoryBot.define do
     query { "test query" }
   end
 
-  factory :webhook do
-    association :hookable, factory: :discussion
-    uri { "www.test.com" }
-    kind { :slack }
-    event_types { ['motion_closing_soon', 'new_motion', 'motion_outcome_created'] }
-  end
-
   factory :default_group_cover do
     cover_photo_file_name { "test.jpg" }
     cover_photo_file_size { 10000 }
     cover_photo_content_type { "image/jpeg" }
     cover_photo_updated_at { 10.days.ago }
-  end
-
-  factory :draft do
-    user
-    association :draftable, factory: :discussion
-    payload {{ payload: 'payload' }}
   end
 
   factory :poll_option do
@@ -253,8 +229,8 @@ FactoryBot.define do
     title { "This is a poll" }
     details { "with a description" }
     association :author, factory: :user
-    association :guest_group, factory: :guest_group
     poll_option_names { ["engage"] }
+    closing_at { 5.days.from_now }
   end
 
   factory :poll_proposal, class: Poll do
@@ -263,7 +239,7 @@ FactoryBot.define do
     details { "with a description" }
     association :author, factory: :user
     poll_option_names { %w[agree abstain disagree block] }
-    association :guest_group, factory: :guest_group
+    closing_at { 5.days.from_now }
   end
 
   factory :poll_dot_vote, class: Poll do
@@ -273,7 +249,7 @@ FactoryBot.define do
     association :author, factory: :user
     poll_option_names { %w(apple banana orange) }
     custom_fields { { dots_per_person: 8 } }
-    association :guest_group, factory: :guest_group
+    closing_at { 5.days.from_now }
   end
 
   factory :poll_meeting, class: Poll do
@@ -283,7 +259,7 @@ FactoryBot.define do
     association :author, factory: :user
     poll_option_names { ['01-01-2015'] }
     custom_fields { { can_respond_maybe: false } }
-    association :guest_group, factory: :guest_group
+    closing_at { 5.days.from_now }
   end
 
   factory :poll_ranked_choice, class: Poll do
@@ -293,7 +269,7 @@ FactoryBot.define do
     association :author, factory: :user
     poll_option_names { %w(apple banana orange) }
     custom_fields { { minimum_stance_choices: 2 } }
-    association :guest_group, factory: :guest_group
+    closing_at { 5.days.from_now }
   end
 
   factory :outcome do

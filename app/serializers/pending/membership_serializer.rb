@@ -1,8 +1,8 @@
 class Pending::MembershipSerializer < Pending::BaseSerializer
-  attribute :token
+  attributes :token, :group_id
 
-  def avatar_kind
-    :initials
+  def auth_form
+    false  
   end
 
   def identity_type
@@ -13,30 +13,30 @@ class Pending::MembershipSerializer < Pending::BaseSerializer
     true
   end
 
-  def token
-    object.token
-  end
-
   def email_status
     nil
   end
 
   def avatar_initials
-    object.user.get_avatar_initials
+    object.user&.get_avatar_initials
   end
 
   def name
-    object.user.name
+    object.user&.name
   end
 
   def email
-    object.user.email
+    object.user&.email
+  end
+
+  def group_id
+    object.group_id
   end
 
   private
 
   def has_name?
-    object.user.name.present?
+    object.user&.name.present?
   end
 
   alias :include_avatar_initials? :has_name?

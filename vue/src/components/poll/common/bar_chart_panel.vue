@@ -1,6 +1,6 @@
 <script lang="coffee">
 import { fieldFromTemplate, myLastStanceFor } from '@/shared/helpers/poll'
-import { max, values, orderBy } from 'lodash'
+import { max, values, orderBy } from 'lodash-es'
 
 export default
   props:
@@ -20,13 +20,12 @@ export default
       'background-image': @backgroundImageFor(option)
       'background-size': "#{@percentageFor(option)} 100%"
   computed:
-    orderedPollOptions: ->
-      orderBy(@poll.pollOptions(), ['priority'])
+    pollOptions: -> @poll.pollOptions()
 </script>
 
 <template lang="pug">
 .poll-common-bar-chart
-  .poll-common-bar-chart__bar(v-for="option in orderedPollOptions" :key="option.id" :style="styleData(option)")
+  .poll-common-bar-chart__bar(v-for="option in pollOptions" :key="option.id" :style="styleData(option)")
     | {{barTextFor(option)}}
 </template>
 <style lang="sass">

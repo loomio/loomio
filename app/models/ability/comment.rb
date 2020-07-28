@@ -3,19 +3,20 @@ module Ability::Comment
     super(user)
 
     can [:create], ::Comment do |comment|
-      comment.discussion&.members&.include?(user)
+      comment.discussion && comment.discussion.members.exists?(user.id)
     end
 
     can [:update], ::Comment do |comment|
-      comment.discussion.members.include?(user) && user_is_author_of?(comment) && comment.can_be_edited?
+      (comment.discussion.members.exists?(user.id) && comment.author == user && comment.can_be_edited?) ||
+      (comment.discussion.admins.exists?(user.id) && comment.group.admins_can_edit_user_content)
     end
 
-    can [:destroy], ::Comment do |comment|
-      user_is_author_of?(comment) or user_is_admin_of?(comment.discussion.group_id)
+    can [:destroy, :discard, :undiscard], ::Comment do |comment|
+      (comment.author == user && comment.discussion.members.exists?(user.id)) or comment.discussion.admins.exists?(user.id)
     end
 
     can [:show], ::Comment do |comment|
-      can?(:show, comment.discussion)
+      can?(:show, comment.discussion) && comment.kept?
     end
   end
 end

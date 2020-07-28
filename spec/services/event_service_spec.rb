@@ -2,14 +2,17 @@ require "rails_helper"
 
 describe EventService do
   let(:user) { create :user }
-  let(:group) { create :formal_group }
-  let(:discussion) { build :discussion, group: group }
+  let(:group) { create :group }
+  let(:discussion) { build :discussion, group: group, author: user }
   let(:poll) { create :poll, discussion: discussion }
   let(:comment1) { create(:comment, discussion: discussion, user: user) }
   let(:comment2) { create(:comment, discussion: discussion, user: user) }
   let(:comment3) { create(:comment, discussion: discussion, user: user) }
 
-  before { group.add_admin! user }
+  before do
+    group.add_admin! user
+    group.add_admin! discussion.author
+  end
 
   describe 'rearrange_events' do
     let(:discussion) { build :discussion, max_depth: 2, group: group }

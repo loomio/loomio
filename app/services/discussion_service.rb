@@ -3,11 +3,36 @@ class DiscussionService
     actor.ability.authorize! :create, discussion
     discussion.author = actor
     discussion.inherit_group_privacy!
+
+    #these should really be sent from the client, but it's ok here for now
+    discussion.max_depth = discussion.group.new_threads_max_depth
+    discussion.newest_first = discussion.group.new_threads_newest_first
+
     return false unless discussion.valid?
 
+    discussion.update_attachments!
     discussion.save!
     EventBus.broadcast('discussion_create', discussion, actor)
     Events::NewDiscussion.publish!(discussion)
+  end
+
+  def self.announce(discussion:, actor:, params:)
+    actor.ability.authorize! :announce, discussion
+
+    users = UserInviter.where_or_create!(inviter: actor,
+                                         emails: params[:emails],
+                                         user_ids: params[:user_ids])
+
+    new_discussion_readers = users.map do |user|
+      DiscussionReader.new(user: user, discussion: discussion, inviter: actor, volume: DiscussionReader.volumes[:normal])
+    end
+
+    DiscussionReader.import(new_discussion_readers, on_duplicate_key_ignore: true)
+
+    discussion_readers = DiscussionReader.where(user_id: users.pluck(:id), discussion_id: discussion.id)
+
+    Events::DiscussionAnnounced.publish!(discussion, actor, discussion_readers)
+    discussion_readers
   end
 
   def self.destroy(discussion:, actor:)
@@ -15,6 +40,13 @@ class DiscussionService
     discussion.discard!
     DestroyDiscussionWorker.perform_async(discussion.id)
     EventBus.broadcast('discussion_destroy', discussion, actor)
+  end
+
+  def self.discard(discussion:, actor:)
+    actor.ability.authorize!(:discard, discussion)
+    discussion.discard!
+    EventBus.broadcast('discussion_discard', discussion, actor)
+    discussion.created_event
   end
 
   def self.update(discussion:, params:, actor:)
@@ -27,8 +59,10 @@ class DiscussionService
     is_new_version = discussion.is_new_version?
     return false unless discussion.valid?
     rearrange = discussion.max_depth_changed?
+    discussion.update_attachments!
     discussion.save!
-    EventService.delay(queue: :low_priority).rearrange_events(discussion) if rearrange
+
+    RearrangeEventsWorker.perform_async(discussion.id) if rearrange
 
     version_service.handle_version_update!
     EventBus.broadcast('discussion_update', discussion, actor, params)
@@ -59,6 +93,7 @@ class DiscussionService
 
     discussion.update group: destination, private: moved_discussion_privacy_for(discussion, destination)
     discussion.polls.each { |poll| poll.update(group: destination) }
+    ActiveStorage::Attachment.where(record: discussion.items.map(&:eventable).concat([discussion])).update_all(group_id: destination.id)
 
     EventBus.broadcast('discussion_move', discussion, params, actor)
     Events::DiscussionMoved.publish!(discussion, actor, source)
@@ -94,6 +129,7 @@ class DiscussionService
     actor.ability.authorize! :mark_as_seen, discussion
     reader = DiscussionReader.for_model(discussion, actor)
     reader.viewed!
+    MessageChannelService.publish_model(reader.discussion)
     EventBus.broadcast('discussion_mark_as_seen', reader, actor)
   end
 
@@ -132,9 +168,7 @@ class DiscussionService
     time_finish = Time.at(params[:time_finish].to_i).utc
     time_range = time_start..time_finish
 
-    Queries::VisibleDiscussions.new(user: user).
-                                    unread.
-                                    last_activity_after(time_start).each do |discussion|
+    DiscussionQuery.visible_to(user: user, only_unread: true, or_public: false, or_subgroups: false).last_activity_after(time_start).each do |discussion|
       sequence_ids = discussion.items.where("events.created_at": time_range).pluck(:sequence_id)
       DiscussionReader.for(user: user, discussion: discussion).viewed!(sequence_ids)
     end

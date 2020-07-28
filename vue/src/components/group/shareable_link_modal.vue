@@ -1,6 +1,5 @@
 <script lang="coffee">
 import Records        from '@/shared/services/records'
-import ModalService   from '@/shared/services/modal_service'
 import EventBus       from '@/shared/services/event_bus'
 import utils          from '@/shared/record_store/utils'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
@@ -15,7 +14,7 @@ export default
   data: ->
     dialog: false
 
-  created: ->
+  mounted: ->
     @group.fetchToken()
 
   methods:
@@ -45,7 +44,7 @@ export default
         @$t('common.action.loading')
 
     canAddMembers: ->
-      AbilityService.canAddMembers(@group.targetModel().group() || @group) && !@pending
+      AbilityService.canAddMembersToGroup(@group) && !@pending
 
 </script>
 

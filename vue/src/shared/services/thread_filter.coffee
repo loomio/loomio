@@ -1,6 +1,6 @@
 import Session from '@/shared/services/session'
 import { subWeeks } from 'date-fns'
-import { each } from 'lodash'
+import { each } from 'lodash-es'
 
 export default (store, options) ->
   chain = store.discussions.collection.chain()
@@ -29,7 +29,7 @@ export default (store, options) ->
         when 'only_threads_in_my_groups'
           userGroupIds = Session.user().groupIds()
           chain.find $or: [
-            {guestGroupId: {$in: userGroupIds}}
+            {$and: {inviterId: {$ne: null}, revokedAt: {$ne: null}}}
             {groupId: {$in: userGroupIds}}
           ]
   chain.simplesort('lastActivityAt', true).data()

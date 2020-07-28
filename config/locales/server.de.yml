@@ -7,6 +7,8 @@ de:
         blank: Darf nicht leer sein
         invalid: ist kein gültiger Wert
   errors:
+    404:
+      title: Nicht gefunden
     noscript: Loomio benötigt Javascript zum funktionieren! Bitte aktiviere Javascript in deinem  Browser um fortzufahren
     return_home: zurück zu Home
     not_found: 404 Datei wurde nicht gefunden.
@@ -15,6 +17,7 @@ de:
       spoofed_media_type: Der Inhalt der Datei stimmt nicht mit dem Dateinamen überein
   group:
     stats:
+      group_stats: Gruppen-Statistik
       members: Mitglieder
       subgroups: Untergruppen
       threads: Diskussionen
@@ -94,6 +97,9 @@ de:
           Hallo %{name},
           Deine zwei Loomio-Konten wurden zu einem gemacht.
           Um nun auf Loomio zugreifen zu können, bitte nutze <strong>%{email}</strong> beim Einloggen.
+    merge_verification:
+      confirm_page:
+        merge: Benutzerkonten zusammenführen
   email:
     common:
       or_enter_code: oder gib den Code unten ein
@@ -231,18 +237,6 @@ de:
         Was ist zum Beispiel deine Rolle oder der Anlass für deine Teilnahme in dieser Gruppe? Was sollten die Menschen wissen, um zu verstehen, woher du kommst?
   how_it_works_thread:
     title: Wie man Loomio benutzt
-  first_proposal:
-    name: Demo-Vorschlag
-    description: |
-        Dies ist ein **Vorschlag**, bei dem ihr eine gemeinsame Entscheidung treffen könnt. Du kannst einen Vorschlag einbringen, sobald eine Diskussion eröffnet ist.
-
-        Alle sind aufgefordert, bis zur **Vorschlagsfrist** **ihre Position darzulegen**. Falls erforderlich, kannst du die Frist anpassen, oder einen Vorschlag vorzeitig abschließen.
-
-        Du kannst **deine Position ändern** solange der Vorschlag offen ist. Vielleicht änderst du aufgrund der Argumente Anderer deine Meinung.
-
-        Manchmal arbeitet sich eine Gruppe durch eine **Reihe von Vorschlägen** durch, um zu einer gemeinsamen Lösung zu kommen. Du kannst eine Reihe von Vorschlägen pro Thema einreichen.
-
-        **Probier es aus und nehme teil in dem du eine der vier buttons klickst**.
   markdown:
     intro:
       title: |+
@@ -291,16 +285,6 @@ de:
     links:
       title: |
           ## Links und Bilder
-      body: |
-          Ganz wichtig:
-
-          Eckige Klammern sind für den angezeigten Text und runde Klammern für die URL. Kein Leerzeichen dazwischen!
-
-          [Loomio Homepage](https://www.loomio.org/)
-
-          Für Bilder gilt dasselbe, nur dass du ein Ausrufezeichen davor setzt.
-
-          ![Loomio-Logo](https://i.imgur.com/Fvtworb.png)
   group_mailer:
     resend: 'ERINNERUNG: %{member} wartet darauf, dass du %{group_name} beitrittst'
   poll_mailer:
@@ -324,239 +308,21 @@ de:
       verify_stance_for_unverified_user: "Danke für deine Beteiligung bei der Abstimmung %{title}. Bitte verifiziere deine E-Mail-Adresse, damit wir dir die Ergebnisse der Abstimmung zusenden können."
       verify_stance_for_verified_user: "Es sieht so aus, als ob du bei %{title}abgestimmt hättest. Um zu bestätigen, dass du das auch wirklich warst, klicke bitte den unten angegebenen Link. "
       you_have_until: du hast bis %{when} um teilzunehmen
-    proposal:
-      subject:
-        poll_created: '%{actor} hat einen Vorschlag erstellt: %{title}'
-        poll_edited: '%{actor} hat den Vorschlag %{title} bearbeitet'
-        poll_announced: '%{actor} hat dich eingeladen deine Stimme bei dem Vorschlag %{title} abzugeben '
-        poll_closing_soon: 'Vorschlag endet in 24 Stunden: %{title}'
-        poll_closing_soon_author: 'Dein Vorschlag endet in 24 Stunden: %{title}'
-        poll_expired: "Vorschlag wurde geschlossen: %{title}"
-        poll_expired_author: 'Dein Vorschlag wurde geschlossen. Teile das Ergebnis auf %{title}'
-        outcome_created: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
-        outcome_announced: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
-        stance_created: "%{actor} hat abgestimmt: %{title}"
-        user_mentioned: '%{actor} hat dich in %{title} erwähnt'
-        user_reminded: '%{actor} erinnert dich deine Stimme in %{title}abzugeben'
-      header:
-        poll_created: '<strong>%{actor}</strong> hat einen Vorschlag erstellt'
-        poll_edited: '<strong>%{actor}</strong> hat den Vorschlag geändert'
-        poll_announced: '<strong>%{actor}</strong> hat dich eingeladen, über einen Vorschlag abzustimmen'
-        poll_closing_soon: 'Der Vorschlag von <strong>%{actor}</strong> endet in 24 Std. Jetzt wäre ein guter Zeitpunkt, deine Stimme abzugeben, deine Meinung zu ändern oder Andere zum mitmachen aufzufordern. '
-        poll_closing_soon_author: 'Dein Vorschlag endet in 24 Stunden - jetzt ist ein guter Zeitpunkt, andere über deinen Vorschlag zu erinnern oder wenn nötig die Frist verlängern.'
-        poll_expired: "Der Vorschlag von <strong>%{actor}</strong> wurde geschlossen: %{title}"
-        poll_expired_author: 'Dein Vorschlag wurde <strong>geschlossen</strong>. Bitte nimm dir Zeit die Beitrage zu analysieren. Anschliessend solltest du <strong>das Ergebnis in der Gruppe bekanntgeben</strong> damit alle Mitglieder über die nächsten Schritte informiert sind.'
-        outcome_created: '<strong>%{actor}</strong> hat ein Abstimmungsergebnis bekanntgegeben.'
-        outcome_announced: '<strong>%{actor}</strong> hat ein Abstimmungsergebnis bekanntgegeben.'
-        stance_created: "<strong>%{actor}</strong> hat bei %{title}abgestimmt"
-        user_mentioned: '<strong>%{actor}</strong> hat dich in %{title} erwähnt'
-        user_reminded: '<strong>%{actor}</strong> erinnert dich in %{title} deine Stimme abzugeben '
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    poll:
-      subject:
-        poll_created: '%{actor} hat eine Umfrage eröffnet: %{title}'
-        poll_edited: '%{actor} hat die Umfrage %{title} bearbeitet'
-        poll_announced: '%{actor} hat dich eingeladen an der Umfrage teilzunehmen: %{title}'
-        poll_closing_soon: 'In 24 Stunden endet die Umfrage: %{title}'
-        poll_closing_soon_author: 'Deine Umfrage zu %{title} endet in 24 Stunden'
-        poll_expired: "Ergebnisse der Umfrage: %{title}"
-        poll_expired_author: 'Deine Umfrage wurde beendet. Teile das Abstimmungsergebnis mit: %{title}'
-        poll_option_added: '%{actor} hat die Abstimmungsoptionen von%{title}erweitert'
-        poll_option_added_author: '%{actor} hat die Abstimmungsoptionen von %{title}erweitert'
-        outcome_created: '%{actor} hat das Ergebnis der Umfrage %{title} bekanntgegeben'
-        outcome_announced: '%{actor} hat das Abstimmungsergebnis für %{title} bekanntgegeben'
-        stance_created: "%{actor} hat bei %{title}abgestimmt"
-        stance_created_author: "Bitte bestätige hier %{title} deine Stimme"
-        user_mentioned: '%{actor} hat dich in %{title} erwähnt'
-        user_reminded: '%{actor} erinnert dich deine Stimme bei %{title}abzugeben '
-      header:
-        poll_created: '<strong>%{actor}</strong> hat eine Umfrage eröffnet'
-        poll_edited: '<strong>%{actor}</strong> hat die Umfrage bearbeitet'
-        poll_announced: '<strong>%{actor}</strong> hat dich zu einer Umfrage eingeladen'
-        poll_closing_soon: '<strong>%{actor}</strong>''s Umfrage läuft in 24 Std. ab. Jetzt ist ein guter Zeitpunkt, zu wählen, deine Meinung zu ändern oder Andere zum Mitmachen zu aufzufordern.'
-        poll_closing_soon_author: 'Deine Abstimmung läuft in 24 Std. ab - jetzt ist ein guter Zeitpunkt, andere an den Vorschlag zu erinnern oder gegebenenfalls die Frist zu verlängern.'
-        poll_expired: "<strong>%{actor}s</strong> Umfrage %{title}wurde beendet"
-        poll_expired_author: 'Deine Umfrage ist <strong>geschlossen</strong>. Nachdem du die Beiträge durchgegangen bist, solltest du das <strong>Ergebnis in der Gruppe bekannt geben</strong> um Mitglieder über die nächste Schritte zu informieren. '
-        poll_option_added: '<strong>%{actor}</strong> hat die Abstimmungsoptionen in  %{title}erweitert'
-        poll_option_added_author: '<strong>%{actor}</strong> hat die Abstimmungsoptionen in %{title}erweitert'
-        outcome_created: '<strong>%{actor}</strong> hat das Ergebnis einer Umfrage bekanntgegeben.'
-        outcome_announced: '<strong>%{actor}</strong> hat das Ergebnis einer Umfrage bekanntgegeben.'
-        stance_created: "<strong>%{actor}</strong> hat in %{title}abgestimmt"
-        user_mentioned: '<strong>%{actor}</strong> hat dich in %{title} erwähnt'
-        user_reminded: '<strong>%{actor}</strong> erinnert dich in %{title} zu wählen'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    score:
-      subject:
-        poll_created: '%{actor} hat eine Umfrage eröffnet: %{title}'
-        poll_edited: '%{actor} hat die Umfrage %{title} bearbeitet'
-        poll_announced: '%{actor} hat dich eingeladen, an der Umfrage %{title}teilzunehmen'
-        poll_closing_soon: 'In 24 Std. schliesst die Umfrage: %{title}'
-        poll_closing_soon_author: 'Deine Umfrage %{title} endet in 24 Std.'
-        poll_expired: "Umfrageergebnisse: %{title}"
-        poll_expired_author: 'Deine Umfrage wurde abgeschlossen. Teile das Ergebnis mit: %{title}'
-        poll_option_added: '%{actor} hat die Umfrageoptionen in %{title} erweitert '
-        poll_option_added_author: '%{actor} hat die Umfrageoptionen in %{title} erweitert'
-        outcome_created: '%{actor} hat das Ergebnis für die Umfrage%{title} bekanntgegeben'
-        outcome_announced: '%{actor} hat das Ergebnis für die Umfrage %{title} bekanntgegeben'
-        stance_created: "%{actor} hat hier abgestimmt: %{title}"
-        stance_created_author: "Bitte bestätige hier deine Stimme%{title}"
-        user_mentioned: '%{actor} hat dich in %{title} erwähnt'
-        user_reminded: '%{actor} erinnert dich, deine Stimme in %{title}abzugeben'
-      header:
-        poll_created: '<strong>%{actor}</strong> hat eine Umfrage eröffnet'
-        poll_edited: '<strong>%{actor}</strong> hat die Umfrage überarbeitet'
-        poll_announced: '<strong>%{actor}</strong> hat dich zu einer Umfrage eingeladen'
-        poll_closing_soon: '<strong>%{actor}</strong>''s Umfrage läuft in 24 Std. ab. Jetzt ist ein guter Zeitpunkt, zu wählen, deine Meinung zu ändern oder Andere zum Mitmachen zu aufzufordern.'
-        poll_closing_soon_author: 'Deine Umfrage schliesst in 24 Std - jetzt ist ein guter Zeitpunkt, andere nochmal and Mitmachen zu erinnern oder wenn gegebenenfalls die Frist zu verlängern.'
-        poll_expired: "<strong>%{actor}s</strong> Umfrage %{title}wurde geschlossen"
-        poll_expired_author: 'Deine Umfrage ist <strong>beendet</strong>. Nachdem du die Beiträge durchgegangen bist, solltest du das <strong>Ergebnis in der Gruppe bekannt geben</strong> um Mitglieder über die nächste Schritte zu informieren. '
-        poll_option_added: '<strong>%{actor}</strong> hat die Umfrageoptionen in %{title}erweitert'
-        poll_option_added_author: '<strong>%{actor}</strong> hat die Umfrageoptionen in %{title}erweitert'
-        outcome_created: '<strong>%{actor}</strong> hat ein Umfrageergebnis bekanntgegeben.'
-        outcome_announced: '<strong>%{actor}</strong> hat ein Umfrageergebnis bekanntgegeben.'
-        stance_created: "<strong>%{actor}</strong> hat in%{title}abgestimmt"
-        user_mentioned: '<strong>%{actor}</strong> hat dich in %{title} erwähnt'
-        user_reminded: '<strong>%{actor}</strong> erinnert dich deine Stimme in %{title} abzugeben'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    count:
-      subject:
-        poll_created: '%{actor} fragt nach einer Bestätigung: %{title}'
-        poll_edited: '%{actor} hat die Bestätigung bearbeitet: %{title}'
-        poll_announced: '%{actor} hat dich eingeladen hier teilzunehmen: %{title}'
-        poll_closing_soon: 'Du hast noch 24 Stunden Zeit %{title} zu prüfen'
-        poll_closing_soon_author: 'Deine Bestätigung endet in 24 Std: %{title}'
-        poll_expired: "Bestätigung abgeschlossen: %{title}"
-        poll_expired_author: 'Deine Bestätigung ist abgeschlossen. Gebe das Ergebnis für %{title} bekannt'
-        outcome_created: '%{actor} hat ein Ergebnis bekannt gegeben: %{title}'
-        outcome_announced: '%{actor} hat ein Ergebnis bekannt gegeben: %{title}'
-        stance_created: "%{actor} hat sich an %{title} beteiligt"
-        stance_created_author: "Bitte bestätige deine Stimme in%{title}"
-        user_mentioned: '%{actor} hat dich in %{title} erwähnt'
-        user_reminded: '%{actor} erinnert dich an %{title} teilzunehmen'
-      header:
-        poll_created: '<strong>%{actor}</strong> fragt nach einer Bestätigung'
-        poll_edited: '<strong>%{actor}</strong> hat die Bestätigung bearbeitet'
-        poll_announced: '<strong>%{actor}</strong> hat dich eingeladen teilzunehmen'
-        poll_closing_soon: 'Nur noch 24 Std. bleiben für<strong>%{actor}</strong>''s Bestätigung '
-        poll_closing_soon_author: 'Deine Bestätigung läuft in 24 Std. ab -  jetzt ist ein guter Zeitpunkt, andere aufzufordern noch mitzumachen oder wenn nötig die Frist verlängern.'
-        poll_expired: "Die von <strong>%{actor}</strong> angeforderte Bestätigung ist abgeschlossen: %{title}"
-        poll_expired_author: 'Hier ist das Ergebnis für die angeforderte Bestätigung. Wenn nötig kannst du <strong>das Ergebnis in der Gruppe bekannt geben</strong>, um Mitglieder über die nächsten Schritte zu informieren.'
-        outcome_created: '<strong>%{actor}</strong> hat ein Ergebnis bekannt gegeben.'
-        outcome_announced: '<strong>%{actor}</strong> hat ein Ergebnis bekannt gegeben.'
-        stance_created: "<strong>%{actor}</strong> hat in %{title} teilgenommen"
-        user_mentioned: '<strong>%{actor}</strong> hat dich in %{title} erwähnt'
-        user_reminded: '<strong>%{actor}</strong> erinnert dich in %{title} teilzunehmen'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    dot_vote:
-      subject:
-        poll_created: '%{actor} hat eine neue Punktabstimmung eröffnet: %{title}'
-        poll_edited: '%{actor} hat die Punktabstimmung %{title} bearbeitet'
-        poll_announced: '%{actor} hat dich eingeladen, an einer Punktabstimmung teilzunehmen: %{title}'
-        poll_closing_soon: 'Die Punktabstimmung %{title} läuft in 24 Std. ab'
-        poll_closing_soon_author: 'Deine Punktabstimmung %{title} läuft in 24 Std. ab'
-        poll_expired: "Ergebnisse der Punktabstimmung: %{title}"
-        poll_expired_author: 'Dein Punktabstimmung wurde abgeschlossen. Teile das Ergebnis von %{title}'
-        poll_option_added: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
-        poll_option_added_author: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
-        outcome_created: '%{actor} hat das Ergebnis für %{title} bekanntgegeben'
-        outcome_announced: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
-        stance_created: "%{actor} hat abgestimmt: %{title}"
-        stance_created_author: "Bitte bestätige hier %{title} deine Stimme"
-        user_mentioned: '%{actor} hat dich in %{title} erwähnt'
-        user_reminded: '%{actor} erinnert dich deine Stimme für %{title}abzugeben'
-      header:
-        poll_created: '<strong>%{actor}</strong> hat eine Punktabstimmung eröffnet'
-        poll_edited: '<strong>%{actor}</strong> hat die Punktabstimmung bearbeitet'
-        poll_announced: '<strong>%{actor}</strong> hat dich dazu eingeladen an einer Punktabstimmung teilzunehmen'
-        poll_closing_soon: '<strong>%{actor}</strong>''s Punktabstimmung läuft in 24 Std. ab -  jetzt ist ein guter Zeitpunkt, abzustimmen, deine Meinung zu ändern oder andere aufzufordern, mitzumachen.'
-        poll_closing_soon_author: 'Deine Punktabstimmung läuft in 24 Std. ab -  jetzt ist ein guter Zeitpunkt, andere ans Mitmachen zu erinnern oder wenn nötig die Frist zu verlängern.'
-        poll_expired: "Ergebnis für <strong>%{actor}s</strong> Punktabstimmung: %{title}"
-        poll_expired_author: 'Deine Punktabstimmung wurde <strong>abgeschlossen</strong>. Betrachte was gesagt wurde und <strong>teile das Ergebnis</strong> mit der Gruppe, damit die Anderen wissen, was als nächstes passieren wird'
-        poll_option_added: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
-        outcome_created: '</strong>%{actor}</strong> hat das Ergebnis einer Punktabstimmung bekanntgegeben.'
-        outcome_announced: '<strong>%{actor}</strong> hat ein Punktabstimmung bekannt gegeben.'
-        stance_created: "<strong>%{actor}</strong> hat abgestimmt: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> hat dich in %{title} erwähnt'
-        user_reminded: '<strong>%{actor}</strong> erinnert dich in %{title} deine Stimme abzugeben'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    meeting:
-      subject:
-        poll_created: '%{actor} hat eine Zeitumfrage gestartet %{title}'
-        poll_edited: '%{actor} hat die Zeitumfrage bearbeitet: %{title}'
-        poll_announced: '%{actor} hat dich eingeladen an der Zeitumfrage teilzunehmen: %{title}'
-        poll_closing_soon: 'Zeitumfrage schliesst in 24 Std.: %{title}'
-        poll_closing_soon_author: 'Deine Zeitumfrage schließt in 24 Std.: %{title}'
-        poll_expired: "Ergebnisse der Zeitumfrage: %{title}"
-        poll_expired_author: 'Deine Zeitumfrage ist abgeschlossen. Teile das Ergebnis: %{title}'
-        poll_option_added: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
-        poll_option_added_author: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
-        outcome_created: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
-        outcome_created_author: 'Du hast ein Abstimmungsergebnis bekanntgegeben: %{title}'
-        outcome_announced: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
-        stance_created: '%{actor} hat sich bei %{title} beteiligt'
-        stance_created_author: "Bitte bestätige hier %{title} deine Stimme"
-        user_mentioned: '%{actor} hat dich in %{title} erwähnt'
-        user_reminded: '%{actor} möchte dich erinnern in %{title}deine Stimme abzugeben'
-      header:
-        poll_created: '<strong>%{actor}</strong> hat eine Zeitumfrage gestartet'
-        poll_edited: '<strong>%{actor}</strong> hat die Zeitumfrage bearbeitet'
-        poll_announced: '<strong>%{actor}</strong> hat dich eingeladen, in der Zeitumfrage teilzunehmen'
-        poll_closing_soon: '<strong>%{actor}</strong>s Zeitumfrage schließt in 24 Std. Jetzt ist ein gute Zeitpunkt, deine Stimme abzugeben, Meinung zu ändern oder Andere aufzufordern, mitzumachen. '
-        poll_closing_soon_author: 'Deine Zeitumfrage endet in 24 Std. - jetzt ist ein guter Zeitpunkt, andere aufzufordern noch mitzumachen oder wenn nötig die Frist verlängern.'
-        poll_expired: "<strong>%{actor}s</strong> Zeitumfrage ist abgeschlossen"
-        poll_expired_author: 'Deine Zeitumfrage ist <strong>abgeschlossen</strong>. Nimm dir einen moment um die Beitrage durchzugehen und <strong>teile das Ergebnis</strong> damit Gruppenmitglieder über die nächste Schritte informiert sind. '
-        poll_option_added: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
-        outcome_created: '<strong>%{actor}</strong> hat das Ergebnis einer Zeitumfrage geteilt'
-        outcome_created_author: 'Du hast ein Zeitumfrageergebnis geteilt.'
-        outcome_announced: '<strong>%{actor}</strong> hat das Ergebnis einer Zeitumfrage geteilt'
-        stance_created: "<strong>%{actor}</strong> hat an %{title} teilgenommen"
-        user_mentioned: '<strong>%{actor}</strong> hat dich in %{title} erwähnt'
-        user_reminded: '<strong>%{actor}</strong> erinnert dich in %{title} deine Stimme abzugeben'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    ranked_choice:
-      subject:
-        poll_created: '%{actor}hat eine Rangwahl eröffnet: %{title}'
-        poll_edited: '%{actor} hat die Rangwahl bearbeitet: %{title}'
-        poll_announced: '%{actor} hat dich dazu eingeladen Optionen in %{title}einzustufen '
-        poll_closing_soon: 'Rangwahl ist in 24 Std. geschlossen: %{title}'
-        poll_closing_soon_author: 'Deine Rangwahl schließt in 24 Std.: %{title}'
-        poll_expired: "Rangwahlergebnis: %{title}"
-        poll_expired_author: 'Deine Rangwahl wurde beendet. Teile das Ergebnis: %{title}'
-        poll_option_added: '%{actor} hat Abstimmungsoptionen hinzugefügt: %{title}'
-        poll_option_added_author: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
-        outcome_created: '%{actor} hat das Ergebnis für %{title} bekannt gegeben'
-        outcome_created_author: 'Du hast ein Ergebnis bekannt gegeben: %{title}'
-        outcome_announced: '%{actor} hat ein Rangwahlergebnis geteilt'
-        stance_created: '%{actor} hat an %{title} teilgenommen'
-        stance_created_author: "Bitte bestätige hier %{title} deine Stimme"
-        user_mentioned: '%{actor} hat dich in %{title} erwähnt'
-        user_reminded: '%{actor} erinnert dich deine Stimme in %{title} abzugeben'
-      header:
-        poll_created: '<strong>%{actor}</strong> hat eine Rangwahl eröffnet'
-        poll_edited: '<strong>%{actor}</strong> hat die Rangwahl bearbeitet'
-        poll_announced: '<strong>%{actor}</strong> hat dich eingeladen, Optionen einzustufen'
-        poll_closing_soon: '<strong>%{actor}</strong>s Rangwahl schliesst in 24 Std. Jetzt ist ein gute Zeitpunkt deine Stimme abzugeben, Meinung zu ändern oder Andere aufzufordern sich zu beteiligen. '
-        poll_closing_soon_author: 'Deine Rangwahl schließt in 24 Std. - jetzt ist ein guter Zeitpunkt, andere aufzufordern noch mitzumachen oder wenn nötig die Frist verlängern.'
-        poll_expired: "<strong>%{actor}s</strong> Rangwahl ist abgeschlossen."
-        poll_expired_author: 'Deine Rangwahl ist <strong>abgeschlossen</strong>. Nachdem du die Beiträge durchgegangen bist, solltest du das <strong>Ergebnis in der Gruppe bekannt geben</strong> um Mitglieder über die nächste Schritte zu informieren. '
-        poll_option_added: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
-        outcome_created: '<strong>%{actor}</strong> hat ein Rangwahlergebnis geteilt.'
-        outcome_created_author: 'Du hast ein Rangwahlergebnis geteilt'
-        outcome_announced: '<strong>%{actor}</strong> hat ein Rangwahlergebnis geteilt.'
-        stance_created: "<strong>%{actor}</strong> hat an %{title} teilgenommen"
-        user_mentioned: '<strong>%{actor}</strong> hat dich in %{title} erwähnt'
-        user_reminded: '<strong>%{actor}</strong> erinnert dich deine Stimme in %{title} abzugeben'
-      body:
-        voted: '<strong>%{participant}</strong>:'
+    subject:
+      poll_option_added: '%{actor} hat die Umfrageoptionen in %{title} erweitert'
+      poll_option_added_author: '%{actor} hat die Umfrageoptionen in %{title} erweitert'
+      stance_created: "%{actor} hat hier abgestimmt: %{title}"
+      stance_created_author: "Bitte bestätige hier %{title} deine Stimme"
+      user_mentioned: '%{actor} hat dich in %{title} erwähnt'
+      user_reminded: '%{actor} erinnert dich deine Stimme in %{title} abzugeben'
+    header:
+      poll_option_added: '<strong>%{actor}</strong> hat die Umfrageoptionen in %{title}erweitert'
+      poll_option_added_author: '<strong>%{actor}</strong> hat die Umfrageoptionen in %{title}erweitert'
+      stance_created: "<strong>%{actor}</strong> hat in%{title}abgestimmt"
+      user_mentioned: '<strong>%{actor}</strong> hat dich in %{title} erwähnt'
+      user_reminded: '<strong>%{actor}</strong> erinnert dich deine Stimme in %{title} abzugeben'
+    body:
+      voted: '<strong>%{participant}</strong>:'
   comment_by: Kommentar von %{comment_author}
   notified:
     no_matches_found: "Keine Ergebnisse gefunden '%{query}'"
@@ -590,21 +356,6 @@ de:
         Versuche es stattdessen mit, '/ loomio' in einem der folgenden Kanäle?
         %{integrations}
     stance_not_valid: "Leider konnten wir keine Einstellung für *%{poll}* erstellen. <%{url}|Klicke hier>, um direkt über die Umfrage abzustimmen."
-    group_identity_created: |
-        Hallo, ich bin Loomio Bot! *%{author}* hat mich hinzugefügt.
-        Ich helfe deinem Team, gemeinsam Entscheidungen zu treffen.
-
-        Meine Funktionen umfassen:
-
-        - Diskussionen und Entscheidungen direkt von Slack auf Loomo zu bringen
-        - Neue Diskussionen und Entscheidungen auf Loomio anzukündigen
-        - Ermöglichen, dass man von Slack aus mit abstimmen kann
-        - Entscheidungsergebnisse mitteilen
-
-        Um mehr zu erfahren, tippe _ / loomio help_
-
-        Du musst Teil der Loomio-Gruppe *%{group}* sein, um teilnehmen zu können.
-        Wenn du noch nicht beigetreten bist, kannst du dies tun indem du <%{url}| Hier klickst>
     request_authorization_message: "Nur nnoch ein Schritt: <%{url}| Klicke hier>, um dein Slack-Konto für die Nutzung von Loomio zu autorisieren. (Du musst dies nur einmal tun)"
     poll_closed: "*%{title}* ist bereits abgeschlossen! <%{url}|Klicke hier> um die Ergebnisse zu sehen."
     go_to_slack: Zu Slack gehen

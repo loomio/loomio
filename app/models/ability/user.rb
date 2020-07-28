@@ -10,13 +10,8 @@ module Ability::User
       u.deactivated_at.nil?
     end
 
-    can :reactivate, ::User do |u|
-      u.deactivated_at?
-    end
-
     can [:update,
          :see_notifications_for,
-         :make_draft,
          :subscribe_to], ::User do |u|
       user == u
     end

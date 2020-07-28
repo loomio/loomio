@@ -1,6 +1,4 @@
-class Simple::DiscussionSerializer < ActiveModel::Serializer
-  embed :ids, include: true
-
+class Simple::DiscussionSerializer < ApplicationSerializer
   def self.attributes_from_reader(*attrs)
     attrs.each do |attr|
       case attr
@@ -15,6 +13,8 @@ class Simple::DiscussionSerializer < ActiveModel::Serializer
   attributes :id,
              :key,
              :title,
+             :group_id,
+             :author_id,
              :description,
              :description_format,
              :ranges,
@@ -42,8 +42,8 @@ class Simple::DiscussionSerializer < ActiveModel::Serializer
                          :dismissed_at,
                          :read_ranges
 
-  has_one :author, serializer: UserSerializer, root: :users
-  has_one :group, serializer: GroupSerializer, root: :groups
+  has_one :author, serializer: AuthorSerializer, root: :users
+  has_one :group, serializer: ::GroupSerializer, root: :groups
   has_one :created_event, serializer: Events::CreatedSerializer, root: :events
 
   has_many :discussion_tags

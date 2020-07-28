@@ -1,5 +1,5 @@
 <script lang="coffee">
-import { some } from 'lodash'
+import { some } from 'lodash-es'
 export default
   props:
     actions: Object
@@ -14,9 +14,9 @@ export default
 .action-menu.lmo-no-print(v-if='canPerformAny')
   v-menu(offset-y)
     template(v-slot:activator="{ on }" )
-      v-btn(icon small v-on="on" @click.prevent)
+      v-btn(:aria-label="$t('action_dock.more_actions')" icon small v-on="on" @click.prevent)
         v-icon mdi-dots-horizontal
     v-list
       v-list-item(v-for="(action, name) in actions" :key="name" @click="action.perform()" v-if='action.canPerform()' :class="'action-dock__button--' + name")
-        v-list-item-title(v-t="action.name || 'action_dock.'+name")
+        v-list-item-title(v-t="{path: (action.name || 'action_dock.'+name), args: (action.nameArgs && action.nameArgs()) }")
 </template>

@@ -1,12 +1,13 @@
 require 'rails_helper'
 
 describe Queries::ExploreGroups do
-  let(:group)              { create :formal_group }
-  let(:second_group)       { create :formal_group }
-  let(:archived_group)     { create :formal_group, archived_at: 1.day.ago }
+  let(:group)              { create :group }
+  let(:second_group)       { create :group }
+  let(:archived_group)     { create :group, archived_at: 1.day.ago }
 
   before do
     group.update_attribute(:is_visible_to_public, true)
+    group.update_attribute(:listed_in_explore, true)
     second_group.update_attribute(:is_visible_to_public, true)
     archived_group.update_attribute(:is_visible_to_public, true)
     group.update_attribute(:memberships_count, 5)
@@ -30,26 +31,17 @@ describe Queries::ExploreGroups do
       expect(Queries::ExploreGroups.new).to_not include archived_group
     end
 
-    it 'only shows groups that are visible to public' do
-      group.update_attribute(:is_visible_to_public, false)
+    it 'only shows groups that are listed_in_explore' do
+      group.update_attribute(:listed_in_explore, false)
       expect(Queries::ExploreGroups.new).to_not include group
     end
 
     it 'only shows parent groups' do
-      subgroup = FactoryBot.create(:formal_group, parent: group)
+      subgroup = FactoryBot.create(:group, parent: group)
       subgroup.update_attribute(:is_visible_to_public, true)
-      subgroup.update_attribute(:memberships_count, 5)
-      subgroup.update_attribute(:discussions_count, 3)
-      subgroup.subscription = Subscription.create(plan: 'trial', state: 'active')
-      subgroup.save
+      subgroup.update_attribute(:listed_in_explore, true)
       expect(Queries::ExploreGroups.new).to_not include subgroup
     end
-
-    it 'does not show groups that fail to meet the criteria for members or discussions count' do
-      expect(Queries::ExploreGroups.new).to include group
-      expect(Queries::ExploreGroups.new).to_not include second_group
-    end
-
   end
 
   describe '#search_for' do

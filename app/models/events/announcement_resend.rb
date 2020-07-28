@@ -11,11 +11,7 @@ class Events::AnnouncementResend < Event
   end
 
   def email_method
-    custom_fields['kind']
-  end
-
-  def email_subject_key
-    "#{eventable.mailer.to_s.underscore}.resend"
+    'group_announced'
   end
 
   def email_recipients

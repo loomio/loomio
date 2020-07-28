@@ -6,13 +6,11 @@ import Records           from '@/shared/services/records'
 import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
 import LmoUrlService     from '@/shared/services/lmo_url_service'
-import InstallSlackModalMixin from '@/mixins/install_slack_modal'
-import GroupModalMixin from '@/mixins/group_modal'
 import { subscribeTo }   from '@/shared/helpers/cable'
-import {compact, head, includes, filter} from 'lodash'
+import {compact, head, includes, filter} from 'lodash-es'
+import ahoy from 'ahoy.js'
 
 export default
-  mixins: [InstallSlackModalMixin, GroupModalMixin]
   data: ->
     group: null
     activeTab: ''
@@ -20,12 +18,18 @@ export default
 
   created: ->
     @init()
-    EventBus.$on 'signedIn', => @init()
+    EventBus.$on 'signedIn', @init
+
+  beforeDestroy: ->
+    EventBus.$off 'signedIn', @init
 
   watch:
     '$route.params.key': 'init'
 
   computed:
+    canEditGroup: ->
+      AbilityService.canEditGroup(@group)
+
     tabs: ->
       return unless @group
       query = ''
@@ -38,7 +42,7 @@ export default
         {id: 4, name: 'files',     route: @urlFor(@group, 'files')+query}
         {id: 5, name: 'subgroups',  route: @urlFor(@group, 'subgroups')+query}
         {id: 6, name: 'settings',  route: @urlFor(@group, 'settings')}
-      ].filter (obj) => !(obj.name == "subgroups" && @group.isSubgroup())
+      ].filter (obj) => !(obj.name == "subgroups" && @group.parent())
 
     coverImageSrc: ->
       if @group
@@ -52,21 +56,31 @@ export default
       Records.groups.findOrFetch(@$route.params.key)
       .then (group) =>
         @group = group
+        ahoy.trackView
+          groupId: @group.id
+          organisationId: @group.parentOrSelf().id
+          pageType: 'groupPage'
         subscribeTo(@group)
-        @openInstallSlackModal(@group) if @$route.query.install_slack
       .catch (error) =>
         EventBus.$emit 'pageError', error
-        EventBus.$emit 'openAuthModal' if error.status == 403
+        EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()
 
     titleVisible: (visible) ->
       EventBus.$emit('content-title-visible', visible)
 
+    openGroupSettingsModal: ->
+      return null unless @canEditGroup
+      EventBus.$emit 'openModal',
+        component: 'GroupForm'
+        props:
+          group: @group
+
 </script>
 
 <template lang="pug">
-v-content
+v-main
   loading(v-if="!group")
-  v-container.group-page.max-width-1024(v-else)
+  v-container.group-page.max-width-1024(v-if="group")
     v-img(style="border-radius: 8px" :src="coverImageSrc" eager)
     h1.display-1.my-4(v-observe-visibility="{callback: titleVisible}")
       span(v-if="group && group.parent()")
@@ -77,15 +91,16 @@ v-content
       span.group-page__name.mr-4
         | {{group.name}}
     trial-banner(:group="group")
-    group-onboarding-card(v-if="group" :group="group")
+    group-onboarding-card(:group="group")
     formatted-text.group-page__description(v-if="group" :model="group" column="description")
+    join-group-button(:group='group')
     document-list(:model='group')
-    attachment-list(:attachments="group.attachments")
+    attachment-list(:attachments="group.attachments" :edit="canEditGroup && openGroupSettingsModal")
     v-divider.mt-4
-    v-tabs(v-model="activeTab" center-active background-color="transparent" centered grow)
+    v-tabs(v-model="activeTab" center-active background-color="transparent" centered grow show-arrows)
+      v-tabs-slider
       v-tab(v-for="tab of tabs" :key="tab.id" :to="tab.route" :class="'group-page-' + tab.name + '-tab' " exact)
         span(v-t="'group_page.'+tab.name")
-    join-group-button(:group='group')
     router-view
 </template>
 

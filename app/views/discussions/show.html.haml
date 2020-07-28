@@ -1,6 +1,6 @@
 .thread-page.mt-12
-  %main.v-content
-    .v-content__wrap
+  %main.v-main
+    .v-main__wrap
       %div
         .container.thread-page.max-width-800
           %div.thread-card.v-card.v-card--outlined.v-sheet.theme--light
@@ -18,7 +18,7 @@
               .mx-3.mb-2
                 .context-panel__details.my-2.body-2.align-center.layout
                   %span.mr-2
-                    = render "discussions/avatar", user: @discussion.author
+                    = render "base_mailer/avatar", user: @discussion.author
                   -# %a.user-avatar.mr-4{:href => "/u/jennifergrey", :style => "width: 40px; margin: 0px;"}
                   -#   .v-avatar{:style => "height: 40px; min-width: 40px; width: 40px;", :title => "Jennifer Grey"}
                   -#     %img{:alt => "Jennifer Grey", :src => "/system/users/uploaded_avatars/000/001/902/large/jennifer.png?1579658115"}/
@@ -44,5 +44,5 @@
                   = render_rich_text(@discussion.body, @discussion.body_format)
               %hr.v-divider.my-4.theme--light{"aria-orientation" => "horizontal", :role => "separator"}
             .activity-panel
-              - @discussion.items.order("created_at #{@discussion.newest_first ? 'desc' : 'asc'}").where(kind: ['new_comment', 'poll_created', 'stance_created']).limit(@pagination[:limit]).offset(@pagination[:offset]).each do |item|
-                = render "discussions/thread_items/#{item.kind}", item: item
+              - @discussion.items.includes(:eventable, :user).order("created_at #{@discussion.newest_first ? 'desc' : 'asc'}").where(kind: ['new_comment', 'poll_created', 'stance_created']).limit(@pagination[:limit]).offset(@pagination[:offset]).each do |item|
+                = render "discussions/thread_items/thread_item", item: item

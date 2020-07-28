@@ -3,52 +3,47 @@ module Ability::Group
     super(user)
 
     can [:show], ::Group do |group|
-      if group.archived_at || group.is_guest_group?
-        false
-      else
+      !group.archived_at &&
+      (
         group.is_visible_to_public? or
-        user_is_member_of?(group.id) or
-        (group.is_visible_to_parent_members? and user_is_member_of?(group.parent_id))
-      end
+        group.members.exists?(user.id) or
+        (group.is_visible_to_parent_members? and user_is_member_of?(group.parent_id)) or
+        (user.group_token && user.group_token == group.token) or
+        (user.membership_token && group.memberships.pending.find_by(token: user.membership_token))
+      )
     end
 
     can [:vote_in], ::Group do |group|
-      if group.is_formal_group?
-        user_is_admin_of(group.id) ||
-        (user_is_member_of(group.id) && group.members_can_vote)
-      else
-        user_is_member_of(group.id)
-      end
+      group.admins.exists?(user.id) || (group.members_can_vote && group.members.exists?(user.id))
     end
 
     can [:see_private_content, :subscribe_to], ::Group do |group|
-      if group.archived_at
-        false
-      else
-        (group.is_guest_group? && user.ability.can?(:show, group.target_model)) or
-        user_is_member_of?(group.id) or
+      !group.archived_at && (
         group.group_privacy == 'open' or
-        (group.is_visible_to_parent_members? and user_is_member_of?(group.parent_id))
-      end
+        group.members.exists?(user.id) or
+        (group.is_visible_to_parent_members? and group.parent_or_self.members.exists?(user.id)))
     end
 
     can [:update,
          :email_members,
          :archive,
+         :destroy,
          :publish,
          :export,
          :view_pending_invitations,
          :set_saml_provider], ::Group do |group|
-      user_is_admin_of?(group.id)
+      group.admins.exists?(user.id)
     end
 
     can [:members_autocomplete,
-         :set_volume,
-         :see_members,
-         :make_draft,
-         :move_discussions_to,
-         :view_previous_proposals], ::Group do |group|
-      user.email_verified? && user_is_member_of?(group.id)
+         :set_volume], ::Group do |group|
+      user.email_verified? && group.members.exists?(user.id)
+    end
+
+    can [:move_discussions_to], ::Group do |group|
+      user.email_verified? &&
+      (group.admins.exists?(user.id) ||
+      (group.members_can_start_discussions? && group.members.exists?(user.id)))
     end
 
     can [:add_members,
@@ -56,17 +51,16 @@ module Ability::Group
          :announce,
          :manage_membership_requests], ::Group do |group|
       user.email_verified? && Subscription.for(group).is_active? && !group.has_max_members &&
-      ((group.members_can_add_members? && user_is_member_of?(group.id)) ||
-      user_is_admin_of?(group.id))
+      ((group.members_can_add_members? && group.members.exists?(user.id)) || group.admins.exists?(user.id))
     end
 
     # please note that I don't like this duplication either.
     # add_subgroup checks against a parent group
     can [:add_subgroup], ::Group do |group|
       user.email_verified? &&
-      group.is_parent? &&
-      user_is_member_of?(group.id) &&
-      (group.members_can_create_subgroups? || user_is_admin_of?(group.id))
+      (group.is_parent? &&
+      group.members.exists?(user.id) &&
+      (group.members_can_create_subgroups? || group.admins.exists?(user.id)))
     end
 
     can :move, ::Group do |group|

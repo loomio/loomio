@@ -1,7 +1,0 @@
-.auth-provider-form{ng-if: "providers.length"}
-  .auth-provider-form__providers
-    %button.md-button.md-raised{type: "button", class: "{{ (provider.name == 'saml') ? 'md-primary' : provider.name }}", ng-click: "select(provider)", ng-repeat: "provider in providers"}
-      %i.mdi.mdi-24px{class: "mdi-{{(provider.name == 'saml') ? 'key-variant' : provider.name}}"}
-      %span{translate: "auth_form.continue_with_provider", translate-value-provider: "{{capitalize(provider.name)}}"}>
-      %span
-    %p.md-subhead.auth-email-form__or-enter-email{ng-if: "emailLogin", translate: "auth_form.or_enter_your_email"}

@@ -7,8 +7,6 @@ class Discussion < ApplicationRecord
   include HasTimeframe
   include HasEvents
   include HasMentions
-  include HasGuestGroup
-  include HasDrafts
   include HasImportance
   include MessageChannel
   include SelfReferencing
@@ -21,16 +19,16 @@ class Discussion < ApplicationRecord
 
   no_spam_for :title, :description
 
-  scope :archived, -> { where('archived_at is not null') }
-
   scope :last_activity_after, -> (time) { where('last_activity_at > ?', time) }
   scope :order_by_latest_activity, -> { order('discussions.last_activity_at DESC') }
+  scope :recent, -> { where('last_activity_at > ?', 6.weeks.ago) }
+  scope :order_by_importance, -> { order(importance: :desc, last_activity_at: :desc) }
 
-  scope :visible_to_public, -> { where(private: false) }
-  scope :not_visible_to_public, -> { where(private: true) }
+  scope :visible_to_public, -> { kept.where(private: false) }
+  scope :not_visible_to_public, -> { kept.where(private: true) }
 
-  scope :is_open, -> { where(closed_at: nil) }
-  scope :is_closed, -> { where.not(closed_at: nil) }
+  scope :is_open, -> { kept.where(closed_at: nil) }
+  scope :is_closed, -> { kept.where("closed_at is not null") }
 
   validates_presence_of :title, :group, :author
   validate :private_is_not_nil
@@ -43,11 +41,7 @@ class Discussion < ApplicationRecord
   is_rich_text    on: :description
   has_paper_trail only: [:title, :description, :private, :group_id]
 
-  def self.always_versioned_fields
-    [:title, :description]
-  end
-
-  belongs_to :group, class_name: 'FormalGroup'
+  belongs_to :group, class_name: 'Group'
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id'
   has_many :polls, dependent: :destroy
@@ -66,9 +60,13 @@ class Discussion < ApplicationRecord
   has_many :items, -> { includes(:user).thread_events }, class_name: 'Event', dependent: :destroy
 
   has_many :discussion_readers, dependent: :destroy
+  has_many :readers, through: :discussion_readers, source: :user
+  has_many :guests, -> { merge DiscussionReader.guests }, through: :discussion_readers, source: :user
+  has_many :admin_guests, -> { merge DiscussionReader.admins }, through: :discussion_readers, source: :user
 
   scope :search_for, ->(fragment) do
      joins("INNER JOIN users ON users.id = discussions.author_id")
+    .kept
     .where("discussions.title ilike :fragment OR users.name ilike :fragment", fragment: "%#{fragment}%")
   end
 
@@ -78,6 +76,7 @@ class Discussion < ApplicationRecord
     .select("ts_headline(discussions.description, plainto_tsquery(#{query}), 'ShortWord=0') as blurb")
     .from(SearchVector.search_for(query, user, opts))
     .joins("INNER JOIN discussions on subquery.discussion_id = discussions.id")
+    .kept
     .where('rank > 0')
     .order('rank DESC, last_activity_at DESC')
   end
@@ -89,8 +88,6 @@ class Discussion < ApplicationRecord
   delegate :email, to: :author, prefix: :author
   delegate :name_and_email, to: :author, prefix: :author
   delegate :locale, to: :author
-
-  alias_method :draft_parent, :group
 
   after_create :set_last_activity_at_to_created_at
 
@@ -105,8 +102,46 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
 
-  def update_undecided_count
-    polls.active.each(&:update_undecided_count)
+  def author
+    super || AnonymousUser.new
+  end
+
+  def members
+    # User.where(id: group.members.pluck(:id).concat(guests.pluck(:id)).uniq)
+    User.active.
+      joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
+      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
+      where('(m.id IS NOT NULL AND m.archived_at IS NULL) OR
+             (dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL)')
+  end
+
+  def admins
+    # User.where(id: group.admins.pluck(:id).concat(admin_guests.pluck(:id)).uniq)
+    User.active.
+      joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
+      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
+      where('(m.admin = TRUE AND m.id IS NOT NULL AND m.archived_at IS NULL) OR
+             (dr.admin = TRUE AND dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL)')
+  end
+
+  def add_guest!(user, inviter)
+    if dr = discussion_readers.find_by(user: user)
+      dr.update(inviter: inviter)
+    else
+      discussion_readers.create!(user: user, inviter: inviter, volume: DiscussionReader.volumes[:normal])
+    end
+  end
+
+  def add_admin!(user, inviter)
+    if dr = discussion_readers.find_by(user: user)
+      dr.update(inviter: inviter, admin: true)
+    else
+      discussion_readers.create!(user: user, inviter: inviter, admin: true, volume: DiscussionReader.volumes[:normal])
+    end
+  end
+
+  def poll_id
+    nil
   end
 
   def created_event_kind
@@ -116,7 +151,7 @@ class Discussion < ApplicationRecord
   def update_sequence_info!
     discussion.ranges_string =
      RangeSet.serialize RangeSet.reduce RangeSet.ranges_from_list discussion.items.order(:sequence_id).pluck(:sequence_id)
-    discussion.last_activity_at = discussion.items.order(:sequence_id).last&.created_at || created_at
+    discussion.last_activity_at = discussion.items.unreadable.order(:sequence_id).last&.created_at || created_at
     update_columns(ranges_string: discussion.ranges_string, last_activity_at: discussion.last_activity_at)
   end
 

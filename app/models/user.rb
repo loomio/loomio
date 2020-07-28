@@ -32,6 +32,9 @@ class User < ApplicationRecord
   attr_accessor :restricted
   attr_accessor :token
   attr_accessor :membership_token
+  attr_accessor :group_token
+  attr_accessor :discussion_reader_token
+  attr_accessor :stance_token
 
   attr_accessor :legal_accepted
 
@@ -71,12 +74,9 @@ class User < ApplicationRecord
 
   has_many :admin_memberships,
            -> { where('memberships.admin = ?', true) },
-           class_name: 'Membership',
-           dependent: :destroy
+           class_name: 'Membership'
 
-  has_many :memberships,
-           -> { where(archived_at: nil) },
-           dependent: :destroy
+  has_many :memberships, -> { where(archived_at: nil) }, dependent: :destroy
 
   has_many :archived_memberships,
            -> { where('archived_at IS NOT NULL') },
@@ -86,10 +86,9 @@ class User < ApplicationRecord
            class_name: 'Membership',
            foreign_key: :inviter_id
 
-  has_many :formal_groups,
-           -> { where(type: "FormalGroup") },
+  has_many :groups,
            through: :memberships,
-           class_name: 'FormalGroup',
+           class_name: 'Group',
            source: :group
 
   has_many :adminable_groups,
@@ -106,15 +105,11 @@ class User < ApplicationRecord
            -> { where archived_at: nil },
            through: :memberships
 
-  has_many :discussions,
-           through: :groups
+  has_many :discussions, through: :groups
 
-  has_many :authored_discussions,
-           class_name: 'Discussion',
-           foreign_key: 'author_id',
-           dependent: :destroy
-
-  has_many :polls, foreign_key: :author_id
+  has_many :authored_discussions, class_name: 'Discussion', foreign_key: 'author_id', dependent: :destroy
+  has_many :authored_polls, class_name: 'Poll', foreign_key: :author_id, dependent: :destroy
+  has_many :created_groups, class_name: 'Group', foreign_key: :creator_id, dependent: :destroy
 
   has_many :identities, class_name: "Identities::Base", dependent: :destroy
 
@@ -124,18 +119,13 @@ class User < ApplicationRecord
   has_many :group_polls, through: :groups, source: :polls
 
   has_many :discussion_readers, dependent: :destroy
-
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :documents, foreign_key: :author_id, dependent: :destroy
-  has_many :drafts, dependent: :destroy
   has_many :login_tokens, dependent: :destroy
-  has_many :tags, through: :formal_groups
+  has_many :events, dependent: :destroy
 
-
-  has_one :deactivation_response,
-          class_name: 'UserDeactivationResponse',
-          dependent: :destroy
+  has_many :tags, through: :groups
 
   before_save :set_avatar_initials
   initialized_with_token :unsubscribe_token,        -> { Devise.friendly_token }
@@ -157,14 +147,17 @@ class User < ApplicationRecord
   scope :search_for, -> (q) { where("users.name ilike :first OR users.name ilike :other OR users.username ilike :first OR users.email ilike :first", first: "#{q}%", other:  "% #{q}%") }
   scope :visible_by, -> (user) { distinct.active.verified.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
   scope :mention_search, -> (user, model, query) do
-    # allow mentioning of anyone in the organisation
-    group_ids = (model.group.parent_or_self.id_and_subgroup_ids + [model.guest_group.id]).compact.uniq
-    distinct.active.
-      search_for(query).
-      joins(:memberships).
-      where("memberships.group_id": group_ids).
-      where.not('users.id': user.id).
-      order("users.name")
+    # allow mentioning of anyone in the organisation or guests of the discussion
+    group_ids = model.group.parent_or_self.id_and_subgroup_ids
+    relation = active.search_for(query).
+                      joins("LEFT OUTER JOIN memberships ON memberships.user_id = users.id").
+                      where.not('users.id': user.id).order("users.name")
+    if model.discussion_id
+      relation.joins("LEFT OUTER JOIN discussion_readers dr ON dr.user_id = users.id AND dr.discussion_id = #{model.discussion_id}").
+               where("memberships.group_id IN (:group_ids) OR dr.id IS NOT NULL", group_ids: group_ids)
+    else
+      relation.where("memberships.group_id IN (:group_ids)", group_ids: group_ids)
+    end
   end
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
 
@@ -174,43 +167,22 @@ class User < ApplicationRecord
     .where('memberships.group_id': group.id)
   }
 
-  scope :joins_readers, ->(model) {
+  scope :joins_discussion_readers, ->(model) {
     joins("LEFT OUTER JOIN discussion_readers dr ON (dr.user_id = users.id AND dr.discussion_id = #{model.discussion_id.to_i})")
   }
 
-  scope :joins_formal_memberships, ->(model) {
+  scope :joins_memberships, ->(model) {
      joins("LEFT OUTER JOIN memberships fm ON (fm.user_id = users.id AND fm.group_id = #{model.group_id.to_i})")
     .where('fm.archived_at': nil)
   }
 
-  scope :joins_guest_memberships, ->(model) {
-     joins("LEFT OUTER JOIN memberships gm ON (gm.user_id = users.id AND gm.group_id = #{model.guest_group_id.to_i})")
-    .where('gm.archived_at': nil)
-  }
-
-  # This is a double-nested join select raw sql statement, eek!
-  # But, it's not soo complicated. Here's what's going on:
-  # Join 1: Grab all instances of a user receiving an announcement from the given model, based on the model's announcement ids
-  # Join 2: Group those instances, taking the most recent instance's created_at as the last_notified_at timestamp
-  #
-  # then, we join that timestamp to the current user query, available in the last_notified_at column
-  # scope :with_last_notified_at, ->(model) {
-  #   select('users.*, last_notified_at').joins(<<~SQL)
-  #     -- join #2
-  #     LEFT JOIN (
-  #       SELECT users.id as user_id, max(notified.created_at) as last_notified_at
-  #       FROM users
-  #       -- join #1
-  #       LEFT JOIN (
-  #         SELECT user_ids, created_at
-  #         FROM   announcees
-  #         WHERE  announcees.announcement_id IN (#{model.announcement_ids.join(',').presence || '-1'})
-  #       ) notified ON notified.user_ids ? users.id::varchar
-  #       GROUP BY users.id
-  #     ) announcements ON announcements.user_id = users.id
-  #   SQL
-  # }
-  #
+  def default_format
+    if experiences['html-editor.uses-markdown']
+      'md'
+    else
+      'html'
+    end
+  end
 
   def set_legal_accepted_at
     self.legal_accepted_at = Time.now
@@ -221,24 +193,25 @@ class User < ApplicationRecord
   end
 
   def self.email_status_for(email)
-    verified_first.find_by(email: email)&.email_status || :unused
+    find_by(email: email)&.email_status || :unused
   end
 
   def self.find_for_database_authentication(warden_conditions)
     super(warden_conditions.merge(email_verified: true))
   end
 
-  define_counter_cache(:memberships_count) {|user| user.memberships.formal.count }
+  define_counter_cache(:memberships_count) {|user| user.memberships.count }
 
   def associate_with_identity(identity)
     if existing = identities.find_by(user: self, uid: identity.uid, identity_type: identity.identity_type)
       existing.update(access_token: identity.access_token)
-      existing.assign_logo!
+      identity = existing
     else
       identities.push(identity)
-      identity.assign_logo!
     end
 
+    update(name: identity.name) if self.name.nil?
+    identity.assign_logo! if self.avatar_url.nil?
     self
   end
 
@@ -328,19 +301,6 @@ class User < ApplicationRecord
     end
   end
 
-  def deactivate!
-    return if self.deactivated_at
-    former_group_ids = group_ids
-    update_attributes(deactivated_at: Time.now, avatar_kind: "initials")
-    memberships.update_all(archived_at: Time.now)
-    Group.where(id: former_group_ids).map(&:update_memberships_count)
-    membership_requests.where("responded_at IS NULL").destroy_all
-  end
-
-  def reactivate!
-    update_attribute(:deactivated_at, nil)
-    archived_memberships.update_all(archived_at: nil)
-  end
 
   # http://stackoverflow.com/questions/5140643/how-to-soft-delete-user-with-devise/8107966#8107966
   def active_for_authentication?

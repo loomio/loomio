@@ -142,6 +142,7 @@ ro:
     total: Total
     action:
       print: Imprima
+      preview: Previzualizare
       search: 'Cauta'
       filter: 'Filtrează'
       back: 'Inapoi'
@@ -189,6 +190,9 @@ ro:
     formatting_help:
       label: 'Formatare'
       title: 'Invață să folosești Markdown pentru a formata textul'
+  merge_accounts:
+    modal:
+      submit: Verifica
   emoji_picker:
     search: Cauta
     common: Utilizate frecvent
@@ -315,13 +319,6 @@ ro:
   notifications:
     header: "Notificari"
     no_notifications: "Nu ai nici o notificare"
-  position_buttons_panel:
-    heading: Sa ai ceva de spus
-  extend_proposal_form:
-    aria_label: Schimba data inchidere
-    title: 'Schimba data inchidere'
-  discussion_record:
-    created: 'Discutia {{title}} a fost creata cu succes in {{groupName}}'
   discussion_form:
     messages:
       created: 'Discutia a inceput'
@@ -351,6 +348,7 @@ ro:
     translate_outcome: Traducere rezultat
     show_history: Arata istorie editari
     edited: Editat
+    history: Istoric
     pin_thread: Marcheaza conversatie
     unpin_thread: De-marcheaza conversatie
     delete_thread: Sterge discutia
@@ -399,7 +397,9 @@ ro:
     options_label: 'Optiuni'
     options:
       label: 'Optiuni'
+      edit_group: 'Editeaza setarile grupului'
       email_settings: 'Preferinte email'
+      leave_group: 'Paraseste grupul'
     volume:
       loud: Trimite email ori de cate ori exista activitate.
       normal: 'Trimite email pentru fiecare activitate importanta: discutii si propuneri noi, rezultate, etc.'
@@ -422,16 +422,6 @@ ro:
     members_can_edit_discussions: 'Membrii pot actualiza contextul si titlul discutiei.'
     members_can_start_discussions: 'Membrii pot creare o discutie noua.'
     submit_update: 'Actualizeaza setarile'
-  documents_page:
-    title: Atașamente
-    confirm_remove_title: Elimina fisierul
-  document:
-    list:
-      title: Atașamente
-    modal:
-      title: Adauga atasament
-    form:
-      title_label: Nume
   membership_requests_page:
     approve: Aproba
     ignore: 'Ignora '
@@ -520,12 +510,7 @@ ro:
       success: Aceasta discutie a fost mutata la {{name}}
   delete_comment_dialog:
     title: 'Sterge comentariu'
-    question: 'Esti sigur ca vrei sa stergi acest comentariu?'
     confirm: 'Sterge comentariu'
-  new_comment_item:
-    context_menu:
-      edit_comment: 'Editeaza comentariul'
-      delete_comment: 'Sterge comentariu'
   contact_message_form:
     name_label: 'Nume'
     subject_label: "Subiect"
@@ -537,10 +522,6 @@ ro:
     invitation: 'Sfaturi pentru a scrie o invitatie'
     proposal: 'Sfaturi pentru a scrie o propunere clara'
     vote: 'Poti sa-ti modifici pozitia oricand doresti'
-  registered_apps_page:
-    name: Nume
-  registered_app_form:
-    name_label: Nume
   decision_tools_card:
     proposal_title: Propunere
     count_title: Verifica
@@ -579,12 +560,19 @@ ro:
     total: Total
   poll_common_subscribe_form:
     subscribe: Subscrie
-  polls_page:
-    heading: Decizii
-    start_new_poll: Decizie noua
   auth_form:
     name_placeholder: Nume
     name: Nume
-  install_slack:
-    progress:
-      invite: Invită
+  webhook:
+    name_label: Nume
+  configure_sso:
+    title: Autentificarea sign-on unic
+  group_survey:
+    success: Multumim!
+    categories:
+      business: Afaceri
+      other: Altele
+    uses:
+      other: Altele
+    referrers:
+      other: Altele

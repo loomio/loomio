@@ -1,4 +1,7 @@
 eo:
+  errors:
+    404:
+      title: Ne trovebla
   group:
     stats:
       members: Membroj
@@ -89,51 +92,10 @@ eo:
       please_respond: Bonvolu respondi
       more_undecided: "%{count} pli…"
       vote_now: Voĉdonu nun
-    proposal:
-      subject:
-        poll_closing_soon: 'Propozicio fermiĝis en 24 horoj: %{title}'
-        poll_closing_soon_author: 'Via propozicio fermiĝos en 24 horoj: %{title}'
-        poll_expired: "Propozicio fermita: %{title}"
-      header:
-        poll_created: '<strong>%{actor}</strong> startigis propozicion'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    poll:
-      subject:
-        stance_created_author: "Bonvolu kontroli vian voĉdonon pri: %{title}"
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    score:
-      subject:
-        stance_created_author: "Bonvolu kontroli vian voĉdonon pri: %{title}"
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    count:
-      subject:
-        poll_closing_soon: '24 ceteraj horoj por kontroli: %{title}'
-        poll_closing_soon_author: 'Via kontrolo finiĝos en 24 horoj: %{title}'
-        poll_expired: "Kontrolo fermita: %{title}"
-        stance_created: "%{actor} partoprenis en: %{title}"
-        stance_created_author: "Bonvolu kontroli vian voĉdonon pri: %{title}"
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    dot_vote:
-      subject:
-        stance_created_author: "Bonvolu kontroli vian voĉdonon pri: %{title}"
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    meeting:
-      subject:
-        stance_created: '%{actor} partoprenis en: %{title}'
-        stance_created_author: "Bonvolu kontroli vian voĉdonon pri: %{title}"
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    ranked_choice:
-      subject:
-        stance_created: '%{actor} partoprenis en: %{title}'
-        stance_created_author: "Bonvolu kontroli vian voĉdonon pri: %{title}"
-      body:
-        voted: '<strong>%{participant}</strong>:'
+    subject:
+      stance_created_author: "Bonvolu kontroli vian voĉdonon pri: %{title}"
+    body:
+      voted: '<strong>%{participant}</strong>:'
   comment_by: Komentis %{comment_author}
   poll_unsubscribe:
     visit_poll: Vidi enketon

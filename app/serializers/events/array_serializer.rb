@@ -1,4 +1,3 @@
-class Events::ArraySerializer < ActiveModel::Serializer
-  embed :ids, include: true
+class Events::ArraySerializer < ApplicationSerializer
   has_many :events, root: :events
 end

@@ -1,6 +1,4 @@
-class DiscussionSerializer < ActiveModel::Serializer
-  embed :ids, include: true
-
+class DiscussionSerializer < ApplicationSerializer
   def self.attributes_from_reader(*attrs)
     attrs.each do |attr|
       case attr
@@ -14,6 +12,7 @@ class DiscussionSerializer < ActiveModel::Serializer
 
   attributes :id,
              :key,
+             :group_id,
              :title,
              :description,
              :description_format,
@@ -33,19 +32,22 @@ class DiscussionSerializer < ActiveModel::Serializer
              :mentioned_usernames,
              :tag_names,
              :newest_first,
-             :max_depth
+             :max_depth,
+             :discarded_at
 
 
   attributes_from_reader :discussion_reader_id,
                          :discussion_reader_volume,
                          :last_read_at,
                          :dismissed_at,
-                         :read_ranges
+                         :read_ranges,
+                         :revoked_at,
+                         :inviter_id,
+                         :admin
 
-  has_one :author, serializer: UserSerializer, root: :users
+  has_one :author, serializer: AuthorSerializer, root: :users
   has_one :group, serializer: GroupSerializer, root: :groups
-  has_one :guest_group, serializer: Simple::GroupSerializer, root: :groups
-  has_many :active_polls, serializer: Full::PollSerializer, root: :polls
+  has_many :active_polls, serializer: PollSerializer, root: :polls
   has_one :created_event, serializer: Events::BaseSerializer, root: :events
   has_one :forked_event, serializer: Events::BaseSerializer, root: :events
 
@@ -64,7 +66,11 @@ class DiscussionSerializer < ActiveModel::Serializer
   end
 
   def include_active_polls?
-    scope[:poll_cache].present?
+    super && scope[:poll_cache].present?
+  end
+
+  def include_mentioned_usernames?
+    description_format == "md"
   end
 
   def reader
@@ -80,11 +86,11 @@ class DiscussionSerializer < ActiveModel::Serializer
   end
 
   def include_created_event?
-    scope[:discussion_event_cache].present?
+    super && scope[:discussion_event_cache].present?
   end
 
   def include_forked_event?
-    scope[:discussion_event_cache].present?
+    super && scope[:discussion_event_cache].present?
   end
 
   def scope

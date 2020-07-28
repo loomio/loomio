@@ -2,38 +2,34 @@ require 'rails_helper'
 
 describe Group do
   let(:user) { create(:user) }
-  let(:group) { create(:formal_group) }
+  let(:group) { create(:group) }
   let(:discussion) { create :discussion, group: group }
+  let(:discarded_discussion) { create :discussion, group: group, discarded_at: Time.now }
 
   context 'default cover photo' do
 
     it 'returns an uploaded cover url if one exists' do
       cover_photo_stub = OpenStruct.new(url: 'test.jpg')
-      group = create :formal_group, default_group_cover: create(:default_group_cover)
+      group = create :group, default_group_cover: create(:default_group_cover)
       group.stub(:cover_photo).and_return(cover_photo_stub)
       expect(cover_photo_stub.url).to match group.cover_photo.url
     end
 
     it 'returns the default cover photo for the group if it is a parent group' do
-      group = create :formal_group, default_group_cover: create(:default_group_cover)
+      group = create :group, default_group_cover: create(:default_group_cover)
       expect(group.default_group_cover.cover_photo.url).to match group.cover_photo.url
     end
 
     it 'returns the parents default cover photo if it is a subgroup' do
-      parent = create :formal_group, default_group_cover: create(:default_group_cover)
-      group = create :formal_group, parent: parent
+      parent = create :group, default_group_cover: create(:default_group_cover)
+      group = create :group, parent: parent
       expect(parent.default_group_cover.cover_photo.url).to match group.cover_photo.url
     end
   end
 
   context "memberships" do
     it "deletes memberships assoicated with it" do
-      group = create :formal_group
-      membership = group.add_member! create :user
-      group.destroy
-      expect { membership.reload }.to raise_error ActiveRecord::RecordNotFound
-
-      group = create :guest_group
+      group = create :group
       membership = group.add_member! create :user
       group.destroy
       expect { membership.reload }.to raise_error ActiveRecord::RecordNotFound
@@ -42,27 +38,27 @@ describe Group do
 
   context 'logo_or_parent_logo' do
     it 'returns the group logo if it is a parent' do
-      group = create :formal_group
+      group = create :group
       expect(group.logo_or_parent_logo).to eq group.logo
     end
 
     it 'returns the parents logo if one does not exist' do
-      parent = create :formal_group, logo: fixture_for('images/strongbad.png')
-      group = create :formal_group, parent: parent
+      parent = create :group, logo: fixture_for('images/strongbad.png')
+      group = create :group, parent: parent
       expect(group.logo_or_parent_logo).to eq parent.logo
     end
 
     it 'returns the group logo if one exists' do
-      parent = create :formal_group
-      group = create :formal_group, parent: parent, logo: fixture_for('images/strongbad.png')
+      parent = create :group
+      group = create :group, parent: parent, logo: fixture_for('images/strongbad.png')
       expect(group.logo_or_parent_logo).to eq group.logo
     end
   end
 
   context "subgroup" do
     before :each do
-      @group = create(:formal_group)
-      @subgroup = create(:formal_group, :parent => @group)
+      @group = create(:group)
+      @subgroup = create(:group, :parent => @group)
       @group.reload
     end
 
@@ -82,7 +78,7 @@ describe Group do
 
   context "an existing hidden group" do
     before :each do
-      @group = create(:formal_group, is_visible_to_public: false)
+      @group = create(:group, is_visible_to_public: false)
       @user = create(:user)
     end
 
@@ -112,20 +108,34 @@ describe Group do
     context "parent_members_can_see_discussions = true" do
 
       it "errors for a hidden_from_everyone subgroup" do
-        expect { create(:formal_group,
+        expect { create(:group,
                         is_visible_to_public: false,
                         is_visible_to_parent_members: false,
-                        parent: create(:formal_group),
+                        parent: create(:group),
                         parent_members_can_see_discussions: true) }.to raise_error ActiveRecord::RecordInvalid
       end
 
       it "does not error for a visible to parent subgroup" do
-        expect { create(:formal_group,
+        expect { create(:group,
                         is_visible_to_public: false,
                         is_visible_to_parent_members: true,
-                        parent: create(:formal_group),
+                        parent: create(:group),
                         parent_members_can_see_discussions: true) }.to_not raise_error
       end
+    end
+  end
+
+  describe 'cached discussions counts' do
+    before do
+      discussion
+      discarded_discussion
+    end
+
+    it 'does not count a discarded discussion' do
+      expect(group.public_discussions_count).to eq 0
+      expect(group.open_discussions_count).to eq 1
+      expect(group.closed_discussions_count).to eq 0
+      expect(group.discussions_count).to eq 1
     end
   end
 
@@ -162,11 +172,11 @@ describe Group do
   end
 
   describe 'id_and_subgroup_ids' do
-    let(:group) { create(:formal_group) }
-    let(:subgroup) { create(:formal_group, parent: group) }
+    let(:group) { create(:group) }
+    let(:subgroup) { create(:group, parent: group) }
 
     it 'returns empty for new group' do
-      expect(build(:formal_group).id_and_subgroup_ids).to be_empty
+      expect(build(:group).id_and_subgroup_ids).to be_empty
     end
 
     it 'returns the id for groups with no subgroups' do
@@ -181,8 +191,8 @@ describe Group do
   end
 
   describe "org membership count" do
-    let!(:group) { create(:formal_group) }
-    let!(:subgroup) { create(:formal_group, parent: group) }
+    let!(:group) { create(:group) }
+    let!(:subgroup) { create(:group, parent: group) }
     it 'returns total number of memberships in the org' do
       expect(group.memberships.count + subgroup.memberships.count).to eq 3
       expect(group.org_memberships_count).to eq 2
@@ -190,7 +200,7 @@ describe Group do
   end
 
   describe "has_max_members" do
-    let!(:group) { create(:formal_group) }
+    let!(:group) { create(:group) }
     it 'is true when subscription max members is eq to org_memberships_count' do
       Subscription.for(group).update(max_members: group.org_memberships_count)
       expect(group.has_max_members).to eq true

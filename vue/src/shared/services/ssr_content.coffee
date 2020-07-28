@@ -1,7 +1,7 @@
 node = null
 
 export initContent = ->
-  node = document.querySelector('#ssr .v-content')
+  node = document.querySelector('#ssr .v-main')
   document.querySelector('#ssr').style.display = 'none' if node
 
 export hasContent = ->

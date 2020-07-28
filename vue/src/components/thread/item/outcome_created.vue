@@ -2,7 +2,7 @@
 import OutcomeService from '@/shared/services/outcome_service'
 import EventService from '@/shared/services/event_service'
 
-import { pick } from 'lodash'
+import { pick } from 'lodash-es'
 
 export default
   components:

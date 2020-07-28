@@ -130,7 +130,7 @@ module Plugins
           if redirect
             get route.to_s => redirect(path)
           else
-            get route.to_s => path, constraints: NotGroupSubdomainConstraints
+            get route.to_s => path
           end
         end
       }.to_proc
@@ -140,7 +140,7 @@ module Plugins
       @actions.add Proc.new {
         # prepending rather than appending so we can override application root route
         Loomio::Application.routes.prepend do
-          post route.to_s => path, constraints: NotGroupSubdomainConstraints
+          post route.to_s => path
         end
       }.to_proc
     end

@@ -1,12 +1,10 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
-import AnnouncementModalMixin from '@/mixins/announcement_modal'
+import EventBus from '@/shared/services/event_bus'
 import Flash  from '@/shared/services/flash'
-import { iconFor }                from '@/shared/helpers/poll'
 import { onError } from '@/shared/helpers/form'
 
 export default
-  mixins: [AnnouncementModalMixin]
   props:
     poll: Object
     close: Function
@@ -34,13 +32,16 @@ export default
       .then (data) =>
         pollKey = data.polls[0].key
         Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
+          if !@poll.discussionId
+            @$router.replace(@urlFor(poll)).catch (err) => {}
           Flash.success "poll_#{poll.pollType}_form.#{poll.pollType}_#{actionName}"
           @close()
-          @openAnnouncementModal(Records.announcements.buildFromModel(poll))
-      .catch onError(@poll)
+          return if actionName == 'updated'
+          EventBus.$emit 'openModal',
+            component: 'AnnouncementForm',
+            props: { announcement: Records.announcements.buildFromModel(poll) }
 
-    icon: ->
-      iconFor(@poll)
+      .catch onError(@poll)
 
 </script>
 <template lang="pug">
@@ -57,7 +58,6 @@ v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.c
     poll-common-directive(:poll='poll', name='form', :modal='true')
   v-card-actions.poll-common-form-actions
     v-spacer
-    v-btn.poll-common-form__submit(color="primary" @click='submit()', v-if='!poll.isNew()', v-t="'poll_common_form.update'", aria-label="$t('poll_common_form.update')")
-    v-btn.poll-common-form__submit(color="primary" @click='submit()', v-if='poll.isNew() && poll.groupId', v-t="'poll_common_form.start'", aria-label="$t('poll_common_form.start')")
-    v-btn.poll-common-form__submit(color="primary" @click='submit()', v-if='poll.isNew() && !poll.groupId', v-t="'common.action.next'", aria-label="$t('common.action.next')")
+    v-btn.poll-common-form__submit(color="primary" @click='submit()', v-if='!poll.isNew()', v-t="'common.action.save_changes'")
+    v-btn.poll-common-form__submit(color="primary" @click='submit()', v-if='poll.isNew() && poll.groupId' v-t="{path: 'poll_common_form.start_poll_type', args: {poll_type: poll.translatedPollType()}}")
 </template>

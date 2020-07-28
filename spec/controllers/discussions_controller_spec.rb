@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe DiscussionsController do
-  let(:group) { create :formal_group, is_visible_to_public: true }
+  let(:group) { create :group, is_visible_to_public: true }
   let(:discussion) { create :discussion, private: true, group: group }
   let(:user) { create :user }
 

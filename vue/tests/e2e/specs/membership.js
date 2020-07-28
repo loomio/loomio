@@ -33,6 +33,19 @@ module.exports = {
     page.expectElement('.membership-card__invite')
   },
 
+  'successfully_removes_a_member': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group_with_multiple_coordinators')
+    page.click('.group-page-members-tab')
+    page.click('.members-panel .v-card .v-list .v-list-item:nth-child(1) .membership-dropdown')
+    page.click('.membership-dropdown__remove')
+    page.click('.confirm-modal__submit')
+    page.expectFlash('Member removed')
+    page.click('.group-page-threads-tab')
+    page.expectText('.thread-preview-collection__container', 'How to use Loomio')
+  },
+
   'can_remove_coordinator_privileges': (test) => {
     page = pageHelper(test)
 

@@ -1,7 +1,7 @@
 import utils from './utils'
 import Vue from 'vue'
 import { isEqual } from 'date-fns'
-import { camelCase, union, each, isArray, keys, filter, snakeCase, defaults, orderBy, assign, includes } from 'lodash'
+import { camelCase, union, each, isArray, keys, filter, snakeCase, defaults, orderBy, assign, includes } from 'lodash-es'
 
 export default class BaseModel
   @singular: 'undefinedSingular'
@@ -30,9 +30,9 @@ export default class BaseModel
     Object.defineProperty(@, 'recordsInterface', value: recordsInterface, enumerable: false)
     Object.defineProperty(@, 'recordStore', value: recordsInterface.recordStore, enumerable: false)
     Object.defineProperty(@, 'remote', value: recordsInterface.remote, enumerable: false)
+    @buildRelationships() if @relationships?
     @update(@defaultValues())
     @update(attributes)
-    @buildRelationships() if @relationships?
     @afterConstruction()
 
   bumpVersion: ->
@@ -135,6 +135,7 @@ export default class BaseModel
     args = assign values, userArgs
 
     @[name] = => @recordStore[args.from].find(@[args.by])
+    @[name+'Is'] = (obj) => @recordStore[args.from].find(@[args.by]) == obj
 
   translationOptions: ->
 
@@ -168,6 +169,16 @@ export default class BaseModel
   beforeDestroy: =>
 
   beforeRemove: =>
+
+  discard: =>
+    @processing = true
+    @remote.discard(@keyOrId()).finally =>
+      @processing = false
+
+  undiscard: =>
+    @processing = true
+    @remote.undiscard(@keyOrId()).finally =>
+      @processing = false
 
   save: =>
     @processing = true

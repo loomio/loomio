@@ -10,7 +10,7 @@ notificationTexts = [
   'replied to your comment',
   'shared an outcome',
   'poll is closing soon',
-  'started a poll',
+  'shared a poll',
   'reacted 🙂 to your comment',
   'made you an admin',
   'participated in',
@@ -18,7 +18,7 @@ notificationTexts = [
 ]
 
 module.exports = {
-  'has all the notifications': (test) => {
+  'has_all_the_notifications': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_all_notifications')

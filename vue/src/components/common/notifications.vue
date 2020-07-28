@@ -1,12 +1,9 @@
 <script lang="coffee">
 import Records   from '@/shared/services/records'
 import AppConfig from '@/shared/services/app_config'
-import WatchRecords from '@/mixins/watch_records'
-import {compact, orderBy} from 'lodash'
+import {compact, orderBy} from 'lodash-es'
 
 export default
-  mixins: [WatchRecords]
-
   data: ->
     notifications: []
     unread: []
@@ -20,8 +17,8 @@ export default
         @unreadIds = []
         @unreadCount = 0
       if newVal && !oldVal
-        @unread = Records.notifications.find(kind: {$in: AppConfig.notifications.kinds}, viewed: { $ne: true })
-        @unreadIds = @unread.map (n, i) -> n.id
+        @unread = Records.notifications.find(viewed: { $ne: true })
+        @unreadIds = @unread.map (n) -> n.id
         Records.notifications.viewed()
 
   created: ->
@@ -29,8 +26,8 @@ export default
     @watchRecords
       collections: ['notifications']
       query: (store) =>
-        @notifications = orderBy(store.notifications.find(kind: {$in: AppConfig.notifications.kinds}), ['createdAt'], ['desc'])
-        @unread = store.notifications.find(kind: {$in: AppConfig.notifications.kinds}, viewed: { $ne: true })
+        @notifications = store.notifications.collection.chain().simplesort('id', true).data()
+        @unread = store.notifications.find(viewed: { $ne: true })
         @unreadCount = @unreadCount
 
 </script>
@@ -42,8 +39,15 @@ v-menu.notifications(offset-y bottom v-model="open")
         template(v-slot:badge)
           span.notifications__activity {{unread.length}}
         v-icon mdi-bell
+
+        v-sheet.notifications__dropdown.py-2
+          div(v-if ="notifications.length > 0" v-for="notification in notifications", :key="notification.id")
+            notification(:notification="notification", :unread="unreadIds.includes(notification.id)")
+          v-layout.align-center.justify-center(v-if="notifications.length == 0")
+            span.py-3.px-3(v-t="'notifications.no_notifications'")
+
   v-sheet.notifications__dropdown
-    v-list(dense)
+    v-list(v-if="notifications.length > 0" dense)
       v-list-item.notification(:class="{'v-list-item--active': unreadIds.includes(n.id)}" v-for="n in notifications" :key="n.id" :to="n.href()")
         v-list-item-avatar
           user-avatar(v-if="n.actor()" :user="n.actor()" size="thirtysix")

@@ -1,9 +1,0 @@
-.lmo-card.tag-card{ng-if: "showTagCard()"}
-  %h2.lmo-card-heading{translate: "loomio_tags.card_title"}
-  %loading{ng-if: "initExecuting"}
-  .poll-tags-card__tags{ng-if: "!initExecuting"}
-    .lmo-hint-text{ng-if: "!tags().length", translate: "loomio_tags.helptext"}
-    %tag_list{group: "parent", admin: "canAdministerGroup()"}
-    .lmo-md-actions{ng-if: "canAdministerGroup()"}
-      %outlet{name: "tag-card-footer"}
-      %md-button.md-primary.md-raised.tag-form__create-tag{ng-click: "openTagForm()", translate: "loomio_tags.new_tag"}

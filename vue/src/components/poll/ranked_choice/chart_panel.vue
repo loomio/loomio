@@ -1,7 +1,7 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
 import Records   from '@/shared/services/records'
-import { max, values, orderBy, map, find } from 'lodash'
+import { max, values, orderBy, map, find } from 'lodash-es'
 
 export default
   props:
@@ -36,7 +36,7 @@ export default
       tr(v-for='option in rankedOptions' :key="option.name")
         td.min {{option.rank}}
         td
-          poll-common-stance-choice(:stance-choice="option" hide-score)
+          poll-common-stance-choice(:poll="poll" :stance-choice="option" hide-score)
         td {{option.score}}
 </template>
 <style lang="sass">

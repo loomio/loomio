@@ -1,6 +1,7 @@
 class Queries::AdminGroupPage
   def self.visits_per_day_sql(group)
-    "select date_trunc('day', created_at) date, count(id) from organisation_visits where organisation_id = #{group.id} group by date order by date"
+    # "select date_trunc('day', created_at) date, count(id) from organisation_visits where organisation_id = #{group.id} group by date order by date"
+    "select date_trunc('day', time) date, count(distinct ahoy_events.visit_id) from ahoy_events where (ahoy_events.properties -> 'organisationId' is not null) and (ahoy_events.properties ->> 'organisationId' = '#{group.id}') group by date order by date"
   end
 
   def self.members_per_day_sql(group)
@@ -37,7 +38,8 @@ class Queries::AdminGroupPage
   end
 
   def self.visits_count(group)
-    OrganisationVisit.where(organisation_id: group.id).count
+    # OrganisationVisit.where(organisation_id: group.id).count
+    Ahoy::Event.where("properties -> 'organisationId' is not null and properties ->> 'organisationId' = '#{group.id}'").pluck(:visit_id).uniq.count
   end
 
   def self.thread_items_count(group)

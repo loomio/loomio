@@ -1,6 +1,6 @@
 <script lang="coffee">
 import Records        from '@/shared/services/records'
-import { orderBy } from 'lodash'
+import { orderBy } from 'lodash-es'
 
 export default
   props:

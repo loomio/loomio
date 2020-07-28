@@ -8,7 +8,7 @@ describe API::OutcomesController do
   let(:meeting_poll) { create :poll_meeting, discussion: discussion, closed_at: 1.day.ago, author: user }
   let(:another_poll) { create :poll, discussion: discussion, closed_at: 1.day.ago, author: user }
   let(:discussion) { create :discussion, group: group }
-  let(:group) { create :formal_group }
+  let(:group) { create :group }
   let(:outcome_params) {{ poll_id: poll.id, statement: "We should do this", custom_fields: {} }}
   let(:meeting_params) { outcome_params.merge(
     poll_id: meeting_poll.id,

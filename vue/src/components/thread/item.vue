@@ -6,7 +6,7 @@ import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 
 import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext'
-import { includes, camelCase } from 'lodash'
+import { includes, camelCase } from 'lodash-es'
 import RangeSet from '@/shared/services/range_set'
 
 export default
@@ -20,17 +20,6 @@ export default
     isUnread: false
     isFocused: false
 
-  mounted: ->
-    @updateIsUnread()
-    @$nextTick =>
-      return unless @$refs.defaultSlot
-      @$refs.defaultSlot.querySelectorAll("img[height]").forEach (node) =>
-        ratio = @$refs.defaultSlot.clientWidth / node.getAttribute('width')
-        node.style.height = parseInt(ratio * node.getAttribute('height')) + 'px'
-
-      @$refs.defaultSlot.querySelectorAll("a:not([target])").forEach (node) =>
-        node.setAttribute('target', '_blank')
-
   methods:
     viewed: (viewed) -> @event.markAsRead() if viewed
 
@@ -38,6 +27,16 @@ export default
       @isUnread = Session.isSignedIn() && Session.user().id != @event.actorId && @isReturning && @discussion && !RangeSet.includesValue(@discussion.readRanges, @event.sequenceId)
 
   computed:
+    ariaTranslationKey: ->
+      if @eventable.discardedAt
+        'thread_item.aria.deleted'
+      else
+        'thread_item.aria.'+@event.kind
+    eventable: -> @event.model()
+
+    translatedPollType: ->
+      @eventable.translatedPollType() if @eventable && @eventable.pollType
+
     indentSize: ->
       switch @event.depth
         when 0 then 0
@@ -50,9 +49,10 @@ export default
     iconSize: -> if (@event.depth == 1) then 40 else 24
 
     headline: ->
+      actor = (@event.actor() || @eventable.author() || Records.users.anonymous())
       @$t eventHeadline(@event, true ), # useNesting
-        author:   @event.actorName() || @$t('common.anonymous')
-        username: @event.actorUsername()
+        author:   actor.nameWithTitle(@eventable.group())
+        username: actor.username
         key:      @event.model().key
         title:    eventTitle(@event)
         polltype: @$t(eventPollType(@event)).toLowerCase()
@@ -79,11 +79,11 @@ export default
 </script>
 
 <template lang="pug">
-div
-  .thread-item.px-3.pb-1(v-observe-visibility="{callback: viewed, once: true}")
+section(:aria-label="$t(ariaTranslationKey, {actor: event.actorName(), pollType: translatedPollType, when: approximateDate(event.createdAt) })")
+  .thread-item.px-3.pb-1(:class="[{'thread-item--unread': isUnread}, focusStyleClass]" v-observe-visibility="{callback: viewed, once: true}")
     v-layout.lmo-action-dock-wrapper(:style="{'margin-left': indentSize+'px'}"  :id="'sequence-' + event.sequenceId")
       .thread-item__avatar.mr-3.mt-0
-        user-avatar(v-if='!event.isForkable() && event.actor()' :user='event.actor()' :size='iconSize')
+        user-avatar(v-if='!event.isForkable()' :user='event.actor()' :size='iconSize')
         v-checkbox.thread-item__is-forking(v-if="event.isForkable()" @change="event.toggleFromFork()" :disabled="event.forkingDisabled()" v-model="event.isForking()")
       v-layout.thread-item__body(column)
         v-layout.align-center.wrap
@@ -95,22 +95,21 @@ div
               | depth: {{event.depth}}
               | childCount: {{event.childCount}}
               | eid: {{event.eventableId}}
-            slot(name="headline")
-              span(v-html='headline')
-            mid-dot
-            router-link.grey--text(:to='link')
-              time-ago(:date='event.createdAt')
-            | {{isUnread}}
-            | {{isFocused}}
-            span(v-if="isUnread")
+            div(v-if="eventable.discardedAt")
+              span.grey--text(v-t="'thread_item.removed'")
               mid-dot
-              | new
-            span(v-if="isFocused")
+              router-link.grey--text(:to='link')
+                time-ago(:date='eventable.discardedAt')
+            div.d-flex.align-center(v-else)
+              slot(name="headline")
+                span(v-html='headline')
               mid-dot
-              | read here
-        .default-slot(ref="defaultSlot")
+              router-link.grey--text.body-2(:to='link')
+                time-ago(:date='event.createdAt')
+        .default-slot(v-if="!eventable.discardedAt" ref="defaultSlot")
           slot
         slot(name="actions")
+        slot(name="afterActions")
   slot(name="append")
 </template>
 <style lang="sass">

@@ -2,11 +2,9 @@
 import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
-import {flatten, capitalize, includes} from 'lodash'
-import WatchRecords from '@/mixins/watch_records'
+import {flatten, capitalize, includes} from 'lodash-es'
 
 export default
-  mixins: [WatchRecords]
   props:
     model: Object
     showEdit: Boolean
@@ -34,56 +32,36 @@ export default
     edit: (doc, $mdMenu) ->
       EventBus.$emit 'initializeDocument', doc, $mdMenu
 
+    deleteDocument: (document) ->
+      EventBus.$emit 'openModal',
+        component: 'ConfirmModal'
+        props:
+          confirm:
+            submit: document.destroy
+            text:
+              title:    'comment_form.attachments.remove_attachment'
+              helptext: 'poll_common_delete_modal.question'
+              submit:   'common.action.delete'
+              flash:    'poll_common_delete_modal.success'
+
   computed:
     showTitle: ->
       (@model.showDocumentTitle or @showEdit) and
       (@model.hasDocuments() or @placeholder)
+
+    canDelete: ->
+      AbilityService.canEditGroup(@model.group())
 </script>
 
 <template lang="pug">
 section.document-list
-  h3.document-list__heading.lmo-card-heading(v-if='showTitle', v-t="{ path: 'document.list.title' }")
   p.caption(v-if='!model.hasDocuments() && placeholder', v-t='placeholder')
   .document-list__documents
-    .document-list__document(:class="{'document-list__document--image': document.isAnImage() && !hidePreview}", v-for='document in documents', :key='document.id')
-      v-layout.document-list__image(column align-center v-if='document.isAnImage() && !hidePreview')
-        a.lmo-pointer(:href='document.url' target='_blank')
-          img(:src='document.webUrl', :alt='document.title')
-      v-layout.document-list__entry(align-center)
-        i(:class='`mdi lmo-margin-right mdi-${document.icon}`', :style='{color: document.color}')
+    .attachment-list__item(:class="{'document-list__document--image': document.isAnImage() && !hidePreview}", v-for='document in documents', :key='document.id')
+      a.attachment-list__preview(v-if='document.isAnImage() && !hidePreview' :href='document.url' target='_blank')
+        img(:src='document.webUrl', :alt='document.title')
+      .attachment-list__item-details
         a.document-list__title(:href='document.url' target='_blank') {{ document.title }}
+        v-btn.ml-2(v-if="canDelete" icon :aria-label="$t('common.action.delete')" @click='deleteDocument(document)')
+          v-icon(size="medium") mdi-delete
 </template>
-
-<style lang="sass">
-.document-list__document
-	margin: 8px 0
-	line-height: 32px
-.document-list__document--image
-	padding-top: 8px
-.document-list__entry
-	padding-left: 8px
-.document-list__image
-	margin: auto
-	max-width: 100%
-	img
-		max-width: 100%
-		max-height: 240px
-.document-list__heading
-	font-size: 14px
-	margin-bottom: 0
-.document-list
-	.mdi
-		font-size: 24px
-		&.mdi-pencil
-			font-size: 20px
-.document-list__title
-	font-size: 14px
-.document-list__upload-time
-	margin-right: 8px
-	white-space: nowrap
-.document-list__tooltip
-	padding-top: 8px
-	max-height: 600px
-	max-width: 400px
-
-</style>

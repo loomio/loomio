@@ -52,20 +52,9 @@ module.exports = {
     page.click('.action-menu')
     page.click('.action-dock__button--close_thread')
     page.expectFlash('Thread closed')
-
-    page.pause(500)
-    page.click('.flash-root__action')
-    page.expectFlash('Thread reopened')
+    // page.click('.flash-root__action')
+    // page.expectFlash('Thread reopened')
   },
-
-  // 'doesnt store drafts after submission': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('setup_discussion')
-  //   page.fillIn('.comment-form textarea', 'This is a comment')
-  //   page.click('.comment-form__submit-button')
-  //   page.expectNoText('.comment-form textarea', 'This is a comment')
-  // },
 
   'lets_you_edit_title_and_context': (test) => {
     page = pageHelper(test)
@@ -120,7 +109,7 @@ module.exports = {
 
     page.loadPath('setup_discussion')
     page.click('.action-menu')
-    page.click('.action-dock__button--delete_thread')
+    page.click('.action-dock__button--discard_thread')
     page.click('.confirm-modal__submit')
 
     page.expectFlash('Thread deleted')
@@ -183,11 +172,14 @@ module.exports = {
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'original comment right heerrr')
     page.click('.comment-form__submit-button')
     page.expectFlash('Comment added')
+    page.pause()
     page.click('.thread-item .action-menu')
+
     page.click('.action-dock__button--reply_to_comment')
 
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'hi this is my comment')
     page.click('.comment-form__submit-button')
+
     page.expectText('.event-children .new-comment__body', 'hi this is my comment')
     page.expectFlash('Patrick Swayze notified of reply')
   },
@@ -218,7 +210,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.click('i.mdi-chevron-right')
+    page.click('.html-editor__expand')
     page.click('i.mdi-markdown')
     page.acceptConfirm()
     page.fillIn('.comment-form .lmo-textarea textarea', '@jennifer')
@@ -268,8 +260,40 @@ module.exports = {
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'original comment right hur')
     page.click('.comment-form__submit-button')
     page.click('.thread-item .action-menu')
-    page.click('.action-dock__button--delete_comment')
+    page.click('.action-dock__button--discard_comment')
     page.click('.confirm-modal__submit')
     page.expectNoText('.activity-panel', 'original comment right thur')
+    page.expectText('.activity-panel', 'Item removed')
+  },
+
+  'sign_in_from_discussion_announced_email': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('setup_discussion_mailer_discussion_announced_email')
+    page.expectText('.thread-mailer__subject', "invited you to join")
+    page.expectText('.thread-mailer__body', "A description for this discussion. Should this be rich?")
+    page.click('.thread-mailer__subject--text a', 2000)
+    page.expectText('.context-panel__heading', 'go to the moon')
+    page.expectText('.context-panel__description', 'A description for this discussion')
+    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Hello world!')
+    page.click('.comment-form__submit-button')
+    page.expectText('.thread-item__title', 'Jennifer Grey', 10000)
+    page.expectText('.thread-item__body', 'Hello world!')
+    page.expectText('.context-panel__breadcrumbs', 'Girdy Dancing Shoes')
+  },
+
+  'sign_up_from_invitation_created_email': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('setup_discussion_mailer_invitation_created_email')
+    page.expectText('.thread-mailer__subject', "invited you to join")
+    page.expectText('.thread-mailer__body', "A description for this discussion. Should this be rich?")
+    page.click('.thread-mailer__subject--text a', 2000)
+    page.expectValue('.auth-email-form__email input', 'jen@example.com')
+    page.signUpViaInvitation("Jennifer")
+    page.expectFlash('Signed in successfully')
+    page.expectText('.context-panel__heading', 'go to the moon', 10000)
+    page.expectText('.context-panel__description', 'A description for this discussion')
+    page.expectText('.new-comment__body', 'body of the comment')
   },
 }

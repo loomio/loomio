@@ -16,7 +16,7 @@ class API::MembershipsController < API::RestfulController
         collection.pending
       else
         collection.active
-      end.where(group: model.groups).order('admin desc, created_at desc')
+      end.where(group: model.group).order('memberships.admin desc, memberships.created_at desc')
     end
     respond_with_collection(scope: index_scope)
   end
@@ -27,10 +27,10 @@ class API::MembershipsController < API::RestfulController
 
   def for_user
     load_and_authorize :user
-    same_group_ids   = current_user.formal_group_ids & @user.formal_group_ids
-    public_group_ids = @user.formal_groups.visible_to_public.pluck(:id)
+    same_group_ids   = current_user.group_ids & @user.group_ids
+    public_group_ids = @user.groups.visible_to_public.pluck(:id)
     instantiate_collection do |collection|
-      Membership.joins(:group).where(group_id: same_group_ids + public_group_ids, user_id: @user.id).active.formal.order('groups.full_name')
+      Membership.joins(:group).where(group_id: same_group_ids + public_group_ids, user_id: @user.id).active.order('groups.full_name')
     end
     respond_with_collection serializer: MembershipSerializer
   end
@@ -57,7 +57,7 @@ class API::MembershipsController < API::RestfulController
         when 'mine', 'all'
           model.group.id_and_subgroup_ids
         else
-          model.groups
+          [model.group.id]
         end
 
       collection = collection.where(group_id: group_ids)
@@ -110,20 +110,13 @@ class API::MembershipsController < API::RestfulController
     respond_with_resource
   end
 
-  def undecided
-    poll = load_and_authorize(:poll)
-    instantiate_collection { |collection| collection.where(group: poll.groups, user: poll.undecided) }
-    respond_with_collection
-  end
-
   private
   def valid_orders
-    ['created_at', 'created_at desc', 'users.name', 'admin desc', 'accepted_at desc', 'accepted_at']
+    ['memberships.created_at', 'memberships.created_at desc', 'users.name', 'admin desc', 'accepted_at desc', 'accepted_at']
   end
 
-
   def index_scope
-    { email_user_ids: collection.select { |m| m.inviter_id == current_user.id }.map(&:user_id), include_inviter: true }
+    default_scope.merge({ email_user_ids: collection.select { |m| m.inviter_id == current_user.id }.map(&:user_id), include_inviter: true })
   end
 
   def model
@@ -133,14 +126,12 @@ class API::MembershipsController < API::RestfulController
   end
 
   def accessible_records
-    visible = resource_class.joins(:group).joins(:user).includes(:inviter, {group: [:parent]})
+    visible = resource_class.joins(:group).joins(:user).includes(:user, :inviter, {group: [:parent]})
     if current_user.group_ids.any?
       visible.where("group_id IN (#{current_user.group_ids.join(',')}) OR
-                     groups.parent_id IN (#{ids_or_null(current_user.adminable_group_ids)}) OR
-                     groups.is_visible_to_public = 't'")
+                     groups.parent_id IN (#{ids_or_null(current_user.adminable_group_ids)})")
     else
-      # why do we do this?
-      visible.where("groups.is_visible_to_public = 't'")
+      Membership.none
     end
   end
 

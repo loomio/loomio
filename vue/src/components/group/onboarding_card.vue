@@ -2,7 +2,8 @@
 import Records       from '@/shared/services/records'
 import openModal      from '@/shared/helpers/open_modal'
 import Session       from '@/shared/services/session'
-import {every, invokeMap} from 'lodash'
+import {every, invokeMap} from 'lodash-es'
+import { differenceInDays } from 'date-fns'
 export default
   props:
     group: Object
@@ -62,8 +63,9 @@ export default
       every invokeMap(@activities, 'complete')
 
     show: ->
-      @group.isParent() &&
-      Session.user().isAdminOf(@group) &&
+      (differenceInDays(new Date, Session.user().createdAt) < 30) && # account is less than 30 days old
+      @group.isParent() && 
+      @group.adminsInclude(Session.user()) &&
       !Session.user().hasExperienced("dismissProgressCard")
 
 

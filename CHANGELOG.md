@@ -1,3 +1,50 @@
+## 2020-07-13 (Loomio 2.2.3)
+- Added: Feature to move proposals between groups and subgroups
+- Added: Feature to move standalone polls between groups
+- Added: Automatically accept pending membership in poll
+- Added: Replace "archive group" with discard group with 2 weeks' delayed full deletion
+- Improved: Combined user deactivation and delete features
+- Improved: Invitations for members of parent group added to subgroup automatically accepted
+- Improved: Language and flags around Open, Closed and Secret groups
+- Improved: End of search results message suggests looking at closed threads
+- Improved: Better format "You're invited" text during sign-in
+- Improved: Do not show inline image attachments in group files panel
+- Fixed: Member title display in threads; titles inherit from parent group and always display
+- Fixed: Notification history not showing "poll closing soon" and "replied to comment" events
+- Fixed: Keep membership of groups private
+- Fixed: Null author issue on comments
+- Fixed: Filters dropdown on group page for tags and open/closed threads
+- Fixed: Fix layout of proposal thread item headline
+
+## 2020-04-14 (Loomio 2.1.5)
+
+- Simplified architecture for adding guests to discussions and polls
+- Removed Loomio v1 (Angular) client
+
+
+## 2020-04-07 (Loomio 2.1.4)
+
+- Updated Tiptap for text editor
+- Removed Slack bot support for creating polls/threads
+- Fixed group invitation so other members can resend invitation
+- Fixed poll vote form resetting if poll data changes partway
+- Fixed poll options not displaying in order
+- Fixed exported poll chart sometimes displaying incorrect information
+- Fixed inconsistent poll names
+- Fixed explore page query for open source installs
+
+## 2020-03-16 (Loomio 2.1.3)
+
+- Add subscription information panel in Group Settings
+- Add support for Loom (video platform) share and embed links in text editor
+- Add sorting of Pinned Threads alphanumerically
+- Add in-app notification for Group invitation
+- Fix Meeting Poll vote form reset issue
+- Fix Group page tabs and Thread action tabs not being scrollable on mobile
+- Fix reopen Thread action not showing
+- Fix sign-in modal showing when user is already signed in in some situations
+- Fix completion link in merge accounts email
+
 ## 2020-02-26 (Loomio 2.1.2)
 
 - Added ability for users to merge their own accounts together

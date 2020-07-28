@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe MembershipsController do
-  let(:group) { FactoryBot.create(:formal_group) }
+  let(:group) { FactoryBot.create(:group) }
   let(:user) { FactoryBot.create(:user) }
-  let(:another_group) { FactoryBot.create(:formal_group) }
+  let(:another_group) { FactoryBot.create(:group) }
   let(:another_user) { FactoryBot.create(:user) }
 
   describe "join" do
@@ -21,7 +21,7 @@ describe MembershipsController do
       it 'renders error page with not found message' do
         get :show, params: { token: 'asdjhadjkhaskjdsahda' }
         expect(response.status).to eq 404
-        expect(response).to render_template "errors/404"
+        expect(response).to render_template "application/error"
       end
     end
 

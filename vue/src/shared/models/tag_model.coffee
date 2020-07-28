@@ -1,5 +1,5 @@
 import BaseModel            from '@/shared/record_store/base_model.coffee'
-import { head } from 'lodash'
+import { head } from 'lodash-es'
 
 export default class TagModel extends BaseModel
   @singular: 'tag'

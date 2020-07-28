@@ -4,8 +4,8 @@ describe 'DiscussionService' do
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
   let(:admin) { create(:user) }
-  let(:group) { create(:formal_group) }
-  let(:another_group) { create(:formal_group, is_visible_to_public: false) }
+  let(:group) { create(:group) }
+  let(:another_group) { create(:group, is_visible_to_public: false) }
   let(:discussion) { create(:discussion, author: user, group: group) }
   let(:poll) { create(:poll, discussion: discussion, group: group) }
   let(:comment) { double(:comment,
@@ -24,12 +24,6 @@ describe 'DiscussionService' do
       user.ability.should_receive(:authorize!).with(:create, discussion)
       DiscussionService.create(discussion: discussion,
                                actor: user)
-    end
-
-    it 'clears out the draft' do
-      draft = create(:draft, user: user, draftable: discussion.group, payload: { discussion: { name: 'name draft' } })
-      DiscussionService.create(discussion: discussion, actor: user)
-      expect(draft.reload.payload['discussion']).to be_blank
     end
 
     it 'does not email people' do

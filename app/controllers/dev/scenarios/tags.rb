@@ -13,7 +13,7 @@ module Dev::Scenarios::Tags
   end
 
   def view_discussion_as_visitor_with_tags
-    group = FormalGroup.create!(name: 'Open Dirty Dancing Shoes', group_privacy: 'open', enable_experiments: true)
+    group = Group.create!(name: 'Open Dirty Dancing Shoes', group_privacy: 'open', enable_experiments: true)
     group.add_admin! patrick
     discussion = group.discussions.create!(title: 'This thread is public', private: false, author: patrick)
     DiscussionService.create(discussion: discussion, actor: discussion.author)
@@ -23,7 +23,7 @@ module Dev::Scenarios::Tags
   end
 
   def visit_tags_page
-    group = FormalGroup.create!(name: 'Open Dirty Dancing Shoes', group_privacy: 'open', enable_experiments: true)
+    group = Group.create!(name: 'Open Dirty Dancing Shoes', group_privacy: 'open', enable_experiments: true)
     group.add_admin! patrick
     discussion = group.discussions.create!(title: 'This thread is public', private: false, author: patrick)
     DiscussionService.create(discussion: discussion, actor: discussion.author)

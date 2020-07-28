@@ -7,6 +7,8 @@ hu:
         blank: nem lehet üres
         invalid: nem érvényes érték
   errors:
+    404:
+      title: Nem található
     noscript: A Loomio működéséhez javascript szükséges. A folytatáshoz kérjük engedélyezze a javascriptet böngészőjében
     return_home: Vissza a kezdőoldalra
     not_found: 404-es hiba - a fájl nem található.
@@ -167,7 +169,7 @@ hu:
       join_group: "Csoporthoz csatlakozás"
     membership_request:
       intro_html: hozzáférést kért az egyik csoportodhoz.
-      subject: "%{who} csatlakozást kért a(z)%{who_group} oldalhoz"
+      subject: "%{who} csatlakozást kért a(z)%{which_group} oldalhoz"
       view_group: Itt jóváhagyhatod vagy elutasíthatod a kérelmet
       button_text: Kérés megtekintése
   announcement_count_emails: "%{count} e-mail"
@@ -274,16 +276,6 @@ hu:
     links:
       title: |-
           ## Hivatkozások és képek
-      body: |
-          Ismételd meg hangosan:
-
-          Szögletes zárójelek a hivatkozás nevének, majd kerek zárójelek a hivatkozás URL-nek. A zárójelek között nincs szóköz.
-
-          [Loomio Homepage](https://www.loomio.org/)
-
-          A képek ugyanígy, csak egy felkiáltójel van előtte.
-
-          ![loomio logo](https://i.imgur.com/Fvtworb.png)
   group_mailer:
     resend: 'EMLÉKEZTETÉS: %{member} arra vár, hogy csatlakozzon ide: %{group_name}'
   poll_mailer:
@@ -307,239 +299,21 @@ hu:
       verify_stance_for_unverified_user: "Köszönjük, hogy szavaztál itt: %{title}. Kérjük ellenőrizd az e-mail címed, hogy elküldhessük az eredményeket, amikor azok készen állnak."
       verify_stance_for_verified_user: "Úgy tűnik, hogy szavaztál erre: %{title} Ha te voltál, kérjük hogy kattints az alábbi hivatkozásra a szavazat megerősítéséhez."
       you_have_until: '%{when} -ig van lehetőséged részt venni.'
-    proposal:
-      subject:
-        poll_created: '%{actor} indított javaslatot: %{title}'
-        poll_edited: '%{actor} szerkesztette a javaslatot: %{title}'
-        poll_announced: '%{actor} meghívott téged, hogy szavazz itt: %{title}'
-        poll_closing_soon: 'A javaslat lezárása 24 órán belül:%{title}'
-        poll_closing_soon_author: 'A javaslat 24 órán belül lezárul:%{title}'
-        poll_expired: "A javaslat lezárva:%{title}"
-        poll_expired_author: 'A javaslatát lezárták. Oszd meg az eredményt:%{title}'
-        outcome_created: '%{actor} megosztotta a javaslat eredményét: %{title}'
-        outcome_announced: '%{actor} megosztotta a javaslat eredményét: %{title}'
-        stance_created: "%{actor} szavazott: %{title}"
-        user_mentioned: '%{actor} megemlített téged a következőben: %{title}'
-        user_reminded: '%{actor} emlékeztet téged, hogy szavazz:%{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> elindított egy javaslatot'
-        poll_edited: '<strong>%{actor}</strong> szerkesztette a javaslatot'
-        poll_announced: '<strong>%{actor}</strong> meghívott téged hogy szavazz egy javaslatról'
-        poll_closing_soon: '<strong>%{actor}</strong> javaslata 24 órán belül lezárul. Itt az ideje, hogy szavazz, akár megváltoztasd a szavazatodat, vagy ösztönözd mások részvételét.'
-        poll_closing_soon_author: 'A szavazásod 24 órán belül lezárul - remek alkalom, hogy emlékeztesd az embereket erre, vagy ha szükséges, meghosszabbítsd a határidőt.'
-        poll_expired: "<strong>%{actor}</strong> javaslata lezárva: %{title}"
-        poll_expired_author: 'A javaslatod <strong>lezárult</strong>. Kérjük szentelj egy kis időt az elhangzottak figyelembe vételére, és <strong>oszd meg az eredményt</strong> a csoporttal, hogy az emberek tudják, mi fog történni ezután.'
-        outcome_created: '<strong>%{actor}</strong> megosztott egy javaslat eredményét.'
-        outcome_announced: '<strong>%{actor}</strong> megoszott egy javaslat eredményét.'
-        stance_created: "<strong>%{actor}</strong> szavazott erre: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> megemlített téged: %{title}'
-        user_reminded: '<strong>%{actor}</strong> emlékeztet, hogy szavazz: %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    poll:
-      subject:
-        poll_created: '%{actor} szavazást indított:%{title}'
-        poll_edited: '%{actor} szerkesztette a szavazást:%{title}'
-        poll_announced: '%{actor} meghívott téged, hogy szavazz itt:%{title}'
-        poll_closing_soon: 'A szavazás lezárása 24 órán belül:%{title}'
-        poll_closing_soon_author: 'A szavazásod 24 órán belül lezárul:%{title}'
-        poll_expired: "Szavazás eredménye:%{title}"
-        poll_expired_author: 'A szavazásod lezárult. Oszd meg az eredményt:%{title}'
-        poll_option_added: '%{actor} hozzáadott lehetőségeket a következőhöz:%{title}'
-        poll_option_added_author: '%{actor} hozzáadott lehetőségeket a következőhöz: %{title}'
-        outcome_created: '%{actor} megosztotta a szavazás eredményét: %{title}'
-        outcome_announced: '%{actor} megosztotta a szavazás eredményét: %{title}'
-        stance_created: "%{actor} szavazott: %{title}"
-        stance_created_author: "Kérjük, ellenőrizd a szavazatod:%{title}"
-        user_mentioned: '%{actor} megemlített téged a következőben:%{title}'
-        user_reminded: '%{actor} emlékeztet téged, hogy szavazz:%{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> elindított egy szavazást'
-        poll_edited: '<strong>%{actor}</strong> szerkesztett egy szavazást'
-        poll_announced: '<strong>%{actor}</strong> meghívott téged hogy szavazz'
-        poll_closing_soon: '<strong>%{actor}</strong> javaslata 24 órán belül lezárul. Itt az ideje, hogy szavazz, akár megváltoztasd a szavazatodat, vagy ösztönözd mások részvételét.'
-        poll_closing_soon_author: 'A szavazásod 24 órán belül lezárul - remek alkalom, hogy emlékeztesd az embereket erre, vagy ha szükséges, meghosszabbítsd a határidőt.'
-        poll_expired: "<strong>%{actor}'s</strong> szavazás lezárult: %{title}"
-        poll_expired_author: 'A szavazásod<strong>lezárult</strong>. Kérjük, szentelj egy kis időt az elhangzottak figyelembe vételére, és <strong>oszd meg az eredményt</strong> a csoporttal, hogy az emberek tudják, mi fog történni ezután.'
-        poll_option_added: '<strong>%{actor}</strong> hozzáadott lehetőségeket ehhez: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> hozzáadott lehetőségeket ehhez: %{title}'
-        outcome_created: '<strong>%{actor}</strong> megosztott egy szavazás eredményét.'
-        outcome_announced: '<strong>%{actor}</strong> megosztott egy szavazás eredményét.'
-        stance_created: "<strong>%{actor}</strong> szavazott erre: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> megemlített téged: %{title}'
-        user_reminded: '<strong>%{actor}</strong> emlékeztet, hogy szavazz: %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    score:
-      subject:
-        poll_created: '%{actor} szavazást indított:%{title}'
-        poll_edited: '%{actor} szerkesztette a szavazást:%{title}'
-        poll_announced: '%{actor} meghívott téged, hogy szavazz itt: %{title}'
-        poll_closing_soon: 'A szavazás lezárul 24 órán belül: %{title}'
-        poll_closing_soon_author: 'A szavazásod 24 órán belül lezárul:%{title}'
-        poll_expired: "Szavazás eredménye:%{title}"
-        poll_expired_author: 'A szavazásod lezárult. Oszd meg az eredményt:%{title}'
-        poll_option_added: '%{actor} hozzáadott lehetőségeket a következőhöz: %{title}'
-        poll_option_added_author: '%{actor} hozzáadott lehetőségeket a következőhöz: %{title}'
-        outcome_created: '%{actor} megosztotta a szavazás eredményét: %{title}'
-        outcome_announced: '%{actor} megosztotta a szavazás eredményét: %{title}'
-        stance_created: "%{actor} szavazott:%{title}"
-        stance_created_author: "Kérünk, hogy erősítsd meg a szavazatod: %{title}"
-        user_mentioned: '%{actor} megemlített téged a következőben:%{title}'
-        user_reminded: '%{actor} emlékeztet téged, hogy szavazz:%{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> elindított egy szavazást'
-        poll_edited: '<strong>%{actor}</strong> szerkesztett egy szavazást'
-        poll_announced: '<strong>%{actor}</strong> meghívott téged hogy szavazz'
-        poll_closing_soon: '<strong>%{actor}</strong> javaslata 24 órán belül lezárul. Itt az ideje, hogy szavazz, akár megváltoztasd a szavazatodat, vagy ösztönözd mások részvételét.'
-        poll_closing_soon_author: 'A szavazásod 24 órán belül lezárul - remek alkalom, hogy emlékeztesse az embereket erre, vagy ha szükséges, meghosszabbítsd a határidőt.'
-        poll_expired: "<strong>%{actor}'s</strong> szavazás lezárult: %{title}"
-        poll_expired_author: 'A szavazásod<strong>lezárult</strong>. Kérjük, szentelj egy kis időt az elhangzottak figyelembe vételére, és <strong>oszd meg az eredményt</strong> a csoporttal, hogy az emberek tudják, mi fog történni ezután.'
-        poll_option_added: '<strong>%{actor}</strong> hozzáadott lehetőségeket ehhez: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> hozzáadott lehetőségeket ehhez: %{title}'
-        outcome_created: '<strong>%{actor}</strong> megosztotta egy szavazás eredményét.'
-        outcome_announced: '<strong>%{actor}</strong> megosztotta egy szavazás eredményét.'
-        stance_created: "<strong>%{actor}</strong> szavazott erre: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> megemlített téged: %{title}'
-        user_reminded: '<strong>%{actor}</strong> emlékeztet, hogy szavazz: %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    count:
-      subject:
-        poll_created: '%{actor} ellenőrzi:%{title}'
-        poll_edited: '%{actor} szerkesztette a felmérést: %{title}'
-        poll_announced: '%{actor} meghívott a részvételre:%{title}'
-        poll_closing_soon: '24 óra marad a felmérésre: %{title}'
-        poll_closing_soon_author: 'A felmérés 24 órán belül lezárul:%{title}'
-        poll_expired: "Felmérés lezárva: %{title}"
-        poll_expired_author: 'A felmérést lezárult. Oszd meg az eredményt: %{title}'
-        outcome_created: '%{actor} megosztotta az eredményt:%{title}'
-        outcome_announced: '%{actor} megosztotta az eredményt:%{title}'
-        stance_created: "%{actor} részt vett:%{title}"
-        stance_created_author: "Kérjük, ellenőrizd a szavazatod: %{title}"
-        user_mentioned: '%{actor} megemlített téged a következőben:%{title}'
-        user_reminded: '%{actor} emlékeztet téged, hogy vegyél részt:%{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> ellenőrzi'
-        poll_edited: '<strong>%{actor}</strong> szerkesztett egy felmérést'
-        poll_announced: '<strong>%{actor}</strong> meghívott téged, hogy vegyél részt'
-        poll_closing_soon: '<strong>%{actor}</strong> felmérése 24 órán belül zárul.'
-        poll_closing_soon_author: 'A felmérés 24 órán belül zárul - ez egy remek alkalom, hogy emlékeztesd az embereket erre, vagy ha szükséges, meghosszabbítsd a határidőt.'
-        poll_expired: "<strong>%{actor}'s</strong> ellenőrzés lezárult: %{title}"
-        poll_expired_author: 'Itt vannak a felmérésed eredményei. Ha szükséges, <strong>oszd meg az eredményt</strong>, hogy az emberek megtudják, hogy mi fog történni ezután.'
-        outcome_created: '<strong>%{actor}</strong> megosztott egy szavazás eredményét.'
-        outcome_announced: '<strong>%{actor}</strong> megosztott egy szavazás eredményét.'
-        stance_created: "<strong>%{actor}</strong> részt vett itt: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> megemlített téged itt: %{title}'
-        user_reminded: '<strong>%{actor}</strong> emlékeztet, hogy szavazz itt: %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    dot_vote:
-      subject:
-        poll_created: '%{actor} pontozó szavazást indított:%{title}'
-        poll_edited: '%{actor} szerkesztette a pontozó szavazást: %{title}'
-        poll_announced: '%{actor} meghívott egy pontozó szavazáson való részvételre: %{title}'
-        poll_closing_soon: 'Pontozó szavazás 24 óra múlva lezárul: %{title}'
-        poll_closing_soon_author: 'A pontozó szavazás 24 órán belül lezárul: %{title}'
-        poll_expired: "Pontozó szavazás eredménye:%{title}"
-        poll_expired_author: 'A pontozó szavazásod lezárult. Oszd meg az eredményt:%{title}'
-        poll_option_added: '%{actor} hozzáadott lehetőségeket ehhez: %{title}'
-        poll_option_added_author: '%{actor} hozzáadott lehetőségeket ehhez: %{title}'
-        outcome_created: '%{actor} megosztotta az eredményt:%{title}'
-        outcome_announced: '%{actor} megosztotta az eredményt:%{title}'
-        stance_created: "%{actor} szavazott:%{title}"
-        stance_created_author: "Kérünk, hogy erősítsd meg a szavazatod: %{title}"
-        user_mentioned: '%{actor} megemlített téged a következőben:%{title}'
-        user_reminded: '%{actor} emlékeztet téged, hogy szavazz:%{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> elindított egy pontozó szavazást'
-        poll_edited: '<strong>%{actor}</strong> szerkesztett egy pontozó szavazást'
-        poll_announced: '<strong>%{actor}</strong> meghívott téged, hogy vegyél részt egy pontozó szavazásban'
-        poll_closing_soon: '<strong>%{actor}</strong> pontozó szavazása 24 órán belül lezárul. Itt az ideje, hogy szavazz, akár megváltoztasd a szavazatodat, vagy ösztönözd mások részvételét.'
-        poll_closing_soon_author: 'A pontozó szavazás 24 órán belül lezárul - remek alkalom, hogy emlékeztesd az embereket erre, vagy ha szükséges, meghosszabbítsd a határidőt.'
-        poll_expired: "Eredmények a <strong>%{actor}'s</strong> pont-szavazáshoz: %{title}"
-        poll_expired_author: 'A pontozó szavazásod <strong>lezárult</strong>. Fontold meg az elhangzottakat, és <strong>oszd meg az eredményt</strong> a csoporttal, így az emberek megtudják, hogy mi fog történni ezután.'
-        poll_option_added: '<strong>%{actor}</strong> hozzáadott lehetőségeket ehhez: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> hozzáadott lehetőségeket ehhez: %{title}'
-        outcome_created: '<strong>%{actor}</strong> megosztotta egy pontozó szavazás eredményét.'
-        outcome_announced: '<strong>%{actor}</strong> megosztotta egy pontozó szavazás eredményét.'
-        stance_created: "<strong>%{actor}</strong> szavazott erre: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> megemlített téged itt: %{title}'
-        user_reminded: '<strong>%{actor}</strong> emlékeztet, hogy szavazz itt: %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    meeting:
-      subject:
-        poll_created: '%{actor} időpont-felmérést indított:%{title}'
-        poll_edited: '%{actor} szerkesztette az időpont-felmérést: %{title}'
-        poll_announced: '%{actor} meghívott egy időpont-felmérésre: %{title}'
-        poll_closing_soon: 'Az időpont-felmérés lezárul 24 órán belül:%{title}'
-        poll_closing_soon_author: 'Az időpont-felmérésed 24 órán belül lezárul: %{title}'
-        poll_expired: "Időpont-felmérés eredmények: %{title}"
-        poll_expired_author: 'Az időpont-felmérés lezárult. Oszd meg az eredményt:%{title}'
-        poll_option_added: '%{actor} hozzáadott lehetőségeket a következőhöz: %{title}'
-        poll_option_added_author: '%{actor} hozzáadott lehetőségeket a következőhöz: %{title}'
-        outcome_created: '%{actor} megosztotta az eredményt:%{title}'
-        outcome_created_author: 'Megosztott egy eredményt:%{title}'
-        outcome_announced: '%{actor} megosztotta az eredményt:%{title}'
-        stance_created: '%{actor} részt vett: %{title}'
-        stance_created_author: "Kérjük ellenőrizd a szavazatod itt: %{title}"
-        user_mentioned: '%{actor} megemlített téged a következőben: %{title}'
-        user_reminded: '%{actor} emlékeztet, hogy szavazz: %{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> elindított egy időpont-felmérést'
-        poll_edited: '<strong>%{actor}</strong> szerkesztett egy időpont-felmérést'
-        poll_announced: '<strong>%{actor}</strong> meghívott téged, hogy vegyél részt egy időpont-felmérésben'
-        poll_closing_soon: '<strong>%{actor}</strong> időpont-felmérése 24 órán belül lezárul. Itt az ideje, hogy szavazz, akár megváltoztasd a szavazatodat, vagy ösztönözd mások részvételét.'
-        poll_closing_soon_author: 'Az időpont-felmérésed 24 órán belül lezárul - emlékeztetheted az embereket erre, vagy szükség esetén meghosszabbíthatod a határidőt.'
-        poll_expired: "<strong>%{actor}</strong> időpont-felmérése lezárult"
-        poll_expired_author: 'A időpont-felmérésed <strong>lezárult</strong>. Fontold meg az elhangzottakat, és <strong>oszd meg az eredményt</strong> a csoporttal, így az emberek megtudják, hogy mi fog történni ezután.'
-        poll_option_added: '<strong>%{actor}</strong> hozzáadott lehetőségeket ehhez: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> hozzáadott lehetőségeket ehhez: %{title}'
-        outcome_created: '<strong>%{actor}</strong> megosztotta egy időpont-felmérés eredményét.'
-        outcome_created_author: 'Megosztottad az időpont-felmérés eredményét.'
-        outcome_announced: '<strong>%{actor}</strong> megosztotta egy időpont felmérés eredményét.'
-        stance_created: "<strong>%{actor}</strong> részt vett itt: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> megemlített téged itt: %{title}'
-        user_reminded: '<strong>%{actor}</strong> emlékeztet, hogy szavazz: %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
-    ranked_choice:
-      subject:
-        poll_created: '%{actor} rangsorolásos szavazást indított: %{title}'
-        poll_edited: '%{actor} szerkesztette a rangsorolásos szavazást: %{title}'
-        poll_announced: '%{actor} meghívott téged, hogy rangsorold a lehetőségeket ebben a szavazásban: %{title}'
-        poll_closing_soon: 'Rangsoroló szavazás 24 órán belül lezárul: %{title}'
-        poll_closing_soon_author: 'A rangsoroló szavazásod 24 órán belül lezárul: %{title}'
-        poll_expired: "Rangsoroló szavazás eredmények: %{title}"
-        poll_expired_author: 'Rangsoroló szavazás lezárult. Oszd meg az eredményt ehhez: %{title}'
-        poll_option_added: '%{actor} hozzáadott lehetőségeket ehhez: %{title}'
-        poll_option_added_author: '%{actor} hozzáadott lehetőségeket ehhez: %{title}'
-        outcome_created: '%{actor} megosztotta az eredményt:%{title}'
-        outcome_created_author: 'Megosztott egy eredményt: %{title}'
-        outcome_announced: '%{actor}megosztotta a rangsorolt eredményt.'
-        stance_created: '%{actor} részt vett: %{title}'
-        stance_created_author: "Kérünk ellenőrizd a szavazatod: %{title}"
-        user_mentioned: '%{actor} megemlített téged a következőben:%{title}'
-        user_reminded: '%{actor} emlékezteti Önt, hogy szavazzon:%{title}'
-      header:
-        poll_created: '<strong>%{actor}</strong> elindított egy rangsoroló szavazást'
-        poll_edited: '<strong>%{actor}</strong> szerkesztett egy rangsoroló szavazást'
-        poll_announced: '<strong>%{actor}</strong> meghívott téged hogy rakj sorba többféle lehetőséget'
-        poll_closing_soon: '<strong>%{actor}</strong> rangsoroló szavazása 24 órán belül lezárul. Itt az ideje, hogy szavazz, akár megváltoztasd a szavazatodat, vagy ösztönözd mások részvételét.'
-        poll_closing_soon_author: 'Rangsoroló szavazásod 24 órán belül lezárul - emlékeztetheted az embereket, vagy ha szükséges, meghosszabbítod a határidőt.'
-        poll_expired: "<strong>%{actor}'s</strong> a rangsorolt választás lezárult"
-        poll_expired_author: 'A rangsoroló szavazásod <strong>lezárult</strong>. Fontold meg az elhangzottakat, és <strong>oszd meg az eredményt</strong> a csoporttal, így az emberek megtudják, hogy mi fog történni ezután.'
-        poll_option_added: '<strong>%{actor}</strong> hozzáadott lehetőségeket ehhez: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> hozzáadott lehetőségeket ehhez: %{title}'
-        outcome_created: '<strong>%{actor}</strong> megosztotta egy rangsoroló szavazás eredményét.'
-        outcome_created_author: 'Megosztottál egy rangsoroló szavazás eredményét.'
-        outcome_announced: '<strong>%{actor}</strong> megosztotta egy rangsoroló szavazás eredményét.'
-        stance_created: "<strong>%{actor}</strong> részt vett itt: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> megemlített téged itt: %{title}'
-        user_reminded: '<strong>%{actor}</strong> emlékeztet, hogy szavazz: %{title}'
-      body:
-        voted: '<strong>%{participant}</strong>:'
+    subject:
+      poll_option_added: '%{actor} hozzáadott lehetőségeket ehhez: %{title}'
+      poll_option_added_author: '%{actor} hozzáadott lehetőségeket ehhez: %{title}'
+      stance_created: "%{actor} szavazott: %{title}"
+      stance_created_author: "Kérünk ellenőrizd a szavazatod: %{title}"
+      user_mentioned: '%{actor} megemlített téged a következőben: %{title}'
+      user_reminded: '%{actor} emlékeztet, hogy szavazz: %{title}'
+    header:
+      poll_option_added: '<strong>%{actor}</strong> hozzáadott lehetőségeket ehhez: %{title}'
+      poll_option_added_author: '<strong>%{actor}</strong> hozzáadott lehetőségeket ehhez: %{title}'
+      stance_created: "<strong>%{actor}</strong> szavazott erre: %{title}"
+      user_mentioned: '<strong>%{actor}</strong> megemlített téged itt: %{title}'
+      user_reminded: '<strong>%{actor}</strong> emlékeztet, hogy szavazz: %{title}'
+    body:
+      voted: '<strong>%{participant}</strong>:'
   comment_by: '%{Comment_author} megjegyzése'
   personal_data:
     title: '%{User_name} személyes adatai itt: %{host_name} '
@@ -574,19 +348,6 @@ hu:
         Sajnáljuk, úgy tűnik, hogy nincs ehhez a csatornához csatolt loomio csoport. Próbáld futtatni a '/loomio' ehelyett a következő csatornák egyikén
         %{integrations}
     stance_not_valid: "Sajnáljuk, nem tudtunk kialakítani álláspontot a *%{poll} * számára. <%{url} | Kattints ide> közvetlenül a szavazáshoz történő szavazáshoz."
-    group_identity_created: |
-        Helló, Loomio Bot vagyok! *%{author} * hozzáadott engem.
-        Segíthetek a csapatodnak együtt hozni döntéseket.
-
-        Funkcióim:
-        - Témák és döntések kezdeményezése a Loomio-on közvetlenül a Slack-tól
-        - Bejelentés, amikor új témák és döntések történnek a Loomio-n
-        - Annak lehetővé tétele, hogy az emberek Slack döntésein szavazzanak- a döntések eredményének kommunikálása
-
-        További információért írja be: _/loomio help_
-
-        A Loomio csoport tagja kell hogy legyél *%{group}* részt tudj venni.
-        Ha még nem csatlakoztál, <%{url}|Kattints ide>
     request_authorization_message: "Még egy lépés: <%{url} |Kattints ide>, hogy engedélyezze a Slack fiókját a Loomio használatához (ezt csak egyszer kell megtenned)."
     poll_closed: "*%{title} * már bezárt! <%{url} | Kattints ide> az eredmények megtekintéséhez."
     go_to_slack: Ugrás a Slack-be

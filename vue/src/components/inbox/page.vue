@@ -4,8 +4,7 @@ import Session       from '@/shared/services/session'
 import Records       from '@/shared/services/records'
 import EventBus      from '@/shared/services/event_bus'
 import ThreadFilter from '@/shared/services/thread_filter'
-import ModalService  from '@/shared/services/modal_service'
-import {each, keys, sum, values, sortBy} from 'lodash'
+import {each, keys, sum, values, sortBy} from 'lodash-es'
 
 export default
   data: ->
@@ -28,11 +27,14 @@ export default
 
   methods:
     startGroup: ->
-      ModalService.open 'GroupModal', group: => Records.groups.build()
+      EventBus.$emit 'openModal',
+        component: 'GroupNewForm',
+        props: { group: Records.groups.build() }
 
     init: (options = {}) ->
-      @loading = true
-      Records.discussions.fetchInbox(options).then => @loading = false
+      if Session.isSignedIn()
+        @loading = true
+        Records.discussions.fetchInbox(options).then => @loading = false
 
       EventBus.$emit 'currentComponent',
         titleKey: 'inbox_page.unread_threads'
@@ -50,7 +52,7 @@ export default
 </script>
 
 <template lang="pug">
-v-content
+v-main
   v-container.inbox-page.thread-preview-collection__container.max-width-1024(grid-list-lg)
     section.dashboard-page__loading(v-if='unreadCount == 0 && loading', aria-hidden='true')
       .thread-previews-container

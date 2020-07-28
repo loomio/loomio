@@ -4,7 +4,7 @@ import AuthModalMixin from '@/mixins/auth_modal'
 import EventBus from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
-import { each, compact, truncate } from 'lodash'
+import { each, compact, truncate } from 'lodash-es'
 import openModal from '@/shared/helpers/open_modal'
 
 export default
@@ -20,7 +20,7 @@ export default
       true
 
   mounted: ->
-    @openAuthModal() if !Session.isSignedIn() && @shouldForceSignIn()
+    @openAuthModal(true) if !Session.isSignedIn() && @shouldForceSignIn()
     EventBus.$on 'currentComponent',     @setCurrentComponent
     EventBus.$on 'openAuthModal',     => @openAuthModal()
     EventBus.$on 'pageError', (error) => @pageError = error
@@ -42,8 +42,8 @@ export default
 
     shouldForceSignIn: (options = {}) ->
       return true if @$route.query.sign_in
-      return true if AppConfig.pendingIdentity.identity_type?
-      return false if Session.isSignedIn() && AppConfig.pendingIdentity.identity_type != "loomio"
+      return true if (AppConfig.pendingIdentity || {}).identity_type?
+      return false if Session.isSignedIn()
 
       switch @$route.path
         when '/email_preferences' then !Session.user().restricted?

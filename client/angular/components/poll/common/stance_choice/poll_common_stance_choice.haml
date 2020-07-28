@@ -1,6 +1,0 @@
-.poll-common-stance-choice.lmo-flex--row.lmo-flex__center{ng-class: "poll-common-stance-choice--{{stanceChoice.poll().pollType}}"}
-  %poll_common_stance_icon{stance_choice: "stanceChoice"}
-  %span{ng-if: "hasVariableScore()"}> {{stanceChoice.score}} -
-  %span.poll-common-stance-choice__option-name{ng-if: "translateOptionName()", translate: "poll_{{stanceChoice.poll().pollType}}_options.{{stanceChoice.pollOption().name}}"}
-  %poll_meeting_time{ng-if: "!translateOptionName() && datesAsOptions()", name: "stanceChoice.pollOption().name"}
-  %span{ng-if: "!translateOptionName() && !datesAsOptions()"} {{stanceChoice.pollOption().name}}

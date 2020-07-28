@@ -1,16 +1,21 @@
 module Dev::Scenarios::Auth
-  def setup_invitation_to_visitor
-    membership = FactoryBot.create(:membership,
-      user: FactoryBot.create(:user, name: nil, email_verified: false),
-      group: create_group
-    )
-    redirect_to membership_url(membership)
+  def setup_invitation_email_to_visitor
+    group = create_group
+    params = {emails: ['newuser@example.com']}
+
+    GroupService.announce(group:group, params: params, actor: group.creator)
+
+    last_email
   end
 
-  def setup_invitation_to_user_with_password
-    membership = create_group.membership_for(jennifer)
-    membership.update(accepted_at: nil)
-    redirect_to membership_url(membership)
+  def setup_invitation_email_to_user_with_password
+    group = create_group
+    user = saved fake_user(password: nil)
+    params = {user_ids: [user.id]}
+
+    GroupService.announce(group:group, params: params, actor: group.creator)
+
+    last_email
   end
 
   def setup_deactivated_user
@@ -39,7 +44,7 @@ module Dev::Scenarios::Auth
   end
 
   def view_open_discussion_as_visitor
-    @group = FormalGroup.create!(name: 'Open Dirty Dancing Shoes',
+    @group = Group.create!(name: 'Open Dirty Dancing Shoes',
                            membership_granted_upon: 'request',
                            group_privacy: 'open')
     @group.add_member! patrick
@@ -51,7 +56,7 @@ module Dev::Scenarios::Auth
 
   def view_closed_group_as_non_member
     sign_in patrick
-    @group = FormalGroup.create!(name: 'Closed Dirty Dancing Shoes',
+    @group = Group.create!(name: 'Closed Dirty Dancing Shoes',
                                 group_privacy: 'closed',
                                 discussion_privacy_options: 'public_or_private')
     @group.add_admin! jennifer
@@ -63,13 +68,13 @@ module Dev::Scenarios::Auth
   def view_secret_group_as_non_member
     patrick.update(is_admin: false)
     sign_in patrick
-    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes',
+    @group = Group.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
     redirect_to group_url(@group)
   end
 
   def view_closed_group_as_visitor
-    @group = FormalGroup.create!(name: 'Closed Dirty Dancing Shoes',
+    @group = Group.create!(name: 'Closed Dirty Dancing Shoes',
                                 membership_granted_upon: 'approval',
                                 group_privacy: 'closed',
                                 discussion_privacy_options: 'public_or_private')
@@ -83,7 +88,7 @@ module Dev::Scenarios::Auth
   end
 
   def view_secret_group_as_visitor
-    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes',
+    @group = Group.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
     @group.add_admin! patrick
     redirect_to group_url(@group)

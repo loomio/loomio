@@ -1,7 +1,7 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
-import { compact, sortBy, without } from 'lodash'
+import { compact, sortBy, without } from 'lodash-es'
 import { onError } from '@/shared/helpers/form'
 
 export default
@@ -9,7 +9,8 @@ export default
     stance: Object
 
   data: ->
-    selectedOptionIds: compact @stance.pollOptionIds()
+    selectedOptionIds: compact(@stance.pollOptionIds() || [parseInt(@$route.query.poll_option_id)])
+    selectedOptionId: @stance.pollOptionIds()[0] || parseInt(@$route.query.poll_option_id)
     pollOptions: []
 
   created: ->
@@ -18,12 +19,23 @@ export default
       query: (records) =>
         @pollOptions = @stance.poll().pollOptions() if @stance.poll()
 
+  computed:
+    poll: -> @stance.poll()
+    optionSelected: -> @selectedOptionIds.length or @selectedOptionId
+    submitText: ->
+      if @stance.castAt
+        'poll_common.update_vote'
+      else
+        'poll_common.submit_vote'
+
   methods:
     submit: ->
-      @stance.id = null
-      @stance.stanceChoicesAttributes = @selectedOptionIds.map (id) =>
-        poll_option_id: id
-      actionName = if @stance.isNew() then 'created' else 'updated'
+      if @poll.multipleChoice
+        @stance.stanceChoicesAttributes = @selectedOptionIds.map (id) =>
+          poll_option_id: id
+      else
+        @stance.stanceChoicesAttributes = [{poll_option_id: @selectedOptionId}]
+      actionName = if !@stance.castAt then 'created' else 'updated'
       @stance.save()
       .then =>
         @stance.poll().clearStaleStances()
@@ -31,38 +43,19 @@ export default
         EventBus.$emit('closeModal')
       .catch onError(@stance)
 
-    orderedPollOptions: ->
-      sortBy @pollOptions, 'priority'
-
-    select: (option) ->
-      if @isSelected(option)
-        @selectedOptionIds = without(@selectedOptionIds, option.id)
-      else
-        if @stance.poll().multipleChoice
-          @selectedOptionIds.push option.id
-        else
-          @selectedOptionIds = [option.id]
-      @$nextTick => @$emit 'focusTextarea'
-
-    isSelected: (option) ->
-      @selectedOptionIds.includes(option.id)
-
 </script>
 
 <template lang="pug">
 .poll-poll-vote-form
   submit-overlay(:value="stance.processing")
-  poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
-  v-list(column)
-    v-list-item.poll-common-vote-form__button(align-center @click='select(option)' v-for='option in orderedPollOptions()' :key='option.id')
-      v-list-item-title
-        v-chip.mr-2(:color="option.color") {{ option.name }}
-        v-icon(v-if="isSelected(option)" color="accent") mdi-check
+  .mb-6(v-if="poll.multipleChoice")
+    v-checkbox.poll-common-vote-form__button(v-for='option in pollOptions' :key='option.id' v-model="selectedOptionIds" :value="option.id" :label="option.name" hide-details :color="option.color")
+  v-radio-group.mb-6(v-if="!poll.multipleChoice" v-model="selectedOptionId")
+    v-radio.poll-common-vote-form__button(v-for='option in pollOptions' :key='option.id' :value="option.id" :label="option.name" hide-details :color="option.color")
   poll-common-add-option-button(:poll='stance.poll()')
   validation-errors(:subject='stance', field='stanceChoices')
-  poll-common-stance-reason.animated(:stance='stance' v-show='selectedOptionIds.length')
+  poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
     v-spacer
-    poll-common-show-results-button(v-if='stance.isNew()')
-    v-btn.poll-common-vote-form__submit(:disabled='!selectedOptionIds.length' color="primary" @click='submit()', v-t="'poll_common.vote'")
+    v-btn.poll-common-vote-form__submit(:disabled='!optionSelected' color="primary" @click='submit()' v-t="submitText")
 </template>

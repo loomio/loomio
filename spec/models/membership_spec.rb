@@ -4,7 +4,7 @@ describe Membership do
   let(:membership) { Membership.new }
   let(:user) { create(:user) }
   let(:user2) { create(:user) }
-  let(:group) { create(:formal_group, is_visible_to_public: true) }
+  let(:group) { create(:group, is_visible_to_public: true) }
 
   describe "validation" do
     it "cannot have duplicate memberships" do

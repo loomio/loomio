@@ -3,7 +3,7 @@ class AttachmentSerializer < ActiveModel::Serializer
   attributes :id, :filename, :content_type, :byte_size, :icon, :group_id,
              :preview_url, :download_url, :created_at
 
-  has_one :author, serializer: UserSerializer, root: :users
+  has_one :author, serializer: AuthorSerializer, root: :users
 
   def author
     object.record.author

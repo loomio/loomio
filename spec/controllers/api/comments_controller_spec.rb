@@ -3,7 +3,7 @@ describe API::CommentsController do
 
   let(:user) { create :user }
   let(:another_user) { create :user }
-  let(:group) { create :formal_group }
+  let(:group) { create :group }
   let(:discussion) { create :discussion, group: group }
   let(:comment) { create :comment, discussion: discussion, author: user }
   let(:another_comment) { create :comment, discussion: discussion, author: another_user }
@@ -29,6 +29,25 @@ describe API::CommentsController do
         end
       end
 
+      describe 'admins_can_edit_user_content' do
+        before do
+          sign_out user
+          sign_in group.admins.first
+        end
+
+        it 'true' do
+          group.update(admins_can_edit_user_content: true)
+          post :update, params: { id: comment.id, comment: comment_params }
+          expect(response.status).to eq 200
+          expect(comment.reload.body).to eq comment_params[:body]
+        end
+
+        it 'false' do
+          post :update, params: { id: comment.id, comment: comment_params }
+          expect(response.status).to eq 403
+        end
+      end
+
       context 'failures' do
         it "responds with an error when there are unpermitted params" do
           comment_params[:dontmindme] = 'wild wooly byte virus'
@@ -47,9 +66,8 @@ describe API::CommentsController do
           comment_params[:body] = ''
           put :update, params: { id: comment.id, comment: comment_params }
           expect(response.status).to eq 422
-
           json = JSON.parse(response.body)
-          expect(json['errors']['body']).to include 'Comment cannot be empty'
+          expect(json['errors']['body']).to include "can't be blank"
         end
       end
     end
@@ -78,14 +96,20 @@ describe API::CommentsController do
           expect(Comment.last.body).to eq "<a rel=\"nofollow ugc noreferrer noopener\" target=\"_blank\">hello</a>"
         end
 
-        it 'allows guest group members to comment' do
+        it 'allows guests to comment' do
           discussion.group.memberships.find_by(user: user).destroy
-          discussion.guest_group.add_member! user
+          discussion.discussion_readers.create(user: user, inviter: discussion.author)
 
           post :create, params: { comment: comment_params }
           expect(response.status).to eq 200
           expect(Comment.where(body: comment_params[:body],
                                user_id: user.id)).to exist
+        end
+
+        it 'disallows aliens to comment' do
+          discussion.group.memberships.find_by(user: user).destroy
+          post :create, params: { comment: comment_params }
+          expect(response.status).to eq 403
         end
 
         it 'responds with a discussion with a reader' do
@@ -109,7 +133,7 @@ describe API::CommentsController do
 
           it 'invites non-members to the discussion' do
             comment_params[:body] = "Hello, @#{another_user.username}!"
-            expect { post :create, params: { comment: comment_params }, format: :json }.to change { discussion.guest_group.memberships.count }.by(1)
+            expect { post :create, params: { comment: comment_params }, format: :json }.to change { discussion.readers.count }.by(1)
           end
         end
       end
@@ -132,13 +156,46 @@ describe API::CommentsController do
           post :create, params: { comment: comment_params }
           json = JSON.parse(response.body)
           expect(response.status).to eq 422
-          expect(json['errors']['body']).to include 'Comment cannot be empty'
+          expect(json['errors']['body']).to include "can't be blank"
+        end
+      end
+    end
+
+    describe 'discard' do
+      context 'allowed to discard' do
+        it 'discards the comment' do
+          body = comment.body
+          CommentService.create(comment: comment, actor: user)
+          delete :discard, params: { id: comment.id }
+          expect(response.status).to eq 200
+          comment.reload
+          expect(comment.discarded?).to be true
+          expect(comment.discarded_by).to eq user.id
+          expect(comment.created_event.user_id).to be nil
+        end
+      end
+
+      context 'not allowed to discard' do
+        it 'discards the comment' do
+          sign_in another_user
+          CommentService.create(comment: comment, actor: user)
+          delete :discard, params: { id: comment.id }
+          expect(response.status).to eq 403
+          comment.reload
+          expect(comment.discarded?).to be false
+          expect(comment.body).to_not be nil
+          expect(comment.user_id).to_not be nil
+          expect(comment.created_event.user_id).to_not be nil
         end
       end
     end
 
     describe 'destroy' do
       context 'allowed to delete' do
+        # NOTE
+        # we may want to spec what happens to replies and events
+        # however for now: replies are turned into comments directly on discussion
+        # and their events are reparented appropriately
         it "destroys a comment" do
           CommentService.create(comment: comment, actor: user)
           delete :destroy, params: { id: comment.id }

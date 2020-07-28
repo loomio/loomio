@@ -2,7 +2,7 @@ require 'rails_helper'
 describe 'CommentService' do
   let(:user) { create :user }
   let(:another_user) { create :user }
-  let(:group) { create(:formal_group) }
+  let(:group) { create(:group) }
   let(:discussion) { create :discussion, group: group, author: user }
   let(:comment) { create :comment, discussion: discussion, author: user }
   let(:reaction) { create :reaction, reactable: comment, user: user }
@@ -14,6 +14,10 @@ describe 'CommentService' do
   end
 
   describe 'destroy' do
+
+    before do
+      DiscussionService.create(discussion: discussion, actor: user)
+    end
 
     it 'checks the actor has permission' do
       user.ability.should_receive(:authorize!).with(:destroy, comment)
@@ -50,12 +54,6 @@ describe 'CommentService' do
     it 'saves the comment' do
       comment.should_receive(:save!).and_return(true)
       CommentService.create(comment: comment, actor: user)
-    end
-
-    it 'clears out the draft' do
-      draft = create(:draft, user: user, draftable: comment.discussion, payload: { comment: { body: 'body draft' } })
-      CommentService.create(comment: comment, actor: user)
-      expect(draft.reload.payload['comment']).to be_blank
     end
 
     context 'comment is valid' do

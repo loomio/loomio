@@ -1,469 +1,176 @@
 require 'rails_helper'
 
-def expect_text(selector, val)
-  Nokogiri::HTML(ActionMailer::Base.deliveries.last.body.parts.last.decoded).css(selector).to_s
-end
+require_relative './mailer_helpers'
 
-def expect_element(selector)
-  Nokogiri::HTML(ActionMailer::Base.deliveries.last.body.parts.last.decoded).css(selector).to_s.length > 0
-end
+poll_types = %w[proposal poll dot_vote score count meeting ranked_choice]
 
 describe Dev::PollsController do
-  it 'test_proposal_poll_created_email' do
-    get :test_proposal_poll_created_email
-    expect_text('.poll-mailer__subject', "invited you to vote on a proposal")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Please respond")
+  render_views
+  poll_types.each do |poll_type|
+    it "#{poll_type} created email" do
+      get :test_poll_scenario, params: {scenario: 'poll_created', poll_type: poll_type, email: true}
+      expect_text('.poll-mailer__subject', "invited you to")
+      expect_subject("poll_mailer.header.poll_announced")
+      expect_element('.poll-mailer-common-summary')
+      expect_text('.poll-mailer__vote', "Please respond")
+    end
+
+    it "anonymous #{poll_type} created email" do
+      get :test_poll_scenario, params: {scenario: 'poll_created', poll_type: poll_type, anonymous: true, email: true}
+      expect_subject("poll_mailer.header.poll_announced")
+      expect_element('.poll-mailer-common-summary')
+      expect_text('.poll-mailer__vote', I18n.t("poll_common_action_panel.anonymous"))
+      expect_text('.poll-mailer__vote', "Please respond")
+    end
+
+    it "#{poll_type} outcome_created email" do
+      get :test_poll_scenario, params: {scenario: 'poll_outcome_created', poll_type: poll_type, email: true}
+      expect_subject("poll_mailer.header.outcome_created")
+      expect_text('.poll-mailer-common-summary', "Outcome")
+      expect_text('.poll-mailer__results-chart', "Results")
+      expect_text('.poll-mailer-common-responses', "Responses")
+    end
+
+    it "anonymous #{poll_type} outcome_created email" do
+      get :test_poll_scenario, params: {scenario: 'poll_outcome_created', poll_type: poll_type, anonymous: true, email: true}
+      expect_subject("poll_mailer.header.outcome_created")
+      expect_text('.poll-mailer-common-summary', "Outcome")
+      expect_text('.poll-mailer__results-chart', "Results")
+      expect_text('.poll-mailer-common-responses', I18n.t("poll_common_action_panel.anonymous"))
+      expect_text('.poll-mailer-common-responses', "Responses")
+      expect_text('.poll-mailer-common-responses', "Anonymous")
+    end
+
+    it "#{poll_type} stance_created email" do
+      get :test_poll_scenario, params: {scenario: 'poll_stance_created', poll_type: poll_type, email: true}
+      expect_subject("poll_mailer.header.stance_created")
+      expect_element('.poll-mailer__stance')
+    end
+
+    it "anonymous #{poll_type} stance_created email" do
+      get :test_poll_scenario, params: {scenario: 'poll_stance_created', poll_type: poll_type, anonymous: true, email: true}
+      expect_subject("poll_mailer.header.stance_created")
+      expect_text(".poll-mailer__subject", "Anonymous")
+      expect_element('.poll-mailer__stance')
+    end
+
+    it "results_hidden #{poll_type} stance_created email" do
+      get :test_poll_scenario, params: {scenario: 'poll_stance_created', poll_type: poll_type, hide_results_until_closed: true, email: true}
+      expect_subject("poll_mailer.header.stance_created")
+      # TODO expect to see user, but not their position or reason
+      expect_element('.poll-mailer__stance')
+    end
+
+    it "#{poll_type} poll_closing_soon email" do
+      get :test_poll_scenario, params: {scenario: 'poll_closing_soon', poll_type: poll_type, email: true}
+      expect_subject("poll_mailer.header.poll_closing_soon")
+      expect_element('.poll-mailer-common-summary')
+      expect_text('.poll-mailer__vote', "Please respond")
+    end
+
+    it "anonymous #{poll_type} poll_closing_soon email" do
+      get :test_poll_scenario, params: {scenario: 'poll_closing_soon', poll_type: poll_type, anonymous: true, email: true}
+      expect_subject("poll_mailer.header.poll_closing_soon")
+      expect_element('.poll-mailer-common-summary')
+      #TODO expect anonymous but see results
+      expect_text('.poll-mailer__vote', "Please respond")
+    end
+
+    it "hide_results #{poll_type} poll_closing_soon email" do
+      get :test_poll_scenario, params: {scenario: 'poll_closing_soon', poll_type: poll_type, hide_results_until_closed: true, email: true}
+      expect_subject("poll_mailer.header.poll_closing_soon")
+      expect_element('.poll-mailer-common-summary')
+      #TODO expect no results panel, just a summary of how many people have voted
+      expect_text('.poll-mailer__vote', "Please respond")
+    end
+
+    it "#{poll_type} poll_closing_soon_with_vote email" do
+      next unless AppConfig.poll_templates.dig(poll_type, 'voters_review_responses')
+      get :test_poll_scenario, params: {scenario: 'poll_closing_soon_with_vote', poll_type: poll_type, email: true}
+      expect_subject("poll_mailer.header.poll_closing_soon")
+      expect_element('.poll-mailer-common-summary')
+      expect_text('.poll-mailer__vote', "You voted:")
+    end
+
+    it "anonymous #{poll_type} poll_closing_soon_with_vote email" do
+      next unless AppConfig.poll_templates.dig(poll_type, 'voters_review_responses')
+      get :test_poll_scenario, params: {scenario: 'poll_closing_soon_with_vote', poll_type: poll_type, anonymous: true, email: true}
+      expect_subject("poll_mailer.header.poll_closing_soon")
+      expect_element('.poll-mailer-common-summary')
+      expect_text('.poll-mailer__vote', "You voted:")
+      expect_text('.poll-mailer-common-responses', "Responses")
+      expect_text('.poll-mailer-common-responses', "Anonymous")
+      expect_no_element('.poll-mailer-common-undecided')
+    end
+
+    it "hide_results #{poll_type} poll_closing_soon_with_vote email" do
+      next unless AppConfig.poll_templates.dig(poll_type, 'voters_review_responses')
+      get :test_poll_scenario, params: {scenario: 'poll_closing_soon_with_vote', poll_type: poll_type, hide_results_until_closed: true, email: true}
+      expect_subject("poll_mailer.header.poll_closing_soon")
+      expect_text('.poll-mailer__vote', "You voted:")
+      expect_text('.poll-mailer-common-responses', I18n.t(:'poll_common_action_panel.results_hidden_until_closed', poll_type: I18n.t(:"poll_types.#{poll_type}")))
+      expect_text('.poll-mailer-common-undecided', "Undecided")
+    end
+
+    it "#{poll_type} poll_closing_soon_author email" do
+      get :test_poll_scenario, params: {scenario: 'poll_closing_soon_author', poll_type: poll_type, email: true}
+      expect_subject("poll_mailer.header.poll_closing_soon_author")
+      expect_element('.poll-mailer-common-summary')
+      expect_text('.poll-mailer__vote', "Please respond")
+    end
+
+    it "#{poll_type} poll_user_mentioned_email" do
+      get :test_poll_scenario, params: {scenario: 'poll_user_mentioned', poll_type: poll_type, email: true}
+      expect_subject("poll_mailer.header.user_mentioned")
+      expect_element('.poll-mailer-common-summary')
+      expect_text('.poll-mailer__vote', "Please respond")
+    end
+
+    it "anonymous #{poll_type} poll_user_mentioned_email" do
+      get :test_poll_scenario, params: {scenario: 'poll_user_mentioned', anonymous: true, poll_type: poll_type, email: true}
+      expect_text('.error', "no emails sent")
+    end
+
+    it "hidden #{poll_type} poll_user_mentioned_email" do
+      get :test_poll_scenario, params: {scenario: 'poll_user_mentioned', hide_results_until_closed: true, poll_type: poll_type, email: true}
+      expect_text('.error', "no emails sent")
+    end
+
+    it "#{poll_type} poll_expired_author_email" do
+      get :test_poll_scenario, params: {scenario: 'poll_expired_author', poll_type: poll_type, email: true}
+      expect_subject("poll_mailer.header.poll_expired_author")
+      expect_element('.poll-mailer__create_outcome')
+      expect_element('.poll-mailer-common-summary')
+      expect_element('.poll-mailer-common-responses')
+      expect_text('.poll-mailer__results-chart', "Results")
+    end
+
+    it "anonymous #{poll_type} poll_expired_author_email" do
+      get :test_poll_scenario, params: {scenario: 'poll_expired_author', poll_type: poll_type, anonymous: true, email: true}
+      expect_subject("poll_mailer.header.poll_expired_author")
+      expect_element('.poll-mailer__create_outcome')
+      expect_element('.poll-mailer-common-summary')
+      expect_element('.poll-mailer-common-responses')
+      expect_text('.poll-mailer__results-chart', "Results")
+      expect_text('.poll-mailer-common-responses', "Anonymous")
+    end
+
+    it "#{poll_type} poll_options_added_author_email" do
+      next if poll_type != "poll"
+      get :test_poll_scenario, params: {scenario: 'poll_options_added_author', poll_type: poll_type, email: true}
+      expect_text('.poll-mailer__subject', "added options to")
+      expect_subject("poll_mailer.header.poll_option_added_author")
+      expect_element('.poll-mailer-common-option-added')
+      expect_element('.poll-mailer__vote')
+    end
+
+    it "anonymous #{poll_type} poll_options_added_author_email" do
+      next if poll_type != "poll"
+      get :test_poll_scenario, params: {scenario: 'poll_options_added_author', anonymous: true, poll_type: poll_type, email: true}
+      expect_text('.poll-mailer__subject', "added options to")
+      expect_subject("poll_mailer.header.poll_option_added_author")
+      expect_element('.poll-mailer-common-option-added')
+      expect_element('.poll-mailer__vote')
+    end
   end
-
-  it 'test_poll_poll_created_email' do
-    get :test_poll_poll_created_email
-    expect_text('.poll-mailer__subject', "invited you to vote in a poll")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Please respond")
-  end
-
-  it 'test_count_poll_created_email' do
-    get :test_count_poll_created_email
-    expect_text('.poll-mailer__subject', "invited you to participate in a count")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Please respond")
-  end
-
-  it 'test_dot_vote_poll_created_email' do
-    get :test_dot_vote_poll_created_email
-    expect_text('.poll-mailer__subject', "invited you to participate in a dot vote")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Vote now")
-  end
-
-  it 'test_meeting_poll_created_email' do
-    get :test_meeting_poll_created_email
-    expect_text('.poll-mailer__subject', "invited you to participate in a time poll")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Vote now")
-  end
-
-  it 'test_ranked_choice_poll_created_email' do
-    get :test_ranked_choice_poll_created_email
-    expect_text('.poll-mailer__subject', "invited you to rank options in a poll")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Vote now")
-  end
-
-  it 'test_score_poll_created_email' do
-    get :test_score_poll_created_email
-    expect_text('.poll-mailer__subject', "invited you to vote in a score poll")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Vote now")
-  end
-
-  it 'test_proposal_poll_edited_email' do
-    get :test_proposal_poll_edited_email
-    expect_text('.poll-mailer__subject', "edited the proposal")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "You voted")
-    expect_text('.poll-mailer-proposal__chart', "Results")
-    expect_text('.poll-mailer-common-responses', "Responses")
-  end
-
-  it 'test_poll_poll_edited_email' do
-    get :test_poll_poll_edited_email
-    expect_text('.poll-mailer__subject', "edited the poll")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "You voted")
-    expect_text('.poll-mailer-common-bar-chart', "Results")
-    expect_text('.poll-mailer-common-responses', "Responses")
-  end
-
-  it 'test_count_poll_edited_email' do
-    get :test_count_poll_edited_email
-    expect_text('.poll-mailer__subject', "edited the check")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "You voted")
-    expect_text('.poll-mailer-common-bar-chart', "Results")
-    expect_text('.poll-mailer-common-responses', "Responses")
-  end
-
-  it 'test_dot_vote_poll_edited_email' do
-    get :test_dot_vote_poll_edited_email
-    expect_text('.poll-mailer__subject', "edited the dot vote")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "You voted")
-    expect_text('.poll-mailer-common-bar-chart', "Results")
-    expect_text('.poll-mailer-dot-vote-responses', "Responses")
-  end
-
-  it 'test_meeting_poll_edited_email' do
-    get :test_meeting_poll_edited_email
-    expect_text('.poll-mailer__subject', "edited the time poll")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "You voted")
-    expect_text('.poll-mailer__meeting-chart', "Results")
-    expect_text('.poll-mailer-meeting-responses', "Responses")
-  end
-
-  it 'test_ranked_choice_poll_edited_email' do
-    get :test_ranked_choice_poll_edited_email
-    expect_text('.poll-mailer__subject', "edited the ranked choice")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "You voted")
-    expect_text('.poll-mailer-ranked-choice__chart', "Results")
-    expect_text('.poll-mailer-ranked-choice-responses', "Responses")
-  end
-
-  it 'test_score_poll_edited_email' do
-    get :test_score_poll_edited_email
-    expect_text('.poll-mailer__subject', "edited the poll")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "You voted")
-    expect_text('.poll-mailer-common-bar-chart', "Results")
-    expect_text('.poll-mailer-score-responses', "Responses")
-  end
-
-  it 'test_proposal_poll_outcome_created_email' do
-    get :test_proposal_poll_outcome_created_email
-    expect_text('.poll-mailer__subject', "shared a proposal outcome")
-    expect_text('.poll-mailer-common-summary', "Outcome")
-    expect_text('.poll-mailer-proposal__chart', "Results")
-    expect_text('.poll-mailer-common-responses', "Responses")
-  end
-
-  it 'test_poll_poll_outcome_created_email' do
-    get :test_poll_poll_outcome_created_email
-    expect_text('.poll-mailer__subject', "shared a poll outcome")
-    expect_text('.poll-mailer-common-summary', "Outcome")
-    expect_text('.poll-mailer-common-bar-chart', "Results")
-    expect_text('.poll-mailer-common-responses', "Responses")
-  end
-
-  it 'test_count_poll_outcome_created_email' do
-    get :test_count_poll_outcome_created_email
-    expect_text('.poll-mailer__subject', "shared an outcome")
-    expect_text('.poll-mailer-common-summary', "Outcome")
-    expect_text('.poll-mailer-common-bar-chart', "Results")
-    expect_text('.poll-mailer-common-responses', "Responses")
-  end
-
-  it 'test_dot_vote_poll_outcome_created_email' do
-    get :test_dot_vote_poll_outcome_created_email
-    expect_text('.poll-mailer__subject', "shared a dot vote outcome")
-    expect_text('.poll-mailer-common-summary', "Outcome")
-    expect_text('.poll-mailer-common-bar-chart', "Results")
-    expect_text('.poll-mailer-dot-vote-responses', "Responses")
-  end
-
-  it 'test_meeting_poll_outcome_created_email' do
-    get :test_meeting_poll_outcome_created_email
-    expect_text('.poll-mailer__subject', "shared a time poll outcome")
-    expect_text('.poll-mailer-common-summary', "Outcome")
-    expect_text('.poll-mailer__meeting-chart', "Results")
-    expect_text('.poll-mailer-meeting-responses', "Responses")
-  end
-
-  it 'test_ranked_choice_poll_outcome_created_email' do
-    get :test_ranked_choice_poll_outcome_created_email
-    expect_text('.poll-mailer__subject', "shared a ranked choice outcome")
-    expect_text('.poll-mailer-common-summary', "Outcome")
-    expect_text('.poll-mailer-ranked-choice__chart', "Results")
-    expect_text('.poll-mailer-ranked-choice-responses', "Responses")
-  end
-
-  it 'test_score_poll_outcome_created_email' do
-    get :test_score_poll_outcome_created_email
-    expect_text('.poll-mailer__subject', "shared a poll outcome")
-    expect_text('.poll-mailer-common-summary', "Outcome")
-    expect_text('.poll-mailer-common-bar-chart', "Results")
-    expect_text('.poll-mailer-score-responses', "Responses")
-  end
-
-  it 'test_proposal_poll_stance_created_email' do
-    get :test_proposal_poll_stance_created_email
-    expect_text('.poll-mailer__subject', "voted on")
-    expect_element('.poll-mailer__stance')
-  end
-
-  it 'test_poll_poll_stance_created_email' do
-    get :test_poll_poll_stance_created_email
-    expect_text('.poll-mailer__subject', "voted on")
-    expect_element('.poll-mailer__stance')
-  end
-
-  it 'test_count_poll_stance_created_email' do
-    get :test_count_poll_stance_created_email
-    expect_text('.poll-mailer__subject', "participated in")
-    expect_element('.poll-mailer__stance')
-  end
-
-  it 'test_dot_vote_poll_stance_created_email' do
-    get :test_dot_vote_poll_stance_created_email
-    expect_text('.poll-mailer__subject', "voted on")
-    expect_element('.poll-mailer__stance')
-  end
-
-  it 'test_meeting_poll_stance_created_email' do
-    get :test_meeting_poll_stance_created_email
-    expect_text('.poll-mailer__subject', "participated in")
-    expect_element('.poll-mailer__stance')
-  end
-
-  # it 'test_ranked_choice_poll_stance_created_email' do
-  #   # GK: the setup task fails for this for some reason; something to do with stance choices
-  #   get :test_ranked_choice_poll_stance_created_email
-  #   expect_text('.poll-mailer__subject', "voted on")
-  #   expect_element('.poll-mailer__stance')
-  # end
-
-  it 'test_score_poll_stance_created_email' do
-    get :test_score_poll_stance_created_email
-    expect_text('.poll-mailer__subject', "voted on")
-    expect_element('.poll-mailer__stance')
-  end
-
-  it 'test_proposal_poll_closing_soon_email' do
-    get :test_proposal_poll_closing_soon_email
-    expect_text('.poll-mailer__subject', "is closing in 24 hours")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Please respond")
-  end
-
-  it 'test_poll_poll_closing_soon_email' do
-    get :test_poll_poll_closing_soon_email
-    expect_text('.poll-mailer__subject', "is closing in 24 hours")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Please respond")
-  end
-
-  it 'test_count_poll_closing_soon_email' do
-    get :test_count_poll_closing_soon_email
-    expect_text('.poll-mailer__subject', "is closing in 24 hours")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Please respond")
-  end
-
-  it 'test_dot_vote_poll_closing_soon_email' do
-    get :test_dot_vote_poll_closing_soon_email
-    expect_text('.poll-mailer__subject', "is closing in 24 hours")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Vote now")
-  end
-
-  it 'test_meeting_poll_closing_soon_email' do
-    get :test_meeting_poll_closing_soon_email
-    expect_text('.poll-mailer__subject', "is closing in 24 hours")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Vote now")
-  end
-
-  it 'test_ranked_choice_poll_closing_soon_email' do
-    get :test_ranked_choice_poll_closing_soon_email
-    expect_text('.poll-mailer__subject', "is closing in 24 hours")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Vote now")
-  end
-
-  it 'test_score_poll_closing_soon_email' do
-    get :test_score_poll_closing_soon_email
-    expect_text('.poll-mailer__subject', "is closing in 24 hours")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Vote now")
-  end
-
-  it 'test_proposal_poll_closing_soon_author_email' do
-    get :test_proposal_poll_closing_soon_author_email
-    expect_text('.poll-mailer__subject', "is closing in 24 hours")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Please respond")
-  end
-
-  it 'test_poll_poll_closing_soon_author_email' do
-    get :test_poll_poll_closing_soon_author_email
-    expect_text('.poll-mailer__subject', "is closing in 24 hours")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Please respond")
-  end
-
-  it 'test_count_poll_closing_soon_author_email' do
-    get :test_count_poll_closing_soon_author_email
-    expect_text('.poll-mailer__subject', "is closing in 24 hours")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Please respond")
-  end
-
-  it 'test_dot_vote_poll_closing_soon_author_email' do
-    get :test_dot_vote_poll_closing_soon_author_email
-    expect_text('.poll-mailer__subject', "is closing in 24 hours")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Vote now")
-  end
-
-  it 'test_meeting_poll_closing_soon_author_email' do
-    get :test_meeting_poll_closing_soon_author_email
-    expect_text('.poll-mailer__subject', "is closing in 24 hours")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Vote now")
-  end
-
-  it 'test_ranked_choice_poll_closing_soon_author_email' do
-    get :test_ranked_choice_poll_closing_soon_author_email
-    expect_text('.poll-mailer__subject', "is closing in 24 hours")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Vote now")
-  end
-
-  it 'test_score_poll_closing_soon_author_email' do
-    get :test_score_poll_closing_soon_author_email
-    expect_text('.poll-mailer__subject', "is closing in 24 hours")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Vote now")
-  end
-
-  it 'test_proposal_poll_user_mentioned_email' do
-    get :test_proposal_poll_user_mentioned_email
-    expect_text('.poll-mailer__subject', "mentioned you in")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Please respond")
-  end
-
-  it 'test_poll_poll_user_mentioned_email' do
-    get :test_poll_poll_user_mentioned_email
-    expect_text('.poll-mailer__subject', "mentioned you in")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Please respond")
-  end
-
-  it 'test_count_poll_user_mentioned_email' do
-    get :test_count_poll_user_mentioned_email
-    expect_text('.poll-mailer__subject', "mentioned you in")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Please respond")
-  end
-
-  it 'test_dot_vote_poll_user_mentioned_email' do
-    get :test_dot_vote_poll_user_mentioned_email
-    expect_text('.poll-mailer__subject', "mentioned you in")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Vote now")
-  end
-
-  it 'test_meeting_poll_user_mentioned_email' do
-    get :test_meeting_poll_user_mentioned_email
-    expect_text('.poll-mailer__subject', "mentioned you in")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Vote now")
-  end
-
-  # it 'test_ranked_choice_poll_user_mentioned_email' do
-  #   get :test_ranked_choice_poll_user_mentioned_email
-  #   expect_text('.poll-mailer__subject', "mentioned you in")
-  #   expect_element('.poll-mailer-common-summary')
-  #   expect_text('.poll-mailer__vote', "Vote now")
-  # end
-
-  it 'test_score_poll_user_mentioned_email' do
-    get :test_score_poll_user_mentioned_email
-    expect_text('.poll-mailer__subject', "mentioned you in")
-    expect_element('.poll-mailer-common-summary')
-    expect_text('.poll-mailer__vote', "Vote now")
-  end
-
-  it 'test_proposal_poll_expired_author_email' do
-    get :test_proposal_poll_expired_author_email
-    expect_text('.poll-mailer__subject', "has closed")
-    expect_element('.poll-mailer__create_outcome')
-    expect_element('.poll-mailer-common-summary')
-    expect_element('.poll-mailer-common-responses')
-    expect_text('.poll-mailer-proposal__chart', "Results")
-  end
-
-  it 'test_poll_poll_expired_author_email' do
-    get :test_poll_poll_expired_author_email
-    expect_text('.poll-mailer__subject', "has closed")
-    expect_element('.poll-mailer__create_outcome')
-    expect_element('.poll-mailer-common-summary')
-    expect_element('.poll-mailer-common-responses')
-    expect_text('.poll-mailer-common-bar-chart', "Results")
-  end
-
-  it 'test_count_poll_expired_author_email' do
-    get :test_count_poll_expired_author_email
-    expect_text('.poll-mailer__subject', "has closed")
-    expect_element('.poll-mailer__create_outcome')
-    expect_element('.poll-mailer-common-summary')
-    expect_element('.poll-mailer-common-responses')
-    expect_text('.poll-mailer-common-bar-chart', "Results")
-  end
-
-  it 'test_dot_vote_poll_expired_author_email' do
-    get :test_dot_vote_poll_expired_author_email
-    expect_text('.poll-mailer__subject', "has closed")
-    expect_element('.poll-mailer__create_outcome')
-    expect_element('.poll-mailer-common-summary')
-    expect_element('.poll-mailer-dot-vote-responses')
-    expect_text('.poll-mailer-common-bar-chart', "Results")
-  end
-
-  it 'test_meeting_poll_expired_author_email' do
-    get :test_meeting_poll_expired_author_email
-    expect_text('.poll-mailer__subject', "has closed")
-    expect_element('.poll-mailer__create_outcome')
-    expect_element('.poll-mailer-common-summary')
-    expect_element('.poll-mailer-meeting-responses')
-    expect_text('.poll-mailer__meeting-chart', "Results")
-  end
-
-  it 'test_ranked_choice_poll_expired_author_email' do
-    get :test_ranked_choice_poll_expired_author_email
-    expect_text('.poll-mailer__subject', "has closed")
-    expect_element('.poll-mailer__create_outcome')
-    expect_element('.poll-mailer-common-summary')
-    expect_element('.poll-mailer-ranked-choice-responses')
-    expect_text('.poll-mailer-ranked-choice__chart', "Results")
-  end
-
-  it 'test_score_poll_expired_author_email' do
-    get :test_score_poll_expired_author_email
-    expect_text('.poll-mailer__subject', "has closed")
-    expect_element('.poll-mailer__create_outcome')
-    expect_element('.poll-mailer-common-summary')
-    expect_element('.poll-mailer-score-responses')
-    expect_text('.poll-mailer-common-bar-chart', "Results")
-  end
-
-  it 'test_poll_poll_options_added_author_email' do
-    get :test_poll_poll_options_added_author_email
-    expect_text('.poll-mailer__subject', "added options to")
-    expect_element('.poll-mailer-common-option-added')
-    expect_element('.poll-mailer__vote')
-  end
-
-  it 'test_dot_vote_poll_options_added_author_email' do
-    get :test_dot_vote_poll_options_added_author_email
-    expect_text('.poll-mailer__subject', "added options to")
-    expect_element('.poll-mailer-common-option-added')
-    expect_element('.poll-mailer__vote')
-  end
-
-  it 'test_meeting_poll_options_added_author_email' do
-    get :test_meeting_poll_options_added_author_email
-    expect_text('.poll-mailer__subject', "added options to")
-    expect_element('.poll-mailer-common-option-added')
-    expect_element('.poll-mailer__vote')
-  end
-
-  it 'test_ranked_choice_poll_options_added_author_email' do
-    get :test_ranked_choice_poll_options_added_author_email
-    expect_text('.poll-mailer__subject', "added options to")
-    expect_element('.poll-mailer-common-option-added')
-    expect_element('.poll-mailer__vote')
-  end
-
-  it 'test_score_poll_options_added_author_email' do
-    get :test_score_poll_options_added_author_email
-    expect_text('.poll-mailer__subject', "added options to")
-    expect_element('.poll-mailer-common-option-added')
-    expect_element('.poll-mailer__vote')
-  end
-
-
 end

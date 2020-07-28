@@ -2,18 +2,20 @@ require 'rails_helper'
 describe API::GroupsController do
 
   let(:user) { create :user }
-  let(:group) { create :formal_group, creator: user }
-  let(:guest_group) { create :guest_group, creator: user }
-  let(:subgroup) { create :formal_group, parent: group }
+  let(:group) { create :group, creator: user }
+  let(:subgroup) { create :group, parent: group }
   let(:discussion) { create :discussion, group: group }
-  let(:another_group) { create :guest_group }
+  let(:another_group) { create :group }
 
   before do
     group.add_admin! user
-    sign_in user
   end
 
   describe 'export' do
+    before do
+      sign_in user
+    end
+
     it 'gives access denied if you dont belong' do
       post :export, params: { id: another_group.key }
       expect(response.status).to eq 403
@@ -24,7 +26,35 @@ describe API::GroupsController do
     end
   end
 
+  describe "destroy" do
+    context "signed in" do
+      before do
+        sign_in user
+      end
+      it 'destroys my group' do
+        delete :destroy, params: { id: group.id }
+        expect(response.status).to eq 200
+        expect { group.reload }.to raise_error ActiveRecord::RecordNotFound
+      end
+
+      it 'does not destroy another group' do
+        delete :destroy, params: { id: another_group.id }
+        expect(response.status).to eq 403
+      end
+    end
+
+    context "not signed in" do
+      it 'returns 403' do
+        delete :destroy, params: { id: group.id }
+        expect(response.status).to eq 403
+      end
+    end
+  end
+
   describe 'suggest_handle' do
+    before do
+      sign_in user
+    end
     it 'suggests a handle based on a group name' do
       get :suggest_handle, params: {name: "test case"}
       json = JSON.parse(response.body)
@@ -32,7 +62,7 @@ describe API::GroupsController do
     end
 
     it 'ensures suggestions are not already taken' do
-      create :formal_group, handle: 'test-case'
+      create :group, handle: 'test-case'
       get :suggest_handle, params: {name: "test case"}
       json = JSON.parse(response.body)
       expect(json['handle']).to eq 'test-case-1'
@@ -46,39 +76,39 @@ describe API::GroupsController do
   end
 
   describe 'show' do
-    it 'returns the group json' do
-      discussion
-      get :show, params: { id: group.key }, format: :json
-      json = JSON.parse(response.body)
-      expect(json.keys).to include *(%w[groups])
-      expect(json['groups'][0].keys).to include *(%w[
-        id
-        key
-        name
-        description
-        parent_id
-        created_at
-        members_can_edit_comments
-        members_can_raise_motions
-        members_can_vote])
-    end
+    context "signed in" do
+      before do
+        sign_in user
+      end
 
-    it 'returns the parent group information' do
-      get :show, params: { id: subgroup.key }, format: :json
-      json = JSON.parse(response.body)
-      group_ids = json['groups'].map { |g| g['id'] }
-      expect(group_ids).to include subgroup.id
-      expect(group_ids).to include group.id
-    end
+      it 'returns the group json' do
+        discussion
+        get :show, params: { id: group.key }, format: :json
+        json = JSON.parse(response.body)
+        expect(json.keys).to include *(%w[groups])
+        expect(json['groups'][0].keys).to include *(%w[
+          id
+          key
+          name
+          description
+          parent_id
+          created_at
+          members_can_edit_comments
+          members_can_raise_motions
+          members_can_vote])
+      end
 
-    it 'does not load guest groups' do
-      get :show, params: { id: guest_group.key }, format: :json
-      expect(response.status).to eq 404
+      it 'returns the parent group information' do
+        get :show, params: { id: subgroup.key }, format: :json
+        json = JSON.parse(response.body)
+        group_ids = json['groups'].map { |g| g['id'] }
+        expect(group_ids).to include subgroup.id
+        expect(group_ids).to include group.id
+      end
     end
 
     context 'logged out' do
-      before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
-      let(:private_group) { create(:formal_group, is_visible_to_public: false) }
+      let(:private_group) { create(:group, is_visible_to_public: false) }
 
       it 'returns public groups if the user is logged out' do
         get :show, params: { id: group.key }, format: :json
@@ -91,10 +121,26 @@ describe API::GroupsController do
         get :show, params: { id: private_group.key }, format: :json
         expect(response.status).to eq 403
       end
+
+      it 'allows show with group token' do
+        session[:pending_group_token] = private_group.token
+        get :show, params: { id: private_group.key }, format: :json
+        expect(response.status).to eq 200
+      end
+
+      it 'allows show with membership token' do
+        new_user = create :user
+        membership = private_group.memberships.create(user: new_user)
+        session[:pending_membership_token] = membership.token
+        get :show, params: { id: private_group.key }, format: :json
+        expect(response.status).to eq 200
+      end
     end
   end
 
   describe 'update' do
+    before { sign_in user }
+
     it 'can update the group privacy to "open"' do
       group.update(group_privacy: 'closed')
       group_params = { group_privacy: 'open' }
@@ -138,13 +184,14 @@ describe API::GroupsController do
   end
 
   describe 'count_explore_results' do
+    before { sign_in user }
     it 'returns the number of explore group results matching the search term' do
       group.update_attribute(:name, 'exploration team')
       group.update_attribute(:memberships_count, 5)
       group.update_attribute(:discussions_count, 3)
       group.subscription = Subscription.create(plan: 'trial', state: 'active')
       group.save
-      second_explore_group = create(:formal_group, name: 'inspection group')
+      second_explore_group = create(:group, name: 'inspection group')
       second_explore_group.update_attribute(:memberships_count, 5)
       second_explore_group.update_attribute(:discussions_count, 3)
       second_explore_group.subscription = Subscription.create(plan: 'trial', state: 'active')

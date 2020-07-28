@@ -1,4 +1,7 @@
 el:
+  errors:
+    404:
+      title: Δεν βρέθηκε
   group:
     stats:
       members: Μέλη

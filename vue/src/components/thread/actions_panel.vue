@@ -2,13 +2,12 @@
 import AppConfig                from '@/shared/services/app_config'
 import EventBus                 from '@/shared/services/event_bus'
 import RecordLoader             from '@/shared/services/record_loader'
-import ModalService             from '@/shared/services/modal_service'
 import AbilityService           from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
 import AuthModalMixin from '@/mixins/auth_modal'
 import Records from '@/shared/services/records'
 import { print } from '@/shared/helpers/window'
-import { compact, snakeCase, camelCase, max, map } from 'lodash'
+import { compact, snakeCase, camelCase, max, map } from 'lodash-es'
 import ThreadActivityMixin from '@/mixins/thread_activity'
 
 export default
@@ -26,6 +25,9 @@ export default
     @init()
     EventBus.$on 'pollSaved', =>
       @currentAction = 'add-comment'
+
+  beforeDestroy: ->
+    EventBus.$off 'pollSaved'
 
   methods:
     init: ->
@@ -52,9 +54,10 @@ export default
 </script>
 
 <template lang="pug">
-.actions-panel#add-comment
-  v-divider(v-if="!discussion.newestFirst")
-  v-tabs.activity-panel__actions.mb-3(grow icons-and-text v-model="currentAction")
+section.actions-panel#add-comment(:aria-label="$t('activity_card.aria_label')")
+  v-divider(aria-hidden="true" v-if="!discussion.newestFirst")
+  v-tabs.activity-panel__actions.mb-3(grow icons-and-text v-model="currentAction" show-arrows)
+    v-tabs-slider
     v-tab(href='#add-comment')
       span(v-t="'activity_card.comment'")
       v-icon mdi-comment
@@ -79,7 +82,7 @@ export default
     v-tab-item(value="add-poll" v-if="canStartPoll")
       poll-common-start-form(:discussion='discussion')
     //- v-tab-item(value="add-outcome")
-  v-divider(v-if="discussion.newestFirst")
+  v-divider(aria-hidden="true" v-if="discussion.newestFirst")
 
 </template>
 <style lang="sass">

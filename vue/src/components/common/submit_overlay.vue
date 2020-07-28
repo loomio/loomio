@@ -5,6 +5,6 @@ export default
 </script>
 
 <template lang="pug">
-v-overlay(:value="value")
+v-overlay.submit-overlay(:value="value")
   v-progress-circular(indeterminate size="64")
 </template>

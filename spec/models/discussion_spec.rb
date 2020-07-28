@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Discussion do
   let(:user)       { create :user }
-  let(:group)      { create :formal_group }
+  let(:group)      { create :group }
   let(:discussion) { create :discussion, group: group }
   let(:motion)     { create :motion, discussion: discussion }
 
@@ -28,7 +28,7 @@ describe Discussion do
     # provides a default when the discussion is new
     # when present passes the value on unmodified
     let(:discussion) { Discussion.new }
-    let(:group) { FormalGroup.new }
+    let(:group) { Group.new }
 
     subject { discussion.private }
 
@@ -71,7 +71,7 @@ describe Discussion do
 
   describe "validator: privacy_is_permitted_by_group" do
     let(:discussion) { Discussion.new }
-    let(:group) { FormalGroup.new }
+    let(:group) { Group.new }
     subject { discussion }
 
 

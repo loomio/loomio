@@ -1,19 +1,16 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
 import { fieldFromTemplate } from '@/shared/helpers/poll'
-import PollModalMixin from '@/mixins/poll_modal'
-import AnnouncementModalMixin from '@/mixins/announcement_modal'
 import Flash from '@/shared/services/flash'
+import EventBus from '@/shared/services/event_bus'
 
 import Vue     from 'vue'
 import { exact } from '@/shared/helpers/format_time'
 import { parseISO } from 'date-fns'
-import { map, sortBy, head, find } from 'lodash'
+import { map, sortBy, head, find } from 'lodash-es'
 import { onError } from '@/shared/helpers/form'
 
 export default
-  mixins: [PollModalMixin, AnnouncementModalMixin]
-
   props:
     outcome: Object
     close: Function
@@ -57,7 +54,11 @@ export default
         event = Records.events.find(eventData.id)
         Flash.success("poll_common_outcome_form.outcome_#{actionName}")
         @closeModal()
-        @openAnnouncementModal(Records.announcements.buildFromModel(event))
+        EventBus.$emit 'openModal',
+          component: 'AnnouncementForm'
+          props:
+            announcement: Records.announcements.buildFromModel(event)
+
       .catch onError(@clone)
 
     datesAsOptions: ->
@@ -79,7 +80,7 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
     .poll-common-calendar-invite(v-if='datesAsOptions()')
       .poll-common-calendar-invite__checkbox.poll-common-checkbox-option
         v-checkbox(v-model='clone.calendarInvite' :label="$t('poll_common_calendar_invite.calendar_invite')")
-      .poll-common-calendar-invite__form.animated(v-if='clone.calendarInvite')
+      .poll-common-calendar-invite__form(v-if='clone.calendarInvite')
         .poll-common-calendar-invite--pad-top
           v-select.lmo-flex__grow(v-model='clone.pollOptionId' :items="options" item-value="id" item-text="value" :label="$t('poll_common_calendar_invite.poll_option_id')")
         .poll-common-calendar-invite--pad-top

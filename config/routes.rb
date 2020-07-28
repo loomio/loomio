@@ -28,12 +28,6 @@ Loomio::Application.routes.draw do
 
   mount ActionCable.server => '/cable'
 
-  constraints(GroupSubdomainConstraints) do
-    get '/',              to: 'redirect#subdomain'
-    get '/d/:id(/:slug)', to: 'redirect#discussion'
-    get '/g/:id(/:slug)', to: 'redirect#group'
-    get '/p/:id(/:slug)', to: 'redirect#poll'
-  end
   get '/discussions/:id', to: 'redirect#discussion'
   get '/groups/:id',      to: 'redirect#group'
 
@@ -47,23 +41,24 @@ Loomio::Application.routes.draw do
 
   namespace :api, path: '/api/v1', defaults: {format: :json} do
     resources :saml_providers, only: [:create, :destroy, :index]
-    resources :attachments, only: :index
+    resources :attachments, only: [:index, :destroy]
+    resources :webhooks, only: [:create, :destroy, :index, :update]
 
     resources :boot, only: [] do
       get :site, on: :collection
       get :user, on: :collection
     end
 
+    resources :group_surveys, only: [:create]
+
     resources :usage_reports, only: [:create]
 
-    resources :groups, only: [:index, :show, :create, :update] do
+    resources :groups, only: [:index, :show, :create, :update, :destroy] do
       member do
         get :token
         post :reset_token
         get :subgroups
         post :export
-        patch :archive
-        put :archive
         post 'upload_photo/:kind', action: :upload_photo
       end
       collection do
@@ -71,8 +66,6 @@ Loomio::Application.routes.draw do
         get :suggest_handle
       end
     end
-
-    resources :group_identities, only: [:create, :destroy]
 
     resources :memberships, only: [:index, :create, :update, :destroy] do
       collection do
@@ -132,15 +125,6 @@ Loomio::Application.routes.draw do
       patch :remove_from_thread, on: :member
     end
 
-    resources :drafts do
-      collection do
-        get    '/:draftable_type/:draftable_id', action: :show
-        post   '/:draftable_type/:draftable_id', action: :update
-        patch  '/:draftable_type/:draftable_id', action: :update
-        put    '/:draftable_type/:draftable_id', action: :update
-      end
-    end
-
     resources :discussions, only: [:show, :index, :create, :update, :destroy] do
       patch :mark_as_seen, on: :member
       patch :dismiss, on: :member
@@ -160,16 +144,14 @@ Loomio::Application.routes.draw do
       patch :pin_reader, on: :member
       patch :unpin_reader, on: :member
       patch :move, on: :member
+      delete :discard, on: :member
       post  :fork, on: :collection
       patch :move_comments, on: :member
       get :history, on: :member
       get :search, on: :collection
       get :dashboard, on: :collection
       get :inbox, on: :collection
-      get '/tags/:id/(:stub)', action: :tags, on: :collection
     end
-
-    resources :discussion_tags, only: [:create, :destroy]
 
     resources :tags do
       collection do
@@ -181,26 +163,28 @@ Loomio::Application.routes.draw do
     resources :search, only: :index
 
     resources :polls,       only: [:show, :index, :create, :update, :destroy] do
+      delete :discard, on: :member
       post :close, on: :member
       post :reopen, on: :member
       post :add_options, on: :member
       post :toggle_subscription, on: :member
       get  :closed, on: :collection
-      get  :search, on: :collection
-      get  :search_results_count, on: :collection
+      patch :add_to_thread, on: :member
     end
 
     resource :outcomes,     only: [:create, :update]
 
     resources :stances,     only: [:index, :create, :update, :destroy] do
+      get :invite, on: :collection
       get :my_stances, on: :collection
     end
 
     resources :outcomes,    only: [:create, :update]
 
-    resources :poll_did_not_votes, only: :index
-
-    resources :comments,    only: [:create, :update, :destroy]
+    resources :comments,    only: [:create, :update, :destroy] do
+      delete :discard, on: :member
+      post :undiscard, on: :member
+    end
     resources :reactions,   only: [:create, :update, :index, :destroy]
 
     resources :documents, only: [:create, :update, :destroy, :index] do
@@ -250,7 +234,6 @@ Loomio::Application.routes.draw do
     get "identities/:id/:command", to: "identities#command"
   end
 
-  get '/tags/:id/(:stub)', to: 'application#index'
   post '/direct_uploads', to: 'direct_uploads#create'
 
   get '/users/sign_in', to: redirect('/dashboard')
@@ -311,6 +294,7 @@ Loomio::Application.routes.draw do
   get 'p/:key(/:slug)'                     => 'polls#show',                  as: :poll
   get 'vote/:key(/:slug)'                  => 'polls#show'
   get 'u/undefined'                        => redirect('404.html')
+  get 'u/anonymous'                        => redirect('404.html')
   get 'u/:username/'                       => 'users#show',                  as: :user
 
   get '/login_tokens/:token'               => 'login_tokens#show',           as: :login_token
@@ -373,8 +357,5 @@ Loomio::Application.routes.draw do
     get :metadata,                        to: 'identities/saml#metadata', as: :saml_metadata
   end
 
-  get '/beta' => 'beta#index'
-  put '/beta' => 'beta#update'
-
-  get ":id", to: 'groups#show', as: :group_handle, format: :html
+  get ":id", to: 'groups#show', as: :group_handle
 end

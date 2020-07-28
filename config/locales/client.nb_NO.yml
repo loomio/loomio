@@ -126,6 +126,9 @@ nb_NO:
     formatting_help:
       label: 'Formatering'
       title: 'Lær hvordan du kan bruke Markdown for å formatere teksten din'
+  merge_accounts:
+    modal:
+      submit: Verifiser
   emoji_picker:
     search: Søk
   ordinal:
@@ -205,10 +208,6 @@ nb_NO:
   close_explanation_modal:
     aria_label: Lukk tråd
     close_thread: Lukk tråd
-    body_header: |
-        <p>Lukk gamle eller irrelevante tråder for å gjør de usynlige for å indikere at diskusjonen er stengt.</p>
-    body_footer: |
-        <p>Alle kan kommentere eller starte en beslutning i en lukket tråd, men det vil ikke være synlig i gruppens tråder eller på skrivebordet. </p>
     image_alt: Lukker alle tråder
   mute_explanation_modal:
     aria_label: Demp tråd
@@ -351,16 +350,6 @@ nb_NO:
     outcome_created: "<strong>{{name}}</strong> delte et resulat: <strong>{{title}}</strong>"
     outcome_announced: "<strong>{{name}}</strong> delte et resulat: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> deltok i: <strong>{{title}}</strong>"
-  position_buttons_panel:
-    heading: Si det du vil
-  extend_proposal_form:
-    aria_label: Endret stengetid
-    title: 'Endret stengetid'
-    success: 'Stengetid for beslutningen oppdatert'
-    submit: 'Oppdatert stengetid'
-  discussion_record:
-    created: 'Tråden {{title}} ble opprettet i gruppa: {{groupName}}'
-    updated: 'Lagret endringer i  {{title}}'
   discussion_form:
     aria_label: 'Trådskjema'
     messages:
@@ -383,10 +372,9 @@ nb_NO:
   announcement:
     audiences:
       parent_group: Medlemmer av {{name}}
-      formal_group: Medlemmer av {{name}}
+      group: Medlemmer av {{name}}
       discussion_group: Medlemmer i tråden
       voters: Folk som har stemt
-      non_voters: Folk som ikke har stemt
     form:
       group_announced:
         title: Inviter til gruppe
@@ -519,13 +507,6 @@ nb_NO:
   group_form:
     privacy: 'Personvern'
     submit_update: 'Oppdater innstillinger'
-  documents_page:
-    confirm_remove_title: Fjern vedlegg
-  document:
-    modal:
-      title: Legg til vedlegg
-    form:
-      title_label: Navn
   invitation_form:
     group: 'Gruppe'
     group_placeholder: 'Velg en gruppe'
@@ -539,11 +520,6 @@ nb_NO:
     invitation:
       title: Avslutt invitasjon
       submit: Avslutt invitasjon
-  pending_invitations_card:
-    email: E-post
-    copy_url: Kopier URL
-  cancel_invitation_form:
-    heading: Avslutt invitasjon
   profile_page:
     name_label: 'Navn'
     email_label: 'E-post'
@@ -579,16 +555,7 @@ nb_NO:
     pin_thread: Fest tråd
   delete_comment_dialog:
     title: 'Slett kommentar'
-    question: 'Er du sikker på at du vil slette denne kommentaren?'
     confirm: 'Slett kommentar'
-  new_comment_item:
-    context_menu:
-      edit_comment: 'Rediger kommentar'
-      delete_comment: 'Slett kommentar'
-  registered_apps_page:
-    name: Navn
-  registered_app_form:
-    name_label: Navn
   decision_tools_card:
     proposal_title: Forslag
     count_title: Ja / Nei
@@ -613,6 +580,9 @@ nb_NO:
     loomio_group: Gruppe
   poll_common_notify_group:
     members_count: "{{count}} folk vil bli varslet"
+  poll_common_settings:
+    anyone_can_participate:
+      title: Alle med link kan delta
   poll_common_set_outcome_panel:
     share_outcome: Del resultat
   poll_common_outcome_form:
@@ -628,12 +598,8 @@ nb_NO:
     total: Totalt
   poll_common_subscribe_form:
     subscribe: Meld deg på
-  polls_page:
-    heading: Beslutninger
-    start_new_poll: Ny beslutning
   auth_form:
     name: Navn
     email: E-post
-  install_slack:
-    progress:
-      invite: Inviter
+  webhook:
+    name_label: Navn

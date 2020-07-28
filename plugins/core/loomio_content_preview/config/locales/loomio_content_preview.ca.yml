@@ -1,7 +1,0 @@
-ca:
-  loomio_content_preview:
-    preview_pane:
-      no_content: No hi ha contingut per previsualitzar
-      helptext: El teu comentari apareixerà com aquest en l'apartat d'activitat
-    preview_button:
-      preview: Previsualitza

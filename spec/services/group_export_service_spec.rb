@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe GroupExportService do
-  let!(:group)            { create :formal_group }
-  let!(:subgroup)         { create :formal_group, parent: group }
-  let!(:another_group)    { create :formal_group }
+  let!(:group)            { create :group }
+  let!(:subgroup)         { create :group, parent: group }
+  let!(:another_group)    { create :group }
   let!(:user)             { create :user }
   let!(:another_user)     { create :user }
   let!(:discussion)       { create :discussion, group: group }

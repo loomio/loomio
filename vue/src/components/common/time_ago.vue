@@ -1,7 +1,7 @@
 <script lang="coffee">
 import { approximate, exact } from '@/shared/helpers/format_time'
 import { parseISO } from 'date-fns'
-import {isString} from 'lodash'
+import {isString} from 'lodash-es'
 
 export default
   props:
@@ -19,7 +19,7 @@ export default
 </script>
 
 <template lang="pug">
-abbr.time-ago(:title='exactDate(parsedDate)') {{approximateDate(parsedDate)}}
+abbr.time-ago(:aria-label="$t(approximateDate(parsedDate))" :title='exactDate(parsedDate)') {{approximateDate(parsedDate)}}
 </template>
 
 <style lang="sass">

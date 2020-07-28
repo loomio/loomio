@@ -2,7 +2,7 @@ require 'rails_helper'
 describe API::ProfileController do
 
   let(:user) { create :user }
-  let(:group) { create :formal_group }
+  let(:group) { create :group }
   let(:another_user) { create :user }
   let(:user_params) { { name: "new name", email: "new@email.com" } }
 
@@ -131,31 +131,12 @@ describe API::ProfileController do
     before { sign_in user }
     context 'success' do
       it "deactivates the users account" do
-        post :deactivate, params: {user: {deactivation_response: '' }}, format: :json
+        post :destroy, format: :json
         expect(response.status).to eq 200
         json = JSON.parse(response.body)
         user_emails = json['users'].map { |v| v['email'] }
         expect(user_emails).to include user.email
         expect(user.reload.deactivated_at).to be_present
-        expect(UserDeactivationResponse.last).to be_blank
-      end
-
-      it 'can record a deactivation response' do
-        post :deactivate, params: { user: { deactivation_response: '(╯°□°)╯︵ ┻━┻'} }, format: :json
-        deactivation_response = UserDeactivationResponse.last
-        expect(deactivation_response.body).to eq '(╯°□°)╯︵ ┻━┻'
-        expect(deactivation_response.user).to eq user
-      end
-    end
-  end
-
-  describe 'delete' do
-    before { sign_in user }
-    context 'success' do
-      it "deletes the users account" do
-        post :destroy
-        expect(response.status).to eq 200
-        expect {user.reload}.to raise_error ActiveRecord::RecordNotFound
       end
     end
   end
@@ -183,9 +164,9 @@ describe API::ProfileController do
 
   describe "mentionable" do
     let(:user)  { create :user }
-    let(:group) { create :formal_group }
-    let(:subgroup) { create :formal_group, parent: group}
-    let(:completely_unrelated_group) { create :formal_group }
+    let(:group) { create :group }
+    let(:subgroup) { create :group, parent: group}
+    let(:completely_unrelated_group) { create :group }
     let!(:jgroupmember) { create :user, name: 'rspecjgroupmember', username: 'rspecqueenie' }
     let!(:jalien)  { create :user, name: 'rspecjalien', username: 'rspecqueenbee' }
     let!(:esubgroupmember)   { create :user, name: 'rspecesubgroupmember', username: 'rspeccoolguy' }
@@ -200,7 +181,7 @@ describe API::ProfileController do
       group.add_member! jgroupmember
       subgroup.add_member! esubgroupmember
       completely_unrelated_group.add_member! jalien
-      discussion.guest_group.add_member! jguest
+      discussion.add_guest! jguest, discussion.author
       sign_in user
     end
 

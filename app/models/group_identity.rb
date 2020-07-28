@@ -8,7 +8,7 @@ class GroupIdentity < ApplicationRecord
 
   attr_accessor :webhook_url
 
-  belongs_to :group, class_name: 'FormalGroup', required: true
+  belongs_to :group, class_name: 'Group', required: true
   belongs_to :identity, class_name: 'Identities::Base', required: true, dependent: :destroy
 
   set_custom_fields :slack_channel_id, :slack_channel_name
@@ -17,4 +17,5 @@ class GroupIdentity < ApplicationRecord
 
   delegate :slack_team_name, to: :identity
   delegate :slack_team_id, to: :identity
+  delegate :title, to: :group
 end

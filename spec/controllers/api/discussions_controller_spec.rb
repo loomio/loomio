@@ -1,12 +1,13 @@
 require 'rails_helper'
 describe API::DiscussionsController do
 
-  let(:subgroup) { create :formal_group, parent: group }
-  let(:another_group) { create :formal_group }
+  let(:subgroup) { create :group, parent: group }
+  let(:another_group) { create :group }
   let(:user) { create :user }
   let(:another_user) { create :user }
-  let(:group) { create :formal_group }
+  let(:group) { create :group }
   let(:discussion) { create_discussion group: group }
+  let(:discarded_discussion) { create_discussion group: group, title: "Discarded Discussion" }
   let(:poll) { create :poll, discussion: discussion }
   let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
   let(:another_discussion) { create_discussion }
@@ -27,16 +28,8 @@ describe API::DiscussionsController do
 
   before do
     CommentService.create(comment: comment, actor: comment.author)
+    discarded_discussion.update(discarded_at: Time.now)
     group.add_admin! user
-  end
-
-  describe 'tags' do
-    it 'fetches discussions by tag' do
-      tag = Tag.create(group: discussion.group, name: 'some tag', color: '#333')
-      dtag = DiscussionTag.create(tag: tag, discussion: discussion)
-      get :tags, params: { id: tag.id }
-      expect(response.status).to eq 200
-    end
   end
 
   describe 'inbox' do
@@ -79,22 +72,6 @@ describe API::DiscussionsController do
         expect(json['discussions']).to be_blank
       end
 
-      it 'does not return threads in muted discussions' do
-        CommentService.create(comment: new_comment, actor: another_user)
-        DiscussionService.update_reader(discussion: discussion, params: { volume: :mute}, actor: user)
-        get :inbox
-        json = JSON.parse(response.body)
-        expect(json['discussions']).to be_blank
-      end
-
-      it 'does not return threads in muted groups' do
-        CommentService.create(comment: new_comment, actor: another_user)
-        Membership.find_by(user: user, group: group).set_volume! :mute
-        get :inbox
-        json = JSON.parse(response.body)
-        expect(json['discussions']).to be_blank
-      end
-
       it 'includes active polls' do
         poll
         CommentService.create(comment: new_comment, actor: another_user)
@@ -118,8 +95,7 @@ describe API::DiscussionsController do
       it 'displays guest threads' do
         DiscussionService.create(discussion: another_discussion, actor: another_discussion.author)
         sign_in user
-        another_discussion.guest_group.add_member! user
-        DiscussionReader.for(user: user, discussion: another_discussion).set_volume! :normal
+        another_discussion.add_guest!(user, another_discussion.author)
         get :dashboard
         json = JSON.parse(response.body)
         discussion_ids = json['discussions'].map { |d| d['id'] }
@@ -128,41 +104,22 @@ describe API::DiscussionsController do
     end
 
     describe 'filtering' do
-      let(:subgroup_discussion) { create_discussion group: subgroup }
-      let(:muted_discussion) { create_discussion group: group }
-      let(:old_discussion) { create_discussion group: group, created_at: 4.months.ago, last_activity_at: 4.months.ago }
-      let(:motionless_discussion) { create_discussion group: group }
+      let!(:subgroup_discussion) { create_discussion group: subgroup }
+      let!(:old_discussion) { create_discussion group: group, created_at: 4.months.ago, last_activity_at: 4.months.ago }
+      let!(:motionless_discussion) { create_discussion group: group }
 
       before do
         sign_in user
         another_group.add_member! user
         subgroup.add_member! user
         discussion.reload
-        [subgroup_discussion, muted_discussion, old_discussion, motionless_discussion].each do |d|
+        [subgroup_discussion, old_discussion, motionless_discussion].each do |d|
           DiscussionService.create(discussion: d, actor: d.author)
         end
-        DiscussionReader.for(user: user, discussion: muted_discussion).set_volume! 'mute'
-      end
-
-      it 'does not return muted discussions by default' do
-        muted_discussion.reload
-        get :dashboard
-        json = JSON.parse(response.body)
-        ids = json['discussions'].map { |v| v['id'] }
-        expect(ids).to_not include muted_discussion.id
-      end
-
-      it 'can filter by muted' do
-        muted_discussion.reload
-        get :dashboard, params: { filter: :show_muted }
-        json = JSON.parse(response.body)
-        ids = json['discussions'].map { |v| v['id'] }
-        expect(ids).to include muted_discussion.id
-        expect(ids).to_not include discussion.id
+        old_discussion.reload
       end
 
       it 'can filter since a certain date' do
-        old_discussion.reload
         get :dashboard, params: { since: 3.months.ago }
         json = JSON.parse(response.body)
         ids = json['discussions'].map { |v| v['id'] }
@@ -171,7 +128,6 @@ describe API::DiscussionsController do
       end
 
       it 'can filter until a certain date' do
-        old_discussion.reload
         get :dashboard, params: { until: 3.months.ago }
         json = JSON.parse(response.body)
         ids = json['discussions'].map { |v| v['id'] }
@@ -180,7 +136,6 @@ describe API::DiscussionsController do
       end
 
       it 'can limit collection size' do
-        discussion; old_discussion; muted_discussion
         get :dashboard, params: { per: 2 }
         json = JSON.parse(response.body)
         expect(json['discussions'].count).to eq 2
@@ -198,9 +153,15 @@ describe API::DiscussionsController do
         expect(json['discussions'][0].keys).to include *(%w[id key title description last_activity_at created_at updated_at items_count private author_id group_id ])
       end
 
+      it 'does not return a discarded discussion' do
+        get :show, params: { id: discarded_discussion.key }
+        json = JSON.parse(response.body)
+        expect(json['discussions']).to eq nil
+      end
+
       it 'displays discussion to guest group members' do
         discussion.group.memberships.find_by(user: user).destroy
-        discussion.guest_group.add_member!(user)
+        discussion.add_guest!(user, discussion.author)
         get :show, params: { id: discussion.key }
         json = JSON.parse(response.body)
 
@@ -228,6 +189,7 @@ describe API::DiscussionsController do
 
       it 'returns a public discussions' do
         get :show, params: { id: public_discussion.id }, format: :json
+        expect(response.status).to eq 200
         json = JSON.parse(response.body)
         discussion_ids = json['discussions'].map { |d| d['id'] }
         expect(discussion_ids).to_not include private_discussion.id
@@ -284,7 +246,7 @@ describe API::DiscussionsController do
 
     context 'success' do
       it 'moves a discussion' do
-        destination_group = create :formal_group
+        destination_group = create :group
         destination_group.add_member! user
         source_group = discussion.group
         patch :move, params: { id: discussion.id, group_id: destination_group.id }, format: :json
@@ -341,10 +303,11 @@ describe API::DiscussionsController do
           json = JSON.parse(response.body)
           discussions = json['discussions'].map { |v| v['id'] }
           expect(discussions).to_not include cant_see_me.id
+          expect(discussions).to_not include discarded_discussion.id
         end
 
         it 'can display content from a specified public group' do
-          public_group = create :formal_group, discussion_privacy_options: :public_only, is_visible_to_public: true
+          public_group = create :group, discussion_privacy_options: :public_only, is_visible_to_public: true
           can_see_me = create_discussion(group: public_group, private: false)
           get :index, params: { group_id: public_group.id }, format: :json
           json = JSON.parse(response.body)
@@ -398,11 +361,10 @@ describe API::DiscussionsController do
 
     context 'failure' do
       it 'does not update a reader' do
-        reader = DiscussionReader.for(user: user, discussion: another_discussion)
-        reader.update volume: :loud
+        # reader = DiscussionReader.for(user: user, discussion: another_discussion)
+        # reader.update volume: :loud
         put :set_volume, params: { id: another_discussion.id, volume: :mute }, format: :json
         expect(response.status).not_to eq 200
-        expect(reader.reload.volume.to_sym).not_to eq :mute
       end
     end
   end
@@ -665,7 +627,7 @@ describe API::DiscussionsController do
   describe 'fork' do
     let(:user) { create :user }
     let(:another_user) { create :user }
-    let(:group) { create :formal_group }
+    let(:group) { create :group }
     let!(:discussion) { create_discussion group: group }
     let(:target_event) { create :event, discussion: discussion, kind: :new_comment, eventable: create(:comment, discussion: discussion), sequence_id: 2 }
     let(:another_event) { create :event, discussion: discussion, kind: :new_comment, eventable: create(:comment, discussion: discussion), sequence_id: 3 }
@@ -756,7 +718,7 @@ describe API::DiscussionsController do
   describe 'move_comments' do
     let(:user) { create :user }
     let(:another_user) { create :user }
-    let(:group) { create :formal_group }
+    let(:group) { create :group }
     let!(:source_discussion) { create_discussion group: group }
     let!(:target_discussion) { create_discussion group: group }
 
@@ -927,4 +889,12 @@ describe API::DiscussionsController do
     end
   end
 
+  describe 'search' do
+    it 'does not return discarded discussions' do
+      get :search, params: { group_id: group.id, q: "Discarded" }
+      json = JSON.parse(response.body)
+      discussion_ids = json['discussions'].map { |d| d['id'] }
+      expect(discussion_ids).to_not include discarded_discussion.id
+    end
+  end
 end

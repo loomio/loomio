@@ -11,7 +11,7 @@ export default new class EventService
         event.toggleFromFork()
 
       canPerform: ->
-        AbilityService.canMoveThread(event.discussion())
+        !event.model().discardedAt && AbilityService.canMoveThread(event.discussion())
 
     remove_event:
       perform: ->
@@ -19,13 +19,14 @@ export default new class EventService
           Flash.success 'thread_item.event_removed'
 
       canPerform: ->
+        !event.model().discardedAt &&
         event.kind == 'discussion_edited' &&
-        AbilityService.canAdministerDiscussion(event.discussion())
+        AbilityService.canAdminister(event.discussion())
 
     pin_event:
       name: 'common.action.pin'
       icon: 'mdi-pin'
-      canPerform: -> AbilityService.canPinEvent(event)
+      canPerform: -> !event.model().discardedAt && AbilityService.canPinEvent(event)
       perform: ->
         openModal
           component: 'PinEventForm',
@@ -34,13 +35,13 @@ export default new class EventService
     unpin_event:
       name: 'common.action.unpin'
       icon: 'mdi-pin-off'
-      canPerform: -> AbilityService.canUnpinEvent(event)
+      canPerform: -> !event.model().discardedAt && AbilityService.canUnpinEvent(event)
       perform: -> event.unpin().then -> Flash.success('activity_card.event_unpinned')
 
 
     copy_url:
       icon: 'mdi-link'
-      canPerform: -> true
+      canPerform: -> !event.model().discardedAt
       perform:    ->
         link = LmoUrlService.event(event, {}, absolute: true)
         vm.$copyText(link).then (e) ->

@@ -2,12 +2,12 @@ import ActionCable    from 'actioncable'
 import AppConfig      from '@/shared/services/app_config'
 import Session        from '@/shared/services/session'
 import Records        from '@/shared/services/records'
-import ModalService   from '@/shared/services/modal_service'
 import Flash   from '@/shared/services/flash'
 import AuthService    from '@/shared/services/auth_service'
 import AbilityService from '@/shared/services/ability_service'
 
 import { hardReload } from '@/shared/helpers/window'
+import { each } from 'lodash-es'
 
 export subscribeTo = (model) ->
   switch model.constructor.singular
@@ -19,19 +19,13 @@ export initLiveUpdate = ->
 
   if Session.isSignedIn()
     subscribeToUser()
-    _.each Session.user().groups(), subscribeToGroup
+    each Session.user().groups(), subscribeToGroup
   else
     subscribeToMembership()
-
 
 subscribeToGroup = (group) ->
   ensureConnection().subscriptions.create { channel: "GroupChannel", group_id: group.id },
     received: (data) ->
-      if data.memo?
-        switch data.memo.kind
-          when 'comment_destroyed'
-            if comment = Records.comments.find(data.memo.data.comment_id)
-              comment.destroy()
       Records.import(data)
 
 subscribeToUser = ->

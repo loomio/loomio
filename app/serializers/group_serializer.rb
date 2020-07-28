@@ -1,18 +1,7 @@
-class GroupSerializer < Simple::GroupSerializer
-  embed :ids, include: true
-
-  def self.attributes_for_formal(*attrs)
-    attrs.each do |attr|
-      define_method attr, -> { object.send attr }
-      define_method :"include_#{attr}?", -> { object.type == "FormalGroup" }
-    end
-    attributes *attrs
-  end
-
+class GroupSerializer < ApplicationSerializer
   attributes :id,
              :key,
              :handle,
-             :type,
              :name,
              :full_name,
              :description,
@@ -28,6 +17,7 @@ class GroupSerializer < Simple::GroupSerializer
              :members_can_edit_comments,
              :members_can_raise_motions,
              :members_can_vote,
+             :admins_can_edit_user_content,
              :token,
              :polls_count,
              :closed_polls_count,
@@ -36,78 +26,76 @@ class GroupSerializer < Simple::GroupSerializer
              :group_privacy,
              :memberships_count,
              :pending_memberships_count,
+             :active_memberships_count,
              :membership_granted_upon,
              :discussion_privacy_options,
              :has_discussions,
              :admin_memberships_count,
              :archived_at,
              :attachments,
-             :tag_names
+             :tag_names,
+             :new_threads_max_depth,
+             :new_threads_newest_first,
+             :cover_urls,
+             :has_custom_cover,
+             :experiences,
+             :enable_experiments,
+             :features,
+             :open_discussions_count,
+             :closed_discussions_count,
+             :recent_activity_count,
+             :is_visible_to_public,
+             :is_subgroup_of_hidden_parent,
+             :is_visible_to_parent_members,
+             :parent_members_can_see_discussions,
+             :org_memberships_count,
+             :org_discussions_count,
+             :org_members_count,
+             :subscription,
+             :subgroups_count,
+             :complete
 
-  attributes_for_formal :cover_urls,
-                        :has_custom_cover,
-                        :experiences,
-                        :enable_experiments,
-                        :features,
-                        :open_discussions_count,
-                        :closed_discussions_count,
-                        :recent_activity_count,
-                        :is_subgroup_of_hidden_parent,
-                        :is_visible_to_parent_members,
-                        :parent_members_can_see_discussions,
-                        :org_memberships_count,
-                        :org_discussions_count,
-                        :org_members_count
-
-
-  has_one :parent, serializer: GroupSerializer, root: :groups
-
-  attributes_for_formal :subscription_plan, :subscription_active,
-    :subscription_max_members, :subscription_max_threads, :subscription_expires_at,
-    :subscription_state, :subscription_created_at
-
-  def tag_names
-    object.info['tag_names'] || []
+  def complete
+    true
   end
 
-  def subscription_max_members
-    subscription.max_members
-  end
+  has_one :parent, serializer: GroupSerializer, root: :parent_groups
+  has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
 
-  def subscription_max_threads
-    subscription.max_threads
-  end
-
-  def subscription_plan
-    subscription.plan
-  end
-
-  def subscription_active
-    subscription.is_active?
-  end
-
-  def subscription_expires_at
-    subscription.expires_at
-  end
-
-  def subscription_state
-    subscription.state
-  end
-
-  def subscription_created_at
-    subscription.created_at
+  def current_user_membership
+    scope && scope[:current_user] && object.membership_for(scope[:current_user])
   end
 
   def subscription
-    @subscription ||= Subscription.for(object)
+    sub = Subscription.for(object)
+    if (current_user_membership && sub)
+      {
+        max_members:     sub.max_members,
+        max_threads:     sub.max_threads,
+        plan:            sub.plan,
+        active:          sub.is_active?,
+        renews_at:       sub.renews_at,
+        expires_at:      sub.expires_at,
+        management_link: (sub.info || {})['chargify_management_link'],
+        referral_code:   (sub.info || {})['chargify_referral_code'],
+        members_count:   sub.members_count
+      }
+    else
+      {
+        max_members:     sub.max_members,
+        max_threads:     sub.max_threads,
+        active:          sub.is_active?,
+        members_count:   sub.members_count
+      }
+    end
   end
 
-  def include_org_memberships_count?
-    object.is_parent?
+  def include_current_user_membership?
+    super && scope && scope[:current_user]
   end
 
-  def include_token?
-    Hash(scope)[:include_token]
+  def tag_names
+    object.info['tag_names'] || []
   end
 
   def cover_photo
@@ -116,10 +104,6 @@ class GroupSerializer < Simple::GroupSerializer
 
   def logo_url_medium
     object.logo.url(:medium)
-  end
-
-  def include_logo_url_medium?
-    type == "FormalGroup" && object.logo.present?
   end
 
   def cover_urls
@@ -140,6 +124,17 @@ class GroupSerializer < Simple::GroupSerializer
   end
 
   private
+  def include_logo_url_medium?
+    object.logo.present?
+  end
+
+  def include_org_memberships_count?
+    object.is_parent?
+  end
+
+  def include_token?
+    Hash(scope)[:include_token]
+  end
 
   def has_discussions
     object.discussions_count > 0

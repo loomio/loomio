@@ -1,6 +1,5 @@
 <script lang="coffee">
 import Records        from '@/shared/services/records'
-import ModalService   from '@/shared/services/modal_service'
 import EventBus       from '@/shared/services/event_bus'
 import utils          from '@/shared/record_store/utils'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
@@ -8,10 +7,11 @@ import AbilityService from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
 import AppConfig      from '@/shared/services/app_config'
 import Flash   from '@/shared/services/flash'
-import { audiencesFor, audienceValuesFor } from '@/shared/helpers/announcement'
-import {each , sortBy, includes, map, pull, uniq, throttle, debounce, merge, orderBy} from 'lodash'
+import { audiencesFor, audienceValuesFor, audienceSize } from '@/shared/helpers/announcement'
+import {each , sortBy, includes, map, pull, uniq, throttle, debounce, merge, orderBy, some, filter} from 'lodash-es'
 import { encodeParams } from '@/shared/helpers/encode_params'
 import { onError } from '@/shared/helpers/form'
+import md5 from 'md5'
 
 export default
   props:
@@ -35,22 +35,22 @@ export default
 
   created: ->
     @searchResults = if @invitingToGroup then [] else @announcement.model.members()
-    @maxMembers = @announcement.model.group().parentOrSelf().subscriptionMaxMembers || 0
+    @maxMembers = @announcement.model.group().parentOrSelf().subscription.max_members || 0
     if @invitingToGroup
       @announcement.model.fetchToken()
 
     if @announcement.model.group()
       @invitationsRemaining =
-        (@announcement.model.group().parentOrSelf().subscriptionMaxMembers || 0) -
+        (@announcement.model.group().parentOrSelf().subscription.max_members || 0) -
         @announcement.model.group().parentOrSelf().orgMembershipsCount
 
       @showInvitationsRemaining =
         @invitingToGroup &&
-        @announcement.model.group().parentOrSelf().subscriptionMaxMembers
+        @announcement.model.group().parentOrSelf().subscription.max_members
 
-      @subscriptionActive = @announcement.model.group().parentOrSelf().subscriptionActive
+      @subscriptionActive = @announcement.model.group().parentOrSelf().subscription.active
 
-      @canInvite = @subscriptionActive && (!@announcement.model.group().parentOrSelf().subscriptionMaxMembers || @invitationsRemaining > 0)
+      @canInvite = @subscriptionActive && (!@announcement.model.group().parentOrSelf().subscription.max_members || @invitationsRemaining > 0)
 
   methods:
     submit: ->
@@ -58,7 +58,11 @@ export default
       @announcement.invitedGroupIds = @invitedGroupIds
       @announcement.save()
       .then (data) =>
-        @announcement.membershipsCount = data.memberships.length
+        @announcement.membershipsCount = data.memberships.length if @announcement.model.isA('group')
+        @announcement.membershipsCount = data.discussion_readers.length if @announcement.model.isA('discussion')
+        @announcement.membershipsCount = data.stances.length if @announcement.model.isA('poll')
+        @announcement.membershipsCount = data.users.length if @announcement.model.isA('outcome')
+
         Flash.success('announcement.flash.success', { count: @announcement.membershipsCount })
         @close()
       .catch onError(@announcement)
@@ -66,9 +70,10 @@ export default
     tooManyInvitations: ->
         @showInvitationsRemaining && (@invitationsRemaining < @recipients.length)
 
-    audiences: -> audiencesFor(@announcement.model)
+    audiences: -> filter audiencesFor(@announcement.model), @audienceSize
 
     audienceValues: -> audienceValuesFor(@announcement.model)
+    audienceSize: (audience) -> audienceSize(@announcement.model, audience)
 
     search: debounce (query) ->
       Records.announcements.search(query, @announcement.model).then (data) =>
@@ -83,7 +88,7 @@ export default
       id: email
       name: email
       email: email
-      emailHash: email
+      emailHash: md5(email)
       avatarKind: 'mdi-email-outline'
 
     copied: (e) ->
@@ -97,7 +102,7 @@ export default
 
     addRecipient: (recipient) ->
       return unless recipient
-      return if includes(@recipients, recipient)
+      return if some(@recipients, (r) -> r.emailHash == recipient.emailHash)
       @searchResults.unshift recipient
       @recipients.unshift recipient
       @query = ''
@@ -106,9 +111,6 @@ export default
       Records.announcements.fetchAudience(@announcement.model, kind).then (data) =>
         each sortBy(utils.parseJSONList(data), (e) => e.name || e.email ), @addRecipient
 
-    resetShareableLink: ->
-      @announcement.model.resetToken().then =>
-        Flash.success('invitation_form.shareable_link_reset')
     closeHistory: -> @historyOpen = false
 
   computed:
@@ -127,12 +129,6 @@ export default
     canUpdateAnyoneCanParticipate: ->
       @announcement.model.isA('poll') &&
       AbilityService.canAdminister(@announcement.model)
-
-    shareableLink: ->
-      if @announcement.model.token
-        LmoUrlService.shareableLink(@announcement.model)
-      else
-        @$t('common.action.loading')
 
     invitingToGroup: ->
       @announcement.model.isA('group')
@@ -179,7 +175,10 @@ v-card
           span(v-t="'announcement.quick_add'")
           space
           span(v-for='(audience, index) in audiences()' :key='audience')
-            a.announcement-form__audience(@click='loadAudience(audience)' v-t="{ path: 'announcement.audiences.' + audience, args: audienceValues() }")
+            a.announcement-form__audience(@click='loadAudience(audience)')
+              span(v-t="{ path: 'announcement.audiences.' + audience, args: audienceValues() }")
+              space
+              span ({{ audienceSize(audience) }})
             span(v-if="index < audiences().length - 1")
               | ,
               space
@@ -216,7 +215,6 @@ v-card
 	padding: 0 !important
 .announcement-form__invite
 	margin-bottom: 16px
-.announcement-form__shareable-link,
 .announcement-form__help
 	margin: 8px 0
 .announcement-form__audience

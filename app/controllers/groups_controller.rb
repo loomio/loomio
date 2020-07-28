@@ -18,7 +18,7 @@ class GroupsController < ApplicationController
   end
 
   def export
-    @exporter = GroupExporter.new(load_and_authorize(:formal_group, :export))
+    @exporter = GroupExporter.new(load_and_authorize(:group, :export))
 
     respond_to do |format|
       format.html
@@ -27,6 +27,6 @@ class GroupsController < ApplicationController
   end
 
   def stats
-    @group = load_and_authorize(:formal_group, :export)
+    @group = load_and_authorize(:group, :export)
   end
 end

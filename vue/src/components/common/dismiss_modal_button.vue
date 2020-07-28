@@ -11,5 +11,5 @@ export default
 
 <template lang="pug">
 v-btn.dismiss-modal-button(icon :aria-label="$t('common.action.cancel')" @click='closeModal()')
-  v-icon mdi-window-close
+  v-icon mdi-close
 </template>

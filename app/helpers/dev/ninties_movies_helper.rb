@@ -18,8 +18,6 @@ module Dev::NintiesMoviesHelper
                               email_verified: true)
 
     @patrick.update(avatar_kind: 'uploaded')
-    @patrick.experienced!("vue_client") if params[:vue]
-    @patrick.experienced!("introductionCarousel")
     @patrick
   end
 
@@ -40,8 +38,6 @@ module Dev::NintiesMoviesHelper
                                uploaded_avatar: File.new("#{Rails.root}/spec/fixtures/images/jennifer.png"),
                                email_verified: true)
     @jennifer.update(avatar_kind: 'uploaded')
-    @jennifer.experienced!("vue_client") if params[:vue]
-    @jennifer.experienced!("introductionCarousel")
     @jennifer
   end
 
@@ -52,8 +48,6 @@ module Dev::NintiesMoviesHelper
                           password: 'gh0stmovie',
                           username: 'mingthemerciless',
                           email_verified: true)
-    @max.experienced!("vue_client") if params[:vue]
-    @max.experienced!("introductionCarousel")
     @max
   end
 
@@ -83,7 +77,7 @@ module Dev::NintiesMoviesHelper
 
   def create_group
     unless @group
-      @group = FormalGroup.new(name: 'Dirty Dancing Shoes',
+      @group = Group.new(name: 'Dirty Dancing Shoes',
                                   group_privacy: 'closed',
                                   handle: 'shoes',
                                   discussion_privacy_options: 'public_or_private', creator: patrick)
@@ -97,7 +91,7 @@ module Dev::NintiesMoviesHelper
 
   def create_poll_group
     unless @poll_group
-      @poll_group = FormalGroup.new(name: 'Dirty Dancing Shoes',
+      @poll_group = Group.new(name: 'Dirty Dancing Shoes',
                              group_privacy: 'closed',
                              discussion_privacy_options: 'public_or_private',
                              features: {use_polls: true}, creator: patrick)
@@ -112,7 +106,7 @@ module Dev::NintiesMoviesHelper
   def multiple_groups
     @groups = []
     10.times do
-      group = FormalGroup.new(name: Faker::Name.name,
+      group = Group.new(name: Faker::Name.name,
                         group_privacy: 'closed',
                         discussion_privacy_options: 'public_or_private', creator: patrick)
       group.add_admin! patrick
@@ -124,7 +118,7 @@ module Dev::NintiesMoviesHelper
 
   def muted_create_group
     unless @muted_group
-      @muted_group = FormalGroup.new(name: 'Muted Point Blank',
+      @muted_group = Group.new(name: 'Muted Point Blank',
                                         group_privacy: 'closed',
                                         discussion_privacy_options: 'public_or_private', creator: patrick)
       GroupService.create(group: @muted_group, actor: @muted_group.creator)
@@ -136,7 +130,7 @@ module Dev::NintiesMoviesHelper
 
   def create_another_group
     unless @another_group
-      @another_group = FormalGroup.new(name: 'Point Break',
+      @another_group = Group.new(name: 'Point Break',
                                           group_privacy: 'closed',
                                           discussion_privacy_options: 'public_or_private',
                                           description: 'An FBI agent goes undercover to catch a gang of bank robbers who may be surfers.', creator: patrick)
@@ -205,7 +199,7 @@ module Dev::NintiesMoviesHelper
 
   def create_subgroup
     unless @subgroup
-      @subgroup = FormalGroup.new(name: 'Johnny Utah',
+      @subgroup = Group.new(name: 'Johnny Utah',
                                      parent: create_another_group,
                                      discussion_privacy_options: 'public_or_private',
                                      group_privacy: 'closed', creator: patrick)
@@ -220,7 +214,7 @@ module Dev::NintiesMoviesHelper
 
   def another_create_subgroup
     unless @another_subgroup
-      @another_subgroup = FormalGroup.new(name: 'Bodhi',
+      @another_subgroup = Group.new(name: 'Bodhi',
                                              parent: create_another_group,
                                              group_privacy: 'closed',
                                              discussion_privacy_options: 'public_or_private',
@@ -236,13 +230,6 @@ module Dev::NintiesMoviesHelper
   def pending_invitation
     @pending_membership ||= Membership.create(user: User.new(email: 'judd@example.com'),
                                               group: create_group, inviter: patrick)
-  end
-
-  def create_empty_draft
-    unless @empty_draft
-      @empty_draft = Draft.create(draftable: create_group, user: patrick, payload: { discussion: { title: "", private: nil }})
-    end
-    @empty_draft
   end
 
   def create_comment
@@ -345,7 +332,7 @@ module Dev::NintiesMoviesHelper
     event = MembershipRequestService.create(membership_request: membership_request, actor: rudd)
 
     #'membership_request_approved',
-    another_group = FormalGroup.new(name: 'Stars of the 90\'s', group_privacy: 'closed')
+    another_group = Group.new(name: 'Stars of the 90\'s', group_privacy: 'closed')
     GroupService.create(group: another_group, actor: jennifer)
     membership_request = MembershipRequest.new(requestor: patrick, group: another_group)
     event = MembershipRequestService.create(membership_request: membership_request, actor: patrick)
@@ -353,7 +340,7 @@ module Dev::NintiesMoviesHelper
 
     #'user_added_to_group',
     #notify patrick that he has been added to jens group
-    another_group = FormalGroup.new(name: 'Planets of the 80\'s')
+    another_group = Group.new(name: 'Planets of the 80\'s')
     GroupService.create(group: another_group, actor: jennifer)
     jennifer.reload
     MembershipService.add_users_to_group(users: [patrick], group: another_group, inviter: jennifer)
@@ -368,11 +355,10 @@ module Dev::NintiesMoviesHelper
     membership = Membership.create(user: emilio, group: another_group, inviter: patrick)
     MembershipService.redeem(membership: membership, actor: emilio)
 
-    'poll_created'
     poll = FactoryBot.create(:poll, discussion: create_discussion, group: create_group, author: jennifer, closing_at: 24.hours.from_now)
-    AnnouncementService.create(
-      model: poll,
-      params: { kind: :poll_created, recipients: { user_ids: patrick.id }},
+    PollService.announce(
+      poll: poll,
+      params: { kind: :poll_created, user_ids: [patrick.id] },
       actor: jennifer
     )
 
@@ -384,9 +370,9 @@ module Dev::NintiesMoviesHelper
 
     PollService.create(poll: poll, actor: jennifer)
     outcome = FactoryBot.build(:outcome, poll: poll)
-    AnnouncementService.create(
-      model: outcome,
-      params: { kind: :outcome_created, recipients: { user_ids: patrick.id } },
+    OutcomeService.announce(
+      outcome: outcome,
+      params: {user_ids: patrick.id},
       actor: jennifer
     )
 

@@ -1,5 +1,5 @@
 import AppConfig  from '@/shared/services/app_config'
-import {keys, intersection, uniq, without, compact, map, every} from 'lodash'
+import {keys, intersection, uniq, without, compact, map, every} from 'lodash-es'
 export default
   data: ->
     savedOptionsNames: []

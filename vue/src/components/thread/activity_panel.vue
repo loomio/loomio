@@ -3,7 +3,6 @@ import Vue from 'vue'
 import AppConfig                from '@/shared/services/app_config'
 import EventBus                 from '@/shared/services/event_bus'
 import RecordLoader             from '@/shared/services/record_loader'
-import ModalService             from '@/shared/services/modal_service'
 import AbilityService           from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
 import Records from '@/shared/services/records'
@@ -11,7 +10,9 @@ import Flash   from '@/shared/services/flash'
 import { print } from '@/shared/helpers/window'
 import ThreadService  from '@/shared/services/thread_service'
 
-import { pickBy, identity, camelCase, first, last, isNumber } from 'lodash'
+import { pickBy, identity, camelCase, first, last, isNumber } from 'lodash-es'
+
+excludeTypes = 'group discussion author'
 
 export default
   components:
@@ -32,6 +33,8 @@ export default
   mounted: ->
     @loader = new RecordLoader
       collection: 'events'
+        params:
+          exclude_types: excludeTypes
 
     @watchRecords
       key: @discussion.id
@@ -56,6 +59,7 @@ export default
         if @discussion.readItemsCount() > 0 && @discussion.unreadItemsCount() > 0
           {column: 'sequenceId', id: @discussion.firstUnreadSequenceId(), scrollTo: true}
         else
+          @scrollTo ".thread-page h1"
           if (@discussion.newestFirst && !@viewportIsBelow) || (!@discussion.newestFirst &&  @viewportIsBelow)
             {column: 'position', id: @parentEvent.childCount}
           else
@@ -64,15 +68,7 @@ export default
       @fetchEvent(args.column, args.id).then (event) =>
         if event
           @focalEvent = event
-          if args.scrollTo
-            @scrollTo "#sequence-#{event.sequenceId}", =>
-              setTimeout =>
-                @focalEvent = null
-              , 1000
-          else
-            setTimeout =>
-              @focalEvent = null
-            , 1000
+          @scrollTo "#sequence-#{@focalEvent.sequenceId}" if args.scrollTo
         else
           Flash.error('thread_context.item_maybe_deleted')
 
@@ -87,6 +83,7 @@ export default
           when 'position' then 'from_sequence_id_of_position'
 
         @loader.fetchRecords(
+          exclude_types: excludeTypes
           discussion_id: @discussion.id
           order: 'sequence_id'
           per: 5
@@ -115,9 +112,15 @@ export default
         # console.log "finding: ", args
         Records.events.find(args)[0]
 
+    refocus: ->
+      if @focalEvent and document.querySelector("#sequence-#{@focalEvent.sequenceId}")
+        @$vuetify.goTo("#sequence-#{@focalEvent.sequenceId}", duration: 0)
+        @focalEvent = null
+
     fetch: (slots, padding) ->
       return unless slots.length
-      @loader.fetchRecords
+      @loader.fetchRecords(
+        exclude_types: excludeTypes
         comment_id: null
         from: null
         from_unread: null
@@ -125,7 +128,7 @@ export default
         order: 'sequence_id'
         from_sequence_id_of_position: first(slots)
         until_sequence_id_of_position: last(slots)
-        per: padding * 4
+        per: padding * 4).then @refocus
 
     openArrangementForm: ->
       ThreadService.actions(@discussion, @)['edit_arrangement'].perform()
@@ -147,9 +150,9 @@ export default
 </script>
 
 <template lang="pug">
-.activity-panel
+.activity-panel(aria-label="Discussion and activity")
   .text-center.py-2
-    v-btn.action-button.grey--text(text small @click="openArrangementForm()" v-if="canEditThread")
+    v-btn.action-button.grey--text(text small @click="openArrangementForm()" :disabled="!canEditThread")
       span(v-t="{path: 'activity_card.count_responses', args: {count: parentEvent.childCount}}")
       space
       span(v-if="discussion.newestFirst" v-t="'poll_common_votes_panel.newest_first'")
