@@ -1513,6 +1513,7 @@ en:
 
   poll_common_card:
     show_results: Show results
+    hide_results: Hide results
     deleted: This poll has been deleted
 
   poll_common_index_card:

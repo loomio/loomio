@@ -18,5 +18,5 @@ export default
         v-icon mdi-dots-horizontal
     v-list
       v-list-item(v-for="(action, name) in actions" :key="name" @click="action.perform()" v-if='action.canPerform()' :class="'action-dock__button--' + name")
-        v-list-item-title(v-t="{path: (action.name || 'action_dock.'+name), args: action.nameArgs() || {} }")
+        v-list-item-title(v-t="{path: (action.name || 'action_dock.'+name), args: (action.nameArgs && action.nameArgs()) }")
 </template>

@@ -33,7 +33,7 @@ export default
     poll: -> @eventable
 
     showResults: ->
-      (@buttonPressed || (@myStance && @myStance.castAt)) && @poll.showResults()
+      @poll.showResults()
 
     menuActions: ->
       assign(
@@ -43,7 +43,7 @@ export default
       )
     dockActions: ->
       assign(
-        pick PollService.actions(@poll, @), ['show_results', 'edit_stance', 'announce_poll', 'edit_poll', 'close_poll', 'reopen_poll']
+        pick PollService.actions(@poll, @), ['show_results', 'hide_results', 'edit_stance', 'announce_poll', 'edit_poll', 'close_poll', 'reopen_poll']
       ,
         pick EventService.actions(@event, @), ['pin_event', 'unpin_event']
       )

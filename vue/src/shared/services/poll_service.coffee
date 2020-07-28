@@ -7,15 +7,30 @@ import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
 import i18n          from '@/i18n'
 import { hardReload } from '@/shared/helpers/window'
+import Vue from 'vue'
 
 export default new class PollService
   actions: (poll, vm) ->
     show_results:
       name: 'poll_common_card.show_results'
       canPerform: ->
-        !poll.stancesInDiscussion && !(poll.myStance() || {}).castAt && !poll.showResults
+        poll.participantsCount &&
+        !poll.pleaseShowResults &&
+        !poll.closedAt? &&
+        !poll.hideResultsUntilClosed &&
+        !(poll.myStance() || {}).castAt
       perform: ->
-        poll.showResults = true
+        Vue.set(poll, 'pleaseShowResults', true)
+
+    hide_results:
+      name: 'poll_common_card.hide_results'
+      canPerform: ->
+        poll.pleaseShowResults &&
+        !poll.closedAt? &&
+        !poll.hideResultsUntilClosed &&
+        !(poll.myStance() || {}).castAt
+      perform: ->
+        Vue.set(poll, 'pleaseShowResults', false)
 
     edit_stance:
       name: 'poll_common.change_vote'

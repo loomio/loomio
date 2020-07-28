@@ -9,8 +9,8 @@ export default
     stance: Object
 
   data: ->
-    selectedOptionIds: compact @stance.pollOptionIds()
-    selectedOptionId: @stance.pollOptionIds()[0]
+    selectedOptionIds: compact(@stance.pollOptionIds() || [parseInt(@$route.query.poll_option_id)])
+    selectedOptionId: @stance.pollOptionIds()[0] || parseInt(@$route.query.poll_option_id)
     pollOptions: []
 
   created: ->
