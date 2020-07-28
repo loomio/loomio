@@ -1312,7 +1312,7 @@ en:
     no_one: No one has seen this yet
 
   activity_card:
-    aria_label: "Comment or start poll"
+    aria_label: "Comment or start a poll"
     count_responses: "{{count}} responses"
     event_pinned: "Pinned to timeline"
     event_unpinned: "Unpinned from timeline"
