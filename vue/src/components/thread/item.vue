@@ -31,7 +31,15 @@ export default
       , 5000
 
   computed:
+    ariaTranslationKey: ->
+      if @eventable.discardedAt
+        'thread_item.aria.deleted'
+      else
+        'thread_item.aria.'+@event.kind
     eventable: -> @event.model()
+
+    translatedPollType: ->
+      @eventable.translatedPollType() if @eventable && @eventable.pollType
 
     indentSize: ->
       switch @event.depth
@@ -81,7 +89,7 @@ export default
 </script>
 
 <template lang="pug">
-div
+section(:aria-label="$t(ariaTranslationKey, {actor: event.actorName(), pollType: translatedPollType, when: approximateDate(event.createdAt) })")
   .thread-item.px-3.pb-1(:class="[{'thread-item--unread': isUnread}, focusStyleClass]" v-observe-visibility="{callback: viewed, once: true}")
     v-layout.lmo-action-dock-wrapper(:style="{'margin-left': indentSize+'px'}"  :id="'sequence-' + event.sequenceId")
       .thread-item__avatar.mr-3.mt-0

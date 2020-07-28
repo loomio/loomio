@@ -56,9 +56,6 @@ EventBus.configure do |config|
   config.listen('discussion_update', 'comment_update', 'poll_update', 'stance_update') { |model| model.update_versions_count }
 
 
-  # update stance data for polls
-  config.listen('stance_create')  { |stance| stance.poll.update_stance_data }
-
   # publish reply event after comment creation
   config.listen('comment_create') { |comment| Events::CommentRepliedTo.publish!(comment) if comment.parent }
 

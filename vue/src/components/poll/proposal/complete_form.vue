@@ -81,5 +81,5 @@ export default
     poll-common-directive(:poll='poll', name='form' :should-reset="shouldReset")
   v-card-actions.poll-common-form-actions
     v-spacer
-    v-btn.poll-common-form__submit(color="primary" @click='submit()' v-t="'poll_common_form.start'")
+    v-btn.poll-common-form__submit(color="primary" @click='submit()' v-t="{path: 'poll_common_form.start_poll_type', args: {poll_type: poll.translatedPollType()}}")
 </template>

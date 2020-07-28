@@ -14,7 +14,6 @@ export default
     isReturning: Boolean
 
   created: ->
-    EventBus.$on 'showResults', => @buttonPressed = true
     EventBus.$on 'stanceSaved', => EventBus.$emit 'refreshStance'
     @watchRecords
       collections: ["stances"]
@@ -34,20 +33,16 @@ export default
     poll: -> @eventable
 
     showResults: ->
-      (@buttonPressed || (@myStance && @myStance.castAt)) && @poll.showResults()
+      @poll.showResults()
 
     menuActions: ->
       assign(
         pick PollService.actions(@poll, @), ['show_history', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread', 'translate_poll']
       ,
-        pick EventService.actions(@event, @), ['move_event', 'copy_url']
+        pick EventService.actions(@event, @), ['move_event', 'copy_url', 'pin_event', 'unpin_event']
       )
     dockActions: ->
-      assign(
-        pick PollService.actions(@poll, @), ['edit_stance', 'announce_poll', 'edit_poll', 'close_poll', 'reopen_poll']
-      ,
-        pick EventService.actions(@event, @), ['pin_event', 'unpin_event']
-      )
+      pick PollService.actions(@poll, @), ['show_results', 'hide_results', 'edit_stance', 'announce_poll', 'edit_poll', 'close_poll', 'reopen_poll']
 
 </script>
 
@@ -65,12 +60,12 @@ thread-item.poll-created(:event="event" :is-returning="isReturning")
   document-list(:model='poll' skip-fetch)
   p.caption(v-if="!poll.pollOptionNames.length" v-t="'poll_common.no_voting'")
   div.body-2(v-if="poll.pollOptionNames.length")
-    .poll-common-card__results-shown(v-if='showResults')
+    .poll-common-card__results-shown(v-if='poll.showResults()')
       poll-common-directive(:poll='poll', name='chart-panel')
       poll-common-percent-voted(:poll='poll')
     poll-common-action-panel(:poll='poll')
   template(v-slot:actions)
-    action-dock(:actions="dockActions" :menu-actions="menuActions")
+    action-dock.my-2(:actions="dockActions" :menu-actions="menuActions")
   template(v-if="!poll.stancesInDiscussion && poll.showResults()" v-slot:afterActions)
     poll-common-votes-panel(v-if :poll="poll")
 </template>

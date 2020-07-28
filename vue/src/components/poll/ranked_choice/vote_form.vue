@@ -18,7 +18,6 @@ export default
 
   methods:
     submit: ->
-      @stance.id = null
       selected = take @pollOptions, @numChoices
       @stance.stanceChoicesAttributes = map selected, (option, index) =>
         poll_option_id: option.id
@@ -56,6 +55,5 @@ export default
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
     v-spacer
-    poll-common-show-results-button(v-if='!stance.castAt')
-    v-btn.poll-common-vote-form__submit(color="primary" @click='submit()', v-t="'poll_common.vote'", aria-label="$t( 'poll_poll_vote_form.vote')")
+    v-btn.poll-common-vote-form__submit(color="primary" @click='submit()' v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
 </template>

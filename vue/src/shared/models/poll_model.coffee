@@ -37,6 +37,7 @@ export default class PollModel extends BaseModel
     files: []
     imageFiles: []
     attachments: []
+    pleaseShowResults: false
 
   audienceValues: ->
     name: @group().name
@@ -112,7 +113,7 @@ export default class PollModel extends BaseModel
     @closedAt?
 
   showResults: ->
-    @closedAt? || !@hideResultsUntilClosed
+    @closedAt? || (!@hideResultsUntilClosed && (@myStance().castAt || @pleaseShowResults))
 
   close: =>
     @processing = true

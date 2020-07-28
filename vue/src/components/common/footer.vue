@@ -17,17 +17,17 @@ v-footer
       a(href="https://www.loomio.org/?frontpage" v-t="'powered_by.powered_by_loomio'" target="_blank")
       span(v-if="privacyUrl")
         | &nbsp;
-        | ·
+        mid-dot
         | &nbsp;
         a(:href="privacyUrl" v-t="'powered_by.privacy_policy'" target="_blank")
       span(v-if="termsUrl")
         | &nbsp;
-        | ·
+        mid-dot
         | &nbsp;
         a(:href="termsUrl" v-t="'powered_by.terms_of_service'" target="_blank")
       span(v-if="helpUrl")
         | &nbsp;
-        | ·
+        mid-dot
         | &nbsp;
         a(:href="helpUrl" v-t="'common.help'" target="_blank")
 </template>

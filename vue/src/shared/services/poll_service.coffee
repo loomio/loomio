@@ -10,6 +10,27 @@ import { hardReload } from '@/shared/helpers/window'
 
 export default new class PollService
   actions: (poll, vm) ->
+    show_results:
+      name: 'poll_common_card.show_results'
+      canPerform: ->
+        poll.participantsCount &&
+        !poll.pleaseShowResults &&
+        !poll.closedAt? &&
+        !poll.hideResultsUntilClosed &&
+        !(poll.myStance() || {}).castAt
+      perform: ->
+        poll.pleaseShowResults = true
+
+    hide_results:
+      name: 'poll_common_card.hide_results'
+      canPerform: ->
+        poll.pleaseShowResults &&
+        !poll.closedAt? &&
+        !poll.hideResultsUntilClosed &&
+        !(poll.myStance() || {}).castAt
+      perform: ->
+        poll.pleaseShowResults = false
+
     edit_stance:
       name: 'poll_common.change_vote'
       icon: 'mdi-pencil'
@@ -42,7 +63,9 @@ export default new class PollService
             announcement: Records.announcements.buildFromModel(poll)
 
     edit_poll:
-      name: 'common.action.edit'
+      name: 'action_dock.edit_poll_type'
+      nameArgs: ->
+        {pollType: poll.translatedPollType()}
       icon: 'mdi-pencil'
       canPerform: ->
         AbilityService.canEditPoll(poll)
@@ -82,9 +105,9 @@ export default new class PollService
 
     close_poll:
       icon: 'mdi-close-circle-outline'
-      name:
-        path: 'poll_common.close_poll_type'
-        args: {'poll-type': vm.$t(poll.pollTypeKey())}
+      name: 'poll_common.close_poll_type'
+      nameArgs: ->
+        {pollType: poll.translatedPollType()}
       canPerform: ->
         AbilityService.canClosePoll(poll)
       perform: ->

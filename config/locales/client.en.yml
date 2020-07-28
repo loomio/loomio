@@ -154,6 +154,7 @@ en:
     help: 'Help'
     anonymous: Anonymous
     required: Required
+    email_address: Email address
     privacy:
       privacy: 'Privacy'
       public: 'Public'
@@ -425,6 +426,7 @@ en:
     confirm_delete: 'Delete comment'
     in_reply_to: "Reply to {{name}}"
     write_a_comment: "Write a comment..."
+    post_comment: "Post comment"
     submit_button:
       label: 'Post'
     private_privacy_notice: 'Your comment will only be visible to members of {{groupName}}.'
@@ -565,6 +567,7 @@ en:
 
   discussion_form:
     aria_label: 'Thread form'
+    start_thread: Start thread
     messages:
       created: 'Thread started'
       updated: 'Thread updated'
@@ -664,6 +667,8 @@ en:
       success: '{{count}} notifications sent'
 
   action_dock:
+    actions_menu: Actions menu
+    more_actions: More actions
     react: React
     notify: Notify
     add_resource: Add an attachment
@@ -675,6 +680,7 @@ en:
     invite_guests: Invite guests
     translate_thread: Translate context
     edit_poll: Edit poll
+    edit_poll_type: "Edit {{pollType}}"
     move_items: Move items
     announce_poll: Invite people to vote
     announce_poll_active: (No one has been invited yet)
@@ -711,8 +717,12 @@ en:
     add_poll_to_thread: Add to thread
 
   formatting:
+    formatting_tools: Text formatting tools
+    expand: Show more formatting tools
+    collapse: Show fewer formatting tools
     bold: Bold
     italicize: Italicize
+    blockquote: Quote
     strikethrough: Strikethrough
     underline: Underline
     link: Insert link
@@ -804,6 +814,7 @@ en:
     name_and_count_more: "{{name}} and {{count}} more"
 
   context_panel:
+    aria_intro: "Thread context by {{author}}"
     thread_status:
       pinned: "This thread has been pinned. It will remain at the top of the group's list of threads for all users."
       closed: "This thread has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page"
@@ -1301,6 +1312,7 @@ en:
     no_one: No one has seen this yet
 
   activity_card:
+    aria_label: "Comment or start a poll"
     count_responses: "{{count}} responses"
     event_pinned: "Pinned to timeline"
     event_unpinned: "Unpinned from timeline"
@@ -1326,6 +1338,7 @@ en:
     aria_label: 'Group name'
 
   thread_context:
+    current_poll_type_banner: Current {{pollType}}
     item_maybe_deleted: "Cannot find the requested location within the thread. It may have been deleted."
     aria_label: 'Thread context'
     thread_options: 'Thread options'
@@ -1448,10 +1461,12 @@ en:
     ranked_choice_title: Ranked choice
 
   poll_common:
+    vote_now: Vote now
+    have_your_say: Have your say
     your_response: Your response
     change_your_response: Edit response
     reason: Reason
-    reason_placeholder: Any additional comments?
+    reason_placeholder: Briefly explain why you voted this way
     message: Message
     results: Results
     responses: Responses
@@ -1468,6 +1483,8 @@ en:
     details: Details
     participant_name: Your name
     participant_email: Email address
+    submit_vote: Submit vote
+    update_vote: Update vote
     share_poll: Share poll
     share_proposal: Share proposal
     share_count: Share check
@@ -1475,7 +1492,7 @@ en:
     publish_poll: Share poll
     view_all: View all
     save_changes: Save
-    change_vote: Change vote
+    change_vote: Change your vote
     max_score: Maximum score
     min_score: Minimum score
     too_long: Too long
@@ -1496,6 +1513,7 @@ en:
 
   poll_common_card:
     show_results: Show results
+    hide_results: Hide results
     deleted: This poll has been deleted
 
   poll_common_index_card:
@@ -1708,6 +1726,7 @@ en:
     closing: Closing
     closed: Closed
     start: Start
+    start_poll_type: Start {{poll_type}}
     update: Update
     reminder_note: 24 hours before closing, a reminder will be sent to all participants
     loomio_school_link: |
@@ -1923,6 +1942,13 @@ en:
     stance_updated: Choice updated
 
   thread_item:
+    aria:
+      deleted: Item deleted
+      new_comment: "{{actor}} commented. {{when}}"
+      poll_created: "{{actor}} started a {{pollType}}. {{when}}"
+      stance_created: "{{actor}} voted. {{when}}"
+      outcome_created: "{{actor}} shared an outcome. {{when}}"
+      poll_expired: "{{pollType}} closed. {{when}}"
     removed: "Item removed"
     comment_replied_to:            "<strong><a href='/u/{{username}}'>{{author}}</a></strong> in reply to <strong>{{title}}</strong>"
     discussion_title_edited:       "<strong><a href='/u/{{username}}'>{{author}}</a></strong> edited the thread title"
@@ -1967,15 +1993,17 @@ en:
     youre_invited: You have been invited to join {{group_name}}.
     youre_invited_discussion: You have been invited to join the discussion.
     youre_invited_poll: You have been invited to vote.
-    sign_in_to_loomio: Sign into {{site_name}}
+    sign_in_to_loomio: Sign in to {{site_name}}
     sign_in_help: Trouble signing in?
     sign_in: Sign in
     continue: Continue
     create_account: Create account
+    sign_up_as: Sign up as {{email}}
     sign_in_as: Sign in as {{name}}
     continue_with_provider: Sign in with {{provider}}
-    continue_with_email: Sign in with email
+    continue_with_email: Continue with email
     or_enter_your_email: Or, enter your email address
+    enter_your_name: Enter your name
     invitation_required: You need an invitation to create an account.
     more_providers: More
     email_not_present: An email address is required
@@ -1987,7 +2015,7 @@ en:
     email_placeholder: you@example.com
     login_with_token: You're all set! Click the link below to continue.
     login_link_helptext: Click the button below and we'll send you a link to sign in.
-    login_link_helptext_with_password: "Enter your password, or sign in via email."
+    enter_your_password: "Enter your password to continue"
     check_spam_folder: If the email does not arrive soon, check your spam folder.
     sign_up_helptext: Please complete this form to create a user account
     i_accept: "I accept the <a href='{{termsUrl}}' target='_blank'>Terms of service</a> and <a href='{{privacyUrl}}' target='_blank'>Privacy policy</a>"
@@ -2001,6 +2029,7 @@ en:
     welcome_back: Welcome back, {{name}}!
     forgot_password: Forgot password
     login_link: Send sign in email
+    sign_in_via_email: Sign in via email
     set_password: Set password
     set_password_helptext: Want to use a password next time?
     hello: "Hello, {{name}}!"
