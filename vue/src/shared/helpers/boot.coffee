@@ -24,7 +24,8 @@ export default (callback) ->
             "NotFoundError: The object can not be found here.",
             "NotFoundError: Node was not found",
             "ResizeObserver loop limit exceeded",
-            "MetaMask detected another web3"
+            "MetaMask detected another web3",
+            "AbortError: The operation was aborted"
           ]
           dsn: AppConfig.sentry_dsn
           integrations: [
