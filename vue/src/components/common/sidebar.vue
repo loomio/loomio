@@ -22,6 +22,7 @@ export default
     organizations: []
     unreadCounts: {}
     expandedGroupIds: []
+    openGroups: []
 
   created: ->
     EventBus.$on 'toggleSidebar', => @open = !@open
@@ -52,11 +53,8 @@ export default
       EventBus.$emit("sidebarOpen", val)
 
   methods:
-    isOpen: (parentGroup) ->
-      true
-      # group && group.parentOrSelf().id == parentGroup.id
     memberGroups: (group) ->
-      (group.subgroups().filter (g) -> g.membershipFor(Session.user())) || []
+      group.subgroups().filter (g) -> g.membershipFor(Session.user())
 
     openIfPinned: ->
       @open = Session.isSignedIn() && !!Session.user().experiences['sidebar'] && @$vuetify.breakpoint.mdAndUp
@@ -68,19 +66,20 @@ export default
 
       InboxService.load()
 
-    unreadCountFor: (group, isOpen) ->
-      if !isOpen
-        (@unreadCounts[group.id] || 0) + sum(compact(group.subgroups().map((g) => @unreadCounts[g.id])))
-      else
-        @unreadCounts[group.id] || 0
-
-    openGroup: (group) ->
+    goToGroup: (group) ->
       @$router.push @urlFor(group)
+
     updateGroups: ->
-      @organizations = compact(Session.user().parentGroups().concat(Session.user().orphanParents()))
-      @unreadCounts = {}
+      @organizations = compact(Session.user().parentGroups().concat(Session.user().orphanParents())) || []
+      @openCounts = {}
+      @closedCounts = {}
+      @openGroups = []
       Session.user().groups().forEach (group) =>
-        @unreadCounts[group.id] = filter(group.discussions(), (discussion) -> discussion.isUnread()).length
+        @openCounts[group.id] = filter(group.discussions(), (discussion) -> discussion.isUnread()).length
+      Session.user().parentGroups().forEach (group) =>
+        if @organization && @organization.id == group.parentOrSelf().id
+          @openGroups[group.id] = true
+        @closedCounts[group.id] = @openCounts[group.id] + sum(map(@memberGroups(group), (subgroup) => @openCounts[subgroup.id]))
 
     startOrganization: ->
      if AbilityService.canStartGroups()
@@ -124,24 +123,30 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   v-list.sidebar__groups(dense)
     template(v-for="parentGroup in organizations")
       template(v-if="memberGroups(parentGroup).length")
-        v-list-group(v-model="!!group && group.parentOrSelf().id == parentGroup.id" @click="openGroup(parentGroup)")
+        v-list-group(v-model="openGroups[parentGroup.id]"  @click="goToGroup(parentGroup)")
           template(v-slot:activator)
             v-list-item-avatar(aria-hidden="true")
               group-avatar(:group="parentGroup")
             v-list-item-content
               v-list-item-title
                 span {{parentGroup.name}}
-                template(v-if='unreadCountFor(parentGroup, true)')
+                template(v-if="closedCounts[parentGroup.id]")
                   | &nbsp;
-                  span ({{unreadCountFor(parentGroup, false)}})
-
+                  span ({{closedCounts[parentGroup.id]}})
+          v-list-item(:to="urlFor(parentGroup)+'?subgroups=none'")
+            v-list-item-content
+              v-list-item-title
+                span {{parentGroup.name}}
+                template(v-if='openCounts[parentGroup.id]')
+                  | &nbsp;
+                  span ({{openCounts[parentGroup.id]}})
           v-list-item(v-for="group in memberGroups(parentGroup)" :key="group.id" :to="urlFor(group)")
             v-list-item-content
               v-list-item-title
                 span {{group.name}}
-                template(v-if='unreadCountFor(group, true)')
+                template(v-if='openCounts[group.id]')
                   | &nbsp;
-                  span ({{unreadCountFor(group, false)}})
+                  span ({{openCounts[group.id]}})
       template(v-else)
         v-list-item(:to="urlFor(parentGroup)")
           v-list-item-avatar
@@ -149,9 +154,9 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
           v-list-item-content
             v-list-item-title
               span {{parentGroup.name}}
-              template(v-if='unreadCountFor(parentGroup, false)')
+              template(v-if='openCounts[parentGroup.id]')
                 | &nbsp;
-                span ({{unreadCountFor(parentGroup, false)}})
+                span ({{openCounts[parentGroup.id]}})
 
   v-divider
 
