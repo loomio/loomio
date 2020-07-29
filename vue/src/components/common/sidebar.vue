@@ -71,6 +71,8 @@ export default
       else
         @unreadCounts[group.id] || 0
 
+    openGroup: (group) ->
+      @$router.push @urlFor(group)
     updateGroups: ->
       @organizations = compact(Session.user().parentGroups().concat(Session.user().orphanParents()))
       @unreadCounts = {}
@@ -129,32 +131,25 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   v-divider
 
   v-list(dense)
-    v-list-group(v-for="parentGroup in organizations" :key="parentGroup.id" no-action)
-      template(v-slot:activator)
+    template(v-for="parentGroup in organizations")
+      v-list-group(v-if="memberGroups(parentGroup).length" v-model="group.parentOrSelf().id == parentGroup.id" @click="openGroup(parentGroup)")
+        template(v-slot:activator)
+          v-list-item-avatar(aria-hidden="true")
+            group-avatar(:group="parentGroup")
+          v-list-item-content
+            v-list-item-title {{parentGroup.name}}
+
+        v-list-item(v-for="group in memberGroups(parentGroup)" :key="group.id" :to="urlFor(group)")
+          v-list-item-content
+            v-list-item-title {{group.name}}
+
+      v-list-item(v-else :to="urlFor(parentGroup)")
         v-list-item-avatar
           group-avatar(:group="parentGroup")
         v-list-item-content
           v-list-item-title {{parentGroup.name}}
 
-      v-list-item(v-for="group in memberGroups(parentGroup)" :key="group.id" :to="urlFor(group)")
-        v-list-item-content
-          v-list-item-title {{group.name}}
-
-
   v-divider
-  //- v-treeview.sidebar__groups(hoverable dense :items="tree" :active="activeGroup" :open="expandedGroupIds" style="width: 100%")
-  //-   template(v-slot:prepend="{item, open}")
-  //-     router-link(v-if="!item.click" :to="urlFor(item.group)" aria-hidden="true")
-  //-       group-avatar(:group="item.group"  v-if="item.group.isParent()")
-  //-   template(v-slot:label="{item, open}")
-  //-     div(v-if="item.click")
-  //-       a.body-2.sidebar-item.text-almost-black(text @click="item.click" :class="{ 'sidebar-start-subgroup': item.isStartSubgroupButton }") {{item.name}}
-  //-     router-link(v-if="!item.click" :to="urlFor(item.group)")
-  //-       span.body-2.sidebar-item.text-almost-black
-  //-         span {{item.group.name}}
-  //-         span(v-if='unreadCountFor(item.group, open)')
-  //-           | &nbsp;
-  //-           span ({{unreadCountFor(item.group, open)}})
 
   v-list-item.sidebar__list-item-button--start-group(@click="startOrganization()" dense)
     v-list-item-title(v-t="'sidebar.start_group'")
