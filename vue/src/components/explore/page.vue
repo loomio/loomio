@@ -95,7 +95,7 @@ export default
 <template lang='pug'>
 v-main
   v-container.explore-page.max-width-1024
-    //- h1.headline(v-t="'explore_page.header'")
+    //- h1.headline(tabindex="-1" v-t="'explore_page.header'")
     v-text-field(v-model="query" :placeholder="$t('explore_page.search_placeholder')" id="search-field" append-icon="mdi-magnify")
     v-select(@change="handleOrderChange" :items="orderOptions" item-value="val" item-text="name" :placeholder="$t('explore_page.order_by')" :value="order")
     loading(:until="!searching")

@@ -89,9 +89,7 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
           v-text-field.poll-common-calendar-invite__location(type='text' :placeholder="$t('poll_common_calendar_invite.location_placeholder')" v-model='clone.customFields.event_location' :label="$t('poll_common_calendar_invite.location')")
           //- v-textarea.md-input.poll-common-calendar-invite__description(type='text' :placeholder="$t('poll_common_calendar_invite.event_description_placeholder')" v-model='clone.customFields.event_description' :label="$t('poll_common_calendar_invite.event_description')")
 
-
-
-    lmo-textarea.poll-common-outcome-form__statement.lmo-primary-form-input(:model='clone' field='statement' :label="$t('poll_common.statement')" :placeholder="$t('poll_common_outcome_form.statement_placeholder')" autofocus)
+    lmo-textarea.poll-common-outcome-form__statement.lmo-primary-form-input(:model='clone' field='statement' :label="$t('poll_common.statement')" :placeholder="$t('poll_common_outcome_form.statement_placeholder')")
       template(v-slot:actions)
         v-btn.poll-common-outcome-form__submit(color="primary" @click='submit()' v-t="'common.action.save'")
     validation-errors(:subject="clone" field="statement")

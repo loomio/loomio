@@ -54,7 +54,8 @@ export default
 <template lang="pug">
 v-main
   v-container.inbox-page.thread-preview-collection__container.max-width-1024(grid-list-lg)
-    section.dashboard-page__loading(v-if='unreadCount == 0 && loading', aria-hidden='true')
+    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'inbox_page.unread_threads'")
+    section.dashboard-page__loading(v-if='unreadCount == 0 && loading' aria-hidden='true')
       .thread-previews-container
         loading-content.thread-preview(:lineCount='2' v-for='(item, index) in [1,2,3,4,5,6,7,8,9,10]' :key='index')
     section.inbox-page__threads(v-if='unreadCount > 0 || !loading')

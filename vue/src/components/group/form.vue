@@ -131,8 +131,8 @@ v-card.group-form
   v-card-title
     v-layout(justify-space-between style="align-items: center")
       .group-form__group-title
-        h1.headline(v-if='clone.parentId', v-t="'group_form.edit_group_heading'")
-        h1.headline(v-if='!clone.parentId', v-t="'group_form.edit_organization_heading'")
+        h1.headline(tabindex="-1" v-if='clone.parentId', v-t="'group_form.edit_group_heading'")
+        h1.headline(tabindex="-1" v-if='!clone.parentId', v-t="'group_form.edit_organization_heading'")
       dismiss-modal-button(:close='close')
   v-card-text
 

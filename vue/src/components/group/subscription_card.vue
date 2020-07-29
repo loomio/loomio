@@ -29,7 +29,7 @@ export default
 v-card.my-6(v-if="canSee" outlined)
   v-card-title
     v-icon.mr-2(color="primary") mdi-rocket
-    h1.headline(v-t="'group_page.options.subscription_status'")
+    h1.headline(tabindex="-1" v-t="'group_page.options.subscription_status'")
     v-btn.ml-2(icon small href="https://help.loomio.org/en/subscriptions/" target="_blank" :title="$t('common.help')")
       v-icon(color="accent") mdi-help-circle-outline
   div.px-6

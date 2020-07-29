@@ -44,12 +44,12 @@ export default
 v-card.poll-common-move-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value="poll.processing")
   v-card-title
-    h1.headline(v-t="{path: 'poll_common_move_form.title', args: {poll_type: poll.translatedPollType() }}")
+    h1.headline(tabindex="-1" v-t="{path: 'poll_common_move_form.title', args: {poll_type: poll.translatedPollType() }}")
     v-spacer
     dismiss-modal-button(:close='close')
   v-card-text
     loading(v-if="!groups.length")
-    v-select(v-if="groups.length" autofocus v-model="groupId" :items="groups" :label="$t('move_thread_form.body')")
+    v-select(v-if="groups.length" v-model="groupId" :items="groups" :label="$t('move_thread_form.body')")
   v-card-actions.poll-common-form-actions
     v-spacer
     v-btn.poll-common-form__submit(color="primary" @click='submit()' v-t="'common.action.move'")

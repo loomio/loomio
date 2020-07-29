@@ -59,7 +59,7 @@ export default
         if @discussion.readItemsCount() > 0 && @discussion.unreadItemsCount() > 0
           {column: 'sequenceId', id: @discussion.firstUnreadSequenceId(), scrollTo: true}
         else
-          @scrollTo ".thread-page h1"
+          @scrollTo ".context-panel h1"
           if (@discussion.newestFirst && !@viewportIsBelow) || (!@discussion.newestFirst &&  @viewportIsBelow)
             {column: 'position', id: @parentEvent.childCount}
           else

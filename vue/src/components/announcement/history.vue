@@ -43,7 +43,7 @@ export default
 <template lang="pug">
 v-card
   v-card-title
-    h1.headline(v-t="'announcement.' + modelKind + '_notification_history'")
+    h1.headline(tabindex="-1" v-t="'announcement.' + modelKind + '_notification_history'")
     v-spacer
     dismiss-modal-button(:close="close")
   v-layout(justify-center)

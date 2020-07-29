@@ -41,8 +41,8 @@ export default
     v-layout(wrap)
       v-flex
         v-menu(ref='menu' v-model='isShowingDatePicker' :close-on-content-click='false' offset-y)
-          template(v-slot:activator='{ on }')
-            v-text-field(v-model='closingDate' :rules="[validDate]" placeholder="2000-12-30" v-on='on' prepend-icon="mdi-calendar")
+          template(v-slot:activator='{ on, attrs }')
+            v-text-field(v-model='closingDate' :rules="[validDate]" placeholder="2000-12-30" v-on='on' v-bind="attrs" prepend-icon="mdi-calendar")
               template(v-slot:label)
                 span(v-t="{ path: 'common.closing_in', args: { time: label } }" :title="exact(poll.closingAt)")
           v-date-picker.poll-common-closing-at-field__datepicker(v-model='closingDate' :min='dateToday' no-title @input="isShowingDatePicker = false")

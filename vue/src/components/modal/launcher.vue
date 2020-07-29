@@ -89,6 +89,9 @@ export default
       @isOpen = true
       @componentName = opts.component
       @componentProps = opts.props
+      setTimeout =>
+        if @$refs.modalLauncher && document.querySelector('.modal-launcher h1')
+          document.querySelector('.modal-launcher h1').focus()
 
     doCloseModal: -> @isOpen = false
 

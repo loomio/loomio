@@ -30,7 +30,7 @@ export default
 <template lang="pug">
 v-card.auth-identity-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
   v-card-title
-    h1.headline(role="status" aria-live="polite"  v-t="{ path: 'auth_form.hello', args: { name: user.name || user.email } }")
+    h1.headline(tabindex="-1" role="status" aria-live="polite"  v-t="{ path: 'auth_form.hello', args: { name: user.name || user.email } }")
     v-spacer
     v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
       v-icon mdi-close
@@ -47,7 +47,7 @@ v-card.auth-identity-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.
       .auth-identity-form__existing-account
         .auth-email-form__email
           p.text-center(v-t="'auth_form.already_a_user'")
-          v-text-field#email.lmo-primary-form-input(name='email' type='text' autofocus :placeholder="$t('auth_form.email_address_of_existing_account')" v-model='email')
+          v-text-field#email.lmo-primary-form-input(name='email' type='text' :placeholder="$t('auth_form.email_address_of_existing_account')" v-model='email')
           validation-errors(:subject='user' :field='email')
         v-layout(justify-center)
           v-btn(color="primary" @click='submit()' v-t="'auth_form.link_accounts'" :loading="loading" :disabled="email.length == 0")

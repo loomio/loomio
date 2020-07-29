@@ -192,8 +192,8 @@ div
 
             //- link
             v-menu(:close-on-content-click="!selectedText()" v-model="linkDialogIsOpen" min-width="320px")
-              template(v-slot:activator="{on}")
-                v-btn(icon v-on="on" :title="$t('formatting.link')")
+              template(v-slot:activator="{on, attrs}")
+                v-btn(icon v-on="on" v-bind="attrs" :title="$t('formatting.link')")
                   v-icon mdi-link
               v-card
                 template(v-if="selectedText()")
@@ -208,15 +208,15 @@ div
 
             //- emoji
             v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
-              template(v-slot:activator="{on}")
-                v-btn.emoji-picker__toggle(v-on="on" icon  :title="$t('formatting.insert_emoji')")
+              template(v-slot:activator="{on, attrs}")
+                v-btn.emoji-picker__toggle(v-on="on" v-bind="attrs" icon  :title="$t('formatting.insert_emoji')")
                   v-icon mdi-emoticon-outline
               emoji-picker(:insert="emojiPicked")
 
             //- headings menu
             v-menu(v-if="!expanded")
-              template(v-slot:activator="{ on }")
-                v-btn.drop-down-button(icon v-on="on" :title="$t('formatting.heading_size')")
+              template(v-slot:activator="{ on, attrs }")
+                v-btn.drop-down-button(icon v-on="on" v-bind="attrs" :title="$t('formatting.heading_size')")
                   v-icon mdi-format-size
                   v-icon.menu-down-arrow mdi-menu-down
               v-list(dense)
@@ -247,8 +247,8 @@ div
 
             //- list menu (always a menu)
             v-menu(v-if="expanded")
-              template(v-slot:activator="{ on }")
-                v-btn.drop-down-button(icon v-on="on")
+              template(v-slot:activator="{ on, attrs }")
+                v-btn.drop-down-button(icon v-on="on" v-bind="attrs")
                   v-icon mdi-format-list-bulleted
                   v-icon.menu-down-arrow mdi-menu-down
               v-list(dense)

@@ -480,6 +480,8 @@ en:
       comments: 'Comments'
     sign_in: 'Log In'
     toggle_sidebar: 'Toggle sidebar'
+    open_sidebar: 'Open sidebar'
+    close_sidebar: 'Close sidebar'
     logo_title: 'Home page'
     group_and_subgroups: '{{group}} & subgroups'
 

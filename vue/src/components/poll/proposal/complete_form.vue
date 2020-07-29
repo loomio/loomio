@@ -75,7 +75,7 @@ export default
 .poll-proposal-complete-form.pa-2(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value="poll && poll.processing")
   v-card-title
-    h1.headline(v-t="title_key")
+    h1.headline(tabindex="-1" v-t="title_key")
     v-spacer
   v-card-text
     poll-common-directive(:poll='poll', name='form' :should-reset="shouldReset")

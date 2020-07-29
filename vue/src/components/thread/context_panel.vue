@@ -1,6 +1,5 @@
 <script lang="coffee">
 import ThreadService  from '@/shared/services/thread_service'
-import { exact }      from '@/shared/helpers/format_time'
 import { map, compact, pick } from 'lodash-es'
 import EventBus from '@/shared/services/event_bus'
 import openModal      from '@/shared/helpers/open_modal'
@@ -36,10 +35,6 @@ export default
         to: @urlFor(group)
 
   methods:
-    exact: exact
-    titleVisible: (visible) ->
-      EventBus.$emit('content-title-visible', visible)
-
     viewed: (viewed) ->
       @discussion.markAsSeen() if viewed
 
@@ -63,7 +58,7 @@ export default
     span.grey--text.body-2
       time-ago(aria-label="Thread started" :date='discussion.createdAt')
 
-  h1.display-1.context-panel__heading.px-3#sequence-0(v-observe-visibility="{callback: titleVisible}")
+  h1.display-1.context-panel__heading.px-3#sequence-0(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
     i.mdi.mdi-pin.context-panel__heading-pin(v-if="status == 'pinned'")
     span(v-if='!discussion.translation.title') {{discussion.title}}
     span(v-if='discussion.translation.title')
@@ -90,7 +85,7 @@ export default
           span(v-t="'thread_context.forked_from'")
           router-link(:to='urlFor(discussion.forkedEvent())') {{discussion.forkedEvent().discussion().title}}
       .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'" v-if='discussion.closedAt')
-        v-tooltip(bottom) {{ exact(discussion.closedAt) }}
+        v-tooltip(bottom) {{ exactDate(discussion.closedAt) }}
     formatted-text.context-panel__description(:model="discussion" column="description" aria-label="Discussion context")
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")

@@ -97,7 +97,7 @@ section(:aria-label="$t(ariaTranslationKey, {actor: event.actorName(), pollType:
         v-checkbox.thread-item__is-forking(v-if="event.isForkable()" @change="event.toggleFromFork()" :disabled="event.forkingDisabled()" v-model="event.isForking()")
       v-layout.thread-item__body(column)
         v-layout.align-center.wrap
-          h3.thread-item__title.body-2(:id="'event-' + event.id")
+          h3.thread-item__title.body-2(tabindex="-1" :id="'event-' + event.id")
             //- div
               | id: {{event.id}}
               | pos {{event.position}}

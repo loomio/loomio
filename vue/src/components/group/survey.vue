@@ -66,7 +66,7 @@ v-card.group-survey
   submit-overlay(:value='submitting')
   v-card-title
     v-icon.mr-2(color="primary") mdi-rocket
-    h1.headline(v-t="'group_survey.title'")
+    h1.headline(tabindex="-1" v-t="'group_survey.title'")
   v-card-text
     p.body-1.mt-4(v-t="'group_survey.subtitle'")
     v-form(ref="form")

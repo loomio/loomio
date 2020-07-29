@@ -48,6 +48,7 @@ export default
           organisationId: @discussion.group().parentOrSelf().id
           pageType: 'threadPage'
         EventBus.$emit 'currentComponent',
+          focusHeading: false
           page: 'threadPage'
           discussion: @discussion
           group: @discussion.group()
