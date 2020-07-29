@@ -28,7 +28,6 @@ export default
     EventBus.$on 'toggleSidebar', => @open = !@open
 
     EventBus.$on 'currentComponent', (data) =>
-      @openIfPinned()
       @group = data.group
       if @group
         @organization = data.group.parentOrSelf()
@@ -45,6 +44,9 @@ export default
       @openIfPinned()
 
     @fetchData() if Session.isSignedIn()
+
+  mounted: ->
+    @openIfPinned()
 
   watch:
     organization: 'updateGroups'
@@ -170,6 +172,10 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
 </template>
 <style lang="sass">
 .sidenav-left
+  .v-avatar.v-list-item__avatar
+    margin-right: 8px
+  .v-list-group .v-list-group__header .v-list-item__icon.v-list-group__header__append-icon
+    min-width: 0
   .v-list-item__icon.v-list-group__header__append-icon
     min-width: 32px
   .v-list-item__icon.v-list-group__header__append-icon
