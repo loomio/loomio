@@ -129,17 +129,29 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
             v-list-item-avatar(aria-hidden="true")
               group-avatar(:group="parentGroup")
             v-list-item-content
-              v-list-item-title {{parentGroup.name}}
+              v-list-item-title
+                span {{parentGroup.name}}
+                template(v-if='unreadCountFor(parentGroup, true)')
+                  | &nbsp;
+                  span ({{unreadCountFor(parentGroup, false)}})
 
           v-list-item(v-for="group in memberGroups(parentGroup)" :key="group.id" :to="urlFor(group)")
             v-list-item-content
-              v-list-item-title {{group.name}}
+              v-list-item-title
+                span {{group.name}}
+                template(v-if='unreadCountFor(group, true)')
+                  | &nbsp;
+                  span ({{unreadCountFor(group, false)}})
       template(v-else)
         v-list-item(:to="urlFor(parentGroup)")
           v-list-item-avatar
             group-avatar(:group="parentGroup")
           v-list-item-content
-            v-list-item-title {{parentGroup.name}}
+            v-list-item-title
+              span {{parentGroup.name}}
+              template(v-if='unreadCountFor(parentGroup, false)')
+                | &nbsp;
+                span ({{unreadCountFor(parentGroup, false)}})
 
   v-divider
 
