@@ -11,15 +11,16 @@ export default
     unreadIds: []
     open: false
 
-  watch:
-    open: (newVal, oldVal) ->
-      if oldVal && !newVal
-        @unreadIds = []
-        @unreadCount = 0
-      if newVal && !oldVal
+  methods:
+    clicked: ->
+      @open = !@open
+      if @open
         @unread = Records.notifications.find(viewed: { $ne: true })
         @unreadIds = @unread.map (n) -> n.id
         Records.notifications.viewed()
+      else
+        @unreadIds = []
+        @unreadCount = 0
 
   created: ->
     Records.notifications.fetchNotifications()
@@ -32,19 +33,13 @@ export default
 
 </script>
 <template lang="pug">
-v-menu.notifications(offset-y bottom)
-  template(v-slot:activator="{on, attrs}")
-    v-btn.notifications__button(icon v-on="on" v-bind="attrs" :aria-label="$t('navbar.notifications')")
+v-menu.notifications(v-model="open" offset-y bottom)
+  template(v-slot:activator="{attrs}")
+    v-btn.notifications__button(icon v-bind="attrs" :aria-label="$t('navbar.notifications')" @click="clicked")
       v-badge(color="accent" v-model="unread.length")
         template(v-slot:badge)
           span.notifications__activity {{unread.length}}
         v-icon mdi-bell
-        //-
-        //- v-sheet.notifications__dropdown.py-2
-        //-   div(v-if ="notifications.length > 0" v-for="notification in notifications", :key="notification.id")
-        //-     notification(:notification="notification", :unread="unreadIds.includes(notification.id)")
-        //-   v-layout.align-center.justify-center(v-if="notifications.length == 0")
-        //-     span.py-3.px-3(v-t="'notifications.no_notifications'")
 
   v-sheet.notifications__dropdown
     v-list(v-if="notifications.length > 0" dense)
@@ -58,7 +53,8 @@ v-menu.notifications(offset-y bottom)
             span(aria-hidden='true') ·
             space
             time-ago(:date="n.createdAt")
-    div(v-if="notifications.length == 0" v-t="'notifications.no_notifications'")
+    template(v-if="notifications.length == 0")
+      v-list-item.notification(v-t="'notifications.no_notifications'")
 </template>
 
 <style lang="sass">
