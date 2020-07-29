@@ -161,7 +161,7 @@ v-card
 
     div(v-if="!invitingToGroup || canInvite")
       .announcement-form__invite
-        v-autocomplete.announcement-form__input(multiple chips return-object hide-no-data hide-selected v-model='recipients' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" item-avatar="avatar_url.large" :placeholder="$t('announcement.form.placeholder')" :items='searchResults')
+        v-autocomplete.announcement-form__input(multiple chips return-object hide-no-data hide-selected v-model='recipients' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" item-avatar="avatar_url.large" :placeholder="$t('announcement.form.placeholder')" :items='searchResults' autofocus)
           template(v-slot:selection='data')
             v-chip.chip--select-multi(:value='data.selected', close, @click:close='remove(data.item)')
               user-avatar.mr-1(:user="data.item" size="small" :no-link="true")
