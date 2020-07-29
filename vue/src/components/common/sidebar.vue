@@ -130,7 +130,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
     v-list-item-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
   v-divider
 
-  v-list(dense)
+  v-list.sidebar__groups(dense)
     template(v-for="parentGroup in organizations")
       v-list-group(v-if="memberGroups(parentGroup).length" v-model="group.parentOrSelf().id == parentGroup.id" @click="openGroup(parentGroup)")
         template(v-slot:activator)
