@@ -16,8 +16,8 @@ export default
 
 <template lang="pug">
 v-tooltip(bottom)
-  template(v-slot:activator="{on}")
-    v-btn.group-privacy-button(icon v-on="on" :aria-label='privacyDescription')
+  template(v-slot:activator="{on, attrs}")
+    v-btn.group-privacy-button(icon v-on="on" v-bind="attrs" :aria-label='privacyDescription')
       v-icon {{iconClass}}
       //- span(v-t="'common.privacy.' + group.groupPrivacy")
   | {{privacyDescription}}

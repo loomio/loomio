@@ -50,8 +50,8 @@ export default
 
 <template lang="pug">
 v-dialog(v-model='dialog' max-width="600px")
-  template(v-slot:activator="{ on }")
-    v-btn.mr-2(v-on="on" color="accent" v-t="'common.action.share'")
+  template(v-slot:activator="{ on, attrs }")
+    v-btn.mr-2(v-on="on" v-bind="attrs" color="accent" v-t="'common.action.share'")
   v-card.shareable-link-modal
     v-card-title
       h1.headline(v-t="'invitation_form.share_group'")

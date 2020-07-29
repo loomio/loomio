@@ -191,8 +191,8 @@ div.discussions-panel(v-if="group")
         //-   v-list-item-title(v-t="'change_volume_form.simple.loud'")
 
     v-menu
-      template(v-slot:activator="{ on }")
-        v-btn.mr-2.text-lowercase(v-on="on" text)
+      template(v-slot:activator="{ on, attrs }")
+        v-btn.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)
           span(v-if="$route.query.tag") {{$route.query.tag}}
           span(v-else v-t="'loomio_tags.all_tags'")
           v-icon mdi-menu-down

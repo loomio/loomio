@@ -95,8 +95,8 @@ export default
   div(v-if="group")
     v-layout.py-2(align-center wrap)
       v-menu
-        template(v-slot:activator="{ on }")
-          v-btn.mr-2.text-lowercase(v-on="on" text)
+        template(v-slot:activator="{ on, attrs }")
+          v-btn.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)
             span(v-if="$route.query.status == 'active'" v-t="'polls_panel.open'")
             span(v-if="$route.query.status == 'closed'" v-t="'polls_panel.closed'")
             span(v-if="!$route.query.status" v-t="'polls_panel.any_status'")
@@ -106,8 +106,8 @@ export default
           v-list-item(:to="mergeQuery({status: 'active'})" v-t="'polls_panel.open'")
           v-list-item(:to="mergeQuery({status: 'closed'})" v-t="'polls_panel.closed'")
       v-menu
-        template(v-slot:activator="{ on }")
-          v-btn.mr-2.text-lowercase(v-on="on" text)
+        template(v-slot:activator="{ on, attrs }")
+          v-btn.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)
             //- span(v-t="{path: filterName(filter), args: {count: unreadCount}}")
             span(v-if="$route.query.poll_type" v-t="'poll_types.'+$route.query.poll_type")
             span(v-if="!$route.query.poll_type" v-t="'polls_panel.any_type'")

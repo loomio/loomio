@@ -25,8 +25,8 @@ export default
 
 <template lang="pug">
 v-menu
-  template(v-slot:activator="{on}")
-    v-btn(icon v-on="on")
+  template(v-slot:activator="{on, attrs}")
+    v-btn(icon v-on="on" v-bind="attrs")
       v-icon mdi-menu-down
   v-list
     v-list-item(v-for="link in parentLinks" :to="link.path" v-t="{path: link.name, args: {name: parentName}}")
