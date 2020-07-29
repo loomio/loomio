@@ -52,8 +52,11 @@ export default
       EventBus.$emit("sidebarOpen", val)
 
   methods:
+    isOpen: (parentGroup) ->
+      true
+      # group && group.parentOrSelf().id == parentGroup.id
     memberGroups: (group) ->
-      group.subgroups().filter (g) -> g.membershipFor(Session.user())
+      (group.subgroups().filter (g) -> g.membershipFor(Session.user())) || []
 
     openIfPinned: ->
       @open = Session.isSignedIn() && !!Session.user().experiences['sidebar'] && @$vuetify.breakpoint.mdAndUp
@@ -78,18 +81,6 @@ export default
       @unreadCounts = {}
       Session.user().groups().forEach (group) =>
         @unreadCounts[group.id] = filter(group.discussions(), (discussion) -> discussion.isUnread()).length
-
-      groupAsItem = (group) ->
-        id: group.id
-        name: group.name
-        group: group
-        member: Session.user().membershipFor(group)?
-        children: if group.subgroups
-          orderBy(group.subgroups().map(groupAsItem), ['member', 'name'], ['desc', 'asc'])
-        else
-          []
-
-      @tree = orderBy( @organizations.map((group) -> groupAsItem(group)), ['name'], ['asc'])
 
     startOrganization: ->
      if AbilityService.canStartGroups()
@@ -132,22 +123,23 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
 
   v-list.sidebar__groups(dense)
     template(v-for="parentGroup in organizations")
-      v-list-group(v-if="memberGroups(parentGroup).length" v-model="group.parentOrSelf().id == parentGroup.id" @click="openGroup(parentGroup)")
-        template(v-slot:activator)
-          v-list-item-avatar(aria-hidden="true")
+      template(v-if="memberGroups(parentGroup).length")
+        v-list-group(v-model="!!group && group.parentOrSelf().id == parentGroup.id" @click="openGroup(parentGroup)")
+          template(v-slot:activator)
+            v-list-item-avatar(aria-hidden="true")
+              group-avatar(:group="parentGroup")
+            v-list-item-content
+              v-list-item-title {{parentGroup.name}}
+
+          v-list-item(v-for="group in memberGroups(parentGroup)" :key="group.id" :to="urlFor(group)")
+            v-list-item-content
+              v-list-item-title {{group.name}}
+      template(v-else)
+        v-list-item(:to="urlFor(parentGroup)")
+          v-list-item-avatar
             group-avatar(:group="parentGroup")
           v-list-item-content
             v-list-item-title {{parentGroup.name}}
-
-        v-list-item(v-for="group in memberGroups(parentGroup)" :key="group.id" :to="urlFor(group)")
-          v-list-item-content
-            v-list-item-title {{group.name}}
-
-      v-list-item(v-else :to="urlFor(parentGroup)")
-        v-list-item-avatar
-          group-avatar(:group="parentGroup")
-        v-list-item-content
-          v-list-item-title {{parentGroup.name}}
 
   v-divider
 
