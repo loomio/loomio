@@ -59,7 +59,7 @@ export default
       group.subgroups().filter (g) -> g.membershipFor(Session.user())
 
     openIfPinned: ->
-      @open = Session.isSignedIn() && !!Session.user().experiences['sidebar'] && @$vuetify.breakpoint.mdAndUp
+      @open = Session.isSignedIn() && !!Session.user().experiences['sidebar'] && @$vuetify.breakpoint.lgAndUp
 
     fetchData: ->
       Records.users.fetchGroups().then =>
