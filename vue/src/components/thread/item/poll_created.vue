@@ -49,7 +49,7 @@ export default
 <template lang="pug">
 thread-item.poll-created(:event="event" :is-returning="isReturning")
   v-layout(justify-space-between)
-    h1.poll-common-card__title.headline
+    h1.poll-common-card__title.headline(tabindex="-1")
       router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
       translation(v-if="poll.translation.title" :model='poll', field='title')
       poll-common-closing-at.ml-2(:poll='poll')

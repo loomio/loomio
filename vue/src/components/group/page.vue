@@ -65,9 +65,6 @@ export default
         EventBus.$emit 'pageError', error
         EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()
 
-    titleVisible: (visible) ->
-      EventBus.$emit('content-title-visible', visible)
-
     openGroupSettingsModal: ->
       return null unless @canEditGroup
       EventBus.$emit 'openModal',
@@ -82,7 +79,7 @@ v-main
   loading(v-if="!group")
   v-container.group-page.max-width-1024(v-if="group")
     v-img(style="border-radius: 8px" :src="coverImageSrc" eager)
-    h1.display-1.my-4(v-observe-visibility="{callback: titleVisible}")
+    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
       span(v-if="group && group.parent()")
         router-link(:to="urlFor(group.parent())") {{group.parent().name}}
         space

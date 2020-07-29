@@ -35,6 +35,7 @@ export default
       @showTitle = !val
 
     EventBus.$on 'currentComponent', (data) =>
+      data = Object.assign({focusHeading: true}, data)
       if data.title?
         @title = data.title
       else if data.titleKey?
@@ -43,6 +44,11 @@ export default
       @group = data.group
       @discussion = data.discussion
       @page = data.page
+
+      if data.focusHeading
+        setTimeout =>
+          if document.querySelector('.v-main h1')
+            document.querySelector('.v-main h1').focus()
 
   computed:
     groupName: ->
