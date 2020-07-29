@@ -145,10 +145,10 @@ export default
 v-card
   submit-overlay(:value="announcement.processing")
   v-card-title
-    h1.headline(v-if="modelKind == 'group'" v-t="{path: 'announcement.send_group', args: {name: announcement.model.name} }")
-    h1.headline(v-if="modelKind == 'discussion'" v-t="{path: 'announcement.send_discussion'}")
-    h1.headline(v-if="modelKind == 'poll'" v-t="{path: 'announcement.send_poll', args: {type: announcement.model.translatedPollType()}}")
-    h1.headline(v-if="modelKind == 'outcome'" v-t="{path: 'announcement.send_outcome'}")
+    h1.headline(tabindex="-1" v-if="modelKind == 'group'" v-t="{path: 'announcement.send_group', args: {name: announcement.model.name} }")
+    h1.headline(tabindex="-1" v-if="modelKind == 'discussion'" v-t="{path: 'announcement.send_discussion'}")
+    h1.headline(tabindex="-1" v-if="modelKind == 'poll'" v-t="{path: 'announcement.send_poll', args: {type: announcement.model.translatedPollType()}}")
+    h1.headline(tabindex="-1" v-if="modelKind == 'outcome'" v-t="{path: 'announcement.send_outcome'}")
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text.announcement-form
@@ -161,7 +161,7 @@ v-card
 
     div(v-if="!invitingToGroup || canInvite")
       .announcement-form__invite
-        v-autocomplete.announcement-form__input(multiple chips return-object autofocus hide-no-data hide-selected v-model='recipients' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" item-avatar="avatar_url.large" :placeholder="$t('announcement.form.placeholder')" :items='searchResults')
+        v-autocomplete.announcement-form__input(multiple chips return-object hide-no-data hide-selected v-model='recipients' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" item-avatar="avatar_url.large" :placeholder="$t('announcement.form.placeholder')" :items='searchResults')
           template(v-slot:selection='data')
             v-chip.chip--select-multi(:value='data.selected', close, @click:close='remove(data.item)')
               user-avatar.mr-1(:user="data.item" size="small" :no-link="true")

@@ -15,7 +15,7 @@ export default
 v-card.edit-comment-form
   submit-overlay(:value='comment.processing')
   v-card-title
-    h1.headline(v-t="'comment_form.edit_comment'")
+    h1.headline(tabindex="-1" v-t="'comment_form.edit_comment'")
     v-spacer
     dismiss-modal-button(:close="close")
   comment-form(:comment="comment" @comment-submitted="close()" autofocus)

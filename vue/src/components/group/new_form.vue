@@ -118,8 +118,8 @@ v-card.group-form
   v-card-title
     v-layout(justify-space-between style="align-items: center")
       .group-form__group-title
-        h1.headline(v-if='group.parentId', v-t="'group_form.start_subgroup_heading'")
-        h1.headline(v-if='!group.parentId', v-t="'group_form.start_organization_heading'")
+        h1.headline(tabindex="-1" v-if='group.parentId', v-t="'group_form.start_subgroup_heading'")
+        h1.headline(tabindex="-1" v-if='!group.parentId', v-t="'group_form.start_organization_heading'")
       dismiss-modal-button(:close='close')
   v-card-text
     v-text-field.group-form__name#group-name(v-model='group.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]', maxlength='255', :label="$t(groupNameLabel)" @keyup="suggestHandle()")

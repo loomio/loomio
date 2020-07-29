@@ -47,7 +47,7 @@ export default
 <template lang="pug">
 v-card.auth-signin-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
   v-card-title
-    h1.headline(role="status" aria-live="assertive" v-t="{ path: 'auth_form.welcome_back', args: { name: user.name } }")
+    h1.headline(tabindex="-1" role="status" aria-live="assertive" v-t="{ path: 'auth_form.welcome_back', args: { name: user.name } }")
     v-spacer
     v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
       v-icon mdi-close

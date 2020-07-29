@@ -26,7 +26,7 @@ export default
 <template lang="pug">
 v-card
   v-card-title
-    h1.headline(v-t="'export_data_modal.title'")
+    h1.headline(tabindex="-1" v-t="'export_data_modal.title'")
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text

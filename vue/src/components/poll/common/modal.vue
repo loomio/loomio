@@ -48,7 +48,7 @@ export default
 v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value="poll.processing")
   v-card-title
-    h1.headline(v-t="title_key")
+    h1.headline(tabindex="-1" v-t="title_key")
     v-spacer
     dismiss-modal-button(:close='close')
   v-card-text
