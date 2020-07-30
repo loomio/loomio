@@ -50,7 +50,7 @@ export default
 <template lang="pug">
 v-card.install-saml-modal
   v-card-title
-    h1.headline(v-t="'configure_sso.title'")
+    h1.headline(tabindex="-1" v-t="'configure_sso.title'")
     v-spacer
     dismiss-modal-button(:close="close")
   loading(:until="!loading")

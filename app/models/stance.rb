@@ -22,7 +22,7 @@ class Stance < ApplicationRecord
   has_many :stance_choices, dependent: :destroy
   has_many :poll_options, through: :stance_choices
 
-  has_paper_trail only: [:reason]
+  has_paper_trail only: [:reason, :stance_choices_cache]
 
   define_counter_cache(:versions_count)  { |stance| stance.versions.count }
 
@@ -35,6 +35,8 @@ class Stance < ApplicationRecord
 
   update_counter_cache :poll, :stances_count
   update_counter_cache :poll, :undecided_count
+
+  before_save :update_stance_choices_cache
 
   default_scope { includes(:stance_choices) }
   scope :latest,         -> { where(latest: true).where(revoked_at: nil) }
@@ -85,6 +87,12 @@ class Stance < ApplicationRecord
 
   def discarded?
     false
+  end
+
+  def update_stance_choices_cache
+    self.stance_choices_cache = stance_choices.map do |sc|
+      {poll_option_id: sc.poll_option_id, poll_option_name: sc.poll_option.name, score: sc.score}
+    end
   end
 
   def choice=(choice)

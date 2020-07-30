@@ -59,6 +59,7 @@ export default
         if @discussion.readItemsCount() > 0 && @discussion.unreadItemsCount() > 0
           {column: 'sequenceId', id: @discussion.firstUnreadSequenceId(), scrollTo: true}
         else
+          @scrollTo ".context-panel h1"
           if (@discussion.newestFirst && !@viewportIsBelow) || (!@discussion.newestFirst &&  @viewportIsBelow)
             {column: 'position', id: @parentEvent.childCount}
           else
@@ -112,7 +113,7 @@ export default
         Records.events.find(args)[0]
 
     refocus: ->
-      if @focalEvent
+      if @focalEvent and document.querySelector("#sequence-#{@focalEvent.sequenceId}")
         @$vuetify.goTo("#sequence-#{@focalEvent.sequenceId}", duration: 0)
         @focalEvent = null
 
@@ -149,9 +150,9 @@ export default
 </script>
 
 <template lang="pug">
-.activity-panel
+.activity-panel(aria-label="Discussion and activity")
   .text-center.py-2
-    v-btn.action-button.grey--text(text small @click="openArrangementForm()" v-if="canEditThread")
+    v-btn.action-button.grey--text(text small @click="openArrangementForm()" :disabled="!canEditThread")
       span(v-t="{path: 'activity_card.count_responses', args: {count: parentEvent.childCount}}")
       space
       span(v-if="discussion.newestFirst" v-t="'poll_common_votes_panel.newest_first'")

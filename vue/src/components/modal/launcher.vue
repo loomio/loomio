@@ -89,6 +89,9 @@ export default
       @isOpen = true
       @componentName = opts.component
       @componentProps = opts.props
+      setTimeout =>
+        if @$refs.modalLauncher && document.querySelector('.modal-launcher h1')
+          document.querySelector('.modal-launcher h1').focus()
 
     doCloseModal: -> @isOpen = false
 
@@ -100,6 +103,6 @@ export default
 </script>
 
 <template lang="pug">
-v-dialog(v-model="isOpen" :max-width="maxWidth" persistent :fullscreen="$vuetify.breakpoint.xs")
+v-dialog.modal-launcher(ref="modalLauncher" v-model="isOpen" :max-width="maxWidth" persistent :fullscreen="$vuetify.breakpoint.xs")
   component(:is="componentName" :key="componentKey()" v-bind="componentProps" :close="closeModal")
 </template>

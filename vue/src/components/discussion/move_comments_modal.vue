@@ -74,7 +74,7 @@ export default
 v-card
   submit-overlay(:value='selectedDiscussion && selectedDiscussion.processing')
   v-card-title
-    h1.headline(v-t="'action_dock.move_items'")
+    h1.headline(tabindex="-1" v-t="'action_dock.move_items'")
     v-spacer
     dismiss-modal-button(aria-hidden='true', :close='close')
   v-card-text

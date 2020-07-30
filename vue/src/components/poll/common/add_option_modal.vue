@@ -32,7 +32,7 @@ export default
 v-card.poll-common-add-option-modal
   submit-overlay(:value='poll.processing')
   v-card-title
-    h1.headline(v-t="'poll_common_add_option.modal.title'")
+    h1.headline(tabindex="-1" v-t="'poll_common_add_option.modal.title'")
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text

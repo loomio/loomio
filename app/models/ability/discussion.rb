@@ -41,7 +41,7 @@ module Ability::Discussion
     end
 
     can [:destroy, :move, :move_comments, :discard], ::Discussion do |discussion|
-      discussion.author == user or discussion.admins.exists?(user.id)
+      discussion.discarded_at.nil? && discussion.author == user or discussion.admins.exists?(user.id)
     end
 
     can :fork, ::Discussion do |discussion|

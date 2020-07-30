@@ -11,15 +11,16 @@ export default
   computed:
     referralCodeExtra: -> @$t('subscription_status.referral_code_help')
     canSee: -> !@group.parentId && AbilityService.canAdminister(@group)
-    expiresAt: -> @exactDate(@group.subscription.expires_at)
     showUpgradeButton: -> @group.subscription.plan == "trial"
+    isActivePlan: -> ['pp-active-monthly', 'pp-active-annual', 'pp-community-annual', 'npap-active-monthly', 'npap-active-annual'].includes(@group.subscription.plan)
     tableData: ->
       {
         plan: startCase(@group.subscription.plan)
         state: startCase(@group.subscription.state)
-        expires_at: @displayDate(@group.subscription.expires_at) if @group.subscription.plan == 'trial'
-        renews_at: @displayDate(@group.subscription.renews_at)
-        active_members: @group.subscription.members_count
+        expires_at: @displayDate(@group.subscription.expires_at) if @group.subscription.plan == 'trial' && @group.subscription.expires_at
+        renews_at: @displayDate(@group.subscription.renews_at) if @group.subscription.renews_at
+        members: @group.orgMembersCount
+        active_members: @group.subscription.members_count if @isActivePlan
         max_members: @group.subscription.max_members if @group.subscription.max_members
         max_threads: @group.subscription.max_threads if @group.subscription.max_threads
         referral_code: "<strong>#{@group.subscription.referral_code}</strong> - <a href='https://help.loomio.org/en/subscriptions/referral_code/' target=_blank>#{@referralCodeExtra}</a>" if @group.subscription.referral_code
@@ -30,7 +31,7 @@ export default
 v-card.my-6(v-if="canSee" outlined)
   v-card-title
     v-icon.mr-2(color="primary") mdi-rocket
-    h1.headline(v-t="'group_page.options.subscription_status'")
+    h1.headline(tabindex="-1" v-t="'group_page.options.subscription_status'")
     v-btn.ml-2(icon small href="https://help.loomio.org/en/subscriptions/" target="_blank" :title="$t('common.help')")
       v-icon(color="accent") mdi-help-circle-outline
   div.px-6

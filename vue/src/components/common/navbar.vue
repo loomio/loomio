@@ -35,6 +35,7 @@ export default
       @showTitle = !val
 
     EventBus.$on 'currentComponent', (data) =>
+      data = Object.assign({focusHeading: true}, data)
       if data.title?
         @title = data.title
       else if data.titleKey?
@@ -43,6 +44,11 @@ export default
       @group = data.group
       @discussion = data.discussion
       @page = data.page
+
+      if data.focusHeading
+        setTimeout =>
+          if document.querySelector('.v-main h1')
+            document.querySelector('.v-main h1').focus()
 
   computed:
     groupName: ->
@@ -64,7 +70,7 @@ v-app-bar.lmo-no-print(app clipped-right elevate-on-scroll color="background")
   //- template(v-slot:img="{ props }")
   //-   v-img(v-bind="props" gradient="rgba(0,0,0,.3), rgba(0,0,0, .3), rgba(0,0,0,.8)")
 
-  v-btn.navbar__sidenav-toggle(icon @click="toggleSidebar()")
+  v-btn.navbar__sidenav-toggle(icon @click="toggleSidebar()" :aria-label="$t(sidebarOpen ? 'navbar.close_sidebar' : 'navbar.open_sidebar')")
     v-avatar(tile size="36px")
       v-icon mdi-menu
 

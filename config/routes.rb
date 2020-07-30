@@ -33,10 +33,6 @@ Loomio::Application.routes.draw do
 
   root to: 'root#index'
 
-  get '/personal_data', to: 'personal_data#index'
-  get '/personal_data/:table', to: 'personal_data#show'
-
-
   ActiveAdmin.routes(self)
 
   namespace :api, path: '/api/v1', defaults: {format: :json} do

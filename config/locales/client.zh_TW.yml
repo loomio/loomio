@@ -36,9 +36,10 @@ zh_TW:
     max_members: "最大成員"
     expires_at: "過期"
     renews_at: "續訂"
-    referral_code: "儲值推薦代碼"
-    chargify_link: "儲值計費入口"
+    referral_code: "推薦碼"
+    chargify_link: "計費入口"
     referral_code_help: "給朋友折扣，也為您贏得一些可用餘額！"
+    manage_payment_details: "管理付款詳細資訊"
   loomio_tags:
     all_tags: 所有標籤
     tags: 標籤
@@ -661,6 +662,7 @@ zh_TW:
     delete_thread: 刪除討論串
     notification_history: 通知歷史
     move_item: 移動項目
+    add_poll_to_thread: 新增至討論串
   formatting:
     bold: 粗體
     italicize: 義大利斜體
@@ -708,6 +710,7 @@ zh_TW:
     image_size_helptext: '理想的圖片尺寸是 100x100 像素'
     upload_success: '成功更新圖示'
   join_group_button:
+    not_a_member: "您目前不是此群組的成員。"
     join_group: 加入群組
     membership_requested: 已申請成員資格
     messages:
@@ -1505,14 +1508,9 @@ zh_TW:
     meeting_closed: 時間投票已關閉
     ranked_choice_closed: 排序選擇投票已關閉
   poll_common_reopen_form:
-    title: 重新開啟已關閉的決策
-    helptext: 決策在您準備好之前就定案了嗎？重新開啟以從群組處收集更多立場。
-    proposal_reopened: 已重新開啟提案
-    poll_reopened: 已重新開始投票
-    count_reopened: 已重新開啟勾選
-    dot_vote_reopened: 已重新開啟點投票
-    meeting_reopened: 已重新開啟時間投票
-    ranked_choice_reopened: 已重新開啟排名選擇投票
+    title: "重新開啟 {{poll_type}}"
+    helptext: "如果人們需要更多時間參與的話就重新開啟 {{poll_type}}"
+    success: "{{poll_type}} 已重新開啟"
   poll_common_move_form:
     title: "移動 {{poll_type}}"
     success: "{{poll_type}} 已移動至 {{group}}"
@@ -1799,6 +1797,8 @@ zh_TW:
     what_is_this: "這裡有五個 {{type}} 的範例。您是參與者，來試試看吧！"
   share_poll_page:
     title: 分享投票 - {{title}}
+  add_poll_to_thread_modal:
+    success: "成功，{{pollType}} 已新增至討論串！"
   auth_form:
     code: '000000'
     youre_invited: 您已被邀請加入 {{group_name}}。
@@ -1901,7 +1901,6 @@ zh_TW:
     warning_helptext: "警告：點擊儲存後，您將必須與提供商進行身份驗證。"
     idp_metadata_url: IDP 詮釋資料 URL
     idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
-    pro_plan_only: 此功能僅供專業方案的顧客使用。請看看我們的<a href="/upgrade" target="_blank">升級頁面</a>以取得更多資訊。
     success: 已成功設定單一登入
     destroyed: 已移除單一登入
     invalid_idp_metadata_url: 無效的 IDP 詮釋資料 URL

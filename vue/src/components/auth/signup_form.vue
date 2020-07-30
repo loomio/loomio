@@ -12,11 +12,18 @@ export default
   components:
     'v-recaptcha': VueRecaptcha
   mixins: [AuthModalMixin]
+
   props:
     user: Object
+
+  mounted: ->
+    EventBus.$emit 'set-auth-modal-title', "auth_form.create_account"
+
   data: ->
-    vars: {name: @name, site_name: AppConfig.theme.site_name}
+    siteName: AppConfig.theme.site_name
+    vars: {name: @user.name, site_name: AppConfig.theme.site_name}
     loading: false
+
   methods:
     submit: ->
       if @useRecaptcha
@@ -27,34 +34,35 @@ export default
     submitForm: (recaptcha) ->
       @user.recaptcha = recaptcha
       if AuthService.validSignup(@vars, @user)
-        # EventBus.emit $scope, 'processing'
         @loading = true
         AuthService.signUp(@user).finally =>
           @loading = false
-          # EventBus.emit $scope, 'doneProcessing'
   computed:
     recaptchaKey: -> AppConfig.recaptchaKey
     termsUrl: -> AppConfig.theme.terms_url
     privacyUrl: -> AppConfig.theme.privacy_url
     newsletterEnabled: -> AppConfig.newsletterEnabled
-    name: -> @user.name
     allow: ->
       AppConfig.features.app.create_user or AppConfig.pendingIdentity.identity_type?
     useRecaptcha: ->
-      @recaptchaKey && !@user.hasToken
+      @recaptchaKey && !@user.hasToken && !(AppConfig.pendingIdentity || {}).has_token
 
 </script>
 <template lang="pug">
-div(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
-  .auth-signup-form(v-if='!allow')
-    h2.title(v-t="'auth_form.invitation_required'")
-  .auth-signup-form(v-if='allow')
-    .auth-signup-form__welcome
-      h2.title(v-t="{ path: 'auth_form.welcome', args: { siteName: vars.site_name } }")
-      p(v-t="'auth_form.sign_up_helptext'")
+v-card.auth-signup-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
+  v-card-title(v-if='!allow')
+    h1.headline(tabindex="-1" role="status" aria-live="assertive" v-t="'auth_form.invitation_required'")
+  v-card-title(v-if='allow')
+    h1.headline(tabindex="-1" role="status" aria-live="assertive" v-t="{ path: 'auth_form.welcome', args: { siteName: siteName } }")
+    v-spacer
+    v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
+      v-icon mdi-close
+  v-sheet.mx-4
+    submit-overlay(:value='loading')
+    .auth-signup-form__welcome.text-center.my-2
+      p(v-t="{path: 'auth_form.sign_up_as', args: {email: user.email}}")
     .auth-signup-form__name
-      //- label(v-t="'auth_form.name'")
-      v-text-field(type='text' autofocus :placeholder="$t('auth_form.name_placeholder')" v-model='vars.name' required='true')
+      v-text-field(type='text' :label="$t('auth_form.name_placeholder')" :placeholder="$t('auth_form.enter_your_name')" outlined v-model='vars.name' required='true')
     .auth-signup-form__consent(v-if='termsUrl')
       v-checkbox.auth-signup-form__legal-accepted(v-model='vars.legalAccepted' hide-details)
         template(v-slot:label)
@@ -65,9 +73,8 @@ div(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @ke
         template(v-slot:label)
           span(v-html="$t('auth_form.newsletter_label')")
 
-    v-card-actions.mt-8
-      v-btn(v-t="'common.action.back'" @click='user.emailStatus = null')
-      v-spacer
-      v-btn.auth-signup-form__submit(color="primary" :loading="loading" :disabled='!vars.name || (termsUrl && !vars.legalAccepted)' v-t="'auth_form.create_account'" @click='submit()')
-    v-recaptcha(v-if='useRecaptcha' ref="invisibleRecaptcha" :sitekey="recaptchaKey" :loadRecaptchaScript="true" size="invisible" @verify="submitForm")
+  v-card-actions.mt-8
+    v-spacer
+    v-btn.auth-signup-form__submit(color="primary" :loading="loading" :disabled='!vars.name || (termsUrl && !vars.legalAccepted)' v-t="'auth_form.create_account'" @click='submit()')
+  v-recaptcha(v-if='useRecaptcha' ref="invisibleRecaptcha" :sitekey="recaptchaKey" :loadRecaptchaScript="true" size="invisible" @verify="submitForm")
 </template>

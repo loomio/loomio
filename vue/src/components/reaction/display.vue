@@ -78,8 +78,8 @@ export default
   .reactions-display__emojis
     .reaction.lmo-pointer(@click="removeMine(reaction)" v-for="reaction in reactionTypes" :key="reaction")
       v-tooltip(bottom)
-        template(v-slot:activator="{ on }")
-          .reactions-display__group(v-on="on")
+        template(v-slot:activator="{ on, attrs }")
+          .reactions-display__group(v-on="on" v-bind="attrs")
             span(v-if="emojiSupported") {{colonToUnicode(reaction)}}
             img.emoji(v-else :src="srcForEmoji(colonToUnicode(reaction))")
             user-avatar.reactions-display__author(v-for="user in reactionHash[reaction]" :key="user.id" :user="user" :size="diameter")

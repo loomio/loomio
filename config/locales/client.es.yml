@@ -36,9 +36,10 @@ es:
     max_members: "Máximo de miembros"
     expires_at: "Caduca"
     renews_at: "Renueva"
-    referral_code: "Código de referencia chargify"
-    chargify_link: "Portal de facturación chargify"
+    referral_code: "Código de referencia"
+    chargify_link: "Factura electrónica"
     referral_code_help: "Da a un amigo un descuento, consigue para ti un crédito"
+    manage_payment_details: "Gestionar detalles del pago"
   loomio_tags:
     all_tags: Todas las etiquetas
     tags: Etiquetas
@@ -661,6 +662,7 @@ es:
     delete_thread: 'Eliminar hilo '
     notification_history: Historial de notificación
     move_item: Mover elemento
+    add_poll_to_thread: Añadir al hilo
   formatting:
     bold: Negrita
     italicize: En cursiva
@@ -708,6 +710,7 @@ es:
     image_size_helptext: 'Tamaño de imagen ideal 100x100px'
     upload_success: 'El logo ha sido cargado con éxito'
   join_group_button:
+    not_a_member: "En estos momentos no eres miembro de este grupo."
     join_group: Unirse al grupo
     membership_requested: Membresía solicitada.
     messages:
@@ -1504,14 +1507,9 @@ es:
     meeting_closed: Coordinación de horario cerrada
     ranked_choice_closed: Encuesta de opción priorizada ha cerrado
   poll_common_reopen_form:
-    title: 'Reabrir una decisión cerrada '
-    helptext: ¿Se cerró una decisión antes de estar listos? Reábrala para poder recoger más posicionamientos del grupo.
-    proposal_reopened: Propuesta reabierta
-    poll_reopened: Encuesta reabierta
-    count_reopened: Comprobación reabierta
-    dot_vote_reopened: Voto de puntos reabierto
-    meeting_reopened: Coordinación horaria reabierta
-    ranked_choice_reopened: Opción priorizada reabierta
+    title: "Volver a abrir {{poll-type}}"
+    helptext: "Vuelve a abrir el {{poll_type}} si la gente necesita más tiempo para participar"
+    success: "{{poll_type}} reabierto"
   poll_common_move_form:
     title: "Mover {{poll_type}}"
     success: "{{poll_type}} se ha movido a {{group}}"
@@ -1798,6 +1796,8 @@ es:
     what_is_this: "Este es un ejemplo en vivo de {{type}}. Usted es un participante - ¡Inténtelo!"
   share_poll_page:
     title: Compartir encuesta - {{title}}
+  add_poll_to_thread_modal:
+    success: "Éxito, {{poll_type}} añadido al hilo"
   auth_form:
     code: '000000'
     youre_invited: Te han invitado a unirte al grupo {{group_name}}.
@@ -1900,7 +1900,6 @@ es:
     warning_helptext: "Advertencia: Se te requerirá autentificar con tu proveedor después de clicar guardar"
     idp_metadata_url: IDP Metadatos URL
     idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
-    pro_plan_only: Esta función está solamente disponible para clientes con el plan Pro. Por favor verificar nuestra <a href="/upgrade" target="_blank">pagina de actualización</a>para más detalles.
     success: Registro individual se ha configurado con éxito
     destroyed: Se ha eliminado el registro individual
     invalid_idp_metadata_url: IDP Metadatos URL inválida
