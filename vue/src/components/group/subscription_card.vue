@@ -12,13 +12,15 @@ export default
     referralCodeExtra: -> @$t('subscription_status.referral_code_help')
     canSee: -> !@group.parentId && AbilityService.canAdminister(@group)
     showUpgradeButton: -> @group.subscription.plan == "trial"
+    isActivePlan: -> ['pp-active-monthly', 'pp-active-annual', 'pp-community-annual', 'npap-active-monthly', 'npap-active-annual'].includes(@group.subscription.plan)
     tableData: ->
       {
         plan: startCase(@group.subscription.plan)
         state: startCase(@group.subscription.state)
         expires_at: @displayDate(@group.subscription.expires_at) if @group.subscription.plan == 'trial' && @group.subscription.expires_at
         renews_at: @displayDate(@group.subscription.renews_at) if @group.subscription.renews_at
-        active_members: @group.subscription.members_count
+        members: @group.orgMembersCount
+        active_members: @group.subscription.members_count if @isActivePlan
         max_members: @group.subscription.max_members if @group.subscription.max_members
         max_threads: @group.subscription.max_threads if @group.subscription.max_threads
         referral_code: "<strong>#{@group.subscription.referral_code}</strong> - <a href='https://help.loomio.org/en/subscriptions/referral_code/' target=_blank>#{@referralCodeExtra}</a>" if @group.subscription.referral_code
