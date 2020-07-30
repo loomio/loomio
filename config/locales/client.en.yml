@@ -33,6 +33,7 @@ en:
   subscription_status:
     plan: "Plan"
     state: "Status"
+    members: "Members"
     active_members: "Active members"
     max_threads: "Max threads"
     max_members: "Max members"
