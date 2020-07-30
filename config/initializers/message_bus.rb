@@ -32,6 +32,11 @@ MessageBus.user_id_lookup do |env|
   end
 end
 
-MessageBus.configure(group_id_lookup: proc do |env|
-  byebug
-end)
+MessageBus.group_ids_lookup do |env|
+  req = Rack::Request.new(env)
+
+  if req.session && req.session["warden.user.user.key"] && req.session["warden.user.user.key"][0][0]
+    user = User.find(req.session["warden.user.user.key"][0][0])
+    user.group_ids
+  end
+end

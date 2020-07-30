@@ -9,11 +9,6 @@ import EventBus       from '@/shared/services/event_bus'
 import { hardReload } from '@/shared/helpers/window'
 import { each } from 'lodash-es'
 
-export subscribeTo = (model) ->
-  switch model.constructor.singular
-    when 'group' then subscribeToGroup(model)
-    when 'poll'  then subscribeToPoll(model)
-
 export initLiveUpdate = ->
   console.log "initing"
   console.log MessageBus.start()
@@ -28,10 +23,3 @@ export initLiveUpdate = ->
 
   EventBus.$on 'signedIn', (user) =>
     MessageBus.subscribe "/records", (data) -> Records.import(data)
-
-#
-# subscribeToDiscussion = (poll) ->
-#   ensureConnection().subscriptions.create { channel: "PollChannel", poll_id: poll.id },
-#     received: (data) -> Records.import(data)
-
-# subscribeToApplication = ->
