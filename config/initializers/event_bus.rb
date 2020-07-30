@@ -47,11 +47,6 @@ EventBus.configure do |config|
   #   MessageChannelService.publish_model(reader.discussion)
   # end
 
-  # alert clients that notifications have been read
-  config.listen('notification_viewed') do |actor|
-    MessageChannelService.publish_records(NotificationCollection.new(actor).serialize!, user_ids: [actor.id])
-  end
-
   # update discussion or comment versions_count when title or description edited
   config.listen('discussion_update', 'comment_update', 'poll_update', 'stance_update') { |model| model.update_versions_count }
 

@@ -4,6 +4,7 @@ import Records        from '@/shared/services/records'
 import Flash   from '@/shared/services/flash'
 import AuthService    from '@/shared/services/auth_service'
 import AbilityService from '@/shared/services/ability_service'
+import EventBus       from '@/shared/services/event_bus'
 
 import { hardReload } from '@/shared/helpers/window'
 import { each } from 'lodash-es'
@@ -16,30 +17,18 @@ export subscribeTo = (model) ->
 export initLiveUpdate = ->
   console.log "initing"
   console.log MessageBus.start()
-  MessageBus.subscribe '/notices', (data) ->
-    console.log "subscribed to notices", data
-    # if data.version?
-    #   Flash.update 'global.messages.app_update', {version: data.version}, 'global.messages.reload', hardReload
+  # MessageBus.subscribe '/notices', (data) ->
+  #   console.log "subscribed to notices", data
+  # if data.version?
+  #   Flash.update 'global.messages.app_update', {version: data.version}, 'global.messages.reload', hardReload
+  # after sign in
   MessageBus.callbackInterval = 500
   if Session.isSignedIn()
-    MessageBus.subscribe "/user-#{Session.user().key}", (data) ->
-      console.log "user data!", data
-      Records.import(data)
+    MessageBus.subscribe "/records", (data) -> Records.import(data)
 
-subscribeToUser = (user) ->
-  MessageBus.subscribe "/user-#{group.key}", (data) ->
-    console.log "gruup data!", data
-    Records.import(data)
+  EventBus.$on 'signedIn', (user) =>
+    MessageBus.subscribe "/records", (data) -> Records.import(data)
 
-subscribeToGroup = (group) ->
-  MessageBus.subscribe "/group-#{group.key}", (data) ->
-    console.log "gruup data!", data
-    Records.import(data)
-
-subscribeToPoll = (poll) ->
-  MessageBus.subscribe "/poll-#{poll.key}", (data) ->
-    console.log "poll data!", data
-    Records.import(data)
 #
 # subscribeToDiscussion = (poll) ->
 #   ensureConnection().subscriptions.create { channel: "PollChannel", poll_id: poll.id },
