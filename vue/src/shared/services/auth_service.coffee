@@ -37,12 +37,11 @@ export default new class AuthService
       onSuccess(data)
       data
     , (err) ->
-      err.json().then (data) ->
-        errors = if user.hasToken
-          { token: [i18n.t('auth_form.invalid_token')] }
-        else
-          { password: map(data.errors.password, (key) -> i18n.t(key)) }
-        user.update(errors: errors)
+      errors = if user.hasToken
+        { token: [i18n.t('auth_form.invalid_token')] }
+      else
+        { password: [i18n.t('auth_form.invalid_password')]}
+      user.update(errors: errors)
 
   signUp: (user, onSuccess = -> , onFailure = -> ) ->
     Records.registrations.build(
