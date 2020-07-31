@@ -124,8 +124,6 @@ class Event < ApplicationRecord
     else
       nil
     end
-  rescue
-    byebug
   end
 
   def self_and_parents
