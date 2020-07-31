@@ -61,6 +61,7 @@ class EventService
     end
 
     discussion.created_event.update_child_count
+    discussion.update_items_count
 
     items.reload.each(&:set_position_and_position_key!)
   end
