@@ -40,6 +40,15 @@ class EventService
   end
 
   def self.reposition_events(discussion)
+    unless discussion.created_event
+      Event.import [Event.new(kind: 'new_discussion',
+                              user_id: discussion.author_id,
+                              eventable_id: discussion.id,
+                              eventable_type: "Discussion",
+                              created_at: discussion.created_at)]
+      discussion.reload
+    end
+
     items = Event.where(discussion_id: discussion.id).order(:sequence_id)
     items.update_all(parent_id: discussion.created_event.id, position: 0, position_key: nil, depth: 1, child_count: 0)
     items.reload.compact.each(&:set_parent_and_depth!)
@@ -50,6 +59,8 @@ class EventService
       child_count = items.where(parent_id: parent_event.id).count
       parent_event.update_column(:child_count, child_count)
     end
+
+    discussion.created_event.update_child_count
 
     items.reload.each(&:set_position_and_position_key!)
   end
