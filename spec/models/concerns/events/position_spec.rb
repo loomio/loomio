@@ -6,18 +6,21 @@ describe "Events::Position" do
   let(:comment1) { create :comment, discussion: discussion }
   let(:comment2) { create :comment, discussion: discussion }
   let(:comment3) { create :comment, discussion: discussion }
-  
+
   before do
     DiscussionService.create(discussion: discussion, actor: discussion.author)
   end
 
   it "gives events with a parent_id a pos sequence" do
-    e1 = Event.create(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment1)
-    e2 = Event.create(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment2)
-    e3 = Event.create(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment3)
-    expect(e1.reload.position).to eq 1
-    expect(e2.reload.position).to eq 2
-    expect(e3.reload.position).to eq 3
+    e1 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment1)
+    e2 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment2)
+    e3 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment3)
+    expect(e1.position).to eq 1
+    expect(e1.position_key).to eq "1"
+    expect(e2.position).to eq 2
+    expect(e2.position_key).to eq "2"
+    expect(e3.position).to eq 3
+    expect(e3.position_key).to eq "3"
   end
 
   describe 'depth' do
@@ -26,59 +29,72 @@ describe "Events::Position" do
     let(:comment3) { create :comment, discussion: discussion, parent: comment2 }
 
     it "enforces max depth 2 " do
-      e1 = Event.create(kind: "new_comment", discussion: discussion, eventable: comment1)
-      e2 = Event.create(kind: "new_comment", discussion: discussion, eventable: comment2)
-      e3 = Event.create(kind: "new_comment", discussion: discussion, eventable: comment3)
-      expect(e1.reload.depth).to eq 1
-      expect(e2.reload.depth).to eq 2
-      expect(e3.reload.depth).to eq 2
+      e1 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment1)
+      e2 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment2)
+      e3 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment3)
+      expect(e1.depth).to eq 1
+      expect(e1.position_key).to eq "1"
+      expect(e2.depth).to eq 2
+      expect(e2.position_key).to eq "1-1"
+      expect(e3.depth).to eq 2
+      expect(e3.position_key).to eq "1-2"
     end
 
     it "enforces max depth 1 " do
       discussion.update(max_depth: 1)
-      e1 = Event.create(kind: "new_comment", discussion: discussion, eventable: comment1)
-      e2 = Event.create(kind: "new_comment", discussion: discussion, eventable: comment2)
-      e3 = Event.create(kind: "new_comment", discussion: discussion, eventable: comment3)
-      expect(e1.reload.depth).to eq 1
-      expect(e2.reload.depth).to eq 1
-      expect(e3.reload.depth).to eq 1
+      e1 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment1)
+      e2 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment2)
+      e3 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment3)
+      expect(e1.depth).to eq 1
+      expect(e1.position_key).to eq "1"
+      expect(e2.depth).to eq 1
+      expect(e2.position_key).to eq "2"
+      expect(e3.depth).to eq 1
+      expect(e3.position_key).to eq "3"
     end
 
     it "enforces max depth 3 " do
       discussion.update(max_depth: 3)
-      e1 = Event.create(kind: "new_comment", discussion: discussion, eventable: comment1)
-      e2 = Event.create(kind: "new_comment", discussion: discussion, eventable: comment2)
-      e3 = Event.create(kind: "new_comment", discussion: discussion, eventable: comment3)
-      expect(e1.reload.depth).to eq 1
-      expect(e2.reload.depth).to eq 2
-      expect(e3.reload.depth).to eq 3
+      e1 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment1)
+      e2 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment2)
+      e3 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment3)
+      expect(e1.depth).to eq 1
+      expect(e1.position_key).to eq "1"
+      expect(e2.depth).to eq 2
+      expect(e2.position_key).to eq "1-1"
+      expect(e3.depth).to eq 3
+      expect(e3.position_key).to eq "1-1-1"
     end
   end
 
   it "reorders if parent changes" do
-    e1 = Event.create(kind: "new_comment", discussion: discussion, eventable: comment1)
-    e2 = Event.create(kind: "new_comment", discussion: discussion, eventable: comment2)
+    e1 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment1)
+    e2 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment2)
     expect(e1.reload.position).to eq 1
     expect(e2.reload.position).to eq 2
   end
 
   it "removes position if discussion_id is dropped" do
-    e1 = Event.create(kind: "new_comment", discussion: discussion, eventable: comment1)
-    e2 = Event.create(kind: "new_comment", discussion: discussion, eventable: comment2)
-    e3 = Event.create(kind: "new_comment", discussion: discussion, eventable: comment3)
-    expect(e1.reload.position).to eq 1
-    expect(e2.reload.position).to eq 2
-    expect(e3.reload.position).to eq 3
-    e2.update(discussion_id: nil)
+    e1 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment1)
+    e2 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment2)
+    e3 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment3)
+    expect(e1.position).to eq 1
+    expect(e2.position).to eq 2
+    expect(e3.position).to eq 3
+    e2.update(discussion_id: nil, parent_id: nil)
+    EventService.reposition_events(discussion)
     expect(e3.reload.position).to eq 2
+    expect(e3.reload.position_key).to eq "2"
   end
 
   it "handles destroy" do
-    e1 = Event.create(kind: "new_comment", discussion: discussion, eventable: comment1)
-    e2 = Event.create(kind: "new_comment", discussion: discussion, eventable: comment2)
-    expect(e1.reload.position).to eq 1
-    expect(e2.reload.position).to eq 2
+    e1 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment1)
+    e2 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment2)
+    expect(e1.position).to eq 1
+    expect(e2.position).to eq 2
     e1.destroy
-    expect(e2.reload.position).to eq 1
+    EventService.reposition_events(discussion)
+    e2.reload
+    expect(e2.position).to eq 1
   end
 end

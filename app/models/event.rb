@@ -2,7 +2,6 @@ class Event < ApplicationRecord
   include CustomCounterCache::Model
   include HasTimeframe
   extend HasCustomFields
-  BLACKLISTED_KINDS = ["motion_closed", "motion_outcome_updated", "motion_outcome_created", "new_vote", "new_motion", "motion_closed_by_user", "motion_edited"].freeze
 
   has_many :notifications, dependent: :destroy
   belongs_to :eventable, polymorphic: true
@@ -12,15 +11,12 @@ class Event < ApplicationRecord
   has_many :children, (-> { where("discussion_id is not null") }), class_name: "Event", foreign_key: :parent_id
   set_custom_fields :pinned_title
 
-  acts_as_sequenced scope: :discussion_id, column: :sequence_id, skip: lambda {|e| e.discussion.nil? || e.discussion_id.nil? }
-
   before_create :set_parent_and_depth
+  before_create :set_sequence_id
+  before_create :set_position_and_position_key
 
   after_create  :update_sequence_info!
   after_destroy :update_sequence_info!
-
-  after_save :reorder
-  after_destroy :reorder
 
   define_counter_cache(:child_count) { |e| e.children.count  }
   update_counter_cache :parent, :child_count
@@ -29,8 +25,6 @@ class Event < ApplicationRecord
   validates :kind, presence: true
   validates :eventable, presence: true
 
-  scope :sequenced, -> { where.not(sequence_id: nil).order(sequence_id: :asc) }
-  scope :thread_events, -> { where.not(kind: BLACKLISTED_KINDS) }
   scope :unreadable, -> { where.not(kind: 'discussion_closed') }
 
   scope :invitations_in_period, ->(since, till) {
@@ -44,8 +38,6 @@ class Event < ApplicationRecord
 
   def self.publish!(eventable, **args)
     build(eventable, **args).tap(&:save!).tap(&:trigger!)
-  # rescue ActiveRecord::RecordNotUnique
-  #   retry
   end
 
   def self.bulk_publish!(eventables, **args)
@@ -61,19 +53,6 @@ class Event < ApplicationRecord
     }.merge(args))
   end
 
-  def self.reorder_with_parent_id(parent_id)
-    ActiveRecord::Base.connection.execute(
-      "UPDATE events SET position = t.seq
-        FROM (
-          SELECT id AS id, row_number() OVER(ORDER BY sequence_id) AS seq
-          FROM events
-          WHERE parent_id = #{parent_id}
-          AND   discussion_id IS NOT NULL
-        ) AS t
-      WHERE events.id = t.id and
-            events.position is distinct from t.seq")
-  end
-
   def user
     super || AnonymousUser.new
   end
@@ -86,8 +65,6 @@ class Event < ApplicationRecord
     user
   end
 
-  # this is called after create, and calls methods defined by the event concerns
-  # included per event type
   def trigger!
     EventBus.broadcast("#{kind}_event", self)
   end
@@ -98,19 +75,30 @@ class Event < ApplicationRecord
     Events::BaseSerializer
   end
 
+  def set_parent_and_depth
+    return unless discussion_id
+    self.parent = max_depth_adjusted_parent
+    byebug unless parent
+    self.depth = parent.depth + 1
+  end
+
   def set_parent_and_depth!
     set_parent_and_depth
     update_columns(parent_id: parent_id, depth: depth)
   end
 
-  def reload_position
-    self.position = self.class.select(:position).find(self.id).position
+  def set_sequence_id
+    self.sequence_id = next_sequence_id unless sequence_id
   end
 
-  def reorder
-    return unless parent_id
-    self.class.reorder_with_parent_id(parent_id)
-    reload_position if self.persisted?
+  def set_position_and_position_key
+    self.position = next_position if position == 0
+    self.position_key = self_and_parents.reverse.map(&:position).join('-')
+  end
+
+  def set_position_and_position_key!
+    set_position_and_position_key
+    update_columns(position: position, position_key: position_key)
   end
 
   def calendar_invite
@@ -121,7 +109,8 @@ class Event < ApplicationRecord
     case kind
     when 'discussion_closed'   then eventable.created_event
     when 'discussion_forked'   then eventable.created_event
-    when 'discussion_moved'    then eventable.created_event
+    when 'discussion_moved'    then discussion.created_event
+    when 'discussion_edited'   then (eventable || discussion)&.created_event
     when 'discussion_reopened' then eventable.created_event
     when 'outcome_created'     then eventable.parent_event
     when 'new_comment'         then eventable.parent_event
@@ -136,13 +125,20 @@ class Event < ApplicationRecord
     else
       nil
     end
+  rescue
+    byebug
   end
 
-  private
+  def self_and_parents
+    [self, (parent && parent.discussion_id && parent.self_and_parents)].flatten.compact
+  end
 
-  def set_parent_and_depth
-    self.parent = max_depth_adjusted_parent
-    self.depth = parent ? (parent.depth + 1) : 0
+  def next_sequence_id
+    (Event.where(discussion_id: discussion_id).order("sequence_id DESC").limit(1).pluck(:sequence_id).first || 0) + 1
+  end
+
+  def next_position
+    (Event.where(parent_id: parent_id).order("position DESC").limit(1).pluck(:position).last || 0) + 1
   end
 
   def max_depth_adjusted_parent

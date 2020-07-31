@@ -450,9 +450,6 @@ GEM
       tilt
     sentry-raven (2.13.0)
       faraday (>= 0.7.6, < 1.0)
-    sequenced (3.2.0)
-      activerecord (>= 3.0)
-      activesupport (>= 3.0)
     sexp_processor (4.14.1)
     sidekiq (6.1.1)
       connection_pool (>= 2.2.2)
@@ -570,7 +567,6 @@ DEPENDENCIES
   ruby-saml
   sass-rails
   sentry-raven
-  sequenced (~> 3.2.0)
   sidekiq
   slack_mrkdwn
   spring
