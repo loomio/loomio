@@ -78,7 +78,6 @@ class Event < ApplicationRecord
   def set_parent_and_depth
     return unless discussion_id
     self.parent = max_depth_adjusted_parent
-    byebug unless parent
     self.depth = parent.depth + 1
   end
 
