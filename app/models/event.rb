@@ -76,9 +76,9 @@ class Event < ApplicationRecord
   end
 
   def set_parent_and_depth
-    return unless discussion_id and parent_id
+    return unless discussion_id
     self.parent = max_depth_adjusted_parent
-    self.depth = parent.depth + 1
+    self.depth = parent ? parent.depth + 1 : 0
   end
 
   def set_parent_and_depth!
