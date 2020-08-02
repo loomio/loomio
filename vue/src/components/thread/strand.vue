@@ -6,13 +6,17 @@ import PollCreated from '@/components/thread/item/poll_created.vue'
 import StanceCreated from '@/components/thread/item/stance_created.vue'
 import OutcomeCreated from '@/components/thread/item/outcome_created.vue'
 import NewDiscussion from '@/components/thread/item/new_discussion.vue'
-import ThreadItem from '@/components/thread/item/new_discussion.vue'
-import { camelCase } from 'lodash-es'
+import ThreadItem from '@/components/thread/item.vue'
+import ThreadStrand from '@/components/thread/strand.vue'
+import { camelCase, first, last } from 'lodash-es'
 
 export default
+  name: 'thread-strand'
   props:
     loader: Object
-    collection: Array
+    collection:
+      type: Array
+      required: true
 
   components:
     NewDiscussion: NewDiscussion
@@ -20,8 +24,23 @@ export default
     PollCreated: PollCreated
     StanceCreated: StanceCreated
     OutcomeCreated: OutcomeCreated
-    # ThreadItem: ThreadItem
-    ThreadStrand: -> import('@/components/thread/strand.vue')
+    ThreadItem: ThreadItem
+    ThreadStrand: ThreadStrand
+
+  computed:
+    ids: ->
+      @collection.map (e) -> e.event.id
+
+    # firstPosition: ->
+    #   return 0 unless @collection.length
+    #   @collection[0].event.position
+    #
+    # lastPosition: ->
+    #   return 0 unless @collection.length
+    #   last(@collection).event.position
+    #
+    # parentEvent: ->
+    #   @collection[0].event.parent()
 
   methods:
     componentForKind: (kind) ->
@@ -33,7 +52,9 @@ export default
 
 <template lang="pug">
 .thread-strand
-  .thread-strand-item(v-for="obj in collection" :event='obj.event' key="obj.event.id")
-    component(:is="componentForKind(obj.event.kind)" :event='obj.event' key="obj.event.id")
+  //- p(v-if="firstPosition != 1") {{firstPosition - 1}} items before
+  .thread-strand-item(v-for="obj in collection" :event='obj.event' :key="obj.event.id")
+    component(:is="componentForKind(obj.event.kind)" :event='obj.event')
     thread-strand(:loader="loader" v-if='obj.children' :collection="obj.children")
+  //- p(v-if="lastPosition != parentEvent.childCount") {{parentEvent.childCount - lastPosition}} items after
 </template>

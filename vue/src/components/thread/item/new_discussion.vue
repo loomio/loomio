@@ -9,10 +9,12 @@ export default
     event: Object
 
   data: ->
-    actions: ThreadService.actions(@event.model(), @)
+    actions: ThreadService.actions(@discussion, @)
 
   computed:
-    discussion: -> @event.model()
+    discussion: ->
+      @event.model()
+
     arrangementAction: -> @actions['edit_arrangement']
 
     editThread: -> @actions['edit_thread']
@@ -28,12 +30,6 @@ export default
 
     statusTitle: ->
       @$t("context_panel.thread_status.#{@status}")
-
-    groups: ->
-      map compact([@discussion.group().parent(), @discussion.group()]), (group) =>
-        text: group.name
-        disabled: false
-        to: @urlFor(group)
 
   methods:
     viewed: (viewed) ->
@@ -51,20 +47,6 @@ export default
 
 <template lang="pug">
 .context-panel.lmo-action-dock-wrapper#context(:aria-label="$t('context_panel.aria_intro', {author: discussion.authorName(), group: discussion.group().fullName})" v-observe-visibility="{callback: viewed, once: true}" v-on:dblclick="editThread.canPerform() && editThread.perform()")
-  //- v-layout(align-center mr-3 ml-2 pt-2 wrap)
-  //-   v-breadcrumbs.context-panel__breadcrumbs(aria-label="Group" :items="groups" divider=">")
-  //-   tags-display(:discussion="discussion")
-  //-   span
-  //-   v-spacer
-  //-   span.grey--text.body-2
-  //-     time-ago(aria-label="Thread started" :date='discussion.createdAt')
-  //-
-  //- h1.display-1.context-panel__heading.px-3#sequence-0(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
-  //-   i.mdi.mdi-pin.context-panel__heading-pin(v-if="status == 'pinned'")
-  //-   span(v-if='!discussion.translation.title') {{discussion.title}}
-  //-   span(v-if='discussion.translation.title')
-  //-     translation(:model='discussion', field='title')
-
   div.mx-3.mb-2
     .context-panel__details.my-2.body-2(align-center)
       user-avatar.mr-4(:user='discussion.author()', :size='40')
@@ -81,10 +63,6 @@ export default
         span(v-show='discussion.seenByCount > 0')
           mid-dot
           a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
-        span.context-panel__fork-details(v-if='discussion.forkedEvent() && discussion.forkedEvent().discussion()')
-          mid-dot
-          span(v-t="'thread_context.forked_from'")
-          router-link(:to='urlFor(discussion.forkedEvent())') {{discussion.forkedEvent().discussion().title}}
       .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'" v-if='discussion.closedAt')
         v-tooltip(bottom) {{ exactDate(discussion.closedAt) }}
     formatted-text.context-panel__description(:model="discussion" column="description" aria-label="Discussion context")

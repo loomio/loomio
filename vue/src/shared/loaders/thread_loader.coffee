@@ -19,11 +19,9 @@ export default class ThreadLoader
     @rules.push(rule)
 
     return unless rule.remote
-    params = Object.assign {}, rule.remote, {exclude_types: 'group discussion', per: 20}
+    params = Object.assign {}, rule.remote, {exclude_types: 'group discussion', per: 3}
 
-    console.log "fetch sent", params
     Records.events.fetch(params: params).then (data) =>
-      console.log "fetch returned", data
       @updateCollection()
       # Promise.resolve(@findEvent(rule.local))
 
@@ -33,7 +31,6 @@ export default class ThreadLoader
       args = Object.assign({}, rule.local)
       chain = Records.events.collection.chain()
       Object.keys(args).forEach (key) ->
-        console.log "adding rule", key, args[key]
         chain = chain.find({"#{key}": args[key]})
       @records = @records.concat(chain.data())
 
@@ -54,8 +51,9 @@ export default class ThreadLoader
 
     @collection = nest(orphans)
 
-    console.log 'eventIds', eventIds.length, eventIds
-    console.log 'orphans', orphans.length, orphans
-    console.log 'collection', @collection.length, @collection
+    # console.log 'rules', rules.length, rules
+    # console.log 'eventIds', eventIds.length, eventIds
+    # console.log 'orphans', orphans.length, orphans
+    # console.log 'collection', @collection.length, @collection
 
     @collection

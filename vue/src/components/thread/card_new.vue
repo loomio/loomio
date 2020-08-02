@@ -9,16 +9,10 @@ import Records from '@/shared/services/records'
 import Flash   from '@/shared/services/flash'
 import { print } from '@/shared/helpers/window'
 import ThreadService  from '@/shared/services/thread_service'
-import ThreadStrand from '@/components/thread/strand'
-
-import { pickBy, identity, camelCase, first, last, isNumber } from 'lodash-es'
 
 excludeTypes = 'group discussion author'
 
 export default
-  components:
-    ThreadStrand: ThreadStrand
-
   props:
     loader: Object
 
