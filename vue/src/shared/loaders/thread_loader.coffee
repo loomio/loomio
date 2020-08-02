@@ -9,55 +9,31 @@ export default class ThreadLoader
 
   reset: ->
     @collection = Vue.observable([])
-    @requests = []
+    @rules = []
 
-  request: (args) ->
-    console.log 'request', args
-    @requests.push(args)
-    @fetch(args).then => @updateCollection()
+  addRules: (rules) ->
+    @rules.forEach @addRule
 
-  fetch: (args) ->
-    # if event = @findEvent(idType, id)
-    #   Promise.resolve(event)
-    # else
-    params = switch args.column
-      when 'sequenceId'
-        from: args.id
-        order: 'sequence_id'
-      when 'commentId'
-        comment_id: args.id
-        order: 'sequence_id'
-      when 'position'
-        from_sequence_id_of_position: args.id
-        order: 'sequence_id'
+  addRule: (rule) ->
+    console.log 'add rule', rule
+    @rules.push(rule)
 
-    params = Object.assign params,
-      exclude_types: 'group discussion'
-      discussion_id: @discussion.id
-      per: 20
+    return unless rule.remote
+    params = Object.assign {}, rule.remote, {exclude_types: 'group discussion', per: 20}
 
-    console.log "fetch", params
+    console.log "fetch sent", params
     Records.events.fetch(params: params).then (data) =>
-      console.log "back", data
-      Promise.resolve(@findEvent(args.column, args.id))
+      console.log "fetch returned", data
+      @updateCollection()
+      # Promise.resolve(@findEvent(rule.local))
 
   updateCollection: ->
     @records = []
-    console.log 'updateCollection', @requests
-    @requests.forEach (args) =>
-      args = switch camelCase(args.column)
-        when 'position'
-          position: {$gte: args.id}
-          depth: 1
-        when 'sequenceId'
-          sequenceId: {$gte: args.id}
-        when 'commentId'
-          kind: 'new_comment'
-          eventableId: {$gte: args.id}
-      args = Object.assign({}, args, {discussionId: @discussion.id, limit: (args.limit || 10)})
+    @rules.forEach (rule) =>
+      args = Object.assign({}, rule.local)
       chain = Records.events.collection.chain()
-      delete(args.limit)
       Object.keys(args).forEach (key) ->
+        console.log "adding rule", key, args[key]
         chain = chain.find({"#{key}": args[key]})
       @records = @records.concat(chain.data())
 
@@ -78,27 +54,8 @@ export default class ThreadLoader
 
     @collection = nest(orphans)
 
+    console.log 'eventIds', eventIds.length, eventIds
+    console.log 'orphans', orphans.length, orphans
     console.log 'collection', @collection.length, @collection
 
     @collection
-
-
-  findEvent: (column, id) ->
-    return false unless isNumber(id)
-    records = Records
-    if id == 0
-      @discussion.createdEvent()
-    else
-      args = switch camelCase(column)
-        when 'position'
-          discussionId: @discussion.id
-          position: id
-          depth: 1
-        when 'sequenceId'
-          discussionId: @discussion.id
-          sequenceId: id
-        when 'commentId'
-          kind: 'new_comment'
-          eventableId: id
-      # console.log "finding: ", args
-      Records.events.find(args)[0]

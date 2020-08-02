@@ -4,7 +4,6 @@ import Session           from '@/shared/services/session'
 import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
 import ThreadLoader      from '@/shared/loaders/thread_loader'
-import { first, last } from 'lodash-es'
 import ahoy from 'ahoy.js'
 
 export default
@@ -44,9 +43,9 @@ export default
           discussion: @discussion
           group: @discussion.group()
           title: @discussion.title
-      .catch (error) =>
-        EventBus.$emit 'pageError', error
-        EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()
+      # .catch (error) =>
+      #   EventBus.$emit 'pageError', error
+      #   EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()
 
     respondToRoute: ->
       return unless @discussion
@@ -54,43 +53,97 @@ export default
       return if @discussion.createdEvent.childCount == 0
       @loader.reset()
 
-      console.log "heeelloo"
-      args = if parseInt(@$route.params.comment_id)
-        {column: 'commentId', id: parseInt(@$route.params.comment_id)}
-      else if parseInt(@$route.query.p)
-        {column: 'position', id: parseInt(@$route.query.p)}
-      else if parseInt(@$route.params.sequence_id)
-        {column: 'sequenceId', id: parseInt(@$route.params.sequence_id)}
-      else
-        # new to me
-        if @discussion.readItemsCount() > 0 && @discussion.unreadItemsCount() > 0
-          {column: 'sequenceId', id: @discussion.firstUnreadSequenceId()}
-        else
-          # latest
+      rules = []
+
+      if @$route.params.comment_id
+        rules.push
+          name: "comment from url"
+          local:
+            discussionId: @discussion.id
+            commentId: {$gte: parseInt(@$route.params.comment_id)}
+          remote:
+            order: 'sequence_id'
+            discussion_id: @discussion.id
+            comment_id: @$route.params.comment_id
+
+      if @$route.query.p
+        rules.push
+          name: "position from url"
+          local:
+            discussionId: @discussion.id
+            depth: 1
+            position: {$gte: parseInt(@$route.query.p)}
+          remote:
+            discussion_id: @discussion.id
+            from_sequence_id_of_position: @$route.query.p
+            order: 'sequence_id'
+
+      if @$route.params.sequence_id
+        rules.push
+          name: "sequenceId from url"
+          local:
+            discussionId: @discussion.id
+            sequenceId: {$gte: parseInt(@$route.params.sequence_id)}
+          remote:
+            from: parseInt(@$route.params.sequence_id)
+            order: 'sequence_id'
+
+      if rules.length == 0
+        # never read, or all read?
+        if @discussion.lastReadAt == null or @discussion.unreadItemsCount() == 0
           if @discussion.newestFirst
-            {column: 'position', id: @parentEvent.childCount}
+            rules.push
+              name: 'first time newest first'
+              local:
+                discussionId: @discussion.id
+                position: {$gte: @discussion.createdEvent.childCount - 10}
+              remote:
+                discussion_id: @discussion.id
+                from_sequence_id_of_position: @discussion.createdEvent.childCount - 10
+                order: 'sequence_id'
           else
-            # beginning
-            {column: 'position', id: 1}
-      
-      @loader.request(args).then (event) =>
-        if event
-          @focalEvent = event
+            rules.push
+              name: 'context'
+              local:
+                id: @discussion.createdEvent().id
+            rules.push
+              name: 'first time oldest first'
+              local:
+                discussionId: @discussion.id
+                sequenceId: {$gte: 1}
+              remote:
+                discussion_id: @discussion.id
+                from_sequence_id_of_position: 1
+                order: 'sequence_id'
         else
-          Flash.error('thread_context.item_maybe_deleted')
+          # returning reader
+          if @discussion.updatedAt > @discussion.lastReadAt
+            rules.push
+              name: "context updated"
+              local:
+                id: @discussion.createdEvent().id
+
+          if @discussion.readItemsCount() > 0 && @discussion.unreadItemsCount() > 0
+            rules.push
+              name: "since last time"
+              local:
+                sequenceId: {$gte: @discussion.firstUnreadSequenceId()}
+              remote:
+                from: @discussion.firstUnreadSequenceId()
+                order: 'sequence_id'
+
+      rules.forEach (rule) => @loader.addRule(rule)
 
 </script>
 
 <template lang="pug">
 .thread-page
   v-main
-    h1.title hi
     v-container.thread-page.max-width-800(v-if="discussion")
       thread-current-poll-banner(:discussion="discussion")
       discussion-fork-actions(:discussion='discussion' :key="'fork-actions'+ discussion.id")
       thread-card-new(v-if="loader" :discussion='discussion' :loader="loader")
       v-btn.thread-page__open-thread-nav(fab fixed bottom right @click="openThreadNav()")
         v-progress-circular(color="accent" :value="threadPercentage")
-
-  router-view(name="nav")
+  //- router-view(name="nav")
 </template>

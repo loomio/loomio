@@ -34,7 +34,6 @@ export default
 <template lang="pug">
 .thread-strand
   .thread-strand-item(v-for="obj in collection" :event='obj.event' key="obj.event.id")
-    | id {{obj.event.id}}
     component(:is="componentForKind(obj.event.kind)" :event='obj.event' key="obj.event.id")
     thread-strand(:loader="loader" v-if='obj.children' :collection="obj.children")
 </template>
