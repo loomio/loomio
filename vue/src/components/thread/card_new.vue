@@ -9,6 +9,7 @@ import Records from '@/shared/services/records'
 import Flash   from '@/shared/services/flash'
 import { print } from '@/shared/helpers/window'
 import ThreadService  from '@/shared/services/thread_service'
+import ThreadStrand from '@/components/thread/strand'
 
 import { pickBy, identity, camelCase, first, last, isNumber } from 'lodash-es'
 
@@ -16,72 +17,27 @@ excludeTypes = 'group discussion author'
 
 export default
   components:
-    ThreadStrand: -> import('@/components/thread/strand.vue')
+    ThreadStrand: ThreadStrand
 
   props:
-    discussion: Object
-    focalEvent: Object
-    collection: Array
-
-  data: ->
-    parentEvent: @discussion.createdEvent()
-    focalEvent: null
-    loader: null
-
-  mounted: ->
-    @loader = new RecordLoader
-      collection: 'events'
-        params:
-          exclude_types: excludeTypes
-
-    @watchRecords
-      key: @discussion.id
-      collections: ['groups', 'memberships']
-      query: =>
-        @canAddComment = AbilityService.canAddComment(@discussion)
-
-    @respondToRoute()
-
-  methods:
-
-
-
-    fetch: (slots, padding) ->
-      return unless slots.length
-      @loader.fetchRecords(
-        exclude_types: excludeTypes
-        comment_id: null
-        from: null
-        from_unread: null
-        discussion_id: @discussion.id
-        order: 'sequence_id'
-        from_sequence_id_of_position: first(slots)
-        until_sequence_id_of_position: last(slots)
-        per: padding * 4).then @refocus
-
-  watch:
-    '$route.params.sequence_id': 'respondToRoute'
-    '$route.params.comment_id': 'respondToRoute'
-    '$route.query.p': 'respondToRoute'
-    'parentEvent.childCount': (newVal, oldVal) ->
-      @respondToRoute() if oldVal == 0 and newVal != 0
+    loader: Object
 
   computed:
+    discussion: -> @loader.discussion
+
     canStartPoll: ->
       AbilityService.canStartPoll(@discussion)
 
     canEditThread: ->
       AbilityService.canEditThread(@discussion)
 
-
-
-
 </script>
 
 <template lang="pug">
-v-card.thread-card(outlined)
-  context-panel(:discussion="discussion")
-  thread-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
-  thread-strand(:collection="collection" :focal-event="focalEvent")
-  thread-actions-panel(v-if="!discussion.newestFirst" :discussion="discussion")
+.thread-card
+  v-card
+    thread-title(:discussion="discussion")
+    thread-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
+    thread-strand(:loader="loader" :collection="loader.collection")
+    thread-actions-panel(v-if="!discussion.newestFirst" :discussion="discussion")
 </template>
