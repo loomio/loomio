@@ -1,9 +1,12 @@
 id:
+  subscription_status:
+    members: "Anggota"
   loomio_tags:
     name_label: Nama
   common:
     group: 'Kelompok'
     groups: 'Kelompok'
+    email_address: Alamat sure
     privacy:
       public: 'Terbuka'
       private: 'Tertutup'
@@ -29,6 +32,7 @@ id:
   comment_form:
     delete_comment: 'Hapus komentar'
     confirm_delete_message: 'Apakah Anda ingin menghapus komentar ini?'
+    post_comment: "Tulis komentar"
   sidebar:
     threads: 'Diskusi'
   navbar:
@@ -89,6 +93,7 @@ id:
     proposal: 'Tips untuk menulis usulan yang baik'
     vote: 'Anda dapat mengubah pendapat Anda kapanpun'
   poll_common:
+    have_your_say: Berikan pendapat Anda
     save_changes: Simpan
   discussions_panel:
     closed: Ditutup

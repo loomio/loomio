@@ -15,6 +15,8 @@ it:
     trial: Prova
   current_plan_button:
     upgrade: Aggiorna
+  subscription_status:
+    members: "Membri"
   loomio_tags:
     tags: Etichette
     apply_tags: Inserisci etichette
@@ -100,6 +102,7 @@ it:
     settings: 'Configurazione'
     help: 'Aiuto'
     anonymous: Anonimo
+    email_address: La tua email
     privacy:
       privacy: 'Privacy'
       public: 'Pubblico'
@@ -312,6 +315,7 @@ it:
     confirm_delete: 'Cancella commento'
     in_reply_to: "Rispondi a {{name}}"
     write_a_comment: "Scrivi un commento..."
+    post_comment: "Pubblica un commento"
     submit_button:
       label: 'Messaggio'
     private_privacy_notice: 'Il tuo commento sarà visibile solamente ai membri di {{groupName}}.'
@@ -431,6 +435,7 @@ it:
     move: Sposta
   discussion_form:
     aria_label: 'Modulo discussione'
+    start_thread: Inizia una discussione
     messages:
       created: 'Discussione lanciata'
       updated: 'Discussione aggiornata'
@@ -958,6 +963,8 @@ it:
     meeting_title: Sondaggio per incontro
     ranked_choice_title: Scelta di preferenze
   poll_common:
+    vote_now: Vota ora
+    have_your_say: Dite la vostra
     your_response: La tua risposta
     reason: Motivo
     message: Messaggio
@@ -1167,12 +1174,11 @@ it:
     receive_updates_helptext: Se vuoi ricevere un'email sul risultato del sondaggio, inserisci la tua email qui sotto
     subscribe: Iscriviti
   auth_form:
-    sign_in_to_loomio: Iscriviti a {{site_name}}
     sign_in: Iscriviti
     sign_in_as: Autenticati come {{name}}
     or_enter_your_email: Oppure, inserisci il tuo indirizzo di email
+    enter_your_name: Inserisci il tuo nome
     invalid_password: "Spiacente, ma la password non corrisponde con quella che abbiamo archiviato."
-    login_link_helptext_with_password: "Inserisci la tua password, o autenticati via email."
     name_placeholder: Il tuo nome
     set_password: Imposta password
     check_your_email: Guarda nella tua casella di posta!

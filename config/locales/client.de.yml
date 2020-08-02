@@ -31,13 +31,12 @@ de:
   subscription_status:
     plan: "Plan"
     state: "Status"
+    members: "Mitglieder"
     active_members: "Aktive Mitglieder"
     max_threads: "Max Diskussionen"
     max_members: "Max Mitglieder"
     expires_at: "Verfällt"
     renews_at: "Verlängern"
-    referral_code: "Empfehlungs-Codes aufladen"
-    chargify_link: "Bezahl-Portal aufladen"
   loomio_tags:
     all_tags: Alle Schlagwörter
     tags: Schlagwörter
@@ -144,6 +143,7 @@ de:
     help: 'Hilfe'
     anonymous: Anonym
     required: Notwendig
+    email_address: E-Mail Adresse
     privacy:
       privacy: 'Datenschutz'
       public: 'Öffentlich'
@@ -392,6 +392,7 @@ de:
     confirm_delete: 'Kommentar löschen'
     in_reply_to: "{{name}} antworten"
     write_a_comment: "Ein Kommentar verfassen..."
+    post_comment: "Kommentar abschicken"
     submit_button:
       label: 'Veröffentlichen'
     private_privacy_notice: 'Dein Kommentar wird nur für Mitglieder von {{groupName}} sichtbar sein.'
@@ -522,6 +523,7 @@ de:
     start_new_thread: Oder eine neue Diskussion starten
   discussion_form:
     aria_label: 'Diskussions-Formular'
+    start_thread: Diskussion eröffnen
     messages:
       created: 'Diskussion wurde eröffnet'
       updated: 'Diskussion aktualisiert'
@@ -659,6 +661,7 @@ de:
   formatting:
     bold: Fett
     italicize: Kursiv
+    blockquote: Zitat
     strikethrough: Durchgestrichen
     underline: Unterstrichen
     link: Link einfügen
@@ -1309,10 +1312,11 @@ de:
     meeting_title: Terminfindung
     ranked_choice_title: Prioritätensetzung
   poll_common:
+    vote_now: Jetzt Stimme abgeben
+    have_your_say: Teile deine Meinung
     your_response: Ihre Antwort
     change_your_response: Antwort bearbeiten
     reason: Begründung
-    reason_placeholder: Ergänzender Kommentar?
     message: Nachricht
     results: Abstimmungsergebnis
     responses: Antworten
@@ -1336,7 +1340,6 @@ de:
     publish_poll: Abstimmung teilen
     view_all: Alles sehen
     save_changes: Speichern
-    change_vote: Stimme ändern
     max_score: Maximale Ergebnis
     min_score: Minimale Ergebnis
     too_long: Zu lang
@@ -1467,15 +1470,6 @@ de:
     dot_vote_closed: Punktevergabe geschlossen
     meeting_closed: Terminfindung beendet
     ranked_choice_closed: Prioritätensetzung geschlossen
-  poll_common_reopen_form:
-    title: Öffnen Sie eine geschlossene Entscheidung erneut
-    helptext: Wurde eine Entscheidung geschlossen bevor Sie fertig waren? Erneut öffnen, um mehr Argumente zu sammeln.
-    proposal_reopened: Der Vorschlag wurde erneut geöffnet
-    poll_reopened: Umfrage wieder eröffnet
-    count_reopened: Prüfung wieder geöffnet
-    dot_vote_reopened: Punktevergabe wieder eröffnet
-    meeting_reopened: Die Zeitumfrage wurde erneut geöffnet
-    ranked_choice_reopened: Prioritätensetzung wiedereröffnet
   poll_common_closing_at_field:
     closing: Schluss
     closing_hour: 'Endet am  '
@@ -1759,14 +1753,13 @@ de:
     title: Abstimmung {{title}} teilen
   auth_form:
     code: '000000'
-    sign_in_to_loomio: Einloggen bei {{site_name}}
     sign_in: einloggen
     continue: fortfahren
     create_account: Benutzerkonto erstellen
     sign_in_as: als {{name}} einloggen
     continue_with_provider: Mit {{provider}} anmelden
-    continue_with_email: Mit E-mail anmelden
     or_enter_your_email: oder gib deine E-Mail-Adresse ein
+    enter_your_name: Name einfügen
     invitation_required: 'Du benötigst eine Einladung um ein Konto zu erstellen. '
     more_providers: mehr
     email_not_present: Eine Mailadresse ist erforderlich
@@ -1778,7 +1771,6 @@ de:
     email_placeholder: mustermann@beispiel.de
     login_with_token: 'Fertig! Klicke auf den folgenden Link, um fortzufahren. '
     login_link_helptext: 'Klicke auf den folgenden Button um einen Link für deine Anmeldung zu erhalten. '
-    login_link_helptext_with_password: "Gib dein Passwort ein oder melde dich per E-Mail an"
     check_spam_folder: 'Solltest du keine E-mail erhalten, überprüfe bitte deinen Spam Ordner. '
     sign_up_helptext: Bitte füllen Sie dieses Formular aus, um ein Benutzerkonto zu erstellen
     i_accept: "Ich akzeptiere die <a href='{{termsUrl}}' target='_blank'>Nutzungsbedingungen</a> und <a href='{{privacyUrl}}' target='_blank'>Datenschutzerklärung</a>"
@@ -1827,7 +1819,6 @@ de:
     warning_helptext: "TODO_DE_Warning: You'll be required to authenticate with your provider after you click save."
     idp_metadata_url: TODO_DE_IDP Metadata URL
     idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
-    pro_plan_only: TODO_DE_This feature is only available to Pro plan customers. Please check out our <a href="/upgrade" target="_blank">upgrade page</a> for more details.
     success: TODO_DE_Single sign-on successfully configured
     destroyed: TODO_DE_Single sign-on removed
     invalid_idp_metadata_url: TODO_DE_Invalid IDP metadata URL

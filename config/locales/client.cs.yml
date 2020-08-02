@@ -14,6 +14,8 @@ cs:
     free: Bezplatný
   current_plan_button:
     upgrade: Zdokonalená verze
+  subscription_status:
+    members: "Členové"
   loomio_tags:
     tags: Štítky
     apply_tags: Použít štítek
@@ -59,6 +61,7 @@ cs:
     decisions: 'Rozhodnutí'
     settings: 'Nastavení'
     help: 'Nápověda'
+    email_address: E-mailová adresa
     privacy:
       privacy: 'Soukromí'
       public: 'Veřejná'
@@ -219,6 +222,7 @@ cs:
     cancel_reply: 'Zrušit odpověď'
     confirm_delete_message: 'Opravdu chcete odstranit tento komentář?'
     confirm_delete: 'Odstranit komentář'
+    post_comment: "Odeslat komentář"
     submit_button:
       label: 'Odeslat'
     private_privacy_notice: 'Váš komentář bude viditelný pouze pro členy {{groupName}}.'
@@ -287,6 +291,7 @@ cs:
   discussion_fork_actions:
     move: Přesunout
   discussion_form:
+    start_thread: Vytvořit vlákno
     messages:
       created: 'Vlákno vytvořeno'
       updated: 'Vlákno aktualizováno'
@@ -608,8 +613,9 @@ cs:
     poll_title: Hlasování
     meeting_title: Doba hlasování
   poll_common:
+    vote_now: Hlasovat nyní
+    have_your_say: Vyjádřete svůj názor
     your_response: Vaše odpověď
-    reason_placeholder: Jakékoliv další připomínky?
     results: Výsledky
     responses: Odpovědi
     votes: Hlasování
@@ -695,13 +701,13 @@ cs:
   auth_form:
     sign_in: Přihlásit se
     create_account: Vytvořit účet
+    enter_your_name: Zadejte své jméno
     more_providers: Více
     email_not_present: Je vyžadována e-mailová adresa
     invalid_email: "Je nám líto, ale nevypadá to jako platná e-mailová adresa"
     invalid_password: "Omlouváme se, toto heslo neodpovídá heslu již zadanému"
     email_not_found: "Je nám líto, nenašli jsme účet s touto e-mailovou adresou"
     email_placeholder: vy@priklad.cz
-    login_link_helptext_with_password: "Zadejte své heslo nebo se přihlaste e-mailem."
     name_placeholder: Vaše jméno
     name_required: Zadejte prosím jméno
     welcome_back: Vítejte zpět, {{name}}!

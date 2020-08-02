@@ -3,6 +3,8 @@ el:
     free: Δωρεάν
   current_plan_button:
     upgrade: Αναβάθμιση
+  subscription_status:
+    members: "Μέλη"
   loomio_tags:
     name_label: Όνομα
   timezones:
@@ -29,6 +31,7 @@ el:
     decisions: 'Αποφάσεις'
     settings: 'Ρυθμίσεις'
     help: 'Βοήθεια'
+    email_address: Ηλεκτρονική διεύθυνση
     privacy:
       privacy: 'Ιδιωτικότητα'
       public: 'Δημόσιο'
@@ -166,6 +169,7 @@ el:
     cancel_reply: 'Ακύρωση Απάντησης'
     confirm_delete_message: 'Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το σχόλιο?'
     confirm_delete: 'Διαγραφή σχολίου'
+    post_comment: "Δημοσίευση σχόλιου"
     submit_button:
       label: 'Δημοσίευση'
     private_privacy_notice: 'Το σχόλιο σας θα είναι ορατό μόνο στα μέλη της ομάδα {{groupName}}.'
@@ -209,6 +213,7 @@ el:
     no_notifications: "Δεν έχετε καμία ειδοποίηση"
   discussion_form:
     aria_label: 'Φόρμα θέματος'
+    start_thread: Ξεκινήστε ένα θέμα
     messages:
       created: 'Το θέμα ξεκίνησε'
       updated: 'Το θέμα ανανεώθηκε'
@@ -414,6 +419,7 @@ el:
     poll_title: Ψηφοφορία
     meeting_title: Χρόνος ψηφοφορίας
   poll_common:
+    have_your_say: Πείτε την γνώμη σας
     save_changes: Αποθήκευση
   discussions_panel:
     open: Άνοιγμα

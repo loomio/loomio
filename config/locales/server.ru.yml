@@ -319,8 +319,6 @@ ru:
     body:
       voted: '<strong>%{participant}</strong>:'
   comment_by: Комментарий %{comment_author}
-  personal_data:
-    title: Личные данные %{user_name} на %{host_name}
   notified:
     no_matches_found: "Ничего похожего на '%{query}'"
     group_users: "(%{count} человек)"

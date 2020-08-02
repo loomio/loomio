@@ -31,13 +31,12 @@ nl_NL:
   subscription_status:
     plan: "Abonnement"
     state: "Status"
+    members: "Leden"
     active_members: "Actieve leden"
     max_threads: "Maximum aantal borden"
     max_members: "Maximum aantal leden"
     expires_at: "Verloopt"
     renews_at: "Vernieuwd"
-    referral_code: "Verwijzingscode opladen"
-    chargify_link: "Rekeningenportaal opladen"
     referral_code_help: "Geef een vriend korting, krijg zelf wat kudo's!"
   loomio_tags:
     all_tags: Alle labels
@@ -145,6 +144,7 @@ nl_NL:
     help: 'Help'
     anonymous: Anoniem
     required: Verplicht
+    email_address: E-mail adres
     privacy:
       privacy: 'Privacy'
       public: 'Openbaar'
@@ -395,6 +395,7 @@ nl_NL:
     confirm_delete: 'Reactie verwijderen'
     in_reply_to: "Antwoord aan {{name}}"
     write_a_comment: "Schrijf reactie..."
+    post_comment: "Plaats reactie"
     submit_button:
       label: 'Plaatsen'
     private_privacy_notice: 'Je reactie is alleen zichtbaar voor leden van {{groupName}}.'
@@ -525,6 +526,7 @@ nl_NL:
     start_new_thread: Of, start een nieuw bord
   discussion_form:
     aria_label: 'Bordformulier'
+    start_thread: Start discussie
     messages:
       created: 'Bord gestart'
       updated: 'Bord geactualiseerd'
@@ -664,6 +666,7 @@ nl_NL:
   formatting:
     bold: Vet
     italicize: Schuin zetten
+    blockquote: Quote
     strikethrough: Doorstrepen
     underline: Onderlijnen
     link: Link invoegen
@@ -1336,10 +1339,11 @@ nl_NL:
     meeting_title: Moment bevragen
     ranked_choice_title: Keuzes rangschikken
   poll_common:
+    vote_now: Stem nu
+    have_your_say: Laat je horen
     your_response: Je antwoord
     change_your_response: Bewerk antwoord
     reason: Reden
-    reason_placeholder: Nog meer reacties?
     message: Bericht
     results: Resultaten
     responses: Antwoorden
@@ -1363,7 +1367,6 @@ nl_NL:
     publish_poll: '''Peiling'' delen'
     view_all: Bekijk alles
     save_changes: Bewaren
-    change_vote: Verander stem
     max_score: Maximum score
     min_score: Minimum score
     too_long: Te lang
@@ -1503,15 +1506,6 @@ nl_NL:
     dot_vote_closed: '''Dotmocracy'' gesloten'
     meeting_closed: '''Moment bevragen'' gesloten'
     ranked_choice_closed: De peiling 'Keuzes rangschikken' is gesloten
-  poll_common_reopen_form:
-    title: Heropen een gesloten beslissing
-    helptext: Werd een beslissing gesloten voordat je klaar was? Heropen om meer standpunten uit de groep te verzamelen.
-    proposal_reopened: Voorstel heropend
-    poll_reopened: Peiling heropend
-    count_reopened: Check heropend
-    dot_vote_reopened: Dotmocracy heropend
-    meeting_reopened: Tijd peiling heropend
-    ranked_choice_reopened: Gerangschikte keuze peiling heropend
   poll_common_move_form:
     title: "Verplaats {{poll_type}}"
     success: "{{poll_type}} verplaatst naar {{group}}"
@@ -1803,15 +1797,14 @@ nl_NL:
     youre_invited: Je bent uitgenodigd om lid te worden van {{group_name}}.
     youre_invited_discussion: Je bent uitgenodigd om mee te doen met de discussie.
     youre_invited_poll: Je bent uitgenodigd om te stemmen.
-    sign_in_to_loomio: Log in op {{site_name}}
     sign_in_help: Moeite om in te schrijven?
     sign_in: Inloggen
     continue: Ga verder
     create_account: Account aanmaken
     sign_in_as: Log in als {{name}}
     continue_with_provider: Schrijf in met {{provider}}
-    continue_with_email: Schrijf in met email
     or_enter_your_email: Of, voeg je emailadres in
+    enter_your_name: Typ je naam
     invitation_required: Je hebt een uitnodiging nodig om een account te creëren.
     more_providers: Meer
     email_not_present: Een e-mailadres is vereist
@@ -1823,7 +1816,6 @@ nl_NL:
     email_placeholder: you@example.com
     login_with_token: Helemaal klaar! Klik op onderstaande link om verder te gaan.
     login_link_helptext: Klik op de knop hieronder en we sturen je een aanmeld-link.
-    login_link_helptext_with_password: "Typ je wachtwoord in of log in via e-mail."
     check_spam_folder: Als de e-mail niet snel aankomt, kijk dan in je spam map.
     sign_up_helptext: Vul alsjeblieft in om een gebruikersaccount te maken
     i_accept: "Ik accepteer de <a href='{{termsUrl}}' target='_blank'>Servicevoorwaarden</a> en het <a href='{{privacyUrl}}' target='_blank'>Privacybeleid</a>"
@@ -1900,7 +1892,6 @@ nl_NL:
     warning_helptext: "Waarschuwing: Je moet jezelf nu authenticeren bij de provider nadat je op bewaren klikt."
     idp_metadata_url: IDP Metadata URL
     idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
-    pro_plan_only: Dit feature is alleen beschikbaar voor Pro abonnement klanten. Kijk op onze <a href="/upgrade" target="_blank">upgrade pagina</a> voor meer details.
     success: Single sign-on is geconfigureerd.
     destroyed: Single sign-on verwijderd
     invalid_idp_metadata_url: Ongeldige IDP metadata URL

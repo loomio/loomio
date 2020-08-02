@@ -22,6 +22,8 @@ hu:
   current_plan_button:
     upgrade: Frissítés
     free_trial: Ingyenes próbaidőszak. {{days}} nap van hátra.
+  subscription_status:
+    members: "Tagok"
   loomio_tags:
     all_tags: Összes címke
     tags: Címkék
@@ -126,6 +128,7 @@ hu:
     settings: 'Beállítások'
     help: 'Segítség'
     anonymous: Névtelen
+    email_address: E-mail cím
     privacy:
       privacy: 'Adatvédelem'
       public: 'Nyilvános'
@@ -354,6 +357,7 @@ hu:
     confirm_delete: 'Hozzászólás törlése'
     in_reply_to: "Válasz neki: {{name}}"
     write_a_comment: "Írj egy hozzászólást..."
+    post_comment: "Hozzászólás"
     submit_button:
       label: 'Bejegyzés'
     private_privacy_notice: 'A hozzászólásod csak a {{groupName}} csoport tagjainak lesz látható.'
@@ -588,6 +592,7 @@ hu:
   formatting:
     bold: Félkövér
     italicize: Dőlt
+    blockquote: Idézet
     strikethrough: Áthúzott
     underline: Aláhúzott
     link: Illessz be egy hivatkozást
@@ -1174,10 +1179,11 @@ hu:
     meeting_title: Időpont választás
     ranked_choice_title: Sorrend választás
   poll_common:
+    vote_now: Szavazz most
+    have_your_say: Mondd el a véleményed
     your_response: Válaszod
     change_your_response: A válasz szerkesztése
     reason: Ok
-    reason_placeholder: További észrevételek?
     message: Üzenet
     results: Eredmények
     responses: Válaszok
@@ -1201,7 +1207,6 @@ hu:
     publish_poll: Osszd meg a szavazást
     view_all: Összes megtekintése
     save_changes: Mentés
-    change_vote: Szavazat megváltoztatása
     max_score: Maximális pontszám
     min_score: Minimális pontszám
     too_long: Túl hosszú
@@ -1323,15 +1328,6 @@ hu:
     dot_vote_closed: A pontozó szavazás lezárult
     meeting_closed: Időpont-felmérés lezárva
     ranked_choice_closed: A rangsoroló szavazás lezárva
-  poll_common_reopen_form:
-    title: Nyissa meg újra a zárt határozatot
-    helptext: Lezárult egy döntés, mielőtt készen álltál? Nyissa meg újra, hogy további álláspontokat gyűjtsön a csoporttól.
-    proposal_reopened: A javaslat újból megnyílt
-    poll_reopened: A szavazás újból megnyílt
-    count_reopened: Felmérés újranyitva
-    dot_vote_reopened: Pontszavazás újra megnyitva
-    meeting_reopened: Időpont-felmérés újranyitva
-    ranked_choice_reopened: Újra megnyílt a rangsorolt szavazás
   poll_common_closing_at_field:
     closing: Záródik
     closing_hour: Záróra
@@ -1581,14 +1577,13 @@ hu:
     title: Közvélemény-kutatás megosztása - {{title}}
   auth_form:
     code: '000000'
-    sign_in_to_loomio: 'Bejelentkezés a következőhöz: {{site_name}}'
     sign_in: Bejelentkezés
     continue: Folytatni
     create_account: Fiók létrehozása
     sign_in_as: 'Bejelentkezés itt: {{name}}'
     continue_with_provider: Jelentkezzen be a(z) {{provider}} segítségével
-    continue_with_email: Jelentkezzen be e-mailben
     or_enter_your_email: Vagy írja be az e-mail címét
+    enter_your_name: Add meg a neved
     invitation_required: A fiók létrehozásához meghívásra van szüksége.
     more_providers: Több
     email_not_present: E-mail címre van szükség
@@ -1600,7 +1595,6 @@ hu:
     email_placeholder: you@example.com
     login_with_token: Minden készen állsz A folytatáshoz kattintson az alábbi linkre.
     login_link_helptext: Kattintson az alábbi gombra, és küldünk egy linket a bejelentkezéshez.
-    login_link_helptext_with_password: "Írja be a jelszavát, vagy jelentkezzen be e-mailben."
     check_spam_folder: Ha az e-mail nem érkezik meg hamarosan, ellenőrizze a spam mappát.
     sign_up_helptext: Kérjük, töltse ki ezt az űrlapot felhasználói fiók létrehozásához
     i_accept: "Elfogadom a <a href='{{termsUrl}}' target='_blank'>Szolgáltatási feltételeket</a> és az <a href='{{privacyUrl}}' target='_blank'>Adatvédelmi szabályzatot</a>"

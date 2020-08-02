@@ -104,7 +104,7 @@ GEM
     arbre (1.2.1)
       activesupport (>= 3.0.0)
     arel (9.0.0)
-    autoprefixer-rails (9.8.5)
+    autoprefixer-rails (9.8.6)
       execjs
     aws-eventstream (1.1.0)
     aws-partitions (1.343.0)

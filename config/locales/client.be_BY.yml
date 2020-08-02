@@ -1,4 +1,6 @@
 be_BY:
+  subscription_status:
+    members: "Удзельнікі"
   loomio_tags:
     name_label: Імя
   common:
@@ -12,6 +14,7 @@ be_BY:
     notification_volume: 'Гучнасць апавяшчэнняў'
     group: 'Група'
     groups: 'Групы'
+    email_address: Адрас email
     privacy:
       public: 'Бачна для ўсіх'
       private: 'Прыватна'
@@ -56,6 +59,7 @@ be_BY:
     edit_comment: 'Рэдагаваць каментар'
     delete_comment: 'Выдаліць каментар'
     confirm_delete_message: 'Вы ўпэўнены, што хаціце выдаліць гэты каментар?'
+    post_comment: "Размясціць каментар"
   sidebar:
     threads: 'Абмеркаванні'
   navbar:
@@ -152,6 +156,7 @@ be_BY:
     proposal: 'Парады, як пісаць зразумелыя прапановы'
     vote: 'Вы здольны змяніць свой голас у любы час'
   poll_common:
+    have_your_say: Скажыце сваё слова
     save_changes: Захаваць
   discussions_panel:
     all: Усе
