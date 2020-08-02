@@ -1,4 +1,6 @@
 sk:
+  subscription_status:
+    members: "Členovia"
   loomio_tags:
     name_label: Meno
   common:
@@ -7,6 +9,7 @@ sk:
       pm: odp.
     group: 'Skupina'
     groups: 'Skupiny'
+    email_address: E-mailová adresa
     privacy:
       public: 'Verejnosť'
       private: 'Súkromný'
@@ -38,6 +41,7 @@ sk:
     edit_comment: 'Upraviť komentár'
     delete_comment: 'Odstrániť komentár'
     confirm_delete_message: 'Naozaj chcete odstrániť tento komentár?'
+    post_comment: "Odoslať komentár"
   sidebar:
     threads: 'Diskusie'
   navbar:
@@ -120,6 +124,7 @@ sk:
     proposal: 'Rady na napísanie jasného návrhu'
     vote: 'Môžete kdykoľvek svoj postoj zmeniť'
   poll_common:
+    have_your_say: Vyjadrite svoj názor
     save_changes: Uložiť
   discussions_panel:
     all: Všetko
