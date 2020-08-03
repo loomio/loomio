@@ -30,9 +30,6 @@ EventBus.configure do |config|
                 'poll_create',
                 'poll_update') { |model| SearchIndexWorker.perform_async(Array(model.discussion_id)) }
 
-  # send memos to client side after comment change
-  config.listen('reaction_destroy') { |reaction| Memos::ReactionDestroyed.publish!(reaction: reaction) }
-
   config.listen('event_remove_from_thread') do |event|
     MessageChannelService.publish_model(event, serializer: Events::BaseSerializer)
   end
