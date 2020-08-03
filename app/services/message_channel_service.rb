@@ -8,7 +8,7 @@ class MessageChannelService
   end
 
   def self.publish_records(data, group_ids: [], user_ids: [])
-    MessageBus.publish '/records', data.as_json, group_ids: group_ids, user_ids: user_ids
+    MessageBus.publish '/records', data.as_json.as_json, group_ids: group_ids, user_ids: user_ids
   end
 
   def self.publish_event(event)
