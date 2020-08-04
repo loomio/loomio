@@ -5,7 +5,8 @@ class DeleteOldMotionEvents < ActiveRecord::Migration[5.2]
     discussion_ids = []
     discussion_ids.concat Event.where(eventable_type: types).pluck(:discussion_id)
     discussion_ids.concat Event.where(kind: kinds).pluck(:discussion_id)
-    discussion_ids.compact!.uniq!
+    discussion_ids.compact!
+    discussion_ids.uniq!
 
     Event.where(eventable_type: types).delete_all
     Event.where(kind: kinds).delete_all

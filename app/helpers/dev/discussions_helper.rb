@@ -30,22 +30,29 @@ module Dev::DiscussionsHelper
 
   def create_discussion_with_sampled_comments
     group = create_group_with_members
-    EventParentMigrator.migrate_group!(group.reload)
+    # EventParentMigrator.migrate_group!(group.reload)
 
     discussion = saved fake_discussion(group: group)
     DiscussionService.create(discussion: discussion, actor: group.admins.first)
+    discussion.update(max_depth: 3)
 
     BaseMailer.skip do
       5.times do
         group.add_member! saved(fake_user)
       end
 
-      15.times do
+      10.times do
         CommentService.create(comment: fake_comment(discussion: discussion), actor: group.members.sample)
       end
       comments = discussion.reload.comments
 
-      30.times do
+      10.times do
+        CommentService.create(comment: fake_comment(discussion: discussion, parent: comments.sample), actor: group.members.sample)
+      end
+
+      comments = discussion.reload.comments
+
+      10.times do
         CommentService.create(comment: fake_comment(discussion: discussion, parent: comments.sample), actor: group.members.sample)
       end
     end

@@ -92,7 +92,11 @@ class Event < ApplicationRecord
 
   def set_position_and_position_key
     self.position = next_position if position == 0
-    self.position_key = self_and_parents.reverse.map(&:position).join('-')
+    self.position_key = self_and_parents.reverse.map(&:position).map{|p| zero_fill(p) }.join('-')
+  end
+
+  def zero_fill(num)
+    "0" * (5 - num.to_s.length) + num.to_s
   end
 
   def set_position_and_position_key!
@@ -131,10 +135,12 @@ class Event < ApplicationRecord
   end
 
   def next_sequence_id
+    return nil unless self.discussion_id
     (Event.where(discussion_id: discussion_id).order("sequence_id DESC").limit(1).pluck(:sequence_id).first || 0) + 1
   end
 
   def next_position
+    return 0 unless self.discussion_id
     (Event.where(parent_id: parent_id).order("position DESC").limit(1).pluck(:position).last || 0) + 1
   end
 

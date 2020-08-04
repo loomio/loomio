@@ -46,29 +46,28 @@ export default
 </script>
 
 <template lang="pug">
-.context-panel.lmo-action-dock-wrapper#context(:aria-label="$t('context_panel.aria_intro', {author: discussion.authorName(), group: discussion.group().fullName})" v-observe-visibility="{callback: viewed, once: true}" v-on:dblclick="editThread.canPerform() && editThread.perform()")
-  div.mx-3.mb-2
-    .context-panel__details.my-2.body-2(align-center)
-      user-avatar.mr-4(:user='discussion.author()', :size='40')
-      span
-        router-link(:to="urlFor(discussion.author())" title="Thread author") {{discussion.authorName()}}
+.strand-new-discussion.context-panel.lmo-action-dock-wrapper#context(:aria-label="$t('context_panel.aria_intro', {author: discussion.authorName(), group: discussion.group().fullName})" v-observe-visibility="{callback: viewed, once: true}" v-on:dblclick="editThread.canPerform() && editThread.perform()")
+  .strand-item-headline
+    | context
+    span
+      router-link(:to="urlFor(discussion.author())" title="Thread author") {{discussion.authorName()}}
+      mid-dot
+      span(aria-label="Thread privacy")
+        span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private(v-show='discussion.private')
+          i.mdi.mdi-lock-outline
+          span(v-t="'common.privacy.private'")
+        span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public(v-show='!discussion.private')
+          i.mdi.mdi-earth
+          span(v-t="'common.privacy.public'")
+      span(v-show='discussion.seenByCount > 0')
         mid-dot
-        span(aria-label="Thread privacy")
-          span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private(v-show='discussion.private')
-            i.mdi.mdi-lock-outline
-            span(v-t="'common.privacy.private'")
-          span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public(v-show='!discussion.private')
-            i.mdi.mdi-earth
-            span(v-t="'common.privacy.public'")
-        span(v-show='discussion.seenByCount > 0')
-          mid-dot
-          a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
-      .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'" v-if='discussion.closedAt')
-        v-tooltip(bottom) {{ exactDate(discussion.closedAt) }}
-    formatted-text.context-panel__description(:model="discussion" column="description" aria-label="Discussion context")
-    document-list(:model='discussion')
-    attachment-list(:attachments="discussion.attachments")
-    action-dock(:model='discussion' :actions='dockActions' :menu-actions='menuActions' fetch-reactions)
+        a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
+    .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'" v-if='discussion.closedAt')
+      v-tooltip(bottom) {{ exactDate(discussion.closedAt) }}
+  formatted-text.context-panel__description(:model="discussion" column="description" aria-label="Discussion context")
+  document-list(:model='discussion')
+  attachment-list(:attachments="discussion.attachments")
+  //- action-dock(:model='discussion' :actions='dockActions' :menu-actions='menuActions' fetch-reactions)
   v-divider
 </template>
 <style lang="sass">

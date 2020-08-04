@@ -2,7 +2,7 @@ import DashboardPage from './components/dashboard/page.vue'
 import InboxPage from './components/inbox/page.vue'
 import ExplorePage from './components/explore/page.vue'
 import ThreadPage from './components/thread/page.vue'
-import ThreadPageNew from './components/thread/page_new.vue'
+import StrandPage from './components/strand/page.vue'
 import ProfilePage from './components/profile/page.vue'
 import PollPage from './components/poll/page.vue'
 
@@ -48,6 +48,12 @@ threadPageChildren = [
   {path: '', components: {nav: ThreadNav}}
 ]
 
+strandPageChildren = [
+  {path: 'comment/:comment_id'}
+  {path: ':stub?/:sequence_id?'}
+  {path: ''}
+]
+
 
 export default new Router
   mode: 'history'
@@ -71,7 +77,7 @@ export default new Router
     {path: '/p/:key/:stub?', component: PollPage},
     {path: '/u/:key/:stub?', component: UserPage },
     {path: '/d/new', component: StartDiscussionPage },
-    {path: '/d/:key', name: 'discussion', component: ThreadPageNew, children: threadPageChildren },
+    {path: '/d/:key', name: 'discussion', component: StrandPage, children: strandPageChildren },
     {path: '/g/new', component: StartGroupPage},
     {path: '/g/:key', component: GroupPage, children: groupPageChildren, name: 'groupKey'},
     {path: '/:key', component: GroupPage, children: groupPageChildren},

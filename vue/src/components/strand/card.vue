@@ -28,10 +28,13 @@ export default
 </script>
 
 <template lang="pug">
-.thread-card
-  v-card
-    thread-title(:discussion="discussion")
-    thread-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
-    thread-strand(:loader="loader" :collection="loader.collection")
-    thread-actions-panel(v-if="!discussion.newestFirst" :discussion="discussion")
+.strand-card
+  strand-title(:discussion="discussion")
+  thread-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
+  strand-list(:loader="loader" :collection="loader.collection")
+  thread-actions-panel(v-if="!discussion.newestFirst" :discussion="discussion")
 </template>
+<style lang="sass">
+.strand-card
+  padding: 0 8px
+</style>

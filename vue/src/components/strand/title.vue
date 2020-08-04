@@ -25,7 +25,7 @@ export default
 </script>
 
 <template lang="pug">
-.thread-title.lmo-action-dock-wrapper
+.thread-title.mb-4
   v-layout(align-center mr-3 ml-2 pt-2 wrap)
     v-breadcrumbs.context-panel__breadcrumbs(aria-label="Group" :items="groups" divider=">")
     tags-display(:discussion="discussion")
