@@ -6,7 +6,7 @@ class Events::BaseSerializer < ApplicationSerializer
   has_one :actor, serializer: AuthorSerializer, root: :users
   has_one :eventable, polymorphic: true
   has_one :discussion, serializer: Simple::DiscussionSerializer, root: :discussions
-  has_one :parent, serializer: Events::BaseSerializer, root: :events
+  has_one :parent, serializer: Events::BaseSerializer, root: :parent_events
 
   def actor_id
     object.user_id

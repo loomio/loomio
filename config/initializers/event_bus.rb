@@ -13,10 +13,7 @@ EventBus.configure do |config|
       reader = DiscussionReader.for_model(event.discussion, event.real_user)
                                .update_reader(ranges: event.sequence_id,
                                               volume: :loud)
-      MessageChannelService.publish_records(ActiveModel::ArraySerializer.new([reader],
-                                         each_serializer: DiscussionReaderSerializer,
-                                         root: :discussions).as_json,
-                                         user_ids: [event.real_user.id])
+      MessageChannelService.publish_models([reader], root: :discussions, user_ids: [event.real_user.id])
     end
   end
 
@@ -30,19 +27,13 @@ EventBus.configure do |config|
                 'poll_create',
                 'poll_update') { |model| SearchIndexWorker.perform_async(Array(model.discussion_id)) }
 
-  config.listen('event_remove_from_thread') do |event|
-    MessageChannelService.publish_model(event, serializer: Events::BaseSerializer)
-  end
 
+  # if the user marks a discussion as read, update their other open tabs
   config.listen('discussion_mark_as_read',
                 'discussion_dismiss',
                 'discussion_mark_as_seen') do |reader|
-    MessageChannelService.publish_records(ActiveModel::ArraySerializer.new([reader], each_serializer: DiscussionReaderSerializer, root: :discussions).as_json, user_ids: reader.id)
+    MessageChannelService.publish_models(reader, serializer: DiscussionReaderSerializer, root: :discussions, user_ids: [reader.user_id])
   end
-
-  # config.listen('discussion_mark_as_seen') do |reader|
-  #   MessageChannelService.publish_model(reader.discussion)
-  # end
 
   # update discussion or comment versions_count when title or description edited
   config.listen('discussion_update', 'comment_update', 'poll_update', 'stance_update') { |model| model.update_versions_count }

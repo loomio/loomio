@@ -1,7 +1,7 @@
 class API::NotificationsController < API::RestfulController
   def index
     instantiate_collection do |collection|
-      collection.where(user_id: current_user.id).includes(:actor, :event).order(id: :desc).limit(30)
+      collection.limit(30)
     end
     respond_with_collection
   end
@@ -11,10 +11,7 @@ class API::NotificationsController < API::RestfulController
     render json: { success: :ok }
   end
 
-  private
-
   def accessible_records
-    NotificationCollection.new(current_user).notifications
+    current_user.notifications.includes(:actor, :event).order(id: :desc)
   end
-
 end
