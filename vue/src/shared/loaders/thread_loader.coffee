@@ -93,7 +93,7 @@ export default class ThreadLoader
   addRule: (rule) ->
     @rules.push(rule)
 
-  fetch: () ->
+  fetch:  ->
     @rules.forEach (rule) =>
       params = Object.assign {}, rule.remote, {exclude_types: 'group discussion'}
       Records.events.fetch(params: params).then (data) =>
