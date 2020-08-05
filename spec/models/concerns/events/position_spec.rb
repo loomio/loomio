@@ -16,11 +16,11 @@ describe "Events::Position" do
     e2 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment2)
     e3 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment3)
     expect(e1.position).to eq 1
-    expect(e1.position_key).to eq "1"
+    expect(e1.position_key).to eq "00001"
     expect(e2.position).to eq 2
-    expect(e2.position_key).to eq "2"
+    expect(e2.position_key).to eq "00002"
     expect(e3.position).to eq 3
-    expect(e3.position_key).to eq "3"
+    expect(e3.position_key).to eq "00003"
   end
 
   describe 'depth' do
@@ -33,11 +33,11 @@ describe "Events::Position" do
       e2 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment2)
       e3 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment3)
       expect(e1.depth).to eq 1
-      expect(e1.position_key).to eq "1"
+      expect(e1.position_key).to eq "00001"
       expect(e2.depth).to eq 2
-      expect(e2.position_key).to eq "1-1"
+      expect(e2.position_key).to eq "00001-00001"
       expect(e3.depth).to eq 2
-      expect(e3.position_key).to eq "1-2"
+      expect(e3.position_key).to eq "00001-00002"
     end
 
     it "enforces max depth 1 " do
@@ -46,11 +46,11 @@ describe "Events::Position" do
       e2 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment2)
       e3 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment3)
       expect(e1.depth).to eq 1
-      expect(e1.position_key).to eq "1"
+      expect(e1.position_key).to eq "00001"
       expect(e2.depth).to eq 1
-      expect(e2.position_key).to eq "2"
+      expect(e2.position_key).to eq "00002"
       expect(e3.depth).to eq 1
-      expect(e3.position_key).to eq "3"
+      expect(e3.position_key).to eq "00003"
     end
 
     it "enforces max depth 3 " do
@@ -59,11 +59,11 @@ describe "Events::Position" do
       e2 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment2)
       e3 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment3)
       expect(e1.depth).to eq 1
-      expect(e1.position_key).to eq "1"
+      expect(e1.position_key).to eq "00001"
       expect(e2.depth).to eq 2
-      expect(e2.position_key).to eq "1-1"
+      expect(e2.position_key).to eq "00001-00001"
       expect(e3.depth).to eq 3
-      expect(e3.position_key).to eq "1-1-1"
+      expect(e3.position_key).to eq "00001-00001-00001"
     end
   end
 
@@ -84,7 +84,7 @@ describe "Events::Position" do
     e2.update(discussion_id: nil, parent_id: nil)
     EventService.reposition_events(discussion)
     expect(e3.reload.position).to eq 2
-    expect(e3.reload.position_key).to eq "2"
+    expect(e3.reload.position_key).to eq "00002"
   end
 
   it "handles destroy" do
