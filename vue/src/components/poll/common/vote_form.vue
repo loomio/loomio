@@ -26,7 +26,6 @@ export default
   methods:
     submit: ->
       actionName = if !@stance.castAt then 'created' else 'updated'
-      @stance.id = null
       @stance.stanceChoicesAttributes = [{poll_option_id: @selectedOptionId}]
       @stance.save()
       .then =>
@@ -38,34 +37,45 @@ export default
     isSelected: (option) ->
       @selectedOptionId == option.id
 
-    style: (option) ->
-      if @selectedOptionId && @selectedOptionId != option.id
-        {opacity: 0.3}
+    classes: (option) ->
+      if @selectedOptionId
+        if @selectedOptionId == option.id
+          ['elevation-5']
+        else
+          ['poll-proposal-vote-form__button--not-selected', 'elevation-1']
+      else
+        ['elevation-1']
 
-    select: (option) ->
-      @selectedOptionId = option.id
-      @$nextTick => EventBus.$emit 'focusTextarea'
 </script>
 
 <template lang="pug">
-.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
+form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value="stance.processing")
   span(v-if="debug") {{stance}}
   v-layout(wrap)
     v-layout.mb-4(justify-space-around v-for='(optionGroup, index) in optionGroups' :key="index")
-      v-btn.poll-common-vote-form__button.poll-proposal-vote-form__button(color="accent" :style="style(option)" text outlined v-for='option in optionGroup' :key='option.id' @click='select(option)')
+      label.poll-common-vote-form__button.poll-proposal-vote-form__button.rounded-lg.pa-2(:class="classes(option)" v-for='option in optionGroup' :key='option.id')
+        input(type="radio" v-model="selectedOptionId" :value="option.id" name="name" :aria-label="$t('poll_' + stance.poll().pollType + '_options.' + option.name)")
         v-layout(column align-center)
           v-avatar(size="52px")
-            img(:src="'/img/' + optionImages[option.name] + '.svg'")
-          span(v-t="'poll_' + stance.poll().pollType + '_options.' + option.name")
-  poll-common-stance-reason.animated(:stance='stance', v-show='selectedOptionId', v-if='stance')
+            img(aria-hidden="true" :src="'/img/' + optionImages[option.name] + '.svg'")
+          span(aria-hidden="true" v-t="'poll_' + stance.poll().pollType + '_options.' + option.name")
+  poll-common-stance-reason(:stance='stance' v-if='stance')
   v-card-actions
     v-spacer
-    poll-common-show-results-button(v-if='!stance.castAt')
-    v-btn.poll-common-vote-form__submit(color="primary", @click='submit()', v-t="'poll_common.vote'" :disabled='!selectedOptionId')
+    v-btn.poll-common-vote-form__submit(color="primary" @click='submit()' v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'" :disabled='!selectedOptionId')
 </template>
 <style lang="sass">
+
+.poll-proposal-vote-form__button--not-selected
+  opacity: 0.3 !important
+
 .poll-proposal-vote-form__button
-	height: 112px !important
+  cursor: pointer
+  input[type=radio]
+    position: absolute
+    opacity: 0
+    width: 0
+    height: 0
 
 </style>

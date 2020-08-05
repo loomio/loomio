@@ -9,6 +9,8 @@ cmn:
     yearly: 每年
   current_plan_button:
     upgrade: 升级
+  subscription_status:
+    members: "成员 ({{count}})"
   loomio_tags:
     tags: 标签
     apply_tags: 应用标签
@@ -111,6 +113,7 @@ cmn:
     settings: '设置'
     help: '帮助'
     anonymous: 匿名
+    email_address: 邮件地址
     privacy:
       privacy: '隐私'
       public: '公开'
@@ -322,6 +325,7 @@ cmn:
     confirm_delete: '删除意见'
     in_reply_to: "回复給 {{name}}"
     write_a_comment: "发表意见"
+    post_comment: "文章评论"
     submit_button:
       label: '发表'
     private_privacy_notice: '您的意见只会被 {{groupName}} 群组的成员看到。'
@@ -529,6 +533,7 @@ cmn:
   formatting:
     bold: 粗体
     italicize: 斜体
+    blockquote: 引用
     strikethrough: 删除线
     underline: 下划线
     link: 插入链接
@@ -571,7 +576,6 @@ cmn:
     no_threads_here: 这里没有话题可以查看！
     search_threads: 搜寻话题……
     private_threads: 您需要是成员才能查看群组中的私密话题
-    no_more_threads: 这就是所有在此群组中的话题了！
     messages:
       privacy:
         members: '这个群组现在只对成员可见'
@@ -628,10 +632,6 @@ cmn:
     start_organization_heading: 新组织
     description_placeholder: '描述群组的目的让您的伙伴们知道他们为什么在这里。'
     privacy: '隐私'
-    group_privacy_is_open_description: "任何人都可以找到这个群组并要求加入。只有成员才能看见谁在群组里。所有的话题都是公开的。"
-    group_privacy_is_closed_description: "任何人都可以找到这个群组并要求加入。只有成员才能看见谁在群组里。所有的话题都是私密的。"
-    group_privacy_is_closed_public_threads_description: "任何人都可以找到这个群组并要求加入。只有成员才能看见谁在群组里。话题可以是公开或私密的。"
-    group_privacy_is_secret_description: "只有被邀请的成员才能找到此群组，并查看有谁在里面以及查看话题。"
     confirm_change_to_secret: "若您继续，所有在此群组及其子群组的话题都会变为非公开。"
     confirm_change_to_secret_subgroup: '若您继续，所有的话题都会变为非公开。'
     confirm_change_to_public: '若您继续，所有在此群组的话题都将会变为公开在网路上。'
@@ -783,19 +783,10 @@ cmn:
     set_password: 设置密码
     password_changed: 您的密码已更新
   deactivation_modal:
-    no_longer_group_member: '您将不会再被任何群组列为成员'
-    name_removed: '您在群组中作出的意见、提案与话题会留下，但您的名字将会从中移除。'
-    you_can_reactivate: "如果您想要的话，您可以在稍后重新启用您的帐号"
-  delete_user_modal:
-    irreversable: "警告：此操作无法撤销。如果您要继续的话："
     you_will_be_deleted: "您的使用者帐号，包含您的名字、电子邮件地址与其他可识别个人的资料，都将会从我们的系统中删除。"
-    submit: '是的，删除我的帐号'
-  deactivate_user_form:
-    aria_label: '确认冻结帐号'
-    title: '冻结帐号'
-    question: '您可以告诉我们为何您要冻结您的帐号吗？'
-    placeholder: '回答这个问题是可选的。您分享的任何信息都可以协助我们改善服务 :)'
-    submit: '冻结帐号'
+    name_removed: '您在群组中作出的意见、提案与话题会留下，但您的名字将会从中移除。'
+    no_longer_group_member: '您将不会再被任何群组列为成员'
+    you_can_reactivate: "如果您想要的话，您可以在稍后重新启用您的帐号"
   email_settings_page:
     account_deactivated: 您的帐号已被停用。您将不会再收到任何电子邮件。
     deactivate_header: 永远停止所有电子邮件
@@ -929,7 +920,6 @@ cmn:
   move_thread_form:
     aria_label: 移动话题
     title: 移动话题
-    body: '目的群组：'
     confirm: 移动话题
     confirm_change_to_private_thread: '{{groupName}} 是一个公开的群组，若您继续，这个话题将会变为公开。'
     messages:
@@ -949,6 +939,7 @@ cmn:
   decision_tools_card:
     proposal_title: 提案
   poll_common:
+    have_your_say: 拥有发言权
     load_more: 载入更多
     details: 详细内容
     view_all: 查看全部
@@ -1000,8 +991,6 @@ cmn:
       title: 投票者可以回应“如果需要的话”
   poll_common_close_form:
     close_poll: 关闭投票
-  poll_common_reopen_form:
-    helptext: 决策在您准备好之前就关闭了吗？重新开启以从群组处收集更多立场。
   poll_common_closing_at_field:
     invalid_date: 日期无效
   poll_common_votes_panel:

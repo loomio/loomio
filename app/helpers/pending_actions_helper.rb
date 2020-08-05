@@ -34,25 +34,20 @@ module PendingActionsHelper
 
   def consume_pending_membership(user)
     if pending_membership
-      if pending_guest_model
-        pending_guest_model.add_guest!(user, pending_membership.inviter)
-        pending_membership.destroy
-      else
-        MembershipService.redeem(membership: pending_membership, actor: user)
-      end
+      MembershipService.redeem(membership: pending_membership, actor: user)
     end
   end
 
   # memberships are valid even if not accepted, but this lets us know if people are using them
   def accept_pending_membership
-    group = @group or (@discussion && @discussion.group)
+    group = @group or (@discussion && @discussion.group) or (@poll && @poll.group)
     return unless group
     MembershipService.redeem_if_pending!(group.membership_for(current_user))
   end
 
   def consume_pending_discussion_reader(user)
-    if pending_discussion_reader
-      DiscussionReaderService.redeem(discussion_reader: pending_discussion_reader, actor: user)
+    if reader = pending_discussion_reader
+      DiscussionReaderService.redeem(discussion_reader: reader, actor: user)
     end
   end
 
@@ -76,14 +71,6 @@ module PendingActionsHelper
     Membership.pending.find_by(token: pending_membership_token) if pending_membership_token
   end
 
-  def pending_guest_model
-    if pending_membership_token && membership = Membership.find_by(token: pending_membership_token)
-      Discussion.find_by(guest_group_id: membership.group_id) || Poll.find_by(guest_group_id: membership.group_id)
-    else
-      nil
-    end
-  end
-
   def pending_discussion_reader_token
     params[:discussion_reader_token] || session[:pending_discussion_reader_token]
   end
@@ -99,7 +86,6 @@ module PendingActionsHelper
   def pending_stance
     Stance.redeemable.find_by(token: pending_stance_token) if pending_stance_token
   end
-
 
   def pending_identity
     Identities::Base.find_by(id: session[:pending_identity_id]) if session[:pending_identity_id]

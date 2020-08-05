@@ -46,7 +46,7 @@ v-main
     v-card.contact-form(v-show='!submitted')
       submit-overlay(:value='message.processing')
       v-card-title
-        h1.headline(v-t="'contact_message_form.title'")
+        h1.headline(tabindex="-1" v-t="'contact_message_form.title'")
       v-card-text
         p(v-html="$t('contact_message_form.read_the_manual', { link: helpLink })")
         p
@@ -71,5 +71,5 @@ v-main
 
     v-card.contact-form__success(v-show='submitted')
       v-card-title
-        h1.headline(v-t="$t('contact_message_form.success', { name: message.name })")
+        h1.headline(tabindex="-1" v-t="$t('contact_message_form.success', { name: message.name })")
 </template>

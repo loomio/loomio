@@ -151,6 +151,7 @@ lt:
   notifications:
     header: "Pranešimai"
   discussion_form:
+    start_thread: Kurti giją
     new_discussion_title: 'Kurti naują giją'
     edit_discussion_title: 'Redaguoti giją'
     group_label: 'Grupė'
@@ -280,6 +281,7 @@ lt:
     poll_title: Apklausa
     meeting_title: Laiko apklausa
   poll_common:
+    have_your_say: Tarkite savo žodį
     save_changes: Įrašyti
   poll_common_attachment_form:
     label: Priedai

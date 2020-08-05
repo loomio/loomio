@@ -11,6 +11,8 @@ ar:
     trial: محاكمة
   current_plan_button:
     upgrade: تحديث
+  subscription_status:
+    members: "أعضاء"
   loomio_tags:
     tags: الوسوم
     apply_tags: تطبيق الوسوم
@@ -44,6 +46,7 @@ ar:
     settings: 'الإعدادات'
     help: 'المساعدة'
     anonymous: مجهول
+    email_address: عنوان البريد الإلكتروني
     privacy:
       privacy: 'الخصوصية'
       public: 'عام'
@@ -71,6 +74,7 @@ ar:
       back: 'عودة'
       close: 'مغلق'
       save: 'حفظ'
+      move: 'نقل'
       save_changes: 'حفظ التغييرات'
       update_settings: 'تحديث الإعدادات'
       reply: 'رد'
@@ -190,6 +194,7 @@ ar:
     confirm_delete_message: 'هل أنت متأكد من أنك تريد حذف هذا التعليق؟'
     confirm_delete: 'حذف التعليق'
     in_reply_to: "إجابة على {{name}}"
+    post_comment: "أكتب تعليقا"
     submit_button:
       label: 'نشر'
     private_privacy_notice: 'تعليقك سيظهر فقط لأعضاء مجموعة {{groupName}} '
@@ -257,6 +262,7 @@ ar:
   discussion_fork_actions:
     move: نقل
   discussion_form:
+    start_thread: إبدأ موضوعاً
     messages:
       created: 'تم بدء الموضوع'
       updated: 'تم تحديث الموضوع'
@@ -367,10 +373,6 @@ ar:
       private_to_group: 'سيكون اسم ووصف المجموعة ظاهرين لأعضاء المجموعة فقط.'
       private_to_parent_members: 'اسم ووصف المجموعة سيكونون ظاهرين لأعضاء {{parent}}'
     privacy: 'الخصوصية'
-    group_privacy_is_open_description: "يمكن لأي شخص العثور على المجموعة وطلب الانضمام.  يمكن للأعضاء فقط رؤية من في المجموعة.  جميع المواضيع العامة"
-    group_privacy_is_closed_description: "يمكن لأي شخص العثور على المجموعة وطلب الانضمام.  يمكن للأعضاء فقط رؤية من في المجموعة.  جميع المواضيع خاصة"
-    group_privacy_is_closed_public_threads_description: "يمكن لأي شخص العثور على المجموعة وطلب الانضمام.  يمكن للأعضاء فقط رؤية من في المجموعة.  يمكن أن تكون المواضيع عامة أو خاصة."
-    group_privacy_is_secret_description: "يمكن فقط للأعضاء المدعوين العثور على المجموعة ومعرفة من فيها ومشاهدة المواضيع"
     confirm_change_to_secret: "في حالة الاستمرار، سيتم تحويل كل الموضوعات في المجموعة و المجموعات الفرعية لموضوعات خاصة."
     confirm_change_to_secret_subgroup: 'في حالة الاستمرار سيتم تحويل كافة المواضيع إلى خاصة.'
     confirm_change_to_public: 'في حالة الاستمرار سيتم تحويل كافة المواضيع إلى عامة على الشبكة.'
@@ -486,9 +488,6 @@ ar:
     email_label: 'البريد الإلكتروني'
     locale_label: 'اللغة'
     update_profile: 'تحديث الملف الشخصي'
-  deactivate_user_form:
-    title: 'إيقاف الحساب'
-    submit: 'إيقاف الحساب'
   email_settings_page:
     header: إعدادات الإشعار
     daily_summary_label: الرسالة الكترونية للملخص اليومي
@@ -587,7 +586,6 @@ ar:
       success: تم حذف الموضوع
   move_thread_form:
     title: نقل الموضوع
-    body: 'المجموعة المقصودة:'
     confirm: 'نقل الموضوع '
     confirm_change_to_private_thread: '{{groupName}} هي مجموعة مفتوحة. إن اخترت الاستمرار، سيتم تحويل هذا الموضوع إلى عام.'
     messages:
@@ -623,6 +621,7 @@ ar:
     poll_title: استطلاع رأي
     meeting_title: استطلاع الوقت
   poll_common:
+    have_your_say: 'شارك برأيك '
     reason: السبب
     results: النتائج
     responses: استجابات
@@ -670,6 +669,7 @@ ar:
     no_thanks: لا شكرًا
   auth_form:
     sign_in: تسجيل الدخول
+    enter_your_name: ادخل اسمك
     more_providers: المزيد
     invalid_password: "عذرًا ، كلمة المرور هذه لا تتطابق مع كلمة المرور المسجلة لدينا"
     email_placeholder: you@example.com

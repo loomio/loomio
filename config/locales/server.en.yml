@@ -481,6 +481,7 @@ en:
       poll_option_added: '%{actor} added options to: %{title}'
       poll_option_added_author: '%{actor} added options to: %{title}'
       outcome_created: '%{actor} shared a %{poll_type} outcome: %{title}'
+      outcome_created_author: 'You shared a %{poll_type} outcome: %{title}'
       outcome_announced: '%{actor} shared a %{poll_type} outcome: %{title}'
       stance_created: "%{actor} voted on: %{title}"
       stance_created_author: "Please verify your vote on: %{title}"
@@ -498,6 +499,7 @@ en:
       poll_option_added: '<strong>%{actor}</strong> added options to: %{title}'
       poll_option_added_author: '<strong>%{actor}</strong> added options to: %{title}'
       outcome_created: '<strong>%{actor}</strong> shared a %{poll_type} outcome.'
+      outcome_created_author: 'You shared a %{poll_type} outcome.'
       outcome_announced: '<strong>%{actor}</strong> shared a %{poll_type} outcome.'
       stance_created: "<strong>%{actor}</strong> voted on: %{title}"
       user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
@@ -507,9 +509,6 @@ en:
       voted: '<strong>%{participant}</strong>:'
 
   comment_by: Comment by %{comment_author}
-
-  personal_data:
-    title: Personal data of %{user_name} on %{host_name}
 
   notified:
     no_matches_found: "No results found matching '%{query}'"

@@ -1,4 +1,6 @@
 mi:
+  subscription_status:
+    members: "Ngā Mema"
   loomio_tags:
     name_label: Ingoa
   reactions:
@@ -23,6 +25,7 @@ mi:
     decisions: 'Ngā whakatau'
     settings: 'Ngā kōwhiringa'
     help: 'Awhina mai'
+    email_address: Wāhitau Īmēra
     privacy:
       privacy: 'Matatapunga'
       public: 'Matawhanui'

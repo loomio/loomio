@@ -91,6 +91,7 @@ export default
         @searchResults = orderBy(chain, 'rank', 'desc')
       else
         chain = Records.discussions.collection.chain()
+        chain = chain.find(discardedAt: null)
         chain = chain.find(groupId: {$in: @groupIds})
 
         switch @$route.query.t
@@ -173,8 +174,8 @@ div.discussions-panel(v-if="group")
     //- v-select(solo hide-details flat flex-shrink :items="['Open']").mr-2
     //- v-select(solo hide-details flat flex-shrink :items="['All tags']").mr-2
     v-menu
-      template(v-slot:activator="{ on }")
-        v-btn.mr-2.text-lowercase.discussions-panel__filters(v-on="on" text)
+      template(v-slot:activator="{ on, attrs }")
+        v-btn.mr-2.text-lowercase.discussions-panel__filters(v-on="on" v-bind="attrs" text)
           span(v-t="{path: filterName($route.query.t), args: {count: unreadCount}}")
           v-icon mdi-menu-down
       v-list(dense)
@@ -190,8 +191,8 @@ div.discussions-panel(v-if="group")
         //-   v-list-item-title(v-t="'change_volume_form.simple.loud'")
 
     v-menu
-      template(v-slot:activator="{ on }")
-        v-btn.mr-2.text-lowercase(v-on="on" text)
+      template(v-slot:activator="{ on, attrs }")
+        v-btn.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)
           span(v-if="$route.query.tag") {{$route.query.tag}}
           span(v-else v-t="'loomio_tags.all_tags'")
           v-icon mdi-menu-down
@@ -201,7 +202,7 @@ div.discussions-panel(v-if="group")
           v-list-item-title(v-t="'loomio_tags.all_tags'")
         v-list-item(v-for="tag in groupTags" :key="tag" @click="routeQuery({tag: tag})")
           v-list-item-title {{tag}}
-    v-text-field.mr-2.flex-grow-1(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_threads', {name: group.name})" append-icon="mdi-magnify")
+    v-text-field.mr-2.flex-grow-1(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_threads', {name: group.name})" append-icon="mdi-magnify" :loading="searchLoader.loading")
     v-btn.discussions-panel__new-thread-button(@click='openStartDiscussionModal()' color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
 
   v-card.discussions-panel(outlined)

@@ -3,6 +3,8 @@ ga_IE:
     free: Saor in aisce
   current_plan_button:
     upgrade: Uasghrádaigh
+  subscription_status:
+    members: "Comhaltaí"
   loomio_tags:
     tags: Clibeanna
     apply_tags: Cuir na clibeanna i bhfeidhm
@@ -61,6 +63,7 @@ ga_IE:
     settings: 'Socruithe'
     help: 'Cabhair'
     anonymous: Anaithnid
+    email_address: Seoladh ríomhphoist
     privacy:
       privacy: 'Príobháideachas'
       public: 'Poiblí'
@@ -92,6 +95,7 @@ ga_IE:
       close: 'Dún'
       reopen: 'Athoscail é'
       save: 'Taisc'
+      move: 'Bog é'
       save_changes: 'Taisc na hathruithe'
       update_settings: 'Nuashonraigh na socruithe'
       reply: 'Freagair é'
@@ -191,6 +195,7 @@ ga_IE:
     cancel_reply: 'Cuir an freagra ar ceal'
     confirm_delete_message: 'An bhfuil tú cinnte go dteastaíonn uait an trácht seo a scriosadh?'
     confirm_delete: 'Scrios an trácht'
+    post_comment: "Foilsigh trácht"
     submit_button:
       label: 'Foilsigh é'
   sidebar:
@@ -229,6 +234,7 @@ ga_IE:
   discussion_fork_actions:
     move: Bog é
   discussion_form:
+    start_thread: Cur snáithe ar bun
     messages:
       created: 'Tosaíodh snáithe'
       updated: 'Nuashonraíodh an snáithe'
@@ -397,9 +403,6 @@ ga_IE:
     use_gravatar: 'Bain feidhm as Gravatar'
   deactivation_modal:
     introduction: 'Nuair a dhíghníomhachtaíonn tú do chuntas:'
-  deactivate_user_form:
-    title: 'Díghníomhachtaigh an cuntas'
-    submit: 'Díghníomhachtaigh an cuntas'
   email_settings_page:
     daily_summary_label: Ríomhphost le hachoimre laethúil
     announcement_label: Fógraí
@@ -504,6 +507,7 @@ ga_IE:
     count_title: Dearbháil
     poll_title: Vótáil
   poll_common:
+    have_your_say: Abair leat
     save_changes: Taisc
   poll_common_attachment_form:
     label: Ceangaltáin

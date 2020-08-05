@@ -3,6 +3,8 @@ ko:
     free: 무료
   current_plan_button:
     upgrade: 업그레이드
+  subscription_status:
+    members: "멤버"
   loomio_tags:
     tags: 태그
     apply_tags: 태그 적용
@@ -31,6 +33,7 @@ ko:
     groups: '그룹'
     threads: '토론 주제'
     help: '도움말'
+    email_address: 이메일 주소
     privacy:
       privacy: '개인정보'
       public: '공개'
@@ -55,6 +58,7 @@ ko:
       back: '이전'
       close: '닫기'
       save: '저장'
+      move: '이동'
       save_changes: '수정 저장하기'
       update_settings: '설정 저장'
       reply: '답글'
@@ -161,6 +165,7 @@ ko:
     delete_comment: '댓글 삭제'
     cancel_reply: '답변 취소'
     confirm_delete_message: '댓글을 지우시겠습니까?'
+    post_comment: "댓글달기"
     submit_button:
       label: '저장하기'
     private_privacy_notice: '작성하신 댓글은 {{groupName}} 그룹만 볼 수 있습니다.'
@@ -208,6 +213,7 @@ ko:
     move: 이동
   discussion_form:
     aria_label: '쓰레드 양식'
+    start_thread: 쓰레드를 시작합니다
     messages:
       created: '쓰레드가 시작되었습니다.'
       updated: '쓰레드가 수정되었습니다.'
@@ -436,10 +442,6 @@ ko:
     introduction: '계정 비활성화된 때 '
     no_longer_group_member: '당신은 모든 그룹에서 탈퇴됩니다.'
     submit: '네, 비활성화하겠습니다.'
-  deactivate_user_form:
-    aria_label: '계정 비활성화가 확인됨.'
-    title: '계정 비활성화'
-    submit: '계정 비활성화'
   email_settings_page:
     daily_summary_label: 일별 요약 이메일
     on_participation_description: "모둠에 참여하면, 더욱 많은 행동들이 즉시 당신에게 이메일로 전송됩니다. "
@@ -525,7 +527,6 @@ ko:
       success: 쓰레드가 삭제되었습니다.
   move_thread_form:
     title: 쓰레드 이동
-    body: '이동할 그룹'
     confirm: 쓰레드 이동
     confirm_change_to_private_thread: '{{groupName}}은 공개 그룹입니다. 이 주제도 공개됩니다. 계속 하시겠습니까?'
     messages:
@@ -552,6 +553,7 @@ ko:
     messages:
       reload: '다시 불러오기'
   poll_common:
+    have_your_say: 한말씀
     save_changes: 저장
   discussions_panel:
     open: 진행중

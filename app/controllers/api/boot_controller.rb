@@ -4,7 +4,7 @@ class API::BootController < API::RestfulController
   end
 
   def user
-    flash[:notice] = "Loomio error! Hold shift key and press refresh button."
+    flash[:notice] = "Outdated version detected! Loomio will not work! Hold shift key and press refresh button, or clear your cache to fix this."
     render json: user_payload
   end
 

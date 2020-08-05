@@ -563,6 +563,7 @@ nb_NO:
     meeting_title: Tidspunkt
     ranked_choice_title: Rangering
   poll_common:
+    have_your_say: Si det du vil
     save_changes: Lagre
   discussions_panel:
     open: Åpen

@@ -19,6 +19,7 @@ import PollCommonStartForm from '@/components/poll/common/start_form'
 import AnnouncementForm from '@/components/announcement/form'
 import AnnouncementHistory from '@/components/announcement/history'
 import MoveThreadForm from '@/components/thread/move_thread_form'
+import PollCommonMoveForm from '@/components/poll/common/move_form'
 import PollCommonAddOptionModal from '@/components/poll/common/add_option_modal'
 import RevisionHistoryModal from '@/components/revision_history/modal'
 import TagsModal from '@/components/tags/modal'
@@ -32,6 +33,7 @@ import SeenByModal from '@/components/thread/seen_by_modal'
 import ExportDataModal from '@/components/group/export_data_modal'
 import InstallSamlProviderModal from '@/components/install_saml_provider/modal'
 import GroupSurvey from '@/components/group/survey'
+import AddPollToThreadModal from '@/components/poll/add_to_thread_modal'
 
 export default
   components: {
@@ -49,6 +51,7 @@ export default
     ChangePasswordForm
     PollCommonOutcomeModal
     PollCommonReopenModal
+    PollCommonMoveForm
     ArrangementForm
     AnnouncementForm
     AnnouncementHistory
@@ -67,6 +70,7 @@ export default
     ExportDataModal
     InstallSamlProviderModal
     GroupSurvey
+    AddPollToThreadModal
   }
 
   data: ->
@@ -85,6 +89,9 @@ export default
       @isOpen = true
       @componentName = opts.component
       @componentProps = opts.props
+      setTimeout =>
+        if @$refs.modalLauncher && document.querySelector('.modal-launcher h1')
+          document.querySelector('.modal-launcher h1').focus()
 
     doCloseModal: -> @isOpen = false
 
@@ -96,6 +103,6 @@ export default
 </script>
 
 <template lang="pug">
-v-dialog(v-model="isOpen" :max-width="maxWidth" persistent :fullscreen="$vuetify.breakpoint.xs")
+v-dialog.modal-launcher(ref="modalLauncher" v-model="isOpen" :max-width="maxWidth" persistent :fullscreen="$vuetify.breakpoint.xs")
   component(:is="componentName" :key="componentKey()" v-bind="componentProps" :close="closeModal")
 </template>

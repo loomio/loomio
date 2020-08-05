@@ -7,6 +7,7 @@ describe API::DiscussionsController do
   let(:another_user) { create :user }
   let(:group) { create :group }
   let(:discussion) { create_discussion group: group }
+  let(:discarded_discussion) { create_discussion group: group, title: "Discarded Discussion" }
   let(:poll) { create :poll, discussion: discussion }
   let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
   let(:another_discussion) { create_discussion }
@@ -27,6 +28,7 @@ describe API::DiscussionsController do
 
   before do
     CommentService.create(comment: comment, actor: comment.author)
+    discarded_discussion.update(discarded_at: Time.now)
     group.add_admin! user
   end
 
@@ -149,6 +151,12 @@ describe API::DiscussionsController do
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[users groups discussions])
         expect(json['discussions'][0].keys).to include *(%w[id key title description last_activity_at created_at updated_at items_count private author_id group_id ])
+      end
+
+      it 'does not return a discarded discussion' do
+        get :show, params: { id: discarded_discussion.key }
+        json = JSON.parse(response.body)
+        expect(json['discussions']).to eq nil
       end
 
       it 'displays discussion to guest group members' do
@@ -295,6 +303,7 @@ describe API::DiscussionsController do
           json = JSON.parse(response.body)
           discussions = json['discussions'].map { |v| v['id'] }
           expect(discussions).to_not include cant_see_me.id
+          expect(discussions).to_not include discarded_discussion.id
         end
 
         it 'can display content from a specified public group' do
@@ -880,4 +889,12 @@ describe API::DiscussionsController do
     end
   end
 
+  describe 'search' do
+    it 'does not return discarded discussions' do
+      get :search, params: { group_id: group.id, q: "Discarded" }
+      json = JSON.parse(response.body)
+      discussion_ids = json['discussions'].map { |d| d['id'] }
+      expect(discussion_ids).to_not include discarded_discussion.id
+    end
+  end
 end

@@ -27,6 +27,8 @@ class DeactivateUserWorker
                              reset_password_sent_at: nil,
                              unsubscribe_token: nil,
                              detected_locale: nil,
+                             email_verified: false,
+                             legal_accepted_at: false,
                              deactivated_at: Time.now)
 
       Identities::Base.where(user_id: user_id).delete_all

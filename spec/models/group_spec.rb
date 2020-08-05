@@ -4,6 +4,7 @@ describe Group do
   let(:user) { create(:user) }
   let(:group) { create(:group) }
   let(:discussion) { create :discussion, group: group }
+  let(:discarded_discussion) { create :discussion, group: group, discarded_at: Time.now }
 
   context 'default cover photo' do
 
@@ -121,6 +122,20 @@ describe Group do
                         parent: create(:group),
                         parent_members_can_see_discussions: true) }.to_not raise_error
       end
+    end
+  end
+
+  describe 'cached discussions counts' do
+    before do
+      discussion
+      discarded_discussion
+    end
+
+    it 'does not count a discarded discussion' do
+      expect(group.public_discussions_count).to eq 0
+      expect(group.open_discussions_count).to eq 1
+      expect(group.closed_discussions_count).to eq 0
+      expect(group.discussions_count).to eq 1
     end
   end
 

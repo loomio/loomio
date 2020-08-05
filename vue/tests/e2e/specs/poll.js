@@ -249,10 +249,7 @@ module.exports = {
 
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
-    page.click('.show-results-button')
     page.expectText('.poll-common-action-panel__anonymous-message', 'Votes are anonymous')
-
-    // show the votes are anonymous on the thread page and the poll page
   },
 
   'can_start_a_results_hidden_until_closed_poll': (test) => {
@@ -317,6 +314,19 @@ module.exports = {
     page.fillInAndEnter('.poll-poll-form__add-option-input input', 'Yet another option')
     page.click('.poll-add-option__submit')
     page.expectFlash('New options added')
+  },
+
+  'can_add_standalone_poll_to_thread': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/test_poll_scenario?poll_type=proposal&scenario=poll_created&standalone=1&admin=1')
+    page.click('.action-menu')
+    page.click('.action-dock__button--add_poll_to_thread')
+    page.fillIn('.add-to-thread-modal__search input', "Some")
+    page.pause(1000)
+    page.click('.v-autocomplete__content .v-list-item__content')
+    page.click('.add-to-thread-modal__submit')
+    page.expectFlash("Success, proposal added to thread!")
   },
 
   // 'can_edit_a_vote': (test) => {

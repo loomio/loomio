@@ -40,8 +40,8 @@ module Ability::Discussion
       discussion.admins.exists?(user.id)
     end
 
-    can [:destroy, :move, :move_comments], ::Discussion do |discussion|
-      discussion.author == user or discussion.admins.exists?(user.id)
+    can [:destroy, :move, :move_comments, :discard], ::Discussion do |discussion|
+      discussion.discarded_at.nil? && discussion.author == user or discussion.admins.exists?(user.id)
     end
 
     can :fork, ::Discussion do |discussion|

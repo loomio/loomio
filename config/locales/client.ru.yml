@@ -22,6 +22,8 @@ ru:
   current_plan_button:
     upgrade: Обновить
     trial_expired: Срок вашей пробной версии истек. Обновите, чтобы продолжить использовать Loomio.
+  subscription_status:
+    members: "Участники"
   loomio_tags:
     tags: Метки
     apply_tags: Применить метки
@@ -105,6 +107,7 @@ ru:
     settings: 'Настройки'
     help: 'Помощь'
     anonymous: Анонимный
+    email_address: Электронный адрес
     privacy:
       privacy: 'Конфиденциальность'
       public: 'Публичная'
@@ -138,6 +141,7 @@ ru:
       close: 'Закрыть'
       reopen: 'Открыть вновь'
       save: 'Сохранить'
+      move: 'Переместить'
       save_changes: 'Сохранить изменения'
       update_settings: 'Обновить настройки'
       reply: 'Ответить'
@@ -277,6 +281,7 @@ ru:
     confirm_delete: 'Удалить комментарий'
     in_reply_to: "Ответить: {{name}}"
     write_a_comment: "Напишите комментарий..."
+    post_comment: "Опубликовать"
     submit_button:
       label: 'Опубликовать'
     public_privacy_notice: 'Ваш комментарий будет виден всем пользователям сети'
@@ -542,6 +547,8 @@ ru:
     meeting_title: Голосование за время встречи
     ranked_choice_title: Порядок ранжированния
   poll_common:
+    vote_now: Голосовать!
+    have_your_say: Выразить свое мнение
     reason: Причина
     results: Результаты
     responses: Ответы
@@ -577,6 +584,7 @@ ru:
   poll_common_subscribe_form:
     subscribe: Подписаться
   auth_form:
+    enter_your_name: Введите свое имя
     invalid_password: "Извините, этот пароль не совпадает с тем, который у нас есть в файле"
     email_placeholder: You@example.com
     name_placeholder: Ваше имя

@@ -31,13 +31,12 @@ pl:
   subscription_status:
     plan: "Plan"
     state: "Status"
+    members: "Członkowie"
     active_members: "Aktywni członkowie"
     max_threads: "Maksymalna liczba wątków"
     max_members: "Maksymalna liczba członków"
     expires_at: "Wygasa"
     renews_at: "Odnawia"
-    referral_code: "Chargify kod polecający"
-    chargify_link: "Portal rozliczeniowy Chargify"
     referral_code_help: "Daj przyjacielowi zniżkę, zdobądź trochę kredytów!"
   loomio_tags:
     all_tags: Wszystkie tagi
@@ -145,6 +144,7 @@ pl:
     help: 'Pomoc'
     anonymous: Anonimowo
     required: Wymagane
+    email_address: Adres e-mail
     privacy:
       privacy: 'Prywatność'
       public: 'Publiczna'
@@ -180,6 +180,7 @@ pl:
       close: 'Zamknij'
       reopen: 'Otworzyć ponownie'
       save: 'Zapis'
+      move: 'Przenieś'
       save_changes: 'Zapisanie zmian'
       update_settings: 'Zaktualizuj ustawienia'
       reply: 'Odpowiedź'
@@ -521,6 +522,7 @@ pl:
     start_new_thread: Lub, załóż nowy wątek
   discussion_form:
     aria_label: 'Formularz wątku'
+    start_thread: Rozpoczęcie wątku
     messages:
       created: 'Wątek rozpoczęty'
       updated: 'Wątek zmieniony'
@@ -660,6 +662,7 @@ pl:
   formatting:
     bold: Pogrubienie
     italicize: Kursywa
+    blockquote: Cytat
     strikethrough: Przekreślenie
     underline: Podkreśnie
     link: Wstaw link
@@ -758,7 +761,6 @@ pl:
     no_threads_here: Nie ma tu żadnych wątków!
     search_threads: Szukaj wątków...
     private_threads: Musisz być w tej grupie, by widzieć jej prywatne wątki.
-    no_more_threads: To już wszystkie wątki w tej grupie!
     messages:
       privacy:
         members: 'Ta grupa jest teraz widoczna tylko dla członków'
@@ -859,10 +861,6 @@ pl:
       private_to_group: 'Imię i opis będą widoczne tylko dla członków.'
       private_to_parent_members: 'Imię i opis będą widoczne dla członków {{parent}}'
     privacy: 'Prywatność'
-    group_privacy_is_open_description: "Każdy może znaleźć grupę i poprosić o dołączenie. Tylko członkowie mogą zobaczyć, kto jest w grupie. Wszystkie wątki są publiczne."
-    group_privacy_is_closed_description: "Każdy może znaleźć grupę i poprosić o dołączenie. Tylko członkowie mogą zobaczyć, kto jest w grupie. Wszystkie wątki są prywatne."
-    group_privacy_is_closed_public_threads_description: "Każdy może znaleźć grupę i poprosić o dołączenie. Tylko członkowie mogą zobaczyć, kto jest w grupie. Wątki mogą być publiczne lub prywatne."
-    group_privacy_is_secret_description: "Tylko zaproszeni członkowie mogą znaleźć grupę, zobaczyć, kto jest w niej i zobaczyć wątki."
     confirm_change_to_secret: "Jeśli przejdziesz dalej, wszystkie wątki w tej grupie i jej podgrupach zostaną ustawione jako prywatne."
     confirm_change_to_secret_subgroup: 'Jeśli przejdziesz dalej, wszystkie wątki staną się prywatne.'
     confirm_change_to_public: 'Jeśli przejdziesz dalej, wszystkie wątki w tej grupie zostaną upublicznione w sieci.'
@@ -1067,22 +1065,12 @@ pl:
   deactivation_modal:
     aria_label: 'Dezaktywuj konto użytkownika'
     introduction: 'Po dezaktywacji konta:'
-    no_longer_group_member: 'Nie będziesz już wyświetlany jako członek żadnej grupy'
+    you_will_be_deleted: "Twoje konto użytkownika, w tym imię i nazwisko, adres e-mail i inne dane osobowe, zostaną usunięte z naszych systemów."
     name_removed: 'Komentarze, propozycje i dyskusje, które wykonałeś, pozostaną, ale Twoje imię i nazwisko zostanie z nich usunięte'
+    no_longer_group_member: 'Nie będziesz już wyświetlany jako członek żadnej grupy'
     no_emails: 'Nie będziesz już otrzymywać powiadomień e-mail'
     you_can_reactivate: "Możesz ponownie aktywować swoje konto później, jeśli chcesz"
     submit: 'Tak, chcę dezaktywować'
-  delete_user_modal:
-    title: 'Usuń konto użytkownika'
-    irreversable: "OSTRZEŻENIE: Nie można tego cofnąć. Jeśli będziesz kontynuować:"
-    you_will_be_deleted: "Twoje konto użytkownika, w tym imię i nazwisko, adres e-mail i inne dane osobowe, zostaną usunięte z naszych systemów."
-    submit: 'Tak, usuń moje konto'
-  deactivate_user_form:
-    aria_label: 'Dezaktywuj potwierdzenie konta'
-    title: 'Dezaktywuj konto'
-    question: 'Czy powiedziałbyś nam, dlaczego się dezaktywujesz?'
-    placeholder: 'Odpowiedź na to pytanie jest opcjonalna. Wszelkie udostępniane informacje pomogą nam się poprawić :)'
-    submit: 'Dezaktywuj konto'
   email_settings_page:
     header: Ustawienia powiadomień
     account_deactivated: Twoje konto zostało dezaktywowane. Nigdy nie będziesz otrzymywać żadnych e-maili.
@@ -1266,7 +1254,6 @@ pl:
   move_thread_form:
     aria_label: Przenieś wątek
     title: Przenieś wątek
-    body: 'Grupa docelowa:'
     confirm: Przenieś wątek
     confirm_change_to_private_thread: '{{groupName}} to grupa otwarta. Jeśli będziesz kontynuować, ten wątek zostanie opublikowany.'
     messages:
@@ -1326,10 +1313,11 @@ pl:
     meeting_title: Ankieta datowa
     ranked_choice_title: Wybór rankingowy
   poll_common:
+    vote_now: Głosuj teraz
+    have_your_say: Wypowiedz się
     your_response: Twoja odpowiedź
     change_your_response: Edytuj odpowiedź
     reason: Powód
-    reason_placeholder: Jakieś dodatkowe komentarze?
     message: Wiadomość
     results: Wyniki
     responses: Odpowiedzi
@@ -1353,7 +1341,6 @@ pl:
     publish_poll: Udostępnij ankietę
     view_all: Pokaż wszystkie
     save_changes: Zapisz
-    change_vote: Zmień głos
     max_score: Maksymalny wynik
     min_score: Minimalny wynik
     too_long: Za długo

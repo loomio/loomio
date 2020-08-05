@@ -6,7 +6,6 @@ class Poll < ApplicationRecord
   include HasMentions
   include MessageChannel
   include SelfReferencing
-  include UsesOrganisationScope
   include HasMailer
   include Reactable
   include HasCreatedEvent
@@ -74,6 +73,7 @@ class Poll < ApplicationRecord
   scope :search_for, ->(fragment) { where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
   scope :lapsed_but_not_closed, -> { active.where("polls.closing_at < ?", Time.now) }
   scope :active_or_closed_after, ->(since) { where("closed_at IS NULL OR closed_at > ?", since) }
+  scope :in_organisation, -> (group) { where(group_id: group.id_and_subgroup_ids) }
 
   scope :with_includes, -> { includes(
     :documents,
@@ -321,6 +321,7 @@ class Poll < ApplicationRecord
   end
 
   def set_stances_in_discussion
+    return unless has_attribute?(:stances_in_discussion) # allow older migrations to pass
     self.stances_in_discussion = false if anonymous or hide_results_until_closed
   end
 

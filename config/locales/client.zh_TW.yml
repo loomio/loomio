@@ -31,14 +31,16 @@ zh_TW:
   subscription_status:
     plan: "方案"
     state: "狀態"
+    members: "成員 ({{count}})"
     active_members: "活躍成員"
     max_threads: "最大討論串"
     max_members: "最大成員"
     expires_at: "過期"
     renews_at: "續訂"
-    referral_code: "儲值推薦代碼"
-    chargify_link: "儲值計費入口"
+    referral_code: "推薦碼"
+    chargify_link: "計費入口"
     referral_code_help: "給朋友折扣，也為您贏得一些可用餘額！"
+    manage_payment_details: "管理付款詳細資訊"
   loomio_tags:
     all_tags: 所有標籤
     tags: 標籤
@@ -145,6 +147,7 @@ zh_TW:
     help: '教學文件'
     anonymous: 匿名
     required: 必要
+    email_address: 電子郵件地址
     privacy:
       privacy: '隱私權'
       public: '公開'
@@ -180,11 +183,13 @@ zh_TW:
       close: '關閉'
       reopen: '重新開啟'
       save: '儲存'
+      move: '移動'
       save_changes: '儲存變更'
       update_settings: '更新設定'
       reply: '回覆'
       edit: '編輯'
       remove: '移除'
+      undo_remove: '撤銷移除'
       like: '讚'
       unlike: '收回讚'
       update: '更新'
@@ -384,6 +389,7 @@ zh_TW:
       replied: '{{name}} 回覆通知'
       updated: '意見已更新'
       destroyed: '意見已刪除'
+      removed: '留言已移除'
     say_something: 留下些想法⋯
     edit_comment: '編輯意見'
     delete_comment: '刪除意見'
@@ -392,6 +398,7 @@ zh_TW:
     confirm_delete: '刪除意見'
     in_reply_to: "回覆給 {{name}}"
     write_a_comment: "撰寫評論……"
+    post_comment: "留下意見"
     submit_button:
       label: '貼文'
     private_privacy_notice: '您的意見只會被 {{groupName}} 群組的成員看到。'
@@ -442,6 +449,8 @@ zh_TW:
       comments: '意見'
     sign_in: '登入'
     toggle_sidebar: '切換側邊欄'
+    open_sidebar: '開啟側邊欄'
+    close_sidebar: '關閉側邊欄'
     logo_title: '首頁'
     group_and_subgroups: '{{group}} 與子群組'
   user_dropdown:
@@ -522,6 +531,7 @@ zh_TW:
     start_new_thread: 或開始新討論串
   discussion_form:
     aria_label: '討論串表單'
+    start_thread: 啟動討論串
     messages:
       created: '討論串已啟動'
       updated: '討論串已更新'
@@ -614,6 +624,8 @@ zh_TW:
     flash:
       success: '已傳送 {{count}} 個通知'
   action_dock:
+    actions_menu: 動作選單
+    more_actions: 更多動作
     react: 反應
     notify: 通知
     add_resource: 新增附件
@@ -625,6 +637,7 @@ zh_TW:
     invite_guests: 邀請來賓
     translate_thread: 翻譯內容
     edit_poll: 編輯投票
+    edit_poll_type: "編輯 {{pollType}}"
     move_items: 移動項目
     announce_poll: 邀請夥伴來投票
     announce_poll_active: （尚未邀請任何人）
@@ -658,9 +671,14 @@ zh_TW:
     delete_thread: 刪除討論串
     notification_history: 通知歷史
     move_item: 移動項目
+    add_poll_to_thread: 新增至討論串
   formatting:
+    formatting_tools: 文字格式化工具
+    expand: 顯示更多格式化工具
+    collapse: 顯示較少格式化工具
     bold: 粗體
     italicize: 義大利斜體
+    blockquote: 引用
     strikethrough: 刪除線
     underline: 底線
     link: 插入連結
@@ -705,6 +723,7 @@ zh_TW:
     image_size_helptext: '理想的圖片尺寸是 100x100 像素'
     upload_success: '成功更新圖示'
   join_group_button:
+    not_a_member: "您目前不是此群組的成員。"
     join_group: 加入群組
     membership_requested: 已申請成員資格
     messages:
@@ -743,6 +762,7 @@ zh_TW:
     you_and_name_and_count_more: "您、{{name}} 與 {{count}} 更多"
     name_and_count_more: "{{name}} 與 {{count}} 更多"
   context_panel:
+    aria_intro: "{{author}} 的討論串內容"
     thread_status:
       pinned: "這個討論串已被釘選。它將會保留在群組討論串清單的頂部供所有使用者閱讀。"
       closed: "這個討論串已經關閉。它將不會再出現在儀表板上，並將會在群組頁面中列在「已關閉」下。"
@@ -767,7 +787,8 @@ zh_TW:
     no_threads_here: 這裡沒有討論串可以檢視！
     search_threads: 搜尋討論串……
     private_threads: 您需要是成員才能檢視群組中的私密討論串
-    no_more_threads: 這就是所有在此群組中的討論串了！
+    no_more_threads: 無更多討論串可載入
+    view_closed_threads: '漏掉了什麼嗎？<a href="{{url}}">檢視已關閉的討論串</a>'
     messages:
       privacy:
         members: '這個群組現在只對成員可見'
@@ -870,10 +891,10 @@ zh_TW:
       private_to_group: '名稱與描述都將只會對成員可見。'
       private_to_parent_members: '名稱與描述將會對 {{parent}} 的成員可見'
     privacy: '隱私權'
-    group_privacy_is_open_description: "任何人都可以找到這個群組並要求加入。只有成員才能看見誰在群組裡。所有的討論串都是公開的。"
-    group_privacy_is_closed_description: "任何人都可以找到這個群組並要求加入。只有成員才能看見誰在群組裡。所有的討論串都是私密的。"
-    group_privacy_is_closed_public_threads_description: "任何人都可以找到這個群組並要求加入。只有成員才能看見誰在群組裡。討論串可以是公開或私密的。"
-    group_privacy_is_secret_description: "只有被邀請的成員才能找到此群組，並檢視有誰在裡面以及觀看討論串。"
+    group_privacy_is_open_description: "公開列出。任何人都可以要求加入。所有討論串都是公開的。"
+    group_privacy_is_closed_description: "不列出。任何有連結的人都可以要求加入。所有討論串都是私密的。"
+    group_privacy_is_closed_public_threads_description: "不列出。任何有連結的人都可以要求加入。討論串可以是公開或私密的。"
+    group_privacy_is_secret_description: "僅被邀請的夥伴才能找到群組。所有討論串都是私密的。"
     confirm_change_to_secret: "若您繼續，所有在此群組及其子群組的討論串都會變為非公開。"
     confirm_change_to_secret_subgroup: '若您繼續，所有的討論串都會變為非公開。'
     confirm_change_to_public: '若您繼續，所有在此群組的討論串都將會變為公開在網路上。'
@@ -1079,22 +1100,12 @@ zh_TW:
   deactivation_modal:
     aria_label: '停用使用者帳號'
     introduction: '當您停用您的帳號：'
-    no_longer_group_member: '您將不會再被任何群組列為成員'
+    you_will_be_deleted: "您的使用者帳號，包含您的名字、電子郵件地址與其他可識別個人的資料，都將會從我們的系統中刪除。"
     name_removed: '您在群組中作出的意見、提案與討論串會留下，但您的大名將會從中移除。'
+    no_longer_group_member: '您將不會再被任何群組列為成員'
     no_emails: '您將不會再收到電子郵件通知'
     you_can_reactivate: "如果您想要的話，您可以在稍後重新啟用您的帳號"
     submit: '是的，我想要停用'
-  delete_user_modal:
-    title: '刪除使用者帳號'
-    irreversable: "警告：這無法復原。如果您要繼續的話："
-    you_will_be_deleted: "您的使用者帳號，包含您的名字、電子郵件地址與其他可識別個人的資料，都將會從我們的系統中刪除。"
-    submit: '是的，刪除我的帳號'
-  deactivate_user_form:
-    aria_label: '確認凍結帳號'
-    title: '凍結帳號'
-    question: '您可以告訴我們為何您要凍結您的帳號嗎？'
-    placeholder: '回答這個問題是選擇性的。您分享的任何資訊都可以協助我們改善服務 :)'
-    submit: '凍結帳號'
   email_settings_page:
     header: 通知設定
     account_deactivated: 您的帳號已被停用。您將不會再收到任何電子郵件。
@@ -1210,6 +1221,7 @@ zh_TW:
     title: 被這些人看過：
     no_one: 還沒有人看過這個
   activity_card:
+    aria_label: "留言或開始投票"
     count_responses: "{{count}} 個回應"
     event_pinned: "已釘選至時間軸"
     event_unpinned: "已從時間軸取消釘選"
@@ -1233,6 +1245,7 @@ zh_TW:
   thread_group:
     aria_label: '群組名稱'
   thread_context:
+    current_poll_type_banner: 目前的 {{pollType}}
     item_maybe_deleted: "在討論串找不到請求的位置。他可能已被刪除。"
     aria_label: '討論串內容'
     thread_options: '討論串選項'
@@ -1279,14 +1292,18 @@ zh_TW:
   move_thread_form:
     aria_label: 移動討論串
     title: 移動討論串
-    body: '目標群組：'
+    body: 目標群組
     confirm: 移動討論串
     confirm_change_to_private_thread: '{{groupName}} 是一個公開的群組，若您繼序，這個討論串將會變為公開。'
     messages:
       success: 討論串已被移動到 {{name}}
   delete_comment_dialog:
     title: '刪除意見'
+    question: '您確定您想要刪除此留言？（此動作無法復原）'
     confirm: '刪除意見'
+  discard_comment_dialog:
+    title: '移除留言'
+    question: '您確定您想要移除此留言？（此動作無法在稍後復原）'
   contact_message_form:
     title: "嗨，您好！我們可以怎麼協助您？"
     read_the_manual: |
@@ -1339,10 +1356,12 @@ zh_TW:
     meeting_title: 時間投票
     ranked_choice_title: 排序選擇
   poll_common:
+    vote_now: 現在投票
+    have_your_say: 擁有發言權
     your_response: 您的回應
     change_your_response: 編輯回應
     reason: 理由
-    reason_placeholder: 任何額外的意見？
+    reason_placeholder: 簡要說明為何您要以此種方式投票
     message: 訊息
     results: 結果
     responses: 回應
@@ -1359,6 +1378,8 @@ zh_TW:
     details: 詳細內容
     participant_name: 您的大名
     participant_email: 電子郵件地址
+    submit_vote: 遞交投票
+    update_vote: 更新投票
     share_poll: 分享投票
     share_proposal: 分享提案
     share_count: 分享勾選
@@ -1366,7 +1387,7 @@ zh_TW:
     publish_poll: 分享投票
     view_all: 檢視全部
     save_changes: 儲存
-    change_vote: 變更投票
+    change_vote: 變更您的投票
     max_score: 最大分數
     min_score: 最小分數
     too_long: 太長
@@ -1384,6 +1405,7 @@ zh_TW:
       options_added: 已加入新選項
   poll_common_card:
     show_results: 顯示結果
+    hide_results: 隱藏結果
     deleted: 此投票已刪除
   poll_common_index_card:
     title: 之前的決策
@@ -1507,14 +1529,12 @@ zh_TW:
     meeting_closed: 時間投票已關閉
     ranked_choice_closed: 排序選擇投票已關閉
   poll_common_reopen_form:
-    title: 重新開啟已關閉的決策
-    helptext: 決策在您準備好之前就定案了嗎？重新開啟以從群組處收集更多立場。
-    proposal_reopened: 已重新開啟提案
-    poll_reopened: 已重新開始投票
-    count_reopened: 已重新開啟勾選
-    dot_vote_reopened: 已重新開啟點投票
-    meeting_reopened: 已重新開啟時間投票
-    ranked_choice_reopened: 已重新開啟排名選擇投票
+    title: "重新開啟 {{poll_type}}"
+    helptext: "如果人們需要更多時間參與的話就重新開啟 {{poll_type}}"
+    success: "{{poll_type}} 已重新開啟"
+  poll_common_move_form:
+    title: "移動 {{poll_type}}"
+    success: "{{poll_type}} 已移動至 {{group}}"
   poll_common_closing_at_field:
     closing: 關閉
     closing_hour: 關閉時間
@@ -1572,6 +1592,7 @@ zh_TW:
     closing: 定案
     closed: 封閉
     start: 啟動
+    start_poll_type: 開始 {{poll_type}}
     update: 更新
     reminder_note: 關閉前 24 小時，將向所有參與者發送提醒
     loomio_school_link: |
@@ -1766,6 +1787,13 @@ zh_TW:
     stance_created: 已記錄選擇
     stance_updated: 已更新選擇
   thread_item:
+    aria:
+      deleted: 項目已刪除
+      new_comment: "{{actor}} 已留言。 {{when}}"
+      poll_created: "{{actor}} 開始了 {{pollType}}。 {{when}}"
+      stance_created: "{{actor}} 已投票。 {{when}}"
+      outcome_created: "{{actor}} 分享了成果。 {{when}}"
+      poll_expired: "{{pollType}} 已關閉。 {{when}}"
     removed: "項目已移除"
     comment_replied_to: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> 在回覆 <strong>{{title}}</strong>"
     discussion_title_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> 已編輯討論串標題"
@@ -1798,20 +1826,24 @@ zh_TW:
     what_is_this: "這裡有五個 {{type}} 的範例。您是參與者，來試試看吧！"
   share_poll_page:
     title: 分享投票 - {{title}}
+  add_poll_to_thread_modal:
+    success: "成功，{{pollType}} 已新增至討論串！"
   auth_form:
     code: '000000'
-    youre_invited: 您已被邀請加入 {{group_name}}。登入以繼續
-    youre_invited_discussion: 您已被邀請加入討論。登入以繼續
-    youre_invited_poll: 您已被邀請投票。登入以繼續
+    youre_invited: 您已被邀請加入 {{group_name}}。
+    youre_invited_discussion: 您已被邀請加入討論。
+    youre_invited_poll: 您已被邀請加入投票。
     sign_in_to_loomio: 登入到 {{site_name}}
     sign_in_help: 無法登入？
     sign_in: 登入
     continue: 繼續
     create_account: 建立帳號
+    sign_up_as: 以 {{email}} 註冊
     sign_in_as: 登入為 {{name}}
     continue_with_provider: 使用 {{provider}} 登入
-    continue_with_email: 使用電子郵件登入
+    continue_with_email: 以電子郵件繼續
     or_enter_your_email: 或是輸入您的電子郵件地址
+    enter_your_name: 輸入您的名字
     invitation_required: 您需要邀請函以建立帳號。
     more_providers: 詳細
     email_not_present: 需要電子郵件地址
@@ -1823,7 +1855,7 @@ zh_TW:
     email_placeholder: you@example.com
     login_with_token: 您已經設定好了！點選下方的連結以繼續。
     login_link_helptext: 點選下方的按鈕，然後我們就會傳送連結給您以供登入。
-    login_link_helptext_with_password: "輸入您的密碼，或是透過電子郵件登入。"
+    enter_your_password: "輸入您的密碼以繼續"
     check_spam_folder: 如果電子郵件未在短時間內抵達，請檢查您的垃圾信資料夾。
     sign_up_helptext: 請完成此表單以建立使用者帳號
     i_accept: "我接受<a href='{{termsUrl}}' target='_blank'>服務條款</a>與<a href='{{privacyUrl}}' target='_blank'>隱私權政策</a>"
@@ -1837,6 +1869,7 @@ zh_TW:
     welcome_back: 歡迎回來，{{name}}！
     forgot_password: 忘記密碼
     login_link: 傳送登入電子郵件
+    sign_in_via_email: 透過電子郵件登入
     set_password: 設定密碼
     set_password_helptext: 下次想要使用密碼嗎？
     hello: "您好，{{name}}！"
@@ -1900,7 +1933,6 @@ zh_TW:
     warning_helptext: "警告：點擊儲存後，您將必須與提供商進行身份驗證。"
     idp_metadata_url: IDP 詮釋資料 URL
     idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
-    pro_plan_only: 此功能僅供專業方案的顧客使用。請看看我們的<a href="/upgrade" target="_blank">升級頁面</a>以取得更多資訊。
     success: 已成功設定單一登入
     destroyed: 已移除單一登入
     invalid_idp_metadata_url: 無效的 IDP 詮釋資料 URL
@@ -1954,6 +1986,10 @@ zh_TW:
       project: 專案團隊
       forum: 論壇
       other: 其他
+    desired_features:
+      polls: 進行民調以供我的團隊投票
+      discussions: 線上討論並獲得意見
+      archive: 紀錄我們做出的決策或封存資訊
     referrers:
       google: Google 搜尋
       invitation: 邀請加入 Loomio 群組
@@ -1969,4 +2005,5 @@ zh_TW:
     role: "您在群組中的角色是什麼？"
     website: "網站 URL"
     usage: "您打算如何使用 Loomio？選擇最適合您的"
+    desired_feature: "您使用 Loomio 第一件想做的事情是什麼？"
     referrer: "您是如何得知 Loomio 的？"

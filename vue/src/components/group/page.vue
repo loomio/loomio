@@ -65,9 +65,6 @@ export default
         EventBus.$emit 'pageError', error
         EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()
 
-    titleVisible: (visible) ->
-      EventBus.$emit('content-title-visible', visible)
-
     openGroupSettingsModal: ->
       return null unless @canEditGroup
       EventBus.$emit 'openModal',
@@ -82,7 +79,7 @@ v-main
   loading(v-if="!group")
   v-container.group-page.max-width-1024(v-if="group")
     v-img(style="border-radius: 8px" :src="coverImageSrc" eager)
-    h1.display-1.my-4(v-observe-visibility="{callback: titleVisible}")
+    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
       span(v-if="group && group.parent()")
         router-link(:to="urlFor(group.parent())") {{group.parent().name}}
         space
@@ -93,6 +90,7 @@ v-main
     trial-banner(:group="group")
     group-onboarding-card(:group="group")
     formatted-text.group-page__description(v-if="group" :model="group" column="description")
+    join-group-button(:group='group')
     document-list(:model='group')
     attachment-list(:attachments="group.attachments" :edit="canEditGroup && openGroupSettingsModal")
     v-divider.mt-4
@@ -100,7 +98,6 @@ v-main
       v-tabs-slider
       v-tab(v-for="tab of tabs" :key="tab.id" :to="tab.route" :class="'group-page-' + tab.name + '-tab' " exact)
         span(v-t="'group_page.'+tab.name")
-    join-group-button(:group='group')
     router-view
 </template>
 

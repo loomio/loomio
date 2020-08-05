@@ -12,11 +12,12 @@ class StanceSerializer < ApplicationSerializer
              :attachments,
              :volume,
              :inviter_id,
-             :revoked_at,
              :poll_id,
+             :participant_id,
+             :revoked_at,
              :my_stance
 
-  has_one :poll, serializer: PollSerializer
+  has_one :poll, serializer: PollSerializer, root: :polls
   has_one :participant, serializer: AuthorSerializer, root: :users
   has_many :stance_choices, serializer: StanceChoiceSerializer, root: :stance_choices
 
@@ -29,7 +30,7 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def include_reason?
-    my_stance || poll.show_results?
+    my_stance || object.poll.show_results?
   end
 
   def include_stance_choices?

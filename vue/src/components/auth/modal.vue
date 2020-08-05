@@ -3,6 +3,7 @@ import AppConfig from '@/shared/services/app_config'
 import Records       from '@/shared/services/records'
 import EventBus      from '@/shared/services/event_bus'
 import AuthService   from '@/shared/services/auth_service'
+import Session from '@/shared/services/session'
 
 export default
   props:
@@ -11,8 +12,10 @@ export default
 
   data: ->
     siteName: AppConfig.theme.site_name
+    titleKey: 'auth_form.sign_in_to_loomio'
     user: Records.users.build(createAccount: false)
     isDisabled: false
+    pendingProviderIdentity: Session.providerIdentity()
 
   mounted: ->
     AuthService.applyEmailStatus(@user, AppConfig.pendingIdentity)
@@ -27,15 +30,10 @@ export default
       !@user.sentPasswordLink
 </script>
 <template lang="pug">
-v-card.auth-modal
-  submit-overlay(:value='isDisabled')
-  v-card-title
-    //- i.mdi.mdi-lock-open(ng-if='!showBackButton()')
-    //- a.auth-modal__back(ng-click='back()', ng-if='showBackButton()')
-    //-   i.mdi.mdi-keyboard-backspace
-    h1.headline(v-t="{ path: 'auth_form.sign_in_to_loomio', args: { site_name: siteName } }")
-    v-spacer
-    dismiss-modal-button(v-if='!preventClose' :close="close")
-  v-card-text
-    auth-form(:user='user')
+.auth-modal
+  auth-form(v-if="!user.authForm" :user='user' :prevent-close="preventClose")
+  auth-signin-form(v-if='user.authForm == "signIn"' :user='user')
+  auth-signup-form(v-if='user.authForm == "signUp"' :user='user')
+  auth-identity-form(v-if='user.authForm == "identity"' :user='user' :identity='pendingProviderIdentity')
+  auth-complete(v-if='user.authForm == "complete"', :user='user')
 </template>

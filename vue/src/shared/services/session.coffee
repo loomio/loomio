@@ -22,6 +22,7 @@ loomioLocale = (locale) ->
   locale.replace('-', '_')
 
 dateFnsLocale = (locale) ->
+  return 'nl' if locale.startsWith('nl')
   locale.replace('_','-')
 
 loadLocale = (locale) ->
@@ -61,6 +62,7 @@ export default new class Session
     user
 
   signOut: ->
+    AppConfig.currentUserId = null
     Records.sessions.remote.destroy('').then -> hardReload('/')
 
   isSignedIn: ->

@@ -48,7 +48,7 @@ class PollService
 
     poll.update(discarded_at: Time.now, discarded_by: actor.id)
     Event.where(kind: "stance_created", eventable_id: poll.stances.pluck(:id)).update_all(discussion_id: nil)
-    poll.created_event.update(user_id: nil, child_count: 0)
+    poll.created_event.update(user_id: nil, child_count: 0, pinned: false)
     MessageChannelService.publish_event(poll.created_event)
     poll.created_event
   end
@@ -142,6 +142,17 @@ class PollService
 
   def self.cleanup_examples
     Poll.where(example: true).where('created_at < ?', 1.day.ago).destroy_all
+  end
+
+  def self.add_to_thread(poll:, params:, actor:)
+    discussion = Discussion.find(params[:discussion_id])
+    actor.ability.authorize! :update, poll
+    actor.ability.authorize! :update, discussion
+    ActiveRecord::Base.transaction do
+      poll.update(discussion_id: discussion.id, group_id: discussion.group.id, stances_in_discussion: false)
+      poll.created_event.update(discussion_id: discussion.id, parent_id: discussion.created_event.id, pinned: true)
+    end
+    poll.created_event
   end
 
 end

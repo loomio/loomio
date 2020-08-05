@@ -15,6 +15,7 @@ class PollSerializer < ApplicationSerializer
   has_one :my_stance, serializer: StanceSerializer, root: :stances
   has_many :poll_options, serializer: PollOptionSerializer, root: :poll_options
 
+  # can remove complete in august or so.
   def complete
     true
   end

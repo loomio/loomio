@@ -62,7 +62,7 @@ ActiveAdmin.register Group, as: 'Group' do
     render 'graph', { group: group }
     render 'stats', { group: group }
 
-    if group.subscription_id
+    if defined?(SubscriptionService) && group.subscription_id
       render 'subscription', { subscription: Subscription.for(group)}
     end
 
@@ -89,7 +89,7 @@ ActiveAdmin.register Group, as: 'Group' do
     end
 
     panel("Members") do
-      table_for group.all_memberships.order(created_at: :desc).each do
+      table_for group.all_memberships.includes(:user, :inviter).order(created_at: :desc).filter{|m| m.user }.each do |membership|
         column(:name)        { |m| link_to m.user.name, admin_user_path(m.user) }
         column(:email)       { |m| m.user.email }
         column(:coordinator) { |m| m.admin }
@@ -171,7 +171,7 @@ ActiveAdmin.register Group, as: 'Group' do
         Array(SubscriptionService::USABLE_PLANS).map do |key|
           SubscriptionService.psp_url(group, group.creator, key)
         end.join(" ")
-      end
+      end if defined?(SubscriptionService)
     end
 
     if group.archived_at.nil?

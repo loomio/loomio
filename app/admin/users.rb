@@ -118,12 +118,14 @@ ActiveAdmin.register User do
     end
 
     panel("Memberships") do
-      table_for user.memberships.each do |m|
+      table_for user.memberships.order(:id).each do |m|
+        column :id
         column :group_name do |g|
           group = g.group
           link_to group.full_name, admin_group_path(group)
         end
         column :admin
+        column :accepted_at
       end
     end
 

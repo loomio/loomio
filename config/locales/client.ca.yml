@@ -10,6 +10,8 @@ ca:
         start_thread: Comença un fil de discussió
         make_decision: Comença una decissió
       dismiss_this_card: Descarta aquesta fitxa
+  subscription_status:
+    members: "Membres"
   loomio_tags:
     tags: Etiquetes
     apply_tags: Aplica etiquetes
@@ -57,6 +59,7 @@ ca:
     settings: 'Configuracions'
     help: 'Ajuda'
     anonymous: Anònim
+    email_address: Adressa de correu electrònic
     privacy:
       privacy: 'Privacitat'
       public: 'Públic'
@@ -84,6 +87,7 @@ ca:
       back: 'Enrere'
       close: 'Tanca'
       save: 'Desa'
+      move: 'Mou'
       save_changes: 'Desa els canvis'
       update_settings: 'Actualitza la configuració'
       reply: 'Respon'
@@ -193,6 +197,7 @@ ca:
     delete_comment: 'Elimina el comentari'
     cancel_reply: 'Cancel·la la resposta'
     confirm_delete_message: 'Esteu segur que voleu eliminar aquest comentari?'
+    post_comment: "Publicar comentari"
     submit_button:
       label: 'Publica'
     private_privacy_notice: 'El comentari només serà visible pels membres de {{groupName}}.'
@@ -225,6 +230,7 @@ ca:
   discussion_fork_actions:
     move: Mou
   discussion_form:
+    start_thread: Crea la discussió
     messages:
       created: 'Discussió creada'
       updated: 'Discussió actualitzada'
@@ -500,7 +506,6 @@ ca:
       success: Discussió eliminada
   move_thread_form:
     title: Mou la discussió
-    body: 'Grup destí:'
     confirm: Mou la discussió
     confirm_change_to_private_thread: '{{groupName}} és un grup obert. Si continueu, aquesta discussió serà pública.'
     messages:
@@ -532,6 +537,7 @@ ca:
   decision_tools_card:
     poll_title: Enquesta
   poll_common:
+    have_your_say: Doneu la opinió
     start_poll: Comença una decissió
     save_changes: Desa
   discussions_panel:
@@ -556,6 +562,7 @@ ca:
   poll_meeting_chart_panel:
     total: Total
   auth_form:
+    enter_your_name: Introdueix el teu nom
     name_placeholder: El teu nom
     name: Nom
   webhook:

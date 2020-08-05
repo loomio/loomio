@@ -15,7 +15,6 @@ export default
     isPage: Boolean
 
   created: ->
-    EventBus.$on 'showResults', => @buttonPressed = true
     EventBus.$on 'stanceSaved', => EventBus.$emit 'refreshStance'
     @watchRecords
       collections: ["stances", "outcomes"]
@@ -34,15 +33,15 @@ export default
 
   computed:
     showResults: ->
-      (@poll.isClosed() || @buttonPressed || @myStance.castAt) && @poll.showResults()
+      @poll.showResults()
 
     menuActions: ->
       @myStance
-      pick PollService.actions(@poll, @), ['edit_poll', 'close_poll', 'reopen_poll', 'export_poll', 'print_poll', 'discard_poll', 'translate_poll']
+      pick PollService.actions(@poll, @), ['edit_poll', 'move_poll', 'close_poll', 'reopen_poll', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread', 'translate_poll']
 
     dockActions: ->
       @myStance
-      pick PollService.actions(@poll, @), ['announce_poll', 'edit_stance']
+      pick PollService.actions(@poll, @), ['show_results', 'hide_results', 'edit_stance', 'announce_poll']
 
 </script>
 
@@ -54,7 +53,7 @@ v-card
       .grey--text(v-t="'poll_common_card.deleted'")
   div(v-else)
     v-card-title
-      h1.poll-common-card__title.display-1(v-observe-visibility="{callback: titleVisible}")
+      h1.poll-common-card__title.display-1(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
         span(v-if='!poll.translation.title') {{poll.title}}
         translation(v-if="poll.translation.title" :model='poll', field='title')
         v-chip.ml-3(outlined small color="info" v-t="'poll_types.' + poll.pollType")

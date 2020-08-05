@@ -1,4 +1,8 @@
 class Pending::IdentitySerializer < Pending::BaseSerializer
+  def auth_form
+    :identity
+  end
+
   def identity_type
     object.identity_type
   end

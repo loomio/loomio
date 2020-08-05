@@ -61,7 +61,7 @@ export default class StanceModel extends BaseModel
       'asc'
     else
       'desc'
-    orderBy @stanceChoices(), 'rankOrScore', order
+    compact orderBy @stanceChoices(), 'rankOrScore', order
 
   stanceChoiceNames: ->
     map(@pollOptions(), 'name')

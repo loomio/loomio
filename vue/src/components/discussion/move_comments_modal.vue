@@ -5,7 +5,7 @@ import AbilityService from '@/shared/services/ability_service'
 import Flash   from '@/shared/services/flash'
 import EventBus          from '@/shared/services/event_bus'
 import { onError } from '@/shared/helpers/form'
-import { orderBy, debounce } from 'lodash-es'
+import { sortBy, debounce } from 'lodash-es'
 
 export default
   data: ->
@@ -13,7 +13,8 @@ export default
     searchFragment: ''
     searchResults: []
     groupId: @discussion.groupId
-    groups: Session.user().groups()
+    groups: sortBy(Session.user().groups(), 'fullName')
+    loading: false
 
   props:
     discussion: Object
@@ -35,8 +36,10 @@ export default
                       })
 
     submit: ->
+      @loading = true
       @selectedDiscussion.moveComments()
       .then =>
+        @loading = false
         @resetSourceDiscussion()
         @selectedDiscussion.update(forkedEventIds: [])
         @selectedDiscussion.update(isForking: false)
@@ -50,7 +53,9 @@ export default
 
     fetch: debounce ->
       return unless @searchFragment
+      @loading = true
       Records.discussions.search(@groupId, @searchFragment).then (data) =>
+        @loading = false
         @searchResults = Records.discussions.collection.chain()
           .find(groupId: @groupId)
           .find({ id: { $ne: @discussion.id } })
@@ -67,14 +72,14 @@ export default
 </script>
 <template lang="pug">
 v-card
-  submit-overlay(:value='discussion.processing')
+  submit-overlay(:value='selectedDiscussion && selectedDiscussion.processing')
   v-card-title
-    h1.headline(v-t="'action_dock.move_items'")
+    h1.headline(tabindex="-1" v-t="'action_dock.move_items'")
     v-spacer
     dismiss-modal-button(aria-hidden='true', :close='close')
   v-card-text
-    v-select(v-model="groupId" :items="groups" item-text="name" item-value="id")
-    v-autocomplete(hide-no-data return-object v-model="selectedDiscussion" :search-input.sync="searchFragment" :items="searchResults" item-text="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')")
+    v-select(v-model="groupId" :items="groups" item-text="fullName" item-value="id")
+    v-autocomplete(hide-no-data return-object v-model="selectedDiscussion" :search-input.sync="searchFragment" :items="searchResults" item-text="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading")
   v-card-actions
     v-spacer
     v-btn(color="accent" @click="startNewThread()" v-t="'discussion_fork_actions.start_new_thread'")

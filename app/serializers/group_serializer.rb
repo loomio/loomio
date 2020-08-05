@@ -51,16 +51,7 @@ class GroupSerializer < ApplicationSerializer
              :org_memberships_count,
              :org_discussions_count,
              :org_members_count,
-             # should break these out of here soon
-             :subscription_plan,
-             :subscription_active,
-             :subscription_max_members,
-             :subscription_max_threads,
-             :subscription_expires_at,
-             :subscription_state,
-             :subscription_created_at,
-             :subscription_info,
-             :subscription_members_count,
+             :subscription,
              :subgroups_count,
              :complete
 
@@ -68,15 +59,35 @@ class GroupSerializer < ApplicationSerializer
     true
   end
 
-  has_one :parent, serializer: GroupSerializer, root: :groups
+  has_one :parent, serializer: GroupSerializer, root: :parent_groups
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
 
   def current_user_membership
     scope && scope[:current_user] && object.membership_for(scope[:current_user])
   end
 
-  def include_subscription_info?
-    current_user_membership
+  def subscription
+    sub = Subscription.for(object)
+    if (current_user_membership && sub)
+      {
+        max_members:     sub.max_members,
+        max_threads:     sub.max_threads,
+        plan:            sub.plan,
+        active:          sub.is_active?,
+        renews_at:       sub.renews_at,
+        expires_at:      sub.expires_at,
+        management_link: (sub.info || {})['chargify_management_link'],
+        referral_code:   (sub.info || {})['chargify_referral_code'],
+        members_count:   sub.members_count
+      }
+    else
+      {
+        max_members:     sub.max_members,
+        max_threads:     sub.max_threads,
+        active:          sub.is_active?,
+        members_count:   sub.members_count
+      }
+    end
   end
 
   def include_current_user_membership?
@@ -87,64 +98,12 @@ class GroupSerializer < ApplicationSerializer
     object.info['tag_names'] || []
   end
 
-  def subscription_max_members
-    subscription.max_members
-  end
-
-  def subscription_max_threads
-    subscription.max_threads
-  end
-
-  def subscription_plan
-    subscription.plan
-  end
-
-  def subscription_active
-    subscription.is_active?
-  end
-
-  def subscription_expires_at
-    subscription.expires_at
-  end
-
-  def subscription_state
-    subscription.state
-  end
-
-  def subscription_created_at
-    subscription.created_at
-  end
-
-  def subscription_info
-    subscription.info
-  end
-
-  def subscription_members_count
-    subscription.members_count
-  end
-
-  def subscription
-    @subscription ||= Subscription.for(object)
-  end
-
-  def include_org_memberships_count?
-    object.is_parent?
-  end
-
-  def include_token?
-    Hash(scope)[:include_token]
-  end
-
   def cover_photo
     @cover_photo ||= object.cover_photo
   end
 
   def logo_url_medium
     object.logo.url(:medium)
-  end
-
-  def include_logo_url_medium?
-    object.logo.present?
   end
 
   def cover_urls
@@ -165,6 +124,17 @@ class GroupSerializer < ApplicationSerializer
   end
 
   private
+  def include_logo_url_medium?
+    object.logo.present?
+  end
+
+  def include_org_memberships_count?
+    object.is_parent?
+  end
+
+  def include_token?
+    Hash(scope)[:include_token]
+  end
 
   def has_discussions
     object.discussions_count > 0

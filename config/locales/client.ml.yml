@@ -1,9 +1,12 @@
 ml:
+  subscription_status:
+    members: "അംഗങ്ങള്‍"
   loomio_tags:
     name_label: പേരു്
   common:
     group: 'കൂട്ടം'
     groups: 'കൂട്ടങ്ങള്‍'
+    email_address: ഈമെയില്‍ വിലാസം
     privacy:
       public: 'പൊതുവായ'
       private: 'സ്വകാര്യം'
@@ -29,6 +32,7 @@ ml:
   comment_form:
     delete_comment: 'അഭിപ്രായം നീക്കം ചെയ്യുക'
     confirm_delete_message: 'തീര്‍ച്ചയായും ഈ അഭിപ്രായം കളയണോ? '
+    post_comment: "അഭിപ്രായം രേഖപ്പെടുത്തുക"
   sidebar:
     threads: 'ചര്‍ച്ചകള്‍'
   navbar:
@@ -89,6 +93,7 @@ ml:
     proposal: 'വ്യക്തമായൊരു ശുപാര്‍ശ എഴുതാനുള്ള നുറുങ്ങുകള്‍'
     vote: 'എപ്പോള്‍ വേണമെങ്കിലും താങ്കളുടെ സ്ഥാനം മാറ്റാം'
   poll_common:
+    have_your_say: താങ്കള്‍ക്ക് പറയാനുള്ളത്
     save_changes: സൂക്ഷിക്കുക
   discussions_panel:
     closed: അടച്ചു

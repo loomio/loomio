@@ -315,8 +315,6 @@ hu:
     body:
       voted: '<strong>%{participant}</strong>:'
   comment_by: '%{Comment_author} megjegyzése'
-  personal_data:
-    title: '%{User_name} személyes adatai itt: %{host_name} '
   notified:
     no_matches_found: "Nem található eredmény a következőre: '%{query}'"
     group_users: "(%{count} ember)"

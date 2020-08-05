@@ -101,7 +101,7 @@ module.exports = {
 
     page.loadPath('setup_discussion_for_jennifer')
     page.ensureSidebar()
-    page.expectText('.sidebar-item', 'Dirty Dancing Shoes (1)')
+    page.expectText('.sidebar__groups', 'Dirty Dancing Shoes (1)')
   },
 
   'lets_coordinators_and_thread_authors_delete_threads': (test) => {
@@ -109,7 +109,7 @@ module.exports = {
 
     page.loadPath('setup_discussion')
     page.click('.action-menu')
-    page.click('.action-dock__button--delete_thread')
+    page.click('.action-dock__button--discard_thread')
     page.click('.confirm-modal__submit')
 
     page.expectFlash('Thread deleted')

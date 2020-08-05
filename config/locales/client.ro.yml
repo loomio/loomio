@@ -18,6 +18,8 @@ ro:
     large: Mare
     monthly: Lunar
     yearly: Anual
+  subscription_status:
+    members: "Membri"
   loomio_tags:
     tags: Etichete
     apply_tags: Aplica etichete
@@ -117,6 +119,7 @@ ro:
     settings: 'Setari'
     help: 'Ajutor'
     anonymous: Anonim
+    email_address: Adresa email
     privacy:
       privacy: 'Confidentialitate'
       public: 'Public'
@@ -276,6 +279,7 @@ ro:
     confirm_delete: 'Sterge comentariu'
     in_reply_to: "Raspunde lui {{name}}"
     write_a_comment: "Scrie un comentariu"
+    post_comment: "Scrie comentariu"
     submit_button:
       label: 'Postare'
     private_privacy_notice: 'Comentariul tau va fi vizibile doar membrilor grupului {{groupName}}.'
@@ -320,6 +324,7 @@ ro:
     header: "Notificari"
     no_notifications: "Nu ai nici o notificare"
   discussion_form:
+    start_thread: Creaza o discutie
     messages:
       created: 'Discutia a inceput'
       updated: 'Discutie actualizata'
@@ -527,6 +532,7 @@ ro:
     count_title: Verifica
     poll_title: Sondaj
   poll_common:
+    have_your_say: Sa ai ceva de spus
     start_poll: Creeaza o decizie
     save_changes: Salvare
   poll_common_attachment_form:
@@ -561,6 +567,7 @@ ro:
   poll_common_subscribe_form:
     subscribe: Subscrie
   auth_form:
+    enter_your_name: Introdu numele tau
     name_placeholder: Nume
     name: Nume
   webhook:

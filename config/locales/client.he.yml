@@ -16,6 +16,8 @@ he:
     trial: ניסיון
   current_plan_button:
     upgrade: שדרג
+  subscription_status:
+    members: "חברים"
   loomio_tags:
     tags: תגיות
     apply_tags: החל תגיות
@@ -97,6 +99,7 @@ he:
     settings: 'הגדרות'
     help: 'עזרה'
     anonymous: אנונימי
+    email_address: כתובת דוא"ל
     privacy:
       privacy: 'פרטיות'
       public: 'פתוח לציבור'
@@ -130,6 +133,7 @@ he:
       close: 'סגור'
       reopen: 'פתח מחדש'
       save: 'שמירה'
+      move: 'העבר'
       save_changes: 'שמור שינויים'
       update_settings: 'עדכן הגדרות'
       reply: 'השב'
@@ -295,6 +299,7 @@ he:
     confirm_delete: 'מחק הערה'
     in_reply_to: "הגב ל{{name}}"
     write_a_comment: "כתוב הערה..."
+    post_comment: "שלחו תגובה"
     submit_button:
       label: 'פוסט'
     private_privacy_notice: 'ההערה שלך תהיה זמינה לצפייה רק לחברים בקבוצה {{groupName}}.'
@@ -564,7 +569,6 @@ he:
     no_threads_here: אין שיחות פה!
     search_threads: חפש/י שיחות....
     private_threads: אתם צריכים להיות חבר לצפיה בשיחות פרטיות של הקבוצה
-    no_more_threads: זה כל השיחות בקבוצה זו!
     messages:
       privacy:
         members: 'רק חברים יכולים לצפות בקבוצה'
@@ -644,10 +648,6 @@ he:
       private_to_group: 'שם ותאור יהיו זמינים לצפיה רק לחברים.'
       private_to_parent_members: 'שם ותאור יהיו זמינים לחברי {{parent}}'
     privacy: 'פרטיות'
-    group_privacy_is_open_description: "כל אחד יכול למצוא את הקבוצה ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. כל השיחות פומביות."
-    group_privacy_is_closed_description: "כל אחד יכול למצוא את הקבוצה ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. כל השיחות פרטיות."
-    group_privacy_is_closed_public_threads_description: "כל אחד יכול למצוא את הקבוצה ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. שיחות יכולות להיות פרטיות או פומביות."
-    group_privacy_is_secret_description: "רק חברים מוזמנים יכולים למצוא את הקבוצה, לראות מי בה ולראות את השיחות שבה."
     confirm_change_to_secret: "אם אתה ממשיך, כל השיחות בקבוצה ובתת הקבוצות שלה יהיו פרטיות."
     confirm_change_to_secret_subgroup: 'אם אתה ממשיך, כל השיחות בו יהיו פרטיות.'
     confirm_change_to_public: 'אם אתה ממשיך, כל השיחות בקבוצה יהיו פומביים וזמינים ברשת.'
@@ -820,21 +820,12 @@ he:
     password_changed: סיסמתך עודכנה
   deactivation_modal:
     introduction: 'כשאתה משבית את חשבונך:'
-    no_longer_group_member: 'אתה לא תהיה רשום יותר כמשתתף באף קבוצה'
+    you_will_be_deleted: "חשבון המשתמש שלך כולל שמך, כתובת הדוא\"ל ופרטי זיהוי נוספים ימחקו מהמערכות שלנו."
     name_removed: 'הערות, הצעות ודיונים שביצעת ישראו אבל השם שלך יוסר מהם'
+    no_longer_group_member: 'אתה לא תהיה רשום יותר כמשתתף באף קבוצה'
     no_emails: 'לא תקבל/י יותר עדכונים במייל.'
     you_can_reactivate: "אם תרצה, תוכל לאקטב את החשבון שלך מחדש בשלב מאוחר יותר "
     submit: 'כן, אני רוצה להשבית'
-  delete_user_modal:
-    irreversable: "אזהרה: פעולה זו לא ניתנת לביטול. אם אתה ממשיך:"
-    you_will_be_deleted: "חשבון המשתמש שלך כולל שמך, כתובת הדוא\"ל ופרטי זיהוי נוספים ימחקו מהמערכות שלנו."
-    submit: 'כן, מחק את חשבון המשתמש שלי'
-  deactivate_user_form:
-    aria_label: 'אישור השבתת החשבון'
-    title: 'השבת חשבון'
-    question: 'תוכל לספר לנו למה אתה משבית את החשבון?'
-    placeholder: 'שאלת רשות. כל מידע שתשתף איתנו יעזור לנו להשתפר :)'
-    submit: 'השבת חשבון'
   email_settings_page:
     email_newsletter: הניוזלטר של לומיו
     email_newsletter_description: "קבל עדכונים על פיצ'רים חדשים, הדרכות, אירועים בעיר שלך ועתיד לומיו. בד\"כ 2-3 מיילים בשנה."
@@ -981,7 +972,6 @@ he:
   move_thread_form:
     aria_label: העבר שיחה
     title: העבר שיחה
-    body: 'קבוצת היעד:'
     confirm: העבר שיחה
     confirm_change_to_private_thread: '{{groupName}} הינה קבוצה פתוחה. אם אתה ממשיך, השיחה הזו תהיה פומבית.'
     messages:
@@ -1037,10 +1027,11 @@ he:
     meeting_title: הצבעת זמן
     ranked_choice_title: דירוג בחירה
   poll_common:
+    vote_now: הצבע עכשיו
+    have_your_say: חייב להגיד
     your_response: תגובתך
     change_your_response: ערוך תגובה
     reason: סיבה
-    reason_placeholder: הערות נוספות?
     message: הודעה
     results: תוצאות
     responses: תגובות
@@ -1063,7 +1054,6 @@ he:
     publish_poll: שתף סקר
     view_all: צפה בכל
     save_changes: שמירה
-    change_vote: שנה הצבעה
   poll_common_attachment_form:
     label: קבצים מצורפים
   poll_common_add_option:
@@ -1152,15 +1142,6 @@ he:
     dot_vote_closed: בחירת נקודות סגורה
     meeting_closed: סקר תחום בזמן סגור
     ranked_choice_closed: סקר לפי דרוג סגור
-  poll_common_reopen_form:
-    title: פתח מחדש החלטה סגורה
-    helptext: האם ההחלטה נסגרה לפני שהיית מוכן? פתח מחדש לאיסוף עוד עמדות מהקבוצה.
-    proposal_reopened: הצעה נפתחה מחדש
-    poll_reopened: סקר נפתח מחדש
-    count_reopened: בחירה נפתחה מחדש
-    dot_vote_reopened: בחירת נקודות נפתחה מחדש
-    meeting_reopened: סקר תחום בזמן נפתח מחדש
-    ranked_choice_reopened: סקר לפי דירוג נפתחה מחדש
   poll_common_closing_at_field:
     closing: סוגרים
   poll_card:
@@ -1380,12 +1361,12 @@ he:
   share_poll_page:
     title: שתף סקר - {{title}}
   auth_form:
-    sign_in_to_loomio: התחבר ל{{site_name}}
     sign_in: התחבר
     continue: המשך
     create_account: צור חשבון
     sign_in_as: הרשם כ{{name}}
     or_enter_your_email: או, הכנס את המייל שלך
+    enter_your_name: הזן את שמך
     more_providers: עוד
     email_not_present: כתובת מייל נדרשת כאן
     invalid_email: "סליחה, אבל זה לא נראה כמו כתובת מייל תקינה"
@@ -1396,7 +1377,6 @@ he:
     email_placeholder: you@example.com
     login_with_token: 'אתה מוכן ומזומן! לחץ על הלינק למטה להמשיך. '
     login_link_helptext: לחץ על הכפתור למטה ואנחנו נשלח לך לינק להתחברות.
-    login_link_helptext_with_password: "הכנס את סיסמתך, או הרשם דרך המייל."
     check_spam_folder: אם המייל לא מגיע אליך בקרוב, בדוק בתיקיית הספאם.
     sign_up_helptext: אנא השלם טופס זה ליצירת חשבון משתמש
     i_accept: "אני מאשר את <a href='{{termsUrl}}' target='_blank'>תנאי השימוש</a> ואת <a href='{{privacyUrl}}' target='_blank'>מדיניות הפרטיות</a>"

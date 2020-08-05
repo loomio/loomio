@@ -132,6 +132,12 @@ es:
       subject: Exportar datos del grupo para %{group_name}
       body_html: |
           Descarga tus datos <a href="%{url}">aquí</a>. Por favor toma nota que este link caducará en una semana.
+    deactivated:
+      subject: "Tu %{site_name}cuenta de usuario ha sido desactivada."
+      body_html: |
+          <p>Tú, o alguien con acceso a tu cuenta, ha desactivado tu cuenta de usuario Loomio.</p>
+          <p>Todos los datos personales han sido eliminados del sistema.</p>
+          <p>Si deseas recuperar esta cuenta de usuario y los comentarios y votos asociados, por favor contacta apoyo y referencia:%{recovery_code}</p>
     accounts_merged:
       subject: "Tus %{site_name} cuentas de usuario han sido unificadas. "
       body_html: |
@@ -419,6 +425,7 @@ es:
       poll_option_added: '%{actor} añadió opciones en: %{title}'
       poll_option_added_author: '%{actor} añadió opciones en: %{title}'
       outcome_created: '%{actor}compartió un %{poll_type} resultado:%{title}'
+      outcome_created_author: 'Has compartido un %{poll_type} resultado: %{title}'
       outcome_announced: '%{actor}compartió un %{poll_type} resultado:%{title}'
       stance_created: "%{actor} votó en: %{title}"
       stance_created_author: "Por favor verifica tu voto en: %{title}"
@@ -435,6 +442,7 @@ es:
       poll_option_added: '<strong>%{actor}</strong> ha añadido opciones en: %{title} '
       poll_option_added_author: '<strong>%{actor}</strong> ha añadido opciones en: %{title} '
       outcome_created: '<strong>%{actor}</strong>ha compartido un %{poll_type} resultado.'
+      outcome_created_author: 'Has compartido un %{poll_type}resultado.'
       outcome_announced: '<strong>%{actor}</strong>ha compartido un %{poll_type} resultado.'
       stance_created: "<strong>%{actor} </strong> votó en: %{title} "
       user_mentioned: '<strong>%{actor}</strong> te mencionó en: %{title} '

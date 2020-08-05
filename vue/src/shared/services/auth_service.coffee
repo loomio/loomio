@@ -16,7 +16,7 @@ export default new class AuthService
     vals = ['name', 'email', 'avatar_kind', 'avatar_initials', 'email_hash',
             'avatar_url', 'has_password', 'email_status', 'email_verified',
             'legal_accepted_at', 'auth_form']
-    user.update pickBy(mapKeys(pick(data, vals), (v,k) -> camelCase(k)), identity)
+    user.update pickBy(mapKeys(pick(data, vals), (v,k) -> camelCase(k)), (val) -> !!val)
     user.update(hasToken: data.has_token)
     user
 
@@ -28,6 +28,7 @@ export default new class AuthService
     if user && !user.hasProfilePhoto() && !user.hasExperienced('changePicture')
       EventBus.$emit 'openModal', {component: 'ChangePictureForm'}
 
+
   signIn: (user = {} , onSuccess = -> , onFailure = ->) ->
     Records.sessions.build(
       pick(user, ['email', 'name', 'password', 'code'])
@@ -36,13 +37,11 @@ export default new class AuthService
       onSuccess(data)
       data
     , (err) ->
-      console.log 'error signing in'
-      err.json().then (data) ->
-        errors = if user.hasToken
-          { token: [i18n.t('auth_form.invalid_token')] }
-        else
-          { password: map(data.errors.password, (key) -> i18n.t(key)) }
-        user.update(errors: errors)
+      errors = if user.hasToken
+        { token: [i18n.t('auth_form.invalid_token')] }
+      else
+        { password: [i18n.t('auth_form.invalid_password')]}
+      user.update(errors: errors)
 
   signUp: (user, onSuccess = -> , onFailure = -> ) ->
     Records.registrations.build(
@@ -52,7 +51,7 @@ export default new class AuthService
         @authSuccess(data)
         onSuccess(data)
       else
-        user.update({sentLoginLink: true})
+        user.update({authForm: 'complete', sentLoginLink: true})
       data
 
   reactivate: (user) ->
@@ -61,7 +60,7 @@ export default new class AuthService
 
   sendLoginLink: (user) ->
     Records.loginTokens.fetchToken(user.email).then ->
-      user.update({sentLoginLink: true})
+      user.update({authForm: 'complete', sentLoginLink: true})
 
   validSignup: (vars, user) ->
     user.errors = {}

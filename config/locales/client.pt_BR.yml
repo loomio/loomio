@@ -31,13 +31,12 @@ pt_BR:
   subscription_status:
     plan: "Plano"
     state: "Status"
+    members: "Membros"
     active_members: "Membros Ativos"
     max_threads: "Maximo de conversas"
     max_members: "Máximo de membros"
     expires_at: "Expira"
     renews_at: "Renova"
-    referral_code: "Carregue o código de referência."
-    chargify_link: "Cadastre o portal de cobrança"
   loomio_tags:
     all_tags: Todas as Tags
     tags: Tags
@@ -144,6 +143,7 @@ pt_BR:
     help: 'Ajuda'
     anonymous: 'Anônimo '
     required: Obrigatório
+    email_address: Endereço de e-mail
     privacy:
       privacy: 'Privacidade'
       public: 'Público'
@@ -179,6 +179,7 @@ pt_BR:
       close: 'Encerrar'
       reopen: 'Reaberto'
       save: 'Salvar'
+      move: 'Mover'
       save_changes: 'Salvar mudanças'
       update_settings: 'Atualizar configurações'
       reply: 'Responder'
@@ -390,6 +391,7 @@ pt_BR:
     confirm_delete: 'Apagar comentário'
     in_reply_to: "Responder a(o) {{name}}"
     write_a_comment: "Escreva um comentario..."
+    post_comment: "Postar comentário"
     submit_button:
       label: 'Publicar'
     private_privacy_notice: 'Seu comentário será visível apenas para os membros de {{groupName}}.'
@@ -520,6 +522,7 @@ pt_BR:
     start_new_thread: Ou, iniciar uma nova conversa
   discussion_form:
     aria_label: 'Formulário da conversa'
+    start_thread: Iniciar tópico
     messages:
       created: 'Conversa iniciada'
       updated: 'Conversa atualizada'
@@ -659,6 +662,7 @@ pt_BR:
   formatting:
     bold: Negrito
     italicize: Italico
+    blockquote: Citação
     strikethrough: Tachado
     underline: Sublinhado
     link: Inserir link
@@ -757,7 +761,6 @@ pt_BR:
     no_threads_here: Nenhuma conversa para ler aqui!
     search_threads: Buscar por conversas…
     private_threads: 'Você precisa ser membro para ver conversas privadas nesse grupo. '
-    no_more_threads: Estas são todas as conversas nesse grupo!
     messages:
       privacy:
         members: 'Este grupo agora está visível apenas para membros'
@@ -858,10 +861,6 @@ pt_BR:
       private_to_group: 'Nome e descrição estarão visíveis apenas para membros'
       private_to_parent_members: 'Nome e descrição estarão visíveis para membros de {{parent}}'
     privacy: 'Privacidade'
-    group_privacy_is_open_description: "Qualquer pessoa pode encontrar o grupo e pedir para participar. Somente membros podem ver quem está no grupo. Todas as conversas são públicas."
-    group_privacy_is_closed_description: "Qualquer pessoa pode encontrar o grupo e pedir para participar. Somente membros podem ver quem está no grupo. Todas as conversas são privados."
-    group_privacy_is_closed_public_threads_description: "Qualquer pessoa pode encontrar o grupo e pedir para participar. Somente membros podem ver quem está no grupo. Conversas podem ser públicas ou privadas."
-    group_privacy_is_secret_description: "Somente membros convidados podem encontrar o grupo, ver quem faz parte e ver as conversas."
     confirm_change_to_secret: "Se você continuar, todos as conversas neste grupo e seus subgrupos serão privadas."
     confirm_change_to_secret_subgroup: 'Se você continuar, todas as conversas serão privadas.'
     confirm_change_to_public: 'Se você continuar, as conversas neste grupo serão públicas na web.'
@@ -1066,22 +1065,12 @@ pt_BR:
   deactivation_modal:
     aria_label: 'Desativar conta de usuário'
     introduction: 'Quando você desativa sua conta:'
-    no_longer_group_member: 'Você deixará de ser listado como membro de todos os grupos'
+    you_will_be_deleted: "Sua conta de usuário, incluindo seu nome, endereço de email e outras informações e dados pessoais serão removidas do nosso sistema."
     name_removed: 'Comentários, propostas e discussões feitas por você permanecerão, mas seu nome será removido dos mesmos'
+    no_longer_group_member: 'Você deixará de ser listado como membro de todos os grupos'
     no_emails: 'Você não receberá mais notificações por email'
     you_can_reactivate: "Você poderá reativar sua conta de usuário depois, se quiser"
     submit: 'Sim, eu quero desativar'
-  delete_user_modal:
-    title: 'Apagar conta do usuário'
-    irreversable: "ATENÇÃO: Isso não poderá ser desfeito, se você seguir adiante:"
-    you_will_be_deleted: "Sua conta de usuário, incluindo seu nome, endereço de email e outras informações e dados pessoais serão removidas do nosso sistema."
-    submit: 'Sim, apague minha conta'
-  deactivate_user_form:
-    aria_label: 'Confirmação de desativação da conta'
-    title: 'Desativar conta'
-    question: 'Você pode nos contar porque está desativando?'
-    placeholder: 'Responder a essa pergunta é opcional. Qualquer informação que você possa compartilhar irá nos ajudar a melhorar :) '
-    submit: 'Desativar conta'
   email_settings_page:
     header: Configurações de notificação
     account_deactivated: Sua conta seu desativada. Você nunca mais receberá qualquer email nosso.
@@ -1265,7 +1254,6 @@ pt_BR:
   move_thread_form:
     aria_label: Mudar conversa
     title: Mudar conversa
-    body: 'Grupo de destino:'
     confirm: Mudar conversa
     confirm_change_to_private_thread: '{{groupName}} é um grupo aberto. Se você continuar, esta conversa será público.'
     messages:
@@ -1325,10 +1313,11 @@ pt_BR:
     meeting_title: Enquete de horário
     ranked_choice_title: Enquete de classificação
   poll_common:
+    vote_now: Vote agora
+    have_your_say: Dê a sua opinião
     your_response: Sua resposta
     change_your_response: Editar resposta
     reason: Motivo
-    reason_placeholder: Algum comentário a mais?
     message: Mensagem
     results: Resultados
     responses: Respostas
@@ -1352,7 +1341,6 @@ pt_BR:
     publish_poll: Compartilhar enquete de escolha
     view_all: Ver tudo
     save_changes: Salvar
-    change_vote: Mudar o voto
     max_score: Pontuação máxima
     min_score: Pontuação mínima
     too_long: Muito longo
@@ -1483,15 +1471,6 @@ pt_BR:
     dot_vote_closed: Enquete de distribuição encerrada
     meeting_closed: Enquete de horário encerrada
     ranked_choice_closed: Enquete de classificação encerrada
-  poll_common_reopen_form:
-    title: Reabrir uma decisão encerrada
-    helptext: Uma enquete fechou antes de você estar pronto? Reabra para coletar mais idéias do grupo.
-    proposal_reopened: Proposta reaberta
-    poll_reopened: Enquete reaberta
-    count_reopened: Enquete de verificação reaberta
-    dot_vote_reopened: Enquete de distribuição reaberta
-    meeting_reopened: Enquete de horário reaberta
-    ranked_choice_reopened: Enquete de classificação reabriu
   poll_common_closing_at_field:
     closing: Encerrando
     closing_hour: Horário de encerramento
@@ -1774,15 +1753,14 @@ pt_BR:
     title: Compartilhar enquete - {{title}}
   auth_form:
     code: '000000'
-    sign_in_to_loomio: Entrar no {{site_name}}
     sign_in_help: Com dificuldade para entrar?
     sign_in: Entrar
     continue: Continuar
     create_account: Criar conta
     sign_in_as: Entrar como {{name}}
     continue_with_provider: Entrar com {{provider}}
-    continue_with_email: Entrar com o email
     or_enter_your_email: Ou, digite o seu endereço de email
+    enter_your_name: Entre seu nome
     invitation_required: Você precisa de um convite para criar uma conta.
     more_providers: Mais
     email_not_present: É necessário um endereço de email
@@ -1794,7 +1772,6 @@ pt_BR:
     email_placeholder: voce@exemplo.com
     login_with_token: Tudo pronto! Clique no link abaixo para seguir.
     login_link_helptext: Clique no botão abaixo e nós enviaremos um link para você entrar.
-    login_link_helptext_with_password: "Digite sua senha, ou entre por meio do email."
     check_spam_folder: Se um email não chegar logo, verifique sua pasta de Mensagens Indesejadas (Spam).
     sign_up_helptext: Por favor, complete esse formulário para criar seu perfil de usuário
     i_accept: "Eu aceito os <a href='{{termsUrl}}' target='_blank'>Termos do serviço</a>, e a <a href='{{privacyUrl}}' target='_blank'>Política de privacidade</a>"
@@ -1862,7 +1839,6 @@ pt_BR:
     warning_helptext: "Atenção: Requer que você autentique com o seu provedor depois que clicar em Salvar."
     idp_metadata_url: URL de Metadados IDP
     idp_metadata_url_placeholder: https://app.meuprovedor.com/saml/metadata/abc123
-    pro_plan_only: Essa funcionalidade só está disponível no Plano Pro. Por favor, verifique nossa <a href="/upgrade" target="_blank">página de planos</a> para mais detalhes.
     success: Single sign-on configurado com sucesso
     destroyed: Single sign-on eliminado
     invalid_idp_metadata_url: URL de Metadados IDP inválido

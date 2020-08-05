@@ -31,14 +31,16 @@ es:
   subscription_status:
     plan: "Proyecto"
     state: "Posición"
+    members: "Integrantes"
     active_members: "Miembros activos"
     max_threads: "Máximo de hilos"
     max_members: "Máximo de miembros"
     expires_at: "Caduca"
     renews_at: "Renueva"
-    referral_code: "Código de referencia chargify"
-    chargify_link: "Portal de facturación chargify"
+    referral_code: "Código de referencia"
+    chargify_link: "Factura electrónica"
     referral_code_help: "Da a un amigo un descuento, consigue para ti un crédito"
+    manage_payment_details: "Gestionar detalles del pago"
   loomio_tags:
     all_tags: Todas las etiquetas
     tags: Etiquetas
@@ -145,6 +147,7 @@ es:
     help: 'Ayuda'
     anonymous: Anónimo
     required: Solicitado
+    email_address: Dirección de correo electrónico
     privacy:
       privacy: 'Privacidad'
       public: 'Público'
@@ -180,6 +183,7 @@ es:
       close: 'Cerrar'
       reopen: 'Reabierto'
       save: 'Guardar'
+      move: 'Mover'
       save_changes: 'Guardar cambios'
       update_settings: 'Actualizar preferencias'
       reply: 'Responder'
@@ -394,6 +398,7 @@ es:
     confirm_delete: 'Eliminar comentario '
     in_reply_to: "Responder a {{name}}"
     write_a_comment: "Añade un comentario..."
+    post_comment: "Publicar comentario"
     submit_button:
       label: 'Enviar'
     private_privacy_notice: 'Su comentario solo será visible para integrantes de {{groupName}}.'
@@ -444,6 +449,8 @@ es:
       comments: 'Comentarios '
     sign_in: 'Iniciar sesión'
     toggle_sidebar: 'Alternar barra lateral'
+    open_sidebar: 'Abrir recuadro'
+    close_sidebar: 'Cerrar recuadro'
     logo_title: 'Página principal'
     group_and_subgroups: '{{group}} y subgrupos'
   user_dropdown:
@@ -524,6 +531,7 @@ es:
     start_new_thread: O empieza un nuevo hilo
   discussion_form:
     aria_label: 'Formulario del hilo'
+    start_thread: Empezar un hilo
     messages:
       created: 'Hilo iniciado'
       updated: 'Hilo actualizado'
@@ -616,6 +624,8 @@ es:
     flash:
       success: '{{count}} notificaciones enviadas'
   action_dock:
+    actions_menu: Menú de acciones
+    more_actions: Más acciones
     react: 'Reaccionar '
     notify: Notificar
     add_resource: Agregar archivo adjunto
@@ -627,6 +637,7 @@ es:
     invite_guests: Gente invitada
     translate_thread: Traducir contexto
     edit_poll: Editar encuesta
+    edit_poll_type: "Editar {{pollType}}"
     move_items: Mover elementos
     announce_poll: 'Invitar a personas a votar '
     announce_poll_active: '(Nadie ha sido invitado aún) '
@@ -660,9 +671,14 @@ es:
     delete_thread: 'Eliminar hilo '
     notification_history: Historial de notificación
     move_item: Mover elemento
+    add_poll_to_thread: Añadir al hilo
   formatting:
+    formatting_tools: Herramientas formateo de texto
+    expand: Mostrar más herramientas de formateo
+    collapse: Mostrar menos herramientas de formateo
     bold: Negrita
     italicize: En cursiva
+    blockquote: Presupuesto
     strikethrough: Tachado
     underline: Subrayado
     link: Inserte un enlace
@@ -707,6 +723,7 @@ es:
     image_size_helptext: 'Tamaño de imagen ideal 100x100px'
     upload_success: 'El logo ha sido cargado con éxito'
   join_group_button:
+    not_a_member: "En estos momentos no eres miembro de este grupo."
     join_group: Unirse al grupo
     membership_requested: Membresía solicitada.
     messages:
@@ -745,6 +762,7 @@ es:
     you_and_name_and_count_more: "Tú, {{name}} y {{count}} más"
     name_and_count_more: "{{name}} y {{count}} más"
   context_panel:
+    aria_intro: "Contexto del hilo {{author}}"
     thread_status:
       pinned: "Este hilo ha sido fijado. Permanecerá en la parte superior de la lista de hilos del grupo para todos los integrantes."
       closed: "Este hilo ha sido cerrado. Ya no aparecerá en el escritorio, y será listado bajo 'Cerrado' en la página principal del grupo"
@@ -769,7 +787,8 @@ es:
     no_threads_here: Ningún hilo para ver aquí!
     search_threads: Buscar hilos ...
     private_threads: Usted debe ser un integrante para ver los hilos privados de este grupo
-    no_more_threads: Esos son todos los hilos en este grupo!
+    no_more_threads: No más hilos para cargar
+    view_closed_threads: 'Echas en falta algo? <a href="{{url}}">Ver hilos cerrados</a>'
     messages:
       privacy:
         members: 'Ahora este grupo es visible sólo para integrantes.'
@@ -872,10 +891,10 @@ es:
       private_to_group: 'El nombre y la descripción solo serán visibles para integrantes. '
       private_to_parent_members: 'El nombre y la descripción serán visibles para los integrantes de {{parent}}'
     privacy: 'Privacidad'
-    group_privacy_is_open_description: "Cualquier persona puede encontrar el grupo y pedir membresía. Solo los integrantes pueden ver quien pertenece al grupo. Todos los hilos son públicos."
-    group_privacy_is_closed_description: "Cualquier persona puede encontrar este grupo y pedir membresía. Sólo los integrantes pueden ver quien pertenece al mismo. Todos los hilos son privados."
-    group_privacy_is_closed_public_threads_description: "Cualquier persona puede encontrar este grupo y pedir membresía. Sólo los integrantes pueden ver quien pertenece al mismo. Los hilos pueden ser públicos o privados."
-    group_privacy_is_secret_description: "Sólo integrantes invitados pueden encontrar este grupo, ver sus integrantes y sus hilos."
+    group_privacy_is_open_description: "Listada públicamente. Cualquiera puede pedir unirse. Todos los hilos son públicos."
+    group_privacy_is_closed_description: "Sin listar. Cualquiera con el enlace puede pedir unirse. Todos los hilos son privados."
+    group_privacy_is_closed_public_threads_description: "Sin listar. Cualquiera con el enlace puede pedir unirse. Los hilos pueden ser públicos o privados."
+    group_privacy_is_secret_description: "Sólo la gente a la que han invitado puede encontrar el grupo. Todos los hilos son privados"
     confirm_change_to_secret: "Si procedes, todos los hilo en este grupo y sus subgrupos se harán privados."
     confirm_change_to_secret_subgroup: 'Si continuas todos los hilos se harán privados.'
     confirm_change_to_public: 'Si continúas, todos los hilos de este grupo se harán públicos en internet.  '
@@ -1081,22 +1100,12 @@ es:
   deactivation_modal:
     aria_label: 'Desactivar la cuenta de usuario'
     introduction: 'Cuando desactiva su cuenta:'
-    no_longer_group_member: 'Ya no serás listado como miembro en ningún grupo'
+    you_will_be_deleted: "Su cuenta de usuario, incluyendo nombre, correo electrónico y otros datos personales serán eliminados del sistema."
     name_removed: 'Los comentarios, propuestas e hilos que ha realizado permanecerán, pero su nombre será retirado de los mismos'
+    no_longer_group_member: 'Ya no serás listado como miembro en ningún grupo'
     no_emails: 'Ya no recibirás notificaciones por correo electrónico'
     you_can_reactivate: "Podrá reactivar su cuenta si lo desea"
     submit: 'Si, quiero desactivar mi cuenta'
-  delete_user_modal:
-    title: 'Eliminar cuenta de usuario'
-    irreversable: "ADVERTENCIA: Esto es permanente, si continuas: "
-    you_will_be_deleted: "Su cuenta de usuario, incluyendo nombre, correo electrónico y otros datos personales serán eliminados del sistema."
-    submit: 'Sí, elimina mi cuenta '
-  deactivate_user_form:
-    aria_label: 'Confirmar la desactivación de la cuenta '
-    title: 'Desactiva cuenta '
-    question: '¿Nos contaría por qué desactiva su cuenta?'
-    placeholder: 'Contestar a esta pregunta es opcional. Cualquier información que compartas nos ayudará a mejorar :)'
-    submit: 'Desactiva cuenta '
   email_settings_page:
     header: Ajustes de notificación
     account_deactivated: Tu cuenta ha sido desactivada. Ya nunca recibirás más emails.
@@ -1211,6 +1220,7 @@ es:
     title: Visto por
     no_one: Nadie ha visto esto todavía
   activity_card:
+    aria_label: "Comenta o comienza un sondeo"
     count_responses: "{{count}} respuestas"
     event_pinned: "Anclado para cronograma"
     event_unpinned: "Desanclado de cronograma"
@@ -1234,6 +1244,7 @@ es:
   thread_group:
     aria_label: 'Nombre del grupo'
   thread_context:
+    current_poll_type_banner: Actual {{pollType}}
     item_maybe_deleted: "No se puede encontrar el sitio solicitado dentro de este hilo. Debe haber sido borrado."
     aria_label: 'Contexto del hilo'
     thread_options: 'Preferencias del hilo'
@@ -1280,7 +1291,7 @@ es:
   move_thread_form:
     aria_label: Mover hilo
     title: Mover hilo
-    body: 'Grupo de destino:'
+    body: Grupo destino
     confirm: 'Mover hilo '
     confirm_change_to_private_thread: '{{groupName}} es un grupo público. Si continuas, este hilo se hará público.'
     messages:
@@ -1344,10 +1355,12 @@ es:
     meeting_title: Coordinar horario
     ranked_choice_title: Opción priorizada
   poll_common:
+    vote_now: Votar ahora
+    have_your_say: Denos su opinión
     your_response: Su respuesta
     change_your_response: Editar respuesta
     reason: Razón
-    reason_placeholder: ¿Algún otro comentario?
+    reason_placeholder: Explica brevemente por qué has votado de esta manera
     message: Mensaje
     results: Resultados
     responses: Respuestas
@@ -1364,6 +1377,8 @@ es:
     details: Detalles
     participant_name: Su nombre
     participant_email: Dirección de correo electrónico
+    submit_vote: Presentar el voto
+    update_vote: Actualizar el voto
     share_poll: Compartir encuesta
     share_proposal: Compartir propuesta
     share_count: 'Compartir Comprobación '
@@ -1371,7 +1386,7 @@ es:
     publish_poll: Compartir encuesta
     view_all: Ver todo
     save_changes: Guardar
-    change_vote: Cambiar voto
+    change_vote: Cambiar tu voto
     max_score: Máximo marcador
     min_score: Mínimo Marcador
     too_long: Demasiado largo
@@ -1389,6 +1404,7 @@ es:
       options_added: Nuevas opciones añadidas
   poll_common_card:
     show_results: Mostrar resultados
+    hide_results: Ocultar resultados
     deleted: Este sondeo ha sido eliminado
   poll_common_index_card:
     title: Decisiones anteriores
@@ -1512,14 +1528,12 @@ es:
     meeting_closed: Coordinación de horario cerrada
     ranked_choice_closed: Encuesta de opción priorizada ha cerrado
   poll_common_reopen_form:
-    title: 'Reabrir una decisión cerrada '
-    helptext: ¿Se cerró una decisión antes de estar listos? Reábrala para poder recoger más posicionamientos del grupo.
-    proposal_reopened: Propuesta reabierta
-    poll_reopened: Encuesta reabierta
-    count_reopened: Comprobación reabierta
-    dot_vote_reopened: Voto de puntos reabierto
-    meeting_reopened: Coordinación horaria reabierta
-    ranked_choice_reopened: Opción priorizada reabierta
+    title: "Volver a abrir {{poll-type}}"
+    helptext: "Vuelve a abrir el {{poll_type}} si la gente necesita más tiempo para participar"
+    success: "{{poll_type}} reabierto"
+  poll_common_move_form:
+    title: "Mover {{poll_type}}"
+    success: "{{poll_type}} se ha movido a {{group}}"
   poll_common_closing_at_field:
     closing: Cerrando
     closing_hour: Hora de clausura
@@ -1577,6 +1591,7 @@ es:
     closing: Cerrando
     closed: 'Cerrado '
     start: Iniciar
+    start_poll_type: Comenzar {{poll_type}}
     update: Actualizar
     reminder_note: 24 horas antes del cierre, se le enviará un recordatorio a todos los participantes
     loomio_school_link: |
@@ -1771,6 +1786,13 @@ es:
     stance_created: 'Opción registrada '
     stance_updated: Opción actualizada
   thread_item:
+    aria:
+      deleted: Elemento eliminado
+      new_comment: "{{actor}} comentado. {{when}}"
+      poll_created: "{{actor}} ha iniciado un {{pollType}}. {{when}}"
+      stance_created: "{{actor}} ha votado. {{when}}"
+      outcome_created: "{{actor}} ha compartido un  resultado.{{when}}"
+      poll_expired: "{{pollType}} cerrado. {{when}}"
     removed: "Elemento eliminado"
     comment_replied_to: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>en respuesta a <strong>{{title}}</strong>"
     discussion_title_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>ha editado el título del hilo"
@@ -1803,20 +1825,24 @@ es:
     what_is_this: "Este es un ejemplo en vivo de {{type}}. Usted es un participante - ¡Inténtelo!"
   share_poll_page:
     title: Compartir encuesta - {{title}}
+  add_poll_to_thread_modal:
+    success: "Éxito, {{poll_type}} añadido al hilo"
   auth_form:
     code: '000000'
-    youre_invited: Se te ha invitado a unirte a {{group-name}}. Iniciar sesión para continuar
-    youre_invited_discussion: Se te ha invitado a unirte al debate. Iniciar sesión para continuar
-    youre_invited_poll: Se te ha invitado a votar. Iniciar sesión para continuar
-    sign_in_to_loomio: Entrar a {{site_name}}
+    youre_invited: Te han invitado a unirte al grupo {{group_name}}.
+    youre_invited_discussion: Te han invitado a unirte a la conversación.
+    youre_invited_poll: Te han invitado a votar.
+    sign_in_to_loomio: Registrarse en {{site_name}}
     sign_in_help: ¿Problemas para iniciar sesión?
     sign_in: Entrar
     continue: 'Continua '
     create_account: Crear una cuenta
+    sign_up_as: Registrarse como {{email}}
     sign_in_as: Ingresa como {{name}}
     continue_with_provider: Iniziar sesión con {{provider}}
-    continue_with_email: Iniciar sesión con email
+    continue_with_email: Continuar con email
     or_enter_your_email: O, introduzca su dirección de correo electrónico
+    enter_your_name: Ingresa tu nombre
     invitation_required: Necesitas una invitación para crear una cuenta
     more_providers: Más
     email_not_present: Se necesita una dirección de correo
@@ -1828,7 +1854,7 @@ es:
     email_placeholder: correo@dominio.com
     login_with_token: Ya está todo listo! Haz click en el enlace de abajo para continuar
     login_link_helptext: Haz click en el botón de abajo y te enviaremos un enlace para iniciar sesión.
-    login_link_helptext_with_password: "Introduzca su contraseña, o inicie sesión con un correo electrónico."
+    enter_your_password: "Introduce tu contraseña para continuar"
     check_spam_folder: Si no te llega el email pronto consulta la carpeta de correo spam.
     sign_up_helptext: Porfavor completa este formulario para crear una cuenta de usuario
     i_accept: "Acepto los <a href='{{termsUrl}}' target='_blank'>Términos del servicio</a> y la <a href='{{privacyUrl}}' target='_blank'>Política de privacidad</a>"
@@ -1842,6 +1868,7 @@ es:
     welcome_back: Bienvenido nuevamente, {{name}}!
     forgot_password: Olvidó contraseña
     login_link: Enviar email para iniciar sesión
+    sign_in_via_email: regístrate a través del email
     set_password: Configura la contraseña
     set_password_helptext: ¿Quieres usar una contraseña la próxima vez?
     hello: "Hola, {{name}}!"
@@ -1905,7 +1932,6 @@ es:
     warning_helptext: "Advertencia: Se te requerirá autentificar con tu proveedor después de clicar guardar"
     idp_metadata_url: IDP Metadatos URL
     idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
-    pro_plan_only: Esta función está solamente disponible para clientes con el plan Pro. Por favor verificar nuestra <a href="/upgrade" target="_blank">pagina de actualización</a>para más detalles.
     success: Registro individual se ha configurado con éxito
     destroyed: Se ha eliminado el registro individual
     invalid_idp_metadata_url: IDP Metadatos URL inválida

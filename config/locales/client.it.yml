@@ -15,6 +15,8 @@ it:
     trial: Prova
   current_plan_button:
     upgrade: Aggiorna
+  subscription_status:
+    members: "Membri"
   loomio_tags:
     tags: Etichette
     apply_tags: Inserisci etichette
@@ -100,6 +102,7 @@ it:
     settings: 'Configurazione'
     help: 'Aiuto'
     anonymous: Anonimo
+    email_address: La tua email
     privacy:
       privacy: 'Privacy'
       public: 'Pubblico'
@@ -133,6 +136,7 @@ it:
       close: 'Chiudi'
       reopen: 'Riapri'
       save: 'Salva'
+      move: 'Sposta'
       save_changes: 'Salva'
       update_settings: 'Aggiorna impostazioni'
       reply: 'Rispondi'
@@ -311,6 +315,7 @@ it:
     confirm_delete: 'Cancella commento'
     in_reply_to: "Rispondi a {{name}}"
     write_a_comment: "Scrivi un commento..."
+    post_comment: "Pubblica un commento"
     submit_button:
       label: 'Messaggio'
     private_privacy_notice: 'Il tuo commento sarà visibile solamente ai membri di {{groupName}}.'
@@ -430,6 +435,7 @@ it:
     move: Sposta
   discussion_form:
     aria_label: 'Modulo discussione'
+    start_thread: Inizia una discussione
     messages:
       created: 'Discussione lanciata'
       updated: 'Discussione aggiornata'
@@ -643,10 +649,6 @@ it:
       private_to_group: 'Il nome e la descrizione saranno visibili solamente ai membri'
       private_to_parent_members: 'Nome e descrizione sarà visibile ai membri di {{parent}}'
     privacy: 'Privacy'
-    group_privacy_is_open_description: "Tutti/e possono trovare il gruppo e chiedere di iscriversi. Solo i membri possono vedere chi è nel gruppo. Tutte le discussioni sono pubbliche."
-    group_privacy_is_closed_description: "Tutti/e possono trovare il gruppo e chiedere di iscriversi. Solo i membri possono vedere chi è nel gruppo. Tutte le discussioni sono private."
-    group_privacy_is_closed_public_threads_description: "Tutti/e possono trovare il gruppo e chiedere di iscriversi. Solo i membri possono vedere chi è nel gruppo. Le discussioni possono essere pubbliche o private."
-    group_privacy_is_secret_description: "Solo i membri invitati possono trovare il gruppo, vedere chi è al suo interno e vedere le discussioni."
     confirm_change_to_secret: "Se procedi, tutte le discussioni in questo gruppo ed i suoi sottogruppi saranno resi private."
     confirm_change_to_secret_subgroup: 'Se procedi, tutte le discussioni saranno rese private.'
     confirm_change_to_public: 'Se procedi, tutte le discussioni in questo gruppo saranno rese pubbliche e visibili in rete. '
@@ -804,21 +806,12 @@ it:
     password_changed: La tua password è stata aggiornata
   deactivation_modal:
     introduction: 'Quando disattivi il tuo account:'
-    no_longer_group_member: 'Non sarai più listato/a come membro di alcun gruppo.'
+    you_will_be_deleted: "Il tuo account, compresi nome, indirizzo email e gli altri dati personali verranno cancellati dal nostro sistema."
     name_removed: 'I tuoi commenti, le tue proposte e le tue discussioni rimarranno, ma il tuo nome verrà rimosso'
+    no_longer_group_member: 'Non sarai più listato/a come membro di alcun gruppo.'
     no_emails: 'Non riceverai più email di notifica'
     you_can_reactivate: "Se tu vorrai, potrai riattivare il tuo account in futuro"
     submit: 'Sì, voglio disattivare'
-  delete_user_modal:
-    irreversable: "ATTENZIONE: Questa operazione è irreversibile. Se continuerai:"
-    you_will_be_deleted: "Il tuo account, compresi nome, indirizzo email e gli altri dati personali verranno cancellati dal nostro sistema."
-    submit: 'Si, voglio che il mio account sia cancellato'
-  deactivate_user_form:
-    aria_label: 'Conferma di disattivazione dell''account'
-    title: 'Disattiva l''account'
-    question: 'Vuoi dirci perchè disattivi il tuo account?'
-    placeholder: 'Rispondere a questa domanda è facoltativo. Ogni informazione che condividi con noi ci aiuterà a migliorare :)'
-    submit: 'Disattiva l''account'
   email_settings_page:
     header: Impostazioni notifiche
     email_newsletter: Loomio Newsletter
@@ -970,6 +963,8 @@ it:
     meeting_title: Sondaggio per incontro
     ranked_choice_title: Scelta di preferenze
   poll_common:
+    vote_now: Vota ora
+    have_your_say: Dite la vostra
     your_response: La tua risposta
     reason: Motivo
     message: Messaggio
@@ -1179,12 +1174,11 @@ it:
     receive_updates_helptext: Se vuoi ricevere un'email sul risultato del sondaggio, inserisci la tua email qui sotto
     subscribe: Iscriviti
   auth_form:
-    sign_in_to_loomio: Iscriviti a {{site_name}}
     sign_in: Iscriviti
     sign_in_as: Autenticati come {{name}}
     or_enter_your_email: Oppure, inserisci il tuo indirizzo di email
+    enter_your_name: Inserisci il tuo nome
     invalid_password: "Spiacente, ma la password non corrisponde con quella che abbiamo archiviato."
-    login_link_helptext_with_password: "Inserisci la tua password, o autenticati via email."
     name_placeholder: Il tuo nome
     set_password: Imposta password
     check_your_email: Guarda nella tua casella di posta!

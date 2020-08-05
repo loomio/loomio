@@ -49,7 +49,7 @@ describe API::StancesController do
       expect(json['stances'][1]['id']).to eq recent_stance.id
     end
 
-    it 'does not reveal participant for other peoples votes' do
+    it 'anonymous does not reveal participant for other peoples votes' do
       my_stance    = create(:stance, participant: user, poll: poll)
       other_stance = create(:stance, poll: poll)
       poll.update(anonymous: true)
@@ -58,11 +58,12 @@ describe API::StancesController do
 
       json = JSON.parse(response.body)
       stance_ids = json['stances'].map { |s| s['id'] }
-      user_ids   = json['users'].map   { |u| u['id'] }
+      user_ids   = json['stances'].map { |u| u['participant_id'] }
 
       expect(stance_ids).to include my_stance.id
+      expect(json['stances'].find{|s| s['my_stance']}['id'] ).to eq my_stance.id
       expect(stance_ids).to include other_stance.id
-      expect(user_ids).to include my_stance.participant_id
+      expect(user_ids).to_not include my_stance.participant_id
       expect(user_ids).to_not include other_stance.participant_id
     end
 
@@ -255,7 +256,6 @@ describe API::StancesController do
       json = JSON.parse(response.body)
       expect(json['stances'].length).to eq 1
       expect(json['stances'][0]['id']).to eq stance.id
-      expect(json['poll_options'].map { |o| o['name'] }).to include poll_option.name
     end
 
     it 'overwrites existing stances' do

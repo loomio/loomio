@@ -71,7 +71,7 @@ export default
 
     maxThreads: ->
       return null unless @discussion.group()
-      @discussion.group().parentOrSelf().subscriptionMaxThreads
+      @discussion.group().parentOrSelf().subscription.max_threads
 
     threadCount: ->
       return unless @discussion.group()
@@ -82,7 +82,7 @@ export default
 
     subscriptionActive: ->
       return true unless @discussion.group()
-      @discussion.group().parentOrSelf().subscriptionActive
+      @discussion.group().parentOrSelf().subscription.active
 
     canStartThread: ->
       @subscriptionActive && !@maxThreadsReached
@@ -116,7 +116,7 @@ v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.cap
       validation-errors(:subject='discussion', field='title')
       lmo-textarea(:model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")
         template(v-slot:actions)
-          v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled || !discussion.groupId" v-t="'common.action.start'" v-if="discussion.isNew()")
+          v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled || !discussion.groupId" v-t="'discussion_form.start_thread'" v-if="discussion.isNew()")
           v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-t="'common.action.save'" v-if="!discussion.isNew()")
       v-list-item.discussion-form__privacy-notice
         v-list-item-avatar

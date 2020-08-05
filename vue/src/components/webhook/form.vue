@@ -29,7 +29,7 @@ export default
 <template lang="pug">
 v-card.webhook-form
   v-card-title
-    h1.headline(v-t="'webhook.add_webhook'")
+    h1.headline(tabindex="-1" v-t="'webhook.add_webhook'")
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text.install-webhook-form

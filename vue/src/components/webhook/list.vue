@@ -49,7 +49,7 @@ export default
 <template lang="pug">
 v-card.webhook-list
   v-card-title
-    h1.headline(v-t="'webhook.webhooks'")
+    h1.headline(tabindex="-1" v-t="'webhook.webhooks'")
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text

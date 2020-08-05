@@ -68,8 +68,8 @@ export default
 <template lang="pug">
 .membership-dropdown.lmo-no-print(v-if='canPerformAction()')
   v-menu.lmo-dropdown-menu(offset-y)
-    template(v-slot:activator="{on}")
-      v-btn.membership-dropdown__button(icon v-on="on")
+    template(v-slot:activator="{on, attrs}")
+      v-btn.membership-dropdown__button(icon v-on="on" v-bind="attrs")
         //- span(v-t="'membership_dropdown.membership_options'")
         v-icon mdi-dots-vertical
     v-list.group-actions-dropdown__menu-content

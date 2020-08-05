@@ -37,6 +37,7 @@ export default class PollModel extends BaseModel
     files: []
     imageFiles: []
     attachments: []
+    pleaseShowResults: false
 
   audienceValues: ->
     name: @group().name
@@ -106,13 +107,13 @@ export default class PollModel extends BaseModel
     !!@details
 
   isActive: ->
-    !@closedAt?
+    !@discardedAt && !@closedAt?
 
   isClosed: ->
     @closedAt?
 
   showResults: ->
-    @closedAt? || !@hideResultsUntilClosed
+    @closedAt? || (!@hideResultsUntilClosed && ((@myStance() || {}).castAt || @pleaseShowResults))
 
   close: =>
     @processing = true
@@ -125,6 +126,10 @@ export default class PollModel extends BaseModel
   addOptions: =>
     @processing = true
     @remote.postMember(@key, 'add_options', poll_option_names: @pollOptionNames).finally => @processing = false
+
+  addToThread: (discussionId) =>
+    @processing = true
+    @remote.patchMember(@keyOrId(), 'add_to_thread', { discussion_id: discussionId }).finally => @processing = false
 
   toggleSubscription: =>
     @remote.postMember(@key, 'toggle_subscription')
