@@ -22,6 +22,10 @@ addons:
       - log/
     target_paths:
       - ${SCREENSHOTS_PATH}
+
+services:
+  - redis-server
+  
 env:
   global:
     - DB=postgresql
