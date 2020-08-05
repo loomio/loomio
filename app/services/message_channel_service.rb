@@ -6,7 +6,7 @@ class MessageChannelService
 
   def self.serialize_models(models, serializer: nil, scope: {}, root: nil)
     models = Array(models)
-    model = models.first
+    return unless model = models.first
     serializer ||= model.is_a?(Event) ? Events::BaseSerializer : "#{model.class}Serializer".constantize
     root       ||= model.is_a?(Event) ? 'events' : model.class.to_s.pluralize.downcase
     ActiveModel::ArraySerializer.new(models, scope: scope, each_serializer: serializer, root: root)
