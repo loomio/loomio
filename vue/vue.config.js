@@ -44,8 +44,8 @@ module.exports = env => {
         sass: {
           sassOptions: {
             includePaths: ["src/css", "node_modules/"]
-          },
-          prependData: `@import "main.scss"`
+          }
+          // prependData: `@import "main.scss"`
         }
       }
     }
