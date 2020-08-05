@@ -1,6 +1,8 @@
 sv:
   current_plan_button:
     upgrade: Uppgradera
+  subscription_status:
+    members: "Medlemmar"
   loomio_tags:
     name_label: Namn
   reactions:
@@ -62,6 +64,7 @@ sv:
     settings: 'Inställningar'
     help: 'Hjälp'
     anonymous: Anonym
+    email_address: Emailadress
     privacy:
       privacy: 'Integritet'
       public: 'Offentlig'
@@ -259,6 +262,7 @@ sv:
     confirm_delete: 'Ta bort kommentar'
     in_reply_to: "Svara till {{name}} "
     write_a_comment: "Skriv en kommentar..."
+    post_comment: "Skicka kommentar"
     submit_button:
       label: 'Lägg upp'
     private_privacy_notice: 'Din kommentar kommer bara vara synlig för medlemmar av {{groupName}}.'
@@ -400,6 +404,7 @@ sv:
     meeting_title: Tidsröstning
     ranked_choice_title: Valfritt val
   poll_common:
+    have_your_say: Gör din röst hörd
     save_changes: Spara
   discussions_panel:
     open: Öppen

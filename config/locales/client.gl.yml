@@ -1,4 +1,6 @@
 gl:
+  subscription_status:
+    members: "Membros"
   loomio_tags:
     name_label: Nome
   common:
@@ -7,6 +9,7 @@ gl:
       pm: pm
     group: 'Grupo'
     groups: 'Grupos'
+    email_address: Dirección de correo electrónico
     privacy:
       public: 'Público'
       private: 'Privado'
@@ -37,6 +40,7 @@ gl:
   comment_form:
     edit_comment: 'Editar commentario'
     delete_comment: 'Borrar comentario'
+    post_comment: "Facer comentario"
   sidebar:
     threads: 'Debates'
   navbar:

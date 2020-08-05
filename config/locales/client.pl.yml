@@ -31,13 +31,12 @@ pl:
   subscription_status:
     plan: "Plan"
     state: "Status"
+    members: "Członkowie"
     active_members: "Aktywni członkowie"
     max_threads: "Maksymalna liczba wątków"
     max_members: "Maksymalna liczba członków"
     expires_at: "Wygasa"
     renews_at: "Odnawia"
-    referral_code: "Chargify kod polecający"
-    chargify_link: "Portal rozliczeniowy Chargify"
     referral_code_help: "Daj przyjacielowi zniżkę, zdobądź trochę kredytów!"
   loomio_tags:
     all_tags: Wszystkie tagi
@@ -145,6 +144,7 @@ pl:
     help: 'Pomoc'
     anonymous: Anonimowo
     required: Wymagane
+    email_address: Adres e-mail
     privacy:
       privacy: 'Prywatność'
       public: 'Publiczna'
@@ -522,6 +522,7 @@ pl:
     start_new_thread: Lub, załóż nowy wątek
   discussion_form:
     aria_label: 'Formularz wątku'
+    start_thread: Rozpoczęcie wątku
     messages:
       created: 'Wątek rozpoczęty'
       updated: 'Wątek zmieniony'
@@ -661,6 +662,7 @@ pl:
   formatting:
     bold: Pogrubienie
     italicize: Kursywa
+    blockquote: Cytat
     strikethrough: Przekreślenie
     underline: Podkreśnie
     link: Wstaw link
@@ -1311,10 +1313,11 @@ pl:
     meeting_title: Ankieta datowa
     ranked_choice_title: Wybór rankingowy
   poll_common:
+    vote_now: Głosuj teraz
+    have_your_say: Wypowiedz się
     your_response: Twoja odpowiedź
     change_your_response: Edytuj odpowiedź
     reason: Powód
-    reason_placeholder: Jakieś dodatkowe komentarze?
     message: Wiadomość
     results: Wyniki
     responses: Odpowiedzi
@@ -1338,7 +1341,6 @@ pl:
     publish_poll: Udostępnij ankietę
     view_all: Pokaż wszystkie
     save_changes: Zapisz
-    change_vote: Zmień głos
     max_score: Maksymalny wynik
     min_score: Minimalny wynik
     too_long: Za długo

@@ -1,9 +1,12 @@
 vi:
+  subscription_status:
+    members: "Thành viên"
   loomio_tags:
     name_label: Tên
   common:
     group: 'Nhóm'
     groups: 'Các nhóm'
+    email_address: Địa chỉ email
     models:
       proposal: 'Lời đề nghị'
     action:
@@ -26,6 +29,7 @@ vi:
   comment_form:
     delete_comment: 'Xóa bình luận'
     confirm_delete_message: 'Bạn có chắc muốn xóa bình luận này?'
+    post_comment: "Đăng bình luận"
   sidebar:
     threads: 'Các phần thảo luận'
   navbar:
@@ -85,6 +89,7 @@ vi:
     proposal: 'Gợi ý về việc viết lời đề nghị theo hướng rõ ràng nhất'
     vote: 'Bạn có thể thay đổi kiến nghị của bạn vào bất kỳ thời điểm nào'
   poll_common:
+    have_your_say: Phát biểu ý kiến của bạn
     save_changes: Lưu
   discussions_panel:
     closed: Đã đóng lại

@@ -11,6 +11,8 @@ ar:
     trial: محاكمة
   current_plan_button:
     upgrade: تحديث
+  subscription_status:
+    members: "أعضاء"
   loomio_tags:
     tags: الوسوم
     apply_tags: تطبيق الوسوم
@@ -44,6 +46,7 @@ ar:
     settings: 'الإعدادات'
     help: 'المساعدة'
     anonymous: مجهول
+    email_address: عنوان البريد الإلكتروني
     privacy:
       privacy: 'الخصوصية'
       public: 'عام'
@@ -191,6 +194,7 @@ ar:
     confirm_delete_message: 'هل أنت متأكد من أنك تريد حذف هذا التعليق؟'
     confirm_delete: 'حذف التعليق'
     in_reply_to: "إجابة على {{name}}"
+    post_comment: "أكتب تعليقا"
     submit_button:
       label: 'نشر'
     private_privacy_notice: 'تعليقك سيظهر فقط لأعضاء مجموعة {{groupName}} '
@@ -258,6 +262,7 @@ ar:
   discussion_fork_actions:
     move: نقل
   discussion_form:
+    start_thread: إبدأ موضوعاً
     messages:
       created: 'تم بدء الموضوع'
       updated: 'تم تحديث الموضوع'
@@ -616,6 +621,7 @@ ar:
     poll_title: استطلاع رأي
     meeting_title: استطلاع الوقت
   poll_common:
+    have_your_say: 'شارك برأيك '
     reason: السبب
     results: النتائج
     responses: استجابات
@@ -663,6 +669,7 @@ ar:
     no_thanks: لا شكرًا
   auth_form:
     sign_in: تسجيل الدخول
+    enter_your_name: ادخل اسمك
     more_providers: المزيد
     invalid_password: "عذرًا ، كلمة المرور هذه لا تتطابق مع كلمة المرور المسجلة لدينا"
     email_placeholder: you@example.com

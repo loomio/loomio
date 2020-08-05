@@ -447,8 +447,6 @@ nl_NL:
     body:
       voted: '<strong>%{participant}</strong>:'
   comment_by: Reactie door %{comment_author}
-  personal_data:
-    title: Persoonlijk data van %{user_name} op %{host_name}
   notified:
     no_matches_found: "Geen resultaten gevonden voor '%{query}'"
     group_users: "(%{count} mensen)"

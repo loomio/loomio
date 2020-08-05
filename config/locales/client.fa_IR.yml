@@ -1,4 +1,6 @@
 fa_IR:
+  subscription_status:
+    members: "اعضا"
   reactions:
     slight_smile: دوست داشتن
     heart: عشق

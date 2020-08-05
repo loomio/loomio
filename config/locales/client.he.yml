@@ -16,6 +16,8 @@ he:
     trial: ניסיון
   current_plan_button:
     upgrade: שדרג
+  subscription_status:
+    members: "חברים"
   loomio_tags:
     tags: תגיות
     apply_tags: החל תגיות
@@ -97,6 +99,7 @@ he:
     settings: 'הגדרות'
     help: 'עזרה'
     anonymous: אנונימי
+    email_address: כתובת דוא"ל
     privacy:
       privacy: 'פרטיות'
       public: 'פתוח לציבור'
@@ -296,6 +299,7 @@ he:
     confirm_delete: 'מחק הערה'
     in_reply_to: "הגב ל{{name}}"
     write_a_comment: "כתוב הערה..."
+    post_comment: "שלחו תגובה"
     submit_button:
       label: 'פוסט'
     private_privacy_notice: 'ההערה שלך תהיה זמינה לצפייה רק לחברים בקבוצה {{groupName}}.'
@@ -1023,10 +1027,11 @@ he:
     meeting_title: הצבעת זמן
     ranked_choice_title: דירוג בחירה
   poll_common:
+    vote_now: הצבע עכשיו
+    have_your_say: חייב להגיד
     your_response: תגובתך
     change_your_response: ערוך תגובה
     reason: סיבה
-    reason_placeholder: הערות נוספות?
     message: הודעה
     results: תוצאות
     responses: תגובות
@@ -1049,7 +1054,6 @@ he:
     publish_poll: שתף סקר
     view_all: צפה בכל
     save_changes: שמירה
-    change_vote: שנה הצבעה
   poll_common_attachment_form:
     label: קבצים מצורפים
   poll_common_add_option:
@@ -1138,15 +1142,6 @@ he:
     dot_vote_closed: בחירת נקודות סגורה
     meeting_closed: סקר תחום בזמן סגור
     ranked_choice_closed: סקר לפי דרוג סגור
-  poll_common_reopen_form:
-    title: פתח מחדש החלטה סגורה
-    helptext: האם ההחלטה נסגרה לפני שהיית מוכן? פתח מחדש לאיסוף עוד עמדות מהקבוצה.
-    proposal_reopened: הצעה נפתחה מחדש
-    poll_reopened: סקר נפתח מחדש
-    count_reopened: בחירה נפתחה מחדש
-    dot_vote_reopened: בחירת נקודות נפתחה מחדש
-    meeting_reopened: סקר תחום בזמן נפתח מחדש
-    ranked_choice_reopened: סקר לפי דירוג נפתחה מחדש
   poll_common_closing_at_field:
     closing: סוגרים
   poll_card:
@@ -1366,12 +1361,12 @@ he:
   share_poll_page:
     title: שתף סקר - {{title}}
   auth_form:
-    sign_in_to_loomio: התחבר ל{{site_name}}
     sign_in: התחבר
     continue: המשך
     create_account: צור חשבון
     sign_in_as: הרשם כ{{name}}
     or_enter_your_email: או, הכנס את המייל שלך
+    enter_your_name: הזן את שמך
     more_providers: עוד
     email_not_present: כתובת מייל נדרשת כאן
     invalid_email: "סליחה, אבל זה לא נראה כמו כתובת מייל תקינה"
@@ -1382,7 +1377,6 @@ he:
     email_placeholder: you@example.com
     login_with_token: 'אתה מוכן ומזומן! לחץ על הלינק למטה להמשיך. '
     login_link_helptext: לחץ על הכפתור למטה ואנחנו נשלח לך לינק להתחברות.
-    login_link_helptext_with_password: "הכנס את סיסמתך, או הרשם דרך המייל."
     check_spam_folder: אם המייל לא מגיע אליך בקרוב, בדוק בתיקיית הספאם.
     sign_up_helptext: אנא השלם טופס זה ליצירת חשבון משתמש
     i_accept: "אני מאשר את <a href='{{termsUrl}}' target='_blank'>תנאי השימוש</a> ואת <a href='{{privacyUrl}}' target='_blank'>מדיניות הפרטיות</a>"

@@ -28,6 +28,8 @@ uk:
     was_gift_trial: "Ваша група використовує Loomio безкоштовно з {{createdDate}}. Ми не можемо продовжувати надавати послуги безкоштовно. We are unable to continue providing a free service. Оновіть план, щоб продовжити користуватись Loomio. <a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>Дізнатись більше.</a>"
     was_gift_remaining: "{{days}} днів залишилось."
     was_gift_expired: "Ваш безкоштовний план закінчився."
+  subscription_status:
+    members: "Учасники"
   loomio_tags:
     all_tags: Всі мітки
     tags: Мітки
@@ -132,6 +134,7 @@ uk:
     settings: 'Налаштування'
     help: 'Допомога'
     anonymous: Анонімний
+    email_address: Адреса електроної пошти
     privacy:
       privacy: 'Конфіденційність'
       public: 'Відкрита'
@@ -368,6 +371,7 @@ uk:
     confirm_delete: 'Видалити коментар'
     in_reply_to: "Відповісти {{name}}"
     write_a_comment: "Додати коментар..."
+    post_comment: "Опублікувати коментар"
     submit_button:
       label: 'Опублікувати'
     private_privacy_notice: 'Ваш коментар зможуть бачити тільки учасники {{groupName}}.'
@@ -495,6 +499,7 @@ uk:
     moved: Переміщення коментарів може зайняти певний час
   discussion_form:
     aria_label: 'Форма для теми'
+    start_thread: Створити тему
     messages:
       created: 'Тему створено'
       updated: 'Оновленні теми'
@@ -629,6 +634,7 @@ uk:
   formatting:
     bold: Жирний
     italicize: Курсив
+    blockquote: Цитата
     strikethrough: Закреслений
     underline: Підкреслений
     link: Додайте посилання
@@ -1248,10 +1254,11 @@ uk:
     meeting_title: Опитування щодо часу
     ranked_choice_title: Ранговий вибір
   poll_common:
+    vote_now: Проголосувати зараз
+    have_your_say: Висловіть свою думку
     your_response: Ваша відповідь
     change_your_response: Редагувати відповідь
     reason: Аргумент
-    reason_placeholder: Маєте додаткові коментарі?
     message: Повідомлення
     results: Результати
     responses: Відповіді
@@ -1275,7 +1282,6 @@ uk:
     publish_poll: Поширити опитування
     view_all: Переглянути всі
     save_changes: Зберегти
-    change_vote: Змінити голос
     max_score: Максимальна оцінка
     min_score: Мінімальна оцінка
     too_long: Занадто довгий
@@ -1406,15 +1412,6 @@ uk:
     dot_vote_closed: Відбіркове голосування закрито
     meeting_closed: Опитування щодо часу закрито
     ranked_choice_closed: Опитування щодо рангового вибору закрито
-  poll_common_reopen_form:
-    title: Відновити закрите рішення
-    helptext: Рішення було закрито, перш ніж ви були готові до цього? Відновіть його знов, аби зібрати більше позицій від групи.
-    proposal_reopened: Пропозицію відновлено
-    poll_reopened: Опитування відновлено
-    count_reopened: Контрольний список відновлено
-    dot_vote_reopened: Відбіркове голосування відновлено
-    meeting_reopened: Опитування щодо часу відновлено
-    ranked_choice_reopened: Рейтингове опитування відновлено
   poll_common_closing_at_field:
     closing: Закривається
     closing_hour: Час закриття
@@ -1693,14 +1690,13 @@ uk:
     title: Поширити опитування - {{title}}
   auth_form:
     code: '000000'
-    sign_in_to_loomio: Увійти до {{site_name}}
     sign_in: Увійти
     continue: Продовжити
     create_account: Створити обліковий запис
     sign_in_as: Увійти як {{name}}
     continue_with_provider: Увійти через {{provider}}
-    continue_with_email: Увійти за допомогою пошти
     or_enter_your_email: Або введіть свою адресу електронної пошти
+    enter_your_name: Введіть ваше ім'я
     invitation_required: Вам потрібно запрошення, щоб створити обліковий запис.
     more_providers: Бiльше
     email_not_present: Потрібна адреса електронної пошти
@@ -1712,7 +1708,6 @@ uk:
     email_placeholder: you@example.com
     login_with_token: Все готово! Натисніть посилання нижче, щоб продовжити.
     login_link_helptext: Натисніть кнопку нижче, і ми надішлемо вам посилання для входу.
-    login_link_helptext_with_password: "Введіть пароль або увійдіть через електронну пошту."
     check_spam_folder: Якщо лист не надійшов, перевірте папку зі спамом.
     sign_up_helptext: Заповніть цю форму, щоб створити обліковий запис
     i_accept: "Я погоджуюсь з <a href='{{termsUrl}}' target='_blank'>Умовами використання</a> та <a href='{{privacyUrl}}' target='_blank'>Політикою конфіденційності</a>"

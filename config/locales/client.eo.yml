@@ -16,6 +16,8 @@ eo:
     yearly: Jare
   current_plan_button:
     upgrade: Ĝisdatigi
+  subscription_status:
+    members: "Membroj"
   loomio_tags:
     tags: Etikedoj
     apply_tags: Alkroĉi etikedon
@@ -83,6 +85,7 @@ eo:
     settings: 'Agordoj'
     help: 'Helpo'
     anonymous: Anonima
+    email_address: Retadreso
     privacy:
       privacy: 'Privateco'
       public: 'Publika'
@@ -191,6 +194,7 @@ eo:
     confirm_delete_message: 'Ĉu vi certas, ke vi volas forigi tiun ĉi komenton?'
     confirm_delete: 'Forigi la komenton'
     in_reply_to: "Responu al {{nomo}}"
+    post_comment: "Afiŝu komenton"
     submit_button:
       label: 'Afiŝu'
   sidebar:
@@ -384,6 +388,8 @@ eo:
     poll_title: Enketo
     dot_vote_title: Punkto-Voĉdonado
   poll_common:
+    vote_now: Voĉdonu nun
+    have_your_say: Donu vian opinion
     your_response: Via respondo
     reason: Kialo
     message: Mesaĝo
@@ -397,7 +403,6 @@ eo:
     participant_email: Retadreso
     start_poll: Komenci decidon
     save_changes: Konservi
-    change_vote: Ŝanĝi la voĉdonon
   discussions_panel:
     open: Malfermita
     all: Ĉiuj
@@ -428,8 +433,6 @@ eo:
   poll_common_close_form:
     close_dot_vote: Fermigi la punkto-voĉdonadon
     dot_vote_closed: Fermiĝis la punkto-voĉdonado
-  poll_common_reopen_form:
-    dot_vote_reopened: Remalfermiĝis la punkto-voĉdonado
   poll_common_votes_panel:
     no_votes_yet: Ĝis nun, neniu voĉdonis.
   poll_common_set_outcome_panel:

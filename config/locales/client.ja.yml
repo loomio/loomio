@@ -5,6 +5,8 @@ ja:
     small: 小
     medium: 中
     large: 大
+  subscription_status:
+    members: "メンバー"
   loomio_tags:
     all_tags: 全タグ
     tags: タグ
@@ -22,6 +24,7 @@ ja:
     groups: 'グループ'
     organization: "組織"
     organizations: "組織"
+    email_address: Eメールアドレス
     privacy:
       privacy: 'プライバシー'
       public: '公開'
@@ -61,6 +64,7 @@ ja:
   comment_form:
     delete_comment: 'コメントを削除します'
     confirm_delete_message: '本当にコメントを削除しますか？'
+    post_comment: "コメントを投稿します"
   sidebar:
     threads: 'ディスカッション'
   navbar:
@@ -136,6 +140,7 @@ ja:
     proposal: 'はっきりした提案を書くアドバイス'
     vote: 'いつでも意見を変更することができます'
   poll_common:
+    have_your_say: 意見を言う
     save_changes: 保存
   discussions_panel:
     open: 議論中

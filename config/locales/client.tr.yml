@@ -31,13 +31,12 @@ tr:
   subscription_status:
     plan: "Plan"
     state: "Statü"
+    members: "Üyeler"
     active_members: "Aktif üyeler"
     max_threads: "Maks. konular"
     max_members: "Maks. üyeler"
     expires_at: "Süre sonu"
     renews_at: "Yenileme"
-    referral_code: "Chargify yönlendirme kodu"
-    chargify_link: "Chargify faturalandırma portalı"
     referral_code_help: "Bir arkadaşınıza indirim verin, kendinize kredi kazanın!"
   loomio_tags:
     all_tags: Tüm etiketler
@@ -145,6 +144,7 @@ tr:
     help: 'Yardım'
     anonymous: Anonim
     required: Zorunlu
+    email_address: E-posta adresi
     privacy:
       privacy: 'Gizlilik'
       public: 'Genel'
@@ -306,6 +306,7 @@ tr:
     cancel_reply: 'Cevabı İptal Et'
     confirm_delete_message: 'Bu yorumu silmek istediğinden emin misin?'
     confirm_delete: 'Yorumu sil'
+    post_comment: "Yorum gönder"
     submit_button:
       label: 'Gönder'
     private_privacy_notice: 'Yorumunuz sadece {{groupName}} grubunun üyelerine görünür olacak.'
@@ -343,6 +344,7 @@ tr:
   discussion_fork_actions:
     move: Taşı
   discussion_form:
+    start_thread: Konu başlat
     messages:
       created: 'Müzakere başlatıldı'
       updated: 'Müzakere güncellendi'
@@ -682,6 +684,7 @@ tr:
     count_title: Kontrol et
     poll_title: Anket
   poll_common:
+    have_your_say: Söz sahibi ol
     start_poll: Bir karar başlatın
     save_changes: Kaydet
   poll_common_attachment_form:

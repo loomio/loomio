@@ -1,9 +1,12 @@
 km:
+  subscription_status:
+    members: "សមាជិក"
   loomio_tags:
     name_label: ឈ្មោះ
   common:
     group: 'ក្រុម'
     groups: 'ក្រុម'
+    email_address: កែរសម្រួលអាស័យដ្ឋាន
     privacy:
       public: 'សាធារណះ'
     models:
@@ -28,6 +31,7 @@ km:
   comment_form:
     delete_comment: 'លុបមតិយោបល់ '
     confirm_delete_message: 'តើអ្នកប្រាកដថាអ្នកចង់លុបមតិយោបល់នេះ?'
+    post_comment: "សេចក្តីអធិប្បាយភ្នំពេញប៉ុស្តិ៍"
   sidebar:
     threads: 'ការពិភាក្សារ'
   navbar:
@@ -87,6 +91,7 @@ km:
     proposal: 'គន្លឹះសម្រាប់ការសរសេរសំណើរច្បាស់លាស់'
     vote: 'អ្នកអាចផ្លាស់ប្ដូរទីតាំងរបស់អ្នកនៅពេលណាមួួយ'
   poll_common:
+    have_your_say: ការនិយាយរបស់អ្នក
     save_changes: រក្សាទុក​
   discussions_panel:
     closed: បានបិទ
