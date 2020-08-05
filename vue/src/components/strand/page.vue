@@ -47,96 +47,35 @@ export default
       #   EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()
 
     respondToRoute: ->
-      # return unless @discussion
-      # return if @discussion.key != @$route.params.key
-      # return if @discussion.createdEvent.childCount == 0
-      # @loader.reset()
-      #
-      # rules = []
-      #
-      # if @$route.params.comment_id
-      #   rules.push
-      #     name: "comment from url"
-      #     local:
-      #       discussionId: @discussion.id
-      #       commentId: {$gte: parseInt(@$route.params.comment_id)}
-      #     remote:
-      #       order: 'sequence_id'
-      #       discussion_id: @discussion.id
-      #       comment_id: @$route.params.comment_id
-      #
-      # if @$route.query.p
-      #   rules.push
-      #     name: "position from url"
-      #     local:
-      #       discussionId: @discussion.id
-      #       depth: 1
-      #       position: {$gte: parseInt(@$route.query.p)}
-      #     remote:
-      #       discussion_id: @discussion.id
-      #       from_sequence_id_of_position: @$route.query.p
-      #       order: 'sequence_id'
-      #
-      # if @$route.params.sequence_id
-      #   rules.push
-      #     name: "sequenceId from url"
-      #     local:
-      #       discussionId: @discussion.id
-      #       sequenceId: {$gte: parseInt(@$route.params.sequence_id)}
-      #     remote:
-      #       from: parseInt(@$route.params.sequence_id)
-      #       order: 'sequence_id'
-      #
-      # if rules.length == 0
-      #   # never read, or all read?
-      #   if @discussion.lastReadAt == null or @discussion.unreadItemsCount() == 0
-      #     if @discussion.newestFirst
-      #       rules.push
-      #         name: 'first time newest first'
-      #         local:
-      #           discussionId: @discussion.id
-      #           position: {$gte: @discussion.createdEvent.childCount - 10}
-      #         remote:
-      #           discussion_id: @discussion.id
-      #           from_sequence_id_of_position: @discussion.createdEvent.childCount - 10
-      #           order: 'sequence_id'
-      #     else
-      #       rules.push
-      #         name: 'context'
-      #         local:
-      #           id: @discussion.createdEvent().id
-      #       rules.push
-      #         name: 'first time oldest first'
-      #         local:
-      #           discussionId: @discussion.id
-      #           sequenceId: {$gte: 1}
-      #         remote:
-      #           discussion_id: @discussion.id
-      #           from_sequence_id_of_position: 1
-      #           order: 'sequence_id'
-      #   else
-      #     # returning reader
+      return unless @discussion
+      return if @discussion.key != @$route.params.key
+      return if @discussion.createdEvent.childCount == 0
+      @loader.reset()
+
       rules = []
-      # if @discussion.updatedAt > @discussion.lastReadAt
-      rules.push
-        name: "context updated"
-        local:
-          id: @discussion.createdEvent().id
+
+      if @$route.params.comment_id
+        @loader.addLoadCommentRule(parseInt(@$route.params.comment_id))
+
+      if @$route.query.p
+        @loader.addLoadPositionRule(parseInt(@$route.params.comment_id))
+
+      if @$route.params.sequence_id
+        @loader.addLoadSequenceIdRule(@$route.params.sequence_id)
+
+      if rules.length == 0
+        # never read, or all read?
+        if @discussion.lastReadAt == null or @discussion.unreadItemsCount() == 0
+          if @discussion.newestFirst
+            @loader.addLoadNewestFirstRule()
+          else
+            @loader.addLoadOldestFirstRule()
+        else
+          # returning reader
+          @loader.addLoadUnreadRule()
 
 
-
-      # if @discussion.readItemsCount() > 0 && @discussion.unreadItemsCount() > 0
-      rules.push
-        name: "since last time"
-        local:
-          discussionId: @discussion.id
-          sequenceId: {$gte: @discussion.firstUnreadSequenceId()}
-        remote:
-          discussion_id: @discussion.id
-          from: @discussion.firstUnreadSequenceId()
-          order: 'sequence_id'
-
-      rules.forEach (rule) => @loader.addRule(rule)
+      @loader.fetch()
 
 </script>
 

@@ -11,19 +11,93 @@ export default class ThreadLoader
     @collection = Vue.observable([])
     @rules = []
 
-  addRules: (rules) ->
-    @rules.forEach @addRule
+  addLoadCommentRule: (commentId) ->
+    @rules.push
+      name: "comment from url"
+      local:
+        discussionId: @discussion.id
+        commentId: {$gte: commentId}
+      remote:
+        order: 'sequence_id'
+        discussion_id: @discussion.id
+        comment_id: commentId
+
+  addLoadPositionRule: (position) ->
+    @rules.push
+      name: "position from url"
+      local:
+        discussionId: @discussion.id
+        depth: 1
+        position: {$gte: position}
+      remote:
+        discussion_id: @discussion.id
+        from_sequence_id_of_position: position
+        order: 'sequence_id'
+
+  addLoadSequenceIdRule: (sequenceId) ->
+    @rules.push
+      name: "sequenceId from url"
+      local:
+        discussionId: @discussion.id
+        sequenceId: {$gte: sequenceId}
+      remote:
+        from: sequenceId
+        order: 'sequence_id'
+
+  addLoadNewestFirstRule: () ->
+    @rules.push
+      name: 'newest first'
+      local:
+        discussionId: @discussion.id
+        position: {$gte: @discussion.createdEvent.childCount - 10}
+      remote:
+        discussion_id: @discussion.id
+        from_sequence_id_of_position: @discussion.createdEvent.childCount - 10
+        order: 'sequence_id'
+
+  addLoadOldestFirstRule: ->
+    @rules.push
+      name: 'context'
+      local:
+        id: @discussion.createdEvent().id
+
+    @rules.push
+      name: 'oldest first'
+      local:
+        discussionId: @discussion.id
+        sequenceId: {$gte: 1}
+      remote:
+        discussion_id: @discussion.id
+        from_sequence_id_of_position: 1
+        order: 'sequence_id'
+
+  addLoadUnreadRule: ->
+    if @discussion.updatedAt > @discussion.lastReadAt
+      @rules.push
+        name: "context updated"
+        local:
+          id: @discussion.createdEvent().id
+
+    if @discussion.readItemsCount() > 0 && @discussion.unreadItemsCount() > 0
+      @rules.push
+        name: {path: "thread_loader.new_to_you", args: {since: @discussion.lastReadAt}}
+        local:
+          discussionId: @discussion.id
+          sequenceId: {$gte: @discussion.firstUnreadSequenceId()}
+        remote:
+          discussion_id: @discussion.id
+          from: @discussion.firstUnreadSequenceId()
+          order: 'sequence_id'
+
 
   addRule: (rule) ->
-    console.log 'add rule', rule
     @rules.push(rule)
 
-    return unless rule.remote
-    params = Object.assign {}, rule.remote, {exclude_types: 'group discussion', per: 3}
-
-    Records.events.fetch(params: params).then (data) =>
-      @updateCollection()
-      # Promise.resolve(@findEvent(rule.local))
+  fetch: () ->
+    @rules.forEach (rule) =>
+      params = Object.assign {}, rule.remote, {exclude_types: 'group discussion'}
+      Records.events.fetch(params: params).then (data) =>
+        @updateCollection()
 
   updateCollection: ->
     @records = []
