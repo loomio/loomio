@@ -22,6 +22,6 @@ class API::CommentsController < API::RestfulController
     @event = @comment.created_event.parent
     destroy_action
     @event.reload
-    render json: EventCollection.new(@event.children).serialize!(default_scope)
+    render json: MessageChannelService.serialize_models(@event.children, scope: default_scope)
   end
 end

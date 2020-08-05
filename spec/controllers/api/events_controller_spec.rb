@@ -134,7 +134,7 @@ describe API::EventsController do
       it 'returns events with given parent_id' do
         get :index, params: { discussion_id: discussion.id, parent_id: @parent_event.id }
         json = JSON.parse(response.body)
-        event_ids = json['events'].map { |v| v['id'] }
+        event_ids = json['events'].concat(json['parent_events']).map { |v| v['id'] }
         expect(event_ids).to include @child_event.id
         expect(event_ids).to include @parent_event.id
         expect(event_ids).to_not include @unrelated_event.id
