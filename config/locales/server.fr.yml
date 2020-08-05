@@ -354,8 +354,6 @@ fr:
     body:
       voted: '<strong>%{participant}</strong>:'
   comment_by: Commentaire par %{comment_author}
-  personal_data:
-    title: Données personnelles de %{user_name}sur %{host_name}
   notified:
     no_matches_found: "Pas de résultats pour « %{query} »"
     group_users: "(%{count} personnes)"

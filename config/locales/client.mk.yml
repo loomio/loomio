@@ -1,9 +1,12 @@
 mk:
+  subscription_status:
+    members: "Членови"
   loomio_tags:
     name_label: Име
   common:
     group: 'Група'
     groups: 'Групи'
+    email_address: Електронска пошта
     privacy:
       public: 'Јавно'
     date_range:
@@ -31,6 +34,7 @@ mk:
     edit_comment: 'Измени го коментарот'
     delete_comment: 'Избриши го коментарот'
     confirm_delete_message: 'Дали си сигурен/а дека сакаш да го избришиш коментарот?'
+    post_comment: "Објави го коментарот"
   sidebar:
     threads: 'Дискусии'
   navbar:
@@ -101,6 +105,7 @@ mk:
     email_label: 'Твојата електронска пошта'
     message_label: 'Твојата порака'
   poll_common:
+    have_your_say: Кажете што имате
     save_changes: Зачувај
   discussions_panel:
     closed: Затворено

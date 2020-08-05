@@ -10,7 +10,6 @@ class Discussion < ApplicationRecord
   include HasImportance
   include MessageChannel
   include SelfReferencing
-  include UsesOrganisationScope
   include HasMailer
   include HasCreatedEvent
   include HasRichText
@@ -19,6 +18,7 @@ class Discussion < ApplicationRecord
 
   no_spam_for :title, :description
 
+  scope :in_organisation, -> (group) { includes(:author).where(group_id: group.id_and_subgroup_ids) }
   scope :last_activity_after, -> (time) { where('last_activity_at > ?', time) }
   scope :order_by_latest_activity, -> { order('discussions.last_activity_at DESC') }
   scope :recent, -> { where('last_activity_at > ?', 6.weeks.ago) }

@@ -24,7 +24,7 @@ export default
 </script>
 
 <template lang="pug">
-div
+div.user-dropdown
   v-list-item(v-if="!user.experiences['sidebar']" @click="togglePinned" dense)
       v-list-item-title(v-t="'user_dropdown.pin_sidebar'")
       v-list-item-icon

@@ -151,8 +151,8 @@ export default
 
     v-layout.py-2(align-center wrap)
       v-menu
-        template(v-slot:activator="{ on }")
-          v-btn.members-panel__filters.mr-2.text-lowercase(v-on="on" text)
+        template(v-slot:activator="{ on, attrs }")
+          v-btn.members-panel__filters.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)
             span(v-if="$route.query.filter == 'admin'" v-t="'members_panel.order_by_admin_desc'")
             span(v-if="$route.query.filter == 'pending'" v-t="'members_panel.invitations'")
             span(v-if="!$route.query.filter" v-t="'members_panel.everyone'")
@@ -166,7 +166,7 @@ export default
             v-list-item-title(v-t="'members_panel.invitations'")
       v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_members', {name: group.name})" append-icon="mdi-magnify")
       v-btn.membership-card__invite.mr-2(color="primary" v-if='canAddMembers' @click="invite()" v-t="'common.action.invite'")
-      shareable-link-modal(:group="group")
+      shareable-link-modal(v-if='canAddMembers' :group="group")
       v-btn.group-page__requests-tab(:to="urlFor(group, 'members/requests')" v-t="'members_panel.requests'")
 
     v-card(outlined)

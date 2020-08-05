@@ -5,6 +5,8 @@ da:
         make_decision: Opret en beslutning
   plan_names:
     free: Gratis
+  subscription_status:
+    members: "Medlemmer"
   loomio_tags:
     name_label: Navn
     color_label: Farve
@@ -50,6 +52,7 @@ da:
     decisions: 'Beslutninger'
     settings: 'Indstillinger'
     help: 'Hjælp'
+    email_address: Emailadresse
     privacy:
       privacy: 'Privatindstilliger'
       public: 'Offentlig'
@@ -204,6 +207,7 @@ da:
     cancel_reply: 'Fortryd svar'
     confirm_delete_message: 'Er du sikker på at du vil slette denne kommentar?'
     confirm_delete: 'Slet kommentar'
+    post_comment: "Indsend kommentar"
     submit_button:
       label: 'Gem'
     private_privacy_notice: 'Din kommentar til kun være synlig for medlemmer af {{groupName}}.'
@@ -672,6 +676,7 @@ da:
     dot_vote_title: Prikafstemning
     meeting_title: Find et tidspunkt
   poll_common:
+    have_your_say: Giv din mening til kende
     your_response: Dit valg
     reason: Begrundelse
     message: Besked

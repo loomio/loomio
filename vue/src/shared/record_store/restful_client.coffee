@@ -91,6 +91,7 @@ export default class RestfulClient
     @post(id+'/undiscard', params)
 
   upload: (path, file, options = {}, onProgress) ->
+    return unless file
     new Promise (resolve, reject) =>
       data = new FormData()
       data.append(options.fileField     || 'file',     file)

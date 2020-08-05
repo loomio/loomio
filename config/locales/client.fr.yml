@@ -28,6 +28,8 @@ fr:
     was_gift_trial: "Votre groupe utilise Loomio gratuitement depuis {{createdDate}}}. Nous ne sommes pas en mesure de continuer à fournir un service gratuit. Changez d'offre pour continuer à utiliser Loomio. </a>En savoir plus ici.</a>"
     was_gift_remaining: "{{days}} jours restants."
     was_gift_expired: "Votre forfait gratuit a maintenant expiré."
+  subscription_status:
+    members: "Membres"
   loomio_tags:
     all_tags: Tous les mots-clés
     tags: Mots-clés
@@ -132,6 +134,7 @@ fr:
     settings: 'Paramètres'
     help: 'Aide'
     anonymous: Anonyme
+    email_address: Adresse e-mail
     privacy:
       privacy: 'Confidentialité'
       public: 'Publique'
@@ -372,6 +375,7 @@ fr:
     confirm_delete: 'Effacer le commentaire'
     in_reply_to: "Répondre à {{name}}"
     write_a_comment: "Écrire un commentaire…"
+    post_comment: "Publier le commentaire"
     submit_button:
       label: 'Publier'
     private_privacy_notice: 'Votre commentaire sera visible seulement des membres de {{groupName}}.'
@@ -501,6 +505,7 @@ fr:
     start_new_thread: Ou démarrer une nouvelle discussion
   discussion_form:
     aria_label: 'Forme de la discussion'
+    start_thread: Démarrer une discussion
     messages:
       created: 'Discussion démarrée'
       updated: 'Discussion mise à jour'
@@ -636,6 +641,7 @@ fr:
   formatting:
     bold: Audacieux
     italicize: Italique
+    blockquote: Citation
     strikethrough: Barrer
     underline: Souligner
     link: Insérer un lien
@@ -1256,10 +1262,11 @@ fr:
     meeting_title: Sondage horaire de réunion
     ranked_choice_title: Classement par préférence
   poll_common:
+    vote_now: Votez maintenant
+    have_your_say: Prenez la parole
     your_response: Votre réponse
     change_your_response: Modifier la réponse
     reason: Raison
-    reason_placeholder: Un commentaire supplémentaire ?
     message: Message
     results: Résultats
     responses: Réponses
@@ -1283,7 +1290,6 @@ fr:
     publish_poll: Partager le sondage
     view_all: Tout voir
     save_changes: Enregistrer
-    change_vote: Changer votre vote
     max_score: Score maximum
     min_score: Score minimum
     too_long: Trop long
@@ -1416,15 +1422,6 @@ fr:
     dot_vote_closed: Vote à points fermé
     meeting_closed: Sondage horaire de réunion fermé
     ranked_choice_closed: Classement par préférence fermé
-  poll_common_reopen_form:
-    title: Rouvrir une décision fermée
-    helptext: La décision s'est elle fermée trop tôt? Rouvrez-la pour obtenir plus d'avis du groupe.
-    proposal_reopened: Proposition rouverte
-    poll_reopened: Sondage rouvert
-    count_reopened: Vérification rouverte
-    dot_vote_reopened: Vote à points rouvert
-    meeting_reopened: Sondage horaire rouvert
-    ranked_choice_reopened: Classement par préférence rouvert
   poll_common_closing_at_field:
     closing: Fermeture
     closing_hour: Heure de clôture
@@ -1702,14 +1699,13 @@ fr:
     title: Partager le sondage - {{title}}
   auth_form:
     code: '000000'
-    sign_in_to_loomio: Identifiez-vous sur {{site_name}}
     sign_in: Se connecter
     continue: Continuer
     create_account: Créez un compte
     sign_in_as: Se connecter comme  {{name}}
     continue_with_provider: Connectez-vous avec {{provider}}
-    continue_with_email: Connectez-vous avec votre adresse mail
     or_enter_your_email: Ou saisir votre adresse e-mail
+    enter_your_name: Entrez votre nom
     invitation_required: Vous avez besoin d'une invitation afin de créer un compte
     more_providers: Plus
     email_not_present: Une adresse e-mail est nécessaire
@@ -1721,7 +1717,6 @@ fr:
     email_placeholder: vous@exemple.com
     login_with_token: Vous êtes prêt·e ! Cliquez sur le lien ci-dessous pour continuer.
     login_link_helptext: Cliquez sur le bouton ci-dessous et nous vous enverrons un lien pour vous connecter.
-    login_link_helptext_with_password: "Entrez votre mot de passe, ou connectez-vous par courriel."
     check_spam_folder: Si vous ne recevez pas l'e-mail, veuillez vérifier le répertoire des spams.
     sign_up_helptext: Merci de remplir ce formulaire pour créer un compte
     i_accept: "J'accepte les <a href='{{termsUrl}}' target='_blank'>Conditions d'utilisation</a> et la <a href='{{privacyUrl}}' target='_blank'>Politique de vie privée</a>"

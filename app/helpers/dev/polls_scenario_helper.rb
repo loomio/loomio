@@ -149,6 +149,7 @@ module Dev::PollsScenarioHelper
     non_voter  = saved(fake_user)
     discussion.group.add_member! non_voter
     actor      = discussion.group.admins.first
+    DiscussionService.create(discussion: discussion, actor: actor)
     poll       = saved(create_fake_poll_with_stances(author: actor,
                                                      poll_type: params[:poll_type],
                                                      anonymous: !!params[:anonymous],

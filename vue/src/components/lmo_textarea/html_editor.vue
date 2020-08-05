@@ -147,6 +147,10 @@ export default
 
     updateModel: ->
       @model[@field] = @editor.getHTML()
+      setTimeout =>
+        if @$refs.editor && @$refs.editor.$el
+          @$refs.editor.$el.children[0].setAttribute("role", "textbox")
+          @$refs.editor.$el.children[0].setAttribute("aria-label", @placeholder) if @placeholder
       @updateFiles()
 
   beforeDestroy: ->
@@ -155,9 +159,8 @@ export default
 
 <template lang="pug">
 div
-  label.caption.v-label.v-label--active {{label}}
   .editor.mb-3
-    editor-content.html-editor__textarea(:editor='editor').lmo-markdown-wrapper
+    editor-content.html-editor__textarea(ref="editor" :editor='editor').lmo-markdown-wrapper
     editor-menu-bar(:editor='editor' v-slot='{ commands, isActive, focused }')
       div
         v-layout.menubar(align-center v-if="isActive.table()")
@@ -177,8 +180,9 @@ div
             v-icon mdi-table-row-remove
           v-btn(icon @click="commands.toggleCellMerge" :title="$t('formatting.merge_selected')")
             v-icon mdi-table-merge-cells
-        v-layout.menubar.py-2(align-center)
-          v-layout(wrap)
+
+        v-layout.menubar.py-2.justify-space-between.flex-wrap(align-center)
+          section.d-flex.flex-wrap(:aria-label="$t('formatting.formatting_tools')")
             //- attach
             v-btn(icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")
               v-icon mdi-paperclip
@@ -188,8 +192,8 @@ div
 
             //- link
             v-menu(:close-on-content-click="!selectedText()" v-model="linkDialogIsOpen" min-width="320px")
-              template(v-slot:activator="{on}")
-                v-btn(icon v-on="on" :title="$t('formatting.link')")
+              template(v-slot:activator="{on, attrs}")
+                v-btn(icon v-on="on" v-bind="attrs" :title="$t('formatting.link')")
                   v-icon mdi-link
               v-card
                 template(v-if="selectedText()")
@@ -204,15 +208,15 @@ div
 
             //- emoji
             v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
-              template(v-slot:activator="{on}")
-                v-btn.emoji-picker__toggle(v-on="on" icon  :title="$t('formatting.insert_emoji')")
+              template(v-slot:activator="{on, attrs}")
+                v-btn.emoji-picker__toggle(v-on="on" v-bind="attrs" icon  :title="$t('formatting.insert_emoji')")
                   v-icon mdi-emoticon-outline
               emoji-picker(:insert="emojiPicked")
 
             //- headings menu
             v-menu(v-if="!expanded")
-              template(v-slot:activator="{ on }")
-                v-btn.drop-down-button(icon v-on="on" :title="$t('formatting.heading_size')")
+              template(v-slot:activator="{ on, attrs }")
+                v-btn.drop-down-button(icon v-on="on" v-bind="attrs" :title="$t('formatting.heading_size')")
                   v-icon mdi-format-size
                   v-icon.menu-down-arrow mdi-menu-down
               v-list(dense)
@@ -243,8 +247,8 @@ div
 
             //- list menu (always a menu)
             v-menu(v-if="expanded")
-              template(v-slot:activator="{ on }")
-                v-btn.drop-down-button(icon v-on="on")
+              template(v-slot:activator="{ on, attrs }")
+                v-btn.drop-down-button(icon v-on="on" v-bind="attrs")
                   v-icon mdi-format-list-bulleted
                   v-icon.menu-down-arrow mdi-menu-down
               v-list(dense)
@@ -296,11 +300,14 @@ div
               //- markdown (save experience)
               v-btn(icon @click="convertToMd" :title="$t('formatting.edit_markdown')")
                 v-icon mdi-markdown
-            //- expand button
-            v-btn.html-editor__expand(icon @click="toggleExpanded")
-              v-icon(v-if="!expanded") mdi-chevron-right
-              v-icon(v-if="expanded") mdi-chevron-left
+
+            v-btn.html-editor__expand(v-if="!expanded" icon @click="toggleExpanded" :aria-label="$t('formatting.expand')")
+              v-icon mdi-chevron-right
+
+            v-btn.html-editor__expand(v-if="expanded" icon @click="toggleExpanded" :aria-label="$t('formatting.collapse')")
+              v-icon mdi-chevron-left
           //- save button?
+          v-spacer
           slot(name="actions")
     v-alert(v-if="maxLength && model[field] && model[field].length > maxLength" color='error')
       span( v-t="'poll_common.too_long'")

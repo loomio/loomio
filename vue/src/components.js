@@ -100,7 +100,6 @@ module.exports = {
   PollCommonPreview: 'poll/common/preview',
   PollCommonSetOutcomePanel: 'poll/common/set_outcome_panel',
   PollCommonSettings: 'poll/common/settings',
-  PollCommonShowResultsButton: 'poll/common/show_results_button',
   PollCommonStance: 'poll/common/stance',
   PollCommonStanceChoice: 'poll/common/stance_choice',
   PollCommonStanceIcon: 'poll/common/stance_icon',

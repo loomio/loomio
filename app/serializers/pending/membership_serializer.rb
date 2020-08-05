@@ -1,6 +1,10 @@
 class Pending::MembershipSerializer < Pending::BaseSerializer
   attributes :token, :group_id
 
+  def auth_form
+    false  
+  end
+
   def identity_type
     :membership
   end

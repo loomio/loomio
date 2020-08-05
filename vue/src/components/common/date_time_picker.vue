@@ -40,8 +40,8 @@ export default
 <template lang="pug">
 v-layout.date-time-picker
   v-menu(ref='dateTimePicker' v-model='dateMenu' offset-y min-width='290px')
-    template(v-slot:activator='{ on }')
-      v-text-field.date-time-picker__date-field(v-model='dateStr' v-on='on' placeholder="2000-12-31" :rules="[validDate]" prepend-icon="mdi-calendar")
+    template(v-slot:activator='{ on, attrs }')
+      v-text-field.date-time-picker__date-field(v-model='dateStr' v-on='on' v-bind='attrs' placeholder="2000-12-31" :rules="[validDate]" prepend-icon="mdi-calendar")
     v-date-picker.date-time-picker__date-picker(v-model='dateStr' no-title :min='minStr' @input="dateMenu = false")
   v-spacer
   v-combobox.date-time-picker__time-field(v-model="timeStr" :items="times" prepend-icon="mdi-clock-outline")

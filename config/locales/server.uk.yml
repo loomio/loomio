@@ -325,8 +325,6 @@ uk:
     body:
       voted: '<strong>%{participant}</strong>:'
   comment_by: Коментар від %{comment_author}
-  personal_data:
-    title: Персональні дані %{user_name} на %{host_name}
   notified:
     no_matches_found: "Нема результатів щодо '%{query}'"
     group_users: "(%{count} людей)"

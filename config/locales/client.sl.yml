@@ -1,6 +1,8 @@
 sl:
   current_plan_button:
     upgrade: Nadgradi
+  subscription_status:
+    members: "Člani"
   loomio_tags:
     tags: Oznake
     apply_tags: Uporabi oznake
@@ -60,6 +62,7 @@ sl:
     decisions: 'Odločitve'
     settings: 'Nastavitve'
     help: 'Pomoč'
+    email_address: Email naslov
     privacy:
       privacy: 'Zasebnost'
       public: 'Javno'
@@ -140,6 +143,7 @@ sl:
     cancel_reply: 'Prekliči odgovor'
     confirm_delete_message: 'Si prepričan/a, da želiš izbrisati ta komentar?'
     confirm_delete: 'Izbriši komentar'
+    post_comment: "Komentiraj"
     sign_in: "Vpišite se, da se pridružite pogovoru"
   sidebar:
     threads: 'Razprave'
@@ -368,6 +372,7 @@ sl:
     proposal_title: Predlog
     poll_title: Anketa
   poll_common:
+    have_your_say: Izrazi svoje mnenje
     save_changes: Shrani
   poll_common_attachment_form:
     label: Priloge

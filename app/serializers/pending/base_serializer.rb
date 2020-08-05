@@ -4,7 +4,7 @@ class Pending::BaseSerializer < ActiveModel::Serializer
              :avatar_kind, :avatar_initials, :email_hash, :avatar_url, :has_token, :auth_form
 
   def identity_type
-    # included for oauth pending identities
+    false
   end
 
   def auth_form

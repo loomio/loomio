@@ -28,8 +28,8 @@ export default
 
 <template lang="pug">
 v-menu.reactions-input(:close-on-content-click="true" v-model="closeEmojiMenu")
-  template(v-slot:activator="{on: menu}")
-    v-btn.emoji-picker__toggle.action-button(small text v-on="{ ...menu }" v-t="'action_dock.react'")
+  template(v-slot:activator="{on, attrs}")
+    v-btn.emoji-picker__toggle.action-button(small text v-on="on" v-bind="attrs" v-t="'action_dock.react'")
   emoji-picker(:insert="insert")
 </template>
 

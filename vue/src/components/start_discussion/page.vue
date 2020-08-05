@@ -16,12 +16,13 @@ export default
     init: ->
       EventBus.$emit 'currentComponent', { page: 'startDiscussionPage', skipScroll: true }
 
-      Records.groups.findOrFetchById(parseInt(@$route.query.group_id)).then (group) =>
-        @group = group
-      .finally =>
-        @discussion = Records.discussions.build
-          title:       @$route.query.title
-          groupId:     parseInt(@$route.query.group_id)
+      if Session.isSignedIn()
+        Records.groups.findOrFetchById(parseInt(@$route.query.group_id)).then (group) =>
+          @group = group
+        .finally =>
+          @discussion = Records.discussions.build
+            title:       @$route.query.title
+            groupId:     parseInt(@$route.query.group_id)
 
 </script>
 <template lang="pug">

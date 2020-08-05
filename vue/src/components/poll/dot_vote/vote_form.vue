@@ -26,7 +26,6 @@ export default
 
   methods:
     submit: ->
-      @stance.id = null
       if sum(map(@stanceChoices, 'score')) > 0
         @stance.stanceChoicesAttributes = map @stanceChoices, (choice) =>
           poll_option_id: choice.poll_option_id
@@ -95,6 +94,5 @@ export default
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
     v-spacer
-    poll-common-show-results-button(v-if='!stance.castAt')
-    v-btn.poll-common-vote-form__submit(color="primary" :disabled="dotsRemaining < 0" @click="submit()" v-t="'poll_common.vote'")
+    v-btn.poll-common-vote-form__submit(color="primary" :disabled="dotsRemaining < 0" @click="submit()" v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
 </template>

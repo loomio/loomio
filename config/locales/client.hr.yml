@@ -1,4 +1,6 @@
 hr:
+  subscription_status:
+    members: "Članovi"
   common:
     privacy:
       public: 'Javno'
@@ -16,6 +18,7 @@ hr:
     edit_comment: 'Ažuriranje komentara'
     delete_comment: 'Obriši komentar'
     confirm_delete_message: 'Jeste li sigurni da želite obrisati komentar?'
+    post_comment: "Komentiraj"
   notifications:
     header: "Notifikacije"
   discussion_form:

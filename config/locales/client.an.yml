@@ -1,4 +1,6 @@
 an:
+  subscription_status:
+    members: "Miembros"
   loomio_tags:
     name_label: Nombre
   common:
@@ -7,6 +9,7 @@ an:
       pm: pm
     group: 'Grupo'
     groups: 'Grupos'
+    email_address: Correu electronico
     privacy:
       public: 'Publico'
       private: 'Privau'
@@ -38,6 +41,7 @@ an:
     edit_comment: 'Editar comentario'
     delete_comment: 'Borrar comentario'
     confirm_delete_message: 'Yes seguro que quiers borrar iste comentario?'
+    post_comment: "Publicar comentario"
   sidebar:
     threads: 'Discusions'
   navbar:
@@ -120,6 +124,7 @@ an:
     proposal: 'Consellos ta redactar una propuesta clara'
     vote: 'Puetz cambiar a tuya posición en qualsiquier inte'
   poll_common:
+    have_your_say: 'Da a tuya opinión '
     save_changes: Alzar
   discussions_panel:
     all: Totz/as
