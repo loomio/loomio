@@ -116,7 +116,7 @@ class API::MembershipsController < API::RestfulController
   end
 
   def index_scope
-    default_scope.merge({ include_email: (model.admins.exists?(current_user.id) || model.inviter_id == current_user.id), include_inviter: true })
+    default_scope.merge({ include_email: model.admins.exists?(current_user.id), include_inviter: true })
   end
 
   def model
