@@ -1,4 +1,4 @@
-MessageBus.configure(backend: :redis, url: ENV['REDIS_URL'])
+MessageBus.configure(backend: :redis, url: (ENV['REDIS_QUEUE_URL'] || ENV.fetch('REDIS_URL', 'redis://localhost:6379')))
 
 # MessageBus.enable_diagnostics # Must be called after `MessageBus.after_fork` if using a forking webserver
 # MessageBus.user_id_lookup do |_env|
