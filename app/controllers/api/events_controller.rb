@@ -33,7 +33,7 @@ class API::EventsController < API::RestfulController
   end
 
   def order
-    %w(sequence_id position).detect {|col| col == params[:order] } || "sequence_id"
+    %w(sequence_id position position_key).detect {|col| col == params[:order] } || "sequence_id"
   end
 
   def per
@@ -68,7 +68,11 @@ class API::EventsController < API::RestfulController
     records = Event.where(discussion_id: @discussion.id).
                     includes(:user, :discussion, :eventable, parent: [:user, :eventable])
 
-    records = records.where("#{order} >= ?", from)
+    if %w[position_key].include?(params[:order_by])
+      records = records.order("#{params[:order_by]}#{params[:order_desc] ? " DESC" : ''}")
+    else
+      records = records.where("#{order} >= ?", from)
+    end
 
     if params[:pinned] == 'true'
       records = records.where(pinned: true)
@@ -78,10 +82,15 @@ class API::EventsController < API::RestfulController
       records = records.where("kind in (?)", params[:kind].split(','))
     end
 
-    %w(parent_id depth sequence_id position).each do |name|
+    %w(parent_id depth sequence_id position position_key).each do |name|
       records = records.where(name => params[name]) if params[name]
-      records = records.where("#{name} >= ?", params["min_#{name}"]) if params["min_#{name}"]
-      records = records.where("#{name} <= ?", params["max_#{name}"]) if params["max_#{name}"]
+      # records = records.where("#{name} >= ?", params["min_#{name}"]) if params["min_#{name}"]
+      # records = records.where("#{name} <= ?", params["max_#{name}"]) if params["max_#{name}"]
+      records = records.where("#{name} = ?", params["#{name}"]) if params["#{name}"]
+      records = records.where("#{name} < ?", params["#{name}_lt"]) if params["#{name}_lt"]
+      records = records.where("#{name} > ?", params["#{name}_gt"]) if params["#{name}_gt"]
+      records = records.where("#{name} <= ?", params["#{name}_lte"]) if params["#{name}_lte"]
+      records = records.where("#{name} >= ?", params["#{name}_gte"]) if params["#{name}_gte"]
     end
     records
   end

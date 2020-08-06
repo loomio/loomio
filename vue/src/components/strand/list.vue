@@ -53,6 +53,56 @@ export default
     #   @collection[0].event.parent()
 
   methods:
+    loadBefore: (event) ->
+      @loader.addRule
+        local:
+          discussionId: event.discussionId
+          depth: {$gte: event.depth}
+          positionKey: {$lt: event.positionKey}
+        remote:
+          discussion_id: event.discussionId
+          depth_gte: event.depth
+          depth_lte: event.depth + 2
+          position_key_lt: event.positionKey
+          order_by: 'position_key'
+          order_desc: 1
+
+    positionKeyPrefix: (event) ->
+      if event.depth < 1
+        event.positionKey.split('-').slice(0, event.depth - 1)
+      else
+        null
+
+    loadChildren: (event) ->
+      @loader.addRule
+        local:
+          discussionId: event.discussionId
+          depth: {$gt: event.depth}
+          positionKey: {$gt: event.positionKey}
+          parentId: event.id
+        remote:
+          discussion_id: event.discussionId
+          position_key_gt: event.positionKey
+          # position_key_prefix: @positionKeyPrefix(event)
+          # depth_lte: event.depth + 2
+          # depth_gt: event.depth + 1
+          parent_id: event.id
+          order_by: 'position_key'
+
+    loadAfter: (event) ->
+      @loader.addRule
+        local:
+          discussionId: event.discussionId
+          depth: {$gte: event.depth}
+          positionKey: {$gt: event.positionKey}
+        remote:
+          discussion_id: event.discussionId
+          position_key_gt: event.positionKey
+          # position_key_prefix: @positionKeyPrefix(event)
+          depth_lte: event.depth + 2
+          depth_gte: event.depth
+          order_by: 'position_key'
+
     isFirstInRange: (pos) ->
       some(@ranges, (range) -> range[0] == pos)
 
@@ -85,15 +135,17 @@ export default
   .strand-item(v-for="obj, index in collection" :event='obj.event' :key="obj.event.id")
 
     p(v-if="parentExists && obj.event.position != 1 && isFirstInRange(obj.event.position)") {{countEarlierMissing(obj.event.position)}} earlier items missing
+    a(v-if="parentExists && obj.event.position != 1 && isFirstInRange(obj.event.position)" v-t="'common.action.show_more'" @click="loadBefore(obj.event)")
+
     .d-flex
       .strand-item__gutter.d-flex.flex-column
         //- | {{obj.event.position}}
         user-avatar(:user="obj.event.actor()" :size="48")
         .strand-item__stem(v-if="(index+1 != collection.length) || obj.children")
       .thread-strand__body.flex-grow-1
-        //- | positionKey {{obj.event.positionKey}}
+        | positionKey {{obj.event.positionKey}}
         component(:is="componentForKind(obj.event.kind)" :event='obj.event')
-        p(v-if="obj.event.childCount && !obj.children") {{obj.event.childCount}} replies
+        a(v-if="obj.event.childCount && !obj.children" @click="loadChildren(obj.event)") {{obj.event.childCount}} replies
 
     .strand-list__children(v-if="obj.children && obj.children.length")
       .d-flex
@@ -103,6 +155,7 @@ export default
           .strand-item__stem(v-if="(index+1 != collection.length) || obj.children")
         strand-list.flex-grow-1(:loader="loader" :collection="obj.children")
 
+    a(v-if="lastPosition != 0 && isLastInLastRange(obj.event.position) && obj.event.position != lastPosition" v-t="'common.action.show_more'" @click="loadAfter(obj.event)")
     p(v-if="lastPosition != 0 && isLastInLastRange(obj.event.position) && obj.event.position != lastPosition") {{countLaterMissing()}} further items missing
 
     //- collection 0 .. no render children

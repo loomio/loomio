@@ -88,16 +88,18 @@ export default class ThreadLoader
           discussion_id: @discussion.id
           from: @discussion.firstUnreadSequenceId()
           order: 'sequence_id'
+          per: 5
 
 
   addRule: (rule) ->
     @rules.push(rule)
+    params = Object.assign {}, rule.remote, {exclude_types: 'group discussion'}
+    Records.events.fetch(params: params).then (data) => @updateCollection()
 
   fetch:  ->
     @rules.forEach (rule) =>
       params = Object.assign {}, rule.remote, {exclude_types: 'group discussion'}
-      Records.events.fetch(params: params).then (data) =>
-        @updateCollection()
+      Records.events.fetch(params: params).then (data) => @updateCollection()
 
   updateCollection: ->
     @records = []
