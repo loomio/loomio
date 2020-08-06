@@ -6,7 +6,6 @@ import LmoUrlService from '@/shared/services/lmo_url_service'
 
 import {compact, isEmpty}  from 'lodash-es'
 
-import { subscribeTo }     from '@/shared/helpers/message_bus'
 import { myLastStanceFor } from '@/shared/helpers/poll'
 
 export default
@@ -20,7 +19,6 @@ export default
       Records.polls.findOrFetchById(@$route.params.key)
       .then (poll) =>
         @poll = poll
-        subscribeTo(@poll)
 
         # if @poll.discussionId
         #   discussion = @poll.discussion()
