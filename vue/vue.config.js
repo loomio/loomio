@@ -3,7 +3,6 @@ const path = require('path')
 
 module.exports = env => {
   return {
-    transpileDependencies: ['vuetify'],
     chainWebpack: config => {
       config.module.rule('vue').use('vue-loader').tap(args => { args.compilerOptions.whitespace = 'preserve' })
       config.module.rule('yml').test(/\.yml$/).use('js-yaml-loader').loader('js-yaml-loader').end()
@@ -45,8 +44,8 @@ module.exports = env => {
         sass: {
           sassOptions: {
             includePaths: ["src/css", "node_modules/"]
-          },
-          prependData: `@import "main.scss"`
+          }
+          // prependData: `@import "main.scss"`
         }
       }
     }
