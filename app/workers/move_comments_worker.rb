@@ -68,6 +68,6 @@ class MoveCommentsWorker
 
     ActiveStorage::Attachment.where(record: all_events.map(&:eventable)).update_all(group_id: target_discussion.group_id)
 
-    MessageChannelService.publish_data(Events::DiscussionItemsSerializer.new(target_discussion).as_json, to: target_discussion.group.message_channel)
+    MessageChannelService.publish_models(target_discussion.items, group_ids: [target_discussion.group.id])
   end
 end

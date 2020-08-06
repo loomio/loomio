@@ -129,7 +129,7 @@ class DiscussionService
     actor.ability.authorize! :mark_as_seen, discussion
     reader = DiscussionReader.for_model(discussion, actor)
     reader.viewed!
-    MessageChannelService.publish_model(reader.discussion)
+    MessageChannelService.publish_models(reader.discussion, group_ids: [reader.discussion.group_id])
     EventBus.broadcast('discussion_mark_as_seen', reader, actor)
   end
 

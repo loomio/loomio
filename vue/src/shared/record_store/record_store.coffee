@@ -24,6 +24,11 @@ export default class RecordStore
         @groups.importJSON(recordData)
         true
 
+    if data['parent_events']?
+      each data['parent_events'], (recordData) =>
+        @events.importJSON(recordData)
+        true
+
     each @collectionNames, (name) =>
       snakeName = snakeCase(name)
       camelName = camelCase(name)

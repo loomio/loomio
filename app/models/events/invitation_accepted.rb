@@ -6,10 +6,6 @@ class Events::InvitationAccepted < Event
     super membership, user: membership.user
   end
 
-  def notify_clients!
-    ActionCable.server.broadcast eventable.message_channel, action: :accepted
-  end
-
   private
 
   def notification_recipients
