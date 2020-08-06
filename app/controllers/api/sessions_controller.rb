@@ -16,7 +16,6 @@ class API::SessionsController < Devise::SessionsController
   end
 
   def destroy
-    ActionCable.server.broadcast current_user.message_channel, action: :logged_out
     sign_out resource_name
 
     # temp fix because we've changed the session domain
