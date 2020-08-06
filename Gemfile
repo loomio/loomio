@@ -48,7 +48,6 @@ gem 'griddler', github: 'loomio/griddler'
 gem "griddler-mailin", github: 'loomio/griddler-mailin'
 gem 'activerecord-import', '1.0.6'
 gem 'discriminator', '~> 0.1.1'
-gem "autoprefixer-rails"
 gem 'icalendar'
 gem 'rack-attack'
 gem 'bootsnap', require: false
