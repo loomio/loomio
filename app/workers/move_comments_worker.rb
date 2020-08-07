@@ -48,8 +48,8 @@ class MoveCommentsWorker
       end
     end
 
-    EventService.reposition_events(target_discussion)
-    EventService.reposition_events(source_discussion)
+    EventService.repair_thread(target_discussion.id)
+    EventService.repair_thread(source_discussion.id)
     # # update reader info on target target_discussion
     # target_discussion.update_sequence_info!
     # # update reader info on source_discussion target_discussion

@@ -39,7 +39,10 @@ class EventService
     MoveCommentsWorker.perform_async(ids, source.id, discussion.id)
   end
 
-  def self.reposition_events(discussion)
+  def self.repair_thread(discussion_id)
+    discussion = Discussion.find(discussion_id)
+
+    # ensure discussion.created_event exists
     unless discussion.created_event
       Event.import [Event.new(kind: 'new_discussion',
                               user_id: discussion.author_id,
@@ -49,24 +52,27 @@ class EventService
       discussion.reload
     end
 
+    # rebuild ancestry of events based on eventable relationships
     items = Event.where(discussion_id: discussion.id).order(:sequence_id)
     items.update_all(parent_id: discussion.created_event.id, position: 0, position_key: nil, depth: 1, child_count: 0)
     items.reload.compact.each(&:set_parent_and_depth!)
 
+    # reset position values
     parent_ids = items.pluck(:parent_id).compact.sort.uniq
     Event.where(id: parent_ids).each do |parent_event|
-      reorder_with_parent_id(parent_event.id)
+      reset_child_positions(parent_event.id)
       child_count = items.where(parent_id: parent_event.id).count
       parent_event.update_column(:child_count, child_count)
     end
 
+    items.reload.each(&:set_position_and_position_key!)
+
     discussion.created_event.update_child_count
     discussion.update_items_count
-
-    items.reload.each(&:set_position_and_position_key!)
+    discussion.update_sequence_info!
   end
 
-  def self.reorder_with_parent_id(parent_id)
+  def self.reset_child_positions(parent_id)
     return unless parent_id
     ActiveRecord::Base.connection.execute(
       "UPDATE events SET position = t.seq
