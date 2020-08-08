@@ -40,7 +40,8 @@ class EventService
   end
 
   def self.repair_thread(discussion_id)
-    discussion = Discussion.find(discussion_id)
+    discussion = Discussion.find_by(id: discussion_id)
+    return unless discussion
 
     # ensure discussion.created_event exists
     unless discussion.created_event
@@ -58,24 +59,28 @@ class EventService
     items.reload.compact.each(&:set_parent_and_depth!)
 
     # reset position values
-    parent_ids = items.pluck(:parent_id).compact.sort.uniq
-    Event.where(id: parent_ids).each do |parent_event|
-      reset_child_positions(parent_event.id)
+    parent_ids = items.pluck(:parent_id).compact.uniq
+    Event.where(id: parent_ids).order(:depth).each do |parent_event|
+      reset_child_positions(parent_event.id, parent_event.position_key)
       child_count = items.where(parent_id: parent_event.id).count
       parent_event.update_column(:child_count, child_count)
     end
-
-    items.reload.each(&:set_position_and_position_key!)
 
     discussion.created_event.update_child_count
     discussion.update_items_count
     discussion.update_sequence_info!
   end
 
-  def self.reset_child_positions(parent_id)
-    return unless parent_id
+  def self.reset_child_positions(parent_id, parent_position_key)
+
+    position_key_sql = if parent_position_key.nil?
+      "CONCAT(REPEAT('0',5-LENGTH(CONCAT(t.seq))), t.seq)"
+    else
+      "CONCAT('#{parent_position_key}-', CONCAT(REPEAT('0',5-LENGTH(CONCAT(t.seq) ) ), t.seq) )"
+    end
+    Event.where(parent_id: parent_id).update_all(position: 0)
     ActiveRecord::Base.connection.execute(
-      "UPDATE events SET position = t.seq
+      "UPDATE events SET position = t.seq, position_key = #{position_key_sql}
         FROM (
           SELECT id AS id, row_number() OVER(ORDER BY sequence_id) AS seq
           FROM events

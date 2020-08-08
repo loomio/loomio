@@ -90,18 +90,20 @@ class Event < ApplicationRecord
     self.sequence_id = next_sequence_id unless sequence_id
   end
 
-  def set_position_and_position_key
-    self.position = next_position if position == 0
-    self.position_key = self_and_parents.reverse.map(&:position).map{|p| zero_fill(p) }.join('-')
-  end
-
-  def zero_fill(num)
+  def self.zero_fill(num)
     "0" * (5 - num.to_s.length) + num.to_s
   end
 
   def set_position_and_position_key!
+    return unless self.discussion_id
     set_position_and_position_key
     update_columns(position: position, position_key: position_key)
+  end
+
+  def set_position_and_position_key
+    return unless self.discussion_id
+    self.position = next_position if position == 0
+    self.position_key = self_and_parents.reverse.map(&:position).map{|p| Event.zero_fill(p) }.join('-')
   end
 
   def calendar_invite
