@@ -289,7 +289,6 @@ ActiveRecord::Schema.define(version: 2020_08_01_054702) do
     t.index ["eventable_id"], name: "events_eventable_id_idx"
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
     t.index ["parent_id", "discussion_id"], name: "index_events_on_parent_id_and_discussion_id", where: "(discussion_id IS NOT NULL)"
-    t.index ["parent_id", "position"], name: "index_events_on_parent_id_and_position", unique: true, where: "((discussion_id IS NOT NULL) AND (parent_id IS NOT NULL) AND (\"position\" <> 0))"
     t.index ["parent_id"], name: "index_events_on_parent_id"
     t.index ["pinned"], name: "index_events_on_pinned_true", where: "(pinned IS TRUE)"
     t.index ["position_key"], name: "index_events_on_position_key"
