@@ -26,8 +26,6 @@ Loomio::Application.routes.draw do
     end
   end
 
-  mount ActionCable.server => '/cable'
-
   get '/discussions/:id', to: 'redirect#discussion'
   get '/groups/:id',      to: 'redirect#group'
 
