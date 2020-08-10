@@ -126,7 +126,7 @@ export default
       camelCase if ['stance_created', 'new_comment', 'outcome_created', 'poll_created', 'new_discussion'].includes(kind)
         kind
       else
-        'strand_item'
+        'other_kind'
 </script>
 
 <template lang="pug">
@@ -140,20 +140,15 @@ export default
     .d-flex
       .strand-item__gutter.d-flex.flex-column
         //- | {{obj.event.position}}
-        user-avatar(:user="obj.event.actor()" :size="48")
-        .strand-item__stem(v-if="(index+1 != collection.length) || obj.children")
+        user-avatar(:user="obj.event.actor()" :size="obj.event.depth == 0 ? 48 : 24")
+        .strand-item__stem(:class="{'strand-list__stem--big': obj.event.depth == 0}")
       .thread-strand__body.flex-grow-1
-        | positionKey {{obj.event.positionKey}}
+        .caption positionKey {{obj.event.positionKey}}
         component(:is="componentForKind(obj.event.kind)" :event='obj.event')
         a(v-if="obj.event.childCount && !obj.children" @click="loadChildren(obj.event)") {{obj.event.childCount}} replies
 
     .strand-list__children(v-if="obj.children && obj.children.length")
-      .d-flex
-        .strand-item__gutter.d-flex.flex-column(v-if="index+1 != collection.length")
-          .strand-item__branch-container
-            .strand-item__branch &nbsp;
-          .strand-item__stem(v-if="(index+1 != collection.length) || obj.children")
-        strand-list.flex-grow-1(:loader="loader" :collection="obj.children")
+      strand-list(:loader="loader" :collection="obj.children")
 
     a(v-if="lastPosition != 0 && isLastInLastRange(obj.event.position) && obj.event.position != lastPosition" v-t="'common.action.show_more'" @click="loadAfter(obj.event)")
     p(v-if="lastPosition != 0 && isLastInLastRange(obj.event.position) && obj.event.position != lastPosition") {{countLaterMissing()}} further items missing
@@ -172,36 +167,32 @@ export default
 
 <style lang="sass">
 .strand-list__indent
-  margin-left: 64px
+  //- margin-left: 32px
+  width: 32px
 
 .strand-item__stem
   float: left
   width: 0
-  border: 1px solid grey
+  border: 1px solid #ddd
   height: 100%
-  margin: 0 24px
+  margin: 4px 12px
+
+.strand-item__stem--big
+  margin: 4px 24px
 
 .strand-item__branch-container
   position: absolute
   overflow: hidden
   margin-right: 4px
 
-.strand-item__branch
-  position: relative
-  float: left
-  top: -24px
-  border: 2px solid grey
-  right: -2px
-  height: 48px
-  border-radius: 64px
-  width: 48px
-
-  // top
-  // width: 12px
-  margin-left: calc(50% - 1px)
-  // border-left-width: 2px
-  // border-bottom-width: 2px
-  // border-bottom-left-radius: 10px
-  border-style: solid
+//- .strand-item__branch
+//-   position: relative
+//-   float: left
+//-   top: -24px
+//-   border: 2px solid #ddd
+//-   right: -2px
+//-   height: 48px
+//-   border-radius: 64px
+//-   width: 48px
 
 </style>

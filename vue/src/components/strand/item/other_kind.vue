@@ -2,10 +2,13 @@
 export default
   props:
     event: Object
+  computed:
+    eventable: -> object.model()
 
 </script>
 
 <template lang="pug">
-.strand-other-kind(:event="event")
-  formatted-text.thread-item__body(:model="eventable" column="statement")
+.strand-item
+  p {{ event.kind }}
+  //- formatted-text.thread-item__body(:model="eventable" column="statement")
 </template>
