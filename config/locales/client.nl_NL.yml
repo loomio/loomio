@@ -37,7 +37,10 @@ nl_NL:
     max_members: "Maximum aantal leden"
     expires_at: "Verloopt"
     renews_at: "Vernieuwd"
+    referral_code: "Referentiecode"
+    chargify_link: "Betalingsportaal"
     referral_code_help: "Geef een vriend korting, krijg zelf wat kudo's!"
+    manage_payment_details: "Beheer betalingsdetails"
   loomio_tags:
     all_tags: Alle labels
     tags: Labels
@@ -446,6 +449,8 @@ nl_NL:
       comments: 'Reacties'
     sign_in: 'Inloggen'
     toggle_sidebar: 'Sleep zijbalk'
+    open_sidebar: 'Open zijbalk'
+    close_sidebar: 'Sluit zijbalk'
     logo_title: 'Homepage'
     group_and_subgroups: '{{group}} & subgroepen'
   user_dropdown:
@@ -619,6 +624,8 @@ nl_NL:
     flash:
       success: '{{count}} meldingen verzonden'
   action_dock:
+    actions_menu: Actie menu
+    more_actions: Meer acties
     react: Reageer
     notify: Meld
     add_resource: Bijlage toevoegen
@@ -630,6 +637,7 @@ nl_NL:
     invite_guests: Nodig gasten uit
     translate_thread: Beschrijving vertalen
     edit_poll: '''Peiling'' bewerken'
+    edit_poll_type: "Wijzig {{pollType}}"
     move_items: Verplaats items
     announce_poll: Nodig mensen uit om te stemmen
     announce_poll_active: (Nog niemand werd uitgenodigd)
@@ -663,7 +671,11 @@ nl_NL:
     delete_thread: Bord verwijderen
     notification_history: Meldingen geschiedenis
     move_item: Verplaats item
+    add_poll_to_thread: Voeg toe aan bord
   formatting:
+    formatting_tools: Tekst-formatteer tools
+    expand: Toon meer tekst-formatteer tools
+    collapse: Toon minder tekst-formatteer tools
     bold: Vet
     italicize: Schuin zetten
     blockquote: Quote
@@ -711,6 +723,7 @@ nl_NL:
     image_size_helptext: 'Ideaal afbeeldingsformaat is 100x100px'
     upload_success: 'Logo succesvol bijgewerkt'
   join_group_button:
+    not_a_member: "Je bent nu geen lid van deze groep."
     join_group: Word lid van de groep
     membership_requested: Lidmaatschap aangevraagd
     messages:
@@ -749,6 +762,7 @@ nl_NL:
     you_and_name_and_count_more: "Jij, {{name}} en {{count}} meer"
     name_and_count_more: "{{name}} en {{count}} meer"
   context_panel:
+    aria_intro: "Bord context door {{author}}"
     thread_status:
       pinned: "Dit bord is vastgeprikt. Het zal voor alle gebruikers bovenaan de lijst van borden van de groepslijst blijven staan."
       closed: "Dit bord is gesloten. Het verschijnt niet langer op het dashboard, en het staat onder 'gesloten' op de groep pagina"
@@ -1206,6 +1220,7 @@ nl_NL:
     title: Gezien door
     no_one: Nog niemand heeft dit gezien
   activity_card:
+    aria_label: "Reageer of start een peiling"
     count_responses: "{{count}} antwoorden"
     event_pinned: "Gepinned op de tijdslijn"
     event_unpinned: "Ontpinned van de tijdslijn"
@@ -1229,6 +1244,7 @@ nl_NL:
   thread_group:
     aria_label: 'Groepsnaam'
   thread_context:
+    current_poll_type_banner: Huidig {{pollType}}
     item_maybe_deleted: "De gevraagde locatie konden we niet vinden op het bord. Het zou verwijderd kunnen zijn."
     aria_label: 'Bordbeschrijving'
     thread_options: 'Bord opties'
@@ -1344,6 +1360,7 @@ nl_NL:
     your_response: Je antwoord
     change_your_response: Bewerk antwoord
     reason: Reden
+    reason_placeholder: Leg kort uit waarom je deze stem gaf
     message: Bericht
     results: Resultaten
     responses: Antwoorden
@@ -1360,6 +1377,8 @@ nl_NL:
     details: Details
     participant_name: Je naam
     participant_email: E-mail adres
+    submit_vote: Verstuur stem
+    update_vote: Verander stem
     share_poll: '''Peiling'' delen'
     share_proposal: '''Voorstel'' delen'
     share_count: '''Check'' delen'
@@ -1367,6 +1386,7 @@ nl_NL:
     publish_poll: '''Peiling'' delen'
     view_all: Bekijk alles
     save_changes: Bewaren
+    change_vote: Verander je stem
     max_score: Maximum score
     min_score: Minimum score
     too_long: Te lang
@@ -1384,6 +1404,7 @@ nl_NL:
       options_added: Nieuwe opties toegevoegd
   poll_common_card:
     show_results: Toon resultaten
+    hide_results: Verberg resultaat
     deleted: Deze peiling is verwijderd
   poll_common_index_card:
     title: Vorige beslissingen
@@ -1506,6 +1527,10 @@ nl_NL:
     dot_vote_closed: '''Dotmocracy'' gesloten'
     meeting_closed: '''Moment bevragen'' gesloten'
     ranked_choice_closed: De peiling 'Keuzes rangschikken' is gesloten
+  poll_common_reopen_form:
+    title: "Heropen {{poll_type}}"
+    helptext: "Heropen de {{poll_type}} als mensen meer tijd nodig hebben om mee te doen"
+    success: "{{poll_type}} heropent"
   poll_common_move_form:
     title: "Verplaats {{poll_type}}"
     success: "{{poll_type}} verplaatst naar {{group}}"
@@ -1566,6 +1591,7 @@ nl_NL:
     closing: Sluiten
     closed: Gesloten
     start: Starten
+    start_poll_type: Start {{poll_type}}
     update: Updaten
     reminder_note: 24u voor afsluiten, zal een herinnering verstuurd worden naar alle deelnemers
     loomio_school_link: |
@@ -1760,6 +1786,13 @@ nl_NL:
     stance_created: Keuze opgenomen
     stance_updated: Keuze upgedatet
   thread_item:
+    aria:
+      deleted: Item verwijderd
+      new_comment: "{{actor}} reageerde. {{when}}"
+      poll_created: "{{actor}} startte een {{pollType}}. {{when}}"
+      stance_created: "{{actor}} heeft gestemd. {{when}}"
+      outcome_created: "{{actor}} deelde een resultaat. {{when}}"
+      poll_expired: "{{pollType}} sloot. {{when}}"
     removed: "Item verwijderd"
     comment_replied_to: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> in antwoord op <strong>{{title}}</strong>"
     discussion_title_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> bewerkte de bordtitel"
@@ -1792,17 +1825,22 @@ nl_NL:
     what_is_this: "Dit is een live voorbeeld van een {{type}}. Je ben een deelnemer - doe eens een poging!"
   share_poll_page:
     title: Deel peiling - {{title}}
+  add_poll_to_thread_modal:
+    success: "Gelukt, {{pollType}} aan bord toegevoegd!"
   auth_form:
     code: '000000'
     youre_invited: Je bent uitgenodigd om lid te worden van {{group_name}}.
     youre_invited_discussion: Je bent uitgenodigd om mee te doen met de discussie.
     youre_invited_poll: Je bent uitgenodigd om te stemmen.
+    sign_in_to_loomio: Log in op {{site_name}}
     sign_in_help: Moeite om in te schrijven?
     sign_in: Inloggen
     continue: Ga verder
     create_account: Account aanmaken
+    sign_up_as: Schrijf in als {{email}}
     sign_in_as: Log in als {{name}}
     continue_with_provider: Schrijf in met {{provider}}
+    continue_with_email: Ga door met e-mail
     or_enter_your_email: Of, voeg je emailadres in
     enter_your_name: Typ je naam
     invitation_required: Je hebt een uitnodiging nodig om een account te creëren.
@@ -1816,6 +1854,7 @@ nl_NL:
     email_placeholder: you@example.com
     login_with_token: Helemaal klaar! Klik op onderstaande link om verder te gaan.
     login_link_helptext: Klik op de knop hieronder en we sturen je een aanmeld-link.
+    enter_your_password: "Voer je wachtwoord in om door te gaan"
     check_spam_folder: Als de e-mail niet snel aankomt, kijk dan in je spam map.
     sign_up_helptext: Vul alsjeblieft in om een gebruikersaccount te maken
     i_accept: "Ik accepteer de <a href='{{termsUrl}}' target='_blank'>Servicevoorwaarden</a> en het <a href='{{privacyUrl}}' target='_blank'>Privacybeleid</a>"
@@ -1829,6 +1868,7 @@ nl_NL:
     welcome_back: Welkom terug, {{name}}!
     forgot_password: Wachtwoord vergeten
     login_link: Stuur inschrijvings-email
+    sign_in_via_email: Login via e-mail
     set_password: Wachtwoord instellen
     set_password_helptext: Wil je de volgende keer een wachtwoord gebruiken?
     hello: "Hallo, {{name}}!"
