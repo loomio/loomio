@@ -12,7 +12,7 @@ import { Editor, EditorContent, EditorMenuBar } from 'tiptap'
 import { Blockquote, CodeBlock, HardBreak, Heading, HorizontalRule,
   OrderedList, BulletList, ListItem, Table, TableHeader, TableCell,
   TableRow, TodoList, Bold, Code, Italic, Link, Strike, Underline,
-  History, Mention, Placeholder, TrailingNode } from 'tiptap-extensions'
+  History, Mention, Placeholder, TrailingNode, Collaboration } from 'tiptap-extensions'
 
 import Iframe from './iframe'
 import TodoItem from './todo_item'
@@ -25,6 +25,8 @@ import {getEmbedLink} from '@/shared/helpers/embed_link.coffee'
 import { CommonMentioning, HtmlMentioning, MentionPluginConfig } from './mentioning.coffee'
 import SuggestionList from './suggestion_list'
 import Attaching from './attaching.coffee'
+
+import io from 'socket.io-client'
 
 export default
   mixins: [CommonMentioning, HtmlMentioning, Attaching]
@@ -44,52 +46,16 @@ export default
     SuggestionList: SuggestionList
 
   data: ->
+    loading: true
+    socket: null
+    count: 0
+    editor: null
     expanded: null
     closeEmojiMenu: false
     linkUrl: ""
     iframeUrl: ""
     linkDialogIsOpen: false
     iframeDialogIsOpen: false
-    editor: new Editor
-      # disablePasteRules: true
-      editorProps:
-        scrollThreshold: 100
-        scrollMargin: 100
-      extensions: [
-        new Link(),
-        new Mention(MentionPluginConfig.bind(@)()),
-        new Blockquote(),
-        new BulletList(),
-        new CodeBlock(),
-        new HardBreak(),
-        new Image({attachFile: @attachFile, attachImageFile: @attachImageFile}),
-        new Heading({ levels: [1, 2, 3] }),
-        new HorizontalRule(),
-        new ListItem(),
-        new OrderedList(),
-        new TodoItem(),
-        new TodoList(),
-        new Table(),
-        new TableHeader(),
-        new TableCell(),
-        new TableRow(),
-        new Bold(),
-        new Code(),
-        new Italic(),
-        new Strike(),
-        new Underline(),
-        new History(),
-        new Iframe(),
-        new Placeholder({
-          emptyClass: 'is-empty',
-          emptyNodeText: @placeholder,
-          showOnlyWhenEditable: true,
-        })
-        # new TrailingNode({node: 'paragraph', notAfter: ['paragraph']})
-      ]
-      content: @model[@field]
-      onUpdate: @updateModel
-      autoFocus: @autofocus
 
   computed:
     format: ->
@@ -97,13 +63,84 @@ export default
 
   mounted: ->
     @expanded = Session.user().experiences['html-editor.expanded']
-    @updateModel()
+
+    # // get the current document and its version
+    # // send all updates to the collaboration extension
+    # // get count of connected users
+    @socket = io('ws://localhost:5000/doc-01')
+      .on('init', (data) => @onInit(data))
+      .on('update', (data) =>
+        console.log "data in!", data
+        @editor.extensions.options.collaboration.update(data))
+      .on('getCount', (count) => @setCount(count))
 
   watch:
     'shouldReset': 'reset'
 
   methods:
+    onInit: ({doc, version}) ->
+      console.log("clientID", this.socket.id)
+
+      @loading = false
+      @editor.destroy() if @editor
+
+      @editor = new Editor
+        editorProps:
+          scrollThreshold: 100
+          scrollMargin: 100
+        extensions: [
+          new Link(),
+          new Mention(MentionPluginConfig.bind(@)()),
+          new Blockquote(),
+          new BulletList(),
+          new CodeBlock(),
+          new HardBreak(),
+          new Image({attachFile: @attachFile, attachImageFile: @attachImageFile}),
+          new Heading({ levels: [1, 2, 3] }),
+          new HorizontalRule(),
+          new ListItem(),
+          new OrderedList(),
+          new TodoItem(),
+          new TodoList(),
+          new Table(),
+          new TableHeader(),
+          new TableCell(),
+          new TableRow(),
+          new Bold(),
+          new Code(),
+          new Italic(),
+          new Strike(),
+          new Underline(),
+          new History(),
+          new Iframe(),
+          new Placeholder({
+            emptyClass: 'is-empty',
+            emptyNodeText: @placeholder,
+            showOnlyWhenEditable: true,
+          }),
+          new Collaboration({
+            # // the initial version we start with
+            # // version is an integer which is incremented with every change
+            clientID: @socket.id
+            version: version
+            # // debounce changes so we can save some requests
+            debounce: 250
+            # // onSendable is called whenever there are changed we have to send to our server
+            onSendable: ({sendable}) =>
+              console.log "onSendable", sendable
+              @socket.emit('update', sendable)
+          })
+          # new TrailingNode({node: 'paragraph', notAfter: ['paragraph']})
+        ]
+        content: doc
+        onUpdate: @updateModel
+        autoFocus: @autofocus
+
+    setCount: (count) ->
+      @count = count
+
     selectedText: ->
+
       { selection, state } = @editor
       { from, to } = selection
       state.doc.textBetween(from, to, ' ')
@@ -146,6 +183,7 @@ export default
       @editor.focus()
 
     updateModel: ->
+      console.log "update Model"
       @model[@field] = @editor.getHTML()
       setTimeout =>
         if @$refs.editor && @$refs.editor.$el
@@ -155,10 +193,16 @@ export default
 
   beforeDestroy: ->
     @editor.destroy()
+    @socket.destroy()
+
 </script>
 
 <template lang="pug">
 div
+  template(v-if="editor && !loading")
+    div.count {{ count }} {{ count === 1 ? 'user' : 'users' }} connected
+  em(v-else)
+    | Connecting to socket server …
   .editor.mb-3
     editor-content.html-editor__textarea(ref="editor" :editor='editor').lmo-markdown-wrapper
     editor-menu-bar(:editor='editor' v-slot='{ commands, isActive, focused }')
@@ -320,6 +364,25 @@ div
 </template>
 
 <style lang="sass">
+
+.count
+  display: flex
+  align-items: center
+  font-weight: bold
+  color: rgba(#000, 0.5)
+  color: #27b127
+  margin-bottom: 1rem
+  text-transform: uppercase
+  font-size: 0.7rem
+  line-height: 1
+  &:before
+    content: ''
+    display: inline-flex
+    background-color: #27b127
+    width: 0.4rem
+    height: 0.4rem
+    border-radius: 50%
+    margin-right: 0.3rem
 
 .ProseMirror [contenteditable="false"]
   white-space: normal
