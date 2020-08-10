@@ -14,6 +14,7 @@
     "test:e2e:standalone": "nightwatch --config ./tests/e2e/nightwatch.conf.js --retries 2"
   },
   "dependencies": {
+    "intersection-observer": "^0.11.0",
     "@babel/polyfill": "^7.10.4",
     "@sentry/browser": "5.20.1",
     "@sentry/integrations": "5.20.1",

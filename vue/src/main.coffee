@@ -1,3 +1,4 @@
+require('intersection-observer')
 import Vue from 'vue'
 import MessageBus from '@/shared/message_bus'
 import MessageBusAjax from '@/shared/message_bus_ajax'
