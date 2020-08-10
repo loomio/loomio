@@ -8,6 +8,17 @@ class Events::BaseSerializer < ApplicationSerializer
   has_one :discussion, serializer: Simple::DiscussionSerializer, root: :discussions
   has_one :parent, serializer: Events::BaseSerializer, root: :parent_events
 
+  # for discussion moved event
+  has_one :source_group, serializer: GroupSerializer, root: :groups
+
+  def source_group
+    Group.find(object.custom_fields['source_group_id'])
+  end
+
+  def include_source_group?
+    object.kind = "discussion_moved" && object.custom_fields['source_group_id'].present?
+  end
+
   def actor_id
     object.user_id
   end
@@ -21,7 +32,7 @@ class Events::BaseSerializer < ApplicationSerializer
   end
 
   def include_custom_fields?
-    ["poll_edited", "discussion_edited"].include? object.kind
+    ["poll_edited", "discussion_edited", "discussion_moved"].include? object.kind
   end
 
 end
