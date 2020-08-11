@@ -16,7 +16,7 @@ class Events::BaseSerializer < ApplicationSerializer
   end
 
   def include_source_group?
-    object.kind = "discussion_moved" && object.custom_fields['source_group_id'].present?
+    object.kind == "discussion_moved" && object.custom_fields['source_group_id'].present?
   end
 
   def actor_id
