@@ -23,8 +23,17 @@ class DiscussionService
                                          emails: params[:emails],
                                          user_ids: params[:user_ids])
 
+    volumes = {}
+    Membership.where(group_id: discussion.group_id,
+                     user_id: users.pluck(:id)).find_each do |m|
+      volumes[m.user_id] = m.volume
+    end
+
     new_discussion_readers = users.map do |user|
-      DiscussionReader.new(user: user, discussion: discussion, inviter: actor, volume: DiscussionReader.volumes[:normal])
+      DiscussionReader.new(user: user,
+                           discussion: discussion,
+                           inviter: actor,
+                           volume: volumes[user.id] || DiscussionReader.volumes[:normal])
     end
 
     DiscussionReader.import(new_discussion_readers, on_duplicate_key_ignore: true)
