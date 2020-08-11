@@ -10,8 +10,7 @@ import { hardReload } from '@/shared/helpers/window'
 import { each } from 'lodash-es'
 
 export initLiveUpdate = ->
-  console.log "initing"
-  console.log MessageBus.start()
+  MessageBus.start()
   # MessageBus.subscribe '/notices', (data) ->
   #   console.log "subscribed to notices", data
   # if data.version?
