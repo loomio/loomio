@@ -32,7 +32,6 @@
     "marked": "^1.1.1",
     "md5": "2.3.0",
     "pretty-bytes": "^5.3.0",
-    "prosemirror-tables": "^1.1.1",
     "raven-js": "latest",
     "svg.js": "^2.7.1",
     "textarea-caret": "^3.1.0",
