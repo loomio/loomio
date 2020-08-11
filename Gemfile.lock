@@ -135,7 +135,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.6)
+    concurrent-ruby (1.1.7)
     connection_pool (2.2.3)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
@@ -277,7 +277,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
-    kt-paperclip (6.2.2)
+    kt-paperclip (6.3.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       mime-types
