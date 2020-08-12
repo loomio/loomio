@@ -20,13 +20,19 @@ describe MembershipService do
       membership
       subgroup.add_member! user
       subgroup_discussion.add_guest! user, subgroup_discussion.author
-      discussion.add_guest! user, discussion.author
-      poll.stances.create!(participant: user)
-      MembershipService.destroy membership: membership, actor: user
+      reader = discussion.add_guest! user, discussion.author
+      stance = poll.add_guest!(user, discussion.author)
+      expect(stance.inviter_id).to eq discussion.author_id
+      expect(reader.inviter_id).to eq discussion.author_id
+      expect(stance.revoked_at).to eq nil
+      expect(reader.revoked_at).to eq nil
+      MembershipService.destroy(membership: membership, actor: user)
       expect(subgroup.members).to_not include user
       expect(subgroup_discussion.members).to_not include user
       expect(discussion.members).to_not include user
       expect(poll.members).to_not include user
+      expect(reader.reload.revoked_at).to_not eq nil
+      expect(stance.reload.revoked_at).to_not eq nil
     end
   end
 
