@@ -53,7 +53,8 @@ class GroupSerializer < ApplicationSerializer
              :org_members_count,
              :subscription,
              :subgroups_count,
-             :complete
+             :complete,
+             :secret_token
 
   def complete
     true
@@ -91,7 +92,11 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def include_current_user_membership?
-    super && scope && scope[:current_user]
+    super && scope[:current_user]
+  end
+
+  def include_secret_token?
+    current_user_membership && current_user_membership.admin
   end
 
   def tag_names

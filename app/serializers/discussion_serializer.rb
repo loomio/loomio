@@ -33,7 +33,8 @@ class DiscussionSerializer < ApplicationSerializer
              :tag_names,
              :newest_first,
              :max_depth,
-             :discarded_at
+             :discarded_at,
+             :secret_token
 
 
   attributes_from_reader :discussion_reader_id,
