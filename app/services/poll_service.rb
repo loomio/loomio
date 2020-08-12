@@ -21,7 +21,7 @@ class PollService
                                          user_ids: params[:user_ids])
 
     volumes = {}
-    Membership.where(group_id: discussion.group_id,
+    Membership.where(group_id: poll.group_id,
                      user_id: users.pluck(:id)).find_each do |m|
       volumes[m.user_id] = m.volume
     end
@@ -30,7 +30,7 @@ class PollService
       Stance.new(participant: user,
                  poll: poll,
                  inviter: actor,
-                 volume: volumes[user.id] || DiscussionReader.volumes[:normal], 
+                 volume: volumes[user.id] || DiscussionReader.volumes[:normal],
                  reason_format: user.default_format)
     end
 
