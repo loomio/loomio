@@ -8,7 +8,7 @@ class NotifyWebhooksWorker
       eventable.group.identities.each do |i|
         i.notify!(event) if i.respond_to? :notify!
       end
-      eventable.group.webhooks.each { |w| w.publish!(event) }
+      eventable.group.webhooks.not_broken.each { |w| w.publish!(event) }
       # if eventable.group.is_visible_to_parent_members &&  eventable.group.parent
       #   eventable.group.parent.webhooks.include_subgroups.each { |w| w.publish!(event) }
       # end
