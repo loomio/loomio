@@ -1,6 +1,7 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
+import AppConfig from '@/shared/services/app_config'
 import FileUploader from '@/shared/services/file_uploader'
 import FilesList from './files_list.vue'
 import EventBus from '@/shared/services/event_bus'
@@ -64,10 +65,7 @@ export default
   mounted: ->
     @expanded = Session.user().experiences['html-editor.expanded']
 
-    # // get the current document and its version
-    # // send all updates to the collaboration extension
-    # // get count of connected users
-    @socket = io('ws://localhost:5000/doc-01')
+    @socket = io(@tiptapAddress())
       .on('init', (data) => @onInit(data))
       .on('update', (data) =>
         console.log "data in!", data
@@ -138,6 +136,12 @@ export default
 
     setCount: (count) ->
       @count = count
+
+    tiptapAddress: ->
+      if @isNew()
+        compact([AppConfig.theme.channels_uri, @model.constructor.singular, 'new', @model.groupId, @model.discussionId, Session.user().secretToken]).join('/')
+      else
+        [AppConfig.theme.channels_uri, @model.constructor.singular, @model.id, (@model.secretToken || Session.user().secretToken)].join('/')
 
     selectedText: ->
 

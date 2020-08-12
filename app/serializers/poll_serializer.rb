@@ -5,7 +5,7 @@ class PollSerializer < ApplicationSerializer
              :created_at, :multiple_choice, :custom_fields, :poll_option_names,
              :notify_on_participate, :anonymous, :can_respond_maybe, :hide_results_until_closed,
              :attachments, :mentioned_usernames, :author_id, :complete, :stances_in_discussion,
-             :discarded_at, :discarded_by
+             :discarded_at, :discarded_by, :secret_token
 
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_one :created_event, serializer: Events::BaseSerializer, root: :events
@@ -14,11 +14,6 @@ class PollSerializer < ApplicationSerializer
   has_one :current_outcome, serializer: OutcomeSerializer, root: :outcomes
   has_one :my_stance, serializer: StanceSerializer, root: :stances
   has_many :poll_options, serializer: PollOptionSerializer, root: :poll_options
-
-  # can remove complete in august or so.
-  def complete
-    true
-  end
 
   def include_mentioned_usernames?
     details_format == "md"
