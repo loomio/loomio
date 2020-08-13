@@ -26,6 +26,7 @@ import {getEmbedLink} from '@/shared/helpers/embed_link.coffee'
 import { CommonMentioning, HtmlMentioning, MentionPluginConfig } from './mentioning.coffee'
 import SuggestionList from './suggestion_list'
 import Attaching from './attaching.coffee'
+import {compact} from 'lodash-es'
 
 import io from 'socket.io-client'
 
@@ -68,16 +69,24 @@ export default
     @socket = io(@tiptapAddress())
       .on('init', (data) => @onInit(data))
       .on('update', (data) =>
-        console.log "data in!", data
+        # console.log "data in!", data
         @editor.extensions.options.collaboration.update(data))
       .on('getCount', (count) => @setCount(count))
+
+    setTimeout =>
+      if @$refs.editor && @$refs.editor.$el
+        @$refs.editor.$el.children[0].setAttribute("role", "textbox")
+        @$refs.editor.$el.children[0].setAttribute("aria-label", @placeholder) if @placeholder
 
   watch:
     'shouldReset': 'reset'
 
   methods:
     onInit: ({doc, version}) ->
-      console.log("clientID", this.socket.id)
+      # console.log
+      #   clientID: @socket.id
+      #   doc: doc
+      #   version: version
 
       @loading = false
       @editor.destroy() if @editor
@@ -125,7 +134,7 @@ export default
             debounce: 250
             # // onSendable is called whenever there are changed we have to send to our server
             onSendable: ({sendable}) =>
-              console.log "onSendable", sendable
+              # console.log "onSendable", version, sendable
               @socket.emit('update', sendable)
           })
           # new TrailingNode({node: 'paragraph', notAfter: ['paragraph']})
@@ -138,10 +147,10 @@ export default
       @count = count
 
     tiptapAddress: ->
-      if @isNew()
-        compact([AppConfig.theme.channels_uri, @model.constructor.singular, 'new', @model.groupId, @model.discussionId, Session.user().secretToken]).join('/')
+      if @model.isNew()
+        compact([AppConfig.theme.channels_uri, 'tiptap', @model.constructor.singular, 'new', @model.groupId, @model.discussionId, Session.user().secretToken]).join('/')
       else
-        [AppConfig.theme.channels_uri, @model.constructor.singular, @model.id, (@model.secretToken || Session.user().secretToken)].join('/')
+        [AppConfig.theme.channels_uri, 'tiptap', @model.constructor.singular, @model.id, (@model.secretToken || Session.user().secretToken)].join('/')
 
     selectedText: ->
 
@@ -171,7 +180,7 @@ export default
         @linkUrl = "http://".concat(@linkUrl) unless @linkUrl.includes("://")
         command({ href: @linkUrl })
         @linkUrl = null
-      @linkDialogIsOpen = false
+      @linkDialogIsOpen = fal/isNewse
       @editor.focus()
 
     setIframeUrl: (command) ->
@@ -189,11 +198,8 @@ export default
     updateModel: ->
       console.log "update Model"
       @model[@field] = @editor.getHTML()
-      setTimeout =>
-        if @$refs.editor && @$refs.editor.$el
-          @$refs.editor.$el.children[0].setAttribute("role", "textbox")
-          @$refs.editor.$el.children[0].setAttribute("aria-label", @placeholder) if @placeholder
       @updateFiles()
+
 
   beforeDestroy: ->
     @editor.destroy()
@@ -203,6 +209,7 @@ export default
 
 <template lang="pug">
 div
+  | channel: {{tiptapAddress()}}
   template(v-if="editor && !loading")
     div.count {{ count }} {{ count === 1 ? 'user' : 'users' }} connected
   em(v-else)
