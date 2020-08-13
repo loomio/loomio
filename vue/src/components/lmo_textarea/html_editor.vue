@@ -68,26 +68,15 @@ export default
 
     @socket = io(@tiptapAddress())
       .on('init', (data) => @onInit(data))
-      .on('update', (data) =>
-        # console.log "data in!", data
-        @editor.extensions.options.collaboration.update(data))
+      .on('update', (data) => @editor.extensions.options.collaboration.update(data))
       .on('getCount', (count) => @setCount(count))
 
-    setTimeout =>
-      if @$refs.editor && @$refs.editor.$el
-        @$refs.editor.$el.children[0].setAttribute("role", "textbox")
-        @$refs.editor.$el.children[0].setAttribute("aria-label", @placeholder) if @placeholder
 
   watch:
     'shouldReset': 'reset'
 
   methods:
     onInit: ({doc, version}) ->
-      # console.log
-      #   clientID: @socket.id
-      #   doc: doc
-      #   version: version
-
       @loading = false
       @editor.destroy() if @editor
 
@@ -126,13 +115,9 @@ export default
             showOnlyWhenEditable: true,
           }),
           new Collaboration({
-            # // the initial version we start with
-            # // version is an integer which is incremented with every change
             clientID: @socket.id
             version: version
-            # // debounce changes so we can save some requests
             debounce: 250
-            # // onSendable is called whenever there are changed we have to send to our server
             onSendable: ({sendable}) =>
               # console.log "onSendable", version, sendable
               @socket.emit('update', sendable)
@@ -142,6 +127,13 @@ export default
         content: doc
         onUpdate: @updateModel
         autoFocus: @autofocus
+
+      @editor.setContent(@model[@field]) if version == 0
+
+      # setTimeout =>
+      #   if @$refs.editor && @$refs.editor.$el
+      #     @$refs.editor.$el.children[0].setAttribute("role", "textbox")
+      #     @$refs.editor.$el.children[0].setAttribute("aria-label", @placeholder) if @placeholder
 
     setCount: (count) ->
       @count = count
@@ -153,7 +145,6 @@ export default
         [AppConfig.theme.channels_uri, 'tiptap', @model.constructor.singular, @model.id, (@model.secretToken || Session.user().secretToken)].join('/')
 
     selectedText: ->
-
       { selection, state } = @editor
       { from, to } = selection
       state.doc.textBetween(from, to, ' ')
@@ -196,10 +187,8 @@ export default
       @editor.focus()
 
     updateModel: ->
-      console.log "update Model"
       @model[@field] = @editor.getHTML()
       @updateFiles()
-
 
   beforeDestroy: ->
     @editor.destroy()
