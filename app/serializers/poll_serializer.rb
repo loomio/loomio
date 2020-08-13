@@ -4,7 +4,7 @@ class PollSerializer < ApplicationSerializer
              :closed_at, :closing_at, :stances_count, :participants_count, :undecided_count, :cast_stances_pct, :versions_count,
              :created_at, :multiple_choice, :custom_fields, :poll_option_names,
              :notify_on_participate, :anonymous, :can_respond_maybe, :hide_results_until_closed,
-             :attachments, :mentioned_usernames, :author_id, :complete, :stances_in_discussion,
+             :attachments, :mentioned_usernames, :author_id, :stances_in_discussion,
              :discarded_at, :discarded_by, :secret_token
 
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
