@@ -10,6 +10,7 @@ import { hardReload } from '@/shared/helpers/window'
 export default new class ThreadService
   actions: (discussion, vm) ->
 
+
     subscribe:
       name: 'common.action.subscribe'
       canPerform: ->

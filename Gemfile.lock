@@ -105,8 +105,8 @@ GEM
       activesupport (>= 3.0.0)
     arel (9.0.0)
     aws-eventstream (1.1.0)
-    aws-partitions (1.343.0)
-    aws-sdk-core (3.104.1)
+    aws-partitions (1.354.0)
+    aws-sdk-core (3.104.3)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
       aws-sigv4 (~> 1.1)
@@ -114,14 +114,14 @@ GEM
     aws-sdk-kms (1.36.0)
       aws-sdk-core (~> 3, >= 3.99.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.75.0)
-      aws-sdk-core (~> 3, >= 3.104.1)
+    aws-sdk-s3 (1.78.0)
+      aws-sdk-core (~> 3, >= 3.104.3)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.1)
     aws-sigv4 (1.2.1)
       aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.13)
-    bootsnap (1.4.7)
+    bootsnap (1.4.8)
       msgpack (~> 1.0)
     browser (4.2.0)
     builder (3.2.4)
@@ -135,7 +135,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.6)
+    concurrent-ruby (1.1.7)
     connection_pool (2.2.3)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
@@ -277,7 +277,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
-    kt-paperclip (6.2.2)
+    kt-paperclip (6.3.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       mime-types
@@ -292,6 +292,8 @@ GEM
       mimemagic (~> 0.3.2)
     maxminddb (0.1.22)
     memoist (0.16.2)
+    message_bus (3.3.1)
+      rack (>= 1.1.3)
     method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
@@ -498,7 +500,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  actioncable
   active_model_serializers (~> 0.8.1)
   activeadmin (~> 2.7.0)
   activerecord-import (= 1.0.6)
@@ -536,6 +537,7 @@ DEPENDENCIES
   image_processing (~> 1.11)
   kt-paperclip
   maxminddb
+  message_bus
   mini_magick
   newrelic_rpm
   nokogiri

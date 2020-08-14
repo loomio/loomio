@@ -204,9 +204,6 @@ export default new class AbilityService
     AppConfig.inlineTranslation.isAvailable and
     Object.keys(model.translation).length == 0
 
-  canSubscribeToPoll: (poll) ->
-    poll.membersInclude(Session.user())
-
   canMovePoll: (poll) ->
     !poll.discussionId && poll.adminsInclude(Session.user())
 

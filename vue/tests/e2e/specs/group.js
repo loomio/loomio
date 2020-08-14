@@ -347,16 +347,6 @@ module.exports = {
     page.expectFlash('Notification settings updated')
   },
 
-  'displays_emails_only_for_your_pending_invites': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_group_with_pending_invitations')
-    page.click('.group-page-members-tab')
-    page.click('.members-panel__filters')
-    page.click('.members-panel__filters-invitations')
-    page.expectText('.members-panel .v-card .v-list-item__title', 'shown@test.com')
-  },
-
   'delete_group': (test) => {
     page = pageHelper(test)
 

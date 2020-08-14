@@ -20,8 +20,18 @@ class PollService
                                          emails: params[:emails],
                                          user_ids: params[:user_ids])
 
+    volumes = {}
+    Membership.where(group_id: poll.group_id,
+                     user_id: users.pluck(:id)).find_each do |m|
+      volumes[m.user_id] = m.volume
+    end
+
     new_stances = users.where.not(id: poll.voter_ids).map do |user|
-      Stance.new(participant: user, poll: poll, inviter: actor, volume: DiscussionReader.volumes[:normal], reason_format: user.default_format)
+      Stance.new(participant: user,
+                 poll: poll,
+                 inviter: actor,
+                 volume: volumes[user.id] || DiscussionReader.volumes[:normal],
+                 reason_format: user.default_format)
     end
 
     Stance.import(new_stances, on_duplicate_key_ignore: true)
@@ -49,7 +59,7 @@ class PollService
     poll.update(discarded_at: Time.now, discarded_by: actor.id)
     Event.where(kind: "stance_created", eventable_id: poll.stances.pluck(:id)).update_all(discussion_id: nil)
     poll.created_event.update(user_id: nil, child_count: 0, pinned: false)
-    MessageChannelService.publish_event(poll.created_event)
+    MessageChannelService.publish_models(poll.created_event, group_ids: [poll.group_id])
     poll.created_event
   end
 

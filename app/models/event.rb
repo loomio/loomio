@@ -65,6 +65,11 @@ class Event < ApplicationRecord
     user
   end
 
+  def message_channel
+    eventable.group.message_channel
+  end
+  # this is called after create, and calls methods defined by the event concerns
+  # included per event type
   def trigger!
     EventBus.broadcast("#{kind}_event", self)
   end

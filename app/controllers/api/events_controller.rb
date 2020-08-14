@@ -16,14 +16,14 @@ class API::EventsController < API::RestfulController
     @event = Event.find(params[:id])
     current_user.ability.authorize!(:pin, @event)
     @event.update(pinned: true, pinned_title: params[:pinned_title])
-    render json: EventCollection.new(@event).serialize!(default_scope)
+    render json: MessageChannelService.serialize_models(@event, scope: default_scope)
   end
 
   def unpin
     @event = Event.find(params[:id])
     current_user.ability.authorize!(:unpin, @event)
     @event.update(pinned: false)
-    render json: EventCollection.new(@event).serialize!(default_scope)
+    render json: MessageChannelService.serialize_models(@event, scope: default_scope)
   end
 
   private

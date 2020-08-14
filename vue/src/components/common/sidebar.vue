@@ -7,7 +7,7 @@ import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import InboxService   from '@/shared/services/inbox_service'
 
-import { isUndefined, sortBy, filter, find, head, uniq, map, sum, compact,
+import { isUndefined, sortBy, filter, find, head, each, uniq, map, sum, compact,
          concat, intersection, difference, orderBy } from 'lodash-es'
 
 export default

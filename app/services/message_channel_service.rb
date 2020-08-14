@@ -1,18 +1,18 @@
 class MessageChannelService
-  def self.publish_model(model, serializer: nil, root: nil, to: nil)
-    serializer ||= "#{model.class}Serializer".constantize
-    root       ||= model.class.to_s.pluralize.downcase
-    to         ||= model.group.message_channel
-    data       =   ActiveModel::ArraySerializer.new([model], each_serializer: serializer, root: root).as_json
-    Array(to).each { |channel| publish_data(data, to: channel) }
+  def self.publish_models(models, serializer: nil, scope: {}, root: nil, group_ids: [], user_ids: [])
+    data = serialize_models(models, serializer: serializer, scope: scope, root: root)
+    publish_serialized_records(data, group_ids: group_ids, user_ids: user_ids)
   end
 
-  def self.publish_data(data, to: message_channel)
-    ActionCable.server.broadcast to, data if to
+  def self.serialize_models(models, serializer: nil, scope: {}, root: nil)
+    models = Array(models)
+    return unless model = models.first
+    serializer ||= model.is_a?(Event) ? Events::BaseSerializer : "#{model.class}Serializer".constantize
+    root       ||= model.is_a?(Event) ? 'events' : model.class.to_s.pluralize.downcase
+    ActiveModel::ArraySerializer.new(models, scope: scope, each_serializer: serializer, root: root)
   end
 
-  def self.publish_event(event)
-    event_data = Events::BaseSerializer.new(event).to_json
-    ActionCable.server.broadcast(event.eventable.group.message_channel, event_data)
+  def self.publish_serialized_records(data, group_ids: [], user_ids: [])
+    MessageBus.publish '/records', data.as_json.as_json, group_ids: group_ids, user_ids: user_ids
   end
 end

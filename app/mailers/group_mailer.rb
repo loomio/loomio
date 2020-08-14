@@ -5,7 +5,7 @@ class GroupMailer < BaseMailer
     recipient = User.find_by!(id: recipient_id)
     event = Event.find_by!(id: event_id)
     return unless @membership = event.eventable.memberships.find_by(user: recipient)
-    @inviter = @membership.inviter || recipient
+    @inviter = event.user || @membership.inviter || recipient
     send_single_mail to:     recipient.email,
                      locale: recipient.locale,
                      from:   from_user_via_loomio(@inviter),

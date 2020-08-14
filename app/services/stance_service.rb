@@ -23,7 +23,9 @@ class StanceService
     stance.save!
     stance.poll.update_stance_data
     EventBus.broadcast 'stance_create', stance
-    Events::StanceCreated.publish! stance
+    event = Events::StanceCreated.publish! stance
+    MessageChannelService.publish_models(event, scope: {current_user: actor}, user_ids: [actor.id])
+    event
   end
 
   def self.update(stance:, actor:, params:)
@@ -36,6 +38,7 @@ class StanceService
     stance.save!
     stance.poll.update_stance_data
     Events::StanceCreated.publish!(stance) unless stance.created_event
+    MessageChannelService.publish_models(stance.reload.created_event, scope: {current_user: actor}, user_ids: [actor.id])
     EventBus.broadcast 'stance_update', stance, actor
   end
 end
