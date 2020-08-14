@@ -65,13 +65,17 @@ export default
 
       if rules.length == 0
         # never read, or all read?
+        console.log "0 rules"
         if @discussion.lastReadAt == null or @discussion.unreadItemsCount() == 0
           if @discussion.newestFirst
+            console.log "first read, newest first"
             @loader.addLoadNewestFirstRule()
           else
+            console.log "first read, newest first"
             @loader.addLoadOldestFirstRule()
         else
           # returning reader
+          console.log "returning to thread, loading unread"
           @loader.addLoadUnreadRule()
 
 
@@ -82,7 +86,7 @@ export default
 <template lang="pug">
 .strand-page
   v-main
+    //- | {{loader.rules}}
     v-container.max-width-800(v-if="discussion")
-      | {{loader.rules}}
       strand-card(v-if="loader" :discussion='discussion' :loader="loader")
 </template>

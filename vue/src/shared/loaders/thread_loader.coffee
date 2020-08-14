@@ -78,17 +78,17 @@ export default class ThreadLoader
         local:
           id: @discussion.createdEvent().id
 
-    if @discussion.readItemsCount() > 0 && @discussion.unreadItemsCount() > 0
-      @rules.push
-        name: {path: "thread_loader.new_to_you", args: {since: @discussion.lastReadAt}}
-        local:
-          discussionId: @discussion.id
-          sequenceId: {$gte: @discussion.firstUnreadSequenceId()}
-        remote:
-          discussion_id: @discussion.id
-          from: @discussion.firstUnreadSequenceId()
-          order: 'sequence_id'
-          per: 5
+    # if @discussion.readItemsCount() > 0 && @discussion.unreadItemsCount() > 0
+    @rules.push
+      name: {path: "thread_loader.new_to_you", args: {since: @discussion.lastReadAt}}
+      local:
+        discussionId: @discussion.id
+        sequenceId: {$gte: @discussion.firstUnreadSequenceId()}
+      remote:
+        discussion_id: @discussion.id
+        from: @discussion.firstUnreadSequenceId()
+        order: 'sequence_id'
+        per: 5
 
 
   addRule: (rule) ->

@@ -31,7 +31,7 @@ export default
 .strand-card
   strand-title(:discussion="discussion")
   thread-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
-  p(v-for="rule in loader.rules") {{rule.name}}
+  //- p(v-for="rule in loader.rules") {{rule.name}}
   strand-list(:loader="loader" :collection="loader.collection")
   thread-actions-panel(v-if="!discussion.newestFirst" :discussion="discussion")
 </template>

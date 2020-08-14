@@ -9,7 +9,7 @@ export default
     event: Object
 
   data: ->
-    actions: ThreadService.actions(@discussion, @)
+    actions: ThreadService.actions(@event.model(), @)
 
   computed:
     discussion: ->
@@ -48,7 +48,7 @@ export default
 <template lang="pug">
 .strand-new-discussion.context-panel.lmo-action-dock-wrapper#context(:aria-label="$t('context_panel.aria_intro', {author: discussion.authorName(), group: discussion.group().fullName})" v-observe-visibility="{callback: viewed, once: true}" v-on:dblclick="editThread.canPerform() && editThread.perform()")
   .strand-item-headline
-    | context
+    //- | context
     span
       router-link(:to="urlFor(discussion.author())" title="Thread author") {{discussion.authorName()}}
       mid-dot
@@ -67,8 +67,7 @@ export default
   formatted-text.context-panel__description(:model="discussion" column="description" aria-label="Discussion context")
   document-list(:model='discussion')
   attachment-list(:attachments="discussion.attachments")
-  //- action-dock(:model='discussion' :actions='dockActions' :menu-actions='menuActions' fetch-reactions)
-  v-divider
+  action-dock(:model='discussion' :actions='dockActions' :menu-actions='menuActions' fetch-reactions)
 </template>
 <style lang="sass">
 @import 'variables'
