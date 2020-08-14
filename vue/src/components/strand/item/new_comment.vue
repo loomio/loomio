@@ -7,9 +7,6 @@ import EventService from '@/shared/services/event_service'
 import Session from '@/shared/services/session'
 
 export default
-  components:
-    ThreadItem: -> import('@/components/thread/item.vue')
-
   props:
     event: Object
     isReturning: Boolean

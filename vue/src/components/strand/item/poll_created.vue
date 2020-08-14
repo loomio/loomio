@@ -65,5 +65,5 @@ section.strand-item.poll-created
       poll-common-percent-voted(:poll='poll')
     poll-common-action-panel(:poll='poll')
   action-dock.my-2(:actions="dockActions" :menu-actions="menuActions")
-  poll-common-votes-panel(v-if :poll="poll")
+  //- poll-common-votes-panel(v-if :poll="poll")
 </template>

@@ -51,6 +51,11 @@ export default
     #
     # parentEvent: ->
     #   @collection[0].event.parent()
+    siblingCount: ->
+      (@collection &&
+      @collection.length &&
+      @collection[0].event.parent() &&
+      @collection[0].event.parent().childCount) || 1
 
   methods:
     loadBefore: (event) ->
@@ -126,7 +131,7 @@ export default
       camelCase if ['stance_created', 'new_comment', 'outcome_created', 'poll_created', 'new_discussion'].includes(kind)
         kind
       else
-        'strand_item'
+        'other_kind'
 </script>
 
 <template lang="pug">
@@ -134,28 +139,47 @@ export default
   //- | ranges: {{ranges}}
   .strand-item(v-for="obj, index in collection" :event='obj.event' :key="obj.event.id")
 
-    a(v-if="parentExists && obj.event.position != 1 && isFirstInRange(obj.event.position)" v-t="{path: 'common.action.count_more', args: {count: countEarlierMissing(obj.event.position)}}" @click="loadBefore(obj.event)")
+    .d-flex(v-if="parentExists && obj.event.position != 1 && isFirstInRange(obj.event.position)")
+      .strand-item__gutter.d-flex.flex-column.mr-2
+        .strand-item__load-more
+          //- +{{countEarlierMissing(obj.event.position)}}
+        //- .strand-item__stem(v-if="(index+1 != collection.length) || obj.children")
+      .thread-strand__body.flex-grow-1.d-flex.align-center
+        a.strand-item__load-more-link(v-t="{path: 'common.action.view_count_more', args: {count: countEarlierMissing(obj.event.position)}}" @click="loadBefore(obj.event)")
 
+    //- | positionKey {{obj.event.positionKey}}
     .d-flex
       .strand-item__gutter.d-flex.flex-column.mr-2
-        //- | {{obj.event.position}}
         user-avatar(:user="obj.event.actor()" :size="48")
-        .strand-item__stem(v-if="(index+1 != collection.length) || obj.children")
+        .strand-item__stem(v-if="(obj.event.position < siblingCount) || obj.event.childCount")
       .thread-strand__body.flex-grow-1
-        //- | positionKey {{obj.event.positionKey}}
         component(:is="componentForKind(obj.event.kind)" :event='obj.event')
-        a(v-if="obj.event.childCount && !obj.children" @click="loadChildren(obj.event)" v-t="{path: 'common.action.count_responses', args: {count: obj.event.childCount}}")
 
-    .strand-list__children(v-if="obj.children && obj.children.length")
+    .strand-list__children(v-if="obj.event.childCount")
       .d-flex
         //- .strand-item__gutter.d-flex.flex-column
         .strand-item__gutter.d-flex.flex-column(v-if="index+1 != collection.length")
           .strand-item__branch-container
             .strand-item__branch &nbsp;
           .strand-item__stem(v-if="(index+1 != collection.length) || obj.children")
-        strand-list.flex-grow-1(:loader="loader" :collection="obj.children")
 
-    a(v-if="lastPosition != 0 && isLastInLastRange(obj.event.position) && obj.event.position != lastPosition" v-t="{path: 'common.action.count_more', args:{count: countLaterMissing()}}" @click="loadAfter(obj.event)")
+        //- .strand-item__gutter.d-flex.flex-column.mr-2
+        span.d-flex.align-center(v-if="obj.event.childCount && !obj.children")
+          .strand-item__load-more
+            //- +{{obj.event.childCount}}
+            //- .strand-item__stem(v-if="(index+1 != collection.length) || obj.children")
+          //- .thread-strand__body.flex-grow-1.d-flex.align-center
+          //- a(v-t="{path: 'common.action.view_count_more', args: {count: countEarlierMissing(obj.event.position)}}" @click="loadBefore(obj.event)")
+          a.strand-item__load-more-link(@click="loadChildren(obj.event)" v-t="{path: 'common.action.view_count_responses', args: {count: obj.event.childCount}}")
+
+        strand-list.flex-grow-1(v-if="obj.children" :loader="loader" :collection="obj.children")
+
+    .d-flex(v-if="lastPosition != 0 && isLastInLastRange(obj.event.position) && obj.event.position != lastPosition")
+      .strand-item__gutter.d-flex.flex-column.mr-2
+        .strand-item__load-more
+          //- +{{countLaterMissing()}}
+      .thread-strand__body.flex-grow-1.flex-grow-1.d-flex.align-center
+        a.strand-item__load-more-link(v-t="{path: 'common.action.view_count_more', args:{count: countLaterMissing()}}" @click="loadAfter(obj.event)")
 
     //- collection 0 .. no render children
     //- collection 1, children 0. no line
@@ -179,6 +203,22 @@ export default
   padding: 0 1px
   background-color: #ddd
   margin: 0 24px
+
+.strand-item__load-more
+  display: flex
+  font-size: 16px
+  align-items: center
+  justfy-content: center
+  width: 48px
+  height: 48px
+  border: 1px
+  solid #ddd
+  border: 1px solid #ddd
+  border-radius: 100%
+  padding-left: 8px
+
+.strand-item__load-more-link
+  margin-left: 4px
 
 .strand-item__stem:hover
   background-color: #ddd

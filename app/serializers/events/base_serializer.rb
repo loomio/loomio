@@ -11,6 +11,14 @@ class Events::BaseSerializer < ApplicationSerializer
   # for discussion moved event
   has_one :source_group, serializer: GroupSerializer, root: :groups
 
+  def position_key
+    if object.kind == "new_discussion"
+      "00000"
+    else
+      object.position_key
+    end
+  end
+
   def source_group
     Group.find(object.custom_fields['source_group_id'])
   end

@@ -15,19 +15,18 @@ export default
   computed:
     eventable: -> @event.model()
     poll: -> @eventable.poll()
-    # dockActions: ->
-    #   OutcomeService.actions(@eventable, @)
-    # menuActions: ->
-    #   pick EventService.actions(@event, @), ['pin_event', 'unpin_event', 'notification_history']
+    dockActions: ->
+      OutcomeService.actions(@eventable, @)
+    menuActions: ->
+      pick EventService.actions(@event, @), ['pin_event', 'unpin_event', 'notification_history']
 
 </script>
 
 <template lang="pug">
-thread-item.outcome-created(:event="event" :is-returning="isReturning")
-  //- template(v-slot:actions)
-  //-   v-layout(align-center)
-  //-     reaction-display(:model="eventable")
-  //-     action-dock(:model="eventable" :actions="dockActions")
-  //-     action-menu(:model="eventable" :actions="menuActions")
-  formatted-text.thread-item__body(:model="eventable" column="statement")
+section.outcome-created.strand-item__outcome-created(id="'outcome-'+ eventable.id")
+  strand-item-headline(:event="event" :eventable="eventable")
+  formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")
+  document-list(:model='eventable' skip-fetch)
+  attachment-list(:attachments="eventable.attachments")
+  action-dock(:model='eventable' :actions='dockActions' :menu-actions='menuActions')
 </template>

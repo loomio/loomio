@@ -57,17 +57,19 @@ export default
 </script>
 
 <template lang="pug">
-thread-item.stance-created(:event="event" :is-returning="isReturning")
-  template(v-slot:actions)
-    action-dock(:model="eventable" :actions="actions")
-  template(v-if="eventable.singleChoice()" v-slot:headline)
-    component(:is="componentType" :to="event.actor() && urlFor(event.actor())") {{event.actorName()}}
-    space
-    poll-common-stance-choice(v-if="showResults" :poll="poll" :stance-choice="eventable.stanceChoice()")
+
+section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id" :event="event" :is-returning="isReturning")
+  //- strand-item-headline(:event="event" :eventable="eventable")
+  template(v-if="eventable.singleChoice()")
+    .d-flex
+      component(:is="componentType" :to="event.actor() && urlFor(event.actor())") {{event.actorName()}}
+      space
+      poll-common-stance-choice(v-if="showResults" :poll="poll" :stance-choice="eventable.stanceChoice()")
   .poll-common-stance(v-if="showResults")
     span.caption(v-if='eventable.castAt && eventable.totalScore() == 0' v-t="'poll_common_votes_panel.none_of_the_above'" )
     v-layout(v-if="!eventable.singleChoice()" wrap align-center)
       poll-common-stance-choice(:poll="poll" :stance-choice='choice' v-if='choice.show()' v-for='choice in eventable.orderedStanceChoices()' :key='choice.id')
     formatted-text.poll-common-stance-created__reason(:model="eventable" column="reason")
   attachment-list(:attachments="eventable.attachments")
+  action-dock(:model='eventable' :actions='actions')
 </template>

@@ -3,6 +3,8 @@ export default
   props:
     event: Object
 
+  computed:
+    eventable: -> @event.model()
 </script>
 
 <template lang="pug">
