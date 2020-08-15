@@ -1,5 +1,5 @@
 class Events::BaseSerializer < ApplicationSerializer
-  attributes :id, :sequence_id, :position, :depth, :child_count, :kind,
+  attributes :id, :sequence_id, :position, :depth, :child_count, :descendant_count, :kind,
     :discussion_id, :created_at, :eventable_id, :eventable_type, :custom_fields,
     :pinned, :pinned_title, :parent_id, :actor_id, :position_key
 

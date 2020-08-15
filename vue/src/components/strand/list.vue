@@ -145,7 +145,7 @@ export default
 <template lang="pug">
 .strand-list
   .strand-item(v-for="obj, index in collection" :event='obj.event' :key="obj.event.id" :class="{'strand-item--deep': obj.event.depth > 1}")
-    //- | {{obj.event.positionKey}}
+    //- | {{obj.event.id}} {{obj.event.positionKey}} {{obj.event.childCount}} {{obj.event.descendantCount}}
     .strand-item__row(v-if="parentExists && obj.event.position != 1 && isFirstInRange(obj.event.position)")
       .strand-item__gutter
         .strand-item__circle(@click="loadBefore(obj.event)")
@@ -172,7 +172,7 @@ export default
 
       strand-list.flex-grow-1(v-if="obj.children && !obj.collapsed" :loader="loader" :collection="obj.children")
       .strand-item__load-more(v-else)
-        v-btn.action-button(text @click="loadChildren(obj.event)" v-t="{path: 'common.action.count_responses', args: {count: obj.event.childCount}}")
+        v-btn.action-button(text @click="loadChildren(obj.event)" v-t="{path: 'common.action.count_responses', args: {count: obj.event.descendantCount}}")
 
     .strand-item__row(v-if="lastPosition != 0 && isLastInLastRange(obj.event.position) && obj.event.position != lastPosition")
       .strand-item__gutter
