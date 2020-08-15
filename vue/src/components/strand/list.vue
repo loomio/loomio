@@ -156,7 +156,7 @@ export default
         component(:is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="obj.collapsed")
 
     .strand-item__row.strand-list__children(v-if="obj.event.childCount")
-      .strand-item__gutter(v-if="index+1 != obj.event.childCount"  @click="obj.collapsed = true")
+      .strand-item__gutter(v-if="index+1 != siblingCount" @click="obj.collapsed = true")
         .strand-item__branch-container
           .strand-item__branch &nbsp;
         .strand-item__stem(v-if="(index+1 != collection.length) || obj.children")

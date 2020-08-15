@@ -7,6 +7,7 @@ import openModal      from '@/shared/helpers/open_modal'
 export default
   props:
     event: Object
+    collapsed: Boolean
 
   data: ->
     actions: ThreadService.actions(@event.model(), @)
@@ -64,10 +65,11 @@ export default
         a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
     .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'" v-if='discussion.closedAt')
       v-tooltip(bottom) {{ exactDate(discussion.closedAt) }}
-  formatted-text.context-panel__description(:model="discussion" column="description" aria-label="Discussion context")
-  document-list(:model='discussion')
-  attachment-list(:attachments="discussion.attachments")
-  action-dock(:model='discussion' :actions='dockActions' :menu-actions='menuActions' fetch-reactions)
+  template(v-if="!collapsed")
+    formatted-text.context-panel__description(:model="discussion" column="description" aria-label="Discussion context")
+    document-list(:model='discussion')
+    attachment-list(:attachments="discussion.attachments")
+    action-dock(:model='discussion' :actions='dockActions' :menu-actions='menuActions' fetch-reactions)
 </template>
 <style lang="sass">
 @import 'variables'
