@@ -132,6 +132,7 @@ export default
         kind
       else
         'other_kind'
+
 </script>
 
 <template lang="pug">
@@ -145,19 +146,22 @@ export default
         v-btn.action-button(text v-t="{path: 'common.action.count_more', args: {count: countEarlierMissing(obj.event.position)}}" @click="loadBefore(obj.event)")
 
     .strand-item__row
-      .strand-item__gutter
-        user-avatar(:user="obj.event.actor()" :size="48")
-        .strand-item__stem(v-if="(obj.event.position < siblingCount) || obj.event.childCount")
+      .strand-item__gutter(@click.stop="obj.collapsed = true")
+        .strand-item__circle(v-if="obj.collapsed" @click.stop="obj.collapsed = false")
+          v-icon mdi-unfold-more-horizontal
+        template(v-else)
+          user-avatar(:user="obj.event.actor()" :size="48" no-link)
+          .strand-item__stem(v-if="(obj.event.position < siblingCount) || obj.event.childCount")
       .strand-item__main
-        component(:is="componentForKind(obj.event.kind)" :event='obj.event')
+        component(:is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="obj.collapsed")
 
     .strand-item__row.strand-list__children(v-if="obj.event.childCount")
-      .strand-item__gutter(v-if="index+1 != obj.event.childCount")
+      .strand-item__gutter(v-if="index+1 != obj.event.childCount"  @click="obj.collapsed = true")
         .strand-item__branch-container
           .strand-item__branch &nbsp;
         .strand-item__stem(v-if="(index+1 != collection.length) || obj.children")
 
-      strand-list.flex-grow-1(v-if="obj.children" :loader="loader" :collection="obj.children")
+      strand-list.flex-grow-1(v-if="obj.children && !obj.collapsed" :loader="loader" :collection="obj.children")
       .strand-item__load-more(v-else)
         v-btn.action-button(text @click="loadChildren(obj.event)" v-t="{path: 'common.action.count_responses', args: {count: obj.event.childCount}}")
 
@@ -189,6 +193,9 @@ export default
   padding: 0 1px
   background-color: #ddd
   margin: 0 24px
+
+  &:hover
+    background-color: #9a1
 
 .strand-item__circle
   display: flex

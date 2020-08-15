@@ -12,6 +12,7 @@ export default
   props:
     event: Object
     isReturning: Boolean
+    collapsed: Boolean
 
   created: ->
     EventBus.$on 'stanceSaved', => EventBus.$emit 'refreshStance'
@@ -53,17 +54,18 @@ section.strand-item.poll-created
       router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
       translation(v-if="poll.translation.title" :model='poll', field='title')
       poll-common-closing-at.ml-2(:poll='poll')
-  poll-common-set-outcome-panel(:poll='poll')
-  poll-common-outcome-panel(:poll='poll', v-if='poll.outcome()')
-  formatted-text.poll-common-details-panel__details(:model="poll" column="details")
-  attachment-list(:attachments="poll.attachments")
-  document-list(:model='poll' skip-fetch)
-  p.caption(v-if="!poll.pollOptionNames.length" v-t="'poll_common.no_voting'")
-  div.body-2(v-if="poll.pollOptionNames.length")
-    .poll-common-card__results-shown(v-if='poll.showResults()')
-      poll-common-directive(:poll='poll', name='chart-panel')
-      poll-common-percent-voted(:poll='poll')
-    poll-common-action-panel(:poll='poll')
-  action-dock.my-2(:actions="dockActions" :menu-actions="menuActions")
-  //- poll-common-votes-panel(v-if :poll="poll")
+  template(v-if="!collapsed")
+    poll-common-set-outcome-panel(:poll='poll')
+    poll-common-outcome-panel(:poll='poll', v-if='poll.outcome()')
+    formatted-text.poll-common-details-panel__details(:model="poll" column="details")
+    attachment-list(:attachments="poll.attachments")
+    document-list(:model='poll' skip-fetch)
+    p.caption(v-if="!poll.pollOptionNames.length" v-t="'poll_common.no_voting'")
+    div.body-2(v-if="poll.pollOptionNames.length")
+      .poll-common-card__results-shown(v-if='poll.showResults()')
+        poll-common-directive(:poll='poll', name='chart-panel')
+        poll-common-percent-voted(:poll='poll')
+      poll-common-action-panel(:poll='poll')
+    action-dock.my-2(:actions="dockActions" :menu-actions="menuActions")
+    //- poll-common-votes-panel(v-if :poll="poll")
 </template>

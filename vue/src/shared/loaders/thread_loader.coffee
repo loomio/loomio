@@ -123,7 +123,7 @@ export default class ThreadLoader
 
     nest = (records) ->
       records.map (event) ->
-        {event: event, children: eventsByParentId[event.id] && nest(eventsByParentId[event.id])}
+        {event: event, collapsed: false, children: eventsByParentId[event.id] && nest(eventsByParentId[event.id])}
 
     @collection = nest(orphans)
 

@@ -86,7 +86,7 @@ export default
 <template lang="pug">
 .strand-page
   v-main
-    //- | {{loader.rules}}
+    | {{loader.rules}}
     v-container.max-width-800(v-if="discussion")
       strand-card(v-if="loader" :discussion='discussion' :loader="loader")
 </template>
