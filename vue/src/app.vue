@@ -72,7 +72,7 @@ v-app.app-is-booted
 $mdi-font-path: '/fonts/mdi'
 @import '@mdi/font/scss/materialdesignicons.scss'
 
-h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus 
+h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus
   outline: 0
 a
   text-decoration: none
@@ -80,6 +80,8 @@ a
 .text-almost-black
   color: rgba(0, 0, 0, 0.87)
 
+.max-width-640
+  max-width: 640px
 .max-width-800
   max-width: 800px
 .max-width-1024

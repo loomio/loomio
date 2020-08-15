@@ -178,13 +178,16 @@ export default
         .strand-item__circle(@click="loadAfter(obj.event)")
           v-icon mdi-unfold-more-horizontal
       .strand-item__load-more
-        | {{obj.event.parent().parentOrSelf().childCount}}
-        | {{obj.event.positionKey}}
+        //- | {{obj.event.parent().parentOrSelf().childCount}}
+        //- | {{obj.event.positionKey}}
         v-btn.action-button(text v-t="{path: 'common.action.count_more', args:{count: countLaterMissing()}}" @click="loadAfter(obj.event)")
-        | {{lastPosition}} {{ranges}}
+        //- | {{lastPosition}} {{ranges}}
 </template>
 
 <style lang="sass">
+
+.strand-list
+  margin-bottom: 16px
 
 .strand-item--deep
   .strand-item__gutter
@@ -220,7 +223,7 @@ export default
 
 .strand-item__main
   flex-grow: 1
-  padding-bottom: 4px
+  padding-bottom: 8px
 
 .strand-item__stem
   width: 0
