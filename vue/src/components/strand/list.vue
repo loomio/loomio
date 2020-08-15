@@ -140,7 +140,7 @@ export default
   .strand-item(v-for="obj, index in collection" :event='obj.event' :key="obj.event.id")
     .strand-item__row(v-if="parentExists && obj.event.position != 1 && isFirstInRange(obj.event.position)")
       .strand-item__gutter
-        .strand-item__circle
+        .strand-item__circle(@click="loadBefore(obj.event)")
           v-icon mdi-unfold-more-horizontal
       .strand-item__load-more
         v-btn.action-button(text v-t="{path: 'common.action.count_more', args: {count: countEarlierMissing(obj.event.position)}}" @click="loadBefore(obj.event)")
@@ -167,7 +167,7 @@ export default
 
     .strand-item__row(v-if="lastPosition != 0 && isLastInLastRange(obj.event.position) && obj.event.position != lastPosition")
       .strand-item__gutter
-        .strand-item__circle
+        .strand-item__circle(@click="loadAfter(obj.event)")
           v-icon mdi-unfold-more-horizontal
       .strand-item__load-more
         v-btn.action-button(text v-t="{path: 'common.action.count_more', args:{count: countLaterMissing()}}" @click="loadAfter(obj.event)")
@@ -194,9 +194,6 @@ export default
   background-color: #ddd
   margin: 0 24px
 
-  &:hover
-    background-color: #9a1
-
 .strand-item__circle
   display: flex
   align-items: center
@@ -205,6 +202,9 @@ export default
   height: 48px
   border: 1px solid #ddd
   border-radius: 100%
+
+.strand-item__circle:hover
+  background-color: #eee
 
 .strand-item__load-more
   display: flex
