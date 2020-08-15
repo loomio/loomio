@@ -28,12 +28,12 @@ export default
 </script>
 
 <template lang="pug">
-.strand-card
+.strand-card.mb-8
   strand-title(:discussion="discussion")
   thread-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
   //- p(v-for="rule in loader.rules") {{rule.name}}
   strand-list(:loader="loader" :collection="loader.collection")
-  thread-actions-panel(v-if="!discussion.newestFirst" :discussion="discussion")
+  //- thread-actions-panel(v-if="!discussion.newestFirst" :discussion="discussion")
 </template>
 <style lang="sass">
 .strand-card
