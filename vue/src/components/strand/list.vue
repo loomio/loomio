@@ -137,7 +137,7 @@ export default
 
 <template lang="pug">
 .strand-list
-  .strand-item(v-for="obj, index in collection" :event='obj.event' :key="obj.event.id")
+  .strand-item(v-for="obj, index in collection" :event='obj.event' :key="obj.event.id" :class="{'strand-item--deep': obj.event.depth > 1}")
     .strand-item__row(v-if="parentExists && obj.event.position != 1 && isFirstInRange(obj.event.position)")
       .strand-item__gutter
         .strand-item__circle(@click="loadBefore(obj.event)")
@@ -150,7 +150,7 @@ export default
         .strand-item__circle(v-if="obj.collapsed" @click.stop="obj.collapsed = false")
           v-icon mdi-unfold-more-horizontal
         template(v-else)
-          user-avatar(:user="obj.event.actor()" :size="48" no-link)
+          user-avatar(:user="obj.event.actor()" :size="(obj.event.depth > 1) ? 36 : 48" no-link)
           .strand-item__stem(v-if="(obj.event.position < siblingCount) || obj.event.childCount")
       .strand-item__main
         component(:is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="obj.collapsed")
@@ -175,13 +175,35 @@ export default
 
 <style lang="sass">
 
+.strand-item--deep
+  .strand-item__gutter
+    width: 36px
+    margin-right: 6px
+
+  .strand-item__stem
+    margin: 0 18px
+
+  .strand-item__circle
+    width: 36px
+    height: 36px
+
+  .strand-item__load-more
+    min-height: 36px
+
+  .strand-item__branch
+    top: -18px
+    right: -2px
+    height: 36px
+    border-radius: 64px
+    width: 36px
+
 .strand-item__row
   display: flex
 
 .strand-item__gutter
   display: flex
   flex-direction: column
-  width: 52px
+  width: 48px
   margin-right: 8px
 
 .strand-item__main
@@ -228,13 +250,7 @@ export default
   height: 48px
   border-radius: 64px
   width: 48px
-
-  // top
-  // width: 12px
   margin-left: calc(50% - 1px)
-  // border-left-width: 2px
-  // border-bottom-width: 2px
-  // border-bottom-left-radius: 10px
   border-style: solid
 
 </style>
