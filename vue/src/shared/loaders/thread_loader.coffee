@@ -1,6 +1,7 @@
 import Records from '@/shared/services/records'
 import { isNumber, uniq, compact, orderBy, camelCase } from 'lodash-es'
 import Vue from 'vue'
+import RangeSet         from '@/shared/services/range_set'
 
 export default class ThreadLoader
   constructor: (discussion) ->
@@ -103,6 +104,7 @@ export default class ThreadLoader
 
   updateCollection: ->
     @records = []
+    @readIds = []
     @rules.forEach (rule) =>
       args = Object.assign({}, rule.local)
       chain = Records.events.collection.chain()
@@ -117,13 +119,18 @@ export default class ThreadLoader
     orphans = @records.filter (event) ->
       event.parentId == null || !eventIds.includes(event.parentId)
 
+    parents = orphans.map (o) -> o.parentOrSelf()
+    parents = uniq orderBy parents, 'positionKey'
+
     eventsByParentId = {}
-    @records.forEach (event) ->
+    @records.forEach (event) =>
       eventsByParentId[event.parentId] = (eventsByParentId[event.parentId] || []).concat([event])
+      @readIds.push(event.sequenceId) if RangeSet.includesValue(@discussion.readRanges, event.sequenceId)
 
     nest = (records) ->
-      records.map (event) ->
+      r = records.map (event) ->
         {event: event, collapsed: false, children: eventsByParentId[event.id] && nest(eventsByParentId[event.id])}
+      orderBy r, 'positionKey'
 
     @collection = nest(orphans)
 

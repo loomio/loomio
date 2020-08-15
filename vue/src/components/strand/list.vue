@@ -58,6 +58,12 @@ export default
       @collection[0].event.parent().childCount) || 1
 
   methods:
+    isUnread: (event) ->
+      if event.kind == "new_discussion"
+        @loader.discussion.updatedAt > @loader.discussion.lastReadAt
+      else
+        !@loader.readIds.includes(event.sequenceId)
+
     loadBefore: (event) ->
       @loader.addRule
         local:
@@ -138,6 +144,7 @@ export default
 <template lang="pug">
 .strand-list
   .strand-item(v-for="obj, index in collection" :event='obj.event' :key="obj.event.id" :class="{'strand-item--deep': obj.event.depth > 1}")
+    //- | {{obj.event.positionKey}}
     .strand-item__row(v-if="parentExists && obj.event.position != 1 && isFirstInRange(obj.event.position)")
       .strand-item__gutter
         .strand-item__circle(@click="loadBefore(obj.event)")
@@ -151,7 +158,7 @@ export default
           v-icon mdi-unfold-more-horizontal
         template(v-else)
           user-avatar(:user="obj.event.actor()" :size="(obj.event.depth > 1) ? 36 : 48" no-link)
-          .strand-item__stem(v-if="(obj.event.position < siblingCount) || obj.event.childCount")
+          .strand-item__stem(v-if="" :class="{'strand-item__stem--unread': isUnread(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
       .strand-item__main
         component(:is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="obj.collapsed")
 
@@ -170,7 +177,10 @@ export default
         .strand-item__circle(@click="loadAfter(obj.event)")
           v-icon mdi-unfold-more-horizontal
       .strand-item__load-more
+        | {{obj.event.parent().parentOrSelf().childCount}}
+        | {{obj.event.positionKey}}
         v-btn.action-button(text v-t="{path: 'common.action.count_more', args:{count: countLaterMissing()}}" @click="loadAfter(obj.event)")
+        | {{lastPosition}} {{ranges}}
 </template>
 
 <style lang="sass">
@@ -217,6 +227,12 @@ export default
   padding: 0 1px
   background-color: #ddd
   margin: 0 24px
+
+.strand-item__stem--last
+  height: 70%
+
+.strand-item__stem--unread
+  background-color: blue!important
 
 .strand-item__circle
   display: flex
