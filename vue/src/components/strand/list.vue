@@ -209,6 +209,7 @@ export default
 
 .strand-item__main
   flex-grow: 1
+  padding-bottom: 4px
 
 .strand-item__stem
   width: 0

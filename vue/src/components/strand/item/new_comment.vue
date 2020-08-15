@@ -54,6 +54,6 @@ section.strand-item__new-comment(id="'comment-'+ eventable.id" :event="event" :i
     formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")
     document-list(:model='eventable' skip-fetch)
     attachment-list(:attachments="eventable.attachments")
-    action-dock(icons :model='eventable' :actions='dockActions' :menu-actions='menuActions')
+    action-dock(:model='eventable' :actions='dockActions' :menu-actions='menuActions')
     comment-form(v-if="showReplyForm" :comment="newComment" @comment-submitted="showReplyForm = false" @cancel-reply="showReplyForm = false" autofocus)
 </template>
