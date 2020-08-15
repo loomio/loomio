@@ -190,12 +190,13 @@ export default
   .strand-item__load-more
     min-height: 36px
 
-  .strand-item__branch
-    top: -18px
-    right: -2px
-    height: 36px
-    border-radius: 64px
-    width: 36px
+  // not working
+  .strand-item__branch-container
+    .strand-item__branch
+      top: -28px!important
+      right: -2px
+      // height: 36px
+      // width: 36px
 
 .strand-item__row
   display: flex
