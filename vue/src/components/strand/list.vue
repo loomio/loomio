@@ -160,6 +160,7 @@ export default
         template(v-else)
           user-avatar(:user="obj.event.actor()" :size="(obj.event.depth > 1) ? 36 : 48" no-link)
           .strand-item__stem(v-if="" :class="{'strand-item__stem--unread': isUnread(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
+          //- .strand-item__stem-stop(v-if="obj.event.position == siblingCount")
       .strand-item__main
         component(:is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="obj.collapsed")
 
@@ -233,7 +234,15 @@ export default
   margin: 0 24px
 
 .strand-item__stem--last
-  height: 70%
+  height: calc(100% - 44px)
+
+// .strand-item__stem-stop
+//   position: relative
+//   left: -16px
+//   width: 24px
+//   height: 2px
+//   background-color: #ddd
+//   margin: 0 24px
 
 .strand-item__stem--unread
   background-color: blue!important
