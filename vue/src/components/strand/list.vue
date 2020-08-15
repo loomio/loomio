@@ -136,66 +136,52 @@ export default
 
 <template lang="pug">
 .strand-list
-  //- | ranges: {{ranges}}
   .strand-item(v-for="obj, index in collection" :event='obj.event' :key="obj.event.id")
+    .strand-item__row(v-if="parentExists && obj.event.position != 1 && isFirstInRange(obj.event.position)")
+      .strand-item__gutter
+        .strand-item__circle
+          v-icon mdi-unfold-more-horizontal
+      .strand-item__load-more
+        v-btn.action-button(text v-t="{path: 'common.action.count_more', args: {count: countEarlierMissing(obj.event.position)}}" @click="loadBefore(obj.event)")
 
-    .d-flex(v-if="parentExists && obj.event.position != 1 && isFirstInRange(obj.event.position)")
-      .strand-item__gutter.d-flex.flex-column.mr-2
-        .strand-item__load-more
-          //- +{{countEarlierMissing(obj.event.position)}}
-        //- .strand-item__stem(v-if="(index+1 != collection.length) || obj.children")
-      .thread-strand__body.flex-grow-1.d-flex.align-center
-        a.strand-item__load-more-link(v-t="{path: 'common.action.view_count_more', args: {count: countEarlierMissing(obj.event.position)}}" @click="loadBefore(obj.event)")
-
-    //- | positionKey {{obj.event.positionKey}}
-    .d-flex
-      .strand-item__gutter.d-flex.flex-column.mr-2
+    .strand-item__row
+      .strand-item__gutter
         user-avatar(:user="obj.event.actor()" :size="48")
         .strand-item__stem(v-if="(obj.event.position < siblingCount) || obj.event.childCount")
-      .thread-strand__body.flex-grow-1
+      .strand-item__main
         component(:is="componentForKind(obj.event.kind)" :event='obj.event')
 
-    .strand-list__children(v-if="obj.event.childCount")
-      .d-flex
-        //- .strand-item__gutter.d-flex.flex-column
-        .strand-item__gutter.d-flex.flex-column(v-if="index+1 != collection.length")
-          .strand-item__branch-container
-            .strand-item__branch &nbsp;
-          .strand-item__stem(v-if="(index+1 != collection.length) || obj.children")
+    .strand-item__row.strand-list__children(v-if="obj.event.childCount")
+      .strand-item__gutter(v-if="index+1 != obj.event.childCount")
+        .strand-item__branch-container
+          .strand-item__branch &nbsp;
+        .strand-item__stem(v-if="(index+1 != collection.length) || obj.children")
 
-        //- .strand-item__gutter.d-flex.flex-column.mr-2
-        span.d-flex.align-center(v-if="obj.event.childCount && !obj.children")
-          .strand-item__load-more
-            //- +{{obj.event.childCount}}
-            //- .strand-item__stem(v-if="(index+1 != collection.length) || obj.children")
-          //- .thread-strand__body.flex-grow-1.d-flex.align-center
-          //- a(v-t="{path: 'common.action.view_count_more', args: {count: countEarlierMissing(obj.event.position)}}" @click="loadBefore(obj.event)")
-          a.strand-item__load-more-link(@click="loadChildren(obj.event)" v-t="{path: 'common.action.view_count_responses', args: {count: obj.event.childCount}}")
+      strand-list.flex-grow-1(v-if="obj.children" :loader="loader" :collection="obj.children")
+      .strand-item__load-more(v-else)
+        v-btn.action-button(text @click="loadChildren(obj.event)" v-t="{path: 'common.action.count_responses', args: {count: obj.event.childCount}}")
 
-        strand-list.flex-grow-1(v-if="obj.children" :loader="loader" :collection="obj.children")
-
-    .d-flex(v-if="lastPosition != 0 && isLastInLastRange(obj.event.position) && obj.event.position != lastPosition")
-      .strand-item__gutter.d-flex.flex-column.mr-2
-        .strand-item__load-more
-          //- +{{countLaterMissing()}}
-      .thread-strand__body.flex-grow-1.flex-grow-1.d-flex.align-center
-        a.strand-item__load-more-link(v-t="{path: 'common.action.view_count_more', args:{count: countLaterMissing()}}" @click="loadAfter(obj.event)")
-
-    //- collection 0 .. no render children
-    //- collection 1, children 0. no line
-    //- collection 1, children > 0, line, no indent
-    //- collection > 1, line, indent children
-    //- p(v-if="firstPosition != 1") {{firstPosition - 1}} items before
-
-  //- .thread-strand__load-children(v-if="collection.length == 0 && obj.event.childCount > 0")
-  //-   | show more
-  //-   there are children to load
-  //- p(v-if="lastPosition != parentEvent.childCount") {{parentEvent.childCount - lastPosition}} items after
+    .strand-item__row(v-if="lastPosition != 0 && isLastInLastRange(obj.event.position) && obj.event.position != lastPosition")
+      .strand-item__gutter
+        .strand-item__circle
+          v-icon mdi-unfold-more-horizontal
+      .strand-item__load-more
+        v-btn.action-button(text v-t="{path: 'common.action.count_more', args:{count: countLaterMissing()}}" @click="loadAfter(obj.event)")
 </template>
 
 <style lang="sass">
-.strand-list__indent
-  margin-left: 64px
+
+.strand-item__row
+  display: flex
+
+.strand-item__gutter
+  display: flex
+  flex-direction: column
+  width: 52px
+  margin-right: 8px
+
+.strand-item__main
+  flex-grow: 1
 
 .strand-item__stem
   width: 0
@@ -204,21 +190,19 @@ export default
   background-color: #ddd
   margin: 0 24px
 
-.strand-item__load-more
+.strand-item__circle
   display: flex
-  font-size: 16px
   align-items: center
-  justfy-content: center
+  justify-content: center
   width: 48px
   height: 48px
-  border: 1px
-  solid #ddd
   border: 1px solid #ddd
   border-radius: 100%
-  padding-left: 8px
 
-.strand-item__load-more-link
-  margin-left: 4px
+.strand-item__load-more
+  display: flex
+  align-items: center
+  min-height: 48px
 
 .strand-item__stem:hover
   background-color: #ddd

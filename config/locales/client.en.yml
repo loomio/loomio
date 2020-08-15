@@ -205,6 +205,8 @@ en:
       show_more: "Show more"
       view_count_more: "View {{count}} more"
       view_count_responses: "View {{count}} responses"
+      count_more: "{{count}} more"
+      count_responses: "{{count}} responses"
       view_all: "View All"
       new_thread: "New thread"
       add_subgroup: 'New subgroup'
