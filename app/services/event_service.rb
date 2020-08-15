@@ -59,8 +59,11 @@ class EventService
     items.reload.compact.each(&:set_parent_and_depth!)
 
     # reset position values
+    # reset_child_positions(discussion.created_event.id, nil)
+
     parent_ids = items.pluck(:parent_id).compact.uniq
-    Event.where(id: parent_ids).order(:depth).each do |parent_event|
+    Event.where(id: parent_ids).order(:id).each do |parent_event|
+      parent_event.reload
       reset_child_positions(parent_event.id, parent_event.position_key)
       child_count = items.where(parent_id: parent_event.id).count
       parent_event.update_column(:child_count, child_count)
