@@ -91,7 +91,9 @@ class API::EventsController < API::RestfulController
       records = records.where("#{name} > ?", params["#{name}_gt"]) if params["#{name}_gt"]
       records = records.where("#{name} <= ?", params["#{name}_lte"]) if params["#{name}_lte"]
       records = records.where("#{name} >= ?", params["#{name}_gte"]) if params["#{name}_gte"]
+      records = records.where("#{name} like ?", params["#{name}_sw"]+"%") if params["#{name}_sw"]
     end
+    # records = records.where("position_key like ?", params["position_key_sw"]+"%") if params["position_key_sw"]
     records
   end
 

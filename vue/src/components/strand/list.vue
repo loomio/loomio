@@ -88,16 +88,17 @@ export default
       @loader.addRule
         local:
           discussionId: @loader.discussion.id
-          depth: {$gt: event.depth}
-          positionKey: {$gt: event.positionKey}
-          parentId: event.id
+          # depth: {$gt: event.depth}
+          positionKey: {'$gt': event.positionKey, '$regex': "^#{event.positionKey}"}
         remote:
           discussion_id: @loader.discussion.id
           position_key_gt: event.positionKey
+          position_key_sw: event.positionKey
+          # depth_gt: event.depth
           # position_key_prefix: @positionKeyPrefix(event)
           # depth_lte: event.depth + 2
           # depth_gt: event.depth + 1
-          parent_id: event.id
+          # parent_id: event.id
           order_by: 'position_key'
 
     loadAfter: (event) ->
