@@ -5,7 +5,9 @@ ModelLocator = Struct.new(:model, :params) do
     if model.to_sym == :user
       resource_class.verified.find_by(username: params[:id] || params[:username]) || resource_class.friendly.find(params[:id] || params[:user_id])
     elsif model.to_sym == :group
-      (key_or_id && resource_class.friendly.find(key_or_id)) || resource_class.where.not(handle: nil).find_by(handle: params[:id])
+      (model_key && resource_class.find_by(key: model_key)) ||
+      (model_id && resource_class.find_by(id: model_id)) ||
+      resource_class.where.not(handle: nil).find_by(handle: params[:id])
     elsif resource_class.respond_to?(:friendly)
       resource_class.friendly.find key_or_id
     else
@@ -19,10 +21,14 @@ ModelLocator = Struct.new(:model, :params) do
 
   private
 
-  def key_or_id
+  def model_key
     # strip overloaded id's that chargify gives us in the form of
     # key-number
-    (params[:"#{model}_id"] || params[:"#{model}_key"] ||  params[:key] || params[:id]).to_s.split('-')[0]
+    (params[:"#{model}_key"] ||  params[:key]).to_s.split('-')[0]
+  end
+
+  def model_id
+    (params[:"#{model}_id"] || params[:id]).to_s.split('-')[0]
   end
 
   def resource_class

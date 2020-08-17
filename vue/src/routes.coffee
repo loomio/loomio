@@ -4,6 +4,7 @@ import ExplorePage from './components/explore/page.vue'
 import ThreadPage from './components/thread/page.vue'
 import ProfilePage from './components/profile/page.vue'
 import PollPage from './components/poll/page.vue'
+import PollFormPage from './components/poll/form_page.vue'
 
 import GroupPage from './components/group/page.vue'
 import GroupDiscussionsPanel from './components/group/discussions_panel'
@@ -67,6 +68,7 @@ export default new Router
     {path: '/profile', component: ProfilePage},
     {path: '/contact', component: ContactPage},
     {path: '/email_preferences', component: EmailSettingsPage },
+    {path: '/p/:key/edit', component: PollFormPage },
     {path: '/p/:key/:stub?', component: PollPage},
     {path: '/u/:key/:stub?', component: UserPage },
     {path: '/d/new', component: StartDiscussionPage },

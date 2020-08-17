@@ -69,6 +69,8 @@ export default new class PollService
       icon: 'mdi-pencil'
       canPerform: ->
         AbilityService.canEditPoll(poll)
+      to: ->
+        "/p/#{poll.key}/edit"
       perform: ->
         openModal
           component: 'PollCommonModal'

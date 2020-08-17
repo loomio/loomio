@@ -16,7 +16,7 @@ export default
   methods:
     init: ->
       EventBus.$emit 'currentComponent', { page: 'startDiscussionPage' }
-      
+
       if Session.isSignedIn()
         if @$route.params.key
           Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>
@@ -33,5 +33,5 @@ export default
 <template lang="pug">
 v-main
   v-container.start-discussion-page.max-width-1024
-    discussion-form(v-if="group && discussion" :discussion='discussion' no-close-button)
+    discussion-form(v-if="group && discussion" :discussion='discussion' is-page)
 </template>
