@@ -53,7 +53,7 @@ install:
   - git clone https://github.com/loomio/loomio_channel_server.git
   - cd loomio_channel_server
   - npm install
-  - npm run start &
+  - npm run start > ../log/channel_server.log &
   - cd ..
 
 before_script:
