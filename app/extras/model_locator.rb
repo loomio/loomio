@@ -9,8 +9,10 @@ ModelLocator = Struct.new(:model, :params) do
       (model_id && resource_class.find_by(id: model_id)) ||
       resource_class.where.not(handle: nil).find_by(handle: params[:id])
     elsif resource_class.respond_to?(:friendly)
+      key_or_id = model_key ? model_key : model_id
       resource_class.friendly.find key_or_id
     else
+      key_or_id = model_key ? model_key : model_id
       resource_class.find key_or_id
     end
   end
