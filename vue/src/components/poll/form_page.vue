@@ -62,7 +62,7 @@ export default
   v-main
     v-container.max-width-800
       loading(:until="poll")
-        .poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
+        v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
           submit-overlay(:value="poll.processing")
           v-card-title
             h1.headline(tabindex="-1" v-t="title_key")
