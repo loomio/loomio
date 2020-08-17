@@ -198,7 +198,7 @@ export default
 
 <template lang="pug">
 div
-  | channel: {{tiptapAddress()}}
+  //- | channel: {{tiptapAddress()}}
   template(v-if="editor && !loading")
     div.count {{ count }} {{ count === 1 ? 'user' : 'users' }} connected
   em(v-else)
