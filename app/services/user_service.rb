@@ -32,11 +32,6 @@ class UserService
     end
   end
 
-  def self.delete_many_spam(name_fragment)
-    return unless name_fragment.to_s.length > 6
-    User.where('name like ?', "%#{name_fragment}%").order('id asc').limit(2000).each { |user| delete_spam(user) }
-  end
-
   # UserService#deactivate
   # When someone no longer wants to be on the system, this is the way to remove them.
   #
