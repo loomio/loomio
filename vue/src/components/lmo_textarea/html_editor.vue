@@ -205,9 +205,9 @@ div
     | Connecting to socket server …
   .editor.mb-3
     editor-content.html-editor__textarea(ref="editor" :editor='editor').lmo-markdown-wrapper
-    editor-menu-bar(:editor='editor' v-slot='{ commands, isActive, focused }')
-      div
-        v-layout.menubar(align-center v-if="isActive.table()")
+    editor-menu-bar.menubar(:editor='editor' v-slot='{ commands, isActive, focused }')
+      v-card(flat)
+        v-layout(align-center v-if="isActive.table()")
           v-btn(icon @click="commands.deleteTable" :title="$t('formatting.remove_table')")
             v-icon mdi-table-remove
           v-btn(icon @click="commands.addColumnBefore" :title="$t('formatting.add_column_before')")
@@ -225,7 +225,7 @@ div
           v-btn(icon @click="commands.toggleCellMerge" :title="$t('formatting.merge_selected')")
             v-icon mdi-table-merge-cells
 
-        v-layout.menubar.py-2.justify-space-between.flex-wrap(align-center)
+        v-layout.py-2.justify-space-between.flex-wrap(align-center)
           section.d-flex.flex-wrap(:aria-label="$t('formatting.formatting_tools')")
             //- attach
             v-btn(icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")

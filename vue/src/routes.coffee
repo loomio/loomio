@@ -70,6 +70,7 @@ export default new Router
     {path: '/p/:key/:stub?', component: PollPage},
     {path: '/u/:key/:stub?', component: UserPage },
     {path: '/d/new', component: StartDiscussionPage },
+    {path: '/d/:key/edit', component: StartDiscussionPage },
     {path: '/d/:key', name: 'discussion', component: ThreadPage, children: threadPageChildren },
     {path: '/g/new', component: StartGroupPage},
     {path: '/g/:key', component: GroupPage, children: groupPageChildren, name: 'groupKey'},
