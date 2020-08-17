@@ -54,7 +54,7 @@ class LoggedOutUser
   end
 
   def nil_methods
-    super + [:id, :created_at, :avatar_url, :presence, :restricted, :persisted?]
+    super + [:id, :created_at, :avatar_url, :presence, :restricted, :persisted?, :secret_token]
   end
 
   def false_methods
