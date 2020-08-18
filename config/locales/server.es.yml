@@ -450,8 +450,6 @@ es:
     body:
       voted: '<strong>%{participant}</strong>:'
   comment_by: Comentario de %{comment_author}
-  personal_data:
-    title: Datos personales de %{user_name}en%{host_name}
   notified:
     no_matches_found: "No hemos encontrado nada que concuerde con '%{query}'"
     group_users: "(%{count} personas)"
