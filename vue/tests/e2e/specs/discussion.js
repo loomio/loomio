@@ -65,7 +65,6 @@ module.exports = {
     page.fillIn('.discussion-form__title-input input', 'better title')
     page.fillIn('.discussion-form .lmo-textarea textarea', 'improved description')
     page.click('.discussion-form__submit')
-    page.click('.dismiss-modal-button', 500)
     page.expectText('.context-panel__heading', 'better title')
     page.expectText('.context-panel__description', 'improved description')
   },
@@ -79,7 +78,6 @@ module.exports = {
 
     page.fillIn('.discussion-form__title-input input', 'dumb title')
     page.fillIn('.discussion-form .lmo-textarea textarea', 'rubbish description')
-    page.click('.dismiss-modal-button', 500)
 
     page.click('.action-dock__button--edit_thread')
 
