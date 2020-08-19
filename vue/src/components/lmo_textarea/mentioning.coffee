@@ -1,4 +1,4 @@
-import {sortBy, isString, filter, uniq, map, debounce} from 'lodash-es'
+import {sortBy, isString, filter, uniq, map, debounce} from 'lodash'
 import Records from '@/shared/services/records'
 import getCaretCoordinates from 'textarea-caret'
 

@@ -1,5 +1,5 @@
 import { encodeParams } from '@/shared/helpers/encode_params'
-import { omitBy, snakeCase, compact, isString, defaults, pickBy, isNil, identity } from 'lodash-es'
+import { omitBy, snakeCase, compact, isString, defaults, pickBy, isNil, identity } from 'lodash'
 
 export default class RestfulClient
   defaultParams: {}

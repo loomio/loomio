@@ -6,7 +6,7 @@ import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
 import { isAfter } from 'date-fns'
 import dateIsEqual from 'date-fns/isEqual'
-import { isEqual, isEmpty, filter, some, head, last, sortBy, find, min, max, isArray, throttle } from 'lodash-es'
+import { isEqual, isEmpty, filter, some, head, last, sortBy, find, min, max, isArray, throttle } from 'lodash'
 
 export default class DiscussionModel extends BaseModel
   @singular: 'discussion'

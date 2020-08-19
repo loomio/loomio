@@ -1,4 +1,4 @@
-import {map, keys} from 'lodash-es'
+import {map, keys} from 'lodash'
 
 export encodeParams = (params) ->
   map(keys(params), (key) ->

@@ -1,7 +1,7 @@
 <script lang="coffee">
 
 import { emojisByCategory, srcForEmoji, emojiSupported } from '@/shared/helpers/emojis'
-import { each, keys } from 'lodash-es'
+import { each, keys } from 'lodash'
 
 export default
   props:

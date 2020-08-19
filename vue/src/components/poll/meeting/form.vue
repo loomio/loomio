@@ -2,7 +2,7 @@
 import AppConfig from '@/shared/services/app_config'
 import EventBus  from '@/shared/services/event_bus'
 import { addDays, addMinutes, formatDistanceToNowStrict } from 'date-fns'
-import { pull } from 'lodash-es'
+import { pull } from 'lodash'
 
 export default
   props:

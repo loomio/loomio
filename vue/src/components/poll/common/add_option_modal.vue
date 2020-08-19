@@ -3,7 +3,7 @@ import Records  from '@/shared/services/records'
 import AppConfig  from '@/shared/services/app_config'
 import EventBus from '@/shared/services/event_bus'
 import Flash  from '@/shared/services/flash'
-import {uniq, without, isEqual} from 'lodash-es'
+import {uniq, without, isEqual} from 'lodash'
 import { onError } from '@/shared/helpers/form'
 
 export default

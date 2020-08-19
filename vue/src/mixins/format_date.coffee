@@ -1,6 +1,6 @@
 import {approximate, exact, timeline} from '@/shared/helpers/format_time'
 import EventBus from '@/shared/services/event_bus'
-import {each} from 'lodash-es'
+import {each} from 'lodash'
 
 # this is a vue mixin
 export default

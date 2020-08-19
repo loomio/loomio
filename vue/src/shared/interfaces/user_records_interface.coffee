@@ -1,7 +1,7 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
 import UserModel            from '@/shared/models/user_model'
 import AnonymousUserModel   from '@/shared/models/anonymous_user_model'
-import {map, includes, merge, pickBy, identity} from 'lodash-es'
+import {map, includes, merge, pickBy, identity} from 'lodash'
 
 export default class UserRecordsInterface extends BaseRecordsInterface
   model: UserModel

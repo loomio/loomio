@@ -3,7 +3,7 @@ import NewComment from '@/components/thread/item/new_comment.vue'
 import PollCreated from '@/components/thread/item/poll_created.vue'
 import StanceCreated from '@/components/thread/item/stance_created.vue'
 import OutcomeCreated from '@/components/thread/item/outcome_created.vue'
-import { camelCase } from 'lodash-es'
+import { camelCase } from 'lodash'
 
 export default
   props:

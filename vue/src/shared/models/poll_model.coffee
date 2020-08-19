@@ -5,7 +5,7 @@ import HasTranslations  from '@/shared/mixins/has_translations'
 import EventBus         from '@/shared/services/event_bus'
 import I18n             from '@/i18n'
 import { addDays, startOfHour } from 'date-fns'
-import { head, orderBy, map, includes, difference, invokeMap, each, max, slice, sortBy } from 'lodash-es'
+import { head, orderBy, map, includes, difference, invokeMap, each, max, slice, sortBy } from 'lodash'
 
 export default class PollModel extends BaseModel
   @singular: 'poll'

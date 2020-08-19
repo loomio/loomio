@@ -1,5 +1,5 @@
 import BaseModel from '@/shared/record_store/base_model'
-import {filter, keys, includes} from 'lodash-es'
+import {filter, keys, includes} from 'lodash'
 
 export default class VersionModel extends BaseModel
   @singular: 'version'
