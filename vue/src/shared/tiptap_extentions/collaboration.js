@@ -26,13 +26,11 @@ export default class Collaboration extends Extension {
     this.getSendableSteps = this.debounce(({state, transaction}) => {
       const sendable = sendableSteps(state)
 
-      let colors = '#ff9e22 #ee0290 #714cfe #90ee02 #1c00db #ff7d5e #f5b34c #f68eb4'.split(" ")
-
       console.log("user", this.options.user.name)
       this.options.me.cursor = state.selection.anchor
       this.options.me.focused = state.selection.focused
       this.options.me.displayname = this.options.user.name
-      this.options.me.displaycolor = AppConfig.pollColors.poll[(this.options.user.id % colors.length)]
+      this.options.me.displaycolor = AppConfig.pollColors.poll[(this.options.user.id % AppConfig.pollColors.poll.length)]
 
 
       if (sendable) {
