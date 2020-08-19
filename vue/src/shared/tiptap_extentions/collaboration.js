@@ -8,6 +8,8 @@ import {
   receiveTransaction,
 } from 'prosemirror-collab'
 
+import AppConfig      from '@/shared/services/app_config'
+
 export default class Collaboration extends Extension {
 
   get name() {
@@ -30,7 +32,7 @@ export default class Collaboration extends Extension {
       this.options.me.cursor = state.selection.anchor
       this.options.me.focused = state.selection.focused
       this.options.me.displayname = this.options.user.name
-      this.options.me.displaycolor = colors[(this.options.user.id % colors.length)]
+      this.options.me.displaycolor = AppConfig.pollColors.poll[(this.options.user.id % colors.length)]
 
 
       if (sendable) {

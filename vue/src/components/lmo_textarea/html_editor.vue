@@ -205,7 +205,7 @@ export default
 div
   //- | channel: {{tiptapAddress()}}
   template(v-if="editor && !loading")
-    div.count {{ count }} {{ count === 1 ? 'user' : 'users' }} connected
+    //- div.count {{ count }} {{ count === 1 ? 'user' : 'users' }} connected
   em(v-else)
     | Connecting to socket server …
   .editor.mb-3
@@ -370,27 +370,27 @@ div
 
 <style lang="sass">
 
-.count
-  display: flex
-  align-items: center
-  font-weight: bold
-  color: rgba(#000, 0.5)
-  color: #27b127
-  margin-bottom: 1rem
-  text-transform: uppercase
-  font-size: 0.7rem
-  line-height: 1
-  &:before
-    content: ''
-    display: inline-flex
-    background-color: #27b127
-    width: 0.4rem
-    height: 0.4rem
-    border-radius: 50%
-    margin-right: 0.3rem
+// .count
+//   display: flex
+//   align-items: center
+//   font-weight: bold
+//   color: rgba(#000, 0.5)
+//   color: #27b127
+//   margin-bottom: 1rem
+//   text-transform: uppercase
+//   font-size: 0.7rem
+//   line-height: 1
+//   &:before
+//     content: ''
+//     display: inline-flex
+//     background-color: #27b127
+//     width: 0.4rem
+//     height: 0.4rem
+//     border-radius: 50%
+//     margin-right: 0.3rem
 
 .cursor
-  color: #aaa
+  color: #222
   text-align: center
   border-radius: 6px 6px 6px 0px
   padding: 5px
