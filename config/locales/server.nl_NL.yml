@@ -11,6 +11,7 @@ nl_NL:
         blank: mag niet leeg gelaten worden
         invalid: is geen geldige waarde
   errors:
+    clear_cache: "Wis aub de cache van uw browser. Er is een probleem met het laden van Loomio."
     400:
       title: Bad request
       body: Sorry, dat verzoek werd niet begrepen

@@ -2,7 +2,7 @@
 import Records       from '@/shared/services/records'
 import openModal      from '@/shared/helpers/open_modal'
 import Session       from '@/shared/services/session'
-import {every, invokeMap} from 'lodash-es'
+import {every, invokeMap} from 'lodash'
 import { differenceInDays } from 'date-fns'
 export default
   props:

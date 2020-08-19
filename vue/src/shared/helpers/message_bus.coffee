@@ -7,7 +7,7 @@ import AbilityService from '@/shared/services/ability_service'
 import EventBus       from '@/shared/services/event_bus'
 
 import { hardReload } from '@/shared/helpers/window'
-import { each } from 'lodash-es'
+import { each } from 'lodash'
 
 export initLiveUpdate = ->
   MessageBus.start()

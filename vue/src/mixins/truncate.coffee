@@ -1,4 +1,4 @@
-import {truncate} from 'lodash-es'
+import {truncate} from 'lodash'
 export default
   methods:
     truncate: (string, length = 100, separator = ' ') ->

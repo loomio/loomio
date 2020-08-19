@@ -1,5 +1,5 @@
 import RecordView from '@/shared/record_store/record_view'
-import { snakeCase, isEmpty, camelCase, map, keys, each, intersection } from 'lodash-es'
+import { snakeCase, isEmpty, camelCase, map, keys, each, intersection } from 'lodash'
 
 export default class RecordStore
   constructor: (db) ->

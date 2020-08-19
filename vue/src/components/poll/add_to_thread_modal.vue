@@ -6,7 +6,7 @@ import Flash   from '@/shared/services/flash'
 import EventBus          from '@/shared/services/event_bus'
 import I18n           from '@/i18n'
 import { onError } from '@/shared/helpers/form'
-import { sortBy, debounce } from 'lodash-es'
+import { sortBy, debounce } from 'lodash'
 
 export default
   data: ->

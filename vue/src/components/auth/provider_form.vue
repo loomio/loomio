@@ -1,6 +1,6 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
-import { capitalize } from 'lodash-es'
+import { capitalize } from 'lodash'
 
 export default
   props:

@@ -1,4 +1,4 @@
-import { forEach } from 'lodash-es'
+import { forEach } from 'lodash'
 import FileUploader from '@/shared/services/file_uploader'
 export default
   data: ->

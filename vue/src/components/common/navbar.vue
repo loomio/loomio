@@ -4,7 +4,7 @@ import EventBus            from '@/shared/services/event_bus'
 import AbilityService      from '@/shared/services/ability_service'
 import AuthModalMixin      from '@/mixins/auth_modal'
 import Session             from '@/shared/services/session'
-import {tail, map, last, debounce}   from 'lodash-es'
+import {tail, map, last, debounce}   from 'lodash'
 
 export default
   mixins: [ AuthModalMixin ]

@@ -4,7 +4,7 @@ import AbilityService     from '@/shared/services/ability_service'
 import EventBus           from '@/shared/services/event_bus'
 import RecordLoader       from '@/shared/services/record_loader'
 import ThreadFilter       from '@/shared/services/thread_filter'
-import { map, debounce, orderBy, intersection, compact, omit, filter, concat, uniq } from 'lodash-es'
+import { map, debounce, orderBy, intersection, compact, omit, filter, concat, uniq } from 'lodash'
 import Session from '@/shared/services/session'
 
 export default

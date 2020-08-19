@@ -1,7 +1,7 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
-import { debounce, truncate, first, last, some, drop, min, compact } from 'lodash-es'
+import { debounce, truncate, first, last, some, drop, min, compact } from 'lodash'
 
 export default
 

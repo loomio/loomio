@@ -6,7 +6,7 @@ import EventBus      from '@/shared/services/event_bus'
 import i18n          from '@/i18n'
 import Vue from 'vue'
 import { hardReload } from '@/shared/helpers/window'
-import { pickBy, identity, compact } from 'lodash-es'
+import { pickBy, identity, compact } from 'lodash'
 
 loadedLocales = ['en']
 

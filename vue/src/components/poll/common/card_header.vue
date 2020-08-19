@@ -1,6 +1,6 @@
 <script lang="coffee">
 import AbilityService from '@/shared/services/ability_service'
-import { map, compact, pick } from 'lodash-es'
+import { map, compact, pick } from 'lodash'
 
 export default
   props:

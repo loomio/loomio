@@ -3,7 +3,7 @@ import EventBus from '@/shared/services/event_bus'
 import { iconFor }          from '@/shared/helpers/poll'
 import PollCommonDirective from '@/components/poll/common/directive.vue'
 import Flash   from '@/shared/services/flash'
-import { sortBy } from 'lodash-es'
+import { sortBy } from 'lodash'
 import { onError } from '@/shared/helpers/form'
 
 export default

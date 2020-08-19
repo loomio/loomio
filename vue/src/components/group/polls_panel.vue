@@ -5,7 +5,7 @@ import Records from '@/shared/services/records'
 import RecordLoader from '@/shared/services/record_loader'
 import EventBus       from '@/shared/services/event_bus'
 import Session       from '@/shared/services/session'
-import { debounce, some, every, compact, omit, values, keys, intersection } from 'lodash-es'
+import { debounce, some, every, compact, omit, values, keys, intersection } from 'lodash'
 
 export default
   data: ->

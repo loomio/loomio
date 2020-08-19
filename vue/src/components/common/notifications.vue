@@ -1,7 +1,7 @@
 <script lang="coffee">
 import Records   from '@/shared/services/records'
 import AppConfig from '@/shared/services/app_config'
-import {compact, orderBy} from 'lodash-es'
+import {compact, orderBy} from 'lodash'
 
 export default
   data: ->
