@@ -489,6 +489,8 @@ en:
   user_dropdown:
     pin_sidebar: "Pin sidebar"
     unpin_sidebar: "Unpin sidebar"
+    enable_beta_features: "Enable beta features"
+    disable_beta_features: "Disable beta features"
     button_label: 'User menu'
     edit_profile: 'Edit profile'
     email_settings: 'Notification settings'

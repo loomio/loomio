@@ -69,10 +69,10 @@ v-app.app-is-booted
 </template>
 
 <style lang="sass">
-$mdi-font-path: '/fonts/mdi'
-@import '@mdi/font/scss/materialdesignicons.scss'
+// $mdi-font-path: '/fonts/mdi'
+// @import '@mdi/font/scss/materialdesignicons.scss'
 
-h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus 
+h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus
   outline: 0
 a
   text-decoration: none
