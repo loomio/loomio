@@ -1,5 +1,5 @@
 import Records from '@/shared/services/records'
-import {merge, camelCase, defaults, max } from 'lodash-es'
+import {merge, camelCase, defaults, max } from 'lodash'
 
 export default class RecordLoader
   constructor: (opts = {}) ->

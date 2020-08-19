@@ -1,6 +1,6 @@
 <script lang="coffee">
 import { fieldFromTemplate, myLastStanceFor } from '@/shared/helpers/poll'
-import { max, values, orderBy } from 'lodash-es'
+import { max, values, orderBy } from 'lodash'
 
 export default
   props:

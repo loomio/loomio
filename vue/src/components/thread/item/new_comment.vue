@@ -1,7 +1,7 @@
 <script lang="coffee">
 import AbilityService from '@/shared/services/ability_service'
 
-import { pick, assign, compact } from 'lodash-es'
+import { pick, assign, compact } from 'lodash'
 import CommentService from '@/shared/services/comment_service'
 import EventService from '@/shared/services/event_service'
 import Session from '@/shared/services/session'

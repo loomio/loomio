@@ -2,7 +2,7 @@
 import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
-import { debounce, some, every } from 'lodash-es'
+import { debounce, some, every } from 'lodash'
 
 export default
   data: ->

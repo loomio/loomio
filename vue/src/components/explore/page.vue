@@ -7,7 +7,7 @@ import _truncate from 'lodash/truncate'
 import _map      from 'lodash/map'
 import marked    from 'marked'
 
-import { debounce, camelCase, orderBy } from 'lodash-es'
+import { debounce, camelCase, orderBy } from 'lodash'
 
 export default
   mixins: [UrlFor]

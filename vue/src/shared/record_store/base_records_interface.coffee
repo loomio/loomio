@@ -1,6 +1,6 @@
 import RestfulClient from './restful_client'
 import utils         from './utils'
-import {pick, each, merge, keys, isNumber, isString, isArray} from 'lodash-es'
+import {pick, each, merge, keys, isNumber, isString, isArray} from 'lodash'
 import Vue           from 'vue'
 
 export default class BaseRecordsInterface

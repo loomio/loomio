@@ -1,6 +1,6 @@
 import Session from '@/shared/services/session'
 import { subWeeks } from 'date-fns'
-import { each } from 'lodash-es'
+import { each } from 'lodash'
 
 export default (store, options) ->
   chain = store.discussions.collection.chain()
