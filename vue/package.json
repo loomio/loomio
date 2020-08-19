@@ -68,7 +68,7 @@
     "sass": "^1.26.10",
     "sass-loader": "^9.0.3",
     "selenium-server-standalone-jar": "latest",
-    "vue-cli-plugin-coffee": "0.5.12",
+    "vue-cli-plugin-coffee": "0.5.13",
     "vue-cli-plugin-pug": "^1.0.7",
     "vue-cli-plugin-vuetify": "latest",
     "vue-template-compiler": "2.6.11",
