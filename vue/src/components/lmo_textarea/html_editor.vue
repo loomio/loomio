@@ -13,7 +13,8 @@ import { Editor, EditorContent, EditorMenuBar } from 'tiptap'
 import { Blockquote, CodeBlock, HardBreak, Heading, HorizontalRule,
   OrderedList, BulletList, ListItem, Table, TableHeader, TableCell,
   TableRow, TodoList, Bold, Code, Italic, Link, Strike, Underline,
-  History, Mention, Placeholder, TrailingNode, Collaboration } from 'tiptap-extensions'
+  History, Mention, Placeholder, TrailingNode } from 'tiptap-extensions'
+import Collaboration from '@/shared/tiptap_extentions/collaboration.js'
 
 import Iframe from './iframe'
 import TodoItem from './todo_item'
@@ -68,9 +69,15 @@ export default
 
     @socket = io(@tiptapAddress())
       .on('init', (data) => @onInit(data))
-      .on('update', (data) => @editor.extensions.options.collaboration.update(data))
+      .on('update', (data) =>
+        @editor.extensions.options.collaboration.update(data)
+        @editor.extensions.options.collaboration.updateCursors(data)
+      )
       .on('getCount', (count) => @setCount(count))
-
+      .on('cursorupdate', (data) =>
+        this.editor.extensions.options.collaboration.updateCursors(data)
+        # this.setParticipants(data.participants)
+      )
 
   watch:
     'shouldReset': 'reset'
@@ -115,14 +122,12 @@ export default
             showOnlyWhenEditable: true,
           }),
           new Collaboration({
+            socket: @socket,
             clientID: @socket.id
+            user: Session.user()
             version: version
             debounce: 250
-            onSendable: ({sendable}) =>
-              # console.log "onSendable", version, sendable
-              @socket.emit('update', sendable)
           })
-          # new TrailingNode({node: 'paragraph', notAfter: ['paragraph']})
         ]
         content: doc
         onUpdate: @updateModel
@@ -383,6 +388,53 @@ div
     height: 0.4rem
     border-radius: 50%
     margin-right: 0.3rem
+
+.cursor
+  color: #aaa
+  text-align: center
+  border-radius: 6px 6px 6px 0px
+  padding: 5px
+  margin-left: -4.5px
+  position: absolute
+  z-index: 1
+  bottom: 5px
+  left: -50%
+  opacity: 0.85
+  white-space: nowrap
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+  &.me
+    display: none
+    &::after
+      display: none
+      border-color: inherit
+  &.inactive
+    opacity: 0.5
+    &::after
+      opacity: inherit
+      border-color: inherit
+  &::after
+    content: ""
+    position: absolute
+    top: 100%
+    left: 0%
+    border-width: 5px
+    border-style: solid
+    border-color: inherit
+    color: transparent
+
+
+.ProseMirror-widget
+  position: absolute
+  width: 0.1px
+  /*border-style: solid;*/
+
+.bv-row
+  padding-top: 20px
 
 .ProseMirror [contenteditable="false"]
   white-space: normal
