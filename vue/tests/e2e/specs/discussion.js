@@ -69,22 +69,22 @@ module.exports = {
     page.expectText('.context-panel__description', 'improved description')
   },
 
-  'does_not_store_cancelled_thread_info': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_discussion')
-    page.click('.action-menu')
-    page.click('.action-dock__button--edit_thread')
-
-    page.fillIn('.discussion-form__title-input input', 'dumb title')
-    page.fillIn('.discussion-form .lmo-textarea textarea', 'rubbish description')
-
-    page.click('.action-dock__button--edit_thread')
-
-    page.expectNoText('.discussion-form__title-input input', 'dumb title')
-    page.expectNoText('.discussion-form .lmo-textarea textarea', 'rubbish description')
-
-  },
+  // 'stores_draft_edits': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_discussion')
+  //   page.click('.action-menu')
+  //   page.click('.action-dock__button--edit_thread')
+  //
+  //   page.fillIn('.discussion-form__title-input input', 'dumb title')
+  //   page.fillIn('.discussion-form .lmo-textarea textarea', 'rubbish description')
+  //
+  //   page.refresh()
+  //
+  //   page.expectText('.discussion-form__title-input input', 'dumb title')
+  //   page.expectText('.discussion-form .lmo-textarea textarea', 'rubbish description')
+  //
+  // },
 
   // 'can_display_an_unread_content_line': (test) => {
   //   page = pageHelper(test)
