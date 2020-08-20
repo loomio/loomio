@@ -12,6 +12,7 @@ export default
   props:
     discussion: Object
     close: Function
+    isPage: Boolean
 
   data: ->
     upgradeUrl: AppConfig.baseUrl + 'upgrade'
@@ -31,10 +32,9 @@ export default
       .then (data) =>
         discussionKey = data.discussions[0].key
         Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
-          @close()
           Flash.success("discussion_form.messages.#{actionName}")
+          @$router.push @urlFor(discussion)
           if @discussion.isNew()
-            @$router.push @urlFor(discussion)
             if AbilityService.canAnnounceTo(discussion)
               EventBus.$emit 'openModal',
                 component: 'AnnouncementForm',
@@ -96,22 +96,24 @@ export default
 </script>
 
 <template lang="pug">
-v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
+.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value='discussion.processing')
   v-card-title
     h1.headline
-      span(v-if="discussion.isNew() && !isMovingItems" v-t="'discussion_form.new_discussion_title'")
-      span(v-if="discussion.isNew() && isMovingItems" v-t="'discussion_form.moving_items_title'")
-      span(v-if="!discussion.isNew()" v-t="'discussion_form.edit_discussion_title'")
+      span(v-if="isMovingItems" v-t="'discussion_form.moving_items_title'")
+      template(v-else)
+        span(v-if="discussion.isNew()" v-t="'discussion_form.new_discussion_title'")
+        span(v-if="!discussion.isNew()" v-t="'discussion_form.edit_discussion_title'")
     v-spacer
-    dismiss-modal-button(aria-hidden='true', :close='close')
+    dismiss-modal-button(v-if="!isPage" aria-hidden='true', :close='close')
   .pa-4
-    .lmo-hint-text(v-t="'group_page.discussions_placeholder'", v-show='discussion.isNew() && !isMovingItems')
+    //- .lmo-hint-text(v-t="'group_page.discussions_placeholder'" v-show='discussion.isNew() && !isMovingItems')
     .body-1(v-if="showUpgradeMessage")
       p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
       p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
 
-    .discussion-form__group-selected(v-if='discussion.groupId && !showUpgradeMessage')
+    .discussion-form__group-selected(v-if='discussion.groupId && discussion.group() && !showUpgradeMessage')
+      p {{discussion.group().fullName}}
       v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input(:label="$t('discussion_form.title_label')" :placeholder="$t('discussion_form.title_placeholder')" v-model='discussion.title' maxlength='255')
       validation-errors(:subject='discussion', field='title')
       lmo-textarea(:model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")

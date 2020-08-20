@@ -26,7 +26,7 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def my_stance
-    scope && scope[:current_user] && object[:participant_id] == scope[:current_user]&.id
+    scope[:current_user_id] && object[:participant_id] == scope[:current_user_id]
   end
 
   def include_reason?

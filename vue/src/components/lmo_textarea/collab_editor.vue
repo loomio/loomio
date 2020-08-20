@@ -1,6 +1,7 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
+import AppConfig from '@/shared/services/app_config'
 import FileUploader from '@/shared/services/file_uploader'
 import FilesList from './files_list.vue'
 import EventBus from '@/shared/services/event_bus'
@@ -13,6 +14,7 @@ import { Blockquote, CodeBlock, HardBreak, Heading, HorizontalRule,
   OrderedList, BulletList, ListItem, Table, TableHeader, TableCell,
   TableRow, TodoList, Bold, Code, Italic, Link, Strike, Underline,
   History, Mention, Placeholder, TrailingNode } from 'tiptap-extensions'
+import Collaboration from '@/shared/tiptap_extentions/collaboration.js'
 
 import Iframe from './iframe'
 import TodoItem from './todo_item'
@@ -25,6 +27,9 @@ import {getEmbedLink} from '@/shared/helpers/embed_link.coffee'
 import { CommonMentioning, HtmlMentioning, MentionPluginConfig } from './mentioning.coffee'
 import SuggestionList from './suggestion_list'
 import Attaching from './attaching.coffee'
+import {compact} from 'lodash'
+
+import io from 'socket.io-client'
 
 export default
   mixins: [CommonMentioning, HtmlMentioning, Attaching]
@@ -44,52 +49,16 @@ export default
     SuggestionList: SuggestionList
 
   data: ->
+    loading: true
+    socket: null
+    count: 0
+    editor: null
     expanded: null
     closeEmojiMenu: false
     linkUrl: ""
     iframeUrl: ""
     linkDialogIsOpen: false
     iframeDialogIsOpen: false
-    editor: new Editor
-      # disablePasteRules: true
-      editorProps:
-        scrollThreshold: 100
-        scrollMargin: 100
-      extensions: [
-        new Link(),
-        new Mention(MentionPluginConfig.bind(@)()),
-        new Blockquote(),
-        new BulletList(),
-        new CodeBlock(),
-        new HardBreak(),
-        new Image({attachFile: @attachFile, attachImageFile: @attachImageFile}),
-        new Heading({ levels: [1, 2, 3] }),
-        new HorizontalRule(),
-        new ListItem(),
-        new OrderedList(),
-        new TodoItem(),
-        new TodoList(),
-        new Table(),
-        new TableHeader(),
-        new TableCell(),
-        new TableRow(),
-        new Bold(),
-        new Code(),
-        new Italic(),
-        new Strike(),
-        new Underline(),
-        new History(),
-        new Iframe(),
-        new Placeholder({
-          emptyClass: 'is-empty',
-          emptyNodeText: @placeholder,
-          showOnlyWhenEditable: true,
-        })
-        # new TrailingNode({node: 'paragraph', notAfter: ['paragraph']})
-      ]
-      content: @model[@field]
-      onUpdate: @updateModel
-      autoFocus: @autofocus
 
   computed:
     format: ->
@@ -97,12 +66,89 @@ export default
 
   mounted: ->
     @expanded = Session.user().experiences['html-editor.expanded']
-    @updateModel()
+
+    @socket = io(@tiptapAddress())
+      .on('init', (data) => @onInit(data))
+      .on('update', (data) =>
+        @editor.extensions.options.collaboration.update(data)
+        @editor.extensions.options.collaboration.updateCursors(data)
+      )
+      .on('getCount', (count) => @setCount(count))
+      .on('cursorupdate', (data) =>
+        this.editor.extensions.options.collaboration.updateCursors(data)
+        # this.setParticipants(data.participants)
+      )
 
   watch:
     'shouldReset': 'reset'
 
   methods:
+    onInit: ({doc, version}) ->
+      @loading = false
+      @editor.destroy() if @editor
+
+      @editor = new Editor
+        editorProps:
+          scrollThreshold: 100
+          scrollMargin: 100
+        extensions: [
+          new Link(),
+          new Mention(MentionPluginConfig.bind(@)()),
+          new Blockquote(),
+          new BulletList(),
+          new CodeBlock(),
+          new HardBreak(),
+          new Image({attachFile: @attachFile, attachImageFile: @attachImageFile}),
+          new Heading({ levels: [1, 2, 3] }),
+          new HorizontalRule(),
+          new ListItem(),
+          new OrderedList(),
+          new TodoItem(),
+          new TodoList(),
+          new Table(),
+          new TableHeader(),
+          new TableCell(),
+          new TableRow(),
+          new Bold(),
+          new Code(),
+          new Italic(),
+          new Strike(),
+          new Underline(),
+          new History(),
+          new Iframe(),
+          new Placeholder({
+            emptyClass: 'is-empty',
+            emptyNodeText: @placeholder,
+            showOnlyWhenEditable: true,
+          }),
+          new Collaboration({
+            socket: @socket,
+            clientID: @socket.id
+            user: Session.user()
+            version: version
+            debounce: 250
+          })
+        ]
+        content: doc
+        onUpdate: @updateModel
+        autoFocus: @autofocus
+
+      @editor.setContent(@model[@field]) if version == 0
+
+      # setTimeout =>
+      #   if @$refs.editor && @$refs.editor.$el
+      #     @$refs.editor.$el.children[0].setAttribute("role", "textbox")
+      #     @$refs.editor.$el.children[0].setAttribute("aria-label", @placeholder) if @placeholder
+
+    setCount: (count) ->
+      @count = count
+
+    tiptapAddress: ->
+      if @model.isNew()
+        compact([AppConfig.theme.channels_uri, 'tiptap', @model.constructor.singular, 'new', @model.groupId, @model.discussionId, Session.user().secretToken]).join('/')
+      else
+        [AppConfig.theme.channels_uri, 'tiptap', @model.constructor.singular, @model.id, (@model.secretToken || Session.user().secretToken)].join('/')
+
     selectedText: ->
       { selection, state } = @editor
       { from, to } = selection
@@ -130,7 +176,7 @@ export default
         @linkUrl = "http://".concat(@linkUrl) unless @linkUrl.includes("://")
         command({ href: @linkUrl })
         @linkUrl = null
-      @linkDialogIsOpen = false
+      @linkDialogIsOpen = fal/isNewse
       @editor.focus()
 
     setIframeUrl: (command) ->
@@ -147,23 +193,26 @@ export default
 
     updateModel: ->
       @model[@field] = @editor.getHTML()
-      setTimeout =>
-        if @$refs.editor && @$refs.editor.$el
-          @$refs.editor.$el.children[0].setAttribute("role", "textbox")
-          @$refs.editor.$el.children[0].setAttribute("aria-label", @placeholder) if @placeholder
       @updateFiles()
 
   beforeDestroy: ->
     @editor.destroy()
+    @socket.destroy()
+
 </script>
 
 <template lang="pug">
 div
+  //- | channel: {{tiptapAddress()}}
+  template(v-if="editor && !loading")
+    div.count {{ count }} {{ count === 1 ? 'user' : 'users' }} connected
+  em(v-else)
+    | Connecting to socket server …
   .editor.mb-3
     editor-content.html-editor__textarea(ref="editor" :editor='editor').lmo-markdown-wrapper
-    editor-menu-bar(:editor='editor' v-slot='{ commands, isActive, focused }')
-      div
-        v-layout.menubar(align-center v-if="isActive.table()")
+    editor-menu-bar.menubar(:editor='editor' v-slot='{ commands, isActive, focused }')
+      v-card(flat)
+        v-layout(align-center v-if="isActive.table()")
           v-btn(icon @click="commands.deleteTable" :title="$t('formatting.remove_table')")
             v-icon mdi-table-remove
           v-btn(icon @click="commands.addColumnBefore" :title="$t('formatting.add_column_before')")
@@ -181,7 +230,7 @@ div
           v-btn(icon @click="commands.toggleCellMerge" :title="$t('formatting.merge_selected')")
             v-icon mdi-table-merge-cells
 
-        v-layout.menubar.py-2.justify-space-between.flex-wrap(align-center)
+        v-layout.py-2.justify-space-between.flex-wrap(align-center)
           section.d-flex.flex-wrap(:aria-label="$t('formatting.formatting_tools')")
             //- attach
             v-btn(icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")
@@ -320,6 +369,72 @@ div
 </template>
 
 <style lang="sass">
+
+// .count
+//   display: flex
+//   align-items: center
+//   font-weight: bold
+//   color: rgba(#000, 0.5)
+//   color: #27b127
+//   margin-bottom: 1rem
+//   text-transform: uppercase
+//   font-size: 0.7rem
+//   line-height: 1
+//   &:before
+//     content: ''
+//     display: inline-flex
+//     background-color: #27b127
+//     width: 0.4rem
+//     height: 0.4rem
+//     border-radius: 50%
+//     margin-right: 0.3rem
+
+.cursor
+  color: #222
+  text-align: center
+  border-radius: 6px 6px 6px 0px
+  padding: 5px
+  margin-left: -4.5px
+  position: absolute
+  z-index: 1
+  bottom: 5px
+  left: -50%
+  opacity: 0.85
+  white-space: nowrap
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+  &.me
+    display: none
+    &::after
+      display: none
+      border-color: inherit
+  &.inactive
+    opacity: 0.5
+    &::after
+      opacity: inherit
+      border-color: inherit
+  &::after
+    content: ""
+    position: absolute
+    top: 100%
+    left: 0%
+    border-width: 5px
+    border-style: solid
+    border-color: inherit
+    color: transparent
+
+
+.ProseMirror-widget
+  position: absolute
+  width: 0.1px
+  /*border-style: solid;*/
+
+.bv-row
+  padding-top: 20px
 
 .ProseMirror [contenteditable="false"]
   white-space: normal

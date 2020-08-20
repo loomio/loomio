@@ -104,5 +104,6 @@ export default
 
 <template lang="pug">
 v-dialog.modal-launcher(ref="modalLauncher" v-model="isOpen" :max-width="maxWidth" persistent :fullscreen="$vuetify.breakpoint.xs")
-  component(:is="componentName" :key="componentKey()" v-bind="componentProps" :close="closeModal")
+  v-card
+    component(:is="componentName" :key="componentKey()" v-bind="componentProps" :close="closeModal")
 </template>
