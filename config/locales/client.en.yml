@@ -495,6 +495,7 @@ en:
     help: 'Help'
     contact_site_name: 'Contact {{site_name}}'
     sign_out: 'Sign out'
+    beta_collab: "Real-time collaborative editing on discussions and proposals, auto saved draft comments"
 
   membership_card:
     group_members: "Group members"

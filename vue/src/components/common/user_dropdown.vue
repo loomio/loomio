@@ -3,6 +3,7 @@ import AppConfig       from '@/shared/services/app_config'
 import Session         from '@/shared/services/session'
 import Records         from '@/shared/services/records'
 import UserHelpService from '@/shared/services/user_help_service'
+import Flash from '@/shared/services/flash'
 
 export default
   methods:
@@ -12,6 +13,23 @@ export default
       else
         Records.users.saveExperience('sidebar')
 
+<<<<<<< Updated upstream
+||||||| constructed merge base
+    toggleBeta: ->
+      if @user.experiences['betaFeatures']
+        Records.users.removeExperience('betaFeatures')
+      else
+        Records.users.saveExperience('betaFeatures')
+
+=======
+    toggleBeta: ->
+      if @user.experiences['betaFeatures']
+        Records.users.removeExperience('betaFeatures')
+      else
+        Records.users.saveExperience('betaFeatures')
+        Flash.success("user_dropdown.beta_collab")
+
+>>>>>>> Stashed changes
     signOut: ->
       Session.signOut()
 
