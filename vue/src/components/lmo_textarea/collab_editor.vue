@@ -27,7 +27,7 @@ import {getEmbedLink} from '@/shared/helpers/embed_link.coffee'
 import { CommonMentioning, HtmlMentioning, MentionPluginConfig } from './mentioning.coffee'
 import SuggestionList from './suggestion_list'
 import Attaching from './attaching.coffee'
-import {compact} from 'lodash-es'
+import {compact} from 'lodash'
 
 import io from 'socket.io-client'
 
