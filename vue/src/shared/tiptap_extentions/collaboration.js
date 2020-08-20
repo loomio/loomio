@@ -8,7 +8,10 @@ import {
   receiveTransaction,
 } from 'prosemirror-collab'
 
+import colors from 'vuetify/lib/util/colors'
+
 import AppConfig      from '@/shared/services/app_config'
+import {map} from 'lodash'
 
 export default class Collaboration extends Extension {
 
@@ -26,11 +29,11 @@ export default class Collaboration extends Extension {
     this.getSendableSteps = this.debounce(({state, transaction}) => {
       const sendable = sendableSteps(state)
 
-      console.log("user", this.options.user.name)
+      let colorsList = map(colors, (value, key) => value.lighten3 )
       this.options.me.cursor = state.selection.anchor
       this.options.me.focused = state.selection.focused
       this.options.me.displayname = this.options.user.name
-      this.options.me.displaycolor = AppConfig.pollColors.poll[(this.options.user.id % AppConfig.pollColors.poll.length)]
+      this.options.me.displaycolor = colorsList[(this.options.user.id % colorsList.length)]
 
 
       if (sendable) {
@@ -63,10 +66,8 @@ export default class Collaboration extends Extension {
           ) {
             var gap = sendable.steps[0].from-sendable.steps[0].to
             this.participants[participantID].cursor = cursor+gap+sendable.steps[0].slice.content.size
-            //console.log(sendable.steps[0].from+' '+sendable.steps[0].slice.content.size+' '+cursor+' '+this.participants[participantID].cursor)
           }
         }
-        console.log("update local cursors", this.participants);
         this.options.updateCursors({participants: this.participants})
       }
     }
@@ -107,6 +108,7 @@ export default class Collaboration extends Extension {
         this.participants = participants
 
         //Set the decorations in the editor
+
         var clientID = this.options.clientID
         let props = {
           decorations(state) {
@@ -118,8 +120,6 @@ export default class Collaboration extends Extension {
                 var cursorclass = 'cursor'
                 var displayname = dec.displayname || dec.clientID
                 var displaycolor = 'style="background-color:'+dec.displaycolor+'; border-top-color:'+dec.displaycolor+'"'
-
-                console.log(displayname, dec.cursor)
 
                 const dom = document.createElement('div')
                 if (dec.focused==false) {
@@ -136,7 +136,6 @@ export default class Collaboration extends Extension {
                 decos.push(Decoration.widget(dec.cursor, dom))
               }
             }
-            // console.log( "DecorationSet.create(state.doc, decos)", DecorationSet.create(state.doc, decos), state.doc, decos)
             return DecorationSet.create(state.doc, decos);
           }
         }
