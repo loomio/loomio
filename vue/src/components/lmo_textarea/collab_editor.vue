@@ -348,7 +348,7 @@ div
                 v-icon mdi-table
               //- markdown (save experience)
               v-btn(icon @click="convertToMd" :title="$t('formatting.edit_markdown')")
-                v-icon mdi-markdown
+                v-icon mdi-language-markdown-outline
 
             v-btn.html-editor__expand(v-if="!expanded" icon @click="toggleExpanded" :aria-label="$t('formatting.expand')")
               v-icon mdi-chevron-right
