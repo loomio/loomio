@@ -33,6 +33,7 @@
     "md5": "2.3.0",
     "pretty-bytes": "^5.3.0",
     "raven-js": "latest",
+    "socket.io-client": "^2.3.0",
     "svg.js": "^2.7.1",
     "textarea-caret": "^3.1.0",
     "tiptap": "1.29.5",
@@ -52,7 +53,7 @@
     "vuetify": "2.3.8"
   },
   "devDependencies": {
-    "@mdi/font": "^3.8.95",
+    "@mdi/font": "^5.5.55",
     "@vue/cli-plugin-babel": "^4.5.4",
     "@vue/cli-plugin-e2e-nightwatch": "^4.5.4",
     "@vue/cli-plugin-pwa": "^4.5.4",

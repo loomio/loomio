@@ -1,8 +1,12 @@
 class ApplicationSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
+  def scope
+    super || {}
+  end
+  
   def include_type?(type)
-    !Array((scope || {})[:exclude_types]).include?(type)
+    !Array(scope[:exclude_types]).include?(type)
   end
 
   def include_reactions?

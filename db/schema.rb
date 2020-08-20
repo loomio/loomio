@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2020_08_12_233613) do
   enable_extension "citext"
   enable_extension "hstore"
   enable_extension "pg_stat_statements"
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: :cascade do |t|
@@ -155,6 +156,7 @@ ActiveRecord::Schema.define(version: 2020_08_12_233613) do
     t.jsonb "attachments", default: [], null: false
     t.datetime "discarded_at"
     t.integer "discarded_by"
+    t.string "secret_token", default: -> { "gen_random_uuid()" }
     t.index ["discussion_id"], name: "index_comments_on_discussion_id"
   end
 
@@ -234,6 +236,7 @@ ActiveRecord::Schema.define(version: 2020_08_12_233613) do
     t.integer "max_depth", default: 2, null: false
     t.boolean "newest_first", default: false, null: false
     t.datetime "discarded_at"
+    t.string "secret_token", default: -> { "gen_random_uuid()" }
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["discarded_at"], name: "discussions_discarded_at_null", where: "(discarded_at IS NULL)"
@@ -390,6 +393,7 @@ ActiveRecord::Schema.define(version: 2020_08_12_233613) do
     t.boolean "new_threads_newest_first", default: false, null: false
     t.boolean "admins_can_edit_user_content", default: false, null: false
     t.boolean "listed_in_explore", default: false, null: false
+    t.string "secret_token", default: -> { "gen_random_uuid()" }
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["category_id"], name: "index_groups_on_category_id"
     t.index ["cohort_id"], name: "index_groups_on_cohort_id"
@@ -551,6 +555,7 @@ ActiveRecord::Schema.define(version: 2020_08_12_233613) do
     t.jsonb "custom_fields", default: {}, null: false
     t.string "statement_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
+    t.string "secret_token", default: -> { "gen_random_uuid()" }
     t.index ["poll_id"], name: "index_outcomes_on_poll_id"
   end
 
@@ -607,6 +612,7 @@ ActiveRecord::Schema.define(version: 2020_08_12_233613) do
     t.boolean "stances_in_discussion", default: true, null: false
     t.datetime "discarded_at"
     t.integer "discarded_by"
+    t.string "secret_token", default: -> { "gen_random_uuid()" }
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["discussion_id"], name: "index_polls_on_discussion_id"
     t.index ["group_id"], name: "index_polls_on_group_id"
@@ -783,6 +789,7 @@ ActiveRecord::Schema.define(version: 2020_08_12_233613) do
     t.jsonb "attachments", default: [], null: false
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
+    t.string "secret_token", default: -> { "gen_random_uuid()" }
     t.index ["deactivated_at"], name: "index_users_on_deactivated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
