@@ -1,4 +1,11 @@
+require 'redis'
+connection = Redis.new
+
 class MessageChannelService
+  def self.publish_record(group_id: , record: )
+    connection.publish "records", {group_id: group_id, serialize_models(record)}
+  end
+
   def self.publish_models(models, serializer: nil, scope: {}, root: nil, group_ids: [], user_ids: [])
     data = serialize_models(models, serializer: serializer, scope: scope, root: root)
     publish_serialized_records(data, group_ids: group_ids, user_ids: user_ids)
