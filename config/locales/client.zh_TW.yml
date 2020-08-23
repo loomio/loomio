@@ -456,12 +456,15 @@ zh_TW:
   user_dropdown:
     pin_sidebar: "釘選側邊欄"
     unpin_sidebar: "取消釘選側邊欄"
+    enable_beta_features: "啟用測試版功能"
+    disable_beta_features: "停用測試版功能"
     button_label: '使用者選單'
     edit_profile: '編輯簡歷'
     email_settings: '通知設定'
     help: '教學文件'
     contact_site_name: '聯絡 {{site_name}}'
     sign_out: '登出'
+    beta_collab: "討論與提案的即時協作編輯，自動儲存草稿留言"
   membership_card:
     group_members: "群組成員"
     discussion_members: "討論串成員"

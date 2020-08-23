@@ -456,12 +456,15 @@ es:
   user_dropdown:
     pin_sidebar: "Anclar barra lateral"
     unpin_sidebar: "Desanclar barra lateral"
+    enable_beta_features: "Permite funciones beta"
+    disable_beta_features: "Deshabilita funciones beta"
     button_label: 'Menú del usuario'
     edit_profile: 'Editar perfil '
     email_settings: 'Ajustes de notificación'
     help: 'Ayuda'
     contact_site_name: 'Contacto {{site_name}}'
     sign_out: 'Salir'
+    beta_collab: "Ediciones de forma colaborativa a tiempo real acerca de discusiones y propuestas, borrador de comentarios auto guardados"
   membership_card:
     group_members: "Integrantes del grupo"
     discussion_members: "Integrantes del hilo"

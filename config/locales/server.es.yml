@@ -11,6 +11,7 @@ es:
         blank: no puede estar vacío
         invalid: No es un valor válido.
   errors:
+    clear_cache: "Por favor limpia vuestro buscador cache. Hay un problema para cargar Loomio."
     400:
       title: Mala petición
       body: Lo sentimos, no pudimos entender esa petición
