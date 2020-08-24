@@ -16,7 +16,10 @@ class MessageChannelService
     REDIS_POOL.with do |client|
       room = "user-#{user_id}" if user_id
       room = "group-#{group_id}" if group_id
-      client.publish("/records", {room: room, records: data.as_json.as_json}.to_json)
+      data_str = data.as_json.as_json
+      score = client.incr("/records/#{room}/score")
+      client.zadd("/records/#{room}", score, data_str)
+      client.publish("/records", {room: room, records: data_str, score: score}.to_json)
     end
   end
 end

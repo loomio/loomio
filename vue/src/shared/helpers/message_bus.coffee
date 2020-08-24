@@ -11,6 +11,25 @@ import { each } from 'lodash'
 
 import io from 'socket.io-client'
 
+roomScores = {}
+recordsSocket = null
+
 export initLiveUpdate = ->
   recordsAddress = [AppConfig.theme.channels_uri, 'records'].join('/')
-  io(recordsAddress, query: { channel_token: AppConfig.channel_token}).on('update', (data) => Records.import(data) )
+  recordsSocket = io(recordsAddress, query: { channel_token: AppConfig.channel_token})
+
+  recordsSocket.on 'update', (data) =>
+    console.log("socket.io update", data)
+    roomScores[data.room] = data.score
+    Records.import(data.records)
+
+  recordsSocket.on 'reconnect', (data) =>
+    console.log("socket.io reconnect")
+    recordsSocket.emit "hey", roomScores, (answer) =>
+      console.log("hey answer", answer)
+
+  recordsSocket.on 'disconnect', (data) =>
+    console.log("socket.io disconnect")
+
+  recordsSocket.on 'connect', (data) =>
+    console.log("socket.io connect")
