@@ -27,9 +27,12 @@ export initLiveUpdate = ->
     console.log("socket.io reconnect")
     recordsSocket.emit "hey", roomScores, (answer) =>
       console.log("hey answer", answer)
+      # answer.forEach(records => Records.import(records))
 
   recordsSocket.on 'disconnect', (data) =>
+    # Flash.warning("server disconnected")
     console.log("socket.io disconnect")
 
   recordsSocket.on 'connect', (data) =>
+    # Flash.warning("server connected")
     console.log("socket.io connect")

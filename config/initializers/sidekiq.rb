@@ -3,7 +3,7 @@ Sidekiq::Extensions.enable_delay!
 
 redis_url = (ENV['REDIS_QUEUE_URL'] || ENV.fetch('REDIS_URL', 'redis://localhost:6379'))
 
-REDIS_POOL = ConnectionPool.new(size: 10) { Redis.new(url: redis_url) }
+REDIS_POOL = ConnectionPool.new(size: ENV.fetch('REDIS_POOL_SIZE', 30)) { Redis.new(url: redis_url) }
 
 if Rails.env.test? || Rails.env.development?
   require 'sidekiq/testing'

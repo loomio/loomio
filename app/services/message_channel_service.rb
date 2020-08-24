@@ -18,7 +18,7 @@ class MessageChannelService
       room = "group-#{group_id}" if group_id
       data_str = data.as_json.as_json
       score = client.incr("/records/#{room}/score")
-      client.zadd("/records/#{room}", score, data_str)
+      client.zadd("/records/#{room}", score, data_str.to_json)
       client.publish("/records", {room: room, records: data_str, score: score}.to_json)
     end
   end

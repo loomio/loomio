@@ -36,14 +36,6 @@ ADD . /loomio
 COPY config/database.docker.yml /loomio/config/database.yml
 RUN bundle install
 
-# disable loomio_onboarding plugin
-ENV DISABLED_PLUGINS loomio_onboarding
-
-WORKDIR /loomio/client
-RUN npm install
-RUN npm rebuild node-sass
-WORKDIR /loomio
-
 WORKDIR /loomio/vue
 RUN npm install
 RUN npm run build
