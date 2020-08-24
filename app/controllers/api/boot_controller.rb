@@ -17,14 +17,13 @@ class API::BootController < API::RestfulController
   end
 
   def set_channel_token
-    redis_url = ENV['REDIS_QUEUE_URL'] || ENV.fetch('REDIS_URL', 'redis://localhost:6379')
-    redis = Redis.new(url: redis_url)
     token = SecureRandom.hex
-    redis.set("/current_users/#{token}",
-      {name: current_user.name,
-       group_ids: current_user.group_ids,
-       # guest_discussion_ids: current_user.guest_discussion_ids,
-       user_id: current_user.id}.to_json)
+    REDIS_POOL.with do |client|
+      client.set("/current_users/#{token}",
+        {name: current_user.name,
+         group_ids: current_user.group_ids,
+         id: current_user.id}.to_json)
+    end
     token
   end
 
