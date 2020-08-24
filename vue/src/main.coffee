@@ -1,7 +1,5 @@
 require('intersection-observer')
 import Vue from 'vue'
-import MessageBus from '@/shared/message_bus'
-import MessageBusAjax from '@/shared/message_bus_ajax'
 import AppConfig from '@/shared/services/app_config'
 import vuetify from '@/vuetify'
 import router from '@/routes.coffee'
