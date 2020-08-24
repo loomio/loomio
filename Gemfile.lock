@@ -517,6 +517,7 @@ DEPENDENCIES
   byebug
   cancancan
   coffee-rails
+  connection_pool
   custom_counter_cache!
   database_cleaner
   devise (~> 4.7.2)

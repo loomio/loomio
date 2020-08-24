@@ -53,6 +53,7 @@ gem 'rack-attack'
 gem 'bootsnap', require: false
 gem 'redis-rails'
 gem 'hiredis'
+gem 'connection_pool'
 gem 'ruby-saml'
 gem 'google-cloud-translate', '1.4.0'
 gem 'slack_mrkdwn'
