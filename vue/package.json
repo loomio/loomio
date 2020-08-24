@@ -72,7 +72,7 @@
     "vue-cli-plugin-coffee": "0.5.13",
     "vue-cli-plugin-pug": "^1.0.7",
     "vue-cli-plugin-vuetify": "latest",
-    "vue-template-compiler": "2.6.11",
+    "vue-template-compiler": "2.6.12",
     "vuetify-loader": "latest",
     "webpack": "4.44.1"
   }
