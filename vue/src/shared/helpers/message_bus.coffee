@@ -19,15 +19,15 @@ export initLiveUpdate = ->
   recordsSocket = io(recordsAddress, query: { channel_token: AppConfig.channel_token})
 
   recordsSocket.on 'update', (data) =>
-    console.log("socket.io update", data)
     roomScores[data.room] = data.score
+    console.log("socket.io update", {roomScores: roomScores}, data)
     Records.import(data.records)
 
   recordsSocket.on 'reconnect', (data) =>
-    console.log("socket.io reconnect")
-    recordsSocket.emit "hey", roomScores, (answer) =>
-      console.log("hey answer", answer)
-      # answer.forEach(records => Records.import(records))
+    console.log("socket.io reconnect", {roomScores: roomScores})
+    recordsSocket.emit "catchup", roomScores, (recordSets) =>
+      console.log("catchup reply", recordSets)
+      recordSets.forEach((set) => Records.import(set))
 
   recordsSocket.on 'disconnect', (data) =>
     # Flash.warning("server disconnected")
