@@ -13,7 +13,7 @@ EventBus.configure do |config|
       reader = DiscussionReader.for_model(event.discussion, event.real_user)
                                .update_reader(ranges: event.sequence_id,
                                               volume: :loud)
-      MessageChannelService.publish_models([reader], root: :discussions, user_id: event.real_user.id)
+      # MessageChannelService.publish_models([reader], root: :discussions, user_id: event.real_user.id)
     end
   end
 
