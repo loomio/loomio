@@ -197,7 +197,7 @@ GEM
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
-    friendly_id (5.3.0)
+    friendly_id (5.4.0)
       activerecord (>= 4.0.0)
     geocoder (1.6.3)
     globalid (0.4.2)
@@ -527,7 +527,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   fog-aws
-  friendly_id (~> 5.3.0)
+  friendly_id (~> 5.4.0)
   geocoder (= 1.6.3)
   google-cloud-translate (= 1.4.0)
   gravtastic
