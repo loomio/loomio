@@ -9,16 +9,30 @@ import EventBus       from '@/shared/services/event_bus'
 import { hardReload } from '@/shared/helpers/window'
 import { each } from 'lodash'
 
-export initLiveUpdate = ->
-  MessageBus.start()
-  # MessageBus.subscribe '/notices', (data) ->
-  #   console.log "subscribed to notices", data
-  # if data.version?
-  #   Flash.update 'global.messages.app_update', {version: data.version}, 'global.messages.reload', hardReload
-  # after sign in
-  MessageBus.callbackInterval = 500
-  if Session.isSignedIn()
-    MessageBus.subscribe "/records", (data) -> Records.import(data)
+import io from 'socket.io-client'
 
-  EventBus.$on 'signedIn', (user) =>
-    MessageBus.subscribe "/records", (data) -> Records.import(data)
+roomScores = {}
+recordsSocket = null
+
+export initLiveUpdate = ->
+  recordsAddress = [AppConfig.theme.channels_uri, 'records'].join('/')
+  recordsSocket = io(recordsAddress, query: { channel_token: AppConfig.channel_token})
+
+  recordsSocket.on 'update', (data) =>
+    roomScores[data.room] = data.score
+    console.log("socket.io update", {roomScores: roomScores}, data)
+    Records.import(data.records)
+
+  recordsSocket.on 'reconnect', (data) =>
+    console.log("socket.io reconnect", {roomScores: roomScores})
+    recordsSocket.emit "catchup", roomScores, (recordSets) =>
+      console.log("catchup reply", recordSets)
+      recordSets.forEach((set) => Records.import(set))
+
+  recordsSocket.on 'disconnect', (data) =>
+    # Flash.warning("server disconnected")
+    console.log("socket.io disconnect")
+
+  recordsSocket.on 'connect', (data) =>
+    # Flash.warning("server connected")
+    console.log("socket.io connect")

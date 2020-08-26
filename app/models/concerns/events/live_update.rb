@@ -7,6 +7,6 @@ module Events::LiveUpdate
   # send client live updates
   def notify_clients!
     return unless eventable and eventable.group
-    MessageChannelService.publish_models(self, group_ids: [eventable.group.id])
+    MessageChannelService.publish_models(self, group_id: eventable.group.id)
   end
 end

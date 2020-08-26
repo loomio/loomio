@@ -7,6 +7,7 @@ import Session from '@/shared/services/session'
 import { each, compact, truncate } from 'lodash'
 import openModal from '@/shared/helpers/open_modal'
 
+
 export default
   mixins: [AuthModalMixin]
   data: ->

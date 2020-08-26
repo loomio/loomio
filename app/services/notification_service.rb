@@ -4,6 +4,6 @@ class NotificationService
     notifications = user.notifications.includes(:actor, :user).order(created_at: :desc).limit(30)
 
     # alert clients (say, user's other tabs) that notifications have been read
-    MessageChannelService.publish_models(notifications, user_ids: [user.id])
+    MessageChannelService.publish_models(notifications, user_id: user.id)
   end
 end
