@@ -21,6 +21,7 @@ class MessageChannelService
       # puts "incrementing score:", room, score, data_str
       client.zadd("/records/#{room}", score, data_str.to_json)
       client.publish("/records", {room: room, records: data_str, score: score}.to_json)
+      client.zremrangebyscore("/records/#{room}", "-inf", (score - 200))
     end
   end
 end
