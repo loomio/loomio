@@ -14,7 +14,7 @@ en:
         invalid: is not a valid value
 
   errors:
-    clear_cache: "Please clear your browser cache. There is a problem loading Loomio."
+    clear_cache: "Loading problem detected. Hold shift and press reload, or clear your browser cache."
     400:
       title: Bad request
       body: Sorry, we weren't able to understand that request
