@@ -196,7 +196,7 @@ export default
       @updateFiles()
 
   beforeDestroy: ->
-    @editor.destroy()
+    @editor.destroy() if @editor
     @socket.destroy()
 
 </script>
