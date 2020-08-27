@@ -13,7 +13,7 @@ class MessageChannelService
   end
 
   def self.publish_serialized_records(data, group_id: nil, user_id: nil)
-    REDIS_POOL.with do |client|
+    CHANNELS_REDIS_POOL.with do |client|
       room = "user-#{user_id}" if user_id
       room = "group-#{group_id}" if group_id
       data_str = data.as_json.as_json
