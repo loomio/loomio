@@ -33,6 +33,8 @@ export default class Collaboration extends Extension {
       this.options.me.cursor = state.selection.anchor
       this.options.me.focused = state.selection.focused
       this.options.me.displayname = this.options.user.name
+      this.options.me.userId = this.options.user.id
+      this.options.me.clientID = this.options.clientID
       this.options.me.displaycolor = colorsList[(this.options.user.id % colorsList.length)]
 
 
@@ -58,14 +60,14 @@ export default class Collaboration extends Extension {
     this.updateLocalCursors = ({state, transaction}) => {
       const sendable = sendableSteps(state)
       if (sendable) {
-        for (var participantID in this.participants) {
-          var cursor = this.participants[participantID].cursor
+        for (var socketID in this.participants) {
+          var cursor = this.participants[socketID].cursor
           if (cursor != undefined &&
               sendable.steps[0].slice != undefined &&
               cursor >= sendable.steps[0].from
           ) {
             var gap = sendable.steps[0].from-sendable.steps[0].to
-            this.participants[participantID].cursor = cursor+gap+sendable.steps[0].slice.content.size
+            this.participants[socketID].cursor = cursor+gap+sendable.steps[0].slice.content.size
           }
         }
         this.options.updateCursors({participants: this.participants})
@@ -79,10 +81,11 @@ export default class Collaboration extends Extension {
   }
 
   get defaultOptions() {
+    let clientID = Math.floor(Math.random() * 0xFFFFFFFF)
     return {
       version: 0,
-      me: {displayname: ''},
-      clientID: Math.floor(Math.random() * 0xFFFFFFFF),
+      me: {},
+      clientID: clientID,
       debounce: 250,
       socket: null,
       onSendable: ({socket, sendable}) => {
@@ -107,34 +110,30 @@ export default class Collaboration extends Extension {
         const { state, view, schema } = this.editor
         this.participants = participants
 
-        //Set the decorations in the editor
-
         var clientID = this.options.clientID
         let props = {
           decorations(state) {
             var decos = []
-            if (participants != undefined) {
+            for (var socketID in (participants || [])) {
+              let dec = participants[socketID]
+              if (socketID == undefined) { continue; }
+              var cursorclass = 'cursor'
+              var displayname = dec.displayname
+              var displaycolor = 'style="background-color:'+dec.displaycolor+'; border-top-color:'+dec.displaycolor+'"'
 
-              for (const [id, dec] of Object.entries(participants)){
-                if (dec.cursor == undefined) { continue; }
-                var cursorclass = 'cursor'
-                var displayname = dec.displayname || dec.clientID
-                var displaycolor = 'style="background-color:'+dec.displaycolor+'; border-top-color:'+dec.displaycolor+'"'
-
-                const dom = document.createElement('div')
-                if (dec.focused==false) {
-                  cursorclass += ' inactive'
-                }
-
-                if (dec.clientID == clientID){
-                  cursorclass += ' me'
-                }
-
-                dom.innerHTML = '<span class="'+cursorclass+'" '+displaycolor+'>'+displayname+'</span>'
-                dom.style.display = 'inline'
-                dom.class = 'tooltip'
-                decos.push(Decoration.widget(dec.cursor, dom))
+              const dom = document.createElement('div')
+              if (dec.focused==false) {
+                cursorclass += ' inactive'
               }
+
+              if (dec.clientID == clientID){
+                cursorclass += ' me'
+              }
+
+              dom.innerHTML = '<span class="'+cursorclass+'" '+displaycolor+'>'+displayname+'</span>'
+              dom.style.display = 'inline'
+              dom.class = 'tooltip'
+              decos.push(Decoration.widget(dec.cursor, dom))
             }
             return DecorationSet.create(state.doc, decos);
           }

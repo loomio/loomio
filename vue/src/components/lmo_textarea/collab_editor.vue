@@ -76,7 +76,6 @@ export default
       .on('getCount', (count) => @setCount(count))
       .on('cursorupdate', (data) =>
         this.editor.extensions.options.collaboration.updateCursors(data)
-        # this.setParticipants(data.participants)
       )
 
   watch:
@@ -490,6 +489,7 @@ progress::-moz-progress-bar
   margin: 4px 0px
   outline: none
   overflow-y: scroll
+  overflow: visible
 
 .html-editor__textarea .ProseMirror:focus
   border-bottom: 1px solid var(--v-primary-base)
