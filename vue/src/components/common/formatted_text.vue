@@ -37,6 +37,16 @@ img.emoji
   margin: 0 .05em
 
 .lmo-markdown-wrapper
+  // Alignment
+  *[data-text-align="left"]
+    text-align: left !important
+  *[data-text-align="center"]
+    text-align: center !important
+  *[data-text-align="right"]
+    text-align: right !important
+  *[data-text-align="justify"]
+    text-align: justify !important
+    
   .cursor
     font-size: 12px
     font-weight: normal

@@ -465,16 +465,6 @@ div
   outline: none
 
 
-  // Alignment
-.ProseMirror
-  *[data-text-align="left"]
-    text-align: left !important
-  *[data-text-align="center"]
-    text-align: center !important
-  *[data-text-align="right"]
-    text-align: right !important
-  *[data-text-align="justify"]
-    text-align: justify !important
 
 progress
   -webkit-appearance: none
