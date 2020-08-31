@@ -123,7 +123,6 @@ export default
           }),
           new Collaboration({
             socket: @socket,
-            clientID: @socket.id
             user: Session.user()
             version: version
             debounce: 250
