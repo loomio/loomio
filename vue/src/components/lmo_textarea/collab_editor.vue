@@ -10,11 +10,19 @@ import { convertToMd } from '@/shared/services/format_converter'
 
 import { Editor, EditorContent, EditorMenuBar } from 'tiptap'
 
-import { Blockquote, CodeBlock, HardBreak, Heading, HorizontalRule,
+import { Blockquote, CodeBlock, HardBreak, HorizontalRule,
   OrderedList, BulletList, ListItem, Table, TableHeader, TableCell,
   TableRow, TodoList, Bold, Code, Italic, Link, Strike, Underline,
   History, Mention, Placeholder, TrailingNode } from 'tiptap-extensions'
 import Collaboration from '@/shared/tiptap_extentions/collaboration.js'
+
+import ForeColor from '@/shared/tiptap_extentions/fore_color'
+import BackColor from '@/shared/tiptap_extentions/back_color'
+import FormatClear from '@/shared/tiptap_extentions/format_clear'
+import Align from '@/shared/tiptap_extentions/align'
+import Alignment from '@/shared/tiptap_extentions/alignment'
+import Paragraph from '@/shared/tiptap_extentions/paragraph'
+import Heading from '@/shared/tiptap_extentions/heading'
 
 import Iframe from './iframe'
 import TodoItem from './todo_item'
@@ -28,6 +36,8 @@ import { CommonMentioning, HtmlMentioning, MentionPluginConfig } from './mention
 import SuggestionList from './suggestion_list'
 import Attaching from './attaching.coffee'
 import {compact} from 'lodash'
+import TextHighlightBtn from './text_highlight_btn'
+import TextAlignBtn from './text_align_btn'
 
 import io from 'socket.io-client'
 
@@ -47,6 +57,8 @@ export default
     EditorMenuBar: EditorMenuBar
     FilesList: FilesList
     SuggestionList: SuggestionList
+    TextHighlightBtn: TextHighlightBtn
+    TextAlignBtn: TextAlignBtn
 
   data: ->
     loading: true
@@ -115,6 +127,12 @@ export default
           new Underline(),
           new History(),
           new Iframe(),
+          new ForeColor(),
+          new BackColor(),
+          new FormatClear(),
+          new Align(),
+          new Alignment(),
+          new Paragraph(),
           new Placeholder({
             emptyClass: 'is-empty',
             emptyNodeText: @placeholder,
@@ -201,10 +219,7 @@ export default
 
 <template lang="pug">
 div
-  //- | channel: {{tiptapAddress()}}
-  template(v-if="editor && !loading")
-    div.count {{ count }} {{ count === 1 ? 'user' : 'users' }} connected
-  em(v-else)
+  template(v-if="!editor || loading")
     | Connecting to socket server …
   .editor.mb-3
     editor-content.html-editor__textarea(ref="editor" :editor='editor').lmo-markdown-wrapper
@@ -261,7 +276,7 @@ div
               emoji-picker(:insert="emojiPicked")
 
             //- headings menu
-            v-menu(v-if="!expanded")
+            v-menu
               template(v-slot:activator="{ on, attrs }")
                 v-btn.drop-down-button(icon v-on="on" v-bind="attrs" :title="$t('formatting.heading_size')")
                   v-icon mdi-format-size
@@ -277,20 +292,31 @@ div
                     v-icon mdi-format-pilcrow
                   v-list-item-title(v-t="'formatting.paragraph'")
 
-            template(v-if="expanded")
-              v-btn(icon @click='commands.paragraph()' :outlined="isActive.paragraph()" :title="$t('formatting.paragraph')")
-                v-icon mdi-format-pilcrow
-              template(v-for="i in 3")
-                v-btn(icon @click='commands.heading({ level: i })' :outlined='isActive.heading({level: i})' :title="$t('formatting.heading'+i)")
-                  v-icon {{'mdi-format-header-'+i}}
+            //- template(v-if="expanded")
+            //-   v-btn(icon @click='commands.paragraph()' :outlined="isActive.paragraph()" :title="$t('formatting.paragraph')")
+            //-     v-icon mdi-format-pilcrow
+            //-   template(v-for="i in 3")
+            //-     v-btn(icon @click='commands.heading({ level: i })' :outlined='isActive.heading({level: i})' :title="$t('formatting.heading'+i)")
+            //-       v-icon {{'mdi-format-header-'+i}}
 
             //- bold
+
             v-btn(icon @click='commands.bold' :outlined="isActive.bold()" :title="$t('formatting.bold')")
               v-icon mdi-format-bold
 
             //- italic
-            v-btn(icon @click='commands.italic' :outlined="isActive.italic()" :title="$t('formatting.italicize')")
+            v-btn(icon v-if="expanded" @click='commands.italic' :outlined="isActive.italic()" :title="$t('formatting.italicize')")
               v-icon mdi-format-italic
+
+            //- strikethrought
+            v-btn(icon v-if="expanded" :outlined="isActive.strike()", @click='commands.strike' :title="$t('formatting.strikethrough')")
+              v-icon mdi-format-strikethrough
+            //- underline
+            v-btn(icon v-if="expanded" :outlined="isActive.underline()", @click='commands.underline' :title="$t('formatting.underline')")
+              v-icon mdi-format-underline
+
+            text-highlight-btn(v-if="expanded" :editor="editor" :commands="commands")
+            text-align-btn(v-if="expanded" :editor="editor" :commands="commands")
 
             //- list menu (always a menu)
             v-menu(v-if="expanded")
@@ -326,12 +352,6 @@ div
                   v-card-actions
                     v-spacer
                     v-btn(color="primary" @click="setIframeUrl(commands.iframe)" v-t="'common.action.apply'")
-              //- strikethrought
-              v-btn(icon :outlined="isActive.strike()", @click='commands.strike' :title="$t('formatting.strikethrough')")
-                v-icon mdi-format-strikethrough
-              //- underline
-              v-btn(icon :outlined="isActive.underline()", @click='commands.underline' :title="$t('formatting.underline')")
-                v-icon mdi-format-underline
               //- blockquote
               v-btn(icon :outlined="isActive.blockquote()", @click='commands.blockquote' :title="$t('formatting.blockquote')")
                 v-icon mdi-format-quote-close
@@ -386,6 +406,7 @@ div
 //     height: 0.4rem
 //     border-radius: 50%
 //     margin-right: 0.3rem
+
 
 .cursor
   color: #222
@@ -442,6 +463,18 @@ div
 
 .ProseMirror
   outline: none
+
+
+  // Alignment
+.ProseMirror
+  *[data-text-align="left"]
+    text-align: left !important
+  *[data-text-align="center"]
+    text-align: center !important
+  *[data-text-align="right"]
+    text-align: right !important
+  *[data-text-align="justify"]
+    text-align: justify !important
 
 progress
   -webkit-appearance: none

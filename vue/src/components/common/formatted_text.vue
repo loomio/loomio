@@ -37,6 +37,11 @@ img.emoji
   margin: 0 .05em
 
 .lmo-markdown-wrapper
+  .cursor
+    font-size: 12px
+    font-weight: normal
+    line-height: 20px
+
   span.mention
     color: var(--v-anchor-base)
 
@@ -50,26 +55,23 @@ img.emoji
     margin-bottom: 0
 
   h1
-    line-height: 2.75rem
-    font-size: 1.6rem
-    font-weight: 400
+    line-height: 3rem
+    font-size: 3rem
+    font-weight: 300
     letter-spacing: .0125em
-    margin-top: 0.5em
 
   h2
-    line-height: 2rem
-    font-size: 1.2rem
-    font-weight: 400
-    letter-spacing: .0125em
-    margin-bottom: 0.75em
+    font-size: 2.125rem
+    font-weight: 200
+    letter-spacing: 0.015625rem
 
   h3
-    line-height: 2.5rem
-    font-size: 1rem
-    font-weight: 700
-    letter-spacing: .009375em
+    font-size: 1.5rem
+    font-weight: 400
 
   p
+    line-height: 1.35em
+    margin-top: 8px
     margin-bottom: 12px
 
   p:last-child
@@ -81,7 +83,6 @@ img.emoji
     margin: 16px 0
 
   word-wrap: break-word
-
 
   img
     aspect-ratio: attr(width) / attr(height)

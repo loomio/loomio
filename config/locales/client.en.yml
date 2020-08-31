@@ -740,10 +740,17 @@ en:
     heading1: Heading 1
     heading2: Heading 2
     heading3: Heading 3
+    left_align: Left align
+    center_align: Center align
+    right_align: Right align
+    justify_align: Justify align
     paragraph: Paragraph
     bullet_list: List
     number_list: Numbered list
     check_list: Checklist
+    reset: Reset
+    text_color: Text color
+    background_color: Background color
     quote: Quote
     embed: Embed video
     divider: Divider
