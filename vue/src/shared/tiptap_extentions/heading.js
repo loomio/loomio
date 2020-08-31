@@ -18,9 +18,9 @@ function getUuid () {
 function getAttrs (dom) {
   const attrs = getParagraphNodeAttrs(dom)
   const id = dom.getAttribute('id')
-  const level = parseInt(dom.getAttribute('level'), 10) || 0
+  // const level = parseInt(dom.getAttribute('level'), 10) || 0
   attrs.id = id
-  attrs.level = level
+  // attrs.level = level
   return attrs
 }
 
@@ -30,7 +30,7 @@ function toDOM (node) {
   const level = node.attrs.level || 1
   dom[0] = 'h'.concat(node.attrs.level)
   dom[1].id = id
-  dom[1].level = level
+  // dom[1].level = level
 
   node.attrs.id = id
 

@@ -40,15 +40,15 @@ export default
 <template lang="pug">
 v-menu
   template(v-slot:activator="{ on, attrs }")
-    div.rounded-lg.color-picker-btn(:style="{'background-color': activeBack}" :class="{'swatch--white': activeFore == '#ffffff'}")
+    div.rounded-lg.color-picker-btn(:style="{'background-color': activeBack}")
       v-btn.drop-down-button(icon v-on="on" v-bind="attrs")
         v-icon(:color="activeFore") mdi-palette
-        v-icon.menu-down-arrow mdi-menu-down
+        v-icon(:color="activeFore").menu-down-arrow mdi-menu-down
   v-card.color-picker
     .caption(v-t="'formatting.text_color'")
-    .swatch(v-for="color in foreColors" :class="{'swatch--white': color== '#ffffff'}" :style="{'background-color': color}" @click="onSelectFore(color)") &nbsp;
+    .swatch(v-for="color in foreColors" :class="{'swatch--white': color == '#ffffff', 'swatch--selected': color == activeFore }" :style="{'background-color': color}" @click="onSelectFore(color)") &nbsp;
     .caption(v-t="'formatting.background_color'")
-    .swatch(v-for="color in backColors" :class="{'swatch--white': color== '#ffffff'}" :style="{'background-color': color}" @click="onSelectBack(color)") &nbsp;
+    .swatch(v-for="color in backColors" :class="{'swatch--white': color == '#ffffff', 'swatch--selected': color == activeBack }" :style="{'background-color': color}" @click="onSelectBack(color)") &nbsp;
     .text-center
       v-btn(x-small outlined @click="commands.formatClear" v-t="'formatting.reset'")
 </template>
@@ -67,6 +67,9 @@ v-menu
 
 .swatch--white
   border: 1px solid #ddd
+
+.swatch--selected
+  border: 1px dotted #000
 
 .swatch:hover
   border: 1px solid grey

@@ -46,7 +46,7 @@ img.emoji
     text-align: right !important
   *[data-text-align="justify"]
     text-align: justify !important
-    
+
   .cursor
     font-size: 12px
     font-weight: normal
@@ -56,7 +56,7 @@ img.emoji
     color: var(--v-anchor-base)
 
   blockquote, h1, h2, h3, ol, p, pre
-    margin: 1rem 0
+    margin: 0.75rem 0
 
   blockquote:first-child, h1:first-child, h2:first-child, h3:first-child, ol:first-child, p:first-child, pre:first-child, ul:first-child
     margin-top: 0
@@ -65,7 +65,7 @@ img.emoji
     margin-bottom: 0
 
   h1
-    line-height: 3rem
+    line-height: 3.56rem
     font-size: 3rem
     font-weight: 300
     letter-spacing: .0125em

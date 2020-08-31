@@ -116,7 +116,7 @@ export default class Collaboration extends Extension {
             var decos = []
             for (var socketID in (participants || [])) {
               let dec = participants[socketID]
-              if (socketID == undefined) { continue; }
+              if (socketID == undefined || dec.clientID == clientID) { continue; }
               var cursorclass = 'cursor'
               var displayname = dec.displayname
               var displaycolor = 'style="background-color:'+dec.displaycolor+'; border-top-color:'+dec.displaycolor+'"'
@@ -124,10 +124,6 @@ export default class Collaboration extends Extension {
               const dom = document.createElement('div')
               if (dec.focused==false) {
                 cursorclass += ' inactive'
-              }
-
-              if (dec.clientID == clientID){
-                cursorclass += ' me'
               }
 
               dom.innerHTML = '<span class="'+cursorclass+'" '+displaycolor+'>'+displayname+'</span>'
