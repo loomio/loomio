@@ -116,7 +116,7 @@ export default class Collaboration extends Extension {
             var decos = []
             for (var socketID in (participants || [])) {
               let dec = participants[socketID]
-              if (socketID == undefined || dec.clientID == clientID) { continue; }
+              if (socketID == undefined || dec.clientID == clientID || !dec.displayname) { continue; }
               var cursorclass = 'cursor'
               var displayname = dec.displayname
               var displaycolor = 'style="background-color:'+dec.displaycolor+'; border-top-color:'+dec.displaycolor+'"'
