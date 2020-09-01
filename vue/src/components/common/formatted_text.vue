@@ -37,6 +37,7 @@ img.emoji
   margin: 0 .05em
 
 .lmo-markdown-wrapper
+  line-height: 1.4
   // Alignment
   *[data-text-align="left"]
     text-align: left !important
@@ -56,8 +57,11 @@ img.emoji
   span.mention
     color: var(--v-anchor-base)
 
-  blockquote, h1, h2, h3, ol, p, pre
+  blockquote, ol, p, pre
     margin: 0.5rem 0
+
+  h1, h2, h3
+    margin-top: 1rem
 
   blockquote:first-child, h1:first-child, h2:first-child, h3:first-child, ol:first-child, p:first-child, pre:first-child, ul:first-child
     margin-top: 0
@@ -66,8 +70,7 @@ img.emoji
     margin-bottom: 0
 
   h1
-    font-size: 2.125rem
-    line-height: 2.75rem
+    font-size: 2.2rem
     font-weight: 400
     letter-spacing: -0.06rem
 
@@ -76,24 +79,14 @@ img.emoji
 
   h2
     font-size: 1.5rem
-    line-height: 2rem
     font-weight: 400
 
   h2 strong
     font-weight: 500
 
   h3
-    font-size: 1.15rem
-    line-height: 1.7rem
-    font-weight: 500
-
-  h3 strong
+    font-size: 1.125rem
     font-weight: 700
-
-  p
-    line-height: 1.35em
-    margin-top: 8px
-    margin-bottom: 12px
 
   strong
     font-weight: 700
