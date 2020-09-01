@@ -38,7 +38,7 @@ img.emoji
 
 .lmo-markdown-wrapper
   line-height: 1.4
-  // Alignment
+
   *[data-text-align="left"]
     text-align: left !important
   *[data-text-align="center"]

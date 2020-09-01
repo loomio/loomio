@@ -57,7 +57,7 @@ export default
 
 <template lang="pug">
 v-main
-  v-container.inbox-page.thread-preview-collection__container.max-width-640(grid-list-lg)
+  v-container.inbox-page.thread-preview-collection__container.max-width-800(grid-list-lg)
     h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'inbox_page.unread_threads'")
     section.dashboard-page__loading(v-if='unreadCount == 0 && loading' aria-hidden='true')
       .thread-previews-container
