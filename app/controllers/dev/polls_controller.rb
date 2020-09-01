@@ -9,6 +9,7 @@ class Dev::PollsController < Dev::NightwatchController
                       anonymous: !!params[:anonymous],
                       hide_results_until_closed: !!params[:hide_results_until_closed],
                       admin: !!params[:admin],
+                      guest: !!params[:guest],
                       standalone: !!params[:standalone]
                     })
 
