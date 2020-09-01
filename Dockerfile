@@ -25,7 +25,7 @@ RUN apt-get install -y libxml2-dev libxslt1-dev
 # RUN apt-get install -y python python-dev python-pip python-virtualenv
 
 # install node
-RUN curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 RUN apt-get install -y nodejs
 
 RUN gem install bundler
@@ -35,14 +35,6 @@ WORKDIR /loomio
 ADD . /loomio
 COPY config/database.docker.yml /loomio/config/database.yml
 RUN bundle install
-
-# disable loomio_onboarding plugin
-ENV DISABLED_PLUGINS loomio_onboarding
-
-WORKDIR /loomio/client
-RUN npm install
-RUN npm rebuild node-sass
-WORKDIR /loomio
 
 WORKDIR /loomio/vue
 RUN npm install

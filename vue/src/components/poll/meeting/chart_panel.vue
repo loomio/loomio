@@ -3,7 +3,7 @@ import EventBus from '@/shared/services/event_bus'
 import AppConfig from '@/shared/services/app_config'
 import Session from '@/shared/services/session'
 
-import {sum, map, sortBy, find, compact, uniq} from 'lodash-es'
+import {sum, map, sortBy, find, compact, uniq} from 'lodash'
 
 export default
   props:

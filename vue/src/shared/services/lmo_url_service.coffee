@@ -1,5 +1,5 @@
 import AppConfig from '@/shared/services/app_config'
-import {keys, map} from 'lodash-es'
+import {keys, map} from 'lodash'
 
 export default class LmoUrlService
   @shareableLink: (model) ->

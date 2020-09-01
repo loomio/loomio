@@ -4,7 +4,7 @@ import Session from '@/shared/services/session'
 import EventBus from '@/shared/services/event_bus'
 import Flash  from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
-import { map, orderBy } from 'lodash-es'
+import { map, orderBy } from 'lodash'
 
 export default
   props:

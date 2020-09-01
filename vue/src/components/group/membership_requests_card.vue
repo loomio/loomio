@@ -1,7 +1,7 @@
 <script lang="coffee">
 import Records        from '@/shared/services/records'
 import AbilityService from '@/shared/services/ability_service'
-import { slice, orderBy } from 'lodash-es'
+import { slice, orderBy } from 'lodash'
 
 export default
   props:

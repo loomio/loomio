@@ -14,7 +14,7 @@ en:
         invalid: is not a valid value
 
   errors:
-    clear_cache: "Please clear your browser cache. There is a problem loading Loomio."
+    clear_cache: "Loading problem detected. Hold shift and press reload, or clear your browser cache."
     400:
       title: Bad request
       body: Sorry, we weren't able to understand that request
@@ -359,7 +359,7 @@ en:
       <ul>
         <li>To notify a specific person, type @ followed by their name</li>
         <li>Drag and drop pictures and attachments or click the paperclip icon</li>
-        <li>See 5 ways to use threads for some ideas and tips</li>
+        <li>See <a href="https://help.loomio.org/en/guides/5_ways_to_use_threads/" target="_blank">5 ways to use threads</a> for some ideas and tips</li>
       </ul>
 
       If you have any questions, see [Loomio Help](http://help.loomio.org).

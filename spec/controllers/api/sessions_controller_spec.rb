@@ -2,9 +2,33 @@ require 'rails_helper'
 
 describe API::SessionsController do
   describe 'create' do
-    let(:user) { create :user, email: "verified@example.com", email_verified: true }
+    let(:user) { create :user, email: "verified@example.com", email_verified: true, password: nil }
     let(:unverified_user) { create :user, email_verified: false, email: "unverified@example.com" }
     let(:token) { create :login_token }
+
+    describe 'via password' do
+      before do
+        request.env["devise.mapping"] = Devise.mappings[:user]
+      end
+
+      it 'signs in with password' do
+        user.update(password: "s3curepassword123")
+        post :create, params: {user: {email: "verified@example.com", password: "s3curepassword123"}}
+        expect(response.status).to eq 200
+        json = JSON.parse response.body
+        expect(json['current_user_id']).to eq user.id
+      end
+
+      it 'does not sign in a blank password' do
+        post :create, params: {user: {email: "verified@example.com", password: ""}}
+        expect(response.status).to eq 401
+      end
+
+      it 'does not sign in a nil password' do
+        post :create, params: {user: {email: "verified@example.com", password: nil}}
+        expect(response.status).to eq 401
+      end
+    end
 
     describe 'via token' do
       before do

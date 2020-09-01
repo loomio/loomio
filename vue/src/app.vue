@@ -4,8 +4,9 @@ import AuthModalMixin from '@/mixins/auth_modal'
 import EventBus from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
-import { each, compact, truncate } from 'lodash-es'
+import { each, compact, truncate } from 'lodash'
 import openModal from '@/shared/helpers/open_modal'
+
 
 export default
   mixins: [AuthModalMixin]
@@ -69,8 +70,8 @@ v-app.app-is-booted
 </template>
 
 <style lang="sass">
-$mdi-font-path: '/fonts/mdi'
-@import '@mdi/font/scss/materialdesignicons.scss'
+// $mdi-font-path: '/fonts/mdi'
+// @import '@mdi/font/scss/materialdesignicons.scss'
 
 h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus
   outline: 0

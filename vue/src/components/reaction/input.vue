@@ -1,5 +1,5 @@
 <script lang="coffee">
-import { capitalize } from 'lodash-es'
+import { capitalize } from 'lodash'
 import Session from '@/shared/services/session'
 import Records from '@/shared/services/records'
 

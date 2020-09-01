@@ -493,12 +493,15 @@ en:
   user_dropdown:
     pin_sidebar: "Pin sidebar"
     unpin_sidebar: "Unpin sidebar"
+    enable_beta_features: "Enable beta features"
+    disable_beta_features: "Disable beta features"
     button_label: 'User menu'
     edit_profile: 'Edit profile'
     email_settings: 'Notification settings'
     help: 'Help'
     contact_site_name: 'Contact {{site_name}}'
     sign_out: 'Sign out'
+    beta_collab: "Real-time collaborative editing on discussions and proposals, auto saved draft comments"
 
   membership_card:
     group_members: "Group members"
@@ -741,10 +744,17 @@ en:
     heading1: Heading 1
     heading2: Heading 2
     heading3: Heading 3
+    left_align: Left align
+    center_align: Center align
+    right_align: Right align
+    justify_align: Justify align
     paragraph: Paragraph
     bullet_list: List
     number_list: Numbered list
     check_list: Checklist
+    reset: Reset
+    text_color: Text color
+    background_color: Background color
     quote: Quote
     embed: Embed video
     divider: Divider

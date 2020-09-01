@@ -1,5 +1,5 @@
 <script lang="coffee">
-import { startCase, compact } from 'lodash-es'
+import { startCase, compact } from 'lodash'
 import parseISO from 'date-fns/parseISO'
 import AbilityService from '@/shared/services/ability_service'
 

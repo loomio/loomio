@@ -12,8 +12,21 @@ class API::BootController < API::RestfulController
   def user_payload
     Boot::User.new(current_user,
                    identity: serialized_pending_identity,
-                   flash: flash).payload
+                   flash: flash,
+                   channel_token: set_channel_token).payload
   end
+
+  def set_channel_token
+    token = SecureRandom.hex
+    CHANNELS_REDIS_POOL.with do |client|
+      client.set("/current_users/#{token}",
+        {name: current_user.name,
+         group_ids: current_user.group_ids,
+         id: current_user.id}.to_json)
+    end
+    token
+  end
+
   def current_user
     restricted_user || super
   end

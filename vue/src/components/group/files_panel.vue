@@ -6,7 +6,7 @@ import AbilityService    from '@/shared/services/ability_service'
 import Session           from '@/shared/services/session'
 import AttachmentService from '@/shared/services/attachment_service'
 
-import { isEmpty, intersection, debounce, filter, some, orderBy } from 'lodash-es'
+import { isEmpty, intersection, debounce, filter, some, orderBy } from 'lodash'
 
 export default
   data: ->

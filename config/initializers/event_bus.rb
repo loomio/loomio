@@ -13,7 +13,7 @@ EventBus.configure do |config|
       reader = DiscussionReader.for_model(event.discussion, event.real_user)
                                .update_reader(ranges: event.sequence_id,
                                               volume: :loud)
-      MessageChannelService.publish_models([reader], root: :discussions, user_ids: [event.real_user.id])
+      # MessageChannelService.publish_models([reader], root: :discussions, user_id: event.real_user.id)
     end
   end
 
@@ -32,7 +32,7 @@ EventBus.configure do |config|
   config.listen('discussion_mark_as_read',
                 'discussion_dismiss',
                 'discussion_mark_as_seen') do |reader|
-    MessageChannelService.publish_models(reader, serializer: DiscussionReaderSerializer, root: :discussions, user_ids: [reader.user_id])
+    MessageChannelService.publish_models(reader, serializer: DiscussionReaderSerializer, root: :discussions, user_id: reader.user_id)
   end
 
   # update discussion or comment versions_count when title or description edited

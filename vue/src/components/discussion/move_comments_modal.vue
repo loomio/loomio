@@ -5,7 +5,7 @@ import AbilityService from '@/shared/services/ability_service'
 import Flash   from '@/shared/services/flash'
 import EventBus          from '@/shared/services/event_bus'
 import { onError } from '@/shared/helpers/form'
-import { sortBy, debounce } from 'lodash-es'
+import { sortBy, debounce } from 'lodash'
 
 export default
   data: ->

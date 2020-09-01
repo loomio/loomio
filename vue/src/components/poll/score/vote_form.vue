@@ -3,7 +3,7 @@ import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
-import { head, filter, map, sortBy, isEqual } from 'lodash-es'
+import { head, filter, map, sortBy, isEqual } from 'lodash'
 
 export default
   props:

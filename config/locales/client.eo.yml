@@ -3,9 +3,15 @@ eo:
     group_progress_card:
       title: Ŝalti vian grupon
       activities:
+        set_description: Grupa priskribo
+        set_logo: Elekti emblemon por via grupo
+        set_cover_photo: Elekti foton por la ĉefpaĝo de via grupo
         invite_people_in: Inviti homojn
+        start_thread: Komenci diskuton
         make_decision: Komenci decidon
+      learn_more: 'Pli da informoj pri la funkciado de Loomio '
       celebration_message: Bone farite!  Via grupo nun estas preta! 🎉
+      dismiss_this_card: Ignori tiun ĉi karton
   plan_names:
     free: Senpaga
     trial: Provo
@@ -16,9 +22,25 @@ eo:
     yearly: Jare
   current_plan_button:
     upgrade: Ĝisdatigi
+    free_trial: Senpaga provo. {{days}} tagoj ankoraŭ restas.
+    trial_expired: Via provo finiĝis. Aĉetu la pagitan version por daŭre uzi Loomion.
+    tooltip: "Niaj prezoj estas bonegaj! Aĉetu la pagitan version hodiaŭ kaj ĝuu ĉion, kion Loomio povas provizi por via grupo."
+    was_gift_trial: "Via grupo uzas Loomio senpage ekde  {{createdDate}}. Ne eblas plu provizi senpagan servon. Bonvlu aĉeti la pagitan version por daŭre uzi Loomion. <a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>Legu pli.</a>"
+    was_gift_remaining: "{{days}} tagoj restas."
+    was_gift_expired: "Via senpaga servo jam finiĝis."
   subscription_status:
     members: "Membroj"
+    active_members: "Aktivaj membroj"
+    max_threads: "Maksimumo da fadenoj"
+    max_members: "Maksimumo da membroj"
+    expires_at: "Finiĝas"
+    renews_at: "Renoviĝas"
+    referral_code: "Rekomenda kodo"
+    chargify_link: "Pagejo"
+    referral_code_help: "Donu al amiko rabaton, havigu al vi iom da rimedoj!"
+    manage_payment_details: "Administri detalojn pri pago"
   loomio_tags:
+    all_tags: Ĉiuj etikedoj
     tags: Etikedoj
     apply_tags: Alkroĉi etikedon
     new_tag: Krei etikedon
@@ -30,6 +52,13 @@ eo:
     modal_destroy_title: Forigi etikedon
     destroy_tag: Forigi etikedon
     destroy_helptext: Tiu ĉi ago forigos tiun ĉi etikedon kaj ankaŭ forigos ĝin de ĉiuj fadenoj en la grupo. Ĉu vi certas?
+    helptext: Etikedoj permesas al vi grupigi fadenojn por facile trovi ilin poste.
+    discussions_count_singular: ({{count}} fadeno)
+    discussions_count_plural: ({{count}} fadenoj)
+    tag_created: Etikedo konservita
+    tag_destroyed: Etikedo forigita
+    tags_marked: Fadenoj markitaj kiel  '{{name}}' en {{groupName}}
+    no_tags_present: Neniu fadeno kun tiu etikedo estis trovita. Bonvolu provi alian.
   reactions:
     slight_smile: Ŝati
     heart: Ŝategi
@@ -58,10 +87,34 @@ eo:
     pray: Preĝe
     fingers_crossed: Bonŝancon!
     v: Pacon!
+    metal: Metalo
     ok_hand: Bone!
+    wave: Svingi manon
+    thumbsup: Mi aprobas!
+    thumbsdown: Mi malaprobas!
   poll_types:
+    proposal: propono
+    count: kontrolo
+    poll: enketo
     dot_vote: punkto-voĉdonado
+    meeting: tempa enketo
+    ranked_choice: ordigo laŭ prefero
+    score: poenta enketo
+  new_poll_types:
+    proposal: propono
+    count: kiomo
+    poll: elekti
+    score: poentaro
+    ranked_choice: ordo
+    dot_vote: asigni
+    meeting: tempa enketo
+  timezones:
+    local: Loka tempo ({{value}})
   common:
+    no_results_found: Neniu rezulto trovita
+    view: Vidi
+    history: Historio
+    option: Elekto
     you: Vi
     expand: Klarigu!
     all_day: Tut-tage
@@ -70,7 +123,9 @@ eo:
     not_found: Ne trovebla
     time_zone: Horzono
     local_time: Loka tempo
-    confirm_discard_changes: Ĉu tamen ne fari la ŝanĝojn?
+    attachments: Alkroĉaĵoj
+    active_time_ago: Lastafoje aktiva  {{time_ago}}
+    confirm_discard_changes: Ĉu forigi la ŝanĝojn?
     time:
       am: atm
       pm: ptm
@@ -80,11 +135,14 @@ eo:
     notification_volume: 'Sciiga laŭteco'
     group: 'Grupo'
     groups: 'Grupoj'
+    organization: "Organizaĵo"
+    organizations: "Organizaĵoj"
     threads: 'Fadenoj'
     decisions: 'Decidoj'
     settings: 'Agordoj'
     help: 'Helpo'
     anonymous: Anonima
+    required: Nepra
     email_address: Retadreso
     privacy:
       privacy: 'Privateco'
@@ -244,6 +302,7 @@ eo:
     translate_stance: Traduki voĉdonon
     delete_comment: Forigi la komenton
     edited: Redaktita
+    history: Historio
     close_thread: Fermigi fadenon
   logo_photo_form:
     heading: 'Nova emblemo de grupo'
@@ -403,6 +462,8 @@ eo:
     participant_email: Retadreso
     start_poll: Komenci decidon
     save_changes: Konservi
+  poll_common_attachment_form:
+    label: Alkroĉaĵoj
   discussions_panel:
     open: Malfermita
     all: Ĉiuj

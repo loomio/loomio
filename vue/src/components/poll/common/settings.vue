@@ -1,5 +1,5 @@
 <script lang="coffee">
-import { compact, snakeCase, kebabCase } from 'lodash-es'
+import { compact, snakeCase, kebabCase } from 'lodash'
 import { fieldFromTemplate } from '@/shared/helpers/poll'
 
 export default

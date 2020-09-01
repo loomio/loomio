@@ -1,4 +1,4 @@
-import {capitalize, uniq, union, filter, map, includes } from 'lodash-es'
+import {capitalize, uniq, union, filter, map, includes } from 'lodash'
 
 export default new class HasDocuments
   apply: (model, opts = {}) ->

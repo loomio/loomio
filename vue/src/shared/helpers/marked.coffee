@@ -1,6 +1,6 @@
 # import emojione from 'emojione'
 import marked from 'marked'
-import { clone, kebabCase } from 'lodash-es'
+import { clone, kebabCase } from 'lodash'
 import { colonsToUnicode } from '@/shared/helpers/emojis'
 
 # _parse = marked.parse
