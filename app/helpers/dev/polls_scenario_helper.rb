@@ -10,7 +10,7 @@ module Dev::PollsScenarioHelper
     actor = group.admins.first
     user  = saved(fake_user(time_zone: "America/New_York"))
 
-    group.add_member! user
+    group.add_member! user if !params[:guest]
     group.add_admin! user if params[:admin]
 
     poll = fake_poll(group: group,
