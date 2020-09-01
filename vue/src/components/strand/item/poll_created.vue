@@ -3,7 +3,7 @@ import PollService    from '@/shared/services/poll_service'
 import AbilityService from '@/shared/services/ability_service'
 import EventBus       from '@/shared/services/event_bus'
 import EventService from '@/shared/services/event_service'
-import { pick, assign } from 'lodash-es'
+import { pick, assign } from 'lodash'
 
 export default
   components:

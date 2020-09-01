@@ -9,7 +9,7 @@ import StanceCreated from '@/components/strand/item/stance_created.vue'
 import OutcomeCreated from '@/components/strand/item/outcome_created.vue'
 import OtherKind from '@/components/strand/item/other_kind.vue'
 import RangeSet from '@/shared/services/range_set'
-import { camelCase, first, last, some } from 'lodash-es'
+import { camelCase, first, last, some } from 'lodash'
 
 export default
   name: 'strand-list'

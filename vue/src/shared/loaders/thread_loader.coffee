@@ -1,5 +1,5 @@
 import Records from '@/shared/services/records'
-import { isNumber, uniq, compact, orderBy, camelCase } from 'lodash-es'
+import { isNumber, uniq, compact, orderBy, camelCase } from 'lodash'
 import Vue from 'vue'
 import RangeSet         from '@/shared/services/range_set'
 
