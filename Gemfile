@@ -49,6 +49,7 @@ gem 'discriminator', '~> 0.1.1'
 gem 'icalendar'
 gem 'rack-attack'
 gem 'bootsnap', require: false
+gem 'redis-objects'
 gem 'redis-rails'
 gem 'hiredis'
 gem 'connection_pool'

@@ -1,4 +1,7 @@
 class Event < ApplicationRecord
+  include Redis::Objects
+  lock :creation
+
   include CustomCounterCache::Model
   include HasTimeframe
   extend HasCustomFields
@@ -11,9 +14,7 @@ class Event < ApplicationRecord
   has_many :children, (-> { where("discussion_id is not null") }), class_name: "Event", foreign_key: :parent_id
   set_custom_fields :pinned_title
 
-  before_create :set_parent_and_depth
-  before_create :set_sequence_id
-  before_create :set_position_and_position_key
+  around_save :set_sequences, if: :discussion_id
 
   after_create  :update_sequence_info!
   after_destroy :update_sequence_info!
@@ -63,6 +64,14 @@ class Event < ApplicationRecord
     }.merge(args))
   end
 
+  def set_sequences
+    set_parent_and_depth
+    Event.obtain_lock(:creation, self.discussion_id) do
+      set_sequence_id
+      set_position_and_position_key
+      yield
+    end
+  end
   def user
     super || AnonymousUser.new
   end
