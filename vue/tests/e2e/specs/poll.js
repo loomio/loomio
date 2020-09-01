@@ -329,6 +329,18 @@ module.exports = {
     page.expectFlash("Success, proposal added to thread!")
   },
 
+  'can_invite_non_member_to_anonymous_proposal_in_a_group': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('polls/test_poll_scenario?poll_type=proposal&scenario=poll_created&email=1&anonymous=1&guest=1')
+    page.click('.poll-mailer__poll-title')
+    page.click('.poll-proposal-vote-form__button')
+    page.fillIn('.html-editor__textarea .ProseMirror', "reason")
+    page.click('.poll-common-vote-form__submit')
+    page.expectFlash('Vote created')
+    // page.click('.dismiss-modal-button')
+  },
+
   // 'can_edit_a_vote': (test) => {
   //   page = pageHelper(test)
   //
