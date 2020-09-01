@@ -65,25 +65,22 @@ img.emoji
   blockquote:last-child, h1:last-child, h2:last-child, h3:last-child, ol:last-child, p:last-child, pre:last-child, ul:last-child
     margin-bottom: 0
 
-  h1 strong
-    font-size: 3rem
-    line-height: 1.2
-    font-weight: 400
-    letter-spacing: -0.09375rem
-
   h1
     font-size: 2.125rem
     line-height: 3rem
-    font-weight: 300
+    font-weight: 400
     letter-spacing: -0.06rem
+
+  h1 strong
+    font-weight: 700
+
+  h2
+    font-size: 1.5rem
+    line-height: 2rem
+    font-weight: 400
 
   h2 strong
     font-weight: 500
-
-  h2
-    font-size: 1.35rem
-    line-height: 1.2
-    font-weight: 400
 
   h3
     font-size: 1.15rem
