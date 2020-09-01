@@ -57,7 +57,7 @@ img.emoji
   span.mention
     color: var(--v-anchor-base)
 
-  blockquote, ol, p, pre
+  blockquote, ol, p, pre, ul
     margin: 0.5rem 0
 
   h1, h2, h3
@@ -70,9 +70,8 @@ img.emoji
     margin-bottom: 0
 
   h1
-    font-size: 2.2rem
+    font-size: 2rem
     font-weight: 400
-    letter-spacing: -0.06rem
 
   h1 strong
     font-weight: 700
@@ -86,7 +85,7 @@ img.emoji
 
   h3
     font-size: 1.125rem
-    font-weight: 700
+    font-weight: 500
 
   strong
     font-weight: 700
