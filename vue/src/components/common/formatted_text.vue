@@ -72,11 +72,13 @@ img.emoji
 
   h2
     font-size: 2.125rem
+    line-height: 2.5rem
     font-weight: 200
     letter-spacing: 0.015625rem
 
   h3
     font-size: 1.5rem
+    line-height: 1.7rem
     font-weight: 400
 
   p
