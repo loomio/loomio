@@ -16,12 +16,11 @@ function getUuid () {
 }
 
 function getAttrs (dom) {
-  const attrs = getParagraphNodeAttrs(dom)
-  const id = dom.getAttribute('id')
-  // const level = parseInt(dom.getAttribute('level'), 10) || 0
-  attrs.id = id
-  // attrs.level = level
-  return attrs
+  return {
+    textAlign: (dom.getAttribute('data-text-align') || dom.style.textAlign || null),
+    level: dom.tagName.substring(1),
+    id: dom.getAttribute('id')
+  }
 }
 
 function toDOM (node) {
@@ -30,10 +29,7 @@ function toDOM (node) {
   const level = node.attrs.level || 1
   dom[0] = 'h'.concat(node.attrs.level)
   dom[1].id = id
-  // dom[1].level = level
-
   node.attrs.id = id
-
   return dom
 }
 
@@ -67,6 +63,9 @@ export default class Heading extends Node {
       parseDOM: this.options.levels
         .map(level => ({
           tag: `h${level}`,
+          attrs: {
+            level: level
+          },
           getAttrs
         })),
       toDOM

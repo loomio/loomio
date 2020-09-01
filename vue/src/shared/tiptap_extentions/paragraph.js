@@ -10,25 +10,17 @@ import { Paragraph as TiptapParagraph } from 'tiptap'
 function getAttrs (dom) {
   let {
     textAlign,
-    // lineHeight,
   } = dom.style
 
   const align = dom.getAttribute('data-text-align') || textAlign || ''
-  // const indent = parseInt(dom.getAttribute('data-indent'), 10) || 0
 
   return {
-    textAlign: align,
-    // indent,
-    // lineHeight,
+    textAlign: align
   }
 }
 
 function toDOM (node) {
-  const {
-    textAlign,
-    // indent,
-    // lineHeight,
-  } = node.attrs
+  const { textAlign } = node.attrs
 
   const attrs = {}
 
@@ -36,22 +28,12 @@ function toDOM (node) {
     attrs['data-text-align'] = textAlign
   }
 
-  // if (indent) {
-  //   attrs['data-indent'] = indent
-  // }
-  //
-  // if (lineHeight) {
-  //   attrs['data-line-height'] = lineHeight
-  // }
-
   return ['p', attrs, 0]
 }
 
 export const ParagraphNodeSpec = {
   attrs: {
     textAlign: { default: null },
-    // indent: { default: null },
-    // lineHeight: { default: null },
   },
   content: 'inline*',
   group: 'block',
