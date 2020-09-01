@@ -11,11 +11,11 @@ export default
     editor: Object
 
   data: ->
-    back: '#fff'
-    fore: '#000'
+    back: null
+    fore: null
     closable: false
-    foreColors: ['#191919', '#ffffff'].concat(compact(map(ourColors, (value, key) => value.darken1)))
-    backColors: ['#000000', '#ffffff'].concat(compact(map(ourColors, (value, key) => value.lighten2)))
+    foreColors: ['#191919', '#ffffff'].concat(compact(map(ourColors, (value, key) => value.base)))
+    backColors: ['#000000', '#ffffff'].concat(compact(map(ourColors, (value, key) => value.lighten3)))
 
   methods:
     onSelectFore: (color) ->
