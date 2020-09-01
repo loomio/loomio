@@ -37,6 +37,7 @@ export default new class AbilityService
     return false unless poll.isActive()
     poll.anyoneCanParticipate or
     poll.adminsInclude(Session.user()) or
+    poll.myStance() or
     (poll.membersInclude(Session.user()) and (!poll.group() or poll.group().membersCanVote))
 
   canReactToPoll: (poll) ->
