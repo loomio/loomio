@@ -87,6 +87,6 @@ export default
 .strand-page
   v-main
     | {{loader.rules}}
-    v-container.max-width-640(v-if="discussion")
+    v-container.max-width-800(v-if="discussion")
       strand-card(v-if="loader" :discussion='discussion' :loader="loader")
 </template>

@@ -38,7 +38,6 @@ img.emoji
 
 .lmo-markdown-wrapper
   line-height: 1.4
-  padding-top: 0.2rem
 
   *[data-text-align="left"]
     text-align: left !important
@@ -50,7 +49,7 @@ img.emoji
     text-align: justify !important
 
   .cursor
-    font-size: 12px
+    font-size: 0.8rem
     font-weight: normal
     line-height: 20px
     letter-spacing: normal
@@ -71,22 +70,19 @@ img.emoji
     margin-bottom: 0
 
   h1
-    font-size: 2rem
+    font-size: 2.125rem
     font-weight: 400
-
-  h1 strong
-    font-weight: 700
+    letter-spacing: 0.015625rem
 
   h2
     font-size: 1.5rem
     font-weight: 400
-
-  h2 strong
-    font-weight: 500
+    letter-spacing: normal
 
   h3
-    font-size: 1.125rem
+    font-size: 1.25rem
     font-weight: 500
+    letter-spacing: 0.009375rem
 
   strong
     font-weight: 700

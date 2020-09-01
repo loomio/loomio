@@ -1,5 +1,5 @@
 <style lang="sass">
-@import 'variables'
+@import '@/css/variables.scss'
 
 .poll-proposal-chart-panel__chart-container
   display: flex

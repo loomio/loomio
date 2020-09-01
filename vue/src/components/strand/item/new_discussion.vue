@@ -72,7 +72,7 @@ export default
     action-dock(:model='discussion' :actions='dockActions' :menu-actions='menuActions' fetch-reactions)
 </template>
 <style lang="sass">
-@import 'variables'
+@import '@/css/variables'
 .context-panel__heading-pin
   margin-left: 4px
 
