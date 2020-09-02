@@ -285,7 +285,6 @@ ActiveRecord::Schema.define(version: 2020_08_12_233613) do
     t.integer "child_count", default: 0, null: false
     t.integer "depth", default: 0, null: false
     t.boolean "pinned", default: false, null: false
-    t.string "position_key"
     t.index ["created_at"], name: "index_events_on_created_at"
     t.index ["discussion_id", "sequence_id"], name: "index_events_on_discussion_id_and_sequence_id", unique: true
     t.index ["discussion_id"], name: "index_events_on_discussion_id"
@@ -294,7 +293,6 @@ ActiveRecord::Schema.define(version: 2020_08_12_233613) do
     t.index ["parent_id", "discussion_id"], name: "index_events_on_parent_id_and_discussion_id", where: "(discussion_id IS NOT NULL)"
     t.index ["parent_id"], name: "index_events_on_parent_id"
     t.index ["pinned"], name: "index_events_on_pinned_true", where: "(pinned IS TRUE)"
-    t.index ["position_key"], name: "index_events_on_position_key"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
