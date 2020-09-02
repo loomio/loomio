@@ -165,7 +165,7 @@ export default
           .strand-item__stem(v-if="" :class="{'strand-item__stem--unread': isUnread(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
           //- .strand-item__stem-stop(v-if="obj.event.position == siblingCount")
       .strand-item__main
-        | {{obj.event.sequenceId}} {{obj.event.positionKey}} {{obj.event.childCount}} {{obj.event.descendantCount}}
+        //- | {{obj.event.sequenceId}} {{obj.event.positionKey}} {{obj.event.childCount}} {{obj.event.descendantCount}}
         component(:is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="loader.collapsed[obj.event.id]")
 
     .strand-item__row.strand-list__children(v-if="obj.event.childCount")
