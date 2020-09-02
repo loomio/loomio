@@ -11,6 +11,13 @@ export default class ThreadLoader
   reset: ->
     @collection = Vue.observable([])
     @rules = []
+    @collapsed = Vue.observable({})
+
+  collapse: (id) ->
+    Vue.set(@collapsed, id, true)
+
+  expand: (id) ->
+    Vue.set(@collapsed, id, false)
 
   addLoadCommentRule: (commentId) ->
     @rules.push
@@ -129,7 +136,7 @@ export default class ThreadLoader
 
     nest = (records) ->
       r = records.map (event) ->
-        {event: event, collapsed: false, children: eventsByParentId[event.id] && nest(eventsByParentId[event.id])}
+        {event: event, children: eventsByParentId[event.id] && nest(eventsByParentId[event.id])}
       orderBy r, 'positionKey'
 
     @collection = nest(orphans)

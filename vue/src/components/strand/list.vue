@@ -1,6 +1,4 @@
 <script lang="coffee">
-# import Records from '@/shared/services/records'
-# import EventBus from '@/shared/services/event_bus'
 import StrandList from '@/components/strand/list.vue'
 import NewComment from '@/components/strand/item/new_comment.vue'
 import NewDiscussion from '@/components/strand/item/new_discussion.vue'
@@ -154,23 +152,23 @@ export default
         v-btn.action-button(text v-t="{path: 'common.action.count_more', args: {count: countEarlierMissing(obj.event.position)}}" @click="loadBefore(obj.event)")
 
     .strand-item__row
-      .strand-item__gutter(@click.stop="obj.collapsed = true")
-        .strand-item__circle(v-if="obj.collapsed" @click.stop="obj.collapsed = false")
+      .strand-item__gutter(@click.stop="loader.collapse(obj.event.id)")
+        .strand-item__circle(v-if="loader.collapsed[obj.event.id]" @click.stop="loader.expand(obj.event.id)")
           v-icon mdi-unfold-more-horizontal
         template(v-else)
           user-avatar(:user="obj.event.actor()" :size="(obj.event.depth > 1) ? 36 : 48" no-link)
           .strand-item__stem(v-if="" :class="{'strand-item__stem--unread': isUnread(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
           //- .strand-item__stem-stop(v-if="obj.event.position == siblingCount")
       .strand-item__main
-        component(:is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="obj.collapsed")
+        component(:is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="loader.collapsed[obj.event.id]")
 
     .strand-item__row.strand-list__children(v-if="obj.event.childCount")
-      .strand-item__gutter(v-if="index+1 != siblingCount" @click="obj.collapsed = true")
+      .strand-item__gutter(v-if="index+1 != siblingCount" @click="loader.collapse(obj.event.id)")
         .strand-item__branch-container
           .strand-item__branch &nbsp;
         .strand-item__stem(v-if="(index+1 != collection.length) || obj.children")
 
-      strand-list.flex-grow-1(v-if="obj.children && !obj.collapsed" :loader="loader" :collection="obj.children")
+      strand-list.flex-grow-1(v-if="obj.children && !loader.collapsed[obj.event.id]" :loader="loader" :collection="obj.children")
       .strand-item__load-more(v-else)
         v-btn.action-button(text @click="loadChildren(obj.event)" v-t="{path: 'common.action.count_responses', args: {count: obj.event.descendantCount}}")
 
