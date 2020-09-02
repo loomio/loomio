@@ -4,7 +4,7 @@ const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 module.exports = env => {
   return {
     chainWebpack: config => {
-      // config.module.rule('vue').use('vue-loader').tap(args => { args.compilerOptions.whitespace = 'preserve' })
+      config.module.rule('vue').use('vue-loader').tap(args => { args.compilerOptions.whitespace = 'preserve' })
       config.module.rule('yml').test(/\.yml$/).use('js-yaml-loader').loader('js-yaml-loader').end()
       config.module.rule('yml').test(/\.yml$/).use('single-curlys-loader').loader('single-curlys-loader').end()
       config.plugins.delete('prefetch');

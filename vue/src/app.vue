@@ -70,6 +70,11 @@ v-app.app-is-booted
 </template>
 
 <style lang="sass">
+
+.v-application .body-2
+  font-size: 15px !important
+  letter-spacing: normal !important
+
 h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus
   outline: 0
 a
