@@ -66,8 +66,11 @@ export default
       @loader.addRule
         local:
           discussionId: @loader.discussion.id
-          depth: {$gte: event.depth}
-          positionKey: {$lt: event.positionKey}
+          depth:
+            $gte: event.depth
+            $lte: event.depth + 2
+          positionKey:
+            $lt: event.positionKey
         remote:
           discussion_id: @loader.discussion.id
           depth_gte: event.depth
@@ -86,17 +89,10 @@ export default
       @loader.addRule
         local:
           discussionId: @loader.discussion.id
-          # depth: {$gt: event.depth}
-          positionKey: {'$gt': event.positionKey, '$regex': "^#{event.positionKey}"}
+          positionKey: {'$regex': "^#{event.positionKey}"}
         remote:
           discussion_id: @loader.discussion.id
-          position_key_gt: event.positionKey
           position_key_sw: event.positionKey
-          # depth_gt: event.depth
-          # position_key_prefix: @positionKeyPrefix(event)
-          # depth_lte: event.depth + 2
-          # depth_gt: event.depth + 1
-          # parent_id: event.id
           order_by: 'position_key'
 
     loadAfter: (event) ->
@@ -143,7 +139,6 @@ export default
 <template lang="pug">
 .strand-list
   .strand-item(v-for="obj, index in collection" :event='obj.event' :key="obj.event.id" :class="{'strand-item--deep': obj.event.depth > 1}")
-    //- | {{obj.event.id}} {{obj.event.positionKey}} {{obj.event.childCount}} {{obj.event.descendantCount}}
     .strand-item__row(v-if="parentExists && obj.event.position != 1 && isFirstInRange(obj.event.position)")
       .strand-item__gutter
         .strand-item__circle(@click="loadBefore(obj.event)")
@@ -160,6 +155,7 @@ export default
           .strand-item__stem(v-if="" :class="{'strand-item__stem--unread': isUnread(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
           //- .strand-item__stem-stop(v-if="obj.event.position == siblingCount")
       .strand-item__main
+        | {{obj.event.sequenceId}} {{obj.event.positionKey}} {{obj.event.childCount}} {{obj.event.descendantCount}}
         component(:is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="loader.collapsed[obj.event.id]")
 
     .strand-item__row.strand-list__children(v-if="obj.event.childCount")
@@ -168,7 +164,8 @@ export default
           .strand-item__branch &nbsp;
         .strand-item__stem(v-if="(index+1 != collection.length) || obj.children")
 
-      strand-list.flex-grow-1(v-if="obj.children && !loader.collapsed[obj.event.id]" :loader="loader" :collection="obj.children")
+      //- | obj.children {{obj.children.length}}
+      strand-list.flex-grow-1(v-if="obj.children.length && !loader.collapsed[obj.event.id]" :loader="loader" :collection="obj.children")
       .strand-item__load-more(v-else)
         v-btn.action-button(text @click="loadChildren(obj.event)" v-t="{path: 'common.action.count_responses', args: {count: obj.event.descendantCount}}")
 

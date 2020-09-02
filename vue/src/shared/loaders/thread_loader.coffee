@@ -1,5 +1,5 @@
 import Records from '@/shared/services/records'
-import { isNumber, uniq, compact, orderBy, camelCase } from 'lodash'
+import { isNumber, uniq, compact, orderBy, camelCase, forEach, isObject } from 'lodash'
 import Vue from 'vue'
 import RangeSet         from '@/shared/services/range_set'
 
@@ -115,11 +115,23 @@ export default class ThreadLoader
     @rules.forEach (rule) =>
       args = Object.assign({}, rule.local)
       chain = Records.events.collection.chain()
-      Object.keys(args).forEach (key) ->
-        chain = chain.find({"#{key}": args[key]})
+      console.log(rule)
+      forEach args, (value, key) ->
+        if isObject(value)
+          # eg: value = {$lte: asdads,  $gte: asdasd}
+          forEach value, (subvalue, subkey) ->
+            chain = chain.find({"#{key}": {"#{subkey}": subvalue}})
+            console.log({"#{key}": {"#{subkey}": subvalue}}, chain.data())
+        else
+          # eg: value = 1
+          chain = chain.find({"#{key}": value})
+
       @records = @records.concat(chain.data())
 
     @records = uniq orderBy @records, 'positionKey'
+    console.log @records
+    console.log("includes 00001-00001", @records.find((r) -> r.positionKey == "00001-00001"))
+    # console.log(Records.events.collection.chain().find(positionKey: "00001-00001").data())
 
     # find records with no parentId or, where no event with that parentId in records
     eventIds = @records.map (event) -> event.id
@@ -136,7 +148,7 @@ export default class ThreadLoader
 
     nest = (records) ->
       r = records.map (event) ->
-        {event: event, children: eventsByParentId[event.id] && nest(eventsByParentId[event.id])}
+        {event: event, children: (eventsByParentId[event.id] && nest(eventsByParentId[event.id])) || []}
       orderBy r, 'positionKey'
 
     @collection = nest(orphans)
