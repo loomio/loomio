@@ -14,7 +14,7 @@
     "test:e2e:standalone": "nightwatch --config ./tests/e2e/nightwatch.conf.js --retries 2"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.10.4",
+    "@babel/polyfill": "^7.11.5",
     "@sentry/browser": "5.22.3",
     "@sentry/integrations": "5.22.3",
     "activestorage": "^5.2.2",
