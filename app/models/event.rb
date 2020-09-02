@@ -1,7 +1,4 @@
 class Event < ApplicationRecord
-  include Redis::Objects
-  lock :creation
-
   include CustomCounterCache::Model
   include HasTimeframe
   extend HasCustomFields
@@ -14,7 +11,7 @@ class Event < ApplicationRecord
   has_many :children, (-> { where("discussion_id is not null") }), class_name: "Event", foreign_key: :parent_id
   set_custom_fields :pinned_title
 
-  around_save :set_sequences, if: :discussion_id
+  around_create :set_sequences
 
   after_create  :update_sequence_info!
   after_destroy :update_sequence_info!
@@ -65,8 +62,9 @@ class Event < ApplicationRecord
   end
 
   def set_sequences
+    yield and return unless discussion_id
     set_parent_and_depth
-    Event.obtain_lock(:creation, self.discussion_id) do
+    Discussion.obtain_lock(:create_event, discussion_id) do
       set_sequence_id
       set_position_and_position_key
       yield

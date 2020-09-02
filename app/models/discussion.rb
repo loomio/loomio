@@ -1,4 +1,7 @@
 class Discussion < ApplicationRecord
+  include Redis::Objects
+  lock :create_event, :expiration => 1.minute
+
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include Forkable
