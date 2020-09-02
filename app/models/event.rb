@@ -11,7 +11,7 @@ class Event < ApplicationRecord
   has_many :children, (-> { where("discussion_id is not null") }), class_name: "Event", foreign_key: :parent_id
   set_custom_fields :pinned_title
 
-  around_create :set_sequences
+  around_save :set_sequences
 
   after_create  :update_sequence_info!
   after_destroy :update_sequence_info!
