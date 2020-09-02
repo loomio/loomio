@@ -66,16 +66,26 @@ export default
       @loader.addRule
         local:
           discussionId: @loader.discussion.id
-          depth:
-            $gte: event.depth
-            $lte: event.depth + 2
-          positionKey:
-            $lt: event.positionKey
+          depth: event.depth
+          positionKey: {$lt: event.positionKey}
         remote:
           discussion_id: @loader.discussion.id
-          depth_gte: event.depth
-          depth_lte: event.depth + 2
+          depth: event.depth
           position_key_lt: event.positionKey
+          order_by: 'position_key'
+          order_desc: 1
+
+      @loader.addRule
+        local:
+          discussionId: @loader.discussion.id
+          depth: event.depth + 1
+          position: {$lt: 3}
+          positionKey: {$lt: event.positionKey}
+        remote:
+          discussion_id: @loader.discussion.id
+          depth: event.depth + 1
+          position_key_lt: event.positionKey
+          position_lt: 3
           order_by: 'position_key'
           order_desc: 1
 
