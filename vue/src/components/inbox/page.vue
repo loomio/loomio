@@ -4,15 +4,15 @@ import Session       from '@/shared/services/session'
 import Records       from '@/shared/services/records'
 import EventBus      from '@/shared/services/event_bus'
 import ThreadFilter from '@/shared/services/thread_filter'
-import StrandWall from '@/components/strand/wall'
+# import StrandWall from '@/components/strand/wall'
 import {each, keys, sum, values, sortBy} from 'lodash'
 
 export default
-  components:
-    StrandWall: StrandWall
+  # components:
+  #   StrandWall: StrandWall
 
   data: ->
-    threadLimit: 5
+    threadLimit: 50
     views: {}
     groups: []
     loading: false
@@ -50,14 +50,14 @@ export default
           @groups = sortBy Session.user().inboxGroups(), 'name'
           @views = {}
           each @groups, (group) =>
-            @views[group.key] = ThreadFilter(store, filters: @filters, group: group).slice(0,3)
+            @views[group.key] = ThreadFilter(store, filters: @filters, group: group)
           @unreadCount = sum values(@views), (v) -> v.length
 
 </script>
 
 <template lang="pug">
 v-main
-  v-container.inbox-page.thread-preview-collection__container.max-width-800(grid-list-lg)
+  v-container.inbox-page.thread-preview-collection__container.max-width-1024(grid-list-lg)
     h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'inbox_page.unread_threads'")
     section.dashboard-page__loading(v-if='unreadCount == 0 && loading' aria-hidden='true')
       .thread-previews-container
@@ -74,12 +74,12 @@ v-main
         | &nbsp;
         span(v-html="$t('inbox_page.no_groups.join_group')")
       .inbox-page__group(v-for='group in groups', :key='group.id')
-        //- v-card.mb-3(v-if='views[group.key].length > 0')
-        //-   v-card-title
-        //-     v-avatar.mr-3(tile size="48px")
-        //-       v-img(:src='group.logoUrl()', aria-hidden='true')
-        router-link.inbox-page__group-name(:to="'/g/' + group.key")
-          span.subheading {{group.name}}
-        //-   //- thread-preview-collection(:threads="views[group.key]", :limit="threadLimit")
-        strand-wall(:threads="views[group.key]")
+        v-card.mb-3(v-if='views[group.key].length > 0')
+          v-card-title
+            v-avatar.mr-3(tile size="48px")
+              v-img(:src='group.logoUrl()', aria-hidden='true')
+            router-link.inbox-page__group-name(:to="'/g/' + group.key")
+              span.subheading {{group.name}}
+          thread-preview-collection(:threads="views[group.key]", :limit="threadLimit")
+        //- strand-wall(:threads="views[group.key]")
 </template>

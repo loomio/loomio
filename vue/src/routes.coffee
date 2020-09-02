@@ -30,6 +30,8 @@ import './config/catch_navigation_duplicated.js'
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import Session from '@/shared/services/session'
+
 Vue.use(Router)
 
 groupPageChildren = [
@@ -80,7 +82,19 @@ export default new Router
     {path: '/u/:key/:stub?', component: UserPage },
     {path: '/d/new', component: StartDiscussionPage },
     {path: '/d/:key/edit', component: StartDiscussionPage },
-    {path: '/d/:key', name: 'discussion', component: StrandPage, children: strandPageChildren },
+    {
+      path: '/d/:key',
+      name: 'discussion',
+      component: ThreadPage,
+      children: threadPageChildren,
+      beforeEnter: (to, from, next) ->
+        console.log(to)
+        if Session.user().experiences['betaFeatures']
+          next(name: 'strand', params: to.params)
+        else
+          next()
+    },
+    {path: '/s/:key', name: 'strand', component: StrandPage, children: strandPageChildren },
     {path: '/g/new', component: StartGroupPage},
     {path: '/g/:key', component: GroupPage, children: groupPageChildren, name: 'groupKey'},
     {path: '/:key', component: GroupPage, children: groupPageChildren},
