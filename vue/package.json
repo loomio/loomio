@@ -20,7 +20,7 @@
     "activestorage": "^5.2.2",
     "ahoy.js": "^0.3.7",
     "core-js": "^2.6.11",
-    "date-fns": "2.16.0",
+    "date-fns": "2.16.1",
     "date-fns-tz": "1.0.10",
     "deepmerge": "^4.2.2",
     "emoji-unicode": "^2.0.1",
