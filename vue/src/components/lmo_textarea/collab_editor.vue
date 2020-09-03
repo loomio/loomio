@@ -276,32 +276,32 @@ div
               emoji-picker(:insert="emojiPicked")
 
             //- headings menu
-            v-menu
-              template(v-slot:activator="{ on, attrs }")
-                v-btn.drop-down-button(icon v-on="on" v-bind="attrs" :title="$t('formatting.heading_size')")
-                  v-icon mdi-format-size
-                  v-icon.menu-down-arrow mdi-menu-down
-              v-list(dense)
-                template(v-for="i in 3")
-                  v-list-item(@click='commands.heading({ level: i })' :class="{ 'v-list-item--active': isActive.heading({level: i}) }")
-                    v-list-item-icon
-                      v-icon {{'mdi-format-header-'+i}}
-                    v-list-item-title(v-t="'formatting.heading'+i")
-                v-list-item(@click='commands.paragraph()' :class="{ 'v-list-item--active': isActive.paragraph() }")
-                  v-list-item-icon
-                    v-icon mdi-format-pilcrow
-                  v-list-item-title(v-t="'formatting.paragraph'")
+            //- v-menu(v-if="!expanded")
+            //-   template(v-slot:activator="{ on, attrs }")
+            //-     v-btn.drop-down-button(icon v-on="on" v-bind="attrs" :title="$t('formatting.heading_size')")
+            //-       v-icon mdi-format-size
+            //-       v-icon.menu-down-arrow mdi-menu-down
+            //-   v-list(dense)
+            //-     template(v-for="i in 3")
+            //-       v-list-item(@click='commands.heading({ level: i })' :class="{ 'v-list-item--active': isActive.heading({level: i}) }")
+            //-         v-list-item-icon
+            //-           v-icon {{'mdi-format-header-'+i}}
+            //-         v-list-item-title(v-t="'formatting.heading'+i")
+            //-     v-list-item(@click='commands.paragraph()' :class="{ 'v-list-item--active': isActive.paragraph() }")
+            //-       v-list-item-icon
+            //-         v-icon mdi-format-pilcrow
+            //-       v-list-item-title(v-t="'formatting.paragraph'")
 
-            //- template(v-if="expanded")
-            //-   v-btn(icon @click='commands.paragraph()' :outlined="isActive.paragraph()" :title="$t('formatting.paragraph')")
-            //-     v-icon mdi-format-pilcrow
-            //-   template(v-for="i in 3")
-            //-     v-btn(icon @click='commands.heading({ level: i })' :outlined='isActive.heading({level: i})' :title="$t('formatting.heading'+i)")
-            //-       v-icon {{'mdi-format-header-'+i}}
+            template(v-if="expanded")
+              v-btn(icon @click='commands.paragraph()' :outlined="isActive.paragraph()" :title="$t('formatting.paragraph')")
+                v-icon mdi-format-pilcrow
+              template(v-for="i in 3")
+                v-btn(icon @click='commands.heading({ level: i })' :outlined='isActive.heading({level: i})' :title="$t('formatting.heading'+i)")
+                  v-icon {{'mdi-format-header-'+i}}
 
             //- bold
 
-            v-btn(icon @click='commands.bold' :outlined="isActive.bold()" :title="$t('formatting.bold')")
+            v-btn(icon v-if="expanded" @click='commands.bold' :outlined="isActive.bold()" :title="$t('formatting.bold')")
               v-icon mdi-format-bold
 
             //- italic
@@ -321,7 +321,7 @@ div
             //- list menu (always a menu)
             v-menu(v-if="expanded")
               template(v-slot:activator="{ on, attrs }")
-                v-btn.drop-down-button(icon v-on="on" v-bind="attrs")
+                v-btn.drop-down-button(icon v-on="on" v-bind="attrs" :title="$t('formatting.lists')")
                   v-icon mdi-format-list-bulleted
                   v-icon.menu-down-arrow mdi-menu-down
               v-list(dense)
@@ -368,13 +368,15 @@ div
               v-btn(icon @click="convertToMd" :title="$t('formatting.edit_markdown')")
                 v-icon mdi-language-markdown-outline
 
-            v-btn.html-editor__expand(v-if="!expanded" icon @click="toggleExpanded" :aria-label="$t('formatting.expand')")
+            v-btn.html-editor__expand(v-if="!expanded" icon @click="toggleExpanded" :title="$t('formatting.expand')")
               v-icon mdi-chevron-right
 
-            v-btn.html-editor__expand(v-if="expanded" icon @click="toggleExpanded" :aria-label="$t('formatting.collapse')")
+            v-btn.html-editor__expand(v-if="expanded" icon @click="toggleExpanded" :title="$t('formatting.collapse')")
               v-icon mdi-chevron-left
           //- save button?
-          v-spacer
+          slot(v-if="!expanded" name="actions")
+        div.d-flex(v-if="expanded")
+          v-spacer.flex-grow-1
           slot(name="actions")
     v-alert(v-if="maxLength && model[field] && model[field].length > maxLength" color='error')
       span( v-t="'poll_common.too_long'")
