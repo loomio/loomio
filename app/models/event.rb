@@ -13,7 +13,8 @@ class Event < ApplicationRecord
   has_many :children, (-> { where("discussion_id is not null") }), class_name: "Event", foreign_key: :parent_id
   set_custom_fields :pinned_title
 
-  around_save :set_sequences
+  before_save :set_sequences
+  after_rollback :reset_sequences
 
   after_create  :update_sequence_info!
   after_destroy :update_sequence_info!
@@ -64,28 +65,16 @@ class Event < ApplicationRecord
   end
 
   def set_sequences
-    yield and return unless discussion_id
+    return unless discussion_id
     set_parent_and_depth
     set_sequence_id
     set_position_and_position_key
-    yield
-  rescue
+  end
+
+  def reset_sequences
     reset_position_counter
     reset_sequence_id_counter
   end
-
-  # def set_sequences
-  #   yield and return unless discussion_id
-  #   set_parent_and_depth
-  #
-  #
-  #   Discussion.obtain_lock(:create_event, discussion_id) do |lock|
-  #     puts " have lock", lock.to_s
-  #     set_sequence_id
-  #     set_position_and_position_key
-  #     yield
-  #   end
-  # end
 
   def user
     super || AnonymousUser.new
@@ -195,7 +184,7 @@ class Event < ApplicationRecord
 
   def reset_position_counter
     return unless parent_id
-    EventService.reset_child_positions(parent_id, parent.position_key)
+    # EventService.reset_child_positions(parent_id, parent.position_key)
     val = (Event.where(parent_id: parent_id).order("position DESC").limit(1).pluck(:position).last || 0)
     parent.position_counter.reset(val)
   end
