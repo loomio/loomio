@@ -42,11 +42,5 @@ describe AvatarInitials do
       user.set_avatar_initials
       expect(user.avatar_initials).to eq "RO"
     end
-
-    it "works for strange characters" do
-      user.name = "D'Angelo (Loco)"
-      user.set_avatar_initials
-      expect(user.avatar_initials).to eq "D("
-    end
   end
 end

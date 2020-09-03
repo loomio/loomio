@@ -12,7 +12,9 @@ module AvatarInitials
   end
 
   def get_avatar_initials
-    if name.blank? || name == email
+    if deactivated_at
+      "DU"
+    elsif name.blank? || name == email
       email.to_s[0..1]
     else
       name.split.map(&:first).join

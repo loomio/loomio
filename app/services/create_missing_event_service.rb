@@ -60,7 +60,7 @@ module CreateMissingEventService
     # ensure there is a poll closed event?
     poll.outcomes.order(:created_at).each(&:created_event)
 
-    poll.discussion.items.last.send(:reorder) if parent_id
+    EventService.repair_thread(poll.discussion_id) if poll.discussion_id
 
     # TODO (or not TODO) ensure poll closed and expired events are sorted
 
