@@ -32,7 +32,7 @@ function ltHelper(prop1, prop2, equal) {
   }
 
   // if both are numbers (string encoded or not), compare as numbers
-  if (typeof prop1 != 'string') {
+  if (Number.isInteger(prop1) || (prop1 instanceof Date)) {
     cv1 = Number(prop1);
     cv2 = Number(prop2);
 

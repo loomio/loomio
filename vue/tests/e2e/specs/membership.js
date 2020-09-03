@@ -52,6 +52,7 @@ module.exports = {
     page.loadPath('setup_group_with_multiple_coordinators')
 
     page.click('.group-page-members-tab')
+    page.pause(2000)
     page.click('.members-panel .v-card .v-list .v-list-item:first-child .membership-dropdown')
     page.click('.membership-dropdown__toggle-admin')
     page.expectFlash('Emilio Estevez is no longer an admin')
