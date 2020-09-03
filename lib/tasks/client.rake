@@ -3,7 +3,7 @@ namespace :client do
   task :build do
     puts "Building clientside assets..."
     run_commands(
-      "rm -rf public/client/*",
+      "rm -rf public/blient/*",
       "cd vue && npm i && npm run build && cd .."
     )
   end
