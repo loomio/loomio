@@ -32,7 +32,7 @@ function ltHelper(prop1, prop2, equal) {
   }
 
   // if both are numbers (string encoded or not), compare as numbers
-  if (Number.isInteger(prop1)) {
+  if (typeof prop1 != 'string') {
     cv1 = Number(prop1);
     cv2 = Number(prop2);
 
