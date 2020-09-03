@@ -1,6 +1,6 @@
 class Discussion < ApplicationRecord
   include Redis::Objects
-  lock :create_event, :expiration => 1.minute
+  counter :sequence_id_counter
 
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
