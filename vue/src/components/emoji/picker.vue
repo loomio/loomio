@@ -1,7 +1,7 @@
 <script lang="coffee">
 
 import { emojisByCategory, srcForEmoji, emojiSupported } from '@/shared/helpers/emojis'
-import { each, keys } from 'lodash'
+import { each, keys, pick } from 'lodash'
 
 export default
   props:
@@ -12,25 +12,17 @@ export default
   data: ->
     search: ''
     emojiSupported: emojiSupported
+    showMore: false
 
   methods:
     srcForEmoji: srcForEmoji
 
   computed:
     emojis: ->
-      if @search
-        obj = {}
-        each keys(emojisByCategory), (category) =>
-          obj[category] = {}
-          each keys(emojisByCategory[category]), (emoji) =>
-            if new RegExp(".*#{@search}.*").test(emoji)
-              obj[category][emoji] = emojisByCategory[category][emoji]
-
-          if keys(obj[category]).length == 0
-            delete obj[category]
-        obj
-      else
+      if @showMore
         emojisByCategory
+      else
+        pick(emojisByCategory, ['common', 'hands', 'expressions'])
 
 </script>
 
@@ -42,21 +34,28 @@ export default
       span(v-for='(emoji, emojiName) in emojiGroup' :key='emojiName' @click='insert(emojiName, emoji)' :title='emojiName') {{ emoji }}
     div.emoji-picker__emojis(v-else)
       img(v-for='(emoji, emojiName) in emojiGroup' :key='emojiName' @click='insert(emojiName, emoji)' :alt="emojiName" :src="srcForEmoji(emoji)")
+  .d-flex.justify-center
+    v-btn(v-if="!showMore" x-small @click.stop="showMore = true" v-t="'common.action.show_more'")
+    v-btn(v-if="showMore" x-small @click.stop="showMore = false" v-t="'common.action.show_fewer'")
 </template>
 
 <style lang="sass">
 .emoji-picker
-  padding: 4px
+  padding: 8px
   background-color: #fff
-  max-width: 232px
+  max-width: 240px
   max-height: 400px
   overflow-y: auto
+  h5
+    font-weight: normal
+    // text-align: center
 
 .emoji-picker__emojis
   display: flex
   flex-direction: row
   flex-wrap: wrap
   font-size: 48px
+  margin-bottom: 16px
 
   img, span
     width: 48px
