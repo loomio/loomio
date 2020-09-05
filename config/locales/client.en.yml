@@ -203,6 +203,7 @@ en:
       update: 'Update'
       cancel: 'Cancel'
       show_more: "Show more"
+      show_fewer: "Show fewer"
       view_count_more: "View {{count}} more"
       view_count_responses: "View {{count}} responses"
       count_more: "{{count}} more"
@@ -254,8 +255,9 @@ en:
   emoji_picker:
     search: Search
     common: Frequently used
+    expressions: Faces
     hands: Hands
-    people: Faces and people
+    people: People
     nature: Nature
     objects: Things
     places: Places

@@ -26,7 +26,7 @@ export default
       assign(
         pick @commentActions, compact ['react', reply_to_comment, edit_comment, show_history]
       ,
-        pick @eventActions, ['pin_event', 'unpin_event']
+        pick @eventActions, []
       )
 
     menuActions: ->
@@ -37,7 +37,7 @@ export default
       assign(
         pick @commentActions, compact [reply_to_comment, show_history, 'admin_edit_comment', 'notification_history', 'translate_comment' , 'discard_comment', 'undiscard_comment']
       ,
-        pick @eventActions, ['move_event', 'copy_url']
+        pick @eventActions, ['pin_event', 'unpin_event', 'move_event', 'copy_url']
       )
 
   data: ->

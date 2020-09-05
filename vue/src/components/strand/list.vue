@@ -161,7 +161,7 @@ export default
         .strand-item__circle(v-if="loader.collapsed[obj.event.id]" @click.stop="loader.expand(obj.event.id)")
           v-icon mdi-unfold-more-horizontal
         template(v-else)
-          user-avatar(:user="obj.event.actor()" :size="(obj.event.depth > 1) ? 36 : 48" no-link)
+          user-avatar(:user="obj.event.actor()" :size="(obj.event.depth > 1) ? 28 : 36" no-link)
           .strand-item__stem(v-if="" :class="{'strand-item__stem--unread': isUnread(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
           //- .strand-item__stem-stop(v-if="obj.event.position == siblingCount")
       .strand-item__main
@@ -197,23 +197,23 @@ export default
 
 .strand-item--deep
   .strand-item__gutter
-    width: 36px
-    margin-right: 6px
+    width: 28px
+    // margin-right: 4px
 
   .strand-item__stem
-    margin: 0 18px
+    margin: 0 12px
 
   .strand-item__circle
-    width: 36px
-    height: 36px
+    width: 28px
+    height: 28px
 
   .strand-item__load-more
-    min-height: 36px
+    min-height: 28px
 
   // not working
   .strand-item__branch-container
     .strand-item__branch
-      top: -28px!important
+      top: -17px!important
       right: -2px
       // height: 36px
       // width: 36px
@@ -224,8 +224,12 @@ export default
 .strand-item__gutter
   display: flex
   flex-direction: column
-  width: 48px
+  width: 36px
   margin-right: 8px
+
+.strand-item__gutter:hover
+  .strand-item__stem
+    background-color: #aaa
 
 .strand-item__main
   flex-grow: 1
@@ -235,8 +239,8 @@ export default
   width: 0
   height: 100%
   padding: 0 1px
-  background-color: #ddd
-  margin: 0 24px
+  background-color: #dadada
+  margin: 0 18px
 
 .strand-item__stem--last
   height: calc(100% - 44px)
@@ -256,21 +260,21 @@ export default
   display: flex
   align-items: center
   justify-content: center
-  width: 48px
-  height: 48px
-  border: 1px solid #ddd
+  width: 36px
+  height: 36px
+  border: 1px solid #dadada
   border-radius: 100%
 
 .strand-item__circle:hover
-  background-color: #eee
+  background-color: #dadada
 
 .strand-item__load-more
   display: flex
   align-items: center
-  min-height: 48px
+  min-height: 36px
 
 .strand-item__stem:hover
-  background-color: #ddd
+  background-color: #dadada
 
 .strand-item__branch-container
   position: absolute
@@ -280,12 +284,12 @@ export default
 .strand-item__branch
   position: relative
   float: left
-  top: -24px
-  border: 2px solid #ddd
+  top: -13px
+  border: 2px solid #dadada
   right: -2px
-  height: 48px
+  height: 28px
   border-radius: 64px
-  width: 48px
+  width: 35px
   margin-left: calc(50% - 1px)
   border-style: solid
 

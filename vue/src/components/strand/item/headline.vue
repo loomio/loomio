@@ -37,9 +37,14 @@ h3.strand-item__headline.body-2(tabindex="-1" :id="'event-' + event.id")
       time-ago(:date='eventable.discardedAt')
   div.d-flex.align-center(v-else)
     slot(name="headline")
-      span(v-html='headline')
+      span.strand-item__headline(v-html='headline')
     mid-dot
     router-link.grey--text.body-2(:to='link')
       time-ago(:date='event.createdAt')
 
 </template>
+<style lang="sass">
+.strand-item__headline
+  strong
+    font-weight: 400
+</style>

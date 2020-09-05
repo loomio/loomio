@@ -129,8 +129,8 @@ export default class ThreadLoader
       @records = @records.concat(chain.data())
 
     @records = uniq orderBy @records, 'positionKey'
-    console.log @records
-    console.log("includes 00001-00001", @records.find((r) -> r.positionKey == "00001-00001"))
+    # console.log @records
+    # console.log("includes 00001-00001", @records.find((r) -> r.positionKey == "00001-00001"))
     # console.log(Records.events.collection.chain().find(positionKey: "00001-00001").data())
 
     # find records with no parentId or, where no event with that parentId in records
@@ -151,7 +151,7 @@ export default class ThreadLoader
         {event: event, children: (eventsByParentId[event.id] && nest(eventsByParentId[event.id])) || []}
       orderBy r, 'positionKey'
 
-    @collection = nest(orphans)
+    @collection = nest(parents)
 
     # console.log 'rules', rules.length, rules
     # console.log 'eventIds', eventIds.length, eventIds
