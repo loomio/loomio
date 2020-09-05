@@ -164,6 +164,7 @@ module.exports = {
   StrandPage: 'strand/page',
   StrandWall: 'strand/wall',
   StrandTitle: 'strand/title',
+  StrandNav: 'strand/nav',
   StrandItemHeadline: 'strand/item/headline',
   ThreadActionsPanel: 'thread/actions_panel',
   ThreadCard: 'thread/card',
