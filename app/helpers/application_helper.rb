@@ -1,11 +1,11 @@
 module ApplicationHelper
   def vue_css_includes
-    vue_index = File.read(Rails.root.join('public/client/vue/index.html'))
+    vue_index = File.read(Rails.root.join('public/blient/vue/index.html'))
     Nokogiri::HTML(vue_index).css('head link[as=style], head link[rel=stylesheet]').to_s
   end
 
   def vue_js_includes
-    vue_index = File.read(Rails.root.join('public/client/vue/index.html'))
+    vue_index = File.read(Rails.root.join('public/blient/vue/index.html'))
     Nokogiri::HTML(vue_index).css('head link[as=script], script').to_s
   end
 
@@ -20,7 +20,7 @@ module ApplicationHelper
   def resource
     ModelLocator.new(resource_name, params).locate
   end
-  
+
   def assign_resource
     instance_variable_get("@#{resource_name}") ||
     instance_variable_set("@#{resource_name}", resource)

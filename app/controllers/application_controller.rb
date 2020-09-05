@@ -68,7 +68,7 @@ class ApplicationController < ActionController::Base
   def boot_app(status: 200)
     expires_now
     prevent_caching
-    template = File.read(Rails.root.join('public/client/vue/index.html'))
+    template = File.read(Rails.root.join('public/blient/vue/index.html'))
 
     if request.format.html?
       template.gsub!('<div class=upgrade-browser></div>', '<%= render "application/upgrade_browser" %>')

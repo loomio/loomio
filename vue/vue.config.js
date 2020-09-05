@@ -39,8 +39,8 @@ module.exports = env => {
       //   })
       // ],
     },
-    outputDir: '../public/client/vue',
-    assetsDir: (process.env.NODE_ENV == 'production') ? '../../client/vue' : 'client/vue',
+    outputDir: '../public/blient/vue',
+    assetsDir: (process.env.NODE_ENV == 'production') ? '../../blient/vue' : 'blient/vue',
     devServer: {
      proxy: {
      '^/(api|dev|login_tokens|theme|fonts|img|join|invitations|system|direct_uploads|rails|slack|oauth|facebook|google|beta|admin|assets|upgrade|pricing|special_pricing|community_applications|417|saml_providers|merge_users|intro|bcorp|ahoy|sidekiq|message-bus)': {target: 'http://localhost:3000'},

@@ -17,7 +17,7 @@ module.exports = {
     }
   },
   output: {
-    path: path.resolve(__dirname, '../public/client/webpack'),
+    path: path.resolve(__dirname, '../public/blient/vue/webpack'),
     filename: 'app.js'
   },
   module: {

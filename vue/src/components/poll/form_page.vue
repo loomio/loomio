@@ -62,11 +62,14 @@ export default
   v-main
     v-container.max-width-800
       loading(:until="poll")
-        v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
+        v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" v-if="poll")
           submit-overlay(:value="poll.processing")
           v-card-title
             h1.headline(tabindex="-1" v-t="title_key")
-          div
+            v-spacer
+            v-btn(icon :to="urlFor(poll)" aria-hidden='true')
+              v-icon mdi-close
+          div.pa-4
             v-alert(v-model="isEditing" color="primary" type="warning")
               template(slot="default")
                 span(v-t="{ path: 'poll_common.edit_warning', args: { pollType: poll.translatedPollType() }}")
