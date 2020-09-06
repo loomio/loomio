@@ -76,7 +76,8 @@ class API::EventsController < API::RestfulController
 
     if params[:unread] == 'true'
       reader = DiscussionReader.for(user: current_user, discussion: @discussion)
-      records = records.where(sequence_id: reader.unread_ranges.map{ |range| range[0]..range[1] })
+      # could also be where in unread_ranges, but there is a bug on http://localhost:8080/s/njwV5RpS
+      records = records.where.not(sequence_id: reader.read_ranges.map{ |range| range[0]..range[1] })
     end
 
     if params[:pinned] == 'true'
