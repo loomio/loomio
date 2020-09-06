@@ -113,7 +113,7 @@ export default class PollModel extends BaseModel
     @closedAt?
 
   showResults: ->
-    @closedAt? || (!@hideResultsUntilClosed && ((@myStance() || {}).castAt || @pleaseShowResults))
+    @closedAt? || !@hideResultsUntilClosed
 
   close: =>
     @processing = true
