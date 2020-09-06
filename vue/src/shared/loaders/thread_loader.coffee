@@ -89,10 +89,10 @@ export default class ThreadLoader
       name: 'newest first'
       local:
         discussionId: @discussion.id
-        position: {$gte: @discussion.createdEvent.childCount - 10}
+        position: {$gte: @discussion.createdEvent().childCount - 10}
       remote:
         discussion_id: @discussion.id
-        from_sequence_id_of_position: @discussion.createdEvent.childCount - 10
+        from_sequence_id_of_position: @discussion.createdEvent().childCount - 10
         order: 'sequence_id'
 
   addLoadOldestFirstRule: ->

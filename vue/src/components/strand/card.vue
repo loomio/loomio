@@ -9,10 +9,14 @@ import Records from '@/shared/services/records'
 import Flash   from '@/shared/services/flash'
 import { print } from '@/shared/helpers/window'
 import ThreadService  from '@/shared/services/thread_service'
+import StrandActionsPanel from './actions_panel'
 
 excludeTypes = 'group discussion author'
 
 export default
+  components:
+    StrandActionsPanel: StrandActionsPanel
+
   props:
     loader: Object
 
@@ -29,9 +33,9 @@ export default
 
 <template lang="pug">
 .strand-card.mb-8.pr-4
-  thread-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
   //- p(v-for="rule in loader.rules") {{rule.name}}
   strand-list(:loader="loader" :collection="loader.collection")
+  strand-actions-panel(:discussion="discussion")
   //- thread-actions-panel(v-if="!discussion.newestFirst" :discussion="discussion")
 </template>
 <style lang="sass">
