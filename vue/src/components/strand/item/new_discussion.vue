@@ -32,6 +32,12 @@ export default
     statusTitle: ->
       @$t("context_panel.thread_status.#{@status}")
 
+    groups: ->
+      map compact([@discussion.group().parent(), @discussion.group()]), (group) =>
+        text: group.name
+        disabled: false
+        to: @urlFor(group)
+
   methods:
     viewed: (viewed) ->
       @discussion.markAsSeen() if viewed
@@ -51,8 +57,13 @@ export default
   .strand-item-headline
     //- | context
     span
+      user-avatar(:user="discussion.author()" size="36")
+      mid-dot
       router-link(:to="urlFor(discussion.author())" title="Thread author") {{discussion.authorName()}}
       mid-dot
+      span(v-for="group in groups")
+        | {{group.text}}
+        mid-dot
       span(aria-label="Thread privacy")
         span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private(v-show='discussion.private')
           i.mdi.mdi-lock-outline
@@ -60,11 +71,13 @@ export default
         span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public(v-show='!discussion.private')
           i.mdi.mdi-earth
           span(v-t="'common.privacy.public'")
+
+      mid-dot
       span(v-show='discussion.seenByCount > 0')
-        mid-dot
         a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
     .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'" v-if='discussion.closedAt')
       v-tooltip(bottom) {{ exactDate(discussion.closedAt) }}
+  strand-title(:discussion="discussion")
   template(v-if="!collapsed")
     formatted-text.context-panel__description(:model="discussion" column="description" aria-label="Discussion context")
     document-list(:model='discussion')

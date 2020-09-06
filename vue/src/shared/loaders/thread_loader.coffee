@@ -19,6 +19,26 @@ export default class ThreadLoader
   expand: (id) ->
     Vue.set(@collapsed, id, false)
 
+  jumpToEarliest: ->
+    @reset()
+    @addLoadOldestFirstRule()
+    @fetch()
+
+  jumpToLatest: ->
+    @reset()
+    @addLoadNewestFirstRule()
+    @fetch()
+
+  jumpToUnread: ->
+    @reset()
+    @addLoadUnreadRule()
+    @fetch()
+
+  jumpToSequenceId: (id) ->
+    @reset()
+    @addLoadSequenceIdRule(id)
+    @fetch()
+
   addLoadCommentRule: (commentId) ->
     @rules.push
       name: "comment from url"

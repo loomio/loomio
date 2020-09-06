@@ -43,14 +43,14 @@ export default
 
 <template lang="pug">
 .strand-nav
-  p(v-for="rule in loader.rules") {{rule}}
+  p(v-for="rule,index in loader.rules" :key="index") {{rule}}
   ul.strand-nav
     h5 thread positions
     li(@click="loader.jumpToEarliest()") Earliest
     li(@click="loader.jumpToUnread()") Unread
     li(@click="loader.jumpToLatest()") Latest
     h5 context headings
-    li(v-for="heading in headings" :key="heading.id") {{heading.name}}
+    li(v-for="heading, index in headings" :key="index") {{heading.name}}
     h5 pinned events
     li(v-for="event in presets" :key="event.id" @click="loader.jumpToSequenceId(event.sequenceId)") {{event.pinnedTitle || event.suggestedTitle()}}
     //- hr

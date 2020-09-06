@@ -5,6 +5,7 @@ import NewDiscussion from '@/components/strand/item/new_discussion.vue'
 import PollCreated from '@/components/strand/item/poll_created.vue'
 import StanceCreated from '@/components/strand/item/stance_created.vue'
 import OutcomeCreated from '@/components/strand/item/outcome_created.vue'
+import StrandLoadMore from '@/components/strand/load_more.vue'
 import OtherKind from '@/components/strand/item/other_kind.vue'
 import RangeSet from '@/shared/services/range_set'
 import { camelCase, first, last, some } from 'lodash'
@@ -25,6 +26,7 @@ export default
     StanceCreated: StanceCreated
     OutcomeCreated: OutcomeCreated
     OtherKind: OtherKind
+    StrandLoadMore: StrandLoadMore
 
   computed:
     parentExists: ->
@@ -153,31 +155,30 @@ export default
       .strand-item__gutter
         .strand-item__circle(@click="loadBefore(obj.event)")
           v-icon mdi-unfold-more-horizontal
-      .strand-item__load-more
-        v-btn.action-button(text v-t="{path: 'common.action.count_more', args: {count: countEarlierMissing(obj.event.position)}}" @click="loadBefore(obj.event)")
+      strand-load-more(:label="{path: 'common.action.count_more', args: {count: countEarlierMissing(obj.event.position)}}" @click="loadBefore(obj.event)")
 
     .strand-item__row
-      .strand-item__gutter(@click.stop="loader.collapse(obj.event.id)")
+      .strand-item__gutter(v-if="obj.event.depth > 0" @click.stop="loader.collapse(obj.event.id)")
         .strand-item__circle(v-if="loader.collapsed[obj.event.id]" @click.stop="loader.expand(obj.event.id)")
           v-icon mdi-unfold-more-horizontal
         template(v-else)
           user-avatar(:user="obj.event.actor()" :size="(obj.event.depth > 1) ? 28 : 36" no-link)
           .strand-item__stem(v-if="" :class="{'strand-item__stem--unread': isUnread(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
-          //- .strand-item__stem-stop(v-if="obj.event.position == siblingCount")
       .strand-item__main
         //- | {{obj.event.sequenceId}} {{obj.event.positionKey}} {{obj.event.childCount}} {{obj.event.descendantCount}}
         component(:is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="loader.collapsed[obj.event.id]")
 
-    .strand-item__row.strand-list__children(v-if="obj.event.childCount")
-      .strand-item__gutter(v-if="index+1 != siblingCount" @click="loader.collapse(obj.event.id)")
-        .strand-item__branch-container
-          .strand-item__branch &nbsp;
-        .strand-item__stem(v-if="(index+1 != collection.length) || obj.children")
+        .strand-list__children(v-if="obj.event.childCount")
+          //- .strand-item__gutter(v-if="index+1 != siblingCount" @click="loader.collapse(obj.event.id)")
+          //-   .strand-item__branch-container
+          //-     .strand-item__branch &nbsp;
+          //-   .strand-item__stem(v-if="(index+1 != collection.length) || obj.children")
 
-      //- | obj.children {{obj.children.length}}
-      strand-list.flex-grow-1(v-if="obj.children.length && !loader.collapsed[obj.event.id]" :loader="loader" :collection="obj.children")
-      .strand-item__load-more(v-else)
-        v-btn.action-button(text @click="loadChildren(obj.event)" v-t="{path: 'common.action.count_responses', args: {count: obj.event.descendantCount}}")
+          //- | obj.children {{obj.children.length}}
+          strand-list.flex-grow-1(v-if="obj.children.length && !loader.collapsed[obj.event.id]" :loader="loader" :collection="obj.children")
+          .strand-item__load-more(v-else)
+            //- v-btn.action-button(text block @click="loadChildren(obj.event)" v-t="{path: 'common.action.count_responses', args: {count: obj.event.descendantCount}}")
+            strand-load-more(:label="{path: 'common.action.count_responses', args: {count: obj.event.descendantCount}}" @click="loadChildren(obj.event)")
 
     .strand-item__row(v-if="lastPosition != 0 && isLastInLastRange(obj.event.position) && obj.event.position != lastPosition")
       .strand-item__gutter
@@ -186,7 +187,7 @@ export default
       .strand-item__load-more
         //- | {{obj.event.parent().parentOrSelf().childCount}}
         //- | {{obj.event.positionKey}}
-        v-btn.action-button(text v-t="{path: 'common.action.count_more', args:{count: countLaterMissing()}}" @click="loadAfter(obj.event)")
+        strand-load-more(:label="{path: 'common.action.count_more', args:{count: countLaterMissing()}}" @click="loadAfter(obj.event)")
         //- | {{lastPosition}} {{ranges}}
 </template>
 
@@ -229,7 +230,7 @@ export default
 
 .strand-item__gutter:hover
   .strand-item__stem
-    background-color: #aaa
+    background-color: #999
 
 .strand-item__main
   flex-grow: 1
@@ -272,6 +273,10 @@ export default
   display: flex
   align-items: center
   min-height: 36px
+  width: 100%
+  justify-content: center
+  // background: linear-gradient(180deg, rgba(0,0,0,0) calc(50% - 1px), rgba(192,192,192,1) calc(50%), rgba(0,0,0,0) calc(50% + 1px) )
+
 
 .strand-item__stem:hover
   background-color: #dadada

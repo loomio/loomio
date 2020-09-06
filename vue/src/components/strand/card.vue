@@ -29,7 +29,6 @@ export default
 
 <template lang="pug">
 .strand-card.mb-8.pr-4
-  strand-title(:discussion="discussion")
   thread-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
   //- p(v-for="rule in loader.rules") {{rule.name}}
   strand-list(:loader="loader" :collection="loader.collection")

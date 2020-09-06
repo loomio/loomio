@@ -9,11 +9,6 @@ export default
     discussion: Object
 
   computed:
-    groups: ->
-      map compact([@discussion.group().parent(), @discussion.group()]), (group) =>
-        text: group.name
-        disabled: false
-        to: @urlFor(group)
 
     status: ->
       return 'pinned' if @discussion.pinned
@@ -26,17 +21,14 @@ export default
 
 <template lang="pug">
 .thread-title.mb-4
-  v-layout(align-center mr-3 ml-2 pt-2 wrap)
-    v-breadcrumbs.context-panel__breadcrumbs(aria-label="Group" :items="groups" divider=">")
-    tags-display(:discussion="discussion")
-    //- span
-    //- v-spacer
-    //- span.grey--text.body-2
-    //-   time-ago(aria-label="Thread started" :date='discussion.createdAt')
+  //- span
+  //- v-spacer
+  //- span.grey--text.body-2
+  //-   time-ago(aria-label="Thread started" :date='discussion.createdAt')
 
-  h1.display-1.context-panel__heading.px-3#sequence-0(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
-    i.mdi.mdi-pin.context-panel__heading-pin(v-if="status == 'pinned'")
+  h1.display-1.context-panel__heading#sequence-0(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
     span(v-if='!discussion.translation.title') {{discussion.title}}
     span(v-if='discussion.translation.title')
       translation(:model='discussion', field='title')
+    i.mdi.mdi-pin.context-panel__heading-pin(v-if="status == 'pinned'")
 </template>
