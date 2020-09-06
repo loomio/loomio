@@ -42,20 +42,26 @@ export default
 </script>
 
 <template lang="pug">
-.strand-nav
+.strand-nav.pt-8.d-flex.justify-center
   //- p readRanges {{discussion.readRanges}}
   //- p unreadRanges{{discussion.unreadRanges()}}
   //- p(v-for="rule,index in loader.rules" :key="index") {{rule}}
-  ul.strand-nav
-    h5 thread positions
-    li(@click="loader.jumpToEarliest()") Earliest
-    li(@click="loader.jumpToUnread()") Unread
-    li(@click="loader.jumpToLatest()") Latest
-    li(@click="loader.loadEverything()") Everything
-    h5 context headings
-    li(v-for="heading, index in headings" :key="index") {{heading.name}}
-    h5 pinned events
-    li(v-for="event in presets" :key="event.id" @click="loader.jumpToSequenceId(event.sequenceId)") {{event.pinnedTitle || event.suggestedTitle()}}
+  v-menu(scale)
+    template(v-slot:activator="{ on, attrs }")
+      v-btn(rounded v-bind="attrs" v-on="on" ) Jump to
+    v-list(dense)
+      //- v-list-item
+      //- ul.strand-nav
+      v-subheader Jump to
+      v-list-item(@click="loader.jumpToEarliest()") Earliest
+      v-list-item(@click="loader.jumpToUnread()") Unread
+      v-list-item(@click="loader.jumpToLatest()") Latest
+      v-list-item(@click="loader.loadEverything()") Everything
+      v-subheader(v-if="headings.length") Table of contents
+      v-list-item(v-for="heading, index in headings" :key="index") {{heading.name}}
+      div(v-if="presets.length")
+        v-subheader Pinned events
+        v-list-item(v-for="event in presets" :key="event.id" @click="loader.jumpToSequenceId(event.sequenceId)") {{event.pinnedTitle || event.suggestedTitle()}}
     //- hr
     //- input(type="text" placeholder="search")
     //- li(v-for="pin in pins")
