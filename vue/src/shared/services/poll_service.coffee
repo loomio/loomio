@@ -41,6 +41,7 @@ export default new class PollService
       perform: =>
         openModal
           component: 'PollCommonEditVoteModal',
+          maxWidth: 720
           props:
             stance: poll.myStance().clone()
 

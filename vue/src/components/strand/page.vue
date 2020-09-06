@@ -42,6 +42,11 @@ export default
           discussion: @discussion
           group: @discussion.group()
           title: @discussion.title
+
+        @watchRecords
+          key: 'strand'+@discussion.id
+          collections: ['events']
+          query: => @loader.updateCollection()
       # .catch (error) =>
       #   EventBus.$emit 'pageError', error
       #   EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()

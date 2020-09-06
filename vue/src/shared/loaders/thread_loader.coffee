@@ -2,6 +2,7 @@ import Records from '@/shared/services/records'
 import { isNumber, uniq, compact, orderBy, camelCase, forEach, isObject } from 'lodash'
 import Vue from 'vue'
 import RangeSet         from '@/shared/services/range_set'
+import Session from '@/shared/services/session'
 
 padding = 10
 
@@ -14,6 +15,12 @@ export default class ThreadLoader
     @collection = Vue.observable([])
     @rules = []
     @collapsed = Vue.observable({})
+    @rules.push
+      name: "my stuff"
+      local:
+        find:
+          discussionId: @discussion.id
+          actorId: Session.user().id
 
   collapse: (id) ->
     Vue.set(@collapsed, id, true)
@@ -40,6 +47,7 @@ export default class ThreadLoader
     @reset()
     @addLoadSequenceIdRule(id)
     @fetch()
+
 
   loadEverything: ->
     @addRule
@@ -167,6 +175,11 @@ export default class ThreadLoader
         order: 'sequence_id'
 
   addLoadNewestFirstRule: () ->
+    @rules.push
+      name: 'context'
+      local:
+        find:
+          id: @discussion.createdEvent().id
     @rules.push
       name: 'newest first'
       local:

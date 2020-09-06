@@ -121,7 +121,7 @@ export default
         //- | {{obj.event.sequenceId}} {{obj.event.positionKey}} {{obj.event.childCount}} {{obj.event.descendantCount}}
         component(:is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="loader.collapsed[obj.event.id]")
 
-        .strand-list__children(v-if="obj.event.childCount")
+        .strand-list__children.pt-2(v-if="obj.event.childCount")
           //- .strand-item__gutter(v-if="index+1 != siblingCount" @click="loader.collapse(obj.event.id)")
           //-   .strand-item__branch-container
           //-     .strand-item__branch &nbsp;
