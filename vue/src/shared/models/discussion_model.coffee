@@ -202,6 +202,15 @@ export default class DiscussionModel extends BaseModel
   firstUnreadSequenceId: ->
     RangeSet.firstMissing(@ranges, @readRanges)
 
+  readSequenceIds: ->
+    RangeSet.rangesToArray(@readRanges)
+
+  unreadRanges: ->
+    RangeSet.subtractRanges(@ranges, @readRanges)
+
+  unreadSequenceIds: ->
+    RangeSet.rangesToArray(@unreadRanges())
+
   dismiss: ->
     @update(dismissedAt: new Date)
     @processing = true

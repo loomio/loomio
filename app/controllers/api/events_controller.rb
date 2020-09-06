@@ -41,19 +41,19 @@ class API::EventsController < API::RestfulController
   end
 
   def from
-    if params[:from_unread]
-      reader = DiscussionReader.for(user: current_user, discussion: @discussion)
-      if reader.unread_items_count == 0
-        id = @discussion.last_sequence_id - per + 2
-        if id > 0
-          id
-        else
-          @discussion.first_sequence_id
-        end
-      else
-        reader.first_unread_sequence_id
-      end
-    elsif params[:from_sequence_id_of_position]
+    # if params[:from_unread]
+    #   reader = DiscussionReader.for(user: current_user, discussion: @discussion)
+    #   if reader.unread_items_count == 0
+    #     id = @discussion.last_sequence_id - per + 2
+    #     if id > 0
+    #       id
+    #     else
+    #       @discussion.first_sequence_id
+    #     end
+    #   else
+    #     reader.first_unread_sequence_id
+    #   end
+    if params[:from_sequence_id_of_position]
       position = [params[:from_sequence_id_of_position].to_i, 1].max
       Event.find_by!(discussion: @discussion, depth: 1, position: position)&.sequence_id
     elsif params[:comment_id]
@@ -72,6 +72,11 @@ class API::EventsController < API::RestfulController
       records = records.order("#{params[:order_by]}#{params[:order_desc] ? " DESC" : ''}")
     else
       records = records.where("#{order} >= ?", from)
+    end
+
+    if params[:unread] == 'true'
+      reader = DiscussionReader.for(user: current_user, discussion: @discussion)
+      records = records.where(sequence_id: reader.unread_ranges.map{ |range| range[0]..range[1] })
     end
 
     if params[:pinned] == 'true'

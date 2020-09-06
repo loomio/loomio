@@ -89,11 +89,12 @@ export default class ThreadLoader
       name: 'newest first'
       local:
         discussionId: @discussion.id
-        position: {$gte: @discussion.createdEvent().childCount - 10}
+        # position: {$gte: @discussion.createdEvent().childCount - 3}
       remote:
         discussion_id: @discussion.id
-        from_sequence_id_of_position: @discussion.createdEvent().childCount - 10
-        order: 'sequence_id'
+        per: 5
+        order_by: 'sequence_id'
+        order_desc: true
 
   addLoadOldestFirstRule: ->
     @rules.push
@@ -123,12 +124,14 @@ export default class ThreadLoader
       name: {path: "thread_loader.new_to_you", args: {since: @discussion.lastReadAt}}
       local:
         discussionId: @discussion.id
-        sequenceId: {$gte: @discussion.firstUnreadSequenceId()}
+        sequenceId: {$and: @discussion.unreadRanges().map((r) -> {$between: r} )}
       remote:
         discussion_id: @discussion.id
-        from: @discussion.firstUnreadSequenceId()
-        order: 'sequence_id'
-        per: 5
+        unread: true
+        order_by: "sequence_id"
+        # from: @discussion.firstUnreadSequenceId()
+        # order: 'sequence_id'
+        # per: 5
 
 
   addRule: (rule) ->
@@ -160,18 +163,18 @@ export default class ThreadLoader
 
       @records = @records.concat(chain.data())
 
-    @records = uniq orderBy @records, 'positionKey'
+    @records = uniq @records.concat(compact(@records.map (o) -> o.parent()))
+    @records = orderBy @records, 'positionKey'
+    eventIds = @records.map (event) -> event.id
+
+    orphans = @records.filter (event) ->
+      event.parentId == null || !eventIds.includes(event.parentId)
     # console.log @records
     # console.log("includes 00001-00001", @records.find((r) -> r.positionKey == "00001-00001"))
     # console.log(Records.events.collection.chain().find(positionKey: "00001-00001").data())
 
     # find records with no parentId or, where no event with that parentId in records
-    eventIds = @records.map (event) -> event.id
-    orphans = @records.filter (event) ->
-      event.parentId == null || !eventIds.includes(event.parentId)
 
-    parents = orphans.map (o) -> o.parentOrSelf()
-    parents = uniq orderBy parents, 'positionKey'
 
     eventsByParentId = {}
     @records.forEach (event) =>
@@ -181,9 +184,9 @@ export default class ThreadLoader
     nest = (records) ->
       r = records.map (event) ->
         {event: event, children: (eventsByParentId[event.id] && nest(eventsByParentId[event.id])) || []}
-      orderBy r, 'positionKey'
+      # orderBy r, 'positionKey'
 
-    @collection = nest(parents)
+    @collection = nest(orphans)
 
     # console.log 'rules', rules.length, rules
     # console.log 'eventIds', eventIds.length, eventIds

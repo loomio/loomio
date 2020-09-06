@@ -163,9 +163,9 @@ export default
           v-icon mdi-unfold-more-horizontal
         template(v-else)
           user-avatar(:user="obj.event.actor()" :size="(obj.event.depth > 1) ? 28 : 36" no-link)
-          v-badge(offset-x="48" offset-y="-24" icon="mdi-pin" v-if="obj.event.pinned")
+          v-badge(offset-x="48" offset-y="-24" icon="mdi-pin" v-if="obj.event.pinned" color="accent")
             //- i.mdi.mdi-pin.context-panel__heading-pin()
-          .strand-item__stem(v-if="" :class="{'strand-item__stem--unread': isUnread(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
+          .strand-item__stem(:class="{'strand-item__stem--unread': isUnread(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
       .strand-item__main
         //- | {{obj.event.sequenceId}} {{obj.event.positionKey}} {{obj.event.childCount}} {{obj.event.descendantCount}}
         component(:is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="loader.collapsed[obj.event.id]")
@@ -245,6 +245,9 @@ export default
   background-color: #dadada
   margin: 0 18px
 
+.strand-item__stem--unread
+  background-color: var(--v-primary-base)!important
+
 .strand-item__stem--last
   height: calc(100% - 44px)
 
@@ -256,8 +259,6 @@ export default
 //   background-color: #ddd
 //   margin: 0 24px
 
-.strand-item__stem--unread
-  background-color: blue!important
 
 .strand-item__circle
   display: flex
@@ -278,7 +279,6 @@ export default
   width: 100%
   justify-content: center
   // background: linear-gradient(180deg, rgba(0,0,0,0) calc(50% - 1px), rgba(192,192,192,1) calc(50%), rgba(0,0,0,0) calc(50% + 1px) )
-
 
 .strand-item__stem:hover
   background-color: #dadada
