@@ -4,7 +4,7 @@ import Vue from 'vue'
 import RangeSet         from '@/shared/services/range_set'
 import Session from '@/shared/services/session'
 
-padding = 10
+padding = 20
 
 export default class ThreadLoader
   constructor: (discussion) ->
