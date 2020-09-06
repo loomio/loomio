@@ -1609,7 +1609,7 @@ en:
     anonymous: Votes are anonymous
     results_hidden_until_closed: Results are hidden until the %{poll_type} has closed
     unable_to_vote: You do not have permission to vote in this decision.
-    draft_mode: This %{poll_type} is in draft mode. Voting is disabled.
+    draft_mode: This %{poll_type} is a work in progress. Voting is disabled.
 
   current_polls_card:
     title: Current decisions
@@ -1691,7 +1691,7 @@ en:
     success: "{{poll_type}} moved to {{group}}"
 
   poll_common_closing_at_field:
-    draft: Draft mode
+    draft: Work in progress
     closing: Closing
     closing_hour: Closing time
     invalid_date: Invalid date

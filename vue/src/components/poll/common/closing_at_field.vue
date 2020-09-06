@@ -15,8 +15,8 @@ export default
     timeZone: AppConfig.timeZone
     isShowingDatePicker: false
     validDate: => isValid(parse("#{@closingDate} #{@closingHour}", "yyyy-MM-dd HH:mm", new Date()))
-    draft: false
-
+    draft: !@poll.closingAt
+    
   methods:
     exact: exact
     updateClosingAt: ->
@@ -34,6 +34,7 @@ export default
         @poll.closingAt = null
       else
         @poll.closingAt = startOfHour(addDays(new Date, 3))
+
     'poll.closingAt': (val) ->
       return unless val
       @closingHour = format(startOfHour(@poll.closingAt), 'HH:mm')
@@ -45,10 +46,11 @@ export default
 
 <template lang="pug">
 div
+  | {{draft}} {{poll.closingAt}}
   v-checkbox.poll-common-closing-at-field--draft(hide-details v-model="draft" :label="$t('poll_common_closing_at_field.draft')")
   p(v-if="poll.closingAt") Use draft mode to collaborate on the propsal before voting.
   p(v-if="!poll.closingAt") The proposal will be available for review and editing, but voting is disabled. To start voting, turn off draft mode.
-  .poll-common-closing-at-field.my-3(v-if="!draft")
+  .poll-common-closing-at-field.my-3(v-if="poll.closingAt")
     .poll-common-closing-at-field__inputs
       v-layout(wrap)
         v-flex

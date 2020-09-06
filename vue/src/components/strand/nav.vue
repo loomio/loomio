@@ -43,10 +43,10 @@ export default
 
 <template lang="pug">
 div
-  div
-    p readRanges {{discussion.readRanges}}
-    p unreadRanges{{discussion.unreadRanges()}}
-    p(v-for="rule,index in loader.rules" :key="index") {{rule}}
+  //- div
+  //-   p readRanges {{discussion.readRanges}}
+  //-   p unreadRanges{{discussion.unreadRanges()}}
+  //-   p(v-for="rule,index in loader.rules" :key="index") {{rule}}
 
   .strand-nav.pt-8.d-flex.justify-center
 

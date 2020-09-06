@@ -53,7 +53,7 @@ export default
       'poll_' + @poll.pollType + '_form.'+mode+'_header'
 
     isEditing: ->
-      !@poll.isNew()
+      !@poll.isNew() && @poll.closingAt
 
 
 </script>
