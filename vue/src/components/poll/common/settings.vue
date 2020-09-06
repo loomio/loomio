@@ -22,6 +22,6 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-settings
+.poll-common-settings(v-if="poll.closingAt")
   v-checkbox.poll-common-checkbox-option(v-for="(setting, index) in settings" hide-details :disabled="settingDisabled(setting)" :key="index" v-model="poll[setting]" :class="'poll-settings-' + kebabify(setting)" :label="$t('poll_common_settings.' + snakify(setting) + '.title')")
 </template>
