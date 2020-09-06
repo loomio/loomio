@@ -5,7 +5,7 @@ import {invokeMap, without} from 'lodash'
 export default class EventModel extends BaseModel
   @singular: 'event'
   @plural: 'events'
-  @indices: ['id', 'actorId', 'discussionId', 'sequenceId', 'position', 'depth', 'parentId']
+  @indices: ['discussionId', 'sequenceId', 'position', 'depth', 'parentId', 'positionKey']
 
   @eventTypeMap:
     Group: 'groups'

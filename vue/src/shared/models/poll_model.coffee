@@ -10,7 +10,7 @@ import { head, orderBy, map, includes, difference, invokeMap, each, max, slice, 
 export default class PollModel extends BaseModel
   @singular: 'poll'
   @plural: 'polls'
-  @indices: ['discussionId', 'authorId', 'latest']
+  @indices: ['discussionId', 'authorId', 'groupId']
 
   afterConstruction: ->
     HasDocuments.apply @, showTitle: true

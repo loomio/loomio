@@ -141,7 +141,7 @@ export default new class AbilityService
     (comment.discussion().adminsInclude(Session.user()) and comment.group().adminsCanEditUserContent) or
 
     (comment.authorIs(Session.user()) and
-     (comment.isMostRecent() or comment.group().membersCanEditComments) and
+     comment.group().membersCanEditComments and
      comment.discussion().membersInclude(Session.user()))
 
   canDeleteComment: (comment) ->

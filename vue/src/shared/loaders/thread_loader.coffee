@@ -51,6 +51,7 @@ export default class ThreadLoader
         per: 1000
 
   loadChildren: (event) ->
+    @expand(event.id)
     @addRule
       local:
         find:
@@ -102,7 +103,6 @@ export default class ThreadLoader
         find:
           discussionId: @discussion.id
           depth: event.depth + 1
-          # position: {$lt: 3}
           positionKey: {$lt: event.positionKey}
         simplesort: 'positionKey'
         simplesortDesc: true
@@ -244,7 +244,6 @@ export default class ThreadLoader
     @rules.forEach (rule) =>
       args = Object.assign({}, rule.local.find)
       chain = Records.events.collection.chain()
-      console.log(rule)
       forEach args, (value, key) ->
         if isObject(value)
           # eg: value = {$lte: asdads,  $gte: asdasd}

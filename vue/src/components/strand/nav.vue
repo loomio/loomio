@@ -43,9 +43,9 @@ export default
 
 <template lang="pug">
 .strand-nav
-  p readRanges {{discussion.readRanges}}
-  p unreadRanges{{discussion.unreadRanges()}}
-  p(v-for="rule,index in loader.rules" :key="index") {{rule}}
+  //- p readRanges {{discussion.readRanges}}
+  //- p unreadRanges{{discussion.unreadRanges()}}
+  //- p(v-for="rule,index in loader.rules" :key="index") {{rule}}
   ul.strand-nav
     h5 thread positions
     li(@click="loader.jumpToEarliest()") Earliest

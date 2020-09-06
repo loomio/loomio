@@ -7,7 +7,7 @@ import { sumBy, map, head, each, compact, flatten, includes, find, orderBy } fro
 export default class StanceModel extends BaseModel
   @singular: 'stance'
   @plural: 'stances'
-  @indices: ['pollId']
+  @indices: ['pollId', 'latest']
 
   afterConstruction: ->
     HasTranslations.apply @
