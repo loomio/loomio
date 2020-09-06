@@ -71,11 +71,15 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop
   opacity: 0.3 !important
 
 .poll-proposal-vote-form__button
+  border: 1px solid #eee
   cursor: pointer
   input[type=radio]
     position: absolute
     opacity: 0
     width: 0
     height: 0
+  &:hover
+    border: 1px solid var(--v-primary-base)
+
 
 </style>

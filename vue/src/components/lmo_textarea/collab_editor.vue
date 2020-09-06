@@ -325,6 +325,10 @@ div
                   v-icon mdi-format-list-bulleted
                   v-icon.menu-down-arrow mdi-menu-down
               v-list(dense)
+                v-list-item(@click='commands.todo_list')
+                  v-list-item-icon
+                    v-icon mdi-format-list-checks
+                  v-list-item-title(v-t="'formatting.check_list'")
                 v-list-item(@click='commands.bullet_list')
                   v-list-item-icon
                     v-icon mdi-format-list-bulleted
@@ -333,10 +337,6 @@ div
                   v-list-item-icon
                     v-icon mdi-format-list-numbered
                   v-list-item-title(v-t="'formatting.number_list'")
-                v-list-item(@click='commands.todo_list')
-                  v-list-item-icon
-                    v-icon mdi-format-list-checks
-                  v-list-item-title(v-t="'formatting.check_list'")
 
             //- extra text marks
             template(v-if="expanded")
@@ -527,20 +527,24 @@ progress::-moz-progress-bar
 
 ul[data-type="todo_list"]
   padding-left: 0
+
 li[data-type="todo_item"]
   display: flex
   flex-direction: row
 
 .todo-checkbox
   border: 1px solid #999
-  height: 1em
-  width: 1em
+  height: 1.3em
+  width: 1.3em
   box-sizing: border-box
   margin-right: 8px
-  margin-top: 4px
+  margin-top: 0px
   user-select: none
   border-radius: 0.2em
   background-color: transparent
+  &:hover
+    border: 1px solid var(--v-primary-base)
+    // background: #eee
 
 .lmo-textarea .todo-checkbox
   cursor: pointer
@@ -560,9 +564,9 @@ li[data-done="true"]
       text-decoration: line-through
   > .todo-checkbox::before
     position: relative
-    top: -7px
-    color: var(--v-primary-base)
-    font-size: 1.3rem
+    top: -6px
+    color: var(--v-accent-base)
+    font-size: 1.5rem
     content: "✓"
 
 li[data-done="false"]
