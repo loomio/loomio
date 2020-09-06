@@ -41,6 +41,15 @@ export default class ThreadLoader
     @addLoadSequenceIdRule(id)
     @fetch()
 
+  loadEverything: ->
+    @addRule
+      local:
+        find:
+          discussionId: @discussion.id
+      remote:
+        discussion_id: @discussion.id
+        per: 1000
+
   loadChildren: (event) ->
     @addRule
       local:
@@ -163,13 +172,12 @@ export default class ThreadLoader
       local:
         find:
           discussionId: @discussion.id
-          sequenceId: {$gte: @discussion.lastSequenceId() - 5}
         simplesort: 'sequenceId'
         simplesortDesc: true
         limit: padding
       remote:
         discussion_id: @discussion.id
-        per: 10
+        per: padding * 2
         order_by: 'sequence_id'
         order_desc: true
 

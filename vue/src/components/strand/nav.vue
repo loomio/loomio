@@ -51,6 +51,7 @@ export default
     li(@click="loader.jumpToEarliest()") Earliest
     li(@click="loader.jumpToUnread()") Unread
     li(@click="loader.jumpToLatest()") Latest
+    li(@click="loader.loadEverything()") Everything
     h5 context headings
     li(v-for="heading, index in headings" :key="index") {{heading.name}}
     h5 pinned events
