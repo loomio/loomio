@@ -50,6 +50,18 @@ export default class ThreadLoader
         discussion_id: @discussion.id
         comment_id: commentId
 
+  addLoadPinnedRule: ->
+    @rules.push
+      name: "all pinned events"
+      local:
+        discussionId: @discussion.id
+        pinned: true
+        # position: {$gte: position}
+      remote:
+        discussion_id: @discussion.id
+        pinned: true
+        per: 200
+
   addLoadPositionRule: (position) ->
     @rules.push
       name: "position from url"

@@ -54,27 +54,25 @@ export default
 
 <template lang="pug">
 .strand-new-discussion.context-panel.lmo-action-dock-wrapper#context(:aria-label="$t('context_panel.aria_intro', {author: discussion.authorName(), group: discussion.group().fullName})" v-observe-visibility="{callback: viewed, once: true}" v-on:dblclick="editThread.canPerform() && editThread.perform()")
-  .strand-item-headline
+  .strand-item-headline.d-flex.align-center
     //- | context
-    span
-      user-avatar(:user="discussion.author()" size="36")
+    user-avatar.mr-2(:user="discussion.author()" size="36")
+    router-link(:to="urlFor(discussion.author())" title="Thread author") {{discussion.authorName()}}
+    v-spacer
+    span(v-for="group in groups")
+      | {{group.text}}
       mid-dot
-      router-link(:to="urlFor(discussion.author())" title="Thread author") {{discussion.authorName()}}
-      mid-dot
-      span(v-for="group in groups")
-        | {{group.text}}
-        mid-dot
-      span(aria-label="Thread privacy")
-        span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private(v-show='discussion.private')
-          i.mdi.mdi-lock-outline
-          span(v-t="'common.privacy.private'")
-        span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public(v-show='!discussion.private')
-          i.mdi.mdi-earth
-          span(v-t="'common.privacy.public'")
+    span(aria-label="Thread privacy")
+      span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private(v-show='discussion.private')
+        i.mdi.mdi-lock-outline
+        span(v-t="'common.privacy.private'")
+      span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public(v-show='!discussion.private')
+        i.mdi.mdi-earth
+        span(v-t="'common.privacy.public'")
 
-      mid-dot
-      span(v-show='discussion.seenByCount > 0')
-        a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
+    mid-dot
+    span(v-show='discussion.seenByCount > 0')
+      a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
     .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'" v-if='discussion.closedAt')
       v-tooltip(bottom) {{ exactDate(discussion.closedAt) }}
   strand-title(:discussion="discussion")

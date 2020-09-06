@@ -54,6 +54,7 @@ export default
 
       rules = []
 
+      @loader.addLoadPinnedRule()
       if @$route.params.comment_id
         @loader.addLoadCommentRule(parseInt(@$route.params.comment_id))
 

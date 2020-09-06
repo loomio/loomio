@@ -82,7 +82,7 @@ export default class EventModel extends BaseModel
       if el = doc.querySelector('h1,h2,h3')
         el.textContent
       else
-        ''
+        @actor().name
 
   unpin: -> @remote.patchMember(@id, 'unpin')
 

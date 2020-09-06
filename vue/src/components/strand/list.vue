@@ -163,6 +163,8 @@ export default
           v-icon mdi-unfold-more-horizontal
         template(v-else)
           user-avatar(:user="obj.event.actor()" :size="(obj.event.depth > 1) ? 28 : 36" no-link)
+          v-badge(offset-x="48" offset-y="-24" icon="mdi-pin" v-if="obj.event.pinned")
+            //- i.mdi.mdi-pin.context-panel__heading-pin()
           .strand-item__stem(v-if="" :class="{'strand-item__stem--unread': isUnread(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
       .strand-item__main
         //- | {{obj.event.sequenceId}} {{obj.event.positionKey}} {{obj.event.childCount}} {{obj.event.descendantCount}}
