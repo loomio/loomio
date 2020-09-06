@@ -102,7 +102,7 @@ export default class ThreadLoader
         find:
           discussionId: @discussion.id
           depth: event.depth + 1
-          position: {$lt: 3}
+          # position: {$lt: 3}
           positionKey: {$lt: event.positionKey}
         simplesort: 'positionKey'
         simplesortDesc: true
