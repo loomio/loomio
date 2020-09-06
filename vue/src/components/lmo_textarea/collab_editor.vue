@@ -276,32 +276,32 @@ div
               emoji-picker(:insert="emojiPicked")
 
             //- headings menu
-            v-menu
-              template(v-slot:activator="{ on, attrs }")
-                v-btn.drop-down-button(icon v-on="on" v-bind="attrs" :title="$t('formatting.heading_size')")
-                  v-icon mdi-format-size
-                  v-icon.menu-down-arrow mdi-menu-down
-              v-list(dense)
-                template(v-for="i in 3")
-                  v-list-item(@click='commands.heading({ level: i })' :class="{ 'v-list-item--active': isActive.heading({level: i}) }")
-                    v-list-item-icon
-                      v-icon {{'mdi-format-header-'+i}}
-                    v-list-item-title(v-t="'formatting.heading'+i")
-                v-list-item(@click='commands.paragraph()' :class="{ 'v-list-item--active': isActive.paragraph() }")
-                  v-list-item-icon
-                    v-icon mdi-format-pilcrow
-                  v-list-item-title(v-t="'formatting.paragraph'")
+            //- v-menu
+            //-   template(v-slot:activator="{ on, attrs }")
+            //-     v-btn.drop-down-button(icon v-on="on" v-bind="attrs" :title="$t('formatting.heading_size')")
+            //-       v-icon mdi-format-size
+            //-       v-icon.menu-down-arrow mdi-menu-down
+            //-   v-list(dense)
+            //-     template(v-for="i in 3")
+            //-       v-list-item(@click='commands.heading({ level: i })' :class="{ 'v-list-item--active': isActive.heading({level: i}) }")
+            //-         v-list-item-icon
+            //-           v-icon {{'mdi-format-header-'+i}}
+            //-         v-list-item-title(v-t="'formatting.heading'+i")
+            //-     v-list-item(@click='commands.paragraph()' :class="{ 'v-list-item--active': isActive.paragraph() }")
+            //-       v-list-item-icon
+            //-         v-icon mdi-format-pilcrow
+            //-       v-list-item-title(v-t="'formatting.paragraph'")
 
-            //- template(v-if="expanded")
-            //-   v-btn(icon @click='commands.paragraph()' :outlined="isActive.paragraph()" :title="$t('formatting.paragraph')")
-            //-     v-icon mdi-format-pilcrow
-            //-   template(v-for="i in 3")
-            //-     v-btn(icon @click='commands.heading({ level: i })' :outlined='isActive.heading({level: i})' :title="$t('formatting.heading'+i)")
-            //-       v-icon {{'mdi-format-header-'+i}}
+            template(v-if="expanded")
+              v-btn(icon @click='commands.paragraph()' :outlined="isActive.paragraph()" :title="$t('formatting.paragraph')")
+                v-icon mdi-format-pilcrow
+              template(v-for="i in 3")
+                v-btn(icon @click='commands.heading({ level: i })' :outlined='isActive.heading({level: i})' :title="$t('formatting.heading'+i)")
+                  v-icon {{'mdi-format-header-'+i}}
 
             //- bold
 
-            v-btn(icon @click='commands.bold' :outlined="isActive.bold()" :title="$t('formatting.bold')")
+            v-btn(icon v-if="expanded" @click='commands.bold' :outlined="isActive.bold()" :title="$t('formatting.bold')")
               v-icon mdi-format-bold
 
             //- italic
@@ -375,7 +375,11 @@ div
               v-icon mdi-chevron-left
           //- save button?
           v-spacer
+          slot(v-if="!expanded" name="actions")
+        div.d-flex(v-if="expanded" name="actions")
+          v-spacer
           slot(name="actions")
+
     v-alert(v-if="maxLength && model[field] && model[field].length > maxLength" color='error')
       span( v-t="'poll_common.too_long'")
 
@@ -499,10 +503,11 @@ progress::-moz-progress-bar
     width: 32px
     height: 32px
 
-  .v-btn
+  .v-btn.v-btn--icon
     min-width: 0
     margin-left: 0
     margin-right: 0
+    max-width: 32px
     .v-icon
       font-size: 16px
 
