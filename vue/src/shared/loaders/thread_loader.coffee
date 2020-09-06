@@ -3,6 +3,8 @@ import { isNumber, uniq, compact, orderBy, camelCase, forEach, isObject } from '
 import Vue from 'vue'
 import RangeSet         from '@/shared/services/range_set'
 
+padding = 10
+
 export default class ThreadLoader
   constructor: (discussion) ->
     @discussion = discussion
@@ -39,6 +41,71 @@ export default class ThreadLoader
     @addLoadSequenceIdRule(id)
     @fetch()
 
+  loadChildren: (event) ->
+    @addRule
+      local:
+        find:
+          discussionId: @discussion.id
+          positionKey: {'$regex': "^#{event.positionKey}"}
+        simplesort: 'positionKey'
+        limit: padding
+      remote:
+        discussion_id: @discussion.id
+        position_key_sw: event.positionKey
+        order_by: 'position_key'
+
+  loadAfter: (event) ->
+    @addRule
+      local:
+        find:
+          discussionId: @discussion.id
+          depth: {$gte: event.depth}
+          positionKey: {$gt: event.positionKey}
+        simplesort: 'positionKey'
+        limit: padding
+      remote:
+        discussion_id: @discussion.id
+        position_key_gt: event.positionKey
+        # position_key_prefix: @positionKeyPrefix(event)
+        depth_lte: event.depth + 2
+        depth_gte: event.depth
+        order_by: 'position_key'
+
+  loadBefore: (event) ->
+    @addRule
+      local:
+        find:
+          discussionId: @discussion.id
+          depth: event.depth
+          positionKey: {$lt: event.positionKey}
+        simplesort: 'positionKey'
+        simplesortDesc: true
+        limit: padding
+      remote:
+        discussion_id: @discussion.id
+        depth: event.depth
+        position_key_lt: event.positionKey
+        order_by: 'position_key'
+        order_desc: 1
+
+    @addRule
+      local:
+        find:
+          discussionId: @discussion.id
+          depth: event.depth + 1
+          position: {$lt: 3}
+          positionKey: {$lt: event.positionKey}
+        simplesort: 'positionKey'
+        simplesortDesc: true
+        limit: padding
+      remote:
+        discussion_id: @discussion.id
+        depth: event.depth + 1
+        position_key_lt: event.positionKey
+        position_lt: 3
+        order_by: 'position_key'
+        order_desc: 1
+
   addLoadCommentRule: (commentId) ->
     @rules.push
       name: "comment from url"
@@ -46,6 +113,7 @@ export default class ThreadLoader
         find:
           discussionId: @discussion.id
           commentId: {$gte: commentId}
+        limit: padding
       remote:
         order: 'sequence_id'
         discussion_id: @discussion.id
@@ -84,7 +152,7 @@ export default class ThreadLoader
         find:
           discussionId: @discussion.id
           sequenceId: {$gte: sequenceId}
-        limit: 10
+        limit: padding
       remote:
         from: sequenceId
         order: 'sequence_id'
@@ -96,7 +164,9 @@ export default class ThreadLoader
         find:
           discussionId: @discussion.id
           sequenceId: {$gte: @discussion.lastSequenceId() - 5}
-        limit: 10
+        simplesort: 'sequenceId'
+        simplesortDesc: true
+        limit: padding
       remote:
         discussion_id: @discussion.id
         per: 10
@@ -109,13 +179,18 @@ export default class ThreadLoader
       local:
         find:
           id: @discussion.createdEvent().id
+      # remote:
+      #   discussion_id: @discussion.id
+      #   order_by: 'sequence_id'
+      #   per: 1
 
     @rules.push
       name: 'oldest first'
       local:
         find:
           discussionId: @discussion.id
-        limit: 10
+        simplesort: 'sequenceId'
+        limit: padding
       remote:
         discussion_id: @discussion.id
         order_by: 'sequence_id'
@@ -135,7 +210,7 @@ export default class ThreadLoader
         find:
           discussionId: @discussion.id
           sequenceId: {$and: @discussion.unreadRanges().map((r) -> {$between: r} )}
-        limit: 10
+        limit: padding * 3
       remote:
         discussion_id: @discussion.id
         unread: true
@@ -167,13 +242,17 @@ export default class ThreadLoader
           # eg: value = {$lte: asdads,  $gte: asdasd}
           forEach value, (subvalue, subkey) ->
             chain = chain.find({"#{key}": {"#{subkey}": subvalue}})
-            console.log({"#{key}": {"#{subkey}": subvalue}}, chain.data())
+            # console.log({"#{key}": {"#{subkey}": subvalue}}, chain.data())
         else
           # eg: value = 1
           chain = chain.find({"#{key}": value})
 
-      if rule.limit
-        chain = chain.limit(rule.limit)
+      if rule.local.simplesort
+        chain = chain.simplesort(rule.local.simplesort, rule.local.simplesortDesc)
+
+      if rule.local.limit
+        chain = chain.limit(rule.local.limit)
+
       @records = @records.concat(chain.data())
 
     @records = uniq @records.concat(compact(@records.map (o) -> o.parent()))

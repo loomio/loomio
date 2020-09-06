@@ -64,34 +64,6 @@ export default
       else
         !@loader.readIds.includes(event.sequenceId)
 
-    loadBefore: (event) ->
-      @loader.addRule
-        local:
-          find:
-            discussionId: @loader.discussion.id
-            depth: event.depth
-            positionKey: {$lt: event.positionKey}
-        remote:
-          discussion_id: @loader.discussion.id
-          depth: event.depth
-          position_key_lt: event.positionKey
-          order_by: 'position_key'
-          order_desc: 1
-
-      @loader.addRule
-        local:
-          find:
-            discussionId: @loader.discussion.id
-            depth: event.depth + 1
-            position: {$lt: 3}
-            positionKey: {$lt: event.positionKey}
-        remote:
-          discussion_id: @loader.discussion.id
-          depth: event.depth + 1
-          position_key_lt: event.positionKey
-          position_lt: 3
-          order_by: 'position_key'
-          order_desc: 1
 
     positionKeyPrefix: (event) ->
       if event.depth < 1
@@ -99,31 +71,6 @@ export default
       else
         null
 
-    loadChildren: (event) ->
-      @loader.addRule
-        local:
-          find:
-            discussionId: @loader.discussion.id
-            positionKey: {'$regex': "^#{event.positionKey}"}
-        remote:
-          discussion_id: @loader.discussion.id
-          position_key_sw: event.positionKey
-          order_by: 'position_key'
-
-    loadAfter: (event) ->
-      @loader.addRule
-        local:
-          find:
-            discussionId: @loader.discussion.id
-            depth: {$gte: event.depth}
-            positionKey: {$gt: event.positionKey}
-        remote:
-          discussion_id: @loader.discussion.id
-          position_key_gt: event.positionKey
-          # position_key_prefix: @positionKeyPrefix(event)
-          depth_lte: event.depth + 2
-          depth_gte: event.depth
-          order_by: 'position_key'
 
     isFirstInRange: (pos) ->
       some(@ranges, (range) -> range[0] == pos)
@@ -159,7 +106,7 @@ export default
       .strand-item__gutter
         .strand-item__circle(@click="loadBefore(obj.event)")
           v-icon mdi-unfold-more-horizontal
-      strand-load-more(:label="{path: 'common.action.count_more', args: {count: countEarlierMissing(obj.event.position)}}" @click="loadBefore(obj.event)")
+      strand-load-more(:label="{path: 'common.action.count_more', args: {count: countEarlierMissing(obj.event.position)}}" @click="loader.loadBefore(obj.event)")
 
     .strand-item__row
       .strand-item__gutter(v-if="obj.event.depth > 0" @click.stop="loader.collapse(obj.event.id)")
@@ -184,7 +131,7 @@ export default
           strand-list.flex-grow-1(v-if="obj.children.length && !loader.collapsed[obj.event.id]" :loader="loader" :collection="obj.children")
           .strand-item__load-more(v-else)
             //- v-btn.action-button(text block @click="loadChildren(obj.event)" v-t="{path: 'common.action.count_responses', args: {count: obj.event.descendantCount}}")
-            strand-load-more(:label="{path: 'common.action.count_responses', args: {count: obj.event.descendantCount}}" @click="loader.expand(obj.event.id) && loadChildren(obj.event)")
+            strand-load-more(:label="{path: 'common.action.count_responses', args: {count: obj.event.descendantCount}}" @click="loader.expand(obj.event.id) && loader.loadChildren(obj.event)")
 
     .strand-item__row(v-if="lastPosition != 0 && isLastInLastRange(obj.event.position) && obj.event.position != lastPosition")
       .strand-item__gutter
@@ -193,7 +140,7 @@ export default
       .strand-item__load-more
         //- | {{obj.event.parent().parentOrSelf().childCount}}
         //- | {{obj.event.positionKey}}
-        strand-load-more(:label="{path: 'common.action.count_more', args:{count: countLaterMissing()}}" @click="loadAfter(obj.event)")
+        strand-load-more(:label="{path: 'common.action.count_more', args:{count: countLaterMissing()}}" @click="loader.loadAfter(obj.event)")
         //- | {{lastPosition}} {{ranges}}
 </template>
 
