@@ -56,11 +56,12 @@ div
       v-list(dense)
         //- v-list-item
         //- ul.strand-nav
-        v-subheader Jump to
+        v-subheader Show me
         v-list-item(@click="loader.jumpToEarliest()") Earliest
         v-list-item(@click="loader.jumpToUnread()") Unread
         v-list-item(@click="loader.jumpToLatest()") Latest
         v-list-item(@click="loader.loadEverything()") Everything
+        //- v-list-item(@click="loader.loadEverything()") Pinned
         v-subheader(v-if="headings.length") Table of contents
         v-list-item(v-for="heading, index in headings" :key="index") {{heading.name}}
         div(v-if="presets.length")

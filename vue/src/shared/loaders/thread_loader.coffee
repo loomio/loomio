@@ -59,18 +59,30 @@ export default class ThreadLoader
         per: 1000
 
   loadChildren: (event) ->
-    @expand(event.id)
-    @addRule
-      local:
-        find:
-          discussionId: @discussion.id
-          positionKey: {'$regex': "^#{event.positionKey}"}
-        simplesort: 'positionKey'
-        limit: padding
-      remote:
-        discussion_id: @discussion.id
-        position_key_sw: event.positionKey
-        order_by: 'position_key'
+    # @expand(event.id)
+    if event.kind == "new_discussion"
+      @addRule
+        local:
+          find:
+            discussionId: @discussion.id
+          simplesort: 'positionKey'
+          limit: padding * 2
+        remote:
+          discussion_id: @discussion.id
+          position_key_sw: event.positionKey
+          order_by: 'position_key'
+    else
+      @addRule
+        local:
+          find:
+            discussionId: @discussion.id
+            positionKey: {'$regex': "^#{event.positionKey}"}
+          simplesort: 'positionKey'
+          limit: padding
+        remote:
+          discussion_id: @discussion.id
+          position_key_sw: event.positionKey
+          order_by: 'position_key'
 
   loadAfter: (event) ->
     @addRule
