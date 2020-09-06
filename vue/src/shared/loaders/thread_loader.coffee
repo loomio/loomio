@@ -256,12 +256,14 @@ export default class ThreadLoader
   addRule: (rule) ->
     @rules.push(rule)
     params = Object.assign {}, rule.remote, {exclude_types: 'group discussion'}
-    Records.events.fetch(params: params).then (data) => @updateCollection()
+    Records.events.fetch(params: params)
+    # Records.events.fetch(params: params).then (data) => @updateCollection()
 
   fetch:  ->
     @rules.forEach (rule) =>
       params = Object.assign {}, rule.remote, {exclude_types: 'group discussion'}
-      Records.events.fetch(params: params).then (data) => @updateCollection()
+      Records.events.fetch(params: params)
+      # Records.events.fetch(params: params).then (data) => @updateCollection()
 
   updateCollection: ->
     @records = []
