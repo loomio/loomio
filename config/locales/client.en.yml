@@ -443,6 +443,7 @@ en:
   thread_nav:
     participants: Participants
 
+
   sidebar:
     threads: 'Threads'
     my_groups: 'My groups'
@@ -463,6 +464,15 @@ en:
       threads_list: 'Threads actions'
       groups_list: 'Groups'
       user_list: 'User actions'
+
+  strand_nav:
+    newest_first: Latest activity
+    oldest_first: Beginning of the thread
+    all_pinned: All pinned items
+    whole_thread: The whole thread
+    from_comment: From a comment url
+    from_sequence_id: From a thread item url
+    unread: New to you
 
   navbar:
     search_all_threads: Search all threads

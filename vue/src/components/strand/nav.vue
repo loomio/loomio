@@ -52,7 +52,10 @@ div
 
     v-menu(scale)
       template(v-slot:activator="{ on, attrs }")
-        v-btn(rounded v-bind="attrs" v-on="on" ) Jump to
+        v-btn(rounded v-bind="attrs" v-on="on")
+          span.mr-2(v-t="loader.titleKey")
+          v-icon(small) mdi-menu
+
       v-list(dense)
         //- v-list-item
         //- ul.strand-nav

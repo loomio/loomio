@@ -50,6 +50,7 @@ export default class ThreadLoader
 
 
   loadEverything: ->
+    @titleKey = 'strand_nav.whole_thread'
     @addRule
       local:
         find:
@@ -136,6 +137,7 @@ export default class ThreadLoader
         order_desc: 1
 
   addLoadCommentRule: (commentId) ->
+    @titleKey = 'strand_nav.from_comment'
     @rules.push
       name: "comment from url"
       local:
@@ -149,6 +151,7 @@ export default class ThreadLoader
         comment_id: commentId
 
   addLoadPinnedRule: ->
+    @titleKey = 'strand_nav.all_pinned'
     @rules.push
       name: "all pinned events"
       local:
@@ -175,6 +178,7 @@ export default class ThreadLoader
         order: 'sequence_id'
 
   addLoadSequenceIdRule: (sequenceId) ->
+    @titleKey = 'strand_nav.from_sequence_id'
     @rules.push
       name: "sequenceId from url"
       local:
@@ -187,26 +191,28 @@ export default class ThreadLoader
         order: 'sequence_id'
 
   addLoadNewestFirstRule: () ->
+    @titleKey = 'strand_nav.newest_first'
     @rules.push
-      name: 'context'
       local:
         find:
           id: @discussion.createdEvent().id
     @rules.push
-      name: 'newest first'
       local:
+        find:
+          id: @discussion.createdEvent().id
         find:
           discussionId: @discussion.id
         simplesort: 'sequenceId'
         simplesortDesc: true
-        limit: padding
+        limit: padding / 4
       remote:
         discussion_id: @discussion.id
-        per: padding * 2
+        per: padding
         order_by: 'sequence_id'
         order_desc: true
 
   addLoadOldestFirstRule: ->
+    @titleKey = 'strand_nav.oldest_first'
     @rules.push
       name: 'context'
       local:
@@ -229,6 +235,7 @@ export default class ThreadLoader
         order_by: 'sequence_id'
 
   addLoadUnreadRule: ->
+    @titleKey = 'strand_nav.unread'
     if @discussion.updatedAt > @discussion.lastReadAt
       @rules.push
         name: "context updated"
