@@ -103,9 +103,9 @@ export default
 .strand-list
   .strand-item(v-for="obj, index in collection" :event='obj.event' :key="obj.event.id" :class="{'strand-item--deep': obj.event.depth > 1}")
     .strand-item__row(v-if="parentExists && obj.event.position != 1 && isFirstInRange(obj.event.position)")
-      .strand-item__gutter
-        .strand-item__circle(@click="loadBefore(obj.event)")
-          v-icon mdi-unfold-more-horizontal
+      //- .strand-item__gutter
+      //-   .strand-item__circle(@click="loadBefore(obj.event)")
+      //-     v-icon mdi-unfold-more-horizontal
       strand-load-more(:label="{path: 'common.action.count_more', args: {count: countEarlierMissing(obj.event.position)}}" @click="loader.loadBefore(obj.event)")
 
     .strand-item__row
@@ -134,13 +134,13 @@ export default
             strand-load-more(:label="{path: 'common.action.count_responses', args: {count: obj.event.descendantCount}}" @click="loader.loadChildren(obj.event)")
 
     .strand-item__row(v-if="lastPosition != 0 && isLastInLastRange(obj.event.position) && obj.event.position != lastPosition")
-      .strand-item__gutter
-        .strand-item__circle(@click="loadAfter(obj.event)")
-          v-icon mdi-unfold-more-horizontal
-      .strand-item__load-more
+      //- .strand-item__gutter
+      //-   .strand-item__circle(@click="loadAfter(obj.event)")
+      //-     v-icon mdi-unfold-more-horizontal
+      //- .strand-item__load-more
         //- | {{obj.event.parent().parentOrSelf().childCount}}
         //- | {{obj.event.positionKey}}
-        strand-load-more(:label="{path: 'common.action.count_more', args:{count: countLaterMissing()}}" @click="loader.loadAfter(obj.event)")
+      strand-load-more(:label="{path: 'common.action.count_more', args:{count: countLaterMissing()}}" @click="loader.loadAfter(obj.event)")
         //- | {{lastPosition}} {{ranges}}
 </template>
 
@@ -155,9 +155,12 @@ export default
     // margin-right: 4px
 
   .strand-item__stem
-    margin: 0 12px
+    margin-left: 12px
+    margin-right: 12px
 
   .strand-item__circle
+    // margin: 4px 0
+    // padding: 4px 0
     width: 28px
     height: 28px
 
@@ -194,7 +197,7 @@ export default
   height: 100%
   padding: 0 1px
   background-color: #dadada
-  margin: 0 18px
+  margin: 6px 18px
 
 .strand-item__stem--unread
   background-color: var(--v-primary-base)!important
@@ -219,6 +222,7 @@ export default
   height: 36px
   border: 1px solid #dadada
   border-radius: 100%
+  margin: 4px 0
 
 .strand-item__circle:hover
   background-color: #dadada
@@ -229,6 +233,7 @@ export default
   min-height: 36px
   width: 100%
   justify-content: center
+  margin: 8px 0
   // background: linear-gradient(180deg, rgba(0,0,0,0) calc(50% - 1px), rgba(192,192,192,1) calc(50%), rgba(0,0,0,0) calc(50% + 1px) )
 
 .strand-item__stem:hover
