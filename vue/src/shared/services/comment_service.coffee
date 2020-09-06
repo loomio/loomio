@@ -40,6 +40,7 @@ export default new class CommentService
       perform: ->
         openModal
           component: 'EditCommentForm'
+          maxWidth: 800
           props:
             comment: comment.clone()
 
