@@ -14,6 +14,7 @@ export default
   poll-common-form-fields(:poll="poll")
   poll-common-form-options-field(:poll="poll")
   //- v-combobox(v-model="poll.pollOptionNames" multiple chips deletable-chips :label="$t('poll_common_form.options')" :placeholder="$t('poll_common_form.options_placeholder')")
+  poll-common-wip-field(:poll="poll")
   poll-common-closing-at-field(:poll="poll")
 
   .lmo-flex.lmo-flex__center(layout="row")
