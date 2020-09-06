@@ -68,7 +68,7 @@ class API::EventsController < API::RestfulController
     records = Event.where(discussion_id: @discussion.id).
                     includes(:user, :discussion, :eventable, parent: [:user, :eventable])
 
-    if %w[position_key].include?(params[:order_by])
+    if %w[position_key sequence_id].include?(params[:order_by])
       records = records.order("#{params[:order_by]}#{params[:order_desc] ? " DESC" : ''}")
     else
       records = records.where("#{order} >= ?", from)

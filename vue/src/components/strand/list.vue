@@ -67,9 +67,10 @@ export default
     loadBefore: (event) ->
       @loader.addRule
         local:
-          discussionId: @loader.discussion.id
-          depth: event.depth
-          positionKey: {$lt: event.positionKey}
+          find:
+            discussionId: @loader.discussion.id
+            depth: event.depth
+            positionKey: {$lt: event.positionKey}
         remote:
           discussion_id: @loader.discussion.id
           depth: event.depth
@@ -79,10 +80,11 @@ export default
 
       @loader.addRule
         local:
-          discussionId: @loader.discussion.id
-          depth: event.depth + 1
-          position: {$lt: 3}
-          positionKey: {$lt: event.positionKey}
+          find:
+            discussionId: @loader.discussion.id
+            depth: event.depth + 1
+            position: {$lt: 3}
+            positionKey: {$lt: event.positionKey}
         remote:
           discussion_id: @loader.discussion.id
           depth: event.depth + 1
@@ -100,8 +102,9 @@ export default
     loadChildren: (event) ->
       @loader.addRule
         local:
-          discussionId: @loader.discussion.id
-          positionKey: {'$regex': "^#{event.positionKey}"}
+          find:
+            discussionId: @loader.discussion.id
+            positionKey: {'$regex': "^#{event.positionKey}"}
         remote:
           discussion_id: @loader.discussion.id
           position_key_sw: event.positionKey
@@ -110,9 +113,10 @@ export default
     loadAfter: (event) ->
       @loader.addRule
         local:
-          discussionId: @loader.discussion.id
-          depth: {$gte: event.depth}
-          positionKey: {$gt: event.positionKey}
+          find:
+            discussionId: @loader.discussion.id
+            depth: {$gte: event.depth}
+            positionKey: {$gt: event.positionKey}
         remote:
           discussion_id: @loader.discussion.id
           position_key_gt: event.positionKey
@@ -180,7 +184,7 @@ export default
           strand-list.flex-grow-1(v-if="obj.children.length && !loader.collapsed[obj.event.id]" :loader="loader" :collection="obj.children")
           .strand-item__load-more(v-else)
             //- v-btn.action-button(text block @click="loadChildren(obj.event)" v-t="{path: 'common.action.count_responses', args: {count: obj.event.descendantCount}}")
-            strand-load-more(:label="{path: 'common.action.count_responses', args: {count: obj.event.descendantCount}}" @click="loadChildren(obj.event)")
+            strand-load-more(:label="{path: 'common.action.count_responses', args: {count: obj.event.descendantCount}}" @click="loader.expand(obj.event.id) && loadChildren(obj.event)")
 
     .strand-item__row(v-if="lastPosition != 0 && isLastInLastRange(obj.event.position) && obj.event.position != lastPosition")
       .strand-item__gutter
