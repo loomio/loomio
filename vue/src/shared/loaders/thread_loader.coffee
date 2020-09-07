@@ -4,7 +4,7 @@ import Vue from 'vue'
 import RangeSet         from '@/shared/services/range_set'
 import Session from '@/shared/services/session'
 
-padding = 5
+padding = 20
 
 export default class ThreadLoader
   constructor: (discussion) ->
@@ -250,7 +250,7 @@ export default class ThreadLoader
       local:
         find:
           discussionId: @discussion.id
-          sequenceId: {$and: @discussion.unreadRanges().map((r) -> {$between: r} )}
+          sequenceId: {$or: @discussion.unreadRanges().map((r) -> {$between: r} )}
         limit: padding * 3
       remote:
         discussion_id: @discussion.id

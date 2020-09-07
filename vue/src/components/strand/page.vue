@@ -70,20 +70,21 @@ export default
         @loader.addLoadSequenceIdRule(@$route.params.sequence_id)
 
       if rules.length == 0
-        # never read, or all read?
-        console.log "0 rules"
-        if @discussion.lastReadAt == null or @discussion.unreadItemsCount() == 0
-          if @discussion.newestFirst
-            console.log "first read, newest first"
+        # # never read, or all read?
+        # # console.log "0 rules"
+        # console.log "ranges", @discussion.ranges
+        # console.log "readRanges", @discussion.readRanges
+        # console.log "@discussion.unreadItemsCount()", @discussion.unreadItemsCount()
+        if @discussion.lastReadAt
+          if @discussion.unreadItemsCount() == 0
             @loader.addLoadNewestFirstRule()
           else
-            console.log "first read, newest first"
-            @loader.addLoadOldestFirstRule()
+            @loader.addLoadUnreadRule()
         else
-          # returning reader
-          console.log "returning to thread, loading unread"
-          @loader.addLoadUnreadRule()
-
+          if @discussion.newestFirst
+            @loader.addLoadNewestFirstRule()
+          else
+            @loader.addLoadOldestFirstRule()
 
       @loader.fetch()
 
