@@ -97,7 +97,7 @@ export default
         'other_kind'
 
     visibilityChanged: (visible, entry, event) ->
-      console.log "visibilityChanged", visible, event.sequenceId
+      return unless visible
       event.markAsRead()
 
 </script>
