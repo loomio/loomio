@@ -60,7 +60,7 @@ export default
     router-link(:to="urlFor(discussion.author())" title="Thread author") {{discussion.authorName()}}
     v-spacer
     span(v-for="group in groups")
-      | {{group.text}}
+      router-link(:to="group.to") {{group.text}}
       mid-dot
     span(aria-label="Thread privacy")
       span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private(v-show='discussion.private')

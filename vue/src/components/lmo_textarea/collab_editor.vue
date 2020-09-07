@@ -213,7 +213,7 @@ export default
 
   beforeDestroy: ->
     @editor.destroy() if @editor
-    @socket.destroy()
+    @socket.close() if @socket
 
 </script>
 

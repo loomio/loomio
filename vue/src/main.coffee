@@ -8,7 +8,6 @@ import app from '@/app.vue'
 import marked from '@/marked'
 import '@/observe_visibility'
 import './removeServiceWorker'
-import { initLiveUpdate } from '@/shared/helpers/message_bus'
 import { pick } from 'lodash'
 import * as Sentry from '@sentry/browser'
 import VueClipboard from 'vue-clipboard2'
@@ -39,7 +38,6 @@ boot (data) ->
     Sentry.configureScope (scope) ->
       scope.setUser pick(Session.user(), ['id', 'email', 'username'])
 
-  initLiveUpdate()
   initContent()
   new Vue(
     render: (h) -> h(app)

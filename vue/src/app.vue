@@ -6,6 +6,7 @@ import AbilityService from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
 import { each, compact, truncate } from 'lodash'
 import openModal from '@/shared/helpers/open_modal'
+import { initLiveUpdate, closeLiveUpdate } from '@/shared/helpers/message_bus'
 
 
 export default
@@ -21,11 +22,15 @@ export default
       true
 
   mounted: ->
+    initLiveUpdate()
     @openAuthModal(true) if !Session.isSignedIn() && @shouldForceSignIn()
     EventBus.$on 'currentComponent',     @setCurrentComponent
     EventBus.$on 'openAuthModal',     => @openAuthModal()
     EventBus.$on 'pageError', (error) => @pageError = error
     EventBus.$on 'signedIn',          => @pageError = null
+
+  destroyed: ->
+    closeLiveUpdate()
 
   watch:
     '$route': ->
