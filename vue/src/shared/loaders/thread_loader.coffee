@@ -4,7 +4,7 @@ import Vue from 'vue'
 import RangeSet         from '@/shared/services/range_set'
 import Session from '@/shared/services/session'
 
-padding = 20
+padding = 5
 
 export default class ThreadLoader
   constructor: (discussion) ->
@@ -14,6 +14,7 @@ export default class ThreadLoader
   reset: ->
     @collection = Vue.observable([])
     @rules = []
+    @unreadIds = []
     @collapsed = Vue.observable({})
     @rules.push
       name: "my stuff"
@@ -274,7 +275,6 @@ export default class ThreadLoader
 
   updateCollection: ->
     @records = []
-    @readIds = []
     @rules.forEach (rule) =>
       args = Object.assign({}, rule.local.find)
       chain = Records.events.collection.chain()
@@ -312,7 +312,7 @@ export default class ThreadLoader
     eventsByParentId = {}
     @records.forEach (event) =>
       eventsByParentId[event.parentId] = (eventsByParentId[event.parentId] || []).concat([event])
-      @readIds.push(event.sequenceId) if RangeSet.includesValue(@discussion.readRanges, event.sequenceId)
+      @unreadIds.push(event.sequenceId) if !RangeSet.includesValue(@discussion.readRanges, event.sequenceId)
 
     nest = (records) ->
       r = records.map (event) ->

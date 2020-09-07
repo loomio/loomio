@@ -62,8 +62,7 @@ export default
       if event.kind == "new_discussion"
         @loader.discussion.updatedAt > @loader.discussion.lastReadAt
       else
-        !@loader.readIds.includes(event.sequenceId)
-
+        @loader.unreadIds.includes(event.sequenceId)
 
     positionKeyPrefix: (event) ->
       if event.depth < 1
@@ -97,6 +96,10 @@ export default
       else
         'other_kind'
 
+    visibilityChanged: (visible, entry, event) ->
+      console.log "visibilityChanged", visible, event.sequenceId
+      event.markAsRead()
+
 </script>
 
 <template lang="pug">
@@ -119,7 +122,7 @@ export default
           .strand-item__stem(:class="{'strand-item__stem--unread': isUnread(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
       .strand-item__main
         //- | {{obj.event.sequenceId}} {{obj.event.positionKey}} {{obj.event.childCount}} {{obj.event.descendantCount}}
-        component(:is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="loader.collapsed[obj.event.id]")
+        component(:is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="loader.collapsed[obj.event.id]" v-observe-visibility="{callback: (isVisible, entry) => visibilityChanged(isVisible, entry, obj.event), once: true}")
 
         .strand-list__children.pt-2(v-if="obj.event.childCount")
           //- .strand-item__gutter(v-if="index+1 != siblingCount" @click="loader.collapse(obj.event.id)")
