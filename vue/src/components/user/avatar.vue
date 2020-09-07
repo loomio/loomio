@@ -59,7 +59,7 @@ component.user-avatar(aria-hidden="true" :is="componentType" :to="!noLink && url
 
 <style lang="sass">
 .user-avatar--initials
-  font-size: 20px
+  font-size: 15px
   border: 1px solid #ddd
   border-radius: 100%
   display: flex
