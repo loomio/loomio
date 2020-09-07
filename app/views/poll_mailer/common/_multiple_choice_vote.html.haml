@@ -1,8 +1,9 @@
-- if stance.cast_at
+- if !poll.wip? and stance.cast_at
   = render 'poll_mailer/common/stance', stance: stance, poll: poll, recipient: recipient
 - else
   %p= t(:"poll_mailer.common.time_zone", zone: formatted_time_zone(recipient, poll)) if poll.poll_type == 'meeting'
   %table{class: "poll-mailer-#{poll.poll_type}__poll-options"}
     - poll.poll_options.each do |option|
-      %tr.poll-mailer__poll-option= render 'poll_mailer/common/poll_option', poll: poll, recipient: recipient, poll_option: option
-  = link_to t(:"poll_mailer.common.vote_now"), target_url(poll: poll, recipient: recipient), class: "base-mailer__button base-mailer__button--accent"
+      %tr.poll-mailer__poll-option= render 'poll_mailer/common/poll_option', poll: poll, recipient: recipient, poll_option: option, link: poll.active?
+  - if !poll.wip?
+    = link_to t(:"poll_mailer.common.vote_now"), target_url(poll: poll, recipient: recipient), class: "base-mailer__button base-mailer__button--accent"

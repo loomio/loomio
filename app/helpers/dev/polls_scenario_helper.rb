@@ -17,6 +17,7 @@ module Dev::PollsScenarioHelper
                      discussion: params[:standalone] ? nil : discussion,
                      poll_type: params[:poll_type],
                      hide_results_until_closed: !!params[:hide_results_until_closed],
+                     wip: params[:wip],
                      anonymous: !!params[:anonymous])
 
     event = PollService.create(poll: poll, actor: actor)
@@ -41,7 +42,9 @@ module Dev::PollsScenarioHelper
                      anonymous: !!params[:anonymous],
                      hide_results_until_closed: !!params[:hide_results_until_closed],
                      group: group,
-                     discussion: nil)
+                     discussion: nil,
+                     wip: params[:wip])
+
     event = PollService.create(poll: poll, actor: observer)
 
     PollService.close(poll: poll, actor: observer)
@@ -155,6 +158,7 @@ module Dev::PollsScenarioHelper
                                                      anonymous: !!params[:anonymous],
                                                      hide_results_until_closed: !!params[:hide_results_until_closed],
                                                      discussion: discussion,
+                                                     wip: params[:wip],
                                                      closing_at: 1.day.from_now))
 
     PollService.create(poll: poll, actor: actor)
