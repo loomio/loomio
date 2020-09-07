@@ -253,6 +253,7 @@ ga_IE:
     delete_thread: Scriosadh an tsnáith
   formatting:
     attach: Ceangail comhad
+    reset: Athshocraigh é
   cover_photo_form:
     heading: 'Grianghraf cumhdaigh nua'
     upload_link: 'Uasluchtaigh grianghraf cumhdaigh nua'

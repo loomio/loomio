@@ -650,6 +650,7 @@ fr:
     bullet_list: Liste
     number_list: Liste numérotée
     check_list: Checkliste
+    reset: Réinitialiser
     quote: Citation
     embed: Intégrer la vidéo
     divider: Séparateur
