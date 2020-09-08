@@ -89,18 +89,18 @@ module.exports = {
     page.expectNoText('.membership-dropdown', 'Make admin')
   },
 
-  'can_set_membership_title': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_group')
-    page.click('.group-page-members-tab')
-    page.click('.members-panel .v-card .v-list .v-list-item:last-child .membership-dropdown')
-    page.click('.membership-dropdown__set-title')
-    page.fillIn('.membership-form__title-input input', 'Suzerain')
-    page.click('.membership-form__submit')
-    page.expectFlash('Membership title updated')
-    page.expectText('.members-panel .v-list .v-list-item:last-child .title', 'Suzerain')
-  },
+  // 'can_set_membership_title': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_group')
+  //   page.click('.group-page-members-tab')
+  //   page.click('.members-panel .v-card .v-list .v-list-item:last-child .membership-dropdown')
+  //   page.click('.membership-dropdown__set-title')
+  //   page.fillIn('.membership-form__title-input input', 'Suzerain')
+  //   page.click('.membership-form__submit')
+  //   page.expectFlash('Membership title updated')
+  //   page.expectText('.members-panel .v-list .v-list-item:last-child .title', 'Suzerain')
+  // },
 
   'can_change_volume': (test) => {
     page = pageHelper(test)
