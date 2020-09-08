@@ -13,7 +13,7 @@ class Event < ApplicationRecord
   has_many :children, (-> { where("discussion_id is not null") }), class_name: "Event", foreign_key: :parent_id
   set_custom_fields :pinned_title
 
-  before_save :set_sequences
+  before_create :set_sequences
   after_rollback :reset_sequences
 
   after_create  :update_sequence_info!
@@ -168,12 +168,13 @@ class Event < ApplicationRecord
   end
 
   def next_sequence_id
-    return nil unless self.discussion_id
+    return nil unless discussion_id
     reset_sequence_id_counter if discussion.sequence_id_counter.nil?
     discussion.sequence_id_counter.increment
   end
 
   def reset_sequence_id_counter
+    return unless discussion_id
     val = (Event.where(discussion_id: discussion_id).order("sequence_id DESC").limit(1).pluck(:sequence_id).first || 0)
     discussion.sequence_id_counter.reset(val)
   end
