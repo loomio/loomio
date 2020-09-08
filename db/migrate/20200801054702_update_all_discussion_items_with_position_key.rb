@@ -5,6 +5,7 @@ class UpdateAllDiscussionItemsWithPositionKey < ActiveRecord::Migration[5.2]
              WHERE depth = 1 and position_key IS NULL and discussion_id IS NOT NULL")
 
     # only need to reset children, where the event has children.. they can be done after the parent.
+    return if ENV['CANONICAL_HOST'] == 'www.loomio.org'
     count = 501
     while count > 500
       parent_ids = Event.where("discussion_id is not null and position_key is null and parent_id is not null").order(:id).limit(100000).pluck(:parent_id).uniq.compact
