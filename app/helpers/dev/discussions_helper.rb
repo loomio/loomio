@@ -30,7 +30,6 @@ module Dev::DiscussionsHelper
 
   def create_discussion_with_sampled_comments
     group = create_group_with_members
-    # EventParentMigrator.migrate_group!(group.reload)
 
     discussion = saved fake_discussion(group: group)
     DiscussionService.create(discussion: discussion, actor: group.admins.first)
