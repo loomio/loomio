@@ -11,15 +11,22 @@ class CreateEventsDescendantCount < ActiveRecord::Migration[5.2]
              )
              WHERE events.kind = 'new_discussion'")
 
-    execute("UPDATE events
-             SET descendant_count = (
-               SELECT count(children.id)
-               FROM events children
-               WHERE
-                  children.discussion_id = events.discussion_id AND
-                  children.id != events.id AND
-                  children.position_key like CONCAT(events.position_key, '%')
-              )
-             WHERE discussion_id is not null")
+    n = 0
+    inc = 10000
+    while(n < 9000000) do
+      execute(
+        "UPDATE events
+         SET descendant_count = (
+           SELECT count(children.id)
+           FROM events children
+           WHERE
+              children.discussion_id = events.discussion_id AND
+              children.id != events.id AND
+              children.position_key like CONCAT(events.position_key, '%')
+          )
+         WHERE discussion_id is not null and id > #{n} and id <= #{n+inc}")
+      n = n + inc
+      puts n
+    end
   end
 end
