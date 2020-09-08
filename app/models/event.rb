@@ -115,7 +115,8 @@ class Event < ApplicationRecord
   end
 
   def set_sequence_id
-    self.sequence_id = next_sequence_id unless sequence_id
+    return if sequence_id
+    self.sequence_id = next_sequence_id
   end
 
   def self.zero_fill(num)
@@ -130,7 +131,8 @@ class Event < ApplicationRecord
 
   def set_position_and_position_key
     return unless self.discussion_id
-    self.position = next_position if position == 0
+    return unless position == 0
+    self.position = next_position
     self.position_key = self_and_parents.reverse.map(&:position).map{|p| Event.zero_fill(p) }.join('-')
   end
 

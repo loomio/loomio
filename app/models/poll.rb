@@ -260,7 +260,7 @@ class Poll < ApplicationRecord
   end
 
   def active?
-    !closing_at.nil? && closed_at.nil?
+    closing_at && closed_at.nil?
   end
 
   def wip?
@@ -268,7 +268,7 @@ class Poll < ApplicationRecord
   end
 
   def closed?
-    closed_at && closing_at.nil?
+    !!closed_at
   end
 
   def is_single_vote?
