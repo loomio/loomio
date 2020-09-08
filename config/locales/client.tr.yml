@@ -369,6 +369,7 @@ tr:
     delete_thread: Müzakereyi sil
   formatting:
     attach: Dosya ekle
+    reset: Sıfırla
   cover_photo_form:
     heading: 'Yeni kapak fotoğrafı'
     upload_link: 'Yeni kapak fotoğrafı yükle'

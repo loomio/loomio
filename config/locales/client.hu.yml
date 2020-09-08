@@ -601,6 +601,7 @@ hu:
     bullet_list: Lista
     number_list: Számozott lista
     check_list: Ellenőrzőlista
+    reset: Visszaállítás
     quote: Idézet
     embed: Videó beágyazása
     divider: Osztó

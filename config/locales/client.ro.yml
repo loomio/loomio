@@ -359,6 +359,7 @@ ro:
     delete_thread: Sterge discutia
   formatting:
     attach: Ataseaza fisier
+    reset: Resetează
   cover_photo_form:
     aria_label: 'Modificare poza fundal'
     heading: 'Poza noua de fundal'

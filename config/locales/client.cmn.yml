@@ -540,6 +540,7 @@ cmn:
     code_block: 代码块
     attach: 上传附件
     check_list: 清单
+    reset: 重置
     quote: 引用
     embed: 嵌入影片
   cover_photo_form:

@@ -678,6 +678,7 @@ pt_BR:
     bullet_list: Lista
     number_list: Lista enumerada
     check_list: Checklist
+    reset: Reiniciar
     quote: Citação
     embed: Anexar video
     divider: Divisor

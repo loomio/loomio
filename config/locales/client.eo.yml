@@ -169,6 +169,8 @@ eo:
     action:
       print: Presi
       preview: Antaŭkontrolo
+      pin: Alpingli
+      unpin: Depingli
       search: 'Serĉi'
       next: 'Sekva'
       close: 'Fermigi'
@@ -257,6 +259,7 @@ eo:
       label: 'Afiŝu'
   sidebar:
     threads: 'Fadenoj'
+    all_groups: 'Ĉiuj grupoj'
     explore_groups: Esplori grupojn
     start_thread: Nova fadeno
     aria_labels:
@@ -283,6 +286,7 @@ eo:
     move: Movi
   discussion_form:
     group_label: 'Grupo'
+    group_placeholder: 'Elekti grupon'
     title_label: 'Titolo'
     context_label: 'Kunteksto'
     privacy_label: 'Privateco'
@@ -347,10 +351,16 @@ eo:
   membership_requests_page:
     approve: Aprobi
     ignore: Ignori
+    previous_requests: Antaŭaj petoj
+  group_previous_proposals_card:
+    heading: Antaŭaj proponoj
+    see_more: Vidi pli
   invitation_form:
     invite_people: 'Inviti personojn'
     group: 'Grupo'
+    group_placeholder: 'Elekti grupon'
     copy_link: 'Kopii'
+    email_addresses: 'Retpoŝtaj adresoj'
     send: 'Sendi'
     done: 'Fine'
   memberships_page:
@@ -410,6 +420,8 @@ eo:
     edit: 'Redakti'
     edit_thread: 'Redakti'
     close_thread: 'Fermi'
+    pin_thread: 'Alpingli'
+    unpin_thread: 'Depingli'
     mute_thread: 'Silentigi'
     move_thread: 'Movi'
     print_thread: 'Presi'

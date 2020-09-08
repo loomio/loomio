@@ -295,25 +295,6 @@ pl:
         Jaka jest Twoja rola lub podejście do uczestnictwa w tej grupie? Co ludzie powinni wiedzieć o Tobie, aby zrozumieć, skąd pochodzisz?
   how_it_works_thread:
     title: Jak korzystać z Loomio
-    description: |
-        Witamy w Loomio, internetowym miejscu do komunikacji i podejmowania decyzji.
-
-        To jest przykładowa dyskusja ** wątek **. Możesz dodać komentarze poniżej. Wątki służą do omawiania tematów i uzyskiwania jasnych wyników. Ten wątek dotyczy działania Loomio, więc zamieszczaj pytania na ten temat tutaj.
-
-        Obecnie czytasz wątek ** kontekst **, który może być na bieżąco z kluczowymi informacjami i pytaniami, które pomagają ludziom się zaangażować.
-
-        Aby rozpocząć pracę z Loomio:
-        <ul>
-        <li>Spróbuj komentować w istniejącym wątku lub w tym wątku.</li>
-        </ul>
-        Wskazówki dotyczące publikowania w Loomio:
-        <ul>
-        <li>Aby powiadomić konkretną osobę, wpisz @, a następnie jej nazwisko</li>
-        <li>Przeciągnij i upuść zdjęcia i załączniki lub kliknij ikonę spinacza</li>
-        <li>Zobacz 5 sposobów korzystania z wątków, aby uzyskać kilka pomysłów i wskazówek</li>
-        </ul>
-
-        Jeśli masz jakieś pytania, zobacz [Pomoc Loomio] (http://help.loomio.org).
   first_proposal:
     name: Masz pytania dotyczące korzystania z Loomio?
     description: |
