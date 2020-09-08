@@ -1,7 +1,7 @@
 class Events::BaseSerializer < ApplicationSerializer
-  attributes :id, :sequence_id, :position, :depth, :child_count, :kind,
+  attributes :id, :sequence_id, :position, :depth, :child_count, :descendant_count, :kind,
     :discussion_id, :created_at, :eventable_id, :eventable_type, :custom_fields,
-    :pinned, :pinned_title, :parent_id, :actor_id
+    :pinned, :pinned_title, :parent_id, :actor_id, :position_key
 
   has_one :actor, serializer: AuthorSerializer, root: :users
   has_one :eventable, polymorphic: true
@@ -10,6 +10,14 @@ class Events::BaseSerializer < ApplicationSerializer
 
   # for discussion moved event
   has_one :source_group, serializer: GroupSerializer, root: :groups
+
+  def position_key
+    if object.kind == "new_discussion"
+      "00000"
+    else
+      object.position_key
+    end
+  end
 
   def source_group
     Group.find(object.custom_fields['source_group_id'])

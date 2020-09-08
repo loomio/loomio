@@ -21,6 +21,7 @@ export default new class CommentService
       canPerform: -> !comment.discardedAt && AbilityService.canAddComment(comment.discussion())
 
     reply_to_comment:
+      name: 'common.action.reply'
       icon: 'mdi-reply'
       canPerform: -> AbilityService.canRespondToComment(comment)
       perform: ->
@@ -39,6 +40,7 @@ export default new class CommentService
       perform: ->
         openModal
           component: 'EditCommentForm'
+          maxWidth: 800
           props:
             comment: comment.clone()
 
@@ -54,6 +56,7 @@ export default new class CommentService
             comment: comment.clone()
 
     translate_comment:
+      name: 'common.action.translate'
       icon: 'mdi-translate'
       canPerform: ->
         comment.body && AbilityService.canTranslate(comment)
@@ -61,8 +64,8 @@ export default new class CommentService
         Session.user() && comment.translate(Session.user().locale)
 
     show_history:
-      icon: 'mdi-history'
       name: 'action_dock.history'
+      icon: 'mdi-history'
       menu: true
       canPerform: ->
         comment.edited() && (!comment.discardedAt ||

@@ -71,7 +71,7 @@ class DiscussionService
     discussion.update_attachments!
     discussion.save!
 
-    RearrangeEventsWorker.perform_async(discussion.id) if rearrange
+    EventService.delay.repair_thread(discussion.id) if rearrange
 
     version_service.handle_version_update!
     EventBus.broadcast('discussion_update', discussion, actor, params)

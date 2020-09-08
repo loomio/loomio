@@ -3,7 +3,7 @@ class Events::DiscussionForked < Event
     super discussion,
       discussion:    source,
       user:          discussion.author,
-      sequence_id:   discussion.forked_items.minimum(:sequence_id),
+      sequence_id:   discussion.forked_items.minimum(:sequence_id)+1,
       created_at:    discussion.created_at,
       custom_fields: { item_ids: discussion.forked_event_ids }
   end

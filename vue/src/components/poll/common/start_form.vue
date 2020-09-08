@@ -19,6 +19,7 @@ export default
     openPollModal: (pollType) ->
       EventBus.$emit 'openModal',
         component: 'PollCommonModal'
+        maxWidth: 710
         props:
           poll: @newPoll(pollType)
 

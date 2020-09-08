@@ -33,6 +33,7 @@ export default
   poll-common-form-fields(:poll="poll")
   poll-meeting-form-options-field(:poll="poll")
   v-select(v-model="poll.customFields.meeting_duration" :label="$t('poll_meeting_form.meeting_duration')" :items="durations")
+  poll-common-wip-field(:poll="poll")
   poll-common-closing-at-field(:poll="poll")
   poll-common-settings(:poll="poll")
 </template>

@@ -1,6 +1,6 @@
 const components = require('./src/components.js')
 const path = require('path')
-
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 module.exports = env => {
   return {
     chainWebpack: config => {
@@ -28,14 +28,22 @@ module.exports = env => {
         alias: {
           'single-curlys-loader': path.join(__dirname, 'loaders', 'single_curlys.js')
         }
-      }
-
+      },
+      // plugins: [
+      //   new VuetifyLoaderPlugin({
+      //     match (originalTag, { kebabTag, camelTag, path, component }) {
+      //       if (components[camelTag]) {
+      //         return [camelTag, `import ${camelTag} from '@/components/${components[camelTag]}.vue'`]
+      //       }
+      //     }
+      //   })
+      // ],
     },
     outputDir: '../public/blient/vue',
     assetsDir: (process.env.NODE_ENV == 'production') ? '../../blient/vue' : 'blient/vue',
     devServer: {
      proxy: {
-     '^/(api|dev|login_tokens|theme|fonts|img|join|invitations|system|direct_uploads|rails|slack|oauth|facebook|google|beta|admin|assets|upgrade|pricing|special_pricing|community_applications|417|saml_providers|merge_users|intro|bcorp|ahoy|message-bus)': {target: 'http://localhost:3000'},
+     '^/(api|dev|login_tokens|theme|fonts|img|join|invitations|system|direct_uploads|rails|slack|oauth|facebook|google|beta|admin|assets|upgrade|pricing|special_pricing|community_applications|417|saml_providers|merge_users|intro|bcorp|ahoy|sidekiq|message-bus)': {target: 'http://localhost:3000'},
        '^/(cable)': {target: 'ws://localhost:3000', ws: true, secure: false, changeOrigin: true},
      }
     },
@@ -44,8 +52,8 @@ module.exports = env => {
         sass: {
           sassOptions: {
             includePaths: ["src/css", "node_modules/"]
-          }
-          // prependData: `@import "main.scss"`
+          },
+          additionalData: "@import '@/css/variables.scss'"
         }
       }
     }

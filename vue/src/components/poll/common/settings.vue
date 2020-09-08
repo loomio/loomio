@@ -16,7 +16,8 @@ export default
         ('voterCanAddOptions'    if fieldFromTemplate(@poll.pollType, 'can_add_options') && @poll.pollType != 'proposal')
       ]
   methods:
-    settingDisabled: (setting) -> !@poll.isNew() && ['anonymous', 'hideResultsUntilClosed'].includes(setting)
+    settingDisabled: (setting) ->
+      !@poll.closingAt || (!@poll.isNew() && ['anonymous', 'hideResultsUntilClosed'].includes(setting))
     snakify: (setting) -> snakeCase setting
     kebabify: (setting) -> kebabCase setting
 </script>

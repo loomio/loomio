@@ -6,6 +6,7 @@ import AbilityService from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
 import { each, compact, truncate } from 'lodash'
 import openModal from '@/shared/helpers/open_modal'
+import { initLiveUpdate, closeLiveUpdate } from '@/shared/helpers/message_bus'
 
 
 export default
@@ -21,11 +22,15 @@ export default
       true
 
   mounted: ->
+    initLiveUpdate()
     @openAuthModal(true) if !Session.isSignedIn() && @shouldForceSignIn()
     EventBus.$on 'currentComponent',     @setCurrentComponent
     EventBus.$on 'openAuthModal',     => @openAuthModal()
     EventBus.$on 'pageError', (error) => @pageError = error
     EventBus.$on 'signedIn',          => @pageError = null
+
+  destroyed: ->
+    closeLiveUpdate()
 
   watch:
     '$route': ->
@@ -70,8 +75,10 @@ v-app.app-is-booted
 </template>
 
 <style lang="sass">
-// $mdi-font-path: '/fonts/mdi'
-// @import '@mdi/font/scss/materialdesignicons.scss'
+
+.v-application .body-2
+  font-size: 15px !important
+  letter-spacing: normal !important
 
 h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus
   outline: 0
@@ -81,9 +88,14 @@ a
 .text-almost-black
   color: rgba(0, 0, 0, 0.87)
 
+.max-width-640
+  max-width: 640px
 .max-width-800
   max-width: 800px
 .max-width-1024
   max-width: 1024px
 
+@media print
+  .lmo-no-print
+    display: none !important
 </style>

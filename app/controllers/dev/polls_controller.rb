@@ -10,7 +10,8 @@ class Dev::PollsController < Dev::NightwatchController
                       hide_results_until_closed: !!params[:hide_results_until_closed],
                       admin: !!params[:admin],
                       guest: !!params[:guest],
-                      standalone: !!params[:standalone]
+                      standalone: !!params[:standalone],
+                      wip: !!params[:wip]
                     })
 
     sign_in(scenario[:observer]) if scenario[:observer].is_a?(User)

@@ -30,8 +30,6 @@ export default
     betaFeatures: ->
       Session.user().experiences['betaFeatures']
 
-
-
 </script>
 
 <template lang="pug">

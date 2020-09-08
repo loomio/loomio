@@ -15,6 +15,7 @@ export default
     v-text-field.poll-score-form__min(v-model="poll.customFields.min_score" type="number" :step="1" :label="$t('poll_common.min_score')")
     v-spacer
     v-text-field.poll-score-form__max(v-model="poll.customFields.max_score" type="number" :step="1" :label="$t('poll_common.max_score')")
+  poll-common-wip-field(:poll="poll")
   poll-common-closing-at-field(:poll="poll")
   poll-common-settings(:poll="poll")
 </template>

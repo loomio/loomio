@@ -24,7 +24,7 @@ export default
 </script>
 
 <template lang="pug">
-div.lmo-markdown-wrapper.body-2.text--primary
+div.lmo-markdown-wrapper
   div(v-if="!hasTranslation && isMd" v-marked='cookedText')
   div(v-if="!hasTranslation && isHtml" v-html='text')
   translation(v-if="hasTranslation" :model='model' :field='column')
@@ -37,7 +37,8 @@ img.emoji
   margin: 0 .05em
 
 .lmo-markdown-wrapper
-  // Alignment
+  line-height: 1.4
+
   *[data-text-align="left"]
     text-align: left !important
   *[data-text-align="center"]
@@ -48,7 +49,7 @@ img.emoji
     text-align: justify !important
 
   .cursor
-    font-size: 12px
+    font-size: 0.8rem
     font-weight: normal
     line-height: 20px
     letter-spacing: normal
@@ -56,8 +57,11 @@ img.emoji
   span.mention
     color: var(--v-anchor-base)
 
-  blockquote, h1, h2, h3, ol, p, pre
+  blockquote, ol, p, pre, ul
     margin: 0.5rem 0
+
+  h1, h2, h3
+    margin-top: 1rem
 
   blockquote:first-child, h1:first-child, h2:first-child, h3:first-child, ol:first-child, p:first-child, pre:first-child, ul:first-child
     margin-top: 0
@@ -67,33 +71,18 @@ img.emoji
 
   h1
     font-size: 2.125rem
-    line-height: 3rem
     font-weight: 400
-    letter-spacing: -0.06rem
-
-  h1 strong
-    font-weight: 700
+    letter-spacing: 0.015625rem
 
   h2
     font-size: 1.5rem
-    line-height: 2rem
     font-weight: 400
-
-  h2 strong
-    font-weight: 500
+    letter-spacing: normal
 
   h3
-    font-size: 1.15rem
-    line-height: 1.7rem
+    font-size: 1.25rem
     font-weight: 500
-
-  h3 strong
-    font-weight: 700
-
-  p
-    line-height: 1.35em
-    margin-top: 8px
-    margin-bottom: 12px
+    letter-spacing: 0.009375rem
 
   strong
     font-weight: 700

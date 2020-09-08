@@ -36,3 +36,6 @@ export initLiveUpdate = ->
   recordsSocket.on 'connect', (data) =>
     # Flash.warning("server connected")
     console.log("socket.io connect")
+    
+export closeLiveUpdate = ->
+  recordsSocket.close()

@@ -29,7 +29,6 @@ gem "aws-sdk-s3", require: false
 gem 'mini_magick'
 gem 'image_processing', '~> 1.11'
 gem "sentry-raven"
-gem 'sequenced', '~> 3.2.0'
 gem 'http_accept_language'
 gem 'sprockets', '3.7.2'
 gem 'sprockets-rails', require: 'sprockets/railtie'
@@ -50,6 +49,7 @@ gem 'discriminator', '~> 0.1.1'
 gem 'icalendar'
 gem 'rack-attack'
 gem 'bootsnap', require: false
+gem 'redis-objects'
 gem 'redis-rails'
 gem 'hiredis'
 gem 'connection_pool'

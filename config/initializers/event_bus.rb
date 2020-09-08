@@ -48,7 +48,4 @@ EventBus.configure do |config|
                 'poll_close',
                 'poll_destroy',
                 'poll_expire') { |model| model.discussion&.update_importance }
-
-  # move events to new discussion on fork
-  config.listen('discussion_fork') { |source, target| DiscussionForker.new(source, target).fork! }
 end

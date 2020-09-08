@@ -52,9 +52,6 @@ export default
         'edit'
       'poll_' + @poll.pollType + '_form.'+mode+'_header'
 
-    isEditing: ->
-      !@poll.isNew()
-
 
 </script>
 <template lang="pug">
@@ -70,12 +67,10 @@ export default
             v-btn(icon :to="urlFor(poll)" aria-hidden='true')
               v-icon mdi-close
           div.pa-4
-            v-alert(v-model="isEditing" color="primary" type="warning")
-              template(slot="default")
-                span(v-t="{ path: 'poll_common.edit_warning', args: { pollType: poll.translatedPollType() }}")
             poll-common-directive(:poll='poll' name='form')
           v-card-actions.poll-common-form-actions
             v-spacer
-            v-btn.poll-common-form__submit(color="primary" @click='submit()', v-if='!poll.isNew()', v-t="'common.action.save_changes'")
-            v-btn.poll-common-form__submit(color="primary" @click='submit()', v-if='poll.isNew() && poll.groupId' v-t="{path: 'poll_common_form.start_poll_type', args: {poll_type: poll.translatedPollType()}}")
+            v-btn.poll-common-form__submit(color="primary" @click='submit()' v-if='!poll.isNew()', v-t="'common.action.save_changes'")
+            v-btn.poll-common-form__submit(color="primary" @click='submit()' v-if='poll.closingAt && poll.isNew() && poll.groupId' v-t="{path: 'poll_common_form.start_poll_type', args: {poll_type: poll.translatedPollType()}}")
+            v-btn.poll-common-form__submit(color="primary" @click='submit()' v-if='!poll.closingAt && poll.isNew() && poll.groupId' v-t="{path: 'poll_common_form.start_poll_type', args: {poll_type: poll.translatedPollType()}}")
 </template>
