@@ -1,6 +1,8 @@
 <script lang="coffee">
 import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
+import Records from '@/shared/services/records'
+
 export default
   props:
     event: Object
