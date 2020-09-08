@@ -13,6 +13,7 @@ class Event < ApplicationRecord
   has_many :children, (-> { where("discussion_id is not null") }), class_name: "Event", foreign_key: :parent_id
   set_custom_fields :pinned_title
 
+  before_create :set_parent_and_depth
   before_create :set_sequences
   after_rollback :reset_sequences
 
@@ -65,8 +66,6 @@ class Event < ApplicationRecord
   end
 
   def set_sequences
-    return unless discussion_id
-    set_parent_and_depth
     set_sequence_id
     set_position_and_position_key
   end
@@ -115,6 +114,7 @@ class Event < ApplicationRecord
   end
 
   def set_sequence_id
+    return unless discussion_id
     return if sequence_id
     self.sequence_id = next_sequence_id
   end
@@ -124,13 +124,13 @@ class Event < ApplicationRecord
   end
 
   def set_position_and_position_key!
-    return unless self.discussion_id
+    return unless discussion_id
     set_position_and_position_key
     update_columns(position: position, position_key: position_key)
   end
 
   def set_position_and_position_key
-    return unless self.discussion_id
+    return unless discussion_id
     return unless position == 0
     self.position = next_position
     self.position_key = self_and_parents.reverse.map(&:position).map{|p| Event.zero_fill(p) }.join('-')
