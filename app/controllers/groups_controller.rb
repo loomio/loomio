@@ -29,4 +29,9 @@ class GroupsController < ApplicationController
   def stats
     @group = load_and_authorize(:group, :export)
   end
+
+  def start
+    ahoy.track "get_started", request.path_parameters
+    redirect_to "/g/new"
+  end
 end

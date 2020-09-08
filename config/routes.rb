@@ -252,8 +252,7 @@ Loomio::Application.routes.draw do
   get '/manifest'   => 'manifest#show', format: :json
   get '/markdown'   => 'help#markdown'
 
-  get '/start_group', to: redirect('/g/new')
-
+  get '/start_group'                       => 'groups#start'
   get 'dashboard'                          => 'application#index', as: :dashboard
   get 'dashboard/:filter'                  => 'application#index'
   get 'inbox'                              => 'application#index', as: :inbox
