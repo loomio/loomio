@@ -378,7 +378,7 @@ GEM
       i18n
       polyamorous (= 2.3.2)
     redcarpet (3.5.0)
-    redis (4.2.1)
+    redis (4.2.2)
     redis-actionpack (5.2.0)
       actionpack (>= 5, < 7)
       redis-rack (>= 2.1.0, < 3)
@@ -453,7 +453,7 @@ GEM
     sentry-raven (2.13.0)
       faraday (>= 0.7.6, < 1.0)
     sexp_processor (4.14.1)
-    sidekiq (6.1.1)
+    sidekiq (6.1.2)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
