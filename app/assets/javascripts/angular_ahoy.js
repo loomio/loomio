@@ -2,8 +2,8 @@
 
 ahoy.configure({
   // urlPrefix: "",
-  visitsUrl: "/ahoy/visits",
-  eventsUrl: "/ahoy/events",
+  visitsUrl: "/bhoy/visits",
+  eventsUrl: "/bhoy/events",
   // page: null,
   // platform: "Web",
   // useBeacon: true,
