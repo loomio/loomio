@@ -4,7 +4,7 @@ import Session           from '@/shared/services/session'
 import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
 import ThreadLoader      from '@/shared/loaders/thread_loader'
-import ahoy from 'ahoy.js'
+import ahoy from '@/shared/services/ahoy'
 
 export default
   data: ->
