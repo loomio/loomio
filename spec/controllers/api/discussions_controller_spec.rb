@@ -178,8 +178,8 @@ describe API::DiscussionsController do
     end
 
     context 'logged out' do
-      let(:public_discussion) { create_discussion private: false }
-      let(:private_discussion) { create_discussion private: true }
+      let(:public_discussion) { create_discussion visible_to: 'public' }
+      let(:private_discussion) { create_discussion visible_to: 'group' }
 
       before do
         [public_discussion, private_discussion].each do |d|
@@ -266,8 +266,8 @@ describe API::DiscussionsController do
     end
 
     context 'logged out' do
-      let!(:public_discussion) { create_discussion private: false }
-      let!(:private_discussion) { create_discussion private: true }
+      let!(:public_discussion) { create_discussion visible_to: 'public' }
+      let!(:private_discussion) { create_discussion visible_to: 'group' }
 
       before do
         [public_discussion, private_discussion].each do |d|
@@ -308,7 +308,7 @@ describe API::DiscussionsController do
 
         it 'can display content from a specified public group' do
           public_group = create :group, discussion_privacy_options: :public_only, is_visible_to_public: true
-          can_see_me = create_discussion(group: public_group, private: false)
+          can_see_me = create_discussion(group: public_group, visible_to: 'public')
           get :index, params: { group_id: public_group.id }, format: :json
           json = JSON.parse(response.body)
           discussions = json['discussions'].map { |v| v['id'] }

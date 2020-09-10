@@ -145,6 +145,13 @@ class Group < ApplicationRecord
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
   before_validation :ensure_handle_is_not_empty
 
+  def available_visible_tos
+    values = ['discussion', 'group']
+    values.push('parent_group') if parent_id
+    values.push('public') if ['public_or_privacy', 'public_only'].include?(discussion_privacy_options)
+    values
+  end
+
   def discussion_id
     nil
   end

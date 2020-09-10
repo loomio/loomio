@@ -21,6 +21,7 @@ export default class DiscussionModel extends BaseModel
 
   defaultValues: ->
     private: null
+    visibleTo: 'group'
     usesMarkdown: true
     lastItemAt: null
     title: ''
@@ -58,6 +59,12 @@ export default class DiscussionModel extends BaseModel
     # @belongsTo 'forkedEvent', from: 'events'
 
   discussion: -> @
+
+  availableVisibleTos: ->
+    values = ['discussion', 'group']
+    values.push('parent_group') if @group().parentId
+    values.push('public') if ['public_or_privacy', 'public_only'].includes(@group().discussionPrivacyOptions)
+    values
 
   members: ->
     # pull out the discussion_readers user_ids

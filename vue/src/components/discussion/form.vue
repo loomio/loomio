@@ -47,6 +47,20 @@ export default
       @discussion.private = @discussion.privateDefaultValue()
 
   computed:
+    visibleTos: ->
+      @discussion.availableVisibleTos().map (value) =>
+        text = switch value
+          when 'discussion'
+            @$t("discussion_form.visible_to_discussion")
+          when 'group'
+            @discussion.group().name
+          when 'parent_group'
+            @discussion.group().parent().name
+          when 'public'
+            @$t("discussion_form.visible_to_public")
+        {text, value}
+
+
     privacyTitle: ->
       if @discussion.private
         'common.privacy.private'
@@ -116,6 +130,7 @@ export default
 
     .discussion-form__group-selected(v-if='discussion.groupId && discussion.group() && !showUpgradeMessage')
       p {{discussion.group().fullName}}
+      v-select(v-model="discussion.visibleTo" :items="visibleTos" :label="$t('discussion_form.visible_to_label')")
       v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input.text-h5(:label="$t('discussion_form.title_label')" :placeholder="$t('discussion_form.title_placeholder')" v-model='discussion.title' maxlength='255')
       validation-errors(:subject='discussion', field='title')
       lmo-textarea(:model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")

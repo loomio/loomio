@@ -588,6 +588,11 @@ en:
     start_new_thread: Or, start new thread
 
   discussion_form:
+    visible_to_label: Visible to
+    visible_to_discussion: Invite only
+    visible_to_group: "{{group}}"
+    visible_to_parent_group: "{{group}}"
+    visible_to_public: Public
     aria_label: 'Thread form'
     start_thread: Start thread
     messages:

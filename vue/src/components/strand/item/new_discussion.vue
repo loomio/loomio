@@ -3,8 +3,12 @@ import ThreadService  from '@/shared/services/thread_service'
 import { map, compact, pick } from 'lodash'
 import EventBus from '@/shared/services/event_bus'
 import openModal      from '@/shared/helpers/open_modal'
+import DiscussionPrivacyBadge from '@/components/discussion/privacy_badge'
 
 export default
+  components:
+    DiscussionPrivacyBadge: DiscussionPrivacyBadge
+
   props:
     event: Object
     collapsed: Boolean
@@ -59,17 +63,10 @@ export default
     user-avatar.mr-2(:user="discussion.author()" size="36")
     router-link(:to="urlFor(discussion.author())" title="Thread author") {{discussion.authorName()}}
     v-spacer
-    span(v-for="group in groups")
-      router-link(:to="group.to") {{group.text}}
-      mid-dot
-    span(aria-label="Thread privacy")
-      span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private(v-show='discussion.private')
-        i.mdi.mdi-lock-outline
-        span(v-t="'common.privacy.private'")
-      span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public(v-show='!discussion.private')
-        i.mdi.mdi-earth
-        span(v-t="'common.privacy.public'")
-
+    //- span(v-for="group in groups")
+    //-   router-link(:to="group.to") {{group.text}}
+    //-   mid-dot
+    discussion-privacy-badge(:discussion="discussion")
     mid-dot
     span(v-show='discussion.seenByCount > 0')
       a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")

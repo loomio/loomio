@@ -25,6 +25,7 @@ class DiscussionSerializer < ApplicationSerializer
              :created_at,
              :updated_at,
              :private,
+             :visible_to,
              :versions_count,
              :importance,
              :pinned,
