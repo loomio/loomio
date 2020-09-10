@@ -137,11 +137,4 @@ export default
         template(v-slot:actions)
           v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled || !discussion.groupId" v-t="'discussion_form.start_thread'" v-if="discussion.isNew()")
           v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-t="'common.action.save'" v-if="!discussion.isNew()")
-      v-list-item.discussion-form__privacy-notice
-        v-list-item-avatar
-          v-icon(v-if='discussion.private') mdi-lock-outline
-          v-icon(v-if='!discussion.private') mdi-earth
-        v-list-item-content
-          v-list-item-title.discussion-privacy-icon__title(v-t="privacyTitle")
-          v-list-item-subtitle.discussion-privacy-icon__subtitle(v-html='privacyDescription')
 </template>
