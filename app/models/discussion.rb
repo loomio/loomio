@@ -37,7 +37,7 @@ class Discussion < ApplicationRecord
   validates :title, length: { maximum: 150 }
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
   # validate :privacy_is_permitted_by_group
-  validates :visible_to, inclusion: { in: %w[members group parent_group public]}
+  validates :visible_to, inclusion: { in: %w[discussion group parent_group public]}
 
   is_mentionable  on: :description
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
@@ -112,7 +112,7 @@ class Discussion < ApplicationRecord
   def members
     # User.where(id: group.members.pluck(:id).concat(guests.pluck(:id)).uniq)
     case visible_to
-    when "members"
+    when "discussion"
       User.active.
         joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
         where("dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL")

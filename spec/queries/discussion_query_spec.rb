@@ -104,8 +104,8 @@ describe DiscussionQuery do
       parent_group.add_member!(parent_group_user)
     end
 
-    it "member" do
-      discussion.update(visible_to: 'members')
+    it "discussion" do
+      discussion.update(visible_to: 'discussion')
       expect(DiscussionQuery.visible_to(user: discussion_user).exists?(discussion.id)).to be true
       expect(DiscussionQuery.visible_to(user: group_user).exists?(discussion.id)).to be false
       expect(DiscussionQuery.visible_to(user: parent_group_user).exists?(discussion.id)).to be false
