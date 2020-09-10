@@ -19,9 +19,11 @@
               %span.v-chip__content
                 - if poll.active?
                   = t(:"poll_mailer.common.you_have_until", when: format_date_for_humans(poll.closing_at, poll.time_zone))
-                - else
+                - if poll.closed?
                   = t(:"poll_common_form.closed")
                   = format_date_for_humans(poll.closed_at, poll.time_zone)
+                - if poll.wip?
+                  = t(:"poll_common_wip_field.title")
                 -# %abbr.closing-in.timeago--inline
                 -#   %span{:title => "January 21, 14:55"} Closed January 21, 14:55
         - if poll.current_outcome
