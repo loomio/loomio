@@ -21,7 +21,7 @@ module Ability::Discussion
     can :create, ::Discussion do |discussion|
       user.email_verified? &&
       (discussion.admins.exists?(user.id) ||
-      (discussion.group && discussion.group.members_can_start_discussions? && discussion.members.exists?(user.id)))
+      (discussion.group && discussion.group.members_can_start_discussions? && discussion.group.members.exists?(user.id)))
     end
 
     can [:announce], ::Discussion do |discussion|
