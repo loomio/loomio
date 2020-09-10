@@ -41,16 +41,6 @@ export default
     ranges: ->
       RangeSet.arrayToRanges(@positions)
 
-    # firstPosition: ->
-    #   return 0 unless @collection.length
-    #   @collection[0].event.position
-    #
-    # lastPosition: ->
-    #   return 0 unless @collection.length
-    #   last(@collection).event.position
-    #
-    # parentEvent: ->
-    #   @collection[0].event.parent()
     siblingCount: ->
       (@collection &&
       @collection.length &&
@@ -69,7 +59,6 @@ export default
         event.positionKey.split('-').slice(0, event.depth - 1)
       else
         null
-
 
     isFirstInRange: (pos) ->
       some(@ranges, (range) -> range[0] == pos)
@@ -97,8 +86,7 @@ export default
         'other_kind'
 
     visibilityChanged: (visible, entry, event) ->
-      return unless visible
-      event.markAsRead()
+      event.markAsRead() if visible
 
 </script>
 
@@ -126,7 +114,7 @@ export default
             strand-load-more(:label="{path: 'common.action.count_responses', args: {count: obj.event.descendantCount}}" @click="loader.loadChildren(obj.event)")
 
     .strand-item__row(v-if="lastPosition != 0 && isLastInLastRange(obj.event.position) && obj.event.position != lastPosition")
-      strand-load-more(:label="{path: 'common.action.count_more', args:{count: countLaterMissing()}}" @click="loader.loadAfter(obj.event)")
+      strand-load-more(:label="{path: 'common.action.count_more', args: {count: countLaterMissing()}}" @click="loader.loadAfter(obj.event)")
 </template>
 
 <style lang="sass">
