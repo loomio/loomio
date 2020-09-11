@@ -1,7 +1,7 @@
 <script lang="coffee">
 import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
-import { map, sortBy, filter } from 'lodash'
+import { map, sortBy, filter, debounce, without } from 'lodash'
 import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
@@ -18,14 +18,39 @@ export default
     upgradeUrl: AppConfig.baseUrl + 'upgrade'
     availableGroups: []
     submitIsDisabled: false
+    searchResults: []
+    query: ''
 
   mounted: ->
+    Records.memberships.fetchByGroup(@discussion.groupId, per: 100)
+
+    @search = debounce ->
+      return unless @query && @query.length > 2
+      Records.users.fetchMentionable(@query, @discussion.group())
+
     @watchRecords
       collections: ['groups', 'memberships']
       query: (store) =>
         @availableGroups = filter(Session.user().groups(), (group) -> AbilityService.canStartThread(group))
+        @updateSearchResults()
 
   methods:
+    remove: (item) ->
+      @discussion.recipientIds = without(@discussion.recipientIds, item.id)
+
+    updateSearchResults: ->
+      memberIds = without(@discussion.group().memberIds(), Session.user().id)
+      chain = Records.users.collection.chain().find(id: {$in: memberIds})
+      if @query
+        chain = chain.find(
+          $or: [
+            {name: {'$regex': ["^#{@query}", "i"]}},
+            {username: {'$regex': ["^#{@query}", "i"]}},
+            {name: {'$regex': [" #{@query}", "i"]}}
+          ]
+        )
+      @searchResults = chain.simplesort('name').data()
+
     submit: ->
       actionName = if @discussion.isNew() then 'created' else 'updated'
       @discussion.save()
@@ -34,17 +59,22 @@ export default
         Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
           Flash.success("discussion_form.messages.#{actionName}")
           @$router.push @urlFor(discussion)
-          if @discussion.isNew()
-            if AbilityService.canAnnounceTo(discussion)
-              EventBus.$emit 'openModal',
-                component: 'AnnouncementForm',
-                props:
-                  announcement: Records.announcements.buildFromModel(discussion)
+          # if @discussion.isNew()
+          #   if AbilityService.canAnnounceTo(discussion)
+          #     EventBus.$emit 'openModal',
+          #       component: 'AnnouncementForm',
+          #       props:
+          #         announcement: Records.announcements.buildFromModel(discussion)
       .catch onError(@discussion)
 
 
     updatePrivacy: ->
       @discussion.private = @discussion.privateDefaultValue()
+
+  watch:
+    query: (q) ->
+      @search(q)
+      @updateSearchResults()
 
   computed:
     visibleTos: ->
@@ -130,7 +160,17 @@ export default
 
     .discussion-form__group-selected(v-if='discussion.groupId && discussion.group() && !showUpgradeMessage')
       p {{discussion.group().fullName}}
-      v-select(v-model="discussion.visibleTo" :items="visibleTos" :label="$t('discussion_form.visible_to_label')")
+      v-select(v-model="discussion.visibleTo" :items="visibleTos" :label="$t('common.privacy.privacy')")
+      v-autocomplete(multiple chips hide-no-data hide-selected no-filter v-model='discussion.recipientIds' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" item-avatar="avatar_url.large" :label="$t('discussion_form.invite')" :items='searchResults')
+        template(v-slot:selection='data')
+          v-chip.chip--select-multi(:value='data.selected', close, @click:close='remove(data.item)')
+            user-avatar.mr-1(:user="data.item" size="small" :no-link="true")
+            span {{ data.item.name }}
+        template(v-slot:item='data')
+          v-list-item-avatar
+            user-avatar(:user="data.item" size="small" :no-link="true")
+          v-list-item-content.announcement-chip__content
+            v-list-item-title(v-html='data.item.name')
       v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input.text-h5(:label="$t('discussion_form.title_label')" :placeholder="$t('discussion_form.title_placeholder')" v-model='discussion.title' maxlength='255')
       validation-errors(:subject='discussion', field='title')
       lmo-textarea(:model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")

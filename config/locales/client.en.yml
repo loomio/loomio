@@ -593,6 +593,7 @@ en:
     visible_to_group: "{{group}}"
     visible_to_parent_group: "{{group}}"
     visible_to_public: Public
+    invite: Invite
     aria_label: 'Thread form'
     start_thread: Start thread
     messages:

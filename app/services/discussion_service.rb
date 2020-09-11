@@ -13,7 +13,9 @@ class DiscussionService
     discussion.update_attachments!
     discussion.save!
     EventBus.broadcast('discussion_create', discussion, actor)
-    Events::NewDiscussion.publish!(discussion)
+    created_event = Events::NewDiscussion.publish!(discussion)
+    InviteDiscussionRecipientsWorker.perform_async(discussion.id, actor.id, {user_ids: discussion.recipient_ids})
+    created_event
   end
 
   def self.announce(discussion:, actor:, params:)

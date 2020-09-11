@@ -91,6 +91,7 @@ class PermittedParams < Struct.new(:params)
   def discussion_attributes
     [:title, :description, :description_format, :group_id,
       :newest_first, :max_depth, :private, :visible_to,
+     :recipient_ids, {recipient_ids: []},
      :forked_event_ids, {forked_event_ids: []},
      :document_ids, {document_ids: []},
      :files, :image_files, {files: []}, {image_files: []}
