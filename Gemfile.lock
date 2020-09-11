@@ -96,7 +96,7 @@ GEM
       addressable (>= 2.3.2)
       nokogiri
       safely_block (>= 0.1.1)
-    ahoy_matey (3.0.4)
+    ahoy_matey (3.0.5)
       activesupport (>= 5)
       device_detector
       geocoder (>= 1.4.5)
@@ -144,7 +144,7 @@ GEM
     css_parser (1.7.1)
       addressable
     database_cleaner (1.8.5)
-    device_detector (1.0.3)
+    device_detector (1.0.4)
     devise (4.7.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -507,7 +507,7 @@ DEPENDENCIES
   activerecord-import (= 1.0.6)
   activerecord-nulldb-adapter
   ahoy_email (~> 1.1.0)
-  ahoy_matey (~> 3.0.4)
+  ahoy_matey (~> 3.0.5)
   aws-sdk-s3
   bootsnap
   browser (~> 4.2.0)
