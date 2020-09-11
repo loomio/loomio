@@ -15,15 +15,15 @@ module.exports = {
     page.expectNoText('.members-panel', 'Emilio Estevez')
   },
 
-  // 'successfully_assigns_coordinator_privileges': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('setup_group')
-  //   page.click('.group-page-members-tab')
-  //   page.click('.members-panel .v-card .v-list .v-list-item:first-child .membership-dropdown')
-  //   page.click('.membership-dropdown__toggle-admin')
-  //   page.expectFlash('Emilio Estevez is now an admin')
-  // },
+  'successfully_assigns_coordinator_privileges': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group')
+    page.click('.group-page-members-tab')
+    page.click('.members-panel .v-card .v-list .v-list-item:first-child .membership-dropdown')
+    page.click('.membership-dropdown__toggle-admin')
+    page.expectFlash('Emilio Estevez is now an admin')
+  },
 
   'allows_non-coordinators_to_add_members_if_the_group_settings_allow': (test) => {
     page = pageHelper(test)
@@ -46,17 +46,17 @@ module.exports = {
     page.expectText('.thread-preview-collection__container', 'How to use Loomio')
   },
 
-  // 'can_remove_coordinator_privileges': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('setup_group_with_multiple_coordinators')
-  //
-  //   page.click('.group-page-members-tab')
-  //   page.pause(2000)
-  //   page.click('.members-panel .v-card .v-list .v-list-item:first-child .membership-dropdown')
-  //   page.click('.membership-dropdown__toggle-admin')
-  //   page.expectFlash('Emilio Estevez is no longer an admin')
-  // },
+  'can_remove_coordinator_privileges': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group_with_multiple_coordinators')
+
+    page.click('.group-page-members-tab')
+    page.pause(2000)
+    page.click('.members-panel .v-card .v-list .v-list-item:first-child .membership-dropdown')
+    page.click('.membership-dropdown__toggle-admin')
+    page.expectFlash('Emilio Estevez is no longer an admin')
+  },
 
   // breaks on travis, unknown why
   // 'can_self_promote_when_no_coordinators': (test) => {
@@ -89,18 +89,18 @@ module.exports = {
     page.expectNoText('.membership-dropdown', 'Make admin')
   },
 
-  // 'can_set_membership_title': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('setup_group')
-  //   page.click('.group-page-members-tab')
-  //   page.click('.members-panel .v-card .v-list .v-list-item:last-child .membership-dropdown')
-  //   page.click('.membership-dropdown__set-title')
-  //   page.fillIn('.membership-form__title-input input', 'Suzerain')
-  //   page.click('.membership-form__submit')
-  //   page.expectFlash('Membership title updated')
-  //   page.expectText('.members-panel .v-list .v-list-item:last-child .title', 'Suzerain')
-  // },
+  'can_set_membership_title': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group')
+    page.click('.group-page-members-tab')
+    page.click('.members-panel .v-card .v-list .v-list-item:last-child .membership-dropdown')
+    page.click('.membership-dropdown__set-title')
+    page.fillIn('.membership-form__title-input input', 'Suzerain')
+    page.click('.membership-form__submit')
+    page.expectFlash('Membership title updated')
+    page.expectText('.members-panel .v-list .v-list-item:last-child .title', 'Suzerain')
+  },
 
   'can_change_volume': (test) => {
     page = pageHelper(test)
