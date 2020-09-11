@@ -59,12 +59,6 @@ export default
         Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
           Flash.success("discussion_form.messages.#{actionName}")
           @$router.push @urlFor(discussion)
-          # if @discussion.isNew()
-          #   if AbilityService.canAnnounceTo(discussion)
-          #     EventBus.$emit 'openModal',
-          #       component: 'AnnouncementForm',
-          #       props:
-          #         announcement: Records.announcements.buildFromModel(discussion)
       .catch onError(@discussion)
 
 
