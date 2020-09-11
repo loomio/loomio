@@ -93,7 +93,7 @@ class Event < ApplicationRecord
   # this is called after create, and calls methods defined by the event concerns
   # included per event type
   def trigger!
-    EventBus.broadcast("#{kind}_event", self.reload)
+    EventBus.broadcast("#{kind}_event", self)
   end
 
   def active_model_serializer
