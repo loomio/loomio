@@ -147,12 +147,13 @@ Loomio::Application.routes.draw do
       get :inbox, on: :collection
     end
 
+    resources :discussion_readers, only: [:index]
+
     resources :tags do
       collection do
         post :update_model
       end
     end
-
 
     resources :search, only: :index
 
