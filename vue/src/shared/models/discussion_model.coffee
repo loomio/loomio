@@ -63,7 +63,7 @@ export default class DiscussionModel extends BaseModel
 
   availableVisibleTos: ->
     values = ['discussion', 'group']
-    values.push('parent_group') if @group().parentId
+    values.push('parent_group') if @group().parentId && @group().parentMembersCanSeeDiscussions
     values.push('public') if ['public_or_privacy', 'public_only'].includes(@group().discussionPrivacyOptions)
     values
 

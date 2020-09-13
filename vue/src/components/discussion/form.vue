@@ -31,7 +31,8 @@ export default
     @watchRecords
       collections: ['groups', 'memberships']
       query: (store) =>
-        @availableGroups = filter(Session.user().groups(), (group) -> AbilityService.canStartThread(group))
+        groups = [@discussion.group().parentOrSelf()].concat(@discussion.group().subgroups())
+        @availableGroups = filter(groups, (group) -> AbilityService.canStartThread(group))
         @updateSearchResults()
 
   methods:
@@ -61,11 +62,14 @@ export default
           @$router.push @urlFor(discussion)
       .catch onError(@discussion)
 
-
     updatePrivacy: ->
       @discussion.private = @discussion.privateDefaultValue()
 
   watch:
+    'discussion.visibleTo': (val) ->
+      if val == 'discussion'
+        @discussion.groupId = @discussion.group().parentOrSelf().id
+
     query: (q) ->
       @search(q)
       @updateSearchResults()
@@ -77,7 +81,7 @@ export default
           when 'discussion'
             @$t("discussion_form.visible_to_discussion")
           when 'group'
-            @discussion.group().name
+            @$t("discussion_form.visible_to_group")
           when 'parent_group'
             @discussion.group().parent().name
           when 'public'
@@ -85,27 +89,27 @@ export default
         {text, value}
 
 
-    privacyTitle: ->
-      if @discussion.private
-        'common.privacy.private'
-      else
-        'common.privacy.public'
-
-    privacyDescription: ->
-
-      path = if @discussion.private == false
-               'discussion_form.privacy_public'
-             else if @discussion.group().parentMembersCanSeeDiscussions
-               'discussion_form.privacy_organisation'
-             else
-               'discussion_form.privacy_private'
-      @$t(path, {group:  @discussion.group().name, parent: @discussion.group().parentName()})
+    # privacyTitle: ->
+    #   if @discussion.private
+    #     'common.privacy.private'
+    #   else
+    #     'common.privacy.public'
+    #
+    # privacyDescription: ->
+    #
+    #   path = if @discussion.private == false
+    #            'discussion_form.privacy_public'
+    #          else if @discussion.group().parentMembersCanSeeDiscussions
+    #            'discussion_form.privacy_organisation'
+    #          else
+    #            'discussion_form.privacy_private'
+    #   @$t(path, {group:  @discussion.group().name, parent: @discussion.group().parentName()})
 
     groupSelectOptions: ->
-      sortBy map(@availableGroups, (group) -> {
-         text: group.fullName,
+      map(@availableGroups, (group) -> {
+         text: group.name,
          value: group.id
-      }), 'fullName'
+      })
 
     maxThreads: ->
       return null unless @discussion.group()
@@ -155,7 +159,8 @@ export default
     .discussion-form__group-selected(v-if='discussion.groupId && discussion.group() && !showUpgradeMessage')
       p {{discussion.group().fullName}}
       v-select(v-model="discussion.visibleTo" :items="visibleTos" :label="$t('common.privacy.privacy')")
-      v-autocomplete(multiple chips hide-no-data hide-selected no-filter v-model='discussion.recipientIds' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" item-avatar="avatar_url.large" :label="$t('discussion_form.invite')" :items='searchResults')
+      v-select(v-if="discussion.visibleTo == 'group'" v-model="discussion.groupId" :items="groupSelectOptions" :label="$t('discussion_form.group_label')" :placeholder="$t('discussion_form.group_placeholder')")
+      v-autocomplete(v-if="discussion.visibleTo == 'discussion'" multiple chips hide-no-data hide-selected no-filter v-model='discussion.recipientIds' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" item-avatar="avatar_url.large" :label="$t('discussion_form.invite')" :items='searchResults')
         template(v-slot:selection='data')
           v-chip.chip--select-multi(:value='data.selected', close, @click:close='remove(data.item)')
             user-avatar.mr-1(:user="data.item" size="small" :no-link="true")
