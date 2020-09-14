@@ -15,6 +15,8 @@ export default
     isPage: Boolean
 
   data: ->
+    selectedGroupId: @discussion.groupId
+    groupSelectOptions: []
     upgradeUrl: AppConfig.baseUrl + 'upgrade'
     availableGroups: []
     submitIsDisabled: false
@@ -22,8 +24,6 @@ export default
     query: ''
 
   mounted: ->
-    Records.memberships.fetchByGroup(@discussion.groupId, per: 100)
-
     @search = debounce ->
       return unless @query && @query.length > 2
       Records.users.fetchMentionable(@query, @discussion.group())
@@ -31,8 +31,15 @@ export default
     @watchRecords
       collections: ['groups', 'memberships']
       query: (store) =>
-        groups = [@discussion.group().parentOrSelf()].concat(@discussion.group().subgroups())
-        @availableGroups = filter(groups, (group) -> AbilityService.canStartThread(group))
+        parentGroup = @discussion.group().parentOrSelf()
+        groups = [parentGroup].concat(parentGroup.subgroups())
+        availableGroups = filter(groups, (group) -> AbilityService.canStartThread(group))
+        @groupSelectOptions = map groups, (group) ->
+          text: group.name
+          value: group.id
+
+        @groupSelectOptions.unshift {value: null, text: @$t('discussion_form.visible_to_discussion')}
+
         @updateSearchResults()
 
   methods:
@@ -40,6 +47,7 @@ export default
       @discussion.recipientIds = without(@discussion.recipientIds, item.id)
 
     updateSearchResults: ->
+      # console.log "@discussion.group().memberIds()", @discussion.group().name, @discussion.group().memberIds()
       memberIds = without(@discussion.group().memberIds(), Session.user().id)
       chain = Records.users.collection.chain().find(id: {$in: memberIds})
       if @query
@@ -66,9 +74,15 @@ export default
       @discussion.private = @discussion.privateDefaultValue()
 
   watch:
-    'discussion.visibleTo': (val) ->
-      if val == 'discussion'
+    'selectedGroupId': (val) ->
+      if val == null
         @discussion.groupId = @discussion.group().parentOrSelf().id
+        @discussion.visibleTo = "discussion"
+      else
+        @discussion.groupId = val
+        @discussion.visibleTo = "group"
+        @discussion.recipientIds = []
+      Records.memberships.fetchByGroup(@discussion.groupId, per: 100)
 
     query: (q) ->
       @search(q)
@@ -87,29 +101,6 @@ export default
           when 'public'
             @$t("discussion_form.visible_to_public")
         {text, value}
-
-
-    # privacyTitle: ->
-    #   if @discussion.private
-    #     'common.privacy.private'
-    #   else
-    #     'common.privacy.public'
-    #
-    # privacyDescription: ->
-    #
-    #   path = if @discussion.private == false
-    #            'discussion_form.privacy_public'
-    #          else if @discussion.group().parentMembersCanSeeDiscussions
-    #            'discussion_form.privacy_organisation'
-    #          else
-    #            'discussion_form.privacy_private'
-    #   @$t(path, {group:  @discussion.group().name, parent: @discussion.group().parentName()})
-
-    groupSelectOptions: ->
-      map(@availableGroups, (group) -> {
-         text: group.name,
-         value: group.id
-      })
 
     maxThreads: ->
       return null unless @discussion.group()
@@ -158,8 +149,8 @@ export default
 
     .discussion-form__group-selected(v-if='discussion.groupId && discussion.group() && !showUpgradeMessage')
       p {{discussion.group().fullName}}
-      v-select(v-model="discussion.visibleTo" :items="visibleTos" :label="$t('common.privacy.privacy')")
-      v-select(v-if="discussion.visibleTo == 'group'" v-model="discussion.groupId" :items="groupSelectOptions" :label="$t('discussion_form.group_label')" :placeholder="$t('discussion_form.group_placeholder')")
+      //- v-select(v-model="discussion.visibleTo" :items="visibleTos" :label="$t('common.privacy.privacy')")
+      v-select(v-model="selectedGroupId" :items="groupSelectOptions" :label="$t('discussion_form.group_label')" :placeholder="$t('discussion_form.group_placeholder')")
       v-autocomplete(v-if="discussion.visibleTo == 'discussion'" multiple chips hide-no-data hide-selected no-filter v-model='discussion.recipientIds' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" item-avatar="avatar_url.large" :label="$t('discussion_form.invite')" :items='searchResults')
         template(v-slot:selection='data')
           v-chip.chip--select-multi(:value='data.selected', close, @click:close='remove(data.item)')
