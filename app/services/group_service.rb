@@ -45,7 +45,7 @@ module GroupService
       ExampleContent.new(group).add_to_group! if AppConfig.app_features[:example_content]
     end
 
-    group.update_attachments!
+    # group.update_attachments!
     group.save!
     group.add_admin!(actor)
 
@@ -61,7 +61,7 @@ module GroupService
     privacy_change = PrivacyChange.new(group)
 
     return false unless group.valid?
-    group.update_attachments!
+    # group.update_attachments!
     group.save!
     privacy_change.commit!
 

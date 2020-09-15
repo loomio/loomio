@@ -4,7 +4,7 @@ class CommentService
     actor.ability.authorize! :create, comment
     comment.author = actor
     return false unless comment.valid?
-    comment.update_attachments!
+    # comment.update_attachments!
     comment.save!
     EventBus.broadcast('comment_create', comment, actor)
     Events::NewComment.publish!(comment)
@@ -44,7 +44,7 @@ class CommentService
 
     HasRichText.assign_attributes_and_update_files(comment, params)
     return false unless comment.valid?
-    comment.update_attachments!
+    # comment.update_attachments!
     comment.save!
 
     EventBus.broadcast('comment_update', comment, actor)

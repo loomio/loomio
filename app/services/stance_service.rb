@@ -19,7 +19,7 @@ class StanceService
     return false unless stance.valid?
 
     stance.poll.stances.where(participant: actor).update_all(latest: false)
-    stance.update_attachments!
+    # stance.update_attachments!
     stance.save!
     stance.poll.update_stance_data
     EventBus.broadcast 'stance_create', stance
@@ -34,7 +34,7 @@ class StanceService
     HasRichText.assign_attributes_and_update_files(stance, params)
     return false unless stance.valid?
     stance.cast_at ||= Time.zone.now
-    stance.update_attachments!
+    # stance.update_attachments!
     stance.save!
     stance.poll.update_stance_data
     Events::StanceCreated.publish!(stance) unless stance.created_event
