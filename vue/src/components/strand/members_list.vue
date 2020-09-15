@@ -12,13 +12,12 @@ export default
     readers: []
     query: ''
     searchResults: []
-    invitedUserIds: []
-
+    recipients: []
+    emailAddresses: null
 
   mounted: ->
-    @search = debounce ->
-      return unless @query && @query.length > 2
-      Records.users.fetchMentionable(@query, @discussion.group())
+    @fetchMemberships = debounce ->
+      Records.memberships.fetchByNameFragment(@query, @discussion.group().key, 20) unless @emailAddresses
 
     Records.discussionReaders.fetch
       path: ''
@@ -40,6 +39,11 @@ export default
       @updateSearchResults()
 
   methods:
+    search: ->
+      return unless @query && @query.length > 2
+      @emailAddresses = @query.match(/[^\s:,;'"`<>]+?@[^\s:,;'"`<>]+\.[^\s:,;'"`<>]+/g)
+      @fetchMemberships() unless @emailAddresses
+
     openInviteModal: ->
       EventBus.$emit 'openModal',
         component: 'StrandMembersList',
@@ -64,24 +68,51 @@ export default
       @readers = chain.data()
 
     updateSearchResults: ->
-      memberIds = without(@discussion.group().memberIds(), Session.user().id)
-      chain = Records.users.collection.chain().find(id: {$in: memberIds})
-      if @query
-        chain = chain.find(
-          $or: [
-            {name: {'$regex': ["^#{@query}", "i"]}},
-            {username: {'$regex': ["^#{@query}", "i"]}},
-            {name: {'$regex': [" #{@query}", "i"]}}
-          ]
-        )
-      @searchResults = chain.simplesort('name').data()
+      if @emailAddresses
+        @searchResults = @recipients.concat @emailAddresses.map (e) ->
+          id: e
+          isEmail: true
+          name: e
+      else
+        memberIds = without(@discussion.group().memberIds(), Session.user().id)
+        chain = Records.users.collection.chain().find(id: {$in: memberIds})
+        if @query
+          chain = chain.find(
+            $or: [
+              {name: {'$regex': ["^#{@query}", "i"]}},
+              {username: {'$regex': ["^#{@query}", "i"]}},
+              {name: {'$regex': [" #{@query}", "i"]}}
+            ]
+          )
+        @searchResults = @recipients.concat chain.simplesort('name').data()
 
 </script>
 
 <template lang="pug">
 .strand-members-list
   discussion-privacy-badge.pa-4(:discussion="discussion")
-  v-autocomplete.px-4(multiple chips hide-no-data hide-selected no-filter v-model='invitedUserIds' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" item-avatar="avatar_url.large" :label="$t('discussion_form.invite')" :items='searchResults')
+  v-autocomplete.px-4(multiple chips
+    return-object
+    auto-select-first
+    hide-no-data
+    hide-selected
+    v-model='recipients'
+    @change="query= ''"
+    :search-input.sync="query"
+    item-text='name'
+    :label="$t('discussion_form.invite')"
+    :items='searchResults')
+    template(v-slot:selection='data')
+      v-chip.chip--select-multi(:value='data.selected' close @click:close='remove(data.item)')
+        v-icon.mr-1(v-if="data.item.isEmail" small) mdi-email-outline
+        user-avatar.mr-1(v-else :user="data.item" size="small" no-link)
+        span {{ data.item.name }}
+    template(v-slot:item='data')
+      v-list-item-avatar
+        v-icon(v-if="data.item.isEmail") mdi-email-outline
+        user-avatar(v-else :user="data.item" size="small" no-link)
+      v-list-item-content.announcement-chip__content
+        v-list-item-title(v-html='data.item.name')
   v-list
     v-subheader Participants
     v-list-item(v-for="reader in readers" :user="reader.user()" :key="reader.id")

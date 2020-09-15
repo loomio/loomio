@@ -151,7 +151,7 @@ export default
       p {{discussion.group().fullName}}
       //- v-select(v-model="discussion.visibleTo" :items="visibleTos" :label="$t('common.privacy.privacy')")
       v-select(v-model="selectedGroupId" :items="groupSelectOptions" :label="$t('discussion_form.group_label')" :placeholder="$t('discussion_form.group_placeholder')")
-      v-autocomplete(v-if="discussion.visibleTo == 'discussion'" multiple chips hide-no-data hide-selected no-filter v-model='discussion.recipientIds' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" item-avatar="avatar_url.large" :label="$t('discussion_form.invite')" :items='searchResults')
+      v-autocomplete(v-if="discussion.visibleTo == 'discussion'" multiple chips hide-no-data hide-selected no-filter v-model='discussion.recipientIds' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" :label="$t('discussion_form.invite')" :items='searchResults')
         template(v-slot:selection='data')
           v-chip.chip--select-multi(:value='data.selected', close, @click:close='remove(data.item)')
             user-avatar.mr-1(:user="data.item" size="small" :no-link="true")
