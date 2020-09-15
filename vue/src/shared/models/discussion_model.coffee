@@ -56,6 +56,7 @@ export default class DiscussionModel extends BaseModel
     # @hasMany 'versions', sortBy: 'createdAt'
     @belongsTo 'group'
     @belongsTo 'author', from: 'users'
+    @hasMany 'discussionReaders'
     # @belongsTo 'createdEvent', from: 'events'
     # @belongsTo 'forkedEvent', from: 'events'
 
@@ -68,8 +69,7 @@ export default class DiscussionModel extends BaseModel
     values
 
   members: ->
-    # pull out the discussion_readers user_ids
-    @recordStore.users.find(@group().memberIds())
+    @recordStore.users.find(@group().memberIds().concat(map(@discussionReaders(), 'userId')))
 
   membersInclude: (user) ->
     (@inviterId && !@revokedAt && Session.user() == user) or

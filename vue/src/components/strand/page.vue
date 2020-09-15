@@ -4,6 +4,7 @@ import Session           from '@/shared/services/session'
 import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
 import ThreadLoader      from '@/shared/loaders/thread_loader'
+
 import ahoy from 'ahoy.js'
 
 export default
@@ -95,6 +96,5 @@ export default
   v-main
     v-container.max-width-800(v-if="discussion")
       strand-nav(v-if="loader" :discussion="discussion" :loader="loader")
-
       strand-card(v-if="loader" :discussion='discussion' :loader="loader")
 </template>

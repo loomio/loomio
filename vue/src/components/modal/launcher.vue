@@ -34,6 +34,7 @@ import ExportDataModal from '@/components/group/export_data_modal'
 import InstallSamlProviderModal from '@/components/install_saml_provider/modal'
 import GroupSurvey from '@/components/group/survey'
 import AddPollToThreadModal from '@/components/poll/add_to_thread_modal'
+import StrandMembersList from '@/components/strand/members_list'
 
 export default
   components: {
@@ -71,6 +72,7 @@ export default
     InstallSamlProviderModal
     GroupSurvey
     AddPollToThreadModal
+    StrandMembersList
   }
 
   data: ->
