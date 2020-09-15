@@ -19,8 +19,9 @@ div.context-panel__discussion-privacy.d-flex.align-center(aria-label="$t('discus
   template.mr-1(v-if='discussion.visibleTo == "public"')
     v-icon(small) mdi-earth
     span(v-t="'discussion_form.visible_to_public'")
-  mid-dot
-  router-link(:to="urlFor(discussion.group())") {{discussion.group().name}}
+  template(v-if='discussion.visibleTo != "discussion"')
+    mid-dot
+    router-link(:to="urlFor(discussion.group())") {{discussion.group().name}}
 </template>
 
 <style lang="sass">

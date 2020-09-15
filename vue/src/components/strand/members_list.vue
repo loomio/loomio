@@ -59,6 +59,7 @@ export default
   dismiss-modal-button
   discussion-privacy-badge.pa-4(:discussion="discussion")
   recipients-autocomplete(
+    show-groups
     label="invite"
     placeholder="enter names or email addresses of people to invite to the thread"
     :group="discussion.group()"

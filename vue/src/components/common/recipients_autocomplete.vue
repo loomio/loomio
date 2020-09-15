@@ -7,7 +7,7 @@ import {map, debounce, without, filter, uniq, uniqBy} from 'lodash'
 export default
   # emits: query, recipients
   props:
-    showGroups: Boolean
+    availableGroups: Array
     group: Object
     excludedUserIds: Array
     label: String
@@ -29,7 +29,7 @@ export default
           exclude_types: 'group'
           q: @query
           group_id: @group.id
-          per: 10
+          per: 50
       .finally =>
         @loading = false
     , 300
@@ -41,6 +41,9 @@ export default
       query: (records) => @updateSearchResults()
 
   watch:
+    availableGroups: ->
+      @updateSearchResults()
+
     recipients: (val) ->
       @$emit('new-recipients', val)
     query: (q) ->
@@ -58,7 +61,7 @@ export default
 
       # catch paste of multiple email addresses, or failure to press enter after an email address
       if @emailAddresses.length > 1 or (@emailAddresses.length == 1 && [',', ' '].includes(@query.slice(-1)))
-        objs = uniqBy @recipients.concat(@emailAddresses.map((e) -> {id: e, isEmail: true, name: e})), 'id'
+        objs = uniqBy @recipients.concat(@emailAddresses.map((e) -> {id: e, type: 'email', name: e})), 'id'
         @recipients = objs
         @searchResults = objs
         @query = ''
@@ -67,7 +70,7 @@ export default
 
     remove: (item) ->
       @recipients = filter @recipients, (r) ->
-        r.id != item.id && r.type == item.type
+        !(r.id == item.id && r.type == item.type)
 
     updateSearchResults: ->
       if @emailAddresses.length
@@ -95,9 +98,10 @@ export default
         user: u
 
       groups = []
-      if @showGroups
+      if @availableGroups.length
+        # console.log map(@availableGroups, 'id')
         groupChain = Records.groups.collection.chain().
-                     find(parentId: @group.id).
+                     find(id: {$in: map(@availableGroups, 'id')}).
                      simplesort('openDiscussionsCount', true)
 
         if @query
@@ -114,7 +118,7 @@ export default
 </script>
 
 <template lang="pug">
-v-autocomplete.px-4(
+v-autocomplete(
   multiple
   chips
   return-object

@@ -21,7 +21,7 @@ export default class DiscussionModel extends BaseModel
 
   defaultValues: ->
     private: null
-    visibleTo: 'group'
+    visibleTo: 'discussion'
     usesMarkdown: true
     lastItemAt: null
     title: ''

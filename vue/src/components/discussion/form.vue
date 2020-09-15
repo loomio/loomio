@@ -8,58 +8,39 @@ import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
 
+import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
+
 export default
+  components:
+    RecipientsAutocomplete: RecipientsAutocomplete
+
   props:
     discussion: Object
     close: Function
     isPage: Boolean
 
   data: ->
-    selectedGroupId: @discussion.groupId
     groupSelectOptions: []
     upgradeUrl: AppConfig.baseUrl + 'upgrade'
-    availableGroups: []
+    allGroups: []
+    parentGroup: null
     submitIsDisabled: false
     searchResults: []
+    excludedUserIds: [Session.user().id]
     query: ''
+    recipients: []
 
   mounted: ->
-    @search = debounce ->
-      return unless @query && @query.length > 2
-      Records.users.fetchMentionable(@query, @discussion.group())
+    @parentGroup = @discussion.group().parentOrSelf()
+    Records.memberships.fetchByGroup(@discussion.groupId, per: 100)
 
     @watchRecords
-      collections: ['groups', 'memberships']
+      collections: ['groups']
       query: (store) =>
         parentGroup = @discussion.group().parentOrSelf()
-        groups = [parentGroup].concat(parentGroup.subgroups())
-        availableGroups = filter(groups, (group) -> AbilityService.canStartThread(group))
-        @groupSelectOptions = map groups, (group) ->
-          text: group.name
-          value: group.id
-
-        @groupSelectOptions.unshift {value: null, text: @$t('discussion_form.visible_to_discussion')}
-
-        @updateSearchResults()
+        @allGroups = [parentGroup].concat(parentGroup.subgroups())
 
   methods:
-    remove: (item) ->
-      @discussion.recipientIds = without(@discussion.recipientIds, item.id)
-
-    updateSearchResults: ->
-      # console.log "@discussion.group().memberIds()", @discussion.group().name, @discussion.group().memberIds()
-      memberIds = without(@discussion.group().memberIds(), Session.user().id)
-      chain = Records.users.collection.chain().find(id: {$in: memberIds})
-      if @query
-        chain = chain.find(
-          $or: [
-            {name: {'$regex': ["^#{@query}", "i"]}},
-            {username: {'$regex': ["^#{@query}", "i"]}},
-            {name: {'$regex': [" #{@query}", "i"]}}
-          ]
-        )
-      @searchResults = chain.simplesort('name').data()
-
     submit: ->
       actionName = if @discussion.isNew() then 'created' else 'updated'
       @discussion.save()
@@ -73,22 +54,25 @@ export default
     updatePrivacy: ->
       @discussion.private = @discussion.privateDefaultValue()
 
-  watch:
-    'selectedGroupId': (val) ->
-      if val == null
-        @discussion.groupId = @discussion.group().parentOrSelf().id
-        @discussion.visibleTo = "discussion"
-      else
-        @discussion.groupId = val
+    newRecipients: (r) ->
+      @recipients = r
+      groupId = (@recipients.find((i) -> i.type=='group') || {}).id
+      if groupId
+        @discussion.groupId = groupId
         @discussion.visibleTo = "group"
-        @discussion.recipientIds = []
-      Records.memberships.fetchByGroup(@discussion.groupId, per: 100)
+      else
+        @discussion.groupId = @parentGroup.id
+        @discussion.visibleTo = "discussion"
 
-    query: (q) ->
-      @search(q)
-      @updateSearchResults()
+      # do some stuff with user_ids and emails
 
   computed:
+    availableGroups: ->
+      if @recipients.find((i) -> i.type == 'group')
+        []
+      else
+        filter(@allGroups, (group) -> AbilityService.canStartThread(group))
+
     visibleTos: ->
       @discussion.availableVisibleTos().map (value) =>
         text = switch value
@@ -143,24 +127,20 @@ export default
       v-icon mdi-close
   .pa-4
     //- .lmo-hint-text(v-t="'group_page.discussions_placeholder'" v-show='discussion.isNew() && !isMovingItems')
+    discussion-privacy-badge.pa-4(:discussion="discussion")
     .body-1(v-if="showUpgradeMessage")
       p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
       p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
 
     .discussion-form__group-selected(v-if='discussion.groupId && discussion.group() && !showUpgradeMessage')
-      p {{discussion.group().fullName}}
-      //- v-select(v-model="discussion.visibleTo" :items="visibleTos" :label="$t('common.privacy.privacy')")
-      v-select(v-model="selectedGroupId" :items="groupSelectOptions" :label="$t('discussion_form.group_label')" :placeholder="$t('discussion_form.group_placeholder')")
-      v-autocomplete(v-if="discussion.visibleTo == 'discussion'" multiple chips hide-no-data hide-selected no-filter v-model='discussion.recipientIds' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" :label="$t('discussion_form.invite')" :items='searchResults')
-        template(v-slot:selection='data')
-          v-chip.chip--select-multi(:value='data.selected', close, @click:close='remove(data.item)')
-            user-avatar.mr-1(:user="data.item" size="small" :no-link="true")
-            span {{ data.item.name }}
-        template(v-slot:item='data')
-          v-list-item-avatar
-            user-avatar(:user="data.item" size="small" :no-link="true")
-          v-list-item-content.announcement-chip__content
-            v-list-item-title(v-html='data.item.name')
+      recipients-autocomplete(
+        label="invite"
+        placeholder="enter names or email addresses of people to invite to the thread"
+        show-groups
+        :available-groups="availableGroups"
+        :group="discussion.group()"
+        :excluded-user-ids="excludedUserIds"
+        @new-recipients="newRecipients")
       v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input.text-h5(:label="$t('discussion_form.title_label')" :placeholder="$t('discussion_form.title_placeholder')" v-model='discussion.title' maxlength='255')
       validation-errors(:subject='discussion', field='title')
       lmo-textarea(:model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")
