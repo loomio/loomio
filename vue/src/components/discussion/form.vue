@@ -58,6 +58,7 @@ export default
     newRecipients: (val) ->
       @recipients = val
       groupId = (val.find((i) -> i.type=='group') || {}).id
+
       if groupId
         @discussion.groupId = groupId
         @discussion.visibleTo = "group"
@@ -65,7 +66,8 @@ export default
         @discussion.groupId = @parentGroup.id
         @discussion.visibleTo = "discussion"
 
-      # do some stuff with user_ids and emails
+      @discussion.recipientUserIds = map filter(val, (o) -> o.type == 'user'), 'id'
+      @discussion.recipientEmails = map filter(val, (o) -> o.type == 'email'), 'name'
 
   computed:
     initialRecipients: ->

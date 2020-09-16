@@ -58,7 +58,7 @@ class API::SnorlaxBase < ActionController::Base
   end
 
   def instantiate_resource
-    self.resource = resource_class.new(resource_params)
+    self.resource = resource_class.new(resource_params.slice(*resource_class.attribute_names.map(&:to_sym)))
   end
 
   def instantiate_collection

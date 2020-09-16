@@ -20,7 +20,6 @@ class Discussion < ApplicationRecord
   include Discard::Model
 
   no_spam_for :title, :description
-  attr_accessor :recipient_ids
 
   scope :in_organisation, -> (group) { includes(:author).where(group_id: group.id_and_subgroup_ids) }
   scope :last_activity_after, -> (time) { where('last_activity_at > ?', time) }

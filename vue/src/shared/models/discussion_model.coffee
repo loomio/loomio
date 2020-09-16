@@ -35,7 +35,8 @@ export default class DiscussionModel extends BaseModel
     files: []
     imageFiles: []
     attachments: []
-    recipientIds: []
+    recipientUserIds: []
+    recipientEmails: []
 
   audienceValues: ->
     name: @group().name

@@ -1,5 +1,5 @@
 class DiscussionService
-  def self.create(discussion:, actor:)
+  def self.create(discussion:, actor:, params:)
     actor.ability.authorize! :create, discussion
     discussion.author = actor
     discussion.inherit_group_privacy!
@@ -14,7 +14,8 @@ class DiscussionService
     discussion.save!
     EventBus.broadcast('discussion_create', discussion, actor)
     created_event = Events::NewDiscussion.publish!(discussion)
-    InviteDiscussionRecipientsWorker.perform_async(discussion.id, actor.id, {user_ids: discussion.recipient_ids})
+    AnnounceDiscussionWorker.perform_async(discussion.id, actor.id,
+      {user_ids: params[:recipient_user_ids], emails: params[:recipient_emails] })
     created_event
   end
 
@@ -23,7 +24,7 @@ class DiscussionService
 
     users = UserInviter.where_or_create!(inviter: actor,
                                          emails: params[:emails],
-                                         user_ids: params[:user_ids])
+                                         user_ids: params[:user_ids].map(&:to_i))
 
     volumes = {}
     Membership.where(group_id: discussion.group_id,

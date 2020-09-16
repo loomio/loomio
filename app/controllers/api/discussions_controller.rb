@@ -13,6 +13,10 @@ class API::DiscussionsController < API::RestfulController
     respond_with_resource
   end
 
+  def create_action
+    @event = service.create({resource_symbol => resource, actor: current_user, params: resource_params})
+  end
+
   def show
     load_and_authorize(:discussion)
     accept_pending_membership
