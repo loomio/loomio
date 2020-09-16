@@ -3,8 +3,8 @@ describe API::DiscussionsController do
 
   let(:subgroup) { create :group, parent: group }
   let(:another_group) { create :group }
-  let(:user) { create :user }
-  let(:another_user) { create :user }
+  let(:user) { create :user, name: 'normal user' }
+  let(:another_user) { create :user, name: "Another user" }
   let(:group) { create :group }
   let(:discussion) { create_discussion group: group }
   let(:discarded_discussion) { create_discussion group: group, title: "Discarded Discussion" }
@@ -14,7 +14,7 @@ describe API::DiscussionsController do
   let(:comment) { create :comment, discussion: discussion}
   let(:new_comment) { build(:comment, discussion: discussion) }
   let(:discussion_params) {{
-    title: 'Did Charlie Bite You?',
+    title: 'discussion title!',
     description: 'From the dawn of internet time...',
     group_id: group.id,
     private: true
@@ -22,15 +22,49 @@ describe API::DiscussionsController do
 
   def create_discussion(**args)
     discussion = create :discussion, **args
-    DiscussionService.create(discussion: discussion, actor: discussion.author)
+    DiscussionService.create(discussion: discussion, actor: discussion.author, params: discussion_params)
     discussion
   end
 
-  before do
-    CommentService.create(comment: comment, actor: comment.author)
-    discarded_discussion.update(discarded_at: Time.now)
-    group.add_admin! user
+  describe 'create' do
+    before do
+      sign_in user
+      group.add_member! user
+    end
+
+    it 'create and invite user' do
+      post :create, params: {
+        discussion: {
+          title: 'test',
+          group_id: group.id,
+          recipient_user_ids: [another_user.id],
+          recipient_emails: ['test@example.com']
+        }
+      }
+      puts response.body
+      json = JSON.parse response.body
+      expect(response.status).to eq 200
+      expect(json['discussion_readers'][0]['user_id']).to eq another_user.id
+      expect(notified_user.notifications.count).to eq 1
+      expect(discussion.readers).to include another_user
+    end
+
+    it 'create and invite email' do
+      # post :create, params: {discussion_id: discussion.id, emails: ['jim@example.com']}
+      # json = JSON.parse response.body
+      # expect(response.status).to eq 200
+      # email_user = User.find_by(email: "jim@example.com")
+      # expect(email_user.notifications.count).to eq 1
+      # expect(email_user.email_verified).to be false
+      # expect(discussion.readers).to include email_user
+    end
   end
+
+  # before do
+  #   CommentService.create(comment: comment, actor: comment.author)
+  #   discarded_discussion.update(discarded_at: Time.now)
+  #   group.add_admin! user
+  # end
 
   describe 'inbox' do
     context 'logged out' do
@@ -82,6 +116,7 @@ describe API::DiscussionsController do
       end
     end
   end
+
 
   describe 'dashboard' do
     context 'logged out' do
