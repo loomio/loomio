@@ -12,11 +12,12 @@ export default
     excludedUserIds: Array
     label: String
     placeholder: String
+    initialRecipients: Array
 
   data: ->
     query: ''
     searchResults: []
-    recipients: []
+    recipients: @initialRecipients
     emailAddresses: []
     loading: false
 
@@ -46,6 +47,7 @@ export default
 
     recipients: (val) ->
       @$emit('new-recipients', val)
+
     query: (q) ->
       @$emit('new-query', q)
       @search(q)

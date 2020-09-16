@@ -31,6 +31,7 @@ export default
     recipients: []
 
   mounted: ->
+    @recipients = @initialRecipients
     @parentGroup = @discussion.group().parentOrSelf()
     Records.memberships.fetchByGroup(@discussion.groupId, per: 100)
 
@@ -54,9 +55,9 @@ export default
     updatePrivacy: ->
       @discussion.private = @discussion.privateDefaultValue()
 
-    newRecipients: (r) ->
-      @recipients = r
-      groupId = (@recipients.find((i) -> i.type=='group') || {}).id
+    newRecipients: (val) ->
+      @recipients = val
+      groupId = (val.find((i) -> i.type=='group') || {}).id
       if groupId
         @discussion.groupId = groupId
         @discussion.visibleTo = "group"
@@ -67,6 +68,12 @@ export default
       # do some stuff with user_ids and emails
 
   computed:
+    initialRecipients: ->
+      if @discussion.visibleTo == 'group' and @discussion.group()
+        [{id: @discussion.groupId, type: 'group', name: @discussion.group().name}]
+      else
+        []
+
     availableGroups: ->
       if @recipients.find((i) -> i.type == 'group')
         []
@@ -139,6 +146,7 @@ export default
         show-groups
         :available-groups="availableGroups"
         :group="discussion.group()"
+        :initial-recipients="initialRecipients"
         :excluded-user-ids="excludedUserIds"
         @new-recipients="newRecipients")
       v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input.text-h5(:label="$t('discussion_form.title_label')" :placeholder="$t('discussion_form.title_placeholder')" v-model='discussion.title' maxlength='255')
