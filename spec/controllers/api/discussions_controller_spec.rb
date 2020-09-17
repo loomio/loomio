@@ -32,7 +32,7 @@ describe API::DiscussionsController do
       group.add_member! user
     end
 
-    it 'create and invite user' do
+    it 'create and invite user and email' do
       post :create, params: {
         discussion: {
           title: 'test',
@@ -41,22 +41,16 @@ describe API::DiscussionsController do
           recipient_emails: ['test@example.com']
         }
       }
-      puts response.body
+      # puts response.body
       json = JSON.parse response.body
       expect(response.status).to eq 200
-      expect(json['discussion_readers'][0]['user_id']).to eq another_user.id
-      expect(notified_user.notifications.count).to eq 1
-      expect(discussion.readers).to include another_user
-    end
-
-    it 'create and invite email' do
-      # post :create, params: {discussion_id: discussion.id, emails: ['jim@example.com']}
-      # json = JSON.parse response.body
-      # expect(response.status).to eq 200
-      # email_user = User.find_by(email: "jim@example.com")
-      # expect(email_user.notifications.count).to eq 1
-      # expect(email_user.email_verified).to be false
-      # expect(discussion.readers).to include email_user
+      d = Discussion.find(json['discussions'][0]['id'])
+      expect(d.discussion_readers.count).to eq 3
+      expect(d.discussion_readers.map {|r| r.user.name}).to include 'normal user'
+      expect(d.discussion_readers.map {|r| r.user.name}).to include 'Another user'
+      expect(d.discussion_readers.map {|r| r.user.email}).to include 'test@example.com'
+      expect(another_user.notifications.count).to eq 1
+      expect(d.members).to include another_user
     end
   end
 
