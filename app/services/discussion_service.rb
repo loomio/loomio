@@ -10,7 +10,6 @@ class DiscussionService
 
     return false unless discussion.valid?
 
-    discussion.update_attachments!
     discussion.save!
 
     DiscussionReader.for(user: actor, discussion: discussion).update(inviter_id: actor.id)
@@ -74,7 +73,6 @@ class DiscussionService
     is_new_version = discussion.is_new_version?
     return false unless discussion.valid?
     rearrange = discussion.max_depth_changed?
-    discussion.update_attachments!
     discussion.save!
 
     EventService.delay.repair_thread(discussion.id) if rearrange

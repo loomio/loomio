@@ -104,9 +104,6 @@ export default
 .poll-meeting-chart-panel
   overflow-x: scroll
 
-.poll-meeting-chart-panel:hover
-  overflow-x: visible
-
 .poll-meeting-chart-table
   width: auto
   background-color: none

@@ -92,7 +92,7 @@ export default class ThreadLoader
         find:
           discussionId: @discussion.id
           depth: {$gte: event.depth}
-          positionKey: {$gt: event.positionKey}
+          positionKey: {$jgt: event.positionKey}
         simplesort: 'positionKey'
         limit: padding
       remote:
@@ -109,7 +109,7 @@ export default class ThreadLoader
         find:
           discussionId: @discussion.id
           depth: event.depth
-          positionKey: {$lt: event.positionKey}
+          positionKey: {$jlt: event.positionKey}
         simplesort: 'positionKey'
         simplesortDesc: true
         limit: padding
@@ -125,7 +125,7 @@ export default class ThreadLoader
         find:
           discussionId: @discussion.id
           depth: event.depth + 1
-          positionKey: {$lt: event.positionKey}
+          positionKey: {$jlt: event.positionKey}
         simplesort: 'positionKey'
         simplesortDesc: true
         limit: padding
