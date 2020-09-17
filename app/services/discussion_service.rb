@@ -13,9 +13,7 @@ class DiscussionService
     discussion.update_attachments!
     discussion.save!
 
-    DiscussionReader.create!(discussion_id: discussion.id,
-                             user_id: actor.id,
-                             inviter_id: actor.id)
+    DiscussionReader.for(user: actor, discussion: discussion).update(inviter_id: actor.id)
 
     EventBus.broadcast('discussion_create', discussion, actor)
     created_event = Events::NewDiscussion.publish!(discussion)
