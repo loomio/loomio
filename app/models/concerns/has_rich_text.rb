@@ -55,7 +55,7 @@ module HasRichText
     existing_ids = model.files.map(&:signed_id)
     params[:files] = Array(params[:files]).filter {|id| !existing_ids.include?(id) }
     model.reload
-    model.assign_attributes(params)
+    model.assign_attributes(params.slice(*model.attribute_names.map(&:to_sym)))
   end
 
   private

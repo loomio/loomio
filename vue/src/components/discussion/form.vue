@@ -143,6 +143,7 @@ export default
 
     .discussion-form__group-selected(v-if='discussion.groupId && discussion.group() && !showUpgradeMessage')
       recipients-autocomplete(
+        v-if="discussion.isNew()"
         label="invite"
         placeholder="enter names or email addresses of people to invite to the thread"
         show-groups
