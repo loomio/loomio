@@ -7,12 +7,16 @@ import {map, debounce, without, filter, uniq, uniqBy} from 'lodash'
 export default
   # emits: query, recipients
   props:
-    availableGroups: Array
+    availableGroups:
+      type: Array
+      default: -> []
     group: Object
     excludedUserIds: Array
     label: String
     placeholder: String
-    initialRecipients: Array
+    initialRecipients:
+      type: Array
+      default: -> []
 
   data: ->
     query: ''

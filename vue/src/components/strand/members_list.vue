@@ -33,6 +33,13 @@ export default
     query: -> @updateReaders()
 
   methods:
+    inviteRecipients: ->
+      Records.announcements.remote.post '',
+        discussion_id: @discussion.id
+        recipients:
+          user_ids: map filter(@recipients, (r) -> r.type == 'user'), 'id'
+          emails: map filter(@recipients, (r) -> r.type == 'email'), 'id'
+
     newQuery: (query) -> @query = query
     newRecipients: (recipients) -> @recipients = recipients
 
@@ -60,13 +67,15 @@ export default
     dismiss-modal-button
     discussion-privacy-badge(:discussion="discussion")
     recipients-autocomplete(
-      show-groups
       label="invite"
       placeholder="enter names or email addresses of people to invite to the thread"
       :group="discussion.group()"
       :excluded-user-ids="excludedUserIds"
       @new-query="newQuery"
       @new-recipients="newRecipients")
+    .d-flex
+      v-btn(:disabled="!recipients.length" @click="inviteRecipients") Invite
+
   v-list
     v-subheader Participants
     v-list-item(v-for="reader in readers" :user="reader.user()" :key="reader.id")

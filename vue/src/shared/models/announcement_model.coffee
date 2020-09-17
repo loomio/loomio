@@ -10,7 +10,6 @@ export default class AnnouncementModel extends BaseModel
     recipients: []
     invitedGroupIds: []
 
-
   serialize: ->
     "#{@modelName()}_id": @model.id
     announcement:

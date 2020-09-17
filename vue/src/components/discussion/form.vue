@@ -146,7 +146,6 @@ export default
         v-if="discussion.isNew()"
         label="invite"
         placeholder="enter names or email addresses of people to invite to the thread"
-        show-groups
         :available-groups="availableGroups"
         :group="discussion.group()"
         :initial-recipients="initialRecipients"
