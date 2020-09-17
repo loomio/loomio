@@ -1,5 +1,6 @@
 class UpdateAttachmentsGroupIdWorker
   include Sidekiq::Worker
+  sidekiq_options retry: 0
 
   def perform(record_type, record_id)
     record = record_type.to_s.singularize.classify.constantize.find(record_id)
