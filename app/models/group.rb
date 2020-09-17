@@ -148,7 +148,7 @@ class Group < ApplicationRecord
   def available_visible_tos
     values = ['discussion', 'group']
     values.push('parent_group') if parent_id
-    values.push('public') if ['public_or_privacy', 'public_only'].include?(discussion_privacy_options)
+    values.push('public') if ['public_or_private', 'public_only'].include?(discussion_privacy_options)
     values
   end
 
