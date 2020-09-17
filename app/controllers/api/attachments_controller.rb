@@ -14,7 +14,7 @@ class API::AttachmentsController < API::RestfulController
     attachment = load_and_authorize :attachment, :destroy
     record = attachment.record
     attachment.purge_later
-    record.update_attachments!
+    record.save!
     serializer = "#{record.class.to_s}Serializer".constantize
     render json: serializer.new(record).as_json
   end

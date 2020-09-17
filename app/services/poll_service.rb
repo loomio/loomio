@@ -5,7 +5,6 @@ class PollService
     poll.assign_attributes(author: actor)
 
     return false unless poll.valid?
-    poll.update_attachments!
     poll.save!
 
     Stance.create!(participant: actor, poll: poll, admin: true, reason_format: actor.default_format)
@@ -111,7 +110,6 @@ class PollService
     is_new_version = poll.is_new_version?
 
     return false unless poll.valid?
-    poll.update_attachments!
     poll.save!
 
     EventBus.broadcast('poll_update', poll, actor)

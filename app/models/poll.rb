@@ -68,12 +68,12 @@ class Poll < ApplicationRecord
   has_many :documents, as: :model, dependent: :destroy
 
   default_scope { includes(:poll_options) }
-  scope :active, -> { where(closed_at: nil) }
-  scope :closed, -> { where("closed_at IS NOT NULL") }
-  scope :search_for, ->(fragment) { where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
+  scope :active, -> { kept.where(closed_at: nil) }
+  scope :closed, -> { kept.where("closed_at IS NOT NULL") }
+  scope :search_for, ->(fragment) { kept.where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
   scope :lapsed_but_not_closed, -> { active.where("polls.closing_at < ?", Time.now) }
-  scope :active_or_closed_after, ->(since) { where("closed_at IS NULL OR closed_at > ?", since) }
-  scope :in_organisation, -> (group) { where(group_id: group.id_and_subgroup_ids) }
+  scope :active_or_closed_after, ->(since) { kept.where("closed_at IS NULL OR closed_at > ?", since) }
+  scope :in_organisation, -> (group) { kept.where(group_id: group.id_and_subgroup_ids) }
 
   scope :with_includes, -> { includes(
     :documents,
