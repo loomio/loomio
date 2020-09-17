@@ -37,7 +37,7 @@ module Events::Notify::InApp
 
   # defines the avatar which appears next to the notification
   def notification_actor
-    user.presence || eventable&.author
+    user.presence
   end
 
   # defines the link that clicking on the notification takes you to
