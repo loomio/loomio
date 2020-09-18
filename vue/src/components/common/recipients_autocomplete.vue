@@ -19,7 +19,7 @@ export default
       default: -> []
 
   data: ->
-    query: ''
+    query: null
     searchResults: []
     recipients: @initialRecipients
     emailAddresses: []
@@ -132,7 +132,7 @@ v-autocomplete(
   hide-no-data
   hide-selected
   v-model='recipients'
-  @change="query= ''"
+  @change="query= null"
   :search-input.sync="query"
   item-text='name'
   :loading="loading"

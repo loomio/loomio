@@ -3,7 +3,7 @@ import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
-import {map, debounce, without, filter, uniq, uniqBy} from 'lodash'
+import {map, debounce, without, filter, uniq, uniqBy, some} from 'lodash'
 
 export default
   components:
@@ -19,6 +19,7 @@ export default
     recipients: []
     excludedUserIds: []
     membershipsByUserId: {}
+    readerUserIds: []
 
   mounted: ->
     # TODO add query support to this fetch for when there are many readers
@@ -34,20 +35,19 @@ export default
           user_ids: userIds.join(' ')
 
     @watchRecords
-      collections: ['discussionReaders']
+      collections: ['discussionReaders', 'memberships']
       query: (records) => @updateReaders()
 
     @watchRecords
       collections: ['memberships']
       query: (records) =>
-        @membershipsByUserId = {}
-        userIds = map(Records.discussionReaders.collection.
-                      find(discussionId: @discussion.id), 'userId')
-        Records.memberships.collection.find(userId: {$in: userIds}).forEach (m) =>
-          @membershipsByUserId[m.userId] = m
 
   watch:
     query: -> @updateReaders()
+
+  computed:
+    anyGuests: ->
+      some @readerUserIds, (userId) => !@membershipsByUserId[userId]
 
   methods:
     isAdmin: (reader) ->
@@ -80,27 +80,34 @@ export default
         chain = chain.find(userId: {$in: map(users, 'id')})
 
       @readers = chain.data()
-      @excludedUserIds = map(@readers, 'userId').concat(Session.user().id)
+      @readerUserIds = map(Records.discussionReaders.collection.find(discussionId: @discussion.id), 'userId')
+      @excludedUserIds = @readerUserIds.concat(Session.user().id)
+
+      @membershipsByUserId = {}
+      Records.memberships.collection.find(userId: {$in: @readerUserIds}).forEach (m) =>
+        @membershipsByUserId[m.userId] = m
 
 </script>
 
 <template lang="pug">
 .strand-members-list
-  .pa-3
-    dismiss-modal-button
-    discussion-privacy-badge(:discussion="discussion")
+  .px-4.pt-4
+    .d-flex.justify-space-between
+      h1.headline(v-t="'announcement.form.discussion_announced.title'")
+      dismiss-modal-button
     recipients-autocomplete(
-      label="invite"
-      placeholder="enter names or email addresses of people to invite to the thread"
+      :label="$t('announcement.form.discussion_announced.helptext')"
+      :placeholder="$t('announcement.form.placeholder')"
       :group="discussion.group()"
       :excluded-user-ids="excludedUserIds"
       @new-query="newQuery"
       @new-recipients="newRecipients")
     .d-flex
+      v-spacer
       v-btn(:disabled="!recipients.length" @click="inviteRecipients") Invite
-
   v-list
-    v-subheader Participants
+    v-subheader(v-t="'membership_card.discussion_members'")
+    p.caption.px-4(v-if="anyGuests" v-t="'announcement.inviting_guests_to_thread'")
     v-list-item(v-for="reader in readers" :user="reader.user()" :key="reader.id")
       v-list-item-avatar
         user-avatar(:user="reader.user()")
@@ -110,8 +117,8 @@ export default
           v-chip(v-if="isGuest(reader)" outlined x-small label v-t="'members_panel.guest'")
           v-chip(v-if="isAdmin(reader)" outlined x-small label v-t="'members_panel.admin'")
         //- v-list-item-subtitle Admin
-      v-list-item-icon
-        v-icon mdi-horizontal-dots
+      //- v-list-item-action
+      //-   v-icon mdi-dots-horizontal
 </template>
 
 <style lang="sass">

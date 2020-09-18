@@ -1,11 +1,9 @@
 class AuthorSerializer < ApplicationSerializer
-  attributes :id, :name, :username, :avatar_initials, :avatar_kind,
+  attributes :id, :name, :email, :username, :avatar_initials, :avatar_kind,
              :avatar_url, :email_hash, :time_zone, :locale, :created_at, :titles
 
   def name
-    object.name ||
-    (include_email? && email) ||
-    placeholder_name
+    object.name || (!include_email?) && placeholder_name
   end
 
   def include_email?

@@ -65,6 +65,9 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   private
+  def default_scope
+    super.merge include_email: target_model.admins.exists?(current_user.id)
+  end
 
   def target_model
     @target_model ||=
