@@ -14,6 +14,7 @@ export default
     excludedUserIds: Array
     label: String
     placeholder: String
+    reset: Boolean
     initialRecipients:
       type: Array
       default: -> []
@@ -46,6 +47,10 @@ export default
       query: (records) => @updateSearchResults()
 
   watch:
+    reset: ->
+      @query = ''
+      @recipients = []
+      @emailAddresses = []
     availableGroups: ->
       @updateSearchResults()
 

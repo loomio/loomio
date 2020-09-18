@@ -20,6 +20,8 @@ export default
     excludedUserIds: []
     membershipsByUserId: {}
     readerUserIds: []
+    reset: false
+    saving: false
 
   mounted: ->
     # TODO add query support to this fetch for when there are many readers
@@ -57,11 +59,15 @@ export default
       !@membershipsByUserId[reader.userId]
 
     inviteRecipients: ->
+      @saving = true
       Records.announcements.remote.post '',
         discussion_id: @discussion.id
         recipients:
           user_ids: map filter(@recipients, (r) -> r.type == 'user'), 'id'
           emails: map filter(@recipients, (r) -> r.type == 'email'), 'id'
+
+      .then => @reset = !@reset
+      .finally => @saving = false
 
     newQuery: (query) -> @query = query
     newRecipients: (recipients) -> @recipients = recipients
@@ -100,11 +106,12 @@ export default
       :placeholder="$t('announcement.form.placeholder')"
       :group="discussion.group()"
       :excluded-user-ids="excludedUserIds"
+      :reset="reset"
       @new-query="newQuery"
       @new-recipients="newRecipients")
     .d-flex
       v-spacer
-      v-btn(:disabled="!recipients.length" @click="inviteRecipients") Invite
+      v-btn(color="primary" :disabled="!recipients.length" @click="inviteRecipients" @loading="saving" v-t="'common.action.invite'")
   v-list
     v-subheader(v-t="'membership_card.discussion_members'")
     p.caption.px-4(v-if="anyGuests" v-t="'announcement.inviting_guests_to_thread'")
