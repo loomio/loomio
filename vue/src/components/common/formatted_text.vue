@@ -122,7 +122,7 @@ img.emoji
   pre
     overflow-x: auto
     font-family: 'Roboto mono', monospace, monospace
-    white-space: pre-wrap;
+    white-space: pre-wrap
 
   code::before
     content: ''
