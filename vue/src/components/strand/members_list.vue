@@ -53,6 +53,9 @@ export default
     isAdmin: (reader) ->
       reader.admin || @membershipsByUserId[reader.userId] && @membershipsByUserId[reader.userId].admin
 
+    isGuest: (reader) ->
+      !@membershipsByUserId[reader.userId]
+
     inviteRecipients: ->
       Records.announcements.remote.post '',
         discussion_id: @discussion.id
@@ -104,6 +107,7 @@ export default
       v-list-item-content
         v-list-item-title
           span.mr-2 {{reader.user().nameWithTitle(discussion.group())}}
+          v-chip(v-if="isGuest(reader)" outlined x-small label v-t="'members_panel.guest'")
           v-chip(v-if="isAdmin(reader)" outlined x-small label v-t="'members_panel.admin'")
         //- v-list-item-subtitle Admin
       v-list-item-icon

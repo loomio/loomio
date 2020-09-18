@@ -9,7 +9,7 @@ class AuthorSerializer < ApplicationSerializer
   end
 
   def include_email?
-    false
+    scope[:include_email]
   end
 
   def titles

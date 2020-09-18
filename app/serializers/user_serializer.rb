@@ -21,8 +21,4 @@ class UserSerializer < AuthorSerializer
   def include_has_password?
     scope[:include_password_status]
   end
-
-  def include_email?
-    scope[:email_user_ids].to_a.include? object.id
-  end
 end

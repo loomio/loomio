@@ -1582,6 +1582,7 @@ en:
     invitations: 'Invitations'
     requests: 'Requests'
     admin: 'Admin'
+    guest: 'Guest'
     sharable_link: 'Shareable Link'
     last_seen: 'Last seen {{date}}'
     invited_by_name: 'Invited by {{name}}'
