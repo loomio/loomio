@@ -18,21 +18,41 @@ export default
     searchResults: []
     recipients: []
     excludedUserIds: []
+    membershipsByUserId: {}
 
   mounted: ->
     # TODO add query support to this fetch for when there are many readers
     Records.discussionReaders.fetch
       params:
         discussion_id: @discussion.id
+    .then (records) =>
+      userIds = map records['users'], 'id'
+      Records.memberships.fetch
+        path: 'autocomplete'
+        params:
+          group_id: @discussion.groupId
+          user_ids: userIds.join(' ')
 
     @watchRecords
       collections: ['discussionReaders']
       query: (records) => @updateReaders()
 
+    @watchRecords
+      collections: ['memberships']
+      query: (records) =>
+        @membershipsByUserId = {}
+        userIds = map(Records.discussionReaders.collection.
+                      find(discussionId: @discussion.id), 'userId')
+        Records.memberships.collection.find(userId: {$in: userIds}).forEach (m) =>
+          @membershipsByUserId[m.userId] = m
+
   watch:
     query: -> @updateReaders()
 
   methods:
+    isAdmin: (reader) ->
+      reader.admin || @membershipsByUserId[reader.userId] && @membershipsByUserId[reader.userId].admin
+
     inviteRecipients: ->
       Records.announcements.remote.post '',
         discussion_id: @discussion.id
@@ -84,7 +104,7 @@ export default
       v-list-item-content
         v-list-item-title
           span.mr-2 {{reader.user().nameWithTitle(discussion.group())}}
-          v-chip(v-if="reader.admin" outlined x-small label v-t="'members_panel.admin'")
+          v-chip(v-if="isAdmin(reader)" outlined x-small label v-t="'members_panel.admin'")
         //- v-list-item-subtitle Admin
       v-list-item-icon
         v-icon mdi-horizontal-dots

@@ -60,9 +60,14 @@ class API::MembershipsController < API::RestfulController
           [model.group.id]
         end
 
+      if params[:user_ids]
+        collection = collection.where(user_id: params[:user_ids].to_s.split(' ').map(&:to_i))
+      end
+
       collection = collection.where(group_id: group_ids)
 
       collection = collection.active unless params.has_key?(:pending) #leave alone until 1.0 retired
+
 
       case params[:filter]
       when 'admin'
