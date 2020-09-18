@@ -136,7 +136,7 @@ export default
       v-icon mdi-close
   .pa-4
     //- .lmo-hint-text(v-t="'group_page.discussions_placeholder'" v-show='discussion.isNew() && !isMovingItems')
-    discussion-privacy-badge.pa-4(:discussion="discussion")
+    discussion-privacy-badge.mb-2(:discussion="discussion" no-group)
     .body-1(v-if="showUpgradeMessage")
       p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
       p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
@@ -144,8 +144,8 @@ export default
     .discussion-form__group-selected(v-if='discussion.groupId && discussion.group() && !showUpgradeMessage')
       recipients-autocomplete(
         v-if="discussion.isNew()"
-        label="invite"
-        placeholder="enter names or email addresses of people to invite to the thread"
+        :label="$t('discussion_form.to')"
+        :placeholder="$t('announcement.form.discussion_announced.helptext')"
         :available-groups="availableGroups"
         :group="discussion.group()"
         :initial-recipients="initialRecipients"

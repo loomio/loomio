@@ -7,6 +7,7 @@ import {map, debounce, without, filter, uniq, uniqBy} from 'lodash'
 export default
   # emits: query, recipients
   props:
+    autofocus: Boolean
     availableGroups:
       type: Array
       default: -> []
@@ -130,6 +131,7 @@ export default
 
 <template lang="pug">
 v-autocomplete(
+  :autofocus="autofocus"
   multiple
   chips
   return-object
