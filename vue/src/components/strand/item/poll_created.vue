@@ -43,7 +43,7 @@ export default
         pick EventService.actions(@event, @), ['move_event', 'copy_url', 'pin_event', 'unpin_event']
       )
     dockActions: ->
-      pick PollService.actions(@poll, @), ['show_results', 'hide_results', 'edit_stance', 'announce_poll', 'edit_poll', 'close_poll', 'reopen_poll']
+      pick PollService.actions(@poll, @), ['show_results', 'hide_results', 'edit_stance', 'manage_members_poll', 'edit_poll', 'close_poll', 'reopen_poll']
 
 </script>
 

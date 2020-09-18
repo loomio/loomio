@@ -65,6 +65,16 @@ export default new class PollService
           props:
             announcement: Records.announcements.buildFromModel(poll)
 
+    manage_members_poll:
+      icon: 'mdi-send'
+      canPerform: ->
+        AbilityService.canAnnounceTo(poll)
+      perform: ->
+        openModal
+          component: 'PollMembers'
+          props:
+            poll: poll
+
     edit_poll:
       name: 'action_dock.edit_poll_type'
       nameArgs: ->

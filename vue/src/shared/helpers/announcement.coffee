@@ -23,7 +23,7 @@ export audienceSize = (model, audience) ->
   switch audience
     when 'parent_group' then model.group().parent().activeMembershipsCount
     when 'group' then model.group().activeMembershipsCount - 1
-    when 'discussion_group' then model.discussion().seenByCount - 1
+    when 'discussion_group' then model.discussion().membersCount - 1
     when 'voters' then model.poll().participantsCount - youParticipated
     when 'undecided' then model.poll().undecidedCount - youUndecided
     when 'non_voters' then model.group().activeMembershipsCount - model.stancesCount

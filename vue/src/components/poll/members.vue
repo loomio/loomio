@@ -10,63 +10,64 @@ export default
     RecipientsAutocomplete: RecipientsAutocomplete
 
   props:
-    discussion: Object
+    poll: Object
 
   data: ->
-    readers: []
+    stances: []
     query: ''
     searchResults: []
     recipients: []
     excludedUserIds: []
     membershipsByUserId: {}
-    readerUserIds: []
+    stanceUserIds: []
     reset: false
     saving: false
 
   mounted: ->
     # TODO add query support to this fetch for when there are many readers
-    Records.discussionReaders.fetch
+    Records.stances.fetch
       params:
-        discussion_id: @discussion.id
+        poll_id: @poll.id
     .then (records) =>
       userIds = map records['users'], 'id'
       Records.memberships.fetch
         path: 'autocomplete'
         params:
-          group_id: @discussion.groupId
+          group_id: @poll.groupId
           user_ids: userIds.join(' ')
 
     @watchRecords
-      collections: ['discussionReaders', 'memberships']
-      query: (records) => @updateReaders()
+      collections: ['stances', 'memberships']
+      query: (records) => @updateStances()
 
   watch:
-    query: -> @updateReaders()
+    query: -> @updateStances()
 
   methods:
-    isAdmin: (reader) ->
-      reader.admin || @membershipsByUserId[reader.userId] && @membershipsByUserId[reader.userId].admin
+    isAdmin: (stance) ->
+      stance.admin || @membershipsByUserId[stance.participantId] && @membershipsByUserId[stance.participantId].admin
 
-    isGuest: (reader) ->
-      !@membershipsByUserId[reader.userId]
+    isGuest: (stance) ->
+      !@membershipsByUserId[stance.participantId]
 
     inviteRecipients: ->
       @saving = true
       Records.announcements.remote.post '',
-        discussion_id: @discussion.id
+        poll_id: @poll.id
         recipients:
           user_ids: map filter(@recipients, (r) -> r.type == 'user'), 'id'
           emails: map filter(@recipients, (r) -> r.type == 'email'), 'id'
-
-      .then => @reset = !@reset
-      .finally => @saving = false
+      .then =>
+        @reset = !@reset
+      .finally =>
+        @saving = false
 
     newQuery: (query) -> @query = query
     newRecipients: (recipients) -> @recipients = recipients
 
-    updateReaders: ->
-      chain = Records.discussionReaders.collection.chain().
-              find(discussionId: @discussion.id)
+    updateStances: ->
+      chain = Records.stances.collection.chain().
+              find(pollId: @poll.id)
 
       if @query
         users = Records.users.collection.find
@@ -76,29 +77,29 @@ export default
             {username: {'$regex': ["^#{@query}", "i"]}},
             {name: {'$regex': [" #{@query}", "i"]}}
           ]
-        chain = chain.find(userId: {$in: map(users, 'id')})
+        chain = chain.find(participantId: {$in: map(users, 'id')})
 
-      @readers = chain.data()
-      @readerUserIds = map(Records.discussionReaders.collection.find(discussionId: @discussion.id), 'userId')
-      @excludedUserIds = @readerUserIds.concat(Session.user().id)
+      @stances = chain.data()
+      @stanceUserIds = map(Records.stances.collection.find(pollId: @poll.id), 'participantId')
+      @excludedUserIds = @stanceUserIds.concat(Session.user().id)
 
       @membershipsByUserId = {}
-      Records.memberships.collection.find(userId: {$in: @readerUserIds}).forEach (m) =>
+      Records.memberships.collection.find(userId: {$in: @stanceUserIds}).forEach (m) =>
         @membershipsByUserId[m.userId] = m
 
 </script>
 
 <template lang="pug">
-.strand-members-list
+.poll-members-list
   .px-4.pt-4
     .d-flex.justify-space-between
-      h1.headline(v-t="'announcement.form.discussion_announced.title'")
+      h1.headline(v-t="'announcement.form.poll_announced.title'")
       dismiss-modal-button
     recipients-autocomplete(
       autofocus
-      :label="$t('announcement.form.discussion_announced.helptext')"
+      :label="$t('announcement.form.poll_announced.helptext')"
       :placeholder="$t('announcement.form.placeholder')"
-      :group="discussion.group()"
+      :group="poll.group()"
       :excluded-user-ids="excludedUserIds"
       :reset="reset"
       @new-query="newQuery"
@@ -108,18 +109,15 @@ export default
       v-btn(color="primary" :disabled="!recipients.length" @click="inviteRecipients" @loading="saving" v-t="'common.action.invite'")
   v-list
     v-subheader
-      span(v-t="'membership_card.discussion_members'")
+      span(v-t="{path: 'membership_card.poll_members', args: {pollType: poll.translatedPollType()}}")
       space
-      span ({{discussion.membersCount}})
-    v-list-item(v-for="reader in readers" :user="reader.user()" :key="reader.id")
+      span ({{poll.stancesCount}})
+    v-list-item(v-for="stance in stances" :user="stance.participant()" :key="stance.id")
       v-list-item-avatar
-        user-avatar(:user="reader.user()" :size="24")
+        user-avatar(:user="stance.participant()" :size="24")
       v-list-item-content
         v-list-item-title
-          span.mr-2 {{reader.user().nameWithTitle(discussion.group())}}
-          v-chip(v-if="isGuest(reader)" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
-          v-chip(v-if="isAdmin(reader)" outlined x-small label v-t="'members_panel.admin'")
-        //- v-list-item-subtitle Admin
-      //- v-list-item-action
-      //-   v-icon mdi-dots-horizontal
+          span.mr-2 {{stance.participant().nameWithTitle(poll.group())}}
+          v-chip(v-if="isGuest(stance)" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
+          v-chip(v-if="isAdmin(stance)" outlined x-small label v-t="'members_panel.admin'")
 </template>
