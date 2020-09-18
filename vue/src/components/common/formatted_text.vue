@@ -120,16 +120,9 @@ img.emoji
     margin-bottom: 0
 
   pre
-    // padding: .7rem 1rem
-    // border-radius: 5px
-    // background: #000
-    // color: #fff
-    // font-size: .8rem
     overflow-x: auto
-    // overflow: auto
-    // padding: 0
-    // font-family: 'Roboto mono', monospace, monospace
-    // white-space: pre-wrap
+    font-family: 'Roboto mono', monospace, monospace
+    white-space: pre-wrap;
 
   code::before
     content: ''
