@@ -74,12 +74,13 @@ export default
 
     updateReaders: ->
       chain = Records.discussionReaders.collection.chain().
-                find(discussionId: @discussion.id)
+              find(discussionId: @discussion.id)
 
       if @query
         users = Records.users.collection.find
           $or: [
             {name: {'$regex': ["^#{@query}", "i"]}},
+            {email: {'$regex': ["#{@query}", "i"]}},
             {username: {'$regex': ["^#{@query}", "i"]}},
             {name: {'$regex': [" #{@query}", "i"]}}
           ]
@@ -114,15 +115,17 @@ export default
       v-spacer
       v-btn(color="primary" :disabled="!recipients.length" @click="inviteRecipients" @loading="saving" v-t="'common.action.invite'")
   v-list
-    v-subheader(v-t="'membership_card.discussion_members'")
-    p.caption.px-4(v-if="anyGuests" v-t="'announcement.inviting_guests_to_thread'")
+    v-subheader
+      span(v-t="'membership_card.discussion_members'")
+      space
+      span ({{discussion.membersCount}})
     v-list-item(v-for="reader in readers" :user="reader.user()" :key="reader.id")
       v-list-item-avatar
-        user-avatar(:user="reader.user()")
+        user-avatar(:user="reader.user()" :size="24")
       v-list-item-content
         v-list-item-title
           span.mr-2 {{reader.user().nameWithTitle(discussion.group())}}
-          v-chip(v-if="isGuest(reader)" outlined x-small label v-t="'members_panel.guest'")
+          v-chip(v-if="isGuest(reader)" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
           v-chip(v-if="isAdmin(reader)" outlined x-small label v-t="'members_panel.admin'")
         //- v-list-item-subtitle Admin
       //- v-list-item-action

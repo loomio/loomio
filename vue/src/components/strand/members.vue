@@ -37,7 +37,7 @@ export default
   //-   a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
 
   user-avatar(v-for="reader in readers" :user="reader.user()" :size="28" :key="reader.id")
-  v-btn(small icon @click="openInviteModal")
+  v-btn(small icon @click="openInviteModal" :title="$t('invitation_form.invite_people')")
     v-icon mdi-plus
 </template>
 

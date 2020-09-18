@@ -46,6 +46,8 @@ class DiscussionService
     discussion_readers = DiscussionReader.where(user_id: users.pluck(:id), discussion_id: discussion.id)
 
     Events::DiscussionAnnounced.publish!(discussion, actor, discussion_readers)
+    discussion.update_members_count
+    MessageChannelService.publish_models(discussion, group_id: discussion.group_id)
     discussion_readers
   end
 

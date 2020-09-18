@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_17_022446) do
+ActiveRecord::Schema.define(version: 2020_09_18_075134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -238,6 +238,7 @@ ActiveRecord::Schema.define(version: 2020_09_17_022446) do
     t.datetime "discarded_at"
     t.string "secret_token", default: -> { "gen_random_uuid()" }
     t.string "visible_to", default: "group"
+    t.integer "members_count"
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["discarded_at"], name: "discussions_discarded_at_null", where: "(discarded_at IS NULL)"
