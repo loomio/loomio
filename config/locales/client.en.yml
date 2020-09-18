@@ -594,8 +594,8 @@ en:
     visible_to_group: Group thread
     visible_to_parent_group: "{{group}}"
     visible_to_public: Public
-    visible_to_discussion_tooltip: Only visible those people who have been invited to participate
-    visible_to_group_tooltip: Anyone in the group can participate in this thread
+    visible_to_discussion_tooltip: Only visible to invited participants
+    visible_to_group_tooltip: Anyone in the group can participate
     visible_to_public_tooltip: This thread is visible to anyone with the link
     invite: Invite
     aria_label: 'Thread form'
