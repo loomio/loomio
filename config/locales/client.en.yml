@@ -648,7 +648,7 @@ en:
       discussion_group: Members of thread
       voters: People who have voted
       undecided: Undecided people
-      non_voters: Not yet invited
+      non_voters: Members of {{name}} not yet invited
 
     form:
       too_many_invitations: |

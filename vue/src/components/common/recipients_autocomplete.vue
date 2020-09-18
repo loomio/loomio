@@ -8,15 +8,18 @@ export default
   # emits: query, recipients
   props:
     autofocus: Boolean
-    availableGroups:
-      type: Array
-      default: -> []
     group: Object
     excludedUserIds: Array
     label: String
     placeholder: String
     reset: Boolean
     initialRecipients:
+      type: Array
+      default: -> []
+    availableGroups:
+      type: Array
+      default: -> []
+    audiences:
       type: Array
       default: -> []
 
@@ -98,8 +101,8 @@ export default
       if @query
         memberChain = memberChain.find
           $or: [
-            {name: {'$regex': ["^#{@query}", "i"]}},
-            {username: {'$regex': ["^#{@query}", "i"]}},
+            {name: {'$regex': ["^#{@query}", "i"]}}
+            {username: {'$regex': ["^#{@query}", "i"]}}
             {name: {'$regex': [" #{@query}", "i"]}}
           ]
 
@@ -124,7 +127,7 @@ export default
           type: 'group'
           name: g.name
 
-      @searchResults = @recipients.concat(groups).concat(members)
+      @searchResults = @recipients.concat(@audiences).concat(groups).concat(members)
 
 
 </script>

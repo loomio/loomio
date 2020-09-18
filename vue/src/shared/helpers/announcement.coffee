@@ -12,21 +12,13 @@ export audiencesFor = (model) ->
   ]
 
 export audienceSize = (model, audience) ->
-  youParticipated = 0
-  youUndecided = 0
-
-  if model.isA('poll')
-    stance = model.poll().myStance()
-    youParticipated = 1 if stance && stance.castAt
-    youUndecided = 1 if stance && !stance.castAt
-
   switch audience
-    when 'parent_group' then model.group().parent().activeMembershipsCount
-    when 'group' then model.group().activeMembershipsCount - 1
-    when 'discussion_group' then model.discussion().membersCount - 1
-    when 'voters' then model.poll().participantsCount - youParticipated
-    when 'undecided' then model.poll().undecidedCount - youUndecided
-    when 'non_voters' then model.group().activeMembershipsCount - model.stancesCount
+    when 'parent_group' then model.group().parent().announceableMembersCount
+    when 'group' then model.group().announceableMembersCount
+    when 'discussion_group' then model.discussion().announceableMembersCount
+    when 'voters' then model.poll().participantsCount
+    when 'undecided' then model.poll().undecidedCount
+    when 'non_voters' then model.group().announceableMembersCount - model.stancesCount
 
 export audienceValuesFor = (model) ->
   if model.isA('group') && model.parent()

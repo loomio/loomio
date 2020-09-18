@@ -93,11 +93,12 @@ class Discussion < ApplicationRecord
 
   after_create :set_last_activity_at_to_created_at
 
-  define_counter_cache(:closed_polls_count)   { |discussion| discussion.polls.closed.count }
-  define_counter_cache(:versions_count)       { |discussion| discussion.versions.count }
-  define_counter_cache(:items_count)          { |discussion| discussion.items.count }
-  define_counter_cache(:seen_by_count)        { |discussion| discussion.discussion_readers.where("last_read_at is not null").count }
-  define_counter_cache(:members_count)        { |discussion| discussion.discussion_readers.where("revoked_at is null").count }
+  define_counter_cache(:closed_polls_count)         { |d| d.polls.closed.count }
+  define_counter_cache(:versions_count)             { |d| d.versions.count }
+  define_counter_cache(:items_count)                { |d| d.items.count }
+  define_counter_cache(:seen_by_count)              { |d| d.discussion_readers.where("last_read_at is not null").count }
+  define_counter_cache(:members_count)              { |d| d.discussion_readers.where("revoked_at is null").count }
+  define_counter_cache(:announceable_members_count) { |d| d.discussion_readers.where("volume >= ?", DiscussionReader.volumes[:normal]).count }
 
   update_counter_cache :group, :discussions_count
   update_counter_cache :group, :public_discussions_count

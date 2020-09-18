@@ -103,16 +103,17 @@ class Group < ApplicationRecord
 
   delegate :locale, to: :creator, allow_nil: true
 
-  define_counter_cache(:polls_count)               { |group| group.polls.count }
-  define_counter_cache(:closed_polls_count)        { |group| group.polls.closed.count }
-  define_counter_cache(:memberships_count)         { |group| group.memberships.count }
-  define_counter_cache(:pending_memberships_count) { |group| group.memberships.pending.count }
-  define_counter_cache(:admin_memberships_count)   { |group| group.admin_memberships.count }
-  define_counter_cache(:public_discussions_count)  { |group| group.discussions.visible_to_public.count }
-  define_counter_cache(:discussions_count)         { |group| group.discussions.kept.count }
-  define_counter_cache(:open_discussions_count)    { |group| group.discussions.is_open.count }
-  define_counter_cache(:closed_discussions_count)  { |group| group.discussions.is_closed.count }
-  define_counter_cache(:subgroups_count)           { |group| group.subgroups.published.count }
+  define_counter_cache(:polls_count)               { |g| g.polls.count }
+  define_counter_cache(:closed_polls_count)        { |g| g.polls.closed.count }
+  define_counter_cache(:memberships_count)         { |g| g.memberships.count }
+  define_counter_cache(:announceable_members_count){ |g| g.memberships.where("volume >= ?", Membership.volumes[:normal]).count }
+  define_counter_cache(:pending_memberships_count) { |g| g.memberships.pending.count }
+  define_counter_cache(:admin_memberships_count)   { |g| g.admin_memberships.count }
+  define_counter_cache(:public_discussions_count)  { |g| g.discussions.visible_to_public.count }
+  define_counter_cache(:discussions_count)         { |g| g.discussions.kept.count }
+  define_counter_cache(:open_discussions_count)    { |g| g.discussions.is_open.count }
+  define_counter_cache(:closed_discussions_count)  { |g| g.discussions.is_closed.count }
+  define_counter_cache(:subgroups_count)           { |g| g.subgroups.published.count }
   update_counter_cache(:parent, :subgroups_count)
 
   delegate :include?, to: :users, prefix: true

@@ -3,6 +3,7 @@ import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
+import {audiencesFor, audienceSize, audienceValuesFor} from '@/shared/helpers/announcement.coffee'
 import {map, debounce, without, filter, uniq, uniqBy, some} from 'lodash'
 
 export default
@@ -43,7 +44,16 @@ export default
   watch:
     query: -> @updateStances()
 
+  computed:
+    audiences: ->
+      filter(audiencesFor(@poll), (audience) => audienceSize(@poll, audience))
+        .map (audience) =>
+          id: audience
+          type: 'audience'
+          name: @$t('announcement.audiences.' + audience, audienceValuesFor(@poll)) + ' ('+audienceSize(@poll, audience)+') '
+
   methods:
+
     isAdmin: (stance) ->
       stance.admin || @membershipsByUserId[stance.participantId] && @membershipsByUserId[stance.participantId].admin
 
@@ -100,6 +110,7 @@ export default
       :label="$t('announcement.form.poll_announced.helptext')"
       :placeholder="$t('announcement.form.placeholder')"
       :group="poll.group()"
+      :audiences="audiences"
       :excluded-user-ids="excludedUserIds"
       :reset="reset"
       @new-query="newQuery"

@@ -23,6 +23,7 @@ class DiscussionSerializer < ApplicationSerializer
              :closed_at,
              :seen_by_count,
              :members_count,
+             :announceable_members_count,
              :created_at,
              :updated_at,
              :private,
