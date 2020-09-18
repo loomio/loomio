@@ -30,10 +30,6 @@ ActiveAdmin.register Group, as: 'Group' do
           UserService.destroy(user: user)
         end
       end
-
-      if Group.exists?(group_id)
-        Group.find(group_id).destroy
-      end
     end
 
     redirect_to admin_groups_path, notice: "#{group_ids.size} spammy groups deleted"
