@@ -61,16 +61,6 @@ export default new class PollService
         AbilityService.canAnnounceTo(poll)
       perform: ->
         openModal
-          component: 'AnnouncementForm'
-          props:
-            announcement: Records.announcements.buildFromModel(poll)
-
-    manage_members_poll:
-      icon: 'mdi-send'
-      canPerform: ->
-        AbilityService.canAnnounceTo(poll)
-      perform: ->
-        openModal
           component: 'PollMembers'
           props:
             poll: poll

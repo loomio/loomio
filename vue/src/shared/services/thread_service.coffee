@@ -95,10 +95,9 @@ export default new class ThreadService
       canPerform: ->
         AbilityService.canAnnounceTo(discussion)
       perform: ->
-        openModal
-          component: 'AnnouncementForm'
-          props:
-            announcement: Records.announcements.buildFromModel(discussion)
+        EventBus.$emit 'openModal',
+          component: 'StrandMembersList',
+          props: { discussion: discussion }
 
     react:
       canPerform: -> AbilityService.canAddComment(discussion)

@@ -43,8 +43,9 @@ export default
           EventBus.$emit 'pollSaved', poll
           Flash.success "poll_#{poll.pollType}_form.#{poll.pollType}_created"
           EventBus.$emit 'openModal',
-            component: 'AnnouncementForm',
-            props: { announcement: Records.announcements.buildFromModel(poll) }
+            component: 'PollMembers',
+            props:
+              poll: poll
 
       .catch onError(@poll)
 

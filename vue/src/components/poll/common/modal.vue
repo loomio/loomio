@@ -36,9 +36,9 @@ export default
           @close()
           return if actionName == 'updated'
           EventBus.$emit 'openModal',
-            component: 'AnnouncementForm',
-            props: { announcement: Records.announcements.buildFromModel(poll) }
-
+            component: 'PollMembers',
+            props:
+              poll: poll
       .catch onError(@poll)
 
 </script>
