@@ -23,6 +23,8 @@ export default
     stanceUserIds: []
     reset: false
     saving: false
+    initialRecipients: []
+    fetchingAudience: false
 
   mounted: ->
     # TODO add query support to this fetch for when there are many readers
@@ -46,14 +48,15 @@ export default
 
   computed:
     audiences: ->
-      filter(audiencesFor(@poll), (audience) => audienceSize(@poll, audience))
-        .map (audience) =>
-          id: audience
-          type: 'audience'
-          name: @$t('announcement.audiences.' + audience, audienceValuesFor(@poll)) + ' ('+audienceSize(@poll, audience)+') '
+      ret = []
+      if @recipients.length == 0
+        if @poll.stancesCount < @poll.group().activeMembershipsCount
+          ret.push 'group'
+        if @poll.discussionId && @poll.stancesCount < @poll.discussion().membersCount
+          ret.push 'discussion_group'
+      ret
 
   methods:
-
     isAdmin: (stance) ->
       stance.admin || @membershipsByUserId[stance.participantId] && @membershipsByUserId[stance.participantId].admin
 
@@ -97,6 +100,25 @@ export default
       Records.memberships.collection.find(userId: {$in: @stanceUserIds}).forEach (m) =>
         @membershipsByUserId[m.userId] = m
 
+    audienceSize: (audience) -> audienceSize(@poll, audience)
+
+    fetchAudience: (kind) ->
+      @fetchingAudience = true
+      Records.announcements.fetch
+        path: 'audience'
+        params:
+          poll_id: @poll.id
+          kind: kind
+          return_users: 1
+          without_exising: 1
+      .then (users) =>
+        @initialRecipients = Records.users.find(map(users, 'id')).map (user) =>
+          id: user.id
+          type: 'user'
+          name: user.name
+          user: user
+        @reset = !@reset
+      .finally => @fetchingAudience = false
 </script>
 
 <template lang="pug">
@@ -106,15 +128,25 @@ export default
       h1.headline(v-t="'announcement.form.poll_announced.title'")
       dismiss-modal-button
     recipients-autocomplete(
-      autofocus
       :label="$t('announcement.form.poll_announced.helptext')"
       :placeholder="$t('announcement.form.placeholder')"
       :group="poll.group()"
-      :audiences="audiences"
       :excluded-user-ids="excludedUserIds"
       :reset="reset"
+      :initialRecipients="initialRecipients"
       @new-query="newQuery"
       @new-recipients="newRecipients")
+    div.caption(v-if="audiences.length")
+      span(v-if="fetchingAudience" v-t="'common.action.loading'")
+      span(v-else)
+        span(v-t="'announcement.quick_add'")
+        space
+        span(v-for='(audience, index) in audiences' :key='index')
+          a.announcement-form__audience(@click='fetchAudience(audience)')
+            span(v-t="{ path: 'announcement.audiences.' + audience, args: {name: poll.group().name} }")
+          span(v-if="index < audiences.length - 1")
+            | ,
+            space
     .d-flex
       v-spacer
       v-btn(color="primary" :disabled="!recipients.length" @click="inviteRecipients" @loading="saving" v-t="'common.action.invite'")

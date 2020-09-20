@@ -120,6 +120,10 @@ class Poll < ApplicationRecord
 
   delegate :locale, to: :author
 
+  def existing_member_ids
+    voter_ids
+  end
+  
   def participants_count
     stances_count - undecided_count
   end

@@ -19,9 +19,6 @@ export default
     availableGroups:
       type: Array
       default: -> []
-    audiences:
-      type: Array
-      default: -> []
 
   data: ->
     query: null
@@ -53,8 +50,10 @@ export default
   watch:
     reset: ->
       @query = ''
-      @recipients = []
+      @recipients = @initialRecipients
       @emailAddresses = []
+      @updateSearchResults()
+
     availableGroups: ->
       @updateSearchResults()
 
@@ -120,14 +119,15 @@ export default
                      simplesort('openDiscussionsCount', true)
 
         if @query
-          groupChain = groupChain.find(name: {'$regex': [@query, 'i']})
+          groupChain = groupChain.find(name: {'$regex': ["^#{@query}", 'i']})
 
         groups = groupChain.data().map (g) ->
           id: g.id
           type: 'group'
           name: g.name
+          group: g
 
-      @searchResults = @recipients.concat(@audiences).concat(groups).concat(members)
+      @searchResults = @recipients.concat(groups).concat(members)
 
 
 </script>
@@ -155,6 +155,9 @@ v-autocomplete(
       v-icon.mr-1(v-if="data.item.type == 'group'" small) mdi-account-group
       user-avatar.mr-1(v-if="data.item.type == 'user'" :user="data.item.user" size="small" no-link)
       span {{ data.item.name }}
+      span(v-if="data.item.type == 'group'")
+        space
+        span ({{data.item.group.activeMembershipsCount}})
   template(v-slot:item='data')
     v-list-item-avatar
       v-icon(v-if="data.item.type == 'email'" small) mdi-email-outline

@@ -3,7 +3,16 @@ class API::AnnouncementsController < API::RestfulController
 
   def audience
     self.collection = service.audience_for(target_model, params.require(:kind), current_user)
-    respond_with_collection serializer: AnnouncementRecipientSerializer, root: false
+    
+    if params[:without_exising]
+      self.collection = collection.where.not(id: target_model.existing_member_ids)
+    end
+
+    if params[:return_users]
+      respond_with_collection serializer: AuthorSerializer, root: false
+    else
+      respond_with_collection serializer: AnnouncementRecipientSerializer, root: false
+    end
   end
 
   def create

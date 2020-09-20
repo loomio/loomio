@@ -106,6 +106,10 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
 
+  def existing_member_ids
+    reader_ids
+  end
+
   def author
     super || AnonymousUser.new
   end

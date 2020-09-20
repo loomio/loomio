@@ -95,7 +95,6 @@ export default
       h1.headline(v-t="'announcement.form.discussion_announced.title'")
       dismiss-modal-button
     recipients-autocomplete(
-      autofocus
       :label="$t('announcement.form.discussion_announced.helptext')"
       :placeholder="$t('announcement.form.placeholder')"
       :group="discussion.group()"

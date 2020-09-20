@@ -146,6 +146,10 @@ class Group < ApplicationRecord
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
   before_validation :ensure_handle_is_not_empty
 
+  def existing_member_ids
+    member_ids
+  end
+  
   def available_visible_tos
     values = ['discussion', 'group']
     values.push('parent_group') if parent_id

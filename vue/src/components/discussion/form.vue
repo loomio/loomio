@@ -72,7 +72,7 @@ export default
   computed:
     initialRecipients: ->
       if @discussion.visibleTo == 'group' and @discussion.group()
-        [{id: @discussion.groupId, type: 'group', name: @discussion.group().name}]
+        [{id: @discussion.groupId, type: 'group', name: @discussion.group().name, group: @discussion.group()}]
       else
         []
 
