@@ -6,4 +6,9 @@ class Events::PollClosedByUser < Event
           discussion: poll.discussion,
           created_at: poll.closed_at
   end
+
+  private
+  def notify_webhooks?
+    !(eventable.discussion && eventable.discussion.visible_to != 'discussion')
+  end
 end

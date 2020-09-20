@@ -22,6 +22,10 @@ class Events::StanceCreated < Event
 
   private
 
+  def notify_webhooks?
+    !(eventable.poll.discussion && eventable.poll.discussion.visible_to != 'discussion')
+  end
+
   def notification_translation_values
     {
       name: eventable.participant.name,

@@ -13,6 +13,11 @@ class Events::OutcomeCreated < Event
 
   private
 
+  def notify_webhooks?
+    !(eventable.poll.discussion &&
+      eventable.poll.discussion.visible_to != 'discussion')
+  end
+
   def email_recipients
     if poll.group.presence
       super

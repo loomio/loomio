@@ -9,6 +9,10 @@ class Events::PollAnnounced < Event
   end
 
   private
+  def notify_webhooks?
+    !(eventable.discussion &&
+      eventable.discussion.visible_to != 'discussion')
+  end
 
   def stances
     Stance.where(id: custom_fields['stance_ids'])

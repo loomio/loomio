@@ -7,4 +7,9 @@ class Events::PollEdited < Event
   def self.publish!(poll, actor)
     super(poll, user: actor)
   end
+
+  private
+  def notify_webhooks?
+    !(eventable.discussion && eventable.discussion.visible_to != 'discussion')
+  end
 end

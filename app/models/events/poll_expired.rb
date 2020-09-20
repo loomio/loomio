@@ -11,6 +11,9 @@ class Events::PollExpired < Event
   end
 
   private
+  def notify_webhooks?
+    !(eventable.discussion && eventable.discussion.visible_to != 'discussion')
+  end
 
   # email the author and create an in-app notification
   def email_author!

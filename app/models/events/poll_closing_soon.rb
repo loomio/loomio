@@ -12,6 +12,10 @@ class Events::PollClosingSoon < Event
 
   private
 
+  def notify_webhooks?
+    !(eventable.discussion && eventable.discussion.visible_to != 'discussion')
+  end
+  
   def email_recipients
     notification_recipients
   end
