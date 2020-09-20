@@ -4,7 +4,7 @@ class API::BootController < API::RestfulController
   end
 
   def user
-    flash[:notice] = "Outdated version detected! Loomio will not work! Hold shift key and press refresh button, or clear your cache to fix this."
+    flash[:notice] = I18n.t(:'errors.clear_cache')
     render json: user_payload
   end
 
@@ -12,8 +12,21 @@ class API::BootController < API::RestfulController
   def user_payload
     Boot::User.new(current_user,
                    identity: serialized_pending_identity,
-                   flash: flash).payload
+                   flash: flash,
+                   channel_token: set_channel_token).payload
   end
+
+  def set_channel_token
+    token = SecureRandom.hex
+    CHANNELS_REDIS_POOL.with do |client|
+      client.set("/current_users/#{token}",
+        {name: current_user.name,
+         group_ids: current_user.group_ids,
+         id: current_user.id}.to_json)
+    end
+    token
+  end
+
   def current_user
     restricted_user || super
   end

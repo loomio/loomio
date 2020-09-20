@@ -1,6 +1,6 @@
 <script lang="coffee">
 import Records     from '@/shared/services/records'
-import { times } from 'lodash-es'
+import { times } from 'lodash'
 import { hoursOfDay } from '@/shared/helpers/format_time'
 import { format, parse, isValid } from 'date-fns'
 

@@ -146,7 +146,8 @@ class RangeSet
   end
 
   def self.reduce(ranges)
-    return [] if ranges.length == 0
+    #  or ranges[0][0].nil? is a regert: https://bugs.loomio.io/organizations/loomio/issues/499/
+    return [] if ranges.length == 0 or ranges[0][0].nil?
     ranges = ranges.sort_by {|r| r.first }
     reduced = [ranges.shift]
     ranges.each do |r|

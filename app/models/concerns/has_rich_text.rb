@@ -9,7 +9,7 @@ module HasRichText
       rich_text_fields.each do |field|
         define_method "sanitize_#{field}!" do
           tags = %w[strong em b i p s code pre big div small hr br span h1 h2 h3 h4 h5 h6 ul ol li abbr a img blockquote table thead th tr td iframe u]
-          attributes = %w[href src alt title class data-type data-done data-mention-id width height target colspan rowspan]
+          attributes = %w[href src alt title class data-type data-done data-mention-id width height target colspan rowspan data-text-align background style]
           self[field] = Rails::Html::WhiteListSanitizer.new.sanitize(self[field], tags: tags, attributes: attributes)
           self[field] = add_required_link_attributes(self[field])
         end
@@ -23,12 +23,15 @@ module HasRichText
   included do
     has_many_attached :files
     has_many_attached :image_files
+    before_save :build_attachments
+    after_save :update_attachments_group_id
   end
 
-  def associate_attachments_with_group
+  def update_attachments_group_id
+    UpdateAttachmentsGroupIdWorker.perform_async(self.class.to_s, self.id)
   end
 
-  def update_attachments!
+  def build_attachments
     # this line is just to help migrations through
     return true unless self.class.column_names.include?('attachments')
     self[:attachments] = files.map do |file|
@@ -39,12 +42,6 @@ module HasRichText
       i.merge!({ signed_id: file.signed_id })
       i
     end
-
-    if self.respond_to?(:group) && group
-      files.each { |f| f.group_id = group.id }
-      image_files.each { |f| f.group_id = group.id }
-    end
-
   end
 
   def attachment_icon(name)

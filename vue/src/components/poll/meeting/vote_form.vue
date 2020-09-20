@@ -4,7 +4,7 @@ import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
 import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
-import {compact, map, toPairs, fromPairs, some, sortBy, isEqual} from 'lodash-es'
+import {compact, map, toPairs, fromPairs, some, sortBy, isEqual} from 'lodash'
 
 export default
   props:

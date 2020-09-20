@@ -678,6 +678,7 @@ pl:
     bullet_list: Lista
     number_list: Lista numerowana
     check_list: Lista kontrolna
+    reset: Resetowanie
     quote: Cytat
     embed: Osadzanie wideo
     divider: Rozdzielacz

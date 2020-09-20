@@ -14,6 +14,7 @@ en:
         invalid: is not a valid value
 
   errors:
+    clear_cache: "Loading problem detected. Hold shift and press reload, or clear your browser cache."
     400:
       title: Bad request
       body: Sorry, we weren't able to understand that request
@@ -358,7 +359,7 @@ en:
       <ul>
         <li>To notify a specific person, type @ followed by their name</li>
         <li>Drag and drop pictures and attachments or click the paperclip icon</li>
-        <li>See 5 ways to use threads for some ideas and tips</li>
+        <li>See <a href="https://help.loomio.org/en/guides/5_ways_to_use_threads/" target="_blank">5 ways to use threads</a> for some ideas and tips</li>
       </ul>
 
       If you have any questions, see [Loomio Help](http://help.loomio.org).
@@ -474,6 +475,7 @@ en:
       poll_created: '%{actor} started a %{poll_type}: %{title}'
       poll_edited: '%{actor} edited the %{poll_type}: %{title}'
       poll_announced: '%{actor} invited you to vote in a %{poll_type}: %{title}'
+      poll_announced_wip: '%{actor} shared a work in progress %{poll_type}: %{title}'
       poll_closing_soon: '%{poll_type} closing in 24 hours: %{title}'
       poll_closing_soon_author: 'Your %{poll_type} closes in 24 hours: %{title}'
       poll_expired: "%{poll_type} closed: %{title}"
@@ -492,6 +494,7 @@ en:
       poll_created: '<strong>%{actor}</strong> started a %{poll_type}'
       poll_edited: '<strong>%{actor}</strong> edited a %{poll_type}'
       poll_announced: '<strong>%{actor}</strong> invited you to vote in a %{poll_type}'
+      poll_announced_wip: '<strong>%{actor}</strong> shared a work in progress %{poll_type}'
       poll_closing_soon: '<strong>%{actor}</strong>''s %{poll_type} is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
       poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
       poll_expired: "<strong>%{actor}'s</strong> %{poll_type} has closed: %{title}"

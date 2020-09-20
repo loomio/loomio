@@ -38,6 +38,7 @@ class AppConfig
   def self.theme
     {
       site_name:                         ENV.fetch('SITE_NAME',                     'Loomio'),
+      channels_uri:                      ENV.fetch('CHANNELS_URI',                  'ws://localhost:5000'),
       terms_url:                         ENV['TERMS_URL'],
       privacy_url:                       ENV['PRIVACY_URL'],
       help_url:                          ENV.fetch('HELP_URL',                      'https://help.loomio.org/'),

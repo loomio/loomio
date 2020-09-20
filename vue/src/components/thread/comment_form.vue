@@ -5,7 +5,7 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import Flash  from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
-import { last } from 'lodash-es'
+import { last } from 'lodash'
 
 export default
   props:
@@ -45,9 +45,9 @@ export default
 </script>
 
 <template lang="pug">
-v-layout.comment-form.px-3
+v-layout.comment-form
   .thread-item__avatar.mr-3
-    user-avatar(:user='comment.author() || actor' :size='40')
+    user-avatar(:user='comment.author() || actor' :size='comment.parentId ? 28 : 36')
   form.thread-item__body.comment-form__body(v-on:submit.prevent='submit()' @keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
     submit-overlay(:value='comment.processing')
     lmo-textarea(:model='comment' @is-uploading="handleIsUploading" field="body" :placeholder="placeholder" :autofocus="autofocus" :shouldReset="shouldReset")

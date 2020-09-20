@@ -7,7 +7,7 @@ import EventBus from '@/shared/services/event_bus'
 import Vue     from 'vue'
 import { exact } from '@/shared/helpers/format_time'
 import { parseISO } from 'date-fns'
-import { map, sortBy, head, find } from 'lodash-es'
+import { map, sortBy, head, find } from 'lodash'
 import { onError } from '@/shared/helpers/form'
 
 export default

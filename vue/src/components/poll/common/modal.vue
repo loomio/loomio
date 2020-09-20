@@ -8,8 +8,6 @@ export default
   props:
     poll: Object
     close: Function
-  data: ->
-    announcement: {}
 
   computed:
     title_key: ->
@@ -20,7 +18,7 @@ export default
       'poll_' + @poll.pollType + '_form.'+mode+'_header'
 
     isEditing: ->
-      !@poll.isNew()
+      @poll.closingAt && !@poll.isNew()
 
   methods:
     submit: ->
@@ -51,13 +49,11 @@ v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.c
     h1.headline(tabindex="-1" v-t="title_key")
     v-spacer
     dismiss-modal-button(:close='close')
-  v-card-text
-    v-alert(v-model="isEditing" color="primary" type="warning")
-      template(slot="default")
-        span(v-t="{ path: 'poll_common.edit_warning', args: { pollType: poll.pollType }}")
+  div.px-4
     poll-common-directive(:poll='poll', name='form', :modal='true')
   v-card-actions.poll-common-form-actions
     v-spacer
     v-btn.poll-common-form__submit(color="primary" @click='submit()', v-if='!poll.isNew()', v-t="'common.action.save_changes'")
-    v-btn.poll-common-form__submit(color="primary" @click='submit()', v-if='poll.isNew() && poll.groupId' v-t="{path: 'poll_common_form.start_poll_type', args: {poll_type: poll.translatedPollType()}}")
+    v-btn.poll-common-form__submit(color="primary" @click='submit()', v-if='poll.closingAt && poll.isNew() && poll.groupId' v-t="{path: 'poll_common_form.start_poll_type', args: {poll_type: poll.translatedPollType()}}")
+    v-btn.poll-common-form__submit(color="primary" @click='submit()', v-if='!poll.closingAt && poll.isNew() && poll.groupId' v-t="{path: 'poll_common_form.share_poll_type', args: {poll_type: poll.translatedPollType()}}")
 </template>

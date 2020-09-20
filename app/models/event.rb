@@ -1,8 +1,9 @@
 class Event < ApplicationRecord
+  include Redis::Objects
   include CustomCounterCache::Model
   include HasTimeframe
   extend HasCustomFields
-  BLACKLISTED_KINDS = ["motion_closed", "motion_outcome_updated", "motion_outcome_created", "new_vote", "new_motion", "motion_closed_by_user", "motion_edited"].freeze
+  counter :position_counter
 
   has_many :notifications, dependent: :destroy
   belongs_to :eventable, polymorphic: true
@@ -12,25 +13,30 @@ class Event < ApplicationRecord
   has_many :children, (-> { where("discussion_id is not null") }), class_name: "Event", foreign_key: :parent_id
   set_custom_fields :pinned_title
 
-  acts_as_sequenced scope: :discussion_id, column: :sequence_id, skip: lambda {|e| e.discussion.nil? || e.discussion_id.nil? }
-
   before_create :set_parent_and_depth
+  before_create :set_sequences
+  after_rollback :reset_sequences
 
   after_create  :update_sequence_info!
   after_destroy :update_sequence_info!
 
-  after_save :reorder
-  after_destroy :reorder
-
   define_counter_cache(:child_count) { |e| e.children.count  }
+  define_counter_cache(:descendant_count) { |e|
+    if e.kind == "new_discussion"
+      Event.where(discussion_id: e.eventable_id).count
+    else
+      Event.where(discussion_id: e.discussion_id).
+            where("id != ?", e.id).
+            where('position_key like ?', e.position_key+"%").count
+    end
+  }
   update_counter_cache :parent, :child_count
+  update_counter_cache :parent, :descendant_count
   update_counter_cache :discussion, :items_count
 
   validates :kind, presence: true
   validates :eventable, presence: true
 
-  scope :sequenced, -> { where.not(sequence_id: nil).order(sequence_id: :asc) }
-  scope :thread_events, -> { where.not(kind: BLACKLISTED_KINDS) }
   scope :unreadable, -> { where.not(kind: 'discussion_closed') }
 
   scope :invitations_in_period, ->(since, till) {
@@ -44,8 +50,6 @@ class Event < ApplicationRecord
 
   def self.publish!(eventable, **args)
     build(eventable, **args).tap(&:save!).tap(&:trigger!)
-  # rescue ActiveRecord::RecordNotUnique
-  #   retry
   end
 
   def self.bulk_publish!(eventables, **args)
@@ -61,17 +65,14 @@ class Event < ApplicationRecord
     }.merge(args))
   end
 
-  def self.reorder_with_parent_id(parent_id)
-    ActiveRecord::Base.connection.execute(
-      "UPDATE events SET position = t.seq
-        FROM (
-          SELECT id AS id, row_number() OVER(ORDER BY sequence_id) AS seq
-          FROM events
-          WHERE parent_id = #{parent_id}
-          AND   discussion_id IS NOT NULL
-        ) AS t
-      WHERE events.id = t.id and
-            events.position is distinct from t.seq")
+  def set_sequences
+    set_sequence_id
+    set_position_and_position_key
+  end
+
+  def reset_sequences
+    reset_position_counter
+    reset_sequence_id_counter
   end
 
   def user
@@ -86,6 +87,9 @@ class Event < ApplicationRecord
     user
   end
 
+  def message_channel
+    eventable.group.message_channel
+  end
   # this is called after create, and calls methods defined by the event concerns
   # included per event type
   def trigger!
@@ -98,20 +102,40 @@ class Event < ApplicationRecord
     Events::BaseSerializer
   end
 
+  def set_parent_and_depth
+    return unless discussion_id
+    self.parent = max_depth_adjusted_parent
+    self.depth = parent ? parent.depth + 1 : 0
+  end
+
   def set_parent_and_depth!
     set_parent_and_depth
     update_columns(parent_id: parent_id, depth: depth)
   end
 
-  def reload_position
-    self.position = self.class.select(:position).find(self.id).position
+  def set_sequence_id
+    return unless discussion_id
+    return if sequence_id
+    self.sequence_id = next_sequence_id
   end
 
-  def reorder
-    return unless parent_id
-    self.class.reorder_with_parent_id(parent_id)
-    reload_position if self.persisted?
+  def self.zero_fill(num)
+    "0" * (5 - num.to_s.length) + num.to_s
   end
+
+  def set_position_and_position_key!
+    return unless discussion_id
+    set_position_and_position_key
+    update_columns(position: position, position_key: position_key)
+  end
+
+  def set_position_and_position_key
+    return unless discussion_id
+    return unless position == 0
+    self.position = next_position
+    self.position_key = self_and_parents.reverse.map(&:position).map{|p| Event.zero_fill(p) }.join('-')
+  end
+
 
   def calendar_invite
     nil # only for announcement_created events for outcomes
@@ -121,7 +145,8 @@ class Event < ApplicationRecord
     case kind
     when 'discussion_closed'   then eventable.created_event
     when 'discussion_forked'   then eventable.created_event
-    when 'discussion_moved'    then eventable.created_event
+    when 'discussion_moved'    then discussion.created_event
+    when 'discussion_edited'   then (eventable || discussion)&.created_event
     when 'discussion_reopened' then eventable.created_event
     when 'outcome_created'     then eventable.parent_event
     when 'new_comment'         then eventable.parent_event
@@ -138,11 +163,31 @@ class Event < ApplicationRecord
     end
   end
 
-  private
+  def self_and_parents
+    [self, (parent && parent.discussion_id && parent.self_and_parents)].flatten.compact
+  end
 
-  def set_parent_and_depth
-    self.parent = max_depth_adjusted_parent
-    self.depth = parent ? (parent.depth + 1) : 0
+  def next_sequence_id
+    reset_sequence_id_counter if discussion.sequence_id_counter.nil?
+    discussion.sequence_id_counter.increment
+  end
+
+  def reset_sequence_id_counter
+    val = (Event.where(discussion_id: discussion_id).order("sequence_id DESC").limit(1).pluck(:sequence_id).first || 0)
+    discussion.sequence_id_counter.reset(val)
+  end
+
+  def next_position
+    return 0 unless self.discussion_id and self.parent_id
+    reset_position_counter if parent.position_counter.nil?
+    parent.position_counter.increment
+  end
+
+  def reset_position_counter
+    return unless parent_id
+    # EventService.reset_child_positions(parent_id, parent.position_key)
+    val = (Event.where(parent_id: parent_id).order("position DESC").limit(1).pluck(:position).last || 0)
+    parent.position_counter.reset(val)
   end
 
   def max_depth_adjusted_parent

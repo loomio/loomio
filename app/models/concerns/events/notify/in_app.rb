@@ -9,7 +9,7 @@ module Events::Notify::InApp
   # send event notifications
   def notify_users!
     notifications.import(built_notifications)
-    built_notifications.each { |n| MessageChannelService.publish_model(n, to: n.message_channel) }
+    built_notifications.each { |n| MessageChannelService.publish_models(n, user_id: n.user_id) }
   end
 
   private
@@ -37,7 +37,7 @@ module Events::Notify::InApp
 
   # defines the avatar which appears next to the notification
   def notification_actor
-    user.presence || eventable&.author
+    user.presence
   end
 
   # defines the link that clicking on the notification takes you to

@@ -23,6 +23,7 @@ bin/
 
 /client
 public/client
+public/blient
 public/assets
 public/system
 public/uploads

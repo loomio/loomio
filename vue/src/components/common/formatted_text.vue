@@ -24,7 +24,7 @@ export default
 </script>
 
 <template lang="pug">
-div.lmo-markdown-wrapper.body-2.text--primary
+div.lmo-markdown-wrapper
   div(v-if="!hasTranslation && isMd" v-marked='cookedText')
   div(v-if="!hasTranslation && isHtml" v-html='text')
   translation(v-if="hasTranslation" :model='model' :field='column')
@@ -37,11 +37,31 @@ img.emoji
   margin: 0 .05em
 
 .lmo-markdown-wrapper
+  line-height: 1.4
+
+  *[data-text-align="left"]
+    text-align: left !important
+  *[data-text-align="center"]
+    text-align: center !important
+  *[data-text-align="right"]
+    text-align: right !important
+  *[data-text-align="justify"]
+    text-align: justify !important
+
+  .cursor
+    font-size: 0.8rem
+    font-weight: normal
+    line-height: 20px
+    letter-spacing: normal
+
   span.mention
     color: var(--v-anchor-base)
 
-  blockquote, h1, h2, h3, ol, p, pre
-    margin: 1rem 0
+  blockquote, ol, p, pre, ul
+    margin: 0.5rem 0
+
+  h1, h2, h3
+    margin-top: 1rem
 
   blockquote:first-child, h1:first-child, h2:first-child, h3:first-child, ol:first-child, p:first-child, pre:first-child, ul:first-child
     margin-top: 0
@@ -50,27 +70,22 @@ img.emoji
     margin-bottom: 0
 
   h1
-    line-height: 2.75rem
-    font-size: 1.6rem
+    font-size: 2.125rem
     font-weight: 400
-    letter-spacing: .0125em
-    margin-top: 0.5em
+    letter-spacing: 0.015625rem
 
   h2
-    line-height: 2rem
-    font-size: 1.2rem
+    font-size: 1.5rem
     font-weight: 400
-    letter-spacing: .0125em
-    margin-bottom: 0.75em
+    letter-spacing: normal
 
   h3
-    line-height: 2.5rem
-    font-size: 1rem
-    font-weight: 700
-    letter-spacing: .009375em
+    font-size: 1.25rem
+    font-weight: 500
+    letter-spacing: 0.009375rem
 
-  p
-    margin-bottom: 12px
+  strong
+    font-weight: 700
 
   p:last-child
     margin-bottom: 4px
@@ -81,7 +96,6 @@ img.emoji
     margin: 16px 0
 
   word-wrap: break-word
-
 
   img
     aspect-ratio: attr(width) / attr(height)
@@ -106,16 +120,9 @@ img.emoji
     margin-bottom: 0
 
   pre
-    // padding: .7rem 1rem
-    // border-radius: 5px
-    // background: #000
-    // color: #fff
-    // font-size: .8rem
     overflow-x: auto
-    // overflow: auto
-    // padding: 0
-    // font-family: 'Roboto mono', monospace, monospace
-    // white-space: pre-wrap
+    font-family: 'Roboto mono', monospace, monospace
+    white-space: pre-wrap
 
   code::before
     content: ''

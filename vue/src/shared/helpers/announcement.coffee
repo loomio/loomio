@@ -1,5 +1,5 @@
 import Session from '@/shared/services/session'
-import { compact } from 'lodash-es'
+import { compact } from 'lodash'
 
 export audiencesFor = (model) ->
   compact [

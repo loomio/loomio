@@ -3,7 +3,7 @@ import Records        from '@/shared/services/records'
 import AbilityService from '@/shared/services/ability_service'
 import RecordLoader   from '@/shared/services/record_loader'
 import Session        from '@/shared/services/session'
-import {includes, some, compact, intersection, orderBy, slice, filter, isEmpty} from 'lodash-es'
+import {includes, some, compact, intersection, orderBy, slice, filter, isEmpty} from 'lodash'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 import { exact, approximate } from '@/shared/helpers/format_time'
 

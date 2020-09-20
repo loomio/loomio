@@ -39,7 +39,7 @@ class Membership < ApplicationRecord
   scope :for_group, lambda {|group| where(group_id: group)}
   scope :admin, -> { where(admin: true) }
 
-  delegate :name, :email, to: :user, prefix: :user
+  delegate :name, :email, to: :user, prefix: :user, allow_nil: true
   delegate :parent, to: :group, prefix: :group, allow_nil: true
   delegate :name, :full_name, to: :group, prefix: :group
   delegate :admins, to: :group, prefix: :group

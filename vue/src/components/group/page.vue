@@ -6,9 +6,8 @@ import Records           from '@/shared/services/records'
 import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
 import LmoUrlService     from '@/shared/services/lmo_url_service'
-import { subscribeTo }   from '@/shared/helpers/cable'
-import {compact, head, includes, filter} from 'lodash-es'
-import ahoy from 'ahoy.js'
+import {compact, head, includes, filter} from 'lodash'
+import ahoy from '@/shared/services/ahoy'
 
 export default
   data: ->
@@ -60,7 +59,6 @@ export default
           groupId: @group.id
           organisationId: @group.parentOrSelf().id
           pageType: 'groupPage'
-        subscribeTo(@group)
       .catch (error) =>
         EventBus.$emit 'pageError', error
         EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()

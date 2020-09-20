@@ -1,5 +1,5 @@
 <script lang="coffee">
-import {keys, intersection, uniq, without, compact, map, every} from 'lodash-es'
+import {keys, intersection, uniq, without, compact, map, every} from 'lodash'
 import AppConfig  from '@/shared/services/app_config'
 import Vue from 'vue'
 
@@ -14,6 +14,7 @@ export default
   poll-common-form-options-field(:poll="poll")
 
   validation-errors(:subject="poll" field="pollOptions")
+  poll-common-wip-field(:poll="poll")
   poll-common-closing-at-field(:poll="poll")
   poll-common-settings(:poll="poll")
 </template>

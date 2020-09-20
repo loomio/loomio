@@ -26,7 +26,8 @@ Loomio::Application.routes.draw do
     end
   end
 
-  mount ActionCable.server => '/cable'
+  mount Ahoy::Engine => "/bhoy", as: :bhoy if Ahoy.api
+  mount AhoyEmail::Engine => "/bhoy", as: :bhoyemail
 
   get '/discussions/:id', to: 'redirect#discussion'
   get '/groups/:id',      to: 'redirect#group'
@@ -284,6 +285,7 @@ Loomio::Application.routes.draw do
   get 'd/:key/export'                      => 'discussions#export',          as: :discussion_export
   get 'g/:key(/:slug)'                     => 'groups#show',                 as: :group
   get 'd/:key(/:slug)(/:sequence_id)'      => 'discussions#show',            as: :discussion
+  get 's/:key(/:slug)(/:sequence_id)'      => 'discussions#show'
   get 'd/:key/comment/:comment_id'         => 'discussions#show',            as: :comment
   get 'p/:key/unsubscribe'                 => 'polls#unsubscribe',           as: :poll_unsubscribe
   get 'p/:key(/:slug)'                     => 'polls#show',                  as: :poll

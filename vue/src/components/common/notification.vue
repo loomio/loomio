@@ -57,7 +57,7 @@ export default
 component(:is="componentType" :to="isRouterLink && url" :href="!isRouterLink && url")
   v-layout.notification.body-2(align-center :class="{'notification--unread': unread}")
     .notification__avatar.ma-2
-      user-avatar(v-if="actor", :user="actor", size="thirtysix")
+      user-avatar(:user="actor" size="thirtysix")
     .notification__content.text--primary.py-2.px-1
       span(v-html="$t(path, args)")
       space

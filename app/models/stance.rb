@@ -4,6 +4,7 @@ class Stance < ApplicationRecord
   include Reactable
   include HasEvents
   include HasCreatedEvent
+  include HasVolume
 
   extend HasTokens
   initialized_with_token :token

@@ -4,7 +4,7 @@ import AbilityService     from '@/shared/services/ability_service'
 import EventBus           from '@/shared/services/event_bus'
 import RecordLoader       from '@/shared/services/record_loader'
 import ThreadFilter       from '@/shared/services/thread_filter'
-import { map, debounce, orderBy, intersection, compact, omit, filter, concat, uniq } from 'lodash-es'
+import { map, debounce, orderBy, intersection, compact, omit, filter, concat, uniq } from 'lodash'
 import Session from '@/shared/services/session'
 
 export default
@@ -203,7 +203,7 @@ div.discussions-panel(v-if="group")
         v-list-item(v-for="tag in groupTags" :key="tag" @click="routeQuery({tag: tag})")
           v-list-item-title {{tag}}
     v-text-field.mr-2.flex-grow-1(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_threads', {name: group.name})" append-icon="mdi-magnify" :loading="searchLoader.loading")
-    v-btn.discussions-panel__new-thread-button(@click='openStartDiscussionModal()' color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
+    v-btn.discussions-panel__new-thread-button(:to="'/d/new?group_id='+group.id" color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
 
   v-card.discussions-panel(outlined)
     div(v-if="loader.status == 403")

@@ -2,7 +2,7 @@
 import AppConfig from '@/shared/services/app_config'
 import EventBus  from '@/shared/services/event_bus'
 import { addDays, addMinutes, formatDistanceToNowStrict } from 'date-fns'
-import { pull } from 'lodash-es'
+import { pull } from 'lodash'
 
 export default
   props:
@@ -11,7 +11,7 @@ export default
 
   data: ->
     durations:
-      [5, 10, 15, 20, 30, 45, 60, 120, 180, 240, null].map (minutes) =>
+      [5, 10, 15, 20, 30, 45, 60, 90, 120, 180, 240, null].map (minutes) =>
         if minutes
           {text: formatDistanceToNowStrict(addMinutes(new Date, minutes)), value: minutes}
         else
@@ -33,6 +33,7 @@ export default
   poll-common-form-fields(:poll="poll")
   poll-meeting-form-options-field(:poll="poll")
   v-select(v-model="poll.customFields.meeting_duration" :label="$t('poll_meeting_form.meeting_duration')" :items="durations")
+  poll-common-wip-field(:poll="poll")
   poll-common-closing-at-field(:poll="poll")
   poll-common-settings(:poll="poll")
 </template>

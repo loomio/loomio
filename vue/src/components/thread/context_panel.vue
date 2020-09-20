@@ -1,6 +1,6 @@
 <script lang="coffee">
 import ThreadService  from '@/shared/services/thread_service'
-import { map, compact, pick } from 'lodash-es'
+import { map, compact, pick } from 'lodash'
 import EventBus from '@/shared/services/event_bus'
 import openModal      from '@/shared/helpers/open_modal'
 
@@ -49,7 +49,7 @@ export default
 </script>
 
 <template lang="pug">
-.context-panel.lmo-action-dock-wrapper#context(:aria-label="$t('context_panel.aria_intro', {author: discussion.authorName(), group: discussion.group().fullName})" v-observe-visibility="{callback: viewed, once: true}" v-on:dblclick="editThread.canPerform() && editThread.perform()")
+.context-panel.lmo-action-dock-wrapper#context(:aria-label="$t('context_panel.aria_intro', {author: discussion.authorName(), group: discussion.group().fullName})" v-observe-visibility="{callback: viewed, once: true}")
   v-layout(align-center mr-3 ml-2 pt-2 wrap)
     v-breadcrumbs.context-panel__breadcrumbs(aria-label="Group" :items="groups" divider=">")
     tags-display(:discussion="discussion")
@@ -93,7 +93,7 @@ export default
   v-divider
 </template>
 <style lang="sass">
-@import 'variables'
+@import '@/css/variables'
 .context-panel__heading-pin
   margin-left: 4px
 

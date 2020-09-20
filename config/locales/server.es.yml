@@ -11,6 +11,7 @@ es:
         blank: no puede estar vacío
         invalid: No es un valor válido.
   errors:
+    clear_cache: "Se ha detectado un problema al cargar. Mantener \"shift\" y presionar \"recargar\" o elimina tu navegador caché."
     400:
       title: Mala petición
       body: Lo sentimos, no pudimos entender esa petición
@@ -303,24 +304,24 @@ es:
   how_it_works_thread:
     title: Cómo usar Loomio
     description: |
-        Bienvenidos a Loomio, un sitio online para comunicarse y tomar decisiones.
+        Bienvenidos a Loomio, un lugar online para comunicar y tomar decisiones.
 
-        Esto es un ejemplo de una discusión **hilo**. Puedes añadir comentarios abajo. Los hilos son para debatir temas y obtener resultados claros. Este hilo es acerca de cómo funciona Loomio, así que puedes escribir preguntas acerca de eso aquí.
+        Esto es un ejemplo de **thread** de discusión. Puedes añadir comentarios abajo. Los hilos son para discutir temas y obtener resultados claros. Este hilo es sobre cómo funciona Loomio, así que puedes colgar preguntas sobre esto aquí.
 
-        En estos momentos estás leyendo el hilo **contexto**, el cual puede mantenerse actualizado con las información clave y las preguntas que ayudan a la gente a involucrarse.
+        En estos momentos estás leyendo el hilo **context**, el cuál puede mantenerse actualizado con información clave y preguntas que ayudan a la gente a comprometerse.
 
         Para empezar con Loomio:
         <ul>
-        Intenta comentar en un hilo existente o este mismo.
+        Intenta comentar en un hilo existente o en este.
         </ul>
-        Trucos para publicar en Loomio:
+        Consejos para publicar en Loomio:
         <ul>
-        <li>Para notificar a una persona en particular escribe @ seguido de su nombre </li>
-        <li>Arrastrar y soltar fotos y adjuntos o clica el icono de clip</li>
-        <li>Ve 5 maneras de usar los hilos para unas ideas y consejos </li>
+        <li>Para notificar a una persona específica, teclea @ seguido de su nombre</li>
+        <li>Pulsa y arrastra fotos y adjuntos o clica el icono del clip</li>
+        <li>Ver<a href="https://help.loomio.org/en/guides/5_ways_to_use_threads/" target="_blank">5 maneras de usar hilos</a>para algunas ideas y consejos</li>
         </ul>
 
-        Si tienes alguna pregunta mira [Loomio Help] (http://help.loomio.org
+        Si tienes alguna pregunta visita  [Loomio Help](http://help.loomio.org).
   first_proposal:
     name: ¿Tienes alguna pregunta acerca de cómo usar Loomio?
     description: |
@@ -450,8 +451,6 @@ es:
     body:
       voted: '<strong>%{participant}</strong>:'
   comment_by: Comentario de %{comment_author}
-  personal_data:
-    title: Datos personales de %{user_name}en%{host_name}
   notified:
     no_matches_found: "No hemos encontrado nada que concuerde con '%{query}'"
     group_users: "(%{count} personas)"

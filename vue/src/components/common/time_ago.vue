@@ -1,7 +1,7 @@
 <script lang="coffee">
 import { approximate, exact } from '@/shared/helpers/format_time'
 import { parseISO } from 'date-fns'
-import {isString} from 'lodash-es'
+import {isString} from 'lodash'
 
 export default
   props:

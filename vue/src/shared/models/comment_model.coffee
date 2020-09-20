@@ -2,7 +2,7 @@ import BaseModel       from '@/shared/record_store/base_model'
 import AppConfig       from '@/shared/services/app_config'
 import HasDocuments    from '@/shared/mixins/has_documents'
 import HasTranslations from '@/shared/mixins/has_translations'
-import {capitalize, map, last, invokeMap} from 'lodash-es'
+import {capitalize, map, last, invokeMap} from 'lodash'
 
 export default class CommentModel extends BaseModel
   @singular: 'comment'
@@ -27,7 +27,7 @@ export default class CommentModel extends BaseModel
     @belongsTo 'author', from: 'users'
     @belongsTo 'discussion'
     @belongsTo 'parent', from: 'comments', by: 'parentId'
-    @hasMany  'versions', sortBy: 'createdAt'
+    # @hasMany  'versions', sortBy: 'createdAt'
 
   createdEvent: ->
     @recordStore.events.find(kind: "new_comment", eventableId: @id)[0]
@@ -43,8 +43,8 @@ export default class CommentModel extends BaseModel
   memberIds: ->
     @discussion().memberIds()
 
-  isMostRecent: ->
-    last(@discussion().comments()) == @
+  # isMostRecent: ->
+  #   last(@discussion().comments()) == @
 
   isReply: ->
     @parentId?

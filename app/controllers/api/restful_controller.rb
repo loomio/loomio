@@ -61,7 +61,7 @@ class API::RestfulController < API::SnorlaxBase
 
   def respond_with_collection(scope: default_scope, serializer: resource_serializer, root: serializer_root)
     if events_to_serialize.any?
-      render json: EventCollection.new(events_to_serialize).serialize!(scope)
+      render json: events_to_serialize, scope: scope, root: 'events', each_serializer: Events::BaseSerializer
     else
       render json: resources_to_serialize, scope: scope, each_serializer: serializer, root: root
     end
@@ -77,7 +77,7 @@ class API::RestfulController < API::SnorlaxBase
   end
 
   def default_scope
-    { current_user: current_user, exclude_types: params[:exclude_types].to_s.split(' ') }
+    { current_user: current_user, current_user_id: current_user.id, exclude_types: params[:exclude_types].to_s.split(' ') }
   end
 
 end

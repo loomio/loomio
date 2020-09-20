@@ -434,6 +434,7 @@ describe API::PollsController do
       expect(poll.created_event.position).to be 0
 
       patch :add_to_thread, params: { id: poll.key, discussion_id: discussion.id }
+      expect(response.status).to eq 200
 
       poll.reload
       discussion.reload
@@ -441,7 +442,7 @@ describe API::PollsController do
       json = JSON.parse(response.body)
       expect(json.keys).to include 'polls'
       expect(json.keys).to include 'events'
-      
+
       expect(poll.created_event.discussion_id).to eq discussion.id
       expect(poll.created_event.parent_id).to eq discussion.created_event.id
       expect(poll.created_event.sequence_id).to eq 2

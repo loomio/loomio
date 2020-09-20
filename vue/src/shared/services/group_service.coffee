@@ -25,7 +25,7 @@ export default new class GroupService
 
     edit_group:
       name: 'group_page.options.edit_group'
-      icon: 'mdi-settings'
+      icon: 'mdi-cog'
       canPerform: ->
         AbilityService.canEditGroup(group)
       perform: ->

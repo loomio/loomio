@@ -55,7 +55,7 @@ namespace :deploy do
       "rm -rf plugins/fetched/**/.git",
       "find plugins/fetched -name '*.*' | xargs git add -f",
       "git add -f plugins",
-      "git add public/client/ -f",
+      "git add public/blient/ -f",
       "git commit -m 'Add compiled assets / plugin code'",
       "git checkout master")
   end

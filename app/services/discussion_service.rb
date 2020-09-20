@@ -10,8 +10,8 @@ class DiscussionService
 
     return false unless discussion.valid?
 
-    discussion.update_attachments!
     discussion.save!
+
     EventBus.broadcast('discussion_create', discussion, actor)
     Events::NewDiscussion.publish!(discussion)
   end
@@ -23,8 +23,17 @@ class DiscussionService
                                          emails: params[:emails],
                                          user_ids: params[:user_ids])
 
+    volumes = {}
+    Membership.where(group_id: discussion.group_id,
+                     user_id: users.pluck(:id)).find_each do |m|
+      volumes[m.user_id] = m.volume
+    end
+
     new_discussion_readers = users.map do |user|
-      DiscussionReader.new(user: user, discussion: discussion, inviter: actor, volume: DiscussionReader.volumes[:normal])
+      DiscussionReader.new(user: user,
+                           discussion: discussion,
+                           inviter: actor,
+                           volume: volumes[user.id] || DiscussionReader.volumes[:normal])
     end
 
     DiscussionReader.import(new_discussion_readers, on_duplicate_key_ignore: true)
@@ -59,10 +68,9 @@ class DiscussionService
     is_new_version = discussion.is_new_version?
     return false unless discussion.valid?
     rearrange = discussion.max_depth_changed?
-    discussion.update_attachments!
     discussion.save!
 
-    RearrangeEventsWorker.perform_async(discussion.id) if rearrange
+    EventService.delay.repair_thread(discussion.id) if rearrange
 
     version_service.handle_version_update!
     EventBus.broadcast('discussion_update', discussion, actor, params)
@@ -129,7 +137,7 @@ class DiscussionService
     actor.ability.authorize! :mark_as_seen, discussion
     reader = DiscussionReader.for_model(discussion, actor)
     reader.viewed!
-    MessageChannelService.publish_model(reader.discussion)
+    MessageChannelService.publish_models(reader.discussion, group_id: reader.discussion.group_id)
     EventBus.broadcast('discussion_mark_as_seen', reader, actor)
   end
 

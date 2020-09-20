@@ -3,7 +3,6 @@ class UserService
     user.attributes = params.slice(:name, :email, :recaptcha, :legal_accepted, :email_newsletter)
     user.require_valid_signup = true
     user.require_recaptcha = true
-    user.update_attachments!
     user.save.tap do
       EventBus.broadcast 'user_create', user
     end
@@ -30,11 +29,6 @@ class UserService
     Poll.where(id: poll_ids).each do |poll|
       poll.stances.where(participant_id: to.id).order(created_at: :desc).first.update_attribute(:latest, true)
     end
-  end
-
-  def self.delete_many_spam(name_fragment)
-    return unless name_fragment.to_s.length > 6
-    User.where('name like ?', "%#{name_fragment}%").order('id asc').limit(2000).each { |user| delete_spam(user) }
   end
 
   # UserService#deactivate
@@ -81,7 +75,6 @@ class UserService
   def self.update(user:, actor:, params:)
     actor.ability.authorize! :update, user
     HasRichText.assign_attributes_and_update_files(user, params)
-    user.update_attachments!
     user.save
     EventBus.broadcast('user_update', user, actor, params)
   end

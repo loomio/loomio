@@ -53,7 +53,7 @@ class MembershipService
     titles[group.id] = membership.title
     user.experiences['titles'] = titles
     user.save!
-    MessageChannelService.publish_data(AuthorSerializer.new(user).as_json, to: group.message_channel)
+    MessageChannelService.publish_models(user, serializer: AuthorSerializer, group_id: group.id)
   end
 
   def self.set_volume(membership:, params:, actor:)

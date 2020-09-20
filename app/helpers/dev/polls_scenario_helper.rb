@@ -10,13 +10,14 @@ module Dev::PollsScenarioHelper
     actor = group.admins.first
     user  = saved(fake_user(time_zone: "America/New_York"))
 
-    group.add_member! user
+    group.add_member! user if !params[:guest]
     group.add_admin! user if params[:admin]
 
     poll = fake_poll(group: group,
                      discussion: params[:standalone] ? nil : discussion,
                      poll_type: params[:poll_type],
                      hide_results_until_closed: !!params[:hide_results_until_closed],
+                     wip: params[:wip],
                      anonymous: !!params[:anonymous])
 
     event = PollService.create(poll: poll, actor: actor)
@@ -41,7 +42,9 @@ module Dev::PollsScenarioHelper
                      anonymous: !!params[:anonymous],
                      hide_results_until_closed: !!params[:hide_results_until_closed],
                      group: group,
-                     discussion: nil)
+                     discussion: nil,
+                     wip: params[:wip])
+
     event = PollService.create(poll: poll, actor: observer)
 
     PollService.close(poll: poll, actor: observer)
@@ -155,6 +158,7 @@ module Dev::PollsScenarioHelper
                                                      anonymous: !!params[:anonymous],
                                                      hide_results_until_closed: !!params[:hide_results_until_closed],
                                                      discussion: discussion,
+                                                     wip: params[:wip],
                                                      closing_at: 1.day.from_now))
 
     PollService.create(poll: poll, actor: actor)

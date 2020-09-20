@@ -27,12 +27,8 @@ ActiveAdmin.register Group, as: 'Group' do
         group = Group.find(group_id)
         user = group.creator || group.admins.first
         if user
-          UserService.delete_spam(user)
+          UserService.destroy(user: user)
         end
-      end
-
-      if Group.exists?(group_id)
-        Group.find(group_id).destroy
       end
     end
 

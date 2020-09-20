@@ -1,15 +1,16 @@
 <script lang="coffee">
 import { fieldFromTemplate, myLastStanceFor } from '@/shared/helpers/poll'
-import { max, values, orderBy } from 'lodash-es'
+import { max, values, orderBy, compact } from 'lodash'
 
 export default
   props:
     poll: Object
   methods:
     countFor: (option) ->
+      return null unless @poll.closingAt
       @poll.stanceData[option.name] or 0
     barTextFor: (option) ->
-      "#{option.name} - #{@countFor(option)}".replace(/\s/g, '\u00a0')
+      compact([option.name, @countFor(option)]).join(" - ").replace(/\s/g, '\u00a0')
     percentageFor: (option) ->
       max_val = max(values(@poll.stanceData))
       return unless max_val > 0

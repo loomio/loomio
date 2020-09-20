@@ -1,18 +1,27 @@
 class MessageChannelService
-  def self.publish_model(model, serializer: nil, root: nil, to: nil)
-    serializer ||= "#{model.class}Serializer".constantize
-    root       ||= model.class.to_s.pluralize.downcase
-    to         ||= model.group.message_channel
-    data       =   ActiveModel::ArraySerializer.new([model], each_serializer: serializer, root: root).as_json
-    Array(to).each { |channel| publish_data(data, to: channel) }
+  def self.publish_models(models, serializer: nil, scope: {}, root: nil, group_id: nil, user_id: nil)
+    data = serialize_models(models, serializer: serializer, scope: scope, root: root)
+    publish_serialized_records(data, group_id: group_id, user_id: user_id)
   end
 
-  def self.publish_data(data, to: message_channel)
-    ActionCable.server.broadcast to, data if to
+  def self.serialize_models(models, serializer: nil, scope: {}, root: nil)
+    models = Array(models)
+    return unless model = models.first
+    serializer ||= model.is_a?(Event) ? Events::BaseSerializer : "#{model.class}Serializer".constantize
+    root       ||= model.is_a?(Event) ? 'events' : model.class.to_s.pluralize.downcase
+    ActiveModel::ArraySerializer.new(models, scope: scope, each_serializer: serializer, root: root)
   end
 
-  def self.publish_event(event)
-    event_data = Events::BaseSerializer.new(event).to_json
-    ActionCable.server.broadcast(event.eventable.group.message_channel, event_data)
+  def self.publish_serialized_records(data, group_id: nil, user_id: nil)
+    CHANNELS_REDIS_POOL.with do |client|
+      room = "user-#{user_id}" if user_id
+      room = "group-#{group_id}" if group_id
+      data_str = data.as_json.as_json
+      score = client.incr("/records/#{room}/score")
+      # puts "incrementing score:", room, score, data_str
+      client.zadd("/records/#{room}", score, data_str.to_json)
+      client.publish("/records", {room: room, records: data_str, score: score}.to_json)
+      client.zremrangebyscore("/records/#{room}", "-inf", (score - 200))
+    end
   end
 end

@@ -4,7 +4,7 @@ import AbilityService from '@/shared/services/ability_service'
 import RecordLoader   from '@/shared/services/record_loader'
 import Session        from '@/shared/services/session'
 import EventBus       from '@/shared/services/event_bus'
-import {includes, some, compact, intersection, orderBy, slice, debounce, min, escapeRegExp} from 'lodash-es'
+import {includes, some, compact, intersection, orderBy, slice, debounce, min, escapeRegExp} from 'lodash'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 import { exact, approximate } from '@/shared/helpers/format_time'
 

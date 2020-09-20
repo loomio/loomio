@@ -10,6 +10,8 @@ class Dev::DiscussionsController < Dev::BaseController
   def test_some_read
     BaseMailer.skip do
       discussion = create_discussion_with_nested_comments
+      EventService.repair_thread(discussion.id)
+      discussion.author.experienced!('betaFeatures')
       sign_in discussion.author
       read_ids = discussion.items.order(sequence_id: :asc).limit(5).pluck(:sequence_id)
       DiscussionReader.for_model(discussion, discussion.author).viewed!(read_ids)
@@ -21,7 +23,7 @@ class Dev::DiscussionsController < Dev::BaseController
     BaseMailer.skip do
       discussion = create_discussion_with_nested_comments
       sign_in discussion.author
-      read_ids = discussion.items.order(sequence_id: :desc).limit(5).pluck(:sequence_id)
+      read_ids = discussion.items.order(sequence_id: :asc).limit(5).pluck(:sequence_id)
       DiscussionReader.for_model(discussion, discussion.author).viewed!(read_ids)
       redirect_to discussion_url(discussion)
     end

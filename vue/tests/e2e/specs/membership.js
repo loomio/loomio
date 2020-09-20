@@ -52,6 +52,7 @@ module.exports = {
     page.loadPath('setup_group_with_multiple_coordinators')
 
     page.click('.group-page-members-tab')
+    page.pause(2000)
     page.click('.members-panel .v-card .v-list .v-list-item:first-child .membership-dropdown')
     page.click('.membership-dropdown__toggle-admin')
     page.expectFlash('Emilio Estevez is no longer an admin')
@@ -69,15 +70,15 @@ module.exports = {
   //   page.expectFlash('Patrick Swayze is now an admin')
   // },
 
-  'can_self_promote_when_admin_of_parent_group': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_group_with_subgroups_as_admin')
-    page.click('.group-page-members-tab')
-    page.click('.members-panel .v-card .v-list .v-list-item:first-child .membership-dropdown')
-    page.click('.membership-dropdown__toggle-admin')
-    page.expectFlash('Jennifer Grey is now an admin')
-  },
+  // 'can_self_promote_when_admin_of_parent_group': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_group_with_subgroups_as_admin')
+  //   page.click('.group-page-members-tab')
+  //   page.click('.members-panel .v-card .v-list .v-list-item:first-child .membership-dropdown')
+  //   page.click('.membership-dropdown__toggle-admin')
+  //   page.expectFlash('Jennifer Grey is now an admin')
+  // },
 
   'cannot_self_promote_when_coordinators': (test) => {
     page = pageHelper(test)
@@ -101,14 +102,14 @@ module.exports = {
     page.expectText('.members-panel .v-list .v-list-item:last-child .title', 'Suzerain')
   },
 
-  'can_change_volume': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_group')
-    page.click('.group-page-settings-tab')
-    page.click('.group-page-actions__change_volume')
-    page.click('.volume-loud')
-    page.click('.change-volume-form__submit')
-    page.expectFlash('Notification settings updated')
-  }
+  // 'can_change_volume': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_group')
+  //   page.click('.group-page-settings-tab')
+  //   page.click('.group-page-actions__change_volume')
+  //   page.click('.volume-loud')
+  //   page.click('.change-volume-form__submit')
+  //   page.expectFlash('Notification settings updated')
+  // }
 }

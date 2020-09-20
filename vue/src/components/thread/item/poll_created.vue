@@ -3,7 +3,7 @@ import PollService    from '@/shared/services/poll_service'
 import AbilityService from '@/shared/services/ability_service'
 import EventBus       from '@/shared/services/event_bus'
 import EventService from '@/shared/services/event_service'
-import { pick, assign } from 'lodash-es'
+import { pick, assign } from 'lodash'
 
 export default
   components:
@@ -58,7 +58,7 @@ thread-item.poll-created(:event="event" :is-returning="isReturning")
   formatted-text.poll-common-details-panel__details(:model="poll" column="details")
   attachment-list(:attachments="poll.attachments")
   document-list(:model='poll' skip-fetch)
-  p.caption(v-if="!poll.pollOptionNames.length" v-t="'poll_common.no_voting'")
+  //- p.caption(v-if="!poll.pollOptionNames.length" v-t="'poll_common.no_voting'")
   div.body-2(v-if="poll.pollOptionNames.length")
     .poll-common-card__results-shown(v-if='poll.showResults()')
       poll-common-directive(:poll='poll', name='chart-panel')

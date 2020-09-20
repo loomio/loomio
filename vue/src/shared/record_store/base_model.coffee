@@ -1,7 +1,7 @@
 import utils from './utils'
 import Vue from 'vue'
 import { isEqual } from 'date-fns'
-import { camelCase, union, each, isArray, keys, filter, snakeCase, defaults, orderBy, assign, includes } from 'lodash-es'
+import { camelCase, union, each, isArray, keys, filter, snakeCase, defaults, orderBy, assign, includes } from 'lodash'
 
 export default class BaseModel
   @singular: 'undefinedSingular'
@@ -99,7 +99,7 @@ export default class BaseModel
     each @constructor.serializableAttributes or @attributeNames, (attributeName) =>
       snakeName = snakeCase(attributeName)
       camelName = camelCase(attributeName)
-      if utils.isTimeAttribute(camelName)
+      if utils.isTimeAttribute(camelName) and @[camelName]
         data[snakeName] = @[camelName].toISOString()
       else
         data[snakeName] = @[camelName]

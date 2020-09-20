@@ -9,7 +9,6 @@ import { hardReload } from '@/shared/helpers/window'
 
 export default new class ThreadService
   actions: (discussion, vm) ->
-
     subscribe:
       name: 'common.action.subscribe'
       canPerform: ->
@@ -132,6 +131,8 @@ export default new class ThreadService
       name: 'common.action.edit'
       icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditThread(discussion)
+      to: ->
+        "/d/#{discussion.key}/edit"
       perform: ->
         Records.discussions.remote.fetchById(discussion.key, {exclude_types: 'group user poll event'}).then ->
           openModal

@@ -4,7 +4,6 @@ class CommentService
     actor.ability.authorize! :create, comment
     comment.author = actor
     return false unless comment.valid?
-    comment.update_attachments!
     comment.save!
     EventBus.broadcast('comment_create', comment, actor)
     Events::NewComment.publish!(comment)
@@ -35,7 +34,7 @@ class CommentService
     comment.destroy
 
     Comment.where(parent_id: comment_id).update_all(parent_id: nil)
-    RearrangeEventsWorker.perform_async(discussion_id)
+    EventService.delay.repair_thread(discussion_id)
   end
 
   def self.update(comment:, params:, actor:)
@@ -44,7 +43,6 @@ class CommentService
 
     HasRichText.assign_attributes_and_update_files(comment, params)
     return false unless comment.valid?
-    comment.update_attachments!
     comment.save!
 
     EventBus.broadcast('comment_update', comment, actor)

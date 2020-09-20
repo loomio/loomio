@@ -11,6 +11,7 @@ nl_NL:
         blank: mag niet leeg gelaten worden
         invalid: is geen geldige waarde
   errors:
+    clear_cache: "Wis aub de cache van uw browser. Er is een probleem met het laden van Loomio."
     400:
       title: Bad request
       body: Sorry, dat verzoek werd niet begrepen
@@ -424,6 +425,7 @@ nl_NL:
       poll_option_added: '%{actor} voegde opties toe aan: %{title}'
       poll_option_added_author: '%{actor} voegde opties toe aan: %{title}'
       outcome_created: '%{actor} deelde een %{poll_type} resultaat: %{title}'
+      outcome_created_author: 'Je deelde een %{poll_type} resultaat: %{title}'
       outcome_announced: '%{actor} deelde een %{poll_type} resultaat: %{title}'
       stance_created: "%{actor} stemde op: %{title}"
       stance_created_author: "Gelieve je stem te bevestigen op: %{title}"
@@ -440,6 +442,7 @@ nl_NL:
       poll_option_added: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
       poll_option_added_author: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
       outcome_created: '<strong>%{actor}</strong> deelde een %{poll_type} resultaat.'
+      outcome_created_author: 'Je deelde een %{poll_type} resultaat:'
       outcome_announced: '<strong>%{actor}</strong> deelde een %{poll_type} resultaat.'
       stance_created: "<strong>%{actor}</strong> stemde op: %{title}"
       user_mentioned: '<strong>%{actor}</strong> noemde je in: %{title}'

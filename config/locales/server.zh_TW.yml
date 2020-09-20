@@ -11,6 +11,7 @@ zh_TW:
         blank: 不能留白
         invalid: 不是有效的值
   errors:
+    clear_cache: "請清除您的瀏覽器快取。載入 Loomio 發生了一點問題。"
     400:
       title: 錯誤的請求
       body: 抱歉，我們無法理解該請求

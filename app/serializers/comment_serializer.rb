@@ -4,8 +4,16 @@ class CommentSerializer < ApplicationSerializer
              :versions_count, :attachments, :author_id, :discarded_at
 
   has_one :author, serializer: AuthorSerializer, root: :users
-  
+
+  def body
+    object.discarded_at ? '' : object.body
+  end
+
   def include_mentioned_usernames?
     body_format == "md"
+  end
+
+  def include_secret_token?
+    object.user_id == scope[:current_user_id]
   end
 end

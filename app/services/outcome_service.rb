@@ -14,7 +14,6 @@ class OutcomeService
     return false unless outcome.valid?
     outcome.poll.outcomes.update_all(latest: false)
     outcome.store_calendar_invite if outcome.should_send_calendar_invite
-    outcome.update_attachments!
     outcome.save!
 
     EventBus.broadcast 'outcome_create', outcome, actor

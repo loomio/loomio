@@ -524,6 +524,7 @@ it:
     delete_thread: Cancella discussione
   formatting:
     attach: Allega file
+    reset: Reimposta
   cover_photo_form:
     aria_label: 'Cambia modulo dell''immagine di copertina'
     heading: 'Nuova immagine di copertina'

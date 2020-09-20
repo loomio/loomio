@@ -1,12 +1,12 @@
 import BaseModel from '@/shared/record_store/base_model'
 import AppConfig from '@/shared/services/app_config'
 import compareAsc from 'date-fns/compareAsc'
-import {each, invokeMap} from 'lodash-es'
+import {each, invokeMap} from 'lodash'
 
 export default class MembershipModel extends BaseModel
   @singular: 'membership'
   @plural: 'memberships'
-  @indices: ['id', 'userId', 'groupId']
+  @indices: ['userId', 'groupId']
   @searchableFields: ['userName', 'userUsername']
 
   relationships: ->

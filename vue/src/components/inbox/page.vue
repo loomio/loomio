@@ -4,9 +4,13 @@ import Session       from '@/shared/services/session'
 import Records       from '@/shared/services/records'
 import EventBus      from '@/shared/services/event_bus'
 import ThreadFilter from '@/shared/services/thread_filter'
-import {each, keys, sum, values, sortBy} from 'lodash-es'
+# import StrandWall from '@/components/strand/wall'
+import {each, keys, sum, values, sortBy} from 'lodash'
 
 export default
+  # components:
+  #   StrandWall: StrandWall
+
   data: ->
     threadLimit: 50
     views: {}
@@ -77,4 +81,5 @@ v-main
             router-link.inbox-page__group-name(:to="'/g/' + group.key")
               span.subheading {{group.name}}
           thread-preview-collection(:threads="views[group.key]", :limit="threadLimit")
+        //- strand-wall(:threads="views[group.key]")
 </template>

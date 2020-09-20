@@ -35,6 +35,7 @@ export default
 
 <template lang="pug">
 v-chip(small outlined :color="color")
-  abbr.closing-in.timeago--inline
+  abbr.closing-in.timeago--inline(v-if="poll.closingAt")
     span(v-t="{ path: translationKey, args: { time: timeMethod(time) } }" :title="exact(time)")
+  span(v-else v-t="'poll_common_wip_field.title'")
 </template>

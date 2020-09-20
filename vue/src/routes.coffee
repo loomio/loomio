@@ -2,8 +2,10 @@ import DashboardPage from './components/dashboard/page.vue'
 import InboxPage from './components/inbox/page.vue'
 import ExplorePage from './components/explore/page.vue'
 import ThreadPage from './components/thread/page.vue'
+import StrandPage from './components/strand/page.vue'
 import ProfilePage from './components/profile/page.vue'
 import PollPage from './components/poll/page.vue'
+import PollFormPage from './components/poll/form_page.vue'
 
 import GroupPage from './components/group/page.vue'
 import GroupDiscussionsPanel from './components/group/discussions_panel'
@@ -28,6 +30,8 @@ import './config/catch_navigation_duplicated.js'
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import Session from '@/shared/services/session'
+
 Vue.use(Router)
 
 groupPageChildren = [
@@ -45,6 +49,12 @@ threadPageChildren = [
   {path: 'comment/:comment_id', components: {nav: ThreadNav}}
   {path: ':stub?/:sequence_id?', components: {nav: ThreadNav}}
   {path: '', components: {nav: ThreadNav}}
+]
+
+strandPageChildren = [
+  {path: 'comment/:comment_id'}
+  {path: ':stub?/:sequence_id?'}
+  {path: ''}
 ]
 
 
@@ -67,10 +77,24 @@ export default new Router
     {path: '/profile', component: ProfilePage},
     {path: '/contact', component: ContactPage},
     {path: '/email_preferences', component: EmailSettingsPage },
+    {path: '/p/:key/edit', component: PollFormPage },
     {path: '/p/:key/:stub?', component: PollPage},
     {path: '/u/:key/:stub?', component: UserPage },
     {path: '/d/new', component: StartDiscussionPage },
-    {path: '/d/:key', name: 'discussion', component: ThreadPage, children: threadPageChildren },
+    {path: '/d/:key/edit', component: StartDiscussionPage },
+    {
+      path: '/d/:key',
+      name: 'discussion',
+      component: ThreadPage,
+      children: threadPageChildren,
+      beforeEnter: (to, from, next) ->
+        console.log(to)
+        if Session.user().experiences['betaFeatures']
+          next(name: 'strand', params: to.params)
+        else
+          next()
+    },
+    {path: '/s/:key', name: 'strand', component: StrandPage, children: strandPageChildren },
     {path: '/g/new', component: StartGroupPage},
     {path: '/g/:key', component: GroupPage, children: groupPageChildren, name: 'groupKey'},
     {path: '/:key', component: GroupPage, children: groupPageChildren},

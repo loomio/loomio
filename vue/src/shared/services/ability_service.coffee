@@ -2,7 +2,7 @@ import AppConfig     from '@/shared/services/app_config'
 import Records       from '@/shared/services/records'
 import Session       from '@/shared/services/session'
 import LmoUrlService from '@/shared/services/lmo_url_service'
-import {intersection} from 'lodash-es'
+import {intersection} from 'lodash'
 
 export default new class AbilityService
   isNotEmailVerified: ->
@@ -37,6 +37,7 @@ export default new class AbilityService
     return false unless poll.isActive()
     poll.anyoneCanParticipate or
     poll.adminsInclude(Session.user()) or
+    poll.myStance() or
     (poll.membersInclude(Session.user()) and (!poll.group() or poll.group().membersCanVote))
 
   canReactToPoll: (poll) ->
@@ -140,7 +141,7 @@ export default new class AbilityService
     (comment.discussion().adminsInclude(Session.user()) and comment.group().adminsCanEditUserContent) or
 
     (comment.authorIs(Session.user()) and
-     (comment.isMostRecent() or comment.group().membersCanEditComments) and
+     comment.group().membersCanEditComments and
      comment.discussion().membersInclude(Session.user()))
 
   canDeleteComment: (comment) ->
@@ -203,9 +204,6 @@ export default new class AbilityService
     return false if model.discardedAt
     AppConfig.inlineTranslation.isAvailable and
     Object.keys(model.translation).length == 0
-
-  canSubscribeToPoll: (poll) ->
-    poll.membersInclude(Session.user())
 
   canMovePoll: (poll) ->
     !poll.discussionId && poll.adminsInclude(Session.user())

@@ -1,5 +1,5 @@
 import RecordView from '@/shared/record_store/record_view'
-import { snakeCase, isEmpty, camelCase, map, keys, each, intersection } from 'lodash-es'
+import { snakeCase, isEmpty, camelCase, map, keys, each, intersection } from 'lodash'
 
 export default class RecordStore
   constructor: (db) ->
@@ -22,6 +22,11 @@ export default class RecordStore
     if data['parent_groups']?
       each data['parent_groups'], (recordData) =>
         @groups.importJSON(recordData)
+        true
+
+    if data['parent_events']?
+      each data['parent_events'], (recordData) =>
+        @events.importJSON(recordData)
         true
 
     each @collectionNames, (name) =>

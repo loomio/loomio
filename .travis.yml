@@ -22,6 +22,10 @@ addons:
       - log/
     target_paths:
       - ${SCREENSHOTS_PATH}
+
+services:
+  - redis-server
+
 env:
   global:
     - DB=postgresql
@@ -40,11 +44,17 @@ env:
 before_install:
   - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
   - gem install bundler
-  - nvm install 12 && nvm use 12
+  - nvm install stable && nvm use stable
+
 
 install:
   - bundle install --without development --deployment --jobs=3 --retry=3
   - cd vue; npm install; cd ..
+  - git clone https://github.com/loomio/loomio_channel_server.git
+  - cd loomio_channel_server
+  - npm install
+  - npm run start > ../log/channel_server.log &
+  - cd ..
 
 before_script:
   - cp config/database.yml.$DB config/database.yml
