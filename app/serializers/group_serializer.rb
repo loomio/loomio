@@ -27,6 +27,7 @@ class GroupSerializer < ApplicationSerializer
              :memberships_count,
              :pending_memberships_count,
              :active_memberships_count,
+             :announceable_members_count,
              :membership_granted_upon,
              :discussion_privacy_options,
              :has_discussions,

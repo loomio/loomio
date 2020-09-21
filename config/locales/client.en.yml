@@ -590,13 +590,16 @@ en:
   discussion_form:
     to: To
     visible_to_label: Privacy
-    visible_to_discussion: Invite only thread
+    visible_to_discussion: Invite only
     visible_to_group: Group thread
     visible_to_parent_group: "{{group}}"
     visible_to_public: Public
-    visible_to_discussion_tooltip: Only visible to invited participants
-    visible_to_group_tooltip: Anyone in the group can participate
-    visible_to_public_tooltip: This thread is visible to anyone with the link
+    visible_to_discussion_tooltip: Only visible to people invited to the thread
+    visible_to_group_tooltip: Visible to everyone in the group
+    visible_to_public_tooltip: Visible to anyone with the link (public)
+    one_person_will_be_notified: '1 person will be notified.'
+    count_people_will_be_notified: '{{count}} people will be notified.'
+    notify_specifc_people_instead: If you don't want to notify the whole group, add names of people to be notified.
     invite: Invite
     aria_label: 'Thread form'
     start_thread: Start thread

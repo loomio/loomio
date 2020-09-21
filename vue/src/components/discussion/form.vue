@@ -119,6 +119,15 @@ export default
     isMovingItems: ->
       @discussion.isForking
 
+    notifyingWholeGroup: ->
+      (@recipients.length == 1) && @recipients[0].type == 'group'
+
+    notificationsCount: ->
+      if @notifyingWholeGroup
+        @recipients[0].group.announceableMembersCount
+      else
+        filter(@recipients, (r) -> r.type != 'group').length
+
 </script>
 
 <template lang="pug">
@@ -151,6 +160,11 @@ export default
         :initial-recipients="initialRecipients"
         :excluded-user-ids="excludedUserIds"
         @new-recipients="newRecipients")
+      p.caption.discussion-form__notification-guide.mt-n4(v-if="notificationsCount")
+        span(v-if="notificationsCount == 1" v-t="'discussion_form.one_person_will_be_notified'")
+        span(v-if="notificationsCount > 1" v-t="{path: 'discussion_form.count_people_will_be_notified', args: {count: notificationsCount}}")
+        space
+        span(v-if="notifyingWholeGroup" v-t="'discussion_form.notify_specifc_people_instead'")
       v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input.text-h5(:label="$t('discussion_form.title_label')" :placeholder="$t('discussion_form.title_placeholder')" v-model='discussion.title' maxlength='255')
       validation-errors(:subject='discussion', field='title')
       lmo-textarea(:model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")
