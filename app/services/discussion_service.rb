@@ -16,17 +16,21 @@ class DiscussionService
 
     EventBus.broadcast('discussion_create', discussion, actor)
     created_event = Events::NewDiscussion.publish!(discussion)
-    AnnounceDiscussionWorker.perform_async(discussion.id, actor.id,
-      {user_ids: Array(params[:recipient_user_ids]).map(&:to_i), emails: Array(params[:recipient_emails]) })
+    AnnounceDiscussionWorker.perform_async(discussion.id, actor.id, {user_ids: params[:recipient_user_ids], emails: params[:recipient_emails] })
     created_event
   end
 
   def self.announce(discussion:, actor:, params:)
     actor.ability.authorize! :announce, discussion
 
-    users = UserInviter.where_or_create!(inviter: actor,
-                                         emails: Array(params[:emails]),
-                                         user_ids: Array(params[:user_ids]).map(&:to_i))
+    emails = Array(params[:emails])
+    user_ids = Array(params[:user_ids]).map(&:to_i)
+
+    if (emails.length + user_ids.length) == 0
+      users = discussion.group.accepted_members
+    else
+      users = UserInviter.where_or_create!(inviter: actor, emails: emails, user_ids: user_ids)
+    end
 
     volumes = {}
     Membership.where(group_id: discussion.group_id,
