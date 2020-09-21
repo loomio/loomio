@@ -36,7 +36,7 @@
     "socket.io-client": "^2.3.0",
     "svg.js": "^2.7.1",
     "textarea-caret": "^3.1.0",
-    "tiptap": "1.29.6",
+    "tiptap": "1.30.0",
     "tiptap-commands": "1.15.0",
     "tiptap-extensions": "1.32.7",
     "turndown": "^6.0.0",
