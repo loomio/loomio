@@ -124,7 +124,7 @@ GEM
     bcrypt (3.1.13)
     bootsnap (1.4.8)
       msgpack (~> 1.0)
-    browser (4.2.0)
+    browser (5.0.0)
     builder (3.2.4)
     byebug (11.1.3)
     cancancan (3.1.0)
@@ -510,7 +510,7 @@ DEPENDENCIES
   ahoy_matey (~> 3.0.5)
   aws-sdk-s3
   bootsnap
-  browser (~> 4.2.0)
+  browser (~> 5.0.0)
   byebug
   cancancan
   coffee-rails
