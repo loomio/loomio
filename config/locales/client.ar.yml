@@ -592,6 +592,7 @@ ar:
       success: تم نقل الموضوع إلى {{name}}
   delete_comment_dialog:
     title: 'احذف التعليق'
+    question: 'هل أنت متأكد من أنك تريد حذف هذا التعليق؟'
     confirm: 'احذف التعليق'
   contact_message_form:
     contact_us: 'اتصل بنا'

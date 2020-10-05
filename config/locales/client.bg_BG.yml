@@ -74,6 +74,7 @@ bg_BG:
     close_thread: 'Затваряне'
   delete_comment_dialog:
     title: 'Изтрий коментар'
+    question: 'Сигурни ли сте, че искате да изтриете този коментар?'
     confirm: 'Изтрий коментар'
   contact_message_form:
     subject_label: "Тема"

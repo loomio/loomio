@@ -523,6 +523,7 @@ ru:
       success: Тема удалена
   delete_comment_dialog:
     title: 'Удалить комментарий'
+    question: 'Вы уверены что хотите удалить комментарий?'
     confirm: 'Удалить комментарий'
   contact_message_form:
     contact_us: 'Наши контакты'

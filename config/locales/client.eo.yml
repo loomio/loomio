@@ -7,7 +7,7 @@ eo:
         set_logo: Elekti emblemon por via grupo
         set_cover_photo: Elekti foton por la ĉefpaĝo de via grupo
         invite_people_in: Inviti homojn
-        start_thread: Komenci diskuton
+        start_thread: Komenci fadedon por diskuti
         make_decision: Komenci decidon
       learn_more: 'Pli da informoj pri la funkciado de Loomio '
       celebration_message: Bone farite!  Via grupo nun estas preta! 🎉
@@ -187,6 +187,7 @@ eo:
       show_more: "Montri pli"
       view_all: "Vidi ĉiujn"
       new_thread: "Nova fadeno"
+      add_subgroup: 'Nova subgrupo'
       loading: 'Ŝargiĝas'
       translate: 'Traduki'
       upload: 'Alŝuti'
@@ -226,11 +227,21 @@ eo:
   pin_event_form:
     title_label: Titolo
   change_volume_form:
+    explain_scope:
+      thread: Ĉi tiu ŝanĝus tiam, kiam vi ricevos sciigojn pri ĉi tiu fadeno.
+      group: Ĉi tiu ŝanĝus tiam, kiam vi ricevos ĉiujn sciigojn pri la fadenoj de la grupo.
     simple:
       label: Sciigoj
       normal: Normala
       quiet: Ignori
     mute_label: "Silentigi"
+    discussion:
+      title: "Sciigoj pri fadenoj"
+      loud_description: "Vi ricevos retpoŝte ĉion, kio okazos en ĉi tiu fadeno."
+      apply_to_all: "Uzi ĉi tiujn agordojn por ĉiu fadeno de la grupo."
+      only_this_thread: "Estos uzate por sole ĉi tiu fadeno"
+      messages:
+        quiet: "Vi ne ricevos repoŝtojn pri ĉi tiu fadeno."
   close_explanation_modal:
     aria_label: Fermigi fadenon
     close_thread: Fermigi fadenon
@@ -260,14 +271,25 @@ eo:
   sidebar:
     threads: 'Fadenoj'
     all_groups: 'Ĉiuj grupoj'
+    recent_threads: 'Lastatempaj fadenoj'
+    unread_threads: 'Nelegitaj fadenoj ({{count}})'
+    muted_threads: 'Silentigitaj fadenoj'
+    start_subgroup: 'Nova subgrupo'
     explore_groups: Esplori grupojn
     start_thread: Nova fadeno
     aria_labels:
       groups_list: 'Grupoj'
   navbar:
+    search_members: 'Serĉu membrojn en {{name}}'
+    search_subgroups: 'Serĉu membrojn en {{name}}'
+    recent_title: 'Iri al supervidpanelo'
+    unread_title: 'Vidi nelegitan aktivecon'
     start_thread: 'Nova fadeno'
+    notifications: 'Sciigopanelo'
     search:
+      close: 'Fermi serĉpanelon'
       placeholder: 'Serĉi'
+      loading: 'Ŝargante rezultojn'
       discussions: 'Diskutoj'
       proposals: 'Propozicioj'
       comments: 'Komentoj'
@@ -279,19 +301,43 @@ eo:
     contact_site_name: 'Kontakti {{site_name}}'
     sign_out: 'Elsaluti'
   membership_card:
+    group_members: "Membroj de la grupo"
+    discussion_members: "Membroj de la fadeno"
+    poll_members: "{{pollType}} membroj"
     invite_to_poll: "Inviti homojn voĉdoni"
   notifications:
     header: "Sciigoj"
+    new_discussion: "<strong>{{name}}</strong> komencis diskuton <strong>{{title}}</strong>"
+    new_motion: "<strong>{{name}}</strong> kreis proponon <strong>{{title}}</strong>"
+    motion_closed_by_user: "<strong>{{name}}</strong> fermis proponon <strong>{{title}}</strong>"
+    membership_requested: "<strong>{{name}}</strong> petis membriĝi al <strong>{{title}}</strong>"
   discussion_fork_actions:
     move: Movi
+    search_placeholder: Serĉu iun fadenon per titolo
+    move_to_existing_thread: Movi al jam ekzista fadeno
+    start_new_thread: Aŭ, komenci novan fadenon
   discussion_form:
+    start_thread: Komenci fadenon
+    messages:
+      created: 'Komenciĝis fadeno'
+      updated: 'Ĝisdatiĝis fadeno'
+      forked: 'Forbranĉiĝis fadeno'
+    new_discussion_title: 'Komenci novan fadenon'
+    moving_items_title: 'Movi erojn al nova fadeno'
+    edit_discussion_title: 'Redakti fadenon'
     group_label: 'Grupo'
     group_placeholder: 'Elekti grupon'
     title_label: 'Titolo'
     context_label: 'Kunteksto'
     privacy_label: 'Privateco'
+    privacy_public: 'Ĉiu ajn rajtas vidi la fadenon.  Sole grupanoj povas partopreni.'
+    privacy_private: 'Nur membroj de {{group}} povos vidi ĉi tiun fadenon.'
+    privacy_organisation: 'Kaj membroj de {{parent}}, kaj membroj de {{group}} povos vidi ĉi tiun fadenon'
   announcement:
     audiences:
+      parent_group: Membroj de {{name}}
+      group: Membroj de {{name}}
+      discussion_group: Membroj de la fadeno
       voters: Homoj, kiuj jam voĉdonis
     form:
       poll_announced:
@@ -344,11 +390,21 @@ eo:
       leave_group: 'Elirii grupon'
   group_form:
     group_name_placeholder: 'Kio estas la nomo de via grupo?'
+    privacy_statement:
+      private_to_group: 'Nur membroj povos vidi la nomon kaj la priskribon.'
     privacy: 'Privateco'
     profile: Profilo
-    members_can_vote: 'Grupanoj rajtas voĉdoni en proponoj.'
+    private_threads: 'Nur membroj povas vidi la diskutojn'
+    members_can_announce: 'Membroj rajtas sciigi al ĉiuj de la grupo.'
+    members_can_create_subgroups: 'Membroj rajtas krei subgrupojn.'
+    members_can_start_discussions: 'Membroj rajtas komenci novajn fadenojn.'
+    members_can_vote: 'Membroj rajtas voĉdoni je proponoj.'
+    members_can_raise_motions: 'Membroj rajtas starigi proponojn.'
     submit_update: 'Ŝanĝi agordojn'
+  membership_requests_card:
+    heading: 'Petoj por akiri membrecon'
   membership_requests_page:
+    heading: Petoj por akiri membrecon
     approve: Aprobi
     ignore: Ignori
     previous_requests: Antaŭaj petoj
@@ -432,6 +488,7 @@ eo:
     confirm: Movi fadenon
   delete_comment_dialog:
     title: 'Forigi komenton'
+    question: 'Ĉu vi certas, ke vi volas forigi tiun ĉi komenton?'
     confirm: 'Forigi komenton'
   contact_message_form:
     title: "Saluton! Kiel ni povas helpi?"
@@ -481,6 +538,7 @@ eo:
     all: Ĉiuj
     closed: Fermita
   members_panel:
+    no_results: 'Ne troviĝis membroj'
     everyone: 'Ĉiuj'
     order_by_name: 'Nomo'
     header_name: 'Nomo'

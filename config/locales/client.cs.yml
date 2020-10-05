@@ -586,6 +586,7 @@ cs:
       success: Téma bylo přesunuto {{name}}
   delete_comment_dialog:
     title: 'Odstranit komentář'
+    question: 'Opravdu chcete odstranit tento komentář?'
     confirm: 'Odstranit komentář'
   contact_message_form:
     contact_us: 'Kontakt'

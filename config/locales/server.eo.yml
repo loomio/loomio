@@ -99,6 +99,7 @@ eo:
   comment_by: Komentis %{comment_author}
   poll_unsubscribe:
     visit_poll: Vidi enketon
+    go_to_dashboad: Iri al supervidpanelo
   slack:
     poll_closing_soon: "Rememoro: *%{poll}* fermiĝos en 24 horoj"
     poll_expired: "*%{poll}* fermiĝis"

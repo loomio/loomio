@@ -112,6 +112,7 @@ ca:
       unsubscribe: Cancel·lar la subscripció
   emoji_picker:
     search: Cerca
+    people: Gent
   ordinal:
     _1: 1r
     _2: 2n
@@ -512,6 +513,7 @@ ca:
       success: S'ha mogut la discussió a {{name}}
   delete_comment_dialog:
     title: 'Eliminar comentari'
+    question: 'Esteu segur d''eliminar aquest comentari?'
     confirm: 'Elimina el comentari'
   contact_message_form:
     contact_us: 'Contacteu amb nosaltres'

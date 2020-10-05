@@ -48,4 +48,5 @@ hr:
     aria_label: 'Ime grupe'
   delete_comment_dialog:
     title: 'Obriši komentar'
+    question: 'Jeste li sigurni da želite obrisati komentar?'
     confirm: 'Obriši komentar'
