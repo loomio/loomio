@@ -26,9 +26,8 @@ module DiscussionEmailHelper
     )
   end
 
-  def can_unfollow?(discussion, recipient, action_name)
-    action_name == 'new_comment' &&
-    DiscussionReader.for(discussion: discussion, user: recipient).volume_is_normal_or_loud?
+  def can_unfollow?(discussion, recipient)
+    DiscussionReader.for(discussion: discussion, user: recipient).volume_is_loud?
   end
 
   private
