@@ -1653,6 +1653,11 @@ en:
     location_placeholder: Where will this meeting take place?
 
   poll_common_settings:
+    who_can_vote: 'Who can vote?'
+    specified_voters_only_true: Invited people only
+    specified_voters_only_false_group: Anyone in the group
+    specified_voters_only_false_discussion: Anyone in the thread
+    invite_people_next: You can choose who is invited to vote after you start the {{poll_type}}
     multiple_choice:
       title: Multiple choice
       helptext_on: When selected, participants will be able to select multiple options.

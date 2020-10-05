@@ -27,6 +27,7 @@ export default class PollModel extends BaseModel
     details: ''
     detailsFormat: 'html'
     closingAt: startOfHour(addDays(new Date, 3))
+    specifiedVotersOnly: false
     pollOptionNames: []
     pollOptionIds: []
     customFields: {
@@ -49,6 +50,9 @@ export default class PollModel extends BaseModel
     @hasMany   'pollOptions', orderBy: 'priority'
     @hasMany   'stances'
     @hasMany   'versions'
+
+  inPrivateThread: ->
+    @discussionId && @discussion().visibleTo == 'discussion'
 
   voters: ->
     @latestStances().map (stance) -> stance.participant()

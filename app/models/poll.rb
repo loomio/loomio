@@ -123,7 +123,7 @@ class Poll < ApplicationRecord
   def existing_member_ids
     voter_ids
   end
-  
+
   def participants_count
     stances_count - undecided_count
   end
@@ -225,26 +225,28 @@ class Poll < ApplicationRecord
     ) if chart_type == 'matrix'
   end
 
+  def base_membership_query(admin: false)
+    if specified_voters_only
+      User.active.
+        joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
+        where("(s.id IS NOT NULL AND s.latest = TRUE AND s.revoked_at IS NULL #{'AND s.admin = TRUE' if admin})")
+    else
+      User.active.
+        joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.discussion_id || 0} AND dr.user_id = users.id").
+        joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
+        joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
+        where("(dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL #{'AND dr.admin = TRUE' if admin}) OR
+               (m.id  IS NOT NULL AND m.archived_at IS NULL AND d.visible_to != 'discussion' AND #{'AND m.admin = TRUE' if admin}) OR
+               (s.id  IS NOT NULL AND s.revoked_at  IS NULL AND latest = TRUE AND #{'AND s.admin = TRUE' if admin})")
+    end
+  end
+
   def admins
-    # User.where(id: [group.admins, discussion&.admins, admin_voters].compact.map {|rel| rel.pluck(:id) }.flatten)
-    User.active.
-      joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.discussion_id || 0} AND dr.user_id = users.id").
-      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
-      joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0} AND s.latest = TRUE").
-      where('(m.admin = TRUE AND m.id IS NOT NULL AND m.archived_at IS NULL) OR
-             (dr.admin = TRUE AND dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
-             (s.admin = TRUE AND s.id IS NOT NULL and s.revoked_at IS NULL)')
+    base_membership_query(admin: true)
   end
 
   def members
-    # User.where(id: [group.members, discussion&.readers, voters].compact.map {|rel| rel.pluck(:id) }.flatten)
-    User.active.
-      joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.discussion_id || 0} AND dr.user_id = users.id").
-      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
-      joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0} AND s.latest = TRUE").
-      where('(m.id IS NOT NULL AND m.archived_at IS NULL) OR
-             (dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
-             (s.id IS NOT NULL and s.revoked_at IS NULL)')
+    base_membership_query
   end
 
   def non_voters
