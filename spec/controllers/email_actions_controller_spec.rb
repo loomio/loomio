@@ -15,6 +15,8 @@ describe EmailActionsController do
     it 'stops email notifications for the discussion' do
       expect(DiscussionReader.for(discussion: @discussion, user: @user).computed_volume).to eq 'loud'
       get :unfollow_discussion, params: { discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token }
+      expect(DiscussionReader.for(discussion: @discussion, user: @user).computed_volume).to eq 'normal'
+      get :unfollow_discussion, params: { discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token }
       expect(DiscussionReader.for(discussion: @discussion, user: @user).computed_volume).to eq 'quiet'
     end
   end
