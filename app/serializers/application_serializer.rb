@@ -4,7 +4,15 @@ class ApplicationSerializer < ActiveModel::Serializer
   def scope
     super || {}
   end
-  
+
+  def self.hide_when_discarded(names)
+    Array(names).each do |name|
+      define_method name do
+        object.discarded_at ? nil : object.send(name)
+      end
+    end
+  end
+
   def include_type?(type)
     !Array(scope[:exclude_types]).include?(type)
   end

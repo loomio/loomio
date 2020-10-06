@@ -15,6 +15,8 @@ class PollSerializer < ApplicationSerializer
   has_one :my_stance, serializer: StanceSerializer, root: :stances
   has_many :poll_options, serializer: PollOptionSerializer, root: :poll_options
 
+  hide_when_discarded [:details, :title]
+
   def include_mentioned_usernames?
     details_format == "md"
   end

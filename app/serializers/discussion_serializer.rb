@@ -53,6 +53,7 @@ class DiscussionSerializer < ApplicationSerializer
   has_one :forked_event, serializer: Events::BaseSerializer, root: :events
 
   has_many :discussion_tags
+  hide_when_discarded [:description, :title]
 
   def tag_names
     object.info['tag_names'] || []
