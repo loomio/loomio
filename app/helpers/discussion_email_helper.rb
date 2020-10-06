@@ -8,9 +8,11 @@ module DiscussionEmailHelper
     polymorphic_url(eventable, utm_hash(args, action_name))
   end
 
-  def unfollow_url(discussion, action_name, recipient)
-    utm_hash = utm_hash({discussion_id: discussion.id}, action_name)
-    email_actions_unfollow_discussion_url(utm_hash.merge(unsubscribe_token: unsubscribe_token(recipient)))
+  def unfollow_url(discussion, action_name, recipient, new_volume: :quiet)
+    args = utm_hash({discussion_id: discussion.id}, action_name)
+    args = args.merge(unsubscribe_token: unsubscribe_token(recipient))
+    args = args.merge(new_volume: new_volume)
+    email_actions_unfollow_discussion_url(args)
   end
 
   def preferences_url(recipient, action_name)

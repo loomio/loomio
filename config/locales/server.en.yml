@@ -303,10 +303,14 @@ en:
 
     reply_or_view_online_html: Reply to this email directly or <a href='%{url}'>view it on %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Turn off emails</a> for this discussion."
-    unsubscribe_from_announcements_html: "This is an announcement. <a href='%{url}'>Unsubscribe</a> from further announcements in this thread."
-    unsubscribe_from_activity_html: "You're subscribed to general activity in this thread. <a href='%{url}'>Unsubscribe.</a>"
     change_email_preferences_html: "Change your <a href='%{email_preferences_url}'>email preferences</a>."
+    unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Unsubscribe</a> from further announcements in this thread."
+    unsubscribe_from_new_comment_html: "<a href='%{url}'>Unsubscribe</a> from comments in this thread."
+    unsubscribe_from_comment_replied_to_html: "This is a reply notification."
+    unsubscribe_from_user_mentioned_html: "This is a mention notification."
+
     discussion_closed: "%{actor} closed the discussion"
+
 
   footer:
     about: About

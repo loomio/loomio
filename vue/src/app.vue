@@ -4,6 +4,7 @@ import AuthModalMixin from '@/mixins/auth_modal'
 import EventBus from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
+import Flash from '@/shared/services/flash'
 import { each, compact, truncate } from 'lodash'
 import openModal from '@/shared/helpers/open_modal'
 import { initLiveUpdate, closeLiveUpdate } from '@/shared/helpers/message_bus'
@@ -28,6 +29,7 @@ export default
     EventBus.$on 'openAuthModal',     => @openAuthModal()
     EventBus.$on 'pageError', (error) => @pageError = error
     EventBus.$on 'signedIn',          => @pageError = null
+    Flash.success(AppConfig.flash.notice) if AppConfig.flash.notice
 
   destroyed: ->
     closeLiveUpdate()
