@@ -11,7 +11,6 @@ export default
 
   watch:
     draft: (val) ->
-      console.log "draft", val
       if val
         @poll.closingAt = null
       else
