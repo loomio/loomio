@@ -38,17 +38,10 @@ EventBus.configure do |config|
   # update discussion or comment versions_count when title or description edited
   config.listen('discussion_update', 'comment_update', 'poll_update', 'stance_update') { |model| model.update_versions_count }
 
-
-  # publish reply event after comment creation
-  config.listen('comment_create') { |comment| Events::CommentRepliedTo.publish!(comment) if comment.parent }
-
   # update discussion importance
   config.listen('discussion_pin',
                 'poll_create',
                 'poll_close',
                 'poll_destroy',
                 'poll_expire') { |model| model.discussion&.update_importance }
-
-  # move events to new discussion on fork
-  config.listen('discussion_fork') { |source, target| DiscussionForker.new(source, target).fork! }
 end

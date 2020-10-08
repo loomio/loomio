@@ -1,7 +1,7 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
 import EventBus  from '@/shared/services/event_bus'
-import { addDays, addMinutes, formatDistanceToNowStrict } from 'date-fns'
+import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns'
 import { pull } from 'lodash'
 
 export default
@@ -11,9 +11,10 @@ export default
 
   data: ->
     durations:
-      [5, 10, 15, 20, 30, 45, 60, 90, 120, 180, 240, null].map (minutes) =>
+      [5, 10, 15, 20, 30, 45, 60, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240, null].map (minutes) =>
         if minutes
-          {text: formatDistanceToNowStrict(addMinutes(new Date, minutes)), value: minutes}
+          duration = intervalToDuration({ start: new Date, end: addMinutes(new Date, minutes) })
+          {text: formatDuration(duration, { format: ['hours', 'minutes'] }), value: minutes}
         else
           {text: @$t('common.all_day'), value: null}
     menu: false
@@ -33,6 +34,7 @@ export default
   poll-common-form-fields(:poll="poll")
   poll-meeting-form-options-field(:poll="poll")
   v-select(v-model="poll.customFields.meeting_duration" :label="$t('poll_meeting_form.meeting_duration')" :items="durations")
+  poll-common-wip-field(:poll="poll")
   poll-common-closing-at-field(:poll="poll")
   poll-common-settings(:poll="poll")
 </template>

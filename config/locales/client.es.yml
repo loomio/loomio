@@ -693,10 +693,17 @@ es:
     heading1: Encabezado 1
     heading2: Encabezado 2
     heading3: Encabezado 3
+    left_align: Alinear a la izquiera
+    center_align: Alinear al centro
+    right_align: Alinear a la derecha
+    justify_align: Alinear justificado
     paragraph: Párrafo
     bullet_list: Lista
     number_list: Lista numerada
     check_list: Lista de control
+    reset: Reiniciar
+    text_color: Color del texto
+    background_color: Color de fondo
     quote: Presupuesto
     embed: Video integrado
     divider: Divisor

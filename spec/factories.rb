@@ -108,7 +108,6 @@ FactoryBot.define do
   end
 
   factory :event do
-    discussion
     association :eventable, factory: :comment
     user
     sequence_id { 1 }

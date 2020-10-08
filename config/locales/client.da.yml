@@ -646,6 +646,7 @@ da:
       success: Debatten er flyttet til {{name}}
   delete_comment_dialog:
     title: 'Slet kommentar'
+    question: 'Er du sikker på at du vil slette denne kommentar?'
     confirm: 'Slet kommentar'
   contact_message_form:
     contact_us: 'Kontakt os'

@@ -13,21 +13,23 @@ export default new class PollService
     show_results:
       name: 'poll_common_card.show_results'
       canPerform: ->
-        poll.participantsCount &&
-        !poll.pleaseShowResults &&
-        !poll.closedAt? &&
-        !poll.hideResultsUntilClosed &&
-        !(poll.myStance() || {}).castAt
+        false
+        # poll.participantsCount &&
+        # !poll.pleaseShowResults &&
+        # !poll.closedAt? &&
+        # !poll.hideResultsUntilClosed &&
+        # !(poll.myStance() || {}).castAt
       perform: ->
         poll.pleaseShowResults = true
 
     hide_results:
       name: 'poll_common_card.hide_results'
       canPerform: ->
-        poll.pleaseShowResults &&
-        !poll.closedAt? &&
-        !poll.hideResultsUntilClosed &&
-        !(poll.myStance() || {}).castAt
+        false
+        # poll.pleaseShowResults &&
+        # !poll.closedAt? &&
+        # !poll.hideResultsUntilClosed &&
+        # !(poll.myStance() || {}).castAt
       perform: ->
         poll.pleaseShowResults = false
 
@@ -39,6 +41,7 @@ export default new class PollService
       perform: =>
         openModal
           component: 'PollCommonEditVoteModal',
+          maxWidth: 720
           props:
             stance: poll.myStance().clone()
 

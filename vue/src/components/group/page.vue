@@ -7,7 +7,7 @@ import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
 import LmoUrlService     from '@/shared/services/lmo_url_service'
 import {compact, head, includes, filter} from 'lodash'
-import ahoy from 'ahoy.js'
+import ahoy from '@/shared/services/ahoy'
 
 export default
   data: ->

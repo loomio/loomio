@@ -136,6 +136,7 @@ sv:
       submit: Verifiera
   emoji_picker:
     search: Sök
+    people: Människor
   ordinal:
     _1: 1:a
     _2: 2:a
@@ -384,6 +385,7 @@ sv:
     delete_thread: 'Radera'
   delete_comment_dialog:
     title: 'Ta bort kommentaren'
+    question: 'Är du säker på att du vill ta bort denna kommentaren?'
     confirm: 'Ta bort kommentaren'
   contact_message_form:
     name_label: 'Ditt namn'

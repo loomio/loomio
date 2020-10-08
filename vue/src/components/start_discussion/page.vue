@@ -32,7 +32,7 @@ export default
 </script>
 <template lang="pug">
 v-main
-  v-container.start-discussion-page.max-width-1024
+  v-container.start-discussion-page.max-width-800
     v-card
       discussion-form(v-if="group && discussion" :discussion='discussion' is-page)
 </template>

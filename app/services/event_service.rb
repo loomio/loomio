@@ -39,33 +39,76 @@ class EventService
     MoveCommentsWorker.perform_async(ids, source.id, discussion.id)
   end
 
-  def self.rearrange_events(discussion)
-    items = Event.where(discussion_id: discussion.id).order(:sequence_id)
-    items.update_all(parent_id: discussion.created_event.id, position: 0, depth: 1, child_count: 0)
-    items.each(&:set_parent_and_depth!)
-    parent_ids = items.pluck(:parent_id).compact.sort.uniq
-    Event.where(id: parent_ids).each do |parent_event|
-      Event.reorder_with_parent_id(parent_event.id)
-      child_count = items.where(parent_id: parent_event.id).count
-      parent_event.update_column(:child_count, child_count)
+  def self.repair_thread(discussion_id)
+    discussion = Discussion.find_by(id: discussion_id)
+    return unless discussion
+
+    # ensure discussion.created_event exists
+    unless discussion.created_event
+      Event.import [Event.new(kind: 'new_discussion',
+                              user_id: discussion.author_id,
+                              eventable_id: discussion.id,
+                              eventable_type: "Discussion",
+                              created_at: discussion.created_at)]
+      discussion.reload
     end
+
+    # rebuild ancestry of events based on eventable relationships
+    items = Event.where(discussion_id: discussion.id).order(:sequence_id)
+    items.update_all(parent_id: discussion.created_event.id, position: 0, position_key: nil, depth: 1, child_count: 0)
+    items.reload.compact.each(&:set_parent_and_depth!)
+
+    parent_ids = items.pluck(:parent_id).compact.uniq
+    Event.where(id: parent_ids).order(:id).each do |parent_event|
+      parent_event.reload
+      reset_child_positions(parent_event.id, parent_event.position_key)
+      parent_event.reset_position_counter
+    end
+
+    # Event.where(id: parent_ids).order(:id).each do |parent_event|
+    #   parent_event.update_child_count
+    #   parent_event.update_descendant_count
+    # end
+
+    ActiveRecord::Base.connection.execute(
+      "UPDATE events
+       SET descendant_count = (
+         SELECT count(descendants.id)
+         FROM events descendants
+         WHERE
+            descendants.discussion_id = events.discussion_id AND
+            descendants.id != events.id AND
+            descendants.position_key like CONCAT(events.position_key, '%')
+      ), child_count = (
+        SELECT count(children.id) FROM events children
+        WHERE children.parent_id = events.id
+      )
+      WHERE discussion_id = #{discussion_id.to_i}")
+
+    discussion.created_event.update_child_count
+    discussion.created_event.update_descendant_count
+    discussion.update_items_count
+    discussion.update_sequence_info!
+    discussion.sequence_id_counter.reset(discussion.last_sequence_id)
   end
 
-  # def self.rearrange_events(discussion)
-  #   Event.where(discussion_id: discussion.id).update_all(parent_id: discussion.created_event.id, position: 0, depth: 1, child_count: 0)
-  #
-  #   Event.where(discussion_id: discussion.id).order(:sequence_id).each do |event|
-  #     parent_event = event.find_parent_event
-  #     byebug if parent_event.nil?
-  #     Event.where(id: event.id).update_all(parent_id: parent_event.id, depth: parent_event.depth + 1)
-  #   end
-  #
-  #   parent_ids = Event.where(discussion_id: discussion.id).pluck(:parent_id).sort.uniq
-  #   Event.where(id: parent_ids).order(:sequence_id).each do |parent_event|
-  #     parent_event.reorder
-  #     parent_event.update_child_count
-  #   end
-  # end
+  def self.reset_child_positions(parent_id, parent_position_key)
 
-
+    position_key_sql = if parent_position_key.nil?
+      "CONCAT(REPEAT('0',5-LENGTH(CONCAT(t.seq))), t.seq)"
+    else
+      "CONCAT('#{parent_position_key}-', CONCAT(REPEAT('0',5-LENGTH(CONCAT(t.seq) ) ), t.seq) )"
+    end
+    Event.where(parent_id: parent_id).update_all(position: 0)
+    ActiveRecord::Base.connection.execute(
+      "UPDATE events SET position = t.seq, position_key = #{position_key_sql}
+        FROM (
+          SELECT id AS id, row_number() OVER(ORDER BY sequence_id) AS seq
+          FROM events
+          WHERE parent_id = #{parent_id}
+          AND   discussion_id IS NOT NULL
+        ) AS t
+      WHERE events.id = t.id and
+            events.position is distinct from t.seq")
+  end
 end

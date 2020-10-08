@@ -46,25 +46,23 @@ class MoveCommentsWorker
         discussion_max_sequence_id = discussion_max_sequence_id + 1
         event.update(sequence_id: discussion_max_sequence_id)
       end
-
-      # reorder positions of target target_discussion
-      Event.reorder_with_parent_id(target_discussion.created_event.id)
-      # reorder positions of source_discussion target_discussion
-      Event.reorder_with_parent_id(source_discussion.created_event.id)
     end
-    # update reader info on target target_discussion
-    target_discussion.update_sequence_info!
-    # update reader info on source_discussion target_discussion
-    source_discussion.update_sequence_info!
 
-    # update items count on target target_discussion
-    target_discussion.created_event.update_child_count
-    target_discussion.items.each(&:update_child_count)
-    target_discussion.update_items_count
+    EventService.repair_thread(target_discussion.id)
+    EventService.repair_thread(source_discussion.id)
+    # # update reader info on target target_discussion
+    # target_discussion.update_sequence_info!
+    # # update reader info on source_discussion target_discussion
+    # source_discussion.update_sequence_info!
+
+    # # update items count on target target_discussion
+    # target_discussion.created_event.update_child_count
+    # target_discussion.items.each(&:update_child_count)
+    # target_discussion.update_items_count
     # update items count on source_discussion target_discussion
-    source_discussion.created_event.update_child_count
-    source_discussion.update_items_count
-    source_discussion.items.each(&:update_child_count)
+    # source_discussion.created_event.update_child_count
+    # source_discussion.update_items_count
+    # source_discussion.items.each(&:update_child_count)
 
     ActiveStorage::Attachment.where(record: all_events.map(&:eventable)).update_all(group_id: target_discussion.group_id)
 

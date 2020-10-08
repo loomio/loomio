@@ -10,8 +10,8 @@ class DiscussionService
 
     return false unless discussion.valid?
 
-    discussion.update_attachments!
     discussion.save!
+
     EventBus.broadcast('discussion_create', discussion, actor)
     Events::NewDiscussion.publish!(discussion)
   end
@@ -68,10 +68,9 @@ class DiscussionService
     is_new_version = discussion.is_new_version?
     return false unless discussion.valid?
     rearrange = discussion.max_depth_changed?
-    discussion.update_attachments!
     discussion.save!
 
-    RearrangeEventsWorker.perform_async(discussion.id) if rearrange
+    EventService.delay.repair_thread(discussion.id) if rearrange
 
     version_service.handle_version_update!
     EventBus.broadcast('discussion_update', discussion, actor, params)

@@ -14,6 +14,7 @@ export default
   poll-common-form-options-field(:poll="poll")
 
   validation-errors(:subject="poll" field="pollOptions")
+  poll-common-wip-field(:poll="poll")
   poll-common-closing-at-field(:poll="poll")
   poll-common-settings(:poll="poll")
 </template>

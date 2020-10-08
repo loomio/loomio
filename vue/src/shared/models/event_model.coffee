@@ -5,7 +5,7 @@ import {invokeMap, without} from 'lodash'
 export default class EventModel extends BaseModel
   @singular: 'event'
   @plural: 'events'
-  @indices: ['id', 'actorId', 'discussionId', 'sequenceId', 'position', 'depth', 'parentId']
+  @indices: ['discussionId', 'sequenceId', 'position', 'depth', 'parentId', 'positionKey']
 
   @eventTypeMap:
     Group: 'groups'
@@ -82,7 +82,7 @@ export default class EventModel extends BaseModel
       if el = doc.querySelector('h1,h2,h3')
         el.textContent
       else
-        ''
+        @actor().name
 
   unpin: -> @remote.patchMember(@id, 'unpin')
 

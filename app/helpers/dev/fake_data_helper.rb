@@ -82,17 +82,18 @@ module Dev::FakeDataHelper
   def fake_poll(args = {})
     names = option_names(args.delete(:option_count) || 3)
 
+    closing_at = args[:wip] ? nil : 3.days.from_now
     options = {
       author: fake_user,
       discussion: fake_discussion,
       poll_type: 'poll',
       title: Faker::Superhero.name,
       poll_option_names: names[args.fetch(:poll_type, :poll)],
-      closing_at: 3.days.from_now,
+      closing_at: closing_at,
       multiple_choice: false,
       details: with_markdown(Faker::Hipster.paragraph),
       custom_fields: {}
-    }.merge args
+    }.merge args.tap {|a| a.delete(:wip)}
 
     case options[:poll_type].to_s
     when 'dot_vote'      then options[:custom_fields][:dots_per_person] = 10

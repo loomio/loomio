@@ -1,5 +1,6 @@
 import RecordStore from '@/shared/record_store/record_store'
 import AppConfig   from '@/shared/services/app_config'
+# import loki        from './loomio_loki'
 import loki        from 'lokijs'
 
 import AnnouncementRecordsInterface from '@/shared/interfaces/announcement_records_interface'

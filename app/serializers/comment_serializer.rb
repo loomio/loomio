@@ -5,6 +5,8 @@ class CommentSerializer < ApplicationSerializer
 
   has_one :author, serializer: AuthorSerializer, root: :users
 
+  hide_when_discarded [:body]
+
   def include_mentioned_usernames?
     body_format == "md"
   end

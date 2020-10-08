@@ -161,7 +161,7 @@ export default
 
     tiptapAddress: ->
       if @model.isNew()
-        compact([AppConfig.theme.channels_uri, 'tiptap', @model.constructor.singular, 'new', @model.groupId, @model.discussionId, Session.user().secretToken]).join('/')
+        compact([AppConfig.theme.channels_uri, 'tiptap', @model.constructor.singular, 'new', @model.groupId, @model.discussionId, @model.parentId, Session.user().secretToken]).join('/')
       else
         [AppConfig.theme.channels_uri, 'tiptap', @model.constructor.singular, @model.id, (@model.secretToken || Session.user().secretToken)].join('/')
 
@@ -213,7 +213,7 @@ export default
 
   beforeDestroy: ->
     @editor.destroy() if @editor
-    @socket.destroy()
+    @socket.close() if @socket
 
 </script>
 
@@ -276,7 +276,7 @@ div
               emoji-picker(:insert="emojiPicked")
 
             //- headings menu
-            //- v-menu(v-if="!expanded")
+            //- v-menu
             //-   template(v-slot:activator="{ on, attrs }")
             //-     v-btn.drop-down-button(icon v-on="on" v-bind="attrs" :title="$t('formatting.heading_size')")
             //-       v-icon mdi-format-size
@@ -325,6 +325,10 @@ div
                   v-icon mdi-format-list-bulleted
                   v-icon.menu-down-arrow mdi-menu-down
               v-list(dense)
+                v-list-item(@click='commands.todo_list')
+                  v-list-item-icon
+                    v-icon mdi-format-list-checks
+                  v-list-item-title(v-t="'formatting.check_list'")
                 v-list-item(@click='commands.bullet_list')
                   v-list-item-icon
                     v-icon mdi-format-list-bulleted
@@ -333,10 +337,6 @@ div
                   v-list-item-icon
                     v-icon mdi-format-list-numbered
                   v-list-item-title(v-t="'formatting.number_list'")
-                v-list-item(@click='commands.todo_list')
-                  v-list-item-icon
-                    v-icon mdi-format-list-checks
-                  v-list-item-title(v-t="'formatting.check_list'")
 
             //- extra text marks
             template(v-if="expanded")
@@ -374,10 +374,12 @@ div
             v-btn.html-editor__expand(v-if="expanded" icon @click="toggleExpanded" :title="$t('formatting.collapse')")
               v-icon mdi-chevron-left
           //- save button?
+          v-spacer
           slot(v-if="!expanded" name="actions")
-        div.d-flex(v-if="expanded")
-          v-spacer.flex-grow-1
+        div.d-flex(v-if="expanded" name="actions")
+          v-spacer
           slot(name="actions")
+
     v-alert(v-if="maxLength && model[field] && model[field].length > maxLength" color='error')
       span( v-t="'poll_common.too_long'")
 
@@ -501,10 +503,11 @@ progress::-moz-progress-bar
     width: 32px
     height: 32px
 
-  .v-btn
+  .v-btn.v-btn--icon
     min-width: 0
     margin-left: 0
     margin-right: 0
+    max-width: 32px
     .v-icon
       font-size: 16px
 
@@ -524,20 +527,24 @@ progress::-moz-progress-bar
 
 ul[data-type="todo_list"]
   padding-left: 0
+
 li[data-type="todo_item"]
   display: flex
   flex-direction: row
 
 .todo-checkbox
   border: 1px solid #999
-  height: 1em
-  width: 1em
+  height: 1.3em
+  width: 1.3em
   box-sizing: border-box
   margin-right: 8px
-  margin-top: 4px
+  margin-top: 0px
   user-select: none
   border-radius: 0.2em
   background-color: transparent
+  &:hover
+    border: 1px solid var(--v-primary-base)
+    // background: #eee
 
 .lmo-textarea .todo-checkbox
   cursor: pointer
@@ -557,9 +564,9 @@ li[data-done="true"]
       text-decoration: line-through
   > .todo-checkbox::before
     position: relative
-    top: -7px
-    color: var(--v-primary-base)
-    font-size: 1.3rem
+    top: -6px
+    color: var(--v-accent-base)
+    font-size: 1.5rem
     content: "✓"
 
 li[data-done="false"]

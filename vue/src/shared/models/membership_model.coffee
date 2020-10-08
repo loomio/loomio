@@ -6,7 +6,7 @@ import {each, invokeMap} from 'lodash'
 export default class MembershipModel extends BaseModel
   @singular: 'membership'
   @plural: 'memberships'
-  @indices: ['id', 'userId', 'groupId']
+  @indices: ['userId', 'groupId']
   @searchableFields: ['userName', 'userUsername']
 
   relationships: ->

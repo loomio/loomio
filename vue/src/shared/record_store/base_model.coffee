@@ -99,7 +99,7 @@ export default class BaseModel
     each @constructor.serializableAttributes or @attributeNames, (attributeName) =>
       snakeName = snakeCase(attributeName)
       camelName = camelCase(attributeName)
-      if utils.isTimeAttribute(camelName)
+      if utils.isTimeAttribute(camelName) and @[camelName]
         data[snakeName] = @[camelName].toISOString()
       else
         data[snakeName] = @[camelName]

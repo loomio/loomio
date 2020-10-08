@@ -48,10 +48,10 @@ export default class DiscussionModel extends BaseModel
       null
 
   relationships: ->
-    @hasMany 'comments', sortBy: 'createdAt'
-    @hasMany 'events', sortBy: 'sequenceId'
+    # @hasMany 'comments', sortBy: 'createdAt'
+    # @hasMany 'events', sortBy: 'sequenceId'
     @hasMany 'polls', sortBy: 'createdAt', sortDesc: true
-    @hasMany 'versions', sortBy: 'createdAt'
+    # @hasMany 'versions', sortBy: 'createdAt'
     @belongsTo 'group'
     @belongsTo 'author', from: 'users'
     # @belongsTo 'createdEvent', from: 'events'
@@ -124,20 +124,20 @@ export default class DiscussionModel extends BaseModel
   hasDescription: ->
     !!@description
 
-  requireReloadFor: (event) ->
-    return false if !event or event.discussionId != @id or event.sequenceId
-    find @events(), (e) -> e.kind == 'new_comment' and e.eventable.id == event.eventable.id
-
-  minLoadedSequenceId: ->
-    item = min @events(), (event) -> event.sequenceId or Number.MAX_VALUE
-    item.sequenceId
-
-  maxLoadedSequenceId: ->
-    item = max @events(), (event) -> event.sequenceId or 0
-    item.sequenceId
-
-  allEventsLoaded: ->
-    @recordStore.events.find(discussionId: @id).length == @itemsCount
+  # requireReloadFor: (event) ->
+  #   return false if !event or event.discussionId != @id or event.sequenceId
+  #   find @events(), (e) -> e.kind == 'new_comment' and e.eventable.id == event.eventable.id
+  #
+  # minLoadedSequenceId: ->
+  #   item = min @events(), (event) -> event.sequenceId or Number.MAX_VALUE
+  #   item.sequenceId
+  #
+  # maxLoadedSequenceId: ->
+  #   item = max @events(), (event) -> event.sequenceId or 0
+  #   item.sequenceId
+  #
+  # allEventsLoaded: ->
+  #   @recordStore.events.find(discussionId: @id).length == @itemsCount
 
   membership: ->
     @recordStore.memberships.find(userId: AppConfig.currentUserId, groupId: @groupId)[0]
@@ -201,6 +201,15 @@ export default class DiscussionModel extends BaseModel
 
   firstUnreadSequenceId: ->
     RangeSet.firstMissing(@ranges, @readRanges)
+
+  readSequenceIds: ->
+    RangeSet.rangesToArray(@readRanges)
+
+  unreadRanges: ->
+    RangeSet.subtractRanges(@ranges, @readRanges)
+
+  unreadSequenceIds: ->
+    RangeSet.rangesToArray(@unreadRanges())
 
   dismiss: ->
     @update(dismissedAt: new Date)

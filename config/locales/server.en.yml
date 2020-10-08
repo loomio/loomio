@@ -304,7 +304,13 @@ en:
     reply_or_view_online_html: Reply to this email directly or <a href='%{url}'>view it on %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Turn off emails</a> for this discussion."
     change_email_preferences_html: "Change your <a href='%{email_preferences_url}'>email preferences</a>."
+    unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Unsubscribe</a> from further announcements in this thread."
+    unsubscribe_from_new_comment_html: "<a href='%{url}'>Unsubscribe</a> from comments in this thread."
+    unsubscribe_from_comment_replied_to_html: "This is a reply notification."
+    unsubscribe_from_user_mentioned_html: "This is a mention notification."
+
     discussion_closed: "%{actor} closed the discussion"
+
 
   footer:
     about: About
@@ -475,6 +481,7 @@ en:
       poll_created: '%{actor} started a %{poll_type}: %{title}'
       poll_edited: '%{actor} edited the %{poll_type}: %{title}'
       poll_announced: '%{actor} invited you to vote in a %{poll_type}: %{title}'
+      poll_announced_wip: '%{actor} shared a work in progress %{poll_type}: %{title}'
       poll_closing_soon: '%{poll_type} closing in 24 hours: %{title}'
       poll_closing_soon_author: 'Your %{poll_type} closes in 24 hours: %{title}'
       poll_expired: "%{poll_type} closed: %{title}"
@@ -493,6 +500,7 @@ en:
       poll_created: '<strong>%{actor}</strong> started a %{poll_type}'
       poll_edited: '<strong>%{actor}</strong> edited a %{poll_type}'
       poll_announced: '<strong>%{actor}</strong> invited you to vote in a %{poll_type}'
+      poll_announced_wip: '<strong>%{actor}</strong> shared a work in progress %{poll_type}'
       poll_closing_soon: '<strong>%{actor}</strong>''s %{poll_type} is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
       poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
       poll_expired: "<strong>%{actor}'s</strong> %{poll_type} has closed: %{title}"
