@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_09_004156) do
+ActiveRecord::Schema.define(version: 2020_10_09_024231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -361,7 +361,6 @@ ActiveRecord::Schema.define(version: 2020_10_09_004156) do
     t.datetime "logo_updated_at"
     t.boolean "members_can_edit_comments", default: true
     t.boolean "members_can_raise_motions", default: true, null: false
-    t.boolean "members_can_vote", default: true, null: false
     t.boolean "members_can_start_discussions", default: true, null: false
     t.boolean "members_can_create_subgroups", default: false, null: false
     t.integer "creator_id"

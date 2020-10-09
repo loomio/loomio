@@ -1,7 +1,7 @@
 class DiscussionQuery
   def self.start
     Discussion.
-      joins(:group).
+      joins('LEFT OUTER JOIN groups ON discussions.group_id = groups.id').
       where('groups.archived_at IS NULL').
       where('discarded_at IS NULL').
       includes(:author, :group)

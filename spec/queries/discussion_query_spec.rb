@@ -103,34 +103,28 @@ describe DiscussionQuery do
       discussion.update(group_id: nil)
       expect(DiscussionQuery.visible_to(user: discussion_user).exists?(discussion.id)).to be true
       expect(DiscussionQuery.visible_to(user: group_user).exists?(discussion.id)).to be false
-      expect(DiscussionQuery.visible_to(user: parent_group_user).exists?(discussion.id)).to be false
       expect(DiscussionQuery.visible_to(user: public_user, or_public: true).exists?(discussion.id)).to be false
       expect(discussion.members.exists?(discussion_user.id)).to be true
       expect(discussion.members.exists?(group_user.id)).to be false
-      expect(discussion.members.exists?(parent_group_user.id)).to be false
       expect(discussion.members.exists?(public_user.id)).to be false
     end
 
     it "group" do
       expect(DiscussionQuery.visible_to(user: discussion_user).exists?(discussion.id)).to be true
       expect(DiscussionQuery.visible_to(user: group_user).exists?(discussion.id)).to be true
-      expect(DiscussionQuery.visible_to(user: parent_group_user).exists?(discussion.id)).to be false
       expect(DiscussionQuery.visible_to(user: public_user, or_public: true).exists?(discussion.id)).to be false
       expect(discussion.members.exists?(discussion_user.id)).to be true
       expect(discussion.members.exists?(group_user.id)).to be true
-      expect(discussion.members.exists?(parent_group_user.id)).to be false
       expect(discussion.members.exists?(public_user.id)).to be false
     end
 
     it "public" do
-      discussion.update(visible_to: 'public')
+      discussion.update(private: false)
       expect(DiscussionQuery.visible_to(user: discussion_user).exists?(discussion.id)).to be true
       expect(DiscussionQuery.visible_to(user: group_user).exists?(discussion.id)).to be true
-      expect(DiscussionQuery.visible_to(user: parent_group_user).exists?(discussion.id)).to be true
       expect(DiscussionQuery.visible_to(user: public_user, or_public: true).exists?(discussion.id)).to be true
       expect(discussion.members.exists?(discussion_user.id)).to be true
       expect(discussion.members.exists?(group_user.id)).to be true
-      expect(discussion.members.exists?(parent_group_user.id)).to be true
       # expect(discussion.members.exists?(public_user.id)).to be true
     end
   end

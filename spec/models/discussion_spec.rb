@@ -64,7 +64,7 @@ describe Discussion do
       end
 
       context "without group associated" do
-        it { should be_nil }
+        it { should be true }
       end
     end
   end

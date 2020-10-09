@@ -167,7 +167,6 @@ module Dev::Scenarios::Group
       members_can_edit_discussions:  false,
       members_can_edit_comments:     false,
       members_can_raise_motions:     false,
-      members_can_vote:              false,
       members_can_start_discussions: false,
       members_can_create_subgroups:  false
     )

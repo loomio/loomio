@@ -170,9 +170,7 @@ class Discussion < ApplicationRecord
   end
 
   def inherit_group_privacy!
-    if self[:private].nil? and group.present?
-      self[:private] = group.discussion_private_default
-    end
+    self[:private] = group.discussion_private_default || true
   end
 
   def discussion
