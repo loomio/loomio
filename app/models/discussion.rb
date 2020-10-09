@@ -36,6 +36,7 @@ class Discussion < ApplicationRecord
   validates_presence_of :title, :group, :author
   validates :title, length: { maximum: 150 }
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
+  validate :privacy_is_permitted_by_group
 
   is_mentionable  on: :description
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
@@ -216,5 +217,15 @@ class Discussion < ApplicationRecord
 
   def sequence_id_or_0(item)
     item.try(:sequence_id) || 0
+  end
+
+  def privacy_is_permitted_by_group
+    if self.public? and group.private_discussions_only?
+      errors.add(:private, "must be private in this group")
+    end
+
+    if self.private? and group.public_discussions_only?
+      errors.add(:private, "must be public in this group")
+    end
   end
 end

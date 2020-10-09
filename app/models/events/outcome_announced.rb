@@ -10,11 +10,6 @@ class Events::OutcomeAnnounced < Event
 
   private
 
-  def notify_webhooks?
-    !(eventable.poll.discussion &&
-      eventable.poll.discussion.visible_to != 'discussion')
-  end
-
   def email_recipients
     notification_recipients.where(id: Queries::UsersByVolumeQuery.normal_or_loud(eventable))
   end

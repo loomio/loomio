@@ -10,8 +10,4 @@ class Events::NewDiscussion < Event
   def discussion
     eventable
   end
-
-  def notify_webhooks?
-    eventable.visible_to != 'discussion'
-  end
 end

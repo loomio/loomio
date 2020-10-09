@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_21_041633) do
+ActiveRecord::Schema.define(version: 2020_10_09_004156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -217,7 +217,7 @@ ActiveRecord::Schema.define(version: 2020_09_21_041633) do
     t.boolean "uses_markdown", default: false, null: false
     t.integer "items_count", default: 0, null: false
     t.datetime "closed_at"
-    t.boolean "private"
+    t.boolean "private", default: true, null: false
     t.string "key", limit: 255
     t.string "iframe_src", limit: 255
     t.datetime "last_activity_at"
@@ -237,7 +237,6 @@ ActiveRecord::Schema.define(version: 2020_09_21_041633) do
     t.boolean "newest_first", default: false, null: false
     t.datetime "discarded_at"
     t.string "secret_token", default: -> { "gen_random_uuid()" }
-    t.string "visible_to", default: "group"
     t.integer "members_count"
     t.integer "announceable_members_count"
     t.index ["author_id"], name: "index_discussions_on_author_id"

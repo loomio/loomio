@@ -9,9 +9,4 @@ class Events::PollCreated < Event
           discussion: poll.discussion,
           pinned: true
   end
-
-  private
-  def notify_webhooks?
-    !(eventable.discussion && eventable.discussion.visible_to != 'discussion')
-  end
 end

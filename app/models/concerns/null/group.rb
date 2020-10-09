@@ -47,7 +47,11 @@ module Null::Group
   end
 
   def false_methods
-    [:is_visible_to_parent_members]
+    %w(
+      private_discussions_only?
+      public_discussions_only?
+      is_visible_to_parent_members
+    )
   end
 
   def zero_methods

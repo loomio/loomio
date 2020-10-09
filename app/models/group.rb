@@ -149,13 +149,6 @@ class Group < ApplicationRecord
   def existing_member_ids
     member_ids
   end
-  
-  def available_visible_tos
-    values = ['discussion', 'group']
-    values.push('parent_group') if parent_id
-    values.push('public') if ['public_or_private', 'public_only'].include?(discussion_privacy_options)
-    values
-  end
 
   def discussion_id
     nil

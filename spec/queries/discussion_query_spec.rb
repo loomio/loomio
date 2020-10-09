@@ -12,9 +12,9 @@ describe DiscussionQuery do
 
   describe 'order_by_importance' do
     let(:group) { create(:group, is_visible_to_public: true) }
-    let!(:no_importance) { create :discussion, visible_to: :public, group: group }
-    let!(:has_decision)  { create :discussion, visible_to: :public, group: group }
-    let!(:pinned)        { create :discussion, visible_to: :public, group: group, pinned: true }
+    let!(:no_importance) { create :discussion, private: false, group: group }
+    let!(:has_decision)  { create :discussion, private: false, group: group }
+    let!(:pinned)        { create :discussion, private: false, group: group, pinned: true }
 
     before do
       create(:poll, discussion: has_decision)
@@ -40,8 +40,8 @@ describe DiscussionQuery do
   end
 
   describe 'logged out' do
-    let!(:public_discussion) { create(:discussion, visible_to: :public, group: create(:group, is_visible_to_public: true)) }
-    let!(:another_public_discussion) { create(:discussion, visible_to: :public, group: create(:group, is_visible_to_public: true)) }
+    let!(:public_discussion) { create(:discussion, private: false, group: create(:group, is_visible_to_public: true)) }
+    let!(:another_public_discussion) { create(:discussion, private: false, group: create(:group, is_visible_to_public: true)) }
     let!(:private_discussion) { create(:discussion, group: create(:group, is_visible_to_public: false)) }
 
     it 'shows groups visible to public if no groups are specified' do
@@ -85,12 +85,7 @@ describe DiscussionQuery do
     end
   end
 
-  describe 'visible_to' do
-    # member only discussion
-    # group discussion
-    # parent_group discussion
-    # public discussion
-
+  describe 'privacy' do
     let(:discussion_user) { create :user }
     let(:group_user) { create :user }
     let(:parent_group_user) { create :user }
@@ -104,8 +99,8 @@ describe DiscussionQuery do
       parent_group.add_member!(parent_group_user)
     end
 
-    it "discussion" do
-      discussion.update(visible_to: 'discussion')
+    it "nullgroup" do
+      discussion.update(group_id: nil)
       expect(DiscussionQuery.visible_to(user: discussion_user).exists?(discussion.id)).to be true
       expect(DiscussionQuery.visible_to(user: group_user).exists?(discussion.id)).to be false
       expect(DiscussionQuery.visible_to(user: parent_group_user).exists?(discussion.id)).to be false
@@ -117,7 +112,6 @@ describe DiscussionQuery do
     end
 
     it "group" do
-      discussion.update(visible_to: 'group')
       expect(DiscussionQuery.visible_to(user: discussion_user).exists?(discussion.id)).to be true
       expect(DiscussionQuery.visible_to(user: group_user).exists?(discussion.id)).to be true
       expect(DiscussionQuery.visible_to(user: parent_group_user).exists?(discussion.id)).to be false
@@ -125,18 +119,6 @@ describe DiscussionQuery do
       expect(discussion.members.exists?(discussion_user.id)).to be true
       expect(discussion.members.exists?(group_user.id)).to be true
       expect(discussion.members.exists?(parent_group_user.id)).to be false
-      expect(discussion.members.exists?(public_user.id)).to be false
-    end
-
-    it "parent_group" do
-      discussion.update(visible_to: 'parent_group')
-      expect(DiscussionQuery.visible_to(user: discussion_user).exists?(discussion.id)).to be true
-      expect(DiscussionQuery.visible_to(user: group_user).exists?(discussion.id)).to be true
-      expect(DiscussionQuery.visible_to(user: parent_group_user).exists?(discussion.id)).to be true
-      expect(DiscussionQuery.visible_to(user: public_user, or_public: true).exists?(discussion.id)).to be false
-      expect(discussion.members.exists?(discussion_user.id)).to be true
-      expect(discussion.members.exists?(group_user.id)).to be true
-      expect(discussion.members.exists?(parent_group_user.id)).to be true
       expect(discussion.members.exists?(public_user.id)).to be false
     end
 

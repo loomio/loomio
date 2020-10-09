@@ -69,7 +69,7 @@ describe Discussion do
     end
   end
 
-  describe "validator: visible_to_is_permitted_by_group" do
+  describe "validator: privacy_is_permitted_by_group" do
     let(:discussion) { Discussion.new }
     let(:group) { Group.new }
     subject { discussion }
@@ -79,10 +79,10 @@ describe Discussion do
       before do
         group.discussion_privacy_options = 'private_only'
         discussion.group = group
-        discussion.visible_to = 'public'
+        discussion.private = false
         discussion.valid?
       end
-      it {should have(1).errors_on(:visible_to)}
+      it {should have(1).errors_on(:private)}
     end
   end
 

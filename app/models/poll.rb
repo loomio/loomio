@@ -231,16 +231,12 @@ class Poll < ApplicationRecord
         joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
         where("(s.id IS NOT NULL AND s.latest = TRUE AND s.revoked_at IS NULL #{'AND s.admin = TRUE' if admin})")
     else
-      visible_to_group = true
-      if self.discussion_id && self.discussion.visible_to == 'discussion'
-        visible_to_group = false
-      end
       User.active.
         joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.discussion_id || 0} AND dr.user_id = users.id").
         joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
         joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
         where("(dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL #{'AND dr.admin = TRUE' if admin}) OR
-               (m.id  IS NOT NULL AND m.archived_at IS NULL #{'AND FALSE' if !visible_to_group} #{'AND m.admin = TRUE' if admin}) OR
+               (m.id  IS NOT NULL AND m.archived_at IS NULL #{'AND m.admin = TRUE' if admin}) OR
                (s.id  IS NOT NULL AND s.revoked_at  IS NULL AND latest = TRUE #{'AND s.admin = TRUE' if admin})")
     end
   end

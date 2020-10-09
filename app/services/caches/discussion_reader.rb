@@ -2,7 +2,7 @@ class Caches::DiscussionReader < Caches::Base
   private
 
   def require_user?
-    true
+    false
   end
 
   def collection_from(parents)

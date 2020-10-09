@@ -10,7 +10,7 @@ describe API::CommentsController do
 
   before do
     group.add_member! user
-    DiscussionService.create(discussion: discussion, actor: discussion.author)
+    DiscussionService.create(discussion: discussion, actor: user)
   end
 
   describe "signed in" do
@@ -98,7 +98,6 @@ describe API::CommentsController do
 
         it 'allows guests to comment' do
           discussion.group.memberships.find_by(user: user).destroy
-          discussion.discussion_readers.create(user: user, inviter: discussion.author)
 
           post :create, params: { comment: comment_params }
           expect(response.status).to eq 200
@@ -108,6 +107,7 @@ describe API::CommentsController do
 
         it 'disallows aliens to comment' do
           discussion.group.memberships.find_by(user: user).destroy
+          discussion.discussion_readers.find_by(user: user).destroy
           post :create, params: { comment: comment_params }
           expect(response.status).to eq 403
         end
