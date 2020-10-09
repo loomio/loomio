@@ -20,8 +20,7 @@ export default class DiscussionModel extends BaseModel
     HasTranslations.apply @
 
   defaultValues: ->
-    private: null
-    visibleTo: 'group'
+    private: true
     usesMarkdown: true
     lastItemAt: null
     title: ''
@@ -62,12 +61,6 @@ export default class DiscussionModel extends BaseModel
     # @belongsTo 'forkedEvent', from: 'events'
 
   discussion: -> @
-
-  availableVisibleTos: ->
-    values = ['discussion', 'group']
-    values.push('parent_group') if @group().parentId && @group().parentMembersCanSeeDiscussions
-    values.push('public') if ['public_or_privacy', 'public_only'].includes(@group().discussionPrivacyOptions)
-    values
 
   members: ->
     @recordStore.users.find(@group().memberIds().concat(map(@discussionReaders(), 'userId')))

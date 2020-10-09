@@ -2,33 +2,20 @@
 export default
   props:
     discussion: Object
-    noGroup: Boolean
 
 </script>
 
 <template lang="pug">
-v-chip.context-panel__discussion-privacy(label outlined :title="$t('discussion_form.visible_to_'+discussion.visibleTo+'_tooltip')")
-  template(v-if='discussion.visibleTo == "discussion"')
+v-chip.context-panel__discussion-privacy(label outlined)
+  template(v-if='discussion.private')
     v-avatar(left tile)
       v-icon(small color="grey darken-2") mdi-lock-outline
-    span(v-t="'discussion_form.visible_to_discussion'")
-  template(v-if='discussion.visibleTo == "group"')
-    v-avatar(left tile)
-      v-icon(small color="grey darken-2") mdi-account-group
-    span(v-t="{path: 'discussion_form.visible_to_group', args: {group: discussion.group().name}}")
-  template.mr-1(v-if='discussion.visibleTo == "parent_group"')
-    v-avatar(left tile)
-      v-icon(small color="grey darken-2") mdi-domain
-    span(v-t="{path: 'discussion_form.visible_to_parent_group', args: {group: discussion.group().parent().name}}")
-  template.mr-1(v-if='discussion.visibleTo == "public"')
+    span(v-t="'common.privacy.private'")
+  template.mr-1(v-else='!discussion.private == "public"')
     v-avatar(left tile)
       v-icon(small color="grey darken-2") mdi-earth
-    span(v-t="'discussion_form.visible_to_public'")
-  template(v-if='!noGroup && discussion.visibleTo != "discussion"')
+    span(v-t="'common.privacy.public'")
+  template(v-if='discussion.groupId')
     mid-dot
     router-link(:to="urlFor(discussion.group())") {{discussion.group().name}}
 </template>
-
-<style lang="sass">
-
-</style>

@@ -46,13 +46,10 @@ export default class PollModel extends BaseModel
   relationships: ->
     @belongsTo 'author', from: 'users'
     @belongsTo 'discussion'
-    @belongsTo 'group'
+    @belongsTo 'group', ifNull: -> new NullGroup()
     @hasMany   'pollOptions', orderBy: 'priority'
     @hasMany   'stances'
     @hasMany   'versions'
-
-  inPrivateThread: ->
-    @discussionId && @discussion().visibleTo == 'discussion'
 
   voters: ->
     @latestStances().map (stance) -> stance.participant()

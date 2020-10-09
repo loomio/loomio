@@ -57,21 +57,13 @@ export default
 
     newRecipients: (val) ->
       @recipients = val
-      groupId = (val.find((i) -> i.type=='group') || {}).id
-
-      if groupId
-        @discussion.groupId = groupId
-        @discussion.visibleTo = "group"
-      else
-        @discussion.groupId = @parentGroup.id
-        @discussion.visibleTo = "discussion"
-
+      @discussion.groupId = (val.find((i) -> i.type=='group') || {}).id
       @discussion.recipientUserIds = map filter(val, (o) -> o.type == 'user'), 'id'
       @discussion.recipientEmails = map filter(val, (o) -> o.type == 'email'), 'name'
 
   computed:
     initialRecipients: ->
-      if @discussion.visibleTo == 'group' and @discussion.group()
+      if @discussion.groupId
         [{id: @discussion.groupId, type: 'group', name: @discussion.group().name, group: @discussion.group()}]
       else
         []
@@ -82,32 +74,29 @@ export default
       else
         filter(@allGroups, (group) -> AbilityService.canStartThread(group))
 
-    visibleTos: ->
-      @discussion.availableVisibleTos().map (value) =>
-        text = switch value
-          when 'discussion'
-            @$t("discussion_form.visible_to_discussion")
-          when 'group'
-            @$t("discussion_form.visible_to_group")
-          when 'parent_group'
-            @discussion.group().parent().name
-          when 'public'
-            @$t("discussion_form.visible_to_public")
-        {text, value}
+    # visibleTos: ->
+    #   @discussion.availableVisibleTos().map (value) =>
+    #     text = switch value
+    #       when 'discussion'
+    #         @$t("discussion_form.visible_to_discussion")
+    #       when 'group'
+    #         @$t("discussion_form.visible_to_group")
+    #       when 'parent_group'
+    #         @discussion.group().parent().name
+    #       when 'public'
+    #         @$t("discussion_form.visible_to_public")
+    #     {text, value}
 
     maxThreads: ->
-      return null unless @discussion.group()
       @discussion.group().parentOrSelf().subscription.max_threads
 
     threadCount: ->
-      return unless @discussion.group()
       @discussion.group().parentOrSelf().orgDiscussionsCount
 
     maxThreadsReached: ->
       @maxThreads && @threadCount >= @maxThreads
 
     subscriptionActive: ->
-      return true unless @discussion.group()
       @discussion.group().parentOrSelf().subscription.active
 
     canStartThread: ->
@@ -136,7 +125,7 @@ export default
       v-icon mdi-close
   .pa-4
     //- .lmo-hint-text(v-t="'group_page.discussions_placeholder'" v-show='discussion.isNew() && !isMovingItems')
-    discussion-privacy-badge.mb-2(:discussion="discussion" no-group)
+    discussion-privacy-badge.mb-2(:discussion="discussion")
     .body-1(v-if="showUpgradeMessage")
       p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
       p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
