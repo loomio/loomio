@@ -52,6 +52,19 @@ describe API::DiscussionsController do
       expect(another_user.notifications.count).to eq 1
       expect(d.members).to include another_user
     end
+
+    it 'create discussion without group' do
+      post :create, params: {
+        discussion: {
+          title: 'test'
+        }
+      }
+      # puts response.body
+      expect(response.status).to eq 200
+      puts JSON.parse response.body
+      # d = Discussion.find(json['discussions'][0]['id'])
+      # expect(d.discussion_readers.count).to eq 3
+    end
   end
 
 
@@ -61,7 +74,7 @@ describe API::DiscussionsController do
       discarded_discussion.update(discarded_at: Time.now)
       group.add_admin! user
     end
-    
+
     describe 'inbox' do
 
       context 'logged out' do

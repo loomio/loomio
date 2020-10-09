@@ -5,8 +5,37 @@ module Null::Group
     self
   end
 
+  alias :read_attribute_for_serialization :send
+
+  def new_threads_max_depth
+    2
+  end
+
+  def new_threads_newest_first
+    false
+  end
+
   def nil_methods
-    [:parent, :name, :full_name, :id, :key, :update_polls_count, :update_closed_polls_count, :presence, :group_id, :add_member!,:message_channel]
+    %w(
+      parent
+      name
+      full_name
+      id
+      key
+      update_polls_count
+      update_closed_polls_count
+      update_discussions_count
+      update_public_discussions_count
+      update_open_discussions_count
+      update_closed_discussions_count
+      presence
+      handle
+      description
+      description_format
+      group_id
+      add_member!
+      message_channel
+    )
   end
 
   def true_methods
@@ -14,7 +43,7 @@ module Null::Group
   end
 
   def empty_methods
-    [:member_ids, :members, :admins, :webhooks]
+    [:member_ids, :members, :admins, :webhooks, :identities, :accepted_members]
   end
 
   def false_methods
@@ -45,9 +74,5 @@ module Null::Group
 
   def id_and_subgroup_ids
     []
-  end
-
-  def identities
-    Identities::Base.none
   end
 end

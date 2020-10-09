@@ -12,7 +12,7 @@ class DiscussionService
 
     discussion.save!
 
-    DiscussionReader.for(user: actor, discussion: discussion).update(inviter_id: actor.id)
+    DiscussionReader.for(user: actor, discussion: discussion).update(admin: true, inviter_id: actor.id)
 
     EventBus.broadcast('discussion_create', discussion, actor)
     created_event = Events::NewDiscussion.publish!(discussion)

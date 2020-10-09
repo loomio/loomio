@@ -57,6 +57,10 @@ class DiscussionSerializer < ApplicationSerializer
 
   has_many :discussion_tags
 
+  def include_group?
+    object.group_id
+  end
+
   def tag_names
     object.info['tag_names'] || []
   end
