@@ -17,22 +17,21 @@ export default
     init: ->
       EventBus.$emit 'currentComponent', { page: 'startDiscussionPage' }
 
+      @discussion = Records.discussions.build
+        title:       @$route.query.title
+        groupId:     parseInt(@$route.query.group_id)
+
       if Session.isSignedIn()
         if @$route.params.key
           Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>
-            @group = discussion.group()
             @discussion = discussion
-        else
-          Records.groups.findOrFetchById(parseInt(@$route.query.group_id)).then (group) =>
-            @group = group
-            @discussion = Records.discussions.build
-              title:       @$route.query.title
-              groupId:     parseInt(@$route.query.group_id)
+        else if parseInt(@$route.query.group_id)
+          Records.groups.findOrFetchById(parseInt(@$route.query.group_id))
 
 </script>
 <template lang="pug">
 v-main
   v-container.start-discussion-page.max-width-800
     v-card
-      discussion-form(v-if="group && discussion" :discussion='discussion' is-page)
+      discussion-form(:discussion='discussion' is-page)
 </template>
