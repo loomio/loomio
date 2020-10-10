@@ -20,9 +20,8 @@ module Ability::Poll
 
     can :create, ::Poll do |poll|
       user.email_verified? &&
-      (poll.group.admins.exists?(user.id) ||
-      (poll.group.members_can_raise_motions && poll.group.members.exists?(user.id)) ||
-      !poll.group.presence)
+      (poll.admins.exists?(user.id) ||
+      (poll.group.members_can_raise_motions && poll.members.exists?(user.id)))
     end
 
     can [:invite, :announce], ::Poll do |poll|
