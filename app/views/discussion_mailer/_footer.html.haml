@@ -7,6 +7,21 @@
       %br
       = t(:'discussion_mailer.reply_or_view_online_html', url: target_url(eventable: event.eventable, recipient: recipient, action_name: action_name), hostname: AppConfig.theme[:site_name])
       %br
-      = t :'discussion_mailer.turn_off_notifications_html', url: unfollow_url(event.eventable.discussion, action_name, recipient) if can_unfollow?(event.eventable.discussion, action_name, recipient)
-      = t :"discussion_mailer.change_email_preferences_html", email_preferences_url: preferences_url(recipient, action_name)
+      -# comment_replied_to
+      -# invitation_created
+      -# discussion_edited
+      -# discussion_announced
+      -# new_discussion
+      -# new_comment
+      -# user_mentioned
+      - if action_name == 'discussion_announced'
+        = t :'discussion_mailer.unsubscribe_from_discussion_announced_html', url: unfollow_url(event.eventable.discussion, action_name, recipient, new_volume: :quiet)
+      - if ['new_discussion', 'new_comment'].include? action_name
+        = t :'discussion_mailer.unsubscribe_from_new_comment_html', url: unfollow_url(event.eventable.discussion, action_name, recipient, new_volume: :normal)
+      - if action_name == 'comment_replied_to'
+        = t :'discussion_mailer.unsubscribe_from_comment_replied_to_html'
+        = t :"discussion_mailer.change_email_preferences_html", email_preferences_url: preferences_url(recipient, action_name)
+      - if action_name == 'user_mentioned'
+        = t :'discussion_mailer.unsubscribe_from_user_mentioned_html'
+        = t :"discussion_mailer.change_email_preferences_html", email_preferences_url: preferences_url(recipient, action_name)
   = image_tag AppConfig.theme[:email_footer_logo_src], alt: "Logo", class: "thread-mailer__footer-logo"

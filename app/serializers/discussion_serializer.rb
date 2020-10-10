@@ -55,6 +55,7 @@ class DiscussionSerializer < ApplicationSerializer
   has_one :forked_event, serializer: Events::BaseSerializer, root: :events
 
   has_many :discussion_tags
+  hide_when_discarded [:description, :title]
 
   def include_group?
     object.group_id

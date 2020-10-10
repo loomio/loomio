@@ -11,7 +11,7 @@ nl_NL:
         blank: mag niet leeg gelaten worden
         invalid: is geen geldige waarde
   errors:
-    clear_cache: "Wis aub de cache van uw browser. Er is een probleem met het laden van Loomio."
+    clear_cache: "Laad probleem gedetecteerd. Houdt Shift ingedrukt en druk op Vernieuwen, of wis de browser cache."
     400:
       title: Bad request
       body: Sorry, dat verzoek werd niet begrepen
@@ -303,24 +303,24 @@ nl_NL:
   how_it_works_thread:
     title: Hoe gebruik je Loomio
     description: |
-        Welkom bij Loomio, een online plek voor communicatie en het nemen van besluiten.
+        Welkom bij Loomio, een online plek om te communiceren en het nemen van beslissingen.
 
-        Dit is een voorbeeld discussie- **bord**. Je kunt hieronder reacties plaatsen. Borden zjin er om over een onderwerp te discussiëren en een duidelijk besluite te nemen. Dit bord gaat over hoe Loomio werkt, dus plaats vragen daarover hier.
+        Dit is een voorbeeld discussie **bord**. Je kunt hieronder reacties toevoegen. Borden zijn er voor het bespreken van onderwerpen en om duidelijke uitkomsten te krijgen. Dit bord gaat over hoe Loomio werkt, dus plaats gerust een vraag daarover.
 
-        Je leest nu het bord **context**, welke up to date gehouden kan worden met informatie en vragen die mensen helpen om mee doen.
+        Je leest nu het bord **context**. Hou deze up to date met belangrijke informatie en vragen waardoor mensen in gesprek blijven.
 
         Om te beginnen met Loomio:
         <ul>
-        <li>Probeer te reageren op een bestaand bord, of deze.</li>
+        <li>Plaats een reactie in een bestaand bord, of op dit bord.</li>
         </ul>
-        Tips voor reageren op Loomio:
+        Tips voor het berichten plaatsen op Loomio:
         <ul>
-        <li>Om een specifiek iemand een melding te sturen, type @ gevolgd door zijn of haar naam</li>
-        <li>Sleep afbeeldingen en bijlagen op het bord, of klik op het paperclip pictogram</li>
-        <li>Kijk bij de 5 manieren om borden te gebruiken voor ideeën en tips</li>
+        <li>Stuur een melding naar een specifiek persoon met @ gevolgd door zijn/haar naam</li>
+        <li>Versleep plaatjes en bijlagen of klik op de paperclip </li>
+        <li>Zie <a href="https://help.loomio.org/en/guides/5_ways_to_use_threads/" target="_blank">5 manieren om borden te gebruiken</a> voor wat ideeën en tips</li>
         </ul>
 
-        Als je vragen hebt, zie [Loomio Help](http://help.loomio.org) (in het Engels).
+        Als je vragen hebt, zie [Loomio Help](http://help.loomio.org) (Engels).
   first_proposal:
     name: Heb je vragen over het gebruik van Loomio?
     description: |
@@ -418,6 +418,7 @@ nl_NL:
       poll_created: '%{actor} startte een %{poll_type}: %{title}'
       poll_edited: '%{actor} wijzigde de %{poll_type}: %{title}'
       poll_announced: '%{actor} heeft je uitgenodigd om te stemmen in %{poll_type}: %{title}'
+      poll_announced_wip: '%{actor} deelde werk in uitvoering %{poll_type}: %{title}'
       poll_closing_soon: '%{poll_type} sluit binnen 24 uur: %{title}'
       poll_closing_soon_author: 'Je %{poll_type} sluit over 24 hours: %{title}'
       poll_expired: "%{poll_type} gesloten: %{title}"
@@ -435,6 +436,7 @@ nl_NL:
       poll_created: '<strong>%{actor}</strong> startte een %{poll_type}'
       poll_edited: '<strong>%{actor}</strong> wijzigde een %{poll_type}'
       poll_announced: '<strong>%{actor}</strong> heeft je uitgenodigd om te stemmen in %{poll_type}'
+      poll_announced_wip: '<strong>%{actor}</strong> deelde werk in uitvoering %{poll_type}'
       poll_closing_soon: '<strong>%{actor}</strong>''s %{poll_type} sluit binnen 24 uur. Nu is het moment om te stemmen, van gedachten te veranderen of anderen aan te moedigen om mee te doen.'
       poll_closing_soon_author: 'Je %{poll_type} sluit binnen 24 uur. Nu is het moment om mensen er aan te herinneren, of -indien nodig- de sluiting uit te stellen.'
       poll_expired: "<strong>%{actor}'s</strong> %{poll_type} is gesloten: %{title}"

@@ -1,6 +1,18 @@
 class EmailActionsController < AuthenticateByUnsubscribeTokenController
   def unfollow_discussion
-    set_discussion_volume volume: :quiet, flash_notice: :"email_actions.unfollowed_discussion"
+    discussion_reader = DiscussionReader.for(discussion: discussion, user: user)
+
+    if ['normal', 'quiet'].include?(params[:new_volume])
+      discussion_reader.set_volume!(params[:new_volume].to_sym)
+    else
+      if discussion_reader.volume_is_loud?
+        discussion_reader.set_volume! :normal
+      else
+        discussion_reader.set_volume! :quiet
+      end
+    end
+
+    redirect_to root_path, notice: t(:"email_actions.unfollowed_discussion", thread_title: discussion.title)
    end
 
   def mark_discussion_as_read
@@ -31,13 +43,8 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
     send_file Rails.root.join('app','assets','images', 'empty.gif'), type: 'image/gif', disposition: 'inline'
   end
 
-  def set_discussion_volume(volume:, flash_notice:)
-    DiscussionReader.for(discussion: discussion, user: user).set_volume! volume
-    redirect_to root_path, notice: t(flash_notice, thread_title: discussion.title)
-  end
-
   def discussion
-    @discussion ||= Discussion.find params[:discussion_id]
+    @discussion ||= user.discussions.find(params[:discussion_id])
   end
 
   def event

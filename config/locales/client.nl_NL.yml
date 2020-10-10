@@ -195,6 +195,11 @@ nl_NL:
       update: 'Bijwerken'
       cancel: 'Annuleren'
       show_more: "Laat meer zien"
+      show_fewer: "Toon minder"
+      view_count_more: "Toon {{count}} meer"
+      view_count_responses: "Toon {{count}} reacties"
+      count_more: "{{count}} meer"
+      count_responses: "{{count}} antwoorden"
       view_all: "Bekijk alles"
       new_thread: "Nieuw bord"
       add_subgroup: 'Nieuwe subgroep'
@@ -240,8 +245,9 @@ nl_NL:
   emoji_picker:
     search: Zoek
     common: Vaak gebruikt
+    expressions: Gezichten
     hands: Handen
-    people: Gezichten en mensen
+    people: Mensen
     nature: Natuur
     objects: Dingen
     places: Plaatsen
@@ -426,6 +432,14 @@ nl_NL:
       threads_list: 'Bord acties'
       groups_list: 'Groepen'
       user_list: 'Gebruikersacties'
+  strand_nav:
+    newest_first: Laatste activiteit
+    oldest_first: Start van het bord
+    all_pinned: Alle vastgeprikte items
+    whole_thread: Het hele bord
+    from_comment: Van een reactie url
+    from_sequence_id: Van een bord item url
+    unread: Nieuw voor jou
   navbar:
     search_all_threads: Zoek in alle borden
     search_threads: 'Zoek borden in {{name}}'
@@ -456,12 +470,15 @@ nl_NL:
   user_dropdown:
     pin_sidebar: "Zijbalk vastzetten"
     unpin_sidebar: "Zijbalk losmaken"
+    enable_beta_features: "Activeer beta functies"
+    disable_beta_features: "Deactiveer beta functies"
     button_label: 'Gebruikersmenu'
     edit_profile: 'Profiel bewerken'
     email_settings: 'Melding instellingen'
     help: 'Hulp'
     contact_site_name: 'Contacteer {{site_name}}'
     sign_out: 'Uitloggen'
+    beta_collab: "Tegelijk samen discussies en voorstellen wijzigen, automatisch opslaan van concept reacties"
   membership_card:
     group_members: "Groepsleden"
     discussion_members: "Bord leden"
@@ -690,10 +707,17 @@ nl_NL:
     heading1: Kop 1
     heading2: Kop 2
     heading3: Kop 3
+    left_align: Links uitlijnen
+    center_align: Centreren
+    right_align: Rechts uitlijnen
+    justify_align: Uitvullen
     paragraph: Paragraaf
     bullet_list: Lijst
     number_list: Genummerde lijst
     check_list: Checklijst
+    reset: Reset
+    text_color: Tekstkleur
+    background_color: Achtergrondkleur
     quote: Quote
     embed: Video integreren
     divider: Verdeler
@@ -1209,7 +1233,7 @@ nl_NL:
     started_by: 'Gestart door <strong>{{name}}</strong>'
     pin:
       pinned: 'Bord vastgeprikt'
-      unpinned: 'Bord ontprikt'
+      unpinned: 'Bord losgeprikt'
     volume:
       mute_message: 'Bord gedempt.'
       unmute_message: 'Bord demping uit'
@@ -1222,8 +1246,8 @@ nl_NL:
   activity_card:
     aria_label: "Reageer of start een peiling"
     count_responses: "{{count}} antwoorden"
-    event_pinned: "Gepinned op de tijdslijn"
-    event_unpinned: "Ontpinned van de tijdslijn"
+    event_pinned: "Vastgeprikt op de tijdslijn"
+    event_unpinned: "Loggeprikt van de tijdslijn"
     beginning: Eerste
     end: Einde
     unread: "Ongelezen ({{count}})"
@@ -1298,11 +1322,8 @@ nl_NL:
       success: Bord is verplaatst naar {{name}}
   delete_comment_dialog:
     title: 'Verwijder reactie'
-    question: 'Weet je zeker dat je deze reactie wil verwijderen? (Dit kan niet ongedaan worden gemaakt)'
+    question: 'Weet je zeker dat je deze reactie wilt verwijderen?'
     confirm: 'Verwijder reactie'
-  discard_comment_dialog:
-    title: 'Reactie verwijderen'
-    question: 'Weet je zeker dat je deze reactie wil verwijderen? (Dit kan niet ongedaan worden gemaakt)'
   contact_message_form:
     title: "Hallo! Hoe kunnen we helpen?"
     read_the_manual: |
@@ -1464,6 +1485,7 @@ nl_NL:
     anonymous: Stemmen zijn anoniem
     results_hidden_until_closed: Resultaten zijn verborgen totdat de %{poll_type} is gesloten
     unable_to_vote: Je hebt geen toestemming om een stem uit te brengen voor deze beslissing.
+    draft_mode: Aan deze %{poll_type} wordt nog gewerkt. Stemmen is uitgeschakeld.
   current_polls_card:
     title: Lopende beslissingen
     start_poll: Nieuwe beslissing
@@ -1534,8 +1556,13 @@ nl_NL:
   poll_common_move_form:
     title: "Verplaats {{poll_type}}"
     success: "{{poll_type}} verplaatst naar {{group}}"
+  poll_common_wip_field:
+    title: Werk in uitvoering
+    helptext: 'Gebruik "Werk in uitvoering" om samen te werken op de %{poll_type} voor het stemmen'
   poll_common_closing_at_field:
     closing: Sluit
+    no_closing_date: Geen sluitdatum
+    closing_date: Sluitdatum
     closing_hour: Sluitingstijd
     invalid_date: Ongeldige datum
   poll_card:
@@ -1592,6 +1619,7 @@ nl_NL:
     closed: Gesloten
     start: Starten
     start_poll_type: Start {{poll_type}}
+    share_poll_type: Deel {{poll_type}}
     update: Updaten
     reminder_note: 24u voor afsluiten, zal een herinnering verstuurd worden naar alle deelnemers
     loomio_school_link: |

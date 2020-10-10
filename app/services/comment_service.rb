@@ -6,6 +6,7 @@ class CommentService
     return false unless comment.valid?
     comment.save!
     EventBus.broadcast('comment_create', comment, actor)
+    Events::CommentRepliedTo.publish!(comment) if comment.parent
     Events::NewComment.publish!(comment)
   end
 

@@ -132,7 +132,7 @@ class Event < ApplicationRecord
   def set_position_and_position_key
     return unless discussion_id
     return unless position == 0
-    self.position = next_position
+    self.position = next_position!
     self.position_key = self_and_parents.reverse.map(&:position).map{|p| Event.zero_fill(p) }.join('-')
   end
 
@@ -177,17 +177,15 @@ class Event < ApplicationRecord
     discussion.sequence_id_counter.reset(val)
   end
 
-  def next_position
+  def next_position!
     return 0 unless self.discussion_id and self.parent_id
-    reset_position_counter if parent.position_counter.nil?
+    parent.reset_position_counter if parent.position_counter.nil?
     parent.position_counter.increment
   end
 
   def reset_position_counter
-    return unless parent_id
-    # EventService.reset_child_positions(parent_id, parent.position_key)
-    val = (Event.where(parent_id: parent_id).order("position DESC").limit(1).pluck(:position).last || 0)
-    parent.position_counter.reset(val)
+    val = (Event.where(parent_id: id).order("position DESC").limit(1).pluck(:position).last || 0)
+    self.position_counter.reset(val)
   end
 
   def max_depth_adjusted_parent
