@@ -112,7 +112,7 @@ export default
       v-icon mdi-close
   .pa-4
     //- .lmo-hint-text(v-t="'group_page.discussions_placeholder'" v-show='discussion.isNew() && !isMovingItems')
-    discussion-privacy-badge.mb-2(:discussion="discussion")
+    discussion-privacy-badge.mb-2(:discussion="discussion" no-link)
     .body-1(v-if="showUpgradeMessage")
       p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
       p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")

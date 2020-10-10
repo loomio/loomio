@@ -50,7 +50,15 @@ module Null::Group
   end
 
   def empty_methods
-    [:member_ids, :members, :admins, :webhooks, :identities, :accepted_members]
+    [:member_ids, :webhooks, :identities, :accepted_members]
+  end
+
+  def admins
+    User.none
+  end
+
+  def members
+    User.none
   end
 
   def false_methods

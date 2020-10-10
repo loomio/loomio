@@ -53,12 +53,16 @@ class API::MembershipsController < API::RestfulController
 
   def autocomplete
     instantiate_collection do |collection|
-      group_ids = case params[:subgroups]
-        when 'mine', 'all'
-          model.group.id_and_subgroup_ids
-        else
-          [model.group.id]
-        end
+      if model.present?
+        group_ids = case params[:subgroups]
+          when 'mine', 'all'
+            model.group.id_and_subgroup_ids
+          else
+            [model.group.id]
+          end
+      else
+        group_ids = current_user.group_ids
+      end
 
       if params[:user_ids]
         collection = collection.where(user_id: params[:user_ids].to_s.split(' ').map(&:to_i))
@@ -127,7 +131,8 @@ class API::MembershipsController < API::RestfulController
   def model
     load_and_authorize(:group, :see_private_content, optional: true) ||
     load_and_authorize(:discussion, optional: true) ||
-    load_and_authorize(:poll, optional: true)
+    load_and_authorize(:poll, optional: true) ||
+    NullGroup.new
   end
 
   def accessible_records
