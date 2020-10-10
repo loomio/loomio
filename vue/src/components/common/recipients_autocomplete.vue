@@ -33,6 +33,7 @@ export default
 
   mounted: ->
     @fetchMemberships = debounce ->
+      return unless @query
       @loading = true
       Records.memberships.fetch
         path: 'autocomplete'
@@ -99,9 +100,14 @@ export default
           name: e
         return
 
-      memberChain = Records.users.collection.chain().
-                    find(id: {$in: @group.memberIds()}).
-                    find(id: {$nin: @excludedUserIds})
+
+      memberChain = Records.users.collection.chain()
+
+      if @group
+        memberChain = memberChain.find(id: {$in: @group.memberIds()})
+
+      memberChain = memberChain.find(id: {$nin: @excludedUserIds})
+
       if @query
         memberChain = memberChain.find
           $or: [

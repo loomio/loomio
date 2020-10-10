@@ -38,8 +38,11 @@ export default
     @watchRecords
       collections: ['groups']
       query: (store) =>
-        parentGroup = @discussion.group().parentOrSelf()
-        @allGroups = [parentGroup].concat(parentGroup.subgroups())
+        if @discussion.groupId
+          parentGroup = @discussion.group().parentOrSelf()
+          @allGroups = [parentGroup].concat(parentGroup.subgroups())
+        else
+          @allGroups = Session.user().groups()
 
   methods:
     submit: ->
@@ -123,7 +126,7 @@ export default
         :label="$t('discussion_form.to')"
         :placeholder="$t('announcement.form.discussion_announced.helptext')"
         :available-groups="availableGroups"
-        :group="discussion.group()"
+        :group="discussion.groupId && discussion.group()"
         :initial-recipients="initialRecipients"
         :excluded-user-ids="excludedUserIds"
         @new-recipients="newRecipients")
