@@ -15,11 +15,17 @@ module Null::Group
     false
   end
 
+  def full_name
+    I18n.t('discussion.private_thread')
+  end
+
+  def name
+    I18n.t('discussion.private_thread')
+  end
+
   def nil_methods
     %w(
       parent
-      name
-      full_name
       id
       key
       update_polls_count
