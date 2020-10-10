@@ -1488,6 +1488,7 @@ en:
       reload: 'Reload'
 
   decision_tools_card:
+    choose_type: Choose poll type
     title: Facilitate
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Help</a>
     proposal_title: Proposal

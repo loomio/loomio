@@ -80,7 +80,7 @@ section.actions-panel#add-comment(:aria-label="$t('activity_card.aria_label')")
     v-tab-item(value="add-proposal" v-if="canStartPoll")
       poll-proposal-complete-form(:discussion="discussion")
     v-tab-item(value="add-poll" v-if="canStartPoll")
-      poll-common-start-form(:discussion='discussion')
+      poll-common-start-form(:discussion='discussion' :group="discussion.group()")
     //- v-tab-item(value="add-outcome")
 
 </template>
