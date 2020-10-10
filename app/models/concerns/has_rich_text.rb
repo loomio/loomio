@@ -55,7 +55,7 @@ module HasRichText
     existing_ids = model.files.map(&:signed_id)
     params[:files] = Array(params[:files]).filter {|id| !existing_ids.include?(id) }
     model.reload
-    model.assign_attributes(params.slice(*model.attribute_names.map(&:to_sym)))
+    model.assign_attributes(API::SnorlaxBase.filter_params(model.class, params))
   end
 
   private

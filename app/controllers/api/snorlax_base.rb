@@ -58,9 +58,13 @@ class API::SnorlaxBase < ActionController::Base
   end
 
   def instantiate_resource
+    self.resource = resource_class.new(self.class.filter_params(resource_class, resource_params))
+  end
+
+  def self.filter_params(resource_class, resource_params)
     newbie = resource_class.new
     attribute_names = resource_params.keys.filter { |k| newbie.respond_to? "#{k}=" }.map(&:to_sym)
-    self.resource = resource_class.new(resource_params.slice(*attribute_names))
+    resource_params.slice(*attribute_names)
   end
 
   def instantiate_collection
