@@ -29,6 +29,7 @@ module Null::Group
       update_open_discussions_count
       update_closed_discussions_count
       presence
+      present?
       handle
       description
       description_format

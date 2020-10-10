@@ -4,7 +4,7 @@ class ApplicationSerializer < ActiveModel::Serializer
   def scope
     super || {}
   end
-  
+
   def include_type?(type)
     !Array(scope[:exclude_types]).include?(type)
   end
@@ -30,7 +30,7 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def include_group?
-    include_type?('group')
+    include_type?('group') && object.group_id
   end
 
   def include_active_polls?

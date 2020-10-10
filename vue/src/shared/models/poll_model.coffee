@@ -4,6 +4,7 @@ import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
 import EventBus         from '@/shared/services/event_bus'
 import I18n             from '@/i18n'
+import NullGroupModel   from '@/shared/models/null_group_model'
 import { addDays, startOfHour } from 'date-fns'
 import { head, orderBy, map, includes, difference, invokeMap, each, max, slice, sortBy } from 'lodash'
 
@@ -46,7 +47,7 @@ export default class PollModel extends BaseModel
   relationships: ->
     @belongsTo 'author', from: 'users'
     @belongsTo 'discussion'
-    @belongsTo 'group', ifNull: -> new NullGroup()
+    @belongsTo 'group', ifNull: -> new NullGroupModel()
     @hasMany   'pollOptions', orderBy: 'priority'
     @hasMany   'stances'
     @hasMany   'versions'

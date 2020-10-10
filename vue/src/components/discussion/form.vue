@@ -74,19 +74,6 @@ export default
       else
         filter(@allGroups, (group) -> AbilityService.canStartThread(group))
 
-    # visibleTos: ->
-    #   @discussion.availableVisibleTos().map (value) =>
-    #     text = switch value
-    #       when 'discussion'
-    #         @$t("discussion_form.visible_to_discussion")
-    #       when 'group'
-    #         @$t("discussion_form.visible_to_group")
-    #       when 'parent_group'
-    #         @discussion.group().parent().name
-    #       when 'public'
-    #         @$t("discussion_form.visible_to_public")
-    #     {text, value}
-
     maxThreads: ->
       @discussion.group().parentOrSelf().subscription.max_threads
 
@@ -130,7 +117,7 @@ export default
       p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
       p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
 
-    .discussion-form__group-selected(v-if='discussion.groupId && discussion.group() && !showUpgradeMessage')
+    .discussion-form__group-selected(v-if='!showUpgradeMessage')
       recipients-autocomplete(
         v-if="discussion.isNew()"
         :label="$t('discussion_form.to')"
@@ -144,6 +131,6 @@ export default
       validation-errors(:subject='discussion', field='title')
       lmo-textarea(:model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")
         template(v-slot:actions)
-          v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled || !discussion.groupId" v-t="'discussion_form.start_thread'" v-if="discussion.isNew()")
+          v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-t="'discussion_form.start_thread'" v-if="discussion.isNew()")
           v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-t="'common.action.save'" v-if="!discussion.isNew()")
 </template>
