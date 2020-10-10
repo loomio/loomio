@@ -66,10 +66,10 @@ export default class PollModel extends BaseModel
     @stanceFor(user) || (@group && @group().membersInclude(user))
 
   stanceFor: (user) ->
-    head orderBy(@recordStore.stances.find(latest: true, pollId: @id, participantId: user.id), 'createdAt', 'desc')
+    head orderBy(@recordStore.stances.find(participantId: user.id, latest: true, pollId: @id), 'createdAt', 'desc')
 
   myStance: ->
-    head orderBy(@recordStore.stances.find(latest: true, pollId: @id, myStance: true), 'createdAt', 'desc')
+    head orderBy(@recordStore.stances.find(myStance: true, latest: true, pollId: @id), 'createdAt', 'desc')
 
   authorName: ->
     @author().nameWithTitle(@group())
