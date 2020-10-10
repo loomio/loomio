@@ -145,7 +145,6 @@ ActiveAdmin.register Group, as: 'Group' do
       row :members_can_edit_discussions
       row :members_can_edit_comments
       row :members_can_raise_motions
-      row :members_can_vote
       row :members_can_start_discussions
       row :members_can_create_subgroups
       row :handle

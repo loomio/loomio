@@ -589,14 +589,14 @@ en:
 
   discussion_form:
     to: To
-    visible_to_label: Privacy
-    visible_to_discussion: Invite only
-    visible_to_group: Group thread
-    visible_to_parent_group: "{{group}}"
-    visible_to_public: Public
-    visible_to_discussion_tooltip: Only visible to people invited to the thread
-    visible_to_group_tooltip: Visible to everyone in the group
-    visible_to_public_tooltip: Visible to anyone with the link (public)
+    # visible_to_label: Privacy
+    # visible_to_discussion: Invite only
+    # visible_to_group: Group thread
+    # visible_to_parent_group: "{{group}}"
+    # visible_to_public: Public
+    # visible_to_discussion_tooltip: Only visible to people invited to the thread
+    # visible_to_group_tooltip: Visible to everyone in the group
+    # visible_to_public_tooltip: Visible to anyone with the link (public)
     one_person_will_be_notified: '1 person will be notified.'
     count_people_will_be_notified: '{{count}} people will be notified.'
     notify_specifc_people_instead: If you don't want to notify the whole group, add names of people to be notified.
@@ -1488,6 +1488,7 @@ en:
       reload: 'Reload'
 
   decision_tools_card:
+    choose_type: Choose poll type
     title: Facilitate
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Help</a>
     proposal_title: Proposal

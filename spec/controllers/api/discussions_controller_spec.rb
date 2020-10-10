@@ -52,6 +52,19 @@ describe API::DiscussionsController do
       expect(another_user.notifications.count).to eq 1
       expect(d.members).to include another_user
     end
+
+    it 'create discussion without group' do
+      post :create, params: {
+        discussion: {
+          title: 'test'
+        }
+      }
+      # puts response.body
+      expect(response.status).to eq 200
+      # puts JSON.parse response.body
+      # d = Discussion.find(json['discussions'][0]['id'])
+      # expect(d.discussion_readers.count).to eq 3
+    end
   end
 
 
@@ -61,7 +74,7 @@ describe API::DiscussionsController do
       discarded_discussion.update(discarded_at: Time.now)
       group.add_admin! user
     end
-    
+
     describe 'inbox' do
 
       context 'logged out' do
@@ -210,8 +223,8 @@ describe API::DiscussionsController do
       end
 
       context 'logged out' do
-        let(:public_discussion) { create_discussion visible_to: 'public' }
-        let(:private_discussion) { create_discussion visible_to: 'group' }
+        let(:public_discussion) { create_discussion private: false }
+        let(:private_discussion) { create_discussion }
 
         before do
           [public_discussion, private_discussion].each do |d|
@@ -298,8 +311,8 @@ describe API::DiscussionsController do
       end
 
       context 'logged out' do
-        let!(:public_discussion) { create_discussion visible_to: 'public' }
-        let!(:private_discussion) { create_discussion visible_to: 'group' }
+        let!(:public_discussion) { create_discussion private: false }
+        let!(:private_discussion) { create_discussion }
 
         before do
           [public_discussion, private_discussion].each do |d|
@@ -340,7 +353,7 @@ describe API::DiscussionsController do
 
           it 'can display content from a specified public group' do
             public_group = create :group, discussion_privacy_options: :public_only, is_visible_to_public: true
-            can_see_me = create_discussion(group: public_group, visible_to: 'public')
+            can_see_me = create_discussion(group: public_group, private: false )
             get :index, params: { group_id: public_group.id }, format: :json
             json = JSON.parse(response.body)
             discussions = json['discussions'].map { |v| v['id'] }

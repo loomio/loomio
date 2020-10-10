@@ -7,9 +7,4 @@ class Events::PollReopened < Event
            discussion: poll.discussion,
            eventable: poll).tap { |e| EventBus.broadcast('poll_reopened_event', e) }
   end
-  
-  private
-  def notify_webhooks?
-    !(eventable.discussion && eventable.discussion.visible_to != 'discussion')
-  end
 end

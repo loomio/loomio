@@ -54,6 +54,6 @@ v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.c
   v-card-actions.poll-common-form-actions
     v-spacer
     v-btn.poll-common-form__submit(color="primary" @click='submit()', v-if='!poll.isNew()', v-t="'common.action.save_changes'")
-    v-btn.poll-common-form__submit(color="primary" @click='submit()', v-if='poll.closingAt && poll.isNew() && poll.groupId' v-t="{path: 'poll_common_form.start_poll_type', args: {poll_type: poll.translatedPollType()}}")
-    v-btn.poll-common-form__submit(color="primary" @click='submit()', v-if='!poll.closingAt && poll.isNew() && poll.groupId' v-t="{path: 'poll_common_form.share_poll_type', args: {poll_type: poll.translatedPollType()}}")
+    v-btn.poll-common-form__submit(color="primary" @click='submit()', v-if='poll.closingAt && poll.isNew()' v-t="{path: 'poll_common_form.start_poll_type', args: {poll_type: poll.translatedPollType()}}")
+    v-btn.poll-common-form__submit(color="primary" @click='submit()', v-if='!poll.closingAt && poll.isNew()' v-t="{path: 'poll_common_form.share_poll_type', args: {poll_type: poll.translatedPollType()}}")
 </template>

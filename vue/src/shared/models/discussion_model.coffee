@@ -4,6 +4,7 @@ import Session          from '@/shared/services/session'
 import RangeSet         from '@/shared/services/range_set'
 import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
+import NullGroupModel   from '@/shared/models/null_group_model'
 import { isAfter } from 'date-fns'
 import dateIsEqual from 'date-fns/isEqual'
 import { isEqual, isEmpty, filter, some, head, last, sortBy, find, min, max, isArray, throttle } from 'lodash'
@@ -20,8 +21,7 @@ export default class DiscussionModel extends BaseModel
     HasTranslations.apply @
 
   defaultValues: ->
-    private: null
-    visibleTo: 'group'
+    private: true
     usesMarkdown: true
     lastItemAt: null
     title: ''
@@ -42,32 +42,17 @@ export default class DiscussionModel extends BaseModel
     name: @group().name
 
   privateDefaultValue: =>
-    if @group()
-      switch @group().discussionPrivacyOptions
-        when 'private_only' then true
-        when 'public_or_private' then true
-        when 'public_only' then false
-    else
-      null
+    @group().discussionPrivacyOptions != 'public_only'
 
   relationships: ->
-    # @hasMany 'comments', sortBy: 'createdAt'
-    # @hasMany 'events', sortBy: 'sequenceId'
     @hasMany 'polls', sortBy: 'createdAt', sortDesc: true
-    # @hasMany 'versions', sortBy: 'createdAt'
-    @belongsTo 'group'
+    @belongsTo 'group', ifNull: -> new NullGroupModel()
     @belongsTo 'author', from: 'users'
     @hasMany 'discussionReaders'
     # @belongsTo 'createdEvent', from: 'events'
     # @belongsTo 'forkedEvent', from: 'events'
 
   discussion: -> @
-
-  availableVisibleTos: ->
-    values = ['discussion', 'group']
-    values.push('parent_group') if @group().parentId && @group().parentMembersCanSeeDiscussions
-    values.push('public') if ['public_or_privacy', 'public_only'].includes(@group().discussionPrivacyOptions)
-    values
 
   members: ->
     @recordStore.users.find(@group().memberIds().concat(map(@discussionReaders(), 'userId')))

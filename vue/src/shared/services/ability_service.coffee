@@ -27,10 +27,8 @@ export default new class AbilityService
     comment.discussion().membersInclude(Session.user())
 
   canStartPoll: (model) ->
-    return unless model
-    switch model.constructor.singular
-      when 'discussion' then @canStartPoll(model.group())
-      when 'group'      then model.adminsInclude(Session.user()) or (model.membersInclude(Session.user()) and model.membersCanRaiseMotions)
+    model.adminsInclude(Session.user()) or
+    (model.membersInclude(Session.user()) and model.group().membersCanRaiseMotions)
 
   canParticipateInPoll: (poll) ->
     return false unless poll

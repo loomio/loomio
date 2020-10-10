@@ -27,7 +27,6 @@ class DiscussionSerializer < ApplicationSerializer
              :created_at,
              :updated_at,
              :private,
-             :visible_to,
              :versions_count,
              :importance,
              :pinned,
@@ -56,6 +55,10 @@ class DiscussionSerializer < ApplicationSerializer
   has_one :forked_event, serializer: Events::BaseSerializer, root: :events
 
   has_many :discussion_tags
+
+  def include_group?
+    object.group_id
+  end
 
   def tag_names
     object.info['tag_names'] || []

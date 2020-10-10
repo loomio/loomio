@@ -2,7 +2,6 @@ class DiscussionService
   def self.create(discussion:, actor:, params: {})
     actor.ability.authorize! :create, discussion
     discussion.author = actor
-    discussion.inherit_group_privacy!
 
     #these should really be sent from the client, but it's ok here for now
     discussion.max_depth = discussion.group.new_threads_max_depth
@@ -12,7 +11,7 @@ class DiscussionService
 
     discussion.save!
 
-    DiscussionReader.for(user: actor, discussion: discussion).update(inviter_id: actor.id)
+    DiscussionReader.for(user: actor, discussion: discussion).update(admin: true, inviter_id: actor.id)
 
     EventBus.broadcast('discussion_create', discussion, actor)
     created_event = Events::NewDiscussion.publish!(discussion)

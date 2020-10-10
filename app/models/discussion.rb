@@ -36,7 +36,7 @@ class Discussion < ApplicationRecord
   validates_presence_of :title, :group, :author
   validates :title, length: { maximum: 150 }
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
-  validate :visible_to_is_permitted_by_group
+  validate :privacy_is_permitted_by_group
 
   is_mentionable  on: :description
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
@@ -106,6 +106,10 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
 
+  def group
+    super || NullGroup.new
+  end
+
   def existing_member_ids
     reader_ids
   end
@@ -115,40 +119,14 @@ class Discussion < ApplicationRecord
   end
 
   def members
-    # User.where(id: group.members.pluck(:id).concat(guests.pluck(:id)).uniq)
-    case visible_to
-    when "discussion"
-      User.active.
-        joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
-        where("dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL")
-    when "group"
-      User.active.
-        joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
-        joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
-        where('(m.id IS NOT NULL AND m.archived_at IS NULL) OR
-               (dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL)')
-    when "parent_group", "public"
-      # User.active.
-      #   joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
-      #   joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
-      #   joins("LEFT OUTER JOIN parent_memberships pm ON pm.user_id = users.id AND pm.group_id = #{self.group.parent_id || 0}").
-      #   where('(m.id IS NOT NULL AND m.archived_at IS NULL) OR
-      #          (pm.id IS NOT NULL AND pm.archived_at IS NULL) OR
-      #          (dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL)')
-      User.active.
-        joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
-        joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND (m.group_id = #{self.group_id || 0} OR m.group_id = #{self.group.parent_id || 0})").
-        where('(m.id IS NOT NULL AND m.archived_at IS NULL) OR
-               (dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL)')
-    # when "public"
-    #   User.active
-    else
-      raise "invalid group visible to value"
-    end
+    User.active.
+      joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
+      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
+      where('(m.id IS NOT NULL AND m.archived_at IS NULL) OR
+             (dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL)')
   end
 
   def admins
-    # User.where(id: group.admins.pluck(:id).concat(admin_guests.pluck(:id)).uniq)
     User.active.
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
@@ -189,12 +167,6 @@ class Discussion < ApplicationRecord
 
   def public?
     !private
-  end
-
-  def inherit_group_privacy!
-    if self[:private].nil? and group.present?
-      self[:private] = group.discussion_private_default
-    end
   end
 
   def discussion
@@ -241,9 +213,13 @@ class Discussion < ApplicationRecord
     item.try(:sequence_id) || 0
   end
 
-  def visible_to_is_permitted_by_group
-    unless group.available_visible_tos.include?(visible_to)
-      errors.add(:visible_to, "not allowed in this group")
+  def privacy_is_permitted_by_group
+    if self.public? and group.private_discussions_only?
+      errors.add(:private, "must be private in this group")
+    end
+
+    if self.private? and group.public_discussions_only?
+      errors.add(:private, "must be public in this group")
     end
   end
 end

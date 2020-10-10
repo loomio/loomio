@@ -9,6 +9,7 @@ module Ability::Poll
     can :vote_in, ::Poll do |poll|
       user.is_logged_in? &&
       poll.active? &&
+      poll.anyone_can_participate? ||
       poll.voters.exists?(user.id) ||
       (!poll.specified_voters_only && poll.members.exists?(user.id))
     end
@@ -19,9 +20,8 @@ module Ability::Poll
 
     can :create, ::Poll do |poll|
       user.email_verified? &&
-      (poll.group.admins.exists?(user.id) ||
-      (poll.group.members_can_raise_motions && poll.group.members.exists?(user.id)) ||
-      !poll.group.presence)
+      (poll.admins.exists?(user.id) ||
+      (poll.group.members_can_raise_motions && poll.members.exists?(user.id)))
     end
 
     can [:invite, :announce], ::Poll do |poll|

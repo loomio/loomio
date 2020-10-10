@@ -12,11 +12,6 @@ class Events::NewComment < Event
   end
 
   private
-
-  def notify_webhooks?
-    !(eventable.discussion.visible_to != 'discussion')
-  end
-
   def email_recipients
     Queries::UsersByVolumeQuery.loud(eventable.discussion)
                                .where.not(id: eventable.author)

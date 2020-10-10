@@ -67,25 +67,6 @@ describe "User abilities" do
           before { subgroup.add_member!(user) }
           it {should be_able_to(:show, subgroup)}
         end
-
-        context "parent_members_can_see_discussions" do
-          let(:discussion) { create(:discussion, group: subgroup) }
-          before { group.add_member!(user) }
-
-          context "visible_to parent_group" do
-            before do
-              discussion.update(visible_to: 'parent_group')
-            end
-            it {should be_able_to(:show, discussion)}
-          end
-
-          context "visible_to group" do
-            before do
-              discussion.update(visible_to: 'group')
-            end
-            it {should_not be_able_to(:show, discussion)}
-          end
-        end
       end
 
       context "false" do
@@ -338,7 +319,7 @@ describe "User abilities" do
 
   context 'non member of hidden group' do
     let(:group) { create(:group, is_visible_to_public: false) }
-    let(:discussion) { create :discussion, group: group, visible_to: 'group' }
+    let(:discussion) { create :discussion, group: group, private: true }
     let(:new_discussion) { Discussion.new(group: group, author: user, title: 'title') }
     let(:user_comment) { Comment.new discussion: discussion, author: user }
     let(:another_user_comment) { create :comment, discussion: discussion, author: other_user }
@@ -364,9 +345,9 @@ describe "User abilities" do
 
   context "non member of public group" do
     let(:group) { create(:group, is_visible_to_public: true, discussion_privacy_options: 'public_or_private') }
-    let(:private_discussion) { create :discussion, group: group, visible_to: 'group' }
+    let(:private_discussion) { create :discussion, group: group, private: true }
     let(:comment_in_private_discussion) { Comment.new discussion: private_discussion, author: user, body: 'hi' }
-    let(:public_discussion) { create :discussion, group: group, visible_to: 'public' }
+    let(:public_discussion) { create :discussion, group: group, private: false }
     let(:comment_in_public_discussion) { Comment.new discussion: public_discussion, author: user, body: 'hi' }
     let(:new_discussion) { user.authored_discussions.new(
                            group: group, title: "new discussion") }

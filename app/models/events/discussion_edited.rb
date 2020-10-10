@@ -10,9 +10,4 @@ class Events::DiscussionEdited < Event
   def discussion
     eventable
   end
-
-  private
-  def notify_webhooks?
-    eventable.visible_to != 'discussion'
-  end
 end
