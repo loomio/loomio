@@ -4,7 +4,7 @@ import AbilityService from '@/shared/services/ability_service'
 import RecordLoader   from '@/shared/services/record_loader'
 import Session        from '@/shared/services/session'
 import EventBus       from '@/shared/services/event_bus'
-import {includes, some, compact, intersection, orderBy, slice, debounce, min, escapeRegExp} from 'lodash'
+import {includes, some, compact, intersection, orderBy, slice, debounce, min, escapeRegExp, map} from 'lodash'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 import { exact, approximate } from '@/shared/helpers/format_time'
 
@@ -12,7 +12,7 @@ export default
   data: ->
     loader: null
     group: null
-    per: 50
+    per: 100
     from: 0
     order: 'created_at desc'
     orders: [
@@ -48,6 +48,7 @@ export default
           per: @per
           from: @from
           order: @order
+          subgroups: 'all'
 
       @watchRecords
         collections: ['memberships', 'groups']
@@ -64,16 +65,22 @@ export default
       switch @$route.query.subgroups
         when 'mine'
           chain = chain.find(groupId: {$in: intersection(@group.organisationIds(), Session.user().groupIds())})
-        when 'all'
-          chain = chain.find(groupId: {$in: @group.organisationIds()})
-        else
+        when 'none'
           chain = chain.find(groupId: @group.id)
+        else
+          chain = chain.find(groupId: {$in: @group.organisationIds()})
+        # when 'all'
+        #   chain = chain.find(groupId: {$in: @group.organisationIds()})
 
       if @$route.query.q
-        chain = chain.where (membership) =>
-          some [membership.user().name, membership.user().username], (name) =>
-            q = escapeRegExp(@$route.query.q)
-            RegExp("^#{q}", "i").test(name) or RegExp(" #{q}", "i").test(name)
+        users = Records.users.collection.find
+          $or: [
+            {name: {'$regex': ["^#{@$route.query.q}", "i"]}},
+            {email: {'$regex': ["#{@$route.query.q}", "i"]}},
+            {username: {'$regex': ["^#{@$route.query.q}", "i"]}},
+            {name: {'$regex': [" #{@$route.query.q}", "i"]}}
+          ]
+        chain = chain.find(userId: {$in: map(users, 'id')})
 
       switch @$route.query.filter
         when 'admin'
@@ -81,26 +88,26 @@ export default
         when 'pending'
           chain = chain.find(acceptedAt: null)
 
-      records = switch @order
-        when 'users.name'
-          chain = chain.sort (ma,mb) ->
-            a = ma.user().name.toLowerCase()
-            b = mb.user().name.toLowerCase()
-            switch
-              when a == b then 0
-              when a > b then 1
-              when a < b then -1
-          chain.data()
-        when 'admin desc'
-          chain.simplesort('admin', true).data()
-        when 'created_at'
-          chain.simplesort('createdAt').data()
-        when 'created_at desc'
-          chain.simplesort('createdAt', true).data()
-        when 'accepted_at desc'
-          orderBy(chain.data(), ['acceptedAt', 'desc'])
+      userIds = []
+      membershipIds = chain.simplesort('groupId').data().filter (m) ->
+        if userIds.includes(m.userId)
+          false
+        else
+          userIds.push(m.userId)
+          true
+      .map (m) -> m.id
 
-      @memberships = slice(records, @loader.numRquested)
+      chain = chain.find(id: {$in: membershipIds})
+
+      if @$route.query.q
+        chain = chain.sort (a,b) ->
+          return -1 if a.user().name < b.user().name
+          return 1  if a.user().name > b.user().name
+          return 0
+      else
+        chain = chain.simplesort('createdAt', true)
+
+      @memberships = chain.data()
 
     refresh: ->
       @fetch()

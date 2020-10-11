@@ -88,6 +88,11 @@ class API::MembershipsController < API::RestfulController
                                        users.username ilike :first",
                                        first: "#{query}%", last: "% #{query}%")
       end
+
+      if params[:subgroups]
+        collection = collection.order(:group_id)
+      end
+      
       collection
     end
     respond_with_collection(scope: index_scope)
