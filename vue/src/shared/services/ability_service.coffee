@@ -34,16 +34,14 @@ export default new class AbilityService
     return false unless poll
     return false unless poll.isActive()
     poll.anyoneCanParticipate or
-    poll.adminsInclude(Session.user()) or
     poll.myStance() or
-    (poll.membersInclude(Session.user()) and (!poll.group() or poll.group().membersCanVote))
+    (!poll.specifiedVotersOnly and poll.membersInclude(Session.user()))
 
   canReactToPoll: (poll) ->
     return false unless @isEmailVerified()
     return false unless poll
     poll.anyoneCanParticipate or
-    poll.adminsInclude(Session.user()) or
-    (poll.membersInclude(Session.user()) and (!poll.group() or poll.group().membersCanVote))
+    poll.membersInclude(Session.user())
 
   canEditStance: (stance) ->
     Session.user() == stance.author()
