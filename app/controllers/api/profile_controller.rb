@@ -18,7 +18,7 @@ class API::ProfileController < API::RestfulController
 
   def mentionable_users
     instantiate_collection do |collection|
-      collection.mention_search(current_user, model, String(params[:q]).strip.delete("\u0000"))
+      collection.distinct.mention_search(current_user, model, String(params[:q]).strip.delete("\u0000"))
     end
     respond_with_collection serializer: Simple::UserSerializer, root: :users
   end

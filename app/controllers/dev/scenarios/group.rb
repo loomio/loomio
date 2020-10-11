@@ -54,6 +54,7 @@ module Dev::Scenarios::Group
     sign_in jennifer
     create_another_group.add_admin! jennifer
     create_subgroup.add_member! jennifer
+    create_subgroup.add_member! fake_user name: 'only in subgroup'
     another_create_subgroup
     redirect_to group_url(create_subgroup)
   end
@@ -167,7 +168,6 @@ module Dev::Scenarios::Group
       members_can_edit_discussions:  false,
       members_can_edit_comments:     false,
       members_can_raise_motions:     false,
-      members_can_vote:              false,
       members_can_start_discussions: false,
       members_can_create_subgroups:  false
     )

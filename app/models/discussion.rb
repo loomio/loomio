@@ -34,7 +34,6 @@ class Discussion < ApplicationRecord
   scope :is_closed, -> { kept.where("closed_at is not null") }
 
   validates_presence_of :title, :group, :author
-  validate :private_is_not_nil
   validates :title, length: { maximum: 150 }
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
   validate :privacy_is_permitted_by_group
@@ -94,10 +93,12 @@ class Discussion < ApplicationRecord
 
   after_create :set_last_activity_at_to_created_at
 
-  define_counter_cache(:closed_polls_count)   { |discussion| discussion.polls.closed.count }
-  define_counter_cache(:versions_count)       { |discussion| discussion.versions.count }
-  define_counter_cache(:items_count)          { |discussion| discussion.items.count }
-  define_counter_cache(:seen_by_count)        { |discussion| discussion.discussion_readers.where("last_read_at is not null").count }
+  define_counter_cache(:closed_polls_count)         { |d| d.polls.closed.count }
+  define_counter_cache(:versions_count)             { |d| d.versions.count }
+  define_counter_cache(:items_count)                { |d| d.items.count }
+  define_counter_cache(:seen_by_count)              { |d| d.discussion_readers.where("last_read_at is not null").count }
+  define_counter_cache(:members_count)              { |d| d.discussion_readers.where("revoked_at is null").count }
+  define_counter_cache(:announceable_members_count) { |d| d.discussion_readers.where("volume >= ?", DiscussionReader.volumes[:normal]).count }
 
   update_counter_cache :group, :discussions_count
   update_counter_cache :group, :public_discussions_count
@@ -105,12 +106,19 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
 
+  def group
+    super || NullGroup.new
+  end
+
+  def existing_member_ids
+    reader_ids
+  end
+
   def author
     super || AnonymousUser.new
   end
 
   def members
-    # User.where(id: group.members.pluck(:id).concat(guests.pluck(:id)).uniq)
     User.active.
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
@@ -119,7 +127,6 @@ class Discussion < ApplicationRecord
   end
 
   def admins
-    # User.where(id: group.admins.pluck(:id).concat(admin_guests.pluck(:id)).uniq)
     User.active.
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
@@ -160,12 +167,6 @@ class Discussion < ApplicationRecord
 
   def public?
     !private
-  end
-
-  def inherit_group_privacy!
-    if self[:private].nil? and group.present?
-      self[:private] = group.discussion_private_default
-    end
   end
 
   def discussion
@@ -212,12 +213,7 @@ class Discussion < ApplicationRecord
     item.try(:sequence_id) || 0
   end
 
-  def private_is_not_nil
-    errors.add(:private, "Please select a privacy") if self[:private].nil?
-  end
-
   def privacy_is_permitted_by_group
-    return unless group.present?
     if self.public? and group.private_discussions_only?
       errors.add(:private, "must be private in this group")
     end

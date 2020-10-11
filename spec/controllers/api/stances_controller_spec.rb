@@ -119,57 +119,11 @@ describe API::StancesController do
       expect(json['events'][0]['actor_id']).to be nil
     end
 
-    describe 'poll.group.members_can_vote false' do
-      let(:user) { create(:user) }
-
-      before do
-        group = create(:group, members_can_vote: false)
-        poll.update(group: group, discussion: create(:discussion, group: group))
-        sign_in user
-      end
-
-      it 'admin of formal group can vote' do
-        poll.group.add_admin! user
-        post :create, params: { stance: stance_params }
-        expect(response.status).to eq 200
-      end
-
-      it 'admin of discussion guest group can vote' do
-        poll.discussion.add_admin! user, discussion.author
-        post :create, params: { stance: stance_params }
-        expect(response.status).to eq 200
-      end
-
-      it 'admin of poll guest group can vote' do
-        poll.add_admin! user, poll.author
-        post :create, params: { stance: stance_params }
-        expect(response.status).to eq 200
-      end
-
-      it 'member of formal group cannot vote' do
-        poll.group.add_member! user
-        post :create, params: { stance: stance_params }
-        expect(response.status).to eq 403
-      end
-
-      it 'guest of discussion cannot vote' do
-        poll.discussion.add_guest! user, poll.author
-        post :create, params: { stance: stance_params }
-        expect(response.status).to eq 403
-      end
-
-      it 'guest of poll can vote' do
-        poll.add_guest! user, poll.author
-        post :create, params: { stance: stance_params }
-        expect(response.status).to eq 403
-      end
-    end
-
-    describe 'poll.group.members_can_vote true' do
+    describe 'poll.specified_voters_only false' do
       let(:user) { create(:user) }
       before do
-        group = create(:group, members_can_vote: true)
-        poll.update(group: group, discussion: create(:discussion, group: group))
+        group = create(:group)
+        poll.update(group: group, specified_voters_only: false, discussion: create(:discussion, group: group))
         sign_in user
       end
 
@@ -183,6 +137,32 @@ describe API::StancesController do
         poll.discussion.add_guest! user, poll.author
         post :create, params: { stance: stance_params }
         expect(response.status).to eq 200
+      end
+
+      it 'guest of poll can vote' do
+        poll.add_guest! user, poll.author
+        post :create, params: { stance: stance_params }
+        expect(response.status).to eq 200
+      end
+    end
+
+    describe 'poll.specified_voters_only true' do
+      let(:user) { create(:user) }
+      before do
+        poll.update(group: group, specified_voters_only: true, discussion: create(:discussion, group: group))
+        sign_in user
+      end
+
+      it 'member of formal group cannot vote' do
+        poll.group.add_member! user
+        post :create, params: { stance: stance_params }
+        expect(response.status).to eq 403
+      end
+
+      it 'guest of discussion cannot vote' do
+        poll.discussion.add_guest! user, poll.author
+        post :create, params: { stance: stance_params }
+        expect(response.status).to eq 403
       end
 
       it 'guest of poll can vote' do

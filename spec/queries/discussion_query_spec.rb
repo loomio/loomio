@@ -85,102 +85,119 @@ describe DiscussionQuery do
     end
   end
 
-  describe 'discussion privacy' do
-    context 'private' do
-      before { discussion.update_attribute(:private, true) }
+  describe 'privacy' do
+    let(:discussion_user) { create :user }
+    let(:group_user) { create :user }
+    let(:parent_group_user) { create :user }
+    let(:public_user) { create :user }
+    let(:parent_group) { create :group, discussion_privacy_options: 'public_or_private' }
 
-      it 'guests cannot see discussion' do
-        subject.should_not include discussion
-      end
-
-      it 'members can see discussion' do
-        group.add_member! user
-        subject.should include discussion
-      end
+    before do
+      group.update(parent: parent_group)
+      discussion.add_guest!(discussion_user, discussion.author)
+      group.add_member!(group_user)
+      parent_group.add_member!(parent_group_user)
     end
 
-    context 'not private' do
-      before { discussion.update_attribute(:private, false) }
-      it 'guests can see discussion' do
-        subject.should include discussion
-      end
-
-      it 'members can see discussion' do
-        group.add_member! user
-        subject.should include discussion
-      end
+    it "nullgroup" do
+      discussion.update(group_id: nil)
+      expect(DiscussionQuery.visible_to(user: discussion_user).exists?(discussion.id)).to be true
+      expect(DiscussionQuery.visible_to(user: group_user).exists?(discussion.id)).to be false
+      expect(DiscussionQuery.visible_to(user: public_user, or_public: true).exists?(discussion.id)).to be false
+      expect(discussion.members.exists?(discussion_user.id)).to be true
+      expect(discussion.members.exists?(group_user.id)).to be false
+      expect(discussion.members.exists?(public_user.id)).to be false
     end
 
-  end
-
-  describe 'group privacy' do
-    context 'public discussions allowed' do
-      before do
-        group.update_attribute(:discussion_privacy_options, 'public_or_private')
-        discussion.update_attribute(:private, false)
-      end
-
-      it 'guests can see discussions' do
-        subject.should include discussion
-      end
-
-      it 'members can see discussions' do
-        group.add_member! user
-        subject.should include discussion
-      end
+    it "group" do
+      expect(DiscussionQuery.visible_to(user: discussion_user).exists?(discussion.id)).to be true
+      expect(DiscussionQuery.visible_to(user: group_user).exists?(discussion.id)).to be true
+      expect(DiscussionQuery.visible_to(user: public_user, or_public: true).exists?(discussion.id)).to be false
+      expect(discussion.members.exists?(discussion_user.id)).to be true
+      expect(discussion.members.exists?(group_user.id)).to be true
+      expect(discussion.members.exists?(public_user.id)).to be false
     end
 
-    context 'private discussions only' do
-      before do
-        group.update_attribute(:discussion_privacy_options, 'private_only')
-        discussion.update_attribute(:private, true)
-      end
-
-      it 'guests cannot see discussions' do
-        subject.should_not include discussion
-      end
-
-      it 'members can see discussions' do
-        group.add_member! user
-        subject.should include discussion
-      end
-    end
-
-    context 'parent_members_can_see_discussions' do
-      let(:parent_group) { create :group, group_privacy: 'secret'}
-      let(:group) { create :group,
-                           parent: parent_group,
-                           parent_members_can_see_discussions: true,
-                           is_visible_to_public: false,
-                           is_visible_to_parent_members: true,
-                           discussion_privacy_options: 'private_only' }
-
-      before do
-        discussion.update_attribute(:private, true)
-      end
-
-      it 'non members cannot see discussions' do
-        subject.should_not include discussion
-      end
-
-      it 'member of parent group can see discussions' do
-        parent_group.add_member! user
-        subject.should include discussion
-      end
-    end
-
-    context 'only members can see discussions' do
-      let(:parent_group) { create :group }
-      let(:group) { create :group,
-                           parent: parent_group,
-                           parent_members_can_see_discussions: false,
-                           is_visible_to_parent_members: true }
-
-      it 'prevents parent group members from seeing discussions' do
-        subject.should_not include discussion
-      end
+    it "public" do
+      discussion.update(private: false)
+      expect(DiscussionQuery.visible_to(user: discussion_user).exists?(discussion.id)).to be true
+      expect(DiscussionQuery.visible_to(user: group_user).exists?(discussion.id)).to be true
+      expect(DiscussionQuery.visible_to(user: public_user, or_public: true).exists?(discussion.id)).to be true
+      expect(discussion.members.exists?(discussion_user.id)).to be true
+      expect(discussion.members.exists?(group_user.id)).to be true
+      # expect(discussion.members.exists?(public_user.id)).to be true
     end
   end
+
+  # describe 'group.discussion_visible_to_options' do
+  #   context 'public' do
+  #     before do
+  #       # group.update(discussion_visible_to_options: ['public', 'group', 'members'])
+  #       discussion.update_attribute(:visible_to, 'public')
+  #     end
+  #
+  #     it 'guests can see discussions' do
+  #       subject.should include discussion
+  #     end
+  #
+  #     it 'members can see discussions' do
+  #       group.add_member! user
+  #       subject.should include discussion
+  #     end
+  #   end
+  #
+  #
+  #   context 'group' do
+  #     before do
+  #       # group.update(discussion_visible_to_options: ['public', 'group', 'members'])
+  #       discussion.update_attribute(:private, true)
+  #     end
+  #
+  #     it 'guests cannot see discussions' do
+  #       subject.should_not include discussion
+  #     end
+  #
+  #     it 'members can see discussions' do
+  #       group.add_member! user
+  #       subject.should include discussion
+  #     end
+  #   end
+  #
+  #   context 'parent_members_can_see_discussions' do
+  #     let(:parent_group) { create :group, group_privacy: 'secret'}
+  #     let(:group) { create :group,
+  #                          parent: parent_group,
+  #                          parent_members_can_see_discussions: true,
+  #                          is_visible_to_public: false,
+  #                          is_visible_to_parent_members: true,
+  #                          discussion_privacy_options: 'private_only' }
+  #
+  #     before do
+  #       discussion.update_attribute(:private, true)
+  #     end
+  #
+  #     it 'non members cannot see discussions' do
+  #       subject.should_not include discussion
+  #     end
+  #
+  #     it 'member of parent group can see discussions' do
+  #       parent_group.add_member! user
+  #       subject.should include discussion
+  #     end
+  #   end
+  #
+  #   context 'only members can see discussions' do
+  #     let(:parent_group) { create :group }
+  #     let(:group) { create :group,
+  #                          parent: parent_group,
+  #                          parent_members_can_see_discussions: false,
+  #                          is_visible_to_parent_members: true }
+  #
+  #     it 'prevents parent group members from seeing discussions' do
+  #       subject.should_not include discussion
+  #     end
+  #   end
+  # end
 
   describe 'archived' do
     it 'does not return discussions in archived groups' do

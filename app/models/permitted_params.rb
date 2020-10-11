@@ -29,7 +29,7 @@ class PermittedParams < Struct.new(:params)
 
   def poll_attributes
     [:title, :details, :details_format, :poll_type, :discussion_id, :group_id, :closing_at, :anonymous, :hide_results_until_closed,
-     :multiple_choice, :key, :anyone_can_participate, :notify_on_participate, :voter_can_add_options,
+     :multiple_choice, :key, :anyone_can_participate, :notify_on_participate, :voter_can_add_options, :specified_voters_only,
      :custom_fields, {custom_fields: [:can_respond_maybe, :dots_per_person, :max_score, :min_score, :time_zone, :meeting_duration, :minimum_stance_choices, :pending_emails, {pending_emails: []}]},
      :document_ids, {document_ids: []},
      :poll_option_names, {poll_option_names: []},
@@ -73,7 +73,7 @@ class PermittedParams < Struct.new(:params)
      :members_can_add_members, :members_can_announce, :members_can_edit_discussions, :members_can_edit_comments, :motions_can_be_edited,
      :description, :description_format, :is_visible_to_parent_members, :parent_members_can_see_discussions,
      :membership_granted_upon, :cover_photo, :logo, :category_id, :members_can_raise_motions,
-     :members_can_vote,  :members_can_start_discussions, :members_can_create_subgroups, :admins_can_edit_user_content,
+     :members_can_start_discussions, :members_can_create_subgroups, :admins_can_edit_user_content,
      :new_threads_max_depth, :new_threads_newest_first,
      :document_ids, {document_ids: []}, :features, {features: AppConfig.group_features.presence || {}},
      :files, :image_files, {files: []}, {image_files: []}
@@ -91,6 +91,8 @@ class PermittedParams < Struct.new(:params)
   def discussion_attributes
     [:title, :description, :description_format, :group_id,
       :newest_first, :max_depth, :private,
+     :recipient_user_ids, {recipient_user_ids: []},
+     :recipient_emails, {recipient_emails: []},
      :forked_event_ids, {forked_event_ids: []},
      :document_ids, {document_ids: []},
      :files, :image_files, {files: []}, {image_files: []}

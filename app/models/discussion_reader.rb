@@ -22,6 +22,7 @@ class DiscussionReader < ApplicationRecord
                             AND discussion_readers.revoked_at IS NULL') }
 
   update_counter_cache :discussion, :seen_by_count
+  update_counter_cache :discussion, :members_count
 
   def self.for(user:, discussion:)
     if user&.is_logged_in?

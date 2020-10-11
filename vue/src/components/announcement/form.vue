@@ -126,10 +126,6 @@ export default
       else
         orderBy(@announcement.model.parent().subgroups().concat([@announcement.model.parent()]).filter((g) -> AbilityService.canAddMembersToGroup(g)), ['parentId', 'name'], ['desc', 'asc'])
 
-    canUpdateAnyoneCanParticipate: ->
-      @announcement.model.isA('poll') &&
-      AbilityService.canAdminister(@announcement.model)
-
     invitingToGroup: ->
       @announcement.model.isA('group')
 

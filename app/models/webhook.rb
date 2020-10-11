@@ -7,6 +7,7 @@ class Webhook < ApplicationRecord
   scope :not_broken, -> { where(is_broken: false) }
 
   def publish!(event)
+    return if ENV['WEBHOOKS_DISABLED']
     return unless self.event_kinds.include?(event.kind)
     I18n.with_locale(event.group.locale) { client.post_content!(event, format, self) }
   rescue URI::InvalidURIError

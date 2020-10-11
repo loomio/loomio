@@ -94,13 +94,13 @@ module.exports = {
   //   page.expectElement('.thread-item--unread')
   // },
 
-  'marks_a_discussion_as_seen': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_discussion_for_jennifer')
-    page.ensureSidebar()
-    page.expectText('.sidebar__groups', 'Dirty Dancing Shoes (1)')
-  },
+  // 'marks_a_discussion_as_seen': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_discussion_for_jennifer')
+  //   page.ensureSidebar()
+  //   page.expectText('.sidebar__groups', 'Dirty Dancing Shoes (1)')
+  // },
 
   'lets_coordinators_and_thread_authors_delete_threads': (test) => {
     page = pageHelper(test)

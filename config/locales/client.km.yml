@@ -81,6 +81,7 @@ km:
     close_thread: 'បិទ'
   delete_comment_dialog:
     title: 'លុបមតិយោបល់ '
+    question: 'តើអ្នកប្រាកដថាអ្នកចង់លុបមតិយោបល់នេះ?'
     confirm: 'លុបមតិយោបល់ '
   contact_message_form:
     subject_label: "ប្រធានបទ​"

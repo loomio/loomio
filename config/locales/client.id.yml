@@ -83,6 +83,7 @@ id:
     close_thread: 'Tutup'
   delete_comment_dialog:
     title: 'Hapus komentar'
+    question: 'Apakah Anda ingin menghapus komentar ini?'
     confirm: 'Hapus komentar'
   contact_message_form:
     subject_label: "Perihal"

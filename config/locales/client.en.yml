@@ -588,6 +588,19 @@ en:
     start_new_thread: Or, start new thread
 
   discussion_form:
+    to: To
+    # visible_to_label: Privacy
+    # visible_to_discussion: Invite only
+    # visible_to_group: Group thread
+    # visible_to_parent_group: "{{group}}"
+    # visible_to_public: Public
+    # visible_to_discussion_tooltip: Only visible to people invited to the thread
+    # visible_to_group_tooltip: Visible to everyone in the group
+    # visible_to_public_tooltip: Visible to anyone with the link (public)
+    one_person_will_be_notified: '1 person will be notified.'
+    count_people_will_be_notified: '{{count}} people will be notified.'
+    notify_specifc_people_instead: If you don't want to notify the whole group, add names of people to be notified.
+    invite: Invite
     aria_label: 'Thread form'
     start_thread: Start thread
     messages:
@@ -630,7 +643,7 @@ en:
     preview: Preview Email
     no_notifications_sent: No notifications have been sent
     history_error: Something went wrong! Could not load history.
-    inviting_guests_to_thread: People who are not members of {{group}} will be added to this thread as guests, and won't get access to other threads in the group.
+    inviting_guests_to_thread: Guests do not belong to your group, and have access to this thread only
 
     audiences:
       parent_group: Members of {{name}}
@@ -638,7 +651,7 @@ en:
       discussion_group: Members of thread
       voters: People who have voted
       undecided: Undecided people
-      non_voters: Not yet invited
+      non_voters: Members of {{name}} not yet invited
 
     form:
       too_many_invitations: |
@@ -1316,6 +1329,7 @@ en:
       join_group: <a href="/explore">join</a> a group to see threads.
 
   discussion:
+    private_thread: Private thread
     max_threads_reached: |
       <p>You have used all {{maxThreads}} threads available to this group.</p>
       <p>Next step, <a href="{{upgradeUrl}}" target="_blank">choose a plan</a> to continue collaborating on Loomio.</p>
@@ -1475,6 +1489,7 @@ en:
       reload: 'Reload'
 
   decision_tools_card:
+    choose_type: Choose poll type
     title: Facilitate
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Help</a>
     proposal_title: Proposal
@@ -1576,6 +1591,7 @@ en:
     invitations: 'Invitations'
     requests: 'Requests'
     admin: 'Admin'
+    guest: 'Guest'
     sharable_link: 'Shareable Link'
     last_seen: 'Last seen {{date}}'
     invited_by_name: 'Invited by {{name}}'
@@ -1639,6 +1655,11 @@ en:
     location_placeholder: Where will this meeting take place?
 
   poll_common_settings:
+    who_can_vote: 'Who can vote?'
+    specified_voters_only_true: Invited people only
+    specified_voters_only_false_group: Anyone in the group
+    specified_voters_only_false_discussion: Anyone in the thread
+    invite_people_next: You can choose who is invited to vote after you start the {{poll_type}}
     multiple_choice:
       title: Multiple choice
       helptext_on: When selected, participants will be able to select multiple options.

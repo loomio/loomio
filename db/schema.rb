@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_17_022446) do
+ActiveRecord::Schema.define(version: 2020_10_09_024231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -217,7 +217,7 @@ ActiveRecord::Schema.define(version: 2020_09_17_022446) do
     t.boolean "uses_markdown", default: false, null: false
     t.integer "items_count", default: 0, null: false
     t.datetime "closed_at"
-    t.boolean "private"
+    t.boolean "private", default: true, null: false
     t.string "key", limit: 255
     t.string "iframe_src", limit: 255
     t.datetime "last_activity_at"
@@ -237,6 +237,8 @@ ActiveRecord::Schema.define(version: 2020_09_17_022446) do
     t.boolean "newest_first", default: false, null: false
     t.datetime "discarded_at"
     t.string "secret_token", default: -> { "gen_random_uuid()" }
+    t.integer "members_count"
+    t.integer "announceable_members_count"
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["discarded_at"], name: "discussions_discarded_at_null", where: "(discarded_at IS NULL)"
@@ -359,7 +361,6 @@ ActiveRecord::Schema.define(version: 2020_09_17_022446) do
     t.datetime "logo_updated_at"
     t.boolean "members_can_edit_comments", default: true
     t.boolean "members_can_raise_motions", default: true, null: false
-    t.boolean "members_can_vote", default: true, null: false
     t.boolean "members_can_start_discussions", default: true, null: false
     t.boolean "members_can_create_subgroups", default: false, null: false
     t.integer "creator_id"
@@ -397,6 +398,7 @@ ActiveRecord::Schema.define(version: 2020_09_17_022446) do
     t.boolean "admins_can_edit_user_content", default: false, null: false
     t.boolean "listed_in_explore", default: false, null: false
     t.string "secret_token", default: -> { "gen_random_uuid()" }
+    t.integer "announceable_members_count"
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["category_id"], name: "index_groups_on_category_id"
     t.index ["cohort_id"], name: "index_groups_on_cohort_id"
@@ -616,6 +618,7 @@ ActiveRecord::Schema.define(version: 2020_09_17_022446) do
     t.datetime "discarded_at"
     t.integer "discarded_by"
     t.string "secret_token", default: -> { "gen_random_uuid()" }
+    t.boolean "specified_voters_only", default: false, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["discussion_id"], name: "index_polls_on_discussion_id"
     t.index ["group_id"], name: "index_polls_on_group_id"

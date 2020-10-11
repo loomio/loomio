@@ -1,29 +1,48 @@
 <script lang="coffee">
 import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
-import { map, sortBy, filter } from 'lodash'
+import { map, sortBy, filter, debounce, without } from 'lodash'
 import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
 
+import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
+
 export default
+  components:
+    RecipientsAutocomplete: RecipientsAutocomplete
+
   props:
     discussion: Object
     close: Function
     isPage: Boolean
 
   data: ->
+    groupSelectOptions: []
     upgradeUrl: AppConfig.baseUrl + 'upgrade'
-    availableGroups: []
+    allGroups: []
+    parentGroup: null
     submitIsDisabled: false
+    searchResults: []
+    excludedUserIds: [Session.user().id]
+    query: ''
+    recipients: []
 
   mounted: ->
+    @recipients = @initialRecipients
+    @parentGroup = @discussion.group().parentOrSelf()
+    Records.memberships.fetchByGroup(@discussion.groupId, per: 100)
+
     @watchRecords
-      collections: ['groups', 'memberships']
+      collections: ['groups']
       query: (store) =>
-        @availableGroups = filter(Session.user().groups(), (group) -> AbilityService.canStartThread(group))
+        if @discussion.groupId
+          parentGroup = @discussion.group().parentOrSelf()
+          @allGroups = [parentGroup].concat(parentGroup.subgroups())
+        else
+          @allGroups = Session.user().groups()
 
   methods:
     submit: ->
@@ -34,54 +53,40 @@ export default
         Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
           Flash.success("discussion_form.messages.#{actionName}")
           @$router.push @urlFor(discussion)
-          if @discussion.isNew()
-            if AbilityService.canAnnounceTo(discussion)
-              EventBus.$emit 'openModal',
-                component: 'AnnouncementForm',
-                props:
-                  announcement: Records.announcements.buildFromModel(discussion)
       .catch onError(@discussion)
-
 
     updatePrivacy: ->
       @discussion.private = @discussion.privateDefaultValue()
 
+    newRecipients: (val) ->
+      @recipients = val
+      @discussion.groupId = (val.find((i) -> i.type=='group') || {}).id
+      @discussion.recipientUserIds = map filter(val, (o) -> o.type == 'user'), 'id'
+      @discussion.recipientEmails = map filter(val, (o) -> o.type == 'email'), 'name'
+
   computed:
-    privacyTitle: ->
-      if @discussion.private
-        'common.privacy.private'
+    initialRecipients: ->
+      if @discussion.groupId
+        [{id: @discussion.groupId, type: 'group', name: @discussion.group().name, group: @discussion.group()}]
       else
-        'common.privacy.public'
+        []
 
-    privacyDescription: ->
-
-      path = if @discussion.private == false
-               'discussion_form.privacy_public'
-             else if @discussion.group().parentMembersCanSeeDiscussions
-               'discussion_form.privacy_organisation'
-             else
-               'discussion_form.privacy_private'
-      @$t(path, {group:  @discussion.group().name, parent: @discussion.group().parentName()})
-
-    groupSelectOptions: ->
-      sortBy map(@availableGroups, (group) -> {
-         text: group.fullName,
-         value: group.id
-      }), 'fullName'
+    availableGroups: ->
+      if @recipients.find((i) -> i.type == 'group')
+        []
+      else
+        filter(@allGroups, (group) -> AbilityService.canStartThread(group))
 
     maxThreads: ->
-      return null unless @discussion.group()
       @discussion.group().parentOrSelf().subscription.max_threads
 
     threadCount: ->
-      return unless @discussion.group()
       @discussion.group().parentOrSelf().orgDiscussionsCount
 
     maxThreadsReached: ->
       @maxThreads && @threadCount >= @maxThreads
 
     subscriptionActive: ->
-      return true unless @discussion.group()
       @discussion.group().parentOrSelf().subscription.active
 
     canStartThread: ->
@@ -110,23 +115,25 @@ export default
       v-icon mdi-close
   .pa-4
     //- .lmo-hint-text(v-t="'group_page.discussions_placeholder'" v-show='discussion.isNew() && !isMovingItems')
+    discussion-privacy-badge.mb-2(:discussion="discussion" no-link)
     .body-1(v-if="showUpgradeMessage")
       p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
       p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
 
-    .discussion-form__group-selected(v-if='discussion.groupId && discussion.group() && !showUpgradeMessage')
-      p {{discussion.group().fullName}}
+    .discussion-form__group-selected(v-if='!showUpgradeMessage')
+      recipients-autocomplete(
+        v-if="discussion.isNew()"
+        :label="$t('discussion_form.to')"
+        :placeholder="$t('announcement.form.discussion_announced.helptext')"
+        :available-groups="availableGroups"
+        :group="discussion.groupId && discussion.group()"
+        :initial-recipients="initialRecipients"
+        :excluded-user-ids="excludedUserIds"
+        @new-recipients="newRecipients")
       v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input.text-h5(:label="$t('discussion_form.title_label')" :placeholder="$t('discussion_form.title_placeholder')" v-model='discussion.title' maxlength='255')
       validation-errors(:subject='discussion', field='title')
       lmo-textarea(:model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")
         template(v-slot:actions)
-          v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled || !discussion.groupId" v-t="'discussion_form.start_thread'" v-if="discussion.isNew()")
+          v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-t="'discussion_form.start_thread'" v-if="discussion.isNew()")
           v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-t="'common.action.save'" v-if="!discussion.isNew()")
-      v-list-item.discussion-form__privacy-notice
-        v-list-item-avatar
-          v-icon(v-if='discussion.private') mdi-lock-outline
-          v-icon(v-if='!discussion.private') mdi-earth
-        v-list-item-content
-          v-list-item-title.discussion-privacy-icon__title(v-t="privacyTitle")
-          v-list-item-subtitle.discussion-privacy-icon__subtitle(v-html='privacyDescription')
 </template>

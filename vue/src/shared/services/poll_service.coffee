@@ -61,9 +61,9 @@ export default new class PollService
         AbilityService.canAnnounceTo(poll)
       perform: ->
         openModal
-          component: 'AnnouncementForm'
+          component: 'PollMembers'
           props:
-            announcement: Records.announcements.buildFromModel(poll)
+            poll: poll
 
     edit_poll:
       name: 'action_dock.edit_poll_type'

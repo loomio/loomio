@@ -67,26 +67,6 @@ describe "User abilities" do
           before { subgroup.add_member!(user) }
           it {should be_able_to(:show, subgroup)}
         end
-
-        context "parent_members_can_see_discussions" do
-          let(:discussion) { create(:discussion, group: subgroup, private: true) }
-          before { group.add_member!(user) }
-
-          context "true" do
-            before do
-              subgroup.update_attribute(:parent_members_can_see_discussions, true)
-            end
-            it {should be_able_to(:show, discussion)}
-          end
-
-          context "false" do
-            before do
-              subgroup.update_attribute(:parent_members_can_see_discussions, false)
-            end
-
-            it {should_not be_able_to(:show, discussion)}
-          end
-        end
       end
 
       context "false" do

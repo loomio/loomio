@@ -1,8 +1,7 @@
 class DiscussionService
-  def self.create(discussion:, actor:)
+  def self.create(discussion:, actor:, params: {})
     actor.ability.authorize! :create, discussion
     discussion.author = actor
-    discussion.inherit_group_privacy!
 
     #these should really be sent from the client, but it's ok here for now
     discussion.max_depth = discussion.group.new_threads_max_depth
@@ -12,16 +11,25 @@ class DiscussionService
 
     discussion.save!
 
+    DiscussionReader.for(user: actor, discussion: discussion).update(admin: true, inviter_id: actor.id)
+
     EventBus.broadcast('discussion_create', discussion, actor)
-    Events::NewDiscussion.publish!(discussion)
+    created_event = Events::NewDiscussion.publish!(discussion)
+    AnnounceDiscussionWorker.perform_async(discussion.id, actor.id, {user_ids: params[:recipient_user_ids], emails: params[:recipient_emails] })
+    created_event
   end
 
   def self.announce(discussion:, actor:, params:)
     actor.ability.authorize! :announce, discussion
 
-    users = UserInviter.where_or_create!(inviter: actor,
-                                         emails: params[:emails],
-                                         user_ids: params[:user_ids])
+    emails = Array(params[:emails])
+    user_ids = Array(params[:user_ids]).map(&:to_i)
+
+    if (emails.length + user_ids.length) == 0
+      users = discussion.group.accepted_members
+    else
+      users = UserInviter.where_or_create!(inviter: actor, emails: emails, user_ids: user_ids)
+    end
 
     volumes = {}
     Membership.where(group_id: discussion.group_id,
@@ -41,6 +49,8 @@ class DiscussionService
     discussion_readers = DiscussionReader.where(user_id: users.pluck(:id), discussion_id: discussion.id)
 
     Events::DiscussionAnnounced.publish!(discussion, actor, discussion_readers)
+    discussion.update_members_count
+    MessageChannelService.publish_models(discussion, group_id: discussion.group_id)
     discussion_readers
   end
 

@@ -20,7 +20,7 @@ class Outcome < ApplicationRecord
 
   %w(
     title poll_type dates_as_options group group_id discussion discussion_id
-    locale mailer anyone_can_participate members
+    locale mailer anyone_can_participate members admins
   ).each { |message| delegate message, to: :poll }
 
   is_mentionable on: :statement
@@ -32,7 +32,7 @@ class Outcome < ApplicationRecord
   def body_format
     statement_format
   end
-  
+
   def parent_event
     poll.created_event
   end

@@ -6,6 +6,7 @@ import loki        from 'lokijs'
 import AnnouncementRecordsInterface from '@/shared/interfaces/announcement_records_interface'
 import CommentRecordsInterface from '@/shared/interfaces/comment_records_interface'
 import DiscussionRecordsInterface from '@/shared/interfaces/discussion_records_interface'
+import DiscussionReaderRecordsInterface from '@/shared/interfaces/discussion_reader_records_interface'
 import EventRecordsInterface from '@/shared/interfaces/event_records_interface'
 import GroupRecordsInterface from '@/shared/interfaces/group_records_interface'
 import MembershipRecordsInterface from '@/shared/interfaces/membership_records_interface'
@@ -41,6 +42,7 @@ records = new RecordStore(db)
 records.addRecordsInterface AnnouncementRecordsInterface
 records.addRecordsInterface CommentRecordsInterface
 records.addRecordsInterface DiscussionRecordsInterface
+records.addRecordsInterface DiscussionReaderRecordsInterface
 records.addRecordsInterface EventRecordsInterface
 records.addRecordsInterface GroupRecordsInterface
 records.addRecordsInterface MembershipRecordsInterface

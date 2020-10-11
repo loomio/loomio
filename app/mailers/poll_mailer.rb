@@ -4,13 +4,25 @@ class PollMailer < BaseMailer
 
   REPLY_DELIMITER = "--"
 
-  %w(poll_created poll_announced poll_edited
-     stance_created invitation_created invitation_resend
-     poll_option_added poll_option_added_author
-     outcome_created outcome_created_author outcome_announced
-     poll_closing_soon poll_closing_soon_author
-     poll_expired  poll_expired_author
-     user_mentioned user_reminded).each do |action|
+  %w(
+     invitation_created
+     invitation_resend
+     outcome_announced
+     outcome_created
+     outcome_created_author
+     poll_announced
+     poll_closing_soon
+     poll_closing_soon_author
+     poll_created
+     poll_edited
+     poll_expired
+     poll_expired_author
+     poll_option_added
+     poll_option_added_author
+     stance_created
+     user_mentioned
+     user_reminded
+   ).each do |action|
     define_method action, ->(recipient_id, event_id) { send_poll_email(recipient_id, event_id, action) }
   end
 

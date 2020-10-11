@@ -101,6 +101,8 @@ lt:
       load_more: 'Įkelti daugiau'
       ok: Gerai
       apply: Taikyti
+  emoji_picker:
+    people: Žmonės
   error_page:
     forbidden: 'Jūs neturite leidimo tai padaryti.'
     internal_server_error: 'Atleiskite, bet įvyko kažkokia klaida. Prašome bandyti dar kartą.'
@@ -271,6 +273,7 @@ lt:
       success: Gija ištrinta
   delete_comment_dialog:
     title: 'Ištrinti komentarą'
+    question: 'Jūs tikrai norite ištrinti šį komentarą?'
     confirm: 'Ištrinti komentarą'
   contact_message_form:
     email_label: 'Jūsų el. pašto adresas'

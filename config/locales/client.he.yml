@@ -144,6 +144,7 @@ he:
       update: 'עדכון'
       cancel: 'ביטול'
       show_more: "הראה עוד"
+      count_more: "עוד {{count}}"
       view_all: "צפייה בכל"
       new_thread: "שיחה חדשה"
       loading: 'נטען'
@@ -978,6 +979,7 @@ he:
       success: השיחה הועברה ל{{name}}
   delete_comment_dialog:
     title: 'מחקו תגובה'
+    question: 'למחוק את התגובה? בטוחים?'
     confirm: 'מחקו תגובה'
   contact_message_form:
     title: "היי! איך נוכל לעזור?"

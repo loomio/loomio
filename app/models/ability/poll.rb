@@ -9,25 +9,19 @@ module Ability::Poll
     can :vote_in, ::Poll do |poll|
       user.is_logged_in? &&
       poll.active? &&
-      (poll.anyone_can_participate ||
-      (poll.group.members_can_vote && poll.members.exists?(user.id)) ||
-      poll.admins.exists?(user.id))
+      poll.anyone_can_participate? ||
+      poll.voters.exists?(user.id) ||
+      (!poll.specified_voters_only && poll.members.exists?(user.id))
     end
 
     can [:show, :toggle_subscription, :subscribe_to, :export], ::Poll do |poll|
       PollQuery.visible_to(user: user, show_public: true).exists?(poll.id)
-      # poll.anyone_can_participate ||
-      # user_is_author_of?(poll) ||
-      # can?(:show, poll.discussion) ||
-      # poll.members.exists?(user.id) ||
-      # poll.stances.find_by(token: user.stance_token)
     end
 
     can :create, ::Poll do |poll|
       user.email_verified? &&
       (poll.admins.exists?(user.id) ||
-      (poll.group.members_can_raise_motions && poll.members.exists?(user.id)) ||
-      !poll.group.presence)
+      (poll.group.members_can_raise_motions && poll.members.exists?(user.id)))
     end
 
     can [:invite, :announce], ::Poll do |poll|

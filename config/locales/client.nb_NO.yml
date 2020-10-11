@@ -99,6 +99,7 @@ nb_NO:
       update: 'Oppdater'
       cancel: 'Avbryt'
       show_more: "Vis mer"
+      count_more: "{{count}} flere"
       view_all: "Vis alle"
       new_thread: "Ny tråd"
       loading: 'Laster'
@@ -555,6 +556,7 @@ nb_NO:
     pin_thread: Fest tråd
   delete_comment_dialog:
     title: 'Slett kommentar'
+    question: 'Er du sikker på at du vil slette denne kommentaren?'
     confirm: 'Slett kommentar'
   decision_tools_card:
     proposal_title: Forslag

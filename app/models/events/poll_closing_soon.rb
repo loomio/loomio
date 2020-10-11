@@ -11,7 +11,6 @@ class Events::PollClosingSoon < Event
   end
 
   private
-
   def email_recipients
     notification_recipients
   end

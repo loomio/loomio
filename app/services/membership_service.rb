@@ -58,12 +58,13 @@ class MembershipService
 
   def self.set_volume(membership:, params:, actor:)
     actor.ability.authorize! :update, membership
+    val = Membership.volumes[params[:volume]]
     if params[:apply_to_all]
-      actor.memberships.where(group_id: membership.group.parent_or_self.id_and_subgroup_ids).update_all(volume: Membership.volumes[params[:volume]])
-      actor.discussion_readers.update_all(volume: nil)
+      actor.memberships.where(group_id: membership.group.parent_or_self.id_and_subgroup_ids).update_all(volume: val)
+      actor.discussion_readers.update_all(volume: val)
     else
       membership.set_volume! params[:volume]
-      membership.discussion_readers.update_all(volume: nil)
+      membership.discussion_readers.update_all(volume: val)
     end
   end
 

@@ -87,13 +87,7 @@ module GroupPrivacy
   end
 
   def discussion_private_default
-    case discussion_privacy_options
-    when 'public_or_private' then nil
-    when 'public_only' then false
-    when 'private_only' then true
-    else
-      raise "invalid discussion_privacy value"
-    end
+    self.discussion_privacy_options != "public_only"
   end
 
   def set_discussions_private_only
