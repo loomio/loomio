@@ -87,12 +87,11 @@ class API::MembershipsController < API::RestfulController
                                        users.name ilike :last OR
                                        users.username ilike :first",
                                        first: "#{query}%", last: "% #{query}%")
+        collection = collection.order('group_id, users.name')
+      else
+        collection = collection.order('group_id, memberships.id desc')
       end
 
-      if params[:subgroups]
-        collection = collection.order(:group_id)
-      end
-      
       collection
     end
     respond_with_collection(scope: index_scope)
