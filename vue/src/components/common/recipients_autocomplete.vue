@@ -43,6 +43,9 @@ export default
     groups: ->
       @updateSearchResults()
 
+    users: ->
+      @updateSearchResults()
+
     recipients: (val) ->
       @$emit('new-recipients', val)
 

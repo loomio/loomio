@@ -53,10 +53,12 @@ export default
 
   watch:
     query: ->
+      @fetchMemberships()
       @updateSuggestions()
 
     'discussion.groupId': ->
       @fetchMemberships()
+      @updateSuggestions()
 
   methods:
     newQuery: (query) ->

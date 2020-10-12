@@ -5,6 +5,8 @@ import Session from '@/shared/services/session'
 import EventBus from '@/shared/services/event_bus'
 import AppConfig      from '@/shared/services/app_config'
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
+import AbilityService from '@/shared/services/ability_service'
+import { uniq, debounce } from 'lodash'
 
 export default
   components:
@@ -14,23 +16,71 @@ export default
     group: Object
 
   data: ->
-    memberships: []
     query: ''
-    searchResults: []
     recipients: []
-    excludedUserIds: []
-    membershipsByUserId: {}
-    memberUserIds: []
     reset: false
     saving: false
+    users: []
 
   mounted: ->
+    @fetchMemberships = debounce ->
+      return unless @query
+
+      @loading = true
+      Records.memberships.fetch
+        path: 'autocomplete'
+        params:
+          exclude_types: 'group'
+          subgroups: 'all'
+          q: @query
+          group_id: @group.parentOrSelf().id
+          per: 100
+      .finally =>
+        @loading = false
+    , 300
+
     @watchRecords
       collections: ['memberships']
-      query: (records) => @updateMemberships()
+      query: (records) => @updateSuggestions()
 
   methods:
-    updateMemberships: ->
+    inviteRecipients: ->
+    newQuery: (query) ->
+      @query = query
+      @fetchMemberships()
+      @updateSuggestions()
+
+    newRecipients: (recipients) -> @recipients = recipients
+
+    updateSuggestions: ->
+      @users = @findUsers()
+
+    findUsers: ->
+      userIdsInGroup = Records.memberships.collection.
+        chain().find(groupId: @group.id).
+        data().map (m) -> m.userId
+      membershipsChain = Records.memberships.collection.chain()
+      membershipsChain = membershipsChain.find(groupId: { $in: @group.parentOrSelf().organisationIds() })
+      membershipsChain = membershipsChain.find(userId: { $nin: userIdsInGroup })
+
+      userIdsNotInGroup = uniq membershipsChain.data().map((m) -> m.userId)
+
+      chain = Records.users.collection.chain()
+      chain = chain.find(id: {$in: userIdsNotInGroup})
+
+
+      if @query
+        chain = chain.find
+          $or: [
+            {name: {'$regex': ["^#{@query}", "i"]}}
+            {username: {'$regex': ["^#{@query}", "i"]}}
+            {name: {'$regex': [" #{@query}", "i"]}}
+          ]
+      chain.data()
+
+  computed:
+    invitableGroups: ->
+      @group.subgroups().filter (g) -> AbilityService.canAddMembersToGroup(g)
 
 
 </script>
@@ -43,13 +93,15 @@ export default
     recipients-autocomplete(
       :label="$t('announcement.form.group_announced.helptext')"
       :placeholder="$t('announcement.form.placeholder')"
-      :group="group"
-      :excluded-user-ids="excludedUserIds"
+      :users="users"
       :reset="reset"
       @new-query="newQuery"
       @new-recipients="newRecipients")
 
-    p subgroups
+    //- div(v-if="invitableGroups.length")
+    //-   span(v-t="'announcement.any_other_groups'")
+      //- div(v-for="group in invitableGroups" :key="group.id")
+      //-   v-checkbox(:class="{'ml-4': !group.isParent()}" v-model="invitedGroupIds" :label="group.name" :value="group.id" hide-details)
 
     p invitation message
 
