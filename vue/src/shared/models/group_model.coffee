@@ -93,6 +93,9 @@ export default class GroupModel extends BaseModel
   organisationIds: ->
     map(@subgroups(), 'id').concat(@id)
 
+  selfAndSubgroups: ->
+    Array(@).concat(@subgroups())
+
   membershipFor: (user) ->
     @recordStore.memberships.find(groupId: @id, userId: user.id)[0]
 
