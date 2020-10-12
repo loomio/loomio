@@ -123,9 +123,9 @@ export default
 
     invite: ->
       EventBus.$emit('openModal',
-                      component: 'AnnouncementForm',
+                      component: 'GroupInvitationForm',
                       props:
-                        announcement: Records.announcements.buildFromModel(@group))
+                        group: @group)
 
   computed:
     membershipRequestsPath: -> LmoUrlService.membershipRequest(@group)

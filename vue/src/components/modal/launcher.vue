@@ -36,6 +36,7 @@ import GroupSurvey from '@/components/group/survey'
 import AddPollToThreadModal from '@/components/poll/add_to_thread_modal'
 import StrandMembersList from '@/components/strand/members_list'
 import PollMembers from '@/components/poll/members'
+import GroupInvitationForm from '@/components/group/invitation_form'
 
 export default
   components: {
@@ -75,6 +76,7 @@ export default
     AddPollToThreadModal
     StrandMembersList
     PollMembers
+    GroupInvitationForm
   }
 
   data: ->
