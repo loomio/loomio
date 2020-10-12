@@ -19,7 +19,6 @@ export default class NullGroupModel
       membersCanEditDiscussions: true
       membersCanEditComments: true
       membersCanRaiseMotions: true
-      membersCanVote: true
       membersCanStartDiscussions: true
       membersCanCreateSubgroups: false
       motionsCanBeEdited: false
@@ -27,6 +26,7 @@ export default class NullGroupModel
       imageFiles: []
       attachments: []
       subscription: {active: true}
+      specifiedVotersOnly: false
 
     each defaults, (value, key) =>
       Vue.set(@, key, value)

@@ -24,7 +24,6 @@ export default class GroupModel extends BaseModel
     membersCanEditDiscussions: true
     membersCanEditComments: true
     membersCanRaiseMotions: true
-    membersCanVote: true
     membersCanStartDiscussions: true
     membersCanCreateSubgroups: false
     motionsCanBeEdited: false
@@ -32,6 +31,7 @@ export default class GroupModel extends BaseModel
     imageFiles: []
     attachments: []
     subscription: {}
+    specifiedVotersOnly: false
 
   afterConstruction: ->
     if @privacyIsClosed()
