@@ -6,6 +6,7 @@ import EventBus from '@/shared/services/event_bus'
 import AppConfig      from '@/shared/services/app_config'
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
 import AbilityService from '@/shared/services/ability_service'
+import Flash   from '@/shared/services/flash'
 import { uniq, debounce } from 'lodash'
 
 export default
@@ -21,6 +22,9 @@ export default
     reset: false
     saving: false
     users: []
+    groupIds: [@group.id]
+    message: ''
+    withMessage: false
 
   mounted: ->
     @fetchMemberships = debounce ->
@@ -45,6 +49,22 @@ export default
 
   methods:
     inviteRecipients: ->
+      @saving = true
+      Records.announcements.remote.post '',
+        group_id: @group.id
+        announcement:
+          message: @message
+          invited_group_ids: @groupIds
+          recipients:
+            emails: @recipients.filter((r) -> r.type == 'email').map((r) -> r.id)
+            user_ids: @recipients.filter((r) -> r.type == 'user').map((r) -> r.id)
+
+      .then (data) =>
+        Flash.success('announcement.flash.success', { count: data.memberships.length })
+        EventBus.$emit('closeModal')
+      .finally =>
+        @saving = false
+
     newQuery: (query) ->
       @query = query
       @fetchMemberships()
@@ -80,7 +100,7 @@ export default
 
   computed:
     invitableGroups: ->
-      @group.subgroups().filter (g) -> AbilityService.canAddMembersToGroup(g)
+      @group.parentOrSelf().selfAndSubgroups().filter (g) -> AbilityService.canAddMembersToGroup(g)
 
 
 </script>
@@ -98,15 +118,19 @@ export default
       @new-query="newQuery"
       @new-recipients="newRecipients")
 
-    //- div(v-if="invitableGroups.length")
-    //-   span(v-t="'announcement.any_other_groups'")
-      //- div(v-for="group in invitableGroups" :key="group.id")
-      //-   v-checkbox(:class="{'ml-4': !group.isParent()}" v-model="invitedGroupIds" :label="group.name" :value="group.id" hide-details)
+    div(v-if="invitableGroups.length")
+      span(v-t="'announcement.any_other_groups'")
+      div(v-for="group in invitableGroups" :key="group.id")
+        v-checkbox(:class="{'ml-4': !group.isParent()}" v-model="groupIds" :label="group.name" :value="group.id" hide-details)
 
-    p invitation message
+    v-textarea(v-if="withMessage" v-model="message" label="Message" placeholder="Include a custom message in your invitation")
+    a(@click="withMessage = !withMessage")
+      span(v-if="!withMessage") Include an invitation message
+      span(v-if="withMessage") Remove message
 
     .d-flex
       v-spacer
-      v-btn(color="primary" :disabled="!recipients.length" @click="inviteRecipients" @loading="saving" v-t="'common.action.invite'")
+      v-btn(color="primary" :disabled="!recipients.length" @click="inviteRecipients" :loading="saving")
+        span(v-t="'common.action.invite'")
 
 </template>
