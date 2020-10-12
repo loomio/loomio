@@ -196,9 +196,9 @@ export default
                 space
                 v-chip(v-if="membership.admin" small outlined label v-t="'members_panel.admin'")
               v-list-item-subtitle
+                span(v-if="membership.groupId != group.id" v-t="{path: 'members_panel.only_in_subgroups', args: {name: membership.group().name}}")
                 span(v-if="membership.acceptedAt") {{ (membership.user().shortBio || '').replace(/<\/?[^>]+(>|$)/g, "") }}
                 span(v-if="!membership.acceptedAt && membership.inviter()" v-t="{path: 'members_panel.invited_by_name', args: {name: membership.inviter().name}}")
-                span(v-if="membership.groupId != group.id" v-t="{path: 'members_panel.only_in_subgroups', args: {name: membership.group().name}}")
             v-list-item-action
               membership-dropdown(v-if="membership.groupId == group.id" :membership="membership")
         v-layout(justify-center)
