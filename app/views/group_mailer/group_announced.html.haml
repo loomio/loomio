@@ -6,8 +6,8 @@
   %strong= @membership.group.full_name
   %br
 
-  %p{style: "font-style: italic"}
-    =raw sanitize @event.custom_fields['message'].to_s.gsub(/(?:\n\r?|\r\n?)/, '<br>')
+  %i{style: "font-style: italic"}
+    =raw strip_tags(@event.custom_fields['message'].to_s).gsub(/(?:\n\r?|\r\n?)/, '<br>')
 
   %br
     = link_to t(:"email.to_join_group.accept_invitation"), membership_url(@membership, @utm_hash), class: "base-mailer__button base-mailer__button--primary"
