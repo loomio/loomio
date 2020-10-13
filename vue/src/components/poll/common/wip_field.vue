@@ -9,12 +9,8 @@ export default
   data: ->
     draft: !@poll.closingAt
 
-  computed:
-    betaFeatures: -> Session.user().experiences['betaFeatures']
-
   watch:
     draft: (val) ->
-      console.log "draft", val
       if val
         @poll.closingAt = null
       else
@@ -23,7 +19,7 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-wip-field(v-if="betaFeatures")
+.poll-common-wip-field
   v-checkbox(hide-details v-model="draft")
     div(slot="label")
       span(v-t="'poll_common_wip_field.title'")
