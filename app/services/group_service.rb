@@ -35,7 +35,7 @@ module GroupService
     # email should say, so and so has invited you to the following loomio groups.
     # or so and so has added you to the following loomio groups.
     all_memberships = Membership.not_archived.where(group_id: group.id, user_id: users.pluck(:id))
-    Events::AnnouncementCreated.publish!(group, actor, all_memberships)
+    Events::AnnouncementCreated.publish!(group, actor, all_memberships, params[:message])
     all_memberships
   end
 

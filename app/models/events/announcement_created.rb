@@ -11,19 +11,17 @@ class Events::AnnouncementCreated < Event
           }.compact
   end
 
+  def email_users!
+    memberships.each do |m|
+      GroupMailer.delay(queue: :notification_emails).group_announced(m.user_id, self.id, m.id)
+    end
+  end
+
   def memberships
     @memberships ||= Membership.where(id: custom_fields['membership_ids'])
   end
 
-  def kind
-    'group_announced'
-  end
-
   private
-
-  def email_recipients
-    User.active.where(id: memberships.where('volume >= ?', Membership.volumes[:normal]).pluck(:user_id))
-  end
 
   def notification_recipients
     User.active.where(id: memberships.pluck(:user_id))
