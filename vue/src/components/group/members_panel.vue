@@ -186,7 +186,7 @@ export default
                 user-avatar(:user='membership.user()' size='48')
             v-list-item-content
               v-list-item-title
-                router-link(:to="urlFor(membership.user())") {{ membership.user().name }}
+                router-link(:to="urlFor(membership.user())") {{ membership.user().nameOrEmail() }}
                 space
                 span.caption(v-if="$route.query.subgroups") {{membership.group().name}}
                 space
@@ -194,7 +194,9 @@ export default
                 space
                 v-chip(v-if="membership.admin" small outlined label v-t="'members_panel.admin'")
               v-list-item-subtitle
-                span(v-if="membership.groupId != group.id" v-t="{path: 'members_panel.only_in_subgroups', args: {name: membership.group().name}}")
+                span(v-if="membership.groupId != group.id")
+                  span(v-t="{path: 'members_panel.only_in_subgroups', args: {name: membership.group().name}}")
+                  space
                 span(v-if="membership.acceptedAt") {{ (membership.user().shortBio || '').replace(/<\/?[^>]+(>|$)/g, "") }}
                 span(v-if="!membership.acceptedAt && membership.inviter()" v-t="{path: 'members_panel.invited_by_name', args: {name: membership.inviter().name}}")
             v-list-item-action

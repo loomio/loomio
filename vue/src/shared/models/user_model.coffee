@@ -22,6 +22,8 @@ export default class UserModel extends BaseModel
     locale: AppConfig.defaultLocale
     experiences: []
 
+  nameOrEmail: ->
+    @name || @email || @placeholderName
 
   simpleBio: ->
     truncate((@shortBio || '').replace(/<\/?[^>]+(>|$)/g, ""), length: 70)
