@@ -661,7 +661,10 @@ en:
         <p>Next step, <a href="{{upgradeUrl}}" target="_blank">choose a plan</a> to continue collaborating on Loomio.</p>
 
       invitations_remaining: '{{count}} invitations remaining. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>'
-
+      who_to_invite: Who would you like to invite?
+      invitation_message: Come join us in our Loomio group where we have discussions and make decisions together.
+      invitation_message_placeholder: Include a custom message in your invitation
+      invitation_message_label: Message
       group_announced:
         title: Invite to group
         helptext: Who would you like to invite to the group?

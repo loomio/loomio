@@ -23,8 +23,9 @@ export default
     saving: false
     users: []
     groupIds: [@group.id]
-    message: ''
+    message: @$t('announcement.form.invitation_message')
     withMessage: false
+
 
   mounted: ->
     @fetchMemberships = debounce ->
@@ -111,26 +112,53 @@ export default
       h1.headline(tabindex="-1" v-t="{path: 'announcement.send_group', args: {name: group.name} }")
       dismiss-modal-button
     recipients-autocomplete(
-      :label="$t('announcement.form.group_announced.helptext')"
+      :label="$t('announcement.form.who_to_invite')"
       :placeholder="$t('announcement.form.placeholder')"
       :users="users"
       :reset="reset"
       @new-query="newQuery"
       @new-recipients="newRecipients")
 
-    div(v-if="invitableGroups.length")
-      span(v-t="'announcement.any_other_groups'")
+    div.mb-4(v-if="invitableGroups.length")
+      label.lmo-label Select groups
+      //- v-label Select groups
       div(v-for="group in invitableGroups" :key="group.id")
-        v-checkbox(:class="{'ml-4': !group.isParent()}" v-model="groupIds" :label="group.name" :value="group.id" hide-details)
+        v-checkbox.invitation-form__select-groups(:class="{'ml-4': !group.isParent()}" v-model="groupIds" :label="group.name" :value="group.id" hide-details)
 
-    v-textarea(v-if="withMessage" v-model="message" label="Message" placeholder="Include a custom message in your invitation")
-    a(@click="withMessage = !withMessage")
-      span(v-if="!withMessage") Include an invitation message
-      span(v-if="withMessage") Remove message
+    v-textarea(v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
 
-    .d-flex
+    //- a(@click="withMessage = !withMessage")
+    //-   span(v-if="!withMessage") Include an invitation message
+    //-   span(v-if="withMessage") Remove message
+
+    v-card-actions
       v-spacer
       v-btn(color="primary" :disabled="!recipients.length" @click="inviteRecipients" :loading="saving")
         span(v-t="'common.action.invite'")
 
 </template>
+<style lang="css">
+
+.lmo-label {
+  color: rgba(0, 0, 0, 0.6);
+  height: 20px;
+  line-height: 20px;
+  max-width: 133%;
+  transform: translateY(-18px) scale(0.75);
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  top: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  font-size: 12px;
+  line-height: 1;
+  min-height: 8px;
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+}
+
+.invitation-form__select-groups {
+  margin-top: 8px;
+}
+
+</style>
