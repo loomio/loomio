@@ -19,7 +19,7 @@ class AddAnnounceableMembersCountToDiscussions < ActiveRecord::Migration[5.2]
 
     max = DiscussionReader.order('id desc').limit(1).pluck(:id).first
     i = 0
-    step = 10000
+    step = 1000
     while i < max do
       execute(
         "UPDATE discussion_readers dr SET volume = (

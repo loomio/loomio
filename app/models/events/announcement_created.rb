@@ -2,10 +2,13 @@ class Events::AnnouncementCreated < Event
   include Events::Notify::InApp
   include Events::Notify::ByEmail
 
-  def self.publish!(model, actor, memberships)
+  def self.publish!(model, actor, memberships, message = '')
     super model,
           user: actor,
-          custom_fields: { membership_ids: memberships.pluck(:id)}.compact
+          custom_fields: {
+            message: message,
+            membership_ids: memberships.pluck(:id)
+          }.compact
   end
 
   def memberships
