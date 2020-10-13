@@ -22,10 +22,10 @@ class Events::AnnouncementCreated < Event
   private
 
   def email_recipients
-    notification_recipients.where(id: Queries::UsersByVolumeQuery.normal_or_loud(eventable))
+    User.active.where(id: memberships.where('volume >= ?', Membership.volumes[:normal]).pluck(:user_id))
   end
 
   def notification_recipients
-    User.active.distinct.where(id: memberships.pluck(:user_id))
+    User.active.where(id: memberships.pluck(:user_id))
   end
 end
