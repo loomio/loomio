@@ -15,7 +15,8 @@ class MembershipService
     existing_membership = Membership.where("id != ?", membership.id).where(group_id: membership.group_id, user_id: actor.id).first
     update_success = membership.update(user: actor, accepted_at: DateTime.now, saml_session_expires_at: expires_at)
 
-    if membership.inviter
+    # can remove this after august
+    if membership.experiences['invited_group_ids'] && membership.inviter
       Group.where(id: Array(membership.experiences['invited_group_ids'])).each do |group|
         group.add_member!(actor, inviter: membership.inviter) if membership.inviter.can?(:add_members, group)
       end

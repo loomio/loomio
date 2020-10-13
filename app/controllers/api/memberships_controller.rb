@@ -1,6 +1,14 @@
 class API::MembershipsController < API::RestfulController
   load_resource only: [:set_volume]
 
+  def index
+    instantiate_collection do |collection|
+      MembershipQuery.search(chain: collection, params: params).
+                      order('memberships.admin desc, memberships.created_at desc')
+    end
+    respond_with_collection(scope: index_scope)
+  end
+
   def add_to_subgroup
     group = load_and_authorize(:group)
     users = group.parent.members.where('users.id': params[:user_ids])
@@ -10,21 +18,11 @@ class API::MembershipsController < API::RestfulController
     respond_with_collection
   end
 
-  def index
-    instantiate_collection do |collection|
-      if params[:pending]
-        collection.pending
-      else
-        collection.active
-      end.where(group: model.group).order('memberships.admin desc, memberships.created_at desc')
-    end
-    respond_with_collection(scope: index_scope)
-  end
-
   def destroy_response
     render json: Array(resource.group), each_serializer: GroupSerializer, root: :groups, scope: {}
   end
 
+  # move to profile controller later
   def for_user
     load_and_authorize :user
     same_group_ids   = current_user.group_ids & @user.group_ids
@@ -39,11 +37,6 @@ class API::MembershipsController < API::RestfulController
     event = service.join_group group: load_and_authorize(:group), actor: current_user
     @membership = event.eventable
     respond_with_resource
-  end
-
-  def invitables
-    @memberships = page_collection visible_invitables
-    respond_with_collection scope: { q: params[:q], include_inviter: false }
   end
 
   def my_memberships
@@ -140,24 +133,6 @@ class API::MembershipsController < API::RestfulController
   end
 
   def accessible_records
-    visible = resource_class.joins(:group).joins(:user).includes(:user, :inviter, {group: [:parent]})
-    if current_user.group_ids.any?
-      visible.where("group_id IN (#{current_user.group_ids.join(',')}) OR
-                     groups.parent_id IN (#{ids_or_null(current_user.adminable_group_ids)})")
-    else
-      Membership.none
-    end
-  end
-
-  def ids_or_null(ids)
-    if ids.length == 0
-      'null'
-    else
-      ids.join(',')
-    end
-  end
-  def visible_invitables
-    load_and_authorize :group, :invite_people
-    Queries::VisibleInvitableMemberships.new(group: @group, user: current_user, query: params[:q])
+    MembershipQuery.visible_to(user: current_user)
   end
 end
