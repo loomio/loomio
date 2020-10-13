@@ -5,6 +5,7 @@ class GroupMailer < BaseMailer
     @recipient = User.find_by!(id: recipient_id)
     @event = Event.find_by!(id: event_id)
     @membership = Membership.find_by!(id: membership_id)
+    @inviter = @event.user || @membership.inviter
 
     send_single_mail to:     @recipient.email,
                      locale: @recipient.locale,
