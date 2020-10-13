@@ -69,6 +69,8 @@ class API::MembershipsController < API::RestfulController
         collection = collection.admin
       when 'pending'
         collection = collection.pending
+      when 'accepted'
+        collection = collection.accepted
       end
 
       query = params[:q].to_s
