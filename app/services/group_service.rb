@@ -2,15 +2,19 @@ module GroupService
   def self.announce(group:, params:, actor:)
     actor.ability.authorize! :announce, group
 
-    groups = Group.where(id: Array(params[:invited_group_ids]).map(&:to_i).concat([group.id]))
+    group_ids = if params[:invited_group_ids]
+      Array(params[:invited_group_ids])
+    else
+      Array(group.id)
+    end
+
+    groups = Group.where(id: group_ids).filter { |g| actor.can?(:add_members, g) }
 
     users = UserInviter.where_or_create!(inviter: actor,
                                          emails: params[:emails],
                                          user_ids: params[:user_ids])
 
     groups.each do |g|
-      next unless actor.can?(:add_members, g)
-
       memberships = users.map do |user|
         Membership.new(inviter: actor, user: user, group: g, volume: 2)
       end
