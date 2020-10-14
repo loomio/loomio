@@ -27,7 +27,6 @@ export default
     recipients: []
     groups: []
     users: []
-    announce: true
     canAnnounce: true
 
   mounted: ->
@@ -49,9 +48,9 @@ export default
         @updateSuggestions()
         if groupId
           @canAnnounce = !!(@discussion.group().adminsInclude(Session.user()) || @discussion.group().membersCanAnnounce)
-          @announce = @canAnnounce
+          @discussion.notifyGroup = @canAnnounce
         else
-          @announce = false
+          @discussion.notifyGroup = false
           @canAnnounce = false
 
   methods:
@@ -66,7 +65,8 @@ export default
         params:
           exclude_types: 'group'
           q: @query
-          group_id: @discussion.groupId
+          group_id: @discussion.group().parentOrSelf().groupId
+          subgroups: 'all'
           per: 50
       .finally =>
         @loading = false
@@ -134,10 +134,10 @@ export default
   computed:
     notificationsCount: ->
       guests = @recipients.filter (o) =>
-        o.type == 'user' && (!@discussion.groupId || Records.memberships.find(userId: o.id, groupId: @discussion.groupId).length == 0)
+        o.type == 'user' && (!@discussion.notifyGroup || Records.memberships.find(userId: o.id, groupId: @discussion.groupId).length == 0)
       .length
       emails = @recipients.filter((o) => o.type == 'email').length
-      members = if @discussion.groupId && @announce then @discussion.group().acceptedMembershipsCount else 0
+      members = if @discussion.groupId && @discussion.notifyGroup then @discussion.group().acceptedMembershipsCount else 0
       guests + emails + members
 
     initialRecipients: ->
@@ -202,7 +202,7 @@ export default
       v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input.text-h5(:label="$t('discussion_form.title_label')" :placeholder="$t('discussion_form.title_placeholder')" v-model='discussion.title' maxlength='255')
       validation-errors(:subject='discussion', field='title')
       lmo-textarea(:model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")
-      v-checkbox(:label="$t('discussion_form.notify_group')" v-model="announce" :disabled="!canAnnounce")
+      v-checkbox(:label="$t('discussion_form.notify_group')" v-model="discussion.notifyGroup" :disabled="!canAnnounce")
       .caption(v-if="notificationsCount != 1" v-t="{ path: 'poll_common_notify_group.members_count', args: { count: notificationsCount } }")
       .caption(v-else v-t="'discussion_form.one_person_notified'")
 
