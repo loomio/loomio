@@ -50,7 +50,7 @@ export default
     audiences: ->
       ret = []
       if @recipients.length == 0
-        if @poll.stancesCount < @poll.group().activeMembershipsCount
+        if @poll.stancesCount < @poll.group().acceptedMembershipsCount
           ret.push 'group'
         if @poll.discussionId && @poll.stancesCount < @poll.discussion().membersCount
           ret.push 'discussion_group'

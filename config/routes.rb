@@ -69,7 +69,7 @@ Loomio::Application.routes.draw do
         post :add_to_subgroup
         post :join_group
         get :for_user
-        get :autocomplete, to: :index
+        get :autocomplete, action: :index
         get :my_memberships
         get :invitables
         get :undecided

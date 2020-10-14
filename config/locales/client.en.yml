@@ -621,6 +621,9 @@ en:
     privacy_private: 'The thread will only be visible to members of {{group}}.'
     privacy_organisation: 'The thread will be visible to members of {{parent}} and members of {{group}}.'
     fork_notice: 'A new thread will be created with {{count}} items from {{title}}'
+    one_person_notified: 1 person will be notified
+    notify_group: Notify group
+
 
   announcement:
     send_discussion: Send thread

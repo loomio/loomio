@@ -129,5 +129,5 @@ div
         user-avatar(v-if="data.item.type == 'user'" :user="data.item.user" size="small" no-link)
       v-list-item-content.announcement-chip__content
         v-list-item-title(v-html='data.item.name')
-  recipients-notifications-count(:recipients="recipients")
+  //- recipients-notifications-count(:recipients="recipients")
 </template>
