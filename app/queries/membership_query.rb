@@ -9,22 +9,23 @@ class MembershipQuery
   end
 
   def self.search(chain: start, params:)
-    group = Group.find_by(id: params[:group_id])
-
-    group_ids = case params[:subgroups]
-      when 'mine', 'all'
-        group.id_and_subgroup_ids
-      else
-        [group.id]
-      end
-
-    chain = chain.where(group_id: group_ids)
+    if group = Group.find_by(id: params[:group_id])
+      group_ids = case params[:subgroups]
+        when 'mine', 'all'
+          group.id_and_subgroup_ids
+        else
+          [group.id]
+        end
+      chain = chain.where(group_id: group_ids)
+    end
 
     case params[:filter]
     when 'admin'
       chain = chain.admin
     when 'pending'
       chain = chain.pending
+    when 'accepted'
+      chain = chain.accepted
     end
 
     query = params[:q].to_s

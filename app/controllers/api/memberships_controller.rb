@@ -44,54 +44,6 @@ class API::MembershipsController < API::RestfulController
     respond_with_collection
   end
 
-  def autocomplete
-    instantiate_collection do |collection|
-      if model.present?
-        group_ids = case params[:subgroups]
-          when 'mine', 'all'
-            model.group.id_and_subgroup_ids
-          else
-            [model.group.id]
-          end
-      else
-        group_ids = current_user.group_ids
-      end
-
-      if params[:user_ids]
-        collection = collection.where(user_id: params[:user_ids].to_s.split(' ').map(&:to_i))
-      end
-
-      collection = collection.where(group_id: group_ids)
-
-      collection = collection.active unless params.has_key?(:pending) #leave alone until 1.0 retired
-
-
-      case params[:filter]
-      when 'admin'
-        collection = collection.admin
-      when 'pending'
-        collection = collection.pending
-      when 'accepted'
-        collection = collection.accepted
-      end
-
-      query = params[:q].to_s
-      if query.length > 0
-        collection = collection.joins(:user)
-                               .where("users.name ilike :first OR
-                                       users.name ilike :last OR
-                                       users.username ilike :first",
-                                       first: "#{query}%", last: "% #{query}%")
-        collection = collection.order('group_id, users.name')
-      else
-        collection = collection.order('group_id, memberships.id desc')
-      end
-
-      collection
-    end
-    respond_with_collection(scope: index_scope)
-  end
-
   def resend
     service.resend membership: load_resource, actor: current_user
     respond_with_resource
