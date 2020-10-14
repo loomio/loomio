@@ -31,11 +31,7 @@ class DiscussionService
     emails = Array(params[:emails])
     user_ids = Array(params[:user_ids]).map(&:to_i)
 
-    if (emails.length + user_ids.length) == 0
-      users = discussion.group.accepted_members
-    else
-      users = UserInviter.where_or_create!(inviter: actor, emails: emails, user_ids: user_ids)
-    end
+    users = UserInviter.where_or_create!(inviter: actor, emails: emails, user_ids: user_ids)
 
     volumes = {}
     Membership.where(group_id: discussion.group_id,
