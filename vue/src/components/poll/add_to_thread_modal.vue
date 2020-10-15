@@ -21,7 +21,21 @@ export default
     poll: Object
     close: Function
 
+  mounted: ->
+    Records.discussions.fetch
+      path: 'dashboard'
+      params:
+        per: 50
+    .then => @getSuggestions()
+
   methods:
+    getSuggestions: ->
+      @searchResults = Records.discussions.collection.chain()
+        .find(groupId: @groupId)
+        .where((d) -> !!AbilityService.canStartPoll(d))
+        .simplesort('id', true)
+        .data()
+
     submit: ->
       @poll.addToThread(@selectedDiscussion.id)
       .then =>
@@ -44,6 +58,7 @@ export default
 
   watch:
     searchFragment: 'fetch'
+    groupId: 'getSuggestions'
 
 </script>
 <template lang="pug">

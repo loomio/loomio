@@ -20,7 +20,21 @@ export default
     discussion: Object
     close: Function
 
+  mounted: ->
+    Records.discussions.fetch
+      path: 'dashboard'
+      params:
+        per: 50
+    .then => @getSuggestions()
+
   methods:
+    getSuggestions: ->
+      @searchResults = Records.discussions.collection.chain()
+        .find(groupId: @groupId)
+        .where((d) -> !!AbilityService.canStartPoll(d))
+        .simplesort('id', true)
+        .data()
+
     resetSourceDiscussion: ->
       @discussion.update(forkedEventIds: [])
       @discussion.update(isForking: false)
@@ -68,6 +82,7 @@ export default
   watch:
     selectedDiscussion: 'setIsForking'
     searchFragment: 'fetch'
+    groupId: 'getSuggestions'
 
 </script>
 <template lang="pug">
