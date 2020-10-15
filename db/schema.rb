@@ -176,7 +176,7 @@ ActiveRecord::Schema.define(version: 2020_10_13_023304) do
     t.integer "discussion_id", null: false
     t.datetime "last_read_at"
     t.integer "last_read_sequence_id", default: 0, null: false
-    t.integer "volume", null: false
+    t.integer "volume", default: 2, null: false
     t.boolean "participating", default: false, null: false
     t.datetime "dismissed_at"
     t.string "read_ranges_string"
