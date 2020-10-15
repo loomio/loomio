@@ -139,5 +139,14 @@ module Loomio
     if ENV['REDIS_CACHE_URL']
       config.cache_store = :redis_cache_store, { url: ENV['REDIS_CACHE_URL'] }
     end
+
+    config.action_dispatch.default_headers = {
+      # 'X-Frame-Options' => 'SAMEORIGIN',
+      'X-XSS-Protection' => '1; mode=block',
+      'X-Content-Type-Options' => 'nosniff',
+      'X-Download-Options' => 'noopen',
+      'X-Permitted-Cross-Domain-Policies' => 'none',
+      'Referrer-Policy' => 'strict-origin-when-cross-origin'
+    }
   end
 end

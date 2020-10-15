@@ -1579,6 +1579,7 @@ en:
     sharable_link: 'Shareable Link'
     last_seen: 'Last seen {{date}}'
     invited_by_name: 'Invited by {{name}}'
+    accepted: 'Members'
 
   polls_panel:
     new_poll: New poll
