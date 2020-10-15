@@ -311,7 +311,7 @@ describe API::AnnouncementsController do
       end
 
       it 'supports inviting to multiple groups at once' do
-        group.add_member! member
+        group.add_member! member, inviter: user
         subgroup.add_admin! user
         subgroup2.add_admin! user
         expect(member.memberships.accepted.count).to eq 1
