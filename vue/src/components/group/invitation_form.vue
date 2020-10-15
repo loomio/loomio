@@ -111,30 +111,36 @@ export default
     .d-flex.justify-space-between
       h1.headline(tabindex="-1" v-t="{path: 'announcement.send_group', args: {name: group.name} }")
       dismiss-modal-button
-    recipients-autocomplete(
-      :label="$t('announcement.form.who_to_invite')"
-      :placeholder="$t('announcement.form.placeholder')"
-      :users="users"
-      :reset="reset"
-      @new-query="newQuery"
-      @new-recipients="newRecipients")
+    div(v-if="invitingToGroup && !canInvite")
+      .announcement-form__invite
+        p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: maxMembers})")
+        p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
+    div(v-else)
 
-    div.mb-4(v-if="invitableGroups.length")
-      label.lmo-label Select groups
-      //- v-label Select groups
-      div(v-for="group in invitableGroups" :key="group.id")
-        v-checkbox.invitation-form__select-groups(:class="{'ml-4': !group.isParent()}" v-model="groupIds" :label="group.name" :value="group.id" hide-details)
+      recipients-autocomplete(
+        :label="$t('announcement.form.who_to_invite')"
+        :placeholder="$t('announcement.form.placeholder')"
+        :users="users"
+        :reset="reset"
+        @new-query="newQuery"
+        @new-recipients="newRecipients")
 
-    v-textarea(v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
+      div.mb-4(v-if="invitableGroups.length")
+        label.lmo-label Select groups
+        //- v-label Select groups
+        div(v-for="group in invitableGroups" :key="group.id")
+          v-checkbox.invitation-form__select-groups(:class="{'ml-4': !group.isParent()}" v-model="groupIds" :label="group.name" :value="group.id" hide-details)
 
-    //- a(@click="withMessage = !withMessage")
-    //-   span(v-if="!withMessage") Include an invitation message
-    //-   span(v-if="withMessage") Remove message
+      v-textarea(v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
 
-    v-card-actions
-      v-spacer
-      v-btn(color="primary" :disabled="!recipients.length" @click="inviteRecipients" :loading="saving")
-        span(v-t="'common.action.invite'")
+      //- a(@click="withMessage = !withMessage")
+      //-   span(v-if="!withMessage") Include an invitation message
+      //-   span(v-if="withMessage") Remove message
+
+      v-card-actions
+        v-spacer
+        v-btn(color="primary" :disabled="!recipients.length" @click="inviteRecipients" :loading="saving")
+          span(v-t="'common.action.invite'")
 
 </template>
 <style lang="css">
