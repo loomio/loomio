@@ -647,6 +647,7 @@ en:
     no_notifications_sent: No notifications have been sent
     history_error: Something went wrong! Could not load history.
     inviting_guests_to_thread: Guests do not belong to your group, and have access to this thread only
+    select_groups: Select groups
 
     audiences:
       parent_group: Members of {{name}}

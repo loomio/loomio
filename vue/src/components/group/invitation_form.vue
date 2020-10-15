@@ -27,7 +27,6 @@ export default
     withMessage: false
     subscription: {}
     cannotInvite: false
-    invitationsRemaining: 0
     upgradeUrl: AppConfig.baseUrl + 'upgrade'
 
   mounted: ->
@@ -52,8 +51,6 @@ export default
       query: (records) => @updateSuggestions()
 
     @subscription = @group.parentOrSelf().subscription
-
-    @invitationsRemaining = (@subscription.max_members || 0) - @group.parentOrSelf().orgMembershipsCount
 
     @cannotInvite = !@subscription.active || (@subscription.max_members && @invitationsRemaining < 1)
 
@@ -111,6 +108,10 @@ export default
   computed:
     invitableGroups: ->
       @group.parentOrSelf().selfAndSubgroups().filter (g) -> AbilityService.canAddMembersToGroup(g)
+    tooManyInvitations: ->
+      @subscription.max_members && (@invitationsRemaining < 0)
+    invitationsRemaining: ->
+      (@subscription.max_members || 0) - @group.parentOrSelf().orgMembershipsCount - @recipients.length
 
 
 </script>
@@ -120,6 +121,7 @@ export default
     .d-flex.justify-space-between
       h1.headline(tabindex="-1" v-t="{path: 'announcement.send_group', args: {name: group.name} }")
       dismiss-modal-button
+
     div.py-4(v-if="cannotInvite")
       .announcement-form__invite
         p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: subscription.max_members})")
@@ -133,9 +135,11 @@ export default
         :reset="reset"
         @new-query="newQuery"
         @new-recipients="newRecipients")
-
-      div.mb-4(v-if="invitableGroups.length")
-        label.lmo-label Select groups
+      div(v-if="subscription.max_members")
+        p.caption(v-if="!tooManyInvitations" v-html="$t('announcement.form.invitations_remaining', {count: invitationsRemaining, upgradeUrl: upgradeUrl })")
+        p.caption(v-if="tooManyInvitations" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")
+      div.mb-4(v-if="invitableGroups.length > 1")
+        label.lmo-label(v-t="'announcement.select_groups'")
         //- v-label Select groups
         div(v-for="group in invitableGroups" :key="group.id")
           v-checkbox.invitation-form__select-groups(:class="{'ml-4': !group.isParent()}" v-model="groupIds" :label="group.name" :value="group.id" hide-details)
@@ -148,7 +152,7 @@ export default
 
       v-card-actions
         v-spacer
-        v-btn(color="primary" :disabled="!recipients.length" @click="inviteRecipients" :loading="saving")
+        v-btn(color="primary" :disabled="!recipients.length || tooManyInvitations || groupIds.length == 0" @click="inviteRecipients" :loading="saving")
           span(v-t="'common.action.invite'")
 
 </template>

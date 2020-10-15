@@ -109,7 +109,9 @@ class MembershipService
 
     Stance.joins(:poll).where(
       'polls.group_id': membership.group.id_and_subgroup_ids,
-      participant_id: membership.user_id).update_all(revoked_at: now)
+      participant_id: membership.user_id,
+      cast_at: nil
+    ).update_all(revoked_at: now)
 
     Membership.where(user_id: membership.user_id, group_id: membership.group.id_and_subgroup_ids).destroy_all
 
