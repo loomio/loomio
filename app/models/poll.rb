@@ -371,7 +371,7 @@ class Poll < ApplicationRecord
   end
 
   def discussion_group_is_poll_group
-    if poll.group.present? and poll.discussion.group != poll.group
+    if poll.group.present? and poll.discussion.group.present? and poll.discussion.group != poll.group
       self.errors.add(:group, 'Poll group is not discussion group')
     end
   end
