@@ -25,7 +25,10 @@ export default
     groupIds: [@group.id]
     message: @$t('announcement.form.invitation_message')
     withMessage: false
-
+    subscription: {}
+    cannotInvite: false
+    invitationsRemaining: 0
+    upgradeUrl: AppConfig.baseUrl + 'upgrade'
 
   mounted: ->
     @fetchMemberships = debounce ->
@@ -47,6 +50,12 @@ export default
     @watchRecords
       collections: ['memberships']
       query: (records) => @updateSuggestions()
+
+    @subscription = @group.parentOrSelf().subscription
+
+    @invitationsRemaining = (@subscription.max_members || 0) - @group.parentOrSelf().orgMembershipsCount
+
+    @cannotInvite = !@subscription.active || (@subscription.max_members && @invitationsRemaining < 1)
 
   methods:
     inviteRecipients: ->
@@ -111,10 +120,10 @@ export default
     .d-flex.justify-space-between
       h1.headline(tabindex="-1" v-t="{path: 'announcement.send_group', args: {name: group.name} }")
       dismiss-modal-button
-    div(v-if="invitingToGroup && !canInvite")
+    div.py-4(v-if="cannotInvite")
       .announcement-form__invite
-        p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: maxMembers})")
-        p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
+        p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: subscription.max_members})")
+        p(v-if="!subscription.active" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
     div(v-else)
 
       recipients-autocomplete(
