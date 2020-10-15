@@ -28,6 +28,7 @@ export default
     groups: []
     users: []
     canAnnounce: true
+    subscription: @discussion.group().parentOrSelf().subscription
 
   mounted: ->
     @recipients = @initialRecipients
@@ -46,6 +47,7 @@ export default
       handler: (groupId) ->
         @fetchMemberships()
         @updateSuggestions()
+        @subscription = @discussion.group().parentOrSelf().subscription
         if groupId
           @canAnnounce = !!(@discussion.group().adminsInclude(Session.user()) || @discussion.group().membersCanAnnounce)
           @discussion.notifyGroup = @canAnnounce
@@ -147,7 +149,7 @@ export default
         []
 
     maxThreads: ->
-      @discussion.group().parentOrSelf().subscription.max_threads
+      @subscription.max_threads
 
     threadCount: ->
       @discussion.group().parentOrSelf().orgDiscussionsCount
@@ -156,7 +158,7 @@ export default
       @maxThreads && @threadCount >= @maxThreads
 
     subscriptionActive: ->
-      @discussion.group().parentOrSelf().subscription.active
+      @subscription.active
 
     canStartThread: ->
       @subscriptionActive && !@maxThreadsReached
@@ -185,27 +187,27 @@ export default
   .pa-4
     //- .lmo-hint-text(v-t="'group_page.discussions_placeholder'" v-show='discussion.isNew() && !isMovingItems')
     //- discussion-privacy-badge.mb-2(:discussion="discussion" no-link)
-    .body-1(v-if="showUpgradeMessage")
+    recipients-autocomplete(
+      v-if="discussion.isNew()"
+      :label="$t('discussion_form.to')"
+      :placeholder="$t('announcement.form.discussion_announced.helptext')"
+      :groups="groups"
+      :users="users"
+      :initial-recipients="initialRecipients"
+      @new-query="newQuery"
+      @new-recipients="newRecipients")
+
+    div(v-if="showUpgradeMessage")
       p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
       p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
 
     .discussion-form__group-selected(v-if='!showUpgradeMessage')
-      recipients-autocomplete(
-        v-if="discussion.isNew()"
-        :label="$t('discussion_form.to')"
-        :placeholder="$t('announcement.form.discussion_announced.helptext')"
-        :groups="groups"
-        :users="users"
-        :initial-recipients="initialRecipients"
-        @new-query="newQuery"
-        @new-recipients="newRecipients")
       v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input.text-h5(:label="$t('discussion_form.title_label')" :placeholder="$t('discussion_form.title_placeholder')" v-model='discussion.title' maxlength='255')
       validation-errors(:subject='discussion', field='title')
       lmo-textarea(:model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")
       v-checkbox(:label="$t('discussion_form.notify_group')" v-model="discussion.notifyGroup" :disabled="!canAnnounce")
       .caption(v-if="notificationsCount != 1" v-t="{ path: 'poll_common_notify_group.members_count', args: { count: notificationsCount } }")
       .caption(v-else v-t="'discussion_form.one_person_notified'")
-
 
       v-card-actions
         v-spacer

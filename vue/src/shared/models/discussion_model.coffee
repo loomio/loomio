@@ -38,7 +38,8 @@ export default class DiscussionModel extends BaseModel
     recipientUserIds: []
     recipientEmails: []
     notifyGroup: false
-
+    groupId: null
+    
   audienceValues: ->
     name: @group().name
 
