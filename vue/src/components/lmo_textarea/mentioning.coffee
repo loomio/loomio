@@ -35,7 +35,7 @@ export MdMentioning =
     onKeyUp: (event) ->
       res = @textarea().value.slice(0, @textarea().selectionStart).match(/@(\w+)$/)
       if res
-        @query = res[1]
+        @query = res[1].toLowerCase()
         @fetchMentionable()
         @findMentionable()
         @respondToKey(event)
