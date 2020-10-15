@@ -27,6 +27,7 @@ class Event < ApplicationRecord
     else
       Event.where(discussion_id: e.discussion_id).
             where("id != ?", e.id).
+            where('discussion_id is not null').
             where('position_key like ?', e.position_key+"%").count
     end
   }
