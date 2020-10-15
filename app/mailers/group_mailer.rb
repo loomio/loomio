@@ -1,10 +1,10 @@
 class GroupMailer < BaseMailer
   layout 'invite_people_mailer'
 
-  def group_announced(recipient_id, event_id, membership_id)
+  def group_announced(recipient_id, event_id)
     @recipient = User.find_by!(id: recipient_id)
     @event = Event.find_by!(id: event_id)
-    @membership = Membership.find_by!(id: membership_id)
+    @membership = Membership.find_by!(group_id: @event.eventable_id, user_id: recipient_id)
     @inviter = @event.user || @membership.inviter
 
     send_single_mail to:     @recipient.email,
