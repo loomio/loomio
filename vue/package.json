@@ -24,7 +24,7 @@
     "date-fns-tz": "1.0.12",
     "deepmerge": "^4.2.2",
     "emoji-unicode": "^2.0.1",
-    "es6-shim": "^0.35.5",
+    "es6-shim": "^0.35.6",
     "intersection-observer": "^0.11.0",
     "jstimezonedetect": "~1.0.7",
     "lodash": "latest",
