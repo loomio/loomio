@@ -85,6 +85,8 @@ export default
       switch @$route.query.filter
         when 'admin'
           chain = chain.find(admin: true)
+        when 'accepted'
+          chain = chain.find(acceptedAt: { $ne: null })
         when 'pending'
           chain = chain.find(acceptedAt: null)
 
@@ -162,11 +164,14 @@ export default
           v-btn.members-panel__filters.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)
             span(v-if="$route.query.filter == 'admin'" v-t="'members_panel.order_by_admin_desc'")
             span(v-if="$route.query.filter == 'pending'" v-t="'members_panel.invitations'")
+            span(v-if="$route.query.filter == 'accepted'" v-t="'members_panel.accepted'")
             span(v-if="!$route.query.filter" v-t="'members_panel.everyone'")
             v-icon mdi-menu-down
         v-list(dense)
           v-list-item.members-panel__filters-everyone(:to="mergeQuery({filter: null})")
             v-list-item-title(v-t="'members_panel.everyone'")
+          v-list-item.members-panel__filters-everyone(:to="mergeQuery({filter: 'accepted'})")
+            v-list-item-title(v-t="'members_panel.accepted'")
           v-list-item.members-panel__filters-admins(:to="mergeQuery({filter: 'admin'})")
             v-list-item-title(v-t="'members_panel.order_by_admin_desc'")
           v-list-item.members-panel__filters-invitations(:to="mergeQuery({filter: 'pending'})")

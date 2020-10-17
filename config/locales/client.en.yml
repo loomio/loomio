@@ -1596,6 +1596,7 @@ en:
     last_seen: 'Last seen {{date}}'
     invited_by_name: 'Invited by {{name}}'
     only_in_subgroups: "Not in this group but belongs to {{name}}"
+    accepted: 'Members'
 
   polls_panel:
     new_poll: New poll

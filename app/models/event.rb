@@ -27,6 +27,7 @@ class Event < ApplicationRecord
     else
       Event.where(discussion_id: e.discussion_id).
             where("id != ?", e.id).
+            where('discussion_id is not null').
             where('position_key like ?', e.position_key+"%").count
     end
   }
@@ -173,6 +174,7 @@ class Event < ApplicationRecord
   end
 
   def reset_sequence_id_counter
+    return unless self.discussion_id
     val = (Event.where(discussion_id: discussion_id).order("sequence_id DESC").limit(1).pluck(:sequence_id).first || 0)
     discussion.sequence_id_counter.reset(val)
   end
