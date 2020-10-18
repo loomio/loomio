@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_17_022446) do
+ActiveRecord::Schema.define(version: 2020_10_18_213302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -324,6 +324,7 @@ ActiveRecord::Schema.define(version: 2020_09_17_022446) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "desired_feature"
+    t.string "category2"
     t.index ["group_id"], name: "index_group_surveys_on_group_id"
   end
 
