@@ -15,7 +15,13 @@ class DiscussionService
 
     EventBus.broadcast('discussion_create', discussion, actor)
     created_event = Events::NewDiscussion.publish!(discussion)
-    AnnounceDiscussionWorker.perform_async(discussion.id, actor.id, {user_ids: params[:recipient_user_ids], emails: params[:recipient_emails] })
+
+    AnnounceDiscussionWorker.perform_async(discussion.id, actor.id, {
+      user_ids: params[:recipient_user_ids],
+      emails: params[:recipient_emails],
+      notify_group: params[:notify_group]
+    })
+
     created_event
   end
 
@@ -25,11 +31,7 @@ class DiscussionService
     emails = Array(params[:emails])
     user_ids = Array(params[:user_ids]).map(&:to_i)
 
-    if (emails.length + user_ids.length) == 0
-      users = discussion.group.accepted_members
-    else
-      users = UserInviter.where_or_create!(inviter: actor, emails: emails, user_ids: user_ids)
-    end
+    users = UserInviter.where_or_create!(inviter: actor, emails: emails, user_ids: user_ids)
 
     volumes = {}
     Membership.where(group_id: discussion.group_id,
@@ -48,7 +50,7 @@ class DiscussionService
 
     discussion_readers = DiscussionReader.where(user_id: users.pluck(:id), discussion_id: discussion.id)
 
-    Events::DiscussionAnnounced.publish!(discussion, actor, discussion_readers)
+    Events::DiscussionAnnounced.publish!(discussion, actor, discussion_readers, params[:notify_group])
     discussion.update_members_count
     MessageChannelService.publish_models(discussion, group_id: discussion.group_id)
     discussion_readers

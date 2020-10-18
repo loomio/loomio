@@ -94,4 +94,13 @@ module Null::Group
   def id_and_subgroup_ids
     []
   end
+
+  def subscription
+    {
+      max_members:     nil,
+      max_threads:     nil,
+      active:          true,
+      members_count:   0
+    }
+  end
 end

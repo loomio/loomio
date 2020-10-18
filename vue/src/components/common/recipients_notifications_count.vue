@@ -9,7 +9,7 @@ export default
 
     notificationsCount: ->
       if @notifyingWholeGroup
-        @recipients[0].group.activeMembershipsCount
+        @recipients[0].group.acceptedMembershipsCount
       else
         @recipients.filter((r) -> r.type != 'group').length
 

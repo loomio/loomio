@@ -621,6 +621,9 @@ en:
     privacy_private: 'The thread will only be visible to members of {{group}}.'
     privacy_organisation: 'The thread will be visible to members of {{parent}} and members of {{group}}.'
     fork_notice: 'A new thread will be created with {{count}} items from {{title}}'
+    one_person_notified: 1 person will be notified
+    notify_group: Notify group
+
 
   announcement:
     send_discussion: Send thread
@@ -644,6 +647,7 @@ en:
     no_notifications_sent: No notifications have been sent
     history_error: Something went wrong! Could not load history.
     inviting_guests_to_thread: Guests do not belong to your group, and have access to this thread only
+    select_groups: Select groups
 
     audiences:
       parent_group: Members of {{name}}
@@ -661,7 +665,10 @@ en:
         <p>Next step, <a href="{{upgradeUrl}}" target="_blank">choose a plan</a> to continue collaborating on Loomio.</p>
 
       invitations_remaining: '{{count}} invitations remaining. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>'
-
+      who_to_invite: Who would you like to invite?
+      invitation_message: Come join us in our Loomio group where we have discussions and make decisions together.
+      invitation_message_placeholder: Include a custom message in your invitation
+      invitation_message_label: Message
       group_announced:
         title: Invite to group
         helptext: Who would you like to invite to the group?
@@ -1595,7 +1602,7 @@ en:
     sharable_link: 'Shareable Link'
     last_seen: 'Last seen {{date}}'
     invited_by_name: 'Invited by {{name}}'
-    only_in_subgroups: "Not in this group but belongs to {{name}}"
+    only_in_subgroups: "Not in this group but belongs to {{name}}."
     accepted: 'Members'
 
   polls_panel:

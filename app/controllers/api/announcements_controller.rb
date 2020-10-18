@@ -3,7 +3,7 @@ class API::AnnouncementsController < API::RestfulController
 
   def audience
     self.collection = service.audience_for(target_model, params.require(:kind), current_user)
-    
+
     if params[:without_exising]
       self.collection = collection.where.not(id: target_model.existing_member_ids)
     end
@@ -23,6 +23,7 @@ class API::AnnouncementsController < API::RestfulController
       params[:emails] = params.dig(:announcement, :recipients, :emails)
       params[:user_ids] = params.dig(:announcement, :recipients, :user_ids)
       params[:invited_group_ids] = params.dig(:announcement, :invited_group_ids)
+      params[:message] = params.dig(:announcement, :message)
     end
 
     if target_model.is_a?(Group)

@@ -26,10 +26,9 @@ class DiscussionReader < ApplicationRecord
 
   def self.for(user:, discussion:)
     if user&.is_logged_in?
-      begin
-        find_or_create_by(user: user, discussion: discussion)
-      rescue ActiveRecord::RecordNotUnique
-        retry
+      find_or_create_by!(user: user, discussion: discussion) do |dr|
+        m = user.memberships.find_by(group_id: discussion.group_id)
+        dr.volume = (m && m.volume) || 'normal'
       end
     else
       new(discussion: discussion)

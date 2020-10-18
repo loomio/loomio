@@ -13,8 +13,8 @@ export audiencesFor = (model) ->
 
 export audienceSize = (model, audience) ->
   switch audience
-    when 'parent_group' then model.group().parent().activeMembershipsCount
-    when 'group' then model.group().activeMembershipsCount
+    when 'parent_group' then model.group().parent().acceptedMembershipsCount
+    when 'group' then model.group().acceptedMembershipsCount
     when 'discussion_group' then model.discussion().membersCount
     when 'voters' then model.poll().participantsCount
     when 'undecided' then model.poll().undecidedCount

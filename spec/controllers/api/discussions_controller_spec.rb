@@ -53,6 +53,40 @@ describe API::DiscussionsController do
       expect(d.members).to include another_user
     end
 
+    it 'create discussion in group with no notifications' do
+      post :create, params: {
+        discussion: {
+          title: 'test',
+          group_id: group.id
+        }
+      }
+      json = JSON.parse response.body
+      expect(response.status).to eq 200
+      d = Discussion.find(json['discussions'][0]['id'])
+      expect(d.discussion_readers.count).to eq 1
+      expect(d.discussion_readers.first.user_id).to eq user.id
+      e = Event.find_by(eventable_id: d.id, eventable_type: 'Discussion', kind: 'discussion_announced')
+      expect(e.notifications.count).to eq 0
+    end
+
+    it 'create discussion and notify group' do
+      expect(group.members.count).to eq 2
+      post :create, params: {
+        discussion: {
+          title: 'test',
+          group_id: group.id,
+          notify_group: true
+        }
+      }
+      json = JSON.parse response.body
+      expect(response.status).to eq 200
+      d = Discussion.find(json['discussions'][0]['id'])
+      expect(d.discussion_readers.count).to eq 1
+      expect(d.discussion_readers.first.user_id).to eq user.id
+      e = Event.find_by(eventable_id: d.id, eventable_type: 'Discussion', kind: 'discussion_announced')
+      expect(e.notifications.count).to eq 1
+    end
+
     it 'create discussion without group' do
       post :create, params: {
         discussion: {

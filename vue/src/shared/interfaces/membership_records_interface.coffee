@@ -27,11 +27,6 @@ export default class MemberhipRecordsInterface extends BaseRecordsInterface
       path: 'autocomplete'
       params: { q: fragment, group_key: groupKey, per: limit }
 
-  fetchInvitables: (fragment, groupKey, limit = 5) ->
-    @fetch
-      path: 'invitables'
-      params: { q: fragment, group_key: groupKey, per: limit }
-
   fetchByGroup: (groupKey, options = {}) ->
     @fetch
       params:

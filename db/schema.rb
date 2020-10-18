@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_09_024231) do
+ActiveRecord::Schema.define(version: 2020_10_13_023304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -176,7 +176,7 @@ ActiveRecord::Schema.define(version: 2020_10_09_024231) do
     t.integer "discussion_id", null: false
     t.datetime "last_read_at"
     t.integer "last_read_sequence_id", default: 0, null: false
-    t.integer "volume"
+    t.integer "volume", default: 2, null: false
     t.boolean "participating", default: false, null: false
     t.datetime "dismissed_at"
     t.string "read_ranges_string"

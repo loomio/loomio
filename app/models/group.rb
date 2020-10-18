@@ -106,7 +106,6 @@ class Group < ApplicationRecord
   define_counter_cache(:polls_count)               { |g| g.polls.count }
   define_counter_cache(:closed_polls_count)        { |g| g.polls.closed.count }
   define_counter_cache(:memberships_count)         { |g| g.memberships.count }
-  define_counter_cache(:announceable_members_count){ |g| g.memberships.where("volume >= ?", Membership.volumes[:normal]).count }
   define_counter_cache(:pending_memberships_count) { |g| g.memberships.pending.count }
   define_counter_cache(:admin_memberships_count)   { |g| g.admin_memberships.count }
   define_counter_cache(:public_discussions_count)  { |g| g.discussions.visible_to_public.count }
@@ -154,7 +153,7 @@ class Group < ApplicationRecord
     nil
   end
 
-  def active_memberships_count
+  def accepted_memberships_count
     memberships_count - pending_memberships_count
   end
 

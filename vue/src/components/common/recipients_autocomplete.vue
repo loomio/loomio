@@ -12,15 +12,16 @@ export default
 
   props:
     autofocus: Boolean
-    group: Object
-    excludedUserIds: Array
     label: String
     placeholder: String
     reset: Boolean
     initialRecipients:
       type: Array
       default: -> []
-    availableGroups:
+    groups:
+      type: Array
+      default: -> []
+    users:
       type: Array
       default: -> []
 
@@ -31,28 +32,7 @@ export default
     emailAddresses: []
     loading: false
 
-  mounted: ->
-    @fetchMemberships = debounce ->
-      return unless @query
-      @loading = true
-      Records.memberships.fetch
-        path: 'autocomplete'
-        params:
-          exclude_types: 'group'
-          q: @query
-          group_id: @group.id
-          per: 50
-      .finally =>
-        @loading = false
-    , 300
-
-    @watchRecords
-      collections: ['memberships']
-      query: (records) => @updateSearchResults()
-
   watch:
-    group: ->
-      @fetchMemberships()
 
     reset: ->
       @query = ''
@@ -60,7 +40,10 @@ export default
       @emailAddresses = []
       @updateSearchResults()
 
-    availableGroups: ->
+    groups: ->
+      @updateSearchResults()
+
+    users: ->
       @updateSearchResults()
 
     recipients: (val) ->
@@ -68,16 +51,14 @@ export default
 
     query: (q) ->
       @$emit('new-query', q)
-      @search(q)
+      @findEmailAddresses(q)
       @updateSearchResults()
 
   methods:
-    search: ->
+    findEmailAddresses: ->
       return unless @query
 
       @emailAddresses = uniq(@query.match(/[^\s:,;'"`<>]+?@[^\s:,;'"`<>]+\.[^\s:,;'"`<>]+/g) || [])
-
-      @fetchMemberships() if @emailAddresses.length == 0
 
       # catch paste of multiple email addresses, or failure to press enter after an email address
       if @emailAddresses.length > 1 or (@emailAddresses.length == 1 && [',', ' '].includes(@query.slice(-1)))
@@ -100,43 +81,17 @@ export default
           name: e
         return
 
-
-      memberChain = Records.users.collection.chain()
-
-      if @group
-        memberChain = memberChain.find(id: {$in: @group.memberIds()})
-
-      memberChain = memberChain.find(id: {$nin: @excludedUserIds})
-
-      if @query
-        memberChain = memberChain.find
-          $or: [
-            {name: {'$regex': ["^#{@query}", "i"]}}
-            {username: {'$regex': ["^#{@query}", "i"]}}
-            {name: {'$regex': [" #{@query}", "i"]}}
-          ]
-
-      members = memberChain.data().map (u) ->
+      members = @users.map (u) ->
         id: u.id
         type: 'user'
         name: u.name
         user: u
 
-      groups = []
-      if @availableGroups.length
-        # console.log map(@availableGroups, 'id')
-        groupChain = Records.groups.collection.chain().
-                     find(id: {$in: map(@availableGroups, 'id')}).
-                     simplesort('openDiscussionsCount', true)
-
-        if @query
-          groupChain = groupChain.find(name: {'$regex': ["^#{@query}", 'i']})
-
-        groups = groupChain.data().map (g) ->
-          id: g.id
-          type: 'group'
-          name: g.name
-          group: g
+      groups = @groups.map (g) ->
+        id: g.id
+        type: 'group'
+        name: g.name
+        group: g
 
       @searchResults = @recipients.concat(groups).concat(members)
 
@@ -174,5 +129,5 @@ div
         user-avatar(v-if="data.item.type == 'user'" :user="data.item.user" size="small" no-link)
       v-list-item-content.announcement-chip__content
         v-list-item-title(v-html='data.item.name')
-  recipients-notifications-count(:recipients="recipients")
+  //- recipients-notifications-count(:recipients="recipients")
 </template>
