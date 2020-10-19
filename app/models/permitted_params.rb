@@ -127,6 +127,6 @@ class PermittedParams < Struct.new(:params)
   end
 
   def group_survey_attributes
-    [:group_id, :declaration, :category, :location, :size, :purpose, :referrer, :role, :website, :misc, :usage, :desired_feature]
+    [:group_id, :declaration, :category, :segment, :location, :size, :purpose, :referrer, :role, :website, :misc, :usage, :desired_feature]
   end
 end

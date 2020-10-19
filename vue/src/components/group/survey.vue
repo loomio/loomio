@@ -62,9 +62,10 @@ v-card.group-survey
   v-card-text
     p.body-1.mt-4(v-t="'group_survey.subtitle'")
     v-form(ref="form")
+      | {{survey}}
       v-text-field.group-survey__location(v-model='survey.location' :label="$t('group_survey.location')" :rules="[rules.required]")
 
-      v-radio-group.group-survey__category(v-model='survey.category' :label="$t('group_survey.category_question')" :rules="[rules.required]")
+      v-radio-group.group-survey__category(v-model='survey.segment' :label="$t('group_survey.category_question')" :rules="[rules.required]")
         v-radio(v-for='category in categories' :key='category' :value='category' :aria-label='category' :label="$t('group_survey.categories.' + category)" :class="'group-survey__category-' + category")
 
       v-radio-group.group-survey__desired-feature(v-model='survey.desiredFeature' :label="$t('group_survey.desired_feature')" :rules="[rules.required]")
