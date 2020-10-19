@@ -62,7 +62,7 @@ v-card.group-survey
   v-card-text
     p.body-1.mt-4(v-t="'group_survey.subtitle'")
     v-form(ref="form")
-      | {{survey}}
+
       v-text-field.group-survey__location(v-model='survey.location' :label="$t('group_survey.location')" :rules="[rules.required]")
 
       v-radio-group.group-survey__category(v-model='survey.segment' :label="$t('group_survey.category_question')" :rules="[rules.required]")
