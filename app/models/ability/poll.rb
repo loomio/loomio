@@ -9,9 +9,11 @@ module Ability::Poll
     can :vote_in, ::Poll do |poll|
       user.is_logged_in? &&
       poll.active? &&
-      poll.anyone_can_participate? ||
-      poll.voters.exists?(user.id) ||
-      (!poll.specified_voters_only && poll.members.exists?(user.id))
+      (
+        poll.anyone_can_participate? ||
+        poll.voters.exists?(user.id) ||
+        (!poll.specified_voters_only && poll.members.exists?(user.id))
+      )
     end
 
     can [:show, :toggle_subscription, :subscribe_to, :export], ::Poll do |poll|
