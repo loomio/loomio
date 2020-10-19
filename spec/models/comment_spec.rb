@@ -67,8 +67,8 @@ describe Comment do
     context "user mentions a member of another group they belong to" do
       let(:comment) { create :comment, author: user, discussion: @discussion, body: "@#{@another_member.username}" }
 
-      it "returns the mentioned user" do
-        comment.mentioned_users.should include(@another_member)
+      it "should not return the mentioned user" do
+        comment.mentioned_users.should_not include(@another_member)
       end
     end
 
