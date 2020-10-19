@@ -24,10 +24,9 @@ class Event < ApplicationRecord
   define_counter_cache(:descendant_count) { |e|
     if e.kind == "new_discussion"
       Event.where(discussion_id: e.eventable_id).count
-    else
+    elsif e.position_key && e.discussion_id
       Event.where(discussion_id: e.discussion_id).
             where("id != ?", e.id).
-            where('discussion_id is not null').
             where('position_key like ?', e.position_key+"%").count
     end
   }
