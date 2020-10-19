@@ -127,7 +127,6 @@ export default
         p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: subscription.max_members})")
         p(v-if="!subscription.active" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
     div(v-else)
-
       recipients-autocomplete(
         :label="$t('announcement.form.who_to_invite')"
         :placeholder="$t('announcement.form.placeholder')"
@@ -152,7 +151,7 @@ export default
 
       v-card-actions
         v-spacer
-        v-btn(color="primary" :disabled="!recipients.length || tooManyInvitations || groupIds.length == 0" @click="inviteRecipients" :loading="saving")
+        v-btn.announcement-form__submit(color="primary" :disabled="!recipients.length || tooManyInvitations || groupIds.length == 0" @click="inviteRecipients" :loading="saving")
           span(v-t="'common.action.invite'")
 
 </template>
