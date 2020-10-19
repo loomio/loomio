@@ -15,19 +15,11 @@ export default
     submitting: false
     survey: null
     categories: [
-      'business'
-      'bcorp'
-      'cooperative'
-      'consultant'
-      'government'
+      'member'
       'nonprofit'
-      'union'
-      'party'
-      'activist'
-      'community'
-      'education'
-      'faith'
-      'volunteer'
+      'professional'
+      'board'
+      'government'
       'other'
     ]
     sizes: ['ten', 'twenty', 'fifty', 'two_hundred', 'five_hundred', 'two_thousand', 'else']
