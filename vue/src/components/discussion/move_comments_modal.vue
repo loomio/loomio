@@ -24,6 +24,7 @@ export default
     Records.discussions.fetch
       path: 'dashboard'
       params:
+        exclude_types: 'user group poll'
         per: 50
     .then => @getSuggestions()
 
