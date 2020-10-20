@@ -190,6 +190,8 @@ de:
       update: 'Aktualisieren'
       cancel: 'Abbrechen'
       show_more: "Mehr anzeigen"
+      count_more: "{{count}} weitere"
+      count_responses: "{{count}} Antworten"
       view_all: "Alles anzeigen"
       new_thread: "Neue Diskussion"
       add_subgroup: 'Neue Untergruppe'
@@ -236,7 +238,7 @@ de:
     search: Suchen
     common: 'Oft verwendet '
     hands: Hände
-    people: Gesichter und Personen
+    people: Menschen
     nature: Natur
     objects: Dinge
     places: Orte
@@ -1260,6 +1262,7 @@ de:
       success: Diskussion wurde nach {{name}} verschoben
   delete_comment_dialog:
     title: 'Kommentar löschen'
+    question: 'Bist du sicher, dass du dieses Kommentar löschen möchtest?'
     confirm: 'Kommentar löschen'
   contact_message_form:
     title: "Hey! Wie können wir dir helfen?"
@@ -1394,6 +1397,7 @@ de:
     sharable_link: 'Teilbarer link'
     last_seen: 'Zuletzt gesehen am {{date}}'
     invited_by_name: 'Eingeladen von {{name}}'
+    accepted: 'Mitglieder'
   polls_panel:
     new_poll: Neue Umfrage
     any_type: 'Alle Typen'
@@ -1839,19 +1843,7 @@ de:
     validation_error: Bitte fülle alle notwendigen Felder aus.
     success: Danke schön!
     categories:
-      business: Business
-      bcorp: B-Corp oder Social enterprise
-      cooperative: Genossenschaft
-      consultant: Berater oder Agentur
       government: Regierung/Örtliche Regierung
-      nonprofit: Non-Profit-Organisation
-      union: Gewerkschaft
-      party: Politische Partei
-      activist: Aktivistorganisation
-      community: Gemeinschaft oder Kollektiv
-      education: Bildung oder Lehre
-      faith: Religiöse oder spirituelle Gemeinschaft
-      volunteer: Gemeinnützige Organisation
       other: Andere
     sizes:
       ten: "< 10"

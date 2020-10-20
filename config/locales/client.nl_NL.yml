@@ -1463,6 +1463,7 @@ nl_NL:
     sharable_link: 'Deelbare link'
     last_seen: 'Laats gezien {{date}}'
     invited_by_name: 'Uitgenodigd door {{name}}'
+    accepted: 'Leden'
   polls_panel:
     new_poll: Nieuwe peiling
     any_type: 'Alle types'
@@ -1979,19 +1980,7 @@ nl_NL:
     validation_error: Vul alsjeblieft alle verplichte velden in.
     success: Bedankt!
     categories:
-      business: Zakelijk
-      bcorp: B-Corp of sociale onderneming
-      cooperative: Coöperatie
-      consultant: Consultancy diensten
       government: Overheid/lokale overheid
-      nonprofit: Nonprofit
-      union: Vakbond
-      party: Politieke partij
-      activist: Activistische organisatie
-      community: Community of collectief
-      education: Opleiding of onderzoek
-      faith: Geloof of spirituele groep
-      volunteer: Vrijwilligersorganisatie
       other: Andere
     sizes:
       ten: "< 10"
@@ -2032,5 +2021,4 @@ nl_NL:
     role: "Wat is jouw rol in de groep?"
     website: "Website URL"
     usage: "Hoe ga je Loomio gebruiken? Kies wat het beste past"
-    desired_feature: "Wat is het meest belangrijke waar je Loomio voor wil gebruiken?"
     referrer: "Hoe heb je van Loomio eerst gehoord?"

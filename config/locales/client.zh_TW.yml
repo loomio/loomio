@@ -195,6 +195,11 @@ zh_TW:
       update: '更新'
       cancel: '取消'
       show_more: "顯示詳細內容"
+      show_fewer: "顯示較少"
+      view_count_more: "再檢視 {{count}} 個"
+      view_count_responses: "檢視 {{count}} 個回應"
+      count_more: "{{count}} 更多"
+      count_responses: "{{count}} 個回應"
       view_all: "檢視所有"
       new_thread: "新討論串"
       add_subgroup: '新的子群組'
@@ -240,8 +245,9 @@ zh_TW:
   emoji_picker:
     search: 搜尋
     common: 經常使用
+    expressions: 臉
     hands: 手
-    people: 臉與人
+    people: 夥伴
     nature: 自然
     objects: 事物
     places: 地方
@@ -426,6 +432,14 @@ zh_TW:
       threads_list: '討論串動作'
       groups_list: '群組'
       user_list: '使用者動作'
+  strand_nav:
+    newest_first: 最後活動
+    oldest_first: 討論串開始
+    all_pinned: 所有釘選的項目
+    whole_thread: 整個討論串
+    from_comment: 從留言 URL
+    from_sequence_id: 從討論串項目 URL
+    unread: 對您來說是新的
   navbar:
     search_all_threads: 搜尋所有討論串
     search_threads: '在 {{name}} 中搜尋討論串'
@@ -693,10 +707,17 @@ zh_TW:
     heading1: 標題 1
     heading2: 標題 2
     heading3: 標題 3
+    left_align: 向左對齊
+    center_align: 置中對齊
+    right_align: 向右對齊
+    justify_align: 兩端對齊
     paragraph: 段落
     bullet_list: 清單
     number_list: 編號清單
     check_list: 清單
+    reset: 重設
+    text_color: 文字色彩
+    background_color: 背景色彩
     quote: 引用
     embed: 嵌入影片
     divider: 分配者
@@ -1302,11 +1323,8 @@ zh_TW:
       success: 討論串已被移動到 {{name}}
   delete_comment_dialog:
     title: '刪除意見'
-    question: '您確定您想要刪除此留言？（此動作無法復原）'
+    question: '您確定要刪除這個意見嗎？'
     confirm: '刪除意見'
-  discard_comment_dialog:
-    title: '移除留言'
-    question: '您確定您想要移除此留言？（此動作無法在稍後復原）'
   contact_message_form:
     title: "嗨，您好！我們可以怎麼協助您？"
     read_the_manual: |
@@ -1446,6 +1464,7 @@ zh_TW:
     sharable_link: '可分享的連結'
     last_seen: '最後檢視 {{date}}'
     invited_by_name: '被 {{name}} 邀請'
+    accepted: '成員 ({{count}})'
   polls_panel:
     new_poll: 新投票
     any_type: '所有類型'
@@ -1468,6 +1487,7 @@ zh_TW:
     anonymous: 匿名投票
     results_hidden_until_closed: 結果會一直隱藏到 %{poll_type} 關閉
     unable_to_vote: 您沒有在此決策中投票的權限。
+    draft_mode: 此 %{poll_type} 正在進行。投票已停用。
   current_polls_card:
     title: 目前的決策
     start_poll: 新決策
@@ -1538,8 +1558,13 @@ zh_TW:
   poll_common_move_form:
     title: "移動 {{poll_type}}"
     success: "{{poll_type}} 已移動至 {{group}}"
+  poll_common_wip_field:
+    title: 正在進行
+    helptext: '使用「正在進行」以在投票前於 %{poll_type} 上協作'
   poll_common_closing_at_field:
     closing: 關閉
+    no_closing_date: 無關閉日期
+    closing_date: 關閉日期
     closing_hour: 關閉時間
     invalid_date: 無效日期
   poll_card:
@@ -1596,6 +1621,7 @@ zh_TW:
     closed: 封閉
     start: 啟動
     start_poll_type: 開始 {{poll_type}}
+    share_poll_type: 分享 {{poll_type}}
     update: 更新
     reminder_note: 關閉前 24 小時，將向所有參與者發送提醒
     loomio_school_link: |
@@ -1955,19 +1981,11 @@ zh_TW:
     validation_error: 請填寫所有必填欄位。
     success: 感謝您！
     categories:
-      business: 商務
-      bcorp: B-Corp 或社會企業
-      cooperative: 合作社
-      consultant: 顧問服務或代理
+      member: 會員服務組織（政黨、合作社、公會）
+      nonprofit: 非營利組織、非政府組織與社群群組
+      professional: 專業服務團隊與公司
+      board: 董事會與委員會
       government: 政府／地方政府
-      nonprofit: 非營利組織
-      union: 聯盟
-      party: 政黨
-      activist: 活動家組織
-      community: 社群或共同體
-      education: 教育或研究
-      faith: 信仰或靈修團體
-      volunteer: 志工組織
       other: 其他
     sizes:
       ten: "< 10"
@@ -2008,5 +2026,5 @@ zh_TW:
     role: "您在群組中的角色是什麼？"
     website: "網站 URL"
     usage: "您打算如何使用 Loomio？選擇最適合您的"
-    desired_feature: "您使用 Loomio 第一件想做的事情是什麼？"
+    desired_feature: "您使用 Loomio 的主要目的是什麼？"
     referrer: "您是如何得知 Loomio 的？"

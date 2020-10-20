@@ -268,6 +268,10 @@ es:
     reply_or_view_online_html: Responde a este correo electrónico directamente o <a href='%{url}'>velo en %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Desactivar emails </a> para esta discusión."
     change_email_preferences_html: "Cambia tus <a href='%{email_preferences_url}'>preferencias de email </a>"
+    unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Darse de baja</a>de otros anuncios en este hilo."
+    unsubscribe_from_new_comment_html: "<a href='%{url}'>Darse de baja</a>de comentarios en este hilo"
+    unsubscribe_from_comment_replied_to_html: "Esto es una notificación de respuesta."
+    unsubscribe_from_user_mentioned_html: "Esto es una notificación de mención."
     discussion_closed: "%{actor} cerró la discusión"
   footer:
     about: Sobre Loomio
@@ -419,6 +423,7 @@ es:
       poll_created: '%{actor}comenzó en %{poll_type}:%{title}'
       poll_edited: '%{actor}editado el%{poll_type}:%{title}'
       poll_announced: '%{actor}te invitó a votar en un %{poll_type}:%{title}'
+      poll_announced_wip: '%{actor}ha compartido un trabajo en proceso%{poll_type}:%{title}'
       poll_closing_soon: '%{poll_type}cierra en 24 horas:%{title}'
       poll_closing_soon_author: 'Tu %{poll_type}cierra en 24 horas:%{title}'
       poll_expired: "%{poll_type}ha cerrado:%{title}"
@@ -436,6 +441,7 @@ es:
       poll_created: '<strong>%{actor}</strong>comenzó un %{poll_type}'
       poll_edited: '<strong>%{actor}</strong>editado un%{poll_type}'
       poll_announced: '<strong>%{actor}</strong>te invitó a votar en un %{poll_type}'
+      poll_announced_wip: '<strong>%{actor}</strong>ha compartido un trabajo en proceso%{poll_type}'
       poll_closing_soon: '<strong>%{actor}</strong>''s%{poll_type} cerrará en 24 horas. Ahora es una buena oportunidad para votar, cambiar de opinión o animar a otros para que participen.'
       poll_closing_soon_author: 'Tu %{poll_type}cerrará en 24 horas - ahora es una oportunidad estupenda para recordar a la gente de esto o prolongar la fecha límite si fuera necesario.'
       poll_expired: "<strong>%{actor}'s</strong>%{poll_type} ha cerrado:%{title}"

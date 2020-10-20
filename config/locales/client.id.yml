@@ -101,6 +101,7 @@ id:
   members_panel:
     order_by_name: 'Nama'
     header_name: 'Nama'
+    accepted: 'Anggota'
   polls_panel:
     closed: 'Ditutup'
   poll_common_form:

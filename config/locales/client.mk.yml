@@ -113,6 +113,7 @@ mk:
   members_panel:
     order_by_name: 'Име'
     header_name: 'Име'
+    accepted: 'Членови'
   polls_panel:
     closed: 'Затворено'
   poll_common_form:
@@ -126,7 +127,6 @@ mk:
     name_label: Име
   group_survey:
     categories:
-      business: Бизнис
       other: Друго
     uses:
       other: Друго

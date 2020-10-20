@@ -385,6 +385,7 @@ sl:
     header_name: 'Ime'
     header_username: 'Uporabniško ime'
     invitations: 'Povabila'
+    accepted: 'Člani'
   polls_panel:
     all: 'Vse'
     closed: 'Zaprto'
@@ -404,7 +405,6 @@ sl:
     name_label: Ime
   group_survey:
     categories:
-      business: Podjetništvo
       other: Drugo
     uses:
       other: Drugo

@@ -233,7 +233,6 @@ tr:
     search: Arama
     common: Sıklıkla kullanılan
     hands: Eller
-    people: Yüzler ve insanlar
     nature: Doğa
     objects: Eşyalar
     places: Mekanlar
@@ -661,6 +660,7 @@ tr:
       success: 'Müzakere {{name}} grubuna taşındı '
   delete_comment_dialog:
     title: 'Yorumu sil'
+    question: 'Bu yorumu silmek istediğinden emin misin?'
     confirm: 'Yorumu sil'
   contact_message_form:
     contact_us: 'Bizimle iletişime geçin'
@@ -698,6 +698,7 @@ tr:
     order_by_name: 'İsim'
     header_name: 'İsim'
     header_username: 'Kullanıcı adı'
+    accepted: 'Üyeler'
   polls_panel:
     all: 'Hepsi'
     open: 'Açık'
@@ -723,7 +724,6 @@ tr:
     name_label: İsim
   group_survey:
     categories:
-      business: İş hayatı
       other: Diğer
     uses:
       other: Diğer

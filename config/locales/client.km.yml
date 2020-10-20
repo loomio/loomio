@@ -99,6 +99,7 @@ km:
   members_panel:
     order_by_name: 'ឈ្មោះ'
     header_name: 'ឈ្មោះ'
+    accepted: 'សមាជិក'
   polls_panel:
     closed: 'បានបិទ'
   poll_common_form:

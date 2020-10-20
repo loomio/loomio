@@ -98,6 +98,7 @@ vi:
     everyone: 'Mọi người'
     order_by_name: 'Tên'
     header_name: 'Tên'
+    accepted: 'Thành viên'
   polls_panel:
     closed: 'Đã đóng lại'
   poll_common_form:

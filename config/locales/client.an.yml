@@ -134,6 +134,7 @@ an:
     order_by_name: 'Nombre'
     header_name: 'Nombre'
     header_username: 'Nombre d''usuario'
+    accepted: 'Miembros'
   polls_panel:
     all: 'Totz/as'
     closed: 'Zarrau'
@@ -148,7 +149,6 @@ an:
     name_label: Nombre
   group_survey:
     categories:
-      business: Negocios
       other: Unatro
     uses:
       other: Unatro

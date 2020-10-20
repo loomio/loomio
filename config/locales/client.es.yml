@@ -195,6 +195,11 @@ es:
       update: 'Actualizar '
       cancel: 'Cancelar'
       show_more: "Mostrar más"
+      show_fewer: "Mostrar menos"
+      view_count_more: "Ver {{count}} mas"
+      view_count_responses: "Ver {{count}} respuestas"
+      count_more: "{{count}}  más"
+      count_responses: "{{count}} respuestas"
       view_all: "Mostrar todo"
       new_thread: "Nuevo hilo"
       add_subgroup: 'Nuevo subgrupo'
@@ -240,8 +245,9 @@ es:
   emoji_picker:
     search: Buscar
     common: Usado con frecuencia
+    expressions: Rostros
     hands: Manos
-    people: Caras y gente
+    people: Personas
     nature: Naturaleza
     objects: Cosas
     places: Lugares
@@ -426,6 +432,14 @@ es:
       threads_list: 'Acciones del hilo'
       groups_list: 'Grupos'
       user_list: 'Acciones de usuario'
+  strand_nav:
+    newest_first: Última actividad
+    oldest_first: Principio del hilo
+    all_pinned: Todos elementos anclados
+    whole_thread: Todo el hilo
+    from_comment: Desde un comentario url
+    from_sequence_id: Desde un elemento hilo url
+    unread: Nuevo para ti
   navbar:
     search_all_threads: Busca todos los hilos
     search_threads: 'Busca todos los hilos {{name}}'
@@ -1308,11 +1322,8 @@ es:
       success: El hilo ha sido movido a {{name}}
   delete_comment_dialog:
     title: 'Borrar comentario'
-    question: '¿Estás seguro de que quieres borrar este comentario? (Esto no se puede deshacer)'
+    question: '¿Estás seguro de que quieres borrar este comentario?'
     confirm: 'Borrar comentario'
-  discard_comment_dialog:
-    title: 'Eliminar comentario'
-    question: '¿Estás seguro de que quieres eliminar este comentario? (esto se puede deshacer más tarde)'
   contact_message_form:
     title: "¡Hola! ¿Cómo podemos ayudarle?"
     read_the_manual: |
@@ -1452,6 +1463,7 @@ es:
     sharable_link: 'Enlace compartible'
     last_seen: 'Último visto {{date}}'
     invited_by_name: 'Invitado por {{name}}'
+    accepted: 'Integrantes'
   polls_panel:
     new_poll: Nuevo sondeo
     any_type: 'Todos los tipos'
@@ -1474,6 +1486,7 @@ es:
     anonymous: Los votos son anónimos
     results_hidden_until_closed: Los resultados se esconden hasta que el %{poll_type} ha cerrado
     unable_to_vote: No tienes permiso para votar en esta desición
+    draft_mode: Este%{poll_type}es un trabajo en proceso. El voto está deshabilitado.
   current_polls_card:
     title: Decisiones actuales
     start_poll: 'Nueva decisión  '
@@ -1544,8 +1557,13 @@ es:
   poll_common_move_form:
     title: "Mover {{poll_type}}"
     success: "{{poll_type}} se ha movido a {{group}}"
+  poll_common_wip_field:
+    title: Trabajo en proceso
+    helptext: 'Usar "Trabajo en progreso" para colaborar en el %{poll_type}antes de votar'
   poll_common_closing_at_field:
     closing: Cerrando
+    no_closing_date: Sin fecha de cierre
+    closing_date: Fecha de cierre
     closing_hour: Hora de clausura
     invalid_date: Fecha inválida
   poll_card:
@@ -1602,6 +1620,7 @@ es:
     closed: 'Cerrado '
     start: Iniciar
     start_poll_type: Comenzar {{poll_type}}
+    share_poll_type: Compartir {{poll-type}}
     update: Actualizar
     reminder_note: 24 horas antes del cierre, se le enviará un recordatorio a todos los participantes
     loomio_school_link: |
@@ -1961,19 +1980,11 @@ es:
     validation_error: Por favor rellena todos los campos requeridos.
     success: Gracias!
     categories:
-      business: Negocios
-      bcorp: B-Corp o empresa social
-      cooperative: Cooperativa
-      consultant: Servicios o agencia de asesoría
+      member: Servicios para miembros de las organizaciones (ej. partidos, Co-ops, uniones)
+      nonprofit: Grupos comunitarios sin ánimo de lucro, ONG
+      professional: Equipos y empresas de servicios profesionales
+      board: Consejos y comités
       government: Gobierno/Gobierno local
-      nonprofit: Sin ánimo de lucro
-      union: Unión
-      party: Partido político
-      activist: Organización activista
-      community: Comunitario o colectivo
-      education: Educación o investigación
-      faith: Fé o grupo espiritual
-      volunteer: Organización de voluntariado
       other: Otro
     sizes:
       ten: "< 10"
@@ -2014,5 +2025,5 @@ es:
     role: "¿Cuál es tu función en el grupo?"
     website: "Página web URL"
     usage: "¿Cómo has planeado usar Loomio? Elige lo que más encaja."
-    desired_feature: "¿Cuál es la razón número uno por la que estás buscando usar Loomio? "
+    desired_feature: "¿Cuál es lo principal para lo que esperas usar Loomio?"
     referrer: "¿Cómo supiste de Loomio?"

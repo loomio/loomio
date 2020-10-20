@@ -545,6 +545,7 @@ eo:
     header_username: 'Uzantnomo'
     header_actions: 'Agoj'
     admin: 'Administranto'
+    accepted: 'Membroj'
   polls_panel:
     all: 'Ĉiuj'
     open: 'Malfermita'
@@ -637,7 +638,6 @@ eo:
     link: Bonvolu komuti al alia retumilo
   group_survey:
     categories:
-      business: Entrepreno
       other: Alia
     uses:
       other: Alia

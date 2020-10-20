@@ -11,7 +11,7 @@ zh_TW:
         blank: 不能留白
         invalid: 不是有效的值
   errors:
-    clear_cache: "請清除您的瀏覽器快取。載入 Loomio 發生了一點問題。"
+    clear_cache: "偵測到載入問題。按住 shift 並按下重新整理，或是清除您的瀏覽器快取。"
     400:
       title: 錯誤的請求
       body: 抱歉，我們無法理解該請求
@@ -268,6 +268,10 @@ zh_TW:
     reply_or_view_online_html: 直接回覆這封電子郵件或<a href='%{url}'>在 %{hostname} 上檢視它</a>。
     turn_off_notifications_html: "在這個討論<a href='%{url}'>關閉電子郵件</a>。"
     change_email_preferences_html: "變更您的<a href='%{email_preferences_url}'>電子郵件偏好設定</a>。"
+    unsubscribe_from_discussion_announced_html: "<a href='%{url}'>取消訂閱</a>此討論串中的未來公告。"
+    unsubscribe_from_new_comment_html: "<a href='%{url}'>取消訂閱</a>此討論串中的留言。"
+    unsubscribe_from_comment_replied_to_html: "這是回覆通知。"
+    unsubscribe_from_user_mentioned_html: "這是提及通知。"
     discussion_closed: "%{actor} 關閉了討論"
   footer:
     about: 關於
@@ -318,7 +322,8 @@ zh_TW:
         <ul>
         <li>要通知特定的人，在他們的名字前輸入 @</li>
         <li>拖曳圖片與附件或點擊迴紋針圖示</li>
-        <li>看看使用討論串的五種方法以獲得一些靈感與祕訣</li>
+        <li>看看<a href="https://help.loomio.org/en/guides/5_ways_to_use_threads/" target="_blank">使用討論串的五種方法</a>以獲得一些靈感與祕訣</li>
+        </ul>
 
         若您有任何問題，請見[Loomio 說明手冊](http://help.loomio.org)。
   first_proposal:
@@ -418,6 +423,7 @@ zh_TW:
       poll_created: '%{actor} 啟動了一個 %{poll_type}：%{title}'
       poll_edited: '%{actor} 編輯了 %{poll_type}：%{title}l'
       poll_announced: '%{actor} 邀請您在 %{poll_type} 投票：%{title}'
+      poll_announced_wip: '%{actor} 分享了一個正在進行的 %{poll_type}：%{title}'
       poll_closing_soon: '%{poll_type} 將於24小時內關閉：%{title}'
       poll_closing_soon_author: '您的 %{poll_type} 將於24小時內關閉：%{title}'
       poll_expired: "%{poll_type} 已關閉：%{title}"
@@ -435,6 +441,7 @@ zh_TW:
       poll_created: '<strong>%{actor}</strong> 啟動了一個 %{poll_type}'
       poll_edited: '<strong>%{actor}</strong> 編輯了一個 %{poll_type}'
       poll_announced: '<strong>%{actor}</strong> 邀請您在 %{poll_type} 投票'
+      poll_announced_wip: '<strong>%{actor}</strong> 分享了一個正在進行的 %{poll_type}'
       poll_closing_soon: '<strong>%{actor}</strong> 的 %{poll_type} 將於24小時內關閉。現在正是投票、變更您的心意或是鼓勵其他人來參與的好時機。'
       poll_closing_soon_author: '您的 %{poll_type} 將於24小時內關閉 ── 現在正是您提醒其他人關於這個投票或是展延期限的絕佳時機。'
       poll_expired: "<strong>%{actor} 的</strong> %{poll_type} 已關閉：%{title}"
