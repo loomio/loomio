@@ -52,6 +52,7 @@ export default
       !@membershipsByUserId[reader.userId]
 
     inviteRecipients: ->
+      count = @recipients.length
       @saving = true
       Records.announcements.remote.post '',
         discussion_id: @discussion.id
@@ -61,7 +62,7 @@ export default
 
       .then => @reset = !@reset
       .finally =>
-        Flash.success('announcement.flash.success', { count: @recipients.length })
+        Flash.success('announcement.flash.success', { count: count })
         @saving = false
 
     newQuery: (query) -> @query = query

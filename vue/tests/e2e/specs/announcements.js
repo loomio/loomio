@@ -4,6 +4,7 @@ pageHelper = require('../helpers/pageHelper.coffee')
 // GK: a couple of these are dependent on the poll page which we haven't done yet
 
 module.exports = {
+  // group invitation form
   'invite_to_group': (test) => {
     page = pageHelper(test)
     page.loadPath('setup_group')
@@ -17,6 +18,7 @@ module.exports = {
     page.expectFlash('1 notifications sent')
   },
 
+  // discussion form
   'new_discussion': (test) => {
     page = pageHelper(test)
 
@@ -35,6 +37,7 @@ module.exports = {
     // page.expectFlash('2 notifications sent')
   },
 
+  // strand members list
   'announcement_created': (test) => {
     page = pageHelper(test)
 
@@ -48,10 +51,11 @@ module.exports = {
     page.click('.announcement-chip__content')
     page.expectElement('.headline')
     page.click('.strand-members-list__submit')
-    page.expectTest('.strand-members-list', 'test@example.com')
+    page.expectText('.strand-members-list', 'test@example.com')
     page.expectFlash('1 notifications sent')
   },
 
+  // poll members list
   'poll_created': (test) => {
     page = pageHelper(test)
 
@@ -61,13 +65,14 @@ module.exports = {
     page.fillIn('.poll-common-form-fields .lmo-textarea div[contenteditable=true]', 'Some details')
     page.click('.poll-common-form__submit')
     page.expectFlash('Proposal started')
-    page.expectElement('.announcement-form')
     page.pause(500)
+
+    page.expectElement('.poll-members-list')
     page.fillIn('.announcement-form__input input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
     page.expectElement('.headline')
-    page.click('.announcement-form__submit')
+    page.click('.poll-members-list__submit')
     page.expectFlash('1 notifications sent')
   },
 

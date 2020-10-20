@@ -2,6 +2,7 @@
 import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
+import Flash from '@/shared/services/flash'
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
 import {audiencesFor, audienceSize, audienceValuesFor} from '@/shared/helpers/announcement.coffee'
 import {map, debounce, without, filter, uniq, uniqBy, some} from 'lodash'
@@ -64,6 +65,7 @@ export default
       !@membershipsByUserId[stance.participantId]
 
     inviteRecipients: ->
+      count = @recipients.length
       @saving = true
       Records.announcements.remote.post '',
         poll_id: @poll.id
@@ -73,6 +75,7 @@ export default
       .then =>
         @reset = !@reset
       .finally =>
+        Flash.success('announcement.flash.success', { count: count })
         @saving = false
 
     newQuery: (query) -> @query = query
@@ -149,7 +152,7 @@ export default
             space
     .d-flex
       v-spacer
-      v-btn(color="primary" :disabled="!recipients.length" @click="inviteRecipients" @loading="saving" v-t="'common.action.invite'")
+      v-btn.poll-members-list__submit(color="primary" :disabled="!recipients.length" @click="inviteRecipients" @loading="saving" v-t="'common.action.invite'")
   v-list
     v-subheader
       span(v-t="{path: 'membership_card.poll_members', args: {pollType: poll.translatedPollType()}}")
