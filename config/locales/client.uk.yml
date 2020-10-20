@@ -181,6 +181,8 @@ uk:
       update: 'Оновити'
       cancel: 'Скасувати'
       show_more: "Показати більше"
+      count_more: "ще {{count}}"
+      count_responses: "{{count}} відповідей"
       view_all: "Переглянути всі"
       new_thread: "Нова тема"
       add_subgroup: 'Нова підгрупа'
@@ -218,7 +220,7 @@ uk:
     search: Пошук
     common: Часто використовується
     hands: Руки
-    people: Обличчя та люди
+    people: Люди
     nature: Природа
     objects: Речі
     places: Місця
@@ -1204,6 +1206,7 @@ uk:
       success: Тема була переміщена до {{name}}
   delete_comment_dialog:
     title: 'Видалити коментар'
+    question: 'Ви впевнені, що хочете видалити цей коментар?'
     confirm: 'Видалити коментар'
   contact_message_form:
     title: "Привіт! Чим ми можемо допомогти?"
@@ -1336,6 +1339,7 @@ uk:
     sharable_link: 'Посилання для запрошення'
     last_seen: 'Востанне переглянуто {{date}}'
     invited_by_name: 'Запрошено {{name}}'
+    accepted: 'Учасники'
   polls_panel:
     new_poll: Нове опитування
     any_type: 'Усі типи'
@@ -1759,7 +1763,6 @@ uk:
     front_page: Перша сторінка
   group_survey:
     categories:
-      business: Бізнес
       other: Інше
     uses:
       other: Інше

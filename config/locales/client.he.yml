@@ -1080,6 +1080,7 @@ he:
     header_name: 'שם'
     header_username: 'שם משתמש'
     invitations: 'הזמנה'
+    accepted: 'חברים'
   polls_panel:
     all: 'הכל'
     open: 'פתוח'
@@ -1419,7 +1420,6 @@ he:
     front_page: עמוד ראשי
   group_survey:
     categories:
-      business: עסק
       other: אחר
     uses:
       other: אחר

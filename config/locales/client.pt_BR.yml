@@ -190,6 +190,8 @@ pt_BR:
       update: 'Atualização'
       cancel: 'Cancelar'
       show_more: "Mostrar mais"
+      count_more: "{{count}} mais"
+      count_responses: "{{count}} respostas"
       view_all: "Ver Tudo"
       new_thread: "Nova conversa"
       add_subgroup: 'Novo subgrupo'
@@ -236,7 +238,7 @@ pt_BR:
     search: Pesquisar
     common: Usado com frequência
     hands: Mãos
-    people: Caras e pessoas
+    people: Pessoas
     nature: Natureza
     objects: Coisas
     places: Lugares
@@ -1261,6 +1263,7 @@ pt_BR:
       success: Essa conversa foi movida para {{name}}
   delete_comment_dialog:
     title: 'Apagar comentário'
+    question: 'Você tem certeza que deseja apagar este comentário?'
     confirm: 'Apagar comentário'
   contact_message_form:
     title: "Olá! Como podemos ajudar?"
@@ -1395,6 +1398,7 @@ pt_BR:
     sharable_link: 'Link compartilhável'
     last_seen: 'Visto por ultimo em {{date}}'
     invited_by_name: 'Convidado por {{name}}'
+    accepted: 'Membros'
   polls_panel:
     new_poll: Nova enquete
     any_type: 'Todos tipos'
@@ -1859,19 +1863,7 @@ pt_BR:
     validation_error: Por favor, preencha todos os campos obrigatórios
     success: Obrigado!
     categories:
-      business: Negócios
-      bcorp: Empresa social ou Empresa estatal
-      cooperative: Cooperativa
-      consultant: Serviço ou Agência de Consultoria
       government: Governo/Governo local
-      nonprofit: Sem fins de lucro
-      union: Sindicato
-      party: Partido político
-      activist: Organização ativista
-      community: Comunidade ou coletivo
-      education: Educação ou pesquisa
-      faith: Grupo espiritual ou religioso
-      volunteer: Organização de voluntários
       other: Outro
     sizes:
       ten: "< 10"

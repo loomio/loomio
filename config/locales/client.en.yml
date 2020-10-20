@@ -2180,19 +2180,11 @@ en:
     validation_error: Please fill out all required fields.
     success: Thank you!
     categories:
-      business: Business
-      bcorp: B-Corp or Social enterprise
-      cooperative: Cooperative
-      consultant: Consultant services or agency
+      member: Member-service organizations (eg, parties, co-ops, unions)
+      nonprofit: Nonprofits, NGOs, and Community groups
+      professional: Professional-service teams & companies
+      board: Boards and committees
       government: Government/Local Government
-      nonprofit: Nonprofit
-      union: Union
-      party: Political party
-      activist: Activist organization
-      community: Community or collective
-      education: Education or research
-      faith: Faith or spiritual group
-      volunteer: Volunteer organization
       other: Other
     sizes:
       ten: "< 10"
@@ -2233,5 +2225,5 @@ en:
     role: "What is your role in the group?"
     website: "Website URL"
     usage: "How do you plan to use Loomio? Choose the best fit"
-    desired_feature: "What is the number one thing you're looking to use Loomio for?"
+    desired_feature: "What is the main thing you're looking to use Loomio for?"
     referrer: "How did you hear about Loomio?"

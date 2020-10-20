@@ -563,6 +563,7 @@ ko:
     order_by_name: '이름'
     header_name: '이름'
     header_username: '아이디'
+    accepted: '멤버'
   polls_panel:
     open: '진행중'
     closed: '종료'

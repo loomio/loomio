@@ -147,6 +147,7 @@ it:
       update: 'Aggiorna'
       cancel: 'Annulla'
       show_more: "Mostra di più"
+      count_more: "altri {{count}}"
       view_all: "Vedi tutti"
       new_thread: "Nuova discussione"
       add_subgroup: 'Nuovo sottogruppo'
@@ -184,7 +185,7 @@ it:
     search: Ricerca
     common: Frequentemente usato
     hands: Mani
-    people: Facce e persone
+    people: Persone
     nature: Natura
     objects: Cose
     places: Luoghi
@@ -934,6 +935,7 @@ it:
     confirm: 'Cancella discussione'
   delete_comment_dialog:
     title: 'Cancella il commento'
+    question: 'Sei sicuro che vuoi cancellare questo commento?'
     confirm: 'Cancella il commento'
   contact_message_form:
     contact_us: 'Contattaci'
@@ -999,6 +1001,7 @@ it:
     header_name: 'Nome'
     header_username: 'Nome Utente'
     invitations: 'Inviti'
+    accepted: 'Membri'
   polls_panel:
     all: 'Tutte'
     open: 'Aperto'
@@ -1198,10 +1201,6 @@ it:
     front_page: Prima pagina
   group_survey:
     categories:
-      business: Business
-      activist: Organizzazione attivista
-      faith: Gruppo spirituale o di fede
-      volunteer: Organizzazione di volontariato
       other: Altro
     uses:
       other: Altro

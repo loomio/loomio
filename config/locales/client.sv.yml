@@ -416,6 +416,7 @@ sv:
     order_by_name: 'Namn'
     header_name: 'Namn'
     header_username: 'Användarnamn'
+    accepted: 'Medlemmar'
   polls_panel:
     all: 'Alla'
     open: 'Öppen'
@@ -438,7 +439,6 @@ sv:
     name_label: Namn
   group_survey:
     categories:
-      business: Företag
       other: Andra
     uses:
       other: Andra

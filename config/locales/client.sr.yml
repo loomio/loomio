@@ -493,6 +493,7 @@ sr:
     order_by_name: 'Ime'
     header_name: 'Ime'
     header_username: 'Korisničko Ime'
+    accepted: 'Članovi'
   polls_panel:
     all: 'Sve'
     open: 'Otvoreno'
@@ -510,7 +511,6 @@ sr:
     title: Jednokratni upis
   group_survey:
     categories:
-      business: Poslovanje
       other: Ostalo
     uses:
       other: Ostalo

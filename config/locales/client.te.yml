@@ -164,6 +164,7 @@ te:
     order_by_name: 'పేరు'
     header_name: 'పేరు'
     invitations: 'ఆహ్వానాలు'
+    accepted: 'సభ్యులు'
   polls_panel:
     closed: 'మూసివేయబడింది'
   poll_common_form:

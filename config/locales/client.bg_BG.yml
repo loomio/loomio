@@ -93,6 +93,7 @@ bg_BG:
     everyone: 'Всеки'
     order_by_name: 'Име'
     header_name: 'Име'
+    accepted: 'Членове'
   polls_panel:
     closed: 'Затворен'
   poll_common_form:

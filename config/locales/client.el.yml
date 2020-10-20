@@ -431,6 +431,7 @@ el:
     order_by_name: 'Όνομα'
     header_name: 'Όνομα'
     header_username: 'Όνομα χρήστη'
+    accepted: 'Μέλη'
   polls_panel:
     all: 'Όλα'
     open: 'Άνοιγμα'
@@ -457,7 +458,6 @@ el:
   group_survey:
     success: Ευχαριστούμε!
     categories:
-      business: Επιχειρήσεις
       other: Άλλο
     uses:
       other: Άλλο

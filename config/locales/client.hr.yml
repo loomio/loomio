@@ -50,3 +50,5 @@ hr:
     title: 'Obriši komentar'
     question: 'Jeste li sigurni da želite obrisati komentar?'
     confirm: 'Obriši komentar'
+  members_panel:
+    accepted: 'Članovi'

@@ -175,6 +175,8 @@ hu:
       update: 'Frissít'
       cancel: 'Mégse'
       show_more: "Bővebben"
+      count_more: "{{count}} további"
+      count_responses: "{{count}} válasz"
       view_all: "Mutasd mind"
       new_thread: "Új téma"
       add_subgroup: 'Új alcsoport'
@@ -213,7 +215,6 @@ hu:
     search: Keresés
     common: Gyakran használt
     hands: Kezek
-    people: Arcok és emberek
     nature: Természet
     objects: Dolgok
     places: Helyek
@@ -1130,6 +1131,7 @@ hu:
       success: A téma áthelyezve a(z) {{name}} mappába
   delete_comment_dialog:
     title: 'Hozzászólás törlése'
+    question: 'Biztosan törölni akarod ezt a hozzászólást?'
     confirm: 'Hozzászólás törlése'
   contact_message_form:
     title: "Szia! Hogyan segíthetünk?"
@@ -1256,6 +1258,7 @@ hu:
     requests: 'Kérések'
     admin: 'Admin'
     sharable_link: 'Megosztható hivatkozás'
+    accepted: 'Tagok'
   polls_panel:
     new_poll: Új szavazás
     any_type: 'Minden típus'
@@ -1646,7 +1649,6 @@ hu:
   group_survey:
     success: Köszi!
     categories:
-      business: Üzleti
       other: Egyéb
     uses:
       other: Egyéb

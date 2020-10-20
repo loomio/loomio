@@ -485,6 +485,7 @@ ga_IE:
     confirm: Bog an snáithe
   delete_comment_dialog:
     title: 'Scrios an trácht'
+    question: 'An bhfuil tú cinnte go dteastaíonn uait an trácht seo a scriosadh?'
     confirm: 'Scrios an trácht'
   contact_message_form:
     contact_us: 'Déan teagmháil linn'
@@ -520,6 +521,7 @@ ga_IE:
     order_by_name: 'Ainm'
     header_name: 'Ainm'
     header_username: 'Ainm úsáideora'
+    accepted: 'Comhaltaí'
   polls_panel:
     all: 'Uile'
     open: 'Ar oscailt'
@@ -555,7 +557,6 @@ ga_IE:
     name_label: Ainm
   group_survey:
     categories:
-      business: Gnó
       other: Eile
     uses:
       other: Eile

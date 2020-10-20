@@ -551,6 +551,7 @@ ca:
     order_by_name: 'Nom'
     header_name: 'Nom'
     header_username: 'Nom d''usuari'
+    accepted: 'Membres'
   polls_panel:
     all: 'Tot'
     open: 'Obert'
@@ -571,7 +572,6 @@ ca:
     name_label: Nom
   group_survey:
     categories:
-      business: Empresa
       other: Altres
     uses:
       other: Altres

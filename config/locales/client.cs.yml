@@ -645,6 +645,7 @@ cs:
     order_by_name: 'Název'
     header_name: 'Název'
     header_username: 'Uživatelské jméno'
+    accepted: 'Členové'
   polls_panel:
     all: 'Vše'
     open: 'Otevřená'
@@ -723,7 +724,6 @@ cs:
     name_label: Název
   group_survey:
     categories:
-      business: Obchod
       other: Ostatní
     uses:
       other: Ostatní

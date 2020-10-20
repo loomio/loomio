@@ -154,6 +154,7 @@ ja:
   members_panel:
     order_by_name: '氏名'
     header_name: '氏名'
+    accepted: 'メンバー'
   polls_panel:
     open: '議論中'
     closed: '議論終了'

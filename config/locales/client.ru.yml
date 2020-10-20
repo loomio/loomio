@@ -562,6 +562,7 @@ ru:
   members_panel:
     order_by_name: 'Название'
     header_name: 'Название'
+    accepted: 'Участники'
   polls_panel:
     all: 'Все'
     open: 'Открыто'
@@ -602,7 +603,3 @@ ru:
     privacy_policy: Политика конфиденциальности
     terms_of_service: Условия использования
     front_page: Заглавная страница
-  group_survey:
-    categories:
-      business: Бизнес
-      volunteer: Волонтерская организация

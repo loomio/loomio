@@ -191,6 +191,8 @@ pl:
       update: 'Zaktualizuj'
       cancel: 'Anuluj'
       show_more: "Pokaż więcej"
+      count_more: "{{count}} więcej"
+      count_responses: "{{count}} odpowiedzi"
       view_all: "Pokaż wszystko"
       new_thread: "Nowy wątek"
       add_subgroup: 'Nowa podgrupa'
@@ -237,7 +239,6 @@ pl:
     search: Szukaj
     common: Ostatnio używane
     hands: Rence
-    people: Twarze i ludzie
     nature: Natura
     objects: Rzeczy
     places: Miejsca
@@ -1261,6 +1262,7 @@ pl:
       success: Wątek został przeniesiony do {{name}}
   delete_comment_dialog:
     title: 'Usuń komentarz'
+    question: 'Czy na pewno chcesz usunąć ten komentarz?'
     confirm: 'Usuń komentarz'
   contact_message_form:
     title: "Cześć! Jak możemy pomóc?"
@@ -1395,6 +1397,7 @@ pl:
     sharable_link: 'Link do udostępniania'
     last_seen: 'Ostatnio widziany {{date}}'
     invited_by_name: 'Zaproszony przez {{name}}'
+    accepted: 'Członkowie'
   polls_panel:
     new_poll: Nowy sondaż
     all: 'Wszystko'
@@ -1450,19 +1453,7 @@ pl:
     title: Single sign-on
   group_survey:
     categories:
-      business: Biznes
-      bcorp: B-Corp lub przedsiębiorstwo społeczne
-      cooperative: Spółdzielnia
-      consultant: Usługi konsultacyjne lub agencja
       government: Rząd / samorząd lokalny
-      nonprofit: Niedochodowy
-      union: Unia
-      party: Partia polityczna
-      activist: Organizacja aktywistów
-      community: Społeczność lub kolektyw
-      education: Edukacja lub badania
-      faith: Wiara lub grupa duchowa
-      volunteer: Organizacja wolontariuszy
       other: Inne
     sizes:
       ten: "< 10"

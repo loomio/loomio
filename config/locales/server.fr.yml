@@ -11,6 +11,7 @@ fr:
         blank: ne peut pas être vide
         invalid: n'est pas une valeur valable
   errors:
+    clear_cache: "Problème de chargement détecté. Maintenez la touche majuscule enfoncée en pressant le bouton de rechargement de la page ou videz la mémoire cache de votre navigateur."
     400:
       title: Mauvaise requête
       body: Désolé, nous ne sommes pas capable de comprendre votre requête
@@ -28,6 +29,7 @@ fr:
       body: |
           Merci de <a href="https://browser-update.org/update.html?force_outdated=true">mettre à jour votre navigateur</a> pour utiliser Loomio
     422:
+      title: Entité impossible à traiter
       body: 'Le changement que vous vouliez faire est rejeté. Peut-être avez-vous essayé de modifier quelque chose pour lesquels vous n''avez pas l''autorisation. '
     429:
       title: Trop de requêtes
@@ -47,14 +49,22 @@ fr:
     error:
       handle_must_begin_with_parent_handle: "Doit commencer par %{parent_handle}"
     stats:
+      group_stats: Statistiques du groupe
+      org_stats: Statistiques de l'organisation (y compris les sous-groupes)
+      visits: Nombre de visites
       members: Membres
       subgroups: Sous-groupes
       threads: Discussions
       votes: Votes
       comments: Commentaires
+      general: Général
       polls: Sondages
       poll_types:
         proposal: Proposition
+        count: Nombre
+        choose: Choisir
+        allocate: Allouer
+        score: Score
         rank: Classer
         time: Sondage horaire de réunion
   user:
@@ -123,12 +133,17 @@ fr:
       subject: Export des données du groupe %{group_name}
       body_html: |
           Téléchargez les données du groupe <a href="%{url}"> ici</a>. Ce lien expirera dans une semaine.
+    deactivated:
+      subject: "Le compte utilisateur du site %{site_name} a été désactivé."
     accounts_merged:
       subject: "Vos comptes utilisateurs sur %{site_name} ont été fusionnés."
       body_html: |
           Bonjour %{name},
           Vos deux comptes utilisateurs Loomio ont été fusionnés en un compte.
           Pour accéder à Loomio, vous devrez maintenant utiliser <strong>%{email}</strong> comme identifiant.
+    merge_verification:
+      confirm_page:
+        merge: Fusionner les comptes
   email:
     common:
       or_enter_code: Ou saisissez votre code ci-dessous
