@@ -206,8 +206,8 @@ export default
       validation-errors(:subject='discussion', field='title')
       lmo-textarea(:model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")
       v-checkbox(:label="$t('discussion_form.notify_group')" v-model="discussion.notifyGroup" :disabled="!canAnnounce")
-      .caption(v-if="notificationsCount != 1" v-t="{ path: 'poll_common_notify_group.members_count', args: { count: notificationsCount } }")
-      .caption(v-else v-t="'discussion_form.one_person_notified'")
+      .caption.discussion-form__number-notified(v-if="notificationsCount != 1" v-t="{ path: 'poll_common_notify_group.members_count', args: { count: notificationsCount } }")
+      .caption.discussion-form__number-notified(v-else v-t="'discussion_form.one_person_notified'")
 
       v-card-actions
         v-spacer

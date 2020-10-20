@@ -31,7 +31,8 @@ module.exports = {
         browserName: 'chrome',
         chromeOptions : { w3c: false, args: chromeOptions },
         javascriptEnabled: true,
-        acceptSslCerts: true
+        acceptSslCerts: true,
+        loggingPrefs: { 'browser': 'ALL' }
       },
     }
   }

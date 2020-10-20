@@ -163,41 +163,41 @@ describe DiscussionQuery do
   #     end
   #   end
   #
-  #   context 'parent_members_can_see_discussions' do
-  #     let(:parent_group) { create :group, group_privacy: 'secret'}
-  #     let(:group) { create :group,
-  #                          parent: parent_group,
-  #                          parent_members_can_see_discussions: true,
-  #                          is_visible_to_public: false,
-  #                          is_visible_to_parent_members: true,
-  #                          discussion_privacy_options: 'private_only' }
-  #
-  #     before do
-  #       discussion.update_attribute(:private, true)
-  #     end
-  #
-  #     it 'non members cannot see discussions' do
-  #       subject.should_not include discussion
-  #     end
-  #
-  #     it 'member of parent group can see discussions' do
-  #       parent_group.add_member! user
-  #       subject.should include discussion
-  #     end
-  #   end
-  #
-  #   context 'only members can see discussions' do
-  #     let(:parent_group) { create :group }
-  #     let(:group) { create :group,
-  #                          parent: parent_group,
-  #                          parent_members_can_see_discussions: false,
-  #                          is_visible_to_parent_members: true }
-  #
-  #     it 'prevents parent group members from seeing discussions' do
-  #       subject.should_not include discussion
-  #     end
-  #   end
-  # end
+  context 'parent_members_can_see_discussions' do
+    let(:parent_group) { create :group, group_privacy: 'secret'}
+    let(:group) { create :group,
+                         parent: parent_group,
+                         parent_members_can_see_discussions: true,
+                         is_visible_to_public: false,
+                         is_visible_to_parent_members: true,
+                         discussion_privacy_options: 'private_only' }
+
+    before do
+      discussion.update_attribute(:private, true)
+    end
+
+    it 'non members cannot see discussions' do
+      subject.should_not include discussion
+    end
+
+    it 'member of parent group can see discussions' do
+      parent_group.add_member! user
+      subject.should include discussion
+    end
+  end
+
+  context 'only members can see discussions' do
+    let(:parent_group) { create :group }
+    let(:group) { create :group,
+                         parent: parent_group,
+                         parent_members_can_see_discussions: false,
+                         is_visible_to_parent_members: true }
+
+    it 'prevents parent group members from seeing discussions' do
+      subject.should_not include discussion
+    end
+  end
+  end
 
   describe 'archived' do
     it 'does not return discussions in archived groups' do

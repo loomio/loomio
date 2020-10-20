@@ -100,22 +100,21 @@ export default
 
 <template lang="pug">
 div
-  v-autocomplete(
-    :autofocus="autofocus"
+  v-autocomplete.announcement-form__input(
     multiple
-    chips
     return-object
     auto-select-first
     hide-no-data
     hide-selected
     v-model='recipients'
-    @change="query= null"
+    @change="query = null"
     :search-input.sync="query"
     item-text='name'
     :loading="loading"
     :label="label"
     :placeholder="placeholder"
-    :items='searchResults')
+    :items='searchResults'
+    )
     template(v-slot:selection='data')
       v-chip.chip--select-multi(:value='data.selected' close @click:close='remove(data.item)')
         v-icon.mr-1(v-if="data.item.type == 'email'" small) mdi-email-outline

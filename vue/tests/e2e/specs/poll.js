@@ -11,7 +11,7 @@ module.exports = {
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields .lmo-textarea div[contenteditable=true]', 'Some details')
     page.click('.poll-common-form__submit')
-    page.expectElement('.announcement-form__submit')
+    page.expectElement('.poll-members-list__submit')
     page.click('.dismiss-modal-button')
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
@@ -37,7 +37,7 @@ module.exports = {
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields .lmo-textarea div[contenteditable=true]', 'Some details')
     page.click('.poll-common-form__submit')
-    page.expectElement('.announcement-form__submit')
+    page.expectElement('.poll-members-list__submit')
     page.click('.dismiss-modal-button')
 
     page.expectText('.poll-common-card__title', 'A new proposal')
@@ -65,7 +65,7 @@ module.exports = {
     page.fillInAndEnter('.poll-poll-form__add-option-input input', 'An option')
     page.fillInAndEnter('.poll-poll-form__add-option-input input', 'Another option')
     page.click('.poll-common-form__submit')
-    page.expectElement('.announcement-form__submit')
+    page.expectElement('.poll-members-list__submit')
     page.click('.dismiss-modal-button')
 
     page.expectText('.poll-common-card__title', 'A new proposal')
@@ -93,7 +93,7 @@ module.exports = {
     page.click('.poll-poll-form__add-option-input')
     page.fillInAndEnter('.poll-poll-form__add-option-input input', 'An option')
     page.click('.poll-common-form__submit')
-    page.expectElement('.announcement-form__submit')
+    page.expectElement('.poll-members-list__submit')
     page.click('.dismiss-modal-button')
 
     page.expectText('.poll-common-card__title', 'A new proposal')
@@ -122,7 +122,7 @@ module.exports = {
     page.fillInAndEnter('.poll-poll-form__add-option-input input', 'An option')
 
     page.click('.poll-common-form__submit')
-    page.expectElement('.announcement-form__submit')
+    page.expectElement('.poll-members-list__submit')
     page.click('.dismiss-modal-button')
 
     page.expectText('.poll-common-card__title', 'A new proposal')
@@ -148,7 +148,7 @@ module.exports = {
     page.fillIn('.poll-common-form-fields .lmo-textarea div[contenteditable=true]', 'Some details')
     page.click('.poll-meeting-form__option-button')
     page.click('.poll-common-form__submit')
-    page.expectElement('.announcement-form__submit')
+    page.expectElement('.poll-members-list__submit')
     page.click('.dismiss-modal-button')
 
     page.expectText('.poll-common-card__title', 'A new proposal')
@@ -179,7 +179,7 @@ module.exports = {
     page.fillInAndEnter('.poll-poll-form__add-option-input input', 'Another option')
     page.click('.poll-common-form__submit')
 
-    page.expectElement('.announcement-form__submit')
+    page.expectElement('.poll-members-list__submit')
     page.click('.dismiss-modal-button')
 
     page.expectText('.poll-common-card__title', 'A new proposal')
@@ -214,7 +214,7 @@ module.exports = {
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields .lmo-textarea div[contenteditable=true]', 'Some details')
     page.click('.poll-common-form__submit')
-    page.expectElement('.announcement-form__submit')
+    page.expectElement('.poll-members-list__submit')
     page.click('.dismiss-modal-button')
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
@@ -244,7 +244,7 @@ module.exports = {
     page.click('.poll-settings-anonymous')
 
     page.click('.poll-common-form__submit')
-    page.expectElement('.announcement-form__submit')
+    page.expectElement('.poll-members-list__submit')
     page.click('.dismiss-modal-button')
 
     page.expectText('.poll-common-card__title', 'A new proposal')
@@ -262,7 +262,7 @@ module.exports = {
     page.click('.poll-settings-hide-results-until-closed')
 
     page.click('.poll-common-form__submit')
-    page.expectElement('.announcement-form__submit')
+    page.expectElement('.poll-members-list__submit')
     page.click('.dismiss-modal-button')
 
     page.expectText('.poll-common-card__title', 'A new proposal')
@@ -300,7 +300,7 @@ module.exports = {
     page.fillInAndEnter('.poll-poll-form__add-option-input input', 'Another option')
     page.click('.poll-settings-voter-can-add-options')
     page.click('.poll-common-form__submit')
-    page.expectElement('.announcement-form__submit')
+    page.expectElement('.poll-members-list__submit')
     page.click('.dismiss-modal-button')
 
     page.expectText('.poll-common-card__title', 'A new proposal')
@@ -353,7 +353,7 @@ module.exports = {
   //   page.fillInAndEnter('.poll-poll-form__add-option-input input', 'An option')
   //   page.fillInAndEnter('.poll-poll-form__add-option-input input', 'Another option')
   //   page.click('.poll-common-form__submit')
-  //   page.expectElement('.announcement-form__submit')
+  //   page.expectElement('.poll-members-list__submit')
   //   page.click('.dismiss-modal-button')
   //
   //   page.expectText('.poll-common-card__title', 'A new proposal')
@@ -387,7 +387,7 @@ module.exports = {
   //   page.fillInAndEnter('.poll-poll-form__add-option-input input', 'An option')
   //   page.fillInAndEnter('.poll-poll-form__add-option-input input', 'Another option')
   //   page.click('.poll-common-form__submit')
-  //   page.expectElement('.announcement-form__submit')
+  //   page.expectElement('.poll-members-list__submit')
   //   page.click('.dismiss-modal-button')
   //
   //   page.expectText('.poll-common-card__title', 'A new proposal')

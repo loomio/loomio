@@ -2,6 +2,7 @@
 import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
+import Flash from '@/shared/services/flash'
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
 import {map, debounce, without, filter, uniq, uniqBy, some} from 'lodash'
 
@@ -51,6 +52,7 @@ export default
       !@membershipsByUserId[reader.userId]
 
     inviteRecipients: ->
+      count = @recipients.length
       @saving = true
       Records.announcements.remote.post '',
         discussion_id: @discussion.id
@@ -59,7 +61,9 @@ export default
           emails: map filter(@recipients, (r) -> r.type == 'email'), 'id'
 
       .then => @reset = !@reset
-      .finally => @saving = false
+      .finally =>
+        Flash.success('announcement.flash.success', { count: count })
+        @saving = false
 
     newQuery: (query) -> @query = query
     newRecipients: (recipients) -> @recipients = recipients
@@ -104,7 +108,7 @@ export default
       @new-recipients="newRecipients")
     .d-flex
       v-spacer
-      v-btn(color="primary" :disabled="!recipients.length" @click="inviteRecipients" @loading="saving" v-t="'common.action.invite'")
+      v-btn.strand-members-list__submit(color="primary" :disabled="!recipients.length" @click="inviteRecipients" @loading="saving" v-t="'common.action.invite'")
   v-list
     v-subheader
       span(v-t="'membership_card.discussion_members'")
