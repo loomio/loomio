@@ -114,6 +114,7 @@ class Poll < ApplicationRecord
   update_counter_cache :group, :polls_count
   update_counter_cache :group, :closed_polls_count
   update_counter_cache :discussion, :closed_polls_count
+  update_counter_cache :discussion, :anonymous_polls_count
   define_counter_cache(:stances_count) { |poll| poll.stances.latest.count }
   define_counter_cache(:undecided_count) { |poll| poll.stances.latest.undecided.count }
   define_counter_cache(:versions_count) { |poll| poll.versions.count}

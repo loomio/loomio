@@ -703,6 +703,7 @@ en:
       no_members: "This hasn't been shared with anyone yet!"
       group_admin: "Group admin"
       thread_admin: "Thread admin"
+      last_seen_at: "Last seen {{time}}"
     group_form:
       search_placeholder: Search for people...
       modal_title: Select group members

@@ -99,6 +99,7 @@ class Discussion < ApplicationRecord
   define_counter_cache(:seen_by_count)              { |d| d.discussion_readers.where("last_read_at is not null").count }
   define_counter_cache(:members_count)              { |d| d.discussion_readers.where("revoked_at is null").count }
   define_counter_cache(:announceable_members_count) { |d| d.discussion_readers.where("volume >= ?", DiscussionReader.volumes[:normal]).count }
+  define_counter_cache(:anonymous_polls_count)      { |d| d.polls.where(anonymous: true).count }
 
   update_counter_cache :group, :discussions_count
   update_counter_cache :group, :public_discussions_count

@@ -115,7 +115,7 @@ export default
     .d-flex
       v-spacer
       v-btn.strand-members-list__submit(color="primary" :disabled="!recipients.length" @click="inviteRecipients" @loading="saving" v-t="'common.action.invite'")
-  v-list
+  v-list(two-line)
     v-subheader
       span(v-t="'membership_card.discussion_members'")
       space
@@ -129,7 +129,9 @@ export default
           v-chip.mr-1(v-if="discussion.groupId && isGuest(reader)" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
           v-chip.mr-1(v-if="reader.admin" outlined x-small label v-t="'announcement.members_list.thread_admin'")
           v-chip.mr-1(v-if="isGroupAdmin(reader)" outlined x-small label v-t="'announcement.members_list.group_admin'")
-        //- v-list-item-subtitle Admin
+        v-list-item-subtitle
+          span(v-t="{ path: 'announcement.members_list.last_seen_at', args: { time: approximateDate(reader.lastReadAt) } }")
+          //- time-ago(:date="reader.lastReadAt")
       v-list-item-action
         v-menu(offset-y)
           template(v-slot:activator="{on, attrs}")

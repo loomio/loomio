@@ -1,6 +1,4 @@
-class DiscussionReaderSerializer < ActiveModel::Serializer
-  embed :ids, include: true
-
+class DiscussionReaderSerializer < ApplicationSerializer
   attributes :id,
              :user_id,
              :discussion_id,
@@ -10,12 +8,19 @@ class DiscussionReaderSerializer < ActiveModel::Serializer
              :volume,
              :inviter_id,
              :admin,
-             :revoked_at,
-             :last_read_at
-
+             :revoked_at
 
   has_one :user, serializer: AuthorSerializer, root: :users
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
+
+  def last_read_at
+    object.discussion.anonymous_polls_count == 0 ? super : nil
+  end
+
+  def read_ranges
+    object.discussion.anonymous_polls_count == 0 ? super : []
+  end
+
 
   def volume
     object[:volume]

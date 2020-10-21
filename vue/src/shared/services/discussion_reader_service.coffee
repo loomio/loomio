@@ -13,21 +13,21 @@ export default new class DiscussionReaderService
       !dr.discussion().group().adminsInclude(dr.user()) &&
       !dr.admin && dr.discussion().adminsInclude(Session.user())
     perform: (dr) ->
-      Records.discussionReaders.remote.postMember dr.id, 'make_admin'
+      Records.discussionReaders.remote.postMember dr.id, 'make_admin', exclude_types: 'discussion'
 
   removeAdmin:
     name: 'membership_dropdown.demote_coordinator'
     canPerform: (dr) ->
       dr.admin && dr.discussion().adminsInclude(Session.user())
     perform: (dr) ->
-      Records.discussionReaders.remote.postMember dr.id, 'remove_admin'
+      Records.discussionReaders.remote.postMember dr.id, 'remove_admin', exclude_types: 'discussion'
 
   resend:
     name: 'membership_dropdown.resend'
     canPerform: (dr) ->
       dr.discussion().adminsInclude(Session.user())
     perform: (dr) ->
-      Records.discussionReaders.remote.postMember dr.id, 'resend'
+      Records.discussionReaders.remote.postMember dr.id, 'resend', exclude_types: 'discussion'
       .then ->
         Flash.success "membership_dropdown.invitation_resent"
 
