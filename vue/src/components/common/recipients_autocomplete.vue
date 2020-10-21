@@ -100,6 +100,7 @@ export default
 
 <template lang="pug">
 div
+  //- chips attribute is messing with e2es; no behaviour change noticed
   v-autocomplete.announcement-form__input(
     multiple
     return-object
