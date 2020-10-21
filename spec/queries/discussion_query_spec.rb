@@ -197,7 +197,6 @@ describe DiscussionQuery do
       subject.should_not include discussion
     end
   end
-  end
 
   describe 'archived' do
     it 'does not return discussions in archived groups' do
