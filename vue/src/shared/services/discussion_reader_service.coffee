@@ -10,6 +10,7 @@ export default new class DiscussionReaderService
   makeAdmin:
     name: 'membership_dropdown.make_coordinator'
     canPerform: (dr) ->
+      !dr.discussion().group().adminsInclude(dr.user()) &&
       !dr.admin && dr.discussion().adminsInclude(Session.user())
     perform: (dr) ->
       Records.discussionReaders.remote.postMember dr.id, 'make_admin'
@@ -30,11 +31,11 @@ export default new class DiscussionReaderService
       .then ->
         Flash.success "membership_dropdown.invitation_resent"
 
-  remove:
+  revoke:
     name: 'membership_dropdown.remove_from.discussion'
     canPerform: (dr) ->
       dr.discussion().adminsInclude(Session.user())
     perform: (dr) ->
-      dr.destroy()
+      Records.discussionReaders.remote.postMember dr.id, 'revoke'
       .then ->
         Flash.success "membership_remove_modal.invitation.flash"

@@ -28,7 +28,7 @@ export default
     service: DiscussionReaderService
 
   mounted: ->
-    @actionNames = ['makeAdmin', 'removeAdmin', 'resend', 'remove']
+    @actionNames = ['makeAdmin', 'removeAdmin', 'resend', 'revoke']
     console.log 'actionNames', @actionNames
     # TODO add query support to this fetch for when there are many readers
     Records.discussionReaders.fetch
@@ -50,8 +50,8 @@ export default
     query: -> @updateReaders()
 
   methods:
-    isAdmin: (reader) ->
-      reader.admin || @membershipsByUserId[reader.userId] && @membershipsByUserId[reader.userId].admin
+    isGroupAdmin: (reader) ->
+      @membershipsByUserId[reader.userId] && @membershipsByUserId[reader.userId].admin
 
     isGuest: (reader) ->
       !@membershipsByUserId[reader.userId]
@@ -75,7 +75,8 @@ export default
 
     updateReaders: ->
       chain = Records.discussionReaders.collection.chain().
-              find(discussionId: @discussion.id)
+              find(discussionId: @discussion.id).
+              find(revokedAt: null)
 
       if @query
         users = Records.users.collection.find
@@ -126,7 +127,8 @@ export default
         v-list-item-title
           span.mr-2 {{reader.user().nameWithTitle(discussion.group())}}
           v-chip.mr-1(v-if="discussion.groupId && isGuest(reader)" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
-          v-chip.mr-1(v-if="isAdmin(reader)" outlined x-small label v-t="'members_panel.admin'")
+          v-chip.mr-1(v-if="reader.admin" outlined x-small label v-t="'announcement.members_list.thread_admin'")
+          v-chip.mr-1(v-if="isGroupAdmin(reader)" outlined x-small label v-t="'announcement.members_list.group_admin'")
         //- v-list-item-subtitle Admin
       v-list-item-action
         v-menu(offset-y)
@@ -136,6 +138,8 @@ export default
           v-list
             v-list-item(v-for="action in actionNames" v-if="service[action].canPerform(reader)" @click="service[action].perform(reader)" :key="action")
               v-list-title(v-t="service[action].name")
+    v-list-item(v-if="query && readers.length == 0")
+      v-list-title(v-t="{ path: 'discussions_panel.no_results_found', args: { search: query }}")
 
 
 </template>

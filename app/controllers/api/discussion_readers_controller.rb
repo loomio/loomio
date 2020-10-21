@@ -7,10 +7,38 @@ class API::DiscussionReadersController < API::RestfulController
     respond_with_collection
   end
 
+  def make_admin
+    current_user.ability.authorize! :make_admin, discussion_reader
+    discussion_reader.update(admin: true)
+    respond_with_resource
+  end
+
+  def remove_admin
+    current_user.ability.authorize! :remove_admin, discussion_reader
+    discussion_reader.update(admin: false)
+    respond_with_resource
+  end
+
+  def resend
+    current_user.ability.authorize! :resend, discussion_reader
+    raise NotImplementedError.new
+  end
+
+  def revoke
+    current_user.ability.authorize! :remove, discussion_reader
+    discussion_reader.update(revoked_at: Time.zone.now)
+    respond_with_resource
+  end
+
 
   private
+
+  def discussion_reader
+    @discussion_reader = DiscussionReader.find(params[:id])
+  end
+
   def default_scope
-    super.merge({include_email: @discussion.admins.exists?(current_user.id)})
+    super.merge({include_email: (@discussion_reader || @discussion).discussion.admins.exists?(current_user.id)})
   end
 
   def accessible_records

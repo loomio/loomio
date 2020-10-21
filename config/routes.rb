@@ -150,7 +150,14 @@ Loomio::Application.routes.draw do
       get :inbox, on: :collection
     end
 
-    resources :discussion_readers, only: [:index]
+    resources :discussion_readers, only: [:index] do
+      member do
+        post :remove_admin
+        post :make_admin
+        post :resend
+        post :revoke
+      end
+    end
 
     resources :tags do
       collection do
