@@ -4,6 +4,7 @@ import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
 import Flash from '@/shared/services/flash'
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
+import DiscussionReaderService from '@/shared/services/discussion_reader_service'
 import {map, debounce, without, filter, uniq, uniqBy, some} from 'lodash'
 
 export default
@@ -23,8 +24,12 @@ export default
     readerUserIds: []
     reset: false
     saving: false
+    actionNames: []
+    service: DiscussionReaderService
 
   mounted: ->
+    @actionNames = ['makeAdmin', 'removeAdmin', 'resend', 'remove']
+    console.log 'actionNames', @actionNames
     # TODO add query support to this fetch for when there are many readers
     Records.discussionReaders.fetch
       params:
@@ -120,9 +125,17 @@ export default
       v-list-item-content
         v-list-item-title
           span.mr-2 {{reader.user().nameWithTitle(discussion.group())}}
-          v-chip(v-if="isGuest(reader)" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
-          v-chip(v-if="isAdmin(reader)" outlined x-small label v-t="'members_panel.admin'")
+          v-chip.mr-1(v-if="discussion.groupId && isGuest(reader)" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
+          v-chip.mr-1(v-if="isAdmin(reader)" outlined x-small label v-t="'members_panel.admin'")
         //- v-list-item-subtitle Admin
-      //- v-list-item-action
-      //-   v-icon mdi-dots-horizontal
+      v-list-item-action
+        v-menu(offset-y)
+          template(v-slot:activator="{on, attrs}")
+            v-btn.membership-dropdown__button(icon v-on="on" v-bind="attrs")
+              v-icon mdi-dots-vertical
+          v-list
+            v-list-item(v-for="action in actionNames" v-if="service[action].canPerform(reader)" @click="service[action].perform(reader)" :key="action")
+              v-list-title(v-t="service[action].name")
+
+
 </template>
