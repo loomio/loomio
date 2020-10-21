@@ -238,7 +238,7 @@ ActiveRecord::Schema.define(version: 2020_10_21_025801) do
     t.datetime "discarded_at"
     t.string "secret_token", default: -> { "gen_random_uuid()" }
     t.integer "members_count"
-    t.integer "announceable_members_count"
+    # t.integer "announceable_members_count"
     t.integer "anonymous_polls_count", default: 0, null: false
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
@@ -401,7 +401,7 @@ ActiveRecord::Schema.define(version: 2020_10_21_025801) do
     t.boolean "admins_can_edit_user_content", default: false, null: false
     t.boolean "listed_in_explore", default: false, null: false
     t.string "secret_token", default: -> { "gen_random_uuid()" }
-    t.integer "announceable_members_count"
+    # t.integer "announceable_members_count"
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["category_id"], name: "index_groups_on_category_id"
     t.index ["cohort_id"], name: "index_groups_on_cohort_id"

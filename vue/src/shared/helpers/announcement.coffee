@@ -18,7 +18,7 @@ export audienceSize = (model, audience) ->
     when 'discussion_group' then model.discussion().membersCount
     when 'voters' then model.poll().participantsCount
     when 'undecided' then model.poll().undecidedCount
-    when 'non_voters' then model.group().announceableMembersCount - model.stancesCount
+    when 'non_voters' then model.group().acceptedMembershipsCount - model.stancesCount
 
 export audienceValuesFor = (model) ->
   if model.isA('group') && model.parent()

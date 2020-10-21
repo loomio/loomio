@@ -1,7 +1,5 @@
 class AddAnnounceableMembersCountToDiscussions < ActiveRecord::Migration[5.2]
   def change
-    add_column :discussions, :announceable_members_count, :integer
-
     return if ENV['CANONICAL_HOST'] == 'www.loomio.org'
 
     execute 'CREATE TEMP table reader_temp (reader_id INT, user_id INT, group_id INT, volume INT)'
