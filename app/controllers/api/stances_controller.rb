@@ -36,7 +36,7 @@ class API::StancesController < API::RestfulController
   end
 
   def default_scope
-    super.merge({include_email: @stance && @stance.discussion.admins.exists?(current_user.id)})
+    super.merge({include_email: @stance && @stance.poll.admins.exists?(current_user.id)})
   end
 
   def accessible_records
