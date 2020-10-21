@@ -39,7 +39,6 @@ namespace :loomio do
       SendDailyCatchUpEmailWorker.perform_async
     end
 
-    AnnouncementService.delay.resend_pending_invitations
     LocateUsersAndGroupsWorker.perform_async
     if (Time.now.hour == 0)
       UsageReportService.send
