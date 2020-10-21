@@ -16,8 +16,6 @@ import ChangePasswordForm from '@/components/profile/change_password_form'
 import PollCommonOutcomeModal from '@/components/poll/common/outcome_modal'
 import PollCommonReopenModal from '@/components/poll/common/reopen_modal'
 import PollCommonStartForm from '@/components/poll/common/start_form'
-import AnnouncementForm from '@/components/announcement/form'
-import AnnouncementHistory from '@/components/announcement/history'
 import MoveThreadForm from '@/components/thread/move_thread_form'
 import PollCommonMoveForm from '@/components/poll/common/move_form'
 import PollCommonAddOptionModal from '@/components/poll/common/add_option_modal'
@@ -29,7 +27,6 @@ import ChangePictureForm from '@/components/profile/change_picture_form'
 import GroupNewForm from '@/components/group/new_form'
 import PinEventForm from '@/components/thread/pin_event_form'
 import MoveCommentsModal from '@/components/discussion/move_comments_modal'
-import SeenByModal from '@/components/thread/seen_by_modal'
 import ExportDataModal from '@/components/group/export_data_modal'
 import InstallSamlProviderModal from '@/components/install_saml_provider/modal'
 import GroupSurvey from '@/components/group/survey'
@@ -56,8 +53,6 @@ export default
     PollCommonReopenModal
     PollCommonMoveForm
     ArrangementForm
-    AnnouncementForm
-    AnnouncementHistory
     MoveThreadForm
     PollCommonAddOptionModal
     PollCommonStartForm
@@ -69,7 +64,6 @@ export default
     GroupNewForm
     PinEventForm
     MoveCommentsModal
-    SeenByModal
     ExportDataModal
     InstallSamlProviderModal
     GroupSurvey
