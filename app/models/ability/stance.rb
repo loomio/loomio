@@ -17,5 +17,10 @@ module Ability::Stance
     can :redeem, ::Stance do |stance|
       Stance.redeemable.exists?(stance.id)
     end
+
+    can [:make_admin, :remove_admin, :resend, :remove], ::Stance do |stance|
+      stance.poll.admins.exists?(user.id)
+    end
+
   end
 end

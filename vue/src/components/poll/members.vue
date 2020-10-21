@@ -4,6 +4,7 @@ import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
 import Flash from '@/shared/services/flash'
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
+import StanceService from '@/shared/services/stance_service'
 import {audiencesFor, audienceSize, audienceValuesFor} from '@/shared/helpers/announcement.coffee'
 import {map, debounce, without, filter, uniq, uniqBy, some} from 'lodash'
 
@@ -26,12 +27,16 @@ export default
     saving: false
     initialRecipients: []
     fetchingAudience: false
+    actionNames: []
+    service: StanceService
 
   mounted: ->
+    @actionNames = ['makeAdmin', 'removeAdmin', 'revoke'] # 'resend'
     # TODO add query support to this fetch for when there are many readers
     Records.stances.fetch
       params:
         poll_id: @poll.id
+        exclude_types: 'poll'
     .then (records) =>
       userIds = map records['users'], 'id'
       Records.memberships.fetch
@@ -83,7 +88,8 @@ export default
 
     updateStances: ->
       chain = Records.stances.collection.chain().
-              find(pollId: @poll.id)
+              find(pollId: @poll.id).
+              find(revokedAt: null)
 
       if @query
         users = Records.users.collection.find
@@ -152,7 +158,8 @@ export default
             space
     .d-flex
       v-spacer
-      v-btn.poll-members-list__submit(color="primary" :disabled="!recipients.length" @click="inviteRecipients" @loading="saving" v-t="'common.action.invite'")
+      v-btn.poll-members-list__submit(color="primary" :disabled="!recipients.length && saving" @click="inviteRecipients" @loading="saving")
+        span(v-t="'common.action.invite'")
   v-list
     v-subheader
       span(v-t="{path: 'membership_card.poll_members', args: {pollType: poll.translatedPollType()}}")
@@ -164,6 +171,18 @@ export default
       v-list-item-content
         v-list-item-title
           span.mr-2 {{stance.participant().nameWithTitle(poll.group())}}
-          v-chip(v-if="isGuest(stance)" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
-          v-chip(v-if="isAdmin(stance)" outlined x-small label v-t="'members_panel.admin'")
+          v-chip.mr-1(v-if="isGuest(stance)" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
+          v-chip.mr-1(v-if="isAdmin(stance)" outlined x-small label v-t="'members_panel.admin'")
+
+      v-list-item-action
+        v-menu(offset-y)
+          template(v-slot:activator="{on, attrs}")
+            v-btn.membership-dropdown__button(icon v-on="on" v-bind="attrs")
+              v-icon mdi-dots-vertical
+          v-list
+            v-list-item(v-for="action in actionNames" v-if="service[action].canPerform(stance)" @click="service[action].perform(stance)" :key="action")
+              v-list-item-title(v-t="{ path: service[action].name, args: { pollType: poll.translatedPollType() } }")
+
+    v-list-item(v-if="query && stances.length == 0")
+      v-list-item-title(v-t="{ path: 'discussions_panel.no_results_found', args: { search: query }}")
 </template>

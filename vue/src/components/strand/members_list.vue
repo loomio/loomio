@@ -29,7 +29,6 @@ export default
 
   mounted: ->
     @actionNames = ['makeAdmin', 'removeAdmin', 'revoke'] # 'resend'
-    console.log 'actionNames', @actionNames
     # TODO add query support to this fetch for when there are many readers
     Records.discussionReaders.fetch
       params:
@@ -139,9 +138,9 @@ export default
               v-icon mdi-dots-vertical
           v-list
             v-list-item(v-for="action in actionNames" v-if="service[action].canPerform(reader)" @click="service[action].perform(reader)" :key="action")
-              v-list-title(v-t="service[action].name")
+              v-list-item-title(v-t="service[action].name")
     v-list-item(v-if="query && readers.length == 0")
-      v-list-title(v-t="{ path: 'discussions_panel.no_results_found', args: { search: query }}")
+      v-list-item-title(v-t="{ path: 'discussions_panel.no_results_found', args: { search: query }}")
 
 
 </template>

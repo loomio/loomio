@@ -96,7 +96,7 @@ export default class UserModel extends BaseModel
     @avatarUrl[size]
 
   nameWithTitle: (group) ->
-    name = @name || @email
+    name = @nameOrEmail()
     return name unless group
     titles = @titles || {}
     compact([name, (titles[group.id] || titles[group.parentId])]).join(' · ')
