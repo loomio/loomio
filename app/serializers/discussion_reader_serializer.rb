@@ -14,11 +14,11 @@ class DiscussionReaderSerializer < ApplicationSerializer
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
 
   def last_read_at
-    object.discussion.anonymous_polls_count == 0 ? super : nil
+    object.discussion.anonymous_polls_count == 0 ? object.last_read_at : nil
   end
 
   def read_ranges
-    object.discussion.anonymous_polls_count == 0 ? super : []
+    object.discussion.anonymous_polls_count == 0 ? object.read_ranges : []
   end
 
 
