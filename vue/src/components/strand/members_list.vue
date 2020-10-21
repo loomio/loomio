@@ -28,7 +28,7 @@ export default
     service: DiscussionReaderService
 
   mounted: ->
-    @actionNames = ['makeAdmin', 'removeAdmin', 'resend', 'revoke']
+    @actionNames = ['makeAdmin', 'removeAdmin', 'revoke'] # 'resend'
     console.log 'actionNames', @actionNames
     # TODO add query support to this fetch for when there are many readers
     Records.discussionReaders.fetch
