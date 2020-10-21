@@ -11,6 +11,11 @@ module Dev::Scenarios::Group
     redirect_to group_url(create_group)
   end
 
+  def setup_user_no_group
+    sign_in patrick
+    redirect_to dashboard_url
+  end
+
   def setup_group_with_discussion
     sign_in patrick
     create_group.add_member! emilio
