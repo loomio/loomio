@@ -20,7 +20,7 @@ class Events::BaseSerializer < ApplicationSerializer
   end
 
   def source_group
-    Group.find(object.custom_fields['source_group_id'])
+    Group.find_by(id: object.custom_fields['source_group_id'])
   end
 
   def include_source_group?
