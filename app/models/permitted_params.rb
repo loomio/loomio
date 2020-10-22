@@ -49,7 +49,9 @@ class PermittedParams < Struct.new(:params)
   end
 
   def outcome_attributes
-    [:statement, :statement_format, :poll_id, :poll_option_id,
+    [:statement, :statement_format, :poll_id, :poll_option_id, :notify_audience,
+     :recipient_user_ids, {recipient_user_ids: []},
+     :recipient_emails, {recipient_emails: []},
      :document_ids, {document_ids: []},
      :custom_fields, {custom_fields: [:event_location, :event_summary, :event_description, :should_send_calendar_invite]},
      :files, :image_files, {files: []}, {image_files: []}
@@ -90,7 +92,7 @@ class PermittedParams < Struct.new(:params)
 
   def discussion_attributes
     [:title, :description, :description_format, :group_id,
-      :newest_first, :max_depth, :private, :notify_group,
+      :newest_first, :max_depth, :private, :notify_audience,
      :recipient_user_ids, {recipient_user_ids: []},
      :recipient_emails, {recipient_emails: []},
      :forked_event_ids, {forked_event_ids: []},

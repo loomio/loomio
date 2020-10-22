@@ -19,18 +19,18 @@ export default new class OutcomeService
     #       props:
     #         model: outcome
     #   canPerform: -> true
-
-    announce_outcome:
-      icon: 'mdi-send'
-      name: 'action_dock.notify'
-      active: -> outcome.announcementsCount == 0
-      canPerform: -> AbilityService.canSetPollOutcome(poll)
-      perform: ->
-        openModal
-          component: 'AnnouncementForm'
-          props:
-            announcement: Records.announcements.buildFromModel(outcome)
-
+    #
+    # announce_outcome:
+    #   icon: 'mdi-send'
+    #   name: 'action_dock.notify'
+    #   active: -> outcome.announcementsCount == 0
+    #   canPerform: -> AbilityService.canSetPollOutcome(poll)
+    #   perform: ->
+    #     openModal
+    #       component: 'AnnouncementForm'
+    #       props:
+    #         announcement: Records.announcements.buildFromModel(outcome)
+    #
     edit_outcome:
       name: 'common.action.edit'
       icon: 'mdi-pencil'

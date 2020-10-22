@@ -16,6 +16,9 @@ export default class OutcomeModel extends BaseModel
     files: []
     imageFiles: []
     attachments: []
+    recipientUserIds: []
+    recipientEmails: []
+    notifyGroup: false
 
   afterConstruction: ->
     HasDocuments.apply @
@@ -36,6 +39,9 @@ export default class OutcomeModel extends BaseModel
 
   group: ->
     @poll().group() if @poll()
+
+  groupId: ->
+    @poll().groupId if @poll()
 
   members: ->
     @poll().members()

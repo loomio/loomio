@@ -21,6 +21,9 @@ export default
     groups:
       type: Array
       default: -> []
+    audiences:
+      type: Array
+      default: -> []
     users:
       type: Array
       default: -> []
@@ -32,8 +35,10 @@ export default
     emailAddresses: []
     loading: false
 
-  watch:
+  mounted: ->
+    @updateSearchResults()
 
+  watch:
     reset: ->
       @query = ''
       @recipients = @initialRecipients
@@ -41,6 +46,9 @@ export default
       @updateSearchResults()
 
     groups: ->
+      @updateSearchResults()
+
+    audiences: ->
       @updateSearchResults()
 
     users: ->
@@ -78,6 +86,7 @@ export default
         @searchResults = @recipients.concat @emailAddresses.map (e) ->
           id: e
           type: 'email'
+          icon: 'mdi-email-outline'
           name: e
         return
 
@@ -91,10 +100,17 @@ export default
         id: g.id
         type: 'group'
         name: g.name
+        icon: 'mdi-account-group'
         group: g
 
-      @searchResults = @recipients.concat(groups).concat(members)
+      audiences = @audiences.map (a) ->
+        id: a.id
+        type: 'audience'
+        icon: 'mdi-account-group'
+        name: a.name
+        size: a.size
 
+      @searchResults = @recipients.concat(audiences).concat(groups).concat(members)
 
 </script>
 
@@ -118,16 +134,15 @@ div
     )
     template(v-slot:selection='data')
       v-chip.chip--select-multi(:value='data.selected' close @click:close='remove(data.item)')
-        v-icon.mr-1(v-if="data.item.type == 'email'" small) mdi-email-outline
-        v-icon.mr-1(v-if="data.item.type == 'group'" small) mdi-account-group
-        user-avatar.mr-1(v-if="data.item.type == 'user'" :user="data.item.user" size="small" no-link)
+        span
+          user-avatar.mr-1(v-if="data.item.type == 'user'" :user="data.item.user" size="small" no-link)
+          v-icon.mr-1(v-else small) {{data.item.icon}}
         span {{ data.item.name }}
     template(v-slot:item='data')
       v-list-item-avatar
-        v-icon(v-if="data.item.type == 'email'" small) mdi-email-outline
-        v-icon.mr-1(v-if="data.item.type == 'group'" small) mdi-account-group
         user-avatar(v-if="data.item.type == 'user'" :user="data.item.user" size="small" no-link)
+        v-icon.mr-1(v-else small) {{data.item.icon}}
       v-list-item-content.announcement-chip__content
-        v-list-item-title(v-html='data.item.name')
+        v-list-item-title {{data.item.name}}
   //- recipients-notifications-count(:recipients="recipients")
 </template>

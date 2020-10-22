@@ -3,14 +3,24 @@ import Records from '@/shared/services/records'
 import { fieldFromTemplate } from '@/shared/helpers/poll'
 import Flash from '@/shared/services/flash'
 import EventBus from '@/shared/services/event_bus'
+import Session        from '@/shared/services/session'
+import AbilityService from '@/shared/services/ability_service'
 
 import Vue     from 'vue'
 import { exact } from '@/shared/helpers/format_time'
 import { parseISO } from 'date-fns'
-import { map, sortBy, head, find } from 'lodash'
+import { uniq, map, sortBy, head, find, filter, sum } from 'lodash'
 import { onError } from '@/shared/helpers/form'
 
+import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
+import RecipientsAutocompleteMixin from '@/mixins/recipients_autocomplete_mixin'
+
 export default
+  mixins: [RecipientsAutocompleteMixin]
+
+  components:
+    RecipientsAutocomplete: RecipientsAutocomplete
+
   props:
     outcome: Object
     close: Function
@@ -20,6 +30,12 @@ export default
     bestOption: null
     clone: null
     isDisabled: false
+    searchResults: []
+    query: ''
+    recipients: []
+    groups: []
+    users: []
+
 
   created: ->
     @clone = @outcome.clone()
@@ -38,7 +54,34 @@ export default
       @clone.pollOptionId = @outcome.pollOptionId or @bestOption.id
       @clone.customFields.event_summary = @clone.customFields.event_summary or @clone.poll().title
 
+  mounted: ->
+    @fetchMemberships()
+    @watchRecords
+      collections: ['groups', 'memberships']
+      query: (records) => @updateSuggestions()
+
   methods:
+    findUsers: ->
+      chain = Records.users.collection.chain()
+
+      if @outcome.groupId()
+        chain = chain.find(id: {$in: @outcome.group().memberIds()})
+
+      chain = chain.find(id: {$nin: [Session.user().id]})
+
+      if @query
+        chain = chain.find
+          $or: [
+            {name: {'$regex': ["^#{@query}", "i"]}}
+            {username: {'$regex': ["^#{@query}", "i"]}}
+            {name: {'$regex': [" #{@query}", "i"]}}
+          ]
+
+      chain.data()
+
+    updateSuggestions: ->
+      @users = @findUsers()
+
     submit: ->
       @clone.customFields.should_send_calendar_invite = @clone.calendarInvite
       @clone.customFields.event_description = @clone.statement if @datesAsOptions()
@@ -50,19 +93,46 @@ export default
 
       @clone.save()
       .then (data) =>
-        eventData = find(data.events, (event) => event.kind == 'outcome_created') || {}
-        event = Records.events.find(eventData.id)
         Flash.success("poll_common_outcome_form.outcome_#{actionName}")
         @closeModal()
-        EventBus.$emit 'openModal',
-          component: 'AnnouncementForm'
-          props:
-            announcement: Records.announcements.buildFromModel(event)
 
       .catch onError(@clone)
 
     datesAsOptions: ->
       fieldFromTemplate @clone.poll().pollType, 'dates_as_options'
+
+    newRecipients: (val) ->
+      @recipients = val
+      @outcome.notifyAudience = (val.find((i) -> i.type=='audience') || {}).id
+      @outcome.recipientUserIds = map filter(val, (o) -> o.type == 'user'), 'id'
+      @outcome.recipientEmails = map filter(val, (o) -> o.type == 'email'), 'name'
+
+  computed:
+    audiences: ->
+      ret = []
+      if @recipients.length == 0
+        if @outcome.group()
+          ret.push
+            id: 'group'
+            name: @outcome.group().name
+            size: @outcome.group().acceptedMembershipsCount
+        if @outcome.poll().discussionId
+          ret.push
+            id: 'discussion_group'
+            name: @$t('announcement.audiences.discussion_group')
+            size: @outcome.poll().discussion().membersCount
+        if @outcome.poll().stancesCount > 1
+          ret.push
+            id: 'voters'
+            name: @$t('announcement.audiences.voters', pollType: @outcome.poll().translatedPollType())
+            size: @outcome.poll().stancesCount
+        if @outcome.poll().participantsCount > 1
+          ret.push
+            id: 'participants'
+            name: @$t('announcement.audiences.participants')
+            size: @outcome.poll().participantsCount
+
+      ret.filter (a) => a.name.match(new RegExp(@query, 'i'))
 
 </script>
 
@@ -75,7 +145,24 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
       span(v-if='!clone.isNew()' v-t="'poll_common_outcome_form.update_title'")
     v-spacer
     dismiss-modal-button(:close="close")
-  .poll-common-outcome-form.px-6.py-4
+  .poll-common-outcome-form.px-4
+    p Wrap up the process by entering and outcome and notiyfing people about it (fixme)
+    //- p outcome.pollId {{outcome.pollId}}
+    //- p notifyGroup: {{outcome.notifyGroup}}
+    //- p userIds: {{outcome.recipientUserIds}}
+    //- p userEmails: {{outcome.recipientEmails}}
+    //- p audiences: {{audiences}}
+    //- p {{recipients.length}}
+    recipients-autocomplete(
+      :label="$t('action_dock.notify')"
+      :placeholder="$t('poll_common_outcome_form.who_to_notify')"
+      :users="users"
+      :audiences="audiences"
+      @new-query="newQuery"
+      @new-recipients="newRecipients")
+
+    .caption.outcome-modal__number-notified(v-if="notificationsCount != 1" v-t="{ path: 'poll_common_notify_group.members_count', args: { count: notificationsCount } }")
+    .caption.outcome-modal__number-notified(v-else v-t="'discussion_form.one_person_notified'")
 
     .poll-common-calendar-invite(v-if='datesAsOptions()')
       .poll-common-calendar-invite__checkbox.poll-common-checkbox-option

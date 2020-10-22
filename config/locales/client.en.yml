@@ -653,7 +653,8 @@ en:
       parent_group: Members of {{name}}
       group: Members of {{name}}
       discussion_group: Members of thread
-      voters: People who have voted
+      voters: Members of {{pollType}}
+      participants: People who voted
       undecided: Undecided people
       non_voters: Members of {{name}} not yet invited
 
@@ -1767,6 +1768,7 @@ en:
     score: 'This score poll has closed. <strong>Share an outcome</strong> with the group.'
 
   poll_common_outcome_form:
+    who_to_notify: Who do you want to notify about this outcome?
     new_title: Enter an outcome
     update_title: Update outcome
     outcome_created: Outcome created
