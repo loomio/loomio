@@ -11,6 +11,10 @@ export default
       @updateSuggestions()
 
   methods:
+    updateSuggestions: ->
+      @users = @findUsers()
+      @groups = @findGroups()
+      
     fetchMemberships: debounce ->
       return unless @query
       emails = uniq(@query.match(/[^\s:,;'"`<>]+?@[^\s:,;'"`<>]+\.[^\s:,;'"`<>]+/g) || [])

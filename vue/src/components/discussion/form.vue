@@ -9,10 +9,13 @@ import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
 
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
+import RecipientsAutocompleteMixin from '@/mixins/recipients_autocomplete_mixin'
 
 export default
   components:
     RecipientsAutocomplete: RecipientsAutocomplete
+
+  mixins: [RecipientsAutocompleteMixin]
 
   props:
     discussion: Object
@@ -32,6 +35,13 @@ export default
 
   mounted: ->
     @recipients = @initialRecipients
+    Records.memberships.fetch
+      path: 'autocomplete'
+      params:
+        exclude_types: 'group'
+        group_id: @discussion.group().parentOrSelf().groupId
+        subgroups: 'all'
+        per: 50
 
     @watchRecords
       collections: ['groups', 'memberships']
@@ -50,9 +60,10 @@ export default
         @subscription = @discussion.group().parentOrSelf().subscription
         if groupId
           @canAnnounce = !!(@discussion.group().adminsInclude(Session.user()) || @discussion.group().membersCanAnnounce)
-          @discussion.notifyGroup = @canAnnounce
+          console.log 'groupId', groupId, 'canAnnounce', @canAnnounce
+          @discussion.notifyAudience = @canAnnounce && 'group'
         else
-          @discussion.notifyGroup = false
+          @discussion.notifyAudience = null
           @canAnnounce = false
 
   methods:
@@ -74,8 +85,6 @@ export default
         @loading = false
     , 300
 
-    newQuery: (query) ->
-      @query = query
     findGroups: ->
       return [] if @recipients.find((i) -> i.type == 'group')
       allGroups = if @discussion.groupId
@@ -96,7 +105,7 @@ export default
       chain = Records.users.collection.chain()
 
       if @discussion.groupId
-        chain = chain.find(id: {$in: @discussion.group().memberIds()})
+        chain = chain.find(id: {$in: @discussion.group().parentAndSelfMemberIds()})
 
       chain = chain.find(id: {$nin: [Session.user().id]})
 
@@ -109,10 +118,6 @@ export default
           ]
 
       chain.data()
-
-    updateSuggestions: ->
-      @users = @findUsers()
-      @groups = @findGroups()
 
     submit: ->
       actionName = if @discussion.isNew() then 'created' else 'updated'
@@ -134,14 +139,6 @@ export default
       @discussion.recipientEmails = map filter(val, (o) -> o.type == 'email'), 'name'
 
   computed:
-    notificationsCount: ->
-      guests = @recipients.filter (o) =>
-        o.type == 'user' && (!@discussion.notifyGroup || Records.memberships.find(userId: o.id, groupId: @discussion.groupId).length == 0)
-      .length
-      emails = @recipients.filter((o) => o.type == 'email').length
-      members = if @discussion.groupId && @discussion.notifyGroup then @discussion.group().acceptedMembershipsCount else 0
-      guests + emails + members
-
     initialRecipients: ->
       if @discussion.groupId
         [{id: @discussion.groupId, type: 'group', name: @discussion.group().name, group: @discussion.group()}]
@@ -205,7 +202,7 @@ export default
       v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input.text-h5(:label="$t('discussion_form.title_label')" :placeholder="$t('discussion_form.title_placeholder')" v-model='discussion.title' maxlength='255')
       validation-errors(:subject='discussion', field='title')
       lmo-textarea(:model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")
-      v-checkbox(:label="$t('discussion_form.notify_group')" v-model="discussion.notifyGroup" :disabled="!canAnnounce")
+      v-checkbox(:label="$t('discussion_form.notify_group')" v-model="discussion.notifyAudience" value="group" :disabled="!canAnnounce")
       .caption.discussion-form__number-notified(v-if="notificationsCount != 1" v-t="{ path: 'poll_common_notify_group.members_count', args: { count: notificationsCount } }")
       .caption.discussion-form__number-notified(v-else v-t="'discussion_form.one_person_notified'")
 
