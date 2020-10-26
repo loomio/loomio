@@ -6,7 +6,7 @@ import Flash from '@/shared/services/flash'
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
 import StanceService from '@/shared/services/stance_service'
 import {audiencesFor, audienceSize, audienceValuesFor} from '@/shared/helpers/announcement.coffee'
-import {map, debounce, without, filter, uniq, uniqBy, some} from 'lodash'
+import {map, debounce, without, filter, uniq, uniqBy, some, find} from 'lodash'
 
 import RecipientsAutocompleteMixin from '@/mixins/recipients_autocomplete_mixin'
 
@@ -51,14 +51,6 @@ export default
 
   computed:
     model: -> @poll
-    # audiences: ->
-    #   ret = []
-    #   if @recipients.length == 0
-    #     if @poll.stancesCount < @poll.group().acceptedMembershipsCount
-    #       ret.push 'group'
-    #     if @poll.discussionId && @poll.stancesCount < @poll.discussion().membersCount
-    #       ret.push 'discussion_group'
-    #   ret
 
     audiences: ->
       ret = []
@@ -88,6 +80,7 @@ export default
       @saving = true
       Records.announcements.remote.post '',
         poll_id: @poll.id
+        notify_audience: (find(@recipients, (r) -> r.type == 'audience') || {}).id
         recipients:
           user_ids: map filter(@recipients, (r) -> r.type == 'user'), 'id'
           emails: map filter(@recipients, (r) -> r.type == 'email'), 'id'
