@@ -79,7 +79,6 @@ describe API::DiscussionsController do
         }
       }
       json = JSON.parse response.body
-      puts json
       expect(response.status).to eq 200
       d = Discussion.find(json['discussions'][0]['id'])
       expect(d.discussion_readers.count).to eq 1
