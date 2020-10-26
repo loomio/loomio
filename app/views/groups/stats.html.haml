@@ -22,7 +22,7 @@
               -# %td
               -#   %p{ style: "text-align: center"}= Queries::GroupStats.visits_count(@group)
               %td
-                %p{ style: "text-align: center"}= @group.accepted_memberships_count
+                %p{ style: "text-align: center"}= @group.active_memberships_count
               %td
                 %p{ style: "text-align: center"}= @group.subgroups.count
               %td
