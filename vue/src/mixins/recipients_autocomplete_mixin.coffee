@@ -8,7 +8,6 @@ export default
     users: []
     query: ''
     groups: []
-    users: []
 
   watch:
     query: ->
@@ -20,7 +19,6 @@ export default
       @users = @findUsers()
       @groups = @findGroups()
 
-    fetchMembershipsParams: -> {}
     findGroups: -> []
 
     excludedUserIds: ->
@@ -51,17 +49,14 @@ export default
 
       @loading = true
 
-      params = Object.assign
-        exclude_types: 'group'
-        q: @query
-        subgroups: 'all'
-        per: 20
-      ,
-        @fetchMembershipsParams()
-
       Records.memberships.fetch
         path: 'autocomplete'
-        params: params
+        params:
+          exclude_types: 'group'
+          q: @query
+          subgroups: 'all'
+          per: 20
+          group_id: @model.group().parentOrSelf().groupId
       .finally =>
         @loading = false
     , 300

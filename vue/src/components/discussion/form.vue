@@ -57,8 +57,6 @@ export default
           @canAnnounce = false
 
   methods:
-    fetchMembershipsParams: ->
-      group_id: @discussion.group().parentOrSelf().groupId
 
     findGroups: ->
       return [] if @recipients.find((i) -> i.type == 'group')

@@ -29,6 +29,10 @@ class ApplicationSerializer < ActiveModel::Serializer
     include_type?('discussion')
   end
 
+  def include_poll?
+    include_type?('poll')
+  end
+
   def include_created_event?
     include_type?('event')
   end

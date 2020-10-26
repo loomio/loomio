@@ -8,19 +8,20 @@ import StanceService from '@/shared/services/stance_service'
 import {audiencesFor, audienceSize, audienceValuesFor} from '@/shared/helpers/announcement.coffee'
 import {map, debounce, without, filter, uniq, uniqBy, some} from 'lodash'
 
+import RecipientsAutocompleteMixin from '@/mixins/recipients_autocomplete_mixin'
+
 export default
   components:
     RecipientsAutocomplete: RecipientsAutocomplete
+
+  mixins: [RecipientsAutocompleteMixin]
 
   props:
     poll: Object
 
   data: ->
     stances: []
-    query: ''
     searchResults: []
-    recipients: []
-    excludedUserIds: []
     membershipsByUserId: {}
     stanceUserIds: []
     reset: false
@@ -32,35 +33,48 @@ export default
 
   mounted: ->
     @actionNames = ['makeAdmin', 'removeAdmin', 'revoke'] # 'resend'
-    # TODO add query support to this fetch for when there are many readers
-    Records.stances.fetch
-      params:
-        poll_id: @poll.id
-        exclude_types: 'poll'
-    .then (records) =>
-      userIds = map records['users'], 'id'
-      Records.memberships.fetch
-        path: 'autocomplete'
-        params:
-          group_id: @poll.groupId
-          user_ids: userIds.join(' ')
+
+    @fetchMemberships()
+    @fetchStances()
+    @updateSuggestions()
+    @updateStances()
 
     @watchRecords
       collections: ['stances', 'memberships']
-      query: (records) => @updateStances()
+      query: (records) =>
+        @updateStances()
+        @updateSuggestions()
 
   watch:
-    query: -> @updateStances()
+    query: ->
+      @fetchMemberships()
 
   computed:
+    model: -> @poll
+    # audiences: ->
+    #   ret = []
+    #   if @recipients.length == 0
+    #     if @poll.stancesCount < @poll.group().acceptedMembershipsCount
+    #       ret.push 'group'
+    #     if @poll.discussionId && @poll.stancesCount < @poll.discussion().membersCount
+    #       ret.push 'discussion_group'
+    #   ret
+
     audiences: ->
       ret = []
       if @recipients.length == 0
-        if @poll.stancesCount < @poll.group().acceptedMembershipsCount
-          ret.push 'group'
-        if @poll.discussionId && @poll.stancesCount < @poll.discussion().membersCount
-          ret.push 'discussion_group'
-      ret
+        if @model.group()
+          ret.push
+            id: 'group'
+            name: @model.group().name
+            size: @model.group().acceptedMembershipsCount
+        if @model.poll().discussionId
+          ret.push
+            id: 'discussion_group'
+            name: @$t('announcement.audiences.discussion_group')
+            size: @model.poll().discussion().membersCount
+
+      ret.filter (a) => a.name.match(new RegExp(@query, 'i'))
 
   methods:
     isAdmin: (stance) ->
@@ -86,6 +100,22 @@ export default
     newQuery: (query) -> @query = query
     newRecipients: (recipients) -> @recipients = recipients
 
+    excludedUserIds: ->
+      @stanceUserIds.concat(Session.user().id)
+
+    fetchStances: ->
+      Records.stances.fetch
+        params:
+          exclude_types: 'poll group'
+          poll_id: @poll.id
+      .then (records) =>
+        userIds = map records['users'], 'id'
+        Records.memberships.fetch
+          params:
+            exclude_types: 'group user'
+            group_id: @poll.groupId
+            user_ids: userIds.join(' ')
+
     updateStances: ->
       chain = Records.stances.collection.chain().
               find(pollId: @poll.id).
@@ -103,31 +133,11 @@ export default
 
       @stances = chain.data()
       @stanceUserIds = map(Records.stances.collection.find(pollId: @poll.id), 'participantId')
-      @excludedUserIds = @stanceUserIds.concat(Session.user().id)
 
       @membershipsByUserId = {}
       Records.memberships.collection.find(userId: {$in: @stanceUserIds}).forEach (m) =>
         @membershipsByUserId[m.userId] = m
 
-    audienceSize: (audience) -> audienceSize(@poll, audience)
-
-    fetchAudience: (kind) ->
-      @fetchingAudience = true
-      Records.announcements.fetch
-        path: 'audience'
-        params:
-          poll_id: @poll.id
-          kind: kind
-          return_users: 1
-          without_exising: 1
-      .then (users) =>
-        @initialRecipients = Records.users.find(map(users, 'id')).map (user) =>
-          id: user.id
-          type: 'user'
-          name: user.name
-          user: user
-        @reset = !@reset
-      .finally => @fetchingAudience = false
 </script>
 
 <template lang="pug">
@@ -139,23 +149,12 @@ export default
     recipients-autocomplete(
       :label="$t('announcement.form.poll_announced.helptext')"
       :placeholder="$t('announcement.form.placeholder')"
-      :group="poll.group()"
-      :excluded-user-ids="excludedUserIds"
+      :audiences="audiences"
+      :users="users"
       :reset="reset"
       :initialRecipients="initialRecipients"
       @new-query="newQuery"
       @new-recipients="newRecipients")
-    div.caption(v-if="audiences.length")
-      span(v-if="fetchingAudience" v-t="'common.action.loading'")
-      span(v-else)
-        span(v-t="'announcement.quick_add'")
-        space
-        span(v-for='(audience, index) in audiences' :key='index')
-          a.announcement-form__audience(@click='fetchAudience(audience)')
-            span(v-t="{ path: 'announcement.audiences.' + audience, args: {name: poll.group().name} }")
-          span(v-if="index < audiences.length - 1")
-            | ,
-            space
     .d-flex
       v-spacer
       v-btn.poll-members-list__submit(color="primary" :disabled="!recipients.length && saving" @click="inviteRecipients" @loading="saving")

@@ -57,6 +57,8 @@ export default new class PollService
 
     announce_poll:
       icon: 'mdi-send'
+      name: 'action_dock.count_members'
+      nameArgs: -> {count: poll.stancesCount}
       canPerform: ->
         AbilityService.canAnnounceTo(poll)
       perform: ->

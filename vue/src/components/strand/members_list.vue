@@ -61,9 +61,6 @@ export default
     excludedUserIds: ->
       @readerUserIds.concat(Session.user().id)
 
-    fetchMembershipsParams: ->
-      group_id: @discussion.group().parentOrSelf().groupId
-
     isGroupAdmin: (reader) ->
       @membershipsByUserId[reader.userId] && @membershipsByUserId[reader.userId].admin
 
