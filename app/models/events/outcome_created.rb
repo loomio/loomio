@@ -1,27 +1,21 @@
 class Events::OutcomeCreated < Event
-  include Events::Notify::Author
   include Events::Notify::ThirdParty
   include Events::Notify::Mentions
   include Events::Notify::InApp
+  include Events::Notify::ByEmail
   include Events::LiveUpdate
 
-  def self.publish!(outcome)
-    super outcome,
-          user: outcome.author,
-          discussion: outcome.poll.discussion
-  end
+  attr_accessor :recipients
 
   private
 
-  def email_recipients
-    if poll.group.presence
-      super
-    else
-      poll.participants
-    end
+  def notification_recipients
+    @recipients
   end
 
-  def notify_author?
-    poll.author_receives_outcome
+  def email_recipients
+    Queries::UsersByVolumeQuery.normal_or_loud(eventable)
+      .where('users.id': @recipients.map(&:id))
+      .where.not(id: eventable.newly_mentioned_users)
   end
 end

@@ -64,8 +64,8 @@ export default
     findUsers: ->
       chain = Records.users.collection.chain()
 
-      if @outcome.groupId
-        chain = chain.find(id: {$in: @outcome.group().memberIds()})
+      if @clone.groupId
+        chain = chain.find(id: {$in: @clone.group().memberIds()})
 
       chain = chain.find(id: {$nin: [Session.user().id]})
 
@@ -103,35 +103,35 @@ export default
 
     newRecipients: (val) ->
       @recipients = val
-      @outcome.recipientAudience = (val.find((i) -> i.type=='audience') || {}).id
-      @outcome.recipientUserIds = map filter(val, (o) -> o.type == 'user'), 'id'
-      @outcome.recipientEmails = map filter(val, (o) -> o.type == 'email'), 'name'
+      @clone.recipientAudience = (val.find((i) -> i.type=='audience') || {}).id
+      @clone.recipientUserIds = map filter(val, (o) -> o.type == 'user'), 'id'
+      @clone.recipientEmails = map filter(val, (o) -> o.type == 'email'), 'name'
 
   computed:
-    model: -> @outcome
+    model: -> @clone
     audiences: ->
       ret = []
       if @recipients.length == 0
-        if @outcome.group()
+        if @clone.group()
           ret.push
             id: 'group'
-            name: @outcome.group().name
-            size: @outcome.group().acceptedMembershipsCount
-        if @outcome.poll().discussionId
+            name: @clone.group().name
+            size: @clone.group().acceptedMembershipsCount
+        if @clone.poll().discussionId
           ret.push
             id: 'discussion_group'
             name: @$t('announcement.audiences.discussion_group')
-            size: @outcome.poll().discussion().membersCount
-        if @outcome.poll().stancesCount > 1
+            size: @clone.poll().discussion().membersCount
+        if @clone.poll().stancesCount > 1
           ret.push
             id: 'voters'
-            name: @$t('announcement.audiences.voters', pollType: @outcome.poll().translatedPollType())
-            size: @outcome.poll().stancesCount
-        if @outcome.poll().participantsCount > 1
+            name: @$t('announcement.audiences.voters', pollType: @clone.poll().translatedPollType())
+            size: @clone.poll().stancesCount
+        if @clone.poll().participantsCount > 1
           ret.push
             id: 'participants'
             name: @$t('announcement.audiences.participants')
-            size: @outcome.poll().participantsCount
+            size: @clone.poll().participantsCount
 
       ret.filter (a) => a.name.match(new RegExp(@query, 'i'))
 
@@ -149,9 +149,9 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
   .poll-common-outcome-form.px-4
     p Wrap up the process by entering and outcome and notiyfing people about it (fixme)
     //- p outcome.pollId {{outcome.pollId}}
-    //- p notifyGroup: {{outcome.notifyGroup}}
-    //- p userIds: {{outcome.recipientUserIds}}
-    //- p userEmails: {{outcome.recipientEmails}}
+    p audience: {{clone.recipientAudience}}
+    p userIds: {{clone.recipientUserIds}}
+    p userEmails: {{clone.recipientEmails}}
     //- p audiences: {{audiences}}
     //- p {{recipients.length}}
     recipients-autocomplete(

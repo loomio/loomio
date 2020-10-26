@@ -8,12 +8,12 @@ class Events::NewDiscussion < Event
   attr_accessor :discussion_readers
   attr_accessor :notify_group
 
-  def self.publish!(discussion, discussion_readers = nil, notify_group = false)
-    super(discussion,
-          user: discussion.author,
-          discussion_readers: discussion_readers || DiscussionReader.none,
-          notify_group: notify_group)
-  end
+  # def self.publish!(discussion, discussion_readers = nil, notify_group = false)
+  #   super(discussion,
+  #         user: discussion.author,
+  #         discussion_readers: discussion_readers || DiscussionReader.none,
+  #         notify_group: notify_group)
+  # end
 
   def discussion
     eventable

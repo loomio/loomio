@@ -9,7 +9,7 @@ export default
     poll: Object
   methods:
     showPanel: ->
-      !@poll.outcome() and AbilityService.canSetPollOutcome(@poll)
+      AbilityService.canSetPollOutcome(@poll)
 
     openOutcomeForm: ->
       outcome = @poll.outcome() or
