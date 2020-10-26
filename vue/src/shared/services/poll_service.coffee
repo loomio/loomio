@@ -46,7 +46,7 @@ export default new class PollService
             stance: poll.myStance().clone()
 
     notification_history:
-      name: 'action_dock.notification_history'
+      name: 'action_dock.show_notifications'
       icon: 'mdi-alarm-check'
       perform: ->
         openModal
@@ -95,7 +95,7 @@ export default new class PollService
 
     show_history:
       icon: 'mdi-history'
-      name: 'action_dock.edited'
+      name: 'action_dock.show_edits'
       canPerform: -> poll.edited()
       perform: ->
         openModal
@@ -128,6 +128,7 @@ export default new class PollService
                   component: 'PollCommonOutcomeModal'
                   props:
                     outcome: Records.outcomes.build
+                      groupId: poll.groupId
                       pollId: poll.id
                       statementFormat: Session.defaultFormat()
               text:

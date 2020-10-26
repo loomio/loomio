@@ -50,7 +50,23 @@ class API::AnnouncementsController < API::RestfulController
   def history
     notifications = {}
 
-    events = Event.where(kind: ['announcement_created', 'user_mentioned', 'announcement_resend', 'discussion_announced', 'poll_announced', 'outcome_announced', 'comment_replied_to', 'poll_closing_soon'], eventable: history_model).order('id').limit(50)
+    kinds = %w[
+      announcement_created
+      user_mentioned
+      announcement_resend
+      discussion_announced
+      poll_announced
+      outcome_announced
+      outcome_created
+      outcome_edited
+      poll_created
+      poll_edited
+      new_discussion
+      discussion_edited
+      comment_replied_to
+      poll_closing_soon]
+
+    events = Event.where(kind: kinds, eventable: history_model).order('id').limit(50)
 
     Notification.includes(:user).where(event_id: events.pluck(:id)).order('users.name, users.email').each do |notification|
       next unless notification.user

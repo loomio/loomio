@@ -50,7 +50,7 @@ export default new class ThreadService
             # newVolume: 'quiet'
 
     notification_history:
-      name: 'action_dock.notification_history'
+      name: 'action_dock.show_notifications'
       icon: 'mdi-alarm-check'
       perform: ->
         openModal
@@ -119,7 +119,7 @@ export default new class ThreadService
 
     show_history:
       icon: 'mdi-history'
-      name: 'action_dock.edited'
+      name: 'action_dock.show_edits'
       canPerform: -> discussion.edited()
       perform: ->
         openModal

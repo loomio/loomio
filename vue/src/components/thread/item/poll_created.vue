@@ -40,7 +40,7 @@ export default
 
     menuActions: ->
       assign(
-        pick PollService.actions(@poll, @), ['show_history', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread', 'translate_poll']
+        pick PollService.actions(@poll, @), ['notification_history', 'show_history', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread', 'translate_poll']
       ,
         pick EventService.actions(@event, @), ['move_event', 'copy_url', 'pin_event', 'unpin_event']
       )

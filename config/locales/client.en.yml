@@ -745,6 +745,8 @@ en:
     translate_outcome: Translate outcome
     show_history: Show edit history
     edited: Edited
+    show_edits: Show edits
+    show_notifications: Show notifications
     history: History
     pin_thread: Pin thread
     unpin_thread: Un-pin thread
@@ -844,10 +846,11 @@ en:
 
   revision_history_modal:
     aria_label: Revision history
-    discussion_header: Discussion revision history
-    comment_header: Comment revision history
-    poll_header: Poll revision history
-    stance_header: Stance revision history
+    discussion_header: Discussion edits
+    comment_header: Comment edits
+    poll_header: Poll edits
+    outcome_header: Outcome edits
+    stance_header: Stance edits
     started_by: 'Started by <strong>{{name}}</strong>'
     edited_by: 'Edited by <strong>{{name}}</strong>'
     edit_by: "Edit by {{name}} · {{date}}"

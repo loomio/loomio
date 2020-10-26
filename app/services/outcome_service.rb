@@ -23,6 +23,23 @@ class OutcomeService
       recipients: users_to_notify(outcome: outcome, params: params, actor: actor))
   end
 
+  def self.update(outcome:, actor:, params: {})
+    actor.ability.authorize! :update, outcome
+
+    HasRichText.assign_attributes_and_update_files(outcome, params.except(:document_ids))
+    outcome.assign_attributes(params.slice(:statement))
+    outcome.assign_attributes(author: actor)
+    return false unless outcome.valid?
+    outcome.store_calendar_invite if outcome.should_send_calendar_invite
+
+    outcome.save!
+
+    outcome.update_versions_count
+    EventBus.broadcast 'outcome_create', outcome, actor
+    Events::OutcomeCreated.publish!(outcome, user: actor,
+      recipients: users_to_notify(outcome: outcome, params: params, actor: actor))
+  end
+
   def self.users_to_notify(outcome:, params:, actor:)
     user_ids = Array(params[:recipient_user_ids]).map(&:to_i)
     emails = Array(params[:recipient_emails])

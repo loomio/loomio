@@ -34,9 +34,11 @@ import AddPollToThreadModal from '@/components/poll/add_to_thread_modal'
 import StrandMembersList from '@/components/strand/members_list'
 import PollMembers from '@/components/poll/members'
 import GroupInvitationForm from '@/components/group/invitation_form'
+import AnnouncementHistory from '@/components/common/announcement_history'
 
 export default
   components: {
+    AnnouncementHistory
     GroupForm
     DiscussionForm
     EditCommentForm

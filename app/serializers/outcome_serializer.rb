@@ -1,7 +1,7 @@
 class OutcomeSerializer < ApplicationSerializer
   attributes :id, :statement, :statement_format, :latest,
     :created_at, :custom_fields, :attachments, :event_summary,
-    :event_location, :poll_id, :group_id, :author_id, :secret_token
+    :event_location, :poll_id, :group_id, :author_id, :secret_token, :versions_count
 
   has_one :poll_option, serializer: PollOptionSerializer, root: :poll_options
   has_one :author, serializer: AuthorSerializer, root: :users

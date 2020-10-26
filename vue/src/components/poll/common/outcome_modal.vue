@@ -142,11 +142,11 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
     v-spacer
     dismiss-modal-button(:close="close")
   .poll-common-outcome-form.px-4
-    p Wrap up the process by entering and outcome and notiyfing people about it (fixme)
+    p Summarise the understanding found and anything that should be recorded.
     //- p outcome.pollId {{outcome.pollId}}
-    p audience: {{outcome.recipientAudience}}
-    p userIds: {{outcome.recipientUserIds}}
-    p userEmails: {{outcome.recipientEmails}}
+    //- p audience: {{outcome.recipientAudience}}
+    //- p userIds: {{outcome.recipientUserIds}}
+    //- p userEmails: {{outcome.recipientEmails}}
     //- p audiences: {{audiences}}
     //- p {{recipients.length}}
     recipients-autocomplete(
