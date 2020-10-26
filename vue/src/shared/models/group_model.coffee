@@ -112,7 +112,7 @@ export default class GroupModel extends BaseModel
     @parentAndSelfMemberships().map (u) -> u.id
 
   parentAndSelfMembers: ->
-    @recordStore.users.collection.find(id: {$in: @parentAndSelfMembershipIds()})
+    @recordStore.users.collection.find(id: {$in: @parentAndSelfMemberships().map (m) -> m.userId})
 
   parentAndSelfMemberIds: ->
     @parentAndSelfMembers().map (u) -> u.id

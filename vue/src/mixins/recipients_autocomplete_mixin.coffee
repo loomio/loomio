@@ -50,7 +50,6 @@ export default
       @loading = true
 
       Records.memberships.fetch
-        path: 'autocomplete'
         params:
           exclude_types: 'group'
           q: @query
@@ -65,5 +64,21 @@ export default
       @query = query
 
   computed:
+    audiences: ->
+      ret = []
+      if @recipients.length == 0
+        if @model.isA('discussion')
+          if @model.groupId
+            ret.push
+              id: 'group'
+              name: @model.group().name
+              size: @model.group().acceptedMembershipsCount
+          if @model.membersCount > 1
+            ret.push
+              id: 'discussion_group'
+              name: @$t('announcement.audiences.discussion_group')
+              size: @model.membersCount
+
+      ret.filter (a) => a.name.match(new RegExp(@query, 'i'))
     notificationsCount: ->
       sum(@recipients.map((r) => r.size || 1))

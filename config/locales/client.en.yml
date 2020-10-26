@@ -590,7 +590,7 @@ en:
   discussion_form:
     to: To
     # visible_to_label: Privacy
-    # visible_to_discussion: Invite only
+    none_invite_only: None (Invite only)
     # visible_to_group: Group thread
     # visible_to_parent_group: "{{group}}"
     # visible_to_public: Public
@@ -678,7 +678,7 @@ en:
         helptext: Who would you like to invite to the thread?
       discussion_edited:
         title: Notify of edits
-        helptext: Who would you like to notify about your changes?
+        helptext: Who would you like to notify about your changes? (optional)
       poll_announced:
         title: Invite to vote
         helptext: Who would you like to invite to vote?
