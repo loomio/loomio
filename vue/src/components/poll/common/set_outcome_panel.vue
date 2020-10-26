@@ -15,6 +15,7 @@ export default
       outcome = @poll.outcome() or
       Records.outcomes.build
         pollId: @poll.id
+        groupId: @poll.groupId
         statementFormat: Session.defaultFormat()
       EventBus.$emit 'openModal',
         component: 'PollCommonOutcomeModal'

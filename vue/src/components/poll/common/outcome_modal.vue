@@ -103,11 +103,12 @@ export default
 
     newRecipients: (val) ->
       @recipients = val
-      @outcome.notifyAudience = (val.find((i) -> i.type=='audience') || {}).id
+      @outcome.recipientAudience = (val.find((i) -> i.type=='audience') || {}).id
       @outcome.recipientUserIds = map filter(val, (o) -> o.type == 'user'), 'id'
       @outcome.recipientEmails = map filter(val, (o) -> o.type == 'email'), 'name'
 
   computed:
+    model: -> @outcome
     audiences: ->
       ret = []
       if @recipients.length == 0

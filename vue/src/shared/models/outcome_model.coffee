@@ -18,7 +18,8 @@ export default class OutcomeModel extends BaseModel
     attachments: []
     recipientUserIds: []
     recipientEmails: []
-    notifyAudience: null
+    recipientAudience: null
+    groupId: null
 
   afterConstruction: ->
     HasDocuments.apply @
