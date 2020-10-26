@@ -12,12 +12,10 @@ class PollService
     Events::PollCreated.publish!(poll, actor)
   end
 
-  def self.announce(poll:, actor:, params:)
-    actor.ability.authorize! :announce, poll
-
+  def self.create_stances(poll, actor, user_ids, emails)
     users = UserInviter.where_or_create!(inviter: actor,
-                                         emails: params[:emails],
-                                         user_ids: params[:user_ids])
+                                         user_ids: user_ids,
+                                         emails: emails)
 
     volumes = {}
     Membership.where(group_id: poll.group_id,
@@ -35,19 +33,19 @@ class PollService
 
     Stance.import(new_stances, on_duplicate_key_ignore: true)
 
-    if poll.discussion
-      new_discussion_readers = users.map do |user|
-        DiscussionReader.new(user: user, discussion: poll.discussion, inviter: actor, volume: DiscussionReader.volumes[:normal])
-      end
-
-      DiscussionReader.import(new_discussion_readers, on_duplicate_key_ignore: true)
-    end
-
-    stances = Stance.where(participant_id: users.pluck(:id), poll: poll)
     poll.update_stances_count
     poll.update_undecided_count
     poll.update_stance_data
 
+    Stance.where(participant_id: users.pluck(:id), poll_id: poll.id)
+  end
+
+  def self.announce(poll:, actor:, params:)
+    actor.ability.authorize! :announce, poll
+    if poll.discussion
+      DiscussionService.create_discussion_readers(poll.discussion, actor, params[:user_ids], params[:emails])
+    end
+    stances = create_stances(poll, actor, params[:user_ids], params[:emails])
     Events::PollAnnounced.publish!(poll, actor, stances)
     stances
   end

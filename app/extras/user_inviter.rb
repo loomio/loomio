@@ -1,10 +1,10 @@
 class UserInviter
   def self.where_or_create!(emails:, user_ids:, inviter:)
+    emails = Array(emails)
 
-    # sorry, the ui seems to mix em up
-    mixed = Array(emails).concat(Array(user_ids))
-    emails = mixed.filter {|email| email.to_s.include?("@") }
-    user_ids = mixed.reject {|id| id.to_s.include?("@") }
+    user_ids = User.joins(:memberships)
+                   .where('memberships.group_id': actor.group_ids)
+                   .where('users.id': Array(user_ids).map(&:to_i).compact).pluck('users.id')
 
     User.import(safe_emails(emails).map do |email|
       User.new(email: email, time_zone: inviter.time_zone, detected_locale: inviter.locale)

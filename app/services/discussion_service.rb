@@ -25,10 +25,6 @@ class DiscussionService
   end
 
   def self.create_discussion_readers(discussion, actor, user_ids, emails)
-    user_ids = User.joins(:memberships)
-                   .where('memberships.group_id': actor.group_ids)
-                   .where('users.id': Array(user_ids).map(&:to_i).compact).pluck('users.id')
-
     users = UserInviter.where_or_create!(inviter: actor,
                                          user_ids: user_ids,
                                          emails: Array(emails))
