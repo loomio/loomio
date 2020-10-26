@@ -762,6 +762,7 @@ en:
     notification_history: Notification history
     move_item: Move item
     add_poll_to_thread: Add to thread
+    count_members: "{{count}} members"
 
   formatting:
     formatting_tools: Text formatting tools

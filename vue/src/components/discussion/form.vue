@@ -41,7 +41,7 @@ export default
         exclude_types: 'group'
         group_id: @discussion.group().parentOrSelf().groupId
         subgroups: 'all'
-        per: 50
+        per: 10
 
     @watchRecords
       collections: ['groups', 'memberships']

@@ -90,8 +90,9 @@ export default new class ThreadService
       perform: => @dismiss(discussion)
 
     announce_thread:
-      name: 'invitation_form.invite_people'
+      name: 'action_dock.count_members'
       icon: 'mdi-send'
+      nameArgs: -> {count: discussion.membersCount}
       canPerform: ->
         AbilityService.canAnnounceTo(discussion)
       perform: ->
