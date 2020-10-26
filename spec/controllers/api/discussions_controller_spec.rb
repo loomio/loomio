@@ -33,6 +33,7 @@ describe API::DiscussionsController do
     end
 
     it 'create and invite user and email' do
+      group.add_member! another_user
       post :create, params: {
         discussion: {
           title: 'test',
@@ -65,8 +66,7 @@ describe API::DiscussionsController do
       d = Discussion.find(json['discussions'][0]['id'])
       expect(d.discussion_readers.count).to eq 1
       expect(d.discussion_readers.first.user_id).to eq user.id
-      e = Event.find_by(eventable_id: d.id, eventable_type: 'Discussion', kind: 'discussion_announced')
-      expect(e.notifications.count).to eq 0
+      expect(d.created_event.notifications.count).to eq 0
     end
 
     it 'create discussion and notify group' do
@@ -79,12 +79,12 @@ describe API::DiscussionsController do
         }
       }
       json = JSON.parse response.body
+      puts json
       expect(response.status).to eq 200
       d = Discussion.find(json['discussions'][0]['id'])
       expect(d.discussion_readers.count).to eq 1
       expect(d.discussion_readers.first.user_id).to eq user.id
-      e = Event.find_by(eventable_id: d.id, eventable_type: 'Discussion', kind: 'discussion_announced')
-      expect(e.notifications.count).to eq 1
+      expect(d.created_event.notifications.count).to eq 1
     end
 
     it 'create discussion without group' do

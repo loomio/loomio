@@ -14,15 +14,42 @@ class DiscussionService
     DiscussionReader.for(user: actor, discussion: discussion).update(admin: true, inviter_id: actor.id)
 
     EventBus.broadcast('discussion_create', discussion, actor)
-    created_event = Events::NewDiscussion.publish!(discussion)
+    created_event = Events::NewDiscussion.build(discussion, user: actor)
+    created_event.save!
 
-    AnnounceDiscussionWorker.perform_async(discussion.id, actor.id, {
-      user_ids: params[:recipient_user_ids],
-      emails: params[:recipient_emails],
-      notify_group: params[:notify_group]
-    })
-
+    DiscussionInviteAndNotifyWorker.perform_async(created_event.id,
+                                                  params[:recipient_user_ids],
+                                                  params[:recipient_emails],
+                                                  params[:notify_group])
     created_event
+  end
+
+  def self.create_discussion_readers(discussion, actor, user_ids, emails)
+    emails = Array(emails)
+
+    user_ids = User.joins(:memberships)
+                   .where('memberships.group_id': actor.group_ids)
+                   .where('users.id': Array(user_ids).map(&:to_i).compact).pluck('users.id')
+
+    users = UserInviter.where_or_create!(inviter: actor, emails: emails, user_ids: user_ids)
+
+    volumes = {}
+    Membership.where(group_id: discussion.group_id,
+                     user_id: users.pluck(:id)).find_each do |m|
+      volumes[m.user_id] = m.volume
+    end
+
+    new_discussion_readers = users.map do |user|
+      DiscussionReader.new(user: user,
+                           discussion: discussion,
+                           inviter: actor,
+                           volume: volumes[user.id] || DiscussionReader.volumes[:normal])
+    end
+
+    DiscussionReader.import(new_discussion_readers, on_duplicate_key_ignore: true)
+    discussion.update_members_count
+
+    DiscussionReader.where(user_id: users.pluck(:id), discussion_id: discussion.id)
   end
 
   def self.announce(discussion:, actor:, params:)

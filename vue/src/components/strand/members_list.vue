@@ -37,9 +37,11 @@ export default
       userIds = map records['users'], 'id'
       Records.memberships.fetch
         path: 'autocomplete'
+        exclude_types: 'group'
         params:
           group_id: @discussion.groupId
           user_ids: userIds.join(' ')
+      .then => @updateSuggestions()
 
     @watchRecords
       collections: ['discussionReaders', 'memberships']
@@ -129,7 +131,8 @@ export default
           v-chip.mr-1(v-if="reader.admin" outlined x-small label v-t="'announcement.members_list.thread_admin'")
           v-chip.mr-1(v-if="isGroupAdmin(reader)" outlined x-small label v-t="'announcement.members_list.group_admin'")
         v-list-item-subtitle
-          span(v-t="{ path: 'announcement.members_list.last_seen_at', args: { time: approximateDate(reader.lastReadAt) } }")
+          span(v-if="reader.lastReadAt" v-t="{ path: 'announcement.members_list.last_read_at', args: { time: approximateDate(reader.lastReadAt) } }")
+          span(v-else v-t="'announcement.members_list.has_not_read_thread'")
           //- time-ago(:date="reader.lastReadAt")
       v-list-item-action
         v-menu(offset-y)
