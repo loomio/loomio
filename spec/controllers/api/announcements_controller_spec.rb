@@ -197,6 +197,14 @@ describe API::AnnouncementsController do
         expect(User.find(json['stances'].first['participant_id']).email).to eq notified_user.email
         expect(poll.voters).to include notified_user
       end
+
+      it 'invite group with audience' do
+        group.add_member! notified_user
+        post :create, params: {poll_id: poll.id, audience: 'group'}
+        json = JSON.parse response.body
+        expect(response.status).to eq 200
+        expect(json['stances'].length).to eq (group.members.count - 1)
+      end
     end
 
     describe 'discussion' do

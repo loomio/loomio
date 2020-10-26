@@ -38,6 +38,7 @@ class API::StancesController < API::RestfulController
   def current_user_is_admin?
     stance = Stance.find_by(id: params[:id])
     poll = Poll.find_by(id: params[:poll_id])
+    return false unless (stance || poll)
     (stance || poll).poll.admins.exists?(current_user.id)
   end
 

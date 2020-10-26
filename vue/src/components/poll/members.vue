@@ -80,8 +80,8 @@ export default
       @saving = true
       Records.announcements.remote.post '',
         poll_id: @poll.id
-        notify_audience: (find(@recipients, (r) -> r.type == 'audience') || {}).id
         recipients:
+          audience: (find(@recipients, (r) -> r.type == 'audience') || {}).id
           user_ids: map filter(@recipients, (r) -> r.type == 'user'), 'id'
           emails: map filter(@recipients, (r) -> r.type == 'email'), 'id'
       .then =>

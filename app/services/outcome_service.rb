@@ -7,14 +7,14 @@ class OutcomeService
     users
   end
 
-  def self.create(outcome:, actor:, params:)
+  def self.create(outcome:, actor:, params: {})
     actor.ability.authorize! :create, outcome
 
     outcome.assign_attributes(author: actor)
     return false unless outcome.valid?
     outcome.poll.outcomes.update_all(latest: false)
     outcome.store_calendar_invite if outcome.should_send_calendar_invite
-    puts params[:notify_audience], params[:recipient_emails], params[:recipient_user_ids]
+    # puts params[:notify_audience], params[:recipient_emails], params[:recipient_user_ids]
     outcome.save!
 
     # :notify_group, :recipient_user_ids, :recipient_emails

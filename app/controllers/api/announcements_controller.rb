@@ -24,6 +24,7 @@ class API::AnnouncementsController < API::RestfulController
       params[:user_ids] = params.dig(:announcement, :recipients, :user_ids)
       params[:invited_group_ids] = params.dig(:announcement, :invited_group_ids)
       params[:message] = params.dig(:announcement, :message)
+      params[:audience] = params.dig(:announcement, :audience)
     end
 
     if target_model.is_a?(Group)

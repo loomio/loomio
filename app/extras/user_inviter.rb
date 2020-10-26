@@ -2,9 +2,7 @@ class UserInviter
   def self.where_or_create!(emails:, user_ids:, inviter:)
     emails = Array(emails)
 
-    user_ids = User.joins(:memberships)
-                   .where('memberships.group_id': actor.group_ids)
-                   .where('users.id': Array(user_ids).map(&:to_i).compact).pluck('users.id')
+    user_ids = UserQuery.visible_to(user: inviter).where('users.id': user_ids).pluck('users.id')
 
     User.import(safe_emails(emails).map do |email|
       User.new(email: email, time_zone: inviter.time_zone, detected_locale: inviter.locale)

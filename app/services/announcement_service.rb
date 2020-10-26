@@ -10,6 +10,7 @@ class AnnouncementService
     when 'participants'     then model.poll.participants
     when 'undecided'        then model.poll.undecided
     when 'non_voters'       then model.poll.non_voters
+    when nil                then User.none
     else
       raise UnknownAudienceKindError.new
     end.active.where.not(id: actor.id)

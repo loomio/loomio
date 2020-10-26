@@ -12,7 +12,9 @@ class PollService
     Events::PollCreated.publish!(poll, actor)
   end
 
-  def self.create_stances(poll, actor, user_ids, emails)
+  def self.create_stances(poll, actor, user_ids, emails, audience)
+    user_ids = Array(user_ids).concat AnnouncementService.audience_for(poll, audience, actor).pluck('users.id')
+
     users = UserInviter.where_or_create!(inviter: actor,
                                          user_ids: user_ids,
                                          emails: emails)
@@ -45,7 +47,7 @@ class PollService
     if poll.discussion
       DiscussionService.create_discussion_readers(poll.discussion, actor, params[:user_ids], params[:emails])
     end
-    stances = create_stances(poll, actor, params[:user_ids], params[:emails])
+    stances = create_stances(poll, actor, params[:user_ids], params[:emails], params[:audience])
     Events::PollAnnounced.publish!(poll, actor, stances)
     stances
   end
