@@ -28,9 +28,13 @@ export default
     searchResults: []
     canAnnounce: true
     subscription: @discussion.group().parentOrSelf().subscription
+    groupItems: []
 
   mounted: ->
     @recipients = @initialRecipients
+    @updateGroupItems()
+    Records.users.fetchGroups().then => @updateGroupItems()
+
     @fetchMemberships()
 
     @watchRecords
@@ -51,13 +55,12 @@ export default
         if groupId
           @canAnnounce = !!(@discussion.group().adminsInclude(Session.user()) || @discussion.group().membersCanAnnounce)
           console.log 'groupId', groupId, 'canAnnounce', @canAnnounce
-          @discussion.notifyGroup = @canAnnounce
+          @reset = !@reset
         else
-          @discussion.notifyGroup = null
           @canAnnounce = false
+          @reset = !@reset
 
   methods:
-
     findGroups: ->
       return [] if @recipients.find((i) -> i.type == 'group')
       allGroups = if @discussion.groupId
@@ -74,9 +77,8 @@ export default
         chain = chain.find(name: {'$regex': ["^#{@query}", 'i']})
       chain.data()
 
-
     submit: ->
-      actionName = if @discussion.isNew() then 'created' else 'updated'
+      actionName = if @discussion.id then 'updated' else 'created'
       @discussion.save()
       .then (data) =>
         discussionKey = data.discussions[0].key
@@ -85,19 +87,23 @@ export default
           @$router.push @urlFor(discussion)
       .catch onError(@discussion)
 
+    updateGroupItems: ->
+      @groupItems = [{text: @$t('discussion_form.none_invite_only'), value: null}].concat Session.user().groups().map (g) -> {text: g.fullName, value: g.id}
+
     updatePrivacy: ->
       @discussion.private = @discussion.privateDefaultValue()
 
     newRecipients: (val) ->
       @recipients = val
-      @discussion.groupId = (val.find((i) -> i.type=='group') || {}).id
+      @discussion.recipientAudience = (find(val, (o) -> o.type == 'audience') || {}).id
       @discussion.recipientUserIds = map filter(val, (o) -> o.type == 'user'), 'id'
       @discussion.recipientEmails = map filter(val, (o) -> o.type == 'email'), 'name'
 
   computed:
     model: -> @discussion
+
     initialRecipients: ->
-      if @discussion.groupId
+      if @discussion.groupId && !@discussion.id
         [{id: @discussion.groupId, type: 'group', name: @discussion.group().name, group: @discussion.group()}]
       else
         []
@@ -118,7 +124,7 @@ export default
       @subscriptionActive && !@maxThreadsReached
 
     showUpgradeMessage: ->
-      @discussion.isNew() && !@canStartThread
+      !@discussion.id && !@canStartThread
 
     isMovingItems: ->
       @discussion.isForking
@@ -132,22 +138,20 @@ export default
     h1.headline
       span(v-if="isMovingItems" v-t="'discussion_form.moving_items_title'")
       template(v-else)
-        span(v-if="discussion.isNew()" v-t="'discussion_form.new_discussion_title'")
-        span(v-if="!discussion.isNew()" v-t="'discussion_form.edit_discussion_title'")
+        span(v-if="!discussion.id" v-t="'discussion_form.new_discussion_title'")
+        span(v-if="discussion.id" v-t="'discussion_form.edit_discussion_title'")
     v-spacer
     dismiss-modal-button(v-if="!isPage" aria-hidden='true' :close='close')
-    v-btn(v-if="isPage && !discussion.isNew()" icon  aria-hidden='true' :to="urlFor(discussion)")
+    v-btn(v-if="isPage && discussion.id" icon  aria-hidden='true' :to="urlFor(discussion)")
       v-icon mdi-close
   .pa-4
-    //- .lmo-hint-text(v-t="'group_page.discussions_placeholder'" v-show='discussion.isNew() && !isMovingItems')
-    //- discussion-privacy-badge.mb-2(:discussion="discussion" no-link)
+    v-select(v-if="!discussion.id" v-model="discussion.groupId" :items="groupItems" :label="$t('common.group')")
     recipients-autocomplete(
-      v-if="discussion.isNew()"
-      :label="$t('discussion_form.to')"
-      :placeholder="$t('announcement.form.discussion_announced.helptext')"
-      :groups="groups"
+      :label="$t('action_dock.notify')"
+      :placeholder="$t('announcement.form.discussion_'+ (discussion.id ? 'edited' : 'announced')+ '.helptext')"
       :users="users"
       :initial-recipients="initialRecipients"
+      :audiences="audiences"
       @new-query="newQuery"
       @new-recipients="newRecipients")
 
@@ -159,12 +163,12 @@ export default
       v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input.text-h5(:label="$t('discussion_form.title_label')" :placeholder="$t('discussion_form.title_placeholder')" v-model='discussion.title' maxlength='255')
       validation-errors(:subject='discussion', field='title')
       lmo-textarea(:model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")
-      v-checkbox(:label="$t('discussion_form.notify_group')" v-model="discussion.notifyGroup" :disabled="!canAnnounce")
-      .caption.discussion-form__number-notified(v-if="notificationsCount != 1" v-t="{ path: 'poll_common_notify_group.members_count', args: { count: notificationsCount } }")
-      .caption.discussion-form__number-notified(v-else v-t="'discussion_form.one_person_notified'")
+      //- v-checkbox(:label="$t('discussion_form.notify_group')" v-model="discussion.notifyGroup" :disabled="!canAnnounce")
+      //- .caption.discussion-form__number-notified(v-if="notificationsCount != 1" v-t="{ path: 'poll_common_notify_group.members_count', args: { count: notificationsCount } }")
+      //- .caption.discussion-form__number-notified(v-else v-t="'discussion_form.one_person_notified'")
 
       v-card-actions
         v-spacer
-        v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-t="'discussion_form.start_thread'" v-if="discussion.isNew()")
-        v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-t="'common.action.save'" v-if="!discussion.isNew()")
+        v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-t="'discussion_form.start_thread'" v-if="!discussion.id")
+        v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-t="'common.action.save'" v-if="discussion.id")
 </template>
