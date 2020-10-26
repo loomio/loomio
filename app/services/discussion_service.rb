@@ -25,13 +25,13 @@ class DiscussionService
   end
 
   def self.create_discussion_readers(discussion, actor, user_ids, emails)
-    emails = Array(emails)
-
     user_ids = User.joins(:memberships)
                    .where('memberships.group_id': actor.group_ids)
                    .where('users.id': Array(user_ids).map(&:to_i).compact).pluck('users.id')
 
-    users = UserInviter.where_or_create!(inviter: actor, emails: emails, user_ids: user_ids)
+    users = UserInviter.where_or_create!(inviter: actor,
+                                         user_ids: user_ids,
+                                         emails: Array(emails))
 
     volumes = {}
     Membership.where(group_id: discussion.group_id,
@@ -47,6 +47,7 @@ class DiscussionService
     end
 
     DiscussionReader.import(new_discussion_readers, on_duplicate_key_ignore: true)
+
     discussion.update_members_count
 
     DiscussionReader.where(user_id: users.pluck(:id), discussion_id: discussion.id)
@@ -54,31 +55,8 @@ class DiscussionService
 
   def self.announce(discussion:, actor:, params:)
     actor.ability.authorize! :announce, discussion
-
-    emails = Array(params[:emails])
-    user_ids = Array(params[:user_ids]).map(&:to_i)
-
-    users = UserInviter.where_or_create!(inviter: actor, emails: emails, user_ids: user_ids)
-
-    volumes = {}
-    Membership.where(group_id: discussion.group_id,
-                     user_id: users.pluck(:id)).find_each do |m|
-      volumes[m.user_id] = m.volume
-    end
-
-    new_discussion_readers = users.map do |user|
-      DiscussionReader.new(user: user,
-                           discussion: discussion,
-                           inviter: actor,
-                           volume: volumes[user.id] || DiscussionReader.volumes[:normal])
-    end
-
-    DiscussionReader.import(new_discussion_readers, on_duplicate_key_ignore: true)
-
-    discussion_readers = DiscussionReader.where(user_id: users.pluck(:id), discussion_id: discussion.id)
-
+    discussion_readers = create_discussion_readers(discussion, actor, params[:user_ids], params[:emails])
     Events::DiscussionAnnounced.publish!(discussion, actor, discussion_readers, params[:notify_group])
-    discussion.update_members_count
     MessageChannelService.publish_models(discussion, group_id: discussion.group_id)
     discussion_readers
   end

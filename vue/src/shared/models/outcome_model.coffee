@@ -18,7 +18,7 @@ export default class OutcomeModel extends BaseModel
     attachments: []
     recipientUserIds: []
     recipientEmails: []
-    notifyGroup: false
+    notifyAudience: null
 
   afterConstruction: ->
     HasDocuments.apply @
@@ -27,6 +27,7 @@ export default class OutcomeModel extends BaseModel
   relationships: ->
     @belongsTo 'author', from: 'users'
     @belongsTo 'poll'
+    @belongsTo 'group'
     @belongsTo 'pollOption'
 
   reactions: ->
@@ -36,12 +37,6 @@ export default class OutcomeModel extends BaseModel
 
   authorName: ->
     @author().nameWithTitle(@poll().group())
-
-  group: ->
-    @poll().group() if @poll()
-
-  groupId: ->
-    @poll().groupId if @poll()
 
   members: ->
     @poll().members()

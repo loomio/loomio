@@ -26,22 +26,12 @@ export default
     upgradeUrl: AppConfig.baseUrl + 'upgrade'
     submitIsDisabled: false
     searchResults: []
-    query: ''
-    recipients: []
-    groups: []
-    users: []
     canAnnounce: true
     subscription: @discussion.group().parentOrSelf().subscription
 
   mounted: ->
     @recipients = @initialRecipients
-    Records.memberships.fetch
-      path: 'autocomplete'
-      params:
-        exclude_types: 'group'
-        group_id: @discussion.group().parentOrSelf().groupId
-        subgroups: 'all'
-        per: 10
+    @fetchMemberships()
 
     @watchRecords
       collections: ['groups', 'memberships']
@@ -67,23 +57,8 @@ export default
           @canAnnounce = false
 
   methods:
-    fetchMemberships: debounce ->
-      return unless @query
-      emails = uniq(@query.match(/[^\s:,;'"`<>]+?@[^\s:,;'"`<>]+\.[^\s:,;'"`<>]+/g) || [])
-      return if emails.length
-
-      @loading = true
-      Records.memberships.fetch
-        path: 'autocomplete'
-        params:
-          exclude_types: 'group'
-          q: @query
-          group_id: @discussion.group().parentOrSelf().groupId
-          subgroups: 'all'
-          per: 50
-      .finally =>
-        @loading = false
-    , 300
+    fetchMembershipsParams: ->
+      group_id: @discussion.group().parentOrSelf().groupId
 
     findGroups: ->
       return [] if @recipients.find((i) -> i.type == 'group')
@@ -101,23 +76,6 @@ export default
         chain = chain.find(name: {'$regex': ["^#{@query}", 'i']})
       chain.data()
 
-    findUsers: ->
-      chain = Records.users.collection.chain()
-
-      if @discussion.groupId
-        chain = chain.find(id: {$in: @discussion.group().parentAndSelfMemberIds()})
-
-      chain = chain.find(id: {$nin: [Session.user().id]})
-
-      if @query
-        chain = chain.find
-          $or: [
-            {name: {'$regex': ["^#{@query}", "i"]}}
-            {username: {'$regex': ["^#{@query}", "i"]}}
-            {name: {'$regex': [" #{@query}", "i"]}}
-          ]
-
-      chain.data()
 
     submit: ->
       actionName = if @discussion.isNew() then 'created' else 'updated'
@@ -139,6 +97,7 @@ export default
       @discussion.recipientEmails = map filter(val, (o) -> o.type == 'email'), 'name'
 
   computed:
+    model: -> @discussion
     initialRecipients: ->
       if @discussion.groupId
         [{id: @discussion.groupId, type: 'group', name: @discussion.group().name, group: @discussion.group()}]

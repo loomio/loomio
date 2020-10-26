@@ -4,12 +4,15 @@ import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
 import Flash from '@/shared/services/flash'
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
+import RecipientsAutocompleteMixin from '@/mixins/recipients_autocomplete_mixin'
 import DiscussionReaderService from '@/shared/services/discussion_reader_service'
 import {map, debounce, without, filter, uniq, uniqBy, some} from 'lodash'
 
 export default
   components:
     RecipientsAutocomplete: RecipientsAutocomplete
+
+  mixins: [RecipientsAutocompleteMixin]
 
   props:
     discussion: Object
@@ -19,7 +22,6 @@ export default
     query: ''
     searchResults: []
     recipients: []
-    excludedUserIds: []
     membershipsByUserId: {}
     readerUserIds: []
     reset: false
@@ -29,7 +31,9 @@ export default
 
   mounted: ->
     @actionNames = ['makeAdmin', 'removeAdmin', 'revoke'] # 'resend'
-    # TODO add query support to this fetch for when there are many readers
+
+    @fetchMemberships()
+
     Records.discussionReaders.fetch
       params:
         discussion_id: @discussion.id
@@ -50,7 +54,16 @@ export default
   watch:
     query: -> @updateReaders()
 
+  computed:
+    model: -> @discussion
+
   methods:
+    excludedUserIds: ->
+      @readerUserIds.concat(Session.user().id)
+
+    fetchMembershipsParams: ->
+      group_id: @discussion.group().parentOrSelf().groupId
+
     isGroupAdmin: (reader) ->
       @membershipsByUserId[reader.userId] && @membershipsByUserId[reader.userId].admin
 
@@ -91,7 +104,6 @@ export default
 
       @readers = chain.data()
       @readerUserIds = map(Records.discussionReaders.collection.find(discussionId: @discussion.id), 'userId')
-      @excludedUserIds = @readerUserIds.concat(Session.user().id)
 
       @membershipsByUserId = {}
       Records.memberships.collection.find(userId: {$in: @readerUserIds}).forEach (m) =>
@@ -108,8 +120,7 @@ export default
     recipients-autocomplete(
       :label="$t('announcement.form.discussion_announced.helptext')"
       :placeholder="$t('announcement.form.placeholder')"
-      :group="discussion.group()"
-      :excluded-user-ids="excludedUserIds"
+      :users="users"
       :reset="reset"
       @new-query="newQuery"
       @new-recipients="newRecipients")

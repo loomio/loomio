@@ -64,7 +64,7 @@ export default
     findUsers: ->
       chain = Records.users.collection.chain()
 
-      if @outcome.groupId()
+      if @outcome.groupId
         chain = chain.find(id: {$in: @outcome.group().memberIds()})
 
       chain = chain.find(id: {$nin: [Session.user().id]})
