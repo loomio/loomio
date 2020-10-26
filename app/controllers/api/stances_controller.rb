@@ -35,8 +35,14 @@ class API::StancesController < API::RestfulController
     @stance = Stance.find(params[:id])
   end
 
+  def current_user_is_admin?
+    stance = Stance.find_by(id: params[:id])
+    poll = Poll.find_by(id: params[:poll_id])
+    (stance || poll).poll.admins.exists?(current_user.id)
+  end
+
   def default_scope
-    super.merge({include_email: @stance && @stance.poll.admins.exists?(current_user.id)})
+    super.merge({include_email: current_user_is_admin?})
   end
 
   def accessible_records
