@@ -21,7 +21,7 @@ module Dev::PollsScenarioHelper
                      anonymous: !!params[:anonymous])
 
     event = PollService.create(poll: poll, actor: actor)
-    recipients = {user_ids: [user.id], emails: [user.email]}
+    recipients = {recipient_emails: [user.email]}
     PollService.announce(poll: poll, params: recipients, actor: actor)
 
     {
@@ -162,7 +162,7 @@ module Dev::PollsScenarioHelper
                                                      closing_at: 1.day.from_now))
 
     PollService.create(poll: poll, actor: actor)
-    PollService.announce(poll: poll, params: {user_ids: [non_voter.id], kind: "poll_announced"}, actor: actor)
+    PollService.announce(poll: poll, params: {recipient_user_ids: [non_voter.id]}, actor: actor)
 
     PollService.publish_closing_soon
 
@@ -193,7 +193,7 @@ module Dev::PollsScenarioHelper
     voter      = poll.stances.last.real_participant
     discussion.add_guest! voter, discussion.author
     PollService.create(poll: poll, actor: actor)
-    PollService.announce(poll: poll, params: {user_ids: [voter.id],  kind: "poll_announced"}, actor: actor)
+    PollService.announce(poll: poll, params: {recipient_user_ids: [voter.id]}, actor: actor)
     PollService.publish_closing_soon
 
     { discussion: discussion,
@@ -243,7 +243,7 @@ module Dev::PollsScenarioHelper
     outcome    = fake_outcome(poll: poll)
 
     OutcomeService.create(outcome: outcome, actor: actor)
-    OutcomeService.announce(outcome: outcome, params: {user_ids: [observer.id], emails: [observer.email], kind: "outcome_announced"}, actor: actor)
+    OutcomeService.announce(outcome: outcome, params: {recipient_emails: [observer.email]}, actor: actor)
 
     { discussion: discussion,
       group: discussion.group,
