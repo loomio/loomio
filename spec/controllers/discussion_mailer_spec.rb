@@ -13,6 +13,12 @@ describe Dev::NightwatchController do
   #   expect_text_no_tags('main', "What star sign are you?")
   # end
 
+  it 'discussion_created' do
+    get :setup_discussion_mailer_discussion_created_email
+    expect_text_no_tags('.thread-mailer__subject', "started a thread")
+    expect_text_no_tags('.thread-mailer__body', "A description for this discussion. Should this be rich?")
+  end
+
   it 'discussion_announced' do
     get :setup_discussion_mailer_discussion_announced_email
     expect_text_no_tags('.thread-mailer__subject', "invited you to join")

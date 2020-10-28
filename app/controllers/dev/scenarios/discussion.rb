@@ -89,13 +89,24 @@ module Dev::Scenarios::Discussion
 
   # discussion mailer emails
 
+  def setup_discussion_mailer_discussion_created_email
+    sign_in jennifer
+    @group = FactoryBot.create(:group, name: "Girdy Dancing Shoes", creator: patrick)
+    @group.add_admin! patrick
+    @group.add_member! jennifer
+    discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: @group)
+    DiscussionService.create(discussion: discussion, actor: patrick, params: {recipient_user_ids: [jennifer.id]})
+    last_email
+  end
+
   def setup_discussion_mailer_discussion_announced_email
     sign_in jennifer
     @group = FactoryBot.create(:group, name: "Girdy Dancing Shoes", creator: patrick)
     @group.add_admin! patrick
+    @group.add_member! jennifer
     discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: @group)
     event = DiscussionService.create(discussion: discussion, actor: patrick)
-    DiscussionService.announce(discussion: discussion, actor: patrick, params: {user_ids: [jennifer.id], kind: "discussion_announced"})
+    DiscussionService.announce(discussion: discussion, actor: patrick, params: {recipient_user_ids: [jennifer.id]})
     last_email
   end
 
@@ -106,7 +117,7 @@ module Dev::Scenarios::Discussion
     event = DiscussionService.create(discussion: discussion, actor: patrick)
     comment = FactoryBot.build(:comment, discussion: discussion)
     CommentService.create(comment: comment, actor: patrick)
-    DiscussionService.announce(discussion: discussion, actor: patrick, params: {emails: 'jen@example.com', kind: "discussion_announced"})
+    DiscussionService.announce(discussion: discussion, actor: patrick, params: {recipient_emails: 'jen@example.com'})
     last_email
   end
 
