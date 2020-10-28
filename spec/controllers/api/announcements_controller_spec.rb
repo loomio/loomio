@@ -202,8 +202,7 @@ describe API::AnnouncementsController do
       end
 
       it 'invite group with audience' do
-        group.add_member! notified_user
-        post :create, params: {poll_id: poll.id, audience: 'group'}
+        post :create, params: {poll_id: poll.id, recipient_audience: 'group'}
         json = JSON.parse response.body
         expect(response.status).to eq 200
         expect(json['stances'].length).to eq group.members.count
@@ -305,6 +304,7 @@ describe API::AnnouncementsController do
       let(:group) { create :group, creator: user}
       let(:subgroup) { create :group, parent: group, creator: user}
       let(:subgroup2) { create :group, parent: group, creator: user}
+      let(:overlap_group) { create :group }
       before do
         group.add_member! notified_user
       end
@@ -347,9 +347,11 @@ describe API::AnnouncementsController do
       end
 
       it 'supports inviting to multiple auto accepting subgroups' do
+        overlap_group.add_member!(member)
+        overlap_group.add_member!(user)
         subgroup.add_admin! user
-        expect(member.memberships.accepted.count).to eq 0
-        post :create, params: {group_id: group.id, recipient_user_ids: member.id, invited_group_ids: [group.id, subgroup.id]}
+        expect(member.memberships.accepted.count).to eq 1
+        post :create, params: {group_id: group.id, recipient_user_ids: [member.id], invited_group_ids: [group.id, subgroup.id]}
 
         expect(response.status).to eq 200
         expect(member.notifications.count).to eq 1

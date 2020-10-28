@@ -9,15 +9,6 @@ class API::MembershipsController < API::RestfulController
     respond_with_collection(scope: index_scope)
   end
 
-  def add_to_subgroup
-    group = load_and_authorize(:group)
-    users = group.parent.members.where('users.id': params[:user_ids])
-    @memberships = service.add_users_to_group(users: users,
-                                              group: group,
-                                              inviter: current_user)
-    respond_with_collection
-  end
-
   def destroy_response
     render json: Array(resource.group), each_serializer: GroupSerializer, root: :groups, scope: {}
   end

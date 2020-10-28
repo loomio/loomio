@@ -118,45 +118,6 @@ describe API::MembershipsController do
     end
   end
 
-  describe 'add_to_subgroup' do
-    context 'permitted' do
-      let(:parent_member) { FactoryBot.create(:user) }
-      let(:parent_group) { FactoryBot.create(:group) }
-      let(:subgroup) { create(:group, parent: parent_group) }
-
-      before do
-        parent_group.add_member!(user)
-        parent_group.add_member!(parent_member)
-        subgroup.add_member!(user)
-        sign_in user
-      end
-
-      it "adds parent members to subgroup" do
-        post(:add_to_subgroup, params: {
-                                  group_id: subgroup.id,
-                                  parent_group_id: parent_group.id,
-                                  user_ids: [parent_member.id]
-                                })
-
-        json = JSON.parse(response.body)
-        expect(json.keys).to include *(%w[users memberships groups])
-
-        expect(subgroup.members).to include(parent_member)
-      end
-
-      it "does not add aliens to subgroup" do
-        post(:add_to_subgroup, params: {
-                                  group_id: subgroup.id,
-                                  parent_group_id: parent_group.id,
-                                  user_ids: [alien_named_bang.id]
-                                })
-
-        json = JSON.parse(response.body)
-        expect(json['memberships'].length).to eq 0
-      end
-    end
-  end
-
   describe 'search via index' do
     let(:emrob_jones) { create :user, name: 'emrob jones' }
     let(:rob_jones) { create :user, name: 'rob jones' }

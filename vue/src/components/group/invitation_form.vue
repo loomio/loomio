@@ -59,12 +59,10 @@ export default
       @saving = true
       Records.announcements.remote.post '',
         group_id: @group.id
-        announcement:
-          message: @message
-          invited_group_ids: @groupIds
-          recipients:
-            emails: @recipients.filter((r) -> r.type == 'email').map((r) -> r.id)
-            user_ids: @recipients.filter((r) -> r.type == 'user').map((r) -> r.id)
+        message: @message
+        invited_group_ids: @groupIds
+        recipient_emails: @recipients.filter((r) -> r.type == 'email').map((r) -> r.id)
+        recipient_user_ids: @recipients.filter((r) -> r.type == 'user').map((r) -> r.id)
 
       .then (data) =>
         Flash.success('announcement.flash.success', { count: data.memberships.length })
