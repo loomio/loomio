@@ -69,21 +69,38 @@ describe API::DiscussionsController do
       expect(d.created_event.notifications.count).to eq 0
     end
 
-    it 'create discussion and notify group' do
-      expect(group.members.count).to eq 2
+    it 'create discussion and notify user' do
+      group.add_member! another_user
       post :create, params: {
         discussion: {
           title: 'test',
           group_id: group.id,
-          notify_group: true
+          recipient_user_ids: [another_user.id]
+        }
+      }
+      json = JSON.parse response.body
+      expect(response.status).to eq 200
+      d = Discussion.find(json['discussions'][0]['id'])
+      expect(d.discussion_readers.count).to eq 2
+      expect(d.discussion_readers.last.user_id).to eq another_user.id
+      expect(d.created_event.notifications.count).to eq 1
+    end
+
+    it 'create discussion and notify group' do
+      expect(group.members.count).to eq 2
+      group.add_member! another_user
+      post :create, params: {
+        discussion: {
+          title: 'test',
+          group_id: group.id,
+          recipient_audience: 'group'
         }
       }
       json = JSON.parse response.body
       expect(response.status).to eq 200
       d = Discussion.find(json['discussions'][0]['id'])
       expect(d.discussion_readers.count).to eq 1
-      expect(d.discussion_readers.first.user_id).to eq user.id
-      expect(d.created_event.notifications.count).to eq 1
+      expect(d.created_event.notifications.count).to eq 2
     end
 
     it 'create discussion without group' do
@@ -456,23 +473,6 @@ describe API::DiscussionsController do
           post :update, params: { id: discussion.id, discussion: discussion_params }, format: :json
           expect(response.status).to eq 200
           expect(discussion.reload.title).to eq discussion_params[:title]
-        end
-
-        it 'adds documents' do
-          discussion_params[:document_ids] = [document.id]
-          post :update, params: { id: discussion.id, discussion: discussion_params }
-          expect(discussion.reload.documents).to include document
-          expect(response.status).to eq 200
-          expect(discussion.reload.document_ids).to include document.id
-        end
-
-        it 'removes documents' do
-          document.update(model: discussion)
-          discussion_params[:document_ids] = []
-          expect { post :update, params: { id: discussion.id, discussion: discussion_params } }.to change { Document.count }.by(-1)
-          expect(discussion.reload.documents).to be_empty
-          expect(response.status).to eq 200
-          expect(discussion.reload.document_ids).to_not include document.id
         end
       end
 
