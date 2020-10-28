@@ -45,9 +45,9 @@ class PollService
   def self.announce(poll:, actor:, params:)
     actor.ability.authorize! :announce, poll
     if poll.discussion
-      DiscussionService.create_discussion_readers(poll.discussion, actor, params[:user_ids], params[:emails])
+      DiscussionService.create_discussion_readers(poll.discussion, actor, params[:recipient_user_ids], params[:recipient_emails])
     end
-    stances = create_stances(poll, actor, params[:user_ids], params[:emails], params[:audience])
+    stances = create_stances(poll, actor, params[:recipient_user_ids], params[:recipient_emails], params[:recipient_audience])
     Events::PollAnnounced.publish!(poll, actor, stances)
     stances
   end

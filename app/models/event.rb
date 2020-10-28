@@ -234,10 +234,6 @@ class Event < ApplicationRecord
       Membership.none
     end
 
-    recipient_user_ids.concat(rel.pluck(:id)).uniq.compact.without(actor_id)
-  end
-
-  def recipient_user_ids
-    @recipient_user_ids || []
+    (recipient_user_ids || []).concat(rel.pluck(:id)).uniq.compact.without(actor_id)
   end
 end

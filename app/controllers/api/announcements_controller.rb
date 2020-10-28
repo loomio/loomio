@@ -20,11 +20,11 @@ class API::AnnouncementsController < API::RestfulController
 
     # juggle data
     if params[:announcement]
-      params[:emails] = params.dig(:announcement, :recipients, :emails)
-      params[:user_ids] = params.dig(:announcement, :recipients, :user_ids)
+      params[:recipient_emails] = params.dig(:announcement, :recipients, :emails)
+      params[:recipient_user_ids] = params.dig(:announcement, :recipients, :user_ids)
       params[:invited_group_ids] = params.dig(:announcement, :invited_group_ids)
       params[:message] = params.dig(:announcement, :message)
-      params[:audience] = params.dig(:announcement, :recipients, :audience)
+      params[:recipient_audience] = params.dig(:announcement, :recipients, :audience)
     end
 
     if target_model.is_a?(Group)
