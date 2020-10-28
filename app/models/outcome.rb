@@ -27,7 +27,7 @@ class Outcome < ApplicationRecord
   is_mentionable on: :statement
   is_translatable on: :statement
 
-  has_paper_trail only: [:statement, :author_id]
+  has_paper_trail only: [:statement, :statement_format, :author_id]
   define_counter_cache(:versions_count) { |d| d.versions.count }
   validates :statement, presence: true, length: { maximum: Rails.application.secrets.max_message_length }
   validate :has_valid_poll_option

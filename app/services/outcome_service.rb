@@ -30,8 +30,8 @@ class OutcomeService
   def self.update(outcome:, actor:, params: {})
     actor.ability.authorize! :update, outcome
 
-    HasRichText.assign_attributes_and_update_files(outcome, params.except(:document_ids))
-    outcome.assign_attributes(params.slice(:statement))
+    HasRichText.assign_attributes_and_update_files(outcome, params)
+    outcome.assign_attributes(params.slice(:statement, :statement_format))
     outcome.assign_attributes(author: actor)
     return false unless outcome.valid?
     outcome.store_calendar_invite if outcome.should_send_calendar_invite
