@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_27_055743) do
+ActiveRecord::Schema.define(version: 2020_10_28_010503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -672,7 +672,7 @@ ActiveRecord::Schema.define(version: 2020_10_27_055743) do
     t.datetime "revoked_at"
     t.boolean "admin", default: false, null: false
     t.integer "inviter_id"
-    t.integer "volume"
+    t.integer "volume", default: 2, null: false
     t.datetime "accepted_at"
     t.jsonb "stance_choices_cache", default: []
     t.string "secret_token", default: -> { "gen_random_uuid()" }

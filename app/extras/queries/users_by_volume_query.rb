@@ -3,6 +3,14 @@ class Queries::UsersByVolumeQuery
     users_by_volume(model, '>=', DiscussionReader.volumes[:normal])
   end
 
+  def self.email_notifications(model)
+    normal_or_loud(model)
+  end
+
+  def self.app_notifications(model)
+    users_by_volume(model, '>=', DiscussionReader.volumes[:quiet])
+  end
+
   %w(mute quiet normal loud).map(&:to_sym).each do |volume|
     define_singleton_method volume, ->(model) {
       users_by_volume(model, '=', DiscussionReader.volumes[volume])

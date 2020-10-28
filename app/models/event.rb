@@ -99,6 +99,10 @@ class Event < ApplicationRecord
     user
   end
 
+  def actor_id
+    user_id
+  end
+
   def message_channel
     eventable.group.message_channel
   end
@@ -212,11 +216,11 @@ class Event < ApplicationRecord
   end
 
   def email_recipients
-    all_recipients.email_notifications
+    Queries::UsersByVolumeQuery.email_notifications(eventable).where(id: all_recipient_user_ids)
   end
 
   def notification_recipients
-    all_recipients.app_notifications
+    Queries::UsersByVolumeQuery.app_notifications(eventable).where(id: all_recipient_user_ids)
   end
 
   def all_recipients
@@ -225,18 +229,15 @@ class Event < ApplicationRecord
 
   def all_recipient_user_ids
     rel = if actor.can?(:announce, eventable)
-      AnnouncementService.audience_relations(eventable, @recipient_audience)
+      AnnouncementService.audience_users(eventable, recipient_audience)
     else
       Membership.none
     end
 
-    user_id_column_name = if rel.table_name == 'stances'
-      :participant_id
-    else
-      :user_id
-    end
+    recipient_user_ids.concat(rel.pluck(:id)).uniq.compact.without(actor_id)
+  end
 
-    @recipient_user_ids.concat(rel.pluck(user_id_column_name))
-                       .uniq.compact.without(current_user.id)
+  def recipient_user_ids
+    @recipient_user_ids || []
   end
 end
