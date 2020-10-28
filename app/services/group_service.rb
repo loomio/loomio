@@ -11,8 +11,8 @@ module GroupService
     groups = Group.where(id: group_ids).filter { |g| actor.can?(:add_members, g) }
 
     users = UserInviter.where_or_create!(inviter: actor,
-                                         emails: params[:emails],
-                                         user_ids: params[:user_ids])
+                                         emails: params[:recipient_emails],
+                                         user_ids: params[:recipient_user_ids])
 
     groups.each do |g|
       memberships = users.map do |user|

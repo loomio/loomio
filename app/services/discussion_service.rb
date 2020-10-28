@@ -175,8 +175,6 @@ class DiscussionService
     end
   end
 
-  private
-
   def self.add_users(discussion:, actor:, user_ids:, emails:)
     users = UserInviter.where_or_create!(inviter: actor, user_ids: user_ids, emails: emails)
 

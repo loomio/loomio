@@ -154,6 +154,9 @@ describe API::AnnouncementsController do
   describe 'create' do
     let(:notified_user) { create :user }
     let(:member) { create :user }
+    before do
+      group.add_member!(notified_user)
+    end
 
     describe 'poll' do
       let(:poll)          { create :poll, group: group, author: user }
@@ -259,8 +262,14 @@ describe API::AnnouncementsController do
     end
 
     describe 'outcome' do
+      let(:group)   { create :group }
       let(:poll)    { create :poll, author: user, closed_at: 1.day.ago }
       let(:outcome) { create :outcome, author: user, poll: poll }
+
+      before do
+        group.add_member! notified_user
+        group.add_member! user
+      end
 
       it 'does not permit non author to announce' do
         sign_in create(:user)
@@ -296,6 +305,9 @@ describe API::AnnouncementsController do
       let(:group) { create :group, creator: user}
       let(:subgroup) { create :group, parent: group, creator: user}
       let(:subgroup2) { create :group, parent: group, creator: user}
+      before do
+        group.add_member! notified_user
+      end
 
       it 'does not permit non author to announce' do
         sign_in create(:user)
