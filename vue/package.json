@@ -54,8 +54,8 @@
   },
   "devDependencies": {
     "@mdi/font": "^5.7.55",
-    "@vue/cli-plugin-babel": "^4.5.7",
     "@vue/cli-plugin-pwa": "^4.5.8",
+    "@vue/cli-plugin-babel": "^4.5.8",
     "@vue/cli-plugin-e2e-nightwatch": "^4.5.8",
     "@vue/cli-service": "4.5.8",
     "acorn": "^8.0.4",
