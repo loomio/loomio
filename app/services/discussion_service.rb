@@ -11,50 +11,49 @@ class DiscussionService
 
     discussion.save!
 
-    DiscussionReader.for(user: actor, discussion: discussion).update(admin: true, inviter_id: actor.id)
+    DiscussionReader.for(user: actor, discussion: discussion)
+                    .update(admin: true, inviter_id: actor.id)
+
+    users = add_users(discussion: discussion,
+                      actor: actor,
+                      user_ids: params[:recipient_user_ids],
+                      emails: params[:recipient_emails])
 
     EventBus.broadcast('discussion_create', discussion, actor)
-    created_event = Events::NewDiscussion.build(discussion, user: actor)
-    created_event.save!
-
-    DiscussionInviteAndNotifyWorker.perform_async(created_event.id,
-                                                  params[:recipient_user_ids],
-                                                  params[:recipient_emails],
-                                                  params[:notify_group])
-    created_event
+    Events::NewDiscussion.publish!(discussion, users.pluck(:id), params[:recipient_audience])
   end
 
-  def self.create_discussion_readers(discussion, actor, user_ids, emails)
-    users = UserInviter.where_or_create!(inviter: actor,
-                                         user_ids: user_ids,
-                                         emails: Array(emails))
+  def self.update(discussion:, actor:, params:)
+    actor.ability.authorize! :update, discussion
 
-    volumes = {}
-    Membership.where(group_id: discussion.group_id,
-                     user_id: users.pluck(:id)).find_each do |m|
-      volumes[m.user_id] = m.volume
-    end
+    HasRichText.assign_attributes_and_update_files(discussion, params)
+    discussion.assign_attributes(params)
+    discussion.author = actor
 
-    new_discussion_readers = users.map do |user|
-      DiscussionReader.new(user: user,
-                           discussion: discussion,
-                           inviter: actor,
-                           volume: volumes[user.id] || DiscussionReader.volumes[:normal])
-    end
+    return false unless discussion.valid?
+    rearrange = discussion.max_depth_changed?
+    discussion.save!
+    EventService.delay.repair_thread(discussion.id) if rearrange
 
-    DiscussionReader.import(new_discussion_readers, on_duplicate_key_ignore: true)
+    users = add_users(discussion: discussion,
+                      actor: actor,
+                      user_ids: params[:recipient_user_ids],
+                      emails: params[:recipient_emails])
 
-    discussion.update_members_count
+    EventBus.broadcast('discussion_update', discussion, actor, params)
 
-    DiscussionReader.where(user_id: users.pluck(:id), discussion_id: discussion.id)
+    Events::DiscussionEdited.publish!(discussion, users.pluck(:id), params[:recipient_audience])
   end
 
   def self.announce(discussion:, actor:, params:)
     actor.ability.authorize! :announce, discussion
-    discussion_readers = create_discussion_readers(discussion, actor, params[:user_ids], params[:emails])
-    Events::DiscussionAnnounced.publish!(discussion, actor, discussion_readers, params[:notify_group])
-    MessageChannelService.publish_models(discussion, group_id: discussion.group_id)
-    discussion_readers
+
+    users = add_users(discussion: discussion,
+                      actor: actor,
+                      user_ids: params[:recipient_user_ids],
+                      emails: params[:recipient_emails])
+
+    Events::DiscussionAnnounced.publish!(discussion, actor, users.pluck(:id), params[:recipient_audience])
   end
 
   def self.destroy(discussion:, actor:)
@@ -69,25 +68,6 @@ class DiscussionService
     discussion.discard!
     EventBus.broadcast('discussion_discard', discussion, actor)
     discussion.created_event
-  end
-
-  def self.update(discussion:, params:, actor:)
-    actor.ability.authorize! :update, discussion
-
-    HasRichText.assign_attributes_and_update_files(discussion, params.except(:document_ids))
-    version_service = DiscussionVersionService.new(discussion: discussion, new_version: discussion.changes.empty?)
-    discussion.assign_attributes(params.slice(:document_ids))
-    discussion.document_ids = [] if params.slice(:document_ids).empty?
-    is_new_version = discussion.is_new_version?
-    return false unless discussion.valid?
-    rearrange = discussion.max_depth_changed?
-    discussion.save!
-
-    EventService.delay.repair_thread(discussion.id) if rearrange
-
-    version_service.handle_version_update!
-    EventBus.broadcast('discussion_update', discussion, actor, params)
-    Events::DiscussionEdited.publish!(discussion, actor) if is_new_version
   end
 
   def self.close(discussion:, actor:)
@@ -183,7 +163,7 @@ class DiscussionService
     end
   end
 
-  def self.mark_summary_email_as_read (user_id, params)
+  def self.mark_summary_email_as_read(user_id, params)
     user = User.find_by!(id: user_id)
     time_start  = Time.at(params[:time_start].to_i).utc
     time_finish = Time.at(params[:time_finish].to_i).utc
@@ -193,6 +173,30 @@ class DiscussionService
       sequence_ids = discussion.items.where("events.created_at": time_range).pluck(:sequence_id)
       DiscussionReader.for(user: user, discussion: discussion).viewed!(sequence_ids)
     end
+  end
+
+  private
+
+  def self.add_users(discussion:, actor:, user_ids:, emails:)
+    users = UserInviter.where_or_create!(inviter: actor, user_ids: user_ids, emails: emails)
+
+    volumes = {}
+    Membership.where(group_id: discussion.group_id,
+                     user_id: users.pluck(:id)).find_each do |m|
+      volumes[m.user_id] = m.volume
+    end
+
+    new_discussion_readers = users.map do |user|
+      DiscussionReader.new(user: user,
+                           discussion: discussion,
+                           inviter: actor,
+                           volume: volumes[user.id] || DiscussionReader.volumes[:normal])
+    end
+
+    DiscussionReader.import(new_discussion_readers, on_duplicate_key_ignore: true)
+
+    discussion.update_members_count
+    users
   end
 
 end

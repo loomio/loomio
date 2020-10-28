@@ -1,7 +1,7 @@
 <script lang="coffee">
 import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
-import { map, sortBy, filter, debounce, without, uniq } from 'lodash'
+import { map, sortBy, filter, debounce, without, uniq, find } from 'lodash'
 import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
@@ -26,39 +26,30 @@ export default
     upgradeUrl: AppConfig.baseUrl + 'upgrade'
     submitIsDisabled: false
     searchResults: []
-    canAnnounce: true
     subscription: @discussion.group().parentOrSelf().subscription
     groupItems: []
+    initialRecipients: []
 
   mounted: ->
-    @recipients = @initialRecipients
-    @updateGroupItems()
-    Records.users.fetchGroups().then => @updateGroupItems()
-
+    Records.users.fetchGroups()
     @fetchMemberships()
 
     @watchRecords
       collections: ['groups', 'memberships']
-      query: (records) => @updateSuggestions()
+      query: (records) =>
+        @updateSuggestions()
+        @updateGroupItems()
 
   watch:
-    query: ->
-      @fetchMemberships()
-      @updateSuggestions()
-
     'discussion.groupId':
       immediate: true
       handler: (groupId) ->
         @fetchMemberships()
         @updateSuggestions()
         @subscription = @discussion.group().parentOrSelf().subscription
-        if groupId
-          @canAnnounce = !!(@discussion.group().adminsInclude(Session.user()) || @discussion.group().membersCanAnnounce)
-          console.log 'groupId', groupId, 'canAnnounce', @canAnnounce
-          @reset = !@reset
-        else
-          @canAnnounce = false
-          @reset = !@reset
+        @initialRecipients = (!@discussion.id && @audiences.length && [@audiences[0]]) || []
+        @newRecipients(@initialRecipients)
+        @reset = !@reset
 
   methods:
     findGroups: ->
@@ -100,13 +91,27 @@ export default
       @discussion.recipientEmails = map filter(val, (o) -> o.type == 'email'), 'name'
 
   computed:
-    model: -> @discussion
+    audiences: ->
+      ret = []
+      canAnnounce = !!(@model.group().adminsInclude(Session.user()) || @model.group().membersCanAnnounce)
+      if @recipients.length == 0
+        if @model.groupId && canAnnounce
+          ret.push
+            id: 'group'
+            name: @model.group().name
+            size: @model.group().acceptedMembershipsCount
+            icon: 'mdi-account-group'
+        if @model.membersCount > 1
+          ret.push
+            id: 'discussion_group'
+            name: @$t('announcement.audiences.discussion_group')
+            size: @model.membersCount
+            icon: 'mdi-forum'
 
-    initialRecipients: ->
-      if @discussion.groupId && !@discussion.id
-        [{id: @discussion.groupId, type: 'group', name: @discussion.group().name, group: @discussion.group()}]
-      else
-        []
+      ret.filter (a) =>
+        (@query && a.name.match(new RegExp(@query, 'i'))) || true
+
+    model: -> @discussion
 
     maxThreads: ->
       @subscription.max_threads
@@ -146,12 +151,17 @@ export default
       v-icon mdi-close
   .pa-4
     v-select(v-if="!discussion.id" v-model="discussion.groupId" :items="groupItems" :label="$t('common.group')")
+    //- p discussion.recipientAudience {{discussion.recipientAudience}}
+    //- p initialRecipients {{initialRecipients}}
+    //- p recipients {{recipients}}
+    //- p audiences {{audiences}}
     recipients-autocomplete(
-      :label="$t('action_dock.notify')"
+      :label="$t(discussion.id ? 'action_dock.notify' : 'common.action.invite')"
       :placeholder="$t('announcement.form.discussion_'+ (discussion.id ? 'edited' : 'announced')+ '.helptext')"
       :users="users"
       :initial-recipients="initialRecipients"
       :audiences="audiences"
+      :reset="reset"
       @new-query="newQuery"
       @new-recipients="newRecipients")
 

@@ -29,7 +29,7 @@ export default
       default: -> []
 
   data: ->
-    query: null
+    query: ''
     searchResults: []
     recipients: @initialRecipients
     emailAddresses: []

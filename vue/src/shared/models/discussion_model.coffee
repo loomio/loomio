@@ -35,11 +35,11 @@ export default class DiscussionModel extends BaseModel
     files: []
     imageFiles: []
     attachments: []
+    recipientAudience: null
     recipientUserIds: []
     recipientEmails: []
-    notifyGroup: false
     groupId: null
-    
+
   audienceValues: ->
     name: @group().name
 

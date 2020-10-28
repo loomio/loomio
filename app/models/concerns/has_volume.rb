@@ -5,8 +5,8 @@ module HasVolume
     enum volume: [:mute, :quiet, :normal, :loud]
     scope :volume,          ->(volume) { where(volume: volumes[volume]) }
     scope :volume_at_least, ->(volume) { where('volume >= ?', volumes[volume]) }
-    scope :email_announcements, -> { where('volume >= ?', volumes[:normal]) }
-    scope :app_announcements, -> { where('volume >= ?', volumes[:quiet]) }
+    scope :email_notifications, -> { where('volume >= ?', volumes[:normal]) }
+    scope :app_notifications, -> { where('volume >= ?', volumes[:quiet]) }
   end
 
   def set_volume!(volume, persist: true)

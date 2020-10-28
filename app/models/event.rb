@@ -11,7 +11,7 @@ class Event < ApplicationRecord
   belongs_to :user, required: false
   belongs_to :parent, class_name: "Event", required: false
   has_many :children, (-> { where("discussion_id is not null") }), class_name: "Event", foreign_key: :parent_id
-  set_custom_fields :pinned_title
+  set_custom_fields :pinned_title, :recipient_user_ids, :recipient_audience
 
   before_create :set_parent_and_depth
   before_create :set_sequences
@@ -48,11 +48,23 @@ class Event < ApplicationRecord
   delegate :groups, to: :eventable, allow_nil: true
   delegate :update_sequence_info!, to: :discussion, allow_nil: true
 
+  def self.sti_find(id)
+    e = self.find(id)
+    e.kind_class.find(id)
+  end
+
+  def kind_class
+    ("Events::"+kind.classify).constantize
+  end
+
   def self.publish!(eventable, **args)
-    build(eventable, **args).tap(&:save!).tap(&:trigger!)
+    event = build(eventable, **args).tap(&:save!)
+    PublishEventWorker.perform_async(event.id)
+    event
   end
 
   def self.bulk_publish!(eventables, **args)
+    raise 'i hope we dont use this'
     Array(eventables).map { |eventable| build(eventable, **args) }
                      .tap { |events| import(events) }
                      .tap { |events| events.map(&:trigger!) }
@@ -197,5 +209,34 @@ class Event < ApplicationRecord
     else
       original_parent
     end
+  end
+
+  def email_recipients
+    all_recipients.email_notifications
+  end
+
+  def notification_recipients
+    all_recipients.app_notifications
+  end
+
+  def all_recipients
+    User.active.where(id: all_recipient_user_ids)
+  end
+
+  def all_recipient_user_ids
+    rel = if actor.can?(:announce, eventable)
+      AnnouncementService.audience_relations(eventable, @recipient_audience)
+    else
+      Membership.none
+    end
+
+    user_id_column_name = if rel.table_name == 'stances'
+      :participant_id
+    else
+      :user_id
+    end
+
+    @recipient_user_ids.concat(rel.pluck(user_id_column_name))
+                       .uniq.compact.without(current_user.id)
   end
 end
