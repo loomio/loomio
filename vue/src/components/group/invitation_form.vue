@@ -23,7 +23,7 @@ export default
     saving: false
     users: []
     groupIds: [@group.id]
-    message: @$t('announcement.form.invitation_message')
+    message: ''
     withMessage: false
     subscription: {}
     cannotInvite: false
@@ -141,7 +141,7 @@ export default
         div(v-for="group in invitableGroups" :key="group.id")
           v-checkbox.invitation-form__select-groups(:class="{'ml-4': !group.isParent()}" v-model="groupIds" :label="group.name" :value="group.id" hide-details)
 
-      v-textarea(v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
+      v-textarea(rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
 
       //- a(@click="withMessage = !withMessage")
       //-   span(v-if="!withMessage") Include an invitation message

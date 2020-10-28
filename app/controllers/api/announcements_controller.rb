@@ -18,13 +18,16 @@ class API::AnnouncementsController < API::RestfulController
   def create
     current_user.ability.authorize! :announce, target_model
 
-    # juggle data
-    if params[:announcement]
-      params[:recipient_emails] = params.dig(:announcement, :recipients, :emails)
+    # juggle data for older clients
+    if params.dig(:announcement, :recipients)
       params[:recipient_user_ids] = params.dig(:announcement, :recipients, :user_ids)
-      params[:invited_group_ids] = params.dig(:announcement, :invited_group_ids)
-      params[:message] = params.dig(:announcement, :message)
-      params[:recipient_audience] = params.dig(:announcement, :recipients, :audience)
+      params[:recipient_emails] = params.dig(:announcement, :recipients, :emails)
+    end
+
+    %w[recipient_user_ids recipient_emails recipient_audience invited_group_ids message].each do |name|
+      if params.dig(:announcement, name)
+        params[name] = params.dig(:announcement, name)
+      end
     end
 
     if target_model.is_a?(Group)
