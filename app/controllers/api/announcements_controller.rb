@@ -2,7 +2,7 @@ class API::AnnouncementsController < API::RestfulController
   MockEvent = Struct.new(:eventable, :email_subject_key, :user, :id)
 
   def audience
-    self.collection = service.audience_for(target_model, params.require(:kind), current_user)
+    self.collection = service.audience_users(target_model, params.require(:kind))
 
     if params[:without_exising]
       self.collection = collection.where.not(id: target_model.existing_member_ids)
@@ -31,7 +31,8 @@ class API::AnnouncementsController < API::RestfulController
       self.collection = GroupService.announce(group: target_model, actor: current_user, params: params)
       respond_with_collection serializer: MembershipSerializer, root: :memberships
     elsif target_model.is_a?(Discussion)
-      self.collection = DiscussionService.announce(discussion: target_model, actor: current_user, params: params)
+      event = DiscussionService.announce(discussion: target_model, actor: current_user, params: params)
+      self.collection = DiscussionReader.where(discussion_id: target_model.id, user_id: event.recipient_user_ids)
       respond_with_collection serializer: DiscussionReaderSerializer, root: :discussion_readers
     elsif target_model.is_a?(Poll)
       self.collection = PollService.announce(poll: target_model, actor: current_user, params: params)

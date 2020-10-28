@@ -13,7 +13,7 @@ class PollService
   end
 
   def self.create_stances(poll, actor, user_ids, emails, audience)
-    user_ids = Array(user_ids).concat AnnouncementService.audience_for(poll, audience, actor).pluck('users.id')
+    user_ids = Array(user_ids).concat AnnouncementService.audience_users(poll, audience).pluck('users.id')
 
     users = UserInviter.where_or_create!(inviter: actor,
                                          user_ids: user_ids,

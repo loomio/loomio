@@ -44,7 +44,7 @@ class OutcomeService
     user_ids = Array(params[:recipient_user_ids]).map(&:to_i)
     emails = Array(params[:recipient_emails])
     audience = params[:recipient_audience]
-    user_ids = Array(user_ids).concat AnnouncementService.audience_for(outcome, audience, actor).pluck('users.id')
+    user_ids = Array(user_ids).concat AnnouncementService.audience_users(outcome, audience).pluck('users.id')
     UserInviter.where_or_create!(inviter: actor, user_ids: user_ids, emails: emails)
   end
 end

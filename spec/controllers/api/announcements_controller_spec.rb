@@ -72,24 +72,24 @@ describe API::AnnouncementsController do
     let(:both_user)  { create :user }
     let(:parent_user){ create :user }
 
-    it 'parent_group' do
-      group.add_member! both_user
-      subgroup.add_member! both_user
-      group.add_member! parent_user
-      subgroup.add_admin! user
-
-      get :audience, params: {group_id: subgroup.id, kind: "parent_group"}
-      json = JSON.parse response.body
-      user_ids = json.map {|u| u['id']}
-      expect(user_ids).to     include parent_user.id
-      expect(user_ids).to_not include both_user.id
-      expect(user_ids).to_not include user.id
-    end
+    # it 'parent_group' do
+    #   group.add_member! both_user
+    #   subgroup.add_member! both_user
+    #   group.add_member! parent_user
+    #   subgroup.add_admin! user
+    #
+    #   get :audience, params: {group_id: subgroup.id, kind: "parent_group"}
+    #   json = JSON.parse response.body
+    #   user_ids = json.map {|u| u['id']}
+    #   expect(user_ids).to     include parent_user.id
+    #   expect(user_ids).to_not include both_user.id
+    #   expect(user_ids).to_not include user.id
+    # end
 
     it 'group' do
       get :audience, params: {discussion_id: discussion.id, kind: "group"}
       json = JSON.parse response.body
-      expect(json.map {|u| u['id']}.sort).to eq group.member_ids.reject{|id| id == user.id}.sort
+      expect(json.map {|u| u['id']}.sort).to eq group.member_ids.sort
     end
 
     it 'discussion_group' do
@@ -203,7 +203,7 @@ describe API::AnnouncementsController do
         post :create, params: {poll_id: poll.id, audience: 'group'}
         json = JSON.parse response.body
         expect(response.status).to eq 200
-        expect(json['stances'].length).to eq (group.members.count - 1)
+        expect(json['stances'].length).to eq group.members.count
       end
     end
 
