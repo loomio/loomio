@@ -1,11 +1,13 @@
 class OutcomeService
-  # def self.announce(outcome:, actor:, params:)
-  #   actor.ability.authorize! :announce, outcome
-  #
-  #   users = userinviter.where_or_create!(inviter: actor, emails: params[:emails], user_ids: params[:user_ids])
-  #   events::outcomeannounced.publish!(outcome, actor, users)
-  #   users
-  # end
+  def self.announce(outcome:, actor:, params:)
+    actor.ability.authorize! :announce, outcome
+
+    users = UserInviter.where_or_create!(inviter: actor,
+                                         emails: params[:recipient_emails],
+                                         user_ids: params[:recipient_user_ids])
+    Events::OutcomeAnnounced.publish!(outcome, actor, users.pluck(:id), params[:recipient_audience])
+    users
+  end
 
   def self.create(outcome:, actor:, params: {})
     actor.ability.authorize! :create, outcome
@@ -14,13 +16,15 @@ class OutcomeService
     return false unless outcome.valid?
     outcome.poll.outcomes.update_all(latest: false)
     outcome.store_calendar_invite if outcome.should_send_calendar_invite
-    # puts params[:notify_audience], params[:recipient_emails], params[:recipient_user_ids]
 
     outcome.save!
 
+    users = UserInviter.where_or_create!(inviter: actor,
+                                         emails: params[:recipient_emails],
+                                         user_ids: params[:recipient_user_ids])
+
     EventBus.broadcast 'outcome_create', outcome, actor
-    Events::OutcomeCreated.publish!(outcome, user: actor,
-      recipients: users_to_notify(outcome: outcome, params: params, actor: actor))
+    Events::OutcomeCreated.publish!(outcome, users.pluck(:id), params[:recipient_audience])
   end
 
   def self.update(outcome:, actor:, params: {})
@@ -35,16 +39,13 @@ class OutcomeService
     outcome.save!
 
     outcome.update_versions_count
-    EventBus.broadcast 'outcome_create', outcome, actor
-    Events::OutcomeCreated.publish!(outcome, user: actor,
-      recipients: users_to_notify(outcome: outcome, params: params, actor: actor))
+
+    users = UserInviter.where_or_create!(inviter: actor,
+                                         emails: params[:recipient_emails],
+                                         user_ids: params[:recipient_user_ids])
+
+    EventBus.broadcast 'outcome_update', outcome, actor
+    Events::OutcomeUpdated.publish!(outcome, users.pluck(:id), params[:recipient_audience])
   end
 
-  def self.users_to_notify(outcome:, params:, actor:)
-    user_ids = Array(params[:recipient_user_ids]).map(&:to_i)
-    emails = Array(params[:recipient_emails])
-    audience = params[:recipient_audience]
-    user_ids = Array(user_ids).concat AnnouncementService.audience_users(outcome, audience).pluck('users.id')
-    UserInviter.where_or_create!(inviter: actor, user_ids: user_ids, emails: emails)
-  end
 end

@@ -5,17 +5,10 @@ class Events::OutcomeCreated < Event
   include Events::Notify::ByEmail
   include Events::LiveUpdate
 
-  attr_accessor :recipients
-
-  private
-
-  def notification_recipients
-    @recipients
-  end
-
-  def email_recipients
-    Queries::UsersByVolumeQuery.normal_or_loud(eventable)
-      .where('users.id': @recipients.map(&:id))
-      .where.not(id: eventable.newly_mentioned_users)
+  def self.publish!(outcome, user_ids = [], audience = nil)
+    super(outcome,
+          user: outcome.author,
+          recipient_user_ids: user_ids,
+          recipient_audience: audience)
   end
 end

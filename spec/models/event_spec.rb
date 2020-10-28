@@ -66,9 +66,6 @@ describe Event do
     discussion.group.add_member!(user_motion_closing_soon).set_volume! :mute
 
     poll.save
-
-    # create an unsubscription for a poll user
-    poll.poll_unsubscriptions.create(user: user_unsubscribed)
   end
 
   it 'new_comment' do

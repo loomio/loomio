@@ -59,9 +59,6 @@ class Poll < ApplicationRecord
   has_many :undecided,    -> { merge(Stance.latest.undecided) }, through: :stances, source: :participant
   has_many :participants, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
 
-  has_many :poll_unsubscriptions, dependent: :destroy
-  has_many :unsubscribers, through: :poll_unsubscriptions, source: :user
-
   has_many :poll_options, -> { order('priority') }, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 

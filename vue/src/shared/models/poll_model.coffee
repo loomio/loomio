@@ -133,9 +133,6 @@ export default class PollModel extends BaseModel
     @processing = true
     @remote.patchMember(@keyOrId(), 'add_to_thread', { discussion_id: discussionId }).finally => @processing = false
 
-  toggleSubscription: =>
-    @remote.postMember(@key, 'toggle_subscription')
-
   notifyAction: ->
     if @isNew()
       'publish'

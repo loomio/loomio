@@ -171,7 +171,6 @@ Loomio::Application.routes.draw do
       post :close, on: :member
       post :reopen, on: :member
       post :add_options, on: :member
-      post :toggle_subscription, on: :member
       get  :closed, on: :collection
       patch :add_to_thread, on: :member
     end

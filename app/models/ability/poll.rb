@@ -16,7 +16,7 @@ module Ability::Poll
       )
     end
 
-    can [:show, :toggle_subscription, :subscribe_to, :export], ::Poll do |poll|
+    can [:show, :export], ::Poll do |poll|
       PollQuery.visible_to(user: user, show_public: true).exists?(poll.id)
     end
 
