@@ -1,5 +1,7 @@
 import Records from '@/shared/services/records'
 import {includes} from 'lodash'
+import I18n from '@/i18n'
+
 
 # a series of helpers related to getting a translation string to translate, such
 # as the headline of an event or the helptext strings on the discussion or group forms
@@ -21,7 +23,7 @@ export eventTitle = (event) ->
     when 'Stance'              then event.model().poll().title
     when 'Discussion'
       if event.kind == 'discussion_moved'
-        Records.groups.find(event.sourceGroupId).fullName
+        (Records.groups.find(event.sourceGroupId) || {fullName: I18n.t('thread_item.deleted_group')}).fullName
       else
         event.model().title
 
