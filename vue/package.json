@@ -29,7 +29,7 @@
     "jstimezonedetect": "~1.0.7",
     "lodash": "latest",
     "lokijs": "1.5.11",
-    "marked": "^1.2.0",
+    "marked": "^1.2.2",
     "md5": "2.3.0",
     "pretty-bytes": "^5.4.1",
     "raven-js": "latest",
