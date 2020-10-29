@@ -156,6 +156,7 @@ export default
     //- p recipients {{recipients}}
     //- p audiences {{audiences}}
     recipients-autocomplete(
+      v-if="!discussion.id"
       :label="$t(discussion.id ? 'action_dock.notify' : 'common.action.invite')"
       :placeholder="$t('announcement.form.discussion_'+ (discussion.id ? 'edited' : 'announced')+ '.helptext')"
       :users="users"
@@ -170,12 +171,32 @@ export default
       p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
 
     .discussion-form__group-selected(v-if='!showUpgradeMessage')
-      v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input.text-h5(:label="$t('discussion_form.title_label')" :placeholder="$t('discussion_form.title_placeholder')" v-model='discussion.title' maxlength='255')
+      v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input.text-h5(:label="$t('discussion_form.title_label')" :placeholder="$t('discussion_form.title_placeholder')" v-model='discussion.title' maxlength='255' required)
       validation-errors(:subject='discussion', field='title')
       lmo-textarea(:model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")
       //- v-checkbox(:label="$t('discussion_form.notify_group')" v-model="discussion.notifyGroup" :disabled="!canAnnounce")
       //- .caption.discussion-form__number-notified(v-if="notificationsCount != 1" v-t="{ path: 'poll_common_notify_group.members_count', args: { count: notificationsCount } }")
       //- .caption.discussion-form__number-notified(v-else v-t="'discussion_form.one_person_notified'")
+
+      common-notify-fields(:model="discussion")
+      //- v-text-field(
+      //-   v-if="discussion.id"
+      //-   :label="$t('discussion_form.change_log_label')"
+      //-   :placeholder="$t('discussion_form.change_log_placeholder')"
+      //-   v-model="discussion.recipientMessage"
+      //-   counter="140")
+      //-
+      //- recipients-autocomplete(
+      //-   v-if="discussion.id"
+      //-   :label="$t(discussion.id ? 'action_dock.notify' : 'common.action.invite')"
+      //-   :placeholder="$t('announcement.form.discussion_'+ (discussion.id ? 'edited' : 'announced')+ '.helptext')"
+      //-   :users="users"
+      //-   :initial-recipients="initialRecipients"
+      //-   :audiences="audiences"
+      //-   :reset="reset"
+      //-   @new-query="newQuery"
+      //-   @new-recipients="newRecipients")
+      //-
 
       v-card-actions
         v-spacer

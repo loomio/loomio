@@ -27,7 +27,7 @@ class DiscussionService
     actor.ability.authorize! :update, discussion
 
     HasRichText.assign_attributes_and_update_files(discussion, params)
-    discussion.assign_attributes(params)
+    # discussion.assign_attributes(API::SnorlaxBase.filter_params(Discussion, params))
     discussion.author = actor
 
     return false unless discussion.valid?
@@ -42,7 +42,10 @@ class DiscussionService
 
     EventBus.broadcast('discussion_update', discussion, actor, params)
 
-    Events::DiscussionEdited.publish!(discussion, users.pluck(:id), params[:recipient_audience])
+    Events::DiscussionEdited.publish!(discussion,
+                                      users.pluck(:id),
+                                      params[:recipient_audience],
+                                      params[:recipient_message])
   end
 
   def self.announce(discussion:, actor:, params:)

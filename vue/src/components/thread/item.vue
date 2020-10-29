@@ -118,6 +118,7 @@ section(:aria-label="$t(ariaTranslationKey, {actor: event.actorName(), pollType:
                 time-ago(:date='event.createdAt')
         .default-slot(v-if="!eventable.discardedAt" ref="defaultSlot")
           slot
+        p(v-if="event.recipientMessage") {{event.recipientMessage}}
         slot(name="actions")
         slot(name="afterActions")
   slot(name="append")

@@ -40,6 +40,10 @@ export default class PollModel extends BaseModel
     imageFiles: []
     attachments: []
     pleaseShowResults: false
+    recipientMessage: null
+    recipientAudience: null
+    recipientUserIds: []
+    recipientEmails: []
 
   audienceValues: ->
     name: @group().name

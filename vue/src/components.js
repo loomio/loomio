@@ -19,6 +19,7 @@ module.exports = {
   ChangePictureForm: 'profile/change_picture_form',
   ChangeVolumeForm: 'common/change_volume_form',
   CommentForm: 'thread/comment_form',
+  CommonNotifyFields: 'common/notify_fields',
   ConfirmModal: 'common/confirm_modal',
   ContactForm: 'contact/form',
   ContactRequestForm: 'contact/request_form',

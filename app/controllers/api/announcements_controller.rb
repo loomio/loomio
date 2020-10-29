@@ -25,9 +25,7 @@ class API::AnnouncementsController < API::RestfulController
     end
 
     %w[recipient_user_ids recipient_emails recipient_audience invited_group_ids message].each do |name|
-      if params.dig(:announcement, name)
-        params[name] = params.dig(:announcement, name)
-      end
+      params[name] = params.dig(:announcement, name) if params.dig(:announcement, name)
     end
 
     if target_model.is_a?(Group)

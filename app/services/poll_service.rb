@@ -12,6 +12,30 @@ class PollService
     Events::PollCreated.publish!(poll, actor)
   end
 
+  def self.update(poll:, params:, actor:)
+    actor.ability.authorize! :update, poll
+    poll.assign_attributes(author: actor)
+
+    HasRichText.assign_attributes_and_update_files(poll, params.except(:poll_type, :discussion_id))
+    is_new_version = poll.is_new_version?
+
+    return false unless poll.valid?
+
+    poll.save!
+
+    users = UserInviter.where_or_create!(inviter: actor,
+                                         user_ids: params[:recipient_user_ids],
+                                         emails: params[:recipient_emails])
+
+    EventBus.broadcast('poll_update', poll, actor)
+
+    Events::PollEdited.publish!(poll,
+                                users.pluck(:id),
+                                params[:recipient_audience],
+                                params[:recipient_message]) if is_new_version
+  end
+
+
   def self.create_stances(poll, actor, user_ids, emails, audience)
     user_ids = Array(user_ids).concat AnnouncementService.audience_users(poll, audience).pluck('users.id')
 
@@ -105,18 +129,6 @@ class PollService
     return if poll.closed_at
     poll.stances.update_all(participant_id: nil) if poll.anonymous
     poll.update(closed_at: Time.now)
-  end
-
-  def self.update(poll:, params:, actor:)
-    actor.ability.authorize! :update, poll
-    HasRichText.assign_attributes_and_update_files(poll, params.except(:poll_type, :discussion_id))
-    is_new_version = poll.is_new_version?
-
-    return false unless poll.valid?
-    poll.save!
-
-    EventBus.broadcast('poll_update', poll, actor)
-    Events::PollEdited.publish!(poll, actor) if is_new_version
   end
 
   def self.add_options(poll:, params:, actor:)

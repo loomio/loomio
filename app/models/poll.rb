@@ -104,7 +104,7 @@ class Poll < ApplicationRecord
 
   alias_method :user, :author
 
-  has_paper_trail only: [:title, :details, :details_format, :closing_at,
+  has_paper_trail only: [:autho_id, :title, :details, :details_format, :closing_at,
     :group_id, :anonymous, :voter_can_add_options, :anyone_can_participate,
     :notify_on_participate, :hide_results_until_closed]
 

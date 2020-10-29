@@ -2,6 +2,7 @@
 import StrandList from '@/components/strand/list.vue'
 import NewComment from '@/components/strand/item/new_comment.vue'
 import NewDiscussion from '@/components/strand/item/new_discussion.vue'
+import DiscussionEdited from '@/components/strand/item/discussion_edited.vue'
 import PollCreated from '@/components/strand/item/poll_created.vue'
 import StanceCreated from '@/components/strand/item/stance_created.vue'
 import OutcomeCreated from '@/components/strand/item/outcome_created.vue'
@@ -27,6 +28,7 @@ export default
     OutcomeCreated: OutcomeCreated
     OtherKind: OtherKind
     StrandLoadMore: StrandLoadMore
+    DiscussionEdited: DiscussionEdited
 
   computed:
     parentExists: ->
@@ -80,7 +82,7 @@ export default
       last(@ranges)[1] == pos
 
     componentForKind: (kind) ->
-      camelCase if ['stance_created', 'new_comment', 'outcome_created', 'poll_created', 'new_discussion'].includes(kind)
+      camelCase if ['stance_created', 'discussion_edited', 'new_comment', 'outcome_created', 'poll_created', 'new_discussion'].includes(kind)
         kind
       else
         'other_kind'

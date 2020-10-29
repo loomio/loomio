@@ -99,6 +99,17 @@ module Dev::Scenarios::Discussion
     last_email
   end
 
+  def setup_discussion_mailer_discussion_edited_email
+    sign_in jennifer
+    @group = FactoryBot.create(:group, name: "Girdy Dancing Shoes", creator: patrick)
+    @group.add_admin! patrick
+    @group.add_member! jennifer
+    discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: @group)
+    DiscussionService.create(discussion: discussion, actor: patrick)
+    DiscussionService.update(discussion: discussion, actor: patrick, params: {recipient_user_ids: [jennifer.id], recipient_message: 'change message'})
+    last_email
+  end
+
   def setup_discussion_mailer_discussion_announced_email
     sign_in jennifer
     @group = FactoryBot.create(:group, name: "Girdy Dancing Shoes", creator: patrick)

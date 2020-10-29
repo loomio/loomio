@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  include ActionView::Helpers::SanitizeHelper
   include Redis::Objects
   include CustomCounterCache::Model
   include HasTimeframe
@@ -11,7 +12,7 @@ class Event < ApplicationRecord
   belongs_to :user, required: false
   belongs_to :parent, class_name: "Event", required: false
   has_many :children, (-> { where("discussion_id is not null") }), class_name: "Event", foreign_key: :parent_id
-  set_custom_fields :pinned_title, :recipient_user_ids, :recipient_audience
+  set_custom_fields :pinned_title, :recipient_user_ids, :recipient_audience, :recipient_message
 
   before_create :set_parent_and_depth
   before_create :set_sequences
@@ -213,6 +214,10 @@ class Event < ApplicationRecord
     else
       original_parent
     end
+  end
+
+  def recipient_message=(val)
+    self.custom_fields[:recipient_message] = strip_tags(val)
   end
 
   def email_recipients

@@ -14,7 +14,7 @@ export default
     init: ->
       Records.polls.findOrFetchById(@$route.params.key)
       .then (poll) =>
-        @poll = poll
+        @poll = poll.clone()
 
         EventBus.$emit 'currentComponent',
           group: poll.group()

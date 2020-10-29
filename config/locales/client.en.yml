@@ -591,6 +591,8 @@ en:
     to: To
     # visible_to_label: Privacy
     none_invite_only: None (Invite only)
+    change_log_placeholder: Briefly describe the changes made in this edit. (optional)
+    change_log_label: What's changed?
     # visible_to_group: Group thread
     # visible_to_parent_group: "{{group}}"
     # visible_to_public: Public
@@ -677,16 +679,16 @@ en:
         helptext: Who would you like to invite to the thread?
       discussion_edited:
         title: Notify of edits
-        helptext: Who would you like to notify about your changes? (optional)
+        helptext: Who would you like to notify about this update? (optional)
       poll_announced:
         title: Invite to vote
         helptext: Who would you like to invite to vote?
-      poll:
-        title: Notify of edits
-        helptext: Who would you like to notify about your changes?
+      # poll:
+      #   title: Notify of edits
+      #   helptext: Who would you like to notify about this update?
       poll_edited:
         title: Notify of edits
-        helptext: Who would you like to notify about your changes?
+        helptext: Who would you like to notify about this update?
       outcome_announced:
         title: Share outcome
         helptext: Who would you like to share the outcome with?
