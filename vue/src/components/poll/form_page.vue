@@ -28,7 +28,6 @@ export default
 
     submit: ->
       actionName = if @poll.isNew() then 'created' else 'updated'
-      @poll.customFields.deanonymize_after_close = @poll.deanonymizeAfterClose if @poll.anonymous
       @poll.customFields.can_respond_maybe = @poll.canRespondMaybe if @poll.pollType == 'meeting'
       @poll.setErrors({})
       @poll.save()
