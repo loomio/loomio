@@ -21,7 +21,7 @@ export default
       if Session.isSignedIn()
         if @$route.params.key
           Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>
-            @discussion = discussion
+            @discussion = discussion.clone()
         else if parseInt(@$route.query.group_id)
           Records.groups.findOrFetchById(parseInt(@$route.query.group_id)).then =>
             @discussion = Records.discussions.build

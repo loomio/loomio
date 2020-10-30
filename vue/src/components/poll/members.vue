@@ -8,13 +8,9 @@ import StanceService from '@/shared/services/stance_service'
 import {audiencesFor, audienceSize, audienceValuesFor} from '@/shared/helpers/announcement.coffee'
 import {map, debounce, without, filter, uniq, uniqBy, some, find} from 'lodash'
 
-import RecipientsAutocompleteMixin from '@/mixins/recipients_autocomplete_mixin'
-
 export default
   components:
     RecipientsAutocomplete: RecipientsAutocomplete
-
-  mixins: [RecipientsAutocompleteMixin]
 
   props:
     poll: Object

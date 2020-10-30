@@ -9,13 +9,10 @@ import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
 
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
-import RecipientsAutocompleteMixin from '@/mixins/recipients_autocomplete_mixin'
 
 export default
   components:
     RecipientsAutocomplete: RecipientsAutocomplete
-
-  mixins: [RecipientsAutocompleteMixin]
 
   props:
     discussion: Object
@@ -32,43 +29,26 @@ export default
 
   mounted: ->
     Records.users.fetchGroups()
-    @fetchMemberships()
 
     @watchRecords
       collections: ['groups', 'memberships']
       query: (records) =>
-        @updateSuggestions()
         @updateGroupItems()
 
   watch:
     'discussion.groupId':
       immediate: true
       handler: (groupId) ->
-        @fetchMemberships()
-        @updateSuggestions()
         @subscription = @discussion.group().parentOrSelf().subscription
-        @initialRecipients = (!@discussion.id && @audiences.length && [@audiences[0]]) || []
-        @newRecipients(@initialRecipients)
+        if groupId
+          @initialRecipients = [{id: 'group', name: @discussion.group().name, size: @discussion.group().acceptedMembershipsCount, icon: 'mdi-account-group'}]
+        else
+          @initialRecipients = []
         @reset = !@reset
 
   methods:
-    findGroups: ->
-      return [] if @recipients.find((i) -> i.type == 'group')
-      allGroups = if @discussion.groupId
-        @discussion.group().parentOrSelf().selfAndSubgroups()
-      else
-        Session.user().groups()
-      allGroups = allGroups.filter (group) -> AbilityService.canStartThread(group)
-
-      chain = Records.groups.collection.chain().
-                   find(id: {$in: map(allGroups, 'id')}).
-                   simplesort('openDiscussionsCount', true)
-
-      if @query
-        chain = chain.find(name: {'$regex': ["^#{@query}", 'i']})
-      chain.data()
-
     submit: ->
+      console.log "helloooo"
       actionName = if @discussion.id then 'updated' else 'created'
       @discussion.save()
       .then (data) =>
@@ -84,35 +64,7 @@ export default
     updatePrivacy: ->
       @discussion.private = @discussion.privateDefaultValue()
 
-    newRecipients: (val) ->
-      @recipients = val
-      @discussion.recipientAudience = (find(val, (o) -> o.type == 'audience') || {}).id
-      @discussion.recipientUserIds = map filter(val, (o) -> o.type == 'user'), 'id'
-      @discussion.recipientEmails = map filter(val, (o) -> o.type == 'email'), 'name'
-
   computed:
-    audiences: ->
-      ret = []
-      canAnnounce = !!(@model.group().adminsInclude(Session.user()) || @model.group().membersCanAnnounce)
-      if @recipients.length == 0
-        if @model.groupId && canAnnounce
-          ret.push
-            id: 'group'
-            name: @model.group().name
-            size: @model.group().acceptedMembershipsCount
-            icon: 'mdi-account-group'
-        if @model.membersCount > 1
-          ret.push
-            id: 'discussion_group'
-            name: @$t('announcement.audiences.discussion_group')
-            size: @model.membersCount
-            icon: 'mdi-forum'
-
-      ret.filter (a) =>
-        (@query && a.name.match(new RegExp(@query, 'i'))) || true
-
-    model: -> @discussion
-
     maxThreads: ->
       @subscription.max_threads
 
@@ -159,12 +111,9 @@ export default
       v-if="!discussion.id"
       :label="$t(discussion.id ? 'action_dock.notify' : 'common.action.invite')"
       :placeholder="$t('announcement.form.discussion_'+ (discussion.id ? 'edited' : 'announced')+ '.helptext')"
-      :users="users"
       :initial-recipients="initialRecipients"
-      :audiences="audiences"
-      :reset="reset"
-      @new-query="newQuery"
-      @new-recipients="newRecipients")
+      :model="discussion"
+      :reset="reset")
 
     div(v-if="showUpgradeMessage")
       p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")

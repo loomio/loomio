@@ -13,11 +13,8 @@ import { uniq, map, sortBy, head, find, filter, sum } from 'lodash'
 import { onError } from '@/shared/helpers/form'
 
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
-import RecipientsAutocompleteMixin from '@/mixins/recipients_autocomplete_mixin'
 
 export default
-  mixins: [RecipientsAutocompleteMixin]
-
   components:
     RecipientsAutocomplete: RecipientsAutocomplete
 
@@ -152,10 +149,7 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
     recipients-autocomplete(
       :label="$t('action_dock.notify')"
       :placeholder="$t('poll_common_outcome_form.who_to_notify')"
-      :users="users"
-      :audiences="audiences"
-      @new-query="newQuery"
-      @new-recipients="newRecipients")
+      :model="outcome")
 
     .caption.outcome-modal__number-notified(v-if="notificationsCount != 1" v-t="{ path: 'poll_common_notify_group.members_count', args: { count: notificationsCount } }")
     .caption.outcome-modal__number-notified(v-else v-t="'discussion_form.one_person_notified'")

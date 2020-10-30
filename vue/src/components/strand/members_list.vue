@@ -4,15 +4,12 @@ import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
 import Flash from '@/shared/services/flash'
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
-import RecipientsAutocompleteMixin from '@/mixins/recipients_autocomplete_mixin'
 import DiscussionReaderService from '@/shared/services/discussion_reader_service'
 import {map, debounce, without, filter, uniq, uniqBy, some} from 'lodash'
 
 export default
   components:
     RecipientsAutocomplete: RecipientsAutocomplete
-
-  mixins: [RecipientsAutocompleteMixin]
 
   props:
     discussion: Object
