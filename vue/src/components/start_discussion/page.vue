@@ -13,10 +13,14 @@ export default
   mounted: ->
     @init()
 
+  watch:
+    '$route.query.group_id': 'init'
+    '$route.params.key': 'init'
+
   methods:
+
     init: ->
       EventBus.$emit 'currentComponent', { page: 'startDiscussionPage' }
-
 
       if Session.isSignedIn()
         if @$route.params.key
@@ -36,5 +40,5 @@ export default
 v-main
   v-container.start-discussion-page.max-width-800
     v-card
-      discussion-form(v-if="discussion" :discussion='discussion' is-page)
+      discussion-form(v-if="discussion" :discussion='discussion' is-page :key="discussion.id")
 </template>

@@ -1,8 +1,19 @@
 class API::DiscussionReadersController < API::RestfulController
   def index
     @discussion = load_and_authorize(:discussion)
+    query = params[:query]
     instantiate_collection do |collection|
-      collection.where(discussion_id: @discussion.id)
+      collection = collection.where(discussion_id: @discussion.id)
+      if query
+        collection = collection.
+          joins('LEFT OUTER JOIN users on discussion_readers.user_id = users.id').
+          where("users.name ilike :first OR
+                 users.name ilike :last OR
+                 users.email ilike :first OR
+                 users.username ilike :first",
+                 first: "#{query}%", last: "% #{query}%")
+      end
+      collection
     end
     respond_with_collection
   end

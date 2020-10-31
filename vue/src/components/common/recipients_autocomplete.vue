@@ -16,6 +16,9 @@ export default
     placeholder: String
     reset: Boolean
     model: Object
+    excludedUserIds:
+      type: Array
+      default: -> [Session.user().id]
     initialRecipients:
       type: Array
       default: -> []
@@ -90,7 +93,6 @@ export default
     , 300
 
     newRecipients: (val) ->
-      console.log "new recipieitns", (find(val, (o) -> o.type == 'audience') || {}).id
       @model.recipientAudience = (find(val, (o) -> o.type == 'audience') || {}).id
       @model.recipientUserIds = map filter(val, (o) -> o.type == 'user'), 'id'
       @model.recipientEmails = map filter(val, (o) -> o.type == 'email'), 'name'
@@ -98,8 +100,6 @@ export default
     updateSuggestions: ->
       @users = @findUsers()
 
-    excludedUserIds: ->
-      [Session.user().id]
 
     findUsers: ->
       chain = Records.users.collection.chain()
@@ -107,7 +107,7 @@ export default
       if @model.groupId
         chain = chain.find(id: {$in: @model.group().parentAndSelfMemberIds()})
 
-      chain = chain.find(id: {$nin: @excludedUserIds()})
+      chain = chain.find(id: {$nin: @excludedUserIds})
 
       if @query
         chain = chain.find

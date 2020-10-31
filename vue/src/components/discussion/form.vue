@@ -48,7 +48,6 @@ export default
 
   methods:
     submit: ->
-      console.log "helloooo"
       actionName = if @discussion.id then 'updated' else 'created'
       @discussion.save()
       .then (data) =>

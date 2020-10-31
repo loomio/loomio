@@ -5,7 +5,7 @@ import Session from '@/shared/services/session'
 import Flash from '@/shared/services/flash'
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
 import DiscussionReaderService from '@/shared/services/discussion_reader_service'
-import {map, debounce, without, filter, uniq, uniqBy, some} from 'lodash'
+import {map, debounce, without, filter, uniq, uniqBy, some, pick} from 'lodash'
 
 export default
   components:
@@ -29,35 +29,22 @@ export default
   mounted: ->
     @actionNames = ['makeAdmin', 'removeAdmin', 'revoke'] # 'resend'
 
-    @fetchMemberships()
-
-    Records.discussionReaders.fetch
-      params:
-        discussion_id: @discussion.id
-    .then (records) =>
-      userIds = map records['users'], 'id'
-      Records.memberships.fetch
-        path: 'autocomplete'
-        exclude_types: 'group'
-        params:
-          group_id: @discussion.groupId
-          user_ids: userIds.join(' ')
-      .then => @updateSuggestions()
-
     @watchRecords
       collections: ['discussionReaders', 'memberships']
       query: (records) => @updateReaders()
 
   watch:
-    query: -> @updateReaders()
+    query: ->
+      @updateReaders()
+      @fetchReaders()
 
   computed:
     model: -> @discussion
 
-  methods:
     excludedUserIds: ->
       @readerUserIds.concat(Session.user().id)
 
+  methods:
     isGroupAdmin: (reader) ->
       @membershipsByUserId[reader.userId] && @membershipsByUserId[reader.userId].admin
 
@@ -67,11 +54,11 @@ export default
     inviteRecipients: ->
       count = @recipients.length
       @saving = true
-      Records.announcements.remote.post '',
+      params = Object.assign
         discussion_id: @discussion.id
-        recipients:
-          user_ids: map filter(@recipients, (r) -> r.type == 'user'), 'id'
-          emails: map filter(@recipients, (r) -> r.type == 'email'), 'id'
+      ,
+        pick(@discussion, ['recipientAudience', 'recipientUserIds', 'recipientEmails'])
+      Records.announcements.remote.post '', params
 
       .then => @reset = !@reset
       .finally =>
@@ -80,6 +67,21 @@ export default
 
     newQuery: (query) -> @query = query
     newRecipients: (recipients) -> @recipients = recipients
+
+    fetchReaders: ->
+      Records.discussionReaders.fetch
+        params:
+          query: @query
+          discussion_id: @discussion.id
+      .then (records) =>
+        userIds = map records['users'], 'id'
+        Records.memberships.fetch
+          path: 'autocomplete'
+          exclude_types: 'group'
+          params:
+            group_id: @discussion.groupId
+            user_ids: userIds.join(' ')
+      .finally => @updateReaders()
 
     updateReaders: ->
       chain = Records.discussionReaders.collection.chain().
@@ -111,16 +113,19 @@ export default
     .d-flex.justify-space-between
       h1.headline(v-t="'announcement.form.discussion_announced.title'")
       dismiss-modal-button
+
     recipients-autocomplete(
       :label="$t('announcement.form.discussion_announced.helptext')"
       :placeholder="$t('announcement.form.placeholder')"
-      :users="users"
+      :model="discussion"
+      :excluded-user-ids="excludedUserIds"
       :reset="reset"
       @new-query="newQuery"
       @new-recipients="newRecipients")
     .d-flex
       v-spacer
       v-btn.strand-members-list__submit(color="primary" :disabled="!recipients.length" @click="inviteRecipients" @loading="saving" v-t="'common.action.invite'")
+
   v-list(two-line)
     v-subheader
       span(v-t="'membership_card.discussion_members'")

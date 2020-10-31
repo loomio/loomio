@@ -45,25 +45,6 @@ export default
     query: ->
       @fetchMemberships()
 
-  computed:
-    model: -> @poll
-
-    audiences: ->
-      ret = []
-      if @recipients.length == 0
-        if @model.group()
-          ret.push
-            id: 'group'
-            name: @model.group().name
-            size: @model.group().acceptedMembershipsCount
-        if @model.poll().discussionId
-          ret.push
-            id: 'discussion_group'
-            name: @$t('announcement.audiences.discussion_group')
-            size: @model.poll().discussion().membersCount
-
-      ret.filter (a) => a.name.match(new RegExp(@query, 'i'))
-
   methods:
     isAdmin: (stance) ->
       stance.admin || @membershipsByUserId[stance.participantId] && @membershipsByUserId[stance.participantId].admin
@@ -76,10 +57,9 @@ export default
       @saving = true
       Records.announcements.remote.post '',
         poll_id: @poll.id
-        recipients:
-          audience: (find(@recipients, (r) -> r.type == 'audience') || {}).id
-          user_ids: map filter(@recipients, (r) -> r.type == 'user'), 'id'
-          emails: map filter(@recipients, (r) -> r.type == 'email'), 'id'
+        recipient_audience: @poll.recipientAudience
+        recipient_user_ids: @poll.recipientUserIds
+        recipient_emails: @poll.recipientEmails
       .then =>
         @reset = !@reset
       .finally =>
@@ -138,8 +118,7 @@ export default
     recipients-autocomplete(
       :label="$t('announcement.form.poll_announced.helptext')"
       :placeholder="$t('announcement.form.placeholder')"
-      :audiences="audiences"
-      :users="users"
+      :model="poll"
       :reset="reset"
       :initialRecipients="initialRecipients"
       @new-query="newQuery"
