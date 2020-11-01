@@ -148,7 +148,6 @@ export default
     audiences: ->
       ret = []
       canAnnounce = !!(@model.group().adminsInclude(Session.user()) || @model.group().membersCanAnnounce)
-      console.log "audiences: recipients", @recipients
       if @recipients.length == 0
         if @model.groupId && canAnnounce
           ret.push
