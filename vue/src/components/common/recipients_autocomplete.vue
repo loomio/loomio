@@ -87,7 +87,7 @@ export default
     findUsers: ->
       chain = Records.users.collection.chain()
 
-      if @model.groupId
+      if @model.group().id
         chain = chain.find(id: {$in: @model.group().parentAndSelfMemberIds()})
 
       chain = chain.find(id: {$nin: @excludedUserIds})
@@ -133,7 +133,7 @@ export default
       members = @findUsers().map (u) ->
         id: u.id
         type: 'user'
-        name: u.name
+        name: u.nameOrEmail()
         user: u
 
       audiences = @audiences.map (a) ->
@@ -155,10 +155,11 @@ export default
         if @model.groupId && canAnnounce
           ret.push
             id: 'group'
-            name: @model.group().name
+            name: @$t('announcement.audiences.group', name: @model.group().name)
             size: @model.group().acceptedMembershipsCount
             icon: 'mdi-account-group'
-        if @model.discussion() && @model.discussion().id && @model.discussion().membersCount > 1
+
+        if @model.discussion && @model.discussion().id && @model.discussion().membersCount > 1
           ret.push
             id: 'discussion_group'
             name: @$t('announcement.audiences.discussion_group')

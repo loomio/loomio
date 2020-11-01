@@ -41,7 +41,12 @@ export default
       handler: (groupId) ->
         @subscription = @discussion.group().parentOrSelf().subscription
         if groupId
-          @initialRecipients = [{id: 'group', name: @discussion.group().name, size: @discussion.group().acceptedMembershipsCount, icon: 'mdi-account-group'}]
+          g =
+            id: 'group'
+            name: @$t('announcement.audiences.group', name: @discussion.group().name)
+            size: @discussion.group().acceptedMembershipsCount
+            icon: 'mdi-account-group'
+          @initialRecipients = [g]
         else
           @initialRecipients = []
         @reset = !@reset

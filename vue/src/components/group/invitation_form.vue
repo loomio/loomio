@@ -21,8 +21,8 @@ export default
     recipients: []
     reset: false
     saving: false
-    users: []
     groupIds: [@group.id]
+    excludedUserIds: []
     message: ''
     withMessage: false
     subscription: {}
@@ -30,31 +30,27 @@ export default
     upgradeUrl: AppConfig.baseUrl + 'upgrade'
 
   mounted: ->
-    @fetchMemberships = debounce ->
-      return unless @query
-
-      @loading = true
-      Records.memberships.fetch
-        path: 'autocomplete'
-        params:
-          exclude_types: 'group'
-          subgroups: 'all'
-          q: @query
-          group_id: @group.parentOrSelf().id
-          per: 100
-      .finally =>
-        @loading = false
-    , 300
-
+    @updateSuggestions()
     @watchRecords
       collections: ['memberships']
       query: (records) => @updateSuggestions()
 
     @subscription = @group.parentOrSelf().subscription
-
     @cannotInvite = !@subscription.active || (@subscription.max_members && @invitationsRemaining < 1)
 
   methods:
+    fetchMemberships: debounce ->
+      @loading = true
+      Records.memberships.fetch
+        params:
+          exclude_types: 'group'
+          q: @query
+          group_id: @group.id
+          per: 20
+      .finally =>
+        @loading = false
+    , 300
+
     inviteRecipients: ->
       @saving = true
       Records.announcements.remote.post '',
@@ -78,30 +74,30 @@ export default
     newRecipients: (recipients) -> @recipients = recipients
 
     updateSuggestions: ->
-      @users = @findUsers()
+      @excludedUserIds = @group.memberIds()
 
-    findUsers: ->
-      userIdsInGroup = Records.memberships.collection.
-        chain().find(groupId: @group.id).
-        data().map (m) -> m.userId
-      membershipsChain = Records.memberships.collection.chain()
-      membershipsChain = membershipsChain.find(groupId: { $in: @group.parentOrSelf().organisationIds() })
-      membershipsChain = membershipsChain.find(userId: { $nin: userIdsInGroup })
-
-      userIdsNotInGroup = uniq membershipsChain.data().map((m) -> m.userId)
-
-      chain = Records.users.collection.chain()
-      chain = chain.find(id: {$in: userIdsNotInGroup})
-
-
-      if @query
-        chain = chain.find
-          $or: [
-            {name: {'$regex': ["^#{@query}", "i"]}}
-            {username: {'$regex': ["^#{@query}", "i"]}}
-            {name: {'$regex': [" #{@query}", "i"]}}
-          ]
-      chain.data()
+    # findUsers: ->
+    #   userIdsInGroup = Records.memberships.collection.
+    #     chain().find(groupId: @group.id).
+    #     data().map (m) -> m.userId
+    #   membershipsChain = Records.memberships.collection.chain()
+    #   membershipsChain = membershipsChain.find(groupId: { $in: @group.parentOrSelf().organisationIds() })
+    #   membershipsChain = membershipsChain.find(userId: { $nin: userIdsInGroup })
+    #
+    #   userIdsNotInGroup = uniq membershipsChain.data().map((m) -> m.userId)
+    #
+    #   chain = Records.users.collection.chain()
+    #   chain = chain.find(id: {$in: userIdsNotInGroup})
+    #
+    #
+    #   if @query
+    #     chain = chain.find
+    #       $or: [
+    #         {name: {'$regex': ["^#{@query}", "i"]}}
+    #         {username: {'$regex': ["^#{@query}", "i"]}}
+    #         {name: {'$regex': [" #{@query}", "i"]}}
+    #       ]
+    #   chain.data()
 
   computed:
     invitableGroups: ->
@@ -128,8 +124,9 @@ export default
       recipients-autocomplete(
         :label="$t('announcement.form.who_to_invite')"
         :placeholder="$t('announcement.form.placeholder')"
-        :users="users"
+        :excluded-user-ids="excludedUserIds"
         :reset="reset"
+        :model="group"
         @new-query="newQuery"
         @new-recipients="newRecipients")
       div(v-if="subscription.max_members")
