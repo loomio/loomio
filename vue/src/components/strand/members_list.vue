@@ -33,11 +33,6 @@ export default
       collections: ['discussionReaders', 'memberships']
       query: (records) => @updateReaders()
 
-  watch:
-    query: ->
-      @updateReaders()
-      @fetchReaders()
-
   computed:
     model: -> @discussion
 
@@ -57,7 +52,9 @@ export default
       params = Object.assign
         discussion_id: @discussion.id
       ,
-        pick(@discussion, ['recipientAudience', 'recipientUserIds', 'recipientEmails'])
+        recipient_audience: @discussion.recipientAudience
+        recipient_user_ids: @discussion.recipientUserIds
+        recipient_emails: @discussion.recipientEmails
       Records.announcements.remote.post '', params
 
       .then => @reset = !@reset
@@ -65,23 +62,29 @@ export default
         Flash.success('announcement.flash.success', { count: count })
         @saving = false
 
-    newQuery: (query) -> @query = query
+    newQuery: (query) ->
+      @query = query
+      @updateReaders()
+      @fetchReaders()
+
     newRecipients: (recipients) -> @recipients = recipients
 
-    fetchReaders: ->
+    fetchReaders: debounce ->
       Records.discussionReaders.fetch
         params:
+          exclude_types: 'discussion'
           query: @query
           discussion_id: @discussion.id
       .then (records) =>
         userIds = map records['users'], 'id'
         Records.memberships.fetch
           path: 'autocomplete'
-          exclude_types: 'group'
           params:
+            exclude_types: 'group inviter'
             group_id: @discussion.groupId
             user_ids: userIds.join(' ')
       .finally => @updateReaders()
+    , 300
 
     updateReaders: ->
       chain = Records.discussionReaders.collection.chain().

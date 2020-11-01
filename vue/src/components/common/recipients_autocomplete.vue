@@ -25,39 +25,22 @@ export default
 
   data: ->
     query: ''
-    searchResults: []
+    suggestions: []
     recipients: @initialRecipients
-    emailAddresses: []
     loading: false
-    users: []
-    groups: []
-
-  created: ->
 
   mounted: ->
-    @updateSearchResults()
-    @fetchMemberships()
+    @fetchAndUpdateSuggestions()
 
   watch:
     'model.groupId': (groupId) ->
-      @fetchMemberships()
-      @updateSuggestions()
       @newRecipients(@initialRecipients)
+      @fetchAndUpdateSuggestions()
 
     reset: ->
       @query = ''
       @recipients = @initialRecipients
-      @emailAddresses = []
-      @updateSearchResults()
-
-    groups: ->
-      @updateSearchResults()
-
-    audiences: ->
-      @updateSearchResults()
-
-    users: ->
-      @updateSearchResults()
+      @fetchAndUpdateSuggestions()
 
     recipients: (val) ->
       @newRecipients(val)
@@ -65,12 +48,13 @@ export default
 
     query: (q) ->
       @$emit('new-query', q)
-      @findEmailAddresses(q)
-      @updateSearchResults()
-      @updateSuggestions()
-      @fetchMemberships()
+      @fetchAndUpdateSuggestions()
 
   methods:
+    fetchAndUpdateSuggestions: ->
+      @fetchMemberships()
+      @updateSuggestions()
+
     fetchMemberships: debounce ->
       if @query
         emails = uniq(@query.match(/[^\s:,;'"`<>]+?@[^\s:,;'"`<>]+\.[^\s:,;'"`<>]+/g) || [])
@@ -89,17 +73,12 @@ export default
         @updateSuggestions()
       .finally =>
         @loading = false
-
     , 300
 
     newRecipients: (val) ->
       @model.recipientAudience = (find(val, (o) -> o.type == 'audience') || {}).id
       @model.recipientUserIds = map filter(val, (o) -> o.type == 'user'), 'id'
       @model.recipientEmails = map filter(val, (o) -> o.type == 'email'), 'name'
-
-    updateSuggestions: ->
-      @users = @findUsers()
-
 
     findUsers: ->
       chain = Records.users.collection.chain()
@@ -119,52 +98,39 @@ export default
 
       chain.data()
 
-
-    newQuery: (query) ->
-      @query = query
-
     notificationsCount: ->
       sum(@recipients.map((r) => r.size || 1))
-
-    findEmailAddresses: ->
-      return unless @query
-
-      @emailAddresses = uniq(@query.match(/[^\s:,;'"`<>]+?@[^\s:,;'"`<>]+\.[^\s:,;'"`<>]+/g) || [])
-
-      # catch paste of multiple email addresses, or failure to press enter after an email address
-      if @emailAddresses.length > 1 or (@emailAddresses.length == 1 && [',', ' '].includes(@query.slice(-1)))
-        objs = uniqBy @recipients.concat(@emailAddresses.map((e) -> {id: e, type: 'email', name: e})), 'id'
-        @recipients = objs
-        @searchResults = objs
-        @query = ''
-        @emailAddresses = []
-        return
 
     remove: (item) ->
       @recipients = filter @recipients, (r) ->
         !(r.id == item.id && r.type == item.type)
 
-    updateSearchResults: ->
-      if @emailAddresses.length
-        @searchResults = @recipients.concat @emailAddresses.map (e) ->
-          id: e
-          type: 'email'
-          icon: 'mdi-email-outline'
-          name: e
-        return
+    emailToRecipient: (email) ->
+      id: email
+      type: 'email'
+      icon: 'mdi-email-outline'
+      name: email
 
-      members = @users.map (u) ->
+    updateSuggestions: ->
+      if @query
+        emails = uniq(@query.match(/[^\s:,;'"`<>]+?@[^\s:,;'"`<>]+\.[^\s:,;'"`<>]+/g) || [])
+
+        # catch paste of multiple email addresses, or failure to press enter after an email address
+        if emails.length > 1 or (emails.length == 1 && [',', ' '].includes(@query.slice(-1)))
+          objs = uniqBy @recipients.concat(emails.map(@emailToRecipient)), 'id'
+          @recipients = objs
+          @suggestions = objs
+          @query = ''
+          return
+        else if emails.length == 1
+          @suggestions = @recipients.concat emails.map(@emailToRecipient)
+          return
+
+      members = @findUsers().map (u) ->
         id: u.id
         type: 'user'
         name: u.name
         user: u
-
-      groups = @groups.map (g) ->
-        id: g.id
-        type: 'group'
-        name: g.name
-        icon: 'mdi-account-group'
-        group: g
 
       audiences = @audiences.map (a) ->
         id: a.id
@@ -173,7 +139,7 @@ export default
         name: a.name
         size: a.size
 
-      @searchResults = @recipients.concat(audiences).concat(groups).concat(members)
+      @suggestions = @recipients.concat(audiences).concat(members)
 
   computed:
     modelName: -> @model.constructor.singular
@@ -244,7 +210,7 @@ div
     :loading="loading"
     :label="label"
     :placeholder="placeholder"
-    :items='searchResults'
+    :items='suggestions'
     )
     template(v-slot:selection='data')
       v-chip.chip--select-multi(:value='data.selected' close @click:close='remove(data.item)')

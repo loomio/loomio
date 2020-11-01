@@ -26,10 +26,6 @@ export default
     options: []
     bestOption: null
     isDisabled: false
-    searchResults: []
-    query: ''
-    recipients: []
-    users: []
 
   created: ->
     if @datesAsOptions()
@@ -53,26 +49,6 @@ export default
       query: (records) => @updateSuggestions()
 
   methods:
-    findUsers: ->
-      chain = Records.users.collection.chain()
-
-      if @outcome.groupId
-        chain = chain.find(id: {$in: @outcome.group().memberIds()})
-
-      chain = chain.find(id: {$nin: [Session.user().id]})
-
-      if @query
-        chain = chain.find
-          $or: [
-            {name: {'$regex': ["^#{@query}", "i"]}}
-            {username: {'$regex': ["^#{@query}", "i"]}}
-            {name: {'$regex': [" #{@query}", "i"]}}
-          ]
-
-      chain.data()
-
-    updateSuggestions: ->
-      @users = @findUsers()
 
     submit: ->
       @outcome.customFields.should_send_calendar_invite = @outcome.calendarInvite
