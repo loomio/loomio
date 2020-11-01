@@ -45,6 +45,7 @@ export default
     recipients: (val) ->
       @newRecipients(val)
       @$emit('new-recipients', val)
+      @updateSuggestions()
 
     query: (q) ->
       @$emit('new-query', q)
@@ -147,6 +148,7 @@ export default
     audiences: ->
       ret = []
       canAnnounce = !!(@model.group().adminsInclude(Session.user()) || @model.group().membersCanAnnounce)
+      console.log "audiences: recipients", @recipients
       if @recipients.length == 0
         if @model.groupId && canAnnounce
           ret.push
