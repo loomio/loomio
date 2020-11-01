@@ -17,33 +17,30 @@ export default
 
   data: ->
     stances: []
-    searchResults: []
     membershipsByUserId: {}
     stanceUserIds: []
     reset: false
     saving: false
     initialRecipients: []
-    fetchingAudience: false
     actionNames: []
     service: StanceService
+    query: ''
 
   mounted: ->
     @actionNames = ['makeAdmin', 'removeAdmin', 'revoke'] # 'resend'
 
-    @fetchMemberships()
     @fetchStances()
-    @updateSuggestions()
     @updateStances()
 
     @watchRecords
       collections: ['stances', 'memberships']
-      query: (records) =>
-        @updateStances()
-        @updateSuggestions()
+      query: (records) => @updateStances()
 
-  watch:
-    query: ->
-      @fetchMemberships()
+  computed:
+    someRecipients: ->
+      @poll.recipientAudience ||
+      @poll.recipientUserIds.length ||
+      @poll.recipientEmails.length
 
   methods:
     isAdmin: (stance) ->
@@ -53,30 +50,31 @@ export default
       !@membershipsByUserId[stance.participantId]
 
     inviteRecipients: ->
-      count = @recipients.length
       @saving = true
       Records.announcements.remote.post '',
         poll_id: @poll.id
         recipient_audience: @poll.recipientAudience
         recipient_user_ids: @poll.recipientUserIds
         recipient_emails: @poll.recipientEmails
-      .then =>
+      .then (data) =>
+        console.log data
+        count = data.stances.length
+        Flash.success('announcement.flash.success', { count: count })
         @reset = !@reset
       .finally =>
-        Flash.success('announcement.flash.success', { count: count })
         @saving = false
 
-    newQuery: (query) -> @query = query
-    newRecipients: (recipients) -> @recipients = recipients
+    newQuery: (query) ->
+      @query = query
+      @updateStances()
+      @fetchStances()
 
-    excludedUserIds: ->
-      @stanceUserIds.concat(Session.user().id)
-
-    fetchStances: ->
+    fetchStances: debounce ->
       Records.stances.fetch
         params:
           exclude_types: 'poll group'
           poll_id: @poll.id
+          query: @query
       .then (records) =>
         userIds = map records['users'], 'id'
         Records.memberships.fetch
@@ -84,6 +82,7 @@ export default
             exclude_types: 'group user'
             group_id: @poll.groupId
             user_ids: userIds.join(' ')
+    , 300
 
     updateStances: ->
       chain = Records.stances.collection.chain().
@@ -120,12 +119,13 @@ export default
       :placeholder="$t('announcement.form.placeholder')"
       :model="poll"
       :reset="reset"
+      :excludedAudiences="['voters', 'undecide', 'non_voters', 'participants']"
+      :excludedUserIds="stanceUserIds"
       :initialRecipients="initialRecipients"
-      @new-query="newQuery"
-      @new-recipients="newRecipients")
+      @new-query="newQuery")
     .d-flex
       v-spacer
-      v-btn.poll-members-list__submit(color="primary" :disabled="!recipients.length && saving" @click="inviteRecipients" @loading="saving")
+      v-btn.poll-members-list__submit(color="primary" :disabled="!someRecipients" :loading="saving" @click="inviteRecipients" )
         span(v-t="'common.action.invite'")
   v-list
     v-subheader

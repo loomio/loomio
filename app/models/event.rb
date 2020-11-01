@@ -233,12 +233,7 @@ class Event < ApplicationRecord
   end
 
   def all_recipient_user_ids
-    rel = if actor.can?(:announce, eventable)
-      AnnouncementService.audience_users(eventable, recipient_audience)
-    else
-      Membership.none
-    end
-
-    (recipient_user_ids || []).concat(rel.pluck(:id)).uniq.compact.without(actor_id)
+    audience_ids = AnnouncementService.audience_users(eventable, recipient_audience).pluck(:id)
+    (recipient_user_ids || []).concat(audience_ids).uniq.compact.without(actor_id)
   end
 end

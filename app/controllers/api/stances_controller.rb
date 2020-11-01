@@ -1,4 +1,20 @@
 class API::StancesController < API::RestfulController
+  def index
+    instantiate_collection do |collection|
+      if query = params[:query]
+        collection = collection.
+          joins('LEFT OUTER JOIN users on stances.participant_id = users.id').
+          where("users.name ilike :first OR
+                 users.name ilike :last OR
+                 users.email ilike :first OR
+                 users.username ilike :first",
+                 first: "#{query}%", last: "% #{query}%")
+      end
+      collection
+    end
+    respond_with_collection
+  end
+
   def my_stances
     self.collection = current_user.stances.latest.includes({poll: :discussion})
     self.collection = collection.where('polls.discussion_id': @discussion.id) if load_and_authorize(:discussion, optional: true)

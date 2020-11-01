@@ -16,6 +16,9 @@ export default
     placeholder: String
     reset: Boolean
     model: Object
+    excludedAudiences:
+      type: Array
+      default: -> []
     excludedUserIds:
       type: Array
       default: -> [Session.user().id]
@@ -166,7 +169,7 @@ export default
           if @model.poll().stancesCount > 1
             ret.push
               id: 'voters'
-              name: @$t('announcement.audiences.voters')
+              name: @$t('announcement.audiences.voters', pollType: @model.poll().translatedPollType())
               size: @model.poll().stancesCount
               icon: 'mdi-forum'
 
@@ -177,7 +180,7 @@ export default
               size: @model.poll().participantsCount
               icon: 'mdi-forum'
 
-          if @model.poll().undecidedCount > 0
+          if @model.poll().isActive() && @model.poll().participantsCount > 0 && @model.poll().undecidedCount > 0
             ret.push
               id: 'undecided'
               name: @$t('announcement.audiences.undecided')
@@ -188,11 +191,12 @@ export default
         # non voters
         # partiicpants
         # undecided
-
         # also subgroups
 
       ret.filter (a) =>
-        (@query && a.name.match(new RegExp(@query, 'i'))) || true
+        !@excludedAudiences.includes(a.id) &&
+        ((@query && a.name.match(new RegExp(@query, 'i'))) || true)
+
 </script>
 
 <template lang="pug">

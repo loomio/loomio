@@ -56,10 +56,10 @@ export default
         recipient_user_ids: @discussion.recipientUserIds
         recipient_emails: @discussion.recipientEmails
       Records.announcements.remote.post '', params
-
-      .then => @reset = !@reset
-      .finally =>
+      .then =>
+        @reset = !@reset
         Flash.success('announcement.flash.success', { count: count })
+      .finally =>
         @saving = false
 
     newQuery: (query) ->
@@ -122,12 +122,18 @@ export default
       :placeholder="$t('announcement.form.placeholder')"
       :model="discussion"
       :excluded-user-ids="excludedUserIds"
+      :excluded-audiences="['discussion_group']"
       :reset="reset"
       @new-query="newQuery"
       @new-recipients="newRecipients")
     .d-flex
       v-spacer
-      v-btn.strand-members-list__submit(color="primary" :disabled="!recipients.length" @click="inviteRecipients" @loading="saving" v-t="'common.action.invite'")
+      v-btn.strand-members-list__submit(
+        color="primary"
+        :disabled="!recipients.length"
+        :loading="saving"
+        @click="inviteRecipients"
+        v-t="'common.action.invite'")
 
   v-list(two-line)
     v-subheader

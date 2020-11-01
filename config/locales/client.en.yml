@@ -655,9 +655,9 @@ en:
       parent_group: Members of {{name}}
       group: Members of {{name}}
       discussion_group: Members of thread
-      voters: Members of {{pollType}}
+      voters: Everyone invited to vote
       participants: People who voted
-      undecided: Undecided people
+      undecided: Undecided voters
       non_voters: Members of {{name}} not yet invited
 
     form:
