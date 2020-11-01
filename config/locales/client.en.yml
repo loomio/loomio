@@ -656,7 +656,7 @@ en:
       group: Members of {{name}}
       discussion_group: Members of thread
       voters: Everyone invited to vote
-      participants: People who voted
+      participants: Everyone who voted
       undecided: Undecided voters
       non_voters: Members of {{name}} not yet invited
 

@@ -17,10 +17,10 @@ export default
 
 <template lang="pug">
 .common-notify-fields(v-if="model.id")
-  p recipientMessage {{model.recipientMessage}}
-  p recipientUserIds {{model.recipientUserIds}}
-  p recipientEmails {{model.recipientEmails}}
-  p recipientAudience {{model.recipientAudience}}
+  //- p recipientMessage {{model.recipientMessage}}
+  //- p recipientUserIds {{model.recipientUserIds}}
+  //- p recipientEmails {{model.recipientEmails}}
+  //- p recipientAudience {{model.recipientAudience}}
   v-divider.my-6
   v-text-field(
     :label="$t('discussion_form.change_log_label')"

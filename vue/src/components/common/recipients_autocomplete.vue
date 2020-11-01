@@ -180,17 +180,14 @@ export default
               size: @model.poll().participantsCount
               icon: 'mdi-forum'
 
-          if @model.poll().isActive() && @model.poll().participantsCount > 0 && @model.poll().undecidedCount > 0
+          if @model.poll().participantsCount > 0 && @model.poll().undecidedCount > 0
             ret.push
               id: 'undecided'
               name: @$t('announcement.audiences.undecided')
               size: @model.poll().undecidedCount
               icon: 'mdi-forum'
 
-        # voters
         # non voters
-        # partiicpants
-        # undecided
         # also subgroups
 
       ret.filter (a) =>
