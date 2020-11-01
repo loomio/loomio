@@ -652,9 +652,8 @@ en:
     select_groups: Select groups
 
     audiences:
-      parent_group: Members of {{name}}
-      group: Members of {{name}}
-      discussion_group: Members of thread
+      group: Everyone in {{name}}
+      discussion_group: Everyone in the thread
       voters: Everyone invited to vote
       participants: Everyone who voted
       undecided: Undecided voters
