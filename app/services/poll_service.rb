@@ -14,7 +14,6 @@ class PollService
 
   def self.update(poll:, params:, actor:)
     actor.ability.authorize! :update, poll
-    actor.ability.authorize! :announce, poll if params[:recipient_audience]
 
     poll.assign_attributes(author: actor)
 
@@ -27,15 +26,16 @@ class PollService
 
     users = UserInviter.where_or_create!(inviter: actor,
                                          user_ids: params[:recipient_user_ids],
-                                         emails: params[:recipient_emails])
-
-    audience_ids = AnnouncementService.audience_users(poll, params[:recipient_audience]).pluck(:id)
+                                         emails: params[:recipient_emails],
+                                         audience: params[:recipient_audience],
+                                         model: poll)
 
     EventBus.broadcast('poll_update', poll, actor)
 
     Events::PollEdited.publish!(poll: poll,
-                                user_ids: users.pluck(:id).concat(audience_ids),
-                                message: params[:recipient_message]) if is_new_version
+                                recipient_user_ids: users.pluck(:id),
+                                recipient_audience: params[:recipient_audience],
+                                recipient_message: params[:recipient_message]) if is_new_version
   end
 
 

@@ -1,7 +1,6 @@
 class DiscussionService
   def self.create(discussion:, actor:, params: {})
     actor.ability.authorize! :create, discussion
-    actor.ability.authorize!(:announce, discussion) if params[:audience]
 
     discussion.author = actor
 
@@ -23,12 +22,13 @@ class DiscussionService
                       audience: params[:recipient_audience])
 
     EventBus.broadcast('discussion_create', discussion, actor)
-    Events::NewDiscussion.publish!(discussion, users.pluck(:id))
+    Events::NewDiscussion.publish!(discussion: discussion,
+                                   recipient_user_ids: users.pluck(:id),
+                                   recipient_audience: params[:recipient_audience])
   end
 
   def self.update(discussion:, actor:, params:)
     actor.ability.authorize! :update, discussion
-    actor.ability.authorize!(:announce, discussion) if params[:audience]
     HasRichText.assign_attributes_and_update_files(discussion, params)
     # discussion.assign_attributes(API::SnorlaxBase.filter_params(Discussion, params))
     discussion.author = actor
@@ -47,8 +47,9 @@ class DiscussionService
     EventBus.broadcast('discussion_update', discussion, actor, params)
 
     Events::DiscussionEdited.publish!(discussion: discussion,
-                                      user_ids: users.pluck(:id),
-                                      message: params[:recipient_message])
+                                      recipient_user_ids: users.pluck(:id),
+                                      recipient_audience: params[:recipient_audience],
+                                      recipient_message: params[:recipient_message])
   end
 
   def self.announce(discussion:, actor:, params:)
@@ -60,7 +61,10 @@ class DiscussionService
                       emails: params[:recipient_emails],
                       audience: params[:recipient_audience])
 
-    Events::DiscussionAnnounced.publish!(discussion: discussion, actor: actor, user_ids: users.pluck(:id))
+    Events::DiscussionAnnounced.publish!(discussion: discussion,
+                                         actor: actor,
+                                         recipient_user_ids: users.pluck(:id),
+                                         recipient_audience: params[:recipient_audience])
   end
 
   def self.destroy(discussion:, actor:)
@@ -183,10 +187,11 @@ class DiscussionService
   end
 
   def self.add_users(discussion:, actor:, user_ids:, emails:, audience:)
-    audience_ids = AnnouncementService.audience_users(discussion, audience).pluck(:id)
     users = UserInviter.where_or_create!(inviter: actor,
-                                         user_ids: user_ids.concat(audience_ids),
-                                         emails: emails)
+                                         user_ids: user_ids,
+                                         emails: emails,
+                                         model: discussion,
+                                         audience: audience)
 
 
     volumes = {}

@@ -1,8 +1,18 @@
 class UserInviter
-  def self.where_or_create!(emails:, user_ids:, inviter:)
+  def self.where_or_create!(emails:, user_ids:, inviter:, model: nil, audience: nil)
+
+    audience_ids = if model && audience
+      inviter.ability.authorize! :announce, model
+      AnnouncementService.audience_users(model, audience).pluck(:id)
+    else
+      []
+    end
+
     emails = Array(emails)
 
-    user_ids = UserQuery.visible_to(user: inviter).where('users.id': user_ids).pluck('users.id')
+    user_ids = UserQuery.visible_to(user: inviter)
+                        .where('users.id': user_ids)
+                        .pluck('users.id').concat(audience_ids).uniq
 
     User.import(safe_emails(emails).map do |email|
       User.new(email: email, time_zone: inviter.time_zone, detected_locale: inviter.locale)

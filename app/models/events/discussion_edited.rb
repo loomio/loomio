@@ -5,12 +5,13 @@ class Events::DiscussionEdited < Event
   include Events::Notify::Mentions
   include Events::Notify::ThirdParty
 
-  def self.publish!(discussion:, user_ids: [], message: nil)
+  def self.publish!(discussion:, recipient_user_ids: [], recipient_audience: nil, recipient_message: nil)
     super(discussion,
-          discussion_id: (message && discussion.id) || nil,
           user: discussion.author,
-          recipient_user_ids: user_ids,
-          recipient_message: message)
+          discussion_id: (recipient_message && discussion.id) || nil,
+          recipient_user_ids: recipient_user_ids,
+          recipient_audience: recipient_audience,
+          recipient_message: recipient_message)
   end
 
   def discussion
