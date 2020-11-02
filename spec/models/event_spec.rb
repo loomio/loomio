@@ -112,7 +112,7 @@ describe Event do
 
   describe 'new_discussion' do
     it 'notifies mentioned users' do
-      expect { Events::NewDiscussion.publish!(discussion) }.to change { emails_sent }.by(1) # (the mentioned user)
+      expect { Events::NewDiscussion.publish!(discussion: discussion) }.to change { emails_sent }.by(1) # (the mentioned user)
       expect(Events::UserMentioned.last.custom_fields['user_ids']).to include user_mentioned.id
     end
   end
@@ -133,7 +133,7 @@ describe Event do
     it 'notifies mentioned users' do
       Events::PollCreated.publish!(poll, poll.author)
       poll.update(details: "#{poll.details} and @#{user_thread_loud.username}")
-      expect { Events::PollEdited.publish!(poll, poll.author) }.to change { Events::UserMentioned.where(kind: :user_mentioned).count }.by(1) # (the newly mentioned user)
+      expect { Events::PollEdited.publish!(poll: poll) }.to change { Events::UserMentioned.where(kind: :user_mentioned).count }.by(1) # (the newly mentioned user)
       expect(Events::UserMentioned.last.custom_fields['user_ids']).to include user_thread_loud.id
     end
   end

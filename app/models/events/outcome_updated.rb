@@ -8,7 +8,7 @@ class Events::OutcomeUpdated < Event
   def self.publish!(outcome:, recipient_user_ids: [], recipient_audience: nil)
     super(outcome,
           user: outcome.author,
-          recipient_user_ids: user_ids,
-          recipient_audience: audience)
+          recipient_user_ids: recipient_user_ids,
+          recipient_audience: recipient_audience)
   end
 end

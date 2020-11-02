@@ -99,7 +99,7 @@ describe API::DiscussionsController do
       json = JSON.parse response.body
       expect(response.status).to eq 200
       d = Discussion.find(json['discussions'][0]['id'])
-      expect(d.discussion_readers.count).to eq 1
+      expect(d.discussion_readers.count).to eq 3
       expect(d.created_event.notifications.count).to eq 2
     end
 
