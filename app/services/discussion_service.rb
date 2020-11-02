@@ -57,9 +57,10 @@ class DiscussionService
     users = add_users(discussion: discussion,
                       actor: actor,
                       user_ids: params[:recipient_user_ids],
-                      emails: params[:recipient_emails])
+                      emails: params[:recipient_emails],
+                      audience: params[:recipient_audience])
 
-    Events::DiscussionAnnounced.publish!(discussion, actor, users.pluck(:id), params[:recipient_audience])
+    Events::DiscussionAnnounced.publish!(discussion: discussion, actor: actor, user_ids: users.pluck(:id))
   end
 
   def self.destroy(discussion:, actor:)

@@ -299,7 +299,7 @@ module Dev::NintiesMoviesHelper
     Events::PollClosedByUser.publish!(create_poll, patrick)
 
     # outcome_created
-    Events::OutcomeCreated.publish!(create_outcome)
+    Events::OutcomeCreated.publish!(outcome: create_outcome)
   end
 
 

@@ -60,6 +60,7 @@ class API::AnnouncementsController < API::RestfulController
       poll_announced
       outcome_announced
       outcome_created
+      outcome_updated
       outcome_edited
       poll_created
       poll_edited

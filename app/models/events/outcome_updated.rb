@@ -5,7 +5,7 @@ class Events::OutcomeUpdated < Event
   include Events::Notify::ByEmail
   include Events::LiveUpdate
 
-  def self.publish!(outcome, user_ids = [], audience = nil)
+  def self.publish!(outcome:, user_ids: [], audience: nil)
     super(outcome,
           user: outcome.author,
           recipient_user_ids: user_ids,

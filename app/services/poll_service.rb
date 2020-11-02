@@ -14,6 +14,8 @@ class PollService
 
   def self.update(poll:, params:, actor:)
     actor.ability.authorize! :update, poll
+    actor.ability.authorize! :announce, poll if params[:recipient_audience]
+
     poll.assign_attributes(author: actor)
 
     HasRichText.assign_attributes_and_update_files(poll, params.except(:poll_type, :discussion_id))
@@ -27,16 +29,17 @@ class PollService
                                          user_ids: params[:recipient_user_ids],
                                          emails: params[:recipient_emails])
 
+    audience_ids = AnnouncementService.audience_users(poll, params[:recipient_audience]).pluck(:id)
+
     EventBus.broadcast('poll_update', poll, actor)
 
-    Events::PollEdited.publish!(poll,
-                                users.pluck(:id),
-                                params[:recipient_audience],
-                                params[:recipient_message]) if is_new_version
+    Events::PollEdited.publish!(poll: poll,
+                                user_ids: users.pluck(:id).concat(audience_ids),
+                                message: params[:recipient_message]) if is_new_version
   end
 
 
-  def self.create_stances(poll, actor, user_ids, emails, audience)
+  def self.create_stances(poll:, actor:, user_ids:, emails:, audience:)
     user_ids = Array(user_ids).concat AnnouncementService.audience_users(poll, audience).pluck('users.id')
 
     users = UserInviter.where_or_create!(inviter: actor,
@@ -72,9 +75,16 @@ class PollService
       DiscussionService.add_users(discussion: poll.discussion,
                                   actor: actor,
                                   user_ids: params[:recipient_user_ids],
-                                  emails: params[:recipient_emails])
+                                  emails: params[:recipient_emails],
+                                  audience: params[:recipient_audience])
     end
-    stances = create_stances(poll, actor, params[:recipient_user_ids], params[:recipient_emails], params[:recipient_audience])
+
+    stances = create_stances(poll: poll,
+                             actor: actor,
+                             user_ids: params[:recipient_user_ids],
+                             emails: params[:recipient_emails],
+                             audience: params[:recipient_audience])
+
     Events::PollAnnounced.publish!(poll, actor, stances)
     stances
   end

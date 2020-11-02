@@ -220,7 +220,7 @@ describe Event do
     end
 
     it 'notifies mentioned users and the author' do
-      expect { Events::OutcomeCreated.publish!(outcome) }.to change { emails_sent }.by(2) # mentioned user and the author
+      expect { Events::OutcomeCreated.publish!(outcome: outcome) }.to change { emails_sent }.by(2) # mentioned user and the author
       expect(Events::UserMentioned.last.custom_fields['user_ids']).to include user_mentioned.id
       recipients = ActionMailer::Base.deliveries.map(&:to).flatten
       expect(recipients).to include user_mentioned.email

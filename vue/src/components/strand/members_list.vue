@@ -101,6 +101,7 @@ export default
           ]
         chain = chain.find(userId: {$in: map(users, 'id')})
 
+      chain = chain.simplesort('id', true)
       @readers = chain.data()
       @readerUserIds = map(Records.discussionReaders.collection.find(discussionId: @discussion.id), 'userId')
 
