@@ -274,7 +274,7 @@ module Dev::NintiesMoviesHelper
     # discussion_edited
     create_discussion
     create_discussion.update(title: "another discussion title")
-    Events::DiscussionEdited.publish!(create_discussion, patrick)
+    Events::DiscussionEdited.publish!(discussion: create_discussion)
 
     # discussion_moved
     Events::DiscussionMoved.publish!(create_discussion, patrick, create_another_group)

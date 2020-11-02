@@ -29,10 +29,11 @@ export default
   data: ->
     query: ''
     suggestions: []
-    recipients: @initialRecipients
+    recipients: []
     loading: false
 
   mounted: ->
+    @recipients = @initialRecipients
     @fetchAndUpdateSuggestions()
 
   watch:
@@ -227,5 +228,5 @@ div
         v-icon.mr-1(v-else small) {{data.item.icon}}
       v-list-item-content.announcement-chip__content
         v-list-item-title {{data.item.name}}
-  //- recipients-notifications-count(:recipients="recipients")
+  //- recipients-notifications-count(:model="model")
 </template>

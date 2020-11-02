@@ -45,6 +45,7 @@ export default
             id: 'group'
             name: @$t('announcement.audiences.group', name: @discussion.group().name)
             size: @discussion.group().acceptedMembershipsCount
+            type: 'audience'
             icon: 'mdi-account-group'
           @initialRecipients = [g]
         else
@@ -109,7 +110,8 @@ export default
     v-select(v-if="!discussion.id" v-model="discussion.groupId" :items="groupItems" :label="$t('common.group')")
     //- p discussion.recipientAudience {{discussion.recipientAudience}}
     //- p initialRecipients {{initialRecipients}}
-    //- p recipients {{recipients}}
+    //- p userIds {{discussion.recipientUserIds}}
+    //- p emails {{discussion.recipientEmails}}
     //- p audiences {{audiences}}
     recipients-autocomplete(
       v-if="!discussion.id"
