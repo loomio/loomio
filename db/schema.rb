@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_28_010503) do
+ActiveRecord::Schema.define(version: 2020_11_02_180508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -621,6 +621,7 @@ ActiveRecord::Schema.define(version: 2020_10_28_010503) do
     t.integer "discarded_by"
     t.string "secret_token", default: -> { "gen_random_uuid()" }
     t.boolean "specified_voters_only", default: false, null: false
+    t.integer "notify_on_closing_soon", default: 0, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["discussion_id"], name: "index_polls_on_discussion_id"
     t.index ["group_id"], name: "index_polls_on_group_id"

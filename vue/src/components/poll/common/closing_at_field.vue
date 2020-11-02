@@ -1,6 +1,6 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
-import { format, formatDistance, parse, startOfHour, isValid, addDays } from 'date-fns'
+import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter } from 'date-fns'
 import { hoursOfDay, exact} from '@/shared/helpers/format_time'
 
 export default
@@ -27,6 +27,13 @@ export default
     label: ->
       return false unless @poll.closingAt
       formatDistance(@poll.closingAt, new Date, {addSuffix: true})
+
+    closingSoonItems: ->
+      'nobody author undecided voters'.split(' ').map (name) =>
+        {text: @$t("poll_common_settings.notify_on_closing_soon.#{name}"), value: name}
+
+    reminderEnabled: ->
+      !@poll.closingAt || isAfter(@poll.closingAt, addHours(new Date(), 24))
 
   watch:
     'poll.closingAt': (val) ->
@@ -56,6 +63,8 @@ div
         v-spacer
         v-select.poll-common-closing-at-field__timepicker(:disabled="!poll.closingAt" prepend-icon="mdi-clock-outline" v-model='closingHour' :label="$t('poll_meeting_time_field.closing_hour')" :items="times")
     validation-errors(:subject="poll", field="closingAt")
-    p.caption(v-if="poll.closingAt" v-t="'poll_common_form.reminder_note'")
+  .poll-common-notify-on-closing-soon
+    p(v-if="!reminderEnabled" v-t="{path: 'poll_common_settings.notify_on_closing_soon.closes_too_soon', args: {pollType: poll.translatedPollType()}}")
+    v-select(v-if="reminderEnabled" :disabled="!poll.closingAt" :label="$t('poll_common_settings.notify_on_closing_soon.title', {pollType: poll.translatedPollType()})" v-model="poll.notifyOnClosingSoon" :items="closingSoonItems")
 
 </template>

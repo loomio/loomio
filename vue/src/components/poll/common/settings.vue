@@ -9,7 +9,6 @@ export default
     settings:
       compact [
         ('multipleChoice'        if @poll.pollType == 'poll'),
-        'notifyOnParticipate',
         ('canRespondMaybe'       if @poll.pollType == 'meeting'),
         ('anonymous'             if !fieldFromTemplate(@poll.pollType, 'prevent_anonymous')),
         ('hideResultsUntilClosed' if !fieldFromTemplate(@poll.pollType, 'prevent_anonymous')),

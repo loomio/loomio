@@ -125,7 +125,6 @@ module Dev::PollsScenarioHelper
   def poll_stance_created_scenario(params)
     scenario = poll_created_scenario(params)
     voter    = saved(fake_user)
-    scenario[:poll].update(notify_on_participate: true)
     scenario[:poll].group.add_member!(voter)
     event = StanceService.create(stance: fake_stance(poll: scenario[:poll]), actor: voter)
     scenario[:stance] = event.eventable
@@ -138,7 +137,6 @@ module Dev::PollsScenarioHelper
   def poll_anonymous_scenario(params)
     scenario = poll_created_scenario(params)
     voter    = saved(fake_user)
-    scenario[:poll].update(notify_on_participate: true, anonymous: true)
     scenario[:poll].group.add_member!(voter)
     choices  =  [{poll_option_id: scenario[:poll].poll_option_ids[0]}]
     StanceService.create(stance: fake_stance(poll: scenario[:poll], stance_choices_attributes: choices), actor: voter)

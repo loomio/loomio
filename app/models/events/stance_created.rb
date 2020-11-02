@@ -33,13 +33,9 @@ class Events::StanceCreated < Event
     @notification_url ||= polymorphic_url(eventable.poll)
   end
 
-  def notification_recipients
-    if poll.notify_on_participate?
-      User.where(id: poll.author_id).where.not(id: eventable[:participant_id])
-    else
-      User.none
-    end
+  def email_recipients
+    Queries::UsersByVolumeQuery.loud(eventable.poll)
+                               .where.not(id: eventable.author)
+                               .where.not(id: eventable.mentioned_users).distinct
   end
-
-  alias :email_recipients :notification_recipients
 end

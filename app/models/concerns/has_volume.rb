@@ -2,7 +2,7 @@ module HasVolume
   extend ActiveSupport::Concern
 
   included do
-    enum volume: [:mute, :quiet, :normal, :loud]
+    enum volume: {mute: 0, quiet: 1, normal: 2, loud: 3}
     scope :volume,          ->(volume) { where(volume: volumes[volume]) }
     scope :volume_at_least, ->(volume) { where('volume >= ?', volumes[volume]) }
     scope :email_notifications, -> { where('volume >= ?', volumes[:normal]) }

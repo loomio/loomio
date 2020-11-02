@@ -1684,6 +1684,13 @@ en:
     anyone_can_participate:
       title: Anyone with link can participate
       helptext_on: When selected, anyone with the link to the poll can participate.
+    notify_on_closing_soon:
+      closes_too_soon: Because this {{pollType}} closes within 24 hours, no closing soon reminders will be sent.
+      title: 24 hours before {{pollType}} closes, send a reminder to
+      nobody: Nobody
+      author: Author (me)
+      undecided: Undecided voters
+      voters: All voters
     notify_on_participate:
       title: Notify me when people participate
       helptext_on: When selected, you will be notified whenever someone participates.
@@ -1801,7 +1808,6 @@ en:
     start_poll_type: Start {{poll_type}}
     share_poll_type: Share {{poll_type}}
     update: Update
-    reminder_note: 24 hours before closing, a reminder will be sent to all participants
     loomio_school_link: |
       <p>Find out more at <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio Help</a>.</p>
 

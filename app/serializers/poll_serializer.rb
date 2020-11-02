@@ -3,7 +3,7 @@ class PollSerializer < ApplicationSerializer
              :stance_data, :stance_counts, :matrix_counts, :anyone_can_participate, :voter_can_add_options,
              :closed_at, :closing_at, :stances_count, :participants_count, :undecided_count, :cast_stances_pct, :versions_count,
              :created_at, :multiple_choice, :custom_fields, :poll_option_names,
-             :notify_on_participate, :anonymous, :can_respond_maybe, :hide_results_until_closed,
+             :notify_on_closing_soon, :anonymous, :can_respond_maybe, :hide_results_until_closed,
              :attachments, :mentioned_usernames, :author_id, :stances_in_discussion, :specified_voters_only,
              :discarded_at, :discarded_by, :secret_token
 

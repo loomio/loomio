@@ -39,6 +39,7 @@ export default class PollModel extends BaseModel
     files: []
     imageFiles: []
     attachments: []
+    notifyOnClosingSoon: 'undecided'
     pleaseShowResults: false
     recipientMessage: null
     recipientAudience: null

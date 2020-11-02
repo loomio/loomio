@@ -378,7 +378,7 @@ module Dev::NintiesMoviesHelper
 
     #'stance_created'
     # notify patrick that someone has voted on his proposal
-    poll = FactoryBot.build(:poll, closing_at: 4.days.from_now, discussion: create_discussion, notify_on_participate: true, voter_can_add_options: true)
+    poll = FactoryBot.build(:poll, closing_at: 4.days.from_now, discussion: create_discussion, voter_can_add_options: true)
     PollService.create(poll: poll, actor: patrick)
     jennifer_stance = FactoryBot.build(:stance, poll: poll, choice: "agree")
     StanceService.create(stance: jennifer_stance, actor: jennifer)

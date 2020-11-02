@@ -139,11 +139,12 @@ export default class DiscussionModel extends BaseModel
   membership: ->
     @recordStore.memberships.find(userId: AppConfig.currentUserId, groupId: @groupId)[0]
 
-  membershipVolume: ->
-    @membership().volume if @membership()
-
+  # membershipVolume: ->
+  #   @membership().volume if @membership()
+  #
+  
   volume: ->
-    @discussionReaderVolume or @membershipVolume()
+    @discussionReaderVolume #or @membershipVolume()
 
   saveVolume: (volume, applyToAll = false) =>
     @processing = true

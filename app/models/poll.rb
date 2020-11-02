@@ -48,6 +48,7 @@ class Poll < ApplicationRecord
   belongs_to :discussion
   belongs_to :group, class_name: "Group"
 
+  enum notify_on_closing_soon: {nobody: 0, author: 1, undecided: 2, voters: 3}
 
   before_save :set_stances_in_discussion
   after_update :remove_poll_options
@@ -79,7 +80,7 @@ class Poll < ApplicationRecord
     {stances: [:stance_choices]})
   }
 
-  scope :closing_soon_not_published, ->(timeframe, recency_threshold = 2.days.ago) do
+  scope :closing_soon_not_published, ->(timeframe, recency_threshold = 24.hours.ago) do
      active
     .distinct
     .where(closing_at: timeframe)
@@ -104,9 +105,9 @@ class Poll < ApplicationRecord
 
   alias_method :user, :author
 
-  has_paper_trail only: [:autho_id, :title, :details, :details_format, :closing_at,
+  has_paper_trail only: [:author_id, :title, :details, :details_format, :closing_at,
     :group_id, :anonymous, :voter_can_add_options, :anyone_can_participate,
-    :notify_on_participate, :hide_results_until_closed]
+    :hide_results_until_closed]
 
   update_counter_cache :group, :polls_count
   update_counter_cache :group, :closed_polls_count

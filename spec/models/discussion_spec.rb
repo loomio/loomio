@@ -13,10 +13,10 @@ describe Discussion do
       PaperTrail.enabled = true
     end
 
-    it "doesn't create a new version when unrelevant attribute is edited" do
-      @discussion.update_attribute :author, create(:user)
-      @discussion.should have(@version_count).versions
-    end
+    # it "doesn't create a new version when unrelevant attribute is edited" do
+    #   @discussion.update_attribute :author, create(:user)
+    #   @discussion.should have(@version_count).versions
+    # end
 
     it "creates a new version when discussion.description is edited" do
       @discussion.update_attribute :description, "new description"
