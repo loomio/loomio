@@ -11,7 +11,6 @@ proposal:
   can_add_options:         true
   can_remove_options:      true
   must_have_options:       false
-  voters_review_responses: true
   require_stance_choices:  true
   can_vote_anonymously:    true
   single_choice:           true

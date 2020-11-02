@@ -12,17 +12,22 @@ class Events::PollClosingSoon < Event
 
   private
   def email_recipients
-    Queries::UsersByVolumeQuery.normal_or_loud(poll)
-                               .where('users.id': notification_recipients.pluck(:id))
+    Queries::UsersByVolumeQuery.email_notifications(poll)
+                               .where('users.id': raw_recipients.pluck(:id))
   end
 
   def notification_recipients
+    Queries::UsersByVolumeQuery.app_notifications(poll)
+                               .where('users.id': raw_recipients.pluck(:id))
+  end
+
+  def raw_recipients
     case poll.notify_on_closing_soon
-    when :author
+    when 'author'
       User.where(id: poll.author_id)
-    when :undecided
+    when 'undecided'
       poll.undecided
-    when :voters
+    when 'voters'
       poll.voters
     else
       User.none
