@@ -11,11 +11,11 @@ class Events::AnnouncementCreated < Event
           }.compact
   end
 
-  # def email_users!
-  #   memberships.each do |m|
-  #     GroupMailer.delay(queue: :notification_emails).group_announced(m.user_id, self.id)
-  #   end
-  # end
+  def email_users!
+    memberships.each do |m|
+      GroupMailer.delay(queue: :notification_emails).group_announced(m.user_id, self.id)
+    end
+  end
 
   def memberships
     @memberships ||= Membership.where(id: custom_fields['membership_ids'])

@@ -1,5 +1,6 @@
 import {each} from 'lodash'
 import Vue from 'vue'
+
 export default class NullGroupModel
   @singular: 'group'
   @plural: 'groups'
