@@ -10,6 +10,10 @@ class Events::PollClosingSoon < Event
           created_at: Time.now
   end
 
+  def notify_author?
+    eventable.notify_on_closing_soon == 'author'
+  end
+
   private
   def email_recipients
     Queries::UsersByVolumeQuery.email_notifications(poll)
@@ -22,13 +26,16 @@ class Events::PollClosingSoon < Event
   end
 
   def raw_recipients
+    # work around for anonymous
     case poll.notify_on_closing_soon
-    when 'author'
-      User.where(id: poll.author_id)
+    # when 'author'
+    #   User.where(id: poll.author_id)
     when 'undecided'
-      poll.undecided
+      # poll.undecided
+      User.where(id: poll.stances.latest.undecided.pluck(:participant_id))
     when 'voters'
-      poll.voters
+      # poll.voters
+      User.where(id: poll.stances.latest.pluck(:participant_id))
     else
       User.none
     end

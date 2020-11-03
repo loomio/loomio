@@ -126,6 +126,8 @@ module Dev::PollsScenarioHelper
     scenario = poll_created_scenario(params)
     voter    = saved(fake_user)
     scenario[:poll].group.add_member!(voter)
+    Stance.where(poll_id: scenario[:poll].id,
+                 participant_id: scenario[:poll].author_id).update(volume: 'loud')
     event = StanceService.create(stance: fake_stance(poll: scenario[:poll]), actor: voter)
     scenario[:stance] = event.eventable
     scenario[:actor] = event.eventable.participant
@@ -157,9 +159,12 @@ module Dev::PollsScenarioHelper
                                                      hide_results_until_closed: !!params[:hide_results_until_closed],
                                                      discussion: discussion,
                                                      wip: params[:wip],
+                                                     notify_on_closing_soon: params[:notify_on_closing_soon] || 'voters',
+                                                     created_at: 6.days.ago,
                                                      closing_at: 1.day.from_now))
 
     PollService.create(poll: poll, actor: actor)
+    # Stance.create(poll: poll, participant: non_voter)
     PollService.announce(poll: poll, params: {recipient_user_ids: [non_voter.id]}, actor: actor)
 
     PollService.publish_closing_soon
@@ -175,6 +180,7 @@ module Dev::PollsScenarioHelper
   end
 
   def poll_closing_soon_author_scenario(params)
+    params[:notify_on_closing_soon] = 'author'
     scenario = poll_closing_soon_scenario(params)
     scenario.merge(observer: scenario[:poll].author)
   end
@@ -240,8 +246,7 @@ module Dev::PollsScenarioHelper
                                                closing_at: 1.day.ago)
     outcome    = fake_outcome(poll: poll)
 
-    OutcomeService.create(outcome: outcome, actor: actor)
-    OutcomeService.announce(outcome: outcome, params: {recipient_emails: [observer.email]}, actor: actor)
+    OutcomeService.create(outcome: outcome, actor: actor, params: {recipient_emails: [observer.email]})
 
     { discussion: discussion,
       group: discussion.group,
