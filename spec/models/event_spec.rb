@@ -12,10 +12,10 @@ describe Event do
   let(:user_membership_normal) { create :user, {name: 'membership loud'}.merge(all_emails_disabled)  }
   let(:user_membership_quiet) { create :user, {name: 'membership loud'}.merge(all_emails_disabled)  }
   let(:user_membership_mute) { create :user, {name: 'membership loud'}.merge(all_emails_disabled)  }
-  let(:user_motion_closing_soon) { create :user, all_emails_disabled.merge(email_when_proposal_closing_soon: true) }
+  let(:user_motion_closing_soon) { create :user, all_emails_disabled.merge(name: 'motion closing sooon', email_when_proposal_closing_soon: true) }
   let(:user_mentioned) { create :user, name: 'mentioned' }
   let(:user_mentioned_text) { "Hello @#{user_mentioned.username}" }
-  let(:user_unsubscribed) { create :user }
+  let(:user_unsubscribed) { create :user, name: 'user unsubscribed' }
 
   let(:author) { create :user }
   let(:discussion) { create :discussion, description: user_mentioned_text, author: author }
@@ -23,7 +23,6 @@ describe Event do
   let(:parent_comment) { create :comment, discussion: discussion}
   let(:comment) { create :comment, parent: parent_comment, discussion: discussion, body: 'hey @sam' }
   let(:poll) { create :poll, discussion: discussion, details: user_mentioned_text, author: author }
-  let(:outcome) { create :outcome, poll: poll, statement: user_mentioned_text, author: author }
   let!(:markdown_webhook) { create(:webhook, group: discussion.group, format: 'markdown') }
   let!(:slack_webhook) { create(:webhook, group: discussion.group, format: 'slack') }
   let!(:microsoft_webhook) { create(:webhook, group: discussion.group, format: 'microsoft') }
@@ -115,6 +114,30 @@ describe Event do
       expect { Events::NewDiscussion.publish!(discussion: discussion) }.to change { emails_sent }.by(1) # (the mentioned user)
       expect(Events::UserMentioned.last.custom_fields['user_ids']).to include user_mentioned.id
     end
+
+    # we need to do entirely new setup for this and poll cases, but they work
+    # it 'notifies users' do
+    #   DiscussionReader.delete_all
+    #   discussion.description = ''
+    #
+    #   discussion.group.memberships.where(user_id: [user_thread_normal, user_thread_loud]).update_all(volume: 1)
+    #
+    #   expect { e = Events::NewDiscussion.publish!(discussion: discussion,
+    #                                               recipient_user_ids: [user_thread_normal.id, user_thread_quiet.id]) }.to change { emails_sent }.by(1) # (the mentioned user)
+    #
+    #
+    #   expect(DiscussionReader.where(discussion_id: discussion.id).count).to eq 2
+    #
+    #   byebug
+    #   email_users = Events::NewDiscussion.last.send(:email_recipients)
+    #   expect(email_users.length).to eq 1
+    #   expect(email_users).to include user_thread_normal
+    #
+    #   notify_users = Events::NewDiscussion.last.send(:notification_recipients)
+    #   expect(notify_users.length).to eq 2
+    #   expect(notify_users).to include user_thread_normal
+    #   expect(notify_users).to include user_thread_quiet
+    # end
   end
 
   describe 'poll_created' do
@@ -228,6 +251,8 @@ describe Event do
     end
   end
 
+  let(:outcome) { create :outcome, poll: poll, statement: user_mentioned_text, author: author }
+
   describe 'outcome_created' do
     let(:poll_meeting) { create :poll_meeting, discussion: discussion }
 
@@ -236,7 +261,8 @@ describe Event do
     end
 
     it 'notifies mentioned users and the author' do
-      expect { Events::OutcomeCreated.publish!(outcome: outcome) }.to change { emails_sent }.by(2) # mentioned user and the author
+      expect { Events::OutcomeCreated.publish!(outcome: outcome,
+                                               recipient_user_ids: [outcome.author.id]) }.to change { emails_sent }.by(2) # mentioned user and the author
       expect(Events::UserMentioned.last.custom_fields['user_ids']).to include user_mentioned.id
       recipients = ActionMailer::Base.deliveries.map(&:to).flatten
       expect(recipients).to include user_mentioned.email
@@ -247,34 +273,30 @@ describe Event do
   describe 'stance_created' do
     let(:stance) { create :stance, poll: poll }
 
-    it 'notifies the author if notify_on_participate' do
-      poll.update(notify_on_participate: true)
+    it 'notifies the author if her volume is loud' do
+      poll.stances.create(participant: poll.author, volume: 'loud')
       expect { Events::StanceCreated.publish!(stance) }.to change { emails_sent }
+
       email_users = Events::StanceCreated.last.send(:email_recipients)
-      expect(email_users.length).to eq 1
+      expect(email_users.length).to eq 3
       expect(email_users).to include poll.author
-
-      notification_users = Events::StanceCreated.last.send(:notification_recipients)
-      expect(notification_users.length).to eq 1
-      expect(notification_users).to include poll.author
+      expect(email_users).to include user_thread_loud
+      expect(email_users).to include user_membership_loud
     end
 
-    it 'does not notify the author of her own stance' do
-      poll.update(notify_on_participate: true)
-      stance.update(participant: poll.author)
-      expect { Events::StanceCreated.publish!(stance) }.to_not change { emails_sent }
-      expect(Events::StanceCreated.last.send(:email_recipients)).to be_empty
-      expect(Events::StanceCreated.last.send(:notification_recipients)).to be_empty
-    end
+    it 'does not notify the author her voume is normal' do
+      stance = poll.stances.create(participant: poll.author, volume: 'normal')
+      expect { Events::StanceCreated.publish!(stance) }.to change { emails_sent }
 
-    it 'does not notify the author if not notify_on_participate' do
-      expect { Events::StanceCreated.publish!(stance) }.to_not change { emails_sent }
-      expect(Events::StanceCreated.last.send(:email_recipients)).to be_empty
-      expect(Events::StanceCreated.last.send(:notification_recipients)).to be_empty
+      email_users = Events::StanceCreated.last.send(:email_recipients)
+      expect(email_users.length).to eq 2
+      expect(email_users).to include user_thread_loud
+      expect(email_users).to include user_membership_loud
     end
 
     it 'does not notify deactivated users' do
-      poll.author.update(deactivated_at: 1.day.ago)
+      [user_thread_loud, user_membership_loud].each {|u| u.update(deactivated_at: Time.now) }
+      stance = poll.stances.create(participant: poll.author, volume: 'normal')
       expect { Events::StanceCreated.publish!(stance) }.to_not change { emails_sent }
       email_users = Events::StanceCreated.last.send(:email_recipients)
       expect(email_users).to be_empty
@@ -290,19 +312,15 @@ describe Event do
       Stance.create(participant: user, poll: poll)
     end
 
-    it 'does not email people with thread quiet' do
+    it 'does not email people with stance volume quiet' do
+      stance = Stance.create(participant: user_thread_normal, poll: poll, volume: :quiet)
       expect {
-        Events::PollAnnounced.publish!(poll, poll.author, [stance_for(user_thread_quiet)])
-      }.to_not change { emails_sent }
-    end
-
-    it 'does not email people with group quiet' do
-      expect {
-        Events::PollAnnounced.publish!(poll, poll.author, [stance_for(user_membership_quiet)])
+        Events::PollAnnounced.publish!(poll, poll.author, [stance])
       }.to_not change { emails_sent }
     end
 
     it 'sends invitations' do
+      stance = Stance.create(participant: user_thread_normal, poll: poll)
       expect {
         Events::PollAnnounced.publish!(poll, poll.author, [stance_for(user_thread_normal)])
       }.to change { emails_sent }.by(1)
@@ -310,14 +328,14 @@ describe Event do
 
     it 'notifies the author if the eventable is an appropriate outcome' do
       expect {
-        Events::OutcomeAnnounced.publish!(outcome, poll.author, [user_thread_normal])
-      }.to change { emails_sent }.by(1)
+        Events::OutcomeCreated.publish!(outcome:outcome, recipient_user_ids: [poll.author.id, user_thread_normal.id])
+      }.to change { emails_sent }.by(2)
     end
 
     it 'can send an ical attachment with an outcome' do
       outcome.update(poll: poll_meeting, calendar_invite: "SOME_EVENT_INFO")
       expect {
-        Events::OutcomeAnnounced.publish!(outcome, poll.author, [user_thread_normal])
+        Events::OutcomeCreated.publish!(outcome: outcome, recipient_user_ids: [poll.author.id, user_thread_normal.id])
       }.to change { emails_sent }
       mail = ActionMailer::Base.deliveries.last
       expect(mail.attachments).to have(1).attachment

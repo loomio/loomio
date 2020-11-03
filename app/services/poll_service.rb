@@ -52,6 +52,13 @@ class PollService
       volumes[m.user_id] = m.volume
     end
 
+    if poll.discussion_id
+      DiscussionReader.where(discussion_id: poll.discussion_id,
+                             user_id: users.pluck(:id)).find_each do |dr|
+        volumes[dr.user_id] = dr.volume
+      end
+    end
+
     new_stances = users.where.not(id: poll.voter_ids).map do |user|
       Stance.new(participant: user,
                  poll: poll,

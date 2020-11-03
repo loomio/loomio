@@ -233,6 +233,6 @@ class Event < ApplicationRecord
   end
 
   def all_recipient_user_ids
-    (recipient_user_ids || []).uniq.compact.without(actor_id)
+    (recipient_user_ids || []).uniq.compact #.without(actor_id)
   end
 end
