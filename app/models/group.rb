@@ -142,6 +142,34 @@ class Group < ApplicationRecord
     content_type: { content_type: /\Aimage/ },
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
+  has_paper_trail only: [:name,
+                         :parent_id,
+                         :description,
+                         :description_format,
+                         :handle,
+                         :archived_at,
+                         :parent_members_can_see_discussions,
+                         :key,
+                         :is_visible_to_public,
+                         :is_visible_to_parent_members,
+                         :discussion_privacy_options,
+                         :members_can_add_members,
+                         :membership_granted_upon,
+                         :members_can_edit_discussions,
+                         :motions_can_be_edited,
+                         :members_can_edit_comments,
+                         :members_can_raise_motions,
+                         :members_can_vote,
+                         :members_can_start_discussions,
+                         :members_can_create_subgroups,
+                         :creator_id,
+                         :subscription_id,
+                         :members_can_announce,
+                         :new_threads_max_depth,
+                         :new_threads_newest_first,
+                         :admins_can_edit_user_content,
+                         :listed_in_explore]
+
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
   before_validation :ensure_handle_is_not_empty
 

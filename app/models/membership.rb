@@ -39,6 +39,7 @@ class Membership < ApplicationRecord
   scope :for_group, lambda {|group| where(group_id: group)}
   scope :admin, -> { where(admin: true) }
 
+  has_paper_trail only: [:group_id, :user_id, :inviter_id, :admin, :title, :archived_at, :volume, :accepted_at]
   delegate :name, :email, to: :user, prefix: :user, allow_nil: true
   delegate :parent, to: :group, prefix: :group, allow_nil: true
   delegate :name, :full_name, to: :group, prefix: :group

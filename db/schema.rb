@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_02_180508) do
+ActiveRecord::Schema.define(version: 2020_11_03_211402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -289,6 +289,7 @@ ActiveRecord::Schema.define(version: 2020_11_02_180508) do
     t.boolean "pinned", default: false, null: false
     t.string "position_key"
     t.integer "descendant_count", default: 0, null: false
+    t.integer "eventable_version_id"
     t.index ["created_at"], name: "index_events_on_created_at"
     t.index ["discussion_id", "sequence_id"], name: "index_events_on_discussion_id_and_sequence_id", unique: true
     t.index ["discussion_id"], name: "index_events_on_discussion_id"

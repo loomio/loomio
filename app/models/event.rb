@@ -74,7 +74,8 @@ class Event < ApplicationRecord
   def self.build(eventable, **args)
     new({
       kind:       name.demodulize.underscore,
-      eventable:  eventable
+      eventable:  eventable,
+      eventable_version_id: ((eventable.respond_to?(:versions) && eventable.versions.last.id) || nil)
     }.merge(args))
   end
 
