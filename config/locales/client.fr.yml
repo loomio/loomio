@@ -240,8 +240,8 @@ fr:
     email_taken: Désolé, l'adresse email que vous avez fournie correspond à celle d'un utilisateur existant. Est-ce votre adresse email ?
     find_out_more: En savoir plus
     placeholder_modal_text: |
-        Si vous souhaitez fusionner deux comptes,  saisissez simplement l'adresse email du second compte dans le champ email de votre page de profil et suivez les instructions.
-        Besoin d'aide ? Contactez-nous.
+        <p>Si vous souhaitez fusionner deux comptes ensemble, entrez simplement l'adresse e-mail respective (appartenant à l'autre compte) dans le champ de courriel de votre page de profil et suivez les instructions qui s'affichent.</p>
+        <p>Besoin d'aide? <a href="/contact" target="_blank">Nous contacter</a>.
   emoji_picker:
     search: Rechercher
     common: Fréquemment utilisé
@@ -810,7 +810,7 @@ fr:
     no_threads_here: Pas de discussions à afficher ici !
     search_threads: Rechercher des discussions…
     private_threads: Vous devez être membre du groupe pour voir des discussions privées de ce groupe
-    no_more_threads: Aucune discussion supplémentaire à charger
+    no_more_threads: Aucune discussions supplémentaire à charger
     view_closed_threads: 'Vous avez perdu quelquechose ? <a href="{{url}}">Visualisez les discussions fermées</a>'
     messages:
       privacy:
@@ -915,8 +915,8 @@ fr:
       private_to_parent_members: 'Le nom et la description ne seront visibles que par les membres du groupe {{parent}}.'
     privacy: 'Confidentialité'
     group_privacy_is_open_description: "N'importe qui peut trouver ce groupe et demander à le rejoindre. Toutes les discussions sont publiques."
-    group_privacy_is_closed_description: "Le groupe n'est pas indéxé dans la liste des groupes. Toute personne qui possède un lien vers le groupe peut le rejoindre. Toutes les discussions sont privées."
-    group_privacy_is_closed_public_threads_description: "Le groupe n'est pas indéxé dans la liste des groupes. Toute personne qui possède un lien vers le groupe peut le rejoindre. Toutes les discussions sont oubliques ou privées."
+    group_privacy_is_closed_description: "Le groupe n'est pas indexé dans la liste des groupes. Toute personne qui possède un lien vers le groupe peut le rejoindre. Toutes les discussions sont privées."
+    group_privacy_is_closed_public_threads_description: "Le groupe n'est pas indexé dans la liste des groupes. Toute personne qui possède un lien vers le groupe peut le rejoindre. Les discussions peuvent être publiques ou privées."
     group_privacy_is_secret_description: "Seuls les personnes invitées peuvent trouver le groupe. Toutes les discussions sont privées."
     confirm_change_to_secret: "Si vous confirmez, toutes les discussions dans ce groupe et ses sous-groupes seront rendues privées."
     confirm_change_to_secret_subgroup: 'Si vous confirmez, toutes les discussions seront rendues privées.'
@@ -950,7 +950,7 @@ fr:
     members_can_start_discussions: 'Les membres peuvent créer une nouvelle discussion.'
     members_can_vote: 'Les membres peuvent voter sur les décisions.'
     members_can_raise_motions: 'Les membres peuvent créer une nouvelle proposition.'
-    admins_can_edit_user_content: "Les administrateurs peuvent éditer les commentaires et les sondages des autres utilisateurs."
+    admins_can_edit_user_content: "Les administrateurs peuvent modifier les commentaires et les sondages des autres utilisateurs."
     submit_start_group: 'Créer un groupe'
     submit_start_subgroup: 'Créer un sous-groupe'
     submit_update: 'Mettre à jour les paramètres'
@@ -1820,6 +1820,7 @@ fr:
       outcome_created: "{{actor}} a partagé un résultat. {{when}}"
       poll_expired: "{{pollType}} fermé. {{when}}"
     removed: "Elément supprimé"
+    deleted_group: "Groupe supprimé"
     comment_replied_to: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>en réponse à <strong>{{title}}</strong>"
     discussion_title_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>a édité le titre de la discussion"
     discussion_context_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>a édité le contexte de la discussion "
@@ -1977,6 +1978,10 @@ fr:
     validation_error: Merci de remplir tous les champs obligatoires.
     success: Merci!
     categories:
+      member: Organisations de services aux membres (par exemple, partis, coopératives, syndicats)
+      nonprofit: Organisations à but non lucratif, ONG et groupes communautaires
+      professional: Équipes et entreprises de services professionnels
+      board: Conseils et comités
       government: Gouvernement ou collectivités locales
       other: Autre
     sizes:
@@ -2018,4 +2023,5 @@ fr:
     role: "Quel est votre rôle au sein du groupe ?"
     website: "URL du site internet"
     usage: "Comment planifiez-vous d'utiliser Loomio ? Choisissez la meilleure réponse"
+    desired_feature: "Quelle est la principale raison pour laquelle vous souhaitez utiliser Loomio ?"
     referrer: "Comment avez-vous entendu parler de Loomio ?"

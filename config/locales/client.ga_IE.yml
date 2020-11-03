@@ -1,6 +1,11 @@
 ga_IE:
   plan_names:
     free: Saor in aisce
+    small: Beag
+    medium: Meánach
+    large: Mór
+    monthly: Go míosúil
+    yearly: Go bliantúil
   current_plan_button:
     upgrade: Uasghrádaigh
   subscription_status:
@@ -129,6 +134,12 @@ ga_IE:
       label: 'Formáidiú'
   emoji_picker:
     search: Cuardaigh
+    expressions: Aghaidheanna
+    hands: Lámha
+    people: Daoine
+    nature: An Dúlra
+    objects: Rudaí
+    places: Áiteanna
   error_page:
     forbidden: 'Níl cead agat é sin a dhéanamh.'
     page_not_found: 'Theip orainn sin a aimsiú. B''fhéidir gur scriosadh é nó bogadh é.'
@@ -223,8 +234,13 @@ ga_IE:
       comments: 'Tráchtanna'
     sign_in: 'Sínigh isteach'
     logo_title: 'An clár cinn'
+  user_dropdown:
+    help: 'Cabhair'
   membership_dropdown:
     cancel_invitation: 'Cealaigh an cuireadh '
+  notification_models:
+    poll: 'cinneadh:'
+    outcome: 'toradh:'
   notifications:
     header: "Fógraí"
     no_notifications: "Níl aon fhógra agat"
@@ -399,6 +415,7 @@ ga_IE:
     short_bio_label: 'Réamhrá'
     locale_label: 'Teanga'
     locale_placeholder: Roghnaigh an teanga is mian leat
+    location_label: 'Suíomh'
     update_profile: 'Nuashonraigh an bheathaisnéisín'
   change_picture_form:
     use_gravatar: 'Bain feidhm as Gravatar'
@@ -510,6 +527,8 @@ ga_IE:
     poll_title: Vótáil
   poll_common:
     have_your_say: Abair leat
+    message: Teachtaireacht
+    details: Mionsonraí
     save_changes: Taisc
   poll_common_attachment_form:
     label: Ceangaltáin
@@ -530,35 +549,74 @@ ga_IE:
     start_poll: Cinneadh nua
   poll_common_notify_group:
     notify_group: Fógra
+  poll_common_calendar_invite:
+    event_duration: Fad
+    event_summary: Ainm an chruinnithe
+    location: Suíomh
   poll_common_close_form:
     close_proposal: Dún an togra
+  poll_common_closing_at_field:
+    closing: Ag dúnadh
   poll_common_form:
+    title: Teideal
+    details: Mionsonraí
+    options: Roghanna
+    options_placeholder: Sonraigh na roghanna atá ar fáil
+    no_options: Níor chuir tú aon roghanna leis fós.
+    closing: Ag dúnadh
     closed: Dúnta
     start: Tosaigh
+    start_poll_type: Tosaigh {{poll_type}}
+    share_poll_type: Comhroinn {{poll_type}}
+    update: Nuashonraigh é
   poll_ranked_choice_form:
+    no_options: "Níor chuir tú aon roghanna leis fós."
     rank: Rangaigh
   poll_count_options:
     'no': 'Ná cealaigh é'
+  poll_count_vote_form:
+    reason_label: Teachtaireacht
   poll_meeting_chart_panel:
     total: Iomlán
   poll_common_subscribe_form:
     subscribe: Liostáil
+    no_thanks: Níor mhaith liom é
   auth_form:
+    code: '000000'
+    continue: Lean ar aghaidh
+    create_account: Cruthaigh cuntas
+    enter_your_name: Cuir isteach d'ainm
     more_providers: Tusa
     email_not_present: Tá seoladh ríomhphoist de dhíth
     email_placeholder: tusa@suíomh.com
     name_placeholder: D'ainm
     name_required: Cuir isteach ainm
+    welcome_back: Fáilte ar ais, a {{name}}!
     hello: "Hóra a {{name}}!"
     name: Ainm
     email: Seoladh ríomhphoist
     password: Focal faire
   webhook:
+    formats:
+      microsoft: Microsoft Teams
+      slack: Slack
     name_label: Ainm
+  configure_sso:
+    idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
   group_survey:
+    success: Go raibh maith agat!
     categories:
       other: Eile
+    sizes:
+      ten: "< 10"
+      twenty: "11 - 20"
+      fifty: "21 - 50"
+      two_hundred: "51 - 200"
+      five_hundred: "201 - 500"
+      two_thousand: "501 - 2000"
+      else: "> 2000"
     uses:
       other: Eile
     referrers:
       other: Eile
+    referrer: "Cén chaoi a chuir tú eolas ar Loomio?"
