@@ -10,7 +10,12 @@ module Dev::Scenarios::Auth
 
   def setup_invitation_email_to_user_with_password
     group = create_group
+    another_group = saved fake_group
     user = saved fake_user(password: nil)
+    another_group.add_member! user
+    another_group.add_member! group.creator
+    user.reload
+    group.creator.reload
     params = {recipient_user_ids: [user.id], message: "click accept,
     please
     thanks" }
