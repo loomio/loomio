@@ -15,6 +15,17 @@ class API::AnnouncementsController < API::RestfulController
     end
   end
 
+  # untested spike
+  # def size
+  #   current_user.ability.authorize! :announce, target_model
+  #   audience_ids = service.audience_users(target_model, params[:recipient_audience]).pluck(:id)
+  #   user_ids = Array(params[:recipient_user_ids]).map(&:to_i)
+  #   emails = Array(params[:recipient_emails])
+  #   count = User.where(id: audience_ids.concat(user_ids).uniq.compact).
+  #                where.not(email: emails).active.count + emails.uniq.compact.size
+  #   render json: {count: count}
+  # end
+
   def create
     current_user.ability.authorize! :announce, target_model
 
