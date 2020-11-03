@@ -765,6 +765,7 @@ en:
     move_item: Move item
     add_poll_to_thread: Add to thread
     count_members: "{{count}} members"
+    count_voters: "{{count}} voters"
 
   formatting:
     formatting_tools: Text formatting tools
