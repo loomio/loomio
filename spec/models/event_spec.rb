@@ -210,24 +210,19 @@ describe Event do
       end
 
       it 'notify_on_closing_soon = author' do
-        # a loud user participates, so they dont get a closing soon announcement
         poll.update(notify_on_closing_soon: 'author')
-        expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
-
-        notified_users = Events::PollClosingSoon.last.send(:notification_recipients)
-        notified_users.should include poll.author
-        expect(notified_users.count).to eq 1
+        expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }.by(1)
+        expect(Events::PollClosingSoon.last.send(:notify_author?)).to be true
       end
 
       it 'notify_on_closing_soon = nobody' do
-        # a loud user participates, so they dont get a closing soon announcement
         poll.update(notify_on_closing_soon: 'nobody')
         stances = [
           create(:stance, poll: poll, cast_at: Time.now, choice: poll.poll_options.first.name, participant: user_thread_loud),
           create(:stance, poll: poll, participant: user_thread_normal)
         ]
 
-        expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
+        expect { Events::PollClosingSoon.publish!(poll) }.to_not change { emails_sent }
 
         notified_users = Events::PollClosingSoon.last.send(:notification_recipients)
         expect(notified_users.count).to eq 0

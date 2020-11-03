@@ -80,7 +80,7 @@ describe API::OutcomesController do
   end
 
   describe 'update' do
-    it 'creates a new outcome in place of an existing one' do
+    it 'updates an outcome' do
       sign_in user
       outcome
       outcome_params[:statement] = "updated"

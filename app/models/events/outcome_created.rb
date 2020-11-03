@@ -8,6 +8,7 @@ class Events::OutcomeCreated < Event
   def self.publish!(outcome:, recipient_user_ids: [], recipient_audience: nil)
     super(outcome,
           user: outcome.author,
+          discussion: outcome.poll.stances_in_discussion ? outcome.poll.discussion : nil,
           recipient_user_ids: recipient_user_ids,
           recipient_audience: recipient_audience)
   end

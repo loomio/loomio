@@ -260,45 +260,45 @@ describe API::AnnouncementsController do
       end
     end
 
-    describe 'outcome' do
-      let(:group)   { create :group }
-      let(:poll)    { create :poll, author: user, closed_at: 1.day.ago }
-      let(:outcome) { create :outcome, author: user, poll: poll }
-
-      before do
-        group.add_member! notified_user
-        group.add_member! user
-      end
-
-      it 'does not permit non author to announce' do
-        sign_in create(:user)
-        post :create, params: {outcome_id: outcome.id, recipient_user_ids: [notified_user.id]}
-        expect(response.status).to eq 403
-      end
-
-      it 'notify exising user' do
-        post :create, params: {outcome_id: outcome.id, recipient_user_ids: [notified_user.id]}
-        expect(response.status).to eq 200
-        expect(notified_user.notifications.count).to eq 1
-        # can send an outcome email but does not grant any privileges
-      end
-
-      it 'notify new user by email' do
-        post :create, params: {outcome_id: outcome.id, recipient_emails: ['jim@example.com']}
-        expect(response.status).to eq 200
-        email_user = User.find_by(email: "jim@example.com")
-        expect(email_user.notifications.count).to eq 1
-        expect(email_user.email_verified).to be false
-        # TODO should test that an email was sent
-      end
-
-      it 'notify existing user by email' do
-        post :create, params: {outcome_id: outcome.id, recipient_emails: [notified_user.email]}
-        expect(response.status).to eq 200
-        expect(User.where(email: notified_user.email).count).to eq 1
-        # TODO should test that an email was sent
-      end
-    end
+    # describe 'outcome' do
+    #   let(:group)   { create :group }
+    #   let(:poll)    { create :poll, author: user, closed_at: 1.day.ago }
+    #   let(:outcome) { create :outcome, author: user, poll: poll }
+    #
+    #   before do
+    #     group.add_member! notified_user
+    #     group.add_member! user
+    #   end
+    #
+    #   it 'does not permit non author to announce' do
+    #     sign_in create(:user)
+    #     post :create, params: {outcome_id: outcome.id, recipient_user_ids: [notified_user.id]}
+    #     expect(response.status).to eq 403
+    #   end
+    #
+    #   it 'notify exising user' do
+    #     post :create, params: {outcome_id: outcome.id, recipient_user_ids: [notified_user.id]}
+    #     expect(response.status).to eq 200
+    #     expect(notified_user.notifications.count).to eq 1
+    #     # can send an outcome email but does not grant any privileges
+    #   end
+    #
+    #   it 'notify new user by email' do
+    #     post :create, params: {outcome_id: outcome.id, recipient_emails: ['jim@example.com']}
+    #     expect(response.status).to eq 200
+    #     email_user = User.find_by(email: "jim@example.com")
+    #     expect(email_user.notifications.count).to eq 1
+    #     expect(email_user.email_verified).to be false
+    #     # TODO should test that an email was sent
+    #   end
+    #
+    #   it 'notify existing user by email' do
+    #     post :create, params: {outcome_id: outcome.id, recipient_emails: [notified_user.email]}
+    #     expect(response.status).to eq 200
+    #     expect(User.where(email: notified_user.email).count).to eq 1
+    #     # TODO should test that an email was sent
+    #   end
+    # end
 
     describe 'group' do
       let(:group) { create :group, creator: user}
