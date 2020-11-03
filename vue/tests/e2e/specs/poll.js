@@ -282,8 +282,8 @@ module.exports = {
 
     page.click('.poll-common-outcome-form__submit')
     page.expectFlash('Outcome created')
-    page.click('.dismiss-modal-button')
-    page.expectText('.poll-common-outcome-panel .lmo-markdown-wrapper', 'Here is a statement')
+    // page.click('.dismiss-modal-button')
+    // page.expectText('.poll-common-outcome-panel .lmo-markdown-wrapper', 'Here is a statement')
   },
 
   'can_add_an_option': (test) => {
