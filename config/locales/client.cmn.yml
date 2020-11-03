@@ -927,6 +927,7 @@ cmn:
       success: 话题已被移动到 {{name}}
   delete_comment_dialog:
     title: '删除意见'
+    question: '你确定你想要删除这条意见吗？'
     confirm: '删除意见'
   contact_message_form:
     subject_label: "主题"
@@ -961,6 +962,7 @@ cmn:
     order_by_created_desc: '最新'
     header_name: '名字'
     header_username: '用户名'
+    accepted: '成员 ({{count}})'
   polls_panel:
     open: '开放'
     closed: '已关闭'

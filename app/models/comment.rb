@@ -31,7 +31,7 @@ class Comment < ApplicationRecord
 
   default_scope { includes(:user).includes(:documents) }
 
-  scope :in_organisation, ->(group) { includes(:user, :discussion).joins(:discussion).where("discussions.group_id": group.id) }
+  scope :in_organisation, ->(group) { includes(:user, :discussion).joins(:discussion).where("discussions.group_id": group.id_and_subgroup_ids) }
 
   delegate :name, to: :user, prefix: :user
   delegate :name, to: :user, prefix: :author

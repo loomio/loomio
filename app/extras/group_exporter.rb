@@ -7,7 +7,8 @@ class GroupExporter
     discussions:   %w[id group_id author_id author_name title description created_at],
     comments:      %w[id group_id discussion_id author_id title author_name body created_at],
     polls:         %w[id key discussion_id group_id author_id title details closing_at closed_at created_at poll_type multiple_choice custom_fields],
-    stances:       %w[id poll_id participant_id reason latest created_at updated_at]
+    stances:       %w[id poll_id participant_id reason latest created_at updated_at],
+    outcomes:      %w[id poll_id author_id statement created_at updated_at]
   }.freeze
 
   EXPORT_MODELS.keys.each do |model|

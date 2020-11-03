@@ -166,6 +166,7 @@ be_BY:
     order_by_name: 'Імя'
     header_name: 'Імя'
     header_username: 'Імя карыстальніка'
+    accepted: 'Удзельнікі'
   polls_panel:
     all: 'Усе'
     closed: 'Закрыта'
@@ -180,7 +181,6 @@ be_BY:
     name_label: Імя
   group_survey:
     categories:
-      business: Бізнес
       other: Іншы
     uses:
       other: Іншы

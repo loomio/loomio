@@ -128,6 +128,7 @@ gl:
     order_by_name: 'Nome'
     header_name: 'Nome'
     header_username: 'Usuario'
+    accepted: 'Membros'
   polls_panel:
     all: 'Todo'
     closed: 'Pechado'
@@ -142,7 +143,6 @@ gl:
     name_label: Nome
   group_survey:
     categories:
-      business: Negocio
       other: Outro
     uses:
       other: Outro

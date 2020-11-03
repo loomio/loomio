@@ -205,6 +205,7 @@ mi:
   members_panel:
     order_by_name: 'Ingoa'
     header_name: 'Ingoa'
+    accepted: 'Ngā Mema'
   polls_panel:
     open: 'E huaki ana'
     closed: 'Kua kati'

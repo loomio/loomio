@@ -642,6 +642,7 @@ ar:
     header_username: 'إسم المستخدم'
     invitations: 'الدعوات'
     admin: 'مسؤل '
+    accepted: 'أعضاء'
   polls_panel:
     all: 'الكل'
     open: 'مفتوحة'
@@ -685,19 +686,7 @@ ar:
     privacy_policy: سياسة الخصوصية
   group_survey:
     categories:
-      business: أعمال
-      bcorp: ب- كورب أو مؤسسة اجتماعية
-      cooperative: 'تعاوني '
-      consultant: خدمات أو وكالة استشارية
       government: الحكومة / الحكومة المحلية
-      nonprofit: غير ربحية
-      union: 'اتحاد '
-      party: 'حزب سياسي '
-      activist: منظمة ناشطة
-      community: مجتمع أو جماعي
-      education: التعليم أو البحث
-      faith: الإيمان أو المجموعة الروحية
-      volunteer: 'منظمة طوعية '
       other: اخر
     sizes:
       ten: "<10"

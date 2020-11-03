@@ -101,6 +101,7 @@ ml:
   members_panel:
     order_by_name: 'പേരു്'
     header_name: 'പേരു്'
+    accepted: 'അംഗങ്ങള്‍'
   polls_panel:
     closed: 'അടച്ചു'
   poll_common_form:

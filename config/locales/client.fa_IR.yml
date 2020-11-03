@@ -179,6 +179,8 @@ fa_IR:
   discussions_panel:
     open: باز
     closed: بسته
+  members_panel:
+    accepted: 'اعضا'
   polls_panel:
     open: 'باز'
     closed: 'بسته'

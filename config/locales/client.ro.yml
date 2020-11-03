@@ -163,6 +163,7 @@ ro:
       update: 'Actualizeaza'
       cancel: 'Anuleaza'
       show_more: "Vezi mai mult"
+      count_more: "{{count}} mai multe"
       view_all: "Vezi tot"
       new_thread: "Discutie noua"
       add_subgroup: 'Grup nou subordonat'
@@ -516,6 +517,7 @@ ro:
       success: Aceasta discutie a fost mutata la {{name}}
   delete_comment_dialog:
     title: 'Sterge comentariu'
+    question: 'Esti sigur ca vrei sa stergi acest comentariu?'
     confirm: 'Sterge comentariu'
   contact_message_form:
     name_label: 'Nume'
@@ -547,6 +549,7 @@ ro:
     order_by_name: 'Nume'
     header_name: 'Nume'
     header_username: 'Nume utilizator'
+    accepted: 'Membri'
   polls_panel:
     all: 'Toate'
     open: 'Deschis'
@@ -578,7 +581,6 @@ ro:
   group_survey:
     success: Multumim!
     categories:
-      business: Afaceri
       other: Altele
     uses:
       other: Altele

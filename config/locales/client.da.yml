@@ -710,6 +710,7 @@ da:
     order_by_name: 'Navn'
     header_name: 'Navn'
     header_username: 'Brugernavn'
+    accepted: 'Medlemmer'
   polls_panel:
     all: 'Alle'
     open: 'Offentlig'
@@ -880,7 +881,6 @@ da:
     name_label: Navn
   group_survey:
     categories:
-      business: Virksomhed
       other: Andre
     uses:
       other: Andre

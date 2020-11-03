@@ -29,7 +29,18 @@ fr:
     was_gift_remaining: "{{days}} jours restants."
     was_gift_expired: "Votre forfait gratuit a maintenant expiré."
   subscription_status:
+    plan: "Abonnement"
+    state: "Statut"
     members: "Membres"
+    active_members: "Membres actifs"
+    max_threads: "Nombre maximum de discussions"
+    max_members: "Nombre maximum de membres"
+    expires_at: "Expire"
+    renews_at: "Date de renouvellement"
+    referral_code: "Code promotionnel"
+    chargify_link: "Portail de facturation"
+    referral_code_help: "Sponsorisez un ami!"
+    manage_payment_details: "Gérez les informations de paiement"
   loomio_tags:
     all_tags: Tous les mots-clés
     tags: Mots-clés
@@ -102,6 +113,7 @@ fr:
   timezones:
     local: Heure locale ({{value}})
   common:
+    empty: Vide
     no_results_found: Aucun résultat trouvé
     view: voir
     history: Historique
@@ -134,6 +146,7 @@ fr:
     settings: 'Paramètres'
     help: 'Aide'
     anonymous: Anonyme
+    required: Requis
     email_address: Adresse e-mail
     privacy:
       privacy: 'Confidentialité'
@@ -176,11 +189,17 @@ fr:
       reply: 'Répondre'
       edit: 'Modifier'
       remove: 'Supprimer'
+      undo_remove: 'Annuler suppression'
       like: 'J’aime'
       unlike: 'Je n’aime plus'
       update: 'Mettre à jour'
       cancel: 'Annuler'
       show_more: "Afficher davantage"
+      show_fewer: "Montrer moins"
+      view_count_more: "Voir {{count}} de plus"
+      view_count_responses: "Voir {{count}} réponses"
+      count_more: "{{count}} de plus"
+      count_responses: "{{count}} réponses"
       view_all: "Tout afficher"
       new_thread: "Nouvelle discussion"
       add_subgroup: 'Nouveau sous-groupe'
@@ -214,13 +233,21 @@ fr:
       title: 'Apprenez à utiliser Markdown pour mettre en forme votre texte'
   merge_accounts:
     modal:
+      title: Fusionner les comptes
+      helptext: "Vous pouvez fusionner le compte {{sourceEmail}} avec le compte {{targetEmail}}. Cliquez sur Vérifier et un email de vérification sera envoyé à {{targetEmail}} pour débuter la fusion des comptes."
       submit: Vérifier
       flash: Mail de vérification envoyé !
+    email_taken: Désolé, l'adresse email que vous avez fournie correspond à celle d'un utilisateur existant. Est-ce votre adresse email ?
+    find_out_more: En savoir plus
+    placeholder_modal_text: |
+        <p>Si vous souhaitez fusionner deux comptes ensemble, entrez simplement l'adresse e-mail respective (appartenant à l'autre compte) dans le champ de courriel de votre page de profil et suivez les instructions qui s'affichent.</p>
+        <p>Besoin d'aide? <a href="/contact" target="_blank">Nous contacter</a>.
   emoji_picker:
     search: Rechercher
     common: Fréquemment utilisé
+    expressions: Visages
     hands: mains
-    people: Visages et personnes
+    people: Les personnes
     nature: nature
     objects: Choses
     places: Lieux
@@ -367,6 +394,7 @@ fr:
       replied: '{{name}} a été notifié de la réponse.'
       updated: 'Commentaire mis à jour'
       destroyed: 'Commentaire effacé'
+      removed: 'Commentaire supprimé'
     say_something: Dites quelque chose…
     edit_comment: 'Modifier le commentaire'
     delete_comment: 'Effacer le commentaire'
@@ -403,6 +431,14 @@ fr:
       threads_list: 'Actions du fil de discussion'
       groups_list: 'Groupes'
       user_list: 'Actions utilisateur'
+  strand_nav:
+    newest_first: Activités récentes
+    oldest_first: Début de la discussion
+    all_pinned: Tous les éléments épinglés
+    whole_thread: La discussion dans son intégralité
+    from_comment: Depuis un lien hypertexte en commentaire
+    from_sequence_id: Depuis un lien hypertexte d'un élément de discussion
+    unread: Nouveau pour vous
   navbar:
     search_all_threads: Rechercher toutes les discussions
     search_threads: 'Rechercher des discussions au sein de {{name}}'
@@ -426,17 +462,22 @@ fr:
       comments: 'Commentaires'
     sign_in: 'Se connecter'
     toggle_sidebar: 'Activer/désactiver la barre latérale'
+    open_sidebar: 'Ouvrir la barre latérale'
+    close_sidebar: 'Fermer la barre latérale'
     logo_title: 'Accueil'
     group_and_subgroups: '{{group}} & sous-groupes'
   user_dropdown:
     pin_sidebar: "Épingler la barre latérale"
     unpin_sidebar: "Dés-épingler la barre latérale"
+    enable_beta_features: "Activer les fonctionnalités expérimentales"
+    disable_beta_features: "Désactiver les fonctionnalités expérimentales"
     button_label: 'Menu de l''utilisateur'
     edit_profile: 'Modifier mon profil'
     email_settings: 'Paramètres de notification'
     help: 'Aide'
     contact_site_name: 'Contacter {{site_name}}'
     sign_out: 'Se déconnecter'
+    beta_collab: "Modification collaborative en temps réel pour les discussions et les propositions, sauvegarde automatique des brouillons de commentaires"
   membership_card:
     group_members: "Membres du groupe"
     discussion_members: "Membres de la discussion"
@@ -496,6 +537,7 @@ fr:
     outcome_created: "<strong>{{name}}</strong> a renseigné un résultat <strong>{{title}}</strong>"
     outcome_announced: "<strong>{{name}}</strong> a renseigné un résultat <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> a participé à : <strong>{{title}}</strong>"
+    group_announced: "{{name}} vous a invité dans le groupe {{title}}"
   discussion_fork_actions:
     helptext: 'Sélectionnez les éléments que vous souhaitez placer dans d''autres discussions '
     move: Déplacer
@@ -550,6 +592,8 @@ fr:
       group: Membres de {{name}}
       discussion_group: Membres de la discussion
       voters: Personnes qui ont voté
+      undecided: Personnes sans avis
+      non_voters: Pas encore invité
     form:
       too_many_invitations: |
           Invitations maximum atteintes. <a href="{{upgradeUrl}}" target="_blank">Mettre à jour</a>
@@ -596,6 +640,8 @@ fr:
     flash:
       success: '{{count}} notifications envoyées'
   action_dock:
+    actions_menu: Menu d'actions
+    more_actions: Plus d'actions
     react: Réagir
     notify: Notifier
     add_resource: Ajouter un document
@@ -607,6 +653,8 @@ fr:
     invite_guests: Inviter des personnes
     translate_thread: Afficher une traduction automatique du contexte
     edit_poll: Modifier le sondage
+    edit_poll_type: "Editer {{pollType}}"
+    move_items: Déplacer les éléments
     announce_poll: Inviter des personnes au vote
     announce_poll_active: (Personne n'a encore été invité)
     translate_poll: Afficher une traduction automatique du sondage
@@ -638,7 +686,12 @@ fr:
     reopen_thread: Ré-ouvrir la discussion
     delete_thread: Supprimer la discussion
     notification_history: Historique des notifications
+    move_item: Déplacer l'élément
+    add_poll_to_thread: Ajouter à la discussion
   formatting:
+    formatting_tools: Outils de formatage du texte
+    expand: Montrer plus d'outils de formatage du texte
+    collapse: Montrer moins d'outils de formatage du texte
     bold: Audacieux
     italicize: Italique
     blockquote: Citation
@@ -646,11 +699,24 @@ fr:
     underline: Souligner
     link: Insérer un lien
     code_block: Bloc de code
+    insert_image: Insérer une image
+    insert_emoji: Insérer une émoticone
     attach: Joindre un fichier
+    heading_size: Taille du titre
+    heading1: Titre 1
+    heading2: Titre 2
+    heading3: Titre 3
+    left_align: Aligner à gauche
+    center_align: Centrer
+    right_align: Aligner à droite
+    justify_align: Justifier
+    paragraph: Paragraphe
     bullet_list: Liste
     number_list: Liste numérotée
     check_list: Checkliste
     reset: Réinitialiser
+    text_color: Couleur du texte
+    background_color: Couleur du fond
     quote: Citation
     embed: Intégrer la vidéo
     divider: Séparateur
@@ -663,6 +729,10 @@ fr:
     add_row_after: Insérer une ligne derrière
     remove_row: Retirer une ligne
     merge_selected: Fusionner les cellules sélectionnées
+    wysiwyg: WYSIWIG (Tel écran, tel écrit)
+    edit_markdown: Editer Markdown
+    markdown_confirm: Certains formats peuvent être perdus lors du passage du mode WYSIWIG (tel écran, tel écrit) au mode Markdown
+    upload_failed: Echec du téléversement
   cover_photo_form:
     aria_label: 'Changer la forme de la photo de couverture'
     heading: 'Nouvelle photo de couverture'
@@ -676,6 +746,7 @@ fr:
     image_size_helptext: 'La taille d’image idéale est de 100×100px'
     upload_success: 'Le logo a été mis à jour avec succès'
   join_group_button:
+    not_a_member: "Vous n'êtes actuellement pas un membre de ce groupe"
     join_group: Rejoindre le groupe
     membership_requested: Adhésion demandée
     messages:
@@ -714,10 +785,20 @@ fr:
     you_and_name_and_count_more: "Vous, {{name}} et {{count}} de plus"
     name_and_count_more: "{{name}} et {{count}} de plus"
   context_panel:
+    aria_intro: "Contexte de la discussion par {{author}}"
     thread_status:
       pinned: "Cette discussion a été épinglée. Elle restera en haut de la liste des discussions du groupe pour l’ensemble des utilisateurs."
       closed: "Cette discussion a été close. Elle ne sera plus affichée sur le tableau de bord, et sera affichée dans les discussions closes sur la page du groupe"
+  delete_group_modal:
+    title: Supprimer le groupe
+    body: |
+        Êtes-vous sûr de vouloir supprimer le groupe ?
+        Toutes les discussions, les sondages, les fichiers et tous les autres contenus du groupe seront effacés de manière irréversible.
+        Il est recommandé que vous exportiez les données du groupe et que vous téléchargiez tous les fichiers importants avant de continuer.
+    confirm: "Saisissez '%{name}' pour confirmer que vous voulez supprimer ce groupe."
+    success: Ce groupe a été archivé et il est planifié pour un effacement définitif dans 2 semaines.
   group_page:
+    stats: Statistiques du groupe
     threads: Discussions
     polls: Sondages
     members: Membres
@@ -729,6 +810,8 @@ fr:
     no_threads_here: Pas de discussions à afficher ici !
     search_threads: Rechercher des discussions…
     private_threads: Vous devez être membre du groupe pour voir des discussions privées de ce groupe
+    no_more_threads: Aucune discussions supplémentaire à charger
+    view_closed_threads: 'Vous avez perdu quelquechose ? <a href="{{url}}">Visualisez les discussions fermées</a>'
     messages:
       privacy:
         members: 'Ce groupe est désormais visible uniquement aux membres'
@@ -754,12 +837,18 @@ fr:
     options:
       label: 'Options'
       edit_group: 'Modifier les paramètres du groupe'
+      become_coordinator: Devenir administrateur
       export_data: Exporter les données de votre groupe
+      export_data_as_json: Exporter les données du groupe au format JSON
+      export_data_as_csv: Exporter les données du groupe au format CSV
+      export_data_as_html: ' Exporter les données du groupe au format HTML'
       manage_members: 'Gérer les membres'
       add_subgroup: 'Ajouter un sous-groupe'
+      manage_subscription: 'Gérer les inscriptions au groupe'
       email_settings: 'Préférences de courriel'
       leave_group: 'Quitter le groupe'
       deactivate_group: 'Désactiver le groupe'
+      subscription_status: 'Statut des inscriptions'
     volume:
       loud: Envoyer un courriel dès qu’il y a de l’activité.
       loud_aria_description: Votre volume de notification pour ce groupe est réglé sur Fort. Vous recevrez un courriel à chaque fois qu’il y a une activité.
@@ -801,6 +890,8 @@ fr:
   group_form:
     thread_defaults_help: Paramètres par défaut pour les nouvelles discussions
     click_to_change_image: Image de couverture et logo (cliquer pour modifier)
+    permissions_explaination: |
+        Les membres d'un groupe peuvent avoir deux statuts : administrateur ou membre. Les administrateurs ont tous les accès et autorisations. Sélectionnez les accès et autorisations des membres :
     aria_label: 'Forme du groupe'
     new_organisation: Nouvelle organisation
     start_group_heading: 'Créer un groupe'
@@ -823,6 +914,10 @@ fr:
       private_to_group: 'Le nom et la description ne seront visibles que par les membres du groupe.'
       private_to_parent_members: 'Le nom et la description ne seront visibles que par les membres du groupe {{parent}}.'
     privacy: 'Confidentialité'
+    group_privacy_is_open_description: "N'importe qui peut trouver ce groupe et demander à le rejoindre. Toutes les discussions sont publiques."
+    group_privacy_is_closed_description: "Le groupe n'est pas indexé dans la liste des groupes. Toute personne qui possède un lien vers le groupe peut le rejoindre. Toutes les discussions sont privées."
+    group_privacy_is_closed_public_threads_description: "Le groupe n'est pas indexé dans la liste des groupes. Toute personne qui possède un lien vers le groupe peut le rejoindre. Les discussions peuvent être publiques ou privées."
+    group_privacy_is_secret_description: "Seuls les personnes invitées peuvent trouver le groupe. Toutes les discussions sont privées."
     confirm_change_to_secret: "Si vous confirmez, toutes les discussions dans ce groupe et ses sous-groupes seront rendues privées."
     confirm_change_to_secret_subgroup: 'Si vous confirmez, toutes les discussions seront rendues privées.'
     confirm_change_to_public: 'Si vous confirmez, toutes les discussions de ce groupe seront rendues publiques.'
@@ -855,6 +950,7 @@ fr:
     members_can_start_discussions: 'Les membres peuvent créer une nouvelle discussion.'
     members_can_vote: 'Les membres peuvent voter sur les décisions.'
     members_can_raise_motions: 'Les membres peuvent créer une nouvelle proposition.'
+    admins_can_edit_user_content: "Les administrateurs peuvent modifier les commentaires et les sondages des autres utilisateurs."
     submit_start_group: 'Créer un groupe'
     submit_start_subgroup: 'Créer un sous-groupe'
     submit_update: 'Mettre à jour les paramètres'
@@ -897,6 +993,9 @@ fr:
   group_decisions_card:
     see_more: "Voir tout : ({{count}}) décisions"
   invitation_form:
+    group_url: URL du groupe
+    reusable_invitation_link: Lien d'invitation réutilisable
+    error: "Erreur lors de la copie vers le presse-papier."
     aria_label: 'Formulaire d’invitation'
     invite_people: 'Inviter des personnes'
     invite_guests: 'Inviter des personnes'
@@ -905,9 +1004,13 @@ fr:
     group: 'Groupe'
     group_placeholder: 'Sélectionnez un groupe'
     shareable_link: 'Lien partageable'
+    share_group: 'Partagez votre groupe'
     copy_link: 'Copier'
     email_addresses: 'Adresses e-mail'
     email_addresses_placeholder: 'ex. helperbot@loomio.org, friendlybot@loomio.org'
+    secret_group_url_explanation: "Ceci est l'adresse de votre groupe. Seuls les membres invités pourront voir ce groupe."
+    shareable_group_url_explanation: 'Vous pouvez partager ce lien publiquement. Tout le monde peut demander à rejoindre le groupe et vous pourrez approuver ou ignorer ces requêtes.'
+    shareable_invitation_explanation: 'Ne partagez pas ce lien publiquement. Quiconque ayant ce lien peut joindre le groupe sans votre approbation. Partagez-le uniquement dans des communications privées pour permettre aux membres de botre organisation de rejoindre le groupe.'
     shareable_link_reset: 'Réinitialisation du lien à partager. Le lien précédent ne fonctionnera plus.'
     email_explanation: 'Ou alors saisissez les adresses e-mail ci-dessous pour envoyer les invitations.'
     add_custom_message: 'Personnalisez votre invitation'
@@ -979,6 +1082,7 @@ fr:
       picture_changed: 'Photo de profil mise à jour'
       password_changed: 'Mot de passe mis à jour'
       deactivated: 'Compte désactivé'
+    merge_accounts: Fusionner les comptes
     change_picture_link: 'Changer de photo'
     change_password_link: 'Réinitialiser mon mot de passe'
     delete_account: 'Supprimer définitivement le compte'
@@ -1000,6 +1104,7 @@ fr:
     deactivate_account: 'Désactiver le compte utilisateur'
     help_translate: "Aidez-nous à traduire Loomio"
   text_editor:
+    select_text_to_link: Sélectionnez le texte du lien
     insert_link: Insérer un lien
     insert_embedded_url: Intégrer la vidéo
   change_picture_form:
@@ -1137,6 +1242,7 @@ fr:
     title: Vu par
     no_one: Personne n'a encore vu cela pour l'instant
   activity_card:
+    aria_label: "Commentez ou démarrez un sondage"
     count_responses: "{{count}} réponses"
     event_pinned: "Epinglé à la timeline"
     event_unpinned: "Dés-épinglé de la timeline"
@@ -1160,6 +1266,7 @@ fr:
   thread_group:
     aria_label: 'Nom du groupe'
   thread_context:
+    current_poll_type_banner: '{{pollType}} actuel.'
     item_maybe_deleted: "Impossible de trouver l'emplacement demandé dans le fil de discussion. Il a peut-être été supprimé."
     aria_label: 'Contexte de la discussion'
     thread_options: 'Options de la discussion'
@@ -1206,12 +1313,14 @@ fr:
   move_thread_form:
     aria_label: Déplacer le sujet
     title: Déplacer la discussion
+    body: Groupe de destination
     confirm: Déplacer la discussion
     confirm_change_to_private_thread: '{{groupName}}  est un groupe ouvert. Si vous confirmez, cette discussion sera rendue publique.'
     messages:
       success: La discussion a été déplacée vers {{name}}
   delete_comment_dialog:
     title: 'Effacer le commentaire'
+    question: 'Êtes-vous certain de vouloir effacer ce commentaire ?'
     confirm: 'Effacer le commentaire'
   contact_message_form:
     title: "Salut ! Comment puis-je vous aider ?"
@@ -1248,6 +1357,8 @@ fr:
     multiple_search_results: "{{resultCount}} groupes publics correspondent à <strong>{{searchTerm}} :</strong>"
     no_results_found: "<strong>Vous ne trouvez pas ce que vous cherchez ? </strong>Si le paramètre de confidentialité d'un groupe est  défini sur \"secret\", il n’apparaîtra pas ici."
     newest_first: Les plus récents en premier
+    biggest_first: Du plus grand au plus petit
+    order_by: Trier les groupes par
   global:
     messages:
       app_update: 'Une nouvelle version de l’application est disponible'
@@ -1268,6 +1379,7 @@ fr:
     your_response: Votre réponse
     change_your_response: Modifier la réponse
     reason: Raison
+    reason_placeholder: Expliquez brièvement les raisons de votre vote
     message: Message
     results: Résultats
     responses: Réponses
@@ -1284,6 +1396,8 @@ fr:
     details: Détails
     participant_name: Votre nom
     participant_email: Adresse e-mail
+    submit_vote: Soumettre votre vote
+    update_vote: Mettre à jour votre vote
     share_poll: Partager le sondage
     share_proposal: Partager la proposition
     share_count: Partager la vérification
@@ -1291,6 +1405,7 @@ fr:
     publish_poll: Partager le sondage
     view_all: Tout voir
     save_changes: Enregistrer
+    change_vote: Modifier votre vote
     max_score: Score maximum
     min_score: Score minimum
     too_long: Trop long
@@ -1308,6 +1423,8 @@ fr:
       options_added: Nouvelles options ajoutées
   poll_common_card:
     show_results: Afficher les résultats
+    hide_results: Cacher les résulats
+    deleted: Ce sondage a été supprimé
   poll_common_index_card:
     title: Décisions précédentes
     no_polls: Aucune décision antérieure n'a été trouvée
@@ -1344,6 +1461,7 @@ fr:
     sharable_link: 'Lien partageable'
     last_seen: 'Vu en dernier le {{date}}'
     invited_by_name: 'Invité par {{name}}'
+    accepted: 'Membres'
   polls_panel:
     new_poll: Nouveau sondage
     any_type: 'Tous types'
@@ -1363,7 +1481,10 @@ fr:
     search_subgroups_of_name: 'Rechercher des sous-groupes de {{name}}'
     group_without_subgroups: '{{name}} sans sous-groupes'
   poll_common_action_panel:
+    anonymous: Les votes sont anonymes
+    results_hidden_until_closed: Les résultats sont cachés jusquà la cloture du %{poll_type}
     unable_to_vote: Vous n’êtes pas autorisé à voter dans cette décision.
+    draft_mode: Ce %{poll_type} est en cours de construction. Les votes sont désactivés.
   current_polls_card:
     title: Décisions en cours
     start_poll: Nouvelle décision
@@ -1409,8 +1530,12 @@ fr:
     can_respond_maybe:
       title: Les participants peuvent répondre « si besoin »
       helptext_on: Les participants peuvent indiquer « si besoin » sur des horaires
+    hide_results_until_closed:
+      title: Cacher les résultats jusqu'à la cloture
+      helptext_on: Ne pas montrer comment les gens ont voté avant la cloture du sondage
   poll_common_close_form:
     title: Fermer un sondage en avance
+    helptext: Etes-vous sûr de vouloir cloturer ce %{poll_type} avant la fin ?
     close_proposal: Clôturer la proposition
     close_poll: Fermer le sondage
     close_count: Clôturer la vérification
@@ -1423,17 +1548,31 @@ fr:
     dot_vote_closed: Vote à points fermé
     meeting_closed: Sondage horaire de réunion fermé
     ranked_choice_closed: Classement par préférence fermé
+  poll_common_reopen_form:
+    title: "Rouvrir le {{poll_type}}"
+    helptext: "Rouvrir le {{poll_type}} si les participants ont besoin de plus de temps"
+    success: "{{poll_type}} rouvert"
+  poll_common_move_form:
+    title: "Déplacer le {{poll_type}}"
+    success: "{{poll_type}} déplacé vers le groupe {{group}}"
+  poll_common_wip_field:
+    title: Travail en cours
+    helptext: 'Utiliez "Travail en cours" pour collaborer sur le %{poll_type} avant le vote'
   poll_common_closing_at_field:
     closing: Fermeture
+    no_closing_date: Pas de date de cloture
+    closing_date: Date de cloture
     closing_hour: Heure de clôture
     invalid_date: Date invalide
   poll_card:
     started_by: Démarré par {{name}}
   poll_common_votes_panel:
+    undecided: Indécis
     newest_first: Les plus récents en premier
     oldest_first: Les plus anciens en premier
     priority_first: Accord en premier
     priority_last: Bloquer en premier
+    undecided_first: Indécis d'abord
     no_votes_yet: Aucun vote n’a été enregistré.
     change_results_order: Changer l’ordre des résultats
     none_of_the_above: (Aucun des choix ci-dessus)
@@ -1467,6 +1606,7 @@ fr:
     authored_by: 'Par {{name}}'
   poll_common_delete_modal:
     question: Êtes-vous sûr·e de vouloir supprimer cela ?
+    title: Effacer {{pollType}}
     success: Supprimer avec succès
   poll_common_form:
     title: Titre
@@ -1477,6 +1617,8 @@ fr:
     closing: Fermeture
     closed: Clôturée
     start: Démarrer
+    start_poll_type: Démarrer {{poll_type}}
+    share_poll_type: Partager {{poll_type}}
     update: Mettre à jour
     reminder_note: 24h avant la clôture, un rappel sera envoyé à tous les participants
     loomio_school_link: |
@@ -1599,6 +1741,7 @@ fr:
     rank: Classer
     points: Points
   poll_meeting_time_field:
+    add_time_slot: Ajouter un créneau
     new_time_slot: Nouveau créneau horaire
     closing_hour: Heure de fin
   poll_proposal_vote_form:
@@ -1638,6 +1781,8 @@ fr:
     reason_placeholder: Laissez un message si vous le voulez
     stance_created: Vote créé
     stance_updated: Vote mis à jour
+  poll_common_percent_voted:
+    sentence: "{{numerator}} personnes sur {{denominator}} ont voté ({{percent}}%)"
   poll_count_chart_panel:
     out_of: sur {{goal}}
   poll_meeting_chart_panel:
@@ -1667,6 +1812,15 @@ fr:
     stance_created: Choix enregistré
     stance_updated: Choix mis à jour
   thread_item:
+    aria:
+      deleted: Elément supprimé
+      new_comment: "{{actor}} a laissé un commentaire. {{when}}"
+      poll_created: "{{actor}} a démarré un {{pollType}}. {{when}}"
+      stance_created: "{{actor}} a voté. {{when}}"
+      outcome_created: "{{actor}} a partagé un résultat. {{when}}"
+      poll_expired: "{{pollType}} fermé. {{when}}"
+    removed: "Elément supprimé"
+    deleted_group: "Groupe supprimé"
     comment_replied_to: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>en réponse à <strong>{{title}}</strong>"
     discussion_title_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>a édité le titre de la discussion"
     discussion_context_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>a édité le contexte de la discussion "
@@ -1698,13 +1852,22 @@ fr:
     what_is_this: "Ceci est un exemple de {{type}}. Vous êtes participant — essayez !"
   share_poll_page:
     title: Partager le sondage - {{title}}
+  add_poll_to_thread_modal:
+    success: "{{pollType}} ajouté à la discussion avec succès !"
   auth_form:
     code: '000000'
+    youre_invited: Vous avez été invité à rejoindre le groupe {{group_name}}.
+    youre_invited_discussion: Vous avez été invité à rejoindre la discussion.
+    youre_invited_poll: Vous avez été invité à voter.
+    sign_in_to_loomio: Connectez-vous à {{site_name}}
+    sign_in_help: Vous rencontrez des difficultés pour vous connecter ?
     sign_in: Se connecter
     continue: Continuer
     create_account: Créez un compte
+    sign_up_as: S'inscrire en tant que {{email}}
     sign_in_as: Se connecter comme  {{name}}
     continue_with_provider: Connectez-vous avec {{provider}}
+    continue_with_email: Connectez-vous avec votre adresse mail
     or_enter_your_email: Ou saisir votre adresse e-mail
     enter_your_name: Entrez votre nom
     invitation_required: Vous avez besoin d'une invitation afin de créer un compte
@@ -1718,9 +1881,11 @@ fr:
     email_placeholder: vous@exemple.com
     login_with_token: Vous êtes prêt·e ! Cliquez sur le lien ci-dessous pour continuer.
     login_link_helptext: Cliquez sur le bouton ci-dessous et nous vous enverrons un lien pour vous connecter.
+    enter_your_password: "Saisissez votre mot de passe pour continuer"
     check_spam_folder: Si vous ne recevez pas l'e-mail, veuillez vérifier le répertoire des spams.
     sign_up_helptext: Merci de remplir ce formulaire pour créer un compte
     i_accept: "J'accepte les <a href='{{termsUrl}}' target='_blank'>Conditions d'utilisation</a> et la <a href='{{privacyUrl}}' target='_blank'>Politique de vie privée</a>"
+    newsletter_label: "Je souhaite recevoir la <a href='https://help.loomio.org/en/newsletter/' target='_blank'>lettre d'information Loomio</a>"
     name_placeholder: Votre nom
     name_required: Entrez un nom
     terms_required: Vous devez accepter les Conditions d'utilisation
@@ -1730,6 +1895,7 @@ fr:
     welcome_back: Content de vous revoir, {{name}} !
     forgot_password: Mot de passe oublié
     login_link: Envoyer l'adresse mail d'inscription
+    sign_in_via_email: Se connecter avec une adresse email
     set_password: Définir un mot de passe
     set_password_helptext: Vous souhaitez un mot de passe pour la prochaine fois ?
     hello: "Bonjour, {{name}} !"
@@ -1751,14 +1917,52 @@ fr:
     password: Mot de passe
     reactivate: Réactiver le compte
   webhook:
+    integrations: Integrations
+    webhooks: Webhooks
+    format: Formatter
     formats:
+      markdown: Markdown (pour Mattermost, Zapier et autres)
+      microsoft: Microsoft Teams
       slack: Slack
+    subtitle: Connectez-vous à Slack, Microsoft Teams, Mattermost, Zapier ou n'importe que service qui supporte les webhooks
+    we_have_guides: |
+        Lisez notre <a href="{{url}}" target="_blank">guide de configuration webhook</a> pour connecter votre propre service.
+    add_webhook: Ajouter un webhook
+    success: Webhook ajouté !
+    remove: Supprimer un webhook
+    confirm_remove: "Etes-vous sûr de vouloir supprimer le webhook : {{name}} ?"
+    removed: Webhook supprimé
     url_label: L'URL webhook
+    url_placeholder: https://hooks.example.com/...
     name_label: Nom
+    name_placeholder: Donnez un nom à ce webhook afin de pouvoir l'identifier plus tard
+    event_kind_helptext: Pour quels événements souhaitez-vous recevoir des notifications ?
     event_kinds:
       new_discussion: 'Une discussion a été commencée '
       discussion_edited: Une discussion a été modifiée
+      poll_edited: Un sondage a été modifié
+      new_comment: Un commentaire a été ajouté
+      poll_created: Un sondage a démarré
+      stance_created: Un vote a été  soumis
       poll_closing_soon: Un sondage sera bientôt terminé
+      poll_expired: Un sondage est sur le point d'expirer
+      poll_closed_by_user: Un sondage a été cloturé manuellement
+      poll_reopened: Un sondage a été rouvert aux votes
+      outcome_created: Un résultat a été partagé
+    include_body_label: Inclure le corps du message dans la notification
+    include_subgroups_label: Faire suivre les événement des sous-groupes
+  configure_sso:
+    redirecting: Veuillez patienter, vous allez être redirigé vers le service d'identification
+    title: Authentification unique (SSO)
+    enabled: L'authentification unique (SSO) est activée
+    helptext: Integrer à un service OneLogin, Auth0, Microsoft Active Directory, ou tout fournisseur de service SAML. <a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">En savoir plus</a>.
+    warning_helptext: "Attention: vous devrez vous identifier auprès de votre fournisseur de service une fois que vous aurez cliqué sur le bouton sauvegarder"
+    idp_metadata_url: URL des métadonnées du fournisseur d'identité (IdP)
+    idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
+    success: L'authentification unique (SSO) est correctement configurée
+    destroyed: L'authentification unique (SSO) a été supprimée
+    invalid_idp_metadata_url: URL des métadonnées du fournisseur d'identité (IdP) invalide
+    sp_metadata_url: URL des métadonnées du fournisseur de service (SP)
   browser_warning:
     message: "IMPORTANT: votre navigateur ({{name}} {{version}})  est obsolète et n'est pas compatible avec {{site}}."
     link: Merci de mettre à jour ou de changer de navigateur
@@ -1769,11 +1973,16 @@ fr:
     terms_of_service: Conditions d'utilisation
     front_page: Première page
   group_survey:
+    title: Bravo ! Encore quelques détails supplémentaires
+    subtitle: Aidez-nous à mieux vous connaître. Nous ne partagerons aucune information fournie dans ce formulaire sans votre autorisation.
+    validation_error: Merci de remplir tous les champs obligatoires.
+    success: Merci!
     categories:
-      business: Business
-      activist: Organisation militante
-      faith: Foi ou groupe spirituel
-      volunteer: Organisme bénévole
+      member: Organisations de services aux membres (par exemple, partis, coopératives, syndicats)
+      nonprofit: Organisations à but non lucratif, ONG et groupes communautaires
+      professional: Équipes et entreprises de services professionnels
+      board: Conseils et comités
+      government: Gouvernement ou collectivités locales
       other: Autre
     sizes:
       ten: "< 10"
@@ -1784,15 +1993,27 @@ fr:
       two_thousand: "501 - 2000"
       else: "> 2000"
     uses:
+      governance: Gouvernance pour le conseil d'administration, le comité ou la société fiducière
+      collaboration: Groupe de travail collaboratif
+      engagement: Engagement de la partie prenante ou du membre
+      self_management: Autogestion (espace collaboratif)
       remote: Travail à distance
       document: Création de documents collaboratifs, par ex. un plan stratégique.
+      decision_making: Processus de décision (conseil, consentement)
+      funding: Décisions de financement ou de bourses
       project: Équipe de projet
       forum: Forum
       other: Autre
+    desired_features:
+      polls: Sondages ouverts auquels mon équipe peut participer
+      discussions: Maintenir des discussions ouvertes et recevoir des retours
+      archive: Enregistrer les décisions que nous prenons ou archiver l'information
     referrers:
       google: Recherche google
       invitation: Invité dans un groupe Loomio
+      referral: Renvoi
       social: Média sociaux (Facebook, Twitter, Linkedin)
+      capterra: Capterra
       other: Autre
     location: Où est basé votre groupe ?
     purpose: "Quel est le but de votre groupe ?"
@@ -1802,4 +2023,5 @@ fr:
     role: "Quel est votre rôle au sein du groupe ?"
     website: "URL du site internet"
     usage: "Comment planifiez-vous d'utiliser Loomio ? Choisissez la meilleure réponse"
+    desired_feature: "Quelle est la principale raison pour laquelle vous souhaitez utiliser Loomio ?"
     referrer: "Comment avez-vous entendu parler de Loomio ?"

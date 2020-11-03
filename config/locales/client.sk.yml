@@ -134,6 +134,7 @@ sk:
     order_by_name: 'Meno'
     header_name: 'Meno'
     header_username: 'Prihlasovacie meno'
+    accepted: 'Členovia'
   polls_panel:
     all: 'Všetko'
     closed: 'Uzatvorené'
@@ -148,7 +149,6 @@ sk:
     name_label: Meno
   group_survey:
     categories:
-      business: Obchod
       other: Ostatné
     uses:
       other: Ostatné

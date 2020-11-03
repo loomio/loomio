@@ -190,6 +190,8 @@ de:
       update: 'Aktualisieren'
       cancel: 'Abbrechen'
       show_more: "Mehr anzeigen"
+      count_more: "{{count}} weitere"
+      count_responses: "{{count}} Antworten"
       view_all: "Alles anzeigen"
       new_thread: "Neue Diskussion"
       add_subgroup: 'Neue Untergruppe'
@@ -236,7 +238,7 @@ de:
     search: Suchen
     common: 'Oft verwendet '
     hands: Hände
-    people: Gesichter und Personen
+    people: Menschen
     nature: Natur
     objects: Dinge
     places: Orte
@@ -748,6 +750,8 @@ de:
     thread_status:
       pinned: "Diese Diskussion wurde angeheftet. Sie wird für alle Nutzer an oberster Stelle in der Diskussionsliste angezeigt."
       closed: "Diese Diskussion wurde geschlossen. Sie wird nicht mehr auf dem Dashboard angezeigt und auf der Gruppenseite unter \"Geschlossen\" angezeigt"
+  delete_group_modal:
+    title: Gruppe löschen
   group_page:
     stats: Gruppen-Statistik
     threads: Diskussionen
@@ -846,8 +850,8 @@ de:
     edit_group_heading: 'Gruppeneinstellungen bearbeiten'
     edit_subgroup_heading: 'Untergruppeneinstellungen bearbeiten'
     group_name: 'Name der Gruppe'
-    handle: Händler
-    group_handle_placeholder: "Für URL und Email, z.B. loomio.org/Händler and Händler@loomio.org"
+    handle: Kürzel
+    group_handle_placeholder: "Für URL und E-Mail, z. B. loomio.org/kuerzel und kuerzel@loomio.org"
     organization_name: 'Name der Organisation'
     start_organization_heading: Neue Organisation
     edit_organization_heading: Organisationseinstellungen ändern
@@ -1260,6 +1264,7 @@ de:
       success: Diskussion wurde nach {{name}} verschoben
   delete_comment_dialog:
     title: 'Kommentar löschen'
+    question: 'Bist du sicher, dass du dieses Kommentar löschen möchtest?'
     confirm: 'Kommentar löschen'
   contact_message_form:
     title: "Hey! Wie können wir dir helfen?"
@@ -1394,6 +1399,7 @@ de:
     sharable_link: 'Teilbarer link'
     last_seen: 'Zuletzt gesehen am {{date}}'
     invited_by_name: 'Eingeladen von {{name}}'
+    accepted: 'Mitglieder'
   polls_panel:
     new_poll: Neue Umfrage
     any_type: 'Alle Typen'
@@ -1728,7 +1734,7 @@ de:
     discussion_privacy_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat die Datenschutzeinstellungen der Diskussion bearbeitet "
     discussion_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat die Diskussion bearbeitet"
     discussion_moved: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat die Diskussion von <strong>{{title}}</strong>verschoben"
-    discussion_closed: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat die Diskussion beendet "
+    discussion_closed: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> hat die Diskussion beendet."
     discussion_reopened: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat die Diskussion neu eröffnet"
     discussion_forked: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat eine Abzweigung für die <strong><a href='d/{{key}}'>{{title}}</a></strong>  Diskussion erstellt"
     new_comment: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>"
@@ -1835,23 +1841,11 @@ de:
     front_page: Titelseite
   group_survey:
     title: Geschafft! Nur noch einige Details
-    subtitle: Bitte hilf uns dich besser kennen zu lernen. Wir werden keine Informationen teile ohne deine Einwilligung.
+    subtitle: Bitte hilf uns, dich besser kennenzulernen. Die in diesem Formular bereitgestellten Informationen werden nur öffentlich angezeigt, wenn du dem ausdrücklich zustimmst.
     validation_error: Bitte fülle alle notwendigen Felder aus.
-    success: Danke schön!
+    success: Vielen Dank!
     categories:
-      business: Business
-      bcorp: B-Corp oder Social enterprise
-      cooperative: Genossenschaft
-      consultant: Berater oder Agentur
       government: Regierung/Örtliche Regierung
-      nonprofit: Non-Profit-Organisation
-      union: Gewerkschaft
-      party: Politische Partei
-      activist: Aktivistorganisation
-      community: Gemeinschaft oder Kollektiv
-      education: Bildung oder Lehre
-      faith: Religiöse oder spirituelle Gemeinschaft
-      volunteer: Gemeinnützige Organisation
       other: Andere
     sizes:
       ten: "< 10"
@@ -1880,7 +1874,7 @@ de:
       social: Social media (Facebook, Twitter, LinkedIn)
       capterra: Capterra
       other: Andere
-    location: Woher kommt deine Gruppe?
+    location: Wo befindet sich der Hauptsitz deiner Gruppe?
     purpose: "Was ist der Sinn der Gruppe?"
     category_question: "Wähle aus, welche Kategorie deine Gruppe am ehesten beschreibt"
     anything_else: "Gibt es noch etwas, dass du uns mitteilen möchtest?"

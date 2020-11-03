@@ -47,6 +47,9 @@ export default
     signIn:     -> @openAuthModal()
     isLoggedIn: -> Session.isSignedIn()
 
+  watch:
+    'discussion.id': 'reset'
+
   computed:
     canStartPoll: ->
       AbilityService.canStartPoll(@discussion)

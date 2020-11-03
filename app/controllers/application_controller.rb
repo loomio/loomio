@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
   before_action :set_last_seen_at           # CurrentUserHelper
   before_action :handle_pending_actions     # PendingActionsHelper
   before_action :set_raven_context
+  before_action :ensure_canonical_host
 
   helper_method :current_user
   helper_method :current_version
@@ -65,6 +66,17 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def ensure_canonical_host
+    if ENV['REDIRECT_TO_CANONICAL_HOST']
+      if request.host != ENV['CANONICAL_HOST']
+        u = URI(request.url)
+        u.host = ENV['CANONICAL_HOST']
+        redirect_to u.to_s, status: :moved_permanently
+      end
+    end
+  end
+
   def boot_app(status: 200)
     expires_now
     prevent_caching

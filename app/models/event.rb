@@ -24,7 +24,7 @@ class Event < ApplicationRecord
   define_counter_cache(:descendant_count) { |e|
     if e.kind == "new_discussion"
       Event.where(discussion_id: e.eventable_id).count
-    else
+    elsif e.position_key && e.discussion_id
       Event.where(discussion_id: e.discussion_id).
             where("id != ?", e.id).
             where('position_key like ?', e.position_key+"%").count
@@ -173,6 +173,7 @@ class Event < ApplicationRecord
   end
 
   def reset_sequence_id_counter
+    return unless self.discussion_id
     val = (Event.where(discussion_id: discussion_id).order("sequence_id DESC").limit(1).pluck(:sequence_id).first || 0)
     discussion.sequence_id_counter.reset(val)
   end
