@@ -53,22 +53,14 @@ v-main
 
     v-card.mb-3.dashboard-page__loading(v-if='!loaded' aria-hidden='true')
       v-list(two-line)
-        //- v-subheader(v-t="'dashboard_page.threads_from.' + viewName")
         loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]' :key='index' )
     div(v-if="loaded")
-      //- section.dashboard-page__loaded(v-if="$route.query.q")
-      //-   v-card
-      //-     thread-search-result(v-for="result in searchResults" :key="result.id" :result="result")
-
       section.threads-page__loaded
         .threads-page__empty(v-if='threads.length == 0')
           p(v-t="'threads_page.no_direct_threads'")
         .threads-page__collections(v-else)
           v-card.mb-3.thread-preview-collection__container
-            //- v-subheader(v-t="'dashboard_page.threads_from.' + viewName")
             thread-preview-collection.thread-previews-container(:threads='threads')
-          //- .threads-page__footer(v-if='!loader.exhausted')  
-          //- loading(v-show='loader.loading')
 </template>
 <style lang="sass">
 // .threads-page
