@@ -19,9 +19,8 @@ export default
     '$route.params.key': 'init'
 
   methods:
-
     init: ->
-      EventBus.$emit 'currentComponent', { page: 'startDiscussionPage' }
+      EventBus.$emit 'currentComponent', { page: 'startDiscussionPage', titleKey: 'discussion_form.new_discussion_title' }
 
       if Session.isSignedIn()
         if @$route.params.key

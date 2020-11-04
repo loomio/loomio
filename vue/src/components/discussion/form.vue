@@ -71,7 +71,7 @@ export default
       .catch onError(@discussion)
 
     updateGroupItems: ->
-      @groupItems = [{text: @$t('discussion_form.none_invite_only'), value: null}].concat Session.user().groups().map (g) -> {text: g.fullName, value: g.id}
+      @groupItems = [{text: @$t('discussion_form.none_direct_thread'), value: null}].concat Session.user().groups().map (g) -> {text: g.fullName, value: g.id}
 
     updatePrivacy: ->
       @discussion.private = @discussion.privateDefaultValue()
@@ -104,7 +104,7 @@ export default
 .discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value='discussion.processing')
   v-card-title
-    h1.headline
+    h1.headline(v-observe-visibility="{callback: titleVisible}")
       span(v-if="isMovingItems" v-t="'discussion_form.moving_items_title'")
       template(v-else)
         span(v-if="!discussion.id" v-t="'discussion_form.new_discussion_title'")
