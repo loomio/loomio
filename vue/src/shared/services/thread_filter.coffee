@@ -28,5 +28,12 @@ export default (store, options) ->
         when 'hide_proposals' then chain.where (thread) -> !thread.hasDecision()
         when 'only_threads_in_my_groups'
           userGroupIds = Session.user().groupIds()
-          chain.find({groupId: {$in: userGroupIds}})
+          chain = chain.find({groupId: {$ne: null}})
+          chain.find $or: [
+            {$and: [
+              {inviterId: {$ne: null}},
+              {revokedAt: null}
+            ]}
+            {groupId: {$in: userGroupIds}}
+          ]
   chain.simplesort('lastActivityAt', true).data()
