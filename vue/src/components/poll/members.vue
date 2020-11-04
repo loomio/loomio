@@ -103,7 +103,8 @@ export default
       @stanceUserIds = map(Records.stances.collection.find(pollId: @poll.id), 'participantId')
 
       @membershipsByUserId = {}
-      Records.memberships.collection.find(userId: {$in: @stanceUserIds}).forEach (m) =>
+      Records.memberships.collection.find(userId: {$in: @stanceUserIds},
+                                          groupId: @poll.groupId).forEach (m) =>
         @membershipsByUserId[m.userId] = m
 
 </script>
