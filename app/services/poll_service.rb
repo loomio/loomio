@@ -41,7 +41,7 @@ class PollService
 
   def self.create_stances(poll:, actor:, user_ids:, emails:, audience:)
 
-    user_ids = poll.base_audience_query.where('users.id': Array(user_ids)).pluck(:id)
+    user_ids = poll.base_guest_audience_query.where('users.id': Array(user_ids)).pluck(:id)
     audience_ids = AnnouncementService.audience_users(poll, audience).pluck('users.id')
 
     # filter user_ids from group or poll or discussion

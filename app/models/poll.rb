@@ -240,7 +240,7 @@ class Poll < ApplicationRecord
     end
   end
 
-  def base_audience_query(admin: false)
+  def base_guest_audience_query(admin: false)
     User.active.
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.discussion_id || 0} AND dr.user_id = users.id").
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id").
