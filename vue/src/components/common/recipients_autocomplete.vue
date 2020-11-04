@@ -62,7 +62,7 @@ export default
 
     fetchMemberships: debounce ->
       return unless @query
-      
+
       emails = uniq(@query.match(/[^\s:,;'"`<>]+?@[^\s:,;'"`<>]+\.[^\s:,;'"`<>]+/g) || [])
       return if emails.length
 
@@ -162,14 +162,17 @@ export default
             size: @model.group().acceptedMembershipsCount
             icon: 'mdi-account-group'
 
-        if @model.discussion && @model.discussion().id && @model.discussion().membersCount > 1
+        if @model.discussion &&
+           @model.discussion() &&
+           @model.discussion().id &&
+           @model.discussion().membersCount > 1
           ret.push
             id: 'discussion_group'
             name: @$t('announcement.audiences.discussion_group')
             size: @model.discussion().membersCount
             icon: 'mdi-forum'
 
-        if @model.poll
+        if @model.poll && @model.poll()
           if @model.poll().stancesCount > 1
             ret.push
               id: 'voters'

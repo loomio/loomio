@@ -18,4 +18,5 @@ export default
   poll-common-wip-field(:poll="poll")
   poll-common-closing-at-field(:poll="poll")
   poll-common-settings(:poll="poll")
+  common-notify-fields(:model="poll")
 </template>

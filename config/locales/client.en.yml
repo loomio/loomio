@@ -592,6 +592,7 @@ en:
   discussion_form:
     to: To
     # visible_to_label: Privacy
+    direct_thread: "Direct thread"
     none_direct_thread: "Direct thread (no group)"
     change_log_placeholder: Briefly describe the changes made in this edit. (optional)
     change_log_label: What's changed?

@@ -40,7 +40,7 @@ export default
         key: 'dashboard'
         collections: ['discussions', 'searchResults']
         query: =>
-          @threads = Records.discussions.find(groupId: null)
+          @threads = Records.discussions.find(groupId: null, id: {$ne: null})
 
 </script>
 

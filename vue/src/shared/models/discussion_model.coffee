@@ -21,6 +21,8 @@ export default class DiscussionModel extends BaseModel
     HasTranslations.apply @
 
   defaultValues: ->
+    id: null
+    key: null
     private: true
     usesMarkdown: true
     lastItemAt: null
@@ -142,7 +144,7 @@ export default class DiscussionModel extends BaseModel
   # membershipVolume: ->
   #   @membership().volume if @membership()
   #
-  
+
   volume: ->
     @discussionReaderVolume #or @membershipVolume()
 

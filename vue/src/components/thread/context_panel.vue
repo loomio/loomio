@@ -29,10 +29,17 @@ export default
       @$t("context_panel.thread_status.#{@status}")
 
     groups: ->
-      map compact([@discussion.group().parent(), @discussion.group()]), (group) =>
-        text: group.name
-        disabled: false
-        to: @urlFor(group)
+      if @discussion.groupId
+        map compact([@discussion.group().parent(), @discussion.group()]), (group) =>
+          text: group.name
+          disabled: false
+          to: @urlFor(group)
+      else
+        [{
+          text: @$t('discussion_form.direct_thread')
+          disabled: false
+          to: '/threads/direct'
+        }]
 
   methods:
     viewed: (viewed) ->

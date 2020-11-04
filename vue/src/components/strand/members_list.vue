@@ -105,7 +105,8 @@ export default
       @readerUserIds = map(Records.discussionReaders.collection.find(discussionId: @discussion.id), 'userId')
 
       @membershipsByUserId = {}
-      Records.memberships.collection.find(userId: {$in: @readerUserIds}).forEach (m) =>
+      Records.memberships.collection.find(userId: {$in: @readerUserIds},
+                                          groupId: @discussion.groupId).forEach (m) =>
         @membershipsByUserId[m.userId] = m
 
 </script>

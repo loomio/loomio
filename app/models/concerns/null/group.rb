@@ -42,6 +42,7 @@ module Null::Group
       group_id
       add_member!
       message_channel
+      logo_or_parent_logo
     )
   end
 

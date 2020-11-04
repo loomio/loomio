@@ -81,7 +81,7 @@ export default
           params:
             exclude_types: 'group user'
             group_id: @poll.groupId
-            user_ids: userIds.join(' ')
+            user_xids: userIds.join('x')
     , 300
 
     updateStances: ->
