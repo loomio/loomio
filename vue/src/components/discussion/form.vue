@@ -1,7 +1,7 @@
 <script lang="coffee">
 import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
-import { map, sortBy, filter, debounce, without, uniq, find } from 'lodash'
+import { map, sortBy, filter, debounce, without, uniq, find, compact } from 'lodash'
 import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
@@ -18,6 +18,7 @@ export default
     discussion: Object
     close: Function
     isPage: Boolean
+    user: Object
 
   data: ->
     upgradeUrl: AppConfig.baseUrl + 'upgrade'
@@ -40,6 +41,11 @@ export default
       immediate: true
       handler: (groupId) ->
         @subscription = @discussion.group().parentOrSelf().subscription
+        users = compact([@user]).map (u) ->
+          id: u.id
+          type: 'user'
+          name: u.nameOrEmail()
+          user: u
         if groupId
           g =
             id: 'group'
@@ -50,6 +56,7 @@ export default
           @initialRecipients = [g]
         else
           @initialRecipients = []
+        @initialRecipients = @initialRecipients.concat(users)
         @reset = !@reset
 
   methods:

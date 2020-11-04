@@ -66,7 +66,7 @@ v-main.user-page__profile
               span : {{user.timeZone}}
             div(v-t="{ path: 'user_page.location_field', args: { value: user.location } }", v-if='user.location')
             div(v-t="{ path: 'user_page.online_field', args: { value: approximate(user.lastSeenAt) } }", v-if='user.lastSeenAt')
-            v-btn.my-4.user-page__contact-user(v-if="canContactUser" color="accent" outlined @click='openContactRequestModal(user)' v-t="{ path: 'user_page.contact_user', args: { name: user.firstName() } }")
+            v-btn.my-4.user-page__contact-user(v-if="canContactUser" color="accent" outlined :to="'/d/new?user_id=' + user.id" v-t="{ path: 'user_page.message_user', args: { name: user.firstName() } }")
       v-card.mt-4.user-page__groups
         v-card-text
           h3.lmo-h3.user-page__groups-title

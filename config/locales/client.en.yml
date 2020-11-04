@@ -1187,6 +1187,7 @@ en:
     locale_field: 'Language: {{value}}'
     online_field: 'Online: {{value}}'
     invited: 'Invited {{value}}'
+    message_user: 'Message {{name}}'
 
   contact_request_form:
     modal_title: "Email {{name}}"
