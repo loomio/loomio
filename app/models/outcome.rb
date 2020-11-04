@@ -13,6 +13,7 @@ class Outcome < ApplicationRecord
 
   set_custom_fields :calendar_invite, :event_summary, :event_description, :event_location, :should_send_calendar_invite
 
+  scope :in_organisation, -> (group) { joins(:poll).where('polls.group_id': group.id_and_subgroup_ids) }
   belongs_to :poll, required: true
   belongs_to :poll_option, required: false
   belongs_to :author, class_name: 'User', required: true

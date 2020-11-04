@@ -19,10 +19,12 @@
           %table{ style: "height: 100%; width: 100%" }
             = render 'groups/stats/general_header'
             %tr
-              -# %td
-              -#   %p{ style: "text-align: center"}= Queries::GroupStats.visits_count(@group)
               %td
-                %p{ style: "text-align: center"}= @group.active_memberships_count
+                %p{ style: "text-align: center"}
+                  - if @group.parent_or_self.id == ENV['SOLE_GROUP_ID'].to_i
+                    = @group.memberships_count
+                  - else
+                    = @group.active_memberships_count
               %td
                 %p{ style: "text-align: center"}= @group.subgroups.count
               %td
@@ -51,10 +53,12 @@
             %table{ style: "height: 100%; width: 100%" }
               = render 'groups/stats/general_header'
               %tr
-                -# %td
-                -#   %p{ style: "text-align: center"}= Queries::GroupStats.org_visits_count(@group)
                 %td
-                  %p{ style: "text-align: center"}= @group.org_members_count
+                  %p{ style: "text-align: center"}
+                    - if @group.parent_or_self.id == ENV['SOLE_GROUP_ID'].to_i
+                      = @group.org_memberships_count
+                    - else
+                      = @group.org_members_count
                 %td
                   %p{ style: "text-align: center"}= @group.subgroups.count
                 %td

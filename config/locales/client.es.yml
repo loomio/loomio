@@ -1823,6 +1823,7 @@ es:
       outcome_created: "{{actor}} ha compartido un  resultado.{{when}}"
       poll_expired: "{{pollType}} cerrado. {{when}}"
     removed: "Elemento eliminado"
+    deleted_group: "Grupo eliminado"
     comment_replied_to: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>en respuesta a <strong>{{title}}</strong>"
     discussion_title_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>ha editado el título del hilo"
     discussion_context_edited: "<strong><a href='/u/{{username}}'>{{autor}}</a></strong>ha editado el contexto del hilo"
