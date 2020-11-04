@@ -115,7 +115,7 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
     v-spacer
     dismiss-modal-button(:close="close")
   .poll-common-outcome-form.px-4
-    p Summarise the understanding found and anything that should be recorded.
+    p(v-t="'announcement.form.outcome_announced.helptext'")
     //- p outcome.pollId {{outcome.pollId}}
     //- p audience: {{outcome.recipientAudience}}
     //- p userIds: {{outcome.recipientUserIds}}
@@ -127,8 +127,8 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
       :placeholder="$t('poll_common_outcome_form.who_to_notify')"
       :model="outcome")
 
-    .caption.outcome-modal__number-notified(v-if="notificationsCount != 1" v-t="{ path: 'poll_common_notify_group.members_count', args: { count: notificationsCount } }")
-    .caption.outcome-modal__number-notified(v-else v-t="'discussion_form.one_person_notified'")
+    //- .caption.outcome-modal__number-notified(v-if="notificationsCount != 1" v-t="{ path: 'poll_common_notify_group.members_count', args: { count: notificationsCount } }")
+    //- .caption.outcome-modal__number-notified(v-else v-t="'discussion_form.one_person_notified'")
 
     .poll-common-calendar-invite(v-if='datesAsOptions()')
       .poll-common-calendar-invite__checkbox.poll-common-checkbox-option

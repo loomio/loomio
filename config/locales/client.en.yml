@@ -692,7 +692,7 @@ en:
         helptext: Who would you like to notify about this update?
       outcome_announced:
         title: Share outcome
-        helptext: Who would you like to share the outcome with?
+        helptext: Summarise the results of the process, including any understandings found or issues brought to light.
       anyone_can_participate: Anyone with link can participate
       placeholder: Enter names or email addresses...
       notified_empty: 'Nobody selected yet.'
