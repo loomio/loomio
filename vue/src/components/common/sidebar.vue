@@ -118,6 +118,8 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   v-divider
   v-list-item.sidebar__list-item-button--recent(dense to="/dashboard")
     v-list-item-title(v-t="'sidebar.recent_threads'")
+  v-list-item.sidebar__list-item-button--private(dense to="/threads/direct")
+    v-list-item-title(v-t="'sidebar.direct_threads'")
   v-list-item(dense to="/inbox")
     v-list-item-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
   v-list-item.sidebar__list-item-button--start-thread(dense to="/d/new")

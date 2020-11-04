@@ -38,6 +38,12 @@ class API::DiscussionsController < API::RestfulController
     respond_with_collection
   end
 
+  def direct
+    @accessible_records = DiscussionQuery.visible_to(user: current_user, or_public: false, or_subgroups: false, group_ids: nil)
+    instantiate_collection { |collection| collection.is_open.order_by_latest_activity }
+    respond_with_collection
+  end
+
   def inbox
     raise CanCan::AccessDenied.new unless current_user.is_logged_in?
     @accessible_records = DiscussionQuery.visible_to(user: current_user, only_unread: true, or_public: false, or_subgroups: false)

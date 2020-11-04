@@ -450,6 +450,7 @@ en:
     other_groups: 'Other groups'
     all_groups: 'All groups'
     recent_threads: 'Recent threads'
+    direct_threads: 'Direct threads'
     unread_threads: 'Unread threads ({{count}})'
     muted_threads: 'Muted threads'
     start_group: 'New organization'
@@ -1334,6 +1335,9 @@ en:
       thisweek: 'This week'
       thismonth: 'This month'
       older: 'Older than a month'
+
+  threads_page:
+    no_direct_threads: "You have no direct threads"
 
   inbox_page:
     no_threads: Woohoo! You've read all the threads in your inbox.
