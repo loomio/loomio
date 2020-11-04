@@ -27,10 +27,18 @@ class Outcome < ApplicationRecord
   is_mentionable on: :statement
   is_translatable on: :statement
 
-  has_paper_trail only: [:statement, :statement_format, :author_id]
+  has_paper_trail only: [:statement, :statement_format, :author_id, :review_on]
   define_counter_cache(:versions_count) { |d| d.versions.count }
   validates :statement, presence: true, length: { maximum: Rails.application.secrets.max_message_length }
   validate :has_valid_poll_option
+
+  scope :review_due_not_published, -> (due_date) do
+    where(review_on: due_date).where("NOT EXISTS (
+              SELECT 1 FROM events
+              WHERE events.eventable_id   = outcomes.id AND
+                    events.eventable_type = 'Outcome' AND
+                    events.kind           = 'outcome_review_due')")
+  end
 
   def body_format
     statement_format

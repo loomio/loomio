@@ -20,6 +20,7 @@ export default class OutcomeModel extends BaseModel
     recipientEmails: []
     recipientAudience: null
     groupId: null
+    reviewOn: null
 
   afterConstruction: ->
     HasDocuments.apply @

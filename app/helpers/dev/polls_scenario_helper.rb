@@ -257,6 +257,31 @@ module Dev::PollsScenarioHelper
       poll: poll}
   end
 
+  def poll_outcome_review_due_scenario(params)
+    discussion = saved(fake_discussion(group: create_group_with_members))
+    actor      = discussion.group.admins.first
+    observer   = fake_user
+    discussion.group.add_member! observer
+    poll       = create_fake_poll_with_stances(poll_type: params[:poll_type],
+                                               anonymous: !!params[:anonymous],
+                                               hide_results_until_closed: !!params[:hide_results_until_closed],
+                                               discussion: discussion,
+                                               closed_at: 1.day.ago,
+                                               closing_at: 1.day.ago)
+    outcome    = fake_outcome(poll: poll, author: poll.author)
+
+    Events::OutcomeReviewDue.publish!(outcome)
+    # OutcomeService.create(outcome: outcome, actor: actor, params: {recipient_emails: [observer.email]})
+
+    { discussion: discussion,
+      group: discussion.group,
+      observer: poll.author,
+      actor: actor,
+      outcome: outcome,
+      title: poll.title,
+      poll: poll}
+  end
+
   def poll_catch_up_scenario(params)
     discussion = saved(fake_discussion(group: create_group_with_members))
     scenario  = poll_expired_scenario(params)

@@ -1525,6 +1525,7 @@ en:
 
   poll_common:
     vote_now: Vote now
+    review_due: Review due
     have_your_say: Have your say
     your_response: Your response
     change_your_response: Edit response

@@ -7,10 +7,10 @@ import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
 
 import Vue     from 'vue'
-import { exact } from '@/shared/helpers/format_time'
-import { parseISO } from 'date-fns'
 import { uniq, map, sortBy, head, find, filter, sum } from 'lodash'
 import { onError } from '@/shared/helpers/form'
+import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter, parseISO } from 'date-fns'
+import { hoursOfDay, exact} from '@/shared/helpers/format_time'
 
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
 
@@ -26,6 +26,9 @@ export default
     options: []
     bestOption: null
     isDisabled: false
+    review: false
+    isShowingDatePicker: false
+    dateToday: format(new Date, 'yyyy-MM-dd')
 
   created: ->
     if @datesAsOptions()
@@ -141,6 +144,13 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
           validation-errors(:subject='outcome', field='event_summary')
           v-text-field.poll-common-calendar-invite__location(type='text' :placeholder="$t('poll_common_calendar_invite.location_placeholder')" v-model='outcome.customFields.event_location' :label="$t('poll_common_calendar_invite.location')")
           //- v-textarea.md-input.poll-common-calendar-invite__description(type='text' :placeholder="$t('poll_common_calendar_invite.event_description_placeholder')" v-model='outcome.customFields.event_description' :label="$t('poll_common_calendar_invite.event_description')")
+
+    .outcome-review-on
+      v-menu(ref='menu' v-model='isShowingDatePicker' :close-on-content-click='false' offset-y )
+        template(v-slot:activator='{ on, attrs }')
+          v-text-field(clearable v-model='outcome.reviewOn' label="Review date" placeholder="2000-12-30" v-on='on' v-bind="attrs" prepend-icon="mdi-calendar")
+        v-date-picker.outcome-review-on__datepicker(v-model='outcome.reviewOn' :min='dateToday' no-title @input="isShowingDatePicker = false")
+      p(v-if="outcome.reviewOn") You will be notified on the review date.
 
     lmo-textarea.poll-common-outcome-form__statement.lmo-primary-form-input(:model='outcome' field='statement' :label="$t('poll_common.statement')" :placeholder="$t('poll_common_outcome_form.statement_placeholder')")
       template(v-slot:actions)

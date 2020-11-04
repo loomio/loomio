@@ -75,7 +75,7 @@ class Event < ApplicationRecord
     new({
       kind:       name.demodulize.underscore,
       eventable:  eventable,
-      eventable_version_id: ((eventable.respond_to?(:versions) && eventable.versions.last.id) || nil)
+      eventable_version_id: ((eventable.respond_to?(:versions) && eventable.versions.last&.id) || nil)
     }.merge(args))
   end
 

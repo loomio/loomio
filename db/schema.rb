@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_03_211402) do
+ActiveRecord::Schema.define(version: 2020_11_04_092118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -564,6 +564,7 @@ ActiveRecord::Schema.define(version: 2020_11_03_211402) do
     t.jsonb "attachments", default: [], null: false
     t.string "secret_token", default: -> { "gen_random_uuid()" }
     t.integer "versions_count", default: 0, null: false
+    t.date "review_on"
     t.index ["poll_id"], name: "index_outcomes_on_poll_id"
   end
 

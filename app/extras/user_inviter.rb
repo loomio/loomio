@@ -13,7 +13,7 @@ class UserInviter
     User.import(safe_emails(emails).map do |email|
       User.new(email: email, time_zone: inviter.time_zone, detected_locale: inviter.locale)
     end, on_duplicate_key_ignore: true)
-    User.where("id in (:ids) or email in (:emails)", ids: user_ids.concat(audience_ids).uniq, emails: emails)
+    User.where("id in (:ids) or email in (:emails)", ids: Array(user_ids).concat(audience_ids).uniq, emails: emails)
   end
 
   private

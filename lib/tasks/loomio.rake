@@ -41,6 +41,7 @@ namespace :loomio do
 
     LocateUsersAndGroupsWorker.perform_async
     if (Time.now.hour == 0)
+      OutcomeService.delay.publish_review_due
       UsageReportService.send
       ExamplePollService.delay.cleanup
       LoginToken.where("created_at < ?", 24.hours.ago).delete_all

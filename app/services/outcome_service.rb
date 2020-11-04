@@ -56,4 +56,10 @@ class OutcomeService
                                     recipient_audience: params[:recipient_audience])
   end
 
+  def self.publish_review_due
+    Outcome.review_due_not_published(Date.today).each do |outcome|
+      Events::OutcomeReviewDue.publish!(outcome)
+    end
+  end
+
 end

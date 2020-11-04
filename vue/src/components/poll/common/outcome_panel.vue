@@ -25,6 +25,11 @@ v-sheet.pa-4.my-4.poll-common-outcome-panel(v-if="outcome" color="primary lighte
     span(v-t="{ path: 'poll_common_outcome_panel.authored_by', args: { name: outcome.authorName() } }")
     space
     time-ago(:date="outcome.createdAt")
+    span(v-if="outcome.reviewOn")
+      mid-dot
+      span(v-t="poll_common.review_due")
+      space
+      time-ago(:date="outcome.reviewOn")
   .poll-common-outcome__event-info(v-if="outcome.poll().datesAsOptions() && outcome.pollOption()")
     .title {{outcome.eventSummary}}
     span {{exactDate(parseISO(outcome.pollOption().name))}}

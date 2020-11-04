@@ -61,9 +61,10 @@ export default
       @updateSuggestions()
 
     fetchMemberships: debounce ->
-      if @query
-        emails = uniq(@query.match(/[^\s:,;'"`<>]+?@[^\s:,;'"`<>]+\.[^\s:,;'"`<>]+/g) || [])
-        return if emails.length
+      return unless @query
+      
+      emails = uniq(@query.match(/[^\s:,;'"`<>]+?@[^\s:,;'"`<>]+\.[^\s:,;'"`<>]+/g) || [])
+      return if emails.length
 
       @loading = true
 
