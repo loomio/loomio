@@ -69,7 +69,7 @@ export default
 
       Records.memberships.fetch
         params:
-          exclude_types: 'group'
+          exclude_types: 'group inviter'
           q: @query
           subgroups: 'all'
           per: 20
@@ -86,20 +86,21 @@ export default
       @model.recipientEmails = map filter(val, (o) -> o.type == 'email'), 'name'
 
     findUsers: ->
+      # return [] unless @query
       chain = Records.users.collection.chain()
 
       if @model.group().id
         chain = chain.find(id: {$in: @model.group().parentAndSelfMemberIds()})
 
+      chain = chain.find(emailVerified: true)
       chain = chain.find(id: {$nin: @excludedUserIds})
 
-      if @query
-        chain = chain.find
-          $or: [
-            {name: {'$regex': ["^#{@query}", "i"]}}
-            {username: {'$regex': ["^#{@query}", "i"]}}
-            {name: {'$regex': [" #{@query}", "i"]}}
-          ]
+      chain = chain.find
+        $or: [
+          {name: {'$regex': ["^#{@query}", "i"]}}
+          {username: {'$regex': ["^#{@query}", "i"]}}
+          {name: {'$regex': [" #{@query}", "i"]}}
+        ]
 
       chain.data()
 

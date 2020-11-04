@@ -19,6 +19,10 @@ class MembershipQuery
       chain = chain.where(group_id: group_ids)
     end
 
+    if params[:user_ids]
+      chain = chain.where('memberships.user_id': params[:user_ids])
+    end
+
     case params[:filter]
     when 'admin'
       chain = chain.admin
@@ -30,8 +34,7 @@ class MembershipQuery
 
     query = params[:q].to_s
     if query.length > 0
-      chain = chain.where("users.name ilike :first OR
-                           users.name ilike :last OR
+      chain = chain.where("users.name ilike :first OR users.name ilike :last OR
                            users.email ilike :first OR
                            users.username ilike :first",
                            first: "#{query}%", last: "% #{query}%")

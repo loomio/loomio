@@ -129,7 +129,7 @@ export default
         span(v-t="'common.action.invite'")
   v-list
     v-subheader
-      span(v-t="{path: 'membership_card.poll_members', args: {pollType: poll.translatedPollType()}}")
+      span(v-t="'membership_card.voters'")
       space
       span ({{poll.stancesCount}})
     v-list-item(v-for="stance in stances" :user="stance.participant()" :key="stance.id")

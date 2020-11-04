@@ -41,7 +41,6 @@ class API::DiscussionReadersController < API::RestfulController
     respond_with_resource
   end
 
-
   private
 
   def discussion_reader
@@ -53,9 +52,6 @@ class API::DiscussionReadersController < API::RestfulController
   end
 
   def accessible_records
-    @accessible_records ||= DiscussionReader.includes(:user)
-      .joins("LEFT OUTER JOIN memberships m ON m.user_id = discussion_readers.user_id")
-      .where("(m.group_id = :group_id AND m.accepted_at IS NOT NULL AND archived_at IS NULL)
-              OR (discussion_readers.inviter_id IS NOT NULL AND discussion_readers.revoked_at IS NULL)", group_id: @discussion.group_id)
+    DiscussionReader.includes(:user, :discussion).where(discussion_id: @discussion.id)
   end
 end

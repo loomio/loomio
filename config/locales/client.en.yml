@@ -520,6 +520,7 @@ en:
     group_members: "Group members"
     discussion_members: "Thread members"
     poll_members: "{{pollType}} members"
+    voters: "Voters"
     invite_to_group: "Invite to group"
     invite_to_discussion: "Invite to thread"
     invite_to_poll: "Invite to vote"

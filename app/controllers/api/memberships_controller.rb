@@ -3,6 +3,11 @@ class API::MembershipsController < API::RestfulController
 
   def index
     instantiate_collection do |collection|
+      %w[user_xids].each do |key|
+        next unless params.has_key? key
+        params[key.gsub("_xids", "_ids")] = params[key].split('x').map(&:to_i)
+        params.delete(key)
+      end
       MembershipQuery.search(chain: collection, params: params).
                       order('memberships.admin desc, memberships.created_at desc')
     end

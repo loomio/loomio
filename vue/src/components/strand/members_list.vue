@@ -78,11 +78,10 @@ export default
       .then (records) =>
         userIds = map records['users'], 'id'
         Records.memberships.fetch
-          path: 'autocomplete'
           params:
             exclude_types: 'group inviter'
             group_id: @discussion.groupId
-            user_ids: userIds.join(' ')
+            user_xids: userIds.join('x')
       .finally => @updateReaders()
     , 300
 
