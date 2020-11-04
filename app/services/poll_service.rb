@@ -40,10 +40,14 @@ class PollService
 
 
   def self.create_stances(poll:, actor:, user_ids:, emails:, audience:)
-    user_ids = Array(user_ids).concat AnnouncementService.audience_users(poll, audience).pluck('users.id')
+
+    user_ids = poll.base_audience_query.where('users.id': Array(user_ids)).pluck(:id)
+    audience_ids = AnnouncementService.audience_users(poll, audience).pluck('users.id')
+
+    # filter user_ids from group or poll or discussion
 
     users = UserInviter.where_or_create!(inviter: actor,
-                                         user_ids: user_ids,
+                                         user_ids: user_ids.concat(audience_ids),
                                          emails: emails)
 
     volumes = {}

@@ -1,5 +1,6 @@
 class UserQuery
   def self.visible_to(user: )
+    raise "this blows up, dont use it"
     discussion_ids = DiscussionQuery.visible_to(user: user,
                                                 or_public: false,
                                                 or_subgroups: false).pluck('discussions.id')
