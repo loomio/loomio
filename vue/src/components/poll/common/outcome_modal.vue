@@ -45,12 +45,6 @@ export default
       @outcome.pollOptionId = @outcome.pollOptionId or @bestOption.id
       @outcome.customFields.event_summary = @outcome.customFields.event_summary or @outcome.poll().title
 
-  mounted: ->
-    @fetchMemberships()
-    @watchRecords
-      collections: ['groups', 'memberships']
-      query: (records) => @updateSuggestions()
-
   methods:
 
     submit: ->
@@ -78,34 +72,6 @@ export default
       @outcome.recipientUserIds = map filter(val, (o) -> o.type == 'user'), 'id'
       @outcome.recipientEmails = map filter(val, (o) -> o.type == 'email'), 'name'
 
-  computed:
-    model: -> @outcome
-    audiences: ->
-      ret = []
-      if @recipients.length == 0
-        if @outcome.group()
-          ret.push
-            id: 'group'
-            name: @outcome.group().name
-            size: @outcome.group().acceptedMembershipsCount
-        if @outcome.poll().discussionId
-          ret.push
-            id: 'discussion_group'
-            name: @$t('announcement.audiences.discussion_group')
-            size: @outcome.poll().discussion().membersCount
-        if @outcome.poll().stancesCount > 1
-          ret.push
-            id: 'voters'
-            name: @$t('announcement.audiences.voters', pollType: @outcome.poll().translatedPollType())
-            size: @outcome.poll().stancesCount
-        if @outcome.poll().participantsCount > 1
-          ret.push
-            id: 'participants'
-            name: @$t('announcement.audiences.participants')
-            size: @outcome.poll().participantsCount
-
-      ret.filter (a) => a.name.match(new RegExp(@query, 'i'))
-
 </script>
 
 <template lang="pug">
@@ -119,12 +85,6 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
     dismiss-modal-button(:close="close")
   .poll-common-outcome-form.px-4
     p(v-t="'announcement.form.outcome_announced.helptext'")
-    //- p outcome.pollId {{outcome.pollId}}
-    //- p audience: {{outcome.recipientAudience}}
-    //- p userIds: {{outcome.recipientUserIds}}
-    //- p userEmails: {{outcome.recipientEmails}}
-    //- p audiences: {{audiences}}
-    //- p {{recipients.length}}
     recipients-autocomplete(
       :label="$t('action_dock.notify')"
       :placeholder="$t('poll_common_outcome_form.who_to_notify')"
@@ -146,11 +106,11 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
           //- v-textarea.md-input.poll-common-calendar-invite__description(type='text' :placeholder="$t('poll_common_calendar_invite.event_description_placeholder')" v-model='outcome.customFields.event_description' :label="$t('poll_common_calendar_invite.event_description')")
 
     .outcome-review-on
-      v-menu(ref='menu' v-model='isShowingDatePicker' :close-on-content-click='false' offset-y )
+      v-menu(ref='menu' v-model='isShowingDatePicker' :close-on-content-click='false' offset-y min-width="290px")
         template(v-slot:activator='{ on, attrs }')
           v-text-field(clearable v-model='outcome.reviewOn' label="Review date" placeholder="2000-12-30" v-on='on' v-bind="attrs" prepend-icon="mdi-calendar")
         v-date-picker.outcome-review-on__datepicker(v-model='outcome.reviewOn' :min='dateToday' no-title @input="isShowingDatePicker = false")
-      p(v-if="outcome.reviewOn") You will be notified on the review date.
+      p(v-if="outcome.reviewOn" v-t="$t('poll_common_outcome_form.you_will_be_notified')")
 
     lmo-textarea.poll-common-outcome-form__statement.lmo-primary-form-input(:model='outcome' field='statement' :label="$t('poll_common.statement')" :placeholder="$t('poll_common_outcome_form.statement_placeholder')")
       template(v-slot:actions)

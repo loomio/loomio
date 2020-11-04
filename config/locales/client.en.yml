@@ -695,8 +695,8 @@ en:
         title: Share outcome
         helptext: Summarise the results of the process, including any understandings found or issues brought to light.
       anyone_can_participate: Anyone with link can participate
-      placeholder: Enter names or email addresses...
-      notified_empty: 'Nobody selected yet.'
+      placeholder: Enter names or email addresses
+      notified_empty: 'Nobody selected yet'
       notified: '{{notified}} people will be notified:'
       notified_singular: '1 person will be notified:'
       group_title: '{{name}} ({{count}} people)'
@@ -1795,6 +1795,7 @@ en:
     outcome_created: Outcome created
     outcome_updated: Outcome updated
     statement_placeholder: Summarise the responses and explain what will happen next.
+    you_will_be_notified: You will be notified on the review date.
     submit: Share outcome
 
   poll_common_outcome_panel:

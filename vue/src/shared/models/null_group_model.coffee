@@ -59,3 +59,4 @@ export default class NullGroupModel
   isParent: -> true
   hasSubscription: -> false
   isSubgroupOfSecretParent: -> false
+  hasPendingMembershipRequestFrom: -> false

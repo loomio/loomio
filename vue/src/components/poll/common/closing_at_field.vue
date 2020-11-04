@@ -53,7 +53,7 @@ div
     .poll-common-closing-at-field__inputs
       v-layout(wrap)
         v-flex
-          v-menu(ref='menu' v-model='isShowingDatePicker' :close-on-content-click='false' offset-y )
+          v-menu(ref='menu' v-model='isShowingDatePicker' :close-on-content-click='false' offset-y min-width="290px")
             template(v-slot:activator='{ on, attrs }')
               v-text-field(:disabled="!poll.closingAt" v-model='closingDate' :rules="[validDate]" placeholder="2000-12-30" v-on='on' v-bind="attrs" prepend-icon="mdi-calendar")
                 template(v-slot:label)

@@ -14,6 +14,7 @@ export default
     autofocus: Boolean
     label: String
     placeholder: String
+    hint: String
     reset: Boolean
     model: Object
     excludedAudiences:
@@ -218,6 +219,7 @@ div
     item-text='name'
     :loading="loading"
     :label="label"
+    :hint="hint"
     :placeholder="placeholder"
     :items='suggestions'
     )

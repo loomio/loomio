@@ -125,6 +125,7 @@ export default
       :label="$t(discussion.id ? 'action_dock.notify' : 'common.action.invite')"
       :placeholder="$t('announcement.form.discussion_'+ (discussion.id ? 'edited' : 'announced')+ '.helptext')"
       :initial-recipients="initialRecipients"
+      :hint="$t('announcement.form.placeholder')"
       :model="discussion"
       :reset="reset")
 
