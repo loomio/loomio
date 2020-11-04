@@ -9,6 +9,7 @@ export default
     discussion: null
     isDisabled: false
     group: null
+    user: null
 
   mounted: ->
     @init()
@@ -18,9 +19,8 @@ export default
     '$route.params.key': 'init'
 
   methods:
-
     init: ->
-      EventBus.$emit 'currentComponent', { page: 'startDiscussionPage' }
+      EventBus.$emit 'currentComponent', { page: 'startDiscussionPage', titleKey: 'discussion_form.new_discussion_title' }
 
       if Session.isSignedIn()
         if @$route.params.key
@@ -31,6 +31,12 @@ export default
             @discussion = Records.discussions.build
               title: @$route.query.title
               groupId: parseInt(@$route.query.group_id)
+        else if parseInt(@$route.query.user_id)
+          Records.users.findOrFetchById(parseInt(@$route.query.user_id)).then (user) =>
+            @user = user
+            @discussion = Records.discussions.build
+              title: @$route.query.title
+              groupId: null
         else
           @discussion = Records.discussions.build
             title:       @$route.query.title
@@ -40,5 +46,5 @@ export default
 v-main
   v-container.start-discussion-page.max-width-800
     v-card
-      discussion-form(v-if="discussion" :discussion='discussion' is-page :key="discussion.id")
+      discussion-form(v-if="discussion" :discussion='discussion' is-page :key="discussion.id" :user="user")
 </template>

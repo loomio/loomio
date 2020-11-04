@@ -24,7 +24,8 @@ class DiscussionQuery
                          (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL)
                          #{'OR (groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids))' if or_subgroups}", user_group_ids: user.group_ids)
 
-    chain = chain.where("discussions.group_id IN (?)", group_ids) if group_ids.any?
+    chain = chain.where("discussions.group_id IN (?)", group_ids) if Array(group_ids).any?
+    chain = chain.where("discussions.group_id IS NULL") if group_ids.nil?
     if only_unread
       chain = chain.where('(dr.dismissed_at IS NULL) OR (dr.dismissed_at < discussions.last_activity_at)').
         where('dr.last_read_at IS NULL OR (dr.last_read_at < discussions.last_activity_at)')

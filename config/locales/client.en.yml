@@ -450,6 +450,7 @@ en:
     other_groups: 'Other groups'
     all_groups: 'All groups'
     recent_threads: 'Recent threads'
+    direct_threads: 'Direct threads'
     unread_threads: 'Unread threads ({{count}})'
     muted_threads: 'Muted threads'
     start_group: 'New organization'
@@ -590,7 +591,7 @@ en:
   discussion_form:
     to: To
     # visible_to_label: Privacy
-    none_invite_only: None (Invite only)
+    none_direct_thread: "Direct thread (no group)"
     change_log_placeholder: Briefly describe the changes made in this edit. (optional)
     change_log_label: What's changed?
     # visible_to_group: Group thread
@@ -1186,6 +1187,7 @@ en:
     locale_field: 'Language: {{value}}'
     online_field: 'Online: {{value}}'
     invited: 'Invited {{value}}'
+    message_user: 'Message {{name}}'
 
   contact_request_form:
     modal_title: "Email {{name}}"
@@ -1334,6 +1336,9 @@ en:
       thisweek: 'This week'
       thismonth: 'This month'
       older: 'Older than a month'
+
+  threads_page:
+    no_direct_threads: "You have no direct threads"
 
   inbox_page:
     no_threads: Woohoo! You've read all the threads in your inbox.
