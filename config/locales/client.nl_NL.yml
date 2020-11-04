@@ -1823,6 +1823,7 @@ nl_NL:
       outcome_created: "{{actor}} deelde een resultaat. {{when}}"
       poll_expired: "{{pollType}} sloot. {{when}}"
     removed: "Item verwijderd"
+    deleted_group: "Verwijderde groep"
     comment_replied_to: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> in antwoord op <strong>{{title}}</strong>"
     discussion_title_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> bewerkte de bordtitel"
     discussion_context_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> bewerkte de bordomschrijving"
@@ -1980,6 +1981,10 @@ nl_NL:
     validation_error: Vul alsjeblieft alle verplichte velden in.
     success: Bedankt!
     categories:
+      member: Diensten organisaties met leden (zoals politieke partijen, coöperaties en vakbonden)
+      nonprofit: Niet commercieel, NGOs, en Maatschappelijke groepen
+      professional: Professionele diensten teams & bedrijven
+      board: Boards en commissies
       government: Overheid/lokale overheid
       other: Andere
     sizes:
@@ -2021,4 +2026,5 @@ nl_NL:
     role: "Wat is jouw rol in de groep?"
     website: "Website URL"
     usage: "Hoe ga je Loomio gebruiken? Kies wat het beste past"
+    desired_feature: "Wat is het belangrijkste dat je met Loomio wil doen?"
     referrer: "Hoe heb je van Loomio eerst gehoord?"
