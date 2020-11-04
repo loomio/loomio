@@ -133,7 +133,7 @@ describe 'DiscussionService' do
         DiscussionService.update discussion: discussion,
                                  params: discussion_params,
                                  actor: user
-        version = PaperTrail::Version.last
+        version = discussion.versions.last
         expect(version.object_changes['title'][1]).to eq discussion_params[:title]
         expect(version.object_changes['description'][1]).to eq discussion_params[:description]
       end
