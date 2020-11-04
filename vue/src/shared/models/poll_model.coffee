@@ -120,6 +120,7 @@ export default class PollModel extends BaseModel
     @closedAt?
 
   showResults: ->
+    return false if !@closingAt
     @closedAt? || !@hideResultsUntilClosed
 
   close: =>
