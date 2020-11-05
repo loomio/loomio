@@ -1,6 +1,7 @@
 import BaseModel from '@/shared/record_store/base_model'
 import i18n from '@/i18n.coffee'
 import {invokeMap, without} from 'lodash'
+import AnonymousUserModel   from '@/shared/models/anonymous_user_model'
 
 export default class EventModel extends BaseModel
   @singular: 'event'
