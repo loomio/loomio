@@ -21,7 +21,7 @@ export default class EventModel extends BaseModel
 
   relationships: ->
     @belongsTo 'parent', from: 'events'
-    @belongsTo 'actor', from: 'users', ifNull: -> new AnonymousUser()
+    @belongsTo 'actor', from: 'users', ifNull: -> new AnonymousUserModel()
     @belongsTo 'discussion'
     @hasMany  'notifications'
 
