@@ -50,31 +50,36 @@ export default
 </script>
 <template lang="pug">
 v-card.auth-signup-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
-  v-card-title(v-if='!allow')
-    h1.headline(tabindex="-1" role="status" aria-live="assertive" v-t="'auth_form.invitation_required'")
-  v-card-title(v-if='allow')
-    h1.headline(tabindex="-1" role="status" aria-live="assertive" v-t="{ path: 'auth_form.welcome', args: { siteName: siteName } }")
-    v-spacer
-    v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
-      v-icon mdi-close
-  v-sheet.mx-4
-    submit-overlay(:value='loading')
-    .auth-signup-form__welcome.text-center.my-2
-      p(v-t="{path: 'auth_form.sign_up_as', args: {email: user.email}}")
-    .auth-signup-form__name
-      v-text-field(type='text' :label="$t('auth_form.name_placeholder')" :placeholder="$t('auth_form.enter_your_name')" outlined v-model='vars.name' required='true')
-    .auth-signup-form__consent(v-if='termsUrl')
-      v-checkbox.auth-signup-form__legal-accepted(v-model='vars.legalAccepted' hide-details)
-        template(v-slot:label)
-          span(v-html="$t('auth_form.i_accept', { termsUrl: termsUrl, privacyUrl: privacyUrl })")
-      validation-errors(:subject='user', field='legalAccepted')
-    .auth-signup-form__newsletter(v-if='newsletterEnabled')
-      v-checkbox.auth-signup-form__newsletter-accepted(v-model='vars.emailNewsletter' hide-details)
-        template(v-slot:label)
-          span(v-html="$t('auth_form.newsletter_label')")
+  template(v-if='!allow')
+    v-card-title(v-if='!allow')
+      h1.headline(tabindex="-1" role="status" aria-live="assertive" v-t="'auth_form.invitation_required'")
+      v-spacer
+      v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
+        v-icon mdi-close
+  template(v-else)
+    v-card-title
+      h1.headline(tabindex="-1" role="status" aria-live="assertive" v-t="{ path: 'auth_form.welcome', args: { siteName: siteName } }")
+      v-spacer
+      v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
+        v-icon mdi-close
+    v-sheet.mx-4
+      submit-overlay(:value='loading')
+      .auth-signup-form__welcome.text-center.my-2
+        p(v-t="{path: 'auth_form.sign_up_as', args: {email: user.email}}")
+      .auth-signup-form__name
+        v-text-field(type='text' :label="$t('auth_form.name_placeholder')" :placeholder="$t('auth_form.enter_your_name')" outlined v-model='vars.name' required='true')
+      .auth-signup-form__consent(v-if='termsUrl')
+        v-checkbox.auth-signup-form__legal-accepted(v-model='vars.legalAccepted' hide-details)
+          template(v-slot:label)
+            span(v-html="$t('auth_form.i_accept', { termsUrl: termsUrl, privacyUrl: privacyUrl })")
+        validation-errors(:subject='user', field='legalAccepted')
+      .auth-signup-form__newsletter(v-if='newsletterEnabled')
+        v-checkbox.auth-signup-form__newsletter-accepted(v-model='vars.emailNewsletter' hide-details)
+          template(v-slot:label)
+            span(v-html="$t('auth_form.newsletter_label')")
 
-  v-card-actions.mt-8
-    v-spacer
-    v-btn.auth-signup-form__submit(color="primary" :loading="loading" :disabled='!vars.name || (termsUrl && !vars.legalAccepted)' v-t="'auth_form.create_account'" @click='submit()')
-  v-recaptcha(v-if='useRecaptcha' ref="invisibleRecaptcha" :sitekey="recaptchaKey" :loadRecaptchaScript="true" size="invisible" @verify="submitForm")
+    v-card-actions.mt-8
+      v-spacer
+      v-btn.auth-signup-form__submit(color="primary" :loading="loading" :disabled='!vars.name || (termsUrl && !vars.legalAccepted)' v-t="'auth_form.create_account'" @click='submit()')
+    v-recaptcha(v-if='useRecaptcha' ref="invisibleRecaptcha" :sitekey="recaptchaKey" :loadRecaptchaScript="true" size="invisible" @verify="submitForm")
 </template>
