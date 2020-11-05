@@ -130,7 +130,7 @@ describe API::AnnouncementsController do
       create :stance, poll: poll, participant: voter, cast_at: Time.now
       create :stance, poll: poll, participant: undecided_voter
 
-      get :audience, params: {poll_id: poll.id, kind: "undecided"}
+      get :audience, params: {poll_id: poll.id, kind: "undecided_voters"}
       json = JSON.parse response.body
       expect(json.map {|u| u['id']}.sort).to include undecided_voter.id
       expect(json.map {|u| u['id']}.sort).to_not include voter.id

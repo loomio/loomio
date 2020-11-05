@@ -190,7 +190,7 @@ describe Event do
 
       it 'notify_on_closing_soon = undecided' do
         # a loud user participates, so they dont get a closing soon announcement
-        poll.update(notify_on_closing_soon: 'undecided')
+        poll.update(notify_on_closing_soon: 'undecided_voters')
         stances = [
           create(:stance, poll: poll, cast_at: Time.now, choice: poll.poll_options.first.name, participant: user_thread_loud),
           create(:stance, poll: poll, participant: user_thread_normal)
