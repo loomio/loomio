@@ -37,7 +37,7 @@ export default
 
     menuActions: ->
       @myStance
-      pick PollService.actions(@poll, @), ['edit_poll', 'move_poll', 'close_poll', 'reopen_poll', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread', 'translate_poll']
+      pick PollService.actions(@poll, @), ['edit_poll', 'close_poll', 'reopen_poll', 'notification_history', 'show_history', 'move_poll', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread', 'translate_poll']
 
     dockActions: ->
       @myStance
