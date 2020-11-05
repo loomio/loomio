@@ -34,7 +34,7 @@ export default
         @version.objectChanges[@bodyField]
 
     titleChanges: ->
-      @version.objectChanges.title
+      (@version.objectChanges || {}).title 
 
     bodyLabel: ->
       switch @model.constructor.singular
