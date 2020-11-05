@@ -13,59 +13,14 @@ describe Discussion do
       PaperTrail.enabled = true
     end
 
-    it "doesn't create a new version when unrelevant attribute is edited" do
-      @discussion.update_attribute :author, create(:user)
-      @discussion.should have(@version_count).versions
-    end
+    # it "doesn't create a new version when unrelevant attribute is edited" do
+    #   @discussion.update_attribute :author, create(:user)
+    #   @discussion.should have(@version_count).versions
+    # end
 
     it "creates a new version when discussion.description is edited" do
       @discussion.update_attribute :description, "new description"
       @discussion.should have(@version_count + 1).versions
-    end
-  end
-
-  describe '#inherit_group_privacy' do
-    # provides a default when the discussion is new
-    # when present passes the value on unmodified
-    let(:discussion) { Discussion.new }
-    let(:group) { Group.new }
-
-    subject { discussion.private }
-
-    context "new discussion" do
-      context "with group associated" do
-        before do
-          discussion.group = group
-        end
-
-        context "group is private only" do
-          before do
-            group.discussion_privacy_options = 'private_only'
-            discussion.inherit_group_privacy!
-          end
-          it { should be true }
-        end
-
-        context "group is public or private" do
-          before do
-            group.discussion_privacy_options = 'public_or_private'
-            discussion.inherit_group_privacy!
-          end
-          it { should be_nil }
-        end
-
-        context "group is public only" do
-          before do
-            group.discussion_privacy_options = 'public_only'
-            discussion.inherit_group_privacy!
-          end
-          it { should be false }
-        end
-      end
-
-      context "without group associated" do
-        it { should be_nil }
-      end
     end
   end
 

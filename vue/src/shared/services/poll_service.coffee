@@ -14,7 +14,7 @@ export default new class PollService
       name: 'poll_common_card.show_results'
       canPerform: ->
         false
-        # poll.participantsCount &&
+        # poll.decidedVotersCount &&
         # !poll.pleaseShowResults &&
         # !poll.closedAt? &&
         # !poll.hideResultsUntilClosed &&
@@ -46,7 +46,7 @@ export default new class PollService
             stance: poll.myStance().clone()
 
     notification_history:
-      name: 'action_dock.notification_history'
+      name: 'action_dock.show_notifications'
       icon: 'mdi-alarm-check'
       perform: ->
         openModal
@@ -57,13 +57,15 @@ export default new class PollService
 
     announce_poll:
       icon: 'mdi-send'
+      name: 'action_dock.count_voters'
+      nameArgs: -> {count: poll.votersCount}
       canPerform: ->
         AbilityService.canAnnounceTo(poll)
       perform: ->
         openModal
-          component: 'AnnouncementForm'
+          component: 'PollMembers'
           props:
-            announcement: Records.announcements.buildFromModel(poll)
+            poll: poll
 
     edit_poll:
       name: 'action_dock.edit_poll_type'
@@ -93,7 +95,7 @@ export default new class PollService
 
     show_history:
       icon: 'mdi-history'
-      name: 'action_dock.edited'
+      name: 'action_dock.show_edits'
       canPerform: -> poll.edited()
       perform: ->
         openModal
@@ -126,6 +128,7 @@ export default new class PollService
                   component: 'PollCommonOutcomeModal'
                   props:
                     outcome: Records.outcomes.build
+                      groupId: poll.groupId
                       pollId: poll.id
                       statementFormat: Session.defaultFormat()
               text:

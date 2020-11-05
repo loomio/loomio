@@ -31,7 +31,6 @@ export default
 
   methods:
     submit: ->
-      @poll.customFields.deanonymize_after_close = @poll.deanonymizeAfterClose if @poll.anonymous
       @poll.customFields.can_respond_maybe = @poll.canRespondMaybe if @poll.pollType == 'meeting'
       @poll.setErrors({})
       @poll.save()
@@ -43,8 +42,9 @@ export default
           EventBus.$emit 'pollSaved', poll
           Flash.success "poll_#{poll.pollType}_form.#{poll.pollType}_created"
           EventBus.$emit 'openModal',
-            component: 'AnnouncementForm',
-            props: { announcement: Records.announcements.buildFromModel(poll) }
+            component: 'PollMembers',
+            props:
+              poll: poll
 
       .catch onError(@poll)
 

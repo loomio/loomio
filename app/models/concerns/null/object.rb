@@ -17,6 +17,22 @@ module Null::Object
     end
   end
 
+  def blank?
+    true
+  end
+
+  def present?
+    false
+  end
+
+  def presence
+    nil
+  end
+
+  def marked_for_destruction?
+    false
+  end
+
   def nil_methods
     []
   end

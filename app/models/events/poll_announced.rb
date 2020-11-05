@@ -9,7 +9,6 @@ class Events::PollAnnounced < Event
   end
 
   private
-
   def stances
     Stance.where(id: custom_fields['stance_ids'])
   end

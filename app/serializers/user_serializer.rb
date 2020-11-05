@@ -23,6 +23,6 @@ class UserSerializer < AuthorSerializer
   end
 
   def include_email?
-    scope[:email_user_ids].to_a.include? object.id
+    scope && scope[:include_email]
   end
 end

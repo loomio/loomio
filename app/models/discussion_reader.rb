@@ -22,17 +22,19 @@ class DiscussionReader < ApplicationRecord
                             AND discussion_readers.revoked_at IS NULL') }
 
   update_counter_cache :discussion, :seen_by_count
+  update_counter_cache :discussion, :members_count
 
   def self.for(user:, discussion:)
     if user&.is_logged_in?
-      begin
-        find_or_create_by(user: user, discussion: discussion)
-      rescue ActiveRecord::RecordNotUnique
-        retry
+      find_or_create_by!(user_id: user.id, discussion_id: discussion.id) do |dr|
+        m = user.memberships.find_by(group_id: discussion.group_id)
+        dr.volume = (m && m.volume) || 'normal'
       end
     else
       new(discussion: discussion)
     end
+  rescue ActiveRecord::RecordNotUnique
+    retry
   end
 
   def self.for_model(model, actor = nil)

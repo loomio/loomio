@@ -79,6 +79,9 @@ module.exports = (test, browser) ->
     test.clearValue(selector)
     test.setValue(selector, [value, test.Keys.ENTER])
 
+  escape: ->
+    test.keys(test.Keys.ESCAPE)
+
 
   clear: (selector, wait) ->
     @waitFor(selector, wait)

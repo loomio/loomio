@@ -23,6 +23,7 @@ import ContactPage from './components/contact/page.vue'
 import EmailSettingsPage from './components/email_settings/page.vue'
 import StartDiscussionPage from './components/start_discussion/page.vue'
 import UserPage from './components/user/page.vue'
+import ThreadsPage from './components/threads/page.vue'
 
 import ThreadNav from './components/thread/nav'
 
@@ -72,6 +73,7 @@ export default new Router
   routes: [
     {path: '/dashboard', component: DashboardPage},
     {path: '/dashboard/:filter', component: DashboardPage},
+    {path: '/threads/direct', component: ThreadsPage},
     {path: '/inbox', component: InboxPage },
     {path: '/explore', component: ExplorePage},
     {path: '/profile', component: ProfilePage},

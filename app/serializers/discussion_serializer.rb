@@ -22,6 +22,7 @@ class DiscussionSerializer < ApplicationSerializer
              :last_activity_at,
              :closed_at,
              :seen_by_count,
+             :members_count,
              :created_at,
              :updated_at,
              :private,
@@ -54,6 +55,10 @@ class DiscussionSerializer < ApplicationSerializer
 
   has_many :discussion_tags
   hide_when_discarded [:description, :title]
+
+  def include_group?
+    object.group_id
+  end
 
   def tag_names
     object.info['tag_names'] || []

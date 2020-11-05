@@ -29,12 +29,6 @@ module Events::Notify::InApp
     end
   end
 
-  # which users should receive an in-app notification about this event?
-  # (NB: This must return an ActiveRecord::Relation)
-  def notification_recipients
-    User.none
-  end
-
   # defines the avatar which appears next to the notification
   def notification_actor
     user.presence

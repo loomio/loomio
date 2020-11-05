@@ -1500,7 +1500,7 @@ es:
     notify_group: Anuncio
     members_helptext: El grupo no será notificado
     members_count: "{{count}} personas serán notificadas"
-    participants_count: "Las {{count}} personas que hayan votado serán notificadas"
+    decided_voters_count: "Las {{count}} personas que hayan votado serán notificadas"
   poll_common_calendar_invite:
     calendar_invite: Incluir una invitación al calendario con este resultado
     poll_option_id: 'Horario de reunión '

@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  include ActionView::Helpers::SanitizeHelper
   include Redis::Objects
   include CustomCounterCache::Model
   include HasTimeframe
@@ -11,7 +12,7 @@ class Event < ApplicationRecord
   belongs_to :user, required: false
   belongs_to :parent, class_name: "Event", required: false
   has_many :children, (-> { where("discussion_id is not null") }), class_name: "Event", foreign_key: :parent_id
-  set_custom_fields :pinned_title
+  set_custom_fields :pinned_title, :recipient_user_ids, :recipient_message, :recipient_audience
 
   before_create :set_parent_and_depth
   before_create :set_sequences
@@ -48,11 +49,23 @@ class Event < ApplicationRecord
   delegate :groups, to: :eventable, allow_nil: true
   delegate :update_sequence_info!, to: :discussion, allow_nil: true
 
+  def self.sti_find(id)
+    e = self.find(id)
+    e.kind_class.find(id)
+  end
+
+  def kind_class
+    ("Events::"+kind.classify).constantize
+  end
+
   def self.publish!(eventable, **args)
-    build(eventable, **args).tap(&:save!).tap(&:trigger!)
+    event = build(eventable, **args).tap(&:save!)
+    PublishEventWorker.perform_async(event.id)
+    event
   end
 
   def self.bulk_publish!(eventables, **args)
+    raise 'i hope we dont use this'
     Array(eventables).map { |eventable| build(eventable, **args) }
                      .tap { |events| import(events) }
                      .tap { |events| events.map(&:trigger!) }
@@ -61,7 +74,8 @@ class Event < ApplicationRecord
   def self.build(eventable, **args)
     new({
       kind:       name.demodulize.underscore,
-      eventable:  eventable
+      eventable:  eventable,
+      eventable_version_id: ((eventable.respond_to?(:versions) && eventable.versions.last&.id) || nil)
     }.merge(args))
   end
 
@@ -85,6 +99,10 @@ class Event < ApplicationRecord
 
   def actor
     user
+  end
+
+  def actor_id
+    user_id
   end
 
   def message_channel
@@ -197,5 +215,25 @@ class Event < ApplicationRecord
     else
       original_parent
     end
+  end
+
+  def recipient_message=(val)
+    self.custom_fields[:recipient_message] = strip_tags(val)
+  end
+
+  def email_recipients
+    Queries::UsersByVolumeQuery.email_notifications(eventable).where(id: all_recipient_user_ids)
+  end
+
+  def notification_recipients
+    Queries::UsersByVolumeQuery.app_notifications(eventable).where(id: all_recipient_user_ids)
+  end
+
+  def all_recipients
+    User.active.where(id: all_recipient_user_ids)
+  end
+
+  def all_recipient_user_ids
+    (recipient_user_ids || []).uniq.compact #.without(actor_id)
   end
 end

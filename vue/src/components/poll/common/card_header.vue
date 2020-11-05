@@ -8,7 +8,7 @@ export default
 
   computed:
     groups: ->
-      map compact([@poll.group(), @poll.discussion()]), (model) =>
+      map compact([(@poll.groupId && @poll.group()), @poll.discussion()]), (model) =>
         if model.isA('discussion')
           text: model.name || model.title
           disabled: false

@@ -1,27 +1,15 @@
 class Events::OutcomeCreated < Event
-  include Events::Notify::Author
   include Events::Notify::ThirdParty
   include Events::Notify::Mentions
   include Events::Notify::InApp
+  include Events::Notify::ByEmail
   include Events::LiveUpdate
 
-  def self.publish!(outcome)
-    super outcome,
+  def self.publish!(outcome:, recipient_user_ids: [], recipient_audience: nil)
+    super(outcome,
           user: outcome.author,
-          discussion: outcome.poll.discussion
-  end
-
-  private
-
-  def email_recipients
-    if poll.group.presence
-      super
-    else
-      poll.participants
-    end
-  end
-
-  def notify_author?
-    poll.author_receives_outcome
+          discussion: outcome.poll.stances_in_discussion ? outcome.poll.discussion : nil,
+          recipient_user_ids: recipient_user_ids,
+          recipient_audience: recipient_audience)
   end
 end

@@ -14,6 +14,6 @@ class Events::CommentRepliedTo < Event
   end
 
   def notification_recipients
-    eventable.members.where('users.id': eventable.parent.author_id)
+    eventable.members.where('users.id': eventable.parent.author_id).where.not('users.id': eventable.author_id)
   end
 end

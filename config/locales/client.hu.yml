@@ -1286,7 +1286,7 @@ hu:
     notify_group: Közlemény
     members_helptext: A csoportod nem lesz értesítve
     members_count: "{{count}} embert értesítünk"
-    participants_count: "A(z) {{count}} szavazót értesítjük"
+    decided_voters_count: "A(z) {{count}} szavazót értesítjük"
   poll_common_calendar_invite:
     calendar_invite: Mellékelj egy naptármeghívást ezzel az eredménnyel
     poll_option_id: Találkozási idő

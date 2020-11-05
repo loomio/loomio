@@ -7,14 +7,15 @@ import EventBus from '@/shared/services/event_bus'
 export default
   props:
     poll: Object
+
   methods:
     showPanel: ->
-      !@poll.outcome() and AbilityService.canSetPollOutcome(@poll)
+      AbilityService.canSetPollOutcome(@poll)
 
     openOutcomeForm: ->
-      outcome = @poll.outcome() or
-      Records.outcomes.build
+      outcome = Records.outcomes.build
         pollId: @poll.id
+        groupId: @poll.groupId
         statementFormat: Session.defaultFormat()
       EventBus.$emit 'openModal',
         component: 'PollCommonOutcomeModal'

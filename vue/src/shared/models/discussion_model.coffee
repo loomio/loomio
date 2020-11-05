@@ -4,6 +4,7 @@ import Session          from '@/shared/services/session'
 import RangeSet         from '@/shared/services/range_set'
 import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
+import NullGroupModel   from '@/shared/models/null_group_model'
 import { isAfter } from 'date-fns'
 import dateIsEqual from 'date-fns/isEqual'
 import { isEqual, isEmpty, filter, some, head, last, sortBy, find, min, max, isArray, throttle } from 'lodash'
@@ -20,7 +21,9 @@ export default class DiscussionModel extends BaseModel
     HasTranslations.apply @
 
   defaultValues: ->
-    private: null
+    id: null
+    key: null
+    private: true
     usesMarkdown: true
     lastItemAt: null
     title: ''
@@ -34,34 +37,30 @@ export default class DiscussionModel extends BaseModel
     files: []
     imageFiles: []
     attachments: []
+    recipientMessage: null
+    recipientAudience: null
+    recipientUserIds: []
+    recipientEmails: []
+    groupId: null
 
   audienceValues: ->
     name: @group().name
 
   privateDefaultValue: =>
-    if @group()
-      switch @group().discussionPrivacyOptions
-        when 'private_only' then true
-        when 'public_or_private' then true
-        when 'public_only' then false
-    else
-      null
+    @group().discussionPrivacyOptions != 'public_only'
 
   relationships: ->
-    # @hasMany 'comments', sortBy: 'createdAt'
-    # @hasMany 'events', sortBy: 'sequenceId'
     @hasMany 'polls', sortBy: 'createdAt', sortDesc: true
-    # @hasMany 'versions', sortBy: 'createdAt'
-    @belongsTo 'group'
+    @belongsTo 'group', ifNull: -> new NullGroupModel()
     @belongsTo 'author', from: 'users'
+    @hasMany 'discussionReaders'
     # @belongsTo 'createdEvent', from: 'events'
     # @belongsTo 'forkedEvent', from: 'events'
 
   discussion: -> @
 
   members: ->
-    # pull out the discussion_readers user_ids
-    @recordStore.users.find(@group().memberIds())
+    @recordStore.users.find(@group().memberIds().concat(map(@discussionReaders(), 'userId')))
 
   membersInclude: (user) ->
     (@inviterId && !@revokedAt && Session.user() == user) or
@@ -142,11 +141,12 @@ export default class DiscussionModel extends BaseModel
   membership: ->
     @recordStore.memberships.find(userId: AppConfig.currentUserId, groupId: @groupId)[0]
 
-  membershipVolume: ->
-    @membership().volume if @membership()
+  # membershipVolume: ->
+  #   @membership().volume if @membership()
+  #
 
   volume: ->
-    @discussionReaderVolume or @membershipVolume()
+    @discussionReaderVolume #or @membershipVolume()
 
   saveVolume: (volume, applyToAll = false) =>
     @processing = true

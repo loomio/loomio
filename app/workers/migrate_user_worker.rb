@@ -33,7 +33,6 @@ class MigrateUserWorker
     oauth_applications: :owner_id,
     omniauth_identities: :user_id,
     outcomes: :author_id,
-    poll_unsubscriptions: :user_id,
     polls: :author_id,
     versions: :whodunnit
   }.freeze
@@ -80,8 +79,8 @@ class MigrateUserWorker
       destination.group_polls,
       destination.participated_polls
     ].flatten.uniq.each do |poll|
-      poll.update_undecided_count
-      poll.update_stances_count
+      poll.update_undecided_voters_count
+      poll.update_voters_count
       poll.update_stance_data
     end
 

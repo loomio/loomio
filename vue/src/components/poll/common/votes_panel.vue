@@ -62,8 +62,8 @@ export default
     .subtitle-1(v-t="'poll_common.votes'")
     v-spacer
     v-select(style="max-width: 200px" dense solo v-model='order' :items="sortOptions" @change='refresh()' aria-label="$t('poll_common_votes_panel.change_results_order')")
-  .poll-common-votes-panel__no-votes(v-if='!poll.stancesCount' v-t="'poll_common_votes_panel.no_votes_yet'")
-  .poll-common-votes-panel__has-votes(v-if='poll.stancesCount')
+  .poll-common-votes-panel__no-votes(v-if='!poll.votersCount' v-t="'poll_common_votes_panel.no_votes_yet'")
+  .poll-common-votes-panel__has-votes(v-if='poll.votersCount')
     .poll-common-votes-panel__stance(v-for='stance in latestStances' :key='stance.id')
       .poll-common-votes-panel__avatar.pr-3
         user-avatar(:user='stance.participant()' size='24')
@@ -78,7 +78,7 @@ export default
           v-layout(v-if="!poll.singleChoice()" wrap align-center)
             poll-common-stance-choice(:stance-choice='choice' :poll='poll' v-if='choice.show()' v-for='choice in stance.orderedStanceChoices()' :key='choice.id')
           formatted-text.poll-common-stance-created__reason(:model="stance" column="reason")
-    v-btn(v-if='loader.limit() < poll.stancesCount' v-t="'common.action.load_more'" @click='loader.fetchRecords()')
+    v-btn(v-if='loader.limit() < poll.votersCount' v-t="'common.action.load_more'" @click='loader.fetchRecords()')
 </template>
 
 <style lang="sass">

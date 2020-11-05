@@ -9,30 +9,42 @@ export default
     discussion: null
     isDisabled: false
     group: null
+    user: null
 
   mounted: ->
     @init()
 
+  watch:
+    '$route.query.group_id': 'init'
+    '$route.params.key': 'init'
+
   methods:
     init: ->
-      EventBus.$emit 'currentComponent', { page: 'startDiscussionPage' }
+      EventBus.$emit 'currentComponent', { page: 'startDiscussionPage', titleKey: 'discussion_form.new_discussion_title' }
 
       if Session.isSignedIn()
         if @$route.params.key
           Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>
-            @group = discussion.group()
-            @discussion = discussion
-        else
-          Records.groups.findOrFetchById(parseInt(@$route.query.group_id)).then (group) =>
-            @group = group
+            @discussion = discussion.clone()
+        else if parseInt(@$route.query.group_id)
+          Records.groups.findOrFetchById(parseInt(@$route.query.group_id)).then =>
             @discussion = Records.discussions.build
-              title:       @$route.query.title
-              groupId:     parseInt(@$route.query.group_id)
+              title: @$route.query.title
+              groupId: parseInt(@$route.query.group_id)
+        else if parseInt(@$route.query.user_id)
+          Records.users.findOrFetchById(parseInt(@$route.query.user_id)).then (user) =>
+            @user = user
+            @discussion = Records.discussions.build
+              title: @$route.query.title
+              groupId: null
+        else
+          @discussion = Records.discussions.build
+            title:       @$route.query.title
 
 </script>
 <template lang="pug">
 v-main
   v-container.start-discussion-page.max-width-800
     v-card
-      discussion-form(v-if="group && discussion" :discussion='discussion' is-page)
+      discussion-form(v-if="discussion" :discussion='discussion' is-page :key="discussion.id" :user="user")
 </template>

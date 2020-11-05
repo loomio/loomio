@@ -30,4 +30,19 @@ describe OutcomeService do
       expect { OutcomeService.create(outcome: new_outcome, actor: user) }.to raise_error { CanCan::AccessDenied }
     end
   end
+
+  describe 'publish_review_due' do
+    it 'publishes a due revuew, and only once' do
+      outcome.update_attribute(:review_on, Date.today)
+      expect {OutcomeService.publish_review_due}.to change {Events::OutcomeReviewDue.count}.by(1)
+      expect {OutcomeService.publish_review_due}.to change {Events::OutcomeReviewDue.count}.by(0)
+      last_email = ActionMailer::Base.deliveries.last
+      expect(last_email.to).to include outcome.author.email
+    end
+
+    it 'does not publish null review_on' do
+      outcome.update_attribute(:review_on, nil)
+      expect {OutcomeService.publish_review_due}.to change {Events::OutcomeReviewDue.count}.by(0)
+    end
+  end
 end

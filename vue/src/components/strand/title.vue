@@ -20,7 +20,7 @@ export default
 </script>
 
 <template lang="pug">
-.thread-title.mb-4
+.thread-title
   //- span
   //- v-spacer
   //- span.grey--text.body-2

@@ -10,8 +10,6 @@ class Events::PollExpired < Event
           created_at: poll.closed_at
   end
 
-  private
-
   # email the author and create an in-app notification
   def email_author!
     super

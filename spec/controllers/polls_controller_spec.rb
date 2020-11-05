@@ -55,21 +55,4 @@ describe PollsController do
       get :export, params: { key: poll.key }
     end
   end
-
-  describe 'unsubscribe' do
-    it 'unsubscribes from a poll' do
-      sign_in user
-      expect { get :unsubscribe, params: { key: poll.key } }.to change { poll.unsubscribers.count }.by(1)
-    end
-
-    it 'does not remove unsubscriptions' do
-      sign_in user
-      PollUnsubscription.create(user: user, poll: poll)
-      expect { get :unsubscribe, params: { key: poll.key } }.to_not change { poll.unsubscribers.count }
-    end
-
-    it 'can unsubscribe via unsubscribe token' do
-      expect { get :unsubscribe, params: { key: poll.key, unsubscribe_token: user.unsubscribe_token } }.to change { poll.unsubscribers.count }.by(1)
-    end
-  end
 end

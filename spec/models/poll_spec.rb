@@ -105,14 +105,14 @@ describe Poll do
 
     it 'increments voters when a vote is created' do
       expect { create(:stance, poll: poll, participant: user) }.to change { poll.voters.count }.by(1)
-      expect { create(:stance, poll: poll, participant: user) }.to change { poll.participants.count }.by(0)
-      expect { create(:stance, poll: poll, participant: user) }.to change { poll.undecided.count }.by(1)
+      expect { create(:stance, poll: poll, participant: user) }.to change { poll.decided_voters.count }.by(0)
+      expect { create(:stance, poll: poll, participant: user) }.to change { poll.undecided_voters.count }.by(1)
     end
 
     it 'increments participants when a vote is cast' do
       expect { create(:stance, poll: poll, choice: poll.poll_option_names.first, participant: user) }.to change { poll.voters.count }.by(1)
-      expect { create(:stance, poll: poll, choice: poll.poll_option_names.first, participant: user) }.to change { poll.participants.count }.by(1)
-      expect { create(:stance, poll: poll, choice: poll.poll_option_names.first, participant: user) }.to change { poll.undecided.count }.by(0)
+      expect { create(:stance, poll: poll, choice: poll.poll_option_names.first, participant: user) }.to change { poll.decided_voters.count }.by(1)
+      expect { create(:stance, poll: poll, choice: poll.poll_option_names.first, participant: user) }.to change { poll.undecided_voters.count }.by(0)
     end
   end
 

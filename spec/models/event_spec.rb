@@ -3,19 +3,19 @@ require 'rails_helper'
 # test emails and notifications being sent by events
 describe Event do
   let(:all_emails_disabled) { {email_when_proposal_closing_soon: false} }
-  let(:user_left_group) { create :user, all_emails_disabled }
-  let(:user_thread_loud) { create :user, all_emails_disabled }
-  let(:user_thread_normal) { create :user, all_emails_disabled }
-  let(:user_thread_quiet) { create :user, all_emails_disabled }
-  let(:user_thread_mute) { create :user, all_emails_disabled }
-  let(:user_membership_loud) { create :user, all_emails_disabled }
-  let(:user_membership_normal) { create :user, all_emails_disabled }
-  let(:user_membership_quiet) { create :user, all_emails_disabled }
-  let(:user_membership_mute) { create :user, all_emails_disabled }
-  let(:user_motion_closing_soon) { create :user, all_emails_disabled.merge(email_when_proposal_closing_soon: true) }
-  let(:user_mentioned) { create :user }
+  let(:user_left_group) { create :user, {name: 'left group'}.merge(all_emails_disabled)  }
+  let(:user_thread_loud) { create :user, {name: 'thread loud'}.merge(all_emails_disabled) }
+  let(:user_thread_normal) { create :user, {name: 'thread normal'}.merge(all_emails_disabled)  }
+  let(:user_thread_quiet) { create :user, {name: 'thread quiet'}.merge(all_emails_disabled)  }
+  let(:user_thread_mute) { create :user, {name: 'thread mute'}.merge(all_emails_disabled)  }
+  let(:user_membership_loud) { create :user, {name: 'membership loud'}.merge(all_emails_disabled)  }
+  let(:user_membership_normal) { create :user, {name: 'membership loud'}.merge(all_emails_disabled)  }
+  let(:user_membership_quiet) { create :user, {name: 'membership loud'}.merge(all_emails_disabled)  }
+  let(:user_membership_mute) { create :user, {name: 'membership loud'}.merge(all_emails_disabled)  }
+  let(:user_motion_closing_soon) { create :user, all_emails_disabled.merge(name: 'motion closing sooon', email_when_proposal_closing_soon: true) }
+  let(:user_mentioned) { create :user, name: 'mentioned' }
   let(:user_mentioned_text) { "Hello @#{user_mentioned.username}" }
-  let(:user_unsubscribed) { create :user }
+  let(:user_unsubscribed) { create :user, name: 'user unsubscribed' }
 
   let(:author) { create :user }
   let(:discussion) { create :discussion, description: user_mentioned_text, author: author }
@@ -23,7 +23,6 @@ describe Event do
   let(:parent_comment) { create :comment, discussion: discussion}
   let(:comment) { create :comment, parent: parent_comment, discussion: discussion, body: 'hey @sam' }
   let(:poll) { create :poll, discussion: discussion, details: user_mentioned_text, author: author }
-  let(:outcome) { create :outcome, poll: poll, statement: user_mentioned_text, author: author }
   let!(:markdown_webhook) { create(:webhook, group: discussion.group, format: 'markdown') }
   let!(:slack_webhook) { create(:webhook, group: discussion.group, format: 'slack') }
   let!(:microsoft_webhook) { create(:webhook, group: discussion.group, format: 'microsoft') }
@@ -66,9 +65,6 @@ describe Event do
     discussion.group.add_member!(user_motion_closing_soon).set_volume! :mute
 
     poll.save
-
-    # create an unsubscription for a poll user
-    poll.poll_unsubscriptions.create(user: user_unsubscribed)
   end
 
   it 'new_comment' do
@@ -115,9 +111,33 @@ describe Event do
 
   describe 'new_discussion' do
     it 'notifies mentioned users' do
-      expect { Events::NewDiscussion.publish!(discussion) }.to change { emails_sent }.by(1) # (the mentioned user)
+      expect { Events::NewDiscussion.publish!(discussion: discussion) }.to change { emails_sent }.by(1) # (the mentioned user)
       expect(Events::UserMentioned.last.custom_fields['user_ids']).to include user_mentioned.id
     end
+
+    # we need to do entirely new setup for this and poll cases, but they work
+    # it 'notifies users' do
+    #   DiscussionReader.delete_all
+    #   discussion.description = ''
+    #
+    #   discussion.group.memberships.where(user_id: [user_thread_normal, user_thread_loud]).update_all(volume: 1)
+    #
+    #   expect { e = Events::NewDiscussion.publish!(discussion: discussion,
+    #                                               recipient_user_ids: [user_thread_normal.id, user_thread_quiet.id]) }.to change { emails_sent }.by(1) # (the mentioned user)
+    #
+    #
+    #   expect(DiscussionReader.where(discussion_id: discussion.id).count).to eq 2
+    #
+    #   byebug
+    #   email_users = Events::NewDiscussion.last.send(:email_recipients)
+    #   expect(email_users.length).to eq 1
+    #   expect(email_users).to include user_thread_normal
+    #
+    #   notify_users = Events::NewDiscussion.last.send(:notification_recipients)
+    #   expect(notify_users.length).to eq 2
+    #   expect(notify_users).to include user_thread_normal
+    #   expect(notify_users).to include user_thread_quiet
+    # end
   end
 
   describe 'poll_created' do
@@ -136,56 +156,45 @@ describe Event do
     it 'notifies mentioned users' do
       Events::PollCreated.publish!(poll, poll.author)
       poll.update(details: "#{poll.details} and @#{user_thread_loud.username}")
-      expect { Events::PollEdited.publish!(poll, poll.author) }.to change { Events::UserMentioned.where(kind: :user_mentioned).count }.by(1) # (the newly mentioned user)
+      expect { Events::PollEdited.publish!(poll: poll) }.to change { Events::UserMentioned.where(kind: :user_mentioned).count }.by(1) # (the newly mentioned user)
       expect(Events::UserMentioned.last.custom_fields['user_ids']).to include user_thread_loud.id
     end
   end
 
   describe 'poll_closing_soon' do
-    describe 'voters_review_responses' do
-      it 'should notify previously notified users when voters_review_responses is true' do
-        poll = create(:poll_proposal, discussion: discussion)
-        stances = [
-          create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud),
-          create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_normal)
-        ]
+    describe 'notify_on_closing_soon = voters' do
+      it 'should notify voters' do
+        poll.update(notify_on_closing_soon: 'voters')
 
-        Events::PollAnnounced.publish!(poll, poll.author, stances)
+        create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
+        create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_normal)
+        create(:stance, poll: poll, choice: poll.poll_options.first.name, volume: 'quiet', participant: user_thread_quiet)
+        create(:stance, poll: poll, choice: poll.poll_options.first.name, volume: 'mute', participant: user_thread_mute)
 
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
-
 
         notified_users = Events::PollClosingSoon.last.send(:notification_recipients)
         notified_users.should include user_thread_loud
         notified_users.should include user_thread_normal
-        notified_users.should_not include user_thread_quiet
-        notified_users.should_not include user_membership_quiet
-        notified_users.should_not include user_thread_quiet
-        notified_users.should_not include user_membership_mute
+        notified_users.should include user_thread_quiet
         notified_users.should_not include user_thread_mute
-        notified_users.should_not include user_unsubscribed
-        notified_users.should_not include poll.author
+        expect(notified_users.count).to eq 3
 
         emailed_users = Events::PollClosingSoon.last.send(:email_recipients)
         emailed_users.should include user_thread_loud
         emailed_users.should include user_thread_normal
-        emailed_users.should_not include user_membership_quiet
         emailed_users.should_not include user_thread_quiet
-        emailed_users.should_not include user_membership_mute
         emailed_users.should_not include user_thread_mute
-        emailed_users.should_not include user_unsubscribed
-        emailed_users.should_not include poll.author
+        expect(emailed_users.count).to eq 2
       end
 
-      it 'should notify previously notified users who have not participated when voters_review_responses is false' do
+      it 'notify_on_closing_soon = undecided' do
         # a loud user participates, so they dont get a closing soon announcement
+        poll.update(notify_on_closing_soon: 'undecided_voters')
         stances = [
-          create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud),
+          create(:stance, poll: poll, cast_at: Time.now, choice: poll.poll_options.first.name, participant: user_thread_loud),
           create(:stance, poll: poll, participant: user_thread_normal)
         ]
-
-        # quiet user who has been announced to before
-        Events::PollAnnounced.publish!(poll, poll.author, stances)
 
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
 
@@ -198,6 +207,28 @@ describe Event do
         emailed_users.should_not include user_thread_loud
         emailed_users.should include user_thread_normal
         emailed_users.should_not include user_thread_quiet
+      end
+
+      it 'notify_on_closing_soon = author' do
+        poll.update(notify_on_closing_soon: 'author')
+        expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }.by(1)
+        expect(Events::PollClosingSoon.last.send(:notify_author?)).to be true
+      end
+
+      it 'notify_on_closing_soon = nobody' do
+        poll.update(notify_on_closing_soon: 'nobody')
+        stances = [
+          create(:stance, poll: poll, cast_at: Time.now, choice: poll.poll_options.first.name, participant: user_thread_loud),
+          create(:stance, poll: poll, participant: user_thread_normal)
+        ]
+
+        expect { Events::PollClosingSoon.publish!(poll) }.to_not change { emails_sent }
+
+        notified_users = Events::PollClosingSoon.last.send(:notification_recipients)
+        expect(notified_users.count).to eq 0
+
+        emailed_users = Events::PollClosingSoon.last.send(:email_recipients)
+        expect(emailed_users.count).to eq 0
       end
     end
   end
@@ -215,6 +246,8 @@ describe Event do
     end
   end
 
+  let(:outcome) { create :outcome, poll: poll, statement: user_mentioned_text, author: author }
+
   describe 'outcome_created' do
     let(:poll_meeting) { create :poll_meeting, discussion: discussion }
 
@@ -223,7 +256,8 @@ describe Event do
     end
 
     it 'notifies mentioned users and the author' do
-      expect { Events::OutcomeCreated.publish!(outcome) }.to change { emails_sent }.by(2) # mentioned user and the author
+      expect { Events::OutcomeCreated.publish!(outcome: outcome,
+                                               recipient_user_ids: [outcome.author.id]) }.to change { emails_sent }.by(2) # mentioned user and the author
       expect(Events::UserMentioned.last.custom_fields['user_ids']).to include user_mentioned.id
       recipients = ActionMailer::Base.deliveries.map(&:to).flatten
       expect(recipients).to include user_mentioned.email
@@ -234,34 +268,30 @@ describe Event do
   describe 'stance_created' do
     let(:stance) { create :stance, poll: poll }
 
-    it 'notifies the author if notify_on_participate' do
-      poll.update(notify_on_participate: true)
+    it 'notifies the author if her volume is loud' do
+      poll.stances.create(participant: poll.author, volume: 'loud')
       expect { Events::StanceCreated.publish!(stance) }.to change { emails_sent }
+
       email_users = Events::StanceCreated.last.send(:email_recipients)
-      expect(email_users.length).to eq 1
+      expect(email_users.length).to eq 3
       expect(email_users).to include poll.author
-
-      notification_users = Events::StanceCreated.last.send(:notification_recipients)
-      expect(notification_users.length).to eq 1
-      expect(notification_users).to include poll.author
+      expect(email_users).to include user_thread_loud
+      expect(email_users).to include user_membership_loud
     end
 
-    it 'does not notify the author of her own stance' do
-      poll.update(notify_on_participate: true)
-      stance.update(participant: poll.author)
-      expect { Events::StanceCreated.publish!(stance) }.to_not change { emails_sent }
-      expect(Events::StanceCreated.last.send(:email_recipients)).to be_empty
-      expect(Events::StanceCreated.last.send(:notification_recipients)).to be_empty
-    end
+    it 'does not notify the author her voume is normal' do
+      stance = poll.stances.create(participant: poll.author, volume: 'normal')
+      expect { Events::StanceCreated.publish!(stance) }.to change { emails_sent }
 
-    it 'does not notify the author if not notify_on_participate' do
-      expect { Events::StanceCreated.publish!(stance) }.to_not change { emails_sent }
-      expect(Events::StanceCreated.last.send(:email_recipients)).to be_empty
-      expect(Events::StanceCreated.last.send(:notification_recipients)).to be_empty
+      email_users = Events::StanceCreated.last.send(:email_recipients)
+      expect(email_users.length).to eq 2
+      expect(email_users).to include user_thread_loud
+      expect(email_users).to include user_membership_loud
     end
 
     it 'does not notify deactivated users' do
-      poll.author.update(deactivated_at: 1.day.ago)
+      [user_thread_loud, user_membership_loud].each {|u| u.update(deactivated_at: Time.now) }
+      stance = poll.stances.create(participant: poll.author, volume: 'normal')
       expect { Events::StanceCreated.publish!(stance) }.to_not change { emails_sent }
       email_users = Events::StanceCreated.last.send(:email_recipients)
       expect(email_users).to be_empty
@@ -277,19 +307,15 @@ describe Event do
       Stance.create(participant: user, poll: poll)
     end
 
-    it 'does not email people with thread quiet' do
+    it 'does not email people with stance volume quiet' do
+      stance = Stance.create(participant: user_thread_normal, poll: poll, volume: :quiet)
       expect {
-        Events::PollAnnounced.publish!(poll, poll.author, [stance_for(user_thread_quiet)])
-      }.to_not change { emails_sent }
-    end
-
-    it 'does not email people with group quiet' do
-      expect {
-        Events::PollAnnounced.publish!(poll, poll.author, [stance_for(user_membership_quiet)])
+        Events::PollAnnounced.publish!(poll, poll.author, [stance])
       }.to_not change { emails_sent }
     end
 
     it 'sends invitations' do
+      stance = Stance.create(participant: user_thread_normal, poll: poll)
       expect {
         Events::PollAnnounced.publish!(poll, poll.author, [stance_for(user_thread_normal)])
       }.to change { emails_sent }.by(1)
@@ -297,14 +323,14 @@ describe Event do
 
     it 'notifies the author if the eventable is an appropriate outcome' do
       expect {
-        Events::OutcomeAnnounced.publish!(outcome, poll.author, [user_thread_normal])
-      }.to change { emails_sent }.by(1)
+        Events::OutcomeCreated.publish!(outcome:outcome, recipient_user_ids: [poll.author.id, user_thread_normal.id])
+      }.to change { emails_sent }.by(2)
     end
 
     it 'can send an ical attachment with an outcome' do
       outcome.update(poll: poll_meeting, calendar_invite: "SOME_EVENT_INFO")
       expect {
-        Events::OutcomeAnnounced.publish!(outcome, poll.author, [user_thread_normal])
+        Events::OutcomeCreated.publish!(outcome: outcome, recipient_user_ids: [poll.author.id, user_thread_normal.id])
       }.to change { emails_sent }
       mail = ActionMailer::Base.deliveries.last
       expect(mail.attachments).to have(1).attachment

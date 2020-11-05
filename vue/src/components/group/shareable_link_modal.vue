@@ -14,9 +14,6 @@ export default
   data: ->
     dialog: false
 
-  mounted: ->
-    @group.fetchToken()
-
   methods:
     error: ->
       Flash.error('invitation_form.error')
@@ -45,6 +42,10 @@ export default
 
     canAddMembers: ->
       AbilityService.canAddMembersToGroup(@group) && !@pending
+
+  watch:
+    dialog: (val) ->
+      @group.fetchToken() if !!val
 
 </script>
 

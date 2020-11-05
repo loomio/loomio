@@ -2,33 +2,40 @@ module GroupService
   def self.announce(group:, params:, actor:)
     actor.ability.authorize! :announce, group
 
-    invited_group_ids = Array(params[:invited_group_ids]).map(&:to_i)
+    group_ids = if params[:invited_group_ids]
+      Array(params[:invited_group_ids])
+    else
+      Array(group.id)
+    end
+
+    groups = Group.where(id: group_ids).filter { |g| actor.can?(:add_members, g) }
 
     users = UserInviter.where_or_create!(inviter: actor,
-                                         emails: params[:emails],
-                                         user_ids: params[:user_ids])
+                                         emails: params[:recipient_emails],
+                                         user_ids: params[:recipient_user_ids])
 
-    new_memberships = users.where.not(id: group.all_member_ids).map do |user|
-      Membership.new inviter: actor,
-                     user: user,
-                     group: group,
-                     volume: 2,
-                     experiences: {invited_group_ids: invited_group_ids}.compact
-    end
-
-    Membership.import(new_memberships, on_duplicate_key_ignore: true)
-
-    if group.parent
-      existing_parent_members = group.parent.accepted_members.where(id: users.verified.pluck(:id))
-      Membership.pending.where(group_id: group.id, user_id: existing_parent_members.pluck(:id)).each do |m|
-        AcceptMembershipWorker.perform_async(m.id, m.user_id)
+    groups.each do |g|
+      memberships = users.map do |user|
+        Membership.new(inviter: actor, user: user, group: g, volume: 2)
       end
+
+      Membership.import(memberships, on_duplicate_key_ignore: true)
+
+      # mark as accepted all invitiations to people who are already part of the org.
+      if g.parent
+        parent_members = g.parent.accepted_members.where(id: users.verified.pluck(:id))
+        Membership.pending.where(group_id: g.id,
+                                 user_id: parent_members.pluck(:id)).update_all(accepted_at: Time.now)
+      end
+
+      g.update_pending_memberships_count
+      g.update_memberships_count
     end
 
-    group.update_pending_memberships_count
-    group.update_memberships_count
+    # email should say, so and so has invited you to the following loomio groups.
+    # or so and so has added you to the following loomio groups.
     all_memberships = Membership.not_archived.where(group_id: group.id, user_id: users.pluck(:id))
-    Events::AnnouncementCreated.publish!(group, actor, all_memberships)
+    Events::AnnouncementCreated.publish!(group, actor, all_memberships, params[:message])
     all_memberships
   end
 

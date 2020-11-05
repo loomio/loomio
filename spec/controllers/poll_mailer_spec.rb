@@ -39,6 +39,14 @@ describe Dev::PollsController do
       expect_text('.poll-mailer-common-responses', "Responses")
     end
 
+    it "#{poll_type} outcome_review_due email" do
+      get :test_poll_scenario, params: {scenario: 'poll_outcome_review_due', poll_type: poll_type, email: true}
+      expect_subject("poll_mailer.header.outcome_review_due")
+      expect_text('.poll-mailer-common-summary', "Outcome")
+      expect_text('.poll-mailer__results-chart', "Results")
+      expect_text('.poll-mailer-common-responses', "Responses")
+    end
+
     it "anonymous #{poll_type} outcome_created email" do
       get :test_poll_scenario, params: {scenario: 'poll_outcome_created', poll_type: poll_type, anonymous: true, email: true}
       expect_subject("poll_mailer.header.outcome_created")

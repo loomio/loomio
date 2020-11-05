@@ -131,10 +131,11 @@ export default class BaseModel
     values =
       from: name + 's'
       by: name + 'Id'
+      ifNull: -> null
 
     args = assign values, userArgs
 
-    @[name] = => @recordStore[args.from].find(@[args.by])
+    @[name] = => @recordStore[args.from].find(@[args.by]) || args.ifNull()
     @[name+'Is'] = (obj) => @recordStore[args.from].find(@[args.by]) == obj
 
   translationOptions: ->

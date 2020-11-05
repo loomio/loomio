@@ -40,6 +40,7 @@ describe DiscussionsController do
       expect(response.status).to eq 200
       expect(assigns(:discussion)).to eq discussion
     end
+
     it 'signed out, displays an xml feed' do
       discussion.update(private: false)
       get :show, params: { key: discussion.key }, format: :xml

@@ -1371,7 +1371,7 @@ uk:
     notify_group: Оголошення
     members_helptext: Ваша група не отримає сповіщення
     members_count: "{{count}} людей буде сповіщено"
-    participants_count: "{{count}} людей які проголосували буде сповіщено"
+    decided_voters_count: "{{count}} людей які проголосували буде сповіщено"
   poll_common_calendar_invite:
     calendar_invite: Включити запрошення з календаря з цим результатом
     poll_option_id: Час зустрічі

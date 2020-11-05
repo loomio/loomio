@@ -10,26 +10,19 @@ export default new class OutcomeService
     react:
       canPerform: -> AbilityService.canReactToPoll(poll)
 
-    # notification_history:
-    #   name: 'action_dock.notification_history'
-    #   icon: 'mdi-alarm-check'
+    #
+    # announce_outcome:
+    #   icon: 'mdi-send'
+    #   name: 'action_dock.notify'
+    #   active: -> outcome.announcementsCount == 0
+    #   canPerform: -> AbilityService.canSetPollOutcome(poll)
     #   perform: ->
     #     openModal
-    #       component: 'AnnouncementHistory'
+    #       component: 'AnnouncementForm'
     #       props:
-    #         model: outcome
-    #   canPerform: -> true
+    #         announcement: Records.announcements.buildFromModel(outcome)
+    #
 
-    announce_outcome:
-      icon: 'mdi-send'
-      name: 'action_dock.notify'
-      active: -> outcome.announcementsCount == 0
-      canPerform: -> AbilityService.canSetPollOutcome(poll)
-      perform: ->
-        openModal
-          component: 'AnnouncementForm'
-          props:
-            announcement: Records.announcements.buildFromModel(outcome)
 
     edit_outcome:
       name: 'common.action.edit'
@@ -39,7 +32,28 @@ export default new class OutcomeService
         openModal
           component: 'PollCommonOutcomeModal',
           props:
-            outcome: outcome
+            outcome: outcome.clone()
+
+    show_history:
+      icon: 'mdi-history'
+      name: 'action_dock.show_edits'
+      canPerform: -> outcome.edited()
+      perform: ->
+        openModal
+          component: 'RevisionHistoryModal'
+          props:
+            model: outcome
+
+    notification_history:
+      name: 'action_dock.show_notifications'
+      icon: 'mdi-alarm-check'
+      perform: ->
+        openModal
+          component: 'AnnouncementHistory'
+          props:
+            model: outcome
+      canPerform: -> true
+
 
     translate_outcome:
       name: 'common.action.translate'

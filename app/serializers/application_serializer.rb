@@ -29,6 +29,10 @@ class ApplicationSerializer < ActiveModel::Serializer
     include_type?('discussion')
   end
 
+  def include_poll?
+    include_type?('poll')
+  end
+
   def include_created_event?
     include_type?('event')
   end
@@ -38,7 +42,7 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def include_group?
-    include_type?('group')
+    include_type?('group') && object.group_id
   end
 
   def include_active_polls?
@@ -86,7 +90,7 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def include_inviter?
-    include_type?('user')
+    include_type?('inviter')
   end
 
   def include_outcome?

@@ -2,6 +2,7 @@ import BaseModel        from '@/shared/record_store/base_model'
 import AppConfig        from '@/shared/services/app_config'
 import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
+import NullGroupModel   from '@/shared/models/null_group_model'
 import {capitalize} from 'lodash'
 
 export default class OutcomeModel extends BaseModel
@@ -16,6 +17,11 @@ export default class OutcomeModel extends BaseModel
     files: []
     imageFiles: []
     attachments: []
+    recipientUserIds: []
+    recipientEmails: []
+    recipientAudience: null
+    groupId: null
+    reviewOn: null
 
   afterConstruction: ->
     HasDocuments.apply @
@@ -24,6 +30,7 @@ export default class OutcomeModel extends BaseModel
   relationships: ->
     @belongsTo 'author', from: 'users'
     @belongsTo 'poll'
+    @belongsTo 'group', ifNull: -> new NullGroupModel()
     @belongsTo 'pollOption'
 
   reactions: ->
@@ -33,9 +40,6 @@ export default class OutcomeModel extends BaseModel
 
   authorName: ->
     @author().nameWithTitle(@poll().group())
-
-  group: ->
-    @poll().group() if @poll()
 
   members: ->
     @poll().members()

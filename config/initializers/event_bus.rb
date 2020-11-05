@@ -36,7 +36,7 @@ EventBus.configure do |config|
   end
 
   # update discussion or comment versions_count when title or description edited
-  config.listen('discussion_update', 'comment_update', 'poll_update', 'stance_update') { |model| model.update_versions_count }
+  config.listen('discussion_update', 'comment_update', 'poll_update', 'stance_update', 'outcome_update') { |model| model.update_versions_count }
 
   # update discussion importance
   config.listen('discussion_pin',

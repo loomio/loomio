@@ -17,10 +17,23 @@ class Dev::NightwatchController < Dev::BaseController
   include Dev::Scenarios::Tags
   # include Dev::Scenarios::Legacy
 
+  before_action :redis_flushall, except: [
+    :last_email,
+    :use_last_login_token,
+    :index,
+    :accept_last_invitation,
+  ]
   before_action :cleanup_database, except: [
     :last_email,
     :use_last_login_token,
     :index,
     :accept_last_invitation,
   ]
+
+
+  def redis_flushall
+    CHANNELS_REDIS_POOL.with do |client|
+      client.flushall
+    end
+  end
 end

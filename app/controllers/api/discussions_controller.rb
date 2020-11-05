@@ -13,6 +13,10 @@ class API::DiscussionsController < API::RestfulController
     respond_with_resource
   end
 
+  def create_action
+    @event = service.create({resource_symbol => resource, actor: current_user, params: resource_params})
+  end
+
   def show
     load_and_authorize(:discussion)
     accept_pending_membership
@@ -31,6 +35,12 @@ class API::DiscussionsController < API::RestfulController
     raise CanCan::AccessDenied.new unless current_user.is_logged_in?
     @accessible_records = DiscussionQuery.visible_to(user: current_user, or_public: false, or_subgroups: false)
     instantiate_collection { |collection| collection.is_open.order_by_importance }
+    respond_with_collection
+  end
+
+  def direct
+    @accessible_records = DiscussionQuery.visible_to(user: current_user, or_public: false, or_subgroups: false, group_ids: nil)
+    instantiate_collection { |collection| collection.is_open.order_by_latest_activity }
     respond_with_collection
   end
 
@@ -93,16 +103,6 @@ class API::DiscussionsController < API::RestfulController
   def move_comments
     EventService.move_comments(discussion: load_resource, params: params, actor: current_user)
     respond_with_resource
-  end
-
-  def history
-    load_and_authorize(:discussion)
-    res = DiscussionReader.joins(:user).where(discussion: @discussion).where.not(last_read_at: nil).map do |reader|
-      {reader_id: reader.id,
-       last_read_at: reader.last_read_at,
-       user_name: reader.user.name }
-    end
-    render root: false, json: res
   end
 
   def pin

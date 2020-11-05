@@ -7,10 +7,8 @@ import AbilityService from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
 import AppConfig      from '@/shared/services/app_config'
 import Flash   from '@/shared/services/flash'
-import { audiencesFor, audienceValuesFor } from '@/shared/helpers/announcement'
 import {each , sortBy, includes, map, pull, uniq, throttle, debounce, merge} from 'lodash'
 import { encodeParams } from '@/shared/helpers/encode_params'
-
 
 export default
   props:
@@ -18,12 +16,10 @@ export default
     model:
       type: Object
       required: true
-
   data: ->
     historyData: []
     historyLoading: false
     historyError: false
-
   created: ->
     @historyLoading = true
     Records.announcements.fetchHistoryFor(@model).then (data) =>
@@ -32,12 +28,10 @@ export default
     , (err) =>
       @historyLoading = false
       @historyError = true
-
   computed:
     modelKind: -> @model.constructor.singular
     pollType: -> @model.pollType
     translatedPollType: -> @model.poll().translatedPollType() if @model.isA('poll') or @model.isA('outcome')
-
 </script>
 
 <template lang="pug">

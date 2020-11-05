@@ -2,12 +2,13 @@ class GroupMailer < BaseMailer
   layout 'invite_people_mailer'
 
   def group_announced(recipient_id, event_id)
-    recipient = User.find_by!(id: recipient_id)
-    event = Event.find_by!(id: event_id)
-    return unless @membership = event.eventable.memberships.find_by(user: recipient)
-    @inviter = event.user || @membership.inviter || recipient
-    send_single_mail to:     recipient.email,
-                     locale: recipient.locale,
+    @recipient = User.find_by!(id: recipient_id)
+    @event = Event.find_by!(id: event_id)
+    @membership = Membership.find_by!(group_id: @event.eventable_id, user_id: recipient_id)
+    @inviter = @event.user || @membership.inviter
+
+    send_single_mail to:     @recipient.email,
+                     locale: @recipient.locale,
                      from:   from_user_via_loomio(@inviter),
                      reply_to: @inviter.name_and_email,
                      subject_key: "email.to_join_group.subject",

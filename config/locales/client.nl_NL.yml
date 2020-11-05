@@ -1500,7 +1500,7 @@ nl_NL:
     notify_group: Aankondiging
     members_helptext: Je groep zal op de hoogte gebracht worden
     members_count: "{{count}} mensen zullen op de hoogte gebracht worden"
-    participants_count: "De{{count}} mensen die gestemd hebben zullen op de hoogte gebracht worden"
+    decided_voters_count: "De{{count}} mensen die gestemd hebben zullen op de hoogte gebracht worden"
   poll_common_calendar_invite:
     calendar_invite: Voeg een kalenderuitnodiging toe met dit resultaat
     poll_option_id: Tijd van de vergadering

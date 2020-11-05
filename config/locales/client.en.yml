@@ -450,6 +450,7 @@ en:
     other_groups: 'Other groups'
     all_groups: 'All groups'
     recent_threads: 'Recent threads'
+    direct_threads: 'Direct threads'
     unread_threads: 'Unread threads ({{count}})'
     muted_threads: 'Muted threads'
     start_group: 'New organization'
@@ -519,6 +520,7 @@ en:
     group_members: "Group members"
     discussion_members: "Thread members"
     poll_members: "{{pollType}} members"
+    voters: "Voters"
     invite_to_group: "Invite to group"
     invite_to_discussion: "Invite to thread"
     invite_to_poll: "Invite to vote"
@@ -588,6 +590,22 @@ en:
     start_new_thread: Or, start new thread
 
   discussion_form:
+    to: To
+    # visible_to_label: Privacy
+    direct_thread: "Direct thread"
+    none_direct_thread: "Direct thread (no group)"
+    change_log_placeholder: Briefly describe the changes made in this edit. (optional)
+    change_log_label: What's changed?
+    # visible_to_group: Group thread
+    # visible_to_parent_group: "{{group}}"
+    # visible_to_public: Public
+    # visible_to_discussion_tooltip: Only visible to people invited to the thread
+    # visible_to_group_tooltip: Visible to everyone in the group
+    # visible_to_public_tooltip: Visible to anyone with the link (public)
+    one_person_will_be_notified: '1 person will be notified.'
+    count_people_will_be_notified: '{{count}} people will be notified.'
+    notify_specifc_people_instead: If you don't want to notify the whole group, add names of people to be notified.
+    invite: Invite
     aria_label: 'Thread form'
     start_thread: Start thread
     messages:
@@ -608,6 +626,9 @@ en:
     privacy_private: 'The thread will only be visible to members of {{group}}.'
     privacy_organisation: 'The thread will be visible to members of {{parent}} and members of {{group}}.'
     fork_notice: 'A new thread will be created with {{count}} items from {{title}}'
+    one_person_notified: 1 person will be notified
+    notify_group: Notify group
+
 
   announcement:
     send_discussion: Send thread
@@ -630,15 +651,16 @@ en:
     preview: Preview Email
     no_notifications_sent: No notifications have been sent
     history_error: Something went wrong! Could not load history.
-    inviting_guests_to_thread: People who are not members of {{group}} will be added to this thread as guests, and won't get access to other threads in the group.
+    inviting_guests_to_thread: Guests do not belong to your group, and have access to this thread only
+    select_groups: Select groups
 
     audiences:
-      parent_group: Members of {{name}}
-      group: Members of {{name}}
-      discussion_group: Members of thread
-      voters: People who have voted
-      undecided: Undecided people
-      non_voters: Not yet invited
+      group: Everyone in {{name}}
+      discussion_group: Everyone in the thread
+      voters: Everyone invited to vote
+      decided_voters: Everyone who voted
+      undecided_voters: Undecided voters
+      non_voters: Members of {{name}} not yet invited
 
     form:
       too_many_invitations: |
@@ -648,7 +670,9 @@ en:
         <p>Next step, <a href="{{upgradeUrl}}" target="_blank">choose a plan</a> to continue collaborating on Loomio.</p>
 
       invitations_remaining: '{{count}} invitations remaining. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>'
-
+      who_to_invite: Who would you like to invite?
+      invitation_message_placeholder: A message to include in the invitation email. (optional)
+      invitation_message_label: Message
       group_announced:
         title: Invite to group
         helptext: Who would you like to invite to the group?
@@ -657,22 +681,22 @@ en:
         helptext: Who would you like to invite to the thread?
       discussion_edited:
         title: Notify of edits
-        helptext: Who would you like to notify about your changes?
+        helptext: Who would you like to notify about this update? (optional)
       poll_announced:
         title: Invite to vote
         helptext: Who would you like to invite to vote?
-      poll:
-        title: Notify of edits
-        helptext: Who would you like to notify about your changes?
+      # poll:
+      #   title: Notify of edits
+      #   helptext: Who would you like to notify about this update?
       poll_edited:
         title: Notify of edits
-        helptext: Who would you like to notify about your changes?
+        helptext: Who would you like to notify about this update?
       outcome_announced:
         title: Share outcome
-        helptext: Who would you like to share the outcome with?
+        helptext: Summarise the results of the process, including any understandings found or issues brought to light.
       anyone_can_participate: Anyone with link can participate
-      placeholder: Enter names or email addresses...
-      notified_empty: 'Nobody selected yet.'
+      placeholder: Enter names or email addresses
+      notified_empty: 'Nobody selected yet'
       notified: '{{notified}} people will be notified:'
       notified_singular: '1 person will be notified:'
       group_title: '{{name}} ({{count}} people)'
@@ -681,6 +705,10 @@ en:
       last_notified: Notified
       not_notified: Not notified yet
       no_members: "This hasn't been shared with anyone yet!"
+      group_admin: "Group admin"
+      thread_admin: "Thread admin"
+      last_read_at: "Last viewed {{time}}"
+      has_not_read_thread: "Has not viewed thread"
     group_form:
       search_placeholder: Search for people...
       modal_title: Select group members
@@ -720,6 +748,8 @@ en:
     translate_outcome: Translate outcome
     show_history: Show edit history
     edited: Edited
+    show_edits: Show edits
+    show_notifications: Show notifications
     history: History
     pin_thread: Pin thread
     unpin_thread: Un-pin thread
@@ -737,6 +767,8 @@ en:
     notification_history: Notification history
     move_item: Move item
     add_poll_to_thread: Add to thread
+    count_members: "{{count}} members"
+    count_voters: "{{count}} voters"
 
   formatting:
     formatting_tools: Text formatting tools
@@ -818,10 +850,11 @@ en:
 
   revision_history_modal:
     aria_label: Revision history
-    discussion_header: Discussion revision history
-    comment_header: Comment revision history
-    poll_header: Poll revision history
-    stance_header: Stance revision history
+    discussion_header: Discussion edits
+    comment_header: Comment edits
+    poll_header: Poll edits
+    outcome_header: Outcome edits
+    stance_header: Stance edits
     started_by: 'Started by <strong>{{name}}</strong>'
     edited_by: 'Edited by <strong>{{name}}</strong>'
     edit_by: "Edit by {{name}} · {{date}}"
@@ -1156,6 +1189,7 @@ en:
     locale_field: 'Language: {{value}}'
     online_field: 'Online: {{value}}'
     invited: 'Invited {{value}}'
+    message_user: 'Message {{name}}'
 
   contact_request_form:
     modal_title: "Email {{name}}"
@@ -1305,6 +1339,9 @@ en:
       thismonth: 'This month'
       older: 'Older than a month'
 
+  threads_page:
+    no_direct_threads: "You have no direct threads"
+
   inbox_page:
     no_threads: Woohoo! You've read all the threads in your inbox.
     unread_threads: Unread Threads
@@ -1316,6 +1353,7 @@ en:
       join_group: <a href="/explore">join</a> a group to see threads.
 
   discussion:
+    private_thread: Private thread
     max_threads_reached: |
       <p>You have used all {{maxThreads}} threads available to this group.</p>
       <p>Next step, <a href="{{upgradeUrl}}" target="_blank">choose a plan</a> to continue collaborating on Loomio.</p>
@@ -1475,6 +1513,7 @@ en:
       reload: 'Reload'
 
   decision_tools_card:
+    choose_type: Choose poll type
     title: Facilitate
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Help</a>
     proposal_title: Proposal
@@ -1487,6 +1526,7 @@ en:
 
   poll_common:
     vote_now: Vote now
+    review_due: Review due
     have_your_say: Have your say
     your_response: Your response
     change_your_response: Edit response
@@ -1576,9 +1616,11 @@ en:
     invitations: 'Invitations'
     requests: 'Requests'
     admin: 'Admin'
+    guest: 'Guest'
     sharable_link: 'Shareable Link'
     last_seen: 'Last seen {{date}}'
     invited_by_name: 'Invited by {{name}}'
+    only_in_subgroups: "Not in this group but belongs to {{name}}."
     accepted: 'Members'
 
   polls_panel:
@@ -1624,7 +1666,7 @@ en:
     notify_group: Announcement
     members_helptext: Your group will not be notified
     members_count: "{{count}} people will be notified"
-    participants_count: "The {{count}} people who have voted will be notified"
+    decided_voters_count: "The {{count}} people who have voted will be notified"
 
   poll_common_calendar_invite:
     calendar_invite: Include a calendar invitation with this outcome
@@ -1640,12 +1682,24 @@ en:
     location_placeholder: Where will this meeting take place?
 
   poll_common_settings:
+    who_can_vote: 'Who can vote?'
+    specified_voters_only_true: Invited people only
+    specified_voters_only_false_group: Anyone in the group
+    specified_voters_only_false_discussion: Anyone in the thread
+    invite_people_next: You can choose who is invited to vote after you start the {{poll_type}}
     multiple_choice:
       title: Multiple choice
       helptext_on: When selected, participants will be able to select multiple options.
     anyone_can_participate:
       title: Anyone with link can participate
       helptext_on: When selected, anyone with the link to the poll can participate.
+    notify_on_closing_soon:
+      closes_too_soon: Because this {{pollType}} closes within 24 hours, no closing soon reminders will be sent.
+      title: 24 hours before {{pollType}} closes, send a reminder to
+      nobody: Nobody
+      author: Author (me)
+      undecided_voters: Undecided voters
+      voters: All voters
     notify_on_participate:
       title: Notify me when people participate
       helptext_on: When selected, you will be notified whenever someone participates.
@@ -1735,11 +1789,13 @@ en:
     score: 'This score poll has closed. <strong>Share an outcome</strong> with the group.'
 
   poll_common_outcome_form:
+    who_to_notify: Who do you want to notify about this outcome?
     new_title: Enter an outcome
     update_title: Update outcome
     outcome_created: Outcome created
     outcome_updated: Outcome updated
     statement_placeholder: Summarise the responses and explain what will happen next.
+    you_will_be_notified: You will be notified on the review date.
     submit: Share outcome
 
   poll_common_outcome_panel:
@@ -1762,7 +1818,6 @@ en:
     start_poll_type: Start {{poll_type}}
     share_poll_type: Share {{poll_type}}
     update: Update
-    reminder_note: 24 hours before closing, a reminder will be sent to all participants
     loomio_school_link: |
       <p>Find out more at <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio Help</a>.</p>
 

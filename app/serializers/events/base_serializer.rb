@@ -1,7 +1,7 @@
 class Events::BaseSerializer < ApplicationSerializer
   attributes :id, :sequence_id, :position, :depth, :child_count, :descendant_count, :kind,
     :discussion_id, :created_at, :eventable_id, :eventable_type, :custom_fields,
-    :pinned, :pinned_title, :parent_id, :actor_id, :position_key
+    :pinned, :pinned_title, :parent_id, :actor_id, :position_key, :recipient_message
 
   has_one :actor, serializer: AuthorSerializer, root: :users
   has_one :eventable, polymorphic: true

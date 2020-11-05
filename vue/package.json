@@ -11,7 +11,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:e2e": "vue-cli-service test:e2e",
-    "test:e2e:standalone": "nightwatch --config ./tests/e2e/nightwatch.conf.js --retries 2"
+    "test:e2e:standalone": "nightwatch --config ./tests/e2e/nightwatch.conf.js --retries 2",
+    "test:e2e:single": "nightwatch --config ./tests/e2e/nightwatch.conf.js --test tests/e2e/specs/discussion.js  --testcase lets_you_edit_title_and_context"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",

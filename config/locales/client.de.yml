@@ -1431,7 +1431,7 @@ de:
     notify_group: Benachrichtigung
     members_helptext: Ihre Gruppe wird nicht benachrichtigt.
     members_count: "{{count}} Personen werden benachrichtigt"
-    participants_count: "Die {{count}} Personen, die abgestimmt haben, werden benachrichtigt"
+    decided_voters_count: "Die {{count}} Personen, die abgestimmt haben, werden benachrichtigt"
   poll_common_calendar_invite:
     calendar_invite: Fügen Sie eine Kalendereinladung zu diesem Ergebnis hinzu
     poll_option_id: Meeting-Zeit

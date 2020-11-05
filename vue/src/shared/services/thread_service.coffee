@@ -50,7 +50,7 @@ export default new class ThreadService
             # newVolume: 'quiet'
 
     notification_history:
-      name: 'action_dock.notification_history'
+      name: 'action_dock.show_notifications'
       icon: 'mdi-alarm-check'
       perform: ->
         openModal
@@ -90,15 +90,15 @@ export default new class ThreadService
       perform: => @dismiss(discussion)
 
     announce_thread:
-      name: 'invitation_form.invite_people'
+      name: 'action_dock.count_members'
       icon: 'mdi-send'
+      nameArgs: -> {count: discussion.membersCount}
       canPerform: ->
         AbilityService.canAnnounceTo(discussion)
       perform: ->
-        openModal
-          component: 'AnnouncementForm'
-          props:
-            announcement: Records.announcements.buildFromModel(discussion)
+        EventBus.$emit 'openModal',
+          component: 'StrandMembersList',
+          props: { discussion: discussion }
 
     react:
       canPerform: -> AbilityService.canAddComment(discussion)
@@ -119,7 +119,7 @@ export default new class ThreadService
 
     show_history:
       icon: 'mdi-history'
-      name: 'action_dock.edited'
+      name: 'action_dock.show_edits'
       canPerform: -> discussion.edited()
       perform: ->
         openModal

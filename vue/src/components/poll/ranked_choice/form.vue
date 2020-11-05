@@ -25,4 +25,5 @@ export default
     v-text-field.lmo-number-input(type="number", :min="1", :max="poll.pollOptionNames.length" v-model="poll.customFields.minimum_stance_choices")
 
   poll-common-settings(:poll="poll")
+  common-notify-fields(:model="poll")
 </template>

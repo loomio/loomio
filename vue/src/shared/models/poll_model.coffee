@@ -4,6 +4,7 @@ import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
 import EventBus         from '@/shared/services/event_bus'
 import I18n             from '@/i18n'
+import NullGroupModel   from '@/shared/models/null_group_model'
 import { addDays, startOfHour } from 'date-fns'
 import { head, orderBy, map, includes, difference, invokeMap, each, max, slice, sortBy } from 'lodash'
 
@@ -27,6 +28,7 @@ export default class PollModel extends BaseModel
     details: ''
     detailsFormat: 'html'
     closingAt: startOfHour(addDays(new Date, 3))
+    specifiedVotersOnly: false
     pollOptionNames: []
     pollOptionIds: []
     customFields: {
@@ -37,7 +39,12 @@ export default class PollModel extends BaseModel
     files: []
     imageFiles: []
     attachments: []
+    notifyOnClosingSoon: 'undecided_voters'
     pleaseShowResults: false
+    recipientMessage: null
+    recipientAudience: null
+    recipientUserIds: []
+    recipientEmails: []
 
   audienceValues: ->
     name: @group().name
@@ -45,7 +52,7 @@ export default class PollModel extends BaseModel
   relationships: ->
     @belongsTo 'author', from: 'users'
     @belongsTo 'discussion'
-    @belongsTo 'group'
+    @belongsTo 'group', ifNull: -> new NullGroupModel()
     @hasMany   'pollOptions', orderBy: 'priority'
     @hasMany   'stances'
     @hasMany   'versions'
@@ -58,16 +65,16 @@ export default class PollModel extends BaseModel
 
   adminsInclude: (user) ->
     stance = @stanceFor(user)
-    @authorIs(user) || (stance && stance.admin) || (@group() && @group().adminsInclude(user))
+    (stance && stance.admin) || (@discussionId && @discussion().adminsInclude(user)) || @group().adminsInclude(user)
 
   membersInclude: (user) ->
-    @stanceFor(user) || (@group && @group().membersInclude(user))
+    @stanceFor(user) || (@discussionId && @discussion().membersInclude(user)) || @group().membersInclude(user)
 
   stanceFor: (user) ->
-    head orderBy(@recordStore.stances.find(latest: true, pollId: @id, participantId: user.id), 'createdAt', 'desc')
+    head orderBy(@recordStore.stances.find(participantId: user.id, latest: true, pollId: @id), 'createdAt', 'desc')
 
   myStance: ->
-    head orderBy(@recordStore.stances.find(latest: true, pollId: @id, myStance: true), 'createdAt', 'desc')
+    head orderBy(@recordStore.stances.find(myStance: true, latest: true, pollId: @id), 'createdAt', 'desc')
 
   authorName: ->
     @author().nameWithTitle(@group())
@@ -75,16 +82,12 @@ export default class PollModel extends BaseModel
   reactions: ->
     @recordStore.reactions.find(reactableId: @id, reactableType: "Poll")
 
-  participantIds: ->
+  decidedVoterIds: ->
     map(@latestStances(), 'participantId')
 
   # who's voted?
-  participants: ->
-    @recordStore.users.find(@participantIds())
-
-  membersCount: ->
-    # NB: this won't work for people who vote, then leave the group.
-    @stancesCount + @undecidedCount
+  decidedVoters: ->
+    @recordStore.users.find(@decidedVoterIds())
 
   outcome: ->
     @recordStore.outcomes.find(pollId: @id, latest: true)[0]
@@ -113,6 +116,7 @@ export default class PollModel extends BaseModel
     @closedAt?
 
   showResults: ->
+    return false if !@closingAt
     @closedAt? || !@hideResultsUntilClosed
 
   close: =>
@@ -130,9 +134,6 @@ export default class PollModel extends BaseModel
   addToThread: (discussionId) =>
     @processing = true
     @remote.patchMember(@keyOrId(), 'add_to_thread', { discussion_id: discussionId }).finally => @processing = false
-
-  toggleSubscription: =>
-    @remote.postMember(@key, 'toggle_subscription')
 
   notifyAction: ->
     if @isNew()

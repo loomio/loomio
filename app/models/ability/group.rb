@@ -13,10 +13,6 @@ module Ability::Group
       )
     end
 
-    can [:vote_in], ::Group do |group|
-      group.admins.exists?(user.id) || (group.members_can_vote && group.members.exists?(user.id))
-    end
-
     can [:see_private_content, :subscribe_to], ::Group do |group|
       !group.archived_at && (
         group.group_privacy == 'open' or

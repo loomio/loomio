@@ -9,7 +9,9 @@ class PollMailer < BaseMailer
      invitation_resend
      outcome_announced
      outcome_created
+     outcome_updated
      outcome_created_author
+     outcome_review_due
      poll_announced
      poll_closing_soon
      poll_closing_soon_author

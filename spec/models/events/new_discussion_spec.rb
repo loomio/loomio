@@ -7,11 +7,11 @@ describe Events::NewDiscussion do
   describe "::publish!" do
 
     it 'creates an event' do
-      expect { Events::NewDiscussion.publish!(discussion) }.to change  { Event.where(kind: 'new_discussion').count }.by(1)
+      expect { Events::NewDiscussion.publish!(discussion: discussion) }.to change  { Event.where(kind: 'new_discussion').count }.by(1)
     end
 
     it 'returns an event' do
-      expect(Events::NewDiscussion.publish!(discussion)).to be_a Event
+      expect(Events::NewDiscussion.publish!(discussion: discussion)).to be_a Event
     end
   end
 end

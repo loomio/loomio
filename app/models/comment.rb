@@ -15,7 +15,6 @@ class Comment < ApplicationRecord
   is_rich_text    on: :body
 
   belongs_to :discussion
-  has_one :group, through: :discussion
   belongs_to :user
   belongs_to :parent, class_name: 'Comment'
 
@@ -37,6 +36,7 @@ class Comment < ApplicationRecord
   delegate :name, to: :user, prefix: :author
   delegate :email, to: :user, prefix: :user
   delegate :author, to: :parent, prefix: :parent, allow_nil: true
+  delegate :group, to: :discussion
   delegate :group_id, to: :discussion, allow_nil: true
   delegate :full_name, to: :group, prefix: :group
   delegate :locale, to: :user

@@ -34,8 +34,8 @@ export default
 
 <template lang="pug">
 div
-  label.caption.v-label.v-label--active(aria-hidden="true") {{label}}
-  .lmo-textarea.mb-3
+  label.caption.v-label.v-label--active.theme--light(aria-hidden="true") {{label}}
+  .lmo-textarea.pb-1
     collab-editor(v-if="format == 'html' && betaFeatures" :model='model' :field='field' :placeholder="placeholder" :maxLength="maxLength" :autofocus="autofocus" :shouldReset="shouldReset")
       template(v-for="(_, name) in $scopedSlots" :slot="name" slot-scope="slotData")
         slot(:name="name" v-bind="slotData")

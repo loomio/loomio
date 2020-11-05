@@ -27,25 +27,21 @@ export default new class AbilityService
     comment.discussion().membersInclude(Session.user())
 
   canStartPoll: (model) ->
-    return unless model
-    switch model.constructor.singular
-      when 'discussion' then @canStartPoll(model.group())
-      when 'group'      then model.adminsInclude(Session.user()) or (model.membersInclude(Session.user()) and model.membersCanRaiseMotions)
+    model.adminsInclude(Session.user()) or
+    (model.membersInclude(Session.user()) and model.group().membersCanRaiseMotions)
 
   canParticipateInPoll: (poll) ->
     return false unless poll
     return false unless poll.isActive()
     poll.anyoneCanParticipate or
-    poll.adminsInclude(Session.user()) or
     poll.myStance() or
-    (poll.membersInclude(Session.user()) and (!poll.group() or poll.group().membersCanVote))
+    (!poll.specifiedVotersOnly and poll.membersInclude(Session.user()))
 
   canReactToPoll: (poll) ->
     return false unless @isEmailVerified()
     return false unless poll
     poll.anyoneCanParticipate or
-    poll.adminsInclude(Session.user()) or
-    (poll.membersInclude(Session.user()) and (!poll.group() or poll.group().membersCanVote))
+    poll.membersInclude(Session.user())
 
   canEditStance: (stance) ->
     Session.user() == stance.author()

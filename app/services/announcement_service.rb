@@ -1,17 +1,18 @@
 class AnnouncementService
   class UnknownAudienceKindError < Exception; end
 
-  def self.audience_for(model, kind, actor)
+  def self.audience_users(model, kind)
     case kind
-    when 'parent_group'     then model.parent.accepted_members.where.not(id: model.member_ids)
-    when 'group', 'formal_group' then model.group.accepted_members
+    when 'group'            then model.group.accepted_members
     when 'discussion_group' then model.discussion.readers
-    when 'voters'           then model.poll.participants
-    when 'undecided'        then model.poll.undecided
+    when 'voters'           then model.poll.unmasked_voters
+    when 'decided_voters'   then model.poll.unmasked_decided_voters
+    when 'undecided_voters' then model.poll.unmasked_undecided_voters
     when 'non_voters'       then model.poll.non_voters
+    when nil                then User.none
     else
       raise UnknownAudienceKindError.new
-    end.active.where.not(id: actor.id)
+    end
   end
 
   def self.resend_pending_invitations(since: 25.hours.ago, till: 24.hours.ago)

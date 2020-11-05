@@ -15,7 +15,7 @@ class PollExporter
 
   def meta_table
     outcome = @poll.current_outcome
-    voted = @poll.stances_count
+    voted = @poll.voters_count
     total = @poll.members.count
     engagement =  label('percent_voted', num:voted ,denom:total, percent:"#{(voted*100/total)}%") if total > 0
 
@@ -26,7 +26,7 @@ class PollExporter
       closing_at:  (@poll.closing_at unless @poll.closed_at),
       closed_at: @poll.closed_at,
       engagement:engagement,
-      stances: @poll.stances_count,
+      stances: @poll.voters_count,
       participants: @poll.members.count,
       details: @poll.details,
       group_name: @poll.group&.full_name,

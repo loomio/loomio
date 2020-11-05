@@ -5,5 +5,5 @@ export default
 </script>
 
 <template>
-  <span v-if="poll.closingAt" v-t="{ path: 'poll_common_percent_voted.sentence', args: { numerator: poll.participantsCount, denominator: poll.stancesCount, percent: poll.castStancesPct } }"></span>
+  <span v-if="poll.closingAt" v-t="{ path: 'poll_common_percent_voted.sentence', args: { numerator: poll.decidedVotersCount, denominator: poll.votersCount, percent: poll.castStancesPct } }"></span>
 </template>

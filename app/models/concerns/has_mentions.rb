@@ -28,7 +28,7 @@ module HasMentions
   end
 
   def mentioned_users
-    User.visible_by(author).where("username in (:usernames) or users.id in (:ids)", usernames: mentioned_usernames, ids: mentioned_user_ids)
+    members.where("users.username in (:usernames) or users.id in (:ids)", usernames: mentioned_usernames, ids: mentioned_user_ids)
   end
 
   # users mentioned in the text, but not yet sent notifications

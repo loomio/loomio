@@ -95,6 +95,5 @@ export default
   v-main
     v-container.max-width-800(v-if="discussion")
       strand-nav(v-if="loader" :discussion="discussion" :loader="loader")
-
       strand-card(v-if="loader" :discussion='discussion' :loader="loader")
 </template>

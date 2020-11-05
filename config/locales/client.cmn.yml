@@ -976,7 +976,7 @@ cmn:
     notify_group: 公告
     members_helptext: 您的群组将不会被通知
     members_count: "{{count}} 个人将会被通知"
-    participants_count: "{{count}} 个已投票的人将会被通知"
+    decided_voters_count: "{{count}} 个已投票的人将会被通知"
   poll_common_calendar_invite:
     helptext_on: 用户将可以加入这个会面到他们的日程表中
     event_duration: 时长
