@@ -28,7 +28,7 @@ export default
       @model["#{@field}Format"]
 
     betaFeatures: ->
-      Session.user().experiences['betaFeatures']
+      false # Session.user().experiences['betaFeatures']
 
 </script>
 
