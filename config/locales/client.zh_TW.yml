@@ -1501,7 +1501,7 @@ zh_TW:
     notify_group: 公告
     members_helptext: 您的群組將不會被通知
     members_count: "{{count}} 個人將會被通知"
-    participants_count: "{{count}} 個已投票的人將會被通知"
+    decided_voters_count: "{{count}} 個已投票的人將會被通知"
   poll_common_calendar_invite:
     calendar_invite: 包含此結果的行事曆邀請
     poll_option_id: 會面時間

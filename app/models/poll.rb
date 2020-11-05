@@ -48,7 +48,7 @@ class Poll < ApplicationRecord
   belongs_to :discussion
   belongs_to :group, class_name: "Group"
 
-  enum notify_on_closing_soon: {nobody: 0, author: 1, undecided: 2, voters: 3}
+  enum notify_on_closing_soon: {nobody: 0, author: 1, undecided_voters: 2, voters: 3}
 
   before_save :set_stances_in_discussion
   after_update :remove_poll_options
@@ -57,8 +57,8 @@ class Poll < ApplicationRecord
   has_many :stance_choices, through: :stances
   has_many :voters,       -> { merge(Stance.latest) }, through: :stances, source: :participant
   has_many :admin_voters, -> { merge(Stance.latest.admin) }, through: :stances, source: :participant
-  has_many :undecided,    -> { merge(Stance.latest.undecided) }, through: :stances, source: :participant
-  has_many :participants, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
+  has_many :undecided_voters, -> { merge(Stance.latest.undecided) }, through: :stances, source: :participant
+  has_many :decided_voters, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
 
   has_many :poll_options, -> { order('priority') }, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
@@ -127,8 +127,8 @@ class Poll < ApplicationRecord
   update_counter_cache :group, :closed_polls_count
   update_counter_cache :discussion, :closed_polls_count
   update_counter_cache :discussion, :anonymous_polls_count
-  define_counter_cache(:stances_count) { |poll| poll.stances.latest.count }
-  define_counter_cache(:undecided_count) { |poll| poll.stances.latest.undecided.count }
+  define_counter_cache(:voters_count) { |poll| poll.stances.latest.count }
+  define_counter_cache(:undecided_voters_count) { |poll| poll.stances.latest.undecided.count }
   define_counter_cache(:versions_count) { |poll| poll.versions.count}
 
   delegate :locale, to: :author
@@ -137,29 +137,38 @@ class Poll < ApplicationRecord
     voter_ids
   end
 
-  def participants_count
-    stances_count - undecided_count
+  def decided_voters_count
+    voters_count - undecided_voters_count
   end
 
   def cast_stances_pct
-    return 0 if stances_count == 0
-    ((participants_count.to_f / stances_count) * 100).to_i
+    return 0 if voters_count == 0
+    ((decided_voters_count.to_f / voters_count) * 100).to_i
   end
 
-  def undecided
-    anonymous? ? User.none : super
-  end
-
-  def participants
-    anonymous? ? User.none : super
-  end
 
   def voters
     anonymous? ? User.none : super
   end
 
-  def non_voters
+  def undecided_voters
     anonymous? ? User.none : super
+  end
+
+  def decided_voters
+    anonymous? ? User.none : super
+  end
+
+  def unmasked_voters
+    User.where(id: stances.latest.pluck(:participant_id))
+  end
+
+  def unmasked_undecided_voters
+    User.where(id: stances.latest.undecided.pluck(:participant_id))
+  end
+
+  def unmasked_decided_voters
+    User.where(id: stances.latest.decided.pluck(:participant_id))
   end
 
   def body

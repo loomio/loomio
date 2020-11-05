@@ -1,7 +1,7 @@
 class PollSerializer < ApplicationSerializer
   attributes :id, :discussion_id, :group_id, :key, :poll_type, :title, :details, :details_format,
              :stance_data, :stance_counts, :matrix_counts, :anyone_can_participate, :voter_can_add_options,
-             :closed_at, :closing_at, :stances_count, :participants_count, :undecided_count, :cast_stances_pct, :versions_count,
+             :closed_at, :closing_at, :voters_count, :decided_voters_count, :undecided_voters_count, :cast_stances_pct, :versions_count,
              :created_at, :multiple_choice, :custom_fields, :poll_option_names,
              :notify_on_closing_soon, :anonymous, :can_respond_maybe, :hide_results_until_closed,
              :attachments, :mentioned_usernames, :author_id, :stances_in_discussion, :specified_voters_only,

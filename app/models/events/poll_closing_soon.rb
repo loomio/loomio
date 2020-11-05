@@ -30,12 +30,10 @@ class Events::PollClosingSoon < Event
     case poll.notify_on_closing_soon
     # when 'author'
     #   User.where(id: poll.author_id)
-    when 'undecided'
-      # poll.undecided
-      User.where(id: poll.stances.latest.undecided.pluck(:participant_id))
+    when 'undecided_voters'
+      poll.unmasked_undecided_voters
     when 'voters'
-      # poll.voters
-      User.where(id: poll.stances.latest.pluck(:participant_id))
+      poll.unmasked_voters
     else
       User.none
     end

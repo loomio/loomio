@@ -3,18 +3,11 @@ import OutcomeService from '@/shared/services/outcome_service'
 import parseISO from 'date-fns/parseISO'
 export default
   props:
-    poll: Object
-  data: ->
-    outcome: @poll.outcome()
+    outcome: Object
   methods:
     parseISO: parseISO
   computed:
     actions: -> OutcomeService.actions(@outcome, @)
-  created: ->
-    @watchRecords
-      collections: ['outcome']
-      query: (records) =>
-        @outcome = @poll.outcome()
 
 </script>
 
@@ -27,7 +20,7 @@ v-sheet.pa-4.my-4.poll-common-outcome-panel(v-if="outcome" color="primary lighte
     time-ago(:date="outcome.createdAt")
     span(v-if="outcome.reviewOn")
       mid-dot
-      span(v-t="poll_common.review_due")
+      span(v-t="'poll_common.review_due'")
       space
       time-ago(:date="outcome.reviewOn")
   .poll-common-outcome__event-info(v-if="outcome.poll().datesAsOptions() && outcome.pollOption()")

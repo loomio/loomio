@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_092118) do
+ActiveRecord::Schema.define(version: 2020_11_05_001500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -601,7 +601,7 @@ ActiveRecord::Schema.define(version: 2020_11_04_092118) do
     t.string "key", null: false
     t.string "poll_type", null: false
     t.jsonb "stance_data", default: {}
-    t.integer "stances_count", default: 0, null: false
+    t.integer "voters_count", default: 0, null: false
     t.boolean "multiple_choice", default: false, null: false
     t.jsonb "custom_fields", default: {}, null: false
     t.jsonb "stance_counts", default: [], null: false
@@ -609,7 +609,7 @@ ActiveRecord::Schema.define(version: 2020_11_04_092118) do
     t.jsonb "matrix_counts", default: [], null: false
     t.boolean "notify_on_participate", default: false, null: false
     t.boolean "example", default: false, null: false
-    t.integer "undecided_count", default: 0, null: false
+    t.integer "undecided_voters_count", default: 0, null: false
     t.boolean "voter_can_add_options", default: false, null: false
     t.integer "guest_group_id"
     t.boolean "anonymous", default: false, null: false

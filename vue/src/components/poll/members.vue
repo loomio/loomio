@@ -5,7 +5,6 @@ import Session from '@/shared/services/session'
 import Flash from '@/shared/services/flash'
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
 import StanceService from '@/shared/services/stance_service'
-import {audiencesFor, audienceSize, audienceValuesFor} from '@/shared/helpers/announcement.coffee'
 import {map, debounce, without, filter, uniq, uniqBy, some, find} from 'lodash'
 
 export default
@@ -120,7 +119,7 @@ export default
       :placeholder="$t('announcement.form.placeholder')"
       :model="poll"
       :reset="reset"
-      :excludedAudiences="['voters', 'undecide', 'non_voters', 'participants']"
+      :excludedAudiences="['voters', 'undecided_voters', 'non_voters', 'decided_voters']"
       :excludedUserIds="stanceUserIds"
       :initialRecipients="initialRecipients"
       @new-query="newQuery")
@@ -132,7 +131,7 @@ export default
     v-subheader
       span(v-t="'membership_card.voters'")
       space
-      span ({{poll.stancesCount}})
+      span ({{poll.votersCount}})
     v-list-item(v-for="stance in stances" :user="stance.participant()" :key="stance.id")
       v-list-item-avatar
         user-avatar(:user="stance.participant()" :size="24")

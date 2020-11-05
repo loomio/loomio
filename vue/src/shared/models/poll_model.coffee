@@ -39,7 +39,7 @@ export default class PollModel extends BaseModel
     files: []
     imageFiles: []
     attachments: []
-    notifyOnClosingSoon: 'undecided'
+    notifyOnClosingSoon: 'undecided_voters'
     pleaseShowResults: false
     recipientMessage: null
     recipientAudience: null
@@ -82,16 +82,12 @@ export default class PollModel extends BaseModel
   reactions: ->
     @recordStore.reactions.find(reactableId: @id, reactableType: "Poll")
 
-  participantIds: ->
+  decidedVoterIds: ->
     map(@latestStances(), 'participantId')
 
   # who's voted?
-  participants: ->
-    @recordStore.users.find(@participantIds())
-
-  membersCount: ->
-    # NB: this won't work for people who vote, then leave the group.
-    @stancesCount + @undecidedCount
+  decidedVoters: ->
+    @recordStore.users.find(@decidedVoterIds())
 
   outcome: ->
     @recordStore.outcomes.find(pollId: @id, latest: true)[0]

@@ -174,25 +174,25 @@ export default
             icon: 'mdi-forum'
 
         if @model.poll && @model.poll()
-          if @model.poll().stancesCount > 1
+          if @model.poll().votersCount > 1
             ret.push
               id: 'voters'
               name: @$t('announcement.audiences.voters', pollType: @model.poll().translatedPollType())
-              size: @model.poll().stancesCount
+              size: @model.poll().votersCount
               icon: 'mdi-forum'
 
-          if @model.poll().participantsCount > 0
+          if @model.poll().decidedVotersCount > 0
             ret.push
-              id: 'participants'
-              name: @$t('announcement.audiences.participants')
-              size: @model.poll().participantsCount
+              id: 'decided_voters'
+              name: @$t('announcement.audiences.decided_voters')
+              size: @model.poll().decidedVotersCount
               icon: 'mdi-forum'
 
-          if @model.poll().participantsCount > 0 && @model.poll().undecidedCount > 0
+          if @model.poll().decidedVotersCount > 0 && @model.poll().undecidedVotersCount > 0
             ret.push
-              id: 'undecided'
-              name: @$t('announcement.audiences.undecided')
-              size: @model.poll().undecidedCount
+              id: 'undecided_voters'
+              name: @$t('announcement.audiences.undecided_voters')
+              size: @model.poll().undecidedVotersCount
               icon: 'mdi-forum'
 
         # non voters

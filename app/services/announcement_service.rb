@@ -5,25 +5,11 @@ class AnnouncementService
     case kind
     when 'group'            then model.group.accepted_members
     when 'discussion_group' then model.discussion.readers
-    when 'voters'           then model.poll.voters
-    when 'participants'     then model.poll.participants
-    when 'undecided'        then model.poll.undecided
+    when 'voters'           then model.poll.unmasked_voters
+    when 'decided_voters'   then model.poll.unmasked_decided_voters
+    when 'undecided_voters' then model.poll.unmasked_undecided_voters
     when 'non_voters'       then model.poll.non_voters
     when nil                then User.none
-    else
-      raise UnknownAudienceKindError.new
-    end
-  end
-
-  def self.audience_relations(model, kind)
-    case kind
-    when 'group'            then model.group.accepted_memberships
-    when 'discussion_group' then model.discussion.discussion_readers
-    when 'voters'           then model.poll.stances.latest
-    when 'participants'     then model.poll.stances.decided
-    when 'undecided'        then model.poll.stances.undecided
-    when 'non_voters'       then model.poll.group.memberships.where(user_id: model.poll.non_voters.pluck(:id))
-    when nil                then Membership.none
     else
       raise UnknownAudienceKindError.new
     end

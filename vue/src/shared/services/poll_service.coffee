@@ -14,7 +14,7 @@ export default new class PollService
       name: 'poll_common_card.show_results'
       canPerform: ->
         false
-        # poll.participantsCount &&
+        # poll.decidedVotersCount &&
         # !poll.pleaseShowResults &&
         # !poll.closedAt? &&
         # !poll.hideResultsUntilClosed &&
@@ -58,7 +58,7 @@ export default new class PollService
     announce_poll:
       icon: 'mdi-send'
       name: 'action_dock.count_voters'
-      nameArgs: -> {count: poll.stancesCount}
+      nameArgs: -> {count: poll.votersCount}
       canPerform: ->
         AbilityService.canAnnounceTo(poll)
       perform: ->

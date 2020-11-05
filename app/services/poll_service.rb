@@ -72,8 +72,8 @@ class PollService
 
     Stance.import(new_stances, on_duplicate_key_ignore: true)
 
-    poll.update_stances_count
-    poll.update_undecided_count
+    poll.update_voters_count
+    poll.update_undecided_voters_count
     poll.update_stance_data
 
     Stance.where(participant_id: users.pluck(:id), poll_id: poll.id)

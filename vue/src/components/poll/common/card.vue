@@ -25,7 +25,7 @@ export default
   data: ->
     buttonPressed: false
     myStance: null
-    outcome: null
+    outcome: @poll.outcome()
 
   methods:
     titleVisible: (visible) ->
@@ -58,8 +58,8 @@ v-card
         translation(v-if="poll.translation.title" :model='poll', field='title')
         v-chip.ml-3(outlined small color="info" v-t="'poll_types.' + poll.pollType")
     v-card-text
-      poll-common-set-outcome-panel(:poll='poll')
-      poll-common-outcome-panel(:poll='poll', v-if='outcome')
+      poll-common-set-outcome-panel(:poll='poll' v-if="!outcome")
+      poll-common-outcome-panel(:outcome='outcome' v-if="outcome")
       poll-common-details-panel(:poll='poll')
       .poll-common-card__results-shown(v-if='showResults')
         poll-common-directive(:poll='poll', name='chart-panel')

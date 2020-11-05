@@ -12,7 +12,7 @@ export default
   data: ->
     pollOptions: []
     latestStances: []
-    participants: []
+    decidedVoters: []
     stancesByUserId: []
 
   created: ->
@@ -26,7 +26,7 @@ export default
           @stancesByUserId[stance.participantId] = stance
 
         @pollOptions = @poll.pollOptions()
-        @participants = @poll.participants()
+        @decidedVoters = @poll.decidedVoters()
 
   methods:
     scoreColor: (score) ->
@@ -80,7 +80,7 @@ export default
     thead
       tr
         td {{currentUserTimeZone}}
-        td(v-for="user in participants" :key="user.id")
+        td(v-for="user in decidedVoters" :key="user.id")
           user-avatar(:user="user")
         td.total(v-t="'common.total'")
     tbody
@@ -88,7 +88,7 @@ export default
         td.poll-meeting-chart__meeting-time
           poll-meeting-time(:name='option.name' :zone='zone')
 
-        td(v-for="user in participants" :key="user.id")
+        td(v-for="user in decidedVoters" :key="user.id")
           .poll-meeting-chart__cell(:class="classForScore(scoreFor(user, option))")
             | &nbsp;
             //- v-layout

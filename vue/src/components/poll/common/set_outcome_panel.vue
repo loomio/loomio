@@ -7,13 +7,13 @@ import EventBus from '@/shared/services/event_bus'
 export default
   props:
     poll: Object
+
   methods:
     showPanel: ->
       AbilityService.canSetPollOutcome(@poll)
 
     openOutcomeForm: ->
-      outcome = @poll.outcome() or
-      Records.outcomes.build
+      outcome = Records.outcomes.build
         pollId: @poll.id
         groupId: @poll.groupId
         statementFormat: Session.defaultFormat()

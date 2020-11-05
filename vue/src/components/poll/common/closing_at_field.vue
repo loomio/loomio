@@ -29,7 +29,7 @@ export default
       formatDistance(@poll.closingAt, new Date, {addSuffix: true})
 
     closingSoonItems: ->
-      'nobody author undecided voters'.split(' ').map (name) =>
+      'nobody author undecided_voters voters'.split(' ').map (name) =>
         {text: @$t("poll_common_settings.notify_on_closing_soon.#{name}"), value: name}
 
     reminderEnabled: ->

@@ -34,8 +34,8 @@ class Stance < ApplicationRecord
   alias :user :participant
   alias :author :participant
 
-  update_counter_cache :poll, :stances_count
-  update_counter_cache :poll, :undecided_count
+  update_counter_cache :poll, :voters_count
+  update_counter_cache :poll, :undecided_voters_count
 
   before_save :update_stance_choices_cache
 

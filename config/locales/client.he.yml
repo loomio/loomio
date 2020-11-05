@@ -1100,7 +1100,7 @@ he:
     notify_group: הכרזה
     members_helptext: הקבוצה שלך לא תקבל הודעה
     members_count: "{{count}} אנשים יעודכנו"
-    participants_count: "{{count}} האנשים שהצביעו יקבלו הודעה"
+    decided_voters_count: "{{count}} האנשים שהצביעו יקבלו הודעה"
   poll_common_calendar_invite:
     calendar_invite: הוסף הזמנה ליומן עם תוצאה זו
     poll_option_id: זמן פגישה

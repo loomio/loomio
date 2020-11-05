@@ -658,8 +658,8 @@ en:
       group: Everyone in {{name}}
       discussion_group: Everyone in the thread
       voters: Everyone invited to vote
-      participants: Everyone who voted
-      undecided: Undecided voters
+      decided_voters: Everyone who voted
+      undecided_voters: Undecided voters
       non_voters: Members of {{name}} not yet invited
 
     form:
@@ -1666,7 +1666,7 @@ en:
     notify_group: Announcement
     members_helptext: Your group will not be notified
     members_count: "{{count}} people will be notified"
-    participants_count: "The {{count}} people who have voted will be notified"
+    decided_voters_count: "The {{count}} people who have voted will be notified"
 
   poll_common_calendar_invite:
     calendar_invite: Include a calendar invitation with this outcome
@@ -1698,7 +1698,7 @@ en:
       title: 24 hours before {{pollType}} closes, send a reminder to
       nobody: Nobody
       author: Author (me)
-      undecided: Undecided voters
+      undecided_voters: Undecided voters
       voters: All voters
     notify_on_participate:
       title: Notify me when people participate
