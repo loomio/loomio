@@ -9,7 +9,7 @@ export default class NotificationModel extends BaseModel
   relationships: ->
     @belongsTo 'event'
     @belongsTo 'user'
-    @belongsTo 'actor', from: 'users'
+    @belongsTo 'actor', from: 'users', ifNull: -> new AnonymousUser()
 
   actionPath: ->
     switch @kind()
