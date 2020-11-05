@@ -135,6 +135,8 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
         span ({{unreadDirectThreadsCount}})
   v-list-item.sidebar__list-item-button--start-thread(dense to="/d/new")
     v-list-item-title(v-t="'sidebar.start_thread'")
+    v-list-item-avatar(:size="28")
+      v-icon(tile) mdi-plus
   v-divider
 
   v-list.sidebar__groups(dense)
@@ -180,7 +182,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   v-list-item.sidebar__list-item-button--start-group(@click="startOrganization()" dense)
     v-list-item-title(v-t="'sidebar.start_group'")
     v-list-item-avatar(:size="28")
-      v-icon(:size="28" tile) mdi-plus
+      v-icon(tile) mdi-plus
   v-divider
   v-list-item(dense to="/explore")
     v-list-item-title(v-t="'sidebar.explore_groups'")
