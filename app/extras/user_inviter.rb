@@ -11,7 +11,11 @@ class UserInviter
     emails = Array(emails)
     ids = Array(user_ids).concat(audience_ids).uniq
 
-    ThrottleService.limit!(key: 'UserInviterInvitations', id: inviter.id,  max: 1000, inc: emails.length + ids.length, per: :day)
+    ThrottleService.limit!(key: 'UserInviterInvitations',
+                           id: inviter.id,
+                           max: 1000,
+                           inc: emails.length + ids.length,
+                           per: :day)
 
     User.import(safe_emails(emails).map do |email|
       User.new(email: email, time_zone: inviter.time_zone, detected_locale: inviter.locale)

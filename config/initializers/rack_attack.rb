@@ -58,4 +58,8 @@ class Rack::Attack
       req.remote_ip if req.post? && req.path.starts_with?("/api/v1/#{name}")
     end
   end
+
+  ActiveSupport::Notifications.subscribe(/rack_attack/) do |name, start, finish, request_id, payload|
+    Rails.logger.info "rack_attack: #{name}, #{start}, #{finish}, #{request_id}, #{payload}"
+  end
 end

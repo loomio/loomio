@@ -19,7 +19,7 @@ end
 
 module Loomio
   class Application < Rails::Application
-    config.middleware.use Rack::Attack if ENV['USE_RACK_ATTACK']
+    config.middleware.use Rack::Attack
     # config.active_job.queue_adapter = :sidekiq
 
     config.generators do |g|
@@ -35,7 +35,6 @@ module Loomio
     # config.paths.add "extras", eager_load: true
     # config.autoload_paths += Dir["#{config.root}/app/forms/**/"]
 
-    # config.middleware.use Rack::Attack
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
