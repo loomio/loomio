@@ -136,9 +136,7 @@ module Loomio
 
     config.action_cable.allowed_request_origins = [ENV['CANONICAL_HOST'], 'http://localhost:8080']
 
-    if ENV['REDIS_CACHE_URL']
-      config.cache_store = :redis_cache_store, { url: ENV['REDIS_CACHE_URL'] }
-    end
+    config.cache_store = :redis_cache_store, { url: (ENV['REDIS_CACHE_URL'] || ENV.fetch('REDIS_URL', 'redis://localhost:6379')) }
 
     config.action_dispatch.default_headers = {
       # 'X-Frame-Options' => 'SAMEORIGIN',
