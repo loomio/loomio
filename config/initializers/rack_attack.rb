@@ -1,5 +1,13 @@
 if ENV['USE_RACK_ATTACK']
   class Rack::Attack
+    class Request < ::Rack::Request
+      def remote_ip
+        # Cloudflare stores remote IP in CF_CONNECTING_IP header
+        @remote_ip ||= (env['HTTP_CF_CONNECTING_IP'] ||
+                        env['action_dispatch.remote_ip'] ||
+                        ip).to_s
+      end
+    end
     # considerations
     # multiple users could be using same ip address (eg coworking space)
     # does not distinguish between valid and invalid requests (eg: form validation)
@@ -18,49 +26,47 @@ if ENV['USE_RACK_ATTACK']
     # and pitch abouve that.. but to identify what abusive behaviour certainly is,
     # and ensure it cannot get really really bad.
 
-    RATE_LIMITS = [
-      {
-        name: :heavy,
-        endpoints: [
-          'groups',
-          'invitations/bulk_create'
-        ],
-        limits: {
-          10 => 1.hour,
-          20 => 1.day
-        }
-      }, {
-        name: :medium,
-        endpoints: [
-          'login_tokens',
-          'invitations',
-          'discussions',
-          'polls',
-          'stances',
-          'comments',
-          'reactions',
-          'documents',
-          'registrations',
-          'contact_messages'
-        ],
-        limits:   {
-          100   => 5.minutes,
-          1000  => 1.hour,
-          10000 => 1.day
-        }
-      }
-    ].freeze
+    # per hour
+    GLOBAL_POST_LIMITS = {
+      groups: 100,
+      login_tokens: 1000,
+      discussions: 100,
+      polls: 100,
+      outcomes: 100,
+      stances: 1000,
+      comments: 1000,
+      reactions: 1000,
+      registrations: 1000,
+      sessions: 10000,
+      contact_messages: 100,
+      discussion_readers: 10000
+    }
 
-    RATE_LIMITS.each do |limit_set|
-      limit_set[:limits].each do |limit, period|
-        throttle(limit_set[:name], limit: limit, period: period) do |req|
-          req.ip if should_limit?(req, limit_set[:endpoints])
-        end
+    IP_POST_LIMITS = {
+      groups: 10,
+      login_tokens: 10,
+      discussions: 10,
+      polls: 10,
+      outcomes: 10,
+      stances: 10,
+      comments: 100,
+      reactions: 100,
+      registrations: 10,
+      sessions: 10,
+      contact_messages: 10,
+      discussion_readers: 1000
+    }
+
+    # GLOBAL_POST_LIMITS.each_pair do |name, limit|
+    #   throttle("global limit api/v1/#{name}#post", limit: limit, period: 1.hour) do |req|
+    #     true if req.post? && req.path.starts_with?("/api/v1/#{name}")
+    #   end
+    # end
+
+    IP_POST_LIMITS.each_pair do |name, limit|
+      throttle("global limit api/v1/#{name}#post", limit: limit, period: 1.hour) do |req|
+        req.ip if true if req.post? && req.path.starts_with?("/api/v1/#{name}")
       end
-    end
-
-    def self.should_limit?(req, endpoints)
-      req.post? && endpoints.any? { |r| req.path.starts_with?("/api/v1/#{r}") }
     end
   end
 end
