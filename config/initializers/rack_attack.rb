@@ -41,7 +41,8 @@ class Rack::Attack
   #   discussion_readers: 10000
   # }
 
-  MULTIPLIER = ENV.fetch('RACK_ATTACK_MULTPLIER', 1).to_i
+  RATE_MULTIPLIER = ENV.fetch('RACK_ATTACK_RATE_MULTPLIER', 1).to_i
+  HOUR_MULTIPLIER = ENV.fetch('RACK_ATTACK_HOUR_MULTPLIER', 1).to_i
 
   IP_POST_LIMITS = {
     announcements: 10,
@@ -72,7 +73,7 @@ class Rack::Attack
   # end
 
   IP_POST_LIMITS.each_pair do |name, limit|
-    throttle("global limit api/v1/#{name}#post", limit: limit * MULTIPLIER, period: 1.hour) do |req|
+    throttle("global limit api/v1/#{name}#post", limit: limit * RATE_MULTIPLIER, period: (1 * HOUR_MULTIPLIER).hour) do |req|
       req.remote_ip if req.post? && req.path.starts_with?("/api/v1/#{name}")
     end
   end
