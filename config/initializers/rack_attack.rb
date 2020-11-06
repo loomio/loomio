@@ -44,17 +44,24 @@ class Rack::Attack
   MULTIPLIER = ENV.fetch('RACK_ATTACK_MULTPLIER', 1).to_i
 
   IP_POST_LIMITS = {
+    announcements: 10,
     groups: 10,
+    group_surveys: 10,
     login_tokens: 10,
+    membership_requests: 10,
+    identities: 10,
     discussions: 10,
     polls: 10,
     outcomes: 10,
     stances: 10,
+    profile: 10,
+    webhooks: 10,
     comments: 100,
     reactions: 100,
     registrations: 5,
     sessions: 10,
     contact_messages: 10,
+    contact_requests: 10,
     discussion_readers: 1000
   }
 
