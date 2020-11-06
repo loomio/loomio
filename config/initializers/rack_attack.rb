@@ -7,49 +7,29 @@ class Rack::Attack
                       ip).to_s
     end
   end
-  # considerations
-  # multiple users could be using same ip address (eg coworking space)
-  # does not distinguish between valid and invalid requests (eg: form validation)
-  # - so we need to allow for errors and resubmits without interruption.
-  # our attackers seem to create a group every 1 or 2 minutes, each with max invitations.
-  # so we're mostly interested in the hour and day limits
 
-  # group creation and invitation sending is the most common attack we see
-  # usually we get a few new groups per hour, globally.
-  # when attacks happen we see a few groups per minute, usually with the same name
-  # each trying to invite max_invitations with bulk create.
+  throttle('req/ip', limit: 300, period: 5.minutes) do |req|
+    req.remote_ip
+  end
 
-  # throttles all posts to the above endponts
-  # so we're looking at a record creation attack.
-  # the objective of these rules is not to guess what normal behaviour looks like
-  # and pitch abouve that.. but to identify what abusive behaviour certainly is,
-  # and ensure it cannot get really really bad.
+  throttle('logins/ip', limit: 5, period: 20.seconds) do |req|
+    req.ip if req.path == "/api/v1/sessions" && req.post?
+  end
 
-  # per hour
-  # GLOBAL_POST_LIMITS = {
-  #   groups: 100,
-  #   login_tokens: 1000,
-  #   discussions: 100,
-  #   polls: 100,
-  #   outcomes: 100,
-  #   stances: 1000,
-  #   comments: 1000,
-  #   reactions: 1000,
-  #   registrations: 1000,
-  #   sessions: 10000,
-  #   contact_messages: 100,
-  #   discussion_readers: 10000
-  # }
+  throttle('registrations/ip', limit: 5, period: 1.minute) do |req|
+    req.ip if req.path == "/api/v1/registrations" && req.post?
+  end
 
   RATE_MULTIPLIER = ENV.fetch('RACK_ATTACK_RATE_MULTPLIER', 1).to_i
-  HOUR_MULTIPLIER = ENV.fetch('RACK_ATTACK_HOUR_MULTPLIER', 1).to_i
+  TIME_MULTIPLIER = ENV.fetch('RACK_ATTACK_HOUR_MULTPLIER', 1).to_i
 
   IP_POST_LIMITS = {
     announcements: 10,
     groups: 10,
     group_surveys: 10,
     login_tokens: 10,
-    membership_requests: 10,
+    membership_requests: 100,
+    memberships: 100,
     identities: 10,
     discussions: 10,
     polls: 10,
@@ -60,20 +40,21 @@ class Rack::Attack
     comments: 100,
     reactions: 100,
     registrations: 5,
-    sessions: 10,
+    sessions: 100,
     contact_messages: 10,
     contact_requests: 10,
     discussion_readers: 1000
   }
 
-  # GLOBAL_POST_LIMITS.each_pair do |name, limit|
-  #   throttle("global limit api/v1/#{name}#post", limit: limit, period: 1.hour) do |req|
-  #     true if req.post? && req.path.starts_with?("/api/v1/#{name}")
-  #   end
-  # end
-
   IP_POST_LIMITS.each_pair do |name, limit|
-    throttle("global limit api/v1/#{name}#post", limit: limit * RATE_MULTIPLIER, period: (1 * HOUR_MULTIPLIER).hour) do |req|
+    throttle("post/ip/hour api/v1/#{name}", limit: limit * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).hour) do |req|
+      req.remote_ip if req.post? && req.path.starts_with?("/api/v1/#{name}")
+    end
+  end
+
+  # MAX posts per day is 3 times the posts per hour
+  IP_POST_LIMITS.each_pair do |name, limit|
+    throttle("post/ip/day api/v1/#{name}", limit: limit * 3 * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).day) do |req|
       req.remote_ip if req.post? && req.path.starts_with?("/api/v1/#{name}")
     end
   end
