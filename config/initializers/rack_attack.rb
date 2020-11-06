@@ -65,7 +65,7 @@ if ENV['USE_RACK_ATTACK']
 
     IP_POST_LIMITS.each_pair do |name, limit|
       throttle("global limit api/v1/#{name}#post", limit: limit, period: 1.hour) do |req|
-        req.ip if true if req.post? && req.path.starts_with?("/api/v1/#{name}")
+        remote_ip if req.post? && req.path.starts_with?("/api/v1/#{name}")
       end
     end
   end
