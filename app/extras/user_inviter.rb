@@ -9,13 +9,14 @@ class UserInviter
     end
 
     emails = Array(emails)
+    ids = Array(user_ids).concat(audience_ids).uniq
 
-    unless ENV['NO_NEW_USERS']
-      User.import(safe_emails(emails).map do |email|
-        User.new(email: email, time_zone: inviter.time_zone, detected_locale: inviter.locale)
-      end, on_duplicate_key_ignore: true)
-    end
-    User.where("id in (:ids) or email in (:emails)", ids: Array(user_ids).concat(audience_ids).uniq, emails: emails)
+    ThrottleService.limit!(key: 'UserInviterInvitations', id: inviter.id,  max: 1000, inc: emails.length + ids.length, per: :day)
+
+    User.import(safe_emails(emails).map do |email|
+      User.new(email: email, time_zone: inviter.time_zone, detected_locale: inviter.locale)
+    end, on_duplicate_key_ignore: true)
+    User.where("id in (:ids) or email in (:emails)", ids: ids , emails: emails)
   end
 
   private
