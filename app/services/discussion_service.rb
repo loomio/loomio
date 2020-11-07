@@ -1,6 +1,7 @@
 class DiscussionService
   def self.create(discussion:, actor:, params: {})
     actor.ability.authorize! :create, discussion
+    actor.ability.authorize! :announce, discussion if params[:recipient_audience] 
 
     discussion.author = actor
 

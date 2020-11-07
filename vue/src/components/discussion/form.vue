@@ -46,7 +46,7 @@ export default
           type: 'user'
           name: u.nameOrEmail()
           user: u
-        if groupId
+        if AbilityService.canAnnounceTo(@discussion)
           g =
             id: 'group'
             name: @$t('announcement.audiences.group', name: @discussion.group().name)

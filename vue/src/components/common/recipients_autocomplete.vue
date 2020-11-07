@@ -164,9 +164,9 @@ export default
             icon: 'mdi-account-group'
 
         if @model.discussion &&
-           @model.discussion() &&
-           @model.discussion().id &&
-           @model.discussion().membersCount > 1
+           (@model.discussion() || {}).id &&
+           AbilityService.canAnnounceTo(@model.discussion())
+
           ret.push
             id: 'discussion_group'
             name: @$t('announcement.audiences.discussion_group')
