@@ -30,6 +30,7 @@ namespace :loomio do
   end
 
   task hourly_tasks: :environment do
+    ThrottleService.reset!('hour')
     PollService.delay.expire_lapsed_polls
     PollService.delay.publish_closing_soon
 
@@ -41,6 +42,7 @@ namespace :loomio do
 
     LocateUsersAndGroupsWorker.perform_async
     if (Time.now.hour == 0)
+      ThrottleService.reset!('day')
       OutcomeService.delay.publish_review_due
       UsageReportService.send
       ExamplePollService.delay.cleanup
