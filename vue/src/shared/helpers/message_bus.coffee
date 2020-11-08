@@ -20,7 +20,7 @@ export initLiveUpdate = ->
 
   recordsSocket.on 'update', (data) =>
     roomScores[data.room] = data.score
-    console.log("socket.io update", {roomScores: roomScores}, data)
+    # console.log("socket.io update", {roomScores: roomScores}, data)
     Records.import(data.records)
 
   recordsSocket.on 'reconnect', (data) =>
@@ -36,6 +36,6 @@ export initLiveUpdate = ->
   recordsSocket.on 'connect', (data) =>
     # Flash.warning("server connected")
     console.log("socket.io connect")
-    
+
 export closeLiveUpdate = ->
   recordsSocket.close()
