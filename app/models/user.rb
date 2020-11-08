@@ -189,10 +189,10 @@ class User < ApplicationRecord
 
   def invitations_rate_limit
     if user.is_paying?
-      ENV.fetch('PAID_INVITATIONS_RATE_LIMIT', 2000)
+      ENV.fetch('PAID_INVITATIONS_RATE_LIMIT', 5000)
     else
-      ENV.fetch('TRIAL_INVITATIONS_RATE_LIMIT', 100)
-    end
+      ENV.fetch('TRIAL_INVITATIONS_RATE_LIMIT', 5000)
+    end.to_i
   end
 
   def set_legal_accepted_at
