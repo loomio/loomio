@@ -858,6 +858,9 @@ en:
     edited_by: 'Edited by <strong>{{name}}</strong>'
     edit_by: "Edit by {{name}} · {{date}}"
     posted: Posted
+    field: Field
+    before: Before
+    after: After
     original_text: Original
     current_revision: Latest
     closing_at_changed: "closing time set to {{time}}"
