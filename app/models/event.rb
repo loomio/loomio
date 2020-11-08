@@ -29,6 +29,8 @@ class Event < ApplicationRecord
       Event.where(discussion_id: e.discussion_id).
             where("id != ?", e.id).
             where('position_key like ?', e.position_key+"%").count
+    else
+      0
     end
   }
   update_counter_cache :parent, :child_count
