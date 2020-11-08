@@ -8,7 +8,7 @@ class UsageReportService
       discussions_count: Discussion.count,
       comments_count: Comment.count,
       polls_count: Poll.count,
-      voters_count: Stance.count,
+      stances_count: Stance.count,
       visits_count: Ahoy::Visit.count,
       canonical_host: ENV['CANONICAL_HOST']
     })
