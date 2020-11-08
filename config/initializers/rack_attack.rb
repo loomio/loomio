@@ -53,7 +53,7 @@ class Rack::Attack
 
   ActiveSupport::Notifications.subscribe(/rack_attack/) do |name, start, finish, request_id, req_h|
     req = req_h[:request]
-    Rails.logger.info [name,
+    Rails.logger.warn [name,
                        req.remote_ip,
                        req.request_method,
                        req.fullpath,

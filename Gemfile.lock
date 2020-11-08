@@ -283,6 +283,11 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
+    lograge (0.11.2)
+      actionpack (>= 4)
+      activesupport (>= 4)
+      railties (>= 4)
+      request_store (~> 1.0)
     loofah (2.7.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -537,6 +542,7 @@ DEPENDENCIES
   icalendar
   image_processing (~> 1.12)
   kt-paperclip
+  lograge
   maxminddb
   mini_magick
   newrelic_rpm

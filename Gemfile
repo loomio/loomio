@@ -59,6 +59,7 @@ gem 'slack_mrkdwn'
 gem 'puma'
 gem 'reverse_markdown'
 gem 'discard', '~> 1.2'
+gem 'lograge'
 
 group :development, :test do
   gem 'byebug'
