@@ -51,7 +51,6 @@ module Loomio
     # config.i18n.default_locale = :de
 
     # config.i18n.available_locales = # --> don't use this, make mostly empty yml files e.g. fallback.be.yml
-    config.log_level = ENV.fetch('RAILS_LOG_LEVEL', :info)
     config.i18n.enforce_available_locales = false
     config.i18n.fallbacks = [:en] # --> see initilizers/loomio_i18n
     config.assets.quiet = true

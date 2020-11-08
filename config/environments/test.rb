@@ -1,6 +1,7 @@
 Loomio::Application.configure do
   config.cache_classes = true
   config.serve_static_files = true
+  config.log_level = ENV.fetch('RAILS_LOG_LEVEL', :info)
 
   # Log error messages when you accidentally call methods on nil
   config.whiny_nils = true
