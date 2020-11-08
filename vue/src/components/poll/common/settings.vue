@@ -26,7 +26,7 @@ export default
   v-radio-group(v-model="poll.specifiedVotersOnly" :disabled="!poll.closingAt" :label="$t('poll_common_settings.who_can_vote')")
     v-radio(v-if="poll.discussionId && !poll.groupId" :value="false" :label="$t('poll_common_settings.specified_voters_only_false_discussion')")
     v-radio(v-if="poll.discussionId && poll.groupId" :value="false" :label="$t('poll_common_settings.specified_voters_only_false_group')")
-    v-radio(:value="true" :label="$t('poll_common_settings.specified_voters_only_true')")
+    v-radio.poll-common-settings__specified-voters-only(:value="true" :label="$t('poll_common_settings.specified_voters_only_true')")
   .caption.mt-n4(v-if="poll.specifiedVotersOnly" v-t="$t('poll_common_settings.invite_people_next', {poll_type: poll.translatedPollType()})")
   v-checkbox.poll-common-checkbox-option(v-for="(setting, index) in settings" hide-details :disabled="settingDisabled(setting)" :key="index" v-model="poll[setting]" :class="'poll-settings-' + kebabify(setting)" :label="$t('poll_common_settings.' + snakify(setting) + '.title')")
 </template>
