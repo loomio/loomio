@@ -9,7 +9,7 @@ class Rack::Attack
   end
 
   RATE_MULTIPLIER = ENV.fetch('RACK_ATTACK_RATE_MULTPLIER', 1).to_i
-  TIME_MULTIPLIER = ENV.fetch('RACK_ATTACK_HOUR_MULTPLIER', 1).to_i
+  TIME_MULTIPLIER = ENV.fetch('RACK_ATTACK_TIME_MULTPLIER', 1).to_i
 
   # throttle('req/ip', limit: 300, period: 5.minutes) do |req|
   #   req.remote_ip
