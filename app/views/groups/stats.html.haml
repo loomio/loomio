@@ -24,7 +24,7 @@
                   - if @group.parent_or_self.id == ENV['SOLE_GROUP_ID'].to_i
                     = @group.memberships_count
                   - else
-                    = @group.active_memberships_count
+                    = @group.accepted_memberships_count
               %td
                 %p{ style: "text-align: center"}= @group.subgroups.count
               %td
