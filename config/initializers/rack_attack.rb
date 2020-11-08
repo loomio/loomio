@@ -8,20 +8,12 @@ class Rack::Attack
     end
   end
 
-  throttle('req/ip', limit: 300, period: 5.minutes) do |req|
-    req.remote_ip
-  end
-
-  throttle('logins/ip', limit: 5, period: 20.seconds) do |req|
-    req.ip if req.path == "/api/v1/sessions" && req.post?
-  end
-
-  throttle('registrations/ip', limit: 5, period: 1.minute) do |req|
-    req.ip if req.path == "/api/v1/registrations" && req.post?
-  end
-
   RATE_MULTIPLIER = ENV.fetch('RACK_ATTACK_RATE_MULTPLIER', 1).to_i
   TIME_MULTIPLIER = ENV.fetch('RACK_ATTACK_HOUR_MULTPLIER', 1).to_i
+
+  # throttle('req/ip', limit: 300, period: 5.minutes) do |req|
+  #   req.remote_ip
+  # end
 
   IP_POST_LIMITS = {
     announcements: 10,
@@ -39,7 +31,7 @@ class Rack::Attack
     webhooks: 10,
     comments: 100,
     reactions: 100,
-    registrations: 5,
+    registrations: 10,
     sessions: 100,
     contact_messages: 10,
     contact_requests: 10,
@@ -59,7 +51,13 @@ class Rack::Attack
     end
   end
 
-  ActiveSupport::Notifications.subscribe(/rack_attack/) do |name, start, finish, request_id, payload|
-    Rails.logger.info "rack_attack: #{name}, #{start}, #{finish}, #{request_id}, #{payload}"
+  ActiveSupport::Notifications.subscribe(/rack_attack/) do |name, start, finish, request_id, req_h|
+    req = req_h[:request]
+    Rails.logger.info [name,
+                       req.remote_ip,
+                       req.request_method,
+                       req.fullpath,
+                       request_id,
+                       req.user_agent.to_s.parameterize].join(' ')
   end
 end
