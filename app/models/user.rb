@@ -187,7 +187,7 @@ class User < ApplicationRecord
     self.groups.joins(:subscription).where.not('subscriptions.plan': 'trial').exists?
   end
 
-  def invitations_limit
+  def invitations_rate_limit
     if user.is_paying?
       ENV.fetch('PAID_INVITATIONS_RATE_LIMIT', 2000)
     else

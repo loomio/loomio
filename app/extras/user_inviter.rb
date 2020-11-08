@@ -14,7 +14,7 @@ class UserInviter
 
     ThrottleService.limit!(key: 'UserInviterInvitations',
                            id: inviter.id,
-                           max: inviter.invitations_limit,
+                           max: inviter.invitations_rate_limit,
                            inc: emails.length + ids.length,
                            per: :day)
 
