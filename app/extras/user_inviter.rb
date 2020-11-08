@@ -11,9 +11,10 @@ class UserInviter
     emails = Array(emails)
     ids = Array(user_ids).concat(audience_ids).uniq
 
+
     ThrottleService.limit!(key: 'UserInviterInvitations',
                            id: inviter.id,
-                           max: 1000,
+                           max: inviter.invitations_limit,
                            inc: emails.length + ids.length,
                            per: :day)
 

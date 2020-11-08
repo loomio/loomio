@@ -183,6 +183,18 @@ class User < ApplicationRecord
     end
   end
 
+  def is_paying?
+    self.groups.joins(:subscription).where.not('subscriptions.plan': 'trial').exists?
+  end
+
+  def invitations_limit
+    if user.is_paying?
+      ENV.fetch('PAID_INVITATIONS_RATE_LIMIT', 2000)
+    else
+      ENV.fetch('TRIAL_INVITATIONS_RATE_LIMIT', 100)
+    end
+  end
+
   def set_legal_accepted_at
     self.legal_accepted_at = Time.now
   end
