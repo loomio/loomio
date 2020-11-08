@@ -36,11 +36,6 @@ export default
         Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
           @$router.replace(@urlFor(poll))
           Flash.success "poll_#{poll.pollType}_form.#{poll.pollType}_#{actionName}"
-          return if actionName == 'updated'
-          EventBus.$emit 'openModal',
-            component: 'AnnouncementForm',
-            props: { announcement: Records.announcements.buildFromModel(poll) }
-
       .catch onError(@poll)
 
   computed:

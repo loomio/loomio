@@ -4,8 +4,7 @@ en:
       title: Activate your group
       activities:
         set_description: Set your group's description
-        set_logo: Choose a logo for your group
-        set_cover_photo: Choose a cover photo for your group
+        set_cover_photo: Upload a cover photo & logo for your group
         invite_people_in: Invite people in
         start_thread: Start a discussion thread
         make_decision: Start a decision
