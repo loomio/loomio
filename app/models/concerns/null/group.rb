@@ -51,7 +51,7 @@ module Null::Group
   end
 
   def empty_methods
-    [:member_ids, :webhooks, :identities, :accepted_members, :memberships]
+    [:member_ids, :webhooks, :identities, :accepted_members]
   end
 
   def discussion_privacy_options
@@ -64,6 +64,10 @@ module Null::Group
 
   def members
     User.none
+  end
+
+  def memberships
+    Membership.none
   end
 
   def false_methods
