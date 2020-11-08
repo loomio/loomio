@@ -24,9 +24,9 @@ class MembershipService
 
     if existing_membership && !update_success
       membership.destroy
+    else
+      Events::InvitationAccepted.publish!(membership) if notify
     end
-
-    Events::InvitationAccepted.publish!(membership) if notify
   end
 
   def self.update(membership:, params:, actor:)
