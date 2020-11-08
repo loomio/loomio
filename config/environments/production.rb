@@ -1,5 +1,5 @@
 Loomio::Application.configure do
-  config.log_level = :info
+  config.log_level = ENV.fetch('RAILS_LOG_LEVEL', :info)
   config.lograge.enabled = true
 
   # Code is not reloaded between requests
