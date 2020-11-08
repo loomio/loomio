@@ -106,7 +106,7 @@ export default new class AbilityService
 
   canAnnounceTo: (model) ->
     return false if model.discardedAt
-    return false if model.discussion().membersCount == 1
+    return false if (model.discussion() || {}).membersCount == 1
     model.group().adminsInclude(Session.user()) or
     (model.membersInclude(Session.user()) and model.group().membersCanAnnounce)
 
