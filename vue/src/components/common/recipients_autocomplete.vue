@@ -4,6 +4,7 @@ import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
 import {map, debounce, without, filter, uniq, uniqBy, find} from 'lodash'
 import RecipientsNotificationsCount from '@/components/common/recipients_notifications_count'
+import AbilityService from '@/shared/services/ability_service'
 
 export default
   components: {
@@ -163,10 +164,7 @@ export default
             size: @model.group().acceptedMembershipsCount
             icon: 'mdi-account-group'
 
-        if @model.discussion &&
-           (@model.discussion() || {}).id &&
-           AbilityService.canAnnounceTo(@model.discussion())
-
+        if @model.discussion && (@model.discussion() || {}).id && AbilityService.canAnnounceTo(@model.discussion())
           ret.push
             id: 'discussion_group'
             name: @$t('announcement.audiences.discussion_group')
