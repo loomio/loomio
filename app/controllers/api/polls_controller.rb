@@ -39,12 +39,6 @@ class API::PollsController < API::RestfulController
   end
 
   private
-
-  def default_scope
-    # my_stances_cache: Caches::Stance.new(user: current_user, parents: resources_to_serialize))
-    super.merge(current_user: current_user)
-  end
-
   def accessible_records
     PollQuery.visible_to(user: current_user)
   end

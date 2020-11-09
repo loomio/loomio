@@ -30,6 +30,6 @@ class PollSerializer < ApplicationSerializer
   end
 
   def my_stance
-    @my_stances_cache ||= scope[:my_stances_cache].get_for(object) if scope && scope[:my_stances_cache]
+    object.stances.latest.where(participant_id: scope.current_user_id).first
   end
 end
