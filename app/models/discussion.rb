@@ -107,7 +107,12 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :closed_polls_count
 
   def create_missing_created_event!
-    super.tap { EventService.delay.repair_thread(id) }
+    event = self.events.create(
+      kind: created_event_kind,
+      user_id: author_id,
+      created_at: created_at)
+    EventService.delay.repair_thread(id)
+    event
   end
 
   def group

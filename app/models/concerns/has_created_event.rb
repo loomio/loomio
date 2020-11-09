@@ -8,9 +8,6 @@ module HasCreatedEvent
   end
 
   def create_missing_created_event!
-    self.events.create(
-      kind: created_event_kind,
-      user_id: author_id,
-      created_at: created_at)
+    nil
   end
 end
