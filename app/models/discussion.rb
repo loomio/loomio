@@ -106,13 +106,10 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
 
-  def created_event
-    super || self.events.create(
-      kind: 'new_discussion',
-      user_id: discussion.author_id,
-      created_at: self.created_at)
+  def create_missing_created_event!
+    super.tap { EventService.delay.repair_thread(id) }
   end
-  
+
   def group
     super || NullGroup.new
   end
