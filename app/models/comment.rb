@@ -76,7 +76,7 @@ class Comment < ApplicationRecord
   end
 
   def can_be_edited?
-    group.members_can_edit_comments? or is_most_recent?
+    group.members_can_edit_comments or is_most_recent?
   end
 
   def users_to_not_mention

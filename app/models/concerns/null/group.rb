@@ -47,7 +47,7 @@ module Null::Group
   end
 
   def true_methods
-    [:members_can_raise_motions, :discussion_private_default]
+    [:members_can_raise_motions, :members_can_edit_comments, :discussion_private_default]
   end
 
   def empty_methods
