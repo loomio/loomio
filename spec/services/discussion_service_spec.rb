@@ -63,11 +63,6 @@ describe 'DiscussionService' do
         expect(DiscussionReader.for(user: user, discussion: discussion).volume).to_not eq 'loud'
       end
 
-      it 'fires a NewDiscussion event' do
-        Events::NewDiscussion.should_receive(:publish!)
-        DiscussionService.create(discussion: discussion, actor: user)
-      end
-
       it 'returns the event created' do
         expect(DiscussionService.create(discussion: discussion,
                                  actor: user)).to be_a Event
