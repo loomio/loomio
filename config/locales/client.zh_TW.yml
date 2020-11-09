@@ -4,8 +4,7 @@ zh_TW:
       title: 啟用您的群組
       activities:
         set_description: 設定您的群組描述
-        set_logo: 為您的群組選擇圖示
-        set_cover_photo: 為您的群組選擇封面圖片
+        set_cover_photo: 為您的群組上傳封面圖片與圖示
         invite_people_in: 邀請夥伴在
         start_thread: 開始討論串
         make_decision: 啟動決策
@@ -418,6 +417,7 @@ zh_TW:
     other_groups: '其他群組'
     all_groups: '所有群組'
     recent_threads: '最近的討論串'
+    direct_threads: '直接討論串'
     unread_threads: '未讀的討論串 ({{count}})'
     muted_threads: '已靜音的討論串'
     start_group: '新組織'
@@ -483,6 +483,7 @@ zh_TW:
     group_members: "群組成員"
     discussion_members: "討論串成員"
     poll_members: "{{pollType}} 成員"
+    voters: "選民"
     invite_to_group: "邀請至群組"
     invite_to_discussion: "邀請至討論串"
     invite_to_poll: "邀請投票"
@@ -547,6 +548,15 @@ zh_TW:
     move_to_existing_thread: 移至現有討論串
     start_new_thread: 或開始新討論串
   discussion_form:
+    to: 到
+    direct_thread: "直接討論串"
+    none_direct_thread: "直接討論串（無群組）"
+    change_log_placeholder: 簡要描述在此編輯中所作的更改。（選擇性）
+    change_log_label: 有什麼變動？
+    one_person_will_be_notified: '將通知 1 個人。'
+    count_people_will_be_notified: '將通知 {{count}} 個人。'
+    notify_specifc_people_instead: 如果您不想要通知整個群組，請在此新增要被通知的夥伴名稱。
+    invite: 邀請
     aria_label: '討論串表單'
     start_thread: 啟動討論串
     messages:
@@ -567,6 +577,8 @@ zh_TW:
     privacy_private: '此討論串只會被「{{group}}」群組的成員看到。'
     privacy_organisation: '此討論串只會被「{{parent}}」群組的成員以及「{{group}}」群組的成員看到。'
     fork_notice: '新的討論串將會從 {{title}} 中包含 {{count}} 來建立'
+    one_person_notified: 將通知 1 個人
+    notify_group: 通知群組
   announcement:
     send_discussion: 傳送討論串
     send_discussion_explain: 邀請夥伴參與討論
@@ -587,14 +599,15 @@ zh_TW:
     preview: 預覽電子郵件
     no_notifications_sent: 未傳送通知
     history_error: 發生了一點問題！無法載入歷史。
-    inviting_guests_to_thread: 不是 {{group}} 成員的夥伴將會被以訪客的身份新增到此討論串，但不會取得對群組中其他討論串的存取權。
+    inviting_guests_to_thread: 訪客不屬於您的群組，且僅能存取此討論串
+    select_groups: 選取群組
     audiences:
-      parent_group: '{{name}} 的成員'
-      group: '{{name}} 的成員'
-      discussion_group: 討論串的成員
-      voters: 已經投票的夥伴
-      undecided: 未決定的夥伴
-      non_voters: 尚未邀請
+      group: 在 {{name}} 中的每個人
+      discussion_group: 在討論串中的每個人
+      voters: 被邀請投票的每個人
+      decided_voters: 已經投票的每個人
+      undecided_voters: 未決定的選民
+      non_voters: '{{name}} 的成員尚未被邀請'
     form:
       too_many_invitations: |
           已超過邀請限制。<a href="{{upgradeUrl}}" target="_blank">升級</a>
@@ -602,6 +615,9 @@ zh_TW:
           <p>您已經使用了此群組可用的全部 {{maxMembers}} 個邀請。</p>
           <p>下一步，<a href="{{upgradeUrl}}" target="_blank">選擇一個計畫</a>以繼續在 Loomio 上協作。</p>
       invitations_remaining: '剩餘 {{count}} 個邀請。<a href="{{upgradeUrl}}" target="_blank">升級</a>'
+      who_to_invite: 您想要邀請誰？
+      invitation_message_placeholder: 邀請電子郵件中要包含的訊息。（選擇性）
+      invitation_message_label: 訊息
       group_announced:
         title: 邀請至群組
         helptext: 您想要邀請誰到群組中？
@@ -610,22 +626,19 @@ zh_TW:
         helptext: 您想要邀請誰到討論串中？
       discussion_edited:
         title: 編輯的通知
-        helptext: 您想要通知誰關於您的變更？
+        helptext: 您想通知此更新給誰？（選擇性）
       poll_announced:
         title: 邀請投票
         helptext: 您想要邀請誰來投票？
-      poll:
-        title: 編輯的通知
-        helptext: 您想要通知誰關於您的變更？
       poll_edited:
         title: 編輯的通知
-        helptext: 您想要通知誰關於您的變更？
+        helptext: 您想通知此更新給誰？
       outcome_announced:
         title: 分享成果
-        helptext: 您想要與誰分享結果？
+        helptext: 總結過程的結果，包含發現的任何意見與問題。
       anyone_can_participate: 任何有連結的人都可以參與
-      placeholder: 輸入名稱或電子郵件地址……
-      notified_empty: '尚未選取任何人。'
+      placeholder: 輸入名稱或電子郵件地址
+      notified_empty: '尚未選取任何人'
       notified: '{{notified}} 個夥伴將會被通知：'
       notified_singular: '1 個夥伴將會被通知：'
       group_title: '{{name}}（{{count}} 個夥伴）'
@@ -634,6 +647,10 @@ zh_TW:
       last_notified: 已通知
       not_notified: 尚未通知
       no_members: "這尚未與任何人分享！"
+      group_admin: "群組管理員"
+      thread_admin: "討論串管理員"
+      last_read_at: "最後檢視 {{time}}"
+      has_not_read_thread: "尚未檢視討論串"
     group_form:
       search_placeholder: 搜尋夥伴……
       modal_title: 選取群組成員
@@ -672,6 +689,8 @@ zh_TW:
     translate_outcome: 翻譯結果
     show_history: 顯示編輯歷史
     edited: 已編輯
+    show_edits: 顯示編輯
+    show_notifications: 顯示通知
     history: 歷史
     pin_thread: 釘選討論串
     unpin_thread: 取消釘選討論串
@@ -689,6 +708,8 @@ zh_TW:
     notification_history: 通知歷史
     move_item: 移動項目
     add_poll_to_thread: 新增至討論串
+    count_members: "{{count}} 位成員"
+    count_voters: "{{count}} 票"
   formatting:
     formatting_tools: 文字格式化工具
     expand: 顯示更多格式化工具
@@ -764,14 +785,18 @@ zh_TW:
       membership_requested: '您已經申請 {{group}} 的成員資格'
   revision_history_modal:
     aria_label: 修訂歷史
-    discussion_header: 討論串修訂歷史
-    comment_header: 評論修訂歷史
-    poll_header: 投票修訂歷史
-    stance_header: 立場調整歷史
+    discussion_header: 討論編輯
+    comment_header: 留言編輯
+    poll_header: 投票編輯
+    outcome_header: 結果編輯
+    stance_header: 立場編輯
     started_by: '由 <strong>{{name}}</strong> 所啟動'
     edited_by: '由 <strong>{{name}}</strong> 所編輯'
     edit_by: "編輯由 {{name}} · {{date}}"
     posted: 已貼出
+    field: 欄位
+    before: 之前
+    after: 之後
     original_text: 原版
     current_revision: 最新
     closing_at_changed: "關閉時間設定為 {{time}}"
@@ -1072,6 +1097,7 @@ zh_TW:
     locale_field: '語言：{{value}}'
     online_field: '線上：{{value}}'
     invited: '已邀請 {{value}}'
+    message_user: '訊息 {{name}}'
   contact_request_form:
     modal_title: "電子郵件 {{value}}"
     message_placeholder: 自我介紹並分享為什麼您想要加入聯絡人。
@@ -1211,6 +1237,8 @@ zh_TW:
       thisweek: '本週'
       thismonth: ' 本月'
       older: '早於一個月'
+  threads_page:
+    no_direct_threads: "您沒有直接討論串"
   inbox_page:
     no_threads: 太棒了！您已經讀完了您收件匣中所有的討論串。
     unread_threads: 未讀的討論串
@@ -1221,6 +1249,7 @@ zh_TW:
       or: 或者
       join_group: <a href="/explore">加入</a>群組以觀看討論串。
   discussion:
+    private_thread: 私人討論串
     max_threads_reached: |+
         <p>您已經使用了此群組可用的全部 {{maxMembers}} 個邀請。</p>
         <p>下一步，<a href="{{upgradeUrl}}" target="_blank">選擇一個計畫</a>以繼續在 Loomio 上協作。</p>
@@ -1367,6 +1396,7 @@ zh_TW:
       app_update: '新版的應用程式已經可用'
       reload: '重新整理'
   decision_tools_card:
+    choose_type: 選擇投票類型
     title: 促進
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">說明</a>
     proposal_title: 提案
@@ -1378,6 +1408,7 @@ zh_TW:
     ranked_choice_title: 排序選擇
   poll_common:
     vote_now: 現在投票
+    review_due: 審閱到期
     have_your_say: 擁有發言權
     your_response: 您的回應
     change_your_response: 編輯回應
@@ -1461,9 +1492,11 @@ zh_TW:
     invitations: '邀請函'
     requests: '請求'
     admin: '管理員'
+    guest: '訪客'
     sharable_link: '可分享的連結'
     last_seen: '最後檢視 {{date}}'
     invited_by_name: '被 {{name}} 邀請'
+    only_in_subgroups: "不在此群組中但屬於 {{name}}。"
     accepted: '成員 ({{count}})'
   polls_panel:
     new_poll: 新投票
@@ -1515,12 +1548,24 @@ zh_TW:
     location: 位置
     location_placeholder: 這個會面會在哪裡舉辦？
   poll_common_settings:
+    who_can_vote: '誰可以投票？'
+    specified_voters_only_true: 僅邀請的夥伴
+    specified_voters_only_false_group: 在群組中的任何人
+    specified_voters_only_false_discussion: 在討論串中的任何人
+    invite_people_next: 在您開始 {{poll_type}} 後，您可以選擇要邀請誰來投票
     multiple_choice:
       title: 多選
       helptext_on: 在選取時，參與者可以選取多個選項。
     anyone_can_participate:
       title: 任何有連結的人都可以參與
       helptext_on: 當選取時，任何有投票連結的人都可以參與。
+    notify_on_closing_soon:
+      closes_too_soon: 因為此 {{poll_type}} 會在24小時內關閉，因此不會傳送即將關閉的提醒。
+      title: '{{pollType}} 關閉前24小時，傳送提醒給'
+      nobody: 沒有人
+      author: 作者（我）
+      undecided_voters: 未決定的選民
+      voters: 所有選民
     notify_on_participate:
       title: 當夥伴參與時通知我
       helptext_on: 當選取時，您將會在有其他人參與時被通知。
@@ -1599,11 +1644,13 @@ zh_TW:
     ranked_choice: '這個排序投票已關閉。與群組<strong>分享結果</strong>。'
     score: '此分數投票已關閉。與群組<strong>分享結果</strong>。'
   poll_common_outcome_form:
+    who_to_notify: 您想通知此結果給誰？
     new_title: 輸入結果
     update_title: 更新結果
     outcome_created: 結果已建立
     outcome_updated: 結果已更新
     statement_placeholder: 總結回應並解釋接下來會發生什麼事。
+    you_will_be_notified: 您將在審閱日期時收到通知。
     submit: 分享成果
   poll_common_outcome_panel:
     authored_by: '由 {{name}}'
@@ -1623,7 +1670,6 @@ zh_TW:
     start_poll_type: 開始 {{poll_type}}
     share_poll_type: 分享 {{poll_type}}
     update: 更新
-    reminder_note: 關閉前 24 小時，將向所有參與者發送提醒
     loomio_school_link: |
         <p>在 <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio 說明</a>取得更多資訊。</p>
   poll_proposal_form:
@@ -1824,6 +1870,7 @@ zh_TW:
       outcome_created: "{{actor}} 分享了成果。 {{when}}"
       poll_expired: "{{pollType}} 已關閉。 {{when}}"
     removed: "項目已移除"
+    deleted_group: "已刪除的群組"
     comment_replied_to: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> 在回覆 <strong>{{title}}</strong>"
     discussion_title_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> 已編輯討論串標題"
     discussion_context_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> 編輯了討論內容"

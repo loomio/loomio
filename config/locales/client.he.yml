@@ -4,8 +4,6 @@ he:
       title: הפעלת הקבוצה שלך
       activities:
         set_description: הגדר את תאור הקבוצה
-        set_logo: בחר לוגו לקבוצה שלך
-        set_cover_photo: בחר תמונת קאבר לקבוצה
         invite_people_in: הזמן אנשים
         start_thread: התחל דיון
         make_decision: התחל החלטה
@@ -405,6 +403,7 @@ he:
   discussion_fork_actions:
     move: העבר
   discussion_form:
+    invite: הזמן
     aria_label: 'טופס שיחה'
     messages:
       created: 'שיחה התחילה'
@@ -424,11 +423,6 @@ he:
     privacy_organisation: 'משתמשי {{parent}} וה{{group}} יכולו לצפות בשיחה.'
     fork_notice: 'שיחה חדשה תיווצר עם {{count}} פריטים מ{{title}}'
   announcement:
-    audiences:
-      parent_group: משתתפי ה{{name}}
-      group: משתתפי ה{{name}}
-      discussion_group: חברי השיחה
-      voters: אנשים שהצביעו
     form:
       too_many_invitations: |
           הגעת לגבול ההזמנות המותר. <a href="{{upgradeUrl}}" target="_blank">שדרג</a>
@@ -436,6 +430,7 @@ he:
           <p>השתמשת בכל {{maxMembers}} ההזמנות האפשרויות לקבוצה זו.</p>
           <p>שלב הבא, <a href="{{upgradeUrl}}" target="_blank">בחר חבילה</a> כדי להמשיך לשתף פעולה ב-Loomio.</p>
       invitations_remaining: '{{count}} הזמנות נותרו. <a href="{{upgradeUrl}}" target="_blank">שדרג</a>'
+      invitation_message_label: הודעה
       group_announced:
         title: הזמן לקבוצה
         helptext: מי היית רוצה להזמין לקבוצה?
@@ -444,22 +439,14 @@ he:
         helptext: מי היית רוצה להזמין לשיחה?
       discussion_edited:
         title: עידכוני עריכות
-        helptext: מי היית רוצה להודיע על השינויים שביצעת?
       poll_announced:
         title: הזמן לבחור
         helptext: מי היית רוצה להזמין להצביע?
-      poll:
-        title: עידכוני עריכות
-        helptext: מי היית רוצה להודיע על השינויים שביצעת?
       poll_edited:
         title: עידכוני עריכות
-        helptext: מי היית רוצה להודיע על השינויים שביצעת?
       outcome_announced:
         title: שתפ/י תוצאה
-        helptext: עם מי היית רוצה לשתף את התוצאה?
       anyone_can_participate: כל אחד עם לינק יכול להשתתף
-      placeholder: הזן שמות או מיילים...
-      notified_empty: 'אף אחד עוד לא נבחר.'
       notified: '{{notified}} אנשים יעודכנו:'
       notified_singular: 'אדם אחד יעודכן:'
       group_title: '{{name}} ({{count}} אנשים)'
@@ -536,10 +523,6 @@ he:
       membership_requested: 'ביקשת להיות חבר ב{{group}}'
   revision_history_modal:
     aria_label: היסטוריית שינויים
-    discussion_header: היסטוריית שינויים בדיון
-    comment_header: היסטוריית שינויים בהערה
-    poll_header: היסטוריית שינויים בסקר
-    stance_header: היסטוריית שינויים בדיעה
     started_by: 'התחיל ע"י <strong>{{name}}</strong>'
     edited_by: 'נערך ע"י <strong>{{name}}</strong>'
     posted: פורסם

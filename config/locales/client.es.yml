@@ -4,8 +4,7 @@ es:
       title: Empieza un grupo
       activities:
         set_description: Configura la descripción de tu grupo
-        set_logo: Elige un logo para tu grupo
-        set_cover_photo: Elige una foto de portada para tu grupo
+        set_cover_photo: Sube un foto de portada y logo para vuestro grupo
         invite_people_in: Invita a personas a
         start_thread: Comience un hilo de discusión
         make_decision: 'Iniciar una decisión '
@@ -418,6 +417,7 @@ es:
     other_groups: 'Otros grupos'
     all_groups: 'Todos los grupos'
     recent_threads: 'Hilos recientes'
+    direct_threads: 'Hilos directos'
     unread_threads: 'No leído ({{count}})'
     muted_threads: 'Hilos silenciados '
     start_group: 'Nueva organización'
@@ -483,6 +483,7 @@ es:
     group_members: "Integrantes del grupo"
     discussion_members: "Integrantes del hilo"
     poll_members: "{{pollType}} integrantes"
+    voters: "Votantes"
     invite_to_group: "Invitar al grupo"
     invite_to_discussion: "Invitar al hilo"
     invite_to_poll: "Invitar a votar "
@@ -547,6 +548,15 @@ es:
     move_to_existing_thread: 'Mover a un hilo existente '
     start_new_thread: O empieza un nuevo hilo
   discussion_form:
+    to: Para
+    direct_thread: "Hilo directo"
+    none_direct_thread: "Hilo directo (no grupo)"
+    change_log_placeholder: Describe brevemente los cambios hechos en esta edición (opcional)
+    change_log_label: ¿Qué ha cambiado?
+    one_person_will_be_notified: '1 persona será notificada'
+    count_people_will_be_notified: '{{count}} gente será notificada'
+    notify_specifc_people_instead: Si no quieres notificar al grupo entero, añade los nombres de las personas quieres que sean notificadas.
+    invite: Invitar
     aria_label: 'Formulario del hilo'
     start_thread: Empezar un hilo
     messages:
@@ -567,6 +577,8 @@ es:
     privacy_private: 'Los hilos solo serán visibles para integrantes de {{group}}.'
     privacy_organisation: 'Los hilos serán visibles para integrantes de {{parent}} e integrantes de {{group}}.'
     fork_notice: 'Un nuevo hilo será creado con {{count}} items de {{title}}'
+    one_person_notified: 1 persona será notificada
+    notify_group: Grupo de notificación
   announcement:
     send_discussion: Manda hilo
     send_discussion_explain: Invita a gente a participar en el debate
@@ -587,14 +599,15 @@ es:
     preview: Vista preliminar del email
     no_notifications_sent: No se han enviado notificaciones
     history_error: Algo ha salido mal! No se pudo cargar la historia
-    inviting_guests_to_thread: La gente que no son miembros del {{group}} se les añadirá a este hilo como invitados y no conseguirán acceder a otros hilos en el grupo.
+    inviting_guests_to_thread: Los invitados no pertenecen a tu grupo y solamente tienen acceso a este hilo
+    select_groups: Grupos seleccionados
     audiences:
-      parent_group: Integrantes de {{name}}
-      group: 'Integrantes de {{name}} '
-      discussion_group: Integrantes del hilo
-      voters: Gente que ha votado
-      undecided: Gente indecisa
-      non_voters: Todavía no se le ha invitado
+      group: Todos dentro {{name}}
+      discussion_group: Todos en el hilo
+      voters: Todos invitados a votar
+      decided_voters: Todos los que votaron
+      undecided_voters: Votantes indecisos
+      non_voters: Miembros de {{name}} todavía no han sido invitados
     form:
       too_many_invitations: |
           Límite de invitaciones excedido. <a href="{{upgradeUrl}}" target="_blank">Mejore su abono</a>
@@ -602,6 +615,9 @@ es:
           <p>Ha usado todas las {{maxMembers}} invitaciones disponibles para este grupo.</p>
           <p>Si quiere puede, <a href="{{upgradeUrl}}" target="_blank">elegir un abono</a> para continuar colaborando en Loomio.</p>
       invitations_remaining: '{{count}} invitaciones disponibles. <a href="{{upgradeUrl}}" target="_blank">Mejore su abono</a>'
+      who_to_invite: ¿A quién te gustaría invitar?
+      invitation_message_placeholder: Un mensaje a incluir en el email de invitación. (opcional)
+      invitation_message_label: Mensaje
       group_announced:
         title: Invitar al grupo
         helptext: ¿A quién le gustaría invitar al grupo?
@@ -610,22 +626,19 @@ es:
         helptext: ¿A quién le gustaría invitar a este hilo?
       discussion_edited:
         title: Notificar cambios
-        helptext: ¿A quién te gustaría notificar sobre los cambios?
+        helptext: ¿A quién te gustaría notificar sobre esta actualización? (opcional)
       poll_announced:
         title: 'Invitar a votar '
         helptext: ¿A quién le gustaría invitar a la votación?
-      poll:
-        title: Notificar cambios
-        helptext: '¿A quién te gustaría notificar de los cambios? '
       poll_edited:
         title: Notificar cambios
-        helptext: '¿A quién te gustaría notificar de los cambios? '
+        helptext: ¿A quién te gustaría notificar sobre esta notificación?
       outcome_announced:
         title: Compartr resultado
-        helptext: ¿Con quién te gustaría compartir el resultado?
+        helptext: Resumir los resultados del proceso, incluyendo cualquier entendimiento encontrado o problemas sacados a la luz.
       anyone_can_participate: Cualquiera con el enlace puede paticipar
       placeholder: Introduce nombres o correos electrónicos
-      notified_empty: 'Nadie seleccionado aún '
+      notified_empty: 'No se ha seleccionado a nadie todavía'
       notified: '{{notified}} personas serán notificadas:'
       notified_singular: '1 persona será notificada'
       group_title: '{{name}} ({{count}} personas)'
@@ -634,6 +647,10 @@ es:
       last_notified: Notificado
       not_notified: No ha sido notificado aún
       no_members: "Esto no ha sido compartido con nadie aún"
+      group_admin: "Grupo de administración"
+      thread_admin: "Hilo de administración"
+      last_read_at: "El último visto {{time}}"
+      has_not_read_thread: "Tiene un hilo no visto"
     group_form:
       search_placeholder: Buscar personas...
       modal_title: Selecciona integrantes del grupo
@@ -672,6 +689,8 @@ es:
     translate_outcome: Traducir resultado
     show_history: Ver historial de revisión
     edited: Editado
+    show_edits: Muestra las ediciones
+    show_notifications: Muestra notificacinoes
     history: Historia
     pin_thread: Anclar hilo
     unpin_thread: Soltar hilo
@@ -689,6 +708,8 @@ es:
     notification_history: Historial de notificación
     move_item: Mover elemento
     add_poll_to_thread: Añadir al hilo
+    count_members: "{{count}} miembros"
+    count_voters: "{{count}} votantes"
   formatting:
     formatting_tools: Herramientas formateo de texto
     expand: Mostrar más herramientas de formateo
@@ -764,14 +785,18 @@ es:
       membership_requested: 'Ya has solicitado unirte a {{group}}'
   revision_history_modal:
     aria_label: Historial de revisión
-    discussion_header: 'Historial de revisión de la discusión '
-    comment_header: Historial de revisión del comentario
-    poll_header: Historial de revisión de la encuesta
-    stance_header: Historial de revisión de posturas
+    discussion_header: Ediciones de debates
+    comment_header: Ediciones de comentarios
+    poll_header: Ediciones de encuestas
+    outcome_header: Ediciones de resultados
+    stance_header: Ediciones de posición
     started_by: 'Iniciado por <strong>{{name}}</strong>'
     edited_by: 'Editado por <strong>{{name}}</strong>'
     edit_by: "Editar por {{name}} · {{date}}"
     posted: Enviado
+    field: Campo
+    before: Antes
+    after: Después
     original_text: Original
     current_revision: Últimos
     closing_at_changed: "Cierre configurado al {{time}}"
@@ -1072,6 +1097,7 @@ es:
     locale_field: 'Idioma: {{value}}'
     online_field: 'Online: {{value}}'
     invited: 'Invitado/a {{value}}'
+    message_user: 'Mensaje {{nombre}}'
   contact_request_form:
     modal_title: "Correo electrónico: {{name}}"
     message_placeholder: Comparte una breve introducción personal y di porqué te quieres contactar.
@@ -1211,6 +1237,8 @@ es:
       thisweek: 'Esta semana'
       thismonth: 'Este mes'
       older: 'De hace más de un mes'
+  threads_page:
+    no_direct_threads: "No tienes hilos directos"
   inbox_page:
     no_threads: ¡Genial! ¡Ya ha leído todos los hilos de su bandeja de entrada!
     unread_threads: Hilos sin leer
@@ -1221,6 +1249,7 @@ es:
       or: 'o '
       join_group: '<a href="/explore">únete</a> a un grupo para ver hilos.   '
   discussion:
+    private_thread: Hilo privado
     max_threads_reached: |
         <p>Has usado todos {{maxThreads}} los hilos disponibles en este grupo.</p>
         <p>Siguiente paso, <a href="{{upgradeUrl}}" target="_blank">elije un plan</a>para continuar participando en Loomio.</p>
@@ -1366,6 +1395,7 @@ es:
       app_update: 'Una nueva versión de la app está disponible '
       reload: 'Actualizar'
   decision_tools_card:
+    choose_type: Elegir tipo de sondeo
     title: Facilitar
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Ayuda</a>
     proposal_title: Propuesta
@@ -1377,6 +1407,7 @@ es:
     ranked_choice_title: Opción priorizada
   poll_common:
     vote_now: Votar ahora
+    review_due: Revisión pendiente
     have_your_say: Denos su opinión
     your_response: Su respuesta
     change_your_response: Editar respuesta
@@ -1460,9 +1491,11 @@ es:
     invitations: 'Invitaciones'
     requests: 'Solicitudes'
     admin: 'Administrador'
+    guest: 'Invitado'
     sharable_link: 'Enlace compartible'
     last_seen: 'Último visto {{date}}'
     invited_by_name: 'Invitado por {{name}}'
+    only_in_subgroups: "No en este grupo pero pertenece a {{name}}."
     accepted: 'Integrantes'
   polls_panel:
     new_poll: Nuevo sondeo
@@ -1514,12 +1547,24 @@ es:
     location: 'Locación '
     location_placeholder: ¿Dónde tomara lugar esta reunión?
   poll_common_settings:
+    who_can_vote: '¿Quién puede votar?'
+    specified_voters_only_true: Solamente personas invitadas
+    specified_voters_only_false_group: Cualquiera en el grupo
+    specified_voters_only_false_discussion: Cualquiera en el hilo
+    invite_people_next: Puedes elegir a quien se le invita a votar después de empezar {{poll_type}}
     multiple_choice:
       title: Opción multiple
       helptext_on: Si es seleccionado, los participantes podrán seleccionar múltiples opciones
     anyone_can_participate:
       title: Cualquiera con el enlace puede paticipar
       helptext_on: Si es seleccionado, cualquiera con el enlace a la encuesta podrá participar
+    notify_on_closing_soon:
+      closes_too_soon: Porque este {{pollType}} cierra en 24 horas no se enviarán recordatorios de que cerrará pronto.
+      title: 24 horas antes {{pollType}} cierre, enviar un recordatorio a
+      nobody: Nadie
+      author: Autor (yo)
+      undecided_voters: Votantes indecisos
+      voters: Todos los votantes
     notify_on_participate:
       title: Notificarme cuando participe gente
       helptext_on: Si es seleccionado, se te notificará cuando alguien participe
@@ -1598,11 +1643,13 @@ es:
     ranked_choice: 'Esta encuesta de opción priorizada ha cerrado. <strong>Comparte el resultado</strong> con el grupo.'
     score: 'Este resultado de la encuesta ha cerrado. <strong>Comparte un resultado</strong>con el grupo.'
   poll_common_outcome_form:
+    who_to_notify: ¿A quién quieres notificar sobre este resultado?
     new_title: Introducir un resultado
     update_title: Actualizar el resultado
     outcome_created: Resultado creado
     outcome_updated: Resultado actualizado
     statement_placeholder: Resuma las respuestas y explique lo que ocurrirá a continuación.
+    you_will_be_notified: Se te notificará en la fecha de revisión
     submit: Compartr resultado
   poll_common_outcome_panel:
     authored_by: 'Por {{name}}'
@@ -1622,7 +1669,6 @@ es:
     start_poll_type: Comenzar {{poll_type}}
     share_poll_type: Compartir {{poll-type}}
     update: Actualizar
-    reminder_note: 24 horas antes del cierre, se le enviará un recordatorio a todos los participantes
     loomio_school_link: |
         <p>Descubre más en <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Ayuda Loomio</a>.</p>
   poll_proposal_form:

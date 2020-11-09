@@ -48,6 +48,9 @@ mk:
     title_label: 'Наслов'
     context_label: 'Контекст'
     privacy_label: 'Приватност'
+  announcement:
+    form:
+      invitation_message_label: Порака
   action_dock:
     edited: Изменето
   join_group_button:

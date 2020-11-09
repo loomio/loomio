@@ -4,8 +4,6 @@ pl:
       title: Aktywuj swoją grupę
       activities:
         set_description: Ustaw opis swojej grupy
-        set_logo: Wybierz logo dla swojej grupy
-        set_cover_photo: Wybierz zdjęcie na okładkę swojej grupy
         invite_people_in: 'Zaproś ludzi '
         start_thread: Rozpocznij wątek dyskusyjny
         make_decision: Rozpocznij decyzję
@@ -522,6 +520,7 @@ pl:
     move_to_existing_thread: Przenieś istniejący wątek
     start_new_thread: Lub, załóż nowy wątek
   discussion_form:
+    invite: Zaproś
     aria_label: 'Formularz wątku'
     start_thread: Rozpoczęcie wątku
     messages:
@@ -562,14 +561,6 @@ pl:
     preview: Podgląd e-maila
     no_notifications_sent: Żadne powiadomienia nie zostały wysłane
     history_error: Coś poszło nie tak! Nie można załadować historii.
-    inviting_guests_to_thread: Osoby, które nie są członkami {{group}}, zostaną dodane do tego wątku jako goście i nie uzyskają dostępu do innych wątków w grupie.
-    audiences:
-      parent_group: Członkowie {{name}}
-      group: Członkowie {{name}}
-      discussion_group: Członkowie wątku
-      voters: Osoby, które głosowały.
-      undecided: Niezdecydowane osoby
-      non_voters: Jeszcze nie zaproszony
     form:
       too_many_invitations: |
           Przekroczono limit zaproszeń. <a href="{{upgradeUrl}}" target="_blank">Aktualizacja</a>
@@ -577,6 +568,7 @@ pl:
           <p>Zużyłeś wszystkie  {{maxMembers}} zaproszenia dostępne dla tej grupy.
           <p>Następny krok, <a href="{{upgradeUrl}}" target="_blank">wybierz plan</a>, aby kontynuować współpracę z Loomio.
       invitations_remaining: 'Pozostało {{count}} zaproszeń. <a href="{{upgradeUrl}}" target="_blank">Aktualizacja</a>'
+      invitation_message_label: Wiadomość
       group_announced:
         title: Zaproś do grupy
         helptext: Kogo chciałbyś zaprosić do grupy?
@@ -585,22 +577,15 @@ pl:
         helptext: Kogo chciałbyś zaprosić do wątku?
       discussion_edited:
         title: Powiadamiaj o zmianach
-        helptext: Kogo chciałbyś powiadomić o swoich zmianach?
       poll_announced:
         title: Zaproś do głosowania
         helptext: Kogo chciałbyś zaprosić do głosowania?
-      poll:
-        title: Powiadamiaj o zmianach
-        helptext: Kogo chciałbyś powiadomić o swoich zmianach?
       poll_edited:
         title: Powiadamiaj o zmianach
-        helptext: Kogo chciałbyś powiadomić o swoich zmianach?
       outcome_announced:
         title: Udostępnij wynik
-        helptext: Z kim chciałbyś się podzielić wynikiem?
       anyone_can_participate: Każdy z linkiem może wziąć udział
-      placeholder: Wpisz nazwiska lub adresy e-mail ...
-      notified_empty: 'Nikogo jeszcze nie wybrano.'
+      placeholder: Podaj nazwy lub adresy email
       notified: '{{powiadomione}} osoby zostaną powiadomione:'
       notified_singular: '1 osoba zostanie powiadomiona:'
       group_title: '{{name}} ({{count}} osób)'
@@ -725,10 +710,6 @@ pl:
       membership_requested: 'Wysłałeś/aś prośbę o dołączenie do grupy  {{group}}'
   revision_history_modal:
     aria_label: Historia poprawek
-    discussion_header: Historia poprawek dyskusji
-    comment_header: Historia poprawek komentarza
-    poll_header: Historia poprawek ankiety
-    stance_header: Historia poprawek stanowiska
     started_by: 'Zapoczątkowane przez {{name}}'
     edited_by: 'Edytowane przez {{name}}'
     edit_by: "Edytuj przez {{name}} · {{date}}"

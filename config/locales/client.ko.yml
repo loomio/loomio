@@ -229,6 +229,9 @@ ko:
     privacy_public: '누구나 이 쓰레드를 볼 수 있지만, 회원만 참여할 수 있습니다.'
     privacy_private: '이 쓰레드는 {{group}}의 멤버만 볼 수 있습니다.'
     privacy_organisation: '이 쓰레드는 {{parent}}와 {{group}}의 멤버만 볼 수 있습니다.'
+  announcement:
+    form:
+      invitation_message_label: 메시지
   action_dock:
     copy_url: 링크 복사
     edit_stance: 선택 변경

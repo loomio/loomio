@@ -4,8 +4,6 @@ fr:
       title: Activez votre groupe
       activities:
         set_description: Saisissez une description pour votre groupe
-        set_logo: Choisissez un logo pour votre groupe
-        set_cover_photo: Choisissez une bannière photo pour votre groupe
         invite_people_in: Invitez des personnes
         start_thread: Lancez une discussion
         make_decision: Prenez une décision
@@ -546,6 +544,7 @@ fr:
     move_to_existing_thread: Déplacer vers une discussion existante
     start_new_thread: Ou démarrer une nouvelle discussion
   discussion_form:
+    invite: Inviter
     aria_label: 'Forme de la discussion'
     start_thread: Démarrer une discussion
     messages:
@@ -586,14 +585,6 @@ fr:
     preview: Aperçu du courriel
     no_notifications_sent: Aucune notification n'a été envoyé
     history_error: Oups, petit souci technique ! L'historique n'a pu être téléchargé
-    inviting_guests_to_thread: Les personnes n'étant pas membres de {{group}} seront ajoutés en tant qu'invités et n'auront pas accès aux autres discussions du groupe
-    audiences:
-      parent_group: Membres de {{name}}
-      group: Membres de {{name}}
-      discussion_group: Membres de la discussion
-      voters: Personnes qui ont voté
-      undecided: Personnes sans avis
-      non_voters: Pas encore invité
     form:
       too_many_invitations: |
           Invitations maximum atteintes. <a href="{{upgradeUrl}}" target="_blank">Mettre à jour</a>
@@ -601,6 +592,7 @@ fr:
           <p>Vous avez épuisé toutes les {{maxMembers}} invitations disponible pour ce groupe.</p>
           <p>Étape suivante, <a href="{{upgradeUrl}}" target="_blank">choisissez un abonnement</a> pour continuer à utiliser Loomio.</p>
       invitations_remaining: '{{count}} invitations restantes <a href="{{upgradeUrl}}" target="_blank">Mettre à jour</a>'
+      invitation_message_label: Message
       group_announced:
         title: Inviter au groupe
         helptext: Qui voulez-vous inviter au groupe ?
@@ -609,22 +601,15 @@ fr:
         helptext: Qui voulez-vous inviter à la discussion ?
       discussion_edited:
         title: Notifier des modifications
-        helptext: Qui voulez-vous notifier de vos modifications ?
       poll_announced:
         title: Inviter au vote
         helptext: Qui voulez-vous inviter à voter ?
-      poll:
-        title: Notifier des modifications
-        helptext: Qui voulez-vous notifier de vos modifications ?
       poll_edited:
         title: Notifier des modifications
-        helptext: Qui voulez-vous notifier de vos modifications ?
       outcome_announced:
         title: Partager le résultat
-        helptext: Avec qui voulez-vous partager les résultats ?
       anyone_can_participate: N’importe qui ayant un lien peut participer.
-      placeholder: Entrer les noms ou les adresses courriel…
-      notified_empty: 'Personne n''est encore sélectionné.'
+      placeholder: Entrer les noms ou les adresses courriel
       notified: '{{notified}} personnes seront notifiées :'
       notified_singular: '1 personne sera notifiée :'
       group_title: '{{name}} ({{count}} personnes)'
@@ -763,10 +748,6 @@ fr:
       membership_requested: 'Vous avez demandé l’accès à {{group}}'
   revision_history_modal:
     aria_label: Historique de révision
-    discussion_header: Historique des modifications de la discussion
-    comment_header: Historique des modifications du commentaire
-    poll_header: Historique des modifications du sondage
-    stance_header: Historique de révision de position
     started_by: 'Démarrée par <strong>{{name}}</strong>'
     edited_by: 'Édité par <strong>{{name}}</strong>'
     edit_by: "Modifier par {{name}} · {{date}}"
@@ -1620,7 +1601,6 @@ fr:
     start_poll_type: Démarrer {{poll_type}}
     share_poll_type: Partager {{poll_type}}
     update: Mettre à jour
-    reminder_note: 24h avant la clôture, un rappel sera envoyé à tous les participants
     loomio_school_link: |
         <p>Apprenez-en plus sur <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">l'aide de Loomio</a>.</p>
   poll_proposal_form:

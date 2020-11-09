@@ -212,6 +212,7 @@ el:
     header: "Ειδοποιήσεις"
     no_notifications: "Δεν έχετε καμία ειδοποίηση"
   discussion_form:
+    invite: Πρόσκληση
     aria_label: 'Φόρμα θέματος'
     start_thread: Ξεκινήστε ένα θέμα
     messages:
@@ -229,6 +230,9 @@ el:
     privacy_public: 'Οποιοσδήποτε μπορεί να δει αυτό το θέμα. Μόνο μέλη μπορούν να συμμετάσχουν.'
     privacy_private: 'Το θέμα θα είναι ορατό μόνο στα μέλη της ομάδας {{group}}.'
     privacy_organisation: 'Το θέμα θα είναι ορατό μόνο στα μέλη της {{parent}} και μέλη της ομάδα {{group}}.'
+  announcement:
+    form:
+      invitation_message_label: Μήνυμα
   action_dock:
     edit_stance: Αλλάξε θέση
     edited: Επεξεργάστηκε

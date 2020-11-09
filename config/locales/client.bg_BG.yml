@@ -38,6 +38,9 @@ bg_BG:
     group_label: 'Група'
     title_label: 'Заглавие'
     context_label: 'Контекст'
+  announcement:
+    form:
+      invitation_message_label: Съобщение
   join_group_button:
     membership_requested: Поискано членство
   membership_request_form:

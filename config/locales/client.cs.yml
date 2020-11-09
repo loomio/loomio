@@ -4,8 +4,6 @@ cs:
       title: Aktivovat svou skupinu
       activities:
         set_description: Nastavit popis skupiny
-        set_logo: Zvolit logo skupiny
-        set_cover_photo: Zvolit titulní fotografii skupiny
         invite_people_in: Pozvat lidi k účasti
         start_thread: Zahájit diskusní vlákno
         make_decision: Spuštění rozhodování
@@ -291,6 +289,7 @@ cs:
   discussion_fork_actions:
     move: Přesunout
   discussion_form:
+    invite: Pozvat
     start_thread: Vytvořit vlákno
     messages:
       created: 'Vlákno vytvořeno'
@@ -308,6 +307,7 @@ cs:
     privacy_organisation: 'Vlákno bude vidět pro členy {{parent}} a členy {{group}}.'
   announcement:
     form:
+      invitation_message_label: Zpráva
       group_announced:
         title: Pozvat do skupiny
         helptext: Kdo byste pozvali do skupiny?
@@ -316,7 +316,6 @@ cs:
       outcome_announced:
         title: Sdílet výsledek
       anyone_can_participate: Kdokoli s odkazem se může účastnit
-      notified_empty: 'Zatím nebyl nikdo vybrán.'
     group_form:
       modal_title: Vybrat členy skupiny
   action_dock:
