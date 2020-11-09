@@ -30,6 +30,6 @@ class PollSerializer < ApplicationSerializer
   end
 
   def my_stance
-    object.stances.latest.where(participant_id: scope.current_user_id).first
+    object.stances.latest.where(participant_id: scope[:current_user_id]).first
   end
 end
