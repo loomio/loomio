@@ -40,5 +40,5 @@ export default
     h3.py-3(v-t="'poll_common.have_your_say'")
     poll-common-directive(v-if='userCanParticipate' :stance='stance' name='vote-form')
     .poll-common-unable-to-vote(v-if='!userCanParticipate')
-      p.lmo-hint-text(v-t="'poll_common_action_panel.unable_to_vote'")
+      p.lmo-hint-text(v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.pollType()}}")
 </template>

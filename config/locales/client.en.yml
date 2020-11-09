@@ -1649,7 +1649,7 @@ en:
   poll_common_action_panel:
     anonymous: Votes are anonymous
     results_hidden_until_closed: Results are hidden until the %{poll_type} has closed
-    unable_to_vote: You do not have permission to vote in this decision.
+    unable_to_vote: You have not been invited to vote in this %{poll_type}.
     draft_mode: This %{poll_type} is a work in progress. Voting is disabled.
 
   current_polls_card:
