@@ -17,7 +17,7 @@ class User < ApplicationRecord
   extend HasDefaults
 
   extend NoSpam
-  no_spam_for :name
+  no_spam_for :name, :email
 
   has_paper_trail only: [:email_newsletter]
 
