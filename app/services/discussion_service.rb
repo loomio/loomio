@@ -1,7 +1,14 @@
 class DiscussionService
+
+  class EventNotSavedError
+    def initialize(data)
+      @data = data
+    end
+  end
+
   def self.create(discussion:, actor:, params: {})
     actor.ability.authorize! :create, discussion
-    actor.ability.authorize! :announce, discussion if params[:recipient_audience] 
+    actor.ability.authorize! :announce, discussion if params[:recipient_audience]
 
     discussion.author = actor
 
@@ -23,9 +30,18 @@ class DiscussionService
                       audience: params[:recipient_audience])
 
     EventBus.broadcast('discussion_create', discussion, actor)
-    Events::NewDiscussion.publish!(discussion: discussion,
+    e = Events::NewDiscussion.publish!(discussion: discussion,
                                    recipient_user_ids: users.pluck(:id),
                                    recipient_audience: params[:recipient_audience])
+
+    if !e.persisted?
+      Raven.capture_message("event failed to save!",
+        {user: actor, extra: { errors: e.errors.to_s, discussion_id: discussion.id, params: params }})
+      EventService.repair_thread(discussion.id)
+      discussion.created_event
+    else
+      e
+    end
   end
 
   def self.update(discussion:, actor:, params:)
@@ -100,12 +116,13 @@ class DiscussionService
 
   def self.move(discussion:, params:, actor:)
     source = discussion.group
-    destination = ModelLocator.new(:group, params).locate
-    actor.ability.authorize! :move_discussions_to, destination
+    destination = ModelLocator.new(:group, params).locate || NullGroup.new
+    destination.present? && actor.ability.authorize!(:move_discussions_to, destination)
     actor.ability.authorize! :move, discussion
+    # discussion.add_admin!(actor)
 
-    discussion.update group: destination, private: moved_discussion_privacy_for(discussion, destination)
-    discussion.polls.each { |poll| poll.update(group: destination) }
+    discussion.update group: destination.presence, private: moved_discussion_privacy_for(discussion, destination)
+    discussion.polls.each { |poll| poll.update(group: destination.presence) }
     ActiveStorage::Attachment.where(record: discussion.items.map(&:eventable).concat([discussion])).update_all(group_id: destination.id)
 
     EventBus.broadcast('discussion_move', discussion, params, actor)
