@@ -30,18 +30,10 @@ class DiscussionService
                       audience: params[:recipient_audience])
 
     EventBus.broadcast('discussion_create', discussion, actor)
-    e = Events::NewDiscussion.publish!(discussion: discussion,
+    Events::NewDiscussion.publish!(discussion: discussion,
                                    recipient_user_ids: users.pluck(:id),
                                    recipient_audience: params[:recipient_audience])
 
-    if !e.persisted?
-      Raven.capture_message("event failed to save!",
-        {user: actor, extra: { errors: e.errors.to_s, discussion_id: discussion.id, params: params }})
-      EventService.repair_thread(discussion.id)
-      discussion.created_event
-    else
-      e
-    end
   end
 
   def self.update(discussion:, actor:, params:)
