@@ -248,7 +248,7 @@ class Poll < ApplicationRecord
   end
 
   def base_membership_query(admin: false)
-    if persisted? && specified_voters_only
+    if persisted? && specified_voters_only && !admin
       User.active.
         joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
         where("(s.id IS NOT NULL AND s.latest = TRUE AND s.revoked_at IS NULL #{'AND s.admin = TRUE' if admin})")
