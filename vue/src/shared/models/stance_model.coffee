@@ -1,7 +1,7 @@
 import BaseModel       from '@/shared/record_store/base_model'
 import AppConfig       from '@/shared/services/app_config'
 import HasTranslations from '@/shared/mixins/has_translations'
-import AnonymousUser from '@/shared/models/anonymous_user_model'
+import AnonymousUserModel   from '@/shared/models/anonymous_user_model'
 import i18n from '@/i18n.coffee'
 import { sumBy, map, head, each, compact, flatten, includes, find, orderBy } from 'lodash'
 
@@ -25,7 +25,7 @@ export default class StanceModel extends BaseModel
   relationships: ->
     @belongsTo 'poll'
     @hasMany 'stanceChoices'
-    @belongsTo 'participant', from: 'users', ifNull: -> new AnonymousUser()
+    @belongsTo 'participant', from: 'users', ifNull: -> new AnonymousUserModel()
 
   edited: ->
     if @createdAt > stancesBecameUpdatable
