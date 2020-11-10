@@ -2,7 +2,7 @@
 import Records from '@/shared/services/records'
 import { exact } from '@/shared/helpers/format_time'
 import { parseISO } from 'date-fns'
-import { without } from 'lodash'
+import { reject } from 'lodash'
 
 import marked from 'marked'
 import {customRenderer, options} from '@/shared/helpers/marked.coffee'
@@ -52,7 +52,7 @@ export default
         when "discussion" then ['title', 'description', 'description_format']
         when "poll" then ['title', 'details', 'details_format']
         when "outcome" then ['statement', 'statement_format']
-      without Object.keys(@version.objectChanges), ...excl
+      reject Object.keys(@version.objectChanges || {}), (key) -> excl.includes(key)
 
     otherFields: ->
       console.log "otherFields", @objectKeys
