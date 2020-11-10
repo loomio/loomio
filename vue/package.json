@@ -70,7 +70,7 @@
     "sass": "^1.28.0",
     "sass-loader": "^10.0.5",
     "selenium-server-standalone-jar": "latest",
-    "vue-cli-plugin-coffee": "0.5.13",
+    "vue-cli-plugin-coffee": "1.0.0",
     "vue-cli-plugin-pug": "^1.0.7",
     "vue-cli-plugin-vuetify": "latest",
     "vue-template-compiler": "2.6.12",
