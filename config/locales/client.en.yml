@@ -1538,7 +1538,7 @@ en:
     your_response: Your response
     change_your_response: Edit response
     reason: Reason
-    reason_placeholder: Briefly explain why you voted this way
+    reason_placeholder: "Briefly explain why you voted this way, then click 'Submit Vote'"
     message: Message
     results: Results
     responses: Responses

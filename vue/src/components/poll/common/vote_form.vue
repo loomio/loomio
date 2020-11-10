@@ -51,7 +51,7 @@ export default
 <template lang="pug">
 form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value="stance.processing")
-  span(v-if="debug") {{stance}}
+  //- span(v-if="debug") {{stance}}
   v-layout(wrap)
     v-layout.mb-4(justify-space-around v-for='(optionGroup, index) in optionGroups' :key="index")
       label.poll-common-vote-form__button.poll-proposal-vote-form__button.rounded-lg.pa-2(:class="classes(option)" v-for='option in optionGroup' :key='option.id')
@@ -60,13 +60,10 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop
           v-avatar(size="52px")
             img(aria-hidden="true" :src="'/img/' + optionImages[option.name] + '.svg'")
           span(aria-hidden="true" v-t="'poll_' + stance.poll().pollType + '_options.' + option.name")
-  poll-common-stance-reason(:stance='stance' v-if='stance')
-  v-card-actions
-    v-spacer
-    v-btn.poll-common-vote-form__submit(color="primary" @click='submit()' v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'" :disabled='!selectedOptionId')
+  poll-common-stance-reason(:stance='stance' v-if='stance && selectedOptionId')
+  v-btn.poll-common-vote-form__submit(block color="primary" @click='submit()' v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'" :disabled='!selectedOptionId')
 </template>
 <style lang="sass">
-
 .poll-proposal-vote-form__button--not-selected
   opacity: 0.3 !important
 
