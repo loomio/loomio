@@ -71,7 +71,7 @@ export default
       .catch onError(@discussion)
 
     updateGroupItems: ->
-      @groupItems = [{text: @$t('discussion_form.none_direct_thread'), value: null}].concat Session.user().groups().map (g) -> {text: g.fullName, value: g.id}
+      @groupItems = [{text: @$t('discussion_form.none_invite_only_thread'), value: null}].concat Session.user().groups().map (g) -> {text: g.fullName, value: g.id}
 
     updatePrivacy: ->
       @discussion.private = @discussion.privateDefaultValue()

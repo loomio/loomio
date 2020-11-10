@@ -16,11 +16,11 @@ module Null::Group
   end
 
   def full_name
-    I18n.t('discussion.private_thread')
+    I18n.t('discussion.invite_only')
   end
 
   def name
-    I18n.t('discussion.private_thread')
+    I18n.t('discussion.invite_only')
   end
 
   def nil_methods
