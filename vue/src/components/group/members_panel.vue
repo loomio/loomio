@@ -67,8 +67,24 @@ export default
           chain = chain.find(groupId: @group.id)
         else
           chain = chain.find(groupId: {$in: @group.organisationIds()})
-        # when 'all'
-        #   chain = chain.find(groupId: {$in: @group.organisationIds()})
+
+      chain = chain.sort (a, b) =>
+        return -1 if (a.groupId == @group.id)
+        return 1 if (b.groupId == @group.id)
+        return 0
+
+      userIds = []
+      membershipIds = []
+      chain.data().forEach (m) ->
+        if !userIds.includes(m.userId)
+          userIds.push(m.userId)
+          membershipIds.push(m.id)
+
+      # @memberships = Records.memberships.collection.find(id: {$in: membershipIds})
+
+      # drop the chain, get a new one
+
+      chain = Records.memberships.collection.chain().find(id: {$in: membershipIds})
 
       if @$route.query.q
         users = Records.users.collection.find
@@ -88,24 +104,7 @@ export default
         when 'pending'
           chain = chain.find(acceptedAt: null)
 
-      userIds = []
-      membershipIds = chain.simplesort('groupId').data().filter (m) ->
-        if userIds.includes(m.userId)
-          false
-        else
-          userIds.push(m.userId)
-          true
-      .map (m) -> m.id
-
-      chain = chain.find(id: {$in: membershipIds})
-
-      if @$route.query.q
-        chain = chain.sort (a,b) ->
-          return -1 if a.user().name < b.user().name
-          return 1  if a.user().name > b.user().name
-          return 0
-      else
-        chain = chain.simplesort('createdAt', true)
+      chain = chain.simplesort('id', true)
 
       @memberships = chain.data()
 
@@ -196,14 +195,31 @@ export default
                 span.caption(v-if="$route.query.subgroups") {{membership.group().name}}
                 space
                 span.title.caption {{membership.title}}
-                space
-                v-chip(v-if="membership.admin" small outlined label v-t="'members_panel.admin'")
+                span(v-if="$route.query.q")
+                  space
+                  span.caption {{membership.user().email}}
+                span(v-if="membership.admin")
+                  space
+                  v-chip(small outlined label v-t="'members_panel.admin'")
+                  space
+                span.caption.grey--text(v-if="membership.acceptedAt")
+                  span(v-t="'common.action.joined'")
+                  space
+                  time-ago(:date="membership.acceptedAt")
+                span.caption.grey--text(v-if="!membership.acceptedAt")
+                  template(v-if="membership.inviterId")
+                    span(v-t="{path: 'members_panel.invited_by_name', args: {name: membership.inviter().name}}")
+                    space
+                    time-ago(:date="membership.createdAt")
+                  template(v-if="!membership.inviterId")
+                    span(v-t="'members_panel.header_invited'")
+                    space
+                    time-ago(:date="membership.createdAt")
               v-list-item-subtitle
                 span(v-if="membership.groupId != group.id")
                   span(v-t="{path: 'members_panel.only_in_subgroups', args: {name: membership.group().name}}")
                   space
                 span(v-if="membership.acceptedAt") {{ (membership.user().shortBio || '').replace(/<\/?[^>]+(>|$)/g, "") }}
-                span(v-if="!membership.acceptedAt && membership.inviter()" v-t="{path: 'members_panel.invited_by_name', args: {name: membership.inviter().name}}")
             v-list-item-action
               membership-dropdown(v-if="membership.groupId == group.id" :membership="membership")
         v-layout(justify-center)
