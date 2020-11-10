@@ -20,7 +20,12 @@ export default
 
   methods:
     init: ->
-      EventBus.$emit 'currentComponent', { page: 'startDiscussionPage', titleKey: 'discussion_form.new_discussion_title' }
+      titleKey = if @$route.params.key
+        'discussion_form.edit_discussion_title'
+      else
+        'discussion_form.new_discussion_title'
+
+      EventBus.$emit 'currentComponent', { page: 'startDiscussionPage', titleKey: titleKey}
 
       if Session.isSignedIn()
         if @$route.params.key
