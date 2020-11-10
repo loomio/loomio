@@ -481,8 +481,6 @@ de:
   notifications:
     header: "Benachrichtigungen"
     no_notifications: "Es liegen keine Benachrichtigungen vor"
-    new_discussion: "<strong>{{name}}</strong> hat eine Diskussion <strong>{{title}}</strong> eröffnet."
-    discussion_announced: "<strong>{{name}}</strong> hat eine Diskussion mit dem Titel<strong>{{titlel}}</strong>begonnen"
     new_motion: "<strong>{{name}}</strong> hat den Vorschlag <strong>{{title}}</strong> erstellt"
     motion_closed: "Vorschlag ist beendet: <strong>{{title}}</strong>"
     publish_outcome: "Ergebnis bekanntgeben"
@@ -1399,8 +1397,6 @@ de:
   subgroups_panel:
     search_subgroups_of_name: 'Durchsuche Untergruppen von {{name}}'
     group_without_subgroups: '{{name}} ohne Untergruppen'
-  poll_common_action_panel:
-    unable_to_vote: Sie sind nicht berechtigt, an dieser Entscheidung teilzunehmen.
   current_polls_card:
     title: Aktuelle Abstimmungen
     start_poll: Neue Abstimmung

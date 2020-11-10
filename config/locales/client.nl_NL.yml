@@ -504,8 +504,6 @@ nl_NL:
   notifications:
     header: "Meldingen"
     no_notifications: "Je hebt geen meldingen"
-    new_discussion: "<strong>{{name}}</strong> is een discussie gestart <strong>{{title}}</strong>"
-    discussion_announced: "<strong>{{name}}</strong> deelde een discussie <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> heeft een voorstel gemaakt <strong>{{title}}</strong>"
     motion_closed: "Voorstel gesloten: <strong>{{title}}</strong>"
     publish_outcome: "Publiceer een resultaat"
@@ -1361,7 +1359,6 @@ nl_NL:
     your_response: Je antwoord
     change_your_response: Bewerk antwoord
     reason: Reden
-    reason_placeholder: Leg kort uit waarom je deze stem gaf
     message: Bericht
     results: Resultaten
     responses: Antwoorden
@@ -1465,7 +1462,6 @@ nl_NL:
   poll_common_action_panel:
     anonymous: Stemmen zijn anoniem
     results_hidden_until_closed: Resultaten zijn verborgen totdat de %{poll_type} is gesloten
-    unable_to_vote: Je hebt geen toestemming om een stem uit te brengen voor deze beslissing.
     draft_mode: Aan deze %{poll_type} wordt nog gewerkt. Stemmen is uitgeschakeld.
   current_polls_card:
     title: Lopende beslissingen

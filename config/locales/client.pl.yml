@@ -479,8 +479,6 @@ pl:
   notifications:
     header: "Powiadomienia"
     no_notifications: "Nie masz żadnych powiadomień"
-    new_discussion: "<strong>{{name}}</strong> rozpoczął/a dyskusję <strong>{{title}}</strong>"
-    discussion_announced: "<strong>{{name}}</strong> udostępnił/a dyskusję <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> stworzył/a propozycję <strong>{{title}}</strong>"
     motion_closed: "Wniosek zamknięta: <strong>{{title}}</strong>"
     publish_outcome: "Opublikuj rezultat"

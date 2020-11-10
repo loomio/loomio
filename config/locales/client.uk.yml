@@ -460,8 +460,6 @@ uk:
   notifications:
     header: "Сповіщення"
     no_notifications: "У Вас нема жодних сповіщень"
-    new_discussion: "<strong>{{name}}</strong> розпочав(ла) обговорення <strong>{{title}}</strong>"
-    discussion_announced: "<strong>{{name}}</strong> опублікував(ла) обговорення <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> зробив(ла) пропозицію <strong>{{title}}</strong>"
     motion_closed: "Пропозицію закрито: <strong>{{title}}</strong>"
     publish_outcome: "Опублікувати результат"
@@ -1339,8 +1337,6 @@ uk:
   subgroups_panel:
     search_subgroups_of_name: 'Шукати підгрупи у {{name}}'
     group_without_subgroups: '{{name}} без підгруп'
-  poll_common_action_panel:
-    unable_to_vote: Ви не маєте права голосу щодо цього рішення.
   current_polls_card:
     title: Поточне рішення
     start_poll: Нове рішення

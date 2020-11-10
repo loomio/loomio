@@ -445,8 +445,6 @@ hu:
   notifications:
     header: "Értesítések"
     no_notifications: "Nincsenek új értesítéseid"
-    new_discussion: "<strong>{{name}}</strong>elindította ezt a megbeszélést: <strong>{{title}}</strong> "
-    discussion_announced: "<strong>{{name}}</strong> elindított egy beszélgetést <strong>{{title}}</strong> címmel"
     new_motion: "<strong>{{name}}</strong>  elindított egy szavazást<strong>{{title}}</strong> címmel"
     motion_closed: "Szavazás vége: <strong>{{title}}</strong>"
     publish_outcome: "Eredmény közzététele"
@@ -1254,8 +1252,6 @@ hu:
     filename: Fájlnév
     uploaded_by: Feltöltötte
     uploaded_at: Feltöltve
-  poll_common_action_panel:
-    unable_to_vote: Nincs engedélye szavazni ebben a döntésben.
   current_polls_card:
     title: Jelenlegi döntések
     start_poll: Új döntés

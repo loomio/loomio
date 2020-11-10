@@ -242,7 +242,6 @@ ar:
   notifications:
     header: "تبليغات"
     no_notifications: "ليس لديك أي إشعارات"
-    new_discussion: "<strong>{{name}}</strong> ابدأ مناقشة <strong>{{title}} </strong>"
     new_motion: "<strong> {{name}} </strong>انشاء اقتراح <strong>{{title}} </strong>"
     motion_closed: "<strong>{{title}}</strong> :تم إغلاق الاقتراح"
     publish_outcome: "قم بنشر النتيجة"

@@ -276,7 +276,6 @@ cs:
   notifications:
     header: "Upozornění"
     no_notifications: "Nemáte žádná upozornění."
-    new_discussion: "<strong>{{name}}</strong> zahájil(a) diskuzi <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> vytvořil(a) návrh <span>{{title}}</span>"
     motion_closed: "Uzavření návrhu: <strong>{{title}}</strong>"
     publish_outcome: "Zveřejnit výsledek"

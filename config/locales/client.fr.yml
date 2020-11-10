@@ -503,8 +503,6 @@ fr:
   notifications:
     header: "Notifications"
     no_notifications: "Aucune nouvelle notification"
-    new_discussion: "<strong>{{name}}</strong> a créé une discussion <strong>{{title}}</strong>"
-    discussion_announced: "<strong>{{name}}</strong> a partagé une discussion <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> a créé une proposition: <strong>{{title}}</strong>"
     motion_closed: "Proposition terminée: <strong>{{title}}</strong>"
     publish_outcome: "Publier un résultat"
@@ -1360,7 +1358,6 @@ fr:
     your_response: Votre réponse
     change_your_response: Modifier la réponse
     reason: Raison
-    reason_placeholder: Expliquez brièvement les raisons de votre vote
     message: Message
     results: Résultats
     responses: Réponses
@@ -1464,7 +1461,6 @@ fr:
   poll_common_action_panel:
     anonymous: Les votes sont anonymes
     results_hidden_until_closed: Les résultats sont cachés jusquà la cloture du %{poll_type}
-    unable_to_vote: Vous n’êtes pas autorisé à voter dans cette décision.
     draft_mode: Ce %{poll_type} est en cours de construction. Les votes sont désactivés.
   current_polls_card:
     title: Décisions en cours

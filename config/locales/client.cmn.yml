@@ -404,8 +404,6 @@ cmn:
     poll: '决策：'
   notifications:
     header: "通知"
-    new_discussion: "<strong>{{name}}</strong> 启动了讨论 <strong>{{title}}</strong> "
-    discussion_announced: "<strong>{{name}}</strong> 分享了讨论 <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> 创建了一个提案 <strong>{{title}}</strong>"
     publish_outcome: "发布成果"
     new_vote: "<strong>{{name}}</strong> {{position}} 在提案 <strong>{{title}}</strong>"
@@ -954,8 +952,6 @@ cmn:
   polls_panel:
     open: '开放'
     closed: '已关闭'
-  poll_common_action_panel:
-    unable_to_vote: 您没有在此决策中投票的权限。
   current_polls_card:
     title: 当前的决策
     start_poll: 新决策

@@ -321,8 +321,6 @@ nb_NO:
   notifications:
     header: "Varslinger"
     no_notifications: "Du har ingen ny varslinger"
-    new_discussion: "<strong>{{name}}</strong> starter en diskusjon <strong>{{title}}</strong>"
-    discussion_announced: "<strong>{{name}}</strong> delte en diskusjon <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong>  started en beslutning  <strong>{{title}}</strong>"
     motion_closed: "Beslutning lukket:<strong>{{title}}</strong>"
     publish_outcome: "Publiser et resultat"

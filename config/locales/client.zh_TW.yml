@@ -507,8 +507,6 @@ zh_TW:
   notifications:
     header: "通知"
     no_notifications: "您沒有任何通知"
-    new_discussion: "<strong>{{name}}</strong> 啟動了討論 <strong>{{title}}</strong> "
-    discussion_announced: "<strong>{{name}}</strong> 分享了討論 <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> 建立了一個提案 <strong>{{title}}</strong>"
     motion_closed: "提案已定案：<strong>{{title}}</strong>"
     publish_outcome: "發表成果"
@@ -1413,7 +1411,6 @@ zh_TW:
     your_response: 您的回應
     change_your_response: 編輯回應
     reason: 理由
-    reason_placeholder: 簡要說明為何您要以此種方式投票
     message: 訊息
     results: 結果
     responses: 回應
@@ -1519,7 +1516,6 @@ zh_TW:
   poll_common_action_panel:
     anonymous: 匿名投票
     results_hidden_until_closed: 結果會一直隱藏到 %{poll_type} 關閉
-    unable_to_vote: 您沒有在此決策中投票的權限。
     draft_mode: 此 %{poll_type} 正在進行。投票已停用。
   current_polls_card:
     title: 目前的決策

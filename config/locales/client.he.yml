@@ -370,8 +370,6 @@ he:
   notifications:
     header: "התרעות"
     no_notifications: "אין לך עדכונים"
-    new_discussion: "<strong>{{name}}</strong> התחל דיון <strong>{{title}}</strong>"
-    discussion_announced: "<strong>{{name}}</strong> שיתפ/ה דיון <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> יצר הצעה <strong>{{title}}</strong>"
     motion_closed: "הצעה נסגרה: <strong>{{title}}</strong>"
     publish_outcome: "פרסם תוצאה"
@@ -1068,8 +1066,6 @@ he:
     all: 'הכל'
     open: 'פתוח'
     closed: 'סגור'
-  poll_common_action_panel:
-    unable_to_vote: אין לך הרשאה להצביע על החלטה זו.
   current_polls_card:
     title: החלטות עדכניות
     start_poll: החלטה חדשה

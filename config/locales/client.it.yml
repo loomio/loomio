@@ -398,8 +398,6 @@ it:
   notifications:
     header: "Notifiche"
     no_notifications: "Non hai notifiche"
-    new_discussion: "<strong>{{name}}</strong> ha iniziato una discussione con titolo<strong>{{title}}</strong>"
-    discussion_announced: "<strong>{{name}}</strong> ha condiviso una discussione con titolo <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> ha creato una proposta <strong>{{title}}</strong>"
     motion_closed: "Proposta chiusa: <strong>{{title}}</strong>"
     publish_outcome: "Pubblica un risultato"

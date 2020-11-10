@@ -249,7 +249,6 @@ da:
   notifications:
     header: "Notifikationer"
     no_notifications: "Du har ikke nogen notifikationer"
-    new_discussion: "<strong>{{name}}</strong> oprettede en debat <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> oprettede et forslag <strong>{{title}}</strong>"
     motion_closed: "Forslag lukket: <strong>{{title}}</strong>"
     publish_outcome: "Publicer et resultat"

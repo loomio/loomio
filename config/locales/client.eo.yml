@@ -305,7 +305,6 @@ eo:
     invite_to_poll: "Inviti homojn voĉdoni"
   notifications:
     header: "Sciigoj"
-    new_discussion: "<strong>{{name}}</strong> komencis diskuton <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> kreis proponon <strong>{{title}}</strong>"
     motion_closed_by_user: "<strong>{{name}}</strong> fermis proponon <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> petis membriĝi al <strong>{{title}}</strong>"
@@ -547,7 +546,6 @@ eo:
     closed: 'Fermita'
   poll_common_action_panel:
     anonymous: Voĉdonoj ne montros uzantnomojn
-    unable_to_vote: Vi ne rajtas voĉdoni pri ĉi tiu decido.
   poll_common_select_group:
     loomio_group: Grupo
   poll_common_calendar_invite:

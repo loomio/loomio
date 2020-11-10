@@ -480,8 +480,6 @@ pt_BR:
   notifications:
     header: "Notificações"
     no_notifications: "Você não possui nenhuma notificação."
-    new_discussion: "<strong>{{name}}</strong> iniciou a discussão <strong>{{title}}</strong>"
-    discussion_announced: "<strong>{{name}}</strong> compartilhou a discussão <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> criou a proposta <strong>{{title}}</strong>"
     motion_closed: "Proposta encerrada: <strong>{{title}}</strong>"
     publish_outcome: "Publicar um resultado"
@@ -1396,8 +1394,6 @@ pt_BR:
   subgroups_panel:
     search_subgroups_of_name: 'Buscar nos subgrupos de {{name}}'
     group_without_subgroups: '{{name}} sem subgrupos'
-  poll_common_action_panel:
-    unable_to_vote: Você não tem direito de voto nessa decisão.
   current_polls_card:
     title: Decisões atuais
     start_poll: Nova decisão

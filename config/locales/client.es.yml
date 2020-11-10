@@ -417,6 +417,7 @@ es:
     other_groups: 'Otros grupos'
     all_groups: 'Todos los grupos'
     recent_threads: 'Hilos recientes'
+    invite_only_threads: 'Hilos sólo con invitación'
     direct_threads: 'Hilos directos'
     unread_threads: 'No leído ({{count}})'
     muted_threads: 'Hilos silenciados '
@@ -507,8 +508,6 @@ es:
   notifications:
     header: "Notificaciones"
     no_notifications: "No tienes notificaciones"
-    new_discussion: "<strong>{{name}}</strong> empezó una discusión <strong>{{title}}</strong>"
-    discussion_announced: "<strong>{{name}}</strong> compartió una discusión <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> creó una propuesta <strong>{{title}}</strong>"
     motion_closed: "Propuesta cerrada: <strong>{{title}}</strong>"
     publish_outcome: "Publicar el resultado"
@@ -550,7 +549,9 @@ es:
   discussion_form:
     to: Para
     direct_thread: "Hilo directo"
+    invite_only_thread: "Hilo sólo con invitación"
     none_direct_thread: "Hilo directo (no grupo)"
+    none_invite_only_thread: "Hilo sólo con invitación (no grupo)"
     change_log_placeholder: Describe brevemente los cambios hechos en esta edición (opcional)
     change_log_label: ¿Qué ha cambiado?
     one_person_will_be_notified: '1 persona será notificada'
@@ -1239,6 +1240,7 @@ es:
       older: 'De hace más de un mes'
   threads_page:
     no_direct_threads: "No tienes hilos directos"
+    no_invite_only_threads: "No tienes hilos sólo con invitación"
   inbox_page:
     no_threads: ¡Genial! ¡Ya ha leído todos los hilos de su bandeja de entrada!
     unread_threads: Hilos sin leer
@@ -1249,6 +1251,7 @@ es:
       or: 'o '
       join_group: '<a href="/explore">únete</a> a un grupo para ver hilos.   '
   discussion:
+    invite_only: "Sólo con invitación"
     private_thread: Hilo privado
     max_threads_reached: |
         <p>Has usado todos {{maxThreads}} los hilos disponibles en este grupo.</p>
@@ -1412,7 +1415,7 @@ es:
     your_response: Su respuesta
     change_your_response: Editar respuesta
     reason: Razón
-    reason_placeholder: Explica brevemente por qué has votado de esta manera
+    reason_placeholder: "Explica brevemente porque votaste de esta manera y luego haz clic en \"presentar voto\"."
     message: Mensaje
     results: Resultados
     responses: Respuestas
@@ -1518,7 +1521,7 @@ es:
   poll_common_action_panel:
     anonymous: Los votos son anónimos
     results_hidden_until_closed: Los resultados se esconden hasta que el %{poll_type} ha cerrado
-    unable_to_vote: No tienes permiso para votar en esta desición
+    unable_to_vote: No has sido invitado a votar en este %{poll_type}.
     draft_mode: Este%{poll_type}es un trabajo en proceso. El voto está deshabilitado.
   current_polls_card:
     title: Decisiones actuales
