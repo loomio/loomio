@@ -331,6 +331,7 @@ div
   outline: none
 
 progress
+  width: 50%!important
   -webkit-appearance: none
   appearance: none
   background-color: #fff
