@@ -547,8 +547,9 @@ en:
   notifications:
     header: "Notifications"
     no_notifications: "You don't have any notifications"
-    new_discussion: "<strong>{{name}}</strong> started a discussion <strong>{{title}}</strong>"
-    discussion_announced: "<strong>{{name}}</strong> shared a discussion <strong>{{title}}</strong>"
+    new_discussion: "<strong>{{name}}</strong> started a thread <strong>{{title}}</strong>"
+    discussion_edited: "<strong>{{name}}</strong> edited the thread <strong>{{title}}</strong>"
+    discussion_announced: "<strong>{{name}}</strong> shared a thread <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> created a proposal <strong>{{title}}</strong>"
     motion_closed: "Proposal closed: <strong>{{title}}</strong>"
     publish_outcome: "Publish an outcome"

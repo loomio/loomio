@@ -37,7 +37,6 @@ class OutcomeService
 
     HasRichText.assign_attributes_and_update_files(outcome, params)
     outcome.assign_attributes(params.slice(:statement, :statement_format))
-    outcome.assign_attributes(author: actor)
     return false unless outcome.valid?
     outcome.store_calendar_invite if outcome.should_send_calendar_invite
 
@@ -52,6 +51,7 @@ class OutcomeService
     EventBus.broadcast 'outcome_update', outcome, actor
 
     Events::OutcomeUpdated.publish!(outcome: outcome,
+                                    actor: actor,
                                     recipient_user_ids: users.pluck(:id),
                                     recipient_audience: params[:recipient_audience])
   end
