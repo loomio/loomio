@@ -71,10 +71,10 @@ export default class PollModel extends BaseModel
     @stanceFor(user) || (@discussionId && @discussion().membersInclude(user)) || @group().membersInclude(user)
 
   stanceFor: (user) ->
-    head orderBy(@recordStore.stances.find(participantId: user.id, latest: true, pollId: @id), 'createdAt', 'desc')
+    head orderBy(@recordStore.stances.find(pollId: @id, participantId: user.id, latest: true, revokedAt: null), 'createdAt', 'desc')
 
   myStance: ->
-    head orderBy(@recordStore.stances.find(myStance: true, latest: true, pollId: @id), 'createdAt', 'desc')
+    head orderBy(@recordStore.stances.find(pollId: @id, myStance: true, latest: true, revokedAt: null), 'createdAt', 'desc')
 
   authorName: ->
     @author().nameWithTitle(@group())
@@ -104,7 +104,7 @@ export default class PollModel extends BaseModel
         existing.push(stance.participantId)
 
   latestStances: (order = '-createdAt', limit) ->
-    slice(sortBy(@recordStore.stances.find(pollId: @id, latest: true), order), 0, limit)
+    slice(sortBy(@recordStore.stances.find(pollId: @id, latest: true, revokedAt: null), order), 0, limit)
 
   hasDescription: ->
     !!@details

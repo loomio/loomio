@@ -33,7 +33,10 @@ export default
 
   methods:
     findRecords: ->
-      chain = Records.stances.collection.chain().find(pollId: @poll.id).find(latest: true)
+      chain = Records.stances.collection.chain().
+        find(pollId: @poll.id).
+        find(latest: true).
+        find(revokedAt: null)
       chain = switch @order
         when 'newest_first'
           chain.simplesort('castAt', true)
