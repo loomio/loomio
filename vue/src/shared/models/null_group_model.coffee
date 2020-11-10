@@ -1,6 +1,6 @@
 import {each} from 'lodash'
 import Vue from 'vue'
-import i18n from '@/i18n.coffee'
+import I18n from '@/i18n.coffee'
 
 export default class NullGroupModel
   @singular: 'group'
