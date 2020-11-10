@@ -449,6 +449,7 @@ en:
     other_groups: 'Other groups'
     all_groups: 'All groups'
     recent_threads: 'Recent threads'
+    invite_only_threads: 'Invite-only threads'
     direct_threads: 'Direct threads'
     unread_threads: 'Unread threads ({{count}})'
     muted_threads: 'Muted threads'
@@ -546,8 +547,9 @@ en:
   notifications:
     header: "Notifications"
     no_notifications: "You don't have any notifications"
-    new_discussion: "<strong>{{name}}</strong> started a discussion <strong>{{title}}</strong>"
-    discussion_announced: "<strong>{{name}}</strong> shared a discussion <strong>{{title}}</strong>"
+    new_discussion: "<strong>{{name}}</strong> started a thread <strong>{{title}}</strong>"
+    discussion_edited: "<strong>{{name}}</strong> edited the thread <strong>{{title}}</strong>"
+    discussion_announced: "<strong>{{name}}</strong> shared a thread <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> created a proposal <strong>{{title}}</strong>"
     motion_closed: "Proposal closed: <strong>{{title}}</strong>"
     publish_outcome: "Publish an outcome"
@@ -592,7 +594,9 @@ en:
     to: To
     # visible_to_label: Privacy
     direct_thread: "Direct thread"
+    invite_only_thread: "Invite-only thread"
     none_direct_thread: "Direct thread (no group)"
+    none_invite_only_thread: "Invite-only thread (no group)"
     change_log_placeholder: Briefly describe the changes made in this edit. (optional)
     change_log_label: What's changed?
     # visible_to_group: Group thread
@@ -1343,6 +1347,7 @@ en:
 
   threads_page:
     no_direct_threads: "You have no direct threads"
+    no_invite_only_threads: "You have no invite-only threads"
 
   inbox_page:
     no_threads: Woohoo! You've read all the threads in your inbox.
@@ -1355,6 +1360,7 @@ en:
       join_group: <a href="/explore">join</a> a group to see threads.
 
   discussion:
+    invite_only: "Invite-only"
     private_thread: Private thread
     max_threads_reached: |
       <p>You have used all {{maxThreads}} threads available to this group.</p>
@@ -1533,7 +1539,7 @@ en:
     your_response: Your response
     change_your_response: Edit response
     reason: Reason
-    reason_placeholder: Briefly explain why you voted this way
+    reason_placeholder: "Briefly explain why you voted this way, then click 'Submit Vote'"
     message: Message
     results: Results
     responses: Responses

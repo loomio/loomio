@@ -16,7 +16,6 @@ class PollService
     actor.ability.authorize! :update, poll
 
     HasRichText.assign_attributes_and_update_files(poll, params.except(:poll_type, :discussion_id))
-    poll.assign_attributes(author: actor)
     is_new_version = poll.is_new_version?
 
     return false unless poll.valid?
@@ -32,6 +31,7 @@ class PollService
     EventBus.broadcast('poll_update', poll, actor)
 
     Events::PollEdited.publish!(poll: poll,
+                                actor: actor,
                                 recipient_user_ids: users.pluck(:id),
                                 recipient_audience: params[:recipient_audience],
                                 recipient_message: params[:recipient_message]) if is_new_version
@@ -105,7 +105,7 @@ class PollService
     poll.update(discarded_at: Time.now, discarded_by: actor.id)
     Event.where(kind: "stance_created", eventable_id: poll.stances.pluck(:id)).update_all(discussion_id: nil)
     poll.created_event.update(user_id: nil, child_count: 0, pinned: false)
-    MessageChannelService.publish_models(poll.created_event, group_id: poll.group_id)
+    MessageChannelService.publish_models(poll.created_event, scope: {current_user: actor, current_user_id: actor.id}, group_id: poll.group_id)
     poll.created_event
   end
 

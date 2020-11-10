@@ -431,7 +431,9 @@ es:
       poll_option_added: '%{actor} añadió opciones en: %{title}'
       poll_option_added_author: '%{actor} añadió opciones en: %{title}'
       outcome_created: '%{actor}compartió un %{poll_type} resultado:%{title}'
+      outcome_updated: '%{actor} actualizado el %{poll_type} resultado:%{title}'
       outcome_created_author: 'Has compartido un %{poll_type} resultado: %{title}'
+      outcome_review_due: "Es la hora de revisar el %{poll_type} resultado: %{title}"
       outcome_announced: '%{actor}compartió un %{poll_type} resultado:%{title}'
       stance_created: "%{actor} votó en: %{title}"
       stance_created_author: "Por favor verifica tu voto en: %{title}"
@@ -449,6 +451,8 @@ es:
       poll_option_added: '<strong>%{actor}</strong> ha añadido opciones en: %{title} '
       poll_option_added_author: '<strong>%{actor}</strong> ha añadido opciones en: %{title} '
       outcome_created: '<strong>%{actor}</strong>ha compartido un %{poll_type} resultado.'
+      outcome_updated: '<strong>%{actor}</strong> actualizado el %{poll_type} resultado.'
+      outcome_review_due: "Es hora de revisar el %{poll_type} resultado: %{title}. Considerar comenzar un sondeo de comentarios o un nuevo hilo invitando reflexiones acerca de como se ha implementado la decisión."
       outcome_created_author: 'Has compartido un %{poll_type}resultado.'
       outcome_announced: '<strong>%{actor}</strong>ha compartido un %{poll_type} resultado.'
       stance_created: "<strong>%{actor} </strong> votó en: %{title} "
@@ -472,6 +476,8 @@ es:
     new_discussion: "Nuevo hilo en %{group}"
     new_comment: "Nuevo comentario en %{group}"
     outcome_created: "Resultado publicado en %{group}"
+    outcome_updated: "Resultado actualizado en %{group}"
+    outcome_review_due: "Revisión del resultado prevista en %{group}"
     poll_created: "Nuevo %{poll_type} en %{group}"
     stance_created: "Nueva respuesta a %{poll}"
     poll_closing_soon: "%{poll_type}cerrará en 24 horas"
@@ -483,6 +489,8 @@ es:
       discussion_edited: "**%{actor}** editó un debate en %{group}:[%{title}](%{url})"
       new_comment: "**%{actor}** ha comentado en [%{title}] (%{url})"
       outcome_created: "**%{actor}** ha compartido un resultado del %{poll_type}:[%{title}](%{url})"
+      outcome_update: "**%{actor}** editado el resultado del %{poll_type}: [%{title}](%{url})"
+      outcome_review_due: "Es la hora de revisar el resultado del %{poll_type}: [%{title}] (%{url})"
       poll_created: "**%{actor}** ha iniciado un %{poll_type} en %{group} : [%{title}](%{url})"
       poll_edited: "**%{actor}** editó un %{poll_type}en%{group}:`[%{title}](%{url})"
       stance_created: "**%{actor}** ha votado en [%{title}](%{url})"
@@ -493,6 +501,8 @@ es:
   slack:
     new_discussion: "Nuevo hilo en *%{group}*: *%{discussion}* "
     outcome_created: "Resultado publicado en *%{group}*: *%{poll}*"
+    outcome_updated: "Resultado editado en *%{group}*: *%{poll}*"
+    outcome_review_due: "Es el momento de revisar el resultado de *%{group}*: *%{poll}*"
     poll_created: "Nuevo *%{poll_type}* en *%{group}*: *%{poll}*"
     poll_closing_soon: "Recordatorio: *%{poll}* cierra en 24hr"
     poll_expired: "*%{poll}* ha cerrado"

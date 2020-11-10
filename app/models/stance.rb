@@ -65,6 +65,7 @@ class Stance < ApplicationRecord
   delegate :mailer,         to: :poll, allow_nil: true
   delegate :group_id,       to: :poll
   delegate :discussion_id,  to: :poll
+  delegate :discussion,     to: :poll
   delegate :members,        to: :poll
   delegate :title,          to: :poll
 

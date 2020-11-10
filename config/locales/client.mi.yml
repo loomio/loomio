@@ -137,6 +137,7 @@ mi:
     header: "Ngā kōrero pūrongo"
     no_notifications: "Kāhore he kōrero pūrongo mōku"
   discussion_form:
+    invite: Pōwhiri
     group_label: 'Rōpū'
     title_label: 'Taitara'
     privacy_label: 'Matatapu'

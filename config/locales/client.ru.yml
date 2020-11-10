@@ -4,8 +4,6 @@ ru:
       title: Активируйте вашу группу
       activities:
         set_description: Задайте описание вашей группы
-        set_logo: Выберите логотип вашей группы
-        set_cover_photo: Выберите фото обложки для вашей группы
         invite_people_in: Пригласите в нее людей
         start_thread: Начните ветвь дискуссии
         make_decision: Начните решение
@@ -333,6 +331,7 @@ ru:
   discussion_fork_actions:
     move: Переместить
   discussion_form:
+    invite: Приглашать
     aria_label: 'Форма темы'
     messages:
       created: 'Тема начата'
@@ -345,9 +344,8 @@ ru:
     context_label: 'Описание'
     privacy_label: 'Конфиденциальность'
   announcement:
-    audiences:
-      voters: Люди, которые проголосовали
     form:
+      invitation_message_label: Сообщение
       group_announced:
         title: Пригласите в группу
       outcome_announced:

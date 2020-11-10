@@ -55,6 +55,9 @@ sk:
     title_label: 'Názov'
     context_label: 'Kontext'
     privacy_label: 'Súkromie'
+  announcement:
+    form:
+      invitation_message_label: Správa
   action_dock:
     edited: Aktualizovaný
   join_group_button:

@@ -46,6 +46,9 @@ id:
     title_label: 'Judul'
     context_label: 'Konteks'
     privacy_label: 'Kebijakan Privasi'
+  announcement:
+    form:
+      invitation_message_label: Pesan
   join_group_button:
     membership_requested: Permintaan keanggotaan telah dikirim
   membership_request_form:

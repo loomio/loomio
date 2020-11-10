@@ -4,8 +4,6 @@ ca:
       title: Activa el teu grup
       activities:
         set_description: Configura la descripció del teu grup
-        set_logo: Escull un logo pel teu grup
-        set_cover_photo: Escull una foto de capçalera pel teu grup
         invite_people_in: Convida a gent
         start_thread: Comença un fil de discussió
         make_decision: Comença una decissió
@@ -247,6 +245,9 @@ ca:
     privacy_public: 'Tothom pot veure la discussió. Només els membres hi poden participar.'
     privacy_private: 'La discussió només serà visible pels membres del grup {{group}}.'
     privacy_organisation: 'La discussió serà visible pels membres de {{parent}} i pels membres de {{group}}.'
+  announcement:
+    form:
+      invitation_message_label: Missatge
   action_dock:
     edit_stance: Canvia la decisió
     edited: Editat

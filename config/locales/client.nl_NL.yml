@@ -4,8 +4,6 @@ nl_NL:
       title: Activeer je groep
       activities:
         set_description: Omschrijf je groep
-        set_logo: Kies een logo voor je groep
-        set_cover_photo: Kies een foto voor je groep
         invite_people_in: Nodig mensen uit
         start_thread: Start een discussiebord
         make_decision: Start een beslissing
@@ -547,6 +545,7 @@ nl_NL:
     move_to_existing_thread: Verplaats naar een bestaand bord
     start_new_thread: Of, start een nieuw bord
   discussion_form:
+    invite: Uitnodigen
     aria_label: 'Bordformulier'
     start_thread: Start discussie
     messages:
@@ -587,14 +586,6 @@ nl_NL:
     preview: Email voorbeeld
     no_notifications_sent: Geen meldingen zijn verzonden
     history_error: Er ging iets mis! Kon de geschiedenis niet laden.
-    inviting_guests_to_thread: Mensen die geen lid zijn van {{group}} worden als gast toegevoegd aan dit bord. Zij krijgen geen toegang tot andere borden in de groep.
-    audiences:
-      parent_group: Leden van {{name}}
-      group: Leden van {{name}}
-      discussion_group: Leden van het bord
-      voters: Personen die hebben gestemd
-      undecided: Onbesliste personen
-      non_voters: Nog niet uitgenodigd
     form:
       too_many_invitations: |
           Uitnodigingen-limiet bereikt. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
@@ -602,6 +593,7 @@ nl_NL:
           <p>Je hebt alle {{maxMembers}} uitnodigingen gebruikt die voor deze groep beschikbaar zijn.</p>
           <p><a href="{{upgradeUrl}}" target="_blank">Kies een abonnement</a> om te blijven samenwerken op Loomio.</p>
       invitations_remaining: '{{count}} uitnodigingen resterend. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>'
+      invitation_message_label: Bericht
       group_announced:
         title: Nodig voor uit voor de groep
         helptext: Wie wil je uitnodigen voor de groep?
@@ -610,22 +602,14 @@ nl_NL:
         helptext: Wie wil je uitnodigen tot het bord?
       discussion_edited:
         title: Wijzigingen melden
-        helptext: Wie wil je meldingen laten krijgen over jouw veranderingen?
       poll_announced:
         title: Nodig uit om te stemmen
         helptext: Wie zou je willen uitnodigen om te stemmen?
-      poll:
-        title: Wijzigingen melden
-        helptext: Wie wil je meldingen laten krijgen over jouw veranderingen?
       poll_edited:
         title: Wijzigingen melden
-        helptext: Wie wil je meldingen laten krijgen over jouw veranderingen?
       outcome_announced:
         title: Deel resultaat
-        helptext: Met wie zou je het resultaat willen delen?
       anyone_can_participate: Iedereen met een link kan deelnemen
-      placeholder: Voeg namen of e-mailadressen in...
-      notified_empty: 'Nog niemand geselecteerd.'
       notified: '{{notified}} personen zullen een melding ontvangen:'
       notified_singular: '1 persoon krijgt een melding:'
       group_title: '{{name}} ({{count}} personen)'
@@ -764,10 +748,6 @@ nl_NL:
       membership_requested: 'Je hebt het lidmaatschap aangevraagd voor {{group}}'
   revision_history_modal:
     aria_label: Mutatiegeschiedenis
-    discussion_header: Revisiegeschiedenis discussie
-    comment_header: Revisiegeschiedenis reactie
-    poll_header: Revisiegeschiedenis peiling
-    stance_header: Revisiegeschiedenis houding/positie
     started_by: 'Gestart door <strong>{{name}}</strong>'
     edited_by: 'Bijgewerkt door <strong>{{name}}</strong>'
     edit_by: "Bewerk op {{name}} · {{date}}"
@@ -1622,7 +1602,6 @@ nl_NL:
     start_poll_type: Start {{poll_type}}
     share_poll_type: Deel {{poll_type}}
     update: Updaten
-    reminder_note: 24u voor afsluiten, zal een herinnering verstuurd worden naar alle deelnemers
     loomio_school_link: |
         <p>Meer informatie op <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio Hulp</a>.</p>
   poll_proposal_form:

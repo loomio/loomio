@@ -54,6 +54,9 @@ gl:
     title_label: 'Título'
     context_label: 'Contexto'
     privacy_label: 'Privacidade'
+  announcement:
+    form:
+      invitation_message_label: Mensaxe
   action_dock:
     edited: Editado
   join_group_button:

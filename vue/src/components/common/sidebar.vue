@@ -129,7 +129,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
     v-list-item-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
   v-list-item.sidebar__list-item-button--private(dense to="/threads/direct")
     v-list-item-title
-      span(v-t="'sidebar.direct_threads'")
+      span(v-t="'sidebar.invite_only_threads'")
       span(v-if="unreadDirectThreadsCount > 0")
         space
         span ({{unreadDirectThreadsCount}})

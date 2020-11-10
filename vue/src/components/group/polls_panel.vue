@@ -56,10 +56,10 @@ export default
 
     findRecords: ->
       groupIds = switch @$route.query.subgroups
-        when 'none' then [@group.id]
         when 'all' then @group.organisationIds()
+        when 'mine' then intersection(@group.organisationIds(), Session.user().groupIds())
         else
-          intersection(@group.organisationIds(), Session.user().groupIds())
+          [@group.id]
 
       chain = Records.polls.collection.chain()
       chain = chain.find(groupId: {$in: groupIds})

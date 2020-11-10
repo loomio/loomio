@@ -4,8 +4,6 @@ it:
       title: Attiva il tuo gruppo
       activities:
         set_description: 'Scrivi la descrizione del tuo gruppo '
-        set_logo: Scegli un logo per il tuo gruppo
-        set_cover_photo: 'Scegli una foto di copertina per il tuo gruppo '
         invite_people_in: Invita persone in
         start_thread: Inizia un thread di discussione
         make_decision: Inizia una decisione
@@ -435,6 +433,7 @@ it:
   discussion_fork_actions:
     move: Sposta
   discussion_form:
+    invite: Invita
     aria_label: 'Modulo discussione'
     start_thread: Inizia una discussione
     messages:
@@ -455,14 +454,10 @@ it:
     privacy_organisation: 'La discussione sarà visibile ai membri di {{parent}} e ai membri di {{group}}.'
     fork_notice: 'Una nuova discussione è stata creata con {{count}} argomenti da {{title}}'
   announcement:
-    audiences:
-      parent_group: Membri di {{name}}
-      group: Membri di {{name}}
-      discussion_group: Membri della discussione
-      voters: Persone che hanno votato
     form:
       too_many_invitations: |
           Hai superato il limite di inviti. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
+      invitation_message_label: Messaggio
       group_announced:
         title: Invita nel gruppo
         helptext: Chi vorresti invitare nel gruppo?
@@ -471,22 +466,15 @@ it:
         helptext: Chi vorresti invitare nella discussione?
       discussion_edited:
         title: Notifica le modifiche
-        helptext: Chi vorresti notificare delle tue modifiche?
       poll_announced:
         title: Invita a votare
         helptext: Chi vorresti invitare a votare?
-      poll:
-        title: Notifica le modifiche
-        helptext: Chi vorresti notificare delle tue modifiche?
       poll_edited:
         title: Notifica le modifiche
-        helptext: Chi vorresti notificare delle tue modifiche?
       outcome_announced:
         title: Condividi risultati
-        helptext: Con chi vorresti condividere i risultati?
       anyone_can_participate: Chiunque con un link può partecipare
-      placeholder: Inserisci nomi o indirizzi email...
-      notified_empty: 'Nessuno è ancora stato selezionato.'
+      placeholder: Inserisci nomi o indirizzi email
       notified: 'Le persone {{notified}} saranno notificate:'
       notified_singular: '1 persona sarà notificata:'
     members_list:

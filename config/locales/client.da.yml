@@ -277,6 +277,7 @@ da:
   discussion_fork_actions:
     move: Flyt
   discussion_form:
+    invite: Inviter
     aria_label: 'Debat'
     messages:
       created: 'Debat oprettet'
@@ -295,6 +296,7 @@ da:
     privacy_organisation: 'Debatten kan ses af medlemmer af gruppen {{parent}} og af medlemmer af gruppen {{group}}.'
   announcement:
     form:
+      invitation_message_label: Besked
       outcome_announced:
         title: Del resultat
       anyone_can_participate: Alle kan deltage

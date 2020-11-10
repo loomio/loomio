@@ -106,7 +106,7 @@ module Dev::Scenarios::Discussion
     @group.add_member! jennifer
     discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: @group)
     DiscussionService.create(discussion: discussion, actor: patrick)
-    DiscussionService.update(discussion: discussion, actor: patrick, params: {recipient_user_ids: [jennifer.id], recipient_message: 'change message'})
+    DiscussionService.update(discussion: discussion, actor: patrick, params: {recipient_user_ids: [jennifer.id], recipient_message: 'change message & ampersand <yo>! &nbsp;'})
     last_email
   end
 

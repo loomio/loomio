@@ -431,7 +431,9 @@ zh_TW:
       poll_option_added: '%{actor} 新增選項給：%{title}'
       poll_option_added_author: '%{actor} 新增選項給：%{title}'
       outcome_created: '%{actor} 分享了 %{poll_type} 的結果：%{title} '
+      outcome_updated: '%{actor} 更新了 %{poll_type} 結果：%{title} '
       outcome_created_author: '您分享了 %{poll_type} 的結果：%{title}'
+      outcome_review_due: "是時候審閱 %{poll_type} 結果了：%{title}"
       outcome_announced: '%{actor} 分享了 %{poll_type} 的結果：%{title}'
       stance_created: "%{actor} 已經投票：%{title}"
       stance_created_author: "請驗證您的投票：%{title}"
@@ -449,6 +451,8 @@ zh_TW:
       poll_option_added: '<strong>%{actor}</strong> 新增選項給：%{title}'
       poll_option_added_author: '<strong>%{actor}</strong> 新增選項給：%{title}'
       outcome_created: '<strong>%{actor}</strong> 已分享 %{poll_type} 的結果。'
+      outcome_updated: '<strong>%{actor}</strong> 更新了 %{poll_type} 結果。'
+      outcome_review_due: "是時候審閱 %{poll_type} 結果了：%{title}。請考慮開始回饋投票或新討論串，以引起人們對決策實施方式的思考。"
       outcome_created_author: '您分享了 %{poll_type} 的結果。'
       outcome_announced: '<strong>%{actor}</strong> 已分享 %{poll_type} 的結果。'
       stance_created: "<strong>%{actor}</strong> 已經投票：%{title}"
@@ -472,6 +476,8 @@ zh_TW:
     new_discussion: "%{group} 中的新討論串"
     new_comment: "%{group} 中的新評論"
     outcome_created: "已在 %{group} 中張貼結果"
+    outcome_updated: "結果更新於 %{group}"
+    outcome_review_due: "結果審閱結束於 %{group}"
     poll_created: "在 %{group} 中新的 %{poll_type}"
     stance_created: "%{poll} 的新回應"
     poll_closing_soon: "%{poll_type} 即將在 24 小時內關閉"
@@ -483,6 +489,8 @@ zh_TW:
       discussion_edited: "**%{actor}** 編輯了在 %{group} 中的討論：[%{title}](%{url})"
       new_comment: "**%{actor}** 在 [%{title}](%{url}) 中留言"
       outcome_created: "**%{actor}** 已分享 %{poll_type} 的結果：[%{title}](%{url})"
+      outcome_update: "**%{actor}** 編輯了 %{poll_type} 的結果：[%{title}](%{url})"
+      outcome_review_due: "是時候審閱 %{poll_type} 的結果了：[%{title}](%{url})"
       poll_created: "**%{actor}** 在 %{group} 中開始了 %{poll_type}：[%{title}](%{url})"
       poll_edited: "**%{actor}** 編輯了 %{poll_type} 在 %{group} 之中：[%{title}](%{url})"
       stance_created: "**%{actor}** 在 [%{title}](%{url}) 中投票了"
@@ -493,6 +501,8 @@ zh_TW:
   slack:
     new_discussion: "在 *%{group}* 中的新討論串：*%{discussion}*"
     outcome_created: "在 *%{group}* 中的結果已貼出：*%{poll}*"
+    outcome_updated: "結果編輯於 *%{group}*：*%{poll}*"
+    outcome_review_due: "是時候審閱 *%{group}* 的結果了：*%{poll}*"
     poll_created: "新的 *%{poll_type}* 在 *%{group}*：*%{poll}*"
     poll_closing_soon: "提醒：*%{poll}* 將於24小時內關閉"
     poll_expired: "*%{poll}* 已關閉"

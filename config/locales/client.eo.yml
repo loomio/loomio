@@ -4,8 +4,6 @@ eo:
       title: Ŝalti vian grupon
       activities:
         set_description: Grupa priskribo
-        set_logo: Elekti emblemon por via grupo
-        set_cover_photo: Elekti foton por la ĉefpaĝo de via grupo
         invite_people_in: Inviti homojn
         start_thread: Komenci fadedon por diskuti
         make_decision: Komenci decidon
@@ -317,6 +315,7 @@ eo:
     move_to_existing_thread: Movi al jam ekzista fadeno
     start_new_thread: Aŭ, komenci novan fadenon
   discussion_form:
+    invite: Inviti
     start_thread: Komenci fadenon
     messages:
       created: 'Komenciĝis fadeno'
@@ -334,12 +333,8 @@ eo:
     privacy_private: 'Nur membroj de {{group}} povos vidi ĉi tiun fadenon.'
     privacy_organisation: 'Kaj membroj de {{parent}}, kaj membroj de {{group}} povos vidi ĉi tiun fadenon'
   announcement:
-    audiences:
-      parent_group: Membroj de {{name}}
-      group: Membroj de {{name}}
-      discussion_group: Membroj de la fadeno
-      voters: Homoj, kiuj jam voĉdonis
     form:
+      invitation_message_label: Mesaĝo
       poll_announced:
         title: Inviti homojn voĉdoni
         helptext: Kiun vi volas inviti voĉdoni?

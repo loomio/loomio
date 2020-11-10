@@ -47,7 +47,7 @@ export default
 <template lang="pug">
 v-main
   v-container.threads-page.max-width-1024
-    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'sidebar.direct_threads'")
+    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'sidebar.invite_only_threads'")
     v-layout.mb-3
       //- v-text-field(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_all_threads')" append-icon="mdi-magnify")
 
@@ -57,7 +57,7 @@ v-main
     div(v-if="loaded")
       section.threads-page__loaded
         .threads-page__empty(v-if='threads.length == 0')
-          p(v-t="'threads_page.no_direct_threads'")
+          p(v-t="'threads_page.no_invite_only_threads'")
         .threads-page__collections(v-else)
           v-card.mb-3.thread-preview-collection__container
             thread-preview-collection.thread-previews-container(:threads='threads')

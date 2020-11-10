@@ -161,6 +161,9 @@ lt:
     title_placeholder: 'Kokia tema diskutuosite?'
     context_label: 'Kontekstas'
     privacy_label: 'Privatumas'
+  announcement:
+    form:
+      placeholder: Įvesk vardus arba el. pašto adresus
   action_dock:
     delete_comment: Ištrinti komentarą
     delete_thread: Ištrinti giją

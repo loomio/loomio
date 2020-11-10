@@ -4,8 +4,6 @@ pt_BR:
       title: Ativar seu grupo
       activities:
         set_description: Defina a descrição do seu grupo
-        set_logo: Escolha a logo para seu grupo
-        set_cover_photo: Escolha a foto de capa para seu grupo
         invite_people_in: Convide pessoas
         start_thread: Inicie um tópico de discussão
         make_decision: Inicie uma decisão
@@ -523,6 +521,7 @@ pt_BR:
     move_to_existing_thread: Mudar para conversa existente
     start_new_thread: Ou, iniciar uma nova conversa
   discussion_form:
+    invite: Convidar
     aria_label: 'Formulário da conversa'
     start_thread: Iniciar tópico
     messages:
@@ -563,14 +562,6 @@ pt_BR:
     preview: Visualizar Email
     no_notifications_sent: Nenhuma notificação foi enviada
     history_error: Algo deu errado! Não foi possível carregar o histórico.
-    inviting_guests_to_thread: 'As pessoas que não são membros do {{group}} serão adicionadas a essa conversa como visitas, e não receberão acesso às outras conversas no grupo. '
-    audiences:
-      parent_group: Membros de {{name}}
-      group: Membros de {{name}}
-      discussion_group: Membros da conversa
-      voters: Pessoas que já votaram
-      undecided: Pessoas indecisas
-      non_voters: Ainda não convidadas
     form:
       too_many_invitations: |
           Se acabaram os convites. <a href="{{upgradeUrl}}" target="_blank">Assine</a>
@@ -578,6 +569,7 @@ pt_BR:
           <p>Você usou todos os {{maxMembers}}  convites disponíveis para esse grupo.</p>
           <p>Próxima etapa, <a href="{{upgradeUrl}}" target="_blank">escolha um plano</a> para continuar colaborando no Loomio.</p>
       invitations_remaining: '{{count}} convites sobrando.<a href="{{upgradeUrl}}" target="_blank">Assine</a>'
+      invitation_message_label: Mensagem
       group_announced:
         title: Convidar para o grupo
         helptext: Quem você gostaria de convidar para o grupo?
@@ -586,22 +578,15 @@ pt_BR:
         helptext: Quem você quer convidar para a conversa?
       discussion_edited:
         title: Notificar sobre as edições
-        helptext: Quem você gostaria de avisar sobre suas mudanças?
       poll_announced:
         title: Convidar a votar
         helptext: Quem você gostaria de convidar a votar?
-      poll:
-        title: Notificar sobre as edições
-        helptext: Quem você gostaria de avisar sobre suas mudanças?
       poll_edited:
         title: Notificar sobre as edições
-        helptext: Quem você gostaria de avisar sobre suas mudanças?
       outcome_announced:
         title: Compartilhar resultado
-        helptext: Com quem você gostaria de compartilhar o resultado?
       anyone_can_participate: Qualquer pessoa com o link pode participar
-      placeholder: Digite nomes ou endereços de email…
-      notified_empty: 'Ninguém foi selecionado ainda.'
+      placeholder: Digite nomes ou endereços de e-mail
       notified: '{{notified}} pessoas serão notificadas:'
       notified_singular: '1 pessoa será notificada:'
       group_title: '{{name}} ({{count}} pessoa(s))'
@@ -726,10 +711,6 @@ pt_BR:
       membership_requested: 'Você solicitou adesão ao(à) {{group}}'
   revision_history_modal:
     aria_label: Histórico de revisões
-    discussion_header: Histórico de revisões da discussão
-    comment_header: Histórico de revisões dos comentários
-    poll_header: Histórico de revisões da enquete
-    stance_header: Histórico de revisões das posições
     started_by: 'Iniciado por <strong>{{name}}</strong>'
     edited_by: 'Editado por <strong>{{name}}</strong>'
     edit_by: "Editado por {{name}} · {{date}}"
@@ -1533,7 +1514,6 @@ pt_BR:
     closed: Fechado
     start: Iniciar
     update: Atualizar
-    reminder_note: 24 horas antes do fechamento, um lembrete será enviado para todos os eleitores.
     loomio_school_link: |
         <p>Descubra mais na <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Ajuda Loomio</a>.</p>
   poll_proposal_form:

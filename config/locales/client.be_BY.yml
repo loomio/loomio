@@ -74,6 +74,9 @@ be_BY:
     title_label: 'Назва'
     context_label: 'Апісанне'
     privacy_label: 'Канфідэнцыяльнасць'
+  announcement:
+    form:
+      invitation_message_label: Паведамленне
   action_dock:
     edited: Адрэдагавана
   join_group_button:

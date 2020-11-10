@@ -4,8 +4,6 @@ uk:
       title: Активуйте свою групу
       activities:
         set_description: Додайте опис для групи
-        set_logo: Виберіть логотип для вашої групи
-        set_cover_photo: Виберіть фото обкладинки для вашої групи
         invite_people_in: Запросіть людей долучитись
         start_thread: Розпочніть тему для обговорення
         make_decision: Розпочати процес прийняття рішення
@@ -500,6 +498,7 @@ uk:
     search_placeholder: Знайти тему за назвою
     moved: Переміщення коментарів може зайняти певний час
   discussion_form:
+    invite: Запросити
     aria_label: 'Форма для теми'
     start_thread: Створити тему
     messages:
@@ -539,12 +538,6 @@ uk:
     preview: Попередній перегляд листа
     no_notifications_sent: Сповіщень не надсилалося
     history_error: Щось пішло не так! Не вдалося завантажити історію.
-    inviting_guests_to_thread: Люди, які не є учасниками {{group}}, будуть додані до цієї теми як гості та не будуть мати доступ до інших тем групи.
-    audiences:
-      parent_group: Учасник {{name}}
-      group: Учасник {{name}}
-      discussion_group: Учасники теми
-      voters: Люди, які проголосували
     form:
       too_many_invitations: |
           Перевищено ліміт запрошень. <a href="{{upgradeUrl}}" target="_blank">Оновити план</a>
@@ -552,6 +545,7 @@ uk:
           <p>Ви використали усі {{maxMembers}} наявних запрошень цієї групи.</p>
           <p>Далі <a href="{{upgradeUrl}}" target="_blank">оберіть план</a> аби продовжити співпрацю в Loomio.</p>
       invitations_remaining: 'Залишилось {{count}} запрошень. <a href="{{upgradeUrl}}" target="_blank">Оновити план</a>'
+      invitation_message_label: Повідомлення
       group_announced:
         title: Запросити до групи
         helptext: Кого ви хотіли б запросити в цю групу?
@@ -560,22 +554,15 @@ uk:
         helptext: Кого ви хотіли б залучити до теми?
       discussion_edited:
         title: Сповіщати про зміни
-        helptext: Кого ви хотіли б сповістити про внесені зміни?
       poll_announced:
         title: Запросити до голосування
         helptext: Кого ви хотіли б долучити до голосування?
-      poll:
-        title: Сповіщати про зміни
-        helptext: Кого ви хотіли б сповістити про внесені зміни?
       poll_edited:
         title: Сповіщати про зміни
-        helptext: Кого ви хотіли б сповістити про внесені зміни?
       outcome_announced:
         title: Поширити результат
-        helptext: З ким ви хотіли б поділитися результатом?
       anyone_can_participate: Будь-хто може долучитись за посиланням
-      placeholder: Введіть імена або електронні адреси...
-      notified_empty: 'Ще ніхто не вибраний.'
+      placeholder: Введіть імена або електронні адреси
       notified: '{{notified}} людей буде сповіщено:'
       notified_singular: '1 людину буде сповіщено'
       group_title: '{{name}} ({{count}} людей)'
@@ -687,10 +674,6 @@ uk:
       membership_requested: 'У вас є запити на приєднання до {{group}}'
   revision_history_modal:
     aria_label: Історія змін
-    discussion_header: Історія змін обговорення
-    comment_header: Історія змін коментаря
-    poll_header: Історія змін опитування
-    stance_header: Історія змін позиції
     started_by: '<strong>{{name}}</strong> розпочав(ла) обговорення'
     edited_by: '<strong>{{name}}</strong> відредагував(ла)'
     edit_by: "Відредаговано {{name}} · {{date}}"
@@ -1472,7 +1455,6 @@ uk:
     closed: Закрита
     start: Почати
     update: Оновити
-    reminder_note: За 24 години до закриття всім учасникам буде надіслано нагадування
     loomio_school_link: |
         <p>Дізнатись більше у <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Довідці Loomio</a>.</p>
   poll_proposal_form:

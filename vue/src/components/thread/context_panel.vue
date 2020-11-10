@@ -36,7 +36,7 @@ export default
           to: @urlFor(group)
       else
         [{
-          text: @$t('discussion_form.direct_thread')
+          text: @$t('discussion_form.invite_only_thread')
           disabled: false
           to: '/threads/direct'
         }]
