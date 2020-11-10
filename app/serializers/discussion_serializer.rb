@@ -87,7 +87,7 @@ class DiscussionSerializer < ApplicationSerializer
   def created_event
     @created_event ||= scope[:discussion_event_cache].
       get_for(object, hydrate_on_miss: false).
-      find {|event| event.kind == "new_discussion" } || object.create_missing_created_event!
+      find {|event| event.kind == "new_discussion" } || object.created_event
   end
 
   def forked_event
