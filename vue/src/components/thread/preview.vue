@@ -50,8 +50,8 @@ v-list-item.thread-preview.thread-preview__link(:class="{'thread-preview--unread
       v-chip.ml-1(small label outlined color="warning" v-if='thread.closedAt' v-t="'common.privacy.closed'")
       v-chip.thread-preview__tag.ml-1(small outlined v-for="tag in thread.tagNames" :key="tag") {{tag}}
     v-list-item-subtitle
-      span.thread-preview__group-name(v-if="showGroupName && thread.groupId") {{ thread.group().name }}
-      mid-dot(v-if="showGroupName && thread.groupId")
+      span.thread-preview__group-name(v-if="showGroupName") {{ thread.group().name }}
+      mid-dot(v-if="showGroupName")
       span.thread-preview__items-count(v-t="{path: 'thread_preview.replies_count', args: {count: thread.itemsCount}}")
       space
       span.thread-preview__unread-count(v-if='thread.hasUnreadActivity()' v-t="{path: 'thread_preview.unread_count', args: {count: thread.unreadItemsCount()}}")

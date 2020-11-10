@@ -1,5 +1,6 @@
 import {each} from 'lodash'
 import Vue from 'vue'
+import i18n from '@/i18n.coffee'
 
 export default class NullGroupModel
   @singular: 'group'
@@ -8,7 +9,7 @@ export default class NullGroupModel
   constructor: ->
     defaults =
       parentId: null
-      name: ''
+      name: I18n.t('discussion.invite_only')
       description: ''
       descriptionFormat: 'html'
       groupPrivacy: 'closed'
