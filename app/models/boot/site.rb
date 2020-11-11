@@ -6,6 +6,7 @@ module Boot
     def payload
       @payload ||= {
         version:             Loomio::Version.current,
+        systemNotice:        ENV['LOOMIO_SYSTEM_NOTICE'],
         environment:         Rails.env,
         permittedParams:     PermittedParamsSerializer.new({}),
         locales:             ActiveModel::ArraySerializer.new(supported_locales, each_serializer: LocaleSerializer, root: false),

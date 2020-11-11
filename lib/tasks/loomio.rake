@@ -54,8 +54,8 @@ namespace :loomio do
     raise "this is an exception to test exception handling"
   end
 
-  task notify_clients_of_update: :environment do
-    MessageChannelService.publish_data({ version: Loomio::Version.current }, to: GlobalMessageChannel.instance)
+  task publish_system_notice: :environment do
+    MessageChannelService.publish_system_notice(ENV['LOOMIO_SYSTEM_NOTICE'])
   end
 
   task update_subscription_members_counts: :environment do

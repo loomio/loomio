@@ -24,4 +24,10 @@ class MessageChannelService
       client.zremrangebyscore("/records/#{room}", "-inf", (score - 200))
     end
   end
+
+  def self.publish_system_notice(notice)
+    CHANNELS_REDIS_POOL.with do |client|
+      client.publish("/system_notice", {notice: notice}.to_json)
+    end
+  end
 end
