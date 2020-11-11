@@ -417,6 +417,7 @@ zh_TW:
     other_groups: '其他群組'
     all_groups: '所有群組'
     recent_threads: '最近的討論串'
+    invite_only_threads: '僅邀請的討論串'
     direct_threads: '直接討論串'
     unread_threads: '未讀的討論串 ({{count}})'
     muted_threads: '已靜音的討論串'
@@ -507,6 +508,9 @@ zh_TW:
   notifications:
     header: "通知"
     no_notifications: "您沒有任何通知"
+    new_discussion: "<strong>{{name}}</strong> 啟動了討論串 <strong>{{title}}</strong> "
+    discussion_edited: "<strong>{{name}}</strong> 編輯了討論串 <strong>{{title}}</strong>"
+    discussion_announced: "<strong>{{name}}</strong> 分享了討論串 <strong>{{title}}</strong> "
     new_motion: "<strong>{{name}}</strong> 建立了一個提案 <strong>{{title}}</strong>"
     motion_closed: "提案已定案：<strong>{{title}}</strong>"
     publish_outcome: "發表成果"
@@ -548,7 +552,9 @@ zh_TW:
   discussion_form:
     to: 到
     direct_thread: "直接討論串"
+    invite_only_thread: "僅邀請的討論串"
     none_direct_thread: "直接討論串（無群組）"
+    none_invite_only_thread: "僅邀請的討論串（無群組）"
     change_log_placeholder: 簡要描述在此編輯中所作的更改。（選擇性）
     change_log_label: 有什麼變動？
     one_person_will_be_notified: '將通知 1 個人。'
@@ -1237,6 +1243,7 @@ zh_TW:
       older: '早於一個月'
   threads_page:
     no_direct_threads: "您沒有直接討論串"
+    no_invite_only_threads: "您沒有僅邀請的討論串"
   inbox_page:
     no_threads: 太棒了！您已經讀完了您收件匣中所有的討論串。
     unread_threads: 未讀的討論串
@@ -1247,6 +1254,7 @@ zh_TW:
       or: 或者
       join_group: <a href="/explore">加入</a>群組以觀看討論串。
   discussion:
+    invite_only: "僅邀請"
     private_thread: 私人討論串
     max_threads_reached: |+
         <p>您已經使用了此群組可用的全部 {{maxMembers}} 個邀請。</p>
@@ -1411,6 +1419,7 @@ zh_TW:
     your_response: 您的回應
     change_your_response: 編輯回應
     reason: 理由
+    reason_placeholder: "簡要說明您為什麼要以此方式投票，然後點擊「遞交投票」"
     message: 訊息
     results: 結果
     responses: 回應
@@ -1516,6 +1525,7 @@ zh_TW:
   poll_common_action_panel:
     anonymous: 匿名投票
     results_hidden_until_closed: 結果會一直隱藏到 %{poll_type} 關閉
+    unable_to_vote: 您尚未被邀請到此 %{poll_type} 進行投票。
     draft_mode: 此 %{poll_type} 正在進行。投票已停用。
   current_polls_card:
     title: 目前的決策
