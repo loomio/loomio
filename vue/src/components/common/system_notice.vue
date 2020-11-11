@@ -15,7 +15,7 @@ export default
     EventBus.$on 'systemNotice', (data) =>
       @notice = data.notice
       @showNotice = !Session.user().hasExperienced(md5(@notice))
-    @notice = AppConfig.systemNotice
+    @notice = AppConfig.systemNotice || ''
     @showNotice = !Session.user().hasExperienced(md5(@notice))
 
   methods:
