@@ -14,7 +14,7 @@ class AttachmentSerializer < ActiveModel::Serializer
   end
 
   def download_url
-    Rails.application.routes.url_helpers.rails_blob_path(object, disposition: "attachment", only_path: true)
+    Rails.application.routes.url_helpers.rails_blob_path(object, only_path: true)
   end
 
   def filename

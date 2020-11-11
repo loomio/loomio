@@ -16,7 +16,7 @@
   %h4= t :attachments
   %ul.thread-mailer__list
     - resource.files.each do |file|
-      - download_url = Rails.application.routes.url_helpers.rails_blob_url(file, disposition: "attachment", only_path: false, host: ENV['CANONICAL_HOST'])
+      - download_url = Rails.application.routes.url_helpers.rails_blob_url(file, only_path: false, host: ENV['CANONICAL_HOST'])
       %li.thread-mailer__list-item
         - if file.representable?
           - preview_url = Rails.application.routes.url_helpers.rails_representation_url(file.representation(HasRichText::PREVIEW_OPTIONS), only_path: false, host: ENV['CANONICAL_HOST'])
