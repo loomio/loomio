@@ -153,7 +153,7 @@ class User < ApplicationRecord
                       where.not('users.id': user.id).order("users.name")
     if model.discussion_id
       relation.joins("LEFT OUTER JOIN discussion_readers dr ON dr.user_id = users.id AND dr.discussion_id = #{model.discussion_id}").
-               where("memberships.group_id IN (:group_ids) OR dr.id IS NOT NULL", group_ids: group_ids)
+               where("memberships.group_id IN (:group_ids) OR (dr.id IS NOT NULL AND dr.revoked_at IS NULL)", group_ids: group_ids)
     else
       relation.where("memberships.group_id IN (:group_ids)", group_ids: group_ids)
     end
