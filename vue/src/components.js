@@ -39,6 +39,7 @@ module.exports = {
   CommonError: 'common/error',
   CommonFlash: 'common/flash',
   CommonFooter: 'common/footer',
+  SystemNotice: 'common/system_notice',
   SortableList: 'common/sortable_list',
   SortableItem: 'common/sortable_item',
   FormattedText: 'common/formatted_text',

@@ -66,6 +66,7 @@ export default
 
 <template lang="pug">
 v-app.app-is-booted
+  system-notice
   navbar
   sidebar
   router-view(v-if="!pageError")
