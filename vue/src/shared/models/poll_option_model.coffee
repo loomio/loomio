@@ -13,7 +13,7 @@ export default class PollOptionModel extends BaseModel
 
   stances: ->
     stanceIds = map @stanceChoices(), 'stanceId'
-    Records.stances.find(latest: true, id: {$in: stanceIds})
+    Records.stances.find(id: {$in: stanceIds}, latest: true, revokedAt: null)
 
   beforeRemove: ->
     @stances().each (stance) -> stance.remove()
