@@ -37,7 +37,11 @@ img.emoji
   margin: 0 .05em
 
 .lmo-markdown-wrapper
-  line-height: 1.4
+  p
+    margin-bottom: 0.5rem
+
+  p:last-child
+    margin-bottom: 0.25rem
 
   *[data-text-align="left"]
     text-align: left !important
@@ -57,7 +61,7 @@ img.emoji
   span.mention
     color: var(--v-anchor-base)
 
-  blockquote, ol, p, pre, ul
+  blockquote, ol, pre, ul
     margin: 0.5rem 0
 
   h1, h2, h3
@@ -87,8 +91,6 @@ img.emoji
   strong
     font-weight: 700
 
-  p:last-child
-    margin-bottom: 4px
 
   hr
     border: 0
