@@ -6,11 +6,11 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def group
-    scope_fetch('groups_by_id', object.group_id) { nil }
+    scope_fetch(:groups_by_id, object.group_id) { nil }
   end
 
   def discussion
-    scope_fetch('discussions_by_id', object.discussion_id) { nil }
+    scope_fetch(:discussions_by_id, object.discussion_id) { nil }
   end
 
   def self.hide_when_discarded(names)

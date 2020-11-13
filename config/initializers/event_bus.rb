@@ -32,7 +32,12 @@ EventBus.configure do |config|
   config.listen('discussion_mark_as_read',
                 'discussion_dismiss',
                 'discussion_mark_as_seen') do |reader|
-    MessageChannelService.publish_models(reader.discussion, serializer: DiscussionSerializer, root: :discussions, user_id: reader.user_id)
+    collection = Discussion.where(id: reader.discussion_id)
+    MessageChannelService.publish_models(reader.discussion,
+                                         serializer: DiscussionSerializer,
+                                         scope: ScopeLoader.for_discussion_collection(collection, reader.user)
+                                         root: :discussions,
+                                         user_id: reader.user_id)
   end
 
   # update discussion or comment versions_count when title or description edited

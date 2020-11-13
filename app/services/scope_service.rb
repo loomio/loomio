@@ -1,4 +1,25 @@
 module ScopeService
+  def self.for_event_collection(collection, discussion_id, current_user)
+    h = {}
+    discussion_ids = [discussion_id]
+    group_ids = Discussion.where(id: discussion_ids).pluck(:group_id)
+    parent_group_ids = Group.where(id: group_ids).pluck(:parent_id)
+    all_group_ids = group_ids.concat(parent_group_ids)
+
+    poll_ids = ScopeService.add_polls_by_discussion_id(h, discussion_id)
+    ScopeService.add_poll_options_by_poll_id(h, poll_ids)
+    ScopeService.add_groups_by_id(h, all_group_ids)
+    ScopeService.add_memberships_by_group_id(h, all_group_ids, current_user.id)
+    ScopeService.add_discussions_by_id(h, discussion_ids)
+    ScopeService.add_stances_by_poll_id(h, poll_ids, current_user.id)
+    ScopeService.add_discussion_readers_by_discussion_id(h, discussion_ids, current_user.id)
+    ScopeService.add_events_by_kind_and_discussion_id(h, 'new_discussion', discussion_ids)
+    ScopeService.add_events_by_kind_and_discussion_id(h, 'discussion_forked', discussion_ids)
+    ScopeService.add_events_by_kind_and_poll_id(h, 'poll_created', poll_ids)
+    ScopeService.add_subscriptions_by_group_id(h, all_group_ids)
+    h
+  end
+
   def self.for_discussion_collection(collection, current_user)
     h = {}
     discussion_ids = collection.pluck(:id)
@@ -59,10 +80,20 @@ module ScopeService
   def self.add_polls_by_discussion_id(scope, discussion_ids)
     scope[:polls_by_discussion_id] ||= {}
     scope[:polls_by_id] ||= {}
+    ids = []
     Poll.includes(:poll_options, :author).where(discussion_id: discussion_ids).each do |poll|
+      ids.push poll.id
       scope[:polls_by_id][poll.id] = poll
       scope[:polls_by_discussion_id][poll.discussion_id] ||= []
       scope[:polls_by_discussion_id][poll.discussion_id].push poll
+    end
+    ids
+  end
+
+  def self.add_polls_by_id(scope, poll_ids)
+    scope[:polls_by_id] ||= {}
+    Poll.where(id: poll_ids).each do |poll|
+      scope[:polls_by_id][poll] = poll
     end
   end
 

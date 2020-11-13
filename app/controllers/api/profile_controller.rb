@@ -9,7 +9,6 @@ class API::ProfileController < API::RestfulController
 
     h = {}
     ScopeService.add_memberships_by_group_id(h, collection.pluck(:id), current_user.id)
-    puts h.keys, collection.pluck(:id).include?(18512), collection.pluck(:id).sort
 
     respond_with_collection serializer: GroupSerializer, root: :groups, scope: h
   end

@@ -27,7 +27,7 @@ class API::EventsController < API::RestfulController
   private
 
   def default_scope
-    super.merge(current_user: current_user)
+    super.merge(ScopeService.for_event_collection(collection, @discussion.id, current_user))
   end
 
   def order
@@ -64,7 +64,7 @@ class API::EventsController < API::RestfulController
   def accessible_records
     load_and_authorize(:discussion)
     records = Event.where(discussion_id: @discussion.id).
-                    includes(:user, :discussion, :eventable, parent: [:user, :eventable])
+                    includes(:user, parent: [:user])
 
     if %w[position_key sequence_id].include?(params[:order_by])
       records = records.order("#{params[:order_by]}#{params[:order_desc] ? " DESC" : ''}")

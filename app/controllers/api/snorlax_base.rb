@@ -68,12 +68,11 @@ class API::SnorlaxBase < ActionController::Base
   end
 
   def instantiate_collection
-    collection = accessible_records
-    collection = yield collection if block_given?
-    collection = timeframe_collection collection
-    collection = page_collection collection
-    collection = order_collection collection
-    self.collection = collection.to_a
+    self.collection = accessible_records
+    self.collection = yield collection if block_given?
+    self.collection = timeframe_collection collection
+    self.collection = page_collection collection
+    self.collection = order_collection collection
   end
 
   def timeframe_collection(collection)
