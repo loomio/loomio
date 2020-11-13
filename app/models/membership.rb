@@ -26,6 +26,7 @@ class Membership < ApplicationRecord
   belongs_to :invitation
   has_many :events, as: :eventable, dependent: :destroy
 
+  scope :with_serializer_includes, -> { includes(:inviter, :user) }
   scope :active,        -> { not_archived.accepted }
   scope :archived,      -> { where('archived_at IS NOT NULL') }
   scope :not_archived,  -> { where(archived_at: nil) }

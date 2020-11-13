@@ -65,6 +65,7 @@ class Poll < ApplicationRecord
 
   has_many :documents, as: :model, dependent: :destroy
 
+  scope :with_serializer_includes, -> { includes(:author) }
   scope :active, -> { kept.where('polls.closed_at': nil) }
   scope :closed, -> { kept.where("polls.closed_at IS NOT NULL") }
   scope :search_for, ->(fragment) { kept.where("polls.title ilike :fragment", fragment: "%#{fragment}%") }

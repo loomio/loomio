@@ -5,6 +5,10 @@ class ApplicationSerializer < ActiveModel::Serializer
     super || {}
   end
 
+  def poll
+    scope_fetch(:polls_by_id, object.poll_id)
+  end
+
   def group
     scope_fetch(:groups_by_id, object.group_id) { nil }
   end

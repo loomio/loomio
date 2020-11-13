@@ -26,7 +26,7 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def my_stance
-    scope[:current_user_id] && object[:participant_id] == scope[:current_user_id]
+    scope_fetch(:stances_by_poll_id, object.poll_id) { nil }
   end
 
   def include_reason?

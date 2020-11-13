@@ -21,6 +21,7 @@ class Discussion < ApplicationRecord
 
   no_spam_for :title, :description
 
+  scope :with_serializer_includes, -> { includes(:author) }
   scope :in_organisation, -> (group) { includes(:author).where(group_id: group.id_and_subgroup_ids) }
   scope :last_activity_after, -> (time) { where('last_activity_at > ?', time) }
   scope :order_by_latest_activity, -> { order('discussions.last_activity_at DESC') }
@@ -57,7 +58,6 @@ class Discussion < ApplicationRecord
   has_many :comment_documents, through: :comments, source: :documents
   has_many :discussion_tags, dependent: :destroy
   has_many :tags, through: :discussion_tags
-
 
   has_many :items, -> { includes(:user) }, class_name: 'Event', dependent: :destroy
 

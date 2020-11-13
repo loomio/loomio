@@ -39,7 +39,7 @@ class Stance < ApplicationRecord
 
   before_save :update_stance_choices_cache
 
-  default_scope { includes(:stance_choices) }
+  scope :with_serializer_includes, -> { includes(:participant, :stance_choices) }
   scope :latest,         -> { where(latest: true).where(revoked_at: nil) }
   scope :admin,         ->  { where(admin: true) }
   scope :newest_first,   -> { order("cast_at DESC NULLS LAST") }
