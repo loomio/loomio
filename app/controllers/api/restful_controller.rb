@@ -77,8 +77,7 @@ class API::RestfulController < API::SnorlaxBase
   end
 
   def default_scope
-    { current_user_id: current_user.id,
-      exclude_types: exclude_types }
+    { current_user_id: current_user.id, exclude_types: exclude_types }
   end
 
   def exclude_types
