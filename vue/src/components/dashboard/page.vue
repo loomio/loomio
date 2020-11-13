@@ -53,7 +53,7 @@ export default
         path: 'dashboard'
         params:
           filter: @filter
-          per: 50
+          per: 30
 
       @searchLoader = new RecordLoader
         collection: 'searchResults'

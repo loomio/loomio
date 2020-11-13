@@ -1,5 +1,5 @@
 module ScopeService
-  def self.for_event_collection(collection, discussion_id, current_user)
+  def self.for_event_collection(collection, discussion_id, current_user, exclude_types)
     h = {}
     discussion_ids = [discussion_id]
     group_ids = Discussion.where(id: discussion_ids).pluck(:group_id)
@@ -34,7 +34,7 @@ module ScopeService
     poll_ids = ScopeService.add_polls_by_discussion_id(h, discussion_ids)
     ScopeService.add_outcomes_by_poll_id(h, poll_ids)
     ScopeService.add_poll_options_by_poll_id(h, poll_ids)
-    parent_group_ids = ScopeService.add_groups_by_id(h, group_ids, :return_parent_ids)
+    parent_group_ids = ScopeService.add_groups_by_id(h, group_ids)
     all_group_ids = group_ids.concat(parent_group_ids)
     ScopeService.add_groups_by_id(h, all_group_ids)
     ScopeService.add_memberships_by_group_id(h, all_group_ids, current_user.id)
@@ -45,24 +45,23 @@ module ScopeService
     ScopeService.add_events_by_kind_and_discussion_id(h, 'discussion_forked', discussion_ids)
     ScopeService.add_events_by_kind_and_poll_id(h, 'poll_created', poll_ids)
     ScopeService.add_subscriptions_by_group_id(h, all_group_ids)
+    puts "!!!!!!discussion colleciton loaded!!!!!!!!!"
     h
   end
   # in controller
   # ScopeService.add_groups_by_id(scope, groups.pluck(:parent_id))
   # ScopeService.add_groups_by_id(scope, discussions.pluck(:parent_id))
-  def self.add_groups_by_id(scope, group_ids, return_parent_ids = nil)
+  def self.add_groups_by_id(scope, group_ids)
     scope[:groups_by_id] ||= {}
     ids = []
+    parent_ids = []
     Group.with_serializer_includes.where(id: group_ids).each do |group|
-      if return_parent_ids
-        ids.push group.parent_id
-      else
-        ids.push group.id
-      end
-
+      ids.push group.id
+      parent_ids.push group.parent_id if group.parent_id
       scope[:groups_by_id][group.id] = group
     end
-    ids
+    add_groups_by_id(scope, parent_ids) if parent_ids.any?
+    ids.concat(parent_ids)
   end
 
   def self.add_subscriptions_by_group_id(scope, group_ids)

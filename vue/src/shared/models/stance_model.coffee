@@ -68,12 +68,21 @@ export default class StanceModel extends BaseModel
   pollOptions: ->
     @recordStore.pollOptions.find(@pollOptionIds())
 
+  rankOrScore: ->
+    @rank() || @score
+
+  rank: ->
+    if @poll.pollType == 'ranked_choice'
+      @poll.customFields.minimumStanceChoices - @score + 1
+    else
+      null
+
   orderedStanceChoices: ->
     order = if @poll().pollType == 'ranked_choice'
       'asc'
     else
       'desc'
-    compact orderBy @stanceChoices(), 'rankOrScore', order
+    compact orderBy @stanceChoices(), ((sc) -> sc.rankOrScore()), order
 
   stanceChoiceNames: ->
     map(@pollOptions(), 'name')

@@ -52,7 +52,6 @@ class DiscussionSerializer < ApplicationSerializer
   has_many :active_polls, serializer: PollSerializer, root: :polls
   has_one :created_event, serializer: Events::BaseSerializer, root: :events
   has_one :forked_event, serializer: Events::BaseSerializer, root: :events
-  #
   # has_many :discussion_tags
   hide_when_discarded [:description, :title]
 
@@ -61,12 +60,13 @@ class DiscussionSerializer < ApplicationSerializer
   end
 
   def tag_names
+    # if we can do it fast, then stop caching tag names?
     object.info['tag_names'] || []
   end
 
-  def discussion_tags
-    Array(Hash(scope).dig(:tag_cache, object.id))
-  end
+  # def discussion_tags
+  #   Array(Hash(scope).dig(:tag_cache, object.id))
+  # end
 
   def include_mentioned_usernames?
     description_format == "md"

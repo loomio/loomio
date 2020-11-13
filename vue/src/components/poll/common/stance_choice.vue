@@ -58,7 +58,7 @@ export default
       mid-dot(v-if="poll.pollType == 'poll' && poll.multipleChoice")
       span(v-if="!hideScore && poll.hasVariableScore()")
         mid-dot
-        span {{stanceChoice.rankOrScore}}
+        span {{stanceChoice.rankOrScore()}}
   span(v-if="poll.datesAsOptions()")
     v-chip(outlined :color="colorFor(stanceChoice.score)" @click="emitClick")
       poll-meeting-time(:name="optionName")

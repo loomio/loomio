@@ -58,17 +58,15 @@ class GroupSerializer < ApplicationSerializer
     true
   end
 
-  # has_one :parent, serializer: GroupSerializer, root: :parent_groups
-  # has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
+  has_one :parent, serializer: GroupSerializer, root: :parent_groups
+  has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
 
   def current_user_membership
     scope_fetch(:memberships_by_group_id, object.id) { nil }
   end
 
   def parent
-    scope_fetch(:groups_by_id, object.id) do
-      object.parent
-    end
+    scope_fetch(:groups_by_id, object.parent_id) if object.parent_id
   end
 
   def subscription

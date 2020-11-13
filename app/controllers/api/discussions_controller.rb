@@ -128,9 +128,7 @@ class API::DiscussionsController < API::RestfulController
 
   def default_scope
     self.collection = Discussion.where(id: resource.id) if resource
-    h = {}
-    h[:tag_cache] = DiscussionTagCache.new(collection).data
-    super.merge(h).merge(ScopeService.for_discussion_collection(collection, current_user))
+    super.merge(ScopeService.for_discussion_collection(collection, current_user))
   end
 
   def accessible_records

@@ -146,7 +146,6 @@ class Poll < ApplicationRecord
     ((decided_voters_count.to_f / voters_count) * 100).to_i
   end
 
-
   def voters
     anonymous? ? User.none : super
   end
