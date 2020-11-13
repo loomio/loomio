@@ -17,7 +17,8 @@ class API::GroupsController < API::RestfulController
   def show
     self.resource = load_and_authorize(:group)
     accept_pending_membership
-    respond_with_resource
+    obj = RecordScope.for_groups(Array(resource.id), current_user.id)
+    respond_with_resource(scope: obj.scope)
   end
 
   def index
