@@ -34,9 +34,7 @@ module ScopeService
     poll_ids = ScopeService.add_polls_by_discussion_id(h, discussion_ids)
     ScopeService.add_outcomes_by_poll_id(h, poll_ids)
     ScopeService.add_poll_options_by_poll_id(h, poll_ids)
-    parent_group_ids = ScopeService.add_groups_by_id(h, group_ids)
-    all_group_ids = group_ids.concat(parent_group_ids)
-    ScopeService.add_groups_by_id(h, all_group_ids)
+    all_group_ids = ScopeService.add_groups_by_id(h, group_ids)
     ScopeService.add_memberships_by_group_id(h, all_group_ids, current_user.id)
     ScopeService.add_discussions_by_id(h, discussion_ids)
     ScopeService.add_stances_by_poll_id(h, poll_ids, current_user.id)
@@ -48,11 +46,13 @@ module ScopeService
     puts "!!!!!!discussion colleciton loaded!!!!!!!!!"
     h
   end
+
   # in controller
   # ScopeService.add_groups_by_id(scope, groups.pluck(:parent_id))
   # ScopeService.add_groups_by_id(scope, discussions.pluck(:parent_id))
   def self.add_groups_by_id(scope, group_ids)
     scope[:groups_by_id] ||= {}
+    return [] if group_ids.empty?
     ids = []
     parent_ids = []
     Group.with_serializer_includes.where(id: group_ids).each do |group|
@@ -60,8 +60,7 @@ module ScopeService
       parent_ids.push group.parent_id if group.parent_id
       scope[:groups_by_id][group.id] = group
     end
-    add_groups_by_id(scope, parent_ids) if parent_ids.any?
-    ids.concat(parent_ids)
+    ids.concat add_groups_by_id(scope, parent_ids)
   end
 
   def self.add_subscriptions_by_group_id(scope, group_ids)
@@ -110,9 +109,12 @@ module ScopeService
 
   def self.add_comments_by_id(scope, comment_ids)
     scope[:comments_by_id] ||= {}
+    parent_ids = []
     Comment.with_serializer_includes.where(id: comment_ids).each do |comment|
       scope[:comments_by_id][comment.id] = comment
+      parent_ids.push comment.parent_id if comment.parent_id
     end
+    add_comments_by_id(scope, parent_ids) if parent_ids.any?
   end
 
   def self.add_outcomes_by_poll_id(scope, poll_ids)
