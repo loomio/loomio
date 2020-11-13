@@ -1,5 +1,5 @@
 module ScopeService
-  def self.for_event_collection(collection, discussion_id, current_user, exclude_types)
+  def self.for_event_collection(collection, discussion_id, current_user)
     h = {}
     discussion_ids = [discussion_id]
     group_ids = Discussion.where(id: discussion_ids).pluck(:group_id)
