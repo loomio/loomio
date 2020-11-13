@@ -73,9 +73,7 @@ class DiscussionSerializer < ApplicationSerializer
   end
 
   def active_polls
-    scope_fetch(:polls_by_discussion_id, object.id) do
-      []
-    end
+    scope_fetch(:polls_by_discussion_id, object.id) { [] }
   end
 
   def reader

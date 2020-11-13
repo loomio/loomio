@@ -9,6 +9,8 @@ module ScopeService
     stance_ids = collection.where(eventable_type: 'Stance').except(:order).pluck(:eventable_id)
 
     poll_ids = ScopeService.add_polls_by_discussion_id(h, discussion_id)
+    ScopeService.add_events_by_id(h, collection.pluck(:parent_id))
+    ScopeService.add_outcomes_by_poll_id(h, poll_ids)
     ScopeService.add_poll_options_by_poll_id(h, poll_ids)
     ScopeService.add_groups_by_id(h, all_group_ids)
     ScopeService.add_memberships_by_group_id(h, all_group_ids, current_user.id)
@@ -21,6 +23,7 @@ module ScopeService
     ScopeService.add_events_by_kind_and_discussion_id(h, 'discussion_forked', discussion_ids)
     ScopeService.add_events_by_kind_and_poll_id(h, 'poll_created', poll_ids)
     ScopeService.add_subscriptions_by_group_id(h, all_group_ids)
+    puts "!!!!!!event colleciton loaded!!!!!!!!!"
     h
   end
 
@@ -29,6 +32,7 @@ module ScopeService
     discussion_ids = collection.pluck(:id)
     group_ids = collection.pluck(:group_id)
     poll_ids = ScopeService.add_polls_by_discussion_id(h, discussion_ids)
+    ScopeService.add_outcomes_by_poll_id(h, poll_ids)
     ScopeService.add_poll_options_by_poll_id(h, poll_ids)
     parent_group_ids = ScopeService.add_groups_by_id(h, group_ids, :return_parent_ids)
     all_group_ids = group_ids.concat(parent_group_ids)
@@ -94,10 +98,30 @@ module ScopeService
     ids
   end
 
+  def self.add_events_by_id(scope, event_ids)
+    scope[:events_by_id] ||= {}
+    parent_ids = []
+    Event.with_serializer_includes.where(id: event_ids).each do |event|
+      parent_ids.push(event.parent_id) if event.parent_id
+      scope[:events_by_id][event.id] = event
+    end
+    add_events_by_id(scope, parent_ids) if parent_ids.any?
+    parent_ids
+  end
+
   def self.add_comments_by_id(scope, comment_ids)
     scope[:comments_by_id] ||= {}
     Comment.with_serializer_includes.where(id: comment_ids).each do |comment|
       scope[:comments_by_id][comment.id] = comment
+    end
+  end
+
+  def self.add_outcomes_by_poll_id(scope, poll_ids)
+    scope[:outcomes_by_id] ||= {}
+    scope[:outcomes_by_poll_id] ||= {}
+    Outcome.with_serializer_includes.where(poll_id: poll_ids).each do |outcome|
+      scope[:outcomes_by_id][outcome.id] = outcome
+      scope[:outcomes_by_poll_id][outcome.poll_id] = outcome if outcome.latest
     end
   end
 

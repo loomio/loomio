@@ -63,8 +63,7 @@ class API::EventsController < API::RestfulController
 
   def accessible_records
     load_and_authorize(:discussion)
-    records = Event.where(discussion_id: @discussion.id).
-                    includes(:user, parent: [:user])
+    records = Event.where(discussion_id: @discussion.id).with_serializer_includes
 
     if %w[position_key sequence_id].include?(params[:order_by])
       records = records.order("events.#{params[:order_by]}#{params[:order_desc] ? " DESC" : ''}")

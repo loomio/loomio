@@ -40,7 +40,7 @@ class Event < ApplicationRecord
   validates :kind, presence: true
   validates :eventable, presence: true
 
-  scope :with_serializer_includes, -> { includes(:user, parent: :user) }
+  scope :with_serializer_includes, -> { includes(:user) }
   scope :unreadable, -> { where.not(kind: 'discussion_closed') }
 
   scope :invitations_in_period, ->(since, till) {

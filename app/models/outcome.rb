@@ -33,6 +33,7 @@ class Outcome < ApplicationRecord
   validates :statement, presence: true, length: { maximum: Rails.application.secrets.max_message_length }
   validate :has_valid_poll_option
 
+  scope :with_serializer_includes, -> { includes(:author) }
   scope :review_due_not_published, -> (due_date) do
     where(review_on: due_date).where("NOT EXISTS (
               SELECT 1 FROM events
