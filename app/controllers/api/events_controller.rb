@@ -67,9 +67,9 @@ class API::EventsController < API::RestfulController
                     includes(:user, parent: [:user])
 
     if %w[position_key sequence_id].include?(params[:order_by])
-      records = records.order("#{params[:order_by]}#{params[:order_desc] ? " DESC" : ''}")
+      records = records.order("events.#{params[:order_by]}#{params[:order_desc] ? " DESC" : ''}")
     else
-      records = records.where("#{order} >= ?", from)
+      records = records.where("events.#{order} >= ?", from)
     end
 
     if params[:unread] == 'true'
@@ -90,12 +90,12 @@ class API::EventsController < API::RestfulController
       records = records.where(name => params[name]) if params[name]
       # records = records.where("#{name} >= ?", params["min_#{name}"]) if params["min_#{name}"]
       # records = records.where("#{name} <= ?", params["max_#{name}"]) if params["max_#{name}"]
-      records = records.where("#{name} = ?", params["#{name}"]) if params["#{name}"]
-      records = records.where("#{name} < ?", params["#{name}_lt"]) if params["#{name}_lt"]
-      records = records.where("#{name} > ?", params["#{name}_gt"]) if params["#{name}_gt"]
-      records = records.where("#{name} <= ?", params["#{name}_lte"]) if params["#{name}_lte"]
-      records = records.where("#{name} >= ?", params["#{name}_gte"]) if params["#{name}_gte"]
-      records = records.where("#{name} like ?", params["#{name}_sw"]+"%") if params["#{name}_sw"]
+      records = records.where("events.#{name} = ?", params["#{name}"]) if params["#{name}"]
+      records = records.where("events.#{name} < ?", params["#{name}_lt"]) if params["#{name}_lt"]
+      records = records.where("events.#{name} > ?", params["#{name}_gt"]) if params["#{name}_gt"]
+      records = records.where("events.#{name} <= ?", params["#{name}_lte"]) if params["#{name}_lte"]
+      records = records.where("events.#{name} >= ?", params["#{name}_gte"]) if params["#{name}_gte"]
+      records = records.where("events.#{name} like ?", params["#{name}_sw"]+"%") if params["#{name}_sw"]
     end
     # records = records.where("position_key like ?", params["position_key_sw"]+"%") if params["position_key_sw"]
     records
@@ -106,7 +106,7 @@ class API::EventsController < API::RestfulController
       position = [params[:until_sequence_id_of_position].to_i, @discussion.created_event.child_count].min
       event = Event.find_by!(discussion: @discussion, depth: 1, position: position)
       max_sequence_id = event.sequence_id + event.child_count
-      collection.where("sequence_id <= ?", max_sequence_id).order('depth, position').limit(per)
+      collection.where("events.sequence_id <= ?", max_sequence_id).order('events.depth, events.position').limit(per)
     else
       collection.order(order).limit(per)
     end

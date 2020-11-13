@@ -35,7 +35,7 @@ EventBus.configure do |config|
     collection = Discussion.where(id: reader.discussion_id)
     MessageChannelService.publish_models(reader.discussion,
                                          serializer: DiscussionSerializer,
-                                         scope: ScopeLoader.for_discussion_collection(collection, reader.user)
+                                         scope: ScopeLoader.for_discussion_collection(collection, reader.user),
                                          root: :discussions,
                                          user_id: reader.user_id)
   end

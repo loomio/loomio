@@ -5,12 +5,16 @@ module ScopeService
     group_ids = Discussion.where(id: discussion_ids).pluck(:group_id)
     parent_group_ids = Group.where(id: group_ids).pluck(:parent_id)
     all_group_ids = group_ids.concat(parent_group_ids)
+    comment_ids = collection.where(eventable_type: 'Comment').except(:order).pluck(:eventable_id)
+    stance_ids = collection.where(eventable_type: 'Stance').except(:order).pluck(:eventable_id)
 
     poll_ids = ScopeService.add_polls_by_discussion_id(h, discussion_id)
     ScopeService.add_poll_options_by_poll_id(h, poll_ids)
     ScopeService.add_groups_by_id(h, all_group_ids)
     ScopeService.add_memberships_by_group_id(h, all_group_ids, current_user.id)
     ScopeService.add_discussions_by_id(h, discussion_ids)
+    ScopeService.add_comments_by_id(h, comment_ids)
+    ScopeService.add_stances_by_id(h, stance_ids)
     ScopeService.add_stances_by_poll_id(h, poll_ids, current_user.id)
     ScopeService.add_discussion_readers_by_discussion_id(h, discussion_ids, current_user.id)
     ScopeService.add_events_by_kind_and_discussion_id(h, 'new_discussion', discussion_ids)
@@ -90,10 +94,17 @@ module ScopeService
     ids
   end
 
+  def self.add_comments_by_id(scope, comment_ids)
+    scope[:comments_by_id] ||= {}
+    Comment.where(id: comment_ids).each do |comment|
+      scope[:comments_by_id][comment.id] = comment
+    end
+  end
+
   def self.add_polls_by_id(scope, poll_ids)
     scope[:polls_by_id] ||= {}
     Poll.where(id: poll_ids).each do |poll|
-      scope[:polls_by_id][poll] = poll
+      scope[:polls_by_id][poll.id] = poll
     end
   end
 
@@ -105,12 +116,22 @@ module ScopeService
     end
   end
 
-  # what if we pass a relation?
+  def self.add_stances_by_id(scope, stance_ids)
+    scope[:stances_by_id] ||= {}
+    scope[:stances_by_poll_id] ||= {}
+    Comment.where(id: stance_ids).each do |stance|
+      scope[:stances_by_id][stance.id] = stance
+      scope[:stances_by_poll_id][stance.poll_id] = stance
+    end
+  end
+
   def self.add_stances_by_poll_id(scope, poll_ids, user_id)
+    scope[:stances_by_id] ||= {}
     scope[:stances_by_poll_id] ||= {}
     ids = []
     Stance.includes(:stance_choices, :participant, :poll).where(poll_id: poll_ids, participant_id: user_id).each do |stance|
       ids.push stance
+      scope[:stances_by_id][stance.id] = stance
       scope[:stances_by_poll_id][stance.poll_id] = stance
     end
     ids

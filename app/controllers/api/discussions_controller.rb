@@ -44,10 +44,7 @@ class API::DiscussionsController < API::RestfulController
     raise CanCan::AccessDenied.new unless current_user.is_logged_in?
     @accessible_records = DiscussionQuery.visible_to(user: current_user, only_unread: true, or_public: false, or_subgroups: false)
     instantiate_collection { |collection| collection.recent.order_by_latest_activity }
-    respond_with_collection scope: default_scope.merge(
-      poll_cache:   Caches::Poll.new(parents: collection),
-      reader_cache: Caches::DiscussionReader.new(user: current_user, parents: collection)
-    )
+    respond_with_collection
   end
 
   def search

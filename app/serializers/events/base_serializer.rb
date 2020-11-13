@@ -16,6 +16,8 @@ class Events::BaseSerializer < ApplicationSerializer
     case object.eventable_type
     when 'Discussion' then scope_fetch(:discussions_by_id, object.eventable_id)
     when 'Poll' then scope_fetch(:polls_by_id, object.eventable_id)
+    when 'Comment' then scope_fetch(:comments_by_id, object.eventable_id)
+    when 'Stance' then scope_fetch(:stances_by_id, object.eventable_id) { object.eventable }
     else
       object.eventable
     end
