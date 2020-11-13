@@ -128,7 +128,8 @@ class API::DiscussionsController < API::RestfulController
 
   def default_scope
     self.collection = Discussion.where(id: resource.id) if resource
-    super.merge(ScopeService.for_discussion_collection(collection, current_user))
+    obj = RecordScope.for_discussions(collection, current_user)
+    super.merge(obj.scope)
   end
 
   def accessible_records

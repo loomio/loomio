@@ -7,11 +7,9 @@ class API::ProfileController < API::RestfulController
   def groups
     self.collection = GroupQuery.visible_to(user: current_user)
 
-    h = {}
-    ScopeService.add_memberships_by_group_id(h, collection.pluck(:id), current_user.id)
-    ScopeService.add_groups_by_id(h, collection.pluck(:id))
+    obj = RecordScope.for_groups(collection.pluck(:id), current_user.id)
 
-    respond_with_collection serializer: GroupSerializer, root: :groups, scope: h
+    respond_with_collection serializer: GroupSerializer, root: :groups, scope: obj.scope
   end
 
   def time_zones
