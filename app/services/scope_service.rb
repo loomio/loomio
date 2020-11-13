@@ -119,7 +119,7 @@ module ScopeService
   def self.add_stances_by_id(scope, stance_ids)
     scope[:stances_by_id] ||= {}
     scope[:stances_by_poll_id] ||= {}
-    Comment.where(id: stance_ids).each do |stance|
+    Stance.where(id: stance_ids).each do |stance|
       scope[:stances_by_id][stance.id] = stance
       scope[:stances_by_poll_id][stance.poll_id] = stance
     end
