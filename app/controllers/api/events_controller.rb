@@ -27,7 +27,7 @@ class API::EventsController < API::RestfulController
   private
 
   def default_scope
-    super.merge(ScopeService.for_event_collection(collection, @discussion.id, current_user))
+    super.merge(ScopeService.for_event_collection(collection, @discussion.id, current_user, params[:exclude_types].split(' ')))
   end
 
   def order
