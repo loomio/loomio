@@ -6,7 +6,7 @@ class GroupSerializer < ApplicationSerializer
              :full_name,
              :description,
              :description_format,
-             :logo_url_medium,
+             # :logo_url_medium,
              :created_at,
              :creator_id,
              :members_can_add_members,
@@ -28,15 +28,14 @@ class GroupSerializer < ApplicationSerializer
              :accepted_memberships_count,
              :membership_granted_upon,
              :discussion_privacy_options,
-             :has_discussions,
              :admin_memberships_count,
              :archived_at,
              :attachments,
              :tag_names,
              :new_threads_max_depth,
              :new_threads_newest_first,
-             :cover_urls,
-             :has_custom_cover,
+             # # :cover_urls,
+             # # :has_custom_cover,
              :experiences,
              :enable_experiments,
              :features,
@@ -47,9 +46,9 @@ class GroupSerializer < ApplicationSerializer
              :is_subgroup_of_hidden_parent,
              :is_visible_to_parent_members,
              :parent_members_can_see_discussions,
-             :org_memberships_count,
-             :org_discussions_count,
-             :org_members_count,
+             # :org_memberships_count,
+             # :org_discussions_count,
+             # :org_members_count,
              :subscription,
              :subgroups_count,
              :complete,
@@ -63,10 +62,7 @@ class GroupSerializer < ApplicationSerializer
   # has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
 
   def current_user_membership
-    scope_fetch(:memberships_by_group_id, object.id)
-    #  do
-    #   object.memberships.find_by(id: scope[:current_user_id])
-    # end
+    scope_fetch(:memberships_by_group_id, object.id) { nil }
   end
 
   def parent
@@ -76,9 +72,8 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def subscription
-    sub = scope_fetch(:subscriptions_by_group_id, object.subscription_id, 'return_nil') do
-      Subscription.for(object)
-    end
+    # Subscription.for(object)
+    sub = scope_fetch(:subscriptions_by_group_id, object.subscription_id) { nil }
 
     return unless sub
     if (current_user_membership && sub)
@@ -101,10 +96,6 @@ class GroupSerializer < ApplicationSerializer
         members_count:   sub.members_count
       }
     end
-  end
-
-  def include_current_user_membership?
-    super && scope[:current_user_id]
   end
 
   def include_secret_token?

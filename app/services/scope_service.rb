@@ -1,11 +1,30 @@
 module ScopeService
+  def self.for_discussion_collection(collection, current_user)
+    h = {}
+    discussion_ids = collection.pluck(:id)
+    group_ids = collection.pluck(:group_id)
+    poll_ids = ScopeService.add_polls_by_discussion_id(h, discussion_ids)
+    ScopeService.add_poll_options_by_poll_id(h, poll_ids)
+    parent_group_ids = ScopeService.add_groups_by_id(h, group_ids, :return_parent_ids)
+    all_group_ids = group_ids.concat(parent_group_ids)
+    ScopeService.add_groups_by_id(h, all_group_ids)
+    ScopeService.add_memberships_by_group_id(h, all_group_ids, current_user.id)
+    ScopeService.add_discussions_by_id(h, discussion_ids)
+    ScopeService.add_stances_by_poll_id(h, poll_ids, current_user.id)
+    ScopeService.add_discussion_readers_by_discussion_id(h, discussion_ids, current_user.id)
+    ScopeService.add_events_by_kind_and_discussion_id(h, 'new_discussion', discussion_ids)
+    ScopeService.add_events_by_kind_and_discussion_id(h, 'discussion_forked', discussion_ids)
+    ScopeService.add_events_by_kind_and_poll_id(h, 'poll_created', poll_ids)
+    ScopeService.add_subscriptions_by_group_id(h, all_group_ids)
+    h
+  end
   # in controller
   # ScopeService.add_groups_by_id(scope, groups.pluck(:parent_id))
   # ScopeService.add_groups_by_id(scope, discussions.pluck(:parent_id))
   def self.add_groups_by_id(scope, group_ids, return_parent_ids = nil)
     scope[:groups_by_id] ||= {}
     ids = []
-    Group.where(id: group_ids).each do |group|
+    Group.includes(:default_group_cover).where(id: group_ids).each do |group|
       if return_parent_ids
         ids.push group.parent_id
       else

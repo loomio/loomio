@@ -21,12 +21,11 @@ class ApplicationSerializer < ActiveModel::Serializer
     end
   end
 
-  def scope_fetch(key_or_keys, id, optional = false)
+  def scope_fetch(key_or_keys, id)
     (scope.dig(*Array(key_or_keys)) || {}).fetch(id) do
       if block_given?
         yield
       else
-        return nil if optional
         raise "scope missing preloaded model: #{key_or_keys} #{id}"
       end
     end
