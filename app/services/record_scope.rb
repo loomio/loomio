@@ -24,7 +24,7 @@ class RecordScope
     stance_ids = collection.where(eventable_type: 'Stance').except(:order).pluck(:eventable_id)
 
     all_group_ids = obj.add_groups_by_id(group_ids)
-    poll_ids = obj.add_polls_by_discussion_ids(discussion_ids)
+    poll_ids = obj.add_polls_by_discussion_id(discussion_ids)
     obj.add_events_by_id(collection.pluck(:parent_id))
     obj.add_outcomes_by_poll_id(poll_ids)
     obj.add_poll_options_by_poll_id(poll_ids)
@@ -105,7 +105,7 @@ class RecordScope
     ids
   end
 
-  def add_polls_by_discussion_ids(discussion_ids)
+  def add_polls_by_discussion_id(discussion_ids)
     return [] if discussion_ids.empty?
     return [] if exclude_types.include?('poll')
     scope[:polls_by_discussion_id] ||= {}
@@ -237,7 +237,7 @@ class RecordScope
 
   def add_discussions_by_id(discussion_ids)
     return [] if discussion_ids.empty?
-    return [] if exclude_types.include?('discussion')
+    # return [] if exclude_types.include?('discussion')
     scope[:discussions_by_id] ||= {}
     Discussion.with_serializer_includes.where(id: discussion_ids).each do |d|
       scope[:discussions_by_id][d.id] = d
