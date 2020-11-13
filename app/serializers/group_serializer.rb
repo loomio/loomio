@@ -59,15 +59,28 @@ class GroupSerializer < ApplicationSerializer
     true
   end
 
-  has_one :parent, serializer: GroupSerializer, root: :parent_groups
-  has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
+  # has_one :parent, serializer: GroupSerializer, root: :parent_groups
+  # has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
 
   def current_user_membership
-    scope && scope[:current_user] && object.membership_for(scope[:current_user])
+    scope_fetch(:memberships_by_group_id, object.id)
+    #  do
+    #   object.memberships.find_by(id: scope[:current_user_id])
+    # end
+  end
+
+  def parent
+    scope_fetch(:groups_by_id, object.id) do
+      object.parent
+    end
   end
 
   def subscription
-    sub = Subscription.for(object)
+    sub = scope_fetch(:subscriptions_by_group_id, object.subscription_id, 'return_nil') do
+      Subscription.for(object)
+    end
+
+    return unless sub
     if (current_user_membership && sub)
       {
         max_members:     sub.max_members,
@@ -91,7 +104,7 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def include_current_user_membership?
-    super && scope[:current_user]
+    super && scope[:current_user_id]
   end
 
   def include_secret_token?

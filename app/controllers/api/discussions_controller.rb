@@ -1,8 +1,4 @@
 class API::DiscussionsController < API::RestfulController
-  include UsesDiscussionReaders
-  include UsesPolls
-  include UsesDiscussionEvents
-
   def create
     instantiate_resource
     if resource_params[:forked_event_ids] && resource_params[:forked_event_ids].any?
@@ -134,7 +130,24 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def default_scope
-    super.merge(tag_cache: DiscussionTagCache.new(Array(resource || collection)).data)
+    h = {}
+    h[:tag_cache] = DiscussionTagCache.new(Array(resource || collection)).data
+    discussion_ids = collection.pluck(:id)
+    poll_ids = ScopeService.add_polls_by_discussion_id(h, discussion_ids)
+    ScopeService.add_poll_options_by_poll_id(h, poll_ids)
+    group_ids = collection.pluck(:group_id)
+    parent_group_ids = ScopeService.add_groups_by_id(h, group_ids, :return_parent_ids)
+    all_group_ids = group_ids.concat(parent_group_ids)
+    ScopeService.add_groups_by_id(h, all_group_ids)
+    ScopeService.add_memberships_by_group_id(h, all_group_ids, current_user.id)
+    ScopeService.add_discussions_by_id(h, discussion_ids)
+    ScopeService.add_stances_by_poll_id(h, poll_ids, current_user.id)
+    ScopeService.add_discussion_readers_by_discussion_id(h, discussion_ids, current_user.id)
+    ScopeService.add_events_by_kind_and_discussion_id(h, 'new_discussion', discussion_ids)
+    ScopeService.add_events_by_kind_and_discussion_id(h, 'discussion_forked', discussion_ids)
+    ScopeService.add_events_by_kind_and_poll_id(h, 'poll_created', poll_ids)
+    ScopeService.add_subscriptions_by_group_id(h, all_group_ids)
+    super.merge(h)
   end
 
   def accessible_records

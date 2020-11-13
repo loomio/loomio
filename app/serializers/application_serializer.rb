@@ -5,10 +5,29 @@ class ApplicationSerializer < ActiveModel::Serializer
     super || {}
   end
 
+  def group
+    scope_fetch('groups_by_id', object.group_id) { nil }
+  end
+
+  def discussion
+    scope_fetch('discussions_by_id', object.discussion_id) { nil }
+  end
+
   def self.hide_when_discarded(names)
     Array(names).each do |name|
       define_method name do
         object.discarded_at ? nil : object.send(name)
+      end
+    end
+  end
+
+  def scope_fetch(key_or_keys, id, optional = false)
+    (scope.dig(*Array(key_or_keys)) || {}).fetch(id) do
+      if block_given?
+        yield
+      else
+        return nil if optional
+        raise "scope missing preloaded model: #{key_or_keys} #{id}"
       end
     end
   end

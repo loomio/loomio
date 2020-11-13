@@ -24,6 +24,14 @@ class DiscussionQuery
                          (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL)
                          #{'OR (groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids))' if or_subgroups}", user_group_ids: user.group_ids)
 
+    # chain = chain.joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = discussions.id AND (dr.user_id = #{user.id || 0} #{or_discussion_reader_token})")
+    #              .where("groups.archived_at IS NULL")
+    #              .where("#{'(discussions.private = false) OR ' if or_public}
+    #                      (discussion.group_id in (:user_group_ids) OR
+    #                      (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL)
+    #                      #{'OR (groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids))' if or_subgroups}", user_group_ids: user.group_ids)
+    #              # .joins("LEFT OUTER JOIN memberships m ON m.user_id = #{user.id || 0} AND m.group_id = discussions.group_id")
+
     chain = chain.where("discussions.group_id IN (?)", group_ids) if Array(group_ids).any?
     chain = chain.where("discussions.group_id IS NULL") if group_ids.nil?
     if only_unread

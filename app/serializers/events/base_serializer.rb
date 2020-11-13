@@ -5,11 +5,21 @@ class Events::BaseSerializer < ApplicationSerializer
 
   has_one :actor, serializer: AuthorSerializer, root: :users
   has_one :eventable, polymorphic: true
-  has_one :discussion, serializer: Simple::DiscussionSerializer, root: :discussions
+  has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_one :parent, serializer: Events::BaseSerializer, root: :parent_events
 
   # for discussion moved event
   has_one :source_group, serializer: GroupSerializer, root: :groups
+
+
+  def eventable
+    case object.eventable_type
+    when 'Discussion' then scope_fetch(:discussions_by_id, object.eventable_id)
+    when 'Poll' then scope_fetch(:polls_by_id, object.eventable_id)
+    else
+      object.eventable
+    end
+  end
 
   def position_key
     if object.kind == "new_discussion"

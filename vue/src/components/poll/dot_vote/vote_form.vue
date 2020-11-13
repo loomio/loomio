@@ -47,11 +47,11 @@ export default
       "#{100 * choice.score / max}% 100%"
 
     backgroundImageFor: (option) ->
-      "url(/img/poll_backgrounds/#{option.color.replace('#','')}.png)"
+      "url(/img/poll_backgrounds/#{option.color().replace('#','')}.png)"
 
     styleData: (choice) ->
       option = @optionFor(choice)
-      'border-color': option.color
+      'border-color': option.color()
       'background-image': @backgroundImageFor(option)
       'background-size': @percentageFor(choice)
 

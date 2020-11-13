@@ -2,6 +2,7 @@ import BaseModel  from  '@/shared/record_store/base_model'
 import Records  from  '@/shared/services/records'
 import {map} from 'lodash'
 
+
 export default class PollOptionModel extends BaseModel
   @singular: 'pollOption'
   @plural: 'pollOptions'
@@ -17,3 +18,6 @@ export default class PollOptionModel extends BaseModel
 
   beforeRemove: ->
     @stances().each (stance) -> stance.remove()
+
+  color: ->
+    AppConfig.pollColors[@poll().pollType][@priority]

@@ -48,12 +48,12 @@ class DiscussionSerializer < ApplicationSerializer
                          :admin
 
   has_one :author, serializer: AuthorSerializer, root: :users
-  has_one :group, serializer: GroupSerializer, root: :groups
+  # has_one :group, serializer: GroupSerializer, root: :groups
   has_many :active_polls, serializer: PollSerializer, root: :polls
   has_one :created_event, serializer: Events::BaseSerializer, root: :events
   has_one :forked_event, serializer: Events::BaseSerializer, root: :events
-
-  has_many :discussion_tags
+  #
+  # has_many :discussion_tags
   hide_when_discarded [:description, :title]
 
   def include_group?
@@ -68,44 +68,27 @@ class DiscussionSerializer < ApplicationSerializer
     Array(Hash(scope).dig(:tag_cache, object.id))
   end
 
-  def active_polls
-    scope[:poll_cache].get_for(object, hydrate_on_miss: false)
-  end
-
-  def include_active_polls?
-    super && scope[:poll_cache].present?
-  end
-
   def include_mentioned_usernames?
     description_format == "md"
   end
 
+  def active_polls
+    scope_fetch(:polls_by_discussion_id, object.id) do
+      []
+    end
+  end
+
   def reader
-    @reader ||= scope[:reader_cache].get_for(object) if scope[:reader_cache]
+    scope_fetch(:discussion_readers_by_discussion_id, object.id) do
+      DiscussionReader.new(discussion: object)
+    end
   end
 
   def created_event
-    @created_event ||= scope[:discussion_event_cache].
-      get_for(object, hydrate_on_miss: false).
-      find {|event| event.kind == "new_discussion" } || object.created_event
+    scope_fetch([:events_by_discussion_id, 'new_discussion'], object.id)
   end
 
   def forked_event
-    @forked_event ||= scope[:discussion_event_cache].
-      get_for(object, hydrate_on_miss: false).
-      find {|event| event.kind == "discussion_forked"}
+    scope_fetch([:events_by_discussion_id, 'discussion_forked'], object.id) { nil }
   end
-
-  def include_created_event?
-    super && scope[:discussion_event_cache].present?
-  end
-
-  def include_forked_event?
-    super && scope[:discussion_event_cache].present?
-  end
-
-  def scope
-    super || {}
-  end
-
 end

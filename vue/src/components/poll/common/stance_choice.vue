@@ -22,7 +22,7 @@ export default
 
   computed:
     color: ->
-      @pollOption.color
+      AppConfig.pollColors.poll[@pollOption.priority]
 
     pollOption: ->
       @stanceChoice.pollOption()

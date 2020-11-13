@@ -49,7 +49,7 @@ export default
     sortable-item(v-for="(option, index) in pollOptions" :index="index" :key="option.id" :item="option")
       span(v-if="index+1 <= numChoices") {{index+1}}
       space
-      v-chip.mr-2(:color="option.color" :index="index" :key="index") {{ option.name }}
+      v-chip.mr-2(:color="option.color()" :index="index" :key="index") {{ option.name }}
   validation-errors(:subject='stance', field='stanceChoices')
   poll-common-add-option-button(:poll='stance.poll()')
   poll-common-stance-reason(:stance='stance')
