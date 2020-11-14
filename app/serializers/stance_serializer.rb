@@ -21,6 +21,10 @@ class StanceSerializer < ApplicationSerializer
   has_one :participant, serializer: AuthorSerializer, root: :users
   has_many :stance_choices, serializer: StanceChoiceSerializer, root: :stance_choices
 
+  def stance_choices
+    scope_fetch(:stance_choices_by_stance_id, object.id) { [] }
+  end
+
   def volume
     object[:volume]
   end

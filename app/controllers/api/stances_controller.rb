@@ -58,12 +58,17 @@ class API::StancesController < API::RestfulController
     (stance || poll).poll.admins.exists?(current_user.id)
   end
 
+  def exclude_types
+    %w[poll group discussion]
+  end
+
   def default_scope
-    super.merge({include_email: current_user_is_admin?})
+    obj = RecordScope.for_stances(collection, current_user, exclude_types)
+    super.merge({include_email: current_user_is_admin?}).merge(obj.scope)
   end
 
   def accessible_records
-    load_and_authorize(:poll).stances.latest.includes({poll: [:poll_options]}, :stance_choices, :participant)
+    load_and_authorize(:poll).stances.latest.includes(:participant)
   end
 
   def valid_orders

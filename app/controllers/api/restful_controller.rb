@@ -73,7 +73,7 @@ class API::RestfulController < API::SnorlaxBase
   end
 
   def resources_to_serialize
-    Array(collection || resource)
+    collection || Array(resource)
   end
 
   def default_scope

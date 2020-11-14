@@ -46,7 +46,7 @@ class RecordScope
   def self.for_discussions(collection, current_user, exclude_types)
     obj = new
     obj.exclude_types = exclude_types
-    discussion_ids = collection.pluck(:id)
+    discussion_ids = collection.map(&:id)
     all_group_ids = obj.add_groups_by_id(collection.pluck(:group_id))
     poll_ids = obj.add_polls_by_discussion_id(discussion_ids)
     obj.add_outcomes_by_poll_id(poll_ids)
@@ -60,6 +60,42 @@ class RecordScope
     obj.add_events_by_kind_and_poll_id('poll_created', poll_ids)
     obj.add_subscriptions_by_group_id(all_group_ids)
     puts "!!!!!!discussion colleciton loaded!!!!!!!!!"
+    obj
+  end
+
+  def self.for_polls(collection, current_user, exclude_types)
+    obj = new
+    obj.exclude_types = exclude_types
+    poll_ids = collection.map(&:id)
+    discussion_ids = collection.map(&:discussion_id).compact
+    all_group_ids = obj.add_groups_by_id(collection.map(&:group_id))
+    obj.add_polls_by_id(poll_ids)
+    obj.add_outcomes_by_poll_id(poll_ids)
+    obj.add_poll_options_by_poll_id(poll_ids)
+    obj.add_memberships_by_group_id(all_group_ids, current_user.id)
+    obj.add_discussions_by_id(discussion_ids)
+    obj.add_stances_by_poll_id(poll_ids, current_user.id)
+    obj.add_discussion_readers_by_discussion_id(discussion_ids, current_user.id)
+    obj.add_events_by_kind_and_discussion_id('new_discussion', discussion_ids)
+    obj.add_events_by_kind_and_discussion_id('discussion_forked', discussion_ids)
+    obj.add_events_by_kind_and_poll_id('poll_created', poll_ids)
+    obj.add_subscriptions_by_group_id(all_group_ids)
+    puts "!!!!!!poll colleciton loaded!!!!!!!!!"
+    obj
+  end
+
+  def self.for_stances(collection, current_user, exclude_types)
+    obj = new
+    obj.exclude_types = exclude_types
+    stance_ids = collection.map(&:id)
+    poll_ids = collection.map(&:poll_id).uniq.compact
+    obj.add_polls_by_id(poll_ids)
+    obj.add_outcomes_by_poll_id(poll_ids)
+    obj.add_poll_options_by_poll_id(poll_ids)
+    obj.add_stance_choices_by_stance_id(stance_ids)
+    obj.add_events_by_kind_and_poll_id('poll_created', poll_ids)
+    obj.add_outcomes_by_poll_id(poll_ids)
+    puts "!!!!!!stance colleciton loaded!!!!!!!!!"
     obj
   end
 
@@ -85,7 +121,7 @@ class RecordScope
     return [] if group_ids.empty?
     return [] if exclude_types.include?('subscription')
     scope[:subscriptions_by_group_id] ||=  {}
-    Group.with_serializer_includes.where(id: group_ids).each do |group|
+    Group.includes(:subscription).where(id: group_ids).each do |group|
       scope[:subscriptions_by_group_id][group.id] = group.subscription
     end
   end
@@ -181,6 +217,16 @@ class RecordScope
     scope[:stances_by_id] ||= {}
     Stance.with_serializer_includes.where(id: stance_ids).each do |stance|
       scope[:stances_by_id][stance.id] = stance
+    end
+  end
+
+  def add_stance_choices_by_stance_id(stance_ids)
+    return [] if stance_ids.empty?
+    return [] if exclude_types.include?('stance_choice')
+    scope[:stance_choices_by_stance_id] ||= {}
+    StanceChoice.where(stance_id: stance_ids).each do |choice|
+      scope[:stance_choices_by_stance_id][choice.stance_id] ||= []
+      scope[:stance_choices_by_stance_id][choice.stance_id].push choice
     end
   end
 

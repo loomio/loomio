@@ -70,8 +70,11 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def subscription
-    # Subscription.for(object)
-    sub = scope_fetch(:subscriptions_by_group_id, object.subscription_id) { nil }
+    sub = nil
+    
+    if object.subscription_id
+      sub = scope_fetch(:subscriptions_by_group_id, object.id) { nil }
+    end
 
     return unless sub
     if (current_user_membership && sub)

@@ -39,6 +39,12 @@ class API::PollsController < API::RestfulController
   end
 
   private
+  def default_scope
+    col = collection || Poll.where(id: resource.id)
+    obj = RecordScope.for_polls(col, current_user, exclude_types)
+    super.merge(obj.scope)
+  end
+
   def accessible_records
     PollQuery.visible_to(user: current_user, show_public: true)
   end
