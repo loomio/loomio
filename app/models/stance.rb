@@ -112,8 +112,9 @@ class Stance < ApplicationRecord
     end
   end
 
-  def participant
-    (!participant_id || poll.anonymous?) ? AnonymousUser.new : super
+  def participant(bypass = false)
+    super() if bypass
+    (!participant_id || poll.anonymous?) ? AnonymousUser.new : super()
   end
 
   def real_participant

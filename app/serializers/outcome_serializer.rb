@@ -22,4 +22,8 @@ class OutcomeSerializer < ApplicationSerializer
   def custom_fields
     object.custom_fields.except('calendar_invite')
   end
+
+  def group_id
+    cache_fetch(:polls_by_id, poll_id).group_id
+  end
 end

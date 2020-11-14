@@ -58,7 +58,7 @@ class RecordCache
     obj = new
     obj.exclude_types = exclude_types
     discussion_ids = collection.map(&:id)
-    all_group_ids = obj.add_groups_by_id(collection.pluck(:group_id))
+    all_group_ids = obj.add_groups_by_id(collection.map(&:group_id))
     poll_ids = obj.add_polls_by_discussion_id(discussion_ids)
     obj.add_outcomes_by_poll_id(poll_ids)
     obj.add_poll_options_by_poll_id(poll_ids)
@@ -226,8 +226,10 @@ class RecordCache
     return [] if stance_ids.empty?
     return [] if exclude_types.include?('stance')
     scope[:stances_by_id] ||= {}
+    scope[:users_by_id] ||= {}
     Stance.with_serializer_includes.where(id: stance_ids).each do |stance|
       scope[:stances_by_id][stance.id] = stance
+      scope[:users_by_id][stance.participant_id] = stance.participant(true)
     end
   end
 

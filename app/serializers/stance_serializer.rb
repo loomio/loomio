@@ -21,6 +21,16 @@ class StanceSerializer < ApplicationSerializer
   has_one :participant, serializer: AuthorSerializer, root: :users
   has_many :stance_choices, serializer: StanceChoiceSerializer, root: :stance_choices
 
+  def participant
+    return nil if cache_fetch(:polls_by_id, poll_id).anonymous?
+    cache_fetch(:users_by_id, object.participant_id) { nil }
+  end
+
+  def participant_id
+    return nil if cache_fetch(:polls_by_id, poll_id).anonymous?
+    object.participant_id
+  end
+
   def stance_choices
     cache_fetch(:stance_choices_by_stance_id, object.id) { [] }
   end
