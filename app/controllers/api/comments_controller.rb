@@ -1,6 +1,4 @@
 class API::CommentsController < API::RestfulController
-  include UsesDiscussionReaders
-
   def discard
     load_resource
     @event = service.discard(comment: resource, actor: current_user)

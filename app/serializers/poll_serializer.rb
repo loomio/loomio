@@ -47,19 +47,19 @@ class PollSerializer < ApplicationSerializer
   hide_when_discarded [:details, :title]
 
   def current_outcome
-    scope_fetch(:outcomes_by_poll_id, object.id) { nil }
+    cache_fetch(:outcomes_by_poll_id, object.id) { nil }
   end
 
   def poll_options
-    scope_fetch(:poll_options_by_poll_id, object.id) { [] }
+    cache_fetch(:poll_options_by_poll_id, object.id) { [] }
   end
 
   def poll_option_names
-    scope_fetch(:poll_options_by_poll_id, object.id) { [] }.map(&:name)
+    cache_fetch(:poll_options_by_poll_id, object.id) { [] }.map(&:name)
   end
 
   def created_event
-    scope_fetch([:events_by_poll_id, 'poll_created'], object.id)
+    cache_fetch([:events_by_poll_id, 'poll_created'], object.id)
   end
 
   def include_mentioned_usernames?
@@ -71,6 +71,6 @@ class PollSerializer < ApplicationSerializer
   end
 
   def my_stance
-    scope_fetch(:stances_by_poll_id, object.id) { nil }
+    cache_fetch(:stances_by_poll_id, object.id) { nil }
   end
 end

@@ -69,20 +69,20 @@ class DiscussionSerializer < ApplicationSerializer
   end
 
   def active_polls
-    scope_fetch(:polls_by_discussion_id, object.id) { [] }
+    cache_fetch(:polls_by_discussion_id, object.id) { [] }
   end
 
   def reader
-    scope_fetch(:discussion_readers_by_discussion_id, object.id) do
+    cache_fetch(:discussion_readers_by_discussion_id, object.id) do
       DiscussionReader.new(discussion: object)
     end
   end
 
   def created_event
-    scope_fetch([:events_by_discussion_id, 'new_discussion'], object.id)
+    cache_fetch([:events_by_discussion_id, 'new_discussion'], object.id)
   end
 
   def forked_event
-    scope_fetch([:events_by_discussion_id, 'discussion_forked'], object.id) { nil }
+    cache_fetch([:events_by_discussion_id, 'discussion_forked'], object.id) { nil }
   end
 end

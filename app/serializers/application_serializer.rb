@@ -6,15 +6,15 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def poll
-    scope_fetch(:polls_by_id, object.poll_id)
+    cache_fetch(:polls_by_id, object.poll_id)
   end
 
   def group
-    scope_fetch(:groups_by_id, object.group_id) { nil }
+    cache_fetch(:groups_by_id, object.group_id) { nil }
   end
 
   def discussion
-    scope_fetch(:discussions_by_id, object.discussion_id) { nil }
+    cache_fetch(:discussions_by_id, object.discussion_id) { nil }
   end
 
   def self.hide_when_discarded(names)
@@ -25,14 +25,8 @@ class ApplicationSerializer < ActiveModel::Serializer
     end
   end
 
-  def scope_fetch(key_or_keys, id)
-    (scope.dig(*Array(key_or_keys)) || {}).fetch(id) do
-      if block_given?
-        yield
-      else
-        raise "scope missing preloaded model: #{key_or_keys} #{id}"
-      end
-    end
+  def cache_fetch(key_or_keys, id, &block)
+    scope[:cache].fetch(key_or_keys, id, &block)
   end
 
   def include_type?(type)

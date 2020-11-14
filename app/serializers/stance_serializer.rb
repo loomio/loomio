@@ -22,7 +22,7 @@ class StanceSerializer < ApplicationSerializer
   has_many :stance_choices, serializer: StanceChoiceSerializer, root: :stance_choices
 
   def stance_choices
-    scope_fetch(:stance_choices_by_stance_id, object.id) { [] }
+    cache_fetch(:stance_choices_by_stance_id, object.id) { [] }
   end
 
   def volume
@@ -30,7 +30,7 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def my_stance
-    scope_fetch(:stances_by_poll_id, object.poll_id) { nil }
+    cache_fetch(:stances_by_poll_id, object.poll_id) { nil }
   end
 
   def include_reason?

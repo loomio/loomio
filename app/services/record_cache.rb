@@ -1,4 +1,4 @@
-class RecordScope
+class RecordCache
   attr_accessor :scope
   attr_accessor :exclude_types
 
@@ -6,6 +6,17 @@ class RecordScope
     @scope = {}
     @exclude_types = []
   end
+
+  def fetch(key_or_keys, id)
+    (scope.dig(*Array(key_or_keys)) || {}).fetch(id) do
+      if block_given?
+        yield
+      else
+        raise "scope missing preloaded model: #{key_or_keys} #{id}"
+      end
+    end
+  end
+
 
   def self.for_groups(group_ids, user_id)
     obj = new

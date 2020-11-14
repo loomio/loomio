@@ -27,8 +27,8 @@ class API::EventsController < API::RestfulController
   private
 
   def default_scope
-    obj = RecordScope.for_events(collection, @discussion.id, current_user, exclude_types)
-    super.merge(obj.scope)
+    cache = RecordCache.for_events(collection, @discussion.id, current_user, exclude_types)
+    super.merge(cache: cache)
   end
 
   def order

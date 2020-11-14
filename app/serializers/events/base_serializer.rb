@@ -12,15 +12,15 @@ class Events::BaseSerializer < ApplicationSerializer
   has_one :source_group, serializer: GroupSerializer, root: :groups
 
   def parent
-    scope_fetch(:events_by_id, object.parent_id) { nil }
+    cache_fetch(:events_by_id, object.parent_id) { nil }
   end
 
   def eventable
     case object.eventable_type
-    when 'Discussion' then scope_fetch(:discussions_by_id, object.eventable_id)
-    when 'Poll' then scope_fetch(:polls_by_id, object.eventable_id)
-    when 'Comment' then scope_fetch(:comments_by_id, object.eventable_id)
-    when 'Stance' then scope_fetch(:stances_by_id, object.eventable_id)
+    when 'Discussion' then cache_fetch(:discussions_by_id, object.eventable_id)
+    when 'Poll' then cache_fetch(:polls_by_id, object.eventable_id)
+    when 'Comment' then cache_fetch(:comments_by_id, object.eventable_id)
+    when 'Stance' then cache_fetch(:stances_by_id, object.eventable_id)
     else
       raise "waht is it? #{object.eventable}"
       object.eventable

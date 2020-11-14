@@ -62,18 +62,18 @@ class GroupSerializer < ApplicationSerializer
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
 
   def current_user_membership
-    scope_fetch(:memberships_by_group_id, object.id) { nil }
+    cache_fetch(:memberships_by_group_id, object.id) { nil }
   end
 
   def parent
-    scope_fetch(:groups_by_id, object.parent_id) if object.parent_id
+    cache_fetch(:groups_by_id, object.parent_id) if object.parent_id
   end
 
   def subscription
     sub = nil
     
     if object.subscription_id
-      sub = scope_fetch(:subscriptions_by_group_id, object.id) { nil }
+      sub = cache_fetch(:subscriptions_by_group_id, object.id) { nil }
     end
 
     return unless sub
