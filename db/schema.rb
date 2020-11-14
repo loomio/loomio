@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_05_001500) do
+ActiveRecord::Schema.define(version: 2020_11_14_202806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -241,8 +241,8 @@ ActiveRecord::Schema.define(version: 2020_11_05_001500) do
     t.integer "anonymous_polls_count", default: 0, null: false
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
+    t.index ["discarded_at", "closed_at"], name: "index_discussions_on_discarded_at_and_closed_at", where: "((discarded_at IS NULL) AND (closed_at IS NULL))"
     t.index ["discarded_at"], name: "discussions_discarded_at_null", where: "(discarded_at IS NULL)"
-    t.index ["discarded_at"], name: "index_discussions_on_discarded_at"
     t.index ["group_id"], name: "index_discussions_on_group_id"
     t.index ["guest_group_id"], name: "index_discussions_on_guest_group_id"
     t.index ["key"], name: "index_discussions_on_key", unique: true

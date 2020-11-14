@@ -31,8 +31,8 @@ class Discussion < ApplicationRecord
   scope :visible_to_public, -> { kept.where(private: false) }
   scope :not_visible_to_public, -> { kept.where(private: true) }
 
-  scope :is_open, -> { kept.where(closed_at: nil) }
-  scope :is_closed, -> { kept.where("closed_at is not null") }
+  scope :is_open, -> { where(closed_at: nil) }
+  scope :is_closed, -> { where("closed_at is not null") }
 
   validates_presence_of :title, :group, :author
   validates :title, length: { maximum: 150 }
