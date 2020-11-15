@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_14_202806) do
+ActiveRecord::Schema.define(version: 2020_11_15_044018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -487,7 +487,7 @@ ActiveRecord::Schema.define(version: 2020_11_14_202806) do
     t.string "url"
     t.integer "actor_id"
     t.index ["event_id"], name: "index_notifications_on_event_id"
-    t.index ["user_id", "created_at"], name: "notifications_user_id_created_at_idx"
+    t.index ["id"], name: "index_notifications_on_id", order: :desc
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 

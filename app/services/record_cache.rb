@@ -3,9 +3,9 @@ class RecordCache
   attr_accessor :exclude_types
   attr_accessor :user_ids
 
-  def initialize
+  def initialize(exclude_types)
     @scope = {}
-    @exclude_types = []
+    @exclude_types = exclude_types
     @user_ids = []
   end
 
@@ -19,8 +19,17 @@ class RecordCache
     end
   end
 
-  def self.for_groups(group_ids, user_id)
-    obj = new
+  def self.for_notifications(collection, exclude_types)
+    obj = new(exclude_types)
+    puts "!!!!!!notification colleciton started!!!!!!!!!"
+    obj.add_events_by_id(collection.pluck(:event_id))
+    # obj.add_users_by_id(collection.pluck(:user_id).uniq)
+    puts "!!!!!!notification colleciton loaded!!!!!!!!!"
+    obj
+  end
+
+  def self.for_groups(group_ids, user_id, exclude_types)
+    obj = new(exclude_types)
     all_group_ids = obj.add_groups_by_id(group_ids)
     obj.add_memberships_by_group_id(all_group_ids, user_id)
     obj.add_users_by_id
@@ -28,9 +37,17 @@ class RecordCache
     obj
   end
 
+  def self.for_memberships(collection, exclude_types)
+    obj = new(exclude_types)
+    obj.add_groups_by_id(collection.map(&:group_id))
+    obj.add_memberships_by_id(collection)
+    obj.add_users_by_id
+    puts "!!!!!!membership colleciton loaded!!!!!!!!!"
+    obj
+  end
+
   def self.for_events(collection, discussion_id, current_user, exclude_types)
-    obj = new
-    obj.exclude_types = exclude_types
+    obj = new(exclude_types)
     discussion_ids = [discussion_id]
     group_ids = Discussion.where(id: discussion_ids).pluck(:group_id)
     comment_ids = collection.where(eventable_type: 'Comment').except(:order).pluck(:eventable_id)
@@ -58,8 +75,7 @@ class RecordCache
   end
 
   def self.for_discussions(collection, current_user, exclude_types)
-    obj = new
-    obj.exclude_types = exclude_types
+    obj = new(exclude_types)
     discussion_ids = collection.map(&:id)
     all_group_ids = obj.add_groups_by_id(collection.map(&:group_id))
     poll_ids = obj.add_polls_by_discussion_id(discussion_ids)
@@ -79,8 +95,7 @@ class RecordCache
   end
 
   def self.for_polls(collection, current_user, exclude_types)
-    obj = new
-    obj.exclude_types = exclude_types
+    obj = new(exclude_types)
     poll_ids = collection.map(&:id)
     discussion_ids = collection.map(&:discussion_id).compact
     all_group_ids = obj.add_groups_by_id(collection.map(&:group_id))
@@ -101,8 +116,7 @@ class RecordCache
   end
 
   def self.for_stances(collection, current_user, exclude_types)
-    obj = new
-    obj.exclude_types = exclude_types
+    obj = new(exclude_types)
     stance_ids = collection.map(&:id)
     poll_ids = collection.map(&:poll_id).uniq.compact
     obj.add_polls_by_id(poll_ids)
@@ -116,9 +130,9 @@ class RecordCache
     obj
   end
 
-  def add_users_by_id
+  def add_users_by_id(ids = [])
     scope[:users_by_id] ||= {}
-    User.where(id: user_ids.compact.uniq).each do |user|
+    User.where(id: ids.concat(user_ids).compact.uniq).each do |user|
       scope[:users_by_id][user.id] = user
     end
   end
@@ -168,6 +182,19 @@ class RecordCache
     ids
   end
 
+  def add_memberships_by_id(collection)
+    return [] if exclude_types.include?('membership')
+    scope[:memberships_by_id] ||= {}
+    ids = []
+    collection.each do |m|
+      ids.push m.id
+      user_ids.push m.user_id
+      user_ids.push m.inviter_id if m.inviter_id
+      scope[:memberships_by_id][m.id] = m
+    end
+    ids
+  end
+
   def add_polls_by_discussion_id(discussion_ids)
     return [] if discussion_ids.empty?
     return [] if exclude_types.include?('poll')
@@ -190,7 +217,7 @@ class RecordCache
     scope[:events_by_id] ||= {}
     parent_ids = []
     Event.where(id: event_ids).each do |event|
-      user_ids.push event.user_id if event.user.id
+      user_ids.push event.user_id if event.user_id
       parent_ids.push(event.parent_id) if event.parent_id
       scope[:events_by_id][event.id] = event
     end

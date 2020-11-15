@@ -17,8 +17,7 @@ class API::GroupsController < API::RestfulController
   def show
     self.resource = load_and_authorize(:group)
     accept_pending_membership
-    cache = RecordCache.for_groups(Array(resource.id), current_user.id)
-    respond_with_resource(scope: {cache: cache})
+    respond_with_resource
   end
 
   def index
@@ -49,6 +48,12 @@ class API::GroupsController < API::RestfulController
   end
 
   private
+
+  def default_scope
+    self.collection = Group.where(id: resource.id) if resource
+    super.merge({cache: RecordCache.for_groups(collection, current_user.id, exclude_types)})
+  end
+
   def ensure_photo_params
     params.require(:file)
     raise ActionController::UnpermittedParameters.new([:kind]) unless ['logo', 'cover_photo'].include? params.require(:kind)

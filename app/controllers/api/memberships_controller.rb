@@ -71,6 +71,11 @@ class API::MembershipsController < API::RestfulController
     ['memberships.created_at', 'memberships.created_at desc', 'users.name', 'admin desc', 'accepted_at desc', 'accepted_at']
   end
 
+  def default_scope
+    self.collection = Memberships.where(id: resource.id) if resource
+    super.merge(cache: RecordCache.for_memberships(collection, exclude_types))
+  end
+
   def index_scope
     default_scope.merge({ include_email: model.admins.exists?(current_user.id), include_inviter: true })
   end
