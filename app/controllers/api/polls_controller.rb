@@ -41,7 +41,7 @@ class API::PollsController < API::RestfulController
   private
   def default_scope
     col = collection || Poll.where(id: resource.id)
-    cache = RecordCache.for_polls(col, current_user, exclude_types)
+    cache = RecordCache.for_polls(col, current_user.id, exclude_types)
     super.merge(cache: cache)
   end
 

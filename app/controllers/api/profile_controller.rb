@@ -7,7 +7,7 @@ class API::ProfileController < API::RestfulController
   def groups
     self.collection = GroupQuery.visible_to(user: current_user)
 
-    cache = RecordCache.for_groups(collection.pluck(:id), current_user.id, exclude_types)
+    cache = RecordCache.for_groups(collection, current_user.id, exclude_types)
 
     respond_with_collection serializer: GroupSerializer, root: :groups, scope: {cache: cache}
   end

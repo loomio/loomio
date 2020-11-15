@@ -73,7 +73,7 @@ class API::MembershipsController < API::RestfulController
 
   def default_scope
     self.collection = Memberships.where(id: resource.id) if resource
-    super.merge(cache: RecordCache.for_memberships(collection, exclude_types))
+    super.merge(cache: RecordCache.for_memberships(collection, current_user.id, exclude_types))
   end
 
   def index_scope

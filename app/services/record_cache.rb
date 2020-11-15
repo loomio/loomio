@@ -19,7 +19,23 @@ class RecordCache
     end
   end
 
-  def self.for_reactions(collection)
+  def self.for_collection(collection, user_id)
+    case collection.first.class
+    when NilClass then []
+    when Discussion then for_discussions(collection, user_id)
+    when Reaction then for_reactions(collection, user_id)
+    when Notification then for_notifications(collection, user_id)
+    when Group then for_groups(collection, user_id)
+    when Event then for_events(collection, user_id)
+    when Membership then for_memberships(collection, user_id)
+    when Poll then for_polls(collection, user_id)
+    when Stance then for_stances(collection, user_id)
+    else
+      raise "unhanded collection item class: #{collection.first.class}"
+    end
+  end
+
+  def self.for_reactions(collection, user_id, exclude_types = [])
     obj = new([])
     puts "!!!!!!notification colleciton started!!!!!!!!!"
     obj.add_users_by_id(collection.map(&:user_id))
@@ -27,7 +43,7 @@ class RecordCache
     obj
   end
 
-  def self.for_notifications(collection, exclude_types)
+  def self.for_notifications(collection, user_id, exclude_types = [])
     obj = new(exclude_types)
     puts "!!!!!!notification colleciton started!!!!!!!!!"
     obj.add_events_by_id(collection.map(&:event_id))
@@ -36,16 +52,16 @@ class RecordCache
     obj
   end
 
-  def self.for_groups(group_ids, user_id, exclude_types)
+  def self.for_groups(collection, user_id, exclude_types = [])
     obj = new(exclude_types)
-    all_group_ids = obj.add_groups_by_id(group_ids)
+    all_group_ids = obj.add_groups_by_id(collection.map(&:id))
     obj.add_memberships_by_group_id(all_group_ids, user_id)
     obj.add_users_by_id
     puts "!!!!!!group colleciton loaded!!!!!!!!!"
     obj
   end
 
-  def self.for_memberships(collection, exclude_types)
+  def self.for_memberships(collection, user_id, exclude_types = [])
     obj = new(exclude_types)
     obj.add_groups_by_id(collection.map(&:group_id))
     obj.add_memberships_by_id(collection)
@@ -54,7 +70,7 @@ class RecordCache
     obj
   end
 
-  def self.for_events(collection, current_user, exclude_types)
+  def self.for_events(collection, user_id, exclude_types = [])
     obj = new(exclude_types)
 
     discussion_ids = []
@@ -76,12 +92,12 @@ class RecordCache
     obj.add_outcomes_by_poll_id(poll_ids)
     obj.add_poll_options_by_poll_id(poll_ids)
     obj.add_groups_by_id(all_group_ids)
-    obj.add_memberships_by_group_id(all_group_ids, current_user.id)
+    obj.add_memberships_by_group_id(all_group_ids, user_id)
     obj.add_discussions_by_id(discussion_ids)
     obj.add_comments_by_id(comment_ids)
     obj.add_stances_by_id(stance_ids)
-    obj.add_stances_by_poll_id(poll_ids, current_user.id)
-    obj.add_discussion_readers_by_discussion_id(discussion_ids, current_user.id)
+    obj.add_stances_by_poll_id(poll_ids, user_id)
+    obj.add_discussion_readers_by_discussion_id(discussion_ids, user_id)
     obj.add_events_by_kind_and_discussion_id('new_discussion', discussion_ids)
     obj.add_events_by_kind_and_discussion_id('discussion_forked', discussion_ids)
     obj.add_events_by_kind_and_poll_id('poll_created', poll_ids)
@@ -91,17 +107,17 @@ class RecordCache
     obj
   end
 
-  def self.for_discussions(collection, current_user, exclude_types)
+  def self.for_discussions(collection, user_id, exclude_types = [])
     obj = new(exclude_types)
     discussion_ids = collection.map(&:id)
     all_group_ids = obj.add_groups_by_id(collection.map(&:group_id))
     poll_ids = obj.add_polls_by_discussion_id(discussion_ids)
     obj.add_outcomes_by_poll_id(poll_ids)
     obj.add_poll_options_by_poll_id(poll_ids)
-    obj.add_memberships_by_group_id(all_group_ids, current_user.id)
+    obj.add_memberships_by_group_id(all_group_ids, user_id)
     obj.add_discussions_by_id(discussion_ids)
-    obj.add_stances_by_poll_id(poll_ids, current_user.id)
-    obj.add_discussion_readers_by_discussion_id(discussion_ids, current_user.id)
+    obj.add_stances_by_poll_id(poll_ids, user_id)
+    obj.add_discussion_readers_by_discussion_id(discussion_ids, user_id)
     obj.add_events_by_kind_and_discussion_id('new_discussion', discussion_ids)
     obj.add_events_by_kind_and_discussion_id('discussion_forked', discussion_ids)
     obj.add_events_by_kind_and_poll_id('poll_created', poll_ids)
@@ -111,7 +127,7 @@ class RecordCache
     obj
   end
 
-  def self.for_polls(collection, current_user, exclude_types)
+  def self.for_polls(collection, user_id, exclude_types = [])
     obj = new(exclude_types)
     poll_ids = collection.map(&:id)
     discussion_ids = collection.map(&:discussion_id).compact
@@ -119,10 +135,10 @@ class RecordCache
     obj.add_polls_by_id(poll_ids)
     obj.add_outcomes_by_poll_id(poll_ids)
     obj.add_poll_options_by_poll_id(poll_ids)
-    obj.add_memberships_by_group_id(all_group_ids, current_user.id)
+    obj.add_memberships_by_group_id(all_group_ids, user_id)
     obj.add_discussions_by_id(discussion_ids)
-    obj.add_stances_by_poll_id(poll_ids, current_user.id)
-    obj.add_discussion_readers_by_discussion_id(discussion_ids, current_user.id)
+    obj.add_stances_by_poll_id(poll_ids, user_id)
+    obj.add_discussion_readers_by_discussion_id(discussion_ids, user_id)
     obj.add_events_by_kind_and_discussion_id('new_discussion', discussion_ids)
     obj.add_events_by_kind_and_discussion_id('discussion_forked', discussion_ids)
     obj.add_events_by_kind_and_poll_id('poll_created', poll_ids)
@@ -132,7 +148,7 @@ class RecordCache
     obj
   end
 
-  def self.for_stances(collection, current_user, exclude_types)
+  def self.for_stances(collection, user_id, exclude_types = [])
     obj = new(exclude_types)
     stance_ids = collection.map(&:id)
     poll_ids = collection.map(&:poll_id).uniq.compact
@@ -186,9 +202,10 @@ class RecordCache
   # ScopeService.add_my_memberships_by_group_id(scope, groups.pluck(:parent_id))
   # ScopeService.add_groups_by_id(scope, discussions.pluck(:parent_id))
   def add_memberships_by_group_id(group_ids, user_id)
+    scope[:memberships_by_group_id] ||= {}
     return [] if group_ids.empty?
     return [] if exclude_types.include?('membership')
-    scope[:memberships_by_group_id] ||= {}
+    return [] if user_id.nil?
     ids = []
     Membership.where(group_id: group_ids, user_id: user_id).each do |m|
       ids.push m.id
@@ -309,10 +326,11 @@ class RecordCache
   end
 
   def add_stances_by_poll_id(poll_ids, user_id)
-    return [] if poll_ids.empty?
-    return [] if exclude_types.include?('stance')
     scope[:stances_by_id] ||= {}
     scope[:stances_by_poll_id] ||= {}
+    return [] if user_id.nil?
+    return [] if poll_ids.empty?
+    return [] if exclude_types.include?('stance')
     user_ids.push user_id
     ids = []
     Stance.where(poll_id: poll_ids, participant_id: user_id).each do |stance|
@@ -324,9 +342,10 @@ class RecordCache
   end
 
   def add_discussion_readers_by_discussion_id(discussion_ids, user_id)
-    return [] if discussion_ids.empty?
-    # return [] if exclude_types.include?('discussion')
     scope[:discussion_readers_by_discussion_id] ||= {}
+    return [] if discussion_ids.empty?
+    return [] if user_id.nil?
+    # return [] if exclude_types.include?('discussion')
     ids = []
     user_ids.push user_id
     DiscussionReader.

@@ -13,7 +13,7 @@ class API::ReactionsController < API::RestfulController
 
   private
   def default_scope
-    super.merge(cache: RecordCache.for_reactions(collection))
+    super.merge(cache: RecordCache.for_reactions(collection, current_user.id))
   end
 
   def accessible_records

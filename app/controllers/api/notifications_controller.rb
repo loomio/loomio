@@ -16,6 +16,6 @@ class API::NotificationsController < API::RestfulController
   end
 
   def default_scope
-    super.merge(cache: RecordCache.for_notifications(collection, exclude_types))
+    super.merge(cache: RecordCache.for_notifications(collection, current_user.id, exclude_types))
   end
 end

@@ -128,7 +128,7 @@ class API::DiscussionsController < API::RestfulController
 
   def default_scope
     self.collection = Discussion.where(id: resource.id) if resource
-    cache = RecordCache.for_discussions(collection, current_user, exclude_types)
+    cache = RecordCache.for_discussions(collection, current_user.id, exclude_types)
     super.merge(cache: cache)
   end
 
