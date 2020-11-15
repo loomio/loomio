@@ -127,7 +127,7 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def include_inviter?
-    include_type?('inviter')
+    include_type?('user') && include_type?('inviter')
   end
 
   def include_outcome?

@@ -20,18 +20,17 @@ class RecordCache
   end
 
   def self.for_collection(collection, user_id)
-    case collection.first.class.to_s
-    when 'NilClass' then []
-    when 'Discussion' then for_discussions(collection, user_id)
-    when 'Reaction' then for_reactions(collection, user_id)
-    when 'Notification' then for_notifications(collection, user_id)
-    when 'Group' then for_groups(collection, user_id)
-    when 'Event' then for_events(collection, user_id)
-    when 'Membership' then for_memberships(collection, user_id)
-    when 'Poll' then for_polls(collection, user_id)
-    when 'Stance' then for_stances(collection, user_id)
+    return unless item = collection.first
+    if item.is_a? Discussion then for_discussions(collection, user_id)
+    elsif item.is_a? Reaction then for_reactions(collection, user_id)
+    elsif item.is_a? Notification then for_notifications(collection, user_id)
+    elsif item.is_a? Group then for_groups(collection, user_id)
+    elsif item.is_a? Event then for_events(collection, user_id)
+    elsif item.is_a? Membership then for_memberships(collection, user_id)
+    elsif item.is_a? Poll then for_polls(collection, user_id)
+    elsif item.is_a? Stance then for_stances(collection, user_id)
     else
-      raise "unhanded collection item class: #{collection.first.class}"
+      raise "unrecognised item: #{item.class}"
     end
   end
 
@@ -155,6 +154,7 @@ class RecordCache
 
   def add_users_by_id(ids = [])
     scope[:users_by_id] ||= {}
+    return if exclude_types.include?('user')
     User.where(id: ids.concat(user_ids).compact.uniq).each do |user|
       scope[:users_by_id][user.id] = user
     end
@@ -303,6 +303,7 @@ class RecordCache
       user_ids.push stance.participant_id
       scope[:stances_by_id][stance.id] = stance
     end
+    add_stance_choices_by_stance_id(stance_ids)
   end
 
   def add_stance_choices_by_stance_id(stance_ids)
@@ -328,6 +329,7 @@ class RecordCache
       scope[:stances_by_id][stance.id] = stance
       scope[:stances_by_poll_id][stance.poll_id] = stance
     end
+    add_stance_choices_by_stance_id(ids)
     ids
   end
 

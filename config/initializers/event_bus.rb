@@ -33,9 +33,8 @@ EventBus.configure do |config|
                 'discussion_dismiss',
                 'discussion_mark_as_seen') do |reader|
     collection = Discussion.where(id: reader.discussion_id)
-    MessageChannelService.publish_models(reader.discussion,
+    MessageChannelService.publish_models([reader.discussion],
                                          serializer: DiscussionSerializer,
-                                         scope: ScopeLoader.for_discussion_collection(collection, reader.user),
                                          root: :discussions,
                                          user_id: reader.user_id)
   end

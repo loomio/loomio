@@ -21,6 +21,7 @@ class Events::BaseSerializer < ApplicationSerializer
     when 'Poll' then cache_fetch(:polls_by_id, object.eventable_id)
     when 'Comment' then cache_fetch(:comments_by_id, object.eventable_id)
     when 'Stance' then cache_fetch(:stances_by_id, object.eventable_id)
+    when 'Outcome' then cache_fetch(:outcomes_by_id, object.eventable_id)
     else
       raise "waht is it? #{object.eventable}"
       object.eventable
