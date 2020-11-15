@@ -27,7 +27,7 @@ class API::EventsController < API::RestfulController
   private
 
   def default_scope
-    cache = RecordCache.for_events(collection, @discussion.id, current_user, exclude_types)
+    cache = RecordCache.for_events(collection, current_user, exclude_types)
     super.merge(cache: cache)
   end
 

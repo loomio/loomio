@@ -19,10 +19,18 @@ class RecordCache
     end
   end
 
+  def self.for_reactions(collection)
+    obj = new([])
+    puts "!!!!!!notification colleciton started!!!!!!!!!"
+    obj.add_users_by_id(collection.map(&:user_id))
+    puts "!!!!!!notification colleciton loaded!!!!!!!!!"
+    obj
+  end
+
   def self.for_notifications(collection, exclude_types)
     obj = new(exclude_types)
     puts "!!!!!!notification colleciton started!!!!!!!!!"
-    obj.add_events_by_id(collection.pluck(:event_id))
+    obj.add_events_by_id(collection.map(&:event_id))
     # obj.add_users_by_id(collection.pluck(:user_id).uniq)
     puts "!!!!!!notification colleciton loaded!!!!!!!!!"
     obj
@@ -46,16 +54,25 @@ class RecordCache
     obj
   end
 
-  def self.for_events(collection, discussion_id, current_user, exclude_types)
+  def self.for_events(collection, current_user, exclude_types)
     obj = new(exclude_types)
-    discussion_ids = [discussion_id]
+
+    discussion_ids = []
+    comment_ids = []
+    stance_ids = []
+    collection.each do |e|
+      discussion_ids.push e.discussion_id
+      comment_ids.push e.eventable_id if e.eventable_type == 'Comment'
+      stance_ids.push e.eventable_id if e.eventable_type == 'Stance'
+    end
+    # discussion_ids = collection.map(&:discussion_id).compact.uniq
     group_ids = Discussion.where(id: discussion_ids).pluck(:group_id)
-    comment_ids = collection.where(eventable_type: 'Comment').except(:order).pluck(:eventable_id)
-    stance_ids = collection.where(eventable_type: 'Stance').except(:order).pluck(:eventable_id)
+    # comment_ids = collection.where(eventable_type: 'Comment').map(&:eventable_id)
+    # stance_ids = collection.where(eventable_type: 'Stance').map(&:eventable_id)
 
     all_group_ids = obj.add_groups_by_id(group_ids)
     poll_ids = obj.add_polls_by_discussion_id(discussion_ids)
-    obj.add_events_by_id(collection.pluck(:parent_id))
+    obj.add_events_by_id(collection.map(&:parent_id))
     obj.add_outcomes_by_poll_id(poll_ids)
     obj.add_poll_options_by_poll_id(poll_ids)
     obj.add_groups_by_id(all_group_ids)

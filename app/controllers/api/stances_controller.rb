@@ -59,7 +59,7 @@ class API::StancesController < API::RestfulController
   end
 
   def exclude_types
-    %w[poll group discussion]
+    %w[group discussion]
   end
 
   def default_scope
@@ -68,7 +68,7 @@ class API::StancesController < API::RestfulController
   end
 
   def accessible_records
-    load_and_authorize(:poll).stances.latest.includes(:participant)
+    load_and_authorize(:poll).stances.latest
   end
 
   def valid_orders

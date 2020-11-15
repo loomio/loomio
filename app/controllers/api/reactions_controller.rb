@@ -12,6 +12,9 @@ class API::ReactionsController < API::RestfulController
   end
 
   private
+  def default_scope
+    super.merge(cache: RecordCache.for_reactions(collection))
+  end
 
   def accessible_records
     current_user.ability.authorize!(:show, reactable).reactions
