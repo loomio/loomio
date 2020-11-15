@@ -48,14 +48,15 @@ module HasRichText
     AppConfig.doctypes.detect{ |type| /#{type['regex']}/.match(name) }['icon']
   end
 
-  def self.assign_attributes_and_update_files(model, params)
+  def self.assign_attributes_and_update_files(model, params, whitelist = [])
+    params = params.with_indifferent_access
     model.files.each do |file|
       file.purge_later unless Array(params[:files]).include? file.signed_id
     end
     existing_ids = model.files.map(&:signed_id)
     params[:files] = Array(params[:files]).filter {|id| !existing_ids.include?(id) }
     model.reload
-    model.assign_attributes(API::SnorlaxBase.filter_params(model.class, params))
+    model.assign_attributes(API::SnorlaxBase.filter_params(model.class, params, whitelist))
   end
 
   private
