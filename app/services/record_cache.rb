@@ -1,7 +1,6 @@
 class RecordCache
   attr_accessor :scope
   attr_accessor :exclude_types
-  attr_accessor :user_ids
 
   def initialize(exclude_types)
     @scope = {}
@@ -69,10 +68,13 @@ class RecordCache
     discussion_ids = []
     comment_ids = []
     stance_ids = []
+    outcome_ids = []
     collection.each do |e|
       discussion_ids.push e.discussion_id
       comment_ids.push e.eventable_id if e.eventable_type == 'Comment'
       stance_ids.push e.eventable_id if e.eventable_type == 'Stance'
+      discussion_ids.push e.eventable_id if e.eventable_type == 'Discussion'
+      outcome_ids.push e.eventable_id if e.eventable_type == 'Outcome'
     end
     # discussion_ids = collection.map(&:discussion_id).compact.uniq
     group_ids = Discussion.where(id: discussion_ids).pluck(:group_id)
@@ -148,14 +150,14 @@ class RecordCache
     obj.add_stance_choices_by_stance_id(stance_ids)
     obj.add_events_by_kind_and_poll_id('poll_created', poll_ids)
     obj.add_outcomes_by_poll_id(poll_ids)
-    obj.add_users_by_id
+    obj.add_users_by_id(collection.map(&:participant_id).compact)
     obj
   end
 
   def add_users_by_id(ids = [])
     scope[:users_by_id] ||= {}
     return if exclude_types.include?('user')
-    User.where(id: ids.concat(user_ids).compact.uniq).each do |user|
+    User.where(id: ids.concat(@user_ids).compact.uniq).each do |user|
       scope[:users_by_id][user.id] = user
     end
   end
@@ -172,7 +174,7 @@ class RecordCache
     parent_ids = []
     Group.where(id: group_ids).each do |group|
       ids.push group.id
-      user_ids.push group.creator_id
+      @user_ids.push group.creator_id
       parent_ids.push group.parent_id if group.parent_id
       scope[:groups_by_id][group.id] = group
     end
@@ -199,8 +201,8 @@ class RecordCache
     ids = []
     Membership.where(group_id: group_ids, user_id: user_id).each do |m|
       ids.push m.id
-      user_ids.push m.user_id
-      user_ids.push m.inviter_id if m.inviter_id
+      @user_ids.push m.user_id
+      @user_ids.push m.inviter_id if m.inviter_id
       scope[:memberships_by_group_id][m.group_id] = m
     end
     ids
@@ -212,8 +214,8 @@ class RecordCache
     ids = []
     collection.each do |m|
       ids.push m.id
-      user_ids.push m.user_id
-      user_ids.push m.inviter_id if m.inviter_id
+      @user_ids.push m.user_id
+      @user_ids.push m.inviter_id if m.inviter_id
       scope[:memberships_by_id][m.id] = m
     end
     ids
@@ -227,7 +229,7 @@ class RecordCache
     ids = []
     Poll.where(discussion_id: discussion_ids).each do |poll|
       ids.push poll.id
-      user_ids.push poll.author_id
+      @user_ids.push poll.author_id
       scope[:polls_by_id][poll.id] = poll
       scope[:polls_by_discussion_id][poll.discussion_id] ||= []
       scope[:polls_by_discussion_id][poll.discussion_id].push poll
@@ -241,7 +243,7 @@ class RecordCache
     scope[:events_by_id] ||= {}
     parent_ids = []
     Event.where(id: event_ids).each do |event|
-      user_ids.push event.user_id if event.user_id
+      @user_ids.push event.user_id if event.user_id
       parent_ids.push(event.parent_id) if event.parent_id
       scope[:events_by_id][event.id] = event
     end
@@ -255,7 +257,7 @@ class RecordCache
     scope[:comments_by_id] ||= {}
     parent_ids = []
     Comment.where(id: comment_ids).each do |comment|
-      user_ids.push comment.user_id
+      @user_ids.push comment.user_id
       scope[:comments_by_id][comment.id] = comment
       parent_ids.push comment.parent_id if comment.parent_id
     end
@@ -268,7 +270,7 @@ class RecordCache
     scope[:outcomes_by_id] ||= {}
     scope[:outcomes_by_poll_id] ||= {}
     Outcome.where(poll_id: poll_ids).each do |outcome|
-      user_ids.push outcome.author_id
+      @user_ids.push outcome.author_id
       scope[:outcomes_by_id][outcome.id] = outcome
       scope[:outcomes_by_poll_id][outcome.poll_id] = outcome if outcome.latest
     end
@@ -279,8 +281,18 @@ class RecordCache
     return [] if exclude_types.include?('poll')
     scope[:polls_by_id] ||= {}
     Poll.where(id: poll_ids).each do |poll|
-      user_ids.push poll.author_id
+      @user_ids.push poll.author_id
       scope[:polls_by_id][poll.id] = poll
+    end
+  end
+
+  def add_outcomes_by_id(outcome_ids)
+    return [] if outcome_ids.empty?
+    return [] if exclude_types.include?('outcome')
+    scope[:outcomes_by_id] ||= {}
+    Outcome.where(id: outcome_ids).each do |outcome|
+      @user_ids.push outcome.author_id
+      scope[:outcomes_by_id][outcome.id] = outcome
     end
   end
 
@@ -300,7 +312,7 @@ class RecordCache
     scope[:stances_by_id] ||= {}
     scope[:users_by_id] ||= {}
     Stance.where(id: stance_ids).each do |stance|
-      user_ids.push stance.participant_id
+      @user_ids.push stance.participant_id
       scope[:stances_by_id][stance.id] = stance
     end
     add_stance_choices_by_stance_id(stance_ids)
@@ -322,7 +334,7 @@ class RecordCache
     return [] if user_id.nil?
     return [] if poll_ids.empty?
     return [] if exclude_types.include?('stance')
-    user_ids.push user_id
+    @user_ids.push user_id
     ids = []
     Stance.where(poll_id: poll_ids, participant_id: user_id).each do |stance|
       ids.push stance
@@ -339,7 +351,7 @@ class RecordCache
     return [] if user_id.nil?
     # return [] if exclude_types.include?('discussion')
     ids = []
-    user_ids.push user_id
+    @user_ids.push user_id
     DiscussionReader.
                      where(discussion_id: discussion_ids, user_id: user_id).each do |dr|
       ids.push dr.id
@@ -355,7 +367,7 @@ class RecordCache
     scope[:events_by_discussion_id][kind] ||= {}
     ids = []
     Event.where(kind: kind, eventable_id: discussion_ids).each do |event|
-      user_ids.push event.user_id
+      @user_ids.push event.user_id
       scope[:events_by_discussion_id][kind][event.eventable_id] = event
     end
     ids
@@ -368,7 +380,7 @@ class RecordCache
     scope[:events_by_poll_id][kind] ||= {}
     ids = []
     Event.where(kind: kind, eventable_id: poll_ids).each do |event|
-      user_ids.push event.user_id
+      @user_ids.push event.user_id
       scope[:events_by_poll_id][kind][event.eventable_id] = event
     end
     ids
@@ -378,7 +390,7 @@ class RecordCache
     return [] if discussion_ids.empty?
     scope[:discussions_by_id] ||= {}
     Discussion.where(id: discussion_ids).each do |d|
-      user_ids.push d.author_id
+      @user_ids.push d.author_id
       scope[:discussions_by_id][d.id] = d
     end
   end
