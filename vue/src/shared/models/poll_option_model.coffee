@@ -18,6 +18,3 @@ export default class PollOptionModel extends BaseModel
 
   beforeRemove: ->
     @stances().each (stance) -> stance.remove()
-
-  color: ->
-    AppConfig.pollColors[@poll().pollType][@priority]

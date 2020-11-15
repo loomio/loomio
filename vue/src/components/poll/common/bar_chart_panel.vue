@@ -16,7 +16,7 @@ export default
       return unless max_val > 0
       "#{100 * @countFor(option) / max_val}%"
     backgroundImageFor: (option) ->
-      "url(/img/poll_backgrounds/#{option.color().replace('#','')}.png)"
+      "url(/img/poll_backgrounds/#{option.color.replace('#','')}.png)"
     styleData: (option) ->
       'background-image': @backgroundImageFor(option)
       'background-size': "#{@percentageFor(option)} 100%"
