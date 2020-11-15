@@ -212,7 +212,7 @@ class DiscussionService
     new_discussion_readers = users.map do |user|
       DiscussionReader.new(user: user,
                            discussion: discussion,
-                           inviter: actor,
+                           inviter: if volumes[user.id] then nil else actor end,
                            volume: volumes[user.id] || DiscussionReader.volumes[:normal])
     end
 
