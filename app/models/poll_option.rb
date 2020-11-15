@@ -6,7 +6,6 @@ class PollOption < ApplicationRecord
 
   has_many :stance_choices, dependent: :destroy
   has_many :stances, through: :stance_choices
-  scope :with_serializer_includes, -> {}
 
   def total_score
     @total_score ||= stance_choices.latest.sum(:score)

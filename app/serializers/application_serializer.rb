@@ -17,6 +17,27 @@ class ApplicationSerializer < ActiveModel::Serializer
     cache_fetch(:discussions_by_id, object.discussion_id) { nil }
   end
 
+  def author
+    cache_fetch(:users_by_id, object.author_id)
+  end
+
+  def actor
+    cache_fetch(:users_by_id, object.actor_id) { nil }
+  end
+
+  def user
+    cache_fetch(:users_by_id, object.user_id) { nil }
+  end
+
+  def inviter
+    cache_fetch(:users_by_id, object.inviter_id) { nil }
+  end
+
+  def creator
+    raise "this aint used is it?"
+    cache_fetch(:users_by_id, object.creator_id) { nil }
+  end
+
   def self.hide_when_discarded(names)
     Array(names).each do |name|
       define_method name do

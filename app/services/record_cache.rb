@@ -1,10 +1,12 @@
 class RecordCache
   attr_accessor :scope
   attr_accessor :exclude_types
+  attr_accessor :user_ids
 
   def initialize
     @scope = {}
     @exclude_types = []
+    @user_ids = []
   end
 
   def fetch(key_or_keys, id)
@@ -17,11 +19,11 @@ class RecordCache
     end
   end
 
-
   def self.for_groups(group_ids, user_id)
     obj = new
     all_group_ids = obj.add_groups_by_id(group_ids)
     obj.add_memberships_by_group_id(all_group_ids, user_id)
+    obj.add_users_by_id
     puts "!!!!!!group colleciton loaded!!!!!!!!!"
     obj
   end
@@ -50,6 +52,7 @@ class RecordCache
     obj.add_events_by_kind_and_discussion_id('discussion_forked', discussion_ids)
     obj.add_events_by_kind_and_poll_id('poll_created', poll_ids)
     obj.add_subscriptions_by_group_id(all_group_ids)
+    obj.add_users_by_id
     puts "!!!!!!event colleciton loaded!!!!!!!!!"
     obj
   end
@@ -70,6 +73,7 @@ class RecordCache
     obj.add_events_by_kind_and_discussion_id('discussion_forked', discussion_ids)
     obj.add_events_by_kind_and_poll_id('poll_created', poll_ids)
     obj.add_subscriptions_by_group_id(all_group_ids)
+    obj.add_users_by_id
     puts "!!!!!!discussion colleciton loaded!!!!!!!!!"
     obj
   end
@@ -91,6 +95,7 @@ class RecordCache
     obj.add_events_by_kind_and_discussion_id('discussion_forked', discussion_ids)
     obj.add_events_by_kind_and_poll_id('poll_created', poll_ids)
     obj.add_subscriptions_by_group_id(all_group_ids)
+    obj.add_users_by_id
     puts "!!!!!!poll colleciton loaded!!!!!!!!!"
     obj
   end
@@ -106,8 +111,16 @@ class RecordCache
     obj.add_stance_choices_by_stance_id(stance_ids)
     obj.add_events_by_kind_and_poll_id('poll_created', poll_ids)
     obj.add_outcomes_by_poll_id(poll_ids)
+    obj.add_users_by_id
     puts "!!!!!!stance colleciton loaded!!!!!!!!!"
     obj
+  end
+
+  def add_users_by_id
+    scope[:users_by_id] ||= {}
+    User.where(id: user_ids.compact.uniq).each do |user|
+      scope[:users_by_id][user.id] = user
+    end
   end
 
   # in controller
@@ -120,8 +133,9 @@ class RecordCache
     return [] if group_ids.empty?
     ids = []
     parent_ids = []
-    Group.with_serializer_includes.where(id: group_ids).each do |group|
+    Group.where(id: group_ids).each do |group|
       ids.push group.id
+      user_ids.push group.creator_id
       parent_ids.push group.parent_id if group.parent_id
       scope[:groups_by_id][group.id] = group
     end
@@ -145,8 +159,10 @@ class RecordCache
     return [] if exclude_types.include?('membership')
     scope[:memberships_by_group_id] ||= {}
     ids = []
-    Membership.with_serializer_includes.where(group_id: group_ids, user_id: user_id).each do |m|
+    Membership.where(group_id: group_ids, user_id: user_id).each do |m|
       ids.push m.id
+      user_ids.push m.user_id
+      user_ids.push m.inviter_id if m.inviter_id
       scope[:memberships_by_group_id][m.group_id] = m
     end
     ids
@@ -158,8 +174,9 @@ class RecordCache
     scope[:polls_by_discussion_id] ||= {}
     scope[:polls_by_id] ||= {}
     ids = []
-    Poll.with_serializer_includes.where(discussion_id: discussion_ids).each do |poll|
+    Poll.where(discussion_id: discussion_ids).each do |poll|
       ids.push poll.id
+      user_ids.push poll.author_id
       scope[:polls_by_id][poll.id] = poll
       scope[:polls_by_discussion_id][poll.discussion_id] ||= []
       scope[:polls_by_discussion_id][poll.discussion_id].push poll
@@ -172,7 +189,8 @@ class RecordCache
     return [] if exclude_types.include?('event')
     scope[:events_by_id] ||= {}
     parent_ids = []
-    Event.with_serializer_includes.where(id: event_ids).each do |event|
+    Event.where(id: event_ids).each do |event|
+      user_ids.push event.user_id if event.user.id
       parent_ids.push(event.parent_id) if event.parent_id
       scope[:events_by_id][event.id] = event
     end
@@ -185,7 +203,8 @@ class RecordCache
     return [] if exclude_types.include?('comment')
     scope[:comments_by_id] ||= {}
     parent_ids = []
-    Comment.with_serializer_includes.where(id: comment_ids).each do |comment|
+    Comment.where(id: comment_ids).each do |comment|
+      user_ids.push comment.user_id
       scope[:comments_by_id][comment.id] = comment
       parent_ids.push comment.parent_id if comment.parent_id
     end
@@ -197,7 +216,8 @@ class RecordCache
     return [] if exclude_types.include?('outcome')
     scope[:outcomes_by_id] ||= {}
     scope[:outcomes_by_poll_id] ||= {}
-    Outcome.with_serializer_includes.where(poll_id: poll_ids).each do |outcome|
+    Outcome.where(poll_id: poll_ids).each do |outcome|
+      user_ids.push outcome.author_id
       scope[:outcomes_by_id][outcome.id] = outcome
       scope[:outcomes_by_poll_id][outcome.poll_id] = outcome if outcome.latest
     end
@@ -207,7 +227,8 @@ class RecordCache
     return [] if poll_ids.empty?
     return [] if exclude_types.include?('poll')
     scope[:polls_by_id] ||= {}
-    Poll.with_serializer_includes.where(id: poll_ids).each do |poll|
+    Poll.where(id: poll_ids).each do |poll|
+      user_ids.push poll.author_id
       scope[:polls_by_id][poll.id] = poll
     end
   end
@@ -216,7 +237,7 @@ class RecordCache
     return [] if poll_ids.empty?
     return [] if exclude_types.include?('poll_option')
     scope[:poll_options_by_poll_id] ||= {}
-    PollOption.with_serializer_includes.where(poll_id: poll_ids).each do |poll_option|
+    PollOption.where(poll_id: poll_ids).each do |poll_option|
       scope[:poll_options_by_poll_id][poll_option.poll_id] ||= []
       scope[:poll_options_by_poll_id][poll_option.poll_id].push(poll_option)
     end
@@ -227,9 +248,9 @@ class RecordCache
     return [] if exclude_types.include?('stance')
     scope[:stances_by_id] ||= {}
     scope[:users_by_id] ||= {}
-    Stance.with_serializer_includes.where(id: stance_ids).each do |stance|
+    Stance.where(id: stance_ids).each do |stance|
+      user_ids.push stance.participant_id
       scope[:stances_by_id][stance.id] = stance
-      scope[:users_by_id][stance.participant_id] = stance.participant(true)
     end
   end
 
@@ -248,8 +269,9 @@ class RecordCache
     return [] if exclude_types.include?('stance')
     scope[:stances_by_id] ||= {}
     scope[:stances_by_poll_id] ||= {}
+    user_ids.push user_id
     ids = []
-    Stance.with_serializer_includes.where(poll_id: poll_ids, participant_id: user_id).each do |stance|
+    Stance.where(poll_id: poll_ids, participant_id: user_id).each do |stance|
       ids.push stance
       scope[:stances_by_id][stance.id] = stance
       scope[:stances_by_poll_id][stance.poll_id] = stance
@@ -262,7 +284,8 @@ class RecordCache
     # return [] if exclude_types.include?('discussion')
     scope[:discussion_readers_by_discussion_id] ||= {}
     ids = []
-    DiscussionReader.with_serializer_includes.
+    user_ids.push user_id
+    DiscussionReader.
                      where(discussion_id: discussion_ids, user_id: user_id).each do |dr|
       ids.push dr.id
       scope[:discussion_readers_by_discussion_id][dr.discussion_id] = dr
@@ -276,7 +299,8 @@ class RecordCache
     scope[:events_by_discussion_id] ||= {}
     scope[:events_by_discussion_id][kind] ||= {}
     ids = []
-    Event.with_serializer_includes.where(kind: kind, eventable_id: discussion_ids).each do |event|
+    Event.where(kind: kind, eventable_id: discussion_ids).each do |event|
+      user_ids.push event.user_id
       scope[:events_by_discussion_id][kind][event.eventable_id] = event
     end
     ids
@@ -288,7 +312,8 @@ class RecordCache
     scope[:events_by_poll_id] ||= {}
     scope[:events_by_poll_id][kind] ||= {}
     ids = []
-    Event.with_serializer_includes.where(kind: kind, eventable_id: poll_ids).each do |event|
+    Event.where(kind: kind, eventable_id: poll_ids).each do |event|
+      user_ids.push event.user_id
       scope[:events_by_poll_id][kind][event.eventable_id] = event
     end
     ids
@@ -296,9 +321,9 @@ class RecordCache
 
   def add_discussions_by_id(discussion_ids)
     return [] if discussion_ids.empty?
-    # return [] if exclude_types.include?('discussion')
     scope[:discussions_by_id] ||= {}
-    Discussion.with_serializer_includes.where(id: discussion_ids).each do |d|
+    Discussion.where(id: discussion_ids).each do |d|
+      user_ids.push d.author_id
       scope[:discussions_by_id][d.id] = d
     end
   end

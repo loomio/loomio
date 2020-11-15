@@ -16,7 +16,6 @@ class OutcomeSerializer < ApplicationSerializer
              :secret_token,
              :versions_count
 
-  # has_one :poll_option, serializer: PollOptionSerializer, root: :poll_options
   has_one :author, serializer: AuthorSerializer, root: :users
 
   def custom_fields

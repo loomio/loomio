@@ -43,14 +43,6 @@ class Events::BaseSerializer < ApplicationSerializer
     object.kind == "discussion_moved" && object.custom_fields['source_group_id'].present?
   end
 
-  def actor_id
-    object.user_id
-  end
-
-  def actor
-    object.user || object.eventable&.user
-  end
-
   def pinned_title
     object.custom_fields['pinned_title']
   end

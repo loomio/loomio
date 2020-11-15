@@ -8,14 +8,17 @@ class DiscussionQuery
   end
 
   def self.dashboard(chain: start, user: )
-    chain = chain.where("discussions.group_id IN (#{user.groups.select(:id).to_sql}) OR
-                         discussions.id IN (#{user.guest_discussions.select(:id).to_sql})")
+    chain = chain.where("discussions.group_id IN (:group_ids) OR discussions.id IN (:discussion_ids)",
+                         group_ids: user.group_ids, discussion_ids: user.guest_discussion_ids)
+    # chain = chain.where("discussions.group_id IN (#{user.groups.select(:id).to_sql}) OR
+    #                      discussions.id IN (#{user.guest_discussions.select(:id).to_sql})")
   end
 
   def self.inbox(chain: start, user: )
+    # where("discussions.group_id IN (#{user.groups.select(:id).to_sql})
+    #        OR discussions.id IN (#{user.guest_discussions.select(:id).to_sql})").
     chain.joins("LEFT OUTER JOIN discussion_readers dr ON discussions.id = dr.discussion_id AND dr.user_id = #{user.id}").
-          where("discussions.group_id IN (#{user.groups.select(:id).to_sql})
-                 OR discussions.id IN (#{user.guest_discussions.select(:id).to_sql})").
+          where("discussions.group_id IN (:group_ids) OR discussions.id IN (:discussion_ids)", group_ids: user.group_ids, discussion_ids: user.guest_discussion_ids).
           where('dr.dismissed_at IS NULL OR (dr.dismissed_at < discussions.last_activity_at)').
           where('dr.last_read_at IS NULL OR (dr.last_read_at < discussions.last_activity_at)')
   end
