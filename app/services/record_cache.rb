@@ -20,16 +20,16 @@ class RecordCache
   end
 
   def self.for_collection(collection, user_id)
-    case collection.first.class
-    when NilClass then []
-    when Discussion then for_discussions(collection, user_id)
-    when Reaction then for_reactions(collection, user_id)
-    when Notification then for_notifications(collection, user_id)
-    when Group then for_groups(collection, user_id)
-    when Event then for_events(collection, user_id)
-    when Membership then for_memberships(collection, user_id)
-    when Poll then for_polls(collection, user_id)
-    when Stance then for_stances(collection, user_id)
+    case collection.first.class.to_s
+    when 'NilClass' then []
+    when 'Discussion' then for_discussions(collection, user_id)
+    when 'Reaction' then for_reactions(collection, user_id)
+    when 'Notification' then for_notifications(collection, user_id)
+    when 'Group' then for_groups(collection, user_id)
+    when 'Event' then for_events(collection, user_id)
+    when 'Membership' then for_memberships(collection, user_id)
+    when 'Poll' then for_polls(collection, user_id)
+    when 'Stance' then for_stances(collection, user_id)
     else
       raise "unhanded collection item class: #{collection.first.class}"
     end
