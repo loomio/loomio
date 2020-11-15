@@ -48,7 +48,7 @@ class UserMailer < BaseMailer
       or_subgroups: false).last_activity_after(@time_start)
     @groups = @user.groups.order(full_name: :asc)
 
-    @reader_cache = Caches::DiscussionReader.new(user: @user, parents: @discussions)
+    @cache = RecordCache.for_discussions(@discussions, user_id)
 
     @subject_key = "email.catch_up.#{frequency}_subject"
     @subject_params = { site_name: AppConfig.theme[:site_name] }

@@ -37,18 +37,14 @@ class RecordCache
 
   def self.for_reactions(collection, user_id, exclude_types = [])
     obj = new([])
-    puts "!!!!!!notification colleciton started!!!!!!!!!"
     obj.add_users_by_id(collection.map(&:user_id))
-    puts "!!!!!!notification colleciton loaded!!!!!!!!!"
     obj
   end
 
   def self.for_notifications(collection, user_id, exclude_types = [])
     obj = new(exclude_types)
-    puts "!!!!!!notification colleciton started!!!!!!!!!"
     obj.add_events_by_id(collection.map(&:event_id))
     # obj.add_users_by_id(collection.pluck(:user_id).uniq)
-    puts "!!!!!!notification colleciton loaded!!!!!!!!!"
     obj
   end
 
@@ -57,7 +53,6 @@ class RecordCache
     all_group_ids = obj.add_groups_by_id(collection.map(&:id))
     obj.add_memberships_by_group_id(all_group_ids, user_id)
     obj.add_users_by_id
-    puts "!!!!!!group colleciton loaded!!!!!!!!!"
     obj
   end
 
@@ -66,7 +61,6 @@ class RecordCache
     obj.add_groups_by_id(collection.map(&:group_id))
     obj.add_memberships_by_id(collection)
     obj.add_users_by_id
-    puts "!!!!!!membership colleciton loaded!!!!!!!!!"
     obj
   end
 
@@ -103,7 +97,6 @@ class RecordCache
     obj.add_events_by_kind_and_poll_id('poll_created', poll_ids)
     obj.add_subscriptions_by_group_id(all_group_ids)
     obj.add_users_by_id
-    puts "!!!!!!event colleciton loaded!!!!!!!!!"
     obj
   end
 
@@ -123,7 +116,6 @@ class RecordCache
     obj.add_events_by_kind_and_poll_id('poll_created', poll_ids)
     obj.add_subscriptions_by_group_id(all_group_ids)
     obj.add_users_by_id
-    puts "!!!!!!discussion colleciton loaded!!!!!!!!!"
     obj
   end
 
@@ -144,7 +136,6 @@ class RecordCache
     obj.add_events_by_kind_and_poll_id('poll_created', poll_ids)
     obj.add_subscriptions_by_group_id(all_group_ids)
     obj.add_users_by_id
-    puts "!!!!!!poll colleciton loaded!!!!!!!!!"
     obj
   end
 
@@ -159,7 +150,6 @@ class RecordCache
     obj.add_events_by_kind_and_poll_id('poll_created', poll_ids)
     obj.add_outcomes_by_poll_id(poll_ids)
     obj.add_users_by_id
-    puts "!!!!!!stance colleciton loaded!!!!!!!!!"
     obj
   end
 
