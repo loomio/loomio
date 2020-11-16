@@ -111,6 +111,7 @@ export default new class GroupService
       canPerform: ->
         AbilityService.canArchiveGroup(group)
       perform: ->
+        confirmText = group.handle || group.name.trim()
         openModal
           component: 'ConfirmModal'
           props:
@@ -119,8 +120,8 @@ export default new class GroupService
               text:
                 title:    'delete_group_modal.title'
                 helptext: 'delete_group_modal.body'
-                raw_confirm_text_placeholder: i18n.t('delete_group_modal.confirm', name: group.name)
-                confirm_text: group.name
+                raw_confirm_text_placeholder: i18n.t('delete_group_modal.confirm', name: confirmText)
+                confirm_text: confirmText
                 flash:    'delete_group_modal.success'
                 submit:   'delete_group_modal.title'
               redirect:   '/dashboard'
