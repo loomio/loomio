@@ -192,7 +192,7 @@ export default
         @linkUrl = "http://".concat(@linkUrl) unless @linkUrl.includes("://")
         command({ href: @linkUrl })
         @linkUrl = null
-      @linkDialogIsOpen = fal/isNewse
+      @linkDialogIsOpen = false
       @editor.focus()
 
     setIframeUrl: (command) ->
