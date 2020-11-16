@@ -61,12 +61,16 @@ class API::SnorlaxBase < ActionController::Base
     self.resource = resource_class.new(self.class.filter_params(resource_class, resource_params))
   end
 
-  def self.filter_params(resource_class, resource_params, whitelist = [])
+  def self.filter_params(resource_class, resource_params)
     newbie = resource_class.new
     attribute_names = resource_params.keys.filter do |k|
-      whitelist.map(&:to_sym).include?(k.to_sym) || newbie.respond_to?("#{k}=")
+      newbie.respond_to?("#{k}=")
     end.map(&:to_sym)
-    resource_params.slice(*attribute_names)
+    out = {}.with_indifferent_access
+    resource_params.each_pair do |k, v|
+      out[k] = v if attribute_names.include?(k.to_sym)
+    end
+    out
   end
 
   def instantiate_collection

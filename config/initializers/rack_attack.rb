@@ -32,7 +32,7 @@ class Rack::Attack
     comments: 100,
     reactions: 100,
     registrations: 10,
-    sessions: 100,
+    sessions: 10,
     contact_messages: 10,
     contact_requests: 10,
     discussion_readers: 1000
