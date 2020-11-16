@@ -52,6 +52,7 @@ export default
         collection: 'discussions'
         path: 'dashboard'
         params:
+          exclude_types: 'group'
           filter: @filter
           per: 30
 

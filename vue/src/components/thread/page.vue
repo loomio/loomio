@@ -39,7 +39,7 @@ export default
 
     init: ->
       Records.samlProviders.authenticateForDiscussion(@$route.params.key)
-      Records.discussions.findOrFetchById(@$route.params.key, exclude_types: 'poll outcome')
+      Records.discussions.findOrFetchById(@$route.params.key, exclude_types: 'poll outcome group')
       .then (discussion) =>
         @discussion = discussion
         ahoy.trackView

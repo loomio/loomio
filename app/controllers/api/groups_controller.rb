@@ -21,9 +21,15 @@ class API::GroupsController < API::RestfulController
   end
 
   def index
-    order_attributes = ['created_at', 'memberships_count']
-    order = (order_attributes.include? params[:order])? "groups.#{params[:order]} DESC" : 'groups.memberships_count DESC'
-    instantiate_collection { |collection| collection.search_for(params[:q]).order(order) }
+    if ids = params.fetch(:xids, '').split('x').map(&:to_i)
+      instantiate_collection do |collection|
+        collection = GroupQuery.visible_to(user: current_user, show_public: true).where(id: ids)
+      end
+    else
+      order_attributes = ['created_at', 'memberships_count']
+      order = (order_attributes.include? params[:order])? "groups.#{params[:order]} DESC" : 'groups.memberships_count DESC'
+      instantiate_collection { |collection| collection.search_for(params[:q]).order(order) }
+    end
     respond_with_collection
   end
 

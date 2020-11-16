@@ -2,13 +2,37 @@ require 'rails_helper'
 describe API::GroupsController do
 
   let(:user) { create :user }
-  let(:group) { create :group, creator: user }
-  let(:subgroup) { create :group, parent: group }
+  let(:group) { create :group, creator: user, is_visible_to_public: false }
+  let(:subgroup) { create :group, parent: group, is_visible_to_public: false, is_visible_to_parent_members: true }
+  let(:subgroup_hidden) { create :group, parent: group, is_visible_to_public: false, is_visible_to_parent_members: false }
   let(:discussion) { create :discussion, group: group }
-  let(:another_group) { create :group }
+  let(:guest_discussion) { create :discussion, group: guest_discussion_group}
+  let(:guest_discussion_group) { create :group, is_visible_to_public: false }
+  let(:another_discussion) { create :discussion, group: another_group }
+  let(:another_group) { create :group, is_visible_to_public: false }
+  let(:public_group) { create :group, is_visible_to_public: true }
 
   before do
     group.add_admin! user
+    DiscussionReader.create!(discussion_id: guest_discussion.id,
+                             user_id: user.id,
+                             inviter_id: guest_discussion.author_id)
+  end
+
+  describe 'index' do
+    before do
+      another_discussion
+      sign_in user
+    end
+
+    it 'returns groups by xids' do
+      # test discusison guest group fetch..
+      get :index, params: { xids: [group, subgroup, another_group, public_group, guest_discussion.group, another_discussion.group].map(&:id).join('x') }
+      expect(response.status).to eq 200
+      json = JSON.parse(response.body)
+      expect(json['groups'].map{|h| h['id']}).to include group.id, public_group.id, subgroup.id, guest_discussion.group_id
+      expect(json['groups'].map{|h| h['id']}).not_to include another_group.id, subgroup_hidden.id, another_discussion.group_id
+    end
   end
 
   describe 'export' do

@@ -4,11 +4,11 @@ class GroupQuery
   end
 
   def self.visible_to(user: LoggedOutUser.new, chain: start, show_public: false)
-    chain.published
-    .joins("LEFT OUTER JOIN memberships m on m.group_id = groups.id AND m.user_id = #{user.id || 0}")
-    .joins("LEFT OUTER JOIN memberships pm on pm.group_id = groups.parent_id AND pm.user_id = #{user.id || 0}")
-    .where("#{'groups.is_visible_to_public = true OR ' if show_public}
-            (m.id IS NOT NULL AND m.archived_at is null) OR
-            (pm.id IS NOT NULL AND groups.is_visible_to_parent_members = true)")
+    guest_discussion_group_ids = Discussion.where(id: user.guest_discussion_ids).pluck(:group_id)
+    group_ids = user.group_ids.concat(guest_discussion_group_ids)
+    chain.published.
+      where("#{'is_visible_to_public = true OR ' if show_public}
+            groups.id in (:group_ids) OR
+            (parent_id in (:group_ids) AND is_visible_to_parent_members = TRUE)", group_ids: group_ids)
   end
 end

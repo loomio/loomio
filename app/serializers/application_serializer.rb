@@ -54,6 +54,10 @@ class ApplicationSerializer < ActiveModel::Serializer
     !Array(scope[:exclude_types]).include?(type)
   end
 
+  def exclude_type?(type)
+    Array(scope[:exclude_types]).include?(type)
+  end
+
   def include_reactions?
     include_type?('reaction')
   end

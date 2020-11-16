@@ -15,6 +15,10 @@ class Events::BaseSerializer < ApplicationSerializer
     cache_fetch(:events_by_id, object.parent_id) { nil }
   end
 
+  def include_eventable?
+    !(object.kind == "new_discussion" && exclude_type?('discussion'))
+  end
+
   def eventable
     case object.eventable_type
     when 'Discussion' then cache_fetch(:discussions_by_id, object.eventable_id)

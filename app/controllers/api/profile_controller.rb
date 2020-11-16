@@ -9,7 +9,7 @@ class API::ProfileController < API::RestfulController
 
     cache = RecordCache.for_groups(collection, current_user.id, exclude_types)
 
-    respond_with_collection serializer: GroupSerializer, root: :groups, scope: {cache: cache}
+    respond_with_collection serializer: GroupSerializer, root: :groups, scope: {cache: cache, exclude_types: exclude_types}
   end
 
   def time_zones
