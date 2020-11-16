@@ -49,7 +49,6 @@ module HasRichText
   end
 
   def self.assign_attributes_and_update_files(model, params, whitelist = [])
-    params = params.with_indifferent_access
     model.files.each do |file|
       file.purge_later unless Array(params[:files]).include? file.signed_id
     end

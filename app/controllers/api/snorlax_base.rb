@@ -64,7 +64,7 @@ class API::SnorlaxBase < ActionController::Base
   def self.filter_params(resource_class, resource_params, whitelist = [])
     newbie = resource_class.new
     attribute_names = resource_params.keys.filter do |k|
-      whitelist.include?(k) || newbie.respond_to?("#{k}=")
+      whitelist.map(&:to_sym).include?(k.to_sym) || newbie.respond_to?("#{k}=")
     end.map(&:to_sym)
     resource_params.slice(*attribute_names)
   end
