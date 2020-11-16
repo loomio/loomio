@@ -63,12 +63,9 @@ class API::SnorlaxBase < ActionController::Base
 
   def self.filter_params(resource_class, resource_params)
     newbie = resource_class.new
-    attribute_names = resource_params.keys.filter do |k|
-      newbie.respond_to?("#{k}=")
-    end.map(&:to_sym)
     out = {}.with_indifferent_access
     resource_params.each_pair do |k, v|
-      out[k] = v if attribute_names.include?(k.to_sym)
+      out[k.to_sym] = v if newbie.respond_to?("#{k}=")
     end
     out
   end
