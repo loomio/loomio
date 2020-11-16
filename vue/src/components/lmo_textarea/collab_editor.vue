@@ -39,7 +39,7 @@ import {compact} from 'lodash'
 import TextHighlightBtn from './text_highlight_btn'
 import TextAlignBtn from './text_align_btn'
 
-import io from 'socket.io-client'
+# import io from 'socket.io-client'
 
 export default
   mixins: [CommonMentioning, HtmlMentioning, Attaching]
@@ -78,17 +78,17 @@ export default
 
   mounted: ->
     @expanded = Session.user().experiences['html-editor.expanded']
-
-    @socket = io(@tiptapAddress())
-      .on('init', (data) => @onInit(data))
-      .on('update', (data) =>
-        @editor.extensions.options.collaboration.update(data)
-        @editor.extensions.options.collaboration.updateCursors(data)
-      )
-      .on('getCount', (count) => @setCount(count))
-      .on('cursorupdate', (data) =>
-        this.editor.extensions.options.collaboration.updateCursors(data)
-      )
+    @onInit({doc: null, version: 0})
+    # @socket = io(@tiptapAddress())
+    #   .on('init', (data) => @onInit(data))
+    #   .on('update', (data) =>
+    #     @editor.extensions.options.collaboration.update(data)
+    #     @editor.extensions.options.collaboration.updateCursors(data)
+    #   )
+    #   .on('getCount', (count) => @setCount(count))
+    #   .on('cursorupdate', (data) =>
+    #     this.editor.extensions.options.collaboration.updateCursors(data)
+    #   )
 
   watch:
     'shouldReset': 'reset'
@@ -138,18 +138,18 @@ export default
             emptyNodeText: @placeholder,
             showOnlyWhenEditable: true,
           }),
-          new Collaboration({
-            socket: @socket,
-            user: Session.user()
-            version: version
-            debounce: 250
-          })
+          # new Collaboration({
+          #   socket: @socket,
+          #   user: Session.user()
+          #   version: version
+          #   debounce: 250
+          # })
         ]
-        content: doc
+        content: @model[@field] # doc
         onUpdate: @updateModel
         autoFocus: @autofocus
 
-      @editor.setContent(@model[@field]) if version == 0
+      # @editor.setContent(@model[@field]) if version == 0
 
       # setTimeout =>
       #   if @$refs.editor && @$refs.editor.$el
@@ -213,14 +213,14 @@ export default
 
   beforeDestroy: ->
     @editor.destroy() if @editor
-    @socket.close() if @socket
+    # @socket.close() if @socket
 
 </script>
 
 <template lang="pug">
 div
-  template(v-if="!editor || loading")
-    | Connecting to socket server …
+  //- template(v-if="!editor || loading")
+  //-   | Connecting to socket server …
   .editor.mb-3
     editor-content.html-editor__textarea(ref="editor" :editor='editor').lmo-markdown-wrapper
     editor-menu-bar.menubar(:editor='editor' v-slot='{ commands, isActive, focused }')
@@ -376,9 +376,9 @@ div
           //- save button?
           v-spacer
           slot(v-if="!expanded" name="actions")
-        div.d-flex(v-if="expanded" name="actions")
-          v-spacer
-          slot(name="actions")
+    div.d-flex(v-if="expanded" name="actions")
+      v-spacer
+      slot(name="actions")
 
     v-alert(v-if="maxLength && model[field] && model[field].length > maxLength" color='error')
       span( v-t="'poll_common.too_long'")
@@ -389,7 +389,6 @@ div
   form(style="display: block" @change="fileSelected")
     input(ref="filesField" type="file" name="files" multiple=true)
 </template>
-
 <style lang="sass">
 
 // .count
