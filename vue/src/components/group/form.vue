@@ -134,7 +134,8 @@ v-card.group-form
         h1.headline(tabindex="-1" v-if='clone.parentId', v-t="'group_form.edit_group_heading'")
         h1.headline(tabindex="-1" v-if='!clone.parentId', v-t="'group_form.edit_organization_heading'")
       dismiss-modal-button(:close='close')
-  v-card-text
+  //- v-card-text
+  .px-4
 
     v-tabs(fixed-tabs)
       v-tab(v-t="'group_form.profile'")
