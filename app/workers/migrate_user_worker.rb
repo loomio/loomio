@@ -43,7 +43,7 @@ class MigrateUserWorker
   end
 
   def delete_duplicates
-    Membership.delete(destination.memberships.
+    Membership.delete(destination.all_memberships.
                       joins("INNER JOIN memberships source
                              ON source.group_id = memberships.group_id
                              AND source.user_id = #{source.id}").pluck(:"source.id"))
