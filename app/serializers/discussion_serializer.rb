@@ -50,8 +50,8 @@ class DiscussionSerializer < ApplicationSerializer
   has_one :author, serializer: AuthorSerializer, root: :users
   has_one :group, serializer: GroupSerializer, root: :groups
   has_many :active_polls, serializer: PollSerializer, root: :polls
-  has_one :created_event, serializer: Events::BaseSerializer, root: :events
-  has_one :forked_event, serializer: Events::BaseSerializer, root: :events
+  has_one :created_event, serializer: Events::CreatedSerializer, root: :events
+  has_one :forked_event, serializer: Events::CreatedSerializer, root: :events
   # has_many :discussion_tags
   hide_when_discarded [:description, :title]
 

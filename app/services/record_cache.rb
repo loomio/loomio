@@ -34,9 +34,15 @@ class RecordCache
     elsif item.is_a? Comment then for_comments(collection, user_id, exclude_types)
     elsif item.is_a? MembershipRequest then for_membership_requests(collection, user_id, exclude_types)
     elsif item.is_a? Document then for_documents(collection, user_id, exclude_types)
+    elsif item.is_a? PaperTrail::Version then for_papertrail_versions(collection, user_id, exclude_types)
     else
       raise "unrecognised item: #{item.class}"
     end
+  end
+
+  def self.for_papertrail_versions(collection, user_id, exclude_types)
+    obj = new(exclude_types)
+    obj
   end
 
   def self.for_documents(collection, user_id, exclude_types)
