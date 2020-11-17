@@ -470,6 +470,7 @@ div
 
 
 progress
+  width: 50%!important
   -webkit-appearance: none
   appearance: none
   background-color: #fff
