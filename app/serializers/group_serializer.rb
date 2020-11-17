@@ -70,14 +70,13 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def subscription
-    sub = nil
-    
+    sub = Subscription.new
+
     if object.subscription_id
-      sub = cache_fetch(:subscriptions_by_group_id, object.id) { nil }
+      sub = cache_fetch(:subscriptions_by_group_id, object.id) { Subscription.new }
     end
 
-    return unless sub
-    if (current_user_membership && sub)
+    if (current_user_membership)
       {
         max_members:     sub.max_members,
         max_threads:     sub.max_threads,
