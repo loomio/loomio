@@ -180,7 +180,7 @@ v-card.group-form
         .group-form__section.group-form__permissions
           p.group-form__privacy-statement.body-2(v-t="'group_form.permissions_explaination'")
           //- v-checkbox.group-form__allow-public-threads(hide-details v-model='group["allowPublicThreads"]' :label="$t('group_form.allow_public_threads')" v-if='clone.privacyIsClosed() && !clone.isSubgroupOfSecretParent()')
-          v-checkbox.group-form__parent-members-can-see-discussions(hide-details v-model='clone["parentMembersCanSeeDiscussions"]' :label="$t('group_form.parent_members_can_see_discussions', {parent: clone.parent().name})" v-if='clone.parent() && clone.privacyIsClosed()')
+          v-checkbox.group-form__parent-members-can-see-discussions(hide-details v-model='clone["parentMembersCanSeeDiscussions"]' :label="$t('group_form.parent_members_can_see_discussions', {parent: clone.parent().name})" v-if='clone.parentId && clone.privacyIsClosed()')
           v-checkbox.group-form__members-can-add-members(hide-details v-model='clone["membersCanAddMembers"]' :label="$t('group_form.members_can_add_members')")
           v-checkbox.group-form__members-can-announce(hide-details v-model='clone["membersCanAnnounce"]' :label="$t('group_form.members_can_announce')")
           v-checkbox.group-form__members-can-create-subgroups(hide-details v-model='clone["membersCanCreateSubgroups"]' v-if='clone.isParent()' :label="$t('group_form.members_can_create_subgroups')")

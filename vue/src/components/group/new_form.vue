@@ -88,7 +88,7 @@ export default
         "group_form.subgroup_name"
 
     privacyOptions: ->
-      if @group.parent() && @group.parent().groupPrivacy == 'secret'
+      if @group.parentId && @group.parent().groupPrivacy == 'secret'
         ['closed', 'secret']
       else
         ['open', 'closed', 'secret']
@@ -125,7 +125,7 @@ v-card.group-form
     v-text-field.group-form__name#group-name(v-model='group.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]', maxlength='255', :label="$t(groupNameLabel)" @keyup="suggestHandle()")
     validation-errors(:subject="group", field="name")
 
-    div(v-if="!group.parent() || (group.parent() && group.parent().handle)")
+    div(v-if="!group.parentId || (group.parentId && group.parent().handle)")
       v-text-field.group-form__handle#group-handle(v-model='group.handle', :placeholder="$t('group_form.group_handle_placeholder')" maxlength='100' :label="$t('group_form.handle')")
       validation-errors(:subject="group", field="handle")
 

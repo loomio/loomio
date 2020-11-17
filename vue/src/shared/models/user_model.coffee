@@ -54,11 +54,11 @@ export default class UserModel extends BaseModel
 
   orphanSubgroups: ->
     filter @groups(), (group) =>
-      group.parent() and !group.parent().membersInclude(@)
+      group.parentId and !group.parent().membersInclude(@)
 
   orphanParents: ->
     uniq @orphanSubgroups().map (group) ->
-      group.parent()
+      group.parentId
 
   membershipFor: (group) ->
     return unless group
