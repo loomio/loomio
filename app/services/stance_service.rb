@@ -36,7 +36,7 @@ class StanceService
     stance.save!
     stance.poll.update_stance_data
     Events::StanceCreated.publish!(stance) unless stance.created_event
-    MessageChannelService.publish_models(stance.reload.created_event, scope: {current_user: actor, current_user_id: actor.id}, user_id: actor.id)
+    MessageChannelService.publish_models([stance.reload.created_event], scope: {current_user: actor, current_user_id: actor.id}, user_id: actor.id)
     EventBus.broadcast 'stance_update', stance, actor
   end
 end

@@ -44,7 +44,7 @@ class PollSerializer < ApplicationSerializer
   has_one :my_stance, serializer: StanceSerializer, root: :stances
   has_many :poll_options, serializer: PollOptionSerializer, root: :poll_options
 
-  hide_when_discarded [:details, :title]
+  hide_when_discarded [:details, :title, :author_id]
 
   def current_outcome
     cache_fetch(:outcomes_by_poll_id, object.id) { nil }

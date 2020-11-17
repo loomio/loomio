@@ -27,15 +27,39 @@ class RecordCache
     elsif item.is_a? Event then for_events(collection, user_id)
     elsif item.is_a? Membership then for_memberships(collection, user_id)
     elsif item.is_a? Poll then for_polls(collection, user_id)
+    elsif item.is_a? Outcome then for_outcomes(collection, user_id)
     elsif item.is_a? Stance then for_stances(collection, user_id)
+    elsif item.is_a? User then for_users(collection, user_id)
+    elsif item.is_a? DiscussionReader then for_discussion_readers(collection, user_id)
+    elsif item.is_a? Comment then for_comments(collection, user_id)
     else
       raise "unrecognised item: #{item.class}"
     end
   end
 
-  def self.for_reactions(collection, user_id, exclude_types = [])
-    obj = new([])
+  def self.for_discussion_readers(collection, user_id, exclude_types = [])
+    obj = new(exclude_types)
+    discussion_ids = collection.map(&:discussion_id)
+    obj.add_discussions_by_id(discussion_ids)
+    obj.add_events_by_kind_and_discussion_id('new_discussion', discussion_ids)
     obj.add_users_by_id(collection.map(&:user_id))
+    obj
+  end
+
+  def self.for_users(collection, user_id, exclude_types = [])
+    new(exclude_types)
+  end
+
+  def self.for_reactions(collection, user_id, exclude_types = [])
+    obj = new(exclude_types)
+    obj.add_users_by_id(collection.map(&:user_id))
+    obj
+  end
+
+  def self.for_comments(collection, user_id, exclude_types = [])
+    obj = new(exclude_types)
+    obj.add_comments_by_id(collection)
+    obj.add_users_by_id
     obj
   end
 
@@ -69,6 +93,7 @@ class RecordCache
     comment_ids = []
     stance_ids = []
     outcome_ids = []
+    poll_ids = []
     collection.each do |e|
       discussion_ids.push e.discussion_id
       comment_ids.push e.eventable_id if e.eventable_type == 'Comment'
@@ -82,14 +107,16 @@ class RecordCache
     # stance_ids = collection.where(eventable_type: 'Stance').map(&:eventable_id)
 
     all_group_ids = obj.add_groups_by_id(group_ids)
-    poll_ids = obj.add_polls_by_discussion_id(discussion_ids)
+    poll_ids.concat obj.add_polls_by_discussion_id(discussion_ids)
     obj.add_events_by_id(collection.map(&:parent_id))
     obj.add_outcomes_by_poll_id(poll_ids)
+    poll_ids.concat obj.add_outcomes_by_id(ids: outcome_ids)
     obj.add_poll_options_by_poll_id(poll_ids)
+    obj.add_polls_by_id(poll_ids)
     obj.add_groups_by_id(all_group_ids)
     obj.add_memberships_by_group_id(all_group_ids, user_id)
     obj.add_discussions_by_id(discussion_ids)
-    obj.add_comments_by_id(comment_ids)
+    obj.add_comments_by_id(ids: comment_ids)
     obj.add_stances_by_id(stance_ids)
     obj.add_stances_by_poll_id(poll_ids, user_id)
     obj.add_discussion_readers_by_discussion_id(discussion_ids, user_id)
@@ -140,16 +167,24 @@ class RecordCache
     obj
   end
 
+  def self.for_outcomes(collection, user_id, exclude_types = [])
+    obj = new(exclude_types)
+
+    obj.add_outcomes_by_id(collection)
+    obj.add_polls_by_id(collection.map(&:poll_id))
+    obj.add_users_by_id
+  end
+
   def self.for_stances(collection, user_id, exclude_types = [])
     obj = new(exclude_types)
     stance_ids = collection.map(&:id)
     poll_ids = collection.map(&:poll_id).uniq.compact
+    obj.add_stances_by_id(stance_ids)
     obj.add_polls_by_id(poll_ids)
     obj.add_outcomes_by_poll_id(poll_ids)
     obj.add_poll_options_by_poll_id(poll_ids)
     obj.add_stance_choices_by_stance_id(stance_ids)
     obj.add_events_by_kind_and_poll_id('poll_created', poll_ids)
-    obj.add_outcomes_by_poll_id(poll_ids)
     obj.add_users_by_id(collection.map(&:participant_id).compact)
     obj
   end
@@ -251,29 +286,36 @@ class RecordCache
     parent_ids
   end
 
-  def add_comments_by_id(comment_ids)
-    return [] if comment_ids.empty?
+  def add_comments_by_id(collection = nil, ids: [])
+    collection = Comment.where(id: ids) if collection.nil?
     return [] if exclude_types.include?('comment')
     scope[:comments_by_id] ||= {}
     parent_ids = []
-    Comment.where(id: comment_ids).each do |comment|
+    collection.each do |comment|
       @user_ids.push comment.user_id
       scope[:comments_by_id][comment.id] = comment
       parent_ids.push comment.parent_id if comment.parent_id
     end
-    add_comments_by_id(parent_ids) if parent_ids.any?
+    add_comments_by_id(ids: parent_ids) if parent_ids.any?
   end
 
   def add_outcomes_by_poll_id(poll_ids)
-    return [] if poll_ids.empty?
+    add_outcomes_by_id(Outcome.where(poll_id: poll_ids))
+  end
+
+  def add_outcomes_by_id(collection = nil, ids: [])
     return [] if exclude_types.include?('outcome')
+    poll_ids = []
     scope[:outcomes_by_id] ||= {}
     scope[:outcomes_by_poll_id] ||= {}
-    Outcome.where(poll_id: poll_ids).each do |outcome|
+    collection ||= Outcome.where(id: ids)
+    collection.each do |outcome|
       @user_ids.push outcome.author_id
+      poll_ids.push outcome.poll_id
       scope[:outcomes_by_id][outcome.id] = outcome
       scope[:outcomes_by_poll_id][outcome.poll_id] = outcome if outcome.latest
     end
+    poll_ids
   end
 
   def add_polls_by_id(poll_ids)
@@ -286,15 +328,6 @@ class RecordCache
     end
   end
 
-  def add_outcomes_by_id(outcome_ids)
-    return [] if outcome_ids.empty?
-    return [] if exclude_types.include?('outcome')
-    scope[:outcomes_by_id] ||= {}
-    Outcome.where(id: outcome_ids).each do |outcome|
-      @user_ids.push outcome.author_id
-      scope[:outcomes_by_id][outcome.id] = outcome
-    end
-  end
 
   def add_poll_options_by_poll_id(poll_ids)
     return [] if poll_ids.empty?

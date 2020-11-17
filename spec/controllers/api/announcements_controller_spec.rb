@@ -161,6 +161,10 @@ describe API::AnnouncementsController do
     describe 'poll' do
       let(:poll)          { create :poll, group: group, author: user }
 
+      before do
+        poll.created_event
+      end
+
       it 'does not permit non author to announce' do
         sign_in create(:user)
         post :create, params: {poll_id: poll.id, recipient_user_ids: [notified_user.id]}
@@ -211,12 +215,12 @@ describe API::AnnouncementsController do
 
     describe 'discussion' do
       let(:another_member) { create :user }
+      let(:discussion)    { create :discussion, author: user }
       before do
+        discussion.created_event
         discussion.group.add_member! member
         discussion.group.add_member! another_member
       end
-
-      let(:discussion)    { create :discussion, author: user }
 
       it 'cannot announce unless members_can_announce' do
         discussion.group.update(members_can_announce: false)

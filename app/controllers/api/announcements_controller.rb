@@ -109,7 +109,6 @@ class API::AnnouncementsController < API::RestfulController
   private
   def default_scope
     super.merge(
-      cache: RecordCache.for_collection(collection, current_user.id),
       include_email: target_model.admins.exists?(current_user.id)
     )
   end

@@ -139,6 +139,7 @@ describe API::PollsController do
       end
 
       describe 'discard' do
+        let(:poll) { build :poll }
         context 'allowed to discard' do
           it 'discards the poll' do
             PollService.create(poll: poll, actor: user)
@@ -147,7 +148,7 @@ describe API::PollsController do
             poll.reload
             expect(poll.discarded?).to be true
             expect(poll.discarded_by).to eq user.id
-            expect(poll.created_event.user_id).to be nil
+            expect(poll.created_event.reload.user_id).to be nil
           end
         end
 
@@ -415,8 +416,8 @@ describe API::PollsController do
   end
 
   describe 'add_to_thread' do
-    let(:comment) { create :comment, discussion: discussion, author: user }
-    let(:poll) { create :poll, title: "Standalone Complex", group: group, author: user }
+    let(:comment) { build :comment, discussion: discussion, author: user }
+    let(:poll) { build :poll, title: "Standalone Complex", group: group, author: user }
 
     before do
       group.add_admin! user

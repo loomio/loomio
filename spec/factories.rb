@@ -138,6 +138,7 @@ FactoryBot.define do
       discussion.group.add_member!(discussion.author)
     end
     after(:create) do |discussion|
+      discussion.created_event
       discussion.group.save
     end
   end
@@ -232,6 +233,9 @@ FactoryBot.define do
     created_at { 2.days.ago }
     notify_on_closing_soon { "voters" }
     closing_at { 5.days.from_now }
+    after :create do |poll|
+      poll.created_event
+    end
   end
 
   factory :poll_proposal, class: Poll do

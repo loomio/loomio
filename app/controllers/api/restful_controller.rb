@@ -77,7 +77,11 @@ class API::RestfulController < API::SnorlaxBase
   end
 
   def default_scope
-    { current_user_id: current_user.id, exclude_types: exclude_types }
+    {
+      cache: RecordCache.for_collection(resources_to_serialize, current_user.id),
+      current_user_id: current_user.id,
+      exclude_types: exclude_types
+    }
   end
 
   def exclude_types
