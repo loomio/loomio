@@ -41,6 +41,7 @@ export default class NullGroupModel
   subgroups: -> []
   parent: -> null
   parentOrSelf: -> @
+  parentsAndSelf: -> [@]
   group: -> @
   hasSubgroups: -> false
   organisationIds: -> []
@@ -61,3 +62,4 @@ export default class NullGroupModel
   hasSubscription: -> false
   isSubgroupOfSecretParent: -> false
   hasPendingMembershipRequestFrom: -> false
+  logoUrl: -> ''

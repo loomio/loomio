@@ -28,7 +28,7 @@ export default
       # if group is new, suggest handle whenever name changes
       # if group is old, suggest handle only if handle is empty
       if @group.isNew() or isEmpty(@group.handle)
-        parentHandle = if @group.parent()
+        parentHandle = if @group.parentId
           @group.parent().handle
         else
           null

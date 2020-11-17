@@ -30,7 +30,7 @@ export default
 
     groups: ->
       if @discussion.groupId
-        map compact([@discussion.group().parent(), @discussion.group()]), (group) =>
+        map @discussion.group().parentsAndSelf(), (group) =>
           text: group.name
           disabled: false
           to: @urlFor(group)

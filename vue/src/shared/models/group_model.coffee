@@ -105,6 +105,12 @@ export default class GroupModel extends BaseModel
   members: ->
     @recordStore.users.collection.find(id: {$in: @memberIds()})
 
+  parentsAndSelf: ->
+    @selfAndParents().reverse()
+
+  selfAndParents: ->
+    compact [@].concat(@parentId && @parent().parentsAndSelf())
+
   parentAndSelfMemberships: ->
     @recordStore.memberships.collection.find(groupId: {$in: @parentOrSelf().selfAndSubgroupIds()})
 
