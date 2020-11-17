@@ -77,6 +77,7 @@ class User < ApplicationRecord
            class_name: 'Membership'
 
   has_many :memberships, -> { where(archived_at: nil) }, dependent: :destroy
+  has_many :all_memberships, dependent: :destroy, class_name: "Membership"
 
   has_many :archived_memberships,
            -> { where('archived_at IS NOT NULL') },
