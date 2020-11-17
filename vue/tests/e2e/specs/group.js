@@ -354,7 +354,7 @@ module.exports = {
     page.click('.group-page-settings-tab')
     page.click('.group-page-actions__destroy_group')
 
-    page.fillIn('.confirm-text-field input', 'Dirty Dancing Shoes')
+    page.fillIn('.confirm-text-field input', 'shoes')
     page.click('.confirm-modal__submit')
     page.expectFlash("This group has been archived and is scheduled for permanent deletion in 2 weeks.")
   }
