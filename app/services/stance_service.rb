@@ -23,7 +23,7 @@ class StanceService
     stance.poll.update_stance_data
     EventBus.broadcast 'stance_create', stance
     event = Events::StanceCreated.publish! stance
-    MessageChannelService.publish_models(event, scope: {current_user: actor, current_user_id: actor.id}, user_id: actor.id)
+    MessageChannelService.publish_models([event], scope: {current_user: actor, current_user_id: actor.id}, user_id: actor.id)
     event
   end
 

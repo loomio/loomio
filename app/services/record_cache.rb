@@ -18,23 +18,38 @@ class RecordCache
     end
   end
 
-  def self.for_collection(collection, user_id)
+  def self.for_collection(collection, user_id, exclude_types = [])
     return unless item = collection.first
-    if item.is_a? Discussion then for_discussions(collection, user_id)
-    elsif item.is_a? Reaction then for_reactions(collection, user_id)
-    elsif item.is_a? Notification then for_notifications(collection, user_id)
-    elsif item.is_a? Group then for_groups(collection, user_id)
-    elsif item.is_a? Event then for_events(collection, user_id)
-    elsif item.is_a? Membership then for_memberships(collection, user_id)
-    elsif item.is_a? Poll then for_polls(collection, user_id)
-    elsif item.is_a? Outcome then for_outcomes(collection, user_id)
-    elsif item.is_a? Stance then for_stances(collection, user_id)
-    elsif item.is_a? User then for_users(collection, user_id)
-    elsif item.is_a? DiscussionReader then for_discussion_readers(collection, user_id)
-    elsif item.is_a? Comment then for_comments(collection, user_id)
+    if item.is_a? Discussion then for_discussions(collection, user_id, exclude_types)
+    elsif item.is_a? Reaction then for_reactions(collection, user_id, exclude_types)
+    elsif item.is_a? Notification then for_notifications(collection, user_id, exclude_types)
+    elsif item.is_a? Group then for_groups(collection, user_id, exclude_types)
+    elsif item.is_a? Event then for_events(collection, user_id, exclude_types)
+    elsif item.is_a? Membership then for_memberships(collection, user_id, exclude_types)
+    elsif item.is_a? Poll then for_polls(collection, user_id, exclude_types)
+    elsif item.is_a? Outcome then for_outcomes(collection, user_id, exclude_types)
+    elsif item.is_a? Stance then for_stances(collection, user_id, exclude_types)
+    elsif item.is_a? User then for_users(collection, user_id, exclude_types)
+    elsif item.is_a? DiscussionReader then for_discussion_readers(collection, user_id, exclude_types)
+    elsif item.is_a? Comment then for_comments(collection, user_id, exclude_types)
+    elsif item.is_a? MembershipRequest then for_membership_requests(collection, user_id, exclude_types)
+    elsif item.is_a? Document then for_documents(collection, user_id, exclude_types)
     else
       raise "unrecognised item: #{item.class}"
     end
+  end
+
+  def self.for_documents(collection, user_id, exclude_types)
+    obj = new(exclude_types)
+    obj.add_users_by_id(collection.map(&:author_id))
+    obj
+  end
+
+  def self.for_membership_requests(collection, user_id, exclude_types)
+    obj = new(exclude_types)
+    obj.add_users_by_id(collection.map(&:requestor_id))
+    obj.add_users_by_id(collection.map(&:responder_id))
+    obj
   end
 
   def self.for_discussion_readers(collection, user_id, exclude_types = [])
@@ -173,6 +188,7 @@ class RecordCache
     obj.add_outcomes_by_id(collection)
     obj.add_polls_by_id(collection.map(&:poll_id))
     obj.add_users_by_id
+    obj
   end
 
   def self.for_stances(collection, user_id, exclude_types = [])
