@@ -63,8 +63,7 @@ class API::StancesController < API::RestfulController
   end
 
   def default_scope
-    cache = RecordCache.for_stances(collection, current_user.id, exclude_types)
-    super.merge({include_email: current_user_is_admin?}).merge(cache: cache)
+    super.merge({include_email: current_user_is_admin?})
   end
 
   def accessible_records

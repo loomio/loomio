@@ -67,6 +67,7 @@ class RecordCache
 
   def self.for_reactions(collection, user_id, exclude_types = [])
     obj = new(exclude_types)
+    obj.add_reactions_by_id(collection.map(&:id))
     obj.add_users_by_id(collection.map(&:user_id))
     obj
   end
@@ -109,12 +110,14 @@ class RecordCache
     stance_ids = []
     outcome_ids = []
     poll_ids = []
+    reaction_ids = []
     collection.each do |e|
       discussion_ids.push e.discussion_id
       comment_ids.push e.eventable_id if e.eventable_type == 'Comment'
       stance_ids.push e.eventable_id if e.eventable_type == 'Stance'
       discussion_ids.push e.eventable_id if e.eventable_type == 'Discussion'
       outcome_ids.push e.eventable_id if e.eventable_type == 'Outcome'
+      reaction_ids.push e.eventable_id if e.eventable_type == 'Reaction'
     end
     # discussion_ids = collection.map(&:discussion_id).compact.uniq
     group_ids = Discussion.where(id: discussion_ids).pluck(:group_id)
@@ -133,6 +136,7 @@ class RecordCache
     obj.add_discussions_by_id(discussion_ids)
     obj.add_comments_by_id(ids: comment_ids)
     obj.add_stances_by_id(stance_ids)
+    obj.add_reactions_by_id(reaction_ids)
     obj.add_stances_by_poll_id(poll_ids, user_id)
     obj.add_discussion_readers_by_discussion_id(discussion_ids, user_id)
     obj.add_events_by_kind_and_discussion_id('new_discussion', discussion_ids)
@@ -344,6 +348,14 @@ class RecordCache
     end
   end
 
+  def add_reactions_by_id(ids)
+    return [] if ids.empty?
+    return [] if exclude_types.include?('reaction')
+    scope[:reactions_by_id] ||= {}
+    Reaction.where(id: ids).each do |reaction|
+      scope[:reactions_by_id][reaction.id] = reaction
+    end
+  end
 
   def add_poll_options_by_poll_id(poll_ids)
     return [] if poll_ids.empty?

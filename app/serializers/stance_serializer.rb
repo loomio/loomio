@@ -44,7 +44,7 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def my_stance
-    cache_fetch(:stances_by_poll_id, object.poll_id) { nil }
+    scope[:current_user_id] && object[:participant_id] == scope[:current_user_id]
   end
 
   def include_reason?
