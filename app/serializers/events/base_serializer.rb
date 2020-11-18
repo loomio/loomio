@@ -27,6 +27,7 @@ class Events::BaseSerializer < ApplicationSerializer
     when 'Stance' then cache_fetch(:stances_by_id, object.eventable_id)
     when 'Outcome' then cache_fetch(:outcomes_by_id, object.eventable_id)
     when 'Reaction' then cache_fetch(:reactions_by_id, object.eventable_id)
+    when 'Membership' then cache_fetch(:memberships_by_id, object.eventable_id)
     else
       raise "waht is it? #{object.eventable}"
       object.eventable

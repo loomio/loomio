@@ -134,6 +134,7 @@ class RecordCache
     outcome_ids = []
     poll_ids = []
     reaction_ids = []
+    membership_ids = []
     collection.each do |e|
       discussion_ids.push e.discussion_id
       comment_ids.push e.eventable_id if e.eventable_type == 'Comment'
@@ -141,6 +142,7 @@ class RecordCache
       discussion_ids.push e.eventable_id if e.eventable_type == 'Discussion'
       outcome_ids.push e.eventable_id if e.eventable_type == 'Outcome'
       reaction_ids.push e.eventable_id if e.eventable_type == 'Reaction'
+      membership_ids.push e.eventable_id if e.eventable_type == 'Membership'
     end
     # discussion_ids = collection.map(&:discussion_id).compact.uniq
     group_ids = Discussion.where(id: discussion_ids).pluck(:group_id)
@@ -156,6 +158,7 @@ class RecordCache
     obj.add_polls_by_id(poll_ids)
     obj.add_groups_by_id(all_group_ids)
     obj.add_memberships_by_group_id(all_group_ids, user_id)
+    obj.add_memberships_by_id(Membership.where(id: membership_ids)) if membership_ids.any?
     obj.add_discussions_by_id(discussion_ids)
     obj.add_comments_by_id(ids: comment_ids)
     obj.add_stances_by_id(stance_ids)
