@@ -138,7 +138,6 @@ FactoryBot.define do
       discussion.group.add_member!(discussion.author)
     end
     after(:create) do |discussion|
-      discussion.created_event
       discussion.group.save
     end
   end
