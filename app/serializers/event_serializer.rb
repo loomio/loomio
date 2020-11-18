@@ -1,4 +1,4 @@
-class Events::BaseSerializer < ApplicationSerializer
+class EventSerializer < ApplicationSerializer
   attributes :id, :sequence_id, :position, :depth, :child_count, :descendant_count, :kind,
     :discussion_id, :created_at, :eventable_id, :eventable_type, :custom_fields,
     :pinned, :pinned_title, :parent_id, :actor_id, :position_key, :recipient_message
@@ -6,10 +6,10 @@ class Events::BaseSerializer < ApplicationSerializer
   has_one :actor, serializer: AuthorSerializer, root: :users
   has_one :eventable, polymorphic: true
   has_one :discussion, serializer: Simple::DiscussionSerializer, root: :discussions
-  has_one :parent, serializer: Events::BaseSerializer, root: :parent_events
+  has_one :parent, serializer: EventSerializer, root: :parent_events
 
   # for discussion moved event
-  has_one :source_group, serializer: GroupSerializer, root: :groups
+  has_one :source_group, serializer: Simple::GroupSerializer, root: :groups
 
   def parent
     cache_fetch(:events_by_id, object.parent_id) { nil }

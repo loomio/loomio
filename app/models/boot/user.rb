@@ -22,7 +22,7 @@ module Boot
 
     def user_payload
       ActiveModel::ArraySerializer.new(Array(@user),
-        each_serializer: (user.restricted ? Restricted::UserSerializer : Full::UserSerializer),
+        each_serializer: (user.restricted ? Restricted::UserSerializer : CurrentUserSerialzier),
         root: :users
       ).as_json
     end

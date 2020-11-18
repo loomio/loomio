@@ -75,9 +75,9 @@ class API::RestfulController < API::SnorlaxBase
   def serializer_class
     record = records_to_serialize.first
     if record.nil?
-      Events::BaseSerializer
+      EventSerializer
     elsif record.is_a? Event
-      Events::BaseSerializer
+      EventSerializer
     else
       "#{record.class}Serializer".constantize
     end

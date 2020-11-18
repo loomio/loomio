@@ -13,6 +13,10 @@ class ApplicationSerializer < ActiveModel::Serializer
     cache_fetch(:groups_by_id, object.group_id) { nil }
   end
 
+  def event
+    cache_fetch(:events_by_id, object.event_id)
+  end
+
   def discussion
     cache_fetch(:discussions_by_id, object.discussion_id) { nil }
   end

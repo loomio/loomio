@@ -119,7 +119,7 @@ class Event < ApplicationRecord
   def active_model_serializer
     "Events::#{eventable.class.to_s.split('::').last}Serializer".constantize
   rescue NameError
-    Events::BaseSerializer
+    EventSerializer
   end
 
   def set_parent_and_depth

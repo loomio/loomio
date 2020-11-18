@@ -23,7 +23,7 @@ class API::ProfileController < API::RestfulController
     instantiate_collection do |collection|
       collection.distinct.mention_search(current_user, model, String(params[:q]).strip.delete("\u0000"))
     end
-    respond_with_collection serializer: Simple::UserSerializer, root: :users
+    respond_with_collection serializer: AuthorSerializer, root: :users
   end
 
   def me
@@ -118,7 +118,7 @@ class API::ProfileController < API::RestfulController
     if current_user.restricted
       Restricted::UserSerializer
     else
-      Full::UserSerializer
+      CurrentUserSerialzier
     end
   end
 
