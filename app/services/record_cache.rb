@@ -36,9 +36,15 @@ class RecordCache
     elsif item.is_a? Document then for_documents(collection, user_id, exclude_types)
     elsif item.is_a? PaperTrail::Version then for_papertrail_versions(collection, user_id, exclude_types)
     elsif item.is_a? Tag then for_tags(collection, user_id, exclude_types)
+    elsif item.is_a? Translation then for_translations(collection, user_id, exclude_types)
     else
       raise "unrecognised item: #{item.class}"
     end
+  end
+
+  def self.for_translations(collection, user_id, exclude_types)
+    obj = new(exclude_types)
+    obj
   end
 
   def self.for_tags(collection, user_id, exclude_types)
