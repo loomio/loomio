@@ -124,7 +124,7 @@ describe API::GroupsController do
       it 'returns the parent group information' do
         get :show, params: { id: subgroup.key }, format: :json
         json = JSON.parse(response.body)
-        group_ids = json['groups'].map { |g| g['id'] }
+        group_ids = json['groups'].map { |g| g['id'] }.concat json['parent_groups'].map { |g| g['id'] }
         expect(group_ids).to include subgroup.id
         expect(group_ids).to include group.id
       end
@@ -132,12 +132,13 @@ describe API::GroupsController do
 
     context 'logged out' do
       let(:private_group) { create(:group, is_visible_to_public: false) }
-
+      let(:public_group) { create :group, creator: user, is_visible_to_public: true }
       it 'returns public groups if the user is logged out' do
-        get :show, params: { id: group.key }, format: :json
+        get :show, params: { id: public_group.key }, format: :json
         json = JSON.parse(response.body)
+        expect(response.status).to eq 200
         group_ids = json['groups'].map { |g| g['id'] }
-        expect(group_ids).to include group.id
+        expect(group_ids).to include public_group.id
       end
 
       it 'returns unauthorized if the user is logged out and the group is private' do

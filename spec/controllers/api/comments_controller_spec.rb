@@ -4,7 +4,7 @@ describe API::CommentsController do
   let(:user) { create :user, name: 'user' }
   let(:another_user) { create :user, name: 'another user' }
   let(:group) { create :group }
-  let(:discussion) { create :discussion, group: group }
+  let(:discussion) { build :discussion, group: group }
   let(:comment) { create :comment, discussion: discussion, author: user }
   let(:another_comment) { create :comment, discussion: discussion, author: another_user }
 

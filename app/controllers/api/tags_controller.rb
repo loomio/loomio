@@ -5,9 +5,9 @@ class API::TagsController < API::RestfulController
   end
 
   def update_model
-    load_and_authorize(:discussion, :update)
+    self.resource = load_and_authorize(:discussion, :update)
     TagService.update_model(discussion: @discussion, tags: params[:tags])
-    render json: Array(@discussion), scope: {}, each_serializer: DiscussionSerializer, root: 'discussions'
+    respond_with_resource
   end
 
   def index

@@ -47,9 +47,9 @@ class API::RestfulController < API::SnorlaxBase
     resource_class.visible_to_public.order(created_at: :desc)
   end
 
-  def respond_with_resource(scope: {}, serializer: resource_serializer, root: serializer_root)
+  def respond_with_resource(scope: default_scope, serializer: serializer_class, root: serializer_root)
     if resource.errors.empty?
-      respond_with_collection scope: default_scope.merge(scope), serializer: serializer, root: root
+      respond_with_collection scope: scope, serializer: serializer, root: root
     else
       respond_with_errors
     end
@@ -59,26 +59,44 @@ class API::RestfulController < API::SnorlaxBase
     render json: {}, status: 200
   end
 
-  def respond_with_collection(scope: default_scope, serializer: resource_serializer, root: serializer_root)
-    if events_to_serialize.any?
-      render json: events_to_serialize, scope: scope, root: 'events', each_serializer: Events::BaseSerializer
+  def respond_with_collection(scope: default_scope, serializer: serializer_class, root: serializer_root)
+    render json: records_to_serialize, scope: scope, each_serializer: serializer, root: root
+  end
+
+  # prefer this
+  def records_to_serialize
+    if @event.is_a?(Event)
+      Array(@event)
     else
-      render json: resources_to_serialize, scope: scope, each_serializer: serializer, root: root
+      collection || Array(resource)
     end
   end
 
-  def events_to_serialize
-    return [] unless @event.is_a?(Event)
-    Array(@event)
+  def serializer_class
+    record = records_to_serialize.first
+    if record.nil?
+      Events::BaseSerializer
+    elsif record.is_a? Event
+      Events::BaseSerializer
+    else
+      "#{record.class}Serializer".constantize
+    end
   end
 
-  def resources_to_serialize
-    collection || Array(resource)
+  def serializer_root
+    record = records_to_serialize.first
+    if record.nil?
+      controller_name
+    elsif record.is_a? Event
+      'events'
+    else
+      record.class.to_s.underscore.pluralize
+    end
   end
 
   def default_scope
     {
-      cache: RecordCache.for_collection(resources_to_serialize, current_user.id, exclude_types),
+      cache: RecordCache.for_collection(records_to_serialize, current_user.id, exclude_types),
       current_user_id: current_user.id,
       exclude_types: exclude_types
     }
@@ -86,5 +104,16 @@ class API::RestfulController < API::SnorlaxBase
 
   def exclude_types
     params[:exclude_types].to_s.split(' ')
+  end
+
+  # phase this out
+  def events_to_serialize
+    return [] unless @event.is_a?(Event)
+    Array(@event)
+  end
+
+  # phase this out
+  def resources_to_serialize
+    collection || Array(resource)
   end
 end

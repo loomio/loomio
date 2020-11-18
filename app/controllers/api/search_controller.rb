@@ -24,12 +24,11 @@ class API::SearchController < API::RestfulController
     :search_results
   end
 
-  def resource_serializer
+  def serializer_class
     SearchResultSerializer
   end
 
   def resource_class
     Discussion
   end
-
 end

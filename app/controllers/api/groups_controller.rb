@@ -55,11 +55,6 @@ class API::GroupsController < API::RestfulController
 
   private
 
-  def default_scope
-    self.collection = Group.where(id: resource.id) if resource
-    super.merge({cache: RecordCache.for_groups(collection, current_user.id, exclude_types)})
-  end
-
   def ensure_photo_params
     params.require(:file)
     raise ActionController::UnpermittedParameters.new([:kind]) unless ['logo', 'cover_photo'].include? params.require(:kind)
@@ -67,14 +62,5 @@ class API::GroupsController < API::RestfulController
 
   def accessible_records
     Queries::ExploreGroups.new
-  end
-
-  def resource_class
-    Group
-  end
-
-  # serialize out the parent with the group
-  def resources_to_serialize
-    Array(collection || [resource, resource&.parent].compact)
   end
 end

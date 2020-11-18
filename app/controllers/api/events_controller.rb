@@ -26,11 +26,6 @@ class API::EventsController < API::RestfulController
 
   private
 
-  def default_scope
-    cache = RecordCache.for_events(collection, current_user.id, exclude_types)
-    super.merge(cache: cache)
-  end
-
   def order
     %w(sequence_id position position_key).detect {|col| col == params[:order] } || "sequence_id"
   end
@@ -114,13 +109,5 @@ class API::EventsController < API::RestfulController
 
   def default_page_size
     30
-  end
-
-  # we always want to serialize out events in the events controller
-  alias :events_to_serialize :resources_to_serialize
-
-  # events will define their own serializer through the `active_model_serializer` method
-  def resource_serializer
-    nil
   end
 end

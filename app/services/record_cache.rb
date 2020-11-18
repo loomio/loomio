@@ -35,9 +35,16 @@ class RecordCache
     elsif item.is_a? MembershipRequest then for_membership_requests(collection, user_id, exclude_types)
     elsif item.is_a? Document then for_documents(collection, user_id, exclude_types)
     elsif item.is_a? PaperTrail::Version then for_papertrail_versions(collection, user_id, exclude_types)
+    elsif item.is_a? Tag then for_tags(collection, user_id, exclude_types)
     else
       raise "unrecognised item: #{item.class}"
     end
+  end
+
+  def self.for_tags(collection, user_id, exclude_types)
+    obj = new(exclude_types)
+    obj.add_groups_by_id(collection.pluck(:group_id))
+    obj
   end
 
   def self.for_papertrail_versions(collection, user_id, exclude_types)
@@ -81,6 +88,10 @@ class RecordCache
   def self.for_comments(collection, user_id, exclude_types = [])
     obj = new(exclude_types)
     obj.add_comments_by_id(collection)
+    # discussion_ids = collection.pluck(:discussion_id)
+    # obj.add_discussions_by_id(discussion_ids)
+    # obj.add_discussion_readers_by_discussion_id(discussion_ids, user_id)
+    # obj.add_events_by_kind_and_discussion_id('new_discussion', discussion_ids)
     obj.add_users_by_id
     obj
   end

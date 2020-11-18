@@ -159,20 +159,12 @@ class API::SnorlaxBase < ActionController::Base
     resource_name.camelize.constantize
   end
 
-  def resource_serializer
-    "#{resource_name}_serializer".camelize.constantize
-  end
-
   def respond_with_standard_error(error, status)
     render json: {exception: "#{error.class} #{error.to_s}"}, root: false, status: status
   end
 
   def respond_with_errors
     render json: {errors: resource.errors.as_json}, root: false, status: 422
-  end
-
-  def serializer_root
-    controller_name
   end
 
   def default_scope

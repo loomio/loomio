@@ -126,12 +126,6 @@ class API::DiscussionsController < API::RestfulController
     params[:tags].to_s.split('|')
   end
 
-  def default_scope
-    self.collection = Discussion.where(id: resource.id) if resource
-    cache = RecordCache.for_discussions(collection, current_user.id, exclude_types)
-    super.merge(cache: cache)
-  end
-
   def accessible_records
     @accessible_records ||= DiscussionQuery.visible_to(user: current_user, group_ids: group_ids, tags: split_tags)
   end

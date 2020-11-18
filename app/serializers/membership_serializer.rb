@@ -11,6 +11,7 @@ class MembershipSerializer < ApplicationSerializer
              :accepted_at
 
 
+  has_one :group, serializer: Simple::GroupSerializer, root: :groups
   has_one :user, serializer: UserSerializer, root: :users
   has_one :inviter, serializer: AuthorSerializer, root: :users
 end

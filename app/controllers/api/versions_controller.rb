@@ -1,9 +1,7 @@
 class API::VersionsController < API::RestfulController
   def show
     self.resource = model.versions[params[:index].to_i]
-    respond_with_resource(scope: default_scope.merge(exclude_types: %w[discussion group user comment poll stance]),
-                          serializer: resource_serializer,
-                          root: serializer_root)
+    respond_with_resource(scope: default_scope.merge(exclude_types: %w[discussion group user comment poll stance]))
   end
 
   private
