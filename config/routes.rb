@@ -292,7 +292,7 @@ Loomio::Application.routes.draw do
   get 'g/new'                              => 'application#index', as: :new_group
   get 'd/new'                              => 'application#index', as: :new_discussion
   get 'p/new(/:type)'                      => 'application#index', as: :new_poll
-  get 'threads/direct'                     => 'application#index'
+  get 'threads/direct'                     => 'application#index', as: :groupless_threads
 
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'g/:key/stats'                       => 'groups#stats',                as: :group_stats

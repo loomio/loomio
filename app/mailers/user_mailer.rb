@@ -48,13 +48,13 @@ class UserMailer < BaseMailer
       or_subgroups: false).last_activity_after(@time_start)
     @groups = @user.groups.order(full_name: :asc)
 
-    @cache = RecordCache.for_discussions(@discussions, user_id)
+    @cache = RecordCache.for_collection(@discussions, user_id)
 
     @subject_key = "email.catch_up.#{frequency}_subject"
     @subject_params = { site_name: AppConfig.theme[:site_name] }
 
     unless @discussions.empty? or @user.groups.empty?
-      @discussions_by_group = @discussions.group_by(&:group)
+      @discussions_by_group_id = @discussions.group_by(&:group_id)
       send_single_mail to: @user.email,
                        subject_key: @subject_key,
                        subject_params: @subject_params,

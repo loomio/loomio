@@ -21,15 +21,15 @@ class EventSerializer < ApplicationSerializer
 
   def eventable
     case object.eventable_type
-    when 'Discussion' then cache_fetch(:discussions_by_id, object.eventable_id)
-    when 'Poll' then cache_fetch(:polls_by_id, object.eventable_id)
-    when 'Comment' then cache_fetch(:comments_by_id, object.eventable_id)
-    when 'Stance' then cache_fetch(:stances_by_id, object.eventable_id)
-    when 'Outcome' then cache_fetch(:outcomes_by_id, object.eventable_id)
-    when 'Reaction' then cache_fetch(:reactions_by_id, object.eventable_id)
-    when 'Membership' then cache_fetch(:memberships_by_id, object.eventable_id)
-    when 'Group' then cache_fetch(:groups_by_id, object.eventable_id)
-    when 'MembershipRequest' then cache_fetch(:membership_requests_by_id, object.eventable_id)
+    when 'Discussion' then cache_fetch(:discussions_by_id, object.eventable_id) { object.eventable }
+    when 'Poll' then cache_fetch(:polls_by_id, object.eventable_id) { object.eventable }
+    when 'Comment' then cache_fetch(:comments_by_id, object.eventable_id) { object.eventable }
+    when 'Stance' then cache_fetch(:stances_by_id, object.eventable_id) { object.eventable }
+    when 'Outcome' then cache_fetch(:outcomes_by_id, object.eventable_id) { object.eventable }
+    when 'Reaction' then cache_fetch(:reactions_by_id, object.eventable_id) { object.eventable }
+    when 'Membership' then cache_fetch(:memberships_by_id, object.eventable_id) { object.eventable }
+    when 'Group' then cache_fetch(:groups_by_id, object.eventable_id) { object.eventable }
+    when 'MembershipRequest' then cache_fetch(:membership_requests_by_id, object.eventable_id) { object.eventable }
     else
       raise "waht is it? #{object.eventable} #{object.kind}"
       object.eventable
