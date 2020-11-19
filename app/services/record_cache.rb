@@ -25,31 +25,29 @@ class RecordCache
     obj = self.new
     obj.exclude_types = exclude_types
     obj.current_user_id = user_id
-    return obj unless item = collection.first
+    return obj unless item = collection.to_a.first
 
     case item.class.to_s
     when 'Discussion'
       collection_ids = collection.map(&:id)
       obj.add_discussions_discussion_readers(collection)
-      # obj.add_discussion_readers DiscussionReader.where(discussion_id: collection_ids, user_id: user_id)
       obj.add_groups_subscriptions_memberships Group.includes(:subscription).where(id: ids_and_parent_ids(Group, collection.map(&:group_id)))
       obj.add_polls_options_stances_choices Poll.active.where(discussion_id: collection_ids)
       obj.add_events(Event.where(kind: 'new_discussion', eventable_id: collection_ids))
-      obj.add_users(User.where(id: obj.user_ids))
 
     when 'Reaction'
-      obj.add_users User.where(id: collection.map(&:user_id))
+      obj.user_ids.concat collection.map(&:user_id)
 
     when 'Notification'
       obj.add_events_eventables Event.where(id: collection.map(&:event_id))
-      obj.add_users User.where(id: collection.map(&:user_id).concat(obj.user_ids))
+      obj.user_ids.concat collection.map(&:user_id)
 
     when 'Group'
       obj.add_groups_subscriptions_memberships Group.includes(:subscription).where(id: ids_and_parent_ids(Group, collection.map(&:id)))
 
     when 'Membership'
       obj.add_groups Group.where(id: collection.map(&:group_id))
-      obj.add_users User.where(id: collection.map(&:user_id).concat(collection.map(&:inviter_id)).compact.uniq)
+      obj.user_ids.concat collection.map(&:user_id).concat(collection.map(&:inviter_id)).compact.uniq
 
     when 'Poll'
       obj.add_discussions(Discussion.where(id: collection.map(&:discussion_id).uniq.compact))
@@ -57,7 +55,7 @@ class RecordCache
 
     when 'Outcome'
       obj.add_polls Poll.where(id: collection.map(&:poll_id))
-      obj.add_users User.where(id: collection.map(&:author_id))
+      obj.user_ids.concat collection.map(&:author_id)
 
     when 'Stance'
       obj.add_stances_and_choices(collection)
@@ -67,17 +65,16 @@ class RecordCache
       # do nothing
 
     when 'DiscussionReader'
-      obj.add_users User.where(id: collection.map(&:user_id))
+      obj.user_ids.concat collection.map(&:user_id)
 
     when 'Comment'
-      obj.add_users User.where(id: collection.map(&:user_id))
+      obj.user_ids.concat collection.map(&:user_id)
 
     when 'MembershipRequest'
-      obj.add_users User.where(id: collection.map(&:requestor_id))
-      obj.add_users User.where(id: collection.map(&:responder_id))
+      obj.user_ids.concat collection.map(&:requestor_id).concat(collection.map(&:responder_id))
 
     when 'Document'
-      obj.add_users User.where(id: collection.map(&:author_id))
+      obj.user_ids.concat collection.map(&:author_id)
 
     when 'PaperTrail::Version'
       # no cache required
