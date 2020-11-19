@@ -2,11 +2,11 @@ class StanceChoiceSerializer < ApplicationSerializer
   attributes :id, :score, :created_at, :stance_id, :rank, :rank_or_score, :poll_option_id
 
   def stance
-    cache_fetch(:stances_by_id, object.stance_id)
+    cache_fetch(:stances_by_id, object.stance_id) { object.stance }
   end
 
   def poll
-    cache_fetch(:polls_by_id, cache_fetch(:stances_by_id, object.stance_id).poll_id)
+    cache_fetch(:polls_by_id, cache_fetch(:stances_by_id, object.stance_id).poll_id) { object.poll }
   end
 
   def rank

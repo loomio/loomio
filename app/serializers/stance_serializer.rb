@@ -27,7 +27,7 @@ class StanceSerializer < ApplicationSerializer
 
   def participant
     return nil if poll.anonymous?
-    cache_fetch(:users_by_id, object.participant_id) { nil }
+    cache_fetch(:users_by_id, object.participant_id) { object.participant }
   end
 
   def participant_id
@@ -36,7 +36,7 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def stance_choices
-    cache_fetch(:stance_choices_by_stance_id, object.id) { [] }
+    cache_fetch(:stance_choices_by_stance_id, object.id) { object.stance_choices }
   end
 
   def volume

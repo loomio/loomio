@@ -6,7 +6,7 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def poll
-    cache_fetch(:polls_by_id, object.poll_id)
+    cache_fetch(:polls_by_id, object.poll_id) { object.poll }
   end
 
   def group
@@ -18,23 +18,23 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def discussion
-    cache_fetch(:discussions_by_id, object.discussion_id) { nil }
+    cache_fetch(:discussions_by_id, object.discussion_id) { object.discussion }
   end
 
   def author
-    cache_fetch(:users_by_id, object.author_id)
+    cache_fetch(:users_by_id, object.author_id) { object.author }
   end
 
   def actor
-    cache_fetch(:users_by_id, object.actor_id) { nil }
+    cache_fetch(:users_by_id, object.actor_id) { object.actor }
   end
 
   def user
-    cache_fetch(:users_by_id, object.user_id) { nil }
+    cache_fetch(:users_by_id, object.user_id) { object.user }
   end
 
   def inviter
-    cache_fetch(:users_by_id, object.inviter_id) { nil }
+    cache_fetch(:users_by_id, object.inviter_id) { object.inviter }
   end
 
   def creator
@@ -51,6 +51,7 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def cache_fetch(key_or_keys, id, &block)
+    return nil if id.nil?
     scope[:cache].fetch(key_or_keys, id, &block)
   end
 
