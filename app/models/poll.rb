@@ -132,6 +132,10 @@ class Poll < ApplicationRecord
 
   delegate :locale, to: :author
 
+  def user_id
+    author_id
+  end
+
   def create_missing_created_event!
     self.events.create(
       kind: created_event_kind,

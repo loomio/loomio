@@ -27,7 +27,6 @@ class RecordCache
     obj.current_user_id = user_id
     return obj unless item = collection.first
 
-    puts "when #{item.class.to_s}"
     case item.class.to_s
     when 'Discussion'
       collection_ids = collection.map(&:id)
