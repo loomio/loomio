@@ -70,6 +70,14 @@ class Stance < ApplicationRecord
 
   alias :author :participant
 
+  def author_id
+    participant_id
+  end
+
+  def user_id
+    participant_id
+  end
+
   def locale
     author&.locale || group&.locale
   end

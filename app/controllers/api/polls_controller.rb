@@ -39,11 +39,6 @@ class API::PollsController < API::RestfulController
   end
 
   private
-  def default_scope
-    col = collection || Poll.where(id: resource.id)
-    cache = RecordCache.for_polls(col, current_user.id, exclude_types)
-    super.merge(cache: cache)
-  end
 
   def accessible_records
     PollQuery.visible_to(user: current_user, show_public: true)

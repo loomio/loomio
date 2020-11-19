@@ -23,7 +23,6 @@ describe API::PollsController do
 
   before { group.add_member! user }
 
-
   describe 'show' do
     it 'shows a poll' do
       sign_in user
@@ -418,9 +417,11 @@ describe API::PollsController do
   describe 'add_to_thread' do
     let(:comment) { build :comment, discussion: discussion, author: user }
     let(:poll) { build :poll, title: "Standalone Complex", group: group, author: user }
+    let(:discussion) { build :discussion, group: group }
 
     before do
       group.add_admin! user
+      group.add_admin! discussion.author
       DiscussionService.create(discussion: discussion, actor: discussion.author)
       PollService.create(poll: poll, actor: poll.author)
       CommentService.create(comment: comment, actor: user)

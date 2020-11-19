@@ -178,6 +178,10 @@ class Group < ApplicationRecord
     member_ids
   end
 
+  def user_id
+    creator_id
+  end
+
   def discussion_id
     nil
   end

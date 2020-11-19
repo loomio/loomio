@@ -23,6 +23,6 @@ class OutcomeSerializer < ApplicationSerializer
   end
 
   def group_id
-    cache_fetch(:polls_by_id, poll_id).group_id
+    (cache_fetch(:polls_by_id, poll_id) { object.poll }).group_id
   end
 end

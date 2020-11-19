@@ -79,10 +79,10 @@ class DiscussionSerializer < ApplicationSerializer
   end
 
   def created_event
-    cache_fetch([:events_by_discussion_id, 'new_discussion'], object.id)
+    cache_fetch([:events_by_kind_and_eventable_id, 'new_discussion'], object.id)
   end
 
   def forked_event
-    cache_fetch([:events_by_discussion_id, 'discussion_forked'], object.id) { nil }
+    cache_fetch([:events_by_kind_and_eventable_id, 'discussion_forked'], object.id) { nil }
   end
 end

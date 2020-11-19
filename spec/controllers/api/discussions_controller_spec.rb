@@ -21,7 +21,8 @@ describe API::DiscussionsController do
   }}
 
   def create_discussion(**args)
-    discussion = create :discussion, **args
+    discussion = build :discussion, **args
+    discussion.group.add_member! discussion.author
     DiscussionService.create(discussion: discussion, actor: discussion.author)
     discussion
   end

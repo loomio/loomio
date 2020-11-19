@@ -28,8 +28,10 @@ class EventSerializer < ApplicationSerializer
     when 'Outcome' then cache_fetch(:outcomes_by_id, object.eventable_id)
     when 'Reaction' then cache_fetch(:reactions_by_id, object.eventable_id)
     when 'Membership' then cache_fetch(:memberships_by_id, object.eventable_id)
+    when 'Group' then cache_fetch(:groups_by_id, object.eventable_id)
+    when 'MembershipRequest' then cache_fetch(:membership_requests_by_id, object.eventable_id)
     else
-      raise "waht is it? #{object.eventable}"
+      raise "waht is it? #{object.eventable} #{object.kind}"
       object.eventable
     end
   end

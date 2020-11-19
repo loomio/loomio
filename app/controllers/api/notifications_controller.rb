@@ -14,8 +14,4 @@ class API::NotificationsController < API::RestfulController
   def accessible_records
     current_user.notifications.includes(:actor, :event).order(id: :desc)
   end
-
-  def default_scope
-    super.merge(cache: RecordCache.for_notifications(collection, current_user.id, exclude_types))
-  end
 end

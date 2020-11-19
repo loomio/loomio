@@ -46,6 +46,7 @@ class PollSerializer < ApplicationSerializer
 
   hide_when_discarded [:details, :title, :author_id]
 
+
   def current_outcome
     cache_fetch(:outcomes_by_poll_id, object.id) { nil }
   end
@@ -59,7 +60,7 @@ class PollSerializer < ApplicationSerializer
   end
 
   def created_event
-    cache_fetch([:events_by_poll_id, 'poll_created'], object.id)
+    cache_fetch([:events_by_kind_and_eventable_id, 'poll_created'], object.id) { nil }
   end
 
   def include_mentioned_usernames?

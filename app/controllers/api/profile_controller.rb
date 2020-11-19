@@ -7,7 +7,7 @@ class API::ProfileController < API::RestfulController
   def groups
     self.collection = GroupQuery.visible_to(user: current_user)
 
-    cache = RecordCache.for_groups(collection, current_user.id, exclude_types)
+    cache = RecordCache.for_collection(collection, current_user.id, exclude_types)
 
     respond_with_collection serializer: GroupSerializer, root: :groups, scope: {cache: cache, exclude_types: exclude_types}
   end
@@ -118,7 +118,7 @@ class API::ProfileController < API::RestfulController
     if current_user.restricted
       Restricted::UserSerializer
     else
-      CurrentUserSerialzier
+      CurrentUserSerializer
     end
   end
 

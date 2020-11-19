@@ -84,7 +84,7 @@ FactoryBot.define do
     sequence(:name) { Faker::Name.name }
     description { 'A description for this group' }
     handle { GroupService.suggest_handle(name: name, parent_handle: parent&.handle) }
-    group_privacy { 'open' }
+    group_privacy { 'closed' }
     discussion_privacy_options { 'public_or_private' }
     members_can_add_members { true }
     after(:create) do |group|

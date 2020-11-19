@@ -1,4 +1,4 @@
-class CurrentUserSerialzier < UserSerializer
+class CurrentUserSerializer < UserSerializer
   attributes :email, :email_when_proposal_closing_soon, :email_catch_up,
              :email_when_mentioned, :email_on_participation, :selected_locale,
              :locale, :default_membership_volume, :experiences,

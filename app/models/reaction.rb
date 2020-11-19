@@ -12,10 +12,6 @@ class Reaction < ApplicationRecord
 
   alias :author :user
 
-  def author_id
-    user_id
-  end
-
   def message_channel
     case reactable
     when Outcome, Stance, Poll then reactable.poll.message_channel
