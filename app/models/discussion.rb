@@ -122,6 +122,10 @@ class Discussion < ApplicationRecord
     reader_ids
   end
 
+  def user_id
+    author_id
+  end
+
   def author
     super || AnonymousUser.new
   end
