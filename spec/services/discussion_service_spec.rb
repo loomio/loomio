@@ -147,10 +147,13 @@ describe 'DiscussionService' do
   describe 'update_reader' do
     context 'success' do
       it 'can save reader attributes' do
+        stance = poll.stances.create!(participant_id: user.id, volume: 2)
         DiscussionService.update_reader discussion: discussion,
                                         params: { volume: :mute },
                                         actor: user
         expect(DiscussionReader.for(user: user, discussion: discussion).volume).to eq "mute"
+        expect(stance.reload.volume).to eq "mute"
+
       end
     end
 

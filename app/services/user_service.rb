@@ -68,6 +68,7 @@ class UserService
     if params[:apply_to_all]
       user.memberships.update_all(volume: Membership.volumes[params[:volume]])
       user.discussion_readers.update_all(volume: Membership.volumes[params[:volume]])
+      user.stances.update_all(volume: Membership.volumes[params[:volume]])
     end
     EventBus.broadcast('user_set_volume', user, actor, params)
   end

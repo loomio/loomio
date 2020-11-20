@@ -73,6 +73,12 @@ class Membership < ApplicationRecord
       where("discussion_readers.user_id": user_id)
   end
 
+  def stances
+    Stance.joins(:poll).
+           where("polls.group_id": group_id).
+           where(participant_id: user_id)
+  end
+
   private
 
   def set_volume
