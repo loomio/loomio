@@ -110,7 +110,7 @@ class Group < ApplicationRecord
   define_counter_cache(:pending_memberships_count) { |g| g.memberships.pending.count }
   define_counter_cache(:admin_memberships_count)   { |g| g.admin_memberships.count }
   define_counter_cache(:public_discussions_count)  { |g| g.discussions.visible_to_public.count }
-  define_counter_cache(:discussions_count)         { |g| g.discussions.count }
+  define_counter_cache(:discussions_count)         { |g| g.discussions.kept.count }
   define_counter_cache(:open_discussions_count)    { |g| g.discussions.is_open.count }
   define_counter_cache(:closed_discussions_count)  { |g| g.discussions.is_closed.count }
   define_counter_cache(:subgroups_count)           { |g| g.subgroups.published.count }
