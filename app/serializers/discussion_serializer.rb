@@ -69,7 +69,7 @@ class DiscussionSerializer < ApplicationSerializer
   end
 
   def active_polls
-    cache_fetch(:polls_by_discussion_id, object.id) { object.active_polls }
+    cache_fetch(:polls_by_discussion_id, object.id) { [] }
   end
 
   def reader
@@ -83,6 +83,6 @@ class DiscussionSerializer < ApplicationSerializer
   end
 
   def forked_event
-    cache_fetch([:events_by_kind_and_eventable_id, 'discussion_forked'], object.id) { object.forked_event }
+    cache_fetch([:events_by_kind_and_eventable_id, 'discussion_forked'], object.id) { nil }
   end
 end

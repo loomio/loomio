@@ -26,7 +26,7 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def actor
-    cache_fetch(:users_by_id, object.actor_id) { object.actor }
+    cache_fetch(:users_by_id, object.actor_id) { nil }
   end
 
   def user
@@ -50,9 +50,9 @@ class ApplicationSerializer < ActiveModel::Serializer
     end
   end
 
-  def cache_fetch(key_or_keys, id, &block)
+  def cache_fetch(key_or_keys, id)
     return nil if id.nil?
-    scope[:cache].fetch(key_or_keys, id, &block)
+    scope[:cache].fetch(key_or_keys, id) { yield }
   end
 
   def include_type?(type)

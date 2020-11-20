@@ -1,6 +1,6 @@
 class GroupQuery
   def self.start
-    Group.includes(:subscription, :creator, :parent)
+    Group.includes(:subscription, :creator, :parent, :default_group_cover)
   end
 
   def self.visible_to(user: LoggedOutUser.new, chain: start, show_public: false)

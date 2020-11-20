@@ -32,22 +32,22 @@ class RecordCache
     when 'Discussion'
       collection_ids = collection.map(&:id)
       obj.add_discussions_discussion_readers(collection)
-      obj.add_groups_subscriptions_memberships Group.includes(:subscription).where(id: ids_and_parent_ids(Group, collection.map(&:group_id)))
+      obj.add_groups_subscriptions_memberships Group.includes(:subscription, :default_group_cover).where(id: ids_and_parent_ids(Group, collection.map(&:group_id)))
       obj.add_polls_options_stances_choices Poll.active.where(discussion_id: collection_ids)
-      obj.add_events(Event.where(kind: 'new_discussion', eventable_id: collection_ids))
+      # obj.add_events(Event.where(kind: 'new_discussion', eventable_id: collection_ids))
 
     when 'Reaction'
       obj.user_ids.concat collection.map(&:user_id)
 
     when 'Notification'
-      obj.add_events_eventables Event.where(id: collection.map(&:event_id))
+      obj.add_events_eventables Event.includes(:eventable).where(id: collection.map(&:event_id))
       obj.user_ids.concat collection.map(&:user_id)
 
     when 'Group'
-      obj.add_groups_subscriptions_memberships Group.includes(:subscription).where(id: ids_and_parent_ids(Group, collection.map(&:id)))
+      obj.add_groups_subscriptions_memberships Group.includes(:subscription, :default_group_cover).where(id: ids_and_parent_ids(Group, collection.map(&:id)))
 
     when 'Membership'
-      obj.add_groups Group.where(id: collection.map(&:group_id))
+      obj.add_groups Group.includes(:default_group_cover).where(id: collection.map(&:group_id))
       obj.user_ids.concat collection.map(&:user_id).concat(collection.map(&:inviter_id)).compact.uniq
 
     when 'Poll'
@@ -92,55 +92,7 @@ class RecordCache
 
     else
       if item.is_a?(Event)
-        ids = {
-          event: [],
-          discussion: [],
-          group: [],
-          comment: [],
-          stance: [],
-          outcome: [],
-          poll: [],
-          reaction: [],
-          membership: []
-        }.with_indifferent_access
-
-        eventable_types = []
-
-        collection.each do |e|
-          ids[:discussion].push e.discussion_id if e.discussion_id
-          ids[e.eventable_type.underscore].push e.eventable_id
-          eventable_types.push e.eventable_type
-        end
-
-        ids.keys.each { |key| ids[key] = ids[key].uniq }
-
-
-        # Eventable specific stuff
-        # comments
-        ids[:comment].concat all_parent_ids_for(Comment, ids[:comment])
-
-        if ['Stance', 'Outcome'].include? item.eventable_type
-          ids[:poll].concat [item.eventable.poll_id]
-        end
-
-        # find related group ids
-        unless exclude_types.include?('group')
-          ids[:group].concat Discussion.where(id: ids[:discussion]).pluck(:group_id)
-          ids[:group].concat Poll.where(id: ids[:poll]).pluck(:group_id)
-          # ids[:group].concat all_parent_ids_for(Group, ids[:group])
-        end
-
-        obj.add_polls_options_stances_choices Poll.where(id: ids[:poll])
-        obj.add_discussions_discussion_readers Discussion.where(id: ids[:discussion])
-
-        obj.add_events_eventables   Event.includes(:eventable).where(id: ids_and_parent_ids(Event, collection.map(&:id)))
-        obj.add_outcomes            Outcome.where(poll_id: ids[:poll])
-        obj.add_groups_subscriptions_memberships Group.includes(:subscription).where(id: ids[:group])
-        obj.add_comments            Comment.where(id: ids[:comment])
-        # obj.add_reactions           Reaction.where(id: ids[:reaction])
-        # obj.add_group_subscriptions Group.includes(:subscription).where(id: ids[:group])
-        # obj.add_events              Event.where(kind: 'discussion_forked', eventable_id: @ids[:discussion])
-        # obj.add_events              Event.where(kind: 'poll_created', eventable_id: @ids[:poll])
+        obj.add_events_complete(collection)
       else
         raise "unrecognised item: #{item.class}"
       end
@@ -148,6 +100,7 @@ class RecordCache
 
     obj.add_users User.where(id: obj.user_ids)
     obj.add_events Event.where(kind: 'new_discussion', eventable_id: obj.discussion_ids)
+    obj.add_events Event.where(kind: 'discussion_forked', eventable_id: obj.discussion_ids)
     # puts "finished case"
     # puts obj.scope.keys
     # puts obj.scope[:events_by_kind_and_eventable_id]
@@ -155,6 +108,46 @@ class RecordCache
     # puts obj.scope[:polls_by_id]
     # puts obj.scope[:stances_by_id]
     obj
+  end
+
+  def add_events_complete(collection)
+    ids = {discussion: [], comment: [], group: [], poll: []}.with_indifferent_access
+
+
+    Event.includes(:eventable).where(id: collection.map(&:id)).each do |e|
+      ids[:discussion].push e.discussion_id if e.discussion_id
+      ids[e.eventable_type.underscore] ||= []
+      ids[e.eventable_type.underscore].push e.eventable_id
+      if ['Stance', 'Outcome', 'PollOption'].include? e.eventable_type
+        ids[:poll].push e.eventable.poll_id
+      end
+    end
+
+    ids.keys.each { |key| ids[key] = ids[key].uniq }
+
+    # Eventable specific stuff
+    # comments
+    ids[:comment].concat self.class.all_parent_ids_for(Comment, ids[:comment]) if ids[:comment].any?
+
+
+    # find related group ids
+    unless exclude_types.include?('group')
+      ids[:group].concat Discussion.where(id: ids[:discussion]).pluck(:group_id)
+      ids[:group].concat Poll.where(id: ids[:poll]).pluck(:group_id)
+      # ids[:group].concat all_parent_ids_for(Group, ids[:group])
+    end
+
+    add_polls_options_stances_choices Poll.where(id: ids[:poll])
+    add_discussions_discussion_readers Discussion.where(id: ids[:discussion])
+
+    add_events_eventables   Event.includes(:eventable).where(id: self.class.ids_and_parent_ids(Event, collection.map(&:id)))
+    add_outcomes            Outcome.where(poll_id: ids[:poll])
+    add_groups_subscriptions_memberships Group.includes(:subscription, :default_group_cover).where(id: ids[:group])
+    add_comments            Comment.where(id: ids[:comment])
+    # obj.add_reactions           Reaction.where(id: ids[:reaction])
+    # obj.add_group_subscriptions Group.includes(:subscription).where(id: ids[:group])
+    # obj.add_events              Event.where(kind: 'discussion_forked', eventable_id: @ids[:discussion])
+    # obj.add_events              Event.where(kind: 'poll_created', eventable_id: @ids[:poll])
   end
 
   def self.ids_and_parent_ids(klass, ids)
