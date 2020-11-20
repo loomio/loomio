@@ -11,6 +11,10 @@ class Events::PollOptionAdded < Event
 
   private
 
+  def notify_author?
+    Queries::UsersByVolumeQuery.email_notifications(eventable).exists?(poll.author_id)
+  end
+  
   def notification_recipients
     User.where(id: eventable.author_id)
   end
