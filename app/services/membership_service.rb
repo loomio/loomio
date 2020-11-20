@@ -58,11 +58,19 @@ class MembershipService
     actor.ability.authorize! :update, membership
     val = Membership.volumes[params[:volume]]
     if params[:apply_to_all]
-      actor.memberships.where(group_id: membership.group.parent_or_self.id_and_subgroup_ids).update_all(volume: val)
-      actor.discussion_readers.update_all(volume: val)
+      group_ids = membership.group.parent_or_self.id_and_subgroup_ids
+      actor.memberships.where(group_id: group_ids).update_all(volume: val)
+      actor.discussion_readers.joins(:discussion).
+            where('discussions.group_id': group_ids).
+            update_all(volume: val)
+      Stance.joins(:poll).
+             where('polls.group_id': group_ids).
+             where(participant_id: actor.id).
+             update_all(volume: val)
     else
       membership.set_volume! params[:volume]
       membership.discussion_readers.update_all(volume: val)
+      membership.stances.update_all(volume: val)
     end
   end
 

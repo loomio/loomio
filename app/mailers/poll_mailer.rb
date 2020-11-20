@@ -60,7 +60,7 @@ class PollMailer < BaseMailer
       from: from_user_via_loomio(@event.user),
       reply_to: reply_to_address_with_group_name(model: @event.eventable, user: @recipient),
       subject_prefix: subject_prefix(@poll),
-      subject_key: "poll_mailer.subject.#{@action_name}#{@poll.wip? ? "_wip" : ''}",
+      subject_key: "poll_mailer.subject.#{@action_name}",
       subject_params: {
         group: @poll.group.full_name,
         title: @poll.title,
