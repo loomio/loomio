@@ -4,7 +4,8 @@ import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import i18n from '@/i18n.coffee'
 import * as Sentry from '@sentry/browser'
-import * as Integrations from '@sentry/integrations'
+import { Vue as VueIntegration } from "@sentry/integrations"
+import { Integrations } from "@sentry/tracing"
 import { forEach } from 'lodash'
 
 export default (callback) ->
@@ -31,11 +32,10 @@ export default (callback) ->
           ]
           dsn: AppConfig.sentry_dsn
           integrations: [
-            new Integrations.Vue
-              Vue: Vue
-              attachProps: true
-              logErrors: true
+            new Integrations.BrowserTracing(),
+            new VueIntegration({Vue: Vue, attachProps: true, logErrors: true, tracing: true})
           ]
+          tracesSampleRate: 1.0
 
         Sentry.configureScope (scope) ->
           scope.setTag("loomio_version", AppConfig.version)
