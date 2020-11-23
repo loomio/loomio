@@ -64,7 +64,7 @@ class API::ProfileController < API::RestfulController
   end
 
   def email_status
-    respond_with_resource(serializer: Pending::UserSerializer)
+    respond_with_resource(serializer: Pending::UserSerializer, scope: {})
   end
 
   def email_exists
