@@ -33,8 +33,8 @@ class PollService
     Events::PollEdited.publish!(poll: poll,
                                 actor: actor,
                                 recipient_user_ids: users.pluck(:id),
-                                recipient_audience: params[:recipient_audience],
-                                recipient_message: params[:recipient_message]) if is_new_version
+                                recipient_audience: params[:recipient_audience].presence,
+                                recipient_message: params[:recipient_message].presence) if is_new_version
   end
 
 

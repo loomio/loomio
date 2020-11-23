@@ -56,8 +56,8 @@ class DiscussionService
     Events::DiscussionEdited.publish!(discussion: discussion,
                                       actor: actor,
                                       recipient_user_ids: users.pluck(:id),
-                                      recipient_audience: params[:recipient_audience],
-                                      recipient_message: params[:recipient_message])
+                                      recipient_audience: params[:recipient_audience].presence,
+                                      recipient_message: params[:recipient_message].presence)
   end
 
   def self.announce(discussion:, actor:, params:)
