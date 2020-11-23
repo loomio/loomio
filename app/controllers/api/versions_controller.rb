@@ -13,6 +13,10 @@ class API::VersionsController < API::RestfulController
   def serializer_class
     VersionSerializer
   end
+  
+  def serializer_root
+    'versions'
+  end
 
   def model
     load_and_authorize(:group, optional:true) ||
@@ -22,5 +26,4 @@ class API::VersionsController < API::RestfulController
     load_and_authorize(:poll, optional:true) ||
     load_and_authorize(:outcome, optional:false)
   end
-
 end
