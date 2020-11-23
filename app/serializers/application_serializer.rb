@@ -52,7 +52,11 @@ class ApplicationSerializer < ActiveModel::Serializer
 
   def cache_fetch(key_or_keys, id)
     return nil if id.nil?
-    scope[:cache].fetch(key_or_keys, id) { yield }
+    if scope.has_key?(:cache)
+      scope[:cache].fetch(key_or_keys, id) { yield }
+    else
+      yield
+    end
   end
 
   def include_type?(type)
