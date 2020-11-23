@@ -35,7 +35,7 @@ export default (callback) ->
             new Integrations.BrowserTracing(),
             new VueIntegration({Vue: Vue, attachProps: true, logErrors: true, tracing: true})
           ]
-          tracesSampleRate: 1.0
+          tracesSampleRate: AppConfig.features.app.sentry_sample_rate || 0.1
 
         Sentry.configureScope (scope) ->
           scope.setTag("loomio_version", AppConfig.version)
