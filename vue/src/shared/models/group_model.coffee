@@ -168,7 +168,7 @@ export default class GroupModel extends BaseModel
       AppConfig.theme.icon_src
 
   coverUrl: (size = 'large') ->
-    if @parent() && !@hasCustomCover
+    if @parentId && !@hasCustomCover
       @parent().coverUrl(size)
     else
       @coverUrls[size]
