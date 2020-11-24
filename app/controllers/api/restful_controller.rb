@@ -4,13 +4,13 @@ class API::RestfulController < API::SnorlaxBase
   include ::ProtectedFromForgery
   include ::LoadAndAuthorize
   include ::CurrentUserHelper
-  include ::SentryRavenHelper
+  include ::SentryHelper
   include ::PendingActionsHelper
 
   before_action :handle_pending_actions
   around_action :use_preferred_locale       # LocalesHelper
   before_action :set_paper_trail_whodunnit  # gem 'paper_trail'
-  before_action :set_raven_context          # SentryRavenHelper
+  before_action :set_sentry_context          # SentryHelper
   after_action :associate_user_to_visit
 
   private
