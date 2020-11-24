@@ -32,7 +32,7 @@ module Boot
           app:               AppConfig.app_features
         },
         inlineTranslation: {
-          isAvailable:       TranslationService.translator.present?,
+          isAvailable:       TranslationService.available?,
           supportedLangs:    AppConfig.translate_languages
         },
         pollTemplates:     AppConfig.poll_templates,

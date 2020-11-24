@@ -151,6 +151,7 @@ export default new class ThreadService
 
     translate_thread:
       icon: 'mdi-translate'
+      name: 'common.action.translate'
       menu: true
       canPerform: -> AbilityService.canTranslate(discussion)
       perform: -> Session.user() && discussion.translate(Session.user().locale)
