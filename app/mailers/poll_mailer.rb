@@ -40,7 +40,7 @@ class PollMailer < BaseMailer
     @action_name = action_name
     @poll = @event.eventable.poll
 
-    return if Regexp.new(ENV['SPAM_REGEX']).match(@recipient.email)
+    return if ENV['SPAM_REGEX'] && Regexp.new(ENV['SPAM_REGEX']).match(@recipient.email)
     return if User::BOT_EMAILS.values.include?(@recipient.email)
     headers = {
       "Precedence":               :bulk,
