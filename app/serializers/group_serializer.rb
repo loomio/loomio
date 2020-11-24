@@ -4,6 +4,7 @@ class GroupSerializer < ApplicationSerializer
              :handle,
              :name,
              :full_name,
+             :content_locale,
              :description,
              :description_format,
              :logo_url_medium,

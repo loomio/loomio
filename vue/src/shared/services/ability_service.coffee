@@ -196,8 +196,9 @@ export default new class AbilityService
   canTranslate: (model) ->
     return false if model.discardedAt
     AppConfig.inlineTranslation.isAvailable &&
-    model.author().locale != Session.user().locale &&
-    Object.keys(model.translation).length == 0
+    Object.keys(model.translation).length == 0 &&
+    (model.contentLocale && model.contentLocale != Session.user().locale) ||
+    (!model.contentLocale && model.author().locale != Session.user().locale)
 
   canMovePoll: (poll) ->
     !poll.discussionId && poll.adminsInclude(Session.user())

@@ -14,6 +14,7 @@ class DiscussionSerializer < ApplicationSerializer
              :key,
              :group_id,
              :title,
+             :content_locale,
              :description,
              :description_format,
              :ranges,

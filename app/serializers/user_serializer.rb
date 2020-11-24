@@ -1,5 +1,12 @@
 class UserSerializer < AuthorSerializer
-  attributes :short_bio, :short_bio_format, :location, :email_verified, :has_password, :email, :attachments
+  attributes :short_bio,
+             :short_bio_format,
+             :content_locale,
+             :location,
+             :email_verified,
+             :has_password,
+             :email,
+             :attachments
 
   def avatar_kind
     if !object.email_verified && !object.name
