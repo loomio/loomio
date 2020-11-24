@@ -29,7 +29,7 @@ module HasRichText
   end
 
   def caclulate_content_locale
-    combined_text = rich_text_fields.map {|field| self[field] }
+    combined_text = self.class.rich_text_fields.map {|field| self[field] }.join(' ')
     stripped_text = Rails::Html::WhiteListSanitizer.new.sanitize(combined_text, tags: [])
     result = CLD.detect_language stripped_text
     self.content_locale = result[:code] if result[:reliable]
