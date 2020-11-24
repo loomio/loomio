@@ -28,7 +28,9 @@ gem 'browser', '~> 5.1.0'
 gem "aws-sdk-s3", require: false
 gem 'mini_magick'
 gem 'image_processing', '~> 1.12'
-gem "sentry-raven"
+gem "sentry-ruby"
+gem "sentry-rails"
+gem "sentry-sidekiq"
 gem 'http_accept_language'
 gem 'sprockets', '3.7.2'
 gem 'sprockets-rails', require: 'sprockets/railtie'
@@ -54,7 +56,7 @@ gem 'redis-rails'
 gem 'hiredis'
 gem 'connection_pool'
 gem 'ruby-saml'
-gem 'google-cloud-translate', '1.4.0'
+gem 'google-cloud-translate'
 gem 'slack_mrkdwn'
 gem 'puma'
 gem 'reverse_markdown'

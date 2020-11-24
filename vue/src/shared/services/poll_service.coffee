@@ -105,6 +105,7 @@ export default new class PollService
 
     translate_poll:
       icon: 'mdi-translate'
+      name: 'common.action.translate'
       menu: true
       canPerform: ->
         AbilityService.canTranslate(poll)
