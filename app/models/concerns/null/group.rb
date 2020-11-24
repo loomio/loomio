@@ -28,6 +28,7 @@ module Null::Group
       parent
       id
       key
+      locale
       update_polls_count
       update_closed_polls_count
       update_discussions_count

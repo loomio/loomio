@@ -72,7 +72,7 @@ class Stance < ApplicationRecord
   alias :author :participant
 
   def locale
-    author&.locale || group&.locale
+    author&.locale || group&.locale || poll.author.locale
   end
 
   def body
