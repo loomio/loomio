@@ -22,7 +22,7 @@ module Null::User
   end
 
   def empty_methods
-    [:groups, :group_ids, :adminable_group_ids, :group_ids, :attachments, :groups]
+    [:groups, :group_ids, :adminable_group_ids, :group_ids, :attachments, :groups, :guest_discussion_ids]
   end
 
   def hash_methods

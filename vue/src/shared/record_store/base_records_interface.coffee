@@ -1,12 +1,31 @@
 import RestfulClient from './restful_client'
 import utils         from './utils'
-import {pick, each, merge, keys, isNumber, isString, isArray} from 'lodash'
+import {pick, each, merge, keys, isNumber, isString, isArray, debounce} from 'lodash'
 import Vue           from 'vue'
 
 export default class BaseRecordsInterface
   views: []
   model: 'undefinedModel'
 
+  missingIds: []
+
+  fetchMissing: debounce ->
+    xids = @missingIds.join('x')
+    return if xids.length == 0
+
+    @fetch
+      path: ''
+      params:
+        xids: xids
+
+    @missingIds = []
+  , 500
+
+  addMissing: (id) ->
+    @missingIds.push(id)
+    @fetchMissing()
+
+  nullModel: -> null
   # override this if your apiEndPoint is not the model.plural
   apiEndPoint: null
 

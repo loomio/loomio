@@ -49,7 +49,7 @@ export default class GroupModel extends BaseModel
     @belongsTo 'parent', from: 'groups'
 
   parentOrSelf: ->
-    if @parent() then @parent() else @
+    if @parentId then @parent() else @
 
   group: -> @
 
@@ -104,6 +104,12 @@ export default class GroupModel extends BaseModel
 
   members: ->
     @recordStore.users.collection.find(id: {$in: @memberIds()})
+
+  parentsAndSelf: ->
+    @selfAndParents().reverse()
+
+  selfAndParents: ->
+    compact [@].concat(@parentId && @parent().parentsAndSelf())
 
   parentAndSelfMemberships: ->
     @recordStore.memberships.collection.find(groupId: {$in: @parentOrSelf().selfAndSubgroupIds()})
@@ -162,7 +168,7 @@ export default class GroupModel extends BaseModel
       AppConfig.theme.icon_src
 
   coverUrl: (size = 'large') ->
-    if @parent() && !@hasCustomCover
+    if @parentId && !@hasCustomCover
       @parent().coverUrl(size)
     else
       @coverUrls[size]

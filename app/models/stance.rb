@@ -39,7 +39,6 @@ class Stance < ApplicationRecord
 
   before_save :update_stance_choices_cache
 
-  default_scope { includes(:stance_choices) }
   scope :latest,         -> { where(latest: true).where(revoked_at: nil) }
   scope :admin,         ->  { where(admin: true) }
   scope :newest_first,   -> { order("cast_at DESC NULLS LAST") }
@@ -70,6 +69,14 @@ class Stance < ApplicationRecord
   delegate :title,          to: :poll
 
   alias :author :participant
+
+  def author_id
+    participant_id
+  end
+
+  def user_id
+    participant_id
+  end
 
   def locale
     author&.locale || group&.locale || poll.author.locale
@@ -112,8 +119,9 @@ class Stance < ApplicationRecord
     end
   end
 
-  def participant
-    (!participant_id || poll.anonymous?) ? AnonymousUser.new : super
+  def participant(bypass = false)
+    super() if bypass
+    (!participant_id || poll.anonymous?) ? AnonymousUser.new : super()
   end
 
   def real_participant

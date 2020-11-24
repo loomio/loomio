@@ -12,7 +12,7 @@ import ThreadService  from '@/shared/services/thread_service'
 
 import { pickBy, identity, camelCase, first, last, isNumber } from 'lodash'
 
-excludeTypes = 'group discussion author'
+excludeTypes = 'group discussion'
 
 export default
   components:

@@ -57,7 +57,7 @@ v-card
         span(v-if='!poll.translation.title') {{poll.title}}
         translation(v-if="poll.translation.title" :model='poll', field='title')
         v-chip.ml-3(outlined small color="info" v-t="'poll_types.' + poll.pollType")
-    v-card-text
+    .px-4
       poll-common-set-outcome-panel(:poll='poll' v-if="!outcome")
       poll-common-outcome-panel(:outcome='outcome' v-if="outcome")
       poll-common-details-panel(:poll='poll')

@@ -65,7 +65,6 @@ class Poll < ApplicationRecord
 
   has_many :documents, as: :model, dependent: :destroy
 
-  default_scope { includes(:poll_options) }
   scope :active, -> { kept.where('polls.closed_at': nil) }
   scope :closed, -> { kept.where("polls.closed_at IS NOT NULL") }
   scope :search_for, ->(fragment) { kept.where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
@@ -133,6 +132,17 @@ class Poll < ApplicationRecord
 
   delegate :locale, to: :author
 
+  def user_id
+    author_id
+  end
+
+  def create_missing_created_event!
+    self.events.create(
+      kind: created_event_kind,
+      user_id: author_id,
+      created_at: created_at)
+  end
+
   def existing_member_ids
     voter_ids
   end
@@ -145,7 +155,6 @@ class Poll < ApplicationRecord
     return 0 if voters_count == 0
     ((decided_voters_count.to_f / voters_count) * 100).to_i
   end
-
 
   def voters
     anonymous? ? User.none : super

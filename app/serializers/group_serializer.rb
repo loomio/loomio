@@ -28,7 +28,6 @@ class GroupSerializer < ApplicationSerializer
              :accepted_memberships_count,
              :membership_granted_upon,
              :discussion_privacy_options,
-             :has_discussions,
              :admin_memberships_count,
              :archived_at,
              :attachments,
@@ -63,12 +62,21 @@ class GroupSerializer < ApplicationSerializer
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
 
   def current_user_membership
-    scope && scope[:current_user] && object.membership_for(scope[:current_user])
+    cache_fetch(:memberships_by_group_id, object.id) { nil }
+  end
+
+  def parent
+    cache_fetch(:groups_by_id, object.parent_id) { nil }
   end
 
   def subscription
-    sub = Subscription.for(object)
-    if (current_user_membership && sub)
+    sub = Subscription.new
+
+    if object.subscription_id
+      sub = cache_fetch(:subscriptions_by_group_id, object.id) { Subscription.new }
+    end
+
+    if (current_user_membership)
       {
         max_members:     sub.max_members,
         max_threads:     sub.max_threads,
@@ -88,10 +96,6 @@ class GroupSerializer < ApplicationSerializer
         members_count:   sub.members_count
       }
     end
-  end
-
-  def include_current_user_membership?
-    super && scope[:current_user]
   end
 
   def include_secret_token?

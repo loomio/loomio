@@ -51,7 +51,7 @@ export default
       @loader = new RecordLoader
         collection: 'stances'
         params:
-          poll_key: @poll.key
+          poll_id: @poll.id
           order: {
             newest_first: "cast_at DESC NULLS LAST"
             undecided_first: "cast_at DESC NULLS FIRST"

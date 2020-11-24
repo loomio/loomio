@@ -4,7 +4,7 @@ Loomio::Application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.log_level = ENV.fetch('RAILS_LOG_LEVEL', :debug)
   config.cache_classes = false
-  # config.lograge.enabled = true
+  config.lograge.enabled = true
 
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
