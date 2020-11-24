@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   include ErrorRescueHelper
   include CurrentUserHelper
   include ForceSslHelper
-  include SentryRavenHelper
+  include SentryHelper
   include PrettyUrlHelper
   include LoadAndAuthorize
   include EmailHelper
@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   around_action :use_preferred_locale       # LocalesHelper
   before_action :set_last_seen_at           # CurrentUserHelper
   before_action :handle_pending_actions     # PendingActionsHelper
-  before_action :set_raven_context
+  before_action :set_sentry_context
   before_action :ensure_canonical_host
 
   helper_method :current_user
