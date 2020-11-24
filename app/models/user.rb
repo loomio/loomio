@@ -185,7 +185,7 @@ class User < ApplicationRecord
   end
 
   def is_paying?
-    group_ids = u.group_ids.concat(u.groups.pluck(:parent_id).compact).uniq
+    group_ids = self.group_ids.concat(self.groups.pluck(:parent_id).compact).uniq
     Group.where(id: group_ids).where(parent_id: nil).joins(:subscription).where.not('subscriptions.plan': 'trial').exists?
   end
 
