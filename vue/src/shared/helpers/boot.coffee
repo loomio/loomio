@@ -24,6 +24,8 @@ export default (callback) ->
             "NotFoundError: Failed to execute 'removeChild' on 'Node'",
             "NotFoundError: The object can not be found here",
             "NotFoundError: Node was not found",
+            "null is not an object (evaluating 'r.addEventListener')",
+            "Cannot read property 'addEventListener' of null",
             "ResizeObserver loop limit exceeded",
             "MetaMask detected another web3",
             "AbortError: The operation was aborted",
