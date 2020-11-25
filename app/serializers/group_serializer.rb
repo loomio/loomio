@@ -132,11 +132,15 @@ class GroupSerializer < ApplicationSerializer
   end
 
   private
-  def include_logo_url_medium?
-    object.logo.present?
+  def include_org_memberships_count?
+    object.is_parent?
   end
 
-  def include_org_memberships_count?
+  def include_org_members_count?
+    object.is_parent?
+  end
+
+  def include_org_discussions_count?
     object.is_parent?
   end
 
