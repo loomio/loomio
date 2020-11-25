@@ -12,19 +12,18 @@ class MembershipService
       nil
     end
 
-    existing_membership = Membership.where("id != ?", membership.id).where(group_id: membership.group_id, user_id: actor.id).first
-    update_success = membership.update(user: actor, accepted_at: DateTime.now, saml_session_expires_at: expires_at)
-
-    # can remove this after august
-    if membership.experiences['invited_group_ids'] && membership.inviter
-      Group.where(id: Array(membership.experiences['invited_group_ids'])).each do |group|
-        group.add_member!(actor, inviter: membership.inviter) if membership.inviter.can?(:add_members, group)
-      end
+    # there are cases where we may already have a membership for this user,group
+    # membership isn't persisted, but there is an existing membership with this user_id, group_id.. then return
+    # membership is persisted, but assigned to another user_id (unverified) currently
+    # membership is persisted, assied to this actor and we just want to accept it.
+    if Membership.where("id != ?", membership.id).where(group_id: membership.group_id, user_id: actor.id).exists?
+      membership.destroy
+      return false
     end
 
-    membership.destroy if existing_membership && !update_success
+    membership.update!(user: actor, accepted_at: DateTime.now, saml_session_expires_at: expires_at)
 
-    Events::InvitationAccepted.publish!(membership) if notify && membership.reload.persisted?
+    Events::InvitationAccepted.publish!(membership) if notify
   end
 
   def self.update(membership:, params:, actor:)
