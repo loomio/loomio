@@ -2,6 +2,7 @@ class OutcomeSerializer < ApplicationSerializer
   attributes :id,
              :statement,
              :statement_format,
+             :content_locale,
              :latest,
              :created_at,
              :custom_fields,

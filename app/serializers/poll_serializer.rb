@@ -8,6 +8,7 @@ class PollSerializer < ApplicationSerializer
              :closed_at,
              :closing_at,
              :created_at,
+             :content_locale,
              :cast_stances_pct,
              :custom_fields,
              :decided_voters_count,

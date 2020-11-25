@@ -42,6 +42,7 @@ gem 'ahoy_email', '~> 1.1.0'
 gem 'geocoder', '1.6.4'
 gem 'maxminddb'
 gem 'oj'
+gem "cld"
 gem 'custom_counter_cache', github: "loomio/custom_counter_cache", branch: "rails5"
 gem 'premailer-rails'
 gem 'griddler', github: 'loomio/griddler'
