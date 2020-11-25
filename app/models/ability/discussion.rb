@@ -27,7 +27,7 @@ module Ability::Discussion
 
     can [:announce], ::Discussion do |discussion|
       user.email_verified? &&
-      (discussion.admins.exists?(user.id) || (discussion.group.members_can_announce? && discussion.members.exists?(user.id)))
+      (discussion.admins.exists?(user.id) || (discussion.group.members_can_announce && discussion.members.exists?(user.id)))
     end
 
     can [:update], ::Discussion do |discussion|
