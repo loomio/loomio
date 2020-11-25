@@ -77,37 +77,14 @@ class RecordCache
     when 'Document'
       obj.user_ids.concat collection.map(&:author_id).compact
 
-    when 'PaperTrail::Version'
-      # no cache required
-    when 'Tag'
-      # no cache required
-    when 'Translation'
-      # no cache required
-
-    # when 'Events::NewDiscussion'
-    #   add_discussions(Discussion.where(id: collection.map(:
-    #
-    # when 'Events::NewDiscussion', 'Events::NewComment', 'Events::PollCreated', 'Events::DiscussionReopened',
-    # when 'Events::StanceCreated'
-
     else
-      if item.is_a?(Event)
-        obj.add_events_complete(collection)
-      else
-        raise "unrecognised item: #{item.class}"
-      end
+      obj.add_events_complete(collection) if item.is_a?(Event)
     end
 
     obj.add_users User.where(id: obj.user_ids)
     obj.add_events Event.where(kind: 'new_discussion', eventable_id: obj.discussion_ids)
     obj.add_events Event.where(kind: 'discussion_forked', eventable_id: obj.discussion_ids)
     obj.add_events Event.where(kind: 'poll_created', eventable_id: obj.poll_ids)
-    # puts "finished case"
-    # puts obj.scope.keys
-    # puts obj.scope[:events_by_kind_and_eventable_id]
-    # puts obj.scope[:discussions_by_id]
-    # puts obj.scope[:polls_by_id]
-    # puts obj.scope[:stances_by_id]
     obj
   end
 
