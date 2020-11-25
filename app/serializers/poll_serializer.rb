@@ -60,7 +60,7 @@ class PollSerializer < ApplicationSerializer
   end
 
   def created_event
-    cache_fetch([:events_by_kind_and_eventable_id, 'poll_created'], object.id) { nil }
+    cache_fetch([:events_by_kind_and_eventable_id, 'poll_created'], object.id) { object.created_event }
   end
 
   def include_mentioned_usernames?

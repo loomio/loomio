@@ -101,6 +101,7 @@ class RecordCache
     obj.add_users User.where(id: obj.user_ids)
     obj.add_events Event.where(kind: 'new_discussion', eventable_id: obj.discussion_ids)
     obj.add_events Event.where(kind: 'discussion_forked', eventable_id: obj.discussion_ids)
+    obj.add_events Event.where(kind: 'poll_created', eventable_id: obj.poll_ids)
     # puts "finished case"
     # puts obj.scope.keys
     # puts obj.scope[:events_by_kind_and_eventable_id]
@@ -342,5 +343,9 @@ class RecordCache
 
   def discussion_ids
     scope.fetch(:discussions_by_id, {}).keys
+  end
+
+  def poll_ids
+    scope.fetch(:polls_by_id, {}).keys
   end
 end
