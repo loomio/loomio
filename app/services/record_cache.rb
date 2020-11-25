@@ -32,7 +32,7 @@ class RecordCache
     when 'Discussion'
       collection_ids = collection.map(&:id)
       obj.add_discussions_discussion_readers(collection)
-      obj.add_groups_subscriptions_memberships Group.includes(:subscription, :default_group_cover).where(id: ids_and_parent_ids(Group, collection.map(&:group_id)))
+      obj.add_groups_subscriptions_memberships Group.includes(:subscription, :default_group_cover).where(id: ids_and_parent_ids(Group, collection.map(&:group_id).compact))
       obj.add_polls_options_stances_choices Poll.active.where(discussion_id: collection_ids)
       # obj.add_events(Event.where(kind: 'new_discussion', eventable_id: collection_ids))
 
@@ -48,7 +48,7 @@ class RecordCache
 
     when 'Membership'
       obj.add_groups Group.includes(:default_group_cover).where(id: collection.map(&:group_id))
-      obj.user_ids.concat collection.map(&:user_id).concat(collection.map(&:inviter_id)).compact.uniq
+      obj.user_ids.concat collection.map(&:user_id).concat(collection.map(&:inviter_id).compact).compact.uniq
 
     when 'Poll'
       obj.add_discussions(Discussion.where(id: collection.map(&:discussion_id).uniq.compact))
@@ -72,10 +72,10 @@ class RecordCache
       obj.user_ids.concat collection.map(&:user_id)
 
     when 'MembershipRequest'
-      obj.user_ids.concat collection.map(&:requestor_id).concat(collection.map(&:responder_id))
+      obj.user_ids.concat collection.map(&:requestor_id).concat(collection.map(&:responder_id)).compact.uniq
 
     when 'Document'
-      obj.user_ids.concat collection.map(&:author_id)
+      obj.user_ids.concat collection.map(&:author_id).compact
 
     when 'PaperTrail::Version'
       # no cache required
@@ -300,7 +300,7 @@ class RecordCache
   def add_events_eventables(collection)
     events = collection.includes(:eventable)
     add_events(events)
-    add_eventables(events.map(&:eventable))
+    add_eventables(events.map(&:eventable).compact)
   end
 
   def add_eventables(collection)

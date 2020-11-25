@@ -64,7 +64,7 @@ class MoveCommentsWorker
     # source_discussion.update_items_count
     # source_discussion.items.each(&:update_child_count)
 
-    ActiveStorage::Attachment.where(record: all_events.map(&:eventable)).update_all(group_id: target_discussion.group_id)
+    ActiveStorage::Attachment.where(record: all_events.map(&:eventable).compact).update_all(group_id: target_discussion.group_id)
 
     MessageChannelService.publish_models(target_discussion.items, group_id: target_discussion.group.id)
   end
