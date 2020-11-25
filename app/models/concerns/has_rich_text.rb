@@ -36,7 +36,7 @@ module HasRichText
   end
 
   def update_attachments_group_id
-    UpdateAttachmentsGroupIdWorker.perform_async(self.class.to_s, self.id)
+    UpdateAttachmentsGroupIdWorker.new.perform(self.class.to_s, self.id)
   end
 
   def build_attachments
