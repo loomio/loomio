@@ -5,7 +5,7 @@ describe StanceService do
   let(:disagree) { create :poll_option, poll: poll, name: "disagree" }
   let(:group) { create :group }
   let(:discussion) { create :discussion, group: group }
-  let(:poll) { create :poll, discussion: discussion }
+  let(:poll) { build :poll, discussion: discussion }
   let(:proposal) { create :poll_proposal, discussion: discussion }
   let(:public_poll) { create :poll, anyone_can_participate: true }
   let(:public_stance) { build :stance, poll: public_poll, stance_choices: [agree_choice], participant: nil }

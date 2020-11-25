@@ -8,10 +8,10 @@ module Events::LiveUpdate
   def notify_clients!
     return unless eventable
     if eventable.group_id
-      MessageChannelService.publish_models(self, group_id: eventable.group.id)
+      MessageChannelService.publish_models([self], group_id: eventable.group.id)
     else
       eventable.members.find_each do |user|
-        MessageChannelService.publish_models(self, user_id: user.id)
+        MessageChannelService.publish_models([self], user_id: user.id)
       end
     end
   end

@@ -1,3 +1,7 @@
 class PollOptionSerializer < ApplicationSerializer
-  attributes :name, :display_name, :id, :poll_id, :priority, :color, :score_counts
+  attributes :name, :id, :poll_id, :priority, :score_counts, :color
+
+  def color
+    AppConfig.colors.dig(poll.poll_type, object.priority % AppConfig.colors.length)
+  end
 end

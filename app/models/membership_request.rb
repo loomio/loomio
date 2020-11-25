@@ -30,6 +30,10 @@ class MembershipRequest < ApplicationRecord
   delegate :email,                to: :requestor
   delegate :name,                 to: :requestor
 
+  def user_id
+    requestor_id
+  end
+  
   def approve!(responder)
     set_response_details('approved', responder)
   end

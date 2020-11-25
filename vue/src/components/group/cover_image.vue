@@ -9,7 +9,7 @@ export default
   v-parallax(height="200" :src="group.coverUrl()")
     v-layout(align-center column justify-center)
      h1.display-1.group-cover-image__text
-       span(v-if="group.parent()")
+       span(v-if="group.parentId")
          router-link(:to="urlFor(group.parent())") {{group.parent().name}}
          | &nbsp;
          | &gt;

@@ -9,7 +9,7 @@
     = render "poll_mailer/common/catch_up", poll: poll
 
   .activity-feed
-    - reader = @reader_cache.get_for(discussion)
+    - reader = @cache.fetch(:discussion_readers_by_discussion_id, discussion.id) { DiscussionReader.for(user: @recipient, discussion: discussion) }
     - discussion.items.where('created_at > ?', reader.last_read_at || @time_start).order('created_at').each do |item|
       - next unless ['new_comment', 'new_vote', 'stance_created', 'discussion_closed'].include? item.kind
       = render "discussion_mailer/#{item.kind}", item: item, recipient: @recipient

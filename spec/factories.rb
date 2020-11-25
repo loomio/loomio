@@ -84,7 +84,7 @@ FactoryBot.define do
     sequence(:name) { Faker::Name.name }
     description { 'A description for this group' }
     handle { GroupService.suggest_handle(name: name, parent_handle: parent&.handle) }
-    group_privacy { 'open' }
+    group_privacy { 'closed' }
     discussion_privacy_options { 'public_or_private' }
     members_can_add_members { true }
     after(:create) do |group|
@@ -138,6 +138,7 @@ FactoryBot.define do
       discussion.group.add_member!(discussion.author)
     end
     after(:create) do |discussion|
+      discussion.create_missing_created_event!
       discussion.group.save
     end
   end
@@ -232,6 +233,9 @@ FactoryBot.define do
     created_at { 2.days.ago }
     notify_on_closing_soon { "voters" }
     closing_at { 5.days.from_now }
+    after :create do |poll|
+      poll.create_missing_created_event!
+    end
   end
 
   factory :poll_proposal, class: Poll do

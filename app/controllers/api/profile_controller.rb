@@ -6,7 +6,10 @@ class API::ProfileController < API::RestfulController
 
   def groups
     self.collection = GroupQuery.visible_to(user: current_user)
-    respond_with_collection serializer: GroupSerializer, root: :groups
+
+    cache = RecordCache.for_collection(collection, current_user.id, exclude_types)
+
+    respond_with_collection serializer: GroupSerializer, root: :groups, scope: {cache: cache, exclude_types: exclude_types}
   end
 
   def time_zones
@@ -20,7 +23,7 @@ class API::ProfileController < API::RestfulController
     instantiate_collection do |collection|
       collection.distinct.mention_search(current_user, model, String(params[:q]).strip.delete("\u0000"))
     end
-    respond_with_collection serializer: Simple::UserSerializer, root: :users
+    respond_with_collection serializer: AuthorSerializer, root: :users
   end
 
   def me
@@ -61,7 +64,7 @@ class API::ProfileController < API::RestfulController
   end
 
   def email_status
-    respond_with_resource(serializer: Pending::UserSerializer)
+    respond_with_resource(serializer: Pending::UserSerializer, scope: {})
   end
 
   def email_exists
@@ -111,11 +114,11 @@ class API::ProfileController < API::RestfulController
     User
   end
 
-  def resource_serializer
+  def serializer_class
     if current_user.restricted
       Restricted::UserSerializer
     else
-      Full::UserSerializer
+      CurrentUserSerializer
     end
   end
 

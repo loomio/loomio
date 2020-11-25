@@ -467,29 +467,24 @@ div
 .ProseMirror
   outline: none
 
-
-
 progress
   width: 50%!important
   -webkit-appearance: none
   appearance: none
   background-color: #fff
   border: 1px solid #ccc
-
 progress::-webkit-progress-bar
   background-color: #fff
   border: 1px solid #ccc
-
 progress::-webkit-progress-value
   background-color: lightblue
   border: 0
   transition: width 120ms ease-out, opacity 60ms 60ms ease-in
-
 progress::-moz-progress-bar
   background-color: lightblue
   border: 0
   transition: width 120ms ease-out, opacity 60ms 60ms ease-in
-
+  
 .menubar
   position: sticky
   bottom: 0

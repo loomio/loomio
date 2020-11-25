@@ -5,6 +5,43 @@ class ApplicationSerializer < ActiveModel::Serializer
     super || {}
   end
 
+  def poll
+    cache_fetch(:polls_by_id, object.poll_id) { object.poll }
+  end
+
+  def group
+    cache_fetch(:groups_by_id, object.group_id) { nil }
+  end
+
+  def event
+    cache_fetch(:events_by_id, object.event_id)
+  end
+
+  def discussion
+    cache_fetch(:discussions_by_id, object.discussion_id) { object.discussion }
+  end
+
+  def author
+    cache_fetch(:users_by_id, object.author_id) { object.author }
+  end
+
+  def actor
+    cache_fetch(:users_by_id, object.actor_id) { nil }
+  end
+
+  def user
+    cache_fetch(:users_by_id, object.user_id) { object.user }
+  end
+
+  def inviter
+    cache_fetch(:users_by_id, object.inviter_id) { object.inviter }
+  end
+
+  def creator
+    raise "this aint used is it?"
+    cache_fetch(:users_by_id, object.creator_id) { nil }
+  end
+
   def self.hide_when_discarded(names)
     Array(names).each do |name|
       define_method name do
@@ -13,8 +50,21 @@ class ApplicationSerializer < ActiveModel::Serializer
     end
   end
 
+  def cache_fetch(key_or_keys, id)
+    return nil if id.nil?
+    if scope.has_key?(:cache)
+      scope[:cache].fetch(key_or_keys, id) { yield }
+    else
+      yield
+    end
+  end
+
   def include_type?(type)
     !Array(scope[:exclude_types]).include?(type)
+  end
+
+  def exclude_type?(type)
+    Array(scope[:exclude_types]).include?(type)
   end
 
   def include_reactions?
@@ -90,7 +140,7 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def include_inviter?
-    include_type?('inviter')
+    include_type?('user') && include_type?('inviter')
   end
 
   def include_outcome?

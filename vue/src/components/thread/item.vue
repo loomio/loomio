@@ -59,7 +59,7 @@ export default
       !RangeSet.includesValue(@discussion.readRanges, @event.sequenceId)
 
     headline: ->
-      actor = (@event.actor() || @eventable.author() || Records.users.anonymous())
+      actor = @event.actor()
       @$t eventHeadline(@event, true ), # useNesting
         author:   actor.nameWithTitle(@eventable.group())
         username: actor.username

@@ -11,7 +11,6 @@ class Reaction < ApplicationRecord
   delegate :members, to: :reactable, allow_nil: true
 
   alias :author :user
-
   def author_id
     user_id
   end

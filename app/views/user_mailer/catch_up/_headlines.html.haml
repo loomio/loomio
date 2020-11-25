@@ -1,7 +1,7 @@
 - @groups.each do |group|
-  - next unless @discussions_by_group.has_key?(group)
+  - next unless @discussions_by_group_id.has_key?(group.id)
   %h3=link_to group.full_name, group_url(group, @utm_hash)
   %ul
-    - @discussions_by_group[group].each do |discussion|
+    - @discussions_by_group_id[group.id].each do |discussion|
       %li
         = link_to discussion.title, discussion_url(discussion)

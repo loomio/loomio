@@ -1,7 +1,6 @@
 class Events::CommentRepliedTo < Event
   include Events::Notify::InApp
   include Events::Notify::ByEmail
-  include Events::LiveUpdate
 
   def self.publish!(comment)
     super comment, user: comment.author

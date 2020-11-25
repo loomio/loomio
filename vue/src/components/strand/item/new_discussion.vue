@@ -34,7 +34,7 @@ export default
       @$t("context_panel.thread_status.#{@status}")
 
     groups: ->
-      map compact([@discussion.group().parent(), @discussion.group()]), (group) =>
+      @discussion.group().parentsAndSelf().map (group) =>
         text: group.name
         disabled: false
         to: @urlFor(group)

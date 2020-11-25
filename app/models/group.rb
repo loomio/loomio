@@ -72,6 +72,7 @@ class Group < ApplicationRecord
   has_many :all_subgroups, dependent: :destroy, class_name: 'Group', foreign_key: :parent_id
   include GroupExportRelations
 
+  scope :with_serializer_includes, -> { includes(:default_group_cover, :subscription) }
   scope :archived, -> { where('archived_at IS NOT NULL') }
   scope :published, -> { where(archived_at: nil) }
   scope :parents_only, -> { where(parent_id: nil) }
@@ -175,6 +176,10 @@ class Group < ApplicationRecord
 
   def existing_member_ids
     member_ids
+  end
+
+  def user_id
+    creator_id
   end
 
   def discussion_id

@@ -52,8 +52,9 @@ export default
         collection: 'discussions'
         path: 'dashboard'
         params:
+          exclude_types: 'group'
           filter: @filter
-          per: 50
+          per: 30
 
       @searchLoader = new RecordLoader
         collection: 'searchResults'
