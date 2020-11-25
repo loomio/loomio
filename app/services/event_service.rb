@@ -81,7 +81,7 @@ class EventService
             descendants.position_key like CONCAT(events.position_key, '%')
       ), child_count = (
         SELECT count(children.id) FROM events children
-        WHERE children.parent_id = events.id
+        WHERE children.parent_id = events.id AND children.discussion_id IS NOT NULL
       )
       WHERE discussion_id = #{discussion_id.to_i}")
 
