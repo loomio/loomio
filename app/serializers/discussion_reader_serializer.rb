@@ -11,7 +11,7 @@ class DiscussionReaderSerializer < ApplicationSerializer
              :revoked_at
 
   has_one :user, serializer: AuthorSerializer, root: :users
-  has_one :discussion, serializer: Simple::DiscussionSerializer, root: :discussions
+  # has_one :discussion, serializer: DiscussionSerializer, root: :discussions
 
   def last_read_at
     object.discussion.anonymous_polls_count == 0 ? object.last_read_at : nil
