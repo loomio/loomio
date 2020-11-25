@@ -5,7 +5,6 @@ export default
 <template lang="pug">
 v-main.pb-12
   v-container
-    | error {{error}}
     .error-page.text-center
       .error-page__forbidden(v-t="'error_page.forbidden'" v-if="error.status == 403")
       .error-page__page-not-found(v-t="'error_page.page_not_found'" v-if="error.status == 404")
