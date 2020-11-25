@@ -20,4 +20,8 @@ class API::AttachmentsController < API::RestfulController
     self.collection = [record]
     render json: resources_to_serialize, scope: default_scope, each_serializer: serializer, root: root
   end
+
+  def serializer_class
+    AttachmentSerializer
+  end
 end
