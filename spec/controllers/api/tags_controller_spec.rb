@@ -35,11 +35,11 @@ describe API::TagsController, type: :controller do
       json = JSON.parse(response.body)
 
       tag_ids = json['tags'].map { |t| t['id'] }
-      group_ids = json['groups'].map { |g| g['id'] }
+      # group_ids = json['groups'].map { |g| g['id'] }
 
       expect(tag_ids).to include tag.id
       expect(tag_ids).to_not include another_tag.id
-      expect(group_ids).to include group.id
+      # expect(group_ids).to include group.id
     end
 
     it 'does not return a tag for a group the user is not a member of' do

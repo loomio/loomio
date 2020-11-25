@@ -1,7 +1,6 @@
 import BaseModel from '@/shared/record_store/base_model'
 import i18n from '@/i18n.coffee'
 import {invokeMap, without} from 'lodash'
-import AnonymousUserModel   from '@/shared/models/anonymous_user_model'
 
 export default class EventModel extends BaseModel
   @singular: 'event'
@@ -21,7 +20,7 @@ export default class EventModel extends BaseModel
 
   relationships: ->
     @belongsTo 'parent', from: 'events'
-    @belongsTo 'actor', from: 'users', ifNull: -> new AnonymousUserModel()
+    @belongsTo 'actor', from: 'users'
     @belongsTo 'discussion'
     @hasMany  'notifications'
 

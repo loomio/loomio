@@ -21,7 +21,8 @@ describe API::DiscussionsController do
   }}
 
   def create_discussion(**args)
-    discussion = create :discussion, **args
+    discussion = build :discussion, **args
+    discussion.group.add_member! discussion.author
     DiscussionService.create(discussion: discussion, actor: discussion.author)
     discussion
   end
@@ -920,9 +921,9 @@ describe API::DiscussionsController do
       end
 
       describe 'move poll, stance, outcome' do
-        let!(:poll)    { create(:poll, discussion: source_discussion, group: source_discussion.group)}
-        let!(:stance)  { create(:stance, poll: poll) }
-        let!(:outcome) { create(:outcome, poll: poll) }
+        let!(:poll)    { build(:poll, discussion: source_discussion, group: source_discussion.group)}
+        let!(:stance)  { build(:stance, poll: poll) }
+        let!(:outcome) { build(:outcome, poll: poll) }
 
         let!(:poll_event) { PollService.create(poll: poll, actor: user) }
         let!(:stance_event) { StanceService.create(stance: stance, actor: user) }

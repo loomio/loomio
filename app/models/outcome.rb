@@ -41,6 +41,10 @@ class Outcome < ApplicationRecord
                     events.kind           = 'outcome_review_due')")
   end
 
+  def user_id
+    author_id
+  end
+
   def body_format
     statement_format
   end

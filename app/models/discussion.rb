@@ -58,7 +58,6 @@ class Discussion < ApplicationRecord
   has_many :discussion_tags, dependent: :destroy
   has_many :tags, through: :discussion_tags
 
-
   has_many :items, -> { includes(:user) }, class_name: 'Event', dependent: :destroy
 
   has_many :discussion_readers, dependent: :destroy
@@ -74,7 +73,7 @@ class Discussion < ApplicationRecord
 
   scope :weighted_search_for, ->(query, user, opts = {}) do
     query = connection.quote(query)
-    select(:id, :key, :title, :result_group_name, :result_group_id, :description, :last_activity_at, :rank, "#{query}::text as query")
+    select("*, #{query}::text as query")
     .select("ts_headline(discussions.description, plainto_tsquery(#{query}), 'ShortWord=0') as blurb")
     .from(SearchVector.search_for(query, user, opts))
     .joins("INNER JOIN discussions on subquery.discussion_id = discussions.id")
@@ -121,6 +120,10 @@ class Discussion < ApplicationRecord
 
   def existing_member_ids
     reader_ids
+  end
+
+  def user_id
+    author_id
   end
 
   def author

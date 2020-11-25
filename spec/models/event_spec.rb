@@ -244,6 +244,18 @@ describe Event do
       expect(n.user).to eq poll.author
       expect(n.kind).to eq 'poll_expired'
     end
+
+    it 'does not email the author when asked not to' do
+      poll.author = user_thread_quiet
+      poll.save
+      expect { Events::PollExpired.publish!(poll) }.to_not change { emails_sent }
+    end
+
+    it 'does email the author when asked to' do
+      poll.author = user_thread_loud
+      poll.save
+      expect { Events::PollExpired.publish!(poll) }.to change { emails_sent }
+    end
   end
 
   let(:outcome) { create :outcome, poll: poll, statement: user_mentioned_text, author: author }

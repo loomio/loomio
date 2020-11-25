@@ -41,7 +41,8 @@ export default
         {id: 4, name: 'files',     route: @urlFor(@group, 'files')+query}
         {id: 5, name: 'subgroups',  route: @urlFor(@group, 'subgroups')+query}
         {id: 6, name: 'settings',  route: @urlFor(@group, 'settings')}
-      ].filter (obj) => !(obj.name == "subgroups" && @group.parent())
+      ].filter (obj) => !(obj.name == "subgroups" && @group.parentId)
+
 
     coverImageSrc: ->
       if @group
@@ -78,7 +79,7 @@ v-main
   v-container.group-page.max-width-1024(v-if="group")
     v-img(style="border-radius: 8px" :src="coverImageSrc" eager)
     h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
-      span(v-if="group && group.parent()")
+      span(v-if="group && group.parentId")
         router-link(:to="urlFor(group.parent())") {{group.parent().name}}
         space
         span.grey--text.text--lighten-1 &gt;

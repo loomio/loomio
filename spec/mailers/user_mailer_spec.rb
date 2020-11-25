@@ -74,6 +74,7 @@ describe UserMailer do
     let(:user) { create :user, email_catch_up: true }
     subject { UserMailer.catch_up(user.id).deliver_now }
     let(:discussion) { build :discussion, group: group }
+    let(:invite_only_discussion) { build :discussion, group: nil }
     let(:poll) { build :poll, discussion: discussion }
     let(:comment) { build :comment, discussion: discussion }
     let(:group) { create :group }
@@ -82,6 +83,9 @@ describe UserMailer do
     let(:some_content) do
       group.add_member! discussion.author
       group.add_member! comment.author
+      invite_only_discussion.save!
+      invite_only_discussion.add_guest! user, invite_only_discussion.author
+      DiscussionService.create(discussion: invite_only_discussion, actor: discussion.author)
       DiscussionService.create(discussion: discussion, actor: discussion.author)
       PollService.create(poll: poll, actor: discussion.author)
       CommentService.create(comment: comment, actor: comment.author)

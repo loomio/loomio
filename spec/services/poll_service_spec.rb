@@ -126,7 +126,6 @@ describe PollService do
         PollService.add_options(poll: poll, params: { poll_option_names: ['new_option'] }, actor: user)
       }.to raise_error { CanCan::AccessDenied }
       expect(poll.reload.poll_option_names).to_not include 'new_option'
-      expect(Event.last).to be_nil
     end
 
     it 'does not update when no new options are passed' do

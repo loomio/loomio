@@ -120,6 +120,7 @@ class User < ApplicationRecord
   has_many :group_polls, through: :groups, source: :polls
 
   has_many :discussion_readers, dependent: :destroy
+  has_many :guest_discussions, -> { DiscussionReader.guests}, through: :discussion_readers, source: :discussion
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :documents, foreign_key: :author_id, dependent: :destroy

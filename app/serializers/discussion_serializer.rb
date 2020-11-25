@@ -50,62 +50,39 @@ class DiscussionSerializer < ApplicationSerializer
   has_one :author, serializer: AuthorSerializer, root: :users
   has_one :group, serializer: GroupSerializer, root: :groups
   has_many :active_polls, serializer: PollSerializer, root: :polls
-  has_one :created_event, serializer: Events::BaseSerializer, root: :events
-  has_one :forked_event, serializer: Events::BaseSerializer, root: :events
-
-  has_many :discussion_tags
+  has_one :created_event, serializer: Simple::EventSerializer, root: :events
+  has_one :forked_event, serializer: Simple::EventSerializer, root: :events
+  # has_many :discussion_tags
   hide_when_discarded [:description, :title]
 
-  def include_group?
-    object.group_id
-  end
-
   def tag_names
+    # if we can do it fast, then stop caching tag names?
     object.info['tag_names'] || []
   end
 
-  def discussion_tags
-    Array(Hash(scope).dig(:tag_cache, object.id))
-  end
-
-  def active_polls
-    scope[:poll_cache].get_for(object, hydrate_on_miss: false)
-  end
-
-  def include_active_polls?
-    super && scope[:poll_cache].present?
-  end
+  # def discussion_tags
+  #   Array(Hash(scope).dig(:tag_cache, object.id))
+  # end
 
   def include_mentioned_usernames?
     description_format == "md"
   end
 
+  def active_polls
+    cache_fetch(:polls_by_discussion_id, object.id) { [] }
+  end
+
   def reader
-    @reader ||= scope[:reader_cache].get_for(object) if scope[:reader_cache]
+    cache_fetch(:discussion_readers_by_discussion_id, object.id) do
+      DiscussionReader.new(discussion: object)
+    end
   end
 
   def created_event
-    @created_event ||= scope[:discussion_event_cache].
-      get_for(object, hydrate_on_miss: false).
-      find {|event| event.kind == "new_discussion" } || object.created_event
+    cache_fetch([:events_by_kind_and_eventable_id, 'new_discussion'], object.id) { object.created_event }
   end
 
   def forked_event
-    @forked_event ||= scope[:discussion_event_cache].
-      get_for(object, hydrate_on_miss: false).
-      find {|event| event.kind == "discussion_forked"}
+    cache_fetch([:events_by_kind_and_eventable_id, 'discussion_forked'], object.id) { nil }
   end
-
-  def include_created_event?
-    super && scope[:discussion_event_cache].present?
-  end
-
-  def include_forked_event?
-    super && scope[:discussion_event_cache].present?
-  end
-
-  def scope
-    super || {}
-  end
-
 end

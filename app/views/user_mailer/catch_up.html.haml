@@ -3,11 +3,17 @@
   %h1= t(@subject_key, @subject_params)
   .toc
     =render 'user_mailer/catch_up/headlines'
+
   %hr
+  - if @discussions_by_group_id.has_key? nil
+    %h1= link_to t(:'sidebar.invite_only_threads'), groupless_threads_url
+    - @discussions_by_group_id[nil].each do |discussion|
+      = render 'user_mailer/catch_up/discussion', discussion: discussion
+
   - @groups.each do |group|
-    - next unless @discussions_by_group.has_key?(group)
+    - next unless @discussions_by_group_id.has_key?(group.id)
     %h1= link_to group.full_name, group_url(group)
-    - @discussions_by_group[group].each do |discussion|
+    - @discussions_by_group_id[group.id].each do |discussion|
       = render 'user_mailer/catch_up/discussion', discussion: discussion
 
 %p
