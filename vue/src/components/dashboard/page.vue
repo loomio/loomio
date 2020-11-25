@@ -54,7 +54,7 @@ export default
         params:
           exclude_types: 'group'
           filter: @filter
-          per: 30
+          per: 50
 
       @searchLoader = new RecordLoader
         collection: 'searchResults'

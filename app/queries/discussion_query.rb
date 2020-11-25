@@ -60,6 +60,6 @@ class DiscussionQuery
     when 'show_closed' then chain.is_closed
     when 'all' then chain
     else chain.is_open
-    end.order_by_importance
+    end.order_by_latest_activity
   end
 end
