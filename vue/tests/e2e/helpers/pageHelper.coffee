@@ -77,10 +77,11 @@ module.exports = (test, browser) ->
       while count < length
         test.keys([test.Keys.BACK_SPACE])
         count += 1
+      test.pause(2000)
 
   fillIn: (selector, value, wait) ->
     @waitFor(selector, wait)
-    @clearField(selector)
+    test.clearValue(selector)
     test.setValue(selector, value)
 
   fillInAndEnter: (selector, value, wait) ->

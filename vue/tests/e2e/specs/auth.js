@@ -237,6 +237,7 @@ module.exports = {
     page.loadPathNoApp('setup_invitation_email_to_visitor')
     page.expectText('.invite-people-mailer__body', 'Accept invitation')
     page.click('.base-mailer__button--primary', 2000)
+    page.clearField('.auth-email-form__email input')
     page.fillIn('.auth-email-form__email input', 'max_von_sydow@merciless.com')
     // GK: NB: clearValue is not working right now - so the existing input value is being appended to instead
     // https://github.com/nightwatchjs/nightwatch/issues/1939
