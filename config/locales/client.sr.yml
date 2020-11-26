@@ -187,6 +187,10 @@ sr:
     privacy_public: 'Svako može videti nit. Samo se članovi mogu pridružiti.'
     privacy_private: 'Nit će biti vidljiva isključivo članovima {{group}}.'
     privacy_organisation: 'Nit će biti vidljiva članovima {{parent}} i članovima {{group}}.'
+  announcement:
+    form:
+      invitation_message_label: Poruka
+      placeholder: Unesi imena ili adrese ePošte
   action_dock:
     copy_url: Kopiraj vezu
     edit_stance: Promeni poziciju

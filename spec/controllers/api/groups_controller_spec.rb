@@ -2,13 +2,37 @@ require 'rails_helper'
 describe API::GroupsController do
 
   let(:user) { create :user }
-  let(:group) { create :group, creator: user }
-  let(:subgroup) { create :group, parent: group }
+  let(:group) { create :group, creator: user, is_visible_to_public: false }
+  let(:subgroup) { create :group, parent: group, is_visible_to_public: false, is_visible_to_parent_members: true }
+  let(:subgroup_hidden) { create :group, parent: group, is_visible_to_public: false, is_visible_to_parent_members: false }
   let(:discussion) { create :discussion, group: group }
-  let(:another_group) { create :group }
+  let(:guest_discussion) { create :discussion, group: guest_discussion_group}
+  let(:guest_discussion_group) { create :group, is_visible_to_public: false }
+  let(:another_discussion) { create :discussion, group: another_group }
+  let(:another_group) { create :group, is_visible_to_public: false }
+  let(:public_group) { create :group, is_visible_to_public: true }
 
   before do
     group.add_admin! user
+    DiscussionReader.create!(discussion_id: guest_discussion.id,
+                             user_id: user.id,
+                             inviter_id: guest_discussion.author_id)
+  end
+
+  describe 'index' do
+    before do
+      another_discussion
+      sign_in user
+    end
+
+    it 'returns groups by xids' do
+      # test discusison guest group fetch..
+      get :index, params: { xids: [group, subgroup, another_group, public_group, guest_discussion.group, another_discussion.group].map(&:id).join('x') }
+      expect(response.status).to eq 200
+      json = JSON.parse(response.body)
+      expect(json['groups'].map{|h| h['id']}).to include group.id, public_group.id, subgroup.id, guest_discussion.group_id
+      expect(json['groups'].map{|h| h['id']}).not_to include another_group.id, subgroup_hidden.id, another_discussion.group_id
+    end
   end
 
   describe 'export' do
@@ -94,14 +118,13 @@ describe API::GroupsController do
           parent_id
           created_at
           members_can_edit_comments
-          members_can_raise_motions
-          members_can_vote])
+          members_can_raise_motions])
       end
 
       it 'returns the parent group information' do
         get :show, params: { id: subgroup.key }, format: :json
         json = JSON.parse(response.body)
-        group_ids = json['groups'].map { |g| g['id'] }
+        group_ids = json['groups'].map { |g| g['id'] }.concat json['parent_groups'].map { |g| g['id'] }
         expect(group_ids).to include subgroup.id
         expect(group_ids).to include group.id
       end
@@ -109,12 +132,13 @@ describe API::GroupsController do
 
     context 'logged out' do
       let(:private_group) { create(:group, is_visible_to_public: false) }
-
+      let(:public_group) { create :group, creator: user, is_visible_to_public: true }
       it 'returns public groups if the user is logged out' do
-        get :show, params: { id: group.key }, format: :json
+        get :show, params: { id: public_group.key }, format: :json
         json = JSON.parse(response.body)
+        expect(response.status).to eq 200
         group_ids = json['groups'].map { |g| g['id'] }
-        expect(group_ids).to include group.id
+        expect(group_ids).to include public_group.id
       end
 
       it 'returns unauthorized if the user is logged out and the group is private' do
@@ -186,12 +210,13 @@ describe API::GroupsController do
   describe 'count_explore_results' do
     before { sign_in user }
     it 'returns the number of explore group results matching the search term' do
+      group.update(group_privacy: 'open')
       group.update_attribute(:name, 'exploration team')
       group.update_attribute(:memberships_count, 5)
       group.update_attribute(:discussions_count, 3)
       group.subscription = Subscription.create(plan: 'trial', state: 'active')
       group.save
-      second_explore_group = create(:group, name: 'inspection group')
+      second_explore_group = create(:group, name: 'inspection group', group_privacy: 'open')
       second_explore_group.update_attribute(:memberships_count, 5)
       second_explore_group.update_attribute(:discussions_count, 3)
       second_explore_group.subscription = Subscription.create(plan: 'trial', state: 'active')

@@ -89,10 +89,14 @@ te:
   notifications:
     header: "గమనికలు"
   discussion_form:
+    invite: ఆహ్నానించు
     group_label: 'సమూహం'
     title_label: 'శీర్షిక'
     context_label: 'సందర్భం'
     privacy_label: 'గోప్యత'
+  announcement:
+    form:
+      invitation_message_label: సందేశం
   join_group_button:
     membership_requested: సభ్యత్వం అభ్యర్థించబడింది
   membership_request_form:

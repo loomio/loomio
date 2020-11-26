@@ -2,6 +2,7 @@ class StanceSerializer < ApplicationSerializer
   attributes :id,
              :reason,
              :reason_format,
+             :content_locale,
              :latest,
              :admin,
              :cast_at,
@@ -21,6 +22,24 @@ class StanceSerializer < ApplicationSerializer
   has_one :participant, serializer: AuthorSerializer, root: :users
   has_many :stance_choices, serializer: StanceChoiceSerializer, root: :stance_choices
 
+  def locale
+    participant&.locale || group&.locale
+  end
+
+  def participant
+    return nil if poll.anonymous?
+    cache_fetch(:users_by_id, object.participant_id) { object.participant }
+  end
+
+  def participant_id
+    return nil if poll.anonymous?
+    object.participant_id
+  end
+
+  def stance_choices
+    cache_fetch(:stance_choices_by_stance_id, object.id) { object.stance_choices }
+  end
+
   def volume
     object[:volume]
   end
@@ -30,7 +49,7 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def include_reason?
-    my_stance || object.poll.show_results?
+    my_stance || poll.show_results?
   end
 
   def include_stance_choices?
@@ -38,7 +57,7 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def include_mentioned_usernames?
-    include_reason?
+    include_reason? && reason_format == 'md'
   end
 
   def include_attachments?

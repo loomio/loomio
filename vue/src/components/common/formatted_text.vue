@@ -37,7 +37,11 @@ img.emoji
   margin: 0 .05em
 
 .lmo-markdown-wrapper
-  line-height: 1.4
+  p
+    margin-bottom: 0.5rem
+
+  p:last-child
+    margin-bottom: 0.25rem
 
   *[data-text-align="left"]
     text-align: left !important
@@ -57,17 +61,14 @@ img.emoji
   span.mention
     color: var(--v-anchor-base)
 
-  blockquote, ol, p, pre, ul
+  blockquote, pre
     margin: 0.5rem 0
 
   h1, h2, h3
     margin-top: 1rem
 
-  blockquote:first-child, h1:first-child, h2:first-child, h3:first-child, ol:first-child, p:first-child, pre:first-child, ul:first-child
+  h1:first-child, h2:first-child, h3:first-child
     margin-top: 0
-
-  blockquote:last-child, h1:last-child, h2:last-child, h3:last-child, ol:last-child, p:last-child, pre:last-child, ul:last-child
-    margin-bottom: 0
 
   h1
     font-size: 2.125rem
@@ -87,9 +88,6 @@ img.emoji
   strong
     font-weight: 700
 
-  p:last-child
-    margin-bottom: 4px
-
   hr
     border: 0
     border-bottom: 2px solid rgba(0,0,0,0.1)
@@ -106,9 +104,7 @@ img.emoji
 
   ol, ul
     padding-left: 24px
-    margin-bottom: 16px
-    ul
-      margin-bottom: 0
+    margin-bottom: .5rem
 
   ul
     list-style: disc

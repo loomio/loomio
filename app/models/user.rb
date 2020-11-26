@@ -17,7 +17,7 @@ class User < ApplicationRecord
   extend HasDefaults
 
   extend NoSpam
-  no_spam_for :name
+  no_spam_for :name, :email
 
   has_paper_trail only: [:email_newsletter]
 
@@ -77,6 +77,7 @@ class User < ApplicationRecord
            class_name: 'Membership'
 
   has_many :memberships, -> { where(archived_at: nil) }, dependent: :destroy
+  has_many :all_memberships, dependent: :destroy, class_name: "Membership"
 
   has_many :archived_memberships,
            -> { where('archived_at IS NOT NULL') },
@@ -119,6 +120,7 @@ class User < ApplicationRecord
   has_many :group_polls, through: :groups, source: :polls
 
   has_many :discussion_readers, dependent: :destroy
+  has_many :guest_discussions, -> { DiscussionReader.guests}, through: :discussion_readers, source: :discussion
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :documents, foreign_key: :author_id, dependent: :destroy
@@ -130,7 +132,6 @@ class User < ApplicationRecord
   before_save :set_avatar_initials
   initialized_with_token :unsubscribe_token,        -> { Devise.friendly_token }
   initialized_with_token :email_api_key,            -> { SecureRandom.hex(16) }
-  initialized_with_default :email_on_participation, -> { !ENV['EMAIL_ON_PARTICIPATION_DEFAULT_FALSE'] }
 
 
   enum default_membership_volume: [:mute, :quiet, :normal, :loud]
@@ -148,13 +149,15 @@ class User < ApplicationRecord
   scope :visible_by, -> (user) { distinct.active.verified.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
   scope :mention_search, -> (user, model, query) do
     # allow mentioning of anyone in the organisation or guests of the discussion
+    return self.none unless model.present?
+
     group_ids = model.group.parent_or_self.id_and_subgroup_ids
     relation = active.search_for(query).
                       joins("LEFT OUTER JOIN memberships ON memberships.user_id = users.id").
                       where.not('users.id': user.id).order("users.name")
     if model.discussion_id
       relation.joins("LEFT OUTER JOIN discussion_readers dr ON dr.user_id = users.id AND dr.discussion_id = #{model.discussion_id}").
-               where("memberships.group_id IN (:group_ids) OR dr.id IS NOT NULL", group_ids: group_ids)
+               where("memberships.group_id IN (:group_ids) OR (dr.id IS NOT NULL AND dr.revoked_at IS NULL)", group_ids: group_ids)
     else
       relation.where("memberships.group_id IN (:group_ids)", group_ids: group_ids)
     end
@@ -182,6 +185,19 @@ class User < ApplicationRecord
     else
       'html'
     end
+  end
+
+  def is_paying?
+    group_ids = self.group_ids.concat(self.groups.pluck(:parent_id).compact).uniq
+    Group.where(id: group_ids).where(parent_id: nil).joins(:subscription).where.not('subscriptions.plan': 'trial').exists?
+  end
+
+  def invitations_rate_limit
+    if user.is_paying?
+      ENV.fetch('PAID_INVITATIONS_RATE_LIMIT', 5000)
+    else
+      ENV.fetch('TRIAL_INVITATIONS_RATE_LIMIT', 500)
+    end.to_i
   end
 
   def set_legal_accepted_at

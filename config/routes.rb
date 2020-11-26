@@ -66,10 +66,9 @@ Loomio::Application.routes.draw do
 
     resources :memberships, only: [:index, :create, :update, :destroy] do
       collection do
-        post :add_to_subgroup
         post :join_group
-        get :autocomplete
         get :for_user
+        get :autocomplete, action: :index
         get :my_memberships
         get :invitables
         get :undecided
@@ -144,10 +143,19 @@ Loomio::Application.routes.draw do
       delete :discard, on: :member
       post  :fork, on: :collection
       patch :move_comments, on: :member
-      get :history, on: :member
       get :search, on: :collection
       get :dashboard, on: :collection
       get :inbox, on: :collection
+      get :direct, on: :collection
+    end
+
+    resources :discussion_readers, only: [:index] do
+      member do
+        post :remove_admin
+        post :make_admin
+        post :resend
+        post :revoke
+      end
     end
 
     resources :tags do
@@ -156,7 +164,6 @@ Loomio::Application.routes.draw do
       end
     end
 
-
     resources :search, only: :index
 
     resources :polls,       only: [:show, :index, :create, :update, :destroy] do
@@ -164,7 +171,6 @@ Loomio::Application.routes.draw do
       post :close, on: :member
       post :reopen, on: :member
       post :add_options, on: :member
-      post :toggle_subscription, on: :member
       get  :closed, on: :collection
       patch :add_to_thread, on: :member
     end
@@ -174,6 +180,12 @@ Loomio::Application.routes.draw do
     resources :stances,     only: [:index, :create, :update, :destroy] do
       get :invite, on: :collection
       get :my_stances, on: :collection
+      member do
+        post :make_admin
+        post :remove_admin
+        post :revoke
+        post :resend
+      end
     end
 
     resources :outcomes,    only: [:create, :update]
@@ -190,7 +202,6 @@ Loomio::Application.routes.draw do
     end
 
     resource :translations, only: [] do
-      get :show, on: :collection
       get :inline, to: 'translations#inline'
     end
 
@@ -200,6 +211,7 @@ Loomio::Application.routes.draw do
 
     resources :announcements, only: [:create] do
       collection do
+        # get :size # not ready
         get :audience
         get :search
         get :history
@@ -279,6 +291,7 @@ Loomio::Application.routes.draw do
   get 'g/new'                              => 'application#index', as: :new_group
   get 'd/new'                              => 'application#index', as: :new_discussion
   get 'p/new(/:type)'                      => 'application#index', as: :new_poll
+  get 'threads/direct'                     => 'application#index', as: :groupless_threads
 
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'g/:key/stats'                       => 'groups#stats',                as: :group_stats

@@ -14,7 +14,7 @@ export default
       collections: ['polls', 'stances']
       query: (store) =>
         @poll = find @discussion.activePolls().filter((poll) -> poll.pollOptionNames.length), (poll) ->
-          !store.stances.findOrNull(latest: true, pollId: poll.id, participantId: AppConfig.currentUserId)
+          !store.stances.findOrNull(pollId: poll.id, participantId: AppConfig.currentUserId, revokedAt: null, latest: true)
 
   computed:
     styles: ->

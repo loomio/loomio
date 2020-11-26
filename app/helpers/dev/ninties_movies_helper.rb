@@ -274,7 +274,7 @@ module Dev::NintiesMoviesHelper
     # discussion_edited
     create_discussion
     create_discussion.update(title: "another discussion title")
-    Events::DiscussionEdited.publish!(create_discussion, patrick)
+    Events::DiscussionEdited.publish!(discussion: create_discussion)
 
     # discussion_moved
     Events::DiscussionMoved.publish!(create_discussion, patrick, create_another_group)
@@ -299,7 +299,7 @@ module Dev::NintiesMoviesHelper
     Events::PollClosedByUser.publish!(create_poll, patrick)
 
     # outcome_created
-    Events::OutcomeCreated.publish!(create_outcome)
+    Events::OutcomeCreated.publish!(outcome: create_outcome)
   end
 
 
@@ -343,7 +343,7 @@ module Dev::NintiesMoviesHelper
     another_group = Group.new(name: 'Planets of the 80\'s')
     GroupService.create(group: another_group, actor: jennifer)
     jennifer.reload
-    MembershipService.add_users_to_group(users: [patrick], group: another_group, inviter: jennifer)
+    GroupService.announce(group: another_group, params: { recipient_user_ids: [patrick.id] }, actor: jennifer)
 
     #'new_coordinator',
     #notify patrick that jennifer has made him a coordinator
@@ -358,7 +358,7 @@ module Dev::NintiesMoviesHelper
     poll = FactoryBot.create(:poll, discussion: create_discussion, group: create_group, author: jennifer, closing_at: 24.hours.from_now)
     PollService.announce(
       poll: poll,
-      params: { kind: :poll_created, user_ids: [patrick.id] },
+      params: { recipient_user_ids: [patrick.id] },
       actor: jennifer
     )
 
@@ -370,15 +370,15 @@ module Dev::NintiesMoviesHelper
 
     PollService.create(poll: poll, actor: jennifer)
     outcome = FactoryBot.build(:outcome, poll: poll)
-    OutcomeService.announce(
+    OutcomeService.create(
       outcome: outcome,
-      params: {user_ids: patrick.id},
+      params: {recipient_user_ids: [patrick.id]},
       actor: jennifer
     )
 
     #'stance_created'
     # notify patrick that someone has voted on his proposal
-    poll = FactoryBot.build(:poll, closing_at: 4.days.from_now, discussion: create_discussion, notify_on_participate: true, voter_can_add_options: true)
+    poll = FactoryBot.build(:poll, closing_at: 4.days.from_now, discussion: create_discussion, voter_can_add_options: true)
     PollService.create(poll: poll, actor: patrick)
     jennifer_stance = FactoryBot.build(:stance, poll: poll, choice: "agree")
     StanceService.create(stance: jennifer_stance, actor: jennifer)

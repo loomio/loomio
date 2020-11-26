@@ -7,7 +7,7 @@ export default
     displayGroupName: Boolean
   methods:
     showGroupName: ->
-      @displayGroupName && @poll.group()
+      @displayGroupName && @poll.groupId
 </script>
 
 <template lang="pug">

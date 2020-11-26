@@ -4,8 +4,6 @@ hu:
       title: Aktiváld a csoportodat
       activities:
         set_description: Állítsd be a csoportod leírását
-        set_logo: Válassz profilképet a csoportodnak
-        set_cover_photo: Válassz egy borítóképet a csoportodnak
         invite_people_in: Hívj meg embereket
         start_thread: Indíts el egy beszélgetési témát
         make_decision: Döntéshozatal elindítása
@@ -447,8 +445,6 @@ hu:
   notifications:
     header: "Értesítések"
     no_notifications: "Nincsenek új értesítéseid"
-    new_discussion: "<strong>{{name}}</strong>elindította ezt a megbeszélést: <strong>{{title}}</strong> "
-    discussion_announced: "<strong>{{name}}</strong> elindított egy beszélgetést <strong>{{title}}</strong> címmel"
     new_motion: "<strong>{{name}}</strong>  elindított egy szavazást<strong>{{title}}</strong> címmel"
     motion_closed: "Szavazás vége: <strong>{{title}}</strong>"
     publish_outcome: "Eredmény közzététele"
@@ -473,6 +469,7 @@ hu:
   discussion_fork_actions:
     move: Mozgat
   discussion_form:
+    invite: Meghív
     aria_label: 'Téma űrlap'
     messages:
       created: 'A téma elindult'
@@ -502,15 +499,11 @@ hu:
     preview: E-mail előnézete
     no_notifications_sent: Nem lettek értesítések küldve
     history_error: Valami elromlott! Nem tudtuk betölteni az előzményeket.
-    audiences:
-      parent_group: A(z) {{name}} tagjai
-      group: A(z) {{name}} tagjai
-      discussion_group: A téma tagjai
-      voters: Emberek, akik szavaztak
     form:
       too_many_invitations: |
           A meghívási korlátot meghaladtad. <a href="{{upgradeUrl}}" target="_blank"> Frissítés </a>
       invitations_remaining: '{{count}} meghívó maradt. <a href="{{upgradeUrl}}" target="_blank"> Frissítés </a>'
+      invitation_message_label: Üzenet
       group_announced:
         title: Meghívás a csoportba
         helptext: Kit szeretnél meghívni a csoportba?
@@ -519,22 +512,14 @@ hu:
         helptext: Kit szeretnél meghívni a témához?
       discussion_edited:
         title: Értesítés a módosításokról
-        helptext: Kit szeretne értesíteni a változásokról?
       poll_announced:
         title: Meghívás szavazásra
         helptext: Kit szeretnél meghívni a szavazásra?
-      poll:
-        title: Értesítés a módosításokról
-        helptext: Kit szeretnél értesíteni a változásokról?
       poll_edited:
         title: Értesítés a módosításokról
-        helptext: Kit szeretnél értesíteni a változásokról?
       outcome_announced:
         title: Oszd meg az eredményt
-        helptext: Kivel szeretnéd megosztani az eredményt?
       anyone_can_participate: Bárki részt vehet, akinek megvan ez a link
-      placeholder: Nevek vagy e-mail címek megadása ...
-      notified_empty: 'Még senki sem választott.'
       notified: 'A(z) {{értesített}} embereket értesítjük:'
       notified_singular: '1 személy értesítést kap:'
       group_title: '{{name}} ({{count}} ember)'
@@ -644,10 +629,6 @@ hu:
       membership_requested: 'Ön a(z) {{group}} tagságát kérte'
   revision_history_modal:
     aria_label: Módosítási előzmények
-    discussion_header: A megbeszélés felülvizsgálatának előzményei
-    comment_header: Hozzászólás a felülvizsgálat előzményeihez
-    poll_header: Szavazások változtatásainak története
-    stance_header: Az álláspont-módosítási előzmények
     started_by: 'Indította: <strong> {{name}} </strong>'
     edited_by: 'Szerkesztette: <strong> {{name}} </strong>'
     edit_by: "Szerkesztés: {{name}} · {{date}}"
@@ -1271,8 +1252,6 @@ hu:
     filename: Fájlnév
     uploaded_by: Feltöltötte
     uploaded_at: Feltöltve
-  poll_common_action_panel:
-    unable_to_vote: Nincs engedélye szavazni ebben a döntésben.
   current_polls_card:
     title: Jelenlegi döntések
     start_poll: Új döntés
@@ -1286,7 +1265,7 @@ hu:
     notify_group: Közlemény
     members_helptext: A csoportod nem lesz értesítve
     members_count: "{{count}} embert értesítünk"
-    participants_count: "A(z) {{count}} szavazót értesítjük"
+    decided_voters_count: "A(z) {{count}} szavazót értesítjük"
   poll_common_calendar_invite:
     calendar_invite: Mellékelj egy naptármeghívást ezzel az eredménnyel
     poll_option_id: Találkozási idő

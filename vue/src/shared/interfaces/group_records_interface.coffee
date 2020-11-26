@@ -3,8 +3,13 @@ import GroupModel           from '@/shared/models/group_model'
 import Session              from '@/shared/services/session'
 import EventBus             from '@/shared/services/event_bus'
 import {uniq, concat, compact, map, includes, head} from 'lodash'
+import NullGroupModel   from '@/shared/models/null_group_model'
+
+
 export default class GroupRecordsInterface extends BaseRecordsInterface
   model: GroupModel
+
+  nullModel: -> new NullGroupModel()
 
   fuzzyFind: (id) ->
     # could be id or key or handle

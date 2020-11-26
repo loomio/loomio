@@ -23,6 +23,8 @@ export default
     unreadCounts: {}
     expandedGroupIds: []
     openGroups: []
+    unreadDirectThreadsCount: 0
+
 
   created: ->
     EventBus.$on 'toggleSidebar', => @open = !@open
@@ -37,7 +39,12 @@ export default
 
     @watchRecords
       collections: ['groups', 'memberships', 'discussions']
-      query: (store) => @updateGroups()
+      query: (store) =>
+        @unreadDirectThreadsCount =
+          Records.discussions.collection.chain().
+                  find({groupId: null}).
+                  where((thread) -> thread.isUnread()).data().length
+        @updateGroups()
 
     EventBus.$on 'signedIn', (user) =>
       @fetchData()
@@ -120,6 +127,16 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
     v-list-item-title(v-t="'sidebar.recent_threads'")
   v-list-item(dense to="/inbox")
     v-list-item-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
+  v-list-item.sidebar__list-item-button--private(dense to="/threads/direct")
+    v-list-item-title
+      span(v-t="'sidebar.invite_only_threads'")
+      span(v-if="unreadDirectThreadsCount > 0")
+        space
+        span ({{unreadDirectThreadsCount}})
+  v-list-item.sidebar__list-item-button--start-thread(dense to="/d/new")
+    v-list-item-title(v-t="'sidebar.start_thread'")
+    v-list-item-avatar(:size="28")
+      v-icon(tile) mdi-plus
   v-divider
 
   v-list.sidebar__groups(dense)
@@ -165,7 +182,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   v-list-item.sidebar__list-item-button--start-group(@click="startOrganization()" dense)
     v-list-item-title(v-t="'sidebar.start_group'")
     v-list-item-avatar(:size="28")
-      v-icon(:size="28" tile) mdi-plus
+      v-icon(tile) mdi-plus
   v-divider
   v-list-item(dense to="/explore")
     v-list-item-title(v-t="'sidebar.explore_groups'")

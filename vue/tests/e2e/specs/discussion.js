@@ -294,4 +294,20 @@ module.exports = {
     page.expectText('.context-panel__description', 'A description for this discussion')
     page.expectText('.new-comment__body', 'body of the comment')
   },
+
+  'private_thread': (test) => {
+    page = pageHelper(test)
+    page.loadPath('setup_user_no_group')
+    page.ensureSidebar()
+    page.click('.sidebar__list-item-button--start-thread')
+    page.fillIn('.announcement-form__input input', 'test@example.com')
+    page.expectText('.announcement-chip__content', 'test@example.com')
+    page.click('.announcement-chip__content')
+    page.fillIn('.discussion-form__title-input input', "private thread")
+    page.click('.discussion-form__submit')
+    page.expectFlash('Thread started')
+    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Hello world!')
+    page.click('.comment-form__submit-button')
+    page.expectFlash('Comment added')
+  }
 }

@@ -1,7 +1,6 @@
 class Events::CommentRepliedTo < Event
   include Events::Notify::InApp
   include Events::Notify::ByEmail
-  include Events::LiveUpdate
 
   def self.publish!(comment)
     super comment, user: comment.author
@@ -14,6 +13,6 @@ class Events::CommentRepliedTo < Event
   end
 
   def notification_recipients
-    eventable.members.where('users.id': eventable.parent.author_id)
+    eventable.members.where('users.id': eventable.parent.author_id).where.not('users.id': eventable.author_id)
   end
 end

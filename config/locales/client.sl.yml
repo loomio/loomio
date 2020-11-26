@@ -201,6 +201,7 @@ sl:
   notifications:
     header: "Obvestila"
   discussion_form:
+    invite: Povabi
     group_label: 'Skupina'
     group_placeholder: 'Izberi skupino'
     title_label: 'Naslov'
@@ -208,6 +209,7 @@ sl:
     privacy_label: 'Zasebnost'
   announcement:
     form:
+      invitation_message_label: Sporočilo
       group_announced:
         title: Povabi v skupino
         helptext: Koga bi radi povabili v skupino?

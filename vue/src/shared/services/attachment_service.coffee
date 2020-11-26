@@ -23,3 +23,20 @@ export default new class AttachmentService
                 helptext: 'group_files_panel.delete_confirmation'
                 submit: 'common.action.delete'
                 flash: 'poll_common_delete_modal.success'
+
+    delete_document:
+      icon: 'mdi-delete'
+      name: 'common.action.delete'
+      canPerform: ->
+        attachment.isA('document') && AbilityService.canAdminister(attachment.group())
+      perform: ->
+        EventBus.$emit 'openModal',
+          component: 'ConfirmModal'
+          props:
+            confirm:
+              submit: attachment.destroy
+              text:
+                title: 'comment_form.attachments.remove_attachment'
+                helptext: 'group_files_panel.delete_confirmation'
+                submit: 'common.action.delete'
+                flash: 'poll_common_delete_modal.success'

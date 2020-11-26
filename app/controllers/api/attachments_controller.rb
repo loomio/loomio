@@ -16,6 +16,12 @@ class API::AttachmentsController < API::RestfulController
     attachment.purge_later
     record.save!
     serializer = "#{record.class.to_s}Serializer".constantize
-    render json: serializer.new(record).as_json
+    root = record.class.to_s.pluralize.underscore
+    self.collection = [record]
+    render json: resources_to_serialize, scope: default_scope, each_serializer: serializer, root: root
+  end
+
+  def serializer_class
+    AttachmentSerializer
   end
 end

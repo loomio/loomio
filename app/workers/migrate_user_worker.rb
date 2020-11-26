@@ -6,6 +6,7 @@ class MigrateUserWorker
   def perform(source_id, destination_id)
     @source = User.find_by!(id: source_id)
     @destination = User.find_by!(id: destination_id)
+    unarchive_memberships(@source)
     delete_duplicates
     operations.each { |operation| ActiveRecord::Base.connection.execute(operation) }
     migrate_stances
@@ -33,13 +34,16 @@ class MigrateUserWorker
     oauth_applications: :owner_id,
     omniauth_identities: :user_id,
     outcomes: :author_id,
-    poll_unsubscriptions: :user_id,
     polls: :author_id,
     versions: :whodunnit
   }.freeze
 
+  def unarchive_memberships(user)
+    Membership.where(user_id: user.id).where('archived_at is not null').update_all(archived_at: nil)
+  end
+
   def delete_duplicates
-    Membership.delete(destination.memberships.
+    Membership.delete(destination.all_memberships.
                       joins("INNER JOIN memberships source
                              ON source.group_id = memberships.group_id
                              AND source.user_id = #{source.id}").pluck(:"source.id"))
@@ -80,8 +84,8 @@ class MigrateUserWorker
       destination.group_polls,
       destination.participated_polls
     ].flatten.uniq.each do |poll|
-      poll.update_undecided_count
-      poll.update_stances_count
+      poll.update_undecided_voters_count
+      poll.update_voters_count
       poll.update_stance_data
     end
 

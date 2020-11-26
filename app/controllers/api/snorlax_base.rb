@@ -58,16 +58,24 @@ class API::SnorlaxBase < ActionController::Base
   end
 
   def instantiate_resource
-    self.resource = resource_class.new(resource_params)
+    self.resource = resource_class.new(self.class.filter_params(resource_class, resource_params))
+  end
+
+  def self.filter_params(resource_class, resource_params)
+    newbie = resource_class.new
+    out = {}.with_indifferent_access
+    resource_params.each_pair do |k, v|
+      out[k.to_sym] = v if newbie.respond_to?("#{k}=")
+    end
+    out
   end
 
   def instantiate_collection
-    collection = accessible_records
-    collection = yield collection if block_given?
-    collection = timeframe_collection collection
-    collection = page_collection collection
-    collection = order_collection collection
-    self.collection = collection.to_a
+    self.collection = accessible_records
+    self.collection = yield collection if block_given?
+    self.collection = timeframe_collection collection
+    self.collection = page_collection collection
+    self.collection = order_collection collection
   end
 
   def timeframe_collection(collection)
@@ -151,20 +159,12 @@ class API::SnorlaxBase < ActionController::Base
     resource_name.camelize.constantize
   end
 
-  def resource_serializer
-    "#{resource_name}_serializer".camelize.constantize
-  end
-
   def respond_with_standard_error(error, status)
     render json: {exception: "#{error.class} #{error.to_s}"}, root: false, status: status
   end
 
   def respond_with_errors
     render json: {errors: resource.errors.as_json}, root: false, status: 422
-  end
-
-  def serializer_root
-    controller_name
   end
 
   def default_scope

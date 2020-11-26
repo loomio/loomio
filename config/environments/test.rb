@@ -1,6 +1,7 @@
 Loomio::Application.configure do
   config.cache_classes = true
   config.serve_static_files = true
+  config.log_level = ENV.fetch('RAILS_LOG_LEVEL', :info)
 
   # Log error messages when you accidentally call methods on nil
   config.whiny_nils = true
@@ -29,8 +30,4 @@ Loomio::Application.configure do
 
   config.action_mailer.raise_delivery_errors = true
   config.middleware.use RackSessionAccess::Middleware
-
-  # Turns off logging for test environment, 6% speed up for testsuit
-  config.logger = Logger.new(nil)
-  config.log_level = :fatal
 end

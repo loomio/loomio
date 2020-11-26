@@ -1,16 +1,16 @@
 require 'rails_helper'
 describe API::CommentsController do
 
-  let(:user) { create :user }
-  let(:another_user) { create :user }
+  let(:user) { create :user, name: 'user' }
+  let(:another_user) { create :user, name: 'another user' }
   let(:group) { create :group }
-  let(:discussion) { create :discussion, group: group }
+  let(:discussion) { build :discussion, group: group }
   let(:comment) { create :comment, discussion: discussion, author: user }
   let(:another_comment) { create :comment, discussion: discussion, author: another_user }
 
   before do
     group.add_member! user
-    DiscussionService.create(discussion: discussion, actor: discussion.author)
+    DiscussionService.create(discussion: discussion, actor: user)
   end
 
   describe "signed in" do
@@ -98,7 +98,6 @@ describe API::CommentsController do
 
         it 'allows guests to comment' do
           discussion.group.memberships.find_by(user: user).destroy
-          discussion.discussion_readers.create(user: user, inviter: discussion.author)
 
           post :create, params: { comment: comment_params }
           expect(response.status).to eq 200
@@ -108,6 +107,7 @@ describe API::CommentsController do
 
         it 'disallows aliens to comment' do
           discussion.group.memberships.find_by(user: user).destroy
+          discussion.discussion_readers.find_by(user: user).destroy
           post :create, params: { comment: comment_params }
           expect(response.status).to eq 403
         end
@@ -131,9 +131,9 @@ describe API::CommentsController do
             expect { post :create, params: { comment: comment_params }, format: :json }.to change { Event.where(kind: :user_mentioned).count }.by(1)
           end
 
-          it 'invites non-members to the discussion' do
+          it 'does not invite non-members to the discussion' do
             comment_params[:body] = "Hello, @#{another_user.username}!"
-            expect { post :create, params: { comment: comment_params }, format: :json }.to change { discussion.readers.count }.by(1)
+            expect { post :create, params: { comment: comment_params }, format: :json }.to_not change { discussion.readers.count }
           end
         end
       end
@@ -192,10 +192,6 @@ describe API::CommentsController do
 
     describe 'destroy' do
       context 'allowed to delete' do
-        # NOTE
-        # we may want to spec what happens to replies and events
-        # however for now: replies are turned into comments directly on discussion
-        # and their events are reparented appropriately
         it "destroys a comment" do
           CommentService.create(comment: comment, actor: user)
           delete :destroy, params: { id: comment.id }
@@ -206,10 +202,12 @@ describe API::CommentsController do
 
       context 'not allowed to delete' do
         it "gives error of some kind" do
-          CommentService.create(comment: another_comment, actor: another_user)
-          delete(:destroy, params: { id: another_comment.id })
+          sign_in another_user
+          CommentService.create(comment: comment, actor: user)
+
+          delete(:destroy, params: { id: comment.id })
+          expect(response.status).to eq 403
           expect(JSON.parse(response.body)['exception']).to include 'CanCan::AccessDenied'
-          expect(Comment.where(id: another_comment.id)).to exist
         end
       end
     end

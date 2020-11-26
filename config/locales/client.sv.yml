@@ -291,10 +291,14 @@ sv:
   notifications:
     header: "Notifieringar"
   discussion_form:
+    invite: Bjud in
     group_label: 'Grupp'
     title_label: 'Titel'
     context_label: 'Kontext'
     privacy_label: 'Sekretesspolicy'
+  announcement:
+    form:
+      invitation_message_label: Meddelande
   action_dock:
     delete_comment: Ta bort kommentar
     edited: Redigerad

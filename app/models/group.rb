@@ -72,6 +72,7 @@ class Group < ApplicationRecord
   has_many :all_subgroups, dependent: :destroy, class_name: 'Group', foreign_key: :parent_id
   include GroupExportRelations
 
+  scope :with_serializer_includes, -> { includes(:default_group_cover, :subscription) }
   scope :archived, -> { where('archived_at IS NOT NULL') }
   scope :published, -> { where(archived_at: nil) }
   scope :parents_only, -> { where(parent_id: nil) }
@@ -103,16 +104,16 @@ class Group < ApplicationRecord
 
   delegate :locale, to: :creator, allow_nil: true
 
-  define_counter_cache(:polls_count)               { |group| group.polls.count }
-  define_counter_cache(:closed_polls_count)        { |group| group.polls.closed.count }
-  define_counter_cache(:memberships_count)         { |group| group.memberships.count }
-  define_counter_cache(:pending_memberships_count) { |group| group.memberships.pending.count }
-  define_counter_cache(:admin_memberships_count)   { |group| group.admin_memberships.count }
-  define_counter_cache(:public_discussions_count)  { |group| group.discussions.visible_to_public.count }
-  define_counter_cache(:discussions_count)         { |group| group.discussions.kept.count }
-  define_counter_cache(:open_discussions_count)    { |group| group.discussions.is_open.count }
-  define_counter_cache(:closed_discussions_count)  { |group| group.discussions.is_closed.count }
-  define_counter_cache(:subgroups_count)           { |group| group.subgroups.published.count }
+  define_counter_cache(:polls_count)               { |g| g.polls.count }
+  define_counter_cache(:closed_polls_count)        { |g| g.polls.closed.count }
+  define_counter_cache(:memberships_count)         { |g| g.memberships.count }
+  define_counter_cache(:pending_memberships_count) { |g| g.memberships.pending.count }
+  define_counter_cache(:admin_memberships_count)   { |g| g.admin_memberships.count }
+  define_counter_cache(:public_discussions_count)  { |g| g.discussions.visible_to_public.count }
+  define_counter_cache(:discussions_count)         { |g| g.discussions.kept.count }
+  define_counter_cache(:open_discussions_count)    { |g| g.discussions.is_open.count }
+  define_counter_cache(:closed_discussions_count)  { |g| g.discussions.is_closed.count }
+  define_counter_cache(:subgroups_count)           { |g| g.subgroups.published.count }
   update_counter_cache(:parent, :subgroups_count)
 
   delegate :include?, to: :users, prefix: true
@@ -142,14 +143,50 @@ class Group < ApplicationRecord
     content_type: { content_type: /\Aimage/ },
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
+  has_paper_trail only: [:name,
+                         :parent_id,
+                         :description,
+                         :description_format,
+                         :handle,
+                         :archived_at,
+                         :parent_members_can_see_discussions,
+                         :key,
+                         :is_visible_to_public,
+                         :is_visible_to_parent_members,
+                         :discussion_privacy_options,
+                         :members_can_add_members,
+                         :membership_granted_upon,
+                         :members_can_edit_discussions,
+                         :motions_can_be_edited,
+                         :members_can_edit_comments,
+                         :members_can_raise_motions,
+                         :members_can_vote,
+                         :members_can_start_discussions,
+                         :members_can_create_subgroups,
+                         :creator_id,
+                         :subscription_id,
+                         :members_can_announce,
+                         :new_threads_max_depth,
+                         :new_threads_newest_first,
+                         :admins_can_edit_user_content,
+                         :listed_in_explore]
+
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
   before_validation :ensure_handle_is_not_empty
+
+  def existing_member_ids
+    member_ids
+  end
+
+  def user_id
+    creator_id
+  end
 
   def discussion_id
     nil
   end
 
-  def active_memberships_count
+  def accepted_memberships_count
     memberships_count - pending_memberships_count
   end
 

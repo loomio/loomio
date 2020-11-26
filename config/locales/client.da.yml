@@ -249,7 +249,6 @@ da:
   notifications:
     header: "Notifikationer"
     no_notifications: "Du har ikke nogen notifikationer"
-    new_discussion: "<strong>{{name}}</strong> oprettede en debat <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> oprettede et forslag <strong>{{title}}</strong>"
     motion_closed: "Forslag lukket: <strong>{{title}}</strong>"
     publish_outcome: "Publicer et resultat"
@@ -277,6 +276,7 @@ da:
   discussion_fork_actions:
     move: Flyt
   discussion_form:
+    invite: Inviter
     aria_label: 'Debat'
     messages:
       created: 'Debat oprettet'
@@ -295,6 +295,7 @@ da:
     privacy_organisation: 'Debatten kan ses af medlemmer af gruppen {{parent}} og af medlemmer af gruppen {{group}}.'
   announcement:
     form:
+      invitation_message_label: Besked
       outcome_announced:
         title: Del resultat
       anyone_can_participate: Alle kan deltage
@@ -723,7 +724,7 @@ da:
     notify_group: Meddelelse
     members_helptext: Din gruppe vil ikke bliver notificeret
     members_count: "{{count}} mennesker vil blive notificeret"
-    participants_count: "{{count}} mennesker der har stemt vil blive notificeret"
+    decided_voters_count: "{{count}} mennesker der har stemt vil blive notificeret"
   poll_common_settings:
     multiple_choice:
       title: Tillad flere valg

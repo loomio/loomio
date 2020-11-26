@@ -1,6 +1,4 @@
 class API::EventsController < API::RestfulController
-  include UsesDiscussionReaders
-
   def remove_from_thread
     service.remove_from_thread(event: load_resource, actor: current_user)
     respond_with_resource
@@ -27,10 +25,6 @@ class API::EventsController < API::RestfulController
   end
 
   private
-
-  def default_scope
-    super.merge(current_user: current_user, my_stances_cache: Caches::Stance.new(user: current_user, parents: resources_to_serialize))
-  end
 
   def order
     %w(sequence_id position position_key).detect {|col| col == params[:order] } || "sequence_id"
@@ -65,8 +59,7 @@ class API::EventsController < API::RestfulController
 
   def accessible_records
     load_and_authorize(:discussion)
-    records = Event.where(discussion_id: @discussion.id).
-                    includes(:user, :discussion, :eventable, parent: [:user, :eventable])
+    records = Event.where(discussion_id: @discussion.id)
 
     if %w[position_key sequence_id].include?(params[:order_by])
       records = records.order("#{params[:order_by]}#{params[:order_desc] ? " DESC" : ''}")
@@ -116,13 +109,5 @@ class API::EventsController < API::RestfulController
 
   def default_page_size
     30
-  end
-
-  # we always want to serialize out events in the events controller
-  alias :events_to_serialize :resources_to_serialize
-
-  # events will define their own serializer through the `active_model_serializer` method
-  def resource_serializer
-    nil
   end
 end

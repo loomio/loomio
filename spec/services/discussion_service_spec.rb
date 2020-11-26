@@ -63,12 +63,6 @@ describe 'DiscussionService' do
         expect(DiscussionReader.for(user: user, discussion: discussion).volume).to_not eq 'loud'
       end
 
-      it 'fires a NewDiscussion event' do
-        Events::NewDiscussion.should_receive(:publish!).with(discussion).and_return(true)
-        DiscussionService.create(discussion: discussion,
-                                 actor: user)
-      end
-
       it 'returns the event created' do
         expect(DiscussionService.create(discussion: discussion,
                                  actor: user)).to be_a Event
@@ -114,24 +108,8 @@ describe 'DiscussionService' do
       DiscussionService.update(discussion: discussion, params: discussion_params, actor: user)
     end
 
-    it 'sets params' do
-      discussion.should_receive(:private=).with(discussion_params[:private])
-      discussion.should_receive(:title=).with(discussion_params[:title])
-      discussion.should_receive(:description=).with(discussion_params[:description])
-
-      DiscussionService.update discussion: discussion,
-                               params: discussion_params,
-                               actor: user
-    end
-
     context 'the discussion is valid' do
       before { discussion.stub(:valid?).and_return(true) }
-
-      it 'updates user markdown-preference' do
-        DiscussionService.update discussion: discussion,
-                                 params: discussion_params,
-                                 actor: user
-      end
 
       it 'publishes a discussion edited event' do
         expect(Events::DiscussionEdited).to receive :publish!
@@ -150,39 +128,9 @@ describe 'DiscussionService' do
         DiscussionService.update discussion: discussion,
                                  params: discussion_params,
                                  actor: user
-        version = PaperTrail::Version.last
+        version = discussion.versions.last
         expect(version.object_changes['title'][1]).to eq discussion_params[:title]
         expect(version.object_changes['description'][1]).to eq discussion_params[:description]
-      end
-
-      it 'creates a version with updated document_ids' do
-        expect { DiscussionService.update discussion: discussion,
-                   params: { document_ids: [document.id] },
-                   actor: user }.to change { discussion.versions.count }.by(1)
-        version = PaperTrail::Version.last
-        expect(version.object_changes['document_ids'][0]).to eq []
-        expect(version.object_changes['document_ids'][1]).to eq [document.id]
-      end
-
-      it 'updates the existing version with document_ids' do
-        discussion_params[:document_ids] = [document.id]
-        expect { DiscussionService.update discussion: discussion,
-                   params: discussion_params,
-                   actor: user }.to change { discussion.versions.count }.by(1)
-        version = PaperTrail::Version.last
-        expect(version.object_changes['title'][1]).to eq discussion_params[:title]
-        expect(version.object_changes['document_ids'][0]).to eq []
-        expect(version.object_changes['document_ids'][1]).to eq [document.id]
-      end
-
-      it 'removes documents in the version' do
-        discussion.update(document_ids: [document.id])
-        expect { DiscussionService.update discussion: discussion,
-                   params: { document_ids: [] },
-                   actor: user }.to change { discussion.versions.count }.by(1)
-        version = PaperTrail::Version.last
-        expect(version.object_changes['document_ids'][0]).to eq [document.id]
-        expect(version.object_changes['document_ids'][1]).to eq []
       end
     end
 
@@ -199,10 +147,13 @@ describe 'DiscussionService' do
   describe 'update_reader' do
     context 'success' do
       it 'can save reader attributes' do
+        stance = poll.stances.create!(participant_id: user.id, volume: 2)
         DiscussionService.update_reader discussion: discussion,
                                         params: { volume: :mute },
                                         actor: user
         expect(DiscussionReader.for(user: user, discussion: discussion).volume).to eq "mute"
+        expect(stance.reload.volume).to eq "mute"
+
       end
     end
 

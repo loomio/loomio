@@ -84,7 +84,7 @@ FactoryBot.define do
     sequence(:name) { Faker::Name.name }
     description { 'A description for this group' }
     handle { GroupService.suggest_handle(name: name, parent_handle: parent&.handle) }
-    group_privacy { 'open' }
+    group_privacy { 'closed' }
     discussion_privacy_options { 'public_or_private' }
     members_can_add_members { true }
     after(:create) do |group|
@@ -138,6 +138,7 @@ FactoryBot.define do
       discussion.group.add_member!(discussion.author)
     end
     after(:create) do |discussion|
+      discussion.create_missing_created_event!
       discussion.group.save
     end
   end
@@ -229,7 +230,12 @@ FactoryBot.define do
     details { "with a description" }
     association :author, factory: :user
     poll_option_names { ["engage"] }
+    created_at { 2.days.ago }
+    notify_on_closing_soon { "voters" }
     closing_at { 5.days.from_now }
+    after :create do |poll|
+      poll.create_missing_created_event!
+    end
   end
 
   factory :poll_proposal, class: Poll do
@@ -238,6 +244,8 @@ FactoryBot.define do
     details { "with a description" }
     association :author, factory: :user
     poll_option_names { %w[agree abstain disagree block] }
+    created_at { 2.days.ago }
+    notify_on_closing_soon { "voters" }
     closing_at { 5.days.from_now }
   end
 
@@ -248,6 +256,8 @@ FactoryBot.define do
     association :author, factory: :user
     poll_option_names { %w(apple banana orange) }
     custom_fields { { dots_per_person: 8 } }
+    created_at { 2.days.ago }
+    notify_on_closing_soon { "voters" }
     closing_at { 5.days.from_now }
   end
 
@@ -258,6 +268,8 @@ FactoryBot.define do
     association :author, factory: :user
     poll_option_names { ['01-01-2015'] }
     custom_fields { { can_respond_maybe: false } }
+    created_at { 2.days.ago }
+    notify_on_closing_soon { "voters" }
     closing_at { 5.days.from_now }
   end
 
@@ -268,6 +280,8 @@ FactoryBot.define do
     association :author, factory: :user
     poll_option_names { %w(apple banana orange) }
     custom_fields { { minimum_stance_choices: 2 } }
+    created_at { 2.days.ago }
+    notify_on_closing_soon { "voters" }
     closing_at { 5.days.from_now }
   end
 

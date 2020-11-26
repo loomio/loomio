@@ -2,6 +2,7 @@
 import StrandList from '@/components/strand/list.vue'
 import NewComment from '@/components/strand/item/new_comment.vue'
 import NewDiscussion from '@/components/strand/item/new_discussion.vue'
+import DiscussionEdited from '@/components/strand/item/discussion_edited.vue'
 import PollCreated from '@/components/strand/item/poll_created.vue'
 import StanceCreated from '@/components/strand/item/stance_created.vue'
 import OutcomeCreated from '@/components/strand/item/outcome_created.vue'
@@ -27,6 +28,7 @@ export default
     OutcomeCreated: OutcomeCreated
     OtherKind: OtherKind
     StrandLoadMore: StrandLoadMore
+    DiscussionEdited: DiscussionEdited
 
   computed:
     parentExists: ->
@@ -41,16 +43,6 @@ export default
     ranges: ->
       RangeSet.arrayToRanges(@positions)
 
-    # firstPosition: ->
-    #   return 0 unless @collection.length
-    #   @collection[0].event.position
-    #
-    # lastPosition: ->
-    #   return 0 unless @collection.length
-    #   last(@collection).event.position
-    #
-    # parentEvent: ->
-    #   @collection[0].event.parent()
     siblingCount: ->
       (@collection &&
       @collection.length &&
@@ -69,7 +61,6 @@ export default
         event.positionKey.split('-').slice(0, event.depth - 1)
       else
         null
-
 
     isFirstInRange: (pos) ->
       some(@ranges, (range) -> range[0] == pos)
@@ -91,14 +82,13 @@ export default
       last(@ranges)[1] == pos
 
     componentForKind: (kind) ->
-      camelCase if ['stance_created', 'new_comment', 'outcome_created', 'poll_created', 'new_discussion'].includes(kind)
+      camelCase if ['stance_created', 'discussion_edited', 'new_comment', 'outcome_created', 'poll_created', 'new_discussion'].includes(kind)
         kind
       else
         'other_kind'
 
     visibilityChanged: (visible, entry, event) ->
-      return unless visible
-      event.markAsRead()
+      event.markAsRead() if visible
 
 </script>
 
@@ -106,9 +96,6 @@ export default
 .strand-list
   .strand-item(v-for="obj, index in collection" :event='obj.event' :key="obj.event.id" :class="{'strand-item--deep': obj.event.depth > 1}")
     .strand-item__row(v-if="parentExists && obj.event.position != 1 && isFirstInRange(obj.event.position)")
-      //- .strand-item__gutter
-      //-   .strand-item__circle(@click="loadBefore(obj.event)")
-      //-     v-icon mdi-unfold-more-horizontal
       strand-load-more(:label="{path: 'common.action.count_more', args: {count: countEarlierMissing(obj.event.position)}}" @click="loader.loadBefore(obj.event)")
 
     .strand-item__row
@@ -118,33 +105,18 @@ export default
         template(v-else)
           user-avatar(:user="obj.event.actor()" :size="(obj.event.depth > 1) ? 28 : 36" no-link)
           v-badge(offset-x="48" offset-y="-24" icon="mdi-pin" v-if="obj.event.pinned" color="accent")
-            //- i.mdi.mdi-pin.context-panel__heading-pin()
           .strand-item__stem(:class="{'strand-item__stem--unread': isUnread(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
       .strand-item__main
         //- | {{obj.event.sequenceId}} {{obj.event.positionKey}} {{obj.event.childCount}} {{obj.event.descendantCount}}
         component(:is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="loader.collapsed[obj.event.id]" v-observe-visibility="{callback: (isVisible, entry) => visibilityChanged(isVisible, entry, obj.event), once: true}")
 
         .strand-list__children.pt-2(v-if="obj.event.childCount")
-          //- .strand-item__gutter(v-if="index+1 != siblingCount" @click="loader.collapse(obj.event.id)")
-          //-   .strand-item__branch-container
-          //-     .strand-item__branch &nbsp;
-          //-   .strand-item__stem(v-if="(index+1 != collection.length) || obj.children")
-
-          //- | obj.children {{obj.children.length}}
           strand-list.flex-grow-1(v-if="obj.children.length && !loader.collapsed[obj.event.id]" :loader="loader" :collection="obj.children")
           .strand-item__load-more(v-else)
-            //- v-btn.action-button(text block @click="loadChildren(obj.event)" v-t="{path: 'common.action.count_responses', args: {count: obj.event.descendantCount}}")
             strand-load-more(:label="{path: 'common.action.count_responses', args: {count: obj.event.descendantCount}}" @click="loader.loadChildren(obj.event)")
 
     .strand-item__row(v-if="lastPosition != 0 && isLastInLastRange(obj.event.position) && obj.event.position != lastPosition")
-      //- .strand-item__gutter
-      //-   .strand-item__circle(@click="loadAfter(obj.event)")
-      //-     v-icon mdi-unfold-more-horizontal
-      //- .strand-item__load-more
-        //- | {{obj.event.parent().parentOrSelf().childCount}}
-        //- | {{obj.event.positionKey}}
-      strand-load-more(:label="{path: 'common.action.count_more', args:{count: countLaterMissing()}}" @click="loader.loadAfter(obj.event)")
-        //- | {{lastPosition}} {{ranges}}
+      strand-load-more(:label="{path: 'common.action.count_more', args: {count: countLaterMissing()}}" @click="loader.loadAfter(obj.event)")
 </template>
 
 <style lang="sass">

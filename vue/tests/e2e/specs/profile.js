@@ -42,21 +42,21 @@ module.exports = {
     page.expectNoText('.user-page__groups', 'Secret Dirty Dancing Shoes')
   },
 
-  'allows_you_to_contact_other_users': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_discussion')
-    page.goTo('u/jennifergrey')
-    page.click('.user-page__contact-user')
-    page.fillIn('.contact-request-form__message textarea', 'Here is a request to connect!')
-    page.click('.contact-request-form__submit')
-    page.expectNoElement('.flash-root__loading', 1000)
-    page.expectFlash('Email sent to Jennifer Grey')
-
-    page.goTo('u/patrickswayze')
-    page.expectElement('.user-page')
-    page.expectNoElement('.user-page__contact-user')
-  },
+  // 'allows_you_to_contact_other_users': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_discussion')
+  //   page.goTo('u/jennifergrey')
+  //   page.click('.user-page__contact-user')
+  //   page.fillIn('.contact-request-form__message textarea', 'Here is a request to connect!')
+  //   page.click('.contact-request-form__submit')
+  //   page.expectNoElement('.flash-root__loading', 1000)
+  //   page.expectFlash('Email sent to Jennifer Grey')
+  //
+  //   page.goTo('u/patrickswayze')
+  //   page.expectElement('.user-page')
+  //   page.expectNoElement('.user-page__contact-user')
+  // },
 
   'does_not_accept_short_passwords': (test) => {
     page = pageHelper(test)

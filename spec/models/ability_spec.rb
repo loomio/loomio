@@ -87,6 +87,7 @@ describe "User abilities" do
             it {should_not be_able_to(:show, discussion)}
           end
         end
+        
       end
 
       context "false" do

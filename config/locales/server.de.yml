@@ -237,6 +237,20 @@ de:
         Was ist zum Beispiel deine Rolle oder der Anlass für deine Teilnahme in dieser Gruppe? Was sollten die Menschen wissen, um zu verstehen, woher du kommst?
   how_it_works_thread:
     title: Wie man Loomio benutzt
+  first_proposal:
+    name: Hast du Fragen zur Verwendung von Loomio?
+    description: |
+        _Wenn ja, stelle gern eine Frage. Wenn nein, dann kannst du die Beiträge in deiner Gruppe kommentieren._
+
+        Dieser **Check poll** fragt ab, ob du oder andere Teilnehmer Fragen zur Verwendung von Loomio haben.
+
+        <ul><li>Nimm einfach teil, indem du die unten angezeigten Schaltflächen bzw. Textfelder verwendest.</li></ul>
+
+        Wie bei allen Abstimmungstools, musst du rechtzeitig antworten, bevor die Abstimmung schließt.
+
+        Du kannst deine Entscheidung jederzeit ändern (und somit auf neue Informationen reagieren), solange die Abstimmung noch nicht geschlossen ist.
+
+        **Probiere es aus! Klicke auf eine der Schaltflächen!**
   markdown:
     intro:
       title: |+
@@ -299,7 +313,7 @@ de:
       change_your_stance: Ändern
       create_outcome: Ergebnis bekanntgeben
       your_response: "Deine Stimme:"
-      please_respond: Bitte beteilige dich an der Abstimmung
+      please_respond: Bitte beteilige dich an der Abstimmung!
       time_zone: (Zeitangaben in %{zone})
       undecided_members: Unentschlossene Mitglieder (%{count})
       undecided_visitors: Unentschlossene Gäste (%{count})
@@ -307,8 +321,9 @@ de:
       vote_now: Jetzt Stimme abgeben
       verify_stance_for_unverified_user: "Danke für deine Beteiligung bei der Abstimmung %{title}. Bitte verifiziere deine E-Mail-Adresse, damit wir dir die Ergebnisse der Abstimmung zusenden können."
       verify_stance_for_verified_user: "Es sieht so aus, als ob du bei %{title}abgestimmt hättest. Um zu bestätigen, dass du das auch wirklich warst, klicke bitte den unten angegebenen Link. "
-      you_have_until: du hast bis %{when} um teilzunehmen
+      you_have_until: Du kannst bis %{when} teilnehmen.
     subject:
+      poll_closing_soon: '%{poll_type} endet in 24 Stunden: %{title}'
       poll_option_added: '%{actor} hat die Umfrageoptionen in %{title} erweitert'
       poll_option_added_author: '%{actor} hat die Umfrageoptionen in %{title} erweitert'
       stance_created: "%{actor} hat hier abgestimmt: %{title}"
@@ -316,6 +331,8 @@ de:
       user_mentioned: '%{actor} hat dich in %{title} erwähnt'
       user_reminded: '%{actor} erinnert dich deine Stimme in %{title} abzugeben'
     header:
+      poll_closing_soon: '%{poll_type} von <strong>%{actor}</strong> endet in 24 Stunden. Jetzt ist eine gute Gelegenheit, um abzustimmen, deine Entscheidung noch einmal zu ändern oder auch um andere zur Teilnahme zu ermuntern.'
+      poll_closing_soon_author: 'Dein %{poll_type} endet in 24 Stunden - jetzt ist eine gute Gelegenheit, um andere an die Teilnahme zu erinnern oder ggf. die Deadline zu verlängern.'
       poll_option_added: '<strong>%{actor}</strong> hat die Umfrageoptionen in %{title}erweitert'
       poll_option_added_author: '<strong>%{actor}</strong> hat die Umfrageoptionen in %{title}erweitert'
       stance_created: "<strong>%{actor}</strong> hat in%{title}abgestimmt"

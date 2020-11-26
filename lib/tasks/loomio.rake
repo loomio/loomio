@@ -30,6 +30,7 @@ namespace :loomio do
   end
 
   task hourly_tasks: :environment do
+    ThrottleService.reset!('hour')
     PollService.delay.expire_lapsed_polls
     PollService.delay.publish_closing_soon
 
@@ -39,9 +40,10 @@ namespace :loomio do
       SendDailyCatchUpEmailWorker.perform_async
     end
 
-    AnnouncementService.delay.resend_pending_invitations
     LocateUsersAndGroupsWorker.perform_async
     if (Time.now.hour == 0)
+      ThrottleService.reset!('day')
+      OutcomeService.delay.publish_review_due
       UsageReportService.send
       ExamplePollService.delay.cleanup
       LoginToken.where("created_at < ?", 24.hours.ago).delete_all
@@ -52,8 +54,8 @@ namespace :loomio do
     raise "this is an exception to test exception handling"
   end
 
-  task notify_clients_of_update: :environment do
-    MessageChannelService.publish_data({ version: Loomio::Version.current }, to: GlobalMessageChannel.instance)
+  task publish_system_notice: :environment do
+    MessageChannelService.publish_system_notice(ENV['LOOMIO_SYSTEM_NOTICE'])
   end
 
   task update_subscription_members_counts: :environment do

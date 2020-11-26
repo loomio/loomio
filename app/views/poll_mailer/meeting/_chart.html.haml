@@ -7,7 +7,7 @@
     %thead
       %tr
         %td= time_zone
-        - poll.participants.each do |user|
+        - poll.decided_voters.each do |user|
           %td=render 'base_mailer/avatar', user: user, size: 'small'
         %td= t(:'poll.export.total')
     %tbody
@@ -16,7 +16,7 @@
           %td.poll-meeting-chart__meeting-time
             = poll_option.display_name(zone: time_zone)
 
-          - poll.participants.each do |user|
+          - poll.decided_voters.each do |user|
             %td
               - score = (stances_by_user_id[user.id] && stances_by_user_id[user.id].score_for(poll_option)) || 0
               - class_for_score = 'poll-meeting-chart__cell--yes' if score == 2

@@ -489,7 +489,9 @@ en:
       poll_option_added: '%{actor} added options to: %{title}'
       poll_option_added_author: '%{actor} added options to: %{title}'
       outcome_created: '%{actor} shared a %{poll_type} outcome: %{title}'
+      outcome_updated: '%{actor} updated the %{poll_type} outcome: %{title}'
       outcome_created_author: 'You shared a %{poll_type} outcome: %{title}'
+      outcome_review_due: "It's time to review the %{poll_type} outcome: %{title}"
       outcome_announced: '%{actor} shared a %{poll_type} outcome: %{title}'
       stance_created: "%{actor} voted on: %{title}"
       stance_created_author: "Please verify your vote on: %{title}"
@@ -508,6 +510,8 @@ en:
       poll_option_added: '<strong>%{actor}</strong> added options to: %{title}'
       poll_option_added_author: '<strong>%{actor}</strong> added options to: %{title}'
       outcome_created: '<strong>%{actor}</strong> shared a %{poll_type} outcome.'
+      outcome_updated: '<strong>%{actor}</strong> updated the %{poll_type} outcome.'
+      outcome_review_due: "It's time to review the %{poll_type} outcome: %{title}. Consider starting a feedback poll or a new thread inviting reflections on how the decision has been implemented."
       outcome_created_author: 'You shared a %{poll_type} outcome.'
       outcome_announced: '<strong>%{actor}</strong> shared a %{poll_type} outcome.'
       stance_created: "<strong>%{actor}</strong> voted on: %{title}"
@@ -536,6 +540,8 @@ en:
     new_discussion: "New thread in %{group}"
     new_comment: "New comment in %{group}"
     outcome_created: "Outcome posted in %{group}"
+    outcome_updated: "Outcome updated in %{group}"
+    outcome_review_due: "Outcome review due in %{group}"
     poll_created: "New %{poll_type} in %{group}"
     stance_created: "New response to %{poll}"
     poll_closing_soon: "%{poll_type} is closing in 24 hours"
@@ -548,6 +554,8 @@ en:
       discussion_edited: "**%{actor}** edited a discussion in %{group}: [%{title}](%{url})"
       new_comment: "**%{actor}** commented in [%{title}](%{url})"
       outcome_created: "**%{actor}** shared an outcome of the %{poll_type}: [%{title}](%{url})"
+      outcome_update: "**%{actor}** edited the outcome of the %{poll_type}: [%{title}](%{url})"
+      outcome_review_due: "It's time to review the outcome of the %{poll_type}: [%{title}](%{url})"
       poll_created: "**%{actor}** started a %{poll_type} in %{group}: [%{title}](%{url})"
       poll_edited: "**%{actor}** edited a %{poll_type} in %{group}: [%{title}](%{url})"
       stance_created: "**%{actor}** voted in [%{title}](%{url})"
@@ -559,6 +567,8 @@ en:
   slack:
     new_discussion: "New thread in *%{group}*: *%{discussion}*"
     outcome_created: "Outcome posted in *%{group}*: *%{poll}*"
+    outcome_updated: "Outcome edited in *%{group}*: *%{poll}*"
+    outcome_review_due: "It's time to review the outcome of *%{group}*: *%{poll}*"
     poll_created: "New *%{poll_type}* in *%{group}*: *%{poll}*"
     poll_closing_soon: "Reminder: *%{poll}* is closing in 24 hours"
     poll_expired: "*%{poll}* has closed"

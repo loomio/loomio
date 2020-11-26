@@ -42,7 +42,9 @@ class API::RegistrationsController < Devise::RegistrationsController
   end
 
   def permission_check
-    AppConfig.app_features[:create_user] || pending_membership
+    if !(AppConfig.app_features[:create_user] || pending_membership)
+      render json: { errors: I18n.t('auth_form.invitation_required')}, status: 422
+    end
   end
 
   def configure_permitted_parameters

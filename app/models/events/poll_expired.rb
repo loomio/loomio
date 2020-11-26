@@ -10,11 +10,13 @@ class Events::PollExpired < Event
           created_at: poll.closed_at
   end
 
-  private
-
   # email the author and create an in-app notification
   def email_author!
     super
     notification_for(author).save
+  end
+
+  def notify_author?
+    Queries::UsersByVolumeQuery.email_notifications(eventable).exists?(poll.author_id)
   end
 end

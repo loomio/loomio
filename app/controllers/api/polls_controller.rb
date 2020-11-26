@@ -27,11 +27,6 @@ class API::PollsController < API::RestfulController
     respond_with_resource
   end
 
-  def toggle_subscription
-    service.toggle_subscription(poll: load_resource, actor: current_user)
-    respond_with_resource
-  end
-
   def discard
     load_resource
     @event = service.discard(poll: resource, actor: current_user)
@@ -45,12 +40,7 @@ class API::PollsController < API::RestfulController
 
   private
 
-  def default_scope
-    super.merge(current_user: current_user,
-                my_stances_cache: Caches::Stance.new(user: current_user, parents: resources_to_serialize))
-  end
-
   def accessible_records
-    PollQuery.visible_to(user: current_user)
+    PollQuery.visible_to(user: current_user, show_public: true)
   end
 end

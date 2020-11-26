@@ -32,7 +32,8 @@ export iconFor = (poll) ->
 
 export myLastStanceFor = (poll) ->
   head sortBy(Records.stances.find(
+    pollId: poll.id,
+    participantId: AppConfig.currentUserId,
+    revokedAt: null,
     latest: true
-    pollId: poll.id
-    participantId: AppConfig.currentUserId
   ), 'createdAt')

@@ -2,6 +2,7 @@
 import Records from '@/shared/services/records'
 import { exact } from '@/shared/helpers/format_time'
 import { parseISO } from 'date-fns'
+import { reject } from 'lodash'
 
 import marked from 'marked'
 import {customRenderer, options} from '@/shared/helpers/marked.coffee'
@@ -34,7 +35,7 @@ export default
         @version.objectChanges[@bodyField]
 
     titleChanges: ->
-      @version.objectChanges.title
+      (@version.objectChanges || {}).title
 
     bodyLabel: ->
       switch @model.constructor.singular
@@ -44,10 +45,28 @@ export default
         when "poll" then "poll_common.details"
         when "outcome" then "poll_common.statement"
 
-    closingAtChanges: ->
-      if @version.objectChanges.closing_at
-        @version.objectChanges.closing_at.map (iso) ->
-          exact(parseISO(iso)) if iso
+    objectKeys: ->
+      excl = switch @model.constructor.singular
+        when "comment" then ['body', 'body_format']
+        when "stance" then ['reason', 'reason_format']
+        when "discussion" then ['title', 'description', 'description_format']
+        when "poll" then ['title', 'details', 'details_format']
+        when "outcome" then ['statement', 'statement_format']
+      reject Object.keys(@version.objectChanges || {}), (key) -> excl.includes(key)
+
+    otherFields: ->
+      console.log "otherFields", @objectKeys
+      @objectKeys.map (key) =>
+        vals = @version.objectChanges[key].map (v) =>
+          if v
+            (key.match(/_at$/) && exact(parseISO(v))) || v
+          else
+            @$t('common.empty')
+        {key: key, was: vals[0], now: vals[1]}
+
+    labelFor: (field) ->
+      # setup a case soon
+      field
 
 </script>
 
@@ -58,9 +77,16 @@ export default
     v-label(v-t="'discussion_form.title_label'")
     html-diff.headline(:before="titleChanges[0]" :after="titleChanges[1]")
 
-  .mb-3(v-if="closingAtChanges")
-    v-label(v-t="'poll_common_closing_at_field.closing'")
-    p(v-t="{path: 'revision_history_modal.closing_at_changed', args: {time: closingAtChanges[1]}}")
+  .mb-3(v-if="otherFields.length")
+    v-simple-table(dense)
+      tr
+        th(v-t="'revision_history_modal.field'")
+        th(v-t="'revision_history_modal.before'")
+        th(v-t="'revision_history_modal.after'")
+      tr(v-for="field in otherFields")
+        td {{field.key}}
+        td {{field.was}}
+        td {{field.now}}
 
   .mb-3(v-if="bodyChanges")
     v-label(v-t="bodyLabel")

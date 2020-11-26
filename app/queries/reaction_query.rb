@@ -29,7 +29,7 @@ class ReactionQuery
       comment_ids: Array(params[:comment_ids]),
       poll_ids:    Array(params[:poll_ids])
     }
-    Reaction.includes(:user).where(
+    Reaction.where(
       "(reactable_type = 'Discussion' AND reactable_id IN (:discussion_ids)) OR
        (reactable_type = 'Comment'    AND reactable_id IN (:comment_ids)) OR
        (reactable_type = 'Outcome'    AND reactable_id IN (:outcome_ids)) OR

@@ -7,13 +7,6 @@ import { includes } from 'lodash'
 export default class DiscussionRecordsInterface extends BaseRecordsInterface
   model: DiscussionModel
 
-  fetchHistoryFor: (discussion) ->
-    params = discussion.id
-
-    @remote.fetch
-      path: discussion.id + '/history'
-      params: params
-
   search: (groupKey, fragment, options = {}) ->
     options.group_id = groupKey
     options.q = fragment
@@ -26,15 +19,11 @@ export default class DiscussionRecordsInterface extends BaseRecordsInterface
     @fetch
       params: options
 
-  fetchDashboard: (options = {}) ->
-    @fetch
-      path: 'dashboard'
-      params: options
-
   fetchInbox: (options = {}) ->
     @fetch
       path: 'inbox'
       params:
+        exclude_types: 'group'
         from: options['from'] or 0
         per: options['per'] or 100
         # since: options['since'] or moment().startOf('day').subtract(6, 'week').toDate()

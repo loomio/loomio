@@ -2,25 +2,49 @@ class API::AnnouncementsController < API::RestfulController
   MockEvent = Struct.new(:eventable, :email_subject_key, :user, :id)
 
   def audience
-    self.collection = service.audience_for(target_model, params.require(:kind), current_user)
-    respond_with_collection serializer: AnnouncementRecipientSerializer, root: false
+    self.collection = service.audience_users(target_model, params.require(:kind))
+
+    if params[:without_exising]
+      self.collection = collection.where.not(id: target_model.existing_member_ids)
+    end
+
+    if params[:return_users]
+      respond_with_collection serializer: AuthorSerializer, root: false
+    else
+      respond_with_collection serializer: AnnouncementRecipientSerializer, root: false
+    end
   end
+
+  # untested spike
+  # def size
+  #   current_user.ability.authorize! :announce, target_model
+  #   audience_ids = service.audience_users(target_model, params[:recipient_audience]).pluck(:id)
+  #   user_ids = Array(params[:recipient_user_ids]).map(&:to_i)
+  #   emails = Array(params[:recipient_emails])
+  #   count = User.where(id: audience_ids.concat(user_ids).uniq.compact).
+  #                where.not(email: emails).active.count + emails.uniq.compact.size
+  #   render json: {count: count}
+  # end
 
   def create
     current_user.ability.authorize! :announce, target_model
 
-    # juggle data
-    if params[:announcement]
-      params[:emails] = params.dig(:announcement, :recipients, :emails)
-      params[:user_ids] = params.dig(:announcement, :recipients, :user_ids)
-      params[:invited_group_ids] = params.dig(:announcement, :invited_group_ids)
+    # juggle data for older clients
+    if params.dig(:announcement, :recipients)
+      params[:recipient_user_ids] = params.dig(:announcement, :recipients, :user_ids)
+      params[:recipient_emails] = params.dig(:announcement, :recipients, :emails)
+    end
+
+    %w[recipient_user_ids recipient_emails recipient_audience invited_group_ids message].each do |name|
+      params[name] = params.dig(:announcement, name) if params.dig(:announcement, name)
     end
 
     if target_model.is_a?(Group)
       self.collection = GroupService.announce(group: target_model, actor: current_user, params: params)
       respond_with_collection serializer: MembershipSerializer, root: :memberships
     elsif target_model.is_a?(Discussion)
-      self.collection = DiscussionService.announce(discussion: target_model, actor: current_user, params: params)
+      event = DiscussionService.announce(discussion: target_model, actor: current_user, params: params)
+      self.collection = DiscussionReader.where(discussion_id: target_model.id, user_id: event.recipient_user_ids)
       respond_with_collection serializer: DiscussionReaderSerializer, root: :discussion_readers
     elsif target_model.is_a?(Poll)
       self.collection = PollService.announce(poll: target_model, actor: current_user, params: params)
@@ -39,7 +63,24 @@ class API::AnnouncementsController < API::RestfulController
   def history
     notifications = {}
 
-    events = Event.where(kind: ['announcement_created', 'user_mentioned', 'announcement_resend', 'discussion_announced', 'poll_announced', 'outcome_announced', 'comment_replied_to', 'poll_closing_soon'], eventable: history_model).order('id').limit(50)
+    kinds = %w[
+      announcement_created
+      user_mentioned
+      announcement_resend
+      discussion_announced
+      poll_announced
+      outcome_announced
+      outcome_created
+      outcome_updated
+      outcome_edited
+      poll_created
+      poll_edited
+      new_discussion
+      discussion_edited
+      comment_replied_to
+      poll_closing_soon]
+
+    events = Event.where(kind: kinds, eventable: history_model).order('id').limit(50)
 
     Notification.includes(:user).where(event_id: events.pluck(:id)).order('users.name, users.email').each do |notification|
       next unless notification.user
@@ -66,6 +107,11 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   private
+  def default_scope
+    super.merge(
+      include_email: target_model.admins.exists?(current_user.id)
+    )
+  end
 
   def target_model
     @target_model ||=

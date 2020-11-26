@@ -7,8 +7,7 @@ export default class UserRecordsInterface extends BaseRecordsInterface
   model: UserModel
   apiEndPoint: 'profile'
 
-  anonymous: ->
-    new AnonymousUserModel()
+  nullModel: -> new AnonymousUserModel()
 
   fetchTimeZones: ->
     @remote.fetch path: "time_zones"

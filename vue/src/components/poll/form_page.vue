@@ -14,7 +14,7 @@ export default
     init: ->
       Records.polls.findOrFetchById(@$route.params.key)
       .then (poll) =>
-        @poll = poll
+        @poll = poll.clone()
 
         EventBus.$emit 'currentComponent',
           group: poll.group()
@@ -28,7 +28,6 @@ export default
 
     submit: ->
       actionName = if @poll.isNew() then 'created' else 'updated'
-      @poll.customFields.deanonymize_after_close = @poll.deanonymizeAfterClose if @poll.anonymous
       @poll.customFields.can_respond_maybe = @poll.canRespondMaybe if @poll.pollType == 'meeting'
       @poll.setErrors({})
       @poll.save()
@@ -37,11 +36,6 @@ export default
         Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
           @$router.replace(@urlFor(poll))
           Flash.success "poll_#{poll.pollType}_form.#{poll.pollType}_#{actionName}"
-          return if actionName == 'updated'
-          EventBus.$emit 'openModal',
-            component: 'AnnouncementForm',
-            props: { announcement: Records.announcements.buildFromModel(poll) }
-
       .catch onError(@poll)
 
   computed:

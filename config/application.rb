@@ -19,7 +19,7 @@ end
 
 module Loomio
   class Application < Rails::Application
-    config.middleware.use Rack::Attack if ENV['USE_RACK_ATTACK']
+    config.middleware.use Rack::Attack
     # config.active_job.queue_adapter = :sidekiq
 
     config.generators do |g|
@@ -35,7 +35,6 @@ module Loomio
     # config.paths.add "extras", eager_load: true
     # config.autoload_paths += Dir["#{config.root}/app/forms/**/"]
 
-    # config.middleware.use Rack::Attack
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
@@ -54,6 +53,7 @@ module Loomio
     # config.i18n.available_locales = # --> don't use this, make mostly empty yml files e.g. fallback.be.yml
     config.i18n.enforce_available_locales = false
     config.i18n.fallbacks = [:en] # --> see initilizers/loomio_i18n
+    config.assets.quiet = true
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
@@ -136,9 +136,7 @@ module Loomio
 
     config.action_cable.allowed_request_origins = [ENV['CANONICAL_HOST'], 'http://localhost:8080']
 
-    if ENV['REDIS_CACHE_URL']
-      config.cache_store = :redis_cache_store, { url: ENV['REDIS_CACHE_URL'] }
-    end
+    config.cache_store = :redis_cache_store, { url: (ENV['REDIS_CACHE_URL'] || ENV.fetch('REDIS_URL', 'redis://localhost:6379')) }
 
     config.action_dispatch.default_headers = {
       # 'X-Frame-Options' => 'SAMEORIGIN',

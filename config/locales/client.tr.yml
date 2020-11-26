@@ -4,8 +4,6 @@ tr:
       title: Grubunuzu etkinleştirin
       activities:
         set_description: Grubunuzun açıklamasını ayarlayın
-        set_logo: Grubunuz için bir logo seçin
-        set_cover_photo: Grubunuz için bir kapak fotoğrafı seçin
         invite_people_in: Kişileri davet edin
         start_thread: Bir müzakere başlatın
         make_decision: Bir karar başlatın
@@ -343,6 +341,7 @@ tr:
   discussion_fork_actions:
     move: Taşı
   discussion_form:
+    invite: Davet et
     start_thread: Konu başlat
     messages:
       created: 'Müzakere başlatıldı'
@@ -359,6 +358,9 @@ tr:
     privacy_public: 'Herhangi bir kişi müzakereyi görebilir. Sadece üyeler katılım gösterebilir.'
     privacy_private: 'Müzakere sadece {{group}} grubunun üyelerine görünür olacaktır.'
     privacy_organisation: 'Müzakere {{parent}} ve {{group}} gruplarının üyelerine görünür olacaktır.'
+  announcement:
+    form:
+      invitation_message_label: Mesaj
   action_dock:
     edit_stance: Konumunu değiştir
     edited: Düzenlendi

@@ -1,22 +1,15 @@
 class API::MembershipsController < API::RestfulController
   load_resource only: [:set_volume]
 
-  def add_to_subgroup
-    group = load_and_authorize(:group)
-    users = group.parent.members.where('users.id': params[:user_ids])
-    @memberships = service.add_users_to_group(users: users,
-                                              group: group,
-                                              inviter: current_user)
-    respond_with_collection
-  end
-
   def index
     instantiate_collection do |collection|
-      if params[:pending]
-        collection.pending
-      else
-        collection.active
-      end.where(group: model.group).order('memberships.admin desc, memberships.created_at desc')
+      %w[user_xids].each do |key|
+        next unless params.has_key? key
+        params[key.gsub("_xids", "_ids")] = params[key].split('x').map(&:to_i)
+        params.delete(key)
+      end
+      MembershipQuery.search(chain: collection, params: params).
+                      order('memberships.admin desc, memberships.created_at desc')
     end
     respond_with_collection(scope: index_scope)
   end
@@ -25,6 +18,7 @@ class API::MembershipsController < API::RestfulController
     render json: Array(resource.group), each_serializer: GroupSerializer, root: :groups, scope: {}
   end
 
+  # move to profile controller later
   def for_user
     load_and_authorize :user
     same_group_ids   = current_user.group_ids & @user.group_ids
@@ -41,49 +35,9 @@ class API::MembershipsController < API::RestfulController
     respond_with_resource
   end
 
-  def invitables
-    @memberships = page_collection visible_invitables
-    respond_with_collection scope: { q: params[:q], include_inviter: false }
-  end
-
   def my_memberships
     @memberships = current_user.memberships.includes(:user, :inviter)
     respond_with_collection
-  end
-
-  def autocomplete
-    instantiate_collection do |collection|
-      group_ids = case params[:subgroups]
-        when 'mine', 'all'
-          model.group.id_and_subgroup_ids
-        else
-          [model.group.id]
-        end
-
-      collection = collection.where(group_id: group_ids)
-
-      collection = collection.active unless params.has_key?(:pending) #leave alone until 1.0 retired
-
-      case params[:filter]
-      when 'admin'
-        collection = collection.admin
-      when 'pending'
-        collection = collection.pending
-      when 'accepted'
-        collection = collection.accepted
-      end
-
-      query = params[:q].to_s
-      if query.length > 0
-        collection = collection.joins(:user)
-                               .where("users.name ilike :first OR
-                                       users.name ilike :last OR
-                                       users.username ilike :first",
-                                       first: "#{query}%", last: "% #{query}%")
-      end
-      collection
-    end
-    respond_with_collection(scope: index_scope)
   end
 
   def resend
@@ -124,28 +78,11 @@ class API::MembershipsController < API::RestfulController
   def model
     load_and_authorize(:group, :see_private_content, optional: true) ||
     load_and_authorize(:discussion, optional: true) ||
-    load_and_authorize(:poll, optional: true)
+    load_and_authorize(:poll, optional: true) ||
+    NullGroup.new
   end
 
   def accessible_records
-    visible = resource_class.joins(:group).joins(:user).includes(:user, :inviter, {group: [:parent]})
-    if current_user.group_ids.any?
-      visible.where("group_id IN (#{current_user.group_ids.join(',')}) OR
-                     groups.parent_id IN (#{ids_or_null(current_user.adminable_group_ids)})")
-    else
-      Membership.none
-    end
-  end
-
-  def ids_or_null(ids)
-    if ids.length == 0
-      'null'
-    else
-      ids.join(',')
-    end
-  end
-  def visible_invitables
-    load_and_authorize :group, :invite_people
-    Queries::VisibleInvitableMemberships.new(group: @group, user: current_user, query: params[:q])
+    MembershipQuery.visible_to(user: current_user)
   end
 end

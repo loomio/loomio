@@ -12,7 +12,6 @@ class Events::NewComment < Event
   end
 
   private
-
   def email_recipients
     Queries::UsersByVolumeQuery.loud(eventable.discussion)
                                .where.not(id: eventable.author)

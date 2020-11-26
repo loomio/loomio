@@ -250,6 +250,7 @@ ga_IE:
   discussion_fork_actions:
     move: Bog é
   discussion_form:
+    invite: Tabhair cuireadh
     start_thread: Cur snáithe ar bun
     messages:
       created: 'Tosaíodh snáithe'
@@ -263,6 +264,10 @@ ga_IE:
     context_label: 'Comhthéacs'
     context_placeholder: 'Cuir dóthain eolas cúlra ar fáil don bhaicle le go mbeidh an plé torthúil. Is féidir seo a nuashonrú fad is atá an plé ar bun'
     privacy_label: 'Príobháideachas'
+  announcement:
+    form:
+      invitation_message_label: Teachtaireacht
+      placeholder: Cuir ainmneacha nó seoltaí ríomhphoist isteach
   action_dock:
     edit_stance: Athraigh do sheasamh
     edited: Curtha in eagar

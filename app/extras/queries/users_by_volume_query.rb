@@ -3,6 +3,14 @@ class Queries::UsersByVolumeQuery
     users_by_volume(model, '>=', DiscussionReader.volumes[:normal])
   end
 
+  def self.email_notifications(model)
+    normal_or_loud(model)
+  end
+
+  def self.app_notifications(model)
+    users_by_volume(model, '>=', DiscussionReader.volumes[:quiet])
+  end
+
   %w(mute quiet normal loud).map(&:to_sym).each do |volume|
     define_singleton_method volume, ->(model) {
       users_by_volume(model, '=', DiscussionReader.volumes[volume])
@@ -19,7 +27,8 @@ class Queries::UsersByVolumeQuery
       joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{model.poll_id || 0} AND s.latest = TRUE").
       where('(m.id IS NOT NULL AND m.archived_at IS NULL) OR
              (dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
-             (s.id IS NOT NULL and s.revoked_at IS NULL AND s.inviter_id IS NOT NULL)').
+             (s.id IS NOT NULL and s.revoked_at IS NULL AND s.inviter_id IS NOT NULL) OR
+             (m.id IS NULL and dr.id IS NULL and s.id IS NULL)').
       where("coalesce(s.volume, dr.volume, m.volume, 2) #{operator} :volume", volume: volume)
   end
 end

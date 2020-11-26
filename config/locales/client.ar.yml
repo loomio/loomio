@@ -3,8 +3,6 @@ ar:
     group_progress_card:
       title: قم بتنشيط فريقك
       activities:
-        set_logo: قم باختيار شعار لفريقك
-        set_cover_photo: اختر صورة كغلاف لفريقك
         invite_people_in: قم بدعوة أشخاص
   plan_names:
     free: مجاني
@@ -244,7 +242,6 @@ ar:
   notifications:
     header: "تبليغات"
     no_notifications: "ليس لديك أي إشعارات"
-    new_discussion: "<strong>{{name}}</strong> ابدأ مناقشة <strong>{{title}} </strong>"
     new_motion: "<strong> {{name}} </strong>انشاء اقتراح <strong>{{title}} </strong>"
     motion_closed: "<strong>{{title}}</strong> :تم إغلاق الاقتراح"
     publish_outcome: "قم بنشر النتيجة"
@@ -262,6 +259,7 @@ ar:
   discussion_fork_actions:
     move: نقل
   discussion_form:
+    invite: دعوة
     start_thread: إبدأ موضوعاً
     messages:
       created: 'تم بدء الموضوع'
@@ -301,7 +299,6 @@ ar:
     messages:
       membership_requested: 'لقد قمت بطلب الانضمام لمجموعة {{group}}'
   revision_history_modal:
-    comment_header: سجل مراجعة التعليقات
     started_by: 'تم بدؤه من قبل <strong>{{name}}</strong>'
     edited_by: 'تم تعديله من قبل <strong>{{name}}</strong>'
     posted: تم النشر

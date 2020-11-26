@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_19_210708) do
+ActiveRecord::Schema.define(version: 2020_11_24_183328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -157,6 +157,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_210708) do
     t.datetime "discarded_at"
     t.integer "discarded_by"
     t.string "secret_token", default: -> { "gen_random_uuid()" }
+    t.string "content_locale"
     t.index ["discussion_id"], name: "index_comments_on_discussion_id"
   end
 
@@ -176,7 +177,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_210708) do
     t.integer "discussion_id", null: false
     t.datetime "last_read_at"
     t.integer "last_read_sequence_id", default: 0, null: false
-    t.integer "volume"
+    t.integer "volume", default: 2, null: false
     t.boolean "participating", default: false, null: false
     t.datetime "dismissed_at"
     t.string "read_ranges_string"
@@ -217,7 +218,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_210708) do
     t.boolean "uses_markdown", default: false, null: false
     t.integer "items_count", default: 0, null: false
     t.datetime "closed_at"
-    t.boolean "private"
+    t.boolean "private", default: true, null: false
     t.string "key", limit: 255
     t.string "iframe_src", limit: 255
     t.datetime "last_activity_at"
@@ -237,10 +238,13 @@ ActiveRecord::Schema.define(version: 2020_10_19_210708) do
     t.boolean "newest_first", default: false, null: false
     t.datetime "discarded_at"
     t.string "secret_token", default: -> { "gen_random_uuid()" }
+    t.integer "members_count"
+    t.integer "anonymous_polls_count", default: 0, null: false
+    t.string "content_locale"
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
+    t.index ["discarded_at", "closed_at"], name: "index_discussions_on_discarded_at_and_closed_at", where: "((discarded_at IS NULL) AND (closed_at IS NULL))"
     t.index ["discarded_at"], name: "discussions_discarded_at_null", where: "(discarded_at IS NULL)"
-    t.index ["discarded_at"], name: "index_discussions_on_discarded_at"
     t.index ["group_id"], name: "index_discussions_on_group_id"
     t.index ["guest_group_id"], name: "index_discussions_on_guest_group_id"
     t.index ["key"], name: "index_discussions_on_key", unique: true
@@ -287,6 +291,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_210708) do
     t.boolean "pinned", default: false, null: false
     t.string "position_key"
     t.integer "descendant_count", default: 0, null: false
+    t.integer "eventable_version_id"
     t.index ["created_at"], name: "index_events_on_created_at"
     t.index ["discussion_id", "sequence_id"], name: "index_events_on_discussion_id_and_sequence_id", unique: true
     t.index ["discussion_id"], name: "index_events_on_discussion_id"
@@ -398,6 +403,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_210708) do
     t.boolean "admins_can_edit_user_content", default: false, null: false
     t.boolean "listed_in_explore", default: false, null: false
     t.string "secret_token", default: -> { "gen_random_uuid()" }
+    t.string "content_locale"
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["category_id"], name: "index_groups_on_category_id"
     t.index ["cohort_id"], name: "index_groups_on_cohort_id"
@@ -484,7 +490,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_210708) do
     t.string "url"
     t.integer "actor_id"
     t.index ["event_id"], name: "index_notifications_on_event_id"
-    t.index ["user_id", "created_at"], name: "notifications_user_id_created_at_idx"
+    t.index ["id"], name: "index_notifications_on_id", order: :desc
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
@@ -560,6 +566,9 @@ ActiveRecord::Schema.define(version: 2020_10_19_210708) do
     t.string "statement_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
     t.string "secret_token", default: -> { "gen_random_uuid()" }
+    t.integer "versions_count", default: 0, null: false
+    t.date "review_on"
+    t.string "content_locale"
     t.index ["poll_id"], name: "index_outcomes_on_poll_id"
   end
 
@@ -596,7 +605,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_210708) do
     t.string "key", null: false
     t.string "poll_type", null: false
     t.jsonb "stance_data", default: {}
-    t.integer "stances_count", default: 0, null: false
+    t.integer "voters_count", default: 0, null: false
     t.boolean "multiple_choice", default: false, null: false
     t.jsonb "custom_fields", default: {}, null: false
     t.jsonb "stance_counts", default: [], null: false
@@ -604,7 +613,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_210708) do
     t.jsonb "matrix_counts", default: [], null: false
     t.boolean "notify_on_participate", default: false, null: false
     t.boolean "example", default: false, null: false
-    t.integer "undecided_count", default: 0, null: false
+    t.integer "undecided_voters_count", default: 0, null: false
     t.boolean "voter_can_add_options", default: false, null: false
     t.integer "guest_group_id"
     t.boolean "anonymous", default: false, null: false
@@ -617,6 +626,9 @@ ActiveRecord::Schema.define(version: 2020_10_19_210708) do
     t.datetime "discarded_at"
     t.integer "discarded_by"
     t.string "secret_token", default: -> { "gen_random_uuid()" }
+    t.boolean "specified_voters_only", default: false, null: false
+    t.integer "notify_on_closing_soon", default: 0, null: false
+    t.string "content_locale"
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["discussion_id"], name: "index_polls_on_discussion_id"
     t.index ["group_id"], name: "index_polls_on_group_id"
@@ -668,10 +680,11 @@ ActiveRecord::Schema.define(version: 2020_10_19_210708) do
     t.datetime "revoked_at"
     t.boolean "admin", default: false, null: false
     t.integer "inviter_id"
-    t.integer "volume"
+    t.integer "volume", default: 2, null: false
     t.datetime "accepted_at"
     t.jsonb "stance_choices_cache", default: []
     t.string "secret_token", default: -> { "gen_random_uuid()" }
+    t.string "content_locale"
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id"], name: "index_stances_on_poll_id"
     t.index ["revoked_at"], name: "stances_revoked_at_null", where: "(revoked_at IS NOT NULL)"
@@ -772,7 +785,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_210708) do
     t.boolean "email_catch_up", default: true, null: false
     t.string "email_api_key", limit: 255
     t.boolean "email_when_mentioned", default: true, null: false
-    t.boolean "email_on_participation", null: false
+    t.boolean "email_on_participation", default: false, null: false
     t.integer "default_membership_volume", default: 2, null: false
     t.string "country"
     t.string "region"
@@ -795,6 +808,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_210708) do
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.string "secret_token", default: -> { "gen_random_uuid()" }
+    t.string "content_locale"
     t.index ["deactivated_at"], name: "index_users_on_deactivated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"

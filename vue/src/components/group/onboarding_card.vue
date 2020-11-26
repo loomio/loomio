@@ -11,15 +11,7 @@ export default
     activities: []
   created: ->
     @activities = [
-      translate: "set_description"
-      complete:  => @group.description
-      click:     =>
-        openModal
-          component: 'GroupForm'
-          props:
-            group: @group
-    ,
-      translate: "set_logo"
+      translate: "set_cover_photo"
       complete:  => @group.logoUrl() != '/theme/icon.png'
       click:     =>
         openModal
@@ -27,8 +19,8 @@ export default
           props:
             group: @group
     ,
-      translate: "set_cover_photo"
-      complete:  => @group.hasCustomCover
+      translate: "set_description"
+      complete:  => @group.description
       click:     =>
         openModal
           component: 'GroupForm'
@@ -39,9 +31,9 @@ export default
       complete:  => @group.membershipsCount > 1 or @group.invitationsCount > 0
       click:     =>
         openModal
-          component: 'AnnouncementForm'
+          component: 'GroupInvitationForm'
           props:
-            announcement: Records.announcements.buildFromModel(@group)
+            group: @group
     ,
       translate: "start_thread"
       complete:  => @group.discussionsCount > 1
@@ -64,7 +56,7 @@ export default
 
     show: ->
       (differenceInDays(new Date, Session.user().createdAt) < 30) && # account is less than 30 days old
-      @group.isParent() && 
+      @group.isParent() &&
       @group.adminsInclude(Session.user()) &&
       !Session.user().hasExperienced("dismissProgressCard")
 

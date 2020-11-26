@@ -17,10 +17,10 @@ export default
     editThread: -> @actions['edit_thread']
 
     dockActions: ->
-      pick @actions, ['react', 'add_comment', 'subscribe', 'unsubscribe', 'unignore', 'show_history', 'edit_thread', 'announce_thread']
+      pick @actions, ['react', 'translate_thread', 'add_comment', 'subscribe', 'unsubscribe', 'unignore', 'show_history', 'edit_thread', 'announce_thread']
 
     menuActions: ->
-      pick @actions, ['edit_tags',  'notification_history', 'translate_thread', 'close_thread', 'reopen_thread', 'move_thread', 'discard_thread', 'export_thread']
+      pick @actions, ['edit_tags',  'notification_history', 'close_thread', 'reopen_thread', 'move_thread', 'discard_thread', 'export_thread']
 
     status: ->
       return 'pinned' if @discussion.pinned
@@ -29,10 +29,17 @@ export default
       @$t("context_panel.thread_status.#{@status}")
 
     groups: ->
-      map compact([@discussion.group().parent(), @discussion.group()]), (group) =>
-        text: group.name
-        disabled: false
-        to: @urlFor(group)
+      if @discussion.groupId
+        map @discussion.group().parentsAndSelf(), (group) =>
+          text: group.name
+          disabled: false
+          to: @urlFor(group)
+      else
+        [{
+          text: @$t('discussion_form.invite_only_thread')
+          disabled: false
+          to: '/threads/direct'
+        }]
 
   methods:
     viewed: (viewed) ->
@@ -77,9 +84,6 @@ export default
           span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public(v-show='!discussion.private')
             i.mdi.mdi-earth
             span(v-t="'common.privacy.public'")
-        span(v-show='discussion.seenByCount > 0')
-          mid-dot
-          a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
         span.context-panel__fork-details(v-if='discussion.forkedEvent() && discussion.forkedEvent().discussion()')
           mid-dot
           span(v-t="'thread_context.forked_from'")

@@ -15,10 +15,12 @@ export default
 
   created: ->
     EventBus.$on 'stanceSaved', => EventBus.$emit 'refreshStance'
+    @outcome = @poll.outcome()
     @watchRecords
-      collections: ["stances"]
+      collections: ["stances", "outcomes"]
       query: (records) =>
         @myStance = @poll.myStance()
+        @outcome = @poll.outcome()
 
   beforeDestroy: ->
     EventBus.$off 'showResults'
@@ -27,6 +29,7 @@ export default
   data: ->
     buttonPressed: false
     myStance: null
+    outcome: null
 
   computed:
     eventable: -> @event.model()
@@ -37,12 +40,12 @@ export default
 
     menuActions: ->
       assign(
-        pick PollService.actions(@poll, @), ['show_history', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread', 'translate_poll']
+        pick PollService.actions(@poll, @), ['notification_history', 'show_history', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread']
       ,
         pick EventService.actions(@event, @), ['move_event', 'copy_url', 'pin_event', 'unpin_event']
       )
     dockActions: ->
-      pick PollService.actions(@poll, @), ['show_results', 'hide_results', 'edit_stance', 'announce_poll', 'edit_poll', 'close_poll', 'reopen_poll']
+      pick PollService.actions(@poll, @), ['show_results', 'hide_results', 'translate_poll', 'edit_stance', 'announce_poll', 'edit_poll', 'close_poll', 'reopen_poll']
 
 </script>
 
@@ -53,8 +56,8 @@ thread-item.poll-created(:event="event" :is-returning="isReturning")
       router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
       translation(v-if="poll.translation.title" :model='poll', field='title')
       poll-common-closing-at.ml-2(:poll='poll')
-  poll-common-set-outcome-panel(:poll='poll')
-  poll-common-outcome-panel(:poll='poll', v-if='poll.outcome()')
+  poll-common-set-outcome-panel(:poll='poll' v-if="!outcome")
+  poll-common-outcome-panel(:outcome='outcome' v-if='outcome')
   formatted-text.poll-common-details-panel__details(:model="poll" column="details")
   attachment-list(:attachments="poll.attachments")
   document-list(:model='poll' skip-fetch)

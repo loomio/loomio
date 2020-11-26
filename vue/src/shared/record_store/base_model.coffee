@@ -134,7 +134,13 @@ export default class BaseModel
 
     args = assign values, userArgs
 
-    @[name] = => @recordStore[args.from].find(@[args.by])
+    @[name] = =>
+      if @[args.by]
+        return obj if obj = @recordStore[args.from].find(@[args.by])
+        obj = @recordStore[args.from].create(id: @[args.by])
+        @recordStore[args.from].addMissing(@[args.by])
+        return obj
+      return @recordStore[args.from].nullModel()
     @[name+'Is'] = (obj) => @recordStore[args.from].find(@[args.by]) == obj
 
   translationOptions: ->

@@ -15,17 +15,16 @@ class MembershipService
     existing_membership = Membership.where("id != ?", membership.id).where(group_id: membership.group_id, user_id: actor.id).first
     update_success = membership.update(user: actor, accepted_at: DateTime.now, saml_session_expires_at: expires_at)
 
-    if membership.inviter
+    # can remove this after august
+    if membership.experiences['invited_group_ids'] && membership.inviter
       Group.where(id: Array(membership.experiences['invited_group_ids'])).each do |group|
         group.add_member!(actor, inviter: membership.inviter) if membership.inviter.can?(:add_members, group)
       end
     end
 
-    if existing_membership && !update_success
-      membership.destroy
-    end
+    membership.destroy if existing_membership && !update_success
 
-    Events::InvitationAccepted.publish!(membership) if notify
+    Events::InvitationAccepted.publish!(membership) if notify && membership.reload.persisted?
   end
 
   def self.update(membership:, params:, actor:)
@@ -52,17 +51,26 @@ class MembershipService
     titles[group.id] = membership.title
     user.experiences['titles'] = titles
     user.save!
-    MessageChannelService.publish_models(user, serializer: AuthorSerializer, group_id: group.id)
+    MessageChannelService.publish_models([user], serializer: AuthorSerializer, group_id: group.id)
   end
 
   def self.set_volume(membership:, params:, actor:)
     actor.ability.authorize! :update, membership
+    val = Membership.volumes[params[:volume]]
     if params[:apply_to_all]
-      actor.memberships.where(group_id: membership.group.parent_or_self.id_and_subgroup_ids).update_all(volume: Membership.volumes[params[:volume]])
-      actor.discussion_readers.update_all(volume: nil)
+      group_ids = membership.group.parent_or_self.id_and_subgroup_ids
+      actor.memberships.where(group_id: group_ids).update_all(volume: val)
+      actor.discussion_readers.joins(:discussion).
+            where('discussions.group_id': group_ids).
+            update_all(volume: val)
+      Stance.joins(:poll).
+             where('polls.group_id': group_ids).
+             where(participant_id: actor.id).
+             update_all(volume: val)
     else
       membership.set_volume! params[:volume]
-      membership.discussion_readers.update_all(volume: nil)
+      membership.discussion_readers.update_all(volume: val)
+      membership.stances.update_all(volume: val)
     end
   end
 
@@ -107,7 +115,9 @@ class MembershipService
 
     Stance.joins(:poll).where(
       'polls.group_id': membership.group.id_and_subgroup_ids,
-      participant_id: membership.user_id).update_all(revoked_at: now)
+      participant_id: membership.user_id,
+      cast_at: nil
+    ).update_all(revoked_at: now)
 
     Membership.where(user_id: membership.user_id, group_id: membership.group.id_and_subgroup_ids).destroy_all
 

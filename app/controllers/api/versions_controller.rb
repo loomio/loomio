@@ -1,15 +1,21 @@
 class API::VersionsController < API::RestfulController
   def show
     self.resource = model.versions[params[:index].to_i]
-    respond_with_resource(scope: default_scope.merge(exclude_types: %w[discussion group user comment poll stance]),
-                          serializer: resource_serializer,
-                          root: serializer_root)
+    respond_with_resource
   end
 
   private
 
-  def resource_class
-    PaperTrail::Version
+  def exclude_types
+    %w[discussion group user comment poll stance]
+  end
+
+  def serializer_class
+    VersionSerializer
+  end
+  
+  def serializer_root
+    'versions'
   end
 
   def model
@@ -17,7 +23,7 @@ class API::VersionsController < API::RestfulController
     load_and_authorize(:discussion, optional:true) ||
     load_and_authorize(:comment, optional:true) ||
     load_and_authorize(:stance, optional:true) ||
-    load_and_authorize(:poll, optional:false)
+    load_and_authorize(:poll, optional:true) ||
+    load_and_authorize(:outcome, optional:false)
   end
-
 end

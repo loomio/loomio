@@ -4,7 +4,8 @@ import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import i18n from '@/i18n.coffee'
 import * as Sentry from '@sentry/browser'
-import * as Integrations from '@sentry/integrations'
+import { Vue as VueIntegration } from "@sentry/integrations"
+import { Integrations } from "@sentry/tracing"
 import { forEach } from 'lodash'
 
 export default (callback) ->
@@ -23,6 +24,8 @@ export default (callback) ->
             "NotFoundError: Failed to execute 'removeChild' on 'Node'",
             "NotFoundError: The object can not be found here",
             "NotFoundError: Node was not found",
+            "null is not an object (evaluating 'r.addEventListener')",
+            "Cannot read property 'addEventListener' of null",
             "ResizeObserver loop limit exceeded",
             "MetaMask detected another web3",
             "AbortError: The operation was aborted",
@@ -31,11 +34,10 @@ export default (callback) ->
           ]
           dsn: AppConfig.sentry_dsn
           integrations: [
-            new Integrations.Vue
-              Vue: Vue
-              attachProps: true
-              logErrors: true
+            new Integrations.BrowserTracing(),
+            new VueIntegration({Vue: Vue, attachProps: true, logErrors: true, tracing: true})
           ]
+          tracesSampleRate: AppConfig.features.app.sentry_sample_rate || 0.1
 
         Sentry.configureScope (scope) ->
           scope.setTag("loomio_version", AppConfig.version)

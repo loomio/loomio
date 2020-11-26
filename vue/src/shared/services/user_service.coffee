@@ -32,7 +32,7 @@ export default new class UserService
 
     deactivate_user:
       icon: 'mdi-exit-run'
-      name: 'deactivation_modal.aria_label'
+      name: 'profile_page.delete_user_link'
       canPerform: -> !user.deactivatedAt
       perform: ->
         EventBus.$emit 'openModal',
@@ -40,7 +40,7 @@ export default new class UserService
           props:
             confirm:
               text:
-                title: 'deactivation_modal.aria_label'
+                title: 'profile_page.delete_account'
                 raw_helptext: "
                   <p>#{vm.$t('deactivation_modal.introduction')}</p>
                   <ul>

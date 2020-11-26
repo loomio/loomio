@@ -19,7 +19,7 @@ export default
 
   created: ->
     if !Session.user().membershipFor(@group)
-      Records.membershipRequests.fetchMyPendingByGroup(@group.key)
+      Records.membershipRequests.fetchMyPendingByGroup(@group.id)
 
       @watchRecords
         collections: ['memberships', "membershipRequests"]

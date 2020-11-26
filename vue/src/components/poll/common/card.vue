@@ -25,7 +25,7 @@ export default
   data: ->
     buttonPressed: false
     myStance: null
-    outcome: null
+    outcome: @poll.outcome()
 
   methods:
     titleVisible: (visible) ->
@@ -37,7 +37,7 @@ export default
 
     menuActions: ->
       @myStance
-      pick PollService.actions(@poll, @), ['edit_poll', 'move_poll', 'close_poll', 'reopen_poll', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread', 'translate_poll']
+      pick PollService.actions(@poll, @), ['edit_poll', 'close_poll', 'reopen_poll', 'notification_history', 'show_history', 'move_poll', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread', 'translate_poll']
 
     dockActions: ->
       @myStance
@@ -57,9 +57,9 @@ v-card
         span(v-if='!poll.translation.title') {{poll.title}}
         translation(v-if="poll.translation.title" :model='poll', field='title')
         v-chip.ml-3(outlined small color="info" v-t="'poll_types.' + poll.pollType")
-    v-card-text
-      poll-common-set-outcome-panel(:poll='poll')
-      poll-common-outcome-panel(:poll='poll', v-if='outcome')
+    .px-4
+      poll-common-set-outcome-panel(:poll='poll' v-if="!outcome")
+      poll-common-outcome-panel(:outcome='outcome' v-if="outcome")
       poll-common-details-panel(:poll='poll')
       .poll-common-card__results-shown(v-if='showResults')
         poll-common-directive(:poll='poll', name='chart-panel')

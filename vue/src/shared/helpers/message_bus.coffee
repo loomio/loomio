@@ -19,9 +19,11 @@ export initLiveUpdate = ->
   recordsSocket = io(recordsAddress, query: { channel_token: AppConfig.channel_token})
 
   recordsSocket.on 'update', (data) =>
-    roomScores[data.room] = data.score
-    console.log("socket.io update", {roomScores: roomScores}, data)
-    Records.import(data.records)
+    if data.notice
+      EventBus.$emit('systemNotice', data)
+    else
+      roomScores[data.room] = data.score
+      Records.import(data.records)
 
   recordsSocket.on 'reconnect', (data) =>
     console.log("socket.io reconnect", {roomScores: roomScores})
@@ -36,6 +38,6 @@ export initLiveUpdate = ->
   recordsSocket.on 'connect', (data) =>
     # Flash.warning("server connected")
     console.log("socket.io connect")
-    
+
 export closeLiveUpdate = ->
   recordsSocket.close()

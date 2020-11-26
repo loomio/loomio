@@ -9,7 +9,9 @@ class PollMailer < BaseMailer
      invitation_resend
      outcome_announced
      outcome_created
+     outcome_updated
      outcome_created_author
+     outcome_review_due
      poll_announced
      poll_closing_soon
      poll_closing_soon_author
@@ -37,6 +39,8 @@ class PollMailer < BaseMailer
     @event = Event.find_by!(id: event_id)
     @action_name = action_name
     @poll = @event.eventable.poll
+
+    return if ENV['SPAM_REGEX'] && Regexp.new(ENV['SPAM_REGEX']).match(@recipient.email)
     return if User::BOT_EMAILS.values.include?(@recipient.email)
     headers = {
       "Precedence":               :bulk,
@@ -56,8 +60,9 @@ class PollMailer < BaseMailer
       locale:        @recipient.locale,
       to:            @recipient.email,
       from: from_user_via_loomio(@event.user),
+      reply_to: reply_to_address_with_group_name(model: @event.eventable, user: @recipient),
       subject_prefix: subject_prefix(@poll),
-      subject_key: "poll_mailer.subject.#{@action_name}#{@poll.wip? ? "_wip" : ''}",
+      subject_key: "poll_mailer.subject.#{@action_name}",
       subject_params: {
         group: @poll.group.full_name,
         title: @poll.title,

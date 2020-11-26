@@ -23,7 +23,7 @@ class Discussion < ApplicationRecord
 
   scope :in_organisation, -> (group) { includes(:author).where(group_id: group.id_and_subgroup_ids) }
   scope :last_activity_after, -> (time) { where('last_activity_at > ?', time) }
-  scope :order_by_latest_activity, -> { order('discussions.last_activity_at DESC') }
+  scope :order_by_latest_activity, -> { order(last_activity_at: :desc) }
   scope :recent, -> { where('last_activity_at > ?', 6.weeks.ago) }
   scope :order_by_importance, -> { order(importance: :desc, last_activity_at: :desc) }
 
@@ -34,7 +34,6 @@ class Discussion < ApplicationRecord
   scope :is_closed, -> { kept.where("closed_at is not null") }
 
   validates_presence_of :title, :group, :author
-  validate :private_is_not_nil
   validates :title, length: { maximum: 150 }
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
   validate :privacy_is_permitted_by_group
@@ -42,7 +41,7 @@ class Discussion < ApplicationRecord
   is_mentionable  on: :description
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
   is_rich_text    on: :description
-  has_paper_trail only: [:title, :description, :private, :group_id]
+  has_paper_trail only: [:title, :description, :description_format, :private, :group_id, :author_id]
 
   belongs_to :group, class_name: 'Group'
   belongs_to :author, class_name: 'User'
@@ -59,7 +58,6 @@ class Discussion < ApplicationRecord
   has_many :discussion_tags, dependent: :destroy
   has_many :tags, through: :discussion_tags
 
-
   has_many :items, -> { includes(:user) }, class_name: 'Event', dependent: :destroy
 
   has_many :discussion_readers, dependent: :destroy
@@ -75,7 +73,7 @@ class Discussion < ApplicationRecord
 
   scope :weighted_search_for, ->(query, user, opts = {}) do
     query = connection.quote(query)
-    select(:id, :key, :title, :result_group_name, :result_group_id, :description, :last_activity_at, :rank, "#{query}::text as query")
+    select("*, #{query}::text as query")
     .select("ts_headline(discussions.description, plainto_tsquery(#{query}), 'ShortWord=0') as blurb")
     .from(SearchVector.search_for(query, user, opts))
     .joins("INNER JOIN discussions on subquery.discussion_id = discussions.id")
@@ -94,10 +92,12 @@ class Discussion < ApplicationRecord
 
   after_create :set_last_activity_at_to_created_at
 
-  define_counter_cache(:closed_polls_count)   { |discussion| discussion.polls.closed.count }
-  define_counter_cache(:versions_count)       { |discussion| discussion.versions.count }
-  define_counter_cache(:items_count)          { |discussion| discussion.items.count }
-  define_counter_cache(:seen_by_count)        { |discussion| discussion.discussion_readers.where("last_read_at is not null").count }
+  define_counter_cache(:closed_polls_count)         { |d| d.polls.closed.count }
+  define_counter_cache(:versions_count)             { |d| d.versions.count }
+  define_counter_cache(:items_count)                { |d| d.items.count }
+  define_counter_cache(:seen_by_count)              { |d| d.discussion_readers.where("last_read_at is not null").count }
+  define_counter_cache(:members_count)              { |d| d.discussion_readers.where("revoked_at is null").count }
+  define_counter_cache(:anonymous_polls_count)      { |d| d.polls.where(anonymous: true).count }
 
   update_counter_cache :group, :discussions_count
   update_counter_cache :group, :public_discussions_count
@@ -105,12 +105,32 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
 
+  def create_missing_created_event!
+    event = self.events.create(
+      kind: created_event_kind,
+      user_id: author_id,
+      created_at: created_at)
+    EventService.delay.repair_thread(id)
+    event
+  end
+
+  def group
+    super || NullGroup.new
+  end
+
+  def existing_member_ids
+    reader_ids
+  end
+
+  def user_id
+    author_id
+  end
+
   def author
     super || AnonymousUser.new
   end
 
   def members
-    # User.where(id: group.members.pluck(:id).concat(guests.pluck(:id)).uniq)
     User.active.
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
@@ -119,7 +139,6 @@ class Discussion < ApplicationRecord
   end
 
   def admins
-    # User.where(id: group.admins.pluck(:id).concat(admin_guests.pluck(:id)).uniq)
     User.active.
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
@@ -160,12 +179,6 @@ class Discussion < ApplicationRecord
 
   def public?
     !private
-  end
-
-  def inherit_group_privacy!
-    if self[:private].nil? and group.present?
-      self[:private] = group.discussion_private_default
-    end
   end
 
   def discussion
@@ -212,12 +225,7 @@ class Discussion < ApplicationRecord
     item.try(:sequence_id) || 0
   end
 
-  def private_is_not_nil
-    errors.add(:private, "Please select a privacy") if self[:private].nil?
-  end
-
   def privacy_is_permitted_by_group
-    return unless group.present?
     if self.public? and group.private_discussions_only?
       errors.add(:private, "must be private in this group")
     end

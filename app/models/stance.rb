@@ -34,12 +34,11 @@ class Stance < ApplicationRecord
   alias :user :participant
   alias :author :participant
 
-  update_counter_cache :poll, :stances_count
-  update_counter_cache :poll, :undecided_count
+  update_counter_cache :poll, :voters_count
+  update_counter_cache :poll, :undecided_voters_count
 
   before_save :update_stance_choices_cache
 
-  default_scope { includes(:stance_choices) }
   scope :latest,         -> { where(latest: true).where(revoked_at: nil) }
   scope :admin,         ->  { where(admin: true) }
   scope :newest_first,   -> { order("cast_at DESC NULLS LAST") }
@@ -65,13 +64,22 @@ class Stance < ApplicationRecord
   delegate :mailer,         to: :poll, allow_nil: true
   delegate :group_id,       to: :poll
   delegate :discussion_id,  to: :poll
+  delegate :discussion,     to: :poll
   delegate :members,        to: :poll
   delegate :title,          to: :poll
 
   alias :author :participant
 
+  def author_id
+    participant_id
+  end
+
+  def user_id
+    participant_id
+  end
+
   def locale
-    author&.locale || group&.locale
+    author&.locale || group&.locale || poll.author.locale
   end
 
   def body
@@ -111,8 +119,9 @@ class Stance < ApplicationRecord
     end
   end
 
-  def participant
-    (!participant_id || poll.anonymous?) ? AnonymousUser.new : super
+  def participant(bypass = false)
+    super() if bypass
+    (!participant_id || poll.anonymous?) ? AnonymousUser.new : super()
   end
 
   def real_participant

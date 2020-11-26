@@ -2,7 +2,7 @@ import BaseModel    from '@/shared/record_store/base_model'
 import AppConfig    from '@/shared/services/app_config'
 import HasDocuments from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
-import {filter, some, map, each} from 'lodash'
+import {filter, some, map, each, compact} from 'lodash'
 
 export default class GroupModel extends BaseModel
   @singular: 'group'
@@ -24,7 +24,6 @@ export default class GroupModel extends BaseModel
     membersCanEditDiscussions: true
     membersCanEditComments: true
     membersCanRaiseMotions: true
-    membersCanVote: true
     membersCanStartDiscussions: true
     membersCanCreateSubgroups: false
     motionsCanBeEdited: false
@@ -32,6 +31,7 @@ export default class GroupModel extends BaseModel
     imageFiles: []
     attachments: []
     subscription: {}
+    specifiedVotersOnly: false
 
   afterConstruction: ->
     if @privacyIsClosed()
@@ -49,7 +49,7 @@ export default class GroupModel extends BaseModel
     @belongsTo 'parent', from: 'groups'
 
   parentOrSelf: ->
-    if @parent() then @parent() else @
+    if @parentId then @parent() else @
 
   group: -> @
 
@@ -93,14 +93,39 @@ export default class GroupModel extends BaseModel
   organisationIds: ->
     map(@subgroups(), 'id').concat(@id)
 
+  selfAndSubgroups: ->
+    @recordStore.groups.find(@selfAndSubgroupIds())
+
+  selfAndSubgroupIds: ->
+    [@id].concat(@recordStore.groups.find(parentId: @id).map (g) -> g.id)
+
   membershipFor: (user) ->
     @recordStore.memberships.find(groupId: @id, userId: user.id)[0]
 
   members: ->
-    @recordStore.users.find(id: {$in: @memberIds()})
+    @recordStore.users.collection.find(id: {$in: @memberIds()})
+
+  parentsAndSelf: ->
+    @selfAndParents().reverse()
+
+  selfAndParents: ->
+    compact [@].concat(@parentId && @parent().parentsAndSelf())
+
+  parentAndSelfMemberships: ->
+    @recordStore.memberships.collection.find(groupId: {$in: @parentOrSelf().selfAndSubgroupIds()})
+
+  parentAndSelfMembershipIds: ->
+    @parentAndSelfMemberships().map (u) -> u.id
+
+  parentAndSelfMembers: ->
+    @recordStore.users.collection.find(id: {$in: @parentAndSelfMemberships().map (m) -> m.userId})
+
+  parentAndSelfMemberIds: ->
+    @parentAndSelfMembers().map (u) -> u.id
 
   membersInclude: (user) ->
     @membershipFor(user)
+
   adminsInclude: (user) ->
     @recordStore.memberships.find(groupId: @id, userId: user.id, admin: true)[0]
 
@@ -143,7 +168,7 @@ export default class GroupModel extends BaseModel
       AppConfig.theme.icon_src
 
   coverUrl: (size = 'large') ->
-    if @parent() && !@hasCustomCover
+    if @parentId && !@hasCustomCover
       @parent().coverUrl(size)
     else
       @coverUrls[size]

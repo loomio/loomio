@@ -28,7 +28,9 @@ gem 'browser', '~> 5.1.0'
 gem "aws-sdk-s3", require: false
 gem 'mini_magick'
 gem 'image_processing', '~> 1.12'
-gem "sentry-raven"
+gem "sentry-ruby"
+gem "sentry-rails"
+gem "sentry-sidekiq"
 gem 'http_accept_language'
 gem 'sprockets', '3.7.2'
 gem 'sprockets-rails', require: 'sprockets/railtie'
@@ -40,6 +42,7 @@ gem 'ahoy_email', '~> 1.1.0'
 gem 'geocoder', '1.6.4'
 gem 'maxminddb'
 gem 'oj'
+gem "cld"
 gem 'custom_counter_cache', github: "loomio/custom_counter_cache", branch: "rails5"
 gem 'premailer-rails'
 gem 'griddler', github: 'loomio/griddler'
@@ -54,11 +57,12 @@ gem 'redis-rails'
 gem 'hiredis'
 gem 'connection_pool'
 gem 'ruby-saml'
-gem 'google-cloud-translate', '1.4.0'
+gem 'google-cloud-translate'
 gem 'slack_mrkdwn'
 gem 'puma'
 gem 'reverse_markdown'
 gem 'discard', '~> 1.2'
+gem 'lograge'
 
 group :development, :test do
   gem 'byebug'

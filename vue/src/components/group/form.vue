@@ -32,7 +32,7 @@ export default
       # if group is new, suggest handle whenever name changes
       # if group is old, suggest handle only if handle is empty
       if @group.isNew() or isEmpty(@group.handle)
-        parentHandle = if @group.parent()
+        parentHandle = if @group.parentId
           @group.parent().handle
         else
           null
@@ -101,7 +101,7 @@ export default
         "group_form.subgroup_name"
 
     privacyOptions: ->
-      if @clone.parent() && @clone.parent().groupPrivacy == 'secret'
+      if @clone.parentId && @clone.parent().groupPrivacy == 'secret'
         ['closed', 'secret']
       else
         ['open', 'closed', 'secret']
@@ -134,7 +134,8 @@ v-card.group-form
         h1.headline(tabindex="-1" v-if='clone.parentId', v-t="'group_form.edit_group_heading'")
         h1.headline(tabindex="-1" v-if='!clone.parentId', v-t="'group_form.edit_organization_heading'")
       dismiss-modal-button(:close='close')
-  v-card-text
+  //- v-card-text
+  .px-4
 
     v-tabs(fixed-tabs)
       v-tab(v-t="'group_form.profile'")
@@ -148,7 +149,7 @@ v-card.group-form
         v-img.group_form__file-select(:src="group.coverUrl()" width="100%"  @click="selectCoverPhoto()")
         group-avatar.group_form__file-select.group_form__logo.white(v-if="!group.parentId" :group="group" size="72px" :on-click="selectLogo" :elevation="4")
         v-text-field.group-form__name#group-name.mt-4(v-model='clone.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]', maxlength='255', :label="$t(groupNameLabel)")
-        div(v-if="!clone.parent() || (clone.parent() && clone.parent().handle)")
+        div(v-if="!clone.parentId || (clone.parentId && clone.parent().handle)")
           v-text-field.group-form__handle#group-handle(v-model='clone.handle', :placeholder="$t('group_form.group_handle_placeholder')" maxlength='100' :label="$t('group_form.handle')")
           validation-errors(:subject="clone" field="handle")
         v-spacer
@@ -179,7 +180,7 @@ v-card.group-form
         .group-form__section.group-form__permissions
           p.group-form__privacy-statement.body-2(v-t="'group_form.permissions_explaination'")
           //- v-checkbox.group-form__allow-public-threads(hide-details v-model='group["allowPublicThreads"]' :label="$t('group_form.allow_public_threads')" v-if='clone.privacyIsClosed() && !clone.isSubgroupOfSecretParent()')
-          v-checkbox.group-form__parent-members-can-see-discussions(hide-details v-model='clone["parentMembersCanSeeDiscussions"]' :label="$t('group_form.parent_members_can_see_discussions', {parent: clone.parent().name})" v-if='clone.parent() && clone.privacyIsClosed()')
+          v-checkbox.group-form__parent-members-can-see-discussions(hide-details v-model='clone["parentMembersCanSeeDiscussions"]' :label="$t('group_form.parent_members_can_see_discussions', {parent: clone.parent().name})" v-if='clone.parentId && clone.privacyIsClosed()')
           v-checkbox.group-form__members-can-add-members(hide-details v-model='clone["membersCanAddMembers"]' :label="$t('group_form.members_can_add_members')")
           v-checkbox.group-form__members-can-announce(hide-details v-model='clone["membersCanAnnounce"]' :label="$t('group_form.members_can_announce')")
           v-checkbox.group-form__members-can-create-subgroups(hide-details v-model='clone["membersCanCreateSubgroups"]' v-if='clone.isParent()' :label="$t('group_form.members_can_create_subgroups')")
@@ -187,7 +188,6 @@ v-card.group-form
           v-checkbox.group-form__members-can-edit-discussions(hide-details v-model='clone["membersCanEditDiscussions"]' :label="$t('group_form.members_can_edit_discussions')")
           v-checkbox.group-form__members-can-edit-comments(hide-details v-model='clone["membersCanEditComments"]' :label="$t('group_form.members_can_edit_comments')")
           v-checkbox.group-form__members-can-raise-motions(hide-details v-model='clone["membersCanRaiseMotions"]' :label="$t('group_form.members_can_raise_motions')")
-          v-checkbox.group-form__members-can-vote(hide-details v-model='clone["membersCanVote"]' :label="$t('group_form.members_can_vote')")
           v-checkbox.group-form__admins-can-edit-user-content(hide-details v-model='clone["adminsCanEditUserContent"]' :label="$t('group_form.admins_can_edit_user_content')")
 
       v-tab-item.mt-8

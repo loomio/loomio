@@ -6,6 +6,7 @@ module Boot
     def payload
       @payload ||= {
         version:             Loomio::Version.current,
+        systemNotice:        ENV['LOOMIO_SYSTEM_NOTICE'],
         environment:         Rails.env,
         permittedParams:     PermittedParamsSerializer.new({}),
         locales:             ActiveModel::ArraySerializer.new(supported_locales, each_serializer: LocaleSerializer, root: false),
@@ -31,7 +32,7 @@ module Boot
           app:               AppConfig.app_features
         },
         inlineTranslation: {
-          isAvailable:       TranslationService.translator.present?,
+          isAvailable:       TranslationService.available?,
           supportedLangs:    AppConfig.translate_languages
         },
         pollTemplates:     AppConfig.poll_templates,

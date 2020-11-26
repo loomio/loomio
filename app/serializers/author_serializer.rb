@@ -1,15 +1,10 @@
 class AuthorSerializer < ApplicationSerializer
-  attributes :id, :name, :username, :avatar_initials, :avatar_kind,
-             :avatar_url, :email_hash, :time_zone, :locale, :created_at, :titles
-
-  def name
-    object.name ||
-    (include_email? && email) ||
-    placeholder_name
-  end
+  attributes :id, :name, :email, :username, :avatar_initials, :avatar_kind,
+             :avatar_url, :email_hash, :time_zone, :locale, :created_at, :titles,
+             :placeholder_name
 
   def include_email?
-    false
+    scope[:current_user_id] == object.id || scope[:include_email] 
   end
 
   def titles
@@ -42,11 +37,15 @@ class AuthorSerializer < ApplicationSerializer
     object.avatar_kind == 'uploaded'
   end
 
-  private
-
   def placeholder_name
     I18n.t("user.placeholder_name", hostname: object.email.to_s.split('@').last, locale: object.locale)
   end
+
+  def include_placeholder_name?
+    object.name.nil?
+  end
+
+  private
 
   def scope
     super || {}

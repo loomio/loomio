@@ -6,6 +6,7 @@ import loki        from 'lokijs'
 import AnnouncementRecordsInterface from '@/shared/interfaces/announcement_records_interface'
 import CommentRecordsInterface from '@/shared/interfaces/comment_records_interface'
 import DiscussionRecordsInterface from '@/shared/interfaces/discussion_records_interface'
+import DiscussionReaderRecordsInterface from '@/shared/interfaces/discussion_reader_records_interface'
 import EventRecordsInterface from '@/shared/interfaces/event_records_interface'
 import GroupRecordsInterface from '@/shared/interfaces/group_records_interface'
 import MembershipRecordsInterface from '@/shared/interfaces/membership_records_interface'
@@ -13,7 +14,6 @@ import MembershipRequestRecordsInterface from '@/shared/interfaces/membership_re
 import NotificationRecordsInterface from '@/shared/interfaces/notification_records_interface'
 import UserRecordsInterface from '@/shared/interfaces/user_records_interface'
 import SearchResultRecordsInterface from '@/shared/interfaces/search_result_records_interface'
-import ContactRecordsInterface from '@/shared/interfaces/contact_records_interface'
 import VersionRecordsInterface from '@/shared/interfaces/version_records_interface'
 import TranslationRecordsInterface from '@/shared/interfaces/translation_records_interface'
 import SessionRecordsInterface from '@/shared/interfaces/session_records_interface'
@@ -42,6 +42,7 @@ records = new RecordStore(db)
 records.addRecordsInterface AnnouncementRecordsInterface
 records.addRecordsInterface CommentRecordsInterface
 records.addRecordsInterface DiscussionRecordsInterface
+records.addRecordsInterface DiscussionReaderRecordsInterface
 records.addRecordsInterface EventRecordsInterface
 records.addRecordsInterface GroupRecordsInterface
 records.addRecordsInterface MembershipRecordsInterface
@@ -49,7 +50,6 @@ records.addRecordsInterface MembershipRequestRecordsInterface
 records.addRecordsInterface NotificationRecordsInterface
 records.addRecordsInterface UserRecordsInterface
 records.addRecordsInterface SearchResultRecordsInterface
-records.addRecordsInterface ContactRecordsInterface
 records.addRecordsInterface VersionRecordsInterface
 records.addRecordsInterface TranslationRecordsInterface
 records.addRecordsInterface SessionRecordsInterface

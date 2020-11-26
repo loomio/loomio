@@ -27,25 +27,21 @@ export default new class AbilityService
     comment.discussion().membersInclude(Session.user())
 
   canStartPoll: (model) ->
-    return unless model
-    switch model.constructor.singular
-      when 'discussion' then @canStartPoll(model.group())
-      when 'group'      then model.adminsInclude(Session.user()) or (model.membersInclude(Session.user()) and model.membersCanRaiseMotions)
+    model.adminsInclude(Session.user()) or
+    (model.membersInclude(Session.user()) and model.group().membersCanRaiseMotions)
 
   canParticipateInPoll: (poll) ->
     return false unless poll
     return false unless poll.isActive()
     poll.anyoneCanParticipate or
-    poll.adminsInclude(Session.user()) or
     poll.myStance() or
-    (poll.membersInclude(Session.user()) and (!poll.group() or poll.group().membersCanVote))
+    (!poll.specifiedVotersOnly and poll.membersInclude(Session.user()))
 
   canReactToPoll: (poll) ->
     return false unless @isEmailVerified()
     return false unless poll
     poll.anyoneCanParticipate or
-    poll.adminsInclude(Session.user()) or
-    (poll.membersInclude(Session.user()) and (!poll.group() or poll.group().membersCanVote))
+    poll.membersInclude(Session.user())
 
   canEditStance: (stance) ->
     Session.user() == stance.author()
@@ -110,11 +106,8 @@ export default new class AbilityService
 
   canAnnounceTo: (model) ->
     return false if model.discardedAt
-    if model.group()
-      model.group().adminsInclude(Session.user()) or
-      (model.membersInclude(Session.user()) and model.group().membersCanAnnounce)
-    else
-      model.adminsInclude(Session.user())
+    model.group().adminsInclude(Session.user()) or
+    (model.membersInclude(Session.user()) and model.group().membersCanAnnounce)
 
   canAddMembersToGroup: (group) ->
     group.adminsInclude(Session.user()) or
@@ -202,8 +195,10 @@ export default new class AbilityService
 
   canTranslate: (model) ->
     return false if model.discardedAt
-    AppConfig.inlineTranslation.isAvailable and
-    Object.keys(model.translation).length == 0
+    AppConfig.inlineTranslation.isAvailable &&
+    Object.keys(model.translation).length == 0 &&
+    (model.contentLocale && model.contentLocale != Session.user().locale) ||
+    (!model.contentLocale && model.author().locale != Session.user().locale)
 
   canMovePoll: (poll) ->
     !poll.discussionId && poll.adminsInclude(Session.user())

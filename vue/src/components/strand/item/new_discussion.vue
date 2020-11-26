@@ -3,6 +3,7 @@ import ThreadService  from '@/shared/services/thread_service'
 import { map, compact, pick } from 'lodash'
 import EventBus from '@/shared/services/event_bus'
 import openModal      from '@/shared/helpers/open_modal'
+import DiscussionPrivacyBadge from '@/components/discussion/privacy_badge'
 
 export default
   props:
@@ -21,10 +22,10 @@ export default
     editThread: -> @actions['edit_thread']
 
     dockActions: ->
-      pick @actions, ['react', 'add_comment', 'subscribe', 'unsubscribe', 'unignore', 'show_history', 'edit_thread', 'announce_thread']
+      pick @actions, ['react', 'translate_thread', 'add_comment', 'subscribe', 'unsubscribe', 'unignore', 'show_history', 'edit_thread', 'announce_thread']
 
     menuActions: ->
-      pick @actions, ['edit_tags',  'notification_history', 'translate_thread', 'close_thread', 'reopen_thread', 'move_thread', 'discard_thread', 'export_thread']
+      pick @actions, ['edit_tags',  'notification_history', 'close_thread', 'reopen_thread', 'move_thread', 'discard_thread', 'export_thread']
 
     status: ->
       return 'pinned' if @discussion.pinned
@@ -33,7 +34,7 @@ export default
       @$t("context_panel.thread_status.#{@status}")
 
     groups: ->
-      map compact([@discussion.group().parent(), @discussion.group()]), (group) =>
+      @discussion.group().parentsAndSelf().map (group) =>
         text: group.name
         disabled: false
         to: @urlFor(group)
@@ -54,28 +55,21 @@ export default
 
 <template lang="pug">
 .strand-new-discussion.context-panel.lmo-action-dock-wrapper#context(:aria-label="$t('context_panel.aria_intro', {author: discussion.authorName(), group: discussion.group().fullName})" v-observe-visibility="{callback: viewed, once: true}")
-  .strand-item-headline.d-flex.align-center
-    //- | context
-    user-avatar.mr-2(:user="discussion.author()" size="36")
-    router-link(:to="urlFor(discussion.author())" title="Thread author") {{discussion.authorName()}}
-    v-spacer
-    span(v-for="group in groups")
-      router-link(:to="group.to") {{group.text}}
-      mid-dot
-    span(aria-label="Thread privacy")
-      span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private(v-show='discussion.private')
-        i.mdi.mdi-lock-outline
-        span(v-t="'common.privacy.private'")
-      span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public(v-show='!discussion.private')
-        i.mdi.mdi-earth
-        span(v-t="'common.privacy.public'")
+  discussion-privacy-badge.mr-2(:discussion="discussion")
+  strand-members.my-1(:discussion="discussion")
+    //- v-spacer
+    //- //- span(v-for="group in groups")
+    //- //-   router-link(:to="group.to") {{group.text}}
+    //- .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'" v-if='discussion.closedAt')
+    //-   v-tooltip(bottom) {{ exactDate(discussion.closedAt) }}
+  //- strand-item-headline(:event="event" :eventable="discussion")
+  strand-title.pt-2(:discussion="discussion")
 
+  .mb-4
+    router-link(:to="urlFor(discussion.author())" title="Thread author") {{discussion.authorName()}}
     mid-dot
-    span(v-show='discussion.seenByCount > 0')
-      a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
-    .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'" v-if='discussion.closedAt')
-      v-tooltip(bottom) {{ exactDate(discussion.closedAt) }}
-  strand-title.pt-1(:discussion="discussion")
+    router-link.grey--text.body-2(:to='urlFor(discussion)')
+      time-ago(:date='discussion.createdAt')
   template(v-if="!collapsed")
     formatted-text.context-panel__description(:model="discussion" column="description" aria-label="Discussion context")
     document-list(:model='discussion')

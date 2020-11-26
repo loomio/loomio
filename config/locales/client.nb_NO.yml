@@ -321,8 +321,6 @@ nb_NO:
   notifications:
     header: "Varslinger"
     no_notifications: "Du har ingen ny varslinger"
-    new_discussion: "<strong>{{name}}</strong> starter en diskusjon <strong>{{title}}</strong>"
-    discussion_announced: "<strong>{{name}}</strong> delte en diskusjon <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong>  started en beslutning  <strong>{{title}}</strong>"
     motion_closed: "Beslutning lukket:<strong>{{title}}</strong>"
     publish_outcome: "Publiser et resultat"
@@ -352,6 +350,7 @@ nb_NO:
     outcome_announced: "<strong>{{name}}</strong> delte et resulat: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> deltok i: <strong>{{title}}</strong>"
   discussion_form:
+    invite: Inviter
     aria_label: 'Trådskjema'
     messages:
       created: 'Tråd startet'
@@ -371,11 +370,6 @@ nb_NO:
     privacy_organisation: 'Denne tråden vil være synlig for medlemmer i {{parent}} og medlemmer i gruppen: {{group}}.'
     fork_notice: 'En ny tråd vil bli opprettet med {{count}} innlegg fra  {{title}}'
   announcement:
-    audiences:
-      parent_group: Medlemmer av {{name}}
-      group: Medlemmer av {{name}}
-      discussion_group: Medlemmer i tråden
-      voters: Folk som har stemt
     form:
       group_announced:
         title: Inviter til gruppe
@@ -385,22 +379,14 @@ nb_NO:
         helptext: Hvem vil du invitere til denne tråden?
       discussion_edited:
         title: Varling om redigering
-        helptext: Hvem vil du varsle om dine endringer?
       poll_announced:
         title: Inviter til å stemme
         helptext: Hvem vil du invitere til å stemme?
-      poll:
-        title: Varling om redigering
-        helptext: Hvem vil du varsle om dine endringer?
       poll_edited:
         title: Varling om redigering
-        helptext: Hvem vil du varsle om dine endringer?
       outcome_announced:
         title: Del resultat
-        helptext: Hvem vil du dele resultatet med?
       anyone_can_participate: Alle med link kan delta
-      placeholder: Skriv inn navn eller e-postadresser...
-      notified_empty: 'Ingen valgt enda.'
       notified: '{{notified}} folk vil bli varslet:'
       notified_singular: '1 person vil bli varslet:'
       group_title: '{{name}} ({{count}} folk)'
@@ -472,9 +458,6 @@ nb_NO:
       membership_requested: 'Du har forespurt medlemskap i gruppen: {{group}}'
   revision_history_modal:
     aria_label: Revisjonshistorikk
-    discussion_header: Historikk for revisjoner i diskusjoner
-    comment_header: Historikk for revisjoner i kommentarer
-    poll_header: Historikk for revisjoner i beslutninger
     started_by: 'Startet av <strong>{{name}}</strong>'
     edited_by: 'Redigert av <strong>{{name}}</strong>'
     posted: Postet

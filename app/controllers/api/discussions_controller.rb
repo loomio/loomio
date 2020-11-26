@@ -1,8 +1,4 @@
 class API::DiscussionsController < API::RestfulController
-  include UsesDiscussionReaders
-  include UsesPolls
-  include UsesDiscussionEvents
-
   def create
     instantiate_resource
     if resource_params[:forked_event_ids] && resource_params[:forked_event_ids].any?
@@ -11,6 +7,10 @@ class API::DiscussionsController < API::RestfulController
       create_action
     end
     respond_with_resource
+  end
+
+  def create_action
+    @event = service.create({resource_symbol => resource, actor: current_user, params: resource_params})
   end
 
   def show
@@ -29,19 +29,22 @@ class API::DiscussionsController < API::RestfulController
 
   def dashboard
     raise CanCan::AccessDenied.new unless current_user.is_logged_in?
-    @accessible_records = DiscussionQuery.visible_to(user: current_user, or_public: false, or_subgroups: false)
-    instantiate_collection { |collection| collection.is_open.order_by_importance }
+    @accessible_records = DiscussionQuery.dashboard(user: current_user)
+    instantiate_collection { |collection| collection.is_open.order_by_latest_activity }
+    respond_with_collection
+  end
+
+  def direct
+    @accessible_records = DiscussionQuery.visible_to(user: current_user, or_public: false, or_subgroups: false, group_ids: nil)
+    instantiate_collection { |collection| collection.is_open.order_by_latest_activity }
     respond_with_collection
   end
 
   def inbox
     raise CanCan::AccessDenied.new unless current_user.is_logged_in?
-    @accessible_records = DiscussionQuery.visible_to(user: current_user, only_unread: true, or_public: false, or_subgroups: false)
+    @accessible_records = DiscussionQuery.inbox(user: current_user)
     instantiate_collection { |collection| collection.recent.order_by_latest_activity }
-    respond_with_collection scope: default_scope.merge(
-      poll_cache:   Caches::Poll.new(parents: collection),
-      reader_cache: Caches::DiscussionReader.new(user: current_user, parents: collection)
-    )
+    respond_with_collection
   end
 
   def search
@@ -95,16 +98,6 @@ class API::DiscussionsController < API::RestfulController
     respond_with_resource
   end
 
-  def history
-    load_and_authorize(:discussion)
-    res = DiscussionReader.joins(:user).where(discussion: @discussion).where.not(last_read_at: nil).map do |reader|
-      {reader_id: reader.id,
-       last_read_at: reader.last_read_at,
-       user_name: reader.user.name }
-    end
-    render root: false, json: res
-  end
-
   def pin
     service.pin discussion: load_resource, actor: current_user
     respond_with_resource
@@ -131,10 +124,6 @@ class API::DiscussionsController < API::RestfulController
 
   def split_tags
     params[:tags].to_s.split('|')
-  end
-
-  def default_scope
-    super.merge(tag_cache: DiscussionTagCache.new(Array(resource || collection)).data)
   end
 
   def accessible_records

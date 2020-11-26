@@ -55,6 +55,9 @@ an:
     title_label: 'Titol'
     context_label: 'Contexto'
     privacy_label: 'Privacidat'
+  announcement:
+    form:
+      invitation_message_label: Mensache
   action_dock:
     edited: Editau
   join_group_button:

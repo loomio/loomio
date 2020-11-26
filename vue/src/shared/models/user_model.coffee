@@ -1,6 +1,6 @@
 import BaseModel from '@/shared/record_store/base_model'
 import AppConfig from '@/shared/services/app_config'
-import { find, invokeMap, filter, flatten, uniq, head, compact, some, map } from 'lodash'
+import { find, invokeMap, filter, flatten, uniq, head, compact, some, map, truncate  } from 'lodash'
 
 export default class UserModel extends BaseModel
   @singular: 'user'
@@ -21,6 +21,12 @@ export default class UserModel extends BaseModel
     attachments: []
     locale: AppConfig.defaultLocale
     experiences: []
+
+  nameOrEmail: ->
+    @name || @email || @placeholderName
+
+  simpleBio: ->
+    truncate((@shortBio || '').replace(/<\/?[^>]+(>|$)/g, ""), length: 70)
 
   localeName: ->
     (find(AppConfig.locales, (h) => h.key == @locale) or {}).name
@@ -48,11 +54,11 @@ export default class UserModel extends BaseModel
 
   orphanSubgroups: ->
     filter @groups(), (group) =>
-      group.parent() and !group.parent().membersInclude(@)
+      group.parentId and !group.parent().membersInclude(@)
 
   orphanParents: ->
-    uniq @orphanSubgroups().map (group) ->
-      group.parent()
+    uniq compact @orphanSubgroups().map (group) ->
+      group.parentId && group.parent()
 
   membershipFor: (group) ->
     return unless group
@@ -90,6 +96,7 @@ export default class UserModel extends BaseModel
     @avatarUrl[size]
 
   nameWithTitle: (group) ->
-    return @name unless group
+    name = @nameOrEmail()
+    return name unless group
     titles = @titles || {}
-    compact([@name, (titles[group.id] || titles[group.parentId])]).join(' · ')
+    compact([name, (titles[group.id] || titles[group.parentId])]).join(' · ')

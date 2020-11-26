@@ -16,8 +16,8 @@ class Queries::GroupStats
     Poll.where(group_id: group_ids).count
   end
 
-  def self.stances_count(group_ids)
-    Poll.where(group_id: group_ids).sum(:stances_count)
+  def self.voters_count(group_ids)
+    Poll.where(group_id: group_ids).sum(:voters_count)
   end
 
   def self.org_visits_count(group)

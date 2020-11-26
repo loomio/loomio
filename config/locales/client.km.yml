@@ -45,6 +45,9 @@ km:
     title_label: 'ចំណងជើង'
     context_label: 'បរិបទ '
     privacy_label: 'ភាពជាឯកជន​'
+  announcement:
+    form:
+      invitation_message_label: សារ
   join_group_button:
     membership_requested: សំណើសមាជិកភាព
   membership_request_form:

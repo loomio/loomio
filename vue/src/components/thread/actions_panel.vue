@@ -72,15 +72,16 @@ section.actions-panel#add-comment(:aria-label="$t('activity_card.aria_label')")
     //-   v-icon mdi-lightbulb-on-outline
   v-tabs-items(v-model="currentAction")
     v-tab-item(value="add-comment")
-      .add-comment-panel
+      .add-comment-panel.px-3
         comment-form(v-if='canAddComment' :comment="newComment" @comment-submitted="reset()")
         .add-comment-panel__join-actions(v-if='!canAddComment')
           join-group-button(:group='discussion.group()' v-if='isLoggedIn()' :block='true')
           v-btn.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'" @click='signIn()' v-if='!isLoggedIn()')
     v-tab-item(value="add-proposal" v-if="canStartPoll")
-      poll-proposal-complete-form(:discussion="discussion")
+      .px-2
+        poll-proposal-complete-form(:discussion="discussion")
     v-tab-item(value="add-poll" v-if="canStartPoll")
-      poll-common-start-form(:discussion='discussion')
+      poll-common-start-form(:discussion='discussion' :group='discussion.group()')
     //- v-tab-item(value="add-outcome")
   v-divider(aria-hidden="true" v-if="discussion.newestFirst")
 

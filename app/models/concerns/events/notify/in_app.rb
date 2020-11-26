@@ -9,7 +9,7 @@ module Events::Notify::InApp
   # send event notifications
   def notify_users!
     notifications.import(built_notifications)
-    built_notifications.each { |n| MessageChannelService.publish_models(n, user_id: n.user_id) }
+    built_notifications.each { |n| MessageChannelService.publish_models(Array(n), user_id: n.user_id) }
   end
 
   private
@@ -27,12 +27,6 @@ module Events::Notify::InApp
         translation_values: notification_translation_values
       )
     end
-  end
-
-  # which users should receive an in-app notification about this event?
-  # (NB: This must return an ActiveRecord::Relation)
-  def notification_recipients
-    User.none
   end
 
   # defines the avatar which appears next to the notification

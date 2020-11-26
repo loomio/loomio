@@ -23,7 +23,6 @@ describe API::PollsController do
 
   before { group.add_member! user }
 
-
   describe 'show' do
     it 'shows a poll' do
       sign_in user
@@ -139,6 +138,7 @@ describe API::PollsController do
       end
 
       describe 'discard' do
+        let(:poll) { build :poll }
         context 'allowed to discard' do
           it 'discards the poll' do
             PollService.create(poll: poll, actor: user)
@@ -147,7 +147,7 @@ describe API::PollsController do
             poll.reload
             expect(poll.discarded?).to be true
             expect(poll.discarded_by).to eq user.id
-            expect(poll.created_event.user_id).to be nil
+            expect(poll.created_event.reload.user_id).to be nil
           end
         end
 
@@ -415,11 +415,13 @@ describe API::PollsController do
   end
 
   describe 'add_to_thread' do
-    let(:comment) { create :comment, discussion: discussion, author: user }
-    let(:poll) { create :poll, title: "Standalone Complex", group: group, author: user }
+    let(:comment) { build :comment, discussion: discussion, author: user }
+    let(:poll) { build :poll, title: "Standalone Complex", group: group, author: user }
+    let(:discussion) { build :discussion, group: group }
 
     before do
       group.add_admin! user
+      group.add_admin! discussion.author
       DiscussionService.create(discussion: discussion, actor: discussion.author)
       PollService.create(poll: poll, actor: poll.author)
       CommentService.create(comment: comment, actor: user)
@@ -449,31 +451,6 @@ describe API::PollsController do
       expect(poll.created_event.position).to eq 2
       expect(discussion.created_event.children.count).to eq 2
       expect(discussion.items_count).to eq 2
-    end
-  end
-
-  describe 'toggle_subscription' do
-    it 'creates an unsubscription if one does not exist' do
-      sign_in user
-      expect { post :toggle_subscription, params: { id: poll.key } }.to change { poll.unsubscribers.count }.by(1)
-      expect(response.status).to eq 200
-    end
-
-    it 'deletes an unsubscription if one does exist' do
-      sign_in user
-      poll.poll_unsubscriptions.create(user: user)
-      expect { post :toggle_subscription, params: { id: poll.key } }.to change { poll.unsubscribers.count }.by(-1)
-      expect(response.status).to eq 200
-    end
-
-    it 'does not allow visitors to have an unsubscription' do
-      expect { post :toggle_subscription, params: { id: poll.key } }.to_not change { poll.unsubscribers.count }
-      expect(response.status).to eq 403
-    end
-
-    it 'does not allow users who cant see the poll to have unsubscriptions' do
-      sign_in another_user
-      expect { post :toggle_subscription, params: { id: poll.key } }.to_not change { poll.unsubscribers.count }
     end
   end
 end

@@ -24,7 +24,7 @@ export default
         show_history = 'show_history'
 
       assign(
-        pick @commentActions, compact ['react', reply_to_comment, edit_comment, show_history]
+        pick @commentActions, compact ['react', reply_to_comment, 'translate_comment', edit_comment, show_history]
       ,
         pick @eventActions, []
       )
@@ -35,7 +35,7 @@ export default
         reply_to_comment = 'reply_to_comment'
 
       assign(
-        pick @commentActions, compact [reply_to_comment, show_history, 'admin_edit_comment', 'notification_history', 'translate_comment' , 'discard_comment', 'undiscard_comment']
+        pick @commentActions, compact [reply_to_comment, show_history, 'admin_edit_comment', 'notification_history', 'discard_comment', 'undiscard_comment']
       ,
         pick @eventActions, ['pin_event', 'unpin_event', 'move_event', 'copy_url']
       )

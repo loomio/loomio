@@ -4,7 +4,7 @@ import AbilityService from '@/shared/services/ability_service'
 import RecordLoader   from '@/shared/services/record_loader'
 import Session        from '@/shared/services/session'
 import EventBus       from '@/shared/services/event_bus'
-import {includes, some, compact, intersection, orderBy, slice, debounce, min, escapeRegExp} from 'lodash'
+import {includes, some, compact, intersection, orderBy, slice, debounce, min, escapeRegExp, map} from 'lodash'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 import { exact, approximate } from '@/shared/helpers/format_time'
 
@@ -12,7 +12,7 @@ export default
   data: ->
     loader: null
     group: null
-    per: 50
+    per: 100
     from: 0
     order: 'created_at desc'
     orders: [
@@ -40,14 +40,13 @@ export default
 
       @loader = new RecordLoader
         collection: 'memberships'
-        path: 'autocomplete'
         params:
           exclude_types: 'group'
           group_id: @group.id
-          pending: true
           per: @per
           from: @from
           order: @order
+          subgroups: 'all'
 
       @watchRecords
         collections: ['memberships', 'groups']
@@ -64,16 +63,38 @@ export default
       switch @$route.query.subgroups
         when 'mine'
           chain = chain.find(groupId: {$in: intersection(@group.organisationIds(), Session.user().groupIds())})
-        when 'all'
-          chain = chain.find(groupId: {$in: @group.organisationIds()})
-        else
+        when 'none'
           chain = chain.find(groupId: @group.id)
+        else
+          chain = chain.find(groupId: {$in: @group.organisationIds()})
+
+      chain = chain.sort (a, b) =>
+        return -1 if (a.groupId == @group.id)
+        return 1 if (b.groupId == @group.id)
+        return 0
+
+      userIds = []
+      membershipIds = []
+      chain.data().forEach (m) ->
+        if !userIds.includes(m.userId)
+          userIds.push(m.userId)
+          membershipIds.push(m.id)
+
+      # @memberships = Records.memberships.collection.find(id: {$in: membershipIds})
+
+      # drop the chain, get a new one
+
+      chain = Records.memberships.collection.chain().find(id: {$in: membershipIds})
 
       if @$route.query.q
-        chain = chain.where (membership) =>
-          some [membership.user().name, membership.user().username], (name) =>
-            q = escapeRegExp(@$route.query.q)
-            RegExp("^#{q}", "i").test(name) or RegExp(" #{q}", "i").test(name)
+        users = Records.users.collection.find
+          $or: [
+            {name: {'$regex': ["^#{@$route.query.q}", "i"]}},
+            {email: {'$regex': ["#{@$route.query.q}", "i"]}},
+            {username: {'$regex': ["^#{@$route.query.q}", "i"]}},
+            {name: {'$regex': [" #{@$route.query.q}", "i"]}}
+          ]
+        chain = chain.find(userId: {$in: map(users, 'id')})
 
       switch @$route.query.filter
         when 'admin'
@@ -83,26 +104,9 @@ export default
         when 'pending'
           chain = chain.find(acceptedAt: null)
 
-      records = switch @order
-        when 'users.name'
-          chain = chain.sort (ma,mb) ->
-            a = ma.user().name.toLowerCase()
-            b = mb.user().name.toLowerCase()
-            switch
-              when a == b then 0
-              when a > b then 1
-              when a < b then -1
-          chain.data()
-        when 'admin desc'
-          chain.simplesort('admin', true).data()
-        when 'created_at'
-          chain.simplesort('createdAt').data()
-        when 'created_at desc'
-          chain.simplesort('createdAt', true).data()
-        when 'accepted_at desc'
-          orderBy(chain.data(), ['acceptedAt', 'desc'])
+      chain = chain.simplesort('id', true)
 
-      @memberships = slice(records, @loader.numRquested)
+      @memberships = chain.data()
 
     refresh: ->
       @fetch()
@@ -118,9 +122,9 @@ export default
 
     invite: ->
       EventBus.$emit('openModal',
-                      component: 'AnnouncementForm',
+                      component: 'GroupInvitationForm',
                       props:
-                        announcement: Records.announcements.buildFromModel(@group))
+                        group: @group)
 
   computed:
     membershipRequestsPath: -> LmoUrlService.membershipRequest(@group)
@@ -186,19 +190,65 @@ export default
                 user-avatar(:user='membership.user()' size='48')
             v-list-item-content
               v-list-item-title
-                router-link(:to="urlFor(membership.user())") {{ membership.user().name }}
+                router-link(:to="urlFor(membership.user())") {{ membership.user().nameOrEmail() }}
                 space
                 span.caption(v-if="$route.query.subgroups") {{membership.group().name}}
                 space
                 span.title.caption {{membership.title}}
-                space
-                v-chip(v-if="membership.admin" small outlined label v-t="'members_panel.admin'")
-              v-list-item-subtitle(v-if="membership.acceptedAt") {{ (membership.user().shortBio || '').replace(/<\/?[^>]+(>|$)/g, "") }}
-              v-list-item-subtitle(v-if="!membership.acceptedAt")
-                span(v-if="membership.inviter()" v-t="{path: 'members_panel.invited_by_name', args: {name: membership.inviter().name}}")
+                span(v-if="$route.query.q")
+                  space
+                  span.caption {{membership.user().email}}
+                span(v-if="membership.admin")
+                  space
+                  v-chip(small outlined label v-t="'members_panel.admin'")
+                  space
+                span.caption.grey--text(v-if="membership.acceptedAt")
+                  span(v-t="'common.action.joined'")
+                  space
+                  time-ago(:date="membership.acceptedAt")
+                span.caption.grey--text(v-if="!membership.acceptedAt")
+                  template(v-if="membership.inviterId")
+                    span(v-t="{path: 'members_panel.invited_by_name', args: {name: membership.inviter().name}}")
+                    space
+                    time-ago(:date="membership.createdAt")
+                  template(v-if="!membership.inviterId")
+                    span(v-t="'members_panel.header_invited'")
+                    space
+                    time-ago(:date="membership.createdAt")
+              v-list-item-subtitle
+                span(v-if="membership.groupId != group.id")
+                  span(v-t="{path: 'members_panel.only_in_subgroups', args: {name: membership.group().name}}")
+                  space
+                span(v-if="membership.acceptedAt") {{ (membership.user().shortBio || '').replace(/<\/?[^>]+(>|$)/g, "") }}
             v-list-item-action
-              membership-dropdown(:membership="membership")
+              membership-dropdown(v-if="membership.groupId == group.id" :membership="membership")
         v-layout(justify-center)
           v-btn.my-2(outlined color='accent' v-if="showLoadMore" :loading="loader.loading" @click="loader.fetchRecords()" v-t="'common.action.load_more'")
+
+    //- div(v-if="loader.status == 403")
+    //-   p.pa-4.text-center(v-t="'error_page.forbidden'")
+    //- div(v-else)
+    //-   p.pa-4.text-center(v-if="!memberships.length" v-t="'common.no_results_found'")
+    //-   v-simple-table(v-else)
+    //-     template(v-slot:default)
+    //-       tbody
+    //-         tr(v-for="membership in memberships" :key="membership.id")
+    //-           td.shrink
+    //-             user-avatar(:user='membership.user()' size='32')
+    //-           td
+    //-             router-link(:to="urlFor(membership.user())") {{ membership.user().name }}
+    //-             span(v-if="membership.title")
+    //-               mid-dot
+    //-               span {{membership.title}}
+    //-             span(v-if="membership.user().shortBio")
+    //-               space
+    //-               span.caption.grey--text {{ membership.user().simpleBio() }}
+    //-           td.shrink(v-if="$route.query.subgroups") {{membership.group().name}}
+    //-           td.shrink
+    //-             v-chip(v-if="membership.admin" small outlined label v-t="'members_panel.admin'")
+    //-           td.shrink
+    //-             membership-dropdown(:membership="membership")
+    //-   v-layout(justify-center)
+    //-     v-btn.my-2(outlined color='accent' v-if="showLoadMore" :loading="loader.loading" @click="loader.fetchRecords()" v-t="'common.action.load_more'")
 
 </template>

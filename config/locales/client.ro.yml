@@ -4,8 +4,6 @@ ro:
       title: Activeaza grupul tau
       activities:
         set_description: Seteaza descrierea grupului
-        set_logo: Alege un logo pentru grupul tau
-        set_cover_photo: Alege o poza de fundal pentru grupul tau
         invite_people_in: Invita participanti
         start_thread: Incepe o discutie noua
         make_decision: Creeaza o decizie
@@ -325,6 +323,7 @@ ro:
     header: "Notificari"
     no_notifications: "Nu ai nici o notificare"
   discussion_form:
+    invite: Invită
     start_thread: Creaza o discutie
     messages:
       created: 'Discutia a inceput'
@@ -338,6 +337,9 @@ ro:
     privacy_public: 'Oricine poate vedea o discutie. Doar membrii pot participa.'
     privacy_private: 'Discutia va fi vizibila doar membrilor grupului {{group}}.'
     privacy_organisation: 'Discutiile vor fi vizibile doar membrilor din {{parent}} si membrilor grupului {{group}}.'
+  announcement:
+    form:
+      invitation_message_label: Mesaj
   action_dock:
     add_resource: Adauga atasament
     add_comment: Comenteaza

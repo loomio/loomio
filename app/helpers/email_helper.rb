@@ -45,8 +45,9 @@ module EmailHelper
   end
 
   def reply_to_address_with_group_name(model:, user:)
-    return unless user.is_logged_in?
-    "\"#{I18n.transliterate(model.discussion.group.full_name).truncate(50)}\" <#{reply_to_address(model: model, user: user)}>"
+    return nil unless user.is_logged_in?
+    return nil unless model.discussion_id
+    "\"#{I18n.transliterate(model.discussion.group.full_name).truncate(50).delete('"')}\" <#{reply_to_address(model: model, user: user)}>"
   end
 
   def mark_summary_as_read_url_for(user, format: nil)

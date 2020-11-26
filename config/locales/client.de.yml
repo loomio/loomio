@@ -4,8 +4,6 @@ de:
       title: Gruppe aktivieren
       activities:
         set_description: Gruppen-Beschreibung festlegen
-        set_logo: Gruppenlogo auswählen
-        set_cover_photo: Gruppen-Titelbild wählen
         invite_people_in: Personen einladen
         start_thread: Neue Diskussion eröffnen
         make_decision: Entscheidung vorbereiten
@@ -483,8 +481,6 @@ de:
   notifications:
     header: "Benachrichtigungen"
     no_notifications: "Es liegen keine Benachrichtigungen vor"
-    new_discussion: "<strong>{{name}}</strong> hat eine Diskussion <strong>{{title}}</strong> eröffnet."
-    discussion_announced: "<strong>{{name}}</strong> hat eine Diskussion mit dem Titel<strong>{{titlel}}</strong>begonnen"
     new_motion: "<strong>{{name}}</strong> hat den Vorschlag <strong>{{title}}</strong> erstellt"
     motion_closed: "Vorschlag ist beendet: <strong>{{title}}</strong>"
     publish_outcome: "Ergebnis bekanntgeben"
@@ -524,6 +520,7 @@ de:
     move_to_existing_thread: Zu existierender Diskussion verschieben
     start_new_thread: Oder eine neue Diskussion starten
   discussion_form:
+    invite: Einladen
     aria_label: 'Diskussions-Formular'
     start_thread: Diskussion eröffnen
     messages:
@@ -564,12 +561,6 @@ de:
     preview: Vorschau Email
     no_notifications_sent: Es wurden keine Benachrichtigungen geschickt
     history_error: 'Etwas ist schief gelaufen! Der Verlauf konnte nicht geladen werden. '
-    inviting_guests_to_thread: 'Personen die keine Mitglieder von {{group}} sind werden zu dieser Diskussion als Gäste eingeladen, aber kein Zugang zu anderen Diskussionen erhalten. '
-    audiences:
-      parent_group: Mitglieder von {{name}}
-      group: Mitglieder von {{name}}
-      discussion_group: Diskussionsteilnehmer
-      voters: Personen die abgestimmt haben
     form:
       too_many_invitations: |
           Die Einladungsgrenze ist erreicht. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
@@ -577,6 +568,7 @@ de:
           <p>Diese Gruppe ist auf {{maxMitglieder}} Einladungen begrenzt. </p>
           <p>Als nächster Schritt<a href="{{upgradeUrl}}" target="_blank">wähle einen Tarif</a>um weiter mit Loomio zu arbeiten. </p>
       invitations_remaining: '{{count}} Einladungen noch verfügbar.<a href="{{upgradeUrl}}" target="_blank">Upgrade</a>'
+      invitation_message_label: Nachricht
       group_announced:
         title: zur Gruppe einladen
         helptext: Wen möchtest du zur Gruppe einladen?
@@ -585,22 +577,15 @@ de:
         helptext: Wen möchtest du zu dieser Diskussion einladen?
       discussion_edited:
         title: Über Änderungen benachrichtigt werden
-        helptext: Wen möchtest du über deine Änderungen benachrichtigen?
       poll_announced:
         title: zur Abstimmung einladen
         helptext: Wen möchtest du zur Abstimmung einladen?
-      poll:
-        title: Über Änderungen benachrichtigt werden
-        helptext: Wen möchtest du über deine Änderungen benachrichtigen?
       poll_edited:
         title: Über Änderungen benachrichtigen
-        helptext: Wen möchtest du über deine Änderungen benachrichtigen?
       outcome_announced:
         title: Ergebnis bekanntgeben
-        helptext: Mit wem möchtest du das Ergebnis teilen?
       anyone_can_participate: Alle, die Zugriff auf den Link haben, können abstimmen
-      placeholder: Namen oder E-Mail-Adressen eingeben
-      notified_empty: 'Bis jetzt wurde niemand ausgewählt.'
+      placeholder: Gib Namen oder eMail-Adressen ein
       notified: '{{notified}} Personen werden benachrichtigt:'
       notified_singular: '1 Person wird benachrichtigt:'
       group_title: '{{name}} ({{count}} Personen)'
@@ -725,10 +710,6 @@ de:
       membership_requested: 'Du hast dich für die Mitgliedschaft in {{group}} beworben'
   revision_history_modal:
     aria_label: Revisionsverlauf
-    discussion_header: Diskussions-Revisionsverlauf
-    comment_header: Kommentar-Revisionsverlauf
-    poll_header: Änderungsverlauf der Umfrage
-    stance_header: Stimme-Revisionsverlauf
     started_by: 'Erstellt von <strong>{{name}}</strong>'
     edited_by: 'Bearbeitet von <strong>{{name}}</strong>'
     edit_by: "Änderung von {{name}} · {{date}}"
@@ -1416,8 +1397,6 @@ de:
   subgroups_panel:
     search_subgroups_of_name: 'Durchsuche Untergruppen von {{name}}'
     group_without_subgroups: '{{name}} ohne Untergruppen'
-  poll_common_action_panel:
-    unable_to_vote: Sie sind nicht berechtigt, an dieser Entscheidung teilzunehmen.
   current_polls_card:
     title: Aktuelle Abstimmungen
     start_poll: Neue Abstimmung
@@ -1431,7 +1410,7 @@ de:
     notify_group: Benachrichtigung
     members_helptext: Ihre Gruppe wird nicht benachrichtigt.
     members_count: "{{count}} Personen werden benachrichtigt"
-    participants_count: "Die {{count}} Personen, die abgestimmt haben, werden benachrichtigt"
+    decided_voters_count: "Die {{count}} Personen, die abgestimmt haben, werden benachrichtigt"
   poll_common_calendar_invite:
     calendar_invite: Fügen Sie eine Kalendereinladung zu diesem Ergebnis hinzu
     poll_option_id: Meeting-Zeit
@@ -1532,7 +1511,6 @@ de:
     closed: Geschlossen
     start: Erstellen
     update: Aktualisieren
-    reminder_note: 24 Stunden vor Abstimmungsende wird eine Erinnerung an alle Teilnehmer gesendet.
     loomio_school_link: |
         <p>Erfahre mehr unter <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio Help</a>.</p>
   poll_proposal_form:

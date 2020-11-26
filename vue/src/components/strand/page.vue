@@ -26,7 +26,7 @@ export default
   methods:
     init: ->
       Records.samlProviders.authenticateForDiscussion(@$route.params.key)
-      Records.discussions.findOrFetchById(@$route.params.key, exclude_types: 'poll outcome')
+      Records.discussions.findOrFetchById(@$route.params.key, exclude_types: 'group poll outcome')
       .then (discussion) =>
         @discussion = discussion
         @loader = new ThreadLoader(@discussion)
@@ -95,6 +95,5 @@ export default
   v-main
     v-container.max-width-800(v-if="discussion")
       strand-nav(v-if="loader" :discussion="discussion" :loader="loader")
-
       strand-card(v-if="loader" :discussion='discussion' :loader="loader")
 </template>

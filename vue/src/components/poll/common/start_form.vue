@@ -51,9 +51,14 @@ export default
     v-card-title(v-if="isModal")
       v-layout(justify-space-between style="align-items: center")
         .group-form__group-title
-          h1.headline Choose poll type
+          h1.headline(v-t="'decision_tools_card.choose_type'")
         dismiss-modal-button
-    v-list-item.decision-tools-card__poll-type(:class="'decision-tools-card__poll-type--' + pollType", @click='openPollModal(pollType)', v-for='(pollType, index) in pollTypes()', :key='index', :aria-label='getAriaLabelForPollType(pollType)')
+    v-list-item.decision-tools-card__poll-type(
+      :class="'decision-tools-card__poll-type--' + pollType"
+      @click='openPollModal(pollType)'
+      v-for='(pollType, index) in pollTypes()'
+      :key='index'
+      :aria-label='getAriaLabelForPollType(pollType)')
       v-list-item-avatar
         v-icon {{callFieldFromTemplate(pollType, 'material_icon')}}
       v-list-item-content

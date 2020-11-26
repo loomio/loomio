@@ -12,5 +12,5 @@
 
   - if poll.wip?
     %p= t(:"poll_common_action_panel.draft_mode", poll_type: t("poll_types.#{poll.poll_type}"))
-
-  = render "poll_mailer/#{poll.poll_type}/vote", poll: poll, stance: stance, recipient: recipient
+  - else
+    = render "poll_mailer/#{poll.poll_type}/vote", poll: poll, stance: stance, recipient: recipient

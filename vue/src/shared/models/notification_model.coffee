@@ -1,6 +1,7 @@
 import BaseModel from '@/shared/record_store/base_model'
 import AppConfig from '@/shared/services/app_config'
 import { colonToUnicode } from '@/shared/helpers/emojis'
+import AnonymousUserModel   from '@/shared/models/anonymous_user_model'
 
 export default class NotificationModel extends BaseModel
   @singular: 'notification'
@@ -9,7 +10,7 @@ export default class NotificationModel extends BaseModel
   relationships: ->
     @belongsTo 'event'
     @belongsTo 'user'
-    @belongsTo 'actor', from: 'users'
+    @belongsTo 'actor', from: 'users', ifNull: -> new AnonymousUserModel()
 
   actionPath: ->
     switch @kind()

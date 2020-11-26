@@ -1,66 +1,63 @@
-if ENV['USE_RACK_ATTACK']
-  class Rack::Attack
-    # considerations
-    # multiple users could be using same ip address (eg coworking space)
-    # does not distinguish between valid and invalid requests (eg: form validation)
-    # - so we need to allow for errors and resubmits without interruption.
-    # our attackers seem to create a group every 1 or 2 minutes, each with max invitations.
-    # so we're mostly interested in the hour and day limits
-
-    # group creation and invitation sending is the most common attack we see
-    # usually we get a few new groups per hour, globally.
-    # when attacks happen we see a few groups per minute, usually with the same name
-    # each trying to invite max_invitations with bulk create.
-
-    # throttles all posts to the above endponts
-    # so we're looking at a record creation attack.
-    # the objective of these rules is not to guess what normal behaviour looks like
-    # and pitch abouve that.. but to identify what abusive behaviour certainly is,
-    # and ensure it cannot get really really bad.
-
-    RATE_LIMITS = [
-      {
-        name: :heavy,
-        endpoints: [
-          'groups',
-          'invitations/bulk_create'
-        ],
-        limits: {
-          10 => 1.hour,
-          20 => 1.day
-        }
-      }, {
-        name: :medium,
-        endpoints: [
-          'login_tokens',
-          'invitations',
-          'discussions',
-          'polls',
-          'stances',
-          'comments',
-          'reactions',
-          'documents',
-          'registrations',
-          'contact_messages'
-        ],
-        limits:   {
-          100   => 5.minutes,
-          1000  => 1.hour,
-          10000 => 1.day
-        }
-      }
-    ].freeze
-
-    RATE_LIMITS.each do |limit_set|
-      limit_set[:limits].each do |limit, period|
-        throttle(limit_set[:name], limit: limit, period: period) do |req|
-          req.ip if should_limit?(req, limit_set[:endpoints])
-        end
-      end
+class Rack::Attack
+  class Request < ::Rack::Request
+    def remote_ip
+      # Cloudflare stores remote IP in CF_CONNECTING_IP header
+      @remote_ip ||= (env['HTTP_CF_CONNECTING_IP'] ||
+                      env['action_dispatch.remote_ip'] ||
+                      ip).to_s
     end
+  end
 
-    def self.should_limit?(req, endpoints)
-      req.post? && endpoints.any? { |r| req.path.starts_with?("/api/v1/#{r}") }
+  RATE_MULTIPLIER = ENV.fetch('RACK_ATTACK_RATE_MULTPLIER', 1).to_i
+  TIME_MULTIPLIER = ENV.fetch('RACK_ATTACK_TIME_MULTPLIER', 1).to_i
+
+  # throttle('req/ip', limit: 300, period: 5.minutes) do |req|
+  #   req.remote_ip
+  # end
+
+  IP_POST_LIMITS = {
+    announcements: 10,
+    groups: 10,
+    group_surveys: 10,
+    login_tokens: 10,
+    membership_requests: 100,
+    memberships: 100,
+    identities: 10,
+    discussions: 10,
+    polls: 10,
+    outcomes: 10,
+    stances: 10,
+    profile: 10,
+    webhooks: 10,
+    comments: 100,
+    reactions: 100,
+    registrations: 10,
+    sessions: 10,
+    contact_messages: 10,
+    contact_requests: 10,
+    discussion_readers: 1000
+  }
+
+  IP_POST_LIMITS.each_pair do |name, limit|
+    throttle("post/ip/hour api/v1/#{name}", limit: limit * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).hour) do |req|
+      req.remote_ip if req.post? && req.path.starts_with?("/api/v1/#{name}")
     end
+  end
+
+  # MAX posts per day is 3 times the posts per hour
+  IP_POST_LIMITS.each_pair do |name, limit|
+    throttle("post/ip/day api/v1/#{name}", limit: limit * 3 * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).day) do |req|
+      req.remote_ip if req.post? && req.path.starts_with?("/api/v1/#{name}")
+    end
+  end
+
+  ActiveSupport::Notifications.subscribe(/rack_attack/) do |name, start, finish, request_id, req_h|
+    req = req_h[:request]
+    Rails.logger.warn [name,
+                       req.remote_ip,
+                       req.request_method,
+                       req.fullpath,
+                       request_id,
+                       req.user_agent.to_s.parameterize].join(' ')
   end
 end

@@ -126,7 +126,6 @@ describe PollService do
         PollService.add_options(poll: poll, params: { poll_option_names: ['new_option'] }, actor: user)
       }.to raise_error { CanCan::AccessDenied }
       expect(poll.reload.poll_option_names).to_not include 'new_option'
-      expect(Event.last).to be_nil
     end
 
     it 'does not update when no new options are passed' do
@@ -245,23 +244,6 @@ describe PollService do
       PollService.create(poll: poll_created, actor: user)
       poll_created.update_attributes(closing_at: 1.day.ago, closed_at: 1.day.ago)
       expect { PollService.expire_lapsed_polls }.to_not change { poll_created.reload.closed_at }
-    end
-  end
-
-  describe '#toggle_subscription' do
-    it 'toggles a subscription on' do
-      PollService.toggle_subscription(poll: poll, actor: user)
-      expect(poll.reload.unsubscribers).to include user
-    end
-
-    it 'toggles a subscription off' do
-      poll.unsubscribers << user
-      PollService.toggle_subscription(poll: poll, actor: user)
-      expect(poll.reload.unsubscribers).to_not include user
-    end
-
-    it 'does nothing if the user doesnt have access' do
-      expect { PollService.toggle_subscription(poll: poll, actor: another_user) }.to raise_error { CanCan::AccessDenied }
     end
   end
 

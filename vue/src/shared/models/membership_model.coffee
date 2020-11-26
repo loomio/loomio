@@ -9,6 +9,13 @@ export default class MembershipModel extends BaseModel
   @indices: ['userId', 'groupId']
   @searchableFields: ['userName', 'userUsername']
 
+  defaultValues: ->
+    userId: null
+    groupId: null
+    archivedAt: null
+    inviterId: null
+    volume: null
+
   relationships: ->
     @belongsTo 'group'
     @belongsTo 'user'

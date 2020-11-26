@@ -8,7 +8,7 @@ export default
 
   computed:
     headline: ->
-      actor = (@event.actor() || @eventable.author() || Records.users.anonymous())
+      actor = @event.actor()
       @$t eventHeadline(@event, true ), # useNesting
         author:   actor.nameWithTitle(@eventable.group())
         username: actor.username

@@ -48,6 +48,7 @@ class Poll < ApplicationRecord
   belongs_to :discussion
   belongs_to :group, class_name: "Group"
 
+  enum notify_on_closing_soon: {nobody: 0, author: 1, undecided_voters: 2, voters: 3}
 
   before_save :set_stances_in_discussion
   after_update :remove_poll_options
@@ -56,23 +57,19 @@ class Poll < ApplicationRecord
   has_many :stance_choices, through: :stances
   has_many :voters,       -> { merge(Stance.latest) }, through: :stances, source: :participant
   has_many :admin_voters, -> { merge(Stance.latest.admin) }, through: :stances, source: :participant
-  has_many :undecided,    -> { merge(Stance.latest.undecided) }, through: :stances, source: :participant
-  has_many :participants, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
-
-  has_many :poll_unsubscriptions, dependent: :destroy
-  has_many :unsubscribers, through: :poll_unsubscriptions, source: :user
+  has_many :undecided_voters, -> { merge(Stance.latest.undecided) }, through: :stances, source: :participant
+  has_many :decided_voters, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
 
   has_many :poll_options, -> { order('priority') }, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
   has_many :documents, as: :model, dependent: :destroy
 
-  default_scope { includes(:poll_options) }
-  scope :active, -> { kept.where(closed_at: nil) }
-  scope :closed, -> { kept.where("closed_at IS NOT NULL") }
+  scope :active, -> { kept.where('polls.closed_at': nil) }
+  scope :closed, -> { kept.where("polls.closed_at IS NOT NULL") }
   scope :search_for, ->(fragment) { kept.where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
   scope :lapsed_but_not_closed, -> { active.where("polls.closing_at < ?", Time.now) }
-  scope :active_or_closed_after, ->(since) { kept.where("closed_at IS NULL OR closed_at > ?", since) }
+  scope :active_or_closed_after, ->(since) { kept.where("polls.closed_at IS NULL OR polls.closed_at > ?", since) }
   scope :in_organisation, -> (group) { kept.where(group_id: group.id_and_subgroup_ids) }
 
   scope :with_includes, -> { includes(
@@ -82,7 +79,7 @@ class Poll < ApplicationRecord
     {stances: [:stance_choices]})
   }
 
-  scope :closing_soon_not_published, ->(timeframe, recency_threshold = 2.days.ago) do
+  scope :closing_soon_not_published, ->(timeframe, recency_threshold = 24.hours.ago) do
      active
     .distinct
     .where(closing_at: timeframe)
@@ -107,42 +104,80 @@ class Poll < ApplicationRecord
 
   alias_method :user, :author
 
-  has_paper_trail only: [:title, :details, :details_format, :closing_at,
-    :group_id, :anonymous, :voter_can_add_options, :anyone_can_participate,
-    :notify_on_participate, :hide_results_until_closed]
+  has_paper_trail only: [
+    :author_id,
+    :title,
+    :details,
+    :details_format,
+    :closing_at,
+    :closed_at,
+    :group_id,
+    :anonymous,
+    :discarded_at,
+    :discarded_by,
+    :stances_in_discussion,
+    :voter_can_add_options,
+    :anyone_can_participate,
+    :specified_voters_only,
+    :notify_on_closing_soon,
+    :hide_results_until_closed]
 
   update_counter_cache :group, :polls_count
   update_counter_cache :group, :closed_polls_count
   update_counter_cache :discussion, :closed_polls_count
-  define_counter_cache(:stances_count) { |poll| poll.stances.latest.count }
-  define_counter_cache(:undecided_count) { |poll| poll.stances.latest.undecided.count }
+  update_counter_cache :discussion, :anonymous_polls_count
+  define_counter_cache(:voters_count) { |poll| poll.stances.latest.count }
+  define_counter_cache(:undecided_voters_count) { |poll| poll.stances.latest.undecided.count }
   define_counter_cache(:versions_count) { |poll| poll.versions.count}
 
   delegate :locale, to: :author
 
-  def participants_count
-    stances_count - undecided_count
+  def user_id
+    author_id
+  end
+
+  def create_missing_created_event!
+    self.events.create(
+      kind: created_event_kind,
+      user_id: author_id,
+      created_at: created_at)
+  end
+
+  def existing_member_ids
+    voter_ids
+  end
+
+  def decided_voters_count
+    voters_count - undecided_voters_count
   end
 
   def cast_stances_pct
-    return 0 if stances_count == 0
-    ((participants_count.to_f / stances_count) * 100).to_i
-  end
-
-  def undecided
-    anonymous? ? User.none : super
-  end
-
-  def participants
-    anonymous? ? User.none : super
+    return 0 if voters_count == 0
+    ((decided_voters_count.to_f / voters_count) * 100).to_i
   end
 
   def voters
     anonymous? ? User.none : super
   end
 
-  def non_voters
+  def undecided_voters
     anonymous? ? User.none : super
+  end
+
+  def decided_voters
+    anonymous? ? User.none : super
+  end
+
+  def unmasked_voters
+    User.where(id: stances.latest.pluck(:participant_id))
+  end
+
+  def unmasked_undecided_voters
+    User.where(id: stances.latest.undecided.pluck(:participant_id))
+  end
+
+  def unmasked_decided_voters
+    User.where(id: stances.latest.decided.pluck(:participant_id))
   end
 
   def body
@@ -221,26 +256,37 @@ class Poll < ApplicationRecord
     ) if chart_type == 'matrix'
   end
 
-  def admins
-    # User.where(id: [group.admins, discussion&.admins, admin_voters].compact.map {|rel| rel.pluck(:id) }.flatten)
+  def base_membership_query(admin: false)
+    if persisted? && specified_voters_only && !admin
+      voters
+    else
+      User.active.
+        joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.discussion_id || 0} AND dr.user_id = users.id").
+        joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
+        joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
+        where("(dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL #{'AND dr.admin = TRUE' if admin}) OR
+               (m.id  IS NOT NULL AND m.archived_at IS NULL #{'AND m.admin = TRUE' if admin}) OR
+               (s.id  IS NOT NULL AND s.revoked_at  IS NULL AND latest = TRUE #{'AND s.admin = TRUE' if admin})")
+    end
+  end
+
+  def base_guest_audience_query(admin: false)
     User.active.
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.discussion_id || 0} AND dr.user_id = users.id").
-      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
-      joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0} AND s.latest = TRUE").
-      where('(m.admin = TRUE AND m.id IS NOT NULL AND m.archived_at IS NULL) OR
-             (dr.admin = TRUE AND dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
-             (s.admin = TRUE AND s.id IS NOT NULL and s.revoked_at IS NULL)')
+      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id").
+      joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
+      where("m.group_id": self.group.parent_or_self.id_and_subgroup_ids).
+      where("(dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL #{'AND dr.admin = TRUE' if admin}) OR
+             (m.id  IS NOT NULL AND m.archived_at IS NULL #{'AND m.admin = TRUE' if admin}) OR
+             (s.id  IS NOT NULL AND s.revoked_at  IS NULL AND latest = TRUE #{'AND s.admin = TRUE' if admin})")
+  end
+
+  def admins
+    base_membership_query(admin: true)
   end
 
   def members
-    # User.where(id: [group.members, discussion&.readers, voters].compact.map {|rel| rel.pluck(:id) }.flatten)
-    User.active.
-      joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.discussion_id || 0} AND dr.user_id = users.id").
-      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
-      joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0} AND s.latest = TRUE").
-      where('(m.id IS NOT NULL AND m.archived_at IS NULL) OR
-             (dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
-             (s.id IS NOT NULL and s.revoked_at IS NULL)')
+    base_membership_query
   end
 
   def non_voters
@@ -365,7 +411,7 @@ class Poll < ApplicationRecord
   end
 
   def discussion_group_is_poll_group
-    if poll.discussion and poll.group and poll.discussion.group != poll.group
+    if poll.group.present? and poll.discussion.present? and poll.discussion.group != poll.group
       self.errors.add(:group, 'Poll group is not discussion group')
     end
   end
