@@ -1,6 +1,6 @@
 class Clients::Recaptcha < Clients::Base
   def validate(recaptcha)
-    post "siteverify", params: { response: recaptcha, secret: ENV['RECAPTCHA_SECRET_KEY']}
+    post_query "siteverify", params: { response: recaptcha, secret: ENV['RECAPTCHA_SECRET_KEY']}
   end
 
   private

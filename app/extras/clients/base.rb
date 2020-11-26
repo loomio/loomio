@@ -22,6 +22,10 @@ class Clients::Base
     perform :post, path, params, headers, options.merge(params_field: :body)
   end
 
+  def post_query(path, params: {}, headers: {}, options: {})
+    perform :post, path, params, headers, options.merge(params_field: :query)
+  end
+
   # make request for initial user information
   # overwrite if the API has a different endpoint to get a user
   def fetch_user_info

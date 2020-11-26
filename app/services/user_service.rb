@@ -1,13 +1,21 @@
 class UserService
-  def self.create(user:, params:)
+  class EmailTakenError < StandardError
+  end
+
+  def self.create(params:)
+    if User.where(email_verified: true, email: params[:email]).exists?
+      raise UserService::EmailTakenError.new(email: params[:email])
+    end
+
+    user = User.where(email_verified: false, email: params[:email]).first_or_create
     user.attributes = params.slice(:name, :email, :recaptcha, :legal_accepted, :email_newsletter)
     user.require_valid_signup = true
     user.require_recaptcha = true
-    user.save.tap do
-      EventBus.broadcast 'user_create', user
-    end
+    user.save
+    user
+  rescue ActiveRecord::RecordNotUnique
+    retry
   end
-
 
   def self.verify(user: )
     return user if user.email_verified?

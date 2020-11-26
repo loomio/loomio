@@ -7,6 +7,6 @@ class API::LoginTokensController < API::RestfulController
 
   private
   def login_token_user
-    User.verified_first.find_by!(email: params.require(:email))
+    User.find_by!(email: params.require(:email))
   end
 end

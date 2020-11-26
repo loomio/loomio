@@ -9,8 +9,7 @@ import VueRecaptcha from 'vue-recaptcha';
 import openModal      from '@/shared/helpers/open_modal'
 
 export default
-  components:
-    'v-recaptcha': VueRecaptcha
+  components: { VueRecaptcha }
   mixins: [AuthModalMixin]
 
   props:
@@ -68,11 +67,13 @@ v-card.auth-signup-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.ca
         p(v-t="{path: 'auth_form.sign_up_as', args: {email: user.email}}")
       .auth-signup-form__name
         v-text-field(type='text' :label="$t('auth_form.name_placeholder')" :placeholder="$t('auth_form.enter_your_name')" outlined v-model='vars.name' required='true')
+        validation-errors(:subject='user' field='legalAccepted')
+        validation-errors(:subject='user' field='email')
+        validation-errors(:subject='user' field='recaptcha')
       .auth-signup-form__consent(v-if='termsUrl')
         v-checkbox.auth-signup-form__legal-accepted(v-model='vars.legalAccepted' hide-details)
           template(v-slot:label)
             span(v-html="$t('auth_form.i_accept', { termsUrl: termsUrl, privacyUrl: privacyUrl })")
-        validation-errors(:subject='user', field='legalAccepted')
       .auth-signup-form__newsletter(v-if='newsletterEnabled')
         v-checkbox.auth-signup-form__newsletter-accepted(v-model='vars.emailNewsletter' hide-details)
           template(v-slot:label)
@@ -81,5 +82,6 @@ v-card.auth-signup-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.ca
     v-card-actions.mt-8
       v-spacer
       v-btn.auth-signup-form__submit(color="primary" :loading="loading" :disabled='!vars.name || (termsUrl && !vars.legalAccepted)' v-t="'auth_form.create_account'" @click='submit()')
-    v-recaptcha(v-if='useRecaptcha' ref="invisibleRecaptcha" :sitekey="recaptchaKey" :loadRecaptchaScript="true" size="invisible" @verify="submitForm")
+    p siteKey {{recaptchaKey}}
+    vue-recaptcha(v-if='useRecaptcha' ref="invisibleRecaptcha" :sitekey="recaptchaKey" :loadRecaptchaScript="true" size="invisible" @verify="submitForm")
 </template>
