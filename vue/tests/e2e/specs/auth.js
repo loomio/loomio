@@ -211,7 +211,7 @@ module.exports = {
     page.click('.auth-signup-form__submit')
     page.expectFlash('Signed in successfully')
     page.expectText('.group-page__name', 'Dirty Dancing Shoes')
-  }
+  },
 
   'invite_new_user_who_changes_their_email': (test) => {
     page = pageHelper(test)
