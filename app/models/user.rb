@@ -348,8 +348,7 @@ class User < ApplicationRecord
 
   def validate_recaptcha
     return unless ENV['RECAPTCHA_APP_KEY']
-    req = Clients::Recaptcha.instance.validate(self.recaptcha)
-    return if req.response['success']
+    return if Clients::Recaptcha.instance.validate(self.recaptcha)
     self.errors.add(:recaptcha, I18n.t(:"user.error.recaptcha"))
   end
 end

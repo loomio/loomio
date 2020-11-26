@@ -40,7 +40,8 @@ describe API::RegistrationsController do
       expect { post :create, params: { user: registration_params } }.to change { User.count }.by(0)
       expect(response.status).to eq 422
       json = JSON.parse response.body
-      expect(json['errors']['email']).to eq 'Email address is already registered'
+      expect(json['errors']['email'][0]).to eq 'Email address is already registered'
+
     end
 
     it "signup via membership" do
