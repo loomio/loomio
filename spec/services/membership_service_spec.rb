@@ -52,24 +52,6 @@ describe MembershipService do
 
   end
 
-
-  describe 'with multiple group ids' do
-    let!(:subgroup) { create :group, parent: group }
-    let(:membership) { create :membership, group: group, inviter: admin, user: user, experiences: { invited_group_ids: [subgroup.id] }  }
-
-    before do
-      subgroup.add_admin! admin
-    end
-
-    it 'adds them to the subgroup' do
-      expect(group.members).to_not include user
-      expect(subgroup.members).to_not include user
-      MembershipService.redeem(membership: membership, actor: user)
-      expect(group.members.reload).to include user
-      expect(subgroup.members.reload).to include user
-    end
-  end
-
   describe 'with alien group' do
     let!(:alien_group) { create :group }
     let(:membership) { create :membership, group: group, inviter: admin, user: user, experiences: { invited_group_ids: [alien_group.id] }  }
