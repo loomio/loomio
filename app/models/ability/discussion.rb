@@ -34,7 +34,7 @@ module Ability::Discussion
       user.email_verified? &&
       (discussion.author == user ||
       discussion.admins.exists?(user.id) ||
-      (discussion.group.members_can_edit_discussions? && discussion.members.exists?(user.id)))
+      (discussion.group.members_can_edit_discussions && discussion.members.exists?(user.id)))
     end
 
     can :pin, ::Discussion do |discussion|
