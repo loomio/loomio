@@ -71,6 +71,7 @@ module.exports = (test, browser) ->
 
   clearField: (selector) ->
     test.getValue selector, (result) ->
+      return unless (result || {}).value
       length = result.value.length
       count = 0
       while count < length
