@@ -6,7 +6,7 @@ class API::RegistrationsController < Devise::RegistrationsController
   def create
     @email_can_be_verified = email_can_be_verified?
     self.resource = UserService.create(params: sign_up_params)
-    if resource.valid?
+    if !resource.errors.any?
       save_detected_locale(resource)
       if @email_can_be_verified
         sign_in resource

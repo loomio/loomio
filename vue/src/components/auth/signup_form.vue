@@ -82,6 +82,5 @@ v-card.auth-signup-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.ca
     v-card-actions.mt-8
       v-spacer
       v-btn.auth-signup-form__submit(color="primary" :loading="loading" :disabled='!vars.name || (termsUrl && !vars.legalAccepted)' v-t="'auth_form.create_account'" @click='submit()')
-    p siteKey {{recaptchaKey}}
     vue-recaptcha(v-if='useRecaptcha' ref="invisibleRecaptcha" :sitekey="recaptchaKey" :loadRecaptchaScript="true" size="invisible" @verify="submitForm")
 </template>
