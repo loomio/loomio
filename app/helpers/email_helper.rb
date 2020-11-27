@@ -25,7 +25,7 @@ module EmailHelper
     if format == "md"
       markdownify(text).html_safe
     else
-      replace_iframes text.html_safe
+      replace_iframes(text).html_safe
     end
   end
 
