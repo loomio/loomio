@@ -213,23 +213,6 @@ module.exports = {
     page.expectText('.group-page__name', 'Dirty Dancing Shoes')
   },
 
-  // 'invite_new_user_who_changes_their_email': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPathNoApp('setup_invitation_email_to_visitor')
-  //   page.expectText('.invite-people-mailer__body', 'Accept invitation')
-  //   page.click('.base-mailer__button--primary', 2000)
-  //   page.expectText('.auth-form', 'You have been invited to join Dirty Dancing Shoes')
-  //   page.fillIn('.auth-email-form__email input', 'changed@example.com')
-  //   page.click('.auth-email-form__submit')
-  //   page.expectText('.auth-signup-form', 'New to')
-  //   page.fillIn('.auth-signup-form__name input', 'Billy Jeans')
-  //   page.click('.auth-signup-form__legal-accepted .v-input--selection-controls__input')
-  //   page.click('.auth-signup-form__submit')
-  //   page.expectFlash('Signed in successfully')
-  //   page.expectText('.group-page__name', 'Dirty Dancing Shoes')
-  // },
-
   // commented out because selenium clearValue is broken on Chrome.
   'requires_verification_if_email_is_changed': (test) => {
     page = pageHelper(test)
@@ -250,5 +233,56 @@ module.exports = {
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
     page.expectFlash('Signed in successfully')
+  },
+
+  'invite_existing_user_via_alternative_email_address': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('setup_invite_user_with_alternative_email')
+    page.expectText('.invite-people-mailer__body', 'Accept invitation')
+    page.click('.base-mailer__button--primary', 2000)
+    page.expectText('.auth-form', 'If you are already a Loomio user, you can sign in with your existing account')
+    page.clearField('.auth-email-form__email input')
+    page.fillIn('.auth-email-form__email input', 'existing-user@example.com')
+    page.click('.auth-email-form__submit')
+    page.fillIn('.auth-signin-form__password input', 'veryeasytoguess123')
+    page.click('.auth-signin-form__submit')
+    page.expectFlash('Signed in successfully')
+    page.expectText('.group-page__name', 'Dirty Dancing Shoes')
+  },
+
+  'invite_existing_user_via_alternative_email_address_signed_in': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('setup_invite_user_with_alternative_email?signed_in=1')
+    page.expectText('.invite-people-mailer__body', 'Accept invitation')
+    page.click('.base-mailer__button--primary', 2000)
+    page.expectNoElement('.auth-modal')
+    page.expectText('.group-page__name', 'Dirty Dancing Shoes')
+  },
+
+  'invite_existing_user_via_correct_email_address': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('setup_invite_user_with_correct_email')
+    page.expectText('.invite-people-mailer__body', 'Accept invitation')
+    page.click('.base-mailer__button--primary', 2000)
+    // page.clearField('.auth-email-form__email input')
+    // page.fillIn('.auth-email-form__email input', 'existing-user@example.com')
+    page.click('.auth-email-form__submit')
+    page.fillIn('.auth-signin-form__password input', 'veryeasytoguess123')
+    page.click('.auth-signin-form__submit')
+    page.expectFlash('Signed in successfully')
+    page.expectText('.group-page__name', 'Dirty Dancing Shoes')
+  },
+
+  'invite_existing_user_via_correct_email_address_signed_in': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('setup_invite_user_with_correct_email?signed_in=1')
+    page.expectText('.invite-people-mailer__body', 'Accept invitation')
+    page.click('.base-mailer__button--primary', 2000)
+    page.expectText('.group-page__name', 'Dirty Dancing Shoes')
   }
+
 }

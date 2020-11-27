@@ -8,6 +8,38 @@ module Dev::Scenarios::Auth
     last_email
   end
 
+  def setup_invite_user_with_alternative_email
+    group = create_group
+    group.update(group_privacy: 'secret')
+    user = User.create(email: 'existing-user@example.com',
+                       name: 'existing user',
+                       email_verified: true,
+                       password: 'veryeasytoguess123')
+
+    GroupService.announce(group:group, params: {recipient_emails: ['newuser@example.com']}, actor: group.creator)
+
+    sign_in user if params[:signed_in]
+
+    last_email
+  end
+
+  def setup_invite_user_with_correct_email
+    group = create_group
+    group.update(group_privacy: 'secret')
+    user = User.create(email: 'existing-user@example.com',
+                       name: 'existing user',
+                       email_verified: true,
+                       password: 'veryeasytoguess123')
+
+    params = {recipient_emails: ['existing-user@example.com']}
+
+    GroupService.announce(group:group, params: params, actor: group.creator)
+
+    sign_in user if params[:signed_in]
+
+    last_email
+  end
+
   def setup_invitation_email_to_user_with_password
     group = create_group
     another_group = saved fake_group

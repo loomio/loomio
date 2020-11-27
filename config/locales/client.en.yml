@@ -2091,6 +2091,7 @@ en:
     youre_invited: You have been invited to join {{group_name}}.
     youre_invited_discussion: You have been invited to join the discussion.
     youre_invited_poll: You have been invited to vote.
+    existing_account_can_sign_in: If you have used Loomio before, you can sign in with your existing account
     sign_in_to_loomio: Sign in to {{site_name}}
     sign_in_help: Trouble signing in?
     sign_in: Sign in
