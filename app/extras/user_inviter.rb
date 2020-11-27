@@ -3,7 +3,7 @@ class UserInviter
 
     audience_ids = if model && audience
       inviter.ability.authorize! :announce, model
-      AnnouncementService.audience_users(model, audience).pluck(:id)
+      AnnouncementService.audience_users(model, audience).pluck(:id).without(inviter.id)
     else
       []
     end
