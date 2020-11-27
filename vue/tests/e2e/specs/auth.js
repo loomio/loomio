@@ -241,7 +241,7 @@ module.exports = {
     page.loadPathNoApp('setup_invite_user_with_alternative_email')
     page.expectText('.invite-people-mailer__body', 'Accept invitation')
     page.click('.base-mailer__button--primary', 2000)
-    page.expectText('.auth-form', 'If you are already a Loomio user, you can sign in with your existing account')
+    page.expectText('.auth-form', 'If you are already a Loomio user, sign in with your existing account')
     page.clearField('.auth-email-form__email input')
     page.fillIn('.auth-email-form__email input', 'existing-user@example.com')
     page.click('.auth-email-form__submit')
