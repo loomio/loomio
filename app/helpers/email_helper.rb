@@ -25,8 +25,17 @@ module EmailHelper
     if format == "md"
       markdownify(text).html_safe
     else
-      text.html_safe
+      replace_iframes text.html_safe
     end
+  end
+
+  def replace_iframes(str)
+    srcs = Nokogiri::HTML(str).search("iframe[src]").map { |el| el['src'] }
+    out = str.dup
+    srcs.each do |src|
+      out.gsub!('<iframe src="'+r[1]+'"></iframe>', r[1])
+    end
+    out
   end
 
   def markdownify(text)
