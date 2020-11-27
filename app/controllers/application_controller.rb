@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
 
   around_action :process_time_zone          # LocalesHelper
   around_action :use_preferred_locale       # LocalesHelper
+  before_action :deny_spam_users            # CurrentUserHelper
   before_action :set_last_seen_at           # CurrentUserHelper
   before_action :handle_pending_actions     # PendingActionsHelper
   before_action :set_sentry_context
@@ -108,4 +109,5 @@ class ApplicationController < ActionController::Base
     (browser.safari?  && browser.version.to_i < 12) ||
     (browser.edge?    && browser.version.to_i < 19))
   end
+
 end
