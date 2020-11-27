@@ -43,8 +43,7 @@ export default
     newsletterEnabled: -> AppConfig.newsletterEnabled
     allow: ->
       AppConfig.features.app.create_user or AppConfig.pendingIdentity.identity_type?
-    useRecaptcha: ->
-      @recaptchaKey && !@user.hasToken && !(AppConfig.pendingIdentity || {}).has_token
+    useRecaptcha: -> @recaptchaKey
 
 </script>
 <template lang="pug">
