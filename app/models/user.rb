@@ -349,6 +349,7 @@ class User < ApplicationRecord
   def validate_recaptcha
     return unless ENV['RECAPTCHA_APP_KEY']
     return if Clients::Recaptcha.instance.validate(self.recaptcha)
+    Sentry.capture_message("recaptcha failed", extra: {email: email})
     self.errors.add(:recaptcha, I18n.t(:"user.error.recaptcha"))
   end
 end
