@@ -1915,6 +1915,7 @@ zh_TW:
     youre_invited: 您已被邀請加入 {{group_name}}。
     youre_invited_discussion: 您已被邀請加入討論。
     youre_invited_poll: 您已被邀請加入投票。
+    existing_account_can_sign_in: 如果您已經是 {{site_name}} 使用者，請使用您現有的帳號登入
     sign_in_to_loomio: 登入到 {{site_name}}
     sign_in_help: 無法登入？
     sign_in: 登入
@@ -1934,6 +1935,7 @@ zh_TW:
     invalid_token: "抱歉，我們無法使用那個憑證來讓您登入。點選下方來傳送另一個。"
     account_locked: "您的帳號因為太多次失敗的登入嘗試而被鎖定。請檢查您的電子郵件以取得解鎖連結"
     email_not_found: "抱歉，我們找不到與此電子郵件地址相關的帳號"
+    email_taken: 電子郵件位置已被註冊
     email_placeholder: you@example.com
     login_with_token: 您已經設定好了！點選下方的連結以繼續。
     login_link_helptext: 點選下方的按鈕，然後我們就會傳送連結給您以供登入。

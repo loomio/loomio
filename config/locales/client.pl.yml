@@ -4,11 +4,12 @@ pl:
       title: Aktywuj swoją grupę
       activities:
         set_description: Ustaw opis swojej grupy
+        set_cover_photo: Załaduj zdjęcie główne i logo dla Twojej grupy
         invite_people_in: 'Zaproś ludzi '
         start_thread: Rozpocznij wątek dyskusyjny
         make_decision: Rozpocznij decyzję
       learn_more: Dowiedz się więcej w Loomio Help
-      celebration_message: Miły! Twoja grupa jest gotowa! 🎉
+      celebration_message: Fajnie! Twoja grupa jest gotowa! 🎉
       dismiss_this_card: Odrzuć tę kartę
   plan_names:
     free: Darmowy
@@ -35,7 +36,10 @@ pl:
     max_members: "Maksymalna liczba członków"
     expires_at: "Wygasa"
     renews_at: "Odnawia"
+    referral_code: "Kod referencyjny"
+    chargify_link: "Serwis transakcyjny"
     referral_code_help: "Daj przyjacielowi zniżkę, zdobądź trochę kredytów!"
+    manage_payment_details: "Zarządzaj szczegółami płatności"
   loomio_tags:
     all_tags: Wszystkie tagi
     tags: Tagi
@@ -184,11 +188,15 @@ pl:
       reply: 'Odpowiedź'
       edit: 'Edycja'
       remove: 'Usuń'
+      undo_remove: 'Cofnij usuń'
       like: 'Lubię'
       unlike: 'Nie lubię'
       update: 'Zaktualizuj'
       cancel: 'Anuluj'
       show_more: "Pokaż więcej"
+      show_fewer: "Pokaż mniej"
+      view_count_more: "Pokaż {{count}} więcej"
+      view_count_responses: "Pokaż {{count}} odpowiedzi"
       count_more: "{{count}} więcej"
       count_responses: "{{count}} odpowiedzi"
       view_all: "Pokaż wszystko"
@@ -236,7 +244,9 @@ pl:
   emoji_picker:
     search: Szukaj
     common: Ostatnio używane
+    expressions: Twarze
     hands: Rence
+    people: Ludzie
     nature: Natura
     objects: Rzeczy
     places: Miejsca
@@ -383,6 +393,7 @@ pl:
       replied: '{{name}} powiadomiony/a o odpowiedzi'
       updated: 'Komentarz zmieniony'
       destroyed: 'Komentarz usunięty'
+      removed: 'Komentarz usunięty'
     say_something: Powiedz coś...
     edit_comment: 'Edycja komentarza'
     delete_comment: 'Usunięcie komentarza'
@@ -391,6 +402,7 @@ pl:
     confirm_delete: 'Usuń komentarz'
     in_reply_to: "Odpowiedz {{name}}"
     write_a_comment: "Napisz komentarz"
+    post_comment: "Opublikuj komentarz"
     submit_button:
       label: 'Wysłanie'
     private_privacy_notice: 'Twój komentarz będzie widoczny tylko dla członków {{groupName}}.'
@@ -404,6 +416,8 @@ pl:
     other_groups: 'Inne grupy'
     all_groups: 'Wszystkie grupy'
     recent_threads: 'Najnowsze wątki'
+    invite_only_threads: 'Wątki na zaproszenie'
+    direct_threads: 'Wątki bezpośrednie'
     unread_threads: 'Nieprzeczytane wątki ({{count}})'
     muted_threads: 'Wyciszone wątki'
     start_group: 'Nowe organizacje'
@@ -418,6 +432,14 @@ pl:
       threads_list: 'Działania wątków'
       groups_list: 'Grupy'
       user_list: 'Działania użytkowników'
+  strand_nav:
+    newest_first: Najnowsza aktywność
+    oldest_first: Początek wątku
+    all_pinned: Wszystkie przypięte elementy
+    whole_thread: Cały wątek
+    from_comment: Z adresu URL komentarza
+    from_sequence_id: Z adresu URL elementu wątku
+    unread: Nowe dla Ciebie
   navbar:
     search_all_threads: Szukaj we wszystkich wątkach
     search_threads: 'Szukaj wątków w {{name}}'
@@ -441,21 +463,27 @@ pl:
       comments: 'Komentarze'
     sign_in: 'Zaloguj się'
     toggle_sidebar: 'Pokaż pasek boczny'
+    open_sidebar: 'Otwórz panel boczny'
+    close_sidebar: 'Zamknij panel boczny'
     logo_title: 'Strona domowa'
     group_and_subgroups: '{{group}} i podgrupy'
   user_dropdown:
     pin_sidebar: "Przypnij pasek boczny"
     unpin_sidebar: "Odepnij pasek boczny"
+    enable_beta_features: "Włącz opcje beta"
+    disable_beta_features: "Wyłącz opcje beta"
     button_label: 'Menu użytkownika'
     edit_profile: 'Edytuj profil'
     email_settings: 'Ustawienia powiadomień'
     help: 'Pomoc'
     contact_site_name: 'Kontakt {{site_name}}'
     sign_out: 'Wyloguj się'
+    beta_collab: "Wspólna edycja dyskusji i propozycji w czasie rzeczywistym, automatyczne zapisywanie szkiców komentarzy"
   membership_card:
     group_members: "Członkowie grupy"
     discussion_members: "Członkowie wątku"
     poll_members: "{{pollType}} członkowie"
+    voters: "Głosujący"
     invite_to_group: "Zaproś do grupy"
     invite_to_discussion: "Zaproś do wątku"
     invite_to_poll: "Zaproś do głosowania"
@@ -479,6 +507,9 @@ pl:
   notifications:
     header: "Powiadomienia"
     no_notifications: "Nie masz żadnych powiadomień"
+    new_discussion: "<strong>{{name}}</strong>rozpoczął wątek <strong>{{title}}</strong>"
+    discussion_edited: "<strong>{{name}}</strong>edytował wątek <strong>{{title}}</strong>"
+    discussion_announced: "<strong>{{name}}</strong>udostępnił wątek <strong> {{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> stworzył/a propozycję <strong>{{title}}</strong>"
     motion_closed: "Wniosek zamknięta: <strong>{{title}}</strong>"
     publish_outcome: "Opublikuj rezultat"
@@ -518,6 +549,16 @@ pl:
     move_to_existing_thread: Przenieś istniejący wątek
     start_new_thread: Lub, załóż nowy wątek
   discussion_form:
+    to: Do
+    direct_thread: "Wątek bezpośredni"
+    invite_only_thread: "Wątek na zaproszenie"
+    none_direct_thread: "Wątek bezpośredni (bez grupy)"
+    none_invite_only_thread: "Wątek na zaproszenie (bez grupy)"
+    change_log_placeholder: Krótko opisz zmiany dokonane w tej edycji. (opcjonalne)
+    change_log_label: Co się zmieniło?
+    one_person_will_be_notified: '1 osoba zostanie powiadomiona.'
+    count_people_will_be_notified: '{{count}} osób zostanie powiadomionych.'
+    notify_specifc_people_instead: Jeśli nie chcesz powiadamiać całej grupy, dodaj imona osób, które mają zostać powiadomione.
     invite: Zaproś
     aria_label: 'Formularz wątku'
     start_thread: Rozpoczęcie wątku
@@ -539,6 +580,8 @@ pl:
     privacy_private: 'Wątek będzie widoczny tylko dla członków {{group}}.'
     privacy_organisation: 'Wątek będzie widoczny dla członków {{parent}} i członków {{group}}.'
     fork_notice: 'Nowy wątek zostanie utworzony z {{count}} elementów z {{title}}'
+    one_person_notified: 1 osoba zostanie powiadomiona
+    notify_group: Powiadom grupę
   announcement:
     send_discussion: Wyślij wątek
     send_discussion_explain: Zaproś osoby do udziału w dyskusji
@@ -559,6 +602,15 @@ pl:
     preview: Podgląd e-maila
     no_notifications_sent: Żadne powiadomienia nie zostały wysłane
     history_error: Coś poszło nie tak! Nie można załadować historii.
+    inviting_guests_to_thread: Goście nie należą do Twojej grupy i mają dostęp tylko do tego wątku
+    select_groups: Wybierz grupy
+    audiences:
+      group: Wszyscy w {{name}}
+      discussion_group: Wszyscy w wątku
+      voters: Wszyscy zaproszeni do głosowania
+      decided_voters: Wszyscy, którzy zagłosowali
+      undecided_voters: Niezdecydowani
+      non_voters: Członkowie {{name}} nie są jeszcze zaproszeni
     form:
       too_many_invitations: |
           Przekroczono limit zaproszeń. <a href="{{upgradeUrl}}" target="_blank">Aktualizacja</a>
@@ -566,6 +618,8 @@ pl:
           <p>Zużyłeś wszystkie  {{maxMembers}} zaproszenia dostępne dla tej grupy.
           <p>Następny krok, <a href="{{upgradeUrl}}" target="_blank">wybierz plan</a>, aby kontynuować współpracę z Loomio.
       invitations_remaining: 'Pozostało {{count}} zaproszeń. <a href="{{upgradeUrl}}" target="_blank">Aktualizacja</a>'
+      who_to_invite: Kogo chcesz zaprosić?
+      invitation_message_placeholder: Wiadomość, która będzie dołączona do e-maila z zaproszeniem. (opcjonalne)
       invitation_message_label: Wiadomość
       group_announced:
         title: Zaproś do grupy
@@ -575,15 +629,19 @@ pl:
         helptext: Kogo chciałbyś zaprosić do wątku?
       discussion_edited:
         title: Powiadamiaj o zmianach
+        helptext: Kogo chcesz powiadomić o tej aktualizacji? (opcjonalne)
       poll_announced:
         title: Zaproś do głosowania
         helptext: Kogo chciałbyś zaprosić do głosowania?
       poll_edited:
         title: Powiadamiaj o zmianach
+        helptext: Kogo chcesz powiadomić o tej aktualizacji?
       outcome_announced:
         title: Udostępnij wynik
+        helptext: Podsumuj wyniki całego procesu, włączając wszystkie perspektywy i problemy, na które zwrócono uwagę.
       anyone_can_participate: Każdy z linkiem może wziąć udział
       placeholder: Podaj nazwy lub adresy email
+      notified_empty: 'Nie wybrano jeszcze nikogo'
       notified: '{{powiadomione}} osoby zostaną powiadomione:'
       notified_singular: '1 osoba zostanie powiadomiona:'
       group_title: '{{name}} ({{count}} osób)'
@@ -592,6 +650,10 @@ pl:
       last_notified: Powiadomiony
       not_notified: Jeszcze nie powiadomiono
       no_members: "To jeszcze nie zostało udostępnione nikomu!"
+      group_admin: "Administrator grupy"
+      thread_admin: "Administrator wątku"
+      last_read_at: "Ostatnio wyświetlono {{time}}"
+      has_not_read_thread: "Jeszcze nie obejrzał/a wątku"
     group_form:
       search_placeholder: Szukaj ludzi ...
       modal_title: Wybierz członków grupy
@@ -599,6 +661,8 @@ pl:
     flash:
       success: '{{count}} powiadomień wysłano'
   action_dock:
+    actions_menu: Menu akcji
+    more_actions: Więcej akcji
     react: Zareaguj
     notify: Zgłoś
     add_resource: Dodaj załącznik
@@ -610,6 +674,7 @@ pl:
     invite_guests: Zaprosić gości
     translate_thread: Przetłumacz kontekst
     edit_poll: Edytuj ankietę
+    edit_poll_type: "Edytuj {{pollType}}"
     move_items: Przenieś przedmioty
     announce_poll: Zaproś ludzi do głosowania
     announce_poll_active: (Nikt jeszcze nie został/a zaproszony/a)
@@ -627,6 +692,8 @@ pl:
     translate_outcome: Przetłumacz rezultat
     show_history: Pokaż historię edycji
     edited: Edytowane
+    show_edits: Pokaż historię edycji
+    show_notifications: Pokaż powiadomienia
     history: Historia
     pin_thread: Przypnij wątek
     unpin_thread: Odepnij wątek
@@ -643,7 +710,13 @@ pl:
     delete_thread: Usuń wątek
     notification_history: Historia powiadomień
     move_item: Przenieś element
+    add_poll_to_thread: Dodaj do wątku
+    count_members: "{{count}} członków"
+    count_voters: "{{count}} głosujących"
   formatting:
+    formatting_tools: Narzędzia do formatowania tekstu
+    expand: Pokaż więcej narzędzi do formatowania tekstu
+    collapse: Pokaż mniej narzędzi do formatowania tekstu
     bold: Pogrubienie
     italicize: Kursywa
     blockquote: Cytat
@@ -658,11 +731,17 @@ pl:
     heading1: Nagłówek 1
     heading2: Nagłówek 2
     heading3: Nagłówek 3
+    left_align: Rozmieść po lewej
+    center_align: Wyśrodkuj
+    right_align: Rozmieść po prawej
+    justify_align: Wyjustuj
     paragraph: Ustęp
     bullet_list: Lista
     number_list: Lista numerowana
     check_list: Lista kontrolna
     reset: Resetowanie
+    text_color: Kolor tekstu
+    background_color: Kolor tła
     quote: Cytat
     embed: Osadzanie wideo
     divider: Rozdzielacz
@@ -692,6 +771,7 @@ pl:
     image_size_helptext: 'Idealny rozmiar obrazka to 100x100px'
     upload_success: 'Zaktualizowano logo'
   join_group_button:
+    not_a_member: "Nie należysz obecnie do tej grupy."
     join_group: Dołączenie do grupy
     membership_requested: Zgłoszono członkostwo
     messages:
@@ -708,10 +788,18 @@ pl:
       membership_requested: 'Wysłałeś/aś prośbę o dołączenie do grupy  {{group}}'
   revision_history_modal:
     aria_label: Historia poprawek
+    discussion_header: Edycje dyskusji
+    comment_header: Edycje komentarza
+    poll_header: Edycje ankiety
+    outcome_header: Edycje wyników
+    stance_header: Edycje pozycji
     started_by: 'Zapoczątkowane przez {{name}}'
     edited_by: 'Edytowane przez {{name}}'
     edit_by: "Edytuj przez {{name}} · {{date}}"
     posted: Opublikowano
+    field: Pole
+    before: Przed
+    after: Po
     original_text: Oryginał
     current_revision: Ostatnie
     closing_at_changed: "czas zamknięcia ustawiony na {{time}}"
@@ -726,9 +814,18 @@ pl:
     you_and_name_and_count_more: "Ty, {{name}} i {{count}} więcej"
     name_and_count_more: "{{name}} i {{count}} więcej"
   context_panel:
+    aria_intro: "Kontekst wątku od {{author}}"
     thread_status:
       pinned: "Ten wątek został przypięty. Zostanie na samej górze listy wątków dla wszystkich członków grupy."
       closed: "Ten wątek został zamknięty. Nie będzie się więcej pojawiał w głównym panelu i będzie wyświetlał się pod \"Zamkniętymi\" na stronie grupy."
+  delete_group_modal:
+    title: Usuń grupę
+    body: |
+        Czy na pewno chcesz usunąć tę grupę?
+        Wszystkie wątki, ankiety, pliki i inne treści grupy zostaną usunięte na zawsze.
+        Rekomendujemy wyeksportowanie danych grupy i ręczne pobranie wszystkich ważnych plików zanim będziesz kontynuować.
+    confirm: "Wpisz '%{name}', by potwierdzić usunięcie tej grupy."
+    success: Ta grupa została zarchiwizowana i przeznaczona do permanentnego usunięcia w ciągu 2 tygodni.
   group_page:
     stats: Statystyki grupy
     threads: Wątki
@@ -742,6 +839,8 @@ pl:
     no_threads_here: Nie ma tu żadnych wątków!
     search_threads: Szukaj wątków...
     private_threads: Musisz być w tej grupie, by widzieć jej prywatne wątki.
+    no_more_threads: Brak wątków do załadowania
+    view_closed_threads: 'Czegoś brakuje? <a href="{{url}}">Zobacz zamknięte wątki</a>'
     messages:
       privacy:
         members: 'Ta grupa jest teraz widoczna tylko dla członków'
@@ -820,6 +919,8 @@ pl:
   group_form:
     thread_defaults_help: Domyślne ustawienia dla nowych wątków
     click_to_change_image: Obraz okładki i logo (kliknij, aby zmienić)
+    permissions_explaination: |
+        Istnieją dwa poziomy członkostwa, jakie osoba może mieć w grupie: administrator i członek
     aria_label: 'Formularz grupowy'
     new_organisation: Nowa organizacja
     start_group_heading: 'Załóż grupę'
@@ -842,6 +943,10 @@ pl:
       private_to_group: 'Imię i opis będą widoczne tylko dla członków.'
       private_to_parent_members: 'Imię i opis będą widoczne dla członków {{parent}}'
     privacy: 'Prywatność'
+    group_privacy_is_open_description: "Widoczna publicznie. Każdy może poprosić o dołączenie. Wszystkie wątki są publiczne."
+    group_privacy_is_closed_description: "Niewidoczna. Każda osoba z linkiem może poprosić o dołączenie. Wszystkie wątki są prywatne."
+    group_privacy_is_closed_public_threads_description: "Niewidoczna. Każda osoba z linkiem może poprosić o dołączenie. Wątki mogą być prywatne lub publiczne."
+    group_privacy_is_secret_description: "Tylko zaproszone osoby mogą znaleźć grupę. Wszystkie wątki są prywatne."
     confirm_change_to_secret: "Jeśli przejdziesz dalej, wszystkie wątki w tej grupie i jej podgrupach zostaną ustawione jako prywatne."
     confirm_change_to_secret_subgroup: 'Jeśli przejdziesz dalej, wszystkie wątki staną się prywatne.'
     confirm_change_to_public: 'Jeśli przejdziesz dalej, wszystkie wątki w tej grupie zostaną upublicznione w sieci.'
@@ -874,6 +979,7 @@ pl:
     members_can_start_discussions: 'Członkowie mogą zakładać nowe wątki.'
     members_can_vote: 'Członkowie mogą głosować nad wnioskami.'
     members_can_raise_motions: 'Członkowie mogą rozpocząć propozycje.'
+    admins_can_edit_user_content: "Administratorzy mogą edytować komentarze i ankiety innych użytkowników"
     submit_start_group: 'Rozpocznij grupę'
     submit_start_subgroup: 'Uruchom podgrupę'
     submit_update: 'Zaktualizuj ustawienia'
@@ -994,6 +1100,7 @@ pl:
     locale_field: 'Język: {{value}}'
     online_field: 'Online: {{value}}'
     invited: 'Zaproszono {{value}}'
+    message_user: 'Wyślij wiadomość do {{name}}'
   contact_request_form:
     modal_title: "E-mail {{name}}"
     message_placeholder: Przedstaw się i powiedz, dlaczego chcesz się skontaktować.
@@ -1133,6 +1240,9 @@ pl:
       thisweek: 'Ten tydzień'
       thismonth: 'Ten miesiąc'
       older: 'Starsze niż miesiąc'
+  threads_page:
+    no_direct_threads: "Nie masz żadnych bezpośrednich wątków"
+    no_invite_only_threads: "Nie masz żadnych wątków na zaproszenie"
   inbox_page:
     no_threads: Przeczytałeś/aś wszystkie wątki z Twojej skrzynki.
     unread_threads: Nieprzeczytane Wątki
@@ -1143,6 +1253,8 @@ pl:
       or: lub
       join_group: <a href="/explore">dołącz</a> do grupy, aby zobaczyć wątki.
   discussion:
+    invite_only: "Na zaproszenie"
+    private_thread: Wątek prywatny
     max_threads_reached: |
         <p>Użyłeś wszystkich {{maxThreads}} wątków dostępnych dla tej grupy.</p>
         <p>Następnie <a href="{{upgradeUrl}}" target="_blank">wybierz plan </a>kontynuowania współpracy w Loomio.</p>
@@ -1166,6 +1278,7 @@ pl:
     title: Widziany przez
     no_one: Nikt jeszcze tego nie widział
   activity_card:
+    aria_label: "Napisz komentarz lub rozpocznij ankietę"
     count_responses: "{{count}} odpowiedzi"
     event_pinned: "Przypięte do osi czasu"
     event_unpinned: "Odepięto od osi czasu"
@@ -1189,6 +1302,7 @@ pl:
   thread_group:
     aria_label: 'Nazwa grupy'
   thread_context:
+    current_poll_type_banner: Obecna
     item_maybe_deleted: "Nie można znaleźć żądanej lokalizacji w wątku. Mogło zostać usunięte."
     aria_label: 'Kontekst wątku.'
     thread_options: 'Opcje wątku'
@@ -1235,6 +1349,7 @@ pl:
   move_thread_form:
     aria_label: Przenieś wątek
     title: Przenieś wątek
+    body: Grupa docelowa
     confirm: Przenieś wątek
     confirm_change_to_private_thread: '{{groupName}} to grupa otwarta. Jeśli będziesz kontynuować, ten wątek zostanie opublikowany.'
     messages:
@@ -1285,6 +1400,7 @@ pl:
       app_update: 'Dostępna jest nowa wersja aplikacji'
       reload: 'Przeładuj'
   decision_tools_card:
+    choose_type: Wybierz typ ankiety
     title: Ułatwij
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Wsparcie</a>
     proposal_title: Propozycja
@@ -1393,6 +1509,8 @@ pl:
   poll_common_settings:
     anyone_can_participate:
       title: Każdy z linkiem może wziąć udział
+    notify_on_closing_soon:
+      undecided_voters: Niezdecydowani
   poll_common_votes_panel:
     newest_first: Najpierw najnowszy
   poll_common_set_outcome_panel:
