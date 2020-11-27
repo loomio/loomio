@@ -33,7 +33,7 @@ module EmailHelper
     srcs = Nokogiri::HTML(str).search("iframe[src]").map { |el| el['src'] }
     out = str.dup
     srcs.each do |src|
-      out.gsub!('<iframe src="'+r[1]+'"></iframe>', r[1])
+      out.gsub!('<iframe src="'+src+'"></iframe>', "<a href='#{src}'>#{src}</a>")
     end
     out
   end
