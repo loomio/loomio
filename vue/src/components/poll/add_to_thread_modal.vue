@@ -73,5 +73,6 @@ v-card
     v-autocomplete.add-to-thread-modal__search(hide-no-data return-object v-model="selectedDiscussion" :search-input.sync="searchFragment" :items="searchResults" item-text="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading")
   v-card-actions
     v-spacer
-    v-btn.add-to-thread-modal__submit(color="primary" @click="submit()" v-t="'common.action.save'" :disabled="!selectedDiscussion")
+    v-btn.add-to-thread-modal__submit(color="primary" @click="submit()" :disabled="!selectedDiscussion" :loading="poll.processing")
+      span(v-t="'common.action.save'")
 </template>

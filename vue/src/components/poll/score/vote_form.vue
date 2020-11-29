@@ -63,5 +63,6 @@ form.poll-score-vote-form(@submit.prevent='submit()')
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
     v-spacer
-    v-btn.poll-common-vote-form__submit(color="primary" type='submit' v-t="'poll_common.vote'")
+    v-btn.poll-common-vote-form__submit(color="primary" type='submit' :loading="stance.processing")
+      span(v-t="'poll_common.vote'")
 </template>
