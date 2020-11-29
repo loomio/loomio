@@ -63,6 +63,7 @@ export default
 
       chain = Records.polls.collection.chain()
       chain = chain.find(groupId: {$in: groupIds})
+      chain = chain.find(discardedAt: null)
 
       switch @$route.query.status
         when 'active'
