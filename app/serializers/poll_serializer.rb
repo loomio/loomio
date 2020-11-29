@@ -38,7 +38,7 @@ class PollSerializer < ApplicationSerializer
              :versions_count
 
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
-  has_one :created_event, serializer: Simple::EventSerializer, root: :events
+  has_one :created_event, serializer: EventSerializer, root: :events
   has_one :group, serializer: GroupSerializer, root: :groups
   has_one :author, serializer: AuthorSerializer, root: :users
   has_one :current_outcome, serializer: OutcomeSerializer, root: :outcomes
