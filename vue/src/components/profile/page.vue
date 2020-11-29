@@ -123,7 +123,8 @@ v-main
                 a(v-t="'profile_page.help_translate'" href='https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation' target='_blank')
         v-card-actions.profile-page__update-account
           v-spacer
-          v-btn.profile-page__update-button(color="primary" @click='submit()' :disabled='emailExists' v-t="'profile_page.update_profile'")
+          v-btn.profile-page__update-button(color="primary" @click='submit()' :disabled='emailExists' :loading="user.processing")
+            span(v-t="'profile_page.update_profile'")
 
       v-card.profile-page-card.mt-4
         v-list

@@ -52,5 +52,6 @@ v-card.poll-common-move-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.st
     v-select(v-if="groups.length" v-model="groupId" :items="groups" :label="$t('move_thread_form.body')")
   v-card-actions.poll-common-form-actions
     v-spacer
-    v-btn.poll-common-form__submit(color="primary" @click='submit()' v-t="'common.action.move'")
+    v-btn.poll-common-form__submit(color="primary" @click='submit()' :loading="poll.processing")
+      span(v-t="'common.action.move'")
 </template>

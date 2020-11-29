@@ -163,6 +163,8 @@ export default
 
       v-card-actions
         v-spacer
-        v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-t="'discussion_form.start_thread'" v-if="!discussion.id")
-        v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-t="'common.action.save'" v-if="discussion.id")
+        v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-if="!discussion.id" :loading="discussion.processing")
+          span(v-t="'discussion_form.start_thread'")
+        v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-if="discussion.id" :loading="discussion.processing")
+          span(v-t="'common.action.save'")
 </template>
