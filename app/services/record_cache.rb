@@ -227,8 +227,10 @@ class RecordCache
 
   def add_poll_options(collection)
     return [] if exclude_types.include?('poll_option')
+    scope[:poll_options_by_id] ||= {}
     scope[:poll_options_by_poll_id] ||= {}
     collection.each do |poll_option|
+      scope[:poll_options_by_id][poll_option.id] = poll_option
       scope[:poll_options_by_poll_id][poll_option.poll_id] ||= []
       scope[:poll_options_by_poll_id][poll_option.poll_id].push(poll_option)
     end
