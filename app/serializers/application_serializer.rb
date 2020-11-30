@@ -10,7 +10,7 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def group
-    cache_fetch(:groups_by_id, object.group_id) { nil }
+    cache_fetch(:groups_by_id, object.group_id) { object.group }
   end
 
   def event
@@ -26,7 +26,7 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def actor
-    cache_fetch(:users_by_id, object.actor_id) { nil }
+    cache_fetch(:users_by_id, object.actor_id) { object.actor }
   end
 
   def user
@@ -35,11 +35,6 @@ class ApplicationSerializer < ActiveModel::Serializer
 
   def inviter
     cache_fetch(:users_by_id, object.inviter_id) { object.inviter }
-  end
-
-  def creator
-    raise "this aint used is it?"
-    cache_fetch(:users_by_id, object.creator_id) { nil }
   end
 
   def self.hide_when_discarded(names)
