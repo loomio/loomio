@@ -1,6 +1,6 @@
 Loomio is a collaborative decision-making tool that makes it easy for anyone to participate in decisions which affect them. To find out more, visit [Loomio.org](https://www.loomio.org).
 
-[![Build Status](https://travis-ci.org/loomio/loomio.svg?branch=master)](https://travis-ci.org/loomio/loomio)
+[![Build Status](https://travis-ci.com/loomio/loomio.svg?branch=master)](https://travis-ci.org/loomio/loomio)
 
 ### Contributing
 
