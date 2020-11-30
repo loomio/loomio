@@ -7,13 +7,13 @@ class API::VersionsController < API::RestfulController
   private
 
   def exclude_types
-    %w[discussion group user comment poll stance]
+    %w[discussion group user comment poll stance stance_choice]
   end
 
   def serializer_class
     VersionSerializer
   end
-  
+
   def serializer_root
     'versions'
   end
