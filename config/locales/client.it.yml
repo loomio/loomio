@@ -4,17 +4,29 @@ it:
       title: Attiva il tuo gruppo
       activities:
         set_description: 'Scrivi la descrizione del tuo gruppo '
+        set_cover_photo: Caricare una foto di copertina & logo per il tuo gruppo
         invite_people_in: Invita persone in
         start_thread: Inizia un thread di discussione
         make_decision: Inizia una decisione
+      learn_more: Impara più con Loomio Aiuto
+      celebration_message: Buono! tuo gruppo è pronto per andare!
       dismiss_this_card: Elimina questa sezione
   plan_names:
     free: Free
     trial: Prova
+    small: Piccolo
+    medium: Medio
+    large: Ampio
+    monthly: Mensile
+    yearly: Annuale
   current_plan_button:
     upgrade: Aggiorna
+    free_trial: Prova gratuita. {{giorni}]} giorni restanti.
+    trial_expired: La tua prova è scaduta. Aggiorna per continuare usando Loomio.
+    tooltip: "Nostri prezzi sono fantastichi! Aggiorna oggi e godi quello  che Loomio può offrire al tuo grupo. "
   subscription_status:
     members: "Membri"
+    active_members: "Membri attivi"
   loomio_tags:
     tags: Etichette
     apply_tags: Inserisci etichette

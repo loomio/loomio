@@ -213,7 +213,7 @@ es:
       done: Listo
       start: 'Empezar '
       delete: Eliminar
-      unsubscribe: Cancelar la suscripción a la lista de correo electrónico
+      unsubscribe: Cancelar suscripción
       subscribe: Suscribirme a la lista de correo electrónico
       unignore: Dejar de ignorar
       remind: 'Recordar '
@@ -508,6 +508,9 @@ es:
   notifications:
     header: "Notificaciones"
     no_notifications: "No tienes notificaciones"
+    new_discussion: "<strong>{{nombre}}</strong>comenzó un hilo <strong>{{título}}</strong>"
+    discussion_edited: "<strong>{{nombre}}</strong> editó el hilo <strong>{{título}}</strong>"
+    discussion_announced: "<strong>{{nombre}}</strong> ha compartido un hilo <strong>{{título}}</strong>"
     new_motion: "<strong>{{name}}</strong> creó una propuesta <strong>{{title}}</strong>"
     motion_closed: "Propuesta cerrada: <strong>{{title}}</strong>"
     publish_outcome: "Publicar el resultado"
@@ -1930,6 +1933,7 @@ es:
     invalid_token: "Perdón pero no pudimos usar ese enlace para que ingreses. Haz clic debajo para que te enviemos uno nuevo"
     account_locked: "Tu cuenta se ha bloqueado después de demasiados intentos fallidos para acceder. Consulta tu email para un enlace de desbloqueo."
     email_not_found: "Lo lamentamos, no pudimos encontrar una cuenta con esa dirección de correo electrónico"
+    email_taken: El correo electrónico ya ha sido registrado
     email_placeholder: correo@dominio.com
     login_with_token: Ya está todo listo! Haz click en el enlace de abajo para continuar
     login_link_helptext: Haz click en el botón de abajo y te enviaremos un enlace para iniciar sesión.

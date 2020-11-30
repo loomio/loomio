@@ -61,7 +61,8 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop
             img(aria-hidden="true" :src="'/img/' + optionImages[option.name] + '.svg'")
           span(aria-hidden="true" v-t="'poll_' + stance.poll().pollType + '_options.' + option.name")
   poll-common-stance-reason(:stance='stance' v-if='stance && selectedOptionId')
-  v-btn.poll-common-vote-form__submit(block color="primary" @click='submit()' v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'" :disabled='!selectedOptionId')
+  v-btn.poll-common-vote-form__submit(block color="primary" @click='submit()' :loading="stance.processing" :disabled='!selectedOptionId')
+    span(v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
 </template>
 <style lang="sass">
 .poll-proposal-vote-form__button--not-selected

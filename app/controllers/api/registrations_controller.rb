@@ -5,8 +5,8 @@ class API::RegistrationsController < Devise::RegistrationsController
 
   def create
     @email_can_be_verified = email_can_be_verified?
-    self.resource = find_user
-    if UserService.create(user: resource, params: sign_up_params)
+    self.resource = UserService.create(params: sign_up_params)
+    if !resource.errors.any?
       save_detected_locale(resource)
       if @email_can_be_verified
         sign_in resource
@@ -19,15 +19,11 @@ class API::RegistrationsController < Devise::RegistrationsController
     else
       render json: { errors: resource.errors }, status: 422
     end
+  rescue UserService::EmailTakenError => e
+    render json: {errors: {email: [I18n.t('auth_form.email_taken')]}}, status: 422
   end
 
   private
-  def find_user
-    pending_user ||
-    User.find_by(email: sign_up_params[:email], email_verified: false) ||
-    build_resource
-  end
-
   def email_can_be_verified?
     (pending_membership&.user  ||
      pending_login_token&.user ||

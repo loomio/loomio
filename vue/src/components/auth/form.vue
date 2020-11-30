@@ -22,6 +22,9 @@ export default
         @pendingGroup = store.groups.find(@pendingIdentity.group_id)
 
   computed:
+    isInvitedNewUser: ->
+      AppConfig.pending_identity.email_verified == false
+
     loginComplete: ->
       @user.sentLoginLink or @user.sentPasswordLink
 
@@ -45,6 +48,7 @@ v-card.auth-form
     p.headline.text-center(v-if="pendingGroup" v-t="{path: 'auth_form.youre_invited', args: {group_name: pendingGroup.name}}")
     p.headline.text-center(v-if="pendingDiscussion" v-t="'auth_form.youre_invited_discussion'")
     p.headline.text-center(v-if="pendingPoll" v-t="'auth_form.youre_invited_poll'")
+    p.text-center.caption(v-if="isInvitedNewUser" v-t="{path: 'auth_form.existing_account_can_sign_in', args: { site_name: siteName } }")
     auth-provider-form(:user='user')
     auth-email-form(:user='user' v-if='emailLogin')
     .text-center.caption.mt-4

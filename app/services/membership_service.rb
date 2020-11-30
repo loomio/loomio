@@ -12,19 +12,29 @@ class MembershipService
       nil
     end
 
-    existing_membership = Membership.where("id != ?", membership.id).where(group_id: membership.group_id, user_id: actor.id).first
-    update_success = membership.update(user: actor, accepted_at: DateTime.now, saml_session_expires_at: expires_at)
+    # there are cases where we may already have a membership for this user,group
+    # membership isn't persisted, but there is an existing membership with this user_id, group_id.. then return
+    # membership is persisted, but assigned to another user_id (unverified) currently
+    # membership is persisted, assied to this actor and we just want to accept it.
+    # return if Membership.where("id != ?", membership.id).where(group_id: membership.group_id, user_id: actor.id).exists?
 
-    # can remove this after august
-    if membership.experiences['invited_group_ids'] && membership.inviter
-      Group.where(id: Array(membership.experiences['invited_group_ids'])).each do |group|
-        group.add_member!(actor, inviter: membership.inviter) if membership.inviter.can?(:add_members, group)
-      end
-    end
+    # so we need to accept all the pending invitations this person has been sent within this org
+    # and we dont want any surprises if they already have some memberships.
+    # they may be accepting memberships send to a different email (unverified_user)
+    group_ids = membership.group.parent_or_self.id_and_subgroup_ids
+    ignore_ids = Membership.accepted.where(group_id: group_ids, user_id: actor.id).pluck(:id)
 
-    membership.destroy if existing_membership && !update_success
+    Membership.pending.where(
+      user_id: membership.user_id,
+      group_id: group_ids).
+      where.not(id: ignore_ids).
+    update_all(user_id: actor.id,
+               accepted_at: DateTime.now,
+               saml_session_expires_at: expires_at)
 
-    Events::InvitationAccepted.publish!(membership) if notify && membership.reload.persisted?
+    membership.reload if membership.persisted?
+
+    Events::InvitationAccepted.publish!(membership) if notify
   end
 
   def self.update(membership:, params:, actor:)

@@ -99,11 +99,11 @@ class API::ProfileController < API::RestfulController
   end
 
   def user_by_email
-    resource_class.active.verified_first.find_by(email: params[:email]) || LoggedOutUser.new(email: params[:email])
+    resource_class.active.find_by(email: params[:email]) || LoggedOutUser.new(email: params[:email])
   end
 
   def deactivated_user
-    resource_class.inactive.verified_first.find_by(email: params[:user][:email])
+    resource_class.inactive.find_by(email: params[:user][:email])
   end
 
   def current_user_params

@@ -69,6 +69,16 @@ module.exports = (test, browser) ->
     @waitFor(selector, wait)
     test.moveToElement(selector, 10, 10, callback)
 
+  clearField: (selector) ->
+    test.getValue selector, (result) ->
+      return unless (result || {}).value
+      length = result.value.length
+      count = 0
+      while count < length
+        test.keys([test.Keys.BACK_SPACE])
+        count += 1
+      test.pause(2000)
+
   fillIn: (selector, value, wait) ->
     @waitFor(selector, wait)
     test.clearValue(selector)

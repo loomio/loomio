@@ -1,6 +1,9 @@
 module CurrentUserHelper
   include PendingActionsHelper
 
+  class SpamUserDeniedError < StandardError
+  end
+
   def sign_in(user)
     @current_user = nil
     user = UserService.verify(user: user)
@@ -9,6 +12,12 @@ module CurrentUserHelper
 
   def current_user
     @current_user || super || LoggedOutUser.new(locale: logged_out_preferred_locale, params: params, session: session)
+  end
+
+  def deny_spam_users
+    if ENV['SPAM_REGEX'] && Regexp.new(ENV['SPAM_REGEX']).match?(current_user.email)
+      raise SpamUserDeniedError.new(current_user.email)
+    end
   end
 
   private

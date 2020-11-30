@@ -144,7 +144,6 @@ class User < ApplicationRecord
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
   scope :verified, -> { where(email_verified: true) }
   scope :unverified, -> { where(email_verified: false) }
-  scope :verified_first, -> { order(email_verified: :desc) }
   scope :search_for, -> (q) { where("users.name ilike :first OR users.name ilike :other OR users.username ilike :first OR users.email ilike :first", first: "#{q}%", other:  "% #{q}%") }
   scope :visible_by, -> (user) { distinct.active.verified.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
   scope :mention_search, -> (user, model, query) do
@@ -349,8 +348,8 @@ class User < ApplicationRecord
 
   def validate_recaptcha
     return unless ENV['RECAPTCHA_APP_KEY']
-    return if self.persisted?
     return if Clients::Recaptcha.instance.validate(self.recaptcha)
+    Sentry.capture_message("recaptcha failed", extra: {email: email})
     self.errors.add(:recaptcha, I18n.t(:"user.error.recaptcha"))
   end
 end

@@ -4,10 +4,23 @@ ca:
       title: Activa el teu grup
       activities:
         set_description: Configura la descripció del teu grup
+        set_cover_photo: Puja una foto de portada i un logo pel teu grup
         invite_people_in: Convida a gent
         start_thread: Comença un fil de discussió
         make_decision: Comença una decissió
       dismiss_this_card: Descarta aquesta fitxa
+  plan_names:
+    free: Gratuït
+    trial: Prova
+    small: Petit
+    medium: Mitjà
+    large: Gran
+    monthly: Mensual
+    yearly: Anual
+  current_plan_button:
+    upgrade: Actualitza
+    free_trial: Prova gratuïta. Queden {{days}} dies.
+    was_gift_remaining: "Queden {{days}} dies."
   subscription_status:
     members: "Membres"
   loomio_tags:
@@ -34,8 +47,17 @@ ca:
     angry: Enfadat
     astonished: Astorat
     cry: Plora
+    fingers_crossed: Dits creuats
     v: Pau
     ok_hand: D'acord
+    thumbsup: Polze amunt
+    thumbsdown: Polze avall
+  poll_types:
+    proposal: Proposta
+    count: Comprova
+    poll: Enquesta
+  new_poll_types:
+    proposal: Proposta
   common:
     you: Tu
     expand: Expandeix

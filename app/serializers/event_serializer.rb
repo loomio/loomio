@@ -5,11 +5,11 @@ class EventSerializer < ApplicationSerializer
 
   has_one :actor, serializer: AuthorSerializer, root: :users
   has_one :eventable, polymorphic: true
-  has_one :discussion, serializer: Simple::DiscussionSerializer, root: :discussions
+  has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_one :parent, serializer: EventSerializer, root: :parent_events
 
   # for discussion moved event
-  has_one :source_group, serializer: Simple::GroupSerializer, root: :groups
+  has_one :source_group, serializer: GroupSerializer, root: :groups
 
   def parent
     cache_fetch(:events_by_id, object.parent_id) { nil }
