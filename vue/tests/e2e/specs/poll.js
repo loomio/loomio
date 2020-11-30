@@ -156,7 +156,7 @@ module.exports = {
 
     page.click('.poll-meeting-vote-form--box', 500)
     page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
-    page.click('.poll-common-vote-form__submit', 1000)
+    page.click('.poll-common-vote-form__submit', 2000)
 
     page.scrollTo('.stance-created', () => {
       // page.expectText('.poll-meeting-time', '8am')
