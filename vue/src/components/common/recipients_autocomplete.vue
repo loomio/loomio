@@ -23,7 +23,7 @@ export default
       default: -> []
     excludedUserIds:
       type: Array
-      default: -> [Session.user().id]
+      default: -> []
     initialRecipients:
       type: Array
       default: -> []
@@ -232,6 +232,10 @@ div
         user-avatar(v-if="data.item.type == 'user'" :user="data.item.user" size="small" no-link)
         v-icon.mr-1(v-else small) {{data.item.icon}}
       v-list-item-content.announcement-chip__content
-        v-list-item-title {{data.item.name}}
+        v-list-item-title
+          span {{data.item.name}}
+          span(v-if="data.item.type == 'user' && currentUserId == data.item.id")
+            space
+            span ({{ $t('common.you') }})
   //- recipients-notifications-count(:model="model")
 </template>

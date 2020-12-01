@@ -36,4 +36,48 @@ describe PollQuery do
       expect(results).to_not include rando
     end
   end
+
+  describe "base_guest_audience_query" do
+    let!(:reader_user) { create(:user, name: 'reader user') }
+
+    describe "reader user" do
+      let!(:discussion) { create(:discussion) }
+      let!(:poll) { create(:poll, discussion: discussion) }
+
+      before do
+        discussion.add_guest! reader_user, reader_user
+      end
+
+      it 'returns users from the discussion' do
+        expect(poll.base_guest_audience_query.exists?(reader_user.id)).to be true
+      end
+    end
+
+    describe "member user" do
+      let!(:member_user) { create(:user, name: 'member user') }
+      let!(:group) { create(:group) }
+      let!(:poll) { create(:poll, group: group) }
+
+      before do
+        group.add_member! member_user
+      end
+
+      it 'returns users from the group' do
+        expect(poll.base_guest_audience_query.exists?(member_user.id)).to be true
+      end
+    end
+
+    describe "stance user" do
+      let!(:stance_user) { create(:user, name: 'stance user') }
+      let!(:poll) { create(:poll) }
+
+      before do
+        poll.add_guest! stance_user, stance_user
+      end
+
+      it 'returns users from the poll' do
+        expect(poll.base_guest_audience_query.exists?(stance_user.id)).to be true
+      end
+    end
+  end
 end

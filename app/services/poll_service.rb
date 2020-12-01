@@ -39,7 +39,6 @@ class PollService
 
 
   def self.create_stances(poll:, actor:, user_ids:, emails:, audience:)
-
     user_ids = poll.base_guest_audience_query.where('users.id': Array(user_ids)).pluck(:id)
     audience_ids = AnnouncementService.audience_users(poll, audience).pluck('users.id')
 
@@ -89,8 +88,7 @@ class PollService
                                   audience: params[:recipient_audience])
     end
 
-    stances = create_stances(poll: poll,
-                             actor: actor,
+    stances = create_stances(poll: poll, actor: actor,
                              user_ids: params[:recipient_user_ids],
                              emails: params[:recipient_emails],
                              audience: params[:recipient_audience])
