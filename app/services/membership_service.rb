@@ -21,16 +21,18 @@ class MembershipService
     # so we need to accept all the pending invitations this person has been sent within this org
     # and we dont want any surprises if they already have some memberships.
     # they may be accepting memberships send to a different email (unverified_user)
+
     group_ids = membership.group.parent_or_self.id_and_subgroup_ids
-    ignore_ids = Membership.accepted.where(group_id: group_ids, user_id: actor.id).pluck(:id)
+    ignore_ids = Membership.accepted.where(group_id: group_ids, user_id: actor.id).pluck(:group_id)
 
     Membership.pending.where(
       user_id: membership.user_id,
-      group_id: group_ids).
-      where.not(id: ignore_ids).
+      group_id: (group_ids - ignore_ids)).
     update_all(user_id: actor.id,
                accepted_at: DateTime.now,
                saml_session_expires_at: expires_at)
+
+    Membership.pending.where(user_id: membership.user_id, group_id: ignore_ids).destroy_all
 
     membership.reload if membership.persisted?
 
