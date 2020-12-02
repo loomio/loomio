@@ -112,6 +112,7 @@ class Poll < ApplicationRecord
     :closing_at,
     :closed_at,
     :group_id,
+    :discussion_id,
     :anonymous,
     :discarded_at,
     :discarded_by,

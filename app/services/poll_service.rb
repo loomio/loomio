@@ -15,8 +15,7 @@ class PollService
   def self.update(poll:, params:, actor:)
     actor.ability.authorize! :update, poll
 
-    HasRichText.assign_attributes_and_update_files(poll, params.except(:poll_type, :discussion_id))
-    is_new_version = poll.is_new_version?
+    HasRichText.assign_attributes_and_update_files(poll, params.except(:poll_type, :discussion_id, :group_id))
 
     return false unless poll.valid?
 
@@ -34,7 +33,7 @@ class PollService
                                 actor: actor,
                                 recipient_user_ids: users.pluck(:id),
                                 recipient_audience: params[:recipient_audience].presence,
-                                recipient_message: params[:recipient_message].presence) if is_new_version
+                                recipient_message: params[:recipient_message].presence)
   end
 
 
