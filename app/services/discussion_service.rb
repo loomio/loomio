@@ -38,7 +38,7 @@ class DiscussionService
 
   def self.update(discussion:, actor:, params:)
     actor.ability.authorize! :update, discussion
-    HasRichText.assign_attributes_and_update_files(discussion, params)
+    HasRichText.assign_attributes_and_update_files(discussion, params.except(:group_id))
 
     return false unless discussion.valid?
     rearrange = discussion.max_depth_changed?
