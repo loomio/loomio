@@ -71,11 +71,7 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def subscription
-    sub = Subscription.new
-
-    if object.subscription_id
-      sub = cache_fetch(:subscriptions_by_group_id, object.id) { Subscription.new }
-    end
+    sub = cache_fetch(:subscriptions_by_group_id, object.id) { Subscription.new }
 
     if (current_user_membership)
       {
