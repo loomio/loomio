@@ -46,16 +46,7 @@ export default
           type: 'user'
           name: u.nameOrEmail()
           user: u
-        if AbilityService.canAnnounceTo(@discussion)
-          g =
-            id: 'group'
-            name: @$t('announcement.audiences.group', name: @discussion.group().name)
-            size: @discussion.group().acceptedMembershipsCount
-            type: 'audience'
-            icon: 'mdi-account-group'
-          @initialRecipients = [g]
-        else
-          @initialRecipients = []
+        @initialRecipients = []
         @initialRecipients = @initialRecipients.concat(users)
         @reset = !@reset
 
@@ -77,6 +68,14 @@ export default
       @discussion.private = @discussion.privateDefaultValue()
 
   computed:
+    numNotified: ->
+      count = 0
+      if @discussion.recipientAudience == 'group'
+        count += @discussion.group().acceptedMembershipsCount
+      count += @discussion.recipientUserIds.length
+      count += @discussion.recipientEmails.length
+      count
+
     maxThreads: ->
       @subscription.max_threads
 
@@ -122,8 +121,8 @@ export default
     //- p audiences {{audiences}}
     recipients-autocomplete(
       v-if="!discussion.id"
-      :label="$t(discussion.id ? 'action_dock.notify' : 'common.action.invite')"
-      :placeholder="$t('announcement.form.discussion_'+ (discussion.id ? 'edited' : 'announced')+ '.helptext')"
+      :label="$t(discussion.groupId ? 'action_dock.notify' : 'common.action.invite')"
+      :placeholder="$t('announcement.form.discussion_announced.'+ (discussion.groupId ? 'notify_helptext' : 'helptext'))"
       :initial-recipients="initialRecipients"
       :hint="$t('announcement.form.placeholder')"
       :model="discussion"
@@ -161,6 +160,22 @@ export default
       //-   @new-recipients="newRecipients")
       //-
 
+      //- p
+      //-   | Anyone in Dirty Dancing Shoes will be able to see this thread.
+      //-   br
+      //-   | 4 people will be notified.
+      //- p
+      //-   | Only the people you invite can see this thread
+      //-   br
+      //-   | 4 people will be notified
+      p.discussion-form__people-notified.text--secondary(v-if="!discussion.id")
+        span(v-if="numNotified == 0" v-t="'announcement.form.notified_none'")
+        span(v-if="numNotified == 1" v-t="'announcement.form.notified_singular'")
+        span(v-if="numNotified > 1" v-t="{path: 'announcement.form.notified', args: {notified: numNotified}}")
+        space
+        span(v-if="!discussion.groupId" v-t="'announcement.form.visible_to_guests'")
+        span(v-if="discussion.groupId" v-t="{path: 'announcement.form.visible_to_group', args: {group: discussion.group().name}}")
+      //- p.discussion-form__visibility
       v-card-actions
         v-spacer
         v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-if="!discussion.id" :loading="discussion.processing")

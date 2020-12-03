@@ -25,8 +25,7 @@ export default
   v-text-field(
     :label="$t('discussion_form.change_log_label')"
     :placeholder="$t('discussion_form.change_log_placeholder')"
-    v-model="model.recipientMessage"
-    counter="140")
+    v-model="model.recipientMessage")
 
   recipients-autocomplete(
     :label="$t(model.id ? 'action_dock.notify' : 'common.action.invite')"
