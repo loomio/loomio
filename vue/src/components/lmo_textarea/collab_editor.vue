@@ -484,7 +484,7 @@ progress::-moz-progress-bar
   background-color: lightblue
   border: 0
   transition: width 120ms ease-out, opacity 60ms 60ms ease-in
-  
+
 .menubar
   position: sticky
   bottom: 0

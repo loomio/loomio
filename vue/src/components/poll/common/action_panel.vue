@@ -11,24 +11,25 @@ export default
     poll: Object
 
   data: ->
-    stance: @lastStanceOrNew()
-    userCanParticipate: AbilityService.canParticipateInPoll(@poll)
-    newStance: Records.stances.build(
-      reasonFormat: Session.defaultFormat()
-      pollId:    @poll.id,
-      userId:    AppConfig.currentUserId
-    ).choose(@$route.params.poll_option_id)
+    stance: null
 
   created: ->
     @watchRecords
       collections: ["stances"]
       query: (records) =>
-        @stance = @lastStanceOrNew()
-        @userCanParticipate = AbilityService.canParticipateInPoll(@poll)
+        if @stance && !@stance.castAt && @poll.myStance() && @poll.myStance().castAt
+          @stance = @lastStanceOrNew().clone()
+
+        if !@stance && AbilityService.canParticipateInPoll(@poll)
+          @stance = @lastStanceOrNew().clone()
 
   methods:
     lastStanceOrNew: ->
-      @poll.myStance() || @newStance
+      @poll.myStance() || Records.stances.build(
+        reasonFormat: Session.defaultFormat()
+        pollId:    @poll.id,
+        userId:    AppConfig.currentUserId
+      ).choose(@$route.params.poll_option_id)
 
 </script>
 
@@ -38,7 +39,7 @@ export default
   .poll-common-action-panel__results-hidden-until-closed.py-1.caption(v-t="{path: 'poll_common_action_panel.results_hidden_until_closed', args: {poll_type: stance.poll().pollType}}" v-if='stance.poll().hideResultsUntilClosed')
   div(v-if="poll.closingAt" v-show='!stance.castAt')
     h3.py-3(v-t="'poll_common.have_your_say'")
-    poll-common-directive(v-if='userCanParticipate' :stance='stance' name='vote-form')
-    .poll-common-unable-to-vote(v-if='!userCanParticipate')
+    poll-common-directive(v-if='stance' :stance='stance' name='vote-form')
+    .poll-common-unable-to-vote(v-if='!stance')
       p.lmo-hint-text(v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}")
 </template>
