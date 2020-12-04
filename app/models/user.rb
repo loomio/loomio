@@ -178,6 +178,10 @@ class User < ApplicationRecord
     .where('fm.archived_at': nil)
   }
 
+  def author
+    self
+  end
+  
   def default_format
     if experiences['html-editor.uses-markdown']
       'md'

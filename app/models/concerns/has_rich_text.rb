@@ -25,7 +25,6 @@ module HasRichText
     has_many_attached :image_files
     before_save :caclulate_content_locale
     before_save :build_attachments
-    after_save :update_attachments_group_id
   end
 
   def caclulate_content_locale
@@ -33,10 +32,6 @@ module HasRichText
     stripped_text = Rails::Html::WhiteListSanitizer.new.sanitize(combined_text, tags: [])
     result = CLD.detect_language stripped_text
     self.content_locale = result[:code] if result[:reliable]
-  end
-
-  def update_attachments_group_id
-    UpdateAttachmentsGroupIdWorker.new.perform(self.class.to_s, self.id)
   end
 
   def build_attachments
