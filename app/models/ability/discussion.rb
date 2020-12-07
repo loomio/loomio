@@ -31,8 +31,12 @@ module Ability::Discussion
     end
 
     can [:add_members], ::Discussion do |discussion|
+      discussion.members.exists?(user.id)
+    end
+
+    can [:add_guests], ::Discussion do |discussion|
       discussion.admins.exists?(user.id) ||
-      (discussion.group.members_can_add_members && discussion.members.exists?(user.id))
+      (discussion.group.members_can_add_guests && discussion.members.exists?(user.id))
     end
 
     can [:update], ::Discussion do |discussion|

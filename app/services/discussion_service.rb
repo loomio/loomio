@@ -4,9 +4,10 @@ class DiscussionService
     recipient_user_ids = Array(params[:recipient_user_ids])
     recipient_audience = params[:recipient_audience].presence
 
-    actor.ability.authorize! :create, discussion
-    actor.ability.authorize! :announce, discussion if recipient_audience
-    actor.ability.authorize! :add_members, discussion if recipient_emails.any?
+    actor.ability.authorize!(:create, discussion)
+    actor.ability.authorize!(:announce, discussion) if recipient_audience
+    actor.ability.authorize!(:add_members, discussion) if recipient_user_ids.any?
+    actor.ability.authorize!(:add_guests, discussion) if recipient_emails.any?
 
     discussion.author = actor
 

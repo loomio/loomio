@@ -32,8 +32,7 @@ module Ability::Poll
     end
 
     can [:add_members], ::Poll do |poll|
-      poll.admins.exists?(user.id) ||
-      (!poll.specified_voters_only && poll.members.exists?(user.id))
+      poll.admins.exists?(user.id) || (!poll.specified_voters_only && poll.members.exists?(user.id))
     end
 
     can [:add_guests], ::Poll do |poll|
