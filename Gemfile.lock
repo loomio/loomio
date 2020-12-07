@@ -481,7 +481,7 @@ GEM
     sentry-rails (0.1.2)
       rails (>= 5.0)
       sentry-ruby
-    sentry-ruby (0.2.0)
+    sentry-ruby (0.3.0)
       faraday (>= 1.0)
     sentry-sidekiq (0.1.2)
       sentry-ruby
