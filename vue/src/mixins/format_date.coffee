@@ -1,9 +1,15 @@
 import {approximate, exact, timeline} from '@/shared/helpers/format_time'
 import EventBus from '@/shared/services/event_bus'
+import AppConfig from '@/shared/services/app_config'
+import Session from '@/shared/services/session'
 import {each} from 'lodash'
 
 # this is a vue mixin
 export default
+  computed:
+    currentUser: -> Session.user()
+    currentUserId: -> AppConfig.currentUserId
+
   methods:
     titleVisible: (visible) ->
       EventBus.$emit('content-title-visible', visible)

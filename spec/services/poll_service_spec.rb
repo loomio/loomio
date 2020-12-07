@@ -101,12 +101,6 @@ describe PollService do
         PollService.update(poll: poll_created, params: { title: "BIG CHANGES!" }, actor: user)
       }.to change { Events::PollEdited.where(kind: :poll_edited).count }.by(1)
     end
-
-    it 'does not create a new poll edited event for minor changes' do
-      expect {
-        PollService.update(poll: poll_created, params: { anyone_can_participate: false }, actor: user)
-      }.to_not change { Events::PollEdited.where(kind: :poll_edited).count }
-    end
   end
 
   describe 'add_options' do

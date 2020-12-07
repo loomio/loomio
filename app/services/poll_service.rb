@@ -15,8 +15,7 @@ class PollService
   def self.update(poll:, params:, actor:)
     actor.ability.authorize! :update, poll
 
-    HasRichText.assign_attributes_and_update_files(poll, params.except(:poll_type, :discussion_id))
-    is_new_version = poll.is_new_version?
+    HasRichText.assign_attributes_and_update_files(poll, params.except(:poll_type, :discussion_id, :group_id))
 
     return false unless poll.valid?
 
@@ -34,12 +33,11 @@ class PollService
                                 actor: actor,
                                 recipient_user_ids: users.pluck(:id),
                                 recipient_audience: params[:recipient_audience].presence,
-                                recipient_message: params[:recipient_message].presence) if is_new_version
+                                recipient_message: params[:recipient_message].presence)
   end
 
 
   def self.create_stances(poll:, actor:, user_ids:, emails:, audience:)
-
     user_ids = poll.base_guest_audience_query.where('users.id': Array(user_ids)).pluck(:id)
     audience_ids = AnnouncementService.audience_users(poll, audience).pluck('users.id')
 
@@ -89,8 +87,7 @@ class PollService
                                   audience: params[:recipient_audience])
     end
 
-    stances = create_stances(poll: poll,
-                             actor: actor,
+    stances = create_stances(poll: poll, actor: actor,
                              user_ids: params[:recipient_user_ids],
                              emails: params[:recipient_emails],
                              audience: params[:recipient_audience])

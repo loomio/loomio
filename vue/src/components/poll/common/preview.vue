@@ -17,11 +17,15 @@ v-list-item.poll-common-preview(:to='urlFor(poll)')
   v-list-item-content
     v-list-item-title {{poll.title}}
     v-list-item-subtitle
-      span(v-if='showGroupName()') {{ poll.group().fullName }}
-      span(v-if='!showGroupName()', v-t="{ path: 'poll_common_collapsed.by_who', args: { name: poll.authorName() } }")
+      span(v-t="{ path: 'poll_common_collapsed.by_who', args: { name: poll.authorName() } }")
       space
       span ·
       space
+      span(v-if='displayGroupName && poll.groupId')
+        span {{ poll.group().name }}
+        space
+        span ·
+        space
       poll-common-closing-at(:poll='poll' approximate)
 </template>
 <style lang="sass">

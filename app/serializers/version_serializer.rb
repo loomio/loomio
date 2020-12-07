@@ -7,10 +7,10 @@ class VersionSerializer < ApplicationSerializer
              :item_type,
              :object_changes
 
-  has_one :discussion
-  has_one :comment
-  has_one :poll
-  has_one :stance
+  # has_one :discussion
+  # has_one :comment
+  # has_one :poll
+  # has_one :stance
 
   def whodunnit
     object.whodunnit.to_i

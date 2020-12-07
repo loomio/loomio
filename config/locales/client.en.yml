@@ -682,6 +682,7 @@ en:
       discussion_announced:
         title: Invite to thread
         helptext: Who would you like to invite to the thread?
+        notify_helptext: Who would you like to notify about the thread?
       discussion_edited:
         title: Notify of edits
         helptext: Who would you like to notify about this update? (optional)
@@ -698,11 +699,15 @@ en:
         title: Share outcome
         helptext: Summarise the results of the process, including any understandings found or issues brought to light.
       anyone_can_participate: Anyone with link can participate
-      placeholder: Enter names or email addresses
+      placeholder: You can enter names or email addresses
       notified_empty: 'Nobody selected yet'
-      notified: '{{notified}} people will be notified:'
-      notified_singular: '1 person will be notified:'
+      notified: '{{notified}} people will be notified.'
+      notified_singular: '1 person will be notified.'
+      notified_none: 'Nobody will be notified.'
       group_title: '{{name}} ({{count}} people)'
+      visible_to_group: 'Anyone in {{group}} will be able to see this thread.'
+      visible_to_guests: 'Only invited people can see this thread.'
+
     members_list:
       title: Shared with
       last_notified: Notified

@@ -112,6 +112,7 @@ class Poll < ApplicationRecord
     :closing_at,
     :closed_at,
     :group_id,
+    :discussion_id,
     :anonymous,
     :discarded_at,
     :discarded_by,
@@ -256,6 +257,7 @@ class Poll < ApplicationRecord
     ) if chart_type == 'matrix'
   end
 
+  # people who can vote.
   def base_membership_query(admin: false)
     if persisted? && specified_voters_only && !admin
       voters
@@ -270,15 +272,16 @@ class Poll < ApplicationRecord
     end
   end
 
-  def base_guest_audience_query(admin: false)
+  # people you could invite to the poll.
+  # anyone in the thread, or the organization, or the poll itself
+  def base_guest_audience_query
     User.active.
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.discussion_id || 0} AND dr.user_id = users.id").
-      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id").
+      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id IN (#{[0].concat(self.group.parent_or_self.id_and_subgroup_ids).join(',')})").
       joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
-      where("m.group_id": self.group.parent_or_self.id_and_subgroup_ids).
-      where("(dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL #{'AND dr.admin = TRUE' if admin}) OR
-             (m.id  IS NOT NULL AND m.archived_at IS NULL #{'AND m.admin = TRUE' if admin}) OR
-             (s.id  IS NOT NULL AND s.revoked_at  IS NULL AND latest = TRUE #{'AND s.admin = TRUE' if admin})")
+      where("(dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
+             (m.id  IS NOT NULL AND m.archived_at IS NULL) OR
+             (s.id  IS NOT NULL AND s.revoked_at  IS NULL AND latest = TRUE)")
   end
 
   def admins

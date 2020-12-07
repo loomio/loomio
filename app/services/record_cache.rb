@@ -158,7 +158,7 @@ class RecordCache
     return [] if exclude_types.include?('subscription')
     scope[:subscriptions_by_group_id] ||=  {}
     collection.each do |group|
-      scope[:subscriptions_by_group_id][group.id] = group.subscription
+      scope[:subscriptions_by_group_id][group.id] = group.subscription if group.subscription
     end
   end
 

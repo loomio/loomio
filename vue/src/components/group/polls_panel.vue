@@ -55,11 +55,10 @@ export default
                        isModal: true
 
     findRecords: ->
-      groupIds = switch @$route.query.subgroups
+      groupIds = switch (@$route.query.subgroups || 'mine')
         when 'all' then @group.organisationIds()
+        when 'none' then [@group.id]
         when 'mine' then intersection(@group.organisationIds(), Session.user().groupIds())
-        else
-          [@group.id]
 
       chain = Records.polls.collection.chain()
       chain = chain.find(groupId: {$in: groupIds})
@@ -125,7 +124,7 @@ export default
         p.pa-4.text-center(v-t="'error_page.forbidden'")
       div(v-else)
         v-list(two-line avatar v-if='polls.length')
-          poll-common-preview(:poll='poll' v-for='poll in polls' :key='poll.id')
+          poll-common-preview(:poll='poll' v-for='poll in polls' :key='poll.id' :display-group-name="poll.groupId != group.id")
 
         p.pa-4.text-center(v-if='polls.length == 0 && !loader.loading' v-t="'polls_panel.no_polls'")
 
