@@ -114,17 +114,17 @@ describe API::DiscussionsController do
         end
       end
 
-      describe 'group.members_can_add_members' do
-        it 'denies invite guests' do
-          group.update(members_can_add_members: false)
-          post :create, params: { discussion: { title: 'test', group_id: group.id, recipient_emails: ['hi@example.com'] } }
-          expect(response.status).to eq 403
-        end
-
+      describe 'group.members_can_add_guests' do
         it 'allows invite guests' do
-          group.update(members_can_add_members: true)
+          group.update(members_can_add_guests: true)
           post :create, params: { discussion: { title: 'test', group_id: group.id, recipient_emails: ['hi@example.com'] } }
           expect(response.status).to eq 200
+        end
+
+        it 'disallows invite guests' do
+          group.update(members_can_add_guests: false)
+          post :create, params: { discussion: { title: 'test', group_id: group.id, recipient_emails: ['hi@example.com'] } }
+          expect(response.status).to eq 403
         end
       end
     end

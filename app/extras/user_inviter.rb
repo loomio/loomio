@@ -1,16 +1,20 @@
 class UserInviter
-  def self.where_or_create!(emails:, user_ids:, inviter:, model: nil, audience: nil)
+  def self.where_or_create!(emails:, user_ids:, inviter:, model:, audience: nil)
+    user_ids = Array(user_ids).uniq.compact
+    emails = Array(emails).uniq.compact
 
-    audience_ids = if model && audience
-      inviter.ability.authorize! :announce, model
+    audience_ids = if audience
       AnnouncementService.audience_users(model, audience).pluck(:id).without(inviter.id)
     else
       []
     end
 
-    emails = Array(emails)
-    ids = Array(user_ids).concat(audience_ids).uniq
+    # ensure you can only reference users who are guests of the model or in your org
+    org_user_ids = Membership.where(group_id: model.group.parent_or_self.id_and_subgroup_ids,
+                                    user_id: user_ids).pluck(:user_id)
+    model_user_ids = model.members.where(id: user_ids).pluck(:id)
 
+    ids = org_user_ids.concat(model_user_ids).concat(audience_ids).uniq
 
     ThrottleService.limit!(key: 'UserInviterInvitations',
                            id: inviter.id,
@@ -21,7 +25,8 @@ class UserInviter
     User.import(safe_emails(emails).map do |email|
       User.new(email: email, time_zone: inviter.time_zone, detected_locale: inviter.locale)
     end, on_duplicate_key_ignore: true)
-    User.where("id in (:ids) or email in (:emails)", ids: ids , emails: emails)
+
+    User.active.where("id in (:ids) or email in (:emails)", ids: ids, emails: emails)
   end
 
   private

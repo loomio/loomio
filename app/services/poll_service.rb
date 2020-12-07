@@ -38,13 +38,15 @@ class PollService
 
 
   def self.create_stances(poll:, actor:, user_ids:, emails:, audience:)
-    user_ids = poll.base_guest_audience_query.where('users.id': Array(user_ids)).pluck(:id)
-    audience_ids = AnnouncementService.audience_users(poll, audience).pluck('users.id')
+    # user_ids = poll.base_guest_audience_query.where('users.id': Array(user_ids)).pluck(:id)
+    # audience_ids = AnnouncementService.audience_users(poll, audience).pluck('users.id')
 
     # filter user_ids from group or poll or discussion
 
     users = UserInviter.where_or_create!(inviter: actor,
-                                         user_ids: user_ids.concat(audience_ids),
+                                         model: poll,
+                                         user_ids: user_ids,
+                                         audience: audience,
                                          emails: emails)
 
     volumes = {}
@@ -83,7 +85,8 @@ class PollService
     recipient_audience = params[:recipient_audience].presence
 
     actor.ability.authorize!(:announce, poll) if recipient_audience == 'group'
-    actor.ability.authorize!(:add_members, poll) if recipient_emails.any? or poll.specified_voters_only
+    actor.ability.authorize!(:add_members, poll) if recipient_user_ids.any? or poll.specified_voters_only
+    actor.ability.authorize!(:add_guests, poll) if recipient_emails.any?
 
     if poll.discussion
       DiscussionService.add_users(discussion: poll.discussion,

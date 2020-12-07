@@ -30,10 +30,15 @@ module Ability::Poll
       poll.admins.exists?(user.id) ||
       (!poll.specified_voters_only && poll.group.members_can_announce && poll.members.exists?(user.id))
     end
-    #
+
     can [:add_members], ::Poll do |poll|
       poll.admins.exists?(user.id) ||
-      (!poll.specified_voters_only && poll.group.members_can_add_members && poll.members.exists?(user.id))
+      (!poll.specified_voters_only && poll.members.exists?(user.id))
+    end
+
+    can [:add_guests], ::Poll do |poll|
+      poll.admins.exists?(user.id) ||
+      (!poll.specified_voters_only && poll.group.members_can_add_guests && poll.members.exists?(user.id))
     end
 
     can [:update, :remind, :destroy], ::Poll do |poll|

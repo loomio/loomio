@@ -157,8 +157,8 @@ describe API::AnnouncementsController do
       describe 'as a member' do
         before { sign_in member }
 
-        describe 'members_can_add_members=false' do
-          before { poll.group.update(members_can_add_members: false) }
+        describe 'members_can_add_guests=false' do
+          before { poll.group.update(members_can_add_guests: false) }
 
           it 'cannot invite guests' do
             post :create, params: {poll_id: poll.id, recipient_emails: ['jim@example.com']}
@@ -171,8 +171,8 @@ describe API::AnnouncementsController do
           end
         end
 
-        describe 'members_can_add_members=true' do
-          before { poll.group.update(members_can_add_members: true) }
+        describe 'members_can_add_guests=true' do
+          before { poll.group.update(members_can_add_guests: true) }
 
           describe 'specified_voters_only=false' do
             before { poll.update(specified_voters_only: false) }
@@ -238,7 +238,7 @@ describe API::AnnouncementsController do
       describe 'as an admin' do
         before do
           poll.group.update(members_can_announce: false,
-                            members_can_add_members: false)
+                            members_can_add_guests: false)
         end
 
         it 'invite a group member' do
@@ -299,15 +299,15 @@ describe API::AnnouncementsController do
           sign_in member
         end
 
-        describe 'group.members_can_add_members' do
+        describe 'group.members_can_add_guests' do
           it 'members can add guests' do
-            discussion.group.update(members_can_add_members: true)
+            discussion.group.update(members_can_add_guests: true)
             post :create, params: {discussion_id: discussion.id, recipient_emails: ['jim@example.com']}
             expect(response.status).to eq 200
           end
 
           it 'members cannot add guests' do
-            discussion.group.update(members_can_add_members: false)
+            discussion.group.update(members_can_add_guests: false)
             post :create, params: {discussion_id: discussion.id, recipient_emails: ['jim@example.com']}
             expect(response.status).to eq 403
           end
@@ -332,7 +332,7 @@ describe API::AnnouncementsController do
         before do
           sign_in user
           discussion.group.add_admin! user
-          discussion.group.update(members_can_announce: false, members_can_add_members: false)
+          discussion.group.update(members_can_announce: false, members_can_add_guests: false)
         end
 
         it 'notify exising user' do
@@ -420,13 +420,13 @@ describe API::AnnouncementsController do
           sign_in member
         end
 
-        it 'members can invite' do
+        it 'allows inviting members' do
           group.update(members_can_add_members: true)
           post :create, params: {group_id: group.id, recipient_emails: ['jim@example.com']}
           expect(response.status).to eq 200
         end
 
-        it 'members cannot invite' do
+        it 'disallows inviting members' do
           group.update(members_can_add_members: false)
           post :create, params: {group_id: group.id, recipient_emails: ['jim@example.com']}
           expect(response.status).to eq 403
