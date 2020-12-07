@@ -483,8 +483,8 @@ GEM
       sentry-ruby (>= 0.3.0)
     sentry-ruby (0.3.0)
       faraday (>= 1.0)
-    sentry-sidekiq (0.1.2)
-      sentry-ruby
+    sentry-sidekiq (0.2.0)
+      sentry-ruby (>= 0.3.0)
     sexp_processor (4.14.1)
     sidekiq (6.1.2)
       connection_pool (>= 2.2.2)
