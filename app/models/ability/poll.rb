@@ -21,22 +21,23 @@ module Ability::Poll
     end
 
     can :create, ::Poll do |poll|
-      user.email_verified? &&
       (poll.group_id.nil? && poll.discussion_id.nil?) ||
       poll.admins.exists?(user.id) ||
       (poll.group.members_can_raise_motions && poll.members.exists?(user.id))
     end
 
-    can [:invite, :announce], ::Poll do |poll|
-      if poll.discussion
-        can?(:announce, poll.discussion)
-      else
-        poll.author == user || poll.admins.exists?(user.id)
-      end
+    can [:announce], ::Poll do |poll|
+      poll.admins.exists?(user.id) ||
+      (!poll.specified_voters_only && poll.group.members_can_announce && poll.members.exists?(user.id))
+    end
+    #
+    can [:add_members], ::Poll do |poll|
+      poll.admins.exists?(user.id) ||
+      (!poll.specified_voters_only && poll.group.members_can_add_members && poll.members.exists?(user.id))
     end
 
-    can [:update, :share, :remind, :destroy], ::Poll do |poll|
-      poll.author == user || poll.admins.exists?(user.id)
+    can [:update, :remind, :destroy], ::Poll do |poll|
+      poll.admins.exists?(user.id)
     end
 
     can :close, ::Poll do |poll|

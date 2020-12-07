@@ -60,7 +60,10 @@ export default new class PollService
       name: 'action_dock.count_voters'
       nameArgs: -> {count: poll.votersCount}
       canPerform: ->
-        poll.adminsInclude(Session.user())
+        poll.adminsInclude(Session.user()) ||
+        (!poll.specifiedVotersOnly &&
+         poll.group().membersCanAddMembers &&
+         poll.membersInclude(Session.user()))
       perform: ->
         openModal
           component: 'PollMembers'

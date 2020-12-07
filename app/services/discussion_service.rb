@@ -1,14 +1,12 @@
 class DiscussionService
-
-  class EventNotSavedError
-    def initialize(data)
-      @data = data
-    end
-  end
-
   def self.create(discussion:, actor:, params: {})
+    recipient_emails = Array(params[:recipient_emails])
+    recipient_user_ids = Array(params[:recipient_user_ids])
+    recipient_audience = params[:recipient_audience].presence
+
     actor.ability.authorize! :create, discussion
-    actor.ability.authorize! :announce, discussion if params[:recipient_audience]
+    actor.ability.authorize! :announce, discussion if recipient_audience
+    actor.ability.authorize! :add_members, discussion if recipient_emails.any?
 
     discussion.author = actor
 
@@ -25,14 +23,14 @@ class DiscussionService
 
     users = add_users(discussion: discussion,
                       actor: actor,
-                      user_ids: params[:recipient_user_ids],
-                      emails: params[:recipient_emails],
-                      audience: params[:recipient_audience])
+                      user_ids: recipient_user_ids,
+                      emails: recipient_emails,
+                      audience: recipient_audience)
 
     EventBus.broadcast('discussion_create', discussion, actor)
     Events::NewDiscussion.publish!(discussion: discussion,
                                    recipient_user_ids: users.pluck(:id),
-                                   recipient_audience: params[:recipient_audience])
+                                   recipient_audience: recipient_audience)
 
   end
 
@@ -61,18 +59,23 @@ class DiscussionService
   end
 
   def self.announce(discussion:, actor:, params:)
-    actor.ability.authorize! :announce, discussion
+    recipient_emails = Array(params[:recipient_emails])
+    recipient_user_ids = Array(params[:recipient_user_ids])
+    recipient_audience = params[:recipient_audience].presence
+
+    actor.ability.authorize! :announce, discussion if recipient_audience
+    actor.ability.authorize! :add_members, discussion if (recipient_user_ids.any? || recipient_emails.any?)
 
     users = add_users(discussion: discussion,
                       actor: actor,
-                      user_ids: params[:recipient_user_ids],
-                      emails: params[:recipient_emails],
-                      audience: params[:recipient_audience])
+                      user_ids: recipient_user_ids,
+                      emails: recipient_emails,
+                      audience: recipient_audience)
 
     Events::DiscussionAnnounced.publish!(discussion: discussion,
                                          actor: actor,
                                          recipient_user_ids: users.pluck(:id),
-                                         recipient_audience: params[:recipient_audience])
+                                         recipient_audience: recipient_audience)
   end
 
   def self.destroy(discussion:, actor:)

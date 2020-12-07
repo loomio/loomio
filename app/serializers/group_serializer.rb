@@ -11,6 +11,7 @@ class GroupSerializer < ApplicationSerializer
              :created_at,
              :creator_id,
              :members_can_add_members,
+             :members_can_add_guests,
              :members_can_announce,
              :members_can_create_subgroups,
              :members_can_start_discussions,

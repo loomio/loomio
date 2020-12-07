@@ -78,19 +78,25 @@ class PollService
   end
 
   def self.announce(poll:, actor:, params:)
-    actor.ability.authorize! :announce, poll
+    recipient_emails = Array(params[:recipient_emails])
+    recipient_user_ids = Array(params[:recipient_user_ids])
+    recipient_audience = params[:recipient_audience].presence
+
+    actor.ability.authorize!(:announce, poll) if recipient_audience == 'group'
+    actor.ability.authorize!(:add_members, poll) if recipient_emails.any? or poll.specified_voters_only
+
     if poll.discussion
       DiscussionService.add_users(discussion: poll.discussion,
                                   actor: actor,
-                                  user_ids: params[:recipient_user_ids],
-                                  emails: params[:recipient_emails],
-                                  audience: params[:recipient_audience])
+                                  user_ids: recipient_user_ids,
+                                  emails: recipient_emails,
+                                  audience: recipient_audience)
     end
 
     stances = create_stances(poll: poll, actor: actor,
-                             user_ids: params[:recipient_user_ids],
-                             emails: params[:recipient_emails],
-                             audience: params[:recipient_audience])
+                             user_ids: recipient_user_ids,
+                             emails: recipient_emails,
+                             audience: recipient_audience)
 
     Events::PollAnnounced.publish!(poll, actor, stances)
     stances

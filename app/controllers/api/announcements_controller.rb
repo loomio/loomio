@@ -1,19 +1,19 @@
 class API::AnnouncementsController < API::RestfulController
   MockEvent = Struct.new(:eventable, :email_subject_key, :user, :id)
 
-  def audience
-    self.collection = service.audience_users(target_model, params.require(:kind))
-
-    if params[:without_exising]
-      self.collection = collection.where.not(id: target_model.existing_member_ids)
-    end
-
-    if params[:return_users]
-      respond_with_collection serializer: AuthorSerializer, root: false
-    else
-      respond_with_collection serializer: AnnouncementRecipientSerializer, root: false
-    end
-  end
+  # def audience
+  #   self.collection = service.audience_users(target_model, params.require(:kind))
+  #
+  #   if params[:without_exising]
+  #     self.collection = collection.where.not(id: target_model.existing_member_ids)
+  #   end
+  #
+  #   if params[:return_users]
+  #     respond_with_collection serializer: AuthorSerializer, root: false
+  #   else
+  #     respond_with_collection serializer: AnnouncementRecipientSerializer, root: false
+  #   end
+  # end
 
   # untested spike
   # def size
@@ -27,8 +27,6 @@ class API::AnnouncementsController < API::RestfulController
   # end
 
   def create
-    current_user.ability.authorize! :announce, target_model
-
     # juggle data for older clients
     if params.dig(:announcement, :recipients)
       params[:recipient_user_ids] = params.dig(:announcement, :recipients, :user_ids)
@@ -56,7 +54,7 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   def search
-    self.collection = Queries::AnnouncementRecipients.new(params.require(:q), current_user, target_model).results
+    self.collection = Queries::AnnouncementRecipients.new(params.require(:q), current_user, authorize_model).results
     respond_with_collection serializer: AnnouncementRecipientSerializer, root: false
   end
 
@@ -80,7 +78,7 @@ class API::AnnouncementsController < API::RestfulController
       comment_replied_to
       poll_closing_soon]
 
-    events = Event.where(kind: kinds, eventable: history_model).order('id').limit(50)
+    events = Event.where(kind: kinds, eventable: target_model).order('id').limit(50)
 
     Notification.includes(:user).where(event_id: events.pluck(:id)).order('users.name, users.email').each do |notification|
       next unless notification.user
@@ -113,19 +111,18 @@ class API::AnnouncementsController < API::RestfulController
     )
   end
 
-  def target_model
-    @target_model ||=
-      load_and_authorize(:group, :announce, optional: true) ||
-      load_and_authorize(:discussion, :announce, optional: true) ||
-      load_and_authorize(:poll, :announce, optional: true) ||
-      load_and_authorize(:outcome, :announce, optional: false)
+  def authorize_model
+    load_and_authorize(:group, :announce, optional: true) ||
+    load_and_authorize(:discussion, :announce, optional: true) ||
+    load_and_authorize(:poll, :announce, optional: true) ||
+    load_and_authorize(:outcome, :announce, optional: false)
   end
 
-  def history_model
-      load_and_authorize(:group, :show, optional: true) ||
-      load_and_authorize(:discussion, :show, optional: true) ||
-      load_and_authorize(:comment, :show, optional: true) ||
-      load_and_authorize(:poll, :show, optional: true) ||
-      load_and_authorize(:outcome, :show, optional: false)
+  def target_model
+    load_and_authorize(:group, :show, optional: true) ||
+    load_and_authorize(:discussion, :show, optional: true) ||
+    load_and_authorize(:comment, :show, optional: true) ||
+    load_and_authorize(:poll, :show, optional: true) ||
+    load_and_authorize(:outcome, :show, optional: false)
   end
 end

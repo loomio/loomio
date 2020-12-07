@@ -65,77 +65,68 @@ describe API::AnnouncementsController do
     end
   end
 
-  describe 'audience' do
-    let(:group)      { create :group }
-    let(:discussion) { create :discussion, group: group }
-    let(:subgroup)   { create :group, parent: group }
-    let(:both_user)  { create :user }
-    let(:parent_user){ create :user }
-
-    # it 'parent_group' do
-    #   group.add_member! both_user
-    #   subgroup.add_member! both_user
-    #   group.add_member! parent_user
-    #   subgroup.add_admin! user
-    #
-    #   get :audience, params: {group_id: subgroup.id, kind: "parent_group"}
-    #   json = JSON.parse response.body
-    #   user_ids = json.map {|u| u['id']}
-    #   expect(user_ids).to     include parent_user.id
-    #   expect(user_ids).to_not include both_user.id
-    #   expect(user_ids).to_not include user.id
-    # end
-
-    it 'group' do
-      get :audience, params: {discussion_id: discussion.id, kind: "group"}
-      json = JSON.parse response.body
-      expect(json.map {|u| u['id']}.sort).to eq group.member_ids.sort
-    end
-
-    it 'discussion_group' do
-      guest = create :user
-      discussion.discussion_readers.create(user: guest)
-      get :audience, params: {discussion_id: discussion.id, kind: "discussion_group"}
-      json = JSON.parse response.body
-      expect(json.map {|u| u['id']}.sort).to eq Array(guest.id)
-    end
-
-    it 'voters' do
-      poll = create :poll, author: user
-      stance = create :stance, poll: poll, cast_at: 5.minutes.ago
-      get :audience, params: {poll_id: poll.id, kind: "voters"}
-      json = JSON.parse response.body
-      expect(json.map {|u| u['id']}.sort).to eq Array(stance.participant.id)
-    end
-
-    it 'non_voters' do
-      # non voters .. means has not been invited to vote, but part of the group
-      poll = create :poll, group: group, author: user
-      voter = create :user
-      non_voter = create :user
-      group.add_member! voter
-      group.add_member! non_voter
-      create :stance, poll: poll, participant: voter, cast_at: Time.now
-
-      get :audience, params: {poll_id: poll.id, kind: "non_voters"}
-      json = JSON.parse response.body
-      expect(json.map {|u| u['id']}.sort).to include non_voter.id
-      expect(json.map {|u| u['id']}.sort).to_not include voter.id
-    end
-
-    it 'undecided' do
-      poll = create :poll, author: user
-      voter = create :user
-      undecided_voter = create :user
-      create :stance, poll: poll, participant: voter, cast_at: Time.now
-      create :stance, poll: poll, participant: undecided_voter
-
-      get :audience, params: {poll_id: poll.id, kind: "undecided_voters"}
-      json = JSON.parse response.body
-      expect(json.map {|u| u['id']}.sort).to include undecided_voter.id
-      expect(json.map {|u| u['id']}.sort).to_not include voter.id
-    end
-  end
+  # describe 'audience' do
+  #   let(:group)      { create :group }
+  #   let(:discussion) { create :discussion, group: group }
+  #   let(:subgroup)   { create :group, parent: group }
+  #   let(:both_user)  { create :user }
+  #   let(:parent_user){ create :user }
+  #
+  #   it 'group' do
+  #     get :audience, params: {discussion_id: discussion.id, kind: "group"}
+  #     expect(response.status).to eq 200
+  #     json = JSON.parse response.body
+  #     expect(json.map {|u| u['id']}.sort).to eq group.member_ids.sort
+  #   end
+  #
+  #   it 'discussion_group' do
+  #     guest = create :user
+  #     discussion.discussion_readers.create(user: guest)
+  #     get :audience, params: {discussion_id: discussion.id, kind: "discussion_group"}
+  #     expect(response.status).to eq 200
+  #     json = JSON.parse response.body
+  #     expect(json.map {|u| u['id']}.sort).to eq Array(guest.id)
+  #   end
+  #
+  #   it 'voters' do
+  #     poll = create :poll, author: user
+  #     stance = create :stance, poll: poll, cast_at: 5.minutes.ago
+  #     get :audience, params: {poll_id: poll.id, kind: "voters"}
+  #     expect(response.status).to eq 200
+  #     json = JSON.parse response.body
+  #     expect(json.map {|u| u['id']}.sort).to eq Array(stance.participant.id)
+  #   end
+  #
+  #   it 'non_voters' do
+  #     # non voters .. means has not been invited to vote, but part of the group
+  #     poll = create :poll, group: group, author: user
+  #     voter = create :user
+  #     non_voter = create :user
+  #     group.add_member! voter
+  #     group.add_member! non_voter
+  #     create :stance, poll: poll, participant: voter, cast_at: Time.now
+  #
+  #     get :audience, params: {poll_id: poll.id, kind: "non_voters"}
+  #     expect(response.status).to eq 200
+  #     json = JSON.parse response.body
+  #     expect(json.map {|u| u['id']}.sort).to include non_voter.id
+  #     expect(json.map {|u| u['id']}.sort).to_not include voter.id
+  #   end
+  #
+  #   it 'undecided' do
+  #     poll = create :poll, author: user
+  #     voter = create :user
+  #     undecided_voter = create :user
+  #     create :stance, poll: poll, participant: voter, cast_at: Time.now
+  #     create :stance, poll: poll, participant: undecided_voter
+  #
+  #     get :audience, params: {poll_id: poll.id, kind: "undecided_voters"}
+  #     expect(response.status).to eq 200
+  #     json = JSON.parse response.body
+  #     expect(json.map {|u| u['id']}.sort).to include undecided_voter.id
+  #     expect(json.map {|u| u['id']}.sort).to_not include voter.id
+  #   end
+  # end
 
   describe 'history' do
     let(:event) { create :event, kind: 'announcement_created', eventable: group, user: group.creator}
@@ -151,116 +142,225 @@ describe API::AnnouncementsController do
     end
   end
 
-  describe 'create' do
+  describe 'announce' do
     let(:notified_user) { create :user }
     let(:member) { create :user }
     before do
       group.add_member!(notified_user)
+      group.add_member!(member)
     end
 
     describe 'poll' do
       let(:poll)          { create :poll, group: group, author: user }
+      before { poll.created_event }
 
-      before do
-        poll.created_event
+      describe 'as a member' do
+        before { sign_in member }
+
+        describe 'members_can_add_members=false' do
+          before { poll.group.update(members_can_add_members: false) }
+
+          it 'cannot invite guests' do
+            post :create, params: {poll_id: poll.id, recipient_emails: ['jim@example.com']}
+            expect(response.status).to eq 403
+          end
+
+          it 'can notify individual group members' do
+            post :create, params: {poll_id: poll.id, recipient_user_ids: [notified_user.id]}
+            expect(response.status).to eq 200
+          end
+        end
+
+        describe 'members_can_add_members=true' do
+          before { poll.group.update(members_can_add_members: true) }
+
+          describe 'specified_voters_only=false' do
+            before { poll.update(specified_voters_only: false) }
+
+            it 'can invite people' do
+              post :create, params: {poll_id: poll.id, recipient_emails: ['jim@example.com']}
+              expect(response.status).to eq 200
+            end
+
+            it 'can add indiviudal members' do
+              post :create, params: {poll_id: poll.id, recipient_user_ids: [notified_user.id]}
+              expect(response.status).to eq 200
+            end
+          end
+
+          describe 'specified_voters_only=true' do
+            before { poll.update(specified_voters_only: true) }
+
+            it 'cannot invite people' do
+              post :create, params: {poll_id: poll.id, recipient_emails: ['jim@example.com']}
+              expect(response.status).to eq 403
+            end
+
+            it 'cannot add individual members' do
+              post :create, params: {poll_id: poll.id, recipient_user_ids: [notified_user.id]}
+              expect(response.status).to eq 403
+            end
+          end
+        end
+
+        describe 'members_can_announce=false' do
+          before { poll.group.update(members_can_announce: false) }
+
+          it 'prevents member from notifying group' do
+            post :create, params: {poll_id: poll.id, recipient_audience: 'group'}
+            expect(response.status).to eq 403
+          end
+
+          it 'allows member to notify voters' do
+            # yep, you can notify existing voters
+            post :create, params: {poll_id: poll.id, recipient_audience: 'voters'}
+            expect(response.status).to eq 200
+          end
+        end
+
+        describe 'members_can_announce=true' do
+          before { poll.group.update(members_can_announce: true) }
+          it 'allows member to notify group' do
+            post :create, params: {poll_id: poll.id, recipient_audience: 'group'}
+            expect(response.status).to eq 200
+          end
+
+          describe 'specified_voters_only=true' do
+            before { poll.update(specified_voters_only: true) }
+            it 'prevents member notifying group' do
+              post :create, params: {poll_id: poll.id, recipient_audience: 'group'}
+              expect(response.status).to eq 403
+            end
+          end
+        end
       end
 
-      it 'does not permit non author to announce' do
-        sign_in create(:user)
-        post :create, params: {poll_id: poll.id, recipient_user_ids: [notified_user.id]}
-        expect(response.status).to eq 403
-      end
+      describe 'as an admin' do
+        before do
+          poll.group.update(members_can_announce: false,
+                            members_can_add_members: false)
+        end
 
-      it 'invite a group member' do
-        group.add_member!(notified_user)
-        post :create, params: {poll_id: poll.id, recipient_user_ids: [notified_user.id]}
-        expect(response.status).to eq 200
-        json = JSON.parse response.body
-        expect(json['stances'].length).to eq 1
-        expect(json['stances'][0]['participant_id']).to eq notified_user.id
-        expect(notified_user.reload.notifications.count).to eq 1
-        expect(poll.voters).to include notified_user
-      end
+        it 'invite a group member' do
+          group.add_member!(notified_user)
+          post :create, params: {poll_id: poll.id, recipient_user_ids: [notified_user.id]}
+          expect(response.status).to eq 200
+          json = JSON.parse response.body
+          expect(json['stances'].length).to eq 1
+          expect(json['stances'][0]['participant_id']).to eq notified_user.id
+          expect(notified_user.reload.notifications.count).to eq 1
+          expect(poll.voters).to include notified_user
+        end
 
-      it 'invite new user by email' do
-        post :create, params: {poll_id: poll.id, recipient_emails: ['jim@example.com']}
-        json = JSON.parse response.body
-        expect(response.status).to eq 200
-        email_user = User.find_by(email: "jim@example.com")
-        json = JSON.parse response.body
-        expect(json['stances'].length).to eq 1
-        expect(email_user.notifications.count).to eq 1
-        expect(email_user.email_verified).to be false
-        expect(email_user.stances.undecided.count).to eq 1
-        expect(poll.voters).to include email_user
-      end
+        it 'invite new user by email' do
+          post :create, params: {poll_id: poll.id, recipient_emails: ['jim@example.com']}
+          json = JSON.parse response.body
+          expect(response.status).to eq 200
+          email_user = User.find_by(email: "jim@example.com")
+          json = JSON.parse response.body
+          expect(json['stances'].length).to eq 1
+          expect(email_user.notifications.count).to eq 1
+          expect(email_user.email_verified).to be false
+          expect(email_user.stances.undecided.count).to eq 1
+          expect(poll.voters).to include email_user
+        end
 
-      it 'invite existing user by email' do
-        post :create, params: {poll_id: poll.id, recipient_emails: [notified_user.email]}
-        json = JSON.parse response.body
-        expect(response.status).to eq 200
-        expect(json['stances'].length).to eq 1
-        json.dig(:stances, 0, :participant_id)
-        expect(User.find(json['stances'].first['participant_id']).email).to eq notified_user.email
-        expect(poll.voters).to include notified_user
-      end
+        it 'invite existing user by email' do
+          post :create, params: {poll_id: poll.id, recipient_emails: [notified_user.email]}
+          json = JSON.parse response.body
+          expect(response.status).to eq 200
+          expect(json['stances'].length).to eq 1
+          json.dig(:stances, 0, :participant_id)
+          expect(User.find(json['stances'].first['participant_id']).email).to eq notified_user.email
+          expect(poll.voters).to include notified_user
+        end
 
-      it 'invite group with audience' do
-        post :create, params: {poll_id: poll.id, recipient_audience: 'group'}
-        json = JSON.parse response.body
-        expect(response.status).to eq 200
-        expect(json['stances'].length).to eq group.members.count
+        it 'invite group with audience' do
+          post :create, params: {poll_id: poll.id, recipient_audience: 'group'}
+          json = JSON.parse response.body
+          expect(response.status).to eq 200
+          expect(json['stances'].length).to eq group.members.count
+        end
       end
     end
 
     describe 'discussion' do
       let(:another_member) { create :user }
       let(:discussion)    { create :discussion, author: user }
+
       before do
         discussion.created_event
         discussion.group.add_member! member
         discussion.group.add_member! another_member
       end
 
-      it 'cannot announce unless members_can_announce' do
-        discussion.group.update(members_can_announce: false)
-        sign_in member
-        post :create, params: {discussion_id: discussion.id, recipient_user_ids: [another_member.id]}
-        expect(response.status).to eq 403
+      describe 'as a member' do
+        before do
+          sign_in member
+        end
+
+        describe 'group.members_can_add_members' do
+          it 'members can add guests' do
+            discussion.group.update(members_can_add_members: true)
+            post :create, params: {discussion_id: discussion.id, recipient_emails: ['jim@example.com']}
+            expect(response.status).to eq 200
+          end
+
+          it 'members cannot add guests' do
+            discussion.group.update(members_can_add_members: false)
+            post :create, params: {discussion_id: discussion.id, recipient_emails: ['jim@example.com']}
+            expect(response.status).to eq 403
+          end
+        end
+
+        describe 'group.members_can_announce' do
+          it 'members can invite audience' do
+            discussion.group.update(members_can_announce: true)
+            post :create, params: {discussion_id: discussion.id, recipient_audience: 'group'}
+            expect(response.status).to eq 200
+          end
+
+          it 'members cannot notify group' do
+            discussion.group.update(members_can_announce: false)
+            post :create, params: {discussion_id: discussion.id, recipient_audience: 'group'}
+            expect(response.status).to eq 403
+          end
+        end
       end
 
-      it 'can announce if members_can_announce' do
-        discussion.group.update(members_can_announce: true)
-        sign_in member
-        post :create, params: {discussion_id: discussion.id, recipient_user_ids: [another_member.id]}
-        expect(response.status).to eq 200
-      end
+      describe 'as an admin' do
+        before do
+          sign_in user
+          discussion.group.add_admin! user
+          discussion.group.update(members_can_announce: false, members_can_add_members: false)
+        end
 
-      it 'notify exising user' do
-        post :create, params: {discussion_id: discussion.id, recipient_user_ids: [another_member.id]}
-        json = JSON.parse response.body
-        expect(response.status).to eq 200
-        expect(json['discussion_readers'][0]['user_id']).to eq another_member.id
-        expect(another_member.notifications.count).to eq 1
-        expect(discussion.readers).to include another_member
-      end
+        it 'notify exising user' do
+          post :create, params: {discussion_id: discussion.id, recipient_user_ids: [another_member.id]}
+          expect(response.status).to eq 200
+          json = JSON.parse response.body
+          expect(json['discussion_readers'][0]['user_id']).to eq another_member.id
+          expect(another_member.notifications.count).to eq 1
+          expect(discussion.readers).to include another_member
+        end
 
-      it 'notify new user by email' do
-        post :create, params: {discussion_id: discussion.id, recipient_emails: ['jim@example.com']}
-        json = JSON.parse response.body
-        expect(response.status).to eq 200
-        email_user = User.find_by(email: "jim@example.com")
-        expect(email_user.notifications.count).to eq 1
-        expect(email_user.email_verified).to be false
-        expect(discussion.readers).to include email_user
-      end
+        it 'notify new user by email' do
+          post :create, params: {discussion_id: discussion.id, recipient_emails: ['jim@example.com']}
+          json = JSON.parse response.body
+          expect(response.status).to eq 200
+          email_user = User.find_by(email: "jim@example.com")
+          expect(email_user.notifications.count).to eq 1
+          expect(email_user.email_verified).to be false
+          expect(discussion.readers).to include email_user
+        end
 
-      it 'notify existing user by email' do
-        post :create, params: {discussion_id: discussion.id, recipient_emails: [notified_user.email]}
-        json = JSON.parse response.body
-        expect(response.status).to eq 200
-        expect(User.where(email: notified_user.email).count).to eq 1
-        expect(discussion.readers).to include notified_user
+        it 'notify existing user by email' do
+          post :create, params: {discussion_id: discussion.id, recipient_emails: [notified_user.email]}
+          json = JSON.parse response.body
+          expect(response.status).to eq 200
+          expect(User.where(email: notified_user.email).count).to eq 1
+          expect(discussion.readers).to include notified_user
+        end
       end
     end
 
@@ -305,6 +405,7 @@ describe API::AnnouncementsController do
     # end
 
     describe 'group' do
+      let(:member) { create(:user) }
       let(:group) { create :group, creator: user}
       let(:subgroup) { create :group, parent: group, creator: user}
       let(:subgroup2) { create :group, parent: group, creator: user}
@@ -313,10 +414,23 @@ describe API::AnnouncementsController do
         group.add_member! notified_user
       end
 
-      it 'does not permit non author to announce' do
-        sign_in create(:user)
-        post :create, params: {group_id: group.id, recipient_user_ids: [notified_user.id]}
-        expect(response.status).to eq 403
+      describe 'members_can_add_members' do
+        before do
+          group.add_member! member
+          sign_in member
+        end
+
+        it 'members can invite' do
+          group.update(members_can_add_members: true)
+          post :create, params: {group_id: group.id, recipient_emails: ['jim@example.com']}
+          expect(response.status).to eq 200
+        end
+
+        it 'members cannot invite' do
+          group.update(members_can_add_members: false)
+          post :create, params: {group_id: group.id, recipient_emails: ['jim@example.com']}
+          expect(response.status).to eq 403
+        end
       end
 
       it 'notify exising user' do
@@ -351,6 +465,7 @@ describe API::AnnouncementsController do
       end
 
       it 'supports inviting to multiple auto accepting subgroups' do
+        member.memberships.delete_all
         overlap_group.add_member!(member)
         overlap_group.add_member!(user)
         subgroup.add_admin! user
