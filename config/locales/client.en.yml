@@ -1063,7 +1063,7 @@ en:
     members_can_add_members: 'Members can invite new members'
     members_can_add_members_help: 'Allow members to invite people to join the group'
     members_can_add_guests: 'Members can invite guests'
-    members_can_add_guests_help: 'Allow members to invite people outside of the group into threads or polls as guests'
+    members_can_add_guests_help: 'Allow members to invite people from outside of the group into threads or polls as guests'
     members_can_create_subgroups: 'Members can create subgroups'
     members_can_create_subgroups_help: 'Allow members to create and become admins of new subgroups'
     members_can_edit_discussions: 'Members can edit threads'
