@@ -8,8 +8,8 @@ class Events::PollEdited < Event
     super(poll,
           discussion_id: (recipient_message && poll.discussion_id) || nil,
           user: actor,
-          recipient_user_ids: recipient_user_ids,
-          recipient_audience: recipient_audience,
-          recipient_message: recipient_message)
+          recipient_user_ids: Array(recipient_user_ids).uniq.compact,
+          recipient_audience: recipient_audience.presence,
+          recipient_message: recipient_message.presence)
   end
 end

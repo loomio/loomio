@@ -15,13 +15,19 @@ class PollService
   def self.update(poll:, params:, actor:)
     actor.ability.authorize! :update, poll
 
+    UserInviter.authorize!(user_ids: params[:recipient_user_ids],
+                           emails: params[:recipient_emails],
+                           audience: params[:recipient_audience],
+                           model: poll,
+                           actor: actor)
+
     HasRichText.assign_attributes_and_update_files(poll, params.except(:poll_type, :discussion_id, :group_id))
 
     return false unless poll.valid?
 
     poll.save!
 
-    users = UserInviter.where_or_create!(inviter: actor,
+    users = UserInviter.where_or_create!(actor: actor,
                                          user_ids: params[:recipient_user_ids],
                                          emails: params[:recipient_emails],
                                          audience: params[:recipient_audience],
@@ -32,10 +38,34 @@ class PollService
     Events::PollEdited.publish!(poll: poll,
                                 actor: actor,
                                 recipient_user_ids: users.pluck(:id),
-                                recipient_audience: params[:recipient_audience].presence,
-                                recipient_message: params[:recipient_message].presence)
+                                recipient_audience: params[:recipient_audience],
+                                recipient_message: params[:recipient_message])
   end
 
+  def self.announce(poll:, actor:, params:)
+    UserInviter.authorize!(user_ids: params[:recipient_user_ids],
+                           emails: params[:recipient_emails],
+                           audience: params[:recipient_audience],
+                           model: poll,
+                           actor: actor)
+
+
+    if poll.discussion
+      DiscussionService.add_users(discussion: poll.discussion,
+                                  actor: actor,
+                                  user_ids: params[:recipient_user_ids],
+                                  emails: params[:recipient_emails],
+                                  audience: params[:recipient_audience])
+    end
+
+    stances = create_stances(poll: poll, actor: actor,
+                             user_ids: params[:recipient_user_ids],
+                             emails: params[:recipient_emails],
+                             audience: params[:recipient_audience])
+
+    Events::PollAnnounced.publish!(poll, actor, stances)
+    stances
+  end
 
   def self.create_stances(poll:, actor:, user_ids:, emails:, audience:)
     # user_ids = poll.base_guest_audience_query.where('users.id': Array(user_ids)).pluck(:id)
@@ -43,7 +73,7 @@ class PollService
 
     # filter user_ids from group or poll or discussion
 
-    users = UserInviter.where_or_create!(inviter: actor,
+    users = UserInviter.where_or_create!(actor: actor,
                                          model: poll,
                                          user_ids: user_ids,
                                          audience: audience,
@@ -77,32 +107,6 @@ class PollService
     poll.update_stance_data
 
     Stance.where(participant_id: users.pluck(:id), poll_id: poll.id)
-  end
-
-  def self.announce(poll:, actor:, params:)
-    recipient_emails = Array(params[:recipient_emails])
-    recipient_user_ids = Array(params[:recipient_user_ids])
-    recipient_audience = params[:recipient_audience].presence
-
-    actor.ability.authorize!(:announce, poll) if recipient_audience == 'group'
-    actor.ability.authorize!(:add_members, poll) if recipient_user_ids.any? or poll.specified_voters_only
-    actor.ability.authorize!(:add_guests, poll) if recipient_emails.any?
-
-    if poll.discussion
-      DiscussionService.add_users(discussion: poll.discussion,
-                                  actor: actor,
-                                  user_ids: recipient_user_ids,
-                                  emails: recipient_emails,
-                                  audience: recipient_audience)
-    end
-
-    stances = create_stances(poll: poll, actor: actor,
-                             user_ids: recipient_user_ids,
-                             emails: recipient_emails,
-                             audience: recipient_audience)
-
-    Events::PollAnnounced.publish!(poll, actor, stances)
-    stances
   end
 
   def self.discard(poll:, actor:)

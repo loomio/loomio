@@ -43,6 +43,7 @@ describe API::CommentsController do
         end
 
         it 'false' do
+          group.update(admins_can_edit_user_content: false)
           post :update, params: { id: comment.id, comment: comment_params }
           expect(response.status).to eq 403
         end
@@ -57,6 +58,7 @@ describe API::CommentsController do
         end
 
         it "responds with an error when the user is unauthorized" do
+          sign_in create(:user)
           put :update, params: {id: another_comment.id, comment: comment_params}
           expect(response.status).to eq 403
           expect(JSON.parse(response.body)['exception']).to include 'CanCan::AccessDenied'

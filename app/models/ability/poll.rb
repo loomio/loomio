@@ -20,7 +20,7 @@ module Ability::Poll
       PollQuery.visible_to(user: user, show_public: true).exists?(poll.id)
     end
 
-    can :create, ::Poll do |poll|
+    can [:create], ::Poll do |poll|
       (poll.group_id.nil? && poll.discussion_id.nil?) ||
       poll.admins.exists?(user.id) ||
       (poll.group.members_can_raise_motions && poll.members.exists?(user.id))
@@ -40,7 +40,11 @@ module Ability::Poll
       (!poll.specified_voters_only && poll.group.members_can_add_guests && poll.members.exists?(user.id))
     end
 
-    can [:update, :remind, :destroy], ::Poll do |poll|
+    can [:update], ::Poll do |poll|
+      poll.admins.exists?(user.id) || (poll.group.members_can_edit_discussions && poll.members.exists?(user.id))
+    end
+
+    can [:destroy], ::Poll do |poll|
       poll.admins.exists?(user.id)
     end
 

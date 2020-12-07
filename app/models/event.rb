@@ -171,7 +171,7 @@ class Event < ApplicationRecord
     when 'outcome_created'     then eventable.parent_event
     when 'new_comment'         then eventable.parent_event
     when 'poll_closed_by_user' then eventable.created_event
-    when 'poll_closing_soon'   then eventable.created_event
+    when 'poll_closing_soon'   then nil
     when 'poll_created'        then eventable.parent_event
     when 'poll_edited'         then eventable.created_event
     when 'poll_expired'        then eventable.created_event
