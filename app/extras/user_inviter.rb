@@ -9,9 +9,13 @@ class UserInviter
     guest_ids = Membership.where(group_id: model.group.parent_or_self.id_and_subgroup_ids,
                                  user_id: (user_ids - member_ids)).pluck(:user_id).uniq
 
+
+    # disallow inviting anyone by user_id if they're not in the org
+    raise CanCan::AccessDenied if ((user_ids - member_ids) - guest_ids).any?
     actor.ability.authorize!(:announce, model)    if audience == 'group'
     actor.ability.authorize!(:add_members, model) if member_ids.any?
     actor.ability.authorize!(:add_guests, model)  if emails.any? or guest_ids.any?
+
   end
 
   def self.where_or_create!(emails:, user_ids:, audience: nil, model:, actor:)
