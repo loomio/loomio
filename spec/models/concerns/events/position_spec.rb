@@ -8,13 +8,14 @@ describe "Events::Position" do
   let(:comment3) { create :comment, discussion: discussion }
 
   before do
-    DiscussionService.create(discussion: discussion, actor: discussion.author)
+    discussion.create_missing_created_event!
   end
 
   it "gives events with a parent_id a pos sequence" do
     e1 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment1)
     e2 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment2)
     e3 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment3)
+
     expect(e1.position).to eq 1
     expect(e1.position_key).to eq "00001"
     expect(e2.position).to eq 2

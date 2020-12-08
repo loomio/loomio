@@ -15,6 +15,14 @@ class API::DiscussionsController < API::RestfulController
 
   def show
     load_and_authorize(:discussion)
+
+    # this is desperation in code, but better than auto create when nil on method call
+    if resource.created_event.nil?
+      EventService.repair_thread(resource.id)
+      resource.reload
+      Sentry.capture_message("discussion missing created event", extra: {discussion_id: resource.id})
+    end
+
     accept_pending_membership
     respond_with_resource
   end
