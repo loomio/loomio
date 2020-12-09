@@ -60,8 +60,8 @@ class API::RestfulController < API::SnorlaxBase
     render json: {}, status: 200
   end
 
-  def respond_with_collection(scope: default_scope, serializer: serializer_class, root: serializer_root)
-    render json: records_to_serialize, scope: scope, each_serializer: serializer, root: root
+  def respond_with_collection(scope: default_scope, serializer: serializer_class, root: serializer_root, meta: {})
+    render json: records_to_serialize, scope: scope, each_serializer: serializer, root: root, meta: {total: collection_count}
   end
 
   # prefer this

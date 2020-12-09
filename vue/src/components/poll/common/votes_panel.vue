@@ -42,7 +42,7 @@ export default
           chain.simplesort('castAt', true)
         when 'undecided_first'
           chain.simplesort('castAt', false)
-      @stances = chain.limit(@loader.limit()).data()
+      @stances = chain.data()
 
     refresh: ->
       @initLoader().fetchRecords()
@@ -81,7 +81,7 @@ export default
           v-layout(v-if="!poll.singleChoice()" wrap align-center)
             poll-common-stance-choice(:stance-choice='choice' :poll='poll' v-if='choice.show()' v-for='choice in stance.orderedStanceChoices()' :key='choice.id')
           formatted-text.poll-common-stance-created__reason(:model="stance" column="reason")
-    v-btn(v-if='loader.limit() < poll.votersCount' v-t="'common.action.load_more'" @click='loader.fetchRecords()')
+    v-btn(v-if='!loader.exhausted' v-t="'common.action.load_more'" @click='loader.fetchRecords({per: 50})')
 </template>
 
 <style lang="sass">

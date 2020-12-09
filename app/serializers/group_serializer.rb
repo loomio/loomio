@@ -68,7 +68,7 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def parent
-    cache_fetch(:groups_by_id, object.parent_id) { nil }
+    cache_fetch(:groups_by_id, object.parent_id) { object.parent }
   end
 
   def subscription
