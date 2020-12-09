@@ -5,6 +5,7 @@ class Event < ApplicationRecord
   include HasTimeframe
   extend HasCustomFields
   counter :position_counter
+  lock :reset_position_counter, expiration: 5
 
   has_many :notifications, dependent: :destroy
   belongs_to :eventable, polymorphic: true
@@ -194,8 +195,10 @@ class Event < ApplicationRecord
 
   def reset_sequence_id_counter
     return unless self.discussion_id
-    val = (Event.where(discussion_id: discussion_id).order("sequence_id DESC").limit(1).pluck(:sequence_id).first || 0)
-    discussion.sequence_id_counter.reset(val)
+    discussion.reset_sequence_id_counter_lock do
+      val = (Event.where(discussion_id: discussion_id).order("sequence_id DESC").limit(1).pluck(:sequence_id).first || 0)
+      discussion.sequence_id_counter.reset(val)
+    end
   end
 
   def next_position!
@@ -205,9 +208,11 @@ class Event < ApplicationRecord
   end
 
   def reset_position_counter
-    val = (Event.where(parent_id: id,
-                       discussion_id: discussion_id).order("position DESC").limit(1).pluck(:position).last || 0)
-    self.position_counter.reset(val)
+    reset_position_counter_lock do
+      val = (Event.where(parent_id: id,
+                         discussion_id: discussion_id).order("position DESC").limit(1).pluck(:position).last || 0)
+      self.position_counter.reset(val)
+    end
   end
 
   def max_depth_adjusted_parent
