@@ -10,6 +10,8 @@ export default class RecordLoader
     @path         = opts.path
     # @numLoaded    = opts.numLoaded or 0
     @total        = 0
+    @err = null
+    @status = null
 
   reset: ->
     @params['from'] = 0
@@ -30,3 +32,6 @@ export default class RecordLoader
       data
     .finally =>
       @loading = false
+    .catch (err) =>
+      @err = err
+      @status = err.status
