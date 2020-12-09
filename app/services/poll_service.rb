@@ -37,34 +37,40 @@ class PollService
   end
 
 
-  def self.create_stances(poll:, actor:, user_ids:, emails:, audience:)
+  def self.create_stances(poll:, actor:, user_ids: [], emails: [], audience: nil)
     user_ids = poll.base_guest_audience_query.where('users.id': Array(user_ids)).pluck(:id)
     audience_ids = AnnouncementService.audience_users(poll, audience).pluck('users.id')
-
-    # filter user_ids from group or poll or discussion
+    existing_voter_ids =  Stance.latest.where(poll_id: poll.id).pluck(:participant_id)
 
     users = UserInviter.where_or_create!(inviter: actor,
                                          user_ids: user_ids.concat(audience_ids),
-                                         emails: emails)
+                                         emails: emails).where.not(id: existing_voter_ids)
 
     volumes = {}
-    Membership.where(group_id: poll.group_id,
-                     user_id: users.pluck(:id)).find_each do |m|
-      volumes[m.user_id] = m.volume
-    end
 
+    # if the user has chosen to mute the thread or group then mute the poll too, but dont subsribe
     if poll.discussion_id
       DiscussionReader.where(discussion_id: poll.discussion_id,
-                             user_id: users.pluck(:id)).find_each do |dr|
+                             user_id: users.pluck(:id),
+                             volume: 1).find_each do |dr|
         volumes[dr.user_id] = dr.volume
       end
     end
 
-    new_stances = users.where.not(id: poll.voter_ids).map do |user|
+    if poll.group_id
+      Membership.where(group_id: poll.group_id,
+                       user_id: users.pluck(:id),
+                       volume: 1).find_each do |m|
+        volumes[m.user_id] = m.volume unless volumes.has_key? m.user_id
+      end
+    end
+
+    new_stances = users.map do |user|
       Stance.new(participant: user,
                  poll: poll,
                  inviter: actor,
                  volume: volumes[user.id] || DiscussionReader.volumes[:normal],
+                 latest: true,
                  reason_format: user.default_format)
     end
 

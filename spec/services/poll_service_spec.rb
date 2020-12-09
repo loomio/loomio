@@ -14,7 +14,81 @@ describe PollService do
   let(:stance) { create :stance, poll: poll_created, choice: poll_created.poll_options.first.name }
   let(:identity) { create :slack_identity }
 
+
   before { group.add_member!(user) }
+
+  describe 'create_stances' do
+    let(:actor) { create :user, name: 'actor'}
+    let(:member) { create :user, name: 'member' }
+
+    before do
+      group.add_admin! actor
+      group.add_member! member
+      poll
+    end
+
+    it 'starts with 0 stances' do
+      expect(Stance.where(participant_id: member.id).count).to eq 0
+    end
+
+    it 'creates stance by id' do
+      PollService.create_stances(poll: poll, actor: actor, user_ids: [member.id])
+      expect(Stance.where(participant_id: member.id).count).to eq 1
+    end
+
+    it 'creates stance by email' do
+      PollService.create_stances(poll: poll, actor: actor, emails: [member.email])
+      expect(Stance.where(participant_id: member.id).count).to eq 1
+    end
+
+    it 'creates stance by audience' do
+      PollService.create_stances(poll: poll, actor: actor, audience: 'group')
+      expect(Stance.where(participant_id: member.id).count).to eq 1
+    end
+
+    it 'only creates stances for users who dont have a stance already' do
+      expect(Stance.where(participant_id: member.id).count).to eq 0
+      PollService.create_stances(poll: poll, actor: actor, user_ids: [member.id])
+      expect(Stance.where(participant_id: member.id).count).to eq 1
+      PollService.create_stances(poll: poll, actor: actor, user_ids: [member.id])
+      expect(Stance.where(participant_id: member.id).count).to eq 1
+      PollService.create_stances(poll: poll, actor: actor, emails: [member.email])
+      expect(Stance.where(participant_id: member.id).count).to eq 1
+      PollService.create_stances(poll: poll, actor: actor, audience: 'group')
+      expect(Stance.where(participant_id: member.id).count).to eq 1
+    end
+
+    it 'uses normal volume by default' do
+      PollService.create_stances(poll: poll, actor: actor, user_ids: [member.id])
+      expect(Stance.where(participant_id: member.id).first.volume).to eq 'normal'
+    end
+
+    it 'uses discussion reader volume if quiet' do
+      DiscussionReader.create(user_id: member.id, discussion_id: discussion.id, volume: 'quiet')
+      PollService.create_stances(poll: poll, actor: actor, user_ids: [member.id])
+      expect(Stance.where(participant_id: member.id).first.volume).to eq 'quiet'
+    end
+
+    it 'uses normal volume if discussion reader loud' do
+      DiscussionReader.create(user_id: member.id, discussion_id: discussion.id, volume: 'loud')
+      PollService.create_stances(poll: poll, actor: actor, user_ids: [member.id])
+      expect(Stance.where(participant_id: member.id).first.volume).to eq 'normal'
+    end
+
+    it 'uses membership volume if quiet' do
+      DiscussionReader.delete_all
+      Membership.where(user_id: member.id).update_all(volume: 'quiet')
+      PollService.create_stances(poll: poll, actor: actor, user_ids: [member.id])
+      expect(Stance.where(participant_id: member.id).first.volume).to eq 'quiet'
+    end
+
+    it 'uses reader volume before membership volume' do
+      Membership.where(user_id: member.id).update_all(volume: 'normal')
+      DiscussionReader.create(user_id: member.id, discussion_id: discussion.id, volume: 'quiet')
+      PollService.create_stances(poll: poll, actor: actor, user_ids: [member.id])
+      expect(Stance.where(participant_id: member.id).first.volume).to eq 'quiet'
+    end
+  end
 
   describe '#create' do
     it 'creates a new poll' do
