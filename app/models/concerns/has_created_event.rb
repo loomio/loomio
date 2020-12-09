@@ -9,8 +9,7 @@ module HasCreatedEvent
 
   def create_missing_created_event!
     event = self.events.create(kind: created_event_kind, user_id: author_id, created_at: created_at)
-    event.reset_position_counter
-    event.reset_sequence_id_counter
+    event.reset_sequences
     event
   end
 end

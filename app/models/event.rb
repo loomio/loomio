@@ -205,7 +205,8 @@ class Event < ApplicationRecord
   end
 
   def reset_position_counter
-    val = (Event.where(parent_id: id).order("position DESC").limit(1).pluck(:position).last || 0)
+    val = (Event.where(parent_id: id,
+                       discussion_id: discussion_id).order("position DESC").limit(1).pluck(:position).last || 0)
     self.position_counter.reset(val)
   end
 
