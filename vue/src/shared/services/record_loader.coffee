@@ -25,9 +25,7 @@ export default class RecordLoader
       params: @params
     .then (data) =>
       @total = data.meta.total
-      # records = data[@collection] || []
       @params.from = @params.from + @params.per
-      # @numLoaded += records.length
       @exhausted = @params.from >= @total
       data
     .finally =>

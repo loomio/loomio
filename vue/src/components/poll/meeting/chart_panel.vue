@@ -79,7 +79,7 @@ export default
   table.poll-meeting-chart-table.body-2
     thead
       tr
-        td {{currentUserTimeZone}}
+        td.text--secondary {{currentUserTimeZone}}
         td(v-for="user in decidedVoters" :key="user.id")
           user-avatar(:user="user")
         td.total(v-t="'common.total'")
@@ -132,6 +132,8 @@ export default
   background-color: #F6A82B
 
 .poll-meeting-chart__meeting-time
+  font-family: 'Roboto Mono'
+  font-size: 12px
   padding-right: 24px
 
 .total
