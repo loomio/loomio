@@ -12,7 +12,7 @@ export default
   data: ->
     loader: null
     group: null
-    per: 100
+    per: 25
     from: 0
     order: 'created_at desc'
     orders: [
@@ -222,8 +222,18 @@ export default
                 span(v-if="membership.acceptedAt") {{ (membership.user().shortBio || '').replace(/<\/?[^>]+(>|$)/g, "") }}
             v-list-item-action
               membership-dropdown(v-if="membership.groupId == group.id" :membership="membership")
-        v-layout(justify-center)
-          v-btn.my-2(outlined color='accent' v-if="showLoadMore" :loading="loader.loading" @click="loader.fetchRecords()" v-t="'common.action.load_more'")
+
+
+        //- v-layout(justify-center)
+        //-   v-btn.my-2(outlined color='accent' v-if="showLoadMore" :loading="loader.loading" @click="loader.fetchRecords()" v-t="'common.action.load_more'")
+        .d-flex.justify-center
+          .d-flex.flex-column.align-center
+            .text--secondary(v-if='group.parentId')
+              | {{memberships.length}} / {{loader.total}}
+            .text--secondary(v-if='!group.parentId')
+              | {{memberships.length}} / {{group.orgMembersCount}}
+            v-btn.my-2.members-panel__show-more(outlined color='accent' v-if="memberships.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords({per: 50})")
+              span(v-t="'common.action.load_more'")
 
     //- div(v-if="loader.status == 403")
     //-   p.pa-4.text-center(v-t="'error_page.forbidden'")

@@ -45,7 +45,6 @@ export default
           poll_type: @$route.query.poll_type
           query: @$route.query.q
           subgroups: @$route.query.subgroups
-          per: 25
 
     openSelectPollTypeModal: ->
       EventBus.$emit 'openModal',
@@ -128,6 +127,10 @@ export default
 
         p.pa-4.text-center(v-if='polls.length == 0 && !loader.loading' v-t="'polls_panel.no_polls'")
 
-        v-layout(justify-center)
-          v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords()" v-t="'common.action.load_more'")
+        .d-flex.justify-center
+          .d-flex.flex-column.align-center
+            .text--secondary
+              | {{polls.length}} / {{loader.total}}
+            v-btn.my-2.polls-panel__show-more(outlined color='accent' v-if="polls.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords()")
+              span(v-t="'common.action.load_more'")
 </template>

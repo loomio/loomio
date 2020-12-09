@@ -17,9 +17,10 @@ export default class RecordLoader
 
   fetchRecords: (opts = {}) ->
     @loading = true
+    @params = defaults({}, opts, @params)
     Records[camelCase(@collection)].fetch
       path: @path
-      params: defaults({}, opts, @params)
+      params: @params
     .then (data) =>
       @total = data.meta.total
       # records = data[@collection] || []

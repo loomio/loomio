@@ -64,6 +64,7 @@ export default
         params:
           group_id: @group.id
           exclude_types: 'group outcome'
+          per: 25
 
       @searchLoader = new RecordLoader
         collection: 'searchResults'
@@ -71,6 +72,7 @@ export default
           exclude_types: 'group stance outcome poll'
           subgroups: @$route.query.subgroups || 'all'
           group_id: @group.id
+
 
       @fetch()
       @query()
@@ -114,6 +116,7 @@ export default
         @searchLoader.fetchRecords(q: @$route.query.q)
       else
         params = {}
+        params.per = 50
         params.filter = 'show_closed' if @$route.query.t == 'closed'
         params.filter = 'all' if @$route.query.t == 'all'
         params.subgroups = @$route.query.subgroups || 'mine'
