@@ -131,6 +131,6 @@ export default
           .d-flex.flex-column.align-center
             .text--secondary
               | {{polls.length}} / {{loader.total}}
-            v-btn.my-2.polls-panel__show-more(outlined color='accent' v-if="polls.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords()")
+            v-btn.my-2.polls-panel__show-more(outlined color='accent' v-if="polls.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords({per: 50})")
               span(v-t="'common.action.load_more'")
 </template>
