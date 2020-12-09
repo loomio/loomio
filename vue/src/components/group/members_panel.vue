@@ -12,8 +12,7 @@ export default
   data: ->
     loader: null
     group: null
-    per: 100
-    from: 0
+    per: 25
     order: 'created_at desc'
     orders: [
       {text: @$t('members_panel.order_by_name'),  value:'users.name' }
@@ -44,7 +43,6 @@ export default
           exclude_types: 'group'
           group_id: @group.id
           per: @per
-          from: @from
           order: @order
           subgroups: 'all'
 
@@ -115,7 +113,6 @@ export default
     fetch: ->
       @loader.fetchRecords
         q: @$route.query.q
-        from: @from
         order: @order
         filter: @$route.query.filter
         subgroups: @$route.query.subgroups
@@ -222,33 +219,14 @@ export default
                 span(v-if="membership.acceptedAt") {{ (membership.user().shortBio || '').replace(/<\/?[^>]+(>|$)/g, "") }}
             v-list-item-action
               membership-dropdown(v-if="membership.groupId == group.id" :membership="membership")
-        v-layout(justify-center)
-          v-btn.my-2(outlined color='accent' v-if="showLoadMore" :loading="loader.loading" @click="loader.fetchRecords()" v-t="'common.action.load_more'")
 
-    //- div(v-if="loader.status == 403")
-    //-   p.pa-4.text-center(v-t="'error_page.forbidden'")
-    //- div(v-else)
-    //-   p.pa-4.text-center(v-if="!memberships.length" v-t="'common.no_results_found'")
-    //-   v-simple-table(v-else)
-    //-     template(v-slot:default)
-    //-       tbody
-    //-         tr(v-for="membership in memberships" :key="membership.id")
-    //-           td.shrink
-    //-             user-avatar(:user='membership.user()' size='32')
-    //-           td
-    //-             router-link(:to="urlFor(membership.user())") {{ membership.user().name }}
-    //-             span(v-if="membership.title")
-    //-               mid-dot
-    //-               span {{membership.title}}
-    //-             span(v-if="membership.user().shortBio")
-    //-               space
-    //-               span.caption.grey--text {{ membership.user().simpleBio() }}
-    //-           td.shrink(v-if="$route.query.subgroups") {{membership.group().name}}
-    //-           td.shrink
-    //-             v-chip(v-if="membership.admin" small outlined label v-t="'members_panel.admin'")
-    //-           td.shrink
-    //-             membership-dropdown(:membership="membership")
-    //-   v-layout(justify-center)
-    //-     v-btn.my-2(outlined color='accent' v-if="showLoadMore" :loading="loader.loading" @click="loader.fetchRecords()" v-t="'common.action.load_more'")
+        .d-flex.justify-center
+          .d-flex.flex-column.align-center
+            .text--secondary(v-if='group.parentId')
+              | {{memberships.length}} / {{loader.total}}
+            .text--secondary(v-if='!group.parentId')
+              | {{memberships.length}} / {{group.orgMembersCount}}
+            v-btn.my-2.members-panel__show-more(outlined color='accent' v-if="memberships.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords({per: 50})")
+              span(v-t="'common.action.load_more'")
 
 </template>
