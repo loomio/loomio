@@ -3,6 +3,7 @@ class API::SnorlaxBase < ActionController::Base
   rescue_from(ActionController::UnpermittedParameters) { |e| respond_with_standard_error e, 400 }
   rescue_from(ActionController::ParameterMissing)      { |e| respond_with_standard_error e, 400 }
   rescue_from(ActiveRecord::RecordNotFound)            { |e| respond_with_standard_error e, 404 }
+  attr_accessor :collection_count
 
   def show
     respond_with_resource
@@ -74,6 +75,7 @@ class API::SnorlaxBase < ActionController::Base
     self.collection = accessible_records
     self.collection = yield collection if block_given?
     self.collection = timeframe_collection collection
+    self.collection_count = collection.count
     self.collection = page_collection collection
     self.collection = order_collection collection
   end
