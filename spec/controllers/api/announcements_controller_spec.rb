@@ -169,6 +169,7 @@ describe API::AnnouncementsController do
           it 'can add group members' do
             post :create, params: {poll_id: poll.id, recipient_user_ids: [member.id]}
             expect(response.status).to eq 200
+            expect(JSON.parse(response.body)['stances'][0]['participant_id']).to eq member.id
           end
 
           it 'cannot invite guests' do
@@ -196,16 +197,21 @@ describe API::AnnouncementsController do
             it 'can invite guests by email' do
               post :create, params: {poll_id: poll.id, recipient_emails: ['jim@example.com']}
               expect(response.status).to eq 200
+              expect(JSON.parse(response.body)['stances'].length).to eq 1
             end
 
             it 'can add members' do
               post :create, params: {poll_id: poll.id, recipient_user_ids: [member.id]}
               expect(response.status).to eq 200
+              expect(JSON.parse(response.body)['stances'].length).to eq 1
+              expect(JSON.parse(response.body)['stances'][0]['participant_id']).to eq member.id
             end
 
             it 'can add subgroup members' do
               post :create, params: {poll_id: poll.id, recipient_user_ids: [subgroup_member.id]}
               expect(response.status).to eq 200
+              expect(JSON.parse(response.body)['stances'].length).to eq 1
+              expect(JSON.parse(response.body)['stances'][0]['participant_id']).to eq subgroup_member.id
             end
 
             it 'cannot add unknown users' do
@@ -259,6 +265,7 @@ describe API::AnnouncementsController do
           it 'allows member to notify group' do
             post :create, params: {poll_id: poll.id, recipient_audience: 'group'}
             expect(response.status).to eq 200
+              expect(JSON.parse(response.body)['stances'].length).to eq group.members.count
           end
 
           describe 'specified_voters_only=true' do
