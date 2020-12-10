@@ -139,7 +139,7 @@ FactoryBot.define do
     end
     after(:create) do |discussion|
       discussion.create_missing_created_event!
-      discussion.group.save
+      discussion.group.save if discussion.group.presence
     end
   end
 
