@@ -67,7 +67,7 @@ class PollService
     stances
   end
 
-  def self.create_stances(poll:, actor:, user_ids:, emails:, audience:)
+  def self.create_stances(poll:, actor:, user_ids: [], emails: [], audience: nil)
     # user_ids = poll.base_guest_audience_query.where('users.id': Array(user_ids)).pluck(:id)
     # audience_ids = AnnouncementService.audience_users(poll, audience).pluck('users.id')
 

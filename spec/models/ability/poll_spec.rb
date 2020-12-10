@@ -22,7 +22,7 @@ describe "poll abilities" do
     context "as poll member" do
       before { poll.stances.create!(participant_id: actor.id, latest: true) }
       it {should     be_able_to(:vote_in, poll)}
-      it {should_not be_able_to(:add_members, poll)}
+      it {should     be_able_to(:add_members, poll)}
       it {should_not be_able_to(:announce, poll)}
       it {should_not be_able_to(:add_guests, poll)}
     end
