@@ -16,7 +16,7 @@ module Dev::Scenarios::Legacy
 
   def setup_group_invitation_ignored
     group  = FactoryBot.create :group
-    event = GroupService.announce(group: group, actor: group.creator, params: { emails: ['hello@example.com']})
+    event = GroupService.invite(group: group, actor: group.creator, params: { emails: ['hello@example.com']})
     ActionMailer::Base.deliveries.clear
     AnnouncementService.resend_pending_memberships(since: 1.hour.ago, till: 1.hour.from_now)
     last_email
@@ -24,7 +24,7 @@ module Dev::Scenarios::Legacy
 
   def setup_discussion_invitation_ignored
     model = FactoryBot.create :discussion
-    event = GroupService.announce(group: model, actor: model.author, params: { emails: ['hello@example.com']})
+    event = GroupService.invite(group: model, actor: model.author, params: { emails: ['hello@example.com']})
     ActionMailer::Base.deliveries.clear
     AnnouncementService.resend_pending_memberships(since: 1.hour.ago, till: 1.hour.from_now)
     last_email
@@ -32,7 +32,7 @@ module Dev::Scenarios::Legacy
 
   def setup_poll_invitation_ignored
     model = FactoryBot.create :poll
-    event = GroupService.announce(group: model, actor: model.author, params: { emails: ['hello@example.com']})
+    event = GroupService.invite(group: model, actor: model.author, params: { emails: ['hello@example.com']})
     ActionMailer::Base.deliveries.clear
     AnnouncementService.resend_pending_memberships(since: 1.hour.ago, till: 1.hour.from_now)
     last_email

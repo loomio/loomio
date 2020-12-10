@@ -22,7 +22,7 @@ module Dev::PollsScenarioHelper
 
     event = PollService.create(poll: poll, actor: actor)
     recipients = {recipient_emails: [user.email]}
-    PollService.announce(poll: poll, params: recipients, actor: actor)
+    PollService.invite(poll: poll, params: recipients, actor: actor)
 
     {
       discussion: discussion,
@@ -103,7 +103,7 @@ module Dev::PollsScenarioHelper
   #
   #   StanceService.create(stance: fake_stance(poll: poll), actor: observer)
   #   PollService.update(poll: poll, params: { title: "New title" }, actor: actor)
-  #   PollService.announce(poll: poll, params: {user_ids: [observer.id], emails: [observer.email], kind: "poll_edited" }, actor: actor)
+  #   PollService.invite(poll: poll, params: {user_ids: [observer.id], emails: [observer.email], kind: "poll_edited" }, actor: actor)
   #
   #   {discussion: discussion,
   #    observer: observer,
@@ -165,7 +165,7 @@ module Dev::PollsScenarioHelper
 
     PollService.create(poll: poll, actor: actor)
     # Stance.create(poll: poll, participant: non_voter)
-    PollService.announce(poll: poll, params: {recipient_user_ids: [non_voter.id]}, actor: actor)
+    PollService.invite(poll: poll, params: {recipient_user_ids: [non_voter.id]}, actor: actor)
 
     PollService.publish_closing_soon
 
@@ -197,7 +197,7 @@ module Dev::PollsScenarioHelper
     voter      = poll.stances.last.real_participant
     discussion.add_guest! voter, discussion.author
     PollService.create(poll: poll, actor: actor)
-    PollService.announce(poll: poll, params: {recipient_user_ids: [voter.id]}, actor: actor)
+    PollService.invite(poll: poll, params: {recipient_user_ids: [voter.id]}, actor: actor)
     PollService.publish_closing_soon
 
     { discussion: discussion,

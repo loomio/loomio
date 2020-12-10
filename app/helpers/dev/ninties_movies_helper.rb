@@ -343,7 +343,7 @@ module Dev::NintiesMoviesHelper
     another_group = Group.new(name: 'Planets of the 80\'s')
     GroupService.create(group: another_group, actor: jennifer)
     jennifer.reload
-    GroupService.announce(group: another_group, params: { recipient_user_ids: [patrick.id] }, actor: jennifer)
+    GroupService.invite(group: another_group, params: { recipient_user_ids: [patrick.id] }, actor: jennifer)
 
     #'new_coordinator',
     #notify patrick that jennifer has made him a coordinator
@@ -356,7 +356,7 @@ module Dev::NintiesMoviesHelper
     MembershipService.redeem(membership: membership, actor: emilio)
 
     poll = FactoryBot.create(:poll, discussion: create_discussion, group: create_group, author: jennifer, closing_at: 24.hours.from_now)
-    PollService.announce(
+    PollService.invite(
       poll: poll,
       params: { recipient_user_ids: [patrick.id] },
       actor: jennifer

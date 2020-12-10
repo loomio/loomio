@@ -117,7 +117,7 @@ module Dev::Scenarios::Discussion
     @group.add_member! jennifer
     discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: @group)
     event = DiscussionService.create(discussion: discussion, actor: patrick)
-    DiscussionService.announce(discussion: discussion, actor: patrick, params: {recipient_user_ids: [jennifer.id]})
+    DiscussionService.invite(discussion: discussion, actor: patrick, params: {recipient_user_ids: [jennifer.id]})
     last_email
   end
 
@@ -128,7 +128,7 @@ module Dev::Scenarios::Discussion
     event = DiscussionService.create(discussion: discussion, actor: patrick)
     comment = FactoryBot.build(:comment, discussion: discussion)
     CommentService.create(comment: comment, actor: patrick)
-    DiscussionService.announce(discussion: discussion, actor: patrick, params: {recipient_emails: 'jen@example.com'})
+    DiscussionService.invite(discussion: discussion, actor: patrick, params: {recipient_emails: 'jen@example.com'})
     last_email
   end
 
