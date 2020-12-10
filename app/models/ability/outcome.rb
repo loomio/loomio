@@ -12,8 +12,7 @@ module Ability::Outcome
     end
 
     can [:announce], ::Outcome do |outcome|
-      !outcome.poll.active? &&
-      (outcome.admins.exists?(user.id) || (outcome.group.members_can_announce && outcome.members.exists?(user.id)))
+      !outcome.poll.active? && can?(:announce, outcome.poll)
     end
 
     can [:add_members], ::Outcome do |outcome|

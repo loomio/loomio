@@ -4,6 +4,8 @@ import Session       from '@/shared/services/session'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 import {intersection} from 'lodash'
 
+user = -> Session.user()
+
 export default new class AbilityService
   isNotEmailVerified: ->
     Session.isSignedIn() and !Session.user().emailVerified
@@ -25,23 +27,6 @@ export default new class AbilityService
   canRespondToComment: (comment) ->
     !comment.discardedAt &&
     comment.discussion().membersInclude(Session.user())
-
-  canStartPoll: (model) ->
-    model.adminsInclude(Session.user()) or
-    (model.membersInclude(Session.user()) and model.group().membersCanRaiseMotions)
-
-  canParticipateInPoll: (poll) ->
-    return false unless poll
-    return false unless poll.isActive()
-    poll.anyoneCanParticipate or
-    poll.myStance() or
-    (!poll.specifiedVotersOnly and poll.membersInclude(Session.user()))
-
-  canReactToPoll: (poll) ->
-    return false unless @isEmailVerified()
-    return false unless poll
-    poll.anyoneCanParticipate or
-    poll.membersInclude(Session.user())
 
   canEditStance: (stance) ->
     Session.user() == stance.author()
@@ -104,10 +89,47 @@ export default new class AbilityService
     group.adminsInclude(Session.user()) or
     (group.membersInclude(Session.user()) and group.membersCanStartDiscussions)
 
-  canAnnounceTo: (model) ->
-    return false if model.discardedAt
-    model.group().adminsInclude(Session.user()) or
-    (model.group().membersCanAnnounce and model.membersInclude(Session.user()))
+  canAnnounce: (model) ->
+    return @canAnnounceDiscussion(model) if model.isA('discussion')
+    return @canAnnouncePoll(model) if model.isA('poll')
+
+  canAnnounceDiscussion: (discussion) ->
+    return false if discussion.discardedAt
+    if discussion.groupId
+      discussion.group().adminsInclude(user()) or
+      (discussion.group().membersCanAnnounce and discussion.group().membersInclude(user()))
+    else
+      discussion.adminsInclude(user())
+
+  canAddMembersDiscussion: (discussion) ->
+    discussion.membersInclude(user())
+
+  canAddGuestsDiscussion: (discussion) ->
+    if discussion.groupId
+      discussion.group().adminsInclude(user()) ||
+      (discussion.group().membersCanAddGuests && discussion.membersInclude(user()))
+    else
+      discussion.adminsInclude(user())
+
+  canAnnouncePoll: (poll) ->
+    return false if poll.discardedAt
+    if poll.groupId
+      poll.group().adminsInclude(user()) ||
+      (poll.group().membersCanAnnounce && poll.adminsInclude(user())) ||
+      (poll.group().membersCanAnnounce && !poll.specifiedVotersOnly && poll.membersInclude(user()))
+    else
+      poll.adminsInclude(user())
+
+  canAddMembersPoll: (poll) ->
+    poll.adminsInclude(user())
+
+  canAddGuestsPoll: (poll) ->
+    if poll.groupId
+      poll.group().adminsInclude(user()) ||
+      (poll.group().membersCanAddGuests && poll.adminsInclude(user())) ||
+      (poll.group().membersCanAddGuests && !poll.specifiedVotersOnly && poll.membersInclude(user()))
+    else
+      poll.adminsInclude(user())
 
   canAddMembersToGroup: (group) ->
     group.adminsInclude(Session.user()) or
@@ -180,9 +202,6 @@ export default new class AbilityService
   canViewPendingMemberships: (group) ->
     group.adminsInclude(Session.user())
 
-  canViewPreviousPolls: (group) ->
-    @canViewGroup(group)
-
   canJoinGroup: (group) ->
     return false if !@canViewGroup(group) or group.membersInclude(Session.user())
     group.membershipGrantedUpon == 'request' or group.parentOrSelf().adminsInclude(Session.user())
@@ -199,6 +218,26 @@ export default new class AbilityService
     Object.keys(model.translation).length == 0 &&
     (model.contentLocale && model.contentLocale != Session.user().locale) ||
     (!model.contentLocale && model.author().locale != Session.user().locale)
+
+  canViewPreviousPolls: (group) ->
+    @canViewGroup(group)
+
+  canStartPoll: (model) ->
+    model.adminsInclude(Session.user()) or
+    (model.membersInclude(Session.user()) and model.group().membersCanRaiseMotions)
+
+  canParticipateInPoll: (poll) ->
+    return false unless poll
+    return false unless poll.isActive()
+    poll.anyoneCanParticipate or
+    poll.myStance() or
+    (!poll.specifiedVotersOnly and poll.membersInclude(Session.user()))
+
+  canReactToPoll: (poll) ->
+    return false unless @isEmailVerified()
+    return false unless poll
+    poll.anyoneCanParticipate or
+    poll.membersInclude(Session.user())
 
   canMovePoll: (poll) ->
     !poll.discussionId && poll.adminsInclude(Session.user())

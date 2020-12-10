@@ -155,16 +155,15 @@ export default
 
     audiences: ->
       ret = []
-      canAnnounce = !!(@model.group().adminsInclude(Session.user()) || @model.group().membersCanAnnounce)
       if @recipients.length == 0
-        if @model.groupId && canAnnounce
+        if @model.groupId && AbilityService.canAnnounce(@model)
           ret.push
             id: 'group'
             name: @$t('announcement.audiences.group', name: @model.group().name)
             size: @model.group().acceptedMembershipsCount
             icon: 'mdi-account-group'
 
-        if @model.discussion && (@model.discussion() || {}).id && AbilityService.canAnnounceTo(@model.discussion())
+        if @model.discussion && (@model.discussion() || {}).id && AbilityService.canAnnounce(@model.discussion())
           ret.push
             id: 'discussion_group'
             name: @$t('announcement.audiences.discussion_group')
