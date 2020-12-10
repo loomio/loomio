@@ -1061,9 +1061,9 @@ en:
     members_can_announce: 'Members can notify everyone in the group'
     members_can_announce_help: 'Allow members to notify everyone in the group about a thread or poll'
     members_can_add_members: 'Members can invite members'
-    members_can_add_members_help: "Allow members to invite people who are not members of the group, to participate in specific threads or polls"
+    members_can_add_members_help: "Allow members to invite people to join this group"
     members_can_add_guests: 'Members can invite guests'
-    members_can_add_guests_help: 'Allow members to invite people into a specific thread or poll as a guest'
+    members_can_add_guests_help: 'Allow members to invite guests into threads or polls in this group'
     members_can_create_subgroups: 'Members can create subgroups'
     members_can_create_subgroups_help: 'Allow members to create and become admins of new subgroups'
     members_can_edit_discussions: 'Members can edit threads, polls and outcomes'
