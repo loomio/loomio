@@ -263,7 +263,7 @@ describe API::AnnouncementsController do
         describe 'members_can_announce=true' do
           before { poll.group.update(members_can_announce: true) }
           it 'allows member to notify group' do
-            post :create, params: {poll_id: poll.id, recipient_audience: 'group'}
+            post :create, params: {poll_id: poll.id, recipient_audience: 'group', recipient_user_ids: [user.id]}
             expect(response.status).to eq 200
               expect(JSON.parse(response.body)['stances'].length).to eq group.members.count
           end
