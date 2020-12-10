@@ -19,20 +19,17 @@ class MembershipService
     group_ids = membership.group.parent_or_self.id_and_subgroup_ids
     existing_group_ids = Membership.where(user_id: actor.id).pluck(:group_id)
 
-    Membership.pending.where(user_id: membership.user_id,
-                             group_id: (group_ids - existing_group_ids)).
-               update_all(user_id: actor.id,
-                          accepted_at: DateTime.now,
-                          saml_session_expires_at: expires_at)
+    count = Membership.pending.where(
+              user_id: membership.user_id,
+              group_id: (group_ids - existing_group_ids)).
+            update_all(
+              user_id: actor.id,
+              accepted_at: DateTime.now,
+              saml_session_expires_at: expires_at)
 
     membership.reload if membership.persisted?
 
-    event = Events::InvitationAccepted.publish!(membership) if notify
-
-    #if there were membersips to groups we already belonged to, delete them now so we don't repeat endlessly
-    Membership.pending.where(user: membership.user_id, group_id: group_ids).delete_all
-    
-    event
+    Events::InvitationAccepted.publish!(membership) if notify && membership.accepted_at
   end
 
   def self.update(membership:, params:, actor:)
