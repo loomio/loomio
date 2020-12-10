@@ -27,21 +27,32 @@ module Ability::Poll
     end
 
     can [:announce], ::Poll do |poll|
-      poll.admins.exists?(user.id) ||
-      (!poll.specified_voters_only && poll.group.members_can_announce && poll.members.exists?(user.id))
+      if poll.group_id
+        poll.group.admins.exists?(user.id) ||
+        (poll.group.members_can_announce && poll.admins.exists?(user.id)) ||
+        (poll.group.members_can_announce && !poll.specified_voters_only && poll.members.exists?(user.id))
+      else
+        poll.admins.exists?(user.id)
+      end
     end
 
     can [:add_members], ::Poll do |poll|
-      poll.admins.exists?(user.id) || (!poll.specified_voters_only && poll.members.exists?(user.id))
+      poll.admins.exists?(user.id)
     end
 
     can [:add_guests], ::Poll do |poll|
-      poll.admins.exists?(user.id) ||
-      (!poll.specified_voters_only && poll.group.members_can_add_guests && poll.members.exists?(user.id))
+      if poll.group_id
+        poll.group.admins.exists?(user.id) ||
+        (poll.group.members_can_add_guests && poll.admins.exists?(user.id)) ||
+        (poll.group.members_can_add_guests && !poll.specified_voters_only && poll.members.exists?(user.id))
+      else
+        poll.admins.exists?(user.id)
+      end
     end
 
     can [:update], ::Poll do |poll|
-      poll.admins.exists?(user.id) || (poll.group.members_can_edit_discussions && poll.members.exists?(user.id))
+      poll.admins.exists?(user.id) ||
+      (poll.wip? && poll.members.exists?(user.id))
     end
 
     can [:destroy], ::Poll do |poll|
@@ -55,6 +66,5 @@ module Ability::Poll
     can :reopen, ::Poll do |poll|
       poll.closed? && can?(:update, poll)
     end
-
   end
 end

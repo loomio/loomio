@@ -57,12 +57,12 @@ export default new class PollService
 
     announce_poll:
       icon: 'mdi-send'
-      name: 'action_dock.count_voters'
-      nameArgs: -> {count: poll.votersCount}
+      name: 'common.action.invite'
       canPerform: ->
+        return false if (poll.discardedAt || poll.closedAt)
         poll.adminsInclude(Session.user()) ||
         (!poll.specifiedVotersOnly &&
-         poll.group().membersCanAddMembers &&
+         (poll.group().membersCanAddGuests || poll.group().membersCanAnnounce) &&
          poll.membersInclude(Session.user()))
       perform: ->
         openModal
