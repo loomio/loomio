@@ -17,7 +17,10 @@ class MembershipService
     # they may be accepting memberships send to a different email (unverified_user)
 
     group_ids = membership.group.parent_or_self.id_and_subgroup_ids
-    existing_group_ids = Membership.where(user_id: actor.id).pluck(:group_id)
+
+    # cant accept pending memberships to groups I already belong to
+    existing_group_ids = Membership.pending.where(user_id: membership.user_id,
+                                                  group_id: actor.memberships.accepted.pluck(:group_id)).pluck(:group_id)
 
     Membership.pending.where(
       user_id: membership.user_id,
