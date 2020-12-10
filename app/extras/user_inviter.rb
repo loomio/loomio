@@ -11,7 +11,7 @@ class UserInviter
 
 
     # disallow inviting anyone by user_id if they're not in the org
-    raise CanCan::AccessDenied if ((user_ids - member_ids) - guest_ids).any?
+    raise CanCan::AccessDenied if model.group_id && ((user_ids - member_ids) - guest_ids).any?
     actor.ability.authorize!(:announce, model)    if audience == 'group'
     actor.ability.authorize!(:add_members, model) if member_ids.any?
     actor.ability.authorize!(:add_guests, model)  if emails.any? or guest_ids.any?
@@ -31,7 +31,14 @@ class UserInviter
     # guests are any user outside of the group
     # either by email address or by user_id, but user_ids are limited to your org
     member_ids = model.members.where(id: user_ids).pluck(:id)
-    guest_ids = Membership.where(group_id: model.group.parent_or_self.id_and_subgroup_ids,
+
+    group_ids = if model.group.present?
+      model.group.parent_or_self.id_and_subgroup_ids
+    else
+      actor.group_ids
+    end
+
+    guest_ids = Membership.where(group_id: group_ids,
                                  user_id: (user_ids - member_ids)).pluck(:user_id).uniq
 
     ids = member_ids.concat(guest_ids).concat(audience_ids).uniq
