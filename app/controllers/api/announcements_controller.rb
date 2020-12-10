@@ -1,20 +1,4 @@
 class API::AnnouncementsController < API::RestfulController
-  MockEvent = Struct.new(:eventable, :email_subject_key, :user, :id)
-
-  # def audience
-  #   self.collection = service.audience_users(target_model, params.require(:kind))
-  #
-  #   if params[:without_exising]
-  #     self.collection = collection.where.not(id: target_model.existing_member_ids)
-  #   end
-  #
-  #   if params[:return_users]
-  #     respond_with_collection serializer: AuthorSerializer, root: false
-  #   else
-  #     respond_with_collection serializer: AnnouncementRecipientSerializer, root: false
-  #   end
-  # end
-
   # untested spike
   # def size
   #   current_user.ability.authorize! :announce, target_model
@@ -24,6 +8,11 @@ class API::AnnouncementsController < API::RestfulController
   #   count = User.where(id: audience_ids.concat(user_ids).uniq.compact).
   #                where.not(email: emails).active.count + emails.uniq.compact.size
   #   render json: {count: count}
+  # end
+
+  # def search
+  # given some target_model and it's rules.
+  #   search for guests, members
   # end
 
   def create
@@ -38,24 +27,19 @@ class API::AnnouncementsController < API::RestfulController
     end
 
     if target_model.is_a?(Group)
-      self.collection = GroupService.announce(group: target_model, actor: current_user, params: params)
+      self.collection = GroupService.invite(group: target_model, actor: current_user, params: params)
       respond_with_collection serializer: MembershipSerializer, root: :memberships
     elsif target_model.is_a?(Discussion)
-      event = DiscussionService.announce(discussion: target_model, actor: current_user, params: params)
+      event = DiscussionService.invite(discussion: target_model, actor: current_user, params: params)
       self.collection = DiscussionReader.where(discussion_id: target_model.id, user_id: event.recipient_user_ids)
       respond_with_collection serializer: DiscussionReaderSerializer, root: :discussion_readers
     elsif target_model.is_a?(Poll)
-      self.collection = PollService.announce(poll: target_model, actor: current_user, params: params)
+      self.collection = PollService.invite(poll: target_model, actor: current_user, params: params)
       respond_with_collection serializer: StanceSerializer, root: :stances
     elsif target_model.is_a?(Outcome)
-      self.collection = OutcomeService.announce(outcome: target_model, actor: current_user, params: params)
+      self.collection = OutcomeService.invite(outcome: target_model, actor: current_user, params: params)
       respond_with_collection serializer: UserSerializer, root: :users
     end
-  end
-
-  def search
-    self.collection = Queries::AnnouncementRecipients.new(params.require(:q), current_user, authorize_model).results
-    respond_with_collection serializer: AnnouncementRecipientSerializer, root: false
   end
 
   def history
@@ -94,14 +78,6 @@ class API::AnnouncementsController < API::RestfulController
     end
 
     render root: false, json: res
-  end
-
-  def preview
-    event = target_model.created_event
-    @email = target_model.send(:mailer).send(params[:kind], current_user, event)
-    @email.perform_deliveries = false
-
-    render template: '/user_mailer/last_email.html', layout: false
   end
 
   private

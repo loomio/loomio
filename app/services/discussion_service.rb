@@ -65,7 +65,7 @@ class DiscussionService
                                       recipient_message: params[:recipient_message])
   end
 
-  def self.announce(discussion:, actor:, params:)
+  def self.invite(discussion:, actor:, params:)
     UserInviter.authorize!(user_ids: params[:recipient_user_ids],
                            emails: params[:recipient_emails],
                            audience: params[:recipient_audience],

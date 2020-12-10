@@ -1,5 +1,5 @@
 module GroupService
-  def self.announce(group:, params:, actor:)
+  def self.invite(group:, params:, actor:)
     actor.ability.authorize! :announce, group
 
     group_ids = if params[:invited_group_ids]

@@ -1,5 +1,5 @@
 class OutcomeService
-  def self.announce(outcome:, actor:, params:)
+  def self.invite(outcome:, actor:, params:)
     actor.ability.authorize! :announce, outcome
 
     UserInviter.authorize!(user_ids: params[:recipient_user_ids],

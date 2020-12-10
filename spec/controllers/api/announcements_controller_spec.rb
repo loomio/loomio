@@ -11,59 +11,59 @@ describe API::AnnouncementsController do
     sign_in user
   end
 
-  describe 'search' do
-    let!(:a_friend)        { create :user, name: "Friendly Fran" }
-    let!(:an_acquaintance) { create :user, name: "Acquaintance Annie" }
-    let!(:a_stranger)      { create :user, name: "Alien Alan" }
-    let(:subgroup) { create :group, parent: group}
-
-    before do
-      group.add_member! user
-      group.add_member! a_friend
-      another_group.add_member! user
-      another_group.add_member! an_acquaintance
-    end
-
-    it 'does not return an existing user you dont know' do
-      get :search, params: { q: 'alien', group_id: group.id }
-      expect(response.status).to eq 200
-      json = JSON.parse(response.body)
-      expect(json).to be_empty
-    end
-
-    it 'returns an email address' do
-      get :search, params: { q: 'bumble@bee.com', group_id: group.id }
-      expect(response.status).to eq 200
-      json = JSON.parse(response.body)
-      expect(json[0]['name']).to eq 'bumble@bee.com'
-    end
-
-    it 'finds members in your group but not this subgroup' do
-      get :search, params: { q: 'annie', group_id: group.id }
-      expect(response.status).to eq 200
-      json = JSON.parse(response.body)
-      expect(json[0]['name']).to eq an_acquaintance.name
-    end
-
-    it 'filters out group members if a group is given' do
-      get :search, params: { q: 'fran', group_id: group.id }
-      expect(response.status).to eq 200
-      json = JSON.parse(response.body)
-      expect(json).to be_empty
-    end
-
-    it 'filters out group member email addresses' do
-      get :search, params: { q: a_friend.email, group_id: group.id }
-      expect(response.status).to eq 200
-      json = JSON.parse(response.body)
-      expect(json).to be_empty
-    end
-
-    it 'authorizes the group' do
-      get :search, params: { q: 'annie', group_id: an_unknown_group.id }
-      expect(response.status).to eq 403
-    end
-  end
+  # describe 'search' do
+  #   let!(:a_friend)        { create :user, name: "Friendly Fran" }
+  #   let!(:an_acquaintance) { create :user, name: "Acquaintance Annie" }
+  #   let!(:a_stranger)      { create :user, name: "Alien Alan" }
+  #   let(:subgroup) { create :group, parent: group}
+  #
+  #   before do
+  #     group.add_member! user
+  #     group.add_member! a_friend
+  #     another_group.add_member! user
+  #     another_group.add_member! an_acquaintance
+  #   end
+  #
+  #   it 'does not return an existing user you dont know' do
+  #     get :search, params: { q: 'alien', group_id: group.id }
+  #     expect(response.status).to eq 200
+  #     json = JSON.parse(response.body)
+  #     expect(json).to be_empty
+  #   end
+  #
+  #   it 'returns an email address' do
+  #     get :search, params: { q: 'bumble@bee.com', group_id: group.id }
+  #     expect(response.status).to eq 200
+  #     json = JSON.parse(response.body)
+  #     expect(json[0]['name']).to eq 'bumble@bee.com'
+  #   end
+  #
+  #   it 'finds members in your group but not this subgroup' do
+  #     get :search, params: { q: 'annie', group_id: group.id }
+  #     expect(response.status).to eq 200
+  #     json = JSON.parse(response.body)
+  #     expect(json[0]['name']).to eq an_acquaintance.name
+  #   end
+  #
+  #   it 'filters out group members if a group is given' do
+  #     get :search, params: { q: 'fran', group_id: group.id }
+  #     expect(response.status).to eq 200
+  #     json = JSON.parse(response.body)
+  #     expect(json).to be_empty
+  #   end
+  #
+  #   it 'filters out group member email addresses' do
+  #     get :search, params: { q: a_friend.email, group_id: group.id }
+  #     expect(response.status).to eq 200
+  #     json = JSON.parse(response.body)
+  #     expect(json).to be_empty
+  #   end
+  #
+  #   it 'authorizes the group' do
+  #     get :search, params: { q: 'annie', group_id: an_unknown_group.id }
+  #     expect(response.status).to eq 403
+  #   end
+  # end
 
   # describe 'audience' do
   #   let(:group)      { create :group }
