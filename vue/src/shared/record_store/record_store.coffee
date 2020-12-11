@@ -6,6 +6,11 @@ export default class RecordStore
     @db = db
     @collectionNames = []
     @views = {}
+    @remote = new RestfulClient
+    @remote.setRemoteCallbacks(@defaultRemoteCallbacks())
+
+  fetch: (args) ->
+    @remote.fetch(args)
 
   addRecordsInterface: (recordsInterfaceClass) ->
     recordsInterface = new recordsInterfaceClass(@)

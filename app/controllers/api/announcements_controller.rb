@@ -10,10 +10,11 @@ class API::AnnouncementsController < API::RestfulController
   #   render json: {count: count}
   # end
 
-  # def search
-  # given some target_model and it's rules.
-  #   search for guests, members
-  # end
+  def search
+    # if target model has no groups, no discussions, then draw from users groups and guest threads
+    self.collection = UserQuery.invitable_to(model: target_model, actor: current_user, q: params[:q])
+    respond_with_collection serializer: AuthorSerializer, root: :users
+  end
 
   def create
     # juggle data for older clients

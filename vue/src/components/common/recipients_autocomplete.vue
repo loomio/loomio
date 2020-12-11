@@ -58,6 +58,18 @@ export default
       @fetchAndUpdateSuggestions()
 
   methods:
+    fetchSuggestions: ->
+      Records.fetch
+        path: 'announcements/search'
+        params:
+          exclude_types: 'group inviter'
+          q: @query
+          subgroups: 'all'
+          per: 20
+          group_id: @model.group().parentOrSelf().id
+          discussion_id: @model.group().parentOrSelf().id
+          poll_id: @model.group().parentOrSelf().id
+
     fetchAndUpdateSuggestions: ->
       @fetchMemberships()
       @updateSuggestions()

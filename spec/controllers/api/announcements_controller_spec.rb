@@ -11,59 +11,190 @@ describe API::AnnouncementsController do
     sign_in user
   end
 
-  # describe 'search' do
-  #   let!(:a_friend)        { create :user, name: "Friendly Fran" }
-  #   let!(:an_acquaintance) { create :user, name: "Acquaintance Annie" }
-  #   let!(:a_stranger)      { create :user, name: "Alien Alan" }
-  #   let(:subgroup) { create :group, parent: group}
-  #
-  #   before do
-  #     group.add_member! user
-  #     group.add_member! a_friend
-  #     another_group.add_member! user
-  #     another_group.add_member! an_acquaintance
-  #   end
-  #
-  #   it 'does not return an existing user you dont know' do
-  #     get :search, params: { q: 'alien', group_id: group.id }
-  #     expect(response.status).to eq 200
-  #     json = JSON.parse(response.body)
-  #     expect(json).to be_empty
-  #   end
-  #
-  #   it 'returns an email address' do
-  #     get :search, params: { q: 'bumble@bee.com', group_id: group.id }
-  #     expect(response.status).to eq 200
-  #     json = JSON.parse(response.body)
-  #     expect(json[0]['name']).to eq 'bumble@bee.com'
-  #   end
-  #
-  #   it 'finds members in your group but not this subgroup' do
-  #     get :search, params: { q: 'annie', group_id: group.id }
-  #     expect(response.status).to eq 200
-  #     json = JSON.parse(response.body)
-  #     expect(json[0]['name']).to eq an_acquaintance.name
-  #   end
-  #
-  #   it 'filters out group members if a group is given' do
-  #     get :search, params: { q: 'fran', group_id: group.id }
-  #     expect(response.status).to eq 200
-  #     json = JSON.parse(response.body)
-  #     expect(json).to be_empty
-  #   end
-  #
-  #   it 'filters out group member email addresses' do
-  #     get :search, params: { q: a_friend.email, group_id: group.id }
-  #     expect(response.status).to eq 200
-  #     json = JSON.parse(response.body)
-  #     expect(json).to be_empty
-  #   end
-  #
-  #   it 'authorizes the group' do
-  #     get :search, params: { q: 'annie', group_id: an_unknown_group.id }
-  #     expect(response.status).to eq 403
-  #   end
-  # end
+  describe 'search for invitees to' do
+    let(:poll) { create :poll }
+    let(:group) { create(:group, name: 'group') }
+    let(:subgroup) { create(:group, parent: group, name: 'subgroup') }
+    let(:subgroup_member) { create(:user, name: 'subgroup_member') }
+    let(:discussion) { create(:discussion) }
+    let(:other_discussion) { create(:discussion, title: 'other discussion', group: nil) }
+    let(:other_group) { create(:group, name: 'other_group') }
+    let(:member) { create(:user, name: 'member') }
+    let(:other_member) { create(:user, name: 'other_member') }
+    let(:guest) { create(:user, name: 'guest') }
+    let(:actor) { create(:user, name: 'actor') }
+
+    before do
+      sign_in actor
+      group.add_member! actor
+      group.add_member! member
+      subgroup.add_member! actor
+      subgroup.add_member! subgroup_member
+      other_group.add_member! actor
+      other_group.add_member! other_member
+    end
+
+    context "discussion" do
+      context "without group" do
+        let(:discussion) { create(:discussion, group: nil) }
+        let(:poll) { create(:poll, group: nil) }
+
+        context "as discussion admin" do
+          before do
+            discussion.discussion_readers.create!(user_id: actor.id, admin: true, inviter_id: actor.id)
+          end
+
+          it 'returns member of my groups' do
+            get :search, params: {q: 'member', discussion_id: discussion.id}
+            expect(response.status).to eq 200
+            expect(JSON.parse(response.body)['users'].length).to eq 1
+            expect(JSON.parse(response.body)['users'][0]['id']).to eq member.id
+          end
+
+          it 'returns guests of my threads' do
+            other_discussion.discussion_readers.create!(user_id: actor.id, admin: true, inviter_id: actor.id)
+            other_discussion.discussion_readers.create!(user_id: guest.id, inviter_id: actor.id)
+            get :search, params: {q: 'guest', discussion_id: discussion.id}
+            expect(response.status).to eq 200
+            expect(JSON.parse(response.body)['users'].length).to eq 1
+            expect(JSON.parse(response.body)['users'][0]['id']).to eq guest.id
+          end
+
+          it 'returns guests of my polls' do
+            poll.stances.create!(participant_id: guest.id, inviter_id: actor.id)
+            poll.stances.create!(participant_id: actor.id, inviter_id: actor.id)
+            get :search, params: {q: 'guest', discussion_id: discussion.id}
+            expect(response.status).to eq 200
+            expect(JSON.parse(response.body)['users'].length).to eq 1
+            expect(JSON.parse(response.body)['users'][0]['id']).to eq guest.id
+          end
+
+          it 'does not return unrelated guests' do
+            guest
+            get :search, params: {q: 'guest', discussion_id: discussion.id}
+            expect(response.status).to eq 200
+            expect(JSON.parse(response.body)['users'].length).to eq 0
+          end
+        end
+      end
+
+      context "in a group" do
+        let(:discussion) { create(:discussion, group: group) }
+
+        context "as group admin" do
+          before { Membership.where(user: actor, group: group).update(admin: true) }
+          # context members_can_add_guests is false
+          it 'returns discussion group members' do
+            get :search, params: {q: 'member', discussion_id: discussion.id}
+            expect(response.status).to eq 200
+            expect(JSON.parse(response.body)['users'].length).to eq 1
+            expect(JSON.parse(response.body)['users'][0]['id']).to eq member.id
+          end
+
+          it 'returns subgroup members' do
+            get :search, params: {q: 'subgroup_member', discussion_id: discussion.id}
+            expect(response.status).to eq 200
+            expect(JSON.parse(response.body)['users'].length).to eq 1
+            expect(JSON.parse(response.body)['users'][0]['id']).to eq subgroup_member.id
+          end
+
+          it 'does not return another organizations members' do
+            get :search, params: {q: 'other_member', discussion_id: discussion.id}
+            expect(response.status).to eq 200
+            expect(JSON.parse(response.body)['users'].length).to eq 0
+          end
+          it 'does not return unrelated users'
+        end
+
+        context "as group member" do
+          context "group.members_can_add_guests=true" do
+            it 'returns group members'
+            it 'returns subgroup members'
+            it 'does not return other members'
+          end
+
+          context "group.members_can_add_guests=false" do
+            it 'returns group members'
+            it 'does not return subgroup members'
+            it 'does not return other members'
+          end
+        end
+      end
+    end
+
+    context "poll" do
+      context "without group or discussion" do
+        context "as poll admin" do
+          it 'returns member of actors groups'
+          it 'returns guest of actors threads'
+        end
+
+        context "as poll member" do
+        end
+      end
+
+      context "in discussion, without group" do
+        context "as discussion admin" do
+          it 'returns member of actors groups'
+          it 'returns guest of thread'
+        end
+
+        context "as discussion member" do
+          # not sure
+          # it 'does not return member of actors groups'
+          # it 'does not return guest of thread'
+        end
+      end
+
+      context "in group" do
+        context "as group admin" do
+            # context members_can_add_guests is false
+            it 'returns group members'
+            it 'returns subgroup members'
+            it 'does not return unrelated users'
+        end
+        context "as group member" do
+          context "group.members_can_add_guests=true" do
+            it 'returns group members'
+            it 'returns subgroup members'
+            it 'does not return other members'
+          end
+
+          context "group.members_can_add_guests=false" do
+            it 'returns group members'
+            it 'does not return subgroup members'
+            it 'does not return other members'
+          end
+        end
+      end
+
+      context "in group and discussion" do
+        context "as group admin" do
+            # context members_can_add_guests is false
+            it 'returns group members'
+            it 'returns subgroup members'
+            it 'returns discussion guests'
+            it 'does not return unrelated users'
+          end
+        end
+
+        context "as group member, but poll admin" do
+          context "group.members_can_add_guests=true" do
+            it 'returns group members'
+            it 'returns subgroup members'
+            it 'returns discussion guests'
+            it 'does not return other members'
+          end
+
+          context "group.members_can_add_guests=false" do
+            it 'returns group members'
+            it 'returns (existing) discussion guests'
+            it 'does not return subgroup members'
+            it 'does not return other members'
+          end
+        end
+      end
+    end
 
   # describe 'audience' do
   #   let(:group)      { create :group }
