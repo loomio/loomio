@@ -511,7 +511,7 @@ pl:
     discussion_edited: "<strong>{{name}}</strong>edytował wątek <strong>{{title}}</strong>"
     discussion_announced: "<strong>{{name}}</strong>udostępnił wątek <strong> {{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> stworzył/a propozycję <strong>{{title}}</strong>"
-    motion_closed: "Wniosek zamknięta: <strong>{{title}}</strong>"
+    motion_closed: "Propozycja zamknięta: <strong>{{title}}</strong>"
     publish_outcome: "Opublikuj rezultat"
     motion_closed_by_user: "<strong>{{name}}</strong> zamknął/a propozycję <strong>{{title}}</strong>"
     motion_closed_by_expiry: "Wniosek został zamknięty <strong>{{title}}</strong>"
@@ -627,6 +627,7 @@ pl:
       discussion_announced:
         title: Zaproś do wątku
         helptext: Kogo chciałbyś zaprosić do wątku?
+        notify_helptext: Chcesz otrzymywać powiadomienia odnośnie tego wątku?
       discussion_edited:
         title: Powiadamiaj o zmianach
         helptext: Kogo chcesz powiadomić o tej aktualizacji? (opcjonalne)
@@ -639,12 +640,15 @@ pl:
       outcome_announced:
         title: Udostępnij wynik
         helptext: Podsumuj wyniki całego procesu, włączając wszystkie perspektywy i problemy, na które zwrócono uwagę.
-      anyone_can_participate: Każdy z linkiem może wziąć udział
-      placeholder: Podaj nazwy lub adresy email
+      anyone_can_participate: Każda osoba z linkiem może wziąć udział
+      placeholder: Możesz podać nazwiska i adresy email
       notified_empty: 'Nie wybrano jeszcze nikogo'
-      notified: '{{powiadomione}} osoby zostaną powiadomione:'
-      notified_singular: '1 osoba zostanie powiadomiona:'
+      notified: '{{notified}} osoby zostaną powiadomione.'
+      notified_singular: '1 osoba zostanie powiadomiona.'
+      notified_none: 'Nikt nie zostanie powiadomiony.'
       group_title: '{{name}} ({{count}} osób)'
+      visible_to_group: 'Każdy w {{group}} będzie mógł zobaczyć ten wątek.'
+      visible_to_guests: 'Tylko zaproszone osoby mogą zobaczyć ten wątek.'
     members_list:
       title: Dzielone z
       last_notified: Powiadomiony
@@ -840,7 +844,7 @@ pl:
     search_threads: Szukaj wątków...
     private_threads: Musisz być w tej grupie, by widzieć jej prywatne wątki.
     no_more_threads: Brak wątków do załadowania
-    view_closed_threads: 'Czegoś brakuje? <a href="{{url}}">Zobacz zamknięte wątki</a>'
+    view_closed_threads: 'Przejrzyj wszystkie zamknięte wątki '
     messages:
       privacy:
         members: 'Ta grupa jest teraz widoczna tylko dla członków'
@@ -1416,6 +1420,7 @@ pl:
     your_response: Twoja odpowiedź
     change_your_response: Edytuj odpowiedź
     reason: Powód
+    reason_placeholder: "Wyjaśnij krótko dlaczego głosujesz w ten sposób, a następnie kliknij \"Zatwiedź głos\""
     message: Wiadomość
     results: Wyniki
     responses: Odpowiedzi
@@ -1432,6 +1437,7 @@ pl:
     details: Detale
     participant_name: Twoje imię
     participant_email: Adres e-mail
+    submit_vote: Zatwierdź głos
     share_poll: Udostępnij ankietę
     share_proposal: Udostępnij propozycję
     share_count: Sprawdź udostępnienie
@@ -1439,6 +1445,7 @@ pl:
     publish_poll: Udostępnij ankietę
     view_all: Pokaż wszystkie
     save_changes: Zapisz
+    change_vote: Zmień swój głos
     max_score: Maksymalny wynik
     min_score: Minimalny wynik
     too_long: Za długo
@@ -1456,6 +1463,8 @@ pl:
       options_added: Dodano nowe opcje
   poll_common_card:
     show_results: Pokaż wyniki
+    hide_results: Ukryj wyniki
+    deleted: Ta ankieta została usunięta
   poll_common_index_card:
     title: Poprzednie decyzje
     no_polls: Nie znaleziono wcześniejszych decyzji
@@ -1489,28 +1498,90 @@ pl:
     invitations: 'Zaproszenia'
     requests: 'Zapytania'
     admin: 'Administrator'
+    guest: 'Gość'
     sharable_link: 'Link do udostępniania'
     last_seen: 'Ostatnio widziany {{date}}'
     invited_by_name: 'Zaproszony przez {{name}}'
     accepted: 'Członkowie'
   polls_panel:
     new_poll: Nowy sondaż
+    any_type: 'Wszystkie rodzaje'
     all: 'Wszystko'
     open: 'Otwarta'
     closed: 'Zamknięta'
+    no_polls: 'Nie znaleziono sondaży'
+  group_files_panel:
+    no_files: Nie znaleziono plików
+    filename: 'Nazwa pliku '
+    uploaded_by: Przesłane przez
+    uploaded_at: 'Przesłane o '
+    delete_confirmation: |
+        Czy na pewno chcesz usunąć ten załącznik? Zostanie on usunięty z każdego powiązanego komentarza lub wątku. Nie można tego cofnąć.
+  subgroups_panel:
+    group_without_subgroups: '{{name}} bez podgrup'
+  poll_common_action_panel:
+    anonymous: Głosy są anonimowe
   current_polls_card:
     start_poll: Nowa decyzja
   poll_common_select_group:
     loomio_group: Grupa
+    loomio_group_placeholder: (żadna grupa nie została wybrana)
   poll_common_notify_group:
+    notify_group: Ogłoszenie
+    members_helptext: Twoja grupa zostanie powiadomiona
     members_count: "{{count}} osób zostanie powiadomionych"
   poll_common_calendar_invite:
+    poll_option_id: Czas spotkania
+    helptext_on: Użytkownik będzie mógł dodać to spotkanie do swojego kalendarza
+    helptext_off: Zaproszenie na spotkanie nie zostanie wysłane
+    event_duration: Czas trwania
+    event_summary: Nazwa spotkania
+    event_summary_placeholder: Jak chcesz nazwać to spotkanie?
+    event_description: Opis spotkania
+    event_description_placeholder: Jaki jest program tego spotkania?
     location: Lokalizacja
+    location_placeholder: Gdzie odbędzie się to spotkanie?
   poll_common_settings:
+    who_can_vote: 'Kto może głosować?'
+    specified_voters_only_true: Tylko dla zaproszonych osób
+    specified_voters_only_false_group: Wszyscy w grupie
+    specified_voters_only_false_discussion: 'Każdy w wątku '
+    invite_people_next: Możesz wybrać, kto zostanie zaproszony do głosowania po rozpoczęciu {{poll_type}}
+    multiple_choice:
+      title: Wielokrotny wybór
+      helptext_on: Po wybraniu uczestnicy będą mogli wybrać wiele opcji.
     anyone_can_participate:
       title: Każdy z linkiem może wziąć udział
+      helptext_on: 'Po wybraniu każda osoba z linkiem do ankiety może wziąć udział. '
     notify_on_closing_soon:
+      nobody: Nikt
+      author: Autor (ja)
       undecided_voters: Niezdecydowani
+      voters: Wszyscy głosujący
+    notify_on_participate:
+      title: Powiadamiaj mnie, gdy ludzie biorą udział
+      helptext_on: Po wybraniu otrzymasz powiadomienie za każdym razem, gdy ktoś weźmie udział.
+    anonymous:
+      title: Anonimowi głosujący
+      helptext_on: Po wybraniu informacje o uczestniku nie będą wyświetlane przy każdej odpowiedzi.
+    voter_can_add_options:
+      title: 'Głosujący mogą dodawać opcje '
+      helptext_on: Po wybraniu uczestnicy mogą dodawać własne opcje podczas głosowania.
+    hide_results_until_closed:
+      helptext_on: Nie pokazuj, jak głosowali inni, dopóki ankieta nie zostanie zamknięta
+  poll_common_close_form:
+    title: Zamknij ankietę wcześniej
+    close_proposal: Zamknij propozycję
+    close_poll: Zamknij ankietę
+    dot_vote_closed: Głosowanie punktowe jest zamknięte
+  poll_common_wip_field:
+    title: Praca w toku
+  poll_common_closing_at_field:
+    closing: Zamykanie
+    no_closing_date: Brak daty zamknięcia
+    closing_date: Data zamknięcia
+    closing_hour: Czas zamknięcia
+    invalid_date: Niepoprawna data
   poll_common_votes_panel:
     newest_first: Najpierw najnowszy
   poll_common_set_outcome_panel:
@@ -1518,17 +1589,59 @@ pl:
   poll_common_outcome_form:
     update_title: Zaktualizuj wynik
     submit: Udostępnij wynik
+  poll_common_delete_modal:
+    question: Czy na pewno chcesz to usunąć?
+    title: Usuń {{pollType}}
   poll_common_form:
+    title: Tytuł
     details: Detale
+    options: Opcje
+    options_placeholder: Wymień dostępne opcje
+    closing: Zamykanie
     closed: Zamknięta
     start: Rozpocznij
+    start_poll_type: Rozpocznij {{poll_type}}
+    share_poll_type: Udostępnij {{poll_type}}
     update: Zaktualizuj
+  poll_proposal_form:
+    edit_header: Edytuj propozycję
   poll_poll_form:
+    start_header: Rozpocznij ankietę
     edit_header: Edytuj ankietę
+    add_option_placeholder: Dodaj opcję
+    remove_option: Usuń opcję
+    poll_created: Utworzono ankietę
+    poll_updated: Zaktualizowano ankietę
+  poll_dot_vote_form:
+    add_option_placeholder: Dodaj opcję
+  poll_score_form:
+    add_option_placeholder: Dodaj opcję
+  poll_meeting_form:
+    meeting_created: Utworzono ankietę czasową
+    meeting_updated: Zaktualizowano ankietę czasową
+    timeslots: Przedziały czasowe
+    meeting_duration: Czas trwania spotkania
+    time_slot_added: Dodano przedział czasowy
+    time_slot_already_added: Przedział czasowy został już dodany
   poll_ranked_choice_form:
+    title_placeholder: Np. Kto wg Ciebie powinien być burmistrzem?
+    add_option_placeholder: Wprowadź nowy wybór
     rank: Ranga
+    points: Punkty
+  poll_meeting_time_field:
+    add_time_slot: Dodaj przedział czasowy
+    new_time_slot: Nowy przedział czasowy
+    closing_hour: Godzina zamknięcia
   poll_proposal_vote_form:
     vote: Głosuj
+  poll_proposal_options:
+    abstain: Wstrzymuję się
+    abstain_verb: "wstrzymane"
+    disagree: Nie zgadzam się
+    disagree_verb: "brak zgody"
+    objection: Zastrzeżenia
+    block: Blokuję
+    block_verb: "zablokawane"
   poll_count_options:
     'yes': 'Tak'
     'no': 'Nie'
@@ -1536,20 +1649,54 @@ pl:
     reason_label: Wiadomość
   poll_meeting_chart_panel:
     total: W sumie
+  poll_meeting_vote_form:
+    can_attend: "Może uczestniczyć"
+    stance_created: Zapisano dostępność
+    stance_updated: Zaktualizowano dostępność
+  poll_dot_vote_vote_form:
+    too_many_dots: Użyto zbyt wielu kropek
+  poll_ranked_choice_vote_form:
+    stance_created: Zapisano wybór
+    stance_updated: Zaktualizowano wybór
   thread_item:
     discussion_context_edited: "<strong><a href='/u/{{username}}'>{{autor}}</a></strong> edytował kontekst wątku"
   poll_common_subscribe_form:
     subscribe: Subskrybuj
   auth_form:
+    sign_in: Zaloguj się
+    continue: Kontynuuj
+    create_account: Utwórz konto
+    or_enter_your_email: Lub wprowadź swój adres e-mail
+    more_providers: Więcej
+    email_not_present: Adres e-mail jest wymagany
     invalid_password: "Przepraszamy, to hasło nie zgadza się z tym, które mamy zapisane"
+    enter_your_password: "Wprowadź hasło, aby kontynuować"
     name_placeholder: Twoja nazwa
+    forgot_password: Nie pamiętam hasła
     set_password: Ustaw hasło
+    hello: "Cześć, {{name}}!"
+    already_a_user: Czy posiadasz już konto?
+    instructions: "Kliknij link, aby się zalogować, lub wprowadź poniższy kod:"
+    invalid_code: "Przepraszamy, ten kod nie pasuje. Sprawdź e-mail i spróbuj ponownie."
+    reactivate_link_sent: "Wysłaliśmy Ci wiadomość e-mail z instrukcjami dotyczącymi ponownej aktywacji konta "
+    signed_in: Zalogowano pomyślnie
+    email_verified: Email zweryfikowany pomyślnie
+    name: Nazwa
+    email: E-mail
+    password: Hasło
+    reactivate: Reaktywuj konto
   webhook:
     name_label: Nazwa
   configure_sso:
     title: Single sign-on
+  powered_by:
+    privacy_policy: Polityka prywatności
+    terms_of_service: Warunki usługi
+    front_page: Pierwsza strona
   group_survey:
+    success: Dzięki!
     categories:
+      nonprofit: Organizacje społeczne, pozarządowe i społeczności lokalne
       government: Rząd / samorząd lokalny
       other: Inne
     sizes:
@@ -1572,6 +1719,8 @@ pl:
       project: Grupa projektowa
       forum: Forum
       other: Inne
+    desired_features:
+      archive: 'Rejestrowanie podejmowanych przez nas decyzji lub archiwizowanie informacji '
     referrers:
       google: wyszukiwarka Google
       invitation: Invited to a Loomio group
@@ -1584,5 +1733,8 @@ pl:
     category_question: "Wybierz kategorię, która najlepiej opisuje Twoją grupę"
     anything_else: "Czy jest coś jeszcze, co chciałbyś nam powiedzieć?"
     size_question: "Ile osób jest w twojej grupie?"
+    role: "Jaka jest Twoja rola w grupie?"
+    website: "Adres URL strony"
     usage: "Jak planujesz korzystać z Loomio? Wybierz najlepsze dopasowanie"
+    desired_feature: "Jaki jest główny cel, dla którego zamierzasz korzystać z Loomio? "
     referrer: "How did you hear about Loomio?"

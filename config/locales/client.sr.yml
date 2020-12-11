@@ -190,7 +190,6 @@ sr:
   announcement:
     form:
       invitation_message_label: Poruka
-      placeholder: Unesi imena ili adrese ePošte
   action_dock:
     copy_url: Kopiraj vezu
     edit_stance: Promeni poziciju

@@ -608,8 +608,6 @@ nl_NL:
       outcome_announced:
         title: Deel resultaat
       anyone_can_participate: Iedereen met een link kan deelnemen
-      notified: '{{notified}} personen zullen een melding ontvangen:'
-      notified_singular: '1 persoon krijgt een melding:'
       group_title: '{{name}} ({{count}} personen)'
     members_list:
       title: Gedeeld met
@@ -790,7 +788,6 @@ nl_NL:
     search_threads: Zoeken voor borden...
     private_threads: Je moet lid zijn om de privé borden in deze groep te zien.
     no_more_threads: Geen borden meer
-    view_closed_threads: 'Mis je iets? <a href="{{url}}">Zie gesloten borden</a>'
     messages:
       privacy:
         members: 'Deze groep is nu uitsluitend zichtbaar voor leden'

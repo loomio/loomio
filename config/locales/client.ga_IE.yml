@@ -267,7 +267,6 @@ ga_IE:
   announcement:
     form:
       invitation_message_label: Teachtaireacht
-      placeholder: Cuir ainmneacha nó seoltaí ríomhphoist isteach
   action_dock:
     edit_stance: Athraigh do sheasamh
     edited: Curtha in eagar
