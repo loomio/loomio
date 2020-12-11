@@ -62,7 +62,7 @@ class EventService
     Event.where(id: parent_ids).order(:id).each do |parent_event|
       parent_event.reload
       reset_child_positions(parent_event.id, parent_event.position_key)
-      parent_event.reset_position_counter
+      parent_event.position_counter.delete
     end
 
     # Event.where(id: parent_ids).order(:id).each do |parent_event|

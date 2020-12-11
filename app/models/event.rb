@@ -88,8 +88,9 @@ class Event < ApplicationRecord
   end
 
   def reset_sequences
-    reset_position_counter
-    reset_sequence_id_counter
+    self.position_counter.delete
+    parent.position_counter.delete if parent_id
+    discussion.sequence_id_counter.delete if discussion_id
   end
 
   def user
@@ -137,7 +138,7 @@ class Event < ApplicationRecord
   def set_sequence_id
     return unless discussion_id
     return if sequence_id
-    self.sequence_id = next_sequence_id
+    self.sequence_id = next_sequence_id!
   end
 
   def self.zero_fill(num)
@@ -188,17 +189,9 @@ class Event < ApplicationRecord
     [self, (parent && parent.discussion_id && parent.self_and_parents)].flatten.compact
   end
 
-  def next_sequence_id
+  def next_sequence_id!
     reset_sequence_id_counter if discussion.sequence_id_counter.nil?
     discussion.sequence_id_counter.increment
-  end
-
-  def reset_sequence_id_counter
-    return unless self.discussion_id
-    discussion.reset_sequence_id_counter_lock do
-      val = (Event.where(discussion_id: discussion_id).order("sequence_id DESC").limit(1).pluck(:sequence_id).first || 0)
-      discussion.sequence_id_counter.reset(val)
-    end
   end
 
   def next_position!
@@ -207,8 +200,18 @@ class Event < ApplicationRecord
     parent.position_counter.increment
   end
 
+  def reset_sequence_id_counter
+    return unless self.discussion_id
+    discussion.reset_sequence_id_counter_lock do
+      return unless discussion.sequence_id_counter.nil?
+      val = (Event.where(discussion_id: discussion_id).order("sequence_id DESC").limit(1).pluck(:sequence_id).first || 0)
+      discussion.sequence_id_counter.reset(val)
+    end
+  end
+
   def reset_position_counter
     reset_position_counter_lock do
+      return unless self.position_counter.nil?
       val = (Event.where(parent_id: id,
                          discussion_id: discussion_id).order("position DESC").limit(1).pluck(:position).last || 0)
       self.position_counter.reset(val)
