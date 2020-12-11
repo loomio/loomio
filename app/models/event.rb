@@ -145,12 +145,6 @@ class Event < ApplicationRecord
     "0" * (5 - num.to_s.length) + num.to_s
   end
 
-  def set_position_and_position_key!
-    return unless discussion_id
-    set_position_and_position_key
-    update_columns(position: position, position_key: position_key)
-  end
-
   def set_position_and_position_key
     return unless discussion_id
     return unless position == 0
