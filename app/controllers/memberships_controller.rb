@@ -14,6 +14,10 @@ class MembershipsController < ApplicationController
     redirect_to join_url(Group.find_by!(token: params[:token]))
   end
 
+  def consume
+    head :ok
+  end
+
   private
 
   def target_for(membership)

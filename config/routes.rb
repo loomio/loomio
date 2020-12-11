@@ -308,6 +308,7 @@ Loomio::Application.routes.draw do
   get '/login_tokens/:token'               => 'login_tokens#show',           as: :login_token
   get '/invitations/:token'                => 'memberships#show',            as: :membership
   get '/join/:model/:token'                => 'memberships#join',            as: :join
+  get '/invitations/consume'               => 'memberships#consume'
 
   get '/donate'                            => redirect('410.html')
   get '/users/invitation/accept'           => redirect('410.html')

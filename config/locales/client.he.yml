@@ -445,8 +445,6 @@ he:
       outcome_announced:
         title: שתפ/י תוצאה
       anyone_can_participate: כל אחד עם לינק יכול להשתתף
-      notified: '{{notified}} אנשים יעודכנו:'
-      notified_singular: 'אדם אחד יעודכן:'
       group_title: '{{name}} ({{count}} אנשים)'
     members_list:
       title: שותף עם

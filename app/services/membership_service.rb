@@ -17,18 +17,20 @@ class MembershipService
     # they may be accepting memberships send to a different email (unverified_user)
 
     group_ids = membership.group.parent_or_self.id_and_subgroup_ids
-    existing_group_ids = Membership.where(user_id: actor.id).pluck(:group_id)
 
-    count = Membership.pending.where(
-              user_id: membership.user_id,
-              group_id: (group_ids - existing_group_ids)).
-            update_all(
-              user_id: actor.id,
-              accepted_at: DateTime.now,
-              saml_session_expires_at: expires_at)
+    # cant accept pending memberships to groups I already belong to
+    existing_group_ids = Membership.pending.where(user_id: membership.user_id,
+                                                  group_id: actor.memberships.accepted.pluck(:group_id)).pluck(:group_id)
 
-    membership.reload if membership.persisted?
+    Membership.pending.where(
+      user_id: membership.user_id,
+      group_id: (group_ids - existing_group_ids)).
+    update_all(
+      user_id: actor.id,
+      accepted_at: DateTime.now,
+      saml_session_expires_at: expires_at)
 
+    membership.reload
     Events::InvitationAccepted.publish!(membership) if notify && membership.accepted_at
   end
 

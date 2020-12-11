@@ -607,9 +607,6 @@ fr:
       outcome_announced:
         title: Partager le résultat
       anyone_can_participate: N’importe qui ayant un lien peut participer.
-      placeholder: Entrer les noms ou les adresses courriel
-      notified: '{{notified}} personnes seront notifiées :'
-      notified_singular: '1 personne sera notifiée :'
       group_title: '{{name}} ({{count}} personnes)'
     members_list:
       title: Partagé avec
@@ -790,7 +787,6 @@ fr:
     search_threads: Rechercher des discussions…
     private_threads: Vous devez être membre du groupe pour voir des discussions privées de ce groupe
     no_more_threads: Aucune discussions supplémentaire à charger
-    view_closed_threads: 'Vous avez perdu quelquechose ? <a href="{{url}}">Visualisez les discussions fermées</a>'
     messages:
       privacy:
         members: 'Ce groupe est désormais visible uniquement aux membres'
