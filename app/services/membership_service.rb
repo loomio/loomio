@@ -12,31 +12,26 @@ class MembershipService
       nil
     end
 
-    # there are cases where we may already have a membership for this user,group
-    # membership isn't persisted, but there is an existing membership with this user_id, group_id.. then return
-    # membership is persisted, but assigned to another user_id (unverified) currently
-    # membership is persisted, assied to this actor and we just want to accept it.
-    # return if Membership.where("id != ?", membership.id).where(group_id: membership.group_id, user_id: actor.id).exists?
-
-    # so we need to accept all the pending invitations this person has been sent within this org
+    # so we want to accept all the pending invitations this person has been sent within this org
     # and we dont want any surprises if they already have some memberships.
     # they may be accepting memberships send to a different email (unverified_user)
 
     group_ids = membership.group.parent_or_self.id_and_subgroup_ids
-    ignore_ids = Membership.accepted.where(group_id: group_ids, user_id: actor.id).pluck(:group_id)
+
+    # cant accept pending memberships to groups I already belong to
+    existing_group_ids = Membership.pending.where(user_id: membership.user_id,
+                                                  group_id: actor.memberships.accepted.pluck(:group_id)).pluck(:group_id)
 
     Membership.pending.where(
       user_id: membership.user_id,
-      group_id: (group_ids - ignore_ids)).
-    update_all(user_id: actor.id,
-               accepted_at: DateTime.now,
-               saml_session_expires_at: expires_at)
+      group_id: (group_ids - existing_group_ids)).
+    update_all(
+      user_id: actor.id,
+      accepted_at: DateTime.now,
+      saml_session_expires_at: expires_at)
 
-    Membership.pending.where(user_id: membership.user_id, group_id: ignore_ids).destroy_all
-
-    membership.reload if membership.persisted?
-
-    Events::InvitationAccepted.publish!(membership) if notify
+    membership.reload
+    Events::InvitationAccepted.publish!(membership) if notify && membership.accepted_at
   end
 
   def self.update(membership:, params:, actor:)

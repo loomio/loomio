@@ -628,6 +628,7 @@ es:
       discussion_announced:
         title: Invitar al hilo
         helptext: ¿A quién le gustaría invitar a este hilo?
+        notify_helptext: ¿A quien le gustaría notificar sobre este hilo?
       discussion_edited:
         title: Notificar cambios
         helptext: ¿A quién te gustaría notificar sobre esta actualización? (opcional)
@@ -641,11 +642,14 @@ es:
         title: Compartr resultado
         helptext: Resumir los resultados del proceso, incluyendo cualquier entendimiento encontrado o problemas sacados a la luz.
       anyone_can_participate: Cualquiera con el enlace puede paticipar
-      placeholder: Introduce nombres o correos electrónicos
+      placeholder: Puedes introducir nombres o direcciones de correo electrónico
       notified_empty: 'No se ha seleccionado a nadie todavía'
-      notified: '{{notified}} personas serán notificadas:'
+      notified: '{{notified}} gente será notificada.'
       notified_singular: '1 persona será notificada'
+      notified_none: 'Nadie será notificado.'
       group_title: '{{name}} ({{count}} personas)'
+      visible_to_group: 'Cualquiera en {{group}} será capaz de ver este hilo.'
+      visible_to_guests: 'Solamente la gente invitada puede ver este hilo.'
     members_list:
       title: Compartido con
       last_notified: Notificado
@@ -841,7 +845,6 @@ es:
     search_threads: Buscar hilos ...
     private_threads: Usted debe ser un integrante para ver los hilos privados de este grupo
     no_more_threads: No más hilos para cargar
-    view_closed_threads: 'Echas en falta algo? <a href="{{url}}">Ver hilos cerrados</a>'
     messages:
       privacy:
         members: 'Ahora este grupo es visible sólo para integrantes.'
@@ -1914,6 +1917,7 @@ es:
     youre_invited: Te han invitado a unirte al grupo {{group_name}}.
     youre_invited_discussion: Te han invitado a unirte a la conversación.
     youre_invited_poll: Te han invitado a votar.
+    existing_account_can_sign_in: Si ya eres un usuario {{site_name}}, inicia sesión con tu cuenta existente
     sign_in_to_loomio: Registrarse en {{site_name}}
     sign_in_help: ¿Problemas para iniciar sesión?
     sign_in: Entrar

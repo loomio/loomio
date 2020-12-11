@@ -915,7 +915,7 @@ en:
     search_threads: Search for threads...
     private_threads: You'll need to be a member to view private threads in this group
     no_more_threads: No more threads to load
-    view_closed_threads: 'Missing something? <a href="{{url}}">View closed threads</a>'
+    view_closed_threads: 'View closed threads'
     messages:
       privacy:
         members: 'This group is now visible only to members'

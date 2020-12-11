@@ -319,7 +319,7 @@ ar:
         normal: "سيتم إرسال بريد إلكتروني حول المقترحات في هذا الموضوع"
         quiet: "لن يتم إرسال بريد إلكتروني حول هذا الموضوع"
     membership:
-      title: " {{title}} إخطارات"
+      title: " {{عنوان}} إخطارات"
       loud_description: "ستتلقى رسالة إلكترونية بأي نشاط في هذه المجموعة"
       normal_description: "ستتلقى رسالة إلكترونية بأي نشاط في هذه المجموعة"
       quiet_description: "لن يتم إرسال بريد إلكتروني حول النشاط في هذه المجموعة"
@@ -390,7 +390,7 @@ ar:
       remove_attachment: 'حذف المرفق'
     messages:
       created: 'تمت إضافة التعليق'
-      replied: 'تم إبلاغ {{name}} بالرد'
+      replied: 'تم إبلاغ {{اسم}} بالرد'
       updated: 'تم تحديث التعليق'
       destroyed: 'تم حذف التعليق'
       removed: 'تمت إزالة التعليق'
@@ -400,7 +400,7 @@ ar:
     cancel_reply: 'إلغاء الرد'
     confirm_delete_message: 'هل أنت متأكد من أنك تريد حذف هذا التعليق؟'
     confirm_delete: 'حذف التعليق'
-    in_reply_to: "إجابة على {{name}}"
+    in_reply_to: "إجابة على {{اسم}}"
     write_a_comment: "أكتب تعليقا..."
     post_comment: "أكتب تعليقا"
     submit_button:
@@ -640,10 +640,8 @@ ar:
         title: نتائج حصة
         helptext: لخص نتائج العملية ، بما في ذلك أي تفاهمات أو قضايا تم إبرازها.
       anyone_can_participate: يمكن لأي شخص لديه رابط المشاركة
-      placeholder: أدخل الأسماء أو عناوين البريد الإلكتروني
       notified_empty: 'لم يتم اختيار أحد حتى الآن'
-      notified: '{{إخطر}} سيتم إخطار الأشخاص:'
-      notified_singular: 'سيتم إخطار شخص واحد:'
+      notified_singular: 'سيتم إعلام شخص واحد.'
       group_title: '{{اسم}} ({{عدد}} شخصًا)'
     members_list:
       title: مشترك مع
@@ -839,7 +837,6 @@ ar:
     search_threads: البحث عن المواضيع ...
     private_threads: ستحتاج إلى أن تكون عضوًا لعرض المواضيع الخاصة في هذه المجموعة
     no_more_threads: لا مزيد من المواضيع للتحميل
-    view_closed_threads: 'شيء مفقود؟ عرض المواضيع المغلقة'
     messages:
       privacy:
         members: 'هذه المجموعة ظاهرة الآن للأعضاء فقط.'
@@ -1223,11 +1220,11 @@ ar:
       muted_aria_label: يتم إظهار المواضيع الصامتة
       muted_description: إظهار المواضيع الصامتة فقط
     aria_thread:
-      unread: '{{count}} مادة غير مقروءة'
-      current_proposal: 'الموضوع الحالي: {{name}}.'
-      you_voted: 'لقد قمت بالتصويت: {{position}}.'
+      unread: '{{عدد}} مادة غير مقروءة'
+      current_proposal: 'الموضوع الحالي: {{اسم}}.'
+      you_voted: 'لقد قمت بالتصويت: {{موضع}}.'
     thread_preview:
-      you_voted: ' {{position}} انت ادليت بصوتك'
+      you_voted: ' {{موضع}} انت ادليت بصوتك'
       undecided: 'أنت متردد'
     threads_from:
       group: 'المواضيع من'
@@ -1263,7 +1260,7 @@ ar:
     activity: 'النشاط'
     activity_placeholder: 'لا يوجد نشاط بعد!'
     load_previous: 'تحميل النشاطات السابقة'
-    started_by: 'تم بدؤه من قبل <strong>{{name}}</strong> '
+    started_by: 'تم بدؤه من قبل <strong>{{اسم}}</strong> '
     pin:
       pinned: 'موضوع مثبت'
       unpinned: 'تم فك الخيط'
@@ -1317,7 +1314,7 @@ ar:
     print_thread: 'طباعة'
     delete_thread: 'حذف'
     add_comment: 'تعليق'
-    seen_by_count: 'تمت رؤيته من قِبل {{count}}'
+    seen_by_count: 'تمت رؤيته من قِبل {{عدد}}'
     forked_from: "متشعب من"
   pin_thread_modal:
     title: دبوس الخيط
@@ -1350,9 +1347,9 @@ ar:
     title: نقل الموضوع
     body: مجموعة الوجهة
     confirm: 'نقل الموضوع '
-    confirm_change_to_private_thread: '{{groupName}} هي مجموعة مفتوحة. إن اخترت الاستمرار، سيتم تحويل هذا الموضوع إلى عام.'
+    confirm_change_to_private_thread: '{{اسم المجموعة}} هي مجموعة مفتوحة. إن اخترت الاستمرار، سيتم تحويل هذا الموضوع إلى عام.'
     messages:
-      success: تم نقل الموضوع إلى {{name}}
+      success: تم نقل الموضوع إلى {{اسم}}
   delete_comment_dialog:
     title: 'احذف التعليق'
     question: 'هل أنت متأكد من أنك تريد حذف هذا التعليق؟'
@@ -1388,104 +1385,651 @@ ar:
   explore_page:
     header: استكشف المجموعات
     search_placeholder: ابحث عن المجموعات العامة
+    single_search_result: "مجموعة عامة واحدة تتطابق مع {{مصطلح البحث}}:"
+    multiple_search_results: "{{نتيجة العد}} مجموعات عامة تطابق {{مصطلح البحث}}:"
+    no_results_found: "لا يمكنك العثور على المجموعة التي تبحث عنها؟ إذا تم تعيين خصوصية المجموعة على \"سرية\" ، فلن تظهر هنا."
+    newest_first: الأحدث أولاً
+    biggest_first: الأكبر أولا
+    order_by: ترتيب المجموعات حسب
   global:
     messages:
       app_update: 'هناك نسخة جديدة متوفرة من التطبيق'
       reload: 'إعادة تحميل'
   decision_tools_card:
+    choose_type: اختر نوع الاستطلاع
     title: تسهيل
+    help_text: مساعدة
     proposal_title: اقتراح
+    count_title: التحقق من
     poll_title: استطلاع رأي
+    score_title: يسجل الاستطلاع
+    dot_vote_title: نقطة التصويت
     meeting_title: استطلاع الوقت
+    ranked_choice_title: اختيار مصنف
   poll_common:
+    vote_now: صوت الان
+    review_due: المراجعة المستحقة
     have_your_say: 'شارك برأيك '
+    your_response: ردك
+    change_your_response: تحرير الرد
     reason: السبب
+    reason_placeholder: "اشرح بإيجاز سبب تصويتك بهذه الطريقة ، ثم انقر فوق \"إرسال التصويت\""
     message: رسالة
     results: النتائج
     responses: استجابات
+    close_poll_type: اغلق {{نوع الاستطلاع}}
+    totals: المجاميع
+    participate: مشاركة
     vote: صوت
     votes: أصوات
+    update_outcome: نتيجة التحديث
+    outcome: النتيجة
+    statement: بيان
+    change_your_stance: تحرير الرد
+    load_more: تحميل المزيد
     details: التفاصيل
+    participant_name: اسمك
+    participant_email: عنوان بريد الكتروني
+    submit_vote: إرسال التصويت
+    update_vote: تحديث التصويت
+    share_poll: مشاركة الاستطلاع
+    share_proposal: مشاركة الاقتراح
+    share_count: حصة الشيك
     start_poll: بدء قرار
+    publish_poll: مشاركة الاستطلاع
+    view_all: مشاهدة الكل
     save_changes: حفظ
+    change_vote: غيّر تصويتك
+    max_score: أقصى درجة
+    min_score: الحد الأدنى من النقاط
+    too_long: طويل جدا
+    edit_warning: يوصى بالتحرير فقط لإجراء تغييرات طفيفة أو لإصلاح الأخطاء الإملائية.لإجراء تغييرات مهمة ، أغلق {{نوع الاستطلاع}} وابدأ واحدة جديدة.
+    no_voting: للمناقشة فقط ، التصويت معطل
   poll_common_attachment_form:
     label: المرفقات
+  poll_common_add_option:
+    button:
+      add_option: أضف خيارًا آخر
+    modal:
+      title: أضف خيارًا
+    form:
+      add_options: أضف خيارات
+      options_added: تمت إضافة خيارات جديدة
+  poll_common_card:
+    show_results: أظهر النتائج
+    hide_results: إخفاء النتائج
+    deleted: تم حذف هذا الاستطلاع
   poll_common_index_card:
+    title: قرارات سابقة
+    no_polls: لم يتم العثور على قرارات سابقة
     count: "مشاهدة كافة: ({عدد}}) القرارات"
   discussions_panel:
     open: مفتوحة
     all: الكل
     unread: غير مقروءة ({{عدد}})
     closed: مغلقة
+    include_subgroups_mine: '{{اسم}} ومجموعاتي الفرعية'
+    include_subgroups_all: '{{اسم}} وجميع المجموعات الفرعية'
+    no_results_found: لا توجد نتائج لـ "{{بحث}}"
   members_panel:
+    no_results: 'لم يتم العثور على أعضاء'
+    everyone: 'كل واحد'
+    sort: 'فرز'
+    order_label: "طلب"
     order_by_name: 'الاسم '
     order_by_created: 'الأقدم'
     order_by_created_desc: 'الأحدث'
+    order_by_admin_desc: 'المشرفون'
+    loaded_of_total: '{{تحميل}} من {{الجميع}}'
+    view_requests: عرض الطلبات
     header_name: 'الاسم '
     header_username: 'إسم المستخدم'
+    header_role: 'وظيفة'
+    header_invited_by: 'بدعوة من'
+    header_invited: 'مدعو'
+    header_actions: 'أجراءات'
+    directory: 'الدليل'
     invitations: 'الدعوات'
+    requests: 'الطلبات'
     admin: 'مسؤل '
+    guest: 'زائر'
+    sharable_link: 'رابط قابل للمشاركة'
+    last_seen: 'آخر ظهور {{تاريخ}}'
+    invited_by_name: 'بدعوة من {{اسم}}'
+    only_in_subgroups: "ليس في هذه المجموعة ولكنه ينتمي إلى {{اسم}}."
     accepted: 'أعضاء'
   polls_panel:
+    new_poll: استطلاع جديد
+    any_type: 'استطلاع جديد'
+    any_status: 'أي حال أو أية حالة'
     all: 'الكل'
     open: 'مفتوحة'
     closed: 'مغلقة'
+    no_polls: 'لم يتم العثور على استطلاعات الرأي'
+  group_files_panel:
+    no_files: لا توجد ملفات
+    filename: اسم الملف
+    uploaded_by: تم الرفع بواسطة
+    uploaded_at: تم الرفع في
+    delete_confirmation: |
+        هل أنت متأكد أنك تريد حذف هذا المرفق؟ ستتم إزالته من أي تعليق أو موضوع مرتبط. لا يمكن التراجع عن هذا.
+  subgroups_panel:
+    search_subgroups_of_name: 'بحث عن مجموعات فرعية لـ {{اسم}}'
+    group_without_subgroups: '{{اسم}} بدون مجموعات فرعية'
+  poll_common_action_panel:
+    anonymous: الأصوات مجهولة
+    results_hidden_until_closed: يتم إخفاء النتائج حتى يتم إغلاق٪ {نوع الاستطلاع}
+    unable_to_vote: لم تتم دعوتك للتصويت في٪ {نوع الاستطلاع} هذا.
+    draft_mode: ٪ {نوع الاستطلاع} هذا عمل قيد التقدم. التصويت معطل.
   current_polls_card:
+    title: القرارات الحالية
     start_poll: قرار جديد
+    no_polls: لا توجد قرارات نشطة الآن.
+  poll_common_collapsed:
+    by_who: "ب{{الاسم}}"
   poll_common_select_group:
     loomio_group: الفريق
+    loomio_group_placeholder: (لم يتم اختيار أي مجموعة)
   poll_common_notify_group:
     notify_group: إعلان
+    members_helptext: لن يتم إخطار مجموعتك
     members_count: "سيتم إخطار {{عدد}} من الأشخاص"
+    decided_voters_count: "سيتم إخطار {{عدد}} الأشخاص الذين صوتوا"
   poll_common_calendar_invite:
+    calendar_invite: تضمين دعوة التقويم مع هذه النتيجة
+    poll_option_id: وقت الاجتماع
+    helptext_on: سيتمكن المستخدمون من إضافة هذا الاجتماع إلى التقويم الخاص بهم
+    helptext_off: لن يتم إرسال أي دعوة للاجتماع
+    event_duration: المدة الزمنية
+    event_summary: اسم الاجتماع
+    event_summary_placeholder: ماذا تريد أن تسمي هذا الاجتماع؟
+    event_description: وصف الاجتماع
+    event_description_placeholder: ما هو جدول أعمال هذا الاجتماع؟
     location: موقعك
+    location_placeholder: أين سيعقد هذا الاجتماع؟
   poll_common_settings:
+    who_can_vote: 'من يستطيع التصويت؟'
+    specified_voters_only_true: الأشخاص المدعوون فقط
+    specified_voters_only_false_group: أي شخص في المجموعة
+    specified_voters_only_false_discussion: أي شخص في الموضوع
+    invite_people_next: يمكنك اختيار من تمت دعوته للتصويت بعد أن تبدأ {{نوع الاستطلاع}}
+    multiple_choice:
+      title: متعدد الخيارات
+      helptext_on: عند التحديد ، سيتمكن المشاركون من تحديد خيارات متعددة.
     anyone_can_participate:
       title: يمكن لأي شخص لديه رابط المشاركة
+      helptext_on: عند التحديد ، يمكن لأي شخص لديه رابط الاستطلاع المشاركة.
     notify_on_closing_soon:
+      closes_too_soon: نظرًا لإغلاق {{نوع الاستطلاع}} هذا في غضون 24 ساعة ، فلن يتم إرسال تذكيرات للإغلاق قريبًا.
+      title: قبل 24 ساعة من إغلاق {{نوع الاستطلاع}} ، أرسل تذكيرًا إلى
+      nobody: لا أحد
+      author: الكاتب (أنا)
       undecided_voters: ناخبون مترددون
+      voters: كل الناخبين
+    notify_on_participate:
+      title: أعلمني عندما يشارك الناس
+      helptext_on: عند اختيارك ، سيتم إعلامك كلما شارك أحد.
+    anonymous:
+      title: ناخبون مجهولون
+      helptext_on: عند التحديد ، لن يتم عرض معلومات المشترك مع كل إجابة.
+    voter_can_add_options:
+      title: قد يضيف الناخبون خيارات
+      helptext_on: عند تحديد هذا الخيار، يمكن للمشاركين إضافة خيارات خاصة بهم عند التصويت.
+    can_respond_maybe:
+      title: يمكن للناخبين الرد "إذا لزم الأمر"
+      helptext_on: يمكن للناخبين الإشارة إلى الأوقات على أنها "إذا لزم الأمر"
+    hide_results_until_closed:
+      title: إخفاء النتائج حتى الإغلاق
+      helptext_on: لا تظهر كيف صوت الناس حتى يتم إغلاق الاقتراع
+  poll_common_close_form:
+    title: إغلاق الاستطلاع مبكرًا
+    helptext: هل أنت متأكد أنك تريد إغلاق٪ {نوع الاستطلاع} مبكرًا؟
+    close_proposal: اقتراح وثيق
+    close_poll: إغلاق الاقتراع
+    close_count: إغلاق الشيك
+    close_dot_vote: إغلاق نقطة التصويت
+    close_meeting: إغلاق وقت الاستطلاع
+    close_ranked_choice: إغلاق استطلاع الاختيار المرتبة
+    proposal_closed: تم إغلاق الاقتراح
+    poll_closed: استطلاع مغلقة
+    count_closed: الشيك مغلق
+    dot_vote_closed: تم إغلاق التصويت عن بعد
+    meeting_closed: تم إغلاق وقت الاستطلاع
+    ranked_choice_closed: تم إغلاق استطلاع الاختيار المصنف
+  poll_common_reopen_form:
+    title: "إعادة فتح {{نوع الاستطلاع}}"
+    helptext: "أعد فتح {{نوع الاستطلاع}} إذا احتاج الأشخاص إلى مزيد من الوقت للمشاركة"
+    success: "تمت إعادة فتح {{نوع الاستطلاع}}"
+  poll_common_move_form:
+    title: "نقل {{نوع الاستطلاع}}"
+    success: "تم نقل {{نوع الاستطلاع}} إلى {{مجموعة}}"
+  poll_common_wip_field:
+    title: العمل في التقدم
+    helptext: 'استخدم "العمل قيد التقدم" للتعاون في٪ {نوع الاستطلاع} قبل التصويت'
+  poll_common_closing_at_field:
+    closing: إغلاق
+    no_closing_date: لا يوجد تاريخ إغلاق
+    closing_date: تاريخ الإغلاق
+    closing_hour: وقت الإغلاق
+    invalid_date: تاريخ غير صالح
+  poll_card:
+    started_by: بدأ بواسطة {{اسم}}
+  poll_common_votes_panel:
+    undecided: غير محدد
+    newest_first: الأحدث أولاً
+    oldest_first: الأقدم أولا
+    priority_first: توافق أولاً
+    priority_last: الحظر أولاً
+    undecided_first: غير محدد أولا
+    no_votes_yet: لم يتم وضع الأصوات حتى الآن.
+    change_results_order: ترتيب النتائج
+    none_of_the_above: (لا شيء مما سبق)
+  poll_common_undecided_panel:
+    show_undecided: "إظهار {{عدد}} متردد"
+    show_invitations: إظهار الدعوات المعلقة
+    undecided_users: "غير محدد ({{عدد}})"
+    invitation_count_singular: "تمت دعوة شخص إضافي واحد للمشاركة عبر البريد الإلكتروني"
+    invitation_count_plural: "تمت دعوة {{عدد}} أشخاص آخرين للمشاركة عبر البريد الإلكتروني"
+  poll_common_undecided_user:
+    reminded: تم إرسال إشعار التذكير
+    reminder_sent: أدخل النتيجة
   poll_common_set_outcome_panel:
+    enter_outcome: تم إغلاق هذا الاستطلاع. شارك النتيجة مع المجموعة.
     share_outcome: نتائج حصة
+    poll: 'تم إغلاق هذا الاقتراح. يرجى النظر فيما قيل ومشاركة النتيجة ، حتى يعرف الناس ما سيحدث بعد ذلك.'
+    proposal: 'تم إغلاق هذا الشيك. شارك النتيجة لإكمال العملية.'
+    count: 'تم إغلاق الاستطلاع هذا الوقت. شارك بنتيجة لإعلام الآخرين بموعد الاجتماع.'
+    meeting: 'تم إغلاق هذا التصويت النقطي. شارك نتيجة مع المجموعة.'
+    dot_vote: 'تم إغلاق هذا الاستطلاع المصنف بالاختيار. شارك نتيجة مع المجموعة.'
+    ranked_choice: 'تم إغلاق هذا الاستطلاع النتيجة. شارك نتيجة مع المجموعة.'
+    score: 'من الذي تريد إبلاغه بهذه النتيجة؟'
   poll_common_outcome_form:
+    who_to_notify: أدخل نتيجة
+    new_title: أدخل نتيجة
+    update_title: نتيجة التحديث
+    outcome_created: تم إنشاء النتيجة
+    outcome_updated: تم تحديث النتيجة
+    statement_placeholder: لخص الردود واشرح ما سيحدث بعد ذلك.
+    you_will_be_notified: سيتم إخطارك في تاريخ المراجعة.
     submit: نتائج حصة
+  poll_common_outcome_panel:
+    authored_by: 'ب{{الاسم}}'
+  poll_common_delete_modal:
+    question: هل أنت متأكد أنك تريد حذف هذا؟
+    title: حذف {{نوع الاستطلاع}}
+    success: تم الحذف بنجاح
   poll_common_form:
+    title: عنوان
     details: التفاصيل
+    options: خيارات
+    options_placeholder: ضع قائمة بالخيارات المتاحة
+    no_options: لم تقم بإضافة أي خيارات حتى الآن.
+    closing: إغلاق
     closed: مغلقة
     start: بداية
+    start_poll_type: ابدأ {{نوع الاستطلاع}}
+    share_poll_type: مشاركة {{نوع الاستطلاع}}
+    update: تحديث
+    loomio_school_link: |
+        اكتشف المزيد في Loomio Help.
+  poll_proposal_form:
+    tool_tip_expanded: |
+        الاقتراح هو أداة للبحث عن اتفاق جماعي حول بيان أو مسار عمل.
+        يمكن للمشاركين الموافقة أو الامتناع أو الاختلاف أو الحظر - وإعطاء بيان لشرح موقفهم.
+        الرسم البياني الدائري يعطي نظرة عامة على المواقف في المجموعة ، في حين أن البيانات تسمح لسماع الأصوات الفردية.
+        لا تثبط عزيمتك إذا كنت لا ترى اتفاقًا في البداية ، فقد تم تصميم المقترحات لإبراز المشكلات التي تحتاج إلى حل.
+        مع المشاركة الجيدة ، يعد الاقتراح تفويضًا قويًا لاتخاذ الإجراءات.
+    tool_tip_collapsed: ابحث عن اتفاق أو ملاحظات من الآخرين.
+    start_header: بدء الاقتراح
+    edit_header: تحرير الاقتراح
+    tip: ابحث عن اتفاق جماعي من خلال عملية تتيح سماع جميع الأصوات. أعرف أكثر
+    title_placeholder: على سبيل المثال دعنا نذهب إلى القمر!
+    details_placeholder: قدم معلومات كافية حتى يعرف الجميع ما يعنيه الاتفاق أو عدم الموافقة
+    proposal_created: بدأ الاقتراح
+    proposal_updated: تم تحديث الاقتراح
   poll_poll_form:
+    tool_tip_expanded: |
+        استخدم استطلاعًا لقياس الشعبية أو عرض خيار. وفر بعض الخيارات للاختيار من بينها.
+        قرر ما إذا كان المشاركون سيختارون خيارًا فرديًا أو متعددًا كاستجابة لهم.
+        يصوت الجميع ، ويمكنهم إدخال بيان أيضًا إذا رغبوا في ذلك. يتم تمثيل النتائج في رسم بياني شريطي.
+    tool_tip_collapsed: اختر من قائمة الخيارات
+    start_header: ابدأ الاستطلاع
     edit_header: تعديل استطلاع الرأي
+    tip: عرض الاختيار بين الخيارات
+    title_placeholder: على سبيل المثال أين تريد أن تذهب في عطلة؟
+    details_placeholder: قدم أي تفاصيل توضيحية قد يحتاجها الأشخاص للإجابة على السؤال.
+    add_option_placeholder: إضافة خيار
+    remove_option: إزالة الخيار
+    poll_created: تم إنشاء الاستطلاع
+    poll_updated: تم تحديث الاستطلاع
+  poll_count_form:
+    tool_tip_expanded: |
+        الشيك هو أداة لها العديد من الاستخدامات الممكنة ولكن إجابتين فقط: علامة (✔) أو علامة x (✘). سيستخدم المشاركون العلامة (✔) ليقولوا نعم وعلامة x () ليقولوا لا أو غير متأكدين.
+        استخدمه لإشراك الناس مع عرض ، مثل الرد على الدعوة: "أنا قادم إلى الحدث" أو "سأشارك في مجموعة العمل".
+        أو استخدمه لتتبع إكمال المهمة: "لقد تحققت من صحة تفاصيل الاتصال الخاصة بي" ، أو "لقد قرأت المستند وتركت ملاحظاتي".
+        الشيك له هدف ، وهو عدد المشاركين الذي تريده. يشير الهدف إلى المجموعة إذا كان هناك شيء يحتاج إلى مزيد من الاهتمام أو مشترك جيدًا.
+        قبل يوم واحد من إغلاق الشيك ، سيُذكر أولئك الذين لم يشاركوا بالقيام بذلك - مثل راعي القطط الرقمي.
+    tool_tip_collapsed: احسب عدد الأشخاص الذين أكملوا مهمة ما ، أو اطلب متطوعين
+    start_header: ابدأ الفحص
+    edit_header: تحرير الشيك
+    tip: اسأل من أكمل مهمة ، أو يرغب في التطوع
+    title_placeholder: على سبيل المثال من يريد الانضمام إلى مجموعة العمل؟
+    details_placeholder: اشرح الالتزام الذي ينطوي عليه الأمر ، أو قدم تفاصيل حول كيفية المشاركة.
+    count_created: بدأ الاختيار
+    count_updated: تحقق محدثة
+  poll_dot_vote_form:
+    tool_tip_expanded: |
+        التصويت بالنقاط هو وسيلة لتحديد أولويات قائمة الخيارات.
+        يُعطى المشاركون عددًا محدودًا من "النقاط" التي يمكنهم تخصيصها بالشكل الذي يرغبون فيه من بين الخيارات المتوفرة لتمثيل تفضيلاتهم.
+        يتم عرض إجمالي النتائج ، على شكل وكذلك الأصوات الفردية ، حتى تتمكن من النظر في وجهات النظر المختلفة.
+    tool_tip_collapsed: خصص ميزانية من النقاط
+    start_header: ابدأ التصويت بالنقاط
+    edit_header: تحرير تصويت نقطة
+    tip: خصص ميزانية من النقاط
+    title_placeholder: على سبيل المثال كيف يجب أن نخصص ميزانيتنا؟
+    details_placeholder: قدم أي تفاصيل توضيحية قد يحتاجها الأشخاص للمشاركة
+    add_option_placeholder: إضافة خيار
+    dots_per_person: نقاط لكل شخص
+    dots_per_person_helptext: العدد الإجمالي للنقاط التي يُطلب من كل شخص تخصيصها.
+    dot_vote_created: تم إنشاء تصويت نقطة
+    dot_vote_updated: تم تحديث التصويت في نقطة
+  poll_score_form:
+    tool_tip_expanded: |
+        تسمح استطلاعات الدرجات للأشخاص بالتعبير عن درجة تفضيلهم لكل خيار.
+        يتم عرض النتيجة الإجمالية لكل خيار كجزء من النتائج.
+    tool_tip_collapsed: يسجل الخيارات على مقياس
+    start_header: بدء استطلاع النتيجة
+    edit_header: تحرير استطلاع النتيجة
+    tip: سجل كل خيار على مقياس منزلق
+    title_placeholder: على سبيل المثال تسجيل المرشحين على مقياس من 0-9
+    details_placeholder: قدم أي تفاصيل توضيحية قد يحتاجها الأشخاص للمشاركة
+    add_option_placeholder: إضافة خيار
+    score_created: تم إنشاء استطلاع النتيجة
+    score_updated: تم تحديث استطلاع النتيجة
+  poll_meeting_form:
+    tool_tip_expanded: |
+        استخدم استطلاع الوقت للعثور على الأشخاص المتاحين للقاء.
+        أدخل قائمة بالتواريخ أو الأوقات التي يمكن أن تعقد فيها اجتماعك.
+        حدد المشاركون تلك التي يمكنهم حضورها ، أو يمكنهم استخدام حقل البيان لشرح حتى تتمكن من تحديث الخيارات إذا لزم الأمر.
+        إذا أضفت أوقاتًا جديدة أثناء استطلاع الوقت ، فسيُطلب من الأشخاص الذين صوتوا بالفعل تحديث ردودهم.
+        يمكنك بعد ذلك معرفة من هو متاح ومتى ، وتحديد وقت الاجتماع.
+        يتم تحويل الأوقات تلقائيًا إلى المنطقة الزمنية المحلية للمشارك>
+    tool_tip_collapsed: ابحث عن متى يكون الأشخاص متاحين للقاء
+    start_header: وقت بدء الاستطلاع
+    edit_header: تحرير استطلاع الوقت
+    tip: ابحث عن متى يكون الأشخاص متاحين للقاء
+    title_placeholder: على سبيل المثال متى يجب أن يكون لدينا لقاءنا القادم؟
+    details_placeholder: قدم أي تفاصيل توضيحية قد يحتاجها الأشخاص للمشاركة
+    meeting_created: إنشاء استطلاع الوقت
+    meeting_updated: تم تحديث استطلاع الوقت
+    timeslots: فتحات الوقت
+    no_options: أدخل الأوقات في منطقتك الزمنية الحالية ({{منطقة}}). يرى المشاركون الأوقات مترجمة إلى منطقتهم الزمنية المحلية.
+    meeting_duration: مدة الاجتماع
+    add_option_placeholder: أضف وقتًا جديدًا
+    time_slot_added: تمت إضافة خانة الوقت
+    time_slot_already_added: تمت إضافة خانة الوقت بالفعل
   poll_ranked_choice_form:
+    tool_tip_expanded: |
+        الاختيار المُصنَّف هو طريقة تصويت تسمح لكل ناخب بالرد بتفضيلاته بالترتيب.
+        يُفضل عندما تكون "سرقة التصويت" مصدر قلق (على سبيل المثال ، خياران شائعان إلى حد ما متشابهان بدرجة كافية بحيث
+        ينتهي بهما الأمر إلى مشاركة الأصوات بينهما) ، ويمكن استخدامها لتنفيذ اختيار كوندورسيه أو انتخاب أسلوب الجريان الفوري.
+    tool_tip_collapsed: خيارات الترتيب من الأول إلى الأخير
+    start_header: ابدأ الاختيار المصنف
+    edit_header: تحرير الاختيار المرتبة
+    tip: خيارات الترتيب من الأول إلى الأخير
+    title_placeholder: على سبيل المثال من تريد أن يكون عمدة؟
+    details_placeholder: قدم أي تفاصيل توضيحية قد يحتاجها الأشخاص للمشاركة
+    meeting_created: تم إنشاء الاختيار المصنف
+    meeting_updated: تم تحديث الاختيار المصنف
+    no_options: "لم تقم بإضافة أي خيارات حتى الآن."
+    add_option_placeholder: أدخل خيارًا جديدًا
+    minimum_stance_choices: خيارات الترتيب
+    minimum_stance_choices_helptext: عدد الخيارات التي قد يصنفها كل ناخب
+    ranked_choice_created: تم إنشاء الاختيار المصنف
+    ranked_choice_updated: تم تحديث الاختيار المصنف
     rank: 'مرتبة '
+    points: نقاط
+  poll_meeting_time_field:
+    add_time_slot: أضف فترة زمنية
+    new_time_slot: فترة زمنية جديدة
+    closing_hour: ساعة الإغلاق
   poll_proposal_vote_form:
+    default_reason_placeholder: يرجى توضيح أسبابك
+    abstain_reason_placeholder: دع الناس يعرفون سبب إلغاء هذا القرار
+    agree_reason_placeholder: ما الذي يعجبك في الاقتراح وكيف سيفيد المجموعة؟
+    disagree_reason_placeholder: كيف يمكن تحسين هذا الاقتراح حتى تتمكن من دعمه؟
+    block_reason_placeholder: اشرح اعتراضك على هذا الاقتراح ولماذا لا ينبغي المضي قدمًا فيه
+    stance_created: تم إنشاء التصويت
+    stance_updated: تم تحديث التصويت
     vote: صوت
+  poll_proposal_options:
+    agree: يوافق على
+    consent: موافقة
+    agree_verb: "متفق عليه"
+    agree_meaning: هذا الاقتراح جيد بما يكفي لاعتماده من قبل المجموعة
+    abstain: امتنع
+    abstain_verb: "امتنع"
+    abstain_meaning: لست متأكدًا ، لا أعرف أو لا تمانع. سوف تدعم النتيجة في كلتا الحالتين
+    disagree: تعارض
+    disagree_verb: "اختلف"
+    disagree_meaning: أنا لا أؤيد الاقتراح. لا ينبغي أن تمضي قدما.
+    objection: اعتراض
+    block: منع
+    block_verb: "منعت"
+    block_meaning: الاهتمام العاجل للمجموعة مطلوب لمعالجة القلق العميق
+    agree_abstain_disagree_block: 'أوافق ، امتنع ، لا أوافق ، بلوك'
+    agree_disagree: 'موافق غير موافق'
+    agree_abstain_disagree: 'أوافق ، امتنع ، لا أوافق'
+    consent_abstain_object: 'الموافقة ، الامتناع ، الاعتراض'
+    no_voting: 'لا تصويت'
   poll_count_options:
     'yes': 'نعم'
     'no': 'لا'
   poll_count_vote_form:
     reason_label: رسالة
+    reason_placeholder: اترك رسالة إذا أردت
+    stance_created: تم إنشاء التصويت
+    stance_updated: تم تحديث التصويت
+  poll_common_percent_voted:
+    sentence: "صوت {{البسط}} من {{المقام}} من الأشخاص ({{بالمائة}}٪)"
+  poll_count_chart_panel:
+    out_of: خارج {{هدف}}
   poll_meeting_chart_panel:
     total: مجموع
+  poll_poll_vote_form:
+    stance_created: تم إنشاء التصويت
+    stance_updated: تم تحديث التصويت
+  poll_score_vote_form:
+    stance_created: تم إنشاء التصويت
+    stance_updated: تم تحديث التصويت
+  poll_meeting_vote_form:
+    local_time_zone: التوقيت المحلي - {{منطقة}}
+    can_attend: "يمكن حضور"
+    unable: "غير قادر"
+    if_need_be: إذا لزم الأمر
+    your_response: متى يمكنك الحضور؟
+    stance_created: التوفر محفوظ
+    stance_updated: توفر تحديث
+    reason_placeholder: اشرح متى تكون متفرغًا (أو مشغولاً) ، في حالة رغبة المؤلف في إضافة خيارات.
+  poll_dot_vote_vote_form:
+    dots_remaining: "يتبقى {{عدد}} نقطة"
+    too_many_dots: لقد استخدمت عددًا كبيرًا جدًا من النقاط
+    stance_created: تم إنشاء التصويت
+    stance_updated: تم تحديث التصويت
+  poll_ranked_choice_vote_form:
+    helptext: قم بسحب وإفلات الخيارات بترتيب التفضيل (1 هو الخيار المفضل لديك). سيتم تسجيل أهم {{عدد}} اختياراتك.
+    stance_created: تم تسجيل الاختيار
+    stance_updated: تم تحديث الاختيار
+  thread_item:
+    aria:
+      deleted: تم حذف العنصر
+      new_comment: "علق {{ممثل}}. {{متى}}"
+      poll_created: "بدأ {{ممثل}} {{نوع استطلاع}}. {{متى}}"
+      stance_created: "صوّت {{ممثل}}. {{متى}}"
+      outcome_created: "شارك {{ممثل}} نتيجة. {{متى}}"
+      poll_expired: "{{نوع الاستطلاع}} مغلق. {{متى}}"
+    removed: "تمت إزالة العنصر"
+    deleted_group: "المجموعة المحذوفة"
+    comment_replied_to: "{{الكاتب}} ردًا على {{العنوان}}"
+    discussion_title_edited: "قام {{الكاتب}} بتحرير عنوان الموضوع"
+    discussion_context_edited: "قام {{الكاتب}} بتحرير سياق الموضوع"
+    discussion_attachments_edited: "قام {{الكاتب}} بتحرير مرفقات الموضوع"
+    discussion_privacy_edited: "قام {{الكاتب}} بتغيير خصوصية الموضوع"
+    discussion_edited: "قام {{المؤلف}} بتحرير الموضوع"
+    discussion_moved: "{{الكاتب}} نقل الموضوع من {{العنوان}}"
+    discussion_closed: "{{المؤلف}} أغلق الموضوع"
+    discussion_reopened: "{{المؤلف}} أعاد فتح الموضوع"
+    discussion_forked: "أنشأ {{المؤلف}} تفرعًا لهذا الموضوع: {{عنوان}}"
+    new_comment: "{{مؤلف}}"
+    outcome_created: "شارك {{المؤلف}} نتيجة"
+    poll_reopened: "أعاد {{المؤلف}} فتح {{نوع الاستطلاع}}"
+    poll_closed_by_user: "{{المؤلف}} أغلق {{نوع الاستطلاع}}"
+    poll_created: "بدأ {{المؤلف}} {{نوع الاستطلاع}}"
+    poll_created_no_title: "بدأ {{المؤلف}} {{نوع الاستطلاع}}"
+    poll_edited: "قام {{المؤلف}} بتحرير {{نوع الاستطلاع}}"
+    poll_option_added: "أضاف {{المؤلف}} خيارات إلى {{نوع الاستطلاع}}"
+    poll_expired: "تم إغلاق {{نوع الاستطلاع}}"
+    stance_created: "صوّت {{المؤلف}} على: {{عنوان}}"
+    event_removed: "تمت إزالته من الموضوع"
   poll_common_subscribe_form:
+    receive_updates_title: تم تسجيل تصويتك
+    receive_updates_helptext: إذا كنت ترغب في تلقي بريد إلكتروني حول نتيجة هذا الاستطلاع ، أدخل عنوان بريدك الإلكتروني أدناه
+    email_saved: سوف تتلقى رسالة بريد إلكتروني حول نتيجة هذا الاستطلاع
     subscribe: الإشتراك
     no_thanks: لا شكرًا
+  poll_common_example_card:
+    what_is_this: "هذا مثال حي على {{نوع}}. أنت مشارك - جربه!"
+  share_poll_page:
+    title: مشاركة الاستطلاع - {{عنوان}}
+  add_poll_to_thread_modal:
+    success: "تم بنجاح ، تمت إضافة {{نوع الاستطلاع}} إلى الموضوع!"
   auth_form:
+    youre_invited: لقد تمت دعوتك للانضمام إلى {{اسم المجموعة}}.
+    youre_invited_discussion: لقد تمت دعوتك للانضمام إلى المناقشة.
+    youre_invited_poll: لقد تمت دعوتك للتصويت.
+    existing_account_can_sign_in: إذا كنت بالفعل أحد مستخدمي {{اسم الموقع}} ، فسجّل الدخول باستخدام حسابك الحالي
+    sign_in_to_loomio: سجّل الدخول إلى {{اسم الموقع}}
+    sign_in_help: هل تواجه مشكلة في تسجيل الدخول؟
     sign_in: تسجيل الدخول
+    continue: استمر
+    create_account: إنشاء حساب
+    sign_up_as: سجل باسم {{البريد الالكتروني}}
+    sign_in_as: تسجيل الدخول باسم {{الاسم}}
+    continue_with_provider: تسجيل الدخول مع {{المانح}}
+    continue_with_email: تواصل مع البريد الإلكتروني
+    or_enter_your_email: أو أدخل عنوان بريدك الإلكتروني
     enter_your_name: ادخل اسمك
+    invitation_required: أنت بحاجة إلى دعوة لإنشاء حساب.
     more_providers: المزيد
+    email_not_present: مطلوب عنوان البريد الإلكتروني
+    invalid_email: "عذرًا ، لا يبدو هذا كعنوان بريد إلكتروني صالح"
     invalid_password: "عذرًا ، كلمة المرور هذه لا تتطابق مع كلمة المرور المسجلة لدينا"
+    invalid_token: "عذرًا ، لم نتمكن من استخدام هذا الرمز المميز لتسجيل الدخول. انقر أدناه لإرسال رمز آخر."
+    account_locked: "تم قفل حسابك بعد عدة محاولات تسجيل دخول فاشلة. تحقق من بريدك الإلكتروني للحصول على رابط إلغاء القفل"
+    email_not_found: "عذرًا ، لم نتمكن من العثور على حساب بعنوان البريد الإلكتروني هذا"
+    email_taken: هذا البريد مسجل من قبل
     email_placeholder: you@example.com
+    login_with_token: أنت جاهز تمامًا! اضغط على الرابط أدناه للمتابعة.
+    login_link_helptext: انقر فوق الزر أدناه وسنرسل لك ارتباطًا لتسجيل الدخول.
+    enter_your_password: "أدخل كلمة المرور الخاصة بك للمتابعة"
+    check_spam_folder: إذا لم يصل البريد الإلكتروني قريبًا ، فتحقق من مجلد البريد العشوائي.
+    sign_up_helptext: يرجى إكمال هذا النموذج لإنشاء حساب مستخدم
+    i_accept: "أوافق على شروط الخدمة وسياسة الخصوصية"
+    newsletter_label: "أريد تلقي نشرة Loomio الإخبارية"
     name_placeholder: اسمك
+    name_required: الرجاء إدخال اسم
+    terms_required: يجب أن توافق على شروط الخدمة
+    account_inactive: عذرًا ، يبدو أنه تم إلغاء تنشيط حساب {{البريد الاكتروني}}!
+    privacy_notice: "لن نبيع بياناتك أبدًا. سياسة خاصة"
+    welcome: هل أنت جديد على {{اسم الموقع}}؟
+    welcome_back: مرحبًا بك مجددًا ، {{اسم}}!
+    forgot_password: هل نسيت كلمة المرور
+    login_link: إرسال بريد إلكتروني لتسجيل الدخول
+    sign_in_via_email: سجّل الدخول عبر البريد الإلكتروني
     set_password: ضبط كلمة السر
+    set_password_helptext: هل تريد استخدام كلمة مرور في المرة القادمة؟
     hello: "أهلا {{name}}!"
+    new_to_loomio: لأول مرة على {{اسم الموقع}}؟
+    already_a_user: هل لديك حساب؟
+    email_address_of_existing_account: أدخل عنوان البريد الإلكتروني لحسابك الحالي
+    link_accounts: ربط الحسابات
+    check_your_email: تحقق من بريدك الالكتروني!
+    login_link_sent: "لقد أرسلنا بريدًا إلكترونيًا إلى {{البريد الالكتروني}}."
+    instructions: "انقر فوق الارتباط لتسجيل الدخول ، أو أدخل الرمز أدناه:"
+    too_many_attempts: "محاولات كثيرة؛ حاول النقر فوق الارتباط الموجود في البريد الإلكتروني لتسجيل الدخول."
+    invalid_code: "عذرا ، هذا الرمز غير متطابق. تحقق من البريد الإلكتروني وحاول مرة أخرى."
+    password_link_sent: "لقد أرسلنا بريدًا إلكترونيًا إلى {{email}} يحتوي على إرشادات حول كيفية تعيين كلمة المرور الخاصة بك."
+    reactivate_link_sent: "لقد أرسلنا إليك بريدًا إلكترونيًا يحتوي على إرشادات لإعادة تنشيط حسابك"
+    signed_in: تم تسجيل الدخول بنجاح
+    email_verified: تم التحقق من البريد الإلكتروني بنجاح
     name: 'الاسم '
     email: البريد الإلكتروني
     password: الكلمة السرية
+    reactivate: تنشيط الحساب
   webhook:
+    integrations: تكاملات
+    webhooks: ويب هوك
+    format: شكل
+    formats:
+      markdown: Markdown (لـ Mattermost و Zapier وغيرهم)
+      microsoft: فرق مايكروسوفت
+      slack: تثاقل
+    subtitle: اتصل بـ Slack أو Microsoft Teams أو Mattermost أو Zapier أو أي شيء يدعم webhooks
+    we_have_guides: |
+        راجع أدلة إعداد الخطاف التلقائي على الويب للمساعدة في توصيل خدمتك.
+    add_webhook: إضافة webhook
+    success: تمت إضافة Webhook!
+    remove: إزالة webhook
+    confirm_remove: "هل تريد بالتأكيد إزالة الرد التلقائي على الويب: {{اسم}}؟"
+    removed: تمت إزالة Webhook
+    url_label: عنوان URL للويب هوك
     name_label: 'الاسم '
+    name_placeholder: امنح اسمًا للويب هوك هذا حتى تتمكن من التعرف عليه لاحقًا
+    event_kind_helptext: ما هي الأحداث التي تريد أن يتم إعلامك بها؟
+    event_kinds:
+      new_discussion: بدأ موضوع
+      discussion_edited: يتم تحرير موضوع
+      poll_edited: يتم تحرير استطلاع
+      new_comment: يتم إجراء تعليق
+      poll_created: بدأ استطلاع
+      stance_created: يتم التصويت
+      poll_closing_soon: استطلاع على وشك الانتهاء
+      poll_expired: انتهاء صلاحية الاستطلاع
+      poll_closed_by_user: يتم إغلاق الاستطلاع يدويًا
+      poll_reopened: إعادة فتح الاستطلاع للتصويت
+      outcome_created: النتيجة مشتركة
+    include_body_label: تضمين نص الرسالة مع الإخطار
+    include_subgroups_label: أحداث الترحيل من المجموعات الفرعية
+  configure_sso:
+    redirecting: الرجاء الانتظار ، إعادة التوجيه إلى موفر تسجيل الدخول
+    title: علامة واحدة على
+    enabled: تم تمكين تسجيل الدخول الأحادي
+    helptext: التكامل مع OneLogin أو Auth0 أو Microsoft Active Directory أو أي مقدم خدمة SAML آخر. أعرف أكثر.
+    warning_helptext: "تحذير: سيُطلب منك المصادقة مع الموفر الخاص بك بعد النقر فوق حفظ."
+    idp_metadata_url: عنوان URL للبيانات الوصفية لـ IDP
+    success: تم تكوين تسجيل الدخول الأحادي بنجاح
+    destroyed: تمت إزالة تسجيل الدخول الأحادي
+    invalid_idp_metadata_url: عنوان URL للبيانات الوصفية لموفر الهوية غير صالح
+    sp_metadata_url: URL الخاص ببيانات تعريف SP
+  browser_warning:
+    message: "أنت تستخدم متصفحًا قديمًا ({{الاسم}} {{النسخة}}) لا يدعمه {{الموقع}}."
+    link: يرجى التبديل إلى متصفح آخر
   powered_by:
+    slogan: قرارات أفضل معًا
+    powered_by_loomio: مدعوم من Loomio
     privacy_policy: سياسة الخصوصية
+    terms_of_service: شروط الخدمة
+    front_page: الصفحة الأمامية
   group_survey:
+    title: نجاح! فقط بضع تفاصيل أخرى
+    subtitle: الرجاء مساعدتنا في التعرف عليك بشكل أفضل. لن نشارك أي معلومات مقدمة في هذا النموذج دون إذنك.
+    validation_error: يرجى ملء جميع الحقول المطلوبة.
+    success: شكرا جزيلا!
     categories:
+      member: منظمات خدمة الأعضاء (على سبيل المثال ، الأحزاب ، التعاونيات ، النقابات)
+      nonprofit: المنظمات غير الربحية والمنظمات غير الحكومية والمجموعات المجتمعية
+      professional: فرق وشركات الخدمة المهنية
+      board: المجالس واللجان
       government: الحكومة / الحكومة المحلية
       other: اخر
     sizes:
@@ -1508,6 +2052,10 @@ ar:
       project: 'فريق المشروع '
       forum: المنتدى
       other: اخر
+    desired_features:
+      polls: إجراء استطلاعات الرأي لفريقي للتصويت عليها
+      discussions: عقد المناقشات على الإنترنت والحصول على المدخلات
+      archive: تسجيل القرارات التي نتخذها أو أرشفة المعلومات
     referrers:
       google: 'بحث غوغيل '
       invitation: مدعو الى مجموعة لوميو
@@ -1520,5 +2068,8 @@ ar:
     category_question: "حدد أفضل فئة تصف مجموعتك"
     anything_else: "هل هناك أي شيء آخر تود إخبارنا به؟"
     size_question: "كم عدد الأشخاص في مجموعتك؟"
+    role: "ما هو دورك في المجموعة؟"
+    website: "رابط الموقع"
     usage: "كيف تخطط لاستخدام Loomio؟  اختر الأنسب"
+    desired_feature: "ما هو الشيء الرئيسي الذي تبحث عنه لاستخدام Loomio؟"
     referrer: "كيف سمعت عن Loomio؟"

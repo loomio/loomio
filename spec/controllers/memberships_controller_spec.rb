@@ -6,6 +6,58 @@ describe MembershipsController do
   let(:another_group) { FactoryBot.create(:group) }
   let(:another_user) { FactoryBot.create(:user) }
 
+  describe 'redeem' do
+    let(:membership) { create :membership, group: group }
+
+    before do
+      session[:pending_membership_token] = membership.token
+      sign_in user
+    end
+
+    # I dont belong to any groups, I follow a link and get added to the group
+    # I belong to a group, but have an invitation to join it also, the membership is ignored
+    # I have been invited to 2 groups in the same, org, I accept 1 membeship and it grants both
+    it "pending membership" do
+      expect(membership.accepted_at).to eq nil
+      expect {get :consume}.to change { Event.count }.by(1)
+      expect(response.status).to eq 200
+      membership.reload
+      expect(membership.accepted_at).not_to eq nil
+      expect(membership.user_id).to eq user.id
+    end
+
+    it "multiple pending memberships - same org same user" do
+      subgroup = create(:group, parent: membership.group)
+      subgroup_membership = create(:membership, group: subgroup, user: membership.user)
+      expect {get :consume}.to change { Event.count }.by(1)
+      expect(response.status).to eq 200
+      membership.reload
+      subgroup_membership.reload
+      expect(membership.accepted_at).not_to eq nil
+      expect(membership.user_id).to eq user.id
+      expect(subgroup_membership.accepted_at).not_to eq nil
+      expect(subgroup_membership.user_id).to eq user.id
+    end
+
+    it "ignores when I already belong to the group" do
+      group.add_member! user
+      expect(membership.accepted_at).to eq nil
+      expect {get :consume}.to_not change { Event.count }
+      expect(response.status).to eq 200
+      membership.reload
+      expect(membership.accepted_at).to eq nil
+      expect(membership.user_id).to_not eq user.id
+    end
+
+    it "does not redeem accepted membership" do
+      membership.update(accepted_at: Time.zone.now)
+      expect {get :consume}.not_to change { Event.count }
+      expect(response.status).to eq 200
+      membership.reload
+      expect(membership.user_id).to_not eq user.id
+    end
+  end
+
   describe "join" do
     it "store pending_group_token in session" do
       get :join, params: {model: 'group', token: group.token}
