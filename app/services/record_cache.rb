@@ -81,7 +81,7 @@ class RecordCache
     end
 
     obj.add_users User.where(id: obj.user_ids)
-    obj.add_discussion_readers(DiscussionReader.where(discussion_id: obj.discussion_ids, user_id: current_user_id))
+    obj.add_discussion_readers(DiscussionReader.where(discussion_id: obj.discussion_ids, user_id: user_id))
     obj.add_events Event.where(kind: 'new_discussion', eventable_id: obj.discussion_ids)
     obj.add_events Event.where(kind: 'discussion_forked', eventable_id: obj.discussion_ids)
     obj.add_events Event.where(kind: 'poll_created', eventable_id: obj.poll_ids)
