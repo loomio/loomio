@@ -3,11 +3,7 @@ class API::AttachmentsController < API::RestfulController
     # Group.find_by(params[:group_id).id_and_subgroup_ids
     group = current_user.groups.find_by!(id: params[:group_id])
     instantiate_collection do |collection|
-      collection = AttachmentQuery.find(group.id_and_subgroup_ids)
-      if params[:q]
-        collection = collection.where("active_storage_blobs.filename ilike ?", "%#{params[:q]}%").order('id desc')
-      end
-      collection
+      AttachmentQuery.find(group.id_and_subgroup_ids, params[:q])
     end
     respond_with_collection
   end

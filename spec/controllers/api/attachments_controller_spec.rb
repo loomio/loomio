@@ -21,8 +21,11 @@ describe API::AttachmentsController do
       discussion.files.attach(io: File.open(Rails.root.join('spec', 'fixtures', 'images', 'strongbad.png')),
                               filename: 'strongbad.png',
                               content_type: 'image/jpeg')
+      HasRichText.assign_attributes_and_update_files(discussion, {})
       get :index, params: {q: "stongbad"}
       json = JSON.parse(response.body)
+      puts json
+      expect(response.status).to eq 200
       expect(json['attachments'][0]['name']).to eq 'strongbad.png'
     end
 
@@ -55,6 +58,6 @@ describe API::AttachmentsController do
       delete :destroy, params: { id: @attachment.id }
       expect(response.status).to eq 403
     end
-    
+
   end
 end
