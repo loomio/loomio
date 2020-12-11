@@ -31,7 +31,7 @@ class RecordCache
     case item.class.to_s
     when 'Discussion'
       collection_ids = collection.map(&:id)
-      obj.add_discussions_discussion_readers(collection)
+      obj.add_discussions(collection)
       obj.add_groups_subscriptions_memberships Group.includes(:subscription, :default_group_cover).where(id: ids_and_parent_ids(Group, collection.map(&:group_id).compact))
       obj.add_polls_options_stances_choices_outcomes Poll.active.where(discussion_id: collection_ids)
 
@@ -50,7 +50,7 @@ class RecordCache
       obj.user_ids.concat collection.map(&:user_id).concat(collection.map(&:inviter_id).compact).compact.uniq
 
     when 'Poll'
-      obj.add_discussions_discussion_readers(Discussion.where(id: collection.map(&:discussion_id).uniq.compact))
+      obj.add_discussions(Discussion.where(id: collection.map(&:discussion_id).uniq.compact))
       obj.add_polls_options_stances_choices_outcomes collection
 
     when 'Outcome'
@@ -81,6 +81,7 @@ class RecordCache
     end
 
     obj.add_users User.where(id: obj.user_ids)
+    obj.add_discussion_readers(DiscussionReader.where(discussion_id: obj.discussion_ids, user_id: current_user_id))
     obj.add_events Event.where(kind: 'new_discussion', eventable_id: obj.discussion_ids)
     obj.add_events Event.where(kind: 'discussion_forked', eventable_id: obj.discussion_ids)
     obj.add_events Event.where(kind: 'poll_created', eventable_id: obj.poll_ids)
@@ -115,7 +116,7 @@ class RecordCache
     end
 
     add_polls_options_stances_choices_outcomes Poll.where(id: ids[:poll])
-    add_discussions_discussion_readers Discussion.where(id: ids[:discussion])
+    add_discussions Discussion.where(id: ids[:discussion])
 
     add_events_eventables   Event.includes(:eventable).where(id: self.class.ids_and_parent_ids(Event, collection.map(&:id)))
     add_groups_subscriptions_memberships Group.includes(:subscription, :default_group_cover).where(id: ids[:group])
@@ -289,10 +290,6 @@ class RecordCache
     end
   end
 
-  def add_discussions_discussion_readers(collection)
-    add_discussions(collection)
-    add_discussion_readers(DiscussionReader.where(discussion_id: collection.map(&:id), user_id: current_user_id))
-  end
 
   def add_discussions(collection)
     return if exclude_types.include?('discussion')
