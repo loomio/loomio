@@ -54,6 +54,13 @@ class UserService
     DeactivateUserWorker.perform_async(user.id)
   end
 
+  def self.reactivate(user: )
+    user.ability.authorize! :deactivate, user
+    Membership.where(user_id: user_id).update_all(archived_at: nil)
+    group_ids = Membership.where(user_id: user_id).pluck(:group_id)
+    Group.where(id: group_ids).map(&:update_memberships_count)
+  end
+
   # UserService#destroy
   # Only intended to be used in a case where a script has created trash records and you
   # want to make it as if it never happened. We almost never want to destroy a user.
