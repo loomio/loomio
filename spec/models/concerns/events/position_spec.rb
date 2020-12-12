@@ -8,6 +8,7 @@ describe "Events::Position" do
   let(:comment3) { create :comment, discussion: discussion }
 
   before do
+    Redis::Objects.redis.flushall
     discussion.create_missing_created_event!
   end
 
