@@ -75,9 +75,17 @@ class DiscussionSerializer < ApplicationSerializer
 
   def reader
     cache_fetch(:discussion_readers_by_discussion_id, object.id) do
-      DiscussionReader.new(discussion: object)
+      if scope[:current_user_id]
+        m = cache_fetch(:memberships_by_group_id, object.group_id) { nil }
+        DiscussionReader.find_or_initialize_by(user_id: scope[:current_user_id], discussion_id: object.id) do |dr|
+          dr.volume = (m && m.volume) || 'normal'
+        end
+      else
+        DiscussionReader.new(discussion: object)
+      end
     end
   end
+
 
   def created_event
     cache_fetch([:events_by_kind_and_eventable_id, 'new_discussion'], object.id) { object.created_event }

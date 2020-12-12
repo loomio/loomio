@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_07_052702) do
+ActiveRecord::Schema.define(version: 2020_12_12_000354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -577,10 +577,7 @@ ActiveRecord::Schema.define(version: 2020_12_07_052702) do
     t.integer "poll_id"
     t.integer "priority", default: 0, null: false
     t.jsonb "score_counts", default: {}, null: false
-    t.index ["poll_id", "name"], name: "index_poll_options_on_poll_id_and_name"
-    t.index ["poll_id", "priority"], name: "index_poll_options_on_poll_id_and_priority"
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
-    t.index ["priority"], name: "index_poll_options_on_priority"
   end
 
   create_table "poll_unsubscriptions", id: :serial, force: :cascade do |t|
