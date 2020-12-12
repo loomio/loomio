@@ -49,6 +49,6 @@ export default new class UserService
                     <li>#{vm.$t('deactivation_modal.no_longer_group_member')}</li>
                     <li>#{vm.$t('deactivation_modal.no_emails')}</li>
                   </ul>"
-                submit: 'deactivation_modal.submit'
+                submit: 'deactivation_modal.submit_delete'
               submit: -> Records.users.destroy()
               successCallback: hardReload

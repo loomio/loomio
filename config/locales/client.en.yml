@@ -1265,6 +1265,7 @@ en:
     no_emails: 'You will no longer receive notification emails'
     you_can_reactivate: "You can reactivate your account later if you wish"
     submit: 'Yes, I want to deactivate'
+    submit_delete: 'Delete my account now'
 
   email_settings_page:
     header: Notification settings
