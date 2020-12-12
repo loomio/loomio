@@ -143,7 +143,6 @@ class Event < ApplicationRecord
   end
 
   def reset_sequences
-    puts "resetting counters"
     position_counter.delete if parent_id
     sequence_id_counter.delete if discussion_id
   end
@@ -158,7 +157,6 @@ class Event < ApplicationRecord
     return unless discussion_id
     return unless position == 0
     self.position = next_position!
-    puts "set position: #{position}"
     self.position_key = self_and_parents.reverse.map(&:position).map{|p| Event.zero_fill(p) }.join('-')
   end
 
@@ -187,7 +185,6 @@ class Event < ApplicationRecord
       return unless position_counter.nil?
       val = (Event.where(parent_id: id,
                          discussion_id: discussion_id).order("position DESC").limit(1).pluck(:position).last || 0)
-      puts "resetting position: #{val}"
       position_counter.reset(val)
     end
   end
