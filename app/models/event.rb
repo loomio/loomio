@@ -62,6 +62,9 @@ class Event < ApplicationRecord
     event = build(eventable, **args).tap(&:save!)
     PublishEventWorker.perform_async(event.id)
     event
+  rescue ActiveRecord::RecordNotUnique
+    reset_sequences
+    retry
   end
 
   def self.bulk_publish!(eventables, **args)
@@ -149,13 +152,11 @@ class Event < ApplicationRecord
 
   def set_sequence_id
     return unless discussion_id
-    return if sequence_id
     self.sequence_id = next_sequence_id!
   end
 
   def set_position_and_position_key
     return unless discussion_id
-    return unless position == 0
     self.position = next_position!
     self.position_key = self_and_parents.reverse.map(&:position).map{|p| Event.zero_fill(p) }.join('-')
   end
@@ -175,7 +176,8 @@ class Event < ApplicationRecord
     return unless discussion_id
     sequence_id_lock do
       return unless sequence_id_counter.nil?
-      val = (Event.where(discussion_id: discussion_id).order("sequence_id DESC").limit(1).pluck(:sequence_id).first || 0)
+      val = (Event.where(discussion_id: discussion_id).
+                   order(sequence_id: :desc).limit(1).pluck(:sequence_id).last || 0)
       sequence_id_counter.reset(val)
     end
   end
@@ -183,8 +185,8 @@ class Event < ApplicationRecord
   def reset_position_counter
     position_lock do
       return unless position_counter.nil?
-      val = (Event.where(parent_id: id,
-                         discussion_id: discussion_id).order("position DESC").limit(1).pluck(:position).last || 0)
+      val = (Event.where(parent_id: id, discussion_id: discussion_id).
+                   order(position: :desc).limit(1).pluck(:position).last || 0)
       position_counter.reset(val)
     end
   end
