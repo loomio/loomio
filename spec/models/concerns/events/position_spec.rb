@@ -6,16 +6,22 @@ describe "Events::Position" do
   let(:comment1) { create :comment, discussion: discussion }
   let(:comment2) { create :comment, discussion: discussion }
   let(:comment3) { create :comment, discussion: discussion }
+  let(:comment4) { create :comment, discussion: discussion }
+  let(:comment5) { create :comment, discussion: discussion }
+  let(:comment6) { create :comment, discussion: discussion }
 
   before do
+    Redis::Objects.redis.flushall
     discussion.create_missing_created_event!
   end
 
   it "gives events with a parent_id a pos sequence" do
-    Redis::Objects.redis.flushall
     e1 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment1)
     e2 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment2)
     e3 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment3)
+    e4 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment4)
+    e5 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment5)
+    e6 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment6)
 
     expect(e1.position).to eq 1
     expect(e1.position_key).to eq "00001"
@@ -23,6 +29,12 @@ describe "Events::Position" do
     expect(e2.position_key).to eq "00002"
     expect(e3.position).to eq 3
     expect(e3.position_key).to eq "00003"
+    expect(e4.position).to eq 4
+    expect(e4.position_key).to eq "00004"
+    expect(e5.position).to eq 5
+    expect(e5.position_key).to eq "00005"
+    expect(e6.position).to eq 6
+    expect(e6.position_key).to eq "00006"
   end
 
   describe 'depth' do
