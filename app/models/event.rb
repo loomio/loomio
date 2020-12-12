@@ -82,17 +82,6 @@ class Event < ApplicationRecord
     }.merge(args))
   end
 
-  def set_sequences
-    set_sequence_id
-    set_position_and_position_key
-  end
-
-  def reset_sequences
-    self.position_counter.delete
-    parent.position_counter.delete if parent_id
-    discussion.sequence_id_counter.delete if discussion_id
-  end
-
   def user
     super || AnonymousUser.new
   end
@@ -135,23 +124,65 @@ class Event < ApplicationRecord
     update_columns(parent_id: parent_id, depth: depth)
   end
 
+  def set_sequences
+    set_sequence_id
+    set_position_and_position_key
+  end
+
+  def reset_sequences
+    puts "resetting sequences"
+    self.position_counter.delete
+    parent.position_counter.delete if parent_id
+    discussion.sequence_id_counter.delete if discussion_id
+  end
+
   def set_sequence_id
     return unless discussion_id
     return if sequence_id
     self.sequence_id = next_sequence_id!
   end
 
-  def self.zero_fill(num)
-    "0" * (5 - num.to_s.length) + num.to_s
-  end
-
   def set_position_and_position_key
     return unless discussion_id
     return unless position == 0
     self.position = next_position!
+    puts "setting position: #{position}"
     self.position_key = self_and_parents.reverse.map(&:position).map{|p| Event.zero_fill(p) }.join('-')
   end
 
+  def next_sequence_id!
+    reset_sequence_id_counter if discussion.sequence_id_counter.nil?
+    discussion.sequence_id_counter.increment
+  end
+
+  def next_position!
+    return 0 unless self.discussion_id and self.parent_id
+    parent.reset_position_counter if parent.position_counter.nil?
+    parent.position_counter.increment
+  end
+
+  def reset_sequence_id_counter
+    return unless self.discussion_id
+    discussion.reset_sequence_id_counter_lock do
+      return unless discussion.sequence_id_counter.nil?
+      val = (Event.where(discussion_id: discussion_id).order("sequence_id DESC").limit(1).pluck(:sequence_id).first || 0)
+      discussion.sequence_id_counter.reset(val)
+    end
+  end
+
+  def reset_position_counter
+    reset_position_counter_lock do
+      return unless self.position_counter.nil?
+      val = (Event.where(parent_id: id,
+                         discussion_id: discussion_id).order("position DESC").limit(1).pluck(:position).last || 0)
+      puts "resetting position: #{val}"
+      self.position_counter.reset(val)
+    end
+  end
+
+  def self.zero_fill(num)
+    "0" * (5 - num.to_s.length) + num.to_s
+  end
 
   def calendar_invite
     nil # only for announcement_created events for outcomes
@@ -183,34 +214,6 @@ class Event < ApplicationRecord
     [self, (parent && parent.discussion_id && parent.self_and_parents)].flatten.compact
   end
 
-  def next_sequence_id!
-    reset_sequence_id_counter if discussion.sequence_id_counter.nil?
-    discussion.sequence_id_counter.increment
-  end
-
-  def next_position!
-    return 0 unless self.discussion_id and self.parent_id
-    parent.reset_position_counter if parent.position_counter.nil?
-    parent.position_counter.increment
-  end
-
-  def reset_sequence_id_counter
-    return unless self.discussion_id
-    discussion.reset_sequence_id_counter_lock do
-      return unless discussion.sequence_id_counter.nil?
-      val = (Event.where(discussion_id: discussion_id).order("sequence_id DESC").limit(1).pluck(:sequence_id).first || 0)
-      discussion.sequence_id_counter.reset(val)
-    end
-  end
-
-  def reset_position_counter
-    reset_position_counter_lock do
-      return unless self.position_counter.nil?
-      val = (Event.where(parent_id: id,
-                         discussion_id: discussion_id).order("position DESC").limit(1).pluck(:position).last || 0)
-      self.position_counter.reset(val)
-    end
-  end
 
   def max_depth_adjusted_parent
     original_parent = find_parent_event
