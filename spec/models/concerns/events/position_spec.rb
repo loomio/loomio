@@ -12,13 +12,10 @@ describe "Events::Position" do
   end
 
   it "gives events with a parent_id a pos sequence" do
-    puts "created_event position #{discussion.created_event.position}, sequence_id: #{discussion.created_event.sequence_id}"
+    # Redis::Objects.redis.flushall
     e1 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment1)
-    puts "e1 position #{e1.position}, sequence_id: #{e1.sequence_id}"
     e2 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment2)
-    puts "e2 position #{e2.position}, sequence_id: #{e2.sequence_id}"
     e3 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment3)
-    puts "e3 position #{e3.position}, sequence_id: #{e3.sequence_id}"
 
     expect(e1.position).to eq 1
     expect(e1.position_key).to eq "00001"

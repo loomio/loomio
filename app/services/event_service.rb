@@ -62,7 +62,6 @@ class EventService
     Event.where(id: parent_ids).order(:id).each do |parent_event|
       parent_event.reload
       reset_child_positions(parent_event.id, parent_event.position_key)
-      parent_event.reset_position_counter
     end
 
     # Event.where(id: parent_ids).order(:id).each do |parent_event|
@@ -89,7 +88,7 @@ class EventService
     discussion.created_event.update_descendant_count
     discussion.update_items_count
     discussion.update_sequence_info!
-    discussion.sequence_id_counter.reset(discussion.last_sequence_id)
+    Redis::Counter.new("sequence_id_counter_#{discussion_id}").delete
   end
 
   def self.reset_child_positions(parent_id, parent_position_key)
@@ -110,5 +109,6 @@ class EventService
         ) AS t
       WHERE events.id = t.id and
             events.position is distinct from t.seq")
+    Redis::Counter.new("position_counter_#{parent_id}").delete
   end
 end
