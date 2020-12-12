@@ -12,7 +12,7 @@ describe "Events::Position" do
   end
 
   it "gives events with a parent_id a pos sequence" do
-    # Redis::Objects.redis.flushall
+    Redis::Objects.redis.flushall
     e1 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment1)
     e2 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment2)
     e3 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment3)
