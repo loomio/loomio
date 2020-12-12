@@ -12,6 +12,7 @@ describe "Events::Position" do
   end
 
   it "gives events with a parent_id a pos sequence" do
+    REDIS_CONNECTION.flushall
     puts "created_event position #{discussion.created_event.position}, sequence_id: #{discussion.created_event.sequence_id}"
     e1 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment1)
     puts "e1 position #{e1.position}, created_event.position_counter #{discussion.created_event.position_counter.value}, sequence_id: #{e1.sequence_id}"
