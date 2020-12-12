@@ -1,11 +1,8 @@
 class Event < ApplicationRecord
   include ActionView::Helpers::SanitizeHelper
-  include Redis::Objects
   include CustomCounterCache::Model
   include HasTimeframe
   extend HasCustomFields
-  counter :position_counter
-  lock :reset_position_counter, expiration: 5
 
   has_many :notifications, dependent: :destroy
   belongs_to :eventable, polymorphic: true
@@ -129,11 +126,26 @@ class Event < ApplicationRecord
     set_position_and_position_key
   end
 
+  def position_counter
+    Redis::Counter.new("position_counter_#{parent_id}")
+  end
+
+  def position_lock
+    Redis::Lock.new("position_lock_#{parent_id}", expiration: 5, timeout: 0.1)
+  end
+
+  def sequence_id_counter
+    Redis::Counter.new("sequence_id_counter_#{discussion_id}")
+  end
+
+  def sequence_id_lock
+    Redis::Lock.new("sequence_id_lock_#{discussion_id}", expiration: 5, timeout: 0.1)
+  end
+
   def reset_sequences
-    puts "resetting sequences"
-    self.position_counter.delete
-    parent.position_counter.delete if parent_id
-    discussion.sequence_id_counter.delete if discussion_id
+    puts "resetting counters"
+    position_counter.delete if parent_id
+    sequence_id_counter.delete if discussion_id
   end
 
   def set_sequence_id
@@ -146,37 +158,37 @@ class Event < ApplicationRecord
     return unless discussion_id
     return unless position == 0
     self.position = next_position!
-    puts "setting position: #{position}"
+    puts "set position: #{position}"
     self.position_key = self_and_parents.reverse.map(&:position).map{|p| Event.zero_fill(p) }.join('-')
   end
 
   def next_sequence_id!
-    reset_sequence_id_counter if discussion.sequence_id_counter.nil?
-    discussion.sequence_id_counter.increment
+    reset_sequence_id_counter if sequence_id_counter.nil?
+    sequence_id_counter.increment
   end
 
   def next_position!
-    return 0 unless self.discussion_id and self.parent_id
-    parent.reset_position_counter if parent.position_counter.nil?
-    parent.position_counter.increment
+    return 0 unless discussion_id and parent_id
+    reset_position_counter if position_counter.nil?
+    position_counter.increment
   end
 
   def reset_sequence_id_counter
-    return unless self.discussion_id
-    discussion.reset_sequence_id_counter_lock do
-      return unless discussion.sequence_id_counter.nil?
+    return unless discussion_id
+    sequence_id_lock do
+      return unless sequence_id_counter.nil?
       val = (Event.where(discussion_id: discussion_id).order("sequence_id DESC").limit(1).pluck(:sequence_id).first || 0)
-      discussion.sequence_id_counter.reset(val)
+      sequence_id_counter.reset(val)
     end
   end
 
   def reset_position_counter
-    reset_position_counter_lock do
-      return unless self.position_counter.nil?
+    position_lock do
+      return unless position_counter.nil?
       val = (Event.where(parent_id: id,
                          discussion_id: discussion_id).order("position DESC").limit(1).pluck(:position).last || 0)
       puts "resetting position: #{val}"
-      self.position_counter.reset(val)
+      position_counter.reset(val)
     end
   end
 
