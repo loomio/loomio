@@ -62,9 +62,6 @@ class Event < ApplicationRecord
     event = build(eventable, **args).tap(&:save!)
     PublishEventWorker.perform_async(event.id)
     event
-  rescue ActiveRecord::RecordNotUnique
-    reset_sequences
-    retry
   end
 
   def self.bulk_publish!(eventables, **args)

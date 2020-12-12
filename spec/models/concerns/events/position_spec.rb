@@ -24,17 +24,47 @@ describe "Events::Position" do
     e6 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment6)
 
     expect(e1.position).to eq 1
+    expect(e1.sequence_id).to eq 1
     expect(e1.position_key).to eq "00001"
+
     expect(e2.position).to eq 2
+    expect(e2.sequence_id).to eq 2
     expect(e2.position_key).to eq "00002"
+
     expect(e3.position).to eq 3
+    expect(e3.sequence_id).to eq 3
     expect(e3.position_key).to eq "00003"
+
     expect(e4.position).to eq 4
+    expect(e4.sequence_id).to eq 4
     expect(e4.position_key).to eq "00004"
+
     expect(e5.position).to eq 5
+    expect(e5.sequence_id).to eq 5
     expect(e5.position_key).to eq "00005"
+
     expect(e6.position).to eq 6
+    expect(e6.sequence_id).to eq 6
     expect(e6.position_key).to eq "00006"
+  end
+
+  it 'handles clash' do
+    e1 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment1)
+    e2 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment2)
+    Event.where(id: e2.id).update_all(sequence_id: 3)
+    e3 = Events::NewComment.publish!(comment3)
+
+    expect(e1.position).to eq 1
+    expect(e1.sequence_id).to eq 1
+    expect(e1.position_key).to eq "00001"
+
+    expect(e2.position).to eq 2
+    expect(e2.sequence_id).to eq 2
+    expect(e2.position_key).to eq "00002"
+
+    expect(e3.position).to eq 3
+    expect(e3.sequence_id).to eq 3
+    expect(e3.position_key).to eq "00003"
   end
 
   describe 'depth' do
@@ -48,10 +78,15 @@ describe "Events::Position" do
       e3 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment3)
       expect(e1.depth).to eq 1
       expect(e1.position_key).to eq "00001"
+      expect(e1.sequence_id).to eq 1
+
       expect(e2.depth).to eq 2
       expect(e2.position_key).to eq "00001-00001"
+      expect(e2.sequence_id).to eq 2
+
       expect(e3.depth).to eq 2
       expect(e3.position_key).to eq "00001-00002"
+      expect(e3.sequence_id).to eq 3
     end
 
     it "enforces max depth 1 " do
@@ -93,12 +128,16 @@ describe "Events::Position" do
     e2 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment2)
     e3 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment3)
     expect(e1.position).to eq 1
+    expect(e1.sequence_id).to eq 1
     expect(e2.position).to eq 2
+    expect(e2.sequence_id).to eq 2
     expect(e3.position).to eq 3
+    expect(e3.sequence_id).to eq 3
     e2.update(discussion_id: nil, parent_id: nil)
     EventService.repair_thread(discussion.id)
     expect(e3.reload.position).to eq 2
     expect(e3.reload.position_key).to eq "00002"
+    expect(e3.reload.sequence_id).to eq 3
   end
 
   it "handles destroy" do
@@ -110,5 +149,6 @@ describe "Events::Position" do
     EventService.repair_thread(discussion.id)
     e2.reload
     expect(e2.position).to eq 1
+    expect(e2.sequence_id).to eq 2
   end
 end
