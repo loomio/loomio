@@ -51,7 +51,9 @@ describe "Events::Position" do
   it 'handles clash' do
     e1 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment1)
     e2 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment2)
-    Event.where(id: e2.id).update_all(sequence_id: 3)
+    Event.where(id: e2.id).update_all(sequence_id: 3, position: 10)
+
+    # publishing e3 causes a repair thread, which resets position to correct value, and takes the next available sequence_id
     e3 = Events::NewComment.publish!(comment3)
 
     expect(e1.position).to eq 1
@@ -63,7 +65,7 @@ describe "Events::Position" do
     expect(e2.position_key).to eq "00002"
 
     expect(e3.position).to eq 3
-    expect(e3.sequence_id).to eq 3
+    expect(e3.sequence_id).to eq 4
     expect(e3.position_key).to eq "00003"
   end
 
