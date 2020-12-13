@@ -52,7 +52,7 @@ pl:
     modal_edit_title: Edytuj tag
     modal_destroy_title: Usuń tag
     destroy_tag: Usuń tag
-    destroy_helptext: Spowoduje to zniszczenie tego tagu i usunięcie go ze wszystkich wątków w grupie. Jesteś pewny?
+    destroy_helptext: Spowoduje to zniszczenie tego tagu i usunięcie go ze wszystkich wątków w grupie. Jesteś pewien?
     helptext: Tagi pozwalają kategoryzować rozmowy i ułatwiają ich późniejsze wyszukiwanie
     discussions_count_singular: ({{count}} wątek)
     discussions_count_plural: ({{count}} wątki)
@@ -353,7 +353,7 @@ pl:
     close_thread: Zamknij wątek
     body: |
         <p>Zamknij stare lub nieistotne wątki, aby usunąć je z widoku i wskazać, że dyskusja została zamknięta.</p>
-        <p>Każdy może nadal komentować lub zaczynać ankietę w zamkniętym wątku, ale nie pojawi się ona na liście wątków grupy ani na pulpicie nawigacyjnym.</p>
+        <p>Każdy może nadal komentować lub stworzyć ankietę w zamkniętym wątku, ale nie pojawi się ona na liście wątków grupy ani na pulpicie nawigacyjnym.</p>
     image_alt: Zamykanie wszystkich wątków
   mute_explanation_modal:
     aria_label: Wycisz wątek
@@ -523,8 +523,8 @@ pl:
     reaction_created_vue: "<strong>{{name}}</strong> zareagował/a {{reaction}} na Twój {{model}}<strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> wspomniał/a o Tobie w <strong>{{title}}</strong>"
     user_reminded: "<strong>{{name}}</strong>czeka aż weźmiesz udział w<strong>{{title}}</strong>"
-    membership_requested: "<strong>{{name}}</strong> poprosił/a o członkowstwo do <strong>{{title}}</strong>"
-    membership_request_approved: '<strong>{{name}}</strong> zaakceptował/a Twoją prośbę by dołączyć do <strong>{{title}}</strong>'
+    membership_requested: "<strong>{{name}}</strong> poprosił/a o dołączenie do <strong>{{title}}</strong>"
+    membership_request_approved: '<strong>{{name}}</strong> zaakceptował/a Twoją prośbę o dołączenie do <strong>{{title}}</strong>'
     user_added_to_group: "<strong>{{name}}</strong> dodał/a Cię do grupy <strong>{{title}}</strong>"
     user_added_to_group_no_inviter: "Zostałeś dodany do grupy <strong>{{title}}</strong>"
     motion_closing_soon: "Propozycja wkrótce się zakończy: <strong>{{title}}</strong>"
@@ -548,7 +548,7 @@ pl:
     search_placeholder: Znajdź wątek według tytułu
     moved: Przenoszenie komentarzy, to może zająć chwilę
     move_to_existing_thread: Przenieś do istniejącego wątku
-    start_new_thread: Lub, załóż nowy wątek
+    start_new_thread: Lub, utwórz nowy wątek
   discussion_form:
     to: Do
     direct_thread: "Wątek bezpośredni"
@@ -567,7 +567,7 @@ pl:
       created: 'Wątek utworzony'
       updated: 'Wątek zmieniony'
       forked: 'Utworzono rozwidlenie wątku'
-    new_discussion_title: 'Rozpocznij nowy wątek'
+    new_discussion_title: 'Utwórz nowy wątek'
     moving_items_title: 'Przenieś elementy do nowego wątku'
     edit_discussion_title: 'Edytuj wątek'
     group_label: 'Grupa'
@@ -778,7 +778,7 @@ pl:
   join_group_button:
     not_a_member: "Nie należysz obecnie do tej grupy."
     join_group: Dołącz do grupy
-    membership_requested: Zgłoszono członkostwo
+    membership_requested: Poproszono o dołączenie
     messages:
       joined_group: 'Należysz teraz do {{group}}'
   membership_request_form:
@@ -822,7 +822,7 @@ pl:
     aria_intro: "Kontekst wątku od {{author}}"
     thread_status:
       pinned: "Ten wątek został przypięty. Zostanie na samej górze listy wątków dla wszystkich członków grupy."
-      closed: "Ten wątek został zamknięty. Nie będzie się więcej pojawiał w głównym panelu i będzie wyświetlał się pod \"Zamkniętymi\" na stronie grupy."
+      closed: "Ten wątek został zamknięty. Nie będzie się więcej pojawiał w głównym panelu i będzie wyświetlał się pod \"Zamknięte\" na stronie grupy."
   delete_group_modal:
     title: Usuń grupę
     body: |
@@ -830,7 +830,7 @@ pl:
         Wszystkie wątki, ankiety, pliki i inne treści grupy zostaną usunięte na zawsze.
         Rekomendujemy wyeksportowanie danych grupy i ręczne pobranie wszystkich ważnych plików zanim będziesz kontynuować.
     confirm: "Wpisz '%{name}', by potwierdzić usunięcie tej grupy."
-    success: Ta grupa została zarchiwizowana i przeznaczona do permanentnego usunięcia w ciągu 2 tygodni.
+    success: Ta grupa została zarchiwizowana i ma zostać trwale usunięta za 2 tygodnie.
   group_page:
     stats: Statystyki grupy
     threads: Wątki
@@ -841,7 +841,7 @@ pl:
     subgroups: Podgrupy
     show_opened: '{{count}} Otwarte'
     show_closed: '{{count}} Zamknięte'
-    no_threads_here: Nie ma tu żadnych wątków!
+    no_threads_here: Brak wątków do zobaczenia!
     search_threads: Szukaj wątków...
     private_threads: 'Musisz być osobą członkowską, aby zobaczyć prywatne wątki w tej grupie. '
     no_more_threads: Brak wątków do załadowania
@@ -852,14 +852,14 @@ pl:
         parent_members: 'Ta grupa jest teraz widoczna tylko dla członków Twojej organizacji'
         public: 'Ta grupa jest teraz publiczna'
       leave_group_success: 'Opuściłeś/aś tę grupę'
-      archive_group_success: 'Ta grupa została dezaktywowana'
+      archive_group_success: 'Ta grupa została zdezaktywowana'
     group_logo: 'Logo grupy'
     new_photo: 'nowe zdjęcie'
     new_cover_photo: 'Załaduj nowe zdjęcie w tle'
     new_group_logo: 'Załaduj nowe logo grupy'
     open_discussions: 'Otwarte wątki'
     closed_discussions: 'Zamknięte wątki'
-    discussions_placeholder: 'Wątek to miejsce, w którym każdy może omówić temat i wspólnie podjąć decyzje.'
+    discussions_placeholder: 'Wątek to miejsce, w którym każdy może omówić temat i wspólnie podejmować decyzje.'
     members_placeholder: 'Jesteś jedynym członkiem: zaproś inne osoby!'
     member_options: Opcje osoby członkowskiej
     see_all_members: 'Zobacz wszystkie {{count}} osób członkowskich'
@@ -879,36 +879,36 @@ pl:
       manage_members: 'Zarządzaj użytkownikami'
       add_subgroup: 'Dodaj Podgrupę'
       manage_subscription: 'Zarządzaj subskrypcją grupy'
-      email_settings: 'Ustawienia poczty'
+      email_settings: 'Ustawienia skrzynki e-mail'
       leave_group: 'Opuść grupę'
       deactivate_group: 'Dezaktywuj grupę'
       subscription_status: 'Status subskrypcji'
     volume:
-      loud: Wyślij wiadomość jeśli pojawi się aktywność.
+      loud: Wyślij wiadomość e-mail jeśli pojawi się aktywność.
       loud_aria_description: Poziom powiadomień dla tej grupy jest ustawiony na Głośny. Będziesz otrzymywać wiadomości w przypadku każdej aktywności.
-      loud_message: Otrzymasz wiadomość e-mail na temat wszystkich działań w „{{name}}”.
-      normal: 'Wysyłaj pocztą ważne wydarzenia: nowe wątki i propozycje, wyniki etc.'
-      normal_aria_description: Poziom powiadomień dla tej grupy jest ustawiony na Normalny. Otrzymasz wiadomości na temat ważnych aktywności, takich jak uruchomienie nowego wątku, zgłoszenie propozycji lub ustalenie wyniku.
+      loud_message: Będziesz otrzymywać wiadomość e-mail na temat wszystkich działań w „{{name}}”.
+      normal: 'Wysyłaj wiadomości e-mail o ważnych wydarzeniach: nowych wątkach i propozycjach, wynikach, itp.'
+      normal_aria_description: Poziom powiadomień dla tej grupy jest ustawiony na Normalny. Otrzymasz wiadomości e-mail na temat ważnych aktywności, takich jak utworzenie nowego wątku, zgłoszenie propozycji lub ustalenie wyniku.
       normal_message: 'Będziesz otrzymywać wiadomość e-mail tylko o ważnych wydarzeniach w „{{name}}”.'
-      quiet: Nie przysyłam maili z tej grupy. Aktywności będą wyświetlane na pulpicie.
-      quiet_aria_description: Poziom powiadomień dla tej grupy jest ustawiony na Cichy. Nie będziesz otrzymywać maili o aktywnościach z tej grupy. Jej aktywność będzie wyświetlana na Pulpicie.
+      quiet: Nie wysyłaj wiadomości e-mail na temat tej grupy. Aktywności będą wyświetlane na pulpicie.
+      quiet_aria_description: Poziom powiadomień dla tej grupy jest ustawiony na Cichy. Nie będziesz otrzymywać wiadomości e-mail o aktywnościach z tej grupy. Jej aktywność będzie wyświetlana na Pulpicie.
       quiet_message: 'Nie będziesz otrzymywać wiadomości e-mail o aktywności w {{name}}.'
       mute: Ukryj tę grupę na pulpicie i nie przesyłaj powiadomień z wyjątkiem @wzmianek
-      mute_aria_description: Poziom powiadomień dla tej grupy jest ustawiony na Wyciszony. Nie otrzymasz wiadomości dopóki ktoś nie wspomni o Tobie w komentarzu, a aktywność grupy nie będzie wyświetlana na Pulpicie.
+      mute_aria_description: Poziom powiadomień dla tej grupy jest ustawiony na Wyciszony. Nie otrzymasz wiadomości e-mail dopóki ktoś nie wspomni o Tobie w komentarzu, a aktywność grupy nie będzie wyświetlana na Pulpicie.
       mute_message: '„{{name}}” zostało usunięte z pulpitu.'
     privacy:
       private: 'Prywatność: ta grupa jest widoczna tylko dla członków'
       parent_members: 'Prywatność: ta grupa jest widoczna dla członków {{parentGroupName}} i członków {{groupName}}'
       public: 'Prywatność: ta grupa jest widoczna w Internecie'
-      aria_label: 'Prywatność grupy: {{prywatność}}'
+      aria_label: 'Prywatność grupy: {{privacy}}'
   export_data_modal:
     title: Jak chcesz wykorzystać swoje dane?
-    as_csv: Otwórz go w arkuszu kalkulacyjnym
+    as_csv: Otwórz w arkuszu kalkulacyjnym
     as_html: Otwórz w przeglądarce
     as_json: Hostuj tę grupę na moim własnym serwerze
   description_card:
     title: 'Opis grupy'
-    placeholder: 'Administratorzy grupy mogą użyć tego obszaru do opisania celu grupy, aby każdy wiedział, dlaczego tu jest.'
+    placeholder: 'Administratorzy grupy mogą użyć tego obszaru do opisania celu grupy, aby każdy wiedział, po co tu jest.'
     messages:
       description_updated: 'Opis zaktualizowany'
   leave_group_form:
@@ -919,7 +919,7 @@ pl:
   archive_group_form:
     aria_label: 'Dezaktywuj grupę'
     title: 'Dezaktywuj grupę'
-    question: 'Jesteś pewny, że chcesz dezaktywować tę grupę?'
+    question: 'Czy na pewno chcesz dezaktywować tę grupę?'
     submit: 'Tak, dezaktywuj grupę'
   group_form:
     thread_defaults_help: Domyślne ustawienia dla nowych wątków
@@ -928,29 +928,29 @@ pl:
         Istnieją dwa poziomy członkostwa, jakie osoba może mieć w grupie: administrator i członek
     aria_label: 'Formularz grupowy'
     new_organisation: Nowa organizacja
-    start_group_heading: 'Załóż grupę'
-    start_subgroup_heading: 'Załóż subgrupę'
+    start_group_heading: 'Utwórz grupę'
+    start_subgroup_heading: 'Utwórz podgrupę'
     edit_group_heading: 'Edytuj ustawienia grupy'
-    edit_subgroup_heading: 'Edytuj ustawienia subgrupy'
+    edit_subgroup_heading: 'Edytuj ustawienia podgrupy'
     group_name: 'Nazwa grupy'
     handle: Handle
     group_handle_placeholder: "Adres URL i e-mail, np. loomio.org/handle i handle@loomio.org"
     organization_name: 'Nazwa organizacji'
     start_organization_heading: Nowa organizacja
     edit_organization_heading: Edytuj ustawienia organizacji
-    group_name_placeholder: ' Jak nazywa się twoja grupa?'
+    group_name_placeholder: ' Jak nazywa się Twoja grupa?'
     organization_name_placeholder: 'Jak nazywa się Twoja organizacja?'
     subgroup_name: 'Nazwa podgrupy'
     description: 'Opis'
-    description_placeholder: 'Opisz cel swojej grupy, aby członkowie grupy wiedzieli, dlaczego tu są.'
+    description_placeholder: 'Opisz cel swojej grupy, aby jej członkowie wiedzieli, dlaczego tu są.'
     privacy_statement:
       public_on_web: 'Nazwa, opis i załączniki do kontekstu grupy będą widoczne publicznie'
-      private_to_group: 'Imię i opis będą widoczne tylko dla członków.'
-      private_to_parent_members: 'Imię i opis będą widoczne dla członków {{parent}}'
+      private_to_group: 'Nazwa i opis będą widoczne tylko dla członków.'
+      private_to_parent_members: 'Nazwa i opis będą widoczne dla członków {{parent}}'
     privacy: 'Prywatność'
     group_privacy_is_open_description: "Widoczna publicznie. Każdy może poprosić o dołączenie. Wszystkie wątki są publiczne."
     group_privacy_is_closed_description: "Niewidoczna. Każda osoba z linkiem może poprosić o dołączenie. Wszystkie wątki są prywatne."
-    group_privacy_is_closed_public_threads_description: "Niewidoczna. Każda osoba z linkiem może poprosić o dołączenie. Wątki mogą być prywatne lub publiczne."
+    group_privacy_is_closed_public_threads_description: "Niewidoczna. Każda osoba z linkiem może poprosić o dołączenie. Wątki mogą być publiczne lub prywatne."
     group_privacy_is_secret_description: "Tylko zaproszone osoby mogą znaleźć grupę. Wszystkie wątki są prywatne."
     confirm_change_to_secret: "Jeśli przejdziesz dalej, wszystkie wątki w tej grupie i jej podgrupach zostaną ustawione jako prywatne."
     confirm_change_to_secret_subgroup: 'Jeśli przejdziesz dalej, wszystkie wątki staną się prywatne.'
@@ -973,7 +973,7 @@ pl:
     public_threads: 'Tylko wątki publiczne'
     public_discussions_subgroup: 'Każdy w {{parentGroupName}} może zobaczyć dyskusje'
     public_or_private_threads: 'Zezwalaj na wątki publiczne i prywatne'
-    private_threads: 'Tylko członkowie mogą widzieć dyskusje'
+    private_threads: 'Tylko członkowie mogą zobaczyć dyskusje'
     allow_public_threads: 'Zezwalaj na wątki publiczne w tej grupie.'
     parent_members_can_see_discussions: 'Członkowie {{parent}} mogą zobaczyć prywatne wątki.'
     members_can_announce: 'Członkowie mogą powiadomić wszystkich w grupie.'
@@ -981,12 +981,12 @@ pl:
     members_can_create_subgroups: 'Członkowie mogą tworzyć podgrupy.'
     members_can_edit_discussions: 'Członkowie mogą aktualizować kontekst i tytuł dowolnego wątku.'
     members_can_edit_comments: 'Członkowie mogą edytować swoje komentarze w dowolnym momencie.'
-    members_can_start_discussions: 'Członkowie mogą zakładać nowe wątki.'
+    members_can_start_discussions: 'Członkowie mogą tworzyć nowe wątki.'
     members_can_vote: 'Członkowie mogą głosować nad propozycjami.'
-    members_can_raise_motions: 'Członkowie mogą rozpocząć propozycje.'
+    members_can_raise_motions: 'Członkowie mogą utworzyć propozycje.'
     admins_can_edit_user_content: "Administratorzy mogą edytować komentarze i ankiety innych użytkowników"
-    submit_start_group: 'Rozpocznij grupę'
-    submit_start_subgroup: 'Uruchom podgrupę'
+    submit_start_group: 'Utwórz grupę'
+    submit_start_subgroup: 'Utwórz podgrupę'
     submit_update: 'Zaktualizuj ustawienia'
     messages:
       group_created: 'Grupa została utworzona'
@@ -1004,35 +1004,35 @@ pl:
         Wykonanie zajmuje kilka minut, w zależności od liczebności grupy.
         Gdy będzie gotowy, otrzymasz wiadomość e-mail z linkiem do pobrania pliku.
         </p>
-    submit: Rozpocznij eksport
-    flash: Rozpoczęto eksport danych grupy
+    submit: Rozpocznij eksportowanie
+    flash: Rozpoczęto eksportowanie danych grupy
   membership_requests_card:
-    heading: 'Wnioski o członkostwo'
+    heading: 'Prośby o dołącznie'
     manage_requests: Zarządzaj prośbami
     manage_requests_with_count: Zarządzaj prośbami ({{count}})
   membership_requests_page:
-    heading: Zgłoszenia Członkostwa
-    approve: Akceptacja
+    heading: Prośby o dołączenie
+    approve: Akceptuj
     ignore: Ignoruj
-    no_pending_requests: Obecnie nie ma oczekujących wniosków o członkostwo dla tej grupy.
-    no_previous_requests: Obecnie nie ma żadnych poprzednich wniosków o członkostwo dla tej grupy.
+    no_pending_requests: Obecnie nie ma oczekujących próśb na dołączenie do tej grupy.
+    no_previous_requests: Obecnie nie ma żadnych poprzednich próśb o dołączenie do tej grupy.
     previous_requests: Poprzednie zgłoszenia
     previous_request_response: '{{response}} od {{responder}} '
     messages:
-      request_approved_success: Zgłoszenie członkostwa zaakceptowane
-      request_ignored_success: Zgłoszenie członkostwa zignorowane
+      request_approved_success: Prośba o dołączenie została zaakceptowana
+      request_ignored_success: Prośba o dołączenie została zignorowana
   group_previous_proposals_card:
     heading: Poprzednie propozycje
     see_more: 'Zobacz więcej '
   group_decisions_card:
     see_more: "Zobacz wszystkie: ({{count}}) decyzje"
   invitation_form:
-    group_url: Grupowy adres URL
+    group_url: Adres URL grupy
     reusable_invitation_link: Link zaproszenia wielokrotnego użytku
     error: "Błąd podczas próby skopiowania do schowka"
     aria_label: 'Formularz zaproszenia'
     invite_people: 'Zaproś ludzi'
-    invite_guests: 'Zaprosić gości'
+    invite_guests: 'Zaproś gości'
     notify_people: 'Powiadom ludzi'
     invite_people_to_group: 'Zaproś do {{name}}'
     group: 'Grupa'
@@ -1042,9 +1042,9 @@ pl:
     copy_link: 'Kopiuj'
     email_addresses: 'Adresy e-mail'
     email_addresses_placeholder: 'np. helperbot@loomio.org, friendlybot@loomio.org'
-    secret_group_url_explanation: "To jest adres twojej grupy. Tylko zaproszeni członkowie będą mogli zobaczyć grupę."
+    secret_group_url_explanation: "To jest adres Twojej grupy. Tylko zaproszeni członkowie będą mogli zobaczyć grupę."
     shareable_group_url_explanation: 'Możesz udostępnić ten link publicznie. Ludzie mogą prosić o dołączenie, a Ty możesz zatwierdzać lub ignorować prośby.'
-    shareable_invitation_explanation: 'Nie udostępniaj tego linku publicznie. Każdy z nim może dołączyć do Twojej grupy bez Twojej zgody. Udostępnij to tylko w ramach prywatnych rozmowach, aby umożliwić członkom twojej organizacji dołączenie.'
+    shareable_invitation_explanation: 'Nie udostępniaj tego linku publicznie. Każdy, kto go posiada może dołączyć do Twojej grupy bez Twojej zgody. Udostępnij go tylko w prywatnych rozmowach, aby umożliwić dołączenie osobom z Twojej organizacji.'
     shareable_link_reset: 'Reset linku do udostępniania. Poprzedni link nie będzie już działać.'
     email_explanation: 'Możesz też wpisać adresy e-mail poniżej, aby wysłać zaproszenia pocztą e-mail.'
     add_custom_message: 'Spersonalizuj swoje zaproszenie,'
@@ -1066,9 +1066,9 @@ pl:
     members: 'Członkowie'
     name_label: 'Nazwa'
     coordinator_label: 'Administrator'
-    remove_member_label: 'Usunięcie'
-    fragment_placeholder: 'Filtrowanie użytkowników przez nazwę lub login'
-    only_one_admin: W tej grupie jest tylko jeden administrator. Zaleca się wyznaczenie co najmniej jednego członka jako administratora.
+    remove_member_label: 'Usuń'
+    fragment_placeholder: 'Filtruj użytkowników po nazwie lub loginie'
+    only_one_admin: W tej grupie jest tylko jeden administrator. Zaleca się wyznaczenie co najmniej jeszcze jednego członka jako administratora.
     messages:
       remove_member_success: 'Usunięto {{name}}'
       make_admin_success: '{{name}} jest teraz administratorem'
@@ -1078,11 +1078,11 @@ pl:
   membership_remove_modal:
     invitation:
       title: Anuluj zaproszenie
-      message: Czy na pewno chcesz anulować zaproszenie na {{name}}?
-      flash: Zaproszenie anulowane
+      message: Czy na pewno chcesz anulować zaproszenie do {{name}}?
+      flash: Anulowano zaproszenie
       submit: Anuluj zaproszenie
     membership:
-      title: Usunięcie członka
+      title: Usuń członka
       message: Czy na pewno chcesz usunąć {{name}}?
       impact_for_group: Spowoduje to usunięcie ich dostępu do wszystkich wątków i decyzji w grupie.
       impact_for_subgroups: Spowoduje to również usunięcie ich dostępu do wszystkich podgrup tej grupy.
@@ -1097,7 +1097,7 @@ pl:
     title_helptext:
       group: Ten tytuł pojawi się obok nazwy {{name}} w tej grupie. Użyj go, aby poinformować ludzi o ich roli.
     title_label: tytuł
-    title_placeholder: Na przykład. „Koordynator” lub „Moderator”
+    title_placeholder: Np. „Koordynator” lub „Moderator”
     updated: Zaktualizowano tytuł członkostwa
   user_page:
     contact_user: 'Kontakt {{name}}'
@@ -1107,35 +1107,35 @@ pl:
     invited: 'Zaproszono {{value}}'
     message_user: 'Wyślij wiadomość do {{name}}'
   contact_request_form:
-    modal_title: "E-mail {{name}}"
+    modal_title: "Wyślij wiadomość e-mail do {{name}}"
     message_placeholder: Przedstaw się i powiedz, dlaczego chcesz nawiązać kontakt.
-    helptext: "{{name}} otrzyma Twoje imię i nazwisko, adres e-mail i wiadomość e-mail"
-    email_sent: "E-mail wysłany na {{name}}"
+    helptext: "{{name}} otrzyma wiadomość e-mail z Twoim imieniem, adresem e-mail i wiadomością"
+    email_sent: "Wiadomość e-mail wysłana do {{name}}"
   profile_page:
     messages:
-      updated: 'Profil zmieniony'
-      picture_changed: 'Zdjęcie profilowe zmienione'
-      password_changed: 'Hasło zmienione'
-      deactivated: 'Konto wyłączone'
+      updated: 'Zaktualizowano profil'
+      picture_changed: 'Zaktualizowano zdjęcie profilowe'
+      password_changed: 'Zaktualizowano hasło'
+      deactivated: 'Konto zostało zdezaktywowane'
     merge_accounts: Scal konta
-    change_picture_link: 'Zmiana zdjęcia'
+    change_picture_link: 'Zmień zdjęcie'
     change_password_link: 'Zresetuj hasło'
     delete_account: 'Trwale usuń konto'
     delete_user_link: 'Usuń konto'
     profile: 'Profil'
-    edit_profile: 'Edycja Profilu'
+    edit_profile: 'Edytuj Profil'
     picture_label: 'Zdjęcie'
     name_label: 'Nazwa'
     username_label: 'Nazwa użytkownika'
-    username_helptext: 'Wszystkie małe litery i cyfry, maksymalnie 30 znaków'
+    username_helptext: 'Tylko małe litery i cyfry, maksymalnie 30 znaków'
     email_label: 'E-mail'
     short_bio_label: 'Wprowadzenie'
     locale_label: 'Język'
-    short_bio_placeholder: 'Proszę się przedstawić, podać obszary specjalizacji, interesujące tematy i wszelkie organizacje stowarzyszone'
+    short_bio_placeholder: 'Przedstaw się, podaj obszary specjalizacji, interesujące Cię tematy i wszystkie organizacje stowarzyszone'
     locale_placeholder: Wybierz preferowany język
     location_label: 'Lokalizacja'
     location_placeholder: 'Gdzie mieszkasz?'
-    update_profile: 'Zmiana profilu'
+    update_profile: 'Zaktualizuj profil'
     deactivate_account: 'Dezaktywuj konto użytkownika'
     help_translate: "Pomóż nam przetłumaczyć Loomio"
   text_editor:
@@ -1162,7 +1162,7 @@ pl:
     name_removed: 'Komentarze, propozycje i dyskusje, które wykonałeś, pozostaną, ale Twoje imię i nazwisko zostanie z nich usunięte'
     no_longer_group_member: 'Nie będziesz już wyświetlany jako członek żadnej grupy'
     no_emails: 'Nie będziesz już otrzymywać powiadomień e-mail'
-    you_can_reactivate: "Możesz ponownie aktywować swoje konto później, jeśli chcesz"
+    you_can_reactivate: "Możesz później ponownie aktywować swoje konto, jeśli będziesz chciał/a"
     submit: 'Tak, chcę dezaktywować'
     submit_delete: 'Usuń moje konto teraz '
   email_settings_page:
@@ -1170,33 +1170,33 @@ pl:
     account_deactivated: Twoje konto zostało dezaktywowane. Nigdy nie będziesz otrzymywać żadnych e-maili.
     deactivate_header: Zatrzymaj wszystkie e-maile na zawsze
     deactivate_description: Jeśli nigdy więcej nie chcesz otrzymywać od nas wiadomości e-mail, możesz dezaktywować swoje konto użytkownika.
-    email_newsletter: Loomio Newsletter
+    email_newsletter: ' Newsletter Loomio'
     email_newsletter_description: "Otrzymuj powiadomienia o nowych funkcjach, szkoleniach, wydarzeniach w Twoim mieście i przyszłości Loomio. Zwykle 2 lub 3 e-maile rocznie."
     daily_summary_label: Dzienna wiadomość z podsumowaniem
     daily_summary_description: "Każdego ranka otrzymasz wiadomość e-mail z wszelkimi czynnościami, które przegapiłeś dzień wcześniej. Ułatwia to śledzenie aktywności."
-    on_participation_label: Zapisz się na uczestnictwo
+    on_participation_label: 'Zapisz się do udziału '
     on_participation_description: "Gdy weźmiesz udział w wątku, cała dalsza aktywność zostanie natychmiast wysłana do Ciebie e-mailem."
     announcement_label: Ogłoszenia
     announcement_description: "Otrzymasz wiadomość e-mail o wszystkich treściach ogłoszonych przez osoby w Twoich grupach"
     mentioned_label: Wzmianki i odpowiedzi
-    mentioned_description: "Gdy ktoś wspomina o Tobie w komentarzu lub odpowiedzi, otrzymasz wiadomość e-mail z powiadomieniem"
+    mentioned_description: "Gdy ktoś wspomni o Tobie w komentarzu lub odpowie na Twój komentarz, otrzymasz e-maila z powiadomieniem"
     update_settings: Zapisz zmiany
     specific_groups: Ustawienia dla określonych grup
     default_settings:
-      loud_description: "Gdy dołączysz do nowej grupy, będziesz otrzymywać e-mailem <strong>za każdym razem, gdy będzie aktywność</strong>."
-      normal_description: "Gdy dołączysz do nowej grupy, będziesz otrzymywać e-mailem o <strong>nowych wątkach i propozycjach</strong>."
-      quiet_description: "Dołączając do nowej grupy, <strong>nie będziesz otrzymywać e-mailem o aktywności</strong>."
+      loud_description: "Kiedy dołączysz do nowej grupy, otrzymasz e-maila <strong>za każdym razem, gdy pojawi się aktywność</strong>."
+      normal_description: "Gdy dołączysz do nowej grupy, będziesz otrzymywać e-maile o <strong>nowych wątkach i propozycjach</strong>."
+      quiet_description: "Gdy dołączysz do nowej grupy, <strong>nie będziesz otrzymywać e-maili o aktywności</strong>."
     edit: Edytuj
     messages:
       updated: Ustawienia poczty zmienione
-    learn_more: Dowiedz się więcej o ustawieniach e-mail ...
+    learn_more: Dowiedz się więcej o ustawieniach e-mail...
   thread_preview:
     replies_count: "{{count}} odpowiedzi"
     unread_count: "{{count}} nieprzeczytane"
   dashboard_page:
     aria_label: 'Pulpit'
     no_groups:
-      show_all: Witamy! Nie jesteś jeszcze członkiem żadnej grupy. <a href="/explore">Przeglądaj grupy publiczne</a> lub <a href="/g/new">Załóż grupę</a>.
+      show_all: Witamy! Nie jesteś jeszcze członkiem żadnej grupy. <a href="/explore">Przeglądaj grupy publiczne</a> lub <a href="/g/new">Utwórz grupę</a>.
       show_muted: Nie masz wyciszonych wątków, ponieważ nie jesteś członkiem żadnej grupy.
     no_threads:
       show_all: Nie masz żadnych ostatnich wątków.
@@ -1204,7 +1204,7 @@ pl:
       show_muted: Nie masz wyciszonych wątków.
     view_recent: Przejrzeć wszystkie ostatnie wątki?
     load_more: Załadowanie następnych wątków
-    mark_as_read: Oznaczenie jako przeczytane
+    mark_as_read: Oznacz jako przeczytane
     dismiss: Odwołaj
     thread_dismissed: Wątek oznaczony jako przeczytany
     thread_recalled: Wątek przypomniany
@@ -1223,15 +1223,15 @@ pl:
       all: Najnowsze wątki
       all_aria_label: Pokazywane są ostatnie wątki
       all_description: Przegląd ostatnich wątków
-      proposals: Rekomendacje
-      proposals_aria_label: Pokazywane są wątki z aktywnymi rekomendacjami
-      proposals_description: Zobacz tylko wątki  aktywnymi rekomendacjami
+      proposals: Propozycje
+      proposals_aria_label: 'Pokazywane są wątki z aktywnymi propozycjami '
+      proposals_description: 'Zobacz tylko wątki z aktywnymi propozycjami '
       muted: Wyciszone wątki
       muted_aria_label: Pokazywane są wyciszone wątki
       muted_description: Przegląd tylko wątków wyciszonych
     aria_thread:
       unread: '{{count}} nieprzeczytanych pozycji.'
-      current_proposal: 'Aktualna rekomendacja: {{name}}.'
+      current_proposal: 'Aktualna propozycja: {{name}}.'
       you_voted: 'Głosowałeś/aś: {{position}}.'
     thread_preview:
       you_voted: 'Głosowałeś {{position}}'
@@ -1284,7 +1284,7 @@ pl:
     title: Wyświetlone przez
     no_one: Nikt jeszcze tego nie widział
   activity_card:
-    aria_label: "Napisz komentarz lub rozpocznij ankietę"
+    aria_label: "Napisz komentarz lub utwórz ankietę"
     count_responses: "{{count}} odpowiedzi"
     event_pinned: "Przypięte do osi czasu"
     event_unpinned: "Odepięto od osi czasu"
@@ -1309,7 +1309,7 @@ pl:
     aria_label: 'Nazwa grupy'
   thread_context:
     current_poll_type_banner: Obecne {{pollType}}
-    item_maybe_deleted: "Nie można znaleźć żądanej lokalizacji w wątku. Mogło zostać usunięte."
+    item_maybe_deleted: "Nie można znaleźć żądanej lokalizacji w wątku. Mogła zostać usunięta."
     aria_label: 'Kontekst wątku.'
     thread_options: 'Opcje wątku'
     email_settings: 'Ustawienia powiadomień'
@@ -1390,7 +1390,7 @@ pl:
     context: 'Wskazówki użycia panelu kontekstu'
     discussion: 'Wskazówki uruchamiania zaangażowanych dyskusji'
     invitation: 'Wskazówki pisania dobrych zaproszeń'
-    proposal: 'Wskazówki do pisania czytelnych rekomendacji'
+    proposal: 'Wskazówki do pisania czytelnych propozycji'
     vote: 'W każdej chwili możesz zmienić swoje stanowisko'
   explore_page:
     header: Odkrywaj grupy
@@ -1453,7 +1453,7 @@ pl:
     max_score: Maksymalny wynik
     min_score: Minimalny wynik
     too_long: Za długo
-    edit_warning: Edycja jest zalecana tylko w przypadku drobnych zmian lub napraw błędów pisowni. W przypadku istotnych zmian zakończ {{pollType}} i rozpocznij nową.
+    edit_warning: Edycja jest zalecana tylko w przypadku drobnych zmian lub napraw błędów pisowni. W przypadku istotnych zmian zakończ {{pollType}} i utwórz nową.
     no_voting: Wyłącznie do dyskusji, głosowanie wyłączone
   poll_common_attachment_form:
     label: Załączniki
@@ -1677,7 +1677,7 @@ pl:
     closing: Zamykanie
     closed: Zamknięta
     start: Rozpocznij
-    start_poll_type: Rozpocznij {{poll_type}}
+    start_poll_type: Utwórz {{poll_type}}
     share_poll_type: Udostępnij {{poll_type}}
     update: Zaktualizuj
     loomio_school_link: |
@@ -1690,7 +1690,7 @@ pl:
         <p>Nie zniechęcaj się, jeśli na początku nie ma między wami zgody, propozycje mają na celu ujawnienie problemów, które wymagają rozwiązania.</p>
         <p>Przy odpowiednim uczestnictwie propozycja jest silnym mandatem do podjęcia działań.</p>
     tool_tip_collapsed: Poszukaj porozumienia lub informacji zwrotnej od innych
-    start_header: Rozpocznij propozycję
+    start_header: Utwórz propozycję
     edit_header: Edytuj propozycję
     tip: Poszukaj porozumienia zbiorowego poprzez proces, który umożliwia wysłuchanie poszczególnych osób. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Dowiedz się więcej</a>
     title_placeholder: Np. Udajmy się na księżyc!
@@ -1703,7 +1703,7 @@ pl:
         <p>Zapewnij kilka opcji do wyboru. Zdecyduj, czy uczestnicy mogą wybrać jedną czy wiele opcji jako ich odpowiedź.</p>
         <p>Każdy może zagłosować i przedstawić swoje stanowisko, jeśli tego chce. Wyniki są przedstawione na wykresie słupkowym.</p>
     tool_tip_collapsed: Wybierz z listy dostępnych opcji
-    start_header: Rozpocznij ankietę
+    start_header: Utwórz ankietę
     edit_header: Edytuj ankietę
     tip: Oferuje wybór pomiędzy opcjami
     title_placeholder: Np. Gdzie chcesz pojechać na wakacje?
