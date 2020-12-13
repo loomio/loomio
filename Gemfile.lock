@@ -145,6 +145,12 @@ GEM
     css_parser (1.7.1)
       addressable
     database_cleaner (1.8.5)
+    database_cleaner-active_record (1.8.0)
+      activerecord
+      database_cleaner (~> 1.8.0)
+    database_cleaner-redis (1.8.0)
+      database_cleaner (~> 1.8.0)
+      redis
     device_detector (1.0.5)
     devise (4.7.3)
       bcrypt (~> 3.0)
@@ -550,7 +556,8 @@ DEPENDENCIES
   coffee-rails
   connection_pool
   custom_counter_cache!
-  database_cleaner
+  database_cleaner-active_record
+  database_cleaner-redis
   devise (~> 4.7.3)
   devise-i18n
   discard (~> 1.2)
