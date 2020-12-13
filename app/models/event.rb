@@ -59,13 +59,13 @@ class Event < ApplicationRecord
   end
 
   def self.publish!(eventable, **args)
-    tries = 0
+    fails = 0
     event = build(eventable, **args)
     begin
       event.save!
     rescue ActiveRecord::RecordNotUnique => e
-      if tries < 3
-        tries += 1
+      fails += 1
+      if fails < 3
         EventService.repair_thread(event.discussion_id)
         retry
       else
