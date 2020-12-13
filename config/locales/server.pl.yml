@@ -11,6 +11,7 @@ pl:
         blank: nie może być puste
         invalid: nie jest prawidłową wartością
   errors:
+    clear_cache: "Wykryto problem z ładowaniem. Przytrzymaj Shift i naciśnij Odśwież lub wyczyść pamięć podręczną przeglądarki."
     400:
       title: Zła prośba
       body: Przepraszamy, nie mogliśmy zrozumieć tej prośby
@@ -132,6 +133,12 @@ pl:
       subject: Eksport danych grupy dla %{group_name}
       body_html: |
           Pobierz dane grupy <a href="%{url}">tutaj</a>. Pamiętaj, że ten link wygaśnie za tydzień.
+    deactivated:
+      subject: "Twoje %{site_name}konto użytkownika zostało zdezaktywowane."
+      body_html: |
+          <p>Ty lub ktoś, kto ma dostęp do Twojego konta, dezaktywował Twoje konto użytkownika Loomio.</p>
+          <p>Wszystkie dane osobowe zostały usunięte z systemu.</p>
+          <p>Jeśli chcesz odzyskać to konto użytkownika oraz związane z nim komentarze i głosy, skontaktuj się z pomocą techniczną:%{recovery_code}</p>
     accounts_merged:
       subject: "Twoje konta użytkowników  %{site_name}zostały scalone."
       body_html: |
@@ -192,6 +199,7 @@ pl:
       poll: Rozpocznij ankietę
       dot_vote: Rozpocznij głosowanie punktowe
       meeting: Zaplanuj czas
+      ranked_choice: Rozpocznij wybór rankingowy
     custom: "%{text}"
     group_email:
       intro: "%{who} wydał ogłoszenie w %{group}; "
