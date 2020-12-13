@@ -63,11 +63,8 @@ class Event < ApplicationRecord
     event = build(eventable, **args)
     begin
       event.save!
-      PublishEventWorker.perform_async(event.id)
-      event
     rescue ActiveRecord::RecordNotUnique => e
-      if event.discussion_id && tries < 3
-        puts "retying"
+      if tries < 3
         tries += 1
         EventService.repair_thread(event.discussion_id)
         retry
@@ -75,6 +72,8 @@ class Event < ApplicationRecord
         raise e
       end
     end
+    PublishEventWorker.perform_async(event.id)
+    event
   end
 
   def self.bulk_publish!(eventables, **args)
@@ -134,11 +133,6 @@ class Event < ApplicationRecord
     update_columns(parent_id: parent_id, depth: depth)
   end
 
-  def set_sequences
-    set_sequence_id
-    set_position_and_position_key
-  end
-
   def position_counter
     Redis::Counter.new("position_counter_#{parent_id}")
   end
@@ -147,47 +141,35 @@ class Event < ApplicationRecord
     Redis::Counter.new("sequence_id_counter_#{discussion_id}")
   end
 
-  def reset_sequences
-    position_counter.delete if parent_id
-    sequence_id_counter.delete if discussion_id
-  end
-
-  def set_sequence_id
+  def set_sequences
     return unless discussion_id
     self.sequence_id = next_sequence_id!
-    puts "set sequence_id: #{sequence_id}"
-  end
-
-  def set_position_and_position_key
-    return unless discussion_id
     self.position = next_position!
     self.position_key = self_and_parents.reverse.map(&:position).map{|p| Event.zero_fill(p) }.join('-')
   end
 
+  def reset_sequences
+    position_counter.delete
+    sequence_id_counter.delete
+  end
+
   def next_sequence_id!
-    reset_sequence_id_counter if sequence_id_counter.nil?
+    if sequence_id_counter.nil?
+      val = (Event.where(discussion_id: discussion_id).
+                   order(sequence_id: :desc).limit(1).pluck(:sequence_id).last || 0)
+      sequence_id_counter.reset(val)
+    end
     sequence_id_counter.increment
   end
 
   def next_position!
-    return 0 unless discussion_id and parent_id
-    reset_position_counter if position_counter.nil?
+    return 0 unless (discussion_id and parent_id)
+    if position_counter.nil?
+      val = (Event.where(parent_id: parent_id, discussion_id: discussion_id).
+                   order(position: :desc).limit(1).pluck(:position).last || 0)
+      position_counter.reset(val)
+    end
     position_counter.increment
-  end
-
-  def reset_sequence_id_counter
-    return unless discussion_id && sequence_id_counter.nil?
-    val = (Event.where(discussion_id: discussion_id).
-                 order(sequence_id: :desc).limit(1).pluck(:sequence_id).last || 0)
-    puts "resetting sequence_id: #{val}"
-    sequence_id_counter.reset(val)
-  end
-
-  def reset_position_counter
-    return unless position_counter.nil?
-    val = (Event.where(parent_id: parent_id, discussion_id: discussion_id).
-                 order(position: :desc).limit(1).pluck(:position).last || 0)
-    position_counter.reset(val)
   end
 
   def self.zero_fill(num)
