@@ -155,9 +155,9 @@ class Event < ApplicationRecord
 
   def next_sequence_id!
     if sequence_id_counter.nil?
-      val = (Event.where(discussion_id: discussion_id).
-                   order(sequence_id: :desc).limit(1).pluck(:sequence_id).last || 0)
-      sequence_id_counter.reset(val)
+      sequence_id_counter.reset(
+        Event.where(discussion_id: discussion_id).
+              order(sequence_id: :desc).limit(1).pluck(:sequence_id).last || 0)
     end
     sequence_id_counter.increment
   end
@@ -165,9 +165,9 @@ class Event < ApplicationRecord
   def next_position!
     return 0 unless (discussion_id and parent_id)
     if position_counter.nil?
-      val = (Event.where(parent_id: parent_id, discussion_id: discussion_id).
-                   order(position: :desc).limit(1).pluck(:position).last || 0)
-      position_counter.reset(val)
+      position_counter.reset(
+        Event.where(parent_id: parent_id, discussion_id: discussion_id).
+              order(position: :desc).limit(1).pluck(:position).last || 0)
     end
     position_counter.increment
   end

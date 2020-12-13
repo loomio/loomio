@@ -21,8 +21,6 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
-
-REDIS_CONNECTION = Redis.new(url: ENV.fetch('REDIS_URL', 'redis://localhost:6379'))
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -56,7 +54,6 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   config.before(:each) do
-    REDIS_CONNECTION.flushall
     stub_request(:get, /\.chargifypay.com/).
       to_return(status: 200, body: '{"subscription":{"product":{"handle":"test-handle"}}}', headers: {})
     stub_request(:put, /\.chargifypay.com/).
