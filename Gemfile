@@ -69,7 +69,6 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'dotenv-rails'
-  gem 'database_cleaner'
   gem 'rails-controller-testing'
 end
 
@@ -85,6 +84,8 @@ group :test do
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'rspec-activemodel-mocks'
+  gem 'database_cleaner-active_record'
+  gem 'database_cleaner-redis'
 end
 
 group :production do
