@@ -12,15 +12,16 @@ describe "Events::Position" do
 
   before do
     discussion.create_missing_created_event!
+    Redis::Objects.redis.flushall
   end
 
   it "gives events with a parent_id a pos sequence" do
-    e1 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment1)
-    e2 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment2)
-    e3 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment3)
-    e4 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment4)
-    e5 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment5)
-    e6 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment6)
+    e1 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment1)
+    e2 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment2)
+    e3 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment3)
+    e4 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment4)
+    e5 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment5)
+    e6 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment6)
 
     expect(e1.position).to eq 1
     expect(e1.sequence_id).to eq 1
