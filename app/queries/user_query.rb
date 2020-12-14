@@ -1,21 +1,29 @@
 class UserQuery
   def self.invitable_to(model:, actor:, q:)
-    group_ids = if model.group.present?
-      if model.group.admins.exists?(actor.id) ||
-        (model.group.members_can_add_guests && model.group.members.exists?(actor.id))
-        model.group.parent_or_self.id_and_subgroup_ids
-      else
-        [model.group.id]
-      end
-    else
-      actor.group_ids
-    end
-
     poll_ids = PollQuery.visible_to(user: actor).pluck('polls.id')
 
     discussion_ids = DiscussionQuery.visible_to(user: actor,
                                                 or_public: false,
                                                 or_subgroups: false).pluck('discussions.id')
+    group_ids = []
+    member_ids = []
+    guest_ids = []
+    voters_ids = []
+
+    if model.group.present?
+      if model.group.admins.exists?(actor.id) ||
+        (model.group.members_can_add_guests && model.group.members.exists?(actor.id))
+        group_ids = model.group.parent_or_self.id_and_subgroup_ids
+      else
+        group_ids = [model.group.id].compact
+      end
+    else
+      if model.admins.exists?(actor.id)
+        group_ids = actor.group_ids
+      else
+      end
+    end
+
 
     member_ids = User.joins('LEFT OUTER JOIN memberships m ON m.user_id = users.id').
                       where('(m.group_id IN (:group_ids))', {group_ids: group_ids}).

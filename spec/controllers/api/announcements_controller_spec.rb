@@ -78,6 +78,31 @@ describe API::AnnouncementsController do
             expect(JSON.parse(response.body)['users'].length).to eq 0
           end
         end
+        context 'as discussion member' do
+          it 'not returns member of my groups' do
+            get :search, params: {q: 'member', discussion_id: discussion.id}
+            expect(response.status).to eq 200
+            expect(JSON.parse(response.body)['users'].length).to eq 0
+          end
+
+          it 'returns guests of my threads' do
+            get :search, params: {q: 'thread_guest', discussion_id: discussion.id}
+            expect(response.status).to eq 200
+            expect(JSON.parse(response.body)['users'].length).to eq 0
+          end
+
+          it 'returns guests of my polls' do
+            get :search, params: {q: 'poll_guest', discussion_id: discussion.id}
+            expect(response.status).to eq 200
+            expect(JSON.parse(response.body)['users'].length).to eq 0
+          end
+
+          it 'does not return unrelated guests' do
+            get :search, params: {q: 'unrelated', discussion_id: discussion.id}
+            expect(response.status).to eq 200
+            expect(JSON.parse(response.body)['users'].length).to eq 0
+          end
+        end
       end
 
       context "in a group" do
@@ -175,8 +200,32 @@ describe API::AnnouncementsController do
     context "poll" do
       context "without group or discussion" do
         context "as poll admin" do
-          it 'returns member of actors groups'
-          it 'returns guest of actors threads'
+          it 'returns member of my groups' do
+            get :search, params: {q: 'member', discussion_id: poll.id}
+            expect(response.status).to eq 200
+            expect(JSON.parse(response.body)['users'].length).to eq 1
+            expect(JSON.parse(response.body)['users'][0]['id']).to eq member.id
+          end
+
+          it 'returns guests of my threads' do
+            get :search, params: {q: 'thread_guest', discussion_id: poll.id}
+            expect(response.status).to eq 200
+            expect(JSON.parse(response.body)['users'].length).to eq 1
+            expect(JSON.parse(response.body)['users'][0]['id']).to eq thread_guest.id
+          end
+
+          it 'returns guests of my polls' do
+            get :search, params: {q: 'poll_guest', discussion_id: poll.id}
+            expect(response.status).to eq 200
+            expect(JSON.parse(response.body)['users'].length).to eq 1
+            expect(JSON.parse(response.body)['users'][0]['id']).to eq poll_guest.id
+          end
+
+          it 'does not return unrelated guests' do
+            get :search, params: {q: 'unrelated', discussion_id: poll.id}
+            expect(response.status).to eq 200
+            expect(JSON.parse(response.body)['users'].length).to eq 0
+          end
         end
 
         context "as poll member" do
