@@ -1164,6 +1164,7 @@ zh_TW:
     no_emails: '您將不會再收到電子郵件通知'
     you_can_reactivate: "如果您想要的話，您可以在稍後重新啟用您的帳號"
     submit: '是的，我想要停用'
+    submit_delete: '現在刪除我的帳號'
   email_settings_page:
     header: 通知設定
     account_deactivated: 您的帳號已被停用。您將不會再收到任何電子郵件。
