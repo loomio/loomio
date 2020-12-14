@@ -55,7 +55,7 @@ class EventService
 
     # rebuild ancestry of events based on eventable relationships
     items = Event.where(discussion_id: discussion.id).order(:sequence_id)
-    items.update_all(parent_id: discussion.created_event.id, position: 0, position_key: nil, depth: 1, child_count: 0)
+    items.update_all(parent_id: discussion.created_event.id, position: 0, position_key: nil, depth: 1)
     items.reload.compact.each(&:set_parent_and_depth!)
 
     parent_ids = items.pluck(:parent_id).compact.uniq
@@ -63,11 +63,6 @@ class EventService
       parent_event.reload
       reset_child_positions(parent_event.id, parent_event.position_key)
     end
-
-    # Event.where(id: parent_ids).order(:id).each do |parent_event|
-    #   parent_event.update_child_count
-    #   parent_event.update_descendant_count
-    # end
 
     ActiveRecord::Base.connection.execute(
       "UPDATE events
@@ -98,7 +93,6 @@ class EventService
     else
       "CONCAT('#{parent_position_key}-', CONCAT(REPEAT('0',5-LENGTH(CONCAT(t.seq) ) ), t.seq) )"
     end
-    Event.where(parent_id: parent_id).update_all(position: 0)
     ActiveRecord::Base.connection.execute(
       "UPDATE events SET position = t.seq, position_key = #{position_key_sql}
         FROM (
