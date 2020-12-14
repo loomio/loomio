@@ -1,7 +1,12 @@
 class UserQuery
   def self.invitable_to(model:, actor:, q:)
     group_ids = if model.group.present?
-      model.group.parent_or_self.id_and_subgroup_ids
+      if model.group.admins.exists?(actor.id) ||
+        (model.group.members_can_add_guests && model.group.members.exists?(actor.id))
+        model.group.parent_or_self.id_and_subgroup_ids
+      else
+        [model.group.id]
+      end
     else
       actor.group_ids
     end
@@ -28,6 +33,7 @@ class UserQuery
                             s.revoked_at IS NULL AND
                             s.latest = TRUE', {poll_ids: poll_ids}).
                      search_for(q).limit(50).pluck(:id)
+
     User.where(id: member_ids.concat(guest_ids).concat(voter_ids).uniq).search_for(q)
   end
 

@@ -12,17 +12,20 @@ describe API::AnnouncementsController do
   end
 
   describe 'search for invitees to' do
-    let(:poll) { create :poll }
-    let(:group) { create(:group, name: 'group') }
-    let(:subgroup) { create(:group, parent: group, name: 'subgroup') }
-    let(:subgroup_member) { create(:user, name: 'subgroup_member') }
-    let(:discussion) { create(:discussion) }
-    let(:other_discussion) { create(:discussion, title: 'other discussion', group: nil) }
-    let(:other_group) { create(:group, name: 'other_group') }
-    let(:member) { create(:user, name: 'member') }
-    let(:other_member) { create(:user, name: 'other_member') }
-    let(:guest) { create(:user, name: 'guest') }
-    let(:actor) { create(:user, name: 'actor') }
+    let!(:poll) { create :poll }
+    let!(:group) { create(:group, name: 'group') }
+    let!(:subgroup) { create(:group, parent: group, name: 'subgroup') }
+    let!(:subgroup_member) { create(:user, name: 'subgroup_member') }
+    let!(:discussion) { create(:discussion) }
+    let!(:other_discussion) { create(:discussion, title: 'other discussion', group: nil) }
+    let!(:other_group) { create(:group, name: 'other_group') }
+    let!(:other_poll) { create :poll, title: 'other poll', group: nil }
+    let!(:member) { create(:user, name: 'member') }
+    let!(:other_member) { create(:user, name: 'other_member') }
+    let!(:thread_guest) { create(:user, name: 'thread_guest') }
+    let!(:poll_guest) { create(:user, name: 'poll_guest') }
+    let!(:actor) { create(:user, name: 'actor') }
+    let!(:unrelated) { create(:user, name: 'unrelated') }
 
     before do
       sign_in actor
@@ -32,6 +35,10 @@ describe API::AnnouncementsController do
       subgroup.add_member! subgroup_member
       other_group.add_member! actor
       other_group.add_member! other_member
+      other_discussion.discussion_readers.create!(user_id: actor.id, admin: true, inviter_id: actor.id)
+      other_discussion.discussion_readers.create!(user_id: thread_guest.id, inviter_id: actor.id)
+      poll.stances.create!(participant_id: actor.id, inviter_id: actor.id, admin: true)
+      poll.stances.create!(participant_id: poll_guest.id, inviter_id: actor.id)
     end
 
     context "discussion" do
@@ -52,26 +59,21 @@ describe API::AnnouncementsController do
           end
 
           it 'returns guests of my threads' do
-            other_discussion.discussion_readers.create!(user_id: actor.id, admin: true, inviter_id: actor.id)
-            other_discussion.discussion_readers.create!(user_id: guest.id, inviter_id: actor.id)
-            get :search, params: {q: 'guest', discussion_id: discussion.id}
+            get :search, params: {q: 'thread_guest', discussion_id: discussion.id}
             expect(response.status).to eq 200
             expect(JSON.parse(response.body)['users'].length).to eq 1
-            expect(JSON.parse(response.body)['users'][0]['id']).to eq guest.id
+            expect(JSON.parse(response.body)['users'][0]['id']).to eq thread_guest.id
           end
 
           it 'returns guests of my polls' do
-            poll.stances.create!(participant_id: guest.id, inviter_id: actor.id)
-            poll.stances.create!(participant_id: actor.id, inviter_id: actor.id)
-            get :search, params: {q: 'guest', discussion_id: discussion.id}
+            get :search, params: {q: 'poll_guest', discussion_id: discussion.id}
             expect(response.status).to eq 200
             expect(JSON.parse(response.body)['users'].length).to eq 1
-            expect(JSON.parse(response.body)['users'][0]['id']).to eq guest.id
+            expect(JSON.parse(response.body)['users'][0]['id']).to eq poll_guest.id
           end
 
           it 'does not return unrelated guests' do
-            guest
-            get :search, params: {q: 'guest', discussion_id: discussion.id}
+            get :search, params: {q: 'unrelated', discussion_id: discussion.id}
             expect(response.status).to eq 200
             expect(JSON.parse(response.body)['users'].length).to eq 0
           end
@@ -84,7 +86,7 @@ describe API::AnnouncementsController do
         context "as group admin" do
           before { Membership.where(user: actor, group: group).update(admin: true) }
           # context members_can_add_guests is false
-          it 'returns discussion group members' do
+          it 'returns group members' do
             get :search, params: {q: 'member', discussion_id: discussion.id}
             expect(response.status).to eq 200
             expect(JSON.parse(response.body)['users'].length).to eq 1
@@ -103,20 +105,68 @@ describe API::AnnouncementsController do
             expect(response.status).to eq 200
             expect(JSON.parse(response.body)['users'].length).to eq 0
           end
-          it 'does not return unrelated users'
+
+          it 'does not return unrelated guests' do
+            get :search, params: {q: 'guest', discussion_id: discussion.id}
+            expect(response.status).to eq 200
+            expect(JSON.parse(response.body)['users'].length).to eq 0
+          end
         end
 
         context "as group member" do
+          before { Membership.where(user: actor, group: group).update(admin: false) }
+
           context "group.members_can_add_guests=true" do
-            it 'returns group members'
-            it 'returns subgroup members'
-            it 'does not return other members'
+            before { group.update(members_can_add_guests: true) }
+
+            it 'returns group members' do
+              get :search, params: {q: 'member', discussion_id: discussion.id}
+              expect(response.status).to eq 200
+              expect(JSON.parse(response.body)['users'].length).to eq 1
+              expect(JSON.parse(response.body)['users'][0]['id']).to eq member.id
+            end
+
+            it 'returns subgroup members' do
+              get :search, params: {q: 'subgroup_member', discussion_id: discussion.id}
+              expect(response.status).to eq 200
+              expect(JSON.parse(response.body)['users'].length).to eq 1
+              expect(JSON.parse(response.body)['users'][0]['id']).to eq subgroup_member.id
+            end
+
+            it 'does not return another organizations members' do
+              get :search, params: {q: 'other_member', discussion_id: discussion.id}
+              expect(response.status).to eq 200
+              expect(JSON.parse(response.body)['users'].length).to eq 0
+            end
           end
 
           context "group.members_can_add_guests=false" do
-            it 'returns group members'
-            it 'does not return subgroup members'
-            it 'does not return other members'
+            before { group.update(members_can_add_guests: false) }
+
+            it 'returns group members' do
+              get :search, params: {q: 'member', discussion_id: discussion.id}
+              expect(response.status).to eq 200
+              expect(JSON.parse(response.body)['users'].length).to eq 1
+              expect(JSON.parse(response.body)['users'][0]['id']).to eq member.id
+            end
+
+            it 'not subgroup members' do
+              get :search, params: {q: 'subgroup_member', discussion_id: discussion.id}
+              expect(response.status).to eq 200
+              expect(JSON.parse(response.body)['users'].length).to eq 0
+            end
+
+            it 'not another organizations members' do
+              get :search, params: {q: 'other_member', discussion_id: discussion.id}
+              expect(response.status).to eq 200
+              expect(JSON.parse(response.body)['users'].length).to eq 0
+            end
+
+            it 'does not return unrelated guests' do
+              get :search, params: {q: 'unrelated', discussion_id: discussion.id}
+              expect(response.status).to eq 200
+              expect(JSON.parse(response.body)['users'].length).to eq 0
+            end
           end
         end
       end
