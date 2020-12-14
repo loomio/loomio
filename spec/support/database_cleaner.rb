@@ -5,7 +5,9 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner[:redis].db = ENV.fetch('REDIS_URL', 'redis://localhost:6379')
+    DatabaseCleaner[:active_record].strategy = :transaction
+    DatabaseCleaner[:redis].strategy = :truncation
   end
 
   config.before(:each, :js => true) do
