@@ -311,7 +311,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
-    kt-paperclip (6.3.0)
+    kt-paperclip (6.4.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       mime-types
