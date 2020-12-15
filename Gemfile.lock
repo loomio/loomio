@@ -482,9 +482,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sentry-rails (0.3.0)
+    sentry-rails (4.0.0)
       rails (>= 5.0)
-      sentry-ruby (>= 0.3.0)
+      sentry-ruby (>= 4.0.0)
     sentry-ruby (4.0.1)
       faraday (>= 1.0)
     sentry-sidekiq (0.2.0)
