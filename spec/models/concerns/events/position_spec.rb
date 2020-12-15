@@ -11,8 +11,9 @@ describe "Events::Position" do
   let(:comment6) { create :comment, discussion: discussion }
 
   before do
+    Redis::Objects.redis.flushdb
+    sleep(1.second)
     discussion.create_missing_created_event!
-    Redis::Objects.redis.flushall
   end
 
   it "gives events with a parent_id a pos sequence" do
