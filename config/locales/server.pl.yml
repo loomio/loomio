@@ -208,7 +208,7 @@ pl:
     value_proposition: "%{site_name} jest miejscem, w którym grupy mogą wspólnie podejmować decyzje"
     view_group: Wyświetl grupę
     to_join_group:
-      subject: "%{member}zaprosił Cię do przyłączenia się do%{group_name} na %{site_name} "
+      subject: "%{member} zaprosił/a Cię do przyłączenia się do %{group_name} na %{site_name} "
       invitation_text: "%{member} zaprosił Cię do swojej grupy %{group_name}."
       invitation_text_html: "zaprosił Cię do swojej grupy"
       link_help: "Kliknij poniższy link, aby zaakceptować zaproszenie:"
@@ -419,8 +419,8 @@ pl:
       you_have_until: Dopóki %{when}nie weźmie udziału
       people_have_voted: "%{num} osób zagłosowało (%{pct}%)"
     subject:
-      poll_created: '%{actor}rozpoczął %{poll_type}: %{title}'
-      poll_edited: '%{actor} edytował %{poll_type}: %{title}'
+      poll_created: '%{actor}rozpoczął/ rozpoczęła %{poll_type}: %{title}'
+      poll_edited: '%{actor} edytował/a %{poll_type}: %{title}'
       poll_announced: '%{actor} zaprosił/a Cię do głosowania w %{poll_type}:%{title}'
       poll_announced_wip: '%{actor} udostępnił/a pracę w toku%{poll_type}:%{title}'
       poll_closing_soon: '%{poll_type} zostanie zamknięte w ciągu 24 godzin: %{title}'
