@@ -1,23 +1,12 @@
 class UserQuery
-  def self.invitable_to(model:, actor:, q:, limit: 50)
-    group_members = search_group_members(model, actor, q)
-    discussion_guests = search_discussion_guests(model, actor, q)
-    poll_guests = search_poll_guests(model, actor, q)
-
-    user_ids = [group_members, discussion_guests, poll_guests].compact.map do |relation|
-      relation.limit(limit).pluck(:id)
-    end.flatten
-
-    User.where(id: user_ids).search_for(q)
-  end
-
-  def self.search_group_members(model, actor, q)
+  def self.group_ids_for(model, actor)
     group_ids = if model.nil?
       actor.group_ids
     else
       if model.group.present?
         if model.group.admins.exists?(actor.id) ||
-          (model.group.members_can_add_guests && model.group.members.exists?(actor.id))
+          (model.group.members_can_add_guests && model.is_a?(Poll) && model.admins.exists?(actor.id)) ||
+          (model.group.members_can_add_guests && !model.is_a?(Poll) && model.group.members.exists?(actor.id)) ||
           model.group.parent_or_self.id_and_subgroup_ids
         else
           [model.group.id].compact
@@ -30,79 +19,64 @@ class UserQuery
         end
       end
     end
-
-    User.active.verified.joins('LEFT OUTER JOIN memberships m ON m.user_id = users.id').where('(m.group_id IN (:group_ids))', {group_ids: group_ids}).search_for(q)
   end
 
-  def self.search_discussion_guests(model, actor, q)
-    # people in my groups are already covered
-    # people who are guests of discussions in my groups
-    # or people in discussions where I am a guest
-    discussion_ids = if model.nil?
-      DiscussionQuery.visible_to(user: actor,
-                                 or_public: false,
-                                 or_subgroups: false).pluck('discussions.id')
-    else
-      if model.group.present?
-        if model.group.admins.exists?(actor.id) ||
-          (model.group.members_can_add_guests && model.group.members.exists?(actor.id))
-          # any guests of threads within the organization
-          group_ids = model.group.parent_or_self.id_and_subgroup_ids
-          DiscussionQuery.visible_to(user: actor,
-                                     or_public: false,
-                                     group_ids: group_ids,
-                                     or_subgroups: false).pluck('discussions.id')
-        else
-          group_ids = [model.group.id].compact
-          DiscussionQuery.visible_to(user: actor,
-                                     or_public: false,
-                                     group_ids: group_ids,
-                                     or_subgroups: false).pluck('discussions.id')
-        end
-      else
-        if model.admins.exists?(actor.id)
-          DiscussionQuery.visible_to(user: actor,
-                                     or_public: false,
-                                     or_subgroups: false).pluck('discussions.id')
-        else
-          []
-        end
+  def self.invitable_to(model:, actor:, q: nil, limit: 50)
+    group_ids = group_ids_for(model, actor)
+
+    rels = []
+
+    rels.push User.joins('LEFT OUTER JOIN memberships m ON m.user_id = users.id').
+                   where('(m.group_id IN (:group_ids))', {group_ids: group_ids})
+
+    if model.nil? or actor.can?(:add_guests, model)
+      # people who have invited actor
+      rels.push(
+        User.joins("LEFT OUTER JOIN discussion_readers dr on dr.inviter_id = users.id").
+             where("dr.user_id = ? AND inviter_id IS NOT NULL AND revoked_at IS NULL", actor.id)
+      )
+
+      # people who have been invited by actor
+      rels.push(
+        User.joins("LEFT OUTER JOIN discussion_readers dr on dr.user_id = users.id").
+        where("dr.inviter_id = ? AND revoked_at IS NULL", actor.id)
+      )
+
+      # people who have invited actor
+      rels.push(
+        User.joins("LEFT OUTER JOIN stances on stances.inviter_id = users.id").
+        where("stances.participant_id = ? AND revoked_at IS NULL", actor.id)
+      )
+
+      # people who have been invited by actor
+      rels.push(
+        User.joins("LEFT OUTER JOIN stances on stances.participant_id = users.id").
+        where("stances.inviter_id = ? AND revoked_at IS NULL", actor.id)
+      )
+    end
+
+    if model.present? and actor.can?(:add_members, model)
+      if model.discussion_id
+        rels.push(
+          User.joins('LEFT OUTER JOIN discussion_readers dr ON dr.user_id = users.id').
+          where('dr.discussion_id': model.discussion_id)
+        )
+
+        rels.push(
+          User.joins('LEFT OUTER JOIN stances ON stances.participant_id = users.id').
+          where('stances.poll_id': model.discussion.poll_ids)
+        )
+      end
+
+      if model.poll_id
+        rels.push(
+          User.joins('LEFT OUTER JOIN stances ON stances.participant_id = users.id').
+          where('stances.poll_id': model.poll_id)
+        )
       end
     end
 
-    User.joins('LEFT OUTER JOIN discussion_readers dr ON dr.user_id = users.id').
-         where('dr.discussion_id IN (:discussion_ids) AND
-                dr.inviter_id IS NOT NULL AND
-                dr.revoked_at IS NULL', {discussion_ids: discussion_ids}).
-         search_for(q)
-  end
-
-  def self.search_poll_guests(model, actor, q)
-    poll_ids = if model.nil?
-      PollQuery.visible_to(user: actor).pluck('polls.id')
-    else
-      if model.group.present?
-        if model.group.admins.exists?(actor.id) ||
-          (model.group.members_can_add_guests && model.group.members.exists?(actor.id))
-          group_ids = model.group.parent_or_self.id_and_subgroup_ids
-        else
-          group_ids = [model.group.id].compact
-        end
-      else
-        if model.admins.exists?(actor.id)
-          PollQuery.visible_to(user: actor).pluck('polls.id')
-        else
-          []
-        end
-      end
-    end
-
-    voter_ids = User.joins('LEFT OUTER JOIN stances s ON s.participant_id = users.id').
-                     where('s.poll_id IN (:poll_ids) AND
-                            s.inviter_id IS NOT NULL AND
-                            s.revoked_at IS NULL AND
-                            s.latest = TRUE', {poll_ids: poll_ids}).
-                     search_for(q)
+    User.where(id: rels.map { |rel| rel.active.verified.search_for(q).limit(limit).pluck(:id) }.flatten.uniq.compact).limit(50)
   end
 
 
