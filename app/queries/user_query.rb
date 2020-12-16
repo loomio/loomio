@@ -1,36 +1,22 @@
 class UserQuery
-  def self.group_ids_for(model, actor)
-    group_ids = if model.nil?
-      actor.group_ids
-    else
-      if model.group.present?
-        if model.group.admins.exists?(actor.id) ||
-          (model.group.members_can_add_guests && model.admins.exists?(actor.id)) ||
-          (model.group.members_can_add_guests && model.is_a?(Poll) && !model.specified_voters_only && model.members.exists?(actor.id)) ||
-          (model.group.members_can_add_guests && !model.is_a?(Poll) && model.group.members.exists?(actor.id))
-          model.group.parent_or_self.id_and_subgroup_ids
-        else
-          [model.group.id].compact
-        end
-      else
-        if model.admins.exists?(actor.id)
-          actor.group_ids
-        else
-          []
-        end
-      end
-    end
-  end
-
   def self.invitable_to(model:, actor:, q: nil, limit: 50)
-    group_ids = group_ids_for(model, actor)
-
     rels = []
 
-    rels.push User.joins('LEFT OUTER JOIN memberships m ON m.user_id = users.id').
-                   where('(m.group_id IN (:group_ids))', {group_ids: group_ids})
+    if model.is_a?(Group) and model.members.exists?(actor.id)
+      rels.push User.joins('LEFT OUTER JOIN memberships m ON m.user_id = users.id').
+                     where('(m.group_id IN (:group_ids))', {group_ids: model.group.id})
+    end
 
     if model.nil? or actor.can?(:add_guests, model)
+      group_ids = if model && model.group.present?
+        actor.group_ids & model.group.parent_or_self.id_and_subgroup_ids
+      else
+        actor.group_ids
+      end
+
+      rels.push User.joins('LEFT OUTER JOIN memberships m ON m.user_id = users.id').
+                     where('(m.group_id IN (:group_ids))', {group_ids: group_ids})
+
       # people who have invited actor
       rels.push(
         User.joins("LEFT OUTER JOIN discussion_readers dr on dr.inviter_id = users.id").
@@ -57,6 +43,12 @@ class UserQuery
     end
 
     if model.present? and actor.can?(:add_members, model)
+      if model.group.present?
+        rels.push User.joins('LEFT OUTER JOIN memberships m ON m.user_id = users.id').
+                       where('(m.group_id IN (:group_ids))', {group_ids: model.group.id})
+      end
+
+
       if model.discussion_id
         rels.push(
           User.joins('LEFT OUTER JOIN discussion_readers dr ON dr.user_id = users.id').

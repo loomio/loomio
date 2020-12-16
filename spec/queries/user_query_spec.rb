@@ -2,12 +2,12 @@ require 'rails_helper'
 
 describe UserQuery do
   let!(:poll) { create :poll, group: nil, discussion: nil }
-  let!(:group) { create(:group, name: 'group') }
-  let!(:subgroup) { create(:group, parent: group, name: 'subgroup') }
+  let!(:group) { build(:group, name: 'group').tap(&:save) }
+  let!(:subgroup) { build(:group, parent: group, name: 'subgroup').tap(&:save) }
   let!(:subgroup_member) { create(:user, name: 'subgroup_member') }
-  let!(:discussion) { create(:discussion, group: nil) }
-  let!(:other_discussion) { create(:discussion, title: 'other discussion', group: nil) }
-  let!(:other_group) { create(:group, name: 'other_group') }
+  let!(:discussion) { build(:discussion, group: nil).tap(&:save)  }
+  let!(:other_discussion) { build(:discussion, title: 'other discussion', group: nil).tap(&:save) }
+  let!(:other_group) { build(:group, name: 'other_group').tap(&:save) }
   let!(:other_poll) { create :poll, title: 'other poll', group: nil, discussion: nil }
   let!(:member) { create(:user, name: 'member') }
   let!(:other_member) { create(:user, name: 'other_member') }
@@ -27,10 +27,10 @@ describe UserQuery do
     other_group.add_member! actor
     other_group.add_member! other_member
     discussion.discussion_readers.create!(user_id: actor.id, inviter_id: inviter.id)
-    discussion.discussion_readers.create!(user_id: invited.id, inviter_id: actor.id)
     discussion.discussion_readers.create!(user_id: thread_guest.id, inviter_id: inviter.id)
     other_discussion.discussion_readers.create!(user_id: actor.id, inviter_id: inviter.id)
     other_discussion.discussion_readers.create!(user_id: other_guest.id, inviter_id: inviter.id)
+    other_discussion.discussion_readers.create!(user_id: invited.id, inviter_id: actor.id)
     poll.stances.create!(participant_id: actor.id, inviter_id: actor.id)
     poll.stances.create!(participant_id: poll_guest.id, inviter_id: inviter.id)
   end
@@ -66,15 +66,15 @@ describe UserQuery do
           end
 
           it 'returns actors group members, inviters and invited' do
-            expect(subject).to include *[member, subgroup_member, thread_guest, poll_guest].map(&:name)
+            expect(subject).to include *[member, subgroup_member, other_member, thread_guest, poll_guest, inviter, invited].map(&:name)
             expect(subject).not_to include unrelated.name
           end
         end
 
         context "as member" do
           it 'returns thread_guest, poll_guest' do
-            expect(subject).to include *[thread_guest, poll_guest, invited, actor].map(&:name)
-            expect(subject.count).to eq 4
+            expect(subject).to include *[thread_guest, poll_guest, actor].map(&:name)
+            expect(subject.count).to eq 3
           end
         end
       end
@@ -88,7 +88,7 @@ describe UserQuery do
           before { Membership.where(user: actor, group: group).update(admin: true) }
 
           it 'returns group, subgroup members, thread guests, poll_guests' do
-            expect(subject).to include *[member, subgroup_member, thread_guest].map(&:name)
+            expect(subject).to include *[member, subgroup_member, thread_guest, poll_guest, inviter, invited].map(&:name)
           end
 
           it 'excludes other org members, unrelated users' do
@@ -103,7 +103,7 @@ describe UserQuery do
             before { group.update(members_can_add_guests: true) }
 
             it 'returns group & subgroup members, thread guests' do
-              expect(subject).to include *[member, subgroup_member, thread_guest].map(&:name)
+              expect(subject).to include *[member, subgroup_member, thread_guest, poll_guest, inviter, invited].map(&:name)
             end
 
             it 'does not return another organizations members, unrelated users' do
@@ -117,11 +117,11 @@ describe UserQuery do
             end
 
             it 'returns group members, thread guests' do
-              expect(subject).to include *[member, thread_guest].map(&:name)
+              expect(subject).to include *[member, thread_guest, poll_guest].map(&:name)
             end
 
             it 'excludes subgroup members, other org members, unrelated' do
-              expect(subject).not_to include *[subgroup_member, other_member, unrelated].map(&:name)
+              expect(subject).not_to include *[subgroup_member, other_member, unrelated, inviter, invited].map(&:name)
             end
           end
         end
@@ -173,8 +173,8 @@ describe UserQuery do
           before { discussion.discussion_readers.where(user_id: actor.id).update_all(admin: false) }
 
           it 'returns existing members' do
-            expect(subject).to include *[invited, poll_guest, thread_guest, actor].map(&:name)
-            expect(subject.count).to eq 4
+            expect(subject).to include *[poll_guest, thread_guest, actor].map(&:name)
+            expect(subject.count).to eq 3
           end
         end
       end
@@ -204,7 +204,7 @@ describe UserQuery do
               before { group.update(members_can_add_guests: true) }
 
               it 'returns group, subgroup members, poll_guests' do
-                expect(subject).to include *[member, subgroup_member, poll_guest].map(&:name)
+                expect(subject).to include *[member, subgroup_member, poll_guest, invited, inviter].map(&:name)
               end
 
               it 'does not return another organizations members' do
@@ -216,7 +216,8 @@ describe UserQuery do
               before { group.update(members_can_add_guests: false) }
 
               it 'returns group member, poll_guest' do
-                expect(subject).to include *[member, poll_guest].map(&:name)
+                expect(subject).to include *[member, poll_guest, actor].map(&:name)
+                expect(subject.size).to be 3
               end
 
               it 'does not return subgroup members, other members, unlreated guests' do
@@ -227,30 +228,44 @@ describe UserQuery do
 
           context "and a poll member" do
             context "group.members_can_add_guests=true" do
-              context "specified_voters_only=true" do
-                before do
-                  poll.group.update(members_can_add_guests: true)
-                  poll.update(specified_voters_only: true)
-                end
+              before { poll.group.update(members_can_add_guests: true) }
 
-                # not allowed to add anyone not already in the poll
+              context "specified_voters_only=true" do
+                before { poll.update(specified_voters_only: true) }
+
+                it 'returns no body' do
+                  expect(subject.size).to be 0
+                end
               end
 
               context "specified_voters_only=false" do
-                before do
-                  poll.group.update(members_can_add_guests: true)
-                  poll.update(specified_voters_only: true)
-                end
+                before { poll.update(specified_voters_only: false) }
 
-                # allow adding people in the group
+                it 'returns group, subgroup members, poll_guests' do
+                  expect(subject).to include *[member, subgroup_member, poll_guest, invited, inviter].map(&:name)
+                end
               end
             end
+
             context "group.members_can_add_guests=false" do
-              before do
-                poll.group.update(members_can_add_guests: false)
+              before { poll.group.update(members_can_add_guests: false) }
+
+              context "specified_voters_only=true" do
+                before { poll.update(specified_voters_only: true) }
+
+                it 'returns nobody' do
+                  expect(subject.size).to be 0
+                end
               end
 
-              # cant add anyone
+              context "specified_voters_only=false" do
+                before { poll.update(specified_voters_only: false) }
+
+                it 'returns only people already in the poll, or people in the group' do
+                  expect(subject).to include *[poll_guest, actor, member].map(&:name)
+                  expect(subject.size).to be 3
+                end
+              end
             end
           end
         end

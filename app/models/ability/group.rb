@@ -43,6 +43,7 @@ module Ability::Group
     end
 
     can [:add_members,
+         :add_guests,
          :invite_people,
          :announce,
          :manage_membership_requests], ::Group do |group|
