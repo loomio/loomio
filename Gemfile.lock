@@ -410,7 +410,7 @@ GEM
       activerecord (>= 5.2.4)
       activesupport (>= 5.2.4)
       i18n
-    redcarpet (3.5.0)
+    redcarpet (3.5.1)
     redis (4.2.2)
     redis-actionpack (5.2.0)
       actionpack (>= 5, < 7)
@@ -598,7 +598,7 @@ DEPENDENCIES
   rails_serve_static_assets
   rake
   ransack (= 2.4.0)
-  redcarpet (~> 3.5.0)
+  redcarpet (~> 3.5.1)
   redis-objects
   redis-rails
   reverse_markdown
