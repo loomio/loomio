@@ -227,11 +227,30 @@ describe UserQuery do
 
           context "and a poll member" do
             context "group.members_can_add_guests=true" do
-              before { poll.group.update(members_can_add_guests: true) }
+              context "specified_voters_only=true" do
+                before do
+                  poll.group.update(members_can_add_guests: true)
+                  poll.update(specified_voters_only: true)
+                end
 
-              it 'does not return another organizations members' do
-                expect(subject).to_not include *[other_member, thread_guest, unrelated, member, subgroup_member].map(&:name)
+                # not allowed to add anyone not already in the poll
               end
+
+              context "specified_voters_only=false" do
+                before do
+                  poll.group.update(members_can_add_guests: true)
+                  poll.update(specified_voters_only: true)
+                end
+
+                # allow adding people in the group
+              end
+            end
+            context "group.members_can_add_guests=false" do
+              before do
+                poll.group.update(members_can_add_guests: false)
+              end
+
+              # cant add anyone
             end
           end
         end

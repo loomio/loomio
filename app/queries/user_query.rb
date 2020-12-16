@@ -5,8 +5,9 @@ class UserQuery
     else
       if model.group.present?
         if model.group.admins.exists?(actor.id) ||
-          (model.group.members_can_add_guests && model.is_a?(Poll) && model.admins.exists?(actor.id)) ||
-          (model.group.members_can_add_guests && !model.is_a?(Poll) && model.group.members.exists?(actor.id)) ||
+          (model.group.members_can_add_guests && model.admins.exists?(actor.id)) ||
+          (model.group.members_can_add_guests && model.is_a?(Poll) && !model.specified_voters_only && model.members.exists?(actor.id)) ||
+          (model.group.members_can_add_guests && !model.is_a?(Poll) && model.group.members.exists?(actor.id))
           model.group.parent_or_self.id_and_subgroup_ids
         else
           [model.group.id].compact
@@ -76,7 +77,15 @@ class UserQuery
       end
     end
 
-    User.where(id: rels.map { |rel| rel.active.verified.search_for(q).limit(limit).pluck(:id) }.flatten.uniq.compact).limit(50)
+    # an attempt to prioritize..
+    # ids = []
+    # rels.each do |rel|
+    #   ids.concat(rel.active.verified.search_for(q).limit(limit).pluck(:id))
+    #   ids = ids.flatten.uniq.compact
+    #   break if ids.size >= limit
+    # end
+
+    User.where(id: rels.map { |rel| rel.active.verified.search_for(q).limit(limit).pluck(:id) }.flatten.uniq.compact).order(:memberships_count).limit(50)
   end
 
 
