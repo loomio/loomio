@@ -84,7 +84,7 @@ class API::AnnouncementsController < API::RestfulController
   private
   def default_scope
     super.merge(
-      include_email: target_model.admins.exists?(current_user.id)
+      include_email: (target_model && target_model.admins.exists?(current_user.id))
     )
   end
 
@@ -100,6 +100,6 @@ class API::AnnouncementsController < API::RestfulController
     load_and_authorize(:discussion, :show, optional: true) ||
     load_and_authorize(:comment, :show, optional: true) ||
     load_and_authorize(:poll, :show, optional: true) ||
-    load_and_authorize(:outcome, :show, optional: false)
+    load_and_authorize(:outcome, :show, optional: true)
   end
 end

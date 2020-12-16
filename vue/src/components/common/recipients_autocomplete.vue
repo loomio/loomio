@@ -30,6 +30,7 @@ export default
 
   data: ->
     query: ''
+    suggestedUserIds: []
     suggestions: []
     recipients: []
     loading: false
@@ -40,6 +41,7 @@ export default
 
   watch:
     'model.groupId': (groupId) ->
+      @suggestedUserIds = []
       @newRecipients(@initialRecipients)
       @fetchAndUpdateSuggestions()
 
@@ -58,42 +60,29 @@ export default
       @fetchAndUpdateSuggestions()
 
   methods:
-    fetchSuggestions: ->
-      Records.fetch
-        path: 'announcements/search'
-        params:
-          exclude_types: 'group inviter'
-          q: @query
-          subgroups: 'all'
-          per: 20
-          group_id: @model.group().parentOrSelf().id
-          discussion_id: @model.group().parentOrSelf().id
-          poll_id: @model.group().parentOrSelf().id
-
-    fetchAndUpdateSuggestions: ->
-      @fetchMemberships()
-      @updateSuggestions()
-
-    fetchMemberships: debounce ->
+    fetchSuggestions: debounce ->
       return unless @query
-
-      emails = uniq(@query.match(/[^\s:,;'"`<>]+?@[^\s:,;'"`<>]+\.[^\s:,;'"`<>]+/g) || [])
-      return if emails.length
+      model = (@model.id && @model) || (@model.groupId && @model.group()) || {namedId: ->}
 
       @loading = true
-
-      Records.memberships.fetch
-        params:
+      Records.fetch
+        path: 'announcements/search'
+        params: {
           exclude_types: 'group inviter'
           q: @query
-          subgroups: 'all'
           per: 20
-          group_id: @model.group().parentOrSelf().id
-      .then =>
+          ...model.namedId()
+        }
+      .then (data) =>
+        @suggestedUserIds = uniq @suggestedUserIds.concat(data['users'].map (u) -> u.id)
         @updateSuggestions()
       .finally =>
         @loading = false
-    , 300
+    , 500
+
+    fetchAndUpdateSuggestions: ->
+      @fetchSuggestions()
+      @updateSuggestions()
 
     newRecipients: (val) ->
       @model.recipientAudience = (find(val, (o) -> o.type == 'audience') || {}).id
@@ -101,11 +90,10 @@ export default
       @model.recipientEmails = map filter(val, (o) -> o.type == 'email'), 'name'
 
     findUsers: ->
-      # return [] unless @query
+      return [] unless @query
       chain = Records.users.collection.chain()
 
-      if @model.group().id
-        chain = chain.find(id: {$in: @model.group().parentAndSelfMemberIds()})
+      chain = chain.find(id: {$in: @suggestedUserIds})
 
       chain = chain.find(emailVerified: true)
       chain = chain.find(id: {$nin: @excludedUserIds})

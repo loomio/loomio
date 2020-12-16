@@ -12,34 +12,6 @@ describe API::AnnouncementsController do
   end
 
   describe 'search for invitees to' do
-    let!(:poll) { create :poll }
-    let!(:group) { create(:group, name: 'group') }
-    let!(:subgroup) { create(:group, parent: group, name: 'subgroup') }
-    let!(:subgroup_member) { create(:user, name: 'subgroup_member') }
-    let!(:discussion) { create(:discussion) }
-    let!(:other_discussion) { create(:discussion, title: 'other discussion', group: nil) }
-    let!(:other_group) { create(:group, name: 'other_group') }
-    let!(:other_poll) { create :poll, title: 'other poll', group: nil }
-    let!(:member) { create(:user, name: 'member') }
-    let!(:other_member) { create(:user, name: 'other_member') }
-    let!(:thread_guest) { create(:user, name: 'thread_guest') }
-    let!(:poll_guest) { create(:user, name: 'poll_guest') }
-    let!(:actor) { create(:user, name: 'actor') }
-    let!(:unrelated) { create(:user, name: 'unrelated') }
-
-    before do
-      sign_in actor
-      group.add_member! actor
-      group.add_member! member
-      subgroup.add_member! actor
-      subgroup.add_member! subgroup_member
-      other_group.add_member! actor
-      other_group.add_member! other_member
-      other_discussion.discussion_readers.create!(user_id: actor.id, admin: true, inviter_id: actor.id)
-      other_discussion.discussion_readers.create!(user_id: thread_guest.id, inviter_id: actor.id)
-      poll.stances.create!(participant_id: actor.id, inviter_id: actor.id, admin: true)
-      poll.stances.create!(participant_id: poll_guest.id, inviter_id: actor.id)
-    end
 
     context "discussion" do
       context "without group" do
@@ -78,6 +50,7 @@ describe API::AnnouncementsController do
             expect(JSON.parse(response.body)['users'].length).to eq 0
           end
         end
+
         context 'as discussion member' do
           it 'not returns member of my groups' do
             get :search, params: {q: 'member', discussion_id: discussion.id}
