@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 describe API::AnnouncementsController do
-  let(:user)  { create :user }
+  let(:user)  { create :user, name: 'user' }
+  let(:bill)  { create :user, name: 'bill'}
+  let(:member)  { create :user, name: 'member'}
   let(:group) { create :group }
   let(:another_group) { create :group, parent: group }
   let(:an_unknown_group) { create :group }
@@ -11,68 +13,26 @@ describe API::AnnouncementsController do
     sign_in user
   end
 
-  # describe 'audience' do
-  #   let(:group)      { create :group }
-  #   let(:discussion) { create :discussion, group: group }
-  #   let(:subgroup)   { create :group, parent: group }
-  #   let(:both_user)  { create :user }
-  #   let(:parent_user){ create :user }
-  #
-  #   it 'group' do
-  #     get :audience, params: {discussion_id: discussion.id, kind: "group"}
-  #     expect(response.status).to eq 200
-  #     json = JSON.parse response.body
-  #     expect(json.map {|u| u['id']}.sort).to eq group.member_ids.sort
-  #   end
-  #
-  #   it 'discussion_group' do
-  #     guest = create :user
-  #     discussion.discussion_readers.create(user: guest)
-  #     get :audience, params: {discussion_id: discussion.id, kind: "discussion_group"}
-  #     expect(response.status).to eq 200
-  #     json = JSON.parse response.body
-  #     expect(json.map {|u| u['id']}.sort).to eq Array(guest.id)
-  #   end
-  #
-  #   it 'voters' do
-  #     poll = create :poll, author: user
-  #     stance = create :stance, poll: poll, cast_at: 5.minutes.ago
-  #     get :audience, params: {poll_id: poll.id, kind: "voters"}
-  #     expect(response.status).to eq 200
-  #     json = JSON.parse response.body
-  #     expect(json.map {|u| u['id']}.sort).to eq Array(stance.participant.id)
-  #   end
-  #
-  #   it 'non_voters' do
-  #     # non voters .. means has not been invited to vote, but part of the group
-  #     poll = create :poll, group: group, author: user
-  #     voter = create :user
-  #     non_voter = create :user
-  #     group.add_member! voter
-  #     group.add_member! non_voter
-  #     create :stance, poll: poll, participant: voter, cast_at: Time.now
-  #
-  #     get :audience, params: {poll_id: poll.id, kind: "non_voters"}
-  #     expect(response.status).to eq 200
-  #     json = JSON.parse response.body
-  #     expect(json.map {|u| u['id']}.sort).to include non_voter.id
-  #     expect(json.map {|u| u['id']}.sort).to_not include voter.id
-  #   end
-  #
-  #   it 'undecided' do
-  #     poll = create :poll, author: user
-  #     voter = create :user
-  #     undecided_voter = create :user
-  #     create :stance, poll: poll, participant: voter, cast_at: Time.now
-  #     create :stance, poll: poll, participant: undecided_voter
-  #
-  #     get :audience, params: {poll_id: poll.id, kind: "undecided_voters"}
-  #     expect(response.status).to eq 200
-  #     json = JSON.parse response.body
-  #     expect(json.map {|u| u['id']}.sort).to include undecided_voter.id
-  #     expect(json.map {|u| u['id']}.sort).to_not include voter.id
-  #   end
-  # end
+  describe 'count' do
+    let(:bill)  { create :user, name: 'bill', email: 'bill@example.com'}
+    let(:member)  { create :user, name: 'member'}
+    let(:group) { build(:group).tap(&:save) }
+    let(:discussion) { build(:discussion, group: group).tap(&:save) }
+
+    before do
+      group.add_member! member
+      group.add_member! user
+    end
+
+    it 'returns a count of users who will be notified' do
+      get :count, params: {recipient_emails: ['bill@example.com', 'new@example.com'],
+                           recipient_user_ids: [user.id, bill.id],
+                           recipient_audience: 'group',
+                           discussion_id: discussion.id}
+      expect(response.status).to eq 200
+      expect(JSON.parse(response.body)['count']).to eq 4
+    end
+  end
 
   describe 'history' do
     let(:event) { create :event, kind: 'announcement_created', eventable: group, user: group.creator}

@@ -1,9 +1,23 @@
 class UserInviter
+  def self.count(emails: , user_ids:, audience:, model:, usernames: , actor:)
+    emails = Array(emails).map(&:presence).compact.uniq
+    user_ids = Array(user_ids).uniq.compact.map(&:to_i)
+    usernames =  Array(usernames).map(&:presence).compact.uniq
+
+    audience_ids = AnnouncementService.audience_users(model, audience).pluck(:id).without(actor.id)
+    email_count = emails.count - User.where(email: emails).count
+    user_count = User.where('email in (:emails) or id in (:user_ids) or username IN (:usernames)',
+                            emails: emails,
+                            usernames: usernames,
+                            user_ids: user_ids.concat(audience_ids)).count
+    email_count + user_count
+  end
+
   def self.authorize!(emails: , user_ids:, audience:, model:, actor:)
     # check inviter can notify group if that's happening
     # check inviter can invite guests (from the org, or external) if that's happening
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
-    emails = Array(emails).uniq.compact
+    emails = Array(emails).map(&:presence).compact.uniq
 
     member_ids = model.members.where(id: user_ids).pluck(:id)
     guest_ids = Membership.where(group_id: model.group.parent_or_self.id_and_subgroup_ids,

@@ -17,6 +17,16 @@ eventableOrSelf = (model) ->
 
 export default class AnnouncementRecordsInterface extends BaseRecordsInterface
   model: AnnouncementModel
+  fetchNotificationsCount: (model) ->
+    params = ((model.id && model) || (model.groupId && model.group()) || {namedId: -> {}}).namedId()
+    @remote.fetch
+      path: 'count'
+      params: Object.assign params, {
+        recipient_emails: model.recipientEmails
+        recipient_user_ids: model.recipientUserIds
+        recipient_usernames: []
+        recipient_audience: model.recipientAudience
+      }
 
   fetchHistoryFor: (model) ->
     params = model.namedId()

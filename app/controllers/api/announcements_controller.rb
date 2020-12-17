@@ -10,6 +10,18 @@ class API::AnnouncementsController < API::RestfulController
   #   render json: {count: count}
   # end
 
+  def count
+    count = UserInviter.count(
+      actor: current_user,
+      model: target_model,
+      emails: params[:recipient_emails],
+      user_ids: params[:recipient_user_ids],
+      audience: params[:recipient_audience],
+      usernames: params[:recipient_usernames]
+    )
+    render json: {count: count}
+  end
+
   def search
     # if target model has no groups, no discussions, then draw from users groups and guest threads
     self.collection = UserQuery.invitable_to(model: target_model, actor: current_user, q: params[:q])

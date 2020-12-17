@@ -27,6 +27,7 @@ export default
     subscription: @discussion.group().parentOrSelf().subscription
     groupItems: []
     initialRecipients: []
+    notificationsCount: 0
 
   mounted: ->
     Records.users.fetchGroups()
@@ -37,6 +38,9 @@ export default
         @updateGroupItems()
 
   watch:
+    'discussion.recipientEmails': 'updatenotificationsCount'
+    'discussion.recipientUserIds': 'updatenotificationsCount'
+    'discussion.recipientAudience': 'updatenotificationsCount'
     'discussion.groupId':
       immediate: true
       handler: (groupId) ->
@@ -67,15 +71,11 @@ export default
     updatePrivacy: ->
       @discussion.private = @discussion.privateDefaultValue()
 
-  computed:
-    numNotified: ->
-      count = 0
-      if @discussion.recipientAudience == 'group'
-        count += @discussion.group().acceptedMembershipsCount
-      count += @discussion.recipientUserIds.length
-      count += @discussion.recipientEmails.length
-      count
+    updatenotificationsCount: ->
+      Records.announcements.fetchNotificationsCount(@discussion).then (data) =>
+        @notificationsCount = data.count
 
+  computed:
     maxThreads: ->
       @subscription.max_threads
 
@@ -169,9 +169,9 @@ export default
       //-   br
       //-   | 4 people will be notified
       p.discussion-form__people-notified.text--secondary(v-if="!discussion.id")
-        span(v-if="numNotified == 0" v-t="'announcement.form.notified_none'")
-        span(v-if="numNotified == 1" v-t="'announcement.form.notified_singular'")
-        span(v-if="numNotified > 1" v-t="{path: 'announcement.form.notified', args: {notified: numNotified}}")
+        span(v-if="notificationsCount == 0" v-t="'announcement.form.notified_none'")
+        span(v-if="notificationsCount == 1" v-t="'announcement.form.notified_singular'")
+        span(v-if="notificationsCount > 1" v-t="{path: 'announcement.form.notified', args: {notified: notificationsCount}}")
         space
         span(v-if="!discussion.groupId" v-t="'announcement.form.visible_to_guests'")
         span(v-if="discussion.groupId" v-t="{path: 'announcement.form.visible_to_group', args: {group: discussion.group().name}}")

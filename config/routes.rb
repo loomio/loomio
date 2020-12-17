@@ -211,6 +211,7 @@ Loomio::Application.routes.draw do
 
     resources :announcements, only: [:create] do
       collection do
+        get :count
         get :search
         get :history
       end
