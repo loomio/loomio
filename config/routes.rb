@@ -178,13 +178,13 @@ Loomio::Application.routes.draw do
     resource :outcomes,     only: [:create, :update]
 
     resources :stances,     only: [:index, :create, :update, :destroy] do
-      get :invite, on: :collection
-      get :my_stances, on: :collection
-      member do
+      collection do
+        get :invite
+        get :users
+        get :my_stances
         post :make_admin
         post :remove_admin
         post :revoke
-        post :resend
       end
     end
 
@@ -211,7 +211,7 @@ Loomio::Application.routes.draw do
 
     resources :announcements, only: [:create] do
       collection do
-        get :count
+        post :count
         get :search
         get :history
       end

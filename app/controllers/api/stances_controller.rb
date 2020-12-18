@@ -15,6 +15,27 @@ class API::StancesController < API::RestfulController
     respond_with_collection
   end
 
+  def users
+    instantiate_collection do |collection|
+      if query = params[:query]
+        collection = collection.
+          joins('LEFT OUTER JOIN users on stances.participant_id = users.id').
+          where("users.name ilike :first OR
+                 users.name ilike :last OR
+                 users.email ilike :first OR
+                 users.username ilike :first",
+                 first: "#{query}%", last: "% #{query}%")
+      end
+
+      user_ids = collection.pluck(:participant_id)
+      self.add_meta :member_ids, Membership.active.where(user_id: user_ids, group_id: @poll.group_id).pluck(:user_id)
+      self.add_meta :member_admin_ids, Membership.active.where(user_id: user_ids, group_id: @poll.group_id, admin: true).pluck(:user_id)
+      self.add_meta :stance_admin_ids, collection.where(admin: true).pluck(:participant_id)
+      User.where(id: collection.pluck(:participant_id))
+    end
+    respond_with_collection serializer: AuthorSerializer
+  end
+
   def my_stances
     self.collection = current_user.stances.latest.includes({poll: :discussion})
     self.collection = collection.where('polls.discussion_id': @discussion.id) if load_and_authorize(:discussion, optional: true)
@@ -34,11 +55,6 @@ class API::StancesController < API::RestfulController
     respond_with_resource
   end
 
-  def resend
-    current_user.ability.authorize! :resend, stance
-    raise NotImplementedError.new
-  end
-
   def revoke
     current_user.ability.authorize! :remove, stance
     stance.update(revoked_at: Time.zone.now)
@@ -46,9 +62,8 @@ class API::StancesController < API::RestfulController
   end
 
   private
-
   def stance
-    @stance = Stance.find(params[:id])
+    @stance = Stance.find_by(participant_id: params[:participant_id], poll_id: params[:poll_id])
   end
 
   def current_user_is_admin?

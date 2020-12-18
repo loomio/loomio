@@ -109,13 +109,14 @@ class PollService
                  reason_format: user.default_format)
     end
 
+    Stance.where(participant_id: users.pluck(:id)).update_all(latest: false)
     Stance.import(new_stances, on_duplicate_key_ignore: true)
 
     poll.update_voters_count
     poll.update_undecided_voters_count
     poll.update_stance_data
 
-    Stance.where(participant_id: users.pluck(:id), poll_id: poll.id)
+    Stance.where(participant_id: users.pluck(:id), poll_id: poll.id, latest: true)
   end
 
   def self.discard(poll:, actor:)
