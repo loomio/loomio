@@ -430,7 +430,9 @@ nl_NL:
       poll_option_added: '%{actor} voegde opties toe aan: %{title}'
       poll_option_added_author: '%{actor} voegde opties toe aan: %{title}'
       outcome_created: '%{actor} deelde een %{poll_type} resultaat: %{title}'
+      outcome_updated: '%{actor} wijzigde het %{poll_type} resultaat: %{title}'
       outcome_created_author: 'Je deelde een %{poll_type} resultaat: %{title}'
+      outcome_review_due: "Het is tijd voor de beoordeling van het %{poll_type} resultaat: %{title}"
       outcome_announced: '%{actor} deelde een %{poll_type} resultaat: %{title}'
       stance_created: "%{actor} stemde op: %{title}"
       stance_created_author: "Gelieve je stem te bevestigen op: %{title}"
@@ -448,6 +450,8 @@ nl_NL:
       poll_option_added: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
       poll_option_added_author: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
       outcome_created: '<strong>%{actor}</strong> deelde een %{poll_type} resultaat.'
+      outcome_updated: '<strong>%{actor}</strong> wijzigde het %{poll_type} resultaat.'
+      outcome_review_due: "Het is tijd voor de beoordeling van het %{poll_type} resultaat: %{title}. Overweeg om een feedback peiling te starten of start een nieuw bord om te reflecteren op hoe het besluit is geïmplementeerd."
       outcome_created_author: 'Je deelde een %{poll_type} resultaat:'
       outcome_announced: '<strong>%{actor}</strong> deelde een %{poll_type} resultaat.'
       stance_created: "<strong>%{actor}</strong> stemde op: %{title}"
@@ -471,6 +475,8 @@ nl_NL:
     new_discussion: "Nieuw bord in %{group}"
     new_comment: "Nieuwe reactie in %{group}"
     outcome_created: "Resultaat geplaatst in %{group}"
+    outcome_updated: "Resultaat gewijzigd in %{group}"
+    outcome_review_due: "Tijd voor beoordeling van het resultaat in %{group}"
     poll_created: "Nieuw %{poll_type} in %{group}"
     stance_created: "Nieuwe reactie in %{poll}"
     poll_closing_soon: "%{poll_type} sluit binnen 24 uur"
@@ -482,6 +488,8 @@ nl_NL:
       discussion_edited: "**%{actor}** wijzigde een discussie in %{group}: [%{title}](%{url})"
       new_comment: "**%{actor}** reageerde in [%{title}](%{url})"
       outcome_created: "**%{actor}** deelde een resultaat van de %{poll_type}: [%{title}](%{url})"
+      outcome_update: "**%{actor}** wijzigde het resultaat van de %{poll_type}: [%{title}](%{url})"
+      outcome_review_due: "Het is tijd om het resultaat van %{poll_type}: [%{title}](%{url}) te beoordelen"
       poll_created: "**%{actor}** startte een %{poll_type} in %{group}: [%{title}](%{url})"
       poll_edited: "**%{actor}** wijzigde een %{poll_type} in %{group}: [%{title}](%{url})"
       stance_created: "**%{actor}** stemde in [%{title}](%{url})"
@@ -492,6 +500,8 @@ nl_NL:
   slack:
     new_discussion: "Nieuw bord in *%{group}*: *%{discussion}*"
     outcome_created: "Resultaat geplaatst in *%{group}*: *%{poll}*"
+    outcome_updated: "Resultaat gewijzigd in *%{group}*: *%{poll}*"
+    outcome_review_due: "Het is tijd om het resultaat van *%{group}*: *%{poll}* te beoordelen"
     poll_created: "Nieuw *%{poll_type}* in *%{group}*: *%{poll}*"
     poll_closing_soon: "Herinnering: *%{poll}* sluit binnen 24 uur"
     poll_expired: "*%{poll}* werd gesloten"

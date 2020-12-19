@@ -1,11 +1,46 @@
 ko:
+  loomio_onboarding:
+    group_progress_card:
+      title: 그룹 활성화하기
+      activities:
+        set_description: 그룹 설명 설정하기
+        set_cover_photo: 그룹의 커버 사진 & 로고 업로드
+        invite_people_in: 초대하기
+        start_thread: 토론 시작하기
+        make_decision: 의사결정 시작하기
+      learn_more: Loomio Help에서 더 배우기
+      celebration_message: 좋습니다! 당신의 그룹은 시작할 준비가 다 됐습니다! 🎉
+      dismiss_this_card: 이 카드를 기각하기
   plan_names:
     free: 무료
+    trial: 사용
+    small: 소
+    medium: 중
+    large: 대
+    monthly: 매월
+    yearly: 매년
   current_plan_button:
     upgrade: 업그레이드
+    free_trial: 무료체험. {{days}} 일 남았습니다.
+    trial_expired: 체험이 종료되었습니다. 루미오를 계속 사용하시려면 업그레이드 하십시오.
+    tooltip: "저희 가격은 멋집니다! 지금 바로 업그레이드하여 루미오가 당신에게 제공하는 그룹을을 즐기십시오."
+    was_gift_trial: "당신의 그룹은 루미오를 {{createdDate}}부터 무료로 사용하고 있습니다. 저희는 계속 무료서비스를  제공할 수 없습니다.  루미오를 계속 사용할 수 있게 업그레이드를 해주십시오. <a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>자세히보기.</a>"
+    was_gift_remaining: "{{days}} 남은 날짜."
+    was_gift_expired: "당신의 무료 Plan은 만료되었습니다."
   subscription_status:
+    plan: "Plan"
+    state: "Status"
     members: "멤버"
+    active_members: "멤버 활성화"
+    max_threads: "최대 토론 주제"
+    max_members: "최대 멤버"
+    expires_at: "기한만료"
+    renews_at: "갱신하기"
+    referral_code: "추천 코드"
+    referral_code_help: "친구에게 할인해주고, credit을 얻으세요!"
+    manage_payment_details: "세부 지출 관리"
   loomio_tags:
+    all_tags: 모든 태그
     tags: 태그
     apply_tags: 태그 적용
     new_tag: 태그 만들기
@@ -16,11 +51,80 @@ ko:
     modal_edit_title: 태그 수정
     modal_destroy_title: 태그 삭제
     destroy_tag: 태그 삭제
+    destroy_helptext: 이 태그를 파괴하고 모든 그룹의 토론주제로부터 지웁니다. 실행하시겠습니까?
+    helptext: 태그는 당신이 토론들을 분류할 수 있게해주고 쉽게 찾을 수 있게 해줍니다.
     discussions_count_singular: ({{count}}개의 토론 주제)
     discussions_count_plural: ({{count}}개의 토론 주제)
     tag_created: 태그 저장됨
     tag_destroyed: 태그 삭제됨
+    tags_marked: 토론은 {{GroupName}}에 '{{name}}'으로 표기되어있습니다.
+    no_tags_present: 주어진 태그로 토론주제를 찾을 수 없습니다. 다른 태그를 선택하여 보십시오
+  reactions:
+    slight_smile: 좋아요
+    heart: 사랑
+    laughing: 웃음
+    clap: 박수
+    hugging: 포옹
+    sunglasses: 멋진
+    wink: 윙크
+    nerd: 똑똑함
+    relieved: 안도함
+    worried: 걱정됨
+    confused: 혼란스러움
+    confounded: 당황스러움
+    neutral_face: 중립
+    slight_frown: 눈살을 찌푸림
+    disappointed: 실망함
+    angry: 화남
+    weary: 지침
+    astonished: 놀람
+    rolling_eyes: 두리번거림
+    cry: 울음
+    scream: 소리침
+    sleeping: 지루함
+    thinking: 생각중
+    raised_hands: 손들기
+    pray: 기도하기
+    fingers_crossed: 행운을 빌어
+    ok_hand: Ok
+    wave: 손 흔들기
+    thumbsup: 찬성
+    thumbsdown: 반대
+  poll_types:
+    proposal: 제안
+    count: 체크
+    poll: 투표
+    dot_vote: 도트 투표
+    meeting: 시간 투표
+    ranked_choice: 정렬 선택
+    score: 점수 투표
+  new_poll_types:
+    proposal: 제안
+    count: 카운트
+    poll: 선택
+    score: 점수
+    ranked_choice: 랭크
+    dot_vote: 할당
+    meeting: 시간 투표
+  timezones:
+    local: 현지시간 ({{value}})
   common:
+    empty: 비었음
+    no_results_found: 결과를 찾을 수 없습니다.
+    view: 보기
+    history: 내력
+    option: 옵션
+    add: 더하기
+    you: 당신
+    expand: 열기
+    all_day: 하루종일
+    ok_got_it: 네, 알겠습니다.
+    learn_more: 더 배우기
+    not_found: 찾을 수 없습니다.
+    time_zone: 시간대
+    local_time: 현지시간
+    attachments: 첨부파일
+    active_time_ago: 최근 활동 {{time_ago}}
     confirm_discard_changes: 수정을 취소하시겠습니까?
     time:
       am: 오전
@@ -31,8 +135,14 @@ ko:
     notification_volume: '알림 볼륨'
     group: '그룹'
     groups: '그룹'
+    organization: "조직"
+    organizations: "조직"
     threads: '토론 주제'
+    decisions: '결정'
+    settings: '설정'
     help: '도움말'
+    anonymous: 익명
+    required: 필수
     email_address: 이메일 주소
     privacy:
       privacy: '개인정보'
@@ -51,12 +161,23 @@ ko:
     more_help: '도움말 자세히'
     models:
       proposal: '제안'
+    copy: '복사'
+    reset: '초기화'
+    copy_text: '텍스트 복사'
     copied: '복사됨'
+    points_abbrev: 투표당 {{sore}} 점
+    total: 총
     action:
       print: 인쇄
+      preview: 미리보기
+      pin: 고정
+      unpin: 고정해제
       search: '검색'
+      filter: '필터'
       back: '이전'
+      next: '다음'
       close: '닫기'
+      reopen: '재시작'
       save: '저장'
       move: '이동'
       save_changes: '수정 저장하기'
@@ -64,27 +185,93 @@ ko:
       reply: '답글'
       edit: '편집'
       remove: '제거'
+      undo_remove: '되돌리기'
       like: '좋아요'
       unlike: '싫어요'
       update: '업데이트'
       cancel: '취소'
       show_more: "더 보기"
+      show_fewer: "간략히"
+      view_count_more: "{{count}}개 더 보기"
+      view_count_responses: "응답 {{count}}개 보기"
+      count_more: "{{count}}개 더"
+      count_responses: "{{count}}개 응답"
       view_all: "모두 보기"
       new_thread: "새로운 쓰레드"
+      add_subgroup: '새로운 소그룹'
       loading: '로딩중...'
       translate: '번역'
       upload: '업로드'
       uploading: '업로딩중...'
+      load_more: '더 불러오기'
+      share: 공유하기
       ok: OK
+      retry: 재시도
+      done: 완료
+      start: 시작
+      delete: 종료
+      unsubscribe: 구독취소
+      subscribe: 구독
+      unignore: 무시 취소
+      remind: 상기
+      resend: 재전송
+      send: 전송
+      joined: 가입됨
+      last_seen: 마지막으로 본
+      invite: 초대
+      resent: 다시 초대를 보냄
+      fork: 브랜치 생성
+      apply: 적용
+      add_people: 사람 추가
+    formatting_help:
+      label: '서식'
+      title: '당신의 글 서식 설정을 위한 Markdown 사용법 배우기'
+  merge_accounts:
+    modal:
+      title: 계정 연동
+      helptext: "당신은 <strong>{{sourceEmail}}</strong> 계정을 <strong>{{targetEmail}}</strong>에 연동할 수 있습니다.  인증을 클릭하면 인증 메일이 {{targetEmail}}으로 전송되어 연동을 시작합니다."
+      submit: 인증
+      flash: 인증 메일이 전송되었습니다!
+    email_taken: 죄송합니다. 해당 이메일이 이미 다른 유저와 연동되어 있습니다. 해당 이메일이 당신의 것입니까?
+    find_out_more: 좀 더 알아보기
+    placeholder_modal_text: |
+        <p>만약 당신이 두개 이상의 계정을 연동하고 싶다면, 당신의 프로필의 이메일 입력란에 해당되는 이메일 주소(다른 계정에 속함)를 입력하신 후 나타나는 지시에 따르십시오.</p>
+        도움이 필요하십니까? <a href="/contact" target="_blank">저희에게 연해주십시오</a>.
   emoji_picker:
     search: 검색
+    common: 자주 사용됨
+    expressions: 얼굴
+    hands: 손
+    people: 사람
+    nature: 자연
+    objects: 물건
+    places: 자연
+  ordinal:
+    _1: '1.'
+    _2: '2.'
+    _3: '3.'
+    _4: '4.'
+    _5: '5.'
+    _6: '6.'
+    _7: '7.'
+    _8: '8.'
+    _9: '9.'
+    _10: '10.'
   devise:
+    sessions:
+      signed_up: 성공적으로 등록되었습니다!
     failure:
       inactive: '이 이메일 주소와 연결된 비활성화된 계정이 있습니다. 당신의 계정을 재활성화시키려면, 우리에게 연락하십시요.'
   error_page:
     forbidden: '권한이 없습니다.'
     page_not_found: '항목을 찾을 수가 없습니다. 삭제되었거나 옮겨진 것 같습니다.'
     internal_server_error: '죄송합니다만 뭔가가 잘못되었습니다. 다시 시도해 보세요.'
+  verify_email_notice:
+    please_verify: 참여 해주셔서 감사합니다! 이메일에서 투표 확인링크를 확인하십시오.
+  previous_polls_page:
+    heading: '{{name}}의 활동'
+    polls_count: '{{total}}개의 결정 중 {{loaded}}개 표시'
+    search_activities: 결정 검색
   volume_levels:
     loud: '크게'
     normal: '보통'
@@ -92,14 +279,25 @@ ko:
     mute: '소거'
     unmute: '소거해제'
   pin_event_form:
+    title: 타임라인에 고정하기
     title_label: 제목
+    hint: '다음 팁: "고정"을 클릭하기 전에 일부 텍스트를 선택하여 보십시오.'
   change_volume_form:
+    explain_scope:
+      thread: 토론 주제에 대한 알림을 받으면 변경됩니다.
+      group: 그룹의 모든 토론 주제에 대한 알림을 받으면 변경됩니다.
     simple:
       label: 알림
+      loud: 구독중
       normal: 보통
       quiet: 무시
+      question: 언제 알림을 받으시겠습니까?
+      loud_explain: 모든 활동에 대해 알림
+      normal_explain: 누군가 나를 언급하면 알림
+      quiet_explain: 알리지않음
     aria_label: "이메일 설정 환경 변경"
     loud_label: "모든 활동"
+    normal_label: "공지사항"
     quiet_label: "이메일 없음"
     mute_label: "음소거"
     discussion:
@@ -177,6 +375,7 @@ ko:
     recent_threads: '최근 토론 주제'
     unread_threads: '읽지 않은 토론 주제 ({{count}})'
     muted_threads: '알림을 받지 않는 토론 주제'
+    start_subgroup: '새로운 소그룹'
     explore: '공개 그룹'
     start_thread: 새 토론 주제
     aria_labels:
@@ -204,6 +403,7 @@ ko:
   membership_card:
     discussion_members: "토론에 참여중인 멤버"
   membership_dropdown:
+    invitation_resent: "다시 초대를 보냄"
     cancel_invitation: 초대 취소
   notifications:
     header: "알림"
@@ -212,6 +412,7 @@ ko:
   discussion_fork_actions:
     move: 이동
   discussion_form:
+    invite: 초대
     aria_label: '쓰레드 양식'
     start_thread: 쓰레드를 시작합니다
     messages:
@@ -235,8 +436,12 @@ ko:
   action_dock:
     copy_url: 링크 복사
     edit_stance: 선택 변경
+    history: 이력
+    pin_event: 타임라인에 고정하기
     close_thread: 토론 주제 닫기
     delete_thread: 쓰레드 삭제
+  formatting:
+    reset: 초기화
   cover_photo_form:
     aria_label: '커버 사진 양식 교체'
     heading: '새로운 커버 사진'
@@ -267,9 +472,13 @@ ko:
     aria_label: 검토 이력
     posted: 저장됨
     current_revision: 최신
+  reactions_display:
+    more_reactions: "{{count}}개 더 있음"
+    you: "당신"
   group_page:
     threads: 토론
     members: 멤버
+    settings: 설정
     subgroups: 소그룹
     messages:
       privacy:
@@ -284,6 +493,7 @@ ko:
     discussions_placeholder: '이 쓰레드는 누구나 토론할 수 있고, 함께 의사결정을 하는 곳입니다.'
     members_placeholder: '이 그룹에 현재 회원님 뿐입니다. 다른 사람들을 초대해 보세요.'
     member_options: 멤버 옵션
+    invite_people: '초대'
     visibility_label: '공개도'
     options_label: '선택사항'
     options:
@@ -393,6 +603,7 @@ ko:
     group: '그룹'
     group_placeholder: '그룹을 선택하세요'
     shareable_link: '공유가능링크 '
+    copy_link: '복사'
     email_addresses: '이메일 주소'
     email_addresses_placeholder: '예를 들어 helperbot@loomio.org, friendlybot@loomio.org'
     add_custom_message: '초대하기'
@@ -430,6 +641,7 @@ ko:
       picture_changed: '프로필 사진을 수정했습니다.'
       password_changed: '비밀번호를 변경했습니다.'
       deactivated: '계정을 비활성화했습니다.'
+    merge_accounts: 연결계정
     change_picture_link: '사진 교체'
     profile: '프로필'
     edit_profile: '프로필 수정'
@@ -448,6 +660,7 @@ ko:
   email_settings_page:
     daily_summary_label: 일별 요약 이메일
     on_participation_description: "모둠에 참여하면, 더욱 많은 행동들이 즉시 당신에게 이메일로 전송됩니다. "
+    announcement_label: 공지사항
     specific_groups: 특별한 그룹에 적용
     default_settings:
       loud_description: "새로운 그룹에 참여하면, 당신은 <strong>행동이 있을 때마다</strong>이메일을 받을 수 있습니다."
@@ -508,6 +721,7 @@ ko:
     load_previous: '이전 활동내역 보기'
     started_by: '<strong>{{name}}</strong>님이 시작하였습니다.'
   activity_card:
+    count_responses: "{{count}}개 응답"
     latest: 최신
     context: 내용
     attachment_display:
@@ -520,6 +734,9 @@ ko:
     thread_options: '쓰레드 옵션'
     edit: '편집'
     close_thread: '닫기'
+    reopen_thread: '재시작'
+    pin_thread: '핀 추가'
+    unpin_thread: '핀 제거'
     move_thread: '이동'
     print_thread: '인쇄'
     delete_thread: '삭제'
@@ -558,7 +775,10 @@ ko:
       reload: '다시 불러오기'
   poll_common:
     have_your_say: 한말씀
+    start_poll: 의사 결정 시작하기
     save_changes: 저장
+  poll_common_attachment_form:
+    label: 첨부파일
   discussions_panel:
     open: 진행중
     closed: 종료
@@ -572,9 +792,14 @@ ko:
     closed: '종료'
   poll_common_form:
     closed: 종료
+    start: 시작
   poll_count_options:
     'yes': '네'
     'no': '아니요'
+  poll_meeting_chart_panel:
+    total: 총
+  poll_common_subscribe_form:
+    subscribe: 구독하기
   auth_form:
     name_placeholder: 이름
   webhook:

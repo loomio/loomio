@@ -29,9 +29,6 @@ export default
         Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
           @close()
           @$router.push("/d/#{discussionKey}")
-          EventBus.$emit 'openModal',
-            component: 'AnnouncementForm',
-            props: { announcement: Records.announcements.buildFromModel(discussion) }
       .catch onError(@discussion)
 
     updateTarget: ->

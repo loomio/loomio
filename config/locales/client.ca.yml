@@ -1,14 +1,16 @@
 ca:
   loomio_onboarding:
     group_progress_card:
-      title: Activa el teu grup
+      title: Activeu el vostre grup
       activities:
-        set_description: Configura la descripció del teu grup
-        set_cover_photo: Puja una foto de portada i un logo pel teu grup
-        invite_people_in: Convida a gent
-        start_thread: Comença un fil de discussió
-        make_decision: Comença una decissió
-      dismiss_this_card: Descarta aquesta fitxa
+        set_description: Configureu la descripció del grup
+        set_cover_photo: Carregueu una foto de portada i un logotip per al grup
+        invite_people_in: Convideu a gent
+        start_thread: Obriu un fil de discussió
+        make_decision: Inicieu una decisió
+      learn_more: Més informació a l'ajuda de Loomio
+      celebration_message: Molt bé! El vostre grup ja està a punt!
+      dismiss_this_card: Descarteu aquesta fitxa
   plan_names:
     free: Gratuït
     trial: Prova
@@ -20,10 +22,16 @@ ca:
   current_plan_button:
     upgrade: Actualitza
     free_trial: Prova gratuïta. Queden {{days}} dies.
+    trial_expired: El període de prova gratuïta ha vençut. Actualitzeu per continuar utilitzant Loomio.
+    tooltip: "Tenim molt bons preus! Actualitzeu avui i disfruteu del que Loomio pot oferir al vostre grup."
+    was_gift_trial: "El vostre grup utilitza la versió gratuïta de Loomio des de {{createdDate}}. No podem continuar proporcionant el servei gratuït. Actualitzeu per seguir utilitzant Loomio. <a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>Read more.</a>"
     was_gift_remaining: "Queden {{days}} dies."
+    was_gift_expired: "El vostre pla gratuït a vençut."
   subscription_status:
+    plan: "Pla"
     members: "Membres"
   loomio_tags:
+    all_tags: Totes les etiquetes
     tags: Etiquetes
     apply_tags: Aplica etiquetes
     new_tag: Crea etiquetes
@@ -38,33 +46,77 @@ ca:
     helptext: Les etiquetes et permeten categoritzar converses i trobar-les fàcilment després.
     discussions_count_singular: ({{count}} discussió)
     discussions_count_plural: ({{count}} discussions)
+    tag_created: Etiqueta desada
+    tag_destroyed: Etiqueta eliminada
     tags_marked: Discussions marcades '{{name}}' a {{groupName}}
     no_tags_present: No s'han trobat discussions amb aquesta etiqueta! Intenta seleccionar-ne una altra.
   reactions:
     slight_smile: M'agrada
     heart: Amor
+    laughing: Rialla
+    clap: Aplaudiment
+    hugging: Abraçada
+    sunglasses: Genial
+    wink: Fer l'ullet
+    nerd: Intel·ligent
+    relieved: Alleujat
+    worried: Preocupat
+    confused: Confós
+    confounded: Desconcertat
+    neutral_face: Neutral
+    slight_frown: Ganyota
     disappointed: Decebut
     angry: Enfadat
+    weary: Cansat
     astonished: Astorat
+    rolling_eyes: Ulls en moviment
     cry: Plora
+    scream: Crit
+    sleeping: Avorrit
+    thinking: Pensant
+    raised_hands: Mans aixecades
+    pray: Pregant
     fingers_crossed: Dits creuats
     v: Pau
+    metal: Metall
     ok_hand: D'acord
-    thumbsup: Polze amunt
-    thumbsdown: Polze avall
+    wave: Ona
+    thumbsup: Polze cap amunt
+    thumbsdown: Polze cap avall
   poll_types:
-    proposal: Proposta
-    count: Comprova
-    poll: Enquesta
+    proposal: proposta
+    count: xec
+    poll: enquesta
+    dot_vote: vot limitat
+    meeting: enquesta de temps
+    ranked_choice: vot preferencial
+    score: vot amb puntuació
   new_poll_types:
-    proposal: Proposta
+    proposal: proposta
+    count: compta
+    poll: tria
+    score: puntua
+    ranked_choice: ordena
+    dot_vote: assigna
+    meeting: enquesta de temps
+  timezones:
+    local: Hora local ({{value}})
   common:
+    empty: Buit
+    no_results_found: No s'ha trobat cap resultat
+    view: Vista
+    history: Historial
+    option: Opció
+    add: Afegeix
     you: Tu
     expand: Expandeix
+    all_day: Tot el dia
     ok_got_it: D'acord
     not_found: No s'ha trobat
     time_zone: Zona horària
     local_time: Hora local
+    attachments: Adjunts
+    active_time_ago: Darrera activitat {{time_ago}}
     confirm_discard_changes: Descarteu els canvis?
     time:
       am: AM
@@ -76,9 +128,11 @@ ca:
     group: 'Grup'
     groups: 'Grups'
     threads: 'Fils'
+    decisions: 'Decisions'
     settings: 'Configuracions'
     help: 'Ajuda'
     anonymous: Anònim
+    required: Requerit
     email_address: Adressa de correu electrònic
     privacy:
       privacy: 'Privacitat'
@@ -98,14 +152,22 @@ ca:
     models:
       proposal: 'Proposta'
     copy: 'Copia'
+    reset: 'Reinicialitza'
+    copy_text: 'Copia el text'
     copied: 'Copiat al porta-retalls'
+    points_abbrev: Cada vot val {{score}} punts
     total: Total
     action:
       print: Imprimeix
       preview: Previsualitza
+      pin: Fixa
+      unpin: Desfixa
       search: 'Cerca'
+      filter: 'Filtra'
       back: 'Enrere'
+      next: 'Següent'
       close: 'Tanca'
+      reopen: 'Reobre'
       save: 'Desa'
       move: 'Mou'
       save_changes: 'Desa els canvis'
@@ -113,6 +175,7 @@ ca:
       reply: 'Respon'
       edit: 'Edita'
       remove: 'Elimina'
+      undo_remove: 'Desfés l''eliminació'
       like: 'M''agrada'
       unlike: 'No m''agrada'
       update: 'Actualitza'
@@ -120,19 +183,51 @@ ca:
       show_more: "Mostra més"
       view_all: "Mostra-ho tot"
       new_thread: "Crea una discussió"
+      add_subgroup: 'Nou subgrup'
       loading: 'Carregant'
       translate: 'Tradueix'
       upload: 'Carrega'
       uploading: 'Carregant'
+      load_more: 'Carrega''n més'
+      share: Comparteix
       ok: D'acord
       retry: Prova de nou
       done: Fet
       start: Comença
       delete: Esborrar
-      unsubscribe: Cancel·lar la subscripció
+      unsubscribe: Desubscriu-me
+      subscribe: Subscriu-me
+      unignore: No ignoris
+      remind: Recorda
+      resend: Torna a enviar
+      send: Envia
+      joined: Unit
+      last_seen: Vist per darrer cop
+      invite: Convida
+      resent: Tornat a convidar
+      export: Exporta
+      fork: Fork
+      apply: Aplica
+      add_people: Afegeix persones
+    formatting_help:
+      label: 'Formatació'
+      title: 'Apren a escriure el text en format Markdown'
+  merge_accounts:
+    modal:
+      title: Fusiona comptes
+      submit: Verifica
+      flash: S'ha enviat un correu electrònic de verificació!
+    email_taken: Ho sento, aquest correu ja està associat amb un altre usuari. Et pertany aquest correu electrònic?
+    find_out_more: Troba'n més.
   emoji_picker:
     search: Cerca
+    common: Usats sovint
+    expressions: Cares
+    hands: Mans
     people: Gent
+    nature: Natura
+    objects: Coses
+    places: Llocs
   ordinal:
     _1: 1r
     _2: 2n
@@ -145,11 +240,16 @@ ca:
     _9: 9è
     _10: 10è
   devise:
+    sessions:
+      signed_up: T'has registrat correctament!
     failure:
       inactive: 'Hi ha un compte desactivat associat a aquesta adreça de correu. Si voleu reactivar el compte, contacteu amb nosaltres.'
   error_page:
     forbidden: 'No teniu permís per realitzar aquesta acció.'
+    page_not_found: 'No l''hem pogut trobar. Pot ser que hagi estat suprimit o mogut.'
     internal_server_error: 'Alguna cosa ha anat malament. Torneu-ho a provar.'
+  verify_email_notice:
+    please_verify: 'Gràcies per participar! Comproveu el vostre correu electrònic: hi trobareu un enllaç per a verificar el vostre vot.'
   volume_levels:
     loud: 'Fort'
     normal: 'Normal'
@@ -226,6 +326,7 @@ ca:
     sign_in: "Inicieu la sessió per unir-vos a la conversa"
   sidebar:
     threads: 'Fils'
+    start_subgroup: 'Nou subgrup'
     explore: 'Grups públics'
     aria_labels:
       heading: 'Barra lateral'
@@ -243,6 +344,7 @@ ca:
       comments: 'Comentaris'
     sign_in: 'Inicia la sessió'
   membership_dropdown:
+    invitation_resent: "Tornat a convidar"
     cancel_invitation: Cancel·la la invitació
   notifications:
     header: "Notificacions"
@@ -251,6 +353,7 @@ ca:
   discussion_fork_actions:
     move: Mou
   discussion_form:
+    invite: Convida
     start_thread: Crea la discussió
     messages:
       created: 'Discussió creada'
@@ -273,8 +376,11 @@ ca:
   action_dock:
     edit_stance: Canvia la decisió
     edited: Editat
+    history: Historial
     tag_thread: Gestiona etiquetes
     delete_thread: Elimina la discussió
+  formatting:
+    reset: Reinicialitza
   join_group_button:
     join_group: Uneix-te al grup
     membership_requested: Afiliació sol·licitada
@@ -308,6 +414,7 @@ ca:
     new_photo: 'Nova fotografia'
     discussions_placeholder: 'Una discussió és el lloc on tothom pot discutir un tema i prendre decisions junts.'
     member_options: Opcions de membres
+    invite_people: 'Convida'
     visibility_label: 'Visibilitat'
     options_label: 'Opcions'
     options:
@@ -433,6 +540,7 @@ ca:
       picture_changed: 'Fotografia del perfil actualitzada'
       password_changed: 'Contrasenya actualitzada'
       deactivated: 'Compte desactivat'
+    merge_accounts: Fusiona comptes
     change_picture_link: 'Canvia la fotografia'
     profile: 'Perfil'
     edit_profile: 'Edita el perfil'
@@ -520,6 +628,9 @@ ca:
     aria_label: 'Context de la discussió'
     thread_options: 'Opcions de la discussió'
     close_thread: 'Tanca'
+    reopen_thread: 'Reobre'
+    pin_thread: 'Fixa'
+    unpin_thread: 'Desfixa'
     move_thread: 'Mou'
     print_thread: 'Imprimeix'
     delete_thread: 'Elimina'
@@ -565,6 +676,8 @@ ca:
     have_your_say: Doneu la opinió
     start_poll: Comença una decissió
     save_changes: Desa
+  poll_common_attachment_form:
+    label: Adjunts
   discussions_panel:
     open: Obert
     all: Tot
@@ -587,6 +700,8 @@ ca:
     'no': 'No'
   poll_meeting_chart_panel:
     total: Total
+  poll_common_subscribe_form:
+    subscribe: Subscriu-me
   auth_form:
     enter_your_name: Introdueix el teu nom
     name_placeholder: El teu nom

@@ -845,6 +845,7 @@ es:
     search_threads: Buscar hilos ...
     private_threads: Usted debe ser un integrante para ver los hilos privados de este grupo
     no_more_threads: No más hilos para cargar
+    view_closed_threads: 'Ver hilos cerrados'
     messages:
       privacy:
         members: 'Ahora este grupo es visible sólo para integrantes.'
@@ -1163,6 +1164,7 @@ es:
     no_emails: 'Ya no recibirás notificaciones por correo electrónico'
     you_can_reactivate: "Podrá reactivar su cuenta si lo desea"
     submit: 'Si, quiero desactivar mi cuenta'
+    submit_delete: 'Borrar mi cuenta ahora'
   email_settings_page:
     header: Ajustes de notificación
     account_deactivated: Tu cuenta ha sido desactivada. Ya nunca recibirás más emails.
