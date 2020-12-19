@@ -28,7 +28,7 @@ export default class StanceModel extends BaseModel
   relationships: ->
     @belongsTo 'poll'
     @hasMany 'stanceChoices'
-    @belongsTo 'participant', from: 'users', ifNull: -> new AnonymousUserModel()
+    @belongsTo 'participant', from: 'users'
 
   edited: ->
     if @createdAt > stancesBecameUpdatable

@@ -52,7 +52,7 @@ export default class PollModel extends BaseModel
   relationships: ->
     @belongsTo 'author', from: 'users'
     @belongsTo 'discussion'
-    @belongsTo 'group', ifNull: -> new NullGroupModel()
+    @belongsTo 'group'
     @hasMany   'pollOptions', orderBy: 'priority'
     @hasMany   'stances'
     @hasMany   'versions'
