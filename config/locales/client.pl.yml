@@ -933,7 +933,7 @@ pl:
     edit_group_heading: 'Edytuj ustawienia grupy'
     edit_subgroup_heading: 'Edytuj ustawienia podgrupy'
     group_name: 'Nazwa grupy'
-    handle: Handle
+    handle: Adres
     group_handle_placeholder: "Adres URL i e-mail, np. loomio.org/handle i handle@loomio.org"
     organization_name: 'Nazwa organizacji'
     start_organization_heading: Nowa organizacja
@@ -1477,7 +1477,7 @@ pl:
     open: Otwarte
     all: Wszystko
     unread: Nieprzeczytane ({{count}})
-    closed: Zamknięta
+    closed: Zamknięte
     include_subgroups_mine: '{{name}} i moje podgrupy'
     include_subgroups_all: '{{name}} i wszystkie podgrupy'
     no_results_found: Brak wyników dla "{{search}}"
@@ -1514,7 +1514,7 @@ pl:
     any_status: 'Status '
     all: 'Wszystko'
     open: 'Otwarte'
-    closed: 'Zamknięta'
+    closed: 'Zamknięte'
     no_polls: 'Nie znaleziono ankiet'
   group_files_panel:
     no_files: Nie znaleziono plików
@@ -2016,7 +2016,7 @@ pl:
     title: 'Pojedyncze logowanie '
     enabled: Pojedyncze logowanie jest włączone
     helptext: Integruj z OneLogin, Auth0, Microsoft Active Directory lub innym dostawcą SAML. <a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">Dowiedz się więcej</a>.
-    warning_helptext: "Ostrzeżenie: Po kliknięciu Zapisz konieczne będzie uwierzytelnienie u dostawcy."
+    warning_helptext: "Uwaga: Po zapisaniu konieczne będzie uwierzytelnienie u dostawcy."
     idp_metadata_url: Adres URL metadanych dostawcy tożsamości
     idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
     success: 'Pojedyncze logowanie zostało pomyślnie skonfigurowane '
@@ -2066,7 +2066,7 @@ pl:
       other: Inne
     desired_features:
       polls: 'Przeprowadzenie głosowania w moim zespole '
-      discussions: Wstrzymanie dyskusji online i zbierania opinii
+      discussions: Prowadzenie dyskusji online i zbieranie opinii
       archive: 'Rejestrowanie podejmowanych przez nas decyzji lub archiwizowanie informacji '
     referrers:
       google: wyszukiwarka Google
@@ -2075,7 +2075,7 @@ pl:
       social: Social media (Facebook, Twitter, LinkedIn)
       capterra: Capterra
       other: Inne
-    location: Gdzie jest twoja grupa?
+    location: Gdzie znajduje się Twoja grupa?
     purpose: "Jaki jest cel twojej grupy?"
     category_question: "Wybierz kategorię, która najlepiej opisuje Twoją grupę"
     anything_else: "Czy jest coś jeszcze, co chciałbyś nam powiedzieć?"

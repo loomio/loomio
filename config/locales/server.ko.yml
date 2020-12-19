@@ -1,4 +1,7 @@
 ko:
+  errors:
+    404:
+      title: 찾을 수 없습니다.
   group:
     stats:
       members: 멤버
@@ -13,6 +16,11 @@ ko:
       author: 글쓴이
       details: 세부사항
       group_name: 그룹명
+      total: 총
+  user_mailer:
+    merge_verification:
+      confirm_page:
+        merge: 연결계정
   email:
     group_email:
       intro: "%{group} 그룹에 %{who}님이 알림글을 올렸습니다."
@@ -33,3 +41,6 @@ ko:
     pricing: 가격표
     public_groups: 공개 그룹
     terms: 정책
+  poll_mailer:
+    common:
+      unsubscribe: 구독취소

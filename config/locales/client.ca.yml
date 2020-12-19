@@ -1,16 +1,16 @@
 ca:
   loomio_onboarding:
     group_progress_card:
-      title: Activa el teu grup
+      title: Activeu el vostre grup
       activities:
-        set_description: Configura la descripció del teu grup
-        set_cover_photo: Carrega una foto de portada i un logotip per al teu grup
-        invite_people_in: Convida a gent
-        start_thread: Comença un fil de discussió
-        make_decision: Comença una decissió
+        set_description: Configureu la descripció del grup
+        set_cover_photo: Carregueu una foto de portada i un logotip per al grup
+        invite_people_in: Convideu a gent
+        start_thread: Obriu un fil de discussió
+        make_decision: Inicieu una decisió
       learn_more: Més informació a l'ajuda de Loomio
-      celebration_message: Molt bé! Endavant amb el teu grup!  🎉
-      dismiss_this_card: Descarta aquesta fitxa
+      celebration_message: Molt bé! El vostre grup ja està a punt!
+      dismiss_this_card: Descarteu aquesta fitxa
   plan_names:
     free: Gratuït
     trial: Prova
@@ -22,9 +22,13 @@ ca:
   current_plan_button:
     upgrade: Actualitza
     free_trial: Prova gratuïta. Queden {{days}} dies.
-    trial_expired: El període de prova gratuïta ha vençut. Actualitza per continuar utilitzant Loomio.
+    trial_expired: El període de prova gratuïta ha vençut. Actualitzeu per continuar utilitzant Loomio.
+    tooltip: "Tenim molt bons preus! Actualitzeu avui i disfruteu del que Loomio pot oferir al vostre grup."
+    was_gift_trial: "El vostre grup utilitza la versió gratuïta de Loomio des de {{createdDate}}. No podem continuar proporcionant el servei gratuït. Actualitzeu per seguir utilitzant Loomio. <a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>Read more.</a>"
     was_gift_remaining: "Queden {{days}} dies."
+    was_gift_expired: "El vostre pla gratuït a vençut."
   subscription_status:
+    plan: "Pla"
     members: "Membres"
   loomio_tags:
     all_tags: Totes les etiquetes
