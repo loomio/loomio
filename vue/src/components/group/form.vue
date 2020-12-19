@@ -135,15 +135,14 @@ v-card.group-form
         h1.headline(tabindex="-1" v-if='!clone.parentId', v-t="'group_form.edit_organization_heading'")
       dismiss-modal-button(:close='close')
   //- v-card-text
-  .px-4
+  v-tabs(fixed-tabs)
+    v-tab(v-t="'group_form.profile'")
+    v-tab.group-form__privacy-tab(v-t="'group_form.privacy'")
+    v-tab.group-form__permissions-tab(v-t="'group_form.permissions'")
+    v-tab.group-form__thread-defaults-tab(v-t="'common.threads'")
 
-    v-tabs(fixed-tabs)
-      v-tab(v-t="'group_form.profile'")
-      v-tab.group-form__privacy-tab(v-t="'group_form.privacy'")
-      v-tab.group-form__permissions-tab(v-t="'group_form.permissions'")
-      v-tab.group-form__thread-defaults-tab(v-t="'common.threads'")
-
-      v-tab-item.mt-8
+    v-tab-item
+      .mt-8.px-4
         .v-input
           label.v-label.v-label--active.lmo-font-12px(v-t="'group_form.click_to_change_image'")
         v-img.group_form__file-select(:src="group.coverUrl()" width="100%"  @click="selectCoverPhoto()")
@@ -160,7 +159,8 @@ v-card.group-form
         lmo-textarea.group-form__group-description(:model='clone' field="description" :placeholder="$t('group_form.description_placeholder')" :label="$t('group_form.description')")
         validation-errors(:subject="clone" field="name")
 
-      v-tab-item.mt-8
+    v-tab-item
+      .mt-8.px-4
         .group-form__section.group-form__privacy
           v-radio-group(v-model='clone.groupPrivacy')
             v-radio(v-for='privacy in privacyOptions' :key="privacy" :class="'group-form__privacy-' + privacy" :value='privacy' :aria-label='privacy')
@@ -169,81 +169,83 @@ v-card.group-form
                   strong(v-t="'common.privacy.' + privacy")
                   mid-dot
                   span {{ privacyStringFor(privacy) }}
-        p.group-form__privacy-statement.body-2 {{privacyStatement}}
+        p.group-form__privacy-statement.text--secondary {{privacyStatement}}
         .group-form__section.group-form__joining.lmo-form-group(v-if='clone.privacyIsOpen()')
           v-subheader(v-t="'group_form.how_do_people_join'")
           v-radio-group(v-model='clone.membershipGrantedUpon')
             v-radio(v-for="granted in ['request', 'approval']" :key="granted" :class="'group-form__membership-granted-upon-' + granted" :value='granted')
               template(slot='label')
                 span(v-t="'group_form.membership_granted_upon_' + granted")
-      v-tab-item.mt-8
-        .group-form__section.group-form__permissions
-          p.group-form__privacy-statement.text--secondary(v-t="'group_form.permissions_explaination'")
-          //- v-checkbox.group-form__allow-public-threads(hide-details v-model='group["allowPublicThreads"]' :label="$t('group_form.allow_public_threads')" v-if='clone.privacyIsClosed() && !clone.isSubgroupOfSecretParent()')
-          v-checkbox.group-form__parent-members-can-see-discussions(hide-details v-model='clone["parentMembersCanSeeDiscussions"]' v-if='clone.parentId && clone.privacyIsClosed()')
-            template(v-slot:label)
-              div
-                span(v-t="{path: 'group_form.parent_members_can_see_discussions', args: {parent: clone.parent().name}}")
-                br
-                span.caption(v-t="{path: 'group_form.parent_members_can_see_discussions_help', args: {parent: clone.parent().name}}")
-          v-checkbox.group-form__members-can-add-members(hide-details v-model='clone["membersCanAddMembers"]')
-            template(v-slot:label)
-              div
-                span(v-t="'group_form.members_can_add_members'")
-                br
-                span.caption(v-t="'group_form.members_can_add_members_help'")
-          v-checkbox.group-form__members-can-add-guests(hide-details v-model='clone["membersCanAddGuests"]')
-            template(v-slot:label)
-              div
-                span(v-t="'group_form.members_can_add_guests'")
-                br
-                span.caption(v-t="'group_form.members_can_add_guests_help'")
-          v-checkbox.group-form__members-can-announce(hide-details v-model='clone["membersCanAnnounce"]' :label="$t('group_form.members_can_announce')")
-            template(v-slot:label)
-              div
-                span(v-t="'group_form.members_can_announce'")
-                br
-                span.caption(v-t="'group_form.members_can_announce_help'")
-          v-checkbox.group-form__members-can-create-subgroups(hide-details v-model='clone["membersCanCreateSubgroups"]' v-if='clone.isParent()')
-            template(v-slot:label)
-              div
-                span(v-t="'group_form.members_can_create_subgroups'")
-                br
-                span.caption(v-t="'group_form.members_can_create_subgroups_help'")
-          v-checkbox.group-form__members-can-start-discussions(hide-details v-model='clone["membersCanStartDiscussions"]')
-            template(v-slot:label)
-              div
-                span(v-t="'group_form.members_can_start_discussions'")
-                br
-                span.caption(v-t="'group_form.members_can_start_discussions_help'")
-          v-checkbox.group-form__members-can-edit-discussions(hide-details v-model='clone["membersCanEditDiscussions"]')
-            template(v-slot:label)
-              div
-                span(v-t="'group_form.members_can_edit_discussions'")
-                br
-                span.caption(v-t="'group_form.members_can_edit_discussions_help'")
-          v-checkbox.group-form__members-can-edit-comments(hide-details v-model='clone["membersCanEditComments"]')
-            template(v-slot:label)
-              div
-                span(v-t="'group_form.members_can_edit_comments'")
-                br
-                span.caption(v-t="'group_form.members_can_edit_comments_help'")
-          v-checkbox.group-form__members-can-raise-motions(hide-details v-model='clone["membersCanRaiseMotions"]')
-            template(v-slot:label)
-              div
-                span(v-t="'group_form.members_can_raise_motions'")
-                br
-                span.caption(v-t="'group_form.members_can_raise_motions_help'")
-          v-checkbox.group-form__admins-can-edit-user-content(hide-details v-model='clone["adminsCanEditUserContent"]')
-            template(v-slot:label)
-              div
-                span(v-t="'group_form.admins_can_edit_user_content'")
-                br
-                span.caption(v-t="'group_form.admins_can_edit_user_content_help'")
 
-      v-tab-item.mt-8
+    v-tab-item
+      .mt-8.px-4.group-form__section.group-form__permissions
+        p.group-form__privacy-statement.text--secondary(v-t="'group_form.permissions_explaination'")
+        //- v-checkbox.group-form__allow-public-threads(hide-details v-model='group["allowPublicThreads"]' :label="$t('group_form.allow_public_threads')" v-if='clone.privacyIsClosed() && !clone.isSubgroupOfSecretParent()')
+        v-checkbox.group-form__parent-members-can-see-discussions(hide-details v-model='clone["parentMembersCanSeeDiscussions"]' v-if='clone.parentId && clone.privacyIsClosed()')
+          template(v-slot:label)
+            div
+              span(v-t="{path: 'group_form.parent_members_can_see_discussions', args: {parent: clone.parent().name}}")
+              br
+              span.caption(v-t="{path: 'group_form.parent_members_can_see_discussions_help', args: {parent: clone.parent().name}}")
+        v-checkbox.group-form__members-can-add-members(hide-details v-model='clone["membersCanAddMembers"]')
+          template(v-slot:label)
+            div
+              span(v-t="'group_form.members_can_add_members'")
+              br
+              span.caption(v-t="'group_form.members_can_add_members_help'")
+        v-checkbox.group-form__members-can-add-guests(hide-details v-model='clone["membersCanAddGuests"]')
+          template(v-slot:label)
+            div
+              span(v-t="'group_form.members_can_add_guests'")
+              br
+              span.caption(v-t="'group_form.members_can_add_guests_help'")
+        v-checkbox.group-form__members-can-announce(hide-details v-model='clone["membersCanAnnounce"]' :label="$t('group_form.members_can_announce')")
+          template(v-slot:label)
+            div
+              span(v-t="'group_form.members_can_announce'")
+              br
+              span.caption(v-t="'group_form.members_can_announce_help'")
+        v-checkbox.group-form__members-can-create-subgroups(hide-details v-model='clone["membersCanCreateSubgroups"]' v-if='clone.isParent()')
+          template(v-slot:label)
+            div
+              span(v-t="'group_form.members_can_create_subgroups'")
+              br
+              span.caption(v-t="'group_form.members_can_create_subgroups_help'")
+        v-checkbox.group-form__members-can-start-discussions(hide-details v-model='clone["membersCanStartDiscussions"]')
+          template(v-slot:label)
+            div
+              span(v-t="'group_form.members_can_start_discussions'")
+              br
+              span.caption(v-t="'group_form.members_can_start_discussions_help'")
+        v-checkbox.group-form__members-can-edit-discussions(hide-details v-model='clone["membersCanEditDiscussions"]')
+          template(v-slot:label)
+            div
+              span(v-t="'group_form.members_can_edit_discussions'")
+              br
+              span.caption(v-t="'group_form.members_can_edit_discussions_help'")
+        v-checkbox.group-form__members-can-edit-comments(hide-details v-model='clone["membersCanEditComments"]')
+          template(v-slot:label)
+            div
+              span(v-t="'group_form.members_can_edit_comments'")
+              br
+              span.caption(v-t="'group_form.members_can_edit_comments_help'")
+        v-checkbox.group-form__members-can-raise-motions(hide-details v-model='clone["membersCanRaiseMotions"]')
+          template(v-slot:label)
+            div
+              span(v-t="'group_form.members_can_raise_motions'")
+              br
+              span.caption(v-t="'group_form.members_can_raise_motions_help'")
+        v-checkbox.group-form__admins-can-edit-user-content(hide-details v-model='clone["adminsCanEditUserContent"]')
+          template(v-slot:label)
+            div
+              span(v-t="'group_form.admins_can_edit_user_content'")
+              br
+              span.caption(v-t="'group_form.admins_can_edit_user_content_help'")
+
+    v-tab-item
+      .mt-8.px-4
         .group-form__section.group-form__defaults
-          p(v-t="'group_form.thread_defaults_help'")
+          p.text--secondary(v-t="'group_form.thread_defaults_help'")
           v-card-subtitle(v-t="'thread_arrangement_form.sorting'")
           v-radio-group(v-model="clone.newThreadsNewestFirst")
             v-radio(:value="false")
