@@ -28,8 +28,8 @@ class API::StancesController < API::RestfulController
       end
 
       user_ids = collection.pluck(:participant_id)
-      self.add_meta :member_ids, Membership.active.where(user_id: user_ids, group_id: @poll.group_id).pluck(:user_id)
-      self.add_meta :member_admin_ids, Membership.active.where(user_id: user_ids, group_id: @poll.group_id, admin: true).pluck(:user_id)
+      self.add_meta :member_ids, @poll.group.members.pluck(:user_id)
+      self.add_meta :member_admin_ids, @poll.group.admins.pluck(:user_id)
       self.add_meta :stance_admin_ids, collection.where(admin: true).pluck(:participant_id)
       User.where(id: collection.pluck(:participant_id))
     end
