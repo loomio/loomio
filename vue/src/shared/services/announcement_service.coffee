@@ -8,7 +8,7 @@ export default new class AnnouncementService
   audiencesFor: (model) ->
     audiences = []
 
-    if model.group && model.group().id &&
+    if !model.isA('group') && model.group && model.group().id &&
       (model.group().adminsInclude(user()) ||
        model.group().membersCanAnnounce && model.group().membersInclude(user()))
       audiences.push 'group'

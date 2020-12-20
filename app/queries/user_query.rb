@@ -1,7 +1,6 @@
 class UserQuery
-  def self.invitable_to(model:, actor:, q: nil, limit: 50)
+  def self.relations(model:, actor:)
     rels = []
-
     if model.is_a?(Group) and model.members.exists?(actor.id)
       rels.push User.joins('LEFT OUTER JOIN memberships m ON m.user_id = users.id').
                      where('(m.group_id IN (:group_ids))', {group_ids: model.group.id})
@@ -68,16 +67,18 @@ class UserQuery
         )
       end
     end
+    rels
+  end
 
-    # an attempt to prioritize..
-    # ids = []
-    # rels.each do |rel|
-    #   ids.concat(rel.active.verified.search_for(q).limit(limit).pluck(:id))
-    #   ids = ids.flatten.uniq.compact
-    #   break if ids.size >= limit
-    # end
+  def self.invitable_filter(model: , actor:, user_ids: )
+    relations(model: model, actor: actor).map do |rel|
+      rel.where(id: user_ids).pluck(:id)
+    end.flatten.uniq.compact
+  end
 
-    User.where(id: rels.map { |rel| rel.active.verified.search_for(q).limit(limit).pluck(:id) }.flatten.uniq.compact).order(:memberships_count).limit(50)
+  def self.invitable_to(model:, actor:, q: nil, limit: 50)
+    ids = relations(model: model, actor: actor).map { |rel| rel.active.verified.search_for(q).limit(limit).pluck(:id) }.flatten.uniq.compact
+    User.where(id: ids).order(:memberships_count).limit(50)
   end
 
 

@@ -22,14 +22,8 @@ class UserInviter
     # members belong to group
     member_ids = model.members.where(id: user_ids).pluck(:id)
 
-    # guests are outside of the group, but still in the org
-    guest_ids = Membership.active.where(
-                  group_id: model.group.parent_or_self.id_and_subgroup_ids,
-                  user_id: (user_ids - member_ids)
-                ).pluck(:user_id).uniq
-
-    # disallow inviting anyone by user_id if they're not in the org. should be userQuery scoped
-    # raise CanCan::AccessDenied if model.group_id && ((user_ids - member_ids) - guest_ids).any?
+    # guests are outside of the group, but allowed to be referenced by user query
+    guest_ids = UserQuery.invitable_filter(model: model, actor: actor, user_ids: user_ids - member_ids)
 
     actor.ability.authorize!(:announce, model)    if audience == 'group'
     actor.ability.authorize!(:add_members, model) if member_ids.any?
@@ -50,14 +44,8 @@ class UserInviter
     # either by email address or by user_id, but user_ids are limited to your org
     member_ids = model.members.where(id: user_ids).pluck(:id)
 
-    group_ids = if model.group.present?
-      model.group.parent_or_self.id_and_subgroup_ids
-    else
-      actor.group_ids
-    end
-
-    guest_ids = Membership.where(group_id: group_ids,
-                                 user_id: (user_ids - member_ids)).pluck(:user_id).uniq
+    # guests are outside of the group, but allowed to be referenced by user query
+    guest_ids = UserQuery.invitable_filter(model: model, actor: actor, user_ids: user_ids - member_ids)
 
     ids = member_ids.concat(guest_ids).concat(audience_ids).uniq
 
