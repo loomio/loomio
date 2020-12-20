@@ -14,10 +14,10 @@ class API::AnnouncementsController < API::RestfulController
     count = UserInviter.count(
       actor: current_user,
       model: target_model,
-      emails: params[:recipient_emails],
-      user_ids: params[:recipient_user_ids],
+      emails: String(params[:recipient_emails_cmr]).split(','),
+      user_ids: String(params[:recipient_user_xids]).split('x').map(&:to_i),
       audience: params[:recipient_audience],
-      usernames: params[:recipient_usernames]
+      usernames: String(params[:recipient_usernames]).split(',')
     )
     render json: {count: count}
   end

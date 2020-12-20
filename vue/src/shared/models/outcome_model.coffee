@@ -30,7 +30,7 @@ export default class OutcomeModel extends BaseModel
   relationships: ->
     @belongsTo 'author', from: 'users'
     @belongsTo 'poll'
-    @belongsTo 'group', ifNull: -> new NullGroupModel()
+    @belongsTo 'group'
     @belongsTo 'pollOption'
 
   reactions: ->

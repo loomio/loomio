@@ -22,6 +22,7 @@ export default
     isStanceAdmin: {}
     reset: false
     saving: false
+    loading: false
     initialRecipients: []
     actionNames: []
     service: StanceService
@@ -88,6 +89,7 @@ export default
       @fetchStances()
 
     fetchStances: debounce ->
+      @loading = true
       Records.fetch
         path: 'stances/users'
         params:
@@ -100,6 +102,8 @@ export default
         @isStanceAdmin = @toHash(data['meta']['stance_admin_ids'])
         @userIds = uniq compact @userIds.concat(map data['users'], 'id')
         @updateStances()
+      .finally =>
+        @loading = false
     , 300
 
     updateStances: ->
@@ -141,7 +145,7 @@ export default
     v-subheader
       span(v-t="'membership_card.voters'")
       space
-      span ({{poll.votersCount}})
+      span ({{users.length}} / {{poll.votersCount}})
     v-list-item(v-for="user in users" :key="user.id")
       v-list-item-avatar
         user-avatar(:user="user" :size="24")

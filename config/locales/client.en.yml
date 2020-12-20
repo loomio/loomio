@@ -656,6 +656,11 @@ en:
     history_error: Something went wrong! Could not load history.
     inviting_guests_to_thread: Guests do not belong to your group, and have access to this thread only
     select_groups: Select groups
+    search_by_name_or_email: Search by name, or invite guests with email addresses
+    search_by_name: Search for people by name
+    only_admins_can_announce: Only admins can notify the whole group
+    only_admins_can_invite: Only admins can invite guests
+    only_admins_can_announce_or_invite: Only admins can notify the whole group or invite guests
 
     audiences:
       group: Everyone in {{name}}

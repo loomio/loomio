@@ -42,8 +42,12 @@ module Ability::Group
       (group.members_can_start_discussions? && group.members.exists?(user.id)))
     end
 
+    can [:add_guests], ::Group do |group|
+      user.email_verified? && Subscription.for(group).is_active? &&
+      ((group.members_can_add_guests && group.members.exists?(user.id)) || group.admins.exists?(user.id))
+    end
+
     can [:add_members,
-         :add_guests,
          :invite_people,
          :announce,
          :manage_membership_requests], ::Group do |group|

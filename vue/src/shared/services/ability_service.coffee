@@ -86,12 +86,8 @@ export default new class AbilityService
     Session.user().id == group.creatorId
 
   canStartThread: (group) ->
-    group.adminsInclude(Session.user()) or
-    (group.membersInclude(Session.user()) and group.membersCanStartDiscussions)
-
-  canAnnounce: (model) ->
-    return @canAnnounceDiscussion(model) if model.isA('discussion')
-    return @canAnnouncePoll(model) if model.isA('poll')
+    group.adminsInclude(user()) or
+    (group.membersInclude(user()) and group.membersCanStartDiscussions)
 
   canAnnounceDiscussion: (discussion) ->
     return false if discussion.discardedAt
@@ -99,17 +95,29 @@ export default new class AbilityService
       discussion.group().adminsInclude(user()) or
       (discussion.group().membersCanAnnounce and discussion.group().membersInclude(user()))
     else
-      discussion.adminsInclude(user())
+      !discussion.id || discussion.adminsInclude(user())
+
+  canAnnounce: (model) ->
+    if model.isA? 'poll'
+      @canAnnouncePoll(model)
+    else
+      @canAnnounceDiscussion(model)
 
   canAddMembersDiscussion: (discussion) ->
     discussion.membersInclude(user())
+
+  canAddGuests: (model) ->
+    if model.isA? 'poll'
+      @canAddGuestsPoll(model)
+    else
+      @canAddGuestsDiscussion(model)
 
   canAddGuestsDiscussion: (discussion) ->
     if discussion.groupId
       discussion.group().adminsInclude(user()) ||
       (discussion.group().membersCanAddGuests && discussion.membersInclude(user()))
     else
-      discussion.adminsInclude(user())
+      !discussion.id || discussion.adminsInclude(user())
 
   canAnnouncePoll: (poll) ->
     return false if poll.discardedAt
