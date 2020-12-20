@@ -177,7 +177,7 @@ Loomio::Application.routes.draw do
 
     resource :outcomes,     only: [:create, :update]
 
-    resources :stances,     only: [:index, :create, :update, :destroy] do
+    resources :stances, only: [:index, :create, :update, :destroy] do
       collection do
         get :invite
         get :users

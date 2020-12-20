@@ -11,7 +11,7 @@ export default
 
   methods:
     updateCount: ->
-      params = ((@model.id && model) || (@model.groupId && @model.group()) || {namedId: -> {}}).namedId()
+      params = ((@model.id && @model) || (@model.groupId && @model.group()) || {namedId: -> {}}).namedId()
       Records.remote.get 'announcements/count', Object.assign params,
         recipient_emails_cmr: @model.recipientEmails.join(',')
         recipient_user_xids: @model.recipientUserIds.join('x')

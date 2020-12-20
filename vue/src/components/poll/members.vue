@@ -54,8 +54,6 @@ export default
         when 'revoke'
           poll.adminsInclude(Session.user())
 
-    reset: ->
-
     perform: (action, poll, user) ->
       @userIds = []
       @isMember = {}

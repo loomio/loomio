@@ -19,13 +19,18 @@ class UserInviter
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
     emails = Array(emails).map(&:presence).compact.uniq
 
+    # members belong to group
     member_ids = model.members.where(id: user_ids).pluck(:id)
-    guest_ids = Membership.where(group_id: model.group.parent_or_self.id_and_subgroup_ids,
-                                 user_id: (user_ids - member_ids)).pluck(:user_id).uniq
 
+    # guests are outside of the group, but still in the org
+    guest_ids = Membership.active.where(
+                  group_id: model.group.parent_or_self.id_and_subgroup_ids,
+                  user_id: (user_ids - member_ids)
+                ).pluck(:user_id).uniq
 
-    # disallow inviting anyone by user_id if they're not in the org
-    raise CanCan::AccessDenied if model.group_id && ((user_ids - member_ids) - guest_ids).any?
+    # disallow inviting anyone by user_id if they're not in the org. should be userQuery scoped
+    # raise CanCan::AccessDenied if model.group_id && ((user_ids - member_ids) - guest_ids).any?
+
     actor.ability.authorize!(:announce, model)    if audience == 'group'
     actor.ability.authorize!(:add_members, model) if member_ids.any?
     actor.ability.authorize!(:add_guests, model)  if emails.any? or guest_ids.any?
