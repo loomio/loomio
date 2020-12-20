@@ -248,5 +248,5 @@ div.recipients-autocomplete
           span(v-if="data.item.type == 'user' && currentUserId == data.item.id")
             space
             span ({{ $t('common.you') }})
-  notifications-count(:model='model')
+  notifications-count(v-show="recipients.length" :model='model')
 </template>
