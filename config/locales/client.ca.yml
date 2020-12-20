@@ -22,14 +22,23 @@ ca:
   current_plan_button:
     upgrade: Actualitza
     free_trial: Prova gratuïta. Queden {{days}} dies.
-    trial_expired: El període de prova gratuïta ha vençut. Actualitzeu per continuar utilitzant Loomio.
-    tooltip: "Tenim molt bons preus! Actualitzeu avui i disfruteu del que Loomio pot oferir al vostre grup."
+    trial_expired: El període de prova gratuït ha vençut. Actualitzeu per continuar utilitzant Loomio.
+    tooltip: "Tenim molt bons preus! Actualitzeu avui i gaudiu del que Loomio pot oferir al vostre grup."
     was_gift_trial: "El vostre grup utilitza la versió gratuïta de Loomio des de {{createdDate}}. No podem continuar proporcionant el servei gratuït. Actualitzeu per seguir utilitzant Loomio. <a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>Read more.</a>"
     was_gift_remaining: "Queden {{days}} dies."
     was_gift_expired: "El vostre pla gratuït a vençut."
   subscription_status:
     plan: "Pla"
+    state: "Estat"
     members: "Membres"
+    active_members: "Membres actius"
+    max_threads: "Màxim de fils"
+    max_members: "Màxim de membres"
+    expires_at: "Venç"
+    renews_at: "Es renova"
+    chargify_link: "Portal de facturació"
+    referral_code_help: "Oferiu un descompte a amics i obtingueu saldo"
+    manage_payment_details: "Gestioneu els mètodes de pagament"
   loomio_tags:
     all_tags: Totes les etiquetes
     tags: Etiquetes
@@ -42,7 +51,7 @@ ca:
     modal_edit_title: Edita l'etiqueta
     modal_destroy_title: Elimina l'etiqueta
     destroy_tag: Elimina l'etiqueta
-    destroy_helptext: Això destruirà aquesta etiqueta i l'eliminarà de tots els fils del grup. Estàs segur/a?
+    destroy_helptext: Això destruirà aquesta etiqueta i l'eliminarà de tots els fils del grup. N'esteu segur?
     helptext: Les etiquetes et permeten categoritzar converses i trobar-les fàcilment després.
     discussions_count_singular: ({{count}} discussió)
     discussions_count_plural: ({{count}} discussions)
@@ -69,7 +78,7 @@ ca:
     angry: Enfadat
     weary: Cansat
     astonished: Astorat
-    rolling_eyes: Ulls en moviment
+    rolling_eyes: Ulls en blanc
     cry: Plora
     scream: Crit
     sleeping: Avorrit
@@ -78,14 +87,14 @@ ca:
     pray: Pregant
     fingers_crossed: Dits creuats
     v: Pau
-    metal: Metall
+    metal: Metal
     ok_hand: D'acord
-    wave: Ona
+    wave: Saluda
     thumbsup: Polze cap amunt
     thumbsdown: Polze cap avall
   poll_types:
     proposal: proposta
-    count: xec
+    count: verificar
     poll: enquesta
     dot_vote: vot limitat
     meeting: enquesta de temps
@@ -93,18 +102,18 @@ ca:
     score: vot amb puntuació
   new_poll_types:
     proposal: proposta
-    count: compta
-    poll: tria
-    score: puntua
-    ranked_choice: ordena
-    dot_vote: assigna
+    count: comptar
+    poll: triar
+    score: puntuar
+    ranked_choice: ordenar
+    dot_vote: assignar
     meeting: enquesta de temps
   timezones:
     local: Hora local ({{value}})
   common:
     empty: Buit
     no_results_found: No s'ha trobat cap resultat
-    view: Vista
+    view: Visualitza
     history: Historial
     option: Opció
     add: Afegeix
@@ -112,28 +121,31 @@ ca:
     expand: Expandeix
     all_day: Tot el dia
     ok_got_it: D'acord
+    learn_more: Més informació
     not_found: No s'ha trobat
     time_zone: Zona horària
     local_time: Hora local
     attachments: Adjunts
     active_time_ago: Darrera activitat {{time_ago}}
-    confirm_discard_changes: Descarteu els canvis?
+    confirm_discard_changes: Voleu descartar els canvis?
     time:
       am: AM
       pm: PM
-    closing_in: 'Tancant en {{time}}'
+    closing_in: 'Es tancarà en {{time}}'
     closed_ago: 'Tancat fa {{time}}'
     volume: 'Volum'
-    notification_volume: 'Notificació de volum'
+    notification_volume: 'Volum de notificacions'
     group: 'Grup'
     groups: 'Grups'
+    organization: "Organització"
+    organizations: "Organitzacions"
     threads: 'Fils'
     decisions: 'Decisions'
     settings: 'Configuracions'
     help: 'Ajuda'
     anonymous: Anònim
-    required: Requerit
-    email_address: Adressa de correu electrònic
+    required: Obligatori
+    email_address: Adreça de correu electrònic
     privacy:
       privacy: 'Privacitat'
       public: 'Públic'
@@ -152,7 +164,7 @@ ca:
     models:
       proposal: 'Proposta'
     copy: 'Copia'
-    reset: 'Reinicialitza'
+    reset: 'Reinicia'
     copy_text: 'Copia el text'
     copied: 'Copiat al porta-retalls'
     points_abbrev: Cada vot val {{score}} punts
@@ -180,45 +192,54 @@ ca:
       unlike: 'No m''agrada'
       update: 'Actualitza'
       cancel: 'Cancel·la'
-      show_more: "Mostra més"
+      show_more: "Mostra'n més"
+      show_fewer: "Mostra'n menys"
+      view_count_more: "Visualitza'n {{count}} més"
+      view_count_responses: "Visualitza {{count}} respostes"
+      count_more: "{{count}} més"
+      count_responses: "{{count}} respostes"
       view_all: "Mostra-ho tot"
-      new_thread: "Crea una discussió"
+      new_thread: "Nou fil de discussió"
       add_subgroup: 'Nou subgrup'
-      loading: 'Carregant'
+      loading: 'S''està carregant'
       translate: 'Tradueix'
-      upload: 'Carrega'
-      uploading: 'Carregant'
+      upload: 'Penja'
+      uploading: 'S''està penjant'
       load_more: 'Carrega''n més'
       share: Comparteix
       ok: D'acord
-      retry: Prova de nou
+      retry: Reintentar
       done: Fet
       start: Comença
-      delete: Esborrar
-      unsubscribe: Desubscriu-me
+      delete: Elimina
+      unsubscribe: Cancel·la la subscripció
       subscribe: Subscriu-me
-      unignore: No ignoris
+      unignore: Deixa d'ignorar
       remind: Recorda
-      resend: Torna a enviar
+      resend: Reenviar
       send: Envia
-      joined: Unit
+      joined: T'hi has unit
       last_seen: Vist per darrer cop
       invite: Convida
-      resent: Tornat a convidar
+      resent: Convida de nou
       export: Exporta
-      fork: Fork
+      fork: Bifurcació
       apply: Aplica
       add_people: Afegeix persones
     formatting_help:
       label: 'Formatació'
-      title: 'Apren a escriure el text en format Markdown'
+      title: 'Aprèn a escriure el text en format Markdown'
   merge_accounts:
     modal:
-      title: Fusiona comptes
+      title: Combina comptes
+      helptext: "Podeu combinar el compte amb el correu <strong>{{sourceEmail}}</strong> dins del compte amb el correu <strong>{{targetEmail}}</strong>. Per començar el procés feu clic a \"verificar\", i se us enviarà un correu electrònic de verificació a {{targetEmail}} "
       submit: Verifica
       flash: S'ha enviat un correu electrònic de verificació!
-    email_taken: Ho sento, aquest correu ja està associat amb un altre usuari. Et pertany aquest correu electrònic?
+    email_taken: Aquest correu ja està associat a un altre usuari. És el vostre correu electrònic?
     find_out_more: Troba'n més.
+    placeholder_modal_text: |
+        <p> Si voleu combinar dos comptes, introduiu la direcció de correu electrònic (la que pertany a l'altre compte) al camp de correu electrònic del vostre perfil, i seguiu les intruccions que apareixeran a continuació.</p>
+        <p>Necessiteu ajuda? <a href="/contact" target="_blank">Contacti amb nosaltres</a>.
   emoji_picker:
     search: Cerca
     common: Usats sovint
@@ -241,31 +262,44 @@ ca:
     _10: 10è
   devise:
     sessions:
-      signed_up: T'has registrat correctament!
+      signed_up: Us heu registrat correctament.
     failure:
       inactive: 'Hi ha un compte desactivat associat a aquesta adreça de correu. Si voleu reactivar el compte, contacteu amb nosaltres.'
   error_page:
     forbidden: 'No teniu permís per realitzar aquesta acció.'
-    page_not_found: 'No l''hem pogut trobar. Pot ser que hagi estat suprimit o mogut.'
+    page_not_found: 'No ho hem pogut trobar. Pot ser que hagi estat suprimit o mogut.'
     internal_server_error: 'Alguna cosa ha anat malament. Torneu-ho a provar.'
   verify_email_notice:
     please_verify: 'Gràcies per participar! Comproveu el vostre correu electrònic: hi trobareu un enllaç per a verificar el vostre vot.'
+  previous_polls_page:
+    heading: Activitats dins de {{name}}
+    polls_count: Es mostren {{loaded}} de {{total}} decisions
+    search_activities: Busca decisions
   volume_levels:
     loud: 'Fort'
     normal: 'Normal'
     quiet: 'Fluix'
-    mute: 'Silenci'
+    mute: 'Silencia'
     unmute: 'Activa el so'
   pin_event_form:
+    title: Fixa a la línia de temps
     title_label: Títol
+    hint: 'Pista per la propera vegada: Subratlleu part del text abans de clicar "fixa".'
   change_volume_form:
     simple:
       label: Notificacions
+      loud: Esteu subscrit
       normal: Normal
       quiet: Ignora
-    loud_label: "Tota la activitat"
-    quiet_label: "Cap correu electrònic"
-    mute_label: "Silenci"
+      question: Quan voleu rebre notificacions?
+      loud_explain: Quan hi hagi alguna activitat
+      normal_explain: Quan algú demani la teva atenció
+      quiet_explain: No hi ha notificacions
+    loud_label: "Tota l'activitat"
+    normal_label: "Avisos"
+    quiet_label: "No hi ha correus electrònics"
+    mute_label: "Silencia"
+    saved: "S'ha actualitzat la configuració de notificions"
     discussion:
       apply_to_all: "Aplica aquesta configuració a totes les discussions d'aquest grup."
       messages:
@@ -328,11 +362,13 @@ ca:
     threads: 'Fils'
     start_subgroup: 'Nou subgrup'
     explore: 'Grups públics'
+    start_thread: Nou fil de discussió
     aria_labels:
       heading: 'Barra lateral'
       groups_list: 'Grups'
   navbar:
     unread_title: 'Mostra l''activitat no llegida'
+    start_thread: 'Nou fil de discussió'
     notifications: 'Tauler de notificacions'
     search:
       no_results: 'No s''ha trobat cap discussió'
@@ -377,6 +413,7 @@ ca:
     edit_stance: Canvia la decisió
     edited: Editat
     history: Historial
+    pin_event: Fixa a la línia de temps
     tag_thread: Gestiona etiquetes
     delete_thread: Elimina la discussió
   formatting:
@@ -398,6 +435,7 @@ ca:
     posted: Publicat
     current_revision: Últim
   reactions_display:
+    more_reactions: "{{count}} més"
     you: "Tu"
   group_page:
     threads: Fils
@@ -553,6 +591,7 @@ ca:
   email_settings_page:
     daily_summary_label: Correu electrònic de resum diari
     on_participation_label: Subscriure a la participació
+    announcement_label: Avisos
     specific_groups: Configuració per grups específics
     default_settings:
       loud_description: "Quan us uniu a un grup nou, rebre un correu electrònic <strong>cada cop que hi hagi activitat</strong>."
@@ -617,6 +656,7 @@ ca:
     load_previous: 'Carrega activitats anteriors'
     started_by: 'Destacat per <strong>{{name}}</strong>'
   activity_card:
+    count_responses: "{{count}} respostes"
     latest: Últim
     context: Context
     attachment_display:
@@ -631,6 +671,7 @@ ca:
     reopen_thread: 'Reobre'
     pin_thread: 'Fixa'
     unpin_thread: 'Desfixa'
+    mute_thread: 'Silencia'
     move_thread: 'Mou'
     print_thread: 'Imprimeix'
     delete_thread: 'Elimina'
@@ -674,6 +715,7 @@ ca:
     poll_title: Enquesta
   poll_common:
     have_your_say: Doneu la opinió
+    participant_email: Adreça de correu electrònic
     start_poll: Comença una decissió
     save_changes: Desa
   poll_common_attachment_form:
