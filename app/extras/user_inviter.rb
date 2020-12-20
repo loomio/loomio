@@ -34,7 +34,6 @@ class UserInviter
     actor.ability.authorize!(:announce, model)    if audience == 'group'
     actor.ability.authorize!(:add_members, model) if member_ids.any?
     actor.ability.authorize!(:add_guests, model)  if emails.any? or guest_ids.any?
-
   end
 
   def self.where_or_create!(emails:, user_ids:, audience: nil, model:, actor:)
