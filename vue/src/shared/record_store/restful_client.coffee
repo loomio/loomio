@@ -23,7 +23,7 @@ export default class RestfulClient
     @resourcePlural = snakeCase(resourcePlural) if resourcePlural
 
   buildUrl: (path, params) ->
-    path = compact([@apiPrefix, @resourcePlural, compact(Array(path)).join('/')]).join('/')
+    path = compact([@apiPrefix, @resourcePlural, path]).join('/')
     return path unless params?
     path + "?" + encodeParams(params)
 
