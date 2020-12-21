@@ -91,13 +91,14 @@ class API::AnnouncementsController < API::RestfulController
       notifications[notification.event_id] = [] unless notifications.has_key?(notification.event_id)
       notifications[notification.event_id] << {id: notification.id, to: (notification.user.name || notification.user.email), viewed: notification.viewed}
     end
+    
     res = events.map do |event|
       {event_id: event.id,
        created_at: event.created_at,
        author_name: event.user.name,
        kind: event.kind,
        notifications: notifications[event.id] || [] }
-    end
+    end.filter {|e| e[:notifications].size > 0}
 
     render root: false, json: res
   end
