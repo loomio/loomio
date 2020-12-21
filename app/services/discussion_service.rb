@@ -160,8 +160,10 @@ class DiscussionService
 
   def self.mark_as_read(discussion:, params:, actor:)
     actor.ability.authorize! :mark_as_read, discussion
-    reader = DiscussionReader.for_model(discussion, actor)
-    reader.viewed!(params[:ranges])
+    RetryOnError.with_limit(2) do
+      reader = DiscussionReader.for_model(discussion, actor)
+      reader.viewed!(params[:ranges])
+    end
     EventBus.broadcast('discussion_mark_as_read', reader, actor)
   end
 
