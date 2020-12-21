@@ -67,6 +67,19 @@ class PollService
     stances
   end
 
+  def self.remind(poll:, actor:, params:)
+    actor.ability.authorize! :remind, poll
+
+    member_ids = poll.members.where(id: params[:recipient_user_ids]).pluck(:id)
+    audience_ids = AnnouncementService.audience_users(poll, params[:recipient_audience]).pluck(:id).without(actor.id)
+
+    Events::PollReminder.publish!(poll: poll,
+                                  actor: actor,
+                                  recipient_user_ids: member_ids.concat(audience_ids).uniq.compact,
+                                  recipient_audience: params[:recipient_audience],
+                                  recipient_message: params[:recipient_message])
+  end
+
   def self.create_stances(poll:, actor:, user_ids: [], emails: [], audience: nil)
     # user_ids = poll.base_guest_audience_query.where('users.id': Array(user_ids)).pluck(:id)
     # audience_ids = AnnouncementService.audience_users(poll, audience).pluck('users.id')

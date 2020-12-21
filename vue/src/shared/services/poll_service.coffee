@@ -70,6 +70,21 @@ export default new class PollService
           props:
             poll: poll
 
+    remind_poll:
+      icon: 'mdi-send'
+      name: 'common.action.remind'
+      canPerform: ->
+        return false if (poll.discardedAt || poll.closedAt || poll.votersCount < 2)
+        poll.adminsInclude(Session.user()) ||
+        (!poll.specifiedVotersOnly &&
+         (poll.group().membersCanAddGuests || poll.group().membersCanAnnounce) &&
+         poll.membersInclude(Session.user()))
+      perform: ->
+        openModal
+          component: 'PollReminderForm'
+          props:
+            poll: poll.clone()
+
     edit_poll:
       name: 'action_dock.edit_poll_type'
       nameArgs: ->

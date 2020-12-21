@@ -5,6 +5,11 @@ class API::PollsController < API::RestfulController
     respond_with_resource
   end
 
+  def remind
+    event = service.remind(poll: load_and_authorize(:poll), actor: current_user, params: resource_params)
+    render json: {count: event.recipient_user_ids.count}
+  end
+
   def index
     instantiate_collection do |collection|
       PollQuery.filter(chain: collection, params: params).order(created_at: :desc)

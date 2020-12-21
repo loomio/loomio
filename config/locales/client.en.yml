@@ -573,6 +573,7 @@ en:
     new_coordinator: "<strong>{{name}}</strong> made you an admin of <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> started a {{poll_type}}: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> edited a {{poll_type}}: <strong>{{title}}</strong>"
+    poll_reminder: "<strong>{{name}}</strong> is reminding you to vote in: <strong>{{title}}</strong>"
     poll_announced: "<strong>{{name}}</strong> shared a {{poll_type}}: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} is closing soon: <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} closed: <strong>{{title}}</strong>"
@@ -694,9 +695,11 @@ en:
       poll_announced:
         title: Invite to vote
         helptext: Who would you like to invite to vote?
-      # poll:
-      #   title: Notify of edits
-      #   helptext: Who would you like to notify about this update?
+      poll_reminder:
+        title: Remind to vote
+        helptext: Who would you like to remind to vote?
+        message_label: Message
+        message_placeholder: Optional message to tell people why they should vote
       poll_edited:
         title: Notify of edits
         helptext: Who would you like to notify about this update?

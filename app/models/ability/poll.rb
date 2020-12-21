@@ -26,7 +26,7 @@ module Ability::Poll
       (poll.group.members_can_raise_motions && poll.members.exists?(user.id))
     end
 
-    can [:announce], ::Poll do |poll|
+    can [:announce, :remind], ::Poll do |poll|
       if poll.group_id
         poll.group.admins.exists?(user.id) ||
         (poll.group.members_can_announce && poll.admins.exists?(user.id)) ||

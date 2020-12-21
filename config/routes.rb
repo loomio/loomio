@@ -166,13 +166,16 @@ Loomio::Application.routes.draw do
 
     resources :search, only: :index
 
-    resources :polls,       only: [:show, :index, :create, :update, :destroy] do
-      delete :discard, on: :member
-      post :close, on: :member
-      post :reopen, on: :member
-      post :add_options, on: :member
+    resources :polls, only: [:show, :index, :create, :update, :destroy] do
+      member do
+        post :remind
+        delete :discard
+        post :close
+        post :reopen
+        post :add_options
+        patch :add_to_thread
+      end
       get  :closed, on: :collection
-      patch :add_to_thread, on: :member
     end
 
     resource :outcomes,     only: [:create, :update]

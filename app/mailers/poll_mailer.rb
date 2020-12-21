@@ -17,6 +17,7 @@ class PollMailer < BaseMailer
      poll_closing_soon_author
      poll_created
      poll_edited
+     poll_reminder
      poll_expired
      poll_expired_author
      poll_option_added

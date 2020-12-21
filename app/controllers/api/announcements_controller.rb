@@ -70,12 +70,13 @@ class API::AnnouncementsController < API::RestfulController
       outcome_edited
       poll_created
       poll_edited
+      poll_reminder
       new_discussion
       discussion_edited
       comment_replied_to
       poll_closing_soon]
 
-    events = Event.where(kind: kinds, eventable: target_model).order('id').limit(50)
+    events = Event.where(kind: kinds, eventable: target_model).order('id desc').limit(50)
 
     Notification.includes(:user).where(event_id: events.pluck(:id)).order('users.name, users.email').each do |notification|
       next unless notification.user
