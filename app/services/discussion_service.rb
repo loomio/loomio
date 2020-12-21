@@ -163,8 +163,8 @@ class DiscussionService
     RetryOnError.with_limit(2) do
       reader = DiscussionReader.for_model(discussion, actor)
       reader.viewed!(params[:ranges])
+      EventBus.broadcast('discussion_mark_as_read', reader, actor)
     end
-    EventBus.broadcast('discussion_mark_as_read', reader, actor)
   end
 
   def self.dismiss(discussion:, params:, actor:)
