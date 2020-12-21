@@ -23,10 +23,15 @@ module EmailHelper
   def render_rich_text(text, format = "md")
     return "" unless text
     if format == "md"
-      markdownify(text).html_safe
+      markdownify(text)
     else
-      replace_iframes(text).html_safe
-    end
+      replace_iframes(text)
+    end.html_safe
+  end
+
+  def render_plain_text(text, format = 'md')
+    return "" unless text
+    ActionController::Base.helpers.strip_tags(render_rich_text(text, format))
   end
 
   def replace_iframes(str)

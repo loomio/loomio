@@ -1,15 +1,12 @@
-require 'redcarpet/render_strip'
-
-class Metadata::PollSerializer < ActiveModel::Serializer
+class Metadata::PollSerializer < MetadataSerializer
   attributes :title, :description, :image_urls
-  root false
 
   def title
     object.title
   end
 
   def description
-    Redcarpet::Markdown.new(Redcarpet::Render::StripDown).render(object.details.to_s)
+    render_plain_text(object.details, object.details_format)
   end
 
   def image_urls
