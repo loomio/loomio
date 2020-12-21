@@ -1886,7 +1886,7 @@ pl:
     discussion_privacy_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> zmienił/a prywatność wątku"
     discussion_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> edytował/a wątek"
     discussion_moved: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> przeniósł wątek z <strong>{{title}}</strong>"
-    discussion_closed: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>zakończył/a wątek"
+    discussion_closed: "Wątek został zamknięty przez: <strong><a href='/u/{{username}}'>{{author}}</a></strong>"
     discussion_reopened: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> ponownie otworzył/a wątek"
     discussion_forked: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>rozdzielił/a wątek:<strong><a href='d/{{key}}'>{{title}}</a></strong>"
     new_comment: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>"
