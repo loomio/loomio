@@ -70,14 +70,16 @@ class UserQuery
     rels
   end
 
-  def self.invitable_filter(model: , actor:, user_ids: )
+  def self.invitable_user_ids(model: , actor:, user_ids: )
     relations(model: model, actor: actor).map do |rel|
       rel.where(id: user_ids).pluck(:id)
     end.flatten.uniq.compact
   end
 
   def self.invitable_search(model:, actor:, q: nil, limit: 50)
-    ids = relations(model: model, actor: actor).map { |rel| rel.active.verified.search_for(q).limit(limit).pluck(:id) }.flatten.uniq.compact
+    ids = relations(model: model, actor: actor).map do |rel|
+      rel.active.verified.search_for(q).limit(limit).pluck(:id)
+    end.flatten.uniq.compact
     User.where(id: ids).order(:memberships_count).limit(50)
   end
 end

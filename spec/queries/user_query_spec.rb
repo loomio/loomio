@@ -297,5 +297,26 @@ describe UserQuery do
     #     end
     #   end
     end
+
+    context "group" do
+      context "inviting to group" do
+        subject do
+          UserQuery.invitable_search(model: group, actor: actor).pluck(:name)
+        end
+        
+        it 'shows subgroup members' do
+          expect(subject).to include 'subgroup_member'
+        end
+      end
+
+      context "inviting to subgroup" do
+        subject do
+          UserQuery.invitable_search(model: subgroup, actor: actor).pluck(:name)
+        end
+        it 'invites parent members' do
+          expect(subject).to include 'member'
+        end
+      end
+    end
   end
 end

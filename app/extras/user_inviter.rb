@@ -23,7 +23,7 @@ class UserInviter
     member_ids = model.members.where(id: user_ids).pluck(:id)
 
     # guests are outside of the group, but allowed to be referenced by user query
-    guest_ids = UserQuery.invitable_filter(model: model, actor: actor, user_ids: user_ids - member_ids)
+    guest_ids = UserQuery.invitable_user_ids(model: model, actor: actor, user_ids: user_ids - member_ids)
 
     actor.ability.authorize!(:announce, model)    if audience == 'group'
     actor.ability.authorize!(:add_members, model) if member_ids.any?
@@ -45,7 +45,7 @@ class UserInviter
     member_ids = model.members.where(id: user_ids).pluck(:id)
 
     # guests are outside of the group, but allowed to be referenced by user query
-    guest_ids = UserQuery.invitable_filter(model: model, actor: actor, user_ids: user_ids - member_ids)
+    guest_ids = UserQuery.invitable_user_ids(model: model, actor: actor, user_ids: user_ids - member_ids)
 
     ids = member_ids.concat(guest_ids).concat(audience_ids).uniq
 
