@@ -196,8 +196,10 @@ class DiscussionService
     time_range = time_start..time_finish
 
     DiscussionQuery.visible_to(user: user, only_unread: true, or_public: false, or_subgroups: false).last_activity_after(time_start).each do |discussion|
-      sequence_ids = discussion.items.where("events.created_at": time_range).pluck(:sequence_id)
-      DiscussionReader.for(user: user, discussion: discussion).viewed!(sequence_ids)
+      RetryOnError.with_limit(2) do
+        sequence_ids = discussion.items.where("events.created_at": time_range).pluck(:sequence_id)
+        DiscussionReader.for(user: user, discussion: discussion).viewed!(sequence_ids)
+      end
     end
   end
 
