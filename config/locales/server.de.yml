@@ -70,7 +70,7 @@ de:
       too_short: Bitte triff eine Auswahl
   invitation:
     invitation_cancelled: Sorry, diese Einladung wurde durch den Gruppenkoordinator widerrufen. Bitte frage nach einer weiteren Einladung.
-    invitation_already_used: Diese Einladung wurde bereits genutzt. Bitte melde dich direkt bei Loomio an um in deiner Gruppe fortzufahren.
+    invitation_already_used: Diese Einladung wurde bereits verwendet. Bitte melde dich bei Loomio an, um zu deiner Gruppe zu gelangen.
   date:
     formats:
       for_this_year: "%e %b"
@@ -91,6 +91,11 @@ de:
       subject: Daten für Gruppe %{group_name} exportieren
       body_html: |
           Daten für deine Gruppe können <a href="%{url}">hier</a> heruntergeladen werden. Bitte beachte, dass dieser link in einer Woche abläuft.
+    deactivated:
+      body_html: |
+          <p>Du (oder eine andere Person mit Zugriff auf Deinen Account) hast Dein Lomio-Benutzerkonto deaktiviert.</p>
+          <p>Alle persönlichen Daten wurden gelöscht.</p>
+          <p>Wenn Du dieses Benutzerkonto und die zugehörigen Benutzerkommentare wiederherstellen möchtest, kontaktiere bitte den Support unter Verwendung der nachfolgenden Referenz: %{recovery_code}</p>
     accounts_merged:
       subject: "Deine %{site_name} Benutzerkonten wurden zusammengeführt."
       body_html: |
@@ -192,16 +197,17 @@ de:
       subject_html: "<strong>%{actor}</strong> hat dich zu %{discussion} eingeladen"
     new_comment:
       subject: "[%{group}] %{discussion}"
-      subject_html: "<strong>%{actor}</strong> hat in %{discussion} kommentiert"
+      subject_html: "<strong>%{actor}</strong> hat in %{discussion} kommentiert."
     comment_replied_to:
       subject: '%{actor} hat dir in %{discussion}geantwortet'
       subject_html: '<strong>%{actor}</strong> hat dich in %{discussion} erwähnt'
     user_mentioned:
       subject: '%{actor} hat dich in %{discussion} erwähnt'
       subject_html: "<strong>%{actor}</strong> hat dich in %{discussion} erwähnt"
-    reply_or_view_online_html: Antworte entweder direkt auf diese E-Mail oder <a href='%{url}'>auf %{hostname} antworten</a>.
+    reply_or_view_online_html: Entweder direkt auf diese E-Mail antworten oder <a href='%{url}'>auf %{hostname} antworten</a>.
     turn_off_notifications_html: "<a href='%{url}'>E-Mail-Benachrichtigungen</a> für diese Diskussion deaktivieren."
     change_email_preferences_html: "<a href='%{email_preferences_url}'>E-Mail-Einstellungen</a> ändern."
+    unsubscribe_from_new_comment_html: "Kommentare für diese Diskussion <a href='%{url}'>abbestellen</a>."
     discussion_closed: "%{actor} hat die Diskussion geschlossen"
   footer:
     about: Über Loomio
