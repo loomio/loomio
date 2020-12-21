@@ -35,9 +35,9 @@ describe UserQuery do
     poll.stances.create!(participant_id: poll_guest.id, inviter_id: inviter.id)
   end
 
-  context "invitable_to" do
+  context "invitable_search" do
     subject do
-      UserQuery.invitable_to(model: nil, actor: actor).pluck(:name)
+      UserQuery.invitable_search(model: nil, actor: actor).pluck(:name)
     end
 
     context "nil model" do
@@ -56,7 +56,7 @@ describe UserQuery do
       end
 
       subject do
-        UserQuery.invitable_to(model: discussion, actor: actor).pluck(:name)
+        UserQuery.invitable_search(model: discussion, actor: actor).pluck(:name)
       end
 
       context "without group" do
@@ -130,7 +130,7 @@ describe UserQuery do
 
     context "poll" do
       subject do
-        UserQuery.invitable_to(model: poll, actor: actor).pluck(:name)
+        UserQuery.invitable_search(model: poll, actor: actor).pluck(:name)
       end
 
       context "without group or discussion" do

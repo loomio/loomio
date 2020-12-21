@@ -76,39 +76,8 @@ class UserQuery
     end.flatten.uniq.compact
   end
 
-  def self.invitable_to(model:, actor:, q: nil, limit: 50)
+  def self.invitable_search(model:, actor:, q: nil, limit: 50)
     ids = relations(model: model, actor: actor).map { |rel| rel.active.verified.search_for(q).limit(limit).pluck(:id) }.flatten.uniq.compact
     User.where(id: ids).order(:memberships_count).limit(50)
-  end
-
-
-  def self.visible_to(user: )
-    raise "this blows up, dont use it"
-
-    poll_ids = PollQuery.visible_to(user: user).pluck('polls.id')
-
-    # members of groups I can see
-    # user_ids_by_membership = User.joins('LEFT OUTER JOIN memberships m ON m.user_id = users.id')
-    #                               .where('m.group_id IN (?)', user.group_ids)
-    #
-    # # guests of discussions I can see
-    # user_ids_by_discussion = User.joins('LEFT OUTER JOIN discussion_readers dr ON dr.user_id = users.id')
-    #                              .where('dr.discussion_id IN (?) AND
-    #                                      dr.inviter_id IS NOT NULL AND
-    #                                      dr.revoked_at IS NULL', discussion_ids)
-    #
-    # # guests of polls I can see
-    # user_ids_by_stance = User.joins('LEFT OUTER JOIN stances s ON s.participant_id = users.id')
-    #                          .where('s.poll_id IN (?) AND dr.inviter_id IS NOT NULL AND dr.revoked_at IS NULL', poll_ids)
-
-    User.joins('LEFT OUTER JOIN memberships m ON m.user_id = users.id')
-        .joins('LEFT OUTER JOIN discussion_readers dr ON dr.user_id = users.id')
-        .joins('LEFT OUTER JOIN stances s ON s.participant_id = users.id')
-        .where('(m.group_id IN (:group_ids)) OR
-                (dr.discussion_id IN (:discussion_ids) AND dr.inviter_id IS NOT NULL AND dr.revoked_at IS NULL) OR
-                (s.poll_id IN (:poll_ids) AND s.inviter_id IS NOT NULL AND s.revoked_at IS NULL)',
-                {group_ids: user.group_ids, discussion_ids: discussion_ids, poll_ids: poll_ids })
-
-    # so no, go for a new query mehtod, that considers target model and searches each then combines and returns
   end
 end
