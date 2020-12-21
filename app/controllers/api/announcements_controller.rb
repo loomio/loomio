@@ -24,7 +24,15 @@ class API::AnnouncementsController < API::RestfulController
 
   def search
     # if target model has no groups, no discussions, then draw from users groups and guest threads
-    self.collection = UserQuery.invitable_search(model: target_model, actor: current_user, q: params[:q])
+    self.collection = if params[:existing_only]
+      target_model.members.search_for(params[:q]).limit(50)
+    else
+      UserQuery.invitable_search(
+        model: target_model,
+        actor: current_user,
+        q: params[:q]
+      )
+    end
     respond_with_collection serializer: AuthorSerializer, root: :users
   end
 

@@ -58,6 +58,7 @@ export default
       h1.headline(v-t="'announcement.form.poll_reminder.title'")
       dismiss-modal-button
     recipients-autocomplete(
+      existingOnly
       :label="$t('announcement.form.poll_reminder.helptext')"
       :placeholder="$t('announcement.form.placeholder')"
       :model="poll"

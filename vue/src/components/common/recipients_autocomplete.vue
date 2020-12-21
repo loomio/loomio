@@ -19,6 +19,7 @@ export default
     hint: String
     reset: Boolean
     model: Object
+    existingOnly: Boolean
     excludedAudiences:
       type: Array
       default: -> []
@@ -64,7 +65,7 @@ export default
     fetchSuggestions: debounce ->
       return unless @query
       model = (@model.id && @model) || (@model.groupId && @model.group()) || {namedId: ->}
-
+      existingOnly = (@existingOnly && {existing_only: 1}) || {}
       @loading = true
       Records.fetch
         path: 'announcements/search'
@@ -72,6 +73,7 @@ export default
           exclude_types: 'group inviter'
           q: @query
           per: 20
+          ...existingOnly
           ...model.namedId()
         }
       .then (data) =>
@@ -229,13 +231,17 @@ div.recipients-autocomplete
               span(v-if="canAddGuests" v-t="'announcement.search_by_name_or_email'")
               span(v-if="!canAddGuests" v-t="'announcement.search_by_name'")
           v-list-item-subtitle
-            span(v-if="!canAddGuests && !canNotifyGroup" v-t="'announcement.only_admins_can_announce_or_invite'")
-            span(v-if="!canAddGuests && canNotifyGroup"  v-t="'announcement.only_admins_can_invite'")
-            span(v-if="canAddGuests && !canNotifyGroup"  v-t="'announcement.only_admins_can_announce'")
+            span(v-if="!canAddGuests && !canNotifyGroup"
+                 v-t="'announcement.only_admins_can_announce_or_invite'")
+            span(v-if="!canAddGuests && canNotifyGroup"
+                 v-t="'announcement.only_admins_can_invite'")
+            span(v-if="canAddGuests && !canNotifyGroup"
+                 v-t="'announcement.only_admins_can_announce'")
     template(v-slot:selection='data')
       v-chip.chip--select-multi(:value='data.selected' close @click:close='remove(data.item)')
         span
-          user-avatar.mr-1(v-if="data.item.type == 'user'" :user="data.item.user" size="small" no-link)
+          user-avatar.mr-1(v-if="data.item.type == 'user'"
+                           :user="data.item.user" size="small" no-link)
           v-icon.mr-1(v-else small) {{data.item.icon}}
         span {{ data.item.name }}
     template(v-slot:item='data')

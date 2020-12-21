@@ -70,12 +70,14 @@ class PollService
   def self.remind(poll:, actor:, params:)
     actor.ability.authorize! :remind, poll
 
-    member_ids = poll.members.where(id: params[:recipient_user_ids]).pluck(:id)
-    audience_ids = AnnouncementService.audience_users(poll, params[:recipient_audience]).pluck(:id).without(actor.id)
+    users = UserInviter.where_existing(user_ids: params[:recipient_user_ids],
+                                       audience: params[:recipient_audience],
+                                       model: poll,
+                                       actor: actor)
 
     Events::PollReminder.publish!(poll: poll,
                                   actor: actor,
-                                  recipient_user_ids: member_ids.concat(audience_ids).uniq.compact,
+                                  recipient_user_ids: users.pluck(:id),
                                   recipient_audience: params[:recipient_audience],
                                   recipient_message: params[:recipient_message])
   end

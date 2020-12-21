@@ -30,6 +30,12 @@ class UserInviter
     actor.ability.authorize!(:add_guests, model)  if emails.any? or guest_ids.any?
   end
 
+  def self.where_existing(user_ids:, audience:, model:, actor:)
+    user_ids = Array(user_ids).uniq.compact.map(&:to_i)
+    audience_ids = AnnouncementService.audience_users(poll, audience).pluck(:id).without(actor.id)
+    model.members.where('users.id': user_ids + audience_ids)
+  end
+
   def self.where_or_create!(emails:, user_ids:, audience: nil, model:, actor:)
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
     emails = Array(emails).uniq.compact
