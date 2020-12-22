@@ -25,8 +25,8 @@ describe API::AnnouncementsController do
     end
 
     it 'returns a count of users who will be notified' do
-      get :count, params: {recipient_emails: ['bill@example.com', 'new@example.com'],
-                           recipient_user_ids: [user.id, bill.id],
+      get :count, params: {recipient_emails_cmr: ['bill@example.com', 'new@example.com'].join(','),
+                           recipient_user_xids: [user.id, bill.id].join('x'),
                            recipient_audience: 'group',
                            discussion_id: discussion.id}
       expect(response.status).to eq 200
@@ -51,7 +51,7 @@ describe API::AnnouncementsController do
   describe 'announce' do
     let(:non_member) { create :user }
     let(:member) { create :user }
-    let(:subgroup_member) { create :user }
+    let(:subgroup_member) { create :user, name: 'subgroup_member' }
     let(:subgroup) { create(:group, parent: group, name: 'subgroup') }
     let(:discussion) { create :discussion, group: group, author: user }
     let(:poll) { create :poll, group: group, author: user }
@@ -61,6 +61,7 @@ describe API::AnnouncementsController do
       discussion.create_missing_created_event!
       group.add_member!(member)
       subgroup.add_member!(subgroup_member)
+      subgroup.add_member!(user)
     end
 
     describe 'poll' do
@@ -85,12 +86,14 @@ describe API::AnnouncementsController do
 
           it 'cannot add subgroup members' do
             post :create, params: {poll_id: poll.id, recipient_user_ids: [subgroup_member.id]}
-            expect(response.status).to eq 403
+            expect(response.status).to eq 200
+            expect(JSON.parse(response.body)['stances'].length).to eq 0
           end
 
           it 'cannot notify non group members' do
             post :create, params: {poll_id: poll.id, recipient_user_ids: [non_member.id]}
-            expect(response.status).to eq 403
+            expect(response.status).to eq 200
+            expect(JSON.parse(response.body)['stances'].length).to eq 0
           end
         end
 
@@ -122,7 +125,8 @@ describe API::AnnouncementsController do
 
             it 'cannot add unknown users' do
               post :create, params: {poll_id: poll.id, recipient_user_ids: [non_member.id]}
-              expect(response.status).to eq 403
+              expect(response.status).to eq 200
+              expect(JSON.parse(response.body)['stances'].length).to eq 0
             end
           end
 
@@ -136,17 +140,20 @@ describe API::AnnouncementsController do
 
             it 'cannot add group members' do
               post :create, params: {poll_id: poll.id, recipient_user_ids: [member.id]}
-              expect(response.status).to eq 403
+              expect(response.status).to eq 200
+              expect(JSON.parse(response.body)['stances'].length).to eq 0
             end
 
             it 'cannot add subgroup members' do
               post :create, params: {poll_id: poll.id, recipient_user_ids: [subgroup_member.id]}
-              expect(response.status).to eq 403
+              expect(response.status).to eq 200
+              expect(JSON.parse(response.body)['stances'].length).to eq 0
             end
 
             it 'cannot add unknown users' do
               post :create, params: {poll_id: poll.id, recipient_user_ids: [non_member.id]}
-              expect(response.status).to eq 403
+              expect(response.status).to eq 200
+              expect(JSON.parse(response.body)['stances'].length).to eq 0
             end
           end
         end
@@ -291,7 +298,8 @@ describe API::AnnouncementsController do
 
         it 'cannot add non_member' do
           post :create, params: {discussion_id: discussion.id, recipient_user_ids: [non_member.id]}
-          expect(response.status).to eq 403
+          expect(response.status).to eq 200
+          expect(JSON.parse(response.body)['discussion_readers'].length).to eq 0
         end
 
         it 'notify new user by email' do
@@ -357,7 +365,8 @@ describe API::AnnouncementsController do
 
           it 'cannot add non_members by id' do
             post :create, params: {outcome_id: outcome.id, recipient_user_ids: [non_member.id]}
-            expect(response.status).to eq 403
+            expect(response.status).to eq 200
+            expect(JSON.parse(response.body)['users'].length).to eq 0
           end
         end
 
@@ -378,12 +387,14 @@ describe API::AnnouncementsController do
 
           it 'cannot add subgroup_members' do
             post :create, params: {outcome_id: outcome.id, recipient_user_ids: [subgroup_member.id]}
-            expect(response.status).to eq 403
+            expect(response.status).to eq 200
+            expect(JSON.parse(response.body)['users'].length).to eq 0
           end
 
           it 'cannot add non_members' do
             post :create, params: {outcome_id: outcome.id, recipient_user_ids: [non_member.id]}
-            expect(response.status).to eq 403
+            expect(response.status).to eq 200
+            expect(JSON.parse(response.body)['users'].length).to eq 0
           end
         end
 
@@ -426,7 +437,8 @@ describe API::AnnouncementsController do
 
         it 'cannot notify non_member' do
           post :create, params: {outcome_id: outcome.id, recipient_user_ids: [non_member.id]}
-          expect(response.status).to eq 403
+          expect(response.status).to eq 200
+          expect(JSON.parse(response.body)['users'].length).to eq 0
         end
 
         it 'notify new user by email' do
