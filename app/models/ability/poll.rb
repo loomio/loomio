@@ -65,7 +65,7 @@ module Ability::Poll
     end
 
     can :reopen, ::Poll do |poll|
-      poll.closed? && can?(:update, poll)
+      poll.closed? && can?(:update, poll) && !poll.anonymous
     end
   end
 end

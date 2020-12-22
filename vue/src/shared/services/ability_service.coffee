@@ -269,4 +269,4 @@ export default new class AbilityService
     @canEditPoll(poll)
 
   canReopenPoll: (poll) ->
-    !poll.discardedAt && poll.isClosed() and poll.adminsInclude(Session.user())
+    !poll.discardedAt && poll.isClosed() && !poll.anonymous && poll.adminsInclude(Session.user())
