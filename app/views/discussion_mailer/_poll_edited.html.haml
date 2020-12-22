@@ -1,0 +1,8 @@
+- poll = item.eventable
+%table
+  %tr
+    %td.icon
+      = render "avatar", user: item.actor
+    %td.content
+      %i= t(:"poll_mailer.subject.poll_edited", actor: item.actor.name, poll_type: t("poll_types.#{poll.poll_type}"), title: poll.title)
+      %p= render_plain_text(item.recipient_message, 'md')

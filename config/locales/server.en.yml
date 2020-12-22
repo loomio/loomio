@@ -309,7 +309,8 @@ en:
     unsubscribe_from_comment_replied_to_html: "This is a reply notification."
     unsubscribe_from_user_mentioned_html: "This is a mention notification."
 
-    discussion_closed: "%{actor} closed the discussion"
+    discussion_closed: "%{actor} closed the thread"
+    discussion_edited: "%{actor} edited the thread"
 
 
   footer:
