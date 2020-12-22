@@ -32,8 +32,7 @@ export default
       EventBus.$emit('content-title-visible', visible) if @isPage
 
   computed:
-    showResults: ->
-      @poll.showResults()
+    showResults: -> @poll.showResults()
 
     menuActions: ->
       @myStance

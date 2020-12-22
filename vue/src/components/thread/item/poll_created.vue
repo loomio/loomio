@@ -34,9 +34,7 @@ export default
   computed:
     eventable: -> @event.model()
     poll: -> @eventable
-
-    showResults: ->
-      @poll.showResults()
+    showResults: -> @poll.showResults()
 
     menuActions: ->
       assign(
@@ -63,7 +61,7 @@ thread-item.poll-created(:event="event" :is-returning="isReturning")
   document-list(:model='poll' skip-fetch)
   //- p.caption(v-if="!poll.pollOptionNames.length" v-t="'poll_common.no_voting'")
   div.body-2(v-if="poll.pollOptionNames.length")
-    .poll-common-card__results-shown(v-if='poll.showResults()')
+    .poll-common-card__results-shown(v-if='showResults')
       poll-common-directive(:poll='poll', name='chart-panel')
       poll-common-percent-voted(:poll='poll')
     poll-common-action-panel(:poll='poll')

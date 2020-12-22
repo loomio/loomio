@@ -9,7 +9,7 @@
 add &anonymous=1 or &hide_results_until_closed=1 if you like
 
 - poll_types = %w[proposal poll dot_vote score count meeting ranked_choice]
-- poll_scenarios = %w[poll_created poll_outcome_created poll_outcome_review_due poll_stance_created poll_closing_soon poll_closing_soon_with_vote poll_closing_soon_author poll_user_mentioned poll_expired_author poll_options_added_author]
+- poll_scenarios = %w[poll_created poll_reminder poll_outcome_created poll_outcome_review_due poll_stance_created poll_closing_soon poll_closing_soon_with_vote poll_closing_soon_author poll_user_mentioned poll_expired_author poll_options_added_author]
 %ul
   - poll_types.each do |poll_type|
     - poll_scenarios.each do |scenario|

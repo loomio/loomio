@@ -13,23 +13,14 @@ export default new class PollService
     show_results:
       name: 'poll_common_card.show_results'
       canPerform: ->
-        false
-        # poll.decidedVotersCount &&
-        # !poll.pleaseShowResults &&
-        # !poll.closedAt? &&
-        # !poll.hideResultsUntilClosed &&
-        # !(poll.myStance() || {}).castAt
+        poll.closingAt && !poll.hideResultsUntilClosed && !poll.showResults()
       perform: ->
         poll.pleaseShowResults = true
 
     hide_results:
       name: 'poll_common_card.hide_results'
       canPerform: ->
-        false
-        # poll.pleaseShowResults &&
-        # !poll.closedAt? &&
-        # !poll.hideResultsUntilClosed &&
-        # !(poll.myStance() || {}).castAt
+        poll.showResults() && !poll.closedAt && !poll.myStance().castAt
       perform: ->
         poll.pleaseShowResults = false
 

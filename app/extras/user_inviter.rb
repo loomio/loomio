@@ -32,7 +32,7 @@ class UserInviter
 
   def self.where_existing(user_ids:, audience:, model:, actor:)
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
-    audience_ids = AnnouncementService.audience_users(poll, audience).pluck(:id).without(actor.id)
+    audience_ids = AnnouncementService.audience_users(model, audience).pluck(:id).without(actor.id)
     model.members.where('users.id': user_ids + audience_ids)
   end
 
