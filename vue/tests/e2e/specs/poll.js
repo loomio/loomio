@@ -227,6 +227,7 @@ module.exports = {
 
     page.expectText('.poll-common-stance-created__reason', 'A reason')
 
+    page.click('.action-menu')
     page.click('.action-dock__button--close_poll')
     page.click('.confirm-modal__submit', 1000)
     page.click('.dismiss-modal-button')
