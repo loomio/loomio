@@ -4,8 +4,8 @@
 #
 # It is not a standalone image.
 #
-FROM ruby:2.6.6
-ENV REFRESHED_AT 2019-11-25
+FROM ruby:2.7.2
+ENV REFRESHED_AT 2020-12-22
 ENV BUNDLE_BUILD__SASSC=--disable-march-tune-native
 ENV MALLOC_ARENA_MAX=2
 
