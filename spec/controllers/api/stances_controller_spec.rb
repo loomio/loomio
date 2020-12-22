@@ -151,7 +151,7 @@ describe API::StancesController do
       other_stance = create(:stance, poll: poll, admin: true)
       poll.update(anonymous: true)
       sign_in user
-      get :index, params: { poll_id: poll.id }
+      get :users, params: { poll_id: poll.id }
 
       json = JSON.parse(response.body)
       expect(json['meta']['stance_admin_ids']).to include other_stance[:participant_id]

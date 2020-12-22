@@ -1,5 +1,6 @@
 .poll-mailer__results-chart
   - if poll.show_results? && (poll.decided_voters.exists?(recipient.id) || poll.closed_at?)
+    %h3= t(:"poll_mailer.common.results")
     = render "poll_mailer/#{poll.poll_type}/chart", poll: poll, recipient: recipient
   - if !poll.show_results?
     %h3= t('poll_common_action_panel.results_hidden_until_closed', poll_type: t("poll_types.#{poll.poll_type}"))
