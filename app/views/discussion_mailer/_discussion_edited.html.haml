@@ -4,5 +4,5 @@
     %td.icon
       = render "avatar", user: item.actor
     %td.content
-      %i= t(:"discussion_mailer.discussion_edited", actor: item.actor.name)
+      %i= t(:"discussion_mailer.discussion_edited.inline", actor: item.actor.name)
       %p= render_plain_text(item.recipient_message, 'md')
