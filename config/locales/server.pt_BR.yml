@@ -222,7 +222,6 @@ pt_BR:
     reply_or_view_online_html: Responda a este e-mail diretamente ou <a href='%{url}'>veja em %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Desligar e-mails</a> para esta discussão."
     change_email_preferences_html: "Altere suas <a href='%{email_preferences_url}'>preferências de e-mail</a>."
-    discussion_closed: "%{actor} encerrou a discussão"
   footer:
     about: Sobre
     blog: Blog

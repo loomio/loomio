@@ -208,7 +208,6 @@ de:
     turn_off_notifications_html: "<a href='%{url}'>E-Mail-Benachrichtigungen</a> für diese Diskussion deaktivieren."
     change_email_preferences_html: "<a href='%{email_preferences_url}'>E-Mail-Einstellungen</a> ändern."
     unsubscribe_from_new_comment_html: "Kommentare für diese Diskussion <a href='%{url}'>abbestellen</a>."
-    discussion_closed: "%{actor} hat die Diskussion geschlossen"
   footer:
     about: Über Loomio
     blog: Blog

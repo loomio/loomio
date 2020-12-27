@@ -295,10 +295,12 @@ ar:
       results: النتائج
       responses: استجابات
       change_your_stance: 'تغير '
+      create_outcome: نتائج حصة
       your_response: "انت ادليت بصوتك:"
       please_respond: يرجى الرد
       time_zone: '(الأوقات المعروضة في %{zone}) '
       undecided_members: 'الأعضاء غير محددين (%{count}) '
       undecided_visitors: 'ضيوف غير محددين ( %{count}) '
+      vote_now: صوت الان
   poll_unsubscribe:
     visit_poll: مشاهدة الاستطلاع
