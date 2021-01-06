@@ -196,7 +196,6 @@ he:
     reply_or_view_online_html: הגב ישירות למייל זה או <a href='%{url}'>צפה בו ב%{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>השבת מיילים</a> לדיון זה."
     change_email_preferences_html: "שנה את<a href='%{email_preferences_url}'>העדפות הדוא\"ל שלך</a>."
-    discussion_closed: "%{actor} סגר את הדיון"
   footer:
     about: אודות
     blog: בלוג

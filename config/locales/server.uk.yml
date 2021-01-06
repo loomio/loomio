@@ -204,7 +204,6 @@ uk:
     reply_or_view_online_html: Безпосередньо відповісти на цей лист або <a href='%{url}'>переглянути його на %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Вимкнути листи</a> з цього обговорення."
     change_email_preferences_html: "Змінити <a href='%{email_preferences_url}'>налашьтування пошти</a>."
-    discussion_closed: "%{actor} закрив обговорення"
   footer:
     about: Про Loomio
     blog: Блог

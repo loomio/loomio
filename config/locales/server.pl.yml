@@ -272,7 +272,6 @@ pl:
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Zakończ subskrypcję</a> komentarzy w tym wątku."
     unsubscribe_from_comment_replied_to_html: "To jest powiadomienie o odpowiedzi."
     unsubscribe_from_user_mentioned_html: "To jest powiadomienie o wzmiance."
-    discussion_closed: "Dyskusja została zamknięta przez: %{actor}"
   footer:
     about: O
     blog: Blog

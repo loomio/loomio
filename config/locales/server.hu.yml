@@ -198,7 +198,6 @@ hu:
     reply_or_view_online_html: Válaszolj erre az e-mailre közvetlenül, vagy <a href='%{url}'>tekintsd meg itt%{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Kapcsold ki az emaileket</a> ehhez a beszélgetéshez."
     change_email_preferences_html: "Módosítsa <a href='%{email_preferences_url}'> e-mail beállításait </a>"
-    discussion_closed: "%{actor} lezárta a beszélgetést"
   footer:
     about: Rólunk
     blog: Blog

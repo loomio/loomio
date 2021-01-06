@@ -282,6 +282,7 @@ en:
       subject_html: "<strong>%{actor}</strong> started a thread: %{discussion}"
 
     discussion_edited:
+      inline:  "%{actor} edited the thread"
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> edited the thread: %{discussion}"
 
@@ -289,6 +290,9 @@ en:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> invited you to join: %{discussion}"
 
+    discussion_closed:
+      inline: "%{actor} closed the thread"
+      
     new_comment:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> commented in: %{discussion}"
@@ -309,7 +313,6 @@ en:
     unsubscribe_from_comment_replied_to_html: "This is a reply notification."
     unsubscribe_from_user_mentioned_html: "This is a mention notification."
 
-    discussion_closed: "%{actor} closed the discussion"
 
 
   footer:

@@ -272,7 +272,6 @@ nl_NL:
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Afmelden</a> van reacties op dit bord."
     unsubscribe_from_comment_replied_to_html: "Dit is een reactie melding."
     unsubscribe_from_user_mentioned_html: "Dit is een vernoeming melding."
-    discussion_closed: "%{actor} heeft de discussie gesloten"
   footer:
     about: Over
     blog: Blog

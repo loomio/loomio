@@ -9,6 +9,10 @@ it:
   errors:
     404:
       title: Non trovato
+    410:
+      body: Questa pagina non esiste più
+    417:
+      title: Browser incompatible
     noscript: Loomio richiede Javascript per funzionare! Per favore abilita Javascript nel tuo browser per poter continuare
     return_home: Torna alla home
     not_found: 404 file non trovato
