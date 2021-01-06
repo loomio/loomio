@@ -179,7 +179,7 @@ GEM
       railties (>= 5.0.0)
     faker (2.15.1)
       i18n (>= 1.6, < 2)
-    faraday (1.1.0)
+    faraday (1.2.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
     ffi (1.13.1)
@@ -487,7 +487,7 @@ GEM
     sentry-rails (4.1.1)
       rails (>= 5.0)
       sentry-ruby (~> 4.1.0)
-    sentry-ruby (4.1.1)
+    sentry-ruby (4.1.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       faraday (>= 1.0)
     sentry-sidekiq (4.1.1)
