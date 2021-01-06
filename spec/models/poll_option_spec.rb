@@ -45,8 +45,8 @@ describe PollOption do
       let(:poll_option) { build :poll_option, poll: build(:poll_meeting) }
 
       it 'returns the correct datetime' do
-        poll_option.name = "#{Date.today.year}-01-01T10:00:00.000Z"
-        expect(poll_option.display_name(zone: "UTC")).to match "Wed 1 Jan, 10:00"
+        poll_option.name = "2021-01-01T10:00:00.000Z"
+        expect(poll_option.display_name(zone: "UTC")).to match "Fri 1 Jan, 10:00"
       end
 
       it 'returns the correct datetime with year when year is different' do
