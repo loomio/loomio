@@ -24,4 +24,8 @@ class API::AttachmentsController < API::RestfulController
   def serializer_class
     AttachmentSerializer
   end
+
+  def serializer_root
+    'attachments'
+  end
 end
