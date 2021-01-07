@@ -87,7 +87,7 @@ describe "User abilities" do
             it {should_not be_able_to(:show, discussion)}
           end
         end
-        
+
       end
 
       context "false" do
@@ -224,28 +224,11 @@ describe "User abilities" do
       end
     end
 
-
-    context "members_can_edit_discussions" do
-      before do
-        group.update members_can_edit_discussions: true
-      end
-      it { should be_able_to(:update, discussion) }
-    end
-
-    context "members_can_not_edit_discussions" do
-      before do
-        group.update members_can_edit_discussions: false
-      end
-      it { should_not be_able_to(:update, discussion) }
-    end
-
     it { should     be_able_to(:show, group) }
     it { should_not be_able_to(:update, group) }
     it { should_not be_able_to(:email_members, group) }
     it { should_not be_able_to(:create, subgroup_for_another_group) }
     it { should     be_able_to(:create, comment) }
-    it { should_not be_able_to(:update_version, discussion) }
-    it { should     be_able_to(:update_version, user_discussion) }
     it { should_not be_able_to(:move, discussion) }
     it { should     be_able_to(:move, user_discussion) }
     it { should     be_able_to(:update, user_discussion) }

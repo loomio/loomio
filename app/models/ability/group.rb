@@ -42,6 +42,11 @@ module Ability::Group
       (group.members_can_start_discussions? && group.members.exists?(user.id)))
     end
 
+    can [:add_guests], ::Group do |group|
+      user.email_verified? && Subscription.for(group).is_active? &&
+      ((group.members_can_add_guests && group.members.exists?(user.id)) || group.admins.exists?(user.id))
+    end
+
     can [:add_members,
          :invite_people,
          :announce,
@@ -78,11 +83,6 @@ module Ability::Group
     can :join, ::Group do |group|
       (user.email_verified? && can?(:show, group) && group.membership_granted_upon_request?) ||
       (user_is_admin_of?(group.parent_id) && can?(:show, group) && group.membership_granted_upon_approval?)
-    end
-
-    can :start_poll, ::Group do |group|
-      user_is_admin_of?(group&.id) ||
-      (user_is_member_of?(group&.id) && group.members_can_raise_motions)
     end
 
     can :merge, ::Group do |group|

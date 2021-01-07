@@ -22,6 +22,7 @@ describe API::OutcomesController do
     it 'creates a new outcome' do
       sign_in user
       expect { post :create, params: { outcome: outcome_params } }.to change { Outcome.count }.by(1)
+      expect(response.status).to eq 200
 
       outcome = Outcome.last
       expect(outcome.statement).to eq outcome_params[:statement]

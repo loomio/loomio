@@ -122,30 +122,10 @@ export default class DiscussionModel extends BaseModel
   hasDescription: ->
     !!@description
 
-  # requireReloadFor: (event) ->
-  #   return false if !event or event.discussionId != @id or event.sequenceId
-  #   find @events(), (e) -> e.kind == 'new_comment' and e.eventable.id == event.eventable.id
-  #
-  # minLoadedSequenceId: ->
-  #   item = min @events(), (event) -> event.sequenceId or Number.MAX_VALUE
-  #   item.sequenceId
-  #
-  # maxLoadedSequenceId: ->
-  #   item = max @events(), (event) -> event.sequenceId or 0
-  #   item.sequenceId
-  #
-  # allEventsLoaded: ->
-  #   @recordStore.events.find(discussionId: @id).length == @itemsCount
-
   membership: ->
     @recordStore.memberships.find(userId: AppConfig.currentUserId, groupId: @groupId)[0]
 
-  # membershipVolume: ->
-  #   @membership().volume if @membership()
-  #
-
-  volume: ->
-    @discussionReaderVolume #or @membershipVolume()
+  volume: -> @discussionReaderVolume
 
   saveVolume: (volume, applyToAll = false) =>
     @processing = true

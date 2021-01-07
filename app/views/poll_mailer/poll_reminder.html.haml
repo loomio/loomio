@@ -1,5 +1,5 @@
 = render "poll_mailer/common/header", poll: @poll, event: @event, action_name: @action_name
-= render "poll_mailer/common/summary", poll: @poll, recipient: @recipient, action_name: @action_name, include_outcome: true
+= render "poll_mailer/common/summary", poll: @poll, recipient: @recipient, action_name: @action_name
 = render "poll_mailer/common/vote", poll: @poll, recipient: @recipient
 = render "poll_mailer/common/chart", poll: @poll, recipient: @recipient
 = render "poll_mailer/common/responses", poll: @poll, recipient: @recipient, event: @event

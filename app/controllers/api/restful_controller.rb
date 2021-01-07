@@ -14,7 +14,7 @@ class API::RestfulController < API::SnorlaxBase
   before_action :deny_spam_users            # CurrentUserHelper
   after_action :associate_user_to_visit
 
-  private
+  protected
 
   def load_resource
     if resource_class.respond_to?(:friendly)
@@ -60,9 +60,19 @@ class API::RestfulController < API::SnorlaxBase
     render json: {}, status: 200
   end
 
-  def respond_with_collection(scope: default_scope, serializer: serializer_class, root: serializer_root, meta: {})
-    render json: records_to_serialize, scope: scope, each_serializer: serializer, root: root, meta: {total: collection_count}
+  def respond_with_collection(scope: default_scope, serializer: serializer_class, root: serializer_root)
+    render json: records_to_serialize, scope: scope, each_serializer: serializer, root: root, meta: meta.merge({total: collection_count})
   end
+
+  def meta
+    @meta || {}
+  end
+
+  def add_meta(key, value)
+    @meta ||= {}
+    @meta[key] = value
+  end
+
 
   # prefer this
   def records_to_serialize

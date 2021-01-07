@@ -9,33 +9,23 @@ import openModal      from '@/shared/helpers/open_modal'
 export default new class StanceService
   makeAdmin:
     name: 'membership_dropdown.make_coordinator'
-    canPerform: (stance) ->
-      !stance.poll().group().adminsInclude(stance.participant()) &&
-      !stance.admin && stance.poll().adminsInclude(Session.user())
-    perform: (stance) ->
-      Records.stances.remote.postMember stance.id, 'make_admin', exclude_types: 'discussion'
+    canPerform: (poll, user) ->
+      poll.adminsInclude(Session.user()) && !poll.adminsInclude(user)
+    perform: (poll, user) ->
+      Records.remote.post 'stances/make_admin', participant_id: user.id, poll_id: poll.id, exclude_types: 'discussion'
 
   removeAdmin:
     name: 'membership_dropdown.demote_coordinator'
-    canPerform: (stance) ->
-      stance.admin && stance.poll().adminsInclude(Session.user())
-    perform: (stance) ->
-      Records.stances.remote.postMember stance.id, 'remove_admin', exclude_types: 'discussion'
-
-  resend:
-    name: 'membership_dropdown.resend'
-    canPerform: (stance) ->
-      stance.poll().adminsInclude(Session.user())
-    perform: (stance) ->
-      Records.stances.remote.postMember stance.id, 'resend', exclude_types: 'discussion'
-      .then ->
-        Flash.success "membership_dropdown.invitation_resent"
+    canPerform: (poll, user) ->
+      poll.adminsInclude(Session.user()) && poll.adminsInclude(user)
+    perform: (poll, user) ->
+      Records.remote.post 'stances/remove_admin', participant_id: user.id, poll_id: poll.id, exclude_types: 'discussion'
 
   revoke:
     name: 'membership_dropdown.remove_from.poll'
-    canPerform: (stance) ->
-      stance.poll().adminsInclude(Session.user())
-    perform: (stance) ->
-      Records.stances.remote.postMember stance.id, 'revoke'
+    canPerform: (poll, user) ->
+      poll.adminsInclude(Session.user())
+    perform: (poll, user) ->
+      Records.remote.post 'stances/revoke', {participant_id: user.id, poll_id: poll.id}
       .then ->
         Flash.success "membership_remove_modal.invitation.flash"

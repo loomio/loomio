@@ -11,12 +11,11 @@ xdescribe "Events::Position" do
   let(:comment6) { create :comment, discussion: discussion }
 
   before do
-    Redis::Objects.redis.flushdb
-    sleep(1.second)
     discussion.create_missing_created_event!
   end
 
   it "gives events with a parent_id a pos sequence" do
+    Redis::Objects.redis.flushdb
     e1 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment1)
     e2 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment2)
     e3 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment3)
@@ -50,6 +49,7 @@ xdescribe "Events::Position" do
   end
 
   it 'handles clash' do
+    Redis::Objects.redis.flushdb
     e1 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment1)
     e2 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment2)
     Event.where(id: e2.id).update_all(sequence_id: 3, position: 10)
@@ -76,6 +76,7 @@ xdescribe "Events::Position" do
     let(:comment3) { create :comment, discussion: discussion, parent: comment2 }
 
     it "enforces max depth 2 " do
+      Redis::Objects.redis.flushdb
       e1 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment1)
       e2 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment2)
       e3 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment3)
@@ -93,6 +94,7 @@ xdescribe "Events::Position" do
     end
 
     it "enforces max depth 1 " do
+      Redis::Objects.redis.flushdb
       discussion.update(max_depth: 1)
       e1 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment1)
       e2 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment2)
@@ -106,6 +108,7 @@ xdescribe "Events::Position" do
     end
 
     it "enforces max depth 3 " do
+      Redis::Objects.redis.flushdb
       discussion.update(max_depth: 3)
       e1 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment1)
       e2 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment2)
@@ -120,6 +123,7 @@ xdescribe "Events::Position" do
   end
 
   it "reorders if parent changes" do
+    Redis::Objects.redis.flushdb
     e1 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment1)
     e2 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment2)
     expect(e1.reload.position).to eq 1
@@ -127,6 +131,7 @@ xdescribe "Events::Position" do
   end
 
   it "removes position if discussion_id is dropped" do
+    Redis::Objects.redis.flushdb
     e1 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment1)
     e2 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment2)
     e3 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment3)

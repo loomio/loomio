@@ -166,25 +166,28 @@ Loomio::Application.routes.draw do
 
     resources :search, only: :index
 
-    resources :polls,       only: [:show, :index, :create, :update, :destroy] do
-      delete :discard, on: :member
-      post :close, on: :member
-      post :reopen, on: :member
-      post :add_options, on: :member
+    resources :polls, only: [:show, :index, :create, :update, :destroy] do
+      member do
+        post :remind
+        delete :discard
+        post :close
+        post :reopen
+        post :add_options
+        patch :add_to_thread
+      end
       get  :closed, on: :collection
-      patch :add_to_thread, on: :member
     end
 
     resource :outcomes,     only: [:create, :update]
 
-    resources :stances,     only: [:index, :create, :update, :destroy] do
-      get :invite, on: :collection
-      get :my_stances, on: :collection
-      member do
+    resources :stances, only: [:index, :create, :update, :destroy] do
+      collection do
+        get :invite
+        get :users
+        get :my_stances
         post :make_admin
         post :remove_admin
         post :revoke
-        post :resend
       end
     end
 
@@ -211,11 +214,9 @@ Loomio::Application.routes.draw do
 
     resources :announcements, only: [:create] do
       collection do
-        # get :size # not ready
-        get :audience
+        get :count
         get :search
         get :history
-        get :preview
       end
     end
 

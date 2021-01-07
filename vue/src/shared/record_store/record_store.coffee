@@ -1,11 +1,17 @@
 import RecordView from '@/shared/record_store/record_view'
-import { snakeCase, isEmpty, camelCase, map, keys, each, intersection } from 'lodash'
+import RestfulClient from './restful_client'
+import { snakeCase, isEmpty, camelCase, map, keys, each, intersection, merge, pick } from 'lodash'
 
 export default class RecordStore
   constructor: (db) ->
     @db = db
     @collectionNames = []
     @views = {}
+    @remote = new RestfulClient
+    merge @remote, pick(@defaultRemoteCallbacks(), ['onPrepare', 'onSuccess', 'onUploadSuccess', 'onFailure', 'onCleanup'])
+
+  fetch: (args) ->
+    @remote.fetch(args)
 
   addRecordsInterface: (recordsInterfaceClass) ->
     recordsInterface = new recordsInterfaceClass(@)

@@ -33,6 +33,7 @@ import GroupSurvey from '@/components/group/survey'
 import AddPollToThreadModal from '@/components/poll/add_to_thread_modal'
 import StrandMembersList from '@/components/strand/members_list'
 import PollMembers from '@/components/poll/members'
+import PollReminderForm from '@/components/poll/reminder_form'
 import GroupInvitationForm from '@/components/group/invitation_form'
 import AnnouncementHistory from '@/components/common/announcement_history'
 
@@ -72,6 +73,7 @@ export default
     AddPollToThreadModal
     StrandMembersList
     PollMembers
+    PollReminderForm
     GroupInvitationForm
   }
 

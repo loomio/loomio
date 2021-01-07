@@ -18,7 +18,6 @@ export default new class ThreadService
           component: 'ChangeVolumeForm'
           props:
             model: discussion
-            # newVolume: 'loud'
 
     unsubscribe:
       name: 'common.action.unsubscribe'
@@ -29,7 +28,6 @@ export default new class ThreadService
           component: 'ChangeVolumeForm'
           props:
             model: discussion
-            # newVolume: 'normal'
 
     export_thread:
       name: 'common.action.print'
@@ -47,7 +45,6 @@ export default new class ThreadService
           component: 'ChangeVolumeForm'
           props:
             model: discussion
-            # newVolume: 'quiet'
 
     notification_history:
       name: 'action_dock.show_notifications'
@@ -71,18 +68,6 @@ export default new class ThreadService
       canPerform: -> AbilityService.canUnpinThread(discussion)
       perform: => @unpin(discussion)
 
-    # mute_thread:
-    #   name: 'volume_levels.mute'
-    #   icon: 'mdi-volume-mute'
-    #   canPerform: -> !discussion.isMuted()
-    #   perform: => @mute(discussion)
-    #
-    # unmute_thread:
-    #   name: 'volume_levels.unmute'
-    #   icon: 'mdi-volume-high'
-    #   canPerform: -> discussion.isMuted()
-    #   perform: => @mute(discussion)
-
     dismiss_thread:
       name: 'dashboard_page.mark_as_read'
       icon: 'mdi-check'
@@ -90,11 +75,11 @@ export default new class ThreadService
       perform: => @dismiss(discussion)
 
     announce_thread:
-      name: 'action_dock.count_members'
+      name: 'common.action.invite'
       icon: 'mdi-send'
-      nameArgs: -> {count: discussion.membersCount}
       canPerform: ->
-        AbilityService.canAnnounceTo(discussion)
+        discussion.group().adminsInclude(Session.user()) or
+        ((discussion.group().membersCanAnnounce or discussion.group().membersCanAddGuests) and discussion.membersInclude(Session.user()))
       perform: ->
         EventBus.$emit 'openModal',
           component: 'StrandMembersList',

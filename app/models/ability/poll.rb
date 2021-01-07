@@ -20,23 +20,44 @@ module Ability::Poll
       PollQuery.visible_to(user: user, show_public: true).exists?(poll.id)
     end
 
-    can :create, ::Poll do |poll|
-      user.email_verified? &&
+    can [:create], ::Poll do |poll|
       (poll.group_id.nil? && poll.discussion_id.nil?) ||
       poll.admins.exists?(user.id) ||
       (poll.group.members_can_raise_motions && poll.members.exists?(user.id))
     end
 
-    can [:invite, :announce], ::Poll do |poll|
-      if poll.discussion
-        can?(:announce, poll.discussion)
+    can [:announce, :remind], ::Poll do |poll|
+      if poll.group_id
+        poll.group.admins.exists?(user.id) ||
+        (poll.group.members_can_announce && poll.admins.exists?(user.id)) ||
+        (poll.group.members_can_announce && !poll.specified_voters_only && poll.members.exists?(user.id))
       else
-        poll.author == user || poll.admins.exists?(user.id)
+        poll.admins.exists?(user.id)
       end
     end
 
-    can [:update, :share, :remind, :destroy], ::Poll do |poll|
-      poll.author == user || poll.admins.exists?(user.id)
+    can [:add_members], ::Poll do |poll|
+      poll.admins.exists?(user.id) ||
+      (!poll.specified_voters_only && poll.members.exists?(user.id))
+    end
+
+    can [:add_guests], ::Poll do |poll|
+      if poll.group_id
+        poll.group.admins.exists?(user.id) ||
+        (poll.group.members_can_add_guests && poll.admins.exists?(user.id)) ||
+        (poll.group.members_can_add_guests && !poll.specified_voters_only && poll.members.exists?(user.id))
+      else
+        poll.admins.exists?(user.id)
+      end
+    end
+
+    can [:update], ::Poll do |poll|
+      poll.admins.exists?(user.id) ||
+      (poll.wip? && poll.members.exists?(user.id))
+    end
+
+    can [:destroy], ::Poll do |poll|
+      poll.admins.exists?(user.id)
     end
 
     can :close, ::Poll do |poll|
@@ -44,8 +65,7 @@ module Ability::Poll
     end
 
     can :reopen, ::Poll do |poll|
-      poll.closed? && can?(:update, poll)
+      poll.closed? && can?(:update, poll) && !poll.anonymous
     end
-
   end
 end

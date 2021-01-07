@@ -32,8 +32,7 @@ export default
       EventBus.$emit('content-title-visible', visible) if @isPage
 
   computed:
-    showResults: ->
-      @poll.showResults()
+    showResults: -> @poll.showResults()
 
     menuActions: ->
       @myStance
@@ -41,7 +40,7 @@ export default
 
     dockActions: ->
       @myStance
-      pick PollService.actions(@poll, @), ['show_results', 'hide_results', 'edit_stance', 'announce_poll']
+      pick PollService.actions(@poll, @), ['show_results', 'hide_results', 'edit_stance', 'announce_poll', 'remind_poll']
 
 </script>
 

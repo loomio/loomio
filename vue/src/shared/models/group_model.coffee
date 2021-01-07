@@ -32,6 +32,11 @@ export default class GroupModel extends BaseModel
     attachments: []
     subscription: {}
     specifiedVotersOnly: false
+    recipientMessage: null
+    recipientAudience: null
+    recipientUserIds: []
+    recipientEmails: []
+
 
   afterConstruction: ->
     if @privacyIsClosed()

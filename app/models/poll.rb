@@ -265,18 +265,6 @@ class Poll < ApplicationRecord
     end
   end
 
-  # people you could invite to the poll.
-  # anyone in the thread, or the organization, or the poll itself
-  def base_guest_audience_query
-    User.active.
-      joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.discussion_id || 0} AND dr.user_id = users.id").
-      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id IN (#{[0].concat(self.group.parent_or_self.id_and_subgroup_ids).join(',')})").
-      joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
-      where("(dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
-             (m.id  IS NOT NULL AND m.archived_at IS NULL) OR
-             (s.id  IS NOT NULL AND s.revoked_at  IS NULL AND latest = TRUE)")
-  end
-
   def admins
     base_membership_query(admin: true)
   end

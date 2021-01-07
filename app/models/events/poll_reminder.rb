@@ -1,8 +1,6 @@
-class Events::PollEdited < Event
+class Events::PollReminder < Event
   include Events::Notify::InApp
   include Events::Notify::ByEmail
-  include Events::Notify::Mentions
-  include Events::Notify::ThirdParty
 
   def self.publish!(poll:, actor: , recipient_user_ids: [], recipient_message: nil, recipient_audience: nil)
     super(poll,

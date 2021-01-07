@@ -4,7 +4,7 @@ import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
 
 export default new class OutcomeService
-  actions: (outcome, vm) ->
+  actions: (outcome) ->
     poll = outcome.poll()
 
     react:

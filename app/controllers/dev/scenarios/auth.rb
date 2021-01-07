@@ -3,7 +3,7 @@ module Dev::Scenarios::Auth
     group = create_group
     params = {recipient_emails: ['newuser@example.com']}
 
-    GroupService.announce(group:group, params: params, actor: group.creator)
+    GroupService.invite(group:group, params: params, actor: group.creator)
 
     last_email
   end
@@ -16,7 +16,7 @@ module Dev::Scenarios::Auth
                        email_verified: true,
                        password: 'veryeasytoguess123')
 
-    GroupService.announce(group:group, params: {recipient_emails: ['newuser@example.com']}, actor: group.creator)
+    GroupService.invite(group:group, params: {recipient_emails: ['newuser@example.com']}, actor: group.creator)
 
     sign_in user if params[:signed_in]
 
@@ -33,7 +33,7 @@ module Dev::Scenarios::Auth
 
     params = {recipient_emails: ['existing-user@example.com']}
 
-    GroupService.announce(group:group, params: params, actor: group.creator)
+    GroupService.invite(group:group, params: params, actor: group.creator)
 
     sign_in user if params[:signed_in]
 
@@ -43,7 +43,7 @@ module Dev::Scenarios::Auth
   def setup_invitation_email_to_user_with_password
     group = create_group
     another_group = saved fake_group
-    user = saved fake_user(password: nil)
+    user = saved fake_user(password: nil, name: 'fake user')
     another_group.add_member! user
     another_group.add_member! group.creator
     user.reload
@@ -52,7 +52,7 @@ module Dev::Scenarios::Auth
     please
     thanks" }
 
-    GroupService.announce(group:group, params: params, actor: group.creator)
+    GroupService.invite(group:group, params: params, actor: group.creator)
 
     last_email
   end

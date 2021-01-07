@@ -56,7 +56,7 @@ export default
   validation-errors(:subject='stance', field='stanceChoices')
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
-    v-spacer
-    v-btn.poll-common-vote-form__submit(:disabled='!optionSelected' color="primary" @click='submit()' :loading="stance.processing")
+    //- v-spacer
+    v-btn.poll-common-vote-form__submit(block :disabled='!optionSelected' color="primary" @click='submit()' :loading="stance.processing")
       span(v-t="submitText")
 </template>

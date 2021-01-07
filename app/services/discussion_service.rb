@@ -1,14 +1,12 @@
 class DiscussionService
-
-  class EventNotSavedError
-    def initialize(data)
-      @data = data
-    end
-  end
-
   def self.create(discussion:, actor:, params: {})
-    actor.ability.authorize! :create, discussion
-    actor.ability.authorize! :announce, discussion if params[:recipient_audience]
+    actor.ability.authorize!(:create, discussion)
+
+    UserInviter.authorize!(user_ids: params[:recipient_user_ids],
+                           emails: params[:recipient_emails],
+                           audience: params[:recipient_audience],
+                           model: discussion,
+                           actor: actor)
 
     discussion.author = actor
 
@@ -23,11 +21,11 @@ class DiscussionService
     DiscussionReader.for(user: actor, discussion: discussion)
                     .update(admin: true, inviter_id: actor.id)
 
-    users = add_users(discussion: discussion,
-                      actor: actor,
-                      user_ids: params[:recipient_user_ids],
+    users = add_users(user_ids: params[:recipient_user_ids],
                       emails: params[:recipient_emails],
-                      audience: params[:recipient_audience])
+                      audience: params[:recipient_audience],
+                      discussion: discussion,
+                      actor: actor)
 
     EventBus.broadcast('discussion_create', discussion, actor)
     Events::NewDiscussion.publish!(discussion: discussion,
@@ -38,6 +36,13 @@ class DiscussionService
 
   def self.update(discussion:, actor:, params:)
     actor.ability.authorize! :update, discussion
+
+    UserInviter.authorize!(user_ids: params[:recipient_user_ids],
+                           emails: params[:recipient_emails],
+                           audience: params[:recipient_audience],
+                           model: discussion,
+                           actor: actor)
+
     HasRichText.assign_attributes_and_update_files(discussion, params.except(:group_id))
 
     return false unless discussion.valid?
@@ -56,12 +61,16 @@ class DiscussionService
     Events::DiscussionEdited.publish!(discussion: discussion,
                                       actor: actor,
                                       recipient_user_ids: users.pluck(:id),
-                                      recipient_audience: params[:recipient_audience].presence,
-                                      recipient_message: params[:recipient_message].presence)
+                                      recipient_audience: params[:recipient_audience],
+                                      recipient_message: params[:recipient_message])
   end
 
-  def self.announce(discussion:, actor:, params:)
-    actor.ability.authorize! :announce, discussion
+  def self.invite(discussion:, actor:, params:)
+    UserInviter.authorize!(user_ids: params[:recipient_user_ids],
+                           emails: params[:recipient_emails],
+                           audience: params[:recipient_audience],
+                           model: discussion,
+                           actor: actor)
 
     users = add_users(discussion: discussion,
                       actor: actor,
@@ -204,7 +213,7 @@ class DiscussionService
   end
 
   def self.add_users(discussion:, actor:, user_ids:, emails:, audience:)
-    users = UserInviter.where_or_create!(inviter: actor,
+    users = UserInviter.where_or_create!(actor: actor,
                                          user_ids: user_ids,
                                          emails: emails,
                                          model: discussion,

@@ -34,18 +34,16 @@ export default
   computed:
     eventable: -> @event.model()
     poll: -> @eventable
-
-    showResults: ->
-      @poll.showResults()
+    showResults: -> @poll.showResults()
 
     menuActions: ->
       assign(
-        pick PollService.actions(@poll, @), ['notification_history', 'show_history', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread']
+        pick PollService.actions(@poll, @), ['edit_poll', 'close_poll', 'reopen_poll', 'notification_history', 'show_history', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread']
       ,
         pick EventService.actions(@event, @), ['move_event', 'copy_url', 'pin_event', 'unpin_event']
       )
     dockActions: ->
-      pick PollService.actions(@poll, @), ['show_results', 'hide_results', 'translate_poll', 'edit_stance', 'announce_poll', 'edit_poll', 'close_poll', 'reopen_poll']
+      pick PollService.actions(@poll, @), ['show_results', 'hide_results', 'translate_poll', 'edit_stance', 'announce_poll', 'remind_poll']
 
 </script>
 
@@ -63,7 +61,7 @@ thread-item.poll-created(:event="event" :is-returning="isReturning")
   document-list(:model='poll' skip-fetch)
   //- p.caption(v-if="!poll.pollOptionNames.length" v-t="'poll_common.no_voting'")
   div.body-2(v-if="poll.pollOptionNames.length")
-    .poll-common-card__results-shown(v-if='poll.showResults()')
+    .poll-common-card__results-shown(v-if='showResults')
       poll-common-directive(:poll='poll', name='chart-panel')
       poll-common-percent-voted(:poll='poll')
     poll-common-action-panel(:poll='poll')

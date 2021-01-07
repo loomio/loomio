@@ -168,13 +168,16 @@ describe API::PollsController do
   end
 
   describe 'create' do
+    before do
+      sign_in user
+    end
+
     let(:identity) { create :slack_identity, user: user }
     let(:community) { create :slack_community, identity: identity }
     let(:another_identity) { create :slack_identity }
     let(:another_community) { create :slack_community, identity: another_identity }
 
     it 'creates a poll' do
-      sign_in user
       expect { post :create, params: { poll: poll_params } }.to change { Poll.count }.by(1)
       expect(response.status).to eq 200
 
@@ -190,7 +193,6 @@ describe API::PollsController do
     end
 
     it 'can create a standalone poll' do
-      sign_in user
       poll_params[:discussion_id] = nil
       expect { post :create, params: { poll: poll_params } }.to change { Poll.count }.by(1)
 
@@ -201,11 +203,6 @@ describe API::PollsController do
       expect(poll.admins).to include user
     end
 
-    it 'does not allow visitors to create polls' do
-      expect { post :create, params: { poll: poll_params } }.to_not change { Poll.count }
-      expect(response.status).to eq 403
-    end
-
     it 'does not allow non-members to create polls' do
       sign_in another_user
       expect { post :create, params: { poll: poll_params } }.to_not change { Poll.count }
@@ -213,7 +210,6 @@ describe API::PollsController do
     end
 
     it 'can store an event duration for meeting polls' do
-      sign_in user
       poll_params[:poll_type] = 'meeting'
       poll_params[:poll_option_names] = [1.day.from_now.iso8601]
       poll_params[:custom_fields] = { meeting_duration: 90, can_respond_maybe: false }
@@ -224,7 +220,6 @@ describe API::PollsController do
     describe 'group.members_can_raise_motions false' do
       before do
         discussion.group.update(members_can_raise_motions: false)
-        sign_in user
       end
 
       it 'admin of formal group can raise motions' do
@@ -249,7 +244,6 @@ describe API::PollsController do
     describe 'group.members_can_raise motions true' do
       before do
         discussion.group.update(members_can_raise_motions: true)
-        sign_in user
       end
 
       it 'member of formal group can raise motions' do
@@ -267,27 +261,31 @@ describe API::PollsController do
   end
 
   describe 'update' do
-    it 'updates a poll' do
+    before do
+      poll.group.add_admin! user
       sign_in user
+    end
+
+    it 'updates a poll' do
       post :update, params: { id: poll.key, poll: poll_params }
+      expect(response.status).to eq 200
       expect(poll.reload.title).to eq poll_params[:title]
       expect(poll.details).to eq poll_params[:details]
       expect(poll.closing_at).to be_within(1.second).of(poll_params[:closing_at])
 
-      expect(response.status).to eq 200
       json = JSON.parse(response.body)
       expect(json['polls'].length).to eq 1
       expect(json['polls'][0]['key']).to eq poll.key
     end
 
-    it 'cannot move a poll between discussions' do
+    it 'cannot change discussion_id' do
       post :update, params: { id: poll.key, poll: { discussion_id: another_discussion.id } }
       expect(poll.reload.discussion).to eq discussion
     end
 
-    it 'does not allow visitors to update polls' do
-      post :update, params: { id: poll.key, poll: poll_params }
-      expect(response.status).to eq 403
+    it 'cannot change group_id' do
+      post :update, params: { id: poll.key, poll: { group_id: create(:group).id } }
+      expect(poll.reload.group_id).to eq group.id
     end
 
     it 'does not allow members other than the author to update polls' do
@@ -360,13 +358,18 @@ describe API::PollsController do
   end
 
   describe 'reopen' do
+    before do
+      sign_in user
+      poll.group.add_admin! user
+    end
+
     let(:poll_params) {{
       closing_at: 1.day.from_now
     }}
+
     before { poll.update(closed_at: 1.day.ago) }
 
     it 'can reopen a poll' do
-      sign_in user
       post :reopen, params: { id: poll.key, poll: poll_params }
       expect(response.status).to eq 200
 
@@ -376,7 +379,6 @@ describe API::PollsController do
 
     it 'cannot reopen an active poll' do
       poll.update(closed_at: nil)
-      sign_in user
       post :reopen, params: { id: poll.key, poll: poll_params }
       expect(response.status).to eq 403
     end
@@ -386,22 +388,15 @@ describe API::PollsController do
       post :reopen, params: { id: poll.key, poll: poll_params }
       expect(response.status).to eq 403
     end
-
-    it 'does not allow visitors to reopen polls' do
-      post :reopen, params: { id: poll.key, poll: poll_params }
-      expect(response.status).to eq 403
-    end
   end
 
   describe 'destroy' do
-    it 'destroys a poll' do
-      sign_in poll.author
-      expect { delete :destroy, params: { id: poll.key } }.to change { Poll.count }.by(-1)
-      expect(response.status).to eq 200
+    before do
+      sign_in user
+      poll.group.add_admin! user
     end
 
-    it 'allows group admins to destroy polls' do
-      sign_in poll.group.admins.first
+    it 'destroys a poll' do
       expect { delete :destroy, params: { id: poll.key } }.to change { Poll.count }.by(-1)
       expect(response.status).to eq 200
     end
@@ -411,7 +406,6 @@ describe API::PollsController do
       expect { delete :destroy, params: { id: poll.key } }.to_not change { Poll.count }
       expect(response.status).to eq 403
     end
-
   end
 
   describe 'add_to_thread' do
@@ -420,6 +414,7 @@ describe API::PollsController do
     let(:discussion) { build :discussion, group: group }
 
     before do
+      sign_in user
       group.add_admin! user
       group.add_admin! discussion.author
       DiscussionService.create(discussion: discussion, actor: discussion.author)
@@ -428,8 +423,6 @@ describe API::PollsController do
     end
 
     it "adds poll to thread" do
-      sign_in user
-
       expect(poll.created_event.discussion_id).to be nil
       expect(poll.created_event.parent_id).to be nil
       expect(poll.created_event.sequence_id).to be nil

@@ -5,7 +5,7 @@ class Events::DiscussionAnnounced < Event
   def self.publish!(discussion:, actor:, recipient_user_ids:, recipient_audience: nil)
     super(discussion,
           user: actor,
-          recipient_user_ids: recipient_user_ids,
-          recipient_audience: recipient_audience)
+          recipient_user_ids: Array(recipient_user_ids).uniq.compact,
+          recipient_audience: recipient_audience.presence)
   end
 end

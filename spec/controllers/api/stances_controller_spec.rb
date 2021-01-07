@@ -17,6 +17,85 @@ describe API::StancesController do
   let(:public_poll) { create :poll, discussion: nil, anyone_can_participate: true }
   let(:public_poll_option) { create :poll_option, poll: public_poll }
 
+  describe 'stance actions' do
+    let(:actor) { create :user }
+    let(:voter) { create :user }
+    let(:group) { build(:group).tap(&:save) }
+    let(:poll) { build(:poll, group: group).tap(&:save) }
+    let(:stance) { poll.stances.create(participant_id: voter.id, latest: true) }
+
+    before do
+      group.add_admin! actor
+    end
+    describe 'revoke' do
+      context 'with permission' do
+        before { sign_in actor }
+        it 'updates revoked at on stance' do
+          expect(stance.reload.revoked_at).to eq nil
+          post :revoke, params: {participant_id: stance.participant_id, poll_id: stance.poll_id }
+          expect(response.status).to eq 200
+          expect(stance.reload.revoked_at).not_to eq nil
+        end
+      end
+
+      context 'without permission' do
+        before { sign_in another_user }
+        it 'returns access denied' do
+          expect(stance.reload.revoked_at).to eq nil
+          post :revoke, params: {participant_id: stance.participant_id, poll_id: stance.poll_id }
+          expect(response.status).to eq 403
+          expect(stance.reload.revoked_at).to eq nil
+        end
+      end
+    end
+
+    describe 'make_admin' do
+      context 'with permission' do
+        before { sign_in actor }
+        it 'makes user an admin of poll' do
+          expect(stance.reload.admin).to eq false
+          post :make_admin, params: {participant_id: stance.participant_id, poll_id: stance.poll_id }
+          expect(response.status).to eq 200
+          expect(stance.reload.admin).to eq true
+        end
+      end
+
+      context 'without permission' do
+        before { sign_in another_user }
+        it 'returns access denied' do
+          expect(stance.reload.admin).to eq false
+          post :make_admin, params: {participant_id: stance.participant_id, poll_id: stance.poll_id }
+          expect(response.status).to eq 403
+          expect(stance.reload.admin).to eq false
+        end
+      end
+    end
+
+    describe 'remove_admin' do
+      before { stance.update(admin: true) }
+
+      context 'with permission' do
+        before { sign_in actor }
+        it 'removes user admin status' do
+          expect(stance.reload.admin).to eq true
+          post :remove_admin, params: {participant_id: stance.participant_id, poll_id: stance.poll_id }
+          expect(response.status).to eq 200
+          expect(stance.reload.admin).to eq false
+        end
+      end
+
+      context 'without permission' do
+        before { sign_in another_user }
+        it 'returns access denied' do
+          expect(stance.reload.admin).to eq true
+          post :make_admin, params: {participant_id: stance.participant_id, poll_id: stance.poll_id }
+          expect(response.status).to eq 403
+          expect(stance.reload.admin).to eq true
+        end
+      end
+    end
+  end
+
   describe 'index' do
     before { group.add_member! user }
 
@@ -65,6 +144,18 @@ describe API::StancesController do
       expect(stance_ids).to include other_stance.id
       expect(user_ids).to_not include my_stance.participant_id
       expect(user_ids).to_not include other_stance.participant_id
+    end
+
+    it 'anonymous inclues meta for admin users' do
+      my_stance    = create(:stance, participant: user, poll: poll)
+      other_stance = create(:stance, poll: poll, admin: true)
+      poll.update(anonymous: true)
+      sign_in user
+      get :users, params: { poll_id: poll.id }
+
+      json = JSON.parse(response.body)
+      expect(json['meta']['stance_admin_ids']).to include other_stance[:participant_id]
+      expect(json['meta']['stance_admin_ids'].length).to eq 1
     end
 
     it 'does not allow unauthorized users to get stances' do

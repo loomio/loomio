@@ -5,7 +5,7 @@ import Session from '@/shared/services/session'
 import Flash from '@/shared/services/flash'
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
 import StanceService from '@/shared/services/stance_service'
-import {map, debounce, without, filter, uniq, uniqBy, some, find} from 'lodash'
+import {map, debounce, without, filter, uniq, uniqBy, some, find, compact} from 'lodash'
 
 export default
   components:
@@ -15,11 +15,14 @@ export default
     poll: Object
 
   data: ->
-    stances: []
-    membershipsByUserId: {}
-    stanceUserIds: []
+    users: []
+    userIds: []
+    isMember: {}
+    isMemberAdmin: {}
+    isStanceAdmin: {}
     reset: false
     saving: false
+    loading: false
     initialRecipients: []
     actionNames: []
     service: StanceService
@@ -32,7 +35,7 @@ export default
     @updateStances()
 
     @watchRecords
-      collections: ['stances', 'memberships']
+      collections: ['stances', 'memberships', 'users']
       query: (records) => @updateStances()
 
   computed:
@@ -42,11 +45,22 @@ export default
       @poll.recipientEmails.length
 
   methods:
-    isAdmin: (stance) ->
-      stance.admin || @membershipsByUserId[stance.participantId] && @membershipsByUserId[stance.participantId].admin
+    canPerform: (action, poll, user) ->
+      switch action
+        when 'makeAdmin'
+          poll.adminsInclude(Session.user()) && !@isStanceAdmin[user.id] && !@isMemberAdmin[user.id]
+        when 'removeAdmin'
+          poll.adminsInclude(Session.user()) && @isStanceAdmin[user.id]
+        when 'revoke'
+          poll.adminsInclude(Session.user())
 
-    isGuest: (stance) ->
-      !@membershipsByUserId[stance.participantId]
+    perform: (action, poll, user) ->
+      @userIds = []
+      @isMember = {}
+      @isMemberAdmin= {}
+      @isStanceAdmin= {}
+      @service[action].perform(poll, user).then =>
+        @fetchStances()
 
     inviteRecipients: ->
       @saving = true
@@ -56,12 +70,16 @@ export default
         recipient_user_ids: @poll.recipientUserIds
         recipient_emails: @poll.recipientEmails
       .then (data) =>
-        console.log data
         count = data.stances.length
         Flash.success('announcement.flash.success', { count: count })
         @reset = !@reset
       .finally =>
         @saving = false
+
+    toHash: (a) ->
+      h = {}
+      a.forEach (i) -> h[i] = true
+      h
 
     newQuery: (query) ->
       @query = query
@@ -69,43 +87,37 @@ export default
       @fetchStances()
 
     fetchStances: debounce ->
-      Records.stances.fetch
+      @loading = true
+      Records.fetch
+        path: 'stances/users'
         params:
           exclude_types: 'poll group'
           poll_id: @poll.id
           query: @query
-      .then (records) =>
-        userIds = map records['users'], 'id'
-        Records.memberships.fetch
-          params:
-            exclude_types: 'group user'
-            group_id: @poll.groupId
-            user_xids: userIds.join('x')
+      .then (data) =>
+        @isMember = @toHash(data['meta']['member_ids'])
+        @isMemberAdmin = @toHash(data['meta']['member_admin_ids'])
+        @isStanceAdmin = @toHash(data['meta']['stance_admin_ids'])
+        @userIds = uniq compact @userIds.concat(map data['users'], 'id')
+        @updateStances()
+      .finally =>
+        @loading = false
     , 300
 
     updateStances: ->
-      chain = Records.stances.collection.chain().
-              find(pollId: @poll.id).
-              find(revokedAt: null)
+      chain = Records.users.collection.chain()
+      chain = chain.find(id: {$in: @userIds})
 
       if @query
-        users = Records.users.collection.find
+        chain = chain.find
           $or: [
             {name: {'$regex': ["^#{@query}", "i"]}},
             {email: {'$regex': ["#{@query}", "i"]}},
             {username: {'$regex': ["^#{@query}", "i"]}},
             {name: {'$regex': [" #{@query}", "i"]}}
           ]
-        chain = chain.find(participantId: {$in: map(users, 'id')})
 
-      @stances = chain.data()
-      @stanceUserIds = map(Records.stances.collection.find(pollId: @poll.id), 'participantId')
-
-      @membershipsByUserId = {}
-      Records.memberships.collection.find(userId: {$in: @stanceUserIds},
-                                          groupId: @poll.groupId).forEach (m) =>
-        @membershipsByUserId[m.userId] = m
-
+      @users = chain.data()
 </script>
 
 <template lang="pug">
@@ -120,7 +132,7 @@ export default
       :model="poll"
       :reset="reset"
       :excludedAudiences="['voters', 'undecided_voters', 'non_voters', 'decided_voters']"
-      :excludedUserIds="stanceUserIds"
+      :excludedUserIds="userIds"
       :initialRecipients="initialRecipients"
       @new-query="newQuery")
     .d-flex
@@ -131,15 +143,15 @@ export default
     v-subheader
       span(v-t="'membership_card.voters'")
       space
-      span ({{poll.votersCount}})
-    v-list-item(v-for="stance in stances" :user="stance.participant()" :key="stance.id")
+      span ({{users.length}} / {{poll.votersCount}})
+    v-list-item(v-for="user in users" :key="user.id")
       v-list-item-avatar
-        user-avatar(:user="stance.participant()" :size="24")
+        user-avatar(:user="user" :size="24")
       v-list-item-content
         v-list-item-title
-          span.mr-2 {{stance.participant().nameWithTitle(poll.group())}}
-          v-chip.mr-1(v-if="isGuest(stance)" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
-          v-chip.mr-1(v-if="isAdmin(stance)" outlined x-small label v-t="'members_panel.admin'")
+          span.mr-2 {{user.nameWithTitle(poll.group())}}
+          v-chip.mr-1(v-if="!isMember[user.id]" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
+          v-chip.mr-1(v-if="isMemberAdmin[user.id] || isStanceAdmin[user.id]" outlined x-small label v-t="'members_panel.admin'")
 
       v-list-item-action
         v-menu(offset-y)
@@ -147,9 +159,9 @@ export default
             v-btn.membership-dropdown__button(icon v-on="on" v-bind="attrs")
               v-icon mdi-dots-vertical
           v-list
-            v-list-item(v-for="action in actionNames" v-if="service[action].canPerform(stance)" @click="service[action].perform(stance)" :key="action")
+            v-list-item(v-for="action in actionNames" v-if="canPerform(action, poll, user)" @click="perform(action, poll, user)" :key="action")
               v-list-item-title(v-t="{ path: service[action].name, args: { pollType: poll.translatedPollType() } }")
 
-    v-list-item(v-if="query && stances.length == 0")
+    v-list-item(v-if="query && users.length == 0")
       v-list-item-title(v-t="{ path: 'discussions_panel.no_results_found', args: { search: query }}")
 </template>

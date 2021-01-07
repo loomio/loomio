@@ -22,7 +22,7 @@ module Dev::PollsScenarioHelper
 
     event = PollService.create(poll: poll, actor: actor)
     recipients = {recipient_emails: [user.email]}
-    PollService.announce(poll: poll, params: recipients, actor: actor)
+    PollService.invite(poll: poll, params: recipients, actor: actor)
 
     {
       discussion: discussion,
@@ -103,7 +103,7 @@ module Dev::PollsScenarioHelper
   #
   #   StanceService.create(stance: fake_stance(poll: poll), actor: observer)
   #   PollService.update(poll: poll, params: { title: "New title" }, actor: actor)
-  #   PollService.announce(poll: poll, params: {user_ids: [observer.id], emails: [observer.email], kind: "poll_edited" }, actor: actor)
+  #   PollService.invite(poll: poll, params: {user_ids: [observer.id], emails: [observer.email], kind: "poll_edited" }, actor: actor)
   #
   #   {discussion: discussion,
   #    observer: observer,
@@ -165,9 +165,41 @@ module Dev::PollsScenarioHelper
 
     PollService.create(poll: poll, actor: actor)
     # Stance.create(poll: poll, participant: non_voter)
-    PollService.announce(poll: poll, params: {recipient_user_ids: [non_voter.id]}, actor: actor)
+    PollService.invite(poll: poll, params: {recipient_user_ids: [non_voter.id]}, actor: actor)
 
     PollService.publish_closing_soon
+
+    {
+      discussion: discussion,
+      group: discussion.group,
+      observer: non_voter,
+      actor: actor,
+      poll: poll,
+      title: poll.title
+    }
+  end
+
+  def poll_reminder_scenario(params)
+    discussion = fake_discussion(group: create_group_with_members)
+    non_voter  = saved(fake_user)
+    discussion.group.add_member! non_voter
+    actor      = discussion.group.admins.first
+    DiscussionService.create(discussion: discussion, actor: actor)
+    poll       = saved(create_fake_poll_with_stances(author: actor,
+                                                     poll_type: params[:poll_type],
+                                                     anonymous: !!params[:anonymous],
+                                                     hide_results_until_closed: !!params[:hide_results_until_closed],
+                                                     discussion: discussion,
+                                                     wip: params[:wip],
+                                                     notify_on_closing_soon: params[:notify_on_closing_soon] || 'voters',
+                                                     created_at: 6.days.ago,
+                                                     closing_at: 1.day.from_now))
+
+    PollService.create(poll: poll, actor: actor)
+    # Stance.create(poll: poll, participant: non_voter)
+    PollService.invite(poll: poll, params: {recipient_user_ids: [non_voter.id]}, actor: actor)
+
+    PollService.remind(poll: poll, params: {recipient_user_ids: [non_voter.id]}, actor: actor)
 
     {
       discussion: discussion,
@@ -197,7 +229,7 @@ module Dev::PollsScenarioHelper
     voter      = poll.stances.last.real_participant
     discussion.add_guest! voter, discussion.author
     PollService.create(poll: poll, actor: actor)
-    PollService.announce(poll: poll, params: {recipient_user_ids: [voter.id]}, actor: actor)
+    PollService.invite(poll: poll, params: {recipient_user_ids: [voter.id]}, actor: actor)
     PollService.publish_closing_soon
 
     { discussion: discussion,

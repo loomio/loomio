@@ -1,5 +1,5 @@
 module GroupService
-  def self.announce(group:, params:, actor:)
+  def self.invite(group:, params:, actor:)
     actor.ability.authorize! :announce, group
 
     group_ids = if params[:invited_group_ids]
@@ -10,7 +10,8 @@ module GroupService
 
     groups = Group.where(id: group_ids).filter { |g| actor.can?(:add_members, g) }
 
-    users = UserInviter.where_or_create!(inviter: actor,
+    users = UserInviter.where_or_create!(actor: actor,
+                                         model: group,
                                          emails: params[:recipient_emails],
                                          user_ids: params[:recipient_user_ids])
 

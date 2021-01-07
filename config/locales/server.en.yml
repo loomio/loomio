@@ -483,6 +483,7 @@ en:
     subject:
       poll_created: '%{actor} started a %{poll_type}: %{title}'
       poll_edited: '%{actor} edited the %{poll_type}: %{title}'
+      poll_reminder: '%{actor} is reminding you to vote: %{title}'
       poll_announced: '%{actor} invited you to vote in a %{poll_type}: %{title}'
       poll_announced_wip: '%{actor} shared a work in progress %{poll_type}: %{title}'
       poll_closing_soon: '%{poll_type} closing in 24 hours: %{title}'
@@ -504,6 +505,7 @@ en:
     header:
       poll_created: '<strong>%{actor}</strong> started a %{poll_type}'
       poll_edited: '<strong>%{actor}</strong> edited a %{poll_type}'
+      poll_reminder: '<strong>%{actor}</strong> is reminding you to vote'
       poll_announced: '<strong>%{actor}</strong> invited you to vote in a %{poll_type}'
       poll_announced_wip: '<strong>%{actor}</strong> shared a work in progress %{poll_type}'
       poll_closing_soon: '<strong>%{actor}</strong>''s %{poll_type} is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'

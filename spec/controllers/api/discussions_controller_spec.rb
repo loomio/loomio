@@ -33,35 +33,8 @@ describe API::DiscussionsController do
       group.add_member! user
     end
 
-    it 'create and invite user and email' do
-      group.add_member! another_user
-      post :create, params: {
-        discussion: {
-          title: 'test',
-          group_id: group.id,
-          recipient_user_ids: [another_user.id],
-          recipient_emails: ['test@example.com']
-        }
-      }
-      # puts response.body
-      json = JSON.parse response.body
-      expect(response.status).to eq 200
-      d = Discussion.find(json['discussions'][0]['id'])
-      expect(d.discussion_readers.count).to eq 3
-      expect(d.discussion_readers.map {|r| r.user.name}).to include 'normal user'
-      expect(d.discussion_readers.map {|r| r.user.name}).to include 'Another user'
-      expect(d.discussion_readers.map {|r| r.user.email}).to include 'test@example.com'
-      expect(another_user.notifications.count).to eq 1
-      expect(d.members).to include another_user
-    end
-
     it 'create discussion in group with no notifications' do
-      post :create, params: {
-        discussion: {
-          title: 'test',
-          group_id: group.id
-        }
-      }
+      post :create, params: { discussion: { title: 'test', group_id: group.id } }
       json = JSON.parse response.body
       expect(response.status).to eq 200
       d = Discussion.find(json['discussions'][0]['id'])
@@ -70,51 +43,148 @@ describe API::DiscussionsController do
       expect(d.created_event.notifications.count).to eq 0
     end
 
-    it 'create discussion and notify user' do
-      group.add_member! another_user
-      post :create, params: {
-        discussion: {
-          title: 'test',
-          group_id: group.id,
-          recipient_user_ids: [another_user.id]
-        }
-      }
-      json = JSON.parse response.body
-      expect(response.status).to eq 200
-      d = Discussion.find(json['discussions'][0]['id'])
-      expect(d.discussion_readers.count).to eq 2
-      expect(d.discussion_readers.last.user_id).to eq another_user.id
-      expect(d.created_event.notifications.count).to eq 1
-    end
-
-    it 'create discussion and notify group' do
-      expect(group.members.count).to eq 2
-      group.add_member! another_user
-      post :create, params: {
-        discussion: {
-          title: 'test',
-          group_id: group.id,
-          recipient_audience: 'group'
-        }
-      }
-      json = JSON.parse response.body
-      expect(response.status).to eq 200
-      d = Discussion.find(json['discussions'][0]['id'])
-      expect(d.discussion_readers.count).to eq 3
-      expect(d.created_event.notifications.count).to eq 2
-    end
-
     it 'create discussion without group' do
-      post :create, params: {
-        discussion: {
-          title: 'test'
-        }
-      }
-      # puts response.body
+      post :create, params: { discussion: { title: 'test' } }
       expect(response.status).to eq 200
-      # puts JSON.parse response.body
-      # d = Discussion.find(json['discussions'][0]['id'])
-      # expect(d.discussion_readers.count).to eq 3
+    end
+
+    it 'doesnt email everyone' do
+      expect { post :create, params: { discussion: discussion_params }, format: :json }.to_not change { ActionMailer::Base.deliveries.count }
+    end
+
+    it 'emails mentioned users' do
+      group.add_member! another_user
+      discussion_params[:description] = "Hello @#{another_user.username}!"
+      expect { post :create, params: { discussion: discussion_params }, format: :json }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    end
+
+    it "responds with an error when there are unpermitted params" do
+      discussion_params[:dontmindme] = 'wild wooly byte virus'
+      post :create, params: { discussion: discussion_params }
+      expect(JSON.parse(response.body)['exception']).to include 'ActionController::UnpermittedParameters'
+    end
+
+    it "responds with an error when the user is unauthorized" do
+      sign_in another_user
+      post :create, params: { discussion: discussion_params }
+      expect(JSON.parse(response.body)['exception']).to include 'CanCan::AccessDenied'
+    end
+
+    it "responds with validation errors when they exist" do
+      discussion_params[:title] = ''
+      post :create, params: { discussion: discussion_params }, format: :json
+      json = JSON.parse(response.body)
+      expect(response.status).to eq 422
+      expect(json['errors']['title']).to include 'can\'t be blank'
+    end
+
+    describe 'as member' do
+      let(:member) { create :user, name: 'member' }
+
+      before do
+        sign_in member
+        group.add_member! member
+      end
+
+      describe 'group.members_can_start_discussions' do
+        it 'cannot start discussion' do
+          group.update(members_can_start_discussions: false)
+          post :create, params: { discussion: { title: 'test', group_id: group.id } }
+          expect(response.status).to eq 403
+        end
+
+        it 'can start discussion' do
+          group.update(members_can_start_discussions: true)
+          post :create, params: { discussion: { title: 'test', group_id: group.id } }
+          expect(response.status).to eq 200
+        end
+      end
+
+      describe 'group.members_can_announce' do
+        it 'denies announce discussion' do
+          group.update(members_can_announce: false)
+          post :create, params: { discussion: { title: 'test', group_id: group.id, recipient_audience: 'group' } }
+          expect(response.status).to eq 403
+        end
+
+        it 'allows announce discussion' do
+          group.update(members_can_announce: true)
+          post :create, params: { discussion: { title: 'test', group_id: group.id, recipient_audience: 'group' } }
+          expect(response.status).to eq 200
+        end
+      end
+
+      describe 'group.members_can_add_guests' do
+        it 'allows invite guests' do
+          group.update(members_can_add_guests: true)
+          post :create, params: { discussion: { title: 'test', group_id: group.id, recipient_emails: ['hi@example.com'] } }
+          expect(response.status).to eq 200
+        end
+
+        it 'disallows invite guests' do
+          group.update(members_can_add_guests: false)
+          post :create, params: { discussion: { title: 'test', group_id: group.id, recipient_emails: ['hi@example.com'] } }
+          expect(response.status).to eq 403
+        end
+      end
+    end
+
+    describe 'as admin' do
+      it 'create and invite user and email' do
+        group.add_member! another_user
+        post :create, params: {
+          discussion: {
+            title: 'test',
+            group_id: group.id,
+            recipient_user_ids: [another_user.id],
+            recipient_emails: ['test@example.com']
+          }
+        }
+        # puts response.body
+        json = JSON.parse response.body
+        expect(response.status).to eq 200
+        d = Discussion.find(json['discussions'][0]['id'])
+        expect(d.discussion_readers.count).to eq 3
+        expect(d.discussion_readers.map {|r| r.user.name}).to include 'normal user'
+        expect(d.discussion_readers.map {|r| r.user.name}).to include 'Another user'
+        expect(d.discussion_readers.map {|r| r.user.email}).to include 'test@example.com'
+        expect(another_user.notifications.count).to eq 1
+        expect(d.members).to include another_user
+      end
+
+      it 'create discussion and notify user' do
+        group.add_member! another_user
+        post :create, params: {
+          discussion: {
+            title: 'test',
+            group_id: group.id,
+            recipient_user_ids: [another_user.id]
+          }
+        }
+        json = JSON.parse response.body
+        expect(response.status).to eq 200
+        d = Discussion.find(json['discussions'][0]['id'])
+        expect(d.discussion_readers.count).to eq 2
+        expect(d.discussion_readers.last.user_id).to eq another_user.id
+        expect(d.created_event.notifications.count).to eq 1
+      end
+
+      it 'create discussion and notify group' do
+        expect(group.members.count).to eq 2
+        group.add_member! another_user
+        post :create, params: {
+          discussion: {
+            title: 'test',
+            group_id: group.id,
+            recipient_audience: 'group'
+          }
+        }
+        json = JSON.parse response.body
+        expect(response.status).to eq 200
+        d = Discussion.find(json['discussions'][0]['id'])
+        expect(d.discussion_readers.count).to eq 3
+        expect(d.created_event.notifications.count).to eq 2
+      end
     end
   end
 
@@ -500,68 +570,6 @@ describe API::DiscussionsController do
       end
     end
 
-    describe 'create' do
-      before { sign_in user }
-
-      context 'success' do
-        it "creates a discussion" do
-          post :create, params: { discussion: discussion_params }, format: :json
-          expect(response.status).to eq 200
-          expect(Discussion.last).to be_present
-        end
-
-        it 'doesnt email everyone' do
-          expect { post :create, params: { discussion: discussion_params }, format: :json }.to_not change { ActionMailer::Base.deliveries.count }
-        end
-
-        it 'emails mentioned users' do
-          group.add_member! another_user
-          discussion_params[:description] = "Hello @#{another_user.username}!"
-          expect { post :create, params: { discussion: discussion_params }, format: :json }.to change { ActionMailer::Base.deliveries.count }.by(1)
-        end
-
-        it 'responds with json' do
-          post :create, params: { discussion: discussion_params }, format: :json
-          json = JSON.parse(response.body)
-          expect(json.keys).to include *(%w[users groups discussions])
-          expect(json['discussions'][0].keys).to include *(%w[
-            id
-            key
-            title
-            description
-            last_activity_at
-            created_at
-            updated_at
-            items_count
-            private
-            author_id
-            group_id
-          ])
-        end
-      end
-
-      context 'failures' do
-        it "responds with an error when there are unpermitted params" do
-          discussion_params[:dontmindme] = 'wild wooly byte virus'
-          post :create, params: { discussion: discussion_params }
-          expect(JSON.parse(response.body)['exception']).to include 'ActionController::UnpermittedParameters'
-        end
-
-        it "responds with an error when the user is unauthorized" do
-          sign_in another_user
-          post :create, params: { discussion: discussion_params }
-          expect(JSON.parse(response.body)['exception']).to include 'CanCan::AccessDenied'
-        end
-
-        it "responds with validation errors when they exist" do
-          discussion_params[:title] = ''
-          post :create, params: { discussion: discussion_params }, format: :json
-          json = JSON.parse(response.body)
-          expect(response.status).to eq 422
-          expect(json['errors']['title']).to include 'can\'t be blank'
-        end
-      end
-    end
 
     describe 'mark_as_seen' do
       it 'marks a discussion as seen' do
