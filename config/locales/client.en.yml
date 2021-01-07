@@ -788,6 +788,9 @@ en:
 
   formatting:
     formatting_tools: Text formatting tools
+    colors: Colors
+    alignment: Alignment
+    lists: Lists
     expand: Show more formatting tools
     collapse: Show fewer formatting tools
     bold: Bold

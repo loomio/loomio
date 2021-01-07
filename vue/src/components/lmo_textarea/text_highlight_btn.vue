@@ -41,7 +41,7 @@ export default
 v-menu
   template(v-slot:activator="{ on, attrs }")
     div.rounded-lg.color-picker-btn(:style="{'background-color': activeBack}")
-      v-btn.drop-down-button(icon v-on="on" v-bind="attrs")
+      v-btn.drop-down-button(icon v-on="on" v-bind="attrs" :title="$t('formatting.colors')")
         v-icon(:color="activeFore") mdi-palette
         v-icon(:color="activeFore").menu-down-arrow mdi-menu-down
   v-card.color-picker
