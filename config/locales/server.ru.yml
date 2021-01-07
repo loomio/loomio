@@ -199,7 +199,6 @@ ru:
     reply_or_view_online_html: Ответьте на это письмо напрямую или <a href='%{url}'>посмотрите его на %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Отключить почтовые уведомления</a> для этой дискуссии."
     change_email_preferences_html: "Изменить ваши <a href='%{email_preferences_url}'>почтовые предпочтения</a>."
-    discussion_closed: "%{actor} закрывает дискуссию"
   footer:
     about: О нас
     blog: Блог

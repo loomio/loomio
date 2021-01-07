@@ -4,6 +4,7 @@ nl_NL:
       title: Activeer je groep
       activities:
         set_description: Omschrijf je groep
+        set_cover_photo: Upload een foto en logo voor jouw groep
         invite_people_in: Nodig mensen uit
         start_thread: Start een discussiebord
         make_decision: Start een beslissing
@@ -416,6 +417,8 @@ nl_NL:
     other_groups: 'Andere groepen'
     all_groups: 'Alle groepen'
     recent_threads: 'Recente borden'
+    invite_only_threads: 'Alleen op uitnodiging borden'
+    direct_threads: 'Directe borden'
     unread_threads: 'Ongelezen borden ({{count}})'
     muted_threads: 'Gedempte borden'
     start_group: 'Nieuwe organisatie'
@@ -481,6 +484,7 @@ nl_NL:
     group_members: "Groepsleden"
     discussion_members: "Bord leden"
     poll_members: "{{pollType}} gebruikers"
+    voters: "Stemmers"
     invite_to_group: "Nodig voor uit voor de groep"
     invite_to_discussion: "Voor bord uitnodigen"
     invite_to_poll: "Nodig uit om te stemmen"
@@ -504,6 +508,9 @@ nl_NL:
   notifications:
     header: "Meldingen"
     no_notifications: "Je hebt geen meldingen"
+    new_discussion: "<strong>{{name}}</strong> startte het bord <strong>{{title}}</strong>"
+    discussion_edited: "<strong>{{name}}</strong> wijzigde het bord <strong>{{title}}</strong>"
+    discussion_announced: "<strong>{{name}}</strong> deelde het bord <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> heeft een voorstel gemaakt <strong>{{title}}</strong>"
     motion_closed: "Voorstel gesloten: <strong>{{title}}</strong>"
     publish_outcome: "Publiceer een resultaat"
@@ -543,6 +550,16 @@ nl_NL:
     move_to_existing_thread: Verplaats naar een bestaand bord
     start_new_thread: Of, start een nieuw bord
   discussion_form:
+    to: Naar
+    direct_thread: "Direct bord"
+    invite_only_thread: "Alleen op uitnodiging bord"
+    none_direct_thread: "Direct bord (geen groep)"
+    none_invite_only_thread: "Alleen op uitnodiging bord (geen groep)"
+    change_log_placeholder: Beschrijf kort de gemaakte wijzigingen. (optioneel)
+    change_log_label: Wat is er veranderd?
+    one_person_will_be_notified: '1 persoon krijgt een melding.'
+    count_people_will_be_notified: '{{count}} mensen krijgen een melding.'
+    notify_specifc_people_instead: Als je niet iedereen in de groep een melding wil sturen, voeg dan de namen van de mensen die een melding moeten krijgen
     invite: Uitnodigen
     aria_label: 'Bordformulier'
     start_thread: Start discussie
@@ -564,6 +581,8 @@ nl_NL:
     privacy_private: 'Het bord is enkel zichtbaar voor leden van {{group}}'
     privacy_organisation: 'Het bord zal zichtbaar zijn voor leden van {{parent}} en leden van {{group}}'
     fork_notice: 'Een nieuw bord wordt gemaakt met {{count}} items van {{title}}'
+    one_person_notified: 1 persoon krijgt een melding.
+    notify_group: stuur melding naar groep
   announcement:
     send_discussion: Bord verzenden
     send_discussion_explain: Nodig mensen uit op te participeren in de discussie
@@ -584,6 +603,15 @@ nl_NL:
     preview: Email voorbeeld
     no_notifications_sent: Geen meldingen zijn verzonden
     history_error: Er ging iets mis! Kon de geschiedenis niet laden.
+    inviting_guests_to_thread: Gasten zijn geen lid van jouw groep en hebben alleen toegang tot dit bord
+    select_groups: selecteer groepen
+    audiences:
+      group: Iedereen in {{name}}
+      discussion_group: Iedereen in het bord
+      voters: Iedereen die uitgenodigd is om te stemmen
+      decided_voters: Iedereen die gestemd heeft
+      undecided_voters: Twijfelende stemmers
+      non_voters: Leden van {{name}} zijn nog niet uitgegnodigd
     form:
       too_many_invitations: |
           Uitnodigingen-limiet bereikt. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
@@ -591,6 +619,8 @@ nl_NL:
           <p>Je hebt alle {{maxMembers}} uitnodigingen gebruikt die voor deze groep beschikbaar zijn.</p>
           <p><a href="{{upgradeUrl}}" target="_blank">Kies een abonnement</a> om te blijven samenwerken op Loomio.</p>
       invitations_remaining: '{{count}} uitnodigingen resterend. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>'
+      who_to_invite: Wie wil je uitnodigen?
+      invitation_message_placeholder: Een bericht voor in de uitnodigingse-mail. (optioneel)
       invitation_message_label: Bericht
       group_announced:
         title: Nodig voor uit voor de groep
@@ -598,24 +628,37 @@ nl_NL:
       discussion_announced:
         title: Voor bord uitnodigen
         helptext: Wie wil je uitnodigen tot het bord?
+        notify_helptext: Wie wil je een melding sturen over het bord?
       discussion_edited:
         title: Wijzigingen melden
+        helptext: Wie wil je een melding sturen over deze wijziging? (optioneel)
       poll_announced:
         title: Nodig uit om te stemmen
         helptext: Wie zou je willen uitnodigen om te stemmen?
       poll_edited:
         title: Wijzigingen melden
+        helptext: Wie wil je een melding sturen over deze wijziging?
       outcome_announced:
         title: Deel resultaat
+        helptext: Geef een samengevat resultaat, inclusief nieuwe inzichten en gevonden problemen.
       anyone_can_participate: Iedereen met een link kan deelnemen
-      notified: '{{notified}} personen zullen een melding ontvangen:'
-      notified_singular: '1 persoon krijgt een melding:'
+      placeholder: Je kunt namen of e-mailadressen geven
+      notified_empty: 'Nog niemand geselecteerd'
+      notified: '{{notified}} mensen krijgen een melding.'
+      notified_singular: '1 persoon krijgt een melding.'
+      notified_none: 'Niemand krijgt een melding.'
       group_title: '{{name}} ({{count}} personen)'
+      visible_to_group: 'Iedereen in {{group}} kunnen dit bord zien.'
+      visible_to_guests: 'Alleen uitgenodigde mensen kunnen dit bord zien.'
     members_list:
       title: Gedeeld met
       last_notified: Gemeld
       not_notified: Nog niet gemeld
       no_members: "Dit werd nog met niemand gedeeld!"
+      group_admin: "Groep administrator"
+      thread_admin: "Bord administrator"
+      last_read_at: "Laatst gezien {{time}}"
+      has_not_read_thread: "Hebben bord niet gezien"
     group_form:
       search_placeholder: Zoek naar mensen...
       modal_title: Selecteer groepsleden
@@ -654,6 +697,8 @@ nl_NL:
     translate_outcome: Resultaat vertalen
     show_history: Toon bewerkingsgeschiedenis
     edited: Bewerkt
+    show_edits: Toon wijzigingen
+    show_notifications: Toon meldingen
     history: Geschiedenis
     pin_thread: Bord vastprikken
     unpin_thread: Bord ontprikken
@@ -671,6 +716,8 @@ nl_NL:
     notification_history: Meldingen geschiedenis
     move_item: Verplaats item
     add_poll_to_thread: Voeg toe aan bord
+    count_members: "{{count}} leden"
+    count_voters: "{{count}} stemmers"
   formatting:
     formatting_tools: Tekst-formatteer tools
     expand: Toon meer tekst-formatteer tools
@@ -746,10 +793,18 @@ nl_NL:
       membership_requested: 'Je hebt het lidmaatschap aangevraagd voor {{group}}'
   revision_history_modal:
     aria_label: Mutatiegeschiedenis
+    discussion_header: Discussie wijzigingen
+    comment_header: Reactie wijzigingen
+    poll_header: Peiling wijzigingen
+    outcome_header: Resultaat wijzigingen
+    stance_header: Standpunt wijzigingen
     started_by: 'Gestart door <strong>{{name}}</strong>'
     edited_by: 'Bijgewerkt door <strong>{{name}}</strong>'
     edit_by: "Bewerk op {{name}} · {{date}}"
     posted: Geplaatst
+    field: Veld
+    before: Voor
+    after: Na
     original_text: Origineel
     current_revision: Laatste
     closing_at_changed: "sluitingstijd ingesteld op {{time}}"
@@ -790,7 +845,7 @@ nl_NL:
     search_threads: Zoeken voor borden...
     private_threads: Je moet lid zijn om de privé borden in deze groep te zien.
     no_more_threads: Geen borden meer
-    view_closed_threads: 'Mis je iets? <a href="{{url}}">Zie gesloten borden</a>'
+    view_closed_threads: 'Toon gesloten borden'
     messages:
       privacy:
         members: 'Deze groep is nu uitsluitend zichtbaar voor leden'
@@ -1050,6 +1105,7 @@ nl_NL:
     locale_field: 'Taal: {{value}}'
     online_field: 'Online: {{value}}'
     invited: 'Uitgenodigd {{value}}'
+    message_user: 'Bericht {{name}}'
   contact_request_form:
     modal_title: "E-mail {{name}}"
     message_placeholder: Stel jezelf voor en vertel waarom je graag contact zou maken.
@@ -1108,6 +1164,7 @@ nl_NL:
     no_emails: 'Je zal niet langer meldings e-mails ontvangen'
     you_can_reactivate: "Je kan je account later activeren indien gewenst"
     submit: 'Ja ik wil deactiveren'
+    submit_delete: 'Verwijder mijn account nu'
   email_settings_page:
     header: Melding instellingen
     account_deactivated: Jouw account werd gedeactiveerd. Je zult nooit e-mails ontvangen.
@@ -1189,6 +1246,9 @@ nl_NL:
       thisweek: 'Deze week'
       thismonth: 'Deze maand'
       older: 'Ouder dan een maand'
+  threads_page:
+    no_direct_threads: "Je hebt geen directe borden"
+    no_invite_only_threads: "Je hebt geen alleen op uitnodiging borden"
   inbox_page:
     no_threads: Woehoe! Je hebt alle borden in je postvak gelezen.
     unread_threads: Ongelezen borden
@@ -1199,6 +1259,8 @@ nl_NL:
       or: of
       join_group: <a href="/explore">word lid</a> van een groep om borden te zien.
   discussion:
+    invite_only: "Alleen op uitnodiging"
+    private_thread: Privé bord
     max_threads_reached: |
         <p>Je hebt alle {{maxThreads}} borden gebruikt die voor deze groep beschikbaar zijn.</p>
         <p><a href="{{upgradeUrl}}" target="_blank">Kies een abonnement</a> om te blijven samenwerken op Loomio.</p>
@@ -1344,6 +1406,7 @@ nl_NL:
       app_update: 'Er is een nieuwe versie van de app beschikbaar'
       reload: 'Herladen'
   decision_tools_card:
+    choose_type: Kies peiling type
     title: Faciliteren
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Hulp</a>
     proposal_title: Voorstel
@@ -1355,10 +1418,12 @@ nl_NL:
     ranked_choice_title: Keuzes rangschikken
   poll_common:
     vote_now: Stem nu
+    review_due: Tijd voor beoordeling
     have_your_say: Laat je horen
     your_response: Je antwoord
     change_your_response: Bewerk antwoord
     reason: Reden
+    reason_placeholder: "Leg kort uit waarom je zo stemt, klik dan op 'Verstuur stem'"
     message: Bericht
     results: Resultaten
     responses: Antwoorden
@@ -1437,9 +1502,11 @@ nl_NL:
     invitations: 'Uitnodigingen'
     requests: 'Aanvragen'
     admin: 'Admin'
+    guest: 'Gast'
     sharable_link: 'Deelbare link'
     last_seen: 'Laats gezien {{date}}'
     invited_by_name: 'Uitgenodigd door {{name}}'
+    only_in_subgroups: "Niet in deze groep maar hoort in {{name}}."
     accepted: 'Leden'
   polls_panel:
     new_poll: Nieuwe peiling
@@ -1462,6 +1529,7 @@ nl_NL:
   poll_common_action_panel:
     anonymous: Stemmen zijn anoniem
     results_hidden_until_closed: Resultaten zijn verborgen totdat de %{poll_type} is gesloten
+    unable_to_vote: Je bent niet uitgenodigd om in te stemmen in deze %{poll_type}.
     draft_mode: Aan deze %{poll_type} wordt nog gewerkt. Stemmen is uitgeschakeld.
   current_polls_card:
     title: Lopende beslissingen
@@ -1490,12 +1558,24 @@ nl_NL:
     location: Locatie
     location_placeholder: Waar zal deze vergadering plaats vinden?
   poll_common_settings:
+    who_can_vote: 'Wie kan stemmen?'
+    specified_voters_only_true: Alleen uitgenodigden
+    specified_voters_only_false_group: Iedereen in de groep
+    specified_voters_only_false_discussion: Iedereen in het bord
+    invite_people_next: Je kunt kiezen wie wordt uitgenodigd om te stemmen nadat je deze {{poll_type}} hebt gestart
     multiple_choice:
       title: Meerkeuze
       helptext_on: Indien geselecteerd, zullen participanten meerdere opties kunnen selecteren.
     anyone_can_participate:
       title: Iedereen met een link kan deelnemen
       helptext_on: Indien geselecteerd, kan iedereen met de link participeren in de peiling.
+    notify_on_closing_soon:
+      closes_too_soon: Omdat deze {{pollType}} binnen 24 uur sluit worden er geen 'sluit binnenkort' meldingen verstuurd.
+      title: Stuur 24 uur voordat de {{pollType}} sluit een melding aan
+      nobody: Niemand
+      author: Auteur (ik)
+      undecided_voters: Twijfelende stemmers
+      voters: Alle stemmers
     notify_on_participate:
       title: Meld me wanneer er mensen deelnemen
       helptext_on: Indien geselecteerd, zal je een melding ontvangen wanneer iemand participeert.
@@ -1574,11 +1654,13 @@ nl_NL:
     ranked_choice: 'Deze ''Keuzes rangschikken'' peiling werd gesloten<strong> Deel het resultaat</strong> met de groep.'
     score: 'De score peiling is gesloten. <strong>Deel het resultaat</strong> met de groep.'
   poll_common_outcome_form:
+    who_to_notify: Wil je iemand een melding geven over dit resultaat?
     new_title: Voer een resultaat in
     update_title: Resultaat vernieuwen
     outcome_created: Resultaat aangemaakt
     outcome_updated: Resultaat bijgewerkt
     statement_placeholder: Vat de reacties samen en leg uit wat er daarna gebeurt.
+    you_will_be_notified: Je krijgt een melding op de beoordelingsdatum.
     submit: Deel resultaat
   poll_common_outcome_panel:
     authored_by: 'Door {{name}}'
@@ -1837,6 +1919,7 @@ nl_NL:
     youre_invited: Je bent uitgenodigd om lid te worden van {{group_name}}.
     youre_invited_discussion: Je bent uitgenodigd om mee te doen met de discussie.
     youre_invited_poll: Je bent uitgenodigd om te stemmen.
+    existing_account_can_sign_in: Als je al een {{site_name}} account hebt, log dan in met je bestaande account
     sign_in_to_loomio: Log in op {{site_name}}
     sign_in_help: Moeite om in te schrijven?
     sign_in: Inloggen
@@ -1856,6 +1939,7 @@ nl_NL:
     invalid_token: "Het spijt me da het niet gelukt is in te loggen met die token. Klink hieronder om nog een te versturen."
     account_locked: "Je account is gedeactiveerd door te veel mislukte aanmeld pogingen. Kijk in je e-mail voor een activatie-link"
     email_not_found: "Helaas konden we geen account vinden met dat e-mailadres"
+    email_taken: E-mailadres is al geregistreerd
     email_placeholder: you@example.com
     login_with_token: Helemaal klaar! Klik op onderstaande link om verder te gaan.
     login_link_helptext: Klik op de knop hieronder en we sturen je een aanmeld-link.

@@ -560,9 +560,6 @@ uk:
       outcome_announced:
         title: Поширити результат
       anyone_can_participate: Будь-хто може долучитись за посиланням
-      placeholder: Введіть імена або електронні адреси
-      notified: '{{notified}} людей буде сповіщено:'
-      notified_singular: '1 людину буде сповіщено'
       group_title: '{{name}} ({{count}} людей)'
     members_list:
       title: Поширити серед

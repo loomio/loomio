@@ -100,6 +100,6 @@ v-card
     v-spacer
     v-btn(color="accent" @click="startNewThread()" :loading="discussion.processing")
       span(v-t="'discussion_fork_actions.start_new_thread'")
-    v-btn(color="primary" @click="submit()" :disabled="!selectedDiscussiona" :loading="discussion.processing")
+    v-btn(color="primary" @click="submit()" :disabled="!selectedDiscussion" :loading="discussion.processing")
       span(v-t="'common.action.save'")
 </template>

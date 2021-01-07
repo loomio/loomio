@@ -21,13 +21,26 @@ it:
     yearly: Annuale
   current_plan_button:
     upgrade: Aggiorna
-    free_trial: Prova gratuita. {{giorni}]} giorni restanti.
+    free_trial: Prova gratuita. {{days]} giorni restanti.
     trial_expired: La tua prova è scaduta. Aggiorna per continuare usando Loomio.
     tooltip: "Nostri prezzi sono fantastichi! Aggiorna oggi e godi quello  che Loomio può offrire al tuo grupo. "
+    was_gift_remaining: "{{days}} giorni restanti."
+    was_gift_expired: "Il vostro piano gratuito è già scaduto"
   subscription_status:
+    plan: "piano"
+    state: "Condizione"
     members: "Membri"
     active_members: "Membri attivi"
+    max_threads: "Massimi fili"
+    max_members: "Massimi membri"
+    expires_at: "Scade"
+    renews_at: "Rinnova"
+    referral_code: "Codice di deferimento"
+    chargify_link: "Portale di fatturazione"
+    referral_code_help: "Dà un sconto a un amico, consegui te stesso un po' di credito"
+    manage_payment_details: "Dettagli del controllo del pagamento"
   loomio_tags:
+    all_tags: Tutte etichette
     tags: Etichette
     apply_tags: Inserisci etichette
     new_tag: Crea etichetta
@@ -79,10 +92,29 @@ it:
     wave: Onda
     thumbsup: Pollice su
     thumbsdown: Pollice verso
+  poll_types:
+    proposal: Proposizione
+    count: check
+    poll: Sondaggio
+    dot_vote: punto voto
+    meeting: tempo sondaggio
+    ranked_choice: elezione classificata
+    score: punteggio sondaggio
+  new_poll_types:
+    proposal: Proposizione
+    count: conteggio
+    poll: scegliere
+    score: punteggio
+    ranked_choice: rango
+    dot_vote: destinare
+    meeting: tempo sondaggio
   timezones:
     local: Ora locale ({{value}})
   common:
+    empty: Vuoto
     no_results_found: Nessun risultato trovato
+    view: Vista
+    history: Storia
     option: Opzione
     add: Aggiungi
     you: Tu
@@ -112,6 +144,7 @@ it:
     settings: 'Configurazione'
     help: 'Aiuto'
     anonymous: Anonimo
+    required: Richiesto
     email_address: La tua email
     privacy:
       privacy: 'Privacy'
@@ -139,6 +172,8 @@ it:
     action:
       print: Stampa
       preview: Anteprima
+      pin: Pin
+      unpin: Sbloccare
       search: 'Ricerca'
       filter: 'Filtra'
       back: 'Indietro'
@@ -152,12 +187,17 @@ it:
       reply: 'Rispondi'
       edit: 'Modifica'
       remove: 'Rimuovi'
+      undo_remove: 'Annulare rimuovere'
       like: 'Like'
       unlike: 'Unlike'
       update: 'Aggiorna'
       cancel: 'Annulla'
       show_more: "Mostra di più"
+      show_fewer: "Mostra meno"
+      view_count_more: "Vista {{count}} più"
+      view_count_responses: "Vista {{count}} risposte"
       count_more: "altri {{count}}"
+      count_responses: "{{count}} risposte"
       view_all: "Vedi tutti"
       new_thread: "Nuova discussione"
       add_subgroup: 'Nuovo sottogruppo'
@@ -484,9 +524,6 @@ it:
       outcome_announced:
         title: Condividi risultati
       anyone_can_participate: Chiunque con un link può partecipare
-      placeholder: Inserisci nomi o indirizzi email
-      notified: 'Le persone {{notified}} saranno notificate:'
-      notified_singular: '1 persona sarà notificata:'
     members_list:
       title: Condiviso con
       last_notified: Notificato
@@ -513,6 +550,7 @@ it:
     translate_outcome: Traduci il risultato
     show_history: Mostra la storia della modifica
     edited: Modificato
+    history: Storia
     pin_thread: Fissa in alto la discussione
     unpin_thread: Non fissare in alto la discussione
     comment_copied: URL del commento copiato negli appunti
@@ -896,6 +934,7 @@ it:
     load_previous: 'Carica attività precedente'
     started_by: 'Iniziato da <strong>{{name}}</strong>'
   activity_card:
+    count_responses: "{{count}} risposte"
     beginning: Iniziale
     latest: Più recente
     context: Contesto
@@ -915,6 +954,8 @@ it:
     edit_thread: 'Modifica'
     close_thread: 'Chiudi'
     reopen_thread: 'Riapri'
+    pin_thread: 'Pin'
+    unpin_thread: 'Sbloccare'
     mute_thread: 'Silenzia'
     move_thread: 'Sposta'
     print_thread: 'Stampa'

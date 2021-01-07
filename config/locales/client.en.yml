@@ -918,7 +918,7 @@ en:
     search_threads: Search for threads...
     private_threads: You'll need to be a member to view private threads in this group
     no_more_threads: No more threads to load
-    view_closed_threads: 'Missing something? <a href="{{url}}">View closed threads</a>'
+    view_closed_threads: 'View closed threads'
     messages:
       privacy:
         members: 'This group is now visible only to members'
@@ -1268,6 +1268,7 @@ en:
     no_emails: 'You will no longer receive notification emails'
     you_can_reactivate: "You can reactivate your account later if you wish"
     submit: 'Yes, I want to deactivate'
+    submit_delete: 'Delete my account now'
 
   email_settings_page:
     header: Notification settings

@@ -8,7 +8,7 @@ export default
 <template lang="pug">
 .poll-common-details-panel
   v-subheader(v-t="'poll_common.details'" v-if='poll.outcome()')
-  .poll-common-details-panel__started-by
+  .poll-common-details-panel__started-by.text--secondary
     span(v-t="{ path: 'poll_card.started_by', args: { name: poll.authorName() } }")
     mid-dot
     poll-common-closing-at(:poll='poll')

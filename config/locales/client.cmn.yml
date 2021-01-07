@@ -482,8 +482,6 @@ cmn:
       outcome_announced:
         title: 分享成果
       anyone_can_participate: 任何有链接的人都可以参与
-      notified: '{{notified}} 个伙伴将会被通知：'
-      notified_singular: '1 个伙伴将会被通知：'
       group_title: '{{name}}（{{count}} 个伙伴）'
     members_list:
       last_notified: 已通知

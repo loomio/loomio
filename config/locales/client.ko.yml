@@ -1,11 +1,46 @@
 ko:
+  loomio_onboarding:
+    group_progress_card:
+      title: 그룹 활성화하기
+      activities:
+        set_description: 그룹 설명 설정하기
+        set_cover_photo: 그룹의 커버 사진 & 로고 업로드
+        invite_people_in: 초대하기
+        start_thread: 스레드 시작하기
+        make_decision: 의사결정 시작하기
+      learn_more: Loomio Help에서 더 배우기
+      celebration_message: 좋습니다! 당신의 그룹은 시작할 준비가 다 됐습니다! 🎉
+      dismiss_this_card: 이 카드를 기각하기
   plan_names:
     free: 무료
+    trial: 사용
+    small: 소
+    medium: 중
+    large: 대
+    monthly: 매월
+    yearly: 매년
   current_plan_button:
     upgrade: 업그레이드
+    free_trial: 무료체험. {{days}} 일 남았습니다.
+    trial_expired: 체험이 종료되었습니다. 루미오를 계속 사용하시려면 업그레이드 하십시오.
+    tooltip: "저희 가격은 멋집니다! 지금 바로 업그레이드하여 루미오가 당신에게 제공하는 그룹을을 즐기십시오."
+    was_gift_trial: "당신의 그룹은 루미오를 {{createdDate}}부터 무료로 사용하고 있습니다. 저희는 계속 무료서비스를  제공할 수 없습니다.  루미오를 계속 사용할 수 있게 업그레이드를 해주십시오. <a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>자세히보기.</a>"
+    was_gift_remaining: "{{days}} 남은 날짜."
+    was_gift_expired: "당신의 무료 Plan은 만료되었습니다."
   subscription_status:
+    plan: "Plan"
+    state: "Status"
     members: "멤버"
+    active_members: "멤버 활성화"
+    max_threads: "최대 스레드"
+    max_members: "최대 멤버"
+    expires_at: "기한만료"
+    renews_at: "갱신하기"
+    referral_code: "추천 코드"
+    referral_code_help: "친구에게 할인해주고, credit을 얻으세요!"
+    manage_payment_details: "세부 지출 관리"
   loomio_tags:
+    all_tags: 모든 태그
     tags: 태그
     apply_tags: 태그 적용
     new_tag: 태그 만들기
@@ -16,11 +51,80 @@ ko:
     modal_edit_title: 태그 수정
     modal_destroy_title: 태그 삭제
     destroy_tag: 태그 삭제
-    discussions_count_singular: ({{count}}개의 토론 주제)
-    discussions_count_plural: ({{count}}개의 토론 주제)
+    destroy_helptext: 이 태그를 파괴하고 모든 그룹의 모든 스레드로부터 지웁니다. 실행하시겠습니까?
+    helptext: 태그는 당신이 토론들을 분류할 수 있게해주고 쉽게 찾을 수 있게 해줍니다.
+    discussions_count_singular: ({{count}}개의 스레드)
+    discussions_count_plural: ({{count}}개의 스레드)
     tag_created: 태그 저장됨
     tag_destroyed: 태그 삭제됨
+    tags_marked: 스레드는 {{GroupName}}에 '{{name}}'으로 표기되어있습니다.
+    no_tags_present: 주어진 태그로 스레드를 찾을 수 없습니다. 다른 태그를 선택하여 보십시오
+  reactions:
+    slight_smile: 좋아요
+    heart: 사랑
+    laughing: 웃음
+    clap: 박수
+    hugging: 포옹
+    sunglasses: 멋진
+    wink: 윙크
+    nerd: 똑똑함
+    relieved: 안도함
+    worried: 걱정됨
+    confused: 혼란스러움
+    confounded: 당황스러움
+    neutral_face: 중립
+    slight_frown: 눈살을 찌푸림
+    disappointed: 실망함
+    angry: 화남
+    weary: 지침
+    astonished: 놀람
+    rolling_eyes: 두리번거림
+    cry: 울음
+    scream: 소리침
+    sleeping: 지루함
+    thinking: 생각중
+    raised_hands: 손들기
+    pray: 기도하기
+    fingers_crossed: 행운을 빌어
+    ok_hand: Ok
+    wave: 손 흔들기
+    thumbsup: 찬성
+    thumbsdown: 반대
+  poll_types:
+    proposal: 제안
+    count: 체크
+    poll: 투표
+    dot_vote: 도트 투표
+    meeting: 시간 투표
+    ranked_choice: 정렬 선택
+    score: 점수 투표
+  new_poll_types:
+    proposal: 제안
+    count: 카운트
+    poll: 선택
+    score: 점수
+    ranked_choice: 랭크
+    dot_vote: 할당
+    meeting: 시간 투표
+  timezones:
+    local: 현지시간 ({{value}})
   common:
+    empty: 비었음
+    no_results_found: 결과를 찾을 수 없습니다.
+    view: 보기
+    history: 내력
+    option: 옵션
+    add: 더하기
+    you: 당신
+    expand: 열기
+    all_day: 하루종일
+    ok_got_it: 네, 알겠습니다.
+    learn_more: 더 배우기
+    not_found: 찾을 수 없습니다.
+    time_zone: 시간대
+    local_time: 현지시간
+    attachments: 첨부파일
+    active_time_ago: 최근 활동 {{time_ago}}
     confirm_discard_changes: 수정을 취소하시겠습니까?
     time:
       am: 오전
@@ -31,8 +135,14 @@ ko:
     notification_volume: '알림 볼륨'
     group: '그룹'
     groups: '그룹'
-    threads: '토론 주제'
+    organization: "조직"
+    organizations: "조직"
+    threads: '스레드'
+    decisions: '결정'
+    settings: '설정'
     help: '도움말'
+    anonymous: 익명
+    required: 필수
     email_address: 이메일 주소
     privacy:
       privacy: '개인정보'
@@ -51,12 +161,23 @@ ko:
     more_help: '도움말 자세히'
     models:
       proposal: '제안'
+    copy: '복사'
+    reset: '초기화'
+    copy_text: '텍스트 복사'
     copied: '복사됨'
+    points_abbrev: 투표당 {{sore}} 점
+    total: 총
     action:
       print: 인쇄
+      preview: 미리보기
+      pin: 고정
+      unpin: 고정해제
       search: '검색'
+      filter: '필터'
       back: '이전'
+      next: '다음'
       close: '닫기'
+      reopen: '재시작'
       save: '저장'
       move: '이동'
       save_changes: '수정 저장하기'
@@ -64,27 +185,93 @@ ko:
       reply: '답글'
       edit: '편집'
       remove: '제거'
+      undo_remove: '되돌리기'
       like: '좋아요'
       unlike: '싫어요'
       update: '업데이트'
       cancel: '취소'
       show_more: "더 보기"
+      show_fewer: "간략히"
+      view_count_more: "{{count}}개 더 보기"
+      view_count_responses: "응답 {{count}}개 보기"
+      count_more: "{{count}}개 더"
+      count_responses: "{{count}}개 응답"
       view_all: "모두 보기"
       new_thread: "새로운 쓰레드"
+      add_subgroup: '새로운 소그룹'
       loading: '로딩중...'
       translate: '번역'
       upload: '업로드'
       uploading: '업로딩중...'
+      load_more: '더 불러오기'
+      share: 공유하기
       ok: OK
+      retry: 재시도
+      done: 완료
+      start: 시작
+      delete: 종료
+      unsubscribe: 구독취소
+      subscribe: 구독
+      unignore: 무시 취소
+      remind: 상기
+      resend: 재전송
+      send: 전송
+      joined: 가입됨
+      last_seen: 마지막으로 본
+      invite: 초대
+      resent: 다시 초대를 보냄
+      fork: 분기 생성
+      apply: 적용
+      add_people: 사람 추가
+    formatting_help:
+      label: '서식'
+      title: '당신의 글 서식 설정을 위한 Markdown 사용법 배우기'
+  merge_accounts:
+    modal:
+      title: 계정 연동
+      helptext: "당신은 <strong>{{sourceEmail}}</strong> 계정을 <strong>{{targetEmail}}</strong>에 연동할 수 있습니다.  인증을 클릭하면 인증 메일이 {{targetEmail}}으로 전송되어 연동을 시작합니다."
+      submit: 인증
+      flash: 인증 메일이 전송되었습니다!
+    email_taken: 죄송합니다. 해당 이메일이 이미 다른 유저와 연동되어 있습니다. 해당 이메일이 당신의 것입니까?
+    find_out_more: 좀 더 알아보기
+    placeholder_modal_text: |
+        <p>만약 당신이 두개 이상의 계정을 연동하고 싶다면, 당신의 프로필의 이메일 입력란에 해당되는 이메일 주소(다른 계정에 속함)를 입력하신 후 나타나는 지시에 따르십시오.</p>
+        도움이 필요하십니까? <a href="/contact" target="_blank">저희에게 연해주십시오</a>.
   emoji_picker:
     search: 검색
+    common: 자주 사용됨
+    expressions: 얼굴
+    hands: 손
+    people: 사람
+    nature: 자연
+    objects: 물건
+    places: 자연
+  ordinal:
+    _1: '1.'
+    _2: '2.'
+    _3: '3.'
+    _4: '4.'
+    _5: '5.'
+    _6: '6.'
+    _7: '7.'
+    _8: '8.'
+    _9: '9.'
+    _10: '10.'
   devise:
+    sessions:
+      signed_up: 성공적으로 등록되었습니다!
     failure:
       inactive: '이 이메일 주소와 연결된 비활성화된 계정이 있습니다. 당신의 계정을 재활성화시키려면, 우리에게 연락하십시요.'
   error_page:
     forbidden: '권한이 없습니다.'
     page_not_found: '항목을 찾을 수가 없습니다. 삭제되었거나 옮겨진 것 같습니다.'
     internal_server_error: '죄송합니다만 뭔가가 잘못되었습니다. 다시 시도해 보세요.'
+  verify_email_notice:
+    please_verify: 참여 해주셔서 감사합니다! 이메일에서 투표 확인링크를 확인하십시오.
+  previous_polls_page:
+    heading: '{{name}}의 활동'
+    polls_count: '{{total}}개의 결정 중 {{loaded}}개 표시'
+    search_activities: 결정 검색
   volume_levels:
     loud: '크게'
     normal: '보통'
@@ -92,54 +279,91 @@ ko:
     mute: '소거'
     unmute: '소거해제'
   pin_event_form:
+    title: 타임라인에 고정하기
     title_label: 제목
+    hint: '다음 팁: "고정"을 클릭하기 전에 일부 텍스트를 선택하여 보십시오.'
   change_volume_form:
+    explain_scope:
+      thread: 스레드에 대한 알림을 받으면 변경됩니다.
+      group: 그룹의 모든 스레드에 대한 알림을 받으면 변경됩니다.
     simple:
       label: 알림
+      loud: 구독중
       normal: 보통
       quiet: 무시
+      question: 언제 알림을 받으시겠습니까?
+      loud_explain: 모든 활동에 대해 알림
+      normal_explain: 누군가 나를 언급하면 알림
+      quiet_explain: 알리지않음
     aria_label: "이메일 설정 환경 변경"
     loud_label: "모든 활동"
+    normal_label: "공지사항"
     quiet_label: "이메일 없음"
     mute_label: "음소거"
+    saved: "알림 설정이 업데이트 되었습니다."
     discussion:
-      apply_to_all: "이 그룹에 있는 모든 토론 주제에 이 설정을 적용합니다."
+      title: "스레드 알림 설정"
+      loud_description: "이 스레드의 활동 내역을 이메일로 받습니다."
+      normal_description: "이 스레드의 중요 활동 내역만 이메일로 받습니다."
+      quiet_description: "이 스레드와 관련된 어떤 이메일도 받지 않습니다."
+      apply_to_all: "이 그룹에 있는 모든 스레드에 이 설정을 적용합니다."
+      only_this_thread: "이 스레드에만 적용합니다."
+      group: "그룹에 대한 변경 알림"
+      user: "사용자 알림 설정 변경"
       messages:
-        loud: "이 토론 주제의 활동 내역을 이메일로 받게 됩니다."
-        normal: "이 토론 주제의 제안에 관해 이메일을 받게 됩니다."
-        quiet: "이 토론 주제와 관련한 이메일을 더이상 받지 않습니다."
+        loud: "이 스레드의 활동 내역을 이메일로 받게 됩니다."
+        normal: "이 스레드의 제안에 관해 이메일을 받게 됩니다."
+        quiet: "이 스레드와 관련한 이메일을 더이상 받지 않습니다."
     membership:
+      title: "{{title}}에 대한 알림"
       loud_description: "이 그룹의 모든 활동 내역을 이메일로 받습니다."
       normal_description: "이 그룹의 모든 활동 내역을 이메일로 받습니다."
       quiet_description: "당신은 이 그룹의 활동에 대해 이메일을 받지 않습니다."
       apply_to_all: "내 그룹 전체에 이 설정을 적용합니다."
+      apply_to_organization: "{{organization}}의 모든 그룹에 적용합니다."
       messages:
         loud: "이 그룹의 활동 내역을 메일로 받습니다."
+        normal: "이 그룹의 공지사항만 이메일로 받습니다."
         quiet: "이 그룹과 관련한 메일을 받지 않습니다."
     all_groups:
+      title: "모든 그룹에 대한 알림 기본설정"
       loud_description: "당신의 모든 그룹의 모든 활동내역을 이메일로 받습니다."
+      normal_description: "당신의 모든 그룹 중 중요 활동내역만 이메일로 받습니다."
+      quiet_description: "당신의 그룹에 대한 어떤 활동내역도 이메일로 받지 않습니다."
       messages:
         loud: "당신의 모든 그룹의 모든 활동내역을 이메일로 받습니다."
+        normal: "당신의 모든 그룹에서 공지사항만 이메일로 받습니다."
         quiet: "당신의 그룹에 대한 어떤 것도 이메일로 받지 않습니다."
     user:
       title: 새로운 그룹을 위한 이메일 환경설정
       loud_description: "당신이 가입한 새로운 그룹에서 활동이 있을 때마다 이메일로 받습니다."
+      normal_description: "당신이 가입한 새로운 그룹의 공지사항을 이메일로 받습니다."
       quiet_description: "당신이 가입한 새로운 그룹에서 일어나는 활동에 대해 이메일로 받지 않습니다."
       apply_to_all: "내 그룹 전체에 이 환경설정을 적용합니다."
       messages:
         loud: "새로운 그룹에 모든 활동내역을 이메일로 받습니다."
+        normal: "새로운 그룹의 공지사항을 이메일로 받습니다."
         quiet: "새로운 그룹에 대해 이메일로 받지 않습니다."
   close_explanation_modal:
-    aria_label: 토론 주제 닫기
-    close_thread: 토론 주제 닫기
-    image_alt: 모든 토론 주제 닫기
+    aria_label: 스레드 닫기
+    close_thread: 스레드 닫기
+    body: |
+        <p>보기에서 오래되거나 관련없는 스레드를 제거하고 토론이 닫혔음을 알립니다.</p>
+        <p>누구나 닫힌 스레드에서 여전히 댓글을 달거나 설문조사를 할 수 있지만 그룹의 스레드 목록이나 대시보드에는 나타나지 않습니다.</p>
+    image_alt: 모든 스레드 닫기
   mute_explanation_modal:
-    aria_label: 토론 주제 알림 해제
-    mute_thread: 토론 주제 알림 해제
-    image_alt: 사이드바에 있는 대기중인 쓰레드 선택
+    aria_label: 스레드 알림 해제
+    mute_thread: 스레드 알림 해제
+    body_html: |
+        스레드 알림을 해제 한다는 것은 누군가가 <strong> 당신을 @언급</strong>하지 않는 이상, 제안이나 어떠한 스레드에 대한 활동내역에 대한 알림을 받지 않는 것을 의미합니다.
+    body_html_2: |
+        알림 해제된 스레드는 <strong>최근</strong> 및 <strong>읽지 않은</strong> 페이지에서도 숨겨집니다. 알림 해제 된 스레드를 찾기 위해서는, 사이드바에서 <strong> 알림 해제</strong> 옵션을 선택하십시오.
+    image_alt: 사이드바에 있는 대기중인 스레드 선택
   dismiss_explanation_modal:
-    aria_label: 주제를 기각합니다.
-    dismiss_thread: 주제를 기각합니다.
+    aria_label: 스레드를 기각합니다.
+    dismiss_thread: 스레드를 기각합니다.
+    body_html: |
+        <p>스레드를 닫으면 읽지 않은 항목 중에서 해당 스레드가 제거됩니다. 만약 어떤 새로운 활동이 있을 경우 스레드는 다시 읽지 않음 으로 표시됩니다.</p>
   inbox:
     clear: '지우기'
     latest: '최신'
@@ -151,45 +375,78 @@ ko:
   signed_out_modal:
     aria_label: '세션이 종료됐습니다.'
     title: "당신의 세션이 종료됐습니다."
+    message: "다른 화면에서 로그아웃 했습니다. 계속하려면 다시 로그인 하십시오."
     ok: "OK"
+  comment_reply_form:
+    aria_label: '답변 추가하기'
   comment_form:
     aria_label: '댓글 추가하기'
     attachments:
+      add_attachment: '파일 첨부하기'
       remove_attachment: '첨부파일 삭제'
     messages:
       created: '댓글을 추가하였습니다.'
       replied: '{{name}}이 답변하였습니다'
       updated: '댓글을 수정하였습니다.'
       destroyed: '댓글을 삭제하였습니다.'
+      removed: '댓글을 삭제하였습니다.'
+    say_something: 의견 남기기
     edit_comment: '댓글 수정'
     delete_comment: '댓글 삭제'
     cancel_reply: '답변 취소'
     confirm_delete_message: '댓글을 지우시겠습니까?'
+    confirm_delete: '댓글 삭제'
+    in_reply_to: "{{name}}에게 답변하기"
+    write_a_comment: "댓글 작성"
     post_comment: "댓글달기"
     submit_button:
       label: '저장하기'
     private_privacy_notice: '작성하신 댓글은 {{groupName}} 그룹만 볼 수 있습니다.'
     public_privacy_notice: '작성하신 댓글은 웹 상의 모두가 볼 수 있습니다.'
     sign_in: "대화에 참여하려면 로그인 하세요"
+  thread_nav:
+    participants: 참여자
   sidebar:
-    threads: '토론'
+    threads: '스레드'
     my_groups: '내 그룹'
-    recent_threads: '최근 토론 주제'
-    unread_threads: '읽지 않은 토론 주제 ({{count}})'
-    muted_threads: '알림을 받지 않는 토론 주제'
+    other_groups: '다른 그룹'
+    all_groups: '모든 그룹'
+    recent_threads: '최근 스레드'
+    unread_threads: '읽지 않은 스레드 ({{count}})'
+    muted_threads: '알림 해제 된 스레드'
+    start_group: '새로운 조직'
+    start_subgroup: '새로운 소그룹'
     explore: '공개 그룹'
-    start_thread: 새 토론 주제
+    explore_groups: 그룹 찾기
+    start_thread: 새 스레드
+    start_decision: 새로운 의사결정
+    more_groups: 더 많은 그룹
     aria_labels:
       heading: '사이드 바'
-      threads_list: '쓰레드 액션'
+      threads_list: '스레드 액션'
       groups_list: '그룹'
       user_list: '사용자 액션'
+  strand_nav:
+    newest_first: 최근 활동
+    oldest_first: 스레드 시작
+    all_pinned: 고정된 모든 항목
+    whole_thread: 전체 스레드
+    from_comment: 댓글 url로부터
+    from_sequence_id: 스레드 항목의 url로 부터
+    unread: 당신에게 새로운
   navbar:
+    search_all_threads: 모든 스레드 검색
+    search_threads: '{{name}}에서 스레드 검색'
+    search_polls: '{{name}}에서 투표 검색'
+    search_members: '{{name}}에서 멤버 검색'
+    search_subgroups: '{{name}}에서 멤버 검색'
+    search_files: '{{name}}에서 파일 검색'
     recent_title: '대시보드로 이동'
     unread_title: '읽지 않은 활동 보기'
-    start_thread: '새 토론 주제'
+    start_thread: '새 스레드'
     notifications: '알림 패널'
     search:
+      label: '필드 검색; 그룹과 스레드를 검색'
       results_aria_label: '결과 검색하기'
       no_results: '쓰레드가 없습니다.'
       close: '검색패널 닫기'
@@ -200,24 +457,107 @@ ko:
       comments: '댓글'
     sign_in: '로그인'
     toggle_sidebar: '토글 사이드바'
+    open_sidebar: '사이드바 열기'
+    close_sidebar: '사이드바 닫기'
     logo_title: '홈페이지'
+    group_and_subgroups: '{{group}}&소그룹'
+  user_dropdown:
+    pin_sidebar: "사이드바 고정"
+    unpin_sidebar: "사이드바 고정해제"
+    enable_beta_features: "베타 버전 켜기"
+    disable_beta_features: "베타 버전 끄기"
+    button_label: '사용자 메뉴'
+    edit_profile: '프로필 수정'
+    email_settings: '알림 설정'
+    help: '도움말'
+    contact_site_name: '{{site_name}}에 문의'
+    sign_out: '회원탈퇴'
+    beta_collab: "실시간 토론 및 제안 공동 편집, 자동 드래프트 댓글 저장"
   membership_card:
-    discussion_members: "토론에 참여중인 멤버"
+    group_members: "그룹 멤버"
+    discussion_members: "스레드에 참여중인 멤버"
+    poll_members: "{{pollType}} 멤버"
+    voters: "투표자"
+    invite_to_group: "그룹 초대"
+    invite_to_discussion: "스레드 초대"
+    invite_to_poll: "투표 초대"
+    invitations: "초대"
   membership_dropdown:
+    set_title: "제목 설정"
+    resend: "초대 재전송"
+    invitation_resent: "다시 초대를 보냄"
+    make_coordinator: '관리자 임명'
+    demote_coordinator: '관리자 해임'
+    remove_from:
+      discussion: "스레드에서 제거"
+      group: "그룹에서 제거"
+      poll: '{{pollType}}에서 제거'
     cancel_invitation: 초대 취소
+  notification_models:
+    discussion: '스레드:'
+    comment: '댓글'
+    poll: '결정:'
+    outcome: '결과:'
   notifications:
     header: "알림"
     no_notifications: "알림이 없습니다."
+    new_discussion: "<strong>{{name}}</strong>이 스레드 <strong>{{title}}</strong>을 시작합니다."
+    discussion_edited: "<strong>{{name}}</strong>이 스레드 <strong>{{title}}</strong>을 수정합니다."
+    discussion_announced: "<strong>{{name}}</strong>가 스레드 <strong>{{title}}</strong>을 공유합니다."
+    new_motion: "<strong>{{name}}</strong>가 제안 <strong>{{title}}</strong>을 제안합니다."
+    motion_closed: "제안종료: <strong>{{title}}</strong>"
     publish_outcome: "결과 인쇄하기"
+    motion_closed_by_user: "<strong>{{name}}</strong>가 제안 <strong>{{title}}</strong>을 종료합니다."
+    motion_closed_by_expiry: "<strong>{{title}}</strong> 제안이 종료되었습니다."
+    new_vote: " 제안 <strong>{{title}}</strong>에 대한  <strong>{{name}}</strong> {{position}}"
+    new_comment: "<strong>{{name}}</strong>가 <strong> {{title}}</strong>에 댓글을 남겼습니다."
+    comment_replied_to: "<strong>{{name}}</strong>가 <strong>{{title}}</strong>의 당신의 댓글에 답변했습니다."
+    reaction_created: "<strong>{{name}}</strong>가 당신의 {{model}}<strong>{{title}}</strong>에 응답<img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/>합니다."
+    reaction_created_vue: "<strong>{{name}}</strong>가 당신의 {{model}} <strong>{{title}}</strong>에 {{reaction}}으로 응답합니다."
+    user_mentioned: "<strong>{{name}}</strong>가 <strong>{{title}}</strong>에서 당신을 언급하였습니다."
+    user_reminded: "<strong>{{name}}</strong>가 <strong> {{title}}</strong>에 당신이 참여하기를 기다리고 있습니다."
+    membership_requested: "<strong>{{name}}</strong>가 <strong>{{title}}</strong>에 가입하도록 요청합니다."
+    membership_request_approved: '<strong>{{name}}</strong>가 당신의 <strong>{{title}}</strong> 가입 요청을 승인하였습니다.'
+    user_added_to_group: "<strong>{{name}}</strong>가 당신을 그룹 <strong>{{title}}</strong>에 추가하였습니다."
+    user_added_to_group_no_inviter: "그룹 <strong>{{title}}</strong>에 추가되었습니다."
+    motion_closing_soon: "제안이 곧 종료됩니다: <strong>{{title}}</strong>"
+    motion_outcome_created: "<strong>{{name}}</strong>가 제안 <strong>{{title}}</strong>의 결과를 게시했습니다."
+    motion_outcome_updated: "<strong>{{name}}</strong>가 제안 <strong>{{title}}</strong>의 결과를 업데이트하였습니다."
+    invitation_accepted: "<strong>{{name}}</strong>가 당신의 <strong>{{title}}</strong>으로의 초대를 수락하였습니다."
+    new_coordinator: "<strong>{{name}}</strong>가 당신을 <strong>{{title}}</strong>의 관리자로 임명하였습니다."
+    poll_created: "<strong>{{name}}</strong>가 {{poll_type}}을 시작: <strong>{{title}}</strong>"
+    poll_edited: "<strong>{{name}}</strong>가 {{poll_type}}을 수정: <strong>{{title}}</strong>"
+    poll_announced: "<strong>{{name}}</strong>가 {{poll_type}}을 공유: <strong>{{title}}</strong>"
+    poll_closing_soon: "{{poll_type}}이 곧 종료됩니다: <strong>{{title}}</strong>"
+    poll_expired: "{{poll_type}} 종료: <strong>{{title}}</strong>"
+    poll_option_added: "<strong>{{name}}</strong>가 옵션 추가: <strong>{{title}}</strong>"
+    outcome_created: "<strong>{{name}}</strong>가 결과 공유: <strong>{{title}}</strong>"
+    outcome_announced: "<strong>{{name}}</strong>가 결과 공유: <strong>{{title}}</strong>"
+    stance_created: "<strong>{{name}}</strong>가 참여: <strong>{{title}}</strong> "
+    group_announced: "<strong>{{name}}</strong>가 당신을 그룹 <strong>{{title}}</strong>에 초대했습니다."
   discussion_fork_actions:
+    helptext: 다른 스레드로 이동할 항목을 선택하십시오.
     move: 이동
+    search_placeholder: 제목으로 스레드 찾기
+    moved: 댓글을 이동하는데 시간이 걸릴 수 있습니다.
+    move_to_existing_thread: 기존 스레드로 옮기기
+    start_new_thread: 또는, 새로운 스레드를 시작하기
   discussion_form:
-    aria_label: '쓰레드 양식'
-    start_thread: 쓰레드를 시작합니다
+    to: To
+    change_log_placeholder: 이 버전에서 변경된 사항에 대해 간략히 설명합니다.(선택)
+    change_log_label: 무엇이 바뀌었습니까?
+    one_person_will_be_notified: '1명에게 알림이 전송됩니다.'
+    count_people_will_be_notified: '{{count}}명에게 알림이 전송됩니다.'
+    notify_specifc_people_instead: 전체 그룹에게 알림을 전송하고 싶지 않다면, 알림을 전송할 사람들의 이름을 추가하십시오.
+    invite: 초대
+    aria_label: '스레드 양식'
+    start_thread: 스레드를 시작합니다
     messages:
       created: '쓰레드가 시작되었습니다.'
       updated: '쓰레드가 수정되었습니다.'
+      forked: '스레드 분기 생성'
     new_discussion_title: '새로운 쓰레드를 시작합니다'
+    moving_items_title: '새 스레드로 항목을 옮깁니다.'
     edit_discussion_title: '쓰레드를 수정합니다'
     group_label: '그룹'
     group_placeholder: '그룹을 선택하세요'
@@ -229,14 +569,188 @@ ko:
     privacy_public: '누구나 이 쓰레드를 볼 수 있지만, 회원만 참여할 수 있습니다.'
     privacy_private: '이 쓰레드는 {{group}}의 멤버만 볼 수 있습니다.'
     privacy_organisation: '이 쓰레드는 {{parent}}와 {{group}}의 멤버만 볼 수 있습니다.'
+    fork_notice: '새 스레드는 {{title}}의 {{count}}개 항목으로 생성됩니다.'
+    one_person_notified: 1명에게만 알림이 전송됩니다.
+    notify_group: 그룹 알림
   announcement:
+    send_discussion: 스레드 전송
+    send_discussion_explain: 토론에 참여하도록 사람들을 초대
+    send_group: '{{name}}으로 초대'
+    send_poll: '{{type}} 전송'
+    send_poll_explain: '{{type}}에 참여하도록 사람들을 초대'
+    send_outcome: 결과 전송
+    send_outcome_explain: '{{type}}의 결과를 사람들에게 전송'
+    discussion_notification_history: 스레드 알림 이력
+    group_notification_history: 그룹 초대 이력
+    poll_notification_history: 투표 알림 이력
+    outcome_notification_history: 결과 알림 이력
+    comment_notification_history: 댓글 알림 이력
+    notification_history_explanation: ✓는 이미 읽었거나, 열어본 적인 있는 이메일임을 나타냅니다.
+    quick_add: "빠른 추가:"
+    any_other_groups: "다른 그룹이 있습니까?"
+    notified_people: "{{name}}가 {{length}} 명에게 알림:"
+    preview: 이메일 미리보기
+    no_notifications_sent: 전송된 알림이 없습니다.
+    history_error: 문제가 발생했습니다! 이력을 불러올 수 없습니다.
+    inviting_guests_to_thread: 게스트는 그룹에 속할 수 없고 스레드에 접속만 가능합니다.
+    select_groups: 그룹 선택
+    audiences:
+      group: '{{name}}의 전원'
+      discussion_group: 스레드의 전원
+      voters: 투표자 전원
+      decided_voters: 투표 완료자 전원
+      undecided_voters: 결정하지 않은 투표자들
+      non_voters: '{{name}}에 아직 초대받지 못한 멤버들'
     form:
+      too_many_invitations: |
+          초대 한도를 초과했습니다. <a href="{{upgradeUrl}}" target="_blank">업그레이드</a>
+      no_invitations_remaining: |
+          <p>당신은 이 그룹에 사용할 수 있는 {{maxMembers}}개의 초대를 모두 사용하였습니다.</p>
+          <p>다음 단계는 Loomio와 계속 작업할 <a href="{{upgradeUrl}}" target="_blank">계획을 선택</a>합니다.</p>
+      invitations_remaining: '{{count}}개의 초대가 남아있습니다. <a href="{{upgradeUrl}}" target="_blank">업그레이드</a>'
+      who_to_invite: 누구를 초대하고 싶으십니까?
+      invitation_message_placeholder: 초대 메일에 메시지를 추가하기.(선택)
       invitation_message_label: 메시지
+      group_announced:
+        title: 그룹에 초대하기
+        helptext: 누구를 그룹에 초대하고 싶으십니까?
+      discussion_announced:
+        title: 토론주제에 초대하기
+        helptext: 누구를 스레드에 초대하고 싶으십니까?
+        notify_helptext: 누구에게 스레드 알림을 보내시겠습니까?
+      discussion_edited:
+        title: 변경 사항 알림
+        helptext: 누구에게 업데이트 알림을 보내시겠습니까?(선택)
+      poll_announced:
+        title: 투표 초대
+        helptext: 누구를 투표에 초대하고 싶으십니까?
+      poll_edited:
+        title: 변경 사항 알림
+        helptext: 누구에게 업데이트 알림을 보내시겠습니까?
+      outcome_announced:
+        title: 결과 공유
+        helptext: 알려진 발견사항 또는 문제를 포함하여 프로세스 결과를 요약합니다.
+      anyone_can_participate: 링크가 있으면 누구나 참여할 수 있습니다.
+      placeholder: 이름이나 이메일 주소를 입력할 수 있습니다.
+      notified_empty: '아직 아무도 선택하지 않음'
+      notified: '{{count}}명에게 알림이 전송됩니다.'
+      notified_singular: '1명에게 알림이 전송됩니다.'
+      notified_none: '아무도 알림을 받지 않습니다.'
+      group_title: '{{name}} ({{count}} 명)'
+      visible_to_group: '{{group}} 내의 모두가 이 스레드를 볼 수 있습니다'
+      visible_to_guests: '초대된 사람들만 이 스레드를 볼 수 있습니다.'
+    members_list:
+      title: 공유
+      last_notified: 알림
+      not_notified: 아직 알려지지 않음
+      no_members: "아직 아무에게도 공유되지 않았습니다!"
+      group_admin: "그룹관리자"
+      thread_admin: "스레드관리자"
+      last_read_at: "마지막 확인 {{time}}"
+      has_not_read_thread: "보지 않은 스레드"
+    group_form:
+      search_placeholder: 사람들을 검색합니다...
+      modal_title: 그룹 멤버 선택
+      members_count: '{{count}}명이 알림을 받습니다.'
+    flash:
+      success: '{{count}}개 알림이 전송되었습니다.'
   action_dock:
+    actions_menu: 액션 메뉴
+    more_actions: 더 많은 액션
+    react: 반응
+    notify: 알림
+    add_resource: 첨부파일 추가
+    edit_group: 그룹 내용 수정
+    add_comment: 댓글
     copy_url: 링크 복사
+    edit_thread: 댓글 수정
+    announce_thread: 스레드 전송
+    invite_guests: 게스트 초대
+    translate_thread: 내용 번역
+    edit_poll: 투표 수정
+    edit_poll_type: "{{pollType}}수정"
+    move_items: 항목 이동
+    announce_poll: 투표할 사람 초대
+    announce_poll_active: (아직 초대받은 사람이 없습니다)
+    translate_poll: 투표 번역
     edit_stance: 선택 변경
-    close_thread: 토론 주제 닫기
-    delete_thread: 쓰레드 삭제
+    translate_stance: 투표 번역
+    edit_comment: 댓글 수정
+    delete_comment: 댓글 삭제
+    reply_to_comment: 답변
+    fork_comment: 스레드 분기 생성
+    translate_comment: 댓글 번역
+    edit_outcome: 결과 수정
+    announce_outcome: 이 결과를 사람들에게 알림
+    announce_outcome_active: 아직 결과를 수신한 사람이 없습니다.
+    translate_outcome: 결과 번역
+    show_history: 수정 이력 보기
+    edited: 수정됨
+    show_edits: 수정 보기
+    show_notifications: 알림 보기
+    history: 이력
+    pin_thread: 스레드 고정
+    unpin_thread: 스레드 고정 해제
+    pin_event: 타임라인에 고정하기
+    unpin_event: 타임라인 고정해제
+    comment_copied: 댓글 URL을 클립보드로 복사하였습니다.
+    move_thread: 그룹으로 이동
+    poll_copied: 결정 URL을 클립보드로 복사하였습니다.
+    discussion_copied: 스레드 URL을 클립보드로 복사하였습니다.
+    url_copied: 링크를 클립보드로 복사하였습니다.
+    tag_thread: 태그 관리
+    close_thread: 스레드 닫기
+    reopen_thread: 스레드 다시 열기
+    delete_thread: 스레드 삭제
+    notification_history: 알림 이력
+    move_item: 항목 이동
+    add_poll_to_thread: 스레드 추가
+    count_members: "{{count}} 멤버"
+    count_voters: "{{count}} 투표자"
+  formatting:
+    formatting_tools: 텍스트 서식 도구
+    expand: 서식 도구 자세히 보기
+    collapse: 서식 도구 간략히 보기
+    bold: 굵게
+    italicize: 기울임
+    blockquote: 인용
+    strikethrough: 취소선
+    underline: 밑줄
+    link: 링크 삽입
+    code_block: 코드 잠금
+    insert_image: 이미지 삽입
+    insert_emoji: 이모티콘 삽입
+    attach: 파일 첨부하기
+    heading_size: 머리글 크기
+    heading1: 머리글 1
+    heading2: 머리글 2
+    heading3: 머리글 3
+    left_align: 왼쪽 정렬
+    center_align: 가운데 정렬
+    right_align: 오른쪽 정렬
+    justify_align: 양쪽 정렬
+    paragraph: 단락
+    bullet_list: 리스트
+    number_list: 숫자 리스트
+    check_list: 체크리스트
+    reset: 초기화
+    text_color: 글자 색
+    background_color: 배경 색
+    quote: 인용
+    embed: 비디오 삽입
+    add_table: 표 추가
+    remove_table: 표 삭제
+    add_column_before: 앞에 열 추가
+    add_column_after: 뒤에 열 추가
+    remove_column: 열 삭제
+    add_row_before: 앞에 행 추가
+    add_row_after: 뒤에 행 추가
+    remove_row: 행 삭제
+    merge_selected: 선택된 셀 병합
+    wysiwyg: wysiwyg
+    edit_markdown: Markdown 수정
+    markdown_confirm: wysiwyg 형식을 Markdown으로 변환 할 때 일부 형식이 손실될 수 있습니다.
+    upload_failed: 업로드 실패
   cover_photo_form:
     aria_label: '커버 사진 양식 교체'
     heading: '새로운 커버 사진'
@@ -250,6 +764,7 @@ ko:
     image_size_helptext: '이미지 크기는 100x100px 입니다'
     upload_success: '로고를 수정하였습니다'
   join_group_button:
+    not_a_member: "현재 이 그룹에 속해 있지 않습니다."
     join_group: 그룹에 가입
     membership_requested: 요청 받은 멤버십
     messages:
@@ -260,20 +775,69 @@ ko:
     name_label: 이름
     email_label: 이메일
     introduction_label: 참여 사유는?
-    introduction_over_limit: 너무 오래 답변합니다.
+    submit_button: 가입신청하기
+    introduction_over_limit: 답변이 너무 깁니다.
     messages:
       membership_requested: '{{group}}에 가입을 요청하였습니다'
   revision_history_modal:
     aria_label: 검토 이력
+    discussion_header: 토론 수정
+    comment_header: 댓글 수정
+    poll_header: 투표 수정
+    outcome_header: 결과 수정
+    stance_header: 항목 수정
+    started_by: '<strong>{{name}}</strong>가 시작함'
+    edited_by: '<strong>{{name}}</strong>가 수정함'
+    edit_by: "{{name}}이 {{date}}에 수정"
     posted: 저장됨
+    field: 필드
+    before: 전
+    after: 후
+    original_text: 원본
     current_revision: 최신
+    closing_at_changed: "종료 시간이 {{time}}으로 설정되었습니다."
+    private_changed: "공개정책이 {{private}}으로 설정되었습니다."
+    group_id_changed: "{{name}}으로 이동되었습니다."
+  reactions_input:
+    add_your_reaction: 반응 추가
+  reactions_display:
+    more_reactions: "{{count}}개 더 있음"
+    you: "당신"
+    you_and_name: "당신과 {{name}}"
+    you_and_name_and_count_more: "당신, {{name}} 그외 {{count}}명"
+    name_and_count_more: "{{name}}, 그외 {{count}}명"
+  context_panel:
+    aria_intro: "{{author}}가 작성한 스레드"
+    thread_status:
+      pinned: "이 스레드는 고정되어있습니다. 스레드의 모든 사용자들의 그룹 목록의 가장 위에 표시됩니다."
+      closed: "이 스레드는 종료되었습니다. 더이상 대시보드에 나타나지 않으며, 그룹페이지의 '종료됨' 목록에 추가 될 것입니다."
+  delete_group_modal:
+    title: 그룹 삭제
+    body: |
+        정말로 그룹을 삭제하시겠습니까?
+        모든 스레드, 투표, 파일, 그리고 다른 그룹 컨텐츠가 영구적으로 삭제됩니다.
+        계속하기 전에 그룹 데이터를 내보내고 중요 파일을 수동으로 다운 받는 것을 추천합니다.
+    confirm: "그룹을 삭제하시려면  '%{name}' 을 입력하십시오."
+    success: 이 그룹은 보관 중이며, 2주 뒤 영구적으로 삭제될 예정입니다.
   group_page:
-    threads: 토론
+    stats: 그룹 상태
+    threads: 스레드
+    polls: 투표
     members: 멤버
+    files: 파일
+    settings: 설정
     subgroups: 소그룹
+    show_opened: '{{count}} 열기'
+    show_closed: '{{count}} 닫기'
+    no_threads_here: 볼 수 있는 스레드가 없습니다!
+    search_threads: 스레드 검색...
+    private_threads: 이 그룹의 private 스레드를 확인하기 위해서는 멤버가 되어야 합니다.
+    no_more_threads: 더 불러올 스레드가 없습니다.
+    view_closed_threads: '닫힌 스레드 보기'
     messages:
       privacy:
         members: '이 그룹은 회원들에게만 보입니다.'
+        parent_members: '이 그룹은 이제 당신의 조직 멤버에게만 보입니다.'
         public: '이 그룹은 이제 누구나 볼 수 있습니다.'
       leave_group_success: '이 그룹을 떠났습니다.'
       archive_group_success: '이 그룹은 현재 사용할수 없습니다.'
@@ -281,19 +845,32 @@ ko:
     new_photo: '새로운 사진'
     new_cover_photo: '새로운 커버 사진 올리기'
     new_group_logo: '새로운 그룹 로고 올리기'
+    open_discussions: '스레드 열기'
+    closed_discussions: '스레드 닫기'
     discussions_placeholder: '이 쓰레드는 누구나 토론할 수 있고, 함께 의사결정을 하는 곳입니다.'
     members_placeholder: '이 그룹에 현재 회원님 뿐입니다. 다른 사람들을 초대해 보세요.'
     member_options: 멤버 옵션
+    see_all_members: '{{count}}명 멤버 모두 보기'
+    pending_invitations: '+ {{count}} 개의 대기'
+    subgroups_placeholder: '소그룹은 팀에게 고유 공간을 제공하고 적절한 사람들에게 알림을 보냅니다.'
+    invite_people: '초대'
     visibility_label: '공개도'
     options_label: '선택사항'
     options:
       label: '선택사항'
       edit_group: '그룹 설정 편집'
+      become_coordinator: 관리자가 되기
+      export_data: 그룹 데이터 내보내기
+      export_data_as_json: 그룹 데이터 JSON으로 내보내기
+      export_data_as_csv: 그룹 데이터 CSV로 내보내기
+      export_data_as_html: 그룹 데이터 HTML으로 내보내기
       manage_members: '멤버 관리'
       add_subgroup: '소그룹 추가하기'
+      manage_subscription: '그룹 구독 관리'
       email_settings: '이메일 환경설정'
       leave_group: '그룹 탈퇴'
       deactivate_group: '그룹 비활성화'
+      subscription_status: '구독 상태'
     volume:
       loud: 활동이 있을 때마다 이메일 합니다.
       loud_aria_description: 이 그룹의 알림 소리를 크게 설정합니다. 이 그룹에 활동이 있을 때마다 이메일을 받습니다.
@@ -312,8 +889,14 @@ ko:
       parent_members: '공개정책 : 이 그룹은 {{parentGroupName}}의 멤버와 {{groupName}}의 멤버에게 공개됩니다.'
       public: '공개정책 : 이 그룹은 인터넷에  공개됩니다.'
       aria_label: '그룹 보호: {{privacy}}'
+  export_data_modal:
+    title: 데이터를 어떻게 사용하시겠습니까?
+    as_csv: 스프레드시트로 열기
+    as_html: 브라우저로 열기
+    as_json: 내 서버에서 그룹 호스팅
   description_card:
     title: '그룹 설명'
+    placeholder: '그룹 관리자는 이 영역을 사용하여 그룹의 목적을 설명하여 모든 사람들이 목적을 알 수 있습니다.'
     messages:
       description_updated: '설명을 업데이트했습니다.'
   leave_group_form:
@@ -327,35 +910,61 @@ ko:
     question: '정말 이 그룹을 비활성화하시겠습니까?'
     submit: '네, 이 그룹을 비활성화하겠습니다.'
   group_form:
+    thread_defaults_help: 새 스레드의 기본 설정
+    click_to_change_image: 커버 이미지와 로고 (클릭해서 바꾸기)
+    permissions_explaination: |
+        그룹의 멤버로들은 두단계로 나뉩니다: 관리자, 멤버
+    aria_label: '그룹 형태'
+    new_organisation: 새로운 조직
     start_group_heading: '그룹 시작하기'
     start_subgroup_heading: '소그룹 시작하기'
     edit_group_heading: '그룹 설정 편집'
     edit_subgroup_heading: '소그룹 설정 수정하기'
     group_name: '그룹명'
+    handle: 처리
+    group_handle_placeholder: "URL과 이메일, 예: loomio.org/handle , handle@loomio.org"
+    organization_name: '조직 이름'
+    start_organization_heading: 새로운 조직
+    edit_organization_heading: 조직 설정 수정
     group_name_placeholder: '그룹의 이름이 무엇인가요?'
+    organization_name_placeholder: '조직의 이름이 무엇인가요?'
     subgroup_name: '소그룹 이름'
     description: '설명'
     description_placeholder: '그룹의 멤버들이 왜 여기에 모여 있는지 인식할 수 있도록 이 그룹의 목적을 설명해주세요.'
     privacy_statement:
+      public_on_web: '그룹의 이름, 설명, 그리고 첨부파일이 공개적으로 표시됩니다.'
       private_to_group: '이름과 설명은 멤버만 볼 수 있습니다.'
       private_to_parent_members: '{{parent}}의 멤버가 이름과 설명을 볼 수 있습니다. '
     privacy: '개인정보'
+    group_privacy_is_open_description: "모두에게 공개합니다. 누구나 가입신청을 할 수 있습니다. 모든 스레드가 공개됩니다."
+    group_privacy_is_closed_description: "공개하지 않습니다. 링크가 있는 사람은 누구나 가입신청 할 수 있습니다. 모든 스레드는 비공개입니다."
+    group_privacy_is_closed_public_threads_description: "공개하지 않습니다. 링크가 있는 사람은 누구나 가입신청 할 수 있습니다. 스레드는 공개할 수도 있고 비공개로 설정할 수도 있습니다."
+    group_privacy_is_secret_description: "초대 받은 사람만 그룹을 찾을 수 있습니다. 모든 스레드가 비공개입니다."
     confirm_change_to_secret: "이 그룹의 모든 쓰레드와 소그룹이 비공개로 전환됩니다. 확실합니까?"
     confirm_change_to_secret_subgroup: '모든 쓰레드가 비공개로 전환됩니다. 계속하시겠습니까?'
     confirm_change_to_public: '이 그룹의 모든 쓰레드가 웹에 공개됩니다. 계속하시겠습니까?'
     confirm_change_to_private_discussions_only: '이 그룹의 공개된 모든 쓰레드가 비공개로 전환됩니다. 계속하시겠습니까?'
     profile: 프로필
+    subgroup_privacy_is_open_description: "누구나 이 소그룹을 찾고 가입신청을 할 수 있습니다. 그룹 멤버만 볼 수 있습니다. 모든 스레드는 공개됩니다."
+    subgroup_privacy_is_closed_description: "누구나 이 소그룹을 찾고 가입신청을 할 수 있습니다. 그룹 멤버만 볼 수 있습니다. 모든 스레드는 비공개됩니다."
+    subgroup_privacy_is_closed_public_threads_description: "누구나 이 소그룹을 찾고 가입신청을 할 수 있습니다. 오직 멤버만 볼 수 있습니다. 스레드는 공개하거나 비공개됩니다."
+    subgroup_privacy_is_closed_secret_parent_description: "{{parent}}의 멤버는 소그룹을 찾고 가입신청 할 수 있습니다. 모든 스레드는 비공개됩니다. 오직 그룹 멤버만 볼 수 있습니다."
+    subgroup_privacy_is_secret_description: '초대된 멤버만 소그룹을 찾고 그 안에 있는 사람들과 스레드를 볼 수 있습니다.'
     advanced_settings: "상세 설정"
     how_do_people_join: "가입 방법은 무엇인가요?"
     membership_granted_upon_request: '누구나 가입할 수 있습니다.'
     membership_granted_upon_approval: '누구나 가입 신청을 할 수 있습니다만, 가입 허가가 필요합니다.'
+    membership_granted_upon_approval_secret_parent: '<strong>요청에 의해</strong> {{parent}}의 누구나 그룹에 가입신청을 할 수 있습니다.'
     permissions: '허용'
+    features: '그룹 별 기능'
     thread_privacy: '쓰레드 프라이버시'
     public_threads: '공개 쓰레드만'
     public_discussions_subgroup: '{{parentGroupName}}의 누구나 이 토론을 볼 수 있습니다.'
     public_or_private_threads: '공개 및 비공개 쓰레드 허용'
     private_threads: '오직 멤버만 이 토론을 볼 수 있습니다.'
     allow_public_threads: '이 그룹에 공개 쓰레드를 허용합니다.'
+    parent_members_can_see_discussions: '{{parent}}의 멤버들은 비공개 스레드를 볼 수 있습니다.'
+    members_can_announce: '멤버들은 그룹의 모든 사람에게 알림을 전송할 수 있습니다.'
     members_can_add_members: '멤버는 다른 사람을 초대할 수 있고 가입요청을 승인할 수 있습니다.'
     members_can_create_subgroups: '멤버는 소그룹을 만들수 있습니다.'
     members_can_edit_discussions: '멤버는 어느 토론의 제목이나 내용을 변경할 수 있습니다.'
@@ -363,12 +972,27 @@ ko:
     members_can_start_discussions: '멤버는 새 쓰레드를 만들 수 있습니다.'
     members_can_vote: '멤버는 제안에 투표할 수 있습니다.'
     members_can_raise_motions: '멤버는 제안을 시작할 수 있습니다.'
+    admins_can_edit_user_content: "관리자는 다른 유저의 댓글과 투표를 수정할 수 있습니다."
     submit_start_group: '그룹 시작하기'
     submit_start_subgroup: '소그룹 시작하기'
     submit_update: '설정 저장'
     messages:
       group_created: '그룹이 시작됨'
       group_updated: '그룹이 업데이트됨'
+    upload_logo: '로고 업로드'
+    upload_cover_photo: '커버사진 업로드'
+  group_export_modal:
+    title: 그룹 데이터 내보내기
+    body: |
+        <p>
+        언제든지 그룹데이터의 사본을 다운로드 받을 수 있습니다.
+        <a href="https://help.loomio.org/en/user_manual/groups/data_export/">자세히 보기</a>
+        </p>
+        <p>
+        그룹의 크기에 따라 완료하는데 몇 분 정도 걸립니다. 준비가 완료되면 파일 다운로드 링크가 포함된 이메일을 받게됩니다.
+        </p>
+    submit: 내보내기 시작
+    flash: 그룹 데이터 내보내기가 시작됨
   membership_requests_card:
     heading: '멤버십 요청'
     manage_requests: 요청 관리
@@ -387,14 +1011,29 @@ ko:
   group_previous_proposals_card:
     heading: 이전 제안
     see_more: 더보기
+  group_decisions_card:
+    see_more: "모두 보기: ({{count}})개 결정"
   invitation_form:
+    group_url: 그룹 URL
+    reusable_invitation_link: 재사용 가능한 초대 링크
+    error: "클립보드로 복사하는 중 오류가 발생했습니다."
     aria_label: '초대양식'
     invite_people: '초대 명단'
+    invite_guests: '게스트 초대'
+    notify_people: '사람들에게 알림'
+    invite_people_to_group: '{{name}}으로 초대'
     group: '그룹'
     group_placeholder: '그룹을 선택하세요'
     shareable_link: '공유가능링크 '
+    share_group: '당신의 그룹 공유'
+    copy_link: '복사'
     email_addresses: '이메일 주소'
     email_addresses_placeholder: '예를 들어 helperbot@loomio.org, friendlybot@loomio.org'
+    secret_group_url_explanation: "당신의 그룹 주소입니다. 초대된 멤버들만 그룹을 볼 수 있습니다."
+    shareable_group_url_explanation: '당신은 이 링크를 공개적으로 공유할 수 있습니다. 사람들은 가입신청을 할 수 있고 당신은 이를 수락하거나 거부할 수 있습니다.'
+    shareable_invitation_explanation: '이 링크를 대중과 공유하지 마십시오. 누구든지 당신의 허락 없이 당신의 그룹에 가입할 수 있게 됩니다. 조직의 사람들이 참여할 수 있도록 비공개 대화에서만 공유하십시오.'
+    shareable_link_reset: '공유 가능한 링크를 초기화합니다. 전의 링크는 더 이상 사용할 수 없습니다.'
+    email_explanation: '또는, 아래에 이메일 주소를 입력하여 이메일로 초대를 보내십시오.'
     add_custom_message: '초대하기'
     add_custom_message_link: '개인 메시지 추가'
     custom_message: '개인 메시지'
@@ -408,46 +1047,127 @@ ko:
     messages:
       invitation_sent: '초대가 전송됨'
       invitations_sent: '{{count}}개의 초대장 발송'
+      no_invitations: '이런! 이메일 주소가 올바른지 확인하고 재시도 하십시오.'
       max_invitations: '만일 100개 이상의 초대장을 보내려면 팀 링크를 사용하세요.'
   memberships_page:
     members: '멤버'
     name_label: '이름'
+    coordinator_label: '관리자'
     remove_member_label: '삭제'
     fragment_placeholder: '이름 혹은 아이디로 거르기'
+    only_one_admin: 이 그룹에는 한 명의 관리자만 있습니다. 최소한 한명 이상의 멤버를 관리자로 지정하는 것을 추천합니다.
     messages:
       remove_member_success: '삭제된 {{name}}'
+      make_admin_success: '{{name}}님은 이제 관리자입니다.'
+      remove_admin_success: '{{name}}님은 더 이상 관리자가 아닙니다.'
+    remove_admin_from_self:
+      question: '관리자를 그만두시겠습니까?'
   membership_remove_modal:
     invitation:
       title: 초대 취소
+      message: '{{name}}님에게 보낸 초대를 취소하시겠습니까?'
       flash: 초대를 취소했습니다.
       submit: 초대 취소
     membership:
       title: 멤버 삭제
+      message: '{{name}}을 삭제하시겠습니까?'
+      impact_for_group: 그러면 그룹의 모든 스레드 및 결정에 대한 접근 권한이 제거됩니다.
+      impact_for_subgroups: 그러면 해당 그룹의 모든 하위 그룹에 대한 접근 권한도 제거됩니다.
+      flash: 멤버가 삭제됨
       submit: 멤버 삭제
+  memberships_panel:
+    add_coordinator: 관리자 임명
+    remove_coordinator: 관리자 해임
+  membership_form:
+    modal_title:
+      group: 그룹 제목 설정
+    title_helptext:
+      group: 이 타이틀은 이 그룹의 {{name}} 옆에 표시될 것입니다. 사람들에게 그들의 역할을 알리는데 사용 하십시오.
+    title_label: 타이틀
+    title_placeholder: 예를들어 '진행자', 또는 '의장'
+    updated: 멤버십 타이틀이 업데이트 되었습니다.
+  user_page:
+    contact_user: '{{name}}에게 연락'
+    location_field: '장소: {{value}}'
+    locale_field: '언어: {{value}}'
+    online_field: '접속: {{value}}'
+    invited: '초대됨 {{value}}'
+    message_user: '메시지 {{name}}'
+  contact_request_form:
+    modal_title: "이메일 {{name}}"
+    message_placeholder: 자기소개를 하고 연락하고 싶은 이유를 공유해보십시오
+    helptext: "{{name}}가 당신의 이름, 이메일 주소, 메시지를 포함한 이메일을 받게 됩니다."
+    email_sent: "{{name}}에게 이메일 전송"
   profile_page:
     messages:
       updated: '프로필을 수정했습니다.'
       picture_changed: '프로필 사진을 수정했습니다.'
       password_changed: '비밀번호를 변경했습니다.'
       deactivated: '계정을 비활성화했습니다.'
+    merge_accounts: 연결계정
     change_picture_link: '사진 교체'
+    change_password_link: '비밀번호 초기화'
+    delete_account: '계정 영구 삭제'
+    delete_user_link: '계정 삭제'
     profile: '프로필'
     edit_profile: '프로필 수정'
     picture_label: '사진'
     name_label: '이름'
     username_label: '아이디'
+    username_helptext: '소문자와 숫자만, 최대 30자'
     email_label: '이메일'
+    short_bio_label: '소개'
     locale_label: '언어'
+    short_bio_placeholder: '전문분야, 관심있는 주제 그리고 소속된 조직을 통해 자신을 소개하십시오.'
+    locale_placeholder: 당신이 선호하는 언어를 선택하십시오.
+    location_label: '장소'
+    location_placeholder: '어디에 거주하십니까?'
     update_profile: '프로필 저장'
+    deactivate_account: '사용자 계정 비활성화'
+    help_translate: "Loomio 번역을 도와주십시오"
+  text_editor:
+    select_text_to_link: 먼저, 텍스트나 링크를 선택하십시오.
+    insert_link: 링크 삽입
+    insert_embedded_url: 비디오 삽입
   change_picture_form:
+    aria_label: '프로필 사진 양식'
+    title: '프로필 사진 설정'
+    helptext: '자신의 프로필 사진을 업로드하거나 <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> 계정이 있는 경우 사용할 수 있습니다.'
     use_initials: '이니셜 사용'
+    use_gravatar: 'Gravatar 사용'
+    use_uploaded: '새로운 사진 업로드'
+    use_provider: '{{provider}} 사진 사용'
+  change_password_form:
+    set_password_title: 비밀번호를 설정하십시오
+    set_password_helptext: 비밀번호를 입력하십시오 - 최소 8자
+    set_password: 비밀번호 설정
+    password_changed: 비밀번호가 업데이트 되었습니다.
   deactivation_modal:
+    aria_label: '사용자 계정 비활성화'
     introduction: '계정 비활성화된 때 '
+    you_will_be_deleted: "당신의 이름, 이메일 주소 및 다른 개인 정보를 포함한 당신의 사용자 계정은 당사 시스템에서 삭제됩니다."
+    name_removed: '당신이 만든 댓글, 제안, 토론은 남아있습니다. 하지만 당신의 이름은 지워질 것입니다.'
     no_longer_group_member: '당신은 모든 그룹에서 탈퇴됩니다.'
+    no_emails: '당신은 더 이상 이메일 알림을 받지 않습니다.'
+    you_can_reactivate: "당신은 원할 때 당신의 계정을 다시 활성화 시킬 수 있습니다."
     submit: '네, 비활성화하겠습니다.'
+    submit_delete: '내 계정 삭제'
   email_settings_page:
+    header: 알림 설정
+    account_deactivated: 당신의 계정이 비활성화 되었습니다. 더는 이메일을 받지 않을 것입니다.
+    deactivate_header: 모든 이메일을 중지
+    deactivate_description: 저희들에게 더는 메일을 받지 않으려면 당신의 사용자 계정을 비활성화 시킬 수 있습니다.
+    email_newsletter: Loomio 뉴스레터
+    email_newsletter_description: "새로운 기능, 교육, 도시의 이벤트 및 Loomoi의 미래에 대한 알림을 받습니다. 일반적으로 연간 2, 3개의 이메일이 발송 됩니다."
     daily_summary_label: 일별 요약 이메일
-    on_participation_description: "모둠에 참여하면, 더욱 많은 행동들이 즉시 당신에게 이메일로 전송됩니다. "
+    daily_summary_description: "매일 아침 전날 놓친 활동이 담긴 이메일을 받게 됩니다. 이를 통해 활동에 대한 최신 정보를 쉽게 확인 할 수 있습니다."
+    on_participation_label: 참여 신청
+    on_participation_description: "스레드에 참여하면, 더욱 많은 행동들이 즉시 당신에게 이메일로 전송됩니다. "
+    announcement_label: 공지사항
+    announcement_description: "그룹 사람들이 게시한 모든 컨텐츠에 대한 이메일을 받게 됩니다."
+    mentioned_label: 언급 및 답변
+    mentioned_description: "댓글에서 누군가가 당신을 언급하거나 당신에게 대답하면 당신은 알림 이메일을 받습니다."
+    update_settings: 변경 저장
     specific_groups: 특별한 그룹에 적용
     default_settings:
       loud_description: "새로운 그룹에 참여하면, 당신은 <strong>행동이 있을 때마다</strong>이메일을 받을 수 있습니다."
@@ -456,9 +1176,14 @@ ko:
     edit: 편집
     messages:
       updated: 이메일 설정을 저장했습니다.
+    learn_more: 이메일 세팅에 대해 더 배우기
+  thread_preview:
+    replies_count: "{{count}} 개 응답"
+    unread_count: "{{count}} 개 읽지 않음"
   dashboard_page:
     aria_label: '대시보드'
     no_groups:
+      show_all: 환영합니다! 당신은 아직 그룹의 회원이 아닙니다. 공개 그룹을 찾아보거나 그룹을 만들어 보십시오.
       show_muted: 가입된 그룹이 없기 때문에 대기중인 모둠이 없습니다.
     no_threads:
       show_all: 최근 주제가 없습니다.
@@ -468,8 +1193,16 @@ ko:
     load_more: 주제 더보기
     mark_as_read: 읽음으로 표시
     dismiss: 기각합니다
+    thread_dismissed: 스레드가 읽음으로 표시됨
+    thread_recalled: 스레드 리콜
     explain_mute:
       title: 대기중인 주제가 아직 없습니다.
+      explanation_html: |
+          음소거는 당신이 관심없는 스레드를 숨기거나 조용히 만드는 방법입니다.
+          음소거는 당신이 <strong>최근</strong> 또는 <strong>읽지 않음</strong>에서 스레드를 보지 않고 제안과 같은 스레드의 활동들에 대한 알림을 받지 않는 것을 의미합니다.
+          당신은 누군가가 당신의 이름을 <strong>@언급</strong> 할 때만 알림을 받습니다.
+      instructions: '스레드를 음소거하기 위해서 스레드 위에 마우스를 놓고 음소거 아이콘을 클릭합니다.'
+      see_muted_html: '음소거된 스레드를 보기 위해서 <strong>"음소거됨"</strong>를 클릭하십시오. 당신은 마우스를 놓고 같은 아이콘을 클릭해서 음소거를 해제할 수 있습니다.'
     filtering:
       filter_threads: 주제 거르기
       filter_threads_aria_label: 주제 거르기
@@ -480,14 +1213,20 @@ ko:
       proposals: 제안
       proposals_aria_label: 활성화된 제안이 있는 주제만 보기
       proposals_description: 활성화된 제안이 있는 주제만 보기
+      muted: 음소거된 스레드
       muted_aria_label: 알림 비활성화된 주제 보기
       muted_description: 알림 비활성화된 주제만 보기
     aria_thread:
       unread: '읽지 않은 아이템 {{count}}개'
       current_proposal: '현재 제안: {{name}}.'
       you_voted: '투표 완료: {{position}}.'
+    thread_preview:
+      you_voted: '{{position}}에 투표했습니다.'
+      undecided: '당신은 아직 결정하지 않았습니다.'
     threads_from:
       group: '에서 비롯된 토론'
+      pinned: '고정된 스레드'
+      proposals: '활동화된 결정이 있는 스레드'
       starred: '별표 표시된 주제'
       today: '오늘'
       yesterday: '어제'
@@ -499,33 +1238,48 @@ ko:
     unread_threads: 읽지 않은 쓰레드
     view_more: 더보기
     no_groups:
+      explanation: '가입된 그룹이 없기 때문에 읽지 않은 스레드가 없습니다. '
       start: 시작
       or: 혹은
       join_group: '주제를 보기 위해 그룹에 <a href="/explore">참여합니다</a> '
   discussion:
+    private_thread: 비공개 스레드
     activity: '최근 활동'
     activity_placeholder: '아직 활동내역 없음'
     load_previous: '이전 활동내역 보기'
     started_by: '<strong>{{name}}</strong>님이 시작하였습니다.'
   activity_card:
+    count_responses: "{{count}}개 응답"
     latest: 최신
     context: 내용
     attachment_display:
       aria_label: '첨부파일:'
       image_alt: '첨부이미지'
+    comment: 댓글
   thread_group:
     aria_label: '그룹명'
   thread_context:
     aria_label: '주제 컨텍스트'
     thread_options: '쓰레드 옵션'
+    email_settings: '알림 설정'
     edit: '편집'
     close_thread: '닫기'
+    reopen_thread: '재시작'
+    pin_thread: '핀 추가'
+    unpin_thread: '핀 제거'
     move_thread: '이동'
     print_thread: '인쇄'
     delete_thread: '삭제'
+    add_comment: '댓글'
+    forked_from: "분기됨"
+  pin_thread_modal:
+    title: 스레드 고정
+    pin_thread: 스레드 고정
   delete_thread_form:
+    aria_label: '스레드 삭제'
     title: 쓰레드 삭제
     body: 정말로 이 쓰레드를 삭제하시겠습니까?
+    confirm: '스레드 삭제'
     messages:
       success: 쓰레드가 삭제되었습니다.
   move_thread_form:
@@ -553,12 +1307,19 @@ ko:
     invitation: '훌륭한 초대를 쓰기 위한 도움말'
     proposal: '명확한 제안을 쓰기을 위한 도움말'
     vote: '선택은 언제나 변경할 수 있습니다.'
+  explore_page:
+    header: 그룹 탐색
   global:
     messages:
       reload: '다시 불러오기'
   poll_common:
     have_your_say: 한말씀
+    start_poll: 의사 결정 시작하기
     save_changes: 저장
+  poll_common_attachment_form:
+    label: 첨부파일
+  poll_common_index_card:
+    count: "모두 보기: ({{count}})개 결정"
   discussions_panel:
     open: 진행중
     closed: 종료
@@ -566,17 +1327,42 @@ ko:
     order_by_name: '이름'
     header_name: '이름'
     header_username: '아이디'
+    invitations: '초대'
+    admin: '관리자'
     accepted: '멤버'
   polls_panel:
     open: '진행중'
     closed: '종료'
+  current_polls_card:
+    start_poll: 새로운 의사결정
+  poll_common_notify_group:
+    members_count: "{{count}}명이 알림을 받습니다."
+  poll_common_calendar_invite:
+    location: 장소
+  poll_common_settings:
+    anyone_can_participate:
+      title: 링크가 있으면 누구나 참여할 수 있습니다.
+    notify_on_closing_soon:
+      undecided_voters: 결정하지 않은 투표자들
+  poll_common_set_outcome_panel:
+    share_outcome: 결과 공유
+  poll_common_outcome_form:
+    submit: 결과 공유
   poll_common_form:
     closed: 종료
+    start: 시작
+  poll_poll_form:
+    edit_header: 투표 수정
   poll_count_options:
     'yes': '네'
     'no': '아니요'
+  poll_meeting_chart_panel:
+    total: 총
+  poll_common_subscribe_form:
+    subscribe: 구독하기
   auth_form:
     name_placeholder: 이름
+    set_password: 비밀번호가 설정됨
   webhook:
     name_label: 이름
   group_survey:

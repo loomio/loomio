@@ -272,7 +272,6 @@ fr:
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Se désabonner</a> des commentaires dans ce fil de discussion."
     unsubscribe_from_comment_replied_to_html: "Il s'agit d'une notification de réponse."
     unsubscribe_from_user_mentioned_html: "Il s'agit d'une notification de mention."
-    discussion_closed: "%{actor} a fermé la discussion"
   footer:
     about: À propos
     blog: Blog

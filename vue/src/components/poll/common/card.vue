@@ -50,14 +50,14 @@ v-card
   poll-common-card-header(:poll='poll')
   div(v-if="poll.discardedAt")
     v-card-text
-      .grey--text(v-t="'poll_common_card.deleted'")
+      .text--secondary(v-t="'poll_common_card.deleted'")
   div(v-else)
     v-card-title
       h1.poll-common-card__title.display-1(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
         span(v-if='!poll.translation.title') {{poll.title}}
         translation(v-if="poll.translation.title" :model='poll', field='title')
         v-chip.ml-3(outlined small color="info" v-t="'poll_types.' + poll.pollType")
-    .px-4
+    .px-4.pb-4
       poll-common-set-outcome-panel(:poll='poll' v-if="!outcome")
       poll-common-outcome-panel(:outcome='outcome' v-if="outcome")
       poll-common-details-panel(:poll='poll')

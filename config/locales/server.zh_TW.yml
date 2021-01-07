@@ -251,11 +251,14 @@ zh_TW:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> 啟動了討論串：%{discussion}"
     discussion_edited:
+      inline: "%{actor} 編輯了討論串"
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> 編輯了討論串：%{discussion}"
     discussion_announced:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> 邀請您加入：%{discussion}"
+    discussion_closed:
+      inline: "%{actor} 關閉了討論串"
     new_comment:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> 評論在：%{discussion}"
@@ -272,7 +275,6 @@ zh_TW:
     unsubscribe_from_new_comment_html: "<a href='%{url}'>取消訂閱</a>此討論串中的留言。"
     unsubscribe_from_comment_replied_to_html: "這是回覆通知。"
     unsubscribe_from_user_mentioned_html: "這是提及通知。"
-    discussion_closed: "%{actor} 關閉了討論"
   footer:
     about: 關於
     blog: 部落格

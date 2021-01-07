@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.6.6'
+ruby '2.7.2'
 gem 'rack', '2.2.3'
 gem 'rails', '5.2.4.4'
 gem 'rake'
@@ -15,16 +15,16 @@ gem 'gravtastic'
 gem 'kt-paperclip'
 gem 'fog-aws'
 gem 'coffee-rails'
-gem 'activeadmin', '~> 2.8.1'
-gem 'ransack', '2.4.0'
+gem 'activeadmin', '~> 2.9.0'
+gem 'ransack', '2.4.1'
 gem 'nokogiri'
 gem 'twitter-text', github: 'loomio/twitter-text'
-gem 'redcarpet', '~> 3.5.0'
-gem 'paper_trail', '~> 11.0.0'
+gem 'redcarpet', '~> 3.5.1'
+gem 'paper_trail', '~> 11.1.0'
 gem 'sidekiq'
 gem 'friendly_id', '~> 5.3.0'
 gem 'httparty', '~> 0.18.1'
-gem 'browser', '~> 5.1.0'
+gem 'browser', '~> 5.2.0'
 gem "aws-sdk-s3", require: false
 gem 'mini_magick'
 gem 'image_processing', '~> 1.12'
@@ -69,7 +69,6 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'dotenv-rails'
-  gem 'database_cleaner'
   gem 'rails-controller-testing'
 end
 
@@ -81,10 +80,12 @@ end
 group :test do
   gem 'webmock'
   gem 'rack_session_access'
-  gem 'rspec-rails', '~> 4.0.1'
+  gem 'rspec-rails', '~> 4.0.2'
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'rspec-activemodel-mocks'
+  gem 'database_cleaner-active_record'
+  gem 'database_cleaner-redis'
 end
 
 group :production do

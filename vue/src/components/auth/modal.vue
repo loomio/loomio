@@ -5,7 +5,11 @@ import EventBus      from '@/shared/services/event_bus'
 import AuthService   from '@/shared/services/auth_service'
 import Session from '@/shared/services/session'
 
+import AuthInactive from '@/components/auth/inactive'
+
 export default
+  components:
+    AuthInactive: AuthInactive
   props:
     preventClose: Boolean
     close: Function
@@ -35,5 +39,6 @@ export default
   auth-signin-form(v-if='user.authForm == "signIn"' :user='user')
   auth-signup-form(v-if='user.authForm == "signUp"' :user='user')
   auth-identity-form(v-if='user.authForm == "identity"' :user='user' :identity='pendingProviderIdentity')
-  auth-complete(v-if='user.authForm == "complete"', :user='user')
+  auth-complete(v-if='user.authForm == "complete"' :user='user')
+  auth-inactive(v-if='user.authForm == "inactive"' :user='user')
 </template>

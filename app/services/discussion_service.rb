@@ -160,9 +160,11 @@ class DiscussionService
 
   def self.mark_as_read(discussion:, params:, actor:)
     actor.ability.authorize! :mark_as_read, discussion
-    reader = DiscussionReader.for_model(discussion, actor)
-    reader.viewed!(params[:ranges])
-    EventBus.broadcast('discussion_mark_as_read', reader, actor)
+    RetryOnError.with_limit(2) do
+      reader = DiscussionReader.for_model(discussion, actor)
+      reader.viewed!(params[:ranges])
+      EventBus.broadcast('discussion_mark_as_read', reader, actor)
+    end
   end
 
   def self.dismiss(discussion:, params:, actor:)
@@ -194,8 +196,10 @@ class DiscussionService
     time_range = time_start..time_finish
 
     DiscussionQuery.visible_to(user: user, only_unread: true, or_public: false, or_subgroups: false).last_activity_after(time_start).each do |discussion|
-      sequence_ids = discussion.items.where("events.created_at": time_range).pluck(:sequence_id)
-      DiscussionReader.for(user: user, discussion: discussion).viewed!(sequence_ids)
+      RetryOnError.with_limit(2) do
+        sequence_ids = discussion.items.where("events.created_at": time_range).pluck(:sequence_id)
+        DiscussionReader.for(user: user, discussion: discussion).viewed!(sequence_ids)
+      end
     end
   end
 

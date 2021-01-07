@@ -628,6 +628,7 @@ zh_TW:
       discussion_announced:
         title: 邀請至討論串
         helptext: 您想要邀請誰到討論串中？
+        notify_helptext: 您想通知此討論串給誰？
       discussion_edited:
         title: 編輯的通知
         helptext: 您想通知此更新給誰？（選擇性）
@@ -641,11 +642,14 @@ zh_TW:
         title: 分享成果
         helptext: 總結過程的結果，包含發現的任何意見與問題。
       anyone_can_participate: 任何有連結的人都可以參與
-      placeholder: 輸入名稱或電子郵件地址
+      placeholder: 您可以輸入名稱或電子郵件地址
       notified_empty: '尚未選取任何人'
-      notified: '{{notified}} 個夥伴將會被通知：'
-      notified_singular: '1 個夥伴將會被通知：'
+      notified: '{{notified}} 個夥伴將會被通知。'
+      notified_singular: '將通知 1 個人。'
+      notified_none: '不會通知任何人。'
       group_title: '{{name}}（{{count}} 個夥伴）'
+      visible_to_group: '任何在 {{group}} 中的人都可以看到此討論串。'
+      visible_to_guests: '僅被邀請的夥伴才能看到此討論串。'
     members_list:
       title: 分享與
       last_notified: 已通知
@@ -841,7 +845,7 @@ zh_TW:
     search_threads: 搜尋討論串……
     private_threads: 您需要是成員才能檢視群組中的私密討論串
     no_more_threads: 無更多討論串可載入
-    view_closed_threads: '漏掉了什麼嗎？<a href="{{url}}">檢視已關閉的討論串</a>'
+    view_closed_threads: '檢視已關閉的討論串'
     messages:
       privacy:
         members: '這個群組現在只對成員可見'
@@ -1160,6 +1164,7 @@ zh_TW:
     no_emails: '您將不會再收到電子郵件通知'
     you_can_reactivate: "如果您想要的話，您可以在稍後重新啟用您的帳號"
     submit: '是的，我想要停用'
+    submit_delete: '現在刪除我的帳號'
   email_settings_page:
     header: 通知設定
     account_deactivated: 您的帳號已被停用。您將不會再收到任何電子郵件。

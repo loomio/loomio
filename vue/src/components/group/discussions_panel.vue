@@ -50,28 +50,30 @@ export default
 
         EventBus.$on 'joinedGroup', (group) => @fetch()
 
-        @loader = new RecordLoader
-          collection: 'discussions'
-          params:
-            group_id: @group.id
-            exclude_types: 'group outcome'
-
-        @searchLoader = new RecordLoader
-          collection: 'searchResults'
-          params:
-            exclude_types: 'group stance outcome poll'
-            subgroups: @$route.query.subgroups || 'all'
-            group_id: @group.id
+        @refresh()
 
         @watchRecords
           key: @group.id
           collections: ['discussions', 'groups', 'memberships']
           query: (store) => @query(store)
 
-        @refresh()
 
     refresh: ->
-      @from = 0
+      @loader = new RecordLoader
+        collection: 'discussions'
+        params:
+          group_id: @group.id
+          exclude_types: 'group outcome'
+          per: 25
+
+      @searchLoader = new RecordLoader
+        collection: 'searchResults'
+        params:
+          exclude_types: 'group stance outcome poll'
+          subgroups: @$route.query.subgroups || 'all'
+          group_id: @group.id
+
+
       @fetch()
       @query()
 
@@ -113,7 +115,8 @@ export default
       if @$route.query.q
         @searchLoader.fetchRecords(q: @$route.query.q)
       else
-        params = {from: @from}
+        params = {}
+        params.per = 50
         params.filter = 'show_closed' if @$route.query.t == 'closed'
         params.filter = 'all' if @$route.query.t == 'all'
         params.subgroups = @$route.query.subgroups || 'mine'
@@ -135,10 +138,6 @@ export default
     '$route.query': 'refresh'
 
   computed:
-    showViewClosedThreads: -> @noMoreToLoad && !@$route.query.t
-    viewClosedThreadsUrl: -> @urlFor(@group) + "?t=closed"
-    noMoreToLoad: -> @loader.numLoaded > 0 && @loader.exhausted
-
     pinnedDiscussions: ->
       orderBy(@discussions.filter((discussion) -> discussion.pinned), ['title'], ['asc'])
 
@@ -165,6 +164,9 @@ export default
 
     unreadCount: ->
       filter(@discussions, (discussion) -> discussion.isUnread()).length
+
+    suggestClosedThreads: ->
+      @loader.exhausted && ['undefined', 'open', 'unread'].includes(String(@$route.query.t))
 
 </script>
 
@@ -218,11 +220,13 @@ div.discussions-panel(v-if="group")
             thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in pinnedDiscussions" :key="thread.id" :thread="thread" group-page)
             thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in regularDiscussions" :key="thread.id" :thread="thread" group-page)
 
-          v-layout(justify-center)
-            v-btn.my-2.discussions-panel__show-more(outlined color='accent' v-if="!loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords()" v-t="'common.action.load_more'")
-
-          .discussions-panel__no-more-threads.text-center.pa-1(v-t="{ path: 'group_page.no_more_threads' }" v-if='noMoreToLoad')
-          .discussions-panel__view-closed-threads.text-center.pa-1(v-html="$t('group_page.view_closed_threads', {url: viewClosedThreadsUrl })" v-if="showViewClosedThreads")
+          .d-flex.justify-center
+            .d-flex.flex-column.align-center
+              .text--secondary
+                | {{discussions.length}} / {{loader.total}}
+              v-btn.my-2.discussions-panel__show-more(outlined color='accent' v-if="discussions.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="fetch()")
+                span(v-t="'common.action.load_more'")
+              router-link.discussions-panel__view-closed-threads.text-center.pa-1(:to="'?t=closed'" v-if="suggestClosedThreads" v-t="'group_page.view_closed_threads'")
 
       .discussions-panel__content.pa-4(v-if="$route.query.q")
         p.text-center.discussions-panel__list--empty(v-if='!searchResults.length && !searchLoader.loading' v-t="{path: 'discussions_panel.no_results_found', args: {search: $route.query.q}}")

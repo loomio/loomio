@@ -1,11 +1,8 @@
-require 'redcarpet/render_strip'
-
-class Metadata::DiscussionSerializer < ActiveModel::Serializer
+class Metadata::DiscussionSerializer < MetadataSerializer
   attributes :title, :description, :image_urls
-  root false
 
   def description
-    Redcarpet::Markdown.new(Redcarpet::Render::StripDown).render(object.description.to_s)
+    render_plain_text(object.description, object.description_format)
   end
 
   def image_urls

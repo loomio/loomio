@@ -387,8 +387,6 @@ nb_NO:
       outcome_announced:
         title: Del resultat
       anyone_can_participate: Alle med link kan delta
-      notified: '{{notified}} folk vil bli varslet:'
-      notified_singular: '1 person vil bli varslet:'
       group_title: '{{name}} ({{count}} folk)'
     members_list:
       title: Delt med

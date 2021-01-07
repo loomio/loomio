@@ -585,9 +585,6 @@ de:
       outcome_announced:
         title: Ergebnis bekanntgeben
       anyone_can_participate: Alle, die Zugriff auf den Link haben, können abstimmen
-      placeholder: Gib Namen oder eMail-Adressen ein
-      notified: '{{notified}} Personen werden benachrichtigt:'
-      notified_singular: '1 Person wird benachrichtigt:'
       group_title: '{{name}} ({{count}} Personen)'
     members_list:
       title: geteilt mit

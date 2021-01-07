@@ -4,23 +4,30 @@ ca:
       title: No s'ha trobat
   group:
     stats:
+      group_stats: Estadístiques del grup
       members: Membres
       subgroups: Subgrups
       threads: Fils
       votes: Vots
       comments: Comentaris
+      polls: Enquestes
       poll_types:
         proposal: Proposta
   poll:
     export:
       title: Títol
       author: Autor
+      participants: Participants
       details: Detalls
       group_name: Nom del grup
       total: Total
   validate:
     motion:
       one_at_a_time: Hi ha una altra proposta activa.
+  user_mailer:
+    merge_verification:
+      confirm_page:
+        merge: Fusiona comptes
   email:
     reset_password:
       greeting: |
@@ -77,4 +84,7 @@ ca:
   poll_mailer:
     common:
       unsubscribe: Cancel·lar la subscripció
+      create_outcome: Comparteix el resultat
   comment_by: Comentari per %{comment_author}
+  poll_unsubscribe:
+    go_to_dashboad: Vés al panell de control

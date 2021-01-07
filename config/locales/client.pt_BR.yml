@@ -584,9 +584,6 @@ pt_BR:
       outcome_announced:
         title: Compartilhar resultado
       anyone_can_participate: Qualquer pessoa com o link pode participar
-      placeholder: Digite nomes ou endereços de e-mail
-      notified: '{{notified}} pessoas serão notificadas:'
-      notified_singular: '1 pessoa será notificada:'
       group_title: '{{name}} ({{count}} pessoa(s))'
     members_list:
       title: Compartilhado com

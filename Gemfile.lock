@@ -56,17 +56,15 @@ GEM
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
     active_model_serializers (0.8.4)
       activemodel (>= 3.0)
-    activeadmin (2.8.1)
+    activeadmin (2.9.0)
       arbre (~> 1.2, >= 1.2.1)
       formtastic (>= 3.1, < 5.0)
       formtastic_i18n (~> 0.4)
       inherited_resources (~> 1.7)
       jquery-rails (~> 4.2)
       kaminari (~> 1.0, >= 1.2.1)
-      railties (>= 5.2, < 6.1)
+      railties (>= 5.2, < 6.2)
       ransack (~> 2.1, >= 2.1.1)
-      sassc-rails (~> 2.1)
-      sprockets (>= 3.0, < 4.1)
     activejob (5.2.4.4)
       activesupport (= 5.2.4.4)
       globalid (>= 0.3.6)
@@ -101,21 +99,21 @@ GEM
       device_detector
       geocoder (>= 1.4.5)
       safely_block (>= 0.2.1)
-    arbre (1.3.0)
-      activesupport (>= 3.0.0, < 6.1)
+    arbre (1.4.0)
+      activesupport (>= 3.0.0, < 6.2)
       ruby2_keywords (>= 0.0.2, < 1.0)
     arel (9.0.0)
     aws-eventstream (1.1.0)
-    aws-partitions (1.402.0)
-    aws-sdk-core (3.109.3)
+    aws-partitions (1.411.0)
+    aws-sdk-core (3.110.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
       aws-sigv4 (~> 1.1)
       jmespath (~> 1.0)
-    aws-sdk-kms (1.39.0)
+    aws-sdk-kms (1.40.0)
       aws-sdk-core (~> 3, >= 3.109.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.86.0)
+    aws-sdk-s3 (1.87.0)
       aws-sdk-core (~> 3, >= 3.109.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.1)
@@ -124,10 +122,10 @@ GEM
     bcrypt (3.1.16)
     bootsnap (1.5.1)
       msgpack (~> 1.0)
-    browser (5.1.0)
+    browser (5.2.0)
     builder (3.2.4)
     byebug (11.1.3)
-    cancancan (3.1.0)
+    cancancan (3.2.1)
     cld (0.8.0)
       ffi
     climate_control (0.2.0)
@@ -145,6 +143,12 @@ GEM
     css_parser (1.7.1)
       addressable
     database_cleaner (1.8.5)
+    database_cleaner-active_record (1.8.0)
+      activerecord
+      database_cleaner (~> 1.8.0)
+    database_cleaner-redis (1.8.0)
+      database_cleaner (~> 1.8.0)
+      redis
     device_detector (1.0.5)
     devise (4.7.3)
       bcrypt (~> 3.0)
@@ -154,7 +158,7 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.9.1)
       devise (>= 4.7.1)
-    diff-lcs (1.3)
+    diff-lcs (1.4.4)
     discard (1.2.0)
       activerecord (>= 4.2, < 7)
     discriminator (0.1.1)
@@ -175,7 +179,7 @@ GEM
       railties (>= 5.0.0)
     faker (2.15.1)
       i18n (>= 1.6, < 2)
-    faraday (1.1.0)
+    faraday (1.2.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
     ffi (1.13.1)
@@ -281,10 +285,10 @@ GEM
     image_processing (1.12.1)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
-    inherited_resources (1.11.0)
-      actionpack (>= 5.0, < 6.1)
+    inherited_resources (1.12.0)
+      actionpack (>= 5.2, < 6.2)
       has_scope (~> 0.6)
-      railties (>= 5.0, < 6.1)
+      railties (>= 5.2, < 6.2)
       responders (>= 2, < 4)
     ipaddress (0.8.3)
     jmespath (1.4.0)
@@ -305,7 +309,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
-    kt-paperclip (6.3.0)
+    kt-paperclip (6.4.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       mime-types
@@ -332,7 +336,7 @@ GEM
     mimemagic (0.3.5)
     mini_magick (4.11.0)
     mini_mime (1.0.2)
-    mini_portile2 (2.4.0)
+    mini_portile2 (2.5.0)
     minitest (5.14.2)
     msgpack (1.3.3)
     multi_json (1.15.0)
@@ -340,12 +344,13 @@ GEM
     multipart-post (2.1.1)
     newrelic_rpm (6.14.0)
     nio4r (2.5.4)
-    nokogiri (1.10.10)
-      mini_portile2 (~> 2.4.0)
-    oj (3.10.16)
+    nokogiri (1.11.0)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
+    oj (3.10.18)
     orm_adapter (0.5.0)
     os (1.1.1)
-    paper_trail (11.0.0)
+    paper_trail (11.1.0)
       activerecord (>= 5.2)
       request_store (~> 1.1)
     pg (1.2.3)
@@ -357,8 +362,9 @@ GEM
       actionmailer (>= 3)
       premailer (~> 1.7, >= 1.7.9)
     public_suffix (4.0.6)
-    puma (5.1.0)
+    puma (5.1.1)
       nio4r (~> 2.0)
+    racc (1.5.2)
     rack (2.2.3)
     rack-attack (6.3.1)
       rack (>= 1.0, < 3)
@@ -401,12 +407,12 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
-    rake (13.0.1)
-    ransack (2.4.0)
+    rake (13.0.3)
+    ransack (2.4.1)
       activerecord (>= 5.2.4)
       activesupport (>= 5.2.4)
       i18n
-    redcarpet (3.5.0)
+    redcarpet (3.5.1)
     redis (4.2.2)
     redis-actionpack (5.2.0)
       actionpack (>= 5, < 7)
@@ -439,26 +445,26 @@ GEM
       rspec-mocks (>= 2.99, < 4.0)
     rspec-collection_matchers (1.2.0)
       rspec-expectations (>= 2.99.0.beta1)
-    rspec-core (3.9.2)
-      rspec-support (~> 3.9.3)
-    rspec-expectations (3.9.2)
+    rspec-core (3.10.1)
+      rspec-support (~> 3.10.0)
+    rspec-expectations (3.10.1)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.9.0)
+      rspec-support (~> 3.10.0)
     rspec-its (1.3.0)
       rspec-core (>= 3.0.0)
       rspec-expectations (>= 3.0.0)
-    rspec-mocks (3.9.1)
+    rspec-mocks (3.10.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.9.0)
-    rspec-rails (4.0.1)
+      rspec-support (~> 3.10.0)
+    rspec-rails (4.0.2)
       actionpack (>= 4.2)
       activesupport (>= 4.2)
       railties (>= 4.2)
-      rspec-core (~> 3.9)
-      rspec-expectations (~> 3.9)
-      rspec-mocks (~> 3.9)
-      rspec-support (~> 3.9)
-    rspec-support (3.9.3)
+      rspec-core (~> 3.10)
+      rspec-expectations (~> 3.10)
+      rspec-mocks (~> 3.10)
+      rspec-support (~> 3.10)
+    rspec-support (3.10.1)
     ruby-saml (1.11.0)
       nokogiri (>= 1.5.10)
     ruby-vips (2.0.17)
@@ -478,13 +484,14 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sentry-rails (0.3.0)
+    sentry-rails (4.1.1)
       rails (>= 5.0)
-      sentry-ruby (>= 0.3.0)
-    sentry-ruby (0.3.0)
+      sentry-ruby (~> 4.1.0)
+    sentry-ruby (4.1.2)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
       faraday (>= 1.0)
-    sentry-sidekiq (0.2.0)
-      sentry-ruby (>= 0.3.0)
+    sentry-sidekiq (4.1.1)
+      sentry-ruby (~> 4.1.0)
     sexp_processor (4.14.1)
     sidekiq (6.1.2)
       connection_pool (>= 2.2.2)
@@ -513,7 +520,7 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    tzinfo (1.2.8)
+    tzinfo (1.2.9)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
@@ -523,7 +530,7 @@ GEM
     uuidtools (2.2.0)
     warden (1.2.9)
       rack (>= 2.0.9)
-    webmock (3.10.0)
+    webmock (3.11.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -536,21 +543,22 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.8.1)
-  activeadmin (~> 2.8.1)
+  activeadmin (~> 2.9.0)
   activerecord-import (= 1.0.7)
   activerecord-nulldb-adapter
   ahoy_email (~> 1.1.0)
   ahoy_matey (~> 3.1.0)
   aws-sdk-s3
   bootsnap
-  browser (~> 5.1.0)
+  browser (~> 5.2.0)
   byebug
   cancancan
   cld
   coffee-rails
   connection_pool
   custom_counter_cache!
-  database_cleaner
+  database_cleaner-active_record
+  database_cleaner-redis
   devise (~> 4.7.3)
   devise-i18n
   discard (~> 1.2)
@@ -579,7 +587,7 @@ DEPENDENCIES
   newrelic_rpm
   nokogiri
   oj
-  paper_trail (~> 11.0.0)
+  paper_trail (~> 11.1.0)
   pg
   premailer-rails
   puma
@@ -592,15 +600,15 @@ DEPENDENCIES
   rails_12factor
   rails_serve_static_assets
   rake
-  ransack (= 2.4.0)
-  redcarpet (~> 3.5.0)
+  ransack (= 2.4.1)
+  redcarpet (~> 3.5.1)
   redis-objects
   redis-rails
   reverse_markdown
   rspec-activemodel-mocks
   rspec-collection_matchers
   rspec-its
-  rspec-rails (~> 4.0.1)
+  rspec-rails (~> 4.0.2)
   ruby-saml
   sass-rails
   sentry-rails
@@ -618,7 +626,7 @@ DEPENDENCIES
   webmock
 
 RUBY VERSION
-   ruby 2.6.6p146
+   ruby 2.7.2p137
 
 BUNDLED WITH
    2.1.4

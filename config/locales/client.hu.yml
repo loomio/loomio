@@ -520,8 +520,6 @@ hu:
       outcome_announced:
         title: Oszd meg az eredményt
       anyone_can_participate: Bárki részt vehet, akinek megvan ez a link
-      notified: 'A(z) {{értesített}} embereket értesítjük:'
-      notified_singular: '1 személy értesítést kap:'
       group_title: '{{name}} ({{count}} ember)'
     members_list:
       title: Megosztva vele
