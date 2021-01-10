@@ -65,8 +65,7 @@ export default
       :reset="reset"
       :excludedUserIds="userIds"
       :excludedAudiences="['group', 'discussion_group']"
-      :initialRecipients="initialRecipients"
-      @new-query="newQuery")
+      :initialRecipients="initialRecipients")
 
     v-text-field(
       :label="$t('announcement.form.poll_reminder.message_label')"
