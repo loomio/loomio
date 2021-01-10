@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_12_000354) do
+ActiveRecord::Schema.define(version: 2021_01_10_214948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -354,6 +354,7 @@ ActiveRecord::Schema.define(version: 2020_12_12_000354) do
     t.boolean "members_can_add_members", default: true, null: false
     t.string "membership_granted_upon", default: "approval", null: false
     t.boolean "members_can_edit_discussions", default: true, null: false
+    t.boolean "motions_can_be_edited", default: false, null: false
     t.string "cover_photo_file_name", limit: 255
     t.string "cover_photo_content_type", limit: 255
     t.integer "cover_photo_file_size"
@@ -399,11 +400,10 @@ ActiveRecord::Schema.define(version: 2020_12_12_000354) do
     t.jsonb "info", default: {}, null: false
     t.integer "new_threads_max_depth", default: 2, null: false
     t.boolean "new_threads_newest_first", default: false, null: false
-    t.boolean "admins_can_edit_user_content", default: true, null: false
+    t.boolean "admins_can_edit_user_content", default: false, null: false
     t.boolean "listed_in_explore", default: false, null: false
     t.string "secret_token", default: -> { "gen_random_uuid()" }
     t.string "content_locale"
-    t.boolean "members_can_add_guests", default: true, null: false
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["category_id"], name: "index_groups_on_category_id"
     t.index ["cohort_id"], name: "index_groups_on_cohort_id"
@@ -419,6 +419,17 @@ ActiveRecord::Schema.define(version: 2020_12_12_000354) do
     t.index ["recent_activity_count"], name: "index_groups_on_recent_activity_count"
     t.index ["subscription_id"], name: "groups_subscription_id_idx"
     t.index ["token"], name: "index_groups_on_token", unique: true
+  end
+
+  create_table "integrations", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "token", null: false
+    t.integer "group_id", null: false
+    t.integer "actor_id", null: false
+    t.integer "author_id", null: false
+    t.string "permissions", array: true
+    t.index ["group_id"], name: "index_integrations_on_group_id"
+    t.index ["token"], name: "index_integrations_on_token", unique: true
   end
 
   create_table "login_tokens", id: :serial, force: :cascade do |t|
