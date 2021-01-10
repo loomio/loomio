@@ -76,6 +76,9 @@ export default class PollModel extends BaseModel
   myStance: ->
     head orderBy(@recordStore.stances.find(pollId: @id, myStance: true, latest: true, revokedAt: null), 'createdAt', 'desc')
 
+  iHaveVoted: ->
+    @myStance() && @myStance().castAt
+
   authorName: ->
     @author().nameWithTitle(@group())
 
