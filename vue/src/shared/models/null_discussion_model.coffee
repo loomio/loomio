@@ -21,3 +21,4 @@ export default class NullDiscussionModel
   polls: -> []
   discussion: -> @
   group: -> new NullGroupModel()
+  markAsRead: -> false
