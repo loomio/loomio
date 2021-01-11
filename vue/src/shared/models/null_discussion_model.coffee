@@ -13,6 +13,23 @@ export default class NullDiscussionModel
       title: 'No thread'
       description: ''
       descriptionFormat: 'html'
+      key: null
+      private: true
+      usesMarkdown: true
+      lastItemAt: null
+      forkedEventIds: []
+      ranges: []
+      readRanges: []
+      isForking: false
+      newestFirst: false
+      files: []
+      imageFiles: []
+      attachments: []
+      recipientMessage: null
+      recipientAudience: null
+      recipientUserIds: []
+      recipientEmails: []
+      groupId: null
 
     each defaults, (value, key) =>
       Vue.set(@, key, value)
