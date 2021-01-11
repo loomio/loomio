@@ -37,10 +37,8 @@ Loomio::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   namespace :api, defaults: {format: :json} do
-    namespace :v0 do
-      resources :discussions, only: [:show, :index, :create]
-      resources :polls, only: [:show, :index, :create]
-      resources :memberships, only: [:show, :index, :create]
+    namespace :b1 do
+      resources :discussions, only: [:create]
     end
 
     namespace :v1 do
