@@ -54,19 +54,12 @@ export default class EventModel extends BaseModel
 
   model: ->
     @recordStore[@constructor.eventTypeMap[@eventableType]].find(@eventableId)
-  #
-  # discussion: ->
-  #   if @discussionId
-  #     @recordStore.discussions.find(@discussionId)
-  #
-  #   if @kind == "new_discussion"
-  #     @recordStore.discussions.find(@eventableId)
-  #
+    
   isUnread: ->
     !@discussion().hasRead(@sequenceId)
 
   markAsRead: ->
-    @discussion().markAsRead(@sequenceId) if @discussion()
+    @discussion().markAsRead(@sequenceId)
 
   beforeRemove: ->
     invokeMap(@notifications(), 'remove')

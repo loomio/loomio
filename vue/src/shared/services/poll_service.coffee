@@ -20,7 +20,7 @@ export default new class PollService
     hide_results:
       name: 'poll_common_card.hide_results'
       canPerform: ->
-        poll.showResults() && !poll.closedAt && !poll.myStance().castAt
+        poll.showResults() && !poll.closedAt && !poll.iHaveVoted()
       perform: ->
         poll.pleaseShowResults = false
 
@@ -28,7 +28,7 @@ export default new class PollService
       name: 'poll_common.change_vote'
       icon: 'mdi-pencil'
       canPerform: =>
-        poll.isActive() && Session.user() && poll.myStance() && poll.myStance().castAt
+        poll.isActive() && Session.user() && poll.iHaveVoted()
       perform: =>
         openModal
           component: 'PollCommonEditVoteModal',
