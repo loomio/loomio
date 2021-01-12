@@ -6,14 +6,15 @@ describe API::B1::DiscussionsController do
 
   describe 'create' do
     it 'happy case' do
-      i = Integration.create(
+      bot = User.create!(name: 'bot user', email: 'bot@example.com', email_verified: false)
+      webhook = Webhook.create(
         group_id: group.id,
-        actor_id: group.admins.first.id,
+        actor_id: bot.id,
         author_id: group.admins.first.id,
         name: 'group admin bot',
         permissions: ['create_discussion']
       )
-      post :create, params: { title: 'test', group_id: group.id, api_key: i.token }
+      post :create, params: { title: 'test', group_id: group.id, api_key: webhook.token }
       expect(response.status).to eq 200
       json = JSON.parse response.body
       discussion = json['discussions'][0]
@@ -23,18 +24,20 @@ describe API::B1::DiscussionsController do
     end
 
     it 'missing permission' do
-      Integration.create(
+      bot = User.create!(name: 'bot user', email: 'bot@example.com', email_verified: false)
+      webhook = Webhook.create(
         group_id: group.id,
-        actor_id: group.admins.first.id,
+        actor_id: bot.id,
         author_id: group.admins.first.id,
-        name: 'group admin bot'
+        name: 'group admin bot',
+        permissions: []
       )
-      post :create, params: { title: 'test', group_id: group.id, api_key: 1234 }
+      post :create, params: { title: 'test', group_id: group.id, api_key: webhook.token }
       expect(response.status).to eq 403
     end
 
     it 'incorrect key' do
-      Integration.create(
+      Webhook.create(
         group_id: group.id,
         actor_id: group.admins.first.id,
         author_id: group.admins.first.id,

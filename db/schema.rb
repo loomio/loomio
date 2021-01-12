@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_11_130334) do
+ActiveRecord::Schema.define(version: 2021_01_12_230321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -830,7 +830,7 @@ ActiveRecord::Schema.define(version: 2021_01_11_130334) do
   create_table "webhooks", force: :cascade do |t|
     t.integer "group_id", null: false
     t.string "name", null: false
-    t.string "url", null: false
+    t.string "url"
     t.jsonb "event_kinds", default: [], null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -841,7 +841,7 @@ ActiveRecord::Schema.define(version: 2021_01_11_130334) do
     t.string "token"
     t.integer "author_id"
     t.integer "actor_id"
-    t.integer "permissions", default: [], null: false, array: true
+    t.string "permissions", default: [], null: false, array: true
     t.index ["group_id"], name: "index_webhooks_on_group_id"
   end
 

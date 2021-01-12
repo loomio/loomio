@@ -4,10 +4,11 @@ class Webhook < ApplicationRecord
   initialized_with_token :token
 
   belongs_to :group
-  belongs_to :actor # user or bot user that performs the actions
+  belongs_to :actor, class_name: 'User' # user or bot user that performs the actions
   belongs_to :author
 
-  validates_presence_of :name, :url, :format
+  validates_presence_of :name
+  validates_presence_of :format, if: :url
   validates_inclusion_of :format, in: ['markdown', 'microsoft', 'slack']
 
   scope :not_broken, -> { where(is_broken: false) }

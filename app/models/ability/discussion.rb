@@ -19,10 +19,13 @@ module Ability::Discussion
     end
 
     can :create, ::Discussion do |discussion|
-      user.email_verified? &&
-      discussion.group.blank? ||
-      (discussion.group.admins.exists?(user.id) ||
-      (discussion.group.members_can_start_discussions? && discussion.group.members.exists?(user.id)))
+      Webhook.where(group_id: discussion.group_id, actor_id: user.id).where.any(permissions: 'create_discussion').exists? ||
+      (
+       user.email_verified? &&
+       discussion.group.blank? ||
+       discussion.group.admins.exists?(user.id) ||
+       (discussion.group.members_can_start_discussions? && discussion.group.members.exists?(user.id))
+      )
     end
 
     can [:announce], ::Discussion do |discussion|
