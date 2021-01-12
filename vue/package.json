@@ -76,6 +76,6 @@
     "vue-cli-plugin-vuetify": "latest",
     "vue-template-compiler": "2.6.12",
     "vuetify-loader": "latest",
-    "webpack": "4.45.0"
+    "webpack": "4.46.0"
   }
 }
