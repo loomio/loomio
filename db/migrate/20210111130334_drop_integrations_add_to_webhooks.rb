@@ -4,6 +4,6 @@ class DropIntegrationsAddToWebhooks < ActiveRecord::Migration[5.2]
     add_column :webhooks, :token, :string
     add_column :webhooks, :author_id, :integer
     add_column :webhooks, :actor_id, :integer
-    add_column :webhook, :permissions, :integer, array: true, default: [], null: false
+    add_column :webhooks, :permissions, :integer, array: true, default: [], null: false
   end
 end

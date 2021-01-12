@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_11_010542) do
+ActiveRecord::Schema.define(version: 2021_01_11_130334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -419,17 +419,6 @@ ActiveRecord::Schema.define(version: 2021_01_11_010542) do
     t.index ["recent_activity_count"], name: "index_groups_on_recent_activity_count"
     t.index ["subscription_id"], name: "groups_subscription_id_idx"
     t.index ["token"], name: "index_groups_on_token", unique: true
-  end
-
-  create_table "integrations", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "token", null: false
-    t.integer "group_id", null: false
-    t.integer "actor_id", null: false
-    t.integer "author_id", null: false
-    t.string "permissions", default: [], null: false, array: true
-    t.index ["group_id"], name: "index_integrations_on_group_id"
-    t.index ["token"], name: "index_integrations_on_token", unique: true
   end
 
   create_table "login_tokens", id: :serial, force: :cascade do |t|
@@ -849,6 +838,10 @@ ActiveRecord::Schema.define(version: 2021_01_11_010542) do
     t.boolean "include_body", default: false
     t.boolean "include_subgroups", default: false, null: false
     t.boolean "is_broken", default: false, null: false
+    t.string "token"
+    t.integer "author_id"
+    t.integer "actor_id"
+    t.integer "permissions", default: [], null: false, array: true
     t.index ["group_id"], name: "index_webhooks_on_group_id"
   end
 
