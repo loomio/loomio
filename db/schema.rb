@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_13_004426) do
+ActiveRecord::Schema.define(version: 2021_01_13_015811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -749,7 +749,7 @@ ActiveRecord::Schema.define(version: 2021_01_13_004426) do
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
-    t.citext "email", default: "", null: false
+    t.citext "email"
     t.string "encrypted_password", limit: 128, default: ""
     t.string "reset_password_token", limit: 255
     t.datetime "reset_password_sent_at"
@@ -805,6 +805,7 @@ ActiveRecord::Schema.define(version: 2021_01_13_004426) do
     t.inet "last_sign_in_ip"
     t.string "secret_token", default: -> { "gen_random_uuid()" }
     t.string "content_locale"
+    t.boolean "bot", default: false, null: false
     t.index ["deactivated_at"], name: "index_users_on_deactivated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"

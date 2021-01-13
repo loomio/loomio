@@ -11,6 +11,7 @@ class Webhook < ApplicationRecord
   validates_inclusion_of :format, in: ['markdown', 'microsoft', 'slack'], if: :url
 
   scope :not_broken, -> { where(is_broken: false) }
+  before_save :ensure_actor_exists
 
   def publish!(event)
     return if Rails.env.development? && ENV['WEBHOOKS_DISABLED']
@@ -21,6 +22,9 @@ class Webhook < ApplicationRecord
   end
 
   private
+  def ensure_actor_exists
+    actor || create_actor(name: @name, bot: true)
+  end
 
   def client
     @client ||= Clients::Webhook.new(token: self.url)

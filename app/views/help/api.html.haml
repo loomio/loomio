@@ -1,0 +1,34 @@
+%h1 Loomio Integration API
+
+We have created an API just for external integrations to use.
+your API key is {key}
+
+
+%h2 create discussion
+
+%pre
+  curl -X POST -d 'title=hello world&api_key=#{params['api_key']}' http://localhost:3000/api/b1/discussions
+
+%h3 params
+%table
+  %tr
+    %td title
+    %td title of the thread
+  %tr
+    %td description
+    %td context for the thread
+  %tr
+    %td description_format
+    %td either 'md' or 'html'
+  %tr
+    %td recipient_audience
+    %td 'group' or null. if 'group' whole group will be notified about the new thread
+  %tr
+    %td recipient_user_ids
+    %td array of user ids to notify or invite to the thread
+  %tr
+    %td recipient_emails
+    %td array of email addresses of people to invite to the thread
+  %tr
+    %td recipient_message
+    %td message to include in the email invitation

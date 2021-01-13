@@ -22,8 +22,8 @@ export default
         @webhooks = records.webhooks.find(groupId: @group.id)
 
   methods:
-    openDocs: ->
-      window.open('https://www.google.com/?q=yayaya', '_blank')
+    openDocs: (key) ->
+      window.open(AppConfig.baseUrl + "help/api?api_key=#{key}", '_blank')
 
     add: ->
       openModal
@@ -66,7 +66,7 @@ v-card.webhook-list
         v-list-item-content
           v-list-item-title {{webhook.name}}
         v-list-item-action(v-if="webhook.permissions.length")
-          v-btn(icon @click="openDocs(webhook)" :title="$t('webhook.show_docs')")
+          v-btn(icon @click="openDocs(webhook.token)" :title="$t('webhook.show_docs')")
             v-icon(color="accent") mdi-file-document-outline
         v-list-item-action
           v-btn(icon @click="edit(webhook)" :title="$t('common.action.edit')")

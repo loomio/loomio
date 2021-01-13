@@ -6,6 +6,10 @@ class API::B1::BaseController < API::V1::SnorlaxBase
   end
 
   def current_user
-    Webhook.find_by(token: params[:api_key]).actor
+    current_webhook.actor
+  end
+
+  def current_webhook
+    Webhook.find_by(token: params[:api_key])
   end
 end

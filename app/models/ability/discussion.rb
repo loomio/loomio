@@ -20,11 +20,11 @@ module Ability::Discussion
 
     can :create, ::Discussion do |discussion|
       Webhook.where(group_id: discussion.group_id, actor_id: user.id).where.any(permissions: 'create_discussion').exists? ||
+      user.email_verified? &&
       (
-       user.email_verified? &&
        discussion.group.blank? ||
        discussion.group.admins.exists?(user.id) ||
-       (discussion.group.members_can_start_discussions? && discussion.group.members.exists?(user.id))
+       (discussion.group.members_can_start_discussions && discussion.group.members.exists?(user.id))
       )
     end
 

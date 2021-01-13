@@ -21,6 +21,9 @@ export default
     ]
 
   methods:
+    docsUrl: (key) ->
+      AppConfig.baseUrl + "help/api?api_key=#{key}"
+
     submit: ->
       @webhook.save()
       .then =>
@@ -54,6 +57,7 @@ v-card.webhook-form
           v-checkbox.webhook-form__event-kind(hide-details v-for='kind in kinds' v-model='webhook.eventKinds' :key="kind" :label="$t('webhook.event_kinds.' + kind)" :value="kind")
         v-tab-item(key="api")
           p.text--secondary(v-t="'webhook.permissions_explaination'")
+          a(:href="docsUrl(webhook.token)" v-t="webhook.show_docs")
           v-checkbox.webhook-form__permission(hide-details v-for='permission in permissions' v-model='webhook.permissions' :key="permission" :label="$t('webhook.permissions.' + permission)" :value="permission")
 
     v-card-actions
