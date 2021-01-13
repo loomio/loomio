@@ -43,6 +43,7 @@ class PermittedParams < Struct.new(:params)
                                        :minimum_stance_choices, :pending_emails, {pending_emails: []}]},
       :document_ids, {document_ids: []},
       :poll_option_names, {poll_option_names: []},
+      :options, {options: []},
       :files, :image_files, {files: []}, {image_files: []}
    ]
   end

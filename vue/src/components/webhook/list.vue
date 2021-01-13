@@ -65,9 +65,11 @@ v-card.webhook-list
       v-list-item(v-for="webhook in webhooks" :key="webhook.id")
         v-list-item-content
           v-list-item-title {{webhook.name}}
+
+        # put these in a menu
         v-list-item-action(v-if="webhook.permissions.length")
           v-btn(icon @click="openDocs(webhook.token)" :title="$t('webhook.show_docs')")
-            v-icon(color="accent") mdi-file-document-outline
+            v-icon(color="accent") mdi-key-variant
         v-list-item-action
           v-btn(icon @click="edit(webhook)" :title="$t('common.action.edit')")
             v-icon(color="accent") mdi-pencil

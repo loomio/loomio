@@ -28,3 +28,37 @@
   %tr
     %td recipient_message
     %td message to include in the email invitation
+
+%h2 create poll
+%pre
+  curl -X POST -d 'title=vote now&poll_type=proposal&api_key=#{params['api_key']}' http://localhost:3000/api/b1/polls
+
+%h3 params
+%table
+  %tr
+    %td title
+    %td title of the thread
+  %tr
+    %td details
+    %td the main text of the poll
+  %tr
+    %td details_format
+    %td either 'md' or 'html'
+  %tr
+    %td recipient_audience
+    %td 'group' or null. if 'group' whole group will be notified about the new thread
+  %tr
+    %td recipient_user_ids
+    %td array of user ids to notify or invite
+  %tr
+    %td recipient_emails
+    %td array of email addresses of people to invite to the thread
+  %tr
+    %td recipient_message
+    %td message to include in the email invitation
+
+%h2 list memberships
+- url = "http://localhost:3000/api/b1/memberships?api_key=#{params['api_key']}"
+%a{href: url}=url
+%pre
+  curl -d 'api_key=#{params['api_key']}' http://localhost:3000/api/b1/memberships

@@ -21,9 +21,12 @@ module Ability::Poll
     end
 
     can [:create], ::Poll do |poll|
-      (poll.group_id.nil? && poll.discussion_id.nil?) ||
-      poll.admins.exists?(user.id) ||
-      (poll.group.members_can_raise_motions && poll.members.exists?(user.id))
+      Webhook.where(group_id: poll.group_id, actor_id: user.id).where.any(permissions: 'create_poll').exists? ||
+      (
+        (poll.group_id.nil? && poll.discussion_id.nil?) ||
+        poll.admins.exists?(user.id) ||
+        (poll.group.members_can_raise_motions && poll.members.exists?(user.id))
+      )
     end
 
     can [:announce, :remind], ::Poll do |poll|

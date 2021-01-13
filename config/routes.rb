@@ -39,6 +39,8 @@ Loomio::Application.routes.draw do
   namespace :api, defaults: {format: :json} do
     namespace :b1 do
       resources :discussions, only: [:create]
+      resources :polls, only: [:create]
+      resources :memberships, only: [:index]
     end
 
     namespace :v1 do
