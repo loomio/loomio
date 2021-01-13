@@ -11,6 +11,7 @@ class Webhook < ApplicationRecord
   validates_inclusion_of :format, in: ['markdown', 'microsoft', 'slack'], if: :url
 
   scope :not_broken, -> { where(is_broken: false) }
+  scope :is_webhook, -> { where("url is not null") }
   before_save :ensure_actor_exists
 
   def publish!(event)

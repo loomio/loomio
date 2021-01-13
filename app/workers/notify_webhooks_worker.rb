@@ -7,6 +7,6 @@ class NotifyWebhooksWorker
     eventable.group.identities.each do |i|
       i.notify!(event) if i.respond_to? :notify!
     end
-    eventable.group.webhooks.each { |w| w.publish!(event) unless w.is_broken }
+    eventable.group.webhooks.is_webhook.each { |w| w.publish!(event) unless w.is_broken }
   end
 end
