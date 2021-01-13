@@ -8,8 +8,7 @@ class Webhook < ApplicationRecord
   belongs_to :author
 
   validates_presence_of :name
-  validates_presence_of :format, if: :url
-  validates_inclusion_of :format, in: ['markdown', 'microsoft', 'slack']
+  validates_inclusion_of :format, in: ['markdown', 'microsoft', 'slack'], if: :url
 
   scope :not_broken, -> { where(is_broken: false) }
 

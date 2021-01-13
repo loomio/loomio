@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_12_230321) do
+ActiveRecord::Schema.define(version: 2021_01_13_004426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -834,7 +834,7 @@ ActiveRecord::Schema.define(version: 2021_01_12_230321) do
     t.jsonb "event_kinds", default: [], null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "format", default: "markdown", null: false
+    t.string "format", default: "markdown"
     t.boolean "include_body", default: false
     t.boolean "include_subgroups", default: false, null: false
     t.boolean "is_broken", default: false, null: false

@@ -22,17 +22,22 @@ export default
         @webhooks = records.webhooks.find(groupId: @group.id)
 
   methods:
+    openDocs: ->
+      window.open('https://www.google.com/?q=yayaya', '_blank')
+
     add: ->
       openModal
         component: 'WebhookForm'
         props:
           group: @group
+          webhook: Records.webhooks.build(groupId: @group.id)
+
     edit: (webhook)->
       openModal
         component: 'WebhookForm'
         props:
           group: @group
-          model: webhook
+          webhook: webhook
 
     confirmRemove: (webhook) ->
       openModal
@@ -49,7 +54,7 @@ export default
 <template lang="pug">
 v-card.webhook-list
   v-card-title
-    h1.headline(tabindex="-1" v-t="'webhook.webhooks'")
+    h1.headline(tabindex="-1" v-t="'webhook.integrations'")
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text
@@ -60,6 +65,9 @@ v-card.webhook-list
       v-list-item(v-for="webhook in webhooks" :key="webhook.id")
         v-list-item-content
           v-list-item-title {{webhook.name}}
+        v-list-item-action(v-if="webhook.permissions.length")
+          v-btn(icon @click="openDocs(webhook)" :title="$t('webhook.show_docs')")
+            v-icon(color="accent") mdi-file-document-outline
         v-list-item-action
           v-btn(icon @click="edit(webhook)" :title="$t('common.action.edit')")
             v-icon(color="accent") mdi-pencil
@@ -68,5 +76,5 @@ v-card.webhook-list
             v-icon(color="warning") mdi-delete
   v-card-actions
     v-spacer
-    v-btn(color='primary' @click='add()', v-t="'webhook.add_webhook'")
+    v-btn(color='primary' @click='add()', v-t="'webhook.add_integration'")
 </template>
