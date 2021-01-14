@@ -136,7 +136,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.7)
     connection_pool (2.2.3)
-    crack (0.4.4)
+    crack (0.4.5)
+      rexml
     crass (1.0.6)
     css_parser (1.7.1)
       addressable
@@ -439,6 +440,7 @@ GEM
       railties (>= 5.0)
     reverse_markdown (2.0.0)
       nokogiri
+    rexml (3.2.4)
     rspec-activemodel-mocks (1.1.0)
       activemodel (>= 3.0)
       activesupport (>= 3.0)
@@ -530,7 +532,7 @@ GEM
     uuidtools (2.2.0)
     warden (1.2.9)
       rack (>= 2.0.9)
-    webmock (3.11.0)
+    webmock (3.11.1)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
