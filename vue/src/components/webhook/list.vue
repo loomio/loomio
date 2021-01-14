@@ -1,6 +1,7 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import AppConfig from '@/shared/services/app_config'
+import WebhookService from '@/shared/services/webhook_service'
 import Records from '@/shared/services/records'
 import Flash  from '@/shared/services/flash'
 import openModal from '@/shared/helpers/open_modal'
@@ -22,33 +23,10 @@ export default
         @webhooks = records.webhooks.find(groupId: @group.id)
 
   methods:
-    openDocs: (key) ->
-      window.open(AppConfig.baseUrl + "help/api?api_key=#{key}", '_blank')
-
-    add: ->
-      openModal
-        component: 'WebhookForm'
-        props:
-          group: @group
-          webhook: Records.webhooks.build(groupId: @group.id)
-
-    edit: (webhook)->
-      openModal
-        component: 'WebhookForm'
-        props:
-          group: @group
-          webhook: webhook
-
-    confirmRemove: (webhook) ->
-      openModal
-        component: 'ConfirmModal'
-        props:
-          confirm:
-            submit: webhook.destroy
-            text:
-              title: 'webhook.remove'
-              raw_helptext: @$t('webhook.confirm_remove', {name: webhook.name})
-              flash: 'webhook.removed'
+    addAction: (group) ->
+      WebhookService.addAction(group)
+    webhookActions: (webhook) ->
+      WebhookService.webhookActions(webhook)
 
 </script>
 <template lang="pug">
@@ -59,24 +37,14 @@ v-card.webhook-list
     dismiss-modal-button(:close="close")
   v-card-text
     p.lmo-hint-text(v-t="'webhook.subtitle'")
-    p.lmo-hint-text(v-html="$t('webhook.we_have_guides', {url: 'https://help.loomio.org/en/user_manual/groups/integrations/'})")
     loading(v-if="loading")
     v-list(v-if="!loading")
       v-list-item(v-for="webhook in webhooks" :key="webhook.id")
         v-list-item-content
           v-list-item-title {{webhook.name}}
-
-        # put these in a menu
-        v-list-item-action(v-if="webhook.permissions.length")
-          v-btn(icon @click="openDocs(webhook.token)" :title="$t('webhook.show_docs')")
-            v-icon(color="accent") mdi-key-variant
         v-list-item-action
-          v-btn(icon @click="edit(webhook)" :title="$t('common.action.edit')")
-            v-icon(color="accent") mdi-pencil
-        v-list-item-action
-          v-btn(icon @click="confirmRemove(webhook)" :title="$t('common.action.delete')")
-            v-icon(color="warning") mdi-delete
+          action-menu(:actions="webhookActions(webhook)")
   v-card-actions
     v-spacer
-    v-btn(color='primary' @click='add()', v-t="'webhook.add_integration'")
+    v-btn(color='primary' @click='addAction(group).perform()' v-t="addAction(group).name")
 </template>

@@ -2189,9 +2189,9 @@ en:
       markdown: Markdown (for Mattermost, Zapier and others)
       microsoft: Microsoft Teams
       slack: Slack
-    subtitle: Connect to Slack, Microsoft Teams, Mattermost, Zapier or anything that supports webhooks
+    subtitle: Connect to Loomio to the rest of your tools with our integration API and webhooks
     we_have_guides: |
-      See our <a href="{{url}}" target="_blank">integration setup guides</a> for help connecting your service.
+      See our <a href="{{url}}" target="_blank">webhook setup guides</a> for help connecting your service.
     add_webhook: Add webhook
     show_docs: See API usage
     edit_integration: Edit integration
@@ -2221,6 +2221,7 @@ en:
     permissions:
       create_discussion: create discussion
       create_poll: create poll
+      read_memberships: read memberships
     include_body_label: Include message body with notification
     include_subgroups_label: Relay events from subgroups
 
