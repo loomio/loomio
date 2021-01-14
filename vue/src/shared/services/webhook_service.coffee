@@ -47,26 +47,3 @@ export default new class WebhookService
                 title: 'webhook.remove'
                 raw_helptext: @$t('webhook.confirm_remove', {name: webhook.name})
                 flash: 'webhook.removed'
-
-  # addWebhook: ->
-  #   EventBus.$emit 'openModal',
-  #     component: 'WebhookForm'
-  #     props:
-  #       webhook: Records.webhooks.build(groupId: @group.id)
-  #
-  # editWebhook: (webhook)->
-  #   EventBus.$emit 'openModal',
-  #     component: 'WebhookForm'
-  #     props:
-  #       webhook: webhook
-  #
-  # destroyWebhook: (webhook) ->
-  #   EventBus.$emit 'openModal',
-  #     component: 'ConfirmModal'
-  #     props:
-  #       confirm:
-  #         submit: webhook.destroy
-  #         text:
-  #           title: 'webhook.remove'
-  #           raw_helptext: @$t('webhook.confirm_remove', {name: webhook.name})
-  #           flash: 'webhook.removed'

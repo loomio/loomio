@@ -280,8 +280,4 @@ class API::V1::SnorlaxBase < ActionController::Base
   def respond_with_errors
     render json: {errors: resource.errors.as_json}, root: false, status: 422
   end
-
-  def default_scope
-    {}
-  end
 end

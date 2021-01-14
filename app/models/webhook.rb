@@ -12,7 +12,7 @@ class Webhook < ApplicationRecord
 
   scope :not_broken, -> { where(is_broken: false) }
   scope :is_webhook, -> { where("url is not null") }
-  before_save :ensure_actor_exists
+  before_save :update_actor_name
 
   def publish!(event)
     return if Rails.env.development? && ENV['WEBHOOKS_DISABLED']
@@ -23,8 +23,8 @@ class Webhook < ApplicationRecord
   end
 
   private
-  def ensure_actor_exists
-    actor || create_actor(name: @name, bot: true)
+  def update_actor_name
+    (actor || create_actor(bot: true)).update(name: name)
   end
 
   def client
