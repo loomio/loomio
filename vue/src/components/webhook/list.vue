@@ -36,7 +36,7 @@ v-card.webhook-list
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text
-    p.lmo-hint-text(v-t="'webhook.subtitle'")
+    p.text--secondary(v-t="'webhook.subtitle'")
     loading(v-if="loading")
     v-list(v-if="!loading")
       v-list-item(v-for="webhook in webhooks" :key="webhook.id")

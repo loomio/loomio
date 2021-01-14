@@ -32,7 +32,7 @@ v-card.poll-common-reopen-modal
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text.poll-common-reopen-form
-    span.lmo-hint-text(v-t="{path: 'poll_common_reopen_form.helptext', args: {poll_type: poll.translatedPollType()}}")
+    span.text--secondary(v-t="{path: 'poll_common_reopen_form.helptext', args: {poll_type: poll.translatedPollType()}}")
     poll-common-closing-at-field(:poll='poll')
   v-card-actions
     v-spacer
