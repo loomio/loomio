@@ -106,7 +106,7 @@ module Loomio
       config.action_mailer.smtp_settings = {
         address: ENV['SMTP_SERVER'],
         port: ENV['SMTP_PORT'],
-        authentication: ENV['SMTP_AUTH'],
+        authentication: ENV['SMTP_AUTH'] == 'none' ? nil : ENV['SMTP_AUTH'] || :plain,
         user_name: ENV['SMTP_USERNAME'],
         password: ENV['SMTP_PASSWORD'],
         domain: ENV['SMTP_DOMAIN'],
