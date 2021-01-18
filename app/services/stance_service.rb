@@ -11,13 +11,13 @@ class StanceService
   end
 
   # is used for both create and update
-  def self.create(stance:, actor:, params: {})
+  def self.create(stance:, actor:, params: {}, force_create: false)
     params.delete(:poll_id)
 
     stance = Stance.where(
       poll_id: stance.poll_id,
       participant_id: actor.id,
-      latest: true).first || stance
+      latest: true).first || stance unless force_create
 
     actor.ability.authorize! :vote_in, stance.poll
 
