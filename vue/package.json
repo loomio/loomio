@@ -55,7 +55,7 @@
     "vuetify": "2.4.2"
   },
   "devDependencies": {
-    "@mdi/font": "^5.8.55",
+    "@mdi/font": "^5.9.55",
     "@vue/cli-plugin-pwa": "^4.5.10",
     "@vue/cli-plugin-babel": "^4.5.10",
     "@vue/cli-plugin-e2e-nightwatch": "^4.5.10",
