@@ -10,16 +10,22 @@ class StanceService
     EventBus.broadcast 'stance_destroy', stance, actor
   end
 
-  def self.create_or_update(stance:, actor:, params:)
-    actor.ability.authorize! :vote_in, Poll.find(params[:poll_id])
+  # is used for both create and update
+  def self.create(stance:, actor:, params: {})
+    params.delete(:poll_id)
 
     stance = Stance.where(
-      poll_id: params[:poll_id],
+      poll_id: stance.poll_id,
       participant_id: actor.id,
       latest: true).first || stance
 
-    stance.stance_choices = []
-    HasRichText.assign_attributes_and_update_files(stance, params)
+    actor.ability.authorize! :vote_in, stance.poll
+
+    if stance.persisted?
+      stance.stance_choices = []
+      HasRichText.assign_attributes_and_update_files(stance, params)
+    end
+
     return false unless stance.valid?
 
     stance.participant = actor

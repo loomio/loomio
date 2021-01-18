@@ -1,6 +1,6 @@
 require "rails_helper"
 
-xdescribe "Events::Position" do
+describe "Events::Position" do
   let(:group) { FactoryBot.create :group }
   let(:discussion) { create :discussion, group: group }
   let(:comment1) { create :comment, discussion: discussion }

@@ -1,6 +1,6 @@
 class API::StancesController < API::RestfulController
   def create_action
-    @event = service.create_or_update({resource_symbol => resource, params: resource_params, actor: current_user})
+    @event = service.create({resource_symbol => resource, params: resource_params, actor: current_user})
   end
 
   def update_action
