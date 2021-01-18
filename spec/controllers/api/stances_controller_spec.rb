@@ -329,12 +329,12 @@ describe API::StancesController do
       expect(json['stances'][0]['id']).to eq stance.id
     end
 
-    it 'overwrites existing stances' do
+    it 'updates existing stances' do
       sign_in user
       old_stance
-      expect { post :create, params: { stance: stance_params } }.to change { Stance.count }.by(1)
+      expect { post :create, params: { stance: stance_params } }.to change { Stance.count }.by(0)
       expect(response.status).to eq 200
-      expect(old_stance.reload.latest).to eq false
+      expect(old_stance.reload.latest).to eq true
     end
 
     it 'does not allow non members to create stances' do
