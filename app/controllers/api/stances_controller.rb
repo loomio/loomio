@@ -1,4 +1,12 @@
 class API::StancesController < API::RestfulController
+  def create_action
+    @event = service.create_or_update({resource_symbol => resource, params: resource_params, actor: current_user})
+  end
+
+  def update_action
+    create_action
+  end
+
   def index
     instantiate_collection do |collection|
       if query = params[:query]
