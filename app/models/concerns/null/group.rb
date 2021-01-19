@@ -55,13 +55,16 @@ module Null::Group
   end
 
   def empty_methods
-    [:member_ids, :webhooks, :identities, :accepted_members]
+    [:member_ids, :identities, :accepted_members]
   end
 
   def discussion_privacy_options
     'private_only'
   end
 
+  def webhooks
+    Webhook.none
+  end
   def admins
     User.none
   end

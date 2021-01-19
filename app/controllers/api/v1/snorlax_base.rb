@@ -242,10 +242,6 @@ class API::V1::SnorlaxBase < ActionController::Base
     50
   end
 
-  def destroy_action
-    resource.destroy
-  end
-
   def destroy_response
     success_response
   end

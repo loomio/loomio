@@ -43,16 +43,5 @@ describe API::B1::PollsController do
       post :create, params: { title: 'test', api_key: 1234 }
       expect(response.status).to eq 403
     end
-
-    it 'bad group id' do
-      webhook = Webhook.create(
-        group_id: group.id,
-        author_id: group.admins.first.id,
-        name: 'group admin bot',
-        permissions: ['create_discussion']
-      )
-      post :create, params: { title: 'test', group_id: bad_group.id, api_key: webhook.token }
-      expect(response.status).to eq 403
-    end
   end
 end
