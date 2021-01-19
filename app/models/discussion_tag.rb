@@ -5,6 +5,7 @@ class DiscussionTag < ActiveRecord::Base
   has_one :group, through: :discussion
   delegate :group_id, to: :discussion
 
+
   validates :discussion, presence: true
   validates :tag, presence: true
 

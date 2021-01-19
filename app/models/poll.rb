@@ -225,6 +225,14 @@ class Poll < ApplicationRecord
     show_results? ? super : []
   end
 
+  def reset_latest_stances!
+    Stance.where("id IN
+      (SELECT DISTINCT ON (participant_id) id
+       FROM stances
+       WHERE poll_id = #{id}
+       ORDER BY participant_id, created_at DESC)").update_all(latest: true)
+  end
+
   def update_stance_data
     update_attribute(:stance_data, zeroed_poll_options.merge(
       self.class.connection.select_all(%{

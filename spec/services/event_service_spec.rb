@@ -27,8 +27,13 @@ describe EventService do
     let!(:poll) { create(:poll_proposal, discussion: discussion, group: discussion.group) }
     let!(:poll_created_event) { PollService.create(poll: poll, actor: discussion.author) }
 
-    let!(:stance) { create(:stance, poll: poll, choice: "agree") }
-    let!(:stance_created_event) { StanceService.create(stance: stance, actor: discussion.author) }
+    let!(:stance) do
+      build(:stance, poll: poll, choice: "agree")
+    end
+
+    let!(:stance_created_event) do
+      StanceService.create(stance: stance, actor: discussion.author, force_create: true)
+    end
 
 
     it 'flattens' do

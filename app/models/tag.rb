@@ -8,5 +8,9 @@ class Tag < ApplicationRecord
   validates :name, presence: true
   validates :color, presence: true, format: /\A#([A-F0-9]{3}){1,2}\z/i
 
-  define_counter_cache(:discussion_tags_count) { |tag| tag.discussion_tags.count }
+  define_counter_cache(:discussion_tags_count) { |tag| tag.kept_discussion_tags_count }
+
+  def kept_discussion_tags_count
+    discussion_tags.joins(:discussion).where('discussions.discarded_at is null').count
+  end
 end

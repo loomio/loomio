@@ -45,6 +45,7 @@ class CommentService
     HasRichText.assign_attributes_and_update_files(comment, params)
     return false unless comment.valid?
     comment.save!
+    comment.update_versions_count
 
     EventBus.broadcast('comment_update', comment, actor)
     Events::CommentEdited.publish!(comment, actor)

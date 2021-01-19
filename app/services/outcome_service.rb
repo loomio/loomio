@@ -62,6 +62,7 @@ class OutcomeService
     outcome.store_calendar_invite if outcome.should_send_calendar_invite
 
     outcome.save!
+    outcome.update_versions_count
 
     users = UserInviter.where_or_create!(actor: actor,
                                          emails: params[:recipient_emails],
