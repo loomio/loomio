@@ -13,7 +13,7 @@ describe API::B1::PollsController do
         name: 'group admin bot',
         permissions: ['create_poll']
       )
-      post :create, params: { title: 'test', options: ['agree', 'disagree'], api_key: webhook.token }
+      post :create, params: { title: 'test', poll_type: 'proposal', options: ['agree', 'disagree'], api_key: webhook.token }
       expect(response.status).to eq 200
       json = JSON.parse response.body
       discussion = json['polls'][0]
