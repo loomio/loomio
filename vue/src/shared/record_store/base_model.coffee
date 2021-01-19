@@ -122,7 +122,6 @@ export default class BaseModel
       of: 'id'
       find: {}
 
-
     @[name] = =>
       find = Object.assign({}, {"#{args.with}": @[args.of]},  args.find)
       if userArgs.orderBy
