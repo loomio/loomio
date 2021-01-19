@@ -192,8 +192,14 @@ export default
                 size: @model.poll().undecidedVotersCount
                 icon: 'mdi-forum'
 
-        # non voters
-        # also subgroups
+        groups = @model.group().parentOrSelf().selfAndSubgroups().filter (g) -> AbilityService.canAnnounceGroup(g)
+
+        groups.forEach (group) ->
+          ret.push
+            id: "group-#{group.id}"
+            name: group.name
+            size: group.acceptedMembershipsCount
+            icon: 'mdi-forum'
 
       ret.filter (a) =>
         !@excludedAudiences.includes(a.id) &&

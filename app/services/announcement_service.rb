@@ -3,6 +3,10 @@ class AnnouncementService
 
   def self.audience_users(model, kind)
     case kind
+    when /group-\d+/
+      id = kind.match(/group-(\d+)/)[1].to_i
+      group = model.group.parent_or_self.self_and_subgroups.find(id)
+      group.accepted_members
     when 'group'            then model.group.accepted_members
     when 'discussion_group' then model.discussion.readers
     when 'voters'           then model.poll.unmasked_voters

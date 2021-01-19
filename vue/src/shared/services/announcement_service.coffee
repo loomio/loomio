@@ -8,11 +8,6 @@ export default new class AnnouncementService
   audiencesFor: (model) ->
     audiences = []
 
-    if !model.isA('group') && model.group && model.group().id &&
-      (model.group().adminsInclude(user()) ||
-       model.group().membersCanAnnounce && model.group().membersInclude(user()))
-      audiences.push 'group'
-
     if model.discussion && model.discussion().id && model.discussion().membersCount
       (model.adminsInclude(user()) ||
        model.group().membersCanAnnounce && model.membersInclude(user()))
