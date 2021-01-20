@@ -664,7 +664,7 @@ en:
     only_admins_can_announce_or_invite: Only admins can notify the whole group or invite guests
 
     audiences:
-      group: Everyone in {{name}}
+      group: Members of {{name}}
       discussion_group: Everyone in the thread
       voters: Everyone invited to vote
       decided_voters: Everyone who voted
