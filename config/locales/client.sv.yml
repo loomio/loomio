@@ -299,6 +299,8 @@ sv:
   announcement:
     form:
       invitation_message_label: Meddelande
+      poll_reminder:
+        message_label: Meddelande
   action_dock:
     delete_comment: Ta bort kommentar
     edited: Redigerad

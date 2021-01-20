@@ -421,6 +421,8 @@ he:
     privacy_organisation: 'משתמשי {{parent}} וה{{group}} יכולו לצפות בשיחה.'
     fork_notice: 'שיחה חדשה תיווצר עם {{count}} פריטים מ{{title}}'
   announcement:
+    audiences:
+      group: משתתפי ה{{name}}
     form:
       too_many_invitations: |
           הגעת לגבול ההזמנות המותר. <a href="{{upgradeUrl}}" target="_blank">שדרג</a>
@@ -440,6 +442,8 @@ he:
       poll_announced:
         title: הזמן לבחור
         helptext: מי היית רוצה להזמין להצביע?
+      poll_reminder:
+        message_label: הודעה
       poll_edited:
         title: עידכוני עריכות
       outcome_announced:
@@ -651,15 +655,6 @@ he:
     public_or_private_threads: 'אפשר שיחות פומביות ופרטיות'
     private_threads: 'רק חברים יכולים לראות את הדיונים'
     allow_public_threads: 'אפשר שיחות פומביות בקבוצה זו.'
-    parent_members_can_see_discussions: 'חברי {{parent}} יכולים לראות שיחות פרטיות.'
-    members_can_announce: 'חברים יכולים להודיע לכולם בקבוצה זו.'
-    members_can_add_members: 'חברים יכולים להזמין אנשים ולאשר בקשות הצטרפות'
-    members_can_create_subgroups: 'חברים יכולים לייצר תת קבוצות'
-    members_can_edit_discussions: 'חברים יכולים לעדכן את תוכן ונושא כל אחת מהשיחות.'
-    members_can_edit_comments: 'חברים יכולים לערוך את ההערות שלהם בכל עת.'
-    members_can_start_discussions: 'חברים יכולים לפתוח שיחות חדשות.'
-    members_can_vote: 'חברים יכולים להצביע על הצעות.'
-    members_can_raise_motions: 'חברים יכולים לפתוח הצעות.'
     submit_start_group: 'פתח קבוצה'
     submit_start_subgroup: 'פתח תת קבוצה'
     submit_update: 'עדכן הגדרות'
@@ -1383,6 +1378,7 @@ he:
     password: סיסמה
     reactivate: אקטב מחדש את החשבון
   webhook:
+    removed: אינטגרציה הוסרה
     url_label: Webhook URL
     name_label: שם
     event_kinds:

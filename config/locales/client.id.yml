@@ -49,6 +49,8 @@ id:
   announcement:
     form:
       invitation_message_label: Pesan
+      poll_reminder:
+        message_label: Pesan
   join_group_button:
     membership_requested: Permintaan keanggotaan telah dikirim
   membership_request_form:

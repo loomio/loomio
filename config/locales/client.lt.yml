@@ -199,8 +199,6 @@ lt:
     description: 'Aprašas'
     privacy: 'Privatumas'
     profile: Profilis
-    members_can_create_subgroups: 'Nariai gali kurti pogrupius.'
-    members_can_edit_comments: 'Nariai gali bet kuriuo metu redaguoti savo komentarus.'
     submit_update: 'Atnaujinti nustatymus'
   group_previous_proposals_card:
     heading: Ankstesni pasiūlymai

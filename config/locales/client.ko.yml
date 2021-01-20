@@ -595,7 +595,6 @@ ko:
     inviting_guests_to_thread: 게스트는 그룹에 속할 수 없고 스레드에 접속만 가능합니다.
     select_groups: 그룹 선택
     audiences:
-      group: '{{name}}의 전원'
       discussion_group: 스레드의 전원
       voters: 투표자 전원
       decided_voters: 투표 완료자 전원
@@ -624,6 +623,8 @@ ko:
       poll_announced:
         title: 투표 초대
         helptext: 누구를 투표에 초대하고 싶으십니까?
+      poll_reminder:
+        message_label: 메시지
       poll_edited:
         title: 변경 사항 알림
         helptext: 누구에게 업데이트 알림을 보내시겠습니까?
@@ -912,8 +913,6 @@ ko:
   group_form:
     thread_defaults_help: 새 스레드의 기본 설정
     click_to_change_image: 커버 이미지와 로고 (클릭해서 바꾸기)
-    permissions_explaination: |
-        그룹의 멤버로들은 두단계로 나뉩니다: 관리자, 멤버
     aria_label: '그룹 형태'
     new_organisation: 새로운 조직
     start_group_heading: '그룹 시작하기'
@@ -963,16 +962,6 @@ ko:
     public_or_private_threads: '공개 및 비공개 쓰레드 허용'
     private_threads: '오직 멤버만 이 토론을 볼 수 있습니다.'
     allow_public_threads: '이 그룹에 공개 쓰레드를 허용합니다.'
-    parent_members_can_see_discussions: '{{parent}}의 멤버들은 비공개 스레드를 볼 수 있습니다.'
-    members_can_announce: '멤버들은 그룹의 모든 사람에게 알림을 전송할 수 있습니다.'
-    members_can_add_members: '멤버는 다른 사람을 초대할 수 있고 가입요청을 승인할 수 있습니다.'
-    members_can_create_subgroups: '멤버는 소그룹을 만들수 있습니다.'
-    members_can_edit_discussions: '멤버는 어느 토론의 제목이나 내용을 변경할 수 있습니다.'
-    members_can_edit_comments: '멤버는 자신의 댓글을 언제든 수정할 수 있습니다.'
-    members_can_start_discussions: '멤버는 새 쓰레드를 만들 수 있습니다.'
-    members_can_vote: '멤버는 제안에 투표할 수 있습니다.'
-    members_can_raise_motions: '멤버는 제안을 시작할 수 있습니다.'
-    admins_can_edit_user_content: "관리자는 다른 유저의 댓글과 투표를 수정할 수 있습니다."
     submit_start_group: '그룹 시작하기'
     submit_start_subgroup: '소그룹 시작하기'
     submit_update: '설정 저장'

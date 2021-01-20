@@ -462,6 +462,8 @@ cmn:
     notified_people: "{{name}} 已通知 {{length}} 个伙伴："
     no_notifications_sent: 还没有发送通知
     history_error: 发生了一点问题！无法载入历史。
+    audiences:
+      group: '{{name}} 的成员'
     form:
       too_many_invitations: |
           已超过邀请限制。<a href="{{upgradeUrl}}" target="_blank">升级</a>
@@ -479,6 +481,8 @@ cmn:
       poll_announced:
         title: 邀请到投票
         helptext: 您想要邀请谁来投票？
+      poll_reminder:
+        message_label: 信息
       outcome_announced:
         title: 分享成果
       anyone_can_participate: 任何有链接的人都可以参与
@@ -638,15 +642,6 @@ cmn:
     public_or_private_threads: '允许公开与非公开话题'
     private_threads: '只有成员才能看到话题'
     allow_public_threads: '允许在此群组中公开话题。'
-    parent_members_can_see_discussions: '{{parent}} 的成员可以看到私密话题。'
-    members_can_announce: '成员可以提醒任何在群组里的人。'
-    members_can_add_members: '成员可以邀请伙伴并核准加入请求。'
-    members_can_create_subgroups: '成员可以建立子群组。'
-    members_can_edit_discussions: '成员可以更新任何话题的内容与标题。'
-    members_can_edit_comments: '成员可以在任意时间编辑他们自己的意见。'
-    members_can_start_discussions: '成员可以发起新的话题。'
-    members_can_vote: '成员可以在提案上投票。'
-    members_can_raise_motions: '成员可以发起提案。'
     submit_start_group: '建立新群组'
     submit_start_subgroup: '建立子群组'
     submit_update: '更新设置'

@@ -218,6 +218,8 @@ sl:
         helptext: Koga bi radi povabili v razpravo?
       poll_announced:
         title: Povabi h glasovanju
+      poll_reminder:
+        message_label: Sporočilo
     group_form:
       modal_title: Izberi člane skupine
   action_dock:

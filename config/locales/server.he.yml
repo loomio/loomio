@@ -176,16 +176,12 @@ he:
   discussion_mailer:
     resend: 'תזכורת: %{actor} ממתין שתצטרף ל%{discussion}'
     new_discussion:
-      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> התחיל שיחה: %{discussion}"
     discussion_edited:
-      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> ערך את השיחה: %{discussion}"
     discussion_announced:
-      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> הזמין אותך להצטרף ל: %{discussion}"
     new_comment:
-      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> הגיב ב: %{discussion}"
     comment_replied_to:
       subject: '%{actor} הגיב לך ב: %{discussion}'

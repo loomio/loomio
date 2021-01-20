@@ -179,16 +179,12 @@ ru:
   discussion_mailer:
     resend: 'НАПОМИНАЕМ: %{actor} ждет, когда вы присоединитесь к %{discussion}'
     new_discussion:
-      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> открывает ветку: %{discussion}"
     discussion_edited:
-      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> редактирует ветку: %{discussion}"
     discussion_announced:
-      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> приглашает вас присоединиться: %{discussion}"
     new_comment:
-      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> комментирует в: %{discussion}"
     comment_replied_to:
       subject: '%{actor} отвечает вам в: %{discussion}'

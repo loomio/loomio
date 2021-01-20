@@ -13,6 +13,8 @@ it:
       body: Questa pagina non esiste più
     417:
       title: Browser incompatible
+    429:
+      title: Troppi domandi
     noscript: Loomio richiede Javascript per funzionare! Per favore abilita Javascript nel tuo browser per poter continuare
     return_home: Torna alla home
     not_found: 404 file non trovato
@@ -148,14 +150,8 @@ it:
       view_group: Puoi approvare o rifiutare la richiesta qui
   discussion_mailer:
     new_discussion:
-      subject: "[%{group}]%{discussion}"
       subject_html: "<strong>%{actor}</strong> ha iniziato una discussione: %{discussion}"
-    discussion_edited:
-      subject: "[%{group}]%{discussion}"
-    discussion_announced:
-      subject: "[%{group}]%{discussion}"
     new_comment:
-      subject: "[%{group}]%{discussion}"
       subject_html: "<strong>%{actor}</strong> ha commentato in: %{discussion}"
     comment_replied_to:
       subject: '%{actor} ti ha risposto in: %{discussion}'

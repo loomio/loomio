@@ -85,6 +85,8 @@ ja:
   announcement:
     form:
       invitation_message_label: メッセージ
+      poll_reminder:
+        message_label: メッセージ
   join_group_button:
     join_group: グループに参加する
     membership_requested: メンバーリクエストが送られました

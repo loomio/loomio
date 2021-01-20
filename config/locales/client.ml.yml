@@ -49,6 +49,8 @@ ml:
   announcement:
     form:
       invitation_message_label: സന്ദേശം
+      poll_reminder:
+        message_label: സന്ദേശം
   join_group_button:
     membership_requested: അംഗത്വം അപേക്ഷിച്ചിരിക്കുന്നു
   membership_request_form:

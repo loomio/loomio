@@ -187,16 +187,12 @@ de:
   discussion_mailer:
     resend: 'ERINNERUNG: %{actor} wartet darauf, dass du %{discussion} beitrittst'
     new_discussion:
-      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> hat eine Diskussion eröffnet: %{discussion}"
     discussion_edited:
-      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> hat die Diskussion %{discussion} bearbeitet"
     discussion_announced:
-      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> hat dich zu %{discussion} eingeladen"
     new_comment:
-      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> hat in %{discussion} kommentiert."
     comment_replied_to:
       subject: '%{actor} hat dir in %{discussion}geantwortet'

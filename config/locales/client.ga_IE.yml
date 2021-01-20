@@ -267,6 +267,8 @@ ga_IE:
   announcement:
     form:
       invitation_message_label: Teachtaireacht
+      poll_reminder:
+        message_label: Teachtaireacht
   action_dock:
     edit_stance: Athraigh do sheasamh
     edited: Curtha in eagar

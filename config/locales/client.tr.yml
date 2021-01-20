@@ -361,6 +361,8 @@ tr:
   announcement:
     form:
       invitation_message_label: Mesaj
+      poll_reminder:
+        message_label: Mesaj
   action_dock:
     edit_stance: Konumunu değiştir
     edited: Düzenlendi
@@ -483,14 +485,6 @@ tr:
     public_or_private_threads: 'Kamuya açık ve gizli müzakerelere izin ver'
     private_threads: 'Sadece üyeler müzakereleri görebilir'
     allow_public_threads: 'Bu grupta kamuya açık müzakerelere izin ver.'
-    parent_members_can_see_discussions: '{{parent}} grubunun üyeleri gizli müzakereleri görebilir.'
-    members_can_add_members: 'Üyeler başkalarını davet edebilir ve katılım isteklerini onaylayabilir.'
-    members_can_create_subgroups: 'Üyeler alt gruplar oluşturabilir.'
-    members_can_edit_discussions: 'Üyeler herhangi bir müzakerenin içeriğini ve başlığını güncelleyebilir.'
-    members_can_edit_comments: 'Üyeler her zaman kendi yorumlarını düzenleyebilir.'
-    members_can_start_discussions: 'Üyeler yeni müzakereler başlatabilir.'
-    members_can_vote: 'Üyeler önerilere oy verebilir.'
-    members_can_raise_motions: 'Üyeler öneriler başlatabilir.'
     submit_start_group: 'Grup başlat'
     submit_start_subgroup: 'Alt grup başlat'
     submit_update: 'Ayarları güncelle'

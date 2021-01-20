@@ -57,6 +57,8 @@ gl:
   announcement:
     form:
       invitation_message_label: Mensaxe
+      poll_reminder:
+        message_label: Mensaxe
   action_dock:
     edited: Editado
   join_group_button:

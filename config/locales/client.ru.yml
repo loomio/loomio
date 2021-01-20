@@ -348,6 +348,8 @@ ru:
       invitation_message_label: Сообщение
       group_announced:
         title: Пригласите в группу
+      poll_reminder:
+        message_label: Сообщение
       outcome_announced:
         title: Поделиться результатами
   action_dock:

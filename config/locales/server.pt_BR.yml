@@ -202,16 +202,12 @@ pt_BR:
   discussion_mailer:
     resend: 'LEMBRETE: %{actor} está esperando você se juntar à discussão %{discussion}'
     new_discussion:
-      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> iniciou um tópico: %{discussion}"
     discussion_edited:
-      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> editou o tópico: %{discussion}"
     discussion_announced:
-      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> convidou você para participar de: %{discussion}"
     new_comment:
-      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> comentou em: %{discussion}"
     comment_replied_to:
       subject: '%{actor} respondeu a você em: %{discussion}'

@@ -340,6 +340,8 @@ ro:
   announcement:
     form:
       invitation_message_label: Mesaj
+      poll_reminder:
+        message_label: Mesaj
   action_dock:
     add_resource: Adauga atasament
     add_comment: Comenteaza
@@ -428,8 +430,6 @@ ro:
     public_threads: 'Doar discutii publice'
     public_or_private_threads: 'Permite discutii publice si private'
     allow_public_threads: 'Permite discutii publice in acest grup'
-    members_can_edit_discussions: 'Membrii pot actualiza contextul si titlul discutiei.'
-    members_can_start_discussions: 'Membrii pot creare o discutie noua.'
     submit_update: 'Actualizeaza setarile'
   membership_requests_page:
     approve: Aproba

@@ -224,15 +224,10 @@ ar:
   discussion_mailer:
     resend: 'تذكير: %{actor} في انتظارك للانضمام%{discussion}'
     new_discussion:
-      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> بدأ موضوع:%{discussion}"
     discussion_edited:
-      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong>حرر موضوع:%{discussion}"
-    discussion_announced:
-      subject: "%{discussion}"
     new_comment:
-      subject: "%{discussion}"
       subject_html: "%{discussion}:علق في<strong>%{actor}</strong>"
     reply_or_view_online_html: قم بالرد مباشرة على هذه الرسالة أو <a href='%{url}'>استعرضها على %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>أطفئ الرسائل الالكترونية</a> لهذا النقاش."

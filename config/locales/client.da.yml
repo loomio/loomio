@@ -296,6 +296,8 @@ da:
   announcement:
     form:
       invitation_message_label: Besked
+      poll_reminder:
+        message_label: Besked
       outcome_announced:
         title: Del resultat
       anyone_can_participate: Alle kan deltage
@@ -438,14 +440,6 @@ da:
     public_or_private_threads: 'Tillad både offentlige og private debatter'
     private_threads: 'Det er kun medlemmer der kan se debatter'
     allow_public_threads: 'Tillad offentlige debatter i denne gruppe.'
-    parent_members_can_see_discussions: 'Medlemmer af {{parent}} kan se private debatter.'
-    members_can_add_members: 'Madlemmer kan invitere andre og godkende andmodninger om at blive medlem.'
-    members_can_create_subgroups: 'Medlemmer kan oprette undergrupper.'
-    members_can_edit_discussions: 'Medlemmer kan opdatere indhold og title på alle debatter.'
-    members_can_edit_comments: 'Medlemmer kan redigere deres egne kommentarer til enhver tid.'
-    members_can_start_discussions: 'Medlemmer kan starte nye debatter.'
-    members_can_vote: 'Medlemmer kan stemme/tage stilling til forslag.'
-    members_can_raise_motions: 'Medlemmer kan oprette nye forslag.'
     submit_start_group: 'Opret gruppe'
     submit_start_subgroup: 'Opret undergruppe'
     submit_update: 'Gem indstillinger'

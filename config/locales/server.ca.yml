@@ -13,6 +13,10 @@ ca:
       polls: Enquestes
       poll_types:
         proposal: Proposta
+        time: enquesta de temps
+  user:
+    error:
+      bad_login: "Les contrasenyes no concorden"
   poll:
     export:
       title: Títol
@@ -20,6 +24,7 @@ ca:
       participants: Participants
       details: Detalls
       group_name: Nom del grup
+      reason: Motiu
       total: Total
   validate:
     motion:
@@ -84,7 +89,10 @@ ca:
   poll_mailer:
     common:
       unsubscribe: Cancel·lar la subscripció
+      results: Resultats
+      responses: Respostes
       create_outcome: Comparteix el resultat
+      vote_now: Votar ara
   comment_by: Comentari per %{comment_author}
   poll_unsubscribe:
     go_to_dashboad: Vés al panell de control

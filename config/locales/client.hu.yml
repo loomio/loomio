@@ -499,6 +499,8 @@ hu:
     preview: E-mail előnézete
     no_notifications_sent: Nem lettek értesítések küldve
     history_error: Valami elromlott! Nem tudtuk betölteni az előzményeket.
+    audiences:
+      group: A(z) {{name}} tagjai
     form:
       too_many_invitations: |
           A meghívási korlátot meghaladtad. <a href="{{upgradeUrl}}" target="_blank"> Frissítés </a>
@@ -515,6 +517,8 @@ hu:
       poll_announced:
         title: Meghívás szavazásra
         helptext: Kit szeretnél meghívni a szavazásra?
+      poll_reminder:
+        message_label: Üzenet
       poll_edited:
         title: Értesítés a módosításokról
       outcome_announced:
@@ -768,15 +772,6 @@ hu:
     public_or_private_threads: 'Engedélyezd a nyilvános és a zártkörű témákat'
     private_threads: 'Csak a tagok láthatják a beszélgetéseket'
     allow_public_threads: 'Engedélyezd a nyilvános témákat ebben a csoportban.'
-    parent_members_can_see_discussions: 'A(z) {{parent}} tagjai láthatják a zártkörű témákat.'
-    members_can_announce: 'A tagok értesíthetnek mindenkit a csoportban.'
-    members_can_add_members: 'A tagok meghívhatnak embereket és jóváhagyhatják a csatlakozási kérelmeket.'
-    members_can_create_subgroups: 'A tagok alcsoportokat hozhatnak létre.'
-    members_can_edit_discussions: 'A tagok frissíthetik bármilyen téma leírását és címét.'
-    members_can_edit_comments: 'A tagok bármikor szerkeszthetik saját megjegyzéseiket.'
-    members_can_start_discussions: 'A tagok felvethetnek új témákat.'
-    members_can_vote: 'A tagok szavazhatnak a javaslatokról.'
-    members_can_raise_motions: 'A tagok kezdeményezhetnek javaslatokat.'
     submit_start_group: 'Indíts csoportot'
     submit_start_subgroup: 'Az alcsoport indítása'
     submit_update: 'Beállítások frissítése'
@@ -1608,6 +1603,7 @@ hu:
     formats:
       microsoft: Microsoft csapatok
       slack: Laza
+    removed: Az összekapcsolás eltávolítva
     url_label: Webhook URL
     name_label: Név
     event_kinds:

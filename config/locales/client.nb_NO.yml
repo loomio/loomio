@@ -370,6 +370,8 @@ nb_NO:
     privacy_organisation: 'Denne tråden vil være synlig for medlemmer i {{parent}} og medlemmer i gruppen: {{group}}.'
     fork_notice: 'En ny tråd vil bli opprettet med {{count}} innlegg fra  {{title}}'
   announcement:
+    audiences:
+      group: Medlemmer av {{name}}
     form:
       group_announced:
         title: Inviter til gruppe

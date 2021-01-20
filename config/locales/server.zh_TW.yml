@@ -248,19 +248,15 @@ zh_TW:
   discussion_mailer:
     resend: '提醒：%{actor} 正在等待您加入 %{discussion}'
     new_discussion:
-      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> 啟動了討論串：%{discussion}"
     discussion_edited:
       inline: "%{actor} 編輯了討論串"
-      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> 編輯了討論串：%{discussion}"
     discussion_announced:
-      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> 邀請您加入：%{discussion}"
     discussion_closed:
       inline: "%{actor} 關閉了討論串"
     new_comment:
-      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> 評論在：%{discussion}"
     comment_replied_to:
       subject: '%{actor} 回覆您在：%{discussion}'
@@ -424,6 +420,7 @@ zh_TW:
     subject:
       poll_created: '%{actor} 啟動了一個 %{poll_type}：%{title}'
       poll_edited: '%{actor} 編輯了 %{poll_type}：%{title}l'
+      poll_reminder: '%{actor} 正在提醒您要投票：%{title}'
       poll_announced: '%{actor} 邀請您在 %{poll_type} 投票：%{title}'
       poll_announced_wip: '%{actor} 分享了一個正在進行的 %{poll_type}：%{title}'
       poll_closing_soon: '%{poll_type} 將於24小時內關閉：%{title}'
@@ -444,6 +441,7 @@ zh_TW:
     header:
       poll_created: '<strong>%{actor}</strong> 啟動了一個 %{poll_type}'
       poll_edited: '<strong>%{actor}</strong> 編輯了一個 %{poll_type}'
+      poll_reminder: '<strong>%{actor}</strong> 正在提醒您投票'
       poll_announced: '<strong>%{actor}</strong> 邀請您在 %{poll_type} 投票'
       poll_announced_wip: '<strong>%{actor}</strong> 分享了一個正在進行的 %{poll_type}'
       poll_closing_soon: '<strong>%{actor}</strong> 的 %{poll_type} 將於24小時內關閉。現在正是投票、變更您的心意或是鼓勵其他人來參與的好時機。'
