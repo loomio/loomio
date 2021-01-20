@@ -13,14 +13,14 @@ export default new class PollService
     show_results:
       name: 'poll_common_card.show_results'
       canPerform: ->
-        poll.closingAt && !poll.hideResultsUntilClosed && !poll.showResults()
+        !poll.discardedAt && poll.closingAt && !poll.hideResultsUntilClosed && !poll.showResults()
       perform: ->
         poll.pleaseShowResults = true
 
     hide_results:
       name: 'poll_common_card.hide_results'
       canPerform: ->
-        poll.showResults() && !poll.closedAt && !poll.iHaveVoted()
+        !poll.discardedAt && poll.showResults() && !poll.closedAt && !poll.iHaveVoted()
       perform: ->
         poll.pleaseShowResults = false
 
@@ -44,7 +44,7 @@ export default new class PollService
           component: 'AnnouncementHistory'
           props:
             model: poll
-      canPerform: -> true
+      canPerform: -> !poll.discardedAt
 
     announce_poll:
       icon: 'mdi-send'
@@ -105,7 +105,7 @@ export default new class PollService
     show_history:
       icon: 'mdi-history'
       name: 'action_dock.show_edits'
-      canPerform: -> poll.edited()
+      canPerform: -> !poll.discardedAt && poll.edited()
       perform: ->
         openModal
           component: 'RevisionHistoryModal'
