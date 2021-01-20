@@ -31,9 +31,6 @@ class PollMailer < BaseMailer
 
   private
 
-  def subject_prefix(poll)
-    poll.group ? "[#{@poll.group.full_name}] " : ''
-  end
 
   def send_poll_email(recipient_id, event_id, action_name)
     @recipient = User.find_by!(id: recipient_id)
@@ -62,7 +59,7 @@ class PollMailer < BaseMailer
       to:            @recipient.email,
       from: from_user_via_loomio(@event.user),
       reply_to: reply_to_address_with_group_name(model: @event.eventable, user: @recipient),
-      subject_prefix: subject_prefix(@poll),
+      subject_prefix: group_name_prefix(@poll),
       subject_key: "poll_mailer.subject.#{@action_name}",
       subject_params: {
         group: @poll.group.full_name,

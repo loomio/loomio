@@ -178,16 +178,16 @@ hu:
   discussion_mailer:
     resend: 'EMLÉKEZTETŐ: %{actor} arra vár, hogy csatlakozzon %{discussion}'
     new_discussion:
-      subject: "[%{group}] %{discussion}"
+      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> elkezdett egy témát: %{discussion}"
     discussion_edited:
-      subject: "[%{group}] %{discussion}"
+      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> szerkesztette a témát: %{discussion}"
     discussion_announced:
-      subject: "[%{group}] %{discussion}"
+      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> meghívott hogy csatlakozz: %{discussion}"
     new_comment:
-      subject: "[%{group}] %{discussion}"
+      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> hozzászólt itt: %{discussion}"
     comment_replied_to:
       subject: '%{actor} válaszolt neked itt: %{discussion}'
