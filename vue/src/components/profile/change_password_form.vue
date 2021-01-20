@@ -32,7 +32,7 @@ v-card.change-password-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.sto
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text
-    p.lmo-hint-text(v-t="'change_password_form.set_password_helptext'")
+    p.text--secondary(v-t="'change_password_form.set_password_helptext'")
     .change-password-form__password-container
       v-text-field.change-password-form__password(:label="$t('sign_up_form.password_label')" required type='password' v-model='user.password')
       validation-errors(:subject='user', field='password')

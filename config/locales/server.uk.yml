@@ -184,16 +184,16 @@ uk:
   discussion_mailer:
     resend: 'НАГАДУВАННЯ: %{actor} очікує вашого долучення до %{discussion}'
     new_discussion:
-      subject: "[%{group}] %{discussion}"
+      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> розпочав тему: %{discussion}"
     discussion_edited:
-      subject: "[%{group}] %{discussion}"
+      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> відредагував(ла) тему: %{discussion}"
     discussion_announced:
-      subject: "[%{group}] %{discussion}"
+      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> запросив(ла) вас долучитись до: %{discussion}"
     new_comment:
-      subject: "[%{group}] %{discussion}"
+      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> залишив коментар у: %{discussion}"
     comment_replied_to:
       subject: '%{actor} відповів(ла) вам у: %{discussion}'

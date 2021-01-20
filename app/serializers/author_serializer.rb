@@ -1,7 +1,7 @@
 class AuthorSerializer < ApplicationSerializer
   attributes :id, :name, :email, :username, :avatar_initials, :avatar_kind,
              :avatar_url, :email_hash, :time_zone, :locale, :created_at, :titles,
-             :placeholder_name, :email_verified
+             :placeholder_name, :email_verified, :bot
 
   def include_email?
     scope[:current_user_id] == object.id || scope[:include_email]

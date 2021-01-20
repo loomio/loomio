@@ -8,7 +8,7 @@ describe 'Object.retry_with_limit' do
         count += 1
         raise "this is an error"
       end
-    end.to raise_error
+    end.to raise_error "this is an error"
     expect(count).to eq 5
   end
 

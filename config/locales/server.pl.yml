@@ -248,16 +248,16 @@ pl:
   discussion_mailer:
     resend: 'PRZYPOMNIENIE: %{actor} czeka, aż dołączysz do %{discussion}'
     new_discussion:
-      subject: "[%{group}] %{discussion}"
+      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong>utworzył/a wątek:%{discussion}"
     discussion_edited:
-      subject: "[%{group}] %{discussion}"
+      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> edytował/a wątek: %{discussion}"
     discussion_announced:
-      subject: "[%{group}] %{discussion}"
+      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> zaprasza Cię do przyłączenia się do %{discussion}"
     new_comment:
-      subject: "[%{group}] %{discussion}"
+      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> skomentował/a w:%{discussion}"
     comment_replied_to:
       subject: '%{actor} odpowiedział/a na: %{discussion}'

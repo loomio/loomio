@@ -248,16 +248,16 @@ nl_NL:
   discussion_mailer:
     resend: 'HERINNERING: %{actor} wacht op jou om mee te doen met %{discussion}'
     new_discussion:
-      subject: "[%{group}] %{discussion}"
+      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> heeft een bord gestart: %{discussion}"
     discussion_edited:
-      subject: "[%{group}] %{discussion}"
+      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> heeft het bord %{discussion} gewijzigd"
     discussion_announced:
-      subject: "[%{group}] %{discussion}"
+      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> heeft je uitgenodigd om mee te doen met %{discussion}"
     new_comment:
-      subject: "[%{group}] %{discussion}"
+      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> gaf commentaar in: %{discussion}"
     comment_replied_to:
       subject: '%{actor} heeft je beantwoord in: %{discussion}'

@@ -43,6 +43,7 @@ class PermittedParams < Struct.new(:params)
                                        :minimum_stance_choices, :pending_emails, {pending_emails: []}]},
       :document_ids, {document_ids: []},
       :poll_option_names, {poll_option_names: []},
+      :options, {options: []},
       :files, :image_files, {files: []}, {image_files: []}
    ]
   end
@@ -98,7 +99,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def webhook_attributes
-   [:group_id, :url, :name, :format, :include_body, :include_subgroups, :event_kinds, {event_kinds: []}]
+   [:group_id, :url, :name, :format, :include_body, :include_subgroups, :permissions, :event_kinds, {event_kinds: [], permissions: []}]
   end
 
   def discussion_attributes
