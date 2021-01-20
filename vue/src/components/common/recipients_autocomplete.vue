@@ -3,7 +3,7 @@ import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
 import AnnouncementService from '@/shared/services/announcement_service'
-import {map, debounce, without, filter, uniq, uniqBy, find, difference} from 'lodash'
+import {map, debounce, without, compact, filter, uniq, uniqBy, find, difference} from 'lodash'
 import AbilityService from '@/shared/services/ability_service'
 import NotificationsCount from './notifications_count'
 
@@ -192,9 +192,19 @@ export default
                 size: @model.poll().undecidedVotersCount
                 icon: 'mdi-forum'
 
-        groups = @model.group().parentOrSelf().selfAndSubgroups().filter (g) -> AbilityService.canNotifyGroup(g)
 
-        groups.forEach (group) =>
+        groups = switch @model.constructor.singular
+          when 'poll', 'discussion', 'outcome'
+            compact [
+              @model.group(),
+              (@model.group().parentId && @model.group().parent()),
+            ].concat(
+              without(@model.group().parentOrSelf().subgroups(), @model.group())
+            )
+          else
+            []
+
+        groups.filter(AbilityService.canNotifyGroup).forEach (group) =>
           ret.push
             id: "group-#{group.id}"
             name: @$t('announcement.audiences.group', name: group.name)
