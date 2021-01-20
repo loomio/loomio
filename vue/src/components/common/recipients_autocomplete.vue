@@ -192,24 +192,24 @@ export default
                 size: @model.poll().undecidedVotersCount
                 icon: 'mdi-forum'
 
+        unless @excludedAudiences.includes('group')
+          groups = switch @model.constructor.singular
+            when 'poll', 'discussion', 'outcome'
+              compact [
+                @model.group(),
+                (@model.group().parentId && @model.group().parent()),
+              ].concat(
+                without(@model.group().parentOrSelf().subgroups(), @model.group())
+              )
+            else
+              []
 
-        groups = switch @model.constructor.singular
-          when 'poll', 'discussion', 'outcome'
-            compact [
-              @model.group(),
-              (@model.group().parentId && @model.group().parent()),
-            ].concat(
-              without(@model.group().parentOrSelf().subgroups(), @model.group())
-            )
-          else
-            []
-
-        groups.filter(AbilityService.canNotifyGroup).forEach (group) =>
-          ret.push
-            id: "group-#{group.id}"
-            name: @$t('announcement.audiences.group', name: group.name)
-            size: group.acceptedMembershipsCount
-            icon: 'mdi-forum'
+          groups.filter(AbilityService.canNotifyGroup).forEach (group) =>
+            ret.push
+              id: "group-#{group.id}"
+              name: @$t('announcement.audiences.group', name: group.name)
+              size: group.acceptedMembershipsCount
+              icon: 'mdi-forum'
 
       ret.filter (a) =>
         !@excludedAudiences.includes(a.id) &&
