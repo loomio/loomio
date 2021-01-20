@@ -27,7 +27,7 @@ class BaseMailer < ActionMailer::Base
   end
 
   def group_name_prefix(model)
-    model.group.present? ? "[#{model.group.full_name}] " : ''
+    model.group.present? ? "[#{model.group.handle || model.group.full_name}] " : ''
   end
 
   def from_user_via_loomio(user)
