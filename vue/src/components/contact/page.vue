@@ -64,7 +64,7 @@ v-main
         v-textarea(:label="$t('contact_message_form.message_label')" v-model='message.message', :placeholder="$t('contact_message_form.message_placeholder')")
         validation-errors(:subject='message', field='message')
 
-        p.lmo-hint-text(v-html="$t('contact_message_form.contact_us_email', { email: contactEmail })")
+        p.text--secondary(v-html="$t('contact_message_form.contact_us_email', { email: contactEmail })")
         v-card-actions
           v-spacer
           v-btn(color="primary" @click='submit', v-t="'contact_message_form.send_message'")

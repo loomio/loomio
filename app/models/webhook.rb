@@ -1,10 +1,18 @@
+# This represents both webhook and api endpoint for an integration
 class Webhook < ApplicationRecord
-  belongs_to :group
-  validates_presence_of :name, :url, :format
-  validates_inclusion_of :format, in: ['markdown', 'microsoft', 'slack']
+  extend HasTokens
+  initialized_with_token :token
 
-  scope :include_subgroups, -> { where(include_subgroups: true) }
+  belongs_to :group
+  belongs_to :actor, class_name: 'User' # user or bot user that performs the actions
+  belongs_to :author
+
+  validates_presence_of :name
+  validates_inclusion_of :format, in: ['markdown', 'microsoft', 'slack'], if: :url
+
   scope :not_broken, -> { where(is_broken: false) }
+  scope :is_webhook, -> { where("url is not null") }
+  before_save :update_actor_name
 
   def publish!(event)
     return if Rails.env.development? && ENV['WEBHOOKS_DISABLED']
@@ -15,6 +23,9 @@ class Webhook < ApplicationRecord
   end
 
   private
+  def update_actor_name
+    (actor || create_actor(bot: true)).update(name: name)
+  end
 
   def client
     @client ||= Clients::Webhook.new(token: self.url)

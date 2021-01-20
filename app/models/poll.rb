@@ -327,6 +327,7 @@ class Poll < ApplicationRecord
     poll_options.order(:priority).pluck(:name)
   end
 
+
   def poll_option_names=(names)
     names    = Array(names)
     existing = Array(poll_options.pluck(:name))
@@ -336,6 +337,9 @@ class Poll < ApplicationRecord
     end
     @poll_option_removed_names = (existing - names)
   end
+
+  alias options= poll_option_names=
+  alias options poll_option_names
 
   def is_new_version?
     !self.poll_options.map(&:persisted?).all? ||

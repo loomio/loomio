@@ -2182,24 +2182,29 @@ en:
   webhook:
     integrations: Integrations
     webhooks: Webhooks
+    webhook: Webhook
+    api: API
     format: Format
     formats:
       markdown: Markdown (for Mattermost, Zapier and others)
       microsoft: Microsoft Teams
       slack: Slack
-    subtitle: Connect to Slack, Microsoft Teams, Mattermost, Zapier or anything that supports webhooks
+    subtitle: Connect to Loomio to the rest of your tools with our integration API and webhooks
     we_have_guides: |
       See our <a href="{{url}}" target="_blank">webhook setup guides</a> for help connecting your service.
     add_webhook: Add webhook
-    success: Webhook added!
-    remove: Remove webhook
-    confirm_remove: "Are you sure you want to remove the webhook: {{name}}?"
-    removed: Webhook removed
+    show_docs: See API usage
+    edit_integration: Edit integration
+    add_integration: Add integration
+    success: Integration added!
+    remove: Remove integration
+    confirm_remove: "Are you sure you want to remove the integration: {{name}}?"
+    removed: Integration removed
     url_label: Webhook URL
     url_placeholder: https://hooks.example.com/...
     name_label: Name
-    name_placeholder: Give this webhook a name so you can identify it later on
-    event_kind_helptext: Which events do you want to be notified of?
+    name_placeholder: Give this integration a name so you can identify it
+    event_kind_helptext: Which events do you want the webhook to be notified of?
     event_kinds:
       new_discussion: A thread is started
       discussion_edited: A thread is edited
@@ -2212,6 +2217,11 @@ en:
       poll_closed_by_user: A poll is closed manually
       poll_reopened: A poll is re-opened for voting
       outcome_created: An outcome is shared
+    permissions_explaination: Select which actions can be performed by this integration
+    permissions:
+      create_discussion: create discussion
+      create_poll: create poll
+      read_memberships: read memberships
     include_body_label: Include message body with notification
     include_subgroups_label: Relay events from subgroups
 

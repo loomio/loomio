@@ -44,7 +44,7 @@ class User < ApplicationRecord
 
   before_save :set_legal_accepted_at, if: :legal_accepted
 
-  validates :email, presence: true, email: true, length: {maximum: 200}
+  validates :email, presence: true, email: true, length: {maximum: 200}, if: -> { !bot }
 
   validates :name,               presence: true, if: :require_valid_signup
   validates :legal_accepted,     presence: true, if: :require_legal_accepted

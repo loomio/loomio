@@ -111,7 +111,6 @@ div(style="position: relative")
       v-icon mdi-paperclip
     v-btn(text x-small @click="convertToHtml(model, field)" v-t="'formatting.wysiwyg'")
     v-spacer
-    //- v-btn(text href="/markdown" target="_blank" v-t="'common.help'")
     v-btn.mr-4(text x-small @click="preview = !preview" v-t="previewAction")
 
     slot(name="actions")

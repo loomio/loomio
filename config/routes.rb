@@ -36,212 +36,220 @@ Loomio::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  namespace :api, path: '/api/v1', defaults: {format: :json} do
-    resources :saml_providers, only: [:create, :destroy, :index]
-    resources :attachments, only: [:index, :destroy]
-    resources :webhooks, only: [:create, :destroy, :index, :update]
-
-    resources :boot, only: [] do
-      get :site, on: :collection
-      get :user, on: :collection
+  namespace :api, defaults: {format: :json} do
+    namespace :b1 do
+      resources :discussions, only: [:create]
+      resources :polls, only: [:create]
+      resources :memberships, only: [:index]
     end
 
-    resources :group_surveys, only: [:create]
+    namespace :v1 do
+      resources :saml_providers, only: [:create, :destroy, :index]
+      resources :attachments, only: [:index, :destroy]
+      resources :webhooks, only: [:create, :destroy, :index, :update]
 
-    resources :usage_reports, only: [:create]
-
-    resources :groups, only: [:index, :show, :create, :update, :destroy] do
-      member do
-        get :token
-        post :reset_token
-        get :subgroups
-        post :export
-        post 'upload_photo/:kind', action: :upload_photo
+      resources :boot, only: [] do
+        get :site, on: :collection
+        get :user, on: :collection
       end
-      collection do
-        get :count_explore_results
-        get :suggest_handle
+
+      resources :group_surveys, only: [:create]
+
+      resources :usage_reports, only: [:create]
+
+      resources :groups, only: [:index, :show, :create, :update, :destroy] do
+        member do
+          get :token
+          post :reset_token
+          get :subgroups
+          post :export
+          post 'upload_photo/:kind', action: :upload_photo
+        end
+        collection do
+          get :count_explore_results
+          get :suggest_handle
+        end
       end
-    end
 
-    resources :memberships, only: [:index, :create, :update, :destroy] do
-      collection do
-        post :join_group
-        get :for_user
-        get :autocomplete, action: :index
-        get :my_memberships
-        get :invitables
-        get :undecided
+      resources :memberships, only: [:index, :create, :update, :destroy] do
+        collection do
+          post :join_group
+          get :for_user
+          get :autocomplete, action: :index
+          get :my_memberships
+          get :invitables
+          get :undecided
+        end
+        member do
+          post :make_admin
+          post :remove_admin
+          post :save_experience
+          post :resend
+          patch :set_volume
+        end
       end
-      member do
-        post :make_admin
-        post :remove_admin
-        post :save_experience
-        post :resend
-        patch :set_volume
+
+      resources :membership_requests, only: [:create] do
+        collection do
+          get :my_pending
+          get :pending
+          get :previous
+        end
+        post :approve, on: :member
+        post :ignore, on: :member
       end
-    end
 
-    resources :membership_requests, only: [:create] do
-      collection do
-        get :my_pending
-        get :pending
-        get :previous
+      resources :profile, only: [:show] do
+        collection do
+          get  :time_zones
+          get  :mentionable_users
+          get  :me
+          get  :groups
+          get  :email_status
+          get  :email_exists
+          get  :send_merge_verification_email
+          post :update_profile
+          post :set_volume
+          post :upload_avatar
+          post :deactivate
+          post :reactivate
+          post :save_experience
+          delete :destroy
+        end
+        post :remind, on: :member
       end
-      post :approve, on: :member
-      post :ignore, on: :member
-    end
 
-    resources :profile, only: [:show] do
-      collection do
-        get  :time_zones
-        get  :mentionable_users
-        get  :me
-        get  :groups
-        get  :email_status
-        get  :email_exists
-        get  :send_merge_verification_email
-        post :update_profile
-        post :set_volume
-        post :upload_avatar
-        post :deactivate
-        post :reactivate
-        post :save_experience
-        delete :destroy
+      resources :login_tokens, only: [:create]
+
+      resources :events, only: :index do
+        patch :pin, on: :member
+        patch :unpin, on: :member
+        get :comment, on: :collection
+        patch :remove_from_thread, on: :member
       end
-      post :remind, on: :member
-    end
 
-    resources :login_tokens, only: [:create]
-
-    resources :events, only: :index do
-      patch :pin, on: :member
-      patch :unpin, on: :member
-      get :comment, on: :collection
-      patch :remove_from_thread, on: :member
-    end
-
-    resources :discussions, only: [:show, :index, :create, :update, :destroy] do
-      patch :mark_as_seen, on: :member
-      patch :dismiss, on: :member
-      patch :recall, on: :member
-      patch :set_volume, on: :member
-      patch :pin, on: :member
-      patch :unpin, on: :member
-      patch :pin_reader, on: :member
-      patch :unpin_reader, on: :member
-      patch :move, on: :member
-      patch :mark_as_read, on: :member
-      patch :set_volume, on: :member
-      patch :pin, on: :member
-      patch :close, on: :member
-      patch :reopen, on: :member
-      patch :unpin, on: :member
-      patch :pin_reader, on: :member
-      patch :unpin_reader, on: :member
-      patch :move, on: :member
-      delete :discard, on: :member
-      post  :fork, on: :collection
-      patch :move_comments, on: :member
-      get :search, on: :collection
-      get :dashboard, on: :collection
-      get :inbox, on: :collection
-      get :direct, on: :collection
-    end
-
-    resources :discussion_readers, only: [:index] do
-      member do
-        post :remove_admin
-        post :make_admin
-        post :resend
-        post :revoke
+      resources :discussions, only: [:show, :index, :create, :update, :destroy] do
+        patch :mark_as_seen, on: :member
+        patch :dismiss, on: :member
+        patch :recall, on: :member
+        patch :set_volume, on: :member
+        patch :pin, on: :member
+        patch :unpin, on: :member
+        patch :pin_reader, on: :member
+        patch :unpin_reader, on: :member
+        patch :move, on: :member
+        patch :mark_as_read, on: :member
+        patch :set_volume, on: :member
+        patch :pin, on: :member
+        patch :close, on: :member
+        patch :reopen, on: :member
+        patch :unpin, on: :member
+        patch :pin_reader, on: :member
+        patch :unpin_reader, on: :member
+        patch :move, on: :member
+        delete :discard, on: :member
+        post  :fork, on: :collection
+        patch :move_comments, on: :member
+        get :search, on: :collection
+        get :dashboard, on: :collection
+        get :inbox, on: :collection
+        get :direct, on: :collection
       end
-    end
 
-    resources :tags do
-      collection do
-        post :update_model
+      resources :discussion_readers, only: [:index] do
+        member do
+          post :remove_admin
+          post :make_admin
+          post :resend
+          post :revoke
+        end
       end
-    end
 
-    resources :search, only: :index
-
-    resources :polls, only: [:show, :index, :create, :update, :destroy] do
-      member do
-        post :remind
-        delete :discard
-        post :close
-        post :reopen
-        post :add_options
-        patch :add_to_thread
+      resources :tags do
+        collection do
+          post :update_model
+        end
       end
-      get  :closed, on: :collection
-    end
 
-    resource :outcomes,     only: [:create, :update]
+      resources :search, only: :index
 
-    resources :stances, only: [:index, :create, :update, :destroy] do
-      collection do
-        get :invite
-        get :users
-        get :my_stances
-        post :make_admin
-        post :remove_admin
-        post :revoke
+      resources :polls, only: [:show, :index, :create, :update, :destroy] do
+        member do
+          post :remind
+          delete :discard
+          post :close
+          post :reopen
+          post :add_options
+          patch :add_to_thread
+        end
+        get  :closed, on: :collection
       end
-    end
 
-    resources :outcomes,    only: [:create, :update]
+      resource :outcomes,     only: [:create, :update]
 
-    resources :comments,    only: [:create, :update, :destroy] do
-      delete :discard, on: :member
-      post :undiscard, on: :member
-    end
-    resources :reactions,   only: [:create, :update, :index, :destroy]
-
-    resources :documents, only: [:create, :update, :destroy, :index] do
-      get :for_group, on: :collection
-      get :for_discussion, on: :collection
-    end
-
-    resource :translations, only: [] do
-      get :inline, to: 'translations#inline'
-    end
-
-    resources :notifications, only: :index do
-      post :viewed, on: :collection
-    end
-
-    resources :announcements, only: [:create] do
-      collection do
-        get :count
-        get :search
-        get :history
+      resources :stances, only: [:index, :create, :update, :destroy] do
+        collection do
+          get :invite
+          get :users
+          get :my_stances
+          post :make_admin
+          post :remove_admin
+          post :revoke
+        end
       end
-    end
 
-    resources :contact_messages, only: :create
-    resources :contact_requests, only: :create
+      resources :outcomes,    only: [:create, :update]
 
-    resources :versions, only: [] do
-      get :show, on: :collection
-    end
-
-    resources :oauth_applications, only: [:show, :create, :update, :destroy] do
-      post :revoke_access, on: :member
-      post :upload_logo, on: :member
-      get :owned, on: :collection
-      get :authorized, on: :collection
-    end
-
-    namespace(:sessions)        { get :unauthorized }
-    devise_scope :user do
-      resource :sessions, only: [:create, :destroy]
-      resource :registrations, only: :create do
-        post :oauth, on: :collection
+      resources :comments,    only: [:create, :update, :destroy] do
+        delete :discard, on: :member
+        post :undiscard, on: :member
       end
+      resources :reactions,   only: [:create, :update, :index, :destroy]
+
+      resources :documents, only: [:create, :update, :destroy, :index] do
+        get :for_group, on: :collection
+        get :for_discussion, on: :collection
+      end
+
+      resource :translations, only: [] do
+        get :inline, to: 'translations#inline'
+      end
+
+      resources :notifications, only: :index do
+        post :viewed, on: :collection
+      end
+
+      resources :announcements, only: [:create] do
+        collection do
+          get :count
+          get :search
+          get :history
+        end
+      end
+
+      resources :contact_messages, only: :create
+      resources :contact_requests, only: :create
+
+      resources :versions, only: [] do
+        get :show, on: :collection
+      end
+
+      resources :oauth_applications, only: [:show, :create, :update, :destroy] do
+        post :revoke_access, on: :member
+        post :upload_logo, on: :member
+        get :owned, on: :collection
+        get :authorized, on: :collection
+      end
+
+      namespace(:sessions)        { get :unauthorized }
+      devise_scope :user do
+        resource :sessions, only: [:create, :destroy]
+        resource :registrations, only: :create do
+          post :oauth, on: :collection
+        end
+      end
+      get "identities/:id/:command", to: "identities#command"
     end
-    get "identities/:id/:command", to: "identities#command"
   end
 
   post '/direct_uploads', to: 'direct_uploads#create'
@@ -266,7 +274,8 @@ Loomio::Application.routes.draw do
 
   get '/robots'     => 'robots#show'
   get '/manifest'   => 'manifest#show', format: :json
-  get '/markdown'   => 'help#markdown'
+  get '/help/markdown' => 'help#markdown'
+  get '/help/api'   => 'help#api'
 
   get '/start_group', to: redirect('/g/new')
 
