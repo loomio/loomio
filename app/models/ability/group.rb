@@ -55,6 +55,10 @@ module Ability::Group
       ((group.members_can_add_members? && group.members.exists?(user.id)) || group.admins.exists?(user.id))
     end
 
+    can [:notify], ::Group do |group|
+      (group.members_can_announce && group.members.exists?(user.id)) || group.admins.exists?(user.id)
+    end
+
     # please note that I don't like this duplication either.
     # add_subgroup checks against a parent group
     can [:add_subgroup], ::Group do |group|

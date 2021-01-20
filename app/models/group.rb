@@ -207,6 +207,10 @@ class Group < ApplicationRecord
     parent || self
   end
 
+  def self_and_subgroups
+    Group.where(id: [id].concat(subgroup_ids))
+  end
+
   def add_member!(user, inviter: nil)
     save! unless persisted?
     self.memberships.find_or_create_by!(user: user) do |m|

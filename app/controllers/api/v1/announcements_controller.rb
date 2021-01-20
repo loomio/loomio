@@ -1,15 +1,4 @@
 class API::V1::AnnouncementsController < API::V1::RestfulController
-  # untested spike
-  # def size
-  #   current_user.ability.authorize! :announce, target_model
-  #   audience_ids = service.audience_users(target_model, params[:recipient_audience]).pluck(:id)
-  #   user_ids = Array(params[:recipient_user_ids]).map(&:to_i)
-  #   emails = Array(params[:recipient_emails])
-  #   count = User.where(id: audience_ids.concat(user_ids).uniq.compact).
-  #                where.not(email: emails).active.count + emails.uniq.compact.size
-  #   render json: {count: count}
-  # end
-
   def count
     count = UserInviter.count(
       actor: current_user,
@@ -91,7 +80,7 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
       notifications[notification.event_id] = [] unless notifications.has_key?(notification.event_id)
       notifications[notification.event_id] << {id: notification.id, to: (notification.user.name || notification.user.email), viewed: notification.viewed}
     end
-    
+
     res = events.map do |event|
       {event_id: event.id,
        created_at: event.created_at,

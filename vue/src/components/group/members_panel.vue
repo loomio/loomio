@@ -135,8 +135,10 @@ export default
     canAddMembers: ->
       AbilityService.canAddMembersToGroup(@group) && !@pending
 
-    onlyOneAdminWithMultipleMembers: ->
-      (@group.adminMembershipsCount < 2) && ((@group.membershipsCount - @group.adminMembershipsCount) > 0)
+    showAdminWarning: ->
+      @group.adminsInclude(Session.user()) &&
+      @group.adminMembershipsCount < 2 &&
+      (@group.membershipsCount - @group.adminMembershipsCount) > 0
 
   watch:
     '$route.query': 'refresh'
@@ -148,7 +150,7 @@ export default
 .members-panel
   loading(v-if="!group")
   div(v-if="group")
-    v-alert.my-2(v-model="onlyOneAdminWithMultipleMembers" color="primary" type="warning")
+    v-alert.my-2(v-if="showAdminWarning" color="primary" type="warning")
       template(slot="default")
         span(v-t="'memberships_page.only_one_admin'")
 
