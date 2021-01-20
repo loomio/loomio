@@ -1,11 +1,12 @@
 class AnnouncementService
   class UnknownAudienceKindError < Exception; end
 
-  def self.audience_users(model, kind)
+  def self.audience_users(model, kind, actor)
     case kind
     when /group-\d+/
       id = kind.match(/group-(\d+)/)[1].to_i
       group = model.group.parent_or_self.self_and_subgroups.find(id)
+      raise CanCan::AccessDenied unless actor.can?(:notify, group)
       group.accepted_members
     when 'group'            then model.group.accepted_members
     when 'discussion_group' then model.discussion.readers

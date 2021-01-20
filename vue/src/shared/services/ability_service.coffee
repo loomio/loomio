@@ -97,7 +97,7 @@ export default new class AbilityService
     else
       !discussion.id || discussion.adminsInclude(user())
 
-  canAnnounceGroup: (model) ->
+  canNotifyGroup: (model) ->
     model.adminsInclude(Session.user()) ||
     (model.membersCanAnnounce && model.membersInclude(Session.user()))
 

@@ -4,7 +4,7 @@ class UserInviter
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
     usernames =  Array(usernames).map(&:presence).compact.uniq
 
-    audience_ids = AnnouncementService.audience_users(model, audience).pluck(:id).without(actor.id)
+    audience_ids = AnnouncementService.audience_users(model, audience, actor).pluck(:id).without(actor.id)
     email_count = emails.count - User.where(email: emails).count
     user_count = User.where('email in (:emails) or id in (:user_ids) or username IN (:usernames)',
                             emails: emails,
@@ -32,7 +32,7 @@ class UserInviter
 
   def self.where_existing(user_ids:, audience:, model:, actor:)
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
-    audience_ids = AnnouncementService.audience_users(model, audience).pluck(:id).without(actor.id)
+    audience_ids = AnnouncementService.audience_users(model, audience, actor).pluck(:id).without(actor.id)
     model.members.where('users.id': user_ids + audience_ids)
   end
 
@@ -41,7 +41,7 @@ class UserInviter
     emails = Array(emails).uniq.compact
 
     audience_ids = if audience
-      AnnouncementService.audience_users(model, audience).pluck(:id).without(actor.id)
+      AnnouncementService.audience_users(model, audience, actor).pluck(:id).without(actor.id)
     else
       []
     end

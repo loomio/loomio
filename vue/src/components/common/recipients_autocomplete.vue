@@ -192,12 +192,12 @@ export default
                 size: @model.poll().undecidedVotersCount
                 icon: 'mdi-forum'
 
-        groups = @model.group().parentOrSelf().selfAndSubgroups().filter (g) -> AbilityService.canAnnounceGroup(g)
+        groups = @model.group().parentOrSelf().selfAndSubgroups().filter (g) -> AbilityService.canNotifyGroup(g)
 
-        groups.forEach (group) ->
+        groups.forEach (group) =>
           ret.push
             id: "group-#{group.id}"
-            name: group.name
+            name: @$t('announcement.audiences.group', name: group.name)
             size: group.acceptedMembershipsCount
             icon: 'mdi-forum'
 
