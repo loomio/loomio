@@ -34,5 +34,5 @@ p.common-notifications-count.text--secondary.caption
   span(v-if="count == 1" v-t="'announcement.form.notified_singular'")
   span(v-if="count > 1" v-t="{path: 'announcement.form.notified', args: {notified: count}}")
   space
-  span(v-if="model.recipientAudience" v-t="'announcement.form.click_group_to_see_individuals'") 
+  span(v-if="model.recipientAudience && !model.anonymous" v-t="'announcement.form.click_group_to_see_individuals'") 
 </template>
