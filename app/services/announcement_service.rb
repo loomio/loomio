@@ -17,7 +17,7 @@ class AnnouncementService
     when nil                then User.none
     else
       raise UnknownAudienceKindError.new
-    end
+    end.active
   end
 
   def self.resend_pending_invitations(since: 25.hours.ago, till: 24.hours.ago)

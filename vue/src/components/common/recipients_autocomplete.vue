@@ -111,6 +111,26 @@ export default
     notificationsCount: ->
       sum(@recipients.map((r) => r.size || 1))
 
+    expand: (item) ->
+      model = (@model.id && @model) || (@model.groupId && @model.group()) || {namedId: ->}
+      return false if model.anonymous
+      Records.fetch
+        path: 'announcements/audience'
+        params: {
+          recipient_audience: item.id
+          ...model.namedId()
+        }
+      .then (data) =>
+        @remove(item)
+        userIds = without(data['users'].map((u) -> u.id), Session.user().id)
+        @suggestedUserIds = uniq @suggestedUserIds.concat(userIds)
+        Records.users.find(userIds).forEach (u) =>
+          @recipients.push
+            id: u.id
+            type: 'user'
+            name: u.nameOrEmail()
+            user: u
+
     remove: (item) ->
       @recipients = filter @recipients, (r) ->
         !(r.id == item.id && r.type == item.type)
@@ -254,7 +274,23 @@ div.recipients-autocomplete
             span(v-if="canAddGuests && !canNotifyGroup"
                  v-t="'announcement.only_admins_can_announce'")
     template(v-slot:selection='data')
-      v-chip.chip--select-multi(:value='data.selected' close @click:close='remove(data.item)')
+      v-chip.chip--select-multi(
+        v-if="data.item.type =='audience'"
+        :value='data.selected'
+        close
+        color='accent'
+        @click:close='remove(data.item)'
+        @click='expand(data.item)')
+        span
+          v-icon.mr-1(small) {{data.item.icon}}
+        span {{ data.item.name }}
+      v-chip.chip--select-multi(
+        v-else
+        :value='data.selected'
+        close
+        outlined
+        color='accent'
+        @click:close='remove(data.item)')
         span
           user-avatar.mr-1(v-if="data.item.type == 'user'"
                            :user="data.item.user" size="small" no-link)

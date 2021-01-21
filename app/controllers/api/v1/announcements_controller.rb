@@ -1,4 +1,11 @@
 class API::V1::AnnouncementsController < API::V1::RestfulController
+  def audience
+    current_user.ability.authorize! :show, target_model
+    raise CanCan::AccessDenied if target_model.respond_to?(:anonymous) and target_model.anonymous
+    self.collection = AnnouncementService.audience_users(target_model, params[:recipient_audience], current_user)
+    respond_with_collection
+  end
+
   def count
     count = UserInviter.count(
       actor: current_user,
