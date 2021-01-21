@@ -706,6 +706,7 @@ en:
       group_title: '{{name}} ({{count}} people)'
       visible_to_group: 'Anyone in {{group}} will be able to see this thread.'
       visible_to_guests: 'Only invited people can see this thread.'
+      click_group_to_see_individuals: Click group to see individuals
 
     members_list:
       title: Shared with
