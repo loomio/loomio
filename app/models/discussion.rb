@@ -58,7 +58,7 @@ class Discussion < ApplicationRecord
   has_many :items, -> { includes(:user) }, class_name: 'Event', dependent: :destroy
 
   has_many :discussion_readers, dependent: :destroy
-  has_many :readers, through: :discussion_readers, source: :user
+  has_many :readers,-> { merge DiscussionReader.not_revoked },  through: :discussion_readers, source: :user
   has_many :guests, -> { merge DiscussionReader.guests }, through: :discussion_readers, source: :user
   has_many :admin_guests, -> { merge DiscussionReader.admins }, through: :discussion_readers, source: :user
 
