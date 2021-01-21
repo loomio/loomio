@@ -600,15 +600,6 @@ en:
     none_invite_only_thread: "Invite-only thread (no group)"
     change_log_placeholder: Briefly describe the changes made in this edit. (optional)
     change_log_label: What's changed?
-    # visible_to_group: Group thread
-    # visible_to_parent_group: "{{group}}"
-    # visible_to_public: Public
-    # visible_to_discussion_tooltip: Only visible to people invited to the thread
-    # visible_to_group_tooltip: Visible to everyone in the group
-    # visible_to_public_tooltip: Visible to anyone with the link (public)
-    one_person_will_be_notified: '1 person will be notified.'
-    count_people_will_be_notified: '{{count}} people will be notified.'
-    notify_specifc_people_instead: If you don't want to notify the whole group, add names of people to be notified.
     invite: Invite
     aria_label: 'Thread form'
     start_thread: Start thread
@@ -728,7 +719,6 @@ en:
     group_form:
       search_placeholder: Search for people...
       modal_title: Select group members
-      members_count: '{{count}} people will be notified'
     flash:
       success: '{{count}} notifications sent'
 
@@ -1697,12 +1687,6 @@ en:
   poll_common_select_group:
     loomio_group: Group
     loomio_group_placeholder: (no group selected)
-
-  poll_common_notify_group:
-    notify_group: Announcement
-    members_helptext: Your group will not be notified
-    members_count: "{{count}} people will be notified"
-    decided_voters_count: "The {{count}} people who have voted will be notified"
 
   poll_common_calendar_invite:
     calendar_invite: Include a calendar invitation with this outcome
