@@ -38,7 +38,12 @@ module EmailHelper
     srcs = Nokogiri::HTML(str).search("iframe[src]").map { |el| el['src'] }
     out = str.dup
     srcs.each do |src|
-      out.gsub!('<iframe src="'+src+'"></iframe>', "<a href='#{src}'>#{src}</a>")
+      begin
+        vi = VideoInfo.new(src)
+        out.gsub!('<iframe src="'+src+'"></iframe>', "<a href='#{vi.url}'><img src='#{vi.thumbnail}' /></a>")
+      rescue VideoInfo::UrlError
+        out.gsub!('<iframe src="'+src+'"></iframe>', "<a href='#{src}'>#{src}</a>")
+      end
     end
     out
   end

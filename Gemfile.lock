@@ -101,12 +101,14 @@ GEM
       device_detector
       geocoder (>= 1.4.5)
       safely_block (>= 0.2.1)
+    ansi (1.5.0)
     ar_outer_joins (0.2.0)
       activerecord (>= 3.2)
     arbre (1.4.0)
       activesupport (>= 3.0.0, < 6.2)
       ruby2_keywords (>= 0.0.2, < 1.0)
     arel (9.0.0)
+    ast (2.4.1)
     aws-eventstream (1.1.0)
     aws-partitions (1.411.0)
     aws-sdk-core (3.110.0)
@@ -298,6 +300,7 @@ GEM
       railties (>= 5.2, < 6.2)
       responders (>= 2, < 4)
     ipaddress (0.8.3)
+    iso8601 (0.9.1)
     jmespath (1.4.0)
     jquery-rails (4.4.0)
       rails-dom-testing (>= 1, < 3)
@@ -349,11 +352,15 @@ GEM
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
+    net_http_timeout_errors (0.3.5)
     newrelic_rpm (6.15.0)
     nio4r (2.5.4)
     nokogiri (1.11.1)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
+    oga (3.3)
+      ast
+      ruby-ll (~> 2.1)
     oj (3.11.0)
     orm_adapter (0.5.0)
     os (1.1.1)
@@ -473,6 +480,9 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.1)
+    ruby-ll (2.1.2)
+      ansi
+      ast
     ruby-saml (1.11.0)
       nokogiri (>= 1.5.10)
     ruby-vips (2.0.17)
@@ -536,6 +546,10 @@ GEM
       unf_ext
     unf_ext (0.0.7.7)
     uuidtools (2.2.0)
+    video_info (3.0.0)
+      iso8601 (~> 0.9.1)
+      net_http_timeout_errors (~> 0.3.0)
+      oga (~> 3.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     webmock (3.11.1)
@@ -631,6 +645,7 @@ DEPENDENCIES
   twitter-text!
   uglifier
   uuidtools
+  video_info
   webmock
 
 RUBY VERSION

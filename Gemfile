@@ -63,6 +63,7 @@ gem 'puma'
 gem 'reverse_markdown'
 gem 'discard', '~> 1.2'
 gem 'lograge'
+gem 'video_info'
 
 group :development, :test do
   gem 'byebug'
