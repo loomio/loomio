@@ -69,6 +69,7 @@ export default
         recipient_audience: @poll.recipientAudience
         recipient_user_ids: @poll.recipientUserIds
         recipient_emails: @poll.recipientEmails
+        exclude_members: true
       .then (data) =>
         count = data.stances.length
         Flash.success('announcement.flash.success', { count: count })
@@ -134,6 +135,7 @@ export default
       :excludedAudiences="['voters', 'undecided_voters', 'non_voters', 'decided_voters']"
       :excludedUserIds="userIds"
       :initialRecipients="initialRecipients"
+      :excludeMembers="true"
       @new-query="newQuery")
     .d-flex
       v-spacer

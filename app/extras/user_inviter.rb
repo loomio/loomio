@@ -1,16 +1,18 @@
 class UserInviter
-  def self.count(emails: , user_ids:, audience:, model:, usernames: , actor:)
+  def self.count(emails: , user_ids:, audience:, model:, usernames: , actor:, exclude_members: false)
     emails = Array(emails).map(&:presence).compact.uniq
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
     usernames =  Array(usernames).map(&:presence).compact.uniq
 
-    audience_ids = AnnouncementService.audience_users(model, audience, actor).pluck(:id).without(actor.id)
+    audience_ids = AnnouncementService.audience_users(
+      model, audience, actor, exclude_members).pluck(:id).without(actor.id)
     email_count = emails.count - User.where(email: emails).count
-    user_count = User.where('email in (:emails) or id in (:user_ids) or username IN (:usernames)',
-                            emails: emails,
-                            usernames: usernames,
-                            user_ids: user_ids.concat(audience_ids)).count
-    email_count + user_count
+    users = User.where('email in (:emails) or id in (:user_ids) or username IN (:usernames)',
+                        emails: emails,
+                        usernames: usernames,
+                        user_ids: user_ids.concat(audience_ids))
+    users = users.where.not(id: model.members.pluck(:id)) if exclude_members
+    email_count + users.count
   end
 
   def self.authorize!(emails: , user_ids:, audience:, model:, actor:)

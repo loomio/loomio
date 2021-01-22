@@ -5,6 +5,7 @@ import AbilityService from '@/shared/services/ability_service'
 export default
   props:
     model: Object
+    excludeMembers: Boolean
 
   data: ->
     count: 0
@@ -12,12 +13,14 @@ export default
   methods:
     updateCount: ->
       params = ((@model.id && @model) || (@model.groupId && @model.group()) || {namedId: -> {}}).namedId()
-      Records.remote.get 'announcements/count', Object.assign params,
+      excludeMembers = (@excludeMembers && {exclude_members: 1}) || {}
+      Records.remote.get('announcements/count', Object.assign params, {
         recipient_emails_cmr: @model.recipientEmails.join(',')
         recipient_user_xids: @model.recipientUserIds.join('x')
         recipient_usernames_cmr: []
         recipient_audience: @model.recipientAudience
-      .then (data) =>
+        ...excludeMembers
+      }).then (data) =>
         @count = data.count
 
   watch:
@@ -34,5 +37,5 @@ p.common-notifications-count.text--secondary.caption
   span(v-if="count == 1" v-t="'announcement.form.notified_singular'")
   span(v-if="count > 1" v-t="{path: 'announcement.form.notified', args: {notified: count}}")
   space
-  span(v-if="model.recipientAudience && !model.anonymous" v-t="'announcement.form.click_group_to_see_individuals'") 
+  span(v-if="model.recipientAudience && !model.anonymous" v-t="'announcement.form.click_group_to_see_individuals'")
 </template>

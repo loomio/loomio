@@ -20,6 +20,7 @@ export default
     reset: Boolean
     model: Object
     existingOnly: Boolean
+    excludeMembers: Boolean
     excludedAudiences:
       type: Array
       default: -> []
@@ -113,11 +114,13 @@ export default
 
     expand: (item) ->
       model = (@model.id && @model) || (@model.groupId && @model.group()) || {namedId: ->}
+      excludeMembers = (@excludeMembers && {exclude_members: 1}) || {}
       return false if model.anonymous
       Records.fetch
         path: 'announcements/audience'
         params: {
           recipient_audience: item.id
+          ...excludeMembers
           ...model.namedId()
         }
       .then (data) =>
@@ -306,5 +309,5 @@ div.recipients-autocomplete
           span(v-if="data.item.type == 'user' && currentUserId == data.item.id")
             space
             span ({{ $t('common.you') }})
-  notifications-count(v-show="recipients.length" :model='model')
+  notifications-count(v-show="recipients.length" :model='model' :exclude-members="excludeMembers")
 </template>

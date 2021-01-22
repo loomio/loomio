@@ -2,7 +2,12 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
   def audience
     current_user.ability.authorize! :show, target_model
     raise CanCan::AccessDenied if target_model.respond_to?(:anonymous) and target_model.anonymous
-    self.collection = AnnouncementService.audience_users(target_model, params[:recipient_audience], current_user)
+    self.collection = AnnouncementService.audience_users(
+      target_model,
+      params[:recipient_audience],
+      current_user,
+      params[:exclude_members]
+    )
     respond_with_collection
   end
 
@@ -13,7 +18,8 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
       emails: String(params[:recipient_emails_cmr]).split(','),
       user_ids: String(params[:recipient_user_xids]).split('x').map(&:to_i),
       audience: params[:recipient_audience],
-      usernames: String(params[:recipient_usernames]).split(',')
+      usernames: String(params[:recipient_usernames]).split(','),
+      exclude_members: params[:exclude_members]
     )
     render json: {count: count}
   end

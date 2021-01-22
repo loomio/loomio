@@ -1,8 +1,8 @@
 class AnnouncementService
   class UnknownAudienceKindError < Exception; end
 
-  def self.audience_users(model, kind, actor)
-    case kind
+  def self.audience_users(model, kind, actor, exclude_members = false)
+    users = case kind
     when /group-\d+/
       id = kind.match(/group-(\d+)/)[1].to_i
       group = model.group.parent_or_self.self_and_subgroups.find(id)
@@ -18,6 +18,8 @@ class AnnouncementService
     else
       raise UnknownAudienceKindError.new
     end.active
+    users = users.where.not(id: model.members.pluck(:id)) if exclude_members
+    users
   end
 
   def self.resend_pending_invitations(since: 25.hours.ago, till: 24.hours.ago)
