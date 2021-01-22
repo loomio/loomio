@@ -107,15 +107,13 @@ export default
       @memberships = chain.data()
 
     refresh: ->
-      @fetch()
-      @query()
-
-    fetch: ->
       @loader.fetchRecords
+        from: 0
         q: @$route.query.q
         order: @order
         filter: @$route.query.filter
         subgroups: @$route.query.subgroups
+      @query()
 
     invite: ->
       EventBus.$emit('openModal',
