@@ -5,5 +5,6 @@ production:
  :concurrency: <%= ENV['SIDEKIQ_CONCURRENCY'] || 4 %>
 :queues:
   - critical
+  - mailers
   - default
   - low
