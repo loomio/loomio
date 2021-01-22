@@ -13,7 +13,7 @@ class Events::AnnouncementCreated < Event
 
   def email_users!
     memberships.each do |m|
-      GroupMailer.delay(queue: :notification_emails).group_announced(m.user_id, self.id)
+      GroupMailer.delay(queue: :critical).group_announced(m.user_id, self.id)
     end
   end
 

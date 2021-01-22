@@ -125,7 +125,7 @@ class PollService
                  reason_format: user.default_format)
     end
 
-    Stance.where(participant_id: users.pluck(:id)).update_all(latest: false)
+    Stance.where(poll_id: poll.id, participant_id: users.pluck(:id)).update_all(latest: false)
     Stance.import(new_stances, on_duplicate_key_ignore: true)
 
     poll.update_voters_count
