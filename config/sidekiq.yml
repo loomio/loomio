@@ -8,3 +8,4 @@ production:
   - mailers
   - default
   - low
+  - low_priority
