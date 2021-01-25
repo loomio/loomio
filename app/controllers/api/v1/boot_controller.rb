@@ -1,6 +1,7 @@
 class API::V1::BootController < API::V1::RestfulController
   def site
     render json: Boot::Site.new.payload.merge(user_payload)
+    EventBus.broadcast('boot_site', current_user)
   end
 
   def user

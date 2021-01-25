@@ -64,6 +64,7 @@ gem 'reverse_markdown'
 gem 'discard', '~> 1.2'
 gem 'lograge'
 gem 'video_info'
+gem 'customerio', :git => 'https://github.com/customerio/customerio-ruby'
 
 group :development, :test do
   gem 'byebug'

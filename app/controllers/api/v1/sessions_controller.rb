@@ -9,6 +9,7 @@ class API::V1::SessionsController < Devise::SessionsController
       flash[:notice] = t(:'devise.sessions.signed_in')
       user.update(name: resource_params[:name]) if resource_params[:name]
       render json: Boot::User.new(user).payload
+      EventBus.broadcast('session_create', user)
     else
       render json: { errors: failure_message }, status: 401
     end

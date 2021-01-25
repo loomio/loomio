@@ -16,6 +16,7 @@ class API::V1::RegistrationsController < Devise::RegistrationsController
         LoginTokenService.create(actor: resource, uri: URI::parse(request.referrer.to_s))
         render json: { success: :ok, signed_in: false }
       end
+      EventBus.broadcast('registration_create', resource)
     else
       render json: { errors: resource.errors }, status: 422
     end
