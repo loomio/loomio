@@ -37,6 +37,9 @@ module GroupService
     # or so and so has added you to the following loomio groups.
     all_memberships = Membership.not_archived.where(group_id: group.id, user_id: users.pluck(:id))
     Events::AnnouncementCreated.publish!(group, actor, all_memberships, params[:message])
+
+    EventBus.broadcast('group_invite', group, actor, all_memberships.size)
+
     all_memberships
   end
 
