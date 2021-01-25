@@ -284,6 +284,10 @@ class Group < ApplicationRecord
     Group.where(id: id_and_subgroup_ids).sum(:discussions_count)
   end
 
+  def org_polls_count
+    Group.where(id: id_and_subgroup_ids).sum(:polls_count)
+  end
+
   def has_max_members
     parent_group = parent_or_self
     subscription = Subscription.for(parent_group)
