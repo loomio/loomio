@@ -9,16 +9,17 @@ class AnnouncementService
       raise CanCan::AccessDenied unless actor.can?(:notify, group)
       group.accepted_members
     when 'group'            then model.group.accepted_members
-    when 'discussion_group' then model.discussion.readers
-    when 'voters'           then model.poll.unmasked_voters
-    when 'decided_voters'   then model.poll.unmasked_decided_voters
-    when 'undecided_voters' then model.poll.unmasked_undecided_voters
-    when 'non_voters'       then model.poll.non_voters
+    when 'discussion_group' then (model.discussion || NullDiscussion.new).readers
+    when 'voters'           then (model.poll || NullPoll.new).unmasked_voters
+    when 'decided_voters'   then (model.poll || NullPoll.new).unmasked_decided_voters
+    when 'undecided_voters' then (model.poll || NullPoll.new).unmasked_undecided_voters
+    when 'non_voters'       then (model.poll || NullPoll.new).non_voters
     when nil                then User.none
     else
       raise UnknownAudienceKindError.new
     end.active
-    users = users.where.not(id: model.members.pluck(:id)) if exclude_members
+
+    users = users.where.not(id: model.voters.pluck(:id)) if exclude_members
     users
   end
 
