@@ -43,6 +43,7 @@ class StanceService
 
     event = stance.created_event || Events::StanceCreated.publish!(stance)
     MessageChannelService.publish_models([event], scope: {current_user_id: actor.id}, user_id: actor.id)
+    EventBus.broadcast('stance_create', stance, actor)
     event
   end
 end
