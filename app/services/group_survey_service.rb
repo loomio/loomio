@@ -5,5 +5,6 @@ class GroupSurveyService
     actor.ability.authorize! :create, group
     survey = GroupSurvey.find_or_create_by(group_id: params[:group_id])
     survey.update!(params)
+    EventBus.broadcast('group_survey_create', survey, actor)
   end
 end
