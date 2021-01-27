@@ -56,6 +56,10 @@ GEM
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    actionpack-action_caching (1.2.1)
+      actionpack (>= 4.0.0)
+    actionpack-page_caching (1.2.3)
+      actionpack (>= 5.0.0)
     actionview (5.2.4.4)
       activesupport (= 5.2.4.4)
       builder (~> 3.1)
@@ -572,6 +576,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionpack-action_caching
+  actionpack-page_caching
   active_model_serializers (~> 0.8.1)
   active_record_extended
   activeadmin (~> 2.9.0)
