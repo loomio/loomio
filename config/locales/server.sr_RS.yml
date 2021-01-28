@@ -1,39 +1,21 @@
 sr_RS:
+  group:
+    stats:
+      members: Чланови
+      threads: Низови
+      poll_types:
+        proposal: Предлог
   poll:
     export:
       title: Наслов
-      author: Аутор
-      details: Детаљи
   email:
-    group_email:
-      intro: "%{who} је направио/ла објаву за групу %{group}:"
-    by_who: од стране %{person}
-    reply_to_this_discussion: Одговори у овој дискусији
-    unsubscribe: 'Одјавите се или промените подешавања еПоште'
-    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> за одјаву са листе за обавештења или промену подешавања Ваше еПоште."
     catch_up:
       mark_as_read: Означи као прочитано
-      thanks_for_reading: Хвала на читању, пријатан дан!
-      marked_as_read_success: Све еПоруке су означене као прочитане
-      click_here: Шкљоцни овде
-    membership_request:
-      subject: "%{who} је затражио/ла да се придружи %{which_group}"
-      view_group: Овде можете одобрити или одбити захтев
-  discussion_mailer:
-    reply_or_view_online_html: Одговори на ову поруку директно или <a href='%{url}'>погледај је на %{hostname}</a>.
-    turn_off_notifications_html: "<a href='%{url}'>Искључи обавештења</a> о овој дискусији."
+    group_membership_approved:
+      join_group: "Придружи се групи"
   footer:
-    about: О нама
-    blog: Блог
-    contact: Контакт
     help: Помоћ
     privacy: Приватност
-    pricing: Ценовник
-    public_groups: Јавне групе
-    terms: Услови
-    independent_install_html: '%{hostname} користи једну независну копију Лумија: <a href="http://github.com/loomio/loomio">сазнај више</a>.'
-  password_reset:
-    reset_email_timeframe: Молимо допустите до 5 минута да еПорука пристигне. Ако се не појави, будите сигурни да сте проверили фасциклу са нежељеним порукама.
-    length_restriction: Лозинка мора бити најмање 8 знакова дуга.
-    forbidden_passwords: Уобичајене лозинке као што је ”лозинка” су забрањене да би твој налог био безбедан.
-  comment_by: Коментар од %{comment_author}
+  poll_mailer:
+    common:
+      or: или
