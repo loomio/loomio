@@ -190,6 +190,8 @@ sr:
   announcement:
     form:
       invitation_message_label: Poruka
+      poll_reminder:
+        message_label: Poruka
   action_dock:
     copy_url: Kopiraj vezu
     edit_stance: Promeni poziciju
@@ -285,14 +287,6 @@ sr:
     public_or_private_threads: 'Omogući javne i privatne niti'
     private_threads: 'Samo članovi mogu videti diskusije'
     allow_public_threads: 'Dopusti javne niti u ovoj grupi.'
-    parent_members_can_see_discussions: 'Članovi {{parent}} mogu videti privatne niti.'
-    members_can_add_members: 'Članovi mogu pozivati ljude i odobravati zahteve da se pridruže.'
-    members_can_create_subgroups: 'Članovi mogu kreirati podgrupe.'
-    members_can_edit_discussions: 'Članovi mogu izmeniti kontekst i naslov svake niti.'
-    members_can_edit_comments: 'Članovi mogu menjati svoje komentare bilo kada.'
-    members_can_start_discussions: 'Članovi mogu kreirati nove niti.'
-    members_can_vote: 'Članovi mogu glasati o predlozima.'
-    members_can_raise_motions: 'Članovi mogu kreirati predloge.'
     submit_start_group: 'Kreiraj grupu'
     submit_start_subgroup: 'Kreiraj podgrupu'
     submit_update: 'Izmeni podešavanja'

@@ -42,6 +42,7 @@ export default class NullGroupModel
   parent: -> null
   parentOrSelf: -> @
   parentsAndSelf: -> [@]
+  selfAndSubgroups: -> [@]
   group: -> @
   hasSubgroups: -> false
   organisationIds: -> []

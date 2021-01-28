@@ -13,23 +13,14 @@ export default new class PollService
     show_results:
       name: 'poll_common_card.show_results'
       canPerform: ->
-        false
-        # poll.decidedVotersCount &&
-        # !poll.pleaseShowResults &&
-        # !poll.closedAt? &&
-        # !poll.hideResultsUntilClosed &&
-        # !(poll.myStance() || {}).castAt
+        !poll.discardedAt && poll.closingAt && !poll.hideResultsUntilClosed && !poll.showResults()
       perform: ->
         poll.pleaseShowResults = true
 
     hide_results:
       name: 'poll_common_card.hide_results'
       canPerform: ->
-        false
-        # poll.pleaseShowResults &&
-        # !poll.closedAt? &&
-        # !poll.hideResultsUntilClosed &&
-        # !(poll.myStance() || {}).castAt
+        !poll.discardedAt && poll.showResults() && !poll.closedAt && !poll.iHaveVoted()
       perform: ->
         poll.pleaseShowResults = false
 
@@ -37,7 +28,7 @@ export default new class PollService
       name: 'poll_common.change_vote'
       icon: 'mdi-pencil'
       canPerform: =>
-        poll.isActive() && Session.user() && poll.myStance() && poll.myStance().castAt
+        poll.isActive() && Session.user() && poll.iHaveVoted()
       perform: =>
         openModal
           component: 'PollCommonEditVoteModal',
@@ -53,19 +44,37 @@ export default new class PollService
           component: 'AnnouncementHistory'
           props:
             model: poll
-      canPerform: -> true
+      canPerform: -> !poll.discardedAt
 
     announce_poll:
       icon: 'mdi-send'
-      name: 'action_dock.count_voters'
-      nameArgs: -> {count: poll.votersCount}
+      name: 'common.action.invite'
       canPerform: ->
-        poll.adminsInclude(Session.user())
+        return false if (poll.discardedAt || poll.closedAt)
+        poll.adminsInclude(Session.user()) ||
+        (!poll.specifiedVotersOnly &&
+         (poll.group().membersCanAddGuests || poll.group().membersCanAnnounce) &&
+         poll.membersInclude(Session.user()))
       perform: ->
         openModal
           component: 'PollMembers'
           props:
             poll: poll
+
+    remind_poll:
+      icon: 'mdi-send'
+      name: 'common.action.remind'
+      canPerform: ->
+        return false if (poll.discardedAt || poll.closedAt || poll.votersCount < 2)
+        poll.adminsInclude(Session.user()) ||
+        (!poll.specifiedVotersOnly &&
+         (poll.group().membersCanAddGuests || poll.group().membersCanAnnounce) &&
+         poll.membersInclude(Session.user()))
+      perform: ->
+        openModal
+          component: 'PollReminderForm'
+          props:
+            poll: poll.clone()
 
     edit_poll:
       name: 'action_dock.edit_poll_type'
@@ -96,7 +105,7 @@ export default new class PollService
     show_history:
       icon: 'mdi-history'
       name: 'action_dock.show_edits'
-      canPerform: -> poll.edited()
+      canPerform: -> !poll.discardedAt && poll.edited()
       perform: ->
         openModal
           component: 'RevisionHistoryModal'

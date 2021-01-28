@@ -13,14 +13,14 @@ export default class RestfulClient
   onFailure: (response) -> throw response
   onUploadSuccess: (response) -> response
 
-  constructor: (resourcePlural) ->
+  constructor: (resourcePlural = null) ->
     @defaultParams.unsubscribe_token = new URLSearchParams(location.search).get('unsubscribe_token')
     @defaultParams.membership_token = new URLSearchParams(location.search).get('membership_token')
     @defaultParams.stance_token = new URLSearchParams(location.search).get('stance_token')
     @defaultParams.discussion_reader_token = new URLSearchParams(location.search).get('discussion_reader_token')
     @defaultParams = omitBy(@defaultParams, isNil)
     @processing = []
-    @resourcePlural = snakeCase(resourcePlural)
+    @resourcePlural = snakeCase(resourcePlural) if resourcePlural
 
   buildUrl: (path, params) ->
     path = compact([@apiPrefix, @resourcePlural, path]).join('/')

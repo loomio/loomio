@@ -8,8 +8,8 @@ class Events::NewDiscussion < Event
   def self.publish!(discussion:, recipient_user_ids: [], recipient_audience: nil)
     super(discussion,
           user: discussion.author,
-          recipient_user_ids: recipient_user_ids,
-          recipient_audience: recipient_audience)
+          recipient_user_ids: Array(recipient_user_ids).uniq.compact,
+          recipient_audience: recipient_audience.presence)
   end
 
   def discussion

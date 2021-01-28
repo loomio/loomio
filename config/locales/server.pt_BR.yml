@@ -202,16 +202,12 @@ pt_BR:
   discussion_mailer:
     resend: 'LEMBRETE: %{actor} está esperando você se juntar à discussão %{discussion}'
     new_discussion:
-      subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> iniciou um tópico: %{discussion}"
     discussion_edited:
-      subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> editou o tópico: %{discussion}"
     discussion_announced:
-      subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> convidou você para participar de: %{discussion}"
     new_comment:
-      subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> comentou em: %{discussion}"
     comment_replied_to:
       subject: '%{actor} respondeu a você em: %{discussion}'
@@ -222,7 +218,6 @@ pt_BR:
     reply_or_view_online_html: Responda a este e-mail diretamente ou <a href='%{url}'>veja em %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Desligar e-mails</a> para esta discussão."
     change_email_preferences_html: "Altere suas <a href='%{email_preferences_url}'>preferências de e-mail</a>."
-    discussion_closed: "%{actor} encerrou a discussão"
   footer:
     about: Sobre
     blog: Blog

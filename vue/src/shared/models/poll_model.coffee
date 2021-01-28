@@ -52,7 +52,7 @@ export default class PollModel extends BaseModel
   relationships: ->
     @belongsTo 'author', from: 'users'
     @belongsTo 'discussion'
-    @belongsTo 'group', ifNull: -> new NullGroupModel()
+    @belongsTo 'group'
     @hasMany   'pollOptions', orderBy: 'priority'
     @hasMany   'stances'
     @hasMany   'versions'
@@ -75,6 +75,9 @@ export default class PollModel extends BaseModel
 
   myStance: ->
     head orderBy(@recordStore.stances.find(pollId: @id, myStance: true, latest: true, revokedAt: null), 'createdAt', 'desc')
+
+  iHaveVoted: ->
+    @myStance() && @myStance().castAt
 
   authorName: ->
     @author().nameWithTitle(@group())
@@ -117,7 +120,8 @@ export default class PollModel extends BaseModel
 
   showResults: ->
     return false if !@closingAt
-    @closedAt? || !@hideResultsUntilClosed
+    return false if @hideResultsUntilClosed && !@closedAt
+    @closedAt || (@myStance() || {}).castAt || @pleaseShowResults
 
   close: =>
     @processing = true

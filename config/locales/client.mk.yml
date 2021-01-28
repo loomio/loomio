@@ -51,6 +51,8 @@ mk:
   announcement:
     form:
       invitation_message_label: Порака
+      poll_reminder:
+        message_label: Порака
   action_dock:
     edited: Изменето
   join_group_button:

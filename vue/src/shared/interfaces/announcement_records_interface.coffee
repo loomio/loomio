@@ -17,7 +17,6 @@ eventableOrSelf = (model) ->
 
 export default class AnnouncementRecordsInterface extends BaseRecordsInterface
   model: AnnouncementModel
-
   fetchHistoryFor: (model) ->
     params = model.namedId()
 

@@ -40,6 +40,12 @@ module Dev::Scenarios::Discussion
     CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion, body: "first comment"), actor: patrick)
     event = CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion, body: "removed comment"), actor: patrick)
     CommentService.discard(comment: event.eventable, actor: event.user)
+    DiscussionService.update(discussion: create_discussion,
+                             params: {recipient_message: 'this is an edit message'},
+                             actor: patrick)
+    poll = fake_poll(discussion: create_discussion, group: create_discussion.group)
+    PollService.create(poll: poll, actor: patrick)
+    PollService.update(poll: poll, actor: patrick, params: {recipient_message: 'updated the poll here <br> newline'})
     DiscussionService.close(discussion: create_discussion, actor: patrick)
     UserMailer.catch_up(jennifer.id, 1.hour.ago).deliver_now
     last_email
@@ -117,7 +123,7 @@ module Dev::Scenarios::Discussion
     @group.add_member! jennifer
     discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: @group)
     event = DiscussionService.create(discussion: discussion, actor: patrick)
-    DiscussionService.announce(discussion: discussion, actor: patrick, params: {recipient_user_ids: [jennifer.id]})
+    DiscussionService.invite(discussion: discussion, actor: patrick, params: {recipient_user_ids: [jennifer.id]})
     last_email
   end
 
@@ -128,7 +134,7 @@ module Dev::Scenarios::Discussion
     event = DiscussionService.create(discussion: discussion, actor: patrick)
     comment = FactoryBot.build(:comment, discussion: discussion)
     CommentService.create(comment: comment, actor: patrick)
-    DiscussionService.announce(discussion: discussion, actor: patrick, params: {recipient_emails: 'jen@example.com'})
+    DiscussionService.invite(discussion: discussion, actor: patrick, params: {recipient_emails: 'jen@example.com'})
     last_email
   end
 

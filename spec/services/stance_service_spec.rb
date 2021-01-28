@@ -33,15 +33,7 @@ describe StanceService do
     it 'does not create an invalid stance' do
       stance_created.poll_id = proposal.id
       stance_created.stance_choices = []
-      expect { StanceService.create(stance: stance_created, actor: user) }.to_not change { Stance.count }
-    end
-
-    it 'updates existing stances for that user to no longer be latest' do
-      stance
-      StanceService.create(stance: stance_created, actor: user)
-      expect(stance.reload.latest).to eq false
-      expect(another_stance.reload.latest).to eq true
-      expect(stance_created.reload.latest).to eq true
+      expect { StanceService.create(stance: stance_created, actor: user) }.to raise_error ActiveRecord::RecordInvalid
     end
 
     it 'sets event parent to the poll created event' do

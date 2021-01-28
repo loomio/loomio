@@ -321,7 +321,7 @@ div
             //- list menu (always a menu)
             v-menu(v-if="expanded")
               template(v-slot:activator="{ on, attrs }")
-                v-btn.drop-down-button(icon v-on="on" v-bind="attrs")
+                v-btn.drop-down-button(icon v-on="on" v-bind="attrs" :title="$t('formatting.lists')")
                   v-icon mdi-format-list-bulleted
                   v-icon.menu-down-arrow mdi-menu-down
               v-list(dense)
@@ -368,10 +368,10 @@ div
               v-btn(icon @click="convertToMd" :title="$t('formatting.edit_markdown')")
                 v-icon mdi-language-markdown-outline
 
-            v-btn.html-editor__expand(v-if="!expanded" icon @click="toggleExpanded" :aria-label="$t('formatting.expand')")
+            v-btn.html-editor__expand(v-if="!expanded" icon @click="toggleExpanded" :title="$t('formatting.expand')")
               v-icon mdi-chevron-right
 
-            v-btn.html-editor__expand(v-if="expanded" icon @click="toggleExpanded" :aria-label="$t('formatting.collapse')")
+            v-btn.html-editor__expand(v-if="expanded" icon @click="toggleExpanded" :title="$t('formatting.collapse')")
               v-icon mdi-chevron-left
           //- save button?
           v-spacer

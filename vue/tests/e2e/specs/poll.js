@@ -227,9 +227,11 @@ module.exports = {
 
     page.expectText('.poll-common-stance-created__reason', 'A reason')
 
+    page.click('.poll-created .action-menu--btn')
     page.click('.action-dock__button--close_poll')
     page.click('.confirm-modal__submit', 1000)
     page.click('.dismiss-modal-button')
+    page.click('.poll-created .action-menu--btn')
     page.click('.action-dock__button--reopen_poll')
     page.click('.poll-common-reopen-form__submit')
   },

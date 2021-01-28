@@ -573,6 +573,7 @@ en:
     new_coordinator: "<strong>{{name}}</strong> made you an admin of <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> started a {{poll_type}}: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> edited a {{poll_type}}: <strong>{{title}}</strong>"
+    poll_reminder: "<strong>{{name}}</strong> is reminding you to vote in: <strong>{{title}}</strong>"
     poll_announced: "<strong>{{name}}</strong> shared a {{poll_type}}: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} is closing soon: <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} closed: <strong>{{title}}</strong>"
@@ -599,15 +600,6 @@ en:
     none_invite_only_thread: "Invite-only thread (no group)"
     change_log_placeholder: Briefly describe the changes made in this edit. (optional)
     change_log_label: What's changed?
-    # visible_to_group: Group thread
-    # visible_to_parent_group: "{{group}}"
-    # visible_to_public: Public
-    # visible_to_discussion_tooltip: Only visible to people invited to the thread
-    # visible_to_group_tooltip: Visible to everyone in the group
-    # visible_to_public_tooltip: Visible to anyone with the link (public)
-    one_person_will_be_notified: '1 person will be notified.'
-    count_people_will_be_notified: '{{count}} people will be notified.'
-    notify_specifc_people_instead: If you don't want to notify the whole group, add names of people to be notified.
     invite: Invite
     aria_label: 'Thread form'
     start_thread: Start thread
@@ -656,9 +648,14 @@ en:
     history_error: Something went wrong! Could not load history.
     inviting_guests_to_thread: Guests do not belong to your group, and have access to this thread only
     select_groups: Select groups
+    search_by_name_or_email: Search by name, or enter emails to invite
+    search_by_name: Search for people by name
+    only_admins_can_announce: Only admins can notify the whole group
+    only_admins_can_invite: Only admins can invite guests
+    only_admins_can_announce_or_invite: Only admins can notify the whole group or invite guests
 
     audiences:
-      group: Everyone in {{name}}
+      group: Members of {{name}}
       discussion_group: Everyone in the thread
       voters: Everyone invited to vote
       decided_voters: Everyone who voted
@@ -689,9 +686,11 @@ en:
       poll_announced:
         title: Invite to vote
         helptext: Who would you like to invite to vote?
-      # poll:
-      #   title: Notify of edits
-      #   helptext: Who would you like to notify about this update?
+      poll_reminder:
+        title: Remind to vote
+        helptext: Who would you like to remind to vote?
+        message_label: Message
+        message_placeholder: Optional message to tell people why they should vote
       poll_edited:
         title: Notify of edits
         helptext: Who would you like to notify about this update?
@@ -707,6 +706,7 @@ en:
       group_title: '{{name}} ({{count}} people)'
       visible_to_group: 'Anyone in {{group}} will be able to see this thread.'
       visible_to_guests: 'Only invited people can see this thread.'
+      click_group_to_see_individuals: Click group to see individuals
 
     members_list:
       title: Shared with
@@ -720,7 +720,6 @@ en:
     group_form:
       search_placeholder: Search for people...
       modal_title: Select group members
-      members_count: '{{count}} people will be notified'
     flash:
       success: '{{count}} notifications sent'
 
@@ -780,6 +779,9 @@ en:
 
   formatting:
     formatting_tools: Text formatting tools
+    colors: Colors
+    alignment: Alignment
+    lists: Lists
     expand: Show more formatting tools
     collapse: Show fewer formatting tools
     bold: Bold
@@ -1000,7 +1002,8 @@ en:
     thread_defaults_help: Default settings for new threads
     click_to_change_image: Cover Image and Logo (click to change)
     permissions_explaination: |
-      There are two levels of membership a person can have to a group: admin and member
+      There are two levels of membership a person can have to a group: admin and member.
+      Admins can edit group settings, make other people admins, and perform all the actions listed below.
     aria_label: 'Group form'
     new_organisation: New Organization
     start_group_heading: 'Start a group'
@@ -1055,16 +1058,26 @@ en:
     private_threads: 'Only members can see discussions'
     allow_public_threads: 'Allow public threads in this group.'
     #is_visible_to_parent_members: 'Content is visible to members of {{parentGroupName}}.'
-    parent_members_can_see_discussions: 'Members of {{parent}} can see private threads.'
-    members_can_announce: 'Members can notify everyone in the group.'
-    members_can_add_members: 'Members can invite people and approve requests to join.'
-    members_can_create_subgroups: 'Members can create subgroups.'
-    members_can_edit_discussions: 'Members can update the context and title of any thread.'
-    members_can_edit_comments: 'Members can edit their own comments at any time.'
-    members_can_start_discussions: 'Members can start new threads.'
-    members_can_vote: 'Members can vote on proposals.'
-    members_can_raise_motions: 'Members can start proposals.'
-    admins_can_edit_user_content: "Admins can edit other user's comments and polls"
+    parent_members_can_see_discussions: 'Members of {{parent}} can see private threads'
+    parent_members_can_see_discussions_help: 'Allow members of the parent group to see, but not participate in, threads and polls within this group'
+    members_can_announce: 'Members can notify everyone in the group'
+    members_can_announce_help: 'Allow members to notify everyone in the group about a thread or poll'
+    members_can_add_members: 'Members can invite members'
+    members_can_add_members_help: "Allow members to invite people to join this group"
+    members_can_add_guests: 'Members can invite guests'
+    members_can_add_guests_help: 'Allow members to invite guests into threads or polls in this group'
+    members_can_create_subgroups: 'Members can create subgroups'
+    members_can_create_subgroups_help: 'Allow members to create and become admins of new subgroups'
+    members_can_edit_discussions: 'Members can edit threads, polls and outcomes'
+    members_can_edit_discussions_help: 'Allow members to edit the details of existing threads and polls, and create and edit outcomes'
+    members_can_edit_comments: 'Members can edit their own comments'
+    members_can_edit_comments_help: 'Allow members to edit their own comments at any time'
+    members_can_start_discussions: 'Members can start new threads'
+    members_can_start_discussions_help: 'Allow members to start new threads within the group'
+    members_can_raise_motions: 'Members can start polls'
+    members_can_raise_motions_help: 'Allow members to start polls and proposals within discussions or the group'
+    admins_can_edit_user_content: "Admins can edit members' comments"
+    admins_can_edit_user_content_help: 'Allow admins to edit content written by members'
 
     submit_start_group: 'Start group'
     submit_start_subgroup: 'Start subgroup'
@@ -1265,6 +1278,7 @@ en:
     no_emails: 'You will no longer receive notification emails'
     you_can_reactivate: "You can reactivate your account later if you wish"
     submit: 'Yes, I want to deactivate'
+    submit_delete: 'Delete my account now'
 
   email_settings_page:
     header: Notification settings
@@ -1675,12 +1689,6 @@ en:
     loomio_group: Group
     loomio_group_placeholder: (no group selected)
 
-  poll_common_notify_group:
-    notify_group: Announcement
-    members_helptext: Your group will not be notified
-    members_count: "{{count}} people will be notified"
-    decided_voters_count: "The {{count}} people who have voted will be notified"
-
   poll_common_calendar_invite:
     calendar_invite: Include a calendar invitation with this outcome
     poll_option_id: Meeting time
@@ -2053,26 +2061,26 @@ en:
       poll_expired: "{{pollType}} closed. {{when}}"
     removed: "Item removed"
     deleted_group: "Deleted group"
-    comment_replied_to:            "<strong><a href='/u/{{username}}'>{{author}}</a></strong> in reply to <strong>{{title}}</strong>"
-    discussion_title_edited:       "<strong><a href='/u/{{username}}'>{{author}}</a></strong> edited the thread title"
-    discussion_context_edited:     "<strong><a href='/u/{{username}}'>{{author}}</a></strong> edited the thread context"
-    discussion_attachments_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> edited the thread's attachments"
-    discussion_privacy_edited:     "<strong><a href='/u/{{username}}'>{{author}}</a></strong> changed the thread privacy"
-    discussion_edited:             "<strong><a href='/u/{{username}}'>{{author}}</a></strong> edited the thread"
-    discussion_moved:              "<strong><a href='/u/{{username}}'>{{author}}</a></strong> moved the thread from <strong>{{title}}</strong>"
-    discussion_closed:             "<strong><a href='/u/{{username}}'>{{author}}</a></strong> closed the thread"
-    discussion_reopened:           "<strong><a href='/u/{{username}}'>{{author}}</a></strong> reopened the thread"
-    discussion_forked:             "<strong><a href='/u/{{username}}'>{{author}}</a></strong> created a fork of this thread: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
-    new_comment:                   "<strong><a href='/u/{{username}}'>{{author}}</a></strong>"
-    outcome_created:               "<strong><a href='/u/{{username}}'>{{author}}</a></strong> shared an outcome"
-    poll_reopened:                 "<strong><a href='/u/{{username}}'>{{author}}</a></strong> reopened the {{polltype}}"
-    poll_closed_by_user:           "<strong><a href='/u/{{username}}'>{{author}}</a></strong> closed the {{polltype}}"
-    poll_created:                  "<strong><a href='/u/{{username}}'>{{author}}</a></strong> started a {{polltype}}"
-    poll_created_no_title:         "<strong><a href='/u/{{username}}'>{{author}}</a></strong> started a {{polltype}}"
-    poll_edited:                   "<strong><a href='/u/{{username}}'>{{author}}</a></strong> edited the {{polltype}}"
-    poll_option_added:             "<strong><a href='/u/{{username}}'>{{author}}</a></strong> added options to the {{polltype}}"
+    comment_replied_to:            "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> in reply to <strong>{{title}}</strong>"
+    discussion_title_edited:       "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> edited the thread title"
+    discussion_context_edited:     "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> edited the thread context"
+    discussion_attachments_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> edited the thread's attachments"
+    discussion_privacy_edited:     "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> changed the thread privacy"
+    discussion_edited:             "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> edited the thread"
+    discussion_moved:              "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> moved the thread from <strong>{{title}}</strong>"
+    discussion_closed:             "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> closed the thread"
+    discussion_reopened:           "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> reopened the thread"
+    discussion_forked:             "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> created a fork of this thread: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
+    new_comment:                   "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>"
+    outcome_created:               "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> shared an outcome"
+    poll_reopened:                 "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> reopened the {{polltype}}"
+    poll_closed_by_user:           "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> closed the {{polltype}}"
+    poll_created:                  "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> started a {{polltype}}"
+    poll_created_no_title:         "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> started a {{polltype}}"
+    poll_edited:                   "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> edited the {{polltype}}"
+    poll_option_added:             "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> added options to the {{polltype}}"
     poll_expired:                  "{{polltype}} closed"
-    stance_created:                "<strong><a href='/u/{{username}}'>{{author}}</a></strong> voted on: <strong>{{title}}</strong>"
+    stance_created:                "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> voted on: <strong>{{title}}</strong>"
     event_removed:                 "Removed from thread"
 
   poll_common_subscribe_form:
@@ -2159,24 +2167,29 @@ en:
   webhook:
     integrations: Integrations
     webhooks: Webhooks
+    webhook: Webhook
+    api: API
     format: Format
     formats:
       markdown: Markdown (for Mattermost, Zapier and others)
       microsoft: Microsoft Teams
       slack: Slack
-    subtitle: Connect to Slack, Microsoft Teams, Mattermost, Zapier or anything that supports webhooks
+    subtitle: Connect to Loomio to the rest of your tools with our integration API and webhooks
     we_have_guides: |
       See our <a href="{{url}}" target="_blank">webhook setup guides</a> for help connecting your service.
     add_webhook: Add webhook
-    success: Webhook added!
-    remove: Remove webhook
-    confirm_remove: "Are you sure you want to remove the webhook: {{name}}?"
-    removed: Webhook removed
+    show_docs: See API usage
+    edit_integration: Edit integration
+    add_integration: Add integration
+    success: Integration added!
+    remove: Remove integration
+    confirm_remove: "Are you sure you want to remove the integration: {{name}}?"
+    removed: Integration removed
     url_label: Webhook URL
     url_placeholder: https://hooks.example.com/...
     name_label: Name
-    name_placeholder: Give this webhook a name so you can identify it later on
-    event_kind_helptext: Which events do you want to be notified of?
+    name_placeholder: Give this integration a name so you can identify it
+    event_kind_helptext: Which events do you want the webhook to be notified of?
     event_kinds:
       new_discussion: A thread is started
       discussion_edited: A thread is edited
@@ -2189,6 +2202,11 @@ en:
       poll_closed_by_user: A poll is closed manually
       poll_reopened: A poll is re-opened for voting
       outcome_created: An outcome is shared
+    permissions_explaination: Select which actions can be performed by this integration
+    permissions:
+      create_discussion: create discussion
+      create_poll: create poll
+      read_memberships: read memberships
     include_body_label: Include message body with notification
     include_subgroups_label: Relay events from subgroups
 

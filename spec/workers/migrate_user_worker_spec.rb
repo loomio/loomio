@@ -43,8 +43,8 @@ describe MigrateUserWorker do
     CommentService.create(comment: patrick_comment, actor: patrick)
     CommentService.create(comment: jennifer_comment, actor: jennifer)
     PollService.create(poll: poll, actor: patrick)
-    StanceService.create(stance: patrick_stance, actor: patrick)
-    StanceService.create(stance: jennifer_stance, actor: jennifer)
+    StanceService.create(stance: patrick_stance, actor: patrick, force_create: true)
+    StanceService.create(stance: jennifer_stance, actor: jennifer, force_create: true)
 
     poll.update(closed_at: 1.day.ago)
     OutcomeService.create(outcome: outcome, actor: patrick)

@@ -248,16 +248,12 @@ fr:
   discussion_mailer:
     resend: 'RAPPEL : %{actor} attend que vous rejoignez %{discussion}'
     new_discussion:
-      subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> a démarré une discussion: %{discussion}"
     discussion_edited:
-      subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> a modifié la discussion: %{discussion}"
     discussion_announced:
-      subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> vous a invité·e à rejoindre : %{discussion}"
     new_comment:
-      subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> a ajouté un commentaire sur: %{discussion}"
     comment_replied_to:
       subject: '%{actor} vous a répondu dans : %{discussion}'
@@ -272,7 +268,6 @@ fr:
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Se désabonner</a> des commentaires dans ce fil de discussion."
     unsubscribe_from_comment_replied_to_html: "Il s'agit d'une notification de réponse."
     unsubscribe_from_user_mentioned_html: "Il s'agit d'une notification de mention."
-    discussion_closed: "%{actor} a fermé la discussion"
   footer:
     about: À propos
     blog: Blog

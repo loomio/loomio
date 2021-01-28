@@ -58,6 +58,8 @@ sk:
   announcement:
     form:
       invitation_message_label: Správa
+      poll_reminder:
+        message_label: Správa
   action_dock:
     edited: Aktualizovaný
   join_group_button:

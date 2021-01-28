@@ -248,16 +248,15 @@ es:
   discussion_mailer:
     resend: 'RECORDATORIO: %{actor} está esperando que te unas %{discussion}'
     new_discussion:
-      subject: "[%{group}] %{discussion} "
       subject_html: "<strong>%{actor}</strong> inició un hilo: %{discussion}"
     discussion_edited:
-      subject: "[%{group}] %{discussion} "
+      inline: "%{actor}editó el hilo"
       subject_html: "<strong>%{actor}</strong> editó el hilo: %{discussion}"
     discussion_announced:
-      subject: "[%{group}] %{discussion} "
       subject_html: "<strong>%{actor}</strong> te invitó a unirte a: %{discussion}"
+    discussion_closed:
+      inline: "%{actor}cerró el hilo"
     new_comment:
-      subject: "[%{group}] %{discussion} "
       subject_html: "<strong>%{actor}</strong> comentó en: %{discussion}"
     comment_replied_to:
       subject: '%{actor} respondió a tu comentario en: %{discussion}'
@@ -272,7 +271,6 @@ es:
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Darse de baja</a>de comentarios en este hilo"
     unsubscribe_from_comment_replied_to_html: "Esto es una notificación de respuesta."
     unsubscribe_from_user_mentioned_html: "Esto es una notificación de mención."
-    discussion_closed: "%{actor} cerró la discusión"
   footer:
     about: Sobre Loomio
     blog: Blog
@@ -422,6 +420,7 @@ es:
     subject:
       poll_created: '%{actor}comenzó en %{poll_type}:%{title}'
       poll_edited: '%{actor}editado el%{poll_type}:%{title}'
+      poll_reminder: '%{actor}te está recordando que votes:%{title}'
       poll_announced: '%{actor}te invitó a votar en un %{poll_type}:%{title}'
       poll_announced_wip: '%{actor}ha compartido un trabajo en proceso%{poll_type}:%{title}'
       poll_closing_soon: '%{poll_type}cierra en 24 horas:%{title}'
@@ -442,6 +441,7 @@ es:
     header:
       poll_created: '<strong>%{actor}</strong>comenzó un %{poll_type}'
       poll_edited: '<strong>%{actor}</strong>editado un%{poll_type}'
+      poll_reminder: '<strong>%{actor}</strong> te está recordando que votes'
       poll_announced: '<strong>%{actor}</strong>te invitó a votar en un %{poll_type}'
       poll_announced_wip: '<strong>%{actor}</strong>ha compartido un trabajo en proceso%{poll_type}'
       poll_closing_soon: '<strong>%{actor}</strong>''s%{poll_type} cerrará en 24 horas. Ahora es una buena oportunidad para votar, cambiar de opinión o animar a otros para que participen.'

@@ -45,7 +45,7 @@ class SamlProvidersController < ApplicationController
         signed_in_success_redirect
       else
         logger.debug 'saml logged out, invite case'
-        GroupService.announce(group: group, actor: group.creator, params: {emails: [email]})
+        GroupService.invite(group: group, actor: group.creator, params: {emails: [email]})
         update_session_expires_at!(User.find_by!(email: email), group, expires_at)
         redirect_to invitation_created_saml_providers_url(email: email, group_id: group.id)
       end

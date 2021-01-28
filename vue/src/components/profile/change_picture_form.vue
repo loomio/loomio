@@ -67,7 +67,7 @@ v-card.change-picture-form
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text
-    p.lmo-hint-text(v-html="$t('change_picture_form.helptext')")
+    p.text--secondary(v-html="$t('change_picture_form.helptext')")
     v-list.change-picture-form__options-list
       v-list-item.change-picture-form__option(@click='selectFile()')
         v-list-item-avatar

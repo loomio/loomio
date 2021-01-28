@@ -8,9 +8,11 @@ export default class WebhookModel extends BaseModel
   defaultValues: ->
     name: null
     url: null
-    format: null
-    eventKinds: AppConfig.webhookEventKinds
+    format: 'markdown'
+    eventKinds: []
+    permissions: []
     includeBody: false
+    errors: {}
 
   relationships: ->
     @belongsTo 'group'

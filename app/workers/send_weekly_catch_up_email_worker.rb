@@ -10,7 +10,7 @@ class SendWeeklyCatchUpEmailWorker
     end
 
     User.email_catch_up.where(time_zone: zones).find_each do |user|
-      UserMailer.delay(queue: :catch_up_emails).catch_up(user.id, nil, 'weekly')
+      UserMailer.delay(queue: :low).catch_up(user.id, nil, 'weekly')
     end
   end
 end

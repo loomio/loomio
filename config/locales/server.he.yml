@@ -176,16 +176,12 @@ he:
   discussion_mailer:
     resend: 'תזכורת: %{actor} ממתין שתצטרף ל%{discussion}'
     new_discussion:
-      subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> התחיל שיחה: %{discussion}"
     discussion_edited:
-      subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> ערך את השיחה: %{discussion}"
     discussion_announced:
-      subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> הזמין אותך להצטרף ל: %{discussion}"
     new_comment:
-      subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> הגיב ב: %{discussion}"
     comment_replied_to:
       subject: '%{actor} הגיב לך ב: %{discussion}'
@@ -196,7 +192,6 @@ he:
     reply_or_view_online_html: הגב ישירות למייל זה או <a href='%{url}'>צפה בו ב%{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>השבת מיילים</a> לדיון זה."
     change_email_preferences_html: "שנה את<a href='%{email_preferences_url}'>העדפות הדוא\"ל שלך</a>."
-    discussion_closed: "%{actor} סגר את הדיון"
   footer:
     about: אודות
     blog: בלוג

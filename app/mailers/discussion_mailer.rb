@@ -34,6 +34,7 @@ class DiscussionMailer < BaseMailer
     send_single_mail  to: @recipient.email,
                       from: from_user_via_loomio(@event.user),
                       reply_to: reply_to_address_with_group_name(model: @event.eventable, user: @recipient),
+                      subject_prefix: group_name_prefix(@discussion),
                       subject_key: "discussion_mailer.#{@action_name}.subject",
                       subject_params: { actor: @event.user.name,
                                         group: @discussion.group.full_name,

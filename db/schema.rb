@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_183328) do
+ActiveRecord::Schema.define(version: 2021_01_13_015811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -354,7 +354,6 @@ ActiveRecord::Schema.define(version: 2020_11_24_183328) do
     t.boolean "members_can_add_members", default: true, null: false
     t.string "membership_granted_upon", default: "approval", null: false
     t.boolean "members_can_edit_discussions", default: true, null: false
-    t.boolean "motions_can_be_edited", default: false, null: false
     t.string "cover_photo_file_name", limit: 255
     t.string "cover_photo_content_type", limit: 255
     t.integer "cover_photo_file_size"
@@ -400,10 +399,11 @@ ActiveRecord::Schema.define(version: 2020_11_24_183328) do
     t.jsonb "info", default: {}, null: false
     t.integer "new_threads_max_depth", default: 2, null: false
     t.boolean "new_threads_newest_first", default: false, null: false
-    t.boolean "admins_can_edit_user_content", default: false, null: false
+    t.boolean "admins_can_edit_user_content", default: true, null: false
     t.boolean "listed_in_explore", default: false, null: false
     t.string "secret_token", default: -> { "gen_random_uuid()" }
     t.string "content_locale"
+    t.boolean "members_can_add_guests", default: true, null: false
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["category_id"], name: "index_groups_on_category_id"
     t.index ["cohort_id"], name: "index_groups_on_cohort_id"
@@ -577,10 +577,7 @@ ActiveRecord::Schema.define(version: 2020_11_24_183328) do
     t.integer "poll_id"
     t.integer "priority", default: 0, null: false
     t.jsonb "score_counts", default: {}, null: false
-    t.index ["poll_id", "name"], name: "index_poll_options_on_poll_id_and_name"
-    t.index ["poll_id", "priority"], name: "index_poll_options_on_poll_id_and_priority"
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
-    t.index ["priority"], name: "index_poll_options_on_priority"
   end
 
   create_table "poll_unsubscriptions", id: :serial, force: :cascade do |t|
@@ -683,7 +680,6 @@ ActiveRecord::Schema.define(version: 2020_11_24_183328) do
     t.integer "volume", default: 2, null: false
     t.datetime "accepted_at"
     t.jsonb "stance_choices_cache", default: []
-    t.string "secret_token", default: -> { "gen_random_uuid()" }
     t.string "content_locale"
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id"], name: "index_stances_on_poll_id"
@@ -753,7 +749,7 @@ ActiveRecord::Schema.define(version: 2020_11_24_183328) do
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
-    t.citext "email", default: "", null: false
+    t.citext "email"
     t.string "encrypted_password", limit: 128, default: ""
     t.string "reset_password_token", limit: 255
     t.datetime "reset_password_sent_at"
@@ -809,6 +805,7 @@ ActiveRecord::Schema.define(version: 2020_11_24_183328) do
     t.inet "last_sign_in_ip"
     t.string "secret_token", default: -> { "gen_random_uuid()" }
     t.string "content_locale"
+    t.boolean "bot", default: false, null: false
     t.index ["deactivated_at"], name: "index_users_on_deactivated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
@@ -834,14 +831,18 @@ ActiveRecord::Schema.define(version: 2020_11_24_183328) do
   create_table "webhooks", force: :cascade do |t|
     t.integer "group_id", null: false
     t.string "name", null: false
-    t.string "url", null: false
+    t.string "url"
     t.jsonb "event_kinds", default: [], null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "format", default: "markdown", null: false
+    t.string "format", default: "markdown"
     t.boolean "include_body", default: false
     t.boolean "include_subgroups", default: false, null: false
     t.boolean "is_broken", default: false, null: false
+    t.string "token"
+    t.integer "author_id"
+    t.integer "actor_id"
+    t.string "permissions", default: [], null: false, array: true
     t.index ["group_id"], name: "index_webhooks_on_group_id"
   end
 

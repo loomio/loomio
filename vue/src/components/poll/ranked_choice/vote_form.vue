@@ -44,7 +44,7 @@ export default
 
 <template lang='pug'>
 .poll-ranked-choice-vote-form.lmo-relative
-  p.lmo-hint-text(v-t="{ path: 'poll_ranked_choice_vote_form.helptext', args: { count: numChoices } }")
+  p.text--secondary(v-t="{ path: 'poll_ranked_choice_vote_form.helptext', args: { count: numChoices } }")
   sortable-list(v-model="pollOptions")
     sortable-item(v-for="(option, index) in pollOptions" :index="index" :key="option.id" :item="option")
       span(v-if="index+1 <= numChoices") {{index+1}}

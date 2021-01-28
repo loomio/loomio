@@ -312,6 +312,8 @@ cs:
         helptext: Kdo byste pozvali do skupiny?
       poll_announced:
         title: Pozvat k hlasování
+      poll_reminder:
+        message_label: Zpráva
       outcome_announced:
         title: Sdílet výsledek
       anyone_can_participate: Kdokoli s odkazem se může účastnit
@@ -422,9 +424,6 @@ cs:
     public_threads: 'Pouze veřejná vlákna'
     public_or_private_threads: 'Povolit veřejné a soukromé vlákna'
     allow_public_threads: 'Povolit v této skupině veřejná vlákna'
-    parent_members_can_see_discussions: 'Členové {{parent}} mohou vidět soukromá vlákna. '
-    members_can_edit_discussions: 'Členové mohou aktualizovat kontext a název každého vlákna.'
-    members_can_start_discussions: 'Členové mohou začínat nová vlákna.'
     submit_start_group: 'Vytvořit skupinu'
     submit_start_subgroup: 'Vytvořit podskupinu'
     submit_update: 'Aktualizovat nastavení'

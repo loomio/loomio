@@ -64,7 +64,7 @@ export default new class GroupService
             group: group
 
     webhooks:
-      name: 'webhook.webhooks'
+      name: 'webhook.integrations'
       icon: 'mdi-webhook'
       canPerform: ->
         group.adminsInclude(Session.user())

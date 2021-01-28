@@ -41,6 +41,8 @@ bg_BG:
   announcement:
     form:
       invitation_message_label: Съобщение
+      poll_reminder:
+        message_label: Съобщение
   join_group_button:
     membership_requested: Поискано членство
   membership_request_form:

@@ -58,7 +58,7 @@ v-main.user-page__profile
         v-card-text
           v-layout.user-page__info.mb-5.align-center.justify-center(column)
             user-avatar.mb-5(v-if="user.hasProfilePhoto()" :user='user', size='featured' :no-link="true")
-            .lmo-hint-text @{{user.username}}
+            .text--secondary @{{user.username}}
             formatted-text(v-if="user" :model="user" column="shortBio")
             div(v-t="{ path: 'user_page.locale_field', args: { value: user.localeName() } }", v-if='user.localeName()')
             span

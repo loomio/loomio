@@ -90,9 +90,6 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
       :placeholder="$t('poll_common_outcome_form.who_to_notify')"
       :model="outcome")
 
-    //- .caption.outcome-modal__number-notified(v-if="notificationsCount != 1" v-t="{ path: 'poll_common_notify_group.members_count', args: { count: notificationsCount } }")
-    //- .caption.outcome-modal__number-notified(v-else v-t="'discussion_form.one_person_notified'")
-
     .poll-common-calendar-invite(v-if='datesAsOptions()')
       .poll-common-calendar-invite__checkbox.poll-common-checkbox-option
         v-checkbox(v-model='outcome.calendarInvite' :label="$t('poll_common_calendar_invite.calendar_invite')")

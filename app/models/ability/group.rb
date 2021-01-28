@@ -42,12 +42,21 @@ module Ability::Group
       (group.members_can_start_discussions? && group.members.exists?(user.id)))
     end
 
+    can [:add_guests], ::Group do |group|
+      user.email_verified? && Subscription.for(group).is_active? &&
+      ((group.members_can_add_guests && group.members.exists?(user.id)) || group.admins.exists?(user.id))
+    end
+
     can [:add_members,
          :invite_people,
          :announce,
          :manage_membership_requests], ::Group do |group|
       user.email_verified? && Subscription.for(group).is_active? && !group.has_max_members &&
       ((group.members_can_add_members? && group.members.exists?(user.id)) || group.admins.exists?(user.id))
+    end
+
+    can [:notify], ::Group do |group|
+      (group.members_can_announce && group.members.exists?(user.id)) || group.admins.exists?(user.id)
     end
 
     # please note that I don't like this duplication either.
@@ -78,11 +87,6 @@ module Ability::Group
     can :join, ::Group do |group|
       (user.email_verified? && can?(:show, group) && group.membership_granted_upon_request?) ||
       (user_is_admin_of?(group.parent_id) && can?(:show, group) && group.membership_granted_upon_approval?)
-    end
-
-    can :start_poll, ::Group do |group|
-      user_is_admin_of?(group&.id) ||
-      (user_is_member_of?(group&.id) && group.members_can_raise_motions)
     end
 
     can :merge, ::Group do |group|

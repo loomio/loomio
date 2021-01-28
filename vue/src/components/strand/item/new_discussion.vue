@@ -22,10 +22,10 @@ export default
     editThread: -> @actions['edit_thread']
 
     dockActions: ->
-      pick @actions, ['react', 'translate_thread', 'add_comment', 'subscribe', 'unsubscribe', 'unignore', 'show_history', 'edit_thread', 'announce_thread']
+      pick @actions, ['react', 'translate_thread', 'add_comment', 'subscribe', 'unsubscribe', 'unignore', 'edit_thread', 'announce_thread']
 
     menuActions: ->
-      pick @actions, ['edit_tags',  'notification_history', 'close_thread', 'reopen_thread', 'move_thread', 'discard_thread', 'export_thread']
+      pick @actions, ['edit_tags', 'show_history', 'notification_history', 'close_thread', 'reopen_thread', 'move_thread', 'discard_thread', 'export_thread']
 
     status: ->
       return 'pinned' if @discussion.pinned

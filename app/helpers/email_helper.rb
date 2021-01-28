@@ -23,17 +23,27 @@ module EmailHelper
   def render_rich_text(text, format = "md")
     return "" unless text
     if format == "md"
-      markdownify(text).html_safe
+      markdownify(text)
     else
-      replace_iframes(text).html_safe
-    end
+      replace_iframes(text)
+    end.html_safe
+  end
+
+  def render_plain_text(text, format = 'md')
+    return "" unless text
+    ActionController::Base.helpers.strip_tags(render_rich_text(text, format))
   end
 
   def replace_iframes(str)
     srcs = Nokogiri::HTML(str).search("iframe[src]").map { |el| el['src'] }
     out = str.dup
     srcs.each do |src|
-      out.gsub!('<iframe src="'+src+'"></iframe>', "<a href='#{src}'>#{src}</a>")
+      begin
+        vi = VideoInfo.new(src)
+        out.gsub!('<iframe src="'+src+'"></iframe>', "<a href='#{vi.url}'><img src='#{vi.thumbnail}' /></a>")
+      rescue VideoInfo::UrlError
+        out.gsub!('<iframe src="'+src+'"></iframe>', "<a href='#{src}'>#{src}</a>")
+      end
     end
     out
   end

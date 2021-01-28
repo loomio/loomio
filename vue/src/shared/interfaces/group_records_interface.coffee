@@ -13,7 +13,7 @@ export default class GroupRecordsInterface extends BaseRecordsInterface
 
   fuzzyFind: (id) ->
     # could be id or key or handle
-    @find(id) || head(@find(handle: id))
+    @find(id) || head(@find(handle: "#{id}".toLowerCase()))
 
   findOrFetch: (id, options = {}) ->
     record = @fuzzyFind(id)

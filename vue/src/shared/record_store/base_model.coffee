@@ -120,12 +120,14 @@ export default class BaseModel
       from: name
       with: @constructor.singular + 'Id'
       of: 'id'
+      find: {}
 
     @[name] = =>
+      find = Object.assign({}, {"#{args.with}": @[args.of]},  args.find)
       if userArgs.orderBy
-        orderBy @recordStore[args.from].find("#{args.with}": @[args.of]), userArgs.orderBy
+        orderBy @recordStore[args.from].find(find), userArgs.orderBy
       else
-        @recordStore[args.from].find("#{args.with}": @[args.of])
+        @recordStore[args.from].find(find)
 
   belongsTo: (name, userArgs) ->
     values =

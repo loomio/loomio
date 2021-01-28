@@ -225,6 +225,14 @@ class Poll < ApplicationRecord
     show_results? ? super : []
   end
 
+  def reset_latest_stances!
+    Stance.where("id IN
+      (SELECT DISTINCT ON (participant_id) id
+       FROM stances
+       WHERE poll_id = #{id}
+       ORDER BY participant_id, created_at DESC)").update_all(latest: true)
+  end
+
   def update_stance_data
     update_attribute(:stance_data, zeroed_poll_options.merge(
       self.class.connection.select_all(%{
@@ -263,18 +271,6 @@ class Poll < ApplicationRecord
                (m.id  IS NOT NULL AND m.archived_at IS NULL #{'AND m.admin = TRUE' if admin}) OR
                (s.id  IS NOT NULL AND s.revoked_at  IS NULL AND latest = TRUE #{'AND s.admin = TRUE' if admin})")
     end
-  end
-
-  # people you could invite to the poll.
-  # anyone in the thread, or the organization, or the poll itself
-  def base_guest_audience_query
-    User.active.
-      joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.discussion_id || 0} AND dr.user_id = users.id").
-      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id IN (#{[0].concat(self.group.parent_or_self.id_and_subgroup_ids).join(',')})").
-      joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
-      where("(dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
-             (m.id  IS NOT NULL AND m.archived_at IS NULL) OR
-             (s.id  IS NOT NULL AND s.revoked_at  IS NULL AND latest = TRUE)")
   end
 
   def admins
@@ -331,6 +327,7 @@ class Poll < ApplicationRecord
     poll_options.order(:priority).pluck(:name)
   end
 
+
   def poll_option_names=(names)
     names    = Array(names)
     existing = Array(poll_options.pluck(:name))
@@ -340,6 +337,9 @@ class Poll < ApplicationRecord
     end
     @poll_option_removed_names = (existing - names)
   end
+
+  alias options= poll_option_names=
+  alias options poll_option_names
 
   def is_new_version?
     !self.poll_options.map(&:persisted?).all? ||

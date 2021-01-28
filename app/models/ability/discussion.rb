@@ -19,19 +19,38 @@ module Ability::Discussion
     end
 
     can :create, ::Discussion do |discussion|
+      Webhook.where(group_id: discussion.group_id, actor_id: user.id).where.any(permissions: 'create_discussion').exists? ||
       user.email_verified? &&
-      discussion.group.blank? ||
-      (discussion.group.admins.exists?(user.id) ||
-      (discussion.group.members_can_start_discussions? && discussion.group.members.exists?(user.id)))
+      (
+       discussion.group.blank? ||
+       discussion.group.admins.exists?(user.id) ||
+       (discussion.group.members_can_start_discussions && discussion.group.members.exists?(user.id))
+      )
     end
 
     can [:announce], ::Discussion do |discussion|
-      user.email_verified? &&
-      (discussion.admins.exists?(user.id) || (discussion.group.members_can_announce && discussion.members.exists?(user.id)))
+      if discussion.group_id
+        discussion.group.admins.exists?(user.id) ||
+        (discussion.group.members_can_announce && discussion.members.exists?(user.id))
+      else
+        discussion.admins.exists?(user.id)
+      end
+    end
+
+    can [:add_members], ::Discussion do |discussion|
+      discussion.members.exists?(user.id)
+    end
+
+    can [:add_guests], ::Discussion do |discussion|
+      if discussion.group_id
+        discussion.group.admins.exists?(user.id) ||
+        (discussion.group.members_can_add_guests && discussion.members.exists?(user.id))
+      else
+        !discussion.id || discussion.admins.exists?(user.id)
+      end
     end
 
     can [:update], ::Discussion do |discussion|
-      user.email_verified? &&
       (discussion.author == user ||
       discussion.admins.exists?(user.id) ||
       (discussion.group.members_can_edit_discussions && discussion.members.exists?(user.id)))
@@ -57,10 +76,6 @@ module Ability::Discussion
 
     can :remove_events, ::Discussion do |discussion|
       discussion.author == user or discussion.admins.exists?(user.id)
-    end
-
-    can :start_poll, ::Discussion do |discussion|
-      can?(:start_poll, discussion.group) || discussion.admins.exists?(user.id)
     end
   end
 end

@@ -233,6 +233,8 @@ el:
   announcement:
     form:
       invitation_message_label: Μήνυμα
+      poll_reminder:
+        message_label: Μήνυμα
   action_dock:
     edit_stance: Αλλάξε θέση
     edited: Επεξεργάστηκε
@@ -337,14 +339,6 @@ el:
     public_or_private_threads: 'Επιτρέπονται δημόσια και ιδιωτικά θέματα'
     private_threads: 'Μόνο τα μέλη μπορούν να δεις τις συζητήσεις'
     allow_public_threads: 'Επιτρέπονται δημόσια θέματα σε αυτή την ομάδα.'
-    parent_members_can_see_discussions: 'Τα μέλη του {{parent}} μπορούν να δουν τα ιδιωτικά θέματα.'
-    members_can_add_members: 'Τα μέλη μπορούν να προσκαλέσουν ανθρώπους και να εγκρίνουν τις αιτήσεις συμμετοχής.'
-    members_can_create_subgroups: 'Τα μέλη μπορούν να δημιουργήσουν υπο ομάδες.'
-    members_can_edit_discussions: 'Τα μέλη μπορούν να ενημερώσουν το περιεχόμενο και το τίτλο κάθε θέματος.'
-    members_can_edit_comments: 'Τα μέλη μπορούν να επεξεργαστούν τα δικά τους σχόλια ανά πάσα στιγμή.'
-    members_can_start_discussions: 'Τα μέλη μπορούν να ξεκινούν νέα θέματα.'
-    members_can_vote: 'Τα μέλη μπορούν να ψηφίζουν στις προτάσεις.'
-    members_can_raise_motions: 'Τα μέλη μπορούν να ξεκινούν προτάσεις.'
     submit_start_group: 'Δημιουργία ομάδας'
     submit_start_subgroup: 'Δημιουργία υπο ομάδας'
     submit_update: 'Ενημέρωση ρυθμίσεων'

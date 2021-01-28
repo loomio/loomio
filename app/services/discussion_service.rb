@@ -1,14 +1,12 @@
 class DiscussionService
-
-  class EventNotSavedError
-    def initialize(data)
-      @data = data
-    end
-  end
-
   def self.create(discussion:, actor:, params: {})
-    actor.ability.authorize! :create, discussion
-    actor.ability.authorize! :announce, discussion if params[:recipient_audience]
+    actor.ability.authorize!(:create, discussion)
+
+    UserInviter.authorize!(user_ids: params[:recipient_user_ids],
+                           emails: params[:recipient_emails],
+                           audience: params[:recipient_audience],
+                           model: discussion,
+                           actor: actor)
 
     discussion.author = actor
 
@@ -23,11 +21,11 @@ class DiscussionService
     DiscussionReader.for(user: actor, discussion: discussion)
                     .update(admin: true, inviter_id: actor.id)
 
-    users = add_users(discussion: discussion,
-                      actor: actor,
-                      user_ids: params[:recipient_user_ids],
+    users = add_users(user_ids: params[:recipient_user_ids],
                       emails: params[:recipient_emails],
-                      audience: params[:recipient_audience])
+                      audience: params[:recipient_audience],
+                      discussion: discussion,
+                      actor: actor)
 
     EventBus.broadcast('discussion_create', discussion, actor)
     Events::NewDiscussion.publish!(discussion: discussion,
@@ -38,11 +36,20 @@ class DiscussionService
 
   def self.update(discussion:, actor:, params:)
     actor.ability.authorize! :update, discussion
+
+    UserInviter.authorize!(user_ids: params[:recipient_user_ids],
+                           emails: params[:recipient_emails],
+                           audience: params[:recipient_audience],
+                           model: discussion,
+                           actor: actor)
+
     HasRichText.assign_attributes_and_update_files(discussion, params.except(:group_id))
 
     return false unless discussion.valid?
     rearrange = discussion.max_depth_changed?
     discussion.save!
+    
+    discussion.update_versions_count
     EventService.delay.repair_thread(discussion.id) if rearrange
 
     users = add_users(discussion: discussion,
@@ -56,12 +63,16 @@ class DiscussionService
     Events::DiscussionEdited.publish!(discussion: discussion,
                                       actor: actor,
                                       recipient_user_ids: users.pluck(:id),
-                                      recipient_audience: params[:recipient_audience].presence,
-                                      recipient_message: params[:recipient_message].presence)
+                                      recipient_audience: params[:recipient_audience],
+                                      recipient_message: params[:recipient_message])
   end
 
-  def self.announce(discussion:, actor:, params:)
-    actor.ability.authorize! :announce, discussion
+  def self.invite(discussion:, actor:, params:)
+    UserInviter.authorize!(user_ids: params[:recipient_user_ids],
+                           emails: params[:recipient_emails],
+                           audience: params[:recipient_audience],
+                           model: discussion,
+                           actor: actor)
 
     users = add_users(discussion: discussion,
                       actor: actor,
@@ -160,9 +171,11 @@ class DiscussionService
 
   def self.mark_as_read(discussion:, params:, actor:)
     actor.ability.authorize! :mark_as_read, discussion
-    reader = DiscussionReader.for_model(discussion, actor)
-    reader.viewed!(params[:ranges])
-    EventBus.broadcast('discussion_mark_as_read', reader, actor)
+    RetryOnError.with_limit(2) do
+      reader = DiscussionReader.for_model(discussion, actor)
+      reader.viewed!(params[:ranges])
+      EventBus.broadcast('discussion_mark_as_read', reader, actor)
+    end
   end
 
   def self.dismiss(discussion:, params:, actor:)
@@ -194,13 +207,15 @@ class DiscussionService
     time_range = time_start..time_finish
 
     DiscussionQuery.visible_to(user: user, only_unread: true, or_public: false, or_subgroups: false).last_activity_after(time_start).each do |discussion|
-      sequence_ids = discussion.items.where("events.created_at": time_range).pluck(:sequence_id)
-      DiscussionReader.for(user: user, discussion: discussion).viewed!(sequence_ids)
+      RetryOnError.with_limit(2) do
+        sequence_ids = discussion.items.where("events.created_at": time_range).pluck(:sequence_id)
+        DiscussionReader.for(user: user, discussion: discussion).viewed!(sequence_ids)
+      end
     end
   end
 
   def self.add_users(discussion:, actor:, user_ids:, emails:, audience:)
-    users = UserInviter.where_or_create!(inviter: actor,
+    users = UserInviter.where_or_create!(actor: actor,
                                          user_ids: user_ids,
                                          emails: emails,
                                          model: discussion,

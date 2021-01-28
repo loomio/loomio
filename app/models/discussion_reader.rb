@@ -13,6 +13,8 @@ class DiscussionReader < ApplicationRecord
   delegate :importance, to: :discussion
   delegate :message_channel, to: :user
 
+  scope :not_revoked, -> { where("discussion_readers.revoked_at IS NULL") }
+
   scope :guests, -> { where("discussion_readers.inviter_id IS NOT NULL
                               AND discussion_readers.revoked_at IS NULL") }
   scope :admins, -> { guests.where('discussion_readers.admin': true) }
@@ -26,15 +28,13 @@ class DiscussionReader < ApplicationRecord
 
   def self.for(user:, discussion:)
     if user&.is_logged_in?
-      find_or_create_by!(user_id: user.id, discussion_id: discussion.id) do |dr|
+      find_or_initialize_by(user_id: user.id, discussion_id: discussion.id) do |dr|
         m = user.memberships.find_by(group_id: discussion.group_id)
         dr.volume = (m && m.volume) || 'normal'
       end
     else
       new(discussion: discussion)
     end
-  rescue ActiveRecord::RecordNotUnique
-    retry
   end
 
   def self.for_model(model, actor = nil)

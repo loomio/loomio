@@ -1,11 +1,8 @@
 class Event < ApplicationRecord
   include ActionView::Helpers::SanitizeHelper
-  include Redis::Objects
   include CustomCounterCache::Model
   include HasTimeframe
   extend HasCustomFields
-  counter :position_counter
-  lock :reset_position_counter, expiration: 5
 
   has_many :notifications, dependent: :destroy
   belongs_to :eventable, polymorphic: true
@@ -62,7 +59,19 @@ class Event < ApplicationRecord
   end
 
   def self.publish!(eventable, **args)
-    event = build(eventable, **args).tap(&:save!)
+    fails = 0
+    event = build(eventable, **args)
+    begin
+      event.save!
+    rescue ActiveRecord::RecordNotUnique => e
+      fails += 1
+      if fails < 3
+        EventService.repair_thread(event.discussion_id)
+        retry
+      else
+        raise e
+      end
+    end
     PublishEventWorker.perform_async(event.id)
     event
   end
@@ -80,16 +89,6 @@ class Event < ApplicationRecord
       eventable:  eventable,
       eventable_version_id: ((eventable.respond_to?(:versions) && eventable.versions.last&.id) || nil)
     }.merge(args))
-  end
-
-  def set_sequences
-    set_sequence_id
-    set_position_and_position_key
-  end
-
-  def reset_sequences
-    reset_position_counter
-    reset_sequence_id_counter
   end
 
   def user
@@ -134,29 +133,48 @@ class Event < ApplicationRecord
     update_columns(parent_id: parent_id, depth: depth)
   end
 
-  def set_sequence_id
+  def position_counter
+    Redis::Counter.new("position_counter_#{parent_id}")
+  end
+
+  def sequence_id_counter
+    Redis::Counter.new("sequence_id_counter_#{discussion_id}")
+  end
+
+  def set_sequences
     return unless discussion_id
-    return if sequence_id
-    self.sequence_id = next_sequence_id
+    self.sequence_id = next_sequence_id!
+    self.position = next_position!
+    self.position_key = self_and_parents.reverse.map(&:position).map{|p| Event.zero_fill(p) }.join('-')
+  end
+
+  def reset_sequences
+    position_counter.delete
+    sequence_id_counter.delete
+  end
+
+  def next_sequence_id!
+    if sequence_id_counter.nil?
+      sequence_id_counter.reset(
+        Event.where(discussion_id: discussion_id).
+              order(sequence_id: :desc).limit(1).pluck(:sequence_id).last || 0)
+    end
+    sequence_id_counter.increment
+  end
+
+  def next_position!
+    return 0 unless (discussion_id and parent_id)
+    if position_counter.nil?
+      position_counter.reset(
+        Event.where(parent_id: parent_id, discussion_id: discussion_id).
+              order(position: :desc).limit(1).pluck(:position).last || 0)
+    end
+    position_counter.increment
   end
 
   def self.zero_fill(num)
     "0" * (5 - num.to_s.length) + num.to_s
   end
-
-  def set_position_and_position_key!
-    return unless discussion_id
-    set_position_and_position_key
-    update_columns(position: position, position_key: position_key)
-  end
-
-  def set_position_and_position_key
-    return unless discussion_id
-    return unless position == 0
-    self.position = next_position!
-    self.position_key = self_and_parents.reverse.map(&:position).map{|p| Event.zero_fill(p) }.join('-')
-  end
-
 
   def calendar_invite
     nil # only for announcement_created events for outcomes
@@ -188,32 +206,6 @@ class Event < ApplicationRecord
     [self, (parent && parent.discussion_id && parent.self_and_parents)].flatten.compact
   end
 
-  def next_sequence_id
-    reset_sequence_id_counter if discussion.sequence_id_counter.nil?
-    discussion.sequence_id_counter.increment
-  end
-
-  def reset_sequence_id_counter
-    return unless self.discussion_id
-    discussion.reset_sequence_id_counter_lock do
-      val = (Event.where(discussion_id: discussion_id).order("sequence_id DESC").limit(1).pluck(:sequence_id).first || 0)
-      discussion.sequence_id_counter.reset(val)
-    end
-  end
-
-  def next_position!
-    return 0 unless self.discussion_id and self.parent_id
-    parent.reset_position_counter if parent.position_counter.nil?
-    parent.position_counter.increment
-  end
-
-  def reset_position_counter
-    reset_position_counter_lock do
-      val = (Event.where(parent_id: id,
-                         discussion_id: discussion_id).order("position DESC").limit(1).pluck(:position).last || 0)
-      self.position_counter.reset(val)
-    end
-  end
 
   def max_depth_adjusted_parent
     original_parent = find_parent_event

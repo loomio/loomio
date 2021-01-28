@@ -1,0 +1,104 @@
+%h1 Loomio Integration API
+
+%p
+  Hi. We've created this API just for people who are writing integrations for Loomio.
+  At this stage it's still very new, and development is user request driven -
+  meaning that if you are needing help or want to see a new function then
+  %a{href: "https://www.loomio.org/community-product-development/", target: "_blank"}
+    join the product development group
+  and tell us.
+
+%h2 create discussion
+
+%pre
+  curl -X POST -d 'title=hello world&api_key=#{params['api_key']}' http://localhost:3000/api/b1/discussions
+
+%h3 params
+%table
+  %tr
+    %td title
+    %td title of the thread
+  %tr
+    %td description
+    %td context for the thread
+  %tr
+    %td description_format
+    %td either 'md' or 'html'
+  %tr
+    %td recipient_audience
+    %td 'group' or null. if 'group' whole group will be notified about the new thread
+  %tr
+    %td recipient_user_ids
+    %td array of user ids to notify or invite to the thread
+  %tr
+    %td recipient_emails
+    %td array of email addresses of people to invite to the thread
+  %tr
+    %td recipient_message
+    %td message to include in the email invitation
+
+%h2 create poll
+%pre
+  curl -X POST -d 'title=vote now&poll_type=proposal&options[]=agree&options[]=disagree&details=yo wassup&closing_at=2021-02-03&api_key=#{params['api_key']}' http://localhost:3000/api/b1/polls
+
+%h3 params
+%table
+  %tr
+    %td title
+    %td title of the thread
+  %tr
+    %td poll_type
+    %td proposal, poll, count, score, ranked_choice, meeting or dot_vote
+    %td the voting style of the poll
+  %tr
+    %td details
+    %td the main text of the poll
+  %tr
+    %td details_format
+    %td either 'md' or 'html'
+  %tr
+    %td specified_voters_only
+    %td boolean
+    %td if true, only invited people can vote, if false, anyone in the group or thread can vote
+  %tr
+    %td hide_results_until_closed
+    %td boolean
+    %td allow voters to see the results before the poll has closed
+  %tr
+    %td anonymous
+    %td boolean
+    %td hide identities of voters
+  %tr
+    %td discussion_id
+    %td boolean
+    %td id of discussion thread to add this poll to
+  %tr
+    %td voter_can_add_options
+    %td boolean
+    %td if voters can add options to the poll
+  %tr
+    %td recipient_audience
+    %td 'group' or null. if 'group' whole group will be notified about the new thread
+  %tr
+    %td notify_on_closing_soon
+    %td nobody, author, undecided_voters or voters
+    %td audience to send a reminder notification to, 24 hours before the poll closes
+  %tr
+    %td options[]
+    %td string. when proposal then agree, disagree, abstain, block. when meeting then a iso8601 date or datetime. otherwise it's anything goes.
+    %td options to include in the poll. send multiple options[] arguments to add to the array of options
+  %tr
+    %td recipient_user_ids
+    %td array of user ids to notify or invite
+  %tr
+    %td recipient_emails
+    %td array of email addresses of people to invite to the thread
+  %tr
+    %td recipient_message
+    %td message to include in the email invitation
+
+%h2 list memberships
+- url = "http://localhost:3000/api/b1/memberships?api_key=#{params['api_key']}"
+%a{href: url}=url
+%pre
+  curl -d 'api_key=#{params['api_key']}' http://localhost:3000/api/b1/memberships

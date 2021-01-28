@@ -50,7 +50,7 @@ export default
       @poll.stanceData[name] or 0
 
     percentFor: (name) ->
-      parseInt(parseFloat(@countFor(name)) / parseFloat(@poll.votersCount) * 100) || 0
+      parseInt(parseFloat(@countFor(name)) / parseFloat(@poll.decidedVotersCount) * 100) || 0
 
     translationFor: (name) ->
       @$t("poll_proposal_options.#{name}")

@@ -157,10 +157,8 @@ class Group < ApplicationRecord
                          :members_can_add_members,
                          :membership_granted_upon,
                          :members_can_edit_discussions,
-                         :motions_can_be_edited,
                          :members_can_edit_comments,
                          :members_can_raise_motions,
-                         :members_can_vote,
                          :members_can_start_discussions,
                          :members_can_create_subgroups,
                          :creator_id,
@@ -207,6 +205,10 @@ class Group < ApplicationRecord
 
   def parent_or_self
     parent || self
+  end
+
+  def self_and_subgroups
+    Group.where(id: [id].concat(subgroup_ids))
   end
 
   def add_member!(user, inviter: nil)
@@ -280,6 +282,10 @@ class Group < ApplicationRecord
 
   def org_discussions_count
     Group.where(id: id_and_subgroup_ids).sum(:discussions_count)
+  end
+
+  def org_polls_count
+    Group.where(id: id_and_subgroup_ids).sum(:polls_count)
   end
 
   def has_max_members

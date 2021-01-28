@@ -58,6 +58,8 @@ an:
   announcement:
     form:
       invitation_message_label: Mensache
+      poll_reminder:
+        message_label: Mensache
   action_dock:
     edited: Editau
   join_group_button:

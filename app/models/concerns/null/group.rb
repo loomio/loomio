@@ -37,6 +37,7 @@ module Null::Group
       update_closed_discussions_count
       presence
       present?
+      content_locale
       handle
       description
       description_format
@@ -44,21 +45,26 @@ module Null::Group
       add_member!
       message_channel
       logo_or_parent_logo
+      created_at
+      creator_id
     )
   end
 
   def true_methods
-    [:members_can_raise_motions, :members_can_edit_comments, :discussion_private_default, :members_can_announce, :members_can_edit_discussions]
+    [:members_can_raise_motions, :members_can_edit_comments, :discussion_private_default, :members_can_announce, :members_can_edit_discussions, :members_can_add_guests]
   end
 
   def empty_methods
-    [:member_ids, :webhooks, :identities, :accepted_members]
+    [:member_ids, :identities, :accepted_members]
   end
 
   def discussion_privacy_options
     'private_only'
   end
 
+  def webhooks
+    Webhook.none
+  end
   def admins
     User.none
   end
@@ -76,17 +82,34 @@ module Null::Group
       private_discussions_only?
       public_discussions_only?
       is_visible_to_parent_members
+      members_can_add_members
+      members_can_add_guests
+      members_can_create_subgroups
+      members_can_edit_discussions
+      members_can_start_discussions
+      admins_can_edit_user_content
     )
   end
 
   def zero_methods
-    [:memberships_count]
+    %w[
+      memberships_count
+      polls_count
+      closed_polls_count
+      discussions_count
+      public_discussions_count
+      pending_memberships_count
+    ]
   end
 
   def none_methods
     {
       members: :user
     }
+  end
+
+  def group_privacy
+    'private_only'
   end
 
   def cover_photo

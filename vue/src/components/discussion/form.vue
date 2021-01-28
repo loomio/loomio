@@ -67,15 +67,11 @@ export default
     updatePrivacy: ->
       @discussion.private = @discussion.privateDefaultValue()
 
-  computed:
-    numNotified: ->
-      count = 0
-      if @discussion.recipientAudience == 'group'
-        count += @discussion.group().acceptedMembershipsCount
-      count += @discussion.recipientUserIds.length
-      count += @discussion.recipientEmails.length
-      count
+    updateCount: ->
+      Records.announcements.fetchNotificationsCount(@model).then (data) =>
+        @notificationsCount = data.count
 
+  computed:
     maxThreads: ->
       @subscription.max_threads
 
@@ -114,6 +110,9 @@ export default
       v-icon mdi-close
   .pa-4
     v-select(v-if="!discussion.id" v-model="discussion.groupId" :items="groupItems" :label="$t('common.group')")
+    p.text--secondary.caption
+      span(v-if="!discussion.groupId" v-t="'announcement.form.visible_to_guests'")
+      span(v-if="discussion.groupId" v-t="{path: 'announcement.form.visible_to_group', args: {group: discussion.group().name}}")
     //- p discussion.recipientAudience {{discussion.recipientAudience}}
     //- p initialRecipients {{initialRecipients}}
     //- p userIds {{discussion.recipientUserIds}}
@@ -133,48 +132,11 @@ export default
       p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
 
     .discussion-form__group-selected(v-if='!showUpgradeMessage')
-      v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input.text-h5(:label="$t('discussion_form.title_label')" :placeholder="$t('discussion_form.title_placeholder')" v-model='discussion.title' maxlength='255' required)
+      v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input(:label="$t('discussion_form.title_label')" :placeholder="$t('discussion_form.title_placeholder')" v-model='discussion.title' maxlength='255' required)
       validation-errors(:subject='discussion', field='title')
       lmo-textarea(:model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")
-      //- v-checkbox(:label="$t('discussion_form.notify_group')" v-model="discussion.notifyGroup" :disabled="!canAnnounce")
-      //- .caption.discussion-form__number-notified(v-if="notificationsCount != 1" v-t="{ path: 'poll_common_notify_group.members_count', args: { count: notificationsCount } }")
-      //- .caption.discussion-form__number-notified(v-else v-t="'discussion_form.one_person_notified'")
 
       common-notify-fields(:model="discussion")
-      //- v-text-field(
-      //-   v-if="discussion.id"
-      //-   :label="$t('discussion_form.change_log_label')"
-      //-   :placeholder="$t('discussion_form.change_log_placeholder')"
-      //-   v-model="discussion.recipientMessage"
-      //-   counter="140")
-      //-
-      //- recipients-autocomplete(
-      //-   v-if="discussion.id"
-      //-   :label="$t(discussion.id ? 'action_dock.notify' : 'common.action.invite')"
-      //-   :placeholder="$t('announcement.form.discussion_'+ (discussion.id ? 'edited' : 'announced')+ '.helptext')"
-      //-   :users="users"
-      //-   :initial-recipients="initialRecipients"
-      //-   :audiences="audiences"
-      //-   :reset="reset"
-      //-   @new-query="newQuery"
-      //-   @new-recipients="newRecipients")
-      //-
-
-      //- p
-      //-   | Anyone in Dirty Dancing Shoes will be able to see this thread.
-      //-   br
-      //-   | 4 people will be notified.
-      //- p
-      //-   | Only the people you invite can see this thread
-      //-   br
-      //-   | 4 people will be notified
-      p.discussion-form__people-notified.text--secondary(v-if="!discussion.id")
-        span(v-if="numNotified == 0" v-t="'announcement.form.notified_none'")
-        span(v-if="numNotified == 1" v-t="'announcement.form.notified_singular'")
-        span(v-if="numNotified > 1" v-t="{path: 'announcement.form.notified', args: {notified: numNotified}}")
-        space
-        span(v-if="!discussion.groupId" v-t="'announcement.form.visible_to_guests'")
-        span(v-if="discussion.groupId" v-t="{path: 'announcement.form.visible_to_group', args: {group: discussion.group().name}}")
       //- p.discussion-form__visibility
       v-card-actions
         v-spacer

@@ -20,13 +20,14 @@ class BaseMailer < ActionMailer::Base
   default :from => "\"#{AppConfig.theme[:site_name]}\" <#{NOTIFICATIONS_EMAIL_ADDRESS}>"
   before_action :utm_hash
 
+
   protected
   def utm_hash
     @utm_hash = { utm_medium: 'email', utm_source: action_name, utm_campaign: mailer_name }
   end
 
-  def email_subject_prefix(group_name)
-    "[#{AppConfig.theme[:site_name]}: #{group_name}]"
+  def group_name_prefix(model)
+    model.group.present? ? "[#{model.group.handle || model.group.full_name}] " : ''
   end
 
   def from_user_via_loomio(user)

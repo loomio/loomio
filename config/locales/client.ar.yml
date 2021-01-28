@@ -605,7 +605,6 @@ ar:
     inviting_guests_to_thread: الضيوف لا ينتمون إلى مجموعتك ، ولديهم حق الوصول إلى هذا الموضوع فقط
     select_groups: حدد المجموعات
     audiences:
-      group: الجميع في {{اسم}}
       discussion_group: الجميع في الموضوع
       voters: تمت دعوة الجميع للتصويت
       decided_voters: كل من صوت
@@ -633,6 +632,8 @@ ar:
       poll_announced:
         title: دعوة للتصويت
         helptext: من تريد دعوته للتصويت؟
+      poll_reminder:
+        message_label: رسالة
       poll_edited:
         title: إخطار بالتعديلات
         helptext: من الذي تود إبلاغه بهذا التحديث؟
@@ -915,8 +916,6 @@ ar:
   group_form:
     thread_defaults_help: الإعدادات الافتراضية للمواضيع الجديدة
     click_to_change_image: صورة الغلاف والشعار (انقر للتغيير)
-    permissions_explaination: |
-        هناك مستويان من العضوية يمكن لأي شخص الحصول عليها في المجموعة: المسؤول والعضو
     aria_label: 'شكل المجموعة'
     new_organisation: منظمة جديدة
     start_group_heading: 'إبدأ مجموعة'
@@ -966,16 +965,6 @@ ar:
     public_or_private_threads: 'السماح بموضوعات خاصة و عامة'
     private_threads: 'يمكن للأعضاء فقط رؤية النقاشات'
     allow_public_threads: 'السماح بمواضيع عامة في هذه المجموعة.'
-    parent_members_can_see_discussions: 'يمكن لأعضاء {{parent}} رؤية المواضيع الخاصة.'
-    members_can_announce: 'يمكن للأعضاء إخطار الجميع في المجموعة.'
-    members_can_add_members: 'يمكن للأعضاء دعوة أشخاص و الموافقة عى طلبات الانضمام.'
-    members_can_create_subgroups: 'يمكن للأعضاء بدء مجموعات فرعية.'
-    members_can_edit_discussions: 'يمكن للأعضاء تحديث سياق و عنوان الموضوع.'
-    members_can_edit_comments: 'يمكن للأعضاء تعديل تعليقاتهم في أي وقت.'
-    members_can_start_discussions: 'يمكن للأعضاء بدء مواضيع جديدة.'
-    members_can_vote: 'يمكن للأعضاء التصويت على المقترحات.'
-    members_can_raise_motions: 'يمكن للأعضاء بدء مقترحات.'
-    admins_can_edit_user_content: "يمكن للمسؤولين تحرير التعليقات واستطلاعات الرأي للمستخدم الآخر"
     submit_start_group: 'بدء مجموعة.'
     submit_start_subgroup: 'بدء مجموعة فرعية.'
     submit_update: 'تحديث الإعدادات'
@@ -1974,18 +1963,11 @@ ar:
       markdown: Markdown (لـ Mattermost و Zapier وغيرهم)
       microsoft: فرق مايكروسوفت
       slack: تثاقل
-    subtitle: اتصل بـ Slack أو Microsoft Teams أو Mattermost أو Zapier أو أي شيء يدعم webhooks
     we_have_guides: |
         راجع أدلة إعداد الخطاف التلقائي على الويب للمساعدة في توصيل خدمتك.
     add_webhook: إضافة webhook
-    success: تمت إضافة Webhook!
-    remove: إزالة webhook
-    confirm_remove: "هل تريد بالتأكيد إزالة الرد التلقائي على الويب: {{اسم}}؟"
-    removed: تمت إزالة Webhook
     url_label: عنوان URL للويب هوك
     name_label: 'الاسم '
-    name_placeholder: امنح اسمًا للويب هوك هذا حتى تتمكن من التعرف عليه لاحقًا
-    event_kind_helptext: ما هي الأحداث التي تريد أن يتم إعلامك بها؟
     event_kinds:
       new_discussion: بدأ موضوع
       discussion_edited: يتم تحرير موضوع

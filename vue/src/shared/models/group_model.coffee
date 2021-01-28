@@ -32,6 +32,11 @@ export default class GroupModel extends BaseModel
     attachments: []
     subscription: {}
     specifiedVotersOnly: false
+    recipientMessage: null
+    recipientAudience: null
+    recipientUserIds: []
+    recipientEmails: []
+
 
   afterConstruction: ->
     if @privacyIsClosed()
@@ -40,8 +45,8 @@ export default class GroupModel extends BaseModel
     HasTranslations.apply @
 
   relationships: ->
-    @hasMany 'discussions'
-    @hasMany 'polls'
+    @hasMany 'discussions', find: {discardedAt: {$ne: null}}
+    @hasMany 'polls', find: {discardedAt: {$ne: null}}
     @hasMany 'membershipRequests'
     @hasMany 'memberships'
     @hasMany 'allDocuments', from: 'documents', with: 'groupId', of: 'id'
@@ -124,10 +129,10 @@ export default class GroupModel extends BaseModel
     @parentAndSelfMembers().map (u) -> u.id
 
   membersInclude: (user) ->
-    @membershipFor(user)
+    @membershipFor(user) || false
 
   adminsInclude: (user) ->
-    @recordStore.memberships.find(groupId: @id, userId: user.id, admin: true)[0]
+    @recordStore.memberships.find(groupId: @id, userId: user.id, admin: true)[0] || false
 
   adminMemberships: ->
     @recordStore.memberships.find(groupId: @id, admin: true)

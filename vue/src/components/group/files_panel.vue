@@ -73,12 +73,12 @@ export default
       documents = Records.documents.collection.chain().
                      find(groupId: {$in: groupIds}).
                      find(title: {$regex: ///#{@searchQuery}///i}).
-                     limit(@from + @per).data()
+                     data()
 
       attachments = Records.attachments.collection.chain().
                      find(groupId: {$in: groupIds}).
                      find(filename: {$regex: ///#{@searchQuery}///i}).
-                     limit(@from + @per).data()
+                     data()
 
       @items = orderBy(documents.concat(attachments), 'createdAt', 'desc')
 
@@ -129,5 +129,7 @@ div
               action-menu(v-if="Object.keys(actionsFor(item)).length" :actions="actionsFor(item)")
 
       v-layout(justify-center)
-        v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loading" @click="fetch()" v-t="'common.action.load_more'")
+        .d-flex.flex-column.justify-center.align-center
+          span(v-if="loader.total == null") {{items.length}} / {{attachmentLoader.total}}
+          v-btn.my-2(outlined color='accent' v-if="!attachmentLoader.exhausted" :loading="loading" @click="fetch()" v-t="'common.action.load_more'")
 </template>

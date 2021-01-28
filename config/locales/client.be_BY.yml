@@ -77,6 +77,8 @@ be_BY:
   announcement:
     form:
       invitation_message_label: Паведамленне
+      poll_reminder:
+        message_label: Паведамленне
   action_dock:
     edited: Адрэдагавана
   join_group_button:

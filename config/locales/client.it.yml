@@ -504,6 +504,8 @@ it:
     privacy_organisation: 'La discussione sarà visibile ai membri di {{parent}} e ai membri di {{group}}.'
     fork_notice: 'Una nuova discussione è stata creata con {{count}} argomenti da {{title}}'
   announcement:
+    audiences:
+      group: Membri di {{name}}
     form:
       too_many_invitations: |
           Hai superato il limite di inviti. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
@@ -519,6 +521,8 @@ it:
       poll_announced:
         title: Invita a votare
         helptext: Chi vorresti invitare a votare?
+      poll_reminder:
+        message_label: Messaggio
       poll_edited:
         title: Notifica le modifiche
       outcome_announced:
@@ -709,14 +713,6 @@ it:
     public_or_private_threads: 'Permetti discussioni pubbliche e private'
     private_threads: 'Solo i membri possono vedere le discussioni'
     allow_public_threads: 'Permetti discussioni pubbliche in questo gruppo.'
-    parent_members_can_see_discussions: 'I membri del gruppo {{parent}} possono vedere le discussioni private. '
-    members_can_add_members: 'I membri possono invitare persone e approvare richieste di iscrizione.'
-    members_can_create_subgroups: 'I membri possono creare sottogruppi.'
-    members_can_edit_discussions: 'I membri possono aggiornare il contesto ed il titolo di ogni discussione.'
-    members_can_edit_comments: 'I membri possono modificare i propri commenti in ogni momento.'
-    members_can_start_discussions: 'I membri possono iniziare nuove discussioni.'
-    members_can_vote: 'I membri possono votare proposte.'
-    members_can_raise_motions: 'I membri possono iniziare proposte da porre al voto.'
     submit_start_group: 'Crea un gruppo'
     submit_start_subgroup: 'Avvia sottogruppo'
     submit_update: 'Aggiorna impostazioni'

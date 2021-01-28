@@ -48,6 +48,8 @@ km:
   announcement:
     form:
       invitation_message_label: សារ
+      poll_reminder:
+        message_label: សារ
   join_group_button:
     membership_requested: សំណើសមាជិកភាព
   membership_request_form:

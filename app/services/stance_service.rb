@@ -10,33 +10,40 @@ class StanceService
     EventBus.broadcast 'stance_destroy', stance, actor
   end
 
-  def self.create(stance:, actor:)
-    actor.ability.authorize! :create, stance
+  # is used for both create and update
+  def self.create(stance:, actor:, params: {}, force_create: false)
+    params.delete(:poll_id)
 
-    stance.assign_attributes(participant: actor)
-    stance.cast_at = Time.zone.now
+    stance = Stance.where(
+      poll_id: stance.poll_id,
+      participant_id: actor.id,
+      latest: true).first || stance unless force_create
+
+    actor.ability.authorize! :vote_in, stance.poll
+
+    if stance.persisted?
+      stance.stance_choices = []
+      HasRichText.assign_attributes_and_update_files(stance, params)
+    end
 
     return false unless stance.valid?
 
-    stance.poll.stances.where(participant: actor).update_all(latest: false)
-    stance.save!
-    stance.poll.update_stance_data
-    EventBus.broadcast 'stance_create', stance
-    event = Events::StanceCreated.publish! stance
-    MessageChannelService.publish_models([event], scope: {current_user: actor, current_user_id: actor.id}, user_id: actor.id)
-    event
-  end
-
-  def self.update(stance:, actor:, params:)
-    actor.ability.authorize! :update, stance
-    stance.stance_choices = []
-    HasRichText.assign_attributes_and_update_files(stance, params)
-    return false unless stance.valid?
+    stance.participant = actor
     stance.cast_at ||= Time.zone.now
-    stance.save!
+
+    Stance.transaction do
+      Stance.where(poll: stance.poll_id, participant_id: actor.id).
+             where.not(id: stance.id).
+             update_all(latest: false)
+      stance.save!
+    end
+
+    stance.update_versions_count
     stance.poll.update_stance_data
-    Events::StanceCreated.publish!(stance) unless stance.created_event
-    MessageChannelService.publish_models([stance.reload.created_event], scope: {current_user: actor, current_user_id: actor.id}, user_id: actor.id)
-    EventBus.broadcast 'stance_update', stance, actor
+
+    event = stance.created_event || Events::StanceCreated.publish!(stance)
+    MessageChannelService.publish_models([event], scope: {current_user_id: actor.id}, user_id: actor.id)
+    EventBus.broadcast('stance_create', stance, actor)
+    event
   end
 end

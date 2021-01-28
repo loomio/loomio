@@ -332,11 +332,15 @@ eo:
     privacy_private: 'Nur membroj de {{group}} povos vidi ĉi tiun fadenon.'
     privacy_organisation: 'Kaj membroj de {{parent}}, kaj membroj de {{group}} povos vidi ĉi tiun fadenon'
   announcement:
+    audiences:
+      group: Membroj de {{name}}
     form:
       invitation_message_label: Mesaĝo
       poll_announced:
         title: Inviti homojn voĉdoni
         helptext: Kiun vi volas inviti voĉdoni?
+      poll_reminder:
+        message_label: Mesaĝo
   action_dock:
     add_comment: Komenti
     copy_url: Kopii ligilon
@@ -389,11 +393,6 @@ eo:
     privacy: 'Privateco'
     profile: Profilo
     private_threads: 'Nur membroj povas vidi la diskutojn'
-    members_can_announce: 'Membroj rajtas sciigi al ĉiuj de la grupo.'
-    members_can_create_subgroups: 'Membroj rajtas krei subgrupojn.'
-    members_can_start_discussions: 'Membroj rajtas komenci novajn fadenojn.'
-    members_can_vote: 'Membroj rajtas voĉdoni je proponoj.'
-    members_can_raise_motions: 'Membroj rajtas starigi proponojn.'
     submit_update: 'Ŝanĝi agordojn'
   membership_requests_card:
     heading: 'Petoj por akiri membrecon'
