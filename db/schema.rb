@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_13_015811) do
+ActiveRecord::Schema.define(version: 2021_01_29_003935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -681,6 +681,7 @@ ActiveRecord::Schema.define(version: 2021_01_13_015811) do
     t.datetime "accepted_at"
     t.jsonb "stance_choices_cache", default: []
     t.string "content_locale"
+    t.string "secret_token", default: -> { "gen_random_uuid()" }
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id"], name: "index_stances_on_poll_id"
     t.index ["revoked_at"], name: "stances_revoked_at_null", where: "(revoked_at IS NOT NULL)"
