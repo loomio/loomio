@@ -161,12 +161,12 @@ GEM
     crass (1.0.6)
     css_parser (1.7.1)
       addressable
-    database_cleaner (1.8.5)
-    database_cleaner-active_record (1.8.0)
-      activerecord
-      database_cleaner (~> 1.8.0)
-    database_cleaner-redis (1.8.0)
-      database_cleaner (~> 1.8.0)
+    database_cleaner-active_record (2.0.0)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.0)
+    database_cleaner-redis (2.0.0)
+      database_cleaner-core (~> 2.0.0)
       redis
     device_detector (1.0.5)
     devise (4.7.3)
