@@ -162,9 +162,10 @@ GEM
     css_parser (1.7.1)
       addressable
     database_cleaner (1.8.5)
-    database_cleaner-active_record (1.8.0)
-      activerecord
-      database_cleaner (~> 1.8.0)
+    database_cleaner-active_record (2.0.0)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.0)
     database_cleaner-redis (1.8.0)
       database_cleaner (~> 1.8.0)
       redis
@@ -360,7 +361,7 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.5.0)
     minitest (5.14.3)
-    msgpack (1.4.1)
+    msgpack (1.4.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
