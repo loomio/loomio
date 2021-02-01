@@ -331,7 +331,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
-    kt-paperclip (6.4.0)
+    kt-paperclip (6.4.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       mime-types
@@ -360,7 +360,7 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.5.0)
     minitest (5.14.3)
-    msgpack (1.4.1)
+    msgpack (1.4.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
@@ -514,9 +514,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sentry-rails (4.1.5)
+    sentry-rails (4.1.6)
       rails (>= 5.0)
-      sentry-ruby (~> 4.1.2)
+      sentry-ruby-core (~> 4.1.2)
     sentry-ruby (4.1.5)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       faraday (>= 1.0)
@@ -524,8 +524,8 @@ GEM
     sentry-ruby-core (4.1.5)
       concurrent-ruby
       faraday
-    sentry-sidekiq (4.1.2)
-      sentry-ruby (~> 4.1.2)
+    sentry-sidekiq (4.1.3)
+      sentry-ruby-core (~> 4.1.2)
     sexp_processor (4.14.1)
     sidekiq (6.1.3)
       connection_pool (>= 2.2.2)
@@ -568,7 +568,7 @@ GEM
       oga (~> 3.0)
     warden (1.2.9)
       rack (>= 2.0.9)
-    webmock (3.11.1)
+    webmock (3.11.2)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
