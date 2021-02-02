@@ -298,7 +298,7 @@ GEM
     httparty (0.18.1)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
-    i18n (1.8.7)
+    i18n (1.8.8)
       concurrent-ruby (~> 1.0)
     icalendar (2.7.0)
       ice_cube (~> 0.16)
@@ -514,7 +514,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sentry-rails (4.1.6)
+    sentry-rails (4.1.7)
       rails (>= 5.0)
       sentry-ruby-core (~> 4.1.2)
     sentry-ruby (4.1.5)
