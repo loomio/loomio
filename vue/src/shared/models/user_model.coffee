@@ -95,6 +95,9 @@ export default class UserModel extends BaseModel
     return @avatarUrl if typeof @avatarUrl is 'string'
     @avatarUrl[size]
 
+  title: (group) ->
+    @titles[group.id] || @titles[group.parentId]
+
   nameWithTitle: (group) ->
     name = @nameOrEmail()
     return name unless group

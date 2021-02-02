@@ -8,7 +8,7 @@ class API::V1::MembershipsController < API::V1::RestfulController
         params[key.gsub("_xids", "_ids")] = params[key].split('x').map(&:to_i)
         params.delete(key)
       end
-      MembershipQuery.search(chain: collection, params: params).order('memberships.admin desc, memberships.created_at desc')
+      MembershipQuery.search(chain: collection, params: params).order('memberships.group_id, memberships.admin desc, memberships.created_at desc')
     end
     respond_with_collection(scope: index_scope)
   end

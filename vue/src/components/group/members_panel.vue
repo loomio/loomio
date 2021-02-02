@@ -191,11 +191,11 @@ export default
                 space
                 span.caption(v-if="$route.query.subgroups") {{membership.group().name}}
                 space
-                span.title.caption {{membership.title}}
+                span.title.caption {{membership.user().title(group)}}
                 span(v-if="$route.query.q")
                   space
                   span.caption {{membership.user().email}}
-                span(v-if="membership.admin")
+                span(v-if="membership.groupId == group.id && membership.admin")
                   space
                   v-chip(small outlined label v-t="'members_panel.admin'")
                   space
