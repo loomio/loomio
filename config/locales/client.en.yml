@@ -1629,6 +1629,7 @@ en:
     order_label: "Order"
     order_by_name: 'Name'
     order_by_created: 'Oldest'
+    show_users_in_subgroups: Show users in subgroups as well
     order_by_created_desc: 'Newest'
     order_by_admin_desc: 'Admins'
     loaded_of_total: '{{loaded}} of {{total}}'
@@ -1647,7 +1648,6 @@ en:
     sharable_link: 'Shareable Link'
     last_seen: 'Last seen {{date}}'
     invited_by_name: 'Invited by {{name}}'
-    only_in_subgroups: "Not in this group but belongs to {{name}}."
     accepted: 'Members'
 
   polls_panel:
