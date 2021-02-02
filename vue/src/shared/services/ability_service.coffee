@@ -43,10 +43,10 @@ export default new class AbilityService
     thread.closedAt && thread.adminsInclude(Session.user())
 
   canPinThread: (thread) ->
-    !thread.closedAt && !thread.pinned && thread.adminsInclude(Session.user())
+    !thread.closedAt && !thread.pinned && @canEditThread(thread)
 
   canUnpinThread: (thread) ->
-    !thread.closedAt && thread.pinned && thread.adminsInclude(Session.user())
+    !thread.closedAt && thread.pinned && @canEditThread(thread)
 
   canExportThread: (thread) ->
     !thread.discardedAt && thread.membersInclude(Session.user())
@@ -58,11 +58,9 @@ export default new class AbilityService
   canUnpinEvent: (event) ->
     event.pinned && @canEditThread(event.discussion())
 
-  canMoveThread: (thread) ->
-    thread.adminsInclude(Session.user()) or thread.author() == Session.user()
+  canMoveThread: (thread) -> @canEditThread(thread)
 
-  canDeleteThread: (thread) ->
-    thread.adminsInclude(Session.user()) or thread.author() == Session.user()
+  canDeleteThread: (thread) -> @canEditThread(thread)
 
   canChangeGroupVolume: (group) ->
     group.membersInclude(Session.user())
@@ -231,9 +229,6 @@ export default new class AbilityService
     (model.contentLocale && model.contentLocale != Session.user().locale) ||
     (!model.contentLocale && model.author().locale != Session.user().locale)
 
-  canViewPreviousPolls: (group) ->
-    @canViewGroup(group)
-
   canStartPoll: (model) ->
     model.adminsInclude(Session.user()) or
     (model.membersInclude(Session.user()) and model.group().membersCanRaiseMotions)
@@ -245,32 +240,30 @@ export default new class AbilityService
     poll.myStance() or
     (!poll.specifiedVotersOnly and poll.membersInclude(Session.user()))
 
-  canReactToPoll: (poll) ->
-    return false unless @isEmailVerified()
-    return false unless poll
-    poll.anyoneCanParticipate or
-    poll.membersInclude(Session.user())
-
   canMovePoll: (poll) ->
-    !poll.discussionId && poll.adminsInclude(Session.user())
+    !poll.discussionId && @canEditPoll(poll)
 
   canEditPoll: (poll) ->
-    poll.isActive() and poll.adminsInclude(Session.user())
+    poll.isActive() &&
+    (
+      poll.adminsInclude(Session.user()) ||
+      (poll.group().membersCanEditPolls && @canParticipateInPoll(poll))
+    )
 
   canDeletePoll: (poll) ->
-    !poll.discardedAt && poll.adminsInclude(Session.user())
+    !poll.discardedAt && @canEditPoll(poll)
 
   canExportPoll: (poll) ->
     !poll.discardedAt && poll.membersInclude(Session.user())
 
   canAddPollToThread: (poll) ->
-    !poll.discardedAt && !poll.discussionId && poll.adminsInclude(Session.user())
+    !poll.discardedAt && !poll.discussionId && @canEditPoll(poll)
 
   canSetPollOutcome: (poll) ->
-    !poll.discardedAt && poll.isClosed() && poll.adminsInclude(Session.user())
+    !poll.discardedAt && poll.closedAt && @canEditPoll(poll)
 
   canClosePoll: (poll) ->
-    @canEditPoll(poll)
+    !poll.discardedAt && !poll.closedAt && @canEditPoll(poll)
 
   canReopenPoll: (poll) ->
-    !poll.discardedAt && poll.isClosed() && !poll.anonymous && poll.adminsInclude(Session.user())
+    !poll.discardedAt && poll.closedAt && !poll.anonymous && @canEditPoll(poll)

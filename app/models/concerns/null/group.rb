@@ -86,6 +86,7 @@ module Null::Group
       members_can_add_guests
       members_can_create_subgroups
       members_can_edit_discussions
+      members_can_edit_polls
       members_can_start_discussions
       admins_can_edit_user_content
     )

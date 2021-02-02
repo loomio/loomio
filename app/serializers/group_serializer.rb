@@ -18,6 +18,7 @@ class GroupSerializer < ApplicationSerializer
              :members_can_edit_discussions,
              :members_can_edit_comments,
              :members_can_raise_motions,
+             :members_can_edit_polls,
              :admins_can_edit_user_content,
              :token,
              :polls_count,

@@ -48,7 +48,7 @@ class DiscussionService
     return false unless discussion.valid?
     rearrange = discussion.max_depth_changed?
     discussion.save!
-    
+
     discussion.update_versions_count
     EventService.delay.repair_thread(discussion.id) if rearrange
 

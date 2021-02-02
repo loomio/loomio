@@ -115,9 +115,6 @@ export default class PollModel extends BaseModel
   isActive: ->
     !@discardedAt && !@closedAt?
 
-  isClosed: ->
-    @closedAt?
-
   showResults: ->
     return false if !@closingAt
     return false if @hideResultsUntilClosed && !@closedAt

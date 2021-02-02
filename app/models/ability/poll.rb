@@ -3,7 +3,7 @@ module Ability::Poll
     super(user)
 
     can :add_options, ::Poll do |poll|
-      user_is_author_of?(poll) || (user.can?(:vote_in, poll) && poll.voter_can_add_options)
+      poll.admins.exists?(user.id) || (user.can?(:vote_in, poll) && poll.voter_can_add_options)
     end
 
     can :vote_in, ::Poll do |poll|
@@ -32,43 +32,38 @@ module Ability::Poll
     can [:announce, :remind], ::Poll do |poll|
       if poll.group_id
         poll.group.admins.exists?(user.id) ||
-        (poll.group.members_can_announce && poll.admins.exists?(user.id)) ||
-        (poll.group.members_can_announce && !poll.specified_voters_only && poll.members.exists?(user.id))
+        (poll.group.members_can_announce && can?(:update, poll))
       else
         poll.admins.exists?(user.id)
       end
-    end
-
-    can [:add_members], ::Poll do |poll|
-      poll.admins.exists?(user.id) ||
-      (!poll.specified_voters_only && poll.members.exists?(user.id))
     end
 
     can [:add_guests], ::Poll do |poll|
       if poll.group_id
         poll.group.admins.exists?(user.id) ||
-        (poll.group.members_can_add_guests && poll.admins.exists?(user.id)) ||
-        (poll.group.members_can_add_guests && !poll.specified_voters_only && poll.members.exists?(user.id))
+        (poll.group.members_can_add_guests && poll.group.members_can_edit_polls && can?(:vote_in, poll))
       else
         poll.admins.exists?(user.id)
       end
     end
 
-    can [:update], ::Poll do |poll|
+    can [:update, :add_members], ::Poll do |poll|
       poll.admins.exists?(user.id) ||
+      (poll.group.members_can_edit_polls && can?(:vote_in, poll)) ||
       (poll.wip? && poll.members.exists?(user.id))
     end
 
-    can [:destroy], ::Poll do |poll|
-      poll.admins.exists?(user.id)
-    end
-
     can :close, ::Poll do |poll|
-      poll.active? && poll.author == user || poll.admins.exists?(user.id)
+      poll.active? && can?(:update, poll)
     end
 
     can :reopen, ::Poll do |poll|
-      poll.closed? && can?(:update, poll) && !poll.anonymous
+      poll.closed? && !poll.anonymous && can?(:update, poll)
+    end
+
+    can [:destroy], ::Poll do |poll|
+      poll.admins.exists?(user.id) ||
+      (poll.group.members_can_edit_polls && can?(:vote_in, poll))
     end
   end
 end

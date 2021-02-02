@@ -223,18 +223,24 @@ v-card.group-form
               span(v-t="'group_form.members_can_edit_discussions'")
               br
               span.caption(v-t="'group_form.members_can_edit_discussions_help'")
-        v-checkbox.group-form__members-can-edit-comments(hide-details v-model='clone["membersCanEditComments"]')
-          template(v-slot:label)
-            div
-              span(v-t="'group_form.members_can_edit_comments'")
-              br
-              span.caption(v-t="'group_form.members_can_edit_comments_help'")
         v-checkbox.group-form__members-can-raise-motions(hide-details v-model='clone["membersCanRaiseMotions"]')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_raise_motions'")
               br
               span.caption(v-t="'group_form.members_can_raise_motions_help'")
+        v-checkbox.group-form__members-can-edit-polls(hide-details v-model='clone["membersCanEditPolls"]')
+          template(v-slot:label)
+            div
+              span(v-t="'group_form.members_can_edit_polls'")
+              br
+              span.caption(v-t="'group_form.members_can_edit_polls_help'")
+        v-checkbox.group-form__members-can-edit-comments(hide-details v-model='clone["membersCanEditComments"]')
+          template(v-slot:label)
+            div
+              span(v-t="'group_form.members_can_edit_comments'")
+              br
+              span.caption(v-t="'group_form.members_can_edit_comments_help'")
         v-checkbox.group-form__admins-can-edit-user-content(hide-details v-model='clone["adminsCanEditUserContent"]')
           template(v-slot:label)
             div
