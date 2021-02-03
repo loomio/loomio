@@ -65,83 +65,30 @@ describe API::V1::AnnouncementsController do
     end
 
     describe 'poll' do
-      describe 'as a member' do
+      describe 'as a group member' do
         before do
           Membership.find_by(user_id: user.id, group_id: group.id).update(admin: false)
         end
 
-        describe 'members_can_add_guests=false' do
-          before { poll.group.update(members_can_add_guests: false) }
-
-          it 'can add group members' do
-            post :create, params: {poll_id: poll.id, recipient_user_ids: [member.id]}
-            expect(response.status).to eq 200
-            expect(JSON.parse(response.body)['stances'][0]['participant_id']).to eq member.id
+        describe 'and poll admin' do
+          before do
+            poll.stances.create!(participant_id: user.id, latest: true, admin: true)
           end
 
-          it 'cannot invite guests' do
-            post :create, params: {poll_id: poll.id, recipient_emails: ['jim@example.com']}
-            expect(response.status).to eq 403
-          end
-
-          it 'cannot add subgroup members' do
-            post :create, params: {poll_id: poll.id, recipient_user_ids: [subgroup_member.id]}
-            expect(response.status).to eq 200
-            expect(JSON.parse(response.body)['stances'].length).to eq 0
-          end
-
-          it 'cannot notify non group members' do
-            post :create, params: {poll_id: poll.id, recipient_user_ids: [non_member.id]}
-            expect(response.status).to eq 200
-            expect(JSON.parse(response.body)['stances'].length).to eq 0
-          end
-        end
-
-        describe 'members_can_add_guests=true' do
-          before { poll.group.update(members_can_add_guests: true) }
-
-          describe 'specified_voters_only=false' do
-            before { poll.update(specified_voters_only: false) }
-
-            it 'can invite guests by email' do
-              post :create, params: {poll_id: poll.id, recipient_emails: ['jim@example.com']}
-              expect(response.status).to eq 200
-              expect(JSON.parse(response.body)['stances'].length).to eq 1
+          describe 'members_can_add_guests=false' do
+            before do
+              poll.group.update(members_can_add_guests: false)
             end
 
-            it 'can add members' do
+            it 'can add group members' do
               post :create, params: {poll_id: poll.id, recipient_user_ids: [member.id]}
               expect(response.status).to eq 200
-              expect(JSON.parse(response.body)['stances'].length).to eq 1
               expect(JSON.parse(response.body)['stances'][0]['participant_id']).to eq member.id
             end
-
-            it 'can add subgroup members' do
-              post :create, params: {poll_id: poll.id, recipient_user_ids: [subgroup_member.id]}
-              expect(response.status).to eq 200
-              expect(JSON.parse(response.body)['stances'].length).to eq 1
-              expect(JSON.parse(response.body)['stances'][0]['participant_id']).to eq subgroup_member.id
-            end
-
-            it 'cannot add unknown users' do
-              post :create, params: {poll_id: poll.id, recipient_user_ids: [non_member.id]}
-              expect(response.status).to eq 200
-              expect(JSON.parse(response.body)['stances'].length).to eq 0
-            end
-          end
-
-          describe 'specified_voters_only=true' do
-            before { poll.update(specified_voters_only: true) }
 
             it 'cannot invite guests' do
               post :create, params: {poll_id: poll.id, recipient_emails: ['jim@example.com']}
               expect(response.status).to eq 403
-            end
-
-            it 'cannot add group members' do
-              post :create, params: {poll_id: poll.id, recipient_user_ids: [member.id]}
-              expect(response.status).to eq 200
-              expect(JSON.parse(response.body)['stances'].length).to eq 0
             end
 
             it 'cannot add subgroup members' do
@@ -150,48 +97,121 @@ describe API::V1::AnnouncementsController do
               expect(JSON.parse(response.body)['stances'].length).to eq 0
             end
 
-            it 'cannot add unknown users' do
+            it 'cannot notify non group members' do
               post :create, params: {poll_id: poll.id, recipient_user_ids: [non_member.id]}
               expect(response.status).to eq 200
               expect(JSON.parse(response.body)['stances'].length).to eq 0
             end
           end
-        end
 
-        describe 'members_can_announce=false' do
-          before { poll.group.update(members_can_announce: false) }
+          describe 'members_can_add_guests=true' do
+            before do
+              poll.group.update(members_can_add_guests: true)
+            end
 
-          it 'prevents member from notifying group' do
-            post :create, params: {poll_id: poll.id, recipient_audience: 'group'}
-            expect(response.status).to eq 403
+            describe 'specified_voters_only=false' do
+              before { poll.update(specified_voters_only: false) }
+
+              it 'can invite guests by email' do
+                post :create, params: {poll_id: poll.id, recipient_emails: ['jim@example.com']}
+                expect(response.status).to eq 200
+                expect(JSON.parse(response.body)['stances'].length).to eq 1
+              end
+
+              it 'can add members' do
+                post :create, params: {poll_id: poll.id, recipient_user_ids: [member.id]}
+                expect(response.status).to eq 200
+                expect(JSON.parse(response.body)['stances'].length).to eq 1
+                expect(JSON.parse(response.body)['stances'][0]['participant_id']).to eq member.id
+              end
+
+              it 'can add subgroup members' do
+                post :create, params: {poll_id: poll.id, recipient_user_ids: [subgroup_member.id]}
+                expect(response.status).to eq 200
+                expect(JSON.parse(response.body)['stances'].length).to eq 1
+                expect(JSON.parse(response.body)['stances'][0]['participant_id']).to eq subgroup_member.id
+              end
+
+              it 'cannot add unknown users' do
+                post :create, params: {poll_id: poll.id, recipient_user_ids: [non_member.id]}
+                expect(response.status).to eq 200
+                expect(JSON.parse(response.body)['stances'].length).to eq 0
+              end
+            end
           end
 
-          it 'allows member to notify voters' do
-            # yep, you can notify existing voters
-            post :create, params: {poll_id: poll.id, recipient_audience: 'voters'}
-            expect(response.status).to eq 200
-          end
-        end
+          describe 'members_can_announce=false' do
+            before do
+              poll.group.update(members_can_announce: false)
+            end
 
-        describe 'members_can_announce=true' do
-          before { poll.group.update(members_can_announce: true) }
-          it 'allows member to notify group' do
-            post :create, params: {poll_id: poll.id, recipient_audience: 'group', recipient_user_ids: [user.id]}
-            expect(response.status).to eq 200
-              expect(JSON.parse(response.body)['stances'].length).to eq group.members.count
-          end
-
-          describe 'specified_voters_only=true' do
-            before { poll.update(specified_voters_only: true) }
-            it 'prevents member notifying group' do
+            it 'prevents member from notifying group' do
               post :create, params: {poll_id: poll.id, recipient_audience: 'group'}
               expect(response.status).to eq 403
             end
+
+            it 'allows member to notify voters' do
+              # yep, you can notify existing voters
+              post :create, params: {poll_id: poll.id, recipient_audience: 'voters'}
+              expect(response.status).to eq 200
+            end
           end
         end
+
+        describe 'and poll member' do
+          describe 'members_can_announce=true members_edit_polls=true' do
+            before do
+              poll.group.update(members_can_announce: true, members_can_edit_polls: true)
+            end
+
+            it 'allows member to notify group' do
+              post :create, params: {poll_id: poll.id, recipient_audience: 'group', recipient_user_ids: [user.id]}
+              expect(response.status).to eq 200
+              expect(JSON.parse(response.body)['stances'].length).to eq group.members.count
+            end
+
+            describe 'specified_voters_only=true' do
+              before { poll.update(specified_voters_only: true) }
+              it 'prevents member notifying group' do
+                post :create, params: {poll_id: poll.id, recipient_audience: 'group'}
+                expect(response.status).to eq 403
+              end
+            end
+          end
+        end
+
+        # describe 'poll member, members_can_edit_polls=false' do
+        #   before do
+        #     poll.update(specified_voters_only: true)
+        #   end
+        #
+        #   it 'cannot invite guests' do
+        #     post :create, params: {poll_id: poll.id, recipient_emails: ['jim@example.com']}
+        #     expect(response.status).to eq 403
+        #   end
+        #
+        #   it 'cannot add group members' do
+        #     post :create, params: {poll_id: poll.id, recipient_user_ids: [member.id]}
+        #     expect(response.status).to eq 200
+        #     expect(JSON.parse(response.body)['stances'].length).to eq 0
+        #   end
+        #
+        #   it 'cannot add subgroup members' do
+        #     post :create, params: {poll_id: poll.id, recipient_user_ids: [subgroup_member.id]}
+        #     expect(response.status).to eq 200
+        #     expect(JSON.parse(response.body)['stances'].length).to eq 0
+        #   end
+        #
+        #   it 'cannot add unknown users' do
+        #     post :create, params: {poll_id: poll.id, recipient_user_ids: [non_member.id]}
+        #     expect(response.status).to eq 200
+        #     expect(JSON.parse(response.body)['stances'].length).to eq 0
+        #   end
+        # end
+
       end
 
-      describe 'as an admin' do
+      describe 'as a group admin' do
         before do
           Membership.find_by(user_id: user.id, group_id: group.id).update(admin: true)
           poll.group.update(members_can_announce: false,
@@ -332,8 +352,9 @@ describe API::V1::AnnouncementsController do
         expect(response.status).to eq 403
       end
 
-      describe 'as a member' do
+      describe 'as a group member, poll admin' do
         before do
+          poll.stances.create!(participant_id: user.id, latest: true, admin: true)
           Membership.find_by(user_id: user.id, group_id: group.id).update(admin: false)
         end
 

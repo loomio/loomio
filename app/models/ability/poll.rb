@@ -41,6 +41,7 @@ module Ability::Poll
     can [:add_guests], ::Poll do |poll|
       if poll.group_id
         poll.group.admins.exists?(user.id) ||
+        (poll.group.members_can_add_guests && poll.admins.exists?(user.id)) ||
         (poll.group.members_can_add_guests && poll.group.members_can_edit_polls && can?(:vote_in, poll))
       else
         poll.admins.exists?(user.id)
