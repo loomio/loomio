@@ -1004,6 +1004,7 @@ en:
     permissions_explaination: |
       There are two levels of membership a person can have to a group: admin and member.
       Admins can edit group settings, make other people admins, and perform all the actions listed below.
+      Additionally, any member who starts a thread or a poll will have admin privileges within that thread or poll.
     aria_label: 'Group form'
     new_organisation: New Organization
     start_group_heading: 'Start a group'
