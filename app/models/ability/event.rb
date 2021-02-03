@@ -4,7 +4,7 @@ module Ability
       super(user)
 
       can [:pin, :unpin], ::Event do |event|
-        event.discussion && user.ability.can?(:update, event.discussion)
+        event.discussion && can?(:update, event.discussion)
       end
     end
   end

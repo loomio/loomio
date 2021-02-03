@@ -8,7 +8,7 @@ export default new class OutcomeService
     poll = outcome.poll()
 
     react:
-      canPerform: -> AbilityService.canReactToPoll(poll)
+      canPerform: -> AbilityService.canParticipateInPoll(poll)
 
     edit_outcome:
       name: 'common.action.edit'
