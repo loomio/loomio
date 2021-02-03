@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_29_003935) do
+ActiveRecord::Schema.define(version: 2021_02_02_223556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -404,6 +404,7 @@ ActiveRecord::Schema.define(version: 2021_01_29_003935) do
     t.string "secret_token", default: -> { "gen_random_uuid()" }
     t.string "content_locale"
     t.boolean "members_can_add_guests", default: true, null: false
+    t.boolean "members_can_edit_polls", default: false, null: false
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["category_id"], name: "index_groups_on_category_id"
     t.index ["cohort_id"], name: "index_groups_on_cohort_id"
