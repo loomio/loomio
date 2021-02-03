@@ -517,11 +517,11 @@ GEM
     sentry-rails (4.1.7)
       rails (>= 5.0)
       sentry-ruby-core (~> 4.1.2)
-    sentry-ruby (4.1.5)
+    sentry-ruby (4.1.6)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       faraday (>= 1.0)
-      sentry-ruby-core (= 4.1.5)
-    sentry-ruby-core (4.1.5)
+      sentry-ruby-core (= 4.1.6)
+    sentry-ruby-core (4.1.6)
       concurrent-ruby
       faraday
     sentry-sidekiq (4.1.3)
