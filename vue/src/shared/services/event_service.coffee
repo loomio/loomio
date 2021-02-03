@@ -1,5 +1,6 @@
 import AbilityService from '@/shared/services/ability_service'
 import Flash from '@/shared/services/flash'
+import Session from '@/shared/services/session'
 import openModal from '@/shared/helpers/open_modal'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 
@@ -21,7 +22,7 @@ export default new class EventService
       canPerform: ->
         !event.model().discardedAt &&
         event.kind == 'discussion_edited' &&
-        AbilityService.canAdminister(event.discussion())
+        event.discussion().adminsInclude(Session.user())
 
     pin_event:
       name: 'common.action.pin'

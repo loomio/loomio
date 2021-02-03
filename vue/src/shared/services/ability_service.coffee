@@ -28,25 +28,22 @@ export default new class AbilityService
     !comment.discardedAt &&
     comment.discussion().membersInclude(Session.user())
 
-  canEditStance: (stance) ->
-    Session.user() == stance.author()
-
   canEditThread: (thread) ->
     thread.adminsInclude(Session.user()) or
     (thread.membersInclude(Session.user()) and
      (thread.group().membersCanEditDiscussions or thread.author() == Session.user()))
 
   canCloseThread: (thread) ->
-    !thread.closedAt && thread.adminsInclude(Session.user())
+    !thread.closedAt && @canEditThread(thread)
 
   canReopenThread: (thread) ->
-    thread.closedAt && thread.adminsInclude(Session.user())
+    thread.closedAt && @canEditThread(thread)
 
   canPinThread: (thread) ->
     !thread.closedAt && !thread.pinned && @canEditThread(thread)
 
   canUnpinThread: (thread) ->
-    !thread.closedAt && thread.pinned && @canEditThread(thread)
+    thread.pinned && @canEditThread(thread)
 
   canExportThread: (thread) ->
     !thread.discardedAt && thread.membersInclude(Session.user())
@@ -80,9 +77,6 @@ export default new class AbilityService
     group.subscriptionKind != 'trial' and
     group.subscriptionPaymentMethod != 'manual'
 
-  isCreatorOf: (group) ->
-    Session.user().id == group.creatorId
-
   canStartThread: (group) ->
     group.adminsInclude(user()) or
     (group.membersInclude(user()) and group.membersCanStartDiscussions)
@@ -105,9 +99,6 @@ export default new class AbilityService
     else
       @canAnnounceDiscussion(model)
 
-  canAddMembersDiscussion: (discussion) ->
-    discussion.membersInclude(user())
-
   canAddGuests: (model) ->
     if model.isA? 'poll'
       @canAddGuestsPoll(model)
@@ -117,7 +108,7 @@ export default new class AbilityService
   canAddGuestsDiscussion: (discussion) ->
     if discussion.groupId
       discussion.group().adminsInclude(user()) ||
-      (discussion.group().membersCanAddGuests && discussion.membersInclude(user()))
+      (discussion.group().membersCanAddGuests && @canEditThread(discussion))
     else
       !discussion.id || discussion.adminsInclude(user())
 
@@ -125,8 +116,7 @@ export default new class AbilityService
     return false if poll.discardedAt
     if poll.groupId
       poll.group().adminsInclude(user()) ||
-      (poll.group().membersCanAnnounce && poll.adminsInclude(user())) ||
-      (poll.group().membersCanAnnounce && !poll.specifiedVotersOnly && poll.membersInclude(user()))
+      (poll.group().membersCanAnnounce && @canEditPoll(poll))
     else
       poll.adminsInclude(user())
 
@@ -137,18 +127,18 @@ export default new class AbilityService
     if poll.groupId
       poll.group().adminsInclude(user()) ||
       (poll.group().membersCanAddGuests && poll.adminsInclude(user())) ||
-      (poll.group().membersCanAddGuests && !poll.specifiedVotersOnly && poll.membersInclude(user()))
+      (poll.group().membersCanAddGuests && @canEditPoll(poll))
     else
       poll.adminsInclude(user())
 
   canAddMembersToGroup: (group) ->
-    group.adminsInclude(Session.user()) or
-    (group.membersInclude(Session.user()) and group.membersCanAddMembers)
+    group.adminsInclude(Session.user()) ||
+    (group.membersInclude(Session.user()) && group.membersCanAddMembers)
 
   canCreateSubgroups: (group) ->
-    group.isParent() and
-    (group.adminsInclude(Session.user()) or
-    (group.membersInclude(Session.user()) and group.membersCanCreateSubgroups))
+    group.isParent() ||
+    (group.adminsInclude(Session.user()) ||
+    (group.membersInclude(Session.user()) && group.membersCanCreateSubgroups))
 
   canEditGroup: (group) ->
     group.adminsInclude(Session.user())
@@ -163,11 +153,13 @@ export default new class AbilityService
     comment.authorIs(Session.user()) && @canEditComment(comment)
 
   canEditComment: (comment) ->
-    (comment.discussion().adminsInclude(Session.user()) and comment.group().adminsCanEditUserContent) or
+    (comment.group().adminsCanEditUserContent && comment.discussion().adminsInclude(Session.user())) ||
 
-    (comment.authorIs(Session.user()) and
-     comment.group().membersCanEditComments and
-     comment.discussion().membersInclude(Session.user()))
+    (
+      comment.authorIs(Session.user()) &&
+      comment.group().membersCanEditComments &&
+      comment.discussion().membersInclude(Session.user())
+    )
 
   canDeleteComment: (comment) ->
     comment.authorIs(Session.user()) or comment.discussion().adminsInclude(Session.user())
@@ -202,15 +194,6 @@ export default new class AbilityService
 
   canViewPrivateContent: (group) ->
     group.membersInclude(Session.user())
-
-  canCreateContentFor: (group) ->
-    group.membersInclude(Session.user())
-
-  canViewMemberships: (group) ->
-    group.membersInclude(Session.user())
-
-  canViewPendingMemberships: (group) ->
-    group.adminsInclude(Session.user())
 
   canJoinGroup: (group) ->
     return false if !@canViewGroup(group) or group.membersInclude(Session.user())
@@ -247,7 +230,11 @@ export default new class AbilityService
     poll.isActive() &&
     (
       poll.adminsInclude(Session.user()) ||
-      (poll.group().membersCanEditPolls && @canParticipateInPoll(poll))
+      (
+        poll.group().membersCanEditPolls &&
+        poll.membersInclude(Session.user()) &&
+        @canParticipateInPoll(poll)
+      )
     )
 
   canDeletePoll: (poll) ->

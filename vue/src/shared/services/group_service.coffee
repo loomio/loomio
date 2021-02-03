@@ -48,7 +48,7 @@ export default new class GroupService
       name: 'group_page.stats'
       icon: 'mdi-chart-bar'
       canPerform: ->
-        AbilityService.canAdminister(group)
+        group.adminsInclude(Session.user())
       perform: ->
         window.open("#{AppConfig.baseUrl}g/#{group.key}/stats?export=1", "_blank")
 
@@ -80,7 +80,8 @@ export default new class GroupService
       icon: 'mdi-key-variant'
       canPerform: ->
         AppConfig.features.app.group_sso &&
-        AbilityService.canAdminister(group) && group.isParent()
+        group.isParent() &&
+        group.adminsInclude(Session.user())
       perform: ->
         openModal
           component: 'InstallSamlProviderModal'
