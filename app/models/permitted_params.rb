@@ -107,6 +107,7 @@ class PermittedParams < Struct.new(:params)
       :newest_first, :max_depth, :private,
      :recipient_audience,
      :recipient_message,
+     :tag_ids, {tag_ids: []},
      :recipient_user_ids, {recipient_user_ids: []},
      :recipient_emails, {recipient_emails: []},
      :forked_event_ids, {forked_event_ids: []},

@@ -6,23 +6,21 @@ import AppConfig      from '@/shared/services/app_config'
 
 export default
   props:
-    discussion:
+    model:
       type: Object
       required: true
     close: Function
   data: ->
-    discussionTags: @discussion.tagNames || []
     loading: false
   methods:
-    updateTags: ->
-      setTimeout =>
-        @loading = true
-        Records.tags.updateModel(@discussion, @discussionTags).then =>
-          EventBus.$emit 'closeModal'
-        .finally =>
-          @loading = false
+    submit: ->
+      @loading = true
+      @model.save().then =>
+        EventBus.$emit 'closeModal'
+      .finally =>
+        @loading = false
   computed:
-    groupTags: -> @discussion.group().parentOrSelf().tagNames || []
+    tags: -> @model.group().parentOrSelf().tags()
 
 </script>
 <template lang="pug">
@@ -32,8 +30,10 @@ v-card.tags-modal
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text
-    v-combobox(v-model='discussionTags' :items='groupTags' label='Select tags to apply' item-text="name" multiple solo deletable-chips chips)
+    v-checkbox(v-model="model.tagIds" hide-details outlined v-for="tag in tags" :key="tag.id" :color="tag.color" :value="tag.id")
+      template(v-slot:label)
+        v-chip(small outlined :color="tag.color") {{tag.name}}
   v-card-actions
     v-spacer
-    v-btn.tag-form__submit(color="primary" @click="updateTags()" v-t="'common.action.save'" :loading="loading")
+    v-btn.tag-form__submit(color="primary" @click="submit" v-t="'common.action.save'" :loading="loading")
 </template>

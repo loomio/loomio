@@ -63,6 +63,8 @@ class Discussion < ApplicationRecord
   has_many :guests, -> { merge DiscussionReader.guests }, through: :discussion_readers, source: :user
   has_many :admin_guests, -> { merge DiscussionReader.admins }, through: :discussion_readers, source: :user
 
+  before_save :filter_tags_by_group
+
   scope :search_for, ->(fragment) do
      joins("INNER JOIN users ON users.id = discussions.author_id")
     .kept
@@ -222,5 +224,9 @@ class Discussion < ApplicationRecord
     if self.private? and group.public_discussions_only?
       errors.add(:private, "must be public in this group")
     end
+  end
+
+  def filter_tags_by_group
+    self.tag_ids = Tag.where(group_id: group.parent_or_self.id, id: tag_ids).pluck(:id)
   end
 end

@@ -95,7 +95,7 @@ export default new class ThreadService
       perform: ->
         openModal
           component: 'TagsModal',
-          props: { discussion: discussion }
+          props: { model: discussion.clone() }
 
     add_comment:
       icon: 'mdi-reply'
