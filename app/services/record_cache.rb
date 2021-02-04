@@ -85,6 +85,8 @@ class RecordCache
     obj.add_events Event.where(kind: 'new_discussion', eventable_id: obj.discussion_ids)
     obj.add_events Event.where(kind: 'discussion_forked', eventable_id: obj.discussion_ids)
     obj.add_events Event.where(kind: 'poll_created', eventable_id: obj.poll_ids)
+
+    obj.add_tags_complete
     obj
   end
 
@@ -205,6 +207,21 @@ class RecordCache
     end
   end
 
+  def add_tags_complete
+    scope[:tags_by_type_and_id] ||= {}
+    scope[:tag_ids_by_type_and_id] ||= {}
+
+    Tagging.includes(:tag).where(taggable_type: 'Discussion', taggable_id: discussion_ids).each do |tagging|
+      scope[:tags_by_type_and_id][tagging.taggable_type] ||= {}
+      scope[:tags_by_type_and_id][tagging.taggable_type][tagging.taggable_id] ||= []
+      scope[:tags_by_type_and_id][tagging.taggable_type][tagging.taggable_id].push tagging.tag
+
+      scope[:tag_ids_by_type_and_id][tagging.taggable_type] ||= {}
+      scope[:tag_ids_by_type_and_id][tagging.taggable_type][tagging.taggable_id] ||= []
+      scope[:tag_ids_by_type_and_id][tagging.taggable_type][tagging.taggable_id].push tagging.tag_id
+    end
+  end
+
   def add_outcomes(collection)
     return [] if exclude_types.include?('outcome')
     scope[:outcomes_by_id] ||= {}
@@ -289,7 +306,6 @@ class RecordCache
       scope["#{eventable.class.to_s.underscore.pluralize}_by_id"][eventable.id] = eventable
     end
   end
-
 
   def add_discussions(collection)
     return if exclude_types.include?('discussion')

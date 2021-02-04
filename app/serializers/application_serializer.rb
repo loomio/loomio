@@ -5,6 +5,14 @@ class ApplicationSerializer < ActiveModel::Serializer
     super || {}
   end
 
+  def tags
+    cache_fetch([:tags_by_type_and_id, object.class.to_s], object.id) { [] }
+  end
+
+  def tag_ids
+    cache_fetch([:tag_ids_by_type_and_id, object.class.to_s], object.id) { [] }
+  end
+
   def poll
     cache_fetch(:polls_by_id, object.poll_id) { object.poll }
   end
@@ -112,6 +120,10 @@ class ApplicationSerializer < ActiveModel::Serializer
 
   def include_stance_choices?
     include_type?('stance_choice')
+  end
+
+  def include_tags?
+    include_type?('tag')
   end
 
   def include_participant?

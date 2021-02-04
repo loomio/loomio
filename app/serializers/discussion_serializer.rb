@@ -32,7 +32,7 @@ class DiscussionSerializer < ApplicationSerializer
              :pinned,
              :attachments,
              :mentioned_usernames,
-             :tag_names,
+             :tag_ids,
              :newest_first,
              :max_depth,
              :discarded_at,
@@ -53,17 +53,9 @@ class DiscussionSerializer < ApplicationSerializer
   has_many :active_polls, serializer: PollSerializer, root: :polls
   has_one :created_event, serializer: EventSerializer, root: :events
   has_one :forked_event, serializer: EventSerializer, root: :events
-  # has_many :discussion_tags
+  has_many :tags, serializer: TagSerializer, root: :tags
+
   hide_when_discarded [:description, :title]
-
-  def tag_names
-    # if we can do it fast, then stop caching tag names?
-    object.info['tag_names'] || []
-  end
-
-  # def discussion_tags
-  #   Array(Hash(scope).dig(:tag_cache, object.id))
-  # end
 
   def include_mentioned_usernames?
     description_format == "md"
@@ -85,7 +77,6 @@ class DiscussionSerializer < ApplicationSerializer
       end
     end
   end
-
 
   def created_event
     cache_fetch([:events_by_kind_and_eventable_id, 'new_discussion'], object.id) { object.created_event }
