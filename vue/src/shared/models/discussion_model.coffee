@@ -58,6 +58,9 @@ export default class DiscussionModel extends BaseModel
 
   discussion: -> @
 
+  tags: ->
+    @recordStore.tags.find(@tagIds)
+
   members: ->
     @recordStore.users.find(@group().memberIds().concat(map(@discussionReaders(), 'userId')))
 

@@ -107,7 +107,10 @@ export default
             chain = chain.find(closedAt: null)
 
         if @$route.query.tag
-          chain = chain.find({tagNames: {'$contains': @$route.query.tag}})
+
+          tag = Records.tags.find(name: @$route.query.tag)[0]
+          console.log Records.tags.find(name: @$route.query.tag)
+          chain = chain.find({tagIds: {'$contains': tag.id}})
 
         @discussions = chain.data()
 
@@ -145,7 +148,7 @@ export default
       orderBy(@discussions.filter((discussion) -> !discussion.pinned), ['lastActivityAt'], ['desc'])
 
     groupTags: ->
-      @group && @group.parentOrSelf().tagNames || []
+      @group && @group.parentOrSelf().tags().filter (tag) -> tag.taggingsCount > 0
 
     loading: ->
       @loader.loading || @searchLoader.loading
@@ -202,8 +205,8 @@ div.discussions-panel(v-if="group")
       v-list(dense)
         v-list-item(@click="routeQuery({tag: null})" key="all")
           v-list-item-title(v-t="'loomio_tags.all_tags'")
-        v-list-item(v-for="tag in groupTags" :key="tag" @click="routeQuery({tag: tag, t: 'all'})")
-          v-list-item-title {{tag}}
+        v-list-item(v-for="tag in groupTags" :key="tag.id" :color="tag.color" @click="routeQuery({tag: tag.name, t: 'all'})")
+          v-list-item-title {{tag.name}}
     v-text-field.mr-2.flex-grow-1(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_threads', {name: group.name})" append-icon="mdi-magnify" :loading="searchLoader.loading")
     v-btn.discussions-panel__new-thread-button(:to="'/d/new?group_id='+group.id" color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
 

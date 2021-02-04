@@ -210,6 +210,12 @@ class RecordCache
   def add_tags_complete
     scope[:tags_by_type_and_id] ||= {}
 
+    Tag.where(group_id: group_ids).each do |tag|
+        scope[:tags_by_type_and_id]['Group'] ||= {}
+        scope[:tags_by_type_and_id]['Group'][tag.group_id] ||= []
+        scope[:tags_by_type_and_id]['Group'][tag.group_id].push tag
+    end
+
     {Discussion: discussion_ids}.each_pair do |type, ids|
       Tagging.includes(:tag).where(taggable_type: type, taggable_id: ids).each do |tagging|
         scope[:tags_by_type_and_id][tagging.taggable_type] ||= {}
@@ -327,6 +333,10 @@ class RecordCache
     collection.each do |user|
       scope[:users_by_id][user.id] = user
     end
+  end
+
+  def group_ids
+    scope.fetch(:groups_by_id, {}).keys
   end
 
   def discussion_ids
