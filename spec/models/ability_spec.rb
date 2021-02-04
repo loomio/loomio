@@ -185,7 +185,7 @@ describe "User abilities" do
   end
 
   context "member of a group" do
-    let(:group) { create(:group) }
+    let(:group) { create(:group, members_can_edit_discussions: false) }
     let(:subgroup) { build(:group, parent: group) }
     let(:subgroup_for_another_group) { build(:group, parent: create(:group)) }
     let(:membership_request) { create(:membership_request, group: group, requestor: non_member) }

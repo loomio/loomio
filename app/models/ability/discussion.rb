@@ -50,18 +50,16 @@ module Ability::Discussion
       end
     end
 
-    can [:update], ::Discussion do |discussion|
+    can [:update, :move, :move_comments, :pin], ::Discussion do |discussion|
+      discussion.discarded_at.nil? &&
       (discussion.author == user ||
       discussion.admins.exists?(user.id) ||
       (discussion.group.members_can_edit_discussions && discussion.members.exists?(user.id)))
     end
 
-    can :pin, ::Discussion do |discussion|
-      discussion.admins.exists?(user.id)
-    end
-
-    can [:destroy, :move, :move_comments, :discard], ::Discussion do |discussion|
-      discussion.discarded_at.nil? && discussion.author == user or discussion.admins.exists?(user.id)
+    can [:destroy, :discard], ::Discussion do |discussion|
+      discussion.discarded_at.nil? &&
+      (discussion.author == user || discussion.admins.exists?(user.id))
     end
 
     can :fork, ::Discussion do |discussion|

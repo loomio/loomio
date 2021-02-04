@@ -206,6 +206,7 @@ describe 'DiscussionService' do
     end
 
     it 'does not move a discussion the user cannot move' do
+      group.update(members_can_edit_discussions: false)
       group.add_member! user
       another_group.add_member! user
       discussion.update author: another_user
