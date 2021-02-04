@@ -52,8 +52,8 @@ class Discussion < ApplicationRecord
   has_many :documents, as: :model, dependent: :destroy
   has_many :poll_documents,    through: :polls,    source: :documents
   has_many :comment_documents, through: :comments, source: :documents
-  
-  has_many :taggings, dependent: :destroy
+
+  has_many :taggings, dependent: :destroy, as: :taggable
   has_many :tags, through: :taggings
 
   has_many :items, -> { includes(:user) }, class_name: 'Event', dependent: :destroy

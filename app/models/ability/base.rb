@@ -16,7 +16,6 @@ module Ability
     prepend Ability::Stance
     prepend Ability::User
     prepend Ability::Tag
-    prepend Ability::DiscussionTag
     prepend Ability::Event
     prepend Ability::Webhook
     prepend Ability::Attachment
