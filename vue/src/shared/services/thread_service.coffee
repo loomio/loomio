@@ -94,7 +94,7 @@ export default new class ThreadService
       canPerform: -> AbilityService.canEditThread(discussion)
       perform: ->
         openModal
-          component: 'TagsModal',
+          component: 'TagsSelect',
           props: { model: discussion.clone() }
 
     add_comment:

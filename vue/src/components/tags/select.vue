@@ -6,50 +6,39 @@ import AppConfig      from '@/shared/services/app_config'
 
 export default
   props:
-    tag:
+    model:
       type: Object
       required: true
     close: Function
   data: ->
     loading: false
-    color: @tag.color
-    colors: '#F44336 #E91E63 #9C27B0 #2196F3'.split(' ')
   methods:
+    openNewTagModal: ->
+      EventBus.$emit 'openModal',
+        component: 'TagsModal',
+        props: { tag: Records.tags.build(groupId: @model.groupId) }
     submit: ->
       @loading = true
-      @tag.save().then =>
+      @model.save().then =>
         EventBus.$emit 'closeModal'
       .finally =>
         @loading = false
+  computed:
+    tags: -> @model.group().parentOrSelf().tags()
 
 </script>
 <template lang="pug">
 v-card.tags-modal
   v-card-title
-    h1.headline(v-if="tag.id" tabindex="-1" v-t="'loomio_tags.modal_edit_title'")
-    h1.headline(v-if="!tag.id" tabindex="-1" v-t="'loomio_tags.modal_title'")
+    h1.headline(tabindex="-1" v-t="'loomio_tags.card_title'")
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text
-    v-text-field(v-model="tag.name" :label="$t('loomio_tags.name_label')")
-    p {{tag.color}}
-    span.color-swatch(v-for="color in colors" :key="color")
-      input(:id="color" v-model="tag.color" :value="color" type="radio")
-      label(:for="color") {{color}}
+    v-checkbox(v-model="model.tagIds" hide-details outlined v-for="tag in tags" :key="tag.id" :color="tag.color" :value="tag.id")
+      template(v-slot:label)
+        v-chip(small outlined :color="tag.color") {{tag.name}}
   v-card-actions
+    v-btn.tag-form_new-tag(@click="openNewTagModal" v-t="'loomio_tags.new_tag'")
     v-spacer
     v-btn.tag-form__submit(color="primary" @click="submit" v-t="'common.action.save'" :loading="loading")
 </template>
-
-<style lang="sass">
-.color-swatch
-  input
-    position: fixed !important
-    opacity: 0 !important
-    pointer-events: none !important
-
-  label
-    display: block
-    width: 25px
-    height: 25px
-<style>

@@ -43,6 +43,7 @@ class TagService
     return false unless tag.valid?
     tag.save!
     EventBus.broadcast 'tag_create', tag, actor
+    tag
   end
 
   def self.update(tag:, params:, actor:)

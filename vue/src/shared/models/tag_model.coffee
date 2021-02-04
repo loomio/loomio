@@ -7,5 +7,8 @@ export default class TagModel extends BaseModel
   @indices: ['groupId']
   @serializableAttributes: ['groupId', 'color', 'name']
 
+  defaults: ->
+    color: '#acb'
+
   relationships: ->
     @belongsTo 'group'
