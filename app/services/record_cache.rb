@@ -209,16 +209,13 @@ class RecordCache
 
   def add_tags_complete
     scope[:tags_by_type_and_id] ||= {}
-    scope[:tag_ids_by_type_and_id] ||= {}
 
-    Tagging.includes(:tag).where(taggable_type: 'Discussion', taggable_id: discussion_ids).each do |tagging|
-      scope[:tags_by_type_and_id][tagging.taggable_type] ||= {}
-      scope[:tags_by_type_and_id][tagging.taggable_type][tagging.taggable_id] ||= []
-      scope[:tags_by_type_and_id][tagging.taggable_type][tagging.taggable_id].push tagging.tag
-
-      scope[:tag_ids_by_type_and_id][tagging.taggable_type] ||= {}
-      scope[:tag_ids_by_type_and_id][tagging.taggable_type][tagging.taggable_id] ||= []
-      scope[:tag_ids_by_type_and_id][tagging.taggable_type][tagging.taggable_id].push tagging.tag_id
+    {Discussion: discussion_ids}.each_pair do |type, ids|
+      Tagging.includes(:tag).where(taggable_type: type, taggable_id: ids).each do |tagging|
+        scope[:tags_by_type_and_id][tagging.taggable_type] ||= {}
+        scope[:tags_by_type_and_id][tagging.taggable_type][tagging.taggable_id] ||= []
+        scope[:tags_by_type_and_id][tagging.taggable_type][tagging.taggable_id].push tagging.tag
+      end
     end
   end
 

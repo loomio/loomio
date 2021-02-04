@@ -9,10 +9,6 @@ class ApplicationSerializer < ActiveModel::Serializer
     cache_fetch([:tags_by_type_and_id, object.class.to_s], object.id) { [] }
   end
 
-  def tag_ids
-    cache_fetch([:tag_ids_by_type_and_id, object.class.to_s], object.id) { [] }
-  end
-
   def poll
     cache_fetch(:polls_by_id, object.poll_id) { object.poll }
   end
