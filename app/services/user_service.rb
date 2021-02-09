@@ -54,11 +54,13 @@ class UserService
     DeactivateUserWorker.perform_async(user.id)
   end
 
-  def self.reactivate(user: )
-    user.ability.authorize! :deactivate, user
+  # this is for user accounts deactivated with the older method
+  def self.reactivate(user_id)
+    User.where("deactivated_at is not null").find(user_id)
     Membership.where(user_id: user_id).update_all(archived_at: nil)
     group_ids = Membership.where(user_id: user_id).pluck(:group_id)
     Group.where(id: group_ids).map(&:update_memberships_count)
+    user.update(deactivated_at: nil)
   end
 
   # UserService#destroy
