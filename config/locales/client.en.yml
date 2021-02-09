@@ -598,7 +598,7 @@ en:
     invite_only_thread: "Invite-only thread"
     none_direct_thread: "Direct thread (no group)"
     none_invite_only_thread: "Invite-only thread (no group)"
-    change_log_placeholder: Briefly describe the changes made in this edit. (optional)
+    change_log_placeholder: Optionally, describe your changes. This message will be added to the thread.
     change_log_label: What's changed?
     invite: Invite
     aria_label: 'Thread form'
@@ -2204,8 +2204,10 @@ en:
       outcome_created: An outcome is shared
     permissions_explaination: Select which actions can be performed by this integration
     permissions:
+      show_discussion: show discussion
       create_discussion: create discussion
       create_poll: create poll
+      show_poll: show poll
       read_memberships: read memberships
     include_body_label: Include message body with notification
     include_subgroups_label: Relay events from subgroups
