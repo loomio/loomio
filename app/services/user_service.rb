@@ -56,7 +56,7 @@ class UserService
 
   # this is for user accounts deactivated with the older method
   def self.reactivate(user_id)
-    User.where("deactivated_at is not null").find(user_id)
+    user = User.where("deactivated_at is not null").find(user_id)
     Membership.where(user_id: user_id).update_all(archived_at: nil)
     group_ids = Membership.where(user_id: user_id).pluck(:group_id)
     Group.where(id: group_ids).map(&:update_memberships_count)
