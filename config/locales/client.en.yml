@@ -598,7 +598,7 @@ en:
     invite_only_thread: "Invite-only thread"
     none_direct_thread: "Direct thread (no group)"
     none_invite_only_thread: "Invite-only thread (no group)"
-    change_log_placeholder: Briefly describe the changes made in this edit. (optional)
+    change_log_placeholder: Optionally, describe your changes. This message will be added to the thread.
     change_log_label: What's changed?
     invite: Invite
     aria_label: 'Thread form'
