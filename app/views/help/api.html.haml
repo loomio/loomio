@@ -37,6 +37,16 @@
     %td recipient_message
     %td message to include in the email invitation
 
+%h2 show discussion
+%p Fetch a discussion using the discussion id (an integer) or key (a string) using the following request format
+
+%pre
+  EG: curl http://localhost:3000/api/b1/discussions/1234?api_key=#{params['api_key']}
+
+%pre
+  EG: curl http://localhost:3000/api/b1/discussions/aBcD123?api_key=#{params['api_key']}
+
+
 %h2 create poll
 %pre
   curl -X POST -d 'title=vote now&poll_type=proposal&options[]=agree&options[]=disagree&details=yo wassup&closing_at=2021-02-03&api_key=#{params['api_key']}' http://localhost:3000/api/b1/polls
@@ -96,6 +106,15 @@
   %tr
     %td recipient_message
     %td message to include in the email invitation
+
+%h2 show poll
+%p Fetch a poll using the poll id (an integer) or key (a string)
+
+%pre
+  EG: curl http://localhost:3000/api/b1/polls/1234?api_key=#{params['api_key']}
+
+%pre
+  EG: curl http://localhost:3000/api/b1/polls/aBcD123?api_key=#{params['api_key']}
 
 %h2 list memberships
 - url = "http://localhost:3000/api/b1/memberships?api_key=#{params['api_key']}"

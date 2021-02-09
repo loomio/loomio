@@ -12,7 +12,7 @@ export default
   data: ->
     tab: 'webhook'
     kinds: AppConfig.webhookEventKinds
-    permissions: ['create_discussion', 'create_poll', 'read_memberships']
+    permissions: ['show_discussion', 'create_discussion', 'show_poll', 'create_poll', 'read_memberships']
     formats: [
       {text: @$t('webhook.formats.markdown'), value: "markdown"}
       {text: @$t('webhook.formats.microsoft'), value: "microsoft"}
