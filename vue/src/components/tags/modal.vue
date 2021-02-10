@@ -18,7 +18,7 @@ export default
     submit: ->
       @loading = true
       @tag.save().then =>
-        EventBus.$emit 'closeModal'
+        @close()
       .finally =>
         @loading = false
 
@@ -31,7 +31,7 @@ v-card.tags-modal
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text
-    v-text-field(v-model="tag.name" :label="$t('loomio_tags.name_label')")
+    v-text-field(v-model="tag.name" :label="$t('loomio_tags.name_label')" autofocus)
     p {{tag.color}}
     span.color-swatch(v-for="color in colors" :key="color")
       input(:id="color" v-model="tag.color" :value="color" type="radio")

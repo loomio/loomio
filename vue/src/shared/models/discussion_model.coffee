@@ -54,13 +54,14 @@ export default class DiscussionModel extends BaseModel
     @belongsTo 'group'
     @belongsTo 'author', from: 'users'
     @hasMany 'discussionReaders'
+
     # @belongsTo 'createdEvent', from: 'events'
     # @belongsTo 'forkedEvent', from: 'events'
 
   discussion: -> @
 
   tags: ->
-    @recordStore.tags.find(@tagIds)
+    @recordStore.tags.collection.chain().find(id: {$in: @tagIds}).simplesort('priority').data()
 
   members: ->
     @recordStore.users.find(@group().memberIds().concat(map(@discussionReaders(), 'userId')))

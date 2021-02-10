@@ -4,9 +4,22 @@ class API::V1::TagsController < API::V1::RestfulController
     respond_with_collection
   end
 
+  def priority
+    @group = load_and_authorize(:group).parent_or_self
+
+    Array(params[:ids]).each_with_index do |id, index|
+      Tag.where(id: id, group_id: @group.id).update_all(priority: index)
+    end
+
+    instantiate_collection
+
+    # rember to live update too
+    respond_with_collection
+  end
+
   private
 
   def accessible_records
-    current_user.tags
+    Tag.where(group_id: @group.id)
   end
 end

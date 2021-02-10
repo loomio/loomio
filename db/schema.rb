@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_04_085916) do
+ActiveRecord::Schema.define(version: 2021_02_10_033658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -719,6 +719,7 @@ ActiveRecord::Schema.define(version: 2021_02_04_085916) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "taggings_count", default: 0
+    t.integer "priority", default: 0, null: false
     t.index ["group_id", "name"], name: "index_tags_on_group_id_and_name", unique: true
     t.index ["group_id"], name: "index_tags_on_group_id"
     t.index ["name"], name: "index_tags_on_name"

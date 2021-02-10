@@ -52,7 +52,7 @@ export default class GroupModel extends BaseModel
     @hasMany 'allDocuments', from: 'documents', with: 'groupId', of: 'id'
     @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id', orderBy: 'name'
     @belongsTo 'parent', from: 'groups'
-    @hasMany 'tags'
+    @hasMany 'tags', orderBy: 'priority'
 
   parentOrSelf: ->
     if @parentId then @parent() else @
