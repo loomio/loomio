@@ -11,5 +11,9 @@ module Ability::User
          :subscribe_to], ::User do |u|
       user == u
     end
+
+    can [:deactivate], ::User do |u|
+      (user == u || user.is_admin?) && u.deactivated_at.nil?
+    end
   end
 end

@@ -23,7 +23,7 @@ module Dev::Scenarios::Profile
 
   def setup_user_reactivation_email
     patrick.update(deactivated_at: 1.day.ago)
-    UserService.reactivate(user:patrick, actor:patrick)
+    UserService.reactivate(patrick.id)
     last_email
   end
 end
