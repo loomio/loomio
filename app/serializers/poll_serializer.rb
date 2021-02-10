@@ -44,6 +44,7 @@ class PollSerializer < ApplicationSerializer
   has_one :current_outcome, serializer: OutcomeSerializer, root: :outcomes
   has_one :my_stance, serializer: StanceSerializer, root: :stances
   has_many :poll_options, serializer: PollOptionSerializer, root: :poll_options
+  has_many :tags, serializer: TagSerializer, root: :tags
 
   hide_when_discarded [:details, :title, :author_id]
 

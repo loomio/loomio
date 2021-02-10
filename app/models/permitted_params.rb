@@ -36,6 +36,7 @@ class PermittedParams < Struct.new(:params)
       :specified_voters_only,
       :recipient_audience,
       :recipient_message,
+      :tag_ids, {tag_ids: []},
       :recipient_user_ids, {recipient_user_ids: []},
       :recipient_emails, {recipient_emails: []},
       :custom_fields, {custom_fields: [:can_respond_maybe, :dots_per_person, :max_score,

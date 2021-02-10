@@ -13,6 +13,7 @@ class Discussion < ApplicationRecord
   include HasMailer
   include HasCreatedEvent
   include HasRichText
+  include HasTags
   extend  NoSpam
   include Discard::Model
 
@@ -53,17 +54,12 @@ class Discussion < ApplicationRecord
   has_many :poll_documents,    through: :polls,    source: :documents
   has_many :comment_documents, through: :comments, source: :documents
 
-  has_many :taggings, dependent: :destroy, as: :taggable
-  has_many :tags, through: :taggings
-
   has_many :items, -> { includes(:user) }, class_name: 'Event', dependent: :destroy
 
   has_many :discussion_readers, dependent: :destroy
   has_many :readers,-> { merge DiscussionReader.not_revoked },  through: :discussion_readers, source: :user
   has_many :guests, -> { merge DiscussionReader.guests }, through: :discussion_readers, source: :user
   has_many :admin_guests, -> { merge DiscussionReader.admins }, through: :discussion_readers, source: :user
-
-  before_save :filter_tags_by_group
 
   scope :search_for, ->(fragment) do
      joins("INNER JOIN users ON users.id = discussions.author_id")
@@ -224,9 +220,5 @@ class Discussion < ApplicationRecord
     if self.private? and group.public_discussions_only?
       errors.add(:private, "must be public in this group")
     end
-  end
-
-  def filter_tags_by_group
-    self.tag_ids = Tag.where(group_id: group.parent_or_self.id, id: tag_ids).pluck(:id)
   end
 end

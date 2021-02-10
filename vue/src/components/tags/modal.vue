@@ -46,7 +46,6 @@ v-card.tags-modal
     dismiss-modal-button(:close="close")
   v-card-text
     v-text-field(v-model="tag.name" :label="$t('loomio_tags.name_label')" autofocus)
-    p color {{tag.color}}
     .tag-colors.d-flex
       span.color-swatch(v-for="color in colors" :key="color")
         input(:id="color" v-model="tag.color" :value="color" type="radio")

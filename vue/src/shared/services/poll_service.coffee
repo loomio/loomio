@@ -91,6 +91,15 @@ export default new class PollService
           props:
             poll: poll.clone()
 
+    edit_tags:
+      icon: 'mdi-tag-outline'
+      name: 'loomio_tags.card_title'
+      canPerform: -> AbilityService.canEditPoll(poll)
+      perform: ->
+        openModal
+          component: 'TagsSelect',
+          props: { model: poll.clone() }
+
     move_poll:
       name: 'common.action.move'
       icon: 'mdi-folder-swap-outline'

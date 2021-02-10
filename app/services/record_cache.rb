@@ -216,7 +216,7 @@ class RecordCache
         scope[:tags_by_type_and_id]['Group'][tag.group_id].push tag
     end
 
-    {Discussion: discussion_ids}.each_pair do |type, ids|
+    {Discussion: discussion_ids, Poll: poll_ids}.each_pair do |type, ids|
       Tagging.includes(:tag).where(taggable_type: type, taggable_id: ids).each do |tagging|
         scope[:tags_by_type_and_id][tagging.taggable_type] ||= {}
         scope[:tags_by_type_and_id][tagging.taggable_type][tagging.taggable_id] ||= []
