@@ -57,7 +57,7 @@ class Group < ApplicationRecord
   has_many :public_discussion_documents, through: :public_discussions, source: :documents
   has_many :public_poll_documents,       through: :public_polls,       source: :documents
   has_many :public_comment_documents,    through: :public_comments,    source: :documents
-  has_many :tags, foreign_key: :group_id
+  has_many :tags
 
   has_one :saml_provider, required: false, foreign_key: :group_id
   has_one :group_survey, required: false, foreign_key: :group_id
