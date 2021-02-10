@@ -63,6 +63,7 @@ v-card.tags-modal
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text
+    p(v-t="'loomio_tags.helptext'")
     sortable-list(v-model="allTags" :useDragHandle="true" @sort-end="sortEnded")
       sortable-item(v-for="(tag, index) in allTags" :index="index" :key="tag.id")
         v-checkbox(v-model="model.tagIds" hide-details outlined :color="tag.color" :value="tag.id")

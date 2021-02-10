@@ -165,7 +165,7 @@ Loomio::Application.routes.draw do
         end
       end
 
-      resources :tags, only: [:create, :update] do
+      resources :tags, only: [:create, :update, :destroy] do
         collection do
           post :priority
         end

@@ -17,6 +17,18 @@ export default
     colors: Object.keys(VuetifyColors).map (name) -> VuetifyColors[name]['base']
 
   methods:
+    deleteTag: ->
+      EventBus.$emit 'openModal',
+        component: 'ConfirmModal'
+        props:
+          confirm:
+            submit: @tag.destroy
+            text:
+              title:    'loomio_tags.destroy_tag'
+              helptext: 'loomio_tags.destroy_helptext'
+              submit:   'common.action.delete'
+              flash:    'loomio_tags.tag_destroyed'
+
     submit: ->
       @loading = true
       @tag.save().then =>
@@ -40,6 +52,7 @@ v-card.tags-modal
         input(:id="color" v-model="tag.color" :value="color" type="radio")
         label(:for="color" :style="{'background-color': color, color: color}") {{color}}
   v-card-actions
+    v-btn(@click="deleteTag" v-t="'common.action.delete'" :loading="loading")
     v-spacer
     v-btn.tag-form__submit(color="primary" @click="submit" v-t="'common.action.save'" :loading="loading")
 </template>
