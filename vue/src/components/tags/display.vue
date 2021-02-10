@@ -10,6 +10,7 @@ export default
 <template lang="pug">
 span.tags-display
   v-chip.ml-1(
+    :class="{'mb-1': showCounts}"
     v-for="tag in tags" :key="tag.id"
     small outlined
     :color="tag.color"

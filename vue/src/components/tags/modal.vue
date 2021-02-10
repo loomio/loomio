@@ -62,7 +62,7 @@ v-card.tags-modal
 <style lang="sass">
 .tag-colors
   flex-wrap: wrap
-  
+
 .color-swatch input
   opacity: 0 !important
   pointer-events: none !important

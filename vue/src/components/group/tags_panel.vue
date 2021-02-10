@@ -40,6 +40,7 @@ export default
         collection: 'discussions'
         params:
           exclude_types: 'group'
+          t: 'all'
           tags: @$route.params.tag
 
       @pollsLoader.fetchRecords()
