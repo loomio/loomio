@@ -62,18 +62,19 @@ v-card.tags-modal
     h1.headline(tabindex="-1" v-t="'loomio_tags.card_title'")
     v-spacer
     dismiss-modal-button(:close="close")
-  v-card-text
-    p(v-t="'loomio_tags.helptext'")
-    sortable-list(v-model="allTags" :useDragHandle="true" @sort-end="sortEnded")
-      sortable-item(v-for="(tag, index) in allTags" :index="index" :key="tag.id")
-        v-checkbox(v-model="model.tagIds" hide-details outlined :color="tag.color" :value="tag.id")
-          template(v-slot:label)
-            v-chip(outlined :color="tag.color") {{tag.name}}
-        v-spacer
-        v-btn(icon @click="openEditTagModal(tag)")
-          v-icon.text--secondary mdi-pencil
-        .handle(v-handle icon)
-          v-icon mdi-drag-vertical
+  .px-4
+    p.text--secondary(v-t="'loomio_tags.helptext'")
+
+  sortable-list(v-model="allTags" :useDragHandle="true" @sort-end="sortEnded")
+    sortable-item(v-for="(tag, index) in allTags" :index="index" :key="tag.id")
+      v-checkbox(v-model="model.tagIds" hide-details outlined :color="tag.color" :value="tag.id")
+        template(v-slot:label)
+          v-chip(outlined :color="tag.color") {{tag.name}}
+      v-spacer
+      v-btn(icon @click="openEditTagModal(tag)")
+        v-icon.text--secondary mdi-pencil
+      .handle(v-handle icon)
+        v-icon mdi-drag-vertical
 
   v-card-actions
     v-btn.tag-form_new-tag(@click="openNewTagModal" v-t="'loomio_tags.new_tag'")
