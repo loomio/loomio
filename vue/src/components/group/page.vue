@@ -91,7 +91,7 @@ v-main
     formatted-text.group-page__description(v-if="group" :model="group" column="description")
     join-group-button(:group='group')
     document-list(:model='group')
-    attachment-list(:attachments="group.attachments" :edit="canEditGroup && openGroupSettingsModal")
+    attachment-list(:attachments="group.attachments")
     v-divider.mt-4
     v-tabs(v-model="activeTab" center-active background-color="transparent" centered grow show-arrows)
       v-tabs-slider

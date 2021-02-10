@@ -13,6 +13,7 @@ import GroupDiscussionsPanel from './components/group/discussions_panel'
 import GroupPollsPanel from './components/group/polls_panel'
 
 import MembersPanel from './components/group/members_panel'
+import GroupTagsPanel from './components/group/tags_panel'
 import GroupSubgroupsPanel from './components/group/subgroups_panel'
 import GroupFilesPanel from './components/group/files_panel'
 import MembershipRequestsPanel from './components/group/requests_panel'
@@ -36,6 +37,7 @@ import Session from '@/shared/services/session'
 Vue.use(Router)
 
 groupPageChildren = [
+  {path: 'tags/:tag?', component: GroupTagsPanel, meta: {noScroll: true} },
   {path: 'polls', component: GroupPollsPanel, meta: {noScroll: true}}
   {path: 'members', component: MembersPanel, meta: {noScroll: true}}
   {path: 'membership_requests', component: MembershipRequestsPanel, meta: {noScroll: true}}

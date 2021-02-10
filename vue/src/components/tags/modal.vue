@@ -14,7 +14,7 @@ export default
 
   data: ->
     loading: false
-    colors: Object.keys(VuetifyColors).map (name) -> VuetifyColors[name]['base']
+    colors: Object.keys(VuetifyColors).filter((name) -> name != 'shades').map (name) -> VuetifyColors[name]['base']
 
   methods:
     deleteTag: ->
@@ -46,6 +46,9 @@ v-card.tags-modal
     dismiss-modal-button(:close="close")
   v-card-text
     v-text-field(v-model="tag.name" :label="$t('loomio_tags.name_label')" autofocus)
+
+    label(for="input-708" class="v-label caption" v-t="'loomio_tags.color_label'") Color
+
     .tag-colors.d-flex
       span.color-swatch(v-for="color in colors" :key="color")
         input(:id="color" v-model="tag.color" :value="color" type="radio")
@@ -57,18 +60,21 @@ v-card.tags-modal
 </template>
 
 <style lang="sass">
+.tag-colors
+  flex-wrap: wrap
+  
 .color-swatch input
   opacity: 0 !important
   pointer-events: none !important
 
 .color-swatch label
   overflow: hidden
-  border: 1px solid #eee
-  border-radius: 25px
+  border: 2px solid #ddd
+  border-radius: 28px
   display: block
-  width: 25px
-  height: 25px
+  width: 28px
+  height: 28px
 
 .color-swatch input:checked + label
-  border: 1px solid black
+  border: 2px solid #000
 </style>
