@@ -4,7 +4,6 @@ class API::V1::SessionsController < Devise::SessionsController
 
   def create
     if user = attempt_login
-      user.reactivate! if pending_login_token&.is_reactivation
       sign_in(user)
       flash[:notice] = t(:'devise.sessions.signed_in')
       user.update(name: resource_params[:name]) if resource_params[:name]

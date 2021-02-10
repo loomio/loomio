@@ -37,16 +37,16 @@ export default new class AbilityService
      (thread.group().membersCanEditDiscussions or thread.author() == Session.user()))
 
   canCloseThread: (thread) ->
-    !thread.closedAt && thread.adminsInclude(Session.user())
+    !thread.closedAt && @canEditThread(thread)
 
   canReopenThread: (thread) ->
-    thread.closedAt && thread.adminsInclude(Session.user())
+    thread.closedAt && @canEditThread(thread)
 
   canPinThread: (thread) ->
-    !thread.closedAt && !thread.pinned && thread.adminsInclude(Session.user())
+    !thread.closedAt && !thread.pinned && @canEditThread(thread)
 
   canUnpinThread: (thread) ->
-    !thread.closedAt && thread.pinned && thread.adminsInclude(Session.user())
+    !thread.closedAt && thread.pinned && @canEditThread(thread)
 
   canExportThread: (thread) ->
     !thread.discardedAt && thread.membersInclude(Session.user())
@@ -58,8 +58,7 @@ export default new class AbilityService
   canUnpinEvent: (event) ->
     event.pinned && @canEditThread(event.discussion())
 
-  canMoveThread: (thread) ->
-    thread.adminsInclude(Session.user()) or thread.author() == Session.user()
+  canMoveThread: (thread) -> @canEditThread(thread)
 
   canDeleteThread: (thread) ->
     thread.adminsInclude(Session.user()) or thread.author() == Session.user()
@@ -82,9 +81,6 @@ export default new class AbilityService
     group.subscriptionKind != 'trial' and
     group.subscriptionPaymentMethod != 'manual'
 
-  isCreatorOf: (group) ->
-    Session.user().id == group.creatorId
-
   canStartThread: (group) ->
     group.adminsInclude(user()) or
     (group.membersInclude(user()) and group.membersCanStartDiscussions)
@@ -106,9 +102,6 @@ export default new class AbilityService
       @canAnnouncePoll(model)
     else
       @canAnnounceDiscussion(model)
-
-  canAddMembersDiscussion: (discussion) ->
-    discussion.membersInclude(user())
 
   canAddGuests: (model) ->
     if model.isA? 'poll'
@@ -205,15 +198,6 @@ export default new class AbilityService
   canViewPrivateContent: (group) ->
     group.membersInclude(Session.user())
 
-  canCreateContentFor: (group) ->
-    group.membersInclude(Session.user())
-
-  canViewMemberships: (group) ->
-    group.membersInclude(Session.user())
-
-  canViewPendingMemberships: (group) ->
-    group.adminsInclude(Session.user())
-
   canJoinGroup: (group) ->
     return false if !@canViewGroup(group) or group.membersInclude(Session.user())
     group.membershipGrantedUpon == 'request' or group.parentOrSelf().adminsInclude(Session.user())
@@ -231,9 +215,6 @@ export default new class AbilityService
     (model.contentLocale && model.contentLocale != Session.user().locale) ||
     (!model.contentLocale && model.author().locale != Session.user().locale)
 
-  canViewPreviousPolls: (group) ->
-    @canViewGroup(group)
-
   canStartPoll: (model) ->
     model.adminsInclude(Session.user()) or
     (model.membersInclude(Session.user()) and model.group().membersCanRaiseMotions)
@@ -244,12 +225,6 @@ export default new class AbilityService
     poll.anyoneCanParticipate or
     poll.myStance() or
     (!poll.specifiedVotersOnly and poll.membersInclude(Session.user()))
-
-  canReactToPoll: (poll) ->
-    return false unless @isEmailVerified()
-    return false unless poll
-    poll.anyoneCanParticipate or
-    poll.membersInclude(Session.user())
 
   canMovePoll: (poll) ->
     !poll.discussionId && poll.adminsInclude(Session.user())
@@ -267,10 +242,10 @@ export default new class AbilityService
     !poll.discardedAt && !poll.discussionId && poll.adminsInclude(Session.user())
 
   canSetPollOutcome: (poll) ->
-    !poll.discardedAt && poll.isClosed() && poll.adminsInclude(Session.user())
+    !poll.discardedAt && poll.closedAt && poll.adminsInclude(Session.user())
 
   canClosePoll: (poll) ->
-    @canEditPoll(poll)
+    !poll.discardedAt && !poll.closedAt && @canEditPoll(poll)
 
   canReopenPoll: (poll) ->
-    !poll.discardedAt && poll.isClosed() && !poll.anonymous && poll.adminsInclude(Session.user())
+    !poll.discardedAt && poll.closedAt && !poll.anonymous && poll.adminsInclude(Session.user())

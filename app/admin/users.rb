@@ -95,6 +95,11 @@ ActiveAdmin.register User do
     redirect_to admin_users_path, :notice => "User scheduled for deactivation immediately"
   end
 
+  member_action :reactivate, method: :put do
+    UserService.delay.reactivate(params[:id])
+    redirect_to admin_users_path, :notice => "User scheduled for reactivation immediately"
+  end
+
   member_action :delete_spam, method: :delete do
     DestroyUserWorker.perform_async(params[:id])
     redirect_to admin_users_path, :notice => "User scheduled for deletion immediately"
@@ -107,9 +112,15 @@ ActiveAdmin.register User do
       end
     end
 
-    if user.ability.can? :deactivate, user
+    if user.deactivated_at.nil?
       panel("Deactivate") do
         button_to 'Deactivate User', deactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to deactivate this user?'}
+      end
+    end
+
+    if user.deactivated_at.present?
+      panel("Reactivate") do
+        button_to 'Reactivate User', reactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to reactivate this user?'}
       end
     end
 

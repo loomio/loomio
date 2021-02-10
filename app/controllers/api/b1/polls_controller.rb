@@ -1,4 +1,9 @@
 class API::B1::PollsController < API::B1::BaseController
+  def show
+    self.resource = load_and_authorize(:poll)
+    respond_with_resource
+  end
+
   def create
     @poll = Poll.new(poll_attributes)
     @poll.group_id = current_webhook.group_id
