@@ -3,6 +3,7 @@ import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import AppConfig      from '@/shared/services/app_config'
+import VuetifyColors  from 'vuetify/lib/util/colors'
 
 export default
   props:
@@ -10,10 +11,11 @@ export default
       type: Object
       required: true
     close: Function
+
   data: ->
     loading: false
-    color: @tag.color
-    colors: '#F44336 #E91E63 #9C27B0 #2196F3'.split(' ')
+    colors: Object.keys(VuetifyColors).map (name) -> VuetifyColors[name]['base']
+
   methods:
     submit: ->
       @loading = true
@@ -32,24 +34,29 @@ v-card.tags-modal
     dismiss-modal-button(:close="close")
   v-card-text
     v-text-field(v-model="tag.name" :label="$t('loomio_tags.name_label')" autofocus)
-    p {{tag.color}}
-    span.color-swatch(v-for="color in colors" :key="color")
-      input(:id="color" v-model="tag.color" :value="color" type="radio")
-      label(:for="color") {{color}}
+    p color {{tag.color}}
+    .tag-colors.d-flex
+      span.color-swatch(v-for="color in colors" :key="color")
+        input(:id="color" v-model="tag.color" :value="color" type="radio")
+        label(:for="color" :style="{'background-color': color, color: color}") {{color}}
   v-card-actions
     v-spacer
     v-btn.tag-form__submit(color="primary" @click="submit" v-t="'common.action.save'" :loading="loading")
 </template>
 
 <style lang="sass">
-.color-swatch
-  input
-    position: fixed !important
-    opacity: 0 !important
-    pointer-events: none !important
+.color-swatch input
+  opacity: 0 !important
+  pointer-events: none !important
 
-  label
-    display: block
-    width: 25px
-    height: 25px
-<style>
+.color-swatch label
+  overflow: hidden
+  border: 1px solid #eee
+  border-radius: 25px
+  display: block
+  width: 25px
+  height: 25px
+
+.color-swatch input:checked + label
+  border: 1px solid black
+</style>
