@@ -39,7 +39,7 @@ v-card
   v-card-title
     h1.headline(tabindex="-1" v-t="'announcement.' + modelKind + '_notification_history'")
     v-spacer
-    dismiss-modal-button(:close="close")
+    dismiss-modal-button
   v-layout(justify-center)
     v-progress-circular(color="primary" v-if="historyLoading" indeterminate)
   v-card-text(v-if="!historyLoading")

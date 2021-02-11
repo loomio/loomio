@@ -6,7 +6,6 @@ import { onError } from '@/shared/helpers/form'
 export default
   props:
     membership: Object
-    close: Function
   data: ->
     isDisabled: false
   methods:
@@ -24,7 +23,7 @@ v-card.membership-modal
   v-card-title
     h1.headline(tabindex="-1" v-t="'membership_form.modal_title.group'")
     v-spacer
-    dismiss-modal-button(:close="close")
+    dismiss-modal-button
   v-card-text.membership-form
     p.text--secondary.membership-form__helptext(v-t="{ path: 'membership_form.title_helptext.group', args: { name: membership.user().name } }")
     label(for='membership-title', v-t="'membership_form.title_label'")

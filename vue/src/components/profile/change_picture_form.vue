@@ -11,8 +11,6 @@ import { onError } from '@/shared/helpers/form'
 export default
   components:
     'v-gravatar': Gravatar
-  props:
-    close: Function
   data: ->
     user: Session.user().clone()
     providers: AppConfig.identityProviders
@@ -65,7 +63,7 @@ v-card.change-picture-form
   v-card-title
     h1.headline(tabindex="-1" v-t="'change_picture_form.title'")
     v-spacer
-    dismiss-modal-button(:close="close")
+    dismiss-modal-button
   v-card-text
     p.text--secondary(v-html="$t('change_picture_form.helptext')")
     v-list.change-picture-form__options-list

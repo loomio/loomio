@@ -107,7 +107,7 @@ export default
           document.querySelector('.modal-launcher h1').focus()
 
     closeModal: ->
-      if @isOpen && @componentProps.close
+      if @isOpen && (@componentProps || {}).close
         @componentProps.close()
       else
         @isOpen = false

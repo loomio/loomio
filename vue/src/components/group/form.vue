@@ -11,7 +11,6 @@ import { onError } from '@/shared/helpers/form'
 export default
   props:
     group: Object
-    close: Function
 
   data: ->
     clone: @group.clone()
@@ -58,7 +57,7 @@ export default
         @isExpanded = false
         groupKey = data.groups[0].key
         Flash.success("group_form.messages.group_#{@actionName}")
-        @close()
+        EventBus.$emit 'closeModal'
         @$router.push("/g/#{groupKey}")
       .catch onError(@clone)
 
@@ -133,7 +132,7 @@ v-card.group-form
       .group-form__group-title
         h1.headline(tabindex="-1" v-if='clone.parentId', v-t="'group_form.edit_group_heading'")
         h1.headline(tabindex="-1" v-if='!clone.parentId', v-t="'group_form.edit_organization_heading'")
-      dismiss-modal-button(:close='close')
+      dismiss-modal-button
   //- v-card-text
   v-tabs(fixed-tabs)
     v-tab(v-t="'group_form.profile'")
