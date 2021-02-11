@@ -232,7 +232,7 @@ GEM
       googleapis-common-protos-types (>= 1.0.4, < 2.0)
       googleauth (~> 0.9)
       grpc (~> 1.25)
-    geocoder (1.6.4)
+    geocoder (1.6.5)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     google-cloud-core (1.5.0)
@@ -609,7 +609,7 @@ DEPENDENCIES
   faker
   fog-aws
   friendly_id (~> 5.3.0)
-  geocoder (= 1.6.4)
+  geocoder (= 1.6.5)
   google-cloud-translate
   gravtastic
   griddler!
