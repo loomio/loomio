@@ -36,7 +36,7 @@ export default
 
     menuActions: ->
       assign(
-        pick PollService.actions(@poll, @), ['edit_poll', 'close_poll', 'reopen_poll', 'notification_history', 'show_history', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread']
+        pick PollService.actions(@poll, @), ['edit_poll', 'edit_tags', 'close_poll', 'reopen_poll', 'notification_history', 'show_history', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread']
       ,
         pick EventService.actions(@event, @), ['move_event', 'copy_url', 'pin_event', 'unpin_event']
       )
@@ -52,6 +52,7 @@ section.strand-item.poll-created
       router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
       translation(v-if="poll.translation.title" :model='poll', field='title')
       poll-common-closing-at.ml-2(:poll='poll')
+      tags-display(:tags="poll.tags()")
   template(v-if="!collapsed")
     poll-common-set-outcome-panel(:poll='poll' v-if="!poll.outcome()")
     poll-common-outcome-panel(:outcome='poll.outcome()' v-if='poll.outcome()')

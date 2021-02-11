@@ -1,10 +1,13 @@
 <script lang="coffee">
-import { ElementMixin } from 'vue-slicksort';
+import { ElementMixin, HandleDirective } from 'vue-slicksort';
+
 export default
   mixins: [ElementMixin]
+  directives: { handle: HandleDirective },
   props:
     item: Object
 </script>
+
 <template lang="pug">
 v-list-item.sortable-list-item
   slot

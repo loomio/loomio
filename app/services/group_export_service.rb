@@ -9,7 +9,6 @@ class GroupExportService
     membership_requests
     discussions
     tags
-    discussion_tags
     exportable_polls
     exportable_poll_options
     exportable_outcomes

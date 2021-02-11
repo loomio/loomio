@@ -7,7 +7,6 @@ import { onError } from '@/shared/helpers/form'
 export default
   props:
     user: Object
-    close: Function
   data: ->
     contactRequest: Records.contactRequests.build(recipientId: @user.id)
   methods:
@@ -24,7 +23,7 @@ v-card.contact-user-modal
   v-card-title
     h1.headline(tabindex="-1" v-t="{ path: 'contact_request_form.modal_title', args: { name: user.name }}")
     v-spacer
-    dismiss-modal-button(:close="close")
+    dismiss-modal-button
   v-card-text.contact-user-form
     v-textarea.contact-request-form__message(v-model="contactRequest.message", maxlength="500", :label="$t('contact_request_form.message_placeholder')")
     validation-errors(:subject="contactRequest", field="message")

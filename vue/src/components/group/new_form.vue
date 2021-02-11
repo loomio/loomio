@@ -2,6 +2,7 @@
 import AppConfig      from '@/shared/services/app_config'
 import AbilityService from '@/shared/services/ability_service'
 import Records  from '@/shared/services/records'
+import EventBus  from '@/shared/services/event_bus'
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
 import Flash   from '@/shared/services/flash'
@@ -12,9 +13,6 @@ import openModal from '@/shared/helpers/open_modal'
 export default
   props:
     parentId: Number
-    close:
-      type: Function
-      default: ->
   data: ->
     group: null
     rules: {
@@ -63,7 +61,7 @@ export default
         groupKey = data.groups[0].key
         Flash.success "group_form.messages.group_#{@actionName}"
         Records.groups.findOrFetchById(groupKey, {}, true).then (group) =>
-          @close()
+          EventBus.$emit 'closeModal'
           @$router.push("/g/#{groupKey}")
           if group.isParent() && AppConfig.features.app.group_survey
             openModal
@@ -120,7 +118,7 @@ v-card.group-form
       .group-form__group-title
         h1.headline(tabindex="-1" v-if='group.parentId', v-t="'group_form.start_subgroup_heading'")
         h1.headline(tabindex="-1" v-if='!group.parentId', v-t="'group_form.start_organization_heading'")
-      dismiss-modal-button(:close='close')
+      dismiss-modal-button
   v-card-text
     v-text-field.group-form__name#group-name(v-model='group.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]', maxlength='255', :label="$t(groupNameLabel)" @keyup="suggestHandle()")
     validation-errors(:subject="group", field="name")

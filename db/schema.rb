@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_29_003935) do
+ActiveRecord::Schema.define(version: 2021_02_11_043636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -198,13 +198,6 @@ ActiveRecord::Schema.define(version: 2021_01_29_003935) do
     t.tsvector "search_vector"
     t.index ["discussion_id"], name: "index_discussion_search_vectors_on_discussion_id"
     t.index ["search_vector"], name: "discussion_search_vector_index", using: :gin
-  end
-
-  create_table "discussion_tags", id: :serial, force: :cascade do |t|
-    t.integer "tag_id"
-    t.integer "discussion_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "discussions", id: :serial, force: :cascade do |t|
@@ -709,13 +702,27 @@ ActiveRecord::Schema.define(version: 2021_01_29_003935) do
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
   end
 
+  create_table "taggings", id: :serial, force: :cascade do |t|
+    t.integer "tag_id", null: false
+    t.integer "taggable_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string "taggable_type", null: false
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["taggable_type", "taggable_id"], name: "index_taggings_on_taggable_type_and_taggable_id"
+  end
+
   create_table "tags", id: :serial, force: :cascade do |t|
     t.integer "group_id"
-    t.string "name"
+    t.citext "name", null: false
     t.string "color"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer "discussion_tags_count", default: 0
+    t.integer "taggings_count", default: 0
+    t.integer "priority", default: 0, null: false
+    t.index ["group_id", "name"], name: "index_tags_on_group_id_and_name", unique: true
+    t.index ["group_id"], name: "index_tags_on_group_id"
+    t.index ["name"], name: "index_tags_on_name"
   end
 
   create_table "translations", id: :serial, force: :cascade do |t|

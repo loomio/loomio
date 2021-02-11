@@ -45,6 +45,7 @@ export default class PollModel extends BaseModel
     recipientAudience: null
     recipientUserIds: []
     recipientEmails: []
+    tagIds: []
 
   audienceValues: ->
     name: @group().name
@@ -57,6 +58,9 @@ export default class PollModel extends BaseModel
     @hasMany   'stances'
     @hasMany   'versions'
 
+  tags: ->
+    @recordStore.tags.collection.chain().find(id: {$in: @tagIds}).simplesort('priority').data()
+    
   voters: ->
     @latestStances().map (stance) -> stance.participant()
 

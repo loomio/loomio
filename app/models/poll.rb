@@ -10,6 +10,7 @@ class Poll < ApplicationRecord
   include Reactable
   include HasCreatedEvent
   include HasRichText
+  include HasTags
   include Discard::Model
 
   is_rich_text    on: :details

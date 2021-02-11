@@ -165,11 +165,12 @@ Loomio::Application.routes.draw do
         end
       end
 
-      resources :tags do
+      resources :tags, only: [:create, :update, :destroy] do
         collection do
-          post :update_model
+          post :priority
         end
       end
+
 
       resources :search, only: :index
 

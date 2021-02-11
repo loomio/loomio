@@ -3,7 +3,7 @@ class PermittedParams < Struct.new(:params)
     user group membership_request membership poll outcome
     stance discussion discussion_reader comment
     contact_message announcement document
-    webhook contact_request reaction tag discussion_tag group_survey
+    webhook contact_request reaction tag group_survey
   )
 
   MODELS.each do |kind|
@@ -36,6 +36,7 @@ class PermittedParams < Struct.new(:params)
       :specified_voters_only,
       :recipient_audience,
       :recipient_message,
+      :tag_ids, {tag_ids: []},
       :recipient_user_ids, {recipient_user_ids: []},
       :recipient_emails, {recipient_emails: []},
       :custom_fields, {custom_fields: [:can_respond_maybe, :dots_per_person, :max_score,
@@ -107,16 +108,13 @@ class PermittedParams < Struct.new(:params)
       :newest_first, :max_depth, :private,
      :recipient_audience,
      :recipient_message,
+     :tag_ids, {tag_ids: []},
      :recipient_user_ids, {recipient_user_ids: []},
      :recipient_emails, {recipient_emails: []},
      :forked_event_ids, {forked_event_ids: []},
      :document_ids, {document_ids: []},
      :files, :image_files, {files: []}, {image_files: []}
     ]
-  end
-
-  def discussion_tag_attributes
-    [:tag_id, :discussion_id]
   end
 
   def tag_attributes

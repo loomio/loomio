@@ -37,7 +37,7 @@ v-card.confirm-modal
   v-card-title
     h1.headline(tabindex="-1" v-html="confirm.text.raw_title || $t(confirm.text.title)", v-if="confirm.text.raw_title || confirm.text.title")
     v-spacer
-    dismiss-modal-button(v-if="!confirm.forceSubmit", :close="close")
+    dismiss-modal-button(v-if="!confirm.forceSubmit")
   v-card-text
     p(v-html="confirm.text.raw_helptext || $t(confirm.text.helptext)", v-if="confirm.text.raw_helptext || confirm.text.helptext")
     div(v-if="confirm.text.confirm_text")

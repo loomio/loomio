@@ -93,9 +93,10 @@ export default new class ThreadService
       name: 'loomio_tags.card_title'
       canPerform: -> AbilityService.canEditThread(discussion)
       perform: ->
-        openModal
-          component: 'TagsModal',
-          props: { discussion: discussion }
+        EventBus.$emit 'openModal',
+          component: 'TagsSelect',
+          props:
+            model: discussion.clone()
 
     add_comment:
       icon: 'mdi-reply'

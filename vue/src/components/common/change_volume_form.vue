@@ -74,7 +74,7 @@ v-card.change-volume-form
     v-card-title
       h1.headline.change-volume-form__title(v-t="{ path: translateKey() + '.title', args: { title: model.title || model.name || groupName() } }")
       v-spacer
-      dismiss-modal-button(v-if="showClose" :close="close")
+      dismiss-modal-button(v-if="showClose")
     v-card-text
       p(v-t="'change_volume_form.simple.question'")
       v-radio-group.text-lowercase.mb-4(hide-details v-model='volume')

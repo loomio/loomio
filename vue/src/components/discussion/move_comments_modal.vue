@@ -18,7 +18,6 @@ export default
 
   props:
     discussion: Object
-    close: Function
 
   mounted: ->
     Records.discussions.fetch
@@ -44,11 +43,10 @@ export default
       @selectedDiscussion = Records.discussions.build(groupId: @groupId)
       @setIsForking()
       @resetSourceDiscussion()
-      EventBus.$emit('openModal',
-                      component: 'DiscussionForm',
-                      props: {
-                        discussion: @selectedDiscussion
-                      })
+      EventBus.$emit 'openModal',
+        component: 'DiscussionForm',
+        props:
+          discussion: @selectedDiscussion
 
     submit: ->
       @loading = true
@@ -92,7 +90,7 @@ v-card
   v-card-title
     h1.headline(tabindex="-1" v-t="'action_dock.move_items'")
     v-spacer
-    dismiss-modal-button(aria-hidden='true', :close='close')
+    dismiss-modal-button(aria-hidden='true')
   v-card-text
     v-select(v-model="groupId" :items="groups" item-text="fullName" item-value="id")
     v-autocomplete(hide-no-data return-object v-model="selectedDiscussion" :search-input.sync="searchFragment" :items="searchResults" item-text="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading")
