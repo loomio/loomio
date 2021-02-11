@@ -5,7 +5,7 @@ class API::V1::TagsController < API::V1::RestfulController
   end
 
   def priority
-    @group = load_and_authorize(:group).parent_or_self
+    @group = load_and_authorize(:group)
 
     Array(params[:ids]).each_with_index do |id, index|
       Tag.where(id: id, group_id: @group.id).update_all(priority: index)
