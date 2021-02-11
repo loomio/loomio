@@ -63,6 +63,7 @@ en:
     tag_destroyed: Tag deleted. Refresh your browser to complete changes.
     tags_marked: Threads marked '{{name}}' in {{groupName}}
     no_tags_present: No threads were found with that tag! Try selecting another one.
+    no_tags_in_group: This group has no category tags yet.
 
   reactions:
     slight_smile: Like

@@ -83,33 +83,39 @@ export default
     isOpen: false
     componentName: ""
     componentProps: {}
-    maxWidth: 640
+    componentKey: 'defaultKey'
+    maxWidth: null
 
   created: ->
     EventBus.$on('openModal', @openModal)
-    EventBus.$on('closeModal', @doCloseModal)
+    EventBus.$on('closeModal', @closeModal)
+
+  destroyed: ->
+    EventBus.$off('openModal', @openModal)
+    EventBus.$off('closeModal', @closeModal)
 
   methods:
     openModal: (opts) ->
       @maxWidth = opts.maxWidth || 640
-      @isOpen = true
       @componentName = opts.component
       @componentProps = opts.props
+      @componentKey = (new Date()).getTime()
+      @isOpen = true
+
       setTimeout =>
         if @$refs.modalLauncher && document.querySelector('.modal-launcher h1')
           document.querySelector('.modal-launcher h1').focus()
 
-    doCloseModal: -> @isOpen = false
-
-    componentKey: ->
-      date = new Date()
-      date.getTime()
-
+    closeModal: ->
+      if @isOpen && @componentProps.close
+        @componentProps.close()
+      else
+        @isOpen = false
 
 </script>
 
 <template lang="pug">
 v-dialog.modal-launcher(ref="modalLauncher" v-model="isOpen" :max-width="maxWidth" persistent :fullscreen="$vuetify.breakpoint.xs")
-  v-card
-    component(:is="componentName" :key="componentKey()" v-bind="componentProps" :close="componentProps.close || closeModal")
+  v-card(v-if="isOpen")
+    component(:is="componentName" :key="componentKey" v-bind="componentProps" :close="closeModal")
 </template>
