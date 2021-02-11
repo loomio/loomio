@@ -81,16 +81,17 @@ export default
                 | {{discussions.length}} / {{discussionsLoader.total}}
               v-btn.my-2.discussions-panel__show-more(outlined color='accent' v-if="discussions.length < discussionsLoader.total && !discussionsLoader.exhausted" :loading="discussionsLoader.loading" @click="fetch()")
                 span(v-t="'common.action.load_more'")
+        p.pa-4.text-center(v-if='discussions.length == 0 && !discussionsLoader.loading' v-t="'common.no_results_found'")
+      loading(v-if="discussionsLoader.loading")
 
     v-card(outlined)
       v-card-title(v-t="'group_page.polls'")
       div(v-if="pollsLoader.status == 403")
         p.pa-4.text-center(v-t="'error_page.forbidden'")
-      div(v-else)
-        v-list(two-line avatar v-if='polls.length')
-          poll-common-preview(:poll='poll' v-for='poll in polls' :key='poll.id' :display-group-name="poll.groupId != group.id")
 
-        p.pa-4.text-center(v-if='polls.length == 0 && !pollsLoader.loading' v-t="'polls_panel.no_polls'")
+      div(v-if='polls.length')
+        v-list(two-line avatar )
+          poll-common-preview(:poll='poll' v-for='poll in polls' :key='poll.id' :display-group-name="poll.groupId != group.id")
 
         .d-flex.justify-center
           .d-flex.flex-column.align-center
@@ -98,5 +99,7 @@ export default
               | {{polls.length}} / {{pollsLoader.total}}
             v-btn.my-2.polls-panel__show-more(outlined color='accent' v-if="polls.length < pollsLoader.total && !pollsLoader.exhausted" :loading="pollsLoader.loading" @click="loader.fetchRecords({per: 50})")
               span(v-t="'common.action.load_more'")
+      p.pa-4.text-center(v-if='polls.length == 0 && !pollsLoader.loading' v-t="'polls_panel.no_polls'")
+      loading(v-if="pollsLoader.loading")
 
 </template>
