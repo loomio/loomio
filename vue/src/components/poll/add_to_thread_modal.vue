@@ -38,8 +38,8 @@ export default
     submit: ->
       @poll.addToThread(@selectedDiscussion.id)
       .then =>
-        @close()
         Flash.success('add_poll_to_thread_modal.success', pollType: @poll.translatedPollType())
+        EventBus.$emit('closeModal')
       .catch onError(@poll)
 
     fetch: debounce ->
