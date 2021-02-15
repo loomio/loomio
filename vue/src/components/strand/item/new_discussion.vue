@@ -56,7 +56,7 @@ export default
 <template lang="pug">
 .strand-new-discussion.context-panel.lmo-action-dock-wrapper#context(:aria-label="$t('context_panel.aria_intro', {author: discussion.authorName(), group: discussion.group().fullName})" v-observe-visibility="{callback: viewed, once: true}")
   discussion-privacy-badge.mr-2(:discussion="discussion")
-  strand-members.my-1(:discussion="discussion")
+  //- strand-members.my-1(:discussion="discussion")
     //- v-spacer
     //- //- span(v-for="group in groups")
     //- //-   router-link(:to="group.to") {{group.text}}
@@ -70,6 +70,9 @@ export default
     mid-dot
     router-link.grey--text.body-2(:to='urlFor(discussion)')
       time-ago(:date='discussion.createdAt')
+    span(v-show='discussion.seenByCount > 0')
+      mid-dot
+      a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
   template(v-if="!collapsed")
     formatted-text.context-panel__description(:model="discussion" column="description" aria-label="Discussion context")
     document-list(:model='discussion')
