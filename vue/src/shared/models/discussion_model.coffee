@@ -236,7 +236,6 @@ export default class DiscussionModel extends BaseModel
       params:
         discussion_id: @id
     .then (data) =>
-      console.log "have count", data
       @usersNotifiedCount = data.count
 
   forkedEvents: ->
