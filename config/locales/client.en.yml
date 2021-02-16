@@ -1465,7 +1465,7 @@ en:
     delete_thread: 'Delete'
     add_comment: 'Comment'
     seen_by_count: 'Seen by {{count}}'
-    count_notified: '{{count}} notified'
+    count_notified: 'Notified {{count}}'
     forked_from: "Forked from"
 
   pin_thread_modal:
