@@ -48,7 +48,7 @@ class DiscussionService
     return false unless discussion.valid?
     rearrange = discussion.max_depth_changed?
     discussion.save!
-    
+
     discussion.update_versions_count
     EventService.delay.repair_thread(discussion.id) if rearrange
 
@@ -172,6 +172,10 @@ class DiscussionService
   def self.mark_as_read(discussion:, params:, actor:)
     actor.ability.authorize! :mark_as_read, discussion
     RetryOnError.with_limit(2) do
+      sequence_ids = RangeSet.ranges_to_list(RangeSet.to_ranges(params[:ranges]))
+      NotificationService.viewed_events(actor: actor,
+        events: Event.where(discussion: discussion, sequence_id: sequence_ids)
+      )
       reader = DiscussionReader.for_model(discussion, actor)
       reader.viewed!(params[:ranges])
       EventBus.broadcast('discussion_mark_as_read', reader, actor)
