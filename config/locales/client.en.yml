@@ -654,6 +654,20 @@ en:
     only_admins_can_announce: Only admins can notify the whole group
     only_admins_can_invite: Only admins can invite guests
     only_admins_can_announce_or_invite: Only admins can notify the whole group or invite guests
+    user_mentioned: '{{name}} mentioned {{length}} people:'
+    comment_replied_to: '{{name}} replied to {{length}} people:'
+    new_discussion: '{{name}} invited {{length}} people to the thread:'
+    discussion_announced: '{{name}} invited {{length}} people to the thread:'
+    poll_created: '{{name}} invited {{length}} people to vote:'
+    poll_announced: '{{name}} invited {{length}} people to vote:'
+    outcome_created: '{{name}} shared an outcome with {{length}} people:'
+    outcome_announced: '{{name}} shared an outcome with {{length}} people:'
+    announcement_created: '{{name}} invited {{length}} people to the thread:'
+    discussion_edited: '{{name}} edited the thread, notifying {{length}} people:'
+    poll_edited: '{{name}} edited a poll, notifying {{length}} people:'
+    outcome_edited: '{{name}} edited an outcome, notifying {{length}} people:'
+    outcome_updated: '{{name}} edited an outcome, notifying {{length}} people:'
+    poll_closing_soon: "{{name}}'s poll closing reminder notified {{length}} people:"
 
     audiences:
       group: Members of {{name}}

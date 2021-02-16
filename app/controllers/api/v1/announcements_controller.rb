@@ -68,11 +68,10 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
   def users_notified_count
     # returns a count of users notified about this thing
     current_user.ability.authorize! :show, target_model
+
     count = Notification.
             joins(:event).
-            where("events.kind": notification_kinds).
-            where("events.eventable_type": target_model.class.to_s).
-            where("events.eventable_id": target_model.id).
+            where("events.id": target_event_ids).
             count("DISTINCT notifications.user_id")
 
     render json: {count: count}
@@ -81,7 +80,7 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
   def history
     notifications = {}
 
-    events = Event.where(kind: notification_kinds, eventable: target_model).order('id desc').limit(50)
+    events = Event.where(kind: notification_kinds, id: target_event_ids).order('id desc').limit(1000)
 
     Notification.includes(:user).where(event_id: events.pluck(:id)).order('users.name, users.email').each do |notification|
       next unless notification.user
@@ -101,6 +100,19 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
   end
 
   private
+
+  def target_event_ids
+    if target_model.is_a?(Discussion)
+      polls = Poll.where(discussion_id: target_model.id)
+      outcomes = Outcome.where(poll_id: polls.map(&:id))
+      comments = Comment.where(discussion_id: target_model.id)
+      eventables = [target_model, polls, outcomes, comments].flatten.compact
+    else
+      eventables = [target_model]
+    end
+
+    event_ids = Event.where(kind: notification_kinds, eventable: eventables).pluck(:id)
+  end
 
   def notification_kinds
     %w[announcement_created
