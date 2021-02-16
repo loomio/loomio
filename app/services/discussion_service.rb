@@ -173,9 +173,7 @@ class DiscussionService
     actor.ability.authorize! :mark_as_read, discussion
     RetryOnError.with_limit(2) do
       sequence_ids = RangeSet.ranges_to_list(RangeSet.to_ranges(params[:ranges]))
-      NotificationService.viewed_events(actor: actor,
-        events: Event.where(discussion: discussion, sequence_id: sequence_ids)
-      )
+      NotificationService.delay.viewed_events(actor_id: actor.id, discussion_id: discussion.id, sequence_ids: sequence_ids)
       reader = DiscussionReader.for_model(discussion, actor)
       reader.viewed!(params[:ranges])
       EventBus.broadcast('discussion_mark_as_read', reader, actor)
