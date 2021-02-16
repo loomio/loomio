@@ -13,6 +13,9 @@ export default
   data: ->
     actions: ThreadService.actions(@event.model(), @)
 
+  mounted: ->
+    @event.model().fetchUsersNotifiedCount()
+
   computed:
     discussion: ->
       @event.model()
@@ -73,6 +76,9 @@ export default
     span(v-show='discussion.seenByCount > 0')
       mid-dot
       a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
+    span(v-show='discussion.usersNotifiedCount != null')
+      mid-dot
+      a.context-panel__users_notified_count(v-t="{ path: 'thread_context.count_notified', args: { count: discussion.usersNotifiedCount} }"  @click="actions.notification_history.perform")
   template(v-if="!collapsed")
     formatted-text.context-panel__description(:model="discussion" column="description" aria-label="Discussion context")
     document-list(:model='discussion')

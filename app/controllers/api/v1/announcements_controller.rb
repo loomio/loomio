@@ -65,28 +65,23 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
     end
   end
 
+  def users_notified_count
+    # returns a count of users notified about this thing
+    current_user.ability.authorize! :show, target_model
+    count = Notification.
+            joins(:event).
+            where("events.kind": notification_kinds).
+            where("events.eventable_type": target_model.class.to_s).
+            where("events.eventable_id": target_model.id).
+            count("DISTINCT notifications.user_id")
+
+    render json: {count: count}
+  end
+
   def history
     notifications = {}
 
-    kinds = %w[
-      announcement_created
-      user_mentioned
-      announcement_resend
-      discussion_announced
-      poll_announced
-      outcome_announced
-      outcome_created
-      outcome_updated
-      outcome_edited
-      poll_created
-      poll_edited
-      poll_reminder
-      new_discussion
-      discussion_edited
-      comment_replied_to
-      poll_closing_soon]
-
-    events = Event.where(kind: kinds, eventable: target_model).order('id desc').limit(50)
+    events = Event.where(kind: notification_kinds, eventable: target_model).order('id desc').limit(50)
 
     Notification.includes(:user).where(event_id: events.pluck(:id)).order('users.name, users.email').each do |notification|
       next unless notification.user
@@ -106,6 +101,26 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
   end
 
   private
+
+  def notification_kinds
+    %w[announcement_created
+      user_mentioned
+      announcement_resend
+      discussion_announced
+      poll_announced
+      outcome_announced
+      outcome_created
+      outcome_updated
+      outcome_edited
+      poll_created
+      poll_edited
+      poll_reminder
+      new_discussion
+      discussion_edited
+      comment_replied_to
+      poll_closing_soon]
+  end
+
   def default_scope
     super.merge(
       include_email: (target_model && target_model.admins.exists?(current_user.id))

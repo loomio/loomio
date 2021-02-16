@@ -11,6 +11,9 @@ export default
   data: ->
     actions: ThreadService.actions(@discussion, @)
 
+  mounted: ->
+    @discussion.fetchUsersNotifiedCount()
+
   computed:
     arrangementAction: -> @actions['edit_arrangement']
 
@@ -87,6 +90,9 @@ export default
         span(v-show='discussion.seenByCount > 0')
           mid-dot
           a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
+        span(v-show='discussion.usersNotifiedCount != null')
+          mid-dot
+          a.context-panel__users_notified_count(v-t="{ path: 'thread_context.count_notified', args: { count: discussion.usersNotifiedCount} }"  @click="actions.notification_history.perform")
         span.context-panel__fork-details(v-if='discussion.forkedEvent() && discussion.forkedEvent().discussion()')
           mid-dot
           span(v-t="'thread_context.forked_from'")

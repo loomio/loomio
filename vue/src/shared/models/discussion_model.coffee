@@ -42,6 +42,7 @@ export default class DiscussionModel extends BaseModel
     recipientUserIds: []
     recipientEmails: []
     groupId: null
+    usersNotifiedCount: null
 
   audienceValues: ->
     name: @group().name
@@ -229,8 +230,14 @@ export default class DiscussionModel extends BaseModel
     @processing = true
     @remote.patchMember(@keyOrId(), 'move_comments', { forked_event_ids: @forkedEventIds }).finally => @processing = false
 
-  # isForking: ->
-  #   @forkedEventIds.length > 0
+  fetchUsersNotifiedCount: ->
+    @recordStore.fetch
+      path: 'announcements/users_notified_count'
+      params:
+        discussion_id: @id
+    .then (data) =>
+      console.log "have count", data
+      @usersNotifiedCount = data.count
 
   forkedEvents: ->
     sortBy(@recordStore.events.find(@forkedEventIds), 'sequenceId')

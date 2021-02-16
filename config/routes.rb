@@ -227,6 +227,7 @@ Loomio::Application.routes.draw do
           get :count
           get :search
           get :history
+          get :users_notified_count
         end
       end
 
