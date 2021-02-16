@@ -668,6 +668,7 @@ en:
     outcome_edited: '{{name}} edited an outcome, notifying {{length}} people:'
     outcome_updated: '{{name}} edited an outcome, notifying {{length}} people:'
     poll_closing_soon: "{{name}}'s poll closing reminder notified {{length}} people:"
+    poll_reminder: '{{name}} reminded {{length}} people to vote:'
 
     audiences:
       group: Members of {{name}}
