@@ -43,20 +43,16 @@ fr:
     all_tags: Tous les mots-clés
     tags: Mots-clés
     apply_tags: Appliquer les mots-clés
-    new_tag: Créer un mot-clé
     name_label: Nom
     color_label: Couleur
     card_title: Classement par mots-clés
     modal_title: Créer un nouveau mot-clé
     modal_edit_title: Modifier un mot-clé
     modal_destroy_title: Supprimer le mot-clé
-    destroy_tag: Supprimer le mot-clé
-    destroy_helptext: Ce mot-clé sera supprimé et retiré de toutes les discussions du groupe. Êtes-vous sûr⋅e ?
     helptext: Les mots-clés permettent de catégoriser les discussions pour les retrouver facilement par la suite.
     discussions_count_singular: ({{count}} discussion)
     discussions_count_plural: ({{count}} discussions)
     tag_created: Mot-clé sauvegardé
-    tag_destroyed: Mot-clé retiré
     tags_marked: Discussions marquées « {{name}} » dans {{groupName}}
     no_tags_present: Aucune discussion n’a été trouvée avec ce mot-clé ! Essayez avec un autre.
   reactions:
@@ -583,6 +579,8 @@ fr:
     preview: Aperçu du courriel
     no_notifications_sent: Aucune notification n'a été envoyé
     history_error: Oups, petit souci technique ! L'historique n'a pu être téléchargé
+    audiences:
+      group: Membres de {{name}}
     form:
       too_many_invitations: |
           Invitations maximum atteintes. <a href="{{upgradeUrl}}" target="_blank">Mettre à jour</a>
@@ -602,6 +600,8 @@ fr:
       poll_announced:
         title: Inviter au vote
         helptext: Qui voulez-vous inviter à voter ?
+      poll_reminder:
+        message_label: Message
       poll_edited:
         title: Notifier des modifications
       outcome_announced:
@@ -616,7 +616,6 @@ fr:
     group_form:
       search_placeholder: Chercher des personnes...
       modal_title: Sélectionner des membres du groupe
-      members_count: '{{count}} personnes seront notifiées'
     flash:
       success: '{{count}} notifications envoyées'
   action_dock:
@@ -865,8 +864,6 @@ fr:
   group_form:
     thread_defaults_help: Paramètres par défaut pour les nouvelles discussions
     click_to_change_image: Image de couverture et logo (cliquer pour modifier)
-    permissions_explaination: |
-        Les membres d'un groupe peuvent avoir deux statuts : administrateur ou membre. Les administrateurs ont tous les accès et autorisations. Sélectionnez les accès et autorisations des membres :
     aria_label: 'Forme du groupe'
     new_organisation: Nouvelle organisation
     start_group_heading: 'Créer un groupe'
@@ -916,16 +913,6 @@ fr:
     public_or_private_threads: 'Autoriser les discussions privées et publiques'
     private_threads: 'Seuls les membres peuvent voir les discussions'
     allow_public_threads: 'Autoriser les discussions publiques dans ce groupe.'
-    parent_members_can_see_discussions: 'Les membres de {{parent}} peuvent voir les discussions privées.'
-    members_can_announce: 'Les membres peuvent notifier toutes les personnes du groupe.'
-    members_can_add_members: 'Les membres peuvent inviter des personnes et approuver les demandes d’adhésion.'
-    members_can_create_subgroups: 'Les membres peuvent créer des sous-groupes.'
-    members_can_edit_discussions: 'Les membres peuvent modifier le titre et la description de n’importe quelle discussion.'
-    members_can_edit_comments: 'Les membres peuvent modifier leurs propres commentaires à n’importe quel moment.'
-    members_can_start_discussions: 'Les membres peuvent créer une nouvelle discussion.'
-    members_can_vote: 'Les membres peuvent voter sur les décisions.'
-    members_can_raise_motions: 'Les membres peuvent créer une nouvelle proposition.'
-    admins_can_edit_user_content: "Les administrateurs peuvent modifier les commentaires et les sondages des autres utilisateurs."
     submit_start_group: 'Créer un groupe'
     submit_start_subgroup: 'Créer un sous-groupe'
     submit_update: 'Mettre à jour les paramètres'
@@ -1467,11 +1454,6 @@ fr:
   poll_common_select_group:
     loomio_group: Groupe
     loomio_group_placeholder: (aucun groupe sélectionné)
-  poll_common_notify_group:
-    notify_group: Notification
-    members_helptext: Votre groupe ne sera pas notifié
-    members_count: "{{count}} personnes seront notifiées"
-    decided_voters_count: "Les {{count}} personnes ayant voté seront notifiées"
   poll_common_calendar_invite:
     calendar_invite: Inclure une invitation au calendrier avec ce résultat
     poll_option_id: Heure de réunion
@@ -1793,26 +1775,7 @@ fr:
       poll_expired: "{{pollType}} fermé. {{when}}"
     removed: "Elément supprimé"
     deleted_group: "Groupe supprimé"
-    comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>en réponse à <strong>{{title}}</strong>"
-    discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>a édité le titre de la discussion"
-    discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>a édité le contexte de la discussion "
-    discussion_attachments_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>a édité les pièces jointes de la discussion"
-    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a modifié la confidentialité de la discussion"
-    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>a édité la discussion"
-    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a déplacé la discussion de <strong>{{title}}</strong>"
-    discussion_closed: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>a fermé la discussion"
-    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>a réouvert la discussion"
-    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>a créé une ramification logicielle de cette discussion : <strong><a href='d/{{key}}'>{{title}}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>"
-    outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>a partagé un résultat"
-    poll_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>a réouvert le {{polltype}}"
-    poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>a fermé le {{polltype}}"
-    poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>a démarré un {{polltype}}"
-    poll_created_no_title: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>a démarré un {{polltype}}"
-    poll_edited: "</strong><a href='/u/{{username}}'>{{polltype}}</a></strong>a édité le {{polltype}}"
-    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a ajouté les options au  {{polltype}}"
     poll_expired: "{{polltype}} fermé"
-    stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>a voté pour : <strong>{{title}}</strong>"
     event_removed: "retiré de la discussion"
   poll_common_subscribe_form:
     receive_updates_title: Votre vote a bien été enregistré
@@ -1896,19 +1859,13 @@ fr:
       markdown: Markdown (pour Mattermost, Zapier et autres)
       microsoft: Microsoft Teams
       slack: Slack
-    subtitle: Connectez-vous à Slack, Microsoft Teams, Mattermost, Zapier ou n'importe que service qui supporte les webhooks
     we_have_guides: |
         Lisez notre <a href="{{url}}" target="_blank">guide de configuration webhook</a> pour connecter votre propre service.
     add_webhook: Ajouter un webhook
-    success: Webhook ajouté !
-    remove: Supprimer un webhook
-    confirm_remove: "Etes-vous sûr de vouloir supprimer le webhook : {{name}} ?"
-    removed: Webhook supprimé
+    removed: Intégration retirée
     url_label: L'URL webhook
     url_placeholder: https://hooks.example.com/...
     name_label: Nom
-    name_placeholder: Donnez un nom à ce webhook afin de pouvoir l'identifier plus tard
-    event_kind_helptext: Pour quels événements souhaitez-vous recevoir des notifications ?
     event_kinds:
       new_discussion: 'Une discussion a été commencée '
       discussion_edited: Une discussion a été modifiée

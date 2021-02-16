@@ -43,20 +43,16 @@ ca:
     all_tags: Totes les etiquetes
     tags: Etiquetes
     apply_tags: Aplica etiquetes
-    new_tag: Crea etiquetes
     name_label: Nom
     color_label: Color
     card_title: Etiquetes de categoria
     modal_title: Crea una nova etiqueta
     modal_edit_title: Edita l'etiqueta
     modal_destroy_title: Elimina l'etiqueta
-    destroy_tag: Elimina l'etiqueta
-    destroy_helptext: Això destruirà aquesta etiqueta i l'eliminarà de tots els fils del grup. N'esteu segur?
     helptext: Les etiquetes et permeten categoritzar converses i trobar-les fàcilment després.
     discussions_count_singular: ({{count}} discussió)
     discussions_count_plural: ({{count}} discussions)
     tag_created: Etiqueta desada
-    tag_destroyed: Etiqueta eliminada
     tags_marked: Discussions marcades '{{name}}' a {{groupName}}
     no_tags_present: No s'han trobat discussions amb aquesta etiqueta! Intenta seleccionar-ne una altra.
   reactions:
@@ -548,11 +544,7 @@ ca:
     invite_only_thread: "Fil amb accés per invitació"
     none_direct_thread: "Fil directe (sense grup)"
     none_invite_only_thread: "Fil amb accés per invitació (sense grup)"
-    change_log_placeholder: Descriviu breument els canvis que heu realitzat (opcional)
     change_log_label: Què ha canviat?
-    one_person_will_be_notified: 'Es notificarà 1 persona.'
-    count_people_will_be_notified: 'Es notificarà a {{count}} persones.'
-    notify_specifc_people_instead: Si no voleu que tot el grup rebi la notificació, afegiu els noms dels membres als que voleu notificar.
     invite: Convida
     aria_label: 'Formulari del fil de discussió'
     start_thread: Crea el fil
@@ -656,7 +648,6 @@ ca:
     group_form:
       search_placeholder: Busca gent...
       modal_title: Selecciona membres del grup
-      members_count: 'Es notificarà a {{count}} persones.'
     flash:
       success: '{{count}} notificacions enviades.'
   action_dock:
@@ -1479,7 +1470,6 @@ ca:
     sharable_link: 'Enllaç per compartir'
     last_seen: 'Vist per darrer cop {{time}}'
     invited_by_name: 'Convidat per {{name}}'
-    only_in_subgroups: "No és en aquest grup però pertany a {{name}}"
     accepted: 'Membres'
   polls_panel:
     new_poll: Nova enquesta
@@ -1513,11 +1503,6 @@ ca:
   poll_common_select_group:
     loomio_group: Grup
     loomio_group_placeholder: (no hi ha cap grup seleccionat)
-  poll_common_notify_group:
-    notify_group: Avís
-    members_helptext: No es notificarà al vostre grup
-    members_count: "Es notificarà a {{count}} persones."
-    decided_voters_count: "Es notificarà a les {{count}} persones que han votat"
   poll_common_calendar_invite:
     calendar_invite: 'Inclou una invitació al calendari en aquest resultat '
     poll_option_id: Hora de la reunió
@@ -1728,34 +1713,144 @@ ca:
     score_created: S'ha creat una enquesta de puntuació
     score_updated: S'ha actualitzat una enquesta de puntuació
   poll_meeting_form:
+    tool_tip_expanded: |
+        <p>Utilitzeu una enquesta de temps per saber quan els usuaris estan disponibles per fer una reunió.</p>
+        <p>Introduïu una llista de dates o hores en les que podríeu reunir-vos.</p>
+        <p>El participants marcaran les opcions a les que puguin atendre, o poden deixar una explicació de les seves circumstàncies, de manera que puguis actualitzar les opcions si és necessari.</p>
+        <p>Si afegiu horaris nous durant l'enquesta de temps, s'animarà als usuaris que ja han votat a actualitzar la seva resposta.</p>
+        <p>Podeu veure qui està disponible en cada moment i decidir quan fer la reunió.</p>
+        <p>Les hores es converteixen automàticament a la zona horària local del participant.</p>
+    tool_tip_collapsed: Esbrineu en quin moment poden fer una reunió els usuaris
+    start_header: Crea una enquesta de temps
+    edit_header: Edita una enquesta de temps
+    tip: Esbrineu en quin moment poden fer una reunió els usuaris
+    title_placeholder: 'P.ex: Quan fem la propera quedada?'
     details_placeholder: Proporcioneu tots els detalls que els usuaris puguin necessitar per participar
+    meeting_created: S'ha creat l'enquesta de temps
+    meeting_updated: S'ha actualitzat l'enquesta de temps
+    timeslots: Franges horàries
+    no_options: Introduïu les hores de la vostra zona horària ({{zone}}). Els participants veuran les hores convertides a la seva zona horària.
+    meeting_duration: Durada de la reunió
+    add_option_placeholder: Afegeix una hora nova
+    time_slot_added: S'ha afegit una franja de temps
+    time_slot_already_added: Ja s'ha afegit la franja de temps
   poll_ranked_choice_form:
+    tool_tip_expanded: |
+        <p>El vot preferencial és un mètode de votació que permet que cada votant respongui amb un ordre de preferències.</p>
+    tool_tip_collapsed: Ordena les opcions de primera a última
+    start_header: Comença un vot preferencial
+    edit_header: Edita vot preferencial
+    tip: Ordena les opcions de primera a última
+    title_placeholder: 'P.ex: Qui voldries que fos alcalde?'
     details_placeholder: Proporcioneu tots els detalls que els usuaris puguin necessitar per participar
+    meeting_created: S'ha creat el vot preferencial
+    meeting_updated: S'ha actualitzat el vot preferencial
     no_options: "Encara no heu afegit cap opció."
+    add_option_placeholder: Afegeix una nova opció
+    minimum_stance_choices: Opcions per ordenar
+    minimum_stance_choices_helptext: 'Nombre d''opcions que el votant ha d''ordenar '
+    ranked_choice_created: S'ha creat el vot preferencial
+    ranked_choice_updated: S'ha actualitzat el vot preferencial
+    rank: Ordena
+    points: Puntuació
+  poll_meeting_time_field:
+    add_time_slot: Afegeix una franja horària
+    new_time_slot: Nova franja horària
+    closing_hour: Hora de tancament
   poll_proposal_vote_form:
+    default_reason_placeholder: Expliqueu el vostre raonament
+    abstain_reason_placeholder: Expliqueu als usuaris per què no participeu en aquesta decisió
+    agree_reason_placeholder: Què us agrada de la proposta i com beneficiarà al grup?
+    disagree_reason_placeholder: Com s'hauria de millorar aquesta proposta perquè hi doneu suport?
+    block_reason_placeholder: Expliqueu quina és la vostra objecció a aquesta proposta i per què no hauria de seguir endavant
+    stance_created: S'ha creat el vot
+    stance_updated: S'ha actualitzat el vot
     vote: Vota
+  poll_proposal_options:
+    agree: D'acord
+    consent: Consentiment
+    agree_verb: "hi està d'acord"
+    agree_meaning: La proposta és prou bona perquè el grup l'aprovi
+    abstain: Abstenció
+    abstain_verb: "s'ha abstingut"
+    abstain_meaning: No n'estic segur, no ho sé o no m'importa. Donaré suport al resultat igualment.
+    disagree: En desacord
+    disagree_verb: "hi està en desacord"
+    disagree_meaning: No dono suport a la proposta. No hauria de seguir endavant.
+    objection: Objecció
+    block: Bloqueja
+    block_verb: "bloquejat"
+    block_meaning: Es requereix urgentment l'atenció del grup per tractar un assumpte important
+    agree_abstain_disagree_block: 'D''acord, abstenció, en desacord, bloqueja'
+    agree_disagree: 'D''acord, en desacord'
+    agree_abstain_disagree: 'D''acord, abstenció, en desacrod'
+    consent_abstain_object: 'Consenteix, abstenció, objecció'
   poll_count_options:
     'yes': 'Sí'
     'no': 'No'
   poll_count_vote_form:
     reason_label: Missatge
+    reason_placeholder: Deixeu un missatge si ho considereu oportú
+    stance_created: S'ha creat el vot
+    stance_updated: S'ha actualitzat el vot
+  poll_common_percent_voted:
+    sentence: "{{numerator}} usuaris de {{denominator}} ja han votat ({{percent}}%)"
+  poll_count_chart_panel:
+    out_of: de {{goal}}
   poll_meeting_chart_panel:
     total: Total
+  poll_poll_vote_form:
+    stance_created: S'ha creat el vot
+    stance_updated: S'ha actualitzat el vot
+  poll_score_vote_form:
+    stance_created: S'ha creat el vot
+    stance_updated: S'ha actualitzat el vot
+  poll_meeting_vote_form:
+    local_time_zone: Hora local - {{zone}}
+    can_attend: "Pot assistir"
+    unable: "No pot"
+    if_need_be: Si és necessari
+    your_response: Quan podeu assistir?
+    stance_created: S'ha guardat la disponibilitat
+    stance_updated: S'ha actualitzat la disponibilitat
+    reason_placeholder: Expliqueu quan esteu disponible (o ocupat), en cas que l'autor vulgui afegir opcions.
+  poll_dot_vote_vote_form:
+    dots_remaining: "Queden {{count}} punts"
+    too_many_dots: Heu utilitzat massa punts
+    stance_created: S'ha creat el vot
+    stance_updated: S'ha actualitzat el vot
+  poll_ranked_choice_vote_form:
+    helptext: Arrossega i deixa anar les opcions en ordre de preferència (1 és la opció preferida). Les teves eleccions principals {{count}} quedaran enregistrades.
+    stance_created: S'ha enregistrat l'elecció
+    stance_updated: S'ha actualitzar l'elecció
   thread_item:
-    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>ha modificat la privacitat del fil "
-    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha editat el fil"
-    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha mogut el fil des de <strong>{{title}}</strong>"
+    aria:
+      deleted: Element eliminat
+      new_comment: "{{actor}} ha comentat. {{when}}"
+      poll_created: "{{actor}} ha començat una {{pollType}}. {{when}}"
+      stance_created: "{{actor}} ha votat. {{when}}"
+      outcome_created: "{{actor}} ha compartit un resultat. {{when}}"
+      poll_expired: "{{pollType}} tancada. {{when}}"
+    removed: "Element eliminat"
+    deleted_group: "Grup eliminat"
+    comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha respost a <strong>{{title}}</strong>"
+    discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>ha editat el títol del fil "
+    discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>ha editat el context del fil "
+    discussion_attachments_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha editat els fitxers adjunts del fil"
+    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha modificat la privacitat del fil"
+    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>ha editat el fil "
+    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>ha mogut el fil des de  <strong>{{title}}</strong>"
     discussion_closed: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha tancat el fil"
     discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>ha reobert el fil "
     discussion_forked: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>ha creat una bifurcació d'aquest fil : <strong><a href='d/{{key}}'>{{title}}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>"
-    outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>ha compartit un resultat "
-    poll_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha reobert la {{polltype}}"
-    poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha tancat la {{polltype}}"
+    outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>ha compartit un resultat"
+    poll_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>ha reobert {{polltype}}"
+    poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>ha tancat {{polltype}}"
     poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha obert una {{polltype}}"
-    poll_created_no_title: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha obert una {{polltype}}"
-    poll_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha editat la {{polltype}}"
-    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha afegit opcions a la {{polltype}}"
+    poll_created_no_title: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>ha obert una {{polltype}}"
+    poll_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>ha editat {{polltype}}"
+    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>ha afegit opcions a {{polltype}}"
     poll_expired: "{{polltype}} tancada"
     stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha votat a: <strong>{{title}}</strong>"
     event_removed: "S'ha eliminat del fil"

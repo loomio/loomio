@@ -2,12 +2,10 @@ lt:
   loomio_tags:
     tags: Žymės
     apply_tags: Taikyti žymes
-    new_tag: Sukurti žymę
     color_label: Spalva
     modal_title: Sukurti naują žymę
     modal_edit_title: Taisyti žymę
     modal_destroy_title: Šalinti žymę
-    destroy_tag: Šalinti žymę
   reactions:
     heart: Meilė
     laughing: Juokas

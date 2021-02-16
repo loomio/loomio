@@ -436,8 +436,6 @@ el:
     closed: 'Έκλεισε'
   current_polls_card:
     start_poll: Νέα απόφαση
-  poll_common_notify_group:
-    notify_group: Ανακοίνωση
   poll_common_close_form:
     close_proposal: Κλείσιμο πρότασης
   poll_common_form:

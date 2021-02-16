@@ -25,20 +25,16 @@ ru:
   loomio_tags:
     tags: Метки
     apply_tags: Применить метки
-    new_tag: Создать метку
     name_label: Название
     color_label: Цвет
     card_title: Метки категорий
     modal_title: Создать новую метку
     modal_edit_title: Править метку
     modal_destroy_title: Удалить метку
-    destroy_tag: Удалить метку
-    destroy_helptext: Этим вы уничтожите эту метку и уберете ее со всех ветвей в группе. Уверены?
     helptext: Метки позволяют разбивать обсуждения на категории и легко их потом находить
     discussions_count_singular: ({{count}} ветвь)
     discussions_count_plural: ({{count}} ветвей)
     tag_created: Метка записана
-    tag_destroyed: Метка удалена
     tags_marked: Ветви, помеченные '{{name}}' в {{groupName}}
     no_tags_present: Не нашли ветвей с этой меткой! Попробуйте выбрать другую.
   reactions:

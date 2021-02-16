@@ -17,15 +17,12 @@ cs:
   loomio_tags:
     tags: Štítky
     apply_tags: Použít štítek
-    new_tag: Vytvořit štítek
     name_label: Název
     color_label: Barva
     card_title: Kategorie štítků
     modal_title: Vytvořit nový štítek
     modal_edit_title: Upravit štítek
     modal_destroy_title: Odebrat štítek
-    destroy_tag: Odebrat štítek
-    destroy_helptext: Smazat tento štítek a odebrat ho ze všech vláken ve skupině. Opravdu?
     helptext: Štítky umožňují rozdělit konverzace do kategorií a snadno je později najít
     discussions_count_singular: ({{count}} vlákno)
     discussions_count_plural: ({{count}} vláken)
@@ -653,8 +650,6 @@ cs:
   poll_common_select_group:
     loomio_group: Skupina
     loomio_group_placeholder: (nebyla vybrána žádná skupina)
-  poll_common_notify_group:
-    notify_group: Oznámení
   poll_common_settings:
     anyone_can_participate:
       title: Kdokoli s odkazem se může účastnit

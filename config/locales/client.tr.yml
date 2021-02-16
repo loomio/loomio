@@ -40,20 +40,16 @@ tr:
     all_tags: Tüm etiketler
     tags: Etiketler
     apply_tags: Etiketleri uygula
-    new_tag: Etiket oluştur
     name_label: İsim
     color_label: Renk
     card_title: Kategori Etiketleri
     modal_title: Yeni bir etiket oluştur
     modal_edit_title: Etiketi düzenle
     modal_destroy_title: Etiketi kaldır
-    destroy_tag: Etiketi kaldır
-    destroy_helptext: Bu, bu etiketi yok edecek ve gruptaki tüm müzakerelerden kaldıracaktır. Emin misiniz?
     helptext: Etiketler, konuşmaları kategorilere ayırmanızı ve daha sonra kolayca bulmanızı sağlar
     discussions_count_singular: ({{count}} müzakere)
     discussions_count_plural: ({{count}} müzakereler)
     tag_created: Etiket kaydedildi
-    tag_destroyed: Etiket kaldırıldı
     tags_marked: 'Müzakereler {{groupName}} içinde ''{{name}}'' ile işaretlendi '
     no_tags_present: Bu etiketle müzakere bulunamadı! Başka birini seçmeyi deneyin.
   reactions:
@@ -699,8 +695,6 @@ tr:
     all: 'Hepsi'
     open: 'Açık'
     closed: 'Kapalı'
-  poll_common_notify_group:
-    notify_group: Duyuru
   poll_common_close_form:
     close_proposal: Öneriyi kapat
   poll_common_form:

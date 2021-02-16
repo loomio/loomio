@@ -41,20 +41,16 @@ eo:
     all_tags: Ĉiuj etikedoj
     tags: Etikedoj
     apply_tags: Alkroĉi etikedon
-    new_tag: Krei etikedon
     name_label: Nomo
     color_label: Koloro
     card_title: Kategoriaj etikedoj
     modal_title: Krei novan etikedon
     modal_edit_title: Redakti etikedon
     modal_destroy_title: Forigi etikedon
-    destroy_tag: Forigi etikedon
-    destroy_helptext: Tiu ĉi ago forigos tiun ĉi etikedon kaj ankaŭ forigos ĝin de ĉiuj fadenoj en la grupo. Ĉu vi certas?
     helptext: Etikedoj permesas al vi grupigi fadenojn por facile trovi ilin poste.
     discussions_count_singular: ({{count}} fadeno)
     discussions_count_plural: ({{count}} fadenoj)
     tag_created: Etikedo konservita
-    tag_destroyed: Etikedo forigita
     tags_marked: Fadenoj markitaj kiel  '{{name}}' en {{groupName}}
     no_tags_present: Neniu fadeno kun tiu etikedo estis trovita. Bonvolu provi alian.
   reactions:

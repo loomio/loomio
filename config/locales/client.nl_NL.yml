@@ -44,20 +44,16 @@ nl_NL:
     all_tags: Alle labels
     tags: Labels
     apply_tags: Labels toekennen
-    new_tag: Label aanmaken
     name_label: Naam
     color_label: Kleur
     card_title: Labels categoriseren
     modal_title: Maak een nieuw label aan
     modal_edit_title: Label bewerken
     modal_destroy_title: Label verwijderen
-    destroy_tag: Label verwijderen
-    destroy_helptext: Hierdoor zal het label vernietigd worden en het van alle borden in de groep verwijderen. Ben je zeker dat je dit wilt doen?
     helptext: Labels laten je toe conversaties te categoriseren en deze later sneller terug te vinden
     discussions_count_singular: ({{count}} bord)
     discussions_count_plural: ({{count}} borden)
     tag_created: Label opgeslagen
-    tag_destroyed: Label verwijderd
     tags_marked: 'Borden gemarkeerd met ''{{name}}'' in {{groupName}} '
     no_tags_present: Er werden geen borden gevonden met dit label! Probeer een andere te selecteren.
   reactions:
@@ -555,11 +551,7 @@ nl_NL:
     invite_only_thread: "Alleen op uitnodiging bord"
     none_direct_thread: "Direct bord (geen groep)"
     none_invite_only_thread: "Alleen op uitnodiging bord (geen groep)"
-    change_log_placeholder: Beschrijf kort de gemaakte wijzigingen. (optioneel)
     change_log_label: Wat is er veranderd?
-    one_person_will_be_notified: '1 persoon krijgt een melding.'
-    count_people_will_be_notified: '{{count}} mensen krijgen een melding.'
-    notify_specifc_people_instead: Als je niet iedereen in de groep een melding wil sturen, voeg dan de namen van de mensen die een melding moeten krijgen
     invite: Uitnodigen
     aria_label: 'Bordformulier'
     start_thread: Start discussie
@@ -606,7 +598,7 @@ nl_NL:
     inviting_guests_to_thread: Gasten zijn geen lid van jouw groep en hebben alleen toegang tot dit bord
     select_groups: selecteer groepen
     audiences:
-      group: Iedereen in {{name}}
+      group: Leden van {{name}}
       discussion_group: Iedereen in het bord
       voters: Iedereen die uitgenodigd is om te stemmen
       decided_voters: Iedereen die gestemd heeft
@@ -635,6 +627,8 @@ nl_NL:
       poll_announced:
         title: Nodig uit om te stemmen
         helptext: Wie zou je willen uitnodigen om te stemmen?
+      poll_reminder:
+        message_label: Bericht
       poll_edited:
         title: Wijzigingen melden
         helptext: Wie wil je een melding sturen over deze wijziging?
@@ -662,7 +656,6 @@ nl_NL:
     group_form:
       search_placeholder: Zoek naar mensen...
       modal_title: Selecteer groepsleden
-      members_count: '{{count}} mensen zullen een melding krijgen'
     flash:
       success: '{{count}} meldingen verzonden'
   action_dock:
@@ -924,8 +917,6 @@ nl_NL:
   group_form:
     thread_defaults_help: Standaard instellingen voor nieuwe borden
     click_to_change_image: Cover-afbeelding en logo (klik om te wijzigen)
-    permissions_explaination: |
-        Er zijn twee niveaus van lidmaatschap van een groep: admin en lid
     aria_label: 'Groepsformulier'
     new_organisation: Nieuwe Organisatie
     start_group_heading: 'Een groep starten'
@@ -975,16 +966,6 @@ nl_NL:
     public_or_private_threads: 'Sta openbare en privéborden toe'
     private_threads: 'Enkel leden kunnen discussies zien'
     allow_public_threads: 'Sta openbare borden toe in deze groep.'
-    parent_members_can_see_discussions: 'Leden van {{parent}} kunnen privéborden zien.'
-    members_can_announce: 'Leden kunnen iedereen in de groep een melding sturen'
-    members_can_add_members: 'Leden kunnen mensen uitnodigen en instemmen met verzoeken om deelname.'
-    members_can_create_subgroups: 'Leden kunnen subgroepen aanmaken.'
-    members_can_edit_discussions: 'Leden kunnen de beschrijving en de titel van elk bord updaten.'
-    members_can_edit_comments: 'Leden kunnen hun eigen reacties altijd bewerken.'
-    members_can_start_discussions: 'Leden kunnen nieuwe borden starten.'
-    members_can_vote: 'Leden kunnen stemmen op voorstellen.'
-    members_can_raise_motions: 'Leden kunnen voorstellen starten.'
-    admins_can_edit_user_content: "Admins kunnen reacties en peilingen van anderen wijzigen."
     submit_start_group: 'Start groep'
     submit_start_subgroup: 'Start subgroep'
     submit_update: 'Instellingen bijwerken'
@@ -1506,7 +1487,6 @@ nl_NL:
     sharable_link: 'Deelbare link'
     last_seen: 'Laats gezien {{date}}'
     invited_by_name: 'Uitgenodigd door {{name}}'
-    only_in_subgroups: "Niet in deze groep maar hoort in {{name}}."
     accepted: 'Leden'
   polls_panel:
     new_poll: Nieuwe peiling
@@ -1540,11 +1520,6 @@ nl_NL:
   poll_common_select_group:
     loomio_group: Groep
     loomio_group_placeholder: (geen groep geselecteerd)
-  poll_common_notify_group:
-    notify_group: Aankondiging
-    members_helptext: Je groep zal op de hoogte gebracht worden
-    members_count: "{{count}} mensen zullen op de hoogte gebracht worden"
-    decided_voters_count: "De{{count}} mensen die gestemd hebben zullen op de hoogte gebracht worden"
   poll_common_calendar_invite:
     calendar_invite: Voeg een kalenderuitnodiging toe met dit resultaat
     poll_option_id: Tijd van de vergadering
@@ -1881,26 +1856,7 @@ nl_NL:
       poll_expired: "{{pollType}} sloot. {{when}}"
     removed: "Item verwijderd"
     deleted_group: "Verwijderde groep"
-    comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> in antwoord op <strong>{{title}}</strong>"
-    discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> bewerkte de bordtitel"
-    discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> bewerkte de bordomschrijving"
-    discussion_attachments_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> bewerkte de bijlagen van het bord"
-    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> veranderde de zichtbaarheid van het bord"
-    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> bewerkte het bord"
-    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> verplaatste het bord van <strong>{{title}}</strong>"
-    discussion_closed: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> sloot het bord"
-    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> heropende het bord"
-    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> heeft het bord <strong><a href='d/{{key}}'>{{title}}</a></strong> gesplitst"
-    new_comment: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>"
-    outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> deelde een resultaat"
-    poll_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> heropende het {{polltype}}"
-    poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> sloot de {{polltype}}"
-    poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> startte een {{polltype}}"
-    poll_created_no_title: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> startte een {{polltype}}"
-    poll_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> bewerkte de {{polltype}}"
-    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> voegde opties toe aan het {{polltype}}"
     poll_expired: "{{polltype}} gesloten"
-    stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> stemde op: <strong>{{title}}</strong>"
     event_removed: "Van bord verwijderd"
   poll_common_subscribe_form:
     receive_updates_title: Je stem is opgenomen
@@ -1986,19 +1942,13 @@ nl_NL:
       markdown: Markdown (voor Mattermost, Zapier en anderen)
       microsoft: Microsoft Teams
       slack: Slack
-    subtitle: Verbind met Slack, Microsoft Teams, Mattermost, Zapier of met eender wat dat webhooks ondersteunt.
     we_have_guides: |
         Zie onze <a href="{{url}}" target="_blank">webhook setup handleiding</a> voor hulp met het verbinden van jouw dienst.
     add_webhook: Voeg webhook toe
-    success: Webhook toegevoegd!
-    remove: Verwijder webhook
-    confirm_remove: "Ben je zeker dat je de webhook: {{name}} wenst te verwijderen?"
-    removed: Webhook verwijderd
+    removed: Verbinding beëindigd
     url_label: Webhook URL
     url_placeholder: https://hooks.example.com/...
     name_label: Naam
-    name_placeholder: Geeft deze webhook een naam
-    event_kind_helptext: Voor welk soort gebeurtenissen wil je een melding?
     event_kinds:
       new_discussion: Een bord is gestart
       discussion_edited: Een bord is gewijzigd

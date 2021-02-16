@@ -6,15 +6,12 @@ sl:
   loomio_tags:
     tags: Oznake
     apply_tags: Uporabi oznake
-    new_tag: Ustvari oznako
     name_label: Ime
     color_label: Barva
     modal_title: Ustvari novo oznako
     modal_edit_title: Uredi oznako
     modal_destroy_title: Odstrani oznako
-    destroy_tag: Odstrani oznako
     tag_created: Oznaka shranjena
-    tag_destroyed: Oznaka odstranjena
     tags_marked: Razprave z oznako '{{name}}' v {{groupName}}
   reactions:
     slight_smile: Všečkaj

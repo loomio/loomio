@@ -44,20 +44,16 @@ zh_TW:
     all_tags: 所有標籤
     tags: 標籤
     apply_tags: 套用標籤
-    new_tag: 建立標籤
     name_label: 名稱
     color_label: 顏色
     card_title: 分類標籤
     modal_title: 建立新標籤
     modal_edit_title: 編輯標籤
     modal_destroy_title: 移除標籤
-    destroy_tag: 移除標籤
-    destroy_helptext: 這將會破壞這個標籤並將其從所有在此群組中的討論串中移除。您確定嗎？
     helptext: 標籤讓您可以分類討論，就可以較容易地在稍後找到它們
     discussions_count_singular: （{{count}} 個討論串）
     discussions_count_plural: （{{count}} 個討論串）
     tag_created: 標籤已儲存
-    tag_destroyed: 標籤已移除
     tags_marked: 討論串已標記為在 {{groupName}} 中的 '{{name}}'
     no_tags_present: 找不到有該標籤的討論串！嘗試選取其他的。
   reactions:
@@ -534,6 +530,7 @@ zh_TW:
     new_coordinator: "<strong>{{name}}</strong> 讓您變成了 <strong>{{title}}</strong> 的管理員"
     poll_created: "<strong>{{name}}</strong> 啟動了一個 {{poll_type}}：<strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> 編輯了一個 {{poll_type}}：<strong>{{title}}</strong>"
+    poll_reminder: "<strong>{{name}}</strong> 正在提醒您參與投票：<strong>{{title}}</strong>"
     poll_announced: "<strong>{{name}}</strong> 分享了 {{poll_type}}: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} 即將關閉：<strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} 已關閉：<strong>{{title}}</strong>"
@@ -555,11 +552,7 @@ zh_TW:
     invite_only_thread: "僅邀請的討論串"
     none_direct_thread: "直接討論串（無群組）"
     none_invite_only_thread: "僅邀請的討論串（無群組）"
-    change_log_placeholder: 簡要描述在此編輯中所作的更改。（選擇性）
     change_log_label: 有什麼變動？
-    one_person_will_be_notified: '將通知 1 個人。'
-    count_people_will_be_notified: '將通知 {{count}} 個人。'
-    notify_specifc_people_instead: 如果您不想要通知整個群組，請在此新增要被通知的夥伴名稱。
     invite: 邀請
     aria_label: '討論串表單'
     start_thread: 啟動討論串
@@ -605,8 +598,13 @@ zh_TW:
     history_error: 發生了一點問題！無法載入歷史。
     inviting_guests_to_thread: 訪客不屬於您的群組，且僅能存取此討論串
     select_groups: 選取群組
+    search_by_name_or_email: 透過名稱搜尋，或是輸入電子郵件來邀請
+    search_by_name: 透過名稱搜尋夥伴
+    only_admins_can_announce: 僅管理員可通知整個群組
+    only_admins_can_invite: 僅管理員可邀請訪客
+    only_admins_can_announce_or_invite: 僅管理員可以通知整個群組或邀請訪客
     audiences:
-      group: 在 {{name}} 中的每個人
+      group: '{{name}} 的成員'
       discussion_group: 在討論串中的每個人
       voters: 被邀請投票的每個人
       decided_voters: 已經投票的每個人
@@ -635,6 +633,11 @@ zh_TW:
       poll_announced:
         title: 邀請投票
         helptext: 您想要邀請誰來投票？
+      poll_reminder:
+        title: 提醒投票
+        helptext: 您想要提醒誰投票？
+        message_label: 訊息
+        message_placeholder: 選擇性的訊息，告訴夥伴為什麼他們應該要投票
       poll_edited:
         title: 編輯的通知
         helptext: 您想通知此更新給誰？
@@ -650,6 +653,7 @@ zh_TW:
       group_title: '{{name}}（{{count}} 個夥伴）'
       visible_to_group: '任何在 {{group}} 中的人都可以看到此討論串。'
       visible_to_guests: '僅被邀請的夥伴才能看到此討論串。'
+      click_group_to_see_individuals: 點擊群組以檢視個人
     members_list:
       title: 分享與
       last_notified: 已通知
@@ -662,7 +666,6 @@ zh_TW:
     group_form:
       search_placeholder: 搜尋夥伴……
       modal_title: 選取群組成員
-      members_count: '{{count}} 個人將會被通知'
     flash:
       success: '已傳送 {{count}} 個通知'
   action_dock:
@@ -720,6 +723,9 @@ zh_TW:
     count_voters: "{{count}} 票"
   formatting:
     formatting_tools: 文字格式化工具
+    colors: 顏色
+    alignment: 對齊
+    lists: 列表
     expand: 顯示更多格式化工具
     collapse: 顯示較少格式化工具
     bold: 粗體
@@ -926,6 +932,7 @@ zh_TW:
     click_to_change_image: 封面圖片與圖示（點擊以變更）
     permissions_explaination: |
         群組中一個人可能會有兩種成員等級：管理員與成員
+        管理員可以編輯群組設定，讓其他夥伴成為管理員，並執行以下列出的所有動作。
     aria_label: '群組表單'
     new_organisation: 新組織
     start_group_heading: '啟動群組'
@@ -975,16 +982,26 @@ zh_TW:
     public_or_private_threads: '允許公開與非公開討論串'
     private_threads: '只有成員才能看到討論串'
     allow_public_threads: '允許在此群組中公開討論串。'
-    parent_members_can_see_discussions: '{{parent}} 的成員可以看到私密討論串。'
-    members_can_announce: '成員可以通知任何在群組裡的人。'
-    members_can_add_members: '成員可以邀請夥伴並核准加入請求。'
-    members_can_create_subgroups: '成員可以建立子群組。'
-    members_can_edit_discussions: '成員可以更新任何討論串的內容與標題。'
-    members_can_edit_comments: '成員可以在任意時間編輯他們自己的意見。'
-    members_can_start_discussions: '成員可以啟動新的討論串。'
-    members_can_vote: '成員可以在提案上投票。'
-    members_can_raise_motions: '成員可以啟動新的討論串。'
-    admins_can_edit_user_content: "管理員可以編輯使用者的留言與投票"
+    parent_members_can_see_discussions: '{{parent}} 的成員可以看到私密討論串'
+    parent_members_can_see_discussions_help: '允許上層群組的成員檢視，但不參與該群組的討論串與投票'
+    members_can_announce: '成員可以通知任何在群組裡的人'
+    members_can_announce_help: '允許成員通知所有在群組中的人關於討論串或投票的訊息'
+    members_can_add_members: '成員可以邀請成員'
+    members_can_add_members_help: "允許成員邀請夥伴加入此群組"
+    members_can_add_guests: '成員可以邀請訪客'
+    members_can_add_guests_help: '允許成員邀請訪客參與此群組中的討論串或投票'
+    members_can_create_subgroups: '成員可以建立子群組'
+    members_can_create_subgroups_help: '允許成員建立並成為新子群組的管理員'
+    members_can_edit_discussions: '成員可以管理討論串與留言'
+    members_can_edit_discussions_help: '允許成員編輯、移動、釘選、標記或關閉討論串'
+    members_can_edit_comments: '成員可以編輯他們自己的意見'
+    members_can_edit_comments_help: '允許成員在任何時間編輯他們自己的意見'
+    members_can_start_discussions: '成員可以啟動新的討論串'
+    members_can_start_discussions_help: '允許成員在群組內啟動新的討論串'
+    members_can_raise_motions: '成員可以啟動投票'
+    members_can_raise_motions_help: '允許成員在討論或群組中啟動投票與提議'
+    admins_can_edit_user_content: "管理員可以編輯成員的意見"
+    admins_can_edit_user_content_help: '允許管理員編輯由成員編寫的內容'
     submit_start_group: '建立新群組'
     submit_start_subgroup: '建立子群組'
     submit_update: '更新設定'
@@ -1489,6 +1506,7 @@ zh_TW:
     order_label: "訂購"
     order_by_name: '名稱'
     order_by_created: '最舊'
+    show_users_in_subgroups: 同時顯示子群組中的使用者
     order_by_created_desc: '最新'
     order_by_admin_desc: '管理員'
     loaded_of_total: '{{total}} 中的 {{loaded}}'
@@ -1507,7 +1525,6 @@ zh_TW:
     sharable_link: '可分享的連結'
     last_seen: '最後檢視 {{date}}'
     invited_by_name: '被 {{name}} 邀請'
-    only_in_subgroups: "不在此群組中但屬於 {{name}}。"
     accepted: '成員 ({{count}})'
   polls_panel:
     new_poll: 新投票
@@ -1541,11 +1558,6 @@ zh_TW:
   poll_common_select_group:
     loomio_group: 群組
     loomio_group_placeholder: （未選取群組）
-  poll_common_notify_group:
-    notify_group: 公告
-    members_helptext: 您的群組將不會被通知
-    members_count: "{{count}} 個人將會被通知"
-    decided_voters_count: "{{count}} 個已投票的人將會被通知"
   poll_common_calendar_invite:
     calendar_invite: 包含此結果的行事曆邀請
     poll_option_id: 會面時間
@@ -1884,24 +1896,24 @@ zh_TW:
     deleted_group: "已刪除的群組"
     comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 在回覆 <strong>{{title}}</strong>"
     discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 已編輯討論串標題"
-    discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 編輯了討論內容"
-    discussion_attachments_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 編輯了討論串的附件"
-    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 變更討論串隱私設定"
-    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 編輯了討論串"
-    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 從 <strong>{{title}}</strong> 移動了討論串"
-    discussion_closed: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 關閉了討論串"
-    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 重新開啟了討論串"
-    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 建立了此討論串的分支：<strong><a href='d/{{key}}'>{{title}}</a></strong>"
+    discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 已編輯討論串內容"
+    discussion_attachments_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 已編輯討論串附件"
+    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 已變更討論串隱私"
+    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 已編輯討論串"
+    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 已從 <strong>{{title}}</strong> 移動討論串"
+    discussion_closed: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 已關閉討論串"
+    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 已重新開啟討論串"
+    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 建立了此討論串的分支：<strong></a>{{title}}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>"
-    outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 分享了結果"
-    poll_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 重新開啟了 {{polltype}}"
-    poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 關閉了 {{polltype}}"
-    poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 開始了 {{polltype}}"
-    poll_created_no_title: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 開始了 {{polltype}}"
-    poll_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 編輯了 {{polltype}}"
-    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 新增了選項到 {{polltype}}"
+    outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 已分享結果"
+    poll_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 已重新開啟 {{polltype}}"
+    poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 已關閉 {{polltype}}"
+    poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 已開始 {{polltype}}"
+    poll_created_no_title: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 已開始 {{polltype}}"
+    poll_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 已編輯 {{polltype}}"
+    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 已新增選項至 {{polltype}}"
     poll_expired: "{{polltype}} 已關閉"
-    stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>投票給：<strong>{{title}}</strong>"
+    stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 已投票：<strong>{{title}}</strong>"
     event_removed: "從討論串中移除"
   poll_common_subscribe_form:
     receive_updates_title: 您的投票已記錄
@@ -1982,24 +1994,29 @@ zh_TW:
   webhook:
     integrations: 整合
     webhooks: Webhooks
+    webhook: Webhook
+    api: API
     format: 格式
     formats:
       markdown: Markdown（供 Mattermost、Zapier 與其他服務使用）
       microsoft: Microsoft Teams
       slack: Slack
-    subtitle: 連線至 Slack、Microsoft Teams、Mattermost、Zapier 或任何支援 webhooks 的服務
+    subtitle: 透過我們的整合 API 與 webhooks 將 Loomio 連線到您其他的工具
     we_have_guides: |
         看我們的 <a href="{{url}}" target="_blank">webhook 設定指南</a>來取得連線到您服務的說明。
     add_webhook: 新增 webhook
-    success: 已新增 webhook！
-    remove: 移除 webhook
-    confirm_remove: "您確定您想要移除 webhook：{{name}} 嗎？"
-    removed: 已移除 webhook
+    show_docs: 檢視 API 使用方式
+    edit_integration: 編輯整合
+    add_integration: 新增整合
+    success: 整合已新增！
+    remove: 移除整合
+    confirm_remove: "您確定您想要移除整合：{{name}} 嗎？"
+    removed: 已移除整合
     url_label: Webhook URL
     url_placeholder: https://hooks.example.com/...
     name_label: 名稱
-    name_placeholder: 給這個 webhook 一個名稱，這樣您就可以在稍後識別它
-    event_kind_helptext: 您想要哪些活動發出通知？
+    name_placeholder: 給這個整合一個名稱，這樣您就可以識別它
+    event_kind_helptext: 您想要 webhook 為哪些活動發出通知？
     event_kinds:
       new_discussion: 討論串已啟動
       discussion_edited: 討論串已編輯
@@ -2012,6 +2029,11 @@ zh_TW:
       poll_closed_by_user: 投票被手動關閉
       poll_reopened: 重新開始投票
       outcome_created: 已分享結果
+    permissions_explaination: 選取此整合可以執行的動作
+    permissions:
+      create_discussion: 建立討論
+      create_poll: 建立投票
+      read_memberships: 讀取成員資格
     include_body_label: 在通知中包含訊息正文
     include_subgroups_label: 中繼來自子群組的事件
   configure_sso:
