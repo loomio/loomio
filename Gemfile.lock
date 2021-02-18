@@ -120,7 +120,7 @@ GEM
       activesupport (>= 3.0.0, < 6.2)
       ruby2_keywords (>= 0.0.2, < 1.0)
     arel (9.0.0)
-    ast (2.4.1)
+    ast (2.4.2)
     aws-eventstream (1.1.0)
     aws-partitions (1.427.0)
     aws-sdk-core (3.112.0)
@@ -562,7 +562,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.7)
     uuidtools (2.2.0)
-    video_info (3.0.0)
+    video_info (3.0.1)
       iso8601 (~> 0.9.1)
       net_http_timeout_errors (~> 0.3.0)
       oga (~> 3.0)
