@@ -18,7 +18,7 @@ class API::V1::SnorlaxBase < ActionController::Base
   def create
     instantiate_resource
     create_action
-    respond_with_resource
+    create_response
   end
 
   def create_action
@@ -28,7 +28,7 @@ class API::V1::SnorlaxBase < ActionController::Base
   def update
     load_resource
     update_action
-    respond_with_resource
+    update_response
   end
 
   def update_action
@@ -240,6 +240,14 @@ class API::V1::SnorlaxBase < ActionController::Base
 
   def default_page_size
     50
+  end
+
+  def update_response
+    respond_with_resource
+  end
+
+  def create_response
+    respond_with_resource
   end
 
   def destroy_response

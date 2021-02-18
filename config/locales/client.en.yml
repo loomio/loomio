@@ -60,7 +60,7 @@ en:
     discussions_count_singular: ({{count}} thread)
     discussions_count_plural: ({{count}} threads)
     tag_created: Tag saved
-    tag_destroyed: Tag deleted. Refresh page to see changes.
+    tag_destroyed: Tag deleted
     tags_marked: Threads marked '{{name}}' in {{groupName}}
     no_tags_present: No threads were found with that tag! Try selecting another one.
     no_tags_in_group: This group has no category tags yet.
