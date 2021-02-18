@@ -28,7 +28,7 @@ export default
       pick @actions, ['react', 'translate_thread', 'add_comment', 'subscribe', 'unsubscribe', 'unignore', 'edit_thread', 'announce_thread']
 
     menuActions: ->
-      pick @actions, ['edit_tags', 'show_history', 'notification_history', 'close_thread', 'reopen_thread', 'move_thread', 'discard_thread', 'export_thread']
+      pick @actions, ['show_history', 'notification_history', 'close_thread', 'reopen_thread', 'move_thread', 'discard_thread', 'export_thread']
 
     status: ->
       return 'pinned' if @discussion.pinned
@@ -59,6 +59,7 @@ export default
 <template lang="pug">
 .strand-new-discussion.context-panel.lmo-action-dock-wrapper#context(:aria-label="$t('context_panel.aria_intro', {author: discussion.authorName(), group: discussion.group().fullName})" v-observe-visibility="{callback: viewed, once: true}")
   discussion-privacy-badge.mr-2(:discussion="discussion")
+  tags-display(:tags="discussion.tags()")
   //- strand-members.my-1(:discussion="discussion")
     //- v-spacer
     //- //- span(v-for="group in groups")

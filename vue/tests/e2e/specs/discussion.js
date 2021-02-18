@@ -301,7 +301,7 @@ module.exports = {
     page.loadPath('setup_user_no_group')
     page.ensureSidebar()
     page.click('.sidebar__list-item-button--start-thread')
-    page.fillIn('.announcement-form__input input', 'test@example.com')
+    page.fillIn('.recipients-autocomplete input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
     page.fillIn('.discussion-form__title-input input', "private thread")

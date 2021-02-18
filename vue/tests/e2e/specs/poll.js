@@ -354,7 +354,7 @@ module.exports = {
     page.click('.poll-common-form__submit')
 
     page.expectElement('.poll-members-list')
-    page.fillIn('.announcement-form__input input', 'test@example.com')
+    page.fillIn('.recipients-autocomplete input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
     page.escape()

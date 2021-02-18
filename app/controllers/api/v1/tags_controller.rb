@@ -12,6 +12,18 @@ class API::V1::TagsController < API::V1::RestfulController
   end
 
   private
+  def respond_with_group
+    self.resource = resource.group.reload
+    respond_with_resource
+  end
+
+  def create_response
+    respond_with_group
+  end
+
+  def destroy_response
+    respond_with_group
+  end
 
   def accessible_records
     Tag.where(group_id: @group.id)

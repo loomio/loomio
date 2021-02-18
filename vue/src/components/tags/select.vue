@@ -17,12 +17,14 @@ export default
     handle: HandleDirective
 
   data: ->
-    loading: false
     allTags: @model.group().parentOrSelf().tags()
 
-  computed:
-    isAdmin: ->
-      @model.group().parentOrSelf().adminsInclude(Session.user())
+  mounted: ->
+    @watchRecords
+      key: 'tags'+@model.id
+      collections: ['tags']
+      query: =>
+        @allTags = @model.group().parentOrSelf().tags()
 
   methods:
     openNewTagModal: ->
@@ -48,18 +50,13 @@ export default
                 model: @model
 
     submit: ->
-      @loading = true
-      @model.save().then =>
-        if @isAdmin
-          Records.remote.post 'tags/priority',
-            group_id: @model.groupId
-            ids: @allTags.map (t) -> t.id
-          .then =>
-            EventBus.$emit 'closeModal'
-      .finally =>
-        @loading = false
+      EventBus.$emit 'closeModal'
 
     sortEnded: ->
+      setTimeout =>
+        Records.remote.post 'tags/priority',
+          group_id: @model.groupId
+          ids: @allTags.map (t) -> t.id
 
 </script>
 <template lang="pug">
@@ -75,17 +72,14 @@ v-card.tags-modal
     p.text--secondary(v-t="'loomio_tags.no_tags_in_group'")
   sortable-list(v-model="allTags" :useDragHandle="true" @sort-end="sortEnded")
     sortable-item(v-for="(tag, index) in allTags" :index="index" :key="tag.id")
-      v-checkbox(v-model="model.tagIds" hide-details outlined :color="tag.color" :value="tag.id")
-        template(v-slot:label)
-          v-chip(outlined :color="tag.color") {{tag.name}}
-      v-spacer
-      v-btn(v-if="isAdmin" icon @click="openEditTagModal(tag)")
-        v-icon.text--secondary mdi-pencil
-      .handle(v-if="isAdmin" v-handle)
+      .handle(v-handle)
         v-icon mdi-drag-vertical
+      v-chip(outlined :color="tag.color") {{tag.name}}
+      v-spacer
+      v-btn(icon @click="openEditTagModal(tag)")
+        v-icon.text--secondary mdi-pencil
 
   v-card-actions
-    v-btn.tag-form_new-tag(v-if="isAdmin" @click="openNewTagModal" v-t="'loomio_tags.new_tag'")
     v-spacer
-    v-btn.tag-form__submit(color="primary" @click="submit" v-t="'common.action.save'" :loading="loading")
+    v-btn.tag-form_new-tag(color="primary" @click="openNewTagModal" v-t="'loomio_tags.new_tag'")
 </template>
