@@ -36,7 +36,7 @@ export default
 
     menuActions: ->
       @myStance
-      pick PollService.actions(@poll, @), ['edit_poll', 'edit_tags', 'close_poll', 'reopen_poll', 'notification_history', 'show_history', 'move_poll', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread', 'translate_poll']
+      pick PollService.actions(@poll, @), ['edit_poll', 'close_poll', 'reopen_poll', 'notification_history', 'show_history', 'move_poll', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread', 'translate_poll']
 
     dockActions: ->
       @myStance
@@ -55,7 +55,7 @@ v-card
       h1.poll-common-card__title.display-1(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
         span(v-if='!poll.translation.title') {{poll.title}}
         translation(v-if="poll.translation.title" :model='poll', field='title')
-        v-chip.ml-3(outlined small color="info" v-t="'poll_types.' + poll.pollType")
+        v-chip.ml-3(outlined label small color="info" v-t="'poll_types.' + poll.pollType")
         tags-display(:tags="poll.tags()")
     .px-4.pb-4
       poll-common-set-outcome-panel(:poll='poll' v-if="!outcome")

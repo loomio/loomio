@@ -50,6 +50,7 @@ class RecordCache
       obj.user_ids.concat collection.map(&:user_id).concat(collection.map(&:inviter_id).compact).compact.uniq
 
     when 'Poll'
+      obj.add_groups Group.includes(:default_group_cover).where(id: collection.map(&:group_id))
       obj.add_discussions(Discussion.where(id: collection.map(&:discussion_id).uniq.compact))
       obj.add_polls_options_stances_choices_outcomes collection
 

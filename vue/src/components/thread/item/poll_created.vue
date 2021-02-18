@@ -38,7 +38,7 @@ export default
 
     menuActions: ->
       assign(
-        pick PollService.actions(@poll, @), ['edit_poll', 'edit_tags', 'close_poll', 'reopen_poll', 'notification_history', 'show_history', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread']
+        pick PollService.actions(@poll, @), ['edit_poll', 'close_poll', 'reopen_poll', 'notification_history', 'show_history', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread']
       ,
         pick EventService.actions(@event, @), ['move_event', 'copy_url', 'pin_event', 'unpin_event']
       )
