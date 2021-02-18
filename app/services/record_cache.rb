@@ -46,11 +46,11 @@ class RecordCache
       obj.add_groups_subscriptions_memberships Group.includes(:subscription, :default_group_cover).where(id: ids_and_parent_ids(Group, collection.map(&:id)))
 
     when 'Membership'
-      obj.add_groups Group.includes(:default_group_cover).where(id: collection.map(&:group_id))
+      obj.add_groups Group.includes(:default_group_cover).where(id: ids_and_parent_ids(Group, collection.map(&:group_id)))
       obj.user_ids.concat collection.map(&:user_id).concat(collection.map(&:inviter_id).compact).compact.uniq
 
     when 'Poll'
-      obj.add_groups Group.includes(:default_group_cover).where(id: collection.map(&:group_id))
+      obj.add_groups Group.includes(:default_group_cover).where(id: ids_and_parent_ids(Group, collection.map(&:group_id)))
       obj.add_discussions(Discussion.where(id: collection.map(&:discussion_id).uniq.compact))
       obj.add_polls_options_stances_choices_outcomes collection
 
