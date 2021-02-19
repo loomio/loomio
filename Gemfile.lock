@@ -524,7 +524,7 @@ GEM
     sentry-ruby-core (4.2.1)
       concurrent-ruby
       faraday
-    sentry-sidekiq (4.2.0)
+    sentry-sidekiq (4.2.1)
       sentry-ruby-core (~> 4.2.0)
     sexp_processor (4.14.1)
     sidekiq (6.1.3)
