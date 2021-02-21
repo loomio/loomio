@@ -197,16 +197,16 @@ describe API::V1::ProfileController do
       expect(user_ids).to eq [jgroupmember.id]
     end
 
-    it "returns users from groups within the same organisation" do
-      get :mentionable_users, params: {q: "rspecesub", group_id: group.id}
-      user_ids = JSON.parse(response.body)['users'].map { |c| c['id'] }
-      expect(user_ids).to eq [esubgroupmember.id]
-    end
-
     it "returns users for the discussion" do
       get :mentionable_users, params: {q: "rspecjg", discussion_id: discussion.id}
       user_ids = JSON.parse(response.body)['users'].map { |c| c['id'] }
       expect(user_ids).to eq [jgroupmember.id, jguest.id]
+    end
+
+    it "does not return users from other groups within the same organisation" do
+      get :mentionable_users, params: {q: "rspecesub", group_id: group.id}
+      user_ids = JSON.parse(response.body)['users'].map { |c| c['id'] }
+      expect(user_ids).to eq []
     end
 
     it "doesn't return users from groups outside the organisation" do
