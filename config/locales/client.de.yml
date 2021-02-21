@@ -53,7 +53,6 @@ de:
     discussions_count_singular: ({{count}} Diskussion)
     discussions_count_plural: ({{count}} Diskussion)
     tag_created: Schlagwort gespeichert
-    tag_destroyed: Schlagwort entfernt. Bitte aktualisiere deinen Browser, um die Änderungen fertig zu stellen.
     tags_marked: Diskussionen mit '{{name}}' in {{groupName}}
     no_tags_present: Zu diesem Schlagwort wurden keine Diskussionen gefunden! Versuche es mit einem anderen.
   reactions:

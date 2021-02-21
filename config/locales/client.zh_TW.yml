@@ -44,18 +44,23 @@ zh_TW:
     all_tags: 所有標籤
     tags: 標籤
     apply_tags: 套用標籤
+    new_tag: 新標籤
     name_label: 名稱
     color_label: 顏色
     card_title: 分類標籤
     modal_title: 建立新標籤
     modal_edit_title: 編輯標籤
     modal_destroy_title: 移除標籤
+    destroy_tag: 刪除標籤
+    destroy_helptext: 這將會刪除此標籤將其從群組中的所有討論串移除。您確定嗎？
     helptext: 標籤讓您可以分類討論，就可以較容易地在稍後找到它們
     discussions_count_singular: （{{count}} 個討論串）
     discussions_count_plural: （{{count}} 個討論串）
     tag_created: 標籤已儲存
+    tag_destroyed: 標籤已刪除
     tags_marked: 討論串已標記為在 {{groupName}} 中的 '{{name}}'
     no_tags_present: 找不到有該標籤的討論串！嘗試選取其他的。
+    no_tags_in_group: 此群組還沒有分類標籤。
   reactions:
     slight_smile: 讚
     heart: 愛
@@ -552,6 +557,7 @@ zh_TW:
     invite_only_thread: "僅邀請的討論串"
     none_direct_thread: "直接討論串（無群組）"
     none_invite_only_thread: "僅邀請的討論串（無群組）"
+    change_log_placeholder: 選擇性，描述您的變更。此訊息江心增到討論串中。
     change_log_label: 有什麼變動？
     invite: 邀請
     aria_label: '討論串表單'
@@ -603,6 +609,21 @@ zh_TW:
     only_admins_can_announce: 僅管理員可通知整個群組
     only_admins_can_invite: 僅管理員可邀請訪客
     only_admins_can_announce_or_invite: 僅管理員可以通知整個群組或邀請訪客
+    user_mentioned: '{{name}} 提及 {{length}} 個夥伴：'
+    comment_replied_to: '{{name}} 回覆了 {{length}} 個夥伴：'
+    new_discussion: '{{name}} 邀請了 {{length}} 個夥伴到討論串：'
+    discussion_announced: '{{name}} 邀請了 {{length}} 個夥伴到討論串：'
+    poll_created: '{{name}} 邀請 {{length}} 個夥伴投票：'
+    poll_announced: '{{name}} 邀請 {{length}} 個夥伴投票：'
+    outcome_created: '{{name}} 與 {{length}} 個夥伴分享了成果：'
+    outcome_announced: '{{name}} 與 {{length}} 個夥伴分享了成果：'
+    announcement_created: '{{name}} 邀請了 {{length}} 個夥伴到討論串：'
+    discussion_edited: '{{name}} 編輯了討論串，通知了 {{length}} 個夥伴：'
+    poll_edited: '{{name}} 編輯了投票，通知了 {{length}} 個夥伴：'
+    outcome_edited: '{{name}} 編輯了成果，通知了 {{length}} 個夥伴：'
+    outcome_updated: '{{name}} 編輯了成果，通知了 {{length}} 個夥伴：'
+    poll_closing_soon: "{{name}} 的投票關閉提醒通知了 {{length}} 個夥伴："
+    poll_reminder: '{{name}} 提醒了 {{length}} 個夥伴投票：'
     audiences:
       group: '{{name}} 的成員'
       discussion_group: 在討論串中的每個人
@@ -1343,6 +1364,7 @@ zh_TW:
     delete_thread: '刪除'
     add_comment: '意見'
     seen_by_count: '被 {{count}} 個人看過'
+    count_notified: '通知了 {{count}}'
     forked_from: "分支自"
   pin_thread_modal:
     title: 釘選討論串
@@ -2031,8 +2053,10 @@ zh_TW:
       outcome_created: 已分享結果
     permissions_explaination: 選取此整合可以執行的動作
     permissions:
+      show_discussion: 顯示討論
       create_discussion: 建立討論
       create_poll: 建立投票
+      show_poll: 顯示投票
       read_memberships: 讀取成員資格
     include_body_label: 在通知中包含訊息正文
     include_subgroups_label: 中繼來自子群組的事件

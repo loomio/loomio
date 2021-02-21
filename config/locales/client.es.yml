@@ -57,7 +57,6 @@ es:
     discussions_count_singular: ({{count}} hilo)
     discussions_count_plural: ({{count}} hilos)
     tag_created: Etiqueta guardada
-    tag_destroyed: Etiqueta borrada. Refresca tu buscador para completar cambios.
     tags_marked: Hilos marcados con '{{name}}' en {{groupName}}
     no_tags_present: ¡No se ha encontrado ningún hilo con esta etiqueta! Inténtalo con otra.
     no_tags_in_group: Este grupo todavía no tiene etiquetas de categoría.
@@ -609,6 +608,21 @@ es:
     only_admins_can_announce: Solamente los administradores pueden notificar a todo el grupo
     only_admins_can_invite: Sólo los administradores pueden invitar invitados
     only_admins_can_announce_or_invite: Solamente los administradores pueden notificar a todos el grupo o invitar invitados
+    user_mentioned: '{{name}} mencionado {{length}} gente:'
+    comment_replied_to: '{{name}} respondió a {{length}} gente:'
+    new_discussion: '{{name}} invitó a {{length}} gente a este hilo:'
+    discussion_announced: '{{name}} invitó {{length}} gente a este hilo:'
+    poll_created: '{{name}} invited a {{length}} gente a votar:'
+    poll_announced: '{{name}} invited a {{length}} gente a votar:'
+    outcome_created: '{{name}} compartió un resultado con {{length}} gente:'
+    outcome_announced: '{{name}} compartió un resultado con {{length}} gente:'
+    announcement_created: '{{name}} invitó {{length}} gente a este hilo:'
+    discussion_edited: '{{name}} editó el hilo, notificando a {{length}} gente:'
+    poll_edited: '{{name}} editó una encuesta, notificando a {{length}} gente:'
+    outcome_edited: '{{name}} editó un resultado, notificando {{length}} gente:'
+    outcome_updated: '{{name}} editó un resultado, notificando {{length}} gente:'
+    poll_closing_soon: "El recordatorio del cierre del sondeo de {{name}} notificó a {{length}} gente:"
+    poll_reminder: '{{name}} recordó {{length}} gente a votar:'
     audiences:
       group: 'Integrantes de {{name}} '
       discussion_group: Todos en el hilo
@@ -1348,6 +1362,7 @@ es:
     delete_thread: 'Eliminar'
     add_comment: 'Comentar '
     seen_by_count: 'Visto por {{count}} '
+    count_notified: 'Avisado {{count}}'
     forked_from: "Bifurcado de"
   pin_thread_modal:
     title: Fijar hilo
