@@ -149,7 +149,7 @@ class User < ApplicationRecord
 
   scope :mention_search, -> (user, model, query) do
     return self.none unless model.present?
-    active.search_for(query).
+    active.verified.search_for(query).
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{model.group_id || 0}").
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.user_id = users.id AND dr.discussion_id = #{model.discussion_id || 0}").
       where("(m.id IS NOT NULL AND m.archived_at IS NULL) OR

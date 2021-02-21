@@ -9,19 +9,21 @@ export CommonMentioning =
     query: ''
     navigatedUserIndex: 0
     suggestionListStyles: {}
+    fetchingMentions: false
 
   mounted: ->
     @fetchMentionable = debounce ->
+      @fetchingMentions = true
       Records.users.fetchMentionable(@query, @model).then (response) =>
-        @mentionableUserIds.concat(uniq @mentionableUserIds + map(response.users, 'id'))
+        @fetchingMentions = false
+        @mentionableUserIds = uniq(@mentionableUserIds.concat(map(response.users, 'id')))
         @findMentionable()
     ,
       250
 
   methods:
     findMentionable: ->
-      unsorted = filter Records.users.collection.chain().find(@mentionableUserIds).data(), (u) =>
-        isString(u.username) &&
+      unsorted = filter Records.users.collection.chain().find(id: {$in: @mentionableUserIds}).data(), (u) =>
         ((u.name || '').toLowerCase().startsWith(@query) or
         (u.username || '').toLowerCase().startsWith(@query) or
         (u.name || '').toLowerCase().includes(" #{@query}"))
