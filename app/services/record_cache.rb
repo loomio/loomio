@@ -39,7 +39,8 @@ class RecordCache
       obj.user_ids.concat collection.map(&:user_id)
 
     when 'Notification'
-      obj.add_events_eventables Event.includes(:eventable).where(id: collection.map(&:event_id))
+      obj.add_events_complete Event.includes(:eventable).where(id: collection.map(&:event_id))
+      # obj.add_events_eventables Event.includes(:eventable).where(id: collection.map(&:event_id))
       obj.user_ids.concat collection.map(&:user_id)
 
     when 'Group'
