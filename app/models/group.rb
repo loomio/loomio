@@ -191,6 +191,10 @@ class Group < ApplicationRecord
   def poll_id
     nil
   end
+  
+  def poll
+    nil
+  end
 
   def mailer
     GroupMailer
