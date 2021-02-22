@@ -23,7 +23,7 @@
     "ahoy.js": "^0.3.8",
     "core-js": "^2.6.11",
     "date-fns": "2.17.0",
-    "date-fns-tz": "1.1.1",
+    "date-fns-tz": "1.1.2",
     "deepmerge": "^4.2.2",
     "emoji-unicode": "^2.0.1",
     "es6-shim": "^0.35.6",
