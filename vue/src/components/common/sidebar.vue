@@ -72,6 +72,8 @@ export default
       Records.users.fetchGroups().then =>
         if @$router.history.current.path == "/dashboard" && Session.user().groups().length == 1
           @$router.replace("/g/#{Session.user().groups()[0].key}")
+        if @$router.history.current.path == "/dashboard" && Session.user().groups().length == 0
+          @$router.replace("/g/new")
 
       InboxService.load()
 

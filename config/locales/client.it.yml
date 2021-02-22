@@ -43,20 +43,16 @@ it:
     all_tags: Tutte etichette
     tags: Etichette
     apply_tags: Inserisci etichette
-    new_tag: Crea etichetta
     name_label: Nome
     color_label: Colore
     card_title: Etichette di categoria
     modal_title: Crea una nuova etichetta
     modal_edit_title: Modifica etichetta
     modal_destroy_title: Rimuovi etichetta
-    destroy_tag: Rimuovi etichetta
-    destroy_helptext: Cancellerai questa etichetta e la rimuoverai da tutte le discussioni nel gruppo. Sei sicuro?
     helptext: 'Le etichette ti permettono di categorizzare le conversazioni e trovarle facilmente dopo '
     discussions_count_singular: ({{count}} discussione)
     discussions_count_plural: ({{count}} discussioni)
     tag_created: Etichetta salvata
-    tag_destroyed: Etichetta rimossa
     tags_marked: Discussioni marcate con '{{name}}' nel gruppo {{groupName}}
     no_tags_present: 'Non è stata trovata nessuna discussione con questa etichetta!  '
   reactions:
@@ -534,7 +530,6 @@ it:
       not_notified: Non ancora notificato
     group_form:
       search_placeholder: Cerca persone...
-      members_count: '{{count}} persone saranno notificate'
   action_dock:
     add_resource: Aggiungi allegato
     edit_group: Modifica il contesto del gruppo
@@ -1049,10 +1044,6 @@ it:
     by_who: "di {{name}}"
   poll_common_select_group:
     loomio_group: Gruppo
-  poll_common_notify_group:
-    notify_group: Annuncio
-    members_helptext: Il tuo gruppo non riceverà una notifica
-    members_count: "{{count}} persone saranno notificate"
   poll_common_calendar_invite:
     poll_option_id: Ora dell'incontro
     event_duration: Durata

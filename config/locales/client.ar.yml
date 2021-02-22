@@ -44,20 +44,16 @@ ar:
     all_tags: كل العلامات
     tags: الوسوم
     apply_tags: تطبيق الوسوم
-    new_tag: إنشاء وسم
     name_label: 'الاسم '
     color_label: اللون
     card_title: فئة الوسوم
     modal_title: إنشاء وسم جديد
     modal_edit_title: تعديل الوسم
     modal_destroy_title: إزالة العلامة
-    destroy_tag: إزالة العلامة
-    destroy_helptext: سيؤدي ذلك إلى إتلاف هذه العلامة وإزالتها من جميع المواضيع في المجموعة. هل أنت واثق؟
     helptext: تتيح لك العلامات تصنيف المحادثات والعثور عليها بسهولة لاحقًا
     discussions_count_singular: ({{عدد}} موضوع)
     discussions_count_plural: ({{عدد}} موضوع)
     tag_created: تم حفظ العلامة
-    tag_destroyed: تمت إزالة العلامة
     tags_marked: تم وضع علامة "{{اسم}}" على المواضيع في {{اسم المجموعة}}
     no_tags_present: لم يتم العثور على مواضيع بهذه العلامة! حاول اختيار واحد آخر.
   reactions:
@@ -269,7 +265,7 @@ ar:
   error_page:
     forbidden: 'ليس لديك صلاحية للقيام بذلك.'
     page_not_found: 'لم نستطع إيجاد ذلك. من الممكن أن يكون قد جرى حذفه أو نقله.'
-    internal_server_error: 'نحن آسغون، حدث خطأ ما. رجاءً حاول لاحقاً.'
+    internal_server_error: 'نحن آسفون، حدث خطأ ما. رجاءً حاول لاحقاً.'
   verify_email_notice:
     please_verify: شكرا على المشاركة!يرجى التحقق من بريدك الإلكتروني للحصول على ارتباط للتحقق من تصويتك.
   previous_polls_page:
@@ -291,7 +287,7 @@ ar:
       thread: يتغير هذا عندما يتم إخطارك بهذا الموضوع
       group: يتغير هذا عندما يتم إخطارك بجميع سلاسل الرسائل في المجموعة
     simple:
-      label: 'تبليغات '
+      label: إشعارات
       loud: مشترك
       normal: متوسط
       quiet: تجاهل
@@ -341,8 +337,8 @@ ar:
     user:
       title: إعدادات البريد الإلكتروني للمجموعات الجديدة
       loud_description: "سيتم إرسال بريد إلكتروني إليك عندما يكون هناك نشاط في أي مجموعات جديدة تنضم إليها"
-      normal_description: "سيتم إرسال بريد إلكتروني حول الإعلانات في أي مجموعات جديدة تنضم إليها"
-      quiet_description: "لن يتم إرسال بريد إلكتروني حول النشاط في أي مجموعات جديدة تنضم إليها"
+      normal_description: "سيتم إرسال بريد إلكتروني لك حول الإعلانات في أي مجموعات جديدة تنضم إليها"
+      quiet_description: "لن يتم إرسال بريد إلكتروني لك حول النشاط في أي مجموعات جديدة تنضم إليها"
       apply_to_all: "تطبيق هذه الإعدادات على كل مجموعاتي"
       messages:
         loud: "سيتم إرسال جميع الأنشطة في مجموعات جديدة عبر البريد الإلكتروني"
@@ -554,11 +550,7 @@ ar:
     invite_only_thread: "موضوع الدعوة فقط"
     none_direct_thread: "موضوع مباشر (بدون مجموعة)"
     none_invite_only_thread: "موضوع الدعوة فقط (بلا مجموعة)"
-    change_log_placeholder: صف بإيجاز التغييرات التي تم إجراؤها في هذا التعديل.(اختياري)
     change_log_label: ما الذي تغير؟
-    one_person_will_be_notified: 'سيتم إعلام شخص واحد.'
-    count_people_will_be_notified: 'سيتم إخطار {{عدد}} من الأشخاص.'
-    notify_specifc_people_instead: إذا كنت لا تريد إعلام المجموعة بأكملها ، فأضف أسماء الأشخاص ليتم إعلامهم.
     invite: دعوة
     aria_label: 'شكل الموضوع'
     start_thread: إبدأ موضوعاً
@@ -656,7 +648,6 @@ ar:
     group_form:
       search_placeholder: ابحث عن الناس...
       modal_title: حدد أعضاء المجموعة
-      members_count: 'سيتم إخطار {{عدد}} من الأشخاص'
     flash:
       success: 'تم إرسال {{عدد}} من الإشعارات'
   action_dock:
@@ -1485,7 +1476,6 @@ ar:
     sharable_link: 'رابط قابل للمشاركة'
     last_seen: 'آخر ظهور {{تاريخ}}'
     invited_by_name: 'بدعوة من {{اسم}}'
-    only_in_subgroups: "ليس في هذه المجموعة ولكنه ينتمي إلى {{اسم}}."
     accepted: 'أعضاء'
   polls_panel:
     new_poll: استطلاع جديد
@@ -1519,11 +1509,6 @@ ar:
   poll_common_select_group:
     loomio_group: الفريق
     loomio_group_placeholder: (لم يتم اختيار أي مجموعة)
-  poll_common_notify_group:
-    notify_group: إعلان
-    members_helptext: لن يتم إخطار مجموعتك
-    members_count: "سيتم إخطار {{عدد}} من الأشخاص"
-    decided_voters_count: "سيتم إخطار {{عدد}} الأشخاص الذين صوتوا"
   poll_common_calendar_invite:
     calendar_invite: تضمين دعوة التقويم مع هذه النتيجة
     poll_option_id: وقت الاجتماع
@@ -1859,26 +1844,7 @@ ar:
       poll_expired: "{{نوع الاستطلاع}} مغلق. {{متى}}"
     removed: "تمت إزالة العنصر"
     deleted_group: "المجموعة المحذوفة"
-    comment_replied_to: "{{الكاتب}} ردًا على {{العنوان}}"
-    discussion_title_edited: "قام {{الكاتب}} بتحرير عنوان الموضوع"
-    discussion_context_edited: "قام {{الكاتب}} بتحرير سياق الموضوع"
-    discussion_attachments_edited: "قام {{الكاتب}} بتحرير مرفقات الموضوع"
-    discussion_privacy_edited: "قام {{الكاتب}} بتغيير خصوصية الموضوع"
-    discussion_edited: "قام {{المؤلف}} بتحرير الموضوع"
-    discussion_moved: "{{الكاتب}} نقل الموضوع من {{العنوان}}"
-    discussion_closed: "{{المؤلف}} أغلق الموضوع"
-    discussion_reopened: "{{المؤلف}} أعاد فتح الموضوع"
-    discussion_forked: "أنشأ {{المؤلف}} تفرعًا لهذا الموضوع: {{عنوان}}"
-    new_comment: "{{مؤلف}}"
-    outcome_created: "شارك {{المؤلف}} نتيجة"
-    poll_reopened: "أعاد {{المؤلف}} فتح {{نوع الاستطلاع}}"
-    poll_closed_by_user: "{{المؤلف}} أغلق {{نوع الاستطلاع}}"
-    poll_created: "بدأ {{المؤلف}} {{نوع الاستطلاع}}"
-    poll_created_no_title: "بدأ {{المؤلف}} {{نوع الاستطلاع}}"
-    poll_edited: "قام {{المؤلف}} بتحرير {{نوع الاستطلاع}}"
-    poll_option_added: "أضاف {{المؤلف}} خيارات إلى {{نوع الاستطلاع}}"
     poll_expired: "تم إغلاق {{نوع الاستطلاع}}"
-    stance_created: "صوّت {{المؤلف}} على: {{عنوان}}"
     event_removed: "تمت إزالته من الموضوع"
   poll_common_subscribe_form:
     receive_updates_title: تم تسجيل تصويتك

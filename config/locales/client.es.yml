@@ -4,7 +4,7 @@ es:
       title: Empieza un grupo
       activities:
         set_description: Configura la descripción de tu grupo
-        set_cover_photo: Sube un foto de portada y logo para vuestro grupo
+        set_cover_photo: Sube una foto de portada y logo para vuestro grupo
         invite_people_in: Invita a personas a
         start_thread: Comience un hilo de discusión
         make_decision: 'Iniciar una decisión '
@@ -44,22 +44,22 @@ es:
     all_tags: Todas las etiquetas
     tags: Etiquetas
     apply_tags: Aplicar etiquetas
-    new_tag: Crear etiqueta
+    new_tag: Nueva etiqueta
     name_label: Nombre
     color_label: Color
     card_title: Categorizar etiquetas
     modal_title: Crea una nueva etiqueta
     modal_edit_title: 'Editar etiqueta '
     modal_destroy_title: 'Eliminar etiqueta '
-    destroy_tag: 'Eliminar etiqueta '
-    destroy_helptext: 'Esto eliminará la etiqueta y la retirará de todos los hilos en este grupo. ¿Estás seguro? '
+    destroy_tag: Borrar etiqueta
+    destroy_helptext: Esto borrará la etiqueta y la eliminará de todos los hilos en el grupo. ¿Estás seguro?
     helptext: Las etiquetas permiten categorizar conversaciones para encontrarlas más fácilmente después.
     discussions_count_singular: ({{count}} hilo)
     discussions_count_plural: ({{count}} hilos)
     tag_created: Etiqueta guardada
-    tag_destroyed: Etiqueta eliminada
     tags_marked: Hilos marcados con '{{name}}' en {{groupName}}
     no_tags_present: ¡No se ha encontrado ningún hilo con esta etiqueta! Inténtalo con otra.
+    no_tags_in_group: Este grupo todavía no tiene etiquetas de categoría.
   reactions:
     slight_smile: Me gusta
     heart: Me encanta
@@ -534,6 +534,7 @@ es:
     new_coordinator: "<strong>{{name}}</strong> te hizo un administrador de <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> empezó una {{poll_type}}: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> editó una {{poll_type}}: <strong>{{title}}</strong>"
+    poll_reminder: "<strong>{{nombre}}</strong>te está recordando que votes en: <strong>{{título}}</strong>"
     poll_announced: "<strong>{{name}}</strong> compartió un {{poll_type}}: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} <strong>{{title}}</strong> está cerrando."
     poll_expired: "{{poll_type}} <strong>{{title}}</strong> está cerrada"
@@ -555,11 +556,8 @@ es:
     invite_only_thread: "Hilo sólo con invitación"
     none_direct_thread: "Hilo directo (no grupo)"
     none_invite_only_thread: "Hilo sólo con invitación (no grupo)"
-    change_log_placeholder: Describe brevemente los cambios hechos en esta edición (opcional)
+    change_log_placeholder: Opcionalmente, describe tus cambios. Este mensaje será añadido al hilo.
     change_log_label: ¿Qué ha cambiado?
-    one_person_will_be_notified: '1 persona será notificada'
-    count_people_will_be_notified: '{{count}} gente será notificada'
-    notify_specifc_people_instead: Si no quieres notificar al grupo entero, añade los nombres de las personas quieres que sean notificadas.
     invite: Invitar
     aria_label: 'Formulario del hilo'
     start_thread: Empezar un hilo
@@ -605,8 +603,28 @@ es:
     history_error: Algo ha salido mal! No se pudo cargar la historia
     inviting_guests_to_thread: Los invitados no pertenecen a tu grupo y solamente tienen acceso a este hilo
     select_groups: Grupos seleccionados
+    search_by_name_or_email: Busca por nombre o introduce emails para invitar
+    search_by_name: Busca a la gente por nombre
+    only_admins_can_announce: Solamente los administradores pueden notificar a todo el grupo
+    only_admins_can_invite: Sólo los administradores pueden invitar invitados
+    only_admins_can_announce_or_invite: Solamente los administradores pueden notificar a todos el grupo o invitar invitados
+    user_mentioned: '{{name}} mencionado {{length}} gente:'
+    comment_replied_to: '{{name}} respondió a {{length}} gente:'
+    new_discussion: '{{name}} invitó a {{length}} gente a este hilo:'
+    discussion_announced: '{{name}} invitó {{length}} gente a este hilo:'
+    poll_created: '{{name}} invited a {{length}} gente a votar:'
+    poll_announced: '{{name}} invited a {{length}} gente a votar:'
+    outcome_created: '{{name}} compartió un resultado con {{length}} gente:'
+    outcome_announced: '{{name}} compartió un resultado con {{length}} gente:'
+    announcement_created: '{{name}} invitó {{length}} gente a este hilo:'
+    discussion_edited: '{{name}} editó el hilo, notificando a {{length}} gente:'
+    poll_edited: '{{name}} editó una encuesta, notificando a {{length}} gente:'
+    outcome_edited: '{{name}} editó un resultado, notificando {{length}} gente:'
+    outcome_updated: '{{name}} editó un resultado, notificando {{length}} gente:'
+    poll_closing_soon: "El recordatorio del cierre del sondeo de {{name}} notificó a {{length}} gente:"
+    poll_reminder: '{{name}} recordó {{length}} gente a votar:'
     audiences:
-      group: Todos dentro {{name}}
+      group: 'Integrantes de {{name}} '
       discussion_group: Todos en el hilo
       voters: Todos invitados a votar
       decided_voters: Todos los que votaron
@@ -635,6 +653,11 @@ es:
       poll_announced:
         title: 'Invitar a votar '
         helptext: ¿A quién le gustaría invitar a la votación?
+      poll_reminder:
+        title: Recuerda votar
+        helptext: ¿A quién te gustaría recordar que vote?
+        message_label: Mensaje
+        message_placeholder: Mensaje opcional para decir a la gente porque deberían votar
       poll_edited:
         title: Notificar cambios
         helptext: ¿A quién te gustaría notificar sobre esta notificación?
@@ -650,6 +673,7 @@ es:
       group_title: '{{name}} ({{count}} personas)'
       visible_to_group: 'Cualquiera en {{group}} será capaz de ver este hilo.'
       visible_to_guests: 'Solamente la gente invitada puede ver este hilo.'
+      click_group_to_see_individuals: Clica grupo para ver individual
     members_list:
       title: Compartido con
       last_notified: Notificado
@@ -662,7 +686,6 @@ es:
     group_form:
       search_placeholder: Buscar personas...
       modal_title: Selecciona integrantes del grupo
-      members_count: '{{count}} personas serán notificadas'
     flash:
       success: '{{count}} notificaciones enviadas'
   action_dock:
@@ -720,6 +743,9 @@ es:
     count_voters: "{{count}} votantes"
   formatting:
     formatting_tools: Herramientas formateo de texto
+    colors: Colores
+    alignment: Alineación
+    lists: Listados
     expand: Mostrar más herramientas de formateo
     collapse: Mostrar menos herramientas de formateo
     bold: Negrita
@@ -925,7 +951,8 @@ es:
     thread_defaults_help: Ajustes predeterminados para nuevos hilos
     click_to_change_image: Cubre imagen y logo (clicar para cambiar)
     permissions_explaination: |
-        Una persona puede hacerse dos tipos de miembro en un grupo: administrador y miembro
+        Hay dos niveles de membresía a los que una persona puede optar para un grupo: admin y miembro.
+        Los administradores pueden editar los ajustes del grupo, hacer a otras personas administradores y ejecutar todas la acciones que se listan a continuación.
     aria_label: 'Formulario de grupo'
     new_organisation: Nueva organización
     start_group_heading: 'Crea un grupo'
@@ -975,16 +1002,26 @@ es:
     public_or_private_threads: 'Permitir hilos públicos y privados'
     private_threads: 'Solamente los integrantes pueden ver las discusiones'
     allow_public_threads: 'Permitir hilos públicos en este grupo.'
-    parent_members_can_see_discussions: 'Los integrantes de {{parent}} pueden ver los hilos privados.'
-    members_can_announce: 'Las personas integrantes pueden notificar al resto de integrantes del grupo.'
-    members_can_add_members: 'Los integrantes pueden invitar y aprobar nuevos integrantes.'
-    members_can_create_subgroups: 'Los integrantes pueden crear subgrupos.'
-    members_can_edit_discussions: 'Los integrantes pueden editar el título y contexto de cualquier hilo.'
-    members_can_edit_comments: 'Los integrantes pueden editar sus propios comentarios en cualquier momento.'
-    members_can_start_discussions: 'Los integrantes pueden iniciar hilos nuevos.'
-    members_can_vote: 'Los integrantes pueden votar en las propuestas.'
-    members_can_raise_motions: 'Los integrantes pueden iniciar propuestas.'
-    admins_can_edit_user_content: "Administradores pueden editar los comentarios de otros usuarios y los sondeos"
+    parent_members_can_see_discussions: 'Miembros de {{parent}} pueden ver los hilos privados'
+    parent_members_can_see_discussions_help: 'Permite a los miembros del grupo parental ver pero no participar en hilos y sondeos dentro de este grupo'
+    members_can_announce: 'Los miembros pueden notificar a cualquiera en el grupo'
+    members_can_announce_help: 'Permite a los miembros notificar a cualquiera en el grupo acerca del hilo o sondeo'
+    members_can_add_members: 'Los miembros pueden invitar a otros miembros'
+    members_can_add_members_help: "Permite a los miembros invitar a la gente a unirse a este grupo "
+    members_can_add_guests: 'Los miembros pueden invitar invitados'
+    members_can_add_guests_help: 'Permite a los miembros invitar invitados a los hilos o sondeos de este grupo'
+    members_can_create_subgroups: 'Los miembros pueden crear subgrupos'
+    members_can_create_subgroups_help: 'Permite a los miembros crear y convertirse en administradores de nuevos subgrupos'
+    members_can_edit_discussions: 'Los miembros pueden controlar hilos y comentarios'
+    members_can_edit_discussions_help: 'Permite a los miembros editar, mover, marcar, etiquetar o cerrar hilos'
+    members_can_edit_comments: 'Los miembros pueden editar sus propios comentarios'
+    members_can_edit_comments_help: 'Permite a los miembros editar sus propios comentarios en cualquier momento'
+    members_can_start_discussions: 'Los miembros pueden comenzar nuevos hilos'
+    members_can_start_discussions_help: 'Permite a los miembros comenzar nuevos hilos dentro de este grupo'
+    members_can_raise_motions: 'Los miembros pueden comenzar encuestas'
+    members_can_raise_motions_help: 'Permite a los miembros comenzar encuestas y proposiciones dentro de los debates o del grupo'
+    admins_can_edit_user_content: "Los administradores pueden editar comentarios de los miembros"
+    admins_can_edit_user_content_help: 'Permite a los administradores editar contenido escrito por los miembros'
     submit_start_group: 'Crear grupo'
     submit_start_subgroup: 'Crear subgrupos'
     submit_update: 'Actualizar preferencias'
@@ -1325,6 +1362,7 @@ es:
     delete_thread: 'Eliminar'
     add_comment: 'Comentar '
     seen_by_count: 'Visto por {{count}} '
+    count_notified: 'Avisado {{count}}'
     forked_from: "Bifurcado de"
   pin_thread_modal:
     title: Fijar hilo
@@ -1488,6 +1526,7 @@ es:
     order_label: "Orden"
     order_by_name: 'Nombre'
     order_by_created: 'El más viejo'
+    show_users_in_subgroups: Muestra a los usuarios en los subgrupos también
     order_by_created_desc: 'El más nuevo'
     order_by_admin_desc: 'Administradores'
     loaded_of_total: '{{loaded}} de {{total}}'
@@ -1506,7 +1545,6 @@ es:
     sharable_link: 'Enlace compartible'
     last_seen: 'Último visto {{date}}'
     invited_by_name: 'Invitado por {{name}}'
-    only_in_subgroups: "No en este grupo pero pertenece a {{name}}."
     accepted: 'Integrantes'
   polls_panel:
     new_poll: Nuevo sondeo
@@ -1540,11 +1578,6 @@ es:
   poll_common_select_group:
     loomio_group: Grupo
     loomio_group_placeholder: (ningún grupo seleccionado)
-  poll_common_notify_group:
-    notify_group: Anuncio
-    members_helptext: El grupo no será notificado
-    members_count: "{{count}} personas serán notificadas"
-    decided_voters_count: "Las {{count}} personas que hayan votado serán notificadas"
   poll_common_calendar_invite:
     calendar_invite: Incluir una invitación al calendario con este resultado
     poll_option_id: 'Horario de reunión '
@@ -1881,26 +1914,26 @@ es:
       poll_expired: "{{pollType}} cerrado. {{when}}"
     removed: "Elemento eliminado"
     deleted_group: "Grupo eliminado"
-    comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>en respuesta a <strong>{{title}}</strong>"
-    discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>ha editado el título del hilo"
-    discussion_context_edited: "<strong><a href='/u/{{username}}'>{{autor}}</a></strong>ha editado el contexto del hilo"
-    discussion_attachments_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>ha editado los adjuntos del hilo"
-    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>cambió la privacidad del hilo"
-    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>ha editado el hilo"
-    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha movido el hilo desde <strong>{{title}}</strong>"
-    discussion_closed: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>ha cerrado un hilo"
-    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>reabrió un hilo"
-    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>ha creado una horquilla de este hilo:<strong><a href='d/{{key}}'>{{title}}</a></strong>"
+    comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>en respuesta a <strong>{{título}}</strong>"
+    discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>editó el título del hilo"
+    discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>editó el contexto del hilo"
+    discussion_attachments_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>editó los adjuntos del hilo"
+    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>cambió la política de privacidad "
+    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>editó el hilo"
+    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>movió el hilo desde <strong>{{título}}</strong> "
+    discussion_closed: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>cerró el hilo"
+    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>reabrió el hilo"
+    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>creó un tenedor de este hilo:<strong><a href='d/{{key}}'>{{title}}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>"
     outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>compartió un resultado"
     poll_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>reabrió el {{polltype}}"
     poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>cerró el {{polltype}}"
-    poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>ha comenzado a {{polltype}}"
-    poll_created_no_title: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>ha comenzado a {{polltype}}"
-    poll_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha editado el {{polltype}}"
-    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha añadido opciones al {{polltype}}"
+    poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>comenzó un {{polltype}}"
+    poll_created_no_title: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>comenzó un {{polltype}}"
+    poll_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>editó un {{polltype}}"
+    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>editó opciones al {{polltype}}"
     poll_expired: "{{polltype}} cerrado"
-    stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha votado en:<strong>{{title}}</strong>"
+    stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>votó en: <strong>{{title}}</strong>"
     event_removed: "Eliminado del hilo"
   poll_common_subscribe_form:
     receive_updates_title: Su voto ha sido enviado
@@ -1981,24 +2014,29 @@ es:
   webhook:
     integrations: Incorporaciones
     webhooks: Webhooks
+    webhook: Sistema de comunicación entre aplicaciones
+    api: 'API - Interfaz de Programación de Aplicaciones '
     format: Formato
     formats:
       markdown: Reducción (para Mattermost, Zapier y otros)
       microsoft: Equipos Microsoft
       slack: Aflojar
-    subtitle: Conectar con Slack, Microsoft Teams, Mattermost, Zapier o cualquier cosa que apoya Webhooks
+    subtitle: Conectar con Loomio al resto de tus herramientas con nuestro API de integración y webhook (sistema de comunicación entre aplicaciones)
     we_have_guides: |
         Ver nuestros <a href="{{url}}" target="_blank">webhook guías de configuración</a>para ayudar tu servicio.
     add_webhook: Añadir webhook
-    success: Webhook añadido!
-    remove: Eliminar webhook
-    confirm_remove: "¿Estás seguro de que quieres eliminar el webhook: {{name}}?"
-    removed: Webhook eliminado
+    show_docs: 'Ver el uso de API '
+    edit_integration: Editar integración
+    add_integration: Añadir integración
+    success: Integración añadida!
+    remove: Eliminar integración
+    confirm_remove: "¿Estás seguro de que quieres quitar la integración: {{name}}?"
+    removed: 'Integración eliminada '
     url_label: Webhook URL
     url_placeholder: https://hooks.example.com/...
     name_label: Nombre
-    name_placeholder: Da a este webhook un nombre para que luego puedas identificarlo.
-    event_kind_helptext: ¿De que eventos te gustaría ser notificado?
+    name_placeholder: Dar a esta inserción un nombre para poder identificarla
+    event_kind_helptext: ¿Qué eventos quieres que se le notifiquen al webhook?
     event_kinds:
       new_discussion: Ha comenzado un hilo
       discussion_edited: Se ha editado un hilo
@@ -2011,6 +2049,13 @@ es:
       poll_closed_by_user: Una encuesta se ha cerrado manualmente
       poll_reopened: Se ha reabierto una encuesta para votar
       outcome_created: Se ha compartido un resultado
+    permissions_explaination: Selecciona que acciones pueden desarrollarse por esta integración
+    permissions:
+      show_discussion: muestra debate
+      create_discussion: crear debate
+      create_poll: crear sondeo
+      show_poll: muestra encuesta
+      read_memberships: leer membresías
     include_body_label: Incluye el cuerpo del mensaje con notificación
     include_subgroups_label: Pasar eventos desde subgrupos
   configure_sso:

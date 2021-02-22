@@ -19,20 +19,16 @@ he:
   loomio_tags:
     tags: תגיות
     apply_tags: החל תגיות
-    new_tag: יצירת תגית
     name_label: שם
     color_label: צבע
     card_title: תגיות קטגוריה
     modal_title: יצירת תגית חדשה
     modal_edit_title: עריכת תגית
     modal_destroy_title: הסרת תגית
-    destroy_tag: הסרת תגית
-    destroy_helptext: פעולה זו תהרוס את התגית ותסיר אותה מכל השיחות בקבוצה. את/ה בטוח?
     helptext: תגיות מאפשרות לך לקטלג את השיחות ולמצוא אותם בקלות אחר כך
     discussions_count_singular: ({{count}} שיחה)
     discussions_count_plural: ({{count}} שיחות)
     tag_created: תגית נשמרה
-    tag_destroyed: תגית הוסרה
     tags_marked: שיחה סומנה כ'{{name}}' ב{{groupName}}
     no_tags_present: לא נמצאו שיחות עם תגית זו. נסה לבחור אחרת.
   reactions:
@@ -458,7 +454,6 @@ he:
     group_form:
       search_placeholder: חפש אנשים...
       modal_title: בחר את חברי הקבוצה
-      members_count: '{{count}} אנשים יעודכנו'
     flash:
       success: '{{count}} עדכונים נשלחו'
   action_dock:
@@ -1068,11 +1063,6 @@ he:
   poll_common_select_group:
     loomio_group: קבוצה
     loomio_group_placeholder: (לא נבחרה קבוצה)
-  poll_common_notify_group:
-    notify_group: הכרזה
-    members_helptext: הקבוצה שלך לא תקבל הודעה
-    members_count: "{{count}} אנשים יעודכנו"
-    decided_voters_count: "{{count}} האנשים שהצביעו יקבלו הודעה"
   poll_common_calendar_invite:
     calendar_invite: הוסף הזמנה ליומן עם תוצאה זו
     poll_option_id: זמן פגישה

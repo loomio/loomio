@@ -114,7 +114,7 @@ div(style="position: relative")
     v-btn.mr-4(text x-small @click="preview = !preview" v-t="previewAction")
 
     slot(name="actions")
-  suggestion-list(:query="query" :mentionable="mentionable" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" showUsername @select-user="selectUser")
+  suggestion-list(:query="query" :loading="fetchingMentions" :mentionable="mentionable" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" showUsername @select-user="selectUser")
 
   files-list(:files="files" v-on:removeFile="removeFile")
 

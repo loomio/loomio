@@ -150,6 +150,7 @@ Loomio::Application.routes.draw do
         delete :discard, on: :member
         post  :fork, on: :collection
         patch :move_comments, on: :member
+        get :history, on: :member
         get :search, on: :collection
         get :dashboard, on: :collection
         get :inbox, on: :collection
@@ -226,6 +227,7 @@ Loomio::Application.routes.draw do
           get :count
           get :search
           get :history
+          get :users_notified_count
         end
       end
 

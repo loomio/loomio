@@ -2,6 +2,7 @@
 export default
   props:
     query: String
+    loading: Boolean
     mentionable: Array
     positionStyles: Object
     navigatedUserIndex: Number
@@ -18,5 +19,7 @@ v-card.suggestion-list(outlined :elevation=8 v-show='query' ref='suggestions' :s
         v-list-item-title
           | {{ user.name }}
           span.grey--text(v-if="showUsername") &nbsp; {{ "@" + user.username }}
-  v-card-subtitle(v-else v-t="'common.no_results_found'")
+  v-card-subtitle(v-if='mentionable.length == 0' v-t="'common.no_results_found'")
+  .d-flex.justify-center
+    v-progress-circular(v-if="loading" indeterminate color='primary' size='24' width="2")
 </template>

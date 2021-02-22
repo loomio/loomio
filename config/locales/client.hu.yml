@@ -26,20 +26,16 @@ hu:
     all_tags: Összes címke
     tags: Címkék
     apply_tags: Címkék alkalmazása
-    new_tag: Címke létrehozása
     name_label: Név
     color_label: Szín
     card_title: Kategória címkék
     modal_title: Címke létrehozása
     modal_edit_title: Címke szerkesztése
     modal_destroy_title: Címke eltávolítása
-    destroy_tag: Címke eltávolítása
-    destroy_helptext: Ezzel törlöd ezt a címkét, és eltávolítod azt a csoport összes témájáról. Biztos vagy ebben?
     helptext: A címkék lehetővé teszik a beszélgetések kategorizálását, és hogy később könnyebben megtalálhatóak legyenek.
     discussions_count_singular: ({{count}} téma)
     discussions_count_plural: ({{count}} témák)
     tag_created: Címke mentve
-    tag_destroyed: Címke eltávolítva
     tags_marked: 'A(z) ''{{name}}'' jelöléssel ellátott témák itt: {{groupName}}'
     no_tags_present: Nem találhatóak témák ezzel a címkével! Próbálj meg egy másikat kiválasztani.
   reactions:
@@ -533,7 +529,6 @@ hu:
     group_form:
       search_placeholder: Emberek keresése ...
       modal_title: Válassza ki a csoporttagokat
-      members_count: 'A(z) {{count}} embert értesítjük'
     flash:
       success: '{{count}} értesítés elküldve'
   action_dock:
@@ -1254,11 +1249,6 @@ hu:
   poll_common_select_group:
     loomio_group: Csoport
     loomio_group_placeholder: (nincs kiválasztva csoport)
-  poll_common_notify_group:
-    notify_group: Közlemény
-    members_helptext: A csoportod nem lesz értesítve
-    members_count: "{{count}} embert értesítünk"
-    decided_voters_count: "A(z) {{count}} szavazót értesítjük"
   poll_common_calendar_invite:
     calendar_invite: Mellékelj egy naptármeghívást ezzel az eredménnyel
     poll_option_id: Találkozási idő

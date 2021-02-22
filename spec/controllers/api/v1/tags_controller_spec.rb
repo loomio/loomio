@@ -16,9 +16,9 @@ describe API::V1::TagsController, type: :controller do
     it 'creates a new tag' do
       post :create, params: {tag: {name: 'newtag', color: '#ccc', group_id: group.id}}
       expect(response.status).to eq 200
-      expect(JSON.parse(response.body)['tags'][0]['name']).to eq 'newtag'
-      expect(JSON.parse(response.body)['tags'][0]['group_id']).to eq group.id
-      expect(JSON.parse(response.body)['tags'][0]['color']).to eq '#ccc'
+      tag = JSON.parse(response.body)['tags'].find {|t| t['name'] == 'newtag'}
+      expect(tag['group_id']).to eq group.id
+      expect(tag['color']).to eq '#ccc'
     end
   end
 

@@ -11,6 +11,9 @@ export default
   data: ->
     actions: ThreadService.actions(@discussion, @)
 
+  mounted: ->
+    @discussion.fetchUsersNotifiedCount()
+
   computed:
     arrangementAction: -> @actions['edit_arrangement']
 
@@ -20,7 +23,7 @@ export default
       pick @actions, ['react', 'translate_thread', 'add_comment', 'subscribe', 'unsubscribe', 'unignore', 'edit_thread', 'announce_thread']
 
     menuActions: ->
-      pick @actions, ['edit_tags', 'show_history',  'notification_history', 'close_thread', 'reopen_thread', 'move_thread', 'discard_thread', 'export_thread']
+      pick @actions, ['show_history',  'notification_history', 'close_thread', 'reopen_thread', 'move_thread', 'discard_thread', 'export_thread']
 
     status: ->
       return 'pinned' if @discussion.pinned
@@ -78,15 +81,21 @@ export default
         router-link(:to="urlFor(discussion.author())" title="Thread author") {{discussion.authorName()}}
         mid-dot
         span(aria-label="Thread privacy")
-          span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private(v-show='discussion.private')
+          span.nowrap.context-panel__discussion-privacy(v-show='discussion.private')
             i.mdi.mdi-lock-outline
-            span(v-t="'common.privacy.private'")
-          span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public(v-show='!discussion.private')
+            span.text--secondary(v-t="'common.privacy.private'")
+          span.nowrap.context-panel__discussion-privacy(v-show='!discussion.private')
             i.mdi.mdi-earth
-            span(v-t="'common.privacy.public'")
+            span.text--secondary(v-t="'common.privacy.public'")
+        span(v-show='discussion.seenByCount > 0')
+          mid-dot
+          a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
+        span(v-show='discussion.usersNotifiedCount != null')
+          mid-dot
+          a.context-panel__users_notified_count(v-t="{ path: 'thread_context.count_notified', args: { count: discussion.usersNotifiedCount} }"  @click="actions.notification_history.perform")
         span.context-panel__fork-details(v-if='discussion.forkedEvent() && discussion.forkedEvent().discussion()')
           mid-dot
-          span(v-t="'thread_context.forked_from'")
+          span.text--secondary(v-t="'thread_context.forked_from'")
           router-link(:to='urlFor(discussion.forkedEvent())') {{discussion.forkedEvent().discussion().title}}
       .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'" v-if='discussion.closedAt')
         v-tooltip(bottom) {{ exactDate(discussion.closedAt) }}

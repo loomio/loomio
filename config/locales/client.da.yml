@@ -13,7 +13,6 @@ da:
     modal_title: Opret nyt mærke
     modal_edit_title: Rediger mærke
     modal_destroy_title: Slet mærke
-    destroy_tag: Slet mærke
     discussions_count_singular: ({{count}} debat)
     discussions_count_plural: ({{count}} debatter)
     no_tags_present: Der blev ikke fundet debatter med det mærke! Prøv at vælge en anden.
@@ -301,8 +300,6 @@ da:
       outcome_announced:
         title: Del resultat
       anyone_can_participate: Alle kan deltage
-    group_form:
-      members_count: '{{count}} mennesker vil blive notificeret'
   action_dock:
     edit_stance: Rediger stillingtagen
     edited: Redigeret
@@ -714,11 +711,6 @@ da:
     start_poll: Opret stillingtagen
   poll_common_collapsed:
     by_who: "af {{name}}"
-  poll_common_notify_group:
-    notify_group: Meddelelse
-    members_helptext: Din gruppe vil ikke bliver notificeret
-    members_count: "{{count}} mennesker vil blive notificeret"
-    decided_voters_count: "{{count}} mennesker der har stemt vil blive notificeret"
   poll_common_settings:
     multiple_choice:
       title: Tillad flere valg

@@ -65,28 +65,22 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
     end
   end
 
+  def users_notified_count
+    # returns a count of users notified about this thing
+    current_user.ability.authorize! :show, target_model
+
+    count = Notification.
+            joins(:event).
+            where("events.id": target_event_ids).
+            count("DISTINCT notifications.user_id")
+
+    render json: {count: count}
+  end
+
   def history
     notifications = {}
 
-    kinds = %w[
-      announcement_created
-      user_mentioned
-      announcement_resend
-      discussion_announced
-      poll_announced
-      outcome_announced
-      outcome_created
-      outcome_updated
-      outcome_edited
-      poll_created
-      poll_edited
-      poll_reminder
-      new_discussion
-      discussion_edited
-      comment_replied_to
-      poll_closing_soon]
-
-    events = Event.where(kind: kinds, eventable: target_model).order('id desc').limit(50)
+    events = Event.where(kind: notification_kinds, id: target_event_ids).order('id desc').limit(1000)
 
     Notification.includes(:user).where(event_id: events.pluck(:id)).order('users.name, users.email').each do |notification|
       next unless notification.user
@@ -106,6 +100,39 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
   end
 
   private
+
+  def target_event_ids
+    if target_model.is_a?(Discussion)
+      polls = Poll.where(discussion_id: target_model.id)
+      outcomes = Outcome.where(poll_id: polls.map(&:id))
+      comments = Comment.where(discussion_id: target_model.id)
+      eventables = [target_model, polls, outcomes, comments].flatten.compact
+    else
+      eventables = [target_model]
+    end
+
+    event_ids = Event.where(kind: notification_kinds, eventable: eventables).pluck(:id)
+  end
+
+  def notification_kinds
+    %w[announcement_created
+      user_mentioned
+      announcement_resend
+      discussion_announced
+      poll_announced
+      outcome_announced
+      outcome_created
+      outcome_updated
+      outcome_edited
+      poll_created
+      poll_edited
+      poll_reminder
+      new_discussion
+      discussion_edited
+      comment_replied_to
+      poll_closing_soon]
+  end
+
   def default_scope
     super.merge(
       include_email: (target_model && target_model.admins.exists?(current_user.id))

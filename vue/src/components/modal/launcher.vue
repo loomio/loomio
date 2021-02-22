@@ -33,6 +33,7 @@ import InstallSamlProviderModal from '@/components/install_saml_provider/modal'
 import GroupSurvey from '@/components/group/survey'
 import AddPollToThreadModal from '@/components/poll/add_to_thread_modal'
 import StrandMembersList from '@/components/strand/members_list'
+import SeenByModal from '@/components/strand/seen_by_modal'
 import PollMembers from '@/components/poll/members'
 import PollReminderForm from '@/components/poll/reminder_form'
 import GroupInvitationForm from '@/components/group/invitation_form'
@@ -77,6 +78,7 @@ export default
     PollMembers
     PollReminderForm
     GroupInvitationForm
+    SeenByModal
   }
 
   data: ->

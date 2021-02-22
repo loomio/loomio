@@ -19,7 +19,6 @@ ja:
     color_label: 色
     modal_title: 新しいタグを作る
     modal_destroy_title: タグの削除
-    destroy_tag: タグの削除
   common:
     confirm_discard_changes: 編集内容を破棄しますか？
     time:
