@@ -65,7 +65,6 @@ records.addRecordsInterface LoginTokenRecordsInterface
 records.addRecordsInterface MessageChannelRecordsInterface
 records.addRecordsInterface TagRecordsInterface
 records.addRecordsInterface SamlProviderRecordsInterface
-records.addRecordsInterface GroupSurveyRecordsInterface
 records.addRecordsInterface WebhookRecordsInterface
 
 AppConfig.records = records

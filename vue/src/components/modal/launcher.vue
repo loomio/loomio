@@ -71,7 +71,6 @@ export default
     MoveCommentsModal
     ExportDataModal
     InstallSamlProviderModal
-    GroupSurvey
     AddPollToThreadModal
     StrandMembersList
     PollMembers

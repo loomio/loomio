@@ -55,13 +55,12 @@ export default
         groupKey = data.groups[0].key
         Flash.success "group_form.messages.group_#{@actionName}"
         Records.groups.findOrFetchById(groupKey, {}, true).then (group) =>
-          EventBus.$emit 'closeModal'
-          @$router.push("/g/#{groupKey}")
-          if group.isParent() && AppConfig.features.app.group_survey
-            openModal
-              component: 'GroupSurvey'
-              props:
-                group: group
+          if !group.parentId && AppConfig.features.app.group_survey
+            Records.remote.post 'group_surveys',
+              group_id: group.id
+              category: (@group.category == 'other' && @group.otherCategory) || @group.category
+            EventBus.$emit 'closeModal'
+            @$router.push("/g/#{groupKey}")
       .catch onError(@group)
 
 
@@ -154,10 +153,10 @@ v-card.group-form
         span(v-t="'group_form.secret_by_default'")
 
     div(v-if="askCategory")
-      v-radio-group.group-survey__category(v-model='group.segment' :label="$t('group_survey.category_question')" :rules="[rules.required]")
+      v-radio-group.group-survey__category(v-model='group.category' :label="$t('group_survey.category_question')" :rules="[rules.required]")
         v-radio(v-for='category in categories' :key='category' :value='category' :aria-label='category' :label="$t('group_survey.categories.' + category)" :class="'group-survey__category-' + category")
 
-      v-text-field(v-if="group.segment == 'other'" :label="$t('group_survey.describe_other')" v-model="group.segmentOther")
+      v-text-field(v-if="group.category == 'other'" :label="$t('group_survey.describe_other')" v-model="group.otherCategory")
 
   v-card-actions
     v-spacer
