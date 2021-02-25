@@ -121,6 +121,7 @@ en:
     local: Local time ({{value}})
 
   common:
+    none: None
     empty: Empty
     no_results_found: No results found
     view: View
@@ -1020,25 +1021,27 @@ en:
     permissions_explaination: |
       There are two levels of membership a person can have to a group: admin and member.
       Admins can edit group settings, make other people admins, and perform all the actions listed below.
-    aria_label: 'Group form'
-    new_organisation: New Organization
+    aria_label: Group form
+    parent_group: Parent group
+    new_organisation: New organization
     new_group: New group
     new_subgroup: New subgroup
-    new_group_explainer: An online home for your organization's discussions and decisions
-    new_subgroup_explainer: A separate space for a specific group of people. Subgroups can have their own privacy and notification settings.
-    start_group_heading: 'Start a group'
-    start_subgroup_heading: 'Start a subgroup'
-    edit_group_heading: 'Edit group settings'
-    edit_subgroup_heading: 'Edit subgroup settings'
-    group_name: 'Group Name'
+    new_group_explainer: Start a new Loomio group - an online home your organization's discussions and decisions
+    new_subgroup_explainer: Start a subgroup within an existing group - a private space for a team of people from the organization
+    start_group_heading: Start a group
+    start_subgroup_heading: Start a subgroup
+    edit_group_heading: Edit group settings
+    edit_subgroup_heading: Edit subgroup settings
+    group_name: Group name
+    subgroup_name: Subgroup name
+    organization_name: Organization name
     handle: Handle
     group_handle_placeholder: "For URL and email, e.g. loomio.org/handle and handle@loomio.org"
-    organization_name: 'Organization Name'
     start_organization_heading: New organization
     edit_organization_heading: Edit organization settings
     group_name_placeholder: 'What is the name of your group?'
+    subgroup_name_placeholder: 'What is the name of your subgroup?'
     organization_name_placeholder: 'What is the name of your organization?'
-    subgroup_name: 'Subgroup Name'
     description: 'Description'
     description_placeholder: 'Describe the purpose of your group so your group members know why they are here.'
     secret_by_default: Your group will only be accessible by those who are invited to join. You can change this later.
@@ -1450,7 +1453,7 @@ en:
     facilitate: Facilitate
 
   thread_group:
-    aria_label: 'Group name'
+    aria_label: Group name
 
   thread_context:
     current_poll_type_banner: Current {{pollType}}

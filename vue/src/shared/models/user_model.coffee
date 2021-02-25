@@ -43,7 +43,7 @@ export default class UserModel extends BaseModel
       simplesort('fullName').data()
 
   parentGroups: ->
-    filter @groups(), (group) -> group.isParent()
+    filter @groups(), (group) -> !group.parentId
 
   inboxGroups: ->
     flatten [@parentGroups(), @orphanSubgroups()]

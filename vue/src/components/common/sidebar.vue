@@ -177,7 +177,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   v-divider
 
   v-list-item.sidebar__list-item-button--start-group(v-if="canStartGroups" to="/g/new" dense)
-    v-list-item-title(v-t="'sidebar.start_group'")
+    v-list-item-title(v-t="'group_form.new_group'")
     v-list-item-avatar(:size="28")
       v-icon(tile) mdi-plus
   v-divider
