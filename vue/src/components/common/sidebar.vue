@@ -92,12 +92,6 @@ export default
           @openGroups[group.id] = true
         @closedCounts[group.id] = @openCounts[group.id] + sum(map(@memberGroups(group), (subgroup) => @openCounts[subgroup.id]))
 
-    startOrganization: ->
-     if AbilityService.canStartGroups()
-      EventBus.$emit 'openModal',
-        component: 'GroupNewForm',
-          props: { group: Records.groups.build() }
-
     unreadThreadCount: ->
       InboxService.unreadCount()
 
@@ -107,6 +101,7 @@ export default
     user: -> Session.user()
     activeGroup: -> if @group then [@group.id] else []
     logoUrl: -> AppConfig.theme.app_logo_src
+    canStartGroups: -> AbilityService.canStartGroups()
 
 </script>
 
@@ -181,7 +176,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
 
   v-divider
 
-  v-list-item.sidebar__list-item-button--start-group(@click="startOrganization()" dense)
+  v-list-item.sidebar__list-item-button--start-group(v-if="canStartGroups" to="/g/new" dense)
     v-list-item-title(v-t="'sidebar.start_group'")
     v-list-item-avatar(:size="28")
       v-icon(tile) mdi-plus

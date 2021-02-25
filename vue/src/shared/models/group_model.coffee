@@ -15,7 +15,7 @@ export default class GroupModel extends BaseModel
     name: ''
     description: ''
     descriptionFormat: 'html'
-    groupPrivacy: 'closed'
+    groupPrivacy: 'secret'
     handle: null
     discussionPrivacyOptions: 'private_only'
     membershipGrantedUpon: 'approval'
@@ -27,6 +27,7 @@ export default class GroupModel extends BaseModel
     membersCanStartDiscussions: true
     membersCanCreateSubgroups: false
     motionsCanBeEdited: false
+    parentMembersCanSeeDiscussions: false
     files: []
     imageFiles: []
     attachments: []

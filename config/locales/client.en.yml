@@ -1022,6 +1022,10 @@ en:
       Admins can edit group settings, make other people admins, and perform all the actions listed below.
     aria_label: 'Group form'
     new_organisation: New Organization
+    new_group: New group
+    new_subgroup: New subgroup
+    new_group_explainer: An online home for your organization's discussions and decisions
+    new_subgroup_explainer: A separate space for a specific group of people. Subgroups can have their own privacy and notification settings.
     start_group_heading: 'Start a group'
     start_subgroup_heading: 'Start a subgroup'
     edit_group_heading: 'Edit group settings'
@@ -1037,6 +1041,7 @@ en:
     subgroup_name: 'Subgroup Name'
     description: 'Description'
     description_placeholder: 'Describe the purpose of your group so your group members know why they are here.'
+    secret_by_default: Your group will only be accessible by those who are invited to join. You can change this later.
     privacy_statement:
       public_on_web: 'Name, description, and attachments to the group context will be visible to the public'
       private_to_group: 'Name and description will only be visible to members.'
@@ -2258,11 +2263,15 @@ en:
     subtitle: Please help us get to know you better. We will not share any information provided in this form without your permission.
     validation_error: Please fill out all required fields.
     success: Thank you!
+    describe_other: What category would you call your group?
     categories:
-      member: Member-service organizations (eg, parties, co-ops, unions)
-      nonprofit: Nonprofits, NGOs, and Community groups
-      professional: Professional-service teams & companies
-      board: Boards and committees
+      party: Political party
+      coop: Cooperative
+      union: Union
+      board: Board or committee
+      nonprofit: Nonprofit or NGO
+      professional: Professional service company
+      community: Community group
       government: Government/Local Government
       other: Other
     sizes:

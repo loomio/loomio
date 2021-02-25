@@ -14,14 +14,7 @@ export default
   data: ->
     submitting: false
     survey: null
-    categories: [
-      'member'
-      'nonprofit'
-      'professional'
-      'board'
-      'government'
-      'other'
-    ]
+    categories: [ 'member', 'nonprofit', 'professional', 'board', 'government', 'other' ]
     sizes: ['ten', 'twenty', 'fifty', 'two_hundred', 'five_hundred', 'two_thousand', 'else']
     uses: ['governance', 'collaboration', 'engagement', 'self_management', 'remote', 'document', 'decision_making', 'funding', 'project', 'forum', 'other']
     referrers: ['google', 'invitation', 'referral', 'social', 'capterra', 'other']
