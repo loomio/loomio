@@ -1,19 +1,25 @@
 en:
   loomio_onboarding:
     group_progress_card:
-      title: Activate your group
+      title: Let's get started!
       activities:
         set_description: Set your group's description
         set_cover_photo: Upload a cover photo & logo for your group
+        customize_group: Add a group picture, logo and description
         invite_people_in: Invite people in
         start_thread: Start a discussion thread
         make_decision: Start a decision
       learn_more: Learn more at Loomio Help
       celebration_message: Nice! Your group is good to go!  🎉
       dismiss_this_card: Dismiss this card
+
   plan_names:
     free: Free
+    starter: Starter
     trial: Trial
+    pro: Pro
+    pro_nonprofit: Pro Nonprofit
+    community: Community
     small: Small
     medium: Medium
     large: Large
@@ -22,6 +28,7 @@ en:
 
   current_plan_button:
     upgrade: Upgrade
+    buy_now: Buy now
     free_trial: Free trial. {{days}} days remaining.
     trial_expired: Your trial has expired. Upgrade to continue using Loomio.
     tooltip: "Our prices are fantastic! Upgrade today and enjoy what Loomio can offer your group."
@@ -1032,6 +1039,8 @@ en:
     start_subgroup_heading: Start a subgroup
     edit_group_heading: Edit group settings
     edit_subgroup_heading: Edit subgroup settings
+    group_settings: Group settings
+    subgroup_settings: Subgroup settings
     group_name: Group name
     subgroup_name: Subgroup name
     organization_name: Organization name

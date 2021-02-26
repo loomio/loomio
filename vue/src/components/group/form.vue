@@ -129,8 +129,8 @@ v-card.group-form
   v-card-title
     v-layout(justify-space-between style="align-items: center")
       .group-form__group-title
-        h1.headline(tabindex="-1" v-if='group.parentId', v-t="'group_form.edit_group_heading'")
-        h1.headline(tabindex="-1" v-if='!group.parentId', v-t="'group_form.edit_organization_heading'")
+        h1.headline(tabindex="-1" v-if='group.parentId', v-t="'group_form.subgroup_settings'")
+        h1.headline(tabindex="-1" v-if='!group.parentId', v-t="'group_form.group_settings'")
       dismiss-modal-button
   //- v-card-text
   v-tabs(fixed-tabs)

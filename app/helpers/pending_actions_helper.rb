@@ -26,9 +26,11 @@ module PendingActionsHelper
   end
 
   def consume_pending_group(user)
-    if pending_group && !Membership.where(user_id: user.id, group_id: pending_group.id).exists?
-      membership = pending_group.memberships.create(user: user)
-      MembershipService.redeem(membership: membership, actor: user)
+    RetryOnError.with_limit(2) do
+      if pending_group && !Membership.where(user_id: user.id, group_id: pending_group.id).exists?
+        membership = pending_group.memberships.create(user: user)
+        MembershipService.redeem(membership: membership, actor: user)
+      end
     end
   end
 

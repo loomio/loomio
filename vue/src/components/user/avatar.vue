@@ -41,7 +41,7 @@ export default
       @user.avatarUrl['large']
 
     componentType:  ->
-      if @noLink or !@user.username
+      if @noLink or !@user.id
         'div'
       else
         'router-link'
@@ -50,7 +50,7 @@ export default
 
 <template lang="pug">
 component.user-avatar(aria-hidden="true" :is="componentType" :to="!noLink && urlFor(user)" :style="{ 'width': width + 'px', margin: '0' }")
-  v-avatar(:title='user.name' :size='width')
+  v-avatar.user-avatar--outline(:title='user.name' :size='width')
     v-gravatar(v-if="user.avatarKind === 'gravatar'" :hash='user.emailHash' :gravatar-size='gravatarSize' :alt='user.avatarInitials')
     img(v-else-if="user.avatarKind === 'uploaded'" :alt='user.avatarInitials' :src='uploadedAvatarUrl')
     span.user-avatar--initials(v-else-if="user.avatarKind === 'initials'" :style="{width: width+'px', height: width+'px'}") {{user.avatarInitials}}
@@ -60,9 +60,10 @@ component.user-avatar(aria-hidden="true" :is="componentType" :to="!noLink && url
 <style lang="sass">
 .user-avatar--initials
   font-size: 15px
-  border: 1px solid #ddd
-  border-radius: 100%
   display: flex
   align-items: center
   justify-content: center
+.user-avatar--outline
+  border: 1px solid #ddd
+  border-radius: 100%
 </style>
