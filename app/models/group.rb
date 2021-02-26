@@ -9,7 +9,7 @@ class Group < ApplicationRecord
   include HasEvents
 
   extend HasTokens
-  extend  NoSpam
+  extend NoSpam
 
   is_rich_text    on: :description
   initialized_with_token :token
@@ -191,7 +191,7 @@ class Group < ApplicationRecord
   def poll_id
     nil
   end
-  
+
   def poll
     nil
   end
