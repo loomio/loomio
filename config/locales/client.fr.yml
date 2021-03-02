@@ -4,6 +4,7 @@ fr:
       title: Activez votre groupe
       activities:
         set_description: Saisissez une description pour votre groupe
+        set_cover_photo: Envoyez une image de couverture ainsi qu'un logo pour votre groupe
         invite_people_in: Invitez des personnes
         start_thread: Lancez une discussion
         make_decision: Prenez une décision
@@ -43,18 +44,23 @@ fr:
     all_tags: Tous les mots-clés
     tags: Mots-clés
     apply_tags: Appliquer les mots-clés
+    new_tag: Nouveau tag
     name_label: Nom
     color_label: Couleur
     card_title: Classement par mots-clés
     modal_title: Créer un nouveau mot-clé
     modal_edit_title: Modifier un mot-clé
     modal_destroy_title: Supprimer le mot-clé
+    destroy_tag: Supprimer le tag
+    destroy_helptext: 'Ceci va détruire le tag et le supprimer de tous les fils de discussion du groupe. Êtes-vous sûr ? '
     helptext: Les mots-clés permettent de catégoriser les discussions pour les retrouver facilement par la suite.
     discussions_count_singular: ({{count}} discussion)
     discussions_count_plural: ({{count}} discussions)
     tag_created: Mot-clé sauvegardé
+    tag_destroyed: Tag supprimé
     tags_marked: Discussions marquées « {{name}} » dans {{groupName}}
     no_tags_present: Aucune discussion n’a été trouvée avec ce mot-clé ! Essayez avec un autre.
+    no_tags_in_group: Le groupe n'a pas encore de tags de catégories
   reactions:
     slight_smile: J’aime
     heart: J’adore
@@ -128,7 +134,7 @@ fr:
       am: le matin
       pm: l'après-midi
     closing_in: 'Fermeture {{time}}'
-    closed_ago: 'Fermée à {{time}}'
+    closed_ago: 'Fermé à {{time}}'
     volume: 'Volume'
     notification_volume: 'Fréquence de notification'
     group: 'Groupe'
@@ -149,7 +155,7 @@ fr:
       closed: 'Fermé'
       private: 'Privé'
       secret: 'Secret'
-    selected: 'Sélectionnée'
+    selected: 'Sélectionné'
     date_range:
       today: 'Aujourd’hui'
       yesterday: 'Hier'
@@ -263,7 +269,7 @@ fr:
       inactive: 'Il existe un compte désactivé associé à cette adresse e-mail. Si vous voulez réactiver votre compte, contactez- nous.'
   error_page:
     forbidden: 'Vous n’avez pas la permission de faire cela.'
-    page_not_found: 'Nous n’avons pas pu trouver cela. Cela a dû être supprimé ou déplacé.'
+    page_not_found: 'Nous n’avons pas pu trouver cela. Cela a dû être déplacé ou supprimé.'
     internal_server_error: 'Désolé, mais quelque chose s’est mal passé. Veuillez essayer à nouveau.'
   verify_email_notice:
     please_verify: Merci d’avoir participé. Consultez vos courriels, un lien vous a été envoyé pour vérifier votre vote.
@@ -411,6 +417,8 @@ fr:
     other_groups: 'autres groupes'
     all_groups: 'Tous les groupes'
     recent_threads: 'Discussions récentes'
+    invite_only_threads: 'Discussions accessibles uniquement sur invitation'
+    direct_threads: 'Discussions directes'
     unread_threads: 'Discussions non lues ({{count}})'
     muted_threads: 'Discussions ignorées'
     start_group: 'Nouveau groupe'
@@ -476,6 +484,7 @@ fr:
     group_members: "Membres du groupe"
     discussion_members: "Membres de la discussion"
     poll_members: "Membres du {{pollType}}"
+    voters: "Votants"
     invite_to_group: "Inviter au groupe"
     invite_to_discussion: "Inviter à la discussion"
     invite_to_poll: "Inviter au vote"
@@ -499,6 +508,9 @@ fr:
   notifications:
     header: "Notifications"
     no_notifications: "Aucune nouvelle notification"
+    new_discussion: "{{name}} a commencé une discussion {{title}}"
+    discussion_edited: "<strong>{{name}}</strong> a modifié la discussion <strong>{{title}}</strong>"
+    discussion_announced: "{{name}} a partagé une discussion {{title}}"
     new_motion: "<strong>{{name}}</strong> a créé une proposition: <strong>{{title}}</strong>"
     motion_closed: "Proposition terminée: <strong>{{title}}</strong>"
     publish_outcome: "Publier un résultat"
@@ -516,12 +528,13 @@ fr:
     user_added_to_group: "<strong>{{name}}</strong> vous a ajouté au groupe <strong>{{title}}</strong>"
     user_added_to_group_no_inviter: "Vous avez été ajouté·e au groupe <strong>{{title}}</strong>"
     motion_closing_soon: "Cette proposition se termine bientôt : <strong>{{title}}</strong>"
-    motion_outcome_created: "<strong>{{name}}</strong>  a publié un résultat pour la proposition <strong>{{title}}</strong>"
-    motion_outcome_updated: "<strong>{{name}}</strong> a mis à jour le résultat de la proposition <strong>{{title}}</strong>"
+    motion_outcome_created: "<strong>{{name}}</strong>  a publié les résultats pour la proposition <strong>{{title}}</strong>"
+    motion_outcome_updated: "<strong>{{name}}</strong> a mis à jour les résultats de la proposition <strong>{{title}}</strong>"
     invitation_accepted: "<strong>{{name}}</strong> a accepté votre invitation à rejoindre <strong>{{title}}</strong>"
     new_coordinator: "<strong>{{name}}</strong>vous a marqué comme administrateur de<strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> a démarré un {{poll_type}}: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> a édité un {{poll_type}}: <strong>{{title}}</strong>"
+    poll_reminder: "{{name}} vous rappelle de voter dans {{title}}"
     poll_announced: "<strong>{{name}}</strong> a partagé un {{poll_type}} : <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} ferme bientôt : <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} fermé : <strong>{{title}}</strong>"
@@ -538,6 +551,13 @@ fr:
     move_to_existing_thread: Déplacer vers une discussion existante
     start_new_thread: Ou démarrer une nouvelle discussion
   discussion_form:
+    to: A
+    direct_thread: "Discussion directe"
+    invite_only_thread: "Discussion accessible uniquement sur invitation"
+    none_direct_thread: "Discussion directe (sans groupe)"
+    none_invite_only_thread: "Discussion accessible uniquement sur invitation (pas de groupe)"
+    change_log_placeholder: 'Facultatif: décrivez les changement apportés. Ce message sera ajouté à la discussion.'
+    change_log_label: 'Qu''est ce qui a changé ? '
     invite: Inviter
     aria_label: 'Forme de la discussion'
     start_thread: Démarrer une discussion
@@ -559,6 +579,8 @@ fr:
     privacy_private: 'La discussion sera visible uniquement aux membres de {{group}}.'
     privacy_organisation: 'La discussion sera visible uniquement pour les membres de {{parent}} et les membres de {{group}}.'
     fork_notice: 'Une nouvelle discussion sera créée avec {{count}} items de {{title}}'
+    one_person_notified: 1 personne sera notifiée
+    notify_group: Notifier le groupe
   announcement:
     send_discussion: Envoyer la discussion
     send_discussion_explain: Inviter des personnes à participer à la discussion
@@ -579,8 +601,35 @@ fr:
     preview: Aperçu du courriel
     no_notifications_sent: Aucune notification n'a été envoyé
     history_error: Oups, petit souci technique ! L'historique n'a pu être téléchargé
+    inviting_guests_to_thread: 'Invités qui ne font pas partie de votre groupe mais qui ont uniquement accès à cette discussion '
+    select_groups: Sélectionnez des groupes
+    search_by_name_or_email: Recherche par nom, ou saisir une adresse mail à inviter
+    search_by_name: Recherche de personnes par leur nom
+    only_admins_can_announce: Seuls les administrateur peuvent notifier tous les membres du groupe
+    only_admins_can_invite: Seuls les administrateurs peuvent envoyer des invitations
+    only_admins_can_announce_or_invite: Seuls les administrateurs peuvent notifier l'ensemble du groupe ou créer des invitations
+    user_mentioned: '{{name}} a mentionné {{length}} personnes:'
+    comment_replied_to: '{{name}} a répondu à {{length}} personnes:'
+    new_discussion: '{{name}} a invité {{length}} personnes à la discussion:'
+    discussion_announced: '{{name}} a invité {{length}} personnes à la discussion:'
+    poll_created: '{{name}} a invité {{length}} personnes à voter:'
+    poll_announced: '{{name}} a invité {{length}} personnes à voter:'
+    outcome_created: '{{name}} a partagé un résultat avec {{length}} personnes:'
+    outcome_announced: '{{name}} a partagé un résultat avec {{length}} personnes:'
+    announcement_created: '{{name}} a invité {{length}} personnes à la discussion:'
+    discussion_edited: '{{name}} a modifié la discussion, en notifiant {{length}} personnes:'
+    poll_edited: '{{name}} a modifié un sondage, en notifiant {{length}} personnes:'
+    outcome_edited: '{{name}} a modifié un résultat, en notifiant {{length}} personnes:'
+    outcome_updated: '{{name}} a modifié un résultat, en notifiant {{length}} personnes:'
+    poll_closing_soon: "Le sondage {{name}} va bientôt se terminer. Une alerte a notifié {{length}} personnes:"
+    poll_reminder: '{{name}} a fait penser à {{length}} personnes de voter:'
     audiences:
       group: Membres de {{name}}
+      discussion_group: Participants à la discussion
+      voters: Participants invités à voter
+      decided_voters: Tous ceux qui ont voté
+      undecided_voters: Votants indécis
+      non_voters: Les membres de {{name}} n'ont pas encore été invités
     form:
       too_many_invitations: |
           Invitations maximum atteintes. <a href="{{upgradeUrl}}" target="_blank">Mettre à jour</a>
@@ -588,6 +637,8 @@ fr:
           <p>Vous avez épuisé toutes les {{maxMembers}} invitations disponible pour ce groupe.</p>
           <p>Étape suivante, <a href="{{upgradeUrl}}" target="_blank">choisissez un abonnement</a> pour continuer à utiliser Loomio.</p>
       invitations_remaining: '{{count}} invitations restantes <a href="{{upgradeUrl}}" target="_blank">Mettre à jour</a>'
+      who_to_invite: Qui voulez vous inviter ?
+      invitation_message_placeholder: Message à joindre à l'invitation (facultatif)
       invitation_message_label: Message
       group_announced:
         title: Inviter au groupe
@@ -595,24 +646,40 @@ fr:
       discussion_announced:
         title: Inviter à la discussion
         helptext: Qui voulez-vous inviter à la discussion ?
+        notify_helptext: Qui voulez vous notifier à propos de la discussion ?
       discussion_edited:
         title: Notifier des modifications
+        helptext: Qui voulez-vous notifier à propos de cette mise à jour ? (facultatif)
       poll_announced:
         title: Inviter au vote
         helptext: Qui voulez-vous inviter à voter ?
       poll_reminder:
+        title: Rappel pour voter
+        helptext: 'A qui voulez-vous rappeler de voter ? '
         message_label: Message
+        message_placeholder: Message facultatif pour expliquer aux gens pourquoi ils devraient voter
       poll_edited:
         title: Notifier des modifications
+        helptext: 'Qui voulez-vous notifier à propos de cette mise à jour ? '
       outcome_announced:
         title: Partager le résultat
       anyone_can_participate: N’importe qui ayant un lien peut participer.
+      placeholder: Vous pouvez saisir les noms ou les adresses mail
+      notified_empty: 'Personne n''est encore sélectionné'
+      notified: 'Les personnes {{notified}} seront notifiées'
+      notified_singular: '1 personne sera notifiée'
+      notified_none: 'Personne ne sera notifié'
       group_title: '{{name}} ({{count}} personnes)'
+      visible_to_group: 'N''importe qui dans {{group}} pourra voir cette discussion'
+      visible_to_guests: 'Seules les personnes invitées peuvent voir cette discussion'
     members_list:
       title: Partagé avec
       last_notified: Notifié⋅e(s)
       not_notified: Pas encore notifié⋅e(s)
       no_members: "Ceci n'a pas encore été partagé !"
+      group_admin: "Administrateur du groupe"
+      thread_admin: "Discussion admin"
+      last_read_at: "Dernière visite {{time}}"
     group_form:
       search_placeholder: Chercher des personnes...
       modal_title: Sélectionner des membres du groupe
@@ -650,6 +717,8 @@ fr:
     translate_outcome: Afficher une traduction automatique du résultat
     show_history: Montrer l’historique des modifications
     edited: Modifié
+    show_edits: Montrer les modifications
+    show_notifications: Montrer les notifications
     history: Historique
     pin_thread: Mettre en avant la discussion
     unpin_thread: Ne plus mettre en avant la discussion
@@ -667,8 +736,13 @@ fr:
     notification_history: Historique des notifications
     move_item: Déplacer l'élément
     add_poll_to_thread: Ajouter à la discussion
+    count_members: "{{count}} membres"
+    count_voters: "{{count}} votants"
   formatting:
     formatting_tools: Outils de formatage du texte
+    colors: Couleurs
+    alignment: Alignement
+    lists: Listes
     expand: Montrer plus d'outils de formatage du texte
     collapse: Montrer moins d'outils de formatage du texte
     bold: Audacieux
@@ -742,10 +816,17 @@ fr:
       membership_requested: 'Vous avez demandé l’accès à {{group}}'
   revision_history_modal:
     aria_label: Historique de révision
+    discussion_header: Éditions de la discussion
+    comment_header: Discussion privée
+    poll_header: Éditions du sondage
+    outcome_header: Modification des résultats
     started_by: 'Démarrée par <strong>{{name}}</strong>'
     edited_by: 'Édité par <strong>{{name}}</strong>'
     edit_by: "Modifier par {{name}} · {{date}}"
     posted: Posté
+    field: Champs
+    before: Avant
+    after: Après
     original_text: Texte initial
     current_revision: Dernier
     closing_at_changed: "Fermeture prévue à {{time}}"
@@ -786,6 +867,7 @@ fr:
     search_threads: Rechercher des discussions…
     private_threads: Vous devez être membre du groupe pour voir des discussions privées de ce groupe
     no_more_threads: Aucune discussions supplémentaire à charger
+    view_closed_threads: 'Voir les discussions fermées'
     messages:
       privacy:
         members: 'Ce groupe est désormais visible uniquement aux membres'
@@ -828,7 +910,7 @@ fr:
       loud_aria_description: Votre volume de notification pour ce groupe est réglé sur Fort. Vous recevrez un courriel à chaque fois qu’il y a une activité.
       loud_message: Vous recevrez un courriel à chaque activité dans « {{name}} ».
       normal: 'Envoyer par courriel seulement les activités importantes: nouvelles discussions et propositions, résultats, etc.'
-      normal_aria_description: Votre volume de notification pour ce groupe est réglé sur Normal. Vous recevrez un courriel seulement en cas d’activité importante, par exemple si quelqu’un crée une nouvelle discussion, lance une proposition, ou publie un résultat.
+      normal_aria_description: Votre volume de notification pour ce groupe est réglé sur Normal. Vous recevrez un courriel seulement en cas d’activité importante, par exemple si quelqu’un crée une nouvelle discussion, lance une proposition, ou publie les résultats.
       normal_message: 'Vous recevrez un courriel uniquement lors d’activités importantes dans « {{name}} ».'
       quiet: Ne pas envoyer de courriel concernant ce groupe. Les activités resteront consultables sur le tableau de bord.
       quiet_aria_description: Votre volume de notification pour ce groupe est réglé sur Léger. Vous ne recevrez aucun courriel pour vous informer des actualités de ce groupe. Vous pourrez les voir sur votre Tableau de Bord.
@@ -864,6 +946,9 @@ fr:
   group_form:
     thread_defaults_help: Paramètres par défaut pour les nouvelles discussions
     click_to_change_image: Image de couverture et logo (cliquer pour modifier)
+    permissions_explaination: |
+        Une personne peut avoir deux niveaux d'adhésion dans un groupe: administrateur ou membre.
+        Les administrateurs peuvent modifier les paramètres du groupe, nommer d'autres administrateurs et faire les actions suivantes:
     aria_label: 'Forme du groupe'
     new_organisation: Nouvelle organisation
     start_group_heading: 'Créer un groupe'
@@ -913,6 +998,20 @@ fr:
     public_or_private_threads: 'Autoriser les discussions privées et publiques'
     private_threads: 'Seuls les membres peuvent voir les discussions'
     allow_public_threads: 'Autoriser les discussions publiques dans ce groupe.'
+    parent_members_can_see_discussions: 'Les membres de {{parent}} peuvent voir les discussions privées'
+    members_can_announce: 'Les membres peuvent notifier n''importe qui dans le groupe'
+    members_can_announce_help: 'Autoriser les membres à notifier tout le monde dans le groupe à propos d''une discussion ou d''un sondage'
+    members_can_add_members: 'Les membres peuvent envoyer des invitations à d''autres membres'
+    members_can_add_guests: 'Les membres peuvent envoyer des invitations à participer à une discussion ou à un sondage'
+    members_can_create_subgroups: 'Les membres peuvent créer des sous-groupes'
+    members_can_edit_discussions: 'Les membres peuvent gérer les discussions et les commentaires'
+    members_can_edit_comments: 'Les membres peuvent modifier leurs propres commentaires'
+    members_can_edit_comments_help: 'Autoriser les membres à modifier leurs propres commentaires à n''importe quel moment'
+    members_can_start_discussions: 'Les membres peuvent commencer de nouvelles discussions'
+    members_can_raise_motions: 'Les membres peuvent commencer de nouveaux sondages'
+    members_can_raise_motions_help: 'Autoriser les membres à commencer des sondages et des propositions à partir des discussions ou du groupe'
+    admins_can_edit_user_content: "Les administrateurs peuvent modifier les commentaires des membres"
+    admins_can_edit_user_content_help: 'Autoriser les admins à modifier ce qui a été rédigé par les membres'
     submit_start_group: 'Créer un groupe'
     submit_start_subgroup: 'Créer un sous-groupe'
     submit_update: 'Mettre à jour les paramètres'
@@ -1033,6 +1132,7 @@ fr:
     locale_field: 'Langue: {{value}}'
     online_field: 'En ligne: {{value}}'
     invited: '{{value}} invité'
+    message_user: 'Message {{name}}'
   contact_request_form:
     modal_title: "Envoyer un courriel à {{name}}"
     message_placeholder: Présentez-vous et dites-nous pourquoi vous voulez entrer en relation.
@@ -1091,6 +1191,7 @@ fr:
     no_emails: 'Vous ne recevrez plus de courriels de notification'
     you_can_reactivate: "Vous pouvez réactiver votre compte ultérieurement si vous le souhaitez."
     submit: 'Oui, je veux désactiver'
+    submit_delete: 'Supprimer mon compte maintenant'
   email_settings_page:
     header: Paramètres de notification
     account_deactivated: Votre compte a été désactivé. Vous ne recevrez désormais plus d'emails, pour toujours.
@@ -1172,6 +1273,9 @@ fr:
       thisweek: 'Cette semaine'
       thismonth: 'Ce mois'
       older: 'Plus d’un mois'
+  threads_page:
+    no_direct_threads: "Vous n'avez pas de discussion directe"
+    no_invite_only_threads: "Vous n'avez aucune discussions accessible uniquement sur invitation"
   inbox_page:
     no_threads: Woohoo ! Vous avez lu toutes les discussions de votre boîte de réception.
     unread_threads: Discussions non lues
@@ -1182,6 +1286,8 @@ fr:
       or: ou
       join_group: <a href="/explore">rejoindre</a> un groupe pour voir des discussions.
   discussion:
+    invite_only: "Sur invitation uniquement"
+    private_thread: Discussion privée
     max_threads_reached: |
         <p>Vous avez épuisé toutes les {{maxThreads}} invitations disponible pour ce groupe.</p>
         <p>Étape suivante, <a href="{{upgradeUrl}}" target="_blank">choisissez un abonnement</a> pour continuer à utiliser Loomio.</p>
@@ -1245,6 +1351,7 @@ fr:
     delete_thread: 'Supprimer'
     add_comment: 'Commentaire'
     seen_by_count: 'Vu par {{count}} personnes'
+    count_notified: 'Notifiés {{count}}'
     forked_from: "Scindé depuis"
   pin_thread_modal:
     title: Épingler la discussion
@@ -1326,6 +1433,7 @@ fr:
       app_update: 'Une nouvelle version de l’application est disponible'
       reload: 'Recharger'
   decision_tools_card:
+    choose_type: Choisissez le type de sondage
     title: 'Simplifier '
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Aide</a>
     proposal_title: Proposition
@@ -1341,6 +1449,7 @@ fr:
     your_response: Votre réponse
     change_your_response: Modifier la réponse
     reason: Raison
+    reason_placeholder: "Expliquez brièvement les raisons de votre vote, puis cliquez sur \"Soumettre votre vote\""
     message: Message
     results: Résultats
     responses: Réponses
@@ -1405,6 +1514,7 @@ fr:
     order_label: "Ordre"
     order_by_name: 'Nom'
     order_by_created: 'Les plus anciens'
+    show_users_in_subgroups: Montrer aussi les utilisateurs des sous-groupes
     order_by_created_desc: 'Les plus récents'
     order_by_admin_desc: 'Administrateurs'
     loaded_of_total: '{{loaded}}} de {{total}}}'
@@ -1419,6 +1529,7 @@ fr:
     invitations: 'Invitations'
     requests: 'Requêtes'
     admin: 'Administrateur'
+    guest: 'Invité'
     sharable_link: 'Lien partageable'
     last_seen: 'Vu en dernier le {{date}}'
     invited_by_name: 'Invité par {{name}}'
@@ -1444,6 +1555,7 @@ fr:
   poll_common_action_panel:
     anonymous: Les votes sont anonymes
     results_hidden_until_closed: Les résultats sont cachés jusquà la cloture du %{poll_type}
+    unable_to_vote: Vous n'avez pas été invité à voter dans ce %{poll_type}
     draft_mode: Ce %{poll_type} est en cours de construction. Les votes sont désactivés.
   current_polls_card:
     title: Décisions en cours
@@ -1467,12 +1579,23 @@ fr:
     location: Lieu
     location_placeholder: Où se déroulera cette réunion ?
   poll_common_settings:
+    who_can_vote: 'Qui peut voter ? '
+    specified_voters_only_true: Personnes invitées uniquement
+    specified_voters_only_false_group: N'importe qui dans le groupe
+    specified_voters_only_false_discussion: N'importe-qui de la discussion
+    invite_people_next: Vous pouvez choisir qui sera invité une fois que vous aurez démarré le {{poll_type}}
     multiple_choice:
       title: Choix multiple
       helptext_on: Si coché, les participants pourront choisir plusieurs options.
     anyone_can_participate:
       title: N’importe qui ayant un lien peut participer.
       helptext_on: Si coché, n'importe qui disposant du lien de ce sondage pourra participer.
+    notify_on_closing_soon:
+      title: 24 heures avant que le {{pollType}} ne ferme, envoyer un rappel à
+      nobody: Personne
+      author: Auteur (moi)
+      undecided_voters: Votants indécis
+      voters: Tous les votants
     notify_on_participate:
       title: M’avertir lorsque des gens participent
       helptext_on: Si coché, vous serez averti⋅e lorsque quelqu’un participe.
@@ -1551,11 +1674,13 @@ fr:
     ranked_choice: 'Ce classement par préférence est fermé. <strong>Partagez un résultat</strong> avec le groupe.'
     score: 'Ce sondage a été clôturé. <strong>Partager un résultat</strong> avec le groupe.'
   poll_common_outcome_form:
+    who_to_notify: 'Qui voulez-vous notifier à propos de ces résultats ? '
     new_title: Entrer un résultat
     update_title: Mettre à jour le résultat
     outcome_created: Résultat créé
     outcome_updated: Résultat mis à jour
     statement_placeholder: Résumez les réponses et expliquez ce qui va suivre.
+    you_will_be_notified: Vous serez alerté à la date de revue
     submit: Partager le résultat
   poll_common_outcome_panel:
     authored_by: 'Par {{name}}'
@@ -1775,7 +1900,26 @@ fr:
       poll_expired: "{{pollType}} fermé. {{when}}"
     removed: "Elément supprimé"
     deleted_group: "Groupe supprimé"
+    comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> en réponse à <strong>{{title}}</strong>"
+    discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>a modifié le titre de la discussion"
+    discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a édité le contexte de la discussion"
+    discussion_attachments_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a modifié les pièces jointes de la discussion"
+    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>a changé la confidentialité de la discussion"
+    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a modifié la discussion"
+    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a déplacé la discussion depuis <strong>{{title}}</strong>"
+    discussion_closed: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a fermé la discussion"
+    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a ré-ouvert la discussion"
+    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a créé une ramification de cette discussion <strong><a href='d/{{key}}'>{{title}}</a></strong>"
+    new_comment: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>"
+    outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a partagé des résultats"
+    poll_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a ré-ouvert le {{polltype}} "
+    poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a fermé le {{polltype}}"
+    poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a commencé un {{polltype}}"
+    poll_created_no_title: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a commencé un {{polltype}}"
+    poll_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a modifié le {{polltype}}"
+    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a ajouté des options de réponse au {{polltype}}"
     poll_expired: "{{polltype}} fermé"
+    stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a voté sur: <strong>{{title}}</strong>"
     event_removed: "retiré de la discussion"
   poll_common_subscribe_form:
     receive_updates_title: Votre vote a bien été enregistré
@@ -1813,6 +1957,7 @@ fr:
     invalid_token: "Désolé, nous n’avons pas pu vous authentifier grâce à ce lien. Cliquez ci-dessous pour en recevoir un nouveau."
     account_locked: "Votre compte a été bloqué suite à de nombreuses tentatives de connexion. Vérifiez vos courriels pour obtenir le lien de déblocage."
     email_not_found: "Désolé, nous n’avons pas trouvé de compte correspondant à cette adresse e-mail."
+    email_taken: 'L''adresse e-mail existe déjà '
     email_placeholder: vous@exemple.com
     login_with_token: Vous êtes prêt·e ! Cliquez sur le lien ci-dessous pour continuer.
     login_link_helptext: Cliquez sur le bouton ci-dessous et nous vous enverrons un lien pour vous connecter.
@@ -1854,6 +1999,7 @@ fr:
   webhook:
     integrations: Integrations
     webhooks: Webhooks
+    api: API
     format: Formatter
     formats:
       markdown: Markdown (pour Mattermost, Zapier et autres)
@@ -1862,10 +2008,17 @@ fr:
     we_have_guides: |
         Lisez notre <a href="{{url}}" target="_blank">guide de configuration webhook</a> pour connecter votre propre service.
     add_webhook: Ajouter un webhook
+    show_docs: Voir l'utilisation de l'API
+    edit_integration: Modifier l'intégration
+    add_integration: Ajouter une intégration
+    success: 'Intégration ajoutée ! '
+    remove: Retirer cette intégration
+    confirm_remove: "Êtes-vous sûr de vouloir retirer l'intégration: {{name}} ?"
     removed: Intégration retirée
     url_label: L'URL webhook
     url_placeholder: https://hooks.example.com/...
     name_label: Nom
+    name_placeholder: Donnez un nom à cette intégration de manière à pouvoir l'identifier
     event_kinds:
       new_discussion: 'Une discussion a été commencée '
       discussion_edited: Une discussion a été modifiée
@@ -1878,6 +2031,11 @@ fr:
       poll_closed_by_user: Un sondage a été cloturé manuellement
       poll_reopened: Un sondage a été rouvert aux votes
       outcome_created: Un résultat a été partagé
+    permissions:
+      show_discussion: Montrer la discussion
+      create_discussion: Créer une discussion
+      create_poll: Créer un sondage
+      show_poll: Montrer le sondage
     include_body_label: Inclure le corps du message dans la notification
     include_subgroups_label: Faire suivre les événement des sous-groupes
   configure_sso:
