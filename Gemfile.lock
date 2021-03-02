@@ -108,7 +108,7 @@ GEM
       addressable (>= 2.3.2)
       nokogiri
       safely_block (>= 0.1.1)
-    ahoy_matey (3.1.0)
+    ahoy_matey (3.2.0)
       activesupport (>= 5)
       device_detector
       geocoder (>= 1.4.5)
@@ -186,7 +186,7 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
-    errbase (0.2.0)
+    errbase (0.2.1)
     erubi (1.10.0)
     erubis (2.7.0)
     excon (0.78.1)
@@ -359,7 +359,7 @@ GEM
     mini_magick (4.11.0)
     mini_mime (1.0.2)
     mini_portile2 (2.5.0)
-    minitest (5.14.3)
+    minitest (5.14.4)
     msgpack (1.4.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
@@ -588,7 +588,7 @@ DEPENDENCIES
   activeadmin (~> 2.9.0)
   activerecord-import (= 1.0.8)
   ahoy_email (~> 1.1.0)
-  ahoy_matey (~> 3.1.0)
+  ahoy_matey (~> 3.2.0)
   aws-sdk-s3
   bootsnap
   browser (~> 5.3.1)
