@@ -20,6 +20,7 @@ export default class NullGroupModel
       membersCanAddMembers: true
       membersCanEditDiscussions: true
       membersCanEditComments: true
+      membersCanDeleteComments: true
       membersCanRaiseMotions: true
       membersCanStartDiscussions: true
       membersCanCreateSubgroups: false

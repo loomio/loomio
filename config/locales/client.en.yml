@@ -1088,6 +1088,8 @@ en:
     members_can_edit_discussions_help: 'Allow members to edit, move, pin, tag or close threads'
     members_can_edit_comments: 'Members can edit their own comments'
     members_can_edit_comments_help: 'Allow members to edit their own comments at any time'
+    members_can_delete_comments: 'Members can delete their own comments'
+    members_can_delete_comments_help: 'Allow members to delete their own comments from threads'
     members_can_start_discussions: 'Members can start new threads'
     members_can_start_discussions_help: 'Allow members to start new threads within the group'
     members_can_raise_motions: 'Members can start polls'

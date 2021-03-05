@@ -227,6 +227,12 @@ v-card.group-form
               span(v-t="'group_form.members_can_edit_comments'")
               br
               span.caption(v-t="'group_form.members_can_edit_comments_help'")
+        v-checkbox.group-form__members-can-delete-comments(hide-details v-model='group["membersCanDeleteComments"]')
+          template(v-slot:label)
+            div
+              span(v-t="'group_form.members_can_delete_comments'")
+              br
+              span.caption(v-t="'group_form.members_can_delete_comments_help'")
         v-checkbox.group-form__members-can-raise-motions(hide-details v-model='group["membersCanRaiseMotions"]')
           template(v-slot:label)
             div
