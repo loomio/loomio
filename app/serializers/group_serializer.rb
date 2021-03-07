@@ -83,7 +83,6 @@ class GroupSerializer < ApplicationSerializer
         renews_at:       sub.renews_at,
         expires_at:      sub.expires_at,
         management_link: (sub.info || {})['chargify_management_link'],
-        referral_code:   (sub.info || {})['chargify_referral_code'],
         members_count:   sub.members_count
       }
     else
