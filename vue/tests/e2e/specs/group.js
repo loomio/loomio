@@ -84,19 +84,6 @@ module.exports = {
     page.fillIn('#group-name', 'Survey please')
     page.click('.group-form__submit-button')
     page.expectFlash('Group started')
-    page.pause(500)
-
-    page.expectElement('.group-survey')
-    page.fillIn('.group-survey__location input', "Los Angeles")
-    page.click('.group-survey__category-member')
-    page.click('.group-survey__desired-feature-polls')
-    page.click('.group-survey__size-ten')
-    page.click('.group-survey__referrer-google')
-    page.fillIn('.group-survey__role input', "Queen")
-    page.fillIn('.group-survey__website input', "dirtydancing.com")
-    page.fillIn('.group-survey__misc textarea', "booya")
-    page.click('.group-survey__submit-button')
-    page.expectFlash('Thank you!')
   },
 
   'starts_a_secret_group': (test) => {
