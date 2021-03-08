@@ -103,7 +103,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    ahoy_email (1.1.0)
+    ahoy_email (2.0.0)
       actionmailer (>= 5)
       addressable (>= 2.3.2)
       nokogiri
@@ -587,7 +587,7 @@ DEPENDENCIES
   active_record_extended
   activeadmin (~> 2.9.0)
   activerecord-import (= 1.0.8)
-  ahoy_email (~> 1.1.0)
+  ahoy_email (~> 2.0.0)
   ahoy_matey (~> 3.2.0)
   aws-sdk-s3
   bootsnap
