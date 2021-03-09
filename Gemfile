@@ -41,7 +41,7 @@ gem 'sass-rails'
 gem 'uuidtools'
 gem 'ahoy_matey', '~> 3.2.0'
 gem 'ahoy_email', '~> 2.0.1'
-gem 'geocoder', '1.6.5'
+gem 'geocoder', '1.6.6'
 gem 'maxminddb'
 gem 'oj'
 gem "cld"
