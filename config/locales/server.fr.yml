@@ -248,12 +248,19 @@ fr:
   discussion_mailer:
     resend: 'RAPPEL : %{actor} attend que vous rejoignez %{discussion}'
     new_discussion:
+      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> a démarré une discussion: %{discussion}"
     discussion_edited:
+      subject: "%{discussion}"
+      inline: "%{actor} a modifié la discussion"
       subject_html: "<strong>%{actor}</strong> a modifié la discussion: %{discussion}"
     discussion_announced:
+      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> vous a invité·e à rejoindre : %{discussion}"
+    discussion_closed:
+      inline: "%{actor} a fermé la discussion"
     new_comment:
+      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> a ajouté un commentaire sur: %{discussion}"
     comment_replied_to:
       subject: '%{actor} vous a répondu dans : %{discussion}'
@@ -402,7 +409,7 @@ fr:
       results: Résultats
       responses: Réponses
       change_your_stance: Modifier
-      create_outcome: Partager le résultat
+      create_outcome: Partager les résultats
       your_response: "Vous avez voté:"
       please_respond: Merci de répondre
       time_zone: (Horaire affiché en %{zone})
@@ -417,6 +424,7 @@ fr:
     subject:
       poll_created: '%{actor} a commencé un %{poll_type}: %{title}'
       poll_edited: '%{actor} a édité le %{poll_type}: %{title}'
+      poll_reminder: '%{actor} vous rappelle de voter: %{title}'
       poll_announced: '%{actor} vous a invité à un vote dans %{poll_type}: %{title}'
       poll_announced_wip: '%{actor}a partagé un travail en cours %{poll_type}: %{title}'
       poll_closing_soon: '%{poll_type} va fermer dans 24 heures: %{title}'
@@ -426,7 +434,9 @@ fr:
       poll_option_added: '%{actor} a ajouté des options à: %{title}'
       poll_option_added_author: '%{actor} a ajouté des options à: %{title}'
       outcome_created: '%{actor} a partagé un %{poll_type} résultat: %{title}'
+      outcome_updated: '%{actor} a mis à jour les résultats du %{poll_type}: %{title}'
       outcome_created_author: 'Vous avez partagé un %{poll_type} résultat: %{title}'
+      outcome_review_due: "C'est le moment de vérifier les résultats du %{poll_type}: %{title}"
       outcome_announced: '%{actor} a partagé un %{poll_type} résultat: %{title}'
       stance_created: "%{actor} a voté sur : %{title}"
       stance_created_author: "Merci de vérifier votre vote sur :%{title}"
@@ -435,6 +445,7 @@ fr:
     header:
       poll_created: '<strong>%{actor}</strong> a commencé un %{poll_type}'
       poll_edited: '<strong>%{actor}</strong> a édité un %{poll_type}'
+      poll_reminder: '<strong>%{actor}</strong> vous rappelle de voter'
       poll_announced: '<strong>%{actor}</strong> vous a invité à voter dans un %{poll_type}'
       poll_announced_wip: '<strong>%{actor}</strong> a partagé un travail en cours %{poll_type}'
       poll_closing_soon: 'Le %{poll_type} de <strong>%{actor}</strong> ferme dans 24 heures. C''est le bon moment pour voter, modifier votre d''avis ou encourager les autres à participer.'
@@ -444,6 +455,8 @@ fr:
       poll_option_added: '<strong>%{actor}</strong> a ajouté des options à: %{title}'
       poll_option_added_author: '<strong>%{actor}</strong> a ajouté des options à: %{title}'
       outcome_created: '<strong>%{actor}</strong> a partagé un résultat de %{poll_type}'
+      outcome_updated: '<strong>%{actor}</strong> a mis à jour les résultats du %{poll_type}'
+      outcome_review_due: "C'est le moment d'analyser les résultats du %{poll_type}: %{title}. Pensez à commencer un sondage ou une nouvelle discussion pour recevoir les avis sur la manière dont la décision a été mise en œuvre. "
       outcome_created_author: 'Vous avez partagé un résultat de %{poll_type}'
       outcome_announced: '<strong>%{actor}</strong> a partagé un résultat de %{poll_type}'
       stance_created: "<strong>%{actor}</strong> a voté sur : %{title}"
@@ -467,6 +480,8 @@ fr:
     new_discussion: "Nouvelle discussion dans %{group}"
     new_comment: "Nouveau commentaire dans %{group}"
     outcome_created: "Résultat publié dans %{group}"
+    outcome_updated: "Résultat mis à jour dans %{group}"
+    outcome_review_due: "Examen des résultats attendu dans %{group}"
     poll_created: "Nouveau·elle %{poll_type}dans %{group}"
     stance_created: "Nouvelle réponse à %{poll}"
     poll_closing_soon: "%{poll_type} se terminera dans 24 heures"
@@ -478,6 +493,8 @@ fr:
       discussion_edited: "**%{actor}** a édité une discussion dans %{group}:[%{title}](%{url})"
       new_comment: "**%{actor}** a commenté dans [%{title}](%{url})"
       outcome_created: "**%{actor}** a partagé un résultat du %{poll_type}: [%{title}](%{url})"
+      outcome_update: "**%{actor}** a modifié le résultat du %{poll_type}: [%{title}](%{url})"
+      outcome_review_due: "C'est le moment d'analyser les résultats du %{poll_type}: [%{title}](%{url})"
       poll_created: "**%{actor}** a commencé un %{poll_type} dans %{group}: [%{title}](%{url})"
       poll_edited: "**%{actor}** a édité un %{poll_type} dans %{group}: [%{title}](%{url})"
       stance_created: "**%{actor}** a voté dans [%{title}](%{url})"
@@ -488,6 +505,8 @@ fr:
   slack:
     new_discussion: "Nouvelle discussion dans *%{group}*: *%{discussion}*"
     outcome_created: "Résultat partagé dans *%{group}*: *%{poll}*"
+    outcome_updated: "Résultats modifiés dans *%{group}*: *%{poll}*"
+    outcome_review_due: "C'est le moment de vérifier les résultats du *%{group}*: *%{poll}*"
     poll_created: "Nouveau *%{poll_type}* dans *%{group}*: *%{poll}*"
     poll_closing_soon: "Rappel: *%{poll}* se termine dans 24 heures"
     poll_expired: "*%{poll}* est clôturé·e"

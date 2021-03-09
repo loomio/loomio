@@ -4,7 +4,7 @@ it:
       title: Attiva il tuo gruppo
       activities:
         set_description: 'Scrivi la descrizione del tuo gruppo '
-        set_cover_photo: Caricare una foto di copertina & logo per il tuo gruppo
+        set_cover_photo: Carica una foto di copertina ed un logo per il tuo gruppo
         invite_people_in: Invita persone in
         start_thread: Inizia un thread di discussione
         make_decision: Inizia una decisione

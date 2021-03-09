@@ -2,6 +2,7 @@ import Records        from '@/shared/services/records'
 import AppConfig      from '@/shared/services/app_config'
 import openModal      from '@/shared/helpers/open_modal'
 import EventBus from '@/shared/services/event_bus'
+import I18n from '@/i18n'
 
 export default new class WebhookService
   addAction: (group) ->
@@ -45,5 +46,5 @@ export default new class WebhookService
               submit: webhook.destroy
               text:
                 title: 'webhook.remove'
-                raw_helptext: @$t('webhook.confirm_remove', {name: webhook.name})
+                raw_helptext: I18n.t('webhook.confirm_remove', {name: webhook.name})
                 flash: 'webhook.removed'

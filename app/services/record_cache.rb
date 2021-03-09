@@ -98,6 +98,7 @@ class RecordCache
 
     Event.includes(:eventable).where(id: collection.map(&:id)).each do |e|
       ids[:discussion].push e.discussion_id if e.discussion_id
+      next unless e.eventable
       ids[e.eventable_type.underscore] ||= []
       ids[e.eventable_type.underscore].push e.eventable_id
       if ['Stance', 'Outcome', 'PollOption'].include? e.eventable_type
