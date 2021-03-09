@@ -66,6 +66,9 @@ ml:
       edit_group: 'കൂട്ടത്തിന്റെ ക്രമീകരണങ്ങള്‍ മാറ്റുക'
       email_settings: 'ഈമെയില്‍ മുന്‍ഗണനകള്‍'
       leave_group: 'കൂട്ടം വിടുക'
+  group_form:
+    new_group: പുതിയ കൂട്ടം
+    group_name: കൂട്ടത്തിന്റെ പേരു്
   membership_requests_page:
     approve: സ്ഥിരീകരിക്കുക
     ignore: നിരസ്സിക്കുക
@@ -83,7 +86,7 @@ ml:
   activity_card:
     context: പശ്ചാത്തലം
   thread_group:
-    aria_label: 'കൂട്ടത്തിന്റെ പേരു്'
+    aria_label: കൂട്ടത്തിന്റെ പേരു്
   thread_context:
     close_thread: 'അടക്കുക'
   delete_comment_dialog:

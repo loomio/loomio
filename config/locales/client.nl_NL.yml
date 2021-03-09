@@ -1,7 +1,6 @@
 nl_NL:
   loomio_onboarding:
     group_progress_card:
-      title: Activeer je groep
       activities:
         set_description: Omschrijf je groep
         set_cover_photo: Upload een foto en logo voor jouw groep
@@ -14,6 +13,8 @@ nl_NL:
   plan_names:
     free: Gratis
     trial: Uitproberen
+    pro: Pro
+    community: Gemeenschap
     small: Klein
     medium: Medium
     large: Groot
@@ -21,6 +22,7 @@ nl_NL:
     yearly: Jaarlijks
   current_plan_button:
     upgrade: Upgrade
+    buy_now: Koop nu
     free_trial: Gratis uitproberen. {{days}} dagen resterend.
     trial_expired: De uitprobeerperiode is afgelopen. Upgrade om Loomio verder te gebruiken.
     tooltip: "Onze prijzen zijn geweldig! Upgrade vandaag en beleef plezier van wat Loomio je groep kan bieden."
@@ -917,21 +919,22 @@ nl_NL:
   group_form:
     thread_defaults_help: Standaard instellingen voor nieuwe borden
     click_to_change_image: Cover-afbeelding en logo (klik om te wijzigen)
-    aria_label: 'Groepsformulier'
-    new_organisation: Nieuwe Organisatie
-    start_group_heading: 'Een groep starten'
-    start_subgroup_heading: 'Begin een subgroep'
-    edit_group_heading: 'Bewerk groepsinstellingen'
-    edit_subgroup_heading: 'Bewerk subgroepinstellingen'
-    group_name: 'Groepsnaam'
+    aria_label: Groepsformulier
+    new_organisation: Nieuwe organisatie
+    new_group: Nieuwe groep
+    new_subgroup: Nieuwe subgroep
+    start_group_heading: Een groep starten
+    start_subgroup_heading: Begin een subgroep
+    edit_group_heading: Bewerk groepsinstellingen
+    edit_subgroup_heading: Bewerk subgroepinstellingen
+    group_settings: Groepsinstellingen
+    group_name: Groepsnaam
     handle: Gebruikersnaam
     group_handle_placeholder: "Voor de URL en email, bv loomio.org/gebruikersnaam en gebruikersnaam@loomio.org"
-    organization_name: 'Organisatienaam'
     start_organization_heading: Nieuwe organisatie
     edit_organization_heading: Bewerk organisatie instellingen
     group_name_placeholder: 'Wat is de naam van je groep?'
     organization_name_placeholder: 'Wat is de naam van je organisatie?'
-    subgroup_name: 'Subgroep naam'
     description: 'Beschrijving'
     description_placeholder: 'Beschrijf het doel van je groep, zodat je groepsleden weten waarom ze hier zijn.'
     privacy_statement:
@@ -1287,7 +1290,7 @@ nl_NL:
     comment: Geef reactie
     facilitate: Faciliteren
   thread_group:
-    aria_label: 'Groepsnaam'
+    aria_label: Groepsnaam
   thread_context:
     current_poll_type_banner: Huidig {{pollType}}
     item_maybe_deleted: "De gevraagde locatie konden we niet vinden op het bord. Het zou verwijderd kunnen zijn."
@@ -1990,10 +1993,10 @@ nl_NL:
     validation_error: Vul alsjeblieft alle verplichte velden in.
     success: Bedankt!
     categories:
-      member: Diensten organisaties met leden (zoals politieke partijen, coöperaties en vakbonden)
-      nonprofit: Niet commercieel, NGOs, en Maatschappelijke groepen
-      professional: Professionele diensten teams & bedrijven
-      board: Boards en commissies
+      party: Politieke partij
+      coop: Coöperatie
+      union: Vakbond
+      community: Community groep
       government: Overheid/lokale overheid
       other: Andere
     sizes:

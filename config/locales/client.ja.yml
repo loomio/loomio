@@ -1,7 +1,6 @@
 ja:
   loomio_onboarding:
     group_progress_card:
-      title: あなたのグループをアクティブ化します
       activities:
         set_description: あなたのグループの説明を設定します
   plan_names:
@@ -103,6 +102,8 @@ ja:
       email_settings: 'Eメールの設定'
       leave_group: 'グループを離れます'
   group_form:
+    new_group: 新しいグループ
+    group_name: グループ名
     group_name_placeholder: 'あなたのグループの名前は何ですか？'
     privacy: 'プライバシー'
     profile: プロフィール
@@ -131,7 +132,7 @@ ja:
     no_groups:
       or: または
   thread_group:
-    aria_label: 'グループ名'
+    aria_label: グループ名
   thread_context:
     close_thread: '締め切り'
   delete_comment_dialog:

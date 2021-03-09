@@ -194,6 +194,9 @@ lt:
     privacy:
       public: 'Privatumas: Ši grupė yra matoma saityne'
   group_form:
+    new_group: Nauja grupė
+    group_settings: Grupės nustatymai
+    group_name: Grupės pavadinimas
     description: 'Aprašas'
     privacy: 'Privatumas'
     profile: Profilis
@@ -257,7 +260,7 @@ lt:
   activity_card:
     context: Kontekstas
   thread_group:
-    aria_label: 'Grupės pavadinimas'
+    aria_label: Grupės pavadinimas
   thread_context:
     thread_options: 'Gijos parinktys'
     close_thread: 'Užverti'

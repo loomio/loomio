@@ -1,7 +1,6 @@
 de:
   loomio_onboarding:
     group_progress_card:
-      title: Gruppe aktivieren
       activities:
         set_description: Gruppen-Beschreibung festlegen
         set_cover_photo: Lade ein Titelbild und ein Logo für deine Gruppe hoch
@@ -14,6 +13,8 @@ de:
   plan_names:
     free: Gratis
     trial: Testphase
+    pro: Pro
+    community: Community
     small: Klein
     medium: Mittel
     large: Groß
@@ -21,6 +22,7 @@ de:
     yearly: Jährlich
   current_plan_button:
     upgrade: Upgrade
+    buy_now: 'Jetzt kaufen '
     free_trial: Kostenloser Test. {{days}} Tage verbleiben.
     trial_expired: Dein Test ist abgelaufen. Upgrade um Loomio weiter zu nutzen.
     tooltip: "Unsere Preise sind fantastisch! Upgrade heute und geniesse was Loomio deiner Gruppe bieten kann."
@@ -874,21 +876,23 @@ de:
   group_form:
     thread_defaults_help: Standarteinstellungen für neue Diskussionen
     click_to_change_image: Cover Bild and Logo (zum Ändern klicken)
-    aria_label: 'Gruppenform'
+    aria_label: Gruppenform
     new_organisation: Neue Organisation
-    start_group_heading: 'Gruppe erstellen'
-    start_subgroup_heading: 'Untergruppe erstellen'
-    edit_group_heading: 'Gruppeneinstellungen bearbeiten'
-    edit_subgroup_heading: 'Untergruppeneinstellungen bearbeiten'
-    group_name: 'Name der Gruppe'
+    new_group: Neue Gruppe
+    new_subgroup: Neue Untergruppe
+    start_group_heading: Gruppe erstellen
+    start_subgroup_heading: Untergruppe erstellen
+    edit_group_heading: Gruppeneinstellungen bearbeiten
+    edit_subgroup_heading: Untergruppeneinstellungen bearbeiten
+    group_settings: Gruppen-Einstellungen
+    group_name: Gruppen-Name
+    subgroup_name: Untergruppenname
     handle: Kürzel
     group_handle_placeholder: "Für URL und E-Mail, z. B. loomio.org/kuerzel und kuerzel@loomio.org"
-    organization_name: 'Name der Organisation'
     start_organization_heading: Neue Organisation
     edit_organization_heading: Organisationseinstellungen ändern
     group_name_placeholder: 'Wie heißt deine Gruppe?'
     organization_name_placeholder: 'Wie heißt deine Organisation?'
-    subgroup_name: 'Name der Untergruppe'
     description: 'Beschreibung'
     description_placeholder: 'Beschreibe die Zielsetzung der Gruppe, damit die Mitglieder wissen, weshalb sie hier sind.'
     privacy_statement:
@@ -1245,7 +1249,7 @@ de:
     comment: Kommentieren
     facilitate: Ermöglichen
   thread_group:
-    aria_label: 'Gruppen-Name'
+    aria_label: Gruppen-Name
   thread_context:
     item_maybe_deleted: "Konnte nicht die gewünschte Stelle in der Diskussion finden. Vielleicht wurde sie gelöscht."
     aria_label: 'Diskussionsbeschreibung'
@@ -1919,6 +1923,10 @@ de:
     validation_error: Bitte fülle alle notwendigen Felder aus.
     success: Vielen Dank!
     categories:
+      party: Politische Partei
+      coop: Genossenschaft
+      union: Gewerkschaft
+      community: Community-Gruppe
       government: Regierung/Örtliche Regierung
       other: Andere
     sizes:

@@ -5,6 +5,7 @@ da:
         make_decision: Opret en beslutning
   plan_names:
     free: Gratis
+    pro: Pro
   subscription_status:
     members: "Medlemmer"
   loomio_tags:
@@ -401,14 +402,14 @@ da:
     question: 'Er du sikker på at du vil deaktivere denne gruppe?'
     submit: 'Ja, deaktiver denne gruppe'
   group_form:
-    aria_label: 'Gruppe formular'
-    start_group_heading: 'Opret en gruppe'
-    start_subgroup_heading: 'Opret en undergruppe'
-    edit_group_heading: 'Rediger gruppe indstillinger'
-    edit_subgroup_heading: 'Rediger undergruppe indstillinger'
-    group_name: 'Gruppenavn'
+    aria_label: Gruppe formular
+    new_group: Ny gruppe
+    start_group_heading: Opret en gruppe
+    start_subgroup_heading: Opret en undergruppe
+    edit_group_heading: Rediger gruppe indstillinger
+    edit_subgroup_heading: Rediger undergruppe indstillinger
+    group_name: Gruppenavn
     group_name_placeholder: 'Hvad er navnet på din gruppe?'
-    subgroup_name: 'Undergruppe navn'
     description: 'Beskrivelse'
     description_placeholder: 'Beskriv formålet med denne  gruppe så at gruppens medlemmer ved hvorfor de er her.'
     privacy_statement:
@@ -610,7 +611,7 @@ da:
       image_alt: 'Vedhæftet billede'
     comment: Kommenter
   thread_group:
-    aria_label: 'Gruppenavn'
+    aria_label: Gruppenavn
   thread_context:
     aria_label: 'Debat beskrivelse'
     thread_options: 'Debatindstillinger'
@@ -868,6 +869,7 @@ da:
     name_label: Navn
   group_survey:
     categories:
+      community: Lokalgruppe
       other: Andre
     uses:
       other: Andre

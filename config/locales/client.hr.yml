@@ -35,6 +35,9 @@ hr:
       email_settings: 'Postavke e-maila'
       leave_group: 'Napusti grupu'
   group_form:
+    new_group: Nova grupa
+    group_settings: Uredi postavke grupe
+    group_name: Ime grupe
     profile: Profil
   membership_requests_page:
     ignore: Ignoriraj
@@ -45,7 +48,7 @@ hr:
   profile_page:
     profile: 'Profil'
   thread_group:
-    aria_label: 'Ime grupe'
+    aria_label: Ime grupe
   delete_comment_dialog:
     title: 'Obriši komentar'
     question: 'Jeste li sigurni da želite obrisati komentar?'

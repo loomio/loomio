@@ -1,7 +1,6 @@
 cs:
   loomio_onboarding:
     group_progress_card:
-      title: Aktivovat svou skupinu
       activities:
         set_description: Nastavit popis skupiny
         invite_people_in: Pozvat lidi k účasti
@@ -10,6 +9,7 @@ cs:
       dismiss_this_card: Tuto kartu zamítnout
   plan_names:
     free: Bezplatný
+    pro: Profesionální
   current_plan_button:
     upgrade: Zdokonalená verze
   subscription_status:
@@ -401,13 +401,15 @@ cs:
     question: 'Opravdu chcete deaktivovat tuto skupinu?'
     submit: 'Ano, deaktivovat tuto skupinu'
   group_form:
-    start_group_heading: 'Vytvořit skupinu'
-    start_subgroup_heading: 'Vytvořit podskupinu'
-    edit_group_heading: 'Upravit nastavení skupiny'
-    edit_subgroup_heading: 'Upravit nastavení podskupiny'
-    group_name: 'Název skupiny'
+    new_group: Nová skupina
+    start_group_heading: Vytvořit skupinu
+    start_subgroup_heading: Vytvořit podskupinu
+    edit_group_heading: Upravit nastavení skupiny
+    edit_subgroup_heading: Upravit nastavení podskupiny
+    group_settings: Nastavení skupiny
+    group_name: Název skupiny
+    subgroup_name: Název podskupiny
     group_name_placeholder: 'Jaký je název vaší skupiny?'
-    subgroup_name: 'Název podskupiny'
     description: 'Popis'
     description_placeholder: 'Můžete popsat účel vaší skupiny, takže Vaši členové skupiny budou vědět, proč jsou tady.'
     privacy: 'Soukromí'
@@ -553,7 +555,7 @@ cs:
       image_alt: 'Přiložený obrázek'
     comment: Komentář
   thread_group:
-    aria_label: 'Název skupiny'
+    aria_label: Název skupiny
   thread_context:
     aria_label: 'Kontext tématu'
     thread_options: 'Možnosti tématu'
@@ -716,6 +718,7 @@ cs:
     name_label: Název
   group_survey:
     categories:
+      community: Komunitní skupiny
       other: Ostatní
     uses:
       other: Ostatní

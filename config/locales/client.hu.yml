@@ -1,7 +1,6 @@
 hu:
   loomio_onboarding:
     group_progress_card:
-      title: Aktiváld a csoportodat
       activities:
         set_description: Állítsd be a csoportod leírását
         invite_people_in: Hívj meg embereket
@@ -12,6 +11,8 @@ hu:
   plan_names:
     free: Ingyenes
     trial: Próbaidőszak
+    pro: Pro
+    community: Közösség
     small: Kicsi
     medium: Közepes
     large: Nagy
@@ -724,19 +725,20 @@ hu:
     question: 'Biztosan kikapcsolja ezt a csoportot?'
     submit: 'Igen, deaktiválja ezt a csoportot'
   group_form:
-    aria_label: 'Csoport forma'
+    aria_label: Csoport forma
     new_organisation: Új szervezet
-    start_group_heading: 'Indíts egy csoportot'
-    start_subgroup_heading: 'Indíts egy alcsoportot'
-    edit_group_heading: 'A csoportbeállítások szerkesztése'
-    edit_subgroup_heading: 'Az alcsoport beállításainak szerkesztése'
-    group_name: 'Csoport név'
-    organization_name: 'Szervezet neve'
+    new_group: Új csoport
+    new_subgroup: Új alcsoport
+    start_group_heading: Indíts egy csoportot
+    start_subgroup_heading: Indíts egy alcsoportot
+    edit_group_heading: A csoportbeállítások szerkesztése
+    edit_subgroup_heading: Az alcsoport beállításainak szerkesztése
+    group_settings: Csoport beállítások
+    group_name: Csoport neve
     start_organization_heading: Új szervezet
     edit_organization_heading: Szervezet beállításainak szerkesztése
     group_name_placeholder: 'Csoportod neve?'
     organization_name_placeholder: 'Mi a szervezeted neve?'
-    subgroup_name: 'Alcsoport neve'
     description: 'Leírás'
     description_placeholder: 'Mutassa be csoportjának célját, hogy a csoport tagjai tudják, miért vannak itt.'
     privacy_statement:
@@ -1054,7 +1056,7 @@ hu:
     comment: Megjegyzés
     facilitate: Döntéstámogatás
   thread_group:
-    aria_label: 'Csoport neve'
+    aria_label: Csoport neve
   thread_context:
     aria_label: 'Téma háttere'
     thread_options: 'Téma beállítások'
@@ -1612,6 +1614,7 @@ hu:
   group_survey:
     success: Köszi!
     categories:
+      community: Közösségi csoport
       other: Egyéb
     uses:
       other: Egyéb

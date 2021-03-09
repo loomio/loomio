@@ -1,7 +1,6 @@
 fr:
   loomio_onboarding:
     group_progress_card:
-      title: Activez votre groupe
       activities:
         set_description: Saisissez une description pour votre groupe
         set_cover_photo: Envoyez une image de couverture ainsi qu'un logo pour votre groupe
@@ -14,6 +13,8 @@ fr:
   plan_names:
     free: Gratuit
     trial: Essai
+    pro: Pro
+    community: Communauté
     small: Petite
     medium: Moyenne
     large: Grande
@@ -21,6 +22,7 @@ fr:
     yearly: Annuel
   current_plan_button:
     upgrade: Changer d'offre
+    buy_now: Acheter maintenant
     free_trial: Essai gratuit.  {{days}} jours restants.
     trial_expired: Votre période d'essai est terminé. Passez dès maintenant en version premium pour continuer à utiliser Loomio en toute tranquillité.
     tooltip: "Nos prix sont imbattables ! Passez en version premium dès aujourd'hui et profitez de toutes les fonctionnalités de Loomio pour votre travail en groupe."
@@ -949,21 +951,22 @@ fr:
     permissions_explaination: |
         Une personne peut avoir deux niveaux d'adhésion dans un groupe: administrateur ou membre.
         Les administrateurs peuvent modifier les paramètres du groupe, nommer d'autres administrateurs et faire les actions suivantes:
-    aria_label: 'Forme du groupe'
-    new_organisation: Nouvelle organisation
-    start_group_heading: 'Créer un groupe'
-    start_subgroup_heading: 'Créer un sous-groupe'
-    edit_group_heading: 'Modifier les paramètres du groupe'
-    edit_subgroup_heading: 'Modifier les paramètres du sous-groupe'
-    group_name: 'Nom du groupe'
+    aria_label: Forme du groupe
+    new_organisation: Nouveau groupe
+    new_group: Nouveau groupe
+    new_subgroup: Nouveau sous-groupe
+    start_group_heading: Créer un groupe
+    start_subgroup_heading: Créer un sous-groupe
+    edit_group_heading: Modifier les paramètres du groupe
+    edit_subgroup_heading: Modifier les paramètres du sous-groupe
+    group_name: Nom du groupe
+    subgroup_name: Nom du sous-groupe
     handle: Gérer
     group_handle_placeholder: "Pour l'adresse URL et l'e-mail, par ex. loomio.org/handle et handle@loomio.org"
-    organization_name: 'Nom de l''organisation'
     start_organization_heading: Nouveau groupe
     edit_organization_heading: Modifier les paramètres de l'organisation
     group_name_placeholder: 'Quel est le nom de votre groupe ?'
     organization_name_placeholder: 'Quel est le nom de votre organisation ?'
-    subgroup_name: 'Nom du sous-groupe'
     description: 'Description'
     description_placeholder: 'Utilisez cet espace pour décrire le but de votre groupe afin que vos membres sachent pourquoi ils sont là.'
     privacy_statement:
@@ -1332,7 +1335,7 @@ fr:
     comment: Ajouter un commentaire
     facilitate: 'Simplifier '
   thread_group:
-    aria_label: 'Nom du groupe'
+    aria_label: Nom du groupe
   thread_context:
     current_poll_type_banner: '{{pollType}} actuel.'
     item_maybe_deleted: "Impossible de trouver l'emplacement demandé dans le fil de discussion. Il a peut-être été supprimé."
@@ -2065,10 +2068,10 @@ fr:
     validation_error: Merci de remplir tous les champs obligatoires.
     success: Merci!
     categories:
-      member: Organisations de services aux membres (par exemple, partis, coopératives, syndicats)
-      nonprofit: Organisations à but non lucratif, ONG et groupes communautaires
-      professional: Équipes et entreprises de services professionnels
-      board: Conseils et comités
+      party: Parti politique
+      coop: Cooperative
+      union: Syndicat
+      community: Groupe communautaire
       government: Gouvernement ou collectivités locales
       other: Autre
     sizes:

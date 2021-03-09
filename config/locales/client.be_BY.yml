@@ -103,6 +103,8 @@ be_BY:
       quiet: Не дасылаць лісты пра гэту групу. Яе дзейнасць будзе бачна на галоўнай старонцы.
       mute: Прыбраць гэту групу з галоўнай старонкі і нагадваць толькі калі @mentioned.
   group_form:
+    new_group: Новая група
+    group_name: Назва групы
     group_name_placeholder: 'Як завецца Вашая група?'
     description_placeholder: 'Апішыце мэты вашай групы, каб чальцы групы ведалі, навошта яны тут.'
     profile: Профіль
@@ -143,7 +145,7 @@ be_BY:
   activity_card:
     context: Апісанне
   thread_group:
-    aria_label: 'Назва групы'
+    aria_label: Назва групы
   thread_context:
     close_thread: 'Зачыніць'
   delete_comment_dialog:
@@ -186,6 +188,7 @@ be_BY:
     name_label: Імя
   group_survey:
     categories:
+      community: Група супольнасці
       other: Іншы
     uses:
       other: Іншы

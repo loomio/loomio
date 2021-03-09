@@ -1,7 +1,6 @@
 eo:
   loomio_onboarding:
     group_progress_card:
-      title: Ŝalti vian grupon
       activities:
         set_description: Grupa priskribo
         invite_people_in: Inviti homojn
@@ -383,6 +382,9 @@ eo:
       email_settings: 'Retpoŝtaj preferoj'
       leave_group: 'Elirii grupon'
   group_form:
+    new_group: Nova grupo
+    new_subgroup: Nova subgrupo
+    group_name: Grupnomo
     group_name_placeholder: 'Kio estas la nomo de via grupo?'
     privacy_statement:
       private_to_group: 'Nur membroj povos vidi la nomon kaj la priskribon.'
@@ -460,7 +462,7 @@ eo:
     context: Kunteksto
     comment: Komenti
   thread_group:
-    aria_label: 'Grupnomo'
+    aria_label: Grupnomo
   thread_context:
     edit: 'Redakti'
     edit_thread: 'Redakti'
@@ -626,6 +628,7 @@ eo:
     link: Bonvolu komuti al alia retumilo
   group_survey:
     categories:
+      community: Komunuma grupo
       other: Alia
     uses:
       other: Alia

@@ -65,6 +65,9 @@ km:
       edit_group: 'កំណត់ការកែសម្រួលក្រុម'
       email_settings: 'ចំណង់ចំណូលចិត្តអ៊ីម៉ែល '
       leave_group: 'ចាកចេញពីក្រុម'
+  group_form:
+    new_group: ក្រុមថ្មី
+    group_name: ឈ្មោះក្រុម
   membership_requests_page:
     approve: 'អនុម័ត '
     ignore: មិនអើពើ
@@ -81,7 +84,7 @@ km:
   activity_card:
     context: 'បរិបទ '
   thread_group:
-    aria_label: 'ឈ្មោះក្រុម'
+    aria_label: ឈ្មោះក្រុម
   thread_context:
     close_thread: 'បិទ'
   delete_comment_dialog:

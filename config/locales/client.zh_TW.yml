@@ -1,7 +1,6 @@
 zh_TW:
   loomio_onboarding:
     group_progress_card:
-      title: 啟用您的群組
       activities:
         set_description: 設定您的群組描述
         set_cover_photo: 為您的群組上傳封面圖片與圖示
@@ -14,6 +13,8 @@ zh_TW:
   plan_names:
     free: 免費
     trial: 試用
+    pro: 專業
+    community: 社群
     small: 小
     medium: 中
     large: 大
@@ -954,21 +955,23 @@ zh_TW:
     permissions_explaination: |
         群組中一個人可能會有兩種成員等級：管理員與成員
         管理員可以編輯群組設定，讓其他夥伴成為管理員，並執行以下列出的所有動作。
-    aria_label: '群組表單'
+    aria_label: 群組表單
     new_organisation: 新組織
-    start_group_heading: '啟動群組'
-    start_subgroup_heading: '啟動子群組'
-    edit_group_heading: '編輯群組設定'
-    edit_subgroup_heading: '編輯子群組設定'
-    group_name: '群組名稱'
+    new_group: 新增群組
+    new_subgroup: 新的子群組
+    start_group_heading: 啟動群組
+    start_subgroup_heading: 啟動子群組
+    edit_group_heading: 編輯群組設定
+    edit_subgroup_heading: 編輯子群組設定
+    group_settings: 群組設定
+    group_name: 群組名稱
+    subgroup_name: 子群組名稱
     handle: 處理
     group_handle_placeholder: "對於 URL 與電子郵件來說，例如 loomio.org/handle 與 handle@loomio.org"
-    organization_name: '組織名稱'
     start_organization_heading: 新組織
     edit_organization_heading: 編輯組織設定
     group_name_placeholder: '您的群組的名稱是？'
     organization_name_placeholder: '您的組織的名字是什麼？'
-    subgroup_name: '子群組名稱'
     description: '描述'
     description_placeholder: '描述群組的目的讓您的夥伴們知道他們為什麼在這裡。'
     privacy_statement:
@@ -1345,7 +1348,7 @@ zh_TW:
     comment: 意見
     facilitate: 促進
   thread_group:
-    aria_label: '群組名稱'
+    aria_label: 群組名稱
   thread_context:
     current_poll_type_banner: 目前的 {{pollType}}
     item_maybe_deleted: "在討論串找不到請求的位置。他可能已被刪除。"
@@ -2087,10 +2090,10 @@ zh_TW:
     validation_error: 請填寫所有必填欄位。
     success: 感謝您！
     categories:
-      member: 會員服務組織（政黨、合作社、公會）
-      nonprofit: 非營利組織、非政府組織與社群群組
-      professional: 專業服務團隊與公司
-      board: 董事會與委員會
+      party: 政黨
+      coop: 合作社
+      union: 聯盟
+      community: 社群團體
       government: 政府／地方政府
       other: 其他
     sizes:

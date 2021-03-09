@@ -141,6 +141,8 @@ sr_RS:
     aria_label: 'Деактивирај Групу'
     title: 'Деактивирај Групу'
   group_form:
+    new_group: Нова група
+    group_name: Назив групе
     description: 'Опис'
     privacy: 'Приватност'
     profile: Профил
@@ -187,7 +189,7 @@ sr_RS:
   activity_card:
     context: Контекст
   thread_group:
-    aria_label: 'Назив групе'
+    aria_label: Назив групе
   thread_context:
     edit: 'Уреди'
     edit_thread: 'Уреди'
@@ -242,3 +244,6 @@ sr_RS:
     email: еПорука
   webhook:
     name_label: Име
+  group_survey:
+    categories:
+      community: Група заједнице

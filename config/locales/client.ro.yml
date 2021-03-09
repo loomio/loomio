@@ -1,7 +1,6 @@
 ro:
   loomio_onboarding:
     group_progress_card:
-      title: Activeaza grupul tau
       activities:
         set_description: Seteaza descrierea grupului
         invite_people_in: Invita participanti
@@ -415,6 +414,10 @@ ro:
       mute: Ascunde acest grup din tabloul de comanda si notifica doar cand @va mentiona.
       mute_aria_description: Volumul notificarilor pentru aceast grup este pozitionat la Dezactivat. Vei primi email despre aceasta discutie doar cand cineva mentioneaza numele tau, iar activitatea grupului nu va fi afisata in tabloul tau de bord.
   group_form:
+    new_group: Grup nou
+    new_subgroup: Grup nou subordonat
+    group_settings: Setarile grupului
+    group_name: Numele grupului
     group_name_placeholder: 'Cum se va numi grupul tău?'
     privacy: 'Confidentialitate'
     confirm_change_to_secret: "Daca vei continua, toate discutiile acestui grup precum si sub-grupurile lui vor deveni private."
@@ -490,7 +493,7 @@ ro:
     context: Context
     comment: Comenteaza
   thread_group:
-    aria_label: 'Numele grupului'
+    aria_label: Numele grupului
   thread_context:
     aria_label: 'Contextul discutiei'
     thread_options: 'Optiunile discutiei'
@@ -577,6 +580,7 @@ ro:
   group_survey:
     success: Multumim!
     categories:
+      community: Comunitate
       other: Altele
     uses:
       other: Altele

@@ -1,7 +1,6 @@
 pt_BR:
   loomio_onboarding:
     group_progress_card:
-      title: Ativar seu grupo
       activities:
         set_description: Defina a descrição do seu grupo
         invite_people_in: Convide pessoas
@@ -13,6 +12,8 @@ pt_BR:
   plan_names:
     free: Grátis
     trial: Teste
+    pro: Pro
+    community: Comunidade
     small: Pequeno
     medium: Médio
     large: Grande
@@ -817,21 +818,23 @@ pt_BR:
   group_form:
     thread_defaults_help: Configuração padrão para novas conversas
     click_to_change_image: Image da Capa e Logo (clicar para mudar)
-    aria_label: 'Formulário do grupo'
-    new_organisation: Nova Organização
-    start_group_heading: 'Iniciar um grupo'
-    start_subgroup_heading: 'Iniciar um subgrupo'
-    edit_group_heading: 'Editar configurações do grupo'
-    edit_subgroup_heading: 'Editar configurações do subgrupo'
-    group_name: 'Nome do Grupo'
+    aria_label: Formulário do grupo
+    new_organisation: Nova organização
+    new_group: Novo grupo
+    new_subgroup: Novo subgrupo
+    start_group_heading: Iniciar um grupo
+    start_subgroup_heading: Iniciar um subgrupo
+    edit_group_heading: Editar configurações do grupo
+    edit_subgroup_heading: Editar configurações do subgrupo
+    group_settings: Configurações do grupo
+    group_name: Nome do grupo
+    subgroup_name: Nome do subgrupo
     handle: Sigla da organização
     group_handle_placeholder: "Para um URL ou email e.x. loomio.org/sigla ou sigla@loomio.org"
-    organization_name: 'Nome da organização'
     start_organization_heading: Nova organização
     edit_organization_heading: Editar configurações da organização
     group_name_placeholder: 'Qual é o nome do seu grupo?'
     organization_name_placeholder: 'Qual é o nome da sua organização'
-    subgroup_name: 'Nome do Subgrupo'
     description: 'Descrição'
     description_placeholder: 'Descreva o propósito do seu grupo para que seus membros saibam a razão de estarem aqui.'
     privacy_statement:
@@ -1175,7 +1178,7 @@ pt_BR:
     comment: 'Comentario '
     facilitate: Facilitar
   thread_group:
-    aria_label: 'Nome do grupo'
+    aria_label: Nome do grupo
   thread_context:
     item_maybe_deleted: "Não foi possível encontrar esse momento na conversa. Talvez ele foi apagado."
     aria_label: 'Contexto da conversa'
@@ -1795,6 +1798,10 @@ pt_BR:
     validation_error: Por favor, preencha todos os campos obrigatórios
     success: Obrigado!
     categories:
+      party: Partido político
+      coop: Cooperativa
+      union: Sindicato
+      community: Grupo comunitário
       government: Governo/Governo local
       other: Outro
     sizes:

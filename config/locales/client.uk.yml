@@ -1,7 +1,6 @@
 uk:
   loomio_onboarding:
     group_progress_card:
-      title: Активуйте свою групу
       activities:
         set_description: Додайте опис для групи
         invite_people_in: Запросіть людей долучитись
@@ -13,6 +12,8 @@ uk:
   plan_names:
     free: Безкоштовний
     trial: Пробний
+    pro: Професійний
+    community: Спільнота
     small: Малий
     medium: Середній
     large: Великий
@@ -772,21 +773,22 @@ uk:
     submit: 'Так, відключити групу'
   group_form:
     click_to_change_image: Зображення для обкладинки та логотип (натисніть, щоб змінити)
-    aria_label: 'Форма для створення групи'
+    aria_label: Форма для створення групи
     new_organisation: Нова організація
-    start_group_heading: 'Створити групу'
-    start_subgroup_heading: 'Створити підгрупу'
-    edit_group_heading: 'Редагувати налаштування групи'
-    edit_subgroup_heading: 'Редагувати налаштування підгрупи'
-    group_name: 'Назва групи'
+    new_group: Нова група
+    new_subgroup: Нова підгрупа
+    start_group_heading: Створити групу
+    start_subgroup_heading: Створити підгрупу
+    edit_group_heading: Редагувати налаштування групи
+    edit_subgroup_heading: Редагувати налаштування підгрупи
+    group_name: Назва групи
+    subgroup_name: Назва підгрупи
     handle: Регулювання
     group_handle_placeholder: "Для URL та пошти, наприклад loomio.org/handle та handle@loomio.org"
-    organization_name: 'Назва організації'
     start_organization_heading: Нова організація
     edit_organization_heading: Редагувати налаштування організації
     group_name_placeholder: 'Назва вашої групи?'
     organization_name_placeholder: 'Назва вашої організації?'
-    subgroup_name: 'Назва підгрупи'
     description: 'Опис'
     description_placeholder: 'Опишіть призначення вашої групи, щоб учасники групи розуміли, чому вони тут.'
     privacy_statement:
@@ -1121,7 +1123,7 @@ uk:
     comment: Коментар
     facilitate: Сприяти
   thread_group:
-    aria_label: 'Назва групи'
+    aria_label: Назва групи
   thread_context:
     item_maybe_deleted: "Не вдається знайти запитуване місце в темі. Можливо, його було видалено."
     aria_label: 'Контекст теми'
@@ -1705,6 +1707,7 @@ uk:
     front_page: Перша сторінка
   group_survey:
     categories:
+      community: Громадська група
       other: Інше
     uses:
       other: Інше

@@ -1,7 +1,6 @@
 ca:
   loomio_onboarding:
     group_progress_card:
-      title: Activeu el vostre grup
       activities:
         set_description: Configureu la descripció del grup
         set_cover_photo: Carregueu una foto de portada i un logotip per al grup
@@ -903,21 +902,21 @@ ca:
   group_form:
     thread_defaults_help: Configuració predeterminada per fils nous
     click_to_change_image: Imatge de portada i logo (cliqueu per canviar-les)
-    aria_label: 'Formulari de grup'
+    aria_label: Formulari de grup
     new_organisation: Nova organització
-    start_group_heading: 'Crea un grup'
-    start_subgroup_heading: 'Crea un subgrup'
-    edit_group_heading: 'Edita la configuració del grup'
-    edit_subgroup_heading: 'Edita la configuració del subgrup'
-    group_name: 'Nom del grup'
+    new_group: Nou grup
+    new_subgroup: Nou subgrup
+    start_group_heading: Crea un grup
+    start_subgroup_heading: Crea un subgrup
+    edit_group_heading: Edita la configuració del grup
+    edit_subgroup_heading: Edita la configuració del subgrup
+    group_name: Nom del grup
     handle: Gestionar
     group_handle_placeholder: "URL i correu electrònic, per exemple: loomio.org/gestiona i gestiona@loomio.org"
-    organization_name: 'Nom de l''organització'
     start_organization_heading: Nova organització
     edit_organization_heading: Edita la configuració de l'organització
     group_name_placeholder: 'Quin és el nom del vostre grup?'
     organization_name_placeholder: 'Quin és el nom de la vostra organització?'
-    subgroup_name: 'Nom del subgrup'
     description: 'Descripció'
     description_placeholder: 'Descriviu el propòsit del grup per tal de que els membres el puguin conèixer.'
     privacy_statement:
@@ -1272,7 +1271,7 @@ ca:
     comment: Comentari
     facilitate: Organitza
   thread_group:
-    aria_label: 'Nom del grup'
+    aria_label: Nom del grup
   thread_context:
     current_poll_type_banner: '{{pollType}} actual'
     item_maybe_deleted: "No s'ha trobat la localització que cercàveu dins del fil. Potser ha estat eliminada."
@@ -1983,10 +1982,7 @@ ca:
     validation_error: Ompliu tots els camps obligatoris.
     success: Gràcies!
     categories:
-      member: 'Organitzacions per al servei dels membres (p.ex: festes, cooperatives, sindicats)'
-      nonprofit: Organitzacions sense ànim de lucre, ONGs i grups comunitaris
-      professional: Empreses i equips de serveis professionals
-      board: Juntes i comitès
+      community: Comunitat
       government: Govern/Govern local
       other: Altres
     sizes:

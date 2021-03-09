@@ -80,6 +80,8 @@ an:
       email_settings: 'Preferencias de correu electronico '
       leave_group: 'Abandonar grupo'
   group_form:
+    new_group: Nuevo grupo
+    group_name: Nombre d'o grupo
     group_name_placeholder: 'Quál ye o nombre d''o tuyo grupo?'
     profile: Perfil
   membership_requests_page:
@@ -111,7 +113,7 @@ an:
   activity_card:
     context: Contexto
   thread_group:
-    aria_label: 'Nombre d''o grupo'
+    aria_label: Nombre d'o grupo
   thread_context:
     close_thread: 'Zarrar'
   delete_comment_dialog:
@@ -154,6 +156,7 @@ an:
     name_label: Nombre
   group_survey:
     categories:
+      community: Comunidat
       other: Unatro
     uses:
       other: Unatro

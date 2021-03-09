@@ -79,6 +79,8 @@ gl:
       email_settings: 'Preferencias de correo'
       leave_group: 'Deixar grupo'
   group_form:
+    new_group: Novo grupo
+    group_name: Nome do grupo
     group_name_placeholder: 'Cal é o nome do teu grupo?'
     profile: Perfil
   membership_requests_page:
@@ -109,7 +111,7 @@ gl:
   activity_card:
     context: Contexto
   thread_group:
-    aria_label: 'Nome do grupo'
+    aria_label: Nome do grupo
   thread_context:
     close_thread: 'Pechar'
   delete_comment_dialog:
@@ -148,6 +150,7 @@ gl:
     name_label: Nome
   group_survey:
     categories:
+      community: Comunidade
       other: Outro
     uses:
       other: Outro

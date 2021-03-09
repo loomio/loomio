@@ -1,7 +1,6 @@
 ar:
   loomio_onboarding:
     group_progress_card:
-      title: قم بتنشيط فريقك
       activities:
         set_description: ضع وصف لمجموعتك
         set_cover_photo: قم بتحميل صورة الغلاف والشعار لمجموعتك
@@ -14,6 +13,8 @@ ar:
   plan_names:
     free: مجاني
     trial: محاكمة
+    pro: خبير
+    community: المجتمع
     small: صغير
     medium: وسط
     large: كبير
@@ -21,6 +22,7 @@ ar:
     yearly: سنويا
   current_plan_button:
     upgrade: تحديث
+    buy_now: اشتري الآن
     free_trial: تجربة مجانا. {{أيام}} أيم متبقية.
     trial_expired: انتهت فترة التجربة الخاصة بك. قم بالتحديث للمتابعة.
     tooltip: "أسعارانا رائعة! قم بالتحديث اليوم واستمتع بما يمكن أن يقدمه Loomio لمجموعتك."
@@ -907,21 +909,21 @@ ar:
   group_form:
     thread_defaults_help: الإعدادات الافتراضية للمواضيع الجديدة
     click_to_change_image: صورة الغلاف والشعار (انقر للتغيير)
-    aria_label: 'شكل المجموعة'
+    aria_label: شكل المجموعة
     new_organisation: منظمة جديدة
-    start_group_heading: 'إبدأ مجموعة'
-    start_subgroup_heading: 'إبدأ مجموعة فرعية.'
-    edit_group_heading: 'تعديل إعدادات المجموعة'
-    edit_subgroup_heading: 'تعديل إعدادات المجموعة الفرعية'
-    group_name: 'اسم المجموعة'
+    new_group: مجموعة جديدة
+    new_subgroup: مجموعة فرعية جديدة
+    start_group_heading: إبدأ مجموعة
+    start_subgroup_heading: إبدأ مجموعة فرعية.
+    edit_group_heading: تعديل إعدادات المجموعة
+    edit_subgroup_heading: تعديل إعدادات المجموعة الفرعية
+    group_name: اسم الفريق
     handle: عالج موضوعا
     group_handle_placeholder: "لعنوان URL والبريد الإلكتروني ، على سبيل المثال loomio.org/handle و handle@loomio.org"
-    organization_name: 'اسم المنظمة'
     start_organization_heading: منظمة جديدة
     edit_organization_heading: تحرير إعدادات المنظمة
     group_name_placeholder: 'ما اسم مجموعتك؟'
     organization_name_placeholder: 'ما هو اسم مؤسستك؟'
-    subgroup_name: 'اسم المجموعة الفرعية'
     description: 'وصف '
     description_placeholder: 'قم بوصف هدف هذه المجموعة ليستطيع أعضاء مجموعتك معرفة لماذا هم هنا.'
     privacy_statement:
@@ -1276,7 +1278,7 @@ ar:
     comment: تعليق
     facilitate: تسهيل
   thread_group:
-    aria_label: 'اسم المجموعة'
+    aria_label: اسم المجموعة
   thread_context:
     current_poll_type_banner: '{{نوع الاستطلاع}} الحالي'
     item_maybe_deleted: "لا يمكن العثور على الموقع المطلوب داخل سلسلة الرسائل. قد تم حذفه."
@@ -1974,10 +1976,10 @@ ar:
     validation_error: يرجى ملء جميع الحقول المطلوبة.
     success: شكرا جزيلا!
     categories:
-      member: منظمات خدمة الأعضاء (على سبيل المثال ، الأحزاب ، التعاونيات ، النقابات)
-      nonprofit: المنظمات غير الربحية والمنظمات غير الحكومية والمجموعات المجتمعية
-      professional: فرق وشركات الخدمة المهنية
-      board: المجالس واللجان
+      party: 'حزب سياسي '
+      coop: 'تعاوني '
+      union: 'اتحاد '
+      community: مجتمع محلي
       government: الحكومة / الحكومة المحلية
       other: اخر
     sizes:
