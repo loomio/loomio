@@ -40,7 +40,8 @@ v-autocomplete.announcement-form__input(
     v-list-item
       v-list-item-content
         v-list-item-title
-          span(v-t="'loomio_tags.no_tags_in_group'")
+          span(v-if="model.group().parentOrSelf().tags().length == 0" v-t="'loomio_tags.no_tags_in_group'")
+          span(v-if="model.group().parentOrSelf().tags().length" v-t="'common.no_results_found'")
   template(v-slot:selection='data')
     v-chip.chip--select-multi(
       :value='data.item.id'

@@ -228,11 +228,12 @@ export default
               []
 
           groups.filter(AbilityService.canNotifyGroup).forEach (group) =>
-            ret.push
-              id: "group-#{group.id}"
-              name: @$t('announcement.audiences.group', name: group.name)
-              size: group.acceptedMembershipsCount
-              icon: 'mdi-forum'
+            if group.acceptedMembershipsCount
+              ret.push
+                id: "group-#{group.id}"
+                name: @$t('announcement.audiences.group', name: group.name)
+                size: group.acceptedMembershipsCount
+                icon: 'mdi-forum'
 
       ret.filter (a) =>
         !@excludedAudiences.includes(a.id) &&

@@ -168,7 +168,7 @@ export default
       filter(@discussions, (discussion) -> discussion.isUnread()).length
 
     suggestClosedThreads: ->
-      @loader.exhausted && ['undefined', 'open', 'unread'].includes(String(@$route.query.t))
+      @loader.exhausted && ['undefined', 'open', 'unread'].includes(String(@$route.query.t)) && @group && @group.closedDiscussionsCount
 
 </script>
 
@@ -216,13 +216,13 @@ div.discussions-panel(v-if="group")
             thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in pinnedDiscussions" :key="thread.id" :thread="thread" group-page)
             thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in regularDiscussions" :key="thread.id" :thread="thread" group-page)
 
-          .d-flex.justify-center
-            .d-flex.flex-column.align-center
-              .text--secondary
-                | {{discussions.length}} / {{loader.total}}
-              v-btn.my-2.discussions-panel__show-more(outlined color='accent' v-if="discussions.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="fetch()")
-                span(v-t="'common.action.load_more'")
-              router-link.discussions-panel__view-closed-threads.text-center.pa-1(:to="'?t=closed'" v-if="suggestClosedThreads" v-t="'group_page.view_closed_threads'")
+        .d-flex.justify-center
+          .d-flex.flex-column.align-center
+            .text--secondary
+              | {{discussions.length}} / {{loader.total}}
+            v-btn.my-2.discussions-panel__show-more(outlined color='accent' v-if="discussions.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="fetch()")
+              span(v-t="'common.action.load_more'")
+            router-link.discussions-panel__view-closed-threads.text-center.pa-1(:to="'?t=closed'" v-if="suggestClosedThreads" v-t="'group_page.view_closed_threads'")
 
       .discussions-panel__content.pa-4(v-if="$route.query.q")
         p.text-center.discussions-panel__list--empty(v-if='!searchResults.length && !searchLoader.loading' v-t="{path: 'discussions_panel.no_results_found', args: {search: $route.query.q}}")

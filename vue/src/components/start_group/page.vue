@@ -9,6 +9,8 @@ import _isEmpty     from 'lodash/isEmpty'
 
 export default
   mixins: [AuthModalMixin]
+  data: ->
+    group: Records.groups.build()
   mounted: ->
     @openAuthModal() unless Session.isSignedIn()
 </script>
@@ -16,5 +18,5 @@ export default
 <template lang="pug">
 v-main
   v-container.max-width-800.start-group-page
-    group-new-form
+    group-new-form(:group="group")
 </template>

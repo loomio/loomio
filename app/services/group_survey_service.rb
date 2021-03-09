@@ -1,5 +1,4 @@
 class GroupSurveyService
-
   def self.create(params:, actor:)
     group = Group.find(params[:group_id])
     actor.ability.authorize! :create, group

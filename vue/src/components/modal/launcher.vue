@@ -30,7 +30,6 @@ import PinEventForm from '@/components/thread/pin_event_form'
 import MoveCommentsModal from '@/components/discussion/move_comments_modal'
 import ExportDataModal from '@/components/group/export_data_modal'
 import InstallSamlProviderModal from '@/components/install_saml_provider/modal'
-import GroupSurvey from '@/components/group/survey'
 import AddPollToThreadModal from '@/components/poll/add_to_thread_modal'
 import StrandMembersList from '@/components/strand/members_list'
 import SeenByModal from '@/components/strand/seen_by_modal'
@@ -72,7 +71,6 @@ export default
     MoveCommentsModal
     ExportDataModal
     InstallSamlProviderModal
-    GroupSurvey
     AddPollToThreadModal
     StrandMembersList
     PollMembers
