@@ -18,7 +18,7 @@ en:
     starter: Starter
     trial: Trial
     pro: Pro
-    pro_nonprofit: Pro Nonprofit
+    pro_nonprofit: Pro Non-Profit
     community: Community
     small: Small
     medium: Medium
@@ -1033,7 +1033,7 @@ en:
     new_organisation: New organization
     new_group: New group
     new_subgroup: New subgroup
-    new_group_explainer: Start a new Loomio group - an online home your organization's discussions and decisions
+    new_group_explainer: Start a new Loomio group - an online home for your organization's discussions and decisions
     new_subgroup_explainer: Start a subgroup within an existing group - a private space for a team of people from the organization
     start_group_heading: Start a group
     start_subgroup_heading: Start a subgroup
@@ -2281,7 +2281,7 @@ en:
       coop: Cooperative
       union: Union
       board: Board or committee
-      nonprofit: Nonprofit or NGO
+      nonprofit: Non-profit or NGO
       professional: Professional service company
       community: Community group
       government: Government/Local Government
