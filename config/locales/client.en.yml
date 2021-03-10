@@ -2139,15 +2139,15 @@ en:
     youre_invited_discussion: You have been invited to join the discussion.
     youre_invited_poll: You have been invited to vote.
     existing_account_can_sign_in: If you are already a {{site_name}} user, sign in with your existing account
-    sign_up_or_log_in: Sign up or log in to {{site_name}}
+    sign_up_or_log_in: Create account or sign in to {{site_name}}
     sign_in_to_loomio: Sign in to {{site_name}}
     sign_in_help: Trouble signing in?
     sign_in: Sign in
     continue: Continue
     create_account: Create account
-    sign_up_as: Sign up as {{email}}
+    sign_up_as: Create account as {{email}}
     sign_in_as: Sign in as {{name}}
-    continue_with_provider: Sign in with {{provider}}
+    continue_with_provider: Continue in with {{provider}}
     continue_with_email: Continue with email
     or_enter_your_email: Or, enter your email address
     enter_your_name: Enter your name
@@ -2188,7 +2188,7 @@ en:
     check_your_email: Check your email!
     login_link_sent: "We've sent an email to {{email}}."
     instructions: "Click the link to sign in, or enter the code below:"
-    too_many_attempts: "Too many attempts; try clicking the link in the email to log in."
+    too_many_attempts: "Too many attempts; try clicking the link in the email to sign in."
     invalid_code: "Sorry, that code didn't match. Check the email and try again."
     password_link_sent: "We've sent an email to {{email}} with instructions on how to set your password."
     reactivate_link_sent: "We've sent you an email with instructions to reactivate your account"
