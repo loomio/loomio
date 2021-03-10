@@ -2147,7 +2147,7 @@ en:
     create_account: Create account
     sign_up_as: Create account as {{email}}
     sign_in_as: Sign in as {{name}}
-    continue_with_provider: Continue in with {{provider}}
+    continue_with_provider: Continue with {{provider}}
     continue_with_email: Continue with email
     or_enter_your_email: Or, enter your email address
     enter_your_name: Enter your name
