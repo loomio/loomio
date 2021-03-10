@@ -41,7 +41,7 @@ export default
 <template lang="pug">
 v-card.auth-form
   v-card-title
-    h1.headline(tabindex="-1" role="status" aria-live="polite" v-t="{ path: 'auth_form.sign_in_to_loomio', args: { site_name: siteName } }")
+    h1.headline(tabindex="-1" role="status" aria-live="polite" v-t="{ path: 'auth_form.sign_up_or_log_in', args: { site_name: siteName } }")
     v-spacer
     dismiss-modal-button(v-if='!preventClose')
   v-sheet.py-4.pb-4
