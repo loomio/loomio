@@ -30,5 +30,5 @@ v-alert(outlined color="accent" dense v-if="isTrialing")
     v-spacer
     v-btn(color="accent" :href="'/upgrade/'+group.id" target="_blank" :title="$t('current_plan_button.tooltip')")
       v-icon mdi-rocket
-      span(v-t="'current_plan_button.buy_now'")
+      span(v-t="'current_plan_button.view_plans'")
 </template>

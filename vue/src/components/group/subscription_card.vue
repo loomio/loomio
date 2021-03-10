@@ -39,7 +39,7 @@ v-card.my-6(v-if="canSee" outlined)
           tr(v-for="(val, key) in tableData" :key="key" v-if="val")
             td(v-t="'subscription_status.' + key")
             td(v-html="val")
-  v-card-actions(v-if="showUpgradeButton")
+  v-card-actions
     v-spacer
-    v-btn(color="primary" href="/upgrade" target="_blank" v-t="'current_plan_button.upgrade'")
+    v-btn(color="primary" :href="'/upgrade/'+group.id" target="_blank" v-t="group.subscription.plan == 'trial' ? 'current_plan_button.upgrade' : 'current_plan_button.change_plan'")
 </template>
