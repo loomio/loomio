@@ -12,7 +12,8 @@ module Ability::Comment
     end
 
     can [:destroy, :discard, :undiscard], ::Comment do |comment|
-      (comment.author == user && comment.discussion.members.exists?(user.id)) or comment.discussion.admins.exists?(user.id)
+      (comment.author == user && comment.discussion.members.exists?(user.id) && comment.group.members_can_delete_comments) ||
+      comment.discussion.admins.exists?(user.id)
     end
 
     can [:show], ::Comment do |comment|
