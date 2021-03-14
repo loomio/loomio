@@ -7,8 +7,11 @@ import EventBus  from '@/shared/services/event_bus'
 # import HtmlEditor from './html_editor'
 import CollabEditor from './collab_editor'
 import MdEditor from './md_editor'
+import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service'
 
 export default
+
+
   props:
     model: Object
     field: String
@@ -22,6 +25,9 @@ export default
     # 'html-editor': HtmlEditor
     'md-editor': MdEditor
     'collab-editor': CollabEditor
+
+  mounted: ->
+    RescueUnsavedEditsService.add(@model)
 
   computed:
     format: ->
