@@ -51,10 +51,7 @@ export default class BaseModel
       else
         cloneAttributes[attr] = @[attr]
       true
-    cloneAttributes.cloney = true
-    cloneRecord = new @constructor(@recordsInterface, cloneAttributes)
-    cloneRecord.clonedFrom = @
-    cloneRecord
+    new @constructor(@recordsInterface, cloneAttributes)
 
   inCollection: =>
     @['$loki']# and @recordsInterface.collection.get(@['$loki'])
@@ -202,8 +199,6 @@ export default class BaseModel
       throw data
     else
       @unmodified = pick(@, @attributeNames)
-      @clonedFrom = undefined
-      console.log 'aftersave unmodified', @unmodified
       data
 
   clearErrors: ->
