@@ -82,7 +82,7 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
       span(v-if='outcome.isNew()' v-t="'poll_common_outcome_form.new_title'")
       span(v-if='!outcome.isNew()' v-t="'poll_common_outcome_form.update_title'")
     v-spacer
-    dismiss-modal-button(:close="close")
+    dismiss-modal-button(:model="outcome")
   .poll-common-outcome-form.px-4
     p(v-t="'announcement.form.outcome_announced.helptext'")
     recipients-autocomplete(

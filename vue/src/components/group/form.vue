@@ -131,7 +131,7 @@ v-card.group-form
       .group-form__group-title
         h1.headline(tabindex="-1" v-if='group.parentId', v-t="'group_form.subgroup_settings'")
         h1.headline(tabindex="-1" v-if='!group.parentId', v-t="'group_form.group_settings'")
-      dismiss-modal-button
+      dismiss-modal-button(:model="group")
   //- v-card-text
   v-tabs(fixed-tabs)
     v-tab(v-t="'group_form.profile'")

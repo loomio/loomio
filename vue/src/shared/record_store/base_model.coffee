@@ -201,6 +201,10 @@ export default class BaseModel
       @unmodified = pick(@, @attributeNames)
       data
 
+  discardChanges: ->
+    @attributeNames.forEach (key) =>
+      Vue.set(@, key, @unmodified[key])
+
   clearErrors: ->
     @errors = {}
 
