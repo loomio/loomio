@@ -30,7 +30,7 @@ v-card.poll-common-reopen-modal
   v-card-title
     h1.headline(tabindex="-1" v-t="{path: 'poll_common_reopen_form.title', args: {poll_type: poll.translatedPollType()}}")
     v-spacer
-    dismiss-modal-button(:close="close")
+    dismiss-modal-button
   v-card-text.poll-common-reopen-form
     span.text--secondary(v-t="{path: 'poll_common_reopen_form.helptext', args: {poll_type: poll.translatedPollType()}}")
     poll-common-closing-at-field(:poll='poll')
