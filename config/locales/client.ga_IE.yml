@@ -1,6 +1,7 @@
 ga_IE:
   plan_names:
     free: Saor in aisce
+    pro: Pro
     small: Beag
     medium: Meánach
     large: Mór
@@ -13,13 +14,11 @@ ga_IE:
   loomio_tags:
     tags: Clibeanna
     apply_tags: Cuir na clibeanna i bhfeidhm
-    new_tag: Cruthaigh clib
     name_label: Ainm
     color_label: Dath
     modal_title: Cruthaigh clib nua
     modal_edit_title: Cuir clib in eagar
     modal_destroy_title: Bain clib
-    destroy_tag: Bain clib
   reactions:
     laughing: Gáire
     clap: Bualadh bos
@@ -343,8 +342,9 @@ ga_IE:
     question: 'An bhfuil tú cinnte gur mian leat an bhaicle seo a dhíghníomhachtú?'
     submit: 'Táim, díghníomhachtaigh an bhaicle'
   group_form:
-    start_group_heading: 'Cuir baicle ar bun'
-    group_name: 'Ainm na baicle'
+    new_group: Baicle nua
+    start_group_heading: Cuir baicle ar bun
+    group_name: Ainm na baicle
     group_name_placeholder: 'Cad is ainm den bhaicle seo agatsa?'
     description: 'Cur síos'
     privacy: 'Príobháideachas'
@@ -488,7 +488,7 @@ ga_IE:
       aria_label: 'Tá comhad ceangailte:'
       image_alt: 'An íomhá cheangailte'
   thread_group:
-    aria_label: 'Ainm na baicle'
+    aria_label: Ainm na baicle
   thread_context:
     aria_label: 'Comhthéacs na snáithe'
     thread_options: 'Roghanna na snáithe'
@@ -553,8 +553,6 @@ ga_IE:
     closed: 'Dúnta'
   current_polls_card:
     start_poll: Cinneadh nua
-  poll_common_notify_group:
-    notify_group: Fógra
   poll_common_calendar_invite:
     event_duration: Fad
     event_summary: Ainm an chruinnithe

@@ -1,6 +1,7 @@
 el:
   plan_names:
     free: Δωρεάν
+    pro: Επαγγελματικό
   current_plan_button:
     upgrade: Αναβάθμιση
   subscription_status:
@@ -317,14 +318,15 @@ el:
     question: 'Είστε σίγουροι ότι θέλετε να απενεργοποίησετε την ομάδα;'
     submit: 'Ναι, απενεργοποίηστε την ομάδα'
   group_form:
-    aria_label: 'Φόρμα ομάδας'
-    start_group_heading: 'Ξεκινήστε μια ομάδα'
-    start_subgroup_heading: 'Ξεκινήστε μια υπό ομάδα'
-    edit_group_heading: 'Επεξεργαστείτε τις ρυθμίσεις της ομάδας'
-    edit_subgroup_heading: 'Επεξεργαστείτε τις ρυθμίσεις της υπο ομάδας'
-    group_name: 'Όνομα ομάδας'
+    aria_label: Φόρμα ομάδας
+    new_group: Νέα ομάδα
+    start_group_heading: Ξεκινήστε μια ομάδα
+    start_subgroup_heading: Ξεκινήστε μια υπό ομάδα
+    edit_group_heading: Επεξεργαστείτε τις ρυθμίσεις της ομάδας
+    edit_subgroup_heading: Επεξεργαστείτε τις ρυθμίσεις της υπο ομάδας
+    group_settings: Ρυθμίσεις ομάδας
+    group_name: Όνομα ομάδας
     group_name_placeholder: 'Ποιο είναι το όνομα της ομάδα σας?'
-    subgroup_name: 'Όνομα υπο ομάδας'
     description: 'Περιγραφή'
     description_placeholder: 'Περιγράψτε τον σκοπό της ομάδας σας, ώστε τα μέλη της ομάδας σας να γνωρίζουν γιατί είναι εδώ.'
     privacy_statement:
@@ -392,7 +394,7 @@ el:
     latest: Τελευταία
     context: Περιεχόμενο
   thread_group:
-    aria_label: 'Όνομα ομάδας'
+    aria_label: Όνομα ομάδας
   thread_context:
     close_thread: 'Κλείσε'
     mute_thread: 'Σίγαση'
@@ -436,8 +438,6 @@ el:
     closed: 'Έκλεισε'
   current_polls_card:
     start_poll: Νέα απόφαση
-  poll_common_notify_group:
-    notify_group: Ανακοίνωση
   poll_common_close_form:
     close_proposal: Κλείσιμο πρότασης
   poll_common_form:
@@ -456,6 +456,7 @@ el:
   group_survey:
     success: Ευχαριστούμε!
     categories:
+      community: Ομάδα Κοινότητας
       other: Άλλο
     uses:
       other: Άλλο

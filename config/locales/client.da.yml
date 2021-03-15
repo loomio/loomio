@@ -5,6 +5,7 @@ da:
         make_decision: Opret en beslutning
   plan_names:
     free: Gratis
+    pro: Pro
   subscription_status:
     members: "Medlemmer"
   loomio_tags:
@@ -13,7 +14,6 @@ da:
     modal_title: Opret nyt mærke
     modal_edit_title: Rediger mærke
     modal_destroy_title: Slet mærke
-    destroy_tag: Slet mærke
     discussions_count_singular: ({{count}} debat)
     discussions_count_plural: ({{count}} debatter)
     no_tags_present: Der blev ikke fundet debatter med det mærke! Prøv at vælge en anden.
@@ -301,8 +301,6 @@ da:
       outcome_announced:
         title: Del resultat
       anyone_can_participate: Alle kan deltage
-    group_form:
-      members_count: '{{count}} mennesker vil blive notificeret'
   action_dock:
     edit_stance: Rediger stillingtagen
     edited: Redigeret
@@ -404,14 +402,14 @@ da:
     question: 'Er du sikker på at du vil deaktivere denne gruppe?'
     submit: 'Ja, deaktiver denne gruppe'
   group_form:
-    aria_label: 'Gruppe formular'
-    start_group_heading: 'Opret en gruppe'
-    start_subgroup_heading: 'Opret en undergruppe'
-    edit_group_heading: 'Rediger gruppe indstillinger'
-    edit_subgroup_heading: 'Rediger undergruppe indstillinger'
-    group_name: 'Gruppenavn'
+    aria_label: Gruppe formular
+    new_group: Ny gruppe
+    start_group_heading: Opret en gruppe
+    start_subgroup_heading: Opret en undergruppe
+    edit_group_heading: Rediger gruppe indstillinger
+    edit_subgroup_heading: Rediger undergruppe indstillinger
+    group_name: Gruppenavn
     group_name_placeholder: 'Hvad er navnet på din gruppe?'
-    subgroup_name: 'Undergruppe navn'
     description: 'Beskrivelse'
     description_placeholder: 'Beskriv formålet med denne  gruppe så at gruppens medlemmer ved hvorfor de er her.'
     privacy_statement:
@@ -613,7 +611,7 @@ da:
       image_alt: 'Vedhæftet billede'
     comment: Kommenter
   thread_group:
-    aria_label: 'Gruppenavn'
+    aria_label: Gruppenavn
   thread_context:
     aria_label: 'Debat beskrivelse'
     thread_options: 'Debatindstillinger'
@@ -714,11 +712,6 @@ da:
     start_poll: Opret stillingtagen
   poll_common_collapsed:
     by_who: "af {{name}}"
-  poll_common_notify_group:
-    notify_group: Meddelelse
-    members_helptext: Din gruppe vil ikke bliver notificeret
-    members_count: "{{count}} mennesker vil blive notificeret"
-    decided_voters_count: "{{count}} mennesker der har stemt vil blive notificeret"
   poll_common_settings:
     multiple_choice:
       title: Tillad flere valg
@@ -876,6 +869,7 @@ da:
     name_label: Navn
   group_survey:
     categories:
+      community: Lokalgruppe
       other: Andre
     uses:
       other: Andre

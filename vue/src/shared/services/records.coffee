@@ -29,10 +29,8 @@ import DocumentRecordsInterface from '@/shared/interfaces/document_records_inter
 import AttachmentRecordsInterface from '@/shared/interfaces/attachment_records_interface'
 import LoginTokenRecordsInterface from '@/shared/interfaces/login_token_records_interface'
 import MessageChannelRecordsInterface from '@/shared/interfaces/message_channel_records_interface'
-import DiscussionTagRecordsInterface from '@/shared/interfaces/discussion_tag_records_interface'
 import TagRecordsInterface from '@/shared/interfaces/tag_records_interface'
 import SamlProviderRecordsInterface from '@/shared/interfaces/saml_provider_records_interface'
-import GroupSurveyRecordsInterface from '@/shared/interfaces/group_survey_records_interface'
 import WebhookRecordsInterface from '@/shared/interfaces/webhook_records_interface'
 
 db      = new loki('default.db')
@@ -65,10 +63,8 @@ records.addRecordsInterface DocumentRecordsInterface
 records.addRecordsInterface AttachmentRecordsInterface
 records.addRecordsInterface LoginTokenRecordsInterface
 records.addRecordsInterface MessageChannelRecordsInterface
-records.addRecordsInterface DiscussionTagRecordsInterface
 records.addRecordsInterface TagRecordsInterface
 records.addRecordsInterface SamlProviderRecordsInterface
-records.addRecordsInterface GroupSurveyRecordsInterface
 records.addRecordsInterface WebhookRecordsInterface
 
 AppConfig.records = records

@@ -157,6 +157,7 @@ mi:
     options:
       label: 'Ngā Kōwhiringa'
   group_form:
+    group_name: Ingoa rōpū
     privacy: 'Matatapu'
     submit_update: 'Whakahoungia nga ritenga'
   invitation_form:
@@ -188,7 +189,7 @@ mi:
   activity_card:
     latest: Hou ake
   thread_group:
-    aria_label: 'Ingoa rōpū'
+    aria_label: Ingoa rōpū
   thread_context:
     close_thread: 'Katia'
     reopen_thread: 'Tūwhera anō'

@@ -1,10 +1,9 @@
 pl:
   loomio_onboarding:
     group_progress_card:
-      title: Aktywuj swoją grupę
       activities:
         set_description: Ustaw opis swojej grupy
-        set_cover_photo: Prześlij zdjęcie w tle i logo Twojej grupy
+        set_cover_photo: Prześlij zdjęcie w tle i logo swojej grupy
         invite_people_in: 'Zaproś ludzi '
         start_thread: Rozpocznij wątek dyskusyjny
         make_decision: Rozpocznij decyzję
@@ -14,6 +13,8 @@ pl:
   plan_names:
     free: Darmowy
     trial: Okres próbny
+    pro: Pro
+    community: Społeczność
     small: Mały
     medium: Średni
     large: Duży
@@ -21,6 +22,7 @@ pl:
     yearly: Rocznie
   current_plan_button:
     upgrade: Aktualizacja
+    buy_now: Kup Teraz
     free_trial: Bezpłatny okres próbny. Pozostało {{days}} dni.
     trial_expired: Twój okres próbny wygasł. Zaktualizuj, aby kontynuować korzystanie z Loomio.
     tooltip: "Nasze ceny są fantastyczne! Zaktualizuj już dziś i ciesz się tym, co Loomio może zaoferować Twojej grupie."
@@ -44,20 +46,16 @@ pl:
     all_tags: Wszystkie tagi
     tags: Tagi
     apply_tags: Zastosuj tagi
-    new_tag: Utwórz tag
     name_label: Nazwa
     color_label: Kolor
     card_title: Tagi kategorii
     modal_title: Utwórz nowy tag
     modal_edit_title: Edytuj tag
     modal_destroy_title: Usuń tag
-    destroy_tag: Usuń tag
-    destroy_helptext: Spowoduje to zniszczenie tego tagu i usunięcie go ze wszystkich wątków w grupie. Jesteś pewien?
     helptext: Tagi pozwalają kategoryzować rozmowy i ułatwiają ich późniejsze wyszukiwanie
     discussions_count_singular: ({{count}} wątek)
     discussions_count_plural: ({{count}} wątki)
     tag_created: Tag został zapisany
-    tag_destroyed: Tag został usunięty
     tags_marked: Wątki oznaczone „{{name}}” w {{groupName}}
     no_tags_present: Nie znaleziono wątków z tym tagiem! Spróbuj wybrać inny.
   reactions:
@@ -95,7 +93,7 @@ pl:
     thumbsdown: Dezaprobata
   poll_types:
     proposal: propozycja
-    count: zaznacz
+    count: głosowanie
     poll: głosowanie
     dot_vote: głosowanie kropkowe
     meeting: ankieta dotycząca daty spotkania
@@ -113,7 +111,7 @@ pl:
     local: Czas lokalny ({{value}})
   common:
     empty: Pusty
-    no_results_found: Nie znaleziono żadnych wyników
+    no_results_found: Nie znaleziono żadnych plików.
     view: Podgląd
     history: Historia
     option: Opcja
@@ -159,7 +157,7 @@ pl:
       today: 'Dzisiaj'
       yesterday: 'Wczoraj'
       thisweek: 'Ten tydzień'
-      thismonth: 'Ten miesiąc'
+      thismonth: 'W tym miesiącu'
       older: 'Starsze'
     more_help: 'Więcej pomocy'
     models:
@@ -292,7 +290,7 @@ pl:
       group: 'Zmienia się, gdy otrzymasz powiadomienie o wszystkich wątkach w grupie. '
     simple:
       label: Powiadomienia
-      loud: 'Włączone powiadomienia '
+      loud: Powiadomienia włączone
       normal: Standardowe
       quiet: Ignoruj
       question: Kiedy chcesz otrzymywać powiadomienia?
@@ -421,7 +419,7 @@ pl:
     direct_threads: 'Wątki bezpośrednie'
     unread_threads: 'Nieprzeczytane wątki ({{count}})'
     muted_threads: 'Wyciszone wątki'
-    start_group: 'Nowa organizacja'
+    start_group: 'Nowa grupa'
     start_subgroup: 'Nowa podgrupa'
     explore: 'Grupy publiczne'
     explore_groups: Przeglądaj grupy
@@ -555,11 +553,7 @@ pl:
     invite_only_thread: "Wątek na zaproszenie"
     none_direct_thread: "Wątek bezpośredni (bez grupy)"
     none_invite_only_thread: "Wątek na zaproszenie (bez grupy)"
-    change_log_placeholder: Krótko opisz zmiany dokonane w tej edycji. (opcjonalne)
     change_log_label: Co się zmieniło?
-    one_person_will_be_notified: '1 osoba zostanie powiadomiona.'
-    count_people_will_be_notified: '{{count}} osób zostanie powiadomionych.'
-    notify_specifc_people_instead: Jeśli nie chcesz powiadamiać całej grupy, dodaj imona osób, które mają zostać powiadomione.
     invite: Zaproś
     aria_label: 'Formularz wątku'
     start_thread: Utwórz wątek
@@ -575,7 +569,7 @@ pl:
     title_label: 'Tytuł'
     title_placeholder: 'Jaki temat chcesz omówić?'
     context_label: 'Kontekst'
-    context_placeholder: 'Aby uzyskać efektywną dyskusję podaj dostateczną ilość informacji. Można aktualizować w trakcie dyskusji'
+    context_placeholder: 'Aby przeprowadzić efektywną dyskusję, podaj wszystkie niezbędne informacje. Możesz aktualizować zawartość w trakcie dyskusji'
     privacy_label: 'Prywatność'
     privacy_public: 'Każdy może zobaczyć ten wątek. Tylko osoby z tego wątku mogą brać udział.'
     privacy_private: 'Wątek będzie widoczny tylko dla osób z grupy {{group}}.'
@@ -606,7 +600,7 @@ pl:
     inviting_guests_to_thread: Goście nie należą do Twojej grupy i mają dostęp tylko do tego wątku
     select_groups: Wybierz grupy
     audiences:
-      group: Wszyscy w {{name}}
+      group: Członkowie {{name}}
       discussion_group: Wszyscy w wątku
       voters: Wszyscy zaproszeni do głosowania
       decided_voters: Wszyscy, którzy zagłosowali
@@ -635,6 +629,8 @@ pl:
       poll_announced:
         title: Zaproś do głosowania
         helptext: Kogo chciałbyś zaprosić do głosowania?
+      poll_reminder:
+        message_label: Wiadomość
       poll_edited:
         title: Powiadamiaj o zmianach
         helptext: Kogo chcesz powiadomić o tej aktualizacji?
@@ -662,7 +658,6 @@ pl:
     group_form:
       search_placeholder: Szukaj ludzi...
       modal_title: Wybierz osoby do tej grupy
-      members_count: '{{count}} osób zostanie powiadomionych'
     flash:
       success: 'Wysłano {{count}} powiadomień '
   action_dock:
@@ -726,7 +721,7 @@ pl:
     italicize: Kursywa
     blockquote: Cytat
     strikethrough: Przekreślenie
-    underline: Podkreśnie
+    underline: Podkreślenie
     link: Wstaw link
     code_block: Blokada kodu
     insert_image: Wstaw obraz
@@ -924,23 +919,22 @@ pl:
   group_form:
     thread_defaults_help: Domyślne ustawienia dla nowych wątków
     click_to_change_image: Zdjęcie w tle i logo (kliknij, aby zmienić)
-    permissions_explaination: |
-        Istnieją dwa poziomy członkostwa, jakie osoba może mieć w grupie: admnistratorski i członkowski
-    aria_label: 'Formularz grupowy'
-    new_organisation: Nowa organizacja
-    start_group_heading: 'Utwórz grupę'
-    start_subgroup_heading: 'Utwórz podgrupę'
-    edit_group_heading: 'Edytuj ustawienia grupy'
-    edit_subgroup_heading: 'Edytuj ustawienia podgrupy'
-    group_name: 'Nazwa grupy'
+    aria_label: Formularz grupowy
+    new_organisation: Nowa grupa
+    new_group: Nowa grupa
+    new_subgroup: Nowa podgrupa
+    start_group_heading: Utwórz grupę
+    start_subgroup_heading: Utwórz podgrupę
+    edit_group_heading: Edytuj ustawienia grupy
+    edit_subgroup_heading: Edytuj ustawienia podgrupy
+    group_settings: Ustawienia grupy
+    group_name: Nazwa grupy
     handle: Adres
-    group_handle_placeholder: "Adres URL i e-mail, np. loomio.org/handle i handle@loomio.org"
-    organization_name: 'Nazwa organizacji'
-    start_organization_heading: Nowa organizacja
+    group_handle_placeholder: "Adres URL i e-mail grupy, np. loomio.org/adres i adres@loomio.org"
+    start_organization_heading: Nowa grupa
     edit_organization_heading: Edytuj ustawienia organizacji
     group_name_placeholder: ' Jak nazywa się Twoja grupa?'
     organization_name_placeholder: 'Jak nazywa się Twoja organizacja?'
-    subgroup_name: 'Nazwa podgrupy'
     description: 'Opis'
     description_placeholder: 'Opisz cel swojej grupy, aby osoby wiedziały, dlaczego tu są.'
     privacy_statement:
@@ -963,7 +957,7 @@ pl:
     subgroup_privacy_is_closed_secret_parent_description: "Osoby z {{parent}} mogą znaleźć tę podgrupę i poprosić o dołączenie. Wszystkie wątki są prywatne. Tylko osoby z tej grupy mogą zobaczyć, kto jest w niej."
     subgroup_privacy_is_secret_description: 'Tylko zaproszone osoby mogą znaleźć tę podgrupę, zobaczyć, kto w niej jest, i zobaczyć wątki.'
     advanced_settings: "Ustawienia zaawansowane"
-    how_do_people_join: "Jak ludzie dołączają?"
+    how_do_people_join: "Kto może dołączyć?"
     membership_granted_upon_request: 'Każdy może dołączyć do grupy.'
     membership_granted_upon_approval: 'Każdy może poprosić o dołączenie, ale musi zostać zatwierdzony.'
     membership_granted_upon_approval_secret_parent: '<strong>Na życzenie</strong> każdy z {{parent}} może poprosić o dołączenie do grupy.'
@@ -975,16 +969,6 @@ pl:
     public_or_private_threads: 'Zezwalaj na wątki publiczne i prywatne'
     private_threads: 'Tylko osoby z tej grupy mogą zobaczyć dyskusje'
     allow_public_threads: 'Zezwalaj na wątki publiczne w tej grupie.'
-    parent_members_can_see_discussions: 'Osoby z {{parent}} mogą zobaczyć prywatne wątki.'
-    members_can_announce: 'Osoby z tej grupy mogą powiadomić wszystkich w tej grupie.'
-    members_can_add_members: 'Osoby mogą zapraszać innych i zatwierdzać prośby o dołączenie.'
-    members_can_create_subgroups: 'Osoby mogą tworzyć podgrupy.'
-    members_can_edit_discussions: 'Osoby mogą aktualizować kontekst i tytuł dowolnego wątku.'
-    members_can_edit_comments: 'Osoby mogą edytować swoje komentarze w dowolnym momencie.'
-    members_can_start_discussions: 'Osoby mogą tworzyć nowe wątki.'
-    members_can_vote: 'Osoby mogą głosować nad propozycjami.'
-    members_can_raise_motions: 'Osoby mogą utworzyć propozycje.'
-    admins_can_edit_user_content: "Administratorzy mogą edytować komentarze i ankiety innych użytkowników"
     submit_start_group: 'Utwórz grupę'
     submit_start_subgroup: 'Utwórz podgrupę'
     submit_update: 'Zaktualizuj ustawienia'
@@ -1173,7 +1157,7 @@ pl:
     email_newsletter: ' Newsletter Loomio'
     email_newsletter_description: "Otrzymuj powiadomienia o nowych funkcjach, szkoleniach, wydarzeniach w Twoim mieście i przyszłości Loomio. Zwykle 2 lub 3 wiadomości e-mail rocznie."
     daily_summary_label: Wiadomość e-mail z podsumowaniem dnia
-    daily_summary_description: "Każdego ranka otrzymasz wiadomość e-mail z wszelkimi czynnościami, które przegapiłeś dzień wcześniej. Ułatwia to śledzenie aktywności."
+    daily_summary_description: "Każdego ranka otrzymasz wiadomość e-mail z wszelkimi zdarzeniami, które przegapiłaś/eś dzień wcześniej. Ułatwia to śledzenie aktywności."
     on_participation_label: Na podstawie Twojej aktywności
     on_participation_description: "Gdy weźmiesz udział w wątku, cała dalsza aktywność zostanie natychmiast wysłana do Ciebie e-mailem."
     announcement_label: Ogłoszenia
@@ -1244,7 +1228,7 @@ pl:
       today: 'Dzisiaj'
       yesterday: 'Wczoraj'
       thisweek: 'Ten tydzień'
-      thismonth: 'Ten miesiąc'
+      thismonth: 'W tym miesiącu'
       older: 'Starsze niż miesiąc'
   threads_page:
     no_direct_threads: "Nie masz żadnych bezpośrednich wątków"
@@ -1306,7 +1290,7 @@ pl:
     comment: Skomentuj
     facilitate: Ułatwiać
   thread_group:
-    aria_label: 'Nazwa grupy'
+    aria_label: Nazwa grupy
   thread_context:
     current_poll_type_banner: Obecne {{pollType}}
     item_maybe_deleted: "Nie można znaleźć żądanej lokalizacji w wątku. Mogła zostać usunięta."
@@ -1397,7 +1381,7 @@ pl:
     search_placeholder: Wyszukaj grupy publiczne
     single_search_result: "1 pasująca grupa publiczna <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "{{resultCount}} grupy publiczne pasujące do <strong>{{searchTerm}}:</strong>"
-    no_results_found: "<strong>Nie możesz znaleźć grupy, której szukasz?</strong> Jeśli prywatność grupy jest ustawiona na „tajna”, nie pojawi się ona tutaj."
+    no_results_found: "<strong>Nie możesz znaleźć grupy, której szukasz?</strong> Jeśli prywatność grupy jest ustawiona jako „tajna”, nie pojawi się ona tutaj."
     newest_first: Od najnowszych
     biggest_first: Od najaktywniejszych
     order_by: Sortuj grupy według
@@ -1506,7 +1490,6 @@ pl:
     sharable_link: 'Link do udostępniania'
     last_seen: 'Ostatnio widziany/a {{date}}'
     invited_by_name: 'Zaproszony/a przez {{name}}'
-    only_in_subgroups: "Nie jest w tej grupie, ale należy do {{name}}."
     accepted: 'Osoby'
   polls_panel:
     new_poll: Nowe głosowanie
@@ -1540,11 +1523,6 @@ pl:
   poll_common_select_group:
     loomio_group: Grupa
     loomio_group_placeholder: (żadna grupa nie została wybrana)
-  poll_common_notify_group:
-    notify_group: Ogłoszenie
-    members_helptext: Twoja grupa nie zostanie powiadomiona
-    members_count: "{{count}} osób zostanie powiadomionych"
-    decided_voters_count: "{{Count}} osób, które głosowały, zostaną powiadomione"
   poll_common_calendar_invite:
     calendar_invite: Dołącz kalendarz z zaproszeniami wraz z wynikiem
     poll_option_id: Czas spotkania
@@ -1615,7 +1593,7 @@ pl:
     success: "{{poll_type}} przeniesiona do grupy {{group}}"
   poll_common_wip_field:
     title: Praca w toku
-    helptext: 'Użyj opcji „praca w toku”, aby współpracować nad %{poll_type} przed głosowaniem'
+    helptext: 'Użyj opcji „praca w toku”, aby przedyskutować %{poll_type} przed głosowaniem'
   poll_common_closing_at_field:
     closing: Zamykanie
     no_closing_date: Brak daty zamknięcia
@@ -1675,7 +1653,7 @@ pl:
     options_placeholder: Wymień dostępne opcje
     no_options: Nie dodałeś jeszcze żadnych opcji.
     closing: Zamykanie
-    closed: Zamknięta
+    closed: Zamknięte
     start: Rozpocznij
     start_poll_type: Utwórz {{poll_type}}
     share_poll_type: Udostępnij {{poll_type}}
@@ -1684,11 +1662,11 @@ pl:
         <p>Dowiedz się więcej na <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio Help</a>.</p>
   poll_proposal_form:
     tool_tip_expanded: |
-        <p>Propozycja jest narzędziem do poszukiwania zbiorowego porozumienia dotyczącego oświadczenia lub sposobu działania.</p>
-        <p>Uczestnicy mogą wyrazić zgodę, wstrzymać się od głosu, nie zgodzić się lub zablokować - i złożyć oświadczenie wyjaśniające swoje stanowisko.</p>
-        <p>Wykres kołowy podaje przegląd stanowisk w grupie, a oświadczenia umożliwiają wysłuchanie poszczególnych osób. </p>
-        <p>Nie zniechęcaj się, jeśli na początku nie ma między wami zgody, propozycje mają na celu ujawnienie problemów, które wymagają rozwiązania.</p>
-        <p>Przy odpowiednim uczestnictwie propozycja jest silnym mandatem do podjęcia działań.</p>
+        <p>Propozycja jest narzędziem do poszukiwania zbiorowego porozumienia dotyczącego wspólnego stanowiska lub sposobu działania.</p>
+        <p>Uczestnicy mogą wyrazić zgodę, wstrzymać się od głosu, nie zgodzić się lub zablokować - a następnie wyjaśnić swoje stanowisko.</p>
+        <p>Wykres kołowy przedstawia rozkład opinii w grupie, a wyjaśnienia poszczególnych osób pozwalają na zapoznanie się z ich punktem widzenia. </p>
+        <p>Nie zniechęcaj się, jeśli na początku nie ma między wami porozumienia. Propozycje mają na celu zidentyfikowanie problemów, które wymagają rozwiązania.</p>
+        <p>Przy aktywnym uczestnictwie, propozycja jest niezawodnym narzędziem poprzedzającym konkretne działania</p>
     tool_tip_collapsed: Poszukaj porozumienia lub informacji zwrotnej od innych
     start_header: Utwórz propozycję
     edit_header: Edytuj propozycję
@@ -1846,10 +1824,10 @@ pl:
   poll_meeting_chart_panel:
     total: W sumie
   poll_poll_vote_form:
-    stance_created: Głosowanie utworzone
+    stance_created: Zagłosowano
     stance_updated: Głosowanie zaktualizowane
   poll_score_vote_form:
-    stance_created: Głosowanie utworzone
+    stance_created: Zagłosowano
     stance_updated: Głosowanie zaktualizowane
   poll_meeting_vote_form:
     local_time_zone: Czas lokalny - {{zone}}
@@ -1863,7 +1841,7 @@ pl:
   poll_dot_vote_vote_form:
     dots_remaining: "Pozostała ilość kropek: {{count}}"
     too_many_dots: Użyto zbyt wielu kropek
-    stance_created: Głosowanie utworzone
+    stance_created: Zagłosowano
     stance_updated: Głosowanie zaktualizowane
   poll_ranked_choice_vote_form:
     helptext: 'Przeciągnij i upuść opcje w kolejności preferencji (1 to najbardziej preferowana opcja). Twoje {{count}} najlepsze wybory zostaną zapisane. '
@@ -1879,26 +1857,7 @@ pl:
       poll_expired: "{{pollType}} zakończone. {{when}}"
     removed: "Pozycja usunięta"
     deleted_group: "Grupa usunięta"
-    comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> w odpowiedzi na <strong>{{title}}</strong>"
-    discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> edytował/a tytuł wątku"
-    discussion_context_edited: "Kontekst wątku został edytowany przez: <strong><a href='/u/{{username}}'>{{autor}}</a></strong>"
-    discussion_attachments_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> edytował/a załączniki wątku"
-    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> zmienił/a prywatność wątku"
-    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> edytował/a wątek"
-    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> przeniósł wątek z <strong>{{title}}</strong>"
-    discussion_closed: "Wątek został zamknięty przez: <a class='actor-link' href='/u/{{username}}'>{{author}}</a>"
-    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ponownie otworzył/a wątek"
-    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>rozdzielił/a wątek:<strong><a href='d/{{key}}'>{{title}}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>"
-    outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> udostępnił/a wynik"
-    poll_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ponownie otworzył/a {{polltype}}"
-    poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> zakończył/a {{polltype}}"
-    poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> utworzył/a {{polltype}}"
-    poll_created_no_title: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> utworzył/a {{polltype}}"
-    poll_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> edytował/a {{polltype}}"
-    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> dodał/a opcje do {{polltype}}"
     poll_expired: "{{polltype}} zakończone"
-    stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> zagłosował/a za: <strong>{{title}}</strong>"
     event_removed: "Usunięty z wątku"
   poll_common_subscribe_form:
     receive_updates_title: Twój głos został zapisany
@@ -1911,7 +1870,7 @@ pl:
   share_poll_page:
     title: Udostępnij głosowanie - {{title}}
   add_poll_to_thread_modal:
-    success: "Sukces, {{pollType}} dodane do wątku!"
+    success: "Sukces, do wątku dodano {{pollType}} !"
   auth_form:
     code: '000000'
     youre_invited: Zostałeś zaproszony do dołączenia do {{group_name}}.
@@ -1942,7 +1901,7 @@ pl:
     login_with_token: Wszystko gotowe! Kliknij poniższy link, aby kontynuować.
     login_link_helptext: Kliknij poniższy przycisk, a my wyślemy Ci link do logowania.
     enter_your_password: "Wprowadź hasło, aby kontynuować"
-    check_spam_folder: Jeśli ta wiadomość e-mailowa wkrótce do Ciebie nie dotrze, sprawdź folder Spam.
+    check_spam_folder: Jeśli nie widzisz wiadomości e-mail z kodem, sprawdź folder spam.
     sign_up_helptext: 'Uzupełnij ten formularz w celu stworzenia konta użytkownika. '
     i_accept: "Akceptuję <a href='{{termsUrl}}' target='_blank'>Warunki Świadczenia Usług</a> oraz <a href='{{privacyUrl}}' target='_blank'>Politykę prywatności</a>"
     newsletter_label: "Chcę otrzymywać <a href='https://help.loomio.org/en/newsletter/' target='_blank'>newsletter Loomio</a>"
@@ -1965,13 +1924,13 @@ pl:
     link_accounts: Połącz konta
     check_your_email: 'Sprawdź skrzynkę e-mail! '
     login_link_sent: "Wysłaliśmy Ci wiadomość e-mail na adres {{email}}."
-    instructions: "Kliknij link, aby się zalogować, lub wprowadź poniższy kod:"
+    instructions: "Kliknij link, aby się zalogować, lub wprowadź kod:"
     too_many_attempts: "Zbyt dużo prób; spróbuj kliknąć link w wiadomości e-mail, aby się zalogować."
     invalid_code: "Przepraszamy, ten kod nie pasuje. Sprawdź e-mail i spróbuj ponownie."
     password_link_sent: "Wysłaliśmy wiadomość e-mail na adres {{email}} z instrukcjami jak ustawić hasło. "
     reactivate_link_sent: "Wysłaliśmy Ci wiadomość e-mail z instrukcjami dotyczącymi ponownej aktywacji konta "
     signed_in: Zalogowano pomyślnie
-    email_verified: Email zweryfikowany pomyślnie
+    email_verified: E-mail zweryfikowany pomyślnie
     name: Nazwa
     email: E-mail
     password: Hasło
@@ -1984,19 +1943,12 @@ pl:
       markdown: Markdown (dla Mattermost, Zapier i innych)
       microsoft: 'Microsoft Teams '
       slack: Slack
-    subtitle: Połącz się ze Slackiem, Microsoft Teams, Mattermost, Zapier lub czymkolwiek, co obsługuje webhooks
     we_have_guides: |
         Aby uzyskać pomoc w podłączaniu usługi, zapoznaj się z naszymi <a href="{{url}}" target="_blank">przewodnikami po konfiguracji webhooka</a>.
     add_webhook: dodaj webhooka
-    success: Webhook dodany!
-    remove: Usuń webhooka
-    confirm_remove: "Czy na pewno chcesz usunąć webhooka: {{name}}?"
-    removed: 'Webhook usunięty '
     url_label: Webhook URL
     url_placeholder: https://hooks.example.com/...
     name_label: Nazwa
-    name_placeholder: 'Nadaj webhookowi nazwę, aby łatwiej było go zidentyfikować '
-    event_kind_helptext: O jakich wydarzeniach chcesz być informowany?
     event_kinds:
       new_discussion: Wątek się rozpoczął
       discussion_edited: 'Wątek został edytowany '
@@ -2033,15 +1985,14 @@ pl:
     terms_of_service: Warunki usługi
     front_page: Pierwsza strona
   group_survey:
-    title: Sukces! Jeszcze tylko kilka szczegółów
+    title: Świetnie! Jeszcze tylko kilka szczegółów
     subtitle: 'Pomóż nam lepiej Cię poznać. Nie będziemy udostępniać żadnych informacji podanych w tym formularzu bez Twojej zgody. '
     validation_error: Proszę wypełnić wszystkie wymagane pola.
     success: Dzięki!
     categories:
-      member: 'Organizacje świadczące usługi członkowskie (np. partie, spółdzielnie, związki) '
-      nonprofit: Organizacje Społeczne, Pozarządowe i Społeczności Lokalne
-      professional: Zespoły i firmy świadczące profesjonalne usługi
-      board: 'Zarządy i komitety '
+      party: Partia polityczna
+      coop: Spółdzielnia
+      union: Unia
       government: Rząd/Samorząd lokalny
       other: Inne
     sizes:
@@ -2078,10 +2029,10 @@ pl:
     location: Gdzie znajduje się Twoja grupa?
     purpose: "Jaki jest cel twojej grupy?"
     category_question: "Wybierz kategorię, która najlepiej opisuje Twoją grupę"
-    anything_else: "Czy jest coś jeszcze, co chciałbyś nam powiedzieć?"
+    anything_else: "Czy jest coś jeszcze, co chcesz dodać?"
     size_question: "Ile osób jest w twojej grupie?"
     role: "Jaka jest Twoja rola w grupie?"
-    website: "Adres URL strony"
+    website: "Strona Twojej organizacji"
     usage: "Jak planujesz korzystać z Loomio? Wybierz najlepsze dopasowanie"
     desired_feature: "Jaki jest główny cel, dla którego zamierzasz korzystać z Loomio? "
-    referrer: "Skąd dowiedziałeś się o Loomio? "
+    referrer: "Skąd wiesz o Loomio? "

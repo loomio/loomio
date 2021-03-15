@@ -1,7 +1,6 @@
 ja:
   loomio_onboarding:
     group_progress_card:
-      title: あなたのグループをアクティブ化します
       activities:
         set_description: あなたのグループの説明を設定します
   plan_names:
@@ -19,7 +18,6 @@ ja:
     color_label: 色
     modal_title: 新しいタグを作る
     modal_destroy_title: タグの削除
-    destroy_tag: タグの削除
   common:
     confirm_discard_changes: 編集内容を破棄しますか？
     time:
@@ -104,6 +102,8 @@ ja:
       email_settings: 'Eメールの設定'
       leave_group: 'グループを離れます'
   group_form:
+    new_group: 新しいグループ
+    group_name: グループ名
     group_name_placeholder: 'あなたのグループの名前は何ですか？'
     privacy: 'プライバシー'
     profile: プロフィール
@@ -132,7 +132,7 @@ ja:
     no_groups:
       or: または
   thread_group:
-    aria_label: 'グループ名'
+    aria_label: グループ名
   thread_context:
     close_thread: '締め切り'
   delete_comment_dialog:

@@ -3,7 +3,7 @@ class PermittedParams < Struct.new(:params)
     user group membership_request membership poll outcome
     stance discussion discussion_reader comment
     contact_message announcement document
-    webhook contact_request reaction tag discussion_tag group_survey
+    webhook contact_request reaction tag group_survey
   )
 
   MODELS.each do |kind|
@@ -36,6 +36,7 @@ class PermittedParams < Struct.new(:params)
       :specified_voters_only,
       :recipient_audience,
       :recipient_message,
+      :tag_ids, {tag_ids: []},
       :recipient_user_ids, {recipient_user_ids: []},
       :recipient_emails, {recipient_emails: []},
       :custom_fields, {custom_fields: [:can_respond_maybe, :dots_per_person, :max_score,
@@ -84,7 +85,7 @@ class PermittedParams < Struct.new(:params)
   def group_attributes
     [:parent_id, :name, :handle, :group_privacy, :is_visible_to_public, :discussion_privacy_options,
      :members_can_add_members, :members_can_add_guests, :members_can_announce,
-     :members_can_edit_discussions, :members_can_edit_comments,
+     :members_can_edit_discussions, :members_can_edit_comments, :members_can_delete_comments,
      :description, :description_format, :is_visible_to_parent_members, :parent_members_can_see_discussions,
      :membership_granted_upon, :cover_photo, :logo, :category_id, :members_can_raise_motions,
      :members_can_start_discussions, :members_can_create_subgroups, :admins_can_edit_user_content,
@@ -107,16 +108,13 @@ class PermittedParams < Struct.new(:params)
       :newest_first, :max_depth, :private,
      :recipient_audience,
      :recipient_message,
+     :tag_ids, {tag_ids: []},
      :recipient_user_ids, {recipient_user_ids: []},
      :recipient_emails, {recipient_emails: []},
      :forked_event_ids, {forked_event_ids: []},
      :document_ids, {document_ids: []},
      :files, :image_files, {files: []}, {image_files: []}
     ]
-  end
-
-  def discussion_tag_attributes
-    [:tag_id, :discussion_id]
   end
 
   def tag_attributes

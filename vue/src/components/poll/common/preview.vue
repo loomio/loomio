@@ -15,7 +15,9 @@ v-list-item.poll-common-preview(:to='urlFor(poll)')
   v-list-item-avatar
     poll-common-chart-preview(:poll='poll')
   v-list-item-content
-    v-list-item-title {{poll.title}}
+    v-list-item-title
+      | {{poll.title}}
+      tags-display(:tags="poll.tags()")
     v-list-item-subtitle
       span(v-t="{ path: 'poll_common_collapsed.by_who', args: { name: poll.authorName() } }")
       space

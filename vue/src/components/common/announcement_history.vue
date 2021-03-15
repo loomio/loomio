@@ -39,7 +39,7 @@ v-card
   v-card-title
     h1.headline(tabindex="-1" v-t="'announcement.' + modelKind + '_notification_history'")
     v-spacer
-    dismiss-modal-button(:close="close")
+    dismiss-modal-button
   v-layout(justify-center)
     v-progress-circular(color="primary" v-if="historyLoading" indeterminate)
   v-card-text(v-if="!historyLoading")
@@ -50,7 +50,7 @@ v-card
       h4.mt-4.mb-2
         time-ago(:date="event.created_at")
         mid-dot
-        span(v-t="{ path: 'announcement.notified_people', args: { name: event.author_name, length: event.notifications.length } }")
+        span(v-t="{ path: 'announcement.'+event.kind, args: { name: event.author_name, length: event.notifications.length } }")
       ul(style="list-style-type: none; padding-left: 0")
         li(v-for="notification in event.notifications" :key="notification.id")
           span {{notification.to}}

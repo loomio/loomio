@@ -2,12 +2,10 @@ lt:
   loomio_tags:
     tags: Žymės
     apply_tags: Taikyti žymes
-    new_tag: Sukurti žymę
     color_label: Spalva
     modal_title: Sukurti naują žymę
     modal_edit_title: Taisyti žymę
     modal_destroy_title: Šalinti žymę
-    destroy_tag: Šalinti žymę
   reactions:
     heart: Meilė
     laughing: Juokas
@@ -196,6 +194,9 @@ lt:
     privacy:
       public: 'Privatumas: Ši grupė yra matoma saityne'
   group_form:
+    new_group: Nauja grupė
+    group_settings: Grupės nustatymai
+    group_name: Grupės pavadinimas
     description: 'Aprašas'
     privacy: 'Privatumas'
     profile: Profilis
@@ -259,7 +260,7 @@ lt:
   activity_card:
     context: Kontekstas
   thread_group:
-    aria_label: 'Grupės pavadinimas'
+    aria_label: Grupės pavadinimas
   thread_context:
     thread_options: 'Gijos parinktys'
     close_thread: 'Užverti'

@@ -339,6 +339,8 @@ sv:
       mute_aria_description: Din notifikationsvolym för den här gruppen är satt till Stum. Du kommer inte att få epost om inte någon specifikt vidnämner dig och grupp aktivitet kommer inte att visas på din instrumentbräda.
       mute_message: '"{{name}}" har tagits bort från din instrumentbräda.'
   group_form:
+    new_group: Ny grupp
+    group_name: Gruppnamn
     group_name_placeholder: 'Vad heter din grupp?'
     privacy: 'Integritet'
     profile: Profil
@@ -383,7 +385,7 @@ sv:
     latest: Senaste
     context: Kontext
   thread_group:
-    aria_label: 'Gruppnamn'
+    aria_label: Gruppnamn
   thread_context:
     close_thread: 'Stäng'
     reopen_thread: 'Öppna igen'
@@ -445,6 +447,7 @@ sv:
     name_label: Namn
   group_survey:
     categories:
+      community: Gemenskap grupp
       other: Andra
     uses:
       other: Andra

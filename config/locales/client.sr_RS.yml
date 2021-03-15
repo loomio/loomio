@@ -1,6 +1,10 @@
 sr_RS:
+  subscription_status:
+    members: "Чланови"
   loomio_tags:
     name_label: Име
+  reactions:
+    slight_smile: Свиђа ми се
   common:
     confirm_discard_changes: Поништити промене?
     time:
@@ -12,6 +16,8 @@ sr_RS:
     notification_volume: 'Обим Обавештења'
     group: 'Група'
     groups: 'Групе'
+    threads: 'Низови'
+    settings: 'Подешавања'
     help: 'Помоћ'
     privacy:
       privacy: 'Приватност'
@@ -78,23 +84,31 @@ sr_RS:
     edit_comment: 'Измени коментар'
     delete_comment: 'Обриши коментар'
     confirm_delete_message: 'Да ли сте сигурни да желите обрисати овај коментар?'
+    confirm_delete: 'Обриши коментар'
   sidebar:
     threads: 'Низови'
+    start_thread: Нова нит
+    aria_labels:
+      groups_list: 'Групе'
   navbar:
+    start_thread: 'Нова нит'
     search:
       placeholder: 'Тражи'
       discussions: 'Низови'
       proposals: 'Предлози'
+  user_dropdown:
+    help: 'Помоћ'
   notifications:
     header: "Обавештења"
-  position_buttons_panel:
-    heading: Реците шта имате
   discussion_form:
     group_label: 'Група'
     title_label: 'Наслов'
     context_label: 'Контекст'
     privacy_label: 'Приватност'
   action_dock:
+    edit_comment: Измени коментар
+    delete_comment: Обриши коментар
+    reply_to_comment: Одговори
     edited: Измењено
   join_group_button:
     join_group: Придружи се групи
@@ -106,9 +120,6 @@ sr_RS:
   revision_history_modal:
     started_by: 'Креирао/ла <strong>{{name}}</strong>'
     posted: Објављено
-  group_wizard:
-    invite_people: Позови људе
-    start_thread: Започни дискусију
   group_page:
     threads: Низови
     members: Чланови
@@ -123,14 +134,20 @@ sr_RS:
       loud: Обавести увек када има активности.
       quiet: Не обавештавај о овој групи. Активност ће бити приказана на почетној страни.
       mute: Сакриј ову групу и не обавештавај док ме неко не @означи.
+  leave_group_form:
+    aria_label: 'Напусти Групу'
+    title: 'Напусти Групу'
+  archive_group_form:
+    aria_label: 'Деактивирај Групу'
+    title: 'Деактивирај Групу'
   group_form:
+    new_group: Нова група
+    group_name: Назив групе
     description: 'Опис'
+    privacy: 'Приватност'
     profile: Профил
     advanced_settings: "Напредне опције"
     submit_update: 'Ажурирај опције'
-  document:
-    form:
-      title_label: Име
   membership_requests_page:
     approve: Одобри
     ignore: Игнориши
@@ -153,6 +170,9 @@ sr_RS:
     locale_label: 'Језик'
   change_picture_form:
     use_gravatar: 'Користи Граватар'
+  email_settings_page:
+    update_settings: Сачувај промене
+    edit: Уреди
   dashboard_page:
     aria_label: 'Радна табла'
     mark_as_read: Означи као прочитано
@@ -169,17 +189,16 @@ sr_RS:
   activity_card:
     context: Контекст
   thread_group:
-    aria_label: 'Назив групе'
+    aria_label: Назив групе
   thread_context:
+    edit: 'Уреди'
+    edit_thread: 'Уреди'
     close_thread: 'Затвори'
+    mute_thread: 'Искључено'
   delete_comment_dialog:
     title: 'Обриши коментар'
     question: 'Да ли сте сигурни да желите обрисати овај коментар?'
     confirm: 'Обриши коментар'
-  new_comment_item:
-    context_menu:
-      edit_comment: 'Измени коментар'
-      delete_comment: 'Обриши коментар'
   contact_message_form:
     name_label: 'Твоје име'
     subject_label: "Тема"
@@ -191,7 +210,10 @@ sr_RS:
     invitation: 'Савети за писање сјајног позива'
     proposal: 'Савети за писање јасног предлога'
     vote: 'Можете променити свој став било када'
+  decision_tools_card:
+    proposal_title: Предлог
   poll_common:
+    participant_name: Твоје име
     save_changes: Сними
   discussions_panel:
     open: Отворено
@@ -201,14 +223,27 @@ sr_RS:
     order_by_name: 'Име'
     header_name: 'Име'
     header_username: 'Корисничко Име'
+    accepted: 'Чланови'
   polls_panel:
     all: 'Све'
     open: 'Отворено'
     closed: 'Истекло'
+  poll_common_select_group:
+    loomio_group: Група
   poll_common_form:
+    title: Наслов
+    options: Опције
     closed: Истекло
+    update: Ажурирај
   poll_count_options:
     'yes': 'Да'
     'no': 'Не'
   auth_form:
     name_placeholder: Твоје име
+    name: Име
+    email: еПорука
+  webhook:
+    name_label: Име
+  group_survey:
+    categories:
+      community: Група заједнице

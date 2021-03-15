@@ -22,14 +22,14 @@ export default
     menuActions: ->
       actions = if @groupPage
         if @$vuetify.breakpoint.smAndDown
-          ['dismiss_thread','pin_thread', 'unpin_thread', "edit_tags", 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
+          ['dismiss_thread','pin_thread', 'unpin_thread', 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
         else
-          ['pin_thread', 'unpin_thread', "edit_tags", 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
+          ['pin_thread', 'unpin_thread', 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
       else
         if @$vuetify.breakpoint.smAndDown
-          ['dismiss_thread', "edit_tags", 'close_thread', 'reopen_thread']
+          ['dismiss_thread', 'close_thread', 'reopen_thread']
         else
-          ["edit_tags", 'close_thread', 'reopen_thread']
+          ['close_thread', 'reopen_thread']
       pick(ThreadService.actions(@thread, @), actions)
 
     canPerformAny: ->
@@ -48,7 +48,7 @@ v-list-item.thread-preview.thread-preview__link(:class="{'thread-preview--unread
         v-icon mdi-pin
       span.thread-preview__title(:class="{'thread-preview--unread': thread.isUnread() }") {{thread.title}}
       v-chip.ml-1(small label outlined color="warning" v-if='thread.closedAt' v-t="'common.privacy.closed'")
-      v-chip.thread-preview__tag.ml-1(small outlined v-for="tag in thread.tagNames" :key="tag") {{tag}}
+      tags-display(:tags="thread.tags()")
     v-list-item-subtitle
       span.thread-preview__group-name(v-if="showGroupName") {{ thread.group().name }}
       mid-dot(v-if="showGroupName")

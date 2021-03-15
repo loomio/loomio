@@ -52,6 +52,7 @@ section.strand-item.poll-created
       router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
       translation(v-if="poll.translation.title" :model='poll', field='title')
       poll-common-closing-at.ml-2(:poll='poll')
+      tags-display(:tags="poll.tags()")
   template(v-if="!collapsed")
     poll-common-set-outcome-panel(:poll='poll' v-if="!poll.outcome()")
     poll-common-outcome-panel(:outcome='poll.outcome()' v-if='poll.outcome()')

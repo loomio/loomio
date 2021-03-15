@@ -119,6 +119,8 @@ te:
       email_settings: 'వేగు అభిరుచులు'
       leave_group: 'సమూహాన్ని వదిలివెళ్ళండి'
   group_form:
+    new_group: కొత్త సమూహం
+    group_name: సమూహం పేరు
     privacy: 'అంతరంగికత'
   membership_requests_page:
     approve: ఆమోదించండి
@@ -150,7 +152,7 @@ te:
   activity_card:
     context: సందర్భం
   thread_group:
-    aria_label: 'సమూహం పేరు'
+    aria_label: సమూహం పేరు
   thread_context:
     close_thread: 'మూసివేయి'
     delete_thread: 'తొలగించు'

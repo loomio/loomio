@@ -44,7 +44,7 @@ export default
           group_id: @group.id
           per: @per
           order: @order
-          subgroups: 'all'
+          subgroups: @$route.query.subgroups
 
       @watchRecords
         collections: ['memberships', 'groups']
@@ -191,11 +191,11 @@ export default
                 space
                 span.caption(v-if="$route.query.subgroups") {{membership.group().name}}
                 space
-                span.title.caption {{membership.title}}
+                span.title.caption {{membership.user().title(group)}}
                 span(v-if="$route.query.q")
                   space
                   span.caption {{membership.user().email}}
-                span(v-if="membership.admin")
+                span(v-if="membership.groupId == group.id && membership.admin")
                   space
                   v-chip(small outlined label v-t="'members_panel.admin'")
                   space
@@ -213,20 +213,18 @@ export default
                     space
                     time-ago(:date="membership.createdAt")
               v-list-item-subtitle
-                span(v-if="membership.groupId != group.id")
-                  span(v-t="{path: 'members_panel.only_in_subgroups', args: {name: membership.group().name}}")
-                  space
                 span(v-if="membership.acceptedAt") {{ (membership.user().shortBio || '').replace(/<\/?[^>]+(>|$)/g, "") }}
             v-list-item-action
               membership-dropdown(v-if="membership.groupId == group.id" :membership="membership")
 
         .d-flex.justify-center
           .d-flex.flex-column.align-center
-            .text--secondary(v-if='group.parentId')
-              | {{memberships.length}} / {{loader.total}}
-            .text--secondary(v-if='!group.parentId')
+            .text--secondary(v-if='$route.query.subgroups == "all"')
               | {{memberships.length}} / {{group.orgMembersCount}}
+            .text--secondary(v-else)
+              | {{memberships.length}} / {{loader.total}}
             v-btn.my-2.members-panel__show-more(outlined color='accent' v-if="memberships.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords({per: 50})")
               span(v-t="'common.action.load_more'")
+            a(v-if='group.subgroupsCount && $route.query.subgroups != "all"' href="?subgroups=all" v-t="'members_panel.show_users_in_subgroups'") show users in all subgroups
 
 </template>

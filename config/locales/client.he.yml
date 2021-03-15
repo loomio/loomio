@@ -1,7 +1,6 @@
 he:
   loomio_onboarding:
     group_progress_card:
-      title: הפעלת הקבוצה שלך
       activities:
         set_description: הגדר את תאור הקבוצה
         invite_people_in: הזמן אנשים
@@ -12,6 +11,7 @@ he:
   plan_names:
     free: חינם
     trial: ניסיון
+    pro: פרו
   current_plan_button:
     upgrade: שדרג
   subscription_status:
@@ -19,20 +19,16 @@ he:
   loomio_tags:
     tags: תגיות
     apply_tags: החל תגיות
-    new_tag: יצירת תגית
     name_label: שם
     color_label: צבע
     card_title: תגיות קטגוריה
     modal_title: יצירת תגית חדשה
     modal_edit_title: עריכת תגית
     modal_destroy_title: הסרת תגית
-    destroy_tag: הסרת תגית
-    destroy_helptext: פעולה זו תהרוס את התגית ותסיר אותה מכל השיחות בקבוצה. את/ה בטוח?
     helptext: תגיות מאפשרות לך לקטלג את השיחות ולמצוא אותם בקלות אחר כך
     discussions_count_singular: ({{count}} שיחה)
     discussions_count_plural: ({{count}} שיחות)
     tag_created: תגית נשמרה
-    tag_destroyed: תגית הוסרה
     tags_marked: שיחה סומנה כ'{{name}}' ב{{groupName}}
     no_tags_present: לא נמצאו שיחות עם תגית זו. נסה לבחור אחרת.
   reactions:
@@ -458,7 +454,6 @@ he:
     group_form:
       search_placeholder: חפש אנשים...
       modal_title: בחר את חברי הקבוצה
-      members_count: '{{count}} אנשים יעודכנו'
     flash:
       success: '{{count}} עדכונים נשלחו'
   action_dock:
@@ -616,15 +611,16 @@ he:
     question: 'אתה בטוח שאתה רוצה להפוך את הקבוצה ללא פעילה?'
     submit: 'כן, הפוך קבוצה ללא פעילה'
   group_form:
-    aria_label: 'טופס הקבוצה;'
-    start_group_heading: 'פתח קבוצה'
-    start_subgroup_heading: 'פתח תת קבוצה/'
-    edit_group_heading: 'ערוך הגדרות קבוצה'
-    edit_subgroup_heading: 'ערוך הגדרות תת הקבוצה'
-    group_name: 'שם הקבוצה'
+    aria_label: טופס הקבוצה;
+    new_organisation: ארגון חדש
+    new_group: קבוצה חדשה
+    start_group_heading: פתח קבוצה
+    start_subgroup_heading: פתח תת קבוצה/
+    edit_group_heading: ערוך הגדרות קבוצה
+    edit_subgroup_heading: ערוך הגדרות תת הקבוצה
+    group_name: שם הקבוצה
     start_organization_heading: ארגון חדש
     group_name_placeholder: 'מה שם הקבוצה שלך?'
-    subgroup_name: 'שם תת הקבוצה'
     description: 'תיאור'
     description_placeholder: 'תאר את מטרת הקבוצה כך שחבריה ידעו למה הם פה.'
     privacy_statement:
@@ -913,7 +909,7 @@ he:
     n_more: 'טען {{count}} תגובות'
     comment: הערה
   thread_group:
-    aria_label: 'שם הקבוצה'
+    aria_label: שם הקבוצה
   thread_context:
     aria_label: 'הקשר השיחה'
     thread_options: 'אפשרויות השיחה'
@@ -1068,11 +1064,6 @@ he:
   poll_common_select_group:
     loomio_group: קבוצה
     loomio_group_placeholder: (לא נבחרה קבוצה)
-  poll_common_notify_group:
-    notify_group: הכרזה
-    members_helptext: הקבוצה שלך לא תקבל הודעה
-    members_count: "{{count}} אנשים יעודכנו"
-    decided_voters_count: "{{count}} האנשים שהצביעו יקבלו הודעה"
   poll_common_calendar_invite:
     calendar_invite: הוסף הזמנה ליומן עם תוצאה זו
     poll_option_id: זמן פגישה
@@ -1393,6 +1384,7 @@ he:
     front_page: עמוד ראשי
   group_survey:
     categories:
+      community: קבוצה קהילתית
       other: אחר
     uses:
       other: אחר

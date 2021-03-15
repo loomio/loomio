@@ -107,7 +107,9 @@ export default
             chain = chain.find(closedAt: null)
 
         if @$route.query.tag
-          chain = chain.find({tagNames: {'$contains': @$route.query.tag}})
+
+          tag = Records.tags.find(groupId: @group.parentOrSelf().id, name: @$route.query.tag)[0]
+          chain = chain.find({tagIds: {'$contains': tag.id}})
 
         @discussions = chain.data()
 
@@ -145,7 +147,7 @@ export default
       orderBy(@discussions.filter((discussion) -> !discussion.pinned), ['lastActivityAt'], ['desc'])
 
     groupTags: ->
-      @group && @group.parentOrSelf().tagNames || []
+      @group && @group.parentOrSelf().tags().filter (tag) -> tag.taggingsCount > 0
 
     loading: ->
       @loader.loading || @searchLoader.loading
@@ -166,7 +168,7 @@ export default
       filter(@discussions, (discussion) -> discussion.isUnread()).length
 
     suggestClosedThreads: ->
-      @loader.exhausted && ['undefined', 'open', 'unread'].includes(String(@$route.query.t))
+      @loader.exhausted && ['undefined', 'open', 'unread'].includes(String(@$route.query.t)) && @group && @group.closedDiscussionsCount
 
 </script>
 
@@ -189,21 +191,15 @@ div.discussions-panel(v-if="group")
           v-list-item-title(v-t="'discussions_panel.closed'")
         v-list-item.discussions-panel__filters-unread(@click="routeQuery({t: 'unread'})")
           v-list-item-title(v-t="{path: 'discussions_panel.unread', args: { count: unreadCount }}")
-        //- v-list-item(@click="routeQuery({t: 'subscribed'})")
-        //-   v-list-item-title(v-t="'change_volume_form.simple.loud'")
 
-    v-menu
+    v-menu(offset-y)
       template(v-slot:activator="{ on, attrs }")
         v-btn.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)
           span(v-if="$route.query.tag") {{$route.query.tag}}
-          span(v-else v-t="'loomio_tags.all_tags'")
+          span(v-else v-t="'loomio_tags.tags'")
           v-icon mdi-menu-down
-
-      v-list(dense)
-        v-list-item(@click="routeQuery({tag: null})" key="all")
-          v-list-item-title(v-t="'loomio_tags.all_tags'")
-        v-list-item(v-for="tag in groupTags" :key="tag" @click="routeQuery({tag: tag, t: 'all'})")
-          v-list-item-title {{tag}}
+      v-sheet.pa-1
+        tags-display(:tags="group.parentOrSelf().tags()" show-counts)
     v-text-field.mr-2.flex-grow-1(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_threads', {name: group.name})" append-icon="mdi-magnify" :loading="searchLoader.loading")
     v-btn.discussions-panel__new-thread-button(:to="'/d/new?group_id='+group.id" color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
 
@@ -220,13 +216,13 @@ div.discussions-panel(v-if="group")
             thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in pinnedDiscussions" :key="thread.id" :thread="thread" group-page)
             thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in regularDiscussions" :key="thread.id" :thread="thread" group-page)
 
-          .d-flex.justify-center
-            .d-flex.flex-column.align-center
-              .text--secondary
-                | {{discussions.length}} / {{loader.total}}
-              v-btn.my-2.discussions-panel__show-more(outlined color='accent' v-if="discussions.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="fetch()")
-                span(v-t="'common.action.load_more'")
-              router-link.discussions-panel__view-closed-threads.text-center.pa-1(:to="'?t=closed'" v-if="suggestClosedThreads" v-t="'group_page.view_closed_threads'")
+        .d-flex.justify-center
+          .d-flex.flex-column.align-center
+            .text--secondary
+              | {{discussions.length}} / {{loader.total}}
+            v-btn.my-2.discussions-panel__show-more(outlined color='accent' v-if="discussions.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="fetch()")
+              span(v-t="'common.action.load_more'")
+            router-link.discussions-panel__view-closed-threads.text-center.pa-1(:to="'?t=closed'" v-if="suggestClosedThreads" v-t="'group_page.view_closed_threads'")
 
       .discussions-panel__content.pa-4(v-if="$route.query.q")
         p.text-center.discussions-panel__list--empty(v-if='!searchResults.length && !searchLoader.loading' v-t="{path: 'discussions_panel.no_results_found', args: {search: $route.query.q}}")

@@ -6,10 +6,3 @@ import { includes } from 'lodash'
 
 export default class DiscussionReaderRecordsInterface extends BaseRecordsInterface
   model: DiscussionReaderModel
-
-  # fetchInbox: (options = {}) ->
-  #   @fetch
-  #     path: 'inbox'
-  #     params:
-  #       from: options['from'] or 0
-  #       per: options['per'] or 100

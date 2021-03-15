@@ -16,7 +16,6 @@ export default
 
   props:
     discussion: Object
-    close: Function
     isPage: Boolean
     user: Object
 
@@ -105,7 +104,7 @@ export default
         span(v-if="!discussion.id" v-t="'discussion_form.new_discussion_title'")
         span(v-if="discussion.id" v-t="'discussion_form.edit_discussion_title'")
     v-spacer
-    dismiss-modal-button(v-if="!isPage" aria-hidden='true' :close='close')
+    dismiss-modal-button(v-if="!isPage" aria-hidden='true')
     v-btn(v-if="isPage && discussion.id" icon  aria-hidden='true' :to="urlFor(discussion)")
       v-icon mdi-close
   .pa-4
@@ -134,6 +133,7 @@ export default
     .discussion-form__group-selected(v-if='!showUpgradeMessage')
       v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input(:label="$t('discussion_form.title_label')" :placeholder="$t('discussion_form.title_placeholder')" v-model='discussion.title' maxlength='255' required)
       validation-errors(:subject='discussion', field='title')
+      tags-field(:model="discussion")
       lmo-textarea(:model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")
 
       common-notify-fields(:model="discussion")

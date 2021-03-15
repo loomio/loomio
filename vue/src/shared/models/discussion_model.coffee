@@ -36,11 +36,13 @@ export default class DiscussionModel extends BaseModel
     files: []
     imageFiles: []
     attachments: []
+    tagIds: []
     recipientMessage: null
     recipientAudience: null
     recipientUserIds: []
     recipientEmails: []
     groupId: null
+    usersNotifiedCount: null
 
   audienceValues: ->
     name: @group().name
@@ -53,10 +55,14 @@ export default class DiscussionModel extends BaseModel
     @belongsTo 'group'
     @belongsTo 'author', from: 'users'
     @hasMany 'discussionReaders'
+
     # @belongsTo 'createdEvent', from: 'events'
     # @belongsTo 'forkedEvent', from: 'events'
 
   discussion: -> @
+
+  tags: ->
+    @recordStore.tags.collection.chain().find(id: {$in: @tagIds}).simplesort('priority').data()
 
   members: ->
     @recordStore.users.find(@group().memberIds().concat(map(@discussionReaders(), 'userId')))
@@ -224,8 +230,13 @@ export default class DiscussionModel extends BaseModel
     @processing = true
     @remote.patchMember(@keyOrId(), 'move_comments', { forked_event_ids: @forkedEventIds }).finally => @processing = false
 
-  # isForking: ->
-  #   @forkedEventIds.length > 0
+  fetchUsersNotifiedCount: ->
+    @recordStore.fetch
+      path: 'announcements/users_notified_count'
+      params:
+        discussion_id: @id
+    .then (data) =>
+      @usersNotifiedCount = data.count
 
   forkedEvents: ->
     sortBy(@recordStore.events.find(@forkedEventIds), 'sequenceId')

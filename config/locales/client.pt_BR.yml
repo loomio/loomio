@@ -1,7 +1,6 @@
 pt_BR:
   loomio_onboarding:
     group_progress_card:
-      title: Ativar seu grupo
       activities:
         set_description: Defina a descrição do seu grupo
         invite_people_in: Convide pessoas
@@ -13,6 +12,8 @@ pt_BR:
   plan_names:
     free: Grátis
     trial: Teste
+    pro: Pro
+    community: Comunidade
     small: Pequeno
     medium: Médio
     large: Grande
@@ -39,20 +40,16 @@ pt_BR:
     all_tags: Todas as Tags
     tags: Tags
     apply_tags: Aplicar tags
-    new_tag: Criar tag
     name_label: Nome
     color_label: Cor
     card_title: Categoria de Tags
     modal_title: Criar uma nova tag
     modal_edit_title: Editar tag
     modal_destroy_title: Remover tag
-    destroy_tag: Remover tag
-    destroy_helptext: Isso vai deletar essa tag e removê-la de todas as conversas e tópicos no grupo. Você tem certeza?
     helptext: Tags permitem que você categorize conversas e encontre-as facilmente mais tarde
     discussions_count_singular: ({{count}} tópico)
     discussions_count_plural: ({{count}} tópicos)
     tag_created: Tags salvas
-    tag_destroyed: Tags eliminadas
     tags_marked: Tópicos marcados '{{name}}' em {{groupName}}
     no_tags_present: Nenhum tópico foi encontrado com essa tag! Tente selecionar outra diferente.
   reactions:
@@ -560,6 +557,8 @@ pt_BR:
     preview: Visualizar Email
     no_notifications_sent: Nenhuma notificação foi enviada
     history_error: Algo deu errado! Não foi possível carregar o histórico.
+    audiences:
+      group: Membros de {{name}}
     form:
       too_many_invitations: |
           Se acabaram os convites. <a href="{{upgradeUrl}}" target="_blank">Assine</a>
@@ -579,6 +578,8 @@ pt_BR:
       poll_announced:
         title: Convidar a votar
         helptext: Quem você gostaria de convidar a votar?
+      poll_reminder:
+        message_label: Mensagem
       poll_edited:
         title: Notificar sobre as edições
       outcome_announced:
@@ -593,7 +594,6 @@ pt_BR:
     group_form:
       search_placeholder: Buscar pessoas…
       modal_title: Selecionar membros do grupo
-      members_count: '{{count}} pessoas serão notificadas'
     flash:
       success: '{{count}} notificações enviadas'
   action_dock:
@@ -818,21 +818,23 @@ pt_BR:
   group_form:
     thread_defaults_help: Configuração padrão para novas conversas
     click_to_change_image: Image da Capa e Logo (clicar para mudar)
-    aria_label: 'Formulário do grupo'
-    new_organisation: Nova Organização
-    start_group_heading: 'Iniciar um grupo'
-    start_subgroup_heading: 'Iniciar um subgrupo'
-    edit_group_heading: 'Editar configurações do grupo'
-    edit_subgroup_heading: 'Editar configurações do subgrupo'
-    group_name: 'Nome do Grupo'
+    aria_label: Formulário do grupo
+    new_organisation: Nova organização
+    new_group: Novo grupo
+    new_subgroup: Novo subgrupo
+    start_group_heading: Iniciar um grupo
+    start_subgroup_heading: Iniciar um subgrupo
+    edit_group_heading: Editar configurações do grupo
+    edit_subgroup_heading: Editar configurações do subgrupo
+    group_settings: Configurações do grupo
+    group_name: Nome do grupo
+    subgroup_name: Nome do subgrupo
     handle: Sigla da organização
     group_handle_placeholder: "Para um URL ou email e.x. loomio.org/sigla ou sigla@loomio.org"
-    organization_name: 'Nome da organização'
     start_organization_heading: Nova organização
     edit_organization_heading: Editar configurações da organização
     group_name_placeholder: 'Qual é o nome do seu grupo?'
     organization_name_placeholder: 'Qual é o nome da sua organização'
-    subgroup_name: 'Nome do Subgrupo'
     description: 'Descrição'
     description_placeholder: 'Descreva o propósito do seu grupo para que seus membros saibam a razão de estarem aqui.'
     privacy_statement:
@@ -863,15 +865,6 @@ pt_BR:
     public_or_private_threads: 'Permitir conversas públicas e privadas'
     private_threads: 'Apenas os membros podem ver discussões'
     allow_public_threads: 'Permitir conversas públicas neste grupo.'
-    parent_members_can_see_discussions: 'Membros de {{parent}} podem ver conversas privadas.'
-    members_can_announce: 'Membros podem notificar a todos no grupo.'
-    members_can_add_members: 'Membros podem convidar pessoas e aprovar pedidos de adesão.'
-    members_can_create_subgroups: 'Membros podem criar subgrupos.'
-    members_can_edit_discussions: 'Membros podem atualizar o contexto e o título de qualquer conversa.'
-    members_can_edit_comments: 'Membros podem editar seus próprios comentários a qualquer momento.'
-    members_can_start_discussions: 'Membros podem iniciar novas conversas.'
-    members_can_vote: 'Membros podem votar em propostas.'
-    members_can_raise_motions: 'Membros podem iniciar propostas.'
     submit_start_group: 'Iniciar grupo'
     submit_start_subgroup: 'Iniciar subgrupo'
     submit_update: 'Atualizar configurações'
@@ -1185,7 +1178,7 @@ pt_BR:
     comment: 'Comentario '
     facilitate: Facilitar
   thread_group:
-    aria_label: 'Nome do grupo'
+    aria_label: Nome do grupo
   thread_context:
     item_maybe_deleted: "Não foi possível encontrar esse momento na conversa. Talvez ele foi apagado."
     aria_label: 'Contexto da conversa'
@@ -1400,11 +1393,6 @@ pt_BR:
   poll_common_select_group:
     loomio_group: Grupo
     loomio_group_placeholder: (nenhum grupo selecionado)
-  poll_common_notify_group:
-    notify_group: Anúncio
-    members_helptext: Seu grupo não será notificado
-    members_count: "{{count}} pessoas serão notificadas"
-    decided_voters_count: "As {{count}} pessoas que votaram serão notificadas"
   poll_common_calendar_invite:
     calendar_invite: Incluir um horário convite com esse resultado
     poll_option_id: Horário da reunião
@@ -1698,26 +1686,7 @@ pt_BR:
     stance_created: Escolha registrada
     stance_updated: Escolha atualizada
   thread_item:
-    comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> em resposta a <strong>{{title}}</strong>"
-    discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> editou o título da conversa"
-    discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> editou o contexto da conversa"
-    discussion_attachments_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> editou os anexos da conversa"
-    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> mudou as configurações de privacidade da conversa"
-    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> editou a conversa"
-    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> mudou a conversa de <strong>{{title}}</strong>"
-    discussion_closed: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> fechou a conversa"
-    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> reabriu a conversa"
-    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> bifurcou essa conversa: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>"
-    outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> compartilhou um resultado"
-    poll_reopened: "<strong><a href='/u/{{username}}'>{{auhor}}</a></strong> reabriu a {{polltype}}"
-    poll_closed_by_user: "<strong><a href='/u/{{username}}'>{{auhor}}</a></strong> encerrou a {{polltype}}"
-    poll_created: "<strong><a href='/u/{{username}}'>{{auhor}}</a></strong> iniciou uma {{polltype}}"
-    poll_created_no_title: "<strong><a href='/u/{{username}}'>{{auhor}}</a></strong> iniciou uma {{polltype}}"
-    poll_edited: "<strong><a href='/u/{{username}}'>{{auhor}}</a></strong> editou a {{polltype}}"
-    poll_option_added: "<strong><a href='/u/{{username}}'>{{auhor}}</a></strong>acrescentou opções a {{polltype}}"
     poll_expired: "{{polltype}} encerrada"
-    stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> votou em: <strong>{{title}}</strong>"
     event_removed: "Apagado da conversa"
   poll_common_subscribe_form:
     receive_updates_title: Seu voto foi registrado
@@ -1791,19 +1760,12 @@ pt_BR:
       markdown: Markdown (para Mattermost, Zapier e outros)
       microsoft: Microsoft Teams
       slack: Slack
-    subtitle: Conecte o Slack, Microsoft Teams, Mattermost, Zapier, ou qualquer outro serviço que utilize webhooks
     we_have_guides: |
         Veja nosso <a href="{{url}}" target="_blank">guia para configurar webhooks</a> para ajuda em conectar seu serviço.
     add_webhook: Adicionar webhook
-    success: Webhook adicionado!
-    remove: Eliminar webhood
-    confirm_remove: "Você tem certeza que você quer eliminar o webhook: {{name}}?"
-    removed: Webhook eliminado
     url_label: URL do Webhook
     url_placeholder: https://hooks.example.com/...
     name_label: Nome
-    name_placeholder: Dê um nome a esse webhook para que você possa identificá-lo depois
-    event_kind_helptext: Qual eventos você quer ser notificado?
     event_kinds:
       poll_closing_soon: A consulta encerrará em breve
       poll_reopened: Uma consulta foi reaberta para votação
@@ -1836,6 +1798,10 @@ pt_BR:
     validation_error: Por favor, preencha todos os campos obrigatórios
     success: Obrigado!
     categories:
+      party: Partido político
+      coop: Cooperativa
+      union: Sindicato
+      community: Grupo comunitário
       government: Governo/Governo local
       other: Outro
     sizes:

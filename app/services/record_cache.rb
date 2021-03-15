@@ -39,17 +39,19 @@ class RecordCache
       obj.user_ids.concat collection.map(&:user_id)
 
     when 'Notification'
-      obj.add_events_eventables Event.includes(:eventable).where(id: collection.map(&:event_id))
+      obj.add_events_complete Event.includes(:eventable).where(id: collection.map(&:event_id))
+      # obj.add_events_eventables Event.includes(:eventable).where(id: collection.map(&:event_id))
       obj.user_ids.concat collection.map(&:user_id)
 
     when 'Group'
       obj.add_groups_subscriptions_memberships Group.includes(:subscription, :default_group_cover).where(id: ids_and_parent_ids(Group, collection.map(&:id)))
 
     when 'Membership'
-      obj.add_groups Group.includes(:default_group_cover).where(id: collection.map(&:group_id))
+      obj.add_groups Group.includes(:default_group_cover).where(id: ids_and_parent_ids(Group, collection.map(&:group_id)))
       obj.user_ids.concat collection.map(&:user_id).concat(collection.map(&:inviter_id).compact).compact.uniq
 
     when 'Poll'
+      obj.add_groups Group.includes(:default_group_cover).where(id: ids_and_parent_ids(Group, collection.map(&:group_id)))
       obj.add_discussions(Discussion.where(id: collection.map(&:discussion_id).uniq.compact))
       obj.add_polls_options_stances_choices_outcomes collection
 
@@ -85,6 +87,8 @@ class RecordCache
     obj.add_events Event.where(kind: 'new_discussion', eventable_id: obj.discussion_ids)
     obj.add_events Event.where(kind: 'discussion_forked', eventable_id: obj.discussion_ids)
     obj.add_events Event.where(kind: 'poll_created', eventable_id: obj.poll_ids)
+
+    obj.add_tags_complete
     obj
   end
 
@@ -94,6 +98,7 @@ class RecordCache
 
     Event.includes(:eventable).where(id: collection.map(&:id)).each do |e|
       ids[:discussion].push e.discussion_id if e.discussion_id
+      next unless e.eventable
       ids[e.eventable_type.underscore] ||= []
       ids[e.eventable_type.underscore].push e.eventable_id
       if ['Stance', 'Outcome', 'PollOption'].include? e.eventable_type
@@ -205,6 +210,25 @@ class RecordCache
     end
   end
 
+  def add_tags_complete
+    scope[:tags_by_type_and_id] ||= {}
+
+    Tag.where(group_id: group_ids).each do |tag|
+        scope[:tags_by_type_and_id]['Group'] ||= {}
+        scope[:tags_by_type_and_id]['Group'][tag.group_id] ||= []
+        scope[:tags_by_type_and_id]['Group'][tag.group_id].push tag
+    end
+
+    {Discussion: discussion_ids, Poll: poll_ids}.each_pair do |type, ids|
+      Tagging.includes(:tag).where(taggable_type: type, taggable_id: ids).each do |tagging|
+        next unless tagging.tag.present?
+        scope[:tags_by_type_and_id][tagging.taggable_type] ||= {}
+        scope[:tags_by_type_and_id][tagging.taggable_type][tagging.taggable_id] ||= []
+        scope[:tags_by_type_and_id][tagging.taggable_type][tagging.taggable_id].push tagging.tag
+      end
+    end
+  end
+
   def add_outcomes(collection)
     return [] if exclude_types.include?('outcome')
     scope[:outcomes_by_id] ||= {}
@@ -290,7 +314,6 @@ class RecordCache
     end
   end
 
-
   def add_discussions(collection)
     return if exclude_types.include?('discussion')
     scope[:discussions_by_id] ||= {}
@@ -314,6 +337,10 @@ class RecordCache
     collection.each do |user|
       scope[:users_by_id][user.id] = user
     end
+  end
+
+  def group_ids
+    scope.fetch(:groups_by_id, {}).keys
   end
 
   def discussion_ids

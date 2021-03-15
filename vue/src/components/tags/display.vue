@@ -1,11 +1,23 @@
 <script lang="coffee">
+import Records from '@/shared/services/records'
+
 export default
   props:
-    discussion: Object
-  computed:
-    tags: -> @discussion.tagNames || []
+    tags: Array
+    showCounts: Boolean
+
 </script>
 <template lang="pug">
-.thread-tags
-  v-chip.ml-1(small outlined color="accent" v-for="tag in tags" :key="tag" :to="{path: urlFor(discussion.group()), query: {tag: tag}}") {{ tag }}
+span.tags-display
+  v-chip.ml-1(
+    :class="{'mb-1': showCounts}"
+    v-for="tag in tags" :key="tag.id"
+    small outlined
+    :color="tag.color"
+    :to="'/g/'+tag.group().key+'/tags/'+tag.name"
+    )
+    span {{ tag.name }}
+    span(v-if="showCounts")
+      space
+      span {{tag.taggingsCount}}
 </template>

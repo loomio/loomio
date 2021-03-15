@@ -398,7 +398,6 @@ nb_NO:
     group_form:
       search_placeholder: Søk etter folk...
       modal_title: Velg gruppemedlemmer
-      members_count: '{{count}} folk vil bli varslet'
     flash:
       success: '{{count}} varslinger sendt'
   action_dock:
@@ -564,8 +563,6 @@ nb_NO:
     start_poll: Ny beslutning
   poll_common_select_group:
     loomio_group: Gruppe
-  poll_common_notify_group:
-    members_count: "{{count}} folk vil bli varslet"
   poll_common_settings:
     anyone_can_participate:
       title: Alle med link kan delta

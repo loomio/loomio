@@ -150,6 +150,7 @@ module.exports = {
   SubgroupsCard: 'group/subgroups_card',
   SubgroupsSelect: 'group/subgroups_select',
   TagsDisplay: 'tags/display',
+  TagsField: 'tags/field',
   ThreadRenderer: 'thread/renderer',
   ThreadItem: 'thread/item',
   ThreadStrand: 'thread/strand',

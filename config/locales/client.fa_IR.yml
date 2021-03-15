@@ -144,6 +144,8 @@ fa_IR:
       edit_group: 'ویرایش تنظیمات گروه'
       leave_group: 'ترک گروه'
   group_form:
+    new_group: گروه جدید
+    group_settings: تنظیمات گروه
     privacy: 'حریم شخصی'
     submit_update: 'به روز رسانی تنطیمات'
   invitation_form:

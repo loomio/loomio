@@ -71,6 +71,8 @@ mk:
       edit_group: 'Измени ги подесувањата на групата'
       leave_group: 'Напушти ја групата'
   group_form:
+    new_group: Нова група
+    group_name: Име на групата
     group_name_placeholder: 'Кое е името на твојата група?'
     profile: Профил
   membership_requests_page:
@@ -98,7 +100,7 @@ mk:
   activity_card:
     context: Контекст
   thread_group:
-    aria_label: 'Име на групата'
+    aria_label: Име на групата
   thread_context:
     close_thread: 'Затвори'
   delete_comment_dialog:

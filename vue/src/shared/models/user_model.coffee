@@ -43,7 +43,7 @@ export default class UserModel extends BaseModel
       simplesort('fullName').data()
 
   parentGroups: ->
-    filter @groups(), (group) -> group.isParent()
+    filter @groups(), (group) -> !group.parentId
 
   inboxGroups: ->
     flatten [@parentGroups(), @orphanSubgroups()]
@@ -94,6 +94,9 @@ export default class UserModel extends BaseModel
   uploadedAvatarUrl: (size = 'medium') ->
     return @avatarUrl if typeof @avatarUrl is 'string'
     @avatarUrl[size]
+
+  title: (group) ->
+    @titles[group.id] || @titles[group.parentId]
 
   nameWithTitle: (group) ->
     name = @nameOrEmail()

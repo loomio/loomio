@@ -1,10 +1,9 @@
 it:
   loomio_onboarding:
     group_progress_card:
-      title: Attiva il tuo gruppo
       activities:
         set_description: 'Scrivi la descrizione del tuo gruppo '
-        set_cover_photo: Caricare una foto di copertina & logo per il tuo gruppo
+        set_cover_photo: Carica una foto di copertina ed un logo per il tuo gruppo
         invite_people_in: Invita persone in
         start_thread: Inizia un thread di discussione
         make_decision: Inizia una decisione
@@ -14,6 +13,8 @@ it:
   plan_names:
     free: Free
     trial: Prova
+    pro: Pro
+    community: Comunità
     small: Piccolo
     medium: Medio
     large: Ampio
@@ -43,20 +44,16 @@ it:
     all_tags: Tutte etichette
     tags: Etichette
     apply_tags: Inserisci etichette
-    new_tag: Crea etichetta
     name_label: Nome
     color_label: Colore
     card_title: Etichette di categoria
     modal_title: Crea una nuova etichetta
     modal_edit_title: Modifica etichetta
     modal_destroy_title: Rimuovi etichetta
-    destroy_tag: Rimuovi etichetta
-    destroy_helptext: Cancellerai questa etichetta e la rimuoverai da tutte le discussioni nel gruppo. Sei sicuro?
     helptext: 'Le etichette ti permettono di categorizzare le conversazioni e trovarle facilmente dopo '
     discussions_count_singular: ({{count}} discussione)
     discussions_count_plural: ({{count}} discussioni)
     tag_created: Etichetta salvata
-    tag_destroyed: Etichetta rimossa
     tags_marked: Discussioni marcate con '{{name}}' nel gruppo {{groupName}}
     no_tags_present: 'Non è stata trovata nessuna discussione con questa etichetta!  '
   reactions:
@@ -534,7 +531,6 @@ it:
       not_notified: Non ancora notificato
     group_form:
       search_placeholder: Cerca persone...
-      members_count: '{{count}} persone saranno notificate'
   action_dock:
     add_resource: Aggiungi allegato
     edit_group: Modifica il contesto del gruppo
@@ -675,15 +671,19 @@ it:
     question: 'Sei sicuro/a di voler disattivare questo gruppo?'
     submit: 'Sì, disattiva questo gruppo'
   group_form:
-    aria_label: 'Modulo per gruppo'
-    start_group_heading: 'Inizia un gruppo'
-    start_subgroup_heading: 'Inizia un sottogruppo'
-    edit_group_heading: 'Modifica le impostazioni del gruppo'
-    edit_subgroup_heading: 'Modifica le impostazioni del sottogruppo'
-    group_name: 'Nome del gruppo'
+    aria_label: Modulo per gruppo
+    new_organisation: Nuova organizzazione
+    new_group: Nuovo gruppo
+    new_subgroup: Nuovo sottogruppo
+    start_group_heading: Inizia un gruppo
+    start_subgroup_heading: Inizia un sottogruppo
+    edit_group_heading: Modifica le impostazioni del gruppo
+    edit_subgroup_heading: Modifica le impostazioni del sottogruppo
+    group_settings: Impostazioni del gruppo
+    group_name: Nome gruppo
+    subgroup_name: Nome del sottogruppo
     start_organization_heading: Nuova organizzazione
     group_name_placeholder: 'Qual''é il nome del tuo gruppo?'
-    subgroup_name: 'Nome del sottogruppo'
     description: 'Descrizione'
     description_placeholder: 'Descrivi lo scopo del tuo gruppo in modo che gli altri partecipanti sappiano il motivo per cui sono qui.'
     privacy_statement:
@@ -941,7 +941,7 @@ it:
       image_alt: 'Immagine allegata'
     comment: Commenta
   thread_group:
-    aria_label: 'Nome gruppo'
+    aria_label: Nome gruppo
   thread_context:
     aria_label: 'Contesto della discussione'
     thread_options: 'Opzioni delle discussioni'
@@ -1049,10 +1049,6 @@ it:
     by_who: "di {{name}}"
   poll_common_select_group:
     loomio_group: Gruppo
-  poll_common_notify_group:
-    notify_group: Annuncio
-    members_helptext: Il tuo gruppo non riceverà una notifica
-    members_count: "{{count}} persone saranno notificate"
   poll_common_calendar_invite:
     poll_option_id: Ora dell'incontro
     event_duration: Durata
@@ -1236,6 +1232,7 @@ it:
     front_page: Prima pagina
   group_survey:
     categories:
+      community: Comunità
       other: Altro
     uses:
       other: Altro

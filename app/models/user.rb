@@ -64,6 +64,7 @@ class User < ApplicationRecord
   validates_uniqueness_of :email, conditions: -> { where(email_verified: true) }, if: :email_verified?
   validates_uniqueness_of :username, if: :email_verified
   before_validation :generate_username, if: :email_verified
+  validates_length_of :name, maximum: 100
   validates_length_of :username, maximum: 30
   validates_length_of :short_bio, maximum: 5000
   validates_format_of :username, with: /\A[a-z0-9]*\z/, message: I18n.t(:'user.error.username_must_be_alphanumeric')
@@ -133,7 +134,6 @@ class User < ApplicationRecord
   initialized_with_token :unsubscribe_token,        -> { Devise.friendly_token }
   initialized_with_token :email_api_key,            -> { SecureRandom.hex(16) }
 
-
   enum default_membership_volume: [:mute, :quiet, :normal, :loud]
 
   scope :active, -> { where(deactivated_at: nil) }
@@ -146,21 +146,17 @@ class User < ApplicationRecord
   scope :unverified, -> { where(email_verified: false) }
   scope :search_for, -> (q) { where("users.name ilike :first OR users.name ilike :other OR users.username ilike :first OR users.email ilike :first", first: "#{q}%", other:  "% #{q}%") }
   scope :visible_by, -> (user) { distinct.active.verified.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
-  scope :mention_search, -> (user, model, query) do
-    # allow mentioning of anyone in the organisation or guests of the discussion
-    return self.none unless model.present?
 
-    group_ids = model.group.parent_or_self.id_and_subgroup_ids
-    relation = active.search_for(query).
-                      joins("LEFT OUTER JOIN memberships ON memberships.user_id = users.id").
-                      where.not('users.id': user.id).order("users.name")
-    if model.discussion_id
-      relation.joins("LEFT OUTER JOIN discussion_readers dr ON dr.user_id = users.id AND dr.discussion_id = #{model.discussion_id}").
-               where("memberships.group_id IN (:group_ids) OR (dr.id IS NOT NULL AND dr.revoked_at IS NULL)", group_ids: group_ids)
-    else
-      relation.where("memberships.group_id IN (:group_ids)", group_ids: group_ids)
-    end
+  scope :mention_search, -> (user, model, query) do
+    return self.none unless model.present?
+    active.verified.search_for(query).
+      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{model.group_id || 0}").
+      joins("LEFT OUTER JOIN discussion_readers dr ON dr.user_id = users.id AND dr.discussion_id = #{model.discussion_id || 0}").
+      where("(m.id IS NOT NULL AND m.archived_at IS NULL) OR
+             (dr.id IS NOT NULL AND dr.inviter_id IS NOT NULL AND dr.revoked_at IS NULL)").
+      where.not('users.id': user.id)
   end
+
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
 
   scope :email_proposal_closing_soon_for, -> (group) {
@@ -169,19 +165,6 @@ class User < ApplicationRecord
     .where('memberships.group_id': group.id)
   }
 
-  scope :joins_discussion_readers, ->(model) {
-    joins("LEFT OUTER JOIN discussion_readers dr ON (dr.user_id = users.id AND dr.discussion_id = #{model.discussion_id.to_i})")
-  }
-
-  scope :joins_memberships, ->(model) {
-     joins("LEFT OUTER JOIN memberships fm ON (fm.user_id = users.id AND fm.group_id = #{model.group_id.to_i})")
-    .where('fm.archived_at': nil)
-  }
-
-  def author
-    self
-  end
-  
   def default_format
     if experiences['html-editor.uses-markdown']
       'md'
@@ -197,7 +180,7 @@ class User < ApplicationRecord
 
   def invitations_rate_limit
     if user.is_paying?
-      ENV.fetch('PAID_INVITATIONS_RATE_LIMIT', 5000)
+      ENV.fetch('PAID_INVITATIONS_RATE_LIMIT', 50000)
     else
       ENV.fetch('TRIAL_INVITATIONS_RATE_LIMIT', 500)
     end.to_i

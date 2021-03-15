@@ -66,6 +66,9 @@ id:
       edit_group: 'Ubah setelan kelompok'
       email_settings: 'Preferensi surel'
       leave_group: 'Tinggalkan kelompok'
+  group_form:
+    new_group: Kelompok baru
+    group_name: Nama kelompok
   membership_requests_page:
     approve: Setuju
     ignore: Abaikan
@@ -83,7 +86,7 @@ id:
   activity_card:
     context: Konteks
   thread_group:
-    aria_label: 'Nama kelompok'
+    aria_label: Nama kelompok
   thread_context:
     close_thread: 'Tutup'
   delete_comment_dialog:

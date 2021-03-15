@@ -80,6 +80,8 @@ sk:
       email_settings: 'Nastavenie emailu'
       leave_group: 'Opustiť skupinu'
   group_form:
+    new_group: Nová skupina
+    group_name: Názov skupiny
     group_name_placeholder: 'Aký je názov vašej skupiny?'
     profile: Profil
   membership_requests_page:
@@ -111,7 +113,7 @@ sk:
   activity_card:
     context: Kontext
   thread_group:
-    aria_label: 'Názov skupiny'
+    aria_label: Názov skupiny
   thread_context:
     close_thread: 'Uzatvoriť'
   delete_comment_dialog:
@@ -154,6 +156,7 @@ sk:
     name_label: Meno
   group_survey:
     categories:
+      community: Komunitná skupina
       other: Ostatné
     uses:
       other: Ostatné

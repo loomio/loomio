@@ -17,6 +17,8 @@ module Ability::Poll
     end
 
     can [:show, :export], ::Poll do |poll|
+      Webhook.where(group_id: poll.group_id,
+                    actor_id: user.id).where.any(permissions: 'show_poll').exists? ||
       PollQuery.visible_to(user: user, show_public: true).exists?(poll.id)
     end
 

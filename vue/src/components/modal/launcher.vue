@@ -20,6 +20,7 @@ import MoveThreadForm from '@/components/thread/move_thread_form'
 import PollCommonMoveForm from '@/components/poll/common/move_form'
 import PollCommonAddOptionModal from '@/components/poll/common/add_option_modal'
 import RevisionHistoryModal from '@/components/revision_history/modal'
+import TagsSelect from '@/components/tags/select'
 import TagsModal from '@/components/tags/modal'
 import WebhookForm from '@/components/webhook/form'
 import WebhookList from '@/components/webhook/list'
@@ -29,9 +30,9 @@ import PinEventForm from '@/components/thread/pin_event_form'
 import MoveCommentsModal from '@/components/discussion/move_comments_modal'
 import ExportDataModal from '@/components/group/export_data_modal'
 import InstallSamlProviderModal from '@/components/install_saml_provider/modal'
-import GroupSurvey from '@/components/group/survey'
 import AddPollToThreadModal from '@/components/poll/add_to_thread_modal'
 import StrandMembersList from '@/components/strand/members_list'
+import SeenByModal from '@/components/strand/seen_by_modal'
 import PollMembers from '@/components/poll/members'
 import PollReminderForm from '@/components/poll/reminder_form'
 import GroupInvitationForm from '@/components/group/invitation_form'
@@ -61,6 +62,7 @@ export default
     PollCommonStartForm
     RevisionHistoryModal
     TagsModal
+    TagsSelect
     WebhookForm
     WebhookList
     ChangePictureForm
@@ -69,45 +71,51 @@ export default
     MoveCommentsModal
     ExportDataModal
     InstallSamlProviderModal
-    GroupSurvey
     AddPollToThreadModal
     StrandMembersList
     PollMembers
     PollReminderForm
     GroupInvitationForm
+    SeenByModal
   }
 
   data: ->
     isOpen: false
     componentName: ""
     componentProps: {}
-    maxWidth: 640
+    componentKey: 'defaultKey'
+    maxWidth: null
 
   created: ->
     EventBus.$on('openModal', @openModal)
-    EventBus.$on('closeModal', @doCloseModal)
+    EventBus.$on('closeModal', @closeModal)
+
+  destroyed: ->
+    EventBus.$off('openModal', @openModal)
+    EventBus.$off('closeModal', @closeModal)
 
   methods:
     openModal: (opts) ->
       @maxWidth = opts.maxWidth || 640
-      @isOpen = true
       @componentName = opts.component
       @componentProps = opts.props
+      @componentKey = (new Date()).getTime()
+      @isOpen = true
+
       setTimeout =>
         if @$refs.modalLauncher && document.querySelector('.modal-launcher h1')
           document.querySelector('.modal-launcher h1').focus()
 
-    doCloseModal: -> @isOpen = false
-
-    componentKey: ->
-      date = new Date()
-      date.getTime()
-
+    closeModal: ->
+      if @isOpen && (@componentProps || {}).close
+        @componentProps.close()
+      else
+        @isOpen = false
 
 </script>
 
 <template lang="pug">
 v-dialog.modal-launcher(ref="modalLauncher" v-model="isOpen" :max-width="maxWidth" persistent :fullscreen="$vuetify.breakpoint.xs")
-  v-card
-    component(:is="componentName" :key="componentKey()" v-bind="componentProps" :close="closeModal")
+  v-card(v-if="isOpen")
+    component(:is="componentName" :key="componentKey" v-bind="componentProps" :close="closeModal")
 </template>

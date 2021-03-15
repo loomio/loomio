@@ -38,8 +38,8 @@ Loomio::Application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     namespace :b1 do
-      resources :discussions, only: [:create]
-      resources :polls, only: [:create]
+      resources :discussions, only: [:create, :show]
+      resources :polls, only: [:create, :show]
       resources :memberships, only: [:index]
     end
 
@@ -150,6 +150,7 @@ Loomio::Application.routes.draw do
         delete :discard, on: :member
         post  :fork, on: :collection
         patch :move_comments, on: :member
+        get :history, on: :member
         get :search, on: :collection
         get :dashboard, on: :collection
         get :inbox, on: :collection
@@ -165,11 +166,12 @@ Loomio::Application.routes.draw do
         end
       end
 
-      resources :tags do
+      resources :tags, only: [:create, :update, :destroy] do
         collection do
-          post :update_model
+          post :priority
         end
       end
+
 
       resources :search, only: :index
 
@@ -225,6 +227,7 @@ Loomio::Application.routes.draw do
           get :count
           get :search
           get :history
+          get :users_notified_count
         end
       end
 

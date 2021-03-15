@@ -163,9 +163,9 @@ ActiveAdmin.register Group, as: 'Group' do
       row :logo_file_size
       row :logo_updated_at
       row :psp_links do |group|
-        Array(SubscriptionService::USABLE_PLANS).map do |key|
-          SubscriptionService.psp_url(group, group.creator, key)
-        end.join(" ")
+        raw (Array(SubscriptionService::CURRENT_PLANS).map do |key|
+          '<a href="'+SubscriptionService.psp_url(group, group.creator, key)+'">'+key+'</a>'.to_s
+        end.join(" "))
       end if defined?(SubscriptionService)
     end
 

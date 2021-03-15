@@ -63,6 +63,7 @@ vi:
       email_settings: 'Tùy biến email'
       leave_group: 'Rời khỏi nhóm'
   group_form:
+    new_group: Tạo nhóm mới
     group_name_placeholder: 'Tên của nhóm bạn là gì?'
   membership_requests_page:
     approve: Chấp thuậ

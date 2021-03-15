@@ -258,13 +258,15 @@ sr:
       public: 'Privatnost: Ova grupa je vidljiva na mreži'
       aria_label: 'Privatnost grupe:  {{privacy}}'
   group_form:
-    start_group_heading: 'Kreiraj grupu'
-    start_subgroup_heading: 'Kreiraj podgrupu'
-    edit_group_heading: 'Promeni osobine grupe'
-    edit_subgroup_heading: 'Izmeni opcije podgrupe'
-    group_name: 'Naziv Grupe'
+    new_group: Nova grupa
+    start_group_heading: Kreiraj grupu
+    start_subgroup_heading: Kreiraj podgrupu
+    edit_group_heading: Promeni osobine grupe
+    edit_subgroup_heading: Izmeni opcije podgrupe
+    group_settings: Opcije grupe
+    group_name: Naziv grupe
+    subgroup_name: Naziv podgrupe
     group_name_placeholder: 'Kako se zove tvoja grupa?'
-    subgroup_name: 'Naziv Podgrupe'
     description: 'Opis'
     description_placeholder: 'Opiši svrhu svoje grupe tako da tvoji članovi grupe znaju zašto su ovde.'
     privacy_statement:
@@ -435,7 +437,7 @@ sr:
       aria_label: 'Prateće datoteke:'
       image_alt: 'Prateća slika'
   thread_group:
-    aria_label: 'Naziv grupe'
+    aria_label: Naziv grupe
   thread_context:
     aria_label: 'Kontekst niti'
     thread_options: 'Opcije niti'
@@ -508,6 +510,7 @@ sr:
     title: Jednokratni upis
   group_survey:
     categories:
+      community: Grupa zajednice
       other: Ostalo
     uses:
       other: Ostalo

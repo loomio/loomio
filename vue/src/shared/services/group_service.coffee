@@ -32,7 +32,7 @@ export default new class GroupService
         openModal
           component: 'GroupForm'
           props:
-            group: group
+            group: group.clone()
 
     become_coordinator:
       name: 'group_page.options.become_coordinator'

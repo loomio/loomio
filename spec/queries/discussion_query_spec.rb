@@ -220,13 +220,13 @@ describe DiscussionQuery do
   end
 
   describe 'tags' do
-    let!(:tagged_discussion) { create :discussion, author: author, private: true, group: group }
+    let!(:tag) { create :tag, group_id: group.id, name: 'test', color: '#abc' }
+    let!(:tagged_discussion) { create :discussion, author: author, private: true, group: group, tags: [tag] }
     let!(:untagged_discussion) { create :discussion, author: author, private: true, group: group }
     let!(:group) { create :group }
 
     before do
       group.add_member! user
-      TagService.update_model(discussion: tagged_discussion, tags: ['test'])
     end
 
     it 'returns tagged discussions' do

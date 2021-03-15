@@ -9,7 +9,7 @@ class Group < ApplicationRecord
   include HasEvents
 
   extend HasTokens
-  extend  NoSpam
+  extend NoSpam
 
   is_rich_text    on: :description
   initialized_with_token :token
@@ -158,6 +158,7 @@ class Group < ApplicationRecord
                          :membership_granted_upon,
                          :members_can_edit_discussions,
                          :members_can_edit_comments,
+                         :members_can_delete_comments,
                          :members_can_raise_motions,
                          :members_can_start_discussions,
                          :members_can_create_subgroups,
@@ -189,6 +190,10 @@ class Group < ApplicationRecord
   end
 
   def poll_id
+    nil
+  end
+
+  def poll
     nil
   end
 

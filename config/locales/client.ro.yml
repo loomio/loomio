@@ -1,7 +1,6 @@
 ro:
   loomio_onboarding:
     group_progress_card:
-      title: Activeaza grupul tau
       activities:
         set_description: Seteaza descrierea grupului
         invite_people_in: Invita participanti
@@ -21,20 +20,16 @@ ro:
   loomio_tags:
     tags: Etichete
     apply_tags: Aplica etichete
-    new_tag: Creeaza eticheta
     name_label: Nume
     color_label: Culoare
     card_title: Categorii de etichete
     modal_title: Creeaza o noua eticheta
     modal_edit_title: Editeaza eticheta
     modal_destroy_title: Sterge eticheta
-    destroy_tag: Sterge eticheta
-    destroy_helptext: Aceasta actiune va sterge eticheta si o va elimina din toate discutiile din grup. Esti sigur?
     helptext: Etichetele te ajuta sa clasifici discutiile si sa le gasesti mai usor
     discussions_count_singular: ({{count}} discutie)
     discussions_count_plural: ({{count}} discutii)
     tag_created: Etichetă salvată
-    tag_destroyed: Etichetă ștearsă
     tags_marked: Conversatii marcate '{{name}}' in {{groupName}}
     no_tags_present: Nu s-au gasit conversatii cu aceasta eticheta! Incearca din nou selectand alta eticheta.
   reactions:
@@ -419,6 +414,10 @@ ro:
       mute: Ascunde acest grup din tabloul de comanda si notifica doar cand @va mentiona.
       mute_aria_description: Volumul notificarilor pentru aceast grup este pozitionat la Dezactivat. Vei primi email despre aceasta discutie doar cand cineva mentioneaza numele tau, iar activitatea grupului nu va fi afisata in tabloul tau de bord.
   group_form:
+    new_group: Grup nou
+    new_subgroup: Grup nou subordonat
+    group_settings: Setarile grupului
+    group_name: Numele grupului
     group_name_placeholder: 'Cum se va numi grupul tău?'
     privacy: 'Confidentialitate'
     confirm_change_to_secret: "Daca vei continua, toate discutiile acestui grup precum si sub-grupurile lui vor deveni private."
@@ -494,7 +493,7 @@ ro:
     context: Context
     comment: Comenteaza
   thread_group:
-    aria_label: 'Numele grupului'
+    aria_label: Numele grupului
   thread_context:
     aria_label: 'Contextul discutiei'
     thread_options: 'Optiunile discutiei'
@@ -558,8 +557,6 @@ ro:
     closed: 'Inchis'
   current_polls_card:
     start_poll: Decizie noua
-  poll_common_notify_group:
-    notify_group: Anunt
   poll_common_form:
     closed: Inchis
     start: Incepe
@@ -583,6 +580,7 @@ ro:
   group_survey:
     success: Multumim!
     categories:
+      community: Comunitate
       other: Altele
     uses:
       other: Altele

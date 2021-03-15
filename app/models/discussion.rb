@@ -13,6 +13,7 @@ class Discussion < ApplicationRecord
   include HasMailer
   include HasCreatedEvent
   include HasRichText
+  include HasTags
   extend  NoSpam
   include Discard::Model
 
@@ -52,8 +53,6 @@ class Discussion < ApplicationRecord
   has_many :documents, as: :model, dependent: :destroy
   has_many :poll_documents,    through: :polls,    source: :documents
   has_many :comment_documents, through: :comments, source: :documents
-  has_many :discussion_tags, dependent: :destroy
-  has_many :tags, through: :discussion_tags
 
   has_many :items, -> { includes(:user) }, class_name: 'Event', dependent: :destroy
 

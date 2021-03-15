@@ -41,7 +41,7 @@ module EmailHelper
       begin
         vi = VideoInfo.new(src)
         out.gsub!('<iframe src="'+src+'"></iframe>', "<a href='#{vi.url}'><img src='#{vi.thumbnail}' /></a>")
-      rescue VideoInfo::UrlError
+      rescue # yea, there are stupid errors to collect here.
         out.gsub!('<iframe src="'+src+'"></iframe>', "<a href='#{src}'>#{src}</a>")
       end
     end

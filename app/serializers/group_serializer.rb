@@ -17,6 +17,7 @@ class GroupSerializer < ApplicationSerializer
              :members_can_start_discussions,
              :members_can_edit_discussions,
              :members_can_edit_comments,
+             :members_can_delete_comments,
              :members_can_raise_motions,
              :admins_can_edit_user_content,
              :token,
@@ -33,7 +34,6 @@ class GroupSerializer < ApplicationSerializer
              :admin_memberships_count,
              :archived_at,
              :attachments,
-             :tag_names,
              :new_threads_max_depth,
              :new_threads_newest_first,
              :cover_urls,
@@ -62,6 +62,7 @@ class GroupSerializer < ApplicationSerializer
 
   has_one :parent, serializer: GroupSerializer, root: :parent_groups
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
+  has_many :tags, serializer: TagSerializer, root: :tags
 
   def current_user_membership
     cache_fetch(:memberships_by_group_id, object.id) { nil }
@@ -82,8 +83,7 @@ class GroupSerializer < ApplicationSerializer
         active:          sub.is_active?,
         renews_at:       sub.renews_at,
         expires_at:      sub.expires_at,
-        management_link: (sub.info || {})['chargify_management_link'],
-        referral_code:   (sub.info || {})['chargify_referral_code'],
+        management_link: sub.management_link,
         members_count:   sub.members_count
       }
     else

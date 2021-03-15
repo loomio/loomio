@@ -51,7 +51,7 @@ module Null::Group
   end
 
   def true_methods
-    [:members_can_raise_motions, :members_can_edit_comments, :discussion_private_default, :members_can_announce, :members_can_edit_discussions, :members_can_add_guests]
+    [:members_can_raise_motions, :members_can_edit_comments, :members_can_delete_comments, :discussion_private_default, :members_can_announce, :members_can_edit_discussions, :members_can_add_guests]
   end
 
   def empty_methods

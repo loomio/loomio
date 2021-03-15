@@ -6,15 +6,12 @@ sl:
   loomio_tags:
     tags: Oznake
     apply_tags: Uporabi oznake
-    new_tag: Ustvari oznako
     name_label: Ime
     color_label: Barva
     modal_title: Ustvari novo oznako
     modal_edit_title: Uredi oznako
     modal_destroy_title: Odstrani oznako
-    destroy_tag: Odstrani oznako
     tag_created: Oznaka shranjena
-    tag_destroyed: Oznaka odstranjena
     tags_marked: Razprave z oznako '{{name}}' v {{groupName}}
   reactions:
     slight_smile: Všečkaj
@@ -299,6 +296,9 @@ sl:
     question: 'Ali res želite deaktivirati to skupino?'
     submit: 'Da, deaktiviraj to skupino'
   group_form:
+    new_organisation: Nova organizacija
+    new_group: Nova skupina
+    group_name: Ime skupine
     start_organization_heading: Nova organizacija
     group_name_placeholder: 'Kako se imenuje tvoja skupina?'
     privacy: 'Zasebnost'
@@ -347,7 +347,7 @@ sl:
   activity_card:
     context: Opis
   thread_group:
-    aria_label: 'Ime skupine'
+    aria_label: Ime skupine
   thread_context:
     close_thread: 'Zapri'
   pin_thread_modal:
@@ -409,6 +409,7 @@ sl:
     name_label: Ime
   group_survey:
     categories:
+      community: Skupina za skupnost
       other: Drugo
     uses:
       other: Drugo

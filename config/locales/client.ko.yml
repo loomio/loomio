@@ -1,7 +1,6 @@
 ko:
   loomio_onboarding:
     group_progress_card:
-      title: 그룹 활성화하기
       activities:
         set_description: 그룹 설명 설정하기
         set_cover_photo: 그룹의 커버 사진 & 로고 업로드
@@ -43,20 +42,16 @@ ko:
     all_tags: 모든 태그
     tags: 태그
     apply_tags: 태그 적용
-    new_tag: 태그 만들기
     name_label: 이름
     color_label: 색깔
     card_title: 카테고리 태그
     modal_title: 새 태그 만들기
     modal_edit_title: 태그 수정
     modal_destroy_title: 태그 삭제
-    destroy_tag: 태그 삭제
-    destroy_helptext: 이 태그를 파괴하고 모든 그룹의 모든 스레드로부터 지웁니다. 실행하시겠습니까?
     helptext: 태그는 당신이 토론들을 분류할 수 있게해주고 쉽게 찾을 수 있게 해줍니다.
     discussions_count_singular: ({{count}}개의 스레드)
     discussions_count_plural: ({{count}}개의 스레드)
     tag_created: 태그 저장됨
-    tag_destroyed: 태그 삭제됨
     tags_marked: 스레드는 {{GroupName}}에 '{{name}}'으로 표기되어있습니다.
     no_tags_present: 주어진 태그로 스레드를 찾을 수 없습니다. 다른 태그를 선택하여 보십시오
   reactions:
@@ -544,11 +539,7 @@ ko:
     start_new_thread: 또는, 새로운 스레드를 시작하기
   discussion_form:
     to: To
-    change_log_placeholder: 이 버전에서 변경된 사항에 대해 간략히 설명합니다.(선택)
     change_log_label: 무엇이 바뀌었습니까?
-    one_person_will_be_notified: '1명에게 알림이 전송됩니다.'
-    count_people_will_be_notified: '{{count}}명에게 알림이 전송됩니다.'
-    notify_specifc_people_instead: 전체 그룹에게 알림을 전송하고 싶지 않다면, 알림을 전송할 사람들의 이름을 추가하십시오.
     invite: 초대
     aria_label: '스레드 양식'
     start_thread: 스레드를 시작합니다
@@ -652,7 +643,6 @@ ko:
     group_form:
       search_placeholder: 사람들을 검색합니다...
       modal_title: 그룹 멤버 선택
-      members_count: '{{count}}명이 알림을 받습니다.'
     flash:
       success: '{{count}}개 알림이 전송되었습니다.'
   action_dock:
@@ -913,21 +903,21 @@ ko:
   group_form:
     thread_defaults_help: 새 스레드의 기본 설정
     click_to_change_image: 커버 이미지와 로고 (클릭해서 바꾸기)
-    aria_label: '그룹 형태'
+    aria_label: 그룹 형태
     new_organisation: 새로운 조직
-    start_group_heading: '그룹 시작하기'
-    start_subgroup_heading: '소그룹 시작하기'
-    edit_group_heading: '그룹 설정 편집'
-    edit_subgroup_heading: '소그룹 설정 수정하기'
-    group_name: '그룹명'
+    new_group: 새 그룹
+    new_subgroup: 새로운 소그룹
+    start_group_heading: 그룹 시작하기
+    start_subgroup_heading: 소그룹 시작하기
+    edit_group_heading: 그룹 설정 편집
+    edit_subgroup_heading: 소그룹 설정 수정하기
+    group_name: 그룹명
     handle: 처리
     group_handle_placeholder: "URL과 이메일, 예: loomio.org/handle , handle@loomio.org"
-    organization_name: '조직 이름'
     start_organization_heading: 새로운 조직
     edit_organization_heading: 조직 설정 수정
     group_name_placeholder: '그룹의 이름이 무엇인가요?'
     organization_name_placeholder: '조직의 이름이 무엇인가요?'
-    subgroup_name: '소그룹 이름'
     description: '설명'
     description_placeholder: '그룹의 멤버들이 왜 여기에 모여 있는지 인식할 수 있도록 이 그룹의 목적을 설명해주세요.'
     privacy_statement:
@@ -1246,7 +1236,7 @@ ko:
       image_alt: '첨부이미지'
     comment: 댓글
   thread_group:
-    aria_label: '그룹명'
+    aria_label: 그룹명
   thread_context:
     aria_label: '주제 컨텍스트'
     thread_options: '쓰레드 옵션'
@@ -1324,8 +1314,6 @@ ko:
     closed: '종료'
   current_polls_card:
     start_poll: 새로운 의사결정
-  poll_common_notify_group:
-    members_count: "{{count}}명이 알림을 받습니다."
   poll_common_calendar_invite:
     location: 장소
   poll_common_settings:

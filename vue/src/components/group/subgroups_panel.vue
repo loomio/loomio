@@ -53,7 +53,7 @@ export default
       EventBus.$emit('openModal',
                       component: 'GroupNewForm',
                       props: {
-                        parentId: @group.id
+                        group: Records.groups.build(parentId: @group.id)
                       })
 
 

@@ -15,7 +15,7 @@ export default class GroupModel extends BaseModel
     name: ''
     description: ''
     descriptionFormat: 'html'
-    groupPrivacy: 'closed'
+    groupPrivacy: 'secret'
     handle: null
     discussionPrivacyOptions: 'private_only'
     membershipGrantedUpon: 'approval'
@@ -23,10 +23,12 @@ export default class GroupModel extends BaseModel
     membersCanAddMembers: true
     membersCanEditDiscussions: true
     membersCanEditComments: true
+    membersCanDeleteComments: true
     membersCanRaiseMotions: true
     membersCanStartDiscussions: true
     membersCanCreateSubgroups: false
     motionsCanBeEdited: false
+    parentMembersCanSeeDiscussions: false
     files: []
     imageFiles: []
     attachments: []
@@ -52,6 +54,9 @@ export default class GroupModel extends BaseModel
     @hasMany 'allDocuments', from: 'documents', with: 'groupId', of: 'id'
     @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id', orderBy: 'name'
     @belongsTo 'parent', from: 'groups'
+
+  tags: ->
+    @recordStore.tags.collection.chain().find(id: {$in: @tagIds}).simplesort('priority').data()
 
   parentOrSelf: ->
     if @parentId then @parent() else @

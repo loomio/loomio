@@ -1,19 +1,25 @@
 en:
   loomio_onboarding:
     group_progress_card:
-      title: Activate your group
+      title: Let's get started!
       activities:
         set_description: Set your group's description
         set_cover_photo: Upload a cover photo & logo for your group
+        customize_group: Add a group picture, logo and description
         invite_people_in: Invite people in
         start_thread: Start a discussion thread
         make_decision: Start a decision
       learn_more: Learn more at Loomio Help
       celebration_message: Nice! Your group is good to go!  🎉
       dismiss_this_card: Dismiss this card
+
   plan_names:
     free: Free
+    starter: Starter
     trial: Trial
+    pro: Pro
+    pro_nonprofit: Pro Nonprofit
+    community: Community
     small: Small
     medium: Medium
     large: Large
@@ -22,6 +28,7 @@ en:
 
   current_plan_button:
     upgrade: Upgrade
+    buy_now: Buy now
     free_trial: Free trial. {{days}} days remaining.
     trial_expired: Your trial has expired. Upgrade to continue using Loomio.
     tooltip: "Our prices are fantastic! Upgrade today and enjoy what Loomio can offer your group."
@@ -47,22 +54,23 @@ en:
     all_tags: All tags
     tags: Tags
     apply_tags: Apply tags
-    new_tag: Create tag
+    new_tag: New tag
     name_label: Name
     color_label: Color
     card_title: Category Tags
     modal_title: Create a new tag
     modal_edit_title: Edit tag
     modal_destroy_title: Remove tag
-    destroy_tag: Remove tag
-    destroy_helptext: This will destroy this tag and remove it from all threads in the group. Are you sure?
+    destroy_tag: Delete tag
+    destroy_helptext: This will delete this tag and remove it from all threads in the group. Are you sure?
     helptext: Tags allow you to categorize conversations and easily find them later
     discussions_count_singular: ({{count}} thread)
     discussions_count_plural: ({{count}} threads)
     tag_created: Tag saved
-    tag_destroyed: Tag removed
+    tag_destroyed: Tag deleted
     tags_marked: Threads marked '{{name}}' in {{groupName}}
     no_tags_present: No threads were found with that tag! Try selecting another one.
+    no_tags_in_group: This group has no category tags yet.
 
   reactions:
     slight_smile: Like
@@ -120,6 +128,7 @@ en:
     local: Local time ({{value}})
 
   common:
+    none: None
     empty: Empty
     no_results_found: No results found
     view: View
@@ -598,7 +607,7 @@ en:
     invite_only_thread: "Invite-only thread"
     none_direct_thread: "Direct thread (no group)"
     none_invite_only_thread: "Invite-only thread (no group)"
-    change_log_placeholder: Briefly describe the changes made in this edit. (optional)
+    change_log_placeholder: Optionally, describe your changes. This message will be added to the thread.
     change_log_label: What's changed?
     invite: Invite
     aria_label: 'Thread form'
@@ -653,6 +662,21 @@ en:
     only_admins_can_announce: Only admins can notify the whole group
     only_admins_can_invite: Only admins can invite guests
     only_admins_can_announce_or_invite: Only admins can notify the whole group or invite guests
+    user_mentioned: '{{name}} mentioned {{length}} people:'
+    comment_replied_to: '{{name}} replied to {{length}} people:'
+    new_discussion: '{{name}} invited {{length}} people to the thread:'
+    discussion_announced: '{{name}} invited {{length}} people to the thread:'
+    poll_created: '{{name}} invited {{length}} people to vote:'
+    poll_announced: '{{name}} invited {{length}} people to vote:'
+    outcome_created: '{{name}} shared an outcome with {{length}} people:'
+    outcome_announced: '{{name}} shared an outcome with {{length}} people:'
+    announcement_created: '{{name}} invited {{length}} people to the thread:'
+    discussion_edited: '{{name}} edited the thread, notifying {{length}} people:'
+    poll_edited: '{{name}} edited a poll, notifying {{length}} people:'
+    outcome_edited: '{{name}} edited an outcome, notifying {{length}} people:'
+    outcome_updated: '{{name}} edited an outcome, notifying {{length}} people:'
+    poll_closing_soon: "{{name}}'s poll closing reminder notified {{length}} people:"
+    poll_reminder: '{{name}} reminded {{length}} people to vote:'
 
     audiences:
       group: Members of {{name}}
@@ -1004,23 +1028,32 @@ en:
     permissions_explaination: |
       There are two levels of membership a person can have to a group: admin and member.
       Admins can edit group settings, make other people admins, and perform all the actions listed below.
-    aria_label: 'Group form'
-    new_organisation: New Organization
-    start_group_heading: 'Start a group'
-    start_subgroup_heading: 'Start a subgroup'
-    edit_group_heading: 'Edit group settings'
-    edit_subgroup_heading: 'Edit subgroup settings'
-    group_name: 'Group Name'
+    aria_label: Group form
+    parent_group: Parent group
+    new_organisation: New organization
+    new_group: New group
+    new_subgroup: New subgroup
+    new_group_explainer: Start a new Loomio group - an online home for your organization's discussions and decisions
+    new_subgroup_explainer: Start a subgroup within an existing group - a private space for a team of people from the organization
+    start_group_heading: Start a group
+    start_subgroup_heading: Start a subgroup
+    edit_group_heading: Edit group settings
+    edit_subgroup_heading: Edit subgroup settings
+    group_settings: Group settings
+    subgroup_settings: Subgroup settings
+    group_name: Group name
+    subgroup_name: Subgroup name
+    organization_name: Organization name
     handle: Handle
-    group_handle_placeholder: "For URL and email, e.g. loomio.org/handle and handle@loomio.org"
-    organization_name: 'Organization Name'
+    group_handle_placeholder: "Used in your group URL: www.loomio.org/{{handle}}"
     start_organization_heading: New organization
     edit_organization_heading: Edit organization settings
     group_name_placeholder: 'What is the name of your group?'
+    subgroup_name_placeholder: 'What is the name of your subgroup?'
     organization_name_placeholder: 'What is the name of your organization?'
-    subgroup_name: 'Subgroup Name'
     description: 'Description'
     description_placeholder: 'Describe the purpose of your group so your group members know why they are here.'
+    secret_by_default: Your group will only be accessible by those who are invited to join. You can change this later.
     privacy_statement:
       public_on_web: 'Name, description, and attachments to the group context will be visible to the public'
       private_to_group: 'Name and description will only be visible to members.'
@@ -1068,10 +1101,12 @@ en:
     members_can_add_guests_help: 'Allow members to invite guests into threads or polls in this group'
     members_can_create_subgroups: 'Members can create subgroups'
     members_can_create_subgroups_help: 'Allow members to create and become admins of new subgroups'
-    members_can_edit_discussions: 'Members can edit threads, polls and outcomes'
-    members_can_edit_discussions_help: 'Allow members to edit the details of existing threads and polls, and create and edit outcomes'
+    members_can_edit_discussions: 'Members can manage threads and comments'
+    members_can_edit_discussions_help: 'Allow members to edit, move, pin, tag or close threads'
     members_can_edit_comments: 'Members can edit their own comments'
     members_can_edit_comments_help: 'Allow members to edit their own comments at any time'
+    members_can_delete_comments: 'Members can delete their own comments'
+    members_can_delete_comments_help: 'Allow members to delete their own comments from threads'
     members_can_start_discussions: 'Members can start new threads'
     members_can_start_discussions_help: 'Allow members to start new threads within the group'
     members_can_raise_motions: 'Members can start polls'
@@ -1429,7 +1464,7 @@ en:
     facilitate: Facilitate
 
   thread_group:
-    aria_label: 'Group name'
+    aria_label: Group name
 
   thread_context:
     current_poll_type_banner: Current {{pollType}}
@@ -1449,6 +1484,7 @@ en:
     delete_thread: 'Delete'
     add_comment: 'Comment'
     seen_by_count: 'Seen by {{count}}'
+    count_notified: 'Notified {{count}}'
     forked_from: "Forked from"
 
   pin_thread_modal:
@@ -1629,6 +1665,7 @@ en:
     order_label: "Order"
     order_by_name: 'Name'
     order_by_created: 'Oldest'
+    show_users_in_subgroups: Show users in subgroups as well
     order_by_created_desc: 'Newest'
     order_by_admin_desc: 'Admins'
     loaded_of_total: '{{loaded}} of {{total}}'
@@ -1647,7 +1684,6 @@ en:
     sharable_link: 'Shareable Link'
     last_seen: 'Last seen {{date}}'
     invited_by_name: 'Invited by {{name}}'
-    only_in_subgroups: "Not in this group but belongs to {{name}}."
     accepted: 'Members'
 
   polls_panel:
@@ -2105,14 +2141,15 @@ en:
     youre_invited_discussion: You have been invited to join the discussion.
     youre_invited_poll: You have been invited to vote.
     existing_account_can_sign_in: If you are already a {{site_name}} user, sign in with your existing account
+    sign_up_or_log_in: Create account or sign in to {{site_name}}
     sign_in_to_loomio: Sign in to {{site_name}}
     sign_in_help: Trouble signing in?
     sign_in: Sign in
     continue: Continue
     create_account: Create account
-    sign_up_as: Sign up as {{email}}
+    sign_up_as: Create account as {{email}}
     sign_in_as: Sign in as {{name}}
-    continue_with_provider: Sign in with {{provider}}
+    continue_with_provider: Continue with {{provider}}
     continue_with_email: Continue with email
     or_enter_your_email: Or, enter your email address
     enter_your_name: Enter your name
@@ -2153,7 +2190,7 @@ en:
     check_your_email: Check your email!
     login_link_sent: "We've sent an email to {{email}}."
     instructions: "Click the link to sign in, or enter the code below:"
-    too_many_attempts: "Too many attempts; try clicking the link in the email to log in."
+    too_many_attempts: "Too many attempts; try clicking the link in the email to sign in."
     invalid_code: "Sorry, that code didn't match. Check the email and try again."
     password_link_sent: "We've sent an email to {{email}} with instructions on how to set your password."
     reactivate_link_sent: "We've sent you an email with instructions to reactivate your account"
@@ -2204,8 +2241,10 @@ en:
       outcome_created: An outcome is shared
     permissions_explaination: Select which actions can be performed by this integration
     permissions:
+      show_discussion: show discussion
       create_discussion: create discussion
       create_poll: create poll
+      show_poll: show poll
       read_memberships: read memberships
     include_body_label: Include message body with notification
     include_subgroups_label: Relay events from subgroups
@@ -2239,11 +2278,15 @@ en:
     subtitle: Please help us get to know you better. We will not share any information provided in this form without your permission.
     validation_error: Please fill out all required fields.
     success: Thank you!
+    describe_other: What category would you give your group?
     categories:
-      member: Member-service organizations (eg, parties, co-ops, unions)
-      nonprofit: Nonprofits, NGOs, and Community groups
-      professional: Professional-service teams & companies
-      board: Boards and committees
+      party: Political party
+      coop: Cooperative
+      union: Union
+      board: Board or committee
+      nonprofit: Nonprofit or NGO
+      professional: Professional service company
+      community: Community group
       government: Government/Local Government
       other: Other
     sizes:

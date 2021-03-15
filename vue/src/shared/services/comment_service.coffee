@@ -64,7 +64,7 @@ export default new class CommentService
         Session.user() && comment.translate(Session.user().locale)
 
     show_history:
-      name: 'action_dock.history'
+      name: 'action_dock.show_edits'
       icon: 'mdi-history'
       menu: true
       canPerform: ->

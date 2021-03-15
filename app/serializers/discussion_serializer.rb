@@ -32,12 +32,10 @@ class DiscussionSerializer < ApplicationSerializer
              :pinned,
              :attachments,
              :mentioned_usernames,
-             :tag_names,
              :newest_first,
              :max_depth,
              :discarded_at,
              :secret_token
-
 
   attributes_from_reader :discussion_reader_id,
                          :discussion_reader_volume,
@@ -53,17 +51,9 @@ class DiscussionSerializer < ApplicationSerializer
   has_many :active_polls, serializer: PollSerializer, root: :polls
   has_one :created_event, serializer: EventSerializer, root: :events
   has_one :forked_event, serializer: EventSerializer, root: :events
-  # has_many :discussion_tags
+  has_many :tags, serializer: TagSerializer, root: :tags
+
   hide_when_discarded [:description, :title]
-
-  def tag_names
-    # if we can do it fast, then stop caching tag names?
-    object.info['tag_names'] || []
-  end
-
-  # def discussion_tags
-  #   Array(Hash(scope).dig(:tag_cache, object.id))
-  # end
 
   def include_mentioned_usernames?
     description_format == "md"
@@ -77,15 +67,15 @@ class DiscussionSerializer < ApplicationSerializer
     cache_fetch(:discussion_readers_by_discussion_id, object.id) do
       if scope[:current_user_id]
         m = cache_fetch(:memberships_by_group_id, object.group_id) { nil }
-        DiscussionReader.find_or_initialize_by(user_id: scope[:current_user_id], discussion_id: object.id) do |dr|
-          dr.volume = (m && m.volume) || 'normal'
-        end
+        # DiscussionReader.find_or_initialize_by(user_id: scope[:current_user_id], discussion_id: object.id) do |dr|
+        #   dr.volume = (m && m.volume) || 'normal'
+        # end
+        DiscussionReader.new(user_id: scope[:current_user_id], discussion_id: object.id, volume: (m && m.volume) || 'normal')
       else
         DiscussionReader.new(discussion: object)
       end
     end
   end
-
 
   def created_event
     cache_fetch([:events_by_kind_and_eventable_id, 'new_discussion'], object.id) { object.created_event }

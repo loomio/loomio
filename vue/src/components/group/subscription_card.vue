@@ -9,7 +9,6 @@ export default
   methods:
     displayDate: (dateString) -> @exactDate(parseISO(dateString))
   computed:
-    referralCodeExtra: -> @$t('subscription_status.referral_code_help')
     canSee: -> !@group.parentId && AbilityService.canAdminister(@group)
     showUpgradeButton: -> @group.subscription.plan == "trial"
     isActivePlan: -> ['pp-active-monthly', 'pp-active-annual', 'pp-community-annual', 'npap-active-monthly', 'npap-active-annual'].includes(@group.subscription.plan)
@@ -23,7 +22,6 @@ export default
         active_members: @group.subscription.members_count if @isActivePlan
         max_members: @group.subscription.max_members if @group.subscription.max_members
         max_threads: @group.subscription.max_threads if @group.subscription.max_threads
-        referral_code: "<strong>#{@group.subscription.referral_code}</strong> - <a href='https://help.loomio.org/en/subscriptions/referral_code/' target=_blank>#{@referralCodeExtra}</a>" if @group.subscription.referral_code
         chargify_link: "<a href=#{@group.subscription.management_link} target=_blank>#{@$t('subscription_status.manage_payment_details')}</a>" if @group.subscription.management_link
       }
 </script>

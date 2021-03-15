@@ -74,60 +74,14 @@ module.exports = {
     page.expectText('.discussions-panel__list', 'Vaya con dios', 20000)
   },
 
-  'starts_an_open_group': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_dashboard')
-    page.ensureSidebar()
-
-    page.click('.sidebar__list-item-button--start-group')
-    page.click('.group-form__privacy-open')
-    page.expectElement('.group-form__joining')
-
-    page.fillIn('#group-name', 'Open please')
-    page.click('.group-form__submit-button')
-    page.expectFlash('Group started')
-  },
-
-  'starts_an_open_group_with_survey': (test) => {
+  'starts_a_group_with_survey': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_dashboard?features_group_survey=1')
     page.ensureSidebar()
 
     page.click('.sidebar__list-item-button--start-group')
-    page.click('.group-form__privacy-open')
-    page.expectElement('.group-form__joining')
-
-    page.fillIn('#group-name', 'Open please')
-    page.click('.group-form__submit-button')
-    page.expectFlash('Group started')
-    page.pause(500)
-
-    page.expectElement('.group-survey')
-    page.fillIn('.group-survey__location input', "Los Angeles")
-    page.click('.group-survey__category-member')
-    page.click('.group-survey__desired-feature-polls')
-    page.click('.group-survey__size-ten')
-    page.click('.group-survey__referrer-google')
-    page.fillIn('.group-survey__role input', "Queen")
-    page.fillIn('.group-survey__website input', "dirtydancing.com")
-    page.fillIn('.group-survey__misc textarea', "booya")
-    page.click('.group-survey__submit-button')
-    page.expectFlash('Thank you!')
-  },
-
-  'starts_a_closed_group': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_dashboard')
-    page.ensureSidebar()
-
-    page.click('.sidebar__list-item-button--start-group')
-    page.click('.group-form__privacy-closed')
-    page.expectNoElement('.group-form__joining')
-
-    page.fillIn('#group-name', 'Closed please')
+    page.fillIn('#group-name', 'Survey please')
     page.click('.group-form__submit-button')
     page.expectFlash('Group started')
   },
@@ -139,8 +93,6 @@ module.exports = {
     page.ensureSidebar()
 
     page.click('.sidebar__list-item-button--start-group')
-    page.click('.group-form__privacy-secret')
-    page.expectNoElement('.group-form__joining')
 
     page.fillIn('.group-form__name input', 'Secret please')
     page.click('.group-form__submit-button')

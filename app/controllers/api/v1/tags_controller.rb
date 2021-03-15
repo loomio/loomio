@@ -1,23 +1,36 @@
 class API::V1::TagsController < API::V1::RestfulController
-  def show
-    load_and_authorize(:tag)
-    respond_with_resource
-  end
+  def priority
+    load_and_authorize_group
+    Array(params[:ids]).each_with_index do |id, index|
+      Tag.where(id: id, group_id: @group.id).update_all(priority: index)
+    end
 
-  def update_model
-    self.resource = load_and_authorize(:discussion, :update)
-    TagService.update_model(discussion: @discussion, tags: params[:tags])
-    respond_with_resource
-  end
+    instantiate_collection
 
-  def index
-    instantiate_collection { |collection| collection.where(group: load_and_authorize(:group)) }
+    # rember to live update too
     respond_with_collection
   end
 
   private
+  def respond_with_group
+    self.resource = resource.group.reload
+    respond_with_resource
+  end
+
+  def create_response
+    respond_with_group
+  end
+
+  def destroy_response
+    respond_with_group
+  end
 
   def accessible_records
-    current_user.tags
+    Tag.where(group_id: @group.id)
+  end
+
+  def load_and_authorize_group
+    @group = Group.find(params[:group_id]).parent_or_self
+    current_user.ability.authorize!(:update, Group.find(params[:group_id]).parent_or_self)
   end
 end

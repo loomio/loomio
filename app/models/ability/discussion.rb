@@ -7,6 +7,8 @@ module Ability::Discussion
          :dismiss,
          :subscribe_to], ::Discussion do |discussion|
       # do we want to support having a discussion_reader_token but not being logged in yet?
+      Webhook.where(group_id: discussion.group_id,
+                    actor_id: user.id).where.any(permissions: 'show_discussion').exists? ||
       DiscussionQuery.visible_to(user: user).exists?(discussion.id)
     end
 
@@ -50,18 +52,16 @@ module Ability::Discussion
       end
     end
 
-    can [:update], ::Discussion do |discussion|
+    can [:update, :move, :move_comments, :pin], ::Discussion do |discussion|
+      discussion.discarded_at.nil? &&
       (discussion.author == user ||
       discussion.admins.exists?(user.id) ||
       (discussion.group.members_can_edit_discussions && discussion.members.exists?(user.id)))
     end
 
-    can :pin, ::Discussion do |discussion|
-      discussion.admins.exists?(user.id)
-    end
-
-    can [:destroy, :move, :move_comments, :discard], ::Discussion do |discussion|
-      discussion.discarded_at.nil? && discussion.author == user or discussion.admins.exists?(user.id)
+    can [:destroy, :discard], ::Discussion do |discussion|
+      discussion.discarded_at.nil? &&
+      (discussion.author == user || discussion.admins.exists?(user.id))
     end
 
     can :fork, ::Discussion do |discussion|

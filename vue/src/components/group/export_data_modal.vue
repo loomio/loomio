@@ -5,7 +5,6 @@ import AppConfig from '@/shared/services/app_config'
 export default
   props:
     group: Object
-    close: Function
   methods:
     openConfirmModalForJson: ->
       openModal
@@ -28,7 +27,7 @@ v-card
   v-card-title
     h1.headline(tabindex="-1" v-t="'export_data_modal.title'")
     v-spacer
-    dismiss-modal-button(:close="close")
+    dismiss-modal-button
   v-card-text
     h4.my-4(v-t="'export_data_modal.as_csv'")
     v-btn(:href="baseUrl + 'g/' + group.key + '/export.csv?export=1'" target="_blank" v-t="'group_page.options.export_data_as_csv'")
