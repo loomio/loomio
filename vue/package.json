@@ -52,7 +52,7 @@
     "vue-router": "^3.5.1",
     "vue-slicksort": "^1.2.0",
     "vue2-touch-events": "^3.2.0",
-    "vuetify": "2.4.5"
+    "vuetify": "2.4.6"
   },
   "devDependencies": {
     "@mdi/font": "^5.9.55",
@@ -60,7 +60,7 @@
     "@vue/cli-plugin-babel": "^4.5.11",
     "@vue/cli-plugin-e2e-nightwatch": "^4.5.11",
     "@vue/cli-service": "4.5.11",
-    "acorn": "^8.0.5",
+    "acorn": "^8.1.0",
     "babel-plugin-lodash": "^3.3.4",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "chromedriver": "latest",

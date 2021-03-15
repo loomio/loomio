@@ -23,6 +23,7 @@ export default class GroupModel extends BaseModel
     membersCanAddMembers: true
     membersCanEditDiscussions: true
     membersCanEditComments: true
+    membersCanDeleteComments: true
     membersCanRaiseMotions: true
     membersCanStartDiscussions: true
     membersCanCreateSubgroups: false

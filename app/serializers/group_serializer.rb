@@ -17,6 +17,7 @@ class GroupSerializer < ApplicationSerializer
              :members_can_start_discussions,
              :members_can_edit_discussions,
              :members_can_edit_comments,
+             :members_can_delete_comments,
              :members_can_raise_motions,
              :admins_can_edit_user_content,
              :token,

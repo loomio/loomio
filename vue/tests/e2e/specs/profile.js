@@ -114,7 +114,7 @@ module.exports = {
     page.click('.user-dropdown__list-item-button--profile')
     page.click('.user-page__deactivate_user')
     page.click('.confirm-modal__submit')
-    page.expectText('.auth-modal', 'Sign in to Loomio')
+    page.expectText('.auth-modal', 'Create account or sign in to Loomio')
   },
 
   'merges_accounts': (test) => {

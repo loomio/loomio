@@ -158,6 +158,7 @@ class Group < ApplicationRecord
                          :membership_granted_upon,
                          :members_can_edit_discussions,
                          :members_can_edit_comments,
+                         :members_can_delete_comments,
                          :members_can_raise_motions,
                          :members_can_start_discussions,
                          :members_can_create_subgroups,

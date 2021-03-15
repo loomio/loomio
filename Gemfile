@@ -41,7 +41,7 @@ gem 'sass-rails'
 gem 'uuidtools'
 gem 'ahoy_matey', '~> 3.2.0'
 gem 'ahoy_email', '~> 2.0.1'
-gem 'geocoder', '1.6.5'
+gem 'geocoder', '1.6.6'
 gem 'maxminddb'
 gem 'oj'
 gem "cld"
@@ -84,7 +84,7 @@ end
 group :test do
   gem 'webmock'
   gem 'rack_session_access'
-  gem 'rspec-rails', '~> 4.1.0'
+  gem 'rspec-rails', '~> 5.0.0'
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'rspec-activemodel-mocks'
