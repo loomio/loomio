@@ -6,7 +6,7 @@ export default new class RescueUnsavedEditsService
     @models = []
 
   okToLeave: (model) ->
-    attrs = ['description', 'title', 'body', 'details', 'name', 'reason']
+    attrs = ['description', 'title', 'body', 'details', 'name', 'reason', 'statement']
     models = ((model && [model]) || @models)
     if some(models, (m) -> intersection(attrs, m.modifiedAttributes()).length > 0)
       # console.log 'some modified', @models.map (m) ->
