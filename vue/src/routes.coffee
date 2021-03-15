@@ -110,7 +110,6 @@ router.beforeEach (to, from, next) ->
   if RescueUnsavedEditsService.okToLeave()
     next()
   else
-    console.log 'not ok'
     next(false)
 
 router.afterEach ->
