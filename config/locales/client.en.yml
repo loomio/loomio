@@ -29,6 +29,9 @@ en:
   current_plan_button:
     upgrade: Upgrade
     buy_now: Buy now
+    is_old_plan: Loomio's simplified pricing plans include unlimited users
+    change_plan: Change plan
+    view_plans: View plans
     free_trial: Free trial. {{days}} days remaining.
     trial_expired: Your trial has expired. Upgrade to continue using Loomio.
     tooltip: "Our prices are fantastic! Upgrade today and enjoy what Loomio can offer your group."

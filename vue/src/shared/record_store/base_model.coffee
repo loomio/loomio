@@ -1,7 +1,7 @@
 import utils from './utils'
 import Vue from 'vue'
 import { isEqual } from 'date-fns'
-import { camelCase, union, each, isArray, keys, filter, snakeCase, defaults, orderBy, assign, includes } from 'lodash'
+import { camelCase, union, each, isArray, keys, filter, snakeCase, defaults, orderBy, assign, includes, pick } from 'lodash'
 
 export default class BaseModel
   @singular: 'undefinedSingular'
@@ -26,6 +26,7 @@ export default class BaseModel
     @processing = false # not returning/throwing on already processing rn
     @_version = 0
     @attributeNames = []
+    @unmodified = {}
     @setErrors()
     Object.defineProperty(@, 'recordsInterface', value: recordsInterface, enumerable: false)
     Object.defineProperty(@, 'recordStore', value: recordsInterface.recordStore, enumerable: false)
@@ -50,10 +51,7 @@ export default class BaseModel
       else
         cloneAttributes[attr] = @[attr]
       true
-    cloneAttributes.cloney = true
-    cloneRecord = new @constructor(@recordsInterface, cloneAttributes)
-    cloneRecord.clonedFrom = @
-    cloneRecord
+    new @constructor(@recordsInterface, cloneAttributes)
 
   inCollection: =>
     @['$loki']# and @recordsInterface.collection.get(@['$loki'])
@@ -65,14 +63,14 @@ export default class BaseModel
     @bumpVersion()
     @attributeNames = union @attributeNames, keys(attributes)
     each attributes, (value, key) =>
+      @unmodified[key] = value
       Vue.set(@, key, value)
       true
 
     @recordsInterface.collection.update(@) if @inCollection()
 
   attributeIsModified: (attributeName) ->
-    return false unless @clonedFrom?
-    original = @clonedFrom[attributeName]
+    original = @unmodified[attributeName]
     current = @[attributeName]
     if utils.isTimeAttribute(attributeName)
       !(original == current or isEqual(original, current))
@@ -80,12 +78,10 @@ export default class BaseModel
       original != current
 
   modifiedAttributes: ->
-    return [] unless @clonedFrom?
     filter @attributeNames, (name) =>
       @attributeIsModified(name)
 
   isModified: ->
-    return false unless @clonedFrom?
     @modifiedAttributes().length > 0
 
   serialize: ->
@@ -202,8 +198,12 @@ export default class BaseModel
       @setErrors(data.errors)
       throw data
     else
-      @clonedFrom = undefined
+      @unmodified = pick(@, @attributeNames)
       data
+
+  discardChanges: ->
+    @attributeNames.forEach (key) =>
+      Vue.set(@, key, @unmodified[key])
 
   clearErrors: ->
     @errors = {}

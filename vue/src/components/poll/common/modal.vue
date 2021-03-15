@@ -7,7 +7,6 @@ import { onError } from '@/shared/helpers/form'
 export default
   props:
     poll: Object
-    close: Function
 
   computed:
     title_key: ->
@@ -32,7 +31,7 @@ export default
           if !@poll.discussionId
             @$router.replace(@urlFor(poll)).catch (err) => {}
           Flash.success "poll_#{poll.pollType}_form.#{poll.pollType}_#{actionName}"
-          @close()
+          EventBus.$emit('closeModal')
           return if actionName == 'updated'
           EventBus.$emit 'openModal',
             component: 'PollMembers',
@@ -47,15 +46,13 @@ v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.c
   v-card-title
     h1.headline(tabindex="-1" v-t="title_key")
     v-spacer
-    dismiss-modal-button(:close='close')
+    dismiss-modal-button(:model='poll')
   div.px-4
     poll-common-directive(:poll='poll', name='form', :modal='true')
   v-card-actions.poll-common-form-actions
     v-spacer
-    v-btn.poll-common-form__submit(color="primary" @click='submit()' v-if='!poll.isNew()' :loading="poll.processing")
-      span(v-t="'common.action.save_changes'")
-    v-btn.poll-common-form__submit(color="primary" @click='submit()' v-if='poll.closingAt && poll.isNew()' :loading="poll.processing")
-      span(v-t="{path: 'poll_common_form.start_poll_type', args: {poll_type: poll.translatedPollType()}}")
-    v-btn.poll-common-form__submit(color="primary" @click='submit()' v-if='!poll.closingAt && poll.isNew()' :loading="poll.processing")
-      span(v-t="{path: 'poll_common_form.share_poll_type', args: {poll_type: poll.translatedPollType()}}")
+    v-btn.poll-common-form__submit(color="primary" @click='submit()' :loading="poll.processing")
+      span(v-if='!poll.isNew()' v-t="'common.action.save_changes'")
+      span(v-if='poll.closingAt && poll.isNew()' v-t="{path: 'poll_common_form.start_poll_type', args: {poll_type: poll.translatedPollType()}}")
+      span(v-if='!poll.closingAt && poll.isNew()' v-t="{path: 'poll_common_form.share_poll_type', args: {poll_type: poll.translatedPollType()}}")
 </template>
