@@ -10,7 +10,6 @@ import { onError } from '@/shared/helpers/form'
 export default
   props:
     discussion: Object
-    close: Function
   data: ->
     targetGroup: null
     availableGroups: []
@@ -46,7 +45,7 @@ v-card.move-thread-form
   v-card-title
     h1.headline(tabindex="-1" v-t="'move_thread_form.title'")
     v-spacer
-    dismiss-modal-button(:close='close')
+    dismiss-modal-button
   v-card-text
     v-select#group-dropdown.move-thread-form__group-dropdown(v-model='discussion.groupId' :required='true' @change='updateTarget()' :items='availableGroups' item-value='id' item-text='fullName' :label="$t('move_thread_form.body')")
       template(v-slot:item='data')

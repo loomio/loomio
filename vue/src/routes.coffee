@@ -34,6 +34,8 @@ import Router from 'vue-router'
 
 import Session from '@/shared/services/session'
 
+import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service'
+
 Vue.use(Router)
 
 groupPageChildren = [
@@ -60,8 +62,7 @@ strandPageChildren = [
   {path: ''}
 ]
 
-
-export default new Router
+router = new Router
   mode: 'history'
 
   scrollBehavior: (to, from, savedPosition) ->
@@ -104,3 +105,14 @@ export default new Router
     {path: '/:key', component: GroupPage, children: groupPageChildren},
     {path: '/', redirect: '/dashboard' }
   ]
+
+router.beforeEach (to, from, next) ->
+  if RescueUnsavedEditsService.okToLeave()
+    next()
+  else
+    next(false)
+
+router.afterEach ->
+  RescueUnsavedEditsService.clear()
+
+export default router

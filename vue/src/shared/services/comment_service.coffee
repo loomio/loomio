@@ -27,7 +27,7 @@ export default new class CommentService
       perform: ->
         vm.newComment = Records.comments.build
           bodyFormat: "html"
-          body: ""
+          body: "<p></p>"
           discussionId: comment.discussion().id
           authorId: Session.user().id
           parentId: comment.id

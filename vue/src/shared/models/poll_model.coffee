@@ -25,7 +25,7 @@ export default class PollModel extends BaseModel
   defaultValues: ->
     discussionId: null
     title: ''
-    details: ''
+    details: '<p></p>'
     detailsFormat: 'html'
     closingAt: startOfHour(addDays(new Date, 3))
     specifiedVotersOnly: false
@@ -60,7 +60,7 @@ export default class PollModel extends BaseModel
 
   tags: ->
     @recordStore.tags.collection.chain().find(id: {$in: @tagIds}).simplesort('priority').data()
-    
+
   voters: ->
     @latestStances().map (stance) -> stance.participant()
 
