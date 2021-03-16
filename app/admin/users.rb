@@ -135,6 +135,7 @@ ActiveAdmin.register User do
           group = g.group
           link_to group.full_name, admin_group_path(group)
         end
+        column :volume
         column :admin
         column :accepted_at
       end
