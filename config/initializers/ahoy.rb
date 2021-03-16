@@ -19,3 +19,4 @@ Ahoy.mask_ips = true
 AhoyEmail.api = true
 AhoyEmail.default_options[:open] = true
 AhoyEmail.default_options[:utm_params] = true
+AhoyEmail.default_options[:message] = true
