@@ -1,0 +1,16 @@
+%div{ class: 'panel' }
+  %h3 Notications
+  %div{ class: 'panel-contents' }
+    %table{ id: 'user-notifications' }
+      %tr
+        %th Actor
+        %th Kind
+        %th Created At
+        %th Viewed
+
+      - notifications.each do |n|
+        %tr
+          %td= n.event.user.email
+          %td= n.event.kind
+          %td= n.created_at
+          %td= n.viewed
