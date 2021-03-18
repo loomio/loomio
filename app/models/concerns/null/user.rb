@@ -22,7 +22,7 @@ module Null::User
   end
 
   def empty_methods
-    [:groups, :group_ids, :adminable_group_ids, :group_ids, :attachments, :groups, :guest_discussion_ids]
+    [:group_ids, :adminable_group_ids, :group_ids, :attachments, :guest_discussion_ids]
   end
 
   def hash_methods
@@ -42,7 +42,8 @@ module Null::User
       participated_polls: :poll,
       group_polls: :poll,
       polls: :poll,
-      stances: :stance
+      stances: :stance,
+      groups: :group
     }
   end
 
