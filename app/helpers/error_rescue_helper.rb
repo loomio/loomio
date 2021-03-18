@@ -38,6 +38,6 @@ module ErrorRescueHelper
   def respond_with_error(message: nil, status: 400)
     @title = t("errors.#{status}.body")
     @body = t(message || "errors.#{status}.body")
-    render "application/error", layout: 'basic', status: status, formats: response_format
+    render "application/error", layout: 'basic', status: status
   end
 end
