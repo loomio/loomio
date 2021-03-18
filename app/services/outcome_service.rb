@@ -56,8 +56,7 @@ class OutcomeService
                            model: outcome,
                            actor: actor)
 
-    HasRichText.assign_attributes_and_update_files(outcome, params)
-    outcome.assign_attributes(params.slice(:statement, :statement_format))
+    outcome.assign_attributes_and_files(params.slice(:statement, :statement_format))
     return false unless outcome.valid?
     outcome.store_calendar_invite if outcome.should_send_calendar_invite
 

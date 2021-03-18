@@ -3,11 +3,11 @@ module Ability::Attachment
     super(user)
 
     can :show, ::Attachment do |attachment|
-      user.groups.exists?(attachment.group_id)
+      user.groups.exists?(attachment.record.group.id)
     end
 
     can :destroy, ::Attachment do |attachment|
-      user.adminable_groups.exists?(attachment.group_id)
+      user.adminable_groups.exists?(attachment.record.group.id)
     end
   end
 end

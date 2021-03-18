@@ -25,7 +25,6 @@ module HasRichText
     has_many_attached :image_files
     before_save :caclulate_content_locale
     before_save :build_attachments
-    after_save :update_attachments_group_id
   end
 
   def caclulate_content_locale
@@ -33,10 +32,6 @@ module HasRichText
     stripped_text = Rails::Html::WhiteListSanitizer.new.sanitize(combined_text, tags: [])
     result = CLD.detect_language stripped_text
     self.content_locale = result[:code] if result[:reliable]
-  end
-
-  def update_attachments_group_id
-    UpdateAttachmentsGroupIdWorker.new.perform(self.class.to_s, self.id)
   end
 
   def build_attachments
@@ -52,18 +47,18 @@ module HasRichText
     end
   end
 
-  def attachment_icon(name)
-    AppConfig.doctypes.detect{ |type| /#{type['regex']}/.match(name) }['icon']
+  def assign_attributes_and_files(params)
+    if self.persisted?
+      self.files.each do |file|
+        file.purge_later unless Array(params[:files]).include? file.signed_id
+      end
+      self.reload
+    end
+    self.assign_attributes API::V1::SnorlaxBase.filter_params(self.class, params)
   end
 
-  def self.assign_attributes_and_update_files(model, params)
-    model.files.each do |file|
-      file.purge_later unless Array(params[:files]).include? file.signed_id
-    end
-    existing_ids = model.files.map(&:signed_id)
-    params[:files] = Array(params[:files]).filter {|id| !existing_ids.include?(id) }
-    model.reload
-    model.assign_attributes(API::V1::SnorlaxBase.filter_params(model.class, params))
+  def attachment_icon(name)
+    AppConfig.doctypes.detect{ |type| /#{type['regex']}/.match(name) }['icon']
   end
 
   private

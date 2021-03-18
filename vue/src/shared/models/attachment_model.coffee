@@ -4,10 +4,26 @@ import AppConfig from '@/shared/services/app_config'
 export default class AttachmentModel extends BaseModel
   @singular: 'attachment'
   @plural: 'attachments'
-  @indices: ['groupId', 'recordType', 'recordId']
+  @indices: ['recordType', 'recordId']
+
+  @eventTypeMap:
+    Group: 'groups'
+    Discussion: 'discussions'
+    Poll: 'polls'
+    Outcome: 'outcomes'
+    Stance: 'stances'
+    Comment: 'comments'
+    CommentVote: 'comments'
+    Membership: 'memberships'
+    MembershipRequest: 'membershipRequests'
+
+  model: ->
+    @recordStore[@constructor.eventTypeMap[@recordType]].find(@recordId)
+
+  group: ->
+    @model().group()
 
   relationships: ->
-    @belongsTo 'group'
     @belongsTo 'author', from: 'users'
 
   isAnImage: ->
