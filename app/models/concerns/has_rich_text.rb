@@ -47,14 +47,11 @@ module HasRichText
     end
   end
 
-  def self.assign_attributes_and_update_files(model, params)
-    model.files.each do |file|
+  def purge_removed_files(params)
+    self.files.each do |file|
       file.purge_later unless Array(params[:files]).include? file.signed_id
     end
-    existing_ids = model.files.map(&:signed_id)
-    params[:files] = Array(params[:files]).filter {|id| !existing_ids.include?(id) }
-    model.reload
-    model.assign_attributes(API::V1::SnorlaxBase.filter_params(model.class, params))
+    self.reload
   end
 
   def attachment_icon(name)

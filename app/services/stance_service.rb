@@ -23,8 +23,10 @@ class StanceService
 
     if stance.persisted?
       stance.stance_choices = []
-      HasRichText.assign_attributes_and_update_files(stance, params)
+      stance.purge_removed_files(params)
     end
+
+    stance.assign_attributes(params)
 
     return false unless stance.valid?
 

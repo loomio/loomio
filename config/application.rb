@@ -19,6 +19,9 @@ end
 
 module Loomio
   class Application < Rails::Application
+    # we should work out how to enable this but I think it will be hard
+    # config.load_defaults 6.0
+    # config.autoloader = :classic
     config.middleware.use Rack::Attack
     # config.active_job.queue_adapter = :sidekiq
 
@@ -137,6 +140,7 @@ module Loomio
     config.action_cable.allowed_request_origins = [ENV['CANONICAL_HOST'], 'http://localhost:8080']
 
     config.cache_store = :redis_cache_store, { url: (ENV['REDIS_CACHE_URL'] || ENV.fetch('REDIS_URL', 'redis://localhost:6379')) }
+    config.action_dispatch.use_cookies_with_metadata = false
 
     config.action_dispatch.default_headers = {
       # 'X-Frame-Options' => 'SAMEORIGIN',

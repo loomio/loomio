@@ -21,12 +21,11 @@ describe API::V1::AttachmentsController do
       discussion.files.attach(io: File.open(Rails.root.join('spec', 'fixtures', 'images', 'strongbad.png')),
                               filename: 'strongbad.png',
                               content_type: 'image/jpeg')
-      HasRichText.assign_attributes_and_update_files(discussion, {})
-      get :index, params: {q: "stongbad"}
+      discussion.save!
+      get :index, params: {q: "strongbad", group_id: discussion.group_id}
       json = JSON.parse(response.body)
-      puts json
       expect(response.status).to eq 200
-      expect(json['attachments'][0]['name']).to eq 'strongbad.png'
+      expect(json['attachments'][0]['filename']).to eq 'strongbad.png'
     end
 
     it 'finds files attached to comments'

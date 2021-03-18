@@ -43,8 +43,8 @@ class DiscussionService
                            model: discussion,
                            actor: actor)
 
-    HasRichText.assign_attributes_and_update_files(discussion, params.except(:group_id))
-
+    discussion.purge_removed_files(params)
+    discussion.assign_attributes(params.except(:group_id))
     return false unless discussion.valid?
     rearrange = discussion.max_depth_changed?
     discussion.save!

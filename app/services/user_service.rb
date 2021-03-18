@@ -92,8 +92,10 @@ class UserService
 
   def self.update(user:, actor:, params:)
     actor.ability.authorize! :update, user
-    HasRichText.assign_attributes_and_update_files(user, params)
-    user.save
+    user.purge_removed_files(params)
+    user.assign_attributes(params)
+    return false unless user.valid?
+    user.save!
     EventBus.broadcast('user_update', user, actor, params)
   end
 

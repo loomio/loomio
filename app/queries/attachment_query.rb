@@ -1,6 +1,5 @@
 class AttachmentQuery
   def self.find(group_ids, query, limit, offset)
-    puts :group_ids, group_ids.inspect
     ids = []
     ids.concat ActiveStorage::Attachment.joins(:blob).
       joins("LEFT OUTER JOIN groups ON active_storage_attachments.record_type = 'Group' AND active_storage_attachments.record_id = groups.id").
