@@ -47,10 +47,6 @@ module HasRichText
     end
   end
 
-  def attachment_icon(name)
-    AppConfig.doctypes.detect{ |type| /#{type['regex']}/.match(name) }['icon']
-  end
-
   def self.assign_attributes_and_update_files(model, params)
     model.files.each do |file|
       file.purge_later unless Array(params[:files]).include? file.signed_id
@@ -59,6 +55,10 @@ module HasRichText
     params[:files] = Array(params[:files]).filter {|id| !existing_ids.include?(id) }
     model.reload
     model.assign_attributes(API::V1::SnorlaxBase.filter_params(model.class, params))
+  end
+
+  def attachment_icon(name)
+    AppConfig.doctypes.detect{ |type| /#{type['regex']}/.match(name) }['icon']
   end
 
   private

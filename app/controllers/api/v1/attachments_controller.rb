@@ -2,9 +2,7 @@ class API::V1::AttachmentsController < API::V1::RestfulController
   def index
     # Group.find_by(params[:group_id).id_and_subgroup_ids
     group = current_user.groups.find_by!(id: params[:group_id])
-    instantiate_collection do |collection|
-      AttachmentQuery.find(group.id_and_subgroup_ids, params[:q])
-    end
+    self.collection = AttachmentQuery.find(group.id_and_subgroup_ids, params[:q], (params[:per] || 50), (params[:from] || 0))
     respond_with_collection
   end
 
