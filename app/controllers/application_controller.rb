@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   include ProtectedFromForgery
   include ErrorRescueHelper
   include CurrentUserHelper
-  include ForceSslHelper
   include SentryHelper
   include PrettyUrlHelper
   include LoadAndAuthorize

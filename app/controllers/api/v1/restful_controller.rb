@@ -1,5 +1,4 @@
 class API::V1::RestfulController < API::V1::SnorlaxBase
-  include ::ForceSslHelper
   include ::LocalesHelper
   include ::ProtectedFromForgery
   include ::LoadAndAuthorize

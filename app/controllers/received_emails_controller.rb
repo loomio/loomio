@@ -1,6 +1,4 @@
 class ReceivedEmailsController < Griddler::EmailsController
-  force_ssl except: [:reply, :create]
-
   # reply to discussion by email action
   def reply
     normalized_params.each do |p|
