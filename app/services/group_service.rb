@@ -65,8 +65,7 @@ module GroupService
   def self.update(group:, params:, actor:)
     actor.ability.authorize! :update, group
 
-    group.purge_removed_files(params)
-    group.assign_attributes(params)
+    group.assign_attributes_and_files(params)
     group.group_privacy = params[:group_privacy] if params.has_key?(:group_privacy)
     privacy_change = PrivacyChange.new(group)
 

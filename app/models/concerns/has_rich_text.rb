@@ -47,11 +47,14 @@ module HasRichText
     end
   end
 
-  def purge_removed_files(params)
-    self.files.each do |file|
-      file.purge_later unless Array(params[:files]).include? file.signed_id
+  def assign_attributes_and_files(params)
+    if self.persisted?
+      self.files.each do |file|
+        file.purge_later unless Array(params[:files]).include? file.signed_id
+      end
+      self.reload
     end
-    self.reload
+    self.assign_attributes API::V1::SnorlaxBase.filter_params(self.class, params)
   end
 
   def attachment_icon(name)

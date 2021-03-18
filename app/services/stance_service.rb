@@ -21,12 +21,9 @@ class StanceService
 
     actor.ability.authorize! :vote_in, stance.poll
 
-    if stance.persisted?
-      stance.stance_choices = []
-      stance.purge_removed_files(params)
-    end
+    stance.stance_choices = [] if stance.persisted?
 
-    stance.assign_attributes(params)
+    stance.assign_attributes_and_files(params)
 
     return false unless stance.valid?
 

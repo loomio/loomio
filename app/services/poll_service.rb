@@ -21,8 +21,7 @@ class PollService
                            model: poll,
                            actor: actor)
 
-    poll.purge_removed_files(params)
-    poll.assign_attributes(params.except(:poll_type, :discussion_id, :group_id))
+    poll.assign_attributes_and_files(params.except(:poll_type, :discussion_id, :group_id))
 
     return false unless poll.valid?
 

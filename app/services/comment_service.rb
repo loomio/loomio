@@ -42,8 +42,7 @@ class CommentService
     actor.ability.authorize! :update, comment
     comment.edited_at = Time.zone.now
 
-    comment.purge_removed_files(params)
-    comment.assign_attributes(params)
+    comment.assign_attributes_and_files(params)
     return false unless comment.valid?
     comment.save!
     comment.update_versions_count

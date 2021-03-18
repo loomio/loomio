@@ -92,8 +92,7 @@ class UserService
 
   def self.update(user:, actor:, params:)
     actor.ability.authorize! :update, user
-    user.purge_removed_files(params)
-    user.assign_attributes(params)
+    user.assign_attributes_and_files(params)
     return false unless user.valid?
     user.save!
     EventBus.broadcast('user_update', user, actor, params)

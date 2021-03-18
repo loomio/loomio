@@ -43,8 +43,8 @@ class DiscussionService
                            model: discussion,
                            actor: actor)
 
-    discussion.purge_removed_files(params)
-    discussion.assign_attributes(params.except(:group_id))
+
+    discussion.assign_attributes_and_files(params.except(:group_id))
     return false unless discussion.valid?
     rearrange = discussion.max_depth_changed?
     discussion.save!
