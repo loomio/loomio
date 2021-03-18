@@ -88,7 +88,7 @@ export default
         q: @searchQuery
 
       @attachmentLoader.fetchRecords(q: @searchQuery).then (data) =>
-        @attachmentIds = uniq @attachmentIds.concat(data.attachments.map (a) -> a.id)
+        @attachmentIds = uniq @attachmentIds.concat((data.attachments || []).map (a) -> a.id)
       .then => @query()
 
     actionsFor: (item) ->
