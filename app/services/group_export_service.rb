@@ -83,14 +83,22 @@ class GroupExportService
       if tables.keys.include? data['table']
         tables[data['table']].each do |attr|
           next unless model.send(attr).present?
-          self.delay.update_paperclip_attachment(data['table'].classify, record['id'], attr, base_url)
+          self.update_paperclip_attachment(data['table'].classify, record['id'], attr, base_url)
+          # self.delay.update_paperclip_attachment(data['table'].classify, record['id'], attr, base_url)
         end
       end
+    rescue OpenURI::HTTPError
+      next
     end
   end
 
   def self.update_paperclip_attachment(class_name, id, attr, base_url)
     model = class_name.constantize.find(id)
-    model.send "#{attr}=", URI(model.send(attr).url(:original).gsub('/system', base_url))
+    source = model.send(attr).url(:original).gsub('/system', base_url)
+    model.send "#{attr}=", URI(source)
+    model.save
+    puts "class, id: #{class_name}, #{id}"
+    puts "source: #{source}"
+    puts "copy: #{model.send(attr).url(:original)}"
   end
 end
