@@ -83,7 +83,7 @@ class GroupExportService
       if tables.keys.include? data['table']
         tables[data['table']].each do |attr|
           next unless model.send(attr).present?
-          self.update_paperclip_attachment(data['table'].classify, record['id'], attr, base_url)
+          self.delay.update_paperclip_attachment(data['table'].classify, record['id'], attr, base_url)
         end
       end
     end
