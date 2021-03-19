@@ -19,6 +19,7 @@ export default
       Records.polls.findOrFetchById(@$route.params.key)
       .then (poll) =>
         @poll = poll
+        window.location.host = @poll.group().newHost if @poll.group().newHost
 
         # if @poll.discussionId
         #   discussion = @poll.discussion()

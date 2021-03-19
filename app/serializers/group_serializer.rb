@@ -53,6 +53,7 @@ class GroupSerializer < ApplicationSerializer
              :org_members_count,
              :subscription,
              :subgroups_count,
+             :new_host,
              :complete,
              :secret_token
 
@@ -102,6 +103,10 @@ class GroupSerializer < ApplicationSerializer
 
   def tag_names
     object.info['tag_names'] || []
+  end
+
+  def new_host
+    object.info['new_host'] || nil
   end
 
   def cover_photo

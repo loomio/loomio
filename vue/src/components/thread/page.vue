@@ -42,6 +42,9 @@ export default
       Records.discussions.findOrFetchById(@$route.params.key, exclude_types: 'poll outcome')
       .then (discussion) =>
         @discussion = discussion
+
+        window.location.host = @discussion.group().newHost if @discussion.group().newHost
+
         ahoy.trackView
           discussionId: @discussion.id
           groupId: @discussion.groupId
