@@ -70,4 +70,27 @@ class GroupExportService
     end
     SearchIndexWorker.new.perform(Discussion.where(group_id: group_ids).pluck(:id))
   end
+
+  def self.pull_paperclips(filename, base_url = 'https://loomio-uploads.s3.amazonaws.com')
+    tables = {'users' => ['uploaded_avatar'], 'groups' => ['cover_photo', 'logo'], 'documents' => ['file']}
+    File.open(filename, 'r').each do |line|
+      data = JSON.parse(line)
+      record = data['record']
+
+      klass = data['table'].classify.constantize
+      model = klass.new(data['record'])
+
+      if tables.keys.include? data['table']
+        tables[data['table']].each do |attr|
+          next unless model.send(attr).present?
+          self.update_paperclip_attachment(data['table'].classify, record['id'], attr, base_url)
+        end
+      end
+    end
+  end
+
+  def self.update_paperclip_attachment(class_name, id, attr, base_url)
+    model = class_name.constantize.find(id)
+    model.send "#{attr}=", URI(model.send(attr).url(:original).gsub('/system', base_url))
+  end
 end
