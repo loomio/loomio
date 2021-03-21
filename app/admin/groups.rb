@@ -163,10 +163,12 @@ ActiveAdmin.register Group, as: 'Group' do
       row :logo_file_size
       row :logo_updated_at
       row :psp_links do |group|
-        raw (Array(SubscriptionService::CURRENT_PLANS).map do |key|
-          '<a href="'+SubscriptionService.psp_url(group, group.creator, key)+'">'+key+'</a>'.to_s
-        end.join(" "))
-      end if defined?(SubscriptionService)
+        if group.subscription and defined?(SubscriptionService)
+          raw (Array(SubscriptionService::CURRENT_PLANS).map do |key|
+            '<a href="'+SubscriptionService.psp_url(group, group.creator, key)+'">'+key+'</a>'.to_s
+          end.join(" "))
+        end
+      end
     end
 
     if group.archived_at.nil?
