@@ -21,7 +21,8 @@ class API::V1::GroupsController < API::V1::RestfulController
   end
 
   def index
-    if ids = params.fetch(:xids, '').split('x').map(&:to_i)
+    ids = params.fetch(:xids, '').split('x').map(&:to_i)
+    if ids.length > 0
       instantiate_collection do |collection|
         collection = GroupQuery.visible_to(user: current_user, show_public: true).where(id: ids)
       end
