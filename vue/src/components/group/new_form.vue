@@ -133,7 +133,7 @@ v-card.group-form
       .group-form__group-title
         h1.headline(tabindex="-1" v-if='group.parentId' v-t="'group_form.new_subgroup'")
         h1.headline(tabindex="-1" v-if='!group.parentId' v-t="'group_form.new_group'")
-      dismiss-modal-button(v-if="group.parentId")
+      dismiss-modal-button(v-if="group.parentId" :model="group")
   .px-4
     p.text--secondary(v-if='!group.parentId' v-t="'group_form.new_group_explainer'")
     p.text--secondary(v-if='group.parentId' v-t="'group_form.new_subgroup_explainer'")

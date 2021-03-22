@@ -11,7 +11,7 @@ export default class OutcomeModel extends BaseModel
   @indices: ['pollId', 'authorId']
 
   defaultValues: ->
-    statement: ''
+    statement: '<p></p>'
     statementFormat: 'html'
     customFields: {}
     files: []

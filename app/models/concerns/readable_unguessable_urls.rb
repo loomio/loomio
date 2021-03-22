@@ -20,7 +20,7 @@ module ReadableUnguessableUrls
   def generate_unique_key
     begin
       key = generate_key
-    end while self.class.where(key: key).exists? or key.match(/^\d+$/)
+    end while self.class.default_scoped.where(key: key).exists? or key.match(/^\d+$/)
     key
   end
 

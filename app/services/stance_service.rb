@@ -21,10 +21,9 @@ class StanceService
 
     actor.ability.authorize! :vote_in, stance.poll
 
-    if stance.persisted?
-      stance.stance_choices = []
-      HasRichText.assign_attributes_and_update_files(stance, params)
-    end
+    stance.stance_choices = [] if stance.persisted?
+
+    stance.assign_attributes_and_files(params)
 
     return false unless stance.valid?
 

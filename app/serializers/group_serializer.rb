@@ -17,6 +17,7 @@ class GroupSerializer < ApplicationSerializer
              :members_can_start_discussions,
              :members_can_edit_discussions,
              :members_can_edit_comments,
+             :members_can_delete_comments,
              :members_can_raise_motions,
              :admins_can_edit_user_content,
              :token,
@@ -52,6 +53,7 @@ class GroupSerializer < ApplicationSerializer
              :org_members_count,
              :subscription,
              :subgroups_count,
+             :new_host,
              :complete,
              :secret_token
 
@@ -101,6 +103,10 @@ class GroupSerializer < ApplicationSerializer
 
   def tag_names
     object.info['tag_names'] || []
+  end
+
+  def new_host
+    object.info['new_host'] || nil
   end
 
   def cover_photo

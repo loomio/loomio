@@ -1,9 +1,11 @@
 es:
   loomio_onboarding:
     group_progress_card:
+      title: Primeros pasos
       activities:
         set_description: Configura la descripción de tu grupo
         set_cover_photo: Sube una foto de portada y logo para vuestro grupo
+        customize_group: Editar descripción del grupo
         invite_people_in: Invita a personas a
         start_thread: Comience un hilo de discusión
         make_decision: 'Iniciar una decisión '
@@ -12,8 +14,10 @@ es:
       dismiss_this_card: Descartar este cartel
   plan_names:
     free: 'Gratis '
+    starter: Arranque
     trial: Prueba
     pro: 'Pro '
+    pro_nonprofit: Pro sin fines de lucro
     community: Comunidad
     small: Pequeño
     medium: Mediano
@@ -115,6 +119,7 @@ es:
   timezones:
     local: Hora local ({{value}})
   common:
+    none: Ninguno
     empty: Vacío
     no_results_found: No hemos encontrado nada
     view: Vista
@@ -957,24 +962,31 @@ es:
         Hay dos niveles de membresía a los que una persona puede optar para un grupo: admin y miembro.
         Los administradores pueden editar los ajustes del grupo, hacer a otras personas administradores y ejecutar todas la acciones que se listan a continuación.
     aria_label: Formulario de grupo
+    parent_group: Grupo de padres
     new_organisation: Nueva organización
     new_group: Nuevo grupo
     new_subgroup: Nuevo subgrupo
+    new_group_explainer: Comience un nuevo grupo Loomio - un hogar en línea para las discusiones y decisiones de su organización
+    new_subgroup_explainer: 'Iniciar un subgrupo dentro de un grupo existente: un espacio privado para un equipo de personas de la organización'
     start_group_heading: Crea un grupo
     start_subgroup_heading: 'Comienza un sub-grupo '
     edit_group_heading: Editar la configuración del grupo
     edit_subgroup_heading: Editar la configuración del subgrupo
     group_settings: Configuración del grupo
+    subgroup_settings: Configuración de subgrupos
     group_name: Nombre del grupo
     subgroup_name: 'Nombre del sub-grupo '
+    organization_name: Nombre de la organización
     handle: Gestionar
-    group_handle_placeholder: "Para la dirección URL y el email, ej: loomio.org/handle y handle@loomio.org"
+    group_handle_placeholder: "Utilizado en la URL de tu grupo: www.loomio.org / {{manejar}}"
     start_organization_heading: Nueva organización
     edit_organization_heading: Editar los ajustes de la organización
     group_name_placeholder: '¿Cuál es el nombre de tu grupo?'
+    subgroup_name_placeholder: '¿Cuál es el nombre de tu subgrupo?'
     organization_name_placeholder: '¿Cuál es el nombre de la organización?'
     description: 'Descripción '
     description_placeholder: 'Describa el propósito del grupo para que los integrantes sepan porque están aquí.'
+    secret_by_default: Su grupo solo será accesible para aquellos que estén invitados a unirse.
     privacy_statement:
       public_on_web: 'Nombre, descripción y archivos adjuntos al contexto del grupo, serán visibles al públicos '
       private_to_group: 'El nombre y la descripción solo serán visibles para integrantes. '
@@ -1021,6 +1033,8 @@ es:
     members_can_edit_discussions_help: 'Permite a los miembros editar, mover, marcar, etiquetar o cerrar hilos'
     members_can_edit_comments: 'Los miembros pueden editar sus propios comentarios'
     members_can_edit_comments_help: 'Permite a los miembros editar sus propios comentarios en cualquier momento'
+    members_can_delete_comments: 'Los miembros pueden eliminar sus propios comentarios'
+    members_can_delete_comments_help: 'Permite a los miembros eliminar sus propios comentarios en cualquier momento'
     members_can_start_discussions: 'Los miembros pueden comenzar nuevos hilos'
     members_can_start_discussions_help: 'Permite a los miembros comenzar nuevos hilos dentro de este grupo'
     members_can_raise_motions: 'Los miembros pueden comenzar encuestas'
@@ -1958,14 +1972,15 @@ es:
     youre_invited_discussion: Te han invitado a unirte a la conversación.
     youre_invited_poll: Te han invitado a votar.
     existing_account_can_sign_in: Si ya eres un usuario {{site_name}}, inicia sesión con tu cuenta existente
+    sign_up_or_log_in: Crear cuenta o iniciar sesión en {{site_name}}
     sign_in_to_loomio: Registrarse en {{site_name}}
     sign_in_help: ¿Problemas para iniciar sesión?
     sign_in: Entrar
     continue: 'Continua '
     create_account: Crear una cuenta
-    sign_up_as: Registrarse como {{email}}
+    sign_up_as: Crear cuenta como {{email}}
     sign_in_as: Ingresa como {{name}}
-    continue_with_provider: Iniziar sesión con {{provider}}
+    continue_with_provider: Continuar con {{proveedor}}
     continue_with_email: Continuar con email
     or_enter_your_email: O, introduzca su dirección de correo electrónico
     enter_your_name: Ingresa tu nombre
@@ -2006,7 +2021,7 @@ es:
     check_your_email: ¡Revise su correo electrónico!
     login_link_sent: "Enviamos un correo electrónico a {{email}}"
     instructions: "Haz clic en el enlace para entrar, o ingresa el siguiente código:"
-    too_many_attempts: "Demasiados intentos, haz clic en el enlace en el correo electrónico para entrar. "
+    too_many_attempts: "Demasiados intentos; intente hacer clic en el enlace en el correo electrónico para iniciar sesión."
     invalid_code: "Lo lamentamos, ese código no coincide. Mira el correo electrónico e intenta de nuevo"
     password_link_sent: "Le hemos enviado un correo electrónico a {{email}}, con instrucciones para configurar su contraseña."
     reactivate_link_sent: "Te hemos enviado un email con instrucciones para reactivar tu cuenta"
@@ -2089,10 +2104,14 @@ es:
     subtitle: Por favor ayúdanos a conocerte mejor. No compartiremos nada la información que has proporcionado en este formulario sin tu permiso.
     validation_error: Por favor rellena todos los campos requeridos.
     success: Gracias!
+    describe_other: ¿Qué categoría le darías a tu grupo?
     categories:
       party: Partido político
       coop: Cooperativa
       union: Unión
+      board: Junta o comité
+      nonprofit: Sin fines de lucro o ONG
+      professional: Empresa de servicios profesionales
       community: Comunidad
       government: Gobierno/Gobierno local
       other: Otro

@@ -1,13 +1,11 @@
 class API::V1::AttachmentsController < API::V1::RestfulController
   def index
-    instantiate_collection do |collection|
-      collection.where(group_id: params[:group_id])
-    end
+    # Group.find_by(params[:group_id).id_and_subgroup_ids
+    group = current_user.groups.find_by!(id: params[:group_id])
+    group_ids = current_user.group_ids.intersection(group.id_and_subgroup_ids)
+    self.collection = AttachmentQuery.find(group_ids, params[:q], (params[:per] || 20), (params[:from] || 0))
+    self.collection_count = AttachmentQuery.find(group_ids, params[:q], 1000, 0).count
     respond_with_collection
-  end
-
-  def accessible_records
-    ActiveStorage::Attachment.includes(:blob).where(group_id: current_user.group_ids, name: "files")
   end
 
   def destroy
@@ -21,8 +19,16 @@ class API::V1::AttachmentsController < API::V1::RestfulController
     render json: resources_to_serialize, scope: default_scope, each_serializer: serializer, root: root
   end
 
+  def serializer_root
+    :attachments
+  end
+
   def serializer_class
     AttachmentSerializer
+  end
+
+  def accessible_records
+    AttachmentQuery
   end
 
   def serializer_root

@@ -61,6 +61,7 @@ export default
       Records.groups.findOrFetch(@$route.params.key)
       .then (group) =>
         @group = group
+        window.location.host = @group.newHost if @group.newHost
         ahoy.trackView
           groupId: @group.id
           organisationId: @group.parentOrSelf().id

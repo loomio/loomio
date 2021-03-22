@@ -6,7 +6,7 @@ import AbilityService    from '@/shared/services/ability_service'
 import Session           from '@/shared/services/session'
 import AttachmentService from '@/shared/services/attachment_service'
 
-import { isEmpty, intersection, debounce, filter, some, orderBy } from 'lodash'
+import { isEmpty, intersection, debounce, filter, some, orderBy, uniq } from 'lodash'
 
 export default
   data: ->
@@ -16,13 +16,14 @@ export default
     searchQuery: ''
     items: []
     subgroups: 'mine'
+    attachmentIds: []
     per: 25
     from: 0
 
   created: ->
     @onQueryInput = debounce (val) =>
       @$router.replace({ query: { q: val } })
-    , 500
+    , 400
 
     @group = Records.groups.fuzzyFind(@$route.params.key)
 
@@ -76,7 +77,7 @@ export default
                      data()
 
       attachments = Records.attachments.collection.chain().
-                     find(groupId: {$in: groupIds}).
+                     find(id: {$in: @attachmentIds}).
                      find(filename: {$regex: ///#{@searchQuery}///i}).
                      data()
 
@@ -86,8 +87,9 @@ export default
       @loader.fetchRecords
         q: @searchQuery
 
-      @attachmentLoader.fetchRecords
-        q: @searchQuery
+      @attachmentLoader.fetchRecords(q: @searchQuery).then (data) =>
+        @attachmentIds = uniq @attachmentIds.concat((data.attachments || []).map (a) -> a.id)
+      .then => @query()
 
     actionsFor: (item) ->
       AttachmentService.actions(item)
@@ -130,6 +132,6 @@ div
 
       v-layout(justify-center)
         .d-flex.flex-column.justify-center.align-center
-          span(v-if="loader.total == null") {{items.length}} / {{attachmentLoader.total}}
+          //- span(v-if="loader.total == null") {{items.length}} / {{attachmentLoader.total}}
           v-btn.my-2(outlined color='accent' v-if="!attachmentLoader.exhausted" :loading="loading" @click="fetch()" v-t="'common.action.load_more'")
 </template>

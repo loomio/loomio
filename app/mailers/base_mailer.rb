@@ -31,7 +31,7 @@ class BaseMailer < ActionMailer::Base
   end
 
   def from_user_via_loomio(user)
-    "\"#{user.name} (#{AppConfig.theme[:site_name]})\" <#{NOTIFICATIONS_EMAIL_ADDRESS}>"
+    "\"#{I18n.t('base_mailer.via_loomio', name: user.name, site_name: AppConfig.theme[:site_name])}\" <#{NOTIFICATIONS_EMAIL_ADDRESS}>"
   end
 
   def send_single_mail(locale: , to:, subject_key:, subject_params: {}, subject_prefix: '', **options)

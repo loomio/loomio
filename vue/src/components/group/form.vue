@@ -131,7 +131,7 @@ v-card.group-form
       .group-form__group-title
         h1.headline(tabindex="-1" v-if='group.parentId', v-t="'group_form.subgroup_settings'")
         h1.headline(tabindex="-1" v-if='!group.parentId', v-t="'group_form.group_settings'")
-      dismiss-modal-button
+      dismiss-modal-button(:model="group")
   //- v-card-text
   v-tabs(fixed-tabs)
     v-tab(v-t="'group_form.profile'")
@@ -227,6 +227,12 @@ v-card.group-form
               span(v-t="'group_form.members_can_edit_comments'")
               br
               span.caption(v-t="'group_form.members_can_edit_comments_help'")
+        v-checkbox.group-form__members-can-delete-comments(hide-details v-model='group["membersCanDeleteComments"]')
+          template(v-slot:label)
+            div
+              span(v-t="'group_form.members_can_delete_comments'")
+              br
+              span.caption(v-t="'group_form.members_can_delete_comments_help'")
         v-checkbox.group-form__members-can-raise-motions(hide-details v-model='group["membersCanRaiseMotions"]')
           template(v-slot:label)
             div

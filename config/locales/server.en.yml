@@ -142,6 +142,8 @@ en:
     active: Active
     inactive: Inactive
 
+  base_mailer:
+    via_loomio: '%{name} (via %{site_name})'
   user_mailer:
     group_export_ready:
       subject: Group data export for %{group_name}

@@ -22,6 +22,9 @@ export default
         @pendingGroup = store.groups.find(@pendingIdentity.group_id)
 
   computed:
+    userLocale: ->
+      Session.user().locale
+
     isInvitedNewUser: ->
       AppConfig.pending_identity.email_verified == false
 
@@ -41,7 +44,10 @@ export default
 <template lang="pug">
 v-card.auth-form
   v-card-title
-    h1.headline(tabindex="-1" role="status" aria-live="polite" v-t="{ path: 'auth_form.sign_up_or_log_in', args: { site_name: siteName } }")
+    h1.headline(tabindex="-1" role="status" aria-live="polite")
+      span(v-if="$te('auth_form.sign_up_or_log_in', {locale: userLocale})"
+           v-t="{ path: 'auth_form.sign_up_or_log_in', args: { site_name: siteName } }")
+      span(v-else v-t="{ path: 'auth_form.sign_in_to_loomio', args: { site_name: siteName } }")
     v-spacer
     dismiss-modal-button(v-if='!preventClose')
   v-sheet.py-4.pb-4

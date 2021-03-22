@@ -32,7 +32,7 @@ module ErrorRescueHelper
   end
 
   def response_format
-    params[:format] == 'json' ? 'json' : 'html'
+    params[:format] == 'json' ? :json : :html
   end
 
   def respond_with_error(message: nil, status: 400)

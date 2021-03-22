@@ -9,7 +9,6 @@ import { onError } from '@/shared/helpers/form'
 export default
   props:
     stance: Object
-    close: Function
   components:
     PollCommonDirective: PollCommonDirective
 
@@ -37,7 +36,7 @@ v-card.poll-common-edit-vote-modal
       span(v-if="!stance.castAt", v-t="'poll_common.have_your_say'")
       span(v-if="stance.castAt", v-t="'poll_common.change_your_response'")
     v-spacer
-    dismiss-modal-button(:close="close")
+    dismiss-modal-button(:model="stance")
 
   v-sheet.pa-4
     poll-common-directive(name="vote-form" :stance="stance")

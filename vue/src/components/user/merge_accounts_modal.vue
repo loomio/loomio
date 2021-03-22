@@ -4,8 +4,6 @@ import Records from '@/shared/services/records'
 import Flash from '@/shared/services/flash'
 
 export default
-  props:
-    close: Function
   data: ->
     targetEmail: null
     emailChecked: false
@@ -39,7 +37,7 @@ v-card
   v-card-title
     h1.headline Merge accounts
     v-spacer
-    dismiss-modal-button(:close="close")
+    dismiss-modal-button
   v-card-text
     div(v-if="!emailChecked")
       p Do you have another Loomio account you would like to merge this account with? Enter the corresponding email address and we'll check to see the other account exists.

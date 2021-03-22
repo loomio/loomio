@@ -21,7 +21,7 @@ class PollService
                            model: poll,
                            actor: actor)
 
-    HasRichText.assign_attributes_and_update_files(poll, params.except(:poll_type, :discussion_id, :group_id))
+    poll.assign_attributes_and_files(params.except(:poll_type, :discussion_id, :group_id))
 
     return false unless poll.valid?
 

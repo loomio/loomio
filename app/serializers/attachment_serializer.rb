@@ -1,8 +1,9 @@
 class AttachmentSerializer < ActiveModel::Serializer
   embed :ids, include: true
-  attributes :id, :filename, :content_type, :byte_size, :icon, :group_id,
-             :preview_url, :download_url, :created_at
+  attributes :id, :filename, :content_type, :byte_size, :icon,
+             :preview_url, :download_url, :created_at, :record_type, :record_id
 
+  has_one :record, polymorphic: true
   has_one :author, serializer: AuthorSerializer, root: :users
 
   def author

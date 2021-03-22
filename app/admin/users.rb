@@ -135,13 +135,14 @@ ActiveAdmin.register User do
           group = g.group
           link_to group.full_name, admin_group_path(group)
         end
+        column :volume
         column :admin
         column :accepted_at
       end
     end
 
+    render 'notifications', { notifications: Notification.includes(:event).where(user_id: user.id).order("id DESC").limit(30) }
     render 'emails', { emails: Ahoy::Message.where(user_id: user.id).order("id DESC").limit(30) }
-
     render 'visits', { visits: Ahoy::Visit.where(user_id: user.id).order("started_at DESC").limit(30) }
 
     panel("Identities") do
