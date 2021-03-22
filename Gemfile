@@ -84,7 +84,7 @@ end
 group :test do
   gem 'webmock'
   gem 'rack_session_access'
-  gem 'rspec-rails', '~> 5.0.0'
+  gem 'rspec-rails', '~> 5.0.1'
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'rspec-activemodel-mocks'
