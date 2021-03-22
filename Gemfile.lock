@@ -531,7 +531,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sentry-rails (4.3.0)
+    sentry-rails (4.3.1)
       rails (>= 5.0)
       sentry-ruby-core (~> 4.3.0)
     sentry-ruby (4.3.0)
