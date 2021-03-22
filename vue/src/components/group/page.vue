@@ -8,8 +8,13 @@ import AbilityService    from '@/shared/services/ability_service'
 import LmoUrlService     from '@/shared/services/lmo_url_service'
 import {compact, head, includes, filter} from 'lodash'
 import ahoy from '@/shared/services/ahoy'
+import OldPlanBanner from '@/components/group/old_plan_banner'
 
 export default
+  components: {
+    OldPlanBanner
+  }
+
   data: ->
     group: null
     activeTab: ''
@@ -87,6 +92,7 @@ v-main
         space
       span.group-page__name.mr-4
         | {{group.name}}
+    old-plan-banner(:group="group")
     trial-banner(:group="group")
     group-onboarding-card(:group="group")
     formatted-text.group-page__description(v-if="group" :model="group" column="description")
