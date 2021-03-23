@@ -217,7 +217,7 @@ GEM
       ruby2_keywords
     faraday-net_http (1.0.1)
     ffi (1.13.1)
-    fog-aws (3.9.0)
+    fog-aws (3.10.0)
       fog-core (~> 2.1)
       fog-json (~> 1.1)
       fog-xml (~> 0.1)
