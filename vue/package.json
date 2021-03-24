@@ -46,7 +46,7 @@
     "vue": "^2.6.12",
     "vue-clipboard2": "^0.3.1",
     "vue-gravatar": "^1.4.1",
-    "vue-i18n": "8.24.1",
+    "vue-i18n": "8.24.2",
     "vue-observe-visibility": "^1.0.0",
     "vue-recaptcha": "^1.2.0",
     "vue-router": "^3.5.1",
