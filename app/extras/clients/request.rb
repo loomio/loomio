@@ -1,5 +1,7 @@
 Clients::Request = Struct.new(:method, :url, :params) do
   include HTTParty
+  default_options.update(verify: false) if ENV['SSL_VERIFY_FALSE']
+  default_options.update(verify_peer: false) if ENV['SSL_VERIFY_PEER_FALSE']
   debug_output $stdout
 
   attr_accessor :callback, :success
