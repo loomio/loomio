@@ -151,7 +151,7 @@ GEM
     aws-sigv4 (1.2.3)
       aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.16)
-    bootsnap (1.7.2)
+    bootsnap (1.7.3)
       msgpack (~> 1.0)
     browser (5.3.1)
     builder (3.2.4)
@@ -217,7 +217,7 @@ GEM
       ruby2_keywords
     faraday-net_http (1.0.1)
     ffi (1.13.1)
-    fog-aws (3.9.0)
+    fog-aws (3.10.0)
       fog-core (~> 2.1)
       fog-json (~> 1.1)
       fog-xml (~> 0.1)
@@ -531,7 +531,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sentry-rails (4.3.1)
+    sentry-rails (4.3.2)
       rails (>= 5.0)
       sentry-ruby-core (~> 4.3.0)
     sentry-ruby (4.3.0)
