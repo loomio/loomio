@@ -39,6 +39,14 @@ export default
     removeMembership: ->
       namespace = if @membership.acceptedAt then 'membership' else 'invitation'
 
+      messages = []
+      messages.push @$t("membership_remove_modal.#{namespace}.message", { name: @membership.user().name })
+
+      if @membership.group().parentId
+        messages.push @$t("membership_remove_modal.membership.impact_for_subgroup")
+      else
+        messages.push @$t("membership_remove_modal.membership.impact_for_group")
+
       EventBus.$emit 'openModal',
                       component: 'ConfirmModal',
                       props:
@@ -46,7 +54,7 @@ export default
                           membership: @membership.clone()
                           text:
                             title:    "membership_remove_modal.#{namespace}.title"
-                            raw_helptext: @$t("membership_remove_modal.#{namespace}.message", { name: @membership.user().name })
+                            raw_helptext: messages.join('<br>')
                             flash:    "membership_remove_modal.#{namespace}.flash"
                             submit:   "membership_remove_modal.#{namespace}.submit"
                           submit:     @membership.destroy

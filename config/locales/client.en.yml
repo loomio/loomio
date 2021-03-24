@@ -1226,8 +1226,8 @@ en:
     membership:
       title: Remove member
       message: Are you sure you want to remove {{name}}?
-      impact_for_group: This will remove their access to all threads and decisions in the group.
-      impact_for_subgroups: This will also remove their access to all subgroups of this group.
+      impact_for_subgroup: This will remove their access to the subgroup (including threads and polls), but they will remain a member of the parent group.
+      impact_for_group: This will remove their access to the group (including threads and polls) and any subgroups.
       flash: Member removed
       submit: Remove member
 
