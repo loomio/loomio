@@ -9,7 +9,8 @@ import OutcomeCreated from '@/components/strand/item/outcome_created.vue'
 import StrandLoadMore from '@/components/strand/load_more.vue'
 import OtherKind from '@/components/strand/item/other_kind.vue'
 import RangeSet from '@/shared/services/range_set'
-import { camelCase, first, last, some } from 'lodash'
+import EventBus from '@/shared/services/event_bus'
+import { camelCase, first, last, some, sortedUniq, sortBy, without } from 'lodash'
 
 export default
   name: 'strand-list'
@@ -93,7 +94,13 @@ export default
         'other_kind'
 
     visibilityChanged: (visible, entry, event) ->
-      event.markAsRead() if visible
+      if visible
+        event.markAsRead()
+        @loader.isVisible(event)
+      else
+        @loader.isHidden(event)
+
+      EventBus.$emit('visibleKeys', @loader.visibleKeys)
 
 </script>
 
@@ -105,7 +112,7 @@ export default
 
     .strand-item__row
       .strand-item__gutter(v-if="obj.event.depth > 0")
-        .strand-item__circle(v-if="loader.collapsed[obj.event.id]" @click.stop="loader.expand(obj.event.id)")
+        .strand-item__circle(v-if="loader.collapsed[obj.event.id]" @click.stop="loader.expand(obj.event)")
           v-icon mdi-unfold-more-horizontal
         template(v-else)
           .d-flex.justify-center
@@ -113,10 +120,10 @@ export default
             template(v-else)
               user-avatar(:user="obj.event.actor()" :size="(obj.event.depth > 1) ? 28 : 36" no-link)
               v-badge(offset-x="48" offset-y="-24" icon="mdi-pin" v-if="obj.event.pinned" color="accent")
-          .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event.id)")
+          .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event)")
             .strand-item__stem(:class="{'strand-item__stem--unread': isUnread(obj.event), 'strand-item__stem--focused': isFocused(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
       .strand-item__main
-        component(:is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="loader.collapsed[obj.event.id]" v-observe-visibility="{callback: (isVisible, entry) => visibilityChanged(isVisible, entry, obj.event), once: true}")
+        component(:is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="loader.collapsed[obj.event.id]" v-observe-visibility="{callback: (isVisible, entry) => visibilityChanged(isVisible, entry, obj.event)}")
 
         .strand-list__children.pt-2(v-if="obj.event.childCount")
           strand-list.flex-grow-1(v-if="obj.children.length && !loader.collapsed[obj.event.id]" :loader="loader" :collection="obj.children")

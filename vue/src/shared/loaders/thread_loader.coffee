@@ -1,5 +1,5 @@
 import Records from '@/shared/services/records'
-import { isNumber, uniq, compact, orderBy, camelCase, forEach, isObject } from 'lodash'
+import { isNumber, uniq, compact, orderBy, camelCase, forEach, isObject, sortedUniq, sortBy, without } from 'lodash'
 import Vue from 'vue'
 import RangeSet         from '@/shared/services/range_set'
 import Session from '@/shared/services/session'
@@ -16,6 +16,7 @@ export default class ThreadLoader
     @rules = []
     @unreadIds = []
     @focusAttrs = {}
+    @visibleKeys = []
     @collapsed = Vue.observable({})
     @rules.push
       name: "my stuff"
@@ -24,11 +25,18 @@ export default class ThreadLoader
           discussionId: @discussion.id
           actorId: Session.user().id
 
-  collapse: (id) ->
-    Vue.set(@collapsed, id, true)
+  isVisible: (event) ->
+    @visibleKeys = sortedUniq(sortBy(@visibleKeys.concat([event.positionKey])))
 
-  expand: (id) ->
-    Vue.set(@collapsed, id, false)
+  isHidden: (event) ->
+    @visibleKeys = without(@visibleKeys, event.positionKey)
+
+  collapse: (event) ->
+    @isHidden(event)
+    Vue.set(@collapsed, event.id, true)
+
+  expand: (event) ->
+    Vue.set(@collapsed, event.id, false)
 
   jumpToEarliest: ->
     @reset()

@@ -1,7 +1,7 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
-import { debounce, truncate, first, last, some, drop, min, compact } from 'lodash'
+import { debounce, truncate, first, last, some, drop, min, compact, without, sortedUniq } from 'lodash'
 
 export default
 
@@ -20,13 +20,33 @@ export default
     minUnitHeight: 24
     presets: []
     knobVisible: false
+    keys: []
+    visibleKeys: []
 
   mounted: ->
-    console.log 'mounted!'
     EventBus.$on 'toggleThreadNav', => @open = !@open
     EventBus.$on 'scrollThreadNav', =>
       return if @knobVisible or !document.querySelector('.thread-sidebar .v-navigation-drawer__content')
       @$vuetify.goTo('.thread-nav__knob', { container: '.thread-sidebar .v-navigation-drawer__content', offset: 100 })
+
+    Records.events.fetch
+      params:
+        exclude_types: 'group discussion'
+        discussion_id: @discussion.id
+        pinned: true
+        per: 200
+
+    Records.events.remote.fetch
+      path: 'position_keys'
+      params:
+        discussion_id: @discussion.id
+        per: 1000
+    .then (data) =>
+      @keys = data.position_keys
+      @topPosition = 1
+      @topDate = @discussion.createdAt
+      @bottomDate = @discussion.lastActivityAt
+      @bottomPosition = @keys.length
 
     @watchRecords
       key: 'thread-nav'+@discussion.id
@@ -37,40 +57,13 @@ export default
           .find({pinned: true, discussionId: @discussion.id})
           .simplesort('position').data()
         @setHeight()
-        if @discussion.newestFirst
-          @topPosition = @childCount
-          @topDate = @discussion.lastActivityAt
 
-          @bottomPosition = 1
-          @bottomDate = @discussion.createdAt
-        else
-          @topPosition = 1
-          @topDate = @discussion.createdAt
-
-          @bottomDate = @discussion.lastActivityAt
-          @bottomPosition = @childCount
-
-      Records.events.fetch
-        params:
-          exclude_types: 'group discussion'
-          discussion_id: @discussion.id
-          pinned: true
-          per: 200
-
-      Records.events.remote.fetch
-        path: 'position_keys'
-        params:
-          discussion_id: @discussion.id
-          per: 1000
-
-    EventBus.$on 'visibleSlots', (slots) =>
-      unless slots.length == 0
-        if @discussion && @discussion.newestFirst
-          @position = last(slots) || 1
-        else
-          @position = first(slots) || 1
-        @knobOffset = @offsetFor(@position)
-        @knobHeight = @unitHeight * (last(slots) - first(slots) + 1)
+    EventBus.$on 'visibleKeys', (keys) =>
+      console.log 'visiblyKeys', keys
+      firstPosition = @keys.indexOf(first(keys))
+      lastPosition = @keys.indexOf(last(keys))
+      @knobOffset = @offsetFor(firstPosition)
+      @knobHeight = @unitHeight * (lastPosition - firstPosition + 1)
 
   methods:
     setKnobVisible: (visible) ->
@@ -144,25 +137,18 @@ export default
         @$router.replace(query: {p: position}, params: {sequence_id: null, comment_id: null}).catch (err) => {}
 
     offsetFor: (position) ->
-      if @discussion && @discussion.newestFirst
-          @trackHeight - ((position) * @unitHeight)
-        else
-          (position - 1) * @unitHeight
+      (position - 1) * @unitHeight
 
     positionFor: (offset) ->
-      return 1 unless @discussion
       position = parseInt(offset / @unitHeight) + 1
       position = if position < 1
           1
-        else if position > @childCount
-          @childCount
+        else if position > @keys.length
+          @keys.length
         else
           position
 
-      if @discussion.newestFirst
-        @childCount - position + 1
-      else
-        position
+      position
 
   watch:
     'discussion.newestFirst':
@@ -172,13 +158,7 @@ export default
 
   computed:
     unitHeight: ->
-      @trackHeight / @childCount
-
-    childCount: ->
-      if @discussion && @discussion.createdEvent()
-        @discussion.createdEvent().childCount
-      else
-        10
+      @trackHeight / @keys.length
 
 </script>
 
@@ -190,7 +170,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
     .thread-nav__track(ref="slider" :style="{height: trackHeight+'px'}" @click="onTrackClicked")
       .thread-nav__track-line
     .thread-nav__presets
-      router-link.thread-nav__preset(v-for="event in presets" :key="event.id" :to="urlFor(event)" :style="{top: offsetFor(event.position)+'px'}")
+      router-link.thread-nav__preset(v-for="event in presets" :key="event.id" :to="urlFor(event)" :style="{top: offsetFor(keys.indexOf(event.positionKey))+'px'}")
         .thread-nav__preset--line
         .thread-nav__preset--title {{event.pinnedTitle || event.suggestedTitle()}}
     .thread-nav__knob(:style="{top: knobOffset+'px', height: knobHeight+'px'}" ref="knob" @mousedown="onMouseDown" v-touch:start="onTouchStart" v-observe-visibility="{callback: setKnobVisible}")
