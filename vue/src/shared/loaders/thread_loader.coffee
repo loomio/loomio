@@ -15,6 +15,7 @@ export default class ThreadLoader
     @collection = Vue.observable([])
     @rules = []
     @unreadIds = []
+    @focusAttrs = {}
     @collapsed = Vue.observable({})
     @rules.push
       name: "my stuff"

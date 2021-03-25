@@ -28,6 +28,7 @@ export default
       Records.samlProviders.authenticateForDiscussion(@$route.params.key)
       Records.discussions.findOrFetchById(@$route.params.key, exclude_types: 'poll outcome')
       .then (discussion) =>
+        window.location.host = discussion.group().newHost if discussion.group().newHost
         @discussion = discussion
         @loader = new ThreadLoader(@discussion)
         @respondToRoute()
@@ -47,15 +48,26 @@ export default
           key: 'strand'+@discussion.id
           collections: ['events']
           query: => @loader.updateCollection()
-      # .catch (error) =>
-      #   EventBus.$emit 'pageError', error
-      #   EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()
+      .catch (error) =>
+        EventBus.$emit 'pageError', error
+        EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()
 
     respondToRoute: ->
       return unless @discussion
       return if @discussion.key != @$route.params.key
       return if @discussion.createdEvent.childCount == 0
       @loader.reset()
+
+      if @$route.query.p
+        @loader.focusAttrs = {position: @$route.query.p}
+
+      if @$route.params.sequence_id
+        @loader.focusAttrs = {sequenceId: parseInt(@$route.params.sequence_id)}
+
+      if @$route.query.comment_id
+        @loader.focusAttrs = {commentId: parseInt(@$route.query.comment_id)}
+
+      console.log @$route , @loader.focusAttrs
 
       rules = []
 
@@ -97,4 +109,5 @@ export default
       strand-nav(v-if="loader" :discussion="discussion" :loader="loader")
       discussion-fork-actions(:discussion='discussion' :key="'fork-actions'+ discussion.id")
       strand-card(v-if="loader" :discussion='discussion' :loader="loader")
+  router-view(name="nav")
 </template>
