@@ -8,7 +8,7 @@ export default new class EventService
     move_event:
       name: 'action_dock.move_item'
       perform: ->
-        event.toggleFromFork()
+        event.discussion().forkedEventIds.push(event.id)
 
       canPerform: ->
         !event.model().discardedAt && AbilityService.canMoveThread(event.discussion())

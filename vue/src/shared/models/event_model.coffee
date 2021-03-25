@@ -54,7 +54,7 @@ export default class EventModel extends BaseModel
 
   model: ->
     @recordStore[@constructor.eventTypeMap[@eventableType]].find(@eventableId)
-    
+
   isUnread: ->
     !@discussion().hasRead(@sequenceId)
 
@@ -86,9 +86,9 @@ export default class EventModel extends BaseModel
 
   unpin: -> @remote.patchMember(@id, 'unpin')
 
-  isForkable: ->
-    @discussion() && @discussion().isForking
-
+  # isForkable: ->
+  #   @discussion() && @discussion().isForking
+  #
   isForking: ->
     @discussion() && (@discussion().forkedEventIds.includes(@id) or @parentIsForking())
 
@@ -98,11 +98,10 @@ export default class EventModel extends BaseModel
   forkingDisabled: ->
     @parentIsForking() || (@parent() && @parent().kind == 'poll_created')
 
-  toggleFromFork: ->
+  toggleForking: ->
     if @isForking()
-      @discussion().update(forkedEventIds: without @discussion().forkedEventIds, @id)
+      @discussion().update(forkedEventIds: without(@discussion().forkedEventIds, @id))
     else
-      @discussion().update(isForking: true)
       @discussion().forkedEventIds.push @id
 
   next: ->

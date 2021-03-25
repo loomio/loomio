@@ -99,13 +99,17 @@ export default
       strand-load-more(:label="{path: 'common.action.count_more', args: {count: countEarlierMissing(obj.event.position)}}" @click="loader.loadBefore(obj.event)")
 
     .strand-item__row
-      .strand-item__gutter(v-if="obj.event.depth > 0" @click.stop="loader.collapse(obj.event.id)")
+      .strand-item__gutter(v-if="obj.event.depth > 0")
         .strand-item__circle(v-if="loader.collapsed[obj.event.id]" @click.stop="loader.expand(obj.event.id)")
           v-icon mdi-unfold-more-horizontal
         template(v-else)
-          user-avatar(:user="obj.event.actor()" :size="(obj.event.depth > 1) ? 28 : 36" no-link)
-          v-badge(offset-x="48" offset-y="-24" icon="mdi-pin" v-if="obj.event.pinned" color="accent")
-          .strand-item__stem(:class="{'strand-item__stem--unread': isUnread(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
+          .d-flex.justify-center
+            v-checkbox.thread-item__is-forking(v-if="loader.discussion.forkedEventIds.length" @change="obj.event.toggleForking()" :disabled="obj.event.forkingDisabled()" v-model="obj.event.isForking()")
+            template(v-else)
+              user-avatar(:user="obj.event.actor()" :size="(obj.event.depth > 1) ? 28 : 36" no-link)
+              v-badge(offset-x="48" offset-y="-24" icon="mdi-pin" v-if="obj.event.pinned" color="accent")
+          .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event.id)")
+            .strand-item__stem(:class="{'strand-item__stem--unread': isUnread(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
       .strand-item__main
         //- | {{obj.event.sequenceId}} {{obj.event.positionKey}} {{obj.event.childCount}} {{obj.event.descendantCount}}
         component(:is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="loader.collapsed[obj.event.id]" v-observe-visibility="{callback: (isVisible, entry) => visibilityChanged(isVisible, entry, obj.event), once: true}")
@@ -167,12 +171,17 @@ export default
   flex-grow: 1
   padding-bottom: 8px
 
+.strand-item__stem-wrapper
+  width: 36px
+  height: 100%
+  padding: 6px 0
+
 .strand-item__stem
   width: 0
   height: 100%
   padding: 0 1px
   background-color: #dadada
-  margin: 6px 18px
+  margin: 0px 18px
 
 .strand-item__stem--unread
   background-color: var(--v-primary-base)!important
