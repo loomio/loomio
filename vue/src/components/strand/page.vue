@@ -106,8 +106,8 @@ export default
 .strand-page
   v-main
     v-container.max-width-800(v-if="discussion")
-      strand-nav(v-if="loader" :discussion="discussion" :loader="loader")
+      //- strand-nav(v-if="loader" :discussion="discussion" :loader="loader")
       discussion-fork-actions(:discussion='discussion' :key="'fork-actions'+ discussion.id")
       strand-card(v-if="loader" :discussion='discussion' :loader="loader")
-  router-view(name="nav")
+  strand-nav(v-if="loader" :discussion="discussion" :loader="loader")
 </template>

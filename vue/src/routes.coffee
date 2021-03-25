@@ -57,9 +57,9 @@ groupPageChildren = [
 # ]
 #
 strandPageChildren = [
-  {path: 'comment/:comment_id', components: {nav: ThreadNav}}
-  {path: ':stub?/:sequence_id?', components: {nav: ThreadNav}}
-  {path: '', components: {nav: ThreadNav}}
+  {path: 'comment/:comment_id'}
+  {path: ':stub?/:sequence_id?'}
+  {path: ''}
 ]
 
 router = new Router
