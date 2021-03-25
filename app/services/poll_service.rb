@@ -175,6 +175,7 @@ class PollService
 
   def self.expire_lapsed_polls
     Poll.lapsed_but_not_closed.each do |poll|
+      next if poll.closed_at
       do_closing_work(poll: poll)
       EventBus.broadcast('poll_expire', poll)
       Events::PollExpired.publish!(poll)
