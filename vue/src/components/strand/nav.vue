@@ -72,7 +72,7 @@ export default
     setHeight: ->
       @trackHeight = 400
       while ((@minOffset() || @minUnitHeight) < @minUnitHeight) && (@trackHeight < 100000)
-        @trackHeight = @trackHeight * 1.25
+        @trackHeight = @trackHeight * 1.1
 
     minOffset: ->
       distances = [2..@presets.length].map (i) =>
