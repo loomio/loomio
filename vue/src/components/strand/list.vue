@@ -93,14 +93,6 @@ export default
       else
         'other_kind'
 
-    visibilityChanged: (visible, entry, event) ->
-      if visible
-        event.markAsRead()
-        @loader.isVisible(event)
-      else
-        @loader.isHidden(event)
-
-      EventBus.$emit('visibleKeys', @loader.visibleKeys)
 
 </script>
 
@@ -123,7 +115,7 @@ export default
           .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event)")
             .strand-item__stem(:class="{'strand-item__stem--unread': isUnread(obj.event), 'strand-item__stem--focused': isFocused(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
       .strand-item__main
-        component(:is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="loader.collapsed[obj.event.id]" v-observe-visibility="{callback: (isVisible, entry) => visibilityChanged(isVisible, entry, obj.event)}")
+        component(:is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="loader.collapsed[obj.event.id]" v-observe-visibility="{callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
 
         .strand-list__children.pt-2(v-if="obj.event.childCount")
           strand-list.flex-grow-1(v-if="obj.children.length && !loader.collapsed[obj.event.id]" :loader="loader" :collection="obj.children")

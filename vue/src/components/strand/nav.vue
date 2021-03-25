@@ -59,7 +59,7 @@ export default
         @setHeight()
 
     EventBus.$on 'visibleKeys', (keys) =>
-      console.log 'visiblyKeys', keys
+      @visibleKeys = keys
       firstPosition = @keys.indexOf(first(keys))
       lastPosition = @keys.indexOf(last(keys))
       @knobOffset = @offsetFor(firstPosition)
@@ -175,6 +175,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
         .thread-nav__preset--title {{event.pinnedTitle || event.suggestedTitle()}}
     .thread-nav__knob(:style="{top: knobOffset+'px', height: knobHeight+'px'}" ref="knob" @mousedown="onMouseDown" v-touch:start="onTouchStart" v-observe-visibility="{callback: setKnobVisible}")
   router-link.thread-nav__date(:to="{query:{p: bottomPosition}, params: {sequence_id: null}}") {{approximateDate(bottomDate)}}
+  //- | {{visibleKeys}}
 </template>
 
 <style lang="sass">
