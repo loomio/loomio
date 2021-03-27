@@ -185,7 +185,7 @@ class PollService
   def self.do_closing_work(poll:)
     return if poll.closed_at
     poll.stances.update_all(participant_id: nil) if poll.anonymous
-    poll.update(closed_at: Time.now)
+    poll.update_attribute(:closed_at, Time.now)
   end
 
   def self.add_options(poll:, params:, actor:)
