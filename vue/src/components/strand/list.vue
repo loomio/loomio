@@ -94,6 +94,7 @@ export default
         'other_kind'
 
     classes: (event) ->
+      return [] unless event
       ["positionKey-#{event.positionKey}", "sequenceId-#{event.sequenceId}", "position-#{event.position}"]
 
 </script>
@@ -116,9 +117,8 @@ export default
               v-badge(offset-x="48" offset-y="-24" icon="mdi-pin" v-if="obj.event.pinned" color="accent")
           .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event)")
             .strand-item__stem(:class="{'strand-item__stem--unread': isUnread(obj.event), 'strand-item__stem--focused': isFocused(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
-      .strand-item__main(:class="classes(event)")
-        | {{classes(event)}}
-        component(:is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="loader.collapsed[obj.event.id]" v-observe-visibility="{callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
+      .strand-item__main
+        component(:class="classes(obj.event)" :is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="loader.collapsed[obj.event.id]" v-observe-visibility="{callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
 
         .strand-list__children.pt-2(v-if="obj.event.childCount")
           strand-list.flex-grow-1(v-if="obj.children.length && !loader.collapsed[obj.event.id]" :loader="loader" :collection="obj.children")

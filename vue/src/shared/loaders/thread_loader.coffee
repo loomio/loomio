@@ -278,10 +278,10 @@ export default class ThreadLoader
     # Records.events.fetch(params: params).then (data) => @updateCollection()
 
   fetch:  ->
-    @rules.forEach (rule) =>
+    promises = @rules.map (rule) =>
       params = Object.assign {}, rule.remote, {exclude_types: 'group discussion'}
       Records.events.fetch(params: params)
-      # Records.events.fetch(params: params).then (data) => @updateCollection()
+    Promise.all(promises)
 
   updateCollection: ->
     @records = []
