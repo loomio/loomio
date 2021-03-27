@@ -42,7 +42,7 @@ export default
         discussion_id: @discussion.id
         per: 1000
     .then (data) =>
-      @keys = data.position_keys
+      @keys = [@discussion.createdEvent.positionKey].concat data.position_keys
       @topPosition = 1
       @topDate = @discussion.createdAt
       @bottomDate = @discussion.lastActivityAt
@@ -137,7 +137,7 @@ export default
         @$router.replace(query: {p: position}, params: {sequence_id: null, comment_id: null}).catch (err) => {}
 
     offsetFor: (position) ->
-      (position - 1) * @unitHeight
+      (position) * @unitHeight
 
     positionFor: (offset) ->
       position = parseInt(offset / @unitHeight) + 1
