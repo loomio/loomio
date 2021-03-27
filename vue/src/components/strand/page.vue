@@ -59,27 +59,18 @@ export default
       @loader.reset()
 
       if @$route.query.p
+        @loader.addLoadPositionRule(parseInt(@$route.params.p))
         @loader.focusAttrs = {position: @$route.query.p}
 
       if @$route.params.sequence_id
+        @loader.addLoadSequenceIdRule(@$route.params.sequence_id)
         @loader.focusAttrs = {sequenceId: parseInt(@$route.params.sequence_id)}
 
       if @$route.query.comment_id
+        @loader.addLoadCommentRule(parseInt(@$route.params.comment_id))
         @loader.focusAttrs = {commentId: parseInt(@$route.query.comment_id)}
 
-      console.log @$route , @loader.focusAttrs
-
       rules = []
-
-      # @loader.addLoadPinnedRule()
-      if @$route.params.comment_id
-        @loader.addLoadCommentRule(parseInt(@$route.params.comment_id))
-
-      if @$route.query.p
-        @loader.addLoadPositionRule(parseInt(@$route.params.comment_id))
-
-      if @$route.params.sequence_id
-        @loader.addLoadSequenceIdRule(@$route.params.sequence_id)
 
       if rules.length == 0
         # # never read, or all read?
@@ -90,15 +81,27 @@ export default
         if @discussion.lastReadAt
           if @discussion.unreadItemsCount() == 0
             @loader.addLoadNewestFirstRule()
+            @loader.focusAttrs = {newest: 1}
           else
             @loader.addLoadUnreadRule()
+            @loader.focusAttrs = {unread: 1}
         else
-          if @discussion.newestFirst
-            @loader.addLoadNewestFirstRule()
-          else
-            @loader.addLoadOldestFirstRule()
+          @loader.addLoadOldestFirstRule()
+          @loader.focusAttrs = {oldest: 1}
 
-      @loader.fetch()
+      @loader.fetch().then =>
+        if @loader.focusAttrs.newest
+          @scrollTo "sequenceId-#{discussion.lastSequenceId()}" || '.context-panel'
+        if @loader.focusAttrs.unread
+          @scrollTo "sequenceId-#{discussion.firstUnreadSequenceId()}" || '.context-panel'
+        if @loader.focusAttrs.oldest
+          @scrollTo '.context-panel'
+        if @loader.focusAttrs.commentId
+          @scrollTo "commendId-#{@loader.focusAttrs.commentId}"
+        if @loader.focusAttrs.sequenceId
+          @scrollTo "sequenceId-#{@loader.focusAttrs.sequenceId}"
+        if @loader.focusAttrs.position
+          @scrollTo "position-#{@loader.focusAttrs.position}"
 
 </script>
 
@@ -109,5 +112,5 @@ export default
       //- strand-nav(v-if="loader" :discussion="discussion" :loader="loader")
       discussion-fork-actions(:discussion='discussion' :key="'fork-actions'+ discussion.id")
       strand-card(v-if="loader" :discussion='discussion' :loader="loader")
-  strand-nav(v-if="loader" :discussion="discussion" :loader="loader")
+  //- strand-nav(v-if="loader" :discussion="discussion" :loader="loader")
 </template>
