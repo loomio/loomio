@@ -33,7 +33,7 @@ export default
 
 <template lang="pug">
 .strand-card.mb-8.pr-4
-  //- p(v-for="rule in loader.rules") {{rule.name}}
+  p(v-for="rule in loader.rules") {{rule.name}}
   strand-list(:loader="loader" :collection="loader.collection")
   strand-actions-panel(:discussion="discussion")
   //- thread-actions-panel(v-if="!discussion.newestFirst" :discussion="discussion")

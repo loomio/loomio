@@ -70,9 +70,9 @@ export default
         @loader.addLoadCommentRule(parseInt(@$route.params.comment_id))
         @loader.focusAttrs = {commentId: parseInt(@$route.query.comment_id)}
 
-      rules = []
 
-      if rules.length == 0
+      console.log '1', @loader.rules
+      if @loader.rules.length == 0
         # # never read, or all read?
         # # console.log "0 rules"
         # console.log "ranges", @discussion.ranges
@@ -89,19 +89,24 @@ export default
           @loader.addLoadOldestFirstRule()
           @loader.focusAttrs = {oldest: 1}
 
+      # console.log '2', @$route, rules
+      console.log 'fetching'
       @loader.fetch().then =>
+        console.log 'scrolling to', @loader.focusAttrs
         if @loader.focusAttrs.newest
-          @scrollTo "sequenceId-#{discussion.lastSequenceId()}" || '.context-panel'
+          @scrollTo ".sequenceId-#{discussion.lastSequenceId()}" || '.context-panel'
         if @loader.focusAttrs.unread
-          @scrollTo "sequenceId-#{discussion.firstUnreadSequenceId()}" || '.context-panel'
+          @scrollTo ".sequenceId-#{discussion.firstUnreadSequenceId()}" || '.context-panel'
         if @loader.focusAttrs.oldest
           @scrollTo '.context-panel'
         if @loader.focusAttrs.commentId
-          @scrollTo "commendId-#{@loader.focusAttrs.commentId}"
+          @scrollTo ".commendId-#{@loader.focusAttrs.commentId}"
         if @loader.focusAttrs.sequenceId
-          @scrollTo "sequenceId-#{@loader.focusAttrs.sequenceId}"
+          @scrollTo ".sequenceId-#{@loader.focusAttrs.sequenceId}"
         if @loader.focusAttrs.position
-          @scrollTo "position-#{@loader.focusAttrs.position}"
+          @scrollTo ".position-#{@loader.focusAttrs.position}"
+      .catch (res) =>
+        console.log 'promises failed', res
 
 </script>
 
@@ -109,7 +114,7 @@ export default
 .strand-page
   v-main
     v-container.max-width-800(v-if="discussion")
-      //- strand-nav(v-if="loader" :discussion="discussion" :loader="loader")
+      p(v-for="rule in loader.rules") {{rule}}
       discussion-fork-actions(:discussion='discussion' :key="'fork-actions'+ discussion.id")
       strand-card(v-if="loader" :discussion='discussion' :loader="loader")
   strand-nav(v-if="loader" :discussion="discussion" :loader="loader")

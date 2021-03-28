@@ -16,7 +16,7 @@ export default
     knobOffset: 0
     knobHeight: 32
     trackHeight: 400
-    position: 1
+    position: 0
     minUnitHeight: 24
     presets: []
     knobVisible: false
@@ -43,7 +43,6 @@ export default
         per: 1000
     .then (data) =>
       @keys = [@discussion.createdEvent.positionKey].concat data.position_keys
-      @topPosition = 1
       @topDate = @discussion.createdAt
       @bottomDate = @discussion.lastActivityAt
       @bottomPosition = @keys.length
@@ -137,12 +136,12 @@ export default
         @$router.replace(query: {p: position}, params: {sequence_id: null, comment_id: null}).catch (err) => {}
 
     offsetFor: (position) ->
-      (position) * @unitHeight
+      position * @unitHeight
 
     positionFor: (offset) ->
-      position = parseInt(offset / @unitHeight) + 1
-      position = if position < 1
-          1
+      position = parseInt(offset / @unitHeight)
+      position = if position < 0
+          0
         else if position > @keys.length
           @keys.length
         else
@@ -165,7 +164,7 @@ export default
 <template lang="pug">
 v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion" v-model="open" :permanent="$vuetify.breakpoint.mdAndUp" width="230px" app fixed right clipped color="background" floating)
   a.thread-nav__date(:to="urlFor(discussion)" @click="scrollTo('#context')" v-t="'activity_card.context'")
-  router-link.thread-nav__date(:to="{query:{p: topPosition}, params: {sequence_id: null}}") {{approximateDate(topDate)}}
+  router-link.thread-nav__date(:to="{query:{p: 0}, params: {sequence_id: null}}") {{approximateDate(topDate)}}
   .thread-nav(:style="{height: trackHeight+'px'}")
     .thread-nav__track(ref="slider" :style="{height: trackHeight+'px'}" @click="onTrackClicked")
       .thread-nav__track-line

@@ -199,6 +199,7 @@ export default class ThreadLoader
         limit: padding
       remote:
         from: sequenceId
+        discussion_id: @discussion.id
         order: 'sequence_id'
 
   addLoadNewestFirstRule: () ->
@@ -278,9 +279,10 @@ export default class ThreadLoader
     # Records.events.fetch(params: params).then (data) => @updateCollection()
 
   fetch:  ->
-    promises = @rules.map (rule) =>
+    promises = @rules.filter((rule) -> rule.remote).map (rule) =>
       params = Object.assign {}, rule.remote, {exclude_types: 'group discussion'}
       Records.events.fetch(params: params)
+    console.log promises
     Promise.all(promises)
 
   updateCollection: ->
