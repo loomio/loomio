@@ -133,7 +133,7 @@ export default
 
     goToPosition: (position) ->
       unless (@$route.query && @$route.query.p == position)
-        @$router.replace(query: {p: position}, params: {sequence_id: null, comment_id: null}).catch (err) => {}
+        @$router.replace(query: {k: @keys[position]}, params: {sequence_id: null, comment_id: null}).catch (err) => {}
 
     offsetFor: (position) ->
       position * @unitHeight
@@ -156,6 +156,8 @@ export default
         return unless @discussion
 
   computed:
+    firstKey: -> first(@keys)
+    lastKey: -> last(@keys)
     unitHeight: ->
       @trackHeight / @keys.length
 
@@ -173,7 +175,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
         .thread-nav__preset--line
         .thread-nav__preset--title {{event.pinnedTitle || event.suggestedTitle()}}
     .thread-nav__knob(:style="{top: knobOffset+'px', height: knobHeight+'px'}" ref="knob" @mousedown="onMouseDown" v-touch:start="onTouchStart" v-observe-visibility="{callback: setKnobVisible}")
-  router-link.thread-nav__date(:to="{query:{p: bottomPosition}, params: {sequence_id: null}}") {{approximateDate(bottomDate)}}
+  router-link.thread-nav__date(:to="{query:{k: lastKey}, params: {sequence_id: null}}") {{approximateDate(bottomDate)}}
   //- | {{visibleKeys}}
 </template>
 

@@ -22,6 +22,7 @@ export default
     '$route.params.sequence_id': 'respondToRoute'
     '$route.params.comment_id': 'respondToRoute'
     '$route.query.p': 'respondToRoute'
+    '$route.query.k': 'respondToRoute'
 
   methods:
     init: ->
@@ -58,20 +59,26 @@ export default
       return if @discussion.createdEvent.childCount == 0
       @loader.reset()
 
+
+      if @$route.query.k
+        @loader.addLoadPositionKeyRule(@$route.query.k)
+        console.log '1', @$route.query.k
+        @loader.focusAttrs = {positionKey: @$route.query.k}
+
       if @$route.query.p
         @loader.addLoadPositionRule(parseInt(@$route.params.p))
         @loader.focusAttrs = {position: @$route.query.p}
 
       if @$route.params.sequence_id
-        @loader.addLoadSequenceIdRule(@$route.params.sequence_id)
+        @loader.addLoadSequenceIdRule(parseInt(@$route.params.sequence_id))
         @loader.focusAttrs = {sequenceId: parseInt(@$route.params.sequence_id)}
 
       if @$route.query.comment_id
         @loader.addLoadCommentRule(parseInt(@$route.params.comment_id))
         @loader.focusAttrs = {commentId: parseInt(@$route.query.comment_id)}
 
+      console.log '2', @loader.rules
 
-      console.log '1', @loader.rules
       if @loader.rules.length == 0
         # # never read, or all read?
         # # console.log "0 rules"
@@ -105,6 +112,8 @@ export default
           @scrollTo ".sequenceId-#{@loader.focusAttrs.sequenceId}"
         if @loader.focusAttrs.position
           @scrollTo ".position-#{@loader.focusAttrs.position}"
+        if @loader.focusAttrs.positionKey
+          @scrollTo ".positionKey-#{@loader.focusAttrs.positionKey}"
       .catch (res) =>
         console.log 'promises failed', res
 

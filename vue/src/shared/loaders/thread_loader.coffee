@@ -188,6 +188,21 @@ export default class ThreadLoader
         from_sequence_id_of_position: position
         order: 'sequence_id'
 
+  addLoadPositionKeyRule: (positionKey) ->
+    @rules.push
+      name: "positionKey from url"
+      local:
+        find:
+          discussionId: @discussion.id
+          depth: 1
+          positionKey: {$gte: positionKey}
+        simplesort: 'sequenceId'
+        limit: padding
+      remote:
+        discussion_id: @discussion.id
+        position_key_gte: positionKey
+        order: 'sequence_id'
+
   addLoadSequenceIdRule: (sequenceId) ->
     @titleKey = 'strand_nav.from_sequence_id'
     @rules.push
@@ -196,6 +211,7 @@ export default class ThreadLoader
         find:
           discussionId: @discussion.id
           sequenceId: {$gte: sequenceId}
+        simplesort: 'sequenceId'
         limit: padding
       remote:
         from: sequenceId
@@ -295,7 +311,7 @@ export default class ThreadLoader
           # eg: value = {$lte: asdads,  $gte: asdasd}
           forEach value, (subvalue, subkey) ->
             chain = chain.find({"#{key}": {"#{subkey}": subvalue}})
-            # console.log({"#{key}": {"#{subkey}": subvalue}}, chain.data())
+            console.log({"#{key}": {"#{subkey}": subvalue}}, chain.data())
         else
           # eg: value = 1
           chain = chain.find({"#{key}": value})

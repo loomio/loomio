@@ -53,6 +53,7 @@ export default
   methods:
     isFocused: (event) ->
       (event.depth == 1 && event.position == @loader.focusAttrs.position) ||
+      (event.positionKey == @loader.focusAttrs.positionKey) ||
       (event.sequenceId == @loader.focusAttrs.sequenceId) ||
       (event.eventableType == 'Comment' && event.eventableId == @loader.focusAttrs.commentId)
 
@@ -118,7 +119,7 @@ export default
           .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event)")
             .strand-item__stem(:class="{'strand-item__stem--unread': isUnread(obj.event), 'strand-item__stem--focused': isFocused(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
       .strand-item__main
-        div {{classes(obj.event)}} {{isFocused(obj.event)}} {{loader.focusAttrs}}
+        div {{classes(obj.event)}} {{[obj.event.sequenceId]}} {{isFocused(obj.event)}} {{loader.focusAttrs}}
         component(:class="classes(obj.event)" :is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="loader.collapsed[obj.event.id]" v-observe-visibility="{callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
 
         .strand-list__children.pt-2(v-if="obj.event.childCount")
