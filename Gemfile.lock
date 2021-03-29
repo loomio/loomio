@@ -369,10 +369,11 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2021.0225)
-    mimemagic (0.3.8)
+    mimemagic (0.3.10)
       nokogiri (~> 1)
+      rake
     mini_magick (4.11.0)
-    mini_mime (1.0.2)
+    mini_mime (1.0.3)
     mini_portile2 (2.5.0)
     minitest (5.14.4)
     msgpack (1.4.2)
@@ -532,8 +533,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sentry-rails (4.3.2)
-      rails (>= 5.0)
+    sentry-rails (4.3.3)
+      railties (>= 5.0)
       sentry-ruby-core (~> 4.3.0)
     sentry-ruby (4.3.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
