@@ -78,7 +78,7 @@ export default class ThreadLoader
           find:
             discussionId: @discussion.id
           simplesort: 'positionKey'
-          limit: padding * 2
+          limit: padding
         remote:
           discussion_id: @discussion.id
           position_key_sw: event.positionKey
@@ -97,52 +97,41 @@ export default class ThreadLoader
           order_by: 'position_key'
 
   loadAfter: (event) ->
+    positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
+
     @addRule
       local:
         find:
           discussionId: @discussion.id
-          depth: {$gte: event.depth}
-          positionKey: {$jgt: event.positionKey}
+          positionKey:
+            $jgt: event.positionKey
+            $regex: (positionKeyPrefix && "^#{positionKeyPrefix}") || undefined
         simplesort: 'positionKey'
         limit: padding
       remote:
         discussion_id: @discussion.id
         position_key_gt: event.positionKey
-        depth_lte: event.depth + 2
-        depth_gte: event.depth
+        position_key_sw: positionKeyPrefix || null
         order_by: 'position_key'
 
   loadBefore: (event) ->
-    @addRule
-      local:
-        find:
-          discussionId: @discussion.id
-          depth: event.depth
-          positionKey: {$jlt: event.positionKey}
-        simplesort: 'positionKey'
-        simplesortDesc: true
-        limit: padding
-      remote:
-        discussion_id: @discussion.id
-        depth: event.depth
-        position_key_lt: event.positionKey
-        order_by: 'position_key'
-        order_desc: 1
+    positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
 
     @addRule
+      name: "load before (prefix #{positionKeyPrefix})"
       local:
         find:
           discussionId: @discussion.id
-          depth: event.depth + 1
-          positionKey: {$jlt: event.positionKey}
+          positionKey:
+            $jlt: event.positionKey
+            $regex: (positionKeyPrefix && "^#{positionKeyPrefix}") || undefined
         simplesort: 'positionKey'
         simplesortDesc: true
         limit: padding
       remote:
         discussion_id: @discussion.id
-        depth: event.depth + 1
         position_key_lt: event.positionKey
-        position_lt: 3
+        position_key_sw: positionKeyPrefix || null
         order_by: 'position_key'
         order_desc: 1
 
@@ -195,7 +184,7 @@ export default class ThreadLoader
       local:
         find:
           discussionId: @discussion.id
-          positionKey: {$gte: positionKey}
+          positionKey: {$jgte: positionKey}
         simplesort: 'positionKey'
         limit: padding
       remote:
@@ -203,22 +192,22 @@ export default class ThreadLoader
         position_key_gte: positionKey
         order_by: 'position_key'
         per: padding
-
-    @rules.push
-      name: "positionKey rollback"
-      local:
-        find:
-          discussionId: @discussion.id
-          positionKey: {$lt: positionKey}
-        simplesort: 'positionKey'
-        simplesortDesc: true
-        limit: 1
-      remote:
-        discussion_id: @discussion.id
-        position_key_lt: positionKey
-        order_by: 'position_key'
-        order_desc: 1
-        per: 1
+    #
+    # @rules.push
+    #   name: "positionKey rollback"
+    #   local:
+    #     find:
+    #       discussionId: @discussion.id
+    #       positionKey: {$lt: positionKey}
+    #     simplesort: 'positionKey'
+    #     simplesortDesc: true
+    #     limit: 1
+    #   remote:
+    #     discussion_id: @discussion.id
+    #     position_key_lt: positionKey
+    #     order_by: 'position_key'
+    #     order_desc: 1
+    #     per: 1
 
   addLoadSequenceIdRule: (sequenceId) ->
     @titleKey = 'strand_nav.from_sequence_id'
