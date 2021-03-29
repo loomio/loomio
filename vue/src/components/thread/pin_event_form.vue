@@ -1,5 +1,6 @@
 <script lang="coffee">
 import Flash from '@/shared/services/flash'
+import EventBus from '@/shared/services/event_bus'
 import { onError } from '@/shared/helpers/form'
 
 export default
@@ -20,7 +21,7 @@ export default
       @event.pin(@title)
       .then =>
         Flash.success('activity_card.event_pinned')
-        @close()
+        EventBus.$emit('closeModal')
       .catch onError(@event)
 
 </script>

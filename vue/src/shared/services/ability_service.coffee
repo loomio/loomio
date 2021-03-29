@@ -53,7 +53,7 @@ export default new class AbilityService
 
   canPinEvent: (event) ->
     !event.model().discardedAt &&
-    !event.pinned && event.isSurface() && @canEditThread(event.discussion())
+    !event.pinned && @canEditThread(event.discussion())
 
   canUnpinEvent: (event) ->
     event.pinned && @canEditThread(event.discussion())
