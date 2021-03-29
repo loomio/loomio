@@ -132,24 +132,16 @@ export default
       document.addEventListener 'touchend', onTouchEnd
 
     goToPosition: (position) ->
-      unless (@$route.query && @$route.query.p == position)
+      unless (@$route.query && @$route.query.k == position)
         @$router.replace(query: {k: @keys[position]}, params: {sequence_id: null, comment_id: null}).catch (err) => {}
 
     offsetFor: (position) ->
       position * @unitHeight
 
     positionFor: (offset) ->
-
       position = parseInt(offset / @unitHeight)  - 1
       console.log 'offset', offset, 'position', position, @keys[position]
-      position = if position < 0
-          0
-        else if position > @keys.length
-          @keys.length
-        else
-          position
-
-      position
+      ((position < 0) && 0) || position
 
   watch:
     'discussion.newestFirst':
