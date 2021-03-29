@@ -5,7 +5,7 @@ import RangeSet         from '@/shared/services/range_set'
 import EventBus         from '@/shared/services/event_bus'
 import Session from '@/shared/services/session'
 
-padding = 20
+padding = 10
 
 export default class ThreadLoader
   constructor: (discussion) ->
