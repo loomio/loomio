@@ -62,7 +62,6 @@ export default
 
       if @$route.query.k
         @loader.addLoadPositionKeyRule(@$route.query.k)
-        console.log '1', @$route.query.k
         @loader.focusAttrs = {positionKey: @$route.query.k}
 
       if @$route.query.p
@@ -98,6 +97,7 @@ export default
           @loader.focusAttrs = {oldest: 1}
 
       # console.log '2', @$route, rules
+      @loader.addContextRule()
       console.log 'fetching'
       @loader.fetch().then =>
         console.log 'scrolling to', @loader.focusAttrs

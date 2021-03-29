@@ -108,7 +108,6 @@ export default class ThreadLoader
       remote:
         discussion_id: @discussion.id
         position_key_gt: event.positionKey
-        # position_key_prefix: @positionKeyPrefix(event)
         depth_lte: event.depth + 2
         depth_gte: event.depth
         order_by: 'position_key'
@@ -197,12 +196,29 @@ export default class ThreadLoader
         find:
           discussionId: @discussion.id
           positionKey: {$gte: positionKey}
-        simplesort: 'sequenceId'
+        simplesort: 'positionKey'
         limit: padding
       remote:
         discussion_id: @discussion.id
         position_key_gte: positionKey
-        order: 'sequence_id'
+        order_by: 'position_key'
+        per: padding
+
+    @rules.push
+      name: "positionKey rollback"
+      local:
+        find:
+          discussionId: @discussion.id
+          positionKey: {$lt: positionKey}
+        simplesort: 'positionKey'
+        simplesortDesc: true
+        limit: 1
+      remote:
+        discussion_id: @discussion.id
+        position_key_lt: positionKey
+        order_by: 'position_key'
+        order_desc: 1
+        per: 1
 
   addLoadSequenceIdRule: (sequenceId) ->
     @titleKey = 'strand_nav.from_sequence_id'
@@ -221,10 +237,6 @@ export default class ThreadLoader
 
   addLoadNewestRule: () ->
     @titleKey = 'strand_nav.newest_first'
-    # @rules.push
-    #   local:
-    #     find:
-    #       id: @discussion.createdEvent().id
     @rules.push
       local:
         find:
@@ -240,20 +252,17 @@ export default class ThreadLoader
         order_by: 'sequence_id'
         order_desc: true
 
+  addContextRule: ->
+    @rules.push
+      name: 'context'
+      local:
+        find:
+          id: @discussion.createdEvent().id
+
   addLoadOldestRule: ->
     @titleKey = 'strand_nav.oldest_first'
-    # @rules.push
-    #   name: 'context'
-    #   local:
-    #     find:
-    #       id: @discussion.createdEvent().id
-    #   # remote:
-    #   #   discussion_id: @discussion.id
-    #   #   order_by: 'sequence_id'
-    #   #   per: 1
-
     @rules.push
-      name: 'oldest first'
+      name: 'oldest'
       local:
         find:
           discussionId: @discussion.id
@@ -274,7 +283,7 @@ export default class ThreadLoader
 
     # if @discussion.readItemsCount() > 0 && @discussion.unreadItemsCount() > 0
     @rules.push
-      name: {path: "thread_loader.new_to_you", args: {since: @discussion.lastReadAt}}
+      name: {path: "strand_nav.new_to_you"}
       local:
         find:
           discussionId: @discussion.id
