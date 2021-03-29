@@ -85,15 +85,16 @@ export default
         # console.log "ranges", @discussion.ranges
         # console.log "readRanges", @discussion.readRanges
         # console.log "@discussion.unreadItemsCount()", @discussion.unreadItemsCount()
+        console.log 'no rules'
         if @discussion.lastReadAt
           if @discussion.unreadItemsCount() == 0
-            @loader.addLoadNewestFirstRule()
+            @loader.addLoadNewestRule()
             @loader.focusAttrs = {newest: 1}
           else
             @loader.addLoadUnreadRule()
             @loader.focusAttrs = {unread: 1}
         else
-          @loader.addLoadOldestFirstRule()
+          @loader.addLoadOldestRule()
           @loader.focusAttrs = {oldest: 1}
 
       # console.log '2', @$route, rules

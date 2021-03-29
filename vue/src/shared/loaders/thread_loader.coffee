@@ -19,12 +19,12 @@ export default class ThreadLoader
     @focusAttrs = {}
     @visibleKeys = {}
     @collapsed = Vue.observable({})
-    @rules.push
-      name: "my stuff"
-      local:
-        find:
-          discussionId: @discussion.id
-          actorId: Session.user().id
+    # @rules.push
+    #   name: "my stuff"
+    #   local:
+    #     find:
+    #       discussionId: @discussion.id
+    #       actorId: Session.user().id
 
   setVisible: (isVisible, event) ->
     event.markAsRead() unless @visibleKeys.hasOwnProperty(event.positionKey)
@@ -183,10 +183,12 @@ export default class ThreadLoader
           discussionId: @discussion.id
           depth: 1
           position: {$gte: position}
+        simplesort: 'positionKey'
+        limit: padding
       remote:
         discussion_id: @discussion.id
         from_sequence_id_of_position: position
-        order: 'sequence_id'
+        order: 'position_key'
 
   addLoadPositionKeyRule: (positionKey) ->
     @rules.push
@@ -194,7 +196,6 @@ export default class ThreadLoader
       local:
         find:
           discussionId: @discussion.id
-          depth: 1
           positionKey: {$gte: positionKey}
         simplesort: 'sequenceId'
         limit: padding
@@ -218,12 +219,12 @@ export default class ThreadLoader
         discussion_id: @discussion.id
         order: 'sequence_id'
 
-  addLoadNewestFirstRule: () ->
+  addLoadNewestRule: () ->
     @titleKey = 'strand_nav.newest_first'
-    @rules.push
-      local:
-        find:
-          id: @discussion.createdEvent().id
+    # @rules.push
+    #   local:
+    #     find:
+    #       id: @discussion.createdEvent().id
     @rules.push
       local:
         find:
@@ -239,17 +240,17 @@ export default class ThreadLoader
         order_by: 'sequence_id'
         order_desc: true
 
-  addLoadOldestFirstRule: ->
+  addLoadOldestRule: ->
     @titleKey = 'strand_nav.oldest_first'
-    @rules.push
-      name: 'context'
-      local:
-        find:
-          id: @discussion.createdEvent().id
-      # remote:
-      #   discussion_id: @discussion.id
-      #   order_by: 'sequence_id'
-      #   per: 1
+    # @rules.push
+    #   name: 'context'
+    #   local:
+    #     find:
+    #       id: @discussion.createdEvent().id
+    #   # remote:
+    #   #   discussion_id: @discussion.id
+    #   #   order_by: 'sequence_id'
+    #   #   per: 1
 
     @rules.push
       name: 'oldest first'
