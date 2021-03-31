@@ -97,7 +97,7 @@ export default
           @loader.focusAttrs = {oldest: 1}
 
       # console.log '2', @$route, rules
-      @loader.addContextRule()
+      # @loader.addContextRule()
       console.log 'fetching'
       @loader.fetch().then =>
         console.log 'scrolling to', @loader.focusAttrs
