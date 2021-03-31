@@ -252,7 +252,7 @@ class User < ApplicationRecord
   end
 
   def name_and_email
-    "#{name} <#{email}>"
+    "\"#{name}\" <#{email}>"
   end
 
   # Provide can? and cannot? as methods for checking permissions
