@@ -122,12 +122,13 @@ class PollService
                  inviter: actor,
                  volume: volumes[user.id] || DiscussionReader.volumes[:normal],
                  latest: true,
-                 reason_format: user.default_format)
+                 reason_format: user.default_format,
+                 created_at: Time.zone.now)
     end
 
-    Stance.where(poll_id: poll.id, participant_id: users.pluck(:id)).update_all(latest: false)
     Stance.import(new_stances, on_duplicate_key_ignore: true)
 
+    poll.reset_latest_stances!
     poll.update_voters_count
     poll.update_undecided_voters_count
     poll.update_stance_data
