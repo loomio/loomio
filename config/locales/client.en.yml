@@ -2214,6 +2214,7 @@ en:
       markdown: Markdown (for Mattermost, Zapier and others)
       microsoft: Microsoft Teams
       slack: Slack
+      discord: Discord
     subtitle: Connect to Loomio to the rest of your tools with our integration API and webhooks
     we_have_guides: |
       See our <a href="{{url}}" target="_blank">webhook setup guides</a> for help connecting your service.
