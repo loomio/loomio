@@ -117,7 +117,7 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    ahoy_email (2.0.2)
+    ahoy_email (2.0.3)
       actionmailer (>= 5)
       addressable (>= 2.3.2)
       nokogiri
@@ -312,7 +312,7 @@ GEM
     httparty (0.18.1)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
-    i18n (1.8.9)
+    i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     icalendar (2.7.1)
       ice_cube (~> 0.16)
@@ -605,7 +605,7 @@ DEPENDENCIES
   active_record_extended
   activeadmin (~> 2.9.0)
   activerecord-import (= 1.0.8)
-  ahoy_email (~> 2.0.2)
+  ahoy_email (~> 2.0.3)
   ahoy_matey (~> 3.2.0)
   aws-sdk-s3
   bootsnap
