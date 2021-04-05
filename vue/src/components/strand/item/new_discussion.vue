@@ -58,8 +58,21 @@ export default
 
 <template lang="pug">
 .strand-new-discussion.context-panel.lmo-action-dock-wrapper#context(:aria-label="$t('context_panel.aria_intro', {author: discussion.authorName(), group: discussion.group().fullName})" v-observe-visibility="{callback: viewed, once: true}")
-  discussion-privacy-badge.mr-2(:discussion="discussion")
-  tags-display(:tags="discussion.tags()")
+  v-layout.ml-n2(align-center wrap)
+    v-breadcrumbs.context-panel__breadcrumbs(:items="groups" divider=">")
+    tags-display(:tags="discussion.tags()")
+    v-spacer
+    span(aria-label="Thread privacy")
+      span.nowrap(v-show='discussion.private')
+        i.mdi.mdi-lock-outline
+        span.text--secondary(v-t="'common.privacy.private'")
+      span.nowrap(v-show='!discussion.private')
+        i.mdi.mdi-earth
+        span.text--secondary(v-t="'common.privacy.public'")
+
+
+  //- discussion-privacy-badge.mr-2(:discussion="discussion")
+  //- tags-display(:tags="discussion.tags()")
   //- strand-members.my-1(:discussion="discussion")
     //- v-spacer
     //- //- span(v-for="group in groups")
@@ -67,7 +80,7 @@ export default
     //- .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'" v-if='discussion.closedAt')
     //-   v-tooltip(bottom) {{ exactDate(discussion.closedAt) }}
   //- strand-item-headline(:event="event" :eventable="discussion")
-  strand-title.pt-2(:discussion="discussion")
+  strand-title.pt-2.pb-2(:discussion="discussion")
 
   .mb-4
     router-link(:to="urlFor(discussion.author())" title="Thread author") {{discussion.authorName()}}
