@@ -21,7 +21,7 @@ class StanceService
     actor.ability.authorize! :vote_in, stance.poll
 
     if params.keys.any?
-      params.delete(:poll_id)
+      params.delete(:poll_id) if stance.poll.present?
       stance.stance_choices.clear
       stance.assign_attributes_and_files(params)
     end
