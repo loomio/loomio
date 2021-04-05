@@ -15,12 +15,15 @@ export default
       @isHidden = true
 
   computed:
+    isAdmin: ->
+      @group.adminsInclude(Session.user())
+
     isOldPlan: ->
       plans = "pp-basic-monthly pp-pro-monthly ap-active-monthly npap-active-monthly pp-basic-annual pp-pro-annual pp-community-annual ap-active-annual ap-community-annual npap-active-annual small-monthly small-yearly"
       plans.includes(@group.subscription.plan)
 </script>
 <template lang="pug">
-v-alert(outlined color="accent" dense v-if="isOldPlan && !isHidden")
+v-alert(outlined color="accent" dense v-if="isAdmin && isOldPlan && !isHidden")
   v-layout(align-center)
     div.pr-1
       span(v-t="'current_plan_button.is_old_plan'")
