@@ -47,8 +47,8 @@ export default class GroupModel extends BaseModel
     HasTranslations.apply @
 
   relationships: ->
-    @hasMany 'discussions', find: {discardedAt: {$ne: null}}
-    @hasMany 'polls', find: {discardedAt: {$ne: null}}
+    @hasMany 'discussions', find: {discardedAt: null}
+    @hasMany 'polls', find: {discardedAt: null}
     @hasMany 'membershipRequests'
     @hasMany 'memberships'
     @hasMany 'allDocuments', from: 'documents', with: 'groupId', of: 'id'

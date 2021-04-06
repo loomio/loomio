@@ -912,7 +912,6 @@ ca:
     edit_subgroup_heading: Edita la configuració del subgrup
     group_name: Nom del grup
     handle: Gestionar
-    group_handle_placeholder: "URL i correu electrònic, per exemple: loomio.org/gestiona i gestiona@loomio.org"
     start_organization_heading: Nova organització
     edit_organization_heading: Edita la configuració de l'organització
     group_name_placeholder: 'Quin és el nom del vostre grup?'
@@ -1050,8 +1049,6 @@ ca:
     membership:
       title: Elimina un membre
       message: Esteu segur que voleu eliminar a {{name}}?
-      impact_for_group: Aquesta acció els privarà l'accés als fils i decisions del grup.
-      impact_for_subgroups: Aquesta acció també els privarà l'accés als subgrups d'aquest grup.
       flash: Membre eliminat.
       submit: Elimina un membre
   memberships_panel:
@@ -1875,9 +1872,7 @@ ca:
     sign_in: Inicia la sessió
     continue: Continua
     create_account: Crea un compte
-    sign_up_as: Registreu-vos com {{email}}
     sign_in_as: Inicia la sessió com {{name}}
-    continue_with_provider: Inicia la sessió amb {{provider}}
     continue_with_email: Continua amb el correu electrònic
     or_enter_your_email: 'O introduïu la vostra adreça de correu electrònic '
     enter_your_name: Introduïu el vostre nom
@@ -1918,7 +1913,6 @@ ca:
     check_your_email: Comprova el teu correu electrònic!
     login_link_sent: "Hem enviat un correu a {{email}}."
     instructions: "Cliqueu per iniciar sessió, o introduïu el codi de més avall."
-    too_many_attempts: "Massa intents; proveu d'iniciar sessió clicant a l'enllaç del correu electrònic ."
     invalid_code: "El codi no coincideix. Comproveu el correu i proveu-ho de nou."
     password_link_sent: "Hem enviat un correu a {{email}} amb instruccions per establir la vostra contrasenya."
     reactivate_link_sent: "Hem enviat un correu amb instruccions per reactivar el vostre compte."

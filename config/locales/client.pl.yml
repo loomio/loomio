@@ -930,7 +930,6 @@ pl:
     group_settings: Ustawienia grupy
     group_name: Nazwa grupy
     handle: Adres
-    group_handle_placeholder: "Adres URL i e-mail grupy, np. loomio.org/adres i adres@loomio.org"
     start_organization_heading: Nowa grupa
     edit_organization_heading: Edytuj ustawienia organizacji
     group_name_placeholder: ' Jak nazywa się Twoja grupa?'
@@ -1068,8 +1067,6 @@ pl:
     membership:
       title: Usuń członka
       message: Czy na pewno chcesz usunąć {{name}}?
-      impact_for_group: Spowoduje to usunięcie ich dostępu do wszystkich wątków i decyzji w grupie.
-      impact_for_subgroups: Spowoduje to również usunięcie ich dostępu do wszystkich podgrup tej grupy.
       flash: Członek usunięty
       submit: Usuń członka
   memberships_panel:
@@ -1882,9 +1879,7 @@ pl:
     sign_in: Zaloguj się
     continue: Kontynuuj
     create_account: Utwórz konto
-    sign_up_as: Zarejestruj się jako {{email}}
     sign_in_as: Zaloguj się jako {{name}}
-    continue_with_provider: Użyj konta {{provider}}
     continue_with_email: Kontynuuj za pomocą adresu e-mail
     or_enter_your_email: Lub wprowadź swój adres e-mail
     enter_your_name: 'Wprowadź imię '
@@ -1925,7 +1920,6 @@ pl:
     check_your_email: 'Sprawdź skrzynkę e-mail! '
     login_link_sent: "Wysłaliśmy Ci wiadomość e-mail na adres {{email}}."
     instructions: "Kliknij link, aby się zalogować, lub wprowadź kod:"
-    too_many_attempts: "Zbyt dużo prób; spróbuj kliknąć link w wiadomości e-mail, aby się zalogować."
     invalid_code: "Przepraszamy, ten kod nie pasuje. Sprawdź e-mail i spróbuj ponownie."
     password_link_sent: "Wysłaliśmy wiadomość e-mail na adres {{email}} z instrukcjami jak ustawić hasło. "
     reactivate_link_sent: "Wysłaliśmy Ci wiadomość e-mail z instrukcjami dotyczącymi ponownej aktywacji konta "

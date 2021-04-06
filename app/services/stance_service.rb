@@ -12,7 +12,6 @@ class StanceService
 
   # is used for both create and update
   def self.create(stance:, actor:, params: {}, force_create: false)
-    params.delete(:poll_id)
 
     stance = Stance.where(
       poll_id: stance.poll_id,
@@ -21,9 +20,11 @@ class StanceService
 
     actor.ability.authorize! :vote_in, stance.poll
 
-    stance.stance_choices = [] if stance.persisted?
-
-    stance.assign_attributes_and_files(params)
+    if params.keys.any?
+      params.delete(:poll_id) if stance.poll.present?
+      stance.stance_choices.clear
+      stance.assign_attributes_and_files(params)
+    end
 
     return false unless stance.valid?
 

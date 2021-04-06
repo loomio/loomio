@@ -784,7 +784,6 @@ uk:
     group_name: Назва групи
     subgroup_name: Назва підгрупи
     handle: Регулювання
-    group_handle_placeholder: "Для URL та пошти, наприклад loomio.org/handle та handle@loomio.org"
     start_organization_heading: Нова організація
     edit_organization_heading: Редагувати налаштування організації
     group_name_placeholder: 'Назва вашої групи?'
@@ -911,8 +910,6 @@ uk:
     membership:
       title: Видалити учасника(цю)
       message: Ви дійсно хочете видалити {{name}}?
-      impact_for_group: Це забере в них право доступу до всіх тем та рішень у групі.
-      impact_for_subgroups: Це також забере в них право доступу до всіх підгруп цієї групи.
       flash: Учасника видалено
       submit: Видалити учасника(цю)
   memberships_panel:
@@ -1642,7 +1639,6 @@ uk:
     continue: Продовжити
     create_account: Створити обліковий запис
     sign_in_as: Увійти як {{name}}
-    continue_with_provider: Увійти через {{provider}}
     or_enter_your_email: Або введіть свою адресу електронної пошти
     enter_your_name: Введіть ваше ім'я
     invitation_required: Вам потрібно запрошення, щоб створити обліковий запис.
@@ -1678,7 +1674,6 @@ uk:
     check_your_email: Перевірте пошту
     login_link_sent: "Ми надіслали лист на адресу {{email}}."
     instructions: "Щоб увійти натисніть посилання або введіть код нижче:"
-    too_many_attempts: "Забагато спроб; для входу натисніть посилання в листі."
     invalid_code: "На жаль, цей код не співпадає. Перевірте пошту та повторіть спробу."
     password_link_sent: "Ми відправили лист на адресу {{email}} з інструкціями як встановити пароль."
     reactivate_link_sent: "Ми надіслали вам електронний лист з інструкціями щодо повторної активації вашого облікового запису"

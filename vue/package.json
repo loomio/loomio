@@ -16,10 +16,10 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "@sentry/integrations": "^6.2.3",
-    "@sentry/browser": "^6.2.3",
-    "@sentry/tracing": "^6.2.3",
-    "activestorage": "^5.2.2",
+    "@sentry/integrations": "^6.2.5",
+    "@sentry/browser": "^6.2.5",
+    "@sentry/tracing": "^6.2.5",
+    "activestorage": "^5.2.5",
     "ahoy.js": "^0.3.8",
     "core-js": "^2.6.11",
     "date-fns": "2.19.0",
@@ -52,7 +52,7 @@
     "vue-router": "^3.5.1",
     "vue-slicksort": "^1.2.0",
     "vue2-touch-events": "^3.2.1",
-    "vuetify": "2.4.8"
+    "vuetify": "2.4.9"
   },
   "devDependencies": {
     "@mdi/font": "^5.9.55",

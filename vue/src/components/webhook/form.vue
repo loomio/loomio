@@ -17,6 +17,7 @@ export default
       {text: @$t('webhook.formats.markdown'), value: "markdown"}
       {text: @$t('webhook.formats.microsoft'), value: "microsoft"}
       {text: @$t('webhook.formats.slack'), value: "slack"}
+      {text: @$t('webhook.formats.discord'), value: "discord"}
     ]
 
   methods:

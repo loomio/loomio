@@ -227,11 +227,14 @@ class Poll < ApplicationRecord
   end
 
   def reset_latest_stances!
-    Stance.where("id IN
-      (SELECT DISTINCT ON (participant_id) id
-       FROM stances
-       WHERE poll_id = #{id}
-       ORDER BY participant_id, created_at DESC)").update_all(latest: true)
+    self.transaction do
+      self.stances.update_all(latest: false)
+      Stance.where("id IN
+        (SELECT DISTINCT ON (participant_id) id
+         FROM stances
+         WHERE poll_id = #{id}
+         ORDER BY participant_id, created_at DESC)").update_all(latest: true)
+    end
   end
 
   def update_stance_data

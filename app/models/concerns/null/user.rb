@@ -29,10 +29,6 @@ module Null::User
     [:experiences]
   end
 
-  def zero_methods
-    [:pending_invitation_limit]
-  end
-
   def none_methods
     {
       notifications: :notification,

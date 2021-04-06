@@ -122,12 +122,13 @@ class PollService
                  inviter: actor,
                  volume: volumes[user.id] || DiscussionReader.volumes[:normal],
                  latest: true,
-                 reason_format: user.default_format)
+                 reason_format: user.default_format,
+                 created_at: Time.zone.now)
     end
 
-    Stance.where(poll_id: poll.id, participant_id: users.pluck(:id)).update_all(latest: false)
     Stance.import(new_stances, on_duplicate_key_ignore: true)
 
+    poll.reset_latest_stances!
     poll.update_voters_count
     poll.update_undecided_voters_count
     poll.update_stance_data
@@ -175,6 +176,7 @@ class PollService
 
   def self.expire_lapsed_polls
     Poll.lapsed_but_not_closed.each do |poll|
+      next if poll.closed_at
       do_closing_work(poll: poll)
       EventBus.broadcast('poll_expire', poll)
       Events::PollExpired.publish!(poll)
@@ -184,7 +186,7 @@ class PollService
   def self.do_closing_work(poll:)
     return if poll.closed_at
     poll.stances.update_all(participant_id: nil) if poll.anonymous
-    poll.update(closed_at: Time.now)
+    poll.update_attribute(:closed_at, Time.now)
   end
 
   def self.add_options(poll:, params:, actor:)

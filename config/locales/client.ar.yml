@@ -919,7 +919,6 @@ ar:
     edit_subgroup_heading: تعديل إعدادات المجموعة الفرعية
     group_name: اسم الفريق
     handle: عالج موضوعا
-    group_handle_placeholder: "لعنوان URL والبريد الإلكتروني ، على سبيل المثال loomio.org/handle و handle@loomio.org"
     start_organization_heading: منظمة جديدة
     edit_organization_heading: تحرير إعدادات المنظمة
     group_name_placeholder: 'ما اسم مجموعتك؟'
@@ -1057,8 +1056,6 @@ ar:
     membership:
       title: إزالة عضو
       message: هل أنت متأكد أنك تريد إزالة {{اسم}}؟
-      impact_for_group: سيؤدي هذا إلى إزالة وصولهم إلى جميع سلاسل الرسائل والقرارات في المجموعة.
-      impact_for_subgroups: سيؤدي هذا أيضًا إلى إزالة وصولهم إلى جميع المجموعات الفرعية لهذه المجموعة.
       flash: تمت إزالة العضو
       submit: إزالة عضو
   memberships_panel:
@@ -1870,9 +1867,7 @@ ar:
     sign_in: تسجيل الدخول
     continue: استمر
     create_account: إنشاء حساب
-    sign_up_as: سجل باسم {{البريد الالكتروني}}
     sign_in_as: تسجيل الدخول باسم {{الاسم}}
-    continue_with_provider: تسجيل الدخول مع {{المانح}}
     continue_with_email: تواصل مع البريد الإلكتروني
     or_enter_your_email: أو أدخل عنوان بريدك الإلكتروني
     enter_your_name: ادخل اسمك
@@ -1913,7 +1908,6 @@ ar:
     check_your_email: تحقق من بريدك الالكتروني!
     login_link_sent: "لقد أرسلنا بريدًا إلكترونيًا إلى {{البريد الالكتروني}}."
     instructions: "انقر فوق الارتباط لتسجيل الدخول ، أو أدخل الرمز أدناه:"
-    too_many_attempts: "محاولات كثيرة؛ حاول النقر فوق الارتباط الموجود في البريد الإلكتروني لتسجيل الدخول."
     invalid_code: "عذرا ، هذا الرمز غير متطابق. تحقق من البريد الإلكتروني وحاول مرة أخرى."
     password_link_sent: "لقد أرسلنا بريدًا إلكترونيًا إلى {{email}} يحتوي على إرشادات حول كيفية تعيين كلمة المرور الخاصة بك."
     reactivate_link_sent: "لقد أرسلنا إليك بريدًا إلكترونيًا يحتوي على إرشادات لإعادة تنشيط حسابك"

@@ -930,7 +930,6 @@ nl_NL:
     group_settings: Groepsinstellingen
     group_name: Groepsnaam
     handle: Gebruikersnaam
-    group_handle_placeholder: "Voor de URL en email, bv loomio.org/gebruikersnaam en gebruikersnaam@loomio.org"
     start_organization_heading: Nieuwe organisatie
     edit_organization_heading: Bewerk organisatie instellingen
     group_name_placeholder: 'Wat is de naam van je groep?'
@@ -1068,8 +1067,6 @@ nl_NL:
     membership:
       title: Verwijder lid
       message: Ben je zeker dat je {{name}} wil verwijderen?
-      impact_for_group: Dit zal hun toegang tot alle borden en beslissingen in de groep verwijderen.
-      impact_for_subgroups: Dit zal ook hun toegang tot alle subgroepen van deze groep verwijderen.
       flash: Lid verwijderd
       submit: Verwijder lid
   memberships_panel:
@@ -1884,9 +1881,7 @@ nl_NL:
     sign_in: Inloggen
     continue: Ga verder
     create_account: Account aanmaken
-    sign_up_as: Schrijf in als {{email}}
     sign_in_as: Log in als {{name}}
-    continue_with_provider: Schrijf in met {{provider}}
     continue_with_email: Ga door met e-mail
     or_enter_your_email: Of, voeg je emailadres in
     enter_your_name: Typ je naam
@@ -1927,7 +1922,6 @@ nl_NL:
     check_your_email: Check je e-mails!
     login_link_sent: "We hebben een email verstuurd naar {{email}}."
     instructions: "Klik de link om aan te melden, of gebruik onderstaande code"
-    too_many_attempts: "Te veel pogingen; probeer de link in de e-mail om aan te melden."
     invalid_code: "Sorry, die code klopte niet. Controleer de e-mail en probeer het nog een keer."
     password_link_sent: "We hebben je een e-mail gestuurd naar {{email}} met instructies om je wachtwoord in te stellen."
     reactivate_link_sent: "We hebben je een e-mail gestuurd met instructies om je account weer te activeren"

@@ -221,12 +221,6 @@ class User < ApplicationRecord
     identities.find_by(identity_type: type)
   end
 
-  def pending_invitation_limit
-    ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i +
-    self.invited_memberships.accepted.count        -
-    self.invited_memberships.pending.count
-  end
-
   def first_name
     name.split(' ').first
   end
@@ -252,7 +246,7 @@ class User < ApplicationRecord
   end
 
   def name_and_email
-    "#{name} <#{email}>"
+    "\"#{name}\" <#{email}>"
   end
 
   # Provide can? and cannot? as methods for checking permissions

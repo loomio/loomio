@@ -1,41 +1,79 @@
 it:
   explore:
     header: Esplora i gruppi pubblici
+  saml_providers:
+    invitation_created:
+      success: "Successo! Controlla la tua %{email}casella di posta per un link a cui partecipare %{group_name}."
+      error: "Il provider SAML non è stato in grado di eseguire l'autenticazione %{email} per %{group_name}."
   activerecord:
     errors:
       messages:
         blank: non può essere vuoto
         invalid: non è un valore valido
   errors:
+    clear_cache: "Rilevato problema di caricamento. Tenere premuto MAIUSC e premere ricarica o cancellare la cache del browser"
+    400:
+      title: Richiesta sfortunata
+      body: Scusa, non siamo stati in grado di capire quella richiesta
+    403:
+      title: Proibito
+      body: Non è consentito accedere a questa pagina. Potrebbe essere necessario accedere.
     404:
       title: Non trovato
+      body: Scusa, la pagina che stavi cercando non esiste. È possibile che l'indirizzo sia stato digitato in modo non corretto o che la pagina sia stata spostata o eliminata.
     410:
+      title: Via
       body: Questa pagina non esiste più
     417:
       title: Browser incompatible
+      body: |
+          Per favore <a href="https://browser-update.org/update.html?force_outdated=true">aggiorna il browser</a> per utilizzare Loomio
+    422:
+      title: Entità non elaborabile
+      body: La modifica che volevi è stata respinta. Forse hai cercato di cambiare qualcosa a cui non avevi accesso.
     429:
       title: Troppi domandi
+      body: Scusa, hai superato il numero massimo di richieste consentite al minuto per questa azione. Attendi un po 'e riprova.
+    500:
+      title: Errore interno del server
+      body: Ci dispiace, ma qualcosa è andato storto. Ci è stato notificato questo problema e lo daremo un'occhiata a breve.
     noscript: Loomio richiede Javascript per funzionare! Per favore abilita Javascript nel tuo browser per poter continuare
+    upgrade_browser: |
+        Oh oh! Il tuo browser web è troppo vecchio e Loomio potrebbe non funzionare correttamente. <a href="https://browser-update.org/update.html">Aggiorna il browser.</a>
     return_home: Torna alla home
     not_found: 404 file non trovato
     messages:
       email: indirizzo mail non valido
       spoofed_media_type: I contenuti di questo file non corrispondono al suo nome file
   group:
+    error:
+      handle_must_begin_with_parent_handle: "Deve iniziare con%{parent_handle}-"
     stats:
+      group_stats: Statistiche di gruppo
+      org_stats: Statistiche dell'organizzazione (inclusi i sottogruppi)
+      visits: Visite
       members: Membri
       subgroups: Sottogruppi
       threads: Discussioni
       votes: Voti
       comments: Commenti
+      general: Generale
+      polls: Sondaggi
       poll_types:
         proposal: Proposta
+        count: Conteggio
+        choose: Scegliere
+        allocate: Assegnare
+        score: Punteggio
         rank: Posizione
         time: Sondaggio per incontro
   user:
     deleted_user: "Utente eliminato"
     placeholder_name: "Utente invitato"
     error:
+      sign_in_required_html: |
+          È necessario avere effettuato l'accesso per procedere.
+          <a href="/dashboard" target="_blank">Accedi</a> quindi ricarica questa pagina per continuare.
       recaptcha: "Non siamo stati in grado di verificare che tu non sia un robot. Per favore riprova ancora!"
       bad_login: "Spiacente, ma la password non corrisponde con quella che abbiamo archiviato."
       username_must_be_alphanumeric: "I nomi utente devono avere solo lettere minuscole e numeri"
@@ -87,16 +125,31 @@ it:
     motion:
       must_close_in_future: La proposta sarà presto chiusa.
       one_at_a_time: C'è un altra proposta attiva.
+  subscriptions:
+    active: Attivo
+    inactive: Inattivo
+  base_mailer:
+    via_loomio: '%{name}(via %{site_name})'
   user_mailer:
     group_export_ready:
+      subject: Esportazione dati di gruppo per %{group_name}
       body_html: |
           Scarica i dati del tuo gruppo <a href="%{url}">qui</a>. Tieni presente che questo link scade tra una settimana.
+    deactivated:
+      subject: "Il tuo %{site_name}account utente è stato disattivato."
+      body_html: |
+          Tu oppure un utente con accesso al proprio account ha disattivato l'account utente Loomio. <p>
+          <p>Tutti i dati personali sono stati rimossi dal sistema.</p>
+          <p>Se si desidera recuperare l'account utente e i commenti e i voti associati, contatta il supporto tecnico e il riferimento: %{recovery_code}</p>
     accounts_merged:
       subject: "Gli accounts del tuo sito %{site_name} sono stati fusi."
       body_html: |
           Ciao, %{name}
           I tuoi due accounts su Loomio sono stati fusi in un solo account.
           Per accedere a Loomio da ora, usa l'indirizzo email <strong>%{email}</strong> quando ti autentichi.
+    merge_verification:
+      confirm_page:
+        merge: Unisci account
   email:
     common:
       or_enter_code: Oppure inserisci il codice qui sotto
