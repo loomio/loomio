@@ -851,8 +851,6 @@ hu:
     membership:
       title: Távolítsa el a tagot
       message: Biztosan eltávolítani akarja a(z) {{name}} fájlt?
-      impact_for_group: Ezzel megszűnik a csoport összes témát és döntéseikhez való hozzáférésük.
-      impact_for_subgroups: Ezzel megszűnik a csoport összes alcsoportjához való hozzáférésük.
       flash: Tag eltávolítva
       submit: Távolítsa el a tagot
   memberships_panel:
@@ -1549,7 +1547,6 @@ hu:
     continue: Folytatni
     create_account: Fiók létrehozása
     sign_in_as: 'Bejelentkezés itt: {{name}}'
-    continue_with_provider: Jelentkezzen be a(z) {{provider}} segítségével
     or_enter_your_email: Vagy írja be az e-mail címét
     enter_your_name: Add meg a neved
     invitation_required: A fiók létrehozásához meghívásra van szüksége.
@@ -1581,7 +1578,6 @@ hu:
     check_your_email: Nézd meg az e-mailedet!
     login_link_sent: "Küldtünk egy e-mailt a(z) {{email}} címre."
     instructions: "Kattints a hivatkozásra a bejelentkezéshez, vagy írjd be az alábbi kódot:"
-    too_many_attempts: "Túl sok próbálkozás; próbálkozzon kattintással az e-mailben a bejelentkezéshez."
     invalid_code: "Sajnos ez a kód nem egyezett. Ellenőrizze az e-mailt, és próbálja újra."
     password_link_sent: "Küldtünk egy e-mailt a(z) {{email}} címre, amely leírja a jelszó beállításának menetét."
     reactivate_link_sent: "Küldtünk egy e-mailt az Ön fiókjának újraaktiválására vonatkozó utasításokkal"

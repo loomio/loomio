@@ -888,7 +888,6 @@ de:
     group_name: Gruppen-Name
     subgroup_name: Untergruppenname
     handle: Kürzel
-    group_handle_placeholder: "Für URL und E-Mail, z. B. loomio.org/kuerzel und kuerzel@loomio.org"
     start_organization_heading: Neue Organisation
     edit_organization_heading: Organisationseinstellungen ändern
     group_name_placeholder: 'Wie heißt deine Gruppe?'
@@ -1033,8 +1032,6 @@ de:
     membership:
       title: Mitglied entfernen
       message: Bist du sicher, dass du {{name}} entfernen willst?
-      impact_for_group: Diese Person wird keinen Zugang zu allen Diskussionen und Entscheidungen in der Gruppe mehr haben.
-      impact_for_subgroups: Dies wird auch dessen Zugang zu den Untergruppen dieser Gruppe entfernen.
       flash: Mitglied entfernt
       submit: Mitglied entfernen
   memberships_panel:
@@ -1826,7 +1823,6 @@ de:
     continue: fortfahren
     create_account: Benutzerkonto erstellen
     sign_in_as: als {{name}} einloggen
-    continue_with_provider: Mit {{provider}} anmelden
     or_enter_your_email: oder gib deine E-Mail-Adresse ein
     enter_your_name: Name einfügen
     invitation_required: 'Du benötigst eine Einladung um ein Konto zu erstellen. '
@@ -1862,7 +1858,6 @@ de:
     check_your_email: Überprüfen Sie Ihren E-Mail-Posteingang
     login_link_sent: "Wir haben eine E-Mail an {{email}} gesendet."
     instructions: "Klicke auf den Link um dich einzuloggen oder gib den Code unten ein:"
-    too_many_attempts: "zu viele Versuche; klicken Sie auf den Link in der Mail um sich einzuloggen."
     invalid_code: "Entschuldigung, dieser Code stimmt nicht überein. Überprüfen Sie Ihre Mails und versuchen Sie es erneut."
     password_link_sent: "Wir haben eine E-Mail mit der Anleitung zur Passwort-Festlegung an {{email}} gesendet."
     reactivate_link_sent: "Wir haben dir eine E-mail mit Anweisungen zur Reaktivierung deines Kontos geschickt. "

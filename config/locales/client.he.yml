@@ -732,8 +732,6 @@ he:
     membership:
       title: הסרת משתתף
       message: אתה בטוח שאתה רוצה להסיר את {{name}}?
-      impact_for_group: זה יוריד את הגישה שלהם לכל השיחות וההחלטות בקבוצה.
-      impact_for_subgroups: זה יסיר את הגישה שלהם לכל תת הקבוצות של הקבוצה.
       flash: משתתף הוסר
       submit: הסרת משתתף
   membership_form:
@@ -1359,7 +1357,6 @@ he:
     check_your_email: בדוק את המייל שלך!
     login_link_sent: "שלחנו לך מייל ל{{email}}."
     instructions: "לחץ על הלינק להתחברות, או הכנס את הקוד המופיע מטה:"
-    too_many_attempts: "יותר מידי ניסיונות; נסה ללחוץ על הלינק במייל כדי להתחבר."
     invalid_code: "סליחה, קוד זה לא תואם. בדוק את המייל ונסה שוב."
     password_link_sent: "שלחנו לך מייל ל{{email}} עם הנחיות איך לאפס את סיסמתך."
     signed_in: התחברת בהצלחה

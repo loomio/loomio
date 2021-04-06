@@ -27,6 +27,9 @@ es:
   current_plan_button:
     upgrade: Mejore su abono a Loomio
     buy_now: Comprar ahora
+    is_old_plan: Los planes de precios simplificados de Loomio incluyen usuarios ilimitados
+    change_plan: Cambiar plan
+    view_plans: Ver planes
     free_trial: Prueba gratis. Quedan {{days}} días
     trial_expired: Tu periodo de prueba ha terminado. Actualice para continuar usando Loomio.
     tooltip: "Nuestros precios son fantásticos! Actualice hoy y disfrute lo que Loomio puede ofrecer a su grupo."
@@ -1140,8 +1143,6 @@ es:
     membership:
       title: 'Eliminar miembro '
       message: ¿Estás seguro de que quieres eliminar a {{name}}?
-      impact_for_group: 'Esto removerá su acceso a todos los hilos y decisiones del grupo.  '
-      impact_for_subgroups: 'Esto también removerá su acceso a todos los subgrupos del grupo.  '
       flash: Miembro eliminado.
       submit: 'Eliminar miembro '
   memberships_panel:

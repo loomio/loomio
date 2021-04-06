@@ -1,9 +1,11 @@
 it:
   loomio_onboarding:
     group_progress_card:
+      title: Per cominciare
       activities:
         set_description: 'Scrivi la descrizione del tuo gruppo '
         set_cover_photo: Carica una foto di copertina ed un logo per il tuo gruppo
+        customize_group: Aggiungere un'immagine di gruppo, un logo e una descrizione
         invite_people_in: Invita persone in
         start_thread: Inizia un thread di discussione
         make_decision: Inizia una decisione
@@ -12,8 +14,10 @@ it:
       dismiss_this_card: Elimina questa sezione
   plan_names:
     free: Free
+    starter: Starter
     trial: Prova
     pro: Pro
+    pro_nonprofit: Pro senza scopo di lucro
     community: Comunità
     small: Piccolo
     medium: Medio
@@ -22,9 +26,14 @@ it:
     yearly: Annuale
   current_plan_button:
     upgrade: Aggiorna
+    buy_now: Compra ora
+    is_old_plan: I piani tariffari semplificati di Loomio includono utenti illimitati
+    change_plan: Cambia di piano
+    view_plans: Vedi piani
     free_trial: Prova gratuita. {{days]} giorni restanti.
     trial_expired: La tua prova è scaduta. Aggiorna per continuare usando Loomio.
     tooltip: "Nostri prezzi sono fantastichi! Aggiorna oggi e godi quello  che Loomio può offrire al tuo grupo. "
+    was_gift_trial: "Il tuo gruppo utilizza Loomio gratuitamente da {{createdDate}}. Non siamo in grado di continuare a fornire un servizio gratuito. Esegui l'aggiornamento per continuare a utilizzare Loomio. <a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>Per saperne di più</a>"
     was_gift_remaining: "{{days}} giorni restanti."
     was_gift_expired: "Il vostro piano gratuito è già scaduto"
   subscription_status:
@@ -44,18 +53,23 @@ it:
     all_tags: Tutte etichette
     tags: Etichette
     apply_tags: Inserisci etichette
+    new_tag: Nuovo tag
     name_label: Nome
     color_label: Colore
     card_title: Etichette di categoria
     modal_title: Crea una nuova etichetta
     modal_edit_title: Modifica etichetta
     modal_destroy_title: Rimuovi etichetta
+    destroy_tag: Elimina il tag
+    destroy_helptext: Questo eliminerà questo tag e lo rimuoverà da tutti i thread del gruppo. Sei sicuro?
     helptext: 'Le etichette ti permettono di categorizzare le conversazioni e trovarle facilmente dopo '
     discussions_count_singular: ({{count}} discussione)
     discussions_count_plural: ({{count}} discussioni)
     tag_created: Etichetta salvata
+    tag_destroyed: Tag eliminato
     tags_marked: Discussioni marcate con '{{name}}' nel gruppo {{groupName}}
     no_tags_present: 'Non è stata trovata nessuna discussione con questa etichetta!  '
+    no_tags_in_group: Questo gruppo non ha ancora tag di categoria.
   reactions:
     slight_smile: Mi piace
     heart: Amore
@@ -108,6 +122,7 @@ it:
   timezones:
     local: Ora locale ({{value}})
   common:
+    none: Nessuno
     empty: Vuoto
     no_results_found: Nessun risultato trovato
     view: Vista
@@ -211,6 +226,7 @@ it:
       delete: Cancella
       unsubscribe: Discriviti
       subscribe: Iscriviti
+      unignore: Nonignore
       remind: Ricorda
       resend: Reinvia
       send: Invia
@@ -227,10 +243,19 @@ it:
       title: 'Impara come usare il Markdown per formattare il tuo testo'
   merge_accounts:
     modal:
+      title: Unisci account
+      helptext: "È possibile unire l'account in <strong>{{sourceEmail}}</strong> in quello di <strong>{{targetEmail}}</strong>. Fare clic su Verifica e verrà inviato un messaggio di posta elettronica di verifica a {{targetEmail}} per avviare il processo."
       submit: Verifica
+      flash: Email di verifica inviato!
+    email_taken: Spiacenti, quell'e-mail è già associata a un altro utente. Quell'email ti appartiene?
+    find_out_more: Sappi di più
+    placeholder_modal_text: |
+        <p>Se desidereresti unire due account insieme, è sufficiente inserire il rispettivo indirizzo e-mail (appartenente all'altro account) nel campo e-mail della pagina profilo e seguire le istruzioni visualizzate.</p>
+        <p>Aiuterti necessario?<a href="/contact" target="_blank"> Contattaci</a>.
   emoji_picker:
     search: Ricerca
     common: Frequentemente usato
+    expressions: Facce
     hands: Mani
     people: Persone
     nature: Natura
@@ -269,34 +294,57 @@ it:
     mute: 'Silenzioso'
     unmute: 'Rimuovi silenzioso'
   pin_event_form:
+    title: Aggiungi alla sequenza temporale
     title_label: Titolo
+    hint: 'Suggerimento per la prossima volta: prova a evidenziare del testo prima di fare clic su "Aggiungi".'
   change_volume_form:
+    explain_scope:
+      thread: Questo cambia quando sarai notificato di questo thread
+      group: Questo cambia quando sarai notificato di tutti i thread del gruppo
     simple:
       label: Notifiche
+      loud: Sottoscritto
       normal: Normale
       quiet: Ignora
+      question: Quando vuoi ricevere una notifica?
+      loud_explain: ogni volta che c'è attività
+      normal_explain: quando qualcuno chiede la vostra attenzione
+      quiet_explain: nessuna notifica
     aria_label: "Modulo per configurazione email"
     loud_label: "Tutte le attività"
     normal_label: "Annunci"
     quiet_label: "Nessuna email"
     mute_label: "Silenzia"
+    saved: "Impostazioni di notifica aggiornate"
     discussion:
+      title: "Notifiche dei thread"
+      loud_description: "Riceverai un'email ogni volta che c'è attività in questa discussione."
+      normal_description: "Riceverai un'email ogni volta che c'è attività importante in questa discussione."
+      quiet_description: "Non riceverai notifiche per le attività in questa discussione."
       apply_to_all: "Applica questa configurazione a tutte le discussioni in questo gruppo."
+      only_this_thread: "Si applica solo a questo thread"
+      group: "Modifica le notifiche per il gruppo"
+      user: "Modifica le impostazioni di notifica utente"
       messages:
         loud: "Riceverai un'email sulle attività di questa discussione."
         normal: "Riceverai un'email sulle proposte in questa discussione."
         quiet: "Non riceverai email su questa discussione."
     membership:
+      title: "Notifiche per {{title}}"
       loud_description: "Riceverai un'email ogni volta che c'è attività in questo gruppo."
       normal_description: "Riceverai un'email ogni volta che c'è attività in questo gruppo."
       quiet_description: "Non riceverai un'email sulle attività in questo gruppo."
       apply_to_all: "Applica questa configurazione a tutti i miei gruppi."
+      apply_to_organization: "Applica a tutti i gruppi in {{organization}}"
       messages:
         loud: "Riceverai un'email per tutte le attività in questo gruppo."
         normal: "Riceverai email solo per gli annunci pubblicati in questo gruppo."
         quiet: "Non riceverai email per questo gruppo."
     all_groups:
+      title: "Preferenze di notifica per tutti i gruppi"
       loud_description: "Ricevi email per tutte le attività in tutti i tuoi gruppi."
+      normal_description: "Ti verrà inviata un'attività importante via e-mail solo in tutti i tuoi gruppi."
+      quiet_description: "Non ti verrà inviata alcuna attività via e-mail in nessuno dei tuoi gruppi."
       messages:
         loud: "Ricevi email per tutte le attività in tutti i tuoi gruppi."
         normal: "Ricevi email solo per gli annunci in tutti i tuoi gruppi."
@@ -314,6 +362,9 @@ it:
   close_explanation_modal:
     aria_label: Chiudi discussione
     close_thread: Chiudi discussione
+    body: |
+        <p>Chiudi i thread vecchi o irrilevanti per rimuoverli dalla visualizzazione e indicare che la discussione è stata chiusa.</p>
+        <p>Chiunque può comunque commentare o avviare un sondaggio in un thread chiuso, ma non verrà visualizzato nell'elenco dei thread del gruppo o nel dashboard.</p>
     image_alt: Chiudi tutte le discussioni
   mute_explanation_modal:
     aria_label: Silenzia discussione
@@ -355,6 +406,7 @@ it:
       replied: '{{name}} è stato notificato della risposta'
       updated: 'Commento aggiornato'
       destroyed: 'Commento cancellato.'
+      removed: 'Commento eliminato'
     say_something: Scrivi qualcosa...
     edit_comment: 'Modifica commento'
     delete_comment: 'Cancella il commento'
@@ -374,7 +426,11 @@ it:
   sidebar:
     threads: 'Discussioni'
     my_groups: 'I miei gruppi'
+    other_groups: 'Altri gruppi'
+    all_groups: 'Tutti i gruppi'
     recent_threads: 'Discussioni recenti'
+    invite_only_threads: 'Thread di sola invito'
+    direct_threads: 'Thread diretti'
     unread_threads: 'Discussioni non lette ({{count}})'
     muted_threads: 'Discussioni silenziate'
     start_group: 'Nuova organizzazione'
@@ -389,6 +445,14 @@ it:
       threads_list: 'Azioni discussioni'
       groups_list: 'Gruppi'
       user_list: 'Azioni utente'
+  strand_nav:
+    newest_first: Nuova attività
+    oldest_first: Inizio del thread
+    all_pinned: Tutti gli elementi aggiunti
+    whole_thread: Tutta la discussione
+    from_comment: Da un URL di commento
+    from_sequence_id: Dall'URL di un elemento del thread
+    unread: Nuovo per te
   navbar:
     search_all_threads: Cerca in tutte le discussioni
     search_threads: 'Cerca le discussioni in  {{name}}'
@@ -412,18 +476,27 @@ it:
       comments: 'Commenti'
     sign_in: 'Entra'
     toggle_sidebar: 'Attiva la barra laterale'
+    open_sidebar: 'barra laterale aperta'
+    close_sidebar: 'barra laterale chiusa'
     logo_title: 'Home page'
+    group_and_subgroups: '{{group}} & sottogruppi'
   user_dropdown:
+    pin_sidebar: "Attiva la barra laterale"
+    unpin_sidebar: "Rimuovi la barra laterale"
+    enable_beta_features: "Abilita le funzionalità beta"
+    disable_beta_features: "Disattiva le funzionalità beta"
     button_label: 'Menu utente'
     edit_profile: 'Modifica profilo'
     email_settings: 'Impostazioni notifiche'
     help: 'Aiuto'
     contact_site_name: 'Contatto {{site_name}}'
     sign_out: 'Esci'
+    beta_collab: "Revisione collaborative in tempo reale su discussioni e proposte, salvata automaticamente la bozza di commenti"
   membership_card:
     group_members: "Membri del gruppo"
     discussion_members: "Membri della discussione"
     poll_members: "Membri del sondaggio {{pollType}}"
+    voters: "Elettori"
     invite_to_group: "Invita nel gruppo"
     invite_to_discussion: "Invita nella discussione"
     invite_to_poll: "Invita a votare"
@@ -447,6 +520,9 @@ it:
   notifications:
     header: "Notifiche"
     no_notifications: "Non hai notifiche"
+    new_discussion: "<strong>{{name}}</strong> ha avviato un thread <strong>{{title}}</strong>"
+    discussion_edited: "<strong>{{name}}</strong> ha modificato il thread <strong>{{title}}</strong>"
+    discussion_announced: "<strong>{{name}}</strong> ha condiviso un thread <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> ha creato una proposta <strong>{{title}}</strong>"
     motion_closed: "Proposta chiusa: <strong>{{title}}</strong>"
     publish_outcome: "Pubblica un risultato"
@@ -470,6 +546,7 @@ it:
     new_coordinator: "<strong>{{name}}</strong> ti ha nominato amministratore di <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> ha lanciato {{poll_type}}: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> ha modificato {{poll_type}}: <strong>{{title}}</strong>"
+    poll_reminder: "<strong>{{name}}</strong> ricorda di votare in: <strong>{{title}}</strong>"
     poll_announced: "<strong>{{name}}</strong> ha condiviso un {{poll_type}}: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} si chiude tra poco: <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} si è chiuso: <strong>{{title}}</strong>"
@@ -477,9 +554,22 @@ it:
     outcome_created: "<strong>{{name}}</strong> ha condiviso un risultato: <strong>{{title}}</strong>"
     outcome_announced: "<strong>{{name}}</strong> ha condiviso un risultato: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong>ha partecipato a:<strong>{{title}}</strong>"
+    group_announced: "<strong>{{name}}</strong> invited you to the gruppo <strong>{{title}}</strong>"
   discussion_fork_actions:
+    helptext: Seleziona gli elementi da spostare in un altro thread
     move: Sposta
+    search_placeholder: Trova thread per titolo
+    moved: Commenti in movimento, questo potrebbe richiedere un momento
+    move_to_existing_thread: Passa al thread esistente
+    start_new_thread: Oppure avvia un nuovo thread
   discussion_form:
+    to: A
+    direct_thread: "Thread diretto"
+    invite_only_thread: "Thread di sola invito"
+    none_direct_thread: "Thread diretto (nessun gruppo)"
+    none_invite_only_thread: "Thread di sola invito (nessun gruppo)"
+    change_log_placeholder: Facoltativamente, descrivi le modifiche. Questo messaggio verrà aggiunto al thread.
+    change_log_label: Che cosa ha cambiato?
     invite: Invita
     aria_label: 'Modulo discussione'
     start_thread: Inizia una discussione
@@ -488,6 +578,7 @@ it:
       updated: 'Discussione aggiornata'
       forked: 'Biforcazione della discussione creata'
     new_discussion_title: 'Lancia una nuova discussione'
+    moving_items_title: 'Sposta elementi in un nuovo thread'
     edit_discussion_title: 'Modifica il nome della discussione'
     group_label: 'Gruppo'
     group_placeholder: 'Scegli un gruppo'
@@ -500,12 +591,66 @@ it:
     privacy_private: 'La discussione sarà visibile solamente ai membri di {{group}}.'
     privacy_organisation: 'La discussione sarà visibile ai membri di {{parent}} e ai membri di {{group}}.'
     fork_notice: 'Una nuova discussione è stata creata con {{count}} argomenti da {{title}}'
+    one_person_notified: 1 persona verrà avvisata
+    notify_group: Gruppo di notifica
   announcement:
+    send_discussion: Invia thread
+    send_discussion_explain: Invita le persone a partecipare alla discussione
+    send_group: Invita persone a {{name}}
+    send_poll: Invia {{type}}
+    send_poll_explain: Invitare persone a partecipare a {{type}}
+    send_outcome: Invia risultato
+    send_outcome_explain: Notifica agli utenti il risultato di {{type}}
+    discussion_notification_history: Cronologia delle notifiche dei thread
+    group_notification_history: Cronologia degli inviti di gruppo
+    poll_notification_history: Cronologia delle notifiche di sondaggio
+    outcome_notification_history: Cronologia delle notifiche dei risultati
+    comment_notification_history: Cronologia delle notifiche dei commenti
+    notification_history_explanation: ✓ indica che la notifica è stata letta o che l'e-mail è stata aperta
+    quick_add: "Aggiunta rapida:"
+    any_other_groups: "Altri gruppi?"
+    notified_people: "{{name}} notifica {{length}} persone:"
+    preview: Anteprima posta elettronica
+    no_notifications_sent: Non sono state inviate notifiche
+    history_error: Qualcosa è andato storto! Impossibile caricare la cronologia.
+    inviting_guests_to_thread: Gli ospiti non appartengono al tuo gruppo e hanno accesso solo a questo thread
+    select_groups: Seleziona gruppi
+    search_by_name_or_email: Cerca per nome o immetti messaggi di posta elettronica da invitare
+    search_by_name: Cerca persone per nome
+    only_admins_can_announce: Solo gli amministratori possono notificare l'intero gruppo
+    only_admins_can_invite: Solo gli amministratori possono invitare gli ospiti
+    only_admins_can_announce_or_invite: Solo gli amministratori possono notificare l'intero gruppo o invitare gli ospiti
+    user_mentioned: '{{name}} ha menzionato {{length}} persone:'
+    comment_replied_to: '{{name}} ha risposto a {{length}} persone:'
+    new_discussion: '{{name}} ha invitato {{length}} persone al thread:'
+    discussion_announced: '{{name}} ha invitato {{length}} persone al thread:'
+    poll_created: '{{name}} ha invitato {{length}} persone a votare:'
+    poll_announced: '{{name}} ha invitato {{length}} persone a votare:'
+    outcome_created: '{{name}} ha condiviso un risultato con {{length}} persone:'
+    outcome_announced: '{{name}} ha condiviso un risultato con {{length}} persone:'
+    announcement_created: '{{name}} ha invitato {{length}} persone al thread:'
+    discussion_edited: '{{name}} ha modificato il thread, notificando {{length}} persone:'
+    poll_edited: '{{name}} ha modificato un sondaggio, notificando {{length}} persone:'
+    outcome_edited: '{{name}} ha modificato un risultato, notificando {{length}} persone:'
+    outcome_updated: '{{name}} ha modificato un risultato, notificando {{length}} persone:'
+    poll_closing_soon: "{{name}} promemoria di chiusura del sondaggio ha notificato {{length}} persone:"
+    poll_reminder: '{{name}} ha ricordato a {{length}} persone di votare:'
     audiences:
       group: Membri di {{name}}
+      discussion_group: Tutti nel filo
+      voters: Tutti invitati a votare
+      decided_voters: Tutti coloro che hanno votato
+      undecided_voters: Elettore indecisi
+      non_voters: Membri di {{name}} non ancora invitati
     form:
       too_many_invitations: |
           Hai superato il limite di inviti. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
+      no_invitations_remaining: |
+          <p>sono stati utilizzati tutti gli inviti {{maxMembers}} disponibili per questo gruppo.</p>
+          <p>Il passaggio successivo, <a href="{{upgradeUrl}}" target="_blank">scegliere un piano</a> per continuare a collaborare a Loomio.</p>
+      invitations_remaining: '{{count}} inviti rimanenti. <a href="{{upgradeUrl}}" target="_blank">Aggiorna</a>'
+      who_to_invite: Chi vorresti invitare?
+      invitation_message_placeholder: Messaggio da includere nel messaggio di posta elettronica di invito. (facoltativo)
       invitation_message_label: Messaggio
       group_announced:
         title: Invita nel gruppo
@@ -513,31 +658,66 @@ it:
       discussion_announced:
         title: Invita nella discussione
         helptext: Chi vorresti invitare nella discussione?
+        notify_helptext: Chi vorresti avvisare del thread?
       discussion_edited:
         title: Notifica le modifiche
+        helptext: Chi si desidera notificare di questo aggiornamento? (facoltativo)
       poll_announced:
         title: Invita a votare
         helptext: Chi vorresti invitare a votare?
       poll_reminder:
+        title: Ricorda di votare
+        helptext: Chi vorresti ricordare di votare?
         message_label: Messaggio
+        message_placeholder: Messaggio facoltativo per dire alle persone perché dovrebbero votare
       poll_edited:
         title: Notifica le modifiche
+        helptext: Chi si desidera notificare di questo aggiornamento?
       outcome_announced:
         title: Condividi risultati
+        helptext: Sintetizzano i risultati del processo, comprese le eventuali intese trovate o problemi portati alla luce.
       anyone_can_participate: Chiunque con un link può partecipare
+      placeholder: È possibile immettere nomi o indirizzi e-mail
+      notified_empty: 'Nessuno è ancora stato selezionato.'
+      notified: 'La gente {{notified}} sarà notificata:'
+      notified_singular: '1 persona sarà avvisata'
+      notified_none: 'Nessuno sarà avisato'
+      group_title: '{{name}} ({{count}} persone)'
+      visible_to_group: 'Chiunque in {{group}} sarà in grado di vedere questo thread.'
+      visible_to_guests: 'Solo le persone invitate possono vedere questo thread.'
+      click_group_to_see_individuals: Fai clic sul gruppo per visualizzare gli individui
     members_list:
       title: Condiviso con
       last_notified: Notificato
       not_notified: Non ancora notificato
+      no_members: "Questo non è ancora stato condiviso con nessuno!"
+      group_admin: "Amministratore gruppo"
+      thread_admin: "Amministratore thread"
+      last_read_at: "Ultima vista {{time}}"
+      has_not_read_thread: "Non ha visualizzato il thread"
     group_form:
       search_placeholder: Cerca persone...
+      modal_title: Seleziona i membri del gruppo
+    flash:
+      success: '{{count}} notifiche inviate'
   action_dock:
+    actions_menu: Menu Azioni
+    more_actions: Altre azioni
+    react: Reagire
+    notify: Notificare
     add_resource: Aggiungi allegato
     edit_group: Modifica il contesto del gruppo
     add_comment: Commenta
+    copy_url: Copia collegamento
     edit_thread: Modifica il contesto
+    announce_thread: Invia thread
+    invite_guests: Invita ospiti
     translate_thread: Traduci il contesto
     edit_poll: Modifica sondaggio
+    edit_poll_type: "Modifica {{pollType}}"
+    move_items: Sposta elementi
+    announce_poll: Invita le persone a votare
+    announce_poll_active: (Nessuno è stato ancora invitato)
     translate_poll: Traduci sondaggio
     edit_stance: Cambia posizione
     translate_stance: Traduci il voto
@@ -547,21 +727,80 @@ it:
     fork_comment: Biforca discussione
     translate_comment: Traduci il commento
     edit_outcome: Modifica il risultato
+    announce_outcome: Avvisa le persone di questo risultato
+    announce_outcome_active: (Nessuno è stato ancora informato di questo risultato)
     translate_outcome: Traduci il risultato
     show_history: Mostra la storia della modifica
     edited: Modificato
+    show_edits: Mostra modifiche
+    show_notifications: Mostra notifiche
     history: Storia
     pin_thread: Fissa in alto la discussione
     unpin_thread: Non fissare in alto la discussione
+    pin_event: Aggiungi alla sequenza temporale
+    unpin_event: Rimuovi dalla sequenza temporale
     comment_copied: URL del commento copiato negli appunti
+    move_thread: Passare al gruppo
     poll_copied: URL della decisione copiato negli appunti
     discussion_copied: URL della discussione copiato negli appunti
+    url_copied: Collegamento copiato negli appunti
     tag_thread: Gestisci le etichette
     close_thread: Chiudi discussione
+    reopen_thread: Riapro il thread
     delete_thread: Cancella discussione
+    notification_history: Cronologia delle notifiche
+    move_item: Sposta l'elemento
+    add_poll_to_thread: Aggiungi al thread
+    count_members: "{{count}} membri"
+    count_voters: "{{count}} votanti"
   formatting:
+    formatting_tools: Strumenti di formattazione del testo
+    colors: Colori
+    alignment: Allineamento
+    lists: Elenchi
+    expand: Visualizza altri strumenti di formattazione
+    collapse: Mostra altri strumenti di formattazione
+    bold: Grassetto
+    italicize: Corsivo
+    blockquote: Citazione
+    strikethrough: Barrato
+    underline: Sottolineare
+    link: Inserisci collegamento
+    code_block: Blocca codice
+    insert_image: Inserire un'immagine
+    insert_emoji: Inserire emoji
     attach: Allega file
+    heading_size: Dimensione titolo
+    heading1: Rubrica 1
+    heading2: Rubrica 2
+    heading3: Rubrica 3
+    left_align: Allinea a sinistra
+    center_align: Allinea al centro
+    right_align: Allinea a destra
+    justify_align: Giustifica l'allineamento
+    paragraph: Paragrafo
+    bullet_list: Elenco
+    number_list: Elenco numerato
+    check_list: 'Lista di controllo '
     reset: Reimposta
+    text_color: Colore del testo
+    background_color: Colore di sfondo
+    quote: Citazione
+    embed: Incorporare video
+    divider: Divisore
+    add_table: Aggiungi tabella
+    remove_table: Rimuovi tabella
+    add_column_before: Aggiungi una colonna prima
+    add_column_after: Aggiungi una colonna dopo
+    remove_column: Rimuovi colonna
+    add_row_before: Aggiungi una riga prima
+    add_row_after: Aggiungi una riga dopo
+    remove_row: Rimuovi una riga
+    merge_selected: Unire celle selezionate
+    wysiwyg: wysiwyg
+    edit_markdown: Modifica riduzione
+    markdown_confirm: Alcune formattazione potrebbero andare perse convertendo il contenuto wysiwyg in riduzione.
+    upload_failed: Caricamento non riuscito
   cover_photo_form:
     aria_label: 'Cambia modulo dell''immagine di copertina'
     heading: 'Nuova immagine di copertina'
@@ -575,6 +814,7 @@ it:
     image_size_helptext: 'Le dimensioni dell''immagine ideale sono 100×100px'
     upload_success: 'Logo aggiornato con successo'
   join_group_button:
+    not_a_member: "Al momento non sei un membro di questo gruppo."
     join_group: Iscriviti al gruppo
     membership_requested: Iscrizione richiesta
     messages:
@@ -591,11 +831,23 @@ it:
       membership_requested: 'Hai richiesto di partecipare al gruppo {{group}}'
   revision_history_modal:
     aria_label: Registro delle revisioni
+    discussion_header: Modifiche alla discussione
+    comment_header: Modifiche ai commenti
+    poll_header: Modifiche al sondaggio
+    outcome_header: Modifiche ai risultati
+    stance_header: Modifiche alla posizione
     started_by: 'Iniziato da <strong>{{name}}</strong>'
     edited_by: 'Modificato da <strong>{{name}}</strong>'
+    edit_by: "Modifica in base a {{name}} · {{data}}"
     posted: Pubblicato
+    field: Campo
+    before: Prima
+    after: Dopo
     original_text: Originale
     current_revision: Più recente
+    closing_at_changed: "orario di chiusura impostato su {{time}}"
+    private_changed: "privacy impostata su {{private}}"
+    group_id_changed: "spostato in {{name}}"
   reactions_input:
     add_your_reaction: Aggiungi la tua reazione
   reactions_display:
@@ -604,14 +856,38 @@ it:
     you_and_name: "Tu e {{name}}"
     you_and_name_and_count_more: "Tu, {{name}} e altri {{count}} "
     name_and_count_more: "{{name}} e altri {{count}}"
+  context_panel:
+    aria_intro: "Contesto del thread di {{author}}"
+    thread_status:
+      pinned: "Questo thread è stato bloccato. Rimarrà in cima all'elenco dei thread del gruppo per tutti gli utenti."
+      closed: "Questo thread è stato chiuso. Non apparirà più nella dashboard e sarà elencato sotto \"chiuso\" nella pagina del gruppo"
+  delete_group_modal:
+    title: Delete group
+    body: |
+        Sei sicuro che vuoi eliminare questo gruppo?
+        Tutti i thread, i sondaggi, i file e altri contenuti del gruppo verranno eliminati definitivamente.
+        Si consiglia di esportare i dati del gruppo e scaricare manualmente tutti i file importanti prima di continuare.
+    confirm: "Digitare '%{name}' per confermare l'eliminazione del gruppo."
+    success: Questo gruppo è stato archiviato ed è previsto per l'eliminazione permanente in 2 settimane.
   group_page:
+    stats: Statistiche di gruppo
     threads: Discussioni
+    polls: Sondaggi
     members: Membri
+    files: File
     settings: Configurazione
     subgroups: Sottogruppi
+    show_opened: '{{count}} Aperto'
+    show_closed: '{{count}} Chiuso'
+    no_threads_here: Nessuno filo da vedere qui!
+    search_threads: Cerca discussioni...
+    private_threads: Dovrai essere un membro per visualizzare i thread privati in questo gruppo
+    no_more_threads: Nessuno thread da caricare
+    view_closed_threads: 'Visualizza i thread chiusi'
     messages:
       privacy:
         members: 'Ora il gruppo è visibile solo alle persone che ne fanno parte.'
+        parent_members: 'Questo gruppo è ora visibile solo ai membri dell''organizzazione'
         public: 'Ora il gruppo è pubblico '
       leave_group_success: 'Hai lasciato il gruppo.'
       archive_group_success: 'Gruppo disattivato'
@@ -625,6 +901,7 @@ it:
     members_placeholder: 'Sei da solo qui: invita altre persone!'
     member_options: Opzioni dei membri del gruppo
     see_all_members: 'Vedi tutti i {{count}} membri'
+    pending_invitations: '+ {{count}} in attesa'
     subgroups_placeholder: 'I sottogruppi danno ai gruppi il proprio spazio e permettono di inviare notiifiche focalizzate sulle persone giuste. '
     invite_people: 'Invita'
     visibility_label: 'Visibilità'
@@ -632,12 +909,18 @@ it:
     options:
       label: 'Opzioni'
       edit_group: 'Modifica le impostazioni del gruppo'
+      become_coordinator: Diventa amministratore
       export_data: Esporta i dati del gruppo
+      export_data_as_json: Esporta i dati del gruppo come JSON
+      export_data_as_csv: Esporta i dati del gruppo come CSV
+      export_data_as_html: Esporta i dati del gruppo come HTML
       manage_members: 'Gestisci membri'
       add_subgroup: 'Aggiungi sottogruppo'
+      manage_subscription: 'Gestisci la sottoscrizione di gruppo'
       email_settings: 'Opzioni email'
       leave_group: 'Lascia il gruppo'
       deactivate_group: 'Disattiva gruppo'
+      subscription_status: 'Stato sottoscrizione'
     volume:
       loud: Invia una mail in caso di qualsiasi tipo di attività.
       loud_aria_description: Il volume delle notifiche per questo gruppo è settato su Alto. Riceverai una mail in caso di qualsiasi attività nel gruppo.
@@ -656,8 +939,14 @@ it:
       parent_members: 'Privacy: questo gruppo è visibile solo ai membri di {{parentGroupName}}  e  {{groupName}}'
       public: 'Privacy: Questo gruppo è visibile sul web'
       aria_label: 'Privacy del gruppo: {{privacy}}'
+  export_data_modal:
+    title: Come vuoi usare i tuoi dati?
+    as_csv: Aprirlo in un foglio di calcolo
+    as_html: Aprirlo in un browser
+    as_json: Ospitare questo gruppo nel proprio server
   description_card:
     title: 'Descrizione del gruppo'
+    placeholder: 'Gli amministratori del gruppo possono utilizzare quest''area per descrivere lo scopo del gruppo, quindi tutti sanno perché sono qui.'
     messages:
       description_updated: 'Descrizione aggiornata'
   leave_group_form:
@@ -671,26 +960,46 @@ it:
     question: 'Sei sicuro/a di voler disattivare questo gruppo?'
     submit: 'Sì, disattiva questo gruppo'
   group_form:
+    thread_defaults_help: Impostazioni predefinite per i nuovi thread
+    click_to_change_image: Immagine di copertina e logo (fare clic per cambiare)
+    permissions_explaination: |
+        Esistono due livelli di appartenenza che una persona può avere a un gruppo: amministratore e membro.
+        Gli amministratori possono modificare le impostazioni del gruppo, rendere amministratori altre persone ed eseguire tutte le azioni elencate di seguito.
     aria_label: Modulo per gruppo
+    parent_group: Gruppo padre
     new_organisation: Nuova organizzazione
     new_group: Nuovo gruppo
     new_subgroup: Nuovo sottogruppo
+    new_group_explainer: Avvia un nuovo gruppo Loomio, una casa online per le discussioni e le decisioni della tua organizzazione
+    new_subgroup_explainer: 'Avvia un sottogruppo all''interno di un gruppo esistente: uno spazio privato per un team di persone dell''organizzazione'
     start_group_heading: Inizia un gruppo
     start_subgroup_heading: Inizia un sottogruppo
     edit_group_heading: Modifica le impostazioni del gruppo
     edit_subgroup_heading: Modifica le impostazioni del sottogruppo
     group_settings: Impostazioni del gruppo
+    subgroup_settings: Impostazioni del sottogruppo
     group_name: Nome gruppo
     subgroup_name: Nome del sottogruppo
+    organization_name: Nome organizzazione
+    handle: Gestire
+    group_handle_placeholder: "Utilizzato nell'URL del gruppo: www.loomio.org/{{handle}}"
     start_organization_heading: Nuova organizzazione
+    edit_organization_heading: Modificare le impostazioni dell'organizzazione
     group_name_placeholder: 'Qual''é il nome del tuo gruppo?'
+    subgroup_name_placeholder: 'Qual'' è il nome del tuo subgruppo?'
+    organization_name_placeholder: 'Qual è il nome dell''organizzazione?'
     description: 'Descrizione'
     description_placeholder: 'Descrivi lo scopo del tuo gruppo in modo che gli altri partecipanti sappiano il motivo per cui sono qui.'
+    secret_by_default: Il tuo gruppo sarà accessibile solo da coloro che sono invitati a partecipare. Puoi cambiarlo in un secondo momento.
     privacy_statement:
       public_on_web: 'Nome, descrizione ed allegati al gruppo saranno visibili a tutti'
       private_to_group: 'Il nome e la descrizione saranno visibili solamente ai membri'
       private_to_parent_members: 'Nome e descrizione sarà visibile ai membri di {{parent}}'
     privacy: 'Privacy'
+    group_privacy_is_open_description: "Elencato pubblicamente. Chiunque può chiedere di aderire. Tutti i thread sono pubblici."
+    group_privacy_is_closed_description: "Non elencato. Chiunque abbia il link può chiedere di aderire. Tutti i thread sono privati."
+    group_privacy_is_closed_public_threads_description: "Non elencato. Chiunque abbia il link può chiedere di aderire. I thread possono essere pubblici o privati."
+    group_privacy_is_secret_description: "Solo le persone invitate possono trovare il gruppo. Tutti i thread sono privati."
     confirm_change_to_secret: "Se procedi, tutte le discussioni in questo gruppo ed i suoi sottogruppi saranno resi private."
     confirm_change_to_secret_subgroup: 'Se procedi, tutte le discussioni saranno rese private.'
     confirm_change_to_public: 'Se procedi, tutte le discussioni in questo gruppo saranno rese pubbliche e visibili in rete. '
@@ -707,20 +1016,47 @@ it:
     membership_granted_upon_approval: 'Chiunque può richiedere di essere aggiunto ma dev''essere approvato.'
     membership_granted_upon_approval_secret_parent: '<strong>Su richiesta</strong> chiunque da {{parent}} può chiedere di unirsi al gruppo.'
     permissions: 'Permessi'
+    features: 'Caratteristiche specifiche del gruppo'
     thread_privacy: 'Pricacy della discussione'
     public_threads: 'Solo discussioni pubbliche'
     public_discussions_subgroup: 'Chiunque nel gruppo {{parentGroupName}} può vedere le discussioni'
     public_or_private_threads: 'Permetti discussioni pubbliche e private'
     private_threads: 'Solo i membri possono vedere le discussioni'
     allow_public_threads: 'Permetti discussioni pubbliche in questo gruppo.'
+    parent_members_can_see_discussions: 'I membri di {{parent}} possono visualizzare thread privati'
+    parent_members_can_see_discussions_help: 'Consenti ai membri del gruppo padre di visualizzare, ma non partecipare, thread e sondaggi all''interno di questo gruppo'
+    members_can_announce: 'I membri possono avvisare tutti i membri del gruppo'
+    members_can_announce_help: 'Consenti ai membri di notificare a tutti i membri del gruppo un thread o un sondaggio'
+    members_can_add_members: 'I membri possono invitare i membri'
+    members_can_add_members_help: "Consenti ai membri di invitare persone a unirsi a questo gruppo"
+    members_can_add_guests: 'I membri possono invitare gli ospiti'
+    members_can_add_guests_help: 'Consenti ai membri di invitare gli ospiti in thread o sondaggi in questo gruppo'
+    members_can_create_subgroups: 'I membri possono creare sottogruppi'
+    members_can_create_subgroups_help: 'Consenti ai membri di creare e diventare amministratori di nuovi sottogruppi'
+    members_can_edit_discussions: 'I membri possono gestire thread e commenti'
+    members_can_edit_discussions_help: 'Consenti ai membri di modificare, spostare, aggiungere, contrassegnare o chiudere thread'
+    members_can_edit_comments: 'I membri possono modificare i propri commenti'
+    members_can_edit_comments_help: 'Consenti ai membri di modificare i propri commenti in qualsiasi momento'
+    members_can_delete_comments: 'I membri possono cancellare i propri commenti'
+    members_can_delete_comments_help: 'Consenti ai membri di eliminare i propri commenti dai thread'
+    members_can_start_discussions: 'I membri possono iniziare nuove discussioni.'
+    members_can_start_discussions_help: 'Consenti ai membri di avviare nuovi thread all''interno del gruppo'
+    members_can_raise_motions: 'I membri possono avviare sondaggi'
+    members_can_raise_motions_help: 'Consenti ai membri di avviare sondaggi e proposte all''interno delle discussioni o del gruppo'
+    admins_can_edit_user_content: "Gli amministratori possono modificare i commenti dei membri"
+    admins_can_edit_user_content_help: 'Consenti agli amministratori di modificare il contenuto scritto dai membri'
     submit_start_group: 'Crea un gruppo'
     submit_start_subgroup: 'Avvia sottogruppo'
     submit_update: 'Aggiorna impostazioni'
     messages:
       group_created: 'Gruppo avviato'
       group_updated: 'Gruppo aggiornato'
+    upload_logo: 'Carica nuovo logo'
+    upload_cover_photo: 'Carica nuova immagine di copertina'
   group_export_modal:
     title: Esporta i dati del gruppo
+    submit: Inizia l'esportazione
+    flash: Esportazione dati di gruppo avviata
   membership_requests_card:
     heading: 'Richieste di partecipazione'
     manage_requests: Gestisci richieste
@@ -742,12 +1078,18 @@ it:
   group_decisions_card:
     see_more: "Vedi tutto:  ({{count}}) decisioni"
   invitation_form:
+    group_url: Gruppo URL
+    reusable_invitation_link: Collegamento invito riutilizzabile
+    error: "Errore durante il tentativo di copia negli appunti"
     aria_label: 'Modulo di invito'
     invite_people: 'Invita persone'
+    invite_guests: 'Invita ospiti'
+    notify_people: 'Avvisa le persone'
     invite_people_to_group: 'Invita   {{name}}'
     group: 'Gruppo'
     group_placeholder: 'Scegli un gruppo'
     shareable_link: 'Link pubblico condivisibile'
+    share_group: 'Condividi il gruppo'
     copy_link: 'Copia'
     email_addresses: 'Indirizzi email'
     email_addresses_placeholder: 'Ad esempio: helperbot@loomio.org, friendlybot@loomio.org'
@@ -783,11 +1125,10 @@ it:
     membership:
       title: Rimuovi membro
       message: Sei sicuro/a di volere espellere {{name}}?
-      impact_for_group: Questa azione impedirà loro l'accesso a tutte le discussioni e le decisioni del gruppo.
-      impact_for_subgroups: Questa azione impedirà loro di accedere anche a tutti i sottogruppi.
       flash: Membro rimosso
       submit: Rimuovi membro
   memberships_panel:
+    add_coordinator: Rendi amministratore
     remove_coordinator: Rimuovi amministratore
   membership_form:
     modal_title:
@@ -796,11 +1137,14 @@ it:
       group: Questo titolo apparirà prima del nome {{name}} inserito in questo gruppo. Usalo per assegnare un ruolo alla persona.
     title_label: titolo
     title_placeholder: 'Ad esempio: ''Coordinatore'' o ''Facilitatore''.'
+    updated: Titolo dell'iscrizione aggiornato
   user_page:
     contact_user: 'Contatto {{name}}'
     location_field: 'Luogo: {{value}}'
     locale_field: 'Lingua: {{value}}'
     online_field: 'Online: {{value}}'
+    invited: 'Invitato {{value}}'
+    message_user: 'Messaggio {{name}}'
   contact_request_form:
     modal_title: "Email {{name}}"
     message_placeholder: Scrivi una introduzione su chi sei e perchè ci contatti.
@@ -812,6 +1156,7 @@ it:
       picture_changed: 'Immagine del profilo aggiornata'
       password_changed: 'Password aggiornata'
       deactivated: 'Account disattivato'
+    merge_accounts: Unisci account
     change_picture_link: 'Cambia immagine'
     change_password_link: 'Cambia password'
     delete_account: 'Cancella l''account permanentemente'
@@ -830,15 +1175,27 @@ it:
     location_label: 'Luogo'
     location_placeholder: 'Di dove sei?'
     update_profile: 'Aggiorna profilo'
+    deactivate_account: 'Disattivare l''account utente'
     help_translate: "Aiutaci a tradurre Loomio"
+  text_editor:
+    select_text_to_link: Prima, seleziona un poco del testo da collegare
+    insert_link: Inserisci collegamento
+    insert_embedded_url: Incorporare video
   change_picture_form:
+    aria_label: 'Modulo foto profilo'
+    title: 'Imposta la foto del profilo'
     helptext: 'Puoi caricare la foto sul tuo profilo, o se disponi di un account su <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>, puoi usare quella foto.'
     use_initials: 'Usa iniziali'
     use_gravatar: 'Usa Gravatar'
+    use_uploaded: 'Carica una nuova foto'
+    use_provider: 'Usa la foto {{provider}}'
   change_password_form:
+    set_password_title: Imposta la password
+    set_password_helptext: Inserisci una password - minimo 8 caratteri
     set_password: Imposta password
     password_changed: La tua password è stata aggiornata
   deactivation_modal:
+    aria_label: 'Disattiva l''account utente'
     introduction: 'Quando disattivi il tuo account:'
     you_will_be_deleted: "Il tuo account, compresi nome, indirizzo email e gli altri dati personali verranno cancellati dal nostro sistema."
     name_removed: 'I tuoi commenti, le tue proposte e le tue discussioni rimarranno, ma il tuo nome verrà rimosso'
@@ -846,6 +1203,7 @@ it:
     no_emails: 'Non riceverai più email di notifica'
     you_can_reactivate: "Se tu vorrai, potrai riattivare il tuo account in futuro"
     submit: 'Sì, voglio disattivare'
+    submit_delete: 'Elimina subito l''account personale'
   email_settings_page:
     header: Impostazioni notifiche
     email_newsletter: Loomio Newsletter
@@ -879,6 +1237,7 @@ it:
     load_more: Carica altre discussioni
     mark_as_read: Contrassegnato come letto
     dismiss: Ignora
+    thread_dismissed: Thread contrassegnato come già letto
     thread_recalled: Discussione riattivata
     explain_mute:
       title: Non hai ancora silenziato nessuna discussione
@@ -891,6 +1250,7 @@ it:
     filtering:
       filter_threads: Filtra discussioni
       filter_threads_aria_label: Filtra discussioni
+      dropdown_heading: Dashboard filtro
       all: Discussioni recenti
       all_aria_label: Sto mostrando le discussioni recenti
       all_description: Vedi discussioni recenti
@@ -909,12 +1269,17 @@ it:
       undecided: 'Tu non hai votato'
     threads_from:
       group: 'Discussioni da'
+      pinned: 'Thread aggiunti'
       proposals: 'Discussioni con decisioni attive'
+      starred: 'Fili stellati'
       today: 'Oggi'
       yesterday: 'Ieri'
       thisweek: 'Questa Settimana'
       thismonth: 'Questo mese'
       older: 'Più di un mese fa'
+  threads_page:
+    no_direct_threads: "Non hai thread diretti"
+    no_invite_only_threads: "Non hai thread solo su invito"
   inbox_page:
     no_threads: Woohoo! Hai letto tutte le discussioni nella tua casella di posta..
     unread_threads: Discussioni non lette
@@ -925,6 +1290,8 @@ it:
       or: o
       join_group: <a href="/explore">iscriviti</a> ad un gruppo per vedere le discussioni.
   discussion:
+    invite_only: "Solo invito"
+    private_thread: Thread privato
     activity: 'Attività'
     activity_placeholder: 'Ancora nessuna attività!'
     load_previous: 'Carica attività precedente'
@@ -1061,6 +1428,8 @@ it:
     anyone_can_participate:
       title: Chiunque con un link può partecipare
       helptext_on: Quando selezionato, chiunque abbia il link al sondaggio potrà partecipare.
+    notify_on_closing_soon:
+      undecided_voters: Elettore indecisi
     notify_on_participate:
       title: Inviami notifica quando le persone partecipano
       helptext_on: Quando selezionato, verrai notificato quando qualcuno partecipa.

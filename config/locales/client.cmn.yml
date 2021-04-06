@@ -713,8 +713,6 @@ cmn:
     membership:
       title: 移除成员
       message: 您确定您想要移除 {{name}} 吗？
-      impact_for_group: 这将会移除他们在群组中所有话题与决策的访问权限。
-      impact_for_subgroups: 这也会移除他们对此群组的所有子群组的访问权限。
       flash: 成员已移除
       submit: 移除成员
   memberships_panel:

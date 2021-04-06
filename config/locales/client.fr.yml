@@ -962,7 +962,6 @@ fr:
     group_name: Nom du groupe
     subgroup_name: Nom du sous-groupe
     handle: Gérer
-    group_handle_placeholder: "Pour l'adresse URL et l'e-mail, par ex. loomio.org/handle et handle@loomio.org"
     start_organization_heading: Nouveau groupe
     edit_organization_heading: Modifier les paramètres de l'organisation
     group_name_placeholder: 'Quel est le nom de votre groupe ?'
@@ -1114,8 +1113,6 @@ fr:
     membership:
       title: Supprimer le membre
       message: Êtes-vous certain⋅e de vouloir retirer {{name}} ?
-      impact_for_group: Cela leur retirera l'accès à toutes les discussions et décisions dans le groupe.
-      impact_for_subgroups: Cela leur retirera aussi l'accès à tous les sous-groupes de ce groupe.
       flash: Membre supprimé
       submit: Supprimer le membre
   memberships_panel:
@@ -1946,9 +1943,7 @@ fr:
     sign_in: Se connecter
     continue: Continuer
     create_account: Créez un compte
-    sign_up_as: S'inscrire en tant que {{email}}
     sign_in_as: Se connecter comme  {{name}}
-    continue_with_provider: Connectez-vous avec {{provider}}
     continue_with_email: Connectez-vous avec votre adresse mail
     or_enter_your_email: Ou saisir votre adresse e-mail
     enter_your_name: Entrez votre nom
@@ -1989,7 +1984,6 @@ fr:
     check_your_email: Vérifier votre e-mail !
     login_link_sent: "Ok, nous avons envoyé un message à {{email}}."
     instructions: "Cliquez sur le lien pour vous connecter, ou entrez le code ci-dessous:"
-    too_many_attempts: "Trop de tentatives, essayez de cliquer sur le lien dans le courriel pour vous connecter."
     invalid_code: "Désolé, le code ne correspond pas. Vérifiez le courriel et essayez de nouveau."
     password_link_sent: "Nous avons envoyé un courriel à {{email}} avec les instructions pour définir votre mot de passe."
     reactivate_link_sent: "Nous vous avons envoyé un mail avec des instructions pour réactiver votre compte"

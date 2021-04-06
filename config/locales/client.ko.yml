@@ -913,7 +913,6 @@ ko:
     edit_subgroup_heading: 소그룹 설정 수정하기
     group_name: 그룹명
     handle: 처리
-    group_handle_placeholder: "URL과 이메일, 예: loomio.org/handle , handle@loomio.org"
     start_organization_heading: 새로운 조직
     edit_organization_heading: 조직 설정 수정
     group_name_placeholder: '그룹의 이름이 무엇인가요?'
@@ -1050,8 +1049,6 @@ ko:
     membership:
       title: 멤버 삭제
       message: '{{name}}을 삭제하시겠습니까?'
-      impact_for_group: 그러면 그룹의 모든 스레드 및 결정에 대한 접근 권한이 제거됩니다.
-      impact_for_subgroups: 그러면 해당 그룹의 모든 하위 그룹에 대한 접근 권한도 제거됩니다.
       flash: 멤버가 삭제됨
       submit: 멤버 삭제
   memberships_panel:

@@ -830,7 +830,6 @@ pt_BR:
     group_name: Nome do grupo
     subgroup_name: Nome do subgrupo
     handle: Sigla da organização
-    group_handle_placeholder: "Para um URL ou email e.x. loomio.org/sigla ou sigla@loomio.org"
     start_organization_heading: Nova organização
     edit_organization_heading: Editar configurações da organização
     group_name_placeholder: 'Qual é o nome do seu grupo?'
@@ -964,8 +963,6 @@ pt_BR:
     membership:
       title: Remover membro
       message: Tem certeza que você quer eliminar {{name}}?
-      impact_for_group: Isso removerá o acesso de todas as conversas e decisões neste grupo.
-      impact_for_subgroups: 'Isso também eliminará seus acessos a todos os subgrupos nesse grupo. '
       flash: Membro removido
       submit: Remover membro
   memberships_panel:
@@ -1705,7 +1702,6 @@ pt_BR:
     continue: Continuar
     create_account: Criar conta
     sign_in_as: Entrar como {{name}}
-    continue_with_provider: Entrar com {{provider}}
     or_enter_your_email: Ou, digite o seu endereço de email
     enter_your_name: Entre seu nome
     invitation_required: Você precisa de um convite para criar uma conta.
@@ -1742,7 +1738,6 @@ pt_BR:
     check_your_email: Consulte o seu e-mail!
     login_link_sent: "Nós mandamos um email para {{email}}."
     instructions: "Clique no link para entrar, ou digite o código abaixo:"
-    too_many_attempts: "Tentativas demais; experimente clicar no link enviado por email para entrar. "
     invalid_code: "Desculpe, esse código não corresponde. Verifique seu email e tente novamente."
     password_link_sent: "Nós enviamos um email para {{email}} com instruções sobre como configurar sua senha."
     reactivate_link_sent: "Nós mandamos um email com instruções para reativar sua conta."

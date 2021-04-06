@@ -1,9 +1,11 @@
 zh_TW:
   loomio_onboarding:
     group_progress_card:
+      title: 讓我們開始吧！
       activities:
         set_description: 設定您的群組描述
         set_cover_photo: 為您的群組上傳封面圖片與圖示
+        customize_group: 新增群組照片、圖示與描述
         invite_people_in: 邀請夥伴在
         start_thread: 開始討論串
         make_decision: 啟動決策
@@ -12,8 +14,10 @@ zh_TW:
       dismiss_this_card: 忽略這張卡片
   plan_names:
     free: 免費
+    starter: 入門
     trial: 試用
     pro: 專業
+    pro_nonprofit: 專業非營利
     community: 社群
     small: 小
     medium: 中
@@ -22,6 +26,10 @@ zh_TW:
     yearly: 每年
   current_plan_button:
     upgrade: 升級
+    buy_now: 立刻購買
+    is_old_plan: Loomio 的簡化定價方案包含了無限的使用者
+    change_plan: 變更方案
+    view_plans: 檢視方案
     free_trial: 免費試用。剩 {{days}} 天。
     trial_expired: 您的試用已到期。升級以繼續使用 Loomio。
     tooltip: "我們的價錢超棒的！現在就升級並享受 Loomio 可以提供給您的組織的好處吧！"
@@ -114,6 +122,7 @@ zh_TW:
   timezones:
     local: 本地時間 ({{value}})
   common:
+    none: 無
     empty: 空
     no_results_found: 找不到結果
     view: 檢視
@@ -956,24 +965,31 @@ zh_TW:
         群組中一個人可能會有兩種成員等級：管理員與成員
         管理員可以編輯群組設定，讓其他夥伴成為管理員，並執行以下列出的所有動作。
     aria_label: 群組表單
+    parent_group: 上層群組
     new_organisation: 新組織
     new_group: 新增群組
     new_subgroup: 新的子群組
+    new_group_explainer: 開始新 Loomio 群組，您組織的討論與決策線上首頁
+    new_subgroup_explainer: 在現有群組中開始下層群組，供組織中的團隊使用的私人空間
     start_group_heading: 啟動群組
     start_subgroup_heading: 啟動子群組
     edit_group_heading: 編輯群組設定
     edit_subgroup_heading: 編輯子群組設定
     group_settings: 群組設定
+    subgroup_settings: 下層群組設定
     group_name: 群組名稱
     subgroup_name: 子群組名稱
+    organization_name: 組織名稱
     handle: 處理
-    group_handle_placeholder: "對於 URL 與電子郵件來說，例如 loomio.org/handle 與 handle@loomio.org"
+    group_handle_placeholder: "用於您的群組 URL：www.loomio.org/{{handle}}"
     start_organization_heading: 新組織
     edit_organization_heading: 編輯組織設定
     group_name_placeholder: '您的群組的名稱是？'
+    subgroup_name_placeholder: '您的下層群組的名稱是？'
     organization_name_placeholder: '您的組織的名字是什麼？'
     description: '描述'
     description_placeholder: '描述群組的目的讓您的夥伴們知道他們為什麼在這裡。'
+    secret_by_default: 只有受邀加入的人才能存取您的群組。您可以在稍後變更此設定。
     privacy_statement:
       public_on_web: '群組內容的名稱、描述與附件將對公眾可見'
       private_to_group: '名稱與描述都將只會對成員可見。'
@@ -1020,6 +1036,8 @@ zh_TW:
     members_can_edit_discussions_help: '允許成員編輯、移動、釘選、標記或關閉討論串'
     members_can_edit_comments: '成員可以編輯他們自己的意見'
     members_can_edit_comments_help: '允許成員在任何時間編輯他們自己的意見'
+    members_can_delete_comments: '成員可以刪除他們自己的意見'
+    members_can_delete_comments_help: '允許成員從討論串中刪除他們自己的意見'
     members_can_start_discussions: '成員可以啟動新的討論串'
     members_can_start_discussions_help: '允許成員在群組內啟動新的討論串'
     members_can_raise_motions: '成員可以啟動投票'
@@ -1125,8 +1143,8 @@ zh_TW:
     membership:
       title: 移除成員
       message: 您確定您想要移除 {{name}} 嗎？
-      impact_for_group: 這將會移除他們在群組中所有討論串與決策的存取權限。
-      impact_for_subgroups: 這也會移除他們對此群組的所有子群組的存取權限。
+      impact_for_subgroup: 這將會移除他們對下層群組的存取權（包含討論串與投票），但他們仍是上層群組的成員。
+      impact_for_group: 這將會移除他們對群組（包含討論串與投票）與任何下層群組的存取權。
       flash: 成員已移除
       submit: 移除成員
   memberships_panel:
@@ -1958,14 +1976,15 @@ zh_TW:
     youre_invited_discussion: 您已被邀請加入討論。
     youre_invited_poll: 您已被邀請加入投票。
     existing_account_can_sign_in: 如果您已經是 {{site_name}} 使用者，請使用您現有的帳號登入
+    sign_up_or_log_in: 建立帳號或登入至 {{site_name}}
     sign_in_to_loomio: 登入到 {{site_name}}
     sign_in_help: 無法登入？
     sign_in: 登入
     continue: 繼續
     create_account: 建立帳號
-    sign_up_as: 以 {{email}} 註冊
+    sign_up_as: 使用 {{email}} 建立帳號
     sign_in_as: 登入為 {{name}}
-    continue_with_provider: 使用 {{provider}} 登入
+    continue_with_provider: 以 {{provider}} 繼續
     continue_with_email: 以電子郵件繼續
     or_enter_your_email: 或是輸入您的電子郵件地址
     enter_your_name: 輸入您的名字
@@ -2006,7 +2025,7 @@ zh_TW:
     check_your_email: 檢查您的電子郵件
     login_link_sent: "我們已經寄送了一封電子郵件到 {{email}}。"
     instructions: "點按連結以登入，或是在下面輸入代碼："
-    too_many_attempts: "嘗試太多次了；試試看點按在電子郵件中的連結來登入。"
+    too_many_attempts: "嘗試太多次了；試試看點擊電子郵件中的連結來登入。"
     invalid_code: "抱歉，代碼不正確。請檢查電子郵件並再試一次。"
     password_link_sent: "我們已經寄送一封包含了如何設定您的密碼的電子郵件到 {{email}} 了。"
     reactivate_link_sent: "我們將會傳送一封包含重新啟用您帳號簡介的電子郵件給您"
@@ -2026,6 +2045,7 @@ zh_TW:
       markdown: Markdown（供 Mattermost、Zapier 與其他服務使用）
       microsoft: Microsoft Teams
       slack: Slack
+      discord: Discord
     subtitle: 透過我們的整合 API 與 webhooks 將 Loomio 連線到您其他的工具
     we_have_guides: |
         看我們的 <a href="{{url}}" target="_blank">webhook 設定指南</a>來取得連線到您服務的說明。
@@ -2089,10 +2109,14 @@ zh_TW:
     subtitle: 請協助我們更了解您。未經您的許可，我們不會將您的任何資訊分享其他人。
     validation_error: 請填寫所有必填欄位。
     success: 感謝您！
+    describe_other: 您的群組是哪種分類？
     categories:
       party: 政黨
       coop: 合作社
       union: 聯盟
+      board: 董事會或委員會
+      nonprofit: 非營利組織或非政府組織
+      professional: 專業服務公司
       community: 社群團體
       government: 政府／地方政府
       other: 其他
