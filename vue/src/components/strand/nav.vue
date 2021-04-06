@@ -10,8 +10,8 @@ export default
     loader: Object
 
   data: ->
-    topDate: Date
-    bottomDate: Date
+    topDate: null
+    bottomDate: null
     open: null
     knobOffset: 0
     knobHeight: 32
@@ -158,7 +158,7 @@ export default
 </script>
 
 <template lang="pug">
-v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion" v-model="open" :permanent="$vuetify.breakpoint.mdAndUp" width="230px" app fixed right clipped color="background" floating)
+v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion && bottomDate && topDate" v-model="open" :permanent="$vuetify.breakpoint.mdAndUp" width="230px" app fixed right clipped color="background" floating)
   a.thread-nav__date(:to="urlFor(discussion)" @click="scrollTo('#context')" v-t="'activity_card.context'")
   router-link.thread-nav__date(:to="{query:{k: firstKey}, params: {p: null, sequence_id: null}}") {{approximateDate(topDate)}}
   .thread-nav(:style="{height: trackHeight+'px'}")
