@@ -51,7 +51,7 @@ export default class DiscussionModel extends BaseModel
     @group().discussionPrivacyOptions != 'public_only'
 
   relationships: ->
-    @hasMany 'polls', sortBy: 'createdAt', sortDesc: true
+    @hasMany 'polls', sortBy: 'createdAt', sortDesc: true, find: {discardedAt: null}
     @belongsTo 'group'
     @belongsTo 'author', from: 'users'
     @hasMany 'discussionReaders'
