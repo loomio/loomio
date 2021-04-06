@@ -96,6 +96,12 @@ export default class ThreadLoader
           position_key_sw: event.positionKey
           order_by: 'position_key'
 
+  autoLoadAfter: (event) ->
+    @loadAfter(event) if event.depth == 1
+
+  autoLoadBefore: (event) ->
+    @loadBefore(event) if event.depth == 1
+
   loadAfter: (event) ->
     positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
 
@@ -310,7 +316,6 @@ export default class ThreadLoader
           # eg: value = {$lte: asdads,  $gte: asdasd}
           forEach value, (subvalue, subkey) ->
             chain = chain.find({"#{key}": {"#{subkey}": subvalue}})
-            console.log({"#{key}": {"#{subkey}": subvalue}}, chain.data())
         else
           # eg: value = 1
           chain = chain.find({"#{key}": value})

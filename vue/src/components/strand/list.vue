@@ -103,7 +103,9 @@ export default
 <template lang="pug">
 .strand-list
   .strand-item(v-for="obj, index in collection" :event='obj.event' :key="obj.event.id" :class="{'strand-item--deep': obj.event.depth > 1}")
-    .strand-item__row(v-if="parentExists && obj.event.position != 1 && isFirstInRange(obj.event.position)")
+    .strand-item__row(
+      v-if="parentExists && obj.event.position != 1 && isFirstInRange(obj.event.position)"
+      )
       strand-load-more(:label="{path: 'common.action.count_more', args: {count: countEarlierMissing(obj.event.position)}}" @click="loader.loadBefore(obj.event)")
 
     .strand-item__row
@@ -127,8 +129,14 @@ export default
           .strand-item__load-more(v-else)
             strand-load-more(:label="{path: 'common.action.count_responses', args: {count: obj.event.descendantCount}}" @click="loader.loadChildren(obj.event)")
 
-    .strand-item__row(v-if="lastPosition != 0 && isLastInLastRange(obj.event.position) && obj.event.position != lastPosition")
-      strand-load-more(:label="{path: 'common.action.count_more', args: {count: countLaterMissing()}}" @click="loader.loadAfter(obj.event)")
+    //- | {{lastPosition}} {{ranges[ranges.length -1][1]}}
+    .strand-item__row(
+      v-if="lastPosition != 0 && isLastInLastRange(obj.event.position) && obj.event.position != lastPosition"
+      v-observe-visibility="{callback: (isVisible, entry) => isVisible && loader.autoLoadAfter(obj.event), once: true}"
+      )
+      strand-load-more(
+        :label="{path: 'common.action.count_more', args: {count: countLaterMissing()}}"
+        @click="loader.loadAfter(obj.event)")
 </template>
 
 <style lang="sass">

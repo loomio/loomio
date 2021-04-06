@@ -1,6 +1,9 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
+import marked from 'marked'
+import {customRenderer, options} from '@/shared/helpers/marked.coffee'
+marked.setOptions Object.assign({renderer: customRenderer()}, options)
 import { debounce, truncate, first, last, some, drop, min, compact, without, sortedUniq } from 'lodash'
 
 export default
@@ -22,12 +25,15 @@ export default
     knobVisible: false
     keys: []
     visibleKeys: []
+    headings: []
+    context: ''
 
   mounted: ->
     EventBus.$on 'toggleThreadNav', => @open = !@open
     EventBus.$on 'scrollThreadNav', =>
       return if @knobVisible or !document.querySelector('.thread-sidebar .v-navigation-drawer__content')
       @$vuetify.goTo('.thread-nav__knob', { container: '.thread-sidebar .v-navigation-drawer__content', offset: 100 })
+
 
     Records.events.fetch
       params:
@@ -52,6 +58,17 @@ export default
       collections: ["events", "discussions"]
       query: =>
         return unless @discussion && @discussion.createdEvent()
+        parser = new DOMParser()
+
+        if @discussion.descriptionFormat == 'md'
+          @context = marked(@discussion.description)
+        else
+          @context = @discussion.description
+
+        doc = parser.parseFromString(@context, 'text/html')
+        @headings = Array.from(doc.querySelectorAll('h1,h2,h3')).map (el) =>
+          {id: el.id, name: el.textContent}
+
         @presets = Records.events.collection.chain()
           .find({pinned: true, discussionId: @discussion.id})
           .simplesort('position').data()
@@ -140,8 +157,11 @@ export default
 
     positionFor: (offset) ->
       position = parseInt(offset / @unitHeight)  - 1
-      console.log 'offset', offset, 'position', position, @keys[position]
+      # console.log 'offset', offset, 'position', position, @keys[position]
       ((position < 0) && 0) || position
+
+    goToContextHeading: (id) ->
+      # load context with the id
 
   watch:
     'discussion.newestFirst':
@@ -152,6 +172,13 @@ export default
   computed:
     firstKey: -> first(@keys)
     lastKey: -> last(@keys)
+    displayKey: ->
+      # if under halfway, use first visible position, otherwise use loas visible position
+      @visibleKeys[parseInt((@visibleKeys.length - 1)/2)]
+    displayPosition: ->
+      return 1 if @keys.indexOf(@visibleKeys[0]) == 0
+      return (@keys.length - 1) if @keys.indexOf(last(@visibleKeys)) == (@keys.length - 1)
+      @keys.indexOf( @visibleKeys[parseInt((@visibleKeys.length - 1)/2)])
     unitHeight: ->
       @trackHeight / @keys.length
 
@@ -160,6 +187,7 @@ export default
 <template lang="pug">
 v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion && bottomDate && topDate" v-model="open" :permanent="$vuetify.breakpoint.mdAndUp" width="230px" app fixed right clipped color="background" floating)
   a.thread-nav__date(:to="urlFor(discussion)" @click="scrollTo('#context')" v-t="'activity_card.context'")
+  a.d-block.text-caption(v-for="heading, index in headings" :key="index") {{heading.name}}
   router-link.thread-nav__date(:to="{query:{k: firstKey}, params: {p: null, sequence_id: null}}") {{approximateDate(topDate)}}
   .thread-nav(:style="{height: trackHeight+'px'}")
     .thread-nav__track(ref="slider" :style="{height: trackHeight+'px'}" @click="onTrackClicked")
@@ -169,7 +197,10 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion 
         .thread-nav__preset--line
         .thread-nav__preset--title {{event.pinnedTitle || event.suggestedTitle()}}
     .thread-nav__knob(:style="{top: knobOffset+'px', height: knobHeight+'px'}" ref="knob" @mousedown="onMouseDown" v-touch:start="onTouchStart" v-observe-visibility="{callback: setKnobVisible}")
+      span(style="display: block; white-space: nowrap; overflow: visible;") {{displayPosition}} / {{keys.length - 1}}
+
   router-link.thread-nav__date(:to="{query:{k: lastKey}, params: {sequence_id: null}}") {{approximateDate(bottomDate)}}
+  //- | {{keys.indexOf(visibleKeys[visibleKeys.length -1])}}
   //- | {{visibleKeys}}
 </template>
 
