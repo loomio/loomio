@@ -4,6 +4,7 @@ import { each } from 'lodash'
 
 export default (store, options) ->
   chain = store.discussions.collection.chain()
+  chain = chain.find(discardedAt: null)
   chain = chain.find(groupId: { $in: options.group.organisationIds() })      if options.group
   chain = chain.find(lastActivityAt: { $gt: options.from }) if options.from
   chain = chain.find(lastActivityAt: { $lt: options.to })   if options.to
