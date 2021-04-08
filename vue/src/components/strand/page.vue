@@ -98,9 +98,9 @@ export default
 
       # console.log '2', @$route, rules
       # @loader.addContextRule()
-      console.log 'fetching'
+      # console.log 'fetching'
       @loader.fetch().then =>
-        console.log 'scrolling to', @loader.focusAttrs
+        # console.log 'scrolling to', @loader.focusAttrs
         if @loader.focusAttrs.newest
           @scrollTo ".sequenceId-#{@discussion.lastSequenceId()}" || '.context-panel'
         if @loader.focusAttrs.unread
@@ -124,7 +124,7 @@ export default
 .strand-page
   v-main
     v-container.max-width-800(v-if="discussion")
-      p(v-for="rule in loader.rules") {{rule}}
+      //- p(v-for="rule in loader.rules") {{rule}}
       thread-current-poll-banner(:discussion="discussion")
       discussion-fork-actions(:discussion='discussion' :key="'fork-actions'+ discussion.id")
       strand-card(v-if="loader" :discussion='discussion' :loader="loader")

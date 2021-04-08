@@ -303,7 +303,7 @@ export default class ThreadLoader
     promises = @rules.filter((rule) -> rule.remote).map (rule) =>
       params = Object.assign {}, rule.remote, {exclude_types: 'group discussion'}
       Records.events.fetch(params: params)
-    console.log promises
+    # console.log promises
     Promise.all(promises)
 
   updateCollection: ->
