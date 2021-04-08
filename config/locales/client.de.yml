@@ -1,9 +1,11 @@
 de:
   loomio_onboarding:
     group_progress_card:
+      title: Los geht's
       activities:
         set_description: Gruppen-Beschreibung festlegen
         set_cover_photo: Lade ein Titelbild und ein Logo für deine Gruppe hoch
+        customize_group: Füge ein Gruppenbild, ein Logo und eine Beschreibung hinzu
         invite_people_in: Personen einladen
         start_thread: Neue Diskussion eröffnen
         make_decision: Entscheidung vorbereiten
@@ -12,8 +14,10 @@ de:
       dismiss_this_card: Karte ablehnen
   plan_names:
     free: Gratis
+    starter: Starter
     trial: Testphase
     pro: Pro
+    pro_nonprofit: Pro Nonprofit
     community: Community
     small: Klein
     medium: Mittel
@@ -23,6 +27,9 @@ de:
   current_plan_button:
     upgrade: Upgrade
     buy_now: 'Jetzt kaufen '
+    is_old_plan: Loomios vereinfachte Preispläne beinhalten eine unbegrenzte Anzahl an Nutzern
+    change_plan: Preisplan ändern
+    view_plans: Preispläne ansehen
     free_trial: Kostenloser Test. {{days}} Tage verbleiben.
     trial_expired: Dein Test ist abgelaufen. Upgrade um Loomio weiter zu nutzen.
     tooltip: "Unsere Preise sind fantastisch! Upgrade heute und geniesse was Loomio deiner Gruppe bieten kann."
@@ -39,6 +46,8 @@ de:
     expires_at: "Verfällt"
     renews_at: "Verlängern"
     referral_code: "Empfehlungs-Code"
+    chargify_link: "Rechnungsportal"
+    manage_payment_details: "Zahlungsdetails verwalten"
   loomio_tags:
     all_tags: Alle Schlagwörter
     tags: Schlagwörter
@@ -51,12 +60,15 @@ de:
     modal_edit_title: Schlagwort bearbeiten
     modal_destroy_title: Schlagwort entfernen
     destroy_tag: Schlagwort entfernen
+    destroy_helptext: Hiermit löscht du das Schlagwort und entfernst es aus allen Diskussionen. Bist du sicher?
     helptext: Schlagwörter erlauben dir Diskussionen zu ordnen, damit du sie später leichter findest.
     discussions_count_singular: ({{count}} Diskussion)
     discussions_count_plural: ({{count}} Diskussion)
     tag_created: Schlagwort gespeichert
+    tag_destroyed: Schlagwort gelöscht
     tags_marked: Diskussionen mit '{{name}}' in {{groupName}}
     no_tags_present: Zu diesem Schlagwort wurden keine Diskussionen gefunden! Versuche es mit einem anderen.
+    no_tags_in_group: Diese Gruppe hat noch keine Kategorieschlagworte
   reactions:
     slight_smile: Gefällt mir
     heart: Liebe
@@ -109,6 +121,7 @@ de:
   timezones:
     local: Ortszeit ({{value}})
   common:
+    none: Keine
     empty: Leer
     no_results_found: Keine Ergebnisse gefunden
     view: Ansicht
@@ -414,6 +427,8 @@ de:
     other_groups: 'Andere Gruppen'
     all_groups: 'Alle Gruppen'
     recent_threads: 'Aktuelle Diskussionen'
+    invite_only_threads: 'Diskussionen nur mit Einladung'
+    direct_threads: 'Direkte Diskussionen'
     unread_threads: 'Ungelesene Diskussionen ({{count}})'
     muted_threads: 'Stummgeschaltete Diskussionen'
     start_group: 'Neue Organisation'
@@ -430,6 +445,9 @@ de:
       user_list: 'Benutzer-Aktionen'
   strand_nav:
     newest_first: Letzte Aktivität
+    oldest_first: Anfang der Diskussion
+    all_pinned: Alle angehefteten Elemente
+    whole_thread: Die ganze Diskussion
   navbar:
     search_all_threads: Alle Diskussion durchsuchen
     search_threads: 'Nach Diskussionen in {{name}} suchen'
@@ -496,6 +514,9 @@ de:
   notifications:
     header: "Benachrichtigungen"
     no_notifications: "Es liegen keine Benachrichtigungen vor"
+    new_discussion: "{{name}} hat die Diskussion \"{{title}}\" begonnen"
+    discussion_edited: "{{name}} hat die Diskussion \"{{title}}\" bearbeitet"
+    discussion_announced: "{{name}} hat die Diskussion \"{{title}}\" geteilt"
     new_motion: "<strong>{{name}}</strong> hat den Vorschlag <strong>{{title}}</strong> erstellt"
     motion_closed: "Vorschlag ist beendet: <strong>{{title}}</strong>"
     publish_outcome: "Ergebnis bekanntgeben"
@@ -519,6 +540,7 @@ de:
     new_coordinator: "<strong>Name</strong>hat dich als Administrator von <strong>{{title}}</strong>hinzugefügt"
     poll_created: "<strong>{{name}}</strong> hat einen {{poll_type}} angelegt: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> hat ein/e {{poll_type}} bearbeitet: <strong>{{title}}</strong>"
+    poll_reminder: "{{name}} erinnert Dich daran, Deine Stimme in \"{{title}}\" abzugeben"
     poll_announced: "<strong>{{name}}</strong> hat ein/e {{poll_type}} geteilt: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} wird bald beendet: <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} ist beendet: <strong>{{title}}</strong>"
@@ -535,6 +557,11 @@ de:
     move_to_existing_thread: Zu existierender Diskussion verschieben
     start_new_thread: Oder eine neue Diskussion starten
   discussion_form:
+    to: An
+    direct_thread: "Direkte Diskussion"
+    invite_only_thread: "Diskussion nur mit Einladung"
+    none_direct_thread: "Direkte Diskussion (Keine Gruppe)"
+    none_invite_only_thread: "Diskussion nur mit Einladung (Keine Gruppe)"
     change_log_placeholder: Optional; beschreibe deine Änderungen. Diese Nachricht wird an die Diskussion angefügt.
     change_log_label: Was hat sich geändert?
     invite: Einladen
@@ -584,6 +611,22 @@ de:
     select_groups: Gruppen auswählen
     search_by_name_or_email: 'Um einzuladen, suche nach dem Namen oder gebe die E-Mail-Adresse ein '
     search_by_name: Suche nach Personen nach Name
+    only_admins_can_announce: Nur Administrator*innen können die gesamte Gruppe benachrichtigen
+    only_admins_can_invite: Nur Administrator*innen können Gäste einladen
+    only_admins_can_announce_or_invite: Nur Administrator*innen können die gesamte Gruppe benachrichtigen oder Gäste einladen
+    user_mentioned: '{{name}} hat {{length}} Personen erwähnt:'
+    comment_replied_to: '{{name}} hat {{length}} Personen geantwortet:'
+    new_discussion: '{{name}} hat {{length}} Personen zur Diskussion eingeladen:'
+    discussion_announced: '{{name}} hat {{length}} Personen zur Diskussion eingeladen:'
+    poll_created: '{{name}} hat {{length}} Personen zur Umfrage einladen:'
+    poll_announced: '{{name}} hat {{length}} Personen zur Umfrage einladen:'
+    outcome_created: '{{name}} hat ein Ergebnis mit {{length}} Personen geteilt:'
+    outcome_announced: '{{name}} hat ein Ergebnis mit {{length}} Personen geteilt:'
+    announcement_created: '{{name}} hat {{length}} Personen zur Diskussion eingeladen:'
+    discussion_edited: '{{name}} hat die Diskussion bearbeitet und {{length}} Personen darüber benachrichtigt:'
+    poll_edited: '{{name}} hat eine Abstimmung bearbeitet und {{length}} Personen darüber benachrichtigt:'
+    outcome_edited: '{{name}} hat ein Ergebnis bearbeitet und {{length}} Personen darüber benachrichtigt:'
+    outcome_updated: '{{name}} hat ein Ergebnis bearbeitet und {{length}} Personen darüber benachrichtigt:'
     audiences:
       group: Mitglieder von {{name}}
       undecided_voters: Unentschlossene
@@ -619,6 +662,9 @@ de:
       outcome_announced:
         title: Ergebnis bekanntgeben
       anyone_can_participate: Alle, die Zugriff auf den Link haben, können abstimmen
+      notified: '{{notified}} Personen werden benachrichtigt werden.'
+      notified_singular: '1 Person wird benachrichtigt werden.'
+      notified_none: 'Niemand wird benachrichtigt werden.'
       group_title: '{{name}} ({{count}} Personen)'
     members_list:
       title: geteilt mit
@@ -877,6 +923,7 @@ de:
     thread_defaults_help: Standarteinstellungen für neue Diskussionen
     click_to_change_image: Cover Bild and Logo (zum Ändern klicken)
     aria_label: Gruppenform
+    parent_group: Übergeordnete Gruppe
     new_organisation: Neue Organisation
     new_group: Neue Gruppe
     new_subgroup: Neue Untergruppe
@@ -885,12 +932,14 @@ de:
     edit_group_heading: Gruppeneinstellungen bearbeiten
     edit_subgroup_heading: Untergruppeneinstellungen bearbeiten
     group_settings: Gruppen-Einstellungen
+    subgroup_settings: Untergruppeneinstellungen
     group_name: Gruppen-Name
     subgroup_name: Untergruppenname
     handle: Kürzel
     start_organization_heading: Neue Organisation
     edit_organization_heading: Organisationseinstellungen ändern
     group_name_placeholder: 'Wie heißt deine Gruppe?'
+    subgroup_name_placeholder: 'Wie lautet der Name Deiner Untergruppe?'
     organization_name_placeholder: 'Wie heißt deine Organisation?'
     description: 'Beschreibung'
     description_placeholder: 'Beschreibe die Zielsetzung der Gruppe, damit die Mitglieder wissen, weshalb sie hier sind.'
@@ -1836,6 +1885,7 @@ de:
     email_placeholder: mustermann@beispiel.de
     login_with_token: 'Fertig! Klicke auf den folgenden Link, um fortzufahren. '
     login_link_helptext: 'Klicke auf den folgenden Button um einen Link für deine Anmeldung zu erhalten. '
+    enter_your_password: "Passwort eingeben, um fortzufahren"
     check_spam_folder: 'Solltest du keine E-mail erhalten, überprüfe bitte deinen Spam Ordner. '
     sign_up_helptext: Bitte füllen Sie dieses Formular aus, um ein Benutzerkonto zu erstellen
     i_accept: "Ich akzeptiere die <a href='{{termsUrl}}' target='_blank'>Nutzungsbedingungen</a> und <a href='{{privacyUrl}}' target='_blank'>Datenschutzerklärung</a>"
@@ -1868,9 +1918,16 @@ de:
     password: Passwort
     reactivate: Account wieder aktivieren
   webhook:
+    webhooks: Webhooks
+    webhook: Webhook
+    api: API
+    format: Format
     formats:
+      markdown: Markdown (für Mattermost, Zapier und Andere)
       microsoft: Microsoft Teams
       slack: Slack
+      discord: Discord
+    add_webhook: Webhook hinzufügen
     removed: Eingliederung entfernt
     url_label: WebHooks-URL
     name_label: Name
