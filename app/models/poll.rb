@@ -61,7 +61,7 @@ class Poll < ApplicationRecord
   has_many :undecided_voters, -> { merge(Stance.latest.undecided) }, through: :stances, source: :participant
   has_many :decided_voters, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
 
-  has_many :poll_options, -> { order('priority') }, dependent: :destroy
+  has_many :poll_options, -> (obj) { obj.poll_type == 'meeting' ? order('name') : order('priority') }, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
   has_many :documents, as: :model, dependent: :destroy
@@ -253,7 +253,7 @@ class Poll < ApplicationRecord
 
     # TODO: convert this to a SQL query (CROSS JOIN?)
     update_attribute(:matrix_counts,
-      poll_options.order(:name).limit(5).map do |option|
+      poll_options.limit(5).map do |option|
         stances.latest.order(:created_at).limit(5).map do |stance|
           # the score of the stance choice which has this poll option in this stance
           stance.stance_choices.find_by(poll_option:option)&.score.to_i
@@ -328,9 +328,8 @@ class Poll < ApplicationRecord
   end
 
   def poll_option_names
-    poll_options.order(:priority).pluck(:name)
+    poll_options.pluck(:name)
   end
-
 
   def poll_option_names=(names)
     names    = Array(names)
