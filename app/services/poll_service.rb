@@ -3,6 +3,7 @@ class PollService
     actor.ability.authorize! :create, poll
 
     poll.assign_attributes(author: actor)
+    poll.prioritise_poll_options!
 
     return false unless poll.valid?
     poll.save!
@@ -22,6 +23,7 @@ class PollService
                            actor: actor)
 
     poll.assign_attributes_and_files(params.except(:poll_type, :discussion_id, :group_id))
+    poll.prioritise_poll_options!
 
     return false unless poll.valid?
 
@@ -194,6 +196,7 @@ class PollService
     option_names = Array(params[:poll_option_names]) - poll.poll_option_names
     poll.poll_option_names += option_names
 
+    poll.prioritise_poll_options!
     return false unless poll.valid?
     poll.save!
 

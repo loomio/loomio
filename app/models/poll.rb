@@ -61,7 +61,7 @@ class Poll < ApplicationRecord
   has_many :undecided_voters, -> { merge(Stance.latest.undecided) }, through: :stances, source: :participant
   has_many :decided_voters, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
 
-  has_many :poll_options, -> (obj) { obj.poll_type == 'meeting' ? order('name') : order('priority') }, dependent: :destroy
+  has_many :poll_options, -> { order('priority') }, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
   has_many :documents, as: :model, dependent: :destroy
@@ -359,6 +359,12 @@ class Poll < ApplicationRecord
 
   def minimum_stance_choices
     self.custom_fields.fetch('minimum_stance_choices', 1).to_i
+  end
+
+  def prioritise_poll_options!
+    if self.poll_type == 'meeting'
+      self.poll_options.sort {|a,b| a.name <=> b.name }.each_with_index {|o, i| o.priority = i }
+    end
   end
 
   private
