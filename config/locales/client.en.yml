@@ -74,7 +74,7 @@ en:
     tags_marked: Threads marked '{{name}}' in {{groupName}}
     no_tags_present: No threads were found with that tag! Try selecting another one
     no_tags_in_group: This group has no category tags yet
-    only_admins_can_edit_tags: Sorry, only group admins can create, rename or delete tags
+    only_admins_can_edit_tags: Sorry, only admins of {{group}} can create, rename or delete tags
 
   reactions:
     slight_smile: Like

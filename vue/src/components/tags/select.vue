@@ -73,7 +73,7 @@ v-card.tags-modal
   .px-4.pb-2
     p.text--secondary
       span(v-if="canAdminTags" v-t="'loomio_tags.helptext'")
-      span(v-else v-t="'loomio_tags.only_admins_can_edit_tags'")
+      span(v-else v-t="{path: 'loomio_tags.only_admins_can_edit_tags', args: {group: model.group().parentOrSelf().name}}")
 
   div(v-if="canAdminTags")
     .pa-4(v-if="allTags.length == 0")
