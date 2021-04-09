@@ -96,7 +96,7 @@ export default
 
     classes: (event) ->
       return [] unless event
-      ["positionKey-#{event.positionKey}", "sequenceId-#{event.sequenceId}", "position-#{event.position}"]
+      ["lmo-action-dock-wrapper", "positionKey-#{event.positionKey}", "sequenceId-#{event.sequenceId}", "position-#{event.position}"]
 
 </script>
 

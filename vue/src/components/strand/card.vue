@@ -32,13 +32,9 @@ export default
 </script>
 
 <template lang="pug">
-.strand-card.mb-8.pr-4
+v-card(outlined).strand-card.mb-8
   //- p(v-for="rule in loader.rules") {{rule.name}}
-  strand-list(:loader="loader" :collection="loader.collection")
+  strand-list.pa-3(:loader="loader" :collection="loader.collection")
   strand-actions-panel(:discussion="discussion")
   //- thread-actions-panel(v-if="!discussion.newestFirst" :discussion="discussion")
 </template>
-<style lang="sass">
-.strand-card
-  padding: 0 8px
-</style>

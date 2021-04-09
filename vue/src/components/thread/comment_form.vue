@@ -45,7 +45,7 @@ export default
 </script>
 
 <template lang="pug">
-v-layout.comment-form
+v-layout.comment-form.px-3
   .thread-item__avatar.mr-3
     user-avatar(:user='comment.author() || actor' :size='comment.parentId ? 28 : 36')
   form.thread-item__body.comment-form__body(v-on:submit.prevent='submit()' @keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
