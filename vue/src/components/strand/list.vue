@@ -117,14 +117,14 @@ export default
             v-checkbox.thread-item__is-forking(v-if="loader.discussion.forkedEventIds.length" @change="obj.event.toggleForking()" :disabled="obj.event.forkingDisabled()" v-model="obj.event.isForking()")
             template(v-else)
               user-avatar(:user="obj.event.actor()" :size="(obj.event.depth > 1) ? 28 : 36" no-link)
-              v-badge(offset-x="48" offset-y="-24" icon="mdi-pin" v-if="obj.event.pinned" color="accent")
           .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event)")
             .strand-item__stem(:class="{'strand-item__stem--unread': isUnread(obj.event), 'strand-item__stem--focused': isFocused(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
       .strand-item__main
         //- div {{classes(obj.event)}} {{[obj.event.sequenceId]}} {{isFocused(obj.event)}} {{loader.focusAttrs}}
-        component(:class="classes(obj.event)" :is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="loader.collapsed[obj.event.id]" v-observe-visibility="{callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
+        div(v-observe-visibility="{callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
+          component(:class="classes(obj.event)" :is="componentForKind(obj.event.kind)" :event='obj.event' :collapsed="loader.collapsed[obj.event.id]")
 
-        .strand-list__children.pt-2(v-if="obj.event.childCount")
+        .strand-list__children(v-if="obj.event.childCount")
           strand-list.flex-grow-1(v-if="obj.children.length && !loader.collapsed[obj.event.id]" :loader="loader" :collection="obj.children")
           .strand-item__load-more(v-else)
             strand-load-more(:label="{path: 'common.action.count_responses', args: {count: obj.event.descendantCount}}" @click="loader.loadChildren(obj.event)")
@@ -140,9 +140,6 @@ export default
 </template>
 
 <style lang="sass">
-
-.strand-list
-  margin-bottom: 16px
 
 .strand-item--deep
   .strand-item__gutter

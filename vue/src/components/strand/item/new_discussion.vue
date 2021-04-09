@@ -84,10 +84,10 @@ export default
       mid-dot
       a.context-panel__users_notified_count(v-t="{ path: 'thread_context.count_notified', args: { count: discussion.usersNotifiedCount} }"  @click="actions.notification_history.perform")
   template(v-if="!collapsed")
-    formatted-text.context-panel__description(:model="discussion" column="description" aria-label="Discussion context")
+    formatted-text.context-panel__description(:model="discussion" column="description")
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
-    action-dock(:model='discussion' :actions='dockActions' :menu-actions='menuActions' fetch-reactions)
+    action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions' fetch-reactions)
 </template>
 <style lang="sass">
 @import '@/css/variables'
