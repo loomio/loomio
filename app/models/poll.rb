@@ -253,7 +253,7 @@ class Poll < ApplicationRecord
 
     # TODO: convert this to a SQL query (CROSS JOIN?)
     update_attribute(:matrix_counts,
-      poll_options.order(:name).limit(5).map do |option|
+      poll_options.limit(5).map do |option|
         stances.latest.order(:created_at).limit(5).map do |stance|
           # the score of the stance choice which has this poll option in this stance
           stance.stance_choices.find_by(poll_option:option)&.score.to_i
@@ -328,9 +328,8 @@ class Poll < ApplicationRecord
   end
 
   def poll_option_names
-    poll_options.order(:priority).pluck(:name)
+    poll_options.pluck(:name)
   end
-
 
   def poll_option_names=(names)
     names    = Array(names)
@@ -360,6 +359,12 @@ class Poll < ApplicationRecord
 
   def minimum_stance_choices
     self.custom_fields.fetch('minimum_stance_choices', 1).to_i
+  end
+
+  def prioritise_poll_options!
+    if self.poll_type == 'meeting'
+      self.poll_options.sort {|a,b| a.name <=> b.name }.each_with_index {|o, i| o.priority = i }
+    end
   end
 
   private

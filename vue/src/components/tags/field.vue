@@ -14,6 +14,7 @@ export default
         component: 'TagsSelect',
         props:
           model: @model.clone()
+
   computed:
     items: ->
       @model.group().parentOrSelf().tags()

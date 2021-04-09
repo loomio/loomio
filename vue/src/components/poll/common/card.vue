@@ -67,7 +67,7 @@ v-card
       poll-common-action-panel(:poll='poll')
       action-dock(:actions="dockActions" :menu-actions="menuActions")
 
-      .poll-common-card__results-shown.mt-4(v-if='showResults')
+      .poll-common-card__results-shown.mt-4
         poll-common-votes-panel(:poll='poll')
 </template>
 <style lang="sass">

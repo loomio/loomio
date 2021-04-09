@@ -83,7 +83,8 @@ class DiscussionService
     Events::DiscussionAnnounced.publish!(discussion: discussion,
                                          actor: actor,
                                          recipient_user_ids: users.pluck(:id),
-                                         recipient_audience: params[:recipient_audience])
+                                         recipient_audience: params[:recipient_audience],
+                                         recipient_message: params[:recipient_message])
   end
 
   def self.destroy(discussion:, actor:)

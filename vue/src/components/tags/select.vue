@@ -26,6 +26,10 @@ export default
       query: =>
         @allTags = @model.group().parentOrSelf().tags()
 
+  computed:
+    canAdminTags: ->
+      @model.group().parentOrSelf().adminsInclude(Session.user())
+
   methods:
     openNewTagModal: ->
       EventBus.$emit 'openModal',
@@ -65,21 +69,25 @@ v-card.tags-modal
     h1.headline(tabindex="-1" v-t="'loomio_tags.card_title'")
     v-spacer
     dismiss-modal-button(:close="close")
-  .px-4
-    p.text--secondary(v-t="'loomio_tags.helptext'")
 
-  .pa-4(v-if="allTags.length == 0")
-    p.text--secondary(v-t="'loomio_tags.no_tags_in_group'")
-  sortable-list(v-model="allTags" :useDragHandle="true" @sort-end="sortEnded")
-    sortable-item(v-for="(tag, index) in allTags" :index="index" :key="tag.id")
-      .handle(v-handle)
-        v-icon mdi-drag-vertical
-      v-chip(outlined :color="tag.color") {{tag.name}}
+  .px-4.pb-2
+    p.text--secondary
+      span(v-if="canAdminTags" v-t="'loomio_tags.helptext'")
+      span(v-else v-t="{path: 'loomio_tags.only_admins_can_edit_tags', args: {group: model.group().parentOrSelf().name}}")
+
+  div(v-if="canAdminTags")
+    .pa-4(v-if="allTags.length == 0")
+      p.text--secondary(v-t="'loomio_tags.no_tags_in_group'")
+    sortable-list(v-model="allTags" :useDragHandle="true" @sort-end="sortEnded")
+      sortable-item(v-for="(tag, index) in allTags" :index="index" :key="tag.id")
+        .handle(v-handle)
+          v-icon mdi-drag-vertical
+        v-chip(outlined :color="tag.color") {{tag.name}}
+        v-spacer
+        v-btn(icon @click="openEditTagModal(tag)")
+          v-icon.text--secondary mdi-pencil
+
+    v-card-actions
       v-spacer
-      v-btn(icon @click="openEditTagModal(tag)")
-        v-icon.text--secondary mdi-pencil
-
-  v-card-actions
-    v-spacer
-    v-btn.tag-form_new-tag(color="primary" @click="openNewTagModal" v-t="'loomio_tags.new_tag'")
+      v-btn.tag-form_new-tag(color="primary" @click="openNewTagModal" v-t="'loomio_tags.new_tag'")
 </template>
