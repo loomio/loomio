@@ -23,6 +23,7 @@ export default
     readerUserIds: []
     reset: false
     saving: false
+    message: ''
     actionNames: []
     service: DiscussionReaderService
 
@@ -34,6 +35,11 @@ export default
       query: (records) => @updateReaders()
 
   computed:
+    hasRecipients: ->
+      @discussion.recipientAudience ||
+      @discussion.recipientUserIds.length ||
+      @discussion.recipientEmails.length
+
     model: -> @discussion
 
     excludedUserIds: ->
@@ -55,6 +61,7 @@ export default
         recipient_audience: @discussion.recipientAudience
         recipient_user_ids: @discussion.recipientUserIds
         recipient_emails: @discussion.recipientEmails
+        recipient_message: @message
       Records.announcements.remote.post '', params
       .then =>
         @reset = !@reset
@@ -127,6 +134,9 @@ export default
       :reset="reset"
       @new-query="newQuery"
       @new-recipients="newRecipients")
+
+    v-textarea(v-if="hasRecipients" rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
+
     .d-flex
       v-spacer
       v-btn.strand-members-list__submit(
