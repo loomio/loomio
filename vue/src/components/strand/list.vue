@@ -141,7 +141,7 @@ export default
       .d-flex.align-center
         .strand-item__circle.mr-2(v-if="loader.collapsed[obj.event.id]" @click.stop="loader.expand(obj.event)")
           v-icon mdi-unfold-more-horizontal
-        strand-item-headline(:event="obj.event" :eventable="obj.event.model()" collapsed)
+        strand-item-headline.text--secondary(:event="obj.event" :eventable="obj.event.model()" collapsed)
 
     //- | {{lastPosition}} {{ranges[ranges.length -1][1]}}
     .strand-item__row(
