@@ -5,7 +5,7 @@ import RangeSet         from '@/shared/services/range_set'
 import EventBus         from '@/shared/services/event_bus'
 import Session from '@/shared/services/session'
 
-padding = 10
+padding = 25
 
 export default class ThreadLoader
   constructor: (discussion) ->
@@ -274,22 +274,17 @@ export default class ThreadLoader
           find:
             id: @discussion.createdEvent().id
 
-    # if @discussion.readItemsCount() > 0 && @discussion.unreadItemsCount() > 0
     @rules.push
       name: {path: "strand_nav.new_to_you"}
       local:
         find:
           discussionId: @discussion.id
           sequenceId: {$or: @discussion.unreadRanges().map((r) -> {$between: r} )}
-        limit: padding * 3
+        limit: padding
       remote:
         discussion_id: @discussion.id
         unread: true
         order_by: "sequence_id"
-        # from: @discussion.firstUnreadSequenceId()
-        # order: 'sequence_id'
-        # per: 5
-
 
   addRule: (rule) ->
     @rules.push(rule)
