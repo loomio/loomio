@@ -72,8 +72,9 @@ export default
 
   strand-title(:discussion="discussion")
 
-  .mb-4
-    router-link(:to="urlFor(discussion.author())" title="Thread author") {{discussion.authorName()}}
+  .mb-2.d-flex.align-center
+    user-avatar.mr-2(:user='discussion.author()' :size='36')
+    router-link(:to="urlFor(discussion.author())") {{discussion.authorName()}}
     mid-dot
     router-link.grey--text.body-2(:to='urlFor(discussion)')
       time-ago(:date='discussion.createdAt')
