@@ -235,12 +235,10 @@ export default class ThreadLoader
     @rules.push
       local:
         find:
-          id: @discussion.createdEvent().id
-        find:
           discussionId: @discussion.id
         simplesort: 'sequenceId'
         simplesortDesc: true
-        limit: padding / 4
+        limit: padding
       remote:
         discussion_id: @discussion.id
         per: padding

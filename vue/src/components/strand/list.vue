@@ -103,9 +103,10 @@ export default
 <template lang="pug">
 .strand-list
   .strand-item(v-for="obj, index in collection" :event='obj.event' :key="obj.event.id" :class="{'strand-item--deep': obj.event.depth > 1}")
-    .strand-item__row(
-      v-if="parentExists && obj.event.position != 1 && isFirstInRange(obj.event.position)"
-      )
+    .strand-item__row(v-if="parentExists && obj.event.position != 1 && isFirstInRange(obj.event.position)")
+      .strand-item__gutter
+        .strand-item__stem-wrapper
+          .strand-item__stem.strand-item__stem--broken
       strand-load-more(:label="{path: 'common.action.count_more', args: {count: countEarlierMissing(obj.event.position)}}" @click="loader.loadBefore(obj.event)")
 
     .strand-item__row
@@ -126,8 +127,12 @@ export default
 
         .strand-list__children(v-if="obj.event.childCount")
           strand-list.flex-grow-1(v-if="obj.children.length && !loader.collapsed[obj.event.id]" :loader="loader" :collection="obj.children")
-          .strand-item__load-more(v-else)
-            strand-load-more(:label="{path: 'common.action.count_responses', args: {count: obj.event.descendantCount}}" @click="loader.loadChildren(obj.event)")
+          .strand-item__row(v-else)
+            .strand-item__gutter
+              .strand-item__stem-wrapper
+                .strand-item__stem.strand-item__stem--broken
+                  .strand-item__load-more
+                    strand-load-more(:label="{path: 'common.action.count_responses', args: {count: obj.event.descendantCount}}" @click="loader.loadChildren(obj.event)")
 
     //- | {{lastPosition}} {{ranges[ranges.length -1][1]}}
     .strand-item__row(
@@ -187,7 +192,8 @@ export default
 .strand-item__stem-wrapper
   width: 36px
   height: 100%
-  padding: 6px 0
+  padding-top: 4px
+  padding-bottom: 4px
 
 .strand-item__stem
   width: 0
@@ -195,6 +201,15 @@ export default
   padding: 0 1px
   background-color: #dadada
   margin: 0px 18px
+
+.strand-item__stem--broken
+  background-image: linear-gradient(0deg, #dadada 25%, #ffffff 25%, #ffffff 50%, #dadada 50%, #dadada 75%, #ffffff 75%, #ffffff 100%)
+  background-size: 16.00px 16.00px
+  // background-size: 24.00px 24.00px
+  // background-size: 32.00px 32.00px
+  background-repeat: repeat-y
+
+
 
 .strand-item__stem--unread
   background-color: var(--v-primary-base)!important
@@ -227,14 +242,6 @@ export default
 .strand-item__circle:hover
   background-color: #dadada
 
-.strand-item__load-more
-  display: flex
-  align-items: center
-  min-height: 36px
-  width: 100%
-  justify-content: center
-  margin: 8px 0
-  // background: linear-gradient(180deg, rgba(0,0,0,0) calc(50% - 1px), rgba(192,192,192,1) calc(50%), rgba(0,0,0,0) calc(50% + 1px) )
 
 .strand-item__stem:hover
   background-color: #dadada

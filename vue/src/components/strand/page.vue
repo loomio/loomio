@@ -76,15 +76,12 @@ export default
         @loader.addLoadCommentRule(parseInt(@$route.params.comment_id))
         @loader.focusAttrs = {commentId: parseInt(@$route.query.comment_id)}
 
-      console.log '2', @loader.rules
-
       if @loader.rules.length == 0
         # # never read, or all read?
         # # console.log "0 rules"
         # console.log "ranges", @discussion.ranges
         # console.log "readRanges", @discussion.readRanges
         # console.log "@discussion.unreadItemsCount()", @discussion.unreadItemsCount()
-        console.log 'no rules'
         if @discussion.lastReadAt
           if @discussion.unreadItemsCount() == 0
             @loader.addLoadNewestRule()
@@ -96,9 +93,8 @@ export default
           @loader.addLoadOldestRule()
           @loader.focusAttrs = {oldest: 1}
 
-      # console.log '2', @$route, rules
-      # @loader.addContextRule()
-      # console.log 'fetching'
+      @loader.addContextRule()
+      @loader.addLoadPinnedRule()
       @loader.fetch().then =>
         # console.log 'scrolling to', @loader.focusAttrs
         if @loader.focusAttrs.newest
