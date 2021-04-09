@@ -94,7 +94,7 @@ export default
           @loader.focusAttrs = {oldest: 1}
 
       @loader.addContextRule()
-      @loader.addLoadPinnedRule()
+      # @loader.addLoadPinnedRule()
       @loader.fetch().then =>
         # console.log 'scrolling to', @loader.focusAttrs
         if @loader.focusAttrs.newest

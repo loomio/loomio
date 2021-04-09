@@ -36,12 +36,12 @@ export default
 
     menuActions: ->
       assign(
-        pick PollService.actions(@poll, @), ['edit_poll', 'close_poll', 'reopen_poll', 'notification_history', 'show_history', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread']
+        pick EventService.actions(@event, @), ['pin_event', 'unpin_event', 'move_event', 'copy_url']
       ,
-        pick EventService.actions(@event, @), ['move_event', 'copy_url', 'pin_event', 'unpin_event']
+        pick PollService.actions(@poll, @), ['edit_poll', 'close_poll', 'notification_history', 'show_history', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread']
       )
     dockActions: ->
-      pick PollService.actions(@poll, @), ['show_results', 'hide_results', 'translate_poll', 'edit_stance', 'announce_poll', 'remind_poll']
+      pick PollService.actions(@poll, @), ['reopen_poll', 'show_results', 'hide_results', 'translate_poll', 'edit_stance', 'announce_poll', 'remind_poll']
 
 </script>
 
@@ -49,6 +49,7 @@ export default
 section.strand-item.poll-created
   v-layout(justify-space-between)
     h1.poll-common-card__title.headline.pb-1(tabindex="-1")
+      v-icon(v-if="event.pinned") mdi-pin
       router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
       translation(v-if="poll.translation.title" :model='poll', field='title')
       poll-common-closing-at.ml-2(:poll='poll')

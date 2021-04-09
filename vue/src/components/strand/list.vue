@@ -107,7 +107,10 @@ export default
       .strand-item__gutter
         .strand-item__stem-wrapper
           .strand-item__stem.strand-item__stem--broken
-      strand-load-more(:label="{path: 'common.action.count_more', args: {count: countEarlierMissing(obj.event.position)}}" @click="loader.loadBefore(obj.event)")
+      strand-load-more(
+        :label="{path: 'common.action.count_more', args: {count: countEarlierMissing(obj.event.position)}}"
+        @click="loader.loadBefore(obj.event)"
+        :loading="loader.loading == obj.event.id")
 
     .strand-item__row
       .strand-item__gutter(v-if="obj.event.depth > 0")
@@ -131,8 +134,11 @@ export default
             .strand-item__gutter
               .strand-item__stem-wrapper
                 .strand-item__stem.strand-item__stem--broken
-                  .strand-item__load-more
-                    strand-load-more(:label="{path: 'common.action.count_responses', args: {count: obj.event.descendantCount}}" @click="loader.loadChildren(obj.event)")
+            .strand-item__load-more
+              strand-load-more(
+                :label="{path: 'common.action.count_more', args: {count: obj.event.descendantCount}}"
+                @click="loader.loadChildren(obj.event)"
+                :loading="loader.loading == obj.event.id")
 
     //- | {{lastPosition}} {{ranges[ranges.length -1][1]}}
     .strand-item__row(
@@ -141,7 +147,8 @@ export default
       )
       strand-load-more(
         :label="{path: 'common.action.count_more', args: {count: countLaterMissing()}}"
-        @click="loader.loadAfter(obj.event)")
+        @click="loader.loadAfter(obj.event)"
+        :loading="loader.loading == obj.event.id")
 </template>
 
 <style lang="sass">

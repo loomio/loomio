@@ -19,6 +19,7 @@ export default class ThreadLoader
     @focusAttrs = {}
     @visibleKeys = {}
     @collapsed = Vue.observable({})
+    @loading = false
     # @rules.push
     #   name: "my stuff"
     #   local:
@@ -61,6 +62,7 @@ export default class ThreadLoader
 
 
   loadEverything: ->
+    @loading = true
     @titleKey = 'strand_nav.whole_thread'
     @addRule
       local:
@@ -72,6 +74,7 @@ export default class ThreadLoader
 
   loadChildren: (event) ->
     # @expand(event.id)
+    @loading = event.id
     if event.kind == "new_discussion"
       @addRule
         local:
@@ -95,6 +98,7 @@ export default class ThreadLoader
           discussion_id: @discussion.id
           position_key_sw: event.positionKey
           order_by: 'position_key'
+          per: padding
 
   autoLoadAfter: (event) ->
     @loadAfter(event) if event.depth == 1
@@ -103,6 +107,7 @@ export default class ThreadLoader
     @loadBefore(event) if event.depth == 1
 
   loadAfter: (event) ->
+    @loading = event.id
     positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
 
     @addRule
@@ -119,8 +124,10 @@ export default class ThreadLoader
         position_key_gt: event.positionKey
         position_key_sw: positionKeyPrefix || null
         order_by: 'position_key'
+        per: padding
 
   loadBefore: (event) ->
+    @loading = event.id
     positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
 
     @addRule
@@ -140,6 +147,7 @@ export default class ThreadLoader
         position_key_sw: positionKeyPrefix || null
         order_by: 'position_key'
         order_desc: 1
+        per: padding
 
   addLoadCommentRule: (commentId) ->
     @titleKey = 'strand_nav.from_comment'
@@ -185,6 +193,7 @@ export default class ThreadLoader
         order: 'position_key'
 
   addLoadPositionKeyRule: (positionKey) ->
+    @loading = positionKey
     @rules.push
       name: "positionKey from url"
       local:
@@ -216,6 +225,7 @@ export default class ThreadLoader
     #     per: 1
 
   addLoadSequenceIdRule: (sequenceId) ->
+    @loading = sequenceId
     @titleKey = 'strand_nav.from_sequence_id'
     @rules.push
       name: "sequenceId from url"
@@ -290,6 +300,7 @@ export default class ThreadLoader
     @rules.push(rule)
     params = Object.assign {}, rule.remote, {exclude_types: 'group discussion'}
     Records.events.fetch(params: params)
+    @updateCollection()
     # Records.events.fetch(params: params).then (data) => @updateCollection()
 
   fetch:  ->
@@ -297,7 +308,7 @@ export default class ThreadLoader
       params = Object.assign {}, rule.remote, {exclude_types: 'group discussion'}
       Records.events.fetch(params: params)
     # console.log promises
-    Promise.all(promises)
+    Promise.all(promises).then => @loading = false
 
   updateCollection: ->
     @records = []
