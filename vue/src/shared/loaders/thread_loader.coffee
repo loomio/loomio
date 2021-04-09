@@ -5,7 +5,6 @@ import RangeSet         from '@/shared/services/range_set'
 import EventBus         from '@/shared/services/event_bus'
 import Session from '@/shared/services/session'
 
-padding = 25
 
 export default class ThreadLoader
   constructor: (discussion) ->
@@ -20,12 +19,7 @@ export default class ThreadLoader
     @visibleKeys = {}
     @collapsed = Vue.observable({})
     @loading = false
-    # @rules.push
-    #   name: "my stuff"
-    #   local:
-    #     find:
-    #       discussionId: @discussion.id
-    #       actorId: Session.user().id
+    @padding = 5
 
   setVisible: (isVisible, event) ->
     event.markAsRead() unless @visibleKeys.hasOwnProperty(event.positionKey)
@@ -81,7 +75,6 @@ export default class ThreadLoader
           find:
             discussionId: @discussion.id
           simplesort: 'positionKey'
-          limit: padding
         remote:
           discussion_id: @discussion.id
           position_key_sw: event.positionKey
@@ -93,12 +86,12 @@ export default class ThreadLoader
             discussionId: @discussion.id
             positionKey: {'$regex': "^#{event.positionKey}"}
           simplesort: 'positionKey'
-          limit: padding
+          limit: @padding
         remote:
           discussion_id: @discussion.id
           position_key_sw: event.positionKey
           order_by: 'position_key'
-          per: padding
+          per: @padding
 
   autoLoadAfter: (event) ->
     @loadAfter(event) if event.depth == 1
@@ -118,13 +111,13 @@ export default class ThreadLoader
             $jgt: event.positionKey
             $regex: (positionKeyPrefix && "^#{positionKeyPrefix}") || undefined
         simplesort: 'positionKey'
-        limit: padding
+        limit: @padding
       remote:
         discussion_id: @discussion.id
         position_key_gt: event.positionKey
         position_key_sw: positionKeyPrefix || null
         order_by: 'position_key'
-        per: padding
+        per: @padding
 
   loadBefore: (event) ->
     @loading = event.id
@@ -140,14 +133,14 @@ export default class ThreadLoader
             $regex: (positionKeyPrefix && "^#{positionKeyPrefix}") || undefined
         simplesort: 'positionKey'
         simplesortDesc: true
-        limit: padding
+        limit: @padding
       remote:
         discussion_id: @discussion.id
         position_key_lt: event.positionKey
         position_key_sw: positionKeyPrefix || null
         order_by: 'position_key'
         order_desc: 1
-        per: padding
+        per: @padding
 
   addLoadCommentRule: (commentId) ->
     @titleKey = 'strand_nav.from_comment'
@@ -157,7 +150,7 @@ export default class ThreadLoader
         find:
           discussionId: @discussion.id
           commentId: {$gte: commentId}
-        limit: padding
+        limit: @padding
       remote:
         order: 'sequence_id'
         discussion_id: @discussion.id
@@ -186,7 +179,7 @@ export default class ThreadLoader
           depth: 1
           position: {$gte: position}
         simplesort: 'positionKey'
-        limit: padding
+        limit: @padding
       remote:
         discussion_id: @discussion.id
         from_sequence_id_of_position: position
@@ -201,12 +194,12 @@ export default class ThreadLoader
           discussionId: @discussion.id
           positionKey: {$jgte: positionKey}
         simplesort: 'positionKey'
-        limit: padding
+        limit: @padding
       remote:
         discussion_id: @discussion.id
         position_key_gte: positionKey
         order_by: 'position_key'
-        per: padding
+        per: @padding
     #
     # @rules.push
     #   name: "positionKey rollback"
@@ -234,7 +227,7 @@ export default class ThreadLoader
           discussionId: @discussion.id
           sequenceId: {$gte: sequenceId}
         simplesort: 'sequenceId'
-        limit: padding
+        limit: @padding
       remote:
         from: sequenceId
         discussion_id: @discussion.id
@@ -248,10 +241,10 @@ export default class ThreadLoader
           discussionId: @discussion.id
         simplesort: 'sequenceId'
         simplesortDesc: true
-        limit: padding
+        limit: @padding
       remote:
         discussion_id: @discussion.id
-        per: padding
+        per: @padding
         order_by: 'sequence_id'
         order_desc: true
 
@@ -270,7 +263,7 @@ export default class ThreadLoader
         find:
           discussionId: @discussion.id
         simplesort: 'sequenceId'
-        limit: padding
+        limit: @padding
       remote:
         discussion_id: @discussion.id
         order_by: 'sequence_id'
@@ -290,7 +283,7 @@ export default class ThreadLoader
         find:
           discussionId: @discussion.id
           sequenceId: {$or: @discussion.unreadRanges().map((r) -> {$between: r} )}
-        limit: padding
+        limit: @padding
       remote:
         discussion_id: @discussion.id
         unread: true
