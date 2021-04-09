@@ -202,9 +202,9 @@ export default
 .strand-item__stem--focused
   background-color: var(--v-accent-base)!important
 
-.strand-item__stem--last
-  height: calc(100% - 44px)
-
+// .strand-item__stem--last
+//   height: calc(100% - 44px)
+//
 // .strand-item__stem-stop
 //   position: relative
 //   left: -16px
