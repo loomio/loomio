@@ -95,6 +95,10 @@ export default
 
       @loader.addContextRule()
       # @loader.addLoadPinnedRule()
+      if @discussion.itemsCount <= @loader.padding
+        @loader.rules = []
+        @loader.loadEverything()
+
       @loader.fetch().then =>
         # console.log 'scrolling to', @loader.focusAttrs
         if @loader.focusAttrs.newest

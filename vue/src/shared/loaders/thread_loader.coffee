@@ -103,13 +103,15 @@ export default class ThreadLoader
     @loadBefore(event) if event.depth == 1
 
   loadAfter: (event) ->
-    keys = event.positionKey.split('-')
-    num = parseInt(keys[keys.length - 1]) + 1
-    key = "0".repeat(5 - (""+num).length) + num
-    keys[keys.length - 1] = key
-    positionKey = keys.join('-')
+    # keys = event.positionKey.split('-')
+    # num = parseInt(keys[keys.length - 1]) + 1
+    # key = "0".repeat(5 - (""+num).length) + num
+    # keys[keys.length - 1] = key
+    # positionKey = keys.join('-')
+    # positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
+    # positionKeyPrefix = undefined if keys.length == 1
     positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
-    positionKeyPrefix = undefined if keys.length == 1
+    positionKey = event.positionKey
 
     @addRule
       name: "load after (prefix #{positionKeyPrefix})"
@@ -117,13 +119,13 @@ export default class ThreadLoader
         find:
           discussionId: @discussion.id
           positionKey:
-            $jgte: positionKey
+            $jgt: positionKey
             $regex: (positionKeyPrefix && "^#{positionKeyPrefix}") || undefined
         simplesort: 'id'
         limit: @padding
       remote:
         discussion_id: @discussion.id
-        position_key_gte: positionKey
+        position_key_gt: positionKey
         position_key_sw: positionKeyPrefix || null
         order_by: 'position_key'
         per: @padding
