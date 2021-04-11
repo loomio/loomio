@@ -107,10 +107,11 @@ export default
       .strand-item__gutter
         .strand-item__stem-wrapper
           .strand-item__stem.strand-item__stem--broken
+      //- | {{loader.loading}} == {{'before'+obj.event.id}}
       strand-load-more(
         :label="{path: 'common.action.count_more', args: {count: countEarlierMissing(obj.event.position)}}"
         @click="loader.loadBefore(obj.event)"
-        :loading="loader.loading == obj.event.id")
+        :loading="loader.loading == 'before'+obj.event.id")
 
     .strand-item__row(v-if="!loader.collapsed[obj.event.id]")
       .strand-item__gutter(v-if="obj.event.depth > 0")
@@ -121,7 +122,7 @@ export default
         .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event)")
           .strand-item__stem(:class="{'strand-item__stem--unread': isUnread(obj.event), 'strand-item__stem--focused': isFocused(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
       .strand-item__main
-        //- div {{classes(obj.event)}} {{[obj.event.sequenceId]}} {{isFocused(obj.event)}} {{loader.focusAttrs}}
+        //- div {{[obj.event.sequenceId]}} {{obj.event.positionKey}} {{isFocused(obj.event)}} {{loader.focusAttrs}}
         div(v-observe-visibility="{intersection: {threshold: 0.25}, callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
           component(:class="classes(obj.event)" :is="componentForKind(obj.event.kind)" :event='obj.event')
 
@@ -132,10 +133,11 @@ export default
               .strand-item__stem-wrapper
                 .strand-item__stem.strand-item__stem--broken
             .strand-item__load-more
+              //- | {{loader.loading}} == {{'children'+obj.event.id}}
               strand-load-more(
                 :label="{path: 'common.action.count_more', args: {count: obj.event.descendantCount}}"
                 @click="loader.loadChildren(obj.event)"
-                :loading="loader.loading == obj.event.id")
+                :loading="loader.loading == 'children'+obj.event.id")
 
     .strand-item__row(v-if="loader.collapsed[obj.event.id]")
       .d-flex.align-center
@@ -148,10 +150,11 @@ export default
       v-if="lastPosition != 0 && isLastInLastRange(obj.event.position) && obj.event.position != lastPosition"
       v-observe-visibility="{callback: (isVisible, entry) => isVisible && loader.autoLoadAfter(obj.event), once: true}"
       )
+      //- | {{loader.loading}} == {{'after'+obj.event.id}}
       strand-load-more(
         :label="{path: 'common.action.count_more', args: {count: countLaterMissing()}}"
         @click="loader.loadAfter(obj.event)"
-        :loading="loader.loading == obj.event.id")
+        :loading="loader.loading == 'after'+obj.event.id")
 </template>
 
 <style lang="sass">

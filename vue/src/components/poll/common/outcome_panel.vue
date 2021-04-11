@@ -32,7 +32,7 @@ v-alert.my-4.poll-common-outcome-panel(
     .title {{outcome.eventSummary}}
     span {{exactDate(parseISO(outcome.pollOption().name))}}
     p {{outcome.eventLocation}}
-  formatted-text(:model="outcome" column="statement")
+  formatted-text(style="font-size: 15px" :model="outcome" column="statement")
   document-list(:model="outcome")
   v-layout(align-center)
     v-spacer

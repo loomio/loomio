@@ -1,5 +1,5 @@
 import Records from '@/shared/services/records'
-import { isNumber, uniq, compact, orderBy, camelCase, forEach, isObject, sortedUniq, sortBy, without } from 'lodash'
+import { isNumber, uniq, compact, orderBy, camelCase, forEach, isObject, sortedUniq, sortBy, without, map } from 'lodash'
 import Vue from 'vue'
 import RangeSet         from '@/shared/services/range_set'
 import EventBus         from '@/shared/services/event_bus'
@@ -19,7 +19,7 @@ export default class ThreadLoader
     @visibleKeys = {}
     @collapsed = Vue.observable({})
     @loading = false
-    @padding = 5
+    @padding = 20
 
   setVisible: (isVisible, event) ->
     event.markAsRead() unless @visibleKeys.hasOwnProperty(event.positionKey)
@@ -67,20 +67,22 @@ export default class ThreadLoader
         per: 1000
 
   loadChildren: (event) ->
-    # @expand(event.id)
-    @loading = event.id
+    @loading = 'children'+event.id
     if event.kind == "new_discussion"
       @addRule
+        name: "load discussion children"
         local:
           find:
             discussionId: @discussion.id
-          simplesort: 'positionKey'
+          simplesort: 'id'
+          limit: @padding
         remote:
           discussion_id: @discussion.id
-          position_key_sw: event.positionKey
           order_by: 'position_key'
+          per: @padding
     else
       @addRule
+        name: "load children (prefix #{event.positionKey})"
         local:
           find:
             discussionId: @discussion.id
@@ -90,6 +92,7 @@ export default class ThreadLoader
         remote:
           discussion_id: @discussion.id
           position_key_sw: event.positionKey
+          depth_gt: event.depth
           order_by: 'position_key'
           per: @padding
 
@@ -100,27 +103,33 @@ export default class ThreadLoader
     @loadBefore(event) if event.depth == 1
 
   loadAfter: (event) ->
-    @loading = event.id
+    keys = event.positionKey.split('-')
+    num = parseInt(keys[keys.length - 1]) + 1
+    key = "0".repeat(5 - (""+num).length) + num
+    keys[keys.length - 1] = key
+    positionKey = keys.join('-')
     positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
+    positionKeyPrefix = undefined if keys.length == 1
 
     @addRule
+      name: "load after (prefix #{positionKeyPrefix})"
       local:
         find:
           discussionId: @discussion.id
           positionKey:
-            $jgt: event.positionKey
+            $jgte: positionKey
             $regex: (positionKeyPrefix && "^#{positionKeyPrefix}") || undefined
-        simplesort: 'positionKey'
+        simplesort: 'id'
         limit: @padding
       remote:
         discussion_id: @discussion.id
-        position_key_gt: event.positionKey
+        position_key_gte: positionKey
         position_key_sw: positionKeyPrefix || null
         order_by: 'position_key'
         per: @padding
 
   loadBefore: (event) ->
-    @loading = event.id
+    @loading = 'before'+event.id
     positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
 
     @addRule
@@ -131,7 +140,7 @@ export default class ThreadLoader
           positionKey:
             $jlt: event.positionKey
             $regex: (positionKeyPrefix && "^#{positionKeyPrefix}") || undefined
-        simplesort: 'positionKey'
+        simplesort: 'sequenceId'
         simplesortDesc: true
         limit: @padding
       remote:
@@ -225,13 +234,14 @@ export default class ThreadLoader
       local:
         find:
           discussionId: @discussion.id
-          sequenceId: {$gte: sequenceId}
+          sequenceId: {'$jgte': parseInt(sequenceId)}
         simplesort: 'sequenceId'
         limit: @padding
       remote:
-        from: sequenceId
+        sequence_id_gte: sequenceId
         discussion_id: @discussion.id
         order: 'sequence_id'
+        per: @padding
 
   addLoadNewestRule: () ->
     @titleKey = 'strand_nav.newest_first'
@@ -292,8 +302,8 @@ export default class ThreadLoader
   addRule: (rule) ->
     @rules.push(rule)
     params = Object.assign {}, rule.remote, {exclude_types: 'group discussion'}
-    Records.events.fetch(params: params)
-    @updateCollection()
+    Records.events.fetch(params: params).finally => @loading = false
+    # @updateCollection()
     # Records.events.fetch(params: params).then (data) => @updateCollection()
 
   fetch:  ->
@@ -301,21 +311,13 @@ export default class ThreadLoader
       params = Object.assign {}, rule.remote, {exclude_types: 'group discussion'}
       Records.events.fetch(params: params)
     # console.log promises
-    Promise.all(promises).then => @loading = false
+    Promise.all(promises).finally => @loading = false
 
   updateCollection: ->
     @records = []
     @rules.forEach (rule) =>
-      args = Object.assign({}, rule.local.find)
       chain = Records.events.collection.chain()
-      forEach args, (value, key) ->
-        if isObject(value)
-          # eg: value = {$lte: asdads,  $gte: asdasd}
-          forEach value, (subvalue, subkey) ->
-            chain = chain.find({"#{key}": {"#{subkey}": subvalue}})
-        else
-          # eg: value = 1
-          chain = chain.find({"#{key}": value})
+      chain.find(rule.local.find)
 
       if rule.local.simplesort
         chain = chain.simplesort(rule.local.simplesort, rule.local.simplesortDesc)
@@ -331,12 +333,6 @@ export default class ThreadLoader
 
     orphans = @records.filter (event) ->
       event.parentId == null || !eventIds.includes(event.parentId)
-    # console.log @records
-    # console.log("includes 00001-00001", @records.find((r) -> r.positionKey == "00001-00001"))
-    # console.log(Records.events.collection.chain().find(positionKey: "00001-00001").data())
-
-    # find records with no parentId or, where no event with that parentId in records
-
 
     eventsByParentId = {}
     @records.forEach (event) =>

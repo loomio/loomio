@@ -120,7 +120,7 @@ export default
 .strand-page
   v-main
     v-container.max-width-800(v-if="discussion")
-      //- p(v-for="rule in loader.rules") {{rule}}
+      p(v-for="rule in loader.rules") {{rule}}
       thread-current-poll-banner(:discussion="discussion")
       discussion-fork-actions(:discussion='discussion' :key="'fork-actions'+ discussion.id")
       strand-card(v-if="loader" :discussion='discussion' :loader="loader")
