@@ -1,5 +1,5 @@
 import Records from '@/shared/services/records'
-import { isNumber, uniq, compact, orderBy, camelCase, forEach, isObject, sortedUniq, sortBy, without, map } from 'lodash'
+import { max, isNumber, uniq, compact, orderBy, camelCase, forEach, isObject, sortedUniq, sortBy, without, map } from 'lodash'
 import Vue from 'vue'
 import RangeSet         from '@/shared/services/range_set'
 import EventBus         from '@/shared/services/event_bus'
@@ -205,42 +205,43 @@ export default class ThreadLoader
           discussionId: @discussion.id
           positionKey: {$jgte: positionKey}
         simplesort: 'positionKey'
-        limit: @padding
+        limit: parseInt(@padding/2)
       remote:
         discussion_id: @discussion.id
         position_key_gte: positionKey
         order_by: 'position_key'
-        per: @padding
-    #
-    # @rules.push
-    #   name: "positionKey rollback"
-    #   local:
-    #     find:
-    #       discussionId: @discussion.id
-    #       positionKey: {$lt: positionKey}
-    #     simplesort: 'positionKey'
-    #     simplesortDesc: true
-    #     limit: 1
-    #   remote:
-    #     discussion_id: @discussion.id
-    #     position_key_lt: positionKey
-    #     order_by: 'position_key'
-    #     order_desc: 1
-    #     per: 1
+        per: parseInt(@padding/2)
+
+    @rules.push
+      name: "positionKey rollback"
+      local:
+        find:
+          discussionId: @discussion.id
+          positionKey: {$lt: positionKey}
+        simplesort: 'positionKey'
+        simplesortDesc: true
+        limit: parseInt(@padding/2)
+      remote:
+        discussion_id: @discussion.id
+        position_key_lt: positionKey
+        order_by: 'position_key'
+        order_desc: 1
+        per: parseInt(@padding/2)
 
   addLoadSequenceIdRule: (sequenceId) ->
-    @loading = sequenceId
+    id = max([parseInt(sequenceId) - parseInt(@padding/2), 0])
+    @loading = id
     @titleKey = 'strand_nav.from_sequence_id'
     @rules.push
       name: "sequenceId from url"
       local:
         find:
           discussionId: @discussion.id
-          sequenceId: {'$jgte': parseInt(sequenceId)}
+          sequenceId: {'$jgte': id}
         simplesort: 'sequenceId'
         limit: @padding
       remote:
-        sequence_id_gte: sequenceId
+        sequence_id_gte: id
         discussion_id: @discussion.id
         order: 'sequence_id'
         per: @padding
@@ -256,9 +257,9 @@ export default class ThreadLoader
         limit: @padding
       remote:
         discussion_id: @discussion.id
-        per: @padding
         order_by: 'sequence_id'
         order_desc: true
+        per: @padding
 
   addContextRule: ->
     @rules.push
@@ -279,6 +280,7 @@ export default class ThreadLoader
       remote:
         discussion_id: @discussion.id
         order_by: 'sequence_id'
+        per: @padding
 
   addLoadUnreadRule: ->
     @titleKey = 'strand_nav.unread'
@@ -289,17 +291,35 @@ export default class ThreadLoader
           find:
             id: @discussion.createdEvent().id
 
+    # I don't think we need this..
+    # @rules.push
+    #   name: {path: "strand_nav.new_to_you"}
+    #   local:
+    #     find:
+    #       discussionId: @discussion.id
+    #       sequenceId: {$or: @discussion.unreadRanges().map((r) -> {$between: r} )}
+    #     limit: @padding
+    #   remote:
+    #     discussion_id: @discussion.id
+    #     unread: true
+    #     order_by: "sequence_id"
+    #     per: @padding
+
+    # padding around new to you
+    id = max([@discussion.firstUnreadSequenceId() - parseInt(@padding/2), @discussion.firstSequenceId()])
     @rules.push
       name: {path: "strand_nav.new_to_you"}
       local:
         find:
           discussionId: @discussion.id
-          sequenceId: {$or: @discussion.unreadRanges().map((r) -> {$between: r} )}
+          sequenceId: {$jgte: id}
         limit: @padding
+        order: 'sequenceId'
       remote:
         discussion_id: @discussion.id
-        unread: true
+        sequence_id_gte: id
         order_by: "sequence_id"
+        per: @padding
 
   addRule: (rule) ->
     @rules.push(rule)
