@@ -101,10 +101,10 @@ export default
 
       @loader.fetch().then =>
         # console.log 'scrolling to', @loader.focusAttrs
-        if @loader.focusAttrs.newest
-          @scrollTo ".sequenceId-#{@discussion.lastSequenceId()}" || '.context-panel'
-        if @loader.focusAttrs.unread
-          @scrollTo ".sequenceId-#{@discussion.firstUnreadSequenceId()}" || '.context-panel'
+        if @loader.focusAttrs.newest && @discussion.lastSequenceId()
+          @scrollTo ".sequenceId-#{@discussion.lastSequenceId()}"
+        if @loader.focusAttrs.unread && @discussion.firstUnreadSequenceId()
+          @scrollTo ".sequenceId-#{@discussion.firstUnreadSequenceId()}"
         if @loader.focusAttrs.oldest
           @scrollTo '.context-panel'
         if @loader.focusAttrs.commentId
