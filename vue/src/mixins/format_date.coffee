@@ -25,7 +25,7 @@ export default
           , 500
 
       waitFor selector, =>
-        @$vuetify.goTo(selector, duration: 0)
+        @$vuetify.goTo(selector, duration: 0, offset: 32)
         each [1,2,3], (n) =>
           headingSelector = selector+" h#{n}[tabindex=\"-1\"]"
           if document.querySelector(headingSelector)

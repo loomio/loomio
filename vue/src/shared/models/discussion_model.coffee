@@ -184,7 +184,7 @@ export default class DiscussionModel extends BaseModel
     (last(@readRanges) || [])[1]
 
   firstUnreadSequenceId: ->
-    RangeSet.firstMissing(@ranges, @readRanges)
+    (@unreadRanges()[0] || [])[0]
 
   readSequenceIds: ->
     RangeSet.rangesToArray(@readRanges)

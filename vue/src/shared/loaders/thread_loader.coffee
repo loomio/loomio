@@ -1,5 +1,5 @@
 import Records from '@/shared/services/records'
-import { max, isNumber, uniq, compact, orderBy, camelCase, forEach, isObject, sortedUniq, sortBy, without, map } from 'lodash'
+import { cloneDeep, max, isNumber, uniq, compact, orderBy, camelCase, forEach, isObject, sortedUniq, sortBy, without, map } from 'lodash'
 import Vue from 'vue'
 import RangeSet         from '@/shared/services/range_set'
 import EventBus         from '@/shared/services/event_bus'
@@ -14,12 +14,15 @@ export default class ThreadLoader
   reset: ->
     @collection = Vue.observable([])
     @rules = []
-    @unreadIds = []
+    @readRanges = cloneDeep @discussion.readRanges
     @focusAttrs = {}
     @visibleKeys = {}
     @collapsed = Vue.observable({})
     @loading = false
     @padding = 20
+
+  firstUnreadSequenceId: ->
+    (RangeSet.subtractRanges(@discussion.ranges, @readRanges)[0] || [])[0]
 
   setVisible: (isVisible, event) ->
     event.markAsRead() unless @visibleKeys.hasOwnProperty(event.positionKey)
@@ -306,7 +309,7 @@ export default class ThreadLoader
     #     per: @padding
 
     # padding around new to you
-    id = max([@discussion.firstUnreadSequenceId() - parseInt(@padding/2), @discussion.firstSequenceId()])
+    id = max([@firstUnreadSequenceId() - parseInt(@padding/2), @discussion.firstSequenceId()])
     @rules.push
       name: {path: "strand_nav.new_to_you"}
       local:
@@ -359,7 +362,6 @@ export default class ThreadLoader
     eventsByParentId = {}
     @records.forEach (event) =>
       eventsByParentId[event.parentId] = (eventsByParentId[event.parentId] || []).concat([event])
-      @unreadIds.push(event.sequenceId) if !RangeSet.includesValue(@discussion.readRanges, event.sequenceId)
 
     nest = (records) ->
       r = records.map (event) ->

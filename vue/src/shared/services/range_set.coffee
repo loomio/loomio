@@ -74,29 +74,28 @@ export default new class RangeSet
   firstMissing: (ranges, readRanges) =>
     @rangesToArray(ranges).find (v) => !@includesValue(readRanges, v)
 
-  # # err need to exrtact this to an npm module
-  # selfTest: ->
-  #   length1:                    @length([1,1]) == 1
-  #   length2:                    @length([1,2]) == 2
-  #   serialize:                 @serialize([[1,2], [4,5]]) == "1-2,4-5"
-  #   parse:           _.isEqual @parse("1-2,4-5"),                 [[1,2],[4,5]]
-  #   reduceSimple:    _.isEqual @reduce([[1,1]]), [[1,1]]
-  #   reduceMerge:     _.isEqual @reduce([[1,2],[3,4]]),            [[1,4]]
-  #   reduceEmpty:     _.isEqual @reduce([]), []
-  #   subtractWhole:   _.isEqual @subtractRange([1,1], [1,1]),      []
-  #   subtractNone:    _.isEqual @subtractRange([1,1], [2,2]),      [[1,1]]
-  #   subtractLeft:    _.isEqual @subtractRange([1,2], [1,1]),      [[2,2]]
-  #   subtractRight:   _.isEqual @subtractRange([1,2], [2,2]),      [[1,1]]
-  #   subtractMiddle:  _.isEqual @subtractRange([1,3], [2,2]),      [[1,1], [3,3]]
-  #   overlapsNone:              @overlaps([1,2], [3,4]) == false
-  #   overlapsPart:              @overlaps([1,2], [2,3]) == true
-  #   overlapsWhole:             @overlaps([1,2], [1,2]) == true
-  #   subtractRanges1: _.isEqual @subtractRanges([[1,1]], [[1,1]]), []
-  #   subtractRanges2: _.isEqual @subtractRanges([[1,2]], [[1,1]]), [[2,2]]
-  #   subtractRanges3: _.isEqual @subtractRanges([[1,2], [4,6]], [[1,1], [5,5]]), [[2,2], [4,4], [6,6]]
-  #   subtractRanges4: _.isEqual @subtractRanges([[1,2], [4,8]], [[5,6], [7,8]]), [[1,2], [4,4]]
-  #   firstMissing0:   _.isEqual @firstMissing([[1,3]], [[1,3]]), undefined
-  #   firstMissing1:   _.isEqual @firstMissing([[1,3]], [[1,2]]), 3
-  #   firstMissing2:   _.isEqual @firstMissing([[1,3]], [[2,3]]), 1
-  #   firstMissing3:   _.isEqual @firstMissing([[1,2], [4,6]], [[1,2], [4,5]]), 6
-  #   firstMissing4:   _.isEqual @firstMissing([[1,2], [4,6]], [[1,2], [5,6]]), 4
+  selfTest: ->
+    length1:                 @length([[1,1]]) == 1
+    length2:                 @length([[1,2]]) == 2
+    serialize:               @serialize([[1,2], [4,5]]) == "1-2,4-5"
+    parse:           isEqual @parse("1-2,4-5"),                 [[1,2],[4,5]]
+    reduceSimple:    isEqual @reduce([[1,1]]), [[1,1]]
+    reduceMerge:     isEqual @reduce([[1,2],[3,4]]),            [[1,4]]
+    reduceEmpty:     isEqual @reduce([]), []
+    subtractWhole:   isEqual @subtractRange([1,1], [1,1]),      []
+    subtractNone:    isEqual @subtractRange([1,1], [2,2]),      [[1,1]]
+    subtractLeft:    isEqual @subtractRange([1,2], [1,1]),      [[2,2]]
+    subtractRight:   isEqual @subtractRange([1,2], [2,2]),      [[1,1]]
+    subtractMiddle:  isEqual @subtractRange([1,3], [2,2]),      [[1,1], [3,3]]
+    overlapsNone:            @overlaps([1,2], [3,4]) == false
+    overlapsPart:            @overlaps([1,2], [2,3]) == true
+    overlapsWhole:           @overlaps([1,2], [1,2]) == true
+    subtractRanges1: isEqual @subtractRanges([[1,1]], [[1,1]]), []
+    subtractRanges2: isEqual @subtractRanges([[1,2]], [[1,1]]), [[2,2]]
+    subtractRanges3: isEqual @subtractRanges([[1,2], [4,6]], [[1,1], [5,5]]), [[2,2], [4,4], [6,6]]
+    subtractRanges4: isEqual @subtractRanges([[1,2], [4,8]], [[5,6], [7,8]]), [[1,2], [4,4]]
+    firstMissing0:   isEqual @firstMissing([[1,3]], [[1,3]]), undefined
+    firstMissing1:   isEqual @firstMissing([[1,3]], [[1,2]]), 3
+    firstMissing2:   isEqual @firstMissing([[1,3]], [[2,3]]), 1
+    firstMissing3:   isEqual @firstMissing([[1,2], [4,6]], [[1,2], [4,5]]), 6
+    firstMissing4:   isEqual @firstMissing([[1,2], [4,6]], [[1,2], [5,6]]), 4

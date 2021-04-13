@@ -59,7 +59,6 @@ export default
       return if @discussion.createdEvent.childCount == 0
       @loader.reset()
 
-
       if @$route.query.k
         @loader.addLoadPositionKeyRule(@$route.query.k)
         @loader.focusAttrs = {positionKey: @$route.query.k}
@@ -99,22 +98,41 @@ export default
         @loader.rules = []
         @loader.loadEverything()
 
-      @loader.fetch().then =>
-        # console.log 'scrolling to', @loader.focusAttrs
-        if @loader.focusAttrs.newest && @discussion.lastSequenceId()
-          @scrollTo ".sequenceId-#{@discussion.lastSequenceId()}"
-        if @loader.focusAttrs.unread && @discussion.firstUnreadSequenceId()
-          @scrollTo ".sequenceId-#{@discussion.firstUnreadSequenceId()}"
-        if @loader.focusAttrs.oldest
-          @scrollTo '.context-panel'
-        if @loader.focusAttrs.commentId
-          @scrollTo ".commendId-#{@loader.focusAttrs.commentId}"
-        if @loader.focusAttrs.sequenceId
-          @scrollTo ".sequenceId-#{@loader.focusAttrs.sequenceId}"
-        if @loader.focusAttrs.position
-          @scrollTo ".position-#{@loader.focusAttrs.position}"
-        if @loader.focusAttrs.positionKey
-          @scrollTo ".positionKey-#{@loader.focusAttrs.positionKey}"
+      # console.log 'fetching', @loader.focusAttrs
+      @loader.fetch().finally =>
+        setTimeout =>
+          if @loader.focusAttrs.newest
+            if @discussion.lastSequenceId()
+              @scrollTo ".sequenceId-#{@discussion.lastSequenceId()}"
+            else
+              @scrollTo ".context-panel"
+
+          if @loader.focusAttrs.unread
+            # how do we know when the context was updated?
+            if @loader.firstUnreadSequenceId()
+              # console.log 'scroll to unread items'
+              @scrollTo ".sequenceId-#{@loader.firstUnreadSequenceId()}"
+            else
+              # console.log 'scroll to unread context'
+              @scrollTo '.context-panel'
+
+          if @loader.focusAttrs.oldest
+            # console.log 'scroll to oldest, context'
+            @scrollTo '.context-panel'
+
+          if @loader.focusAttrs.commentId
+            # console.log 'scroll to comment'
+            @scrollTo ".commendId-#{@loader.focusAttrs.commentId}"
+
+          if @loader.focusAttrs.sequenceId
+            # console.log 'scroll to sequenceId'
+            @scrollTo ".sequenceId-#{@loader.focusAttrs.sequenceId}"
+
+          if @loader.focusAttrs.position
+            @scrollTo ".position-#{@loader.focusAttrs.position}"
+
+          if @loader.focusAttrs.positionKey
+            @scrollTo ".positionKey-#{@loader.focusAttrs.positionKey}"
       .catch (res) =>
         console.log 'promises failed', res
 
@@ -124,7 +142,12 @@ export default
 .strand-page
   v-main
     v-container.max-width-800(v-if="discussion")
-      p(v-for="rule in loader.rules") {{rule}}
+      //- p(v-for="rule in loader.rules") {{rule}}
+      //- p loader: {{loader.focusAttrs}}
+      //- p ranges: {{discussion.ranges}}
+      //- p read ranges: {{loader.readRanges}}
+      //- p first unread {{loader.firstUnreadSequenceId()}}
+      //- p test: {{rangeSetSelfTest()}}
       thread-current-poll-banner(:discussion="discussion")
       discussion-fork-actions(:discussion='discussion' :key="'fork-actions'+ discussion.id")
       strand-card(v-if="loader" :discussion='discussion' :loader="loader")

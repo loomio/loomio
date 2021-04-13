@@ -61,7 +61,7 @@ export default
       if event.kind == "new_discussion"
         @loader.discussion.updatedAt > @loader.discussion.lastReadAt
       else
-        @loader.unreadIds.includes(event.sequenceId)
+        !RangeSet.includesValue(@loader.readRanges, event.sequenceId)
 
     positionKeyPrefix: (event) ->
       if event.depth < 1
