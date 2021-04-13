@@ -20,7 +20,7 @@ export default
     knobHeight: 32
     trackHeight: 400
     position: 0
-    minUnitHeight: 24
+    minUnitHeight: 16
     presets: []
     knobVisible: false
     keys: []
