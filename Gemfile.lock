@@ -382,7 +382,7 @@ GEM
     net_http_timeout_errors (0.3.5)
     newrelic_rpm (6.15.0)
     nio4r (2.5.7)
-    nokogiri (1.11.2)
+    nokogiri (1.11.3)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     oga (3.3)
@@ -482,7 +482,7 @@ GEM
       railties (>= 5.0)
     reverse_markdown (2.0.0)
       nokogiri
-    rexml (3.2.4)
+    rexml (3.2.5)
     rspec-activemodel-mocks (1.1.0)
       activemodel (>= 3.0)
       activesupport (>= 3.0)
@@ -512,7 +512,7 @@ GEM
     ruby-ll (2.1.2)
       ansi
       ast
-    ruby-saml (1.12.0)
+    ruby-saml (1.12.1)
       nokogiri (>= 1.10.5)
       rexml
     ruby-vips (2.0.17)
@@ -532,20 +532,20 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sentry-rails (4.3.3)
+    sentry-rails (4.3.4)
       railties (>= 5.0)
       sentry-ruby-core (~> 4.3.0)
-    sentry-ruby (4.3.1)
+    sentry-ruby (4.3.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       faraday (>= 1.0)
-      sentry-ruby-core (= 4.3.1)
-    sentry-ruby-core (4.3.1)
+      sentry-ruby-core (= 4.3.2)
+    sentry-ruby-core (4.3.2)
       concurrent-ruby
       faraday
     sentry-sidekiq (4.3.0)
       sentry-ruby-core (~> 4.3.0)
     sexp_processor (4.14.1)
-    sidekiq (6.2.0)
+    sidekiq (6.2.1)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
