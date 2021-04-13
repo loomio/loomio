@@ -1,7 +1,7 @@
 class AnnouncementService
   class UnknownAudienceKindError < Exception; end
 
-  def self.audience_users(model, kind, actor, exclude_members = false)
+  def self.audience_users(model, kind, actor, exclude_members = false, include_actor = false)
     users = case kind
     when /group-\d+/
       id = kind.match(/group-(\d+)/)[1].to_i
@@ -20,7 +20,8 @@ class AnnouncementService
     end.active
 
     users = users.where.not(id: model.voters.pluck(:id)) if exclude_members
-    users
+
+    include_actor ? users : users.where('users.id != ?', actor.id)
   end
 
   def self.resend_pending_invitations(since: 25.hours.ago, till: 24.hours.ago)

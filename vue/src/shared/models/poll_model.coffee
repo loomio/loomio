@@ -58,6 +58,9 @@ export default class PollModel extends BaseModel
     @hasMany   'stances'
     @hasMany   'versions'
 
+  bestNamedId: ->
+    ((@id && @) || (@discusionId && @discussion()) || (@groupId && @group()) || {namedId: ->}).namedId()
+
   tags: ->
     @recordStore.tags.collection.chain().find(id: {$in: @tagIds}).simplesort('priority').data()
 

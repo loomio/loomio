@@ -6,7 +6,8 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
       target_model,
       params[:recipient_audience],
       current_user,
-      params[:exclude_members]
+      params[:exclude_members],
+      params[:include_actor].present?
     )
     respond_with_collection
   end
@@ -19,7 +20,8 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
       user_ids: String(params[:recipient_user_xids]).split('x').map(&:to_i),
       audience: params[:recipient_audience],
       usernames: String(params[:recipient_usernames]).split(','),
-      exclude_members: params[:exclude_members]
+      exclude_members: params[:exclude_members],
+      include_actor: params[:include_actor].present?
     )
     render json: {count: count}
   end

@@ -50,6 +50,7 @@ export default
     submit: ->
       @outcome.customFields.should_send_calendar_invite = @outcome.calendarInvite
       @outcome.customFields.event_description = @outcome.statement if @datesAsOptions()
+      @outcome.includeActor = 1 if @outcome.calendarInvite
 
       if @outcome.isNew()
         actionName = "created"
@@ -88,6 +89,7 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
     recipients-autocomplete(
       :label="$t('action_dock.notify')"
       :placeholder="$t('poll_common_outcome_form.who_to_notify')"
+      :include-actor="outcome.calendarInvite"
       :model="outcome")
 
     .poll-common-calendar-invite(v-if='datesAsOptions()')

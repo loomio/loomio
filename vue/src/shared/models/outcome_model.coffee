@@ -14,6 +14,8 @@ export default class OutcomeModel extends BaseModel
     statement: '<p></p>'
     statementFormat: 'html'
     customFields: {}
+    calendarInvite: false
+    includeActor: false
     files: []
     imageFiles: []
     attachments: []
@@ -61,3 +63,6 @@ export default class OutcomeModel extends BaseModel
 
   notifyAction: ->
     'publish'
+
+  bestNamedId: ->
+    ((@id && @) || (@pollId && @poll()) || (@groupId && @group()) || {namedId: ->}).namedId()
