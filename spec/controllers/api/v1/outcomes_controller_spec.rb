@@ -4,7 +4,7 @@ describe API::V1::OutcomesController do
   let(:user) { create :user }
   let(:another_user) { create :user }
   let(:outcome) { create :outcome, poll: poll, author: user }
-  let(:poll) { create :poll, discussion: discussion, closed_at: 1.day.ago, author: user }
+  let(:poll) { create :poll, discussion: discussion, group: group, closed_at: 1.day.ago, author: user }
   let(:meeting_poll) { create :poll_meeting, discussion: discussion, closed_at: 1.day.ago, author: user }
   let(:another_poll) { create :poll, discussion: discussion, closed_at: 1.day.ago, author: user }
   let(:discussion) { create :discussion, group: group }
@@ -27,6 +27,20 @@ describe API::V1::OutcomesController do
       outcome = Outcome.last
       expect(outcome.statement).to eq outcome_params[:statement]
       expect(outcome.poll).to eq poll
+    end
+
+    it 'notifies group' do
+      sign_in user
+      group.add_member! another_user
+      params = {
+        poll_id: poll.id,
+        statement: "we did it",
+        recipient_audience: 'group',
+      }
+      expect { post :create, params: { outcome: params } }.to change { Outcome.count }.by(1)
+      expect(response.status).to eq 200
+      outcome = Outcome.find(JSON.parse(response.body)['outcomes'][0]['id'])
+      expect(outcome.created_event.notifications.count).to eq 3
     end
 
     it 'does not allow creating an invalid outcome' do
