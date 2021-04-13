@@ -74,7 +74,6 @@ class OutcomeService
 
     EventBus.broadcast 'outcome_update', outcome, actor
 
-    byebug
     Events::OutcomeUpdated.publish!(outcome: outcome,
                                     actor: actor,
                                     recipient_user_ids: users.pluck(:id),
