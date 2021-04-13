@@ -2,9 +2,6 @@
 import Session from '@/shared/services/session'
 
 export default
-  data: ->
-    currentUser: Session.user()
-
   props:
     query: String
     loading: Boolean
