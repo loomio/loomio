@@ -12,7 +12,19 @@ class PollOption < ApplicationRecord
   end
 
   def color
-    AppConfig.colors.dig(poll.poll_type, self.priority % AppConfig.colors.length)
+    if poll.poll_type == 'proposal'
+      {
+        'agree' => AppConfig.colors['proposal'][0],
+        'abstain' => AppConfig.colors['proposal'][1],
+        'disagree' => AppConfig.colors['proposal'][2],
+        'block' => AppConfig.colors['proposal'][3],
+        'consent' => AppConfig.colors['proposal'][0],
+        'tension' => AppConfig.colors['proposal'][1],
+        'objection' => AppConfig.colors['proposal'][2]
+      }.fetch(name, AppConfig.colors['proposal'][0])
+    else
+      AppConfig.colors.dig(poll.poll_type, self.priority % AppConfig.colors.length)
+    end
   end
 
   def update_option_score_counts
