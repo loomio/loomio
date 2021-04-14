@@ -92,13 +92,12 @@ export default
           @loader.addLoadOldestRule()
           @loader.focusAttrs = {oldest: 1}
 
-      @loader.addContextRule()
-      # @loader.addLoadPinnedRule()
       if @discussion.itemsCount <= @loader.padding
         @loader.rules = []
         @loader.loadEverything()
 
-      # console.log 'fetching', @loader.focusAttrs
+      @loader.addContextRule()
+      # console.log 'fetching', @loader.focusAttrs, @loader.rules
       @loader.fetch().finally =>
         setTimeout =>
           if @loader.focusAttrs.newest
