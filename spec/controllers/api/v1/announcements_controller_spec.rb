@@ -26,9 +26,19 @@ describe API::V1::AnnouncementsController do
 
     it 'returns a count of users who will be notified' do
       get :count, params: {recipient_emails_cmr: ['bill@example.com', 'new@example.com'].join(','),
-                           recipient_user_xids: [user.id, bill.id].join('x'),
+                           recipient_user_xids: [bill.id].join('x'),
                            recipient_audience: 'group',
                            discussion_id: discussion.id}
+      expect(response.status).to eq 200
+      expect(JSON.parse(response.body)['count']).to eq 3
+    end
+
+    it 'includes actor when asked' do
+      get :count, params: {recipient_emails_cmr: ['bill@example.com', 'new@example.com'].join(','),
+                           recipient_user_xids: [user.id, bill.id].join('x'),
+                           recipient_audience: 'group',
+                           discussion_id: discussion.id,
+                           include_actor: 1}
       expect(response.status).to eq 200
       expect(JSON.parse(response.body)['count']).to eq 4
     end
@@ -405,6 +415,12 @@ describe API::V1::AnnouncementsController do
             expect(response.status).to eq 200
           end
 
+          it 'notify and self' do
+            group.update(members_can_announce: true)
+            post :create, params: {outcome_id: outcome.id, recipient_audience: 'group', include_actor: 1}
+            expect(response.status).to eq 200
+          end
+
           it 'cannot notify group' do
             group.update(members_can_announce: false)
             post :create, params: {outcome_id: outcome.id, recipient_audience: 'group'}
@@ -422,7 +438,15 @@ describe API::V1::AnnouncementsController do
           expect(member.notifications.count).to eq 0
           post :create, params: {outcome_id: outcome.id, recipient_audience: 'group'}
           expect(response.status).to eq 200
+          expect(JSON.parse(response.body)['users'].length).to eq 3
           expect(member.notifications.count).to eq 1
+        end
+
+        it 'notify audience and self' do
+          expect(member.notifications.count).to eq 0
+          post :create, params: {outcome_id: outcome.id, recipient_audience: 'group', include_actor: 1}
+          expect(response.status).to eq 200
+          expect(JSON.parse(response.body)['users'].length).to eq 4
         end
 
         it 'notify member' do

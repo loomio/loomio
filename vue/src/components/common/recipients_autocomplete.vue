@@ -20,6 +20,7 @@ export default
     reset: Boolean
     model: Object
     existingOnly: Boolean
+    includeActor: Boolean
     excludeMembers: Boolean
     excludedAudiences:
       type: Array
@@ -65,7 +66,6 @@ export default
   methods:
     fetchSuggestions: debounce ->
       return unless @query
-      model = (@model.id && @model) || (@model.groupId && @model.group()) || {namedId: ->}
       existingOnly = (@existingOnly && {existing_only: 1}) || {}
       @loading = true
       Records.fetch
@@ -74,8 +74,9 @@ export default
           exclude_types: 'group inviter'
           q: @query
           per: 20
+          include_actor: (@includeActor && 1) || null
           ...existingOnly
-          ...model.namedId()
+          ...@model.bestNamedId()
         }
       .then (data) =>
         @suggestedUserIds = uniq @suggestedUserIds.concat(data['users'].map (u) -> u.id)
@@ -113,19 +114,19 @@ export default
       sum(@recipients.map((r) => r.size || 1))
 
     expand: (item) ->
-      model = (@model.id && @model) || (@model.groupId && @model.group()) || {namedId: ->}
       excludeMembers = (@excludeMembers && {exclude_members: 1}) || {}
-      return false if model.anonymous
+      return false if @model.anonymous
       Records.fetch
         path: 'announcements/audience'
         params: {
           recipient_audience: item.id
+          include_actor: (@includeActor && 1) || null
           ...excludeMembers
-          ...model.namedId()
+          ...@model.bestNamedId()
         }
       .then (data) =>
         @remove(item)
-        userIds = without(data['users'].map((u) -> u.id), Session.user().id)
+        userIds = data['users'].map((u) -> u.id)
         @suggestedUserIds = uniq @suggestedUserIds.concat(userIds)
         Records.users.find(userIds).forEach (u) =>
           @recipients.push
@@ -300,6 +301,9 @@ div.recipients-autocomplete
                            :user="data.item.user" size="small" no-link)
           v-icon.mr-1(v-else small) {{data.item.icon}}
         span {{ data.item.name }}
+        span(v-if="data.item.type == 'user' && currentUserId == data.item.id")
+          space
+          span ({{ $t('common.you') }})
     template(v-slot:item='data')
       v-list-item-avatar
         user-avatar(v-if="data.item.type == 'user'" :user="data.item.user" size="small" no-link)
@@ -310,5 +314,5 @@ div.recipients-autocomplete
           span(v-if="data.item.type == 'user' && currentUserId == data.item.id")
             space
             span ({{ $t('common.you') }})
-  notifications-count(v-show="recipients.length" :model='model' :exclude-members="excludeMembers")
+  notifications-count(v-show="recipients.length" :model='model' :exclude-members="excludeMembers" :include-actor="includeActor")
 </template>

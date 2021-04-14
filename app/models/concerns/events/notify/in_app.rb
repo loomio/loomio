@@ -15,7 +15,7 @@ module Events::Notify::InApp
   private
 
   def built_notifications
-    @built ||= notification_recipients.active.where.not(id: user.id || 0).map { |recipient| notification_for(recipient) }
+    @built ||= notification_recipients.active.map { |recipient| notification_for(recipient) }
   end
 
   def notification_for(recipient)

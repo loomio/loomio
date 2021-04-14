@@ -6,19 +6,20 @@ export default
   props:
     model: Object
     excludeMembers: Boolean
+    includeActor: Boolean
 
   data: ->
     count: 0
 
   methods:
     updateCount: ->
-      params = ((@model.id && @model) || (@model.groupId && @model.group()) || {namedId: -> {}}).namedId()
       excludeMembers = (@excludeMembers && {exclude_members: 1}) || {}
-      Records.remote.get('announcements/count', Object.assign params, {
+      Records.remote.get('announcements/count', Object.assign @model.bestNamedId(), {
         recipient_emails_cmr: @model.recipientEmails.join(',')
         recipient_user_xids: @model.recipientUserIds.join('x')
         recipient_usernames_cmr: []
         recipient_audience: @model.recipientAudience
+        include_actor: @includeActor
         ...excludeMembers
       }).then (data) =>
         @count = data.count

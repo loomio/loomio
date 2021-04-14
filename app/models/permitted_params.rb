@@ -61,7 +61,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def outcome_attributes
-    [:statement, :statement_format, :poll_id, :poll_option_id, :review_on, :recipient_audience,
+    [:statement, :statement_format, :poll_id, :poll_option_id, :review_on, :recipient_audience, :include_actor,
      :recipient_user_ids, {recipient_user_ids: []},
      :recipient_emails, {recipient_emails: []},
      :document_ids, {document_ids: []},
