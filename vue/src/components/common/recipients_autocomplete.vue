@@ -126,7 +126,7 @@ export default
         }
       .then (data) =>
         @remove(item)
-        userIds = data['users'].map((u) -> u.id)
+        userIds = (data['users'] || []).map((u) -> u.id)
         @suggestedUserIds = uniq @suggestedUserIds.concat(userIds)
         Records.users.find(userIds).forEach (u) =>
           @recipients.push
