@@ -50,6 +50,11 @@ class ApplicationController < ActionController::Base
     render layout: 'basic'
   end
 
+  def brand
+    @files = Dir.glob('public/theme/*')
+    render layout: 'basic'
+  end
+
   def ok
     head :ok
   end
