@@ -1,10 +1,15 @@
 <script lang="coffee">
 import Flash  from '@/shared/services/flash'
 import LmoUrlService from '@/shared/services/lmo_url_service'
+import EventBus from '@/shared/services/event_bus'
 
 export default
   props:
-    close: Function
+    close:
+      type: Function
+      default: ->
+        console.log 'closing time'
+        EventBus.$emit('closeModal')
     confirm: Object
 
   data: ->

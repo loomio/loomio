@@ -171,14 +171,14 @@ module.exports = {
     page.click('.comment-form__submit-button')
     page.expectFlash('Comment added')
     page.pause()
-    page.click('.thread-item .action-menu')
+    page.click('.new-comment .action-menu')
 
     page.click('.action-dock__button--reply_to_comment')
 
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'hi this is my comment')
     page.click('.comment-form__submit-button')
 
-    page.expectText('.event-children .new-comment__body', 'hi this is my comment')
+    page.expectText('.strand-page', 'hi this is my comment')
     page.expectFlash('Patrick Swayze notified of reply')
   },
 
@@ -258,7 +258,7 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'original comment right hur')
     page.click('.comment-form__submit-button')
-    page.click('.thread-item .action-menu')
+    page.click('.new-comment .action-menu')
     page.click('.action-dock__button--discard_comment')
     page.click('.confirm-modal__submit')
     page.expectNoText('.activity-panel', 'original comment right thur')

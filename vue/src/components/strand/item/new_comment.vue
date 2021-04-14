@@ -47,7 +47,7 @@ export default
 </script>
 
 <template lang="pug">
-section.strand-item__new-comment(id="'comment-'+ eventable.id" :event="event" :is-returning="isReturning")
+section.strand-item__new-comment.new-comment(id="'comment-'+ eventable.id" :event="event" :is-returning="isReturning")
   strand-item-headline(:event="event" :eventable="eventable")
   formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")
   document-list(:model='eventable' skip-fetch)

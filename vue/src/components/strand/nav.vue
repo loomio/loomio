@@ -57,7 +57,7 @@ export default
       key: 'thread-nav'+@discussion.id
       collections: ["events", "discussions"]
       query: =>
-        return unless @discussion && @discussion.createdEvent()
+        return unless @discussion && !@discussion.discardedAt && @discussion.createdEvent()
         parser = new DOMParser()
 
         if @discussion.descriptionFormat == 'md'
