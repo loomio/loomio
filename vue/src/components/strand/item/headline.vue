@@ -28,7 +28,7 @@ export default
 </script>
 
 <template lang="pug">
-h3.strand-item__headline.body-2.pb-1(tabindex="-1" :id="'event-' + event.id")
+h3.strand-item__headline.thread-item__title.body-2.pb-1(tabindex="-1" :id="'event-' + event.id")
   //- div
     | id: {{event.id}}
     | pos {{event.position}}

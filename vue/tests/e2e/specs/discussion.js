@@ -261,8 +261,8 @@ module.exports = {
     page.click('.new-comment .action-menu')
     page.click('.action-dock__button--discard_comment')
     page.click('.confirm-modal__submit')
-    page.expectNoText('.activity-panel', 'original comment right thur')
-    page.expectText('.activity-panel', 'Item removed')
+    page.expectNoText('.strand-card', 'original comment right thur')
+    page.expectText('.strand-card', 'Item removed')
   },
 
   'sign_in_from_discussion_announced_email': (test) => {

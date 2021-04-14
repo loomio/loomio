@@ -70,7 +70,7 @@ export default
         i.mdi.mdi-earth
         span.text--secondary(v-t="'common.privacy.public'")
 
-  strand-title(:discussion="discussion")
+  strand-title.context-panel__heading(:discussion="discussion")
 
   .mb-2.d-flex.align-center
     user-avatar.mr-2(:user='discussion.author()' :size='36')
