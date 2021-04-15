@@ -342,6 +342,7 @@ Loomio::Application.routes.draw do
   get '/favicon.ico'                       => 'application#ok'
   get '/wp-login.php'                      => 'application#ok'
   get '/crowdfunding_celebration'          => 'application#crowdfunding'
+  get '/brand-assets'                      => 'application#brand'
 
 
   resources :saml_providers, only: [] do

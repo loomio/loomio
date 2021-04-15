@@ -1,0 +1,7 @@
+%h1 Loomio brand assets
+%p If you can, use the SVG, it will always look best.
+%p You can download and copy these, or hotlink using copy url.
+
+- @files.each do |file|
+  %p=file
+  %img{src: file.gsub('public', '')}

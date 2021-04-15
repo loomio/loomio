@@ -75,6 +75,9 @@ export default class DiscussionModel extends BaseModel
     (@inviterId && @admin && !@revokedAt && Session.user() == user) or
     @group().adminsInclude(user)
 
+  bestNamedId: ->
+    ((@id && @) || (@groupId && @group()) || {namedId: ->}).namedId()
+
   createdEvent: ->
     res = @recordStore.events.find(kind: 'new_discussion', eventableId: @id)
     res[0] unless isEmpty(res)

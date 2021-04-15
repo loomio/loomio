@@ -12,7 +12,8 @@ class OutcomeService
                                          model: outcome,
                                          emails: params[:recipient_emails],
                                          user_ids: params[:recipient_user_ids],
-                                         audience: params[:recipient_audience])
+                                         audience: params[:recipient_audience],
+                                         include_actor: params[:include_actor].present?)
 
     Events::OutcomeAnnounced.publish!(outcome, actor, users.pluck(:id), params[:recipient_audience])
     users
@@ -38,7 +39,8 @@ class OutcomeService
                                          emails: params[:recipient_emails],
                                          user_ids: params[:recipient_user_ids],
                                          model: outcome,
-                                         audience: params[:recipient_audience])
+                                         audience: params[:recipient_audience],
+                                         include_actor: params[:include_actor].present?)
 
     EventBus.broadcast 'outcome_create', outcome, actor
 
@@ -67,7 +69,8 @@ class OutcomeService
                                          emails: params[:recipient_emails],
                                          user_ids: params[:recipient_user_ids],
                                          model: outcome,
-                                         audience: params[:recipient_audience])
+                                         audience: params[:recipient_audience],
+                                         include_actor: params[:include_actor].present?)
 
     EventBus.broadcast 'outcome_update', outcome, actor
 

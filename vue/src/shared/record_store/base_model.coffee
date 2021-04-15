@@ -149,6 +149,9 @@ export default class BaseModel
   namedId: ->
     { "#{@constructor.singular}_id": @id }
 
+  bestNamedId: ->
+    @namedId()
+
   isNew: ->
     not @id?
 
