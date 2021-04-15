@@ -43,7 +43,6 @@ export default
       "loomio_onboarding.group_progress_card.activities.#{key}"
 
     close: ->
-      console.log "closing"
       Records.users.saveExperience("dismissProgressCard")
 
   computed:

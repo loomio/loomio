@@ -93,7 +93,6 @@ router = new Router
       component: ThreadPage,
       children: threadPageChildren,
       beforeEnter: (to, from, next) ->
-        console.log(to)
         if Session.user().experiences['betaFeatures']
           next(name: 'strand', params: to.params)
         else
