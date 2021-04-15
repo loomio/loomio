@@ -86,9 +86,6 @@ export default class EventModel extends BaseModel
 
   unpin: -> @remote.patchMember(@id, 'unpin')
 
-  # isForkable: ->
-  #   @discussion() && @discussion().isForking
-  #
   isForking: ->
     @discussion() && (@discussion().forkedEventIds.includes(@id) or @parentIsForking())
 

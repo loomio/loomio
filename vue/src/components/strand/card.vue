@@ -32,7 +32,7 @@ export default
 </script>
 
 <template lang="pug">
-.strand-card.mb-8
+.strand-card.thread-card.mb-8
   //- p(v-for="rule in loader.rules") {{rule.name}}
   strand-list.pt-3.px-3(:loader="loader" :collection="loader.collection")
   strand-actions-panel(:discussion="discussion")

@@ -178,7 +178,7 @@ module.exports = {
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'hi this is my comment')
     page.click('.comment-form__submit-button')
 
-    page.expectText('.strand-page', 'hi this is my comment')
+    page.expectText('.thread-card', 'hi this is my comment')
     page.expectFlash('Patrick Swayze notified of reply')
   },
 
@@ -261,8 +261,8 @@ module.exports = {
     page.click('.new-comment .action-menu')
     page.click('.action-dock__button--discard_comment')
     page.click('.confirm-modal__submit')
-    page.expectNoText('.strand-card', 'original comment right thur')
-    page.expectText('.strand-card', 'Item removed')
+    page.expectNoText('.thread-card', 'original comment right thur')
+    page.expectText('.thread-card', 'Item removed')
   },
 
   'sign_in_from_discussion_announced_email': (test) => {

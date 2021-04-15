@@ -93,8 +93,8 @@ section(:aria-label="$t(ariaTranslationKey, {actor: event.actorName(), pollType:
   .thread-item.px-3.pb-1(:class="[{'thread-item--unread': isUnread}, focusStyleClass]" v-observe-visibility="{callback: viewed, once: true}")
     v-layout.lmo-action-dock-wrapper(:style="{'margin-left': indentSize+'px'}"  :id="'sequence-' + event.sequenceId")
       .thread-item__avatar.mr-3.mt-0
-        user-avatar(v-if='!event.isForkable()' :user='event.actor()' :size='iconSize')
-        v-checkbox.thread-item__is-forking(v-if="event.isForkable()" @change="event.toggleForking()" :disabled="event.forkingDisabled()" v-model="event.isForking()")
+        user-avatar(v-if='!discussion.forkedEventIds.length' :user='event.actor()' :size='iconSize')
+        v-checkbox.thread-item__is-forking(v-if="discussion.forkedEventIds.length" @change="event.toggleForking()" :disabled="event.forkingDisabled()" v-model="event.isForking()")
       v-layout.thread-item__body(column)
         v-layout.align-center.wrap
           h3.thread-item__title.body-2(tabindex="-1" :id="'event-' + event.id")
