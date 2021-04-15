@@ -20,7 +20,6 @@ export default
 
 <template lang="pug">
 .strand-other-kind
-  | {{event.kind}}
   span(v-html='headline')
   formatted-text.thread-item__body(:model="eventable" column="statement")
 </template>
