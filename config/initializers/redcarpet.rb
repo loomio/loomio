@@ -1,6 +1,13 @@
 # copied from https://edruder.com/blog/2017/12/19/add-markdown-to-rails-5
 require 'redcarpet'
 
+# give headings an id
+class LoomioMarkdown < Redcarpet::Render::HTML
+  def header(text, header_level)
+    "<h#{header_level} id='#{text[0,60].strip.parameterize}'>#{text}</h#{header_level}>"
+  end
+end
+
 module ActionView
   module Template::Handlers
     class Markdown
@@ -32,7 +39,8 @@ module ActionView
         end
 
         def markdown
-          @markdown ||= Redcarpet::Markdown.new(HTMLWithPants.new(hard_wrap: true), md_options)
+          # @markdown ||= Redcarpet::Markdown.new(HTMLWithPants.new(hard_wrap: true), md_options)
+          @markdown ||= Redcarpet::Markdown.new(LoomioMarkdown.new(hard_wrap: true), md_options)
         end
 
         def erb
@@ -41,10 +49,6 @@ module ActionView
       end
     end
   end
-end
-
-class HTMLWithPants < Redcarpet::Render::HTML
-  # include Redcarpet::Render::SmartyPants
 end
 
 ActionView::Template.register_template_handler(:md, ActionView::Template::Handlers::Markdown)

@@ -2,6 +2,7 @@
 import marked from 'marked'
 import { clone, kebabCase } from 'lodash'
 import { colonsToUnicode } from '@/shared/helpers/emojis'
+import parameterize from '@/shared/helpers/parameterize'
 
 # _parse = marked.parse
 # marked.parse = (src, opt, callback) ->
@@ -10,6 +11,7 @@ import { colonsToUnicode } from '@/shared/helpers/emojis'
 #   return _parse(src, opt, callback)
 #
 # export marked = marked
+
 
 export customRenderer = (opts) ->
   _super   = new marked.Renderer(opts)
@@ -20,7 +22,8 @@ export customRenderer = (opts) ->
   renderer.tablecell = (text, flags) -> _super.tablecell colonsToUnicode(text), flags
 
   renderer.heading   = (text, level) ->
-    _super.heading(colonsToUnicode(text), level, text, {slug: kebabCase})
+    "<h#{level} id=\"#{parameterize(text, 60)}\">#{text}</h#{level}}>"
+    _super.heading(colonsToUnicode(text), level)
 
   renderer.link      = (href, title, text) ->
     _super.link(href, title, text).replace('<a ', '<a rel="ugc noreferrer" target="_blank" ')

@@ -12,6 +12,7 @@ module HasRichText
           attributes = %w[href src alt title class data-type data-done data-mention-id width height target colspan rowspan data-text-align background style]
           self[field] = Rails::Html::WhiteListSanitizer.new.sanitize(self[field], tags: tags, attributes: attributes)
           self[field] = add_required_link_attributes(self[field])
+          self[field] = add_heading_ids(self[field])
         end
         before_save :"sanitize_#{field}!"
         validates field, {length: {maximum: Rails.application.secrets.max_message_length}}
@@ -62,6 +63,17 @@ module HasRichText
   end
 
   private
+
+  def add_heading_ids(text)
+    fragment = Nokogiri::HTML::DocumentFragment.parse(text)
+    fragment.css('h1,h2,h3,h4,h5,h6').each do |node|
+      if node['id'].nil?
+        node['id'] = fragment.css('h1,h2,h3,h4,h5,h6').first.text[0,60].strip.parameterize
+      end
+    end
+    fragment.to_s
+  end
+
   def add_required_link_attributes(text)
     fragment = Nokogiri::HTML::DocumentFragment.parse(text)
     fragment.css('a').each do |node|
