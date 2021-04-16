@@ -26,6 +26,8 @@ module Dev::DiscussionsHelper
     end
 
     discussion.reload
+    EventService.repair_thread(discussion.id)
+    discussion.reload
   end
 
   def create_discussion_with_sampled_comments
@@ -56,6 +58,9 @@ module Dev::DiscussionsHelper
       end
     end
 
+    discussion.reload
+    EventService.repair_thread(discussion.id)
+    discussion.reload
     discussion
   end
 end

@@ -125,6 +125,7 @@ Loomio::Application.routes.draw do
         patch :pin, on: :member
         patch :unpin, on: :member
         get :comment, on: :collection
+        get :position_keys, on: :collection
         patch :remove_from_thread, on: :member
       end
 

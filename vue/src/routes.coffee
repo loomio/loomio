@@ -94,7 +94,7 @@ router = new Router
       children: threadPageChildren,
       beforeEnter: (to, from, next) ->
         if Session.user().experiences['betaFeatures']
-          next(name: 'strand', params: to.params)
+          next(name: 'strand', params: to.params, query: to.query)
         else
           next()
     },

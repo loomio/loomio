@@ -10,7 +10,6 @@ export default
   props:
     event: Object
     isReturning: Boolean
-    collapsed: Boolean
 
   computed:
     commentActions: -> CommentService.actions(@eventable, @)
@@ -35,9 +34,9 @@ export default
         reply_to_comment = 'reply_to_comment'
 
       assign(
-        pick @commentActions, compact [reply_to_comment, show_history, 'admin_edit_comment', 'notification_history', 'discard_comment', 'undiscard_comment']
-      ,
         pick @eventActions, ['pin_event', 'unpin_event', 'move_event', 'copy_url']
+      ,
+        pick @commentActions, compact [reply_to_comment, show_history, 'admin_edit_comment', 'notification_history', 'discard_comment', 'undiscard_comment']
       )
 
   data: ->
@@ -48,12 +47,11 @@ export default
 </script>
 
 <template lang="pug">
-section.strand-item__new-comment(id="'comment-'+ eventable.id" :event="event" :is-returning="isReturning")
+section.strand-item__new-comment.new-comment(id="'comment-'+ eventable.id" :event="event" :is-returning="isReturning")
   strand-item-headline(:event="event" :eventable="eventable")
-  template(v-if="!collapsed")
-    formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")
-    document-list(:model='eventable' skip-fetch)
-    attachment-list(:attachments="eventable.attachments")
-    action-dock(:model='eventable' :actions='dockActions' :menu-actions='menuActions')
-    comment-form(v-if="showReplyForm" :comment="newComment" avatar-size="36" @comment-submitted="showReplyForm = false" @cancel-reply="showReplyForm = false" autofocus)
+  formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")
+  document-list(:model='eventable' skip-fetch)
+  attachment-list(:attachments="eventable.attachments")
+  action-dock(:model='eventable' :actions='dockActions' :menu-actions='menuActions')
+  comment-form(v-if="showReplyForm" :comment="newComment" avatar-size="36" @comment-submitted="showReplyForm = false" @cancel-reply="showReplyForm = false" autofocus)
 </template>

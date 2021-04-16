@@ -1,5 +1,6 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
+import AbilityService from '@/shared/services/ability_service'
 import { find } from 'lodash'
 
 export default
@@ -14,7 +15,7 @@ export default
       collections: ['polls', 'stances']
       query: (store) =>
         @poll = find @discussion.activePolls().filter((poll) -> poll.pollOptionNames.length), (poll) ->
-          !store.stances.findOrNull(pollId: poll.id, participantId: AppConfig.currentUserId, revokedAt: null, latest: true)
+          AbilityService.canParticipateInPoll(poll) && !poll.iHaveVoted()
 
   computed:
     styles: ->

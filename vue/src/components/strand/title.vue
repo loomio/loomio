@@ -21,12 +21,7 @@ export default
 
 <template lang="pug">
 .thread-title
-  //- span
-  //- v-spacer
-  //- span.grey--text.body-2
-  //-   time-ago(aria-label="Thread started" :date='discussion.createdAt')
-
-  h1.display-1.context-panel__heading#sequence-0(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
+  h1.display-1.context-panel__heading#sequence-0.py-1(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
     span(v-if='!discussion.translation.title') {{discussion.title}}
     span(v-if='discussion.translation.title')
       translation(:model='discussion', field='title')

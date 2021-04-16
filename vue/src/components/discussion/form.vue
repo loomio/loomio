@@ -55,6 +55,7 @@ export default
       @discussion.save()
       .then (data) =>
         discussionKey = data.discussions[0].key
+        EventBus.$emit('closeModal')
         Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
           Flash.success("discussion_form.messages.#{actionName}")
           @$router.push @urlFor(discussion)
@@ -90,7 +91,7 @@ export default
       !@discussion.id && !@canStartThread
 
     isMovingItems: ->
-      @discussion.isForking
+      @discussion.forkedEventIds.length
 
 </script>
 

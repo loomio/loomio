@@ -57,20 +57,24 @@ export default
 </script>
 
 <template lang="pug">
-.strand-new-discussion.context-panel.lmo-action-dock-wrapper#context(:aria-label="$t('context_panel.aria_intro', {author: discussion.authorName(), group: discussion.group().fullName})" v-observe-visibility="{callback: viewed, once: true}")
-  discussion-privacy-badge.mr-2(:discussion="discussion")
-  tags-display(:tags="discussion.tags()")
-  //- strand-members.my-1(:discussion="discussion")
-    //- v-spacer
-    //- //- span(v-for="group in groups")
-    //- //-   router-link(:to="group.to") {{group.text}}
-    //- .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'" v-if='discussion.closedAt')
-    //-   v-tooltip(bottom) {{ exactDate(discussion.closedAt) }}
-  //- strand-item-headline(:event="event" :eventable="discussion")
-  strand-title.pt-2(:discussion="discussion")
+.strand-new-discussion.context-panel#context(:aria-label="$t('context_panel.aria_intro', {author: discussion.authorName(), group: discussion.group().fullName})" v-observe-visibility="{callback: viewed, once: true}")
+  v-layout.ml-n2(align-center wrap)
+    v-breadcrumbs.context-panel__breadcrumbs(:items="groups" divider=">")
+    tags-display(:tags="discussion.tags()")
+    v-spacer
+    span
+      span.nowrap(v-show='discussion.private')
+        i.mdi.mdi-lock-outline
+        span.text--secondary(v-t="'common.privacy.private'")
+      span.nowrap(v-show='!discussion.private')
+        i.mdi.mdi-earth
+        span.text--secondary(v-t="'common.privacy.public'")
 
-  .mb-4
-    router-link(:to="urlFor(discussion.author())" title="Thread author") {{discussion.authorName()}}
+  strand-title.context-panel__heading(:discussion="discussion")
+
+  .mb-2.d-flex.align-center
+    user-avatar.mr-2(:user='discussion.author()' :size='36')
+    router-link(:to="urlFor(discussion.author())") {{discussion.authorName()}}
     mid-dot
     router-link.grey--text.body-2(:to='urlFor(discussion)')
       time-ago(:date='discussion.createdAt')
@@ -81,10 +85,10 @@ export default
       mid-dot
       a.context-panel__users_notified_count(v-t="{ path: 'thread_context.count_notified', args: { count: discussion.usersNotifiedCount} }"  @click="actions.notification_history.perform")
   template(v-if="!collapsed")
-    formatted-text.context-panel__description(:model="discussion" column="description" aria-label="Discussion context")
+    formatted-text.context-panel__description(:model="discussion" column="description")
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
-    action-dock(:model='discussion' :actions='dockActions' :menu-actions='menuActions' fetch-reactions)
+    action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions' fetch-reactions)
 </template>
 <style lang="sass">
 @import '@/css/variables'

@@ -7,16 +7,20 @@ export default
   props:
     event: Object
     eventable: Object
+    collapsed: Boolean
 
   computed:
     headline: ->
       actor = @event.actor()
-      @$t eventHeadline(@event, true ), # useNesting
-        author:   actor.nameWithTitle(@eventable.group())
-        username: actor.username
-        key:      @event.model().key
-        title:    eventTitle(@event)
-        polltype: @$t(eventPollType(@event)).toLowerCase()
+      if @event.kind == 'new_comment' && @collapsed && @event.descendantCount > 0
+        @$t('reactions_display.name_and_count_more', {name: actor.nameWithTitle(@eventable.group()), count: @event.descendantCount})
+      else
+        @$t eventHeadline(@event, true ), # useNesting
+          author:   actor.nameWithTitle(@eventable.group())
+          username: actor.username
+          key:      @event.model().key
+          title:    eventTitle(@event)
+          polltype: @$t(eventPollType(@event)).toLowerCase()
 
     link: ->
       LmoUrlService.event @event
@@ -24,7 +28,7 @@ export default
 </script>
 
 <template lang="pug">
-h3.strand-item__headline.body-2(tabindex="-1" :id="'event-' + event.id")
+h3.strand-item__headline.thread-item__title.body-2.pb-1(tabindex="-1" :id="'event-' + event.id")
   //- div
     | id: {{event.id}}
     | pos {{event.position}}
@@ -38,6 +42,7 @@ h3.strand-item__headline.body-2(tabindex="-1" :id="'event-' + event.id")
     router-link.grey--text(:to='link')
       time-ago(:date='eventable.discardedAt')
   div.d-flex.align-center(v-else)
+    v-icon(v-if="event.pinned") mdi-pin
     slot(name="headline")
       span.strand-item__headline(v-html='headline')
     mid-dot

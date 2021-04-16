@@ -37,7 +37,6 @@ export default
 
     resetSourceDiscussion: ->
       @discussion.update(forkedEventIds: [])
-      @discussion.update(isForking: false)
 
     startNewThread: ->
       @selectedDiscussion = Records.discussions.build(groupId: @groupId)
@@ -55,13 +54,12 @@ export default
         @loading = false
         @resetSourceDiscussion()
         @selectedDiscussion.update(forkedEventIds: [])
-        @selectedDiscussion.update(isForking: false)
-        @close()
+        EventBus.$emit('closeModal')
         Flash.success("discussion_fork_actions.moved")
+        @$router.push @urlFor(@selectedDiscussion)
       .catch onError(@selectedDiscussion)
 
     setIsForking: ->
-      @selectedDiscussion.update(isForking: true)
       @selectedDiscussion.update(forkedEventIds: @discussion.forkedEventIds)
 
     fetch: debounce ->

@@ -52,8 +52,9 @@ export default new class AbilityService
     !thread.discardedAt && thread.membersInclude(Session.user())
 
   canPinEvent: (event) ->
+    !event.depth == 1 &&
     !event.model().discardedAt &&
-    !event.pinned && event.isSurface() && @canEditThread(event.discussion())
+    !event.pinned && @canEditThread(event.discussion())
 
   canUnpinEvent: (event) ->
     event.pinned && @canEditThread(event.discussion())

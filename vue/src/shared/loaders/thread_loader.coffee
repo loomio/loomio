@@ -1,10 +1,10 @@
 import Records from '@/shared/services/records'
-import { isNumber, uniq, compact, orderBy, camelCase, forEach, isObject } from 'lodash'
+import { cloneDeep, max, isNumber, uniq, compact, orderBy, camelCase, forEach, isObject, sortedUniq, sortBy, without, map } from 'lodash'
 import Vue from 'vue'
 import RangeSet         from '@/shared/services/range_set'
+import EventBus         from '@/shared/services/event_bus'
 import Session from '@/shared/services/session'
 
-padding = 20
 
 export default class ThreadLoader
   constructor: (discussion) ->
@@ -14,20 +14,28 @@ export default class ThreadLoader
   reset: ->
     @collection = Vue.observable([])
     @rules = []
-    @unreadIds = []
+    @readRanges = cloneDeep @discussion.readRanges
+    @focusAttrs = {}
+    @visibleKeys = {}
     @collapsed = Vue.observable({})
-    @rules.push
-      name: "my stuff"
-      local:
-        find:
-          discussionId: @discussion.id
-          actorId: Session.user().id
+    @loading = false
+    @padding = 20
 
-  collapse: (id) ->
-    Vue.set(@collapsed, id, true)
+  firstUnreadSequenceId: ->
+    (RangeSet.subtractRanges(@discussion.ranges, @readRanges)[0] || [])[0]
 
-  expand: (id) ->
-    Vue.set(@collapsed, id, false)
+  setVisible: (isVisible, event) ->
+    event.markAsRead() unless @visibleKeys.hasOwnProperty(event.positionKey)
+    @visibleKeys[event.positionKey] = isVisible
+    EventBus.$emit('visibleKeys', Object.keys(@visibleKeys).filter((key) => @visibleKeys[key]).sort())
+
+  collapse: (event) ->
+    Object.keys(@visibleKeys).forEach (key) =>
+      @visibleKeys[key] = false if key.startsWith(event.positionKey)
+    Vue.set(@collapsed, event.id, true)
+
+  expand: (event) ->
+    Vue.set(@collapsed, event.id, false)
 
   jumpToEarliest: ->
     @reset()
@@ -51,6 +59,7 @@ export default class ThreadLoader
 
 
   loadEverything: ->
+    @loading = true
     @titleKey = 'strand_nav.whole_thread'
     @addRule
       local:
@@ -61,81 +70,91 @@ export default class ThreadLoader
         per: 1000
 
   loadChildren: (event) ->
-    # @expand(event.id)
+    @loading = 'children'+event.id
     if event.kind == "new_discussion"
       @addRule
+        name: "load discussion children"
         local:
           find:
             discussionId: @discussion.id
-          simplesort: 'positionKey'
-          limit: padding * 2
+          simplesort: 'id'
+          limit: @padding
         remote:
           discussion_id: @discussion.id
-          position_key_sw: event.positionKey
           order_by: 'position_key'
+          per: @padding
     else
       @addRule
+        name: "load children (prefix #{event.positionKey})"
         local:
           find:
             discussionId: @discussion.id
             positionKey: {'$regex': "^#{event.positionKey}"}
           simplesort: 'positionKey'
-          limit: padding
+          limit: @padding
         remote:
           discussion_id: @discussion.id
           position_key_sw: event.positionKey
+          depth_gt: event.depth
           order_by: 'position_key'
+          per: @padding
+
+  autoLoadAfter: (event) ->
+    @loadAfter(event) if event.depth == 1
+
+  autoLoadBefore: (event) ->
+    @loadBefore(event) if event.depth == 1
 
   loadAfter: (event) ->
+    # keys = event.positionKey.split('-')
+    # num = parseInt(keys[keys.length - 1]) + 1
+    # key = "0".repeat(5 - (""+num).length) + num
+    # keys[keys.length - 1] = key
+    # positionKey = keys.join('-')
+    # positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
+    # positionKeyPrefix = undefined if keys.length == 1
+    positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
+    positionKey = event.positionKey
+
     @addRule
+      name: "load after (prefix #{positionKeyPrefix})"
       local:
         find:
           discussionId: @discussion.id
-          depth: {$gte: event.depth}
-          positionKey: {$jgt: event.positionKey}
-        simplesort: 'positionKey'
-        limit: padding
+          positionKey:
+            $jgt: positionKey
+            $regex: (positionKeyPrefix && "^#{positionKeyPrefix}") || undefined
+        simplesort: 'id'
+        limit: @padding
       remote:
         discussion_id: @discussion.id
-        position_key_gt: event.positionKey
-        # position_key_prefix: @positionKeyPrefix(event)
-        depth_lte: event.depth + 2
-        depth_gte: event.depth
+        position_key_gt: positionKey
+        position_key_sw: positionKeyPrefix || null
         order_by: 'position_key'
+        per: @padding
 
   loadBefore: (event) ->
-    @addRule
-      local:
-        find:
-          discussionId: @discussion.id
-          depth: event.depth
-          positionKey: {$jlt: event.positionKey}
-        simplesort: 'positionKey'
-        simplesortDesc: true
-        limit: padding
-      remote:
-        discussion_id: @discussion.id
-        depth: event.depth
-        position_key_lt: event.positionKey
-        order_by: 'position_key'
-        order_desc: 1
+    @loading = 'before'+event.id
+    positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
 
     @addRule
+      name: "load before (prefix #{positionKeyPrefix})"
       local:
         find:
           discussionId: @discussion.id
-          depth: event.depth + 1
-          positionKey: {$jlt: event.positionKey}
-        simplesort: 'positionKey'
+          positionKey:
+            $jlt: event.positionKey
+            $regex: (positionKeyPrefix && "^#{positionKeyPrefix}") || undefined
+        simplesort: 'sequenceId'
         simplesortDesc: true
-        limit: padding
+        limit: @padding
       remote:
         discussion_id: @discussion.id
-        depth: event.depth + 1
         position_key_lt: event.positionKey
-        position_lt: 3
+        position_key_sw: positionKeyPrefix || null
         order_by: 'position_key'
         order_desc: 1
+        per: @padding
 
   addLoadCommentRule: (commentId) ->
     @titleKey = 'strand_nav.from_comment'
@@ -145,7 +164,7 @@ export default class ThreadLoader
         find:
           discussionId: @discussion.id
           commentId: {$gte: commentId}
-        limit: padding
+        limit: @padding
       remote:
         order: 'sequence_id'
         discussion_id: @discussion.id
@@ -173,67 +192,98 @@ export default class ThreadLoader
           discussionId: @discussion.id
           depth: 1
           position: {$gte: position}
+        simplesort: 'positionKey'
+        limit: @padding
       remote:
         discussion_id: @discussion.id
         from_sequence_id_of_position: position
-        order: 'sequence_id'
+        order: 'position_key'
+
+  addLoadPositionKeyRule: (positionKey) ->
+    @loading = positionKey
+    @rules.push
+      name: "positionKey from url"
+      local:
+        find:
+          discussionId: @discussion.id
+          positionKey: {$jgte: positionKey}
+        simplesort: 'positionKey'
+        limit: parseInt(@padding/2)
+      remote:
+        discussion_id: @discussion.id
+        position_key_gte: positionKey
+        order_by: 'position_key'
+        per: parseInt(@padding/2)
+
+    @rules.push
+      name: "positionKey rollback"
+      local:
+        find:
+          discussionId: @discussion.id
+          positionKey: {$lt: positionKey}
+        simplesort: 'positionKey'
+        simplesortDesc: true
+        limit: parseInt(@padding/2)
+      remote:
+        discussion_id: @discussion.id
+        position_key_lt: positionKey
+        order_by: 'position_key'
+        order_desc: 1
+        per: parseInt(@padding/2)
 
   addLoadSequenceIdRule: (sequenceId) ->
+    id = max([parseInt(sequenceId) - parseInt(@padding/2), 0])
+    @loading = id
     @titleKey = 'strand_nav.from_sequence_id'
     @rules.push
       name: "sequenceId from url"
       local:
         find:
           discussionId: @discussion.id
-          sequenceId: {$gte: sequenceId}
-        limit: padding
+          sequenceId: {'$jgte': id}
+        simplesort: 'sequenceId'
+        limit: @padding
       remote:
-        from: sequenceId
+        sequence_id_gte: id
+        discussion_id: @discussion.id
         order: 'sequence_id'
+        per: @padding
 
-  addLoadNewestFirstRule: () ->
+  addLoadNewestRule: () ->
     @titleKey = 'strand_nav.newest_first'
     @rules.push
       local:
         find:
-          id: @discussion.createdEvent().id
-    @rules.push
-      local:
-        find:
-          id: @discussion.createdEvent().id
-        find:
           discussionId: @discussion.id
         simplesort: 'sequenceId'
         simplesortDesc: true
-        limit: padding / 4
+        limit: @padding
       remote:
         discussion_id: @discussion.id
-        per: padding
         order_by: 'sequence_id'
         order_desc: true
+        per: @padding
 
-  addLoadOldestFirstRule: ->
-    @titleKey = 'strand_nav.oldest_first'
+  addContextRule: ->
     @rules.push
       name: 'context'
       local:
         find:
           id: @discussion.createdEvent().id
-      # remote:
-      #   discussion_id: @discussion.id
-      #   order_by: 'sequence_id'
-      #   per: 1
 
+  addLoadOldestRule: ->
+    @titleKey = 'strand_nav.oldest_first'
     @rules.push
-      name: 'oldest first'
+      name: 'oldest'
       local:
         find:
           discussionId: @discussion.id
         simplesort: 'sequenceId'
-        limit: padding
+        limit: @padding
       remote:
         discussion_id: @discussion.id
         order_by: 'sequence_id'
+        per: @padding
 
   addLoadUnreadRule: ->
     @titleKey = 'strand_nav.unread'
@@ -244,49 +294,55 @@ export default class ThreadLoader
           find:
             id: @discussion.createdEvent().id
 
-    # if @discussion.readItemsCount() > 0 && @discussion.unreadItemsCount() > 0
+    # I don't think we need this..
+    # @rules.push
+    #   name: {path: "strand_nav.new_to_you"}
+    #   local:
+    #     find:
+    #       discussionId: @discussion.id
+    #       sequenceId: {$or: @discussion.unreadRanges().map((r) -> {$between: r} )}
+    #     limit: @padding
+    #   remote:
+    #     discussion_id: @discussion.id
+    #     unread: true
+    #     order_by: "sequence_id"
+    #     per: @padding
+
+    # padding around new to you
+    id = max([@firstUnreadSequenceId() - parseInt(@padding/2), @discussion.firstSequenceId()])
     @rules.push
-      name: {path: "thread_loader.new_to_you", args: {since: @discussion.lastReadAt}}
+      name: {path: "strand_nav.new_to_you"}
       local:
         find:
           discussionId: @discussion.id
-          sequenceId: {$or: @discussion.unreadRanges().map((r) -> {$between: r} )}
-        limit: padding * 3
+          sequenceId: {$jgte: id}
+        limit: @padding
+        order: 'sequenceId'
       remote:
         discussion_id: @discussion.id
-        unread: true
+        sequence_id_gte: id
         order_by: "sequence_id"
-        # from: @discussion.firstUnreadSequenceId()
-        # order: 'sequence_id'
-        # per: 5
-
+        per: @padding
 
   addRule: (rule) ->
     @rules.push(rule)
     params = Object.assign {}, rule.remote, {exclude_types: 'group discussion'}
-    Records.events.fetch(params: params)
+    Records.events.fetch(params: params).finally => @loading = false
+    # @updateCollection()
     # Records.events.fetch(params: params).then (data) => @updateCollection()
 
   fetch:  ->
-    @rules.forEach (rule) =>
+    promises = @rules.filter((rule) -> rule.remote).map (rule) =>
       params = Object.assign {}, rule.remote, {exclude_types: 'group discussion'}
       Records.events.fetch(params: params)
-      # Records.events.fetch(params: params).then (data) => @updateCollection()
+    # console.log promises
+    Promise.all(promises).finally => @loading = false
 
   updateCollection: ->
     @records = []
     @rules.forEach (rule) =>
-      args = Object.assign({}, rule.local.find)
       chain = Records.events.collection.chain()
-      forEach args, (value, key) ->
-        if isObject(value)
-          # eg: value = {$lte: asdads,  $gte: asdasd}
-          forEach value, (subvalue, subkey) ->
-            chain = chain.find({"#{key}": {"#{subkey}": subvalue}})
-            # console.log({"#{key}": {"#{subkey}": subvalue}}, chain.data())
-        else
-          # eg: value = 1
-          chain = chain.find({"#{key}": value})
+      chain.find(rule.local.find)
 
       if rule.local.simplesort
         chain = chain.simplesort(rule.local.simplesort, rule.local.simplesortDesc)
@@ -302,17 +358,10 @@ export default class ThreadLoader
 
     orphans = @records.filter (event) ->
       event.parentId == null || !eventIds.includes(event.parentId)
-    # console.log @records
-    # console.log("includes 00001-00001", @records.find((r) -> r.positionKey == "00001-00001"))
-    # console.log(Records.events.collection.chain().find(positionKey: "00001-00001").data())
-
-    # find records with no parentId or, where no event with that parentId in records
-
 
     eventsByParentId = {}
     @records.forEach (event) =>
       eventsByParentId[event.parentId] = (eventsByParentId[event.parentId] || []).concat([event])
-      @unreadIds.push(event.sequenceId) if !RangeSet.includesValue(@discussion.readRanges, event.sequenceId)
 
     nest = (records) ->
       r = records.map (event) ->

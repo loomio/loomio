@@ -1,4 +1,10 @@
 class API::V1::EventsController < API::V1::RestfulController
+  def position_keys
+    load_and_authorize(:discussion)
+    keys = Event.where(discussion_id: params[:discussion_id]).pluck(:position_key).sort
+    render json: keys, root: 'position_keys'
+  end
+
   def remove_from_thread
     service.remove_from_thread(event: load_resource, actor: current_user)
     respond_with_resource
