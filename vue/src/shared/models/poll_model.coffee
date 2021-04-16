@@ -93,7 +93,7 @@ export default class PollModel extends BaseModel
     @recordStore.reactions.find(reactableId: @id, reactableType: "Poll")
 
   decidedVoterIds: ->
-    map(@latestStances(), 'participantId')
+    map(@latestCastStances(), 'participantId')
 
   # who's voted?
   decidedVoters: ->
@@ -115,6 +115,15 @@ export default class PollModel extends BaseModel
 
   latestStances: (order = '-createdAt', limit) ->
     slice(sortBy(@recordStore.stances.find(pollId: @id, latest: true, revokedAt: null), order), 0, limit)
+
+  latestCastStances: ->
+    @recordStore.stances.collection.chain().find(
+      pollId: @id
+      latest: true
+      revokedAt: null
+      castAt: {$ne: null}
+    ).data()
+
 
   hasDescription: ->
     !!@details
