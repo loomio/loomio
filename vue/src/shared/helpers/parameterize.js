@@ -92,7 +92,7 @@ Downcoder.Initialize = function()
     Downcoder.regex = new RegExp('[' + Downcoder.chars + ']|[^' + Downcoder.chars + ']+','g') ;
 }
 
-downcode= function( slug )
+var downcode= function( slug )
 {
     Downcoder.Initialize() ;
     var downcoded =""
@@ -120,7 +120,7 @@ downcode= function( slug )
     return downcoded;
 }
 
-export default function (s, length) {
+export default function (s, length = 60) {
   s = downcode(s);
   s = s.replace(/[^-\w\s]/g, '');  // remove unneeded chars
   s = s.replace(/^\s+|\s+$/g, ''); // trim leading/trailing spaces

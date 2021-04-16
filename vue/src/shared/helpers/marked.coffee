@@ -22,8 +22,7 @@ export customRenderer = (opts) ->
   renderer.tablecell = (text, flags) -> _super.tablecell colonsToUnicode(text), flags
 
   renderer.heading   = (text, level) ->
-    "<h#{level} id=\"#{parameterize(text, 60)}\">#{text}</h#{level}}>"
-    _super.heading(colonsToUnicode(text), level)
+    _super.heading(colonsToUnicode(text), level, text, {slug: parameterize})
 
   renderer.link      = (href, title, text) ->
     _super.link(href, title, text).replace('<a ', '<a rel="ugc noreferrer" target="_blank" ')
