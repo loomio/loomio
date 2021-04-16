@@ -187,7 +187,7 @@ export default
 <template lang="pug">
 v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion && bottomDate && topDate" v-model="open" :permanent="$vuetify.breakpoint.mdAndUp" width="230px" app fixed right clipped color="background" floating)
   a.thread-nav__date(:to="urlFor(discussion)" @click="scrollTo('#context')" v-t="'activity_card.context'")
-  a.d-block.text-caption(v-for="heading, index in headings" :key="index") {{heading.name}}
+  a.d-block.text-caption(v-for="heading, index in headings" :key="index" :href="'#'+heading.id") {{heading.name}}
   router-link.thread-nav__date(:to="{query:{k: firstKey}, params: {p: null, sequence_id: null}}") {{approximateDate(topDate)}}
   .thread-nav(:style="{height: trackHeight+'px'}")
     .thread-nav__track(ref="slider" :style="{height: trackHeight+'px'}" @click="onTrackClicked")

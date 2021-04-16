@@ -79,6 +79,13 @@ v-app.app-is-booted
 
 <style lang="sass">
 
+.strand-page [id]::before
+  content: ''
+  display: block
+  height:      72px
+  margin-top: -72px
+  visibility: hidden
+
 .v-application .body-2
   font-size: 15px !important
   letter-spacing: normal !important
