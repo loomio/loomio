@@ -271,10 +271,12 @@ class RecordCache
     return [] if exclude_types.include?('stance')
     scope[:stances_by_id] ||= {}
     scope[:stances_by_poll_id] ||= {}
+    scope[:stance_choices_by_stance_id] ||= {}
     collection.each do |stance|
       @user_ids.push stance.participant_id
       scope[:stances_by_id][stance.id] = stance
       scope[:stances_by_poll_id][stance.poll_id] = stance
+      scope[:stance_choices_by_stance_id][stance.id] ||= []
     end
   end
 
