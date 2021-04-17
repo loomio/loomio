@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_17_002623) do
+ActiveRecord::Schema.define(version: 2021_04_17_074324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -343,7 +343,7 @@ ActiveRecord::Schema.define(version: 2021_04_17_002623) do
     t.integer "eventable_version_id"
     t.index ["created_at"], name: "index_events_on_created_at"
     t.index ["discussion_id", "sequence_id"], name: "index_events_on_discussion_id_and_sequence_id", unique: true
-    t.index ["discussion_id"], name: "index_events_on_discussion_id"
+    t.index ["eventable_id", "kind"], name: "index_events_on_eventable_id_and_kind"
     t.index ["eventable_id"], name: "events_eventable_id_idx"
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
     t.index ["parent_id", "discussion_id"], name: "index_events_on_parent_id_and_discussion_id", where: "(discussion_id IS NOT NULL)"
@@ -522,11 +522,9 @@ ActiveRecord::Schema.define(version: 2021_04_17_002623) do
     t.index ["archived_at"], name: "index_memberships_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_memberships_on_created_at"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
-    t.index ["group_id"], name: "index_memberships_on_group_id"
     t.index ["inviter_id"], name: "index_memberships_on_inviter_id"
     t.index ["token"], name: "index_memberships_on_token", unique: true
     t.index ["user_id", "volume"], name: "index_memberships_on_user_id_and_volume"
-    t.index ["user_id"], name: "index_memberships_on_user_id"
     t.index ["volume"], name: "index_memberships_on_volume"
   end
 
@@ -636,7 +634,6 @@ ActiveRecord::Schema.define(version: 2021_04_17_002623) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["poll_id", "user_id"], name: "index_poll_unsubscriptions_on_poll_id_and_user_id", unique: true
-    t.index ["poll_id"], name: "index_poll_unsubscriptions_on_poll_id"
     t.index ["user_id"], name: "index_poll_unsubscriptions_on_user_id"
   end
 
@@ -677,6 +674,8 @@ ActiveRecord::Schema.define(version: 2021_04_17_002623) do
     t.integer "notify_on_closing_soon", default: 0, null: false
     t.string "content_locale"
     t.index ["author_id"], name: "index_polls_on_author_id"
+    t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
+    t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"
     t.index ["discussion_id"], name: "index_polls_on_discussion_id"
     t.index ["group_id"], name: "index_polls_on_group_id"
     t.index ["guest_group_id"], name: "index_polls_on_guest_group_id", unique: true
@@ -778,7 +777,6 @@ ActiveRecord::Schema.define(version: 2021_04_17_002623) do
     t.integer "taggings_count", default: 0
     t.integer "priority", default: 0, null: false
     t.index ["group_id", "name"], name: "index_tags_on_group_id_and_name", unique: true
-    t.index ["group_id"], name: "index_tags_on_group_id"
     t.index ["name"], name: "index_tags_on_name"
   end
 
