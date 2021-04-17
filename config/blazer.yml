@@ -1,0 +1,79 @@
+# see https://github.com/ankane/blazer for more info
+
+data_sources:
+  main:
+    url: <%= ENV.fetch("BLAZER_DATABASE_URL", ENV['DATABASE_URL']) %>
+
+    # statement timeout, in seconds
+    # none by default
+    # timeout: 15
+
+    # caching settings
+    # can greatly improve speed
+    # off by default
+    cache:
+      mode: slow # or all
+      expires_in: 60 # min
+      slow_threshold: 15 # sec, only used in slow mode
+
+    # wrap queries in a transaction for safety
+    # not necessary if you use a read-only user
+    # true by default
+    use_transaction: <%= ENV.has_key?("BLAZER_DATABASE_URL") ? 'true' : 'false' %>
+
+    smart_variables:
+      survey_category:  [ 'board', 'party', 'coop', 'union', 'nonprofit', 'professional', 'government', 'community', 'other' ]
+      # period: ["day", "week", "month"]
+      # status: {0: "Active", 1: "Archived"}
+
+    linked_columns:
+      user_id: "/admin/users/{value}"
+      group_id: "/admin/groups/{value}"
+      subscription_id: "/admin/subscriptions/{value}"
+
+# create audits
+audit: true
+# async: true
+
+# change the time zone
+# time_zone: "Pacific Time (US & Canada)"
+
+# class name of the user model
+# user_class: User
+
+# method name for the current user
+# user_method: current_user
+
+# method name for the display name
+# user_name: name
+
+# custom before_action to use for auth
+# before_action_method: require_admin
+
+# email to send checks from
+from_email: notifications@<%= ENV['SMTP_DOMAIN'] %>
+
+# webhook for Slack
+# slack_webhook_url: <%= ENV["BLAZER_SLACK_WEBHOOK_URL"] %>
+
+check_schedules:
+  - "1 day"
+  - "1 hour"
+  - "5 minutes"
+
+# enable anomaly detection
+# note: with trend, time series are sent to https://trendapi.org
+# anomaly_checks: trend / r
+
+# enable forecasting
+# note: with trend, time series are sent to https://trendapi.org
+# forecasting: trend / prophet
+
+# enable map
+# mapbox_access_token: <%= ENV["MAPBOX_ACCESS_TOKEN"] %>
+
+# enable uploads
+# uploads:
+#   url: <%= ENV["BLAZER_UPLOADS_URL"] %>
+#   schema: uploads
+#   data_source: main
