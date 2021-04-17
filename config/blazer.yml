@@ -19,7 +19,7 @@ data_sources:
     # wrap queries in a transaction for safety
     # not necessary if you use a read-only user
     # true by default
-    use_transaction: <%= ENV.has_key?("BLAZER_DATABASE_URL") ? 'true' : 'false' %>
+    use_transaction: <%= ENV.has_key?("BLAZER_DATABASE_URL") ? 'false' : 'true' %>
 
     smart_variables:
       survey_category:  [ 'board', 'party', 'coop', 'union', 'nonprofit', 'professional', 'government', 'community', 'other' ]
