@@ -1,0 +1,25 @@
+class RemoveUnusedIndexes202104B < ActiveRecord::Migration[6.0]
+  def change
+    remove_index :discussion_readers, name: "index_discussion_readers_last_read_at_not_null"
+    remove_index :ahoy_events, name: "ahoy_events_properties"
+    remove_index :discussions, name: "index_discussions_on_guest_group_id"
+    remove_index :discussions, name: "discussions_discarded_at_null"
+    remove_index :discussions, name: "index_discussions_on_discarded_at_and_closed_at"
+    remove_index :events, name: "index_events_on_pinned_true"
+    remove_index :users, name: "index_users_on_deactivated_at"
+    remove_index :memberships, name: "index_memberships_on_archived_at"
+    remove_index :membership_requests, name: "index_membership_requests_on_response"
+    remove_index :membership_requests, name: "index_membership_requests_on_email"
+    remove_index :stances, name: "stances_revoked_at_null"
+    remove_index :groups, name: "index_groups_on_default_group_cover_id"
+    remove_index :groups, name: "index_groups_on_recent_activity_count"
+    remove_index :groups, name: "index_groups_on_category_id"
+    remove_index :groups, name: "index_groups_on_cohort_id"
+    remove_index :groups, name: "index_groups_on_is_visible_to_public"
+    remove_index :groups, name: "index_groups_on_parent_members_can_see_discussions"
+    remove_index :membership_requests, name: "index_membership_requests_on_name"
+    remove_index :usage_reports, name: "index_usage_reports_on_canonical_host"
+    remove_index :poll_unsubscriptions, name: "index_poll_unsubscriptions_on_user_id"
+    remove_index :user_deactivation_responses, name: "index_user_deactivation_responses_on_user_id"
+  end
+end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_17_080529) do
+ActiveRecord::Schema.define(version: 2021_04_17_101617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 2021_04_17_080529) do
     t.jsonb "properties"
     t.datetime "time"
     t.index ["name", "time"], name: "index_ahoy_events_on_name_and_time"
-    t.index ["properties"], name: "ahoy_events_properties", using: :gin
   end
 
   create_table "ahoy_messages", id: :serial, force: :cascade do |t|
@@ -244,7 +243,6 @@ ActiveRecord::Schema.define(version: 2021_04_17_080529) do
     t.datetime "accepted_at"
     t.index ["discussion_id"], name: "index_discussion_readers_discussion_id"
     t.index ["inviter_id"], name: "inviter_id_not_null", where: "(inviter_id IS NOT NULL)"
-    t.index ["last_read_at"], name: "index_discussion_readers_last_read_at_not_null", where: "(last_read_at IS NOT NULL)"
     t.index ["token"], name: "index_discussion_readers_on_token", unique: true
     t.index ["user_id", "discussion_id"], name: "index_discussion_readers_on_user_id_and_discussion_id", unique: true
   end
@@ -292,10 +290,7 @@ ActiveRecord::Schema.define(version: 2021_04_17_080529) do
     t.string "content_locale"
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
-    t.index ["discarded_at", "closed_at"], name: "index_discussions_on_discarded_at_and_closed_at", where: "((discarded_at IS NULL) AND (closed_at IS NULL))"
-    t.index ["discarded_at"], name: "discussions_discarded_at_null", where: "(discarded_at IS NULL)"
     t.index ["group_id"], name: "index_discussions_on_group_id"
-    t.index ["guest_group_id"], name: "index_discussions_on_guest_group_id"
     t.index ["key"], name: "index_discussions_on_key", unique: true
     t.index ["last_activity_at"], name: "index_discussions_on_last_activity_at", order: :desc
     t.index ["private"], name: "index_discussions_on_private"
@@ -347,7 +342,6 @@ ActiveRecord::Schema.define(version: 2021_04_17_080529) do
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
     t.index ["parent_id", "discussion_id"], name: "index_events_on_parent_id_and_discussion_id", where: "(discussion_id IS NOT NULL)"
     t.index ["parent_id"], name: "index_events_on_parent_id"
-    t.index ["pinned"], name: "index_events_on_pinned_true", where: "(pinned IS TRUE)"
     t.index ["position_key"], name: "index_events_on_position_key"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
@@ -454,18 +448,12 @@ ActiveRecord::Schema.define(version: 2021_04_17_080529) do
     t.boolean "members_can_add_guests", default: true, null: false
     t.boolean "members_can_delete_comments", default: true, null: false
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
-    t.index ["category_id"], name: "index_groups_on_category_id"
-    t.index ["cohort_id"], name: "index_groups_on_cohort_id"
     t.index ["created_at"], name: "index_groups_on_created_at"
-    t.index ["default_group_cover_id"], name: "index_groups_on_default_group_cover_id"
     t.index ["full_name"], name: "index_groups_on_full_name"
     t.index ["handle"], name: "index_groups_on_handle", unique: true
-    t.index ["is_visible_to_public"], name: "index_groups_on_is_visible_to_public"
     t.index ["key"], name: "index_groups_on_key", unique: true
     t.index ["name"], name: "index_groups_on_name"
     t.index ["parent_id"], name: "index_groups_on_parent_id"
-    t.index ["parent_members_can_see_discussions"], name: "index_groups_on_parent_members_can_see_discussions"
-    t.index ["recent_activity_count"], name: "index_groups_on_recent_activity_count"
     t.index ["subscription_id"], name: "groups_subscription_id_idx"
     t.index ["token"], name: "index_groups_on_token", unique: true
   end
@@ -493,12 +481,9 @@ ActiveRecord::Schema.define(version: 2021_04_17_080529) do
     t.integer "responder_id"
     t.string "response", limit: 255
     t.datetime "responded_at"
-    t.index ["email"], name: "index_membership_requests_on_email"
     t.index ["group_id"], name: "index_membership_requests_on_group_id"
-    t.index ["name"], name: "index_membership_requests_on_name"
     t.index ["requestor_id"], name: "index_membership_requests_on_requestor_id"
     t.index ["responder_id"], name: "index_membership_requests_on_responder_id"
-    t.index ["response"], name: "index_membership_requests_on_response"
   end
 
   create_table "memberships", id: :serial, force: :cascade do |t|
@@ -517,7 +502,6 @@ ActiveRecord::Schema.define(version: 2021_04_17_080529) do
     t.datetime "accepted_at"
     t.string "title"
     t.datetime "saml_session_expires_at"
-    t.index ["archived_at"], name: "index_memberships_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_memberships_on_created_at"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
     t.index ["inviter_id"], name: "index_memberships_on_inviter_id"
@@ -632,7 +616,6 @@ ActiveRecord::Schema.define(version: 2021_04_17_080529) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["poll_id", "user_id"], name: "index_poll_unsubscriptions_on_poll_id_and_user_id", unique: true
-    t.index ["user_id"], name: "index_poll_unsubscriptions_on_user_id"
   end
 
   create_table "polls", id: :serial, force: :cascade do |t|
@@ -731,7 +714,6 @@ ActiveRecord::Schema.define(version: 2021_04_17_080529) do
     t.string "secret_token", default: -> { "gen_random_uuid()" }
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id"], name: "index_stances_on_poll_id"
-    t.index ["revoked_at"], name: "stances_revoked_at_null", where: "(revoked_at IS NOT NULL)"
     t.index ["token"], name: "index_stances_on_token", unique: true
   end
 
@@ -800,13 +782,11 @@ ActiveRecord::Schema.define(version: 2021_04_17_080529) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "version"
-    t.index ["canonical_host"], name: "index_usage_reports_on_canonical_host"
   end
 
   create_table "user_deactivation_responses", id: :serial, force: :cascade do |t|
     t.integer "user_id"
     t.text "body"
-    t.index ["user_id"], name: "index_user_deactivation_responses_on_user_id"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
@@ -867,7 +847,6 @@ ActiveRecord::Schema.define(version: 2021_04_17_080529) do
     t.string "secret_token", default: -> { "gen_random_uuid()" }
     t.string "content_locale"
     t.boolean "bot", default: false, null: false
-    t.index ["deactivated_at"], name: "index_users_on_deactivated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
     t.index ["key"], name: "index_users_on_key", unique: true
