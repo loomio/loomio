@@ -12,7 +12,8 @@ require 'sidekiq/web'
 
 Loomio::Application.routes.draw do
   authenticate :user, lambda { |u| u.is_admin? } do
-    mount Sidekiq::Web => '/sidekiq'
+    mount Sidekiq::Web => '/admin/sidekiq'
+    mount Blazer::Engine, at: "/admin/blazer"
   end
 
   if !Rails.env.production?
