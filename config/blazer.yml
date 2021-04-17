@@ -23,7 +23,7 @@ data_sources:
 
     smart_variables:
       survey_category:  [ '%', 'board', 'party', 'coop', 'union', 'nonprofit', 'professional', 'government', 'community', 'other' ]
-      period: ["day", "week", "month", "year"]
+      period: ["minute", "hour", "day", "week", "month", "year"]
       # status: {0: "Active", 1: "Archived"}
 
     linked_columns:
