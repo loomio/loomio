@@ -11,7 +11,7 @@ module Ability::Poll
       poll.active? &&
       (
         poll.anyone_can_participate? ||
-        poll.voters.exists?(user.id) ||
+        poll.unmasked_voters.exists?(user.id) ||
         (!poll.specified_voters_only && poll.members.exists?(user.id))
       )
     end
