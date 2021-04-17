@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_17_074324) do
+ActiveRecord::Schema.define(version: 2021_04_17_080529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -344,7 +344,6 @@ ActiveRecord::Schema.define(version: 2021_04_17_074324) do
     t.index ["created_at"], name: "index_events_on_created_at"
     t.index ["discussion_id", "sequence_id"], name: "index_events_on_discussion_id_and_sequence_id", unique: true
     t.index ["eventable_id", "kind"], name: "index_events_on_eventable_id_and_kind"
-    t.index ["eventable_id"], name: "events_eventable_id_idx"
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
     t.index ["parent_id", "discussion_id"], name: "index_events_on_parent_id_and_discussion_id", where: "(discussion_id IS NOT NULL)"
     t.index ["parent_id"], name: "index_events_on_parent_id"
@@ -495,7 +494,6 @@ ActiveRecord::Schema.define(version: 2021_04_17_074324) do
     t.string "response", limit: 255
     t.datetime "responded_at"
     t.index ["email"], name: "index_membership_requests_on_email"
-    t.index ["group_id", "response"], name: "index_membership_requests_on_group_id_and_response"
     t.index ["group_id"], name: "index_membership_requests_on_group_id"
     t.index ["name"], name: "index_membership_requests_on_name"
     t.index ["requestor_id"], name: "index_membership_requests_on_requestor_id"
