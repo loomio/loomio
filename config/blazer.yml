@@ -33,7 +33,7 @@ data_sources:
 
 # create audits
 audit: true
-# async: true
+async: true
 
 # change the time zone
 # time_zone: "Pacific Time (US & Canada)"

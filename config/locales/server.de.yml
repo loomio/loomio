@@ -324,6 +324,7 @@ de:
       verify_stance_for_verified_user: "Es sieht so aus, als ob du bei %{title}abgestimmt hättest. Um zu bestätigen, dass du das auch wirklich warst, klicke bitte den unten angegebenen Link. "
       you_have_until: Du kannst bis %{when} teilnehmen.
     subject:
+      poll_reminder: '%{actor} erinnert dich deine Stimme in %{title} abzugeben'
       poll_closing_soon: '%{poll_type} endet in 24 Stunden: %{title}'
       poll_option_added: '%{actor} hat die Umfrageoptionen in %{title} erweitert'
       poll_option_added_author: '%{actor} hat die Umfrageoptionen in %{title} erweitert'
