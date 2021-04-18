@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_17_101617) do
+ActiveRecord::Schema.define(version: 2021_04_18_013409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -862,7 +862,6 @@ ActiveRecord::Schema.define(version: 2021_04_17_101617) do
     t.integer "item_id", null: false
     t.string "event", limit: 255, null: false
     t.integer "whodunnit"
-    t.text "object"
     t.datetime "created_at"
     t.jsonb "object_changes"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"

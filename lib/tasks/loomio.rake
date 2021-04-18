@@ -47,6 +47,7 @@ namespace :loomio do
       UsageReportService.send
       ExamplePollService.delay.cleanup
       LoginToken.where("created_at < ?", 24.hours.ago).delete_all
+      Ahoy::Message.where('sent_at < ?', 6.months.ago).delete_all
     end
   end
 
