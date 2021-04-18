@@ -25,8 +25,12 @@ export default
 </script>
 
 <template lang="pug">
-v-sheet.pa-4.my-4.poll-common-set-outcome-panel(color="primary lighten-5" elevation="2" v-if="showPanel()")
+v-alert.my-4.poll-common-set-outcome-panel(
+  v-if="showPanel()"
+  outlined
+  color="primary"
+  elevation="3")
   p.text--secondary(v-html="$t('poll_common_set_outcome_panel.' + poll.pollType)")
   v-layout(justify-space-around)
-    v-btn.poll-common-set-outcome-panel__submit(color="accent" @click="openOutcomeForm()" v-t="'poll_common_set_outcome_panel.enter_outcome'")
+    v-btn.poll-common-set-outcome-panel__submit(color="primary" @click="openOutcomeForm()" v-t="'poll_common_set_outcome_panel.enter_outcome'")
 </template>
