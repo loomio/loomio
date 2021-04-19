@@ -27,13 +27,13 @@ class MembershipRequest < ApplicationRecord
   delegate :name,                 to: :group, prefix: true
   delegate :mailer,               to: :group
 
-  delegate :email,                to: :requestor
-  delegate :name,                 to: :requestor
+  delegate :email,                to: :requestor, allow_nil: true
+  delegate :name,                 to: :requestor, allow_nil: true
 
   def user_id
     requestor_id
   end
-  
+
   def approve!(responder)
     set_response_details('approved', responder)
   end
