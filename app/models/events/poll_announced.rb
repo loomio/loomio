@@ -5,7 +5,7 @@ class Events::PollAnnounced < Event
   def self.publish!(poll: , actor: , stances:, recipient_user_ids: [], recipient_audience: nil, recipient_message: nil)
     super poll,
       user: actor,
-      custom_fields: {stance_ids: stances.pluck(:id)},
+      stance_ids: stances.map(&:id),
       recipient_user_ids: Array(recipient_user_ids).uniq.compact,
       recipient_audience: recipient_audience.presence,
       recipient_message: recipient_message.presence
@@ -13,7 +13,7 @@ class Events::PollAnnounced < Event
 
   private
   def stances
-    Stance.where(id: custom_fields['stance_ids'])
+    Stance.where(id: self.stance_ids)
   end
 
   def email_recipients
@@ -21,6 +21,6 @@ class Events::PollAnnounced < Event
   end
 
   def notification_recipients
-    User.active.distinct.joins(:stances).where('stances.id IN (?)', custom_fields['stance_ids'])
+    User.active.distinct.joins(:stances).where('stances.id IN (?)', self.stance_ids)
   end
 end
