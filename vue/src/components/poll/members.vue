@@ -27,6 +27,7 @@ export default
     actionNames: []
     service: StanceService
     query: ''
+    message: ''
 
   mounted: ->
     @actionNames = ['makeAdmin', 'removeAdmin', 'revoke'] # 'resend'
@@ -69,6 +70,7 @@ export default
         recipient_audience: @poll.recipientAudience
         recipient_user_ids: @poll.recipientUserIds
         recipient_emails: @poll.recipientEmails
+        recipient_message: @message
         exclude_members: true
       .then (data) =>
         count = data.stances.length
@@ -137,6 +139,8 @@ export default
       :initialRecipients="initialRecipients"
       :excludeMembers="true"
       @new-query="newQuery")
+
+    v-textarea(v-if="someRecipients" rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
     .d-flex
       v-spacer
       v-btn.poll-members-list__submit(color="primary" :disabled="!someRecipients" :loading="saving" @click="inviteRecipients" )

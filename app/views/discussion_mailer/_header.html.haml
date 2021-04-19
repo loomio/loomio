@@ -2,7 +2,7 @@
   %tr
     %td= render 'base_mailer/avatar', user: event.user
     %td.thread-mailer__subject--text= t(:"discussion_mailer.#{action_name}.subject_html", actor: event.user.name, discussion: link_to(event.eventable.discussion.title, target_url(eventable: event.eventable, recipient: recipient, action_name: action_name)))
-  - if event.recipient_message
+  - if event.recipient_message.present?
     %tr
       %td(colspan=2)
-        %i=raw event.recipient_message
+        =raw strip_tags(event.recipient_message.to_s).gsub(/(?:\n\r?|\r\n?)/, '<br>')
