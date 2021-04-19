@@ -68,13 +68,13 @@ v-card.thread-arrangement-form
           | -
           space
           span(v-t="'thread_arrangement_form.nested_once_description'")
-      //- v-radio(:value="3")
-      //-   template(v-slot:label)
-      //-     strong(v-t="'thread_arrangement_form.nested_twice'")
-      //-     space
-      //-     | -
-      //-     space
-      //-     span(v-t="'thread_arrangement_form.nested_twice_description'")
+      v-radio(:value="3")
+        template(v-slot:label)
+          strong(v-t="'thread_arrangement_form.nested_twice'")
+          space
+          | -
+          space
+          span(v-t="'thread_arrangement_form.nested_twice_description'")
     v-alert(type="warning" v-if="clone.maxDepth != discussion.maxDepth" v-t="'thread_arrangement_form.changing_nesting_is_slow'")
   v-card-actions
     v-spacer

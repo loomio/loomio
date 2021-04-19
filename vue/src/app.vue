@@ -8,9 +8,11 @@ import Flash from '@/shared/services/flash'
 import { each, compact, truncate } from 'lodash'
 import openModal from '@/shared/helpers/open_modal'
 import { initLiveUpdate, closeLiveUpdate } from '@/shared/helpers/message_bus'
+import CustomCss from '@/components/custom_css'
 
 
 export default
+  components: {CustomCss}
   mixins: [AuthModalMixin]
   data: ->
     pageError: null

@@ -284,6 +284,13 @@ v-card.group-form
                 | -
                 space
                 span(v-t="'thread_arrangement_form.nested_once_description'")
+            v-radio(:value="3")
+              template(v-slot:label)
+                strong(v-t="'thread_arrangement_form.nested_twice'")
+                space
+                | -
+                space
+                span(v-t="'thread_arrangement_form.nested_twice_description'")
             //- v-radio(:value="3")
             //-   template(v-slot:label)
             //-     strong(v-t="'thread_arrangement_form.nested_twice'")
