@@ -66,7 +66,12 @@ class PollService
                              emails: params[:recipient_emails],
                              audience: params[:recipient_audience])
 
-    Events::PollAnnounced.publish!(poll, actor, stances)
+    Events::PollAnnounced.publish!(poll: poll,
+                                   actor: actor,
+                                   stances: stances,
+                                   recipient_user_ids: params[:recipient_user_ids],
+                                   recipient_audience: params[:recipient_audience],
+                                   recipient_message: params[:recipient_message] )
     stances
   end
 

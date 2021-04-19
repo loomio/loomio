@@ -3,7 +3,7 @@
     %td= render "avatar", user: event.user
     %td
       %span=raw t(:"poll_mailer.header.#{action_name}#{poll.wip? ? "_wip" : ''}", actor: event.user.name, title: poll.title, poll_type: t("poll_types.#{poll.poll_type}"))
-  - if event.recipient_message
+  - if event.recipient_message.present?
     %tr
       %td(colspan=2)
-        %i=raw event.recipient_message
+        =raw strip_tags(event.recipient_message.to_s).gsub(/(?:\n\r?|\r\n?)/, '<br>')
