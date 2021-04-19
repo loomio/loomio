@@ -8,7 +8,7 @@ class Events::PollAnnounced < Event
       custom_fields: {stance_ids: stances.pluck(:id)},
       recipient_user_ids: Array(recipient_user_ids).uniq.compact,
       recipient_audience: recipient_audience.presence,
-      recipient_message: recipient_message.presence)
+      recipient_message: recipient_message.presence
   end
 
   private
