@@ -31,7 +31,6 @@ ro:
     discussions_count_plural: ({{count}} discutii)
     tag_created: Etichetă salvată
     tags_marked: Conversatii marcate '{{name}}' in {{groupName}}
-    no_tags_present: Nu s-au gasit conversatii cu aceasta eticheta! Incearca din nou selectand alta eticheta.
   reactions:
     slight_smile: Imi place
     heart: Apreciaza

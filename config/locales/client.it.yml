@@ -68,8 +68,6 @@ it:
     tag_created: Etichetta salvata
     tag_destroyed: Tag eliminato
     tags_marked: Discussioni marcate con '{{name}}' nel gruppo {{groupName}}
-    no_tags_present: 'Non è stata trovata nessuna discussione con questa etichetta!  '
-    no_tags_in_group: Questo gruppo non ha ancora tag di categoria.
   reactions:
     slight_smile: Mi piace
     heart: Amore
@@ -1112,6 +1110,7 @@ it:
   memberships_page:
     members: 'Membri'
     name_label: 'Nome'
+    coordinator_label: 'Admin'
     remove_member_label: 'Rimuovi'
     fragment_placeholder: 'Filtra gli utenti per nome o per username...'
     messages:
@@ -1296,9 +1295,26 @@ it:
     activity_placeholder: 'Ancora nessuna attività!'
     load_previous: 'Carica attività precedente'
     started_by: 'Iniziato da <strong>{{name}}</strong>'
+    pin:
+      pinned: 'Thread aggiunto'
+      unpinned: 'Filo nonpinato'
+    volume:
+      mute_message: 'Filo disattivato'
+      unmute_message: 'Thread non riattivato'
+    closed:
+      reopened: 'Thread riaperto'
+      closed: 'Thread chiuso'
+  discussion_last_seen_by:
+    title: Visto da
+    no_one: Nessuno l'ha ancora visto
   activity_card:
+    aria_label: "Commenta o avvia un sondaggio"
     count_responses: "{{count}} risposte"
+    event_pinned: "Aggiunto alla sequenza temporale"
+    event_unpinned: "Nonpinto dalla sequenza temporale"
     beginning: Iniziale
+    end: Fine
+    unread: "Discussioni non lette ({{count}})"
     latest: Più recente
     context: Contesto
     chronological: Cronologico
@@ -1306,10 +1322,17 @@ it:
     attachment_display:
       aria_label: 'File allegato:'
       image_alt: 'Immagine allegata'
+    n_previous: 'Carica {{count}} risposte precedenti'
+    n_more: 'Carica risposte {{count}}'
+    add_comment: Aggiungi un commento
+    add_poll: Aggiungi sondaggio
+    add_outcome: Aggiungere il risultato
     comment: Commenta
+    facilitate: Agevolare
   thread_group:
     aria_label: Nome gruppo
   thread_context:
+    current_poll_type_banner: Corrente {{pollType}}
     aria_label: 'Contesto della discussione'
     thread_options: 'Opzioni delle discussioni'
     email_settings: 'Impostazioni notifiche'
@@ -1329,7 +1352,8 @@ it:
     title: Fissa in alto la discussione
     pin_thread: Fissa in alto la discussione
   thread_arrangement_form:
-    nested_once: Nidificato
+    latest: Più recente
+    earliest: Maggiore
   delete_thread_form:
     aria_label: 'Cancella discussione'
     title: Cancella discussione
@@ -1359,6 +1383,7 @@ it:
     search_placeholder: Cerca tra i gruppi pubblici
     newest_first: I voti più nuovi prima
   decision_tools_card:
+    title: Agevolare
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Aiuto</a>
     proposal_title: Proposta
     count_title: Verifica
@@ -1371,38 +1396,88 @@ it:
     vote_now: Vota ora
     have_your_say: Dite la vostra
     your_response: La tua risposta
+    change_your_response: Modifica risposta
     reason: Motivo
     message: Messaggio
     results: Risultati
     responses: Risposte
+    close_poll_type: Chiudi {{pollType}}
+    totals: Totali
+    participate: Participare
     vote: Voto
     votes: Voti
     update_outcome: Aggiorna risultato
     outcome: Risultato
     statement: Dichiarazione
+    change_your_stance: Modifica risposta
     load_more: Caricane altri
     details: Dettagli
     participant_name: Il tuo nome
     participant_email: La tua email
+    submit_vote: Invia voto
+    update_vote: Aggiorna voto
+    share_poll: Condividi sondaggio
+    share_proposal: Condividi proposta
+    share_count: Condividi controllo
     start_poll: Inizia una decisione
+    publish_poll: Condividi sondaggio
+    view_all: Visualizza tutto
     save_changes: Salva
+    change_vote: Cambia il tuo voto.
+    max_score: Punteggio massimo
+    min_score: Punteggio minimo
+    too_long: Troppo a lungo
+    no_voting: Solo per discussione, voto disabilitato
   poll_common_attachment_form:
     label: Allegati
+  poll_common_add_option:
+    button:
+      add_option: Aggiungi un'altra opzione
+    modal:
+      title: Aggiungi un'opzione
+    form:
+      add_options: Aggiungi opzioni
+      options_added: Nuove opzioni aggiunte
   poll_common_card:
     show_results: Mostra risultati
+    hide_results: Nascondere i risultati
+    deleted: Questo sondaggio è stato eliminato
   poll_common_index_card:
     title: Decisioni precedenti
+    no_polls: Nessuna decisione precedente trovata
     count: "Vedi tutto:  ({{count}}) decisioni"
   discussions_panel:
     open: Aperto
     all: Tutte
+    unread: Discussioni non lette ({{count}})
     closed: Chiuso
+    include_subgroups_mine: '{{name}} e i sottogruppi'
+    include_subgroups_all: '{{name}} e tutti i sottogruppi'
+    no_results_found: Nessun risultato per "{{search}}"
   members_panel:
+    no_results: 'Nessun membri trovato'
     everyone: 'Chiunque'
+    sort: 'Sorta'
+    order_label: "Ordine"
     order_by_name: 'Nome'
+    order_by_created: 'Maggiore'
+    show_users_in_subgroups: Mostrare anche gli utenti nei sottogruppi
+    order_by_created_desc: 'Più recente'
+    order_by_admin_desc: 'Amministratori'
+    loaded_of_total: '{{loaded}} di {{total}}'
+    view_requests: Visualizzare le richieste
     header_name: 'Nome'
     header_username: 'Nome Utente'
+    header_role: 'Ruolo'
+    header_invited_by: 'Invitato da'
+    header_invited: 'Invitato'
+    header_actions: 'Azioni'
+    directory: 'Directory'
     invitations: 'Inviti'
+    requests: 'Richieste'
+    admin: 'Admin'
+    guest: 'Ospite'
+    sharable_link: 'Collegamento condividibile'
     accepted: 'Membri'
   polls_panel:
     all: 'Tutte'

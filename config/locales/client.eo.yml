@@ -51,7 +51,6 @@ eo:
     discussions_count_plural: ({{count}} fadenoj)
     tag_created: Etikedo konservita
     tags_marked: Fadenoj markitaj kiel  '{{name}}' en {{groupName}}
-    no_tags_present: Neniu fadeno kun tiu etikedo estis trovita. Bonvolu provi alian.
   reactions:
     slight_smile: Ŝati
     heart: Ŝategi

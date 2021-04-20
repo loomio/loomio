@@ -25,7 +25,6 @@ cmn:
     discussions_count_plural: （{{count}} 个话题）
     tag_created: 标签已保存
     tags_marked: 话题已标记为在 {{groupName}} 中的 '{{name}}'
-    no_tags_present: 找不到有该标签的话题！尝试选取其他的。
   reactions:
     slight_smile: 喜欢
     heart: 喜爱

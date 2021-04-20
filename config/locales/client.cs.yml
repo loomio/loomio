@@ -27,7 +27,6 @@ cs:
     discussions_count_singular: ({{count}} vlákno)
     discussions_count_plural: ({{count}} vláken)
     tags_marked: Vlákna označená '{{name}}' ve skupině {{groupName}}
-    no_tags_present: S tímto štítkem nebyly nalezeny žádná vlákna! Zkuste vybrat jiný.
   reactions:
     ok_hand: Ok
   timezones:

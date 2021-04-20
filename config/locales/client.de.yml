@@ -1403,7 +1403,6 @@ de:
     replies: Wie sollen Antworten angezeigt werden?
     linear: Flache Liste
     linear_description: Einträge in der Reihenfolge des Erstellens auflisten
-    nested_once: Verschachtelt
     nested_once_description: Antworten unter dem Originaleintrag eingerückt darstellen
     changing_nesting_is_slow: Änderungen an der Verschachtelung können bei der Verarbeitung einige Minuten dauern.
   delete_thread_form:

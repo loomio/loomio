@@ -38,7 +38,6 @@ hu:
     discussions_count_plural: ({{count}} témák)
     tag_created: Címke mentve
     tags_marked: 'A(z) ''{{name}}'' jelöléssel ellátott témák itt: {{groupName}}'
-    no_tags_present: Nem találhatóak témák ezzel a címkével! Próbálj meg egy másikat kiválasztani.
   reactions:
     slight_smile: Tetszik
     heart: Szeret
@@ -1083,7 +1082,6 @@ hu:
     sorting: Legrégebbi vagy legújabb elől?
     latest: Legújabb
     earliest: Legrégebbi
-    nested_once: Beágyazott
   delete_thread_form:
     aria_label: 'Törölje a témát'
     title: Törölje a témát

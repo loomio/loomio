@@ -57,7 +57,6 @@ nl_NL:
     discussions_count_plural: ({{count}} borden)
     tag_created: Label opgeslagen
     tags_marked: 'Borden gemarkeerd met ''{{name}}'' in {{groupName}} '
-    no_tags_present: Er werden geen borden gevonden met dit label! Probeer een andere te selecteren.
   reactions:
     slight_smile: Vind ik leuk
     heart: Liefde
@@ -1323,7 +1322,6 @@ nl_NL:
     replies: Hoe antwoorden weergeven?
     linear: Platte lijst
     linear_description: Items opgelijst zoals plaatsgevonden, één voor één achter elkaar.
-    nested_once: Genesteld
     nested_once_description: Laat antwoorden inspringen onder de oorspronkelijke reactie
     changing_nesting_is_slow: Wijzigingen in de 'nesting' kunnen enkele minuten duren om te verwerken.
   delete_thread_form:

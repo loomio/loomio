@@ -50,7 +50,6 @@ tr:
     discussions_count_plural: ({{count}} müzakereler)
     tag_created: Etiket kaydedildi
     tags_marked: 'Müzakereler {{groupName}} içinde ''{{name}}'' ile işaretlendi '
-    no_tags_present: Bu etiketle müzakere bulunamadı! Başka birini seçmeyi deneyin.
   reactions:
     slight_smile: Beğen
     heart: Aşk

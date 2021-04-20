@@ -37,7 +37,6 @@ ru:
     discussions_count_plural: ({{count}} ветвей)
     tag_created: Метка записана
     tags_marked: Ветви, помеченные '{{name}}' в {{groupName}}
-    no_tags_present: Не нашли ветвей с этой меткой! Попробуйте выбрать другую.
   reactions:
     slight_smile: Нравиться
     heart: Люблю

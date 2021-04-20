@@ -57,7 +57,6 @@ ar:
     discussions_count_plural: ({{عدد}} موضوع)
     tag_created: تم حفظ العلامة
     tags_marked: تم وضع علامة "{{اسم}}" على المواضيع في {{اسم المجموعة}}
-    no_tags_present: لم يتم العثور على مواضيع بهذه العلامة! حاول اختيار واحد آخر.
   reactions:
     slight_smile: مثل
     heart: حب
@@ -1311,7 +1310,6 @@ ar:
     replies: كيف يتم عرض الردود؟
     linear: قائمة مسطحة
     linear_description: العناصر المذكورة كما حدثت ، واحدة تلو الأخرى.
-    nested_once: متداخلة
     nested_once_description: مسافة بادئة للردود تحت التعليق الأصلي
     changing_nesting_is_slow: يمكن أن تستغرق التغييرات على التداخل بضع دقائق حتى تتم معالجتها.
   delete_thread_form:

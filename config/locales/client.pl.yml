@@ -57,7 +57,6 @@ pl:
     discussions_count_plural: ({{count}} wątki)
     tag_created: Tag został zapisany
     tags_marked: Wątki oznaczone „{{name}}” w {{groupName}}
-    no_tags_present: Nie znaleziono wątków z tym tagiem! Spróbuj wybrać inny.
   reactions:
     slight_smile: Lubię
     heart: Kocham
@@ -1323,7 +1322,6 @@ pl:
     replies: W jaki sposób wyświetlać odpowiedzi?
     linear: Płaska lista
     linear_description: Elementy wymienione tak, jak się pojawiły, jedna po drugiej.
-    nested_once: Zagnieżdżony
     nested_once_description: Odpowiedzi zebrane pod oryginalnym komentarzem
     changing_nesting_is_slow: Przetwarzanie zmian w zagnieżdżaniu może potrwać kilka minut.
   delete_thread_form:

@@ -68,8 +68,9 @@ zh_TW:
     tag_created: 標籤已儲存
     tag_destroyed: 標籤已刪除
     tags_marked: 討論串已標記為在 {{groupName}} 中的 '{{name}}'
-    no_tags_present: 找不到有該標籤的討論串！嘗試選取其他的。
-    no_tags_in_group: 此群組還沒有分類標籤。
+    no_tags_present: 找不到有該標籤的討論串！嘗試選取其他的
+    no_tags_in_group: 此群組還沒有分類標籤
+    only_admins_can_edit_tags: 抱歉，僅有 {{group}} 的管理員可以建立、重新命名或刪除標籤
   reactions:
     slight_smile: 讚
     heart: 愛
@@ -1403,8 +1404,10 @@ zh_TW:
     replies: 如何顯示回覆？
     linear: 扁平清單
     linear_description: 列出發生的項目，一個接著一個。
-    nested_once: 巢狀
+    nested_once: 巢狀回覆 - 僅第一個回覆
     nested_once_description: 讓原始留言底下的回覆縮排
+    nested_twice: 兩個等級的巢狀回覆
+    nested_twice_description: 最多縮排 2 次。
     changing_nesting_is_slow: 更改巢狀排列方式可能需要幾分鐘的時間來處理。
   delete_thread_form:
     aria_label: '刪除討論串'
