@@ -74,7 +74,7 @@ export default
         groupKey = data.groups[0].key
         Flash.success "group_form.messages.group_#{@actionName}"
         Records.groups.findOrFetchById(groupKey, {}, true).then (group) =>
-          if AppConfig.features.app.group_survey
+          if !group.parentId && AppConfig.features.app.group_survey
             Records.remote.post 'group_surveys',
               group_id: group.id
               category: (@group.category == 'other' && @group.otherCategory) || @group.category
