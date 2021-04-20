@@ -15,12 +15,12 @@ export default
 
   created: ->
     EventBus.$on 'stanceSaved', => EventBus.$emit 'refreshStance'
-    @outcome = @poll.outcome()
     @watchRecords
-      collections: ["stances", "outcomes"]
+      collections: ["stances", "outcomes", "polls"]
       query: (records) =>
         @myStance = @poll.myStance()
         @outcome = @poll.outcome()
+        @showResults = @poll.showResults()
 
   beforeDestroy: ->
     EventBus.$off 'showResults'
@@ -30,11 +30,11 @@ export default
     buttonPressed: false
     myStance: null
     outcome: null
+    showResults: false
 
   computed:
     eventable: -> @event.model()
     poll: -> @eventable
-    showResults: -> @poll.showResults()
 
     menuActions: ->
       assign(
