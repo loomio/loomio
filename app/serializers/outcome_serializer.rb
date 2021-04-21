@@ -7,6 +7,7 @@ class OutcomeSerializer < ApplicationSerializer
              :created_at,
              :custom_fields,
              :attachments,
+             :link_previews,
              :event_summary,
              :review_on,
              :event_location,

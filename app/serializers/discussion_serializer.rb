@@ -31,6 +31,7 @@ class DiscussionSerializer < ApplicationSerializer
              :importance,
              :pinned,
              :attachments,
+             :link_previews,
              :mentioned_usernames,
              :newest_first,
              :max_depth,

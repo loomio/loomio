@@ -72,6 +72,7 @@ section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id"
       poll-common-stance-choice(:poll="poll" :stance-choice='choice' v-if='choice.show()' v-for='choice in eventable.orderedStanceChoices()' :key='choice.id')
     span.caption(v-if='eventable.castAt && eventable.totalScore() == 0' v-t="'poll_common_votes_panel.none_of_the_above'" )
     formatted-text.poll-common-stance-created__reason(:model="eventable" column="reason")
-  attachment-list(:attachments="eventable.attachments")
+    link-previews(:model="eventable")
+    attachment-list(:attachments="eventable.attachments")
   action-dock(:model='eventable' :actions='actions')
 </template>

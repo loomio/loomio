@@ -50,6 +50,7 @@ export default
 section.strand-item__new-comment.new-comment(id="'comment-'+ eventable.id" :event="event" :is-returning="isReturning")
   strand-item-headline(:event="event" :eventable="eventable")
   formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")
+  link-previews(:model="eventable")
   document-list(:model='eventable' skip-fetch)
   attachment-list(:attachments="eventable.attachments")
   action-dock(:model='eventable' :actions='dockActions' :menu-actions='menuActions')

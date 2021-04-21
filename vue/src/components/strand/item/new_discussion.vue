@@ -86,6 +86,7 @@ export default
       a.context-panel__users_notified_count(v-t="{ path: 'thread_context.count_notified', args: { count: discussion.usersNotifiedCount} }"  @click="actions.notification_history.perform")
   template(v-if="!collapsed")
     formatted-text.context-panel__description(:model="discussion" column="description")
+    link-previews(:model="discussion")
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
     action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions' fetch-reactions)

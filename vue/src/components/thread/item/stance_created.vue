@@ -70,5 +70,6 @@ thread-item.stance-created(:event="event" :is-returning="isReturning")
     v-layout(v-if="!eventable.singleChoice()" wrap align-center)
       poll-common-stance-choice(:poll="poll" :stance-choice='choice' v-if='choice.show()' v-for='choice in eventable.orderedStanceChoices()' :key='choice.id')
     formatted-text.poll-common-stance-created__reason(:model="eventable" column="reason")
-  attachment-list(:attachments="eventable.attachments")
+    link-previews(:model="eventable")
+    attachment-list(:attachments="eventable.attachments")
 </template>

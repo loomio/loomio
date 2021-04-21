@@ -34,6 +34,7 @@ class GroupSerializer < ApplicationSerializer
              :admin_memberships_count,
              :archived_at,
              :attachments,
+             :link_previews,
              :new_threads_max_depth,
              :new_threads_newest_first,
              :cover_urls,

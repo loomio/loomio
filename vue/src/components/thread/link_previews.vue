@@ -14,12 +14,12 @@ export default
       new URL(url).host
 </script>
 <template lang="pug">
-.link-previews
-  v-card.mt-4(outlined v-for="preview in model.linkPreviews" :key="preview.url" style="position: relative")
+.link-previews.mb-3
+  v-card.mt-3(outlined v-for="preview in model.linkPreviews" :key="preview.url" style="position: relative")
     v-btn(style="top: 8px; right: 8px; position: absolute; z-index: 1000" v-if="remove" icon @click="remove(preview.url)")
-      v-icon mdi-close
+      v-icon mdi-close-circle-outline
     a(:href="preview.url" target="_blank")
-      v-img(v-if="preview.image" :src="preview.image" height="128px")
+      .link-preview__image(v-if="preview.image" :style="{'background-image': 'url('+preview.image+')'}")
       v-card-title
         .d-flex
           span
@@ -31,5 +31,14 @@ export default
       v-card-subtitle
         | {{preview.description}}
 </template>
+
 <style lang="sass">
+.link-preview__image
+  background-repeat: no-repeat
+  height: 128px
+  overflow: none
+  background-size: cover
+  background-position: center
+  // max-width: 512px
+  // margin: 0 auto
 </style>

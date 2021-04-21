@@ -58,6 +58,7 @@ section.strand-item.poll-created
     poll-common-set-outcome-panel(:poll='poll' v-if="!poll.outcome()")
     poll-common-outcome-panel(:outcome='poll.outcome()' v-if='poll.outcome()')
     formatted-text.poll-common-details-panel__details(:model="poll" column="details")
+    link-previews(:model="poll")
     attachment-list(:attachments="poll.attachments")
     document-list(:model='poll' skip-fetch)
     //- p.caption(v-if="!poll.pollOptionNames.length" v-t="'poll_common.no_voting'")

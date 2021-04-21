@@ -192,6 +192,7 @@ export default
       if @linkUrl
         @linkUrl = "http://".concat(@linkUrl) unless @linkUrl.includes("://")
         command({ href: @linkUrl })
+        @fetchLinkPreviews([@linkUrl])
         @linkUrl = null
       @linkDialogIsOpen = false
       @editor.focus()
@@ -211,23 +212,25 @@ export default
     updateModel: ->
       @model[@field] = @editor.getHTML()
       @updateFiles()
-      @fetchLinkPreviews()
+      @scrapeLinkPreviews() if @model.isNew()
 
     removeLinkPreview: (url) ->
       @model.linkPreviews = reject(@model.linkPreviews, (p) -> p.url == url)
 
-    fetchLinkPreviews: throttle ->
+    scrapeLinkPreviews: throttle ->
       parser = new DOMParser()
       doc = parser.parseFromString(@model[@field], 'text/html')
-      urls = difference (Array.from(doc.querySelectorAll('a')).map (el) => el.href), @fetchedUrls
-
-      if urls.length
-        Records.remote.post('link_previews', {urls: urls}).then (data) =>
-          @model.linkPreviews = uniq @model.linkPreviews.concat(data.previews)
-
-      @fetchedUrls = uniq @fetchedUrls.concat(urls)
+      @fetchLinkPreviews difference((Array.from(doc.querySelectorAll('a')).map (el) => el.href), @fetchedUrls)
     ,
       500
+
+    fetchLinkPreviews: (urls) ->
+      if urls.length
+        Records.remote.post('link_previews', {urls: urls}).then (data) =>
+          existing = compact @model.linkPreviews.map((p) -> p.url)
+          newUrls = reject(data.previews, (preview) => existing.includes(preview.url))
+          @model.linkPreviews = @model.linkPreviews.concat newUrls
+      @fetchedUrls = uniq @fetchedUrls.concat(urls)
 
   beforeDestroy: ->
     @editor.destroy() if @editor

@@ -1,6 +1,7 @@
 class PollSerializer < ApplicationSerializer
   attributes :id,
              :attachments,
+             :link_previews,
              :author_id,
              :anyone_can_participate,
              :anonymous,

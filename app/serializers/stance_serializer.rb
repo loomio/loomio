@@ -11,6 +11,7 @@ class StanceSerializer < ApplicationSerializer
              :locale,
              :versions_count,
              :attachments,
+             :link_previews,
              :volume,
              :inviter_id,
              :poll_id,
@@ -61,6 +62,10 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def include_attachments?
+    include_reason?
+  end
+
+  def include_link_previews?
     include_reason?
   end
 end

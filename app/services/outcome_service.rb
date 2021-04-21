@@ -58,7 +58,7 @@ class OutcomeService
                            model: outcome,
                            actor: actor)
 
-    outcome.assign_attributes_and_files(params.slice(:statement, :statement_format))
+    outcome.assign_attributes_and_files(params.slice(:statement, :statement_format, :files, :image_files, :link_previews))
     return false unless outcome.valid?
     outcome.store_calendar_invite if outcome.should_send_calendar_invite
 

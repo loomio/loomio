@@ -15,6 +15,7 @@ export default
     mid-dot(v-if='poll.anonymous')
     span(v-if='poll.anonymous', md-colors="{color: 'primary-600', 'border-color': 'primary-600'}" v-t="'common.anonymous'")
   formatted-text.poll-common-details-panel__details(:model="poll" column="details")
+  link-previews(:model="poll")
   attachment-list(:attachments="poll.attachments")
   document-list(:model='poll' skip-fetch)
 </template>

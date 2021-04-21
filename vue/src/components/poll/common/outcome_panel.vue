@@ -33,7 +33,9 @@ v-alert.my-4.poll-common-outcome-panel(
     span {{exactDate(parseISO(outcome.pollOption().name))}}
     p {{outcome.eventLocation}}
   formatted-text(style="font-size: 15px" :model="outcome" column="statement")
+  link-previews(:model="outcome")
   document-list(:model="outcome")
+  attachment-list(:attachments="outcome.attachments")
   v-layout(align-center)
     v-spacer
     action-dock(:model="outcome" :actions="actions")

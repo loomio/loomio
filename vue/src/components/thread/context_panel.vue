@@ -100,6 +100,7 @@ export default
       .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'" v-if='discussion.closedAt')
         v-tooltip(bottom) {{ exactDate(discussion.closedAt) }}
     formatted-text.context-panel__description(:model="discussion" column="description" aria-label="Discussion context")
+    link-previews(:model='discussion')
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
     action-dock(:model='discussion' :actions='dockActions' :menu-actions='menuActions' fetch-reactions)

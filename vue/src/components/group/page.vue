@@ -97,6 +97,7 @@ v-main
     group-onboarding-card(:group="group")
     formatted-text.group-page__description(v-if="group" :model="group" column="description")
     join-group-button(:group='group')
+    link-previews(:model="group")
     document-list(:model='group')
     attachment-list(:attachments="group.attachments")
     v-divider.mt-4
