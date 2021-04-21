@@ -28,6 +28,7 @@ export default class NullGroupModel
       files: []
       imageFiles: []
       attachments: []
+      linkPreviews: []
       subscription: {active: true}
       specifiedVotersOnly: false
 

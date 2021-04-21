@@ -59,6 +59,7 @@ module.exports = {
   LmoTextarea: 'lmo_textarea/lmo_textarea',
   Loading: 'common/loading',
   LoadingContent: 'common/loading_content',
+  LinkPreviews: 'thread/link_previews',
   MatrixChart: 'poll/meeting/matrix_chart',
   MembershipDropdown: 'group/membership_dropdown',
   MembershipRequest: 'group/membership_request',

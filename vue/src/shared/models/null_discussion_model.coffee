@@ -25,6 +25,7 @@ export default class NullDiscussionModel
       files: []
       imageFiles: []
       attachments: []
+      linkPreviews: []
       recipientMessage: null
       recipientAudience: null
       recipientUserIds: []

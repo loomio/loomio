@@ -19,6 +19,7 @@ export default class OutcomeModel extends BaseModel
     files: []
     imageFiles: []
     attachments: []
+    linkPreviews: []
     recipientUserIds: []
     recipientEmails: []
     recipientAudience: null

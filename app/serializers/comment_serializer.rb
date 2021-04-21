@@ -10,6 +10,7 @@ class CommentSerializer < ApplicationSerializer
              :content_locale,
              :versions_count,
              :attachments,
+             :link_previews,
              :author_id,
              :discarded_at
 

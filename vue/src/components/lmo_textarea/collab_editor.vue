@@ -35,7 +35,7 @@ import {getEmbedLink} from '@/shared/helpers/embed_link.coffee'
 import { CommonMentioning, HtmlMentioning, MentionPluginConfig } from './mentioning.coffee'
 import SuggestionList from './suggestion_list'
 import Attaching from './attaching.coffee'
-import {compact} from 'lodash'
+import {compact, uniq, throttle, difference, reject} from 'lodash'
 import TextHighlightBtn from './text_highlight_btn'
 import TextAlignBtn from './text_align_btn'
 
@@ -71,6 +71,7 @@ export default
     iframeUrl: ""
     linkDialogIsOpen: false
     iframeDialogIsOpen: false
+    fetchedUrls: []
 
   computed:
     format: ->
@@ -210,6 +211,23 @@ export default
     updateModel: ->
       @model[@field] = @editor.getHTML()
       @updateFiles()
+      @fetchLinkPreviews()
+
+    removeLinkPreview: (url) ->
+      @model.linkPreviews = reject(@model.linkPreviews, (p) -> p.url == url)
+
+    fetchLinkPreviews: throttle ->
+      parser = new DOMParser()
+      doc = parser.parseFromString(@model[@field], 'text/html')
+      urls = difference (Array.from(doc.querySelectorAll('a')).map (el) => el.href), @fetchedUrls
+
+      if urls.length
+        Records.remote.post('link_previews', {urls: urls}).then (data) =>
+          @model.linkPreviews = uniq @model.linkPreviews.concat(data.previews)
+
+      @fetchedUrls = uniq @fetchedUrls.concat(urls)
+    ,
+      500
 
   beforeDestroy: ->
     @editor.destroy() if @editor
@@ -383,6 +401,7 @@ div
     v-alert(v-if="maxLength && model[field] && model[field].length > maxLength" color='error')
       span( v-t="'poll_common.too_long'")
 
+  link-previews(:model="model" :remove="removeLinkPreview")
   suggestion-list(:query="query" :loading="fetchingMentions" :mentionable="mentionable" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" @select-user="selectUser")
   files-list(:files="files" v-on:removeFile="removeFile")
 

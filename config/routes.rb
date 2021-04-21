@@ -57,6 +57,8 @@ Loomio::Application.routes.draw do
 
       resources :group_surveys, only: [:create]
 
+      resources :link_previews, only: [:create]
+
       resources :usage_reports, only: [:create]
 
       resources :groups, only: [:index, :show, :create, :update, :destroy] do

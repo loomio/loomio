@@ -54,6 +54,7 @@ thread-item.new-comment(id="'comment-'+ eventable.id" :event="event" :is-returni
   template(v-slot:actions)
     action-dock(:model='eventable' :actions='dockActions' :menu-actions='menuActions')
   formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")
+  link-previews(:model="eventable")
   document-list(:model='eventable' skip-fetch)
   attachment-list(:attachments="eventable.attachments")
   template(v-slot:append)

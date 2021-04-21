@@ -32,6 +32,7 @@ export default class GroupModel extends BaseModel
     files: []
     imageFiles: []
     attachments: []
+    linkPreviews: []
     subscription: {}
     specifiedVotersOnly: false
     recipientMessage: null

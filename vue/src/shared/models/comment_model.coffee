@@ -19,6 +19,7 @@ export default class CommentModel extends BaseModel
     files: []
     imageFiles: []
     attachments: []
+    linkPreviews: []
     body: '<p></p>'
     bodyFormat: 'html'
     mentionedUsernames: []

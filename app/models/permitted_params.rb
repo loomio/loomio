@@ -23,7 +23,7 @@ class PermittedParams < Struct.new(:params)
      :email_catch_up, :has_password, :has_token, :email_status,
      :email_when_proposal_closing_soon, :email_new_discussions_and_proposals, :email_on_participation, :email_newsletter,
      :legal_accepted, {email_new_discussions_and_proposals_group_ids: []},
-     :files, :image_files, {files: []}, {image_files: []}
+     :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname]}, {files: []}, {image_files: []}
    ]
   end
 
@@ -45,14 +45,14 @@ class PermittedParams < Struct.new(:params)
       :document_ids, {document_ids: []},
       :poll_option_names, {poll_option_names: []},
       :options, {options: []},
-      :files, :image_files, {files: []}, {image_files: []}
+      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname]}, {files: []}, {image_files: []}
    ]
   end
 
   def stance_attributes
     [:poll_id, :reason, :reason_format,
      :stance_choices_attributes, {stance_choices_attributes: [:score, :poll_option_id]},
-     :files, :image_files, {files: []}, {image_files: []}
+     :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname]}, {files: []}, {image_files: []}
    ]
   end
 
@@ -66,7 +66,7 @@ class PermittedParams < Struct.new(:params)
      :recipient_emails, {recipient_emails: []},
      :document_ids, {document_ids: []},
      :custom_fields, {custom_fields: [:event_location, :event_summary, :event_description, :should_send_calendar_invite]},
-     :files, :image_files, {files: []}, {image_files: []}
+     :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname]}, {files: []}, {image_files: []}
    ]
   end
 
@@ -91,7 +91,7 @@ class PermittedParams < Struct.new(:params)
      :members_can_start_discussions, :members_can_create_subgroups, :admins_can_edit_user_content,
      :new_threads_max_depth, :new_threads_newest_first,
      :document_ids, {document_ids: []}, :features, {features: AppConfig.group_features.presence || {}},
-     :files, :image_files, {files: []}, {image_files: []}
+     :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname]}, {files: []}, {image_files: []}
    ]
   end
 
@@ -113,7 +113,7 @@ class PermittedParams < Struct.new(:params)
      :recipient_emails, {recipient_emails: []},
      :forked_event_ids, {forked_event_ids: []},
      :document_ids, {document_ids: []},
-     :files, :image_files, {files: []}, {image_files: []}
+     :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname]}, {files: []}, {image_files: []}
     ]
   end
 
@@ -122,8 +122,11 @@ class PermittedParams < Struct.new(:params)
   end
 
   def comment_attributes
-    [:body, :body_format, :discussion_id, :parent_id, :document_ids, :files, :image_files,
-     {document_ids: []}, {files: []}, {image_files: []}]
+    [:body, :body_format, :discussion_id, :parent_id,
+      :document_ids, {document_ids: []},
+      :link_previews, {link_previews: [:image, :title, :description, :url, :hostname]},
+      :files, {files: []},
+      :image_files, {image_files: []}]
   end
 
   def reaction_attributes

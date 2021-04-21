@@ -19,6 +19,7 @@ export default class UserModel extends BaseModel
     files: []
     imageFiles: []
     attachments: []
+    linkPreviews: []
     locale: AppConfig.defaultLocale
     experiences: []
 

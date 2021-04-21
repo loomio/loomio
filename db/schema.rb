@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_18_014209) do
+ActiveRecord::Schema.define(version: 2021_04_21_101200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -213,6 +213,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_014209) do
     t.integer "discarded_by"
     t.string "secret_token", default: -> { "gen_random_uuid()" }
     t.string "content_locale"
+    t.jsonb "link_previews", default: {}, null: false
     t.index ["discussion_id"], name: "index_comments_on_discussion_id"
   end
 
@@ -288,6 +289,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_014209) do
     t.integer "members_count"
     t.integer "anonymous_polls_count", default: 0, null: false
     t.string "content_locale"
+    t.jsonb "link_previews", default: {}, null: false
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["group_id"], name: "index_discussions_on_group_id"
@@ -447,6 +449,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_014209) do
     t.string "content_locale"
     t.boolean "members_can_add_guests", default: true, null: false
     t.boolean "members_can_delete_comments", default: true, null: false
+    t.jsonb "link_previews", default: {}, null: false
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_groups_on_created_at"
     t.index ["full_name"], name: "index_groups_on_full_name"
@@ -600,6 +603,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_014209) do
     t.integer "versions_count", default: 0, null: false
     t.date "review_on"
     t.string "content_locale"
+    t.jsonb "link_previews", default: {}, null: false
     t.index ["poll_id"], name: "index_outcomes_on_poll_id"
   end
 
@@ -655,6 +659,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_014209) do
     t.boolean "specified_voters_only", default: false, null: false
     t.integer "notify_on_closing_soon", default: 0, null: false
     t.string "content_locale"
+    t.jsonb "link_previews", default: {}, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"
@@ -713,6 +718,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_014209) do
     t.jsonb "stance_choices_cache", default: []
     t.string "content_locale"
     t.string "secret_token", default: -> { "gen_random_uuid()" }
+    t.jsonb "link_previews", default: {}, null: false
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id"], name: "index_stances_on_poll_id"
     t.index ["token"], name: "index_stances_on_token", unique: true
@@ -848,6 +854,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_014209) do
     t.string "secret_token", default: -> { "gen_random_uuid()" }
     t.string "content_locale"
     t.boolean "bot", default: false, null: false
+    t.jsonb "link_previews", default: {}, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
     t.index ["key"], name: "index_users_on_key", unique: true
