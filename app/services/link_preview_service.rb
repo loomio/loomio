@@ -14,6 +14,8 @@ module LinkPreviewService
                    doc.css('meta[name="description"]').attr('content').to_s].reject(&:blank?).first
 
     image = [doc.css('meta[property="og:image"]').attr('content').to_s,
+             doc.css('meta[name="og:image"]').attr('content').to_s,
+             doc.css('img[itemprop="image"]').attr('src').to_s,
              doc.css('link[rel="image_src"]').attr('href').to_s].reject(&:blank?).first
 
     url = [doc.css('meta[property="og:url"]').attr('content').to_s,

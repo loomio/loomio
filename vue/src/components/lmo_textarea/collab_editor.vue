@@ -35,7 +35,7 @@ import {getEmbedLink} from '@/shared/helpers/embed_link.coffee'
 import { CommonMentioning, HtmlMentioning, MentionPluginConfig } from './mentioning.coffee'
 import SuggestionList from './suggestion_list'
 import Attaching from './attaching.coffee'
-import {compact, uniq, throttle, difference, reject} from 'lodash'
+import {compact, uniq, throttle, difference, reject, uniqBy} from 'lodash'
 import TextHighlightBtn from './text_highlight_btn'
 import TextAlignBtn from './text_align_btn'
 
@@ -227,9 +227,7 @@ export default
     fetchLinkPreviews: (urls) ->
       if urls.length
         Records.remote.post('link_previews', {urls: urls}).then (data) =>
-          existing = compact @model.linkPreviews.map((p) -> p.url)
-          newUrls = reject(data.previews, (preview) => existing.includes(preview.url))
-          @model.linkPreviews = @model.linkPreviews.concat newUrls
+          @model.linkPreviews = uniqBy(@model.linkPreviews.concat(data.previews), 'url')
       @fetchedUrls = uniq @fetchedUrls.concat(urls)
 
   beforeDestroy: ->

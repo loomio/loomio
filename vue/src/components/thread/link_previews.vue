@@ -35,10 +35,10 @@ export default
 <style lang="sass">
 .link-preview__image
   background-repeat: no-repeat
-  height: 128px
+  height: 160px
   overflow: none
   background-size: cover
-  background-position: center
+  background-position: top
   // max-width: 512px
   // margin: 0 auto
 </style>
