@@ -17,7 +17,7 @@ export default
 .link-previews.mb-3
   v-card.mt-3(outlined v-for="preview in model.linkPreviews" :key="preview.url" style="position: relative")
     v-btn(style="top: 8px; right: 8px; position: absolute; z-index: 1000" v-if="remove" icon @click="remove(preview.url)")
-      v-icon mdi-close-circle-outline
+      v-icon(:large='!!preview.image') mdi-close-circle-outline
     a(:href="preview.url" target="_blank")
       .link-preview__image(v-if="preview.image" :style="{'background-image': 'url('+preview.image+')'}")
       v-card-title
