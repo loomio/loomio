@@ -31,6 +31,7 @@ class Rack::Attack
     webhooks: 10,
     comments: 100,
     reactions: 100,
+    link_previews: 100,
     registrations: 10,
     sessions: 10,
     contact_messages: 10,
