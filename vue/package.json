@@ -18,7 +18,7 @@
     "@babel/polyfill": "^7.12.1",
     "@sentry/integrations": "^6.2.5",
     "@sentry/browser": "^6.2.5",
-    "@sentry/tracing": "^6.2.5",
+    "@sentry/tracing": "^6.3.0",
     "activestorage": "^5.2.5",
     "ahoy.js": "^0.3.8",
     "core-js": "^2.6.11",
