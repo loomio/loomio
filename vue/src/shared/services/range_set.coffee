@@ -65,9 +65,6 @@ export default new class RangeSet
       wholes = @reduce(output)
     wholes
 
-  firstMissing: (ranges, readRanges) =>
-    @rangesToArray(ranges).find (v) => !@includesValue(readRanges, v)
-
   selfTest: ->
     length1:                 @length([[1,1]]) == 1
     length2:                 @length([[1,2]]) == 2
@@ -88,13 +85,6 @@ export default new class RangeSet
     subtractRanges2: isEqual @subtractRanges([[1,2]], [[1,1]]), [[2,2]]
     subtractRanges3: isEqual @subtractRanges([[1,2], [4,6]], [[1,1], [5,5]]), [[2,2], [4,4], [6,6]]
     subtractRanges4: isEqual @subtractRanges([[1,2], [4,8]], [[5,6], [7,8]]), [[1,2], [4,4]]
-    firstMissing0:   isEqual @firstMissing([[1,3]], [[1,3]]), undefined
-    firstMissing1:   isEqual @firstMissing([[1,3]], [[1,2]]), 3
-    firstMissing2:   isEqual @firstMissing([[1,3]], [[2,3]]), 1
-    firstMissing3:   isEqual @firstMissing([[1,2], [4,6]], [[1,2], [4,5]]), 6
-    firstMissing4:   isEqual @firstMissing([[1,2], [4,6]], [[1,2], [5,6]]), 4
 
   hardTest: ->
-    ranges = [[1, 433]]
-    read_ranges = [[1, 388], [390, 390], [393, 394], [398, 399], [402, 402], [404, 405], [409, 409], [412, 412], [414, 414], [417, 417], [421, 421], [424, 424], [426, 426], [428, 428], [430, 431], [433, 433]]
     subtractRanges5: isEqual @subtractRanges
