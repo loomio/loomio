@@ -75,12 +75,15 @@ v-card.mt-3(outlined  style="position: relative")
             |
             | &nbsp;
             |
-            span.text-caption {{preview.hostname}}
+            span.text-caption.link-preview__hostname {{preview.hostname}}
       v-card-subtitle
         | {{preview.description}}
 </template>
 
 <style lang="sass">
+.link-preview__hostname
+  word-break: break-word
+
 .link-preview__image
   background-repeat: no-repeat
   height: 160px

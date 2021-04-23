@@ -26,6 +26,7 @@ module HasRichText
     has_many_attached :image_files
     before_save :caclulate_content_locale
     before_save :build_attachments
+    before_save :sanitize_link_previews
   end
 
   def caclulate_content_locale
@@ -33,6 +34,15 @@ module HasRichText
     stripped_text = Rails::Html::WhiteListSanitizer.new.sanitize(combined_text, tags: [])
     result = CLD.detect_language stripped_text
     self.content_locale = result[:code] if result[:reliable]
+  end
+
+  def sanitize_link_previews
+    sanitizer = Rails::Html::FullSanitizer.new
+    self.link_previews.each do |preview|
+      preview.keys.each do |key|
+        preview[key] = sanitizer.sanitize preview[key]
+      end
+    end
   end
 
   def build_attachments
