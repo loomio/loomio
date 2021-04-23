@@ -39,6 +39,11 @@ describe RangeSet do
     expected_result = [[2,2],[10,10],[15,17],[20,20]]
     expect(RangeSet.subtract_ranges(ranges, read_ranges)).to eq expected_result
 
+    ranges = [[1, 433]]
+    read_ranges = [[1, 388], [390, 390], [393, 394], [398, 399], [402, 402], [404, 405], [409, 409], [412, 412], [414, 414], [417, 417], [421, 421], [424, 424], [426, 426], [428, 428], [430, 431], [433, 433]]
+    unread_ranges = RangeSet.subtract_ranges(ranges, read_ranges)
+    expect(RangeSet.reduce(unread_ranges.concat(read_ranges))).to eq ranges
+
     ranges = [[1, 5]]
     read_ranges = [[6,6]]
     expected_result = [[1,5]]

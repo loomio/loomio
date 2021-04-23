@@ -81,36 +81,16 @@ class RangeSet
   # all ranges: [[1,2]] , some ranges: [[1,1]]
 
   def self.subtract_ranges(wholes, parts)
-    # take parts from wholes, returning wholes minus parts
-    output = wholes
-    parts.in_groups_of(1, false) do |part|
-      output = subtract_ranges_old(output, part)
-    end
-    reduce output
-  end
-
-  def self.subtract_ranges_old(wholes, parts)
-    output = wholes
-    while (subtract_ranges_loop(output, parts) != output) do
-      output = subtract_ranges_loop(output, parts)
-    end
-    reduce output
-  end
-
-  def self.subtract_ranges_loop(input, parts)
-    output = []
-    input.each do |whole|
-      if parts.any?{|part| overlaps?(whole, part)}
-        parts.select {|part| overlaps?(whole, part) }.each do |part|
-          subtract_range(whole, part).each do |remainder|
-            output << remainder
-          end
-        end
-      else
-        output << whole
+    wholes = reduce(wholes)
+    parts = reduce(parts)
+    parts.each do |part|
+      output = []
+      wholes.each do |whole|
+        output = reduce output.concat(subtract_range(whole, part))
       end
+      wholes = output
     end
-    output
+    wholes
   end
 
   # for turning an array of likely to be sequential ids into ranges (eg: pluck -> ranges)

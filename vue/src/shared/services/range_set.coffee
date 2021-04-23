@@ -55,21 +55,15 @@ export default new class RangeSet
     return [[whole[0], part[0] - 1]]                      if (part[0] >  whole[0]) && (part[1] == whole[1])
 
   subtractRanges: (wholes, parts) ->
-    output = wholes
-    while !isEqual(@subtractRangesLoop(output, parts), output)
-      output = @subtractRangesLoop(output, parts)
-    @reduce output
+    wholes = @reduce(wholes)
+    parts = @reduce(parts)
 
-  subtractRangesLoop: (wholes, parts) ->
-    output = []
-    each wholes, (whole) =>
-      if some(parts, (part) => @overlaps(whole, part))
-        each filter(parts, (part) => @overlaps(whole, part)), (part) =>
-          each @subtractRange(whole, part), (remainder) ->
-            output.push remainder
-      else
-        output.push whole
-    output
+    parts.forEach (part) =>
+      output = []
+      wholes.forEach (whole) =>
+        output = output.concat @subtractRange(whole, part)
+      wholes = @reduce(output)
+    wholes
 
   firstMissing: (ranges, readRanges) =>
     @rangesToArray(ranges).find (v) => !@includesValue(readRanges, v)
@@ -99,3 +93,8 @@ export default new class RangeSet
     firstMissing2:   isEqual @firstMissing([[1,3]], [[2,3]]), 1
     firstMissing3:   isEqual @firstMissing([[1,2], [4,6]], [[1,2], [4,5]]), 6
     firstMissing4:   isEqual @firstMissing([[1,2], [4,6]], [[1,2], [5,6]]), 4
+
+  hardTest: ->
+    ranges = [[1, 433]]
+    read_ranges = [[1, 388], [390, 390], [393, 394], [398, 399], [402, 402], [404, 405], [409, 409], [412, 412], [414, 414], [417, 417], [421, 421], [424, 424], [426, 426], [428, 428], [430, 431], [433, 433]]
+    subtractRanges5: isEqual @subtractRanges
