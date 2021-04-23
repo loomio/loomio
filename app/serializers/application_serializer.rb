@@ -111,7 +111,7 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def include_my_stance?
-    include_type?('stance')
+    include_type?('stance') && scope[:current_user_id].present?
   end
 
   def include_stance_choices?
