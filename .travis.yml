@@ -15,6 +15,7 @@ cache:
 
 addons:
   chrome: stable
+  postgresql: '9.6'
   artifacts:
     paths:
       - vue/tests/reports/
