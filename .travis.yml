@@ -15,7 +15,7 @@ cache:
 
 addons:
   chrome: stable
-  postgresql: '9.6'
+  postgresql: '13'
   artifacts:
     paths:
       - vue/tests/reports/
@@ -24,8 +24,8 @@ addons:
       - ${SCREENSHOTS_PATH}
 
 services:
-  - redis
   - postgresql
+  - redis
 
 env:
   global:
