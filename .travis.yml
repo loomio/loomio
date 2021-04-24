@@ -2,7 +2,7 @@ language: ruby
 rvm:
   - 2.7.3
 
-dist: focal
+dist: bionic
 sudo: required
 
 group: edge
