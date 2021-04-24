@@ -1,7 +1,7 @@
 class API::V1::SearchController < API::V1::RestfulController
 
   def index
-    @search = Discussion.weighted_search_for(params[:q], current_user, search_params)
+    @search = Discussion.weighted_search_for(params[:q].strip, current_user, search_params)
     @search = @search.where('discussions.group_id IN (?)', group_ids) if params[:group_id]
 
     respond_with_collection

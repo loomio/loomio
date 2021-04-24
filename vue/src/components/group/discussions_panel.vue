@@ -11,7 +11,7 @@ export default
   created: ->
     @onQueryInput = debounce (val) =>
       @$router.replace(@mergeQuery(q: val))
-    , 500
+    , 1000
     @init()
 
   data: ->
@@ -73,7 +73,6 @@ export default
           subgroups: @$route.query.subgroups || 'all'
           group_id: @group.id
 
-
       @fetch()
       @query()
 
@@ -115,7 +114,7 @@ export default
 
     fetch: ->
       if @$route.query.q
-        @searchLoader.fetchRecords(q: @$route.query.q)
+        @searchLoader.fetchRecords(q: @$route.query.q, from: 0)
       else
         params = {}
         params.per = 50

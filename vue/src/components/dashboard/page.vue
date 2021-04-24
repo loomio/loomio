@@ -27,7 +27,7 @@ export default
   created: ->
     @onQueryInput = debounce (val) =>
       @$router.replace(@mergeQuery(q: val))
-    , 500
+    , 1000
 
     @init()
     EventBus.$on 'signedIn', @init
@@ -74,7 +74,7 @@ export default
     fetch: ->
       return unless @loader
       if @$route.query.q
-        @searchLoader.fetchRecords(q: @$route.query.q).then =>
+        @searchLoader.fetchRecords(q: @$route.query.q, from: 0).then =>
           @dashboardLoaded = true
           @query()
       else
