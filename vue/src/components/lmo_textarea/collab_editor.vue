@@ -131,6 +131,7 @@ export default
         History
         HorizontalRule
         Typography
+        GapCursor
         BulletList
         OrderedList
         ListItem
