@@ -68,8 +68,8 @@ import { Editor, EditorContent } from '@tiptap/vue-2'
 # import SuggestionList from './suggestion_list'
 # import Attaching from './attaching.coffee'
 import {compact, uniq, throttle, difference, reject, uniqBy} from 'lodash'
-# import TextHighlightBtn from './text_highlight_btn'
-# import TextAlignBtn from './text_align_btn'
+import TextHighlightBtn from './text_highlight_btn'
+import TextAlignBtn from './text_align_btn'
 
 # import io from 'socket.io-client'
 
@@ -84,8 +84,11 @@ export default
     shouldReset: Boolean
     autofocus: Boolean
 
-  components:
-    { EditorContent }
+  components: {
+    EditorContent
+    TextAlignBtn
+    TextHighlightBtn
+  }
     # EditorMenuBar: EditorMenuBar
     # FilesList: FilesList
     # SuggestionList: SuggestionList
@@ -122,7 +125,10 @@ export default
         Strike
         Underline
         Heading
+        Highlight.configure(multicolor: true)
+        History
         Typography
+        TextAlign
       ]
       content: @model[@field]
     # @onInit({doc: null, version: 0})
@@ -357,12 +363,12 @@ div
             //-         v-icon mdi-format-pilcrow
             //-       v-list-item-title(v-t="'formatting.paragraph'")
             //-
-            //- template(v-if="expanded")
-            //-   v-btn(icon @click='commands.paragraph()' :outlined="isActive.paragraph()" :title="$t('formatting.paragraph')")
-            //-     v-icon mdi-format-pilcrow
-            //-   template(v-for="i in 3")
-            //-     v-btn(icon @click='commands.heading({ level: i })' :outlined='isActive.heading({level: i})' :title="$t('formatting.heading'+i)")
-            //-       v-icon {{'mdi-format-header-'+i}}
+            template(v-if="expanded")
+              v-btn(icon @click='editor.chain().focus().setParagraph().run()' :outlined="editor.isActive('paragraph')" :title="$t('formatting.paragraph')")
+                v-icon mdi-format-pilcrow
+              template(v-for="i in 3")
+                v-btn(icon @click='editor.chain().focus().toggleHeading({ level: i }).run()' :outlined="editor.isActive('heading', { level: i })" :title="$t('formatting.heading'+i)")
+                  v-icon {{'mdi-format-header-'+i}}
 
             //- bold
 
@@ -380,8 +386,8 @@ div
             v-btn(icon v-if="expanded" @click='editor.chain().toggleUnderline().focus().run()' :outlined="editor.isActive('underline')",  :title="$t('formatting.underline')")
               v-icon mdi-format-underline
             //-
-            //- text-highlight-btn(v-if="expanded" :editor="editor" :commands="commands")
-            //- text-align-btn(v-if="expanded" :editor="editor" :commands="commands")
+            text-highlight-btn(v-if="expanded" :editor="editor")
+            text-align-btn(v-if="expanded" :editor="editor")
 
             //- list menu (always a menu)
             //- v-menu(v-if="expanded")

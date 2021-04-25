@@ -1,56 +1,35 @@
 <script lang="coffee">
 import colors from 'vuetify/lib/util/colors'
 import {map, compact, pick} from 'lodash'
-import { findActiveMarkAttribute } from '@/shared/tiptap_extentions/utils/mark'
 
 ourColors = pick(colors, "red pink purple deepPurple indigo blue lightBlue cyan teal green lightGreen lime yellow amber orange deepOrange brown grey".split(" "))
 
 export default
   props:
-    commands: Object
     editor: Object
 
   data: ->
-    back: null
-    fore: null
-    closable: false
-    foreColors: ['#191919', '#ffffff'].concat(compact(map(ourColors, (value, key) => value.base)))
-    backColors: ['#000000', '#ffffff'].concat(compact(map(ourColors, (value, key) => value.lighten3)))
-
-  methods:
-    onSelectFore: (color) ->
-      @closable = true
-      @fore = color
-      @commands.foreColor({foreColor: color})
-
-    onSelectBack: (color) ->
-      @closable = true
-      @back = color
-      @commands.backColor({backColor: color})
+    # activeColor: null
+    backgrounds: ['#000000', '#ffffff'].concat(compact(map(ourColors, (value, key) => value.lighten3)))
 
   computed:
-    activeBack: ->
-      findActiveMarkAttribute(@editor.state, 'backColor')
-
-    activeFore: ->
-      findActiveMarkAttribute(@editor.state, 'foreColor')
-
+    activeBackground: ->
+      return null unless @editor.isActive('highlight')
+      @backgrounds.find (v) => @editor.isActive('highlight', {color: v})
 </script>
 
 <template lang="pug">
 v-menu
   template(v-slot:activator="{ on, attrs }")
-    div.rounded-lg.color-picker-btn(:style="{'background-color': activeBack}")
+    div.rounded-lg.color-picker-btn(:style="{'background-color': activeBackground}")
       v-btn.drop-down-button(icon v-on="on" v-bind="attrs" :title="$t('formatting.colors')")
-        v-icon(:color="activeFore") mdi-palette
-        v-icon(:color="activeFore").menu-down-arrow mdi-menu-down
+        v-icon mdi-palette
+        v-icon.menu-down-arrow mdi-menu-down
   v-card.color-picker
-    .caption(v-t="'formatting.text_color'")
-    .swatch(v-for="color in foreColors" :class="{'swatch--white': color == '#ffffff', 'swatch--selected': color == activeFore }" :style="{'background-color': color}" @click="onSelectFore(color)") &nbsp;
     .caption(v-t="'formatting.background_color'")
-    .swatch(v-for="color in backColors" :class="{'swatch--white': color == '#ffffff', 'swatch--selected': color == activeBack }" :style="{'background-color': color}" @click="onSelectBack(color)") &nbsp;
+    .swatch(v-for="color in backgrounds" :class="{'swatch--white': color == '#ffffff', 'swatch--selected': color == activeBackground }" :style="{'background-color': color}" @click="editor.chain().focus().setHighlight({color: color}).run()") &nbsp;
     .text-center
-      v-btn(x-small outlined @click="commands.formatClear" v-t="'formatting.reset'")
+      v-btn(x-small outlined @click="editor.chain().focus().unsetHighlight().run()" v-t="'formatting.reset'")
 </template>
 
 <style lang="sass">
