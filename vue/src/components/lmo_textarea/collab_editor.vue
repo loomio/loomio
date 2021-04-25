@@ -120,6 +120,8 @@ export default
         Paragraph
         Text
         Highlight
+        Blockquote
+        CodeBlock
         Bold
         Italic
         Strike
@@ -127,7 +129,12 @@ export default
         Heading
         Highlight.configure(multicolor: true)
         History
+        HorizontalRule
         Typography
+        Table
+        TableHeader
+        TableRow
+        TableCell
         TextAlign
       ]
       content: @model[@field]
@@ -296,23 +303,23 @@ div
     editor-content.html-editor__textarea(ref="editor" :editor='editor').lmo-markdown-wrapper
     .menubar
       div
-        //- v-layout(align-center v-if="isActive.table()")
-        //-   v-btn(icon @click="commands.deleteTable" :title="$t('formatting.remove_table')")
-        //-     v-icon mdi-table-remove
-        //-   v-btn(icon @click="commands.addColumnBefore" :title="$t('formatting.add_column_before')")
-        //-     v-icon mdi-table-column-plus-before
-        //-   v-btn(icon @click="commands.addColumnAfter" :title="$t('formatting.add_column_after')")
-        //-     v-icon mdi-table-column-plus-after
-        //-   v-btn(icon @click="commands.deleteColumn" :title="$t('formatting.remove_column')")
-        //-     v-icon mdi-table-column-remove
-        //-   v-btn(icon @click="commands.addRowBefore" :title="$t('formatting.add_row_before')")
-        //-     v-icon mdi-table-row-plus-before
-        //-   v-btn(icon @click="commands.addRowAfter" :title="$t('formatting.add_row_after')")
-        //-     v-icon mdi-table-row-plus-after
-        //-   v-btn(icon @click="commands.deleteRow" :title="$t('formatting.remove_row')")
-        //-     v-icon mdi-table-row-remove
-        //-   v-btn(icon @click="commands.toggleCellMerge" :title="$t('formatting.merge_selected')")
-        //-     v-icon mdi-table-merge-cells
+        v-layout(align-center v-if="editor.isActive('table')")
+          v-btn(icon @click="editor.chain().deleteTable().focus().run()" :title="$t('formatting.remove_table')")
+            v-icon mdi-table-remove
+          v-btn(icon @click="editor.chain().addColumnBefore().focus().run()" :title="$t('formatting.add_column_before')")
+            v-icon mdi-table-column-plus-before
+          v-btn(icon @click="editor.chain().addColumnAfter().focus().run()" :title="$t('formatting.add_column_after')")
+            v-icon mdi-table-column-plus-after
+          v-btn(icon @click="editor.chain().deleteColumn().focus().run()" :title="$t('formatting.remove_column')")
+            v-icon mdi-table-column-remove
+          v-btn(icon @click="editor.chain().addRowBefore().focus().run()" :title="$t('formatting.add_row_before')")
+            v-icon mdi-table-row-plus-before
+          v-btn(icon @click="editor.chain().addRowAfter().focus().run()" :title="$t('formatting.add_row_after')")
+            v-icon mdi-table-row-plus-after
+          v-btn(icon @click="editor.chain().deleteRow().focus().run()" :title="$t('formatting.remove_row')")
+            v-icon mdi-table-row-remove
+          v-btn(icon @click="editor.chain().mergeOrSplit().focus().run()" :title="$t('formatting.merge_selected')")
+            v-icon mdi-table-merge-cells
 
         v-layout.py-2.justify-space-between.flex-wrap(align-center)
           section.d-flex.flex-wrap(:aria-label="$t('formatting.formatting_tools')")
@@ -410,34 +417,34 @@ div
             //-       v-list-item-title(v-t="'formatting.number_list'")
 
             //- extra text marks
-            //- template(v-if="expanded")
-            //-   //- strikethrough
-            //-   v-menu(:close-on-content-click="false" v-model="iframeDialogIsOpen" min-width="320px")
-            //-     template(v-slot:activator="{on}")
-            //-       v-btn(icon v-on="on" :title="$t('formatting.embed')")
-            //-         v-icon mdi-youtube
-            //-     v-card
-            //-       v-card-title.title(v-t="'text_editor.insert_embedded_url'")
-            //-       v-card-text
-            //-         v-text-field(type="url" label="e.g. https://www.youtube.com/watch?v=Zlzuqsunpxc" v-model="iframeUrl" ref="focus" autofocus v-on:keyup.enter="setIframeUrl(commands.iframe)")
-            //-       v-card-actions
-            //-         v-spacer
-            //-         v-btn(color="primary" @click="setIframeUrl(commands.iframe)" v-t="'common.action.apply'")
-            //-   //- blockquote
-            //-   v-btn(icon :outlined="isActive.blockquote()", @click='commands.blockquote' :title="$t('formatting.blockquote')")
-            //-     v-icon mdi-format-quote-close
-            //-   //- code block
-            //-   v-btn(small icon :outlined="isActive.code_block()", @click='commands.code_block' :title="$t('formatting.code_block')")
-            //-     v-icon mdi-code-braces
-            //-   //- embded
-            //-   v-btn(icon @click='commands.horizontal_rule' :title="$t('formatting.divider')")
-            //-     v-icon mdi-minus
-            //-   //- table
-            //-   v-btn(icon @click='commands.createTable({rowsCount: 3, colsCount: 3, withHeaderRow: false })' :title="$t('formatting.add_table')")
-            //-     v-icon mdi-table
-            //-   //- markdown (save experience)
-            //-   v-btn(icon @click="convertToMd" :title="$t('formatting.edit_markdown')")
-            //-     v-icon mdi-language-markdown-outline
+            template(v-if="expanded")
+              //- strikethrough
+              //- v-menu(:close-on-content-click="false" v-model="iframeDialogIsOpen" min-width="320px")
+              //-   template(v-slot:activator="{on}")
+              //-     v-btn(icon v-on="on" :title="$t('formatting.embed')")
+              //-       v-icon mdi-youtube
+              //-   v-card
+              //-     v-card-title.title(v-t="'text_editor.insert_embedded_url'")
+              //-     v-card-text
+              //-       v-text-field(type="url" label="e.g. https://www.youtube.com/watch?v=Zlzuqsunpxc" v-model="iframeUrl" ref="focus" autofocus v-on:keyup.enter="setIframeUrl(commands.iframe)")
+              //-     v-card-actions
+              //-       v-spacer
+              //-       v-btn(color="primary" @click="setIframeUrl(commands.iframe)" v-t="'common.action.apply'")
+              //- blockquote
+              v-btn(icon @click='editor.chain().toggleBlockquote().focus().run()' :outlined="editor.isActive('blockquote')"  :title="$t('formatting.blockquote')")
+                v-icon mdi-format-quote-close
+              //- //- code block
+              v-btn(small icon @click='editor.chain().toggleCodeBlock().focus().run()' :outlined="editor.isActive('codeBlock')"  :title="$t('formatting.code_block')")
+                v-icon mdi-code-braces
+              //- embded
+              v-btn(icon @click='editor.chain().setHorizontalRule().focus().run()' :title="$t('formatting.divider')")
+                v-icon mdi-minus
+              //- table
+              v-btn(icon @click='editor.chain().insertTable({rows: 3, cols: 3, withHeaderRow: false }).focus().run()' :title="$t('formatting.add_table')")
+                v-icon mdi-table
+              //- markdown (save experience)
+              //- v-btn(icon @click="convertToMd" :title="$t('formatting.edit_markdown')")
+              //-   v-icon mdi-language-markdown-outline
             //-
             //- v-btn.html-editor__expand(v-if="!expanded" icon @click="toggleExpanded" :title="$t('formatting.expand')")
             //-   v-icon mdi-chevron-right
