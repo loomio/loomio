@@ -131,6 +131,9 @@ export default
         History
         HorizontalRule
         Typography
+        BulletList
+        OrderedList
+        ListItem
         Table
         TableHeader
         TableRow
@@ -397,24 +400,28 @@ div
             text-align-btn(v-if="expanded" :editor="editor")
 
             //- list menu (always a menu)
-            //- v-menu(v-if="expanded")
-            //-   template(v-slot:activator="{ on, attrs }")
-            //-     v-btn.drop-down-button(icon v-on="on" v-bind="attrs" :title="$t('formatting.lists')")
-            //-       v-icon mdi-format-list-bulleted
-            //-       v-icon.menu-down-arrow mdi-menu-down
-            //-   v-list(dense)
-            //-     v-list-item(@click='commands.todo_list')
-            //-       v-list-item-icon
-            //-         v-icon mdi-format-list-checks
-            //-       v-list-item-title(v-t="'formatting.check_list'")
-            //-     v-list-item(@click='commands.bullet_list')
-            //-       v-list-item-icon
-            //-         v-icon mdi-format-list-bulleted
-            //-       v-list-item-title(v-t="'formatting.bullet_list'")
-            //-     v-list-item(@click='commands.ordered_list')
-            //-       v-list-item-icon
-            //-         v-icon mdi-format-list-numbered
-            //-       v-list-item-title(v-t="'formatting.number_list'")
+            v-menu(v-if="expanded")
+              template(v-slot:activator="{ on, attrs }")
+                v-btn.drop-down-button(
+                    icon
+                    v-on="on"
+                    v-bind="attrs"
+                    :title="$t('formatting.lists')")
+                  v-icon mdi-format-list-bulleted
+                  v-icon.menu-down-arrow mdi-menu-down
+              v-list(dense)
+                //- v-list-item(@click='commands.todo_list')
+                //-   v-list-item-icon
+                //-     v-icon mdi-format-list-checks
+                //-   v-list-item-title(v-t="'formatting.check_list'")
+                v-list-item(@click='editor.chain().toggleBulletList().focus().run()')
+                  v-list-item-icon
+                    v-icon mdi-format-list-bulleted
+                  v-list-item-title(v-t="'formatting.bullet_list'")
+                v-list-item(@click='editor.chain().toggleOrderedList().focus().run()')
+                  v-list-item-icon
+                    v-icon mdi-format-list-numbered
+                  v-list-item-title(v-t="'formatting.number_list'")
 
             //- extra text marks
             template(v-if="expanded")
