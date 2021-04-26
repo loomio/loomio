@@ -8,8 +8,6 @@ import EventBus from '@/shared/services/event_bus'
 import I18n from '@/i18n'
 import { convertToMd } from '@/shared/services/format_converter'
 
-# import { Editor, EditorContent, EditorMenuBar } from 'tiptap'
-
 import Blockquote from '@tiptap/extension-blockquote'
 import Bold from '@tiptap/extension-bold'
 import BulletList from '@tiptap/extension-bullet-list'
@@ -45,17 +43,8 @@ import Text from '@tiptap/extension-text'
 import Typography from '@tiptap/extension-typography'
 import Underline from '@tiptap/extension-underline'
 
-import { Editor, EditorContent } from '@tiptap/vue-2'
+import { Editor, EditorContent, VueRenderer } from '@tiptap/vue-2'
 
-# import Collaboration from '@/shared/tiptap_extentions/collaboration.js'
-
-# import ForeColor from '@/shared/tiptap_extentions/fore_color'
-# import BackColor from '@/shared/tiptap_extentions/back_color'
-# import FormatClear from '@/shared/tiptap_extentions/format_clear'
-# import Align from '@/shared/tiptap_extentions/align'
-# import Alignment from '@/shared/tiptap_extentions/alignment'
-# import Paragraph from '@/shared/tiptap_extentions/paragraph'
-# import Heading from '@/shared/tiptap_extentions/heading'
 # import Iframe from './iframe'
 # import TodoItem from './todo_item'
 
@@ -64,9 +53,9 @@ import { Editor, EditorContent } from '@tiptap/vue-2'
 
 # import {getEmbedLink} from '@/shared/helpers/embed_link.coffee'
 
-# import { CommonMentioning, HtmlMentioning, MentionPluginConfig } from './mentioning.coffee'
-# import SuggestionList from './suggestion_list'
-# import Attaching from './attaching.coffee'
+import { CommonMentioning, HtmlMentioning, MentionPluginConfig } from './mentioning.coffee'
+import SuggestionList from './suggestion_list'
+import Attaching from './attaching.coffee'
 import {compact, uniq, throttle, difference, reject, uniqBy} from 'lodash'
 import TextHighlightBtn from './text_highlight_btn'
 import TextAlignBtn from './text_align_btn'
@@ -74,7 +63,7 @@ import TextAlignBtn from './text_align_btn'
 # import io from 'socket.io-client'
 
 export default
-  # mixins: [CommonMentioning, HtmlMentioning, Attaching]
+  mixins: [CommonMentioning, HtmlMentioning, Attaching]
   props:
     model: Object
     field: String
@@ -88,12 +77,9 @@ export default
     EditorContent
     TextAlignBtn
     TextHighlightBtn
+    SuggestionList
+    FilesList
   }
-    # EditorMenuBar: EditorMenuBar
-    # FilesList: FilesList
-    # SuggestionList: SuggestionList
-    # TextHighlightBtn: TextHighlightBtn
-    # TextAlignBtn: TextAlignBtn
 
   data: ->
     loading: true
@@ -116,7 +102,7 @@ export default
     # @expanded = Session.user().experiences['html-editor.expanded']
     @editor = new Editor
       extensions: [
-        Document,
+        Document
         Paragraph
         Text
         Highlight
@@ -140,6 +126,7 @@ export default
         TableRow
         TableCell
         TextAlign
+        Mention.configure(MentionPluginConfig.bind(@)())
       ]
       content: @model[@field]
     # @onInit({doc: null, version: 0})
@@ -267,10 +254,11 @@ export default
       @editor.focus()
 
     emojiPicked: (shortcode, unicode) ->
-      { view } = this.editor
-      insertText(unicode)(view.state, view.dispatch, view)
+      @editor.chain()
+          .insertContent(unicode)
+          .focus()
+          .run()
       @closeEmojiMenu = false
-      @editor.focus()
 
     updateModel: ->
       @model[@field] = @editor.getHTML()
@@ -328,8 +316,8 @@ div
         v-layout.py-2.justify-space-between.flex-wrap(align-center)
           section.d-flex.flex-wrap(:aria-label="$t('formatting.formatting_tools')")
             //- attach
-            //- v-btn(icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")
-            //-   v-icon mdi-paperclip
+            v-btn(icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")
+              v-icon mdi-paperclip
 
             //- v-btn(icon @click='$refs.imageFilesField.click()' :title="$t('formatting.insert_image')")
             //-   v-icon mdi-image
@@ -351,11 +339,11 @@ div
             //-       v-card-title(v-t="'text_editor.select_text_to_link'")
 
             //- emoji
-            //- v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
-            //-   template(v-slot:activator="{on, attrs}")
-            //-     v-btn.emoji-picker__toggle(v-on="on" v-bind="attrs" icon  :title="$t('formatting.insert_emoji')")
-            //-       v-icon mdi-emoticon-outline
-            //-   emoji-picker(:insert="emojiPicked")
+            v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
+              template(v-slot:activator="{on, attrs}")
+                v-btn.emoji-picker__toggle(v-on="on" v-bind="attrs" icon  :title="$t('formatting.insert_emoji')")
+                  v-icon mdi-emoticon-outline
+              emoji-picker(:insert="emojiPicked")
 
             //- headings menu
             //- v-menu
@@ -451,30 +439,30 @@ div
               v-btn(icon @click='editor.chain().insertTable({rows: 3, cols: 3, withHeaderRow: false }).focus().run()' :title="$t('formatting.add_table')")
                 v-icon mdi-table
               //- markdown (save experience)
-              //- v-btn(icon @click="convertToMd" :title="$t('formatting.edit_markdown')")
-              //-   v-icon mdi-language-markdown-outline
-            //-
-            //- v-btn.html-editor__expand(v-if="!expanded" icon @click="toggleExpanded" :title="$t('formatting.expand')")
-            //-   v-icon mdi-chevron-right
-            //-
-            //- v-btn.html-editor__expand(v-if="expanded" icon @click="toggleExpanded" :title="$t('formatting.collapse')")
-            //-   v-icon mdi-chevron-left
-          //- //- save button?
-          //- v-spacer
-          //- slot(v-if="!expanded" name="actions")
-    //- div.d-flex(v-if="expanded" name="actions")
-    //-   v-spacer
-    //-   slot(name="actions")
+              v-btn(icon @click="convertToMd" :title="$t('formatting.edit_markdown')")
+                v-icon mdi-language-markdown-outline
+
+            v-btn.html-editor__expand(v-if="!expanded" icon @click="toggleExpanded" :title="$t('formatting.expand')")
+              v-icon mdi-chevron-right
+
+            v-btn.html-editor__expand(v-if="expanded" icon @click="toggleExpanded" :title="$t('formatting.collapse')")
+              v-icon mdi-chevron-left
+          //- save button?
+          v-spacer
+          slot(v-if="!expanded" name="actions")
+    div.d-flex(v-if="expanded" name="actions")
+      v-spacer
+      slot(name="actions")
     //-
     //- v-alert(v-if="maxLength && model[field] && model[field].length > maxLength" color='error')
     //-   span( v-t="'poll_common.too_long'")
 
   link-previews(:model="model" :remove="removeLinkPreview")
-  //- suggestion-list(:query="query" :loading="fetchingMentions" :mentionable="mentionable" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" @select-user="selectUser")
-  //- files-list(:files="files" v-on:removeFile="removeFile")
+  suggestion-list(:query="query" :loading="fetchingMentions" :mentionable="mentionable" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" @select-user="selectUser")
+  files-list(:files="files" v-on:removeFile="removeFile")
 
-  //- form(style="display: block" @change="fileSelected")
-  //-   input(ref="filesField" type="file" name="files" multiple=true)
+  form(style="display: block" @change="fileSelected")
+    input(ref="filesField" type="file" name="files" multiple=true)
 </template>
 <style lang="sass">
 
