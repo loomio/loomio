@@ -4,7 +4,6 @@ import {
   mergeAttributes,
 } from '@tiptap/core'
 
-import IframeContainer from './iframe_container'
 export const inputRegex = /!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\)/
 
 export const Iframe = Node.create({
