@@ -106,7 +106,6 @@ export HtmlMentioning =
       @insertMention
         id: user.username
         label: user.name
-        name: user.name
       @editor.chain().focus()
 
     updatePopup: (coords) ->
@@ -124,7 +123,6 @@ export MentionPluginConfig = ->
   suggestion:
     render: =>
       onStart: ( props ) =>
-        console.log "onStart", props
         @query = props.query.toLowerCase()
         @suggestionRange = props.range
         @insertMention = props.command
@@ -136,6 +134,7 @@ export MentionPluginConfig = ->
       onUpdate: (props) =>
         @query = props.query.toLowerCase()
         @suggestionRange = props.range
+        @insertMention = props.command
         @navigatedUserIndex = 0
         @updatePopup(props.clientRect())
         @fetchMentionable()

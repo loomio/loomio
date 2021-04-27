@@ -26,7 +26,6 @@ import Image from '@tiptap/extension-image'
 import Italic from '@tiptap/extension-italic'
 import Link from '@tiptap/extension-link'
 import ListItem from '@tiptap/extension-list-item'
-import Mention from '@tiptap/extension-mention'
 import OrderedList from '@tiptap/extension-ordered-list'
 import Paragraph from '@tiptap/extension-paragraph'
 import Placeholder from '@tiptap/extension-placeholder'
@@ -42,6 +41,7 @@ import TextStyle from '@tiptap/extension-text-style'
 import Text from '@tiptap/extension-text'
 import Typography from '@tiptap/extension-typography'
 import Underline from '@tiptap/extension-underline'
+import {CustomMention} from './mention'
 
 import { Editor, EditorContent, VueRenderer } from '@tiptap/vue-2'
 
@@ -127,7 +127,7 @@ export default
         TableRow
         TableCell
         TextAlign
-        Mention.configure(MentionPluginConfig.bind(@)())
+        CustomMention.configure(MentionPluginConfig.bind(@)())
       ]
       content: @model[@field]
       onUpdate: @updateModel
