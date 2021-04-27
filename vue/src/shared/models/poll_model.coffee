@@ -25,7 +25,7 @@ export default class PollModel extends BaseModel
   defaultValues: ->
     discussionId: null
     title: ''
-    details: '<p></p>'
+    details: ''
     detailsFormat: 'html'
     closingAt: startOfHour(addDays(new Date, 3))
     specifiedVotersOnly: false
