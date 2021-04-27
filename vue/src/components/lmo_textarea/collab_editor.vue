@@ -45,7 +45,7 @@ import Underline from '@tiptap/extension-underline'
 
 import { Editor, EditorContent, VueRenderer } from '@tiptap/vue-2'
 
-# import Iframe from './iframe'
+import {Iframe} from './iframe'
 # import TodoItem from './todo_item'
 
 # import { insertText } from 'tiptap-commands'
@@ -110,6 +110,7 @@ export default
         CodeBlock
         Bold
         Italic
+        Iframe
         Strike
         Underline
         Heading
@@ -129,6 +130,7 @@ export default
         Mention.configure(MentionPluginConfig.bind(@)())
       ]
       content: @model[@field]
+      onUpdate: @updateModel
     # @onInit({doc: null, version: 0})
     # @socket = io(@tiptapAddress())
     #   .on('init', (data) => @onInit(data))
@@ -247,11 +249,10 @@ export default
       @linkDialogIsOpen = false
       @editor.focus()
 
-    setIframeUrl: (command) ->
-      command({ src: getEmbedLink(@iframeUrl) })
+    setIframeUrl: () ->
+      @editor.chain().setIframe(src: @iframeUrl).focus().run()
       @iframeUrl = null
       @iframeDialogIsOpen = false
-      @editor.focus()
 
     emojiPicked: (shortcode, unicode) ->
       @editor.chain()
@@ -415,17 +416,17 @@ div
             //- extra text marks
             template(v-if="expanded")
               //- strikethrough
-              //- v-menu(:close-on-content-click="false" v-model="iframeDialogIsOpen" min-width="320px")
-              //-   template(v-slot:activator="{on}")
-              //-     v-btn(icon v-on="on" :title="$t('formatting.embed')")
-              //-       v-icon mdi-youtube
-              //-   v-card
-              //-     v-card-title.title(v-t="'text_editor.insert_embedded_url'")
-              //-     v-card-text
-              //-       v-text-field(type="url" label="e.g. https://www.youtube.com/watch?v=Zlzuqsunpxc" v-model="iframeUrl" ref="focus" autofocus v-on:keyup.enter="setIframeUrl(commands.iframe)")
-              //-     v-card-actions
-              //-       v-spacer
-              //-       v-btn(color="primary" @click="setIframeUrl(commands.iframe)" v-t="'common.action.apply'")
+              v-menu(:close-on-content-click="false" v-model="iframeDialogIsOpen" min-width="320px")
+                template(v-slot:activator="{on}")
+                  v-btn(icon v-on="on" :title="$t('formatting.embed')")
+                    v-icon mdi-youtube
+                v-card
+                  v-card-title.title(v-t="'text_editor.insert_embedded_url'")
+                  v-card-text
+                    v-text-field(type="url" label="e.g. https://www.youtube.com/watch?v=Zlzuqsunpxc" v-model="iframeUrl" ref="focus" autofocus v-on:keyup.enter="setIframeUrl()")
+                  v-card-actions
+                    v-spacer
+                    v-btn(color="primary" @click="setIframeUrl()" v-t="'common.action.apply'")
               //- blockquote
               v-btn(icon @click='editor.chain().toggleBlockquote().focus().run()' :outlined="editor.isActive('blockquote')"  :title="$t('formatting.blockquote')")
                 v-icon mdi-format-quote-close
@@ -655,4 +656,17 @@ li[data-done="false"]
 
 input[type="file"]
   display: none
+
+.iframe-container
+	overflow: hidden
+	padding-top: 56.25%
+	position: relative
+	iframe
+		border: 0
+		height: 100%
+		left: 0
+		position: absolute
+		top: 0
+		width: 100%
+
 </style>
