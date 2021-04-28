@@ -8,12 +8,8 @@ export const inputRegex = /!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\)/
 
 export const Iframe = Node.create({
   name: 'iframe',
-  marks: '',
-  inline: false,
-  atom: true,
   group: 'block',
-  selectable: true,
-  draggable: true,
+  selectable: false,
 
   defaultOptions: {
     HTMLAttributes: {},
@@ -52,7 +48,7 @@ export const Iframe = Node.create({
   },
 
   renderHTML({ HTMLAttributes }) {
-    return ['div', {class: 'iframe-container'}, ['iframe', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes)]]
+    return ['div', {class: 'iframe-container', allowfullscreen: true}, ['iframe', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes)]]
   },
 
   renderText({ node }) {

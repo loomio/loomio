@@ -51,7 +51,7 @@ import {Iframe} from './iframe'
 # import { insertText } from 'tiptap-commands'
 # import Image from '@/shared/tiptap_extentions/image.js'
 
-# import {getEmbedLink} from '@/shared/helpers/embed_link.coffee'
+import {getEmbedLink} from '@/shared/helpers/embed_link.coffee'
 
 import { CommonMentioning, HtmlMentioning, MentionPluginConfig } from './mentioning.coffee'
 import SuggestionList from './suggestion_list'
@@ -224,7 +224,7 @@ export default
       state.doc.textBetween(from, to, ' ')
 
     reset: ->
-      @editor.clearContent()
+      @editor.chain().clearContent().run()
       @resetFiles()
 
     convertToMd: ->
@@ -250,7 +250,7 @@ export default
       @editor.focus()
 
     setIframeUrl: () ->
-      @editor.chain().setIframe(src: @iframeUrl).focus().run()
+      @editor.chain().setIframe(src: getEmbedLink(@iframeUrl)).focus().run()
       @iframeUrl = null
       @iframeDialogIsOpen = false
 
@@ -658,15 +658,19 @@ input[type="file"]
   display: none
 
 .iframe-container
-  overflow: hidden
-  padding-top: 56.25%
   position: relative
+  padding-bottom: 100/16*9%
+  height: 0
+  overflow: hidden
+  width: 100%
+  height: auto
+  &.ProseMirror-selectednode
+    outline: 3px solid #68CEF8
   iframe
-    border: 0
-    height: 100%
-    left: 0
     position: absolute
     top: 0
+    left: 0
     width: 100%
+    height: 100%
 
 </style>
