@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "@sentry/integrations": "^6.3.1",
+    "@sentry/integrations": "^6.3.3",
     "@sentry/browser": "^6.3.1",
     "@sentry/tracing": "^6.3.1",
     "activestorage": "^5.2.5",
