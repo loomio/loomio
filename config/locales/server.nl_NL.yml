@@ -128,6 +128,8 @@ nl_NL:
   subscriptions:
     active: Actief
     inactive: Inactief
+  base_mailer:
+    via_loomio: '%{name} (via %{site_name})'
   user_mailer:
     group_export_ready:
       subject: Groep data export voor %{group_name}
@@ -248,15 +250,19 @@ nl_NL:
   discussion_mailer:
     resend: 'HERINNERING: %{actor} wacht op jou om mee te doen met %{discussion}'
     new_discussion:
+      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> heeft een bord gestart: %{discussion}"
     discussion_edited:
+      subject: "%{discussion}"
       inline: "%{actor} wijzigde het bord"
       subject_html: "<strong>%{actor}</strong> heeft het bord %{discussion} gewijzigd"
     discussion_announced:
+      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> heeft je uitgenodigd om mee te doen met %{discussion}"
     discussion_closed:
       inline: "%{actor} sloot het bord"
     new_comment:
+      subject: "%{discussion}"
       subject_html: "<strong>%{actor}</strong> gaf commentaar in: %{discussion}"
     comment_replied_to:
       subject: '%{actor} heeft je beantwoord in: %{discussion}'
@@ -419,6 +425,7 @@ nl_NL:
     subject:
       poll_created: '%{actor} startte een %{poll_type}: %{title}'
       poll_edited: '%{actor} wijzigde de %{poll_type}: %{title}'
+      poll_reminder: '%{actor} herinnert je er aan om te stemmen: %{title}'
       poll_announced: '%{actor} heeft je uitgenodigd om te stemmen in %{poll_type}: %{title}'
       poll_announced_wip: '%{actor} deelde werk in uitvoering %{poll_type}: %{title}'
       poll_closing_soon: '%{poll_type} sluit binnen 24 uur: %{title}'
@@ -439,6 +446,7 @@ nl_NL:
     header:
       poll_created: '<strong>%{actor}</strong> startte een %{poll_type}'
       poll_edited: '<strong>%{actor}</strong> wijzigde een %{poll_type}'
+      poll_reminder: '<strong>%{actor}</strong> herinnert je er aan om te stemmen'
       poll_announced: '<strong>%{actor}</strong> heeft je uitgenodigd om te stemmen in %{poll_type}'
       poll_announced_wip: '<strong>%{actor}</strong> deelde werk in uitvoering %{poll_type}'
       poll_closing_soon: '<strong>%{actor}</strong>''s %{poll_type} sluit binnen 24 uur. Nu is het moment om te stemmen, van gedachten te veranderen of anderen aan te moedigen om mee te doen.'
