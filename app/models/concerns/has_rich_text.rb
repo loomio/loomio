@@ -64,7 +64,7 @@ module HasRichText
         file.purge_later unless Array(params[:files]).include? file.signed_id
       end
       # this is crazy, we shouldnt have to do this, rails 6 should replace the whole thing.
-      params[:files] = params[:files].reject {|sid| files.map(&:signed_id).include? sid}
+      params[:files] = Array(params[:files]).reject {|sid| self.files.map(&:signed_id).include? sid}
       self.reload
     end
     self.assign_attributes API::V1::SnorlaxBase.filter_params(self.class, params)
