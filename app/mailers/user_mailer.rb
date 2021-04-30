@@ -31,7 +31,7 @@ class UserMailer < BaseMailer
 
   def catch_up(user_id, time_since = nil, frequency = 'daily')
     user = User.find(user_id)
-    return unless user.email_catch_up
+    return unless user.email_catch_up_day
     @recipient = @user = user
     if frequency == 'daily'
       @time_start = time_since || 24.hours.ago
