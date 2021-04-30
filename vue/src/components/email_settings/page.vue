@@ -58,13 +58,13 @@ export default
       [
         {value: null, text: @$t('email_settings_page.never')}
         {value: 7, text: @$t('email_settings_page.every_day')}
-        {value: 0, text: @$t('email_settings_page.monday')}
-        {value: 1, text: @$t('email_settings_page.tuesday')}
-        {value: 2, text: @$t('email_settings_page.wednesday')}
-        {value: 3, text: @$t('email_settings_page.thursday')}
-        {value: 4, text: @$t('email_settings_page.friday')}
-        {value: 5, text: @$t('email_settings_page.saturday')}
-        {value: 6, text: @$t('email_settings_page.sunday')}
+        {value: 1, text: @$t('email_settings_page.monday')}
+        {value: 2, text: @$t('email_settings_page.tuesday')}
+        {value: 3, text: @$t('email_settings_page.wednesday')}
+        {value: 4, text: @$t('email_settings_page.thursday')}
+        {value: 5, text: @$t('email_settings_page.friday')}
+        {value: 6, text: @$t('email_settings_page.saturday')}
+        {value: 0, text: @$t('email_settings_page.sunday')}
       ]
     actions: -> pick UserService.actions(Session.user(), @), ['reactivate_user', 'deactivate_user']
 

@@ -1342,7 +1342,7 @@ en:
     announcement_label: Announcements
     announcement_description: "You will receive an email about all content that has been announced by people in your groups"
     mentioned_label: Mentions & Replies
-    mentioned_description: "When someone mentions you in a comment or replies to you, you'll get a notification email"
+    mentioned_description: "When someone @mentions you in a comment or replies to you, you'll get a notification email"
     update_settings: Save changes
     specific_groups: Settings for specific groups
     default_settings:

@@ -52,6 +52,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.include FactoryBot::Syntax::Methods
+  config.include ActiveSupport::Testing::TimeHelpers
 
   config.before(:each) do
     stub_request(:get, /\.chargifypay.com/).
