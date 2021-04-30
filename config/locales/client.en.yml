@@ -1334,8 +1334,9 @@ en:
     deactivate_description: If you never want to get another email from us ever again, you can deactivate your user account.
     email_newsletter: Loomio Newsletter
     email_newsletter_description: "Get updates about new features, training, events in your city and the future of Loomio. Usually 2 or 3 emails per year."
-    email_catch_up_day: Unread catch-up email
-    daily_summary_description: "Each morning, you will get an email with any activity that you missed the day before. This makes it easy to stay up to date with activity."
+    email_catch_up_day: Catch-up summary email
+    daily_summary_description: |
+      Choose when to receive the catch-up summary email. This email contains any new activity that you have not seen. A good way to stay up-to-date if you're not a regular user.
     on_participation_label: Subscribe on participation
     on_participation_description: "When you participate in a thread, all further activity will be emailed to you immediately."
     announcement_label: Announcements

@@ -90,10 +90,17 @@ v-main
           .email-settings-page__global-settings
             form
               .email-settings-page__global-settings
-                strong(v-t="'email_settings_page.email_catch_up_day'")
-                p
-                  | Choose when to receive a summary email with any activity you have not seen.
-                  | This is a nice way to stay up to date from your email inbox
+                v-checkbox#mentioned-email.md-checkbox--with-summary.email-settings-page__mentioned(v-model='user.emailWhenMentioned')
+                  div(slot="label")
+                    strong(v-t="'email_settings_page.mentioned_label'")
+                    .email-settings-page__input-description(v-t="'email_settings_page.mentioned_description'")
+                v-checkbox#on-participation-email.md-checkbox--with-summary.email-settings-page__on-participation(v-model='user.emailOnParticipation')
+                  div(slot="label")
+                    strong(v-t="'email_settings_page.on_participation_label'")
+                    .email-settings-page__input-description(v-t="'email_settings_page.on_participation_description'")
+                .text-subtitle-1
+                  strong(v-t="'email_settings_page.email_catch_up_day'")
+                p(v-t="'email_settings_page.daily_summary_description'")
                 v-select#email-catch-up-day(
                   solo
                   max-width="100px"
@@ -104,14 +111,6 @@ v-main
                 //-   div(slot="label")
                 //-     strong(v-t="'email_settings_page.daily_summary_label'")
                 //-     .email-settings-page__input-description(v-t="'email_settings_page.daily_summary_description'")
-                v-checkbox#on-participation-email.md-checkbox--with-summary.email-settings-page__on-participation(v-model='user.emailOnParticipation')
-                  div(slot="label")
-                    strong(v-t="'email_settings_page.on_participation_label'")
-                    .email-settings-page__input-description(v-t="'email_settings_page.on_participation_description'")
-                v-checkbox#mentioned-email.md-checkbox--with-summary.email-settings-page__mentioned(v-model='user.emailWhenMentioned')
-                  div(slot="label")
-                    strong(v-t="'email_settings_page.mentioned_label'")
-                    .email-settings-page__input-description(v-t="'email_settings_page.mentioned_description'")
       v-card-actions
         a.email-settings-page__learn-more-link(href='https://help.loomio.org/en/user_manual/users/email_settings/' target='_blank' v-t="'email_settings_page.learn_more'")
         v-spacer
