@@ -1327,7 +1327,7 @@ en:
     saturday: Saturday
     sunday: Sunday
     every_day: Every day
-    never: Never
+    never: Off
     header: Notification settings
     account_deactivated: Your account has been deactivated. You will not receive any emails, ever.
     deactivate_header: Stop all emails forever
