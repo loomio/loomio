@@ -9,6 +9,7 @@ be_BY:
     export:
       title: Назва
       author: Аўтар
+      email: Email
       details: Падрабязнасці
   email:
     reset_password:

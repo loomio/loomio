@@ -9,6 +9,7 @@ bg_BG:
     export:
       title: Заглавие
       author: Автор
+      email: E-mail
       details: Подробности
   email:
     group_email:

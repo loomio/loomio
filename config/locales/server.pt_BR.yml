@@ -61,6 +61,7 @@ pt_BR:
       percent_voted: "%{num}/%{denom} (%{percent}) membros manifestaram sua posição"
       title: Título
       author: Autor(a)
+      email: E-mail
       created_at: Criado em
       closing_at: Encerrando em
       closed_at: Terminou em

@@ -9,6 +9,7 @@ ja:
     export:
       title: タイトル
       author: 作成者
+      email: Eメール
       details: 詳細
   email:
     group_email:

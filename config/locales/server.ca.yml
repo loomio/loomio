@@ -22,6 +22,7 @@ ca:
     export:
       title: Títol
       author: Autor
+      email: Correu electrònic
       participants: Participants
       details: Detalls
       group_name: Nom del grup

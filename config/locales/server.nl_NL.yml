@@ -89,6 +89,7 @@ nl_NL:
       percent_voted: "%{num}/%{denom} (%{percent}) leden hebben hun positie gegeven."
       title: Titel
       author: Auteur
+      email: E-mail
       created_at: Gemaakt op
       closing_at: Sluit op
       closed_at: Gesloten op

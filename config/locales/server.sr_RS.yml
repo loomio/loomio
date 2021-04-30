@@ -8,6 +8,7 @@ sr_RS:
   poll:
     export:
       title: Наслов
+      email: еПорука
   email:
     catch_up:
       mark_as_read: Означи као прочитано

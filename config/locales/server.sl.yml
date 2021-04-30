@@ -28,6 +28,7 @@ sl:
     export:
       title: Naslov
       author: Avtor
+      email: Email
       details: Podrobnosti
   email:
     group_email:

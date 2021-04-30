@@ -12,6 +12,7 @@ nb_NO:
   poll:
     export:
       title: Tittel
+      email: E-post
       total: Totalt
   email:
     group_membership_approved:

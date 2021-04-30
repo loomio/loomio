@@ -9,6 +9,7 @@ an:
     export:
       title: Titol
       author: Autor
+      email: Correu electronico
       details: Detalles
   email:
     group_email:

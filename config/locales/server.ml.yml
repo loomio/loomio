@@ -9,6 +9,7 @@ ml:
     export:
       title: തലക്കെട്ട്
       author: സൃഷ്ടാവ്
+      email: ഈമെയില്‍
       details: വിശദാംശങ്ങള്‍
   email:
     group_email:

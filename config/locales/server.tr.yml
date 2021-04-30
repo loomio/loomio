@@ -14,6 +14,7 @@ tr:
     export:
       title: Başlık
       author: Yazar
+      email: E-posta
       details: Detaylar
       group_name: Grup adı
       total: Toplam

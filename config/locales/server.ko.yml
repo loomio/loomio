@@ -16,6 +16,7 @@ ko:
     export:
       title: 제목
       author: 글쓴이
+      email: 이메일
       participants: 참여자
       details: 세부사항
       group_name: 그룹명

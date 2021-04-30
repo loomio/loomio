@@ -15,6 +15,7 @@ eo:
     export:
       title: Titolo
       author: Aŭtoro
+      email: Retadreso
       details: Detaloj
       reason: Kialo
       total: Entute

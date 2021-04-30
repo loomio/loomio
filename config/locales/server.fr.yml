@@ -89,6 +89,7 @@ fr:
       percent_voted: "%{num}/%{denom} (%{percent}) des membres se sont exprimés"
       title: Titre
       author: Auteur
+      email: Adresse e-mail
       created_at: Créé à
       closing_at: Fermera à
       closed_at: Fermé à

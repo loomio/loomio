@@ -49,6 +49,7 @@ hu:
       percent_voted: "%{num}/%{denom} (%{percent}) a tagok kifejtették álláspontjukat"
       title: Cím
       author: Szerző
+      email: E-mail
       created_at: Létrehozva
       closing_at: 'Lezárás ekkor:'
       closed_at: Lezárva

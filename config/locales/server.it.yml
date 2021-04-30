@@ -89,6 +89,7 @@ it:
       percent_voted: "%{num}/%{denom} (%{percent}) membri hanno dichiarato la loro posizione"
       title: Titolo
       author: Autore
+      email: Email
       created_at: Creato il
       closing_at: Chiude il
       closed_at: Chiuso il

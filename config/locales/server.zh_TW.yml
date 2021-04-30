@@ -89,6 +89,7 @@ zh_TW:
       percent_voted: "%{num}/%{denom} (%{percent}) 的成員已經表達了他們的立場"
       title: 標題
       author: 作者
+      email: 電子郵件
       created_at: 建立於
       closing_at: 定案於
       closed_at: 定案於

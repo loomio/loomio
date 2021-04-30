@@ -26,6 +26,7 @@ cmn:
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) 的成员已经表达了他们的立场"
       title: 标题
+      email: 电子邮件
       participants: 参与者
       details: 细节
       group_name: 群组名称
