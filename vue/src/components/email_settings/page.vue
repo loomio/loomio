@@ -54,6 +54,18 @@ export default
     editSpecificGroupVolume: (group) ->
       @openChangeVolumeModal(Session.user())
   computed:
+    emailDays: ->
+      [
+        {value: null, text: @$t('email_settings_page.never')}
+        {value: 7, text: @$t('email_settings_page.every_day')}
+        {value: 0, text: @$t('email_settings_page.monday')}
+        {value: 1, text: @$t('email_settings_page.tuesday')}
+        {value: 2, text: @$t('email_settings_page.wednesday')}
+        {value: 3, text: @$t('email_settings_page.thursday')}
+        {value: 4, text: @$t('email_settings_page.friday')}
+        {value: 5, text: @$t('email_settings_page.saturday')}
+        {value: 6, text: @$t('email_settings_page.sunday')}
+      ]
     actions: -> pick UserService.actions(Session.user(), @), ['reactivate_user', 'deactivate_user']
 
     defaultSettingsDescription: ->
@@ -78,10 +90,20 @@ v-main
           .email-settings-page__global-settings
             form
               .email-settings-page__global-settings
-                v-checkbox#daily-summary-email.md-checkbox--with-summary.email-settings-page__daily-summary(v-model='user.emailCatchUp')
-                  div(slot="label")
-                    strong(v-t="'email_settings_page.daily_summary_label'")
-                    .email-settings-page__input-description(v-t="'email_settings_page.daily_summary_description'")
+                strong(v-t="'email_settings_page.email_catch_up_day'")
+                p
+                  | Choose when to receive a summary email with any activity you have not seen.
+                  | This is a nice way to stay up to date from your email inbox
+                v-select#email-catch-up-day(
+                  solo
+                  max-width="100px"
+                  :items="emailDays"
+                  :label="$t('email_settings_page.email_catch_up_day')"
+                  v-model="user.emailCatchUpDay")
+                //- v-checkbox#daily-summary-email.md-checkbox--with-summary.email-settings-page__daily-summary(v-model='user.emailCatchUp')
+                //-   div(slot="label")
+                //-     strong(v-t="'email_settings_page.daily_summary_label'")
+                //-     .email-settings-page__input-description(v-t="'email_settings_page.daily_summary_description'")
                 v-checkbox#on-participation-email.md-checkbox--with-summary.email-settings-page__on-participation(v-model='user.emailOnParticipation')
                   div(slot="label")
                     strong(v-t="'email_settings_page.on_participation_label'")
