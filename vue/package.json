@@ -17,7 +17,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@sentry/integrations": "^6.3.4",
-    "@sentry/browser": "^6.3.3",
+    "@sentry/browser": "^6.3.4",
     "@sentry/tracing": "^6.3.4",
     "activestorage": "^5.2.5",
     "ahoy.js": "^0.3.8",
@@ -60,7 +60,7 @@
     "@vue/cli-plugin-babel": "^4.5.12",
     "@vue/cli-plugin-e2e-nightwatch": "^4.5.12",
     "@vue/cli-service": "4.5.12",
-    "acorn": "^8.2.1",
+    "acorn": "^8.2.2",
     "babel-plugin-lodash": "^3.3.4",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "chromedriver": "latest",
