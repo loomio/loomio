@@ -28,7 +28,7 @@ module.exports = {
 }
 
 testUpdate = (page) => {
-  page.click('.email-settings-page__daily-summary label')
+  page.click('.email-settings-page__mentioned label')
   page.click('.email-settings-page__update-button')
   page.expectFlash('Email settings updated')
 }
