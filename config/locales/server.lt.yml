@@ -12,6 +12,7 @@ lt:
   poll:
     export:
       title: Antraštė
+      email: El. paštas
       details: Išsamesnė Informacija
       group_name: Grupės Pavadinimas
       total: Iš viso

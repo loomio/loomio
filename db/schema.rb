@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_21_101200) do
+ActiveRecord::Schema.define(version: 2021_04_30_031129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -855,6 +855,7 @@ ActiveRecord::Schema.define(version: 2021_04_21_101200) do
     t.string "content_locale"
     t.boolean "bot", default: false, null: false
     t.jsonb "link_previews", default: [], null: false
+    t.integer "email_catch_up_day"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
     t.index ["key"], name: "index_users_on_key", unique: true

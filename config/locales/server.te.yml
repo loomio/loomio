@@ -13,6 +13,7 @@ te:
     export:
       title: శీర్షిక
       author: రచయిత
+      email: ఈమెయిలు
       details: వివరాలు
       total: మొత్తం
   email:

@@ -26,6 +26,7 @@ ro:
     export:
       title: Titlu
       author: Autor
+      email: Email
       engagement: Implicat
       details: Detalii
       group_name: Numele Grupului

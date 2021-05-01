@@ -9,6 +9,7 @@ mk:
     export:
       title: Наслов
       author: Автор
+      email: Email
       details: Детали
   email:
     group_email:

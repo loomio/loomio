@@ -13,6 +13,7 @@ sv:
     export:
       title: Titel
       author: Författare
+      email: Email
       details: Detaljer
       total: Totalt
   validate:

@@ -16,6 +16,7 @@ da:
     export:
       title: Titel
       author: Forfatter
+      email: Email
       details: Beskrivelse
       group_name: Gruppenavn
       reason: Begrundelse

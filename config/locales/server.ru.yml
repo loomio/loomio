@@ -46,6 +46,7 @@ ru:
       percent_voted: "%{num}/%{denom}(%{percent}) участников выразили свое мнение"
       title: Название
       author: Автор
+      email: Email
       created_at: Создано
       closing_at: Закрывается
       closed_at: Закрыто

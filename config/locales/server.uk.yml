@@ -51,6 +51,7 @@ uk:
       percent_voted: "%{num}/%{denom} (%{percent}) учасників висловили свою позицію"
       title: Заголовок
       author: Автор
+      email: Електронна адреса
       created_at: Створено
       closing_at: Закривається
       closed_at: Закрито

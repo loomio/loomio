@@ -12,6 +12,7 @@ sr:
     export:
       title: Naslov
       author: Autor
+      email: ePoruka
       details: Detalji
       group_name: Naziv Grupe
   validate:

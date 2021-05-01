@@ -1,5 +1,5 @@
 class CurrentUserSerializer < UserSerializer
-  attributes :email, :email_when_proposal_closing_soon, :email_catch_up,
+  attributes :email, :email_when_proposal_closing_soon, :email_catch_up_day,
              :email_when_mentioned, :email_on_participation, :selected_locale,
              :locale, :default_membership_volume, :experiences,
              :email_newsletter, :is_admin, :memberships_count, :secret_token

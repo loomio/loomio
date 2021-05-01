@@ -1403,7 +1403,10 @@ es:
     replies: ¿Cómo mostrar las respuestas?
     linear: Lista plana
     linear_description: Temas se listan según se han desarrollado, uno después de otro.
+    nested_once: Respuestas agrupadas - solamente la primera respuesta
     nested_once_description: Marca las respuestas bajo un comentario original
+    nested_twice: Dos niveles de respuestas agrupadas
+    nested_twice_description: Marca las respuestas hasta 2 veces
     changing_nesting_is_slow: Cambios para anidación pueden llevar un par de minutos para procesarse.
   delete_thread_form:
     aria_label: 'Borrar hilo '

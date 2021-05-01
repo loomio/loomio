@@ -9,6 +9,7 @@ vi:
     export:
       title: Tiêu đề
       author: Tác giả
+      email: Email
       details: Chi tiết
   email:
     group_email:

@@ -9,6 +9,7 @@ id:
     export:
       title: Judul
       author: Penulis
+      email: Surel
       details: Keterangan
   email:
     group_email:

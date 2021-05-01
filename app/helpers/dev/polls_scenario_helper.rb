@@ -318,7 +318,7 @@ module Dev::PollsScenarioHelper
     discussion = saved(fake_discussion(group: create_group_with_members))
     scenario  = poll_expired_scenario(params)
     observer = saved fake_user
-    observer.email_catch_up = true
+    observer.email_catch_up_day = 7
     discussion.group.add_member! observer
     scenario[:discussion].group.add_member! observer
     poll = scenario[:poll]

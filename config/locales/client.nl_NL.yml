@@ -1,9 +1,11 @@
 nl_NL:
   loomio_onboarding:
     group_progress_card:
+      title: Laten we beginnen!
       activities:
         set_description: Omschrijf je groep
         set_cover_photo: Upload een foto en logo voor jouw groep
+        customize_group: Voeg een groepsfoto, logo en omschrijving toe
         invite_people_in: Nodig mensen uit
         start_thread: Start een discussiebord
         make_decision: Start een beslissing
@@ -14,6 +16,7 @@ nl_NL:
     free: Gratis
     trial: Uitproberen
     pro: Pro
+    pro_nonprofit: Zonder winstoogmerk
     community: Gemeenschap
     small: Klein
     medium: Medium
@@ -23,6 +26,9 @@ nl_NL:
   current_plan_button:
     upgrade: Upgrade
     buy_now: Koop nu
+    is_old_plan: Loomio's eenvoudige abonnementen hebben een onbeperkt aantal gebruikers
+    change_plan: Verander abonnement
+    view_plans: Toon abonnementen
     free_trial: Gratis uitproberen. {{days}} dagen resterend.
     trial_expired: De uitprobeerperiode is afgelopen. Upgrade om Loomio verder te gebruiken.
     tooltip: "Onze prijzen zijn geweldig! Upgrade vandaag en beleef plezier van wat Loomio je groep kan bieden."
@@ -46,17 +52,24 @@ nl_NL:
     all_tags: Alle labels
     tags: Labels
     apply_tags: Labels toekennen
+    new_tag: Nieuw label
     name_label: Naam
     color_label: Kleur
     card_title: Labels categoriseren
     modal_title: Maak een nieuw label aan
     modal_edit_title: Label bewerken
     modal_destroy_title: Label verwijderen
+    destroy_tag: Verwijder label
+    destroy_helptext: Verwijdert het label en verwijdert het van all borden in de groep. Weet je het zeker?
     helptext: Labels laten je toe conversaties te categoriseren en deze later sneller terug te vinden
     discussions_count_singular: ({{count}} bord)
     discussions_count_plural: ({{count}} borden)
     tag_created: Label opgeslagen
+    tag_destroyed: Label verwijderd
     tags_marked: 'Borden gemarkeerd met ''{{name}}'' in {{groupName}} '
+    no_tags_present: Geen borden gevonden met dat label! Probeer een andere
+    no_tags_in_group: Deze groep heeft nog geen categorielabel
+    only_admins_can_edit_tags: Sorry, alleen admins van groep {{group}} kunnen labels maken, hernoemen of verwijderen
   reactions:
     slight_smile: Vind ik leuk
     heart: Liefde
@@ -109,6 +122,7 @@ nl_NL:
   timezones:
     local: Plaatselijke tijd ({{value}})
   common:
+    none: Geen
     empty: Leeg
     no_results_found: Geen resultaten gevonden
     view: Beeld
@@ -531,6 +545,7 @@ nl_NL:
     new_coordinator: "<strong>{{name}}</strong> maakte van jou een admin in <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> heeft een {{poll_type}} gestart <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> heeft een {{poll_type}} aangepast <strong>{{title}}</strong>"
+    poll_reminder: "<strong>{{name}}</strong> herinnert je er aan om te stemmen in: <strong>{{title}}</strong>"
     poll_announced: "<strong>{{name}}</strong> deelde een {{poll_type}}: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} sluit binnenkort <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} gesloten: <strong>{{title}}</strong>"
@@ -552,6 +567,7 @@ nl_NL:
     invite_only_thread: "Alleen op uitnodiging bord"
     none_direct_thread: "Direct bord (geen groep)"
     none_invite_only_thread: "Alleen op uitnodiging bord (geen groep)"
+    change_log_placeholder: 'Optioneel: omschrijf je veranderingen. De omschrijving wordt toegevoegd aan het bord.'
     change_log_label: Wat is er veranderd?
     invite: Uitnodigen
     aria_label: 'Bordformulier'
@@ -598,6 +614,11 @@ nl_NL:
     history_error: Er ging iets mis! Kon de geschiedenis niet laden.
     inviting_guests_to_thread: Gasten zijn geen lid van jouw groep en hebben alleen toegang tot dit bord
     select_groups: selecteer groepen
+    search_by_name_or_email: Zoek op naam, of type e-mailadressen voor de uitnodiging
+    search_by_name: Zoek naar mensen op naam
+    only_admins_can_announce: Alleen admins kunnen een melding naar de hele groep sturen
+    only_admins_can_invite: Alleen admins kunnen gasten uitnodigen
+    only_admins_can_announce_or_invite: Alleen admins kunnen gasten uitnodigen or een melding naar de hele groep sturen
     audiences:
       group: Leden van {{name}}
       discussion_group: Iedereen in het bord
@@ -629,7 +650,10 @@ nl_NL:
         title: Nodig uit om te stemmen
         helptext: Wie zou je willen uitnodigen om te stemmen?
       poll_reminder:
+        title: Herinner om te stemmen
+        helptext: Wie wil je herinneren om te stemmen?
         message_label: Bericht
+        message_placeholder: Optioneel bericht om te vertellen waarom mensen zouden moeten stemmen
       poll_edited:
         title: Wijzigingen melden
         helptext: Wie wil je een melding sturen over deze wijziging?
@@ -645,6 +669,7 @@ nl_NL:
       group_title: '{{name}} ({{count}} personen)'
       visible_to_group: 'Iedereen in {{group}} kunnen dit bord zien.'
       visible_to_guests: 'Alleen uitgenodigde mensen kunnen dit bord zien.'
+      click_group_to_see_individuals: Klik groep om individuen te zien
     members_list:
       title: Gedeeld met
       last_notified: Gemeld
@@ -714,6 +739,9 @@ nl_NL:
     count_voters: "{{count}} stemmers"
   formatting:
     formatting_tools: Tekst-formatteer tools
+    colors: Kleuren
+    alignment: Uitlijnen
+    lists: Lijsten
     expand: Toon meer tekst-formatteer tools
     collapse: Toon minder tekst-formatteer tools
     bold: Vet
@@ -919,6 +947,7 @@ nl_NL:
     thread_defaults_help: Standaard instellingen voor nieuwe borden
     click_to_change_image: Cover-afbeelding en logo (klik om te wijzigen)
     aria_label: Groepsformulier
+    parent_group: Bovenliggende groep
     new_organisation: Nieuwe organisatie
     new_group: Nieuwe groep
     new_subgroup: Nieuwe subgroep
@@ -927,11 +956,15 @@ nl_NL:
     edit_group_heading: Bewerk groepsinstellingen
     edit_subgroup_heading: Bewerk subgroepinstellingen
     group_settings: Groepsinstellingen
+    subgroup_settings: Subgroep instellingen
     group_name: Groepsnaam
+    subgroup_name: Subgroepnaam
+    organization_name: Organisatienaam
     handle: Gebruikersnaam
     start_organization_heading: Nieuwe organisatie
     edit_organization_heading: Bewerk organisatie instellingen
     group_name_placeholder: 'Wat is de naam van je groep?'
+    subgroup_name_placeholder: 'Wat is de naam van je subgroep?'
     organization_name_placeholder: 'Wat is de naam van je organisatie?'
     description: 'Beschrijving'
     description_placeholder: 'Beschrijf het doel van je groep, zodat je groepsleden weten waarom ze hier zijn.'
@@ -1305,6 +1338,7 @@ nl_NL:
     delete_thread: 'Verwijderen'
     add_comment: 'Geef reactie'
     seen_by_count: 'Gezien door {{count}} mensen'
+    count_notified: 'Gemeld {{count}}'
     forked_from: "Geforked van"
   pin_thread_modal:
     title: Bord vastprikken
@@ -1879,7 +1913,9 @@ nl_NL:
     sign_in: Inloggen
     continue: Ga verder
     create_account: Account aanmaken
+    sign_up_as: Maak account als {{email}}
     sign_in_as: Log in als {{name}}
+    continue_with_provider: Doorgaan met {{provider}}
     continue_with_email: Ga door met e-mail
     or_enter_your_email: Of, voeg je emailadres in
     enter_your_name: Typ je naam
@@ -1920,6 +1956,7 @@ nl_NL:
     check_your_email: Check je e-mails!
     login_link_sent: "We hebben een email verstuurd naar {{email}}."
     instructions: "Klik de link om aan te melden, of gebruik onderstaande code"
+    too_many_attempts: "Te veel pogingen; probeer de link in de e-mail om in te loggen."
     invalid_code: "Sorry, die code klopte niet. Controleer de e-mail en probeer het nog een keer."
     password_link_sent: "We hebben je een e-mail gestuurd naar {{email}} met instructies om je wachtwoord in te stellen."
     reactivate_link_sent: "We hebben je een e-mail gestuurd met instructies om je account weer te activeren"
@@ -1932,6 +1969,8 @@ nl_NL:
   webhook:
     integrations: Integraties
     webhooks: Webhooks
+    webhook: Webhook
+    api: API
     format: Formateer
     formats:
       markdown: Markdown (voor Mattermost, Zapier en anderen)
@@ -1956,6 +1995,11 @@ nl_NL:
       poll_closed_by_user: Een peiling is handmatig gesloten
       poll_reopened: Een peiling werd heropend om te stemmen
       outcome_created: Een resultaat is gedeeld
+    permissions:
+      show_discussion: toon discussie
+      create_discussion: start discussie
+      create_poll: start peiling
+      show_poll: toon peiling
     include_body_label: inclusief message body met melding
     include_subgroups_label: Inclusief gebeurtenissen van sub-groepen
   configure_sso:
@@ -1988,6 +2032,8 @@ nl_NL:
       party: Politieke partij
       coop: Coöperatie
       union: Vakbond
+      nonprofit: Zonder winstoogmerk of NGO
+      professional: Professioneel dienstenbedrijf
       community: Community groep
       government: Overheid/lokale overheid
       other: Andere

@@ -89,6 +89,7 @@ pl:
       percent_voted: "%{num}/%{denom} (%{percent}) członkowie podali swoje stanowisko"
       title: Tytuł
       author: Autor
+      email: E-mail
       created_at: Utworzono o
       closing_at: Zamykanie o
       closed_at: Zamknięte o

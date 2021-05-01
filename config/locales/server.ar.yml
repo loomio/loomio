@@ -86,6 +86,7 @@ ar:
       percent_voted: "%{num}/%{denom}(%{percent}) أعلن الأعضاء موقفهم"
       title: العنوان
       author: مؤلف
+      email: البريد الإلكتروني
       created_at: أنشئت في
       closing_at: إغلاق في
       closed_at: مغلق في

@@ -9,6 +9,7 @@ sk:
     export:
       title: Názov
       author: Autor
+      email: E-mail
       details: Podrobnosti
   email:
     group_email:

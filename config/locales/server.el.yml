@@ -15,6 +15,7 @@ el:
     export:
       title: Τίτλος
       author: Συγγραφέας
+      email: Ηλεκτρονική Διεύθυνση
       details: Λεπτομέρειες
       group_name: Όνομα ομάδας
   email:

@@ -44,6 +44,7 @@ he:
       percent_voted: "%{num}/%{denom} (%{percent}) משתתפים הצהירו את עמדתם"
       title: כותרת
       author: מחבר
+      email: דואר אלקטרוני
       created_at: נוצר ב
       closing_at: נסגר ב
       closed_at: נסגר ב

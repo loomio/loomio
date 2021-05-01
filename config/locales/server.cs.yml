@@ -35,6 +35,7 @@ cs:
     export:
       title: Název
       author: Autor
+      email: Email
       details: Podrobnosti
       group_name: Název skupiny
       total: Celkem

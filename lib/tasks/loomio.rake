@@ -34,11 +34,7 @@ namespace :loomio do
     PollService.delay.expire_lapsed_polls
     PollService.delay.publish_closing_soon
 
-    if ENV['EMAIL_CATCH_UP_WEEKLY']
-      SendWeeklyCatchUpEmailWorker.perform_async
-    else
-      SendDailyCatchUpEmailWorker.perform_async
-    end
+    SendDailyCatchUpEmailWorker.perform_async
 
     LocateUsersAndGroupsWorker.perform_async
     if (Time.now.hour == 0)

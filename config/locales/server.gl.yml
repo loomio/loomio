@@ -9,6 +9,7 @@ gl:
     export:
       title: Título
       author: Autor/a
+      email: Correo electrónico
       details: Detalles
   email:
     by_who: por %{person}

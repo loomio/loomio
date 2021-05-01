@@ -1,0 +1,122 @@
+version: 2
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: active_model_serializers
+    versions:
+    - "> 0.8.4"
+  - dependency-name: ahoy_email
+    versions:
+    - "< 1.0.2, >= 1.0.1.a"
+  - dependency-name: devise-i18n
+    versions:
+    - "> 1.9.1, < 1.10"
+  - dependency-name: doorkeeper
+    versions:
+    - "< 6, >= 5.a"
+  - dependency-name: friendly_id
+    versions:
+    - ">= 5.4.a, < 5.5"
+  - dependency-name: google-cloud-translate
+    versions:
+    - ">= 2.1.1.a, < 2.1.2"
+  - dependency-name: rails
+    versions:
+    - ">= 6.1.a, < 6.2"
+  - dependency-name: sprockets
+    versions:
+    - ">= 4.a, < 5"
+  - dependency-name: sidekiq
+    versions:
+    - 6.2.1
+  - dependency-name: sentry-rails
+    versions:
+    - 4.2.2
+    - 4.3.4
+  - dependency-name: ahoy_email
+    versions:
+    - 2.0.0
+  - dependency-name: aws-sdk-s3
+    versions:
+    - 1.88.2
+  - dependency-name: sentry-sidekiq
+    versions:
+    - 4.2.1
+  - dependency-name: bootsnap
+    versions:
+    - 1.7.1
+  - dependency-name: database_cleaner-active_record
+    versions:
+    - 2.0.0
+  - dependency-name: database_cleaner-redis
+    versions:
+    - 2.0.0
+- package-ecosystem: npm
+  directory: "/vue"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: core-js
+    versions:
+    - ">= 3.a, < 4"
+  - dependency-name: "@sentry/browser"
+    versions:
+    - ">= 5.11.a, < 5.12"
+  - dependency-name: "@sentry/integrations"
+    versions:
+    - ">= 5.11.1.a, < 5.11.2"
+  - dependency-name: socket.io-client
+    versions:
+    - "> 2.3.1"
+  - dependency-name: socket.io-client
+    versions:
+    - ">= 3.0.a, < 3.1"
+  - dependency-name: tippy.js
+    versions:
+    - ">= 5.a, < 6"
+  - dependency-name: tiptap
+    versions:
+    - "> 1.29.6, < 2"
+  - dependency-name: tiptap-commands
+    versions:
+    - "> 1.15.0, < 2"
+  - dependency-name: tiptap-extensions
+    versions:
+    - "> 1.32.7, < 2"
+  - dependency-name: vuex
+    versions:
+    - "> 3.1.0, < 4"
+  - dependency-name: pug-code-gen
+    versions:
+    - 3.0.2
+  - dependency-name: marked
+    versions:
+    - 1.2.9
+  - dependency-name: "@sentry/integrations"
+    versions:
+    - 6.2.4
+    - 6.3.0
+    - 6.3.1
+  - dependency-name: chromedriver
+    versions:
+    - 90.0.0
+  - dependency-name: vuetify
+    versions:
+    - 2.4.11
+  - dependency-name: "@sentry/browser"
+    versions:
+    - 6.3.0
+  - dependency-name: "@sentry/tracing"
+    versions:
+    - 6.2.3
+    - 6.2.5
+    - 6.3.0
+  - dependency-name: date-fns
+    versions:
+    - 2.20.1
+    - 2.20.3

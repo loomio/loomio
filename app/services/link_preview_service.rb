@@ -36,7 +36,7 @@ module LinkPreviewService
     end
     threads.each { |t| t.join }
     previews.compact
-  rescue SocketError, URI::InvalidURIError
+  rescue SocketError, URI::InvalidURIError, HTTParty::UnsupportedURIScheme, HTTParty::RedirectionTooDeep
     []
   end
 end
