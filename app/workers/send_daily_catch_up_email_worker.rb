@@ -9,7 +9,7 @@ class SendDailyCatchUpEmailWorker
       if Time.find_zone(zone)
         time_in_zone = DateTime.now.in_time_zone(zone)
         if time_in_zone.hour == 6
-          User.where(time_zone: zone)
+          User.active.verified.where(time_zone: zone)
           .where('email_catch_up_day = 7 or email_catch_up_day = ?', time_in_zone.wday).find_each do |user|
             period = user.email_catch_up_day == 7 ? 'daily' : 'weekly'
             UserMailer.delay(queue: :low).catch_up(user.id, nil, period)
