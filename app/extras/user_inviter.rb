@@ -63,8 +63,12 @@ class UserInviter
                            inc: emails.length + ids.length,
                            per: :day)
 
+    wday = Date.today.wday
     User.import(safe_emails(emails).map do |email|
-      User.new(email: email, time_zone: actor.time_zone, detected_locale: actor.locale)
+      User.new(email: email,
+               time_zone: actor.time_zone,
+               detected_locale: actor.locale,
+               email_catch_up_day: wday)
     end, on_duplicate_key_ignore: true)
 
     User.active.where("id in (:ids) or email in (:emails)", ids: ids, emails: emails)
