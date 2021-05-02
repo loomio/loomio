@@ -1,9 +1,17 @@
-import { Node, Plugin, PluginKey} from 'tiptap'
+import Image from '@tiptap/extension-image'
+import { Plugin, PluginKey } from 'prosemirror-state'
 import {Decoration, DecorationSet} from 'prosemirror-view'
-
-import FileUploader from '@/shared/services/file_uploader'
+import {
+  Command,
+  Node,
+  nodeInputRule,
+  mergeAttributes,
+} from '@tiptap/core'
 
 let count = 0;
+import FileUploader from '@/shared/services/file_uploader'
+
+export const inputRegex = /!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\)/
 
 const uploadPlaceholderPlugin = new Plugin({
    state: {
@@ -32,10 +40,21 @@ const uploadPlaceholderPlugin = new Plugin({
   }
 })
 
+
 function finduploadPlaceholder(state, id) {
   let decos = uploadPlaceholderPlugin.getState(state)
   let found = decos.find(null, null, spec => spec.id == id)
   return found.length ? found[0].from : null
+}
+
+function handleUploads({files, view, attachFile, attachImageFile, coordinates}) {
+  Array.from(files || []).forEach(file => {
+    if ((/image/i).test(file.type)) {
+      insertImage(file, view, coordinates, attachImageFile)
+    } else {
+      attachFile({file})
+    }
+  })
 }
 
 function insertImage(file, view, coordinates, attachImageFile) {
@@ -81,61 +100,37 @@ function insertImage(file, view, coordinates, attachImageFile) {
   })
 }
 
-function handleUploads({files, view, attachFile, attachImageFile, coordinates}) {
-  Array.from(files || []).forEach(file => {
-    if ((/image/i).test(file.type)) {
-      insertImage(file, view, coordinates, attachImageFile)
-    } else {
-      attachFile({file})
-    }
-  })
-}
 
-export default class Image extends Node {
-
-  get name() {
-    return 'image'
-  }
-
-  get schema() {
+export const CustomImage = Image.extend({
+  addAttributes() {
     return {
-      inline: true,
-      attrs: {
-        src: {},
-        alt: { default: null },
-        title: { default: null },
-        width: { default: null },
-        height: { default: null }
+      src: {
+        default: null,
       },
-      group: 'inline',
-      draggable: true,
-      parseDOM: [
-        {
-          tag: 'img',
-          getAttrs: dom => ({
-            src: dom.getAttribute('src'),
-            title: dom.getAttribute('title'),
-            alt: dom.getAttribute('alt'),
-            width: dom.getAttribute('width'),
-            height: dom.getAttribute('height')
-          }),
-        },
-      ],
-      toDOM: node => ['img', node.attrs],
+      alt: {
+        default: null,
+      },
+      title: {
+        default: null,
+      },
+      width: {
+        default: null,
+      },
+      height: {
+        default: null,
+      },
     }
-  }
+  },
+  addInputRules() {
+    return [
+      nodeInputRule(inputRegex, this.type, match => {
+        const [, alt, src, title, width, height] = match
 
-  commands({ type }) {
-    return attrs => (state, dispatch) => {
-      const { selection } = state
-      const position = selection.$cursor ? selection.$cursor.pos : selection.$to.pos
-      const node = type.create(attrs)
-      const transaction = state.tr.insert(position, node)
-      dispatch(transaction)
-    }
-  }
-
-  get plugins() {
+        return { src, alt, title, width, height }
+      }),
+    ]
+  },
+  addProseMirrorPlugins() {
     const attachFile = this.options.attachFile
     const attachImageFile = this.options.attachImageFile
     return [
@@ -179,6 +174,5 @@ export default class Image extends Node {
         },
       }),
     ]
-  }
-
-}
+  },
+})

@@ -22,7 +22,6 @@ import Heading from '@tiptap/extension-heading'
 import Highlight from '@tiptap/extension-highlight'
 import History from '@tiptap/extension-history'
 import HorizontalRule from '@tiptap/extension-horizontal-rule'
-import Image from '@tiptap/extension-image'
 import Italic from '@tiptap/extension-italic'
 import Link from '@tiptap/extension-link'
 import ListItem from '@tiptap/extension-list-item'
@@ -42,6 +41,7 @@ import Text from '@tiptap/extension-text'
 import Typography from '@tiptap/extension-typography'
 import Underline from '@tiptap/extension-underline'
 import {CustomMention} from './mention'
+import {CustomImage} from './image'
 
 import { Editor, EditorContent, VueRenderer } from '@tiptap/vue-2'
 
@@ -101,33 +101,36 @@ export default
   mounted: ->
     # @expanded = Session.user().experiences['html-editor.expanded']
     @editor = new Editor
+      editorProps:
+        scrollThreshold: 100
+        scrollMargin: 100
       extensions: [
-        Document
-        Paragraph
-        Text
-        Highlight
         Blockquote
-        CodeBlock
         Bold
-        Italic
-        Iframe
-        Strike
-        Underline
+        BulletList
+        CodeBlock
+        CustomMention.configure(MentionPluginConfig.bind(@)())
+        CustomImage.configure({attachFile: @attachFile, attachImageFile: @attachImageFile}),
+        Document
+        GapCursor
         Heading
         Highlight.configure(multicolor: true)
         History
         HorizontalRule
-        Typography
-        GapCursor
-        BulletList
-        OrderedList
+        Italic
+        Iframe
         ListItem
+        OrderedList
+        Paragraph
+        Strike
+        Text
         Table
         TableHeader
         TableRow
         TableCell
+        Typography
         TextAlign
-        CustomMention.configure(MentionPluginConfig.bind(@)())
+        Underline
       ]
       content: @model[@field]
       onUpdate: @updateModel
@@ -152,9 +155,6 @@ export default
     #   @editor.destroy() if @editor
     #
     #   @editor = new Editor
-    #     editorProps:
-    #       scrollThreshold: 100
-    #       scrollMargin: 100
     #     extensions: [
     #       Link(),
     #       new Mention(MentionPluginConfig.bind(@)()),
@@ -346,29 +346,15 @@ div
                   v-icon mdi-emoticon-outline
               emoji-picker(:insert="emojiPicked")
 
-            //- headings menu
-            //- v-menu
-            //-   template(v-slot:activator="{ on, attrs }")
-            //-     v-btn.drop-down-button(icon v-on="on" v-bind="attrs" :title="$t('formatting.heading_size')")
-            //-       v-icon mdi-format-size
-            //-       v-icon.menu-down-arrow mdi-menu-down
-            //-   v-list(dense)
-            //-     template(v-for="i in 3")
-            //-       v-list-item(@click='commands.heading({ level: i })' :class="{ 'v-list-item--active': isActive.heading({level: i}) }")
-            //-         v-list-item-icon
-            //-           v-icon {{'mdi-format-header-'+i}}
-            //-         v-list-item-title(v-t="'formatting.heading'+i")
-            //-     v-list-item(@click='commands.paragraph()' :class="{ 'v-list-item--active': isActive.paragraph() }")
-            //-       v-list-item-icon
-            //-         v-icon mdi-format-pilcrow
-            //-       v-list-item-title(v-t="'formatting.paragraph'")
-            //-
             template(v-if="expanded")
               v-btn(icon @click='editor.chain().focus().setParagraph().run()' :outlined="editor.isActive('paragraph')" :title="$t('formatting.paragraph')")
                 v-icon mdi-format-pilcrow
               template(v-for="i in 3")
                 v-btn(icon @click='editor.chain().focus().toggleHeading({ level: i }).run()' :outlined="editor.isActive('heading', { level: i })" :title="$t('formatting.heading'+i)")
                   v-icon {{'mdi-format-header-'+i}}
+
+            v-btn(icon @click='editor.chain().setImage({src: "http://localhost:8080/theme/logo.svg"}).focus().run()' :title="$t('formatting.bold')")
+              v-icon mdi-image
 
             //- bold
 
