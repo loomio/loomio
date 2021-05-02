@@ -112,6 +112,7 @@ export default
         CustomMention.configure(MentionPluginConfig.bind(@)())
         CustomImage.configure({attachFile: @attachFile, attachImageFile: @attachImageFile}),
         Document
+        Dropcursor
         GapCursor
         Heading
         Highlight.configure(multicolor: true)

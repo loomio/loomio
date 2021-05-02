@@ -64,4 +64,4 @@ export default
         if (/image/i).test(file.type)
           insertImage(file, @editor.view, null, @attachImageFile)
         else
-          attachFile({file})
+          @attachFile({file})
