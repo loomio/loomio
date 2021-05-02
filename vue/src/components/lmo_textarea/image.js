@@ -57,7 +57,7 @@ function handleUploads({files, view, attachFile, attachImageFile, coordinates}) 
   })
 }
 
-function insertImage(file, view, coordinates, attachImageFile) {
+export function insertImage(file, view, coordinates, attachImageFile) {
   const { schema } = view.state
 
   const id = "image"+(count++)

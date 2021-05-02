@@ -1,5 +1,6 @@
 import { forEach } from 'lodash'
 import FileUploader from '@/shared/services/file_uploader'
+import {insertImage} from '@/components/lmo_textarea/image'
 export default
   data: ->
     files: []
@@ -55,3 +56,12 @@ export default
 
     fileSelected: ->
       forEach @$refs.filesField.files, (file) => @attachFile(file: file)
+
+    # collab editor only
+    imageSelected: ->
+      # console.log 'state', @editor.state.tr.selection.from
+      Array.from(@$refs.imagesField.files || []).forEach (file) =>
+        if (/image/i).test(file.type)
+          insertImage(file, @editor.view, null, @attachImageFile)
+        else
+          attachFile({file})

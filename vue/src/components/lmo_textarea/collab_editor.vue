@@ -320,8 +320,8 @@ div
             v-btn(icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")
               v-icon mdi-paperclip
 
-            //- v-btn(icon @click='$refs.imageFilesField.click()' :title="$t('formatting.insert_image')")
-            //-   v-icon mdi-image
+            v-btn(icon @click='$refs.imagesField.click()' :title="$t('formatting.insert_image')")
+              v-icon mdi-image
 
             //- link
             //- v-menu(:close-on-content-click="!selectedText()" v-model="linkDialogIsOpen" min-width="320px")
@@ -450,6 +450,9 @@ div
 
   form(style="display: block" @change="fileSelected")
     input(ref="filesField" type="file" name="files" multiple=true)
+
+  form(style="display: block" @change="imageSelected")
+    input(ref="imagesField" type="file" name="files" multiple=true)
 </template>
 <style lang="sass">
 
