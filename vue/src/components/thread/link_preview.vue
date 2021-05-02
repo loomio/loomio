@@ -54,13 +54,13 @@ v-card.mt-3(outlined  style="position: relative")
   template(v-else)
     v-btn(color="accent"
           outlined
-          style="top: 8px; right: 8px; position: absolute; z-index: 1000"
+          style="top: 8px; right: 8px; position: absolute"
           v-if="remove" icon
           @click="remove(preview.url)"
           :title="$t('common.action.remove')")
       v-icon mdi-close
     v-btn(color="accent"
-          style="top: 8px; right: 48px; position: absolute; z-index: 1000"
+          style="top: 8px; right: 48px; position: absolute"
           v-if="remove" icon
           outlined
           @click="editing = true"

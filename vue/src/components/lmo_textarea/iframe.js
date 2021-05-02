@@ -20,6 +20,9 @@ export const Iframe = Node.create({
       src: {
         default: null,
       },
+      allowfullscreen: {
+        default: true
+      }
     }
   },
 
@@ -48,7 +51,7 @@ export const Iframe = Node.create({
   },
 
   renderHTML({ HTMLAttributes }) {
-    return ['div', {class: 'iframe-container', allowfullscreen: true}, ['iframe', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes)]]
+    return ['div', {class: 'iframe-container'}, ['iframe', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes)]]
   },
 
   renderText({ node }) {

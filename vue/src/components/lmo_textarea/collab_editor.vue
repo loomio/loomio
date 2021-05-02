@@ -120,6 +120,7 @@ export default
         HorizontalRule
         Italic
         Iframe
+        Link
         ListItem
         OrderedList
         Paragraph
@@ -220,7 +221,8 @@ export default
         [AppConfig.theme.channels_uri, 'tiptap', @model.constructor.singular, @model.id, (@model.secretToken || Session.user().secretToken)].join('/')
 
     selectedText: ->
-      { selection, state } = @editor
+      state = @editor.state
+      selection = @editor.state.selection
       { from, to } = selection
       state.doc.textBetween(from, to, ' ')
 
@@ -241,14 +243,13 @@ export default
         @expanded = false
         Records.users.removeExperience('html-editor.expanded')
 
-    setLinkUrl: (command) ->
+    setLinkUrl: ->
       if @linkUrl
         @linkUrl = "http://".concat(@linkUrl) unless @linkUrl.includes("://")
-        command({ href: @linkUrl })
+        @editor.chain().setLink(href: @linkUrl).focus().run()
         @fetchLinkPreviews([@linkUrl])
         @linkUrl = null
       @linkDialogIsOpen = false
-      @editor.focus()
 
     setIframeUrl: () ->
       @editor.chain().setIframe(src: getEmbedLink(@iframeUrl)).focus().run()
@@ -279,9 +280,9 @@ export default
 
     fetchLinkPreviews: (urls) ->
       if urls.length
+        @fetchedUrls = uniq @fetchedUrls.concat(urls)
         Records.remote.post('link_previews', {urls: urls}).then (data) =>
           @model.linkPreviews = uniqBy(@model.linkPreviews.concat(data.previews), 'url')
-      @fetchedUrls = uniq @fetchedUrls.concat(urls)
 
   beforeDestroy: ->
     # @editor.destroy() if @editor
@@ -325,20 +326,24 @@ div
               v-icon mdi-image
 
             //- link
-            //- v-menu(:close-on-content-click="!selectedText()" v-model="linkDialogIsOpen" min-width="320px")
-            //-   template(v-slot:activator="{on, attrs}")
-            //-     v-btn(icon v-on="on" v-bind="attrs" :title="$t('formatting.link')")
-            //-       v-icon mdi-link
-            //-   v-card
-            //-     template(v-if="selectedText()")
-            //-       v-card-title.title(v-t="'text_editor.insert_link'")
-            //-       v-card-text
-            //-         v-text-field(type="url" label="https://www.example.com" v-model="linkUrl" autofocus ref="focus" v-on:keyup.enter="setLinkUrl(commands.link)")
-            //-       v-card-actions
-            //-         v-spacer
-            //-         v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
-            //-     template(v-else)
-            //-       v-card-title(v-t="'text_editor.select_text_to_link'")
+            v-menu(:close-on-content-click="!selectedText()" v-model="linkDialogIsOpen" min-width="320px")
+              template(v-slot:activator="{on, attrs}")
+                template(v-if="editor.isActive('link')")
+                  v-btn(@click="editor.chain().toggleLink().focus().run()" icon outlined :title="$t('formatting.link')")
+                    v-icon mdi-link
+                template(v-else)
+                  v-btn(icon v-on="on" v-bind="attrs" :title="$t('formatting.link')")
+                    v-icon mdi-link
+              v-card
+                template(v-if="selectedText()")
+                  v-card-title.title(v-t="'text_editor.insert_link'")
+                  v-card-text
+                    v-text-field(type="url" label="https://www.example.com" v-model="linkUrl" autofocus ref="focus" v-on:keyup.enter="setLinkUrl()")
+                  v-card-actions
+                    v-spacer
+                    v-btn(color="primary" @click="setLinkUrl()" v-t="'common.action.apply'")
+                template(v-else)
+                  v-card-title(v-t="'text_editor.select_text_to_link'")
 
             //- emoji
             v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
@@ -354,11 +359,7 @@ div
                 v-btn(icon @click='editor.chain().focus().toggleHeading({ level: i }).run()' :outlined="editor.isActive('heading', { level: i })" :title="$t('formatting.heading'+i)")
                   v-icon {{'mdi-format-header-'+i}}
 
-            v-btn(icon @click='editor.chain().setImage({src: "http://localhost:8080/theme/logo.svg"}).focus().run()' :title="$t('formatting.bold')")
-              v-icon mdi-image
-
             //- bold
-
             v-btn(icon v-if="expanded" @click='editor.chain().toggleBold().focus().run()' :outlined="editor.isActive('bold')" :title="$t('formatting.bold')")
               v-icon mdi-format-bold
 
