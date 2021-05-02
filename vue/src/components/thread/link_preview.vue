@@ -43,9 +43,11 @@ v-card.mt-3(outlined  style="position: relative")
     .link-preview__image(v-if="preview.image" :style="{'background-image': 'url('+preview.image+')', 'background-size': backgroundSize, 'background-position': backgroundPosition}")
     v-btn(color="accent" icon outlined
           :title="$t('common.action.done')"
-          style="top: 8px; right: 8px; position: absolute; z-index: 1000"
+          style="top: 8px; right: 16px; position: absolute"
           @click="editing = false")
+      //- span(v-t="'common.action.done'")
       v-icon mdi-check
+    .px-4.pt-4.text--secondary {{preview.url}}
     v-card-title
       v-text-field(filled v-model="preview.title")
     v-card-subtitle
