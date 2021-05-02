@@ -10,7 +10,6 @@ export const CustomMention = Mention.extend({
     suggestion: {
       char: '@',
       command: ({ editor, range, props }) => {
-        console.log(editor, range, props)
         editor
           .chain()
           .focus()

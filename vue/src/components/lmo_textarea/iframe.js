@@ -26,24 +26,6 @@ export const Iframe = Node.create({
     }
   },
 
-  // addNodeView() {
-  //   return ({node}) => {
-  //     console.log(node)
-  //     const container = document.createElement('div')
-  //     container.className = 'iframe-container'
-  //     container.contentEditable = false
-  //
-  //     const content = document.createElement('iframe')
-  //     content.setAttribute('src', node.attrs.src)
-  //     container.append(content)
-  //
-  //     return {
-  //       dom: container,
-  //       contentDOM: node,
-  //     }
-  //   }
-  // },
-
   parseHTML() {
     return [
       { tag: 'iframe[src]' },
