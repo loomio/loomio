@@ -35,13 +35,14 @@ import TableRow from '@tiptap/extension-table-row'
 import Table from '@tiptap/extension-table'
 import TaskItem from '@tiptap/extension-task-item'
 import TaskList from '@tiptap/extension-task-list'
-import TextAlign from '@tiptap/extension-text-align'
+import {TextAlign} from './extension_text_align'
 import TextStyle from '@tiptap/extension-text-style'
 import Text from '@tiptap/extension-text'
 import Typography from '@tiptap/extension-typography'
 import Underline from '@tiptap/extension-underline'
 import {CustomMention} from './mention'
 import {CustomImage} from './image'
+import {TextColor} from './extension_text_color'
 
 import { Editor, EditorContent, VueRenderer } from '@tiptap/vue-2'
 
@@ -132,6 +133,8 @@ export default
         TableCell
         Typography
         TextAlign
+        TextStyle
+        TextColor
         Underline
       ]
       content: @model[@field]

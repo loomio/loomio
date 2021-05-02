@@ -1,5 +1,4 @@
 <script lang="coffee">
-import { isNodeActive } from '@/shared/tiptap_extentions/utils/node'
 
 export default
   props:
