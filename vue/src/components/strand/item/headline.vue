@@ -42,12 +42,13 @@ h3.strand-item__headline.thread-item__title.body-2.pb-1(tabindex="-1" :id="'even
     router-link.grey--text(:to='link')
       time-ago(:date='eventable.discardedAt')
   div.d-flex.align-center(v-else)
-    v-icon(v-if="event.pinned") mdi-pin
     slot(name="headline")
       span.strand-item__headline(v-html='headline')
     mid-dot
     router-link.grey--text.body-2(:to='link')
       time-ago(:date='event.createdAt')
+    mid-dot
+    v-icon(v-if="event.pinned") mdi-pin-outline
 
 </template>
 <style lang="sass">
