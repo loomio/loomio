@@ -93,7 +93,10 @@ img.emoji
     border-bottom: 2px solid rgba(0,0,0,0.1)
     margin: 16px 0
 
+  overflow-wrap: break-word
   word-wrap: break-word
+  word-break: break-word
+  hyphens: auto
 
   img
     aspect-ratio: attr(width) / attr(height)

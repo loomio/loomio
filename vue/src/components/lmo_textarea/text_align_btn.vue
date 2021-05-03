@@ -9,6 +9,10 @@ export default
       @editor.isActive({ textAlign: alignment })
 
   computed:
+    showOutline: ->
+      @editor.isActive({ textAlign: 'right' }) ||
+      @editor.isActive({ textAlign: 'center' })
+
     current: ->
       ['left', 'center', 'right'].find((v) => @isActive(v)) || "left"
 
@@ -25,7 +29,7 @@ export default
 v-menu
   template(v-slot:activator="{ on, attrs }")
     div.rounded-lg
-      v-btn.drop-down-button(icon v-on="on" :title="$t('formatting.alignment')")
+      v-btn.drop-down-button.pl-1(icon tile v-on="on" :outlined="showOutline" :title="$t('formatting.alignment')")
         v-icon mdi-format-align-{{current}}
         v-icon.menu-down-arrow mdi-menu-down
   v-list(dense)
