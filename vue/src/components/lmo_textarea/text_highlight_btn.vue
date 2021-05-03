@@ -10,16 +10,16 @@ export default
 
   data: ->
     # activeColor: null
-    textColors: ['#000000', '#ffffff'].concat(compact(map(ourColors, (value, key) => value.base)))
-    highlights: ['#000000', '#ffffff'].concat(compact(map(ourColors, (value, key) => value.lighten3)))
+    textColors: ['#fff'].concat(compact(map(ourColors, (value, key) => value.base)))
+    highlights: ['#000'].concat(compact(map(ourColors, (value, key) => value.lighten3)))
 
   computed:
     activeHighlight: ->
       return null unless @editor.isActive('highlight')
       @highlights.find (v) => @editor.isActive('highlight', {color: v})
     activeTextColor: ->
-      return null unless @editor.isActive('textColor')
-      @textColors.find (v) => @editor.isActive('textColor', {textColor: v})
+      return null unless @editor.getMarkAttributes('textStyle')
+      @editor.getMarkAttributes('textStyle').textColor
 </script>
 
 <template lang="pug">
@@ -30,35 +30,47 @@ v-menu
         v-icon mdi-palette
         v-icon.menu-down-arrow mdi-menu-down
   v-card.color-picker.pa-2
+    .text-center(v-if="activeHighlight || activeTextColor")
+      v-btn(block x-small outlined @click="editor.chain().unsetHighlight().unsetTextColor().focus().run()" v-t="'formatting.reset'")
     .caption(v-t="'formatting.text_color'")
-    .swatch(v-for="color in textColors" :class="{'swatch--white': color == '#ffffff', 'swatch--selected': color == activeTextColor }" :style="{'background-color': color}" @click="editor.chain().setTextColor(color).focus().run()") &nbsp;
+    .swatch.swatch-color(v-for="color in textColors" :class="{'swatch--white': color == '#ffffff', 'swatch--selected': color == activeTextColor }" :style="{'background-color': color}" @click="editor.chain().setTextColor(color).focus().run()") &nbsp;
+    .swatch.swatch-reset(@click="editor.chain().focus().unsetTextColor().run()")
+      v-icon mdi-cancel
     .caption(v-t="'formatting.background_color'")
-    .swatch(v-for="color in highlights" :class="{'swatch--white': color == '#ffffff', 'swatch--selected': color == activeHighlight }" :style="{'background-color': color}" @click="editor.chain().setHighlight({color: color}).run()") &nbsp;
-    .text-center
-      v-btn(x-small outlined @click="editor.chain().focus().unsetHighlight().unsetTextColor().run()" v-t="'formatting.reset'")
+    .swatch.swatch-color(v-for="color in highlights" :class="{'swatch--white': color == '#ffffff', 'swatch--selected': color == activeHighlight }" :style="{'background-color': color}" @click="editor.chain().setHighlight({color: color}).focus().run()") &nbsp;
+    .swatch.swatch-reset(@click="editor.chain().focus().unsetHighlight().run()")
+      v-icon mdi-cancel
 </template>
 
 <style lang="sass">
 
 .color-picker
-  width: 260px
+  width: 280px
 
 .swatch
+  box-sizing: border-box
   display: inline-block
   width: 24px
   height: 24px
-  border-radius: 24px
-  border: 1px solid white
+  margin: 1px
+  border: 1px solid transparent
+  border-radius: 2px
+  transition: border-radius 0.1s linear
+
+.swatch--color
+  // border-radius: 24px
+  border: 2px solid transparent
 
 .swatch--white
-  border: 1px solid #ddd
+  border: 2px solid #ddd
 
 .swatch--selected
-  border: 1px dotted #000
+  border-radius: 24px
 
 .swatch:hover
-  border: 1px solid grey
+  cursor: pointer
+  border-radius: 8px
 
 .swatch-active
-  border: 1px solid black
+  border-radius: 24px
 </style>
