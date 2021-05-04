@@ -3,6 +3,7 @@ import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 import { optionColors, optionImages } from '@/shared/helpers/poll'
 import { onError } from '@/shared/helpers/form'
+import { isEqual } from 'lodash'
 
 export default
   props:
