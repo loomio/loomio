@@ -265,7 +265,11 @@ class Poll < ApplicationRecord
   # people who can vote.
   def base_membership_query(admin: false)
     if persisted? && specified_voters_only && !admin
-      voters
+      # voters
+      User.active.
+        joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
+        joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
+        where("s.id IS NOT NULL AND s.revoked_at IS NULL AND latest = TRUE")
     else
       User.active.
         joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.discussion_id || 0} AND dr.user_id = users.id").
@@ -283,6 +287,10 @@ class Poll < ApplicationRecord
 
   def members
     base_membership_query
+  end
+
+  def guests
+    base_membership_query.where('m.group_id is null')
   end
 
   def non_voters

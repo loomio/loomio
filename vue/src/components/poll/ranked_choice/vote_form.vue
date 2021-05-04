@@ -14,7 +14,8 @@ export default
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
-        @pollOptions = @sortPollOptions(@stance.poll().pollOptions())
+        if !isEqual map(@pollOptions, 'name'), map(@stance.poll().pollOptions(), 'name')
+          @pollOptions = @sortPollOptions(@stance.poll().pollOptions())
 
   methods:
     submit: ->
