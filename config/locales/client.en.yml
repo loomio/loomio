@@ -525,6 +525,7 @@ en:
     email_settings: 'Notification settings'
     help: 'Help'
     contact_site_name: 'Contact {{site_name}}'
+    contact_support: 'Contact support'
     sign_out: 'Sign out'
     beta_collab: "Real-time collaborative editing on discussions and proposals, auto saved draft comments"
 

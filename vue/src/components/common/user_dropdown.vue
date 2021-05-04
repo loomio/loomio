@@ -62,7 +62,7 @@ div.user-dropdown
     v-list-item-icon
       v-icon mdi-help-circle-outline
   v-list-item(to="/contact" dense)
-    v-list-item-title(v-t="{path: 'user_dropdown.contact_site_name', args: {site_name: siteName}}")
+    v-list-item-title(v-t="{path: 'user_dropdown.contact_support', args: {site_name: siteName}}")
     v-list-item-icon
       v-icon mdi-email-outline
   v-list-item(@click="signOut()" dense)
