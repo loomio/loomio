@@ -204,6 +204,11 @@ class Group < ApplicationRecord
   def title
     name
   end
+
+  def guests
+    User.none
+  end
+  
   def message_channel
     "/group-#{self.key}"
   end

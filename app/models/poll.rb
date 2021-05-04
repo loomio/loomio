@@ -285,6 +285,10 @@ class Poll < ApplicationRecord
     base_membership_query
   end
 
+  def guests
+    base_membership_query.where('m.group_id is null')
+  end
+
   def non_voters
     # people who have not been given a vote yet
     User.active.
