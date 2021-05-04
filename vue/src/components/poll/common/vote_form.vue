@@ -17,11 +17,12 @@ export default
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
-        options = @stance.poll().pollOptions()
-        @optionGroups = if options.length == 4
-          [[options[0], options[1]], [options[2], options[3]]]
-        else
-          [options]
+        if !isEqual map(@pollOptions, 'name'), map(@stance.poll().pollOptions(), 'name')
+          options = @stance.poll().pollOptions()
+          @optionGroups = if options.length == 4
+            [[options[0], options[1]], [options[2], options[3]]]
+          else
+            [options]
 
   methods:
     submit: ->
