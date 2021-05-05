@@ -253,6 +253,7 @@ en:
     catch_up:
       daily_subject: Yesterday on %{site_name}
       weekly_subject: Last week on %{site_name}
+      other_subject: Recently on %{site_name}
       do_not_reply: Please do not reply to this email.
       mark_as_read: Mark as read
       thanks_for_reading: Thanks for reading, have a great day!

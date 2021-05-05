@@ -58,6 +58,7 @@ export default
       [
         {value: null, text: @$t('email_settings_page.never')}
         {value: 7, text: @$t('email_settings_page.every_day')}
+        {value: 8, text: @$t('email_settings_page.every_second_day')}
         {value: 1, text: @$t('email_settings_page.monday')}
         {value: 2, text: @$t('email_settings_page.tuesday')}
         {value: 3, text: @$t('email_settings_page.wednesday')}
