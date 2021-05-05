@@ -33,11 +33,15 @@ class UserMailer < BaseMailer
     user = User.find(user_id)
     return unless user.email_catch_up_day
     @recipient = @user = user
+
     if frequency == 'daily'
       @time_start = time_since || 24.hours.ago
+    elsif frequency == 'other'
+      @time_start = time_since || 48.hours.ago
     else
       @time_start = time_since || 1.week.ago
     end
+    
     @time_finish = Time.zone.now
     @time_frame = @time_start...@time_finish
 
