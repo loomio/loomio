@@ -14,6 +14,10 @@ class RedirectController < ApplicationController
   private
 
   def redirect(model: action_name, to: ModelLocator.new(model, params).locate)
-    redirect_to send(:"#{model}_url", to), status: :moved_permanently
+    if to.present?
+      redirect_to send(:"#{model}_url", to), status: :moved_permanently
+    else
+      render :text => 'Not Found', :status => '404'
+    end
   end
 end
