@@ -20,6 +20,7 @@ export default
   created: ->
     Session.updateLocale(@$route.query.locale) if @$route.query.locale
 
+    @$vuetify.theme.dark = Session.user().experiences['darkMode']
     each AppConfig.theme.vuetify, (value, key) =>
       @$vuetify.theme.themes.light[key] = value if value
       true

@@ -520,6 +520,8 @@ en:
     unpin_sidebar: "Unpin sidebar"
     enable_beta_features: "Enable beta features"
     disable_beta_features: "Disable beta features"
+    enable_dark_mode: "Enable Dark mode"
+    disable_dark_mode: "Disable Dark mode"
     button_label: 'User menu'
     edit_profile: 'Edit profile'
     email_settings: 'Notification settings'
@@ -527,7 +529,7 @@ en:
     contact_site_name: 'Contact {{site_name}}'
     contact_support: 'Contact support'
     sign_out: 'Sign out'
-    beta_collab: "Real-time collaborative editing on discussions and proposals, auto saved draft comments"
+    beta_collab: "🧪 Beta features enabled!"
 
   membership_card:
     group_members: "Group members"

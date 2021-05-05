@@ -20,6 +20,14 @@ export default
         Records.users.saveExperience('betaFeatures')
         Flash.success("user_dropdown.beta_collab")
 
+    toggleDark: ->
+      if @user.experiences['darkMode']
+        Records.users.removeExperience('darkMode')
+        @$vuetify.theme.dark = false
+      else
+        Records.users.saveExperience('darkMode')
+        @$vuetify.theme.dark = true
+
     signOut: ->
       Session.signOut()
 
@@ -49,6 +57,14 @@ div.user-dropdown
       v-list-item-title(v-t="'user_dropdown.disable_beta_features'")
       v-list-item-icon
         v-icon mdi-flask-empty-off-outline
+  v-list-item(v-if="user.experiences['betaFeatures'] && !user.experiences['darkMode']" @click="toggleDark" dense)
+      v-list-item-title(v-t="'user_dropdown.enable_dark_mode'")
+      v-list-item-icon
+        v-icon mdi-weather-night
+  v-list-item(v-if="user.experiences['darkMode']" @click="toggleDark" dense)
+      v-list-item-title(v-t="'user_dropdown.disable_dark_mode'")
+      v-list-item-icon
+        v-icon mdi-white-balance-sunny
   v-list-item.user-dropdown__list-item-button--profile(to="/profile" dense)
     v-list-item-title(v-t="'user_dropdown.edit_profile'")
     v-list-item-icon
