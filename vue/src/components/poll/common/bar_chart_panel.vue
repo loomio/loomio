@@ -26,7 +26,7 @@ export default
 
 <template lang="pug">
 .poll-common-bar-chart
-  .poll-common-bar-chart__bar(v-for="option in pollOptions" :key="option.id" :style="styleData(option)")
+  .poll-common-bar-chart__bar.rounded(v-for="option in pollOptions" :key="option.id" :style="styleData(option)")
     | {{barTextFor(option)}}
 </template>
 <style lang="sass">
