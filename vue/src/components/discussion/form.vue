@@ -118,14 +118,6 @@ export default
     //- p userIds {{discussion.recipientUserIds}}
     //- p emails {{discussion.recipientEmails}}
     //- p audiences {{audiences}}
-    recipients-autocomplete(
-      v-if="!discussion.id"
-      :label="$t(discussion.groupId ? 'action_dock.notify' : 'common.action.invite')"
-      :placeholder="$t('announcement.form.discussion_announced.'+ (discussion.groupId ? 'notify_helptext' : 'helptext'))"
-      :initial-recipients="initialRecipients"
-      :hint="$t('announcement.form.placeholder')"
-      :model="discussion"
-      :reset="reset")
 
     div(v-if="showUpgradeMessage")
       p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
@@ -134,6 +126,14 @@ export default
     .discussion-form__group-selected(v-if='!showUpgradeMessage')
       v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input(:label="$t('discussion_form.title_label')" :placeholder="$t('discussion_form.title_placeholder')" v-model='discussion.title' maxlength='255' required)
       validation-errors(:subject='discussion', field='title')
+      recipients-autocomplete(
+        v-if="!discussion.id"
+        :label="$t(discussion.groupId ? 'action_dock.notify' : 'common.action.invite')"
+        :placeholder="$t('announcement.form.discussion_announced.'+ (discussion.groupId ? 'notify_helptext' : 'helptext'))"
+        :initial-recipients="initialRecipients"
+        :hint="$t('announcement.form.placeholder')"
+        :model="discussion"
+        :reset="reset")
       tags-field(:model="discussion")
       lmo-textarea(:model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")
 
