@@ -9,7 +9,7 @@ export default
     backgroundPosition: 'center'
 
   mounted: ->
-    @setBackgroundSize()
+    # @setBackgroundSize()
 
   methods:
     prettifyBytes: (s) -> prettyBytes(s)
@@ -40,7 +40,7 @@ v-card.mt-3(outlined).attachment-list-item-link
         space
         span.text-caption
           |{{ prettifyBytes(attachment.byte_size) }}
-    .attachment-list-item-image(v-if="attachment.preview_url" :style="{'background-image': 'url('+attachment.preview_url+')', 'background-size': backgroundSize, 'background-position': backgroundPosition}")
+    .attachment-list-item-image.mb-2(v-if="attachment.preview_url" :style="{'background-image': 'url('+attachment.preview_url+')', 'background-size': backgroundSize, 'background-position': backgroundPosition}")
 </template>
 
 <style lang="sass">
@@ -52,7 +52,7 @@ v-card.mt-3(outlined).attachment-list-item-link
 
 .attachment-list-item-image
   background-repeat: no-repeat
-  height: 160px
+  height: 128px
   overflow: none
   // background-position: center
   // max-width: 512px
