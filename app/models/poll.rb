@@ -310,7 +310,7 @@ class Poll < ApplicationRecord
   end
 
   def active?
-    closing_at && closed_at.nil?
+    closing_at > Time.now && closed_at.nil?
   end
 
   def wip?
