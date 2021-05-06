@@ -19,7 +19,7 @@
     "@sentry/integrations": "^6.3.5",
     "@sentry/browser": "^6.3.5",
     "@sentry/tracing": "^6.3.5",
-    "activestorage": "^5.2.5",
+    "activestorage": "^5.2.6",
     "ahoy.js": "^0.3.8",
     "core-js": "^2.6.11",
     "date-fns": "2.21.1",
