@@ -66,7 +66,7 @@ v-card.mt-3(outlined  style="position: relative")
           @click="editing = true"
           :title="$t('common.action.edit')")
       v-icon mdi-pencil
-    a(:href="preview.url" target="_blank")
+    a(:href="preview.url" target="_blank" rel="nofollow ugc noreferrer noopener")
       .link-preview__image(v-if="preview.image" :style="{'background-image': 'url('+preview.image+')', 'background-size': backgroundSize, 'background-position': backgroundPosition}")
       v-card-title
         .d-flex
