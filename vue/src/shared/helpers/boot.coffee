@@ -30,6 +30,10 @@ export default (callback) ->
             "MetaMask detected another web3",
             "AbortError: The operation was aborted",
             "ResizeObserver loop completed with undelivered notifications",
+            "TypeError: cancelled",
+            "UnhandledRejection: Non-Error promise rejection captured with value",
+            "ChunkLoadError: Loading chunk chunk-",
+            "TypeError: annulé",
             "Permission denied to access property \"dispatchEvent\" on cross-origin object"
           ]
           dsn: AppConfig.sentry_dsn
