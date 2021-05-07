@@ -3,7 +3,7 @@
   %ul.thread-mailer__list
     - resource.link_previews.each do |preview|
       %li
-        %a{href: preview.url}= preview.title
+        %a{href: preview['url']}= preview['title']
 
 - if resource.documents.any?
   %h4= t :'common.attachments'
