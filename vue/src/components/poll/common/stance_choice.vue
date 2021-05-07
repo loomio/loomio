@@ -32,7 +32,6 @@ export default
       else
         @stanceChoice.pollOption().name
 
-
   methods:
     emitClick: -> @$emit('click')
 
@@ -50,6 +49,7 @@ export default
     v-avatar(tile :size="size" v-if='poll.hasOptionIcons()')
       img(:src="'/img/' + optionImages[pollOption.name] + '.svg'", :alt='optionName')
     span.body-2(v-if='!poll.hasOptionIcons()')
+      v-icon.mr-2(small :color="pollOption.color") mdi-check
       span {{ optionName }}
   span(v-if="poll.datesAsOptions()")
     v-chip(outlined :color="colorFor(stanceChoice.score)" @click="emitClick")
