@@ -328,7 +328,13 @@ sl:
   change_picture_form:
     use_gravatar: 'Uporabi Gravatarja'
   email_settings_page:
-    daily_summary_label: Dnevni email s povzetki
+    monday: Ponedeljek
+    tuesday: Torek
+    wednesday: Sreda
+    thursday: Četrtek
+    friday: Petek
+    saturday: Sobota
+    sunday: Nedelja
     messages:
       updated: Email nastavitve posodobljene
   dashboard_page:

@@ -1040,20 +1040,24 @@ pt_BR:
     you_can_reactivate: "Você poderá reativar sua conta de usuário depois, se quiser"
     submit: 'Sim, eu quero desativar'
   email_settings_page:
+    monday: Segunda-feira
+    tuesday: Terça-feira
+    wednesday: Quarta-feira
+    thursday: Quinta-feira
+    friday: Sexta-feira
+    saturday: Sábado
+    sunday: Domingo
     header: Configurações de notificação
     account_deactivated: Sua conta seu desativada. Você nunca mais receberá qualquer email nosso.
     deactivate_header: Para todos os emails para sempre
     deactivate_description: Se você nunca mais quer receber email de nós novamente, você pode desativar sua conta de usuário.
     email_newsletter: Boletim de Notícias Loomio
     email_newsletter_description: "Receba atualizações sobre novas funcionalidades, treinamento, eventos em sua cidade e o futuro do Loomio. Geralmente 2 a 3 emails por ano."
-    daily_summary_label: E-mail de resumo diário
-    daily_summary_description: "Toda manhã você receberá um email com qualquer atividade que você não viu no dia anterior. Isso facilita com que você fique atualizado(a) com as atividades que estão rolando."
     on_participation_label: Assinar ao se participar
     on_participation_description: "Quando você participar de uma conversa, todas as atividades serão enviadas por e-mail para você imediatamente."
     announcement_label: Anúncios
     announcement_description: "Você receberá um email sobre todo o conteúdo que foi anunciado pelas pessoas no seus grupos"
     mentioned_label: Menções & Respostas
-    mentioned_description: "Quando alguém mencionar ou responder para você num comentário, você será notificado por email"
     update_settings: Salvar mudanças
     specific_groups: Configurações para grupos específicos
     default_settings:

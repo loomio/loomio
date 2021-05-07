@@ -130,6 +130,14 @@ be_BY:
     locale_label: 'Мова'
   change_picture_form:
     use_gravatar: 'Выкарыстоўваць Gravatar'
+  email_settings_page:
+    monday: Панядзелак
+    tuesday: Аўторак
+    wednesday: Серада
+    thursday: Чацвер
+    friday: Пятніца
+    saturday: Субота
+    sunday: Нядзеля
   dashboard_page:
     aria_label: 'Галоўная'
     mark_as_read: Адзначыць як прачытанае

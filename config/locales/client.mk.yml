@@ -90,6 +90,14 @@ mk:
     name_label: 'Име'
     email_label: 'Email'
     locale_label: 'Јазик'
+  email_settings_page:
+    monday: Понеделник
+    tuesday: Вторник
+    wednesday: Среда
+    thursday: Четврток
+    friday: Петок
+    saturday: Сабота
+    sunday: Недела
   dashboard_page:
     mark_as_read: Означи го како прочитано
     threads_from:

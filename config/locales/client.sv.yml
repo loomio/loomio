@@ -368,6 +368,13 @@ sv:
   change_picture_form:
     use_gravatar: 'Använd Gravatar'
   email_settings_page:
+    monday: Måndag
+    tuesday: Tisdag
+    wednesday: Onsdag
+    thursday: Torsdag
+    friday: Fredag
+    saturday: Lördag
+    sunday: Söndag
     announcement_label: Meddelanden
   dashboard_page:
     aria_label: 'Instrumentbräda'

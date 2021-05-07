@@ -491,7 +491,6 @@ es:
     help: 'Ayuda'
     contact_site_name: 'Contacto {{site_name}}'
     sign_out: 'Salir'
-    beta_collab: "Ediciones de forma colaborativa a tiempo real acerca de discusiones y propuestas, borrador de comentarios auto guardados"
   membership_card:
     group_members: "Integrantes del grupo"
     discussion_members: "Integrantes del hilo"
@@ -1226,20 +1225,24 @@ es:
     submit: 'Si, quiero desactivar mi cuenta'
     submit_delete: 'Borrar mi cuenta ahora'
   email_settings_page:
+    monday: Lunes
+    tuesday: Martes
+    wednesday: Miércoles
+    thursday: Jueves
+    friday: Viernes
+    saturday: Sábado
+    sunday: Domingo
     header: Ajustes de notificación
     account_deactivated: Tu cuenta ha sido desactivada. Ya nunca recibirás más emails.
     deactivate_header: Detén todos los emails para siempre
     deactivate_description: Si ya no quieres recibir ningún email de nosotros, puedes desactivar tu cuenta de usuario.
     email_newsletter: Boletín de noticias de Loomio
     email_newsletter_description: "Consigue actualizaciones acerca de las nuevas características, formación, eventos en tu ciudad y del futuro de Loomio. Generalmente 2 o 3 emails al año."
-    daily_summary_label: Correo electrónico de resumen diario
-    daily_summary_description: "Cada mañana, recibirás un correo electrónico con la actividad no leída el día anterior. Este correo electrónico facilita  el estar al día con la actividad."
     on_participation_label: 'Suscribirte a la participación '
     on_participation_description: "Cuando participes en un hilo, inmediatamente se te enviará toda la actividad subsiguiente por correo electrónico. "
     announcement_label: Anuncios
     announcement_description: "Recibirá notificaciones por correo electrónico sobre todos los contenido anunciados por personas en sus grupos."
     mentioned_label: 'Menciones y Respuestas '
-    mentioned_description: "Cuando alguien le mencione o responda directamente a su comentario, recibirás una notificación por correo electrónico"
     update_settings: Guardar cambios
     specific_groups: 'Configuración para grupos específicos  '
     default_settings:

@@ -171,6 +171,13 @@ sr_RS:
   change_picture_form:
     use_gravatar: 'Користи Граватар'
   email_settings_page:
+    monday: Понедељак
+    tuesday: Уторак
+    wednesday: Среда
+    thursday: Четвртак
+    friday: Петак
+    saturday: Субота
+    sunday: Недеља
     update_settings: Сачувај промене
     edit: Уреди
   dashboard_page:

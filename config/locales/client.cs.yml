@@ -496,7 +496,13 @@ cs:
     set_password: Nastavení hesla
     password_changed: Vaše heslo bylo aktualizováno
   email_settings_page:
-    daily_summary_label: Denní souhrnný e-mail
+    monday: Pondělí
+    tuesday: Úterý
+    wednesday: Středa
+    thursday: Čtvrtek
+    friday: Pátek
+    saturday: Sobota
+    sunday: Neděle
     announcement_label: Oznámení
     specific_groups: Nastavení pro konkrétní skupiny
     default_settings:

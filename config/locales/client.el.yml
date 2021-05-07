@@ -375,6 +375,13 @@ el:
   change_picture_form:
     use_gravatar: 'Χρησιμοποιήστε Gravatar'
   email_settings_page:
+    monday: Δευτέρα
+    tuesday: Τρίτη
+    wednesday: Τετάρτη
+    thursday: Πέμπτη
+    friday: Παρασκευή
+    saturday: Σάββατο
+    sunday: Κυριακή
     announcement_label: Ανακοινώσεις
   dashboard_page:
     aria_label: 'Πίνακας Εργαλείων'

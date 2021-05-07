@@ -367,7 +367,13 @@ sr:
   change_picture_form:
     use_gravatar: 'Koristi Gravatar'
   email_settings_page:
-    daily_summary_label: Dnevni izveštaj ePorukom
+    monday: Ponedeljak
+    tuesday: Utorak
+    wednesday: Sreda
+    thursday: Četvrtak
+    friday: Petak
+    saturday: Subota
+    sunday: Nedelja
     on_participation_label: Pretplati se na učešće
     on_participation_description: "Kada se priključite niti, sve dalje aktivnosti biće Vam odmah poslate ePorukom."
     specific_groups: Opcije određenih grupa

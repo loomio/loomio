@@ -559,7 +559,13 @@ tr:
   change_picture_form:
     use_gravatar: 'Gravatar kullan'
   email_settings_page:
-    daily_summary_label: Günlük özet e-postası
+    monday: Pazartesi
+    tuesday: Salı
+    wednesday: Çarşamba
+    thursday: Perşembe
+    friday: Cuma
+    saturday: Cumartesi
+    sunday: Pazar
     on_participation_description: "Bir müzakereye katıldığınızda, ileriye yönelik tüm etkinlikler derhal size e-postayla gönderilecektir."
     announcement_label: Duyurular
     edit: Düzenle

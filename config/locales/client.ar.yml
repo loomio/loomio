@@ -475,7 +475,6 @@ ar:
     help: 'المساعدة'
     contact_site_name: 'اتصل بـ {{اسم الموقع}}'
     sign_out: 'الخروج'
-    beta_collab: "التحرير التعاوني في الوقت الحقيقي على المناقشات والمقترحات ، مسودة التعليقات المحفوظة تلقائيًا"
   membership_card:
     group_members: "أعضاء الفريق"
     discussion_members: "أعضاء الموضوع"
@@ -1134,20 +1133,24 @@ ar:
     you_can_reactivate: "يمكنك إعادة تنشيط حسابك لاحقًا إذا كنت ترغب في ذلك"
     submit: 'نعم ، أريد إلغاء التنشيط'
   email_settings_page:
+    monday: الإثنين
+    tuesday: الثلاثاء
+    wednesday: الأربعاء
+    thursday: الخميس
+    friday: الجمعة
+    saturday: السبت
+    sunday: الأحد
     header: إعدادات الإشعار
     account_deactivated: حسابك تم تعطيله. لن تتلقى أي رسائل بريد إلكتروني ، على الإطلاق.
     deactivate_header: وقف جميع رسائل البريد الإلكتروني إلى الأبد
     deactivate_description: إذا لم ترغب أبدًا في تلقي بريد إلكتروني آخر منا مرة أخرى ، فيمكنك إلغاء تنشيط حساب المستخدم الخاص بك.
     email_newsletter: النشرة الإخبارية لLoomio
     email_newsletter_description: "احصل على تحديثات حول الميزات الجديدة والتدريب والأحداث في مدينتك ومستقبل Loomio. عادة 2 أو 3 رسائل بريد إلكتروني في السنة."
-    daily_summary_label: الرسالة الكترونية للملخص اليومي
-    daily_summary_description: "كل صباح ، ستتلقى بريدًا إلكترونيًا يحتوي على أي نشاط فاتك في اليوم السابق هذا يجعل من السهل مواكبة النشاط"
     on_participation_label: الاشتراك على المشاركة
     on_participation_description: "عند المشاركة في سلسلة رسائل ، سيتم إرسال جميع الأنشطة الأخرى إليك عبر البريد الإلكتروني على الفور"
     announcement_label: الإعلانات
     announcement_description: "ستتلقى رسالة بريد إلكتروني حول كل المحتوى الذي أعلن عنه الأشخاص في مجموعاتك"
     mentioned_label: الإشارات والردود
-    mentioned_description: "عندما يذكرك أحد الأشخاص في تعليق أو يرد عليك ، ستتلقى رسالة بريد إلكتروني للإعلام"
     update_settings: حفظ التغييرات
     specific_groups: إعدادات مجموعات محددة
     default_settings:

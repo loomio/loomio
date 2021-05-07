@@ -463,6 +463,13 @@ ru:
     email_label: 'Email'
     locale_label: 'Язык'
   email_settings_page:
+    monday: Понедельник
+    tuesday: Вторник
+    wednesday: Среда
+    thursday: Четверг
+    friday: Пятница
+    saturday: Суббота
+    sunday: Воскресенье
     announcement_label: Объявления
     edit: Редактировать
   dashboard_page:
