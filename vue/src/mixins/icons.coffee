@@ -36,6 +36,7 @@ import {
   mdiDeleteRestore,
   mdiDirectionsFork,
   mdiDotsVertical,
+  mdiDotsHorizontal,
   mdiDragVertical,
   mdiEarth,
   mdiEmailOutline,
@@ -160,6 +161,7 @@ export default
       'mdi-delete-restore': mdiDeleteRestore
       'mdi-directions-fork': mdiDirectionsFork
       'mdi-dots-vertical': mdiDotsVertical
+      'mdi-dots-horizontal': mdiDotsHorizontal
       'mdi-drag-vertical': mdiDragVertical
       'mdi-earth': mdiEarth
       'mdi-email-outline': mdiEmailOutline

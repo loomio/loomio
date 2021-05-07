@@ -74,7 +74,7 @@ v-card.change-picture-form
           input.hidden.change-picture-form__file-input(type="file" ref="fileInput" @change='uploadFile')
       v-list-item(v-for="provider in providers" :key="provider.id" @click="selectProvider(provider)")
         v-list-item-avatar
-          v-icon {{ iconClass(provider.name) }}
+          v-icon {{$icons[iconClass(provider.name)]}}
         v-list-item-title(v-t="{ path: 'change_picture_form.use_provider', args: { provider: capitalize(provider.name) } }")
       v-list-item.change-picture-form__option(@click="submit('gravatar')")
         v-list-item-avatar

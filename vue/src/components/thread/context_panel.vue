@@ -69,23 +69,23 @@ export default
       time-ago(aria-label="Thread started" :date='discussion.createdAt')
 
   h1.display-1.context-panel__heading.px-3#sequence-0(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
-    i.mdi.mdi-pin.context-panel__heading-pin(v-if="status == 'pinned'")
+    v-icon.context-panel__heading-pin(v-if="status == 'pinned'") {{$icons['mdi-pin']}}
     span(v-if='!discussion.translation.title') {{discussion.title}}
     span(v-if='discussion.translation.title')
       translation(:model='discussion', field='title')
 
   div.mx-3.mb-2
     .context-panel__details.my-2.body-2(align-center)
-      user-avatar.mr-4(:user='discussion.author()', :size='40')
+      user-avatar.mr-4(:user='discussion.author()' :size='40')
       span
         router-link(:to="urlFor(discussion.author())" title="Thread author") {{discussion.authorName()}}
         mid-dot
         span(aria-label="Thread privacy")
           span.nowrap.context-panel__discussion-privacy(v-show='discussion.private')
-            i.mdi.mdi-lock-outline
+            v-icon(small) {{$icons['mdi-lock-outline']}}
             span.text--secondary(v-t="'common.privacy.private'")
           span.nowrap.context-panel__discussion-privacy(v-show='!discussion.private')
-            i.mdi.mdi-earth
+            v-icon(small) {{$icons['mdi-earth']}}
             span.text--secondary(v-t="'common.privacy.public'")
         span(v-show='discussion.seenByCount > 0')
           mid-dot
