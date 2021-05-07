@@ -44,7 +44,7 @@ h3.strand-item__headline.thread-item__title.body-2.pb-1(tabindex="-1" :id="'even
   div.d-flex.align-center(v-else)
     v-icon(v-if="event.pinned") mdi-pin
     slot(name="headline")
-      span.strand-item__headline(v-html='headline')
+      span.strand-item__headline.text--secondary(v-html='headline')
     mid-dot
     router-link.grey--text.body-2(:to='link')
       time-ago(:date='event.createdAt')
