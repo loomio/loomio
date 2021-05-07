@@ -1,5 +1,11 @@
 .poll-mailer-common-summary
   %h1= link_to poll.title, target_url(poll: poll, recipient: recipient), class: 'poll-mailer__poll-title'
+
+  - if poll.tags.any?
+    %p
+      - poll.tags.each do |tag|
+        %span.mailer-tag{style: "color: #{tag.color}; border-color: #{tag.color}"}=tag.name
+
   -if action_name == :export
     %p
     = t(:"poll.export.also_available")
