@@ -384,7 +384,7 @@ div
               v-btn(icon @click='commands.createTable({rowsCount: 3, colsCount: 3, withHeaderRow: false })' :title="$t('formatting.add_table')")
                 v-icon(small) {{$icons['mdi-table']}}
               //- markdown (save experience)
-              v-btn(icon @click="convertToMd" :title="$t('formatting.edit_markdown')")
+              v-btn.edit-markdown(icon @click="convertToMd" :title="$t('formatting.edit_markdown')")
                 v-icon(small) {{$icons['mdi-language-markdown-outline']}}
 
             v-btn.html-editor__expand(v-if="!expanded" icon @click="toggleExpanded" :title="$t('formatting.expand')")
