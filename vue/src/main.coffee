@@ -15,6 +15,7 @@ import WatchRecords from '@/mixins/watch_records'
 import CloseModal from '@/mixins/close_modal'
 import UrlFor from '@/mixins/url_for'
 import FormatDate from '@/mixins/format_date'
+import Icons from '@/mixins/icons'
 import Vue2TouchEvents from 'vue2-touch-events'
 import { initContent } from '@/shared/services/ssr_content'
 
@@ -25,6 +26,7 @@ Vue.mixin(WatchRecords)
 Vue.mixin(UrlFor)
 Vue.use(VueClipboard)
 Vue.mixin(FormatDate)
+Vue.mixin(Icons)
 
 Vue.config.productionTip = false
 

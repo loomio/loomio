@@ -96,7 +96,7 @@ export default
 v-main
   v-container.explore-page.max-width-1024
     //- h1.headline(tabindex="-1" v-t="'explore_page.header'")
-    v-text-field(v-model="query" :placeholder="$t('explore_page.search_placeholder')" id="search-field" append-icon="mdi-magnify")
+    v-text-field(v-model="query" :placeholder="$t('explore_page.search_placeholder')" id="search-field" :append-icon="$icons['mdi-magnify']")
     v-select(@change="handleOrderChange" :items="orderOptions" item-value="val" item-text="name" :placeholder="$t('explore_page.order_by')" :value="order")
     loading(:until="!searching")
     .explore-page__no-results-found(v-show='noResultsFound', v-html="$t('explore_page.no_results_found')")
@@ -109,11 +109,11 @@ v-main
           v-card-text
             .explore-page__group-description {{groupDescription(group)}}
             v-layout.explore-page__group-stats(justify-start align-center)
-              v-icon.mr-2 mdi-account-multiple
+              v-icon.mr-2 {{$icons['mdi-account-multiple']}}
               span.mr-4 {{group.membershipsCount}}
-              v-icon.mr-2 mdi-comment-text-outline
+              v-icon.mr-2 {{$icons['mdi-comment-text-outline']}}
               span.mr-4 {{group.discussionsCount}}
-              v-icon.mr-2 mdi-thumbs-up-down
+              v-icon.mr-2 {{$icons['mdi-thumbs-up-down']}}
               span.mr-4 {{group.pollsCount}}
       .lmo-show-more(v-show='canLoadMoreGroups')
         v-btn(v-show="!searching" @click="loadMore()" v-t="'common.action.show_more'" class="explore-page__show-more")

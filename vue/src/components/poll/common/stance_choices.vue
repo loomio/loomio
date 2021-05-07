@@ -44,7 +44,7 @@ export default
       poll-meeting-time(:name="choice.pollOption().name")
   template(v-else)
     .poll-common-stance-choice.mt-1(:class="'poll-common-stance-choice--' + pollType" v-if="choice.show()" v-for="choice in stanceChoices" :key="choice.id")
-      v-icon(small :color="choice.pollOption().color" v-if="!variableScore") mdi-check
+      v-icon(small :color="choice.pollOption().color" v-if="!variableScore") {{$icons['mdi-check']}}
       span(:style="{color: choice.pollOption().color}" v-if="variableScore") {{choice.rankOrScore}}
       span.ml-2.text--secondary
         |{{ choice.pollOption().optionName() }}

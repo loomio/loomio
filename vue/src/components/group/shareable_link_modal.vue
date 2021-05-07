@@ -58,9 +58,9 @@ v-dialog(v-model='dialog' max-width="600px")
       h1.headline(tabindex="-1" v-t="'invitation_form.share_group'")
       v-spacer
       v-btn(icon small href="https://help.loomio.org/en/user_manual/groups/membership/" target="_blank" :title="$t('common.help')")
-        v-icon mdi-help-circle-outline
+        v-icon {{$icons['mdi-help-circle-outline']}}
       v-btn.dismiss-modal-button(icon small @click='dialog = false')
-        v-icon mdi-window-close
+        v-icon {{$icons['mdi-window-close']}}
     v-card-text
       span.subtitle-2(v-t="'invitation_form.group_url'")
       p.mt-2.mb-0.caption(v-if="group.groupPrivacy == 'secret'" v-t="'invitation_form.secret_group_url_explanation'")

@@ -33,6 +33,6 @@ div
     v-list.settings-panel
       v-list-item(v-for="(action, name) in actions" :key="name" @click="action.perform()" v-if='action.canPerform()' :class="'group-page-actions__' + name")
         v-list-item-avatar
-          v-icon {{action.icon}}
+          v-icon(size="24") {{$icons[action.icon]}}
         v-list-item-title(v-t="action.name")
 </template>

@@ -64,7 +64,7 @@ v-card.mb-4.group-progress-card(outlined flat v-if='show')
     h4.headline.group-progress-card__title(v-if="setupComplete" v-t="'loomio_onboarding.group_progress_card.celebration_message'")
     v-spacer
     v-btn.group-progress-card__dismiss(@click="close" icon)
-      v-icon mdi-close
+      v-icon {{$icons['mdi-close']}}
   v-card-text
     v-list(dense).group-progress-card__list
       v-list-item.group-progress-card__list-item(@click='activity.click()' v-for='activity in activities' :key="activity.translate" :class="{'group-progress-card__complete': activity.complete()}")

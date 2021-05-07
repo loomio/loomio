@@ -10,10 +10,10 @@ export default
 v-chip.context-panel__discussion-privacy(label outlined)
   template(v-if='discussion.private')
     v-avatar(left tile :title="$t('common.privacy.private')")
-      v-icon(small color="grey darken-2") mdi-lock-outline
+      v-icon(small color="grey darken-2") {{$icons['mdi-lock-outline']}}
   template.mr-1(v-else)
     v-avatar(left tile :title="$t('common.privacy.public')")
-      v-icon(small color="grey darken-2") mdi-earth
+      v-icon(small color="grey darken-2") {{$icons['mdi-earth']}}
   template(v-if='discussion.groupId && noLink')
     span {{discussion.group().name}}
   template(v-if='discussion.groupId && !noLink')

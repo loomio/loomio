@@ -63,16 +63,16 @@ section.actions-panel#add-comment(:aria-label="$t('activity_card.aria_label')")
     v-tabs-slider
     v-tab(href='#add-comment')
       span(v-t="'activity_card.comment'")
-      //- v-icon mdi-comment
+      //- v-icon {{$icons['mdi-comment']}}
     v-tab.activity-panel__add-proposal(href='#add-proposal' v-if="canStartPoll")
       span(v-t="'poll_types.proposal'")
-      //- v-icon mdi-thumbs-up-down
+      //- v-icon {{$icons['mdi-thumbs-up-down']}}
     v-tab.activity-panel__add-poll(href='#add-poll' v-if="canStartPoll")
       span(v-t="'poll_types.poll'")
-      //- v-icon mdi-poll
+      //- v-icon {{$icons['mdi-poll']}}
     //- v-tab(href='#add-outcome')
     //-   span(v-t="'activity_card.add_outcome'")
-    //-   v-icon mdi-lightbulb-on-outline
+    //-   v-icon {{$icons['mdi-lightbulb-on-outline']}}
   v-tabs-items(v-model="currentAction")
     v-tab-item(value="add-comment")
       .add-comment-panel

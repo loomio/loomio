@@ -104,7 +104,7 @@ export default
 <template lang="pug">
 div
   v-layout.py-2(align-center wrap)
-    v-text-field(clearable hide-details solo @input="onQueryInput" :placeholder="$t('navbar.search_files', {name: group.name})" append-icon="mdi-magnify")
+    v-text-field(clearable hide-details solo @input="onQueryInput" :placeholder="$t('navbar.search_files', {name: group.name})" :append-icon="$icons['mdi-magnify']")
   v-card.group-files-panel(outlined)
     div(v-if="loader.status == 403")
       p.pa-4.text-center(v-t="'error_page.forbidden'")
@@ -121,7 +121,7 @@ div
           tr(v-for="item in items" :key="item.id")
             td
               v-layout(align-center)
-                v-icon mdi-{{item.icon}}
+                v-icon {{$icons['mdi-']}}{{item.icon}}
                 a(:href="item.downloadUrl || item.url") {{item.filename || item.title }}
             td
               user-avatar(:user="item.author()")

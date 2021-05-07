@@ -52,12 +52,12 @@ v-card.revision-history-modal
   .revision-history-modal__body.pa-4
     v-layout(align-center justify-space-between)
       v-btn.revision-history-nav--previous(icon :disabled='isOldest' @click='getPrevious()')
-        v-icon mdi-arrow-left
+        v-icon {{$icons['mdi-arrow-left']}}
 
       span(v-if="version" v-t="{path: 'revision_history_modal.edit_by', args: {name: version.authorName(), date: versionDate}}")
 
       v-btn.revision-history-nav--next(icon :disabled='isNewest' @click='getNext()')
-        v-icon mdi-arrow-right
+        v-icon {{$icons['mdi-arrow-right']}}
     v-divider.mb-3
     revision-history-content(v-if='version' :model='model' :version='version')
 </template>

@@ -32,7 +32,7 @@ v-menu.reactions-input(:close-on-content-click="true" v-model="closeEmojiMenu")
   template(v-slot:activator="{on, attrs}")
     v-btn.emoji-picker__toggle.action-button(small text :icon="icon" v-on="on" v-bind="attrs" )
       span(v-if="!icon" v-t="'action_dock.react'")
-      v-icon(v-else) mdi-emoticon-outline
+      v-icon(v-else) {{$icons['mdi-emoticon-outline']}}
   emoji-picker(:insert="insert")
 </template>
 

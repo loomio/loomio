@@ -44,45 +44,45 @@ div.user-dropdown
   v-list-item(v-if="!user.experiences['sidebar']" @click="togglePinned" dense)
       v-list-item-title(v-t="'user_dropdown.pin_sidebar'")
       v-list-item-icon
-        v-icon mdi-pin
+        v-icon {{$icons['mdi-pin']}}
   v-list-item(v-if="user.experiences['sidebar']" @click="togglePinned" dense)
       v-list-item-title(v-t="'user_dropdown.unpin_sidebar'")
       v-list-item-icon
-        v-icon mdi-pin-off
+        v-icon {{$icons['mdi-pin-off']}}
   v-list-item(v-if="!user.experiences['betaFeatures']" @click="toggleBeta" dense)
       v-list-item-title(v-t="'user_dropdown.enable_beta_features'")
       v-list-item-icon
-        v-icon mdi-flask-outline
+        v-icon {{$icons['mdi-flask-outline']}}
   v-list-item(v-if="user.experiences['betaFeatures']" @click="toggleBeta" dense)
       v-list-item-title(v-t="'user_dropdown.disable_beta_features'")
       v-list-item-icon
-        v-icon mdi-flask-empty-off-outline
+        v-icon {{$icons['mdi-flask-empty-off-outline']}}
   v-list-item(v-if="user.experiences['betaFeatures'] && !user.experiences['darkMode']" @click="toggleDark" dense)
       v-list-item-title(v-t="'user_dropdown.enable_dark_mode'")
       v-list-item-icon
-        v-icon mdi-weather-night
+        v-icon {{$icons['mdi-weather-night']}}
   v-list-item(v-if="user.experiences['darkMode']" @click="toggleDark" dense)
       v-list-item-title(v-t="'user_dropdown.disable_dark_mode'")
       v-list-item-icon
-        v-icon mdi-white-balance-sunny
+        v-icon {{$icons['mdi-white-balance-sunny']}}
   v-list-item.user-dropdown__list-item-button--profile(to="/profile" dense)
     v-list-item-title(v-t="'user_dropdown.edit_profile'")
     v-list-item-icon
-      v-icon mdi-account
+      v-icon {{$icons['mdi-account']}}
   v-list-item.user-dropdown__list-item-button--email-settings(to="/email_preferences" dense)
     v-list-item-title(v-t="'user_dropdown.email_settings'")
     v-list-item-icon
-      v-icon mdi-cog-outline
+      v-icon {{$icons['mdi-cog-outline']}}
   v-list-item(v-if="showHelp", :href="helpLink", target="_blank" dense)
     v-list-item-title(v-t="'user_dropdown.help'")
     v-list-item-icon
-      v-icon mdi-help-circle-outline
+      v-icon {{$icons['mdi-help-circle-outline']}}
   v-list-item(to="/contact" dense)
     v-list-item-title(v-t="{path: 'user_dropdown.contact_support', args: {site_name: siteName}}")
     v-list-item-icon
-      v-icon mdi-email-outline
+      v-icon {{$icons['mdi-email-outline']}}
   v-list-item(@click="signOut()" dense)
     v-list-item-title(v-t="'user_dropdown.sign_out'")
     v-list-item-icon
-      v-icon mdi-exit-to-app
+      v-icon {{$icons['mdi-exit-to-app']}}
 </template>

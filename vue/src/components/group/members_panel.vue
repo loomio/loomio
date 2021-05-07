@@ -160,7 +160,7 @@ export default
             span(v-if="$route.query.filter == 'pending'" v-t="'members_panel.invitations'")
             span(v-if="$route.query.filter == 'accepted'" v-t="'members_panel.accepted'")
             span(v-if="!$route.query.filter" v-t="'members_panel.everyone'")
-            v-icon mdi-menu-down
+            v-icon {{$icons['mdi-menu-down']}}
         v-list(dense)
           v-list-item.members-panel__filters-everyone(:to="mergeQuery({filter: null})")
             v-list-item-title(v-t="'members_panel.everyone'")
@@ -170,7 +170,7 @@ export default
             v-list-item-title(v-t="'members_panel.order_by_admin_desc'")
           v-list-item.members-panel__filters-invitations(:to="mergeQuery({filter: 'pending'})")
             v-list-item-title(v-t="'members_panel.invitations'")
-      v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_members', {name: group.name})" append-icon="mdi-magnify")
+      v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_members', {name: group.name})" :append-icon="$icons['mdi-magnify']")
       v-btn.membership-card__invite.mr-2(color="primary" v-if='canAddMembers' @click="invite()" v-t="'common.action.invite'")
       shareable-link-modal(v-if='canAddMembers' :group="group")
       v-btn.group-page__requests-tab(:to="urlFor(group, 'members/requests')" v-t="'members_panel.requests'")

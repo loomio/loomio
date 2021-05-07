@@ -34,7 +34,7 @@ v-autocomplete.announcement-form__input(
   item-value='id'
   :label="$t('loomio_tags.tags')"
   :items='model.group().parentOrSelf().tags()'
-  :append-outer-icon="model.isA('discussion') ? 'mdi-tag-plus' : null"
+  :append-outer-icon="model.isA('discussion') ? $icons['mdi-tag-plus'] : null"
   @click:append-outer="openTagsSelectModal"
   )
   template(v-slot:no-data)

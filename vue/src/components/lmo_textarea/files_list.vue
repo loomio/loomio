@@ -11,12 +11,12 @@ export default
 .files-list(v-if="files.length")
   v-card.mt-3(outlined)(v-for="wrapper in files" :key="wrapper.key")
     v-card-title.files-list__item.text--secondary
-      v-icon.mr-2.files-list__icon mdi-image
+      v-icon.mr-2.files-list__icon {{$icons['mdi-image']}}
       a.files-list__file-name(v-if="wrapper.blob" :href="wrapper.blob.download_url" target="_blank") {{wrapper.file.name}}
       span.files-list__file-name(v-if="!wrapper.blob") {{wrapper.file.name}}
       progress(v-if="!wrapper.blob" max="100" :value="wrapper.percentComplete")
       v-btn.files-list__remove(icon @click="$emit('removeFile', wrapper.file.name)")
-        v-icon mdi-close
+        v-icon {{$icons['mdi-close']}}
     p(v-if="wrapper.blob && wrapper.blob.preview_url")
       img(:src="wrapper.blob.preview_url")
 </template>

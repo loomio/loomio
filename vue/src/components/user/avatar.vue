@@ -54,7 +54,7 @@ component.user-avatar(aria-hidden="true" :is="componentType" :to="!noLink && url
     v-gravatar(v-if="user.avatarKind === 'gravatar'" :hash='user.emailHash' :gravatar-size='gravatarSize' :alt='user.avatarInitials')
     img(v-else-if="user.avatarKind === 'uploaded'" :alt='user.avatarInitials' :src='uploadedAvatarUrl')
     span.user-avatar--initials(v-else-if="user.avatarKind === 'initials'" :style="{width: width+'px', height: width+'px'}") {{user.avatarInitials}}
-    v-icon(v-else) mdi-account
+    v-icon(v-else) {{$icons['mdi-account']}}
 </template>
 
 <style lang="sass">

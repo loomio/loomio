@@ -99,7 +99,7 @@ export default
             span(v-if="$route.query.status == 'active'" v-t="'polls_panel.open'")
             span(v-if="$route.query.status == 'closed'" v-t="'polls_panel.closed'")
             span(v-if="!$route.query.status" v-t="'polls_panel.any_status'")
-            v-icon mdi-menu-down
+            v-icon {{$icons['mdi-menu-down']}}
         v-list(dense)
           v-list-item(:to="mergeQuery({status: null })" v-t="'polls_panel.any_status'")
           v-list-item(:to="mergeQuery({status: 'active'})" v-t="'polls_panel.open'")
@@ -110,13 +110,13 @@ export default
             //- span(v-t="{path: filterName(filter), args: {count: unreadCount}}")
             span(v-if="$route.query.poll_type" v-t="'poll_types.'+$route.query.poll_type")
             span(v-if="!$route.query.poll_type" v-t="'polls_panel.any_type'")
-            v-icon mdi-menu-down
+            v-icon {{$icons['mdi-menu-down']}}
         v-list(dense)
           v-list-item(:to="mergeQuery({poll_type: null})" )
             v-list-item-title(v-t="'polls_panel.any_type'")
           v-list-item(v-for="pollType in pollTypes" :key="pollType" :to="mergeQuery({poll_type: pollType})" )
             v-list-item-title(v-t="'poll_types.'+pollType")
-      v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_polls', {name: group.name})" append-icon="mdi-magnify")
+      v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_polls', {name: group.name})" :append-icon="$icons['mdi-magnify']")
       v-btn.polls-panel__new-poll-button(@click='openSelectPollTypeModal' color='primary' v-if='canStartPoll' v-t="'polls_panel.new_poll'")
     v-card(outlined)
       div(v-if="loader.status == 403")

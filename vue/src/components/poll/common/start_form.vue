@@ -59,8 +59,8 @@ export default
       v-for='(pollType, index) in pollTypes()'
       :key='index'
       :aria-label='getAriaLabelForPollType(pollType)')
-      v-list-item-avatar
-        v-icon {{callFieldFromTemplate(pollType, 'material_icon')}}
+      v-list-item-avatar(medium)
+        v-icon(size="24" v-text="$icons[callFieldFromTemplate(pollType, 'material_icon')]")
       v-list-item-content
         v-list-item-title.text-capitalize(v-t="'poll_types.' + pollType")
         v-list-item-subtitle(v-t="'poll_' + pollType + '_form.tool_tip_collapsed'")

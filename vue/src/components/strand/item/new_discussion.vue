@@ -64,10 +64,10 @@ export default
     v-spacer
     span
       span.nowrap(v-show='discussion.private')
-        i.mdi.mdi-lock-outline
+        v-icon(small) {{$icons['mdi-lock-outline']}}
         span.text--secondary(v-t="'common.privacy.private'")
       span.nowrap(v-show='!discussion.private')
-        i.mdi.mdi-earth
+        v-icon(small) {{$icons['mdi-earth']}}
         span.text--secondary(v-t="'common.privacy.public'")
 
   strand-title.context-panel__heading(:discussion="discussion")

@@ -107,7 +107,7 @@ export default
     v-spacer
     dismiss-modal-button(v-if="!isPage" aria-hidden='true' :model="discussion")
     v-btn(v-if="isPage && discussion.id" icon  aria-hidden='true' :to="urlFor(discussion)")
-      v-icon mdi-close
+      v-icon {{$icons['mdi-close']}}
   .pa-4
     v-select(v-if="!discussion.id" v-model="discussion.groupId" :items="groupItems" :label="$t('common.group')")
     p.text--secondary.caption

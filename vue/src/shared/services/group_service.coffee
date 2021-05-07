@@ -14,7 +14,7 @@ export default new class GroupService
 
     change_volume:
       name: 'group_page.options.email_settings'
-      icon: 'mdi-email'
+      icon: 'mdi-email-outline'
       canPerform: ->
         AbilityService.canChangeGroupVolume(group)
       perform: ->
@@ -25,7 +25,7 @@ export default new class GroupService
 
     edit_group:
       name: 'group_page.options.edit_group'
-      icon: 'mdi-cog'
+      icon: 'mdi-cog-outline'
       canPerform: ->
         AbilityService.canEditGroup(group)
       perform: ->

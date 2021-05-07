@@ -39,7 +39,7 @@ v-menu.notifications(v-model="open" offset-y bottom)
       v-badge(color="accent" v-model="unread.length")
         template(v-slot:badge)
           span.notifications__activity {{unread.length}}
-        v-icon mdi-bell
+        v-icon {{$icons['mdi-bell']}}
 
   v-sheet.notifications__dropdown
     v-list(v-if="notifications.length > 0" dense)

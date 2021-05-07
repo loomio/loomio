@@ -72,7 +72,7 @@ v-app-bar.lmo-no-print(app clipped-right elevate-on-scroll color="background")
 
   v-btn.navbar__sidenav-toggle(icon @click="toggleSidebar()" :aria-label="$t(sidebarOpen ? 'navbar.close_sidebar' : 'navbar.open_sidebar')")
     v-avatar(tile size="36px")
-      v-icon mdi-menu
+      v-icon {{$icons['mdi-menu']}}
 
 
   //- v-toolbar-title.group-cover-name(v-if="groupPage")

@@ -69,12 +69,12 @@ v-card.change-picture-form
     v-list.change-picture-form__options-list
       v-list-item.change-picture-form__option(@click='selectFile()')
         v-list-item-avatar
-          v-icon mdi-camera
+          v-icon {{$icons['mdi-camera']}}
         v-list-item-title(v-t="'change_picture_form.use_uploaded'")
           input.hidden.change-picture-form__file-input(type="file" ref="fileInput" @change='uploadFile')
       v-list-item(v-for="provider in providers" :key="provider.id" @click="selectProvider(provider)")
         v-list-item-avatar
-          v-icon {{ iconClass(provider.name) }}
+          v-icon {{$icons[iconClass(provider.name)]}}
         v-list-item-title(v-t="{ path: 'change_picture_form.use_provider', args: { provider: capitalize(provider.name) } }")
       v-list-item.change-picture-form__option(@click="submit('gravatar')")
         v-list-item-avatar
