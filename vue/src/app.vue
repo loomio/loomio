@@ -1,7 +1,6 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
 import AuthModalMixin from '@/mixins/auth_modal'
-import IconsMixin from '@/mixins/icons'
 import EventBus from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
@@ -14,7 +13,7 @@ import CustomCss from '@/components/custom_css'
 
 export default
   components: {CustomCss}
-  mixins: [AuthModalMixin, IconsMixin]
+  mixins: [AuthModalMixin]
   data: ->
     pageError: null
 

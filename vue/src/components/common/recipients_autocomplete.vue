@@ -263,8 +263,8 @@ div.recipients-autocomplete
     template(v-slot:no-data)
       v-list-item
         v-list-item-icon
-          v-icon(v-if="!query") mdi-account-search
-          v-icon(v-if="query") mdi-information-outline
+          v-icon(v-if="!query") {{$icons['mdi-account-search']}}
+          v-icon(v-if="query") {{$icons['mdi-information-outline']}}
         v-list-item-content
           v-list-item-title
             span(v-if="query" v-t="'common.no_results_found'")

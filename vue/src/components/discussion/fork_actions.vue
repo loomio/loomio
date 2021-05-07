@@ -26,5 +26,5 @@ v-banner.discussion-fork-actions(single-line sticky :elevation="4" v-if='discuss
   template(v-slot:actions)
     v-btn(color="primary" @click="openMoveCommentsModal()" v-t="'discussion_fork_actions.move'")
     v-btn(icon @click='discussion.forkedEventIds = []')
-      v-icon mdi-close
+      v-icon {{$icons['mdi-close']}}
 </template>

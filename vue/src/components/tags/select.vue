@@ -81,11 +81,11 @@ v-card.tags-modal
     sortable-list(v-model="allTags" :useDragHandle="true" @sort-end="sortEnded")
       sortable-item(v-for="(tag, index) in allTags" :index="index" :key="tag.id")
         .handle(v-handle)
-          v-icon mdi-drag-vertical
+          v-icon {{$icons['mdi-drag-vertical']}}
         v-chip(outlined :color="tag.color") {{tag.name}}
         v-spacer
         v-btn(icon @click="openEditTagModal(tag)")
-          v-icon.text--secondary mdi-pencil
+          v-icon.text--secondary {{$icons['mdi-pencil']}}
 
     v-card-actions
       v-spacer

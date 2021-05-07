@@ -60,7 +60,7 @@ export default
             h1.headline(tabindex="-1" v-t="title_key")
             v-spacer
             v-btn(icon :to="urlFor(poll)" aria-hidden='true')
-              v-icon mdi-close
+              v-icon {{$icons['mdi-close']}}
           div.pa-4
             poll-common-directive(:poll='poll' name='form')
           v-card-actions.poll-common-form-actions

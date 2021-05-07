@@ -54,7 +54,7 @@ div
       template(v-slot:activator="{ on, attrs }")
         v-btn(small rounded v-bind="attrs" v-on="on")
           span.mr-2(v-t="loader.titleKey")
-          v-icon(small) mdi-menu
+          v-icon(small) {{$icons['mdi-menu']}}
 
       v-list(dense)
         //- v-list-item

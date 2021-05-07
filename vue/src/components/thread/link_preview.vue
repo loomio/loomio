@@ -45,7 +45,7 @@ v-card.mt-3(outlined  style="position: relative")
           :title="$t('common.action.done')"
           style="top: 8px; right: 8px; position: absolute; z-index: 1000"
           @click="editing = false")
-      v-icon mdi-check
+      v-icon {{$icons['mdi-check']}}
     v-card-title
       v-text-field(filled v-model="preview.title")
     v-card-subtitle
@@ -58,14 +58,14 @@ v-card.mt-3(outlined  style="position: relative")
           v-if="remove" icon
           @click="remove(preview.url)"
           :title="$t('common.action.remove')")
-      v-icon mdi-close
+      v-icon {{$icons['mdi-close']}}
     v-btn(color="accent"
           style="top: 8px; right: 48px; position: absolute; z-index: 1000"
           v-if="remove" icon
           outlined
           @click="editing = true"
           :title="$t('common.action.edit')")
-      v-icon mdi-pencil
+      v-icon {{$icons['mdi-pencil']}}
     a(:href="preview.url" target="_blank" rel="nofollow ugc noreferrer noopener")
       .link-preview__image(v-if="preview.image" :style="{'background-image': 'url('+preview.image+')', 'background-size': backgroundSize, 'background-position': backgroundPosition}")
       v-card-title

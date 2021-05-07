@@ -1,247 +1,247 @@
 import { pickBy, identity, isEqual } from 'lodash'
 import {
-  MdiAccount,
-  MdiAccountGroup,
-  MdiAccountMultiple,
-  MdiAccountMultiplePlus,
-  MdiAccountSearch,
-  MdiAlarmCheck,
-  MdiArrowLeft,
-  MdiArrowRight,
-  MdiBell,
-  MdiCalendar,
-  MdiCalendarQuestion,
-  MdiCallSplit,
-  MdiCamera,
-  MdiCards,
-  MdiChartBar,
-  MdiChartBarStacked,
-  MdiChartGantt,
-  MdiCheck,
-  MdiCheckCircle,
-  MdiChevronLeft,
-  MdiChevronRight,
-  MdiClockOutline,
-  MdiClose,
-  MdiCloseCircleOutline,
-  MdiCodeBraces,
-  MdiCog,
-  MdiCogOutline,
-  MdiCollage,
-  MdiComment,
-  MdiCommentMultiple,
-  MdiCommentTextOutline,
-  MdiDatabaseExport,
-  MdiDelete,
-  MdiDeleteRestore,
-  MdiDirectionsFork,
-  MdiDotsVertical,
-  MdiDragVertical,
-  MdiEarth,
-  MdiEmailOutline,
-  MdiEmoticonOutline,
-  MdiExitRun,
-  MdiExitToApp,
-  MdiEye,
-  MdiFacebook,
-  MdiFile,
-  MdiFileDocument,
-  MdiFileDocumentBox,
-  MdiFileExcelBox,
-  MdiFilePdfBox,
-  MdiFileVideo,
-  MdiFileWordBox,
-  MdiFlaskEmptyOffOutline,
-  MdiFlaskOutline,
-  MdiFolderSwapOutline,
-  MdiFormatAlignCenter,
-  MdiFormatAlignLeft,
-  MdiFormatAlignRight,
-  MdiFormatBold,
-  MdiFormatHeader1,
-  MdiFormatHeader2,
-  MdiFormatHeader3,
-  MdiFormatItalic,
-  MdiFormatListBulleted,
-  MdiFormatListChecks,
-  MdiFormatListNumbered,
-  MdiFormatPilcrow,
-  MdiFormatQuoteClose,
-  MdiFormatSize,
-  MdiFormatStrikethrough,
-  MdiFormatUnderline,
-  MdiForum,
-  MdiGoogle,
-  MdiGoogleDrive,
-  MdiHelpCircleOutline,
-  MdiHistory,
-  MdiImage,
-  MdiInformationOutline,
-  MdiKeyVariant,
-  MdiLanguageMarkdownOutline,
-  MdiLightbulbOnOutline,
-  MdiLink,
-  MdiLockOutline,
-  MdiLockReset,
-  MdiMagnify,
-  MdiMenu,
-  MdiMenuDown,
-  MdiMinus,
-  MdiPalette,
-  MdiPaperclip,
-  MdiPencil,
-  MdiPin,
-  MdiPinOff,
-  MdiPlus,
-  MdiPoll,
-  MdiRefresh,
-  MdiReply,
-  MdiRocket,
-  MdiSend,
-  MdiShieldStar,
-  MdiSourcePull,
-  MdiTable,
-  MdiTableColumnPlusAfter,
-  MdiTableColumnPlusBefore,
-  MdiTableColumnRemove,
-  MdiTableMergeCells,
-  MdiTableRemove,
-  MdiTableRowPlusAfter,
-  MdiTableRowPlusBefore,
-  MdiTableRowRemove,
-  MdiTagOutline,
-  MdiTagPlus,
-  MdiThumbsUpDown,
-  MdiTranslate,
-  MdiUnfoldMoreHorizontal,
-  MdiVideo,
-  MdiWeatherNight,
-  MdiWebhook,
-  MdiWhiteBalanceSunny,
-  MdiWindowClose,
-  MdiYoutube
+  mdiAccount,
+  mdiAccountGroup,
+  mdiAccountMultiple,
+  mdiAccountMultiplePlus,
+  mdiAccountSearch,
+  mdiAlarmCheck,
+  mdiArrowLeft,
+  mdiArrowRight,
+  mdiBell,
+  mdiCalendar,
+  mdiCalendarQuestion,
+  mdiCallSplit,
+  mdiCamera,
+  mdiCards,
+  mdiChartBar,
+  mdiChartBarStacked,
+  mdiChartGantt,
+  mdiCheck,
+  mdiCheckCircle,
+  mdiChevronLeft,
+  mdiChevronRight,
+  mdiClockOutline,
+  mdiClose,
+  mdiCloseCircleOutline,
+  mdiCodeBraces,
+  mdiCog,
+  mdiCogOutline,
+  mdiCollage,
+  mdiComment,
+  mdiCommentMultiple,
+  mdiCommentTextOutline,
+  mdiDatabaseExport,
+  mdiDelete,
+  mdiDeleteRestore,
+  mdiDirectionsFork,
+  mdiDotsVertical,
+  mdiDragVertical,
+  mdiEarth,
+  mdiEmailOutline,
+  mdiEmoticonOutline,
+  mdiExitRun,
+  mdiExitToApp,
+  mdiEye,
+  mdiFacebook,
+  mdiFile,
+  mdiFileDocument,
+  mdiFileDocumentBox,
+  mdiFileExcelBox,
+  mdiFilePdfBox,
+  mdiFileVideo,
+  mdiFileWordBox,
+  mdiFlaskEmptyOffOutline,
+  mdiFlaskOutline,
+  mdiFolderSwapOutline,
+  mdiFormatAlignCenter,
+  mdiFormatAlignLeft,
+  mdiFormatAlignRight,
+  mdiFormatBold,
+  mdiFormatHeader1,
+  mdiFormatHeader2,
+  mdiFormatHeader3,
+  mdiFormatItalic,
+  mdiFormatListBulleted,
+  mdiFormatListChecks,
+  mdiFormatListNumbered,
+  mdiFormatPilcrow,
+  mdiFormatQuoteClose,
+  mdiFormatSize,
+  mdiFormatStrikethrough,
+  mdiFormatUnderline,
+  mdiForum,
+  mdiGoogle,
+  mdiGoogleDrive,
+  mdiHelpCircleOutline,
+  mdiHistory,
+  mdiImage,
+  mdiInformationOutline,
+  mdiKeyVariant,
+  mdiLanguageMarkdownOutline,
+  mdiLightbulbOnOutline,
+  mdiLink,
+  mdiLockOutline,
+  mdiLockReset,
+  mdiMagnify,
+  mdiMenu,
+  mdiMenuDown,
+  mdiMinus,
+  mdiPalette,
+  mdiPaperclip,
+  mdiPencil,
+  mdiPin,
+  mdiPinOff,
+  mdiPlus,
+  mdiPoll,
+  mdiRefresh,
+  mdiReply,
+  mdiRocket,
+  mdiSend,
+  mdiShieldStar,
+  mdiSourcePull,
+  mdiTable,
+  mdiTableColumnPlusAfter,
+  mdiTableColumnPlusBefore,
+  mdiTableColumnRemove,
+  mdiTableMergeCells,
+  mdiTableRemove,
+  mdiTableRowPlusAfter,
+  mdiTableRowPlusBefore,
+  mdiTableRowRemove,
+  mdiTagOutline,
+  mdiTagPlus,
+  mdiThumbsUpDown,
+  mdiTranslate,
+  mdiUnfoldMoreHorizontal,
+  mdiVideo,
+  mdiWeatherNight,
+  mdiWebhook,
+  mdiWhiteBalanceSunny,
+  mdiWindowClose,
+  mdiYoutube
 } from '@mdi/js'
 
 export default
-  data: ->
-    icons:
-      'mdi-account': MdiAccount
-      'mdi-account-group': MdiAccountGroup
-      'mdi-account-multiple': MdiAccountMultiple
-      'mdi-account-multiple-plus': MdiAccountMultiplePlus
-      'mdi-account-search': MdiAccountSearch
-      'mdi-alarm-check': MdiAlarmCheck
-      'mdi-arrow-left': MdiArrowLeft
-      'mdi-arrow-right': MdiArrowRight
-      'mdi-bell': MdiBell
-      'mdi-calendar': MdiCalendar
-      'mdi-calendar-question': MdiCalendarQuestion
-      'mdi-call-split': MdiCallSplit
-      'mdi-camera': MdiCamera
-      'mdi-cards': MdiCards
-      'mdi-chart-bar': MdiChartBar
-      'mdi-chart-bar-stacked': MdiChartBarStacked
-      'mdi-chart-gantt': MdiChartGantt
-      'mdi-check': MdiCheck
-      'mdi-check-circle': MdiCheckCircle
-      'mdi-chevron-left': MdiChevronLeft
-      'mdi-chevron-right': MdiChevronRight
-      'mdi-clock-outline': MdiClockOutline
-      'mdi-close': MdiClose
-      'mdi-close-circle-outline': MdiCloseCircleOutline
-      'mdi-code-braces': MdiCodeBraces
-      'mdi-cog': MdiCog
-      'mdi-cog-outline': MdiCogOutline
-      'mdi-collage': MdiCollage
-      'mdi-comment': MdiComment
-      'mdi-comment-multiple': MdiCommentMultiple
-      'mdi-comment-text-outline': MdiCommentTextOutline
-      'mdi-database-export': MdiDatabaseExport
-      'mdi-delete': MdiDelete
-      'mdi-delete-restore': MdiDeleteRestore
-      'mdi-directions-fork': MdiDirectionsFork
-      'mdi-dots-vertical': MdiDotsVertical
-      'mdi-drag-vertical': MdiDragVertical
-      'mdi-earth': MdiEarth
-      'mdi-email-outline': MdiEmailOutline
-      'mdi-emoticon-outline': MdiEmoticonOutline
-      'mdi-exit-run': MdiExitRun
-      'mdi-exit-to-app': MdiExitToApp
-      'mdi-eye': MdiEye
-      'mdi-facebook': MdiFacebook
-      'mdi-file': MdiFile
-      'mdi-file-document': MdiFileDocument
-      'mdi-file-document-box': MdiFileDocumentBox
-      'mdi-file-excel-box': MdiFileExcelBox
-      'mdi-file-pdf-box': MdiFilePdfBox
-      'mdi-file-video': MdiFileVideo
-      'mdi-file-word-box': MdiFileWordBox
-      'mdi-flask-empty-off-outline': MdiFlaskEmptyOffOutline
-      'mdi-flask-outline': MdiFlaskOutline
-      'mdi-folder-swap-outline': MdiFolderSwapOutline
-      'mdi-format-align-center': MdiFormatAlignCenter
-      'mdi-format-align-left': MdiFormatAlignLeft
-      'mdi-format-align-right': MdiFormatAlignRight
-      'mdi-format-bold': MdiFormatBold
-      'mdi-format-header-1': MdiFormatHeader1
-      'mdi-format-header-2': MdiFormatHeader2
-      'mdi-format-header-3': MdiFormatHeader3
-      'mdi-format-italic': MdiFormatItalic
-      'mdi-format-list-bulleted': MdiFormatListBulleted
-      'mdi-format-list-checks': MdiFormatListChecks
-      'mdi-format-list-numbered': MdiFormatListNumbered
-      'mdi-format-pilcrow': MdiFormatPilcrow
-      'mdi-format-quote-close': MdiFormatQuoteClose
-      'mdi-format-size': MdiFormatSize
-      'mdi-format-strikethrough': MdiFormatStrikethrough
-      'mdi-format-underline': MdiFormatUnderline
-      'mdi-forum': MdiForum
-      'mdi-google': MdiGoogle
-      'mdi-google-drive': MdiGoogleDrive
-      'mdi-help-circle-outline': MdiHelpCircleOutline
-      'mdi-history': MdiHistory
-      'mdi-image': MdiImage
-      'mdi-information-outline': MdiInformationOutline
-      'mdi-key-variant': MdiKeyVariant
-      'mdi-language-markdown-outline': MdiLanguageMarkdownOutline
-      'mdi-lightbulb-on-outline': MdiLightbulbOnOutline
-      'mdi-link': MdiLink
-      'mdi-lock-outline': MdiLockOutline
-      'mdi-lock-reset': MdiLockReset
-      'mdi-magnify': MdiMagnify
-      'mdi-menu': MdiMenu
-      'mdi-menu-down': MdiMenuDown
-      'mdi-minus': MdiMinus
-      'mdi-palette': MdiPalette
-      'mdi-paperclip': MdiPaperclip
-      'mdi-pencil': MdiPencil
-      'mdi-pin': MdiPin
-      'mdi-pin-off': MdiPinOff
-      'mdi-plus': MdiPlus
-      'mdi-poll': MdiPoll
-      'mdi-refresh': MdiRefresh
-      'mdi-reply': MdiReply
-      'mdi-rocket': MdiRocket
-      'mdi-send': MdiSend
-      'mdi-shield-star': MdiShieldStar
-      'mdi-source-pull': MdiSourcePull
-      'mdi-table': MdiTable
-      'mdi-table-column-plus-after': MdiTableColumnPlusAfter
-      'mdi-table-column-plus-before': MdiTableColumnPlusBefore
-      'mdi-table-column-remove': MdiTableColumnRemove
-      'mdi-table-merge-cells': MdiTableMergeCells
-      'mdi-table-remove': MdiTableRemove
-      'mdi-table-row-plus-after': MdiTableRowPlusAfter
-      'mdi-table-row-plus-before': MdiTableRowPlusBefore
-      'mdi-table-row-remove': MdiTableRowRemove
-      'mdi-tag-outline': MdiTagOutline
-      'mdi-tag-plus': MdiTagPlus
-      'mdi-thumbs-up-down': MdiThumbsUpDown
-      'mdi-translate': MdiTranslate
-      'mdi-unfold-more-horizontal': MdiUnfoldMoreHorizontal
-      'mdi-video': MdiVideo
-      'mdi-weather-night': MdiWeatherNight
-      'mdi-webhook': MdiWebhook
-      'mdi-white-balance-sunny': MdiWhiteBalanceSunny
-      'mdi-window-close': MdiWindowClose
-      'mdi-youtube': MdiYoutube
+  computed:
+    $icons: ->
+      'mdi-account': mdiAccount
+      'mdi-account-group': mdiAccountGroup
+      'mdi-account-multiple': mdiAccountMultiple
+      'mdi-account-multiple-plus': mdiAccountMultiplePlus
+      'mdi-account-search': mdiAccountSearch
+      'mdi-alarm-check': mdiAlarmCheck
+      'mdi-arrow-left': mdiArrowLeft
+      'mdi-arrow-right': mdiArrowRight
+      'mdi-bell': mdiBell
+      'mdi-calendar': mdiCalendar
+      'mdi-calendar-question': mdiCalendarQuestion
+      'mdi-call-split': mdiCallSplit
+      'mdi-camera': mdiCamera
+      'mdi-cards': mdiCards
+      'mdi-chart-bar': mdiChartBar
+      'mdi-chart-bar-stacked': mdiChartBarStacked
+      'mdi-chart-gantt': mdiChartGantt
+      'mdi-check': mdiCheck
+      'mdi-check-circle': mdiCheckCircle
+      'mdi-chevron-left': mdiChevronLeft
+      'mdi-chevron-right': mdiChevronRight
+      'mdi-clock-outline': mdiClockOutline
+      'mdi-close': mdiClose
+      'mdi-close-circle-outline': mdiCloseCircleOutline
+      'mdi-code-braces': mdiCodeBraces
+      'mdi-cog': mdiCog
+      'mdi-cog-outline': mdiCogOutline
+      'mdi-collage': mdiCollage
+      'mdi-comment': mdiComment
+      'mdi-comment-multiple': mdiCommentMultiple
+      'mdi-comment-text-outline': mdiCommentTextOutline
+      'mdi-database-export': mdiDatabaseExport
+      'mdi-delete': mdiDelete
+      'mdi-delete-restore': mdiDeleteRestore
+      'mdi-directions-fork': mdiDirectionsFork
+      'mdi-dots-vertical': mdiDotsVertical
+      'mdi-drag-vertical': mdiDragVertical
+      'mdi-earth': mdiEarth
+      'mdi-email-outline': mdiEmailOutline
+      'mdi-emoticon-outline': mdiEmoticonOutline
+      'mdi-exit-run': mdiExitRun
+      'mdi-exit-to-app': mdiExitToApp
+      'mdi-eye': mdiEye
+      'mdi-facebook': mdiFacebook
+      'mdi-file': mdiFile
+      'mdi-file-document': mdiFileDocument
+      'mdi-file-document-box': mdiFileDocumentBox
+      'mdi-file-excel-box': mdiFileExcelBox
+      'mdi-file-pdf-box': mdiFilePdfBox
+      'mdi-file-video': mdiFileVideo
+      'mdi-file-word-box': mdiFileWordBox
+      'mdi-flask-empty-off-outline': mdiFlaskEmptyOffOutline
+      'mdi-flask-outline': mdiFlaskOutline
+      'mdi-folder-swap-outline': mdiFolderSwapOutline
+      'mdi-format-align-center': mdiFormatAlignCenter
+      'mdi-format-align-left': mdiFormatAlignLeft
+      'mdi-format-align-right': mdiFormatAlignRight
+      'mdi-format-bold': mdiFormatBold
+      'mdi-format-header-1': mdiFormatHeader1
+      'mdi-format-header-2': mdiFormatHeader2
+      'mdi-format-header-3': mdiFormatHeader3
+      'mdi-format-italic': mdiFormatItalic
+      'mdi-format-list-bulleted': mdiFormatListBulleted
+      'mdi-format-list-checks': mdiFormatListChecks
+      'mdi-format-list-numbered': mdiFormatListNumbered
+      'mdi-format-pilcrow': mdiFormatPilcrow
+      'mdi-format-quote-close': mdiFormatQuoteClose
+      'mdi-format-size': mdiFormatSize
+      'mdi-format-strikethrough': mdiFormatStrikethrough
+      'mdi-format-underline': mdiFormatUnderline
+      'mdi-forum': mdiForum
+      'mdi-google': mdiGoogle
+      'mdi-google-drive': mdiGoogleDrive
+      'mdi-help-circle-outline': mdiHelpCircleOutline
+      'mdi-history': mdiHistory
+      'mdi-image': mdiImage
+      'mdi-information-outline': mdiInformationOutline
+      'mdi-key-variant': mdiKeyVariant
+      'mdi-language-markdown-outline': mdiLanguageMarkdownOutline
+      'mdi-lightbulb-on-outline': mdiLightbulbOnOutline
+      'mdi-link': mdiLink
+      'mdi-lock-outline': mdiLockOutline
+      'mdi-lock-reset': mdiLockReset
+      'mdi-magnify': mdiMagnify
+      'mdi-menu': mdiMenu
+      'mdi-menu-down': mdiMenuDown
+      'mdi-minus': mdiMinus
+      'mdi-palette': mdiPalette
+      'mdi-paperclip': mdiPaperclip
+      'mdi-pencil': mdiPencil
+      'mdi-pin': mdiPin
+      'mdi-pin-off': mdiPinOff
+      'mdi-plus': mdiPlus
+      'mdi-poll': mdiPoll
+      'mdi-refresh': mdiRefresh
+      'mdi-reply': mdiReply
+      'mdi-rocket': mdiRocket
+      'mdi-send': mdiSend
+      'mdi-shield-star': mdiShieldStar
+      'mdi-source-pull': mdiSourcePull
+      'mdi-table': mdiTable
+      'mdi-table-column-plus-after': mdiTableColumnPlusAfter
+      'mdi-table-column-plus-before': mdiTableColumnPlusBefore
+      'mdi-table-column-remove': mdiTableColumnRemove
+      'mdi-table-merge-cells': mdiTableMergeCells
+      'mdi-table-remove': mdiTableRemove
+      'mdi-table-row-plus-after': mdiTableRowPlusAfter
+      'mdi-table-row-plus-before': mdiTableRowPlusBefore
+      'mdi-table-row-remove': mdiTableRowRemove
+      'mdi-tag-outline': mdiTagOutline
+      'mdi-tag-plus': mdiTagPlus
+      'mdi-thumbs-up-down': mdiThumbsUpDown
+      'mdi-translate': mdiTranslate
+      'mdi-unfold-more-horizontal': mdiUnfoldMoreHorizontal
+      'mdi-video': mdiVideo
+      'mdi-weather-night': mdiWeatherNight
+      'mdi-webhook': mdiWebhook
+      'mdi-white-balance-sunny': mdiWhiteBalanceSunny
+      'mdi-window-close': mdiWindowClose
+      'mdi-youtube': mdiYoutube

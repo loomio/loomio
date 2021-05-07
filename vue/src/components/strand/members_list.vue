@@ -168,7 +168,7 @@ export default
         v-menu(offset-y)
           template(v-slot:activator="{on, attrs}")
             v-btn.membership-dropdown__button(icon v-on="on" v-bind="attrs")
-              v-icon mdi-dots-vertical
+              v-icon {{$icons['mdi-dots-vertical']}}
           v-list
             v-list-item(v-for="action in actionNames" v-if="service[action].canPerform(reader)" @click="service[action].perform(reader)" :key="action")
               v-list-item-title(v-t="service[action].name")

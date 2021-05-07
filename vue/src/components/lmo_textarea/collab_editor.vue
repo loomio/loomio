@@ -246,36 +246,36 @@ div
       v-card(flat)
         v-layout(align-center v-if="isActive.table()")
           v-btn(icon @click="commands.deleteTable" :title="$t('formatting.remove_table')")
-            v-icon mdi-table-remove
+            v-icon(small) {{$icons['mdi-table-remove']}}
           v-btn(icon @click="commands.addColumnBefore" :title="$t('formatting.add_column_before')")
-            v-icon mdi-table-column-plus-before
+            v-icon(small) {{$icons['mdi-table-column-plus-before']}}
           v-btn(icon @click="commands.addColumnAfter" :title="$t('formatting.add_column_after')")
-            v-icon mdi-table-column-plus-after
+            v-icon(small) {{$icons['mdi-table-column-plus-after']}}
           v-btn(icon @click="commands.deleteColumn" :title="$t('formatting.remove_column')")
-            v-icon mdi-table-column-remove
+            v-icon(small) {{$icons['mdi-table-column-remove']}}
           v-btn(icon @click="commands.addRowBefore" :title="$t('formatting.add_row_before')")
-            v-icon mdi-table-row-plus-before
+            v-icon(small) {{$icons['mdi-table-row-plus-before']}}
           v-btn(icon @click="commands.addRowAfter" :title="$t('formatting.add_row_after')")
-            v-icon mdi-table-row-plus-after
+            v-icon(small) {{$icons['mdi-table-row-plus-after']}}
           v-btn(icon @click="commands.deleteRow" :title="$t('formatting.remove_row')")
-            v-icon mdi-table-row-remove
+            v-icon(small) {{$icons['mdi-table-row-remove']}}
           v-btn(icon @click="commands.toggleCellMerge" :title="$t('formatting.merge_selected')")
-            v-icon mdi-table-merge-cells
+            v-icon(small) {{$icons['mdi-table-merge-cells']}}
 
         v-layout.py-2.justify-space-between.flex-wrap(align-center)
           section.d-flex.flex-wrap(:aria-label="$t('formatting.formatting_tools')")
             //- attach
             v-btn(icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")
-              v-icon mdi-paperclip
+              v-icon(small) {{$icons['mdi-paperclip']}}
 
             //- v-btn(icon @click='$refs.imageFilesField.click()' :title="$t('formatting.insert_image')")
-            //-   v-icon mdi-image
+            //-   v-icon(small) {{$icons['mdi-image']}}
 
             //- link
             v-menu(:close-on-content-click="!selectedText()" v-model="linkDialogIsOpen" min-width="320px")
               template(v-slot:activator="{on, attrs}")
                 v-btn(icon v-on="on" v-bind="attrs" :title="$t('formatting.link')")
-                  v-icon mdi-link
+                  v-icon(small) {{$icons['mdi-link']}}
               v-card
                 template(v-if="selectedText()")
                   v-card-title.title(v-t="'text_editor.insert_link'")
@@ -291,48 +291,48 @@ div
             v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
               template(v-slot:activator="{on, attrs}")
                 v-btn.emoji-picker__toggle(v-on="on" v-bind="attrs" icon  :title="$t('formatting.insert_emoji')")
-                  v-icon mdi-emoticon-outline
+                  v-icon(small) {{$icons['mdi-emoticon-outline']}}
               emoji-picker(:insert="emojiPicked")
 
             //- headings menu
             //- v-menu
             //-   template(v-slot:activator="{ on, attrs }")
             //-     v-btn.drop-down-button(icon v-on="on" v-bind="attrs" :title="$t('formatting.heading_size')")
-            //-       v-icon mdi-format-size
-            //-       v-icon.menu-down-arrow mdi-menu-down
+            //-       v-icon(small) {{$icons['mdi-format-size']}}
+            //-       v-icon.menu-down-arrow {{$icons['mdi-menu-down']}}
             //-   v-list(dense)
             //-     template(v-for="i in 3")
             //-       v-list-item(@click='commands.heading({ level: i })' :class="{ 'v-list-item--active': isActive.heading({level: i}) }")
             //-         v-list-item-icon
-            //-           v-icon {{'mdi-format-header-'+i}}
+            //-           v-icon(small) {{'mdi-format-header-'+i}}
             //-         v-list-item-title(v-t="'formatting.heading'+i")
             //-     v-list-item(@click='commands.paragraph()' :class="{ 'v-list-item--active': isActive.paragraph() }")
             //-       v-list-item-icon
-            //-         v-icon mdi-format-pilcrow
+            //-         v-icon(small) {{$icons['mdi-format-pilcrow']}}
             //-       v-list-item-title(v-t="'formatting.paragraph'")
 
             template(v-if="expanded")
               v-btn(icon @click='commands.paragraph()' :outlined="isActive.paragraph()" :title="$t('formatting.paragraph')")
-                v-icon mdi-format-pilcrow
+                v-icon(small) {{$icons['mdi-format-pilcrow']}}
               template(v-for="i in 3")
                 v-btn(icon @click='commands.heading({ level: i })' :outlined='isActive.heading({level: i})' :title="$t('formatting.heading'+i)")
-                  v-icon {{'mdi-format-header-'+i}}
+                  v-icon(small) {{$icons['mdi-format-header-'+i]}}
 
             //- bold
 
             v-btn(icon v-if="expanded" @click='commands.bold' :outlined="isActive.bold()" :title="$t('formatting.bold')")
-              v-icon mdi-format-bold
+              v-icon(small) {{$icons['mdi-format-bold']}}
 
             //- italic
-            v-btn(icon v-if="expanded" @click='commands.italic' :outlined="isActive.italic()" :title="$t('formatting.italicize')")
-              v-icon mdi-format-italic
+            v-btn(icon small v-if="expanded" @click='commands.italic' :outlined="isActive.italic()" :title="$t('formatting.italicize')")
+              v-icon(small) {{$icons['mdi-format-italic']}}
 
             //- strikethrought
             v-btn(icon v-if="expanded" :outlined="isActive.strike()", @click='commands.strike' :title="$t('formatting.strikethrough')")
-              v-icon mdi-format-strikethrough
+              v-icon(small) {{$icons['mdi-format-strikethrough']}}
             //- underline
             v-btn(icon v-if="expanded" :outlined="isActive.underline()", @click='commands.underline' :title="$t('formatting.underline')")
-              v-icon mdi-format-underline
+              v-icon(small) {{$icons['mdi-format-underline']}}
 
             text-highlight-btn(v-if="expanded" :editor="editor" :commands="commands")
             text-align-btn(v-if="expanded" :editor="editor" :commands="commands")
@@ -341,20 +341,20 @@ div
             v-menu(v-if="expanded")
               template(v-slot:activator="{ on, attrs }")
                 v-btn.drop-down-button(icon v-on="on" v-bind="attrs" :title="$t('formatting.lists')")
-                  v-icon mdi-format-list-bulleted
-                  v-icon.menu-down-arrow mdi-menu-down
+                  v-icon(small) {{$icons['mdi-format-list-bulleted']}}
+                  v-icon.menu-down-arrow(small) {{$icons['mdi-menu-down']}}
               v-list(dense)
                 v-list-item(@click='commands.todo_list')
                   v-list-item-icon
-                    v-icon mdi-format-list-checks
+                    v-icon(small) {{$icons['mdi-format-list-checks']}}
                   v-list-item-title(v-t="'formatting.check_list'")
                 v-list-item(@click='commands.bullet_list')
                   v-list-item-icon
-                    v-icon mdi-format-list-bulleted
+                    v-icon(small) {{$icons['mdi-format-list-bulleted']}}
                   v-list-item-title(v-t="'formatting.bullet_list'")
                 v-list-item(@click='commands.ordered_list')
                   v-list-item-icon
-                    v-icon mdi-format-list-numbered
+                    v-icon(small) {{$icons['mdi-format-list-numbered']}}
                   v-list-item-title(v-t="'formatting.number_list'")
 
             //- extra text marks
@@ -363,7 +363,7 @@ div
               v-menu(:close-on-content-click="false" v-model="iframeDialogIsOpen" min-width="320px")
                 template(v-slot:activator="{on}")
                   v-btn(icon v-on="on" :title="$t('formatting.embed')")
-                    v-icon mdi-youtube
+                    v-icon(small) {{$icons['mdi-youtube']}}
                 v-card
                   v-card-title.title(v-t="'text_editor.insert_embedded_url'")
                   v-card-text
@@ -373,25 +373,25 @@ div
                     v-btn(color="primary" @click="setIframeUrl(commands.iframe)" v-t="'common.action.apply'")
               //- blockquote
               v-btn(icon :outlined="isActive.blockquote()", @click='commands.blockquote' :title="$t('formatting.blockquote')")
-                v-icon mdi-format-quote-close
+                v-icon(small) {{$icons['mdi-format-quote-close']}}
               //- code block
               v-btn(small icon :outlined="isActive.code_block()", @click='commands.code_block' :title="$t('formatting.code_block')")
-                v-icon mdi-code-braces
+                v-icon(small) {{$icons['mdi-code-braces']}}
               //- embded
               v-btn(icon @click='commands.horizontal_rule' :title="$t('formatting.divider')")
-                v-icon mdi-minus
+                v-icon(small) {{$icons['mdi-minus']}}
               //- table
               v-btn(icon @click='commands.createTable({rowsCount: 3, colsCount: 3, withHeaderRow: false })' :title="$t('formatting.add_table')")
-                v-icon mdi-table
+                v-icon(small) {{$icons['mdi-table']}}
               //- markdown (save experience)
               v-btn(icon @click="convertToMd" :title="$t('formatting.edit_markdown')")
-                v-icon mdi-language-markdown-outline
+                v-icon(small) {{$icons['mdi-language-markdown-outline']}}
 
             v-btn.html-editor__expand(v-if="!expanded" icon @click="toggleExpanded" :title="$t('formatting.expand')")
-              v-icon mdi-chevron-right
+              v-icon(small) {{$icons['mdi-chevron-right']}}
 
             v-btn.html-editor__expand(v-if="expanded" icon @click="toggleExpanded" :title="$t('formatting.collapse')")
-              v-icon mdi-chevron-left
+              v-icon(small) {{$icons['mdi-chevron-left']}}
           //- save button?
           v-spacer
           slot(v-if="!expanded" name="actions")

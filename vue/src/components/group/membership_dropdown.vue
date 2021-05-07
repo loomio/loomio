@@ -79,7 +79,7 @@ export default
     template(v-slot:activator="{on, attrs}")
       v-btn.membership-dropdown__button(icon v-on="on" v-bind="attrs")
         //- span(v-t="'membership_dropdown.membership_options'")
-        v-icon mdi-dots-vertical
+        v-icon {{$icons['mdi-dots-vertical']}}
     v-list.group-actions-dropdown__menu-content
       v-list-item.membership-dropdown__set-title(v-if='canSetTitle()' @click='setTitle()')
         v-list-item-title(v-t="'membership_dropdown.set_title'")

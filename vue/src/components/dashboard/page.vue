@@ -130,7 +130,7 @@ v-main
     //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.muted'", v-show="filter == 'show_muted'")
     h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'dashboard_page.filtering.all'")
     v-layout.mb-3
-      v-text-field(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_all_threads')" append-icon="mdi-magnify")
+      v-text-field(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_all_threads')" :append-icon="$icons['mdi-magnify']")
 
     v-card.mb-3(v-if='!dashboardLoaded' v-for='(viewName, index) in loadingViewNames' :key='index' :class="'dashboard-page__loading dashboard-page__' + viewName" aria-hidden='true')
       v-list(two-line)

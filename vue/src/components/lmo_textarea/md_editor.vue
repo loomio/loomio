@@ -108,7 +108,7 @@ div(style="position: relative")
 
   v-layout.menubar(align-center :aria-label="$t('formatting.formatting_tools')")
     v-btn(icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")
-      v-icon mdi-paperclip
+      v-icon {{$icons['mdi-paperclip']}}
     v-btn(text x-small @click="convertToHtml(model, field)" v-t="'formatting.wysiwyg'")
     v-spacer
     v-btn.mr-4(text x-small @click="preview = !preview" v-t="previewAction")

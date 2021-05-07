@@ -34,7 +34,7 @@ export default
 v-card.mt-3(outlined).attachment-list-item-link
   a(:href="attachment.download_url" target="_blank")
     v-card-title
-      v-icon.mr-2(small) mdi-{{attachment.icon}}
+      v-icon.mr-2(small) {{$icons['mdi-'+attachment.icon]}}
       span.text--secondary
         |{{ attachment.filename }}
         space
