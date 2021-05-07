@@ -46,7 +46,6 @@ import {
   mdiFacebook,
   mdiFile,
   mdiFileDocument,
-  mdiFileDocumentBox,
   mdiFileExcelBox,
   mdiFilePdfBox,
   mdiFileVideo,
@@ -171,7 +170,6 @@ export default
       'mdi-facebook': mdiFacebook
       'mdi-file': mdiFile
       'mdi-file-document': mdiFileDocument
-      'mdi-file-document-box': mdiFileDocumentBox
       'mdi-file-excel-box': mdiFileExcelBox
       'mdi-file-pdf-box': mdiFilePdfBox
       'mdi-file-video': mdiFileVideo
