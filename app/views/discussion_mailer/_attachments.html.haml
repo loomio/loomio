@@ -1,5 +1,12 @@
+- if resource.link_previews.any?
+  %h4= t :'common.links'
+  %ul.thread-mailer__list
+    - resource.link_previews.each do |preview|
+      %li
+        %a{href: preview.url}= preview.title
+
 - if resource.documents.any?
-  %h4= t :attachments
+  %h4= t :'common.attachments'
   %ul.thread-mailer__list
     - resource.documents.each do |document|
       %li.thread-mailer__list-item
@@ -13,7 +20,7 @@
             %span.thread-mailer__file-attachment-filername
               = document.title
 - if resource.attachments.any?
-  %h4= t :attachments
+  %h4= t :'common.attachments'
   %ul.thread-mailer__list
     - resource.files.each do |file|
       - download_url = Rails.application.routes.url_helpers.rails_blob_url(file, only_path: false, host: ENV['CANONICAL_HOST'])

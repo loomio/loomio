@@ -148,6 +148,7 @@ en:
     time_zone: Time zone
     local_time: Local time
     attachments: Attachments
+    links: Links
     active_time_ago: Last active {{time_ago}}
     confirm_discard_changes: Discard your changes?
     time:
