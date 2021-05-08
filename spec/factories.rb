@@ -16,13 +16,8 @@ FactoryBot.define do
 
   factory :tag, class: Tag do
     association :group, factory: :group
-    # name "metatag"
-    # color "#656565"
-  end
-
-  factory :discussion_tag do
-    discussion
-    tag
+    name {"example tag"}
+    color {"#656565"}
   end
 
   factory :user do
@@ -91,6 +86,9 @@ FactoryBot.define do
       user = create(:user)
       group.parent&.add_admin!(user)
       group.add_admin!(user)
+      create(:tag, group: group, name: "cool")
+      create(:tag, group: group, name: "wowzers")
+      create(:tag, group: group, name: "example tag")
     end
   end
 
@@ -132,7 +130,9 @@ FactoryBot.define do
     title { Faker::Name.name }
     description { 'A description for this discussion. Should this be *rich*?' }
     uses_markdown { true }
+    link_previews { [{'title': 'link title', 'url': 'https://www.example.com', 'description': 'a link to a page', 'image': 'https://www.loomio.org/theme/logo.svg', 'hostname':'www.example.com'}] }
     private { true }
+    tags { group ? group.tags : [] }
     before(:create) do |discussion|
       discussion.group.parent&.add_member!(discussion.author)
       discussion.group.add_member!(discussion.author)

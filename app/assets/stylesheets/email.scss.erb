@@ -1,5 +1,6 @@
 //= depend_on "_variables.scss.erb"
 @import 'variables';
+// @import 'email_vuetify';
 
 .everything{width: 600px;}
 .icon { width: 50px; vertical-align: top }
@@ -24,6 +25,9 @@ img { max-width: 500px; height: auto }
 img.emojione { width: 25px; vertical-align: bottom; }
 body { max-width: 600px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
+.thread-mailer__subject--text {
+  line-height: 150%;
+}
 
 .mailer-tag {
   font-size: small;
@@ -104,8 +108,6 @@ body { max-width: 600px; font-family: "Helvetica Neue", Helvetica, Arial, sans-s
   margin-bottom: 45px;
   padding: 0 20px;
 }
-
-
 
 .base-mailer__button {
   border-radius: 4px;
