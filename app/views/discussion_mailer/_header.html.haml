@@ -1,17 +1,28 @@
-%table.thread-mailer__subject
+%table.t-layout
   %tr
-    %td= render 'base_mailer/avatar', user: event.user
-    %td.thread-mailer__subject--text
-      = t(:"discussion_mailer.#{action_name}.subject_html", actor: event.user.name, discussion: link_to(event.eventable.discussion.title, target_url(eventable: event.eventable, recipient: recipient, action_name: action_name)))
-      - event.eventable.discussion.tags.each do |tag|
-        %span.mailer-tag{style: "color: #{tag.color}; border-color: #{tag.color}"}=tag.name
+    %td
+      = render 'vtfy/avatar', user: event.user
+    %td
+      %h1.text-caption= t(:"discussion_mailer.#{action_name}.subject_html", actor: event.user.name, discussion: '')
+%h1.text-h5
+  = link_to(event.eventable.discussion.title, target_url(eventable: event.eventable, recipient: recipient, action_name: action_name))
+  - event.eventable.discussion.tags.each do |tag|
+    %span.v-chip{style: "color: #{tag.color}; border-color: #{tag.color}"}=tag.name
 
-  -# - if event.eventable.discussion.tags.any?
-  -#   %tr
-  -#     %td{colspan: "2" }
-
-  - if event.recipient_message.present?
-    %tr
-      %td{colspan: "2" }
-        %p
-          %i=raw strip_tags(event.recipient_message.to_s).gsub(/(?:\n\r?|\r\n?)/, '<br>')
+-# %table.thread-mailer__subject
+-#   %tr
+-#     %td= render 'base_mailer/avatar', user: event.user
+-#     %td.thread-mailer__subject--text
+-#       %h1.text-subtitle-1= t(:"discussion_mailer.#{action_name}.subject_html", actor: event.user.name, discussion: link_to(event.eventable.discussion.title, target_url(eventable: event.eventable, recipient: recipient, action_name: action_name)))
+-#       - event.eventable.discussion.tags.each do |tag|
+-#         %span.mailer-tag{style: "color: #{tag.color}; border-color: #{tag.color}"}=tag.name
+-#
+-#   -# - if event.eventable.discussion.tags.any?
+-#   -#   %tr
+-#   -#     %td{colspan: "2" }
+-#
+-#   - if event.recipient_message.present?
+-#     %tr
+-#       %td{colspan: "2" }
+-#         %p
+-#           %i=raw strip_tags(event.recipient_message.to_s).gsub(/(?:\n\r?|\r\n?)/, '<br>')

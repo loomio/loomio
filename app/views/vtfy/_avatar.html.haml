@@ -1,0 +1,8 @@
+.v-avatar.d-inline.mr-2
+  - if user.presence
+    - if user.avatar_url(:medium)
+      = image_tag user.avatar_url(:medium), alt: "#{user.avatar_initials}", class: "v-avatar__image"
+    - else
+      .v-avatar__initials= user.avatar_initials
+  - else
+    👤
