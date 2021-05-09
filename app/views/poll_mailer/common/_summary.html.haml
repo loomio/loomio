@@ -1,5 +1,5 @@
 .poll-mailer-common-summary
-  %h1= link_to poll.title, target_url(poll: poll, recipient: recipient), class: 'poll-mailer__poll-title'
+  %h1.text-h5.poll-mailer__poll-title= link_to poll.title, target_url(poll: poll, recipient: recipient)
 
   - if poll.tags.any?
     %p

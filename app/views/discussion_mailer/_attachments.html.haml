@@ -1,14 +1,14 @@
 - if resource.link_previews.any?
-  %h4.text-subtitle-1= t :'common.links'
-  %ul.thread-mailer__list
-    - resource.link_previews.each do |preview|
-      %div{style: "border: 1px solid #eee; border-radius: 4px; margin-bottom: 8px"}
-        - if preview['image'].present?
-          %a{href: preview['url']}
-            %div.link-preview__image{style: "height: 128px; overflow: none; background: url('#{preview['image']}') center / cover no-repeat)"}
+  - resource.link_previews.each do |preview|
+    %div.mb-2{style: "border: 1px solid #eee; border-radius: 4px"}
+      - if preview['image'].present?
+        %a{href: preview['url']}
+          %div.link-preview__image{style: "height: 128px; overflow: none; background: url('#{preview['image']}') center / cover no-repeat)"}
+      .pa-2
         %a.text-h6{href: preview['url']}= preview['title']
+        %span.text-caption="[#{preview['hostname']}]"
         - if preview['description'].present?
-          %p= preview['description']
+          %p.my-2= preview['description']
 
 - if resource.documents.any?
   %h4= t :'common.attachments'
@@ -26,17 +26,17 @@
               = document.title
 
 - if resource.attachments.any?
-  %h4= t :'common.attachments'
+  -# %h4= t :'common.attachments'
   %ul.thread-mailer__list
     - resource.files.each do |file|
-      - download_url = Rails.application.routes.url_helpers.rails_blob_url(file, only_path: false, host: ENV['CANONICAL_HOST'])
+      - download_url = Rails.application.routes.url_helpers.rails_blob_url(file, only_path: false, host: ENV['CANONICAL_HOST'], port: ENV['CANONICAL_PORT'])
       %div{style: "border: 1px solid #eee; border-radius: 4px; margin-bottom: 8px"}
-        %span 📎
-        %a.thread-mailer__file-attachment{href: download_url, target: '_blank'}
-          %span.thread-mailer__file-attachment-filername
-            = file.blob.filename
-        %span=number_to_human_size file.byte_size
         - if file.representable?
-          - preview_url = Rails.application.routes.url_helpers.rails_representation_url(file.representation(HasRichText::PREVIEW_OPTIONS), only_path: false, host: ENV['CANONICAL_HOST'])
+          - preview_url = Rails.application.routes.url_helpers.rails_representation_url(file.representation(HasRichText::PREVIEW_OPTIONS), only_path: false, host: ENV['CANONICAL_HOST'], port: ENV['CANONICAL_PORT'])
           %a{href: download_url, target: '_blank'}
             %div.link-preview__image{alt: file.blob.filename, style: "height: 128px; overflow: none; background: url('#{preview_url}') center / contain no-repeat)"}
+        .pa-2
+          %a.thread-mailer__file-attachment{href: download_url, target: '_blank'}>
+            %span.thread-mailer__file-attachment-filename.text-h6>= file.blob.filename
+          &nbsp;
+          %span.text-caption=number_to_human_size file.byte_size

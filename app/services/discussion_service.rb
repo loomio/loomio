@@ -30,7 +30,8 @@ class DiscussionService
     EventBus.broadcast('discussion_create', discussion, actor)
     Events::NewDiscussion.publish!(discussion: discussion,
                                    recipient_user_ids: users.pluck(:id),
-                                   recipient_audience: params[:recipient_audience])
+                                   recipient_audience: params[:recipient_audience],
+                                   recipient_message: params[:recipient_message])
 
   end
 

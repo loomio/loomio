@@ -1,7 +1,6 @@
 - user = item.user
 %table
   %tr
-    %td.icon
+    %td{valign: 'top'}
       = render "avatar", user: user
-    %td.content
-      %i= t(:"discussion_mailer.discussion_closed.inline", actor: user.name)
+    %td= t(:"discussion_mailer.discussion_closed.inline", actor: user.name)

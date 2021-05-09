@@ -1,5 +1,5 @@
 class DiscussionMailer < BaseMailer
-  helper DiscussionEmailHelper
+  helper EmailHelper
 
   layout 'discussion_mailer'
 

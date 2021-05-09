@@ -1,6 +1,6 @@
 class PollMailer < BaseMailer
-  helper PollEmailHelper
-  include PollEmailHelper
+  helper EmailHelper
+  include EmailHelper
 
   REPLY_DELIMITER = "--"
 

@@ -1,0 +1,3 @@
+- if event.recipient_message.present?
+  .text-body-2.font-italic.mt-2=raw render_plain_text(event.recipient_message, 'md')
+  %hr.v-divider.my-2.grey
