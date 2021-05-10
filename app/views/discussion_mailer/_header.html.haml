@@ -1,7 +1,10 @@
-%table
+%table.thread-mailer__subject
   %tr
     %td= render 'vtfy/avatar', user: event.user
     %td
-      .text-caption= t(:"discussion_mailer.#{action_name}.subject_html", actor: event.user.name, discussion: link_to(event.eventable.discussion.title, target_url(eventable: event.eventable, recipient: recipient, action_name: action_name)))
+      .text-caption= t(:"discussion_mailer.#{@action_name}.subject_html",
+                        actor: event.user.name,
+                        discussion: link_to(event.eventable.discussion.title,
+                        target_url(eventable: event.eventable, recipient: recipient)))
 
 = render 'base_mailer/recipient_message', event: event

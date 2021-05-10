@@ -41,10 +41,10 @@ module Dev::PollsHelper
                       title: poll_type,
                       details: 'fine print',
                       poll_option_names: options[poll_type.to_sym],
+                      closing_at: 3.days.from_now,
                       discussion: discussion)
       PollService.create(poll: poll, actor: actor)
 
-      # edit the poll
       PollService.update(poll: poll, params: {title: 'choose!'}, actor: actor)
 
       # vote on the poll

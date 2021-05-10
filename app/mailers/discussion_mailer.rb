@@ -1,8 +1,6 @@
 class DiscussionMailer < BaseMailer
   helper EmailHelper
 
-  layout 'discussion_mailer'
-
   REPLY_DELIMITER = "﻿﻿"*4 # surprise! this is actually U+FEFF
   %w(
     new_discussion

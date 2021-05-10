@@ -38,7 +38,7 @@ module PrettyUrlHelper
   end
 
   def polymorphic_title(model)
-    case model
+    case model.class
     when PaperTrail::Version   then model.item.title
     when Comment, Discussion   then model.discussion.title
     when Poll, Outcome, Stance then model.poll.title

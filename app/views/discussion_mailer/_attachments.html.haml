@@ -27,16 +27,16 @@
 
 - if resource.attachments.any?
   -# %h4= t :'common.attachments'
-  %ul.thread-mailer__list
-    - resource.files.each do |file|
-      - download_url = Rails.application.routes.url_helpers.rails_blob_url(file, only_path: false, host: ENV['CANONICAL_HOST'], port: ENV['CANONICAL_PORT'])
-      %div{style: "border: 1px solid #eee; border-radius: 4px; margin-bottom: 8px"}
-        - if file.representable?
-          - preview_url = Rails.application.routes.url_helpers.rails_representation_url(file.representation(HasRichText::PREVIEW_OPTIONS), only_path: false, host: ENV['CANONICAL_HOST'], port: ENV['CANONICAL_PORT'])
-          %a{href: download_url, target: '_blank'}
-            %div.link-preview__image{alt: file.blob.filename, style: "height: 128px; overflow: none; background: url('#{preview_url}') center / contain no-repeat)"}
-        .pa-2
-          %a.thread-mailer__file-attachment{href: download_url, target: '_blank'}>
-            %span.thread-mailer__file-attachment-filename.text-h6>= file.blob.filename
-          &nbsp;
-          %span.text-caption=number_to_human_size file.byte_size
+  -# %ul.thread-mailer__list
+  - resource.files.each do |file|
+    - download_url = Rails.application.routes.url_helpers.rails_blob_url(file, only_path: false, host: ENV['CANONICAL_HOST'], port: ENV['CANONICAL_PORT'])
+    %div{style: "border: 1px solid #eee; border-radius: 4px; margin-bottom: 8px"}
+      - if file.representable?
+        - preview_url = Rails.application.routes.url_helpers.rails_representation_url(file.representation(HasRichText::PREVIEW_OPTIONS), only_path: false, host: ENV['CANONICAL_HOST'], port: ENV['CANONICAL_PORT'])
+        %a{href: download_url, target: '_blank'}
+          %div.link-preview__image{alt: file.blob.filename, style: "height: 128px; overflow: none; background: url('#{preview_url}') center / contain no-repeat)"}
+      .pa-2
+        %a.thread-mailer__file-attachment{href: download_url, target: '_blank'}>
+          %span.thread-mailer__file-attachment-filename.text-h6>= file.blob.filename
+        &nbsp;
+        %span.text-caption=number_to_human_size file.byte_size

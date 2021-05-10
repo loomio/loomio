@@ -7,6 +7,6 @@
       - if comment.discarded?
         = t(:'thread_item.removed')
       - else
-        %b= comment.author.name
+        %span= comment.author.name
         .formatted-text= render_rich_text(comment.body, comment.body_format)
         = render "discussion_mailer/attachments", resource: comment if comment.documents.any?
