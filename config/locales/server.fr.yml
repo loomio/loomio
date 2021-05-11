@@ -129,6 +129,8 @@ fr:
   subscriptions:
     active: Active
     inactive: Inactive
+  base_mailer:
+    via_loomio: '%{name}(par %{site_name})'
   user_mailer:
     group_export_ready:
       subject: Export des données du groupe %{group_name}
@@ -227,6 +229,7 @@ fr:
     catch_up:
       daily_subject: Hier sur %{site_name}
       weekly_subject: La semaine dernière sur %{site_name}
+      other_subject: Récemment sur %{site_name}
       do_not_reply: Merci de ne pas répondre à ce courriel.
       mark_as_read: Marquer comme lu
       thanks_for_reading: Merci pour votre lecture, passez une bonne journée !

@@ -229,6 +229,7 @@ es:
     catch_up:
       daily_subject: Ayer en %{site_name}
       weekly_subject: Última semana en %{site_name}
+      other_subject: Recientemente en%{site_name}
       do_not_reply: Por favor no respondas a este email
       mark_as_read: Marcar como leído
       thanks_for_reading: Gracias por leer, ¡que tengas un buen día!

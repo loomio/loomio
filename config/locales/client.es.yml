@@ -139,6 +139,7 @@ es:
     time_zone: 'Zona horaria '
     local_time: Hora local
     attachments: Adjuntos
+    links: Enlaces
     active_time_ago: El último activo {{time_ago}}
     confirm_discard_changes: ¿Descartar tus cambios?
     time:
@@ -485,12 +486,16 @@ es:
     unpin_sidebar: "Desanclar barra lateral"
     enable_beta_features: "Permite funciones beta"
     disable_beta_features: "Deshabilita funciones beta"
+    enable_dark_mode: "Activa modo oscuro"
+    disable_dark_mode: "Desactiva modo oscuro"
     button_label: 'Menú del usuario'
     edit_profile: 'Editar perfil '
     email_settings: 'Ajustes de notificación'
     help: 'Ayuda'
     contact_site_name: 'Contacto {{site_name}}'
+    contact_support: 'Soporte al usuario'
     sign_out: 'Salir'
+    beta_collab: "Funciones Beta activadas"
   membership_card:
     group_members: "Integrantes del grupo"
     discussion_members: "Integrantes del hilo"
@@ -1232,17 +1237,23 @@ es:
     friday: Viernes
     saturday: Sábado
     sunday: Domingo
+    every_day: Todos los días
+    every_second_day: Cada dos días
     header: Ajustes de notificación
     account_deactivated: Tu cuenta ha sido desactivada. Ya nunca recibirás más emails.
     deactivate_header: Detén todos los emails para siempre
     deactivate_description: Si ya no quieres recibir ningún email de nosotros, puedes desactivar tu cuenta de usuario.
     email_newsletter: Boletín de noticias de Loomio
     email_newsletter_description: "Consigue actualizaciones acerca de las nuevas características, formación, eventos en tu ciudad y del futuro de Loomio. Generalmente 2 o 3 emails al año."
+    email_catch_up_day: Correo electrónico de resumen diario
+    daily_summary_description: |
+        Elija cuándo recibir el correo electrónico de resumen de puesta al día. Este correo electrónico contiene cualquier actividad nueva que no haya visto. Una buena manera de mantenerse al día si no eres un usuario regular.
     on_participation_label: 'Suscribirte a la participación '
     on_participation_description: "Cuando participes en un hilo, inmediatamente se te enviará toda la actividad subsiguiente por correo electrónico. "
     announcement_label: Anuncios
     announcement_description: "Recibirá notificaciones por correo electrónico sobre todos los contenido anunciados por personas en sus grupos."
     mentioned_label: 'Menciones y Respuestas '
+    mentioned_description: "Cuando alguien le mencione o responda directamente a su comentario, recibirás una notificación por correo electrónico"
     update_settings: Guardar cambios
     specific_groups: 'Configuración para grupos específicos  '
     default_settings:

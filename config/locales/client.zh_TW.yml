@@ -139,6 +139,7 @@ zh_TW:
     time_zone: 時區
     local_time: 本地時間
     attachments: 附件
+    links: 連結
     active_time_ago: 最後活躍 {{time_ago}}
     confirm_discard_changes: 丟棄您的變更？
     time:

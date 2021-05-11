@@ -1,9 +1,11 @@
 fr:
   loomio_onboarding:
     group_progress_card:
+      title: Commençons!
       activities:
         set_description: Saisissez une description pour votre groupe
         set_cover_photo: Envoyez une image de couverture ainsi qu'un logo pour votre groupe
+        customize_group: Ajoutez une photo de groupe, un logo et une description
         invite_people_in: Invitez des personnes
         start_thread: Lancez une discussion
         make_decision: Prenez une décision
@@ -12,8 +14,10 @@ fr:
       dismiss_this_card: Ignorer cette carte
   plan_names:
     free: Gratuit
+    starter: Starter
     trial: Essai
     pro: Pro
+    pro_nonprofit: Pro à but non lucratif
     community: Communauté
     small: Petite
     medium: Moyenne
@@ -23,6 +27,9 @@ fr:
   current_plan_button:
     upgrade: Changer d'offre
     buy_now: Acheter maintenant
+    is_old_plan: Les plans de tarification simplifiés de Loomio incluent des utilisateurs illimités
+    change_plan: Modifiez de plan
+    view_plans: Voir les plans
     free_trial: Essai gratuit.  {{days}} jours restants.
     trial_expired: Votre période d'essai est terminé. Passez dès maintenant en version premium pour continuer à utiliser Loomio en toute tranquillité.
     tooltip: "Nos prix sont imbattables ! Passez en version premium dès aujourd'hui et profitez de toutes les fonctionnalités de Loomio pour votre travail en groupe."
@@ -61,6 +68,7 @@ fr:
     tag_created: Mot-clé sauvegardé
     tag_destroyed: Tag supprimé
     tags_marked: Discussions marquées « {{name}} » dans {{groupName}}
+    no_tags_present: Aucune discussion n’a été trouvée avec ce tag ! Essayez avec un autre.
   reactions:
     slight_smile: J’aime
     heart: J’adore
