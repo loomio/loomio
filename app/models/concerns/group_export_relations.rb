@@ -3,12 +3,13 @@ module GroupExportRelations
 
   included do
     #tags
-    has_many :discussion_tags, through: :discussions
     has_many :tags
+
     # polls
-    has_many :discussion_polls, through: :discussions
     has_many :exportable_polls, -> { where("anonymous = false OR closed_at is not null") }, class_name: 'Poll', foreign_key: :group_id
 
+    has_many :discussion_taggings, through: :discussions, source: :taggings
+    has_many :poll_taggings, through: :exportable_polls, source: :taggings
     has_many :exportable_poll_options,          through: :exportable_polls, source: :poll_options
     has_many :exportable_outcomes,              through: :exportable_polls, source: :outcomes
     has_many :exportable_stances,               through: :exportable_polls, source: :stances
@@ -49,6 +50,13 @@ module GroupExportRelations
     has_many :exportable_poll_events,     through: :exportable_polls,     source: :events
     has_many :exportable_outcome_events,  through: :exportable_outcomes,  source: :events
     has_many :exportable_stance_events,   through: :exportable_stances,   source: :events
+  end
+
+  def all_taggings
+    Queries::UnionQuery.for(:taggings, [
+      self.discussion_taggings,
+      self.poll_taggings
+    ])
   end
 
   def all_groups

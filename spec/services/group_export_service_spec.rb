@@ -49,6 +49,7 @@ describe GroupExportService do
       expect(user.reload).to be_present
       expect(another_user.reload).to be_present
       expect(discussion.reload).to be_present
+      expect(discussion.reload.tags.length).to eq 3
       expect(sub_discussion.reload).to be_present
       expect(poll.reload).to be_present
       expect(sub_poll.reload).to be_present
