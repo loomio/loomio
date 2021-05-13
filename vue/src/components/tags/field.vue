@@ -25,7 +25,7 @@ export default
 </script>
 
 <template lang="pug">
-v-autocomplete.announcement-form__input(
+v-autocomplete.tags-field__input(
   v-if="model.groupId"
   multiple
   hide-selected
@@ -33,7 +33,7 @@ v-autocomplete.announcement-form__input(
   item-text='name'
   item-value='id'
   :label="$t('loomio_tags.tags')"
-  :items='model.group().parentOrSelf().tags()'
+  :items='items'
   :append-outer-icon="model.isA('discussion') ? 'mdi-tag-plus' : null"
   @click:append-outer="openTagsSelectModal"
   )
@@ -41,8 +41,8 @@ v-autocomplete.announcement-form__input(
     v-list-item
       v-list-item-content
         v-list-item-title
-          span(v-if="model.group().parentOrSelf().tags().length == 0" v-t="'loomio_tags.no_tags_in_group'")
-          span(v-if="model.group().parentOrSelf().tags().length" v-t="'common.no_results_found'")
+          span(v-if="items.length == 0" v-t="'loomio_tags.no_tags_in_group'")
+          span(v-if="items.length" v-t="'common.no_results_found'")
   template(v-slot:selection='data')
     v-chip.chip--select-multi(
       :value='data.item.id'
