@@ -18,3 +18,9 @@ export default class PollOptionModel extends BaseModel
 
   beforeRemove: ->
     @stances().each (stance) -> stance.remove()
+
+  optionName: ->
+    if @poll().translateOptionName()
+      @$t('poll_' + @poll.pollType + '_options.' + @name)
+    else
+      @name

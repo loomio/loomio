@@ -222,7 +222,7 @@ describe DiscussionQuery do
   describe 'tags' do
     let!(:tag) { create :tag, group_id: group.id, name: 'test', color: '#abc' }
     let!(:tagged_discussion) { create :discussion, author: author, private: true, group: group, tags: [tag] }
-    let!(:untagged_discussion) { create :discussion, author: author, private: true, group: group }
+    let!(:untagged_discussion) { create :discussion, author: author, private: true, group: group, tags: [] }
     let!(:group) { create :group }
 
     before do

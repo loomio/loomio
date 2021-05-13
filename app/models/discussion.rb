@@ -133,6 +133,10 @@ class Discussion < ApplicationRecord
              (dr.admin = TRUE AND dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL)')
   end
 
+  def guests
+    members.where('m.group_id is null')
+  end
+
   def add_guest!(user, inviter)
     if dr = discussion_readers.find_by(user: user)
       dr.update(inviter: inviter)

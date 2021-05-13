@@ -2,7 +2,7 @@
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
-import { sortBy, find, matchesProperty, take, map } from 'lodash'
+import { sortBy, find, matchesProperty, take, map, isEqual } from 'lodash'
 
 export default
   props:
@@ -14,7 +14,8 @@ export default
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
-        @pollOptions = @sortPollOptions(@stance.poll().pollOptions())
+        if !isEqual map(@pollOptions, 'name'), map(@stance.poll().pollOptions(), 'name')
+          @pollOptions = @sortPollOptions(@stance.poll().pollOptions())
 
   methods:
     submit: ->

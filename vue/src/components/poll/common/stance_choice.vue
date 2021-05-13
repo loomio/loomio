@@ -12,10 +12,6 @@ export default
     size:
       type: Number
       default: 24
-    hideScore:
-      type: Boolean
-      default: false
-
   data: ->
     optionColors: optionColors()
     optionImages: optionImages()
@@ -36,7 +32,6 @@ export default
       else
         @stanceChoice.pollOption().name
 
-
   methods:
     emitClick: -> @$emit('click')
 
@@ -54,11 +49,8 @@ export default
     v-avatar(tile :size="size" v-if='poll.hasOptionIcons()')
       img(:src="'/img/' + optionImages[pollOption.name] + '.svg'", :alt='optionName')
     span.body-2(v-if='!poll.hasOptionIcons()')
+      v-icon.mr-2(small :color="pollOption.color") mdi-check
       span {{ optionName }}
-      mid-dot(v-if="poll.pollType == 'poll' && poll.multipleChoice")
-      span(v-if="!hideScore && poll.hasVariableScore()")
-        mid-dot
-        span {{stanceChoice.rankOrScore}}
   span(v-if="poll.datesAsOptions()")
     v-chip(outlined :color="colorFor(stanceChoice.score)" @click="emitClick")
       poll-meeting-time(:name="optionName")

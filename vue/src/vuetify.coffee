@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify/lib'
 import '@mdi/font/css/materialdesignicons.css'
+import Session         from '@/shared/services/session'
 
 Vue.use(Vuetify)
 
@@ -12,7 +13,7 @@ useDarkMode = (window.matchMedia && window.matchMedia('(prefers-color-scheme: da
 export default new Vuetify(
   iconfont: 'mdi'
   theme:
-    # dark: useDarkMode
+    dark: false
     themes:
       light:
         primary: colors.amber.darken1

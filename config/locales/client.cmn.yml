@@ -764,7 +764,6 @@ cmn:
     deactivate_header: 永远停止所有电子邮件
     deactivate_description: 如果您不想要再从我们这里收到任何电子邮件，您可以停用您的使用者帐号。
     email_newsletter_description: "取得关于新功能、培训、在您居住的城市中的活动、Loomio 的未来等更新。通常是每年 2 至 3 封电子邮件。"
-    daily_summary_description: "每天早上，您都会收到一封关于您前一天错过了哪些动态的电子邮件。这让您可以更容易地保持最新状态。"
     announcement_label: 公告
     announcement_description: "您将会收到一封关于所有在您的群组中已被伙伴宣布的内容的电子邮件"
     update_settings: 保存变更

@@ -20,6 +20,7 @@ export default
   created: ->
     Session.updateLocale(@$route.query.locale) if @$route.query.locale
 
+    @$vuetify.theme.dark = Session.user().experiences['darkMode']
     each AppConfig.theme.vuetify, (value, key) =>
       @$vuetify.theme.themes.light[key] = value if value
       true
@@ -81,12 +82,12 @@ v-app.app-is-booted
 
 <style lang="sass">
 
-.strand-page [id]::before
-  content: ''
-  display: block
-  height:      72px
-  margin-top: -72px
-  visibility: hidden
+// .strand-page [id]::before
+//   content: ''
+//   display: block
+//   height:      72px
+//   margin-top: -72px
+//   visibility: hidden
 
 .v-application .body-2
   font-size: 15px !important

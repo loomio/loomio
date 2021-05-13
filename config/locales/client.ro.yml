@@ -453,6 +453,13 @@ ro:
   change_picture_form:
     use_gravatar: 'Foloseste Gravatar'
   email_settings_page:
+    monday: Luni
+    tuesday: Marti
+    wednesday: Miercuri
+    thursday: Joi
+    friday: Vineri
+    saturday: Sambata
+    sunday: Duminica
     announcement_label: Anunturi
   dashboard_page:
     aria_label: 'Tablou de bord'

@@ -926,20 +926,24 @@ hu:
     you_can_reactivate: "Később újra aktiválhatja fiókját, ha szeretné"
     submit: 'Igen, szeretnék kikapcsolni'
   email_settings_page:
+    monday: Hétfő
+    tuesday: Kedd
+    wednesday: Szerda
+    thursday: Csütörtök
+    friday: Péntek
+    saturday: Szombat
+    sunday: Vasárnap
     header: Értesítési beállítások
     account_deactivated: Fiókját inaktiválták. Soha nem fog e-mailt kapni.
     deactivate_header: Állítson le minden e-mailt örökre
     deactivate_description: Ha soha többé nem szeretne új e-mailt kapni tőlünk, deaktiválhatja felhasználói fiókját.
     email_newsletter: Loomio hírlevél
     email_newsletter_description: "Frissítse az új funkciókat, képzéseket, eseményeket a városában és a Loomio jövőjét. Általában 2 vagy 3 e-mail évente."
-    daily_summary_label: Napi összefoglaló e-mail
-    daily_summary_description: "Minden reggel kap egy e-mailt minden olyan tevékenységről, amelyről elmulasztott az előző nap. Ez megkönnyíti a tevékenységek naprakészen tartását."
     on_participation_label: Feliratkozás a részvételre
     on_participation_description: "Amikor részt vesz egy témában, az összes további tevékenységet azonnal elküldjük Önnek e-mailben."
     announcement_label: Bejelentések
     announcement_description: "E-mailt fog kapni az összes olyan tartalomról, amelyet a csoportok tagjai bejelentettek"
     mentioned_label: Megemlíti és válaszokat
-    mentioned_description: "Amikor valaki megemlít téged egy megjegyzésben vagy válaszol neked, értesítési e-mailt fog kapni"
     update_settings: Változtatások mentése
     specific_groups: Beállítások az egyes csoportokhoz
     default_settings:

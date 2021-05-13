@@ -428,7 +428,13 @@ ga_IE:
   deactivation_modal:
     introduction: 'Nuair a dhíghníomhachtaíonn tú do chuntas:'
   email_settings_page:
-    daily_summary_label: Ríomhphost le hachoimre laethúil
+    monday: Dé Luain
+    tuesday: Dé Máirt
+    wednesday: Dé Céadaoin
+    thursday: Déardaoin
+    friday: Dé hAoine
+    saturday: Dé Sathairn
+    sunday: Dé Domhnaigh
     announcement_label: Fógraí
     edit: Eagar
     messages:

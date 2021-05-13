@@ -102,6 +102,7 @@ module.exports = {
   PollCommonSettings: 'poll/common/settings',
   PollCommonStance: 'poll/common/stance',
   PollCommonStanceChoice: 'poll/common/stance_choice',
+  PollCommonStanceChoices: 'poll/common/stance_choices',
   PollCommonStanceIcon: 'poll/common/stance_icon',
   PollCommonStanceReason: 'poll/common/stance_reason',
   PollCommonStartForm: 'poll/common/start_form',

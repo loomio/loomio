@@ -73,13 +73,11 @@ export default
       .poll-common-votes-panel__stance-content
         .poll-common-votes-panel__stance-name-and-option
           v-layout.body-2(align-center)
-            .pr-2 {{ stance.participantName() }}
+            .pr-2.text--secondary {{ stance.participantName() }}
             poll-common-stance-choice(v-if="poll.showResults() && stance.castAt && poll.singleChoice()" :poll="poll" :stance-choice="stance.stanceChoice()")
             span.caption(v-if='!stance.castAt' v-t="'poll_common_votes_panel.undecided'" )
         .poll-common-stance(v-if="poll.showResults() && stance.castAt")
-          span.caption(v-if='stance.totalScore() == 0' v-t="'poll_common_votes_panel.none_of_the_above'" )
-          v-layout(v-if="!poll.singleChoice()" wrap align-center)
-            poll-common-stance-choice(:stance-choice='choice' :poll='poll' v-if='choice.show()' v-for='choice in stance.orderedStanceChoices()' :key='choice.id')
+          poll-common-stance-choices(:stance='stance')
           formatted-text.poll-common-stance-created__reason(:model="stance" column="reason")
     v-btn(v-if='!loader.exhausted' v-t="'common.action.load_more'" @click='loader.fetchRecords({per: 50})')
 </template>

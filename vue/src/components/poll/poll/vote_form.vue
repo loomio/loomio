@@ -1,7 +1,7 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
-import { compact, sortBy, without } from 'lodash'
+import { compact, sortBy, without, isEqual, map } from 'lodash'
 import { onError } from '@/shared/helpers/form'
 
 export default
@@ -17,7 +17,8 @@ export default
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
-        @pollOptions = @stance.poll().pollOptions() if @stance.poll()
+        if !isEqual map(@pollOptions, 'name'), map(@stance.poll().pollOptions(), 'name')
+          @pollOptions = @stance.poll().pollOptions() if @stance.poll()
 
   computed:
     poll: -> @stance.poll()

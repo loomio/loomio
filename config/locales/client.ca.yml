@@ -467,7 +467,6 @@ ca:
     help: 'Ajuda'
     contact_site_name: 'Contacta {{site_name}}'
     sign_out: 'Tanca la sessió'
-    beta_collab: "Edició col.laborativa en temps real de les discussions i les propostes, esborranys de comentaris guardats automàticament"
   membership_card:
     group_members: "Membres del grup"
     discussion_members: "Membres del fil"
@@ -1128,20 +1127,24 @@ ca:
     submit: 'Si, vull desactivar-lo'
     submit_delete: 'Elimina el meu compte ara'
   email_settings_page:
+    monday: Dilluns
+    tuesday: Dimarts
+    wednesday: Dimecres
+    thursday: Dijous
+    friday: Divendres
+    saturday: Dissabte
+    sunday: Diumenge
     header: Preferències de notificacions
     account_deactivated: S'ha desactivat el vostre compte. Mai més rebreu cap correu de Loomio.
     deactivate_header: No tornar a rebre cap correu
     deactivate_description: Si no voleu tornar a rebre correus de Loomio, podeu desactivar el vostre compte d'usuari.
     email_newsletter: Butlletí de Loomio
     email_newsletter_description: "Rebeu actualitzacions sobre noves característiques, formació, esdeveniments a la vostra ciutat i el futur de Loomio. Normalment 2 o 3 correus electrònics a l'any."
-    daily_summary_label: Correu electrònic de resum diari
-    daily_summary_description: "Cada matí rebreu un correu electrònic amb qualsevol activitat que us hagueu perdut del dia anterior. Això facilita estar al dia de l'activitat."
     on_participation_label: Subscriure sota participació
     on_participation_description: "Quan participeu en un fil, se us començaran a enviar correus electrònics sobre la seva activitat."
     announcement_label: Avisos
     announcement_description: "Rebreu un correu sobre tot el contingut que s'ha anunciat per usuaris en els vostres grups"
     mentioned_label: Mencions i respostes
-    mentioned_description: "Quan algú us mencioni en un comentari o rebeu una resposta, rebreu una notificació per correu electrònic."
     update_settings: Desa els canvis
     specific_groups: Configuració per grups específics
     default_settings:

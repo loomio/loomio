@@ -35,8 +35,7 @@ export default
     tbody
       tr(v-for='option in rankedOptions' :key="option.name")
         td.min {{option.rank}}
-        td
-          poll-common-stance-choice(:poll="poll" :stance-choice="option" hide-score)
+        td {{option.name}}
         td {{option.score}}
 </template>
 <style lang="sass">

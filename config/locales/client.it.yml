@@ -489,7 +489,6 @@ it:
     help: 'Aiuto'
     contact_site_name: 'Contatto {{site_name}}'
     sign_out: 'Esci'
-    beta_collab: "Revisione collaborative in tempo reale su discussioni e proposte, salvata automaticamente la bozza di commenti"
   membership_card:
     group_members: "Membri del gruppo"
     discussion_members: "Membri della discussione"
@@ -1204,16 +1203,20 @@ it:
     submit: 'Sì, voglio disattivare'
     submit_delete: 'Elimina subito l''account personale'
   email_settings_page:
+    monday: Lunedì
+    tuesday: Martedì
+    wednesday: Mercoledì
+    thursday: Giovedì
+    friday: Venerdì
+    saturday: Sabato
+    sunday: Domenica
     header: Impostazioni notifiche
     email_newsletter: Loomio Newsletter
     email_newsletter_description: "Ricevi aggiornamenti di nuove funzioni, di trainings, eventi nella tua città e sul futuro di Loomio. Di solito due o tre email all'anno."
-    daily_summary_label: Notifica giornaliera
-    daily_summary_description: "Ogni mattina riceverai una email contenente la notifica di ogni attività che hai perso il giorno prima. Questo ti permetterà di rimanere al corrente di tutte le attività."
     on_participation_label: Notifica per participazione
     on_participation_description: "Quando partecipi ad una discussione, tutte le successive attività ti verranno notificate via email immediatamente."
     announcement_label: Annunci
     mentioned_label: Notifica menzioni e risposte
-    mentioned_description: "Quando qualcuno ti menziona in un commento o una risposta, verrai notificato via email."
     update_settings: Salva modifiche
     specific_groups: Impostazioni per gruppi specifici
     default_settings:

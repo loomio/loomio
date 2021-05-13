@@ -229,6 +229,7 @@ zh_TW:
     catch_up:
       daily_subject: 昨日 %{site_name}
       weekly_subject: 上週在 %{site_name}
+      other_subject: 最近於 %{site_name}
       do_not_reply: 請不要回覆此封電子郵件。
       mark_as_read: 設為已讀
       thanks_for_reading: 感謝您的閱讀，祝您有美好的一天！

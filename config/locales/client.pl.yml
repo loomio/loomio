@@ -476,7 +476,6 @@ pl:
     help: 'Pomoc'
     contact_site_name: 'Kontakt z {{site_name}}'
     sign_out: 'Wyloguj się'
-    beta_collab: "Wspólna edycja dyskusji i propozycji w czasie rzeczywistym, automatyczne zapisywanie komentarzy roboczych"
   membership_card:
     group_members: "Osoby w tej grupy"
     discussion_members: "Osoby w tym wątku"
@@ -1152,14 +1151,11 @@ pl:
     deactivate_description: Jeśli nigdy więcej nie chcesz otrzymywać od nas wiadomości e-mail, możesz dezaktywować swoje konto użytkownika.
     email_newsletter: ' Newsletter Loomio'
     email_newsletter_description: "Otrzymuj powiadomienia o nowych funkcjach, szkoleniach, wydarzeniach w Twoim mieście i przyszłości Loomio. Zwykle 2 lub 3 wiadomości e-mail rocznie."
-    daily_summary_label: Wiadomość e-mail z podsumowaniem dnia
-    daily_summary_description: "Każdego ranka otrzymasz wiadomość e-mail z wszelkimi zdarzeniami, które przegapiłaś/eś dzień wcześniej. Ułatwia to śledzenie aktywności."
     on_participation_label: Na podstawie Twojej aktywności
     on_participation_description: "Gdy weźmiesz udział w wątku, cała dalsza aktywność zostanie natychmiast wysłana do Ciebie e-mailem."
     announcement_label: Ogłoszenia
     announcement_description: "Otrzymasz wiadomość e-mail o wszystkich treściach ogłoszonych przez osoby w Twoich grupach"
     mentioned_label: Wzmianki i odpowiedzi
-    mentioned_description: "Gdy ktoś wspomni o Tobie w komentarzu lub odpowie na Twój komentarz, otrzymasz wiadomość e-mail z powiadomieniem"
     update_settings: Zapisz zmiany
     specific_groups: Ustawienia dla określonych grup
     default_settings:

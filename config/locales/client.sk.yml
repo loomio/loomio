@@ -102,6 +102,14 @@ sk:
     locale_label: 'Jazyk'
   change_picture_form:
     use_gravatar: 'Použiť Gravatar'
+  email_settings_page:
+    monday: Pondelok
+    tuesday: Utorok
+    wednesday: Streda
+    thursday: Štvrtok
+    friday: Piatok
+    saturday: Sobota
+    sunday: Nedeľa
   dashboard_page:
     aria_label: 'Ovládací panel'
     mark_as_read: Označiť ako prečítané

@@ -490,7 +490,6 @@ nl_NL:
     help: 'Hulp'
     contact_site_name: 'Contacteer {{site_name}}'
     sign_out: 'Uitloggen'
-    beta_collab: "Tegelijk samen discussies en voorstellen wijzigen, automatisch opslaan van concept reacties"
   membership_card:
     group_members: "Groepsleden"
     discussion_members: "Bord leden"
@@ -1179,20 +1178,24 @@ nl_NL:
     submit: 'Ja ik wil deactiveren'
     submit_delete: 'Verwijder mijn account nu'
   email_settings_page:
+    monday: maandag
+    tuesday: dinsdag
+    wednesday: woensdag
+    thursday: donderdag
+    friday: vrijdag
+    saturday: zaterdag
+    sunday: zondag
     header: Melding instellingen
     account_deactivated: Jouw account werd gedeactiveerd. Je zult nooit e-mails ontvangen.
     deactivate_header: Stop alle e-mails voor altijd
     deactivate_description: Als je nooit nog e-mails van ons wil ontvangen, kun je je gebruikersaccount deactiveren.
     email_newsletter: Loomio Nieuwsbrief
     email_newsletter_description: "Ontvang updates over nieuwe features, training, evenementen in jouw stad en de toekomst van Loomio. Meestal 2 of 3 e-mails per jaar."
-    daily_summary_label: Dagelijkse samenvatting per e-mail
-    daily_summary_description: "Iedere morgen krijg je een e-mail met de gemiste activiteiten van de dag ervoor. Zo is het gemakkelijk om op de hoogte te blijven van alle activiteiten."
     on_participation_label: Abonneer op deelname
     on_participation_description: "Als je deelneemt aan een bord, wordt alle verdere activiteit direct naar je gemaild."
     announcement_label: Aankondigingen
     announcement_description: "Je zult een e-mail ontvangen over alle inhoud die door personen werden aangekondigd in jouw groepen."
     mentioned_label: Vermeldingen & Antwoorden
-    mentioned_description: "Als iemand jou in een reactie vermeld of op jou antwoord, ontvang je een e-mailmelding"
     update_settings: Bewaar veranderingen
     specific_groups: Instellingen voor specifieke groepen
     default_settings:

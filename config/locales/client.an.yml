@@ -102,6 +102,14 @@ an:
     locale_label: 'Idioma'
   change_picture_form:
     use_gravatar: 'Usar Gravatar'
+  email_settings_page:
+    monday: Luns
+    tuesday: Martes
+    wednesday: Mierques
+    thursday: Chueves
+    friday: Viernes
+    saturday: Sabado
+    sunday: Domingo
   dashboard_page:
     aria_label: 'Panel de control'
     mark_as_read: Marcar como leyiu

@@ -148,6 +148,7 @@ en:
     time_zone: Time zone
     local_time: Local time
     attachments: Attachments
+    links: Links
     active_time_ago: Last active {{time_ago}}
     confirm_discard_changes: Discard your changes?
     time:
@@ -520,13 +521,16 @@ en:
     unpin_sidebar: "Unpin sidebar"
     enable_beta_features: "Enable beta features"
     disable_beta_features: "Disable beta features"
+    enable_dark_mode: "Enable Dark mode"
+    disable_dark_mode: "Disable Dark mode"
     button_label: 'User menu'
     edit_profile: 'Edit profile'
     email_settings: 'Notification settings'
     help: 'Help'
     contact_site_name: 'Contact {{site_name}}'
+    contact_support: 'Contact support'
     sign_out: 'Sign out'
-    beta_collab: "Real-time collaborative editing on discussions and proposals, auto saved draft comments"
+    beta_collab: "🧪 Beta features enabled!"
 
   membership_card:
     group_members: "Group members"
@@ -1327,6 +1331,7 @@ en:
     saturday: Saturday
     sunday: Sunday
     every_day: Every day
+    every_second_day: Every second day
     never: Off
     header: Notification settings
     account_deactivated: Your account has been deactivated. You will not receive any emails, ever.

@@ -526,7 +526,13 @@ da:
     no_longer_group_member: 'Du vil ikke længere bliver vist som medlem i nogen grupper'
     submit: 'Ja, jeg vil stadig gerne deaktivere'
   email_settings_page:
-    daily_summary_label: Send resumé email hver dag
+    monday: Mandag
+    tuesday: Tirsdag
+    wednesday: Onsdag
+    thursday: Torsdag
+    friday: Fredag
+    saturday: Lørdag
+    sunday: Søndag
     on_participation_label: Abonnér ved deltagelse
     on_participation_description: "Når du deltager i en debat, så vil all fremtidig aktivitet i denne debat bliver emailet til dig med det samme."
     announcement_label: Normal

@@ -10,7 +10,7 @@ EventBus.configure do |config|
                 'outcome_created_event',
                 'poll_closed_by_user_event') do |event|
     if event.discussion
-      reader = DiscussionReader.for_model(event.discussion, event.real_user)
+      reader = DiscussionReader.for_model(event.discussion, event.user || event.eventable.real_participant)
                                .update_reader(ranges: event.sequence_id,
                                               volume: :loud)
       # MessageChannelService.publish_models([reader], root: :discussions, user_id: event.real_user.id)

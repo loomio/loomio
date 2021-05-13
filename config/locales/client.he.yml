@@ -795,16 +795,20 @@ he:
     you_can_reactivate: "אם תרצה, תוכל לאקטב את החשבון שלך מחדש בשלב מאוחר יותר "
     submit: 'כן, אני רוצה להשבית'
   email_settings_page:
+    monday: יום שני
+    tuesday: יום שלישי
+    wednesday: יום רביעי
+    thursday: יום חמישי
+    friday: יום שישי
+    saturday: יום שבת
+    sunday: יום ראשון
     email_newsletter: הניוזלטר של לומיו
     email_newsletter_description: "קבל עדכונים על פיצ'רים חדשים, הדרכות, אירועים בעיר שלך ועתיד לומיו. בד\"כ 2-3 מיילים בשנה."
-    daily_summary_label: סיכום יומי במייל
-    daily_summary_description: "בכל יום תקבל מייל עם כל פעילות שפספסת ביום שלפני. כך תוכל לשאר מעודכן עם הפעילות."
     on_participation_label: הרשם בהשתתפות
     on_participation_description: "כשאתה משתתף בשיחה, כל פעילות עתידית תשלח אליך למייל באופן מיידי."
     announcement_label: הודעות
     announcement_description: "אתה תקבל מייל בנוגע לכל תוכן שמוכרז ע\"י אנשים בקבוצות שלך"
     mentioned_label: איזכורים ותגובות
-    mentioned_description: "כשמישהו מזכיר אותך בתגובה או במענה לך, אתה תקבל הודעה על כך במייל"
     update_settings: שמור שינויים
     specific_groups: הגדרות לקבוצות ספציפיות
     default_settings:

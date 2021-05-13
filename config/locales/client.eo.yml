@@ -430,6 +430,13 @@ eo:
   change_picture_form:
     use_gravatar: 'Uzi Gravataron'
   email_settings_page:
+    monday: Lundo
+    tuesday: Mardo
+    wednesday: Merkredo
+    thursday: Ĵaŭdo
+    friday: Vendredo
+    saturday: Sabato
+    sunday: Dimanĉo
     edit: Redakti
   dashboard_page:
     aria_label: 'Supervidpanelo'

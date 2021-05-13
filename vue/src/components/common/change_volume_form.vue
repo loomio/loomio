@@ -25,6 +25,12 @@ export default
     formChanged: ->
       (@volume != @defaultVolume()) || (@applyToAll != @defaultApplyToAll())
 
+    title: ->
+      switch @model.constructor.singular
+        when 'discussion' then @model.title
+        when 'membership' then @model.group().name
+        when 'user'       then @model.name
+
   methods:
     submit: ->
       @model.saveVolume(@volume, @applyToAll)
@@ -52,7 +58,6 @@ export default
       else
         "change_volume_form.#{key || @model.constructor.singular}"
 
-
     groupName: ->
       if @model.groupName
         @model.groupName()
@@ -72,7 +77,7 @@ v-card.change-volume-form
   form
     submit-overlay(:value='model.processing')
     v-card-title
-      h1.headline.change-volume-form__title(v-t="{ path: translateKey() + '.title', args: { title: model.title || model.name || groupName() } }")
+      h1.headline.change-volume-form__title(v-t="{ path: translateKey() + '.title', args: { title: title } }")
       v-spacer
       dismiss-modal-button(v-if="showClose")
     v-card-text

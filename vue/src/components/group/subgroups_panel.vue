@@ -1,5 +1,6 @@
 <script lang="coffee">
 import Records        from '@/shared/services/records'
+import Session        from '@/shared/services/session'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import { debounce, some, every } from 'lodash'
@@ -38,8 +39,14 @@ export default
 
   methods:
     findRecords: ->
-      chain = Records.groups.collection.chain().
+      memberIds = Records.memberships.find(userId: Session.user().id).map (m) -> m.groupId
+      visibleIds = Records.groups.collection.chain().
                      find(parentId: @group.id).
+                     find(groupPrivacy: {$in: ['closed', 'open']}).data().map (g) -> g.id
+      console.log memberIds, visibleIds
+
+      chain = Records.groups.collection.chain().
+                     find(parentId: @group.id, id: {$in: memberIds.concat(visibleIds)}).
                      simplesort('name')
 
       if @$route.query.q

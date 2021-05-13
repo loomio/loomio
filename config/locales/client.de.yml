@@ -491,7 +491,6 @@ de:
     help: 'Hilfe'
     contact_site_name: '{{site_name}} kontaktieren'
     sign_out: 'Abmelden'
-    beta_collab: "Gemeinsame Bearbeitung von Diskussionen und Vorschlägen in Echtzeit und automatisch gespeicherte Entwurfskommentare"
   membership_card:
     group_members: "Mitglieder der Gruppe"
     discussion_members: "Diskussionsteilnehmer"
@@ -1226,20 +1225,24 @@ de:
     submit: 'Ja, deaktiveren'
     submit_delete: 'Lösche meinen Account jetzt'
   email_settings_page:
+    monday: Montag
+    tuesday: Dienstag
+    wednesday: Mittwoch
+    thursday: Donnerstag
+    friday: Freitag
+    saturday: Samstag
+    sunday: Sonntag
     header: Benachrichtigungseinstellungen
     account_deactivated: 'Dein Konto wurde deaktiviert. Du wirst ab jetzt keine E-mails mehr erhalten. '
     deactivate_header: Alle E-Mails dauerhaft abbestellen
     deactivate_description: Wenn du nie wieder E-Mails von uns erhalten möchtest, kannst du dein Benutzerkonto hier deaktivieren.
     email_newsletter: Loomio Newsletter
     email_newsletter_description: "Neuigkeiten zu neuen Funktionen, Schulungsangeboten und Veranstaltungen in deiner Stadt und zur zukünftigen Entwicklung von Loomio erhalten (ca. 2-3 E-Mails pro Jahr)."
-    daily_summary_label: Tägliche Übersichts-E-Mail
-    daily_summary_description: "Sie erhalten jeden Morgen eine E-Mail mit allen Aktivitäten des Vortages. So bleiben Sie stets auf dem Laufenden über alle Aktivitäten."
     on_participation_label: Benachrichtigungen automatisch aktivieren bei Teilnahme
     on_participation_description: "Wenn Sie an einer Diskussion teilnehmen, werden Sie zukünftig automatisch über alle Aktivitäten in dieser Diskussion per E-Mail informiert."
     announcement_label: Nur Ankündigungen
     announcement_description: "Sie erhalten eine E-Mail über alle Inhalte, die von Personen in Ihren Gruppen angekündigt wurden"
     mentioned_label: Erwähnungen und Antworten
-    mentioned_description: "Wenn jemand Sie in einem Kommentar erwähnt oder Ihnen antwortet, erhalten Sie eine Benachrichtigungs-E-Mail"
     update_settings: Änderungen speichern
     specific_groups: Einstellungen für einzelne Gruppen
     default_settings:

@@ -101,6 +101,10 @@ module Dev::Scenarios::Discussion
     @group.add_admin! patrick
     @group.add_member! jennifer
     discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: @group)
+    discussion.files.attach(io: File.open(Rails.root.join('spec', 'fixtures', 'images', 'strongbad.png')),
+                            filename: 'strongbad.png',
+                            content_type: 'image/jpeg')
+
     DiscussionService.create(discussion: discussion, actor: patrick, params: {recipient_user_ids: [jennifer.id]})
     last_email
   end

@@ -466,7 +466,6 @@ ko:
     help: '도움말'
     contact_site_name: '{{site_name}}에 문의'
     sign_out: '회원탈퇴'
-    beta_collab: "실시간 토론 및 제안 공동 편집, 자동 드래프트 댓글 저장"
   membership_card:
     group_members: "그룹 멤버"
     discussion_members: "스레드에 참여중인 멤버"
@@ -1134,14 +1133,11 @@ ko:
     deactivate_description: 저희들에게 더는 메일을 받지 않으려면 당신의 사용자 계정을 비활성화 시킬 수 있습니다.
     email_newsletter: Loomio 뉴스레터
     email_newsletter_description: "새로운 기능, 교육, 도시의 이벤트 및 Loomoi의 미래에 대한 알림을 받습니다. 일반적으로 연간 2, 3개의 이메일이 발송 됩니다."
-    daily_summary_label: 일별 요약 이메일
-    daily_summary_description: "매일 아침 전날 놓친 활동이 담긴 이메일을 받게 됩니다. 이를 통해 활동에 대한 최신 정보를 쉽게 확인 할 수 있습니다."
     on_participation_label: 참여 신청
     on_participation_description: "스레드에 참여하면, 더욱 많은 행동들이 즉시 당신에게 이메일로 전송됩니다. "
     announcement_label: 공지사항
     announcement_description: "그룹 사람들이 게시한 모든 컨텐츠에 대한 이메일을 받게 됩니다."
     mentioned_label: 언급 및 답변
-    mentioned_description: "댓글에서 누군가가 당신을 언급하거나 당신에게 대답하면 당신은 알림 이메일을 받습니다."
     update_settings: 변경 저장
     specific_groups: 특별한 그룹에 적용
     default_settings:

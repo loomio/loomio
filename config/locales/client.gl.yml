@@ -101,6 +101,14 @@ gl:
     locale_label: 'Lingua'
   change_picture_form:
     use_gravatar: 'Usar Gravatar'
+  email_settings_page:
+    monday: Luns
+    tuesday: Martes
+    wednesday: Mércores
+    thursday: Xoves
+    friday: Venres
+    saturday: Sábado
+    sunday: Domingo
   dashboard_page:
     aria_label: 'Panel de control'
     threads_from:

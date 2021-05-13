@@ -139,6 +139,7 @@ zh_TW:
     time_zone: 時區
     local_time: 本地時間
     attachments: 附件
+    links: 連結
     active_time_ago: 最後活躍 {{time_ago}}
     confirm_discard_changes: 丟棄您的變更？
     time:
@@ -485,13 +486,16 @@ zh_TW:
     unpin_sidebar: "取消釘選側邊欄"
     enable_beta_features: "啟用測試版功能"
     disable_beta_features: "停用測試版功能"
+    enable_dark_mode: "啟用深色模式"
+    disable_dark_mode: "停用深色模式"
     button_label: '使用者選單'
     edit_profile: '編輯簡歷'
     email_settings: '通知設定'
     help: '教學文件'
     contact_site_name: '聯絡 {{site_name}}'
+    contact_support: '聯絡支援'
     sign_out: '登出'
-    beta_collab: "討論與提案的即時協作編輯，自動儲存草稿留言"
+    beta_collab: "\U0001F9EA 已啟用測試版功能！"
   membership_card:
     group_members: "群組成員"
     discussion_members: "討論串成員"
@@ -1226,20 +1230,30 @@ zh_TW:
     submit: '是的，我想要停用'
     submit_delete: '現在刪除我的帳號'
   email_settings_page:
+    monday: 星期一
+    tuesday: 星期二
+    wednesday: 星期三
+    thursday: 星期四
+    friday: 星期五
+    saturday: 星期六
+    sunday: 星期日
+    every_day: 每天
+    every_second_day: 每兩天
     header: 通知設定
     account_deactivated: 您的帳號已被停用。您將不會再收到任何電子郵件。
     deactivate_header: 永遠停止所有電子郵件
     deactivate_description: 如果您不想要再從我們這裡收到任何電子郵件，您可以停用您的使用者帳號。
     email_newsletter: Loomio 通訊
     email_newsletter_description: "取得關於新功能、訓練、在您居住的城市中的活動、Loomio 的未來等更新。通常是每年 2 至 3 封電子郵件。"
-    daily_summary_label: 每日摘要電子郵件
-    daily_summary_description: "每天早上，您都會收到一封關於您前一天錯過了哪些動態的電子郵件。這讓您可以更容易地保持最新狀態。"
+    email_catch_up_day: 追蹤摘要電子郵件
+    daily_summary_description: |
+        選擇何時要接收追蹤電子郵件。此電子郵件包含了您尚未看到的任何新活動。如果您不是經常使用的使用者，這是追蹤最新狀態的好方法。
     on_participation_label: 參與時訂閱
     on_participation_description: "當您參與討論串時，之後所有的動態都會即時寄給您。"
     announcement_label: 公告
     announcement_description: "您將會收到一封關於所有在您的群組中已被夥伴宣佈的內容的電子郵件"
     mentioned_label: 提及與回覆
-    mentioned_description: "當某人在評論中提及您或回覆您時，您將會收到一封通知電子郵件"
+    mentioned_description: "當某人在評論中@提及您或回覆您時，您將會收到一封通知電子郵件"
     update_settings: 儲存變更
     specific_groups: 特定群組的設定
     default_settings:
