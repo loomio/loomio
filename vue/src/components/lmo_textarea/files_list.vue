@@ -9,7 +9,7 @@ export default
 
 <template lang="pug">
 .files-list(v-if="files.length")
-  v-card.mt-3(outlined)(v-for="wrapper in files" :key="wrapper.key")
+  v-card.mt-3(outlined v-for="wrapper in files" :key="wrapper.key")
     v-card-title.files-list__item.text--secondary
       v-icon.mr-2.files-list__icon mdi-image
       a.files-list__file-name(v-if="wrapper.blob" :href="wrapper.blob.download_url" target="_blank") {{wrapper.file.name}}
