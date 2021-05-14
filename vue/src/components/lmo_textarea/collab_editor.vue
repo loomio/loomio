@@ -33,24 +33,19 @@ import TableCell from '@tiptap/extension-table-cell'
 import TableHeader from '@tiptap/extension-table-header'
 import TableRow from '@tiptap/extension-table-row'
 import Table from '@tiptap/extension-table'
-import TaskItem from '@tiptap/extension-task-item'
 import TaskList from '@tiptap/extension-task-list'
+import {CustomTaskItem} from './extension_custom_task_item'
 import TextStyle from '@tiptap/extension-text-style'
 import TextAlign from '@tiptap/extension-text-align'
 import Text from '@tiptap/extension-text'
 import Typography from '@tiptap/extension-typography'
 import Underline from '@tiptap/extension-underline'
-import {CustomMention} from './mention'
-import {CustomImage} from './image'
+import {CustomMention} from './extension_mention'
+import {CustomImage} from './extension_image'
 import {TextColor} from './extension_text_color'
+import {Iframe} from './extension_iframe'
 
 import { Editor, EditorContent, VueRenderer } from '@tiptap/vue-2'
-
-import {Iframe} from './iframe'
-# import TodoItem from './todo_item'
-
-# import { insertText } from 'tiptap-commands'
-# import Image from '@/shared/tiptap_extentions/image.js'
 
 import {getEmbedLink} from '@/shared/helpers/embed_link.coffee'
 
@@ -60,8 +55,6 @@ import Attaching from './attaching.coffee'
 import {compact, uniq, throttle, difference, reject, uniqBy} from 'lodash'
 import TextHighlightBtn from './text_highlight_btn'
 import TextAlignBtn from './text_align_btn'
-
-# import io from 'socket.io-client'
 
 export default
   mixins: [CommonMentioning, HtmlMentioning, Attaching]
@@ -131,6 +124,8 @@ export default
         TableHeader
         TableRow
         TableCell
+        TaskList
+        CustomTaskItem
         Typography
         TextAlign
         TextStyle
@@ -139,81 +134,11 @@ export default
       ]
       content: @model[@field]
       onUpdate: @updateModel
-    # @onInit({doc: null, version: 0})
-    # @socket = io(@tiptapAddress())
-    #   .on('init', (data) => @onInit(data))
-    #   .on('update', (data) =>
-    #     @nditor.extensions.options.collaboration.update(data)
-    #     @editor.extensions.options.collaboration.updateCursors(data)
-    #   )
-    #   .on('getCount', (count) => @setCount(count))
-    #   .on('cursorupdate', (data) =>
-    #     this.editor.extensions.options.collaboration.updateCursors(data)
-    #   )
 
   watch:
     'shouldReset': 'reset'
 
   methods:
-    # onInit: ({doc, version}) ->
-    #   @loading = false
-    #   @editor.destroy() if @editor
-    #
-    #   @editor = new Editor
-    #     extensions: [
-    #       Link(),
-    #       new Mention(MentionPluginConfig.bind(@)()),
-    #       new Blockquote(),
-    #       new BulletList(),
-    #       new CodeBlock(),
-    #       new HardBreak(),
-    #       new Image({attachFile: @attachFile, attachImageFile: @attachImageFile}),
-    #       new Heading({ levels: [1, 2, 3] }),
-    #       new HorizontalRule(),
-    #       new ListItem(),
-    #       new OrderedList(),
-    #       new TodoItem(),
-    #       new TodoList(),
-    #       new Table(),
-    #       new TableHeader(),
-    #       new TableCell(),
-    #       new TableRow(),
-    #       new Bold(),
-    #       new Code(),
-    #       new Italic(),
-    #       new Strike(),
-    #       new Underline(),
-    #       new History(),
-    #       new Iframe(),
-    #       new ForeColor(),
-    #       new BackColor(),
-    #       new FormatClear(),
-    #       new Align(),
-    #       new Alignment(),
-    #       new Paragraph(),
-    #       new Placeholder({
-    #         emptyClass: 'is-empty',
-    #         emptyNodeText: @placeholder,
-    #         showOnlyWhenEditable: true,
-    #       }),
-    #       # new Collaboration({
-    #       #   socket: @socket,
-    #       #   user: Session.user()
-    #       #   version: version
-    #       #   debounce: 250
-    #       # })
-    #     ]
-    #     content: @model[@field] # doc
-    #     onUpdate: @updateModel
-    #     autoFocus: @autofocus
-      #
-      # @editor.setContent(@model[@field]) if version == 0
-      #
-      # setTimeout =>
-      #   if @$refs.editor && @$refs.editor.$el
-      #     @$refs.editor.$el.children[0].setAttribute("role", "textbox")
-      #     @$refs.editor.$el.children[0].setAttribute("aria-label", @placeholder) if @placeholder
-
     setCount: (count) ->
       @count = count
 
@@ -379,6 +304,9 @@ div
             //-
             text-highlight-btn(v-if="expanded" :editor="editor")
             text-align-btn(v-if="expanded" :editor="editor")
+
+            v-btn(icon tile v-if="expanded" @click='editor.chain().focus().toggleTaskList().run()' :outlined="editor.isActive('taskList')"  :title="$t('formatting.formatting.check_list')")
+              v-icon mdi-format-list-checks
 
             //- list menu (always a menu)
             v-menu(v-if="expanded")
@@ -613,31 +541,44 @@ li[data-type="todo_item"]
     border: 1px solid var(--v-primary-base)
     // background: #eee
 
-.lmo-textarea .todo-checkbox
-  cursor: pointer
+// .lmo-textarea .todo-checkbox
+//   cursor: pointer
+//
+// .todo-content
+//   flex: 1
+//   > p:last-of-type
+//     margin-bottom: 0
+//   > ul[data-type="todo_list"]
+//     margin: .5rem 0
+//   p
+//     margin: 0
+//
+// li[data-done="true"]
+//   > .todo-content
+//     > p
+//       text-decoration: line-through
+//   > .todo-checkbox::before
+//     position: relative
+//     top: -6px
+//     color: var(--v-accent-base)
+//     font-size: 1.5rem
+//     content: "✓"
+//
+// li[data-done="false"]
+//   text-decoration: none
 
-.todo-content
-  flex: 1
-  > p:last-of-type
-    margin-bottom: 0
-  > ul[data-type="todo_list"]
-    margin: .5rem 0
-  p
-    margin: 0
+ul[data-type="taskList"]
+  list-style: none
+  padding: 0
 
-li[data-done="true"]
-  > .todo-content
-    > p
-      text-decoration: line-through
-  > .todo-checkbox::before
-    position: relative
-    top: -6px
-    color: var(--v-accent-base)
-    font-size: 1.5rem
-    content: "✓"
+  li
+    display: flex
+    align-items: center
 
-li[data-done="false"]
-  text-decoration: none
+    > label
+      flex: 0 0 auto
+      margin-right: 0.5rem
+
 
 .lmo-textarea p.is-empty:first-child::before
   content: attr(data-empty-text)

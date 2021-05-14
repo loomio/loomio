@@ -1,6 +1,6 @@
 import { forEach } from 'lodash'
 import FileUploader from '@/shared/services/file_uploader'
-import {insertImage} from '@/components/lmo_textarea/image'
+import {insertImage} from './extension_image'
 export default
   data: ->
     files: []
