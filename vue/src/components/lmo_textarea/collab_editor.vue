@@ -258,10 +258,10 @@ div
               template(v-slot:activator="{on, attrs}")
                 template(v-if="editor.isActive('link')")
                   v-btn(icon tile @click="editor.chain().toggleLink().focus().run()" outlined :title="$t('formatting.link')")
-                    v-icon mdi-link
+                    v-icon mdi-link-variant
                 template(v-else)
                   v-btn(icon tile v-on="on" v-bind="attrs" :title="$t('formatting.link')")
-                    v-icon mdi-link
+                    v-icon mdi-link-variant
               v-card
                 template(v-if="selectedText()")
                   v-card-title.title(v-t="'text_editor.insert_link'")
@@ -296,8 +296,8 @@ div
               v-icon mdi-format-italic
             //-
             //- //- strikethrough
-            v-btn(icon tile v-if="expanded" @click='editor.chain().toggleStrike().focus().run()' :outlined="editor.isActive('strike')"  :title="$t('formatting.strikethrough')")
-              v-icon mdi-format-strikethrough
+            //- v-btn(icon tile v-if="expanded" @click='editor.chain().toggleStrike().focus().run()' :outlined="editor.isActive('strike')"  :title="$t('formatting.strikethrough')")
+            //-   v-icon mdi-format-strikethrough
             //- //- underline
             v-btn(icon tile v-if="expanded" @click='editor.chain().toggleUnderline().focus().run()' :outlined="editor.isActive('underline')",  :title="$t('formatting.underline')")
               v-icon mdi-format-underline
