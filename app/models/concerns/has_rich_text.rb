@@ -9,12 +9,18 @@ module HasRichText
       rich_text_fields.each do |field|
         define_method "sanitize_#{field}!" do
           tags = %w[strong em b i p s code pre big div small hr br span mark h1 h2 h3 h4 h5 h6 ul ol li abbr a img blockquote table thead th tr td iframe u]
-          attributes = %w[href src alt title class data-type data-done data-mention-id data-uid data-checked width height target colspan rowspan data-text-align background style]
+          attributes = %w[href src alt title class data-type data-done data-mention-id data-author-id data-uid data-checked width height target colspan rowspan data-text-align background style]
           self[field] = Rails::Html::WhiteListSanitizer.new.sanitize(self[field], tags: tags, attributes: attributes)
           self[field] = add_required_link_attributes(self[field])
           self[field] = HasRichText::add_heading_ids(self[field])
         end
         before_save :"sanitize_#{field}!"
+
+        define_method "parse_and_update_tasks_#{field}!" do
+          TaskService.parse_and_update(self, self[field])
+        end
+        after_save :"parse_and_update_tasks_#{field}!"
+
         validates field, {length: {maximum: Rails.application.secrets.max_message_length}}
         validates_inclusion_of :"#{field}_format", in: ['html', 'md']
       end
@@ -24,6 +30,7 @@ module HasRichText
   included do
     has_many_attached :files
     has_many_attached :image_files
+    has_many :tasks, as: :record
     before_save :caclulate_content_locale
     before_save :build_attachments
     before_save :sanitize_link_previews

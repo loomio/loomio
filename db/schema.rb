@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_30_031129) do
+ActiveRecord::Schema.define(version: 2021_05_15_032150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -765,6 +765,31 @@ ActiveRecord::Schema.define(version: 2021_04_30_031129) do
     t.integer "priority", default: 0, null: false
     t.index ["group_id", "name"], name: "index_tags_on_group_id_and_name", unique: true
     t.index ["name"], name: "index_tags_on_name"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "record_type"
+    t.bigint "record_id"
+    t.bigint "author_id", null: false
+    t.integer "uid", null: false
+    t.string "name", null: false
+    t.boolean "done", null: false
+    t.datetime "done_at"
+    t.date "due_on"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_tasks_on_author_id"
+    t.index ["due_on"], name: "index_tasks_on_due_on"
+    t.index ["record_type", "record_id"], name: "index_tasks_on_record_type_and_record_id"
+  end
+
+  create_table "tasks_users", force: :cascade do |t|
+    t.bigint "task_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["task_id"], name: "index_tasks_users_on_task_id"
+    t.index ["user_id"], name: "index_tasks_users_on_user_id"
   end
 
   create_table "translations", id: :serial, force: :cascade do |t|
