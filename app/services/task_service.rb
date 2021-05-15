@@ -1,6 +1,21 @@
 class TaskService
-  def self.parse_and_update(model, rich_text)
-    update_model(model, parse_tasks(rich_text))
+  def self.rewrite_uids(text)
+    node = Nokogiri::HTML::fragment(text)
+    uids = []
+
+
+    node.search('li[data-type="taskItem"]').each do |el|
+      if uids.include?(el['data-uid'].to_i)
+        el['data-uid'] = (rand() * 100000000).to_i
+      end
+      uids.push el['data-uid'].to_i
+    end
+
+    node.to_html
+  end
+
+  def self.parse_and_update(model, field)
+    update_model(model, parse_tasks(model[field]))
   end
 
   def self.parse_tasks(rich_text)
@@ -13,7 +28,7 @@ class TaskService
       user_ids =  identifiers.filter { |id_or_username| id_or_username.to_i.to_s == id_or_username }
 
       {
-        uid: (el['data-uid'] || (rand() * 100000000)).to_i,
+        uid: el['data-uid'].to_i,
         name: el.text,
         user_ids: user_ids,
         usernames: usernames,

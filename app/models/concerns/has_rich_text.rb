@@ -13,11 +13,13 @@ module HasRichText
           self[field] = Rails::Html::WhiteListSanitizer.new.sanitize(self[field], tags: tags, attributes: attributes)
           self[field] = add_required_link_attributes(self[field])
           self[field] = HasRichText::add_heading_ids(self[field])
+          self[field] = TaskService.rewrite_uids(self[field])
         end
+
         before_save :"sanitize_#{field}!"
 
         define_method "parse_and_update_tasks_#{field}!" do
-          TaskService.parse_and_update(self, self[field])
+          TaskService.parse_and_update(self, field)
         end
         after_save :"parse_and_update_tasks_#{field}!"
 
