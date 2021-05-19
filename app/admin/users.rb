@@ -4,10 +4,19 @@ ActiveAdmin.register User do
   filter :name
   filter :username
   filter :email, as: :string
+  filter :email_newsletter
+  filter :email_verified
   filter :created_at
 
   scope :all
   scope :coordinators
+
+  csv do
+    column :name
+    column :email
+    column :email_newsletter
+    column :locale
+  end
 
   controller do
     def permitted_params
