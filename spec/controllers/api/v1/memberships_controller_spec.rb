@@ -51,27 +51,32 @@ describe API::V1::MembershipsController do
 
   describe 'resend' do
     let(:group) { create :group }
-    let(:discussion) { create :discussion }
-    let(:poll) { create :poll }
-    let(:user) { create :user }
-    let(:group_invite) { create :membership, accepted_at: nil, inviter: user, group: group }
+    let(:admin) { create :user }
+    let(:member) { create :user }
+    let(:membership) { create :membership, accepted_at: nil, inviter: admin, group: group }
 
-    before { sign_in user }
+    before do
+      group.add_admin! admin
+      group.add_member! member
+    end
 
     it 'can resend a group invite' do
-      expect { post :resend, params: { id: group_invite.id } }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      sign_in admin
+      expect { post :resend, params: { id: membership.id } }.to change { ActionMailer::Base.deliveries.count }.by(1)
       expect(response.status).to eq 200
     end
 
-    it 'does not send if not the inviter' do
-      group_invite.update(inviter: create(:user))
-      expect { post :resend, params: { id: group_invite.id } }.to_not change { ActionMailer::Base.deliveries.count }
+    it 'does not send if not group admin' do
+      sign_in member
+      membership.update(inviter: create(:user))
+      expect { post :resend, params: { id: membership.id } }.to_not change { ActionMailer::Base.deliveries.count }
       expect(response.status).to eq 403
     end
 
     it 'does not send if accepted' do
-      group_invite.update(accepted_at: 1.day.ago)
-      expect { post :resend, params: { id: group_invite.id } }.to_not change { ActionMailer::Base.deliveries.count }
+      sign_in admin
+      membership.update(accepted_at: 1.day.ago)
+      expect { post :resend, params: { id: membership.id } }.to_not change { ActionMailer::Base.deliveries.count }
       expect(response.status).to eq 403
     end
   end
