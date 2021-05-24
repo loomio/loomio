@@ -36,6 +36,21 @@ img.emoji
   vertical-align: top
   margin: 0 .05em
 
+.editor
+  .lmo-markdown-wrapper
+    ul[data-type="taskList"]
+      li::before
+        content: none
+        margin-right: 8px
+
+      li[data-checked="true"]
+        label::before
+          content: none
+
+      li[data-checked="true"]::before
+        content: none
+
+
 .lmo-markdown-wrapper
   p
     margin-bottom: 0.5rem
@@ -111,6 +126,53 @@ img.emoji
 
   ul
     list-style: disc
+
+  ul[data-type="taskList"]
+    list-style: none
+    padding: 0
+
+    // task item is
+    // li
+    //   label
+    //     input
+    //     span
+
+    li
+      display: flex
+      align-items: center
+
+      input[type="checkbox"]
+        margin-right: 8px
+
+      div
+        display: inline-block
+      p
+        display: inline-block
+        margin: 0
+
+    li::before
+      content: ""
+      display: inline-block
+      vertical-align: bottom
+      width: 1rem
+      height: 1rem
+      border-radius: 30%
+      border-style: solid
+      border-width: 0.1rem
+      border-color: gray
+      line-height: 100%
+      margin-right: 8px
+
+    li[data-checked="true"]::before
+      display: inline-block
+      vertical-align: middle
+      position: relative
+      content: "✓"
+      color: white
+      text-align: center
+      vertical-align: middle
+      background-color: var(--v-accent-base)
+      border-color: teal
 
   ol
     list-style: decimal

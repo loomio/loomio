@@ -61,7 +61,6 @@ export const CustomTaskItem = TaskItem.extend({
     }) => {
       const listItem = document.createElement('li')
       const checkboxWrapper = document.createElement('label')
-      const checkboxStyler = document.createElement('span')
       const checkbox = document.createElement('input')
       const content = document.createElement('div')
 
@@ -95,7 +94,7 @@ export const CustomTaskItem = TaskItem.extend({
         checkbox.setAttribute('checked', 'checked')
       }
 
-      checkboxWrapper.append(checkbox, checkboxStyler)
+      checkboxWrapper.append(checkbox)
       listItem.append(checkboxWrapper, content)
 
 

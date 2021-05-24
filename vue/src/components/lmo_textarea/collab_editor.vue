@@ -227,40 +227,40 @@ div
     .menubar
       div
         v-layout(align-center v-if="editor.isActive('table')")
-          v-btn(icon tile @click="editor.chain().deleteTable().focus().run()" :title="$t('formatting.remove_table')")
+          v-btn(icon @click="editor.chain().deleteTable().focus().run()" :title="$t('formatting.remove_table')")
             v-icon mdi-table-remove
-          v-btn(icon tile @click="editor.chain().addColumnBefore().focus().run()" :title="$t('formatting.add_column_before')")
+          v-btn(icon @click="editor.chain().addColumnBefore().focus().run()" :title="$t('formatting.add_column_before')")
             v-icon mdi-table-column-plus-before
-          v-btn(icon tile @click="editor.chain().addColumnAfter().focus().run()" :title="$t('formatting.add_column_after')")
+          v-btn(icon @click="editor.chain().addColumnAfter().focus().run()" :title="$t('formatting.add_column_after')")
             v-icon mdi-table-column-plus-after
-          v-btn(icon tile @click="editor.chain().deleteColumn().focus().run()" :title="$t('formatting.remove_column')")
+          v-btn(icon @click="editor.chain().deleteColumn().focus().run()" :title="$t('formatting.remove_column')")
             v-icon mdi-table-column-remove
-          v-btn(icon tile @click="editor.chain().addRowBefore().focus().run()" :title="$t('formatting.add_row_before')")
+          v-btn(icon @click="editor.chain().addRowBefore().focus().run()" :title="$t('formatting.add_row_before')")
             v-icon mdi-table-row-plus-before
-          v-btn(icon tile @click="editor.chain().addRowAfter().focus().run()" :title="$t('formatting.add_row_after')")
+          v-btn(icon @click="editor.chain().addRowAfter().focus().run()" :title="$t('formatting.add_row_after')")
             v-icon mdi-table-row-plus-after
-          v-btn(icon tile @click="editor.chain().deleteRow().focus().run()" :title="$t('formatting.remove_row')")
+          v-btn(icon @click="editor.chain().deleteRow().focus().run()" :title="$t('formatting.remove_row')")
             v-icon mdi-table-row-remove
-          v-btn(icon tile @click="editor.chain().mergeOrSplit().focus().run()" :title="$t('formatting.merge_selected')")
+          v-btn(icon @click="editor.chain().mergeOrSplit().focus().run()" :title="$t('formatting.merge_selected')")
             v-icon mdi-table-merge-cells
 
         v-layout.py-2.justify-space-between.flex-wrap(align-center)
           section.d-flex.flex-wrap(:aria-label="$t('formatting.formatting_tools')")
             //- attach
-            v-btn(icon tile @click='$refs.filesField.click()' :title="$t('formatting.attach')")
+            v-btn(icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")
               v-icon mdi-paperclip
 
-            v-btn(icon tile @click='$refs.imagesField.click()' :title="$t('formatting.insert_image')")
+            v-btn(icon @click='$refs.imagesField.click()' :title="$t('formatting.insert_image')")
               v-icon mdi-image
 
             //- link
             v-menu(:close-on-content-click="!selectedText()" v-model="linkDialogIsOpen" min-width="320px")
               template(v-slot:activator="{on, attrs}")
                 template(v-if="editor.isActive('link')")
-                  v-btn(icon tile @click="editor.chain().toggleLink().focus().run()" outlined :title="$t('formatting.link')")
+                  v-btn(icon @click="editor.chain().toggleLink().focus().run()" outlined :title="$t('formatting.link')")
                     v-icon mdi-link-variant
                 template(v-else)
-                  v-btn(icon tile v-on="on" v-bind="attrs" :title="$t('formatting.link')")
+                  v-btn(icon v-on="on" v-bind="attrs" :title="$t('formatting.link')")
                     v-icon mdi-link-variant
               v-card
                 template(v-if="selectedText()")
@@ -276,36 +276,36 @@ div
             //- emoji
             v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
               template(v-slot:activator="{on, attrs}")
-                v-btn.emoji-picker__toggle(v-on="on" v-bind="attrs" icon tile :title="$t('formatting.insert_emoji')")
+                v-btn.emoji-picker__toggle(v-on="on" v-bind="attrs" icon :title="$t('formatting.insert_emoji')")
                   v-icon mdi-emoticon-outline
               emoji-picker(:insert="emojiPicked")
 
             template(v-if="expanded")
-              //- v-btn(icon tile @click='editor.chain().focus().setParagraph().run()' :outlined="editor.isActive('paragraph')" :title="$t('formatting.paragraph')")
+              //- v-btn(icon @click='editor.chain().focus().setParagraph().run()' :outlined="editor.isActive('paragraph')" :title="$t('formatting.paragraph')")
               //-   v-icon mdi-format-pilcrow
               template(v-for="i in 3")
-                v-btn(icon tile @click='editor.chain().focus().toggleHeading({ level: i }).run()' :outlined="editor.isActive('heading', { level: i })" :title="$t('formatting.heading'+i)")
+                v-btn(icon @click='editor.chain().focus().toggleHeading({ level: i }).run()' :outlined="editor.isActive('heading', { level: i })" :title="$t('formatting.heading'+i)")
                   v-icon {{'mdi-format-header-'+i}}
 
             //- bold
-            v-btn(icon tile v-if="expanded" @click='editor.chain().toggleBold().focus().run()' :outlined="editor.isActive('bold')" :title="$t('formatting.bold')")
+            v-btn(icon v-if="expanded" @click='editor.chain().toggleBold().focus().run()' :outlined="editor.isActive('bold')" :title="$t('formatting.bold')")
               v-icon mdi-format-bold
 
             //- italic
-            v-btn(icon tile v-if="expanded" @click='editor.chain().toggleItalic().focus().run()' :outlined="editor.isActive('italic')" :title="$t('formatting.italicize')")
+            v-btn(icon v-if="expanded" @click='editor.chain().toggleItalic().focus().run()' :outlined="editor.isActive('italic')" :title="$t('formatting.italicize')")
               v-icon mdi-format-italic
             //-
             //- //- strikethrough
-            //- v-btn(icon tile v-if="expanded" @click='editor.chain().toggleStrike().focus().run()' :outlined="editor.isActive('strike')"  :title="$t('formatting.strikethrough')")
+            //- v-btn(icon v-if="expanded" @click='editor.chain().toggleStrike().focus().run()' :outlined="editor.isActive('strike')"  :title="$t('formatting.strikethrough')")
             //-   v-icon mdi-format-strikethrough
             //- //- underline
-            v-btn(icon tile v-if="expanded" @click='editor.chain().toggleUnderline().focus().run()' :outlined="editor.isActive('underline')",  :title="$t('formatting.underline')")
+            v-btn(icon v-if="expanded" @click='editor.chain().toggleUnderline().focus().run()' :outlined="editor.isActive('underline')",  :title="$t('formatting.underline')")
               v-icon mdi-format-underline
             //-
             text-highlight-btn(v-if="expanded" :editor="editor")
             text-align-btn(v-if="expanded" :editor="editor")
 
-            v-btn(icon tile v-if="expanded" @click='editor.chain().focus().toggleTaskList().run()' :outlined="editor.isActive('taskList')"  :title="$t('formatting.formatting.check_list')")
+            v-btn(icon v-if="expanded" @click='editor.chain().focus().toggleTaskList().run()' :outlined="editor.isActive('taskList')"  :title="$t('formatting.formatting.check_list')")
               v-icon mdi-format-list-checks
 
             //- list menu (always a menu)
@@ -313,7 +313,7 @@ div
               template(v-slot:activator="{ on, attrs }")
                 v-btn.pl-1.drop-down-button(
                     icon
-                    tile
+
                     :outlined="editor.isActive('bulletList') || editor.isActive('orderedList')"
                     v-on="on"
                     v-bind="attrs"
@@ -339,7 +339,7 @@ div
               //- strikethrough
               v-menu(:close-on-content-click="false" v-model="iframeDialogIsOpen" min-width="320px")
                 template(v-slot:activator="{on}")
-                  v-btn(icon tile v-on="on" :title="$t('formatting.embed')")
+                  v-btn(icon v-on="on" :title="$t('formatting.embed')")
                     v-icon mdi-youtube
                 v-card
                   v-card-title.title(v-t="'text_editor.insert_embedded_url'")
@@ -349,25 +349,25 @@ div
                     v-spacer
                     v-btn(color="primary" @click="setIframeUrl()" v-t="'common.action.apply'")
               //- blockquote
-              v-btn(icon tile @click='editor.chain().toggleBlockquote().focus().run()' :outlined="editor.isActive('blockquote')"  :title="$t('formatting.blockquote')")
+              v-btn(icon @click='editor.chain().toggleBlockquote().focus().run()' :outlined="editor.isActive('blockquote')"  :title="$t('formatting.blockquote')")
                 v-icon mdi-format-quote-close
               //- //- code block
-              v-btn(icon tile @click='editor.chain().toggleCodeBlock().focus().run()' :outlined="editor.isActive('codeBlock')"  :title="$t('formatting.code_block')")
+              v-btn(icon @click='editor.chain().toggleCodeBlock().focus().run()' :outlined="editor.isActive('codeBlock')"  :title="$t('formatting.code_block')")
                 v-icon mdi-code-braces
               //- embded
-              v-btn(icon tile @click='editor.chain().setHorizontalRule().focus().run()'  :title="$t('formatting.divider')")
+              v-btn(icon @click='editor.chain().setHorizontalRule().focus().run()'  :title="$t('formatting.divider')")
                 v-icon mdi-minus
               //- table
-              v-btn(icon tile @click='editor.chain().insertTable({rows: 3, cols: 3, withHeaderRow: false }).focus().run()' :title="$t('formatting.add_table')" :outlined="editor.isActive('table')")
+              v-btn(icon @click='editor.chain().insertTable({rows: 3, cols: 3, withHeaderRow: false }).focus().run()' :title="$t('formatting.add_table')" :outlined="editor.isActive('table')")
                 v-icon mdi-table
               //- markdown (save experience)
-              v-btn(icon tile @click="convertToMd" :title="$t('formatting.edit_markdown')")
+              v-btn(icon @click="convertToMd" :title="$t('formatting.edit_markdown')")
                 v-icon mdi-language-markdown-outline
 
-            v-btn.html-editor__expand(v-if="!expanded" icon tile @click="toggleExpanded" :title="$t('formatting.expand')")
+            v-btn.html-editor__expand(v-if="!expanded" icon @click="toggleExpanded" :title="$t('formatting.expand')")
               v-icon mdi-chevron-right
 
-            v-btn.html-editor__expand(v-if="expanded" icon tile @click="toggleExpanded" :title="$t('formatting.collapse')")
+            v-btn.html-editor__expand(v-if="expanded" icon @click="toggleExpanded" :title="$t('formatting.collapse')")
               v-icon mdi-chevron-left
           //- save button?
           v-spacer
@@ -516,68 +516,6 @@ progress::-moz-progress-bar
 
 .html-editor__textarea .ProseMirror:focus
   border-bottom: 1px solid var(--v-primary-base)
-
-// .lmo-textarea img
-//   display: block
-
-ul[data-type="todo_list"]
-  padding-left: 0
-
-li[data-type="todo_item"]
-  display: flex
-  flex-direction: row
-
-.todo-checkbox
-  border: 1px solid #999
-  height: 1.3em
-  width: 1.3em
-  box-sizing: border-box
-  margin-right: 8px
-  margin-top: 0px
-  user-select: none
-  border-radius: 0.2em
-  background-color: transparent
-  &:hover
-    border: 1px solid var(--v-primary-base)
-    // background: #eee
-
-// .lmo-textarea .todo-checkbox
-//   cursor: pointer
-//
-// .todo-content
-//   flex: 1
-//   > p:last-of-type
-//     margin-bottom: 0
-//   > ul[data-type="todo_list"]
-//     margin: .5rem 0
-//   p
-//     margin: 0
-//
-// li[data-done="true"]
-//   > .todo-content
-//     > p
-//       text-decoration: line-through
-//   > .todo-checkbox::before
-//     position: relative
-//     top: -6px
-//     color: var(--v-accent-base)
-//     font-size: 1.5rem
-//     content: "✓"
-//
-// li[data-done="false"]
-//   text-decoration: none
-
-ul[data-type="taskList"]
-  list-style: none
-  padding: 0
-
-  li
-    display: flex
-    align-items: center
-
-    > label
-      flex: 0 0 auto
-      margin-right: 0.5rem
 
 
 .lmo-textarea p.is-empty:first-child::before
