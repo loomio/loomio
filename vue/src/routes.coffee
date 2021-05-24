@@ -25,6 +25,7 @@ import EmailSettingsPage from './components/email_settings/page.vue'
 import StartDiscussionPage from './components/start_discussion/page.vue'
 import UserPage from './components/user/page.vue'
 import ThreadsPage from './components/threads/page.vue'
+import TasksPage from './components/tasks/page.vue'
 
 import ThreadNav from './components/thread/nav'
 
@@ -74,6 +75,7 @@ router = new Router
       { x: 0, y: 0 }
 
   routes: [
+    {path: '/tasks', component: TasksPage},
     {path: '/dashboard', component: DashboardPage},
     {path: '/dashboard/:filter', component: DashboardPage},
     {path: '/threads/direct', component: ThreadsPage},
