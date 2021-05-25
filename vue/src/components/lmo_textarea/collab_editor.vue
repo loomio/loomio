@@ -391,65 +391,6 @@ div
 </template>
 <style lang="sass">
 
-// .count
-//   display: flex
-//   align-items: center
-//   font-weight: bold
-//   color: rgba(#000, 0.5)
-//   color: #27b127
-//   margin-bottom: 1rem
-//   text-transform: uppercase
-//   font-size: 0.7rem
-//   line-height: 1
-//   &:before
-//     content: ''
-//     display: inline-flex
-//     background-color: #27b127
-//     width: 0.4rem
-//     height: 0.4rem
-//     border-radius: 50%
-//     margin-right: 0.3rem
-
-
-.cursor
-  color: #222
-  text-align: center
-  border-radius: 6px 6px 6px 0px
-  padding: 5px
-  margin-left: -4.5px
-  position: absolute
-  z-index: 1
-  bottom: 5px
-  left: -50%
-  opacity: 0.85
-  white-space: nowrap
-  -webkit-touch-callout: none
-  -webkit-user-select: none
-  -khtml-user-select: none
-  -moz-user-select: none
-  -ms-user-select: none
-  user-select: none
-  &.me
-    display: none
-    &::after
-      display: none
-      border-color: inherit
-  &.inactive
-    opacity: 0.5
-    &::after
-      opacity: inherit
-      border-color: inherit
-  &::after
-    content: ""
-    position: absolute
-    top: 100%
-    left: 0%
-    border-width: 5px
-    border-style: solid
-    border-color: inherit
-    color: transparent
-
-
 .ProseMirror-widget
   position: absolute
   width: 0.1px
