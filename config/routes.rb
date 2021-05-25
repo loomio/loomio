@@ -61,8 +61,13 @@ Loomio::Application.routes.draw do
 
       resources :usage_reports, only: [:create]
 
-      resources :tasks, only: [:index]
-      
+      resources :tasks, only: [:index] do
+        member do
+          post :mark_as_done
+          post :mark_as_not_done
+        end
+      end
+
       resources :groups, only: [:index, :show, :create, :update, :destroy] do
         member do
           get :token

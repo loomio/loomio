@@ -7,7 +7,22 @@ import AbilityService     from '@/shared/services/ability_service'
 
 export default
   data: ->
-    tasks: [{id: 1, name: 'do the dishes'}]
+    records: {}
+    tasksByRecordKey: {}
+
+  mounted: ->
+    Records.tasks.remote.fetch('/').then (data) =>
+      ids = data['tasks'].map (t) -> t.id
+      tasks = Records.tasks.find(ids)
+      tasks.forEach (t) =>
+        recordKey = t.recordType + t.recordId
+        if !@records[recordKey]?
+          @records[recordKey] = t.record()
+      @tasksByRecordKey = groupBy tasks, (t) -> t.recordType + t.recordId
+
+  methods:
+    toggleDone: (task) ->
+      task.toggleDone()
 
 </script>
 
