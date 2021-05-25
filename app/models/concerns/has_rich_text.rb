@@ -25,6 +25,14 @@ module HasRichText
 
         validates field, {length: {maximum: Rails.application.secrets.max_message_length}}
         validates_inclusion_of :"#{field}_format", in: ['html', 'md']
+        if respond_to?(:after_discard)
+          after_discard do
+            tasks.discard_all
+          end
+          after_undiscard do
+            tasks.undiscard_all
+          end
+        end
       end
     end
   end
