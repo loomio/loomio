@@ -41,6 +41,7 @@ class Comment < ApplicationRecord
   delegate :full_name, to: :group, prefix: :group
   delegate :locale, to: :user
   delegate :mailer, to: :discussion
+  delegate :guests, to: :discussion
   delegate :members, to: :discussion
   delegate :title, to: :discussion
 

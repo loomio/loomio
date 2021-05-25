@@ -9,6 +9,6 @@ class TaskSerializer < ApplicationSerializer
              :record_type,
              :record_id
 
-  has_one :record, polymorphic: true
+  has_one :record, polymorphic: true, key: 'record_obj'
   has_one :author, serializer: AuthorSerializer, root: :users
 end
