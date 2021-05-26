@@ -39,7 +39,7 @@ export default
       new URL(@preview.url).host
 </script>
 <template lang="pug">
-v-card.mt-3(outlined  style="position: relative")
+v-card.link-preview.mt-3(outlined style="position: relative")
   template(v-if="editing")
     .link-preview__image(v-if="preview.image" :style="{'background-image': 'url('+preview.image+')', 'background-size': backgroundSize, 'background-position': backgroundPosition}")
     v-btn(color="accent" icon outlined
@@ -81,6 +81,10 @@ v-card.mt-3(outlined  style="position: relative")
 </template>
 
 <style lang="sass">
+.link-preview
+  .v-card__subtitle
+    word-break: break-word
+
 .link-preview__hostname
   word-break: break-word
 

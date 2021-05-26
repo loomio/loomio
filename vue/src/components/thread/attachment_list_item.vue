@@ -47,6 +47,10 @@ v-card.mt-3(outlined).attachment-list-item-link
 .attachment-list-item-link:hover
   background-color: #ededed
 
+.attachment-list-item-link
+  .v-card__subtitle
+    word-break: break-word
+
 .link-preview__hostname
   word-break: break-word
 
