@@ -12,26 +12,27 @@ export default
     backgroundSize: 'contain'
     backgroundPosition: 'center'
 
-  mounted: ->
-    @setBackgroundSize()
-
-  methods:
-    setBackgroundSize: ->
-      return unless @preview.image
-      url = @preview.image
-      img = new Image();
-      that = @
-      img.onload = ->
-        if (Math.abs(@width - @height) < @width/3)
-          that.backgroundSize = 'contain'
-          that.backgroundPosition = 'center'
-        else
-          that.backgroundSize = 'cover'
-          that.backgroundPosition = '0 5%'
-      img.src = @preview.image
-
-  watch:
-    'preview.image': 'setBackgroundSize'
+  # mounted: ->
+  #   @setBackgroundSize()
+  #
+  # methods:
+  #   setBackgroundSize: ->
+  #     return unless @preview.image
+  #     url = @preview.image
+  #     img = new Image();
+  #     that = @
+  #     img.onload = ->
+  #       if @width > @height * 2
+  #       if (Math.abs(@width - @height) < @width/3)
+  #         that.backgroundSize = 'contain'
+  #         that.backgroundPosition = 'center'
+  #       else
+  #         that.backgroundSize = 'cover'
+  #         that.backgroundPosition = '0 5%'
+  #     img.src = @preview.image
+  #
+  # watch:
+  #   'preview.image': 'setBackgroundSize'
 
   computed:
     hostname: ->
