@@ -12,33 +12,34 @@ export default
     backgroundSize: 'contain'
     backgroundPosition: 'center'
 
-  mounted: ->
-    @setBackgroundSize()
-
-  methods:
-    setBackgroundSize: ->
-      return unless @preview.image
-      url = @preview.image
-      img = new Image();
-      that = @
-      img.onload = ->
-        if (Math.abs(@width - @height) < @width/3)
-          that.backgroundSize = 'contain'
-          that.backgroundPosition = 'center'
-        else
-          that.backgroundSize = 'cover'
-          that.backgroundPosition = '0 5%'
-      img.src = @preview.image
-
-  watch:
-    'preview.image': 'setBackgroundSize'
+  # mounted: ->
+  #   @setBackgroundSize()
+  #
+  # methods:
+  #   setBackgroundSize: ->
+  #     return unless @preview.image
+  #     url = @preview.image
+  #     img = new Image();
+  #     that = @
+  #     img.onload = ->
+  #       if @width > @height * 2
+  #       if (Math.abs(@width - @height) < @width/3)
+  #         that.backgroundSize = 'contain'
+  #         that.backgroundPosition = 'center'
+  #       else
+  #         that.backgroundSize = 'cover'
+  #         that.backgroundPosition = '0 5%'
+  #     img.src = @preview.image
+  #
+  # watch:
+  #   'preview.image': 'setBackgroundSize'
 
   computed:
     hostname: ->
       new URL(@preview.url).host
 </script>
 <template lang="pug">
-v-card.mt-3(outlined  style="position: relative")
+v-card.link-preview.mt-3(outlined style="position: relative")
   template(v-if="editing")
     .link-preview__image(v-if="preview.image" :style="{'background-image': 'url('+preview.image+')', 'background-size': backgroundSize, 'background-position': backgroundPosition}")
     v-btn(color="accent" icon outlined
@@ -73,16 +74,19 @@ v-card.mt-3(outlined  style="position: relative")
       v-card-title
         .d-flex
           span
-            span.text--secondary {{preview.title}}
+            span.text--secondary(v-html="preview.title")
             |
             | &nbsp;
             |
-            span.text-caption.link-preview__hostname {{preview.hostname}}
-      v-card-subtitle
-        | {{preview.description}}
+            span.text-caption.link-preview__hostname(v-html="preview.hostname")
+      v-card-subtitle(v-html="preview.description")
 </template>
 
 <style lang="sass">
+.link-preview
+  .v-card__subtitle
+    word-break: break-word
+
 .link-preview__hostname
   word-break: break-word
 

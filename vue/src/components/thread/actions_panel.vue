@@ -86,11 +86,16 @@ section.actions-panel#add-comment(:aria-label="$t('activity_card.aria_label')")
   v-divider(aria-hidden="true" v-if="discussion.newestFirst")
 
 </template>
-<style lang="sass">
-.add-comment-panel__sign-in-btn
-	width: 100%
-.add-comment-panel__join-actions
-	button
-		width: 100%
 
+<style lang="sass">
+.actions-panel
+  .v-window
+    overflow: visible
+
+.add-comment-panel__sign-in-btn
+  width: 100%
+
+.add-comment-panel__join-actions
+  button
+    width: 100%
 </style>

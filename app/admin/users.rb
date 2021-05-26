@@ -4,10 +4,19 @@ ActiveAdmin.register User do
   filter :name
   filter :username
   filter :email, as: :string
+  filter :email_newsletter
+  filter :email_verified
   filter :created_at
 
   scope :all
   scope :coordinators
+
+  csv do
+    column :name
+    column :email
+    column :email_newsletter
+    column :locale
+  end
 
   controller do
     def permitted_params
@@ -38,34 +47,6 @@ ActiveAdmin.register User do
       f.input :is_admin
     end
     f.actions
-  end
-
-  collection_action :export_emails_deactivated do
-    emails = User.inactive.pluck :email
-    render plain: emails.join("\n")
-  end
-
-  collection_action :export_emails_fr do
-    emails = User.active.where("detected_locale ilike 'fr%'").pluck(:email)
-    render plain: emails.join("\n")
-  end
-
-  collection_action :export_emails_es do
-    query = %w[es ca an].map do |prefix|
-      "detected_locale ilike '#{prefix}%'"
-    end.join ' or '
-
-    emails = User.active.where(query).pluck(:email)
-    render plain: emails.join("\n")
-  end
-
-  collection_action :export_emails_other do
-    query = %w[fr es ca an].map do |prefix|
-      "detected_locale ilike '#{prefix}%'"
-    end.join ' or '
-
-    emails = User.active.where.not(query).pluck(:email)
-    render plain: emails.join("\n")
   end
 
   member_action :update, :method => :put do

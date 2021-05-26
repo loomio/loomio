@@ -5,7 +5,7 @@ import Records from '@/shared/services/records'
 import RecordLoader from '@/shared/services/record_loader'
 import EventBus       from '@/shared/services/event_bus'
 import Session       from '@/shared/services/session'
-import { debounce, some, every, compact, omit, values, keys, intersection } from 'lodash'
+import { debounce, some, every, compact, omit, values, keys, intersection, uniq } from 'lodash'
 
 export default
   data: ->
@@ -57,7 +57,8 @@ export default
       groupIds = switch (@$route.query.subgroups || 'mine')
         when 'all' then @group.organisationIds()
         when 'none' then [@group.id]
-        when 'mine' then intersection(@group.organisationIds(), Session.user().groupIds())
+        when 'mine' then uniq([@group.id].concat(intersection(@group.organisationIds(), Session.user().groupIds())))
+
 
       chain = Records.polls.collection.chain()
       chain = chain.find(groupId: {$in: groupIds})

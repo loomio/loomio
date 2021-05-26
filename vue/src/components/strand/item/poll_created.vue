@@ -69,5 +69,5 @@ section.strand-item.poll-created
       poll-common-action-panel(:poll='poll')
     .caption(v-t="{path: 'poll_common_action_panel.draft_mode', args: {poll_type: poll.pollType}}" v-if='!poll.closingAt')
     action-dock.my-2(:actions="dockActions" :menu-actions="menuActions")
-    //- poll-common-votes-panel(v-if :poll="poll")
+    poll-common-votes-panel(v-if="!poll.stancesInDiscussion && poll.showResults()" :poll="poll")
 </template>

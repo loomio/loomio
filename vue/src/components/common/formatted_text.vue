@@ -111,7 +111,6 @@ img.emoji
   overflow-wrap: break-word
   word-wrap: break-word
   word-break: break-word
-  hyphens: auto
 
   img
     aspect-ratio: attr(width) / attr(height)
