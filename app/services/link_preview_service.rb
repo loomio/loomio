@@ -22,7 +22,12 @@ module LinkPreviewService
           doc.css('link[rel="canonical"]').attr('href')&.text,
           url].reject(&:blank?).first
 
-    {title: title, description: description, image: image, url: url, hostname: URI(url).host}
+    sanitizer = Rails::Html::FullSanitizer.new
+    {title: sanitizer.sanitize(title),
+     description: sanitizer.sanitize(description),
+     image: sanitizer.sanitize(image),
+     url: sanitizer.sanitize(url),
+     hostname: URI(url).host}
   end
 
   def self.fetch_urls(urls)

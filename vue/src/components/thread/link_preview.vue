@@ -72,13 +72,12 @@ v-card.mt-3(outlined  style="position: relative")
       v-card-title
         .d-flex
           span
-            span.text--secondary {{preview.title}}
+            span.text--secondary(v-html="preview.title")
             |
             | &nbsp;
             |
-            span.text-caption.link-preview__hostname {{preview.hostname}}
-      v-card-subtitle
-        | {{preview.description}}
+            span.text-caption.link-preview__hostname(v-html="preview.hostname")
+      v-card-subtitle(v-html="preview.description")
 </template>
 
 <style lang="sass">
