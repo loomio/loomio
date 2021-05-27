@@ -5,24 +5,6 @@ import Suggestion, { SuggestionOptions } from '@tiptap/suggestion'
 //   return dom.innerText.split(this.options.matcher.char).join('')
 // }
 export const CustomMention = Mention.extend({
-  defaultOptions: {
-    HTMLAttributes: {},
-    suggestion: {
-      char: '@',
-      command: ({ editor, range, props }) => {
-        editor
-          .chain()
-          .focus()
-          .replaceRange(range, 'mention', props)
-          .insertContent(' ')
-          .run()
-      },
-      allow: ({ editor, range }) => {
-        return editor.can().replaceRange(range, 'mention')
-      },
-    },
-  },
-
   addAttributes() {
     return {
       id: {
@@ -30,7 +12,7 @@ export const CustomMention = Mention.extend({
         parseHTML: element => {
           return {
             id: element.getAttribute('data-mention-id'),
-            label: element.innerText.split(this.options.matcher.char).join('')
+            label: element.innerText.split('@').join('')
           }
         },
         renderHTML: attributes => {
@@ -55,5 +37,13 @@ export const CustomMention = Mention.extend({
   },
   renderHTML({ node, HTMLAttributes }) {
     return ['span', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), `@${node.attrs.label}`]
+  },
+
+  parseHTML() {
+    return [
+      {
+        tag: 'span[data-mention-id]',
+      },
+    ]
   },
 })

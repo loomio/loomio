@@ -103,7 +103,6 @@ export default
         Bold
         BulletList
         CodeBlock
-        CustomMention.configure(MentionPluginConfig.bind(@)())
         CustomImage.configure({attachFile: @attachFile, attachImageFile: @attachImageFile}),
         Document
         Dropcursor
@@ -126,6 +125,7 @@ export default
         TableCell
         TaskList
         CustomTaskItem
+        CustomMention.configure(MentionPluginConfig.bind(@)())
         Typography
         TextAlign
         TextStyle
