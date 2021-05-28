@@ -4,62 +4,38 @@ class API::V1::TasksController < API::V1::RestfulController
          where("tasks.author_id = :id or tasks_users.user_id = :id", id: current_user.id)
   end
 
-  def mark_as_done
-    @task = visible_records.find(params[:id])
-    @task.done = true
-    @task.done_at = Time.now
+  def update_done
+    @task = visible_records.find_by(record: record, uid: params[:uid])
 
-    record = @task.record
-
-    doc = Nokogiri::HTML::DocumentFragment.parse(record.body)
-    doc.css("li[data-uid='#{@task.uid}']").each do |li|
-      li['data-checked'] = 'true'
-    end
-
-    record.body = doc.to_html
-    record.save!
-
-    @task.save
+    TaskService.update_done(@task, current_user, params[:done] == 'true')
 
     respond_with_resource
+    # we should also serialize the assocated record
+  end
 
-    if record.group_id
-      MessageChannelService.publish_models([record], group_id: record.group.id)
-    end
+  def mark_as_done
+    @task = visible_records.find(params[:id])
 
-    if record.respond_to?(:guests)
-      record.guests.find_each do |user|
-        MessageChannelService.publish_models([record], user_id: user.id)
-      end
-    end
+    TaskService.update_done(@task, current_user, true)
+
+    respond_with_resource
+    # we should also serialize the assocated record
   end
 
   def mark_as_not_done
     @task = visible_records.find(params[:id])
-    @task.done = false
-    @task.done_at = nil
-    @task.save
 
-    record = @task.record
-
-    doc = Nokogiri::HTML::DocumentFragment.parse(record.body)
-    doc.css("li[data-uid='#{@task.uid}']").each do |li|
-      li['data-checked'] = 'false'
-    end
-
-    record.body = doc.to_html
-    record.save!
+    TaskService.update_done(@task, current_user, false)
 
     respond_with_resource
+  end
 
-    if record.group_id
-      MessageChannelService.publish_models([record], group_id: record.group.id)
-    end
-
-    if record.respond_to?(:guests)
-      record.guests.find_each do |user|
-        MessageChannelService.publish_models([record], user_id: user.id)
-      end
-    end
+  private
+  def record
+    load_and_authorize(:group, optional: true)      ||
+    load_and_authorize(:discussion, optional: true) ||
+    load_and_authorize(:comment, optional: true)    ||
+    load_and_authorize(:poll, optional: true)       ||
+    load_and_authorize(:outcome, optional: true)
   end
 end

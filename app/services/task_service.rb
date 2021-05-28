@@ -1,4 +1,33 @@
 class TaskService
+  def self.update_done(task, actor, done)
+
+    task.done = done
+    task.done_at = (done && Time.now) || nil
+    task.doer = (done && actor) || nil
+
+    record = task.record
+
+    doc = Nokogiri::HTML::DocumentFragment.parse(record.body)
+    doc.css("li[data-uid='#{task.uid}']").each do |li|
+      li['data-checked'] = done ? 'true' : 'false'
+    end
+
+    record.body = doc.to_html
+
+    record.save!
+    task.save!
+
+    if record.group_id
+      MessageChannelService.publish_models([record], group_id: record.group.id)
+    end
+
+    if record.respond_to?(:guests)
+      record.guests.find_each do |user|
+        MessageChannelService.publish_models([record], user_id: user.id)
+      end
+    end
+  end
+
   def self.rewrite_uids(text)
     node = Nokogiri::HTML::fragment(text)
     uids = []

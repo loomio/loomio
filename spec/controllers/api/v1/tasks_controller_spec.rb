@@ -49,6 +49,36 @@ describe API::V1::TasksController, type: :controller do
       expect(li['data-checked']).to eq 'true'
     end
 
+    it 'update_done true' do
+      task = discussion.tasks.first
+      post :update_done, params: {discussion_id: discussion.id, uid: task.uid, done: 'true'}
+      expect(response.status).to eq 200
+      tasks = JSON.parse(response.body)['tasks']
+      expect(tasks[0]['id']).to eq task.id
+      expect(tasks[0]['done']).to eq true
+      expect(tasks[0]['done_at']).to be_present
+      expect(tasks.size).to eq 1
+
+      doc = Nokogiri::HTML::DocumentFragment.parse(discussion.reload.description)
+      li = doc.css("li[data-uid='#{tasks[0]['uid']}']").first
+      expect(li['data-checked']).to eq 'true'
+    end
+
+    it 'update_done false' do
+      task = discussion.tasks.first
+      post :update_done, params: {discussion_id: discussion.id, uid: task.uid, done: 'false'}
+      expect(response.status).to eq 200
+      tasks = JSON.parse(response.body)['tasks']
+      expect(tasks[0]['id']).to eq task.id
+      expect(tasks[0]['done']).to eq false
+      expect(tasks[0]['done_at']).to_not be_present
+      expect(tasks.size).to eq 1
+
+      doc = Nokogiri::HTML::DocumentFragment.parse(discussion.reload.description)
+      li = doc.css("li[data-uid='#{tasks[0]['uid']}']").first
+      expect(li['data-checked']).to eq 'false'
+    end
+
     it 'mark_as_not_done' do
       task = discussion.tasks.first
       post :mark_as_done, params: {id: task.id}

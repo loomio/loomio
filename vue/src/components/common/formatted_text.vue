@@ -1,5 +1,7 @@
 <script lang="coffee">
 import { emojiReplaceText } from '@/shared/helpers/emojis.coffee'
+import { merge } from 'lodash'
+import Records from '@/shared/services/records'
 
 export default
   props:
@@ -9,6 +11,23 @@ export default
     column:
       type: String
       required: true
+
+  mounted: ->
+    @$el.addEventListener 'click', @onClick
+
+  destroyed: ->
+    @$el.removeEventListener 'click', @onClick
+
+  methods:
+    onClick: (e) ->
+      if e.target.getAttribute('data-type') == 'taskItem'
+        uid = e.target.getAttribute('data-uid')
+        checked = e.target.getAttribute('data-checked') == 'true'
+        console.log @model.namedId(), uid, checked
+        # flash notice that the task was marked
+        Records.remote.post 'tasks/update_done', merge(@model.namedId(), {uid: uid, done: ((!checked && 'true') || 'false') })
+
+
   computed:
     isMd: -> @format == 'md'
     isHtml: -> @format == 'html'
@@ -149,6 +168,7 @@ img.emoji
         display: inline-block
         margin: 0
 
+
     li::before
       content: ""
       display: inline-block
@@ -172,6 +192,12 @@ img.emoji
       vertical-align: middle
       background-color: var(--v-accent-base)
       border-color: teal
+
+    li:hover:before
+      border-color: red
+
+    // li[data-checked="true"]:hover:before
+    //   border-color: red
 
   ol
     list-style: decimal

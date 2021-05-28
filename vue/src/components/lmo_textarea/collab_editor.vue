@@ -283,7 +283,7 @@ div
             template(v-if="expanded")
               //- v-btn(icon @click='editor.chain().focus().setParagraph().run()' :outlined="editor.isActive('paragraph')" :title="$t('formatting.paragraph')")
               //-   v-icon mdi-format-pilcrow
-              template(v-for="i in 3")
+              template(v-for="i in 2")
                 v-btn(icon @click='editor.chain().focus().toggleHeading({ level: i }).run()' :outlined="editor.isActive('heading', { level: i })" :title="$t('formatting.heading'+i)")
                   v-icon {{'mdi-format-header-'+i}}
 
@@ -305,34 +305,12 @@ div
             text-highlight-btn(v-if="expanded" :editor="editor")
             text-align-btn(v-if="expanded" :editor="editor")
 
-            v-btn(icon v-if="expanded" @click='editor.chain().focus().toggleTaskList().run()' :outlined="editor.isActive('taskList')"  :title="$t('formatting.formatting.check_list')")
+            v-btn(icon v-if="expanded" @click='editor.chain().toggleBulletList().focus().run()' :outlined="editor.isActive('bulletList')"  :title="$t('formatting.bullet_list')")
+              v-icon mdi-format-list-bulleted
+            v-btn(icon v-if="expanded" @click='editor.chain().toggleOrderedList().focus().run()' :outlined="editor.isActive('orderedList')"  :title="$t('formatting.number_list')")
+              v-icon mdi-format-list-numbered
+            v-btn(icon v-if="expanded" @click='editor.chain().toggleTaskList().focus().run()' :outlined="editor.isActive('taskList')"  :title="$t('formatting.check_list')")
               v-icon mdi-format-list-checks
-
-            //- list menu (always a menu)
-            v-menu(v-if="expanded")
-              template(v-slot:activator="{ on, attrs }")
-                v-btn.pl-1.drop-down-button(
-                    icon
-
-                    :outlined="editor.isActive('bulletList') || editor.isActive('orderedList')"
-                    v-on="on"
-                    v-bind="attrs"
-                    :title="$t('formatting.lists')")
-                  v-icon mdi-format-list-bulleted
-                  v-icon.menu-down-arrow mdi-menu-down
-              v-list(dense)
-                //- v-list-item(@click='commands.todo_list')
-                //-   v-list-item-icon
-                //-     v-icon mdi-format-list-checks
-                //-   v-list-item-title(v-t="'formatting.check_list'")
-                v-list-item(@click='editor.chain().toggleBulletList().focus().run()' :class="{ 'v-list-item--active': editor.isActive('bulletList') }")
-                  v-list-item-icon
-                    v-icon mdi-format-list-bulleted
-                  v-list-item-title(v-t="'formatting.bullet_list'")
-                v-list-item(@click='editor.chain().toggleOrderedList().focus().run()'  :class="{ 'v-list-item--active': editor.isActive('orderedList') }")
-                  v-list-item-icon
-                    v-icon mdi-format-list-numbered
-                  v-list-item-title(v-t="'formatting.number_list'")
 
             //- extra text marks
             template(v-if="expanded")
