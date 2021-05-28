@@ -20,12 +20,16 @@ export default
 
   methods:
     onClick: (e) ->
+      # could be a loading/busy class on the li..
       if e.target.getAttribute('data-type') == 'taskItem'
+        return if e.target.classList.contains('task-item-busy')
+        e.target.classList.add('task-item-busy')
         uid = e.target.getAttribute('data-uid')
         checked = e.target.getAttribute('data-checked') == 'true'
         console.log @model.namedId(), uid, checked
-        # flash notice that the task was marked
-        Records.remote.post 'tasks/update_done', merge(@model.namedId(), {uid: uid, done: ((!checked && 'true') || 'false') })
+        params = merge(@model.namedId(), {uid: uid, done: ((!checked && 'true') || 'false') })
+        Records.remote.post('tasks/update_done', params).finally =>
+          e.target.classList.remove('task-item-busy')
 
 
   computed:
@@ -168,7 +172,6 @@ img.emoji
         display: inline-block
         margin: 0
 
-
     li::before
       content: ""
       display: inline-block
@@ -178,9 +181,10 @@ img.emoji
       border-radius: 30%
       border-style: solid
       border-width: 0.1rem
-      border-color: gray
       line-height: 100%
       margin-right: 8px
+      border-color: var(--v-grey-lighten1)
+
 
     li[data-checked="true"]::before
       display: inline-block
@@ -191,10 +195,16 @@ img.emoji
       text-align: center
       vertical-align: middle
       background-color: var(--v-accent-base)
-      border-color: teal
+      border-color: var(--v-accent-base)
 
     li:hover:before
-      border-color: red
+      cursor: pointer
+      border-color: var(--v-accent-lighten1)
+
+    li.task-item-busy::before
+      background-color: var(--v-accent-lighten1)
+      border-color: var(--v-accent-lighten1)
+      // background-color: none !important
 
     // li[data-checked="true"]:hover:before
     //   border-color: red
