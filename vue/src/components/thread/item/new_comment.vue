@@ -55,7 +55,7 @@ thread-item.new-comment(id="'comment-'+ eventable.id" :event="event" :is-returni
     action-dock(:model='eventable' :actions='dockActions' :menu-actions='menuActions')
   formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")
   link-previews(:model="eventable")
-  document-list(:model='eventable' skip-fetch)
+  document-list(:model='eventable')
   attachment-list(:attachments="eventable.attachments")
   template(v-slot:append)
     comment-form(v-if="showReplyForm" :comment="newComment" @comment-submitted="showReplyForm = false" @cancel-reply="showReplyForm = false" autofocus)

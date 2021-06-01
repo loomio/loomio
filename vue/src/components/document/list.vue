@@ -10,23 +10,28 @@ export default
     showEdit: Boolean
     hidePreview: Boolean
     hideDate: Boolean
-    skipFetch: Boolean
+    fetch: Boolean
     placeholder: String
 
   data: ->
     documents: []
 
   created: ->
-    unless @model.isNew() or @skipFetch
-      Records.documents.fetchByModel(@model)
-    @watchRecords
-      collections: ['documents']
-      query: (store) =>
-        @documents = store.documents.collection.chain().find(
-          modelId: {$in: flatten([@model.id, @model.newDocumentIds])}
-          modelType: capitalize(@model.constructor.singular)).
-          where((doc) => !includes @model.removedDocumentIds, doc.id).
-          simplesort('createdAt', true).data()
+    if @couldHaveDocuments
+      if @model.isA('discussion')
+        Records.documents.fetchByDiscussion(@model)
+
+      if !@model.isA('discussion') && !@model.discussionId
+        Records.documents.fetchByModel(@model)
+
+      @watchRecords
+        collections: ['documents']
+        query: (store) =>
+          @documents = store.documents.collection.chain().find(
+            modelId: {$in: flatten([@model.id, @model.newDocumentIds])}
+            modelType: capitalize(@model.constructor.singular)).
+            where((doc) => !includes @model.removedDocumentIds, doc.id).
+            simplesort('createdAt', true).data()
 
   methods:
     edit: (doc, $mdMenu) ->
@@ -45,6 +50,9 @@ export default
               flash:    'poll_common_delete_modal.success'
 
   computed:
+    couldHaveDocuments: ->
+      @model.createdAt < (new Date("2020-08-01T00:00:00"))
+
     showTitle: ->
       (@model.showDocumentTitle or @showEdit) and
       (@model.hasDocuments() or @placeholder)
@@ -54,7 +62,7 @@ export default
 </script>
 
 <template lang="pug">
-section.document-list
+section.document-list(v-if="couldHaveDocuments")
   p.caption(v-if='!model.hasDocuments() && placeholder', v-t='placeholder')
   .document-list__documents
     .attachment-list__item(:class="{'document-list__document--image': document.isAnImage() && !hidePreview}", v-for='document in documents', :key='document.id')
