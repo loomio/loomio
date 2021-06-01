@@ -1,6 +1,6 @@
 .everything
   %p= t(:'email.catch_up.do_not_reply')
-  %h1= t(@subject_key, @subject_params)
+  %h1.text-h4= t(@subject_key, @subject_params)
   .toc
     =render 'user_mailer/catch_up/headlines'
 
@@ -12,7 +12,7 @@
 
   - @groups.each do |group|
     - next unless @discussions_by_group_id.has_key?(group.id)
-    %h1= link_to group.full_name, group_url(group)
+    .text-subtitle-1= link_to group.full_name, group_url(group)
     - @discussions_by_group_id[group.id].each do |discussion|
       = render 'user_mailer/catch_up/discussion', discussion: discussion
 

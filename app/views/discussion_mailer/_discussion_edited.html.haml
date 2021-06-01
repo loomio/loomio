@@ -1,8 +1,8 @@
 - discussion = item.eventable
 %table
   %tr
-    %td.icon
+    %td{valign: 'top'}
       = render "avatar", user: item.actor
-    %td.content
-      %i= t(:"discussion_mailer.discussion_edited.inline", actor: item.actor.name)
-      %p= render_plain_text(item.recipient_message, 'md')
+    %td
+      = t(:"discussion_mailer.discussion_edited.inline", actor: item.actor.name)
+      .font-italic= render_plain_text(item.recipient_message, 'md')

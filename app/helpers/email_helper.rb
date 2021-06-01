@@ -1,5 +1,90 @@
 module EmailHelper
+  include Routing
   include PrettyUrlHelper
+
+  def unfollow_url(discussion, action_name, recipient, new_volume: :quiet)
+    args = utm_hash({discussion_id: discussion.id}, action_name)
+    args = args.merge(unsubscribe_token: unsubscribe_token(recipient))
+    args = args.merge(new_volume: new_volume)
+    email_actions_unfollow_discussion_url(args)
+  end
+
+  def preferences_url(recipient, action_name)
+    email_preferences_url(utm_hash({}, action_name).merge(unsubscribe_token: unsubscribe_token(recipient)))
+  end
+
+  def pixel_src(event, recipient)
+    email_actions_mark_discussion_as_read_url(
+      discussion_id:     event.eventable.discussion.id,
+      event_id:          event.id,
+      unsubscribe_token: recipient.unsubscribe_token,
+      format: 'gif'
+    )
+  end
+
+  def can_unfollow?(discussion, recipient)
+    DiscussionReader.for(discussion: discussion, user: recipient).volume_is_loud?
+  end
+
+  def utm_hash(args = {}, action_name)
+    {
+      utm_medium: 'email',
+      utm_campaign: 'discussion_mailer',
+      utm_source: action_name
+    }.merge(args)
+  end
+
+  def unsubscribe_token(recipient)
+    recipient.unsubscribe_token || 'none'
+  end
+
+  def login_token(recipient, redirect_path)
+    recipient.login_tokens.create!(redirect: redirect_path)
+  end
+
+  def recipient_stance(recipient, poll)
+    poll.stances.latest.find_by(participant: recipient) || Stance.new(poll: poll, participant: recipient)
+  end
+
+  def time_zone(recipient, poll)
+    recipient.time_zone || poll.time_zone
+  end
+
+  def formatted_time_zone(recipient, poll)
+    time_zone = time_zone(recipient, poll)
+    ActiveSupport::TimeZone[time_zone].to_s if time_zone
+  end
+
+  def choice_img(poll)
+    prefix = poll.multiple_choice ? 'check' : 'radio'
+    "poll_mailer/#{prefix}_off.png"
+  end
+
+  def target_url(poll: nil, eventable: nil, recipient:, args: {})
+    if poll
+      stance = recipient_stance(recipient, poll)
+      args.merge!(stance_token: stance.token) if stance
+      polymorphic_url(poll, poll_mailer_utm_hash.merge(args))
+    else
+      if discussion_reader = DiscussionReader.redeemable.find_by(user: recipient, discussion: eventable.discussion)
+        args.merge!(discussion_reader_token: discussion_reader.token)
+      end
+
+      polymorphic_url(eventable, utm_hash(args))
+    end
+  end
+
+  def unsubscribe_url(poll, recipient)
+    poll_unsubscribe_url poll, poll_mailer_utm_hash.merge(unsubscribe_token: recipient.unsubscribe_token)
+  end
+
+  def poll_mailer_utm_hash
+    {
+      utm_medium: 'email',
+      utm_campaign: 'poll_mailer',
+      utm_source: action_name
+    }
+  end
 
   MARKDOWN_OPTIONS = [
     no_intra_emphasis:    true,

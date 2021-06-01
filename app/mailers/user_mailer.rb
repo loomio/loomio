@@ -1,5 +1,5 @@
 class UserMailer < BaseMailer
-  helper PollEmailHelper
+  helper EmailHelper
   layout 'invite_people_mailer', only: [:deactivated, :membership_request_approved, :contact_request, :user_added_to_group, :login, :start_decision, :accounts_merged, :user_reactivated, :group_export_ready]
 
   def deactivated(email, recovery_code, locale)
@@ -41,7 +41,7 @@ class UserMailer < BaseMailer
     else
       @time_start = time_since || 1.week.ago
     end
-    
+
     @time_finish = Time.zone.now
     @time_frame = @time_start...@time_finish
 

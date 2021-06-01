@@ -1,0 +1,123 @@
+/*! * ress.css • v2.0.4 * MIT License * github.com/filipelinhares/ress */
+html{
+    box-sizing:border-box;
+    overflow-y:scroll;
+    -webkit-text-size-adjust:100%;
+    word-break:normal;
+    -moz-tab-size:4;
+    tab-size:4
+}
+*,:after,:before{
+    background-repeat:no-repeat;
+    box-sizing:inherit
+}
+:after,:before{
+    text-decoration:inherit;
+    vertical-align:inherit
+}
+*{
+    padding:0;
+    margin:0
+}
+hr{
+    overflow:visible;
+    height:0
+}
+details,main{
+    display:block
+}
+summary{
+    display:list-item
+}
+small{
+    font-size:80%
+}
+[hidden]{
+    display:none
+}
+abbr[title]{
+    border-bottom:none;
+    text-decoration:underline;
+    -webkit-text-decoration:underline dotted;
+    text-decoration:underline dotted
+}
+a{
+    background-color:transparent
+}
+a:active,a:hover{
+    outline-width:0
+}
+code,kbd,pre,samp{
+    font-family:monospace,monospace
+}
+pre{
+    font-size:1em
+}
+b,strong{
+    font-weight:bolder
+}
+sub,sup{
+    font-size:75%;
+    line-height:0;
+    position:relative;
+    vertical-align:baseline
+}
+sub{
+    bottom:-.25em
+}
+sup{
+    top:-.5em
+}
+input{
+    border-radius:0
+}
+button,input,select,textarea{
+    background-color:transparent;
+    border-style:none
+}
+select{
+    -moz-appearance:none;
+    -webkit-appearance:none
+}
+select::-ms-expand{
+    display:none
+}
+select::-ms-value{
+    color:currentColor
+}
+legend{
+    border:0;
+    color:inherit;
+    display:table;
+    white-space:normal;
+    max-width:100%
+}
+::-webkit-file-upload-button{
+    -webkit-appearance:button;
+    color:inherit;
+    font:inherit
+}
+img{
+    border-style:none
+}
+progress{
+    vertical-align:baseline
+}
+@media screen{
+    [hidden~=screen]{
+        display:inherit
+    }
+    [hidden~=screen]:not(:active):not(:focus):not(:target){
+        position:absolute!important;
+        clip:rect(0 0 0 0)!important
+    }
+}
+[aria-busy=true]{
+    cursor:progress
+}
+[aria-controls]{
+    cursor:pointer
+}
+[aria-disabled=true]{
+    cursor:default
+}

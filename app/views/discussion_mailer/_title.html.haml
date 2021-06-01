@@ -1,0 +1,4 @@
+%h1.text-h5
+  %span.mr-1= link_to(eventable.title, target_url(eventable: eventable, recipient: recipient))
+  - eventable.tags.each do |tag|
+    %span.v-chip{style: "color: #{tag.color}; border-color: #{tag.color}"}=tag.name

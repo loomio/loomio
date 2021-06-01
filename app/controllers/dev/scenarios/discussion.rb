@@ -127,7 +127,7 @@ module Dev::Scenarios::Discussion
     @group.add_member! jennifer
     discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: @group)
     event = DiscussionService.create(discussion: discussion, actor: patrick)
-    DiscussionService.invite(discussion: discussion, actor: patrick, params: {recipient_user_ids: [jennifer.id]})
+    DiscussionService.invite(discussion: discussion, actor: patrick, params: {recipient_user_ids: [jennifer.id], recipient_message: "Hey, I'd love it if you wanted to join in this discussion!"})
     last_email
   end
 
