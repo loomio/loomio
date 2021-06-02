@@ -21,7 +21,7 @@ export default
       if @model.isA('discussion')
         Records.documents.fetchByDiscussion(@model)
 
-      if !@model.isA('discussion') && !@model.discussionId
+      if @model.isA('poll') or @model.isA('outcome') or @model.isA('group')
         Records.documents.fetchByModel(@model)
 
       @watchRecords
