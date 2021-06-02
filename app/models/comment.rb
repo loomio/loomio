@@ -28,8 +28,6 @@ class Comment < ApplicationRecord
   alias_attribute :author, :user
   alias_attribute :author_id, :user_id
 
-  default_scope { includes(:user).includes(:documents) }
-
   scope :in_organisation, ->(group) { includes(:user, :discussion).joins(:discussion).where("discussions.group_id": group.id_and_subgroup_ids) }
 
   delegate :name, to: :user, prefix: :user
