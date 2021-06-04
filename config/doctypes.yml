@@ -1,5 +1,5 @@
 - name: youtube_video
-  regex: youtube.com\/watch\/
+  regex: youtube.com\/watch
   icon: video
   color: "#BB0000"
 
@@ -39,17 +39,17 @@
   color: "#4466AA"
 
 - name: google_doc
-  regex: docs\.google\.com\/documents
-  icon: file-document-box
-  color: "#4466AA"
+  regex: docs\.google\.com\/document
+  icon: text-box
+  color: "#4285F4"
 
 - name: google_sheet
-  regex: docs\.google\.com\/spreadsheets
-  icon: file-document-box
-  color: "#44AA66"
+  regex: docs\.google\.com\/spreadsheet
+  icon: google-spreadsheet
+  color: "#109D58"
 
 - name: google_drive
-  regex: docs\.google\.com\/
+  regex: drive\.google\.com\/
   icon: google-drive
   color: "#4466AA"
 
