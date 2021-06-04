@@ -1,4 +1,20 @@
 en:
+  doctypes:
+    youtube_video: YouTube Video
+    image: Image
+    pdf: PDF
+    excel: Excel Spreadsheet
+    document: Document
+    csv: CSV File
+    video: Video
+    text: Text File
+    google_doc: Google Doc
+    google_sheet: Google Spreadsheet
+    google_drive: Google Drive
+    pull_request: Pull Request
+    trello_board: Trello Board
+    trello_card: Trello Card
+
   loomio_onboarding:
     group_progress_card:
       title: Let's get started!
@@ -249,6 +265,8 @@ en:
       fork: Fork
       apply: Apply
       add_people: Add People
+      zoom: Zoom
+      align: Align
     formatting_help:
       label: 'Formatting'
       title: 'Learn how to use Markdown to format your text'
