@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "@sentry/integrations": "^6.5.0",
+    "@sentry/integrations": "^6.5.1",
     "@sentry/browser": "^6.5.1",
-    "@sentry/tracing": "^6.5.0",
+    "@sentry/tracing": "^6.5.1",
     "activestorage": "^5.2.6",
     "ahoy.js": "^0.3.8",
     "core-js": "^2.6.11",
@@ -43,7 +43,7 @@
     "tiptap-extensions": "1.32.7",
     "turndown": "^7.0.0",
     "turndown-plugin-gfm": "^1.0.2",
-    "vue": "^2.6.12",
+    "vue": "^2.6.13",
     "vue-clipboard2": "^0.3.1",
     "vue-gravatar": "^1.4.1",
     "vue-i18n": "8.24.4",
@@ -74,7 +74,7 @@
     "vue-cli-plugin-coffee": "1.0.0",
     "vue-cli-plugin-pug": "^2.0.0",
     "vue-cli-plugin-vuetify": "latest",
-    "vue-template-compiler": "2.6.12",
+    "vue-template-compiler": "2.6.13",
     "vuetify-loader": "latest",
     "webpack": "4.46.0"
   }
