@@ -370,7 +370,7 @@ GEM
       activesupport (>= 4)
       railties (>= 4)
       request_store (~> 1.0)
-    loofah (2.9.1)
+    loofah (2.10.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -547,7 +547,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sentry-rails (4.5.0)
+    sentry-rails (4.5.1)
       railties (>= 5.0)
       sentry-ruby-core (~> 4.5.0)
     sentry-ruby (4.5.1)
