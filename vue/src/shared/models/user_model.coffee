@@ -40,7 +40,7 @@ export default class UserModel extends BaseModel
 
   groups: ->
     @recordStore.groups.collection.chain().
-      find(id: { $in: @groupIds() }).
+      find(id: { $in: @groupIds() }, archivedAt: null).
       simplesort('fullName').data()
 
   parentGroups: ->
