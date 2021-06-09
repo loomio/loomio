@@ -82,9 +82,9 @@ div
       a.link-preview-link(:href="preview.url" target="_blank" rel="nofollow ugc noreferrer noopener")
         div.ml-4
         .link-preview__image(v-if="preview.image" :style="{'background-image': 'url('+preview.image+')', 'background-size': (preview.fit || 'contain'), 'background-position': (preview.align || 'center')}")
-        v-card-title
+        v-card-title.text--secondary
           v-icon.mr-1 mdi-open-in-new
-          .text--secondary {{preview.title}}
+          | {{preview.title}}
         v-card-subtitle
           span(v-if="doctype.name != 'other'" v-t="'doctypes.'+doctype.name")
           span.link-preview__hostname(v-else v-html="preview.hostname")
@@ -92,6 +92,11 @@ div
 </template>
 
 <style lang="sass">
+.link-preview
+  .v-card__title
+    word-break: break-word
+    display: block
+    
 .link-preview-link:hover
   background-color: #ededed
 

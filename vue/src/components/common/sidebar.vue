@@ -63,7 +63,7 @@ export default
 
   methods:
     memberGroups: (group) ->
-      group.subgroups().filter (g) -> g.membershipFor(Session.user())
+      group.subgroups().filter (g) -> !g.archivedAt && g.membershipFor(Session.user())
 
     openIfPinned: ->
       @open = Session.isSignedIn() && !!Session.user().experiences['sidebar'] && @$vuetify.breakpoint.lgAndUp
