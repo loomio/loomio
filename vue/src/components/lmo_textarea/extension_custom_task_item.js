@@ -30,6 +30,17 @@ export const CustomTaskItem = TaskItem.extend({
         keepOnSplit: false,
       },
 
+      dueOn: {
+        default: null,
+        parseHTML: element => ({
+          dueOn: element.getAttribute('data-due-on')
+        }),
+        renderHTML: attributes => ({
+          'data-due-on': attributes.dueOn,
+        }),
+        keepOnSplit: false,
+      },
+
       authorId: {
         default: Session.user().id,
         parseHTML: element => ({
