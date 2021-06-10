@@ -19,8 +19,7 @@ export default
 
   computed:
     doctype: ->
-      doctypes.find (dt) =>
-        (new RegExp(dt.regex)).test(@preview.url)
+      doctypes.find((dt) => (new RegExp(dt.regex)).test(@preview.url)) || {name: 'other'}
 
     icon: ->
       if @doctype
