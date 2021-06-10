@@ -1,7 +1,10 @@
 import TaskItem from '@tiptap/extension-task-item'
 import Session from '@/shared/services/session'
+import { VueNodeViewRenderer } from '@tiptap/vue-2'
+import TaskItemComponent from './task_item_component.vue'
 
 export const CustomTaskItem = TaskItem.extend({
+  draggable: true,
   addAttributes() {
     return {
       uid: {
@@ -53,76 +56,6 @@ export const CustomTaskItem = TaskItem.extend({
   },
 
   addNodeView() {
-    return ({
-      node,
-      HTMLAttributes,
-      getPos,
-      editor,
-    }) => {
-      const listItem = document.createElement('li')
-      const checkboxWrapper = document.createElement('label')
-      const checkbox = document.createElement('input')
-      const content = document.createElement('div')
-
-      checkboxWrapper.contentEditable = 'false'
-      checkbox.type = 'checkbox'
-      checkbox.addEventListener('change', event => {
-        const { checked } = event.target
-
-        if (typeof getPos === 'function') {
-          editor
-            .chain()
-            .focus()
-            .command(({ tr }) => {
-              console.log('tr', tr)
-              console.log('node.attrs', node.attrs)
-              console.log('node.innerHtml', node)
-              tr.setNodeMarkup(getPos(), undefined, {
-                checked: checked,
-                uid: node.attrs.uid,
-                authorId: node.attrs.authorId,
-              })
-
-              return true
-            })
-            .run()
-        }
-      })
-
-
-      if (node.attrs.checked) {
-        checkbox.setAttribute('checked', 'checked')
-      }
-
-      checkboxWrapper.append(checkbox)
-      listItem.append(checkboxWrapper, content)
-
-
-      Object
-        .entries(HTMLAttributes)
-        .forEach(([key, value]) => {
-          listItem.setAttribute(key, value)
-        })
-      console.log("hmltattributes", HTMLAttributes)
-      console.log('listitem.get data-uid', listItem.getAttribute('data-uid'))
-
-      return {
-        dom: listItem,
-        contentDOM: content,
-        update: updatedNode => {
-          if (updatedNode.type !== this.type) {
-            return false
-          }
-
-          if (updatedNode.attrs.checked) {
-            checkbox.setAttribute('checked', 'checked')
-          } else {
-            checkbox.removeAttribute('checked')
-          }
-
-          return true
-        },
-      }
-    }
+    return VueNodeViewRenderer(TaskItemComponent)
   },
 })
