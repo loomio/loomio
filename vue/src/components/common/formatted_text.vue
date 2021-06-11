@@ -20,16 +20,17 @@ export default
 
   methods:
     onClick: (e) ->
-      # could be a loading/busy class on the li..
       if e.target.getAttribute('data-type') == 'taskItem'
-        return if e.target.classList.contains('task-item-busy')
-        e.target.classList.add('task-item-busy')
-        uid = e.target.getAttribute('data-uid')
-        checked = e.target.getAttribute('data-checked') == 'true'
-        console.log @model.namedId(), uid, checked
-        params = merge(@model.namedId(), {uid: uid, done: ((!checked && 'true') || 'false') })
-        Records.remote.post('tasks/update_done', params).finally =>
-          e.target.classList.remove('task-item-busy')
+        if (e.offsetX < e.target.offsetLeft)
+          console.log e.target, e
+          return if e.target.classList.contains('task-item-busy')
+          e.target.classList.add('task-item-busy')
+          uid = e.target.getAttribute('data-uid')
+          checked = e.target.getAttribute('data-checked') == 'true'
+          console.log @model.namedId(), uid, checked
+          params = merge(@model.namedId(), {uid: uid, done: ((!checked && 'true') || 'false') })
+          Records.remote.post('tasks/update_done', params).finally =>
+            e.target.classList.remove('task-item-busy')
 
 
   computed:
@@ -72,7 +73,6 @@ img.emoji
 
       li[data-checked="true"]::before
         content: none
-
 
 .lmo-markdown-wrapper
   p
@@ -171,6 +171,19 @@ img.emoji
       p
         display: inline-block
         margin: 0
+
+    li[data-due-on]:not([data-due-on=""])::after
+      font-size: 10px
+      color: #fff
+      content: " 📅 " attr(data-due-on) ""
+      border-radius: 8px
+      background-color: var(--v-accent-base)
+      margin-left: 8px
+      padding: 2px 8px
+      height: 16px
+      display: flex
+      align-items: center
+      // border: 1px solid var(--v-accent-base)
 
     li::before
       content: ""

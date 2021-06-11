@@ -7,33 +7,34 @@ export default
   props: nodeViewProps
 
   data: ->
-    modal: false
-    date: @node.attrs.dueOn
-    checked: @node.attrs.checked
+    modalOpen: false
+    date: null
 
   methods:
-    labelClicked: -> console.log 'label clicked'
     onCheckboxChange: (val) ->
       @updateAttributes({ checked: val.target.checked })
+
+    setDueOn: (val) ->
+      @updateAttributes({ dueOn: val })
 
 </script>
 
 <template lang="pug">
 node-view-wrapper.d-flex.align-center(as="li")
-  input(contenteditable="false" draggable="true" data-drag-handle type="checkbox" :checked="checked" @change="onCheckboxChange")
+  input(contenteditable="false" draggable="true" data-drag-handle type="checkbox" :checked="node.attrs.checked" @change="onCheckboxChange")
 
   //- v-checkbox
   //- div(class="content") this is some task item content
   node-view-content(class="task-item-text")
-  v-dialog(ref="dialog" v-model="modal" :return-value.sync="date" persistent width="290px")
-    template(v-slot:activator="{ on, attrs }")
-      v-chip(v-if="date") {{date}}
-      v-btn(v-else icon v-bind="attrs" v-on="on")
-        v-icon mdi-calendar
+
+  v-chip.ml-2(color="accent" x-small @click="date = node.attrs.dueOn; modalOpen = true")
+    v-icon mdi-calendar
+    span.ml-1(v-if="node.attrs.dueOn") {{node.attrs.dueOn}}
+  v-dialog(ref="dialog" v-model="modalOpen" persistent width="290px")
     v-date-picker(v-model="date" scrollable)
       v-spacer
-      v-btn(text color="primary" @click="date = null; modal = false" v-t="$t('common.action.clear')")
-      v-btn(text color="primary" @click="$refs.dialog.save(date)" v-t="$t('common.action.ok')")
+      v-btn(text color="primary" @click="setDueOn(null); modalOpen = false" v-t="$t('common.action.clear')")
+      v-btn(text color="primary" @click="setDueOn(date); modalOpen = false" v-t="$t('common.action.ok')")
 
 </template>
 
