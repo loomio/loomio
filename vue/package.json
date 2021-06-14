@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "@sentry/integrations": "^6.5.1",
-    "@sentry/browser": "^6.5.1",
-    "@sentry/tracing": "^6.5.1",
+    "@sentry/integrations": "^6.6.0",
+    "@sentry/browser": "^6.6.0",
+    "@sentry/tracing": "^6.6.0",
     "activestorage": "^5.2.6",
     "ahoy.js": "^0.3.8",
     "core-js": "^2.6.11",
