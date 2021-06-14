@@ -20,13 +20,9 @@ export default
 </script>
 
 <template lang="pug">
-node-view-wrapper.d-flex.align-center(as="li")
-  input(contenteditable="false" draggable="true" data-drag-handle type="checkbox" :checked="node.attrs.checked" @change="onCheckboxChange")
-
-  //- v-checkbox
-  //- div(class="content") this is some task item content
-  node-view-content(class="task-item-text")
-
+node-view-wrapper(as="li")
+  input.flex-shrink-0(contenteditable="false" draggable="true" data-drag-handle type="checkbox" :checked="node.attrs.checked" @change="onCheckboxChange")
+  node-view-content(as="span" class="task-item-text")
   v-chip.ml-2(color="accent" x-small @click="date = node.attrs.dueOn; modalOpen = true")
     v-icon mdi-calendar
     span.ml-1(v-if="node.attrs.dueOn") {{node.attrs.dueOn}}
@@ -35,7 +31,6 @@ node-view-wrapper.d-flex.align-center(as="li")
       v-spacer
       v-btn(text color="primary" @click="setDueOn(null); modalOpen = false" v-t="$t('common.action.clear')")
       v-btn(text color="primary" @click="setDueOn(date); modalOpen = false" v-t="$t('common.action.ok')")
-
 </template>
 
 <style lang="sass">

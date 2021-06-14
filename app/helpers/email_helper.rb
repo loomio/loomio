@@ -25,7 +25,7 @@ module EmailHelper
     if format == "md"
       markdownify(text)
     else
-      replace_iframes(text)
+      replace_checkboxes(replace_iframes(text))
     end.html_safe
   end
 
@@ -46,6 +46,18 @@ module EmailHelper
       end
     end
     out
+  end
+
+  def replace_checkboxes(str)
+    frag = Nokogiri::HTML::DocumentFragment.parse(str)
+    frag.css('li[data-type="taskItem"]').each do |node|
+      if node['data-checked'] == 'true'
+        node.prepend_child '<div class="email-checkbox">&nbsp;</div>'
+      else
+        node.prepend_child '<div class="email-checkbox">✔️</div>'
+      end
+    end
+    frag.to_s
   end
 
   def markdownify(text)

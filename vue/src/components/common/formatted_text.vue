@@ -199,7 +199,6 @@ img.emoji
       margin-right: 8px
       border-color: var(--v-grey-lighten1)
 
-
     li[data-checked="true"]::before
       display: inline-block
       vertical-align: middle

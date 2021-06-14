@@ -93,7 +93,7 @@ class TaskService
                    users: mentioned_users,
                    done: data[:done],
                    done_at: (!task.done && data[:done]) ? Time.now : task.done_at,
-                   author: model.members.find_by('users.id': data[:author_id]))
+                   author: model.members.find_by('users.id': data[:author_id]) || model.author)
     end
 
     # create tasks which dont yet exist
@@ -108,7 +108,7 @@ class TaskService
         users: users,
         done: data[:done],
         done_at: (data[:done] ? Time.now : nil),
-        author: model.members.find_by('users.id': data[:author_id])
+        author: model.members.find_by('users.id': data[:author_id]) || model.author
       )
     end
   end
