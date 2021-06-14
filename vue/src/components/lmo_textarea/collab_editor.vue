@@ -117,6 +117,7 @@ export default
         ListItem
         OrderedList
         Paragraph
+        Placeholder.configure(placeholder: @placeholder)
         Strike
         Text
         Table
@@ -384,6 +385,18 @@ div
   white-space: pre-wrap
 
 .ProseMirror
+  > * + *
+    margin-top: 0.75em
+
+/* Placeholder (at the top) */
+.ProseMirror p.is-editor-empty:first-child::before
+  content: attr(data-placeholder)
+  float: left
+  color: #ced4da
+  pointer-events: none
+  height: 0
+
+.ProseMirror
   outline: none
 
 progress
@@ -437,16 +450,16 @@ progress::-moz-progress-bar
   border-bottom: 1px solid var(--v-primary-base)
 
 
-.lmo-textarea p.is-empty:first-child::before
-  content: attr(data-empty-text)
-  float: left
-  color: #aaa
-  pointer-events: none
-  height: 0
-
-.lmo-textarea p.is-empty
-  font-size: 16px
-  padding-bottom: 16px
+// .lmo-textarea p.is-empty:first-child::before
+//   content: attr(data-empty-text)
+//   float: left
+//   color: #aaa
+//   pointer-events: none
+//   height: 0
+//
+// .lmo-textarea p.is-empty
+//   font-size: 16px
+//   padding-bottom: 16px
 
 input[type="file"]
   display: none
