@@ -21,7 +21,7 @@ export default
 
 <template lang="pug">
 node-view-wrapper(as="li")
-  input.flex-shrink-0(contenteditable="false" draggable="true" data-drag-handle type="checkbox" :checked="node.attrs.checked" @change="onCheckboxChange")
+  input.flex-shrink-0(contenteditable="false" type="checkbox" :checked="node.attrs.checked" @change="onCheckboxChange")
   node-view-content(as="span" class="task-item-text")
   v-chip.ml-2(contenteditable="false" color="accent" x-small @click="date = node.attrs.dueOn; modalOpen = true")
     v-icon mdi-calendar

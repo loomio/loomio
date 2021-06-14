@@ -4,7 +4,6 @@ import { VueNodeViewRenderer } from '@tiptap/vue-2'
 import TaskItemComponent from './task_item_component.vue'
 
 export const CustomTaskItem = TaskItem.extend({
-  draggable: true,
   addAttributes() {
     return {
       uid: {
