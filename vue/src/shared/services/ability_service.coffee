@@ -28,6 +28,12 @@ export default new class AbilityService
     !comment.discardedAt &&
     comment.discussion().membersInclude(Session.user())
 
+  canEdit: (model) ->
+    (model.isA('discussion') && @canEditThread(model)) ||
+    (model.isA('comment') && @canEditComment(model)) ||
+    (model.isA('poll') && @canEditPoll(model)) ||
+    (model.isA('stance') && @canEditStance(model))
+
   canEditStance: (stance) ->
     Session.user() == stance.author()
 

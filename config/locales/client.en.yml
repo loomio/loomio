@@ -2,6 +2,7 @@ en:
   tasks:
     tasks: Tasks
     your_tasks: Your tasks
+    permission_denied: You don't have permission to update this task
 
   doctypes:
     youtube_video: YouTube Video

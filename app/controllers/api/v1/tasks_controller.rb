@@ -1,11 +1,7 @@
 class API::V1::TasksController < API::V1::RestfulController
-  def visible_records
-    Task.kept.joins("LEFT JOIN tasks_users ON tasks.id = tasks_users.task_id").
-         where("tasks.author_id = :id or tasks_users.user_id = :id", id: current_user.id)
-  end
-
   def update_done
-    @task = visible_records.find_by(record: record, uid: params[:uid])
+    @task = Task.find_by(record: record, uid: params[:uid])
+    current_user.ability.authorize!(:update, @task)
 
     TaskService.update_done(@task, current_user, params[:done] == 'true')
 
@@ -14,7 +10,8 @@ class API::V1::TasksController < API::V1::RestfulController
   end
 
   def mark_as_done
-    @task = visible_records.find(params[:id])
+    @task = Task.find(params[:id])
+    current_user.ability.authorize!(:update, @task)
 
     TaskService.update_done(@task, current_user, true)
 
@@ -23,7 +20,8 @@ class API::V1::TasksController < API::V1::RestfulController
   end
 
   def mark_as_not_done
-    @task = visible_records.find(params[:id])
+    @task = Task.find(params[:id])
+    current_user.ability.authorize!(:update, @task)
 
     TaskService.update_done(@task, current_user, false)
 

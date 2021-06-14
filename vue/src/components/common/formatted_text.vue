@@ -2,6 +2,8 @@
 import { emojiReplaceText } from '@/shared/helpers/emojis.coffee'
 import { merge } from 'lodash'
 import Records from '@/shared/services/records'
+import Session from '@/shared/services/session'
+import AbilityService from '@/shared/services/ability_service'
 
 export default
   props:
@@ -20,20 +22,19 @@ export default
 
   methods:
     onClick: (e) ->
-      if e.target.getAttribute('data-type') == 'taskItem'
-        if (e.offsetX < e.target.offsetLeft)
-          console.log e.target, e
-          return if e.target.classList.contains('task-item-busy')
+      if e.target.getAttribute('data-type') == 'taskItem' && (e.offsetX < e.target.offsetLeft) && !e.target.classList.contains('task-item-busy')
+        if (@canEdit || e.target.querySelectorAll('span[data-mention-id="'+Session.user().username+'"]').length)
           e.target.classList.add('task-item-busy')
           uid = e.target.getAttribute('data-uid')
           checked = e.target.getAttribute('data-checked') == 'true'
-          console.log @model.namedId(), uid, checked
           params = merge(@model.namedId(), {uid: uid, done: ((!checked && 'true') || 'false') })
           Records.remote.post('tasks/update_done', params).finally =>
             e.target.classList.remove('task-item-busy')
-
+        else
+          alert(@$t('tasks.permission_denied'))
 
   computed:
+    canEdit: -> AbilityService.canEdit(@model)
     isMd: -> @format == 'md'
     isHtml: -> @format == 'html'
     format: -> @model[@column+"Format"]
