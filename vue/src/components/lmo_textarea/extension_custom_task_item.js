@@ -40,6 +40,17 @@ export const CustomTaskItem = TaskItem.extend({
         keepOnSplit: false,
       },
 
+      remind: {
+        default: null,
+        parseHTML: element => ({
+          remind: element.getAttribute('data-remind')
+        }),
+        renderHTML: attributes => ({
+          'data-remind': attributes.remind,
+        }),
+        keepOnSplit: false,
+      },
+
       authorId: {
         default: Session.user().id,
         parseHTML: element => ({

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_28_071223) do
+ActiveRecord::Schema.define(version: 2021_06_15_004350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -780,6 +780,7 @@ ActiveRecord::Schema.define(version: 2021_05_28_071223) do
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "discarded_at"
     t.integer "doer_id"
+    t.integer "remind"
     t.index ["author_id"], name: "index_tasks_on_author_id"
     t.index ["discarded_at"], name: "index_tasks_on_discarded_at"
     t.index ["due_on"], name: "index_tasks_on_due_on"

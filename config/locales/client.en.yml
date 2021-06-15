@@ -3,6 +3,13 @@ en:
     tasks: Tasks
     your_tasks: Your tasks
     permission_denied: You don't have permission to update this task
+    due_date: Due date
+    send_reminder: Send reminder (if not done)
+    no_reminder: No reminder
+    1_day_before: 1 day before
+    2_day_before: 2 days before
+    3_day_before: 3 days before
+    7_day_before: 7 days before
 
   doctypes:
     youtube_video: YouTube Video
