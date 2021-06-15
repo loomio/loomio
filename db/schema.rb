@@ -781,6 +781,7 @@ ActiveRecord::Schema.define(version: 2021_06_15_004350) do
     t.datetime "discarded_at"
     t.integer "doer_id"
     t.integer "remind"
+    t.datetime "remind_at"
     t.index ["author_id"], name: "index_tasks_on_author_id"
     t.index ["discarded_at"], name: "index_tasks_on_discarded_at"
     t.index ["due_on"], name: "index_tasks_on_due_on"

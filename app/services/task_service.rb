@@ -44,10 +44,10 @@ class TaskService
   end
 
   def self.parse_and_update(model, field)
-    update_model(model, parse_tasks(model[field]))
+    update_model(model, parse_tasks(model[field], model.author))
   end
 
-  def self.parse_tasks(rich_text)
+  def self.parse_tasks(rich_text, author)
     Nokogiri::HTML::fragment(rich_text).search('li[data-type="taskItem"]').map do |el|
       identifiers = Nokogiri::HTML::fragment(el).
                     search("span[data-mention-id]").map do |el|
@@ -56,14 +56,19 @@ class TaskService
       usernames = identifiers.filter { |id_or_username| id_or_username.to_i.to_s != id_or_username }
       user_ids =  identifiers.filter { |id_or_username| id_or_username.to_i.to_s == id_or_username }
 
+      remind = (el['data-remind'].present? ? el['data-remind'].to_i : nil)
+      due_on = el['data-due-on'].to_s.to_date
+      remind_at = (due_on && remind) ? ("#{el['data-due-on']} 06:00".in_time_zone(author.time_zone) - remind.day) : nil
       {
         uid: el['data-uid'].to_i,
         name: el.text,
         user_ids: user_ids,
         usernames: usernames,
-        due_on: parse_date(el.text),
+        due_on: el['data-due-on'].to_s.to_date,
+        remind: remind,
+        remind_at: remind_at,
         done: el['data-checked'] == 'true',
-        author_id: (el['data-author-id'] && el['data-author-id'].to_i) || nil
+        author_id: (el['data-author-id'] && el['data-author-id'].to_i) || author.id
       }
     end
   end
@@ -92,6 +97,8 @@ class TaskService
                    due_on: data[:due_on],
                    users: mentioned_users,
                    done: data[:done],
+                   remind: data[:remind],
+                   remind_at: data[:remind_at],
                    done_at: (!task.done && data[:done]) ? Time.now : task.done_at,
                    author: model.members.find_by('users.id': data[:author_id]) || model.author)
     end
@@ -105,17 +112,13 @@ class TaskService
         uid: data[:uid],
         name: data[:name],
         due_on: data[:due_on],
+        remind: data[:remind],
+        remind_at: data[:remind_at],
         users: users,
         done: data[:done],
         done_at: (data[:done] ? Time.now : nil),
         author: model.members.find_by('users.id': data[:author_id]) || model.author
       )
     end
-  end
-
-  def self.parse_date(s)
-    Date.parse s.match(/(\d\d\d\d)-(\d\d?)-(\d\d?)/).to_s
-  rescue Date::Error
-    nil
   end
 end
