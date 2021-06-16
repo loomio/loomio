@@ -186,4 +186,22 @@ module Dev::Scenarios::Discussion
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     last_email
   end
+
+  def setup_task_reminder_email
+    @group = Group.create!(name: 'Dirty Dancing Shoes')
+    @group.add_admin!(patrick)
+    jennifer.update(time_zone: "Pacific/Auckland")
+    @group.add_member! jennifer
+    datestr = "2021-06-16"
+
+    @discussion = Discussion.new(title: 'time to do your chores!',
+                                 description_format: 'html',
+                                 group: @group,
+                                 description: "<li data-uid='123' data-type='taskItem' data-due-on='#{datestr}' data-remind='1'>this is a task for <span data-mention-id='#{jennifer.username}'>#{jennifer.name}</span></li>",
+                                 author: jennifer)
+    DiscussionService.create(discussion: @discussion, actor: @discussion.author)
+    expected_remind_at = "{datestr} 06:00".in_time_zone("Pacific/Auckland") - 1.day
+    TaskService.send_task_reminders(expected_remind_at)
+    last_email
+  end
 end

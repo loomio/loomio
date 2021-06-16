@@ -95,4 +95,15 @@ describe TaskService do
     expected_remind_at = "2022-05-02 06:00".in_time_zone("Pacific/Auckland") - 1.day
     expect(model.tasks.first.remind_at.iso8601).to eq expected_remind_at.utc.iso8601
   end
+
+  it 'sends an email to assigned users' do
+    member.update(time_zone: "Pacific/Auckland")
+    rich_text = "<li data-uid='123' data-type='taskItem' data-due-on='2022-05-02' data-remind='1'>this is a task for <span data-mention-id='#{member.username}'>#{member.name}</span></li>"
+    tasks_data = TaskService.parse_tasks(rich_text, member)
+    TaskService.update_model(model, tasks_data)
+    expected_remind_at = "2022-05-02 06:00".in_time_zone("Pacific/Auckland") - 1.day
+    expect { TaskService.send_task_reminders(expected_remind_at.utc) }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    last_email = ActionMailer::Base.deliveries.last
+    expect(last_email.to).to include member.email
+  end
 end

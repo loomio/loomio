@@ -95,7 +95,7 @@ div
   .v-card__title
     word-break: break-word
     display: block
-    
+
 .link-preview-link:hover
   background-color: #ededed
 
@@ -115,5 +115,4 @@ div
 .link-preview__btn
   top: 8px
   position: absolute
-  z-index: 1000
 </style>

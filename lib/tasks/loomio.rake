@@ -33,9 +33,9 @@ namespace :loomio do
     ThrottleService.reset!('hour')
     PollService.delay.expire_lapsed_polls
     PollService.delay.publish_closing_soon
+    TaskService.delay.send_task_reminders
 
     SendDailyCatchUpEmailWorker.perform_async
-
     LocateUsersAndGroupsWorker.perform_async
     if (Time.now.hour == 0)
       ThrottleService.reset!('day')

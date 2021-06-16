@@ -205,6 +205,8 @@ en:
       private: 'Private'
       secret: 'Secret'
     selected: 'Selected'
+    today: 'today'
+    in_x_days: 'in %{x} days'
     date_range:
       today: 'Today'
       yesterday: 'Yesterday'

@@ -784,8 +784,10 @@ ActiveRecord::Schema.define(version: 2021_06_15_004350) do
     t.datetime "remind_at"
     t.index ["author_id"], name: "index_tasks_on_author_id"
     t.index ["discarded_at"], name: "index_tasks_on_discarded_at"
+    t.index ["done"], name: "index_tasks_on_done"
     t.index ["due_on"], name: "index_tasks_on_due_on"
     t.index ["record_type", "record_id"], name: "index_tasks_on_record_type_and_record_id"
+    t.index ["remind_at"], name: "index_tasks_on_remind_at"
   end
 
   create_table "tasks_users", force: :cascade do |t|
