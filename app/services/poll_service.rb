@@ -22,7 +22,11 @@ class PollService
                            model: poll,
                            actor: actor)
 
-    poll.assign_attributes_and_files(params.except(:poll_type, :discussion_id, :group_id))
+    poll.assign_attributes_and_files(params.except(:poll_type, :discussion_id))
+
+    # check again, because the group id could be updated to a untrusted group
+    actor.ability.authorize! :update, poll
+
     poll.prioritise_poll_options!
 
     return false unless poll.valid?
