@@ -72,11 +72,18 @@ v-card.auth-signup-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.ca
       .auth-signup-form__consent(v-if='termsUrl')
         v-checkbox.auth-signup-form__legal-accepted(v-model='vars.legalAccepted' hide-details)
           template(v-slot:label)
-            span(v-html="$t('auth_form.i_accept', { termsUrl: termsUrl, privacyUrl: privacyUrl })")
+            i18n(path="auth_form.i_accept_all" tag="span")
+              template(v-slot:termsLink)
+                a(:href='termsUrl' target='_blank' @click.stop v-t="'powered_by.terms_of_service'")
+              template(v-slot:privacyLink)
+                a(:href='privacyUrl' target='_blank' @click.stop v-t="'powered_by.privacy_policy'")
       .auth-signup-form__newsletter(v-if='newsletterEnabled')
         v-checkbox.auth-signup-form__newsletter-accepted(v-model='vars.emailNewsletter' hide-details)
           template(v-slot:label)
-            span(v-html="$t('auth_form.newsletter_label')")
+            i18n(path="auth_form.newsletter_label" tag="span")
+              template(v-slot:link)
+                //- a(href='https://help.loomio.org/en/newsletter/' target='_blank' @click.stop v-t="'email_settings_page.email_newsletter'")
+                span(v-t="'email_settings_page.email_newsletter'")
 
     v-card-actions.mt-8
       v-spacer
