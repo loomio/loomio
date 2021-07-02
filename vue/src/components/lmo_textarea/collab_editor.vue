@@ -108,7 +108,7 @@ export default
         Dropcursor
         GapCursor
         Heading
-        Highlight.configure(multicolor: true)
+        Highlight.configure({ multicolor: true })
         History
         HorizontalRule
         Italic
@@ -128,8 +128,10 @@ export default
         CustomTaskItem
         CustomMention.configure(MentionPluginConfig.bind(@)())
         Typography
-        TextAlign
         TextStyle
+        TextAlign.configure({
+          types: ['heading', 'paragraph'],
+        })
         TextColor
         Underline
       ]
