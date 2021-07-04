@@ -33,8 +33,9 @@ import TableCell from '@tiptap/extension-table-cell'
 import TableHeader from '@tiptap/extension-table-header'
 import TableRow from '@tiptap/extension-table-row'
 import Table from '@tiptap/extension-table'
-import TaskList from '@tiptap/extension-task-list'
+# import TaskList from '@tiptap/extension-task-list'
 import {CustomTaskItem} from './extension_custom_task_item'
+import {CustomTaskList} from './extension_custom_task_list'
 import TextStyle from '@tiptap/extension-text-style'
 # import TextAlign from '@tiptap/extension-text-align'
 import Text from '@tiptap/extension-text'
@@ -126,7 +127,7 @@ export default
         TableHeader
         TableRow
         TableCell
-        TaskList
+        CustomTaskList
         CustomTaskItem
         CustomMention.configure(MentionPluginConfig.bind(@)())
         Typography

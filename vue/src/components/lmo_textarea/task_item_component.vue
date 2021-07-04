@@ -10,6 +10,7 @@ export default
     modalOpen: false
     date: null
     remind: 0
+    checked: @node.attrs.checked
     reminders: [
       {text: 'No reminder', value: null}
       {text: 'On due date', value: 0}
@@ -21,7 +22,8 @@ export default
 
   methods:
     onCheckboxChange: (val) ->
-      @updateAttributes({ checked: val.target.checked })
+      @checked = !@checked
+      @updateAttributes({ checked: @checked })
 
     openModal: ->
       @date = @node.attrs.dueOn
@@ -40,7 +42,8 @@ export default
 
 <template lang="pug">
 node-view-wrapper(as="li")
-  input.flex-shrink-0(contenteditable="false" type="checkbox" :checked="node.attrs.checked" @change="onCheckboxChange")
+  //- input.flex-shrink-0(style="z-index: 2300" type="checkbox" :checked="node.attrs.checked" @change="onCheckboxChange")
+  v-simple-checkbox(color="accent" :ripple="false" type="checkbox" :value="checked" @click="onCheckboxChange")
   node-view-content(as="span" class="task-item-text")
   v-chip.ml-2(contenteditable="false" color="accent" x-small @click="openModal")
     v-icon mdi-calendar
