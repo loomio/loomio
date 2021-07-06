@@ -145,7 +145,7 @@ v-card.group-form
         .v-input
           label.v-label.v-label--active.lmo-font-12px(v-t="'group_form.click_to_change_image'" @click="selectCoverPhoto()")
         v-img.group_form__file-select(:src="realGroup.coverUrl()" width="100%"  @click="selectCoverPhoto()")
-        group-avatar.group_form__file-select.group_form__logo.white(v-if="!group.parentId" :group="realGroup" size="72px" :on-click="selectLogo" :elevation="4")
+        group-avatar.group_form__file-select.group_form__logo.white(:group="realGroup" size="72px" :on-click="selectLogo" :elevation="4")
         v-text-field.group-form__name#group-name.mt-4(v-model='group.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]', maxlength='255', :label="$t(groupNameLabel)")
         div(v-if="!group.parentId || (group.parentId && group.parent().handle)")
           v-text-field.group-form__handle#group-handle(v-model='group.handle', :hint="$t('group_form.group_handle_placeholder', {handle: group.handle})" maxlength='100' :label="$t('group_form.handle')")
