@@ -6,10 +6,13 @@ en:
     due_date: Due date
     send_reminder: Send reminder (if not done)
     no_reminder: No reminder
+    on_due_date: On due date
     1_day_before: 1 day before
     2_day_before: 2 days before
     3_day_before: 3 days before
     7_day_before: 7 days before
+    task_placeholder: Enter a task and @mention someone to assign it
+    add_due_date: Add due date
 
   doctypes:
     youtube_video: YouTube Video
