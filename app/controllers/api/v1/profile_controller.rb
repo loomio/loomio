@@ -76,6 +76,11 @@ class API::V1::ProfileController < API::V1::RestfulController
     render json: { success: :ok }
   end
 
+  def contactable
+    current_user.ability.authorize!(:contact, User.find(params[:user_id]))
+    head :ok
+  end
+
   private
   def current_user
     restricted_user || super

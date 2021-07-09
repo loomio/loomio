@@ -112,6 +112,7 @@ Loomio::Application.routes.draw do
           get  :email_status
           get  :email_exists
           get  :send_merge_verification_email
+          get  :contactable
           post :update_profile
           post :set_volume
           post :upload_avatar
