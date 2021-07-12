@@ -73,7 +73,12 @@ class API::V1::ProfileController < API::V1::RestfulController
 
   def send_merge_verification_email
     MergeUsersService.send_merge_verification_email(actor: current_user, target_email: params[:target_email])
-    render json: { success: :ok }
+    success_response
+  end
+
+  def contactable
+    current_user.ability.authorize!(:contact, User.find(params[:user_id]))
+    success_response
   end
 
   private

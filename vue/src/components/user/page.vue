@@ -27,6 +27,8 @@ export default
     approximate: approximate
     init: ->
       if @user = (Records.users.find(@$route.params.key) or Records.users.find(username: @$route.params.key))[0]
+        Records.remote.get('profile/contactable', user_id: @user.id).then =>
+          @canContactUser = true
         EventBus.$emit 'currentComponent', {title: @user.name, page: 'userPage'}
         @loadGroupsFor(@user)
         @watchRecords
@@ -34,7 +36,6 @@ export default
           collections: ['groups', 'memberships']
           query: (store) =>
             @groups = @user.groups()
-            @canContactUser = AbilityService.canContactUser(@user)
 
     loadGroupsFor: (user) ->
       @loadingGroupsForExecuting = true
@@ -69,11 +70,7 @@ v-main.user-page__profile
             v-btn.my-4.user-page__contact-user(v-if="canContactUser" color="accent" outlined :to="'/d/new?user_id=' + user.id" v-t="{ path: 'user_page.message_user', args: { name: user.firstName() } }")
       v-card.mt-4.user-page__groups
         v-card-text
-          h3.lmo-h3.user-page__groups-title
-            span {{user.firstName()}}
-            span 's
-            space
-            span(v-t="'common.groups'")
+          h3.lmo-h3.user-page__groups-title(v-t="'common.groups'")
           v-list(dense)
             v-list-item.user-page__group(v-for='group in groups' :key='group.id' :to='urlFor(group)')
               v-list-item-avatar

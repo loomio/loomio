@@ -162,6 +162,51 @@ describe API::V1::ProfileController do
     end
   end
 
+  describe "contactable" do
+    let(:user)  { create :user }
+    let(:actor) { create :user }
+    let(:group) { create :group }
+    let(:discussion) { create :discussion, group: nil }
+    let(:poll) { create :poll, group: nil }
+
+    before do
+      sign_in(user)
+    end
+
+    it 'unrelated' do
+      get :contactable, params: {user_id: user.id}
+      expect(response.status).to eq 403
+    end
+
+    it 'two group members' do
+      group.add_member! user
+      group.add_member! actor
+      get :contactable, params: {user_id: user.id}
+      expect(response.status).to eq 200
+    end
+
+    it 'two discussion members' do
+      discussion.add_guest! user, discussion.author
+      discussion.add_guest! actor, discussion.author
+      get :contactable, params: {user_id: user.id}
+      expect(response.status).to eq 200
+    end
+
+    it 'two poll members' do
+      poll.add_guest! user, poll.author
+      poll.add_guest! actor, poll.author
+      get :contactable, params: {user_id: user.id}
+      expect(response.status).to eq 200
+    end
+
+    it 'a membership requestor and a group member' do
+      group.add_member! actor
+      group.membership_requests.create!(requestor: user)
+      get :contactable, params: {user_id: user.id}
+      expect(response.status).to eq 200
+    end
+  end
+
   describe "mentionable" do
     let(:user)  { create :user }
     let(:group) { create :group }
