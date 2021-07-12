@@ -127,10 +127,11 @@ export default
 .poll-members-list
   .px-4.pt-4
     .d-flex.justify-space-between
-      h1.headline(v-t="'announcement.form.poll_announced.title'")
+      h1.headline(v-if="poll.notifyRecipients" v-t="'announcement.form.poll_announced.title'")
+      h1.headline(v-else v-t="'poll_common_form.add_voters'")
       dismiss-modal-button
     recipients-autocomplete(
-      :label="$t('announcement.form.poll_announced.helptext')"
+      :label="poll.notifyRecipients ? $t('announcement.form.poll_announced.helptext') : $t('poll_common_form.who_may_vote', {poll_type: poll.translatedPollType()})"
       :placeholder="$t('announcement.form.placeholder')"
       :model="poll"
       :reset="reset"
@@ -140,11 +141,14 @@ export default
       :excludeMembers="true"
       @new-query="newQuery")
 
-    v-textarea(v-if="someRecipients" rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
-    .d-flex
+    .d-flex.align-center
+      v-checkbox(:label="$t('poll_common_form.notify_invitees')" v-model="poll.notifyRecipients")
       v-spacer
       v-btn.poll-members-list__submit(color="primary" :disabled="!someRecipients" :loading="saving" @click="inviteRecipients" )
-        span(v-t="'common.action.invite'")
+        span(v-t="'common.action.invite'" v-if="poll.notifyRecipients")
+        span(v-t="'poll_common_form.add_voters'" v-else)
+          
+    v-textarea(v-if="poll.notifyRecipients && someRecipients" rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
   v-list
     v-subheader
       span(v-t="'membership_card.voters'")

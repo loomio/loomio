@@ -49,7 +49,6 @@ module.exports = {
   GroupNewForm: 'group/new_form',
   GroupOnboardingCard: 'group/onboarding_card',
   GroupPrivacyButton: 'group/privacy_button',
-  // GroupCoverImage: 'group/cover_image',
   GroupStart: 'group/start',
   GroupSubscriptionCard: 'group/subscription_card',
   HelpBubble: 'common/help_bubble',

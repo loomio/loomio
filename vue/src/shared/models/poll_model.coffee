@@ -46,6 +46,7 @@ export default class PollModel extends BaseModel
     recipientAudience: null
     recipientUserIds: []
     recipientEmails: []
+    notifyRecipients: true
     tagIds: []
 
   audienceValues: ->
