@@ -1,5 +1,9 @@
 <script lang="coffee">
 import { emojiReplaceText } from '@/shared/helpers/emojis.coffee'
+import { merge } from 'lodash'
+import Records from '@/shared/services/records'
+import Session from '@/shared/services/session'
+import AbilityService from '@/shared/services/ability_service'
 
 export default
   props:
@@ -9,7 +13,28 @@ export default
     column:
       type: String
       required: true
+
+  mounted: ->
+    @$el.addEventListener 'click', @onClick
+
+  destroyed: ->
+    @$el.removeEventListener 'click', @onClick
+
+  methods:
+    onClick: (e) ->
+      if e.target.getAttribute('data-type') == 'taskItem' && (e.offsetX < e.target.offsetLeft) && !e.target.classList.contains('task-item-busy')
+        if (@canEdit || e.target.querySelectorAll('span[data-mention-id="'+Session.user().username+'"]').length)
+          e.target.classList.add('task-item-busy')
+          uid = e.target.getAttribute('data-uid')
+          checked = e.target.getAttribute('data-checked') == 'true'
+          params = merge(@model.namedId(), {uid: uid, done: ((!checked && 'true') || 'false') })
+          Records.remote.post('tasks/update_done', params).finally =>
+            e.target.classList.remove('task-item-busy')
+        else
+          alert(@$t('tasks.permission_denied'))
+
   computed:
+    canEdit: -> AbilityService.canEdit(@model)
     isMd: -> @format == 'md'
     isHtml: -> @format == 'html'
     format: -> @model[@column+"Format"]
@@ -35,6 +60,20 @@ img.emoji
   width: 1.4em !important
   vertical-align: top
   margin: 0 .05em
+
+.editor
+  .lmo-markdown-wrapper
+    ul[data-type="taskList"]
+      li::before
+        content: none
+        margin-right: 8px
+
+      li[data-checked="true"]
+        label::before
+          content: none
+
+      li[data-checked="true"]::before
+        content: none
 
 .lmo-markdown-wrapper
   p
@@ -110,6 +149,78 @@ img.emoji
 
   ul
     list-style: disc
+
+  ul[data-type="taskList"]
+    list-style: none
+    padding: 0
+
+    // task item is
+    // li
+    //   label
+    //     input
+    //     span
+
+    li
+      display: flex
+      align-items: center
+
+      input[type="checkbox"]
+        margin-right: 8px
+
+      div
+        display: inline-block
+      p
+        display: inline-block
+        margin: 0
+
+    li[data-due-on]:not([data-due-on=""])::after
+      font-size: 10px
+      color: #fff
+      content: " 📅 " attr(data-due-on) ""
+      border-radius: 8px
+      background-color: var(--v-accent-base)
+      margin-left: 8px
+      padding: 2px 8px
+      height: 16px
+      display: flex
+      align-items: center
+      // border: 1px solid var(--v-accent-base)
+
+    li::before
+      content: ""
+      display: inline-block
+      vertical-align: bottom
+      width: 1rem
+      height: 1rem
+      border-radius: 30%
+      border-style: solid
+      border-width: 0.1rem
+      line-height: 100%
+      margin-right: 8px
+      border-color: var(--v-grey-lighten1)
+
+    li[data-checked="true"]::before
+      display: inline-block
+      vertical-align: middle
+      position: relative
+      content: "✓"
+      color: white
+      text-align: center
+      vertical-align: middle
+      background-color: var(--v-accent-base)
+      border-color: var(--v-accent-base)
+
+    li:hover:before
+      cursor: pointer
+      border-color: var(--v-accent-lighten1)
+
+    li.task-item-busy::before
+      background-color: var(--v-accent-lighten1)
+      border-color: var(--v-accent-lighten1)
+      // background-color: none !important
+
+    // li[data-checked="true"]:hover:before
+    //   border-color: red
 
   ol
     list-style: decimal

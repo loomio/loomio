@@ -1,4 +1,19 @@
 en:
+  tasks:
+    tasks: Tasks
+    your_tasks: Your tasks
+    permission_denied: You don't have permission to update this task
+    due_date: Due date
+    send_reminder: Send reminder (if not done)
+    no_reminder: No reminder
+    on_due_date: On due date
+    1_day_before: 1 day before
+    2_day_before: 2 days before
+    3_day_before: 3 days before
+    7_day_before: 7 days before
+    task_placeholder: Enter a task and @mention someone to assign it
+    add_due_date: Add due date
+
   doctypes:
     youtube_video: YouTube Video
     image: Image
@@ -193,6 +208,8 @@ en:
       private: 'Private'
       secret: 'Secret'
     selected: 'Selected'
+    today: 'today'
+    in_x_days: 'in %{x} days'
     date_range:
       today: 'Today'
       yesterday: 'Yesterday'
@@ -248,6 +265,7 @@ en:
       share: Share
       ok: Ok
       retry: Retry
+      clear: Clear
       done: Done
       start: Start
       delete: Delete
@@ -649,7 +667,7 @@ en:
     title_label: 'Title'
     title_placeholder: 'What is the topic you want to discuss?'
     context_label: 'Context'
-    context_placeholder: 'Give enough background information for the group to have a productive discussion. This can be updated as the discussion progresses'
+    context_placeholder: "Provide some context for this discussion, so people can pariticpate well"
     privacy_label: 'Privacy'
     privacy_public: 'Anyone can see the thread. Only members can participate.'
     privacy_private: 'The thread will only be visible to members of {{group}}.'

@@ -134,6 +134,8 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
     v-list-item-title(v-t="'sidebar.start_thread'")
     v-list-item-avatar(:size="28")
       v-icon(tile) mdi-plus
+  v-list-item(dense to="/tasks")
+    v-list-item-title(v-t="'tasks.tasks'")
   v-divider
 
   v-list.sidebar__groups(dense)

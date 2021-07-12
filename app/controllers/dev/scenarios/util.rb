@@ -17,10 +17,14 @@ module Dev::Scenarios::Util
     ::Group.delete_all
     ::Membership.delete_all
     ::Poll.delete_all
+    ::Outcome.delete_all
     ::Event.delete_all
     ::Discussion.delete_all
     ::Stance.delete_all
+    ::StanceChoice.delete_all
     ::PollOption.delete_all
+    ::Task.delete_all
+    ::DiscussionReader.delete_all
     ::ActionMailer::Base.deliveries = []
   end
 end

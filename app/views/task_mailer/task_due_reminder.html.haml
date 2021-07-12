@@ -1,0 +1,7 @@
+%div
+  - days = @task.due_on - Date.today
+  %p= t('task_mailer.task_due_reminder.greeting', name: @recipient.name, due: (days == 0) ? t(:'common.today') : t('common.in_x_days', x: days))
+  %p
+    %i= @task.name
+  %p= t('task_mailer.task_due_reminder.update_or_comment')
+  %a{href: url_for(@task.record)}= t('task_mailer.task_due_reminder.view_task', site_name: AppConfig.theme[:site_name])

@@ -19,6 +19,7 @@ module Ability
     prepend Ability::Event
     prepend Ability::Webhook
     prepend Ability::Attachment
+    prepend Ability::Task
 
 
     def initialize(user)

@@ -458,6 +458,15 @@ en:
 
         ![loomio logo](https://i.imgur.com/Fvtworb.png)
 
+  task_mailer:
+    task_due_reminder:
+      subject: "Task reminder: %{name}"
+      greeting: "Hi %{name}, the following task is due %{due}:"
+      view_task: "View on %{site_name}"
+      update_or_comment: "If you have already completed this task, please tick it off. If it is not complete, please share a progress update."
+      due_today: 'today'
+      due_in_count_days: 'in %{count} days'
+
   group_mailer:
     resend: 'REMINDER: %{member} is waiting for you to join %{group_name}'
 
