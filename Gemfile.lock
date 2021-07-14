@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/customerio/customerio-ruby
-  revision: ab71453b085b2c469d3a06deae530172f2c901b0
+  revision: 86c7813c7a21ad40328d8b0612e72583854d4b77
   specs:
-    customerio (4.0.0)
-      addressable (~> 2.7.0)
+    customerio (4.0.1)
+      addressable (~> 2.8.0)
       multi_json (~> 1.0)
 
 GIT
@@ -115,7 +115,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     ahoy_email (2.0.3)
       actionmailer (>= 5)
