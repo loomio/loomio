@@ -70,12 +70,16 @@ class PollService
                              emails: params[:recipient_emails],
                              audience: params[:recipient_audience])
 
-    Events::PollAnnounced.publish!(poll: poll,
-                                   actor: actor,
-                                   stances: stances,
-                                   recipient_user_ids: params[:recipient_user_ids],
-                                   recipient_audience: params[:recipient_audience],
-                                   recipient_message: params[:recipient_message] )
+
+    # params[:notify_recipients] will often be nil/undefined, which means we do want to notify
+    unless params[:notify_recipients] == false
+      Events::PollAnnounced.publish!(poll: poll,
+                                     actor: actor,
+                                     stances: stances,
+                                     recipient_user_ids: params[:recipient_user_ids],
+                                     recipient_audience: params[:recipient_audience],
+                                     recipient_message:  params[:recipient_message] )
+    end
     stances
   end
 

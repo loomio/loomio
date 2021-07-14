@@ -1920,6 +1920,8 @@ en:
     notify_invitees: Send notifications
     loomio_school_link: |
       <p>Find out more at <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio Help</a>.</p>
+    no_notifications_warning: Voters will not be notified. This is useful if you're running a lot of polls and plan to notify everyone later on.
+    count_voters_added: '{{count}} voters added'
 
   poll_proposal_form:
     tool_tip_expanded: |

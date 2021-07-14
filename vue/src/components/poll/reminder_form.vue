@@ -67,7 +67,7 @@ export default
       :excludedAudiences="['group', 'discussion_group']"
       :initialRecipients="initialRecipients")
 
-    v-text-field(
+    v-textarea(
       :label="$t('announcement.form.poll_reminder.message_label')"
       :placeholder="$t('announcement.form.poll_reminder.message_placeholder')"
       v-model="poll.recipientMessage")

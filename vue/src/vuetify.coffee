@@ -19,8 +19,8 @@ export default new Vuetify(
         primary: colors.amber.darken1
         secondary: colors.pink.lighten2
         accent: colors.cyan.base
-        error: colors.deepOrange.base
-        warning: colors.red.base
+        error: colors.red.base
+        warning: colors.orange.base
         info: colors.lightBlue.base
         success: colors.green.base
         anchor: colors.cyan.base

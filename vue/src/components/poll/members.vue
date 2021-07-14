@@ -30,6 +30,7 @@ export default
     message: ''
 
   mounted: ->
+    @poll.notifyRecipients = true
     @actionNames = ['makeAdmin', 'removeAdmin', 'revoke'] # 'resend'
 
     @fetchStances()
@@ -72,9 +73,14 @@ export default
         recipient_emails: @poll.recipientEmails
         recipient_message: @message
         exclude_members: true
+        notify_recipients: @poll.notifyRecipients
       .then (data) =>
         count = data.stances.length
-        Flash.success('announcement.flash.success', { count: count })
+        if @poll.notifyRecipients
+          Flash.success('announcement.flash.success', { count: count })
+        else
+          Flash.success('poll_common_form.count_voters_added', { count: count })
+
         @reset = !@reset
       .finally =>
         @saving = false
@@ -142,12 +148,13 @@ export default
       @new-query="newQuery")
 
     .d-flex.align-center
-      v-checkbox(:label="$t('poll_common_form.notify_invitees')" v-model="poll.notifyRecipients")
+      v-checkbox(:disabled="!someRecipients" :label="$t('poll_common_form.notify_invitees')" v-model="poll.notifyRecipients")
       v-spacer
       v-btn.poll-members-list__submit(color="primary" :disabled="!someRecipients" :loading="saving" @click="inviteRecipients" )
         span(v-t="'common.action.invite'" v-if="poll.notifyRecipients")
         span(v-t="'poll_common_form.add_voters'" v-else)
-          
+    v-alert(dense type="warning" text v-if="someRecipients && !poll.notifyRecipients")
+      span(v-t="'poll_common_form.no_notifications_warning'")
     v-textarea(v-if="poll.notifyRecipients && someRecipients" rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
   v-list
     v-subheader
