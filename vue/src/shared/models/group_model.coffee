@@ -39,7 +39,7 @@ export default class GroupModel extends BaseModel
     recipientAudience: null
     recipientUserIds: []
     recipientEmails: []
-
+    notifyRecipients: true
 
   afterConstruction: ->
     if @privacyIsClosed()

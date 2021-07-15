@@ -37,6 +37,7 @@ class PermittedParams < Struct.new(:params)
       :recipient_audience,
       :recipient_message,
       :tag_ids, {tag_ids: []},
+      :notify_recipients,
       :recipient_user_ids, {recipient_user_ids: []},
       :recipient_emails, {recipient_emails: []},
       :custom_fields, {custom_fields: [:can_respond_maybe, :dots_per_person, :max_score,
@@ -62,6 +63,7 @@ class PermittedParams < Struct.new(:params)
 
   def outcome_attributes
     [:statement, :statement_format, :poll_id, :poll_option_id, :review_on, :recipient_audience, :include_actor,
+     :notify_recipients,
      :recipient_user_ids, {recipient_user_ids: []},
      :recipient_emails, {recipient_emails: []},
      :document_ids, {document_ids: []},
@@ -106,6 +108,7 @@ class PermittedParams < Struct.new(:params)
   def discussion_attributes
     [:title, :description, :description_format, :group_id,
       :newest_first, :max_depth, :private,
+     :notify_recipients,
      :recipient_audience,
      :recipient_message,
      :tag_ids, {tag_ids: []},

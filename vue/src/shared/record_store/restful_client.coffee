@@ -115,4 +115,4 @@ export default class RestfulClient
     @currentUpload.abort() if @currentUpload
 
   paramsFor: (params) ->
-    defaults({}, @defaultParams, pickBy(params, identity))
+    defaults({}, @defaultParams, pickBy(params, (v) -> !isNil(v)))

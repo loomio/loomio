@@ -655,7 +655,6 @@ en:
     privacy_private: 'The thread will only be visible to members of {{group}}.'
     privacy_organisation: 'The thread will be visible to members of {{parent}} and members of {{group}}.'
     fork_notice: 'A new thread will be created with {{count}} items from {{title}}'
-    one_person_notified: 1 person will be notified
     notify_group: Notify group
 
 
@@ -752,6 +751,9 @@ en:
       notified: '{{notified}} people will be notified.'
       notified_singular: '1 person will be notified.'
       notified_none: 'Nobody will be notified.'
+      added: '{{count}} people will be added.'
+      added_singular: '1 person will be added.'
+      added_none: 'Nobody will be added.'
       group_title: '{{name}} ({{count}} people)'
       visible_to_group: 'Anyone in {{group}} will be able to see this thread.'
       visible_to_guests: 'Only invited people can see this thread.'
@@ -1912,9 +1914,14 @@ en:
     start: Start
     start_poll_type: Start {{poll_type}}
     share_poll_type: Share {{poll_type}}
+    who_may_vote: Who may vote in this {{poll_type}}?
     update: Update
+    add_voters: Add voters
+    notify_invitees: Send notifications
     loomio_school_link: |
       <p>Find out more at <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio Help</a>.</p>
+    no_notifications_warning: Voters will not be notified. This is useful if you're running a lot of polls and plan to notify everyone later on.
+    count_voters_added: '{{count}} voters added'
 
   poll_proposal_form:
     tool_tip_expanded: |

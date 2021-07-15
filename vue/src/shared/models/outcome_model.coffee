@@ -23,6 +23,7 @@ export default class OutcomeModel extends BaseModel
     recipientUserIds: []
     recipientEmails: []
     recipientAudience: null
+    notifyRecipients: true
     groupId: null
     reviewOn: null
 
