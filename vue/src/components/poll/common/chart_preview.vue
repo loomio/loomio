@@ -24,8 +24,8 @@ export default
 
 <template lang="pug">
 .poll-common-chart-preview(aria-hidden="true")
-  bar-chart(v-if="chartType == 'bar'", :stance-counts='poll.stanceCounts' :showMyStance="showMyStance"  :size='size')
-  progress-chart(v-if="chartType == 'progress'", :stance-counts='poll.stanceCounts', :goal='poll.votersCount' :showMyStance="showMyStance"  :size='size')
-  poll-proposal-chart-preview(v-if="chartType == 'pie'", :stance-data='poll.stanceData', :my-stance='myStance' :showMyStance="showMyStance" :size='size')
-  matrix-chart(v-if="chartType == 'matrix'", :matrix-counts='poll.matrixCounts' :showMyStance="showMyStance"  :size='size')
+  bar-chart(v-if="chartType == 'bar'" :poll="poll" :stance-counts='poll.stanceCounts' :my-stance='myStance' :show-my-stance="showMyStance" :size='size')
+  progress-chart(v-if="chartType == 'progress'" :poll="poll" :stance-counts='poll.stanceCounts' :goal='poll.votersCount' :my-stance='myStance' :show-my-stance="showMyStance"  :size='size')
+  poll-proposal-chart-preview(v-if="chartType == 'pie'" :poll="poll" :stance-data='poll.stanceData' :my-stance='myStance' :show-my-stance="showMyStance" :size='size')
+  matrix-chart(v-if="chartType == 'matrix'" :poll="poll" :matrix-counts='poll.matrixCounts' :my-stance='myStance' :show-my-stance="showMyStance"  :size='size')
 </template>

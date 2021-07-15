@@ -6,11 +6,14 @@ export default
   props:
     matrixCounts: Array
     size: Number
+    showMyStance: Boolean
+    myStance: Object
+    poll: Object
   data: ->
     svgEl: null
     shapes: []
   mounted: ->
-    this.svgEl = svg(this.$el).size(@size, @size)
+    this.svgEl = svg(@$refs.svg).size(@size, @size)
     this.draw()
   methods:
     draw: ->
@@ -39,6 +42,10 @@ export default
       this.draw()
 </script>
 
-<template>
-<div class="matrix-chart"></div>
+<template lang="pug">
+div
+  div.matrix-chart(ref="svg")
+  .poll-proposal-chart-preview__stance-container(v-if='showMyStance && (poll.iCanVote() && !poll.iHaveVoted())')
+    .poll-proposal-chart-preview__stance.poll-proposal-chart-preview__stance--undecided
+      v-icon(color="primary") mdi-alert-circle-outline
 </template>

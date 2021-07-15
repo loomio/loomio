@@ -5,7 +5,7 @@ import Records from '@/shared/services/records'
 import RecordLoader from '@/shared/services/record_loader'
 import EventBus       from '@/shared/services/event_bus'
 import Session       from '@/shared/services/session'
-import { debounce, some, every, compact, omit, values, keys, intersection, uniq } from 'lodash'
+import { debounce, some, every, compact, omit, values, keys, intersection, uniq, escapeRegExp } from 'lodash'
 import { subDays } from 'date-fns'
 
 export default
@@ -34,6 +34,11 @@ export default
       chain = chain.find(discardedAt: null)
       chain = chain.find($or: [{groupId: {$in: groupIds}}, {id: {$in: pollIds}}])
       chain = chain.find($or: [{closedAt: null}, {closedAt: {$gt: subDays(new Date, 3)}}])
+
+      if @$route.query.q
+        rx = new RegExp(escapeRegExp(@$route.query.q), 'i');
+        chain = chain.find($or: [{'title': {'$regex': rx}},
+                                 {'description': {'$regex': rx}}]);
 
       @polls = chain.simplesort('closingAt', true).data()
 

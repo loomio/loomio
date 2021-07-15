@@ -1,6 +1,7 @@
 <script lang="coffee">
 export default
   props:
+    poll: Object
     size: Number
     stanceData: Object
     myStance: Object
@@ -10,10 +11,11 @@ export default
 
 <template lang="pug">
 .poll-proposal-chart-preview(:style="{width: size+'px', height: size+'px'}")
-  poll-proposal-chart.poll-common-collapsed__pie-chart(:stance-data='stanceData', :diameter='size')
-  .poll-proposal-chart-preview__stance-container(v-if='showMyStance')
+  poll-proposal-chart.poll-common-collapsed__pie-chart(:stance-data='stanceData' :diameter='size')
+  .poll-proposal-chart-preview__stance-container(v-if='showMyStance && poll.iCanVote()')
     div(v-if='myStance && myStance.castAt', :class='`poll-proposal-chart-preview__stance poll-proposal-chart-preview__stance--${this.myStance.pollOption().name}`')
-    .poll-proposal-chart-preview__stance.poll-proposal-chart-preview__stance--undecided(v-else) ?
+    .poll-proposal-chart-preview__stance.poll-proposal-chart-preview__stance--undecided(v-else)
+      v-icon(color="primary") mdi-alert-circle-outline
 </template>
 <style lang="sass">
 .poll-proposal-chart-preview
@@ -40,11 +42,5 @@ export default
 	background-image: url(/img/block.svg)
 .poll-proposal-chart-preview__stance--abstain
 	background-image: url(/img/abstain.svg)
-.poll-proposal-chart-preview__stance--undecided
-	color: #ccc
-	font-weight: bold
-	font-size: 16px
-	margin-top: 2px
-	text-align: center
 
 </style>
