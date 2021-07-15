@@ -12,6 +12,7 @@ export default
       {text: @$t('poll_proposal_options.agree_disagree'), value: ['agree', 'disagree']}
       {text: @$t('poll_proposal_options.agree_abstain_disagree'), value: ['agree', 'abstain', 'disagree']}
       {text: @$t('poll_proposal_options.agree_abstain_disagree_block'), value: ['agree', 'abstain', 'disagree', 'block']}
+      {text: @$t('poll_proposal_options.consent_object'), value: ['consent', 'objection']}
       {text: @$t('poll_proposal_options.consent_abstain_object'), value: ['consent', 'abstain', 'objection']}
     ]
     optionColors: optionColors()

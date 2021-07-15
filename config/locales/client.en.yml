@@ -2082,6 +2082,7 @@ en:
     agree_disagree: 'Agree, Disagree'
     agree_abstain_disagree: 'Agree, Abstain, Disagree'
     consent_abstain_object: 'Consent, Abstain, Objection'
+    consent_object: 'Consent, Objection'
     no_voting: 'No voting'
 
   poll_count_options:
