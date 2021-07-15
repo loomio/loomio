@@ -38,7 +38,7 @@ export default
   mounted: ->
     EventBus.$emit('content-title-visible', false)
     EventBus.$emit 'currentComponent',
-      titleKey: @titleKey
+      titleKey: 'dashboard_page.aria_label'
       page: 'dashboardPage'
       search:
         placeholder: @$t('navbar.search_all_threads')
@@ -87,12 +87,11 @@ export default
         @searchResults = orderBy(chain, 'rank', 'desc')
       else
         now = new Date()
-        @views.proposals = ThreadFilter(Records, filters: @filters('show_proposals'))
-        @views.today     = ThreadFilter(Records, filters: @filters('hide_proposals'), from: subDays(now, 1), to: addDays(now, 10000))
-        @views.yesterday = ThreadFilter(Records, filters: @filters('hide_proposals'), from: subDays(now, 2), to: subDays(now, 1))
-        @views.thisweek  = ThreadFilter(Records, filters: @filters('hide_proposals'), from: subWeeks(now, 1), to: subDays(now, 2))
-        @views.thismonth = ThreadFilter(Records, filters: @filters('hide_proposals'), from: subMonths(now, 1),  to: subWeeks(now, 1))
-        @views.older     = ThreadFilter(Records, filters: @filters('hide_proposals'), from: subMonths(now, 12),  to: subMonths(now, 1))
+        @views.today     = ThreadFilter(from: subDays(now, 1), to: addDays(now, 10000))
+        @views.yesterday = ThreadFilter(from: subDays(now, 2), to: subDays(now, 1))
+        @views.thisweek  = ThreadFilter(from: subWeeks(now, 1), to: subDays(now, 2))
+        @views.thismonth = ThreadFilter(from: subMonths(now, 1),  to: subWeeks(now, 1))
+        @views.older     = ThreadFilter(from: subMonths(now, 12),  to: subMonths(now, 1))
 
     viewName: (name) ->
       if @filter == 'show_muted'
@@ -105,12 +104,6 @@ export default
 
 
   computed:
-    titleKey: ->
-      if @filter == 'show_muted'
-        'dashboard_page.filtering.muted'
-      else
-        'dashboard_page.filtering.all'
-
     viewNames: -> keys(@views)
     loadingViewNames: -> take @viewNames, 3
     noGroups: -> Session.user().groups().length == 0
@@ -125,12 +118,11 @@ export default
 <template lang="pug">
 v-main
   v-container.dashboard-page.max-width-1024
-    //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.all'")
-    //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.all'" v-show="filter == 'hide_muted'")
-    //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.muted'", v-show="filter == 'show_muted'")
-    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'dashboard_page.filtering.all'")
+    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'dashboard_page.aria_label'")
     v-layout.mb-3
       v-text-field(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_all_threads')" append-icon="mdi-magnify")
+
+    dashboard-polls-panel
 
     v-card.mb-3(v-if='!dashboardLoaded' v-for='(viewName, index) in loadingViewNames' :key='index' :class="'dashboard-page__loading dashboard-page__' + viewName" aria-hidden='true')
       v-list(two-line)

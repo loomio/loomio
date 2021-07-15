@@ -1385,6 +1385,7 @@ en:
 
   dashboard_page:
     aria_label: 'Dashboard'
+    recent_polls: "Recent polls"
     no_groups:
       show_all: Welcome! You are not a member of any groups yet. <a href="/explore">Browse public groups</a> or <a href="/g/new">Start a group</a>.
       show_muted: You don't have any muted threads because you are not a member of any groups.
