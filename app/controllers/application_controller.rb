@@ -23,7 +23,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_version
   helper_method :bundle_asset_path
   helper_method :supported_locales
-  helper_method :is_old_browser?
 
   after_action :associate_user_to_visit
 
@@ -87,8 +86,8 @@ class ApplicationController < ActionController::Base
     prevent_caching
     template = File.read(Rails.root.join('public/blient/vue/index.html'))
 
-    if request.format.html?
-      template.gsub!('<div class=upgrade-browser></div>', '<%= render "application/upgrade_browser" %>')
+    if request.format.html? and is_old_browser?
+      template.gsub!(/<div class="?'?upgrade-browser"?'?><\/div>/, '<%= render "application/upgrade_browser" %>')
     end
 
     render inline: template, layout: false, status: status
