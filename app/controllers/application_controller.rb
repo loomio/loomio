@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_version
   helper_method :bundle_asset_path
   helper_method :supported_locales
+  helper_method :is_old_browser?
 
   after_action :associate_user_to_visit
 
@@ -106,11 +107,6 @@ class ApplicationController < ActionController::Base
   end
 
   def is_old_browser?
-    (browser.ie? ||
-    (browser.chrome?  && browser.version.to_i < 50) ||
-    (browser.firefox? && !browser.platform.ios? && browser.version.to_i < 50) ||
-    (browser.safari?  && browser.version.to_i < 12) ||
-    (browser.edge?    && browser.version.to_i < 19))
+    browser.ie? || (browser.safari? && browser.version.to_i < 12)
   end
-
 end
