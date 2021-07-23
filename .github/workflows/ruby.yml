@@ -45,14 +45,14 @@ jobs:
       with:
         ruby-version: '2.7.4'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: setup node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+      - run: |
+        cd vue
+        npm install
     - name: Init db
-      #   # DISPLAY: ':99.0'
-      #   # PUMA_WORKERS: 2
-      #   # MIN_THREADS: 3
-      #   # MAX_THREADS: 3
-      #   # SCREENSHOTS_PATH: /`date "+%Y-%m-%d_%H-%M"`/${TRAVIS_REPO_SLUG}/
-      #   # FEATURES_GROUP_SSO: 1
-      #   # bundle install
       run: |
         createdb
         cp config/database.yml.postgresql config/database.yml
