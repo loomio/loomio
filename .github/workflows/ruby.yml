@@ -31,6 +31,7 @@ jobs:
           --health-timeout 5s
           --health-retries 5
 
+    steps:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
@@ -38,7 +39,7 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Check out repository code
       uses: actions/checkout@v2
-    - name: Setup database
+    - name: setup database
       env:
         DISPLAY: ':99.0'
         RAILS_ENV: test
