@@ -45,8 +45,7 @@ jobs:
     steps:
     - name: Install PostgreSQL client
       run: |
-        apt-get update
-        apt-get install --yes postgresql-client
+        sudo apt-get install --yes postgresql-client
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
