@@ -7,7 +7,7 @@ if (process.env.RAILS_ENV == 'test') { chromeOptions.push("headless") }
 module.exports = {
   src_folders: ['./tests/e2e/specs'],
   output_folder: './tests/reports',
-  selenium: {
+  webdriver: {
     start_process: true,
     check_process_delay: 5000,
     server_path: selenium.path,
