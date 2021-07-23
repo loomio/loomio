@@ -112,7 +112,7 @@ jobs:
         bundle exec rake db:setup
     - name: Start rails server
       run: |
-        bundle exec rails server -b 0.0.0.0 > log/server.log
+        bundle exec rails server -b 0.0.0.0 > log/server.log &
     - name: Build client
       run: |
         cd vue
