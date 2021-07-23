@@ -45,26 +45,19 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     steps:
-    - name: Check out repository code
+    - name: git checkout
       uses: actions/checkout@v2
-    - name: Set up Ruby
+    - name: install ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '2.7.4'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    # - name: setup node.js
-    #   uses: actions/setup-node@v2
-    #   with:
-    #     node-version: '14'
-    #   run: |
-    #     cd vue
-    #     npm install
-    - name: Init db
+    - name: init db
       run: |
         createdb
         cp config/database.yml.postgresql config/database.yml
         bundle exec rake db:setup
-    - name: Run rspec
+    - name: rspec
       run: bundle exec rspec
 
   e2e:
@@ -95,40 +88,40 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     steps:
-    - name: Check out code
+    - name: setup chrome
+      uses: browser-actions/setup-chrome@latest
+    - name: git checkout
       uses: actions/checkout@v2
-    - name: Set up ruby
+    - name: install ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '2.7.4'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Set up node.js
+    - name: install node.js
       uses: actions/setup-node@v2
       with:
         node-version: '14'
-    - name: Init db
+    - name: create db
       run: |
         createdb
         cp config/database.yml.postgresql config/database.yml
         bundle exec rake db:setup
-    - name: Start rails server
+    - name: start rails server
       run: |
         bundle exec rails server -b 0.0.0.0 > log/server.log &
-    - name: Build client
+    - name: build client
       run: |
         cd vue
         npm install
         npm run build
-    - name: loomio_channel_server
+    - name: start websocker server
       run: |
         echo $PWD
         git clone https://github.com/loomio/loomio_channel_server.git
         cd loomio_channel_server
         npm install
         npm run start > ../log/channel_server.log &
-    # - name: setup chrome
-    #   uses: browser-actions/setup-chrome@latest
-    - name: Run e2es
+    - name: run e2es
       run: |
         /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
         cd vue
