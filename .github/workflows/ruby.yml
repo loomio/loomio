@@ -39,17 +39,17 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Check out repository code
       uses: actions/checkout@v2
-    - name: setup database
+    - name: Init database
       env:
-        DISPLAY: ':99.0'
+        # DISPLAY: ':99.0'
         RAILS_ENV: test
-        PUMA_WORKERS: 2
-        MIN_THREADS: 3
-        MAX_THREADS: 3
-        SCREENSHOTS_PATH: /`date "+%Y-%m-%d_%H-%M"`/${TRAVIS_REPO_SLUG}/
-        FEATURES_GROUP_SSO: 1
+        # PUMA_WORKERS: 2
+        # MIN_THREADS: 3
+        # MAX_THREADS: 3
+        # SCREENSHOTS_PATH: /`date "+%Y-%m-%d_%H-%M"`/${TRAVIS_REPO_SLUG}/
+        # FEATURES_GROUP_SSO: 1
       run: |
-        createdb -h localhost -U postgres -w loomio_test
+        createdb -h localhost -p 5432 -U postgres -w loomio_test
         cp config/database.yml.postgresql config/database.yml
         createdb loomio_test
         bundle exec rake db:setup
