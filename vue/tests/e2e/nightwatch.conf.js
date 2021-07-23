@@ -9,6 +9,7 @@ module.exports = {
   output_folder: './tests/reports',
   selenium: {
     start_process: true,
+    check_process_delay: 5000,
     server_path: selenium.path,
     log_path: './tests/reports',
     cli_args: {
