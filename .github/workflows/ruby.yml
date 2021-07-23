@@ -14,7 +14,7 @@ on:
     branches: [ master ]
 
 jobs:
-  test:
+  rspec:
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
@@ -63,5 +63,55 @@ jobs:
         createdb
         cp config/database.yml.postgresql config/database.yml
         bundle exec rake db:setup
+    - name: Run rspec
+      run: bundle exec rspec
+
+  e2e:
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      PGDATABASE: loomio_test
+      PGHOST: localhost
+      PGPORT: 5432
+      PGUSER: postgres
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '2.7.4'
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      run: |
+        createdb
+        cp config/database.yml.postgresql config/database.yml
+        bundle exec rake db:setup
+    - name: setup node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+      run: |
+        cd vue
+        npm install
+        npm run build
     - name: Run rspec
       run: bundle exec rspec
