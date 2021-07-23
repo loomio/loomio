@@ -22,6 +22,7 @@ jobs:
       PGHOST: localhost
       PGPORT: 5432
       PGUSER: postgres
+      DISPLAY: ':99.0'
     services:
       postgres:
         image: postgres:latest
@@ -118,7 +119,15 @@ jobs:
         cd vue
         npm install
         npm run build
+    - name: loomio_channel_server
+      run: |
+        echo $PWD
+        git clone https://github.com/loomio/loomio_channel_server.git
+        cd loomio_channel_server
+        npm install
+        npm run start > ../log/channel_server.log &
     - name: Run e2es
       run: |
+        /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
         cd vue
         npm run test:e2e:standalone
