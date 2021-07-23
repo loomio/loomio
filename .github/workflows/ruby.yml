@@ -49,7 +49,7 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '.ruby-version'
+        ruby-version: '2.7.4'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: setup database
       env: 
