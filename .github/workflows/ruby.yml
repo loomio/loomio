@@ -63,6 +63,8 @@ jobs:
         MAX_THREADS: 3
         SCREENSHOTS_PATH: /`date "+%Y-%m-%d_%H-%M"`/${TRAVIS_REPO_SLUG}/
         FEATURES_GROUP_SSO: 1
+        POSTGRES_HOST: postgres
+        POSTGRES_PORT: 5432
       run: |
         echo `pwd`
         echo `ls -la`
