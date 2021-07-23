@@ -29,6 +29,16 @@ jobs:
         ruby-version: '.ruby-version'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: setup database
+      env: 
+        DB: postgresql
+        DISPLAY: ':99.0'
+        PATH: '$PATH:$TRAVIS_BUILD_DIR/bin'
+        RAILS_ENV: test
+        PUMA_WORKERS: 2
+        MIN_THREADS: 3
+        MAX_THREADS: 3
+        SCREENSHOTS_PATH: /`date "+%Y-%m-%d_%H-%M"`/${TRAVIS_REPO_SLUG}/
+        FEATURES_GROUP_SSO: 1
       run: |
         cp config/database.yml.$DB config/database.yml
         createdb loomio_test
