@@ -126,6 +126,8 @@ jobs:
         cd loomio_channel_server
         npm install
         npm run start > ../log/channel_server.log &
+    - name: setup chrome
+      uses: browser-actions/setup-chrome@latest
     - name: Run e2es
       run: |
         /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
