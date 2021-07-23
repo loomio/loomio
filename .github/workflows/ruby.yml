@@ -120,7 +120,7 @@ jobs:
         npm install
         npm run start > ../log/channel_server.log &
     - name: setup chrome
-      uses: browser-actions/setup-chrome@92
+      uses: browser-actions/setup-chrome@latest
       with:
         chrome-version: 92
     - name: run e2es
