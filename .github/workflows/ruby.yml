@@ -51,6 +51,8 @@ jobs:
       with:
         ruby-version: '2.7.4'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Check out repository code
+      uses: actions/checkout@v2
     - name: setup database
       env: 
         DB: postgresql
