@@ -63,6 +63,7 @@ jobs:
         FEATURES_GROUP_SSO: 1
       run: |
         echo `pwd`
+        echo `ls -la`
         cp "config/database.yml.$DB" "config/database.yml"
         createdb loomio_test
         bundle exec rake db:setup
