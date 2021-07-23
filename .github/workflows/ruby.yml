@@ -43,19 +43,15 @@ jobs:
           --health-retries 5
           
     steps:
-    - uses: actions/checkout@v2
-    - uses: harmon758/postgresql-action@v1
-      with:
-        postgresql version: '12'  # See https://hub.docker.com/_/postgres for available versions
+    - name: Install PostgreSQL client
+      run: |
+        apt-get update
+        apt-get install --yes postgresql-client
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '.ruby-version'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Install PostgreSQL client
-      run: |
-        apt-get update
-        apt-get install --yes postgresql-client
     - name: setup database
       env: 
         DB: postgresql
