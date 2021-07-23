@@ -94,29 +94,32 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     steps:
-    - name: Check out repository code
+    - name: Check out code
       uses: actions/checkout@v2
-    - name: Set up Ruby
+    - name: Set up ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '2.7.4'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Set up node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
     - name: Init db
       run: |
         createdb
         cp config/database.yml.postgresql config/database.yml
         bundle exec rake db:setup
-    - name: setup node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-    - name: build client
+    - name: Start rails server
+      run: |
+        bundle exec rails server -b 0.0.0.0 > log/server.log & fi
+    - name: Build client
       run: |
         cd vue
         npm install
         npm run build
-    - name: run e2es
+    - name: Run e2es
       run: |
+        bundle exec rails server -b 0.0.0.0 > log/server.log & fi
         cd vue
-        npm install
-        npm run build
+        npm run test:e2e:standalone
