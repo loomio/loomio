@@ -17,9 +17,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     services:
-      # label used to access the service container
       postgres:
-        # Docker Hub image
         image: postgres:latest
         # service environment variables
         # `POSTGRES_HOST` is `postgres`
@@ -29,9 +27,7 @@ jobs:
           POSTGRES_PORT: 5432
           POSTGRES_USER: postgres
         ports:
-          # maps tcp port 5432 on service container to the host
           - 5432:5432
-        # set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -42,6 +38,7 @@ jobs:
     - name: Install PostgreSQL client
       run: |
         sudo apt-get install --yes postgresql-client
+        createdb --host postgres --port 5432 --username postgres --password postgres
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
