@@ -32,13 +32,13 @@ jobs:
           --health-retries 5
 
     steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '2.7.4'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Check out repository code
-      uses: actions/checkout@v2
     - name: Init database
       env:
         # DISPLAY: ':99.0'
@@ -48,10 +48,10 @@ jobs:
         # MAX_THREADS: 3
         # SCREENSHOTS_PATH: /`date "+%Y-%m-%d_%H-%M"`/${TRAVIS_REPO_SLUG}/
         # FEATURES_GROUP_SSO: 1
+        # bundle install
       run: |
         createdb -h localhost -p 5432 -U postgres -w loomio_test
         cp config/database.yml.postgresql config/database.yml
-        bundle install
         bundle exec rake db:setup
     - name: Run rspec
       run: bundle exec rspec
