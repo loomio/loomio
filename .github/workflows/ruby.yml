@@ -38,7 +38,7 @@ jobs:
     - name: Install PostgreSQL client
       run: |
         sudo apt-get install --yes postgresql-client
-        createdb --host postgres --port 5432 --username postgres --password postgres
+        createdb --host localhost --port 5432 --username postgres --password postgres
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
