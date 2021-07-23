@@ -28,11 +28,12 @@ jobs:
       with:
         ruby-version: '.ruby-version'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Run rspec
-      run: bundle exec rspec
     - name: setup database
       run: |
         cp config/database.yml.$DB config/database.yml
         createdb loomio_test
         bundle exec rake db:setup
+    - name: Run rspec
+      run: bundle exec rspec
+
 
