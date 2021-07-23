@@ -51,6 +51,7 @@ jobs:
       run: |
         createdb -h localhost -p 5432 -U postgres -w loomio_test
         cp config/database.yml.postgresql config/database.yml
+        bundle install
         bundle exec rake db:setup
     - name: Run rspec
       run: bundle exec rspec
