@@ -108,6 +108,7 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '14'
+    - name: build client
       run: |
         cd vue
         npm install
