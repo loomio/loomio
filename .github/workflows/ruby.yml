@@ -14,13 +14,8 @@ on:
     branches: [ master ]
 
 jobs:
-  postgres-job:
-    # containers must run in Linux based operating systems
+  test:
     runs-on: ubuntu-latest
-    # Docker Hub image that `postgres-job` executes in
-    container: node:latest
-
-    # service containers to run with `postgres-job`
     services:
       # label used to access the service container
       postgres:
@@ -46,16 +41,7 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-
-    steps:
-      - name: Install PostgreSQL client
-        run: |
-          apt-get update
-          apt-get install --yes postgresql-client
-
-      # queries database with postgres client
-  test:
-    runs-on: ubuntu-latest
+          
     steps:
     - uses: actions/checkout@v2
     - uses: harmon758/postgresql-action@v1
@@ -66,6 +52,10 @@ jobs:
       with:
         ruby-version: '.ruby-version'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Install PostgreSQL client
+      run: |
+        apt-get update
+        apt-get install --yes postgresql-client
     - name: setup database
       env: 
         DB: postgresql
