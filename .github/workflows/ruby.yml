@@ -89,7 +89,7 @@ jobs:
           --health-retries 5
     steps:
     - name: setup chrome
-      uses: browser-actions/setup-chrome@latest
+      uses: browser-actions/setup-chrome@92
     - name: git checkout
       uses: actions/checkout@v2
     - name: install ruby
