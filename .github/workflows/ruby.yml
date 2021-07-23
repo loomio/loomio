@@ -99,6 +99,7 @@ jobs:
       with:
         ruby-version: '2.7.4'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Init db
       run: |
         createdb
         cp config/database.yml.postgresql config/database.yml
