@@ -113,5 +113,8 @@ jobs:
         cd vue
         npm install
         npm run build
-    - name: Run rspec
-      run: bundle exec rspec
+    - name: run e2es
+      run: |
+        cd vue
+        npm install
+        npm run build
