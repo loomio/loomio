@@ -63,13 +63,11 @@ jobs:
         MAX_THREADS: 3
         SCREENSHOTS_PATH: /`date "+%Y-%m-%d_%H-%M"`/${TRAVIS_REPO_SLUG}/
         FEATURES_GROUP_SSO: 1
-        POSTGRES_HOST: postgres
-        POSTGRES_PORT: 5432
       run: |
         echo `pwd`
         echo `ls -la`
         cp "config/database.yml.$DB" "config/database.yml"
-        createdb -h postgres loomio_test
+        createdb loomio_test
         bundle exec rake db:setup
     - name: Run rspec
       run: bundle exec rspec
