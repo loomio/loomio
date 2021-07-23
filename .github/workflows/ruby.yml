@@ -16,6 +16,12 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      PGDATABASE: loomio_test
+      PGHOST: localhost
+      PGPORT: 5432
+      PGUSER: postgres
     services:
       postgres:
         image: postgres:latest
@@ -40,8 +46,6 @@ jobs:
         ruby-version: '2.7.4'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Init db
-      env:
-        RAILS_ENV: test
       #   # DISPLAY: ':99.0'
       #   # PUMA_WORKERS: 2
       #   # MIN_THREADS: 3
@@ -50,7 +54,7 @@ jobs:
       #   # FEATURES_GROUP_SSO: 1
       #   # bundle install
       run: |
-        createdb -h localhost -p 5432 -U postgres -w loomio_test
+        createdb
         cp config/database.yml.postgresql config/database.yml
         bundle exec rake db:setup
     - name: Run rspec
