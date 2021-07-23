@@ -67,7 +67,7 @@ jobs:
         echo `pwd`
         echo `ls -la`
         cp "config/database.yml.$DB" "config/database.yml"
-        createdb loomio_test
+        createdb -h postgres loomio_test
         bundle exec rake db:setup
     - name: Run rspec
       run: bundle exec rspec
