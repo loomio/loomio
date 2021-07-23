@@ -40,9 +40,9 @@ jobs:
         ruby-version: '2.7.4'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Init db
-      # env:
+      env:
+        RAILS_ENV: test
       #   # DISPLAY: ':99.0'
-      #   RAILS_ENV: test
       #   # PUMA_WORKERS: 2
       #   # MIN_THREADS: 3
       #   # MAX_THREADS: 3
