@@ -35,7 +35,7 @@ jobs:
     - name: Install PostgreSQL client
       run: |
         sudo apt-get install --yes postgresql-client
-        createdb -h localhost -u postgres -w loomio_test
+        createdb -h localhost -U postgres -w loomio_test
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
