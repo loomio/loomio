@@ -88,8 +88,6 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     steps:
-    - name: setup chrome
-      uses: browser-actions/setup-chrome@92
     - name: git checkout
       uses: actions/checkout@v2
     - name: install ruby
@@ -121,6 +119,10 @@ jobs:
         cd loomio_channel_server
         npm install
         npm run start > ../log/channel_server.log &
+    - name: setup chrome
+      uses: browser-actions/setup-chrome@92
+      with:
+      chrome-version: 92
     - name: run e2es
       run: |
         /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
