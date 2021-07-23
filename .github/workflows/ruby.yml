@@ -31,11 +31,6 @@ jobs:
           --health-timeout 5s
           --health-retries 5
 
-    steps:
-    - name: Install PostgreSQL client
-      run: |
-        sudo apt-get install --yes postgresql-client
-        createdb -h localhost -U postgres -w loomio_test
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
@@ -43,7 +38,7 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Check out repository code
       uses: actions/checkout@v2
-    - name: setup database
+    - name: Setup database
       env:
         DISPLAY: ':99.0'
         RAILS_ENV: test
@@ -53,8 +48,7 @@ jobs:
         SCREENSHOTS_PATH: /`date "+%Y-%m-%d_%H-%M"`/${TRAVIS_REPO_SLUG}/
         FEATURES_GROUP_SSO: 1
       run: |
-        echo `pwd`
-        echo `ls -la`
+        createdb -h localhost -U postgres -w loomio_test
         cp config/database.yml.postgresql config/database.yml
         createdb loomio_test
         bundle exec rake db:setup
