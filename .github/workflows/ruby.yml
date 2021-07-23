@@ -39,16 +39,16 @@ jobs:
       with:
         ruby-version: '2.7.4'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Init database
-      env:
-        # DISPLAY: ':99.0'
-        RAILS_ENV: test
-        # PUMA_WORKERS: 2
-        # MIN_THREADS: 3
-        # MAX_THREADS: 3
-        # SCREENSHOTS_PATH: /`date "+%Y-%m-%d_%H-%M"`/${TRAVIS_REPO_SLUG}/
-        # FEATURES_GROUP_SSO: 1
-        # bundle install
+    - name: Init db
+      # env:
+      #   # DISPLAY: ':99.0'
+      #   RAILS_ENV: test
+      #   # PUMA_WORKERS: 2
+      #   # MIN_THREADS: 3
+      #   # MAX_THREADS: 3
+      #   # SCREENSHOTS_PATH: /`date "+%Y-%m-%d_%H-%M"`/${TRAVIS_REPO_SLUG}/
+      #   # FEATURES_GROUP_SSO: 1
+      #   # bundle install
       run: |
         createdb -h localhost -p 5432 -U postgres -w loomio_test
         cp config/database.yml.postgresql config/database.yml
