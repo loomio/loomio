@@ -121,7 +121,9 @@ jobs:
     #     npm run start > ../log/channel_server.log &
     - name: setup chrome
       run: |
-        sudo apt-get install google-chrome-beta
+        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo apt install ./google-chrome-stable_current_amd64.deb
+      # sudo apt-get install google-chrome-beta
       # uses: browser-actions/setup-chrome@latest
       # with:
       #   chrome-version: beta
