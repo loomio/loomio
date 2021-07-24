@@ -116,7 +116,6 @@ jobs:
         bundle exec rake db:setup
     - name: start rails server
       env:
-        RAILS_ENV: test
         PUMA_WORKERS: 2
         MIN_THREADS: 3
         MAX_THREADS: 3
@@ -133,7 +132,7 @@ jobs:
       run: |
         /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
         cd vue
-        npm run test:e2e:single
+        npm run test:e2e:standalone
     - name: upload e2e failure screenshots
       uses: actions/upload-artifact@v2
       if: ${{ always() }}
