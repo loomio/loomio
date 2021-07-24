@@ -23,6 +23,7 @@ jobs:
       PGHOST: localhost
       PGPORT: 5432
       PGUSER: postgres
+      CHROMEDRIVER_VERSION: LATEST_91
     services:
       postgres:
         image: postgres:latest
@@ -119,16 +120,14 @@ jobs:
         cd loomio_channel_server
         npm install
         npm run start > ../log/channel_server.log &
-    - name: setup chrome
-      uses: browser-actions/setup-chrome@latest
-      with:
-        chrome-version: beta
+    # - name: setup chrome
+    #   uses: browser-actions/setup-chrome@latest
+    #   with:
+    #     chrome-version: beta
     - name: run e2es
       env:
         DISPLAY: ':99'
       run: |
-        echo `which chrome`
-        echo `which google-chrome`
         /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
         cd vue
         npm run test:e2e:standalone
