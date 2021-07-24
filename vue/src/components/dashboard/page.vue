@@ -124,7 +124,7 @@ v-main
             router-link(to='/dashboard', v-show="filter != 'show_all' && userHasMuted")
               span(v-t="'dashboard_page.view_recent'")
         .dashboard-page__collections(v-if='discussions.length')
-          v-card.mb-3.thread-preview-collection__container
+          v-card.mb-3.thread-preview-collection__container.thread-previews-container
             v-list.thread-previews(two-line)
               v-subheader(v-t="'dashboard_page.recent_threads'")
               thread-preview(v-for="thread in discussions" :key="thread.id" :thread="thread")
