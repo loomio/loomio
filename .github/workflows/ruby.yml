@@ -68,6 +68,7 @@ jobs:
       PGPORT: 5432
       PGUSER: postgres
       RAILS_ENV: test
+      FEATURES_GROUP_SSO: 1
     services:
       postgres:
         image: postgres:latest
