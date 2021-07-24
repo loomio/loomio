@@ -22,7 +22,7 @@ jobs:
       PGHOST: localhost
       PGPORT: 5432
       PGUSER: postgres
-      REDIS_URL: redis://localhost:6379
+      RAILS_ENV: test
     services:
       postgres:
         image: postgres:latest
@@ -63,11 +63,11 @@ jobs:
   e2e:
     runs-on: ubuntu-latest
     env:
-      RAILS_ENV: test
       PGDATABASE: loomio_test
       PGHOST: localhost
       PGPORT: 5432
       PGUSER: postgres
+      RAILS_ENV: test
     services:
       postgres:
         image: postgres:latest
