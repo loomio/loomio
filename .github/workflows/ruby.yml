@@ -24,6 +24,7 @@ jobs:
       PGPORT: 5432
       PGUSER: postgres
       CHROMEDRIVER_VERSION: LATEST_91
+      REDIS_URL: redis://localhost:6379
     services:
       postgres:
         image: postgres:latest
