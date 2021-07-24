@@ -88,8 +88,8 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     steps:
-    - name: git checkout
-      uses: actions/checkout@v2
+    # - name: git checkout
+    #   uses: actions/checkout@v2
     # - name: install ruby
     #   uses: ruby/setup-ruby@v1
     #   with:
@@ -120,9 +120,11 @@ jobs:
     #     npm install
     #     npm run start > ../log/channel_server.log &
     - name: setup chrome
-      uses: browser-actions/setup-chrome@latest
-      with:
-        chrome-version: beta
+      run: |
+        sudo apt-get install google-chrome-beta
+      # uses: browser-actions/setup-chrome@latest
+      # with:
+      #   chrome-version: beta
     - name: run e2es
       env:
         DISPLAY: ':99'
