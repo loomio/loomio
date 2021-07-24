@@ -1,0 +1,133 @@
+name: tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+    env:
+      PGDATABASE: loomio_test
+      PGHOST: localhost
+      PGPORT: 5432
+      PGUSER: postgres
+      RAILS_ENV: test
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+    - name: git checkout
+      uses: actions/checkout@v2
+    - name: install ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '2.7.4'
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: init db
+      run: |
+        createdb
+        cp config/database.yml.postgresql config/database.yml
+        bundle exec rake db:setup
+    - name: rspec
+      run: bundle exec rspec
+
+  e2e:
+    runs-on: ubuntu-latest
+    env:
+      PGDATABASE: loomio_test
+      PGHOST: localhost
+      PGPORT: 5432
+      PGUSER: postgres
+      RAILS_ENV: test
+      FEATURES_GROUP_SSO: 1
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+    - name: git checkout
+      uses: actions/checkout@v2
+    - name: install ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '2.7.4'
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: install node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - name: start websocker server
+      run: |
+        echo $PWD
+        git clone https://github.com/loomio/loomio_channel_server.git
+        cd loomio_channel_server
+        npm install
+        npm run start > ../log/channel_server.log &
+    - name: create db
+      run: |
+        createdb
+        cp config/database.yml.postgresql config/database.yml
+        bundle exec rake db:setup
+    - name: start rails server
+      env:
+        PUMA_WORKERS: 2
+        MIN_THREADS: 3
+        MAX_THREADS: 3
+      run: |
+        bundle exec rails server -b 0.0.0.0 > log/server.log &
+    - name: build client
+      run: |
+        cd vue
+        npm install
+        npm run build
+    - name: run e2es
+      env:
+        DISPLAY: ':99'
+      run: |
+        /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
+        cd vue
+        npm run test:e2e:standalone
+    - name: upload e2e failure screenshots
+      uses: actions/upload-artifact@v2
+      if: ${{ always() }}
+      with:
+        name: e2ereport
+        path: vue/tests/screenshots
