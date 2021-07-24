@@ -1,5 +1,5 @@
 var selenium = require('selenium-server-standalone-jar');
-var chromedriver = require('chromedriver');
+// var chromedriver = require('chromedriver');
 
 var chromeOptions = ["window-size=1280,1500"]
 if (process.env.RAILS_ENV == 'test') { chromeOptions.push("headless") }
@@ -10,11 +10,11 @@ module.exports = {
   selenium: {
     start_process: true,
     check_process_delay: 5000,
-    server_path: selenium.path,
+    server_path: selenium.path
     // log_path: './tests/reports',
-    cli_args: {
-      'webdriver.chrome.driver': chromedriver.path
-    }
+    // cli_args: {
+    //   'webdriver.chrome.driver': chromedriver.path
+    // }
   },
   // webdriver: {
   //   start_process: true,
