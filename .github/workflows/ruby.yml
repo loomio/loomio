@@ -18,12 +18,10 @@ jobs:
   rspec:
     runs-on: ubuntu-latest
     env:
-      RAILS_ENV: test
       PGDATABASE: loomio_test
       PGHOST: localhost
       PGPORT: 5432
       PGUSER: postgres
-      CHROMEDRIVER_VERSION: LATEST_91
       REDIS_URL: redis://localhost:6379
     services:
       postgres:
@@ -114,6 +112,11 @@ jobs:
         cp config/database.yml.postgresql config/database.yml
         bundle exec rake db:setup
     - name: start rails server
+      env:
+        RAILS_ENV: test
+        PUMA_WORKERS: 2
+        MIN_THREADS: 3
+        MAX_THREADS: 3
       run: |
         bundle exec rails server -b 0.0.0.0 > log/server.log &
     - name: build client
@@ -133,3 +136,7 @@ jobs:
         /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
         cd vue
         npm run test:e2e:standalone
+    - uses: actions/upload-artifact@v2
+      with:
+        name: e2ereport
+        path: vue/tests/reports
