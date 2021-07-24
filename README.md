@@ -1,6 +1,6 @@
 Loomio is a collaborative decision-making tool that makes it easy for anyone to participate in decisions which affect them. To find out more, visit [Loomio.org](https://www.loomio.org).
 
-[![Build Status](https://travis-ci.com/loomio/loomio.svg?branch=master)](https://travis-ci.org/loomio/loomio)
+[![Tests](https://github.com/loomio/loomio/actions/workflows/ruby.yml/badge.svg)](https://github.com/loomio/loomio/actions/workflows/ruby.yml)
 
 ### Contributing
 
@@ -19,4 +19,3 @@ If you want to get in touch with us, send an email: [contact@loomio.org](mailto:
 [Facebook](https://facebook.com/Loomio) [Twitter](https://twitter.com/Loomio)
 
 Loomio is free software released under the [GNU Affero General Public License](LICENSE.txt)
-

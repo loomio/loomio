@@ -12,13 +12,13 @@
     "build": "vue-cli-service build",
     "test:e2e": "vue-cli-service test:e2e",
     "test:e2e:standalone": "nightwatch --config ./tests/e2e/nightwatch.conf.js --retries 2",
-    "test:e2e:single": "nightwatch --config ./tests/e2e/nightwatch.conf.js --test tests/e2e/specs/discussion.js  --testcase lets_you_edit_title_and_context"
+    "test:e2e:single": "nightwatch --config ./tests/e2e/nightwatch.conf.js --test tests/e2e/specs/discussion.js  --testcase can_react_to_a_discussion"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "@sentry/integrations": "^6.9.0",
-    "@sentry/browser": "^6.9.0",
-    "@sentry/tracing": "^6.9.0",
+    "@sentry/integrations": "^6.10.0",
+    "@sentry/browser": "^6.10.0",
+    "@sentry/tracing": "^6.10.0",
     "activestorage": "^5.2.6",
     "ahoy.js": "^0.3.8",
     "core-js": "^2.6.11",
@@ -63,7 +63,6 @@
     "acorn": "^8.4.1",
     "babel-plugin-lodash": "^3.3.4",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
-    "chromedriver": "latest",
     "coffee-loader": "latest",
     "coffeescript": "^2.5.1",
     "fibers": "^5.0.0",
