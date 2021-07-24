@@ -15,15 +15,15 @@ module.exports = {
     page.expectNoText('.members-panel', 'Emilio Estevez')
   },
 
-  'successfully_assigns_coordinator_privileges': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_group')
-    page.click('.group-page-members-tab')
-    page.click('.members-panel .v-card .v-list .v-list-item:first-child .membership-dropdown')
-    page.click('.membership-dropdown__toggle-admin')
-    page.expectFlash('Emilio Estevez is now an admin')
-  },
+  // 'successfully_assigns_coordinator_privileges': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_group')
+  //   page.click('.group-page-members-tab')
+  //   page.click('.members-panel .v-card .v-list .v-list-item:first-child .membership-dropdown')
+  //   page.click('.membership-dropdown__toggle-admin')
+  //   page.expectFlash('Emilio Estevez is now an admin')
+  // },
 
   'allows_non-coordinators_to_add_members_if_the_group_settings_allow': (test) => {
     page = pageHelper(test)
