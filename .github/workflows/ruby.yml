@@ -123,7 +123,6 @@ jobs:
       uses: browser-actions/setup-chrome@latest
       with:
         chrome-version: beta
-      - run: |
     - name: run e2es
       env:
         DISPLAY: ':99'
