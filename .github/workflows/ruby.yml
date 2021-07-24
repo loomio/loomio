@@ -124,9 +124,10 @@ jobs:
       with:
         chrome-version: beta
       - run: |
-        export DISPLAY=:99
-        /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
     - name: run e2es
+      env:
+        DISPLAY: ':99'
       run: |
+        /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
         cd vue
         npm run test:e2e:standalone
