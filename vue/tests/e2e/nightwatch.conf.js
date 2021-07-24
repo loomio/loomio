@@ -10,6 +10,7 @@ module.exports = {
   selenium: {
     start_process: true,
     server_path: selenium.path,
+    check_process_delay: 5000,
     log_path: './tests/reports'
   },
   test_settings: {
