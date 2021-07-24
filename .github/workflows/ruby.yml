@@ -22,7 +22,6 @@ jobs:
       PGHOST: localhost
       PGPORT: 5432
       PGUSER: postgres
-      DISPLAY: ':99.0'
     services:
       postgres:
         image: postgres:latest
@@ -123,8 +122,11 @@ jobs:
       uses: browser-actions/setup-chrome@latest
       with:
         chrome-version: 92.0.4515.43
+      - run: |
+        export DISPLAY=:99
+        # sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
+        /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
     - name: run e2es
       run: |
-        /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
         cd vue
         npm run test:e2e:standalone
