@@ -122,9 +122,9 @@ jobs:
       uses: browser-actions/setup-chrome@latest
       with:
         chrome-version: 92.0.4515.43
+      # sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
       - run: |
         export DISPLAY=:99
-        # sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
         /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
     - name: run e2es
       run: |
