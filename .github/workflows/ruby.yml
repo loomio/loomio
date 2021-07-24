@@ -119,10 +119,10 @@ jobs:
         cd loomio_channel_server
         npm install
         npm run start > ../log/channel_server.log &
-    - name: setup chrome
-      uses: browser-actions/setup-chrome@latest
-      with:
-        chrome-version: beta
+    # - name: setup chrome
+    #   uses: browser-actions/setup-chrome@latest
+    #   with:
+    #     chrome-version: beta
     - name: run e2es
       env:
         DISPLAY: ':99'
