@@ -122,7 +122,7 @@ jobs:
     - name: setup chrome
       uses: browser-actions/setup-chrome@latest
       with:
-        chrome-version: latest
+        chrome-version: 92.0.4515.43
     - name: run e2es
       run: |
         /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
