@@ -134,6 +134,7 @@ jobs:
         npm run test:e2e:single
     - name: upload e2e failure screenshots
       uses: actions/upload-artifact@v2
+      if: ${{ always() }}
       with:
         name: e2ereport
         path: vue/tests/reports
