@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.7.3'
+ruby '2.7.4'
 gem 'rack', '2.2.3'
 gem 'rails', '6.0.4'
 gem 'rake'
@@ -49,7 +49,7 @@ gem 'custom_counter_cache', github: "loomio/custom_counter_cache", branch: "rail
 gem 'premailer-rails'
 gem 'griddler', github: 'loomio/griddler'
 gem "griddler-mailin", github: 'loomio/griddler-mailin'
-gem 'activerecord-import', '1.1.0'
+gem 'activerecord-import', '1.2.0'
 gem 'discriminator', '~> 0.1.1'
 gem 'icalendar'
 gem 'rack-attack'

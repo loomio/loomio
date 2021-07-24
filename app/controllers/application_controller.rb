@@ -87,9 +87,9 @@ class ApplicationController < ActionController::Base
     prevent_caching
     template = File.read(Rails.root.join('public/blient/vue/index.html'))
 
-    if request.format.html?
-      template.gsub!('<div class=upgrade-browser></div>', '<%= render "application/upgrade_browser" %>')
-    end
+    # if request.format.html? and is_old_browser?
+    #   template.gsub!(/<div class="?'?upgrade-browser"?'?><\/div>/, '<%= render "application/upgrade_browser" %>')
+    # end
 
     render inline: template, layout: false, status: status
   end
@@ -107,11 +107,6 @@ class ApplicationController < ActionController::Base
   end
 
   def is_old_browser?
-    (browser.ie? ||
-    (browser.chrome?  && browser.version.to_i < 50) ||
-    (browser.firefox? && !browser.platform.ios? && browser.version.to_i < 50) ||
-    (browser.safari?  && browser.version.to_i < 12) ||
-    (browser.edge?    && browser.version.to_i < 19))
+    browser.ie? || (browser.safari? && browser.version.to_i < 12)
   end
-
 end

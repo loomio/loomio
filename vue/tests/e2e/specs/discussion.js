@@ -188,7 +188,8 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.expectNoElement('.reaction')
     page.click('.emoji-picker__toggle')
-    page.click('.emoji-picker__emojis img[alt="heart"]')
+    // page.click('.emoji-picker__emojis img[alt="heart"]')
+    page.click('.emoji-picker__emojis span[title="heart"]')
     page.expectElement('.reactions-display')
   },
 
