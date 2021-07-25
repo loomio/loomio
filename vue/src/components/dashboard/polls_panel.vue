@@ -45,10 +45,10 @@ export default
 </script>
 
 <template lang="pug">
-.polls-panel
+.polls-panel(v-if='polls.length || loader.loading')
   v-card.mb-2
-    v-list(two-line avatar v-if='polls.length')
+    v-list(two-line avatar)
       v-subheader(v-t="'dashboard_page.recent_polls'")
       poll-common-preview(:poll='poll' v-for='poll in polls' :key='poll.id')
-    p.pa-4.text-center(v-if='polls.length == 0 && !loader.loading' v-t="'polls_panel.no_polls'")
+      loading(v-if='loader.loading')
 </template>
