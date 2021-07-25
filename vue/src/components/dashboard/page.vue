@@ -81,9 +81,9 @@ export default
         chain = chain.find(query: @$route.query.q).data()
         @searchResults = orderBy(chain, 'rank', 'desc')
       else
-        groupIds = Records.memberships.collection.find(userId: Session.userId).map (m) -> m.groupId
+        groupIds = Records.memberships.collection.find(userId: Session.user().id).map (m) -> m.groupId
         chain = Records.discussions.collection.chain()
-        chain = chain.find($or: [{groupId: {$in: groupIds}}, {$and: {discussionReaderUserId: Session.userId, revokedAt: null}}])
+        chain = chain.find($or: [{groupId: {$in: groupIds}}, {discussionReaderUserId: Session.user().id, revokedAt: null}])
         chain = chain.find(discardedAt: null)
         chain = chain.find(closedAt: null)
         chain = chain.find(lastActivityAt: { $gt: subMonths(new Date(), 6) })
