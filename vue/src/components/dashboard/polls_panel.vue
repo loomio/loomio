@@ -5,18 +5,20 @@ import Records from '@/shared/services/records'
 import RecordLoader from '@/shared/services/record_loader'
 import EventBus       from '@/shared/services/event_bus'
 import Session       from '@/shared/services/session'
-import { debounce, some, every, compact, omit, values, keys, intersection, uniq, escapeRegExp } from 'lodash'
+import { debounce, some, every, compact, omit, values, keys, intersection, uniq, escapeRegExp, reject, filter} from 'lodash'
 import { subDays } from 'date-fns'
 
 export default
   data: ->
-    polls: []
+    votePolls: []
+    otherPolls: []
     loader: null
 
   created: ->
     @loader = new RecordLoader
       collection: 'polls'
       params:
+        exclude_types: 'group discussion'
         status: 'recent'
 
     @loader.fetchRecords()
@@ -40,15 +42,24 @@ export default
         chain = chain.find($or: [{'title': {'$regex': rx}},
                                  {'description': {'$regex': rx}}]);
 
-      @polls = chain.simplesort('closingAt', true).data()
+      votable = (p) => p.iCanVote() && !p.iHaveVoted()
+      @votePolls = filter chain.simplesort('closingAt', true).data(), votable
+      @otherPolls = reject chain.simplesort('closingAt', true).data(), votable
+
 
 </script>
 
 <template lang="pug">
-.polls-panel(v-if='polls.length || loader.loading')
+.polls-panel(v-if='otherPolls.length || votePolls.length || loader.loading')
   v-card.mb-2
     v-list(two-line avatar)
-      v-subheader(v-t="'dashboard_page.recent_polls'")
-      poll-common-preview(:poll='poll' v-for='poll in polls' :key='poll.id')
-      loading(v-if='loader.loading')
+      template(v-if="votePolls.length")
+        v-subheader(v-t="'dashboard_page.polls_to_vote_on'")
+        poll-common-preview(:poll='poll' v-for='poll in votePolls' :key='poll.id')
+      template(v-if="otherPolls.length")
+        v-subheader(v-t="'dashboard_page.current_polls'")
+        poll-common-preview(:poll='poll' v-for='poll in otherPolls' :key='poll.id')
+      template(v-else)
+        v-subheader(v-t="'dashboard_page.current_polls'")
+        loading-content(:lineCount='2' v-for='(item, index) in [1]' :key='index' )
 </template>
