@@ -55,7 +55,7 @@ export default
 
       @watchRecords
         key: 'dashboard'
-        collections: ['discussions', 'searchResults']
+        collections: ['discussions', 'searchResults', 'memberships']
         query: @query
 
       @refresh()
@@ -75,12 +75,15 @@ export default
         @loader.fetchRecords().then => @dashboardLoaded = true
 
     query: ->
+      console.log "running query",
       if @$route.query.q
         chain = Records.searchResults.collection.chain()
         chain = chain.find(query: @$route.query.q).data()
         @searchResults = orderBy(chain, 'rank', 'desc')
       else
+        groupIds = Records.memberships.collection.find(userId: Session.userId).map (m) -> m.groupId
         chain = Records.discussions.collection.chain()
+        chain = chain.find($or: [{groupId: {$in: groupIds}}, {$and: {discussionReaderUserId: Session.userId, revokedAt: null}}])
         chain = chain.find(discardedAt: null)
         chain = chain.find(closedAt: null)
         chain = chain.find(lastActivityAt: { $gt: subMonths(new Date(), 6) })
