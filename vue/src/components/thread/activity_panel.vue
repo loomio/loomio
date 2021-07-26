@@ -9,6 +9,8 @@ import Records from '@/shared/services/records'
 import Flash   from '@/shared/services/flash'
 import { print } from '@/shared/helpers/window'
 import ThreadService  from '@/shared/services/thread_service'
+import * as Sentry from '@sentry/browser'
+
 
 import { pickBy, identity, camelCase, first, last, isNumber } from 'lodash'
 
@@ -66,10 +68,14 @@ export default
             {column: 'position', id: 1}
 
       @fetchEvent(args.column, args.id).then (event) =>
-        if event
+        # there is a case where a comment is a reply to a comment in another thread
+        problem = (event.depth == 2 && event.discussionId != event.parent().discussionId)
+        if event && !problem
           @focalEvent = event
           @scrollTo "#sequence-#{@focalEvent.sequenceId}" if args.scrollTo
         else
+          if problem
+            Sentry.captureMessage("corrupt comment with event id #{event.id}")
           Flash.error('thread_context.item_maybe_deleted')
 
 
