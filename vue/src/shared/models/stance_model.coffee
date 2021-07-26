@@ -54,6 +54,9 @@ export default class StanceModel extends BaseModel
   group: ->
     @poll().group()
 
+  isBlank: ->
+    @reason == '' or @reason == null or @reason == '<p></p>'
+
   author: ->
     @participant()
 

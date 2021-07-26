@@ -42,7 +42,7 @@ export default
         canPerform: =>
           (@eventable.author() && Session.user()) &&
           @eventable.author().locale != Session.user().locale &&
-          @eventable.reason && AbilityService.canTranslate(@eventable)
+          AbilityService.canTranslate(@eventable)
         perform: =>
           @eventable.translate(Session.user().locale)
 

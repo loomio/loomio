@@ -11,6 +11,7 @@ export default new class ThreadService
   actions: (discussion, vm) ->
     subscribe:
       name: 'common.action.subscribe'
+      icon: 'mdi-bell'
       canPerform: ->
         discussion.volume() == 'normal' && AbilityService.canChangeVolume(discussion)
       perform: ->
@@ -21,6 +22,7 @@ export default new class ThreadService
 
     unsubscribe:
       name: 'common.action.unsubscribe'
+      icon: 'mdi-bell-off'
       canPerform: ->
         discussion.volume() == 'loud' && AbilityService.canChangeVolume(discussion)
       perform: ->

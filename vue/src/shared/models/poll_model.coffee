@@ -93,6 +93,9 @@ export default class PollModel extends BaseModel
     @isActive() &&
     (@anyoneCanParticipate or @myStance() or (!@specifiedVotersOnly and @membersInclude(Session.user())))
 
+  isBlank: ->
+    @details == '' or @details == null or @details == '<p></p>'
+
   authorName: ->
     @author().nameWithTitle(@group())
 

@@ -99,6 +99,9 @@ export default class DiscussionModel extends BaseModel
   authorName: ->
     @author().nameWithTitle(@group())
 
+  isBlank: ->
+    @discussion == '' or @discussion == null or @discussion == '<p></p>'
+
   groupName: ->
     (@group() || {}).name
 

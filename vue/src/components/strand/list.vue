@@ -126,7 +126,7 @@ export default
         div(v-observe-visibility="{intersection: {threshold: 0.05}, callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
           component(:class="classes(obj.event)" :is="componentForKind(obj.event.kind)" :event='obj.event')
 
-        .strand-list__children(v-if="obj.event.childCount")
+        .strand-list__children.mt-2(v-if="obj.event.childCount")
           strand-list.flex-grow-1(v-if="obj.children.length" :loader="loader" :collection="obj.children")
           .strand-item__row(v-else)
             .strand-item__gutter
@@ -158,7 +158,6 @@ export default
 </template>
 
 <style lang="sass">
-
 .strand-item--deep
   .strand-item__gutter
     width: 28px
