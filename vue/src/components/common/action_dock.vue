@@ -11,7 +11,7 @@ export default
 </script>
 
 <template lang="pug">
-section.d-flex.align-center(:aria-label="$t('action_dock.actions_menu')")
+section.d-flex.align-center.action-dock(:aria-label="$t('action_dock.actions_menu')")
   v-spacer(v-if="!left")
   reaction-display(:model="model" v-if="Object.keys(actions).includes('react')" :fetch="fetchReactions" :small="small")
   .action-dock__action(v-for='(action, name) in actions' v-if='action.canPerform()' :key="name")
@@ -27,7 +27,7 @@ section.d-flex.align-center(:aria-label="$t('action_dock.actions_menu')")
 
 .lmo-action-dock-wrapper
   .action-dock__action, .action-menu
-    opacity: 0.5
+    opacity: 0.35
   &:hover .action-dock__action, &:hover .action-menu
     opacity: 1
 
