@@ -69,7 +69,7 @@ export default
 
       @fetchEvent(args.column, args.id).then (event) =>
         # there is a case where a comment is a reply to a comment in another thread
-        problem = (event.depth == 2 && event.discussionId != event.parent().discussionId)
+        problem = (event && event.depth == 2 && event.discussionId != event.parent().discussionId)
         if event && !problem
           @focalEvent = event
           @scrollTo "#sequence-#{@focalEvent.sequenceId}" if args.scrollTo
