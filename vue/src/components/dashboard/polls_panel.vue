@@ -57,9 +57,9 @@ export default
         v-subheader(v-t="'dashboard_page.polls_to_vote_on'")
         poll-common-preview(:poll='poll' v-for='poll in votePolls' :key='poll.id')
       template(v-if="otherPolls.length")
-        v-subheader(v-t="'dashboard_page.current_polls'")
+        v-subheader(v-t="'dashboard_page.recent_polls'")
         poll-common-preview(:poll='poll' v-for='poll in otherPolls' :key='poll.id')
-      template(v-else)
-        v-subheader(v-t="'dashboard_page.current_polls'")
+      template(v-if='!votePolls.length && !otherPolls.length && loader.loading')
+        v-subheader(v-t="'group_page.polls'")
         loading-content(:lineCount='2' v-for='(item, index) in [1]' :key='index' )
 </template>

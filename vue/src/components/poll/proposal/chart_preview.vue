@@ -13,9 +13,9 @@ export default
 .poll-proposal-chart-preview(:style="{width: size+'px', height: size+'px'}")
   poll-proposal-chart.poll-common-collapsed__pie-chart(:stance-data='stanceData' :diameter='size')
   .poll-proposal-chart-preview__stance-container(v-if='showMyStance && poll.iCanVote()')
-    div(v-if='myStance && myStance.castAt', :class='`poll-proposal-chart-preview__stance poll-proposal-chart-preview__stance--${this.myStance.pollOption().name}`')
+    div(v-if='myStance && myStance.castAt' :class='`poll-proposal-chart-preview__stance poll-proposal-chart-preview__stance--${this.myStance.pollOption().name}`')
     .poll-proposal-chart-preview__stance.poll-proposal-chart-preview__stance--undecided(v-else)
-      v-icon(color="primary") mdi-alert-circle-outline
+      v-icon(color="primary") mdi-help-circle
 </template>
 <style lang="sass">
 .poll-proposal-chart-preview
@@ -24,8 +24,8 @@ export default
 	width: 23px
 	height: 23px
 	position: absolute
-	left: -3px
-	bottom: -5px
+	left: -4px
+	bottom: -4px
 	background-color: #fff
 	border-radius: 100%
 	box-shadow: 0 2px 1px rgba(0,0,0,.15)

@@ -19,13 +19,14 @@ export default
 </script>
 
 <template lang="pug">
-abbr.time-ago.text--secondary(:aria-label="$t(approximateDate(parsedDate))" :title='exactDate(parsedDate)') {{approximateDate(parsedDate)}}
+abbr.time-ago.text--secondary(:title='exactDate(parsedDate)') {{approximateDate(parsedDate)}}
 </template>
 
 <style lang="sass">
 .time-ago
-	white-space: nowrap
+  white-space: nowrap
 abbr[title]
-	border-bottom: none
+  text-decoration: none
+  border-bottom: none
 
 </style>

@@ -55,11 +55,11 @@ export default
 </script>
 
 <template lang="pug">
-div
+.poll-proposal-chart-preview(:style="{width: size+'px', height: size+'px'}")
   .bar-chart(ref="svg" :style="{height: size+'px', width: size+'px'}")
   .poll-proposal-chart-preview__stance-container(v-if='showMyStance && (poll.iCanVote() && !poll.iHaveVoted())')
     .poll-proposal-chart-preview__stance.poll-proposal-chart-preview__stance--undecided
-      v-icon(color="primary") mdi-alert-circle-outline
+      v-icon(color="primary") mdi-help-circle
 </template>
 
 <style lang="sass">

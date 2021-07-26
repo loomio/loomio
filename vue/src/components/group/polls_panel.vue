@@ -101,14 +101,14 @@ export default
           v-btn.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)
             span(v-if="$route.query.status == 'active'" v-t="'polls_panel.open'")
             span(v-if="$route.query.status == 'closed'" v-t="'polls_panel.closed'")
-            span(v-if="$route.query.status == 'vote'" v-t="'polls_panel.vote'")
+            span(v-if="$route.query.status == 'vote'" v-t="'polls_panel.need_vote'")
             span(v-if="!$route.query.status" v-t="'polls_panel.any_status'")
             v-icon mdi-menu-down
         v-list(dense)
           v-list-item(:to="mergeQuery({status: null })" v-t="'polls_panel.any_status'")
           v-list-item(:to="mergeQuery({status: 'active'})" v-t="'polls_panel.open'")
           v-list-item(:to="mergeQuery({status: 'closed'})" v-t="'polls_panel.closed'")
-          v-list-item(:to="mergeQuery({status: 'vote'})" v-t="'polls_panel.vote'")
+          v-list-item(:to="mergeQuery({status: 'vote'})" v-t="'polls_panel.need_vote'")
       v-menu
         template(v-slot:activator="{ on, attrs }")
           v-btn.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)

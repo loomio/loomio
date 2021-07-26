@@ -1737,7 +1737,7 @@ en:
     all: 'All'
     open: 'Open'
     closed: 'Closed'
-    vote: 'Need Vote'
+    need_vote: 'Need Vote'
     no_polls: 'No polls found'
 
   group_files_panel:
