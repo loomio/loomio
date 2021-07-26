@@ -6,11 +6,12 @@ export default
   props:
     matrixCounts: Array
     size: Number
+    poll: Object
   data: ->
     svgEl: null
     shapes: []
   mounted: ->
-    this.svgEl = svg(this.$el).size(@size, @size)
+    this.svgEl = svg(@$refs.svg).size(@size, @size)
     this.draw()
   methods:
     draw: ->
@@ -39,6 +40,6 @@ export default
       this.draw()
 </script>
 
-<template>
-<div class="matrix-chart"></div>
+<template lang="pug">
+div.matrix-chart(ref="svg")
 </template>

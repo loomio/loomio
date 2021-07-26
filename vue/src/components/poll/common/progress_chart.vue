@@ -8,6 +8,7 @@ export default
     stanceCounts: Array
     goal: Number
     size: Number
+    poll: Object
   data: ->
     svgEl: null
   methods:
@@ -36,13 +37,13 @@ export default
     fontSize: -> @size * 0.33
 
   mounted: ->
-    @svgEl = svg(@$el).size('100%', '100%')
+    @svgEl = svg(@$refs.svg).size('100%', '100%')
     @draw()
 
 </script>
 
 <template lang="pug">
-div(:style="{width: size+'px', height: size+'px'}" class="progress-chart")
+div(ref="svg" :style="{width: size+'px', height: size+'px'}" class="progress-chart")
 </template>
 <style lang="sass">
 .progress-chart

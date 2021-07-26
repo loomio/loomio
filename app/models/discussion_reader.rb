@@ -87,6 +87,10 @@ class DiscussionReader < ApplicationRecord
     self[:volume]
   end
 
+  def discussion_reader_user_id
+    self.user_id
+  end
+
   def read_ranges
     RangeSet.parse(self.read_ranges_string)
   end

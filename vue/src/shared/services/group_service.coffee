@@ -97,7 +97,10 @@ export default new class GroupService
           component: 'ConfirmModal'
           props:
             confirm:
-              submit:  membership.destroy
+              submit: ->
+                membership.destroy().then ->
+                  Records.discussions.find(groupId: membership.groupId).forEach (d) -> d.update(discussionReaderUserId: null)
+
               text:
                 title:    'leave_group_form.title'
                 helptext: 'leave_group_form.question'

@@ -40,8 +40,7 @@ export default
 <template lang="pug">
 v-list-item.thread-preview.thread-preview__link(:class="{'thread-preview--unread-border': thread.isUnread()}" :to='urlFor(thread)')
   v-list-item-avatar
-    user-avatar(v-if='!thread.activePoll()', :user='thread.author()', size='medium' no-link)
-    poll-common-chart-preview(v-if='thread.activePoll()', :poll='thread.activePoll()')
+    user-avatar(:user='thread.author()' :size='40' no-link)
   v-list-item-content
     v-list-item-title(style="align-items: center")
       span(v-if='thread.pinned' :title="$t('context_panel.thread_status.pinned')")
@@ -58,7 +57,7 @@ v-list-item.thread-preview.thread-preview__link(:class="{'thread-preview--unread
       mid-dot
       active-time-ago(:date="thread.lastActivityAt")
   v-list-item-action(v-if='$vuetify.breakpoint.mdAndUp')
-    action-dock(:actions="dockActions")
+    action-dock(:actions="dockActions" icons)
   v-list-item-action(v-if='canPerformAny')
     action-menu(:actions="menuActions")
 </template>
@@ -83,15 +82,15 @@ v-list-item.thread-preview.thread-preview__link(:class="{'thread-preview--unread
   border-left: 2px solid #fff
 .thread-preview--unread-border
   border-color: var(--v-primary-base)
-.thread-preview__position-icon-container
-  width: 23px
-  height: 23px
-  position: absolute
-  left: 15px
-  top: 43px
-  background-color: white
-  border-radius: 100%
-  box-shadow: 0 2px 1px rgba(0,0,0,.15)
+// .thread-preview__position-icon-container
+//   width: 23px
+//   height: 23px
+//   position: absolute
+//   left: 15px
+//   top: 43px
+//   background-color: white
+//   border-radius: 100%
+//   box-shadow: 0 2px 1px rgba(0,0,0,.15)
 .thread-preview__position-icon
   background-repeat: no-repeat
   height: 21px

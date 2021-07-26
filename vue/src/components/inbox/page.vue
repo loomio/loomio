@@ -50,7 +50,7 @@ export default
           @groups = sortBy Session.user().inboxGroups(), 'name'
           @views = {}
           each @groups, (group) =>
-            @views[group.key] = ThreadFilter(store, filters: @filters, group: group)
+            @views[group.key] = ThreadFilter(filters: @filters, group: group)
           @unreadCount = sum values(@views), (v) -> v.length
 
 </script>

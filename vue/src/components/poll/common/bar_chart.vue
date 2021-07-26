@@ -7,6 +7,7 @@ export default
   props:
     stanceCounts: Array
     size: Number
+    poll: Object
   data: ->
     svgEl: null
     shapes: []
@@ -47,12 +48,12 @@ export default
     stanceCounts: ->
       this.draw()
   mounted: ->
-    this.svgEl = svg(this.$el).size('100%', '100%')
+    this.svgEl = svg(this.$refs.svg).size('100%', '100%')
     this.draw()
 </script>
 
-<template>
-<div :style="{height: size+'px', width: size+'px'}" class="bar-chart"></div>
+<template lang="pug">
+.bar-chart(ref="svg" :style="{height: size+'px', width: size+'px'}")
 </template>
 
 <style lang="sass">

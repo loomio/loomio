@@ -1385,6 +1385,10 @@ en:
 
   dashboard_page:
     aria_label: 'Dashboard'
+    polls_to_vote_on: "Polls to vote on"
+    recent_polls: "Recent polls"
+    current_polls: "Current polls"
+    recent_threads: "Recent threads"
     no_groups:
       show_all: Welcome! You are not a member of any groups yet. <a href="/explore">Browse public groups</a> or <a href="/g/new">Start a group</a>.
       show_muted: You don't have any muted threads because you are not a member of any groups.
@@ -1733,6 +1737,7 @@ en:
     all: 'All'
     open: 'Open'
     closed: 'Closed'
+    need_vote: 'Need Vote'
     no_polls: 'No polls found'
 
   group_files_panel:

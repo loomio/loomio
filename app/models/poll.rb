@@ -68,6 +68,7 @@ class Poll < ApplicationRecord
 
   scope :active, -> { kept.where('polls.closed_at': nil) }
   scope :closed, -> { kept.where("polls.closed_at IS NOT NULL") }
+  scope :recent, -> { kept.where("polls.closed_at IS NULL or polls.closed_at > ?", 7.days.ago) }
   scope :search_for, ->(fragment) { kept.where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
   scope :lapsed_but_not_closed, -> { active.where("polls.closing_at < ?", Time.now) }
   scope :active_or_closed_after, ->(since) { kept.where("polls.closed_at IS NULL OR polls.closed_at > ?", since) }

@@ -151,6 +151,7 @@ class RecordCache
   end
 
   def add_groups(collection)
+    return [] if exclude_types.include?('group')
     scope[:groups_by_id] ||= {}
     collection.map do |group|
       @user_ids.push group.creator_id

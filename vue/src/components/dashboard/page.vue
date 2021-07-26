@@ -13,13 +13,7 @@ export default
   data: ->
     dashboardLoaded: Records.discussions.collection.data.length > 0
     filter: @$route.params.filter || 'hide_muted'
-    views:
-      proposals: []
-      today: []
-      yesterday: []
-      thisweek: []
-      thismonth: []
-      older: []
+    discussions: []
     loader: null
     searchLoader: null
     searchResults: []
@@ -38,7 +32,7 @@ export default
   mounted: ->
     EventBus.$emit('content-title-visible', false)
     EventBus.$emit 'currentComponent',
-      titleKey: @titleKey
+      titleKey: 'dashboard_page.aria_label'
       page: 'dashboardPage'
       search:
         placeholder: @$t('navbar.search_all_threads')
@@ -54,14 +48,14 @@ export default
         params:
           exclude_types: 'group'
           filter: @filter
-          per: 50
+          per: 60
 
       @searchLoader = new RecordLoader
         collection: 'searchResults'
 
       @watchRecords
         key: 'dashboard'
-        collections: ['discussions', 'searchResults']
+        collections: ['discussions', 'searchResults', 'memberships']
         query: @query
 
       @refresh()
@@ -81,42 +75,24 @@ export default
         @loader.fetchRecords().then => @dashboardLoaded = true
 
     query: ->
+      console.log "running query",
       if @$route.query.q
         chain = Records.searchResults.collection.chain()
         chain = chain.find(query: @$route.query.q).data()
         @searchResults = orderBy(chain, 'rank', 'desc')
       else
-        now = new Date()
-        @views.proposals = ThreadFilter(Records, filters: @filters('show_proposals'))
-        @views.today     = ThreadFilter(Records, filters: @filters('hide_proposals'), from: subDays(now, 1), to: addDays(now, 10000))
-        @views.yesterday = ThreadFilter(Records, filters: @filters('hide_proposals'), from: subDays(now, 2), to: subDays(now, 1))
-        @views.thisweek  = ThreadFilter(Records, filters: @filters('hide_proposals'), from: subWeeks(now, 1), to: subDays(now, 2))
-        @views.thismonth = ThreadFilter(Records, filters: @filters('hide_proposals'), from: subMonths(now, 1),  to: subWeeks(now, 1))
-        @views.older     = ThreadFilter(Records, filters: @filters('hide_proposals'), from: subMonths(now, 12),  to: subMonths(now, 1))
-
-    viewName: (name) ->
-      if @filter == 'show_muted'
-        "dashboard#{capitalize(name)}Muted"
-      else
-        "dashboard#{capitalize(name)}"
-
-    filters: (filters) ->
-      ['only_threads_in_my_groups', 'show_opened', @filter].concat(filters)
-
+        groupIds = Records.memberships.collection.find(userId: Session.user().id).map (m) -> m.groupId
+        chain = Records.discussions.collection.chain()
+        chain = chain.find($or: [{groupId: {$in: groupIds}}, {discussionReaderUserId: Session.user().id, revokedAt: null}])
+        chain = chain.find(discardedAt: null)
+        chain = chain.find(closedAt: null)
+        chain = chain.find(lastActivityAt: { $gt: subMonths(new Date(), 6) })
+        @discussions = chain.simplesort('lastActivityAt', true).data()
 
   computed:
-    titleKey: ->
-      if @filter == 'show_muted'
-        'dashboard_page.filtering.muted'
-      else
-        'dashboard_page.filtering.all'
-
-    viewNames: -> keys(@views)
-    loadingViewNames: -> take @viewNames, 3
     noGroups: -> Session.user().groups().length == 0
     promptStart: ->
       @noGroups && AbilityService.canStartGroups()
-    noThreads: -> every @views, (view) => view.length == 0
     userHasMuted: -> Session.user().hasExperienced("mutingThread")
     showLargeImage: -> true
 
@@ -125,24 +101,24 @@ export default
 <template lang="pug">
 v-main
   v-container.dashboard-page.max-width-1024
-    //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.all'")
-    //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.all'" v-show="filter == 'hide_muted'")
-    //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.muted'", v-show="filter == 'show_muted'")
-    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'dashboard_page.filtering.all'")
+    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'dashboard_page.aria_label'")
     v-layout.mb-3
-      v-text-field(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_all_threads')" append-icon="mdi-magnify")
+      v-text-field(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('common.action.search')" append-icon="mdi-magnify")
 
-    v-card.mb-3(v-if='!dashboardLoaded' v-for='(viewName, index) in loadingViewNames' :key='index' :class="'dashboard-page__loading dashboard-page__' + viewName" aria-hidden='true')
+    dashboard-polls-panel
+
+    v-card.mb-3(v-if='!dashboardLoaded')
       v-list(two-line)
-        v-subheader(v-t="'dashboard_page.threads_from.' + viewName")
+        v-subheader(v-t="'dashboard_page.recent_threads'")
         loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]' :key='index' )
+
     div(v-if="dashboardLoaded")
       section.dashboard-page__loaded(v-if="$route.query.q")
         v-card
           thread-search-result(v-for="result in searchResults" :key="result.id" :result="result")
 
       section.dashboard-page__loaded(v-if='!$route.query.q')
-        .dashboard-page__empty(v-if='noThreads')
+        .dashboard-page__empty(v-if='discussions.length == 0')
           p(v-html="$t('dashboard_page.no_groups.show_all')" v-if='noGroups')
           .dashboard-page__no-threads(v-if='!noGroups')
             span(v-show="filter == 'show_all'" v-t="'dashboard_page.no_threads.show_all'")
@@ -150,10 +126,12 @@ v-main
             span(v-show="filter == 'show_muted' && userHasMuted", v-t="'dashboard_page.no_threads.show_muted'")
             router-link(to='/dashboard', v-show="filter != 'show_all' && userHasMuted")
               span(v-t="'dashboard_page.view_recent'")
-        .dashboard-page__collections(v-if='!noThreads')
-          v-card.mb-3(v-if='views[viewName].length' :class="'thread-preview-collection__container dashboard-page__' + viewName" v-for='viewName in viewNames' :key='viewName')
-            v-subheader(v-t="'dashboard_page.threads_from.' + viewName")
-            thread-preview-collection.thread-previews-container(:threads='views[viewName]')
+        .dashboard-page__collections(v-if='discussions.length')
+          v-card.mb-3.thread-preview-collection__container.thread-previews-container
+            v-list.thread-previews(two-line)
+              v-subheader(v-t="'dashboard_page.recent_threads'")
+              thread-preview(v-for="thread in discussions" :key="thread.id" :thread="thread")
+
           .dashboard-page__footer(v-if='!loader.exhausted')  
           loading(v-show='loader.loading')
 </template>
