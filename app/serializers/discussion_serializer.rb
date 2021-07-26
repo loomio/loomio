@@ -50,7 +50,7 @@ class DiscussionSerializer < ApplicationSerializer
 
   has_one :author, serializer: AuthorSerializer, root: :users
   has_one :group, serializer: GroupSerializer, root: :groups
-  has_many :active_polls, serializer: PollSerializer, root: :polls
+  # has_many :active_polls, serializer: PollSerializer, root: :polls
   has_one :created_event, serializer: EventSerializer, root: :events
   has_one :forked_event, serializer: EventSerializer, root: :events
   has_many :tags, serializer: TagSerializer, root: :tags

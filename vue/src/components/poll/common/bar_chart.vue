@@ -7,8 +7,6 @@ export default
   props:
     stanceCounts: Array
     size: Number
-    showMyStance: Boolean
-    myStance: Object
     poll: Object
   data: ->
     svgEl: null
@@ -55,11 +53,7 @@ export default
 </script>
 
 <template lang="pug">
-.poll-proposal-chart-preview(:style="{width: size+'px', height: size+'px'}")
-  .bar-chart(ref="svg" :style="{height: size+'px', width: size+'px'}")
-  .poll-proposal-chart-preview__stance-container(v-if='showMyStance && (poll.iCanVote() && !poll.iHaveVoted())')
-    .poll-proposal-chart-preview__stance.poll-proposal-chart-preview__stance--undecided
-      v-icon(color="primary") mdi-help-circle
+.bar-chart(ref="svg" :style="{height: size+'px', width: size+'px'}")
 </template>
 
 <style lang="sass">
