@@ -44,6 +44,7 @@ export default class DiscussionModel extends BaseModel
     notifyRecipients: true
     groupId: null
     usersNotifiedCount: null
+    discussionReaderUserId: null
 
   audienceValues: ->
     name: @group().name

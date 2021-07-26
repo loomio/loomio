@@ -1,5 +1,6 @@
 import BaseModel        from '@/shared/record_store/base_model'
 import AppConfig        from '@/shared/services/app_config'
+import Session          from '@/shared/services/session'
 import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
 import EventBus         from '@/shared/services/event_bus'
@@ -88,6 +89,10 @@ export default class PollModel extends BaseModel
   iHaveVoted: ->
     @myStance() && @myStance().castAt
 
+  iCanVote: ->
+    @isActive() &&
+    (@anyoneCanParticipate or @myStance() or (!@specifiedVotersOnly and @membersInclude(Session.user())))
+
   authorName: ->
     @author().nameWithTitle(@group())
 
@@ -125,7 +130,6 @@ export default class PollModel extends BaseModel
       revokedAt: null
       castAt: {$ne: null}
     ).data()
-
 
   hasDescription: ->
     !!@details

@@ -403,7 +403,7 @@ GEM
     oga (3.3)
       ast
       ruby-ll (~> 2.1)
-    oj (3.12.1)
+    oj (3.12.2)
     orm_adapter (0.5.0)
     os (1.1.1)
     paper_trail (12.0.0)
@@ -536,7 +536,7 @@ GEM
       rexml
     ruby-vips (2.0.17)
       ffi (~> 1.9)
-    ruby2_keywords (0.0.4)
+    ruby2_keywords (0.0.5)
     ruby_parser (3.14.2)
       sexp_processor (~> 4.9)
     safely_block (0.3.0)
@@ -551,18 +551,19 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sentry-rails (4.6.1)
+    sentry-rails (4.6.2)
       railties (>= 5.0)
       sentry-ruby-core (~> 4.6.0)
-    sentry-ruby (4.6.1)
+    sentry-ruby (4.6.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       faraday (>= 1.0)
-      sentry-ruby-core (= 4.6.1)
-    sentry-ruby-core (4.6.1)
+      sentry-ruby-core (= 4.6.2)
+    sentry-ruby-core (4.6.2)
       concurrent-ruby
       faraday
-    sentry-sidekiq (4.6.1)
+    sentry-sidekiq (4.6.2)
       sentry-ruby-core (~> 4.6.0)
+      sidekiq (>= 3.0)
     sexp_processor (4.14.1)
     sidekiq (6.2.1)
       connection_pool (>= 2.2.2)
