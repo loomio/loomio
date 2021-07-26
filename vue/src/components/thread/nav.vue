@@ -187,7 +187,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
     .thread-nav__presets
       router-link.thread-nav__preset(v-for="event in presets" :key="event.id" :to="urlFor(event)" :style="{top: offsetFor(event.position)+'px'}")
         .thread-nav__preset--line
-        poll-common-chart-preview.thread-nav__poll-chart-preview(v-if="event.model().isA('poll')" :poll="event.model()" :size='18' :showMyStance="false")
+        //- poll-common-chart-preview.thread-nav__poll-chart-preview(v-if="event.model().isA('poll')" :poll="event.model()" :size='18' :showMyStance="false")
         .thread-nav__preset--title
           span {{event.pinnedTitle || event.suggestedTitle()}}
         .thread-nav__stance-icon-container(v-if="event.model().isA('poll') && event.model().iCanVote()")

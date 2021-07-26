@@ -14,7 +14,6 @@ export default (options) ->
     chain = chain.find(id: {$in: options.ids})
   else
     each compact([].concat(options.filters)), (filter) ->
-      console.log(filter)
       chain = switch filter
         when 'show_recent'    then chain.find(lastActivityAt: { $gt: subWeeks(new Date, 6) })
         when 'show_unread'    then chain.where (thread) -> thread.isUnread()
