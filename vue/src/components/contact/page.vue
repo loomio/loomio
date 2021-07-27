@@ -31,7 +31,6 @@ export default
     submit: ->
       @message.save()
       .then =>
-        Flash.success "contact_message_form.new_contact_message"
         @submitted = true
       .catch onError(@message)
 
