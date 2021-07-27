@@ -90,7 +90,8 @@ class AppConfig
       help_link:                  !ENV['FEATURES_DISABLE_HELP_LINK'],
       example_content:            !ENV['FEATURES_DISABLE_EXAMPLE_CONTENT'],
       proposal_consent_default:   ENV.fetch('FEATURES_PROPOSAL_CONSENT_DEFAULT', false),
-      show_contact_consent:       ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT',       false),
+      show_contact:               ENV.fetch('FEATURES_SHOW_CONTACT', false),
+      show_contact_consent:       ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false),
       group_survey:               ENV.fetch('FEATURES_GROUP_SURVEY', false),
       group_sso:                  ENV.fetch('FEATURES_GROUP_SSO', false),
       sentry_sample_rate:         ENV.fetch('SENTRY_SAMPLE_RATE', '0.1').to_f

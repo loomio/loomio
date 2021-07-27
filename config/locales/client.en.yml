@@ -1575,11 +1575,12 @@ en:
     confirm: 'Delete comment'
 
   contact_message_form:
+    alt_title: "Contact Loomio Support"
     title: "Hi there! How can we help?"
     this_is_for:
       This is a great place for sales, training or subscription enquiries, or to ask for support using Loomio.
     read_the_manual: |
-      Did you know our <a href="{{link}}" target="_blank">Help Manual</a> contains FAQs as well as detailed guides to facilitating discussions and decisions on Loomio.
+      Did you know our <a href="{{link}}" target="_blank">Help Manual</a> contains FAQs as well as detailed guides to facilitating discussions and decisions on Loomio?
     contact_us_email: "You can also email us: <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Contact Us'
     name_label: 'Your name'
