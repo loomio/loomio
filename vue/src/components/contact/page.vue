@@ -48,6 +48,7 @@ v-main
       v-card-title
         h1.headline(tabindex="-1" v-t="'contact_message_form.title'")
       v-card-text
+        p(v-html="$t('contact_message_form.this_is_for')")
         p(v-html="$t('contact_message_form.read_the_manual', { link: helpLink })")
         p
         div(v-if='!isLoggedIn')
