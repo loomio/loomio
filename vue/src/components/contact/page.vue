@@ -42,8 +42,8 @@ export default
 
 <template lang="pug">
 v-main
-  v-container.contact-page
-    v-card.contact-form(v-show='!submitted')
+  v-container.contact-page.d-flex.justify-center
+    v-card.contact-form(v-show='!submitted').max-width-800
       submit-overlay(:value='message.processing')
       v-card-title
         p.text-heading(tabindex="-1" v-t="'contact_message_form.alt_title'")
