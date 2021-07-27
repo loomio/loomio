@@ -58,7 +58,6 @@ class Rack::Attack
                        req.remote_ip,
                        req.request_method,
                        req.fullpath,
-                       request_id,
-                       req.user_agent.to_s.parameterize].join(' ')
+                       request_id].join(' ')
   end
 end
