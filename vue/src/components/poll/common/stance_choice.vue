@@ -8,7 +8,9 @@ export default
     poll:
       type: Object
       required: true
-    stanceChoice: Object
+    stanceChoice:
+      type: Object
+      required: true
     size:
       type: Number
       default: 24
