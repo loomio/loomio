@@ -1596,6 +1596,7 @@ en:
       Our support team speak English and will translate your message with Google Translate if required. <br />
       We aim to respond to all messages within 24 hours.
     success: "Thanks for your message, {{name}}. You'll hear back from us soon."
+    success_via_email: "Thanks for your message, {{name}}. We'll respond via email within 24 hours."
 
   hint:
     context: 'Tips for using the context panel'
