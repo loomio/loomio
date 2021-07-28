@@ -2,6 +2,59 @@
 %p If you can, use the SVG, it will always look best.
 %p You can download and copy these, or hotlink using copy url.
 
-- @files.each do |file|
-  %p=file
-  %img{src: file.gsub('public', '')}
+- colors = AppConfig.theme[:brand_colors]
+
+:css
+  a {
+    text-decoration: none
+  }
+  .color-swatch{
+    display: inline-block;
+    width: 64px;
+    width: 64px;
+    margin: 16px;
+    padding: 16px;
+    text-align: center;
+    color: #fff;
+  }
+  .svg-icon{
+    width: 128px;
+    height: 128px;
+  }
+
+  .png-logo{
+    width: 50%;
+    height: 50%;
+  }
+
+%h2 brand colors
+- colors.each_pair do |val, name|
+  %div.color-swatch{style:"background-color: #{name}; color: #fff"}
+    %span=val
+    %span=name
+
+%h2 svg icons
+-# svg icons
+- colors.each_pair do |name, val|
+  %a{href: "brand/icon_#{name}.svg"}
+    %img.svg-icon{src: "brand/icon_#{name}.svg"}
+
+%h2 png icons
+- [150, 300].each do |size|
+  - colors.keys.each do |name|
+    %a{href: "brand/icon_#{name}_#{size}h.png"}
+      %img{style: "height: #{size/2}px; width: auto", src: "brand/icon_#{name}_#{size}h.png"}
+
+%h2 svg logos
+- colors.each_pair do |name, value|
+  %div.logo-swatch
+    %a{href: "brand/logo_#{name}.svg"}
+      %img{src: "brand/logo_#{name}.svg"}
+
+%h2 png logos
+- colors.keys.each do |color|
+  %p=color
+  - '48 64 96 128 192 256'.split(' ').map(&:to_i).each do |size|
+    %div{style: "background-color: #{color == :white ? '#3D3D3D' : '#fff'}"}
+      %a{href: "brand/logo_#{color}_#{size}h.png"}
+        %img.png-logo{style: "height: #{size/2}px; width: auto", src: "brand/logo_#{color}_#{size}h.png"}

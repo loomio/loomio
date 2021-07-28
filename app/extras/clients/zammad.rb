@@ -18,7 +18,7 @@ class Clients::Zammad < Clients::Base
         subject: subject,
         body: message,
         type: 'web',
-        internal: false
+        internal: true
       }
     }
   end

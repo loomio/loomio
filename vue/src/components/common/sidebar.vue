@@ -111,7 +111,6 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   template(v-slot:append)
     v-layout.mx-10.my-2(column align-center style="max-height: 64px")
       v-img(:src="logoUrl")
-      a.ml-4.caption(href="https://github.com/loomio/loomio/releases" target="_blank") {{version}}
 
   v-list-group.sidebar__user-dropdown
     template(v-slot:activator)

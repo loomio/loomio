@@ -36,20 +36,35 @@ class AppConfig
   end
 
   def self.theme
+    color = 'gold'
+    colors = { gold: "#DCA034", ink: "#3D3D3D", sky: "#658AE7", sunset: "#EBB6A5", rock: "#BE5247", white: "#fff" }
+
     {
+      brand_colors: colors,
+      vuetify_colors: {
+        light: {
+          primary: '#DCA034',
+          secondary: '#658AE7',
+          accent: '#EBB6A5',
+          error: '#BE5247',
+          info: '#658AE7',
+          success: '#4CAF50',
+          warning: '#FFC107'
+        },
+      },
       site_name:                         ENV.fetch('SITE_NAME',                     'Loomio'),
       channels_uri:                      ENV.fetch('CHANNELS_URI',                  'ws://localhost:5000'),
       terms_url:                         ENV['TERMS_URL'],
       privacy_url:                       ENV['PRIVACY_URL'],
       help_url:                          ENV.fetch('HELP_URL',                      'https://help.loomio.org/'),
-      icon_src:                          ENV.fetch('THEME_ICON_SRC',                '/theme/icon.png'),
-      app_logo_src:                      ENV.fetch('THEME_APP_LOGO_SRC',            '/theme/logo.svg'),
+      icon_src:                          ENV.fetch('THEME_ICON_SRC',                "/brand/icon_#{color}_150h.png"),
+      app_logo_src:                      ENV.fetch('THEME_APP_LOGO_SRC',            "/brand/logo_#{color}.svg"),
       default_group_cover_src:           ENV.fetch('THEME_DEFAULT_GROUP_COVER_SRC', '/theme/default_group_cover.png'),
       dont_notify_new_thread:            ENV['DONT_NOTIFY_NEW_THREAD'],
 
       # used in emails
-      email_header_logo_src:             ENV.fetch('THEME_EMAIL_HEADER_LOGO_SRC',   '/theme/logo_128h.png'),
-      email_footer_logo_src:             ENV.fetch('THEME_EMAIL_FOOTER_LOGO_SRC',   '/theme/logo_64h.png'),
+      email_header_logo_src:             ENV.fetch('THEME_EMAIL_HEADER_LOGO_SRC',   "/brand/logo_#{color}_128h.png"),
+      email_footer_logo_src:             ENV.fetch('THEME_EMAIL_FOOTER_LOGO_SRC',   "/brand/logo_#{color}_64h.png"),
       primary_color:                     ENV.fetch('THEME_PRIMARY_COLOR',           '#ffa726'),
       accent_color:                      ENV.fetch('THEME_ACCENT_COLOR',            '#00bcd4'),
       text_on_primary_color:             ENV.fetch('THEME_TEXT_ON_PRIMARY_COLOR',   '#ffffff'),

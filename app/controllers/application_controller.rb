@@ -51,7 +51,6 @@ class ApplicationController < ActionController::Base
   end
 
   def brand
-    @files = Dir.glob('public/theme/*')
     render layout: 'basic'
   end
 
@@ -85,11 +84,12 @@ class ApplicationController < ActionController::Base
   def boot_app(status: 200)
     expires_now
     prevent_caching
-    template = File.read(Rails.root.join('public/blient/vue/index.html'))
 
-    # if request.format.html? and is_old_browser?
-    #   template.gsub!(/<div class="?'?upgrade-browser"?'?><\/div>/, '<%= render "application/upgrade_browser" %>')
-    # end
+    template = File.read(Rails.root.join('public/blient/vue/index.html'))
+    color = 'sky gold rock'.split(' ').sample
+
+    logo = File.read(Rails.root.join("public/brand/logo_#{color}.svg"))
+    template.gsub!('<img src="/brand/logo_gold.svg">', logo)
 
     render inline: template, layout: false, status: status
   end
