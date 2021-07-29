@@ -28,7 +28,7 @@ export default
 
     color: ->
       if @poll.isActive()
-        if differenceInHours(new Date, @poll.closingAt) < 24
+        if differenceInHours(@poll.closingAt, new Date) < 48
           'warning'
         else
           'primary'
