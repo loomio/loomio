@@ -90,7 +90,7 @@ export default class PollModel extends BaseModel
     @myStance() && @myStance().castAt
 
   optionsDiffer: (options) ->
-    !isEqual(sort(@pollOptionNames), sort(map(options, 'name')))
+    !isEqual(@pollOptionNames.sort(), map(options, 'name').sort())
 
   iCanVote: ->
     @isActive() &&
