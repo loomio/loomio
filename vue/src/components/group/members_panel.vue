@@ -173,7 +173,7 @@ export default
       v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_members', {name: group.name})" append-icon="mdi-magnify")
       v-btn.membership-card__invite.mr-2(color="primary" v-if='canAddMembers' @click="invite()" v-t="'common.action.invite'")
       shareable-link-modal(v-if='canAddMembers' :group="group")
-      v-btn.group-page__requests-tab(:to="urlFor(group, 'members/requests')" v-t="'members_panel.requests'")
+      v-btn.group-page__requests-tab(:to="urlFor(group, 'members/requests')" color="primary" outlined v-t="'members_panel.requests'")
 
     v-card(outlined)
       div(v-if="loader.status == 403")
@@ -223,7 +223,7 @@ export default
               | {{memberships.length}} / {{group.orgMembersCount}}
             .text--secondary(v-else)
               | {{memberships.length}} / {{loader.total}}
-            v-btn.my-2.members-panel__show-more(outlined color='accent' v-if="memberships.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords({per: 50})")
+            v-btn.my-2.members-panel__show-more(outlined color='primary' v-if="memberships.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords({per: 50})")
               span(v-t="'common.action.load_more'")
             a(v-if='group.subgroupsCount && $route.query.subgroups != "all"' href="?subgroups=all" v-t="'members_panel.show_users_in_subgroups'") show users in all subgroups
 

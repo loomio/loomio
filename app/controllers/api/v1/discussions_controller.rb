@@ -75,7 +75,7 @@ class API::V1::DiscussionsController < API::V1::RestfulController
     end
     render root: false, json: res
   end
-  
+
   def mark_as_seen
     service.mark_as_seen discussion: load_resource, actor: current_user
     respond_ok
@@ -140,12 +140,16 @@ class API::V1::DiscussionsController < API::V1::RestfulController
     end
   end
 
+  def discussion_ids
+    params.fetch(:xids, '').split('x').map(&:to_i).uniq
+  end
+
   def split_tags
     params[:tags].to_s.split('|')
   end
 
   def accessible_records
-    @accessible_records ||= DiscussionQuery.visible_to(user: current_user, group_ids: group_ids, tags: split_tags)
+    @accessible_records ||= DiscussionQuery.visible_to(user: current_user, group_ids: group_ids, tags: split_tags, discussion_ids: discussion_ids)
   end
 
   def update_reader(params = {})

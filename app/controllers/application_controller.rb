@@ -86,10 +86,9 @@ class ApplicationController < ActionController::Base
     prevent_caching
 
     template = File.read(Rails.root.join('public/blient/vue/index.html'))
-    color = 'sky gold rock sunset'.split(' ').sample
+    color = AppConfig.theme[:brand_colors].slice(:gold, :sunset, :rock, :white, :sky).values.sample
 
-    logo = File.read(Rails.root.join("public/brand/logo_#{color}.svg"))
-    template.gsub!('<img src="/brand/logo_gold.svg">', logo)
+    template.gsub!('<g fill="#dca034">', '<g fill="'+color+'">')
 
     render inline: template, layout: false, status: status
   end

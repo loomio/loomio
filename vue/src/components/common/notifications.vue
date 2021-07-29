@@ -36,7 +36,7 @@ export default
 v-menu.notifications(v-model="open" offset-y bottom)
   template(v-slot:activator="{attrs}")
     v-btn.notifications__button(icon v-bind="attrs" :aria-label="$t('navbar.notifications')" @click="clicked")
-      v-badge(color="accent" v-model="unread.length")
+      v-badge(color="primary" v-model="unread.length")
         template(v-slot:badge)
           span.notifications__activity {{unread.length}}
         v-icon mdi-bell

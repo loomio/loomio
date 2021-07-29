@@ -115,7 +115,11 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def logo_url_medium
-    object.logo.url(:medium)
+    if object.logo.present?
+      object.logo.url(:medium)
+    else
+      nil
+    end
   end
 
   def cover_urls
