@@ -27,7 +27,7 @@ export default
 </script>
 
 <template lang="pug">
-.emoji-picker
+v-sheet.emoji-picker.pa-2
   div(v-for='(emojiGroup, category) in emojis', :key='category')
     h5(v-t="'emoji_picker.'+category")
     div.emoji-picker__emojis(v-if="emojiSupported")
@@ -41,8 +41,6 @@ export default
 
 <style lang="sass">
 .emoji-picker
-  padding: 8px
-  background-color: #fff
   max-width: 240px
   max-height: 400px
   overflow-y: auto

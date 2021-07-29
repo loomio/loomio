@@ -14,8 +14,8 @@ export default
     back: null
     fore: null
     closable: false
-    foreColors: ['#191919', '#ffffff'].concat(compact(map(ourColors, (value, key) => value.base)))
-    backColors: ['#000000', '#ffffff'].concat(compact(map(ourColors, (value, key) => value.lighten3)))
+    foreColors: compact(map(ourColors, (value, key) => value.base))
+    backColors: compact(map(ourColors, (value, key) => value.lighten3))
 
   methods:
     onSelectFore: (color) ->
