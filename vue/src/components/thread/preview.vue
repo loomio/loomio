@@ -79,7 +79,7 @@ v-list-item.thread-preview.thread-preview__link(:class="{'thread-preview--unread
 .thread-preview--unread
   font-weight: 500
 .thread-preview
-  border-left: 2px solid #fff
+  border-left: 2px solid transparent
 .thread-preview--unread-border
   border-color: var(--v-primary-base)
 // .thread-preview__position-icon-container

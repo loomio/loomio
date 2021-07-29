@@ -23,6 +23,7 @@ export default
     @$vuetify.theme.dark = Session.user().experiences['darkMode']
     each AppConfig.theme.vuetify, (value, key) =>
       @$vuetify.theme.themes.light[key] = value if value
+      @$vuetify.theme.themes.dark[key] = value if value
       true
 
   mounted: ->

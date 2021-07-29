@@ -125,7 +125,7 @@ section(:aria-label="$t(ariaTranslationKey, {actor: event.actorName(), pollType:
 </template>
 <style lang="sass">
 a.actor-link
-  color: rgba(0, 0, 0, 0.6) !important
+  color: var(--text-secondary) !important
 
 .thread-item__title
   & > .poll-common-stance-choice
@@ -133,16 +133,17 @@ a.actor-link
   strong
     font-weight: normal
 .thread-item
-  transition: background 4s ease-out
+  border-left: 2px solid transparent
+  transition: border-color 4s ease-out
 .v-card__actions
   padding-left: 0
   padding-right: 0
 .thread-item--focused
-  background-color: var(--v-accent-lighten5)
+  border-color: var(--v-accent-lighten5)
 .thread-item--previously-focused
-  background-color: none
+  border-color: none
 .thread-item--unread
-  background-color: var(--v-primary-lighten5)
+  border-color: var(--v-primary-lighten5)
 .thread-item__body
   width: 100%
   min-width: 0

@@ -36,7 +36,6 @@ class AppConfig
   end
 
   def self.theme
-    # https://coolors.co/dca034-3d3d3d-658ae7-ebb6a5-be5247
     brand_colors = {
       gold: "#DCA034",
       ink: "#3D3D3D",
@@ -45,6 +44,8 @@ class AppConfig
       rock: "#BE5247",
       white: "#fff"
     }
+    # here are some useful variations on these colours
+    # https://maketintsandshades.com/#DCA034,3D3D3D,658AE7,EBB6A5,BE5247,ffffff
     logo_color = :gold
 
     {

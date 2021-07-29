@@ -49,12 +49,12 @@ export default
 section.strand-item.poll-created
   v-layout(justify-space-between)
     h1.poll-common-card__title.headline.pb-1(tabindex="-1")
-      v-icon(v-if="event.pinned") mdi-pin
+      v-icon.mr-2 {{poll.materialIcon}}
       router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
       translation(v-if="poll.translation.title" :model='poll', field='title')
-      poll-common-closing-at.ml-2(:poll='poll')
       tags-display(:tags="poll.tags()")
-  template(v-if="!collapsed")
+  poll-common-closing-at(:poll='poll')
+  .pt-2(v-if="!collapsed")
     poll-common-set-outcome-panel(:poll='poll' v-if="!poll.outcome()")
     poll-common-outcome-panel(:outcome='poll.outcome()' v-if='poll.outcome()')
     formatted-text.poll-common-details-panel__details(:model="poll" column="details")

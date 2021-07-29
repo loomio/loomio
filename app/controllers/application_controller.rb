@@ -84,13 +84,7 @@ class ApplicationController < ActionController::Base
   def boot_app(status: 200)
     expires_now
     prevent_caching
-
-    template = File.read(Rails.root.join('public/blient/vue/index.html'))
-    color = AppConfig.theme[:brand_colors].slice(:gold, :sunset, :rock, :white, :sky).values.sample
-
-    template.gsub!('<g fill="#dca034">', '<g fill="'+color+'">')
-
-    render inline: template, layout: false, status: status
+    render file: Rails.root.join('public/blient/vue/index.html'), layout: false, status: status
   end
 
   def redirect_to(url, opts = {})
