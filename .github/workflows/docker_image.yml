@@ -6,6 +6,7 @@
 name: Publish Docker image
 
 on:
+  push:
   release:
     types: [published]
 
