@@ -9,7 +9,6 @@ export default
   props:
     stance: Object
   data: ->
-    updatedAt: null
     selectedOptionId: @stance.pollOptionId()
     optionColors: optionColors()
     optionImages: optionImages()
@@ -19,8 +18,7 @@ export default
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
-        if !@updatedAt or @updatedAt < @stance.poll().updatedAt
-          @updatedAt = @stance.poll().updatedAt
+        if @stance.poll().optionsDiffer(@pollOptions)
           options = @stance.poll().pollOptions()
           @optionGroups = if options.length == 4
             [[options[0], options[1]], [options[2], options[3]]]

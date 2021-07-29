@@ -9,14 +9,12 @@ export default
     stance: Object
   data: ->
     pollOptions: []
-    updatedAt: null
 
   created: ->
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
-        if !@updatedAt or @updatedAt < @stance.poll().updatedAt
-          @updatedAt = @stance.poll().updatedAt
+        if @stance.poll().optionsDiffer(@pollOptions)
           @pollOptions = @sortPollOptions(@stance.poll().pollOptions())
 
   methods:

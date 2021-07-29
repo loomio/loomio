@@ -11,15 +11,13 @@ export default
 
   data: ->
     pollOptions: []
-    updatedAt: null
     stanceChoices: []
 
   created: ->
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
-        if !@updatedAt or @updatedAt < @stance.poll().updatedAt
-          @updatedAt = @stance.poll().updatedAt
+        if @stance.poll().optionsDiffer(@pollOptions)
           @pollOptions = @stance.poll().pollOptions()
           @stanceChoices = map @pollOptions, (option) =>
             poll_option_id: option.id
