@@ -5,16 +5,21 @@ export default
     name: String
     nameArgs: Object
     icon: Boolean
+    small: Boolean
+  computed:
+    useIcon: -> !!(@icon && @action.icon)
+    text: -> @$t(@action.name || 'action_dock.'+@name, @nameArgs || {})
+    cssClass: -> "action-dock__button--#{@name}"
 </script>
 
 <template lang="pug">
 span
-  v-btn.action-button(v-if="action.to" :to="action.to()" small :text="!icon" :icon="icon" :title="$t(action.name || 'action_dock.'+name, nameArgs || {})" :class='`action-dock__button--${name}`' )
-    span(v-if="!icon" v-t="{path: (action.name || 'action_dock.'+name), args: (nameArgs || {})}")
-    v-icon(v-if="icon") {{action.icon}}
-  v-btn.action-button(v-else @click.prevent="action.perform()" small :text="!icon" :icon="icon" :title="$t(action.name || 'action_dock.'+name, nameArgs || {})" :class='`action-dock__button--${name}`' )
-    span(v-if="!icon" v-t="{path: (action.name || 'action_dock.'+name), args: (nameArgs || {})}")
-    v-icon(v-if="icon") {{action.icon}}
+  v-btn.action-button(v-if="action.to" :small="small" :to="action.to()" :text="!useIcon" :icon="useIcon" :title="text" :class='cssClass' )
+    v-icon(v-if="useIcon" :small="small") {{action.icon}}
+    span(v-else) {{text}}
+  v-btn.action-button(v-else :small="small" @click.prevent="action.perform()" :text="!useIcon" :icon="useIcon" :title="text" :class='cssClass' )
+    v-icon(v-if="useIcon" :small="small") {{action.icon}}
+    span(v-else) {{text}}
 </template>
 
 <style lang="sass">

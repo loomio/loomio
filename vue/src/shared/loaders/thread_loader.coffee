@@ -19,7 +19,7 @@ export default class ThreadLoader
     @visibleKeys = {}
     @collapsed = Vue.observable({})
     @loading = false
-    @padding = 20
+    @padding = 50
 
   firstUnreadSequenceId: ->
     (RangeSet.subtractRanges(@discussion.ranges, @readRanges)[0] || [])[0]

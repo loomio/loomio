@@ -87,7 +87,7 @@ export default
 
     setHeight: ->
       @trackHeight = 400
-      while ((@minOffset() || @minUnitHeight) < @minUnitHeight) && (@trackHeight < 100000)
+      while ((@minOffset() || @minUnitHeight) < @minUnitHeight) && (@trackHeight < 500)
         @trackHeight = @trackHeight * 1.1
 
     minOffset: ->
