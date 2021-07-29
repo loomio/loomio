@@ -19,6 +19,10 @@ export default
       v-icon(small :color="stance.pollOption().color" v-if="stance.pollOption().name == 'no'") mdi-close
     .poll-common-chart-preview__stance(v-if="poll.pollType == 'poll'")
       v-icon(small :color="stance.pollOption().color") mdi-check
+    .poll-common-chart-preview__stance(v-if="poll.pollType == 'ranked_choice'")
+      v-icon(small :color="stance.pollOption().color") mdi-check
+    .poll-common-chart-preview__stance(v-if="poll.pollType == 'score'")
+      v-icon(small :color="stance.pollOption().color") mdi-check
     .poll-common-chart-preview__stance(v-if="poll.pollType == 'meeting'")
       v-icon(small) mdi-check
   .poll-common-chart-preview__stance.poll-proposal-chart-preview__stance--undecided(v-else)
@@ -30,6 +34,14 @@ export default
   position: relative
 
 .poll-common-stance-icon
-  background-color: #fff
   border-radius: 100%
+
+.theme--dark
+  .poll-common-stance-icon
+    background-color: #000
+
+.theme--light
+  .poll-common-stance-icon
+    background-color: #fff
+
 </style>
