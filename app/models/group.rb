@@ -130,8 +130,7 @@ class Group < ApplicationRecord
                        default_url: :default_cover_photo
   has_attached_file    :logo,
                        url: "/system/groups/:attachment/:id_partition/:style/:filename",
-                       styles: { card: "67x67#", medium: "100x100#" },
-                       default_url: AppConfig.theme[:icon_src]
+                       styles: { card: "67x67#", medium: "100x100#" }
 
   validates_attachment :cover_photo,
     size: { in: 0..100.megabytes },
@@ -208,7 +207,7 @@ class Group < ApplicationRecord
   def guests
     User.none
   end
-  
+
   def message_channel
     "/group-#{self.key}"
   end

@@ -33,7 +33,7 @@ export default
       pollIds = Records.stances.find(myStance: true).map((stance) -> stance.pollId)
 
       chain = Records.polls.collection.chain()
-      chain = chain.find(discardedAt: null)
+      chain = chain.find(discardedAt: null, closingAt: {$ne: null})
       chain = chain.find($or: [{groupId: {$in: groupIds}}, {id: {$in: pollIds}}])
       chain = chain.find($or: [{closedAt: null}, {closedAt: {$gt: subDays(new Date, 3)}}])
 

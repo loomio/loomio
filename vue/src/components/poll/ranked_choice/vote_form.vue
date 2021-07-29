@@ -48,6 +48,7 @@ export default
   p.text--secondary(v-t="{ path: 'poll_ranked_choice_vote_form.helptext', args: { count: numChoices } }")
   sortable-list(v-model="pollOptions")
     sortable-item(v-for="(option, index) in pollOptions" :index="index" :key="option.id" :item="option")
+      v-icon(style="cursor: pointer") mdi-drag
       span(v-if="index+1 <= numChoices") {{index+1}}
       space
       v-chip.mr-2(:color="option.color" :index="index" :key="index") {{ option.name }}

@@ -92,19 +92,13 @@ div
 
 <style lang="sass">
 .link-preview
-  .v-card__title
-    word-break: break-word
-    display: block
-    
-.link-preview-link:hover
-  background-color: #ededed
-
-.link-preview
-  .v-card__subtitle
-    word-break: break-word
-
-.link-preview__hostname
+  overflow-wrap: break-word
+  word-wrap: break-word
   word-break: break-word
+  opacity: 70%
+
+.link-preview-link:hover
+  opacity: 100%
 
 .link-preview__image
   height: 160px

@@ -31,7 +31,7 @@ v-card.my-6(v-if="canSee" outlined)
     v-icon.mr-2(color="primary") mdi-rocket
     h1.headline(tabindex="-1" v-t="'group_page.options.subscription_status'")
     v-btn.ml-2(icon small href="https://help.loomio.org/en/subscriptions/" target="_blank" :title="$t('common.help')")
-      v-icon(color="accent") mdi-help-circle-outline
+      v-icon(color="primary") mdi-help-circle-outline
   div.px-6
     v-simple-table(dense)
       template(v-slot:default)

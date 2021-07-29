@@ -37,6 +37,8 @@ img.emoji
   margin: 0 .05em
 
 .lmo-markdown-wrapper
+  a:hover
+    text-decoration: underline
   p
     margin-bottom: 0.5rem
 

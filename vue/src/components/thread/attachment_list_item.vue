@@ -45,12 +45,13 @@ v-card.mt-3(outlined).attachment-list-item-link
 
 <style lang="sass">
 .attachment-list-item-link
+  opacity: 90%
   .v-card__title
     word-break: break-word
     display: block
-    
+
 .attachment-list-item-link:hover
-  background-color: #ededed
+  opacity: 100%
 
 .attachment-list-item-link
   .v-card__subtitle

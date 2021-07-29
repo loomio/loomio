@@ -75,7 +75,6 @@ export default
         @loader.fetchRecords().then => @dashboardLoaded = true
 
     query: ->
-      console.log "running query",
       if @$route.query.q
         chain = Records.searchResults.collection.chain()
         chain = chain.find(query: @$route.query.q).data()

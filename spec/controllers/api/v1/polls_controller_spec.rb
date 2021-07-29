@@ -3,12 +3,15 @@ require 'rails_helper'
 describe API::V1::PollsController do
   let(:group) { create :group }
   let(:another_group) { create :group }
+  let(:public_group) { create :group, is_visible_to_public: true }
   let(:discussion) { create :discussion, group: group }
   let(:another_discussion) { create :discussion, group: group }
+  let(:public_discussion) { create :discussion, group: public_group, private: false }
   let(:non_group_discussion) { create :discussion }
   let(:user) { create :user }
   let(:another_user) { create :user }
   let!(:poll) { create :poll, title: "POLL!", discussion: discussion, author: user }
+  let(:public_poll) { create :poll, title: "public poll", discussion: public_discussion }
   let(:another_poll) { create :poll, title: "ANOTHER", discussion: another_discussion }
   let(:closed_poll) { create :poll, title: "CLOSED", author: user, closed_at: 1.day.ago }
   let(:non_group_poll) { create :poll }
@@ -40,7 +43,7 @@ describe API::V1::PollsController do
   end
 
   describe 'index' do
-    before { poll; another_poll; closed_poll }
+    before { poll; another_poll; closed_poll; public_poll }
 
     let(:participated_poll) { create :poll }
     let!(:my_stance) { create :stance, poll: participated_poll, participant: user, poll_options: [participated_poll.poll_options.first] }
@@ -60,9 +63,14 @@ describe API::V1::PollsController do
 
     it 'does not allow user to see polls theyre not allowed to see' do
       sign_in user
-      get :index, params: { discussion_key: non_group_discussion.key }
+      get :index, params: { status: 'recent' }
       json = JSON.parse(response.body)
-      expect(json['polls'].length).to eq 0
+      poll_ids = json['polls'].map { |p| p['id'] }
+      expect(poll_ids).to include poll.id
+      expect(poll_ids).not_to include public_poll.id
+    end
+
+    it 'does not show public polls unless you ask for it' do
     end
 
     describe 'signed in' do

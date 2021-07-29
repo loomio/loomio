@@ -84,14 +84,7 @@ class ApplicationController < ActionController::Base
   def boot_app(status: 200)
     expires_now
     prevent_caching
-
-    template = File.read(Rails.root.join('public/blient/vue/index.html'))
-    color = 'sky gold rock sunset'.split(' ').sample
-
-    logo = File.read(Rails.root.join("public/brand/logo_#{color}.svg"))
-    template.gsub!('<img src="/brand/logo_gold.svg">', logo)
-
-    render inline: template, layout: false, status: status
+    render file: Rails.root.join('public/blient/vue/index.html'), layout: false, status: status
   end
 
   def redirect_to(url, opts = {})

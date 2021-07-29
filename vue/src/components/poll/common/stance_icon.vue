@@ -22,7 +22,7 @@ export default
     .poll-common-chart-preview__stance(v-if="poll.pollType == 'meeting'")
       v-icon(small) mdi-check
   .poll-common-chart-preview__stance.poll-proposal-chart-preview__stance--undecided(v-else)
-    v-icon(:size="size" color="primary") mdi-help-circle
+    v-icon(:size="size" color="primary" small) mdi-help
 </template>
 
 <style lang="sass">

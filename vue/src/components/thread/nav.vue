@@ -272,7 +272,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
 .thread-nav__track-line
   height: 100%
   position: absolute
-  background-color: var(--v-accent-base)
+  background-color: var(--v-primary-base)
   width: 2px
   margin: 0 11px
 
@@ -288,7 +288,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
   display: flex
   flex-direction: column
   width: 8px
-  background-color: var(--v-accent-base)
+  background-color: var(--v-primary-base)
   cursor: ns-resize
   border-radius: 4px
   transition: top 0.1s linear, height 0.3s linear

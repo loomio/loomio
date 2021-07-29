@@ -58,7 +58,7 @@ div.user-dropdown
       v-list-item-title(v-t="'user_dropdown.disable_beta_features'")
       v-list-item-icon
         v-icon mdi-flask-empty-off-outline
-  v-list-item(v-if="user.experiences['betaFeatures'] && !user.experiences['darkMode']" @click="toggleDark" dense)
+  v-list-item(v-if="!user.experiences['darkMode']" @click="toggleDark" dense)
       v-list-item-title(v-t="'user_dropdown.enable_dark_mode'")
       v-list-item-icon
         v-icon mdi-weather-night

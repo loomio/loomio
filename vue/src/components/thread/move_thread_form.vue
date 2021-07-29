@@ -54,5 +54,5 @@ v-card.move-thread-form
             span {{ data.item.fullName }}
   v-card-actions
     v-spacer
-    v-btn.move-thread-form__submit(color="primary" type='button', v-t="'move_thread_form.confirm'", @click='moveThread()')
+    v-btn.move-thread-form__submit(color="primary" type='button' v-t="'move_thread_form.confirm'" @click='moveThread()')
 </template>
