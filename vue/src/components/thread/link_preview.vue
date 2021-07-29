@@ -95,10 +95,10 @@ div
   overflow-wrap: break-word
   word-wrap: break-word
   word-break: break-word
-  opacity: 70%
-
-.link-preview-link:hover
-  opacity: 100%
+//   opacity: 70%
+//
+// .link-preview-link:hover
+//   opacity: 100%
 
 .link-preview__image
   height: 160px
