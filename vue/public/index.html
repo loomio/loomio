@@ -59,7 +59,9 @@
 
         colors = "#DCA034 #3D3D3D #658AE7 #EBB6A5 #BE5247 #fff".split(' ')
         sample = Math.floor(Math.random() * colors.length);
-        document.getElementById('logofill').setAttribute('fill', colors[sample])
+        if (document.getElementById('logofill')) {
+          document.getElementById('logofill').setAttribute('fill', colors[sample])
+        }
 
         </script>
       </div>
