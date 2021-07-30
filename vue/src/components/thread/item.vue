@@ -135,9 +135,9 @@ a.actor-link
 .thread-item
   border-left: 2px solid transparent
   transition: border-color 4s ease-out
-.v-card__actions
-  padding-left: 0
-  padding-right: 0
+  .v-card__actions
+    padding-left: 0
+    padding-right: 0
 .thread-item--focused
   border-color: var(--v-accent-lighten5)
 .thread-item--previously-focused
