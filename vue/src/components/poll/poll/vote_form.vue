@@ -17,7 +17,7 @@ export default
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
-        if @stance.poll().pollOptionsDiffer(@pollOptions)
+        if @stance.poll().optionsDiffer(@pollOptions)
           @pollOptions = @stance.poll().pollOptionsForVoting() if @stance.poll()
 
   computed:
