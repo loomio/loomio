@@ -36,7 +36,18 @@ img.emoji
   vertical-align: top
   margin: 0 .05em
 
+.theme--dark
+  .lmo-markdown-wrapper
+      span[style="color:#000000;"]
+        color: #fff !important
+      span[style="color: #000000;"]
+        color: #fff !important
+      span[style="color:#000000"]
+        color: #fff !important
+      span[style="color: #000000"]
+        color: #fff !important
 .lmo-markdown-wrapper
+
   a:hover
     text-decoration: underline
   p
