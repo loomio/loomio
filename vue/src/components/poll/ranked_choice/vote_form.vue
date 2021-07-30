@@ -14,7 +14,7 @@ export default
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
-        if !isEqual map(@pollOptions, 'name'), map(@stance.poll().pollOptions(), 'name')
+        if @stance.poll().optionsDiffer(@pollOptions)
           @pollOptions = @sortPollOptions(@stance.poll().pollOptions())
 
   methods:
@@ -32,8 +32,11 @@ export default
       .catch onError(@stance)
 
     sortPollOptions: (pollOptions) ->
-      optionsByPriority = sortBy pollOptions, 'priority'
-      sortBy optionsByPriority, (option) => -@scoreFor(option)
+      if @stance.poll().shuffleOptions
+        @stance.poll().pollOptionsForVoting()
+      else
+        optionsByPriority = sortBy pollOptions, 'priority'
+        sortBy optionsByPriority, (option) => -@scoreFor(option)
 
     scoreFor: (option) ->
       choice = find(@stance.stanceChoices(), matchesProperty('pollOptionId', option.id))

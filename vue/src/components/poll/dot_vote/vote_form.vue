@@ -17,8 +17,8 @@ export default
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
-        if !isEqual map(@pollOptions, 'name'), map(@stance.poll().pollOptions(), 'name')
-          @pollOptions = @stance.poll().pollOptions()
+        if @stance.poll().optionsDiffer(@pollOptions)
+          @pollOptions = @stance.poll().pollOptionsForVoting()
           @stanceChoices = map @pollOptions, (option) =>
             poll_option_id: option.id
             score: @stanceChoiceFor(option).score
@@ -76,15 +76,13 @@ export default
     dotsPerPerson: ->
       @stance.poll().customFields.dots_per_person
 
-    orderedStanceChoices: -> sortBy @stanceChoices, 'name'
-
 </script>
 
 <template lang="pug">
 .poll-dot-vote-vote-form
   v-subheader.poll-dot-vote-vote-form__dots-remaining(v-t="{ path: 'poll_dot_vote_vote_form.dots_remaining', args: { count: dotsRemaining } }")
   .poll-dot-vote-vote-form__options
-    .poll-dot-vote-vote-form__option(v-for='choice in orderedStanceChoices', :key='choice.poll_option_id')
+    .poll-dot-vote-vote-form__option(v-for='choice in stanceChoices', :key='choice.poll_option_id')
       v-subheader.poll-dot-vote-vote-form__option-label {{ optionFor(choice).name }}
       v-layout(row align-center)
         v-slider.poll-dot-vote-vote-form__slider.mr-4(v-model='choice.score' :rules="rulesForChoice(choice)" :color="optionFor(choice).color" :thumb-color="optionFor(choice).color" :track-color="optionFor(choice).color" :height="4" :thumb-size="24" :thumb-label="(choice.score > 0) ? 'always' : true" :min="0" :max="dotsPerPerson" :readonly="false")
