@@ -67,6 +67,12 @@ module Dev::Scenarios::Auth
     redirect_to(login_token_url(login_token.token))
   end
 
+  def setup_login_token_email
+    login_token = FactoryBot.create(:login_token, user: patrick)
+    UserMailer.login(patrick.id, login_token.id).deliver
+    redirect_to('/dev/last_email')
+  end
+
   def setup_used_login_token
     login_token = FactoryBot.create(:login_token, user: patrick, used: true)
     redirect_to(login_token_url(login_token.token))
