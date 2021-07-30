@@ -110,6 +110,7 @@ module.exports = {
   PollCommonModal: 'poll/common/modal',
   PollCommonMoveForm: 'poll/common/move_form',
   PollCommonToolTip: 'poll/common/tool_tip',
+  PollCommonTypeIcon: 'poll/common/type_icon',
   PollCommonUndecidedPanel: 'poll/common/undecided_panel',
   PollCommonUndecidedUser: 'poll/common/undecided_user',
   PollCommonVoteForm: 'poll/common/vote_form',
