@@ -422,7 +422,7 @@ GEM
       actionmailer (>= 3)
       premailer (~> 1.7, >= 1.7.9)
     public_suffix (4.0.6)
-    puma (5.3.2)
+    puma (5.4.0)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -475,7 +475,7 @@ GEM
       activesupport (>= 5.2.4)
       i18n
     redcarpet (3.5.1)
-    redis (4.3.1)
+    redis (4.4.0)
     redis-actionpack (5.2.0)
       actionpack (>= 5, < 7)
       redis-rack (>= 2.1.0, < 3)
@@ -551,17 +551,17 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sentry-rails (4.6.3)
+    sentry-rails (4.6.4)
       railties (>= 5.0)
       sentry-ruby-core (~> 4.6.0)
-    sentry-ruby (4.6.3)
+    sentry-ruby (4.6.4)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       faraday (>= 1.0)
-      sentry-ruby-core (= 4.6.3)
-    sentry-ruby-core (4.6.3)
+      sentry-ruby-core (= 4.6.4)
+    sentry-ruby-core (4.6.4)
       concurrent-ruby
       faraday
-    sentry-sidekiq (4.6.3)
+    sentry-sidekiq (4.6.4)
       sentry-ruby-core (~> 4.6.0)
       sidekiq (>= 3.0)
     sexp_processor (4.14.1)

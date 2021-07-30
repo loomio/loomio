@@ -26,7 +26,7 @@ export default
       query: (records) =>
         @canRespondMaybe =  @stance.poll().customFields.can_respond_maybe
         @stanceValues = if @stance.poll().customFields.can_respond_maybe then [2,1,0] else [2, 0]
-        if !isEqual map(@pollOptions, 'name'), map(@stance.poll().pollOptions(), 'name')
+        if @stance.poll().optionsDiffer(@pollOptions)
           @pollOptions = sortBy @stance.poll().pollOptions(), 'name'
           @stanceChoices = @pollOptions.map (option) =>
             lastChoice = @stance.stanceChoices().find((sc) => sc.pollOptionId == option.id) || {score: 0}

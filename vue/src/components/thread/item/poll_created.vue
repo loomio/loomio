@@ -51,7 +51,7 @@ export default
 thread-item.poll-created(:event="event" :is-returning="isReturning")
   v-layout(justify-space-between)
     h1.poll-common-card__title.headline(tabindex="-1")
-      v-icon.mr-2 {{poll.materialIcon}}
+      poll-common-type-icon.mr-2(:poll="poll")
       router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
       translation(v-if="poll.translation.title" :model='poll', field='title')
       tags-display(:tags="poll.tags()")

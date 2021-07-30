@@ -28,6 +28,7 @@ class PollSerializer < ApplicationSerializer
              :poll_option_names,
              :mentioned_usernames,
              :material_icon,
+             :shuffle_options,
              :stance_data,
              :stance_counts,
              :stances_in_discussion,

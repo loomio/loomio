@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_30_031129) do
+ActiveRecord::Schema.define(version: 2021_07_29_234058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -211,7 +211,7 @@ ActiveRecord::Schema.define(version: 2021_04_30_031129) do
     t.jsonb "attachments", default: [], null: false
     t.datetime "discarded_at"
     t.integer "discarded_by"
-    t.string "secret_token", default: -> { "gen_random_uuid()" }
+    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.string "content_locale"
     t.jsonb "link_previews", default: [], null: false
     t.index ["discussion_id"], name: "index_comments_on_discussion_id"
@@ -285,7 +285,7 @@ ActiveRecord::Schema.define(version: 2021_04_30_031129) do
     t.integer "max_depth", default: 2, null: false
     t.boolean "newest_first", default: false, null: false
     t.datetime "discarded_at"
-    t.string "secret_token", default: -> { "gen_random_uuid()" }
+    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.integer "members_count"
     t.integer "anonymous_polls_count", default: 0, null: false
     t.string "content_locale"
@@ -445,7 +445,7 @@ ActiveRecord::Schema.define(version: 2021_04_30_031129) do
     t.boolean "new_threads_newest_first", default: false, null: false
     t.boolean "admins_can_edit_user_content", default: true, null: false
     t.boolean "listed_in_explore", default: false, null: false
-    t.string "secret_token", default: -> { "gen_random_uuid()" }
+    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.string "content_locale"
     t.boolean "members_can_add_guests", default: true, null: false
     t.boolean "members_can_delete_comments", default: true, null: false
@@ -599,7 +599,7 @@ ActiveRecord::Schema.define(version: 2021_04_30_031129) do
     t.jsonb "custom_fields", default: {}, null: false
     t.string "statement_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
-    t.string "secret_token", default: -> { "gen_random_uuid()" }
+    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.integer "versions_count", default: 0, null: false
     t.date "review_on"
     t.string "content_locale"
@@ -655,11 +655,12 @@ ActiveRecord::Schema.define(version: 2021_04_30_031129) do
     t.boolean "stances_in_discussion", default: true, null: false
     t.datetime "discarded_at"
     t.integer "discarded_by"
-    t.string "secret_token", default: -> { "gen_random_uuid()" }
+    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.boolean "specified_voters_only", default: false, null: false
     t.integer "notify_on_closing_soon", default: 0, null: false
     t.string "content_locale"
     t.jsonb "link_previews", default: [], null: false
+    t.boolean "shuffle_options", default: false, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"
@@ -717,7 +718,7 @@ ActiveRecord::Schema.define(version: 2021_04_30_031129) do
     t.datetime "accepted_at"
     t.jsonb "stance_choices_cache", default: []
     t.string "content_locale"
-    t.string "secret_token", default: -> { "gen_random_uuid()" }
+    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.jsonb "link_previews", default: [], null: false
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id"], name: "index_stances_on_poll_id"
@@ -851,7 +852,7 @@ ActiveRecord::Schema.define(version: 2021_04_30_031129) do
     t.jsonb "attachments", default: [], null: false
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.string "secret_token", default: -> { "gen_random_uuid()" }
+    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.string "content_locale"
     t.boolean "bot", default: false, null: false
     t.jsonb "link_previews", default: [], null: false

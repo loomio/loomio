@@ -23,7 +23,6 @@ export default
 .poll-proposal-form
   poll-common-form-fields(:poll="poll" :should-reset="shouldReset")
   v-select(:disabled="!poll.isNew()" v-model="poll.pollOptionNames" :items="items" :label="$t('poll_common_form.options')")
-  poll-common-wip-field(:poll="poll")
   poll-common-closing-at-field(:poll="poll")
   poll-common-settings(:poll="poll")
   common-notify-fields(:model="poll")

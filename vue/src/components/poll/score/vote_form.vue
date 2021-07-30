@@ -17,8 +17,8 @@ export default
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
-        if !isEqual map(@pollOptions, 'name'), map(@stance.poll().pollOptions(), 'name')
-          @pollOptions = @poll.pollOptions()
+        if @stance.poll().optionsDiffer(@pollOptions)
+          @pollOptions = @poll.pollOptionsForVoting()
           @stanceChoices = map @pollOptions, (option) =>
               poll_option_id: option.id
               score: @stanceChoiceFor(option).score
@@ -46,14 +46,12 @@ export default
 
   computed:
     poll: -> @stance.poll()
-
-    orderedStanceChoices: -> sortBy @stanceChoices, 'name'
 </script>
 
 <template lang='pug'>
 form.poll-score-vote-form(@submit.prevent='submit()')
   .poll-score-vote-form__options
-    .poll-score-vote-form__option(v-for='choice in orderedStanceChoices', :key='choice.poll_option_id')
+    .poll-score-vote-form__option(v-for='choice in stanceChoices', :key='choice.poll_option_id')
       v-subheader.poll-score-vote-form__option-label {{ optionFor(choice).name }}
       v-slider.poll-score-vote-form__score-slider(v-model='choice.score' :color="optionFor(choice).color" :thumb-color="optionFor(choice).color" :track-color="optionFor(choice).color" :height="4" :thumb-size="24" :thumb-label="(choice.score > 0) ? 'always' : true" :min="poll.customFields.min_score" :max="poll.customFields.max_score")
         //- template(v-slot:append)

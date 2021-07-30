@@ -7,7 +7,7 @@ import EventBus         from '@/shared/services/event_bus'
 import I18n             from '@/i18n'
 import NullGroupModel   from '@/shared/models/null_group_model'
 import { addDays, startOfHour } from 'date-fns'
-import { head, orderBy, map, includes, difference, invokeMap, each, max, slice, sortBy } from 'lodash'
+import { head, orderBy, map, includes, difference, invokeMap, each, max, slice, sortBy, isEqual, shuffle } from 'lodash'
 
 export default class PollModel extends BaseModel
   @singular: 'poll'
@@ -48,6 +48,7 @@ export default class PollModel extends BaseModel
     recipientUserIds: []
     recipientEmails: []
     notifyRecipients: true
+    shuffleOptions: false
     tagIds: []
 
   audienceValues: ->
@@ -60,6 +61,12 @@ export default class PollModel extends BaseModel
     @hasMany   'pollOptions', orderBy: 'priority'
     @hasMany   'stances'
     @hasMany   'versions'
+
+  pollOptionsForVoting: ->
+    if @shuffleOptions
+      shuffle(@pollOptions())
+    else
+      @pollOptions()
 
   bestNamedId: ->
     ((@id && @) || (@discusionId && @discussion()) || (@groupId && @group()) || {namedId: ->}).namedId()
@@ -88,6 +95,9 @@ export default class PollModel extends BaseModel
 
   iHaveVoted: ->
     @myStance() && @myStance().castAt
+
+  optionsDiffer: (options) ->
+    !isEqual(@pollOptionNames.sort(), map(options, 'name').sort())
 
   iCanVote: ->
     @isActive() &&

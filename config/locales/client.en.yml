@@ -1793,6 +1793,8 @@ en:
     specified_voters_only_false_group: Anyone in the group
     specified_voters_only_false_discussion: Anyone in the thread
     invite_people_next: You can choose who is invited to vote after you start the {{poll_type}}
+    shuffle_options:
+      title: Voters see options in random order
     multiple_choice:
       title: Multiple choice
       helptext_on: When selected, participants will be able to select multiple options.
