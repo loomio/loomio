@@ -30,6 +30,7 @@ class PermittedParams < Struct.new(:params)
   def poll_attributes
     [ :title, :details, :details_format, :poll_type, :discussion_id, :group_id,
       :closing_at, :anonymous, :hide_results_until_closed, :multiple_choice, :key,
+      :shuffle_options,
       :anyone_can_participate,
       :notify_on_closing_soon,
       :voter_can_add_options,
