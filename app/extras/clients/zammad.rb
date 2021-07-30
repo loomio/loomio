@@ -15,12 +15,14 @@ class Clients::Zammad < Clients::Base
       customer_id: 'guess:'+email,
       note: message,
       article: {
+        from: email,
+        to: email,
         subject: subject,
         body: message,
         type: 'web',
         internal: true
       }
-    }
+    }, headers: {'X-On-Behalf-Of' => email}
   end
 
   private
