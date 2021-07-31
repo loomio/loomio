@@ -2,7 +2,7 @@
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
-import { sortBy, find, matchesProperty, take, map, isEqual } from 'lodash'
+import { sortBy, find, matchesProperty, take, map, isEqual, each } from 'lodash'
 
 export default
   props:
@@ -15,7 +15,7 @@ export default
       collections: ['poll_options']
       query: (records) =>
         if @stance.poll().optionsDiffer(@pollOptions)
-          @pollOptions = @sortPollOptions(@stance.poll().pollOptions())
+          @pollOptions = @sortPollOptions()
 
   methods:
     submit: ->
@@ -30,12 +30,20 @@ export default
         EventBus.$emit "closeModal"
       .catch onError(@stance)
 
-    sortPollOptions: (pollOptions) ->
-      if @stance.poll().shuffleOptions
-        @stance.poll().pollOptionsForVoting()
+    sortPollOptions: ->
+      if @stance && @stance.castAt
+        optionsById = {}
+        @stance.poll().pollOptions().forEach (o) -> optionsById[o.id] = o
+
+        options = []
+        @stance.sortedChoices().forEach (c) ->
+          options.push c.pollOption
+          delete optionsById[c.poll_option_id]
+
+        each optionsById, (v) -> options.push(v)
+        options
       else
-        optionsByPriority = sortBy pollOptions, 'priority'
-        sortBy optionsByPriority, (option) => -@scoreFor(option)
+        @stance.poll().pollOptionsForVoting()
 
     scoreFor: (option) ->
       choice = find(@stance.stanceChoices(), matchesProperty('pollOptionId', option.id))
