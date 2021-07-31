@@ -3,7 +3,7 @@ import AppConfig       from '@/shared/services/app_config'
 import HasTranslations from '@/shared/mixins/has_translations'
 import AnonymousUserModel   from '@/shared/models/anonymous_user_model'
 import i18n from '@/i18n.coffee'
-import { sumBy, map, head, each, compact, flatten, includes, find, orderBy } from 'lodash'
+import { sumBy, map, head, each, compact, flatten, includes, find, sortBy } from 'lodash'
 
 stancesBecameUpdatable = new Date("2020-08-11")
 
@@ -64,34 +64,35 @@ export default class StanceModel extends BaseModel
     head @stanceChoices()
 
   pollOption: ->
-    @stanceChoice().pollOption() if @stanceChoice()
+    recordStore.pollOptions.find(@pollOptionIds()[0]) if @pollOptionIds()
 
-  pollOptionId: ->
-    (@pollOption() or {}).id
+  pollOptionIds: ->
+    map @stanceChoicesCache, 'poll_option_id'
 
   pollOptions: ->
     @recordStore.pollOptions.find(@pollOptionIds())
 
-  orderedStanceChoices: ->
-    order = ''
-    dir = ''
-    compact switch @poll().pollType
-      when 'ranked_choice'
-        order = 'rankOrScore'
-        dir = 'asc'
-      when 'meeting'
-        order = (choice) -> choice.pollOption().name
-        dir = 'asc'
-      else
-        order = 'rankOrScore'
-        dir = 'desc'
-    orderBy @stanceChoices(), order, dir
+  sortedChoices: ->
+    optionsById = {}
+    @pollOptions().forEach (o) -> optionsById[o.id] = o
+
+    choices = @stanceChoicesCache.map (c) =>
+      # add a rank value
+      if @poll().pollType == 'ranked_choice'
+        c.rank = @poll().minimumStanceChoices - c.score + 1
+
+      # add refernce to pollOption
+      c.pollOption = optionsById[c.poll_option_id]
+      c.pollOptionPriority = optionsById[c.poll_option_id].priority
+      c
+
+    if @poll().pollType == 'meeting'
+      sortBy choices, 'pollOptionPriority'
+    else
+      sortBy choices, '-score'
 
   stanceChoiceNames: ->
     map(@pollOptions(), 'name')
-
-  pollOptionIds: ->
-    map @stanceChoices(), 'pollOptionId'
 
   choose: (optionIds) ->
     each @recordStore.stanceChoices.find(stanceId: @id), (stanceChoice) ->

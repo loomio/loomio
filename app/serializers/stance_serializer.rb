@@ -17,6 +17,7 @@ class StanceSerializer < ApplicationSerializer
              :poll_id,
              :participant_id,
              :revoked_at,
+             :stance_choices_cache,
              :my_stance
 
   has_one :poll, serializer: PollSerializer, root: :polls

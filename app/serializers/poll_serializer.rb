@@ -21,6 +21,7 @@ class PollSerializer < ApplicationSerializer
              :group_id,
              :hide_results_until_closed,
              :key,
+             :minimum_stance_choices,
              :multiple_choice,
              :matrix_counts,
              :notify_on_closing_soon,
@@ -39,6 +40,7 @@ class PollSerializer < ApplicationSerializer
              :voter_can_add_options,
              :voters_count,
              :versions_count
+
 
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_one :created_event, serializer: EventSerializer, root: :events
