@@ -1,28 +1,30 @@
 <script lang="coffee">
 
-import { emojisByCategory, srcForEmoji, emojiSupported } from '@/shared/helpers/emojis'
+import { emojisByCategory, srcForEmoji } from '@/shared/helpers/emojis'
 import { each, keys, pick } from 'lodash'
 
 export default
   props:
+    isPoll: Boolean
     insert:
       type: Function
       required: true
 
   data: ->
     search: ''
-    emojiSupported: emojiSupported
     showMore: false
 
   methods:
     srcForEmoji: srcForEmoji
+    bannedEmoji: (name) ->
+      @isPoll && ['thumbsup', 'thumbs_up', 'thumbsdown', 'thumbs_down', 'hand'].includes(name)
 
   computed:
     emojis: ->
       if @showMore
         emojisByCategory
       else
-        pick(emojisByCategory, ['common', 'hands', 'expressions'])
+        pick(emojisByCategory, (@isPoll && ['common', 'expressions']) || ['common', 'hands', 'expressions'])
 
 </script>
 
@@ -30,10 +32,8 @@ export default
 v-sheet.emoji-picker.pa-2
   div(v-for='(emojiGroup, category) in emojis', :key='category')
     h5(v-t="'emoji_picker.'+category")
-    div.emoji-picker__emojis(v-if="emojiSupported")
-      span(v-for='(emoji, emojiName) in emojiGroup' :key='emojiName' @click='insert(emojiName, emoji)' :title='emojiName') {{ emoji }}
-    div.emoji-picker__emojis(v-else)
-      img(v-for='(emoji, emojiName) in emojiGroup' :key='emojiName' @click='insert(emojiName, emoji)' :alt="emojiName" :src="srcForEmoji(emoji)")
+    div.emoji-picker__emojis
+      span(v-for='(emoji, emojiName) in emojiGroup' v-if="!bannedEmoji(emojiName)" :key='emojiName' @click='insert(emojiName, emoji)' :title='emojiName') {{ emoji }}
   .d-flex.justify-center.pb-2
     v-btn(v-if="!showMore" x-small @click.stop="showMore = true" v-t="'common.action.show_more'")
     v-btn(v-if="showMore" x-small @click.stop="showMore = false" v-t="'common.action.show_fewer'")

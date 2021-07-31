@@ -82,7 +82,7 @@ export default
           .reactions-display__group(v-on="on" v-bind="attrs")
             span(v-if="emojiSupported") {{colonToUnicode(reaction)}}
             img.emoji(v-else :src="srcForEmoji(colonToUnicode(reaction))")
-            user-avatar.reactions-display__author(v-for="user in reactionHash[reaction]" :key="user.id" :user="user" :size="diameter")
+            user-avatar.reactions-display__author(no-link v-for="user in reactionHash[reaction]" :key="user.id" :user="user" :size="diameter")
         .reactions-display__name(v-for="user in reactionHash[reaction]" :key="user.id")
           span {{ user.name }}
 </template>
