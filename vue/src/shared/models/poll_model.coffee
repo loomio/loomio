@@ -97,7 +97,7 @@ export default class PollModel extends BaseModel
     @myStance() && @myStance().castAt
 
   optionsDiffer: (options) ->
-    !isEqual(@pollOptionNames.sort(), map(options, 'name').sort())
+    !isEqual(sortBy(@pollOptionNames), sortBy(map(options, 'name')))
 
   iCanVote: ->
     @isActive() &&
@@ -124,14 +124,6 @@ export default class PollModel extends BaseModel
 
   createdEvent: ->
     @recordStore.events.find(eventableId: @id, kind: 'poll_created')[0]
-
-  clearStaleStances: ->
-    existing = []
-    each @latestStances(), (stance) ->
-      if includes(existing, stance.participantId)
-        stance.latest = false
-      else
-        existing.push(stance.participantId)
 
   latestStances: (order = '-createdAt', limit) ->
     slice(sortBy(@recordStore.stances.find(pollId: @id, latest: true, revokedAt: null), order), 0, limit)

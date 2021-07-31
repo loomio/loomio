@@ -31,14 +31,20 @@ export default
         if differenceInHours(@poll.closingAt, new Date) < 48
           'warning'
         else
-          'primary'
+          ''
       else
         'error'
+
+    styles: ->
+      if @color
+        {color: 'var(--v-'+@color+'-base)'}
+      else
+        {}
 
 </script>
 
 <template lang="pug">
-span(:style="'color: var(--v-'+color+'-base)'")
+span(:style="styles")
   v-icon(:color="color" x-small) mdi-timer-sand
   abbr.closing-in.timeago--inline(v-if="poll.closingAt")
     span(v-t="{ path: translationKey, args: { time: timeMethod(time) } }" :title="exact(time)")
