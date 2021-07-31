@@ -83,6 +83,13 @@ class Stance < ApplicationRecord
     author&.locale || group&.locale || poll.author.locale
   end
 
+  def add_to_discussion?
+    poll.discussion_id &&
+    poll.stances_in_discussion &&
+    !stance.body_is_blank? &&
+    !Event.where(eventable: self, discussion_id: poll.discussion_id).exists?
+  end
+
   def body
     reason
   end

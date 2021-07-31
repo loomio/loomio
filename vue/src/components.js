@@ -149,6 +149,7 @@ module.exports = {
   Sidebar: 'common/sidebar',
   Space: 'common/space',
   StanceCreated: 'thread/item/stance_created',
+  StanceCreated: 'thread/item/stance_updated',
   SubmitOverlay: 'common/submit_overlay',
   SubgroupsCard: 'group/subgroups_card',
   SubgroupsSelect: 'group/subgroups_select',
