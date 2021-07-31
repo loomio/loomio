@@ -64,7 +64,10 @@ export default class StanceModel extends BaseModel
     head @stanceChoices()
 
   pollOption: ->
-    recordStore.pollOptions.find(@pollOptionIds()[0]) if @pollOptionIds()
+    @recordStore.pollOptions.find(@pollOptionId()) if @pollOptionId()
+
+  pollOptionId: ->
+    @pollOptionIds()[0]
 
   pollOptionIds: ->
     map @stanceChoicesCache, 'poll_option_id'
