@@ -21,7 +21,6 @@ class PollSerializer < ApplicationSerializer
              :group_id,
              :hide_results_until_closed,
              :key,
-             :minimum_stance_choices,
              :multiple_choice,
              :matrix_counts,
              :notify_on_closing_soon,

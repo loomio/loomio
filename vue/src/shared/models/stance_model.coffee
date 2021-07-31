@@ -82,7 +82,7 @@ export default class StanceModel extends BaseModel
     choices = @stanceChoicesCache.map (c) =>
       # add a rank value
       if @poll().pollType == 'ranked_choice'
-        c.rank = @poll().minimumStanceChoices - c.score + 1
+        c.rank = @poll().customFields.minimum_stance_choices - c.score + 1
 
       # add refernce to pollOption
       c.pollOption = optionsById[c.poll_option_id]
