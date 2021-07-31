@@ -84,6 +84,8 @@ export default class StanceModel extends BaseModel
       if @poll().pollType == 'ranked_choice'
         c.rank = @poll().customFields.minimum_stance_choices - c.score + 1
 
+      c.show = (c.score > 0) or @poll().pollType == "score"
+
       # add refernce to pollOption
       c.pollOption = optionsById[c.poll_option_id]
       c.pollOptionPriority = optionsById[c.poll_option_id].priority
