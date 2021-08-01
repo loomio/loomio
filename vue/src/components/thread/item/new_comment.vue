@@ -52,7 +52,7 @@ export default
 <template lang="pug">
 thread-item.new-comment(id="'comment-'+ eventable.id" :event="event" :is-returning="isReturning")
   template(v-slot:actions)
-    action-dock(:model='eventable' :actions='dockActions' :menu-actions='menuActions')
+    action-dock(small :model='eventable' :actions='dockActions' :menu-actions='menuActions')
   formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")
   link-previews(:model="eventable")
   document-list(:model='eventable')

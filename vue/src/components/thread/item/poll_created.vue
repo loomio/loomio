@@ -69,7 +69,7 @@ thread-item.poll-created(:event="event" :is-returning="isReturning")
       poll-common-percent-voted(:poll='poll')
     poll-common-action-panel(:poll='poll')
   template(v-slot:actions)
-    action-dock.my-2(:actions="dockActions" :menu-actions="menuActions")
+    action-dock.my-2(small :actions="dockActions" :menu-actions="menuActions")
   template(v-if="!poll.stancesInDiscussion && poll.showResults()" v-slot:afterActions)
     poll-common-votes-panel(:poll="poll")
 </template>

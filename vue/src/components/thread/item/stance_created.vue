@@ -28,7 +28,7 @@ export default
 <template lang="pug">
 thread-item.stance-created(:event="event" :is-returning="isReturning")
   template(v-slot:actions)
-    action-dock(:model="eventable" :actions="actions")
+    action-dock(small :model="eventable" :actions="actions")
   template(v-if="eventable.singleChoice()" v-slot:headline)
     component(:is="componentType" :to="event.actor() && urlFor(event.actor())") {{event.actorName()}}
     space
