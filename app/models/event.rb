@@ -197,6 +197,7 @@ class Event < ApplicationRecord
     when 'poll_option_added'   then eventable.created_event
     when 'poll_reopened'       then eventable.created_event
     when 'stance_created'      then eventable.parent_event
+    when 'stance_updated'      then eventable.parent_event
     else
       nil
     end

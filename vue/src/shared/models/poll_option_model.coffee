@@ -8,6 +8,10 @@ export default class PollOptionModel extends BaseModel
   @plural: 'pollOptions'
   @indices: ['pollId']
 
+  defaultValues: ->
+    scoreCounts: {}
+    voterScores: {}
+
   relationships: ->
     @belongsTo 'poll'
     @hasMany   'stanceChoices'

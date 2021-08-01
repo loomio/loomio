@@ -24,6 +24,10 @@ class StanceSerializer < ApplicationSerializer
   has_one :participant, serializer: AuthorSerializer, root: :users
   has_many :stance_choices, serializer: StanceChoiceSerializer, root: :stance_choices
 
+  def include_stance_choices_cache?
+    include_reason?
+  end
+
   def locale
     participant&.locale || group&.locale
   end

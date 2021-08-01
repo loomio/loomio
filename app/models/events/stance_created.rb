@@ -8,7 +8,7 @@ class Events::StanceCreated < Event
   def self.publish!(stance)
     super stance,
           user: stance.participant.presence,
-          discussion: stance.poll.stances_in_discussion ? stance.poll.discussion : nil
+          discussion: stance.add_to_discussion? ? stance.poll.discussion : nil
   end
 
   def notify_mentions!

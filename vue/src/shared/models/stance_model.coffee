@@ -25,6 +25,7 @@ export default class StanceModel extends BaseModel
     revokedAt: null
     participantId: null
     pollId: null
+    stanceChoicesCache: []
 
   relationships: ->
     @belongsTo 'poll'

@@ -63,7 +63,7 @@ v-card
       poll-common-outcome-panel(:outcome='outcome' v-if="outcome")
       poll-common-details-panel(:poll='poll')
       .poll-common-card__results-shown(v-if='showResults')
-        poll-common-directive(:poll='poll', name='chart-panel')
+        poll-common-chart-panel(:poll='poll')
         poll-common-percent-voted(:poll='poll')
       poll-common-action-panel(:poll='poll')
       action-dock(:actions="dockActions" :menu-actions="menuActions")

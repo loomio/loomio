@@ -8,7 +8,7 @@ class PollOption < ApplicationRecord
   has_many :stances, through: :stance_choices
 
   def total_score
-    @total_score ||= stance_choices.latest.sum(:score)
+    voter_scores.values.sum
   end
 
   def color
@@ -27,12 +27,24 @@ class PollOption < ApplicationRecord
     end
   end
 
-  def update_option_score_counts
-    update(score_counts: stance_choices
+  def update_score_counts
+    update_columns(score_counts: stance_choices
       .latest
       .select('score, count(*) as count')
       .group(:score)
       .map { |c| [c.score.to_i, c.count] }
+      .to_h
+    )
+  end
+
+  def update_voter_scores
+    update_columns(voter_scores:
+      stance_choices
+      .latest
+      .includes(:stance)
+      .where(poll_option_id: id)
+      .limit(1000)
+      .map { |c| [c.stance.participant_id, c.score] }
       .to_h
     )
   end

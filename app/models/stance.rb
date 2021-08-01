@@ -86,8 +86,10 @@ class Stance < ApplicationRecord
   def add_to_discussion?
     poll.discussion_id &&
     poll.stances_in_discussion &&
-    !stance.body_is_blank? &&
-    !Event.where(eventable: self, discussion_id: poll.discussion_id).exists?
+    !body_is_blank? &&
+    !Event.where(eventable: self,
+                 discussion_id: poll.discussion_id,
+                 kind: ['stance_created', 'stance_updated']).exists?
   end
 
   def body
