@@ -251,6 +251,7 @@ class Poll < ApplicationRecord
 
     update_attribute(:stance_counts, poll_options.pluck(:name).map { |name| self[:stance_data][name] })
 
+    poll_options.each(&:update_total_score)
     poll_options.each(&:update_score_counts)
     poll_options.each(&:update_voter_scores)
 

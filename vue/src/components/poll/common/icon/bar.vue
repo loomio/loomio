@@ -5,51 +5,51 @@ import { take, map, max, each} from 'lodash'
 
 export default
   props:
-    stanceCounts: Array
     size: Number
     poll: Object
   data: ->
     svgEl: null
     shapes: []
   computed:
+    stanceCounts: -> @poll.stanceCounts
     scoreData: ->
-      take(map(this.stanceCounts, (score, index) ->
+      take(map(@stanceCounts, (score, index) ->
         { color: AppConfig.pollColors.poll[index], index: index, score: score }), 5)
     scoreMaxValue: ->
       max map(this.scoreData, (data) -> data.score)
   methods:
     draw: ->
-      if this.scoreData.length > 0 and this.scoreMaxValue > 0
-        this.drawChart()
+      if @scoreData.length > 0 and @scoreMaxValue > 0
+        @drawChart()
       else
-        this.drawPlaceholder()
+        @drawPlaceholder()
     drawPlaceholder: ->
-      each this.shapes, (shape) -> shape.remove()
-      barHeight = this.size / 3
+      each @shapes, (shape) -> shape.remove()
+      barHeight = @size / 3
       barWidths =
-        0: this.size
-        1: 2 * this.size / 3
-        2: this.size / 3
+        0: @size
+        1: 2 * @size / 3
+        2: @size / 3
       each barWidths, (width, index) =>
-        this.svgEl.rect(width, barHeight - 2)
+        @svgEl.rect(width, barHeight - 2)
             .fill("#ebebeb")
             .x(0)
             .y(index * barHeight)
     drawChart: ->
-      each this.shapes, (shape) -> shape.remove()
-      barHeight = this.size / this.scoreData.length
-      map this.scoreData, (scoreDatum) =>
-        barWidth = max([(this.size * scoreDatum.score) / this.scoreMaxValue, 2])
-        this.svgEl.rect(barWidth, barHeight-2)
+      each @shapes, (shape) -> shape.remove()
+      barHeight = @size / @scoreData.length
+      map @scoreData, (scoreDatum) =>
+        barWidth = max([(@size * scoreDatum.score) / @scoreMaxValue, 2])
+        @svgEl.rect(barWidth, barHeight-2)
             .fill(scoreDatum.color)
             .x(0)
             .y(scoreDatum.index * barHeight)
   watch:
     stanceCounts: ->
-      this.draw()
+      @draw()
   mounted: ->
-    this.svgEl = svg(this.$refs.svg).size('100%', '100%')
-    this.draw()
+    @svgEl = svg(@$refs.svg).size('100%', '100%')
+    @draw()
 </script>
 
 <template lang="pug">

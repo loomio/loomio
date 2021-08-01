@@ -7,10 +7,6 @@ class PollOption < ApplicationRecord
   has_many :stance_choices, dependent: :destroy
   has_many :stances, through: :stance_choices
 
-  def total_score
-    voter_scores.values.sum
-  end
-
   def color
     if poll.poll_type == 'proposal'
       {
@@ -25,6 +21,10 @@ class PollOption < ApplicationRecord
     else
       AppConfig.colors.dig(poll.poll_type, self.priority % AppConfig.colors.length)
     end
+  end
+
+  def update_total_score
+    update_columns(total_score: stance_choices.latest.sum(:score))
   end
 
   def update_score_counts
@@ -42,8 +42,6 @@ class PollOption < ApplicationRecord
       stance_choices
       .latest
       .includes(:stance)
-      .where(poll_option_id: id)
-      .limit(1000)
       .map { |c| [c.stance.participant_id, c.score] }
       .to_h
     )

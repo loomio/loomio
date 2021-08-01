@@ -60,7 +60,7 @@ export default
 .poll-proposal-chart-panel
   v-subheader(v-t="'poll_common.results'")
   .poll-proposal-chart-panel__chart-container
-    poll-proposal-chart.poll-proposal-chart-panel__chart(:stance-data="poll.stanceData", :diameter="140")
+    poll-common-icon-panel.poll-proposal-chart-panel__chart(:poll="poll" :size="140")
     table.poll-proposal-chart-panel__legend(role="presentation")
       tbody
         tr(v-for="(name, index) in pollOptionNames" :key="index")

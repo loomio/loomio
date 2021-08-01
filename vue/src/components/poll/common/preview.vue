@@ -13,7 +13,7 @@ export default
 <template lang="pug">
 v-list-item.poll-common-preview(:to='urlFor(poll)')
   v-list-item-avatar
-    poll-common-chart-preview(:poll='poll')
+    poll-common-icon-panel(:poll='poll')
   v-list-item-content
     v-list-item-title
       | {{poll.title}}

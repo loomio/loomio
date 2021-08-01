@@ -6,16 +6,17 @@ import { optionColors, optionImages } from '@/shared/helpers/poll'
 
 export default
   props:
-    stanceData: Object
-    diameter: Number
+    poll: Object
+    size: Number
   data: ->
     svgEl: null
     shapes: []
     pollColors: AppConfig.pollColors
     positionColors: optionColors()
   computed:
+    stanceData: -> @poll.stanceData
     radius: ->
-      @diameter / 2.0
+      @size / 2.0
 
   methods:
     arcPath: (startAngle, endAngle) ->
@@ -31,13 +32,13 @@ export default
 
       switch values(@stanceData).filter((v) -> v > 0).length
         when 0
-          @shapes.push @svgEl.circle(@diameter).attr
+          @shapes.push @svgEl.circle(@size).attr
             'stroke-width': 0
             fill: '#aaa'
         when 1
           each @stanceData, (count, position) =>
             return unless count > 0
-            @shapes.push @svgEl.circle(@diameter).attr
+            @shapes.push @svgEl.circle(@size).attr
               'stroke-width': 0
               fill: @positionColors[position]
         else
@@ -61,7 +62,7 @@ export default
 </script>
 
 <template lang="pug">
-.poll-proposal-chart(:style="{width: diameter+'px', height: diameter+'px'}")
+.poll-proposal-chart(:style="{width: size+'px', height: size+'px'}")
 </template>
 <style lang="sass">
 .poll-proposal-chart

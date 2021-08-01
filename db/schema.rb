@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_01_040439) do
+ActiveRecord::Schema.define(version: 2021_08_01_224030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -613,6 +613,7 @@ ActiveRecord::Schema.define(version: 2021_08_01_040439) do
     t.integer "priority", default: 0, null: false
     t.jsonb "score_counts", default: {}, null: false
     t.jsonb "voter_scores", default: {}, null: false
+    t.integer "total_score", default: 0, null: false
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
   end
 

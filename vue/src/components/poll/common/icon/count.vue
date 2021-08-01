@@ -5,7 +5,6 @@ import { each, max, sum } from 'lodash'
 
 export default
   props:
-    stanceCounts: Array
     goal: Number
     size: Number
     poll: Object
@@ -35,6 +34,7 @@ export default
 
   computed:
     fontSize: -> @size * 0.33
+    stanceCounts: -> @poll.stanceCounts
 
   mounted: ->
     @svgEl = svg(@$refs.svg).size('100%', '100%')

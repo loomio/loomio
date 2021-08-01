@@ -81,7 +81,7 @@ module.exports = {
   PollCommonCardHeader: 'poll/common/card_header',
   PollCommonCardRepeater: 'poll/common/card_repeater',
   PollCommonChangeYourVote: 'poll/common/change_your_vote',
-  PollCommonIconPanel: 'poll/common/icon/panel.vue',
+  PollCommonIconPanel: 'poll/common/icon/panel',
   PollCommonChartPanel: 'poll/common/chart/panel',
   PollCommonChooseType: 'poll/common/choose_type',
   PollCommonClosingAt: 'poll/common/closing_at',

@@ -71,6 +71,14 @@ export default class PollModel extends BaseModel
   bestNamedId: ->
     ((@id && @) || (@discusionId && @discussion()) || (@groupId && @group()) || {namedId: ->}).namedId()
 
+  chartType: ->
+    switch @pollType
+      when 'proposal' then 'pie'
+      when 'count' then 'count'
+      when 'meeting' then 'grid'
+      else
+        'bar'
+
   tags: ->
     @recordStore.tags.collection.chain().find(id: {$in: @tagIds}).simplesort('priority').data()
 
