@@ -38,14 +38,15 @@ img.emoji
 
 .theme--dark
   .lmo-markdown-wrapper
-      span[style="color:#000000;"], span[style="color: #000000;"],
-      span[style="color:#000000"], span[style="color: #000000"],
-      span[style="color:rgba(0, 0, 0, 0.87);"], span[style="color:rgba(0, 0, 0, 0.87)"]
-      span[style="color:rgba(0, 0, 0, 1);"], span[style="color:rgba(0, 0, 0, 1)"]
-
-        color: #fff !important
-        color: #fff !important
-        color: #fff !important
+    span[style="color:#000000"],
+    span[style="color:#000000;"],
+    span[style="color: #000000"],
+    span[style="color: #000000;"],
+    span[style="color:rgba(0, 0, 0, 0.87);"],
+    span[style="color:rgba(0, 0, 0, 0.87)"],
+    span[style="color:rgba(0, 0, 0, 1);"],
+    span[style="color:rgba(0, 0, 0, 1)"]
+      color: #fff !important
 
 .lmo-markdown-wrapper
 
