@@ -25,14 +25,14 @@ export default
 
   computed:
     type: ->
-      case @poll.pollType
-      when 'proposal' then 'pie'
-      when 'poll' then 'bar'
-      when 'count' then 'count'
-      when 'score' then 'bar'
-      when 'dot_vote' then 'bar'
-      when 'ranked_choice' then 'ranked_choice'
-      when 'meeting' then 'grid'
+      switch @poll.pollType
+        when 'proposal' then 'pie'
+        when 'poll' then 'bar'
+        when 'count' then 'count'
+        when 'score' then 'bar'
+        when 'dot_vote' then 'bar'
+        when 'ranked_choice' then 'ranked_choice'
+        when 'meeting' then 'grid'
 
 </script>
 
