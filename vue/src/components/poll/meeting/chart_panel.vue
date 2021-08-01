@@ -80,13 +80,16 @@ export default
     thead
       tr
         td.text--secondary {{currentUserTimeZone}}
+        td.total(v-t="'common.total'")
         td(v-for="user in decidedVoters" :key="user.id")
           user-avatar(:user="user")
-        td.total(v-t="'common.total'")
     tbody
       tr(v-for="option in pollOptions" :key="option.id")
         td.poll-meeting-chart__meeting-time
           poll-meeting-time(:name='option.name' :zone='zone')
+
+        td.total
+          strong {{totalFor(option)/2}}
 
         td(v-for="user in decidedVoters" :key="user.id")
           .poll-meeting-chart__cell(:class="classForScore(scoreFor(user, option))")
@@ -96,8 +99,6 @@ export default
             //-     user-avatar(size="24" :user="user" v-for="user in yesVotersFor(option)" :key="user.id")
             //-   span.poll-meeting-chart__bar(v-if="option.scoreCounts['1']" :style="{'border-color': scoreColor(1), 'background-color': bgColor(1), 'width': barLength(option.scoreCounts['1']) }")
             //-     user-avatar(size="24" :user="user" v-for="user in maybeVotersFor(option)" :key="user.id")
-        td.total
-          strong {{totalFor(option)/2}}
 </template>
 
 <style lang="sass">
@@ -137,5 +138,5 @@ export default
   padding-right: 24px
 
 .total
-  padding-left: 24px
+  padding-right: 24px
 </style>
