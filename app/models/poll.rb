@@ -236,7 +236,6 @@ class Poll < ApplicationRecord
 
   def update_stance_data
     poll_options.each(&:update_total_score)
-    poll_options.each(&:update_score_counts)
     poll_options.each(&:update_voter_scores)
     update_attribute(:stance_counts, poll_options.pluck(:total_score)) # should rename to option scores
   end

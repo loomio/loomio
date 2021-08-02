@@ -41,16 +41,6 @@ class PollOption < ApplicationRecord
     update_columns(total_score: stance_choices.latest.sum(:score))
   end
 
-  def update_score_counts
-    update_columns(score_counts: stance_choices
-      .latest
-      .select('score, count(*) as count')
-      .group(:score)
-      .map { |c| [c.score.to_i, c.count] }
-      .to_h
-    )
-  end
-
   def update_voter_scores
     update_columns(voter_scores:
       stance_choices
