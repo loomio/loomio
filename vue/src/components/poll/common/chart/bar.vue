@@ -27,10 +27,10 @@ export default
     tbody
       tr(v-for="option in options" :key="option.id")
         td(style="min-width: 20%") {{option.optionName()}}
-        td.px-1(style="width: 0") {{option.totalScore}}
+        td.px-1(style="width: 0").text-right {{option.totalScore}}
         td.poll-common-bar-chart__bar.rounded(:style="styleData(option)")
           user-avatar(v-for="voter in option.voters()" :key="voter.id" :user="voter" :size="24" no-link)
-        td(style="width: 0") {{option.scorePercent()}}%
+        td(style="width: 0").text-right {{option.scorePercent()}}%
 </template>
 <style lang="sass">
 .poll-common-bar-chart
