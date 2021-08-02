@@ -7,7 +7,7 @@ import EventBus         from '@/shared/services/event_bus'
 import I18n             from '@/i18n'
 import NullGroupModel   from '@/shared/models/null_group_model'
 import { addDays, startOfHour } from 'date-fns'
-import { head, orderBy, map, includes, difference, invokeMap, each, max, slice, sortBy, isEqual, shuffle } from 'lodash'
+import { head, orderBy, map, includes, difference, invokeMap, each, max, flatten, slice, uniq, sortBy, isEqual, shuffle } from 'lodash'
 
 export default class PollModel extends BaseModel
   @singular: 'poll'
@@ -121,7 +121,7 @@ export default class PollModel extends BaseModel
     @recordStore.reactions.find(reactableId: @id, reactableType: "Poll")
 
   decidedVoterIds: ->
-    map(@latestCastStances(), 'participantId')
+    uniq flatten @pollOptions().map((o) -> o.voterIds())
 
   # who's voted?
   decidedVoters: ->

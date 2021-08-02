@@ -215,15 +215,7 @@ class Poll < ApplicationRecord
     super || NullGroup.new
   end
 
-  def stance_data
-    show_results? ? super : {}
-  end
-
   def stance_counts
-    show_results? ? super : []
-  end
-
-  def matrix_counts
     show_results? ? super : []
   end
 
@@ -238,32 +230,15 @@ class Poll < ApplicationRecord
     end
   end
 
+  def total_score
+    stance_counts.sum
+  end
+
   def update_stance_data
-    update_attribute(:stance_data, zeroed_poll_options.merge(
-      self.class.connection.select_all(%{
-        SELECT poll_options.name, sum(stance_choices.score) as total
-        FROM stances
-        INNER JOIN stance_choices ON stance_choices.stance_id = stances.id
-        INNER JOIN poll_options ON poll_options.id = stance_choices.poll_option_id
-        WHERE stances.latest = true AND stances.poll_id = #{self.id}
-        GROUP BY poll_options.name
-      }).map { |row| [row['name'], row['total'].to_i] }.to_h))
-
-    update_attribute(:stance_counts, poll_options.pluck(:name).map { |name| self[:stance_data][name] })
-
     poll_options.each(&:update_total_score)
     poll_options.each(&:update_score_counts)
     poll_options.each(&:update_voter_scores)
-
-    # TODO: convert this to a SQL query (CROSS JOIN?)
-    update_attribute(:matrix_counts,
-      poll_options.limit(5).map do |option|
-        stances.latest.order(:created_at).limit(5).map do |stance|
-          # the score of the stance choice which has this poll option in this stance
-          stance.stance_choices.find_by(poll_option:option)&.score.to_i
-        end
-      end
-    ) if chart_type == 'matrix'
+    update_attribute(:stance_counts, poll_options.pluck(:total_score)) # should rename to option scores
   end
 
   # people who can vote.

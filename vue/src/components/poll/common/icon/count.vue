@@ -5,7 +5,6 @@ import { each, max, sum } from 'lodash'
 
 export default
   props:
-    goal: Number
     size: Number
     poll: Object
   data: ->
@@ -14,7 +13,7 @@ export default
     draw: ->
       y = 0
       each @stanceCounts, (count, index) =>
-        height = (@size * max([parseInt(count), 0])) / @goal
+        height = (@size * max([parseInt(count), 0])) / @poll.votersCount
         @svgEl.rect(@size, height)
             .fill(AppConfig.pollColors.count[index])
             .x(0)

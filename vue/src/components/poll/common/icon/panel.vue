@@ -25,7 +25,7 @@ export default
   bar-icon(v-if="chartType == 'bar'" :poll="poll" :size='size')
   count-icon(v-if="chartType == 'count'" :poll="poll" :size='size')
   pie-icon(v-if="chartType == 'pie'" :poll="poll" :size='size')
-  grid-icon(v-if="chartType == 'matrix'" :poll="poll" :size='size')
+  grid-icon(v-if="chartType == 'grid'" :poll="poll" :size='size')
   .poll-common-chart-preview__stance-container(v-if='showMyStance && poll.iCanVote()')
     poll-common-stance-icon(:poll="poll" :stance="myStance")
 

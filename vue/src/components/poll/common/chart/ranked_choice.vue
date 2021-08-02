@@ -7,21 +7,7 @@ export default
   props:
     poll: Object
   computed:
-    rankedOptions: ->
-      sortedByScore = orderBy map(@poll.stanceData, (score, name) =>
-        name: name
-        score: score
-        poll: => @poll
-        pollOption: => find(@poll.pollOptions(), (option) -> option.name == name)
-      )
-      ,
-        'score', 'desc'
-
-      sortedByScore.forEach (option, index) =>
-        option.rank = index+1
-        option.rankOrScore = index+1
-
-      sortedByScore
+    rankedOptions: -> orderBy @poll.pollOptions(), 'totalScore', 'desc'
 
 </script>
 <template lang="pug">
@@ -33,10 +19,10 @@ export default
         th(v-t="'common.option'")
         th(v-t="'poll_ranked_choice_form.points'")
     tbody
-      tr(v-for='option in rankedOptions' :key="option.name")
-        td.min {{option.rank}}
-        td {{option.name}}
-        td {{option.score}}
+      tr(v-for='option, index in rankedOptions' :key="option.name")
+        td.min {{index + 1}}
+        td {{option.optionName()}}
+        td {{option.totalScore}}
 </template>
 <style lang="sass">
 .poll-common-ranked-choice-chart

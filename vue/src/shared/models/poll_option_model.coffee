@@ -1,6 +1,7 @@
 import BaseModel  from  '@/shared/record_store/base_model'
 import Records  from  '@/shared/services/records'
-import {map} from 'lodash'
+import {map, parseInt} from 'lodash'
+import I18n from '@/i18n'
 
 
 export default class PollOptionModel extends BaseModel
@@ -25,6 +26,16 @@ export default class PollOptionModel extends BaseModel
 
   optionName: ->
     if @poll().translateOptionName()
-      @$t('poll_' + @poll.pollType + '_options.' + @name)
+      I18n.t('poll_' + @poll().pollType + '_options.' + @name)
     else
       @name
+
+  voterIds: ->
+    map Object.keys(@voterScores), parseInt
+
+  voters: ->
+    # @recordStore.users.chain().find(id: $in(@voterIds)
+    @recordStore.users.find(@voterIds())
+
+  scorePercent: ->
+    parseInt(parseFloat(@totalScore) / parseFloat(@poll().totalScore) * 100) || 0

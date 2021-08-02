@@ -11,10 +11,9 @@ export default
   data: ->
     svgEl: null
     shapes: []
-    pollColors: AppConfig.pollColors
-    positionColors: optionColors()
+
   computed:
-    stanceData: -> @poll.stanceData
+    options: -> @poll.pollOptions()
     radius: ->
       @size / 2.0
 
@@ -26,31 +25,32 @@ export default
       y1 = @radius + (@radius * Math.sin(-startAngle * rad))
       y2 = @radius + (@radius * Math.sin(-endAngle * rad))
       ["M", @radius, @radius, "L", x1, y1, "A", @radius, @radius, 0, +(endAngle - startAngle > 180), 0, x2, y2, "z"].join(' ')
+
     draw: ->
       @shapes.forEach (shape) -> shape.remove()
       start = 90
 
-      switch values(@stanceData).filter((v) -> v > 0).length
+      switch @poll.stanceCounts.filter((c) -> c > 0).length
         when 0
           @shapes.push @svgEl.circle(@size).attr
             'stroke-width': 0
             fill: '#aaa'
         when 1
-          each @stanceData, (count, position) =>
-            return unless count > 0
+          each @options, (option) =>
+            return unless option.totalScore > 0
             @shapes.push @svgEl.circle(@size).attr
               'stroke-width': 0
-              fill: @positionColors[position]
+              fill: option.color
         else
-          each @stanceData, (count, position) =>
-            return unless count > 0
-            angle = 360/sum(values(@stanceData))*count
+          each @options, (option) =>
+            return unless option.totalScore > 0
+            angle = 360 / @poll.totalScore * option.totalScore
             @shapes.push @svgEl.path(@arcPath(start, start + angle)).attr
               'stroke-width': 0
-              fill: @positionColors[position]
+              fill: option.color
             start += angle
   watch:
-    stanceData: -> @draw()
+    'poll.stanceCounts': -> @draw()
 
   mounted: ->
     @svgEl = svg(@$el).size('100%', '100%')

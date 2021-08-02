@@ -23,6 +23,20 @@ class PollOption < ApplicationRecord
     end
   end
 
+  def voter_scores
+    if self[:voter_scores].length == 0 and poll.decided_voters_count > 0
+      update_voter_scores
+    end
+    self[:voter_scores]
+  end
+
+  def total_score
+    if self[:total_score] == 0 and poll.decided_voters_count > 0
+      update_total_score
+    end
+    self[:total_score]
+  end
+
   def update_total_score
     update_columns(total_score: stance_choices.latest.sum(:score))
   end

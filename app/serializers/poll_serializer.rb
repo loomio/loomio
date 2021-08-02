@@ -22,15 +22,14 @@ class PollSerializer < ApplicationSerializer
              :hide_results_until_closed,
              :key,
              :multiple_choice,
-             :matrix_counts,
              :notify_on_closing_soon,
              :poll_type,
              :poll_option_names,
              :mentioned_usernames,
              :material_icon,
              :shuffle_options,
-             :stance_data,
              :stance_counts,
+             :total_score,
              :stances_in_discussion,
              :specified_voters_only,
              :secret_token,
@@ -51,7 +50,6 @@ class PollSerializer < ApplicationSerializer
   has_many :tags, serializer: TagSerializer, root: :tags
 
   hide_when_discarded [:details, :title, :author_id]
-
 
   def current_outcome
     cache_fetch(:outcomes_by_poll_id, object.id) { nil }

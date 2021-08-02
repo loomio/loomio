@@ -1,45 +1,61 @@
 <script lang="coffee">
-import svg from 'svg.js'
-import { each, isEmpty, max, times } from 'lodash'
+import {sum, map, sortBy, find, compact, uniq, slice, parseInt} from 'lodash'
 
 export default
   props:
-    matrixCounts: Array
-    size: Number
     poll: Object
+    zone: Object
+    size: Number
   data: ->
-    svgEl: null
-    shapes: []
-  mounted: ->
-    this.svgEl = svg(@$refs.svg).size(@size, @size)
-    this.draw()
+    pollOptions: []
+
+  created: ->
+    @watchRecords
+      collections: ['poll_options']
+      query: (store) =>
+        max = 10
+        @pollOptions = slice @poll.pollOptions(), 0, max
+        @decidedVoterIds = slice @poll.decidedVoterIds(), 0, max
+
+  computed:
+    cellHeight: -> @size / @pollOptions.length
+    cellWidth: -> @size / @decidedVoterIds.length
+    cellSize: -> if (@cellHeight > @cellWidth) then @cellWidth else @cellHeight
+
   methods:
-    draw: ->
-      each this.shapes, (shape) -> shape.remove()
-      if isEmpty(this.matrixCounts)
-        this.drawPlaceholder()
-      else
-        this.drawChart()
-    drawChart: ->
-      width = this.size / max([this.matrixCounts.length, this.matrixCounts[0].length])
-      each this.matrixCounts, (values, row) =>
-        each values, (value, col) =>
-          this.drawShape(row, col, width, value)
-    drawPlaceholder: ->
-      each times(5), (row) =>
-        each times(5), (col) =>
-          this.drawShape(row, col, this.size / 5, 0)
-    drawShape: (row, col, width, value) ->
-      color = ['#ebebeb','#f3b300','#00e572'][value]
-      this.shapes.push(this.svgEl.circle(width-1)
-        .fill(color)
-        .x(width * row)
-        .y(width * col))
-  watch:
-    stanceCounts: ->
-      this.draw()
+    classForScore: (score) ->
+      switch score
+        when 2 then 'poll-meeting-chart__cell--yes'
+        when 1 then 'poll-meeting-chart__cell--maybe'
+        when 0 then 'poll-meeting-chart__cell--no'
+        else
+          'poll-meeting-chart__cell--empty'
+
 </script>
 
 <template lang="pug">
-div.matrix-chart(ref="svg")
+div.poll-common-icon-grid.d-flex.align-center.justify-center
+  table(v-if="decidedVoterIds.length")
+    tr(v-for="option in pollOptions" :key="option.id")
+      td( v-for="id in decidedVoterIds" :key="id")
+        .poll-meeting-icon__cell(:style="{height: cellSize+'px', width: cellSize +'px'}" :class="classForScore(option.voterScores[id])")
+          | &nbsp;
+  table(v-if="decidedVoterIds.length == 0")
+    tr(v-for="option in pollOptions" :key="option.id")
+      td(v-for="option in pollOptions" :key="option.id")
+        .poll-meeting-icon__cell.poll-meeting-chart__cell--empty(:style="{height: cellSize+'px', width: cellSize +'px'}")
+          | &nbsp;
 </template>
+
+<style lang="sass">
+.poll-meeting-chart__cell--empty
+  background-color: #ddd
+.poll-meeting-icon__cell
+  border-radius: 50%
+  max-height: 8px
+  max-width: 8px
+.poll-common-icon-grid
+  table, tbody, th, td
+    border-collapse: collapse
+    border: 0
+</style>

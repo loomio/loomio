@@ -110,7 +110,7 @@ class Stance < ApplicationRecord
 
   def update_stance_choices_cache
     self.stance_choices_cache = stance_choices.map do |sc|
-      {poll_option_id: sc.poll_option_id, poll_option_name: sc.poll_option.name, score: sc.score}
+      {poll_option_id: sc.poll_option_id, score: sc.score}
     end
   end
 
