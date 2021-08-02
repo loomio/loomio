@@ -10,7 +10,6 @@ export default class PollOptionModel extends BaseModel
   @indices: ['pollId']
 
   defaultValues: ->
-    scoreCounts: {}
     voterScores: {}
 
   relationships: ->
@@ -34,7 +33,6 @@ export default class PollOptionModel extends BaseModel
     map Object.keys(@voterScores), parseInt
 
   voters: ->
-    # @recordStore.users.chain().find(id: $in(@voterIds)
     @recordStore.users.find(@voterIds())
 
   scorePercent: ->
