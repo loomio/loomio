@@ -8,5 +8,6 @@ class ResetPollStanceDataWorker
     p.update_voters_count
     p.update_undecided_voters_count
     p.update_stance_data
+    p.stances.each(&:update_stance_choices_cache!)
   end
 end

@@ -29,7 +29,6 @@ export default class StanceModel extends BaseModel
 
   relationships: ->
     @belongsTo 'poll'
-    @hasMany 'stanceChoices'
     @belongsTo 'participant', from: 'users'
 
   edited: ->
@@ -62,7 +61,7 @@ export default class StanceModel extends BaseModel
     @participant()
 
   stanceChoice: ->
-    head @stanceChoices()
+    head @sortedChoices()
 
   pollOption: ->
     @recordStore.pollOptions.find(@pollOptionId()) if @pollOptionId()
@@ -100,22 +99,19 @@ export default class StanceModel extends BaseModel
   stanceChoiceNames: ->
     map(@pollOptions(), 'name')
 
-  choose: (optionIds) ->
-    each @recordStore.stanceChoices.find(stanceId: @id), (stanceChoice) ->
-      stanceChoice.remove()
-
-    each compact(flatten([optionIds])), (optionId) =>
-      @recordStore.stanceChoices.create(pollOptionId: parseInt(optionId), stanceId: @id)
-    @
+  # choose: (optionIds) ->
+  #   each @recordStore.stanceChoices.find(stanceId: @id), (stanceChoice) ->
+  #     stanceChoice.remove()
+  #
+  #   each compact(flatten([optionIds])), (optionId) =>
+  #     @recordStore.stanceChoices.create(pollOptionId: parseInt(optionId), stanceId: @id)
+  #   @
 
   votedFor: (option) ->
     includes map(@pollOptions(), 'id'), option.id
 
   scoreFor: (option) ->
-    choiceForOption = find @stanceChoices(), (choice)->
-      choice.pollOptionId == option.id
-
-    if choiceForOption then choiceForOption.score else 0
+    ((find @sortedChoices(), (choice) -> choice.poll_option_id == option.id) || {score: 0}).score
 
   totalScore: ->
-    sumBy(@stanceChoices(), 'score')
+    sumBy(@sortedChoices(), 'score')

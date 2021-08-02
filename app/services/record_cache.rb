@@ -265,7 +265,7 @@ class RecordCache
   def add_stances_and_choices(collection)
     return if exclude_types.include?('stance')
     add_stances collection
-    add_stance_choices StanceChoice.where(stance_id: collection.map(&:id))
+    # add_stance_choices StanceChoice.where(stance_id: collection.map(&:id))
   end
 
   def add_stances(collection)
@@ -281,14 +281,14 @@ class RecordCache
     end
   end
 
-  def add_stance_choices(collection)
-    return [] if exclude_types.include?('stance_choice')
-    scope[:stance_choices_by_stance_id] ||= {}
-    collection.each do |choice|
-      scope[:stance_choices_by_stance_id][choice.stance_id] ||= []
-      scope[:stance_choices_by_stance_id][choice.stance_id].push choice
-    end
-  end
+  # def add_stance_choices(collection)
+  #   return [] if exclude_types.include?('stance_choice')
+  #   scope[:stance_choices_by_stance_id] ||= {}
+  #   collection.each do |choice|
+  #     scope[:stance_choices_by_stance_id][choice.stance_id] ||= []
+  #     scope[:stance_choices_by_stance_id][choice.stance_id].push choice
+  #   end
+  # end
 
   def add_events(collection)
     return [] if exclude_types.include?('event')

@@ -114,6 +114,12 @@ class Stance < ApplicationRecord
     end
   end
 
+  def update_stance_choices_cache!
+    update_columns(stance_choices_cache: stance_choices.map do |sc|
+        {poll_option_id: sc.poll_option_id, score: sc.score}
+    end)
+  end
+
   def choice=(choice)
     self.cast_at ||= Time.zone.now
     if choice.kind_of?(Hash)

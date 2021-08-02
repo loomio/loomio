@@ -22,7 +22,7 @@ class StanceSerializer < ApplicationSerializer
 
   has_one :poll, serializer: PollSerializer, root: :polls
   has_one :participant, serializer: AuthorSerializer, root: :users
-  has_many :stance_choices, serializer: StanceChoiceSerializer, root: :stance_choices
+  # has_many :stance_choices, serializer: StanceChoiceSerializer, root: :stance_choices
 
   def include_stance_choices_cache?
     include_reason?
@@ -42,9 +42,9 @@ class StanceSerializer < ApplicationSerializer
     object.participant_id
   end
 
-  def stance_choices
-    cache_fetch(:stance_choices_by_stance_id, object.id) { object.stance_choices }
-  end
+  # def stance_choices
+  #   cache_fetch(:stance_choices_by_stance_id, object.id) { object.stance_choices }
+  # end
 
   def volume
     object[:volume]
@@ -58,9 +58,9 @@ class StanceSerializer < ApplicationSerializer
     my_stance || poll.show_results?
   end
 
-  def include_stance_choices?
-    include_reason?
-  end
+  # def include_stance_choices?
+  #   include_reason?
+  # end
 
   def include_mentioned_usernames?
     include_reason? && reason_format == 'md'
