@@ -52,7 +52,6 @@ class Poll < ApplicationRecord
   enum notify_on_closing_soon: {nobody: 0, author: 1, undecided_voters: 2, voters: 3}
 
   before_save :set_stances_in_discussion
-  before_save :remove_poll_options!
   after_save :update_counts!
 
   has_many :stances, dependent: :destroy
@@ -62,7 +61,7 @@ class Poll < ApplicationRecord
   has_many :undecided_voters, -> { merge(Stance.latest.undecided) }, through: :stances, source: :participant
   has_many :decided_voters, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
 
-  has_many :poll_options, -> { order('priority') }, dependent: :destroy
+  has_many :poll_options, -> { order('priority') }, dependent: :destroy, autosave: true
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
   has_many :documents, as: :model, dependent: :destroy
@@ -305,16 +304,6 @@ class Poll < ApplicationRecord
     AppConfig.poll_templates.dig(self.poll_type, 'single_choice') && !self.multiple_choice
   end
 
-  def meeting_score_tallies
-    return [] unless show_results?
-    poll_options.map do |option|
-      [option.id, {
-        maybe:    option.stance_choices.latest.where(score: 1).count,
-        yes:      option.stance_choices.latest.where(score: 2).count
-      }]
-    end
-  end
-
   def poll_option_names
     poll_options.map(&:name)
   end
@@ -326,7 +315,9 @@ class Poll < ApplicationRecord
     names.each_with_index do |name, priority|
       poll_options.find_or_initialize_by(name: name).priority = priority
     end
-    @poll_option_removed_names = (existing - names)
+    removed = (existing - names)
+    poll_options.each {|option| option.mark_for_destruction if removed.include?(option.name) }
+    names
   end
 
   alias options= poll_option_names=
@@ -385,12 +376,6 @@ class Poll < ApplicationRecord
     self.poll_options.map { |option| [option.name, 0] }.to_h
   end
 
-  def remove_poll_options!
-    return unless @poll_option_removed_names.present?
-    poll_options.where(name: @poll_option_removed_names).destroy_all
-    @poll_option_removed_names = nil
-  end
-
   def poll_options_are_valid
     prevent_added_options   unless can_add_options
     prevent_removed_options unless can_remove_options
@@ -428,7 +413,7 @@ class Poll < ApplicationRecord
   end
 
   def prevent_empty_options
-    if (self.poll_options.map(&:name) - Array(@poll_option_removed_names)).empty?
+    if (self.poll_options.map(&:name)).empty?
       self.errors.add(:poll_options, I18n.t(:"poll.error.must_have_options"))
     end
   end
