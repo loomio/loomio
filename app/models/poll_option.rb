@@ -1,5 +1,4 @@
 class PollOption < ApplicationRecord
-  include CustomCounterCache::Model
   include FormattedDateHelper
 
   belongs_to :poll
@@ -8,12 +7,11 @@ class PollOption < ApplicationRecord
   has_many :stance_choices, dependent: :destroy
   has_many :stances, through: :stance_choices
 
-  define_counter_cache(:voter_scores) do |option|
-    option.stance_choices.latest.includes(:stance).map { |c| [c.stance.participant_id, c.score] }.to_h
-  end
-
-  define_counter_cache(:total_score) do |option|
-    option.stance_choices.latest.sum(:score)
+  def update_counts!
+    update_columns(
+      voter_scores: stance_choices.latest.includes(:stance).map { |c| [c.stance.participant_id, c.score] }.to_h,
+      total_score: stance_choices.latest.sum(:score)
+    )
   end
 
   def color

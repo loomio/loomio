@@ -5,9 +5,7 @@ class ResetPollStanceDataWorker
   def perform(poll_id)
     p = Poll.find(poll_id)
     p.reset_latest_stances!
-    p.update_voters_count
-    p.update_undecided_voters_count
-    p.update_stance_data!
-    p.stances.each(&:update_option_scores)
+    p.stances.latest.each(&:update_counts!)
+    p.update_counts!
   end
 end

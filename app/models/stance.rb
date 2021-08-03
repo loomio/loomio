@@ -32,13 +32,6 @@ class Stance < ApplicationRecord
   alias :user :participant
   alias :author :participant
 
-  define_counter_cache(:versions_count) { |stance| stance.versions.count }
-  define_counter_cache(:option_scores) do |stance|
-    stance.stance_choices.map { |sc| [sc.poll_option_id, sc.score] }.to_h
-  end
-  update_counter_cache :poll, :voters_count
-  update_counter_cache :poll, :undecided_voters_count
-
   scope :latest,         -> { where(latest: true).where(revoked_at: nil) }
   scope :admin,         ->  { where(admin: true) }
   scope :newest_first,   -> { order("cast_at DESC NULLS LAST") }
@@ -70,6 +63,15 @@ class Stance < ApplicationRecord
   delegate :title,          to: :poll
 
   alias :author :participant
+  
+  after_save :update_counts!
+
+  def update_counts!
+    update_columns(
+      versions_count: versions.count,
+      option_scores: stance_choices.map { |sc| [sc.poll_option_id, sc.score] }.to_h
+    )
+  end
 
   def author_id
     participant_id

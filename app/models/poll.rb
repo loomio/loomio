@@ -52,7 +52,8 @@ class Poll < ApplicationRecord
   enum notify_on_closing_soon: {nobody: 0, author: 1, undecided_voters: 2, voters: 3}
 
   before_save :set_stances_in_discussion
-  after_save :update_stance_data!
+  after_save :remove_poll_options!
+  after_save :update_counts!
 
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
@@ -129,9 +130,6 @@ class Poll < ApplicationRecord
   update_counter_cache :group, :closed_polls_count
   update_counter_cache :discussion, :closed_polls_count
   update_counter_cache :discussion, :anonymous_polls_count
-  define_counter_cache(:voters_count) { |poll| poll.stances.latest.count }
-  define_counter_cache(:undecided_voters_count) { |poll| poll.stances.latest.undecided.count }
-  define_counter_cache(:versions_count) { |poll| poll.versions.count}
 
   delegate :locale, to: :author
 
@@ -234,12 +232,14 @@ class Poll < ApplicationRecord
     stance_counts.sum
   end
 
-  def update_stance_data!
-    remove_poll_options
-    poll_options.each(&:update_total_score)
-    poll_options.each(&:update_voter_scores)
-    reload
-    update_columns(stance_counts: poll_options.map(&:total_score)) # should rename to option scores
+  def update_counts!
+    poll_options.each(&:update_counts!)
+    update_columns(
+      stance_counts: poll_options.map(&:total_score), # should rename to option scores
+      voters_count: stances.latest.count,
+      undecided_voters_count: stances.latest.undecided.count,
+      versions_count:  versions.count
+    )
   end
 
   # people who can vote.
@@ -385,10 +385,11 @@ class Poll < ApplicationRecord
     self.poll_options.map { |option| [option.name, 0] }.to_h
   end
 
-  def remove_poll_options
+  def remove_poll_options!
     return unless @poll_option_removed_names.present?
     poll_options.where(name: @poll_option_removed_names).destroy_all
     @poll_option_removed_names = nil
+    reload
   end
 
   def poll_options_are_valid

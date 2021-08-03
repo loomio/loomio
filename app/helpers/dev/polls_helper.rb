@@ -26,7 +26,7 @@ module Dev::PollsHelper
       poll.group.add_member!(u) if poll.group
       fake_stance(poll: poll).save
     end
-    poll.update_stance_data!
+    poll.update_counts!
   end
 
   def create_activity_items(discussion: , actor: )

@@ -32,7 +32,6 @@ class PollService
     return false unless poll.valid?
 
     poll.save!
-    poll.update_versions_count
 
     users = UserInviter.where_or_create!(actor: actor,
                                          user_ids: params[:recipient_user_ids],
@@ -144,9 +143,7 @@ class PollService
     Stance.import(new_stances, on_duplicate_key_ignore: true)
 
     poll.reset_latest_stances!
-    poll.update_voters_count
-    poll.update_undecided_voters_count
-    poll.update_stance_data!
+    poll.update_counts!
 
     Stance.where(participant_id: users.pluck(:id), poll_id: poll.id, latest: true)
   end

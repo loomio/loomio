@@ -31,13 +31,13 @@ describe Stance do
 
     it "string" do
       stance = Stance.create(poll: poll, participant: author, choice: 'dog')
-      poll.update_stance_data!
+      poll.update_counts!
       expect(poll.stance_counts).to eq([1,0])
     end
 
     it "array" do
       Stance.create(poll: poll, participant: author, choice: ['dog', 'cat'])
-      poll.update_stance_data!
+      poll.update_counts!
       expect(poll.stance_counts).to eq([1,1])
     end
   end
