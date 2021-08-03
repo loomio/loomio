@@ -38,7 +38,7 @@ describe StanceService do
 
     it 'sets event parent to the poll created event' do
       poll_created_event
-      event = StanceService.create(stance: stance_created, actor: user)
+      event = StanceService.create(stance: stance_created, actor: user, force_create: true)
       expect(event.parent.id).to eq poll_created_event.id
     end
 

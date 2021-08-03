@@ -11,6 +11,7 @@ class StanceService
   end
 
   # is used for both create and update
+  # I deeply apologise for how this method could take a stance from 3 places.
   def self.create(stance:, actor:, params: {}, force_create: false)
 
     stance = Stance.where(
@@ -38,8 +39,9 @@ class StanceService
       stance.save!
     end
 
+    stance.update_option_scores
     stance.update_versions_count
-    stance.poll.reload.update_stance_data!
+    stance.poll.update_stance_data!
 
     event = if stance.created_event
       Events::StanceUpdated.publish!(stance)

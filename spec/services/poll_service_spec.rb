@@ -272,17 +272,12 @@ describe PollService do
       poll_created.hide_results_until_closed = true
       PollService.create(poll: poll_created, actor: user)
 
-      StanceService.create(stance: stance, actor: stance.participant)
-      expect(poll.stance_counts).to eq []
-      expect(poll.stance_data).to eq({})
-      expect(poll.matrix_counts).to eq []
-
+      StanceService.create(stance: stance, actor: stance.participant, force_create: true)
+      expect(poll_created.stance_counts).to eq []
       PollService.close(poll: poll_created, actor: user)
 
       poll_created.reload
-      expect(poll_created.stance_counts).to_not eq []
-      expect(poll_created.stance_data).to_not eq({})
-      # expect(poll_created.matrix_counts).to_not eq []
+      expect(poll_created.stance_counts).to eq [1]
     end
 
     it 'disallows the creation of new stances' do
@@ -310,7 +305,7 @@ describe PollService do
 
     it 'does not touch closed polls' do
       PollService.create(poll: poll_created, actor: user)
-      poll_created.update_attributes(closing_at: 1.day.ago, closed_at: 1.day.ago)
+      poll_created.update(closing_at: 1.day.ago, closed_at: 1.day.ago)
       expect { PollService.expire_lapsed_polls }.to_not change { poll_created.reload.closed_at }
     end
   end

@@ -37,6 +37,8 @@ describe PollOption do
       }
 
       it 'does not count old stances in total score' do
+        poll.update_stance_data!
+        poll_option.reload
         expect(poll_option.total_score).to eq 2
       end
     end

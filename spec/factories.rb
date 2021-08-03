@@ -294,6 +294,7 @@ FactoryBot.define do
   factory :stance do
     poll
     association :participant, factory: :user
+    reason { 'i have my reasons' }
   end
 
   factory :stance_choice do
