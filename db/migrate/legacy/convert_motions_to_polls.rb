@@ -45,7 +45,7 @@ class ConvertMotionsToPolls
         )
       end
       )
-      poll.update_stance_data
+      poll.update_stance_data!
 
       # set poll to closed if motion was closed
       PollService.do_closing_work(poll: poll) if motion.closed?

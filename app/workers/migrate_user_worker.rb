@@ -86,7 +86,7 @@ class MigrateUserWorker
     ].flatten.uniq.each do |poll|
       poll.update_undecided_voters_count
       poll.update_voters_count
-      poll.update_stance_data
+      poll.update_stance_data!
     end
 
     [source, destination].each do |user|

@@ -23,9 +23,7 @@ class Stance < ApplicationRecord
   has_many :stance_choices, dependent: :destroy
   has_many :poll_options, through: :stance_choices
 
-  has_paper_trail only: [:reason, :stance_choices_cache]
-
-  define_counter_cache(:versions_count)  { |stance| stance.versions.count }
+  has_paper_trail only: [:reason, :option_scores]
 
   accepts_nested_attributes_for :stance_choices
 
@@ -34,10 +32,11 @@ class Stance < ApplicationRecord
   alias :user :participant
   alias :author :participant
 
+  define_counter_cache(:versions_count) { |stance| stance.versions.count }
+  before_save :update_option_scores
+
   update_counter_cache :poll, :voters_count
   update_counter_cache :poll, :undecided_voters_count
-
-  before_save :update_stance_choices_cache
 
   scope :latest,         -> { where(latest: true).where(revoked_at: nil) }
   scope :admin,         ->  { where(admin: true) }
@@ -71,6 +70,15 @@ class Stance < ApplicationRecord
 
   alias :author :participant
 
+  def update_option_scores
+    self.option_scores = stance_choices.map { |sc| [sc.poll_option_id, sc.score] }.to_h
+  end
+
+  def update_option_scores!
+    update_option_scores
+    update_columns(option_scores: self[:option_scores])
+  end
+
   def author_id
     participant_id
   end
@@ -100,24 +108,16 @@ class Stance < ApplicationRecord
     reason_format
   end
 
+  def option_scores
+    self[:option_scores] || update_option_scores && self[:option_scores]
+  end
+
   def parent_event
     poll.created_event
   end
 
   def discarded?
     false
-  end
-
-  def update_stance_choices_cache
-    self.stance_choices_cache = stance_choices.map do |sc|
-      {poll_option_id: sc.poll_option_id, score: sc.score}
-    end
-  end
-
-  def update_stance_choices_cache!
-    update_columns(stance_choices_cache: stance_choices.map do |sc|
-        {poll_option_id: sc.poll_option_id, score: sc.score}
-    end)
   end
 
   def choice=(choice)
@@ -145,8 +145,7 @@ class Stance < ApplicationRecord
   end
 
   def score_for(option)
-    choice = stance_choices.find_by(poll_option_id: option.id)
-    (choice && choice.score) || 0
+    option_scores[option.id] || 0
   end
 
   private

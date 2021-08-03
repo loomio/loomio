@@ -146,7 +146,7 @@ class PollService
     poll.reset_latest_stances!
     poll.update_voters_count
     poll.update_undecided_voters_count
-    poll.update_stance_data
+    poll.update_stance_data!
 
     Stance.where(participant_id: users.pluck(:id), poll_id: poll.id, latest: true)
   end

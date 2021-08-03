@@ -39,7 +39,7 @@ class StanceService
     end
 
     stance.update_versions_count
-    stance.poll.update_stance_data
+    stance.poll.reload.update_stance_data!
 
     event = if stance.created_event
       Events::StanceUpdated.publish!(stance)

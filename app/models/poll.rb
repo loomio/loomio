@@ -234,10 +234,10 @@ class Poll < ApplicationRecord
     stance_counts.sum
   end
 
-  def update_stance_data
-    poll_options.each(&:update_total_score)
-    poll_options.each(&:update_voter_scores)
-    update_attribute(:stance_counts, poll_options.pluck(:total_score)) # should rename to option scores
+  def update_stance_data!
+    poll_options.each(&:update_total_score!)
+    poll_options.each(&:update_voter_scores!)
+    update_columns(stance_counts: poll_options.pluck(:total_score)) # should rename to option scores
   end
 
   # people who can vote.
@@ -387,7 +387,7 @@ class Poll < ApplicationRecord
     return unless @poll_option_removed_names.present?
     poll_options.where(name: @poll_option_removed_names).destroy_all
     @poll_option_removed_names = nil
-    update_stance_data
+    update_stance_data!
   end
 
   def poll_options_are_valid
