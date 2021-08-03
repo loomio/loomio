@@ -217,12 +217,12 @@ class PollService
     Events::PollOptionAdded.publish!(poll, actor, option_names)
   end
 
-  def self.destroy(poll:, actor:)
-    actor.ability.authorize! :destroy, poll
-    poll.destroy
-
-    EventBus.broadcast('poll_destroy', poll, actor)
-  end
+  # def self.destroy(poll:, actor:)
+  #   actor.ability.authorize! :destroy, poll
+  #   poll.destroy
+  #
+  #   EventBus.broadcast('poll_destroy', poll, actor)
+  # end
 
   def self.cleanup_examples
     Poll.where(example: true).where('created_at < ?', 1.day.ago).destroy_all
