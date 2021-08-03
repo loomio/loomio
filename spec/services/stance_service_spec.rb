@@ -55,7 +55,8 @@ describe StanceService do
     end
 
     it 'updates total_score on the poll' do
-      expect { StanceService.create(stance: stance_created, actor: user) }.to change { poll.total_score }.by(1)
+      StanceService.create(stance: stance_created, actor: user)
+      expect( poll.total_score ).to eq 1
     end
   end
 end

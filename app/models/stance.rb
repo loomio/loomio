@@ -63,14 +63,20 @@ class Stance < ApplicationRecord
   delegate :title,          to: :poll
 
   alias :author :participant
-  
-  after_save :update_counts!
 
-  def update_counts!
-    update_columns(
-      versions_count: versions.count,
-      option_scores: stance_choices.map { |sc| [sc.poll_option_id, sc.score] }.to_h
-    )
+  before_save :update_option_scores
+  after_save :update_versions_count!
+
+  def update_option_scores
+    self.option_scores = stance_choices.map { |sc| [sc.poll_option_id, sc.score] }.to_h
+  end
+
+  def update_option_scores!
+    update_columns(option_scores: update_option_scores)
+  end
+
+  def update_versions_count!
+    update_columns(versions_count: versions.count)
   end
 
   def author_id
