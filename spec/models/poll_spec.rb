@@ -45,21 +45,18 @@ describe Poll do
     let(:meeting) { create :poll_meeting }
 
     it 'orders by priority when non-meeting poll' do
-      poll.update(poll_option_names: [
-        'Orange',
-        'Apple',
-        'Pineapple'
-      ])
-      expect(poll.reload.poll_options.first.name).to eq 'Orange'
+      poll.update(poll_option_names: [ 'Orange', 'Apple' ])
+      expect(poll.poll_options.first.name).to eq 'Orange'
+      expect(poll.poll_options.second.name).to eq 'Apple'
+      expect(poll.poll_option_names).to eq [ 'Orange', 'Apple' ]
     end
 
     it 'orders by name when meeting poll' do
-      meeting.update(poll_option_names: [
-        '01-01-2018',
-        '01-01-2017',
-        '01-01-2016',
-      ])
-      expect(meeting.reload.poll_options.first.name).to eq '01-01-2016'
+      meeting.update(poll_option_names: [ '01-01-2018', '01-01-2017', '01-01-2016', ])
+      expect(meeting.poll_options.first.name).to eq '01-01-2016'
+      expect(meeting.poll_options.second.name).to eq '01-01-2017'
+      expect(meeting.poll_options.third.name).to eq '01-01-2018'
+      expect(meeting.reload.poll_option_names).to eq ['01-01-2016', '01-01-2017', '01-01-2018']
     end
   end
 

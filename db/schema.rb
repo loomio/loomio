@@ -722,7 +722,7 @@ ActiveRecord::Schema.define(version: 2021_08_03_004012) do
     t.string "content_locale"
     t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.jsonb "link_previews", default: [], null: false
-    t.jsonb "option_scores"
+    t.jsonb "option_scores", default: {}, null: false
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id"], name: "index_stances_on_poll_id"
     t.index ["token"], name: "index_stances_on_token", unique: true

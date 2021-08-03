@@ -30,22 +30,15 @@ describe Stance do
     let(:author) { FactoryBot.create(:user) }
 
     it "string" do
-      Stance.create(poll: poll, participant: author, choice: 'dog')
+      stance = Stance.create(poll: poll, participant: author, choice: 'dog')
       poll.update_stance_data!
-      expect(poll.stance_data).to eq({'dog' => 1, 'cat' => 0})
+      expect(poll.stance_counts).to eq([1,0])
     end
 
     it "array" do
       Stance.create(poll: poll, participant: author, choice: ['dog', 'cat'])
       poll.update_stance_data!
-      expect(poll.stance_data).to eq({'dog' => 1, 'cat' => 1})
-    end
-
-    # TODO: when we have poll types which accept alternate scores, update this test to test that.
-    it "map" do
-      Stance.create(poll: poll, participant: author, choice: {'dog' => 1, 'cat' => 1})
-      poll.update_stance_data!
-      expect(poll.stance_data).to eq({'dog' => 1, 'cat' => 1})
+      expect(poll.stance_counts).to eq([1,1])
     end
   end
 end

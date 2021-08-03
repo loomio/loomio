@@ -52,7 +52,7 @@ class Poll < ApplicationRecord
   enum notify_on_closing_soon: {nobody: 0, author: 1, undecided_voters: 2, voters: 3}
 
   before_save :set_stances_in_discussion
-  after_update :remove_poll_options
+  after_save :update_stance_data!
 
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
@@ -235,9 +235,11 @@ class Poll < ApplicationRecord
   end
 
   def update_stance_data!
-    poll_options.each(&:update_total_score!)
-    poll_options.each(&:update_voter_scores!)
-    update_columns(stance_counts: poll_options.pluck(:total_score)) # should rename to option scores
+    remove_poll_options
+    poll_options.each(&:update_total_score)
+    poll_options.each(&:update_voter_scores)
+    reload
+    update_columns(stance_counts: poll_options.map(&:total_score)) # should rename to option scores
   end
 
   # people who can vote.
@@ -314,7 +316,7 @@ class Poll < ApplicationRecord
   end
 
   def poll_option_names
-    poll_options.pluck(:name)
+    poll_options.map(&:name)
   end
 
   def poll_option_names=(names)
@@ -387,7 +389,6 @@ class Poll < ApplicationRecord
     return unless @poll_option_removed_names.present?
     poll_options.where(name: @poll_option_removed_names).destroy_all
     @poll_option_removed_names = nil
-    update_stance_data!
   end
 
   def poll_options_are_valid

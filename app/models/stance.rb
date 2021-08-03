@@ -33,8 +33,9 @@ class Stance < ApplicationRecord
   alias :author :participant
 
   define_counter_cache(:versions_count) { |stance| stance.versions.count }
-  before_save :update_option_scores
-
+  define_counter_cache(:option_scores) do |stance|
+    stance.stance_choices.map { |sc| [sc.poll_option_id, sc.score] }.to_h
+  end
   update_counter_cache :poll, :voters_count
   update_counter_cache :poll, :undecided_voters_count
 
@@ -70,15 +71,6 @@ class Stance < ApplicationRecord
 
   alias :author :participant
 
-  def update_option_scores
-    self.option_scores = stance_choices.map { |sc| [sc.poll_option_id, sc.score] }.to_h
-  end
-
-  def update_option_scores!
-    update_option_scores
-    update_columns(option_scores: self[:option_scores])
-  end
-
   def author_id
     participant_id
   end
@@ -106,10 +98,6 @@ class Stance < ApplicationRecord
 
   def body_format
     reason_format
-  end
-
-  def option_scores
-    self[:option_scores] || update_option_scores && self[:option_scores]
   end
 
   def parent_event
