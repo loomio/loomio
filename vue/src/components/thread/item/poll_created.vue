@@ -55,7 +55,8 @@ thread-item.poll-created(:event="event" :is-returning="isReturning")
       router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
       translation(v-if="poll.translation.title" :model='poll', field='title')
       tags-display(:tags="poll.tags()")
-  poll-common-closing-at(:poll='poll')
+  .text--secondary
+    poll-common-closing-at(:poll='poll')
   poll-common-set-outcome-panel(:poll='poll' v-if="!outcome")
   poll-common-outcome-panel(:outcome='outcome' v-if='outcome')
   formatted-text.poll-common-details-panel__details(:model="poll" column="details")
