@@ -95,17 +95,6 @@ export default class StanceModel extends BaseModel
     else
       sortBy choices, '-score'
 
-  stanceChoiceNames: ->
-    map(@pollOptions(), 'name')
-
-  # choose: (optionIds) ->
-  #   each @recordStore.stanceChoices.find(stanceId: @id), (stanceChoice) ->
-  #     stanceChoice.remove()
-  #
-  #   each compact(flatten([optionIds])), (optionId) =>
-  #     @recordStore.stanceChoices.create(pollOptionId: parseInt(optionId), stanceId: @id)
-  #   @
-
   votedFor: (option) ->
     includes map(@pollOptions(), 'id'), option.id
 
