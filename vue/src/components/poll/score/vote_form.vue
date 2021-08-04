@@ -21,7 +21,7 @@ export default
           @pollOptions = @poll.pollOptionsForVoting()
           @stanceChoices = map @pollOptions, (option) =>
               poll_option_id: option.id
-              score: @stance.scoreFor(option).score
+              score: @stance.scoreFor(option)
               name: option.name
               option: option
   methods:
