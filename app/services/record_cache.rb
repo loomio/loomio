@@ -33,7 +33,7 @@ class RecordCache
       collection_ids = collection.map(&:id)
       obj.add_discussions(collection)
       obj.add_groups_subscriptions_memberships Group.includes(:subscription, :default_group_cover).where(id: ids_and_parent_ids(Group, collection.map(&:group_id).compact))
-      obj.add_polls_options_stances_choices_outcomes Poll.active.where(discussion_id: collection_ids)
+      obj.add_polls_options_stances_outcomes Poll.active.where(discussion_id: collection_ids)
 
     when 'Reaction'
       obj.user_ids.concat collection.map(&:user_id)
@@ -53,15 +53,15 @@ class RecordCache
     when 'Poll'
       obj.add_groups Group.includes(:default_group_cover).where(id: ids_and_parent_ids(Group, collection.map(&:group_id)))
       obj.add_discussions(Discussion.where(id: collection.map(&:discussion_id).uniq.compact))
-      obj.add_polls_options_stances_choices_outcomes collection
+      obj.add_polls_options_stances_outcomes collection
 
     when 'Outcome'
       obj.add_polls Poll.where(id: collection.map(&:poll_id))
       obj.user_ids.concat collection.map(&:author_id)
 
     when 'Stance'
-      obj.add_stances_and_choices(collection)
-      obj.add_polls_options_stances_choices_outcomes Poll.where(id: collection.map(&:poll_id))
+      obj.add_stances(collection)
+      obj.add_polls_options_stances_outcomes Poll.where(id: collection.map(&:poll_id))
 
     when 'User'
       # do nothing
@@ -120,7 +120,7 @@ class RecordCache
       # ids[:group].concat all_parent_ids_for(Group, ids[:group])
     end
 
-    add_polls_options_stances_choices_outcomes Poll.where(id: ids[:poll])
+    add_polls_options_stances_outcomes Poll.where(id: ids[:poll])
     add_discussions Discussion.where(id: ids[:discussion])
 
     add_events_eventables   Event.includes(:eventable).where(id: self.class.ids_and_parent_ids(Event, collection.map(&:id)))
@@ -181,12 +181,12 @@ class RecordCache
     end
   end
 
-  def add_polls_options_stances_choices_outcomes(collection)
+  def add_polls_options_stances_outcomes(collection)
     return if exclude_types.include?('poll')
     collection_ids = collection.map(&:id)
     add_polls collection
     add_poll_options PollOption.where(poll_id: collection_ids)
-    add_stances_and_choices Stance.where(poll_id: collection_ids, participant_id: current_user_id, latest: true)
+    add_stances Stance.where(poll_id: collection_ids, participant_id: current_user_id, latest: true)
     add_outcomes Outcome.where(poll_id: collection_ids, latest: true)
   end
 
@@ -262,33 +262,16 @@ class RecordCache
     end
   end
 
-  def add_stances_and_choices(collection)
-    return if exclude_types.include?('stance')
-    add_stances collection
-    # add_stance_choices StanceChoice.where(stance_id: collection.map(&:id))
-  end
-
   def add_stances(collection)
     return [] if exclude_types.include?('stance')
     scope[:stances_by_id] ||= {}
     scope[:stances_by_poll_id] ||= {}
-    scope[:stance_choices_by_stance_id] ||= {}
     collection.each do |stance|
       @user_ids.push stance.participant_id
       scope[:stances_by_id][stance.id] = stance
       scope[:stances_by_poll_id][stance.poll_id] = stance
-      scope[:stance_choices_by_stance_id][stance.id] ||= []
     end
   end
-
-  # def add_stance_choices(collection)
-  #   return [] if exclude_types.include?('stance_choice')
-  #   scope[:stance_choices_by_stance_id] ||= {}
-  #   collection.each do |choice|
-  #     scope[:stance_choices_by_stance_id][choice.stance_id] ||= []
-  #     scope[:stance_choices_by_stance_id][choice.stance_id].push choice
-  #   end
-  # end
 
   def add_events(collection)
     return [] if exclude_types.include?('event')
