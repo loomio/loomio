@@ -22,7 +22,7 @@ export default
 
   props:
     poll: Object
-    
+
   computed:
     type: ->
       switch @poll.pollType
@@ -38,6 +38,7 @@ export default
 
 <template lang="pug">
 .poll-common-chart-panel
+  v-subheader.ml-n4(v-t="'poll_common.results'")
   poll-common-chart-bar(v-if="type == 'bar'" :poll="poll")
   poll-common-chart-count(v-if="type == 'count'" :poll="poll")
   poll-common-chart-pie(v-if="type == 'pie'" :poll="poll")

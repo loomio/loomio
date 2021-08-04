@@ -17,7 +17,7 @@ export default
     @watchRecords
       collections: ['pollOptions']
       query: =>
-        @pollOptions = slice @poll.pollOptions(), 0, max
+        @options = @poll.pollOptions()
 
   computed:
     radius: ->

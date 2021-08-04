@@ -30,19 +30,33 @@ export default
   table.mx-auto
     tbody
       tr( v-for="option in options" :key="option.id")
-        td.px-2 {{option.optionName()}}
-        td.px-2.text-right {{option.totalScore}}
-        td.px-2.text-right {{option.scorePercent()}}%
-        td.px-2(style="width: 250px")
+        td.pr-2.underlineme {{option.optionName()}}
+        td.px-2.text-right.underlineme {{option.totalScore}}
+        td.px-2.text-right.underlineme {{option.scorePercent()}}%
+        td.pl-2(style="min-width: 40%")
           .poll-common-bar-chart__bar.rounded(:style="styleData(option)")
-            user-avatar(v-for="voter in option.voters()" :key="voter.id" :user="voter" :size="24" no-link)
+            user-avatar(v-for="voter in option.voters()" :key="voter.id" :user="voter" :size="20" no-link)
 </template>
 <style lang="sass">
-.poll-common-bar-chart
-  tr, th
-    border-collapse: collapse
-    border: 1px solid #ddd
+.theme--dark
+  .poll-common-bar-chart
+    td.underlineme
+      border-bottom: thin solid hsla(0,0%,100%,.12)
 
+.theme--light
+  .poll-common-bar-chart
+    td.underlineme
+      border-bottom: thin solid #eee
+
+.poll-common-bar-chart
+  th
+    padding-right: 8px
+    text-align: left
+
+  table, td, tr, th
+    border-collapse: collapse
+    // border-left: 1px solid #ddd
+    // border-right: 1px solid #ddd
 
   display: flex
   flex-direction: column

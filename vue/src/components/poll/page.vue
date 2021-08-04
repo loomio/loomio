@@ -46,7 +46,7 @@ export default
 <template lang="pug">
 .poll-page
   v-main
-    v-container.max-width-800
+    v-container.max-width-800.pa-sm-3.pa-0
       loading(:until="poll")
         poll-common-card(:poll='poll' is-page)
 </template>
