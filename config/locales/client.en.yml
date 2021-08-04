@@ -2150,6 +2150,7 @@ en:
       new_comment: "{{actor}} commented. {{when}}"
       poll_created: "{{actor}} started a {{pollType}}. {{when}}"
       stance_created: "{{actor}} voted. {{when}}"
+      stance_updated: "{{actor}} edited their vote. {{when}}"
       outcome_created: "{{actor}} shared an outcome. {{when}}"
       poll_expired: "{{pollType}} closed. {{when}}"
     removed: "Item removed"
@@ -2174,6 +2175,7 @@ en:
     poll_option_added:             "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> added options to the {{polltype}}"
     poll_expired:                  "{{polltype}} closed"
     stance_created:                "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> voted on: <strong>{{title}}</strong>"
+    stance_updated:                "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> updated their vote on: <strong>{{title}}</strong>"
     event_removed:                 "Removed from thread"
 
   poll_common_subscribe_form:
