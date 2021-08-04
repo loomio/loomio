@@ -5,6 +5,12 @@ import { max, values, orderBy, compact } from 'lodash'
 export default
   props:
     poll: Object
+
+  created: ->
+    @watchRecords
+      collections: ['pollOptions']
+      query: => @options = @poll.pollOptions()
+
   methods:
     barTextFor: (option) ->
       compact([option.name, option.totalScore]).join(" - ").replace(/\s/g, '\u00a0')
@@ -17,23 +23,27 @@ export default
     styleData: (option) ->
       'background-image': @backgroundImageFor(option)
       'background-size': "#{@percentageFor(option)} 100%"
-  computed:
-    options: -> @poll.pollOptions()
 </script>
 
 <template lang="pug">
 .poll-common-bar-chart
-  table
+  table.mx-auto
     tbody
-      tr(v-for="option in options" :key="option.id")
-        td(style="min-width: 20%") {{option.optionName()}}
-        td.px-1(style="width: 0").text-right {{option.totalScore}}
-        td.poll-common-bar-chart__bar.rounded(:style="styleData(option)")
-          user-avatar(v-for="voter in option.voters()" :key="voter.id" :user="voter" :size="24" no-link)
-        td(style="width: 0").text-right {{option.scorePercent()}}%
+      tr( v-for="option in options" :key="option.id")
+        td.px-2 {{option.optionName()}}
+        td.px-2.text-right {{option.totalScore}}
+        td.px-2.text-right {{option.scorePercent()}}%
+        td.px-2(style="width: 250px")
+          .poll-common-bar-chart__bar.rounded(:style="styleData(option)")
+            user-avatar(v-for="voter in option.voters()" :key="voter.id" :user="voter" :size="24" no-link)
 </template>
 <style lang="sass">
 .poll-common-bar-chart
+  tr, th
+    border-collapse: collapse
+    border: 1px solid #ddd
+
+
   display: flex
   flex-direction: column
   width: 100%

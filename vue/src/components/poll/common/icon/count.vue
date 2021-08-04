@@ -29,7 +29,7 @@ export default
           .x(@size / 2)
           .y((@size / 4) + 3)
   watch:
-    stanceCounts: -> @draw()
+    'poll.stanceCounts': -> @draw()
 
   computed:
     fontSize: -> @size * 0.33

@@ -11,9 +11,15 @@ export default
   data: ->
     svgEl: null
     shapes: []
+    options: []
+
+  created: ->
+    @watchRecords
+      collections: ['pollOptions']
+      query: =>
+        @pollOptions = slice @poll.pollOptions(), 0, max
 
   computed:
-    options: -> @poll.pollOptions()
     radius: ->
       @size / 2.0
 

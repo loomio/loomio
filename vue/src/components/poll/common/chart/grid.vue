@@ -14,7 +14,7 @@ export default
 
   created: ->
     @watchRecords
-      collections: ['poll_options']
+      collections: ['pollOptions']
       query: (store) =>
         @pollOptions = @poll.pollOptions()
         @decidedVoters = @poll.decidedVoters()

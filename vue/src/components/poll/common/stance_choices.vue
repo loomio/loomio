@@ -41,5 +41,4 @@ export default
       span(:style="{color: choice.pollOption.color}" v-if="variableScore") {{choice.rank || choice.score}}
       span.ml-2.text--secondary
         |{{ choice.pollOption.optionName() }}
-
 </template>

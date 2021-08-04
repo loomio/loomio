@@ -22,7 +22,7 @@ export default
 
   props:
     poll: Object
-
+    
   computed:
     type: ->
       switch @poll.pollType

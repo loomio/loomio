@@ -16,7 +16,7 @@ export default
     optionGroups: []
   created: ->
     @watchRecords
-      collections: ['poll_options']
+      collections: ['pollOptions']
       query: (records) =>
         if @stance.poll().optionsDiffer(@pollOptions)
           options = @stance.poll().pollOptions()

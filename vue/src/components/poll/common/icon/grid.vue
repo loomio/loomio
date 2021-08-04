@@ -11,7 +11,7 @@ export default
 
   created: ->
     @watchRecords
-      collections: ['poll_options']
+      collections: ['pollOptions']
       query: (store) =>
         max = 10
         @pollOptions = slice @poll.pollOptions(), 0, max

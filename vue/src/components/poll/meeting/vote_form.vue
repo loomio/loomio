@@ -23,7 +23,7 @@ export default
   created: ->
     EventBus.$on 'timeZoneSelected', @setTimeZone
     @watchRecords
-      collections: ['poll_options', 'poll']
+      collections: ['pollOptions']
       query: (records) =>
         @canRespondMaybe =  @stance.poll().customFields.can_respond_maybe
         @stanceValues = if @stance.poll().customFields.can_respond_maybe then [2,1,0] else [2, 0]
