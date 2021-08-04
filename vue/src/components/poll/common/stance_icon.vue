@@ -23,6 +23,8 @@ export default
       v-icon(small :color="stance.pollOption().color") mdi-check
     .poll-common-chart-preview__stance(v-if="poll.pollType == 'score'")
       v-icon(small :color="stance.pollOption().color") mdi-check
+    .poll-common-chart-preview__stance(v-if="poll.pollType == 'dot_vote'")
+      v-icon(small :color="stance.pollOption().color") mdi-check
     .poll-common-chart-preview__stance(v-if="poll.pollType == 'meeting'")
       v-icon(small) mdi-check
   .poll-common-chart-preview__stance.poll-proposal-chart-preview__stance--undecided(v-else)
