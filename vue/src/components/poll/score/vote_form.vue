@@ -20,14 +20,12 @@ export default
         if @stance.poll().optionsDiffer(@pollOptions)
           @pollOptions = @poll.pollOptionsForVoting()
           @stanceChoices = map @pollOptions, (option) =>
-              poll_option_id: option.id
-              score: @stance.scoreFor(option)
-              name: option.name
-              option: option
+            score: @stance.scoreFor(option)
+            option: option
   methods:
     submit: ->
       @stance.stanceChoicesAttributes = map @stanceChoices, (choice) =>
-        poll_option_id: choice.poll_option_id
+        poll_option_id: choice.option.id
         score: choice.score
       actionName = if !@stance.castAt then 'created' else 'updated'
       @stance.save()
@@ -43,7 +41,7 @@ export default
 <template lang='pug'>
 form.poll-score-vote-form(@submit.prevent='submit()')
   .poll-score-vote-form__options
-    .poll-score-vote-form__option(v-for='choice in stanceChoices', :key='choice.poll_option_id')
+    .poll-score-vote-form__option(v-for='choice in stanceChoices', :key='choice.option.id')
       v-subheader.poll-score-vote-form__option-label {{ choice.option.name }}
       v-slider.poll-score-vote-form__score-slider(
         v-model='choice.score'

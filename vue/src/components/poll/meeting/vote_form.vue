@@ -9,6 +9,7 @@ import {compact, map, toPairs, fromPairs, some, sortBy, isEqual} from 'lodash'
 export default
   props:
     stance: Object
+
   data: ->
     stanceChoices: []
     pollOptions: []
@@ -27,13 +28,11 @@ export default
         @canRespondMaybe =  @stance.poll().customFields.can_respond_maybe
         @stanceValues = if @stance.poll().customFields.can_respond_maybe then [2,1,0] else [2, 0]
         if @stance.poll().optionsDiffer(@pollOptions)
-          @pollOptions = sortBy @stance.poll().pollOptions(), 'name'
+          @pollOptions = @stance.poll().pollOptionsForVoting()
           @stanceChoices = @pollOptions.map (option) =>
-            lastChoice = @stance.stanceChoices().find((sc) => sc.pollOptionId == option.id) || {score: 0}
-            id: option.id
-            pollOption: => option
-            poll: => @stance.poll()
-            score: lastChoice.score
+            pollOption: option
+            poll_option_id: option.id
+            score: @stance.scoreFor(option)
 
   methods:
     setTimeZone: (e, zone) ->
@@ -41,7 +40,7 @@ export default
 
     submit: ->
       @stance.stanceChoicesAttributes = @stanceChoices.map (choice) ->
-        {poll_option_id: choice.id, score: choice.score}
+        {poll_option_id: choice.poll_option_id, score: choice.score}
 
       actionName = if !@stance.castAt then 'created' else 'updated'
       @stance.save()

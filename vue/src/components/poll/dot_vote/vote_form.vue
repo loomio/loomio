@@ -20,16 +20,14 @@ export default
         if @stance.poll().optionsDiffer(@pollOptions)
           @pollOptions = @stance.poll().pollOptionsForVoting()
           @stanceChoices = map @pollOptions, (option) =>
-            poll_option_id: option.id
             option: option
             score: @stance.scoreFor(option)
-            name: option.name
 
   methods:
     submit: ->
       if sum(map(@stanceChoices, 'score')) > 0
         @stance.stanceChoicesAttributes = map @stanceChoices, (choice) =>
-          poll_option_id: choice.poll_option_id
+          poll_option_id: choice.option.id
           score: choice.score
       actionName = if !@stance.castAt then 'created' else 'updated'
       @stance.save()
@@ -73,7 +71,7 @@ export default
 .poll-dot-vote-vote-form
   v-subheader.poll-dot-vote-vote-form__dots-remaining(v-t="{ path: 'poll_dot_vote_vote_form.dots_remaining', args: { count: dotsRemaining } }")
   .poll-dot-vote-vote-form__options
-    .poll-dot-vote-vote-form__option(v-for='choice in stanceChoices', :key='choice.poll_option_id')
+    .poll-dot-vote-vote-form__option(v-for='choice in stanceChoices', :key='choice.option.id')
       v-subheader.poll-dot-vote-vote-form__option-label {{ choice.option.name }}
       v-layout(row align-center)
         v-slider.poll-dot-vote-vote-form__slider.mr-4(
