@@ -192,39 +192,39 @@ describe API::V1::CommentsController do
       end
     end
 
-    describe 'destroy' do
-      context 'allowed to delete' do
-        it "destroys a comment" do
-          CommentService.create(comment: comment, actor: user)
-          delete :destroy, params: { id: comment.id }
-          expect(response.status).to eq 200
-          expect(Comment.where(id: comment.id).count).to be 0
-        end
-      end
-
-      context 'not a group member' do
-        it "gives error of some kind" do
-          sign_in another_user
-          CommentService.create(comment: comment, actor: user)
-
-          delete(:destroy, params: { id: comment.id })
-          expect(response.status).to eq 403
-          expect(JSON.parse(response.body)['exception']).to include 'CanCan::AccessDenied'
-        end
-      end
-
-      context 'member not permitted to delete' do
-        it "gives error of some kind" do
-          sign_in another_user
-          comment.group.add_member! another_user
-          comment.group.update(members_can_delete_comments: false)
-          CommentService.create(comment: comment, actor: another_user)
-
-          delete(:destroy, params: { id: comment.id })
-          expect(response.status).to eq 403
-          expect(JSON.parse(response.body)['exception']).to include 'CanCan::AccessDenied'
-        end
-      end
-    end
+    # describe 'destroy' do
+    #   context 'allowed to delete' do
+    #     it "destroys a comment" do
+    #       CommentService.create(comment: comment, actor: user)
+    #       delete :destroy, params: { id: comment.id }
+    #       expect(response.status).to eq 200
+    #       expect(Comment.where(id: comment.id).count).to be 0
+    #     end
+    #   end
+    #
+    #   context 'not a group member' do
+    #     it "gives error of some kind" do
+    #       sign_in another_user
+    #       CommentService.create(comment: comment, actor: user)
+    #
+    #       delete(:destroy, params: { id: comment.id })
+    #       expect(response.status).to eq 403
+    #       expect(JSON.parse(response.body)['exception']).to include 'CanCan::AccessDenied'
+    #     end
+    #   end
+    #
+    #   context 'member not permitted to delete' do
+    #     it "gives error of some kind" do
+    #       sign_in another_user
+    #       comment.group.add_member! another_user
+    #       comment.group.update(members_can_delete_comments: false)
+    #       CommentService.create(comment: comment, actor: another_user)
+    #
+    #       delete(:destroy, params: { id: comment.id })
+    #       expect(response.status).to eq 403
+    #       expect(JSON.parse(response.body)['exception']).to include 'CanCan::AccessDenied'
+    #     end
+    #   end
+    # end
   end
 end

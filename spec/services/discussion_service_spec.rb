@@ -229,24 +229,24 @@ describe 'DiscussionService' do
     end
   end
 
-  describe 'destroy' do
-
-    it 'checks the actor has permission' do
-      user.ability.should_receive(:authorize!).with(:destroy, discussion)
-      DiscussionService.destroy(discussion: discussion, actor: user)
-    end
-
-    context 'actor is permitted' do
-      it 'deletes the discussion' do
-        DiscussionService.destroy(discussion: discussion, actor: user)
-        expect(discussion.discarded_at).to_not eq nil
-      end
-    end
-
-    context 'actor is not permitted' do
-      it 'does not delete the discussion' do
-        expect { DiscussionService.destroy discussion: discussion, actor: another_user }.to raise_error CanCan::AccessDenied
-      end
-    end
-  end
+  # describe 'destroy' do
+  #
+  #   it 'checks the actor has permission' do
+  #     user.ability.should_receive(:authorize!).with(:destroy, discussion)
+  #     DiscussionService.destroy(discussion: discussion, actor: user)
+  #   end
+  #
+  #   context 'actor is permitted' do
+  #     it 'deletes the discussion' do
+  #       DiscussionService.destroy(discussion: discussion, actor: user)
+  #       expect(discussion.discarded_at).to_not eq nil
+  #     end
+  #   end
+  #
+  #   context 'actor is not permitted' do
+  #     it 'does not delete the discussion' do
+  #       expect { DiscussionService.destroy discussion: discussion, actor: another_user }.to raise_error CanCan::AccessDenied
+  #     end
+  #   end
+  # end
 end
