@@ -83,15 +83,13 @@ export default class StanceModel extends BaseModel
     choices = map @optionScores, (score, pollOptionId) =>
       {
         score: score,
-        pollOptionId: pollOptionId,
         rank: (poll.pollType == 'ranked_choice') && (poll.customFields.minimum_stance_choices - score + 1),
         show: (score > 0) || poll.pollType == "score",
         pollOption: optionsById[pollOptionId]
-        pollOptionPriority: optionsById[pollOptionId].priority
       }
 
     if poll.pollType == 'meeting'
-      sortBy choices, 'pollOptionPriority'
+      sortBy choices, (c) -> c.pollOption.priority
     else
       sortBy choices, '-score'
 
