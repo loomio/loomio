@@ -60,8 +60,7 @@ export default
       tr(v-for="option in options" :key="option.id")
         td.poll-meeting-chart__meeting-time
           poll-meeting-time(:name='option.name' :zone='zone')
-        td.total.text-right.pr-2
-          strong {{option.totalScore/2}}
+        td.total.text-right.pr-2 {{option.totalScore/2}}
 
         td(v-for="user in decidedVoters" :key="user.id")
           .poll-meeting-chart__cell(:class="classForScore(option.voterScores[user.id])")
@@ -77,7 +76,11 @@ export default
   background-color: none
 
 .poll-meeting-chart-table tbody tr:hover
-  background-color: #EEEEEE
+  background-color: #EEE
+
+.theme--dark
+  .poll-meeting-chart-table tbody tr:hover
+    background-color: #333
 
 .poll-meeting-chart__bar
   border: 1px solid
@@ -90,8 +93,8 @@ export default
   border-radius: 2px
 
 .poll-meeting-chart__cell
-  padding: 0
   width: 24px
+  height: 24px
   border-radius: 2px
 .poll-meeting-chart__cell--yes
   background-color: #00D177
