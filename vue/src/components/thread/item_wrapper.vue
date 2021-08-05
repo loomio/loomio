@@ -58,6 +58,11 @@ export default
 </template>
 
 <style lang="sass">
+.theme--dark
+  .thread-item-wrapper
+    &:empty
+      background-color: #333
+
 .thread-item-wrapper
   &:empty
     min-height: 100px
