@@ -75,6 +75,12 @@ export default class StanceModel extends BaseModel
   pollOptions: ->
     @recordStore.pollOptions.find(@pollOptionIds())
 
+  choose: (optionIds) ->
+    @optionScores = {}
+    compact(flatten([optionIds])).forEach (id) ->
+      @optionScores[id] = 1
+    @
+
   sortedChoices: ->
     optionsById = {}
     @pollOptions().forEach (o) -> optionsById[o.id] = o
