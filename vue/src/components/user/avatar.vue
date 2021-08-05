@@ -2,6 +2,8 @@
 import { is2x } from '@/shared/helpers/window'
 import Gravatar from 'vue-gravatar';
 import Records from '@/shared/services/records'
+import AppConfig from '@/shared/services/app_config'
+import { pick } from 'lodash'
 
 export default
   components:
@@ -40,6 +42,11 @@ export default
       return @user.avatarUrl if typeof @user.avatarUrl is 'string'
       @user.avatarUrl['large']
 
+    color: ->
+      colors = pick AppConfig.theme.brand_colors, ['gold', 'sky', 'wellington', 'sunset']
+      idx = (@user.id || 0) % Object.values(colors).length
+      Object.values(AppConfig.theme.brand_colors)[idx]
+
     componentType:  ->
       if @noLink or !@user.id
         'div'
@@ -50,7 +57,7 @@ export default
 
 <template lang="pug">
 component.user-avatar(aria-hidden="true" :is="componentType" :to="!noLink && urlFor(user)" :style="{ 'width': width + 'px', margin: '0' }")
-  v-avatar(:title='user.name' :size='width' color="grey lighten-1")
+  v-avatar(:title='user.name' :size='width' :color="color")
     v-gravatar(v-if="user.avatarKind === 'gravatar'" :hash='user.emailHash' :gravatar-size='gravatarSize' :alt='user.avatarInitials')
     img(v-else-if="user.avatarKind === 'uploaded'" :alt='user.avatarInitials' :src='uploadedAvatarUrl')
     span.user-avatar--initials(v-else-if="user.avatarKind === 'initials'" :style="{width: width+'px', height: width+'px'}") {{user.avatarInitials}}

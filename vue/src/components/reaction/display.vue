@@ -89,14 +89,19 @@ export default
 
 <style lang="sass">
 .reactions-display__group
-	opacity: 0.8
-	display: flex
-	align-items: center
-	margin-right: 2px
-	span
-		font-size: 20px
-		line-height: 20px
-		margin-bottom: -5px
+  opacity: 0.8
+  display: flex
+  align-items: center
+  margin-right: 2px
+  span
+    font-size: 20px
+    line-height: 20px
+
+  .user-avatar
+    span
+      font-size: 10px
+      line-height: 20px
+      margin-bottom: -2px
 .reactions-display__emojis
-	display: flex
+  display: flex
 </style>

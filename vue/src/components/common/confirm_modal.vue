@@ -8,7 +8,6 @@ export default
     close:
       type: Function
       default: ->
-        console.log 'closing time'
         EventBus.$emit('closeModal')
     confirm: Object
 

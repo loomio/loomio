@@ -43,7 +43,6 @@ export default
       visibleIds = Records.groups.collection.chain().
                      find(parentId: @group.id).
                      find(groupPrivacy: {$in: ['closed', 'open']}).data().map (g) -> g.id
-      console.log memberIds, visibleIds
 
       chain = Records.groups.collection.chain().
                      find(parentId: @group.id, id: {$in: memberIds.concat(visibleIds)}).
