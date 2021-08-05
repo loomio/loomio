@@ -16,17 +16,6 @@ export default
   .poll-proposal-chart-panel__chart-container.d-flex.align-center
     poll-common-icon-panel.poll-proposal-chart-panel__chart.mr-4(:poll="poll" :size="128")
     poll-common-chart-table(:poll="poll" :options="options")
-    //- table.poll-proposal-chart-panel__legend(role="presentation")
-    //-   tbody
-    //-     tr(v-for="option in options" :key="option.id")
-    //-       td
-    //-         .poll-proposal-chart-panel__label(:class="'poll-proposal-chart-panel__label--' + option.name")
-    //-           | {{ option.totalScore }}
-    //-           | {{ option.optionName() }}
-    //-       td
-    //-         user-avatar(:user="voter" v-for="voter in optionVoters[option.id]" :size="24")
-    //-       td.text-right
-    //-         |{{ option.scorePercent() }}%
 </template>
 
 <style lang="sass">

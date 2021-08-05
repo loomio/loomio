@@ -2058,6 +2058,8 @@ en:
     ranked_choice_updated: Ranked choice updated
     rank: Rank
     points: Points
+    average: Average
+    pct_of_points: '% of points'
 
   poll_meeting_time_field:
     add_time_slot: Add time slot

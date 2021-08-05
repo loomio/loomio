@@ -41,7 +41,7 @@ export default
 <template lang="pug">
 .poll-common-chart-panel
   v-subheader.ml-n4(v-t="'poll_common.results'")
-  poll-common-chart-poll(v-if="pollType == 'poll'"
+  poll-common-chart-poll(v-if="['poll', 'score', 'dot_vote', 'ranked_choice'].includes(pollType)"
     :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
   poll-common-chart-count(v-if="pollType == 'count'"
     :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
@@ -49,8 +49,8 @@ export default
     :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
   poll-common-chart-meeting(v-if="pollType == 'meeting'"
     :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
-  poll-common-chart-ranked-choice(v-if="pollType == 'ranked_choice'"
-    :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
+  //- poll-common-chart-ranked-choice(v-if="pollType == 'ranked_choice'"
+  //-   :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
 </template>
 
 <style lang="sass">

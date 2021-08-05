@@ -26,52 +26,43 @@ export default
 
 <template lang="pug">
 .poll-common-chart-table
-  table
-    thead(v-if="!simple")
+  v-simple-table(dense)
+    thead
       tr
-        th.text-left Option
-        th.text-right.numcol Total Score
-        th.text-right.numcol Voter Count
-        th.text-right.numcol Average Score
-        th Voters
+        th Option
+        th(v-if="!simple" v-t="'poll_ranked_choice_form.rank'")
+        th(v-t="'poll_ranked_choice_form.points'")
+        th(v-if="!simple" v-t="'membership_card.voters'")
+        th(v-if="!simple" v-t="'poll_ranked_choice_form.average'")
+        th(v-t="'poll_ranked_choice_form.pct_of_points'")
+        th(v-if="poll.pollType != 'ranked_choice'") Voters
     tbody
-      tr(v-for="option in options" :key="option.id")
-        td.pa-1.underlineme(:style="'border-left: solid 4px '+option.color")  {{option.optionName()}}
-        td.pa-1.text-right.underlineme {{option.totalScore}}
-        td.pa-1.text-right.underlineme(v-if="!simple") {{option.voterIds().length}}
-        td.pa-1.text-right.underlineme(v-if="!simple") {{option.averageScore().toFixed(1)}}
-        td.pa-1.text-right.underlineme {{option.scorePercent()}}%
-        td.pl-1.underlineme(style="min-width: 40%")
+      tr(v-for="option, index in options" :key="option.id")
+        td(:style="'border-left: solid 4px '+option.color")  {{option.optionName()}}
+        td.text-right(v-if="!simple") {{index+1}}
+        td.text-right {{option.totalScore}}
+        td.text-right(v-if="!simple") {{option.voterIds().length}}
+        td.text-right(v-if="!simple") {{option.averageScore().toFixed(1)}}
+        td.text-right {{option.scorePercent()}}%
+        td.pa-1(v-if="poll.pollType != 'ranked_choice'")
           user-avatar.float-left(v-for="voter in votersByOptionId[option.id]" :key="voter.id" :user="voter" :size="24" no-link)
 </template>
 <style lang="sass">
-.theme--dark
-  .poll-common-chart-table
-    td.underlineme
-      border-bottom: thin solid hsla(0,0%,100%,.12)
-
-.theme--light
-  .poll-common-chart-table
-    td.underlineme
-      border-bottom: thin solid #eee
-
 .poll-common-chart-table
-  th
-    padding-left: 4px
   table
     width: 100%
-  .numcol
-    width: 25px
-
-  table, td, tr, th
-    border-collapse: collapse
-    // border-left: 1px solid #ddd
-    // border-right: 1px solid #ddd
-
-  // display: flex
-  flex-direction: column
-  width: 100%
-  td
-    vertical-align: center
+//   .numcol
+//     width: 25px
+//
+//   table, td, tr, th
+//     border-collapse: collapse
+//     // border-left: 1px solid #ddd
+//     // border-right: 1px solid #ddd
+//
+//   // display: flex
+//   flex-direction: column
+//   width: 100%
+//   td
+//     vertical-align: center
 
 </style>
