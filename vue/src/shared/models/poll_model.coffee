@@ -7,7 +7,7 @@ import EventBus         from '@/shared/services/event_bus'
 import I18n             from '@/i18n'
 import NullGroupModel   from '@/shared/models/null_group_model'
 import { addDays, startOfHour } from 'date-fns'
-import { head, orderBy, map, includes, difference, invokeMap, each, max, flatten, slice, uniq, isEqual, shuffle } from 'lodash'
+import { head, orderBy, sortBy, map, includes, difference, invokeMap, each, max, flatten, slice, uniq, isEqual, shuffle } from 'lodash'
 
 export default class PollModel extends BaseModel
   @singular: 'poll'

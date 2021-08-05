@@ -255,7 +255,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
 .thread-nav__preset--line
   height: 2px
   min-width: 22px
-  // background-color: #aaa
+  background-color: #aaa
   margin-right: 4px
   // margin-left: 10px
   // margin-left: 12px
