@@ -6,9 +6,7 @@ import { max, values, orderBy, map, find } from 'lodash'
 export default
   props:
     poll: Object
-  computed:
-    rankedOptions: -> orderBy @poll.pollOptions(), 'totalScore', 'desc'
-
+    options: Array
 </script>
 <template lang="pug">
 .poll-common-ranked-choice-chart
@@ -19,7 +17,7 @@ export default
         th(v-t="'common.option'")
         th(v-t="'poll_ranked_choice_form.points'")
     tbody
-      tr(v-for='option, index in rankedOptions' :key="option.name")
+      tr(v-for='option, index in options' :key="option.name")
         td.min {{index + 1}}
         td {{option.optionName()}}
         td {{option.totalScore}}

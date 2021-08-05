@@ -1,12 +1,13 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
 import Records   from '@/shared/services/records'
-import PollCommonChartBar from '@/components/poll/common/chart/bar'
+import PollCommonChartTable from '@/components/poll/common/chart/table'
 
 export default
-  components: {PollCommonChartBar}
+  components: {PollCommonChartTable}
   props:
     poll: Object
+    options: Array
   data: ->
     colors: AppConfig.pollColors.count
   methods:
@@ -16,7 +17,7 @@ export default
 
 <template lang="pug">
 .poll-count-chart-panel
-  .d-flex
+  .d-flex.align-center
     .poll-count-chart-panel__chart-container
       .poll-count-chart-panel__progress
         .poll-count-chart-panel__incomplete
@@ -25,8 +26,7 @@ export default
       .poll-count-chart-panel__data
         .poll-count-chart-panel__numerator {{poll.decidedVotersCount}}
         .poll-count-chart-panel__denominator(v-t="{ path: 'poll_count_chart_panel.out_of', args: { goal: poll.votersCount } }")
-    poll-common-chart-bar(:poll="poll" no-bars)
-  poll-common-percent-voted(:poll='poll')
+    poll-common-chart-table(:poll="poll" :options="options")
 </template>
 <style lang="sass">
 .poll-count-chart-panel__chart-container

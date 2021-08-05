@@ -9,14 +9,15 @@ export default
   props:
     poll: Object
     zone: Object
+    options: Array
+
   data: ->
-    pollOptions: []
+    decidedVoters: []
 
   created: ->
     @watchRecords
-      collections: ['pollOptions']
+      collections: ['users']
       query: (store) =>
-        @pollOptions = @poll.pollOptions()
         @decidedVoters = @poll.decidedVoters()
 
   methods:
@@ -52,19 +53,19 @@ export default
     thead
       tr
         td.text--secondary {{currentUserTimeZone}}
+        td.pr-2.total.text--secondary(v-t="'poll_common.votes'")
         td(v-for="user in decidedVoters" :key="user.id")
           user-avatar(:user="user" :size="24")
-        td.total(v-t="'common.total'")
     tbody
-      tr(v-for="option in pollOptions" :key="option.id")
+      tr(v-for="option in options" :key="option.id")
         td.poll-meeting-chart__meeting-time
           poll-meeting-time(:name='option.name' :zone='zone')
+        td.total.text-right.pr-2
+          strong {{option.totalScore/2}}
 
         td(v-for="user in decidedVoters" :key="user.id")
           .poll-meeting-chart__cell(:class="classForScore(option.voterScores[user.id])")
             | &nbsp;
-        td.total
-          strong {{option.totalScore/2}}
 </template>
 
 <style lang="sass">

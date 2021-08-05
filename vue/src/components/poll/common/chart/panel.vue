@@ -6,44 +6,51 @@ import PollCommonDirective from '@/components/poll/common/directive'
 import PollService from '@/shared/services/poll_service'
 import { pick } from 'lodash'
 
-import PollCommonChartBar from '@/components/poll/common/chart/bar'
+import PollCommonChartPoll from '@/components/poll/common/chart/poll'
 import PollCommonChartCount from '@/components/poll/common/chart/count'
-import PollCommonChartGrid from '@/components/poll/common/chart/grid'
-import PollCommonChartPie from '@/components/poll/common/chart/pie'
+import PollCommonChartMeeting from '@/components/poll/common/chart/meeting'
+import PollCommonChartProposal from '@/components/poll/common/chart/proposal'
 import PollCommonChartRankedChoice from '@/components/poll/common/chart/ranked_choice'
 
 export default
   components:
-    {PollCommonChartBar,
+    {PollCommonChartPoll,
      PollCommonChartCount,
-     PollCommonChartGrid,
-     PollCommonChartPie,
+     PollCommonChartMeeting,
+     PollCommonChartProposal,
      PollCommonChartRankedChoice}
 
   props:
     poll: Object
 
-  computed:
-    type: ->
-      switch @poll.pollType
-        when 'proposal' then 'pie'
-        when 'poll' then 'bar'
-        when 'count' then 'count'
-        when 'score' then 'bar'
-        when 'dot_vote' then 'bar'
-        when 'ranked_choice' then 'ranked_choice'
-        when 'meeting' then 'grid'
+  data: ->
+    votersByOptionId: {}
+    options: {}
 
+  created: ->
+    @watchRecords
+      collections: ['pollOptions']
+      query: =>
+        Records.users.fetchAnyMissingById(@poll.decidedVoterIds())
+        @options = @poll.pollOptionsForResults()
+
+  computed:
+    pollType: -> @poll.pollType
 </script>
 
 <template lang="pug">
 .poll-common-chart-panel
   v-subheader.ml-n4(v-t="'poll_common.results'")
-  poll-common-chart-bar(v-if="type == 'bar'" :poll="poll")
-  poll-common-chart-count(v-if="type == 'count'" :poll="poll")
-  poll-common-chart-pie(v-if="type == 'pie'" :poll="poll")
-  poll-common-chart-grid(v-if="type == 'grid'" :poll="poll")
-  poll-common-chart-ranked-choice(v-if="type == 'ranked_choice'" :poll="poll")
+  poll-common-chart-poll(v-if="pollType == 'poll'"
+    :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
+  poll-common-chart-count(v-if="pollType == 'count'"
+    :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
+  poll-common-chart-proposal(v-if="pollType == 'proposal'"
+    :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
+  poll-common-chart-meeting(v-if="pollType == 'meeting'"
+    :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
+  poll-common-chart-ranked-choice(v-if="pollType == 'ranked_choice'"
+    :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
 </template>
 
 <style lang="sass">

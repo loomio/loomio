@@ -1,33 +1,21 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
 import {slice} from 'lodash'
-import PollCommonChartBar from '@/components/poll/common/chart/bar'
+import PollCommonChartTable from '@/components/poll/common/chart/table'
 
 export default
-  components: {PollCommonChartBar}
+  components: {PollCommonChartTable}
   props:
     poll: Object
-
-  data: ->
-    options: []
-    optionVoters: {}
-
-  created: ->
-    @watchRecords
-      collections: ['pollOptions', 'users']
-      query: (records) =>
-        @options = @poll.pollOptions()
-        @optionVoters = {}
-        @options.forEach (o) =>
-          @optionVoters[o.id] = Records.users.find(slice(o.voterIds(), 0, 100))
+    options: Array
 
 </script>
 
 <template lang="pug">
 .poll-proposal-chart-panel
-  .poll-proposal-chart-panel__chart-container
+  .poll-proposal-chart-panel__chart-container.d-flex.align-center
     poll-common-icon-panel.poll-proposal-chart-panel__chart.mr-4(:poll="poll" :size="128")
-    poll-common-chart-bar(:poll="poll" no-bars)
+    poll-common-chart-table(:poll="poll" :options="options")
     //- table.poll-proposal-chart-panel__legend(role="presentation")
     //-   tbody
     //-     tr(v-for="option in options" :key="option.id")
