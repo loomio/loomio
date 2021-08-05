@@ -36,7 +36,13 @@ export default
     v-chip.mr-1.my-1(v-if="choice.show" v-for="choice in choices" :key="choice.pollOption.id" outlined :color="colorFor(choice.score)" @click="emitClick")
       poll-meeting-time(:name="choice.pollOption.name")
   template(v-else)
-    v-chip.poll-common-stance-choice(outlined style="display: inline-block" :class="'poll-common-stance-choice--' + pollType" v-if="choice.score > 0 || pollType == 'score'" v-for="choice in choices" :key="choice.id")
+    v-chip.poll-common-stance-choice(
+      v-for="choice in choices"
+      v-if="choice.score > 0 || pollType == 'score'"
+      :key="choice.id"
+      outlined
+      style="display: inline-block"
+      :class="'poll-common-stance-choice--' + pollType")
       v-icon(small :color="choice.pollOption.color" v-if="!variableScore") mdi-check
       span(:style="{color: choice.pollOption.color}" v-if="variableScore") {{choice.rank || choice.score}}
       span.ml-2.text--secondary

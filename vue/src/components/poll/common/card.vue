@@ -62,12 +62,11 @@ v-sheet
     poll-common-details-panel(:poll='poll')
     .poll-common-card__results-shown(v-if='showResults')
       poll-common-chart-panel(:poll='poll')
-      poll-common-percent-voted(:poll='poll')
     poll-common-action-panel(:poll='poll')
     action-dock(:actions="dockActions" :menu-actions="menuActions")
 
-      .poll-common-card__results-shown.mt-4
-        poll-common-votes-panel(:poll='poll')
+    .poll-common-card__results-shown.mt-4
+      poll-common-votes-panel(:poll='poll')
 </template>
 <style lang="sass">
 .v-card__title .poll-common-card__title

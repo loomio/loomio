@@ -23,6 +23,13 @@ class StanceSerializer < ApplicationSerializer
   has_one :poll, serializer: PollSerializer, root: :polls
   has_one :participant, serializer: AuthorSerializer, root: :users
 
+  def option_scores
+    if ENV['JIT_POLL_COUNTS'] && object.option_scores == {} && object.cast_at
+      object.update_option_scores!
+    end
+    object.option_scores
+  end
+
   def include_option_scores?
     include_reason?
   end

@@ -26,8 +26,8 @@ export default
 <template lang="pug">
 .poll-proposal-chart-panel
   .poll-proposal-chart-panel__chart-container
-    poll-common-icon-panel.poll-proposal-chart-panel__chart.ma-2(:poll="poll" :size="110")
-    poll-common-chart-bar(:poll="poll")
+    poll-common-icon-panel.poll-proposal-chart-panel__chart.mr-4(:poll="poll" :size="128")
+    poll-common-chart-bar(:poll="poll" no-bars)
     //- table.poll-proposal-chart-panel__legend(role="presentation")
     //-   tbody
     //-     tr(v-for="option in options" :key="option.id")

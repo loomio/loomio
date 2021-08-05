@@ -48,12 +48,12 @@ export default
 
 <template lang="pug">
 .poll-meeting-chart-panel
-  table.poll-meeting-chart-table.body-2
+  table.poll-meeting-chart-table
     thead
       tr
         td.text--secondary {{currentUserTimeZone}}
         td(v-for="user in decidedVoters" :key="user.id")
-          user-avatar(:user="user")
+          user-avatar(:user="user" :size="24")
         td.total(v-t="'common.total'")
     tbody
       tr(v-for="option in pollOptions" :key="option.id")
@@ -86,12 +86,12 @@ export default
   flex-direction: row
   align-items: center
   justify-content: space-around
-  height: 36px
   border-radius: 2px
 
 .poll-meeting-chart__cell
   padding: 0
-  width: 36px
+  width: 24px
+  border-radius: 2px
 .poll-meeting-chart__cell--yes
   background-color: #00D177
 

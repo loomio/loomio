@@ -1,6 +1,6 @@
 import BaseModel  from  '@/shared/record_store/base_model'
 import Records  from  '@/shared/services/records'
-import {map, parseInt} from 'lodash'
+import {map, parseInt, slice} from 'lodash'
 import I18n from '@/i18n'
 
 
@@ -19,7 +19,7 @@ export default class PollOptionModel extends BaseModel
     @poll().latestStances().filter((s) => s.pollOptionIds().includes(@id))
 
   beforeRemove: ->
-    @stances().each (stance) -> stance.remove()
+    @stances().forEach (stance) -> stance.remove()
 
   optionName: ->
     if @poll().translateOptionName()
@@ -27,11 +27,19 @@ export default class PollOptionModel extends BaseModel
     else
       @name
 
-  voterIds: ->
-    map Object.keys(@voterScores), parseInt
+  averageScore: ->
+    voterIds = @voterIds()
+    return 0 unless voterIds.length
+    Math.round( (@totalScore / voterIds.length) * 10 + Number.EPSILON ) / 10
 
-  voters: ->
-    @recordStore.users.find(@voterIds())
+  voterIds: ->
+    Object.entries(@voterScores).filter((e) -> e[1] > 0).map((e) -> parseInt(e[0]))
+
+  voters: (limit = 1000) ->
+    @recordStore.users.find(slice(@voterIds(), 0, limit))
 
   scorePercent: ->
     parseInt(parseFloat(@totalScore) / parseFloat(@poll().totalScore) * 100) || 0
+    
+  rawScorePercent: ->
+    parseFloat(@totalScore) / parseFloat(@poll().totalScore) * 100

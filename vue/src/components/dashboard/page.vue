@@ -101,7 +101,7 @@ export default
 v-main
   v-container.dashboard-page.max-width-1024
     h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'dashboard_page.aria_label'")
-    v-layout.mb-3
+    v-layout.mb-3(v-if='dashboardLoaded')
       v-text-field(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('common.action.search')" append-icon="mdi-magnify")
 
     dashboard-polls-panel

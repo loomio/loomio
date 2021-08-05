@@ -103,7 +103,7 @@ Loomio::Application.routes.draw do
         post :ignore, on: :member
       end
 
-      resources :profile, only: [:show] do
+      resources :profile, only: [:show, :index] do
         collection do
           get  :time_zones
           get  :mentionable_users
