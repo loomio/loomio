@@ -45,7 +45,11 @@ img.emoji
     span[style="color:rgba(0, 0, 0, 0.87);"],
     span[style="color:rgba(0, 0, 0, 0.87)"],
     span[style="color:rgba(0, 0, 0, 1);"],
-    span[style="color:rgba(0, 0, 0, 1)"]
+    span[style="color:rgba(0, 0, 0, 1)"],
+    span[style="color:rgb(0, 0, 0);"],
+    span[style="color:rgb(0, 0, 0)"],
+    span[style="color:rgb(0,0,0);"],
+    span[style="color:rgb(0,0,0)"]
       color: #fff !important
 
 .lmo-markdown-wrapper

@@ -12,7 +12,7 @@ export default
 
   created: ->
     @watchRecords
-      collections: ['poll_options']
+      collections: ['pollOptions']
       query: (records) =>
         if @stance.poll().optionsDiffer(@pollOptions)
           @pollOptions = @sortPollOptions()
@@ -32,22 +32,10 @@ export default
 
     sortPollOptions: ->
       if @stance && @stance.castAt
-        optionsById = {}
-        @stance.poll().pollOptions().forEach (o) -> optionsById[o.id] = o
-
-        options = []
-        @stance.sortedChoices().forEach (c) ->
-          options.push c.pollOption
-          delete optionsById[c.poll_option_id]
-
-        each optionsById, (v) -> options.push(v)
-        options
+        sortBy @stance.poll().pollOptions(), (o) => -@stance.scoreFor(o)
       else
         @stance.poll().pollOptionsForVoting()
 
-    scoreFor: (option) ->
-      choice = find(@stance.stanceChoices(), matchesProperty('pollOptionId', option.id))
-      (choice or {}).score
   computed:
     numChoices: -> @stance.poll().customFields.minimum_stance_choices
 

@@ -1,6 +1,6 @@
 import RestfulClient from './restful_client'
 import utils         from './utils'
-import {pick, each, merge, keys, isNumber, isString, isArray, debounce} from 'lodash'
+import {pick, each, merge, keys, isNumber, isString, isArray, debounce, difference, uniq} from 'lodash'
 import Vue           from 'vue'
 
 export default class BaseRecordsInterface
@@ -23,6 +23,11 @@ export default class BaseRecordsInterface
 
   addMissing: (id) ->
     @missingIds.push(id)
+    @fetchMissing()
+
+  fetchAnyMissingById: (allIds) ->
+    presentIds = @collection.chain().find(id: {$in: allIds}).data().map((r) -> r.id)
+    @missingIds = uniq @missingIds.concat(difference(allIds, presentIds))
     @fetchMissing()
 
   nullModel: -> null

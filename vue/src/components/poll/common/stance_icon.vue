@@ -23,6 +23,8 @@ export default
       v-icon(small :color="stance.pollOption().color") mdi-check
     .poll-common-chart-preview__stance(v-if="poll.pollType == 'score'")
       v-icon(small :color="stance.pollOption().color") mdi-check
+    .poll-common-chart-preview__stance(v-if="poll.pollType == 'dot_vote'")
+      v-icon(small :color="stance.pollOption().color") mdi-check
     .poll-common-chart-preview__stance(v-if="poll.pollType == 'meeting'")
       v-icon(small) mdi-check
   .poll-common-chart-preview__stance.poll-proposal-chart-preview__stance--undecided(v-else)
@@ -43,5 +45,18 @@ export default
 .theme--light
   .poll-common-stance-icon
     background-color: #fff
+
+.poll-proposal-chart-preview__stance--agree
+  background-image: url(/img/agree.svg)
+.poll-proposal-chart-preview__stance--yes
+  background-image: url(/img/yes.svg)
+.poll-proposal-chart-preview__stance--no
+  background-image: url(/img/no.svg)
+.poll-proposal-chart-preview__stance--disagree
+  background-image: url(/img/disagree.svg)
+.poll-proposal-chart-preview__stance--block
+  background-image: url(/img/block.svg)
+.poll-proposal-chart-preview__stance--abstain
+  background-image: url(/img/abstain.svg)
 
 </style>

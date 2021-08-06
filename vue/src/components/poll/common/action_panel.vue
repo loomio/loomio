@@ -44,5 +44,5 @@ export default
       h3.title.py-3(v-t="'poll_common.have_your_say'")
       poll-common-directive(:stance='stance' name='vote-form')
     .poll-common-unable-to-vote(v-if='!stance')
-      p.text--secondary(v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}")
+      v-alert.my-4(type="warning" outlined dense v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}")
 </template>

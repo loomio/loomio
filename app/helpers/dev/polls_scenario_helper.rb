@@ -47,6 +47,9 @@ module Dev::PollsScenarioHelper
 
     event = PollService.create(poll: poll, actor: observer)
 
+    stance = fake_stance(poll: poll)
+    StanceService.create(stance: stance, actor: observer, force_create: true)
+
     PollService.close(poll: poll, actor: observer)
 
     {
@@ -376,7 +379,7 @@ module Dev::PollsScenarioHelper
   #   poll = fake_poll(poll_type: params[:poll_type], discussion: fake_discussion(group: group))
   #   PollService.create(poll: poll, actor: another_user)
   #   Stance.create(poll: poll, participant: user, choice: poll.poll_option_names.first)
-  #   poll.update_stance_data
+  #   poll.update_counts!
   #
   #   GroupInviter.new(
   #     group:    poll.guest_group,

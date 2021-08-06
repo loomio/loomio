@@ -26,7 +26,7 @@ module Dev::Scenarios::Group
   def setup_group_with_handle
     sign_in patrick
     group = create_group
-    group.update_attributes(name: 'Ghostbusters', handle: 'ghostbusters')
+    group.update(name: 'Ghostbusters', handle: 'ghostbusters')
     redirect_to group_url(group)
   end
 

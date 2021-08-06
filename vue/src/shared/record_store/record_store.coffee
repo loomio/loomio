@@ -46,7 +46,7 @@ export default class RecordStore
     @afterImport(data)
 
     each @views, (view) =>
-      if intersection(view.collectionNames, map(keys(data), camelCase))
+      if intersection( map(view.collectionNames, camelCase) , map(keys(data), camelCase) )
         view.query(@)
       true
     data

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_29_234058) do
+ActiveRecord::Schema.define(version: 2021_08_05_145847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -612,6 +612,8 @@ ActiveRecord::Schema.define(version: 2021_07_29_234058) do
     t.integer "poll_id"
     t.integer "priority", default: 0, null: false
     t.jsonb "score_counts", default: {}, null: false
+    t.jsonb "voter_scores", default: {}, null: false
+    t.integer "total_score", default: 0, null: false
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
   end
 
@@ -720,6 +722,7 @@ ActiveRecord::Schema.define(version: 2021_07_29_234058) do
     t.string "content_locale"
     t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.jsonb "link_previews", default: [], null: false
+    t.jsonb "option_scores", default: {}, null: false
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id"], name: "index_stances_on_poll_id"
     t.index ["token"], name: "index_stances_on_token", unique: true

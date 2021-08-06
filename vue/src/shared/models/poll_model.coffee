@@ -7,7 +7,7 @@ import EventBus         from '@/shared/services/event_bus'
 import I18n             from '@/i18n'
 import NullGroupModel   from '@/shared/models/null_group_model'
 import { addDays, startOfHour } from 'date-fns'
-import { head, orderBy, map, includes, difference, invokeMap, each, max, slice, sortBy, isEqual, shuffle } from 'lodash'
+import { head, orderBy, sortBy, map, includes, difference, invokeMap, each, max, flatten, slice, uniq, isEqual, shuffle } from 'lodash'
 
 export default class PollModel extends BaseModel
   @singular: 'poll'
@@ -31,7 +31,6 @@ export default class PollModel extends BaseModel
     closingAt: startOfHour(addDays(new Date, 3))
     specifiedVotersOnly: false
     pollOptionNames: []
-    pollOptionIds: []
     customFields: {
       minimum_stance_choices: null
       max_score: null
@@ -68,8 +67,22 @@ export default class PollModel extends BaseModel
     else
       @pollOptions()
 
+  pollOptionsForResults: ->
+    if ['dot_vote', 'ranked_choice', 'score'].includes(@pollType)
+      orderBy(@pollOptions(), 'totalScore', 'desc')
+    else
+      @pollOptions()
+
   bestNamedId: ->
     ((@id && @) || (@discusionId && @discussion()) || (@groupId && @group()) || {namedId: ->}).namedId()
+
+  chartType: ->
+    switch @pollType
+      when 'proposal' then 'pie'
+      when 'count' then 'count'
+      when 'meeting' then 'grid'
+      else
+        'bar'
 
   tags: ->
     @recordStore.tags.collection.chain().find(id: {$in: @tagIds}).simplesort('priority').data()
@@ -113,7 +126,7 @@ export default class PollModel extends BaseModel
     @recordStore.reactions.find(reactableId: @id, reactableType: "Poll")
 
   decidedVoterIds: ->
-    map(@latestCastStances(), 'participantId')
+    uniq flatten @pollOptions().map((o) -> o.voterIds())
 
   # who's voted?
   decidedVoters: ->

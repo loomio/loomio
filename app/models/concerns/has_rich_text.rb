@@ -14,6 +14,13 @@ module HasRichText
           self[field] = add_required_link_attributes(self[field])
           self[field] = HasRichText::add_heading_ids(self[field])
         end
+
+        define_method "body_is_blank?" do
+          self[field] == '' ||
+          self[field] == nil ||
+          self[field] == '<p></p>'
+        end
+
         before_save :"sanitize_#{field}!"
         validates field, {length: {maximum: Rails.application.secrets.max_message_length}}
         validates_inclusion_of :"#{field}_format", in: ['html', 'md']

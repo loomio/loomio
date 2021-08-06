@@ -122,13 +122,7 @@ module Dev::FakeDataHelper
     else
       poll.poll_option_names.sample
     end
-
-    Stance.new({
-      poll: poll,
-      participant: fake_user,
-      reason: [Faker::Hipster.sentence, ""].sample,
-      choice: choice
-    }.merge(args))
+    Stance.new({ poll: poll, participant: fake_user, reason: [Faker::Hipster.sentence, ""].sample, choice: choice }.merge(args))
   end
 
   def fake_comment(args = {})

@@ -14,7 +14,7 @@ describe StanceService do
   let(:another_user) { create :user }
   let(:stance) { create :stance, poll: poll, stance_choices: [agree_choice], participant: user, reason: "Old one" }
   let(:another_stance) { create :stance, poll: poll, stance_choices: [disagree_choice], participant: another_group_member }
-  let(:stance_created) { build :stance, poll: poll, stance_choices: [agree_choice], participant: nil }
+  let(:stance_created) { build :stance, poll: poll, stance_choices: [agree_choice], reason: 'i agree', participant: nil }
   let(:agree_choice) { build(:stance_choice, poll_option: agree) }
   let(:disagree_choice) { build(:stance_choice, poll_option: disagree) }
   let(:poll_created_event) { PollService.create(poll: poll, actor: user) }
@@ -38,7 +38,7 @@ describe StanceService do
 
     it 'sets event parent to the poll created event' do
       poll_created_event
-      event = StanceService.create(stance: stance_created, actor: user)
+      event = StanceService.create(stance: stance_created, actor: user, force_create: true)
       expect(event.parent.id).to eq poll_created_event.id
     end
 
@@ -54,34 +54,9 @@ describe StanceService do
       expect { StanceService.create(stance: stance_created, actor: another_user) }.to raise_error { CanCan::AccessDenied }
     end
 
-    it 'updates stance data on the poll' do
-      expect { StanceService.create(stance: stance_created, actor: user) }.to change { poll.stance_data['agree'].to_i }.by(1)
+    it 'updates total_score on the poll' do
+      StanceService.create(stance: stance_created, actor: user)
+      expect( poll.total_score ).to eq 1
     end
-
-    it 'does not include old stance data on the poll' do
-      stance
-      poll.update_stance_data
-      expect { StanceService.create(stance: stance_created, actor: user) }.to_not change { poll.stance_data['agree'].to_i }
-    end
-
-    # describe 'notify_on_participate' do
-    #   it 'emails the poll author when notify_on_participate is true' do
-    #     stance_created.poll.update(notify_on_participate: true)
-    #     expect { StanceService.create(stance: stance_created, actor: user) }.to change { ActionMailer::Base.deliveries.count }.by(1)
-    #   end
-    #
-    #   it 'notifies the poll author when notify_on_participate is true' do
-    #     stance_created.poll.update(notify_on_participate: true)
-    #     expect { StanceService.create(stance: stance_created, actor: user) }.to change { stance_created.poll.author.notifications.count }.by(1)
-    #   end
-    #
-    #   it 'does not email the poll author when notify_on_participate is false' do
-    #     expect { StanceService.create(stance: stance_created, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
-    #   end
-    #
-    #   it 'does not notify the poll author when notify_on_participate is false' do
-    #     expect { StanceService.create(stance: stance_created, actor: user) }.to_not change { stance_created.poll.author.notifications.count }
-    #   end
-    # end
   end
 end
