@@ -87,12 +87,12 @@ class DiscussionService
                                          recipient_message: params[:recipient_message])
   end
 
-  def self.destroy(discussion:, actor:)
-    actor.ability.authorize!(:destroy, discussion)
-    discussion.discard!
-    DestroyDiscussionWorker.perform_async(discussion.id)
-    EventBus.broadcast('discussion_destroy', discussion, actor)
-  end
+  # def self.destroy(discussion:, actor:)
+  #   actor.ability.authorize!(:destroy, discussion)
+  #   discussion.discard!
+  #   DestroyDiscussionWorker.perform_async(discussion.id)
+  #   EventBus.broadcast('discussion_destroy', discussion, actor)
+  # end
 
   def self.discard(discussion:, actor:)
     actor.ability.authorize!(:discard, discussion)

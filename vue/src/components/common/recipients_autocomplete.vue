@@ -283,7 +283,7 @@ div.recipients-autocomplete
         v-if="data.item.type =='audience'"
         :value='data.selected'
         close
-        color='accent'
+        color='primary'
         @click:close='remove(data.item)'
         @click='expand(data.item)')
         span
@@ -294,7 +294,7 @@ div.recipients-autocomplete
         :value='data.selected'
         close
         outlined
-        color='accent'
+        color='primary'
         @click:close='remove(data.item)')
         span
           user-avatar.mr-1(v-if="data.item.type == 'user'"

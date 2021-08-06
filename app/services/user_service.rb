@@ -63,21 +63,21 @@ class UserService
     user.update(deactivated_at: nil)
   end
 
-  # UserService#destroy
-  # Only intended to be used in a case where a script has created trash records and you
-  # want to make it as if it never happened. We almost never want to destroy a user.
-  # it will destroy
-  # - all groups they created
-  # - all discussions they authored
-  # - all polls they authored
-  # - all comments they created
-  # - all stances they created
-  # - all memberships they have
-  # # all discussion_readers they have
-  # you get the point.
-  def self.destroy(user:)
-    DestroyUserWorker.perform_async(user.id)
-  end
+  # # UserService#destroy
+  # # Only intended to be used in a case where a script has created trash records and you
+  # # want to make it as if it never happened. We almost never want to destroy a user.
+  # # it will destroy
+  # # - all groups they created
+  # # - all discussions they authored
+  # # - all polls they authored
+  # # - all comments they created
+  # # - all stances they created
+  # # - all memberships they have
+  # # # all discussion_readers they have
+  # # you get the point.
+  # def self.destroy(user:)
+  #   DestroyUserWorker.perform_async(user.id)
+  # end
 
   def self.set_volume(user:, actor:, params:)
     actor.ability.authorize! :update, user

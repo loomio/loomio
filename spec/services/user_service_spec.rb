@@ -60,7 +60,7 @@ describe UserService do
       # spam the loomio communie discussion with comments
       CommentService.create(comment: spam_comment, actor: spam_user)
 
-      UserService.destroy(user: spam_user)
+      DestroyUserWorker.perform_async(spam_user.id)
     end
 
     it 'destroys the groups created by the user' do

@@ -398,23 +398,23 @@ describe API::V1::PollsController do
     end
   end
 
-  describe 'destroy' do
-    before do
-      sign_in user
-      poll.group.add_admin! user
-    end
-
-    it 'destroys a poll' do
-      expect { delete :destroy, params: { id: poll.key } }.to change { Poll.count }.by(-1)
-      expect(response.status).to eq 200
-    end
-
-    it 'does not allow an unauthed user to destroy a poll' do
-      sign_in create(:user)
-      expect { delete :destroy, params: { id: poll.key } }.to_not change { Poll.count }
-      expect(response.status).to eq 403
-    end
-  end
+  # describe 'destroy' do
+  #   before do
+  #     sign_in user
+  #     poll.group.add_admin! user
+  #   end
+  #
+  #   it 'destroys a poll' do
+  #     expect { delete :destroy, params: { id: poll.key } }.to change { Poll.count }.by(-1)
+  #     expect(response.status).to eq 200
+  #   end
+  #
+  #   it 'does not allow an unauthed user to destroy a poll' do
+  #     sign_in create(:user)
+  #     expect { delete :destroy, params: { id: poll.key } }.to_not change { Poll.count }
+  #     expect(response.status).to eq 403
+  #   end
+  # end
 
   describe 'add_to_thread' do
     let(:comment) { build :comment, discussion: discussion, author: user }

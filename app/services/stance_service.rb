@@ -4,11 +4,11 @@ class StanceService
     stance.update(participant: actor, accepted_at: Time.zone.now)
   end
 
-  def self.destroy(stance:, actor:)
-    actor.ability.authorize! :destroy, stance
-    stance.destroy
-    EventBus.broadcast 'stance_destroy', stance, actor
-  end
+  # def self.destroy(stance:, actor:)
+  #   actor.ability.authorize! :destroy, stance
+  #   stance.destroy
+  #   EventBus.broadcast 'stance_destroy', stance, actor
+  # end
 
   # is used for both create and update
   # I deeply apologise for how this method could take a stance from 3 places.
