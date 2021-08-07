@@ -234,6 +234,7 @@ class Poll < ApplicationRecord
   def update_counts!
     poll_options.reload.each(&:update_counts!)
     update_columns(
+      voter_ids: stances.order('cast_at NULLS FIRST').pluck(:participant_id).compact,
       stance_counts: poll_options.map(&:total_score), # should rename to option scores
       voters_count: stances.latest.count,
       undecided_voters_count: stances.latest.undecided.count,

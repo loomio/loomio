@@ -37,8 +37,8 @@ class PollSerializer < ApplicationSerializer
              :undecided_voters_count,
              :voter_can_add_options,
              :voters_count,
+             :voter_ids,
              :versions_count
-
 
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_one :created_event, serializer: EventSerializer, root: :events
@@ -65,6 +65,10 @@ class PollSerializer < ApplicationSerializer
 
   def created_event
     cache_fetch([:events_by_kind_and_eventable_id, 'poll_created'], object.id) { object.created_event }
+  end
+
+  def include_voter_ids?
+    !poll.anonymous
   end
 
   def include_mentioned_usernames?

@@ -49,6 +49,7 @@ export default class PollModel extends BaseModel
     notifyRecipients: true
     shuffleOptions: false
     tagIds: []
+    voterIds: []
 
   audienceValues: ->
     name: @group().name
@@ -88,7 +89,7 @@ export default class PollModel extends BaseModel
     @recordStore.tags.collection.chain().find(id: {$in: @tagIds}).simplesort('priority').data()
 
   voters: ->
-    @latestStances().map (stance) -> stance.participant()
+    @recordStore.users.find(@voterIds)
 
   members: ->
     ((@group() && @group().members()) || []).concat(@voters())
