@@ -29,13 +29,13 @@ export default
   v-simple-table(dense)
     thead
       tr
-        th Option
+        th(v-t="'common.option'")
         th(v-if="!simple" v-t="'poll_ranked_choice_form.rank'")
         th.text-right(v-t="'poll_ranked_choice_form.points'")
         th.text-right(v-if="!simple" v-t="'membership_card.voters'")
         th.text-right(v-if="!simple" v-t="'poll_ranked_choice_form.average'")
         th.text-right(v-t="'poll_ranked_choice_form.pct_of_points'")
-        th(v-if="poll.pollType != 'ranked_choice'") Voters
+        th(v-if="poll.pollType != 'ranked_choice'" v-t="'membership_card.voters'")
     tbody
       tr(v-for="option, index in options" :key="option.id")
         td(:style="'border-left: solid 4px '+option.color")  {{option.optionName()}}
