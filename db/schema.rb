@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_05_145847) do
+ActiveRecord::Schema.define(version: 2021_08_07_012850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -724,6 +724,7 @@ ActiveRecord::Schema.define(version: 2021_08_05_145847) do
     t.jsonb "link_previews", default: [], null: false
     t.jsonb "option_scores", default: {}, null: false
     t.index ["participant_id"], name: "index_stances_on_participant_id"
+    t.index ["poll_id", "cast_at"], name: "index_stances_on_poll_id_and_cast_at", order: "NULLS FIRST"
     t.index ["poll_id"], name: "index_stances_on_poll_id"
     t.index ["token"], name: "index_stances_on_token", unique: true
   end
