@@ -21,6 +21,6 @@ class PollOptionSerializer < ApplicationSerializer
   end
 
   def include_voter_scores?
-    poll.show_results?
+    !poll.anonymous? && poll.show_results?
   end
 end
