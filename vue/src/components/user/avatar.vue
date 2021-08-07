@@ -43,9 +43,8 @@ export default
       @user.avatarUrl['large']
 
     color: ->
-      colors = pick AppConfig.theme.brand_colors, ['gold', 'sky', 'wellington', 'sunset']
-      idx = (@user.id || 0) % Object.values(colors).length
-      Object.values(AppConfig.theme.brand_colors)[idx]
+      colors = Object.values pick(AppConfig.theme.brand_colors, ['gold', 'sky', 'wellington', 'sunset'])
+      colors[(@user.id || 0) % colors.length]
 
     componentType:  ->
       if @noLink or !@user.id
