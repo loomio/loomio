@@ -68,7 +68,7 @@ export default class PollModel extends BaseModel
       @pollOptions()
 
   pollOptionsForResults: ->
-    if ['dot_vote', 'ranked_choice', 'score'].includes(@pollType)
+    if ['dot_vote', 'ranked_choice', 'score', 'poll'].includes(@pollType)
       orderBy(@pollOptions(), 'totalScore', 'desc')
     else
       @pollOptions()
