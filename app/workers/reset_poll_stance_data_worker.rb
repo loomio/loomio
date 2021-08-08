@@ -4,7 +4,7 @@ class ResetPollStanceDataWorker
 
   def perform(poll_id)
     p = Poll.find(poll_id)
-    p.reset_latest_stances!
+    # p.reset_latest_stances!
     p.stances.each(&:update_option_scores!)
     p.update_counts!
   end
