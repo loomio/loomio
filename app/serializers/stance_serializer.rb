@@ -31,7 +31,7 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def include_option_scores?
-    !poll.anonymous? && include_reason?
+    include_reason?
   end
 
   def locale
