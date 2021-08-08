@@ -23,6 +23,7 @@ export default class OutcomeModel extends BaseModel
     recipientUserIds: []
     recipientEmails: []
     recipientAudience: null
+    notifyRecipients: true
     groupId: null
     reviewOn: null
 
@@ -43,6 +44,9 @@ export default class OutcomeModel extends BaseModel
 
   authorName: ->
     @author().nameWithTitle(@poll().group())
+
+  isBlank: ->
+    @statement == '' or @statement == null or @statement == '<p></p>'
 
   members: ->
     @poll().members()

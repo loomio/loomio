@@ -82,21 +82,26 @@ export default
           .reactions-display__group(v-on="on" v-bind="attrs")
             span(v-if="emojiSupported") {{colonToUnicode(reaction)}}
             img.emoji(v-else :src="srcForEmoji(colonToUnicode(reaction))")
-            user-avatar.reactions-display__author(v-for="user in reactionHash[reaction]" :key="user.id" :user="user" :size="diameter")
+            user-avatar.reactions-display__author(no-link v-for="user in reactionHash[reaction]" :key="user.id" :user="user" :size="diameter")
         .reactions-display__name(v-for="user in reactionHash[reaction]" :key="user.id")
           span {{ user.name }}
 </template>
 
 <style lang="sass">
 .reactions-display__group
-	opacity: 0.8
-	display: flex
-	align-items: center
-	margin-right: 2px
-	span
-		font-size: 20px
-		line-height: 20px
-		margin-bottom: -5px
+  opacity: 0.8
+  display: flex
+  align-items: center
+  margin-right: 2px
+  span
+    font-size: 20px
+    line-height: 20px
+
+  .user-avatar
+    span
+      font-size: 10px
+      line-height: 20px
+      margin-bottom: -2px
 .reactions-display__emojis
-	display: flex
+  display: flex
 </style>

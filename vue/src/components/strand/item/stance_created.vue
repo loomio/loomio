@@ -1,5 +1,6 @@
 <script lang="coffee">
 import Session        from '@/shared/services/session'
+import StanceService        from '@/shared/services/stance_service'
 import AbilityService from '@/shared/services/ability_service'
 import openModal from '@/shared/helpers/open_modal'
 
@@ -16,46 +17,13 @@ export default
     eventable: -> @event.model()
     poll: -> @eventable.poll()
     showResults: -> @eventable.poll().showResults()
+    actions: -> StanceService.actions(@eventable)
 
     componentType:  ->
       if @event.actor()
         'router-link'
       else
         'div'
-
-  created: ->
-    @actions =
-      edit_stance:
-        name: 'poll_common.change_vote'
-        icon: 'mdi-pencil'
-        canPerform: =>
-          (Session.user() && @eventable.participant()) &&
-          @eventable.latest && @eventable.poll().isActive() && @eventable.participant() == Session.user()
-        perform: =>
-          openModal
-            component: 'PollCommonEditVoteModal',
-            props:
-              stance: @eventable.clone()
-
-      translate_stance:
-        icon: 'mdi-translate'
-        name: 'common.action.translate'
-        canPerform: =>
-          (@eventable.author() && Session.user()) &&
-          @eventable.author().locale != Session.user().locale &&
-          @eventable.reason && AbilityService.canTranslate(@eventable)
-        perform: =>
-          @eventable.translate(Session.user().locale)
-
-      show_history:
-        name: 'action_dock.edited'
-        icon: 'mdi-history'
-        canPerform: => @eventable.edited()
-        perform: =>
-          openModal
-            component: 'RevisionHistoryModal'
-            props:
-              model: @eventable
 </script>
 
 <template lang="pug">
@@ -73,5 +41,5 @@ section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id"
     formatted-text.poll-common-stance-created__reason(:model="eventable" column="reason")
     link-previews(:model="eventable")
     attachment-list(:attachments="eventable.attachments")
-  action-dock(:model='eventable' :actions='actions')
+  action-dock(:model='eventable' :actions='actions' icons small)
 </template>

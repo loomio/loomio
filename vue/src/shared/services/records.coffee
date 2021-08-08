@@ -20,7 +20,6 @@ import RegistrationRecordsInterface from '@/shared/interfaces/registration_recor
 import PollRecordsInterface from '@/shared/interfaces/poll_records_interface'
 import PollOptionRecordsInterface from '@/shared/interfaces/poll_option_records_interface'
 import StanceRecordsInterface from '@/shared/interfaces/stance_records_interface'
-import StanceChoiceRecordsInterface from '@/shared/interfaces/stance_choice_records_interface'
 import OutcomeRecordsInterface from '@/shared/interfaces/outcome_records_interface'
 import ContactMessageRecordsInterface from '@/shared/interfaces/contact_message_records_interface'
 import ReactionRecordsInterface from '@/shared/interfaces/reaction_records_interface'
@@ -55,7 +54,6 @@ records.addRecordsInterface RegistrationRecordsInterface
 records.addRecordsInterface PollRecordsInterface
 records.addRecordsInterface PollOptionRecordsInterface
 records.addRecordsInterface StanceRecordsInterface
-records.addRecordsInterface StanceChoiceRecordsInterface
 records.addRecordsInterface OutcomeRecordsInterface
 records.addRecordsInterface ContactMessageRecordsInterface
 records.addRecordsInterface ReactionRecordsInterface

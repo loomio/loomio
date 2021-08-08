@@ -40,6 +40,7 @@ class DiscussionSerializer < ApplicationSerializer
 
   attributes_from_reader :discussion_reader_id,
                          :discussion_reader_volume,
+                         :discussion_reader_user_id,
                          :last_read_at,
                          :dismissed_at,
                          :read_ranges,

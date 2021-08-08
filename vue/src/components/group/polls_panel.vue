@@ -69,6 +69,8 @@ export default
           chain = chain.find({'closedAt': null})
         when 'closed'
           chain = chain.find({'closedAt': {$ne: null}})
+        when 'vote'
+          chain = chain.find({'closedAt': null}).where((p) -> p.iCanVote() && !p.iHaveVoted())
 
       if @$route.query.poll_type
         chain = chain.find({'pollType': @$route.query.poll_type})
@@ -99,12 +101,14 @@ export default
           v-btn.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)
             span(v-if="$route.query.status == 'active'" v-t="'polls_panel.open'")
             span(v-if="$route.query.status == 'closed'" v-t="'polls_panel.closed'")
+            span(v-if="$route.query.status == 'vote'" v-t="'polls_panel.need_vote'")
             span(v-if="!$route.query.status" v-t="'polls_panel.any_status'")
             v-icon mdi-menu-down
         v-list(dense)
           v-list-item(:to="mergeQuery({status: null })" v-t="'polls_panel.any_status'")
           v-list-item(:to="mergeQuery({status: 'active'})" v-t="'polls_panel.open'")
           v-list-item(:to="mergeQuery({status: 'closed'})" v-t="'polls_panel.closed'")
+          v-list-item(:to="mergeQuery({status: 'vote'})" v-t="'polls_panel.need_vote'")
       v-menu
         template(v-slot:activator="{ on, attrs }")
           v-btn.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)
@@ -132,6 +136,6 @@ export default
           .d-flex.flex-column.align-center
             .text--secondary
               | {{polls.length}} / {{loader.total}}
-            v-btn.my-2.polls-panel__show-more(outlined color='accent' v-if="polls.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords({per: 50})")
+            v-btn.my-2.polls-panel__show-more(outlined color='primary' v-if="polls.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords({per: 50})")
               span(v-t="'common.action.load_more'")
 </template>

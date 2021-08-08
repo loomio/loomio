@@ -52,7 +52,7 @@ class Poll < ApplicationRecord
   enum notify_on_closing_soon: {nobody: 0, author: 1, undecided_voters: 2, voters: 3}
 
   before_save :set_stances_in_discussion
-  after_update :remove_poll_options
+  after_save :update_counts!
 
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
@@ -61,13 +61,14 @@ class Poll < ApplicationRecord
   has_many :undecided_voters, -> { merge(Stance.latest.undecided) }, through: :stances, source: :participant
   has_many :decided_voters, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
 
-  has_many :poll_options, -> { order('priority') }, dependent: :destroy
+  has_many :poll_options, -> { order('priority') }, dependent: :destroy, autosave: true
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
   has_many :documents, as: :model, dependent: :destroy
 
   scope :active, -> { kept.where('polls.closed_at': nil) }
   scope :closed, -> { kept.where("polls.closed_at IS NOT NULL") }
+  scope :recent, -> { kept.where("polls.closed_at IS NULL or polls.closed_at > ?", 7.days.ago) }
   scope :search_for, ->(fragment) { kept.where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
   scope :lapsed_but_not_closed, -> { active.where("polls.closing_at < ?", Time.now) }
   scope :active_or_closed_after, ->(since) { kept.where("polls.closed_at IS NULL OR polls.closed_at > ?", since) }
@@ -128,9 +129,6 @@ class Poll < ApplicationRecord
   update_counter_cache :group, :closed_polls_count
   update_counter_cache :discussion, :closed_polls_count
   update_counter_cache :discussion, :anonymous_polls_count
-  define_counter_cache(:voters_count) { |poll| poll.stances.latest.count }
-  define_counter_cache(:undecided_voters_count) { |poll| poll.stances.latest.undecided.count }
-  define_counter_cache(:versions_count) { |poll| poll.versions.count}
 
   delegate :locale, to: :author
 
@@ -214,15 +212,7 @@ class Poll < ApplicationRecord
     super || NullGroup.new
   end
 
-  def stance_data
-    show_results? ? super : {}
-  end
-
   def stance_counts
-    show_results? ? super : []
-  end
-
-  def matrix_counts
     show_results? ? super : []
   end
 
@@ -237,29 +227,18 @@ class Poll < ApplicationRecord
     end
   end
 
-  def update_stance_data
-    update_attribute(:stance_data, zeroed_poll_options.merge(
-      self.class.connection.select_all(%{
-        SELECT poll_options.name, sum(stance_choices.score) as total
-        FROM stances
-        INNER JOIN stance_choices ON stance_choices.stance_id = stances.id
-        INNER JOIN poll_options ON poll_options.id = stance_choices.poll_option_id
-        WHERE stances.latest = true AND stances.poll_id = #{self.id}
-        GROUP BY poll_options.name
-      }).map { |row| [row['name'], row['total'].to_i] }.to_h))
+  def total_score
+    stance_counts.sum
+  end
 
-    update_attribute(:stance_counts, poll_options.pluck(:name).map { |name| self[:stance_data][name] })
-    poll_options.map(&:update_option_score_counts) if poll.has_option_score_counts
-
-    # TODO: convert this to a SQL query (CROSS JOIN?)
-    update_attribute(:matrix_counts,
-      poll_options.limit(5).map do |option|
-        stances.latest.order(:created_at).limit(5).map do |stance|
-          # the score of the stance choice which has this poll option in this stance
-          stance.stance_choices.find_by(poll_option:option)&.score.to_i
-        end
-      end
-    ) if chart_type == 'matrix'
+  def update_counts!
+    poll_options.reload.each(&:update_counts!)
+    update_columns(
+      stance_counts: poll_options.map(&:total_score), # should rename to option scores
+      voters_count: stances.latest.count,
+      undecided_voters_count: stances.latest.undecided.count,
+      versions_count:  versions.count
+    )
   end
 
   # people who can vote.
@@ -325,18 +304,8 @@ class Poll < ApplicationRecord
     AppConfig.poll_templates.dig(self.poll_type, 'single_choice') && !self.multiple_choice
   end
 
-  def meeting_score_tallies
-    return [] unless show_results?
-    poll_options.map do |option|
-      [option.id, {
-        maybe:    option.stance_choices.latest.where(score: 1).count,
-        yes:      option.stance_choices.latest.where(score: 2).count
-      }]
-    end
-  end
-
   def poll_option_names
-    poll_options.pluck(:name)
+    poll_options.map(&:name)
   end
 
   def poll_option_names=(names)
@@ -346,7 +315,9 @@ class Poll < ApplicationRecord
     names.each_with_index do |name, priority|
       poll_options.find_or_initialize_by(name: name).priority = priority
     end
-    @poll_option_removed_names = (existing - names)
+    removed = (existing - names)
+    poll_options.each {|option| option.mark_for_destruction if removed.include?(option.name) }
+    names
   end
 
   alias options= poll_option_names=
@@ -405,13 +376,6 @@ class Poll < ApplicationRecord
     self.poll_options.map { |option| [option.name, 0] }.to_h
   end
 
-  def remove_poll_options
-    return unless @poll_option_removed_names.present?
-    poll_options.where(name: @poll_option_removed_names).destroy_all
-    @poll_option_removed_names = nil
-    update_stance_data
-  end
-
   def poll_options_are_valid
     prevent_added_options   unless can_add_options
     prevent_removed_options unless can_remove_options
@@ -449,7 +413,7 @@ class Poll < ApplicationRecord
   end
 
   def prevent_empty_options
-    if (self.poll_options.map(&:name) - Array(@poll_option_removed_names)).empty?
+    if (self.poll_options.map(&:name)).empty?
       self.errors.add(:poll_options, I18n.t(:"poll.error.must_have_options"))
     end
   end

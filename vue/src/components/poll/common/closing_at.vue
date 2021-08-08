@@ -1,4 +1,5 @@
 <script lang="coffee">
+import { differenceInHours } from 'date-fns'
 import { exact, approximate } from '@/shared/helpers/format_time'
 
 export default
@@ -27,14 +28,24 @@ export default
 
     color: ->
       if @poll.isActive()
-        'accent'
+        if differenceInHours(@poll.closingAt, new Date) < 48
+          'warning'
+        else
+          ''
       else
-        'warning'
+        'error'
+
+    styles: ->
+      if @color
+        {color: 'var(--v-'+@color+'-base)'}
+      else
+        {}
 
 </script>
 
 <template lang="pug">
-v-chip(small outlined :color="color")
+span(:style="styles")
+  v-icon(:color="color" x-small) mdi-timer-sand
   abbr.closing-in.timeago--inline(v-if="poll.closingAt")
     span(v-t="{ path: translationKey, args: { time: timeMethod(time) } }" :title="exact(time)")
   span(v-else v-t="'poll_common_wip_field.title'")

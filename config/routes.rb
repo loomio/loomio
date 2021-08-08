@@ -114,7 +114,7 @@ Loomio::Application.routes.draw do
         post :ignore, on: :member
       end
 
-      resources :profile, only: [:show] do
+      resources :profile, only: [:show, :index] do
         collection do
           get  :time_zones
           get  :mentionable_users
@@ -123,11 +123,10 @@ Loomio::Application.routes.draw do
           get  :email_status
           get  :email_exists
           get  :send_merge_verification_email
+          get  :contactable
           post :update_profile
           post :set_volume
           post :upload_avatar
-          post :deactivate
-          post :reactivate
           post :save_experience
           delete :destroy
         end
@@ -144,7 +143,7 @@ Loomio::Application.routes.draw do
         patch :remove_from_thread, on: :member
       end
 
-      resources :discussions, only: [:show, :index, :create, :update, :destroy] do
+      resources :discussions, only: [:show, :index, :create, :update] do
         patch :mark_as_seen, on: :member
         patch :dismiss, on: :member
         patch :recall, on: :member
@@ -190,7 +189,7 @@ Loomio::Application.routes.draw do
 
       resources :search, only: :index
 
-      resources :polls, only: [:show, :index, :create, :update, :destroy] do
+      resources :polls, only: [:show, :index, :create, :update] do
         member do
           post :remind
           delete :discard
@@ -204,7 +203,7 @@ Loomio::Application.routes.draw do
 
       resource :outcomes,     only: [:create, :update]
 
-      resources :stances, only: [:index, :create, :update, :destroy] do
+      resources :stances, only: [:index, :create, :update] do
         collection do
           get :invite
           get :users
@@ -217,7 +216,7 @@ Loomio::Application.routes.draw do
 
       resources :outcomes,    only: [:create, :update]
 
-      resources :comments,    only: [:create, :update, :destroy] do
+      resources :comments,    only: [:create, :update] do
         delete :discard, on: :member
         post :undiscard, on: :member
       end
@@ -357,7 +356,7 @@ Loomio::Application.routes.draw do
   get '/favicon.ico'                       => 'application#ok'
   get '/wp-login.php'                      => 'application#ok'
   get '/crowdfunding_celebration'          => 'application#crowdfunding'
-  get '/brand-assets'                      => 'application#brand'
+  get '/brand'                      => 'application#brand'
 
 
   resources :saml_providers, only: [] do

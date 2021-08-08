@@ -220,6 +220,7 @@ export default new class AbilityService
     return false if model.discardedAt
     AppConfig.inlineTranslation.isAvailable &&
     Object.keys(model.translation).length == 0 &&
+    !model.isBlank() &&
     (model.contentLocale && model.contentLocale != Session.user().locale) ||
     (!model.contentLocale && model.author().locale != Session.user().locale)
 

@@ -32,7 +32,6 @@ class PollService
     return false unless poll.valid?
 
     poll.save!
-    poll.update_versions_count
 
     users = UserInviter.where_or_create!(actor: actor,
                                          user_ids: params[:recipient_user_ids],
@@ -70,12 +69,16 @@ class PollService
                              emails: params[:recipient_emails],
                              audience: params[:recipient_audience])
 
-    Events::PollAnnounced.publish!(poll: poll,
-                                   actor: actor,
-                                   stances: stances,
-                                   recipient_user_ids: params[:recipient_user_ids],
-                                   recipient_audience: params[:recipient_audience],
-                                   recipient_message: params[:recipient_message] )
+
+    # params[:notify_recipients] will often be nil/undefined, which means we do want to notify
+    unless params[:notify_recipients] == false
+      Events::PollAnnounced.publish!(poll: poll,
+                                     actor: actor,
+                                     stances: stances,
+                                     recipient_user_ids: params[:recipient_user_ids],
+                                     recipient_audience: params[:recipient_audience],
+                                     recipient_message:  params[:recipient_message] )
+    end
     stances
   end
 
@@ -140,9 +143,7 @@ class PollService
     Stance.import(new_stances, on_duplicate_key_ignore: true)
 
     poll.reset_latest_stances!
-    poll.update_voters_count
-    poll.update_undecided_voters_count
-    poll.update_stance_data
+    poll.update_counts!
 
     Stance.where(participant_id: users.pluck(:id), poll_id: poll.id, latest: true)
   end
@@ -213,12 +214,12 @@ class PollService
     Events::PollOptionAdded.publish!(poll, actor, option_names)
   end
 
-  def self.destroy(poll:, actor:)
-    actor.ability.authorize! :destroy, poll
-    poll.destroy
-
-    EventBus.broadcast('poll_destroy', poll, actor)
-  end
+  # def self.destroy(poll:, actor:)
+  #   actor.ability.authorize! :destroy, poll
+  #   poll.destroy
+  #
+  #   EventBus.broadcast('poll_destroy', poll, actor)
+  # end
 
   def self.cleanup_examples
     Poll.where(example: true).where('created_at < ?', 1.day.ago).destroy_all

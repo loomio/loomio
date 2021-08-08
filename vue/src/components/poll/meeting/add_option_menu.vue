@@ -39,6 +39,6 @@ export default
         td {{timeInZone(z[0])}}
 
   .d-flex.justify-end
-    v-btn.poll-meeting-form__option-button(color="accent" @click='addOption()' v-t="'poll_meeting_time_field.add_time_slot'")
+    v-btn.poll-meeting-form__option-button(outlined color="primary" @click='addOption()' v-t="'poll_meeting_time_field.add_time_slot'")
 
 </template>

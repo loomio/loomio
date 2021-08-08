@@ -36,7 +36,5 @@ v-alert.my-4.poll-common-outcome-panel(
   link-previews(:model="outcome")
   document-list(:model="outcome")
   attachment-list(:attachments="outcome.attachments")
-  v-layout(align-center)
-    v-spacer
-    action-dock(:model="outcome" :actions="actions")
+  action-dock(small :model="outcome" :actions="actions")
 </template>

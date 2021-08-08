@@ -1,10 +1,10 @@
 class Clients::OsTicket < Clients::Base
-  def post_message(message)
+  def post_message(name, email, subject, message)
     post "api/tickets.json", params: {
-      email: message.email,
-      name: message.name,
-      subject: message.subject,
-      message: message.message
+      email: email,
+      name: name,
+      subject: subject,
+      message: message
     }
   end
 

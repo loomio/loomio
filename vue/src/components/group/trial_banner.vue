@@ -17,7 +17,7 @@ export default
       format(new Date(@group.createdAt), 'do LLLL yyyy')
 </script>
 <template lang="pug">
-v-alert(outlined color="accent" dense v-if="isTrialing")
+v-alert(outlined color="primary" dense v-if="isTrialing")
   v-layout(align-center)
     div.pr-1(v-if="isWasGift")
       span(v-if="isExpired" v-html="$t('current_plan_button.was_gift_expired')")
@@ -28,7 +28,7 @@ v-alert(outlined color="accent" dense v-if="isTrialing")
       span(v-if="!isExpired" v-t="{ path: 'current_plan_button.free_trial', args: { days: daysRemaining }}")
       span(v-if="isExpired" v-t="'current_plan_button.trial_expired'")
     v-spacer
-    v-btn(color="accent" :href="'/upgrade/'+group.id" target="_blank" :title="$t('current_plan_button.tooltip')")
+    v-btn(color="primary" :href="'/upgrade/'+group.id" target="_blank" :title="$t('current_plan_button.tooltip')")
       v-icon mdi-rocket
       span(v-t="'current_plan_button.view_plans'")
 </template>

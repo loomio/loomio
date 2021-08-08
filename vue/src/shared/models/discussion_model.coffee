@@ -41,8 +41,10 @@ export default class DiscussionModel extends BaseModel
     recipientAudience: null
     recipientUserIds: []
     recipientEmails: []
+    notifyRecipients: true
     groupId: null
     usersNotifiedCount: null
+    discussionReaderUserId: null
 
   audienceValues: ->
     name: @group().name
@@ -96,6 +98,9 @@ export default class DiscussionModel extends BaseModel
 
   authorName: ->
     @author().nameWithTitle(@group())
+
+  isBlank: ->
+    @discussion == '' or @discussion == null or @discussion == '<p></p>'
 
   groupName: ->
     (@group() || {}).name

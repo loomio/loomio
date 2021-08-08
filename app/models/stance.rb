@@ -23,9 +23,7 @@ class Stance < ApplicationRecord
   has_many :stance_choices, dependent: :destroy
   has_many :poll_options, through: :stance_choices
 
-  has_paper_trail only: [:reason, :stance_choices_cache]
-
-  define_counter_cache(:versions_count)  { |stance| stance.versions.count }
+  has_paper_trail only: [:reason, :option_scores]
 
   accepts_nested_attributes_for :stance_choices
 
@@ -33,11 +31,6 @@ class Stance < ApplicationRecord
 
   alias :user :participant
   alias :author :participant
-
-  update_counter_cache :poll, :voters_count
-  update_counter_cache :poll, :undecided_voters_count
-
-  before_save :update_stance_choices_cache
 
   scope :latest,         -> { where(latest: true).where(revoked_at: nil) }
   scope :admin,         ->  { where(admin: true) }
@@ -71,6 +64,21 @@ class Stance < ApplicationRecord
 
   alias :author :participant
 
+  before_save :update_option_scores
+  after_save :update_versions_count!
+
+  def update_option_scores
+    self.option_scores = stance_choices.map { |sc| [sc.poll_option_id, sc.score] }.to_h
+  end
+
+  def update_option_scores!
+    update_columns(option_scores: update_option_scores)
+  end
+
+  def update_versions_count!
+    update_columns(versions_count: versions.count)
+  end
+
   def author_id
     participant_id
   end
@@ -81,6 +89,15 @@ class Stance < ApplicationRecord
 
   def locale
     author&.locale || group&.locale || poll.author.locale
+  end
+
+  def add_to_discussion?
+    poll.discussion_id &&
+    poll.stances_in_discussion &&
+    !body_is_blank? &&
+    !Event.where(eventable: self,
+                 discussion_id: poll.discussion_id,
+                 kind: ['stance_created', 'stance_updated']).exists?
   end
 
   def body
@@ -97,12 +114,6 @@ class Stance < ApplicationRecord
 
   def discarded?
     false
-  end
-
-  def update_stance_choices_cache
-    self.stance_choices_cache = stance_choices.map do |sc|
-      {poll_option_id: sc.poll_option_id, poll_option_name: sc.poll_option.name, score: sc.score}
-    end
   end
 
   def choice=(choice)
@@ -130,8 +141,7 @@ class Stance < ApplicationRecord
   end
 
   def score_for(option)
-    choice = stance_choices.find_by(poll_option_id: option.id)
-    (choice && choice.score) || 0
+    option_scores[option.id] || 0
   end
 
   private

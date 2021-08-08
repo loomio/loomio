@@ -1,12 +1,13 @@
 import BaseModel        from '@/shared/record_store/base_model'
 import AppConfig        from '@/shared/services/app_config'
+import Session          from '@/shared/services/session'
 import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
 import EventBus         from '@/shared/services/event_bus'
 import I18n             from '@/i18n'
 import NullGroupModel   from '@/shared/models/null_group_model'
 import { addDays, startOfHour } from 'date-fns'
-import { head, orderBy, map, includes, difference, invokeMap, each, max, slice, sortBy } from 'lodash'
+import { head, orderBy, sortBy, map, includes, difference, invokeMap, each, max, flatten, slice, uniq, isEqual, shuffle } from 'lodash'
 
 export default class PollModel extends BaseModel
   @singular: 'poll'
@@ -30,7 +31,6 @@ export default class PollModel extends BaseModel
     closingAt: startOfHour(addDays(new Date, 3))
     specifiedVotersOnly: false
     pollOptionNames: []
-    pollOptionIds: []
     customFields: {
       minimum_stance_choices: null
       max_score: null
@@ -46,6 +46,8 @@ export default class PollModel extends BaseModel
     recipientAudience: null
     recipientUserIds: []
     recipientEmails: []
+    notifyRecipients: true
+    shuffleOptions: false
     tagIds: []
 
   audienceValues: ->
@@ -59,8 +61,28 @@ export default class PollModel extends BaseModel
     @hasMany   'stances'
     @hasMany   'versions'
 
+  pollOptionsForVoting: ->
+    if @shuffleOptions
+      shuffle(@pollOptions())
+    else
+      @pollOptions()
+
+  pollOptionsForResults: ->
+    if ['dot_vote', 'ranked_choice', 'score', 'poll'].includes(@pollType)
+      orderBy(@pollOptions(), 'totalScore', 'desc')
+    else
+      @pollOptions()
+
   bestNamedId: ->
     ((@id && @) || (@discusionId && @discussion()) || (@groupId && @group()) || {namedId: ->}).namedId()
+
+  chartType: ->
+    switch @pollType
+      when 'proposal' then 'pie'
+      when 'count' then 'count'
+      when 'meeting' then 'grid'
+      else
+        'bar'
 
   tags: ->
     @recordStore.tags.collection.chain().find(id: {$in: @tagIds}).simplesort('priority').data()
@@ -87,6 +109,16 @@ export default class PollModel extends BaseModel
   iHaveVoted: ->
     @myStance() && @myStance().castAt
 
+  optionsDiffer: (options) ->
+    !isEqual(sortBy(@pollOptionNames), sortBy(map(options, 'name')))
+
+  iCanVote: ->
+    @isActive() &&
+    (@anyoneCanParticipate or @myStance() or (!@specifiedVotersOnly and @membersInclude(Session.user())))
+
+  isBlank: ->
+    @details == '' or @details == null or @details == '<p></p>'
+
   authorName: ->
     @author().nameWithTitle(@group())
 
@@ -94,7 +126,7 @@ export default class PollModel extends BaseModel
     @recordStore.reactions.find(reactableId: @id, reactableType: "Poll")
 
   decidedVoterIds: ->
-    map(@latestCastStances(), 'participantId')
+    uniq flatten @pollOptions().map((o) -> o.voterIds())
 
   # who's voted?
   decidedVoters: ->
@@ -106,14 +138,6 @@ export default class PollModel extends BaseModel
   createdEvent: ->
     @recordStore.events.find(eventableId: @id, kind: 'poll_created')[0]
 
-  clearStaleStances: ->
-    existing = []
-    each @latestStances(), (stance) ->
-      if includes(existing, stance.participantId)
-        stance.latest = false
-      else
-        existing.push(stance.participantId)
-
   latestStances: (order = '-createdAt', limit) ->
     slice(sortBy(@recordStore.stances.find(pollId: @id, latest: true, revokedAt: null), order), 0, limit)
 
@@ -124,7 +148,6 @@ export default class PollModel extends BaseModel
       revokedAt: null
       castAt: {$ne: null}
     ).data()
-
 
   hasDescription: ->
     !!@details

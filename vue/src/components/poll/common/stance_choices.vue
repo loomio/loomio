@@ -14,16 +14,9 @@ export default
   computed:
     poll: -> @stance.poll()
     variableScore: -> @poll.hasVariableScore()
-    color: ->
-      @pollOption.color
-
-    pollType: ->
-      @poll.pollType
-
-    stanceChoices: ->
-      @stance.orderedStanceChoices().filter (c) -> c.score > 0
-
+    pollType: -> @poll.pollType
     datesAsOptions: -> @poll.datesAsOptions()
+    choices: -> @stance.sortedChoices()
 
   methods:
     emitClick: -> @$emit('click')
@@ -37,16 +30,21 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-stance-choices(v-if="!poll.singleChoice()")
+.poll-common-stance-choices.pl-2(v-if="!poll.singleChoice()")
   span.caption(v-if='stance.castAt && stance.totalScore() == 0' v-t="'poll_common_votes_panel.none_of_the_above'" )
   template(v-if="datesAsOptions")
-    v-chip.mr-1.my-1(v-if="choice.show()" v-for="choice in stanceChoices" :key="choice.id" outlined :color="colorFor(choice.score)" @click="emitClick")
-      poll-meeting-time(:name="choice.pollOption().name")
+    v-chip.mr-1.my-1(v-if="choice.show" v-for="choice in choices" :key="choice.pollOption.id" outlined :color="colorFor(choice.score)" @click="emitClick")
+      poll-meeting-time(:name="choice.pollOption.name")
   template(v-else)
-    .poll-common-stance-choice.mt-1(:class="'poll-common-stance-choice--' + pollType" v-if="choice.show()" v-for="choice in stanceChoices" :key="choice.id")
-      v-icon(small :color="choice.pollOption().color" v-if="!variableScore") mdi-check
-      span(:style="{color: choice.pollOption().color}" v-if="variableScore") {{choice.rankOrScore}}
+    v-chip.poll-common-stance-choice(
+      v-for="choice in choices"
+      v-if="choice.score > 0 || pollType == 'score'"
+      :key="choice.id"
+      outlined
+      style="display: inline-block"
+      :class="'poll-common-stance-choice--' + pollType")
+      v-icon(small :color="choice.pollOption.color" v-if="!variableScore") mdi-check
+      span(:style="{color: choice.pollOption.color}" v-if="variableScore") {{choice.rank || choice.score}}
       span.ml-2.text--secondary
-        |{{ choice.pollOption().optionName() }}
-
+        |{{ choice.pollOption.optionName() }}
 </template>

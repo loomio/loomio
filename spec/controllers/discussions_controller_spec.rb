@@ -14,18 +14,18 @@ describe DiscussionsController do
       expect(assigns(:discussion)).to eq discussion
     end
 
-    it 'not logged in, 403, ssr + boot' do
-      get :show, params: { key: discussion.key }
-      expect(response.status).to eq 403
-      expect(assigns(:discussion)).to eq nil
-    end
-
-    it 'not member, 403, ssr + boot' do
-      sign_in user
-      get :show, params: { key: discussion.key }
-      expect(response.status).to eq 403
-      expect(assigns(:discussion)).to eq nil
-    end
+    # it 'not logged in, 403, ssr + boot' do
+    #   get :show, params: { key: discussion.key }
+    #   expect(response.status).to eq 403
+    #   expect(assigns(:discussion)).to eq nil
+    # end
+    #
+    # it 'not member, 403, ssr + boot' do
+    #   sign_in user
+    #   get :show, params: { key: discussion.key }
+    #   expect(response.status).to eq 403
+    #   expect(assigns(:discussion)).to eq nil
+    # end
 
     it '404 ssr only' do
       get :show, params: { key: 'doesnotexist'}

@@ -36,6 +36,7 @@ export default
     user:     -> Session.user()
     helpLink: -> UserHelpService.helpLink()
     showHelp: -> AppConfig.features.app.help_link
+    showContact: -> AppConfig.features.app.show_contact
 
 </script>
 
@@ -57,7 +58,7 @@ div.user-dropdown
       v-list-item-title(v-t="'user_dropdown.disable_beta_features'")
       v-list-item-icon
         v-icon mdi-flask-empty-off-outline
-  v-list-item(v-if="user.experiences['betaFeatures'] && !user.experiences['darkMode']" @click="toggleDark" dense)
+  v-list-item(v-if="!user.experiences['darkMode']" @click="toggleDark" dense)
       v-list-item-title(v-t="'user_dropdown.enable_dark_mode'")
       v-list-item-icon
         v-icon mdi-weather-night
@@ -77,7 +78,7 @@ div.user-dropdown
     v-list-item-title(v-t="'user_dropdown.help'")
     v-list-item-icon
       v-icon mdi-help-circle-outline
-  v-list-item(to="/contact" dense)
+  v-list-item(v-if="showContact" to="/contact" dense)
     v-list-item-title(v-t="{path: 'user_dropdown.contact_support', args: {site_name: siteName}}")
     v-list-item-icon
       v-icon mdi-email-outline

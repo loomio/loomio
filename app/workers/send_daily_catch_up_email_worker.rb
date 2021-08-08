@@ -5,7 +5,7 @@ class SendDailyCatchUpEmailWorker
   def perform
     # email users who have day = 7 and hour = 6
     # and email users with day = today and hour = 6
-    User.pluck('DISTINCT time_zone').each do |zone|
+    User.distinct.pluck(:time_zone).each do |zone|
       if Time.find_zone(zone)
         time_in_zone = DateTime.now.in_time_zone(zone)
         if time_in_zone.hour == 6

@@ -36,44 +36,47 @@ class AppConfig
   end
 
   def self.theme
+    brand_colors = {
+      gold: "#DCA034",
+      ink: "#3D3D3D",
+      sky: "#658AE7",
+      sunset: "#EBB6A5",
+      rock: "#BE5247",
+      white: "#fff"
+    }
+    # here are some useful variations on these colours
+    # https://maketintsandshades.com/#DCA034,3D3D3D,658AE7,EBB6A5,BE5247,ffffff
+    logo_color = :gold
+
     {
+      brand_colors:                      brand_colors,
       site_name:                         ENV.fetch('SITE_NAME',                     'Loomio'),
       channels_uri:                      ENV.fetch('CHANNELS_URI',                  'ws://localhost:5000'),
       terms_url:                         ENV['TERMS_URL'],
       privacy_url:                       ENV['PRIVACY_URL'],
       help_url:                          ENV.fetch('HELP_URL',                      'https://help.loomio.org/'),
-      icon_src:                          ENV.fetch('THEME_ICON_SRC',                '/theme/icon.png'),
-      app_logo_src:                      ENV.fetch('THEME_APP_LOGO_SRC',            '/theme/logo.svg'),
+      icon_src:                          ENV.fetch('THEME_ICON_SRC',                "/brand/icon_#{logo_color}_150h.png"),
+      app_logo_src:                      ENV.fetch('THEME_APP_LOGO_SRC',            "/brand/logo_#{logo_color}.svg"),
       default_group_cover_src:           ENV.fetch('THEME_DEFAULT_GROUP_COVER_SRC', '/theme/default_group_cover.png'),
       dont_notify_new_thread:            ENV['DONT_NOTIFY_NEW_THREAD'],
 
       # used in emails
-      email_header_logo_src:             ENV.fetch('THEME_EMAIL_HEADER_LOGO_SRC',   '/theme/logo_128h.png'),
-      email_footer_logo_src:             ENV.fetch('THEME_EMAIL_FOOTER_LOGO_SRC',   '/theme/logo_64h.png'),
-      primary_color:                     ENV.fetch('THEME_PRIMARY_COLOR',           '#ffa726'),
-      accent_color:                      ENV.fetch('THEME_ACCENT_COLOR',            '#00bcd4'),
+      email_header_logo_src:             ENV.fetch('THEME_EMAIL_HEADER_LOGO_SRC',   "/brand/logo_#{logo_color}_128h.png"),
+      email_footer_logo_src:             ENV.fetch('THEME_EMAIL_FOOTER_LOGO_SRC',   "/brand/logo_#{logo_color}_64h.png"),
+      primary_color:                     ENV.fetch('THEME_PRIMARY_COLOR',           brand_colors[:sky]),
+      accent_color:                      ENV.fetch('THEME_ACCENT_COLOR',            brand_colors[:gold]),
       text_on_primary_color:             ENV.fetch('THEME_TEXT_ON_PRIMARY_COLOR',   '#ffffff'),
       text_on_accent_color:              ENV.fetch('THEME_TEXT_ON_ACCENT_COLOR',    '#ffffff'),
 
-      # used in app
-      primary_palette:                   ENV.fetch('THEME_PRIMARY_PALETTE',         'orange'),
-      accent_palette:                    ENV.fetch('THEME_ACCENT_PALETTE',          'cyan'),
-      warn_palette:                      ENV.fetch('THEME_WARN_PALETTE',            'red'),
-      primary_palette_config: JSON.parse(ENV.fetch('THEME_PRIMARY_PALETTE_CONFIG',  '{"default": "400"}')),
-      accent_palette_config:  JSON.parse(ENV.fetch('THEME_ACCENT_PALETTE_CONFIG',   '{"default": "500"}')),
-      warn_palette_config:    JSON.parse(ENV.fetch('THEME_WARN_PALETTE_CONFIG',     '{}')),
-      custom_primary_palette:  json_parse_or_false('THEME_CUSTOM_PRIMARY_PALETTE'),
-      custom_accent_palette:   json_parse_or_false('THEME_CUSTOM_ACCENT_PALETTE'),
-      custom_warn_palette:     json_parse_or_false('THEME_CUSTOM_WARN_PALETTE'),
       vuetify: {
-          primary: ENV['THEME_COLOR_PRIMARY'],
-          secondary: ENV['THEME_COLOR_SECONDARY'],
-          accent: ENV['THEME_COLOR_ACCENT'],
-          error: ENV['THEME_COLOR_ERROR'],
-          warning: ENV['THEME_COLOR_WARNING'],
-          info: ENV['THEME_COLOR_INFO'],
-          success: ENV['THEME_COLOR_SUCCESS'],
-          anchor: ENV['THEME_COLOR_ANCHOR']
+        primary: ENV.fetch('THEME_COLOR_PRIMARY', brand_colors[:sky]),
+        secondary: ENV.fetch('THEME_COLOR_SECONDARY', brand_colors[:sunset]),
+        accent: ENV.fetch('THEME_COLOR_ACCENT', brand_colors[:gold]),
+        error: ENV.fetch('THEME_COLOR_ERROR', nil),
+        warning: ENV.fetch('THEME_COLOR_WARNING', nil),
+        info: ENV.fetch('THEME_COLOR_INFO', brand_colors[:sky]),
+        success: ENV.fetch('THEME_COLOR_SUCCESS', nil),
+        anchor: ENV.fetch('THEME_COLOR_ANCHOR', brand_colors[:sky])
       }
     }
   end
@@ -90,10 +93,12 @@ class AppConfig
       help_link:                  !ENV['FEATURES_DISABLE_HELP_LINK'],
       example_content:            !ENV['FEATURES_DISABLE_EXAMPLE_CONTENT'],
       proposal_consent_default:   ENV.fetch('FEATURES_PROPOSAL_CONSENT_DEFAULT', false),
-      show_contact_consent:       ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT',       false),
+      show_contact:               ENV.fetch('FEATURES_SHOW_CONTACT', false),
+      show_contact_consent:       ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false),
       group_survey:               ENV.fetch('FEATURES_GROUP_SURVEY', false),
       group_sso:                  ENV.fetch('FEATURES_GROUP_SSO', false),
-      sentry_sample_rate:         ENV.fetch('SENTRY_SAMPLE_RATE', '0.1').to_f
+      sentry_sample_rate:         ENV.fetch('SENTRY_SAMPLE_RATE', '0.1').to_f,
+      vote_reactions:             ENV.fetch('FEATURES_VOTE_REACTIONS', false)
     }
   end
 

@@ -17,7 +17,6 @@ export default
       actionName = if !@stance.castAt then 'created' else 'updated'
       @stance.save()
       .then =>
-        @stance.poll().clearStaleStances()
         Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
         @close()
       .catch onError(@stance)
@@ -25,8 +24,6 @@ export default
   computed:
     icon: ->
       iconFor(@stance.poll())
-    orderedStanceChoices: ->
-      sortBy(@stance.stanceChoices(), 'rank')
 </script>
 <template lang="pug">
 v-card.poll-common-edit-vote-modal

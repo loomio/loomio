@@ -51,7 +51,6 @@ class ApplicationController < ActionController::Base
   end
 
   def brand
-    @files = Dir.glob('public/theme/*')
     render layout: 'basic'
   end
 
@@ -85,13 +84,7 @@ class ApplicationController < ActionController::Base
   def boot_app(status: 200)
     expires_now
     prevent_caching
-    template = File.read(Rails.root.join('public/blient/vue/index.html'))
-
-    if request.format.html?
-      template.gsub!('<div class=upgrade-browser></div>', '<%= render "application/upgrade_browser" %>')
-    end
-
-    render inline: template, layout: false, status: status
+    render file: Rails.root.join('public/blient/vue/index.html'), layout: false, status: status
   end
 
   def redirect_to(url, opts = {})
@@ -107,11 +100,6 @@ class ApplicationController < ActionController::Base
   end
 
   def is_old_browser?
-    (browser.ie? ||
-    (browser.chrome?  && browser.version.to_i < 50) ||
-    (browser.firefox? && !browser.platform.ios? && browser.version.to_i < 50) ||
-    (browser.safari?  && browser.version.to_i < 12) ||
-    (browser.edge?    && browser.version.to_i < 19))
+    browser.ie? || (browser.safari? && browser.version.to_i < 12)
   end
-
 end

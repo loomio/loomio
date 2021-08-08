@@ -193,7 +193,9 @@ en:
 
     login:
       subject: Sign in to %{site_name}
-      intro: Hi %{name}, here is a link to sign in to your %{site_name} account.
+      intro: Hi %{name}, here is your link to sign in to %{site_name}.
+      intro_html: |
+        Hi %{name}, <br> here is your link to sign in to %{site_name}:
       login: Sign in as %{name}
 
     reactivate:

@@ -5,6 +5,7 @@ import NewDiscussion from '@/components/strand/item/new_discussion.vue'
 import DiscussionEdited from '@/components/strand/item/discussion_edited.vue'
 import PollCreated from '@/components/strand/item/poll_created.vue'
 import StanceCreated from '@/components/strand/item/stance_created.vue'
+import StanceUpdated from '@/components/strand/item/stance_updated.vue'
 import OutcomeCreated from '@/components/strand/item/outcome_created.vue'
 import StrandLoadMore from '@/components/strand/load_more.vue'
 import OtherKind from '@/components/strand/item/other_kind.vue'
@@ -26,6 +27,7 @@ export default
     NewComment: NewComment
     PollCreated: PollCreated
     StanceCreated: StanceCreated
+    StanceUpdated: StanceUpdated
     OutcomeCreated: OutcomeCreated
     OtherKind: OtherKind
     StrandLoadMore: StrandLoadMore
@@ -89,7 +91,7 @@ export default
       last(@ranges)[1] == pos
 
     componentForKind: (kind) ->
-      camelCase if ['stance_created', 'discussion_edited', 'new_comment', 'outcome_created', 'poll_created', 'new_discussion'].includes(kind)
+      camelCase if ['stance_created', 'stance_updated', 'discussion_edited', 'new_comment', 'outcome_created', 'poll_created', 'new_discussion'].includes(kind)
         kind
       else
         'other_kind'
@@ -126,7 +128,7 @@ export default
         div(v-observe-visibility="{intersection: {threshold: 0.05}, callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
           component(:class="classes(obj.event)" :is="componentForKind(obj.event.kind)" :event='obj.event')
 
-        .strand-list__children(v-if="obj.event.childCount")
+        .strand-list__children.mt-2(v-if="obj.event.childCount")
           strand-list.flex-grow-1(v-if="obj.children.length" :loader="loader" :collection="obj.children")
           .strand-item__row(v-else)
             .strand-item__gutter
@@ -158,7 +160,6 @@ export default
 </template>
 
 <style lang="sass">
-
 .strand-item--deep
   .strand-item__gutter
     width: 28px

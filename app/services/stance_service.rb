@@ -4,13 +4,14 @@ class StanceService
     stance.update(participant: actor, accepted_at: Time.zone.now)
   end
 
-  def self.destroy(stance:, actor:)
-    actor.ability.authorize! :destroy, stance
-    stance.destroy
-    EventBus.broadcast 'stance_destroy', stance, actor
-  end
+  # def self.destroy(stance:, actor:)
+  #   actor.ability.authorize! :destroy, stance
+  #   stance.destroy
+  #   EventBus.broadcast 'stance_destroy', stance, actor
+  # end
 
   # is used for both create and update
+  # I deeply apologise for how this method could take a stance from 3 places.
   def self.create(stance:, actor:, params: {}, force_create: false)
 
     stance = Stance.where(
@@ -38,12 +39,15 @@ class StanceService
       stance.save!
     end
 
-    stance.update_versions_count
-    stance.poll.update_stance_data
+    stance.poll.update_counts!
 
-    event = stance.created_event || Events::StanceCreated.publish!(stance)
+    event = if stance.created_event
+      Events::StanceUpdated.publish!(stance)
+    else
+      Events::StanceCreated.publish!(stance)
+    end
+
     MessageChannelService.publish_models([event], scope: {current_user_id: actor.id}, user_id: actor.id)
-    EventBus.broadcast('stance_create', stance, actor)
     event
   end
 end

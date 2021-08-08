@@ -7,6 +7,7 @@ import { first, last } from 'lodash'
 import ahoy from '@/shared/services/ahoy'
 
 export default
+
   data: ->
     discussion: null
     threadPercentage: 0
@@ -66,8 +67,8 @@ export default
 .thread-page
   v-main
     loading(:until="discussion")
-      v-container.thread-page.max-width-800(v-if="discussion" v-scroll="scrollThreadNav")
-        thread-current-poll-banner(:discussion="discussion")
+      v-container.thread-page.max-width-800.pa-sm-3.pa-0(v-if="discussion" v-scroll="scrollThreadNav")
+        //- thread-current-poll-banner(:discussion="discussion")
         discussion-fork-actions(:discussion='discussion' :key="'fork-actions'+ discussion.id")
         thread-card(:discussion='discussion' :key="discussion.id")
         v-btn.thread-page__open-thread-nav(fab fixed bottom right @click="openThreadNav()")

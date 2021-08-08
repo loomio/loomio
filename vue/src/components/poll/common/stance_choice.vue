@@ -8,7 +8,9 @@ export default
     poll:
       type: Object
       required: true
-    stanceChoice: Object
+    stanceChoice:
+      type: Object
+      required: true
     size:
       type: Number
       default: 24
@@ -21,16 +23,16 @@ export default
       @pollOption.color
 
     pollOption: ->
-      @stanceChoice.pollOption()
+      @stanceChoice.pollOption
 
     pollType: ->
       @poll.pollType
 
     optionName: ->
       if @poll.translateOptionName()
-        @$t('poll_' + @pollType + '_options.' + @stanceChoice.pollOption().name)
+        @$t('poll_' + @pollType + '_options.' + @stanceChoice.pollOption.name)
       else
-        @stanceChoice.pollOption().name
+        @stanceChoice.pollOption.name
 
   methods:
     emitClick: -> @$emit('click')

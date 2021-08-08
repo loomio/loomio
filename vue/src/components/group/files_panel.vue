@@ -133,5 +133,5 @@ div
       v-layout(justify-center)
         .d-flex.flex-column.justify-center.align-center
           //- span(v-if="loader.total == null") {{items.length}} / {{attachmentLoader.total}}
-          v-btn.my-2(outlined color='accent' v-if="!attachmentLoader.exhausted" :loading="loading" @click="fetch()" v-t="'common.action.load_more'")
+          v-btn.my-2(outlined color='primary' v-if="!attachmentLoader.exhausted" :loading="loading" @click="fetch()" v-t="'common.action.load_more'")
 </template>

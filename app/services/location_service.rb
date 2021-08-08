@@ -29,9 +29,7 @@ class LocationService
         SELECT * FROM #{most_common(group, "country")},
                       #{most_common(group, "region")},
                       #{most_common(group, "city")} ").each do |row|
-        group.update_attributes(country: row['country'],
-                                region: row['region'],
-                                city: row['city'])
+        group.update(country: row['country'], region: row['region'], city: row['city'])
       end
     end
   end

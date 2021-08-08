@@ -50,6 +50,9 @@ export default class CommentModel extends BaseModel
   isReply: ->
     @parentId?
 
+  isBlank: ->
+    @body == '' or @body == null or @body == '<p></p>'
+
   hasDescription: ->
     !!@body
 

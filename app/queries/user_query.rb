@@ -16,6 +16,10 @@ class UserQuery
       rels.push User.joins('LEFT OUTER JOIN memberships m ON m.user_id = users.id').
                      where('(m.group_id IN (:group_ids))', {group_ids: group_ids})
 
+      # people who have requested membership
+      rels.push User.joins('LEFT OUTER JOIN membership_requests mr ON mr.requestor_id = users.id').
+                     where('(mr.group_id IN (:group_ids))', {group_ids: group_ids})
+
       # people who have invited actor
       rels.push(
         User.joins("LEFT OUTER JOIN discussion_readers dr on dr.inviter_id = users.id").

@@ -31,7 +31,6 @@ export default
     submit: ->
       @message.save()
       .then =>
-        Flash.success "contact_message_form.new_contact_message"
         @submitted = true
       .catch onError(@message)
 
@@ -42,12 +41,14 @@ export default
 
 <template lang="pug">
 v-main
-  v-container.contact-page
-    v-card.contact-form(v-show='!submitted')
+  v-container.contact-page.d-flex.justify-center
+    v-card.contact-form(v-show='!submitted').max-width-800
       submit-overlay(:value='message.processing')
       v-card-title
-        h1.headline(tabindex="-1" v-t="'contact_message_form.title'")
+        p.text-heading(tabindex="-1" v-t="'contact_message_form.alt_title'")
+      v-card-subtitle(v-t="'contact_message_form.title'")
       v-card-text
+        p(v-html="$t('contact_message_form.this_is_for')")
         p(v-html="$t('contact_message_form.read_the_manual', { link: helpLink })")
         p
         div(v-if='!isLoggedIn')
@@ -67,9 +68,9 @@ v-main
         p.text--secondary(v-html="$t('contact_message_form.contact_us_email', { email: contactEmail })")
         v-card-actions
           v-spacer
-          v-btn(color="primary" @click='submit', v-t="'contact_message_form.send_message'")
+          v-btn(color="primary" @click='submit' v-t="'contact_message_form.send_message'")
 
     v-card.contact-form__success(v-show='submitted')
       v-card-title
-        h1.headline(tabindex="-1" v-t="$t('contact_message_form.success', { name: message.name })")
+        h1.headline(tabindex="-1" v-t="$t('contact_message_form.success_via_email', { name: message.name })")
 </template>

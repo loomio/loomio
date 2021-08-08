@@ -3,7 +3,6 @@ import Records            from '@/shared/services/records'
 import AbilityService     from '@/shared/services/ability_service'
 import EventBus           from '@/shared/services/event_bus'
 import RecordLoader       from '@/shared/services/record_loader'
-import ThreadFilter       from '@/shared/services/thread_filter'
 import { map, debounce, orderBy, intersection, compact, omit, filter, concat, uniq } from 'lodash'
 import Session from '@/shared/services/session'
 
@@ -219,7 +218,7 @@ div.discussions-panel(v-if="group")
           .d-flex.flex-column.align-center
             .text--secondary
               | {{discussions.length}} / {{loader.total}}
-            v-btn.my-2.discussions-panel__show-more(outlined color='accent' v-if="discussions.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="fetch()")
+            v-btn.my-2.discussions-panel__show-more(outlined color='primary' v-if="discussions.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="fetch()")
               span(v-t="'common.action.load_more'")
             router-link.discussions-panel__view-closed-threads.text-center.pa-1(:to="'?t=closed'" v-if="suggestClosedThreads" v-t="'group_page.view_closed_threads'")
 

@@ -250,7 +250,8 @@ module Dev::NintiesMoviesHelper
       poll_type: :proposal,
       poll_option_names: %w(agree abstain disagree block),
       author: patrick,
-      title: "Let's go to the moon!"
+      title: "Let's go to the moon!",
+      closing_at: 10.days.from_now
     )
   end
 
@@ -275,7 +276,7 @@ module Dev::NintiesMoviesHelper
     # discussion_edited
     create_discussion
     create_discussion.update(title: "another discussion title")
-    Events::DiscussionEdited.publish!(discussion: create_discussion)
+    Events::DiscussionEdited.publish!(discussion: create_discussion, actor: create_discussion.author)
 
     # discussion_moved
     Events::DiscussionMoved.publish!(create_discussion, patrick, create_another_group)
@@ -288,7 +289,7 @@ module Dev::NintiesMoviesHelper
 
     # poll_edited
     create_poll.update(title: "Another poll title")
-    Events::PollEdited.publish!(create_poll, patrick)
+    Events::PollEdited.publish!(poll: create_poll, actor: patrick)
 
     # stance_created
     Events::StanceCreated.publish!(create_stance)

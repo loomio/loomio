@@ -1,9 +1,10 @@
 import Session from '@/shared/services/session'
+import Records from '@/shared/services/records'
 import { subWeeks } from 'date-fns'
-import { each } from 'lodash'
+import { each, compact } from 'lodash'
 
-export default (store, options) ->
-  chain = store.discussions.collection.chain()
+export default (options) ->
+  chain = Records.discussions.collection.chain()
   chain = chain.find(discardedAt: null)
   chain = chain.find(groupId: { $in: options.group.organisationIds() })      if options.group
   chain = chain.find(lastActivityAt: { $gt: options.from }) if options.from
@@ -12,7 +13,7 @@ export default (store, options) ->
   if options.ids
     chain = chain.find(id: {$in: options.ids})
   else
-    each [].concat(options.filters), (filter) ->
+    each compact([].concat(options.filters)), (filter) ->
       chain = switch filter
         when 'show_recent'    then chain.find(lastActivityAt: { $gt: subWeeks(new Date, 6) })
         when 'show_unread'    then chain.where (thread) -> thread.isUnread()

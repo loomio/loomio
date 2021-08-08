@@ -3,7 +3,7 @@ import AppConfig       from '@/shared/services/app_config'
 import HasTranslations from '@/shared/mixins/has_translations'
 import AnonymousUserModel   from '@/shared/models/anonymous_user_model'
 import i18n from '@/i18n.coffee'
-import { sumBy, map, head, each, compact, flatten, includes, find, orderBy } from 'lodash'
+import { sumBy, map, head, each, compact, flatten, includes, find, sortBy, parseInt } from 'lodash'
 
 stancesBecameUpdatable = new Date("2020-08-11")
 
@@ -25,10 +25,10 @@ export default class StanceModel extends BaseModel
     revokedAt: null
     participantId: null
     pollId: null
+    optionScores: {}
 
   relationships: ->
     @belongsTo 'poll'
-    @hasMany 'stanceChoices'
     @belongsTo 'participant', from: 'users'
 
   edited: ->
@@ -54,58 +54,56 @@ export default class StanceModel extends BaseModel
   group: ->
     @poll().group()
 
+  isBlank: ->
+    @reason == '' or @reason == null or @reason == '<p></p>'
+
   author: ->
     @participant()
 
   stanceChoice: ->
-    head @stanceChoices()
+    head @sortedChoices()
 
   pollOption: ->
-    @stanceChoice().pollOption() if @stanceChoice()
+    @recordStore.pollOptions.find(@pollOptionId()) if @pollOptionId()
 
   pollOptionId: ->
-    (@pollOption() or {}).id
+    @pollOptionIds()[0]
+
+  pollOptionIds: ->
+    map Object.keys(@optionScores), parseInt
 
   pollOptions: ->
     @recordStore.pollOptions.find(@pollOptionIds())
 
-  orderedStanceChoices: ->
-    order = ''
-    dir = ''
-    compact switch @poll().pollType
-      when 'ranked_choice'
-        order = 'rankOrScore'
-        dir = 'asc'
-      when 'meeting'
-        order = (choice) -> choice.pollOption().name
-        dir = 'asc'
-      else
-        order = 'rankOrScore'
-        dir = 'desc'
-    orderBy @stanceChoices(), order, dir
-
-  stanceChoiceNames: ->
-    map(@pollOptions(), 'name')
-
-  pollOptionIds: ->
-    map @stanceChoices(), 'pollOptionId'
-
   choose: (optionIds) ->
-    each @recordStore.stanceChoices.find(stanceId: @id), (stanceChoice) ->
-      stanceChoice.remove()
-
-    each compact(flatten([optionIds])), (optionId) =>
-      @recordStore.stanceChoices.create(pollOptionId: parseInt(optionId), stanceId: @id)
+    @optionScores = {}
+    compact(flatten([optionIds])).forEach (id) ->
+      @optionScores[id] = 1
     @
+
+  sortedChoices: ->
+    optionsById = {}
+    @pollOptions().forEach (o) -> optionsById[o.id] = o
+    poll = @poll()
+
+    choices = map @optionScores, (score, pollOptionId) =>
+      {
+        score: score,
+        rank: (poll.pollType == 'ranked_choice') && (poll.customFields.minimum_stance_choices - score + 1),
+        show: (score > 0) || poll.pollType == "score",
+        pollOption: optionsById[pollOptionId]
+      }
+
+    if poll.pollType == 'meeting'
+      sortBy choices, (c) -> c.pollOption.priority
+    else
+      sortBy choices, '-score'
 
   votedFor: (option) ->
     includes map(@pollOptions(), 'id'), option.id
 
   scoreFor: (option) ->
-    choiceForOption = find @stanceChoices(), (choice)->
-      choice.pollOptionId == option.id
-
-    if choiceForOption then choiceForOption.score else 0
+    @optionScores[option.id] || 0
 
   totalScore: ->
-    sumBy(@stanceChoices(), 'score')
+    sumBy(@sortedChoices(), 'score')

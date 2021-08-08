@@ -23,7 +23,10 @@ class DiscussionQuery
           where('dr.last_read_at IS NULL OR (dr.last_read_at < discussions.last_activity_at)')
   end
 
-  def self.visible_to(chain: start, user: LoggedOutUser.new, group_ids: [], tags: [], only_unread: false, or_public: true, or_subgroups: true)
+  def self.visible_to(chain: start,
+                      user: LoggedOutUser.new,
+                      group_ids: [], tags: [], discussion_ids: [],
+                      only_unread: false, or_public: true, or_subgroups: true)
     if tags.any?
       chain = chain.joins(:tags).where("tags.name IN (?)", tags)
     end
@@ -48,6 +51,7 @@ class DiscussionQuery
 
     chain = chain.where("discussions.group_id IN (?)", group_ids) if Array(group_ids).any?
     chain = chain.where("discussions.group_id IS NULL") if group_ids.nil?
+    chain = chain.where("discussions.id IN (?)", discussion_ids) if Array(discussion_ids).any?
     if only_unread
       chain = chain.where('(dr.dismissed_at IS NULL) OR (dr.dismissed_at < discussions.last_activity_at)').
         where('dr.last_read_at IS NULL OR (dr.last_read_at < discussions.last_activity_at)')

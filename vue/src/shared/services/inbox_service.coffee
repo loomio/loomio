@@ -21,4 +21,4 @@ export default new class InboxService
     else
       "..."
 
-  query: -> ThreadFilter(Records, filters: @filters)
+  query: -> ThreadFilter(filters: @filters)

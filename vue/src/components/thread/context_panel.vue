@@ -60,7 +60,7 @@ export default
 
 <template lang="pug">
 .context-panel.lmo-action-dock-wrapper#context(:aria-label="$t('context_panel.aria_intro', {author: discussion.authorName(), group: discussion.group().fullName})" v-observe-visibility="{callback: viewed, once: true}")
-  v-layout(align-center mr-3 ml-2 pt-2 wrap)
+  v-layout(align-center mr-3 ml-1 pt-2 wrap)
     v-breadcrumbs.context-panel__breadcrumbs(aria-label="Group" :items="groups" divider=">")
     tags-display(:tags="discussion.tags()")
     span
@@ -103,7 +103,7 @@ export default
     link-previews(:model='discussion')
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
-    action-dock(:model='discussion' :actions='dockActions' :menu-actions='menuActions' fetch-reactions)
+    action-dock(:model='discussion' :actions='dockActions' :menu-actions='menuActions')
   v-divider
 </template>
 <style lang="sass">

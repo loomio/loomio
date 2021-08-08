@@ -19,7 +19,6 @@ import Dropcursor from '@tiptap/extension-dropcursor'
 import GapCursor from '@tiptap/extension-gapcursor'
 import HardBreak from '@tiptap/extension-hard-break'
 import Heading from '@tiptap/extension-heading'
-# import Highlight from '@tiptap/extension-highlight'
 import History from '@tiptap/extension-history'
 import HorizontalRule from '@tiptap/extension-horizontal-rule'
 import Italic from '@tiptap/extension-italic'
@@ -43,7 +42,6 @@ import Typography from '@tiptap/extension-typography'
 import Underline from '@tiptap/extension-underline'
 import {CustomMention} from './extension_mention'
 import {CustomImage} from './extension_image'
-import {TextColor} from './extension_text_color'
 import {Iframe} from './extension_iframe'
 
 import { Editor, EditorContent, VueRenderer } from '@tiptap/vue-2'
@@ -130,12 +128,9 @@ export default
         CustomTaskList
         CustomTaskItem
         CustomMention.configure(MentionPluginConfig.bind(@)())
-        Typography
+        # Typography
         TextStyle
-        TextAlign.configure({
-          types: ['heading', 'paragraph'],
-        })
-        TextColor
+        TextAlign.configure({ types: ['heading', 'paragraph'] })
         Underline
       ]
       content: @model[@field]
@@ -304,7 +299,7 @@ div
             //- //- strikethrough
             //- v-btn(icon v-if="expanded" @click='editor.chain().toggleStrike().focus().run()' :outlined="editor.isActive('strike')"  :title="$t('formatting.strikethrough')")
             //-   v-icon mdi-format-strikethrough
-            //- //- underline
+            //- underline
             v-btn(icon v-if="expanded" @click='editor.chain().toggleUnderline().focus().run()' :outlined="editor.isActive('underline')",  :title="$t('formatting.underline')")
               v-icon mdi-format-underline
             //-

@@ -111,7 +111,6 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   template(v-slot:append)
     v-layout.mx-10.my-2(column align-center style="max-height: 64px")
       v-img(:src="logoUrl")
-      a.ml-4.caption(href="https://github.com/loomio/loomio/releases" target="_blank") {{version}}
 
   v-list-group.sidebar__user-dropdown
     template(v-slot:activator)
@@ -121,7 +120,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
     user-dropdown
   v-divider
   v-list-item.sidebar__list-item-button--recent(dense to="/dashboard")
-    v-list-item-title(v-t="'sidebar.recent_threads'")
+    v-list-item-title(v-t="'dashboard_page.aria_label'")
   v-list-item(dense to="/inbox")
     v-list-item-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
   v-list-item.sidebar__list-item-button--private(dense to="/threads/direct")

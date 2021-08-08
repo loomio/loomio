@@ -2,7 +2,7 @@
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
-import { sortBy, find, matchesProperty, take, map, isEqual } from 'lodash'
+import { sortBy, find, matchesProperty, take, map, isEqual, each } from 'lodash'
 
 export default
   props:
@@ -12,10 +12,10 @@ export default
 
   created: ->
     @watchRecords
-      collections: ['poll_options']
+      collections: ['pollOptions']
       query: (records) =>
-        if !isEqual map(@pollOptions, 'name'), map(@stance.poll().pollOptions(), 'name')
-          @pollOptions = @sortPollOptions(@stance.poll().pollOptions())
+        if @stance.poll().optionsDiffer(@pollOptions)
+          @pollOptions = @sortPollOptions()
 
   methods:
     submit: ->
@@ -26,18 +26,16 @@ export default
       actionName = if !@stance.castAt then 'created' else 'updated'
       @stance.save()
       .then =>
-        @stance.poll().clearStaleStances()
         Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
         EventBus.$emit "closeModal"
       .catch onError(@stance)
 
-    sortPollOptions: (pollOptions) ->
-      optionsByPriority = sortBy pollOptions, 'priority'
-      sortBy optionsByPriority, (option) => -@scoreFor(option)
+    sortPollOptions: ->
+      if @stance && @stance.castAt
+        sortBy @stance.poll().pollOptions(), (o) => -@stance.scoreFor(o)
+      else
+        @stance.poll().pollOptionsForVoting()
 
-    scoreFor: (option) ->
-      choice = find(@stance.stanceChoices(), matchesProperty('pollOptionId', option.id))
-      (choice or {}).score
   computed:
     numChoices: -> @stance.poll().customFields.minimum_stance_choices
 
@@ -48,6 +46,7 @@ export default
   p.text--secondary(v-t="{ path: 'poll_ranked_choice_vote_form.helptext', args: { count: numChoices } }")
   sortable-list(v-model="pollOptions")
     sortable-item(v-for="(option, index) in pollOptions" :index="index" :key="option.id" :item="option")
+      v-icon(style="cursor: pointer") mdi-drag
       span(v-if="index+1 <= numChoices") {{index+1}}
       space
       v-chip.mr-2(:color="option.color" :index="index" :key="index") {{ option.name }}

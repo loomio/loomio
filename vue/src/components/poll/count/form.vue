@@ -26,7 +26,6 @@ export default
       v-list-item-content
         v-list-item-title(v-t="'poll_count_options.'+item")
 
-  poll-common-wip-field(:poll="poll")
   poll-common-closing-at-field(:poll="poll")
   poll-common-settings(:poll="poll")
   common-notify-fields(:model="poll")

@@ -14,16 +14,16 @@ export default new Vuetify(
   iconfont: 'mdi'
   theme:
     dark: false
-    themes:
-      light:
-        primary: colors.amber.darken1
-        secondary: colors.pink.lighten2
-        accent: colors.cyan.base
-        error: colors.deepOrange.base
-        warning: colors.red.base
-        info: colors.lightBlue.base
-        success: colors.green.base
-        anchor: colors.cyan.base
     options:
       customProperties: true
+    # themes:
+    #   light:
+    #     primary: colors.amber.darken1
+    #     secondary: colors.pink.lighten2
+    #     accent: colors.cyan.base
+    #     error: colors.red.base
+    #     warning: colors.orange.base
+    #     info: colors.lightBlue.base
+    #     success: colors.green.base
+    #     anchor: colors.cyan.base
 )

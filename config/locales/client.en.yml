@@ -673,7 +673,6 @@ en:
     privacy_private: 'The thread will only be visible to members of {{group}}.'
     privacy_organisation: 'The thread will be visible to members of {{parent}} and members of {{group}}.'
     fork_notice: 'A new thread will be created with {{count}} items from {{title}}'
-    one_person_notified: 1 person will be notified
     notify_group: Notify group
 
 
@@ -770,6 +769,9 @@ en:
       notified: '{{notified}} people will be notified.'
       notified_singular: '1 person will be notified.'
       notified_none: 'Nobody will be notified.'
+      added: '{{count}} people will be added.'
+      added_singular: '1 person will be added.'
+      added_none: 'Nobody will be added.'
       group_title: '{{name}} ({{count}} people)'
       visible_to_group: 'Anyone in {{group}} will be able to see this thread.'
       visible_to_guests: 'Only invited people can see this thread.'
@@ -1401,6 +1403,10 @@ en:
 
   dashboard_page:
     aria_label: 'Dashboard'
+    polls_to_vote_on: "Polls to vote on"
+    recent_polls: "Recent polls"
+    current_polls: "Current polls"
+    recent_threads: "Recent threads"
     no_groups:
       show_all: Welcome! You are not a member of any groups yet. <a href="/explore">Browse public groups</a> or <a href="/g/new">Start a group</a>.
       show_muted: You don't have any muted threads because you are not a member of any groups.
@@ -1587,9 +1593,12 @@ en:
     confirm: 'Delete comment'
 
   contact_message_form:
+    alt_title: "Contact Loomio Support"
     title: "Hi there! How can we help?"
+    this_is_for:
+      This is a great place for sales, training or subscription enquiries, or to ask for support using Loomio.
     read_the_manual: |
-      Have you seen our <a href="{{link}}" target="_blank">Help Manual</a>? We update it regularly with frequently asked questions and answers.
+      Did you know our <a href="{{link}}" target="_blank">Help Manual</a> contains FAQs as well as detailed guides to facilitating discussions and decisions on Loomio?
     contact_us_email: "You can also email us: <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Contact Us'
     name_label: 'Your name'
@@ -1608,6 +1617,7 @@ en:
       Our support team speak English and will translate your message with Google Translate if required. <br />
       We aim to respond to all messages within 24 hours.
     success: "Thanks for your message, {{name}}. You'll hear back from us soon."
+    success_via_email: "Thanks for your message, {{name}}. We'll respond via email within 24 hours."
 
   hint:
     context: 'Tips for using the context panel'
@@ -1749,6 +1759,7 @@ en:
     all: 'All'
     open: 'Open'
     closed: 'Closed'
+    need_vote: 'Need Vote'
     no_polls: 'No polls found'
 
   group_files_panel:
@@ -1800,6 +1811,8 @@ en:
     specified_voters_only_false_group: Anyone in the group
     specified_voters_only_false_discussion: Anyone in the thread
     invite_people_next: You can choose who is invited to vote after you start the {{poll_type}}
+    shuffle_options:
+      title: Voters see options in random order
     multiple_choice:
       title: Multiple choice
       helptext_on: When selected, participants will be able to select multiple options.
@@ -1930,9 +1943,14 @@ en:
     start: Start
     start_poll_type: Start {{poll_type}}
     share_poll_type: Share {{poll_type}}
+    who_may_vote: Who may vote in this {{poll_type}}?
     update: Update
+    add_voters: Add voters
+    notify_invitees: Send notifications
     loomio_school_link: |
       <p>Find out more at <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio Help</a>.</p>
+    no_notifications_warning: Voters will not be notified. This is useful if you're running a lot of polls and plan to notify everyone later on.
+    count_voters_added: '{{count}} voters added'
 
   poll_proposal_form:
     tool_tip_expanded: |
@@ -2058,6 +2076,8 @@ en:
     ranked_choice_updated: Ranked choice updated
     rank: Rank
     points: Points
+    average: Average
+    pct_of_points: '% of points'
 
   poll_meeting_time_field:
     add_time_slot: Add time slot
@@ -2093,6 +2113,7 @@ en:
     agree_disagree: 'Agree, Disagree'
     agree_abstain_disagree: 'Agree, Abstain, Disagree'
     consent_abstain_object: 'Consent, Abstain, Objection'
+    consent_object: 'Consent, Objection'
     no_voting: 'No voting'
 
   poll_count_options:
@@ -2149,6 +2170,7 @@ en:
       new_comment: "{{actor}} commented. {{when}}"
       poll_created: "{{actor}} started a {{pollType}}. {{when}}"
       stance_created: "{{actor}} voted. {{when}}"
+      stance_updated: "{{actor}} edited their vote. {{when}}"
       outcome_created: "{{actor}} shared an outcome. {{when}}"
       poll_expired: "{{pollType}} closed. {{when}}"
     removed: "Item removed"
@@ -2173,6 +2195,7 @@ en:
     poll_option_added:             "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> added options to the {{polltype}}"
     poll_expired:                  "{{polltype}} closed"
     stance_created:                "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> voted on: <strong>{{title}}</strong>"
+    stance_updated:                "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> updated their vote on: <strong>{{title}}</strong>"
     event_removed:                 "Removed from thread"
 
   poll_common_subscribe_form:

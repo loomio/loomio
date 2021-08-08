@@ -30,6 +30,7 @@ export default class NullDiscussionModel
       recipientAudience: null
       recipientUserIds: []
       recipientEmails: []
+      notifyRecipients: true
       groupId: null
 
     each defaults, (value, key) =>

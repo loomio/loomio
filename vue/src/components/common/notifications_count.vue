@@ -35,9 +35,14 @@ export default
 
 <template lang="pug">
 p.common-notifications-count.text--secondary.caption
-  span(v-if="count == 0" v-t="'announcement.form.notified_none'")
-  span(v-if="count == 1" v-t="'announcement.form.notified_singular'")
-  span(v-if="count > 1" v-t="{path: 'announcement.form.notified', args: {notified: count}}")
+  template(v-if="model.notifyRecipients")
+    span(v-if="count == 0" v-t="'announcement.form.notified_none'")
+    span(v-if="count == 1" v-t="'announcement.form.notified_singular'")
+    span(v-if="count > 1" v-t="{path: 'announcement.form.notified', args: {notified: count}}")
+  template(v-else)
+    span(v-if="count == 0" v-t="'announcement.form.added_none'")
+    span(v-if="count == 1" v-t="'announcement.form.added_singular'")
+    span(v-if="count > 1" v-t="{path: 'announcement.form.added', args: {count: count}}")
   space
   span(v-if="model.recipientAudience && !model.anonymous" v-t="'announcement.form.click_group_to_see_individuals'")
 </template>

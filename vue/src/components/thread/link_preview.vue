@@ -37,7 +37,7 @@ div
   template(v-if="editing")
     v-card.link-preview.mt-3(outlined style="position: relative")
       .link-preview__image(v-if="preview.image" :style="{'background-image': 'url('+preview.image+')', 'background-size': (preview.fit || 'contain'), 'background-position': (preview.align || 'center')}")
-      v-btn.link-preview__btn(color="accent" icon outlined
+      v-btn.link-preview__btn(color="primary" icon outlined
             :title="$t('common.action.done')"
             style="right: 8px"
             @click="editing = false")
@@ -50,33 +50,35 @@ div
   template(v-else)
     v-card.link-preview.link-preview-link.mt-3(outlined style="position: relative")
       template(v-if="remove")
-        v-btn.link-preview__btn(color="accent"
+        v-btn.link-preview__btn(color="primary"
               outlined
               style="right: 8px"
               icon
               @click="remove(preview.url)"
               :title="$t('common.action.remove')")
           v-icon mdi-close
-        v-btn.link-preview__btn(color="accent"
+        v-btn.link-preview__btn(color="primary"
               style="right: 48px"
               icon
               outlined
               @click="editing = true"
               :title="$t('common.action.edit')")
           v-icon mdi-pencil
-        v-btn.link-preview__btn(@click="preview.fit = (preview.fit == 'cover' ? 'contain' : 'cover')"
-              color="accent" icon outlined
-              style="right: 88px"
-              :title="$t('common.action.zoom')")
-          v-icon(v-if="preview.fit == 'contain'") mdi-magnify-plus-outline
-          v-icon(v-else) mdi-magnify-minus-outline
-        v-btn.link-preview__btn(v-if="preview.fit == 'cover'"
-              @click="preview.align = (preview.align == 'top' ? 'center' : 'top')"
-              color="accent" icon outlined
-              style="right: 128px"
-              :title="$t('common.action.align')")
-          v-icon(v-if="preview.align == 'top'") mdi-format-vertical-align-center
-          v-icon(v-else) mdi-format-vertical-align-top
+
+        template(v-if="preview.image")
+          v-btn.link-preview__btn(@click="preview.fit = (preview.fit == 'cover' ? 'contain' : 'cover')"
+                color="primary" icon outlined
+                style="right: 88px"
+                :title="$t('common.action.zoom')")
+            v-icon(v-if="preview.fit == 'contain'") mdi-magnify-plus-outline
+            v-icon(v-else) mdi-magnify-minus-outline
+          v-btn.link-preview__btn(v-if="preview.fit == 'cover'"
+                @click="preview.align = (preview.align == 'top' ? 'center' : 'top')"
+                color="primary" icon outlined
+                style="right: 128px"
+                :title="$t('common.action.align')")
+            v-icon(v-if="preview.align == 'top'") mdi-format-vertical-align-center
+            v-icon(v-else) mdi-format-vertical-align-top
 
       a.link-preview-link(:href="preview.url" target="_blank" rel="nofollow ugc noreferrer noopener")
         div.ml-4
@@ -92,19 +94,13 @@ div
 
 <style lang="sass">
 .link-preview
-  .v-card__title
-    word-break: break-word
-    display: block
-
-.link-preview-link:hover
-  background-color: #ededed
-
-.link-preview
-  .v-card__subtitle
-    word-break: break-word
-
-.link-preview__hostname
+  overflow-wrap: break-word
+  word-wrap: break-word
   word-break: break-word
+//   opacity: 70%
+//
+// .link-preview-link:hover
+//   opacity: 100%
 
 .link-preview__image
   height: 160px

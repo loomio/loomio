@@ -75,7 +75,26 @@ img.emoji
       li[data-checked="true"]::before
         content: none
 
+.theme--dark
+  .lmo-markdown-wrapper
+    span[style="color:#000000"],
+    span[style="color:#000000;"],
+    span[style="color: #000000"],
+    span[style="color: #000000;"],
+    span[style="color:rgba(0, 0, 0, 0.87);"],
+    span[style="color:rgba(0, 0, 0, 0.87)"],
+    span[style="color:rgba(0, 0, 0, 1);"],
+    span[style="color:rgba(0, 0, 0, 1)"],
+    span[style="color:rgb(0, 0, 0);"],
+    span[style="color:rgb(0, 0, 0)"],
+    span[style="color:rgb(0,0,0);"],
+    span[style="color:rgb(0,0,0)"]
+      color: #fff !important
+
 .lmo-markdown-wrapper
+
+  a:hover
+    text-decoration: underline
   p
     margin-bottom: 0.5rem
 
@@ -178,13 +197,13 @@ img.emoji
       color: #fff
       content: " 📅 " attr(data-due-on) ""
       border-radius: 8px
-      background-color: var(--v-accent-base)
+      background-color: var(--v-primary-base)
       margin-left: 8px
       padding: 2px 8px
       height: 16px
       display: flex
       align-items: center
-      // border: 1px solid var(--v-accent-base)
+      // border: 1px solid var(--v-primary-base)
 
     li::before
       content: ""
@@ -207,16 +226,16 @@ img.emoji
       color: white
       text-align: center
       vertical-align: middle
-      background-color: var(--v-accent-base)
-      border-color: var(--v-accent-base)
+      background-color: var(--v-primary-base)
+      border-color: var(--v-primary-base)
 
     li:hover:before
       cursor: pointer
-      border-color: var(--v-accent-lighten1)
+      border-color: var(--v-primary-lighten1)
 
     li.task-item-busy::before
-      background-color: var(--v-accent-lighten1)
-      border-color: var(--v-accent-lighten1)
+      background-color: var(--v-primary-lighten1)
+      border-color: var(--v-primary-lighten1)
       // background-color: none !important
 
     // li[data-checked="true"]:hover:before

@@ -97,7 +97,7 @@ section(:aria-label="$t(ariaTranslationKey, {actor: event.actorName(), pollType:
         v-checkbox.thread-item__is-forking(v-if="discussion.forkedEventIds.length" @change="event.toggleForking()" :disabled="event.forkingDisabled()" v-model="event.isForking()")
       v-layout.thread-item__body(column)
         v-layout.align-center.wrap
-          h3.thread-item__title.body-2(tabindex="-1" :id="'event-' + event.id")
+          h3.thread-item__title.body-2.text--secondary(tabindex="-1" :id="'event-' + event.id")
             //- div
               | id: {{event.id}}
               | pos {{event.position}}
@@ -106,15 +106,15 @@ section(:aria-label="$t(ariaTranslationKey, {actor: event.actorName(), pollType:
               | childCount: {{event.childCount}}
               | eid: {{event.eventableId}}
             div(v-if="eventable.discardedAt")
-              span.grey--text(v-t="'thread_item.removed'")
+              span.text--secondary(v-t="'thread_item.removed'")
               mid-dot
-              router-link.grey--text(:to='link')
+              router-link.text--secondary(:to='link')
                 time-ago(:date='eventable.discardedAt')
             div.d-flex.align-center(v-else)
               slot(name="headline")
-                span(v-html='headline')
+                span.text--secondary(v-html='headline')
               mid-dot
-              router-link.grey--text.body-2(:to='link')
+              router-link.text--secondary(:to='link')
                 time-ago(:date='event.createdAt')
         .default-slot(v-if="!eventable.discardedAt" ref="defaultSlot")
           slot
@@ -124,24 +124,28 @@ section(:aria-label="$t(ariaTranslationKey, {actor: event.actorName(), pollType:
   slot(name="append")
 </template>
 <style lang="sass">
+a.actor-link
+  color: var(--text-secondary) !important
+
 .thread-item__title
-	& > .poll-common-stance-choice
-		display: inline-block
-	strong
-		font-weight: normal
+  & > .poll-common-stance-choice
+    display: inline-block
+  strong
+    font-weight: normal
 .thread-item
-	transition: background 4s ease-out
-	.v-card__actions
-		padding-left: 0
-		padding-right: 0
+  border-left: 2px solid transparent
+  transition: border-color 4s ease-out
+  .v-card__actions
+    padding-left: 0
+    padding-right: 0
 .thread-item--focused
-	background-color: var(--v-accent-lighten5)
+  border-color: var(--v-accent-lighten5)
 .thread-item--previously-focused
-	background-color: none
+  border-color: none
 .thread-item--unread
-	background-color: var(--v-primary-lighten5)
+  border-color: var(--v-primary-lighten5)
 .thread-item__body
-	width: 100%
-	min-width: 0
+  width: 100%
+  min-width: 0
 
 </style>

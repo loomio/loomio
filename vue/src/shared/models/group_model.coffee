@@ -39,7 +39,7 @@ export default class GroupModel extends BaseModel
     recipientAudience: null
     recipientUserIds: []
     recipientEmails: []
-
+    notifyRecipients: true
 
   afterConstruction: ->
     if @privacyIsClosed()
@@ -176,7 +176,7 @@ export default class GroupModel extends BaseModel
     else if @parent()
       @parent().logoUrl()
     else
-      AppConfig.theme.icon_src
+      null
 
   coverUrl: (size = 'large') ->
     if @parentId && !@hasCustomCover

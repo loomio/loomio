@@ -2,6 +2,7 @@
 import NewComment from '@/components/thread/item/new_comment.vue'
 import PollCreated from '@/components/thread/item/poll_created.vue'
 import StanceCreated from '@/components/thread/item/stance_created.vue'
+import StanceUpdated from '@/components/thread/item/stance_updated.vue'
 import OutcomeCreated from '@/components/thread/item/outcome_created.vue'
 import { camelCase } from 'lodash'
 
@@ -21,11 +22,12 @@ export default
     PollCreated: PollCreated
     StanceCreated: StanceCreated
     OutcomeCreated: OutcomeCreated
+    StanceUpdated: StanceUpdated
     ThreadItem: -> import('@/components/thread/item.vue')
 
   methods:
     componentForKind: (kind) ->
-      camelCase if ['stance_created', 'new_comment', 'outcome_created', 'poll_created'].includes(kind)
+      camelCase if ['stance_created', 'stance_updated', 'new_comment', 'outcome_created', 'poll_created'].includes(kind)
         kind
       else
         'thread_item'
@@ -58,6 +60,11 @@ export default
 </template>
 
 <style lang="sass">
+.theme--dark
+  .thread-item-wrapper
+    &:empty
+      background-color: #333
+
 .thread-item-wrapper
   &:empty
     min-height: 100px

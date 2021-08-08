@@ -9,6 +9,7 @@ import {compact, map, toPairs, fromPairs, some, sortBy, isEqual} from 'lodash'
 export default
   props:
     stance: Object
+
   data: ->
     stanceChoices: []
     pollOptions: []
@@ -22,18 +23,16 @@ export default
   created: ->
     EventBus.$on 'timeZoneSelected', @setTimeZone
     @watchRecords
-      collections: ['poll_options', 'poll']
+      collections: ['pollOptions']
       query: (records) =>
         @canRespondMaybe =  @stance.poll().customFields.can_respond_maybe
         @stanceValues = if @stance.poll().customFields.can_respond_maybe then [2,1,0] else [2, 0]
-        if !isEqual map(@pollOptions, 'name'), map(@stance.poll().pollOptions(), 'name')
-          @pollOptions = sortBy @stance.poll().pollOptions(), 'name'
+        if @stance.poll().optionsDiffer(@pollOptions)
+          @pollOptions = @stance.poll().pollOptionsForVoting()
           @stanceChoices = @pollOptions.map (option) =>
-            lastChoice = @stance.stanceChoices().find((sc) => sc.pollOptionId == option.id) || {score: 0}
-            id: option.id
-            pollOption: => option
-            poll: => @stance.poll()
-            score: lastChoice.score
+            pollOption: option
+            poll_option_id: option.id
+            score: @stance.scoreFor(option)
 
   methods:
     setTimeZone: (e, zone) ->
@@ -41,12 +40,11 @@ export default
 
     submit: ->
       @stance.stanceChoicesAttributes = @stanceChoices.map (choice) ->
-        {poll_option_id: choice.id, score: choice.score}
+        {poll_option_id: choice.poll_option_id, score: choice.score}
 
       actionName = if !@stance.castAt then 'created' else 'updated'
       @stance.save()
       .then =>
-        @stance.poll().clearStaleStances()
         EventBus.$emit "closeModal"
         Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
       .catch onError(@stance)

@@ -16,9 +16,9 @@ export default
     optionGroups: []
   created: ->
     @watchRecords
-      collections: ['poll_options']
+      collections: ['pollOptions']
       query: (records) =>
-        if !isEqual map(@pollOptions, 'name'), map(@stance.poll().pollOptions(), 'name')
+        if @stance.poll().optionsDiffer(@pollOptions)
           options = @stance.poll().pollOptions()
           @optionGroups = if options.length == 4
             [[options[0], options[1]], [options[2], options[3]]]
@@ -31,7 +31,6 @@ export default
       @stance.stanceChoicesAttributes = [{poll_option_id: @selectedOptionId}]
       @stance.save()
       .then =>
-        @stance.poll().clearStaleStances()
         Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
         EventBus.$emit "closeModal"
       .catch onError(@stance)

@@ -8,21 +8,13 @@ import PollScoreForm from '@/components/poll/score/form.vue'
 import PollMeetingForm from '@/components/poll/meeting/form.vue'
 import PollRankedChoiceForm from '@/components/poll/ranked_choice/form.vue'
 import PollCommonChangeYourVote from '@/components/poll/common/change_your_vote.vue'
-import PollProposalChartPanel from '@/components/poll/proposal/chart_panel.vue'
-import PollCountChartPanel from '@/components/poll/count/chart_panel.vue'
 import PollPollVoteForm from '@/components/poll/poll/vote_form.vue'
 import PollDotVoteVoteForm from '@/components/poll/dot_vote/vote_form.vue'
-import PollPollChartPanel from '@/components/poll/poll/chart_panel.vue'
-import PollCommonBarChartPanel from '@/components/poll/common/bar_chart_panel.vue'
-import PollDotVoteChartPanel from '@/components/poll/dot_vote/chart_panel.vue'
 import PollScoreVoteForm from '@/components/poll/score/vote_form.vue'
-import PollScoreChartPanel from '@/components/poll/score/chart_panel.vue'
 import PollCommonStanceChoice from '@/components/poll/common/stance_choice.vue'
 import PollRankedChoiceVoteForm from '@/components/poll/ranked_choice/vote_form.vue'
 import PollMeetingVoteForm from '@/components/poll/meeting/vote_form.vue'
-import PollMeetingChartPanel from '@/components/poll/meeting/chart_panel.vue'
 import PollCommonVotesPanel from '@/components/poll/common/votes_panel.vue'
-import PollRankedChoiceChartPanel from '@/components/poll/ranked_choice/chart_panel'
 
 export default
   components:
@@ -35,21 +27,12 @@ export default
     'poll-meeting-form': PollMeetingForm
     'poll-ranked_choice-form': PollRankedChoiceForm
     'poll-common-change-your-vote': PollCommonChangeYourVote
-    'poll-proposal-chart-panel': PollProposalChartPanel
-    'poll-count-chart-panel': PollCountChartPanel
     'poll-poll-vote-form': PollPollVoteForm
     'poll-dot_vote-vote-form': PollDotVoteVoteForm
-    'poll-poll-chart-panel': PollPollChartPanel
-    'poll-common-bar-chart-panel': PollCommonBarChartPanel
-    'poll-dot_vote-chart-panel': PollDotVoteChartPanel
     'poll-score-vote-form': PollScoreVoteForm
-    'poll-score-chart-panel': PollScoreChartPanel
     'poll-common-stance-choice': PollCommonStanceChoice
     'poll-ranked_choice-vote-form': PollRankedChoiceVoteForm
     'poll-meeting-vote-form': PollMeetingVoteForm
-    'poll-meeting-chart-panel': PollMeetingChartPanel
-    'poll-common-votes-panel': PollCommonVotesPanel
-    'poll-ranked_choice-chart-panel': PollRankedChoiceChartPanel
 
   props:
     poll: Object

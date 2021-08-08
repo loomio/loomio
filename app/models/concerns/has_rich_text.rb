@@ -16,6 +16,12 @@ module HasRichText
           self[field] = TaskService.rewrite_uids(self[field])
         end
 
+        define_method "body_is_blank?" do
+          self[field] == '' ||
+          self[field] == nil ||
+          self[field] == '<p></p>'
+        end
+
         before_save :"sanitize_#{field}!"
 
         define_method "parse_and_update_tasks_#{field}!" do

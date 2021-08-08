@@ -105,4 +105,10 @@ class EventService
             events.position is distinct from t.seq")
     Redis::Counter.new("position_counter_#{parent_id}").delete
   end
+
+  def self.repair_all_threads
+    Discussion.pluck(:id).each do |id|
+      EventService.delay.repair_thread(id)
+    end
+  end
 end

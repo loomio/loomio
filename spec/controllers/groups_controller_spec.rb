@@ -23,18 +23,18 @@ describe GroupsController do
         expect(assigns(:group)).to eq group
       end
 
-      it 'not logged in, 403, ssr + boot' do
-        get :show, params: { key: group.key }
-        expect(response.status).to eq 403
-        expect(assigns(:group)).to eq nil
-      end
-
-      it 'not member, 403, ssr + boot' do
-        sign_in user
-        get :show, params: { key: group.key }
-        expect(response.status).to eq 403
-        expect(assigns(:group)).to eq nil
-      end
+      # it 'not logged in, 403, ssr + boot' do
+      #   get :show, params: { key: group.key }
+      #   expect(response.status).to eq 403
+      #   expect(assigns(:group)).to eq nil
+      # end
+      #
+      # it 'not member, 403, ssr + boot' do
+      #   sign_in user
+      #   get :show, params: { key: group.key }
+      #   expect(response.status).to eq 403
+      #   expect(assigns(:group)).to eq nil
+      # end
 
       it '404 ssr only' do
         get :show, params: { key: 'doesnotexist'}
