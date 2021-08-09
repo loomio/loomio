@@ -18,6 +18,9 @@ en:
     400:
       title: Bad request
       body: Sorry, we weren't able to understand that request
+    401:
+      title: Unauthorized
+      body: You are not permitted to access this page. You may need to sign in.
     403:
       title: Forbidden
       body: You are not permitted to access this page. You may need to sign in.

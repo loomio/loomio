@@ -85,8 +85,12 @@ class API::V1::ProfileController < API::V1::RestfulController
   end
 
   def contactable
-    current_user.ability.authorize!(:contact, User.find(params[:user_id]))
-    success_response
+    if current_user.is_logged_in?
+      current_user.ability.authorize!(:contact, User.find(params[:user_id]))
+      success_response
+    else
+      respond_with_error(status: 401)
+    end
   end
 
   private
