@@ -216,6 +216,7 @@ class Poll < ApplicationRecord
     show_results? ? super : []
   end
 
+  # this should not be run on anonymous polls
   def reset_latest_stances!
     self.transaction do
       self.stances.update_all(latest: false)
