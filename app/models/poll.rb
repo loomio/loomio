@@ -217,7 +217,6 @@ class Poll < ApplicationRecord
   end
 
   def reset_latest_stances!
-    raise "dont use this is breaks anonymous stances"
     self.transaction do
       self.stances.update_all(latest: false)
       Stance.where("id IN
