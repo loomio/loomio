@@ -23,6 +23,7 @@ export CommonMentioning =
 
   methods:
     findMentionable: ->
+      @mentionableUserIds = uniq(@mentionableUserIds.concat(@model.participantIds()))
       unsorted = filter Records.users.collection.chain().find(id: {$in: @mentionableUserIds}).data(), (u) =>
         ((u.name || '').toLowerCase().startsWith(@query) or
         (u.username || '').toLowerCase().startsWith(@query) or
