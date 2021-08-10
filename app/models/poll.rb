@@ -123,6 +123,7 @@ class Poll < ApplicationRecord
     :anyone_can_participate,
     :specified_voters_only,
     :notify_on_closing_soon,
+    :poll_option_names,
     :hide_results_until_closed]
 
   update_counter_cache :group, :polls_count
