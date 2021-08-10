@@ -81,7 +81,7 @@ export default class DiscussionModel extends BaseModel
   # known current participants for quick mentioning
   participantIds: ->
     compact flatten(
-      map(@recordStore.comments.find(discussionId: @id), 'userId'),
+      map(@recordStore.comments.find(discussionId: @id), 'authorId'),
       map(@recordStore.polls.find(discussionId: @id), (p) -> p.participantIds()),
       [@authorId]
     )
