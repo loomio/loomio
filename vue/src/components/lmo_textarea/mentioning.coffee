@@ -19,7 +19,7 @@ export CommonMentioning =
         @mentionableUserIds = uniq(@mentionableUserIds.concat(map(response.users, 'id')))
         @findMentionable()
     ,
-      250
+      500
 
   methods:
     findMentionable: ->
