@@ -31,7 +31,8 @@ export default
     @watchRecords
       collections: ['pollOptions']
       query: =>
-        Records.users.fetchAnyMissingById(@poll.decidedVoterIds())
+        if Session.isSignedIn()
+          Records.users.fetchAnyMissingById(@poll.decidedVoterIds())
         @options = @poll.pollOptionsForResults()
 
   computed:
