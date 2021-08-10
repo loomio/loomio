@@ -1,6 +1,6 @@
 class SendDailyCatchUpEmailWorker
   include Sidekiq::Worker
-  sidekiq_options retry: false, backtrace: true
+  sidekiq_options retry: false
 
   def perform
     User.distinct.pluck(:time_zone).uniq.each do |zone|
