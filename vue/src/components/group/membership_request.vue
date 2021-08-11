@@ -26,11 +26,11 @@ div
     v-list-item-content
       v-list-item-title.membership-request__name
         span {{request.actor().name || request.actor().email || request.name || request.email }}
-        span.caption.lmo-grey-text(v-if="!request.respondedAt")
+        span.caption.text--secondary(v-if="!request.respondedAt")
           space
           mid-dot
           time-ago(:date='request.createdAt')
-        span.membership-request__response.caption.lmo-grey-text(v-if="request.respondedAt")
+        span.membership-request__response.caption.text--secondary(v-if="request.respondedAt")
           space
           span(v-t="{ path: 'membership_requests_page.previous_request_response', args: { response: request.formattedResponse(), responder: request.responder().name } }")
           mid-dot
@@ -44,7 +44,3 @@ div
       v-btn.membership-requests-page__ignore(text icon @click='ignore(request)')
         v-icon mdi-close
 </template>
-<style lang="sass">
-.lmo-grey-text
-  color: rgba(0, 0, 0, 0.54)
-</style>

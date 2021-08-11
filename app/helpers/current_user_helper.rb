@@ -20,6 +20,10 @@ module CurrentUserHelper
     end
   end
 
+  def require_current_user
+    respond_with_error(status: 401) unless current_user && current_user.is_logged_in?
+  end
+
   private
 
   def associate_user_to_visit

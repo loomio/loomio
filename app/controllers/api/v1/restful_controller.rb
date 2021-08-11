@@ -12,4 +12,11 @@ class API::V1::RestfulController < API::V1::SnorlaxBase
   before_action :set_sentry_context          # SentryHelper
   before_action :deny_spam_users            # CurrentUserHelper
   after_action :associate_user_to_visit
+
+  private
+  def require_current_user
+    unless current_user && current_user.is_logged_in?
+      render(json: {error: 'you gotta be signed in'}, root: false, status: 401)
+    end
+  end
 end

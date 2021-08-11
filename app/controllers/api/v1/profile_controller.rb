@@ -1,6 +1,7 @@
 class API::V1::ProfileController < API::V1::RestfulController
+  before_action :require_current_user, only: [:index, :contactable]
+
   def index
-    raise "i forgot the normal way to require signed in suer" unless current_user.is_logged_in?
     ids = UserQuery.invitable_user_ids(model: nil, actor: current_user, user_ids: params[:xids].split('x').map(&:to_i).compact)
     self.collection = User.where(id: ids)
     cache = RecordCache.for_collection(collection, current_user.id, exclude_types)

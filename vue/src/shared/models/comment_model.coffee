@@ -46,6 +46,8 @@ export default class CommentModel extends BaseModel
 
   # isMostRecent: ->
   #   last(@discussion().comments()) == @
+  participantIds: ->
+    @discussion().participantIds()
 
   isReply: ->
     @parentId?

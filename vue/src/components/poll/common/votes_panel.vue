@@ -5,9 +5,6 @@ import EventBus     from '@/shared/services/event_bus'
 import { fieldFromTemplate } from '@/shared/helpers/poll'
 
 export default
-  components:
-    PollCommonDirective: -> import('@/components/poll/common/directive')
-
   props:
     poll: Object
 
