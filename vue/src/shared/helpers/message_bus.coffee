@@ -23,13 +23,13 @@ export initLiveUpdate = ->
       EventBus.$emit('systemNotice', data)
     else
       roomScores[data.room] = data.score
-      Records.import(data.records)
+      Records.importJSON(data.records)
 
   recordsSocket.on 'reconnect', (data) =>
     console.log("socket.io reconnect", {roomScores: roomScores})
     recordsSocket.emit "catchup", roomScores, (recordSets) =>
       console.log("catchup reply", recordSets)
-      recordSets.forEach((set) => Records.import(set))
+      recordSets.forEach((set) => Records.importJSON(set))
 
   recordsSocket.on 'disconnect', (data) =>
     # Flash.warning("server disconnected")

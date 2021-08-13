@@ -37,7 +37,7 @@ export default
     uploadFile: ->
       @uploading = true
       Records.users.remote.onUploadSuccess = (response) =>
-        Records.import response
+        Records.importJSON response
         EventBus.$emit 'updateProfile'
         EventBus.$emit 'closeModal'
         @uploading = false

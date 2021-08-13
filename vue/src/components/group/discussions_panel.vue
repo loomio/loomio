@@ -3,7 +3,8 @@ import Records            from '@/shared/services/records'
 import AbilityService     from '@/shared/services/ability_service'
 import EventBus           from '@/shared/services/event_bus'
 import RecordLoader       from '@/shared/services/record_loader'
-import { map, debounce, orderBy, intersection, compact, omit, filter, concat, uniq } from 'lodash'
+import PageLoader         from '@/shared/services/page_loader'
+import { map, debounce, orderBy, intersection, compact, omit, filter, concat, uniq} from 'lodash'
 import Session from '@/shared/services/session'
 
 export default
@@ -20,6 +21,8 @@ export default
     loader: null
     searchLoader: null
     groupIds: []
+    per: 25
+    page: 1
 
   methods:
     routeQuery: (o) ->
@@ -54,16 +57,18 @@ export default
         @watchRecords
           key: @group.id
           collections: ['discussions', 'groups', 'memberships']
-          query: (store) => @query(store)
-
+          query: => @query()
 
     refresh: ->
-      @loader = new RecordLoader
-        collection: 'discussions'
+      @loader = new PageLoader
+        path: 'discussions'
         params:
           group_id: @group.id
           exclude_types: 'group outcome'
-          per: 25
+          filter: @$route.query.t
+          subgroups: @$route.query.subgroups || 'mine'
+          tags: @$route.query.tag
+          per: @per
 
       @searchLoader = new RecordLoader
         collection: 'searchResults'
@@ -75,14 +80,20 @@ export default
       @fetch()
       @query()
 
-    query: (store) ->
-      return unless @group
+    query: ->
+      return unless @group && @page && @loader && @loader.pageWindow[@page]
+      # console.log 'running query: page', @page, 'loader pageWindow[page]', @loader.pageWindow[@page]
       @publicGroupIds = @group.publicOrganisationIds()
 
       @groupIds = switch (@$route.query.subgroups || 'mine')
         when 'mine' then uniq(concat(intersection(@group.organisationIds(), Session.user().groupIds()), @publicGroupIds, @group.id)) # @group.id is present if @group is a subgroup of parentgroup that i'm a member of, and that parent group has parentMembersCanSeeDiscussions
         when 'all' then @group.organisationIds()
         else [@group.id]
+
+      # console.log 'user group ids', Session.user().groupIds()
+      # console.log 'org ids', @group.organisationIds()
+      # console.log 'intersection ids', orderBy intersection(@group.organisationIds(), Session.user().groupIds())
+      # console.log 'records found', Records.discussions.collection.chain().find(groupId: {'$in': @group.organisationIds()}).data().length
 
       if @$route.query.q
         chain = Records.searchResults.collection.chain()
@@ -109,19 +120,14 @@ export default
           tag = Records.tags.find(groupId: @group.parentOrSelf().id, name: @$route.query.tag)[0]
           chain = chain.find({tagIds: {'$contains': tag.id}})
 
-        @discussions = chain.data()
+        chain = chain.find(lastActivityAt: {$jbetween: @loader.pageWindow[@page]})
+        @discussions = chain.simplesort('lastActivityAt', true).data()
 
     fetch: ->
       if @$route.query.q
         @searchLoader.fetchRecords(q: @$route.query.q, from: 0)
       else
-        params = {}
-        params.per = 50
-        params.filter = 'show_closed' if @$route.query.t == 'closed'
-        params.filter = 'all' if @$route.query.t == 'all'
-        params.subgroups = @$route.query.subgroups || 'mine'
-        params.tags = @$route.query.tag
-        @loader.fetchRecords(params)
+        @loader.fetch(@page).then( => @query())
 
     filterName: (filter) ->
       switch filter
@@ -132,12 +138,17 @@ export default
         else
           'discussions_panel.open'
 
-
   watch:
     '$route.params': 'init'
     '$route.query': 'refresh'
+    'page' : ->
+      @fetch()
+      @query()
 
   computed:
+    totalPages: ->
+      Math.ceil(parseFloat(@loader.total) / parseFloat(@per))
+
     pinnedDiscussions: ->
       orderBy(@discussions.filter((discussion) -> discussion.pinned), ['title'], ['asc'])
 
@@ -173,8 +184,6 @@ export default
 <template lang="pug">
 div.discussions-panel(v-if="group")
   v-layout.py-3(align-center wrap)
-    //- v-select(solo hide-details flat flex-shrink :items="['Open']").mr-2
-    //- v-select(solo hide-details flat flex-shrink :items="['All tags']").mr-2
     v-menu
       template(v-slot:activator="{ on, attrs }")
         v-btn.mr-2.text-lowercase.discussions-panel__filters(v-on="on" v-bind="attrs" text)
@@ -214,12 +223,18 @@ div.discussions-panel(v-if="group")
             thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in pinnedDiscussions" :key="thread.id" :thread="thread" group-page)
             thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in regularDiscussions" :key="thread.id" :thread="thread" group-page)
 
+        //- | loader.pageWindow {{loader.pageWindow}}
+        v-pagination(v-model="page" :length="totalPages" :total-visible="7")
         .d-flex.justify-center
           .d-flex.flex-column.align-center
-            .text--secondary
-              | {{discussions.length}} / {{loader.total}}
-            v-btn.my-2.discussions-panel__show-more(outlined color='primary' v-if="discussions.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="fetch()")
-              span(v-t="'common.action.load_more'")
+            //- .text--secondary
+            //-   | {{page}}
+            //- .text--secondary
+            //-   | {{loader.pageWindow}}
+            //- .text--secondary
+            | {{discussions.length}} / {{loader.total}}
+            //- v-btn.my-2.discussions-panel__show-more(outlined color='primary' v-if="discussions.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="fetch()")
+            //-   span(v-t="'common.action.load_more'")
             router-link.discussions-panel__view-closed-threads.text-center.pa-1(:to="'?t=closed'" v-if="suggestClosedThreads" v-t="'group_page.view_closed_threads'")
 
       .discussions-panel__content.pa-4(v-if="$route.query.q")

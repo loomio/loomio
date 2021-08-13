@@ -1,9 +1,28 @@
 import parseISO from 'date-fns/parseISO'
-import { each, keys, map, camelCase } from 'lodash'
+import { each, keys, map, camelCase, isArray} from 'lodash'
+
+transformKeys = (attributes, transformFn) ->
+  result = {}
+  each keys(attributes), (key) ->
+    result[transformFn(key)] = attributes[key]
+    true
+  result
+
+isTimeAttribute = (attributeName) ->
+  /At$/.test(attributeName)
 
 export default new class Utils
-  parseJSONList: (data) -> map(data, @parseJSON)
-  parseJSON: (json) ->
+  deserialize: (json) ->
+    result = {}
+    attributes = transformKeys(json, camelCase)
+    each keys(attributes), (name) =>
+      if isArray(attributes[name])
+        result[name] = map(attributes[name], @parseJSON)
+      else
+        result[name] = attributes[name]
+    result
+
+  parseJSON: (json) -> # parse a single record
     attributes = transformKeys(json, camelCase)
     each keys(attributes), (name) ->
       if attributes[name]?
@@ -16,13 +35,3 @@ export default new class Utils
 
   isTimeAttribute: (attributeName) ->
     isTimeAttribute(attributeName)
-
-transformKeys = (attributes, transformFn) ->
-  result = {}
-  each keys(attributes), (key) ->
-    result[transformFn(key)] = attributes[key]
-    true
-  result
-
-isTimeAttribute = (attributeName) ->
-  /At$/.test(attributeName)
