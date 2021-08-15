@@ -11,6 +11,7 @@ export default class PageLoader
     @params = opts.params
     @path = opts.path
     @per = opts.params.per
+    @order = opts.order
     @total = 0
     @pageWindow = {}
     @err = null
@@ -27,8 +28,8 @@ export default class PageLoader
     .then (json) =>
       data = utils.deserialize(json)
       @total = data.meta.total
-      firstId = data[data.meta.root][0]['lastActivityAt']
-      lastId = data[data.meta.root][(data[data.meta.root].length - 1)]['lastActivityAt']
+      firstId = data[data.meta.root][0][@order]
+      lastId = data[data.meta.root][(data[data.meta.root].length - 1)][@order]
       Vue.set(@pageWindow, page, [lastId,firstId])
       # console.log 'page', page, 'discussions.length', data.discussions.length, 'first', firstId, 'last', lastId, 'groupIds!', orderBy uniq(map(data['discussions'], 'groupId'))
       Records.importREADY(data)

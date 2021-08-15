@@ -22,7 +22,6 @@ export default
     searchLoader: null
     groupIds: []
     per: 25
-    page: 1
 
   methods:
     routeQuery: (o) ->
@@ -62,6 +61,7 @@ export default
     refresh: ->
       @loader = new PageLoader
         path: 'discussions'
+        order: 'lastActivityAt'
         params:
           group_id: @group.id
           exclude_types: 'group outcome'
@@ -81,7 +81,7 @@ export default
       @query()
 
     query: ->
-      return unless @group && @page && @loader && @loader.pageWindow[@page]
+      return unless @group
       # console.log 'running query: page', @page, 'loader pageWindow[page]', @loader.pageWindow[@page]
       @publicGroupIds = @group.publicOrganisationIds()
 
@@ -120,8 +120,14 @@ export default
           tag = Records.tags.find(groupId: @group.parentOrSelf().id, name: @$route.query.tag)[0]
           chain = chain.find({tagIds: {'$contains': tag.id}})
 
-        chain = chain.find(lastActivityAt: {$jbetween: @loader.pageWindow[@page]})
-        @discussions = chain.simplesort('lastActivityAt', true).data()
+        if @loader.pageWindow[@page]
+          if @page == 1
+            chain = chain.find(lastActivityAt: {$gte: @loader.pageWindow[@page][0]})
+          else
+            chain = chain.find(lastActivityAt: {$jbetween: @loader.pageWindow[@page]})
+          @discussions = chain.simplesort('lastActivityAt', true).data()
+        else
+          @discussions = []
 
     fetch: ->
       if @$route.query.q
@@ -146,6 +152,13 @@ export default
       @query()
 
   computed:
+    page:
+      get: -> parseInt(@$route.query.page) || 1
+      set: (val) ->
+        @$router.replace
+          query:
+            page: val
+
     totalPages: ->
       Math.ceil(parseFloat(@loader.total) / parseFloat(@per))
 
@@ -177,7 +190,7 @@ export default
       filter(@discussions, (discussion) -> discussion.isUnread()).length
 
     suggestClosedThreads: ->
-      @loader.exhausted && ['undefined', 'open', 'unread'].includes(String(@$route.query.t)) && @group && @group.closedDiscussionsCount
+      ['undefined', 'open', 'unread'].includes(String(@$route.query.t)) && @group && @group.closedDiscussionsCount
 
 </script>
 
@@ -223,19 +236,11 @@ div.discussions-panel(v-if="group")
             thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in pinnedDiscussions" :key="thread.id" :thread="thread" group-page)
             thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in regularDiscussions" :key="thread.id" :thread="thread" group-page)
 
-        //- | loader.pageWindow {{loader.pageWindow}}
+        loading(v-if="loading && discussions.length == 0")
+
         v-pagination(v-model="page" :length="totalPages" :total-visible="7")
         .d-flex.justify-center
-          .d-flex.flex-column.align-center
-            //- .text--secondary
-            //-   | {{page}}
-            //- .text--secondary
-            //-   | {{loader.pageWindow}}
-            //- .text--secondary
-            | {{discussions.length}} / {{loader.total}}
-            //- v-btn.my-2.discussions-panel__show-more(outlined color='primary' v-if="discussions.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="fetch()")
-            //-   span(v-t="'common.action.load_more'")
-            router-link.discussions-panel__view-closed-threads.text-center.pa-1(:to="'?t=closed'" v-if="suggestClosedThreads" v-t="'group_page.view_closed_threads'")
+          router-link.discussions-panel__view-closed-threads.text-center.pa-1(:to="'?t=closed'" v-if="suggestClosedThreads" v-t="'group_page.view_closed_threads'")
 
       .discussions-panel__content.pa-4(v-if="$route.query.q")
         p.text-center.discussions-panel__list--empty(v-if='!searchResults.length && !searchLoader.loading' v-t="{path: 'discussions_panel.no_results_found', args: {search: $route.query.q}}")
