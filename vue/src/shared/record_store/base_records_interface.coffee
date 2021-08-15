@@ -58,7 +58,9 @@ export default class BaseRecordsInterface
     record
 
   fetch: (args) ->
-    @remote.fetch(args).then (data) => @recordStore.importJSON(data)
+    @remote.fetch(args).then (data) =>
+      @recordStore.importJSON(data)
+      data
 
   importRecord: (attributes) ->
     record = @find(attributes.key) if attributes.key?
