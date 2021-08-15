@@ -63,6 +63,9 @@ export default class StanceModel extends BaseModel
   author: ->
     @participant()
 
+  reasonTooLong: ->
+    !@poll().allowLongReason && @reason.length > 500
+    
   stanceChoice: ->
     head @sortedChoices()
 
