@@ -27,11 +27,11 @@ export default class MemberhipRecordsInterface extends BaseRecordsInterface
       path: 'autocomplete'
       params: { q: fragment, group_key: groupKey, per: limit }
 
-  fetchByGroup: (groupKey, options = {}) ->
-    @fetch
-      params:
-        group_key: groupKey
-        per: options['per'] or 30
+  # fetchByGroup: (groupKey, options = {}) ->
+  #   @fetch
+  #     params:
+  #       group_key: groupKey
+  #       per: options['per'] or 30
 
   fetchByUser: (user, options = {}) ->
     @fetch
@@ -42,9 +42,12 @@ export default class MemberhipRecordsInterface extends BaseRecordsInterface
 
   makeAdmin: (membership) ->
     @remote.postMember membership.id, "make_admin"
+    .then (data) => @recordStore.importJSON(data)
 
   removeAdmin: (membership) ->
     @remote.postMember membership.id, "remove_admin"
+    .then (data) => @recordStore.importJSON(data)
 
   saveExperience: (experience, membership) =>
     @remote.postMember(membership.id, "save_experience", experience: experience)
+    .then (data) => @recordStore.importJSON(data)

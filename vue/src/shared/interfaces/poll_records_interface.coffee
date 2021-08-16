@@ -19,5 +19,5 @@ export default class PollRecordsInterface extends BaseRecordsInterface
       path: 'search_results_count'
       params: options
 
-  fetchByGroup: (groupKey, options = {}) ->
-    @search merge(options, {group_key: groupKey})
+  # fetchByGroup: (groupKey, options = {}) ->
+  #   @search merge(options, {group_key: groupKey})

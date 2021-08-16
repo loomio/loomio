@@ -33,6 +33,7 @@ export default class UserRecordsInterface extends BaseRecordsInterface
     user.processing = true
     @remote.post('update_profile', merge(user.serialize(), {unsubscribe_token: user.unsubscribeToken }))
     .then (data) =>
+      @recordStore.importJSON(data)
     .catch (data) =>
       user.setErrors(data.errors) if data.errors
       throw data
@@ -40,6 +41,7 @@ export default class UserRecordsInterface extends BaseRecordsInterface
 
   uploadAvatar: (file) =>
     @remote.upload 'upload_avatar', file
+    .then (data) => @recordStore.importJSON(data)
 
   changePassword: (user) =>
     user.processing = true
@@ -50,9 +52,11 @@ export default class UserRecordsInterface extends BaseRecordsInterface
 
   saveExperience: (experience) =>
     @remote.post('save_experience', experience: experience)
+    .then (data) => @recordStore.importJSON(data)
 
   removeExperience: (experience) =>
     @remote.post('save_experience', experience: experience, remove_experience: 1)
+    .then (data) => @recordStore.importJSON(data)
 
   emailStatus: (email, token) ->
     @fetch
