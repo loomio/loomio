@@ -3,7 +3,6 @@ import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import Session from '@/shared/services/session'
 import Flash  from '@/shared/services/flash'
-import { onError } from '@/shared/helpers/form'
 
 export default
   data: ->
@@ -37,7 +36,7 @@ export default
         Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
           @$router.replace(@urlFor(poll))
           Flash.success "poll_#{poll.pollType}_form.#{poll.pollType}_#{actionName}"
-      .catch onError(@poll)
+      .catch => true
 
   computed:
     title_key: ->

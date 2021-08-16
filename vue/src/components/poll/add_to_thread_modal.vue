@@ -5,7 +5,6 @@ import AbilityService from '@/shared/services/ability_service'
 import Flash   from '@/shared/services/flash'
 import EventBus          from '@/shared/services/event_bus'
 import I18n           from '@/i18n'
-import { onError } from '@/shared/helpers/form'
 import { sortBy, debounce } from 'lodash'
 
 export default
@@ -40,7 +39,6 @@ export default
       .then =>
         Flash.success('add_poll_to_thread_modal.success', pollType: @poll.translatedPollType())
         EventBus.$emit('closeModal')
-      .catch onError(@poll)
 
     fetch: debounce ->
       return unless @searchFragment

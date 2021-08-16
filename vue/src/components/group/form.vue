@@ -7,7 +7,6 @@ import EventBus   from '@/shared/services/event_bus'
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
 import { isEmpty, some, debounce } from 'lodash'
-import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -59,7 +58,7 @@ export default
         Flash.success("group_form.messages.group_#{@actionName}")
         EventBus.$emit 'closeModal'
         @$router.push("/g/#{groupKey}")
-      .catch onError(@group)
+      .catch (error) => true
 
 
     expandForm: ->

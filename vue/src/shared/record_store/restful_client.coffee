@@ -13,7 +13,9 @@ export default class RestfulClient
       response.json()
     else
       throw response
-  onFailure: (response) -> throw response
+  onFailure: (response) ->
+    response.json().then (data) -> throw data
+
   onUploadSuccess: (response) -> response
 
   constructor: (resourcePlural = null) ->

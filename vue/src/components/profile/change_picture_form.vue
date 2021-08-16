@@ -6,7 +6,6 @@ import Gravatar from 'vue-gravatar';
 import { capitalize } from 'lodash'
 import AppConfig from '@/shared/services/app_config'
 import Flash   from '@/shared/services/flash'
-import { onError } from '@/shared/helpers/form'
 
 export default
   components:
@@ -50,7 +49,7 @@ export default
         Flash.success 'profile_page.messages.picture_changed'
         EventBus.$emit 'updateProfile'
         EventBus.$emit 'closeModal'
-      .catch onError(@user)
+      .catch => true
 
   created: ->
     Records.users.saveExperience("changePicture")

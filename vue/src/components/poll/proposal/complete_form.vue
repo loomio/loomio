@@ -6,7 +6,6 @@ import Session from '@/shared/services/session'
 import { iconFor } from '@/shared/helpers/poll'
 import { fieldFromTemplate } from '@/shared/helpers/poll'
 import { map } from 'lodash'
-import { onError } from '@/shared/helpers/form'
 import AppConfig from '@/shared/services/app_config'
 
 export default
@@ -45,8 +44,7 @@ export default
             component: 'PollMembers',
             props:
               poll: poll
-
-      .catch onError(@poll)
+      .catch => true
 
     init: ->
       @poll = @newPoll()

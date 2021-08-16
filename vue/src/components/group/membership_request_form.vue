@@ -3,7 +3,6 @@ import Session        from '@/shared/services/session'
 import Records        from '@/shared/services/records'
 import AbilityService from '@/shared/services/ability_service'
 import Flash  from '@/shared/services/flash'
-import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -16,7 +15,6 @@ export default
       .then =>
         Flash.success 'membership_request_form.messages.membership_requested', {group: @group.fullName}
         @close()
-      .catch onError(@membershipRequest)
 
   data: ->
     membershipRequest: Records.membershipRequests.build

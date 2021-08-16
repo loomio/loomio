@@ -6,7 +6,6 @@ import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
-import { onError } from '@/shared/helpers/form'
 
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
 
@@ -59,7 +58,7 @@ export default
         Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
           Flash.success("discussion_form.messages.#{actionName}")
           @$router.push @urlFor(discussion)
-      .catch onError(@discussion)
+      .catch (error) => true
 
     updateGroupItems: ->
       @groupItems = [{text: @$t('discussion_form.none_invite_only_thread'), value: null}].concat Session.user().groups().map (g) -> {text: g.fullName, value: g.id}

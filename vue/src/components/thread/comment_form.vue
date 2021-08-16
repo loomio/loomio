@@ -4,7 +4,6 @@ import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import Flash  from '@/shared/services/flash'
-import { onError } from '@/shared/helpers/form'
 import { last } from 'lodash'
 
 export default
@@ -40,7 +39,7 @@ export default
                       else
                         'comment_form.messages.created'
         Flash.success flashMessage, {name: @comment.parent().authorName() if @comment.isReply()}
-      .catch onError(@comment)
+      .catch => true
 
 </script>
 
