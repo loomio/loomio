@@ -10,7 +10,7 @@ export default
 
   data: ->
     stances: []
-    per: 10
+    per: 25
     loader: null
 
   created: ->
