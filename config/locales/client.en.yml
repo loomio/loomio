@@ -1820,6 +1820,8 @@ en:
     can_respond_maybe:
       title: Voters can respond "if need be"
       helptext_on: Voters can indicate times as "If need be"
+    allow_long_reason:
+      title: Allow vote 'reason' to be longer than 500 characters
     hide_results_until_closed:
       title: Hide results until closed
       helptext_on: Don't show the how people have voted until the poll is closed

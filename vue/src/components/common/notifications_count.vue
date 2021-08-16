@@ -14,7 +14,7 @@ export default
   methods:
     updateCount: ->
       excludeMembers = (@excludeMembers && {exclude_members: 1}) || {}
-      Records.remote.get('announcements/count', {
+      Records.fetch(path: 'announcements/count', params: {
         recipient_emails_cmr: @model.recipientEmails.join(',')
         recipient_user_xids: @model.recipientUserIds.join('x')
         recipient_usernames_cmr: []

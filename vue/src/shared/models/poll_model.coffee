@@ -31,11 +31,11 @@ export default class PollModel extends BaseModel
     closingAt: startOfHour(addDays(new Date, 3))
     specifiedVotersOnly: false
     pollOptionNames: []
-    customFields: {
+    customFields:
       minimum_stance_choices: null
       max_score: null
       min_score: null
-    }
+    allowLongReason: false
     files: []
     imageFiles: []
     attachments: []

@@ -17,12 +17,17 @@ class StanceSerializer < ApplicationSerializer
              :poll_id,
              :participant_id,
              :revoked_at,
+             :order_at,
              :option_scores,
              :my_stance
 
   has_one :poll, serializer: PollSerializer, root: :polls
   has_one :participant, serializer: AuthorSerializer, root: :users
 
+  def order_at
+    object.cast_at || object.created_at
+  end
+  
   def option_scores
     if ENV['JIT_POLL_COUNTS'] && object.option_scores == {} && object.cast_at
       object.update_option_scores!

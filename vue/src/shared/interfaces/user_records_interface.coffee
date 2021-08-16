@@ -17,6 +17,8 @@ export default class UserRecordsInterface extends BaseRecordsInterface
       path: "groups"
       params:
         exclude_types: 'user'
+    .then (data) =>
+      @recordStore.importJSON(data)
 
   fetchMentionable: (q, model) =>
     model = model.discussion() if !model.id? && model.discussionId

@@ -88,7 +88,7 @@ class API::V1::SnorlaxBase < ActionController::Base
   end
 
   def respond_with_collection(scope: default_scope, serializer: serializer_class, root: serializer_root)
-    render json: records_to_serialize, scope: scope, each_serializer: serializer, root: root, meta: meta.merge({total: collection_count})
+    render json: records_to_serialize, scope: scope, each_serializer: serializer, root: root, meta: meta.merge({root: root, total: collection_count})
   end
 
   def meta

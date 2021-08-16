@@ -18,7 +18,7 @@ class API::V1::StancesController < API::V1::RestfulController
                  users.username ilike :first",
                  first: "#{query}%", last: "% #{query}%")
       end
-      collection
+      collection.order('cast_at DESC NULLS LAST, created_at DESC')
     end
     respond_with_collection
   end
@@ -91,12 +91,5 @@ class API::V1::StancesController < API::V1::RestfulController
 
   def accessible_records
     load_and_authorize(:poll).stances.latest
-  end
-
-  def valid_orders
-    [
-      'cast_at DESC NULLS LAST', # lastest stances
-      'cast_at DESC NULLS FIRST' # undecided first
-    ]
   end
 end

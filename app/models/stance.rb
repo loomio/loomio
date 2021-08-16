@@ -51,7 +51,7 @@ class Stance < ApplicationRecord
 
   validate :enough_stance_choices
   validate :total_score_is_valid
-  validates :reason, length: { maximum: 500 }
+  validates :reason, length: { maximum: 500 }, unless: -> { poll.allow_long_reason }
 
   delegate :group,          to: :poll, allow_nil: true
   delegate :mailer,         to: :poll, allow_nil: true
