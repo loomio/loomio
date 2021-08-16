@@ -13,6 +13,10 @@ export default
       @$router.replace(@mergeQuery(q: val))
     , 1000
     @init()
+    EventBus.$on 'signedIn', @init
+
+  beforeDestroy: ->
+    EventBus.$off 'signedIn', @init
 
   data: ->
     group: null
