@@ -65,7 +65,6 @@ section.strand-item.poll-created
     div.body-2(v-if="poll.pollOptionNames.length")
       .poll-common-card__results-shown(v-if='showResults')
         poll-common-chart-panel(:poll='poll')
-        poll-common-percent-voted(:poll='poll')
       poll-common-action-panel(:poll='poll')
     .caption(v-t="{path: 'poll_common_action_panel.draft_mode', args: {poll_type: poll.pollType}}" v-if='!poll.closingAt')
     action-dock.my-2(small :actions="dockActions" :menu-actions="menuActions")

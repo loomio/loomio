@@ -78,14 +78,14 @@ export default
     uploadCoverPhoto: ->
       @uploading = true
       Records.groups.remote.onUploadSuccess = (response) =>
-        Records.import response
+        Records.importJSON response
         @uploading = false
       Records.groups.remote.upload("#{@group.id}/upload_photo/cover_photo", @$refs.coverPhotoInput.files[0], {}, (args) => @progress = args.loaded / args.total * 100)
 
     uploadLogo: ->
       @uploading = true
       Records.groups.remote.onUploadSuccess = (response) =>
-        Records.import response
+        Records.importJSON response
         @uploading = false
       Records.groups.remote.upload("#{@group.id}/upload_photo/logo", @$refs.logoInput.files[0], {}, (args) => @progress = args.loaded / args.total * 100)
 

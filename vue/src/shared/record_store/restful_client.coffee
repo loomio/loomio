@@ -6,10 +6,13 @@ export default class RestfulClient
   currentUpload: null
   apiPrefix: "/api/v1"
 
-  # override these to set default actions
   onPrepare: (request)  -> request
   onCleanup: (response) -> response
-  onSuccess: (response) -> response
+  onSuccess: (response) =>
+    if response.ok
+      response.json()
+    else
+      throw response
   onFailure: (response) -> throw response
   onUploadSuccess: (response) -> response
 
@@ -62,8 +65,6 @@ export default class RestfulClient
         @onSuccess(response)
       else
         @onFailure(response)
-    , (response) =>
-      @onFailure(response)
     .finally(@onCleanup)
 
   postMember: (keyOrId, action, params) ->

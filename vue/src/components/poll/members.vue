@@ -104,6 +104,7 @@ export default
           poll_id: @poll.id
           query: @query
       .then (data) =>
+        Records.importJSON(data)
         @isMember = @toHash(data['meta']['member_ids'])
         @isMemberAdmin = @toHash(data['meta']['member_admin_ids'])
         @isStanceAdmin = @toHash(data['meta']['stance_admin_ids'])

@@ -52,6 +52,7 @@ export default
     :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
   //- poll-common-chart-ranked-choice(v-if="pollType == 'ranked_choice'"
   //-   :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
+  poll-common-percent-voted(:poll="poll")
 </template>
 
 <style lang="sass">

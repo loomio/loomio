@@ -1,5 +1,5 @@
 import RestfulClient from './restful_client'
-import utils         from './utils'
+import utils         from '@/shared/record_store/utils'
 import {pick, each, merge, keys, isNumber, isString, isArray, debounce, difference, uniq} from 'lodash'
 import Vue           from 'vue'
 
@@ -45,11 +45,6 @@ export default class BaseRecordsInterface
 
     @remote = new RestfulClient(@apiEndPoint or @model.plural)
 
-  onInterfaceAdded: ->
-
-  setRemoteCallbacks: (callbacks) ->
-    merge @remote, pick(callbacks, ['onPrepare', 'onSuccess', 'onUploadSuccess', 'onFailure', 'onCleanup'])
-
   all: ->
     @collection.data
 
@@ -63,12 +58,11 @@ export default class BaseRecordsInterface
     record
 
   fetch: (args) ->
-    @remote.fetch(args)
+    @remote.fetch(args).then (data) =>
+      @recordStore.importJSON(data)
+      data
 
-  importJSON: (json) ->
-    @import(utils.parseJSON(json))
-
-  import: (attributes) ->
+  importRecord: (attributes) ->
     record = @find(attributes.key) if attributes.key?
     record = @find(attributes.id) if attributes.id? and !record?
     if record
@@ -80,10 +74,13 @@ export default class BaseRecordsInterface
   findOrFetchById: (id, params = {}) ->
     record = @find(id)
     if record
-      @remote.fetchById(id, params)
+      @remote.fetchById(id, params).then (data) =>
+        @recordStore.importJSON(data)
       Promise.resolve(record)
     else
-      @remote.fetchById(id, params).then => @find(id)
+      @remote.fetchById(id, params).then (data) =>
+        @recordStore.importJSON(data)
+        @find(id)
 
   find: (q) ->
     if q == null or q == undefined
