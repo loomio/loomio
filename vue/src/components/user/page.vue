@@ -27,7 +27,7 @@ export default
     approximate: approximate
     init: ->
       if @user = (Records.users.find(@$route.params.key) or Records.users.find(username: @$route.params.key))[0]
-        Records.remote.get('profile/contactable', user_id: @user.id).then =>
+        Records.remote().get('profile/contactable', user_id: @user.id).then =>
           @canContactUser = true
         EventBus.$emit 'currentComponent', {title: @user.name, page: 'userPage'}
         @loadGroupsFor(@user)
