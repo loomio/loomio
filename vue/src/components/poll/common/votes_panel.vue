@@ -1,5 +1,5 @@
 <script lang="coffee">
-import RecordLoader from '@/shared/services/record_loader'
+import PageLoader         from '@/shared/services/page_loader'
 import Records from '@/shared/services/records'
 import EventBus     from '@/shared/services/event_bus'
 import { fieldFromTemplate } from '@/shared/helpers/poll'
@@ -10,12 +10,18 @@ export default
 
   data: ->
     stances: []
-    page: 1
-    pageSize: 25
+    per: 10
     loader: null
 
   created: ->
-    @refresh()
+    @loader = new PageLoader
+      path: 'stances'
+      order: 'orderAt'
+      params:
+        per: @per
+        poll_id: @poll.id
+
+    @loader.fetch(@page)
 
     @watchRecords
       collections: ['stances']
@@ -23,14 +29,11 @@ export default
 
   computed:
     totalPages: ->
-      Math.ceil(parseFloat(@loader.total) / parseFloat(@pageSize))
-
-    latestStances: ->
-      @stances.filter (stance) -> stance.latest
+      Math.ceil(parseFloat(@loader.total) / parseFloat(@per))
 
   watch:
     page: ->
-      @loader.fetchRecords(from: @pageSize * (@page - 1))
+      @loader.fetch(@page).then => @findRecords()
       @findRecords()
 
   methods:
@@ -39,19 +42,28 @@ export default
         find(pollId: @poll.id).
         find(latest: true).
         find(revokedAt: null)
-        .simplesort('castAt', true)
-      @stances = chain.offset((@page-1) * @pageSize).limit(@pageSize).data()
 
-    refresh: ->
-      @initLoader().fetchRecords()
+      if @loader.pageWindow[@page]
+        if @page == 1
+          chain = chain.find(orderAt: {$gte: @loader.pageWindow[@page][0]})
+        else
+          chain = chain.find(orderAt: {$jbetween: @loader.pageWindow[@page]})
+        chain = chain.simplesort('orderAt', true)
+      else
+        @stances = []
 
-    initLoader: ->
-      @loader = new RecordLoader
-        collection: 'stances'
-        params:
-          per: @pageSize
-          poll_id: @poll.id
-          order: "cast_at DESC NULLS LAST"
+      @stances = chain.data()
+
+  computed:
+    page:
+      get: -> parseInt(@$route.query.page) || 1
+      set: (val) ->
+        @$router.replace
+          query:
+            page: val
+
+    totalPages: ->
+      Math.ceil(parseFloat(@loader.total) / parseFloat(@per))
 
 </script>
 
@@ -63,7 +75,7 @@ export default
     //- v-select(style="max-width: 200px" dense solo v-model='order' :items="sortOptions" @change='refresh()' aria-label="$t('poll_common_votes_panel.change_results_order')")
   .poll-common-votes-panel__no-votes(v-if='!poll.votersCount' v-t="'poll_common_votes_panel.no_votes_yet'")
   .poll-common-votes-panel__has-votes(v-if='poll.votersCount')
-    .poll-common-votes-panel__stance(v-for='stance in latestStances' :key='stance.id')
+    .poll-common-votes-panel__stance(v-for='stance in stances' :key='stance.id')
       .poll-common-votes-panel__avatar.pr-3
         user-avatar(:user='stance.participant()' size='24')
       .poll-common-votes-panel__stance-content
@@ -72,6 +84,7 @@ export default
             .pr-2.text--secondary {{ stance.participantName() }}
             poll-common-stance-choice(v-if="poll.showResults() && stance.castAt && poll.singleChoice()" :poll="poll" :stance-choice="stance.stanceChoice()")
             span.caption(v-if='!stance.castAt' v-t="'poll_common_votes_panel.undecided'" )
+            span.caption(v-if='!stance.castAt') {{stance.orderAt}}
             time-ago.text--secondary(v-if="stance.castAt" :date="stance.castAt")
         .poll-common-stance(v-if="poll.showResults() && stance.castAt")
           poll-common-stance-choices(:stance='stance')

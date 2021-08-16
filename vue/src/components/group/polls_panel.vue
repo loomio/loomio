@@ -158,6 +158,6 @@ export default
 
         p.pa-4.text-center(v-if='polls.length == 0 && !loader.loading' v-t="'polls_panel.no_polls'")
         loading(v-if="loader.loading")
-        v-pagination(v-model="page" :length="totalPages" :total-visible="7")
+        v-pagination(v-model="page" :length="totalPages" :total-visible="7" :disabled="totalPages == 1")
 
 </template>
