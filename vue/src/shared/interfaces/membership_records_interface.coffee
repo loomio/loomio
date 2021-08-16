@@ -16,6 +16,7 @@ export default class MemberhipRecordsInterface extends BaseRecordsInterface
 
   joinGroup: (group) ->
     @remote.post 'join_group', group_id: group.id
+    .then (data) => @recordStore.importJSON(data)
 
   fetchMyMemberships: ->
     @fetch
