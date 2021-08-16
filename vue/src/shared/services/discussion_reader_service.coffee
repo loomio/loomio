@@ -14,6 +14,7 @@ export default new class DiscussionReaderService
       !dr.admin && dr.discussion().adminsInclude(Session.user())
     perform: (dr) ->
       Records.discussionReaders.remote.postMember dr.id, 'make_admin', exclude_types: 'discussion'
+      .then (data) => Records.importJSON(data)
 
   removeAdmin:
     name: 'membership_dropdown.demote_coordinator'
@@ -21,6 +22,7 @@ export default new class DiscussionReaderService
       dr.admin && dr.discussion().adminsInclude(Session.user())
     perform: (dr) ->
       Records.discussionReaders.remote.postMember dr.id, 'remove_admin', exclude_types: 'discussion'
+      .then (data) => Records.importJSON(data)
 
   resend:
     name: 'membership_dropdown.resend'
@@ -28,6 +30,7 @@ export default new class DiscussionReaderService
       dr.discussion().adminsInclude(Session.user())
     perform: (dr) ->
       Records.discussionReaders.remote.postMember dr.id, 'resend', exclude_types: 'discussion'
+      .then (data) => Records.importJSON(data)
       .then ->
         Flash.success "membership_dropdown.invitation_resent"
 
@@ -37,5 +40,6 @@ export default new class DiscussionReaderService
       dr.discussion().adminsInclude(Session.user())
     perform: (dr) ->
       Records.discussionReaders.remote.postMember dr.id, 'revoke'
+      .then (data) => Records.importJSON(data)
       .then ->
         Flash.success "membership_remove_modal.invitation.flash"
