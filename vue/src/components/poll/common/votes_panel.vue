@@ -84,7 +84,6 @@ export default
             .pr-2.text--secondary {{ stance.participantName() }}
             poll-common-stance-choice(v-if="poll.showResults() && stance.castAt && poll.singleChoice()" :poll="poll" :stance-choice="stance.stanceChoice()")
             span.caption(v-if='!stance.castAt' v-t="'poll_common_votes_panel.undecided'" )
-            span.caption(v-if='!stance.castAt') {{stance.orderAt}}
             time-ago.text--secondary(v-if="stance.castAt" :date="stance.castAt")
         .poll-common-stance(v-if="poll.showResults() && stance.castAt")
           poll-common-stance-choices(:stance='stance')
