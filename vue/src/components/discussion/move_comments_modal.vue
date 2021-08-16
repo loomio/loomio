@@ -4,7 +4,6 @@ import Session from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
 import Flash   from '@/shared/services/flash'
 import EventBus          from '@/shared/services/event_bus'
-import { onError } from '@/shared/helpers/form'
 import { sortBy, debounce } from 'lodash'
 
 export default
@@ -57,7 +56,6 @@ export default
         EventBus.$emit('closeModal')
         Flash.success("discussion_fork_actions.moved")
         @$router.push @urlFor(@selectedDiscussion)
-      .catch onError(@selectedDiscussion)
 
     setIsForking: ->
       @selectedDiscussion.update(forkedEventIds: @discussion.forkedEventIds)

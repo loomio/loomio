@@ -1,7 +1,6 @@
 <script lang="coffee">
 import Flash from '@/shared/services/flash'
 import EventBus from '@/shared/services/event_bus'
-import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -22,7 +21,6 @@ export default
       .then =>
         Flash.success('activity_card.event_pinned')
         EventBus.$emit('closeModal')
-      .catch onError(@event)
 
 </script>
 <template lang="pug">

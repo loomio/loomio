@@ -8,7 +8,6 @@ import AbilityService from '@/shared/services/ability_service'
 
 import Vue     from 'vue'
 import { uniq, map, sortBy, head, find, filter, sum } from 'lodash'
-import { onError } from '@/shared/helpers/form'
 import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter, parseISO } from 'date-fns'
 import { hoursOfDay, exact} from '@/shared/helpers/format_time'
 
@@ -61,8 +60,7 @@ export default
       .then (data) =>
         Flash.success("poll_common_outcome_form.outcome_#{actionName}")
         @closeModal()
-
-      .catch onError(@outcome)
+      .catch (error) => true
 
     datesAsOptions: ->
       fieldFromTemplate @outcome.poll().pollType, 'dates_as_options'

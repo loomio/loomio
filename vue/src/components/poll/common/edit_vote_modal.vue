@@ -4,7 +4,6 @@ import { iconFor }          from '@/shared/helpers/poll'
 import PollCommonDirective from '@/components/poll/common/directive.vue'
 import Flash   from '@/shared/services/flash'
 import { sortBy } from 'lodash'
-import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -19,7 +18,7 @@ export default
       .then =>
         Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
         @close()
-      .catch onError(@stance)
+      .catch (error) => true
 
   computed:
     icon: ->

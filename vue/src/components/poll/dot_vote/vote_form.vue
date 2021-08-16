@@ -3,7 +3,6 @@ import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 import { sum, map, head, filter, without, sortBy, isEqual } from 'lodash'
-import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -34,7 +33,7 @@ export default
       .then =>
         Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
         EventBus.$emit "closeModal"
-      .catch onError(@stance)
+      .catch => true
 
     rulesForChoice: (choice) ->
       [(v) => (v <= @maxForChoice(choice)) || @$t('poll_dot_vote_vote_form.too_many_dots')]

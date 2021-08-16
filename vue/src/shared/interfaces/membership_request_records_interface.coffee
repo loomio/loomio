@@ -6,18 +6,20 @@ export default class MembershipRequestRecordsInterface extends BaseRecordsInterf
 
   fetchMyPendingByGroup: (groupKey, options = {}) ->
     options['group_key'] = groupKey
-    @remote.get('my_pending', options)
+    @remote.get('my_pending', options).then (data) => @recordStore.importJSON(data)
 
   fetchPendingByGroup: (groupKey, options = {}) ->
     options['group_key'] = groupKey
-    @remote.get('pending', options)
+    @remote.get('pending', options).then (data) => @recordStore.importJSON(data)
 
   fetchPreviousByGroup: (groupKey, options = {}) ->
     options['group_key'] = groupKey
-    @remote.get('previous', options)
+    @remote.get('previous', options).then (data) => @recordStore.importJSON(data)
 
   approve: (membershipRequest) ->
     @remote.postMember(membershipRequest.id, 'approve', group_key: membershipRequest.group().key)
+    .then (data) => @recordStore.importJSON(data)
 
   ignore: (membershipRequest) ->
     @remote.postMember(membershipRequest.id, 'ignore', group_key: membershipRequest.group().key)
+    .then (data) => @recordStore.importJSON(data)

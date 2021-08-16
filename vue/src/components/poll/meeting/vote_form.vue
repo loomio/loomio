@@ -3,7 +3,6 @@ import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
 import Flash   from '@/shared/services/flash'
-import { onError } from '@/shared/helpers/form'
 import {compact, map, toPairs, fromPairs, some, sortBy, isEqual} from 'lodash'
 
 export default
@@ -47,7 +46,7 @@ export default
       .then =>
         EventBus.$emit "closeModal"
         Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
-      .catch onError(@stance)
+      .catch => true
 
     buttonStyleFor: (choice, score) ->
       if choice.score == score

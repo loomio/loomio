@@ -2,7 +2,6 @@
 import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import Flash  from '@/shared/services/flash'
-import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -37,7 +36,7 @@ export default
             component: 'PollMembers',
             props:
               poll: poll
-      .catch onError(@poll)
+      .catch (error) => true
 
 </script>
 <template lang="pug">

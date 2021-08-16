@@ -1,7 +1,5 @@
 <script lang="coffee">
-import { submitMembership } from '@/shared/helpers/form'
 import Flash   from '@/shared/services/flash'
-import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -14,7 +12,6 @@ export default
       .then =>
         Flash.success "membership_form.updated"
         @closeModal()
-      .catch onError(@membership)
 
 </script>
 <template lang="pug">

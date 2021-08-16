@@ -4,17 +4,17 @@ import VersionModel         from '@/shared/models/version_model'
 export default class VersionRecordsInterface extends BaseRecordsInterface
   model: VersionModel
 
-  fetchByDiscussion: (discussionKey, options = {}) ->
-    @fetch
-      params:
-        model: 'discussion'
-        discussion_id: discussionKey
+  # fetchByDiscussion: (discussionKey, options = {}) ->
+  #   @fetch
+  #     params:
+  #       model: 'discussion'
+  #       discussion_id: discussionKey
 
-  fetchByComment: (commentId, options = {}) ->
-    @fetch
-      params:
-        model: 'comment'
-        comment_id: commentId
+  # fetchByComment: (commentId, options = {}) ->
+  #   @fetch
+  #     params:
+  #       model: 'comment'
+  #       comment_id: commentId
 
   fetchVersion: (model, index,  options = {}) ->
     model_type = model.constructor.singular

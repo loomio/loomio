@@ -1,7 +1,6 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
-import { onError } from '@/shared/helpers/form'
 import { sortBy, find, matchesProperty, take, map, isEqual, each } from 'lodash'
 
 export default
@@ -28,7 +27,7 @@ export default
       .then =>
         Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
         EventBus.$emit "closeModal"
-      .catch onError(@stance)
+      .catch => true
 
     sortPollOptions: ->
       if @stance && @stance.castAt
