@@ -226,7 +226,7 @@ export default
 
     fetchLinkPreviews: (urls) ->
       if urls.length
-        Records.remote.post('link_previews', {urls: urls}).then (data) =>
+        Records.remote().post('link_previews', {urls: urls}).then (data) =>
           @model.linkPreviews = uniqBy(@model.linkPreviews.concat(data.previews), 'url')
       @fetchedUrls = uniq @fetchedUrls.concat(urls)
 

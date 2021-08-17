@@ -9,7 +9,14 @@ export default class RecordStore
     @collectionNames = []
     @views = {}
 
-  remote: -> new RestfulClient
+  remote: ->
+    client = new RestfulClient
+    client.onSuccess = (response) =>
+      if response.ok
+        response.json().then (data) => @importJSON(data)
+      else
+        throw response
+    client
 
   fetch: (args) ->
     @remote().fetch(args).then (data) => @importJSON(data)
