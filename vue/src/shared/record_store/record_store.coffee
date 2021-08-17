@@ -21,7 +21,7 @@ export default class RecordStore
     client
 
   fetch: (args) ->
-    @remote().fetch(args).then (data) => @importJSON(data)
+    @remote().fetch(args)
 
   addRecordsInterface: (recordsInterfaceClass) ->
     recordsInterface = new recordsInterfaceClass(@)
