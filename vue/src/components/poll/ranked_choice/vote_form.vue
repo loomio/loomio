@@ -37,6 +37,8 @@ export default
 
   computed:
     numChoices: -> @stance.poll().customFields.minimum_stance_choices
+    reasonTooLong: ->
+      !@stance.poll().allowLongReason && @stance.reason && @stance.reason.length > 500
 
 </script>
 
@@ -54,6 +56,6 @@ export default
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
     v-spacer
-    v-btn.poll-common-vote-form__submit(color="primary" @click='submit()' :loading="stance.processing")
+    v-btn.poll-common-vote-form__submit(:disabled="reasonTooLong" color="primary" @click='submit()' :loading="stance.processing")
       span(v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
 </template>

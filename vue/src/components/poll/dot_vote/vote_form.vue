@@ -63,6 +63,9 @@ export default
 
     dotsPerPerson: ->
       @stance.poll().customFields.dots_per_person
+    reasonTooLong: ->
+      !@stance.poll().allowLongReason && @stance.reason && @stance.reason.length > 500
+
 
 </script>
 
@@ -91,6 +94,6 @@ export default
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
     v-spacer
-    v-btn.poll-common-vote-form__submit(color="primary" :disabled="dotsRemaining < 0" :loading="stance.processing" @click="submit()")
+    v-btn.poll-common-vote-form__submit(color="primary" :disabled="(dotsRemaining < 0) || reasonTooLong" :loading="stance.processing" @click="submit()")
       span(v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
 </template>

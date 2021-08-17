@@ -35,6 +35,8 @@ export default
 
   computed:
     poll: -> @stance.poll()
+    reasonTooLong: ->
+      !@stance.poll().allowLongReason && @stance.reason && @stance.reason.length > 500
 </script>
 
 <template lang='pug'>
@@ -59,6 +61,6 @@ form.poll-score-vote-form(@submit.prevent='submit()')
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
     v-spacer
-    v-btn.poll-common-vote-form__submit(color="primary" type='submit' :loading="stance.processing")
+    v-btn.poll-common-vote-form__submit(:disabled="reasonTooLong" color="primary" type='submit' :loading="stance.processing")
       span(v-t="'poll_common.vote'")
 </template>
