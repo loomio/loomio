@@ -24,6 +24,10 @@ export default
           else
             [options]
 
+  computed:
+    reasonTooLong: ->
+      !@stance.poll().allowLongReason && @stance.reason && @stance.reason.length > 500
+      
   methods:
     submit: ->
       actionName = if !@stance.castAt then 'created' else 'updated'
@@ -61,7 +65,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop
             img(aria-hidden="true" :src="'/img/' + optionImages[option.name] + '.svg'")
           span(aria-hidden="true" v-t="'poll_' + stance.poll().pollType + '_options.' + option.name")
   poll-common-stance-reason(:stance='stance' v-if='stance && selectedOptionId')
-  v-btn.poll-common-vote-form__submit(block color="primary" @click='submit()' :loading="stance.processing" :disabled='!selectedOptionId || stance.reasonTooLong()')
+  v-btn.poll-common-vote-form__submit(block color="primary" @click='submit()' :loading="stance.processing" :disabled='!selectedOptionId || reasonTooLong')
     span(v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
 </template>
 <style lang="sass">
