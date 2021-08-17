@@ -66,11 +66,8 @@ export default class RestfulClient
       body: JSON.stringify(body)
     delete opts.body if method == 'GET'
     @onPrepare()
-    fetch(path, opts).then (response) =>
-      if response.ok
-        @onSuccess(response)
-      else
-        @onFailure(response)
+    fetch(path, opts)
+    .then(@onSuccess, @onFailure)
     .finally(@onCleanup)
 
   postMember: (keyOrId, action, params) ->

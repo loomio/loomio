@@ -13,7 +13,9 @@ export default class RecordStore
     client = new RestfulClient
     client.onSuccess = (response) =>
       if response.ok
-        response.json().then (data) => @importJSON(data)
+        response.json().then (data) =>
+          @importJSON(data)
+          data
       else
         throw response
     client
