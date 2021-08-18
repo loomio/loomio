@@ -19,6 +19,7 @@ export default
         params:
           version: AppConfig.version
           release: AppConfig.release
+          now: Date.now()
       .then(@eatData)
     ,
       1000 * 60 * 5
