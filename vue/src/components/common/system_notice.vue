@@ -43,12 +43,12 @@ export default
 </script>
 
 <template lang="pug">
-v-system-bar.system-notice(v-if="showNotice" app)
+v-system-bar.system-notice(v-if="showNotice" app color="primary" height=36)
   .d-flex.justify-space-between(style="width: 100%")
-    .system-notice__message
+    .system-notice__message.text-subtitle-1
       span(v-if="notice" v-marked="notice")
       span(v-else="notice" v-t="'global.messages.app_update'")
-    a.pl-2.system-notice__hide(@click="accept" v-t="(reload && 'global.messages.reload') || 'dashboard_page.dismiss'")
+    v-btn.system-notice__hide(small outlined @click="accept" v-t="(reload && 'global.messages.reload') || 'dashboard_page.dismiss'")
 </template>
 
 <style lang="sass">
