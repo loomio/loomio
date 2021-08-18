@@ -30,7 +30,6 @@ export default class AnnouncementRecordsInterface extends BaseRecordsInterface
     @remote.fetch
       path: 'search'
       params: params
-    .then (data) => @recordStore.importJSON(data)
 
   buildFromModel: (target) ->
     @build

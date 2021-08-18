@@ -45,6 +45,14 @@ export default class BaseRecordsInterface
 
     @remote = new RestfulClient(@apiEndPoint or @model.plural)
 
+    @remote.onSuccess = (data) =>
+      @recordStore.importJSON(data)
+      data
+
+    @remote.onUploadSuccess = (data) =>
+      @recordStore.importJSON(data)
+      data
+
   all: ->
     @collection.data
 
@@ -58,9 +66,7 @@ export default class BaseRecordsInterface
     record
 
   fetch: (args) ->
-    @remote.fetch(args).then (data) =>
-      @recordStore.importJSON(data)
-      data
+    @remote.fetch(args)
 
   importRecord: (attributes) ->
     record = @find(attributes.key) if attributes.key?
@@ -74,12 +80,10 @@ export default class BaseRecordsInterface
   findOrFetchById: (id, params = {}) ->
     record = @find(id)
     if record
-      @remote.fetchById(id, params).then (data) =>
-        @recordStore.importJSON(data)
+      @remote.fetchById(id, params)
       Promise.resolve(record)
     else
       @remote.fetchById(id, params).then (data) =>
-        @recordStore.importJSON(data)
         @find(id)
 
   find: (q) ->

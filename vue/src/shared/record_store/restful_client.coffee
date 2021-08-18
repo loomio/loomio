@@ -10,11 +10,11 @@ export default class RestfulClient
   onCleanup: (response) -> response
   onResponse: (response) =>
     if response.ok
-      @onSuccess(response)
+      response.json().then @onSuccess
     else
       @onFailure(response)
 
-  onSuccess: (response) => response.json()
+  onSuccess: (data) -> data
 
   onFailure: (response) ->
     response.json().then (data) ->
