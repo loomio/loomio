@@ -8,11 +8,14 @@ export default class RestfulClient
 
   onPrepare: (request)  -> request
   onCleanup: (response) -> response
-  onSuccess: (response) =>
+  onResponse: (response) =>
     if response.ok
-      response.json()
+      @onSuccess(response)
     else
-      throw response
+      @onFailure(response)
+
+  onSuccess: (response) => response.json()
+
   onFailure: (response) ->
     response.json().then (data) ->
       data.status = response.status
@@ -67,7 +70,7 @@ export default class RestfulClient
     delete opts.body if method == 'GET'
     @onPrepare()
     fetch(path, opts)
-    .then(@onSuccess, @onFailure)
+    .then(@onResponse, @onFailure)
     .finally(@onCleanup)
 
   postMember: (keyOrId, action, params) ->
