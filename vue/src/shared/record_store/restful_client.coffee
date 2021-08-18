@@ -19,10 +19,10 @@ export default class RestfulClient
   onFailure: (response) ->
     if response.json
       response.json().then (data) ->
-      data.status = response.status
-      data.statusText = response.statusText
-      data.ok = response.ok
-      throw data
+        data.status = response.status
+        data.statusText = response.statusText
+        data.ok = response.ok
+        throw data
     else
       throw response
 
