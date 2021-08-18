@@ -170,8 +170,6 @@ export default class BaseModel
     @beforeDestroy()
     @remove()
     @remote.destroy(@keyOrId())
-    .then (data) =>
-      @recordStore.importJSON(data)
     .finally =>
       @processing = false
 
@@ -182,16 +180,12 @@ export default class BaseModel
   discard: =>
     @processing = true
     @remote.discard(@keyOrId())
-    .then (data) =>
-      @recordStore.importJSON(data)
     .finally =>
       @processing = false
 
   undiscard: =>
     @processing = true
     @remote.undiscard(@keyOrId())
-    .then (data) =>
-      @recordStore.importJSON(data)
     .finally =>
       @processing = false
 
@@ -207,7 +201,6 @@ export default class BaseModel
       .finally => @processing = false
 
   saveSuccess: (data) =>
-    @recordStore.importJSON(data)
     @unmodified = pick(@, @attributeNames)
     data
 

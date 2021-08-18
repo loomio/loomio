@@ -16,7 +16,6 @@ export default class MemberhipRecordsInterface extends BaseRecordsInterface
 
   joinGroup: (group) ->
     @remote.post 'join_group', group_id: group.id
-    .then (data) => @recordStore.importJSON(data)
 
   fetchMyMemberships: ->
     @fetch
@@ -43,12 +42,9 @@ export default class MemberhipRecordsInterface extends BaseRecordsInterface
 
   makeAdmin: (membership) ->
     @remote.postMember membership.id, "make_admin"
-    .then (data) => @recordStore.importJSON(data)
 
   removeAdmin: (membership) ->
     @remote.postMember membership.id, "remove_admin"
-    .then (data) => @recordStore.importJSON(data)
 
   saveExperience: (experience, membership) =>
     @remote.postMember(membership.id, "save_experience", experience: experience)
-    .then (data) => @recordStore.importJSON(data)

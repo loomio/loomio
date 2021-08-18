@@ -22,7 +22,6 @@ export default class GroupRecordsInterface extends BaseRecordsInterface
       Promise.resolve(record)
     else
       @remote.fetchById(id, options)
-      .then (data) => @recordStore.importJSON(data)
       .then => @fuzzyFind(id)
 
   fetchByParent: (parentGroup) ->
