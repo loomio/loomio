@@ -28,7 +28,7 @@ class AppConfig
   end
 
   def self.release
-    `git rev-parse HEAD`.strip
+    `git rev-parse HEAD`.strip.presence || File.mtime("app").to_i.to_s
   end
 
   def self.image_regex
