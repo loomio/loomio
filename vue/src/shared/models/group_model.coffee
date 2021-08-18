@@ -66,12 +66,10 @@ export default class GroupModel extends BaseModel
 
   fetchToken: ->
     @remote.getMember(@id, 'token')
-    .then (data) => @recordStore.importJSON(data)
     .then => @token
 
   resetToken: ->
     @remote.postMember(@id, 'reset_token')
-    .then (data) => @recordStore.importJSON(data)
     .then => @token
 
   pendingMembershipRequests: ->

@@ -172,25 +172,21 @@ export default class PollModel extends BaseModel
   close: =>
     @processing = true
     @remote.postMember(@key, 'close')
-    .then (data) => @recordStore.importJSON(data)
     .finally => @processing = false
 
   reopen: =>
     @processing = true
     @remote.postMember(@key, 'reopen', poll: {closing_at: @closingAt})
-    .then (data) => @recordStore.importJSON(data)
     .finally => @processing = false
 
   addOptions: =>
     @processing = true
     @remote.postMember(@key, 'add_options', poll_option_names: @pollOptionNames)
-    .then (data) => @recordStore.importJSON(data)
     .finally => @processing = false
 
   addToThread: (discussionId) =>
     @processing = true
     @remote.patchMember(@keyOrId(), 'add_to_thread', { discussion_id: discussionId })
-    .then (data) => @recordStore.importJSON(data)
     .finally => @processing = false
 
   notifyAction: ->
