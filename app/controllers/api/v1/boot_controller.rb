@@ -4,7 +4,7 @@ class API::V1::BootController < API::V1::RestfulController
     EventBus.broadcast('boot_site', current_user)
   end
 
-  # temp
+  # temp1
   def version
     render json: {
       version: Loomio::Version.current,
