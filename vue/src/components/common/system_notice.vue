@@ -21,8 +21,7 @@ export default
           release: AppConfig.release
       .then(@eatData)
     ,
-      # 1000 * 60 * 5
-      5000
+      1000 * 60 * 5
     EventBus.$on 'systemNotice', @eatData
     @eatData({version: AppConfig.version, notice: AppConfig.systemNotice})
 
@@ -34,7 +33,7 @@ export default
 
     accept: ->
       @showNotice = false
-      Records.users.saveExperience(md5(@notice))
+      @notice && Records.users.saveExperience(md5(@notice))
       if @reload
         setTimeout ->
           console.log 'reloading'
