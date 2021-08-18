@@ -5,7 +5,6 @@ import I18n           from '@/i18n'
 import EventBus from '@/shared/services/event_bus'
 import Flash from '@/shared/services/flash'
 import { filter } from 'lodash'
-import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -28,7 +27,7 @@ export default
         Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
           @close()
           @$router.push("/d/#{discussionKey}")
-      .catch onError(@discussion)
+      .catch => true
 
     updateTarget: ->
       @targetGroup = Records.groups.find(@discussion.groupId)

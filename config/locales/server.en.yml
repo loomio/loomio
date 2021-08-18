@@ -18,6 +18,9 @@ en:
     400:
       title: Bad request
       body: Sorry, we weren't able to understand that request
+    401:
+      title: Unauthorized
+      body: You are not permitted to access this page. You may need to sign in.
     403:
       title: Forbidden
       body: You are not permitted to access this page. You may need to sign in.
@@ -234,7 +237,7 @@ en:
       intro: "%{who} made an announcement to %{group}:"
     by_who: by %{person}
     reply_to_this_discussion: Reply to this discussion
-    value_proposition: "%{site_name} is a place for groups to make decisions together"
+    value_proposition: "%{site_name} is a place to have discussions and make decisions"
     view_group: View group
     to_join_group:
       subject: "%{member} has invited you to join %{group_name} on %{site_name}"

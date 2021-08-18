@@ -6,7 +6,7 @@ import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
 import { isAfter } from 'date-fns'
 import dateIsEqual from 'date-fns/isEqual'
-import { isEqual, isEmpty, filter, some, head, last, sortBy, find, min, max, isArray, throttle, without } from 'lodash'
+import { map, compact, flatten, isEqual, isEmpty, filter, some, head, last, sortBy, find, min, max, isArray, throttle, without } from 'lodash'
 
 export default class DiscussionModel extends BaseModel
   @singular: 'discussion'
@@ -77,6 +77,14 @@ export default class DiscussionModel extends BaseModel
     @author() == user or
     (@inviterId && @admin && !@revokedAt && Session.user() == user) or
     @group().adminsInclude(user)
+
+  # known current participants for quick mentioning
+  participantIds: ->
+    compact flatten(
+      map(@recordStore.comments.find(discussionId: @id), 'authorId'),
+      map(@recordStore.polls.find(discussionId: @id), (p) -> p.participantIds()),
+      [@authorId]
+    )
 
   bestNamedId: ->
     ((@id && @) || (@groupId && @group()) || {namedId: ->}).namedId()

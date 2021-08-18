@@ -14,7 +14,7 @@ export default new class StanceService
         !stance.discardedAt &&
         AppConfig.features.app.vote_reactions &&
         stance.poll().membersInclude(Session.user())
-        
+
     edit_stance:
       name: 'poll_common.change_vote'
       icon: 'mdi-pencil'

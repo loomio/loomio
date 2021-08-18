@@ -3,7 +3,6 @@ import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
 import EventBus from '@/shared/services/event_bus'
 import Flash  from '@/shared/services/flash'
-import { onError } from '@/shared/helpers/form'
 import { map, orderBy } from 'lodash'
 
 export default
@@ -37,7 +36,7 @@ export default
         group = Records.groups.find(@groupId)
         Flash.success("poll_common_move_form.success", {poll_type: @poll.translatedPollType(), group: group.name})
         @close()
-      .catch onError(@poll)
+      .catch (error) => true
 
 </script>
 <template lang="pug">

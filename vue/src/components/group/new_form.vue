@@ -8,7 +8,6 @@ import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
 import Flash   from '@/shared/services/flash'
 import { isEmpty, compact, debounce } from 'lodash'
-import { onError } from '@/shared/helpers/form'
 import openModal from '@/shared/helpers/open_modal'
 
 export default
@@ -80,8 +79,7 @@ export default
               category: (@group.category == 'other' && @group.otherCategory) || @group.category
           EventBus.$emit 'closeModal'
           @$router.push("/g/#{groupKey}")
-      .catch onError(@group)
-
+      .catch (error) => true
 
     privacyStringFor: (privacy) ->
       @$t groupPrivacy(@group, privacy),

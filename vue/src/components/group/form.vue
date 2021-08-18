@@ -7,7 +7,6 @@ import EventBus   from '@/shared/services/event_bus'
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
 import { isEmpty, some, debounce } from 'lodash'
-import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -59,7 +58,7 @@ export default
         Flash.success("group_form.messages.group_#{@actionName}")
         EventBus.$emit 'closeModal'
         @$router.push("/g/#{groupKey}")
-      .catch onError(@group)
+      .catch (error) => true
 
 
     expandForm: ->
@@ -78,14 +77,14 @@ export default
     uploadCoverPhoto: ->
       @uploading = true
       Records.groups.remote.onUploadSuccess = (response) =>
-        Records.import response
+        Records.importJSON response
         @uploading = false
       Records.groups.remote.upload("#{@group.id}/upload_photo/cover_photo", @$refs.coverPhotoInput.files[0], {}, (args) => @progress = args.loaded / args.total * 100)
 
     uploadLogo: ->
       @uploading = true
       Records.groups.remote.onUploadSuccess = (response) =>
-        Records.import response
+        Records.importJSON response
         @uploading = false
       Records.groups.remote.upload("#{@group.id}/upload_photo/logo", @$refs.logoInput.files[0], {}, (args) => @progress = args.loaded / args.total * 100)
 

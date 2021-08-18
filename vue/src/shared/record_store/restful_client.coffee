@@ -6,11 +6,27 @@ export default class RestfulClient
   currentUpload: null
   apiPrefix: "/api/v1"
 
-  # override these to set default actions
   onPrepare: (request)  -> request
   onCleanup: (response) -> response
-  onSuccess: (response) -> response
-  onFailure: (response) -> throw response
+  onResponse: (response) =>
+    if response.ok
+      response.json().then @onSuccess
+    else
+      @onFailure(response)
+
+  onSuccess: (data) -> data
+
+  onFailure: (response) ->
+    if response.json
+      response.json().then (data) ->
+        data.status = response.status
+        data.statusText = response.statusText
+        data.ok = response.ok
+        throw data
+    else
+      throw response
+
+
   onUploadSuccess: (response) -> response
 
   constructor: (resourcePlural = null) ->
@@ -57,13 +73,8 @@ export default class RestfulClient
       body: JSON.stringify(body)
     delete opts.body if method == 'GET'
     @onPrepare()
-    fetch(path, opts).then (response) =>
-      if response.ok
-        @onSuccess(response)
-      else
-        @onFailure(response)
-    , (response) =>
-      @onFailure(response)
+    fetch(path, opts)
+    .then(@onResponse, @onFailure)
     .finally(@onCleanup)
 
   postMember: (keyOrId, action, params) ->

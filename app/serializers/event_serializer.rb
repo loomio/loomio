@@ -12,7 +12,7 @@ class EventSerializer < ApplicationSerializer
   has_one :source_group, serializer: GroupSerializer, root: :groups
 
   def parent
-    cache_fetch(:events_by_id, object.parent_id) { nil }
+    cache_fetch(:events_by_id, object.parent_id) { object.parent }
   end
 
   def include_eventable?

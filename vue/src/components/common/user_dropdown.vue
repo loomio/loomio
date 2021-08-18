@@ -32,6 +32,8 @@ export default
       Session.signOut()
 
   computed:
+    version:  -> AppConfig.version
+    release:  -> AppConfig.release
     siteName: -> AppConfig.theme.site_name
     user:     -> Session.user()
     helpLink: -> UserHelpService.helpLink()
@@ -50,22 +52,6 @@ div.user-dropdown
       v-list-item-title(v-t="'user_dropdown.unpin_sidebar'")
       v-list-item-icon
         v-icon mdi-pin-off
-  v-list-item(v-if="!user.experiences['betaFeatures']" @click="toggleBeta" dense)
-      v-list-item-title(v-t="'user_dropdown.enable_beta_features'")
-      v-list-item-icon
-        v-icon mdi-flask-outline
-  v-list-item(v-if="user.experiences['betaFeatures']" @click="toggleBeta" dense)
-      v-list-item-title(v-t="'user_dropdown.disable_beta_features'")
-      v-list-item-icon
-        v-icon mdi-flask-empty-off-outline
-  v-list-item(v-if="!user.experiences['darkMode']" @click="toggleDark" dense)
-      v-list-item-title(v-t="'user_dropdown.enable_dark_mode'")
-      v-list-item-icon
-        v-icon mdi-weather-night
-  v-list-item(v-if="user.experiences['darkMode']" @click="toggleDark" dense)
-      v-list-item-title(v-t="'user_dropdown.disable_dark_mode'")
-      v-list-item-icon
-        v-icon mdi-white-balance-sunny
   v-list-item.user-dropdown__list-item-button--profile(to="/profile" dense)
     v-list-item-title(v-t="'user_dropdown.edit_profile'")
     v-list-item-icon
@@ -74,6 +60,22 @@ div.user-dropdown
     v-list-item-title(v-t="'user_dropdown.email_settings'")
     v-list-item-icon
       v-icon mdi-cog-outline
+  v-list-item(v-if="!user.experiences['darkMode']" @click="toggleDark" dense)
+      v-list-item-title(v-t="'user_dropdown.enable_dark_mode'")
+      v-list-item-icon
+        v-icon mdi-weather-night
+  v-list-item(v-if="user.experiences['darkMode']" @click="toggleDark" dense)
+      v-list-item-title(v-t="'user_dropdown.disable_dark_mode'")
+      v-list-item-icon
+        v-icon mdi-white-balance-sunny
+  v-list-item(v-if="!user.experiences['betaFeatures']" @click="toggleBeta" dense)
+      v-list-item-title(v-t="'user_dropdown.enable_beta_features'")
+      v-list-item-icon
+        v-icon mdi-flask-outline
+  v-list-item(v-if="user.experiences['betaFeatures']" @click="toggleBeta" dense)
+      v-list-item-title(v-t="'user_dropdown.disable_beta_features'")
+      v-list-item-icon
+        v-icon mdi-flask-empty-off-outline
   v-list-item(v-if="showHelp", :href="helpLink", target="_blank" dense)
     v-list-item-title(v-t="'user_dropdown.help'")
     v-list-item-icon
@@ -81,9 +83,15 @@ div.user-dropdown
   v-list-item(v-if="showContact" to="/contact" dense)
     v-list-item-title(v-t="{path: 'user_dropdown.contact_support', args: {site_name: siteName}}")
     v-list-item-icon
-      v-icon mdi-email-outline
+      v-icon mdi-face-agent
   v-list-item(@click="signOut()" dense)
     v-list-item-title(v-t="'user_dropdown.sign_out'")
     v-list-item-icon
       v-icon mdi-exit-to-app
+  v-list-item(href="https://github.com/loomio/loomio/releases" target="_blank" dense :title="release")
+    v-list-item-title.text--secondary
+      span(v-t="'common.version'")
+      space
+      span {{version}}
+
 </template>

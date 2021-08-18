@@ -133,10 +133,13 @@ class API::V1::DiscussionsController < API::V1::RestfulController
 
   private
   def group_ids
-    if params.has_key?(:include_subgroups) && params[:include_subgroups] == 'false'
-      [@group&.id]
-    else
+    case params[:subgroups]
+    when 'all'
       Array(@group&.id_and_subgroup_ids)
+    when 'mine'
+      current_user.group_ids & @group&.id_and_subgroup_ids
+    else
+      [@group&.id]
     end
   end
 

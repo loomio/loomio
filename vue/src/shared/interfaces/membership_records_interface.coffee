@@ -27,11 +27,11 @@ export default class MemberhipRecordsInterface extends BaseRecordsInterface
       path: 'autocomplete'
       params: { q: fragment, group_key: groupKey, per: limit }
 
-  fetchByGroup: (groupKey, options = {}) ->
-    @fetch
-      params:
-        group_key: groupKey
-        per: options['per'] or 30
+  # fetchByGroup: (groupKey, options = {}) ->
+  #   @fetch
+  #     params:
+  #       group_key: groupKey
+  #       per: options['per'] or 30
 
   fetchByUser: (user, options = {}) ->
     @fetch

@@ -48,6 +48,9 @@ export default class StanceModel extends BaseModel
 
   singleChoice: -> @poll().singleChoice()
 
+  participantIds: ->
+    @poll().participantIds()
+
   memberIds: ->
     @poll().memberIds()
 

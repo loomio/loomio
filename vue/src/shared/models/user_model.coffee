@@ -43,6 +43,7 @@ export default class UserModel extends BaseModel
       find(id: { $in: @groupIds() }, archivedAt: null).
       simplesort('fullName').data()
 
+  participantIds: -> []
   parentGroups: ->
     filter @groups(), (group) -> !group.parentId
 

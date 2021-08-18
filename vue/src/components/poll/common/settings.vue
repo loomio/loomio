@@ -8,12 +8,13 @@ export default
   data: ->
     settings:
       compact [
-        ('multipleChoice'        if @poll.pollType == 'poll'),
-        ('shuffleOptions'        if ['poll', 'score', 'ranked_choice', 'dot_vote'].includes(@poll.pollType)),
-        ('canRespondMaybe'       if @poll.pollType == 'meeting'),
-        ('anonymous'             if !fieldFromTemplate(@poll.pollType, 'prevent_anonymous')),
+        ('multipleChoice'         if @poll.pollType == 'poll'),
+        ('shuffleOptions'         if ['poll', 'score', 'ranked_choice', 'dot_vote'].includes(@poll.pollType)),
+        ('canRespondMaybe'        if @poll.pollType == 'meeting'),
+        ('anonymous'              if !fieldFromTemplate(@poll.pollType, 'prevent_anonymous')),
         ('hideResultsUntilClosed' if !fieldFromTemplate(@poll.pollType, 'prevent_anonymous')),
-        ('voterCanAddOptions'    if fieldFromTemplate(@poll.pollType, 'can_add_options') && @poll.pollType != 'proposal')
+        ('voterCanAddOptions'     if fieldFromTemplate(@poll.pollType, 'can_add_options') && @poll.pollType != 'proposal'),
+        ('allowLongReason')
       ]
   methods:
     settingDisabled: (setting) ->

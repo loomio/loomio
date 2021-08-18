@@ -73,3 +73,10 @@ section.document-list(v-if="couldHaveDocuments")
         v-btn.ml-2(v-if="canDelete" icon :aria-label="$t('common.action.delete')" @click='deleteDocument(document)')
           v-icon(size="medium") mdi-delete
 </template>
+<style lang="sass">
+.document-list
+  img
+    width: 100%
+    height: auto
+
+</style>

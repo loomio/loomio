@@ -2,7 +2,7 @@
 import AppConfig from '@/shared/services/app_config'
 import AbilityService from '@/shared/services/ability_service'
 import Records from '@/shared/services/records'
-import RecordLoader from '@/shared/services/record_loader'
+import PageLoader from '@/shared/services/page_loader'
 import EventBus       from '@/shared/services/event_bus'
 import Session       from '@/shared/services/session'
 import { debounce, some, every, compact, omit, values, keys, intersection, uniq } from 'lodash'
@@ -13,6 +13,7 @@ export default
     polls: []
     loader: null
     pollTypes: AppConfig.pollTypes
+    per: 25
 
   created: ->
     @onQueryInput = debounce (val) =>
@@ -27,17 +28,17 @@ export default
       collections: ['polls', 'groups', 'memberships']
       query: => @findRecords()
 
-    @loader.fetchRecords().then =>
+    @loader.fetch(@page).then =>
       EventBus.$emit 'currentComponent',
         page: 'groupPage'
         title: @group.name
         group: @group
 
-
   methods:
     initLoader: ->
-      @loader = new RecordLoader
-        collection: 'polls'
+      @loader = new PageLoader
+        path: 'polls'
+        order: 'createdAt'
         params:
           exclude_types: 'group'
           group_key: @$route.params.key
@@ -45,6 +46,7 @@ export default
           poll_type: @$route.query.poll_type
           query: @$route.query.q
           subgroups: @$route.query.subgroups
+          per: @per
 
     openSelectPollTypeModal: ->
       EventBus.$emit 'openModal',
@@ -80,15 +82,39 @@ export default
           some [poll.title, poll.details], (field) =>
             every @$route.query.q.split(' '), (frag) -> RegExp(frag, "i").test(field)
 
-      @polls = chain.simplesort('createdAt', true).limit(@loader.params.from + @loader.params.per).data()
+      if @loader.pageWindow[@page]
+        if @page == 1
+          chain = chain.find(createdAt: {$gte: @loader.pageWindow[@page][0]})
+        else
+          chain = chain.find(createdAt: {$jbetween: @loader.pageWindow[@page]})
+        @polls = chain.simplesort('createdAt', true).data()
+      else
+        @polls = []
 
   watch:
-    '$route.query': ->
-      @initLoader().fetchRecords()
+    '$route.query.q': ->
+      @initLoader().fetch(@page)
+    '$route.query.status': ->
+      @initLoader().fetch(@page)
+    '$route.query.poll_type': ->
+      @initLoader().fetch(@page)
+    '$route.query.subgroups': ->
+      @initLoader().fetch(@page)
+
+    '$route.query.page': ->
+      @loader.fetch(@page)
 
   computed:
-    canStartPoll: -> AbilityService.canStartPoll(@group)
+    totalPages: ->
+      Math.ceil(parseFloat(@loader.total) / parseFloat(@per))
 
+    canStartPoll: -> AbilityService.canStartPoll(@group)
+    page:
+      get: -> parseInt(@$route.query.page) || 1
+      set: (val) ->
+        @$router.replace
+          query:
+            page: val
 </script>
 
 <template lang="pug">
@@ -127,15 +153,11 @@ export default
       div(v-if="loader.status == 403")
         p.pa-4.text-center(v-t="'error_page.forbidden'")
       div(v-else)
-        v-list(two-line avatar v-if='polls.length')
+        v-list(two-line avatar v-if='polls.length && loader.pageWindow[page]')
           poll-common-preview(:poll='poll' v-for='poll in polls' :key='poll.id' :display-group-name="poll.groupId != group.id")
 
         p.pa-4.text-center(v-if='polls.length == 0 && !loader.loading' v-t="'polls_panel.no_polls'")
+        loading(v-if="loader.loading")
+        v-pagination(v-model="page" :length="totalPages" :total-visible="7" :disabled="totalPages == 1")
 
-        .d-flex.justify-center
-          .d-flex.flex-column.align-center
-            .text--secondary
-              | {{polls.length}} / {{loader.total}}
-            v-btn.my-2.polls-panel__show-more(outlined color='primary' v-if="polls.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords({per: 50})")
-              span(v-t="'common.action.load_more'")
 </template>

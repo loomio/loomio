@@ -57,6 +57,9 @@ export default class OutcomeModel extends BaseModel
   adminsInclude: (user) ->
     @poll().adminsInclude(user)
 
+  participantIds: ->
+    @poll().participantIds()
+
   memberIds: ->
     @poll().memberIds()
 

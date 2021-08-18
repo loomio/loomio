@@ -2,7 +2,6 @@
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 import { compact, sortBy, without, isEqual, map } from 'lodash'
-import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -21,6 +20,8 @@ export default
           @pollOptions = @stance.poll().pollOptionsForVoting() if @stance.poll()
 
   computed:
+    reasonTooLong: ->
+      !@stance.poll().allowLongReason && @stance.reason && @stance.reason.length > 500
     poll: -> @stance.poll()
     optionSelected: -> @selectedOptionIds.length or @selectedOptionId
     submitText: ->
@@ -41,7 +42,7 @@ export default
       .then =>
         Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
         EventBus.$emit('closeModal')
-      .catch onError(@stance)
+      .catch => true
 
 </script>
 

@@ -54,7 +54,7 @@ export default class BaseModel
     new @constructor(@recordsInterface, cloneAttributes)
 
   inCollection: =>
-    @['$loki']# and @recordsInterface.collection.get(@['$loki'])
+    @['$loki']
 
   update: (attributes) ->
     @baseUpdate(attributes)
@@ -100,7 +100,6 @@ export default class BaseModel
       else
         data[snakeName] = @[camelName]
       true # so if the value is false we don't break the loop
-
 
     wrapper[paramKey] = data
     wrapper
@@ -204,7 +203,8 @@ export default class BaseModel
     @processing = true
     @beforeDestroy()
     @remove()
-    @remote.destroy(@keyOrId()).finally =>
+    @remote.destroy(@keyOrId())
+    .finally =>
       @processing = false
 
   beforeDestroy: =>
@@ -213,30 +213,34 @@ export default class BaseModel
 
   discard: =>
     @processing = true
-    @remote.discard(@keyOrId()).finally =>
+    @remote.discard(@keyOrId())
+    .finally =>
       @processing = false
 
   undiscard: =>
     @processing = true
-    @remote.undiscard(@keyOrId()).finally =>
+    @remote.undiscard(@keyOrId())
+    .finally =>
       @processing = false
 
   save: =>
     @processing = true
-
     if @isNew()
-      @remote.create(@serialize()).then(@afterSave).finally => @processing = false
+      @remote.create(@serialize())
+      .then(@saveSuccess, @saveError)
+      .finally => @processing = false
     else
-      @remote.update(@keyOrId(), @serialize()).then(@afterSave).finally => @processing = false
+      @remote.update(@keyOrId(), @serialize())
+      .then(@saveSuccess, @saveError)
+      .finally => @processing = false
 
-  afterSave: (data) =>
-    @processing = false
-    if data.errors
-      @setErrors(data.errors)
-      throw data
-    else
-      @unmodified = pick(@, @attributeNames)
-      data
+  saveSuccess: (data) =>
+    @unmodified = pick(@, @attributeNames)
+    data
+
+  saveError: (data) =>
+    @setErrors(data.errors) if data.errors
+    throw data
 
   discardChanges: ->
     @attributeNames.forEach (key) =>

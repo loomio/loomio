@@ -27,6 +27,10 @@ class AppConfig
     end
   end
 
+  def self.release
+    `git rev-parse HEAD`.strip.presence || File.mtime("app").to_i.to_s
+  end
+
   def self.image_regex
     doctypes.detect { |type| type['name'] == 'image' }['regex']
   end

@@ -118,16 +118,6 @@ describe API::V1::StancesController do
       expect(json['stances'][1]['id']).to eq old_stance.id
     end
 
-    it 'can order by undecided' do
-      sign_in user
-      recent_stance; old_stance; undecided_stance
-      get :index, params: { poll_id: poll.id, order: "cast_at DESC NULLS FIRST"}
-      expect(response.status).to eq 200
-      json = JSON.parse(response.body)
-      expect(json['stances'][0]['id']).to eq undecided_stance.id
-      expect(json['stances'][1]['id']).to eq recent_stance.id
-    end
-
     it 'anonymous does not reveal participant for other peoples votes' do
       my_stance    = create(:stance, participant: user, poll: poll)
       other_stance = create(:stance, poll: poll)

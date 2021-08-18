@@ -6,7 +6,6 @@ import AppConfig      from '@/shared/services/app_config'
 import UserHelpService from '@/shared/services/user_help_service'
 import EventBus from '@/shared/services/event_bus'
 import Flash from '@/shared/services/flash'
-import { onError } from '@/shared/helpers/form'
 
 export default
   data: ->
@@ -32,7 +31,6 @@ export default
       @message.save()
       .then =>
         @submitted = true
-      .catch onError(@message)
 
   computed:
     isLoggedIn: ->

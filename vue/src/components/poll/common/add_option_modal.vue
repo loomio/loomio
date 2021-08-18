@@ -4,7 +4,6 @@ import AppConfig  from '@/shared/services/app_config'
 import EventBus from '@/shared/services/event_bus'
 import Flash  from '@/shared/services/flash'
 import {uniq, without, isEqual} from 'lodash'
-import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -25,7 +24,6 @@ export default
           @poll.removeOrphanOptions()
           Flash.success "poll_common_add_option.form.options_added"
           @close()
-        .catch onError(@poll)
 
 </script>
 

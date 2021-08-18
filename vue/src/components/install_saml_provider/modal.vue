@@ -3,7 +3,6 @@ import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
 import Flash  from '@/shared/services/flash'
 import RestfulClient from '@/shared/record_store/restful_client'
-import { onError } from '@/shared/helpers/form'
 
 export default
   props:

@@ -17,11 +17,11 @@ export default class DiscussionRecordsInterface extends BaseRecordsInterface
       path: 'search'
       params: options
 
-  fetchByGroup: (groupKey, options = {}) ->
-    options['group_id'] = groupKey
-    @fetch
-      params: options
-
+  # fetchByGroup: (groupKey, options = {}) ->
+  #   options['group_id'] = groupKey
+  #   @fetch
+  #     params: options
+  #
   fetchInbox: (options = {}) ->
     @fetch
       path: 'dashboard'

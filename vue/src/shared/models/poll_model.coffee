@@ -7,7 +7,7 @@ import EventBus         from '@/shared/services/event_bus'
 import I18n             from '@/i18n'
 import NullGroupModel   from '@/shared/models/null_group_model'
 import { addDays, startOfHour } from 'date-fns'
-import { head, orderBy, sortBy, map, includes, difference, invokeMap, each, max, flatten, slice, uniq, isEqual, shuffle } from 'lodash'
+import { compact, head, orderBy, sortBy, map, includes, difference, invokeMap, each, max, flatten, slice, uniq, isEqual, shuffle } from 'lodash'
 
 export default class PollModel extends BaseModel
   @singular: 'poll'
@@ -31,11 +31,11 @@ export default class PollModel extends BaseModel
     closingAt: startOfHour(addDays(new Date, 3))
     specifiedVotersOnly: false
     pollOptionNames: []
-    customFields: {
+    customFields:
       minimum_stance_choices: null
       max_score: null
       min_score: null
-    }
+    allowLongReason: false
     files: []
     imageFiles: []
     attachments: []
@@ -92,6 +92,12 @@ export default class PollModel extends BaseModel
 
   members: ->
     ((@group() && @group().members()) || []).concat(@voters())
+
+  participantIds: ->
+    compact flatten(
+      [@authorId],
+      map(@stances(), 'participantId')
+    )
 
   adminsInclude: (user) ->
     stance = @stanceFor(user)
@@ -165,19 +171,23 @@ export default class PollModel extends BaseModel
 
   close: =>
     @processing = true
-    @remote.postMember(@key, 'close').finally => @processing = false
+    @remote.postMember(@key, 'close')
+    .finally => @processing = false
 
   reopen: =>
     @processing = true
-    @remote.postMember(@key, 'reopen', poll: {closing_at: @closingAt}).finally => @processing = false
+    @remote.postMember(@key, 'reopen', poll: {closing_at: @closingAt})
+    .finally => @processing = false
 
   addOptions: =>
     @processing = true
-    @remote.postMember(@key, 'add_options', poll_option_names: @pollOptionNames).finally => @processing = false
+    @remote.postMember(@key, 'add_options', poll_option_names: @pollOptionNames)
+    .finally => @processing = false
 
   addToThread: (discussionId) =>
     @processing = true
-    @remote.patchMember(@keyOrId(), 'add_to_thread', { discussion_id: discussionId }).finally => @processing = false
+    @remote.patchMember(@keyOrId(), 'add_to_thread', { discussion_id: discussionId })
+    .finally => @processing = false
 
   notifyAction: ->
     if @isNew()

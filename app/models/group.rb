@@ -40,7 +40,7 @@ class Group < ApplicationRecord
   has_many :pending_membership_requests, -> { where response: nil }, class_name: 'MembershipRequest'
 
   has_many :polls, foreign_key: :group_id, dependent: :destroy
-  has_many :public_polls, through: :public_discussions, dependent: :destroy, source: :polls
+  has_many :public_polls, through: :public_discussions, source: :polls
 
   has_many :documents, as: :model, dependent: :destroy
   has_many :requested_users, through: :membership_requests, source: :user
@@ -49,7 +49,7 @@ class Group < ApplicationRecord
 
   has_many :group_identities, dependent: :destroy, foreign_key: :group_id
   has_many :identities, through: :group_identities
-  has_many :webhooks, foreign_key: 'group_id'
+  has_many :webhooks, foreign_key: 'group_id', dependent: :destroy
 
   has_many :discussion_documents,        through: :discussions,        source: :documents
   has_many :poll_documents,              through: :polls,              source: :documents

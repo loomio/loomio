@@ -65,10 +65,12 @@ export default class GroupModel extends BaseModel
   group: -> @
 
   fetchToken: ->
-    @remote.getMember(@id, 'token').then => @token
+    @remote.getMember(@id, 'token')
+    .then => @token
 
   resetToken: ->
-    @remote.postMember(@id, 'reset_token').then => @token
+    @remote.postMember(@id, 'reset_token')
+    .then => @token
 
   pendingMembershipRequests: ->
     filter @membershipRequests(), (membershipRequest) ->

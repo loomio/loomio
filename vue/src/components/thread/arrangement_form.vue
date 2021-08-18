@@ -5,7 +5,6 @@ import { map, sortBy, filter } from 'lodash'
 import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import Flash   from '@/shared/services/flash'
-import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -21,7 +20,6 @@ export default
       .then =>
         @close()
         Flash.success("discussion_form.messages.updated")
-      .catch onError(@clone)
 
 </script>
 

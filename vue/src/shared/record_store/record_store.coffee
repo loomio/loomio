@@ -1,5 +1,6 @@
 import RecordView from '@/shared/record_store/record_view'
 import RestfulClient from './restful_client'
+import utils         from '@/shared/record_store/utils'
 import { snakeCase, isEmpty, camelCase, map, keys, each, intersection, merge, pick } from 'lodash'
 
 export default class RecordStore
@@ -8,64 +9,50 @@ export default class RecordStore
     @collectionNames = []
     @views = {}
     @remote = new RestfulClient
-    merge @remote, pick(@defaultRemoteCallbacks(), ['onPrepare', 'onSuccess', 'onUploadSuccess', 'onFailure', 'onCleanup'])
+    @remote.onSuccess = (data) =>
+      @importJSON(data)
+      data
 
   fetch: (args) ->
     @remote.fetch(args)
+  post: (args) ->
+    @remote.post(args)
 
   addRecordsInterface: (recordsInterfaceClass) ->
     recordsInterface = new recordsInterfaceClass(@)
-    recordsInterface.setRemoteCallbacks(@defaultRemoteCallbacks())
     name = camelCase(recordsInterface.model.plural)
     @[name] = recordsInterface
-    recordsInterface.onInterfaceAdded()
     @collectionNames.push name
 
-  import: (data) ->
-    return if isEmpty(data)
+  importJSON: (json) ->
+    collections = pick(json, map(@collectionNames, snakeCase).concat(['parent_groups', 'parent_events']))
+    @importREADY(utils.deserialize(collections))
+
+  importREADY: (data) ->
+    return [] if isEmpty(data)
 
     # hack just to get around AMS
-    if data['parent_groups']?
-      each data['parent_groups'], (recordData) =>
-        @groups.importJSON(recordData)
+    if data['parentGroups']?
+      each data['parentGroups'], (recordData) =>
+        @groups.importRecord(recordData)
         true
 
-    if data['parent_events']?
-      each data['parent_events'], (recordData) =>
-        @events.importJSON(recordData)
+    if data['parentEvents']?
+      each data['parentEvents'], (recordData) =>
+        @events.importRecord(recordData)
         true
 
     each @collectionNames, (name) =>
-      snakeName = snakeCase(name)
-      camelName = camelCase(name)
-      if data[snakeName]?
-        each data[snakeName], (recordData) =>
-          @[camelName].importJSON(recordData)
+      if data[name]?
+        each data[name], (recordData) =>
+          @[name].importRecord(recordData)
           true
-
-    @afterImport(data)
 
     each @views, (view) =>
       if intersection( map(view.collectionNames, camelCase) , map(keys(data), camelCase) )
         view.query(@)
       true
     data
-
-  afterImport: (data) ->
-
-  setRemoteCallbacks: (callbacks) ->
-    each @collectionNames, (name) => @[camelCase(name)].setRemoteCallbacks(callbacks)
-
-  defaultRemoteCallbacks: ->
-    onUploadSuccess: (data) => @import(data)
-    onSuccess: (response) =>
-      if response.ok
-        response.json().then (data) =>
-          @import(data)
-      else
-        throw response
-    onFailure: (response) =>
-      throw response
 
   view: ({name, collections, query}) ->
     if !@views[name]

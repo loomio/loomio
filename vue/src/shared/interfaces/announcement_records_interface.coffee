@@ -36,9 +36,9 @@ export default class AnnouncementRecordsInterface extends BaseRecordsInterface
       kind:  kindForTarget(target)
       model: eventableOrSelf(target)
 
-  fetchAudience: (model, kind) ->
-    @remote.fetch
-      path: 'audience'
-      params:
-        "#{model.constructor.singular}_id": model.id
-        kind: kind
+  # fetchAudience: (model, kind) ->
+  #   @remote.fetch
+  #     path: 'audience'
+  #     params:
+  #       "#{model.constructor.singular}_id": model.id
+  #       kind: kind

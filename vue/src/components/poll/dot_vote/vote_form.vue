@@ -3,7 +3,6 @@ import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 import { sum, map, head, filter, without, sortBy, isEqual } from 'lodash'
-import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -34,7 +33,7 @@ export default
       .then =>
         Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
         EventBus.$emit "closeModal"
-      .catch onError(@stance)
+      .catch => true
 
     rulesForChoice: (choice) ->
       [(v) => (v <= @maxForChoice(choice)) || @$t('poll_dot_vote_vote_form.too_many_dots')]
@@ -64,6 +63,9 @@ export default
 
     dotsPerPerson: ->
       @stance.poll().customFields.dots_per_person
+    reasonTooLong: ->
+      !@stance.poll().allowLongReason && @stance.reason && @stance.reason.length > 500
+
 
 </script>
 
@@ -92,6 +94,6 @@ export default
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
     v-spacer
-    v-btn.poll-common-vote-form__submit(color="primary" :disabled="dotsRemaining < 0" :loading="stance.processing" @click="submit()")
+    v-btn.poll-common-vote-form__submit(color="primary" :disabled="(dotsRemaining < 0)" :loading="stance.processing" @click="submit()")
       span(v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
 </template>
