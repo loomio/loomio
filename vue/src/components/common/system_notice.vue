@@ -43,7 +43,7 @@ export default
 </script>
 
 <template lang="pug">
-v-system-bar.system-notice(v-if="showNotice" app color="primary" height=36)
+v-system-bar.system-notice(v-if="showNotice" app color="primary" height="40")
   .d-flex.justify-space-between(style="width: 100%")
     .system-notice__message.text-subtitle-1
       span(v-if="notice" v-marked="notice")
