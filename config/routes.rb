@@ -53,6 +53,7 @@ Loomio::Application.routes.draw do
       resources :boot, only: [] do
         get :site, on: :collection
         get :user, on: :collection
+        get :version, on: :collection
       end
 
       resources :group_surveys, only: [:create]
