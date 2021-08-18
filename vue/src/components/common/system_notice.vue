@@ -36,7 +36,6 @@ export default
       @notice && Records.users.saveExperience(md5(@notice))
       if @reload
         setTimeout ->
-          console.log 'reloading'
           location.reload()
         , 100
 
