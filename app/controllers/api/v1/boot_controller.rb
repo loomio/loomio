@@ -4,9 +4,14 @@ class API::V1::BootController < API::V1::RestfulController
     EventBus.broadcast('boot_site', current_user)
   end
 
-  def user
-    flash[:notice] = I18n.t(:'errors.clear_cache')
-    render json: user_payload
+  # temp3
+  def version
+    render json: {
+      version: Loomio::Version.current,
+      release: AppConfig.release,
+      reload: ENV['LOOMIO_SYSTEM_RELOAD'] && AppConfig.release != params[:release],
+      notice: ENV['LOOMIO_SYSTEM_NOTICE']
+    }
   end
 
   private

@@ -8,28 +8,46 @@ import md5 from 'md5'
 
 export default
   data: ->
-    notice: ''
-    showNotice: true
+    notice: false
+    showNotice: false
+    reload: false
 
   mounted: ->
-    EventBus.$on 'systemNotice', (data) =>
-      @notice = data.notice
-      @showNotice = !Session.user().hasExperienced(md5(@notice))
-    @notice = AppConfig.systemNotice || ''
-    @showNotice = !Session.user().hasExperienced(md5(@notice))
+    setInterval =>
+      Records.fetch
+        path: 'boot/version'
+        params:
+          version: AppConfig.version
+          release: AppConfig.release
+      .then(@eatData)
+    ,
+      1000 * 60 * 5
+    EventBus.$on 'systemNotice', @eatData
+    @eatData({version: AppConfig.version, notice: AppConfig.systemNotice})
 
   methods:
-    hideNotice: ->
-      Records.users.saveExperience(md5(@notice))
+    eatData: (data) ->
+      @reload = data.reload
+      @notice = data.notice
+      @showNotice = @reload || (@notice && !Session.user().hasExperienced(md5(@notice)))
+
+    accept: ->
       @showNotice = false
+      @notice && Records.users.saveExperience(md5(@notice))
+      if @reload
+        setTimeout ->
+          location.reload()
+        , 100
 
 </script>
 
 <template lang="pug">
-v-system-bar.system-notice(v-if="notice && showNotice" app)
+v-system-bar.system-notice(v-if="showNotice" app color="primary" height="40")
   .d-flex.justify-space-between(style="width: 100%")
-    .system-notice__message(v-marked="notice")
-    a.pl-2.system-notice__hide(@click="hideNotice" v-t="'dashboard_page.dismiss'")
+    .system-notice__message.text-subtitle-1
+      span(v-if="notice" v-marked="notice")
+      span(v-else="notice" v-t="'global.messages.app_update'")
+    v-btn.system-notice__hide(small outlined @click="accept" v-t="(reload && 'global.messages.reload') || 'dashboard_page.dismiss'")
 </template>
 
 <style lang="sass">

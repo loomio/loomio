@@ -26,9 +26,11 @@ class MessageChannelService
     end
   end
 
-  def self.publish_system_notice(notice)
+  def self.publish_system_notice(notice, reload = false)
     CHANNELS_REDIS_POOL.with do |client|
-      client.publish("/system_notice", {notice: notice}.to_json)
+      client.publish("/system_notice", {version: Loomio::Version.current,
+                                        notice: notice,
+                                        reload: reload}.to_json)
     end
   end
 end
