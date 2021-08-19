@@ -38,6 +38,7 @@ class Event < ApplicationRecord
   validates :kind, presence: true
   validates :eventable, presence: true
 
+  scope :dangling, -> { joins('left join discussions d on events.discussion_id = d.id').where('d.id is null and discussion_id is not null') }
   scope :unreadable, -> { where.not(kind: 'discussion_closed') }
 
   scope :invitations_in_period, ->(since, till) {

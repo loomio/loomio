@@ -66,6 +66,7 @@ class Poll < ApplicationRecord
 
   has_many :documents, as: :model, dependent: :destroy
 
+  scope :dangling, -> { joins('left join groups g on polls.group_id = g.id').where('group_id is not null and g.id is null') }
   scope :active, -> { kept.where('polls.closed_at': nil) }
   scope :closed, -> { kept.where("polls.closed_at IS NOT NULL") }
   scope :recent, -> { kept.where("polls.closed_at IS NULL or polls.closed_at > ?", 7.days.ago) }
