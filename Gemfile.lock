@@ -122,10 +122,9 @@ GEM
       addressable (>= 2.3.2)
       nokogiri
       safely_block (>= 0.1.1)
-    ahoy_matey (3.2.0)
-      activesupport (>= 5)
+    ahoy_matey (4.0.1)
+      activesupport (>= 5.2)
       device_detector
-      geocoder (>= 1.4.5)
       safely_block (>= 0.2.1)
     ansi (1.5.0)
     ar_outer_joins (0.2.0)
@@ -628,7 +627,7 @@ DEPENDENCIES
   activeadmin (~> 2.9.0)
   activerecord-import (= 1.2.0)
   ahoy_email (~> 2.0.3)
-  ahoy_matey (~> 3.2.0)
+  ahoy_matey (~> 4.0.1)
   aws-sdk-s3
   blazer
   bootsnap
