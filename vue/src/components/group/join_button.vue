@@ -58,8 +58,6 @@ export default
 
 <template lang="pug">
 v-alert(outlined color="primary" dense v-if="!membership && (canJoinGroup || canRequestMembership || hasRequestedMembership)")
-  v-layout(align-center)
-    span(v-t="'join_group_button.not_a_member'")
-    v-spacer
-    v-btn.join-group-button(color="primary" v-t="label" @click="join" :disabled="hasRequestedMembership")
+  p.text-center(v-t="'join_group_button.not_a_member'")
+  v-btn.join-group-button(block color="primary" v-t="label" @click="join" :disabled="hasRequestedMembership")
 </template>
