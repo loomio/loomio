@@ -2160,6 +2160,7 @@ en:
       poll_expired: "{{pollType}} closed. {{when}}"
     removed: "Item removed"
     deleted_group: "Deleted group"
+    invite_only_thread: "Invite only thread"
     comment_replied_to:            "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> in reply to <strong>{{title}}</strong>"
     discussion_title_edited:       "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> edited the thread title"
     discussion_context_edited:     "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> edited the thread context"
