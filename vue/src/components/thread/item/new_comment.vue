@@ -1,7 +1,7 @@
 <script lang="coffee">
 import AbilityService from '@/shared/services/ability_service'
 
-import { pick, assign, compact } from 'lodash'
+import { pick, assign, compact, min } from 'lodash'
 import CommentService from '@/shared/services/comment_service'
 import EventService from '@/shared/services/event_service'
 import Session from '@/shared/services/session'
@@ -15,6 +15,9 @@ export default
     isReturning: Boolean
 
   computed:
+    replyMargin: ->
+      min([@event.depth, @event.discussion().maxDepth - 1]) * 56
+
     commentActions: -> CommentService.actions(@eventable, @)
     eventActions: -> EventService.actions(@event, @)
     eventable: -> @event.model()
@@ -58,5 +61,6 @@ thread-item.new-comment(id="'comment-'+ eventable.id" :event="event" :is-returni
   document-list(:model='eventable')
   attachment-list(:attachments="eventable.attachments")
   template(v-slot:append)
-    comment-form(v-if="showReplyForm" :comment="newComment" @comment-submitted="showReplyForm = false" @cancel-reply="showReplyForm = false" autofocus)
+    div(:style="{'margin-left': replyMargin+'px'}")
+      comment-form(v-if="showReplyForm" :comment="newComment" @comment-submitted="showReplyForm = false" @cancel-reply="showReplyForm = false" autofocus)
 </template>
