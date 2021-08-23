@@ -16,17 +16,17 @@ export default
 <style lang="sass">
 .html-diff
   ins
-    background: lighten(green, 50%)
+    background: rgba(128, 255, 128, 0.2)
     margin: 2px
     padding: 0 4px
     text-decoration: none
   del
-    background: lighten(red, 20%)
+    background: rgba(255, 102, 102, 0.2)
     margin: 2px
     padding: 0 4px
     text-decoration: none
   td.diff-ins
-    background: lighten(green, 55%)
+    background: rgba(128, 255, 128, 0.2)
   td.diff-del
-    background: lighten(red, 30%)
+    background: rgba(255, 102, 102, 0.2)
 </style>
