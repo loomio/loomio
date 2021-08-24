@@ -38,7 +38,6 @@ class GroupSerializer < ApplicationSerializer
              :new_threads_max_depth,
              :new_threads_newest_first,
              :cover_urls,
-             :has_custom_cover,
              :experiences,
              :enable_experiments,
              :features,
@@ -110,25 +109,8 @@ class GroupSerializer < ApplicationSerializer
     object.info['new_host'] || nil
   end
 
-  def cover_photo
-    @cover_photo ||= object.cover_photo
-  end
-
   def logo_url_medium
     object.logo_urls[:medium]
-  end
-
-  def cover_urls
-    {
-      small:      cover_photo.url(:desktop),
-      medium:     cover_photo.url(:largedesktop),
-      large:      cover_photo.url(:largedesktop),
-      extralarge: cover_photo.url(:largedesktop)
-    }
-  end
-
-  def has_custom_cover
-    cover_photo.attached?
   end
 
   def is_subgroup_of_hidden_parent

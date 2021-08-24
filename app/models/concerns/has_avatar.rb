@@ -23,10 +23,6 @@ module HasAvatar
     super
   end
 
-  def uploaded_avatar(size)
-    # NOOP: override for users who can upload avatars
-  end
-
   def avatar_url(size = :medium)
     case avatar_kind.to_sym
     when :gravatar then gravatar_url(size: 128)

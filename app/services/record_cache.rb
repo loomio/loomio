@@ -32,7 +32,7 @@ class RecordCache
     when 'Discussion'
       collection_ids = collection.map(&:id)
       obj.add_discussions(collection)
-      obj.add_groups_subscriptions_memberships Group.includes(:subscription, :default_group_cover).where(id: ids_and_parent_ids(Group, collection.map(&:group_id).compact))
+      obj.add_groups_subscriptions_memberships Group.includes(:subscription).where(id: ids_and_parent_ids(Group, collection.map(&:group_id).compact))
       obj.add_polls_options_stances_outcomes Poll.active.where(discussion_id: collection_ids)
 
     when 'Reaction'
@@ -44,14 +44,14 @@ class RecordCache
       obj.user_ids.concat collection.map(&:user_id)
 
     when 'Group'
-      obj.add_groups_subscriptions_memberships Group.includes(:subscription, :default_group_cover).where(id: ids_and_parent_ids(Group, collection.map(&:id)))
+      obj.add_groups_subscriptions_memberships Group.includes(:subscription).where(id: ids_and_parent_ids(Group, collection.map(&:id)))
 
     when 'Membership'
-      obj.add_groups Group.includes(:default_group_cover).where(id: ids_and_parent_ids(Group, collection.map(&:group_id)))
+      obj.add_groups Group.where(id: ids_and_parent_ids(Group, collection.map(&:group_id)))
       obj.user_ids.concat collection.map(&:user_id).concat(collection.map(&:inviter_id).compact).compact.uniq
 
     when 'Poll'
-      obj.add_groups Group.includes(:default_group_cover).where(id: ids_and_parent_ids(Group, collection.map(&:group_id)))
+      obj.add_groups Group.where(id: ids_and_parent_ids(Group, collection.map(&:group_id)))
       obj.add_discussions(Discussion.where(id: collection.map(&:discussion_id).uniq.compact))
       obj.add_polls_options_stances_outcomes collection
 
@@ -124,7 +124,7 @@ class RecordCache
     add_discussions Discussion.where(id: ids[:discussion])
 
     add_events_eventables   Event.includes(:eventable).where(id: self.class.ids_and_parent_ids(Event, collection.map(&:id)))
-    add_groups_subscriptions_memberships Group.includes(:subscription, :default_group_cover).where(id: ids[:group])
+    add_groups_subscriptions_memberships Group.includes(:subscription).where(id: ids[:group])
     add_comments            Comment.where(id: ids[:comment])
     # obj.add_reactions           Reaction.where(id: ids[:reaction])
     # obj.add_group_subscriptions Group.includes(:subscription).where(id: ids[:group])
