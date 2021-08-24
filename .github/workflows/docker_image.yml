@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HAVESECRET: ${{ secrets.DOCKER_USERNAME }}
-    if: env.HAVESECRET != null
+    if: ${{ env.HAVESECRET != null }}
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
