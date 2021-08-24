@@ -14,7 +14,9 @@ jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
-    if: ${{ secrets.DOCKER_USERNAME }}
+    env:
+      HAVESECRET: ${{ secrets.DOCKER_USERNAME }}
+    if: env.HAVESECRET != null
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
