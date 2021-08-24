@@ -115,11 +115,7 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def logo_url_medium
-    if object.logo.present?
-      object.logo.url(:medium)
-    else
-      nil
-    end
+    object.logo_urls[:medium]
   end
 
   def cover_urls
@@ -132,7 +128,7 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def has_custom_cover
-    cover_photo.present?
+    cover_photo.attached?
   end
 
   def is_subgroup_of_hidden_parent

@@ -3,12 +3,6 @@ module HasAvatar
   include Routing
   extend ActiveSupport::Concern
 
-  AVATAR_SIZES = {
-    small:  30,
-    medium: 50,
-    large:  170,
-  }.with_indifferent_access.freeze
-
   included do
     include Gravtastic
     gravtastic rating: :pg, default: :none
@@ -35,8 +29,8 @@ module HasAvatar
 
   def avatar_url(size = :medium)
     case avatar_kind.to_sym
-    when :gravatar then gravatar_url(size: AVATAR_SIZES[size])
-    when :uploaded then uploaded_avatar.url(size)
+    when :gravatar then gravatar_url(size: 128)
+    when :uploaded && uploaded_avatar.attached? then uploaded_avatar.variant(resize: "128x128#")
     end
   end
 

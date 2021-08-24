@@ -14,7 +14,7 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
              :attachments
 
   def icon_url
-    url = object.eventable.group.logo.url(:medium)
+    url = object.eventable.group.logo_urls[:small]
     if url.starts_with?('http')
       url
     else
