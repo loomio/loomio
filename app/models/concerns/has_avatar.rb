@@ -10,11 +10,7 @@ module HasAvatar
   end
 
   def set_default_avatar_kind
-    self.avatar_kind = if has_gravatar?
-      :gravatar
-    else
-      :initials
-    end
+    self.avatar_kind = :gravatar if !uploaded_avatar.attached? && has_gravatar?
   end
 
   def avatar_kind
@@ -25,8 +21,10 @@ module HasAvatar
 
   def avatar_url
     case avatar_kind.to_sym
-    when :gravatar then gravatar_url(size: 128, secure: Rails.env.production?)
-    when :uploaded && uploaded_avatar.attached? then uploaded_avatar.variant(resize: "128x128#")
+    when :gravatar
+      gravatar_url(size: 128, secure: Rails.env.production?)
+    when :uploaded
+      Rails.application.routes.url_helpers.rails_representation_path( uploaded_avatar.representation(resize: '128x128'), only_path: true )
     end
   end
 

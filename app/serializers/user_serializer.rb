@@ -7,7 +7,6 @@ class UserSerializer < AuthorSerializer
              :has_password,
              :email,
              :attachments
-
   def avatar_kind
     if !object.email_verified && !object.name
       'mdi-email-outline'

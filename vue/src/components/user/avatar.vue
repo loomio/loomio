@@ -5,8 +5,6 @@ import AppConfig from '@/shared/services/app_config'
 import { pick } from 'lodash'
 
 export default
-  components:
-    'v-gravatar': Gravatar
   props:
     user:
       type: Object
@@ -47,14 +45,17 @@ export default
 
 <template lang="pug">
 component.user-avatar(aria-hidden="true" :is="componentType" :to="!noLink && user.id && urlFor(user)" :style="{ 'width': width + 'px', margin: '0' }")
-  v-avatar(:title='user.name' :size='width' :color="color")
-    v-gravatar(v-if="user.avatarKind === 'gravatar'" :hash='user.emailHash' :gravatar-size='gravatarSize' :alt='user.avatarInitials')
-    img(v-else-if="user.avatarKind === 'uploaded'" :alt='user.avatarInitials' :src='user.avatarUrl')
-    span.user-avatar--initials(v-else-if="user.avatarKind === 'initials'" :style="{width: width+'px', height: width+'px'}") {{user.avatarInitials}}
-    v-icon(v-else) mdi-account
+  v-avatar(:title='user.name' :size='width' :color="user.avatarUrl ? undefined : color")
+    img(v-if="['gravatar', 'uploaded'].includes(user.avatarKind)" :alt='user.avatarInitials' :src='user.avatarUrl')
+    span.user-avatar--initials(v-if="user.avatarKind === 'initials'" :style="{width: width+'px', height: width+'px'}") {{user.avatarInitials}}
+    v-icon(v-if="!['initials', 'gravatar', 'uploaded'].includes(user.avatarKind)") {{user.avatarKind}}
 </template>
 
 <style lang="sass">
+.user-avatar
+  img
+    // height: 100%
+    width: auto
 .user-avatar--initials
   color: rgba(0,0,0,.88)
   font-size: 15px
