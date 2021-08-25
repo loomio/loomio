@@ -1,6 +1,6 @@
 class AuthorSerializer < ApplicationSerializer
   attributes :id, :name, :email, :username, :avatar_initials, :avatar_kind,
-             :avatar_url, :time_zone, :locale, :created_at, :titles,
+             :avatar_url, :thumb_url, :time_zone, :locale, :created_at, :titles,
              :placeholder_name, :email_verified, :bot
 
   def include_email?

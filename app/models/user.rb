@@ -51,6 +51,7 @@ class User < ApplicationRecord
   validate  :validate_recaptcha,                 if: :require_recaptcha
 
   has_one_attached :uploaded_avatar
+  
   validates_uniqueness_of :email, conditions: -> { where(email_verified: true) }, if: :email_verified?
   validates_uniqueness_of :username, if: :email_verified
   before_validation :generate_username, if: :email_verified

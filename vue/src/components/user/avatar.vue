@@ -18,6 +18,12 @@ export default
     colors: Object
 
   computed:
+    imageUrl: ->
+      if @size > 64
+        @user.avatarUrl
+      else
+        @user.thumbUrl
+
     width: ->
       if parseInt(@size)
         parseInt(@size)
@@ -46,7 +52,7 @@ export default
 <template lang="pug">
 component.user-avatar(aria-hidden="true" :is="componentType" :to="!noLink && user.id && urlFor(user)" :style="{ 'width': width + 'px', margin: '0' }")
   v-avatar(:title='user.name' :size='width' :color="user.avatarUrl ? undefined : color")
-    img(v-if="['gravatar', 'uploaded'].includes(user.avatarKind)" :alt='user.avatarInitials' :src='user.avatarUrl')
+    img(v-if="['gravatar', 'uploaded'].includes(user.avatarKind)" :alt='user.avatarInitials' :src='imageUrl')
     span.user-avatar--initials(v-if="user.avatarKind === 'initials'" :style="{width: width+'px', height: width+'px'}") {{user.avatarInitials}}
     v-icon(v-if="!['initials', 'gravatar', 'uploaded'].includes(user.avatarKind)") {{user.avatarKind}}
 </template>
