@@ -22,7 +22,7 @@ module HasAvatar
   def thumb_url
     case avatar_kind.to_sym
     when :gravatar
-      gravatar_url(size: 128, secure: Rails.env.production?)
+      gravatar_url(size: 128, secure: Rails.env.production?, default: 'retro')
     when :uploaded
       Rails.application.routes.url_helpers.rails_representation_path( uploaded_avatar.representation(resize: '128x128'), only_path: true )
     end
@@ -31,7 +31,7 @@ module HasAvatar
   def avatar_url
     case avatar_kind.to_sym
     when :gravatar
-      gravatar_url(size: 512, secure: Rails.env.production?)
+      gravatar_url(size: 512, secure: Rails.env.production?, default: 'retro')
     when :uploaded
       Rails.application.routes.url_helpers.rails_representation_path( uploaded_avatar.representation(resize: '512x512'), only_path: true )
     end
