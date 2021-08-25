@@ -1,6 +1,5 @@
 <script lang="coffee">
 import { is2x } from '@/shared/helpers/window'
-import Gravatar from 'vue-gravatar';
 import Records from '@/shared/services/records'
 import AppConfig from '@/shared/services/app_config'
 import { pick } from 'lodash'
@@ -34,14 +33,6 @@ export default
           when 'large'     then 64
           when 'featured'  then 200
 
-    gravatarSize: ->
-      if is2x() then 2*@width else @width
-
-    uploadedAvatarUrl: ->
-      return unless @user.avatarKind == 'uploaded'
-      return @user.avatarUrl if typeof @user.avatarUrl is 'string'
-      @user.avatarUrl['large']
-
     color: ->
       colors = Object.values pick(AppConfig.theme.brand_colors, ['gold', 'sky', 'wellington', 'sunset'])
       colors[(@user.id || 0) % colors.length]
@@ -58,7 +49,7 @@ export default
 component.user-avatar(aria-hidden="true" :is="componentType" :to="!noLink && user.id && urlFor(user)" :style="{ 'width': width + 'px', margin: '0' }")
   v-avatar(:title='user.name' :size='width' :color="color")
     v-gravatar(v-if="user.avatarKind === 'gravatar'" :hash='user.emailHash' :gravatar-size='gravatarSize' :alt='user.avatarInitials')
-    img(v-else-if="user.avatarKind === 'uploaded'" :alt='user.avatarInitials' :src='uploadedAvatarUrl')
+    img(v-else-if="user.avatarKind === 'uploaded'" :alt='user.avatarInitials' :src='user.avatarUrl')
     span.user-avatar--initials(v-else-if="user.avatarKind === 'initials'" :style="{width: width+'px', height: width+'px'}") {{user.avatarInitials}}
     v-icon(v-else) mdi-account
 </template>

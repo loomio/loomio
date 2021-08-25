@@ -205,7 +205,7 @@ class User < ApplicationRecord
     end
 
     update(name: identity.name) if self.name.nil?
-    identity.assign_logo! if self.avatar_url.nil?
+    identity.assign_logo! unless self.avatar_url
     self
   end
 

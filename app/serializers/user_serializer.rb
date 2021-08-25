@@ -16,15 +16,6 @@ class UserSerializer < AuthorSerializer
     end
   end
 
-  def avatar_url
-    {
-      small:    object.avatar_url(:small),
-      medium:   object.avatar_url(:medium),
-      large:    object.avatar_url(:large),
-      original: object.avatar_url(:original)
-    }
-  end
-
   def include_has_password?
     scope[:include_password_status]
   end

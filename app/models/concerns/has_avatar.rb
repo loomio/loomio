@@ -23,23 +23,10 @@ module HasAvatar
     super
   end
 
-  def avatar_url(size = :medium)
+  def avatar_url
     case avatar_kind.to_sym
-    when :gravatar then gravatar_url(size: 128)
+    when :gravatar then gravatar_url(size: 128, secure: Rails.env.production?)
     when :uploaded && uploaded_avatar.attached? then uploaded_avatar.variant(resize: "128x128#")
-    end
-  end
-
-  def absolute_avatar_url(size = :medium)
-    url = avatar_url(size)
-    if url =~ /https:\/\//
-      url
-    elsif url
-      [root_url(default_url_options).chomp('/'), url].join
-    elsif self == User.helper_bot
-      self.avatar_url
-    else
-      User.helper_bot.absolute_avatar_url
     end
   end
 
