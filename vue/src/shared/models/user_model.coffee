@@ -90,9 +90,6 @@ export default class UserModel extends BaseModel
     else
       @experiences[key]
 
-  hasProfilePhoto: ->
-    @avatarKind != 'initials'
-
   title: (group) ->
     @titles[group.id] || @titles[group.parentId]
 
