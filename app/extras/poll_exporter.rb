@@ -22,7 +22,7 @@ class PollExporter
       created_at: @poll.created_at,
       closing_at:  (@poll.closing_at unless @poll.closed_at),
       closed_at: @poll.closed_at,
-      engagement: I18n.t("poll.export.percent_voted", num: @poll.participants_count, denom: @poll.stances_count, percent: "#{@poll.cast_stances_pct}%"),
+      engagement: I18n.t("poll.export.percent_voted", num: @poll.decided_voters_count, denom: @poll.voters_count, percent: "#{@poll.cast_stances_pct}%"),
       stances: @poll.voters_count,
       participants: @poll.members.count,
       details: @poll.details,
