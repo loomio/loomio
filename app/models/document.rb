@@ -32,7 +32,7 @@ class Document < ApplicationRecord
   end
 
   def manual_url?
-    self.file.blank?
+    self.file.attached?
   end
 
   def url
