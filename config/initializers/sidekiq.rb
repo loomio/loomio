@@ -14,7 +14,6 @@ if Rails.env.test?
   require 'sidekiq/testing'
   Sidekiq::Testing.inline!
 else
-
   Sidekiq.configure_server do |config|
     config.redis = SIDEKIQ_REDIS_POOL
   end

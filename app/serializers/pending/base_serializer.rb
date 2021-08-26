@@ -21,6 +21,14 @@ class Pending::BaseSerializer < ActiveModel::Serializer
     # pending login or invitation token
   end
 
+  def avatar_url
+    user.avatar_url
+  end
+
+  def thumb_url
+    user.thumb_url
+  end
+
   def avatar_kind
     user.avatar_kind
   end
