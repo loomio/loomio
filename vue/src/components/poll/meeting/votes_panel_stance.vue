@@ -10,7 +10,7 @@ export default
 
 <template lang="pug">
 .poll-common-votes-panel__stance(v-if="stance.reason")
-  user-avatar(:user="stance.participant()", size="small")
+  user-avatar(:user="stance.participant()" :size="24")
   .poll-common-votes-panel__stance-content
     .poll-common-votes-panel__stance-name-and-option
       strong {{ participantName }}

@@ -12,6 +12,6 @@ class Metadata::GroupSerializer < MetadataSerializer
   end
 
   def image_urls
-    [object.group.cover_photo.url, object.group.logo.url]
+    [object.group.cover_url, object.group.logo_url]
   end
 end

@@ -62,7 +62,6 @@ class Group < ApplicationRecord
   has_one :saml_provider, required: false, foreign_key: :group_id
   has_one :group_survey, required: false, foreign_key: :group_id
 
-  belongs_to :default_group_cover
   belongs_to :subscription
 
   has_many :subgroups,
@@ -72,7 +71,7 @@ class Group < ApplicationRecord
   has_many :all_subgroups, dependent: :destroy, class_name: 'Group', foreign_key: :parent_id
   include GroupExportRelations
 
-  scope :with_serializer_includes, -> { includes(:default_group_cover, :subscription) }
+  scope :with_serializer_includes, -> { includes(:subscription) }
   scope :archived, -> { where('archived_at IS NOT NULL') }
   scope :published, -> { where(archived_at: nil) }
   scope :parents_only, -> { where(parent_id: nil) }
@@ -124,23 +123,8 @@ class Group < ApplicationRecord
   delegate :slack_team_name, to: :slack_identity, allow_nil: true
   delegate :slack_channel_name, to: :slack_identity, allow_nil: true
 
-  has_attached_file    :cover_photo,
-                       url: "/system/groups/:attachment/:id_partition/:style/:filename",
-                       styles: {largedesktop: "1400x320#", desktop: "970x200#", card: "460x94#"},
-                       default_url: :default_cover_photo
-  has_attached_file    :logo,
-                       url: "/system/groups/:attachment/:id_partition/:style/:filename",
-                       styles: { card: "67x67#", medium: "100x100#" }
-
-  validates_attachment :cover_photo,
-    size: { in: 0..100.megabytes },
-    content_type: { content_type: /\Aimage/ },
-    file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
-
-  validates_attachment :logo,
-    size: { in: 0..100.megabytes },
-    content_type: { content_type: /\Aimage/ },
-    file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
+  has_one_attached :cover_photo
+  has_one_attached :logo
 
   has_paper_trail only: [:name,
                          :parent_id,
@@ -171,6 +155,16 @@ class Group < ApplicationRecord
 
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
   before_validation :ensure_handle_is_not_empty
+
+  def logo_url(size = 512)
+    return nil unless logo.attached?
+    Rails.application.routes.url_helpers.rails_representation_path( logo.representation(resize: "#{size}x#{size}"), only_path: true )
+  end
+
+  def cover_url(size = 640) # = 1920x640 default
+    return nil unless cover_photo.attached?
+    Rails.application.routes.url_helpers.rails_representation_path( cover_photo.representation(resize: "#{size*3}x#{size}"), only_path: true )
+  end
 
   def existing_member_ids
     member_ids
@@ -249,26 +243,6 @@ class Group < ApplicationRecord
     self.handle = nil if self.handle.to_s.strip == ""
   end
 
-  def logo_or_parent_logo
-    if is_parent?
-      logo
-    else
-      logo.presence || parent.logo
-    end
-  end
-
-  # default_cover_photo is the name of the proc used to determine the url for the default cover photo
-  # default_group_cover is the associated DefaultGroupCover object from which we get our default cover photo
-  def default_cover_photo
-    if is_subgroup?
-      self.parent.default_cover_photo
-    elsif self.default_group_cover
-      /^.*(?=\?)/.match(self.default_group_cover.cover_photo.url).to_s
-    else
-      AppConfig.theme[:default_group_cover_src]
-    end
-  end
-
   def archive!
     Group.where(id: id_and_subgroup_ids).update_all(archived_at: DateTime.now)
     Membership.where(group_id: id_and_subgroup_ids).update_all(archived_at: DateTime.now)
@@ -340,6 +314,9 @@ class Group < ApplicationRecord
   end
 
   private
+  def variant_path(variant)
+    Rails.application.routes.url_helpers.rails_representation_path(variant, only_path: true)
+  end
 
   def handle_is_valid
     self.handle = nil if self.handle.to_s.strip == "" || (is_subgroup? && parent.handle.nil?)

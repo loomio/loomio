@@ -22,7 +22,7 @@ export default
 div
   v-list-item.membership-requests
     v-list-item-avatar
-      user-avatar(:user='request.actor()' size='40')
+      user-avatar(:user='request.actor()' :size='40')
     v-list-item-content
       v-list-item-title.membership-request__name
         span {{request.actor().name || request.actor().email || request.name || request.email }}

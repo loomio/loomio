@@ -55,7 +55,7 @@ v-card.auth-signin-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.ca
   v-sheet.mx-4.pb-4
     submit-overlay(:value='loading')
     v-layout(justify-center)
-      auth-avatar(:user='user')
+      user-avatar(:user='user' :size='128')
     .auth-signin-form__token.text-center(v-if='user.hasToken')
       validation-errors(:subject='user', field='token')
       v-btn.my-4.auth-signin-form__submit(color="primary" @click='submit()' v-if='!user.errors.token' :loading="loading")
