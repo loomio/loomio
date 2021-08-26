@@ -156,22 +156,14 @@ class Group < ApplicationRecord
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
   before_validation :ensure_handle_is_not_empty
 
-  def logo_urls
-    return {} unless parent_or_self.logo.attached?
-    {
-      small: variant_path(parent_or_self.logo.variant(resize: "256x256")),
-      medium: variant_path(parent_or_self.logo.variant(resize: "512x512")),
-      large: variant_path(parent_or_self.logo.variant(resize: "1024x1024"))
-    }
+  def logo_url(size = 512)
+    return nil unless logo.attached?
+    Rails.application.routes.url_helpers.rails_representation_path( logo.representation(resize: "#{size}x#{size}"), only_path: true )
   end
 
-  def cover_urls
-    return {} unless parent_or_self.cover_photo.attached?
-    {
-      small: variant_path(parent_or_self.cover_photo.variant(resize: "970x200")),
-      medium: variant_path(parent_or_self.cover_photo.variant(resize: "1400x320")),
-      large: variant_path(parent_or_self.cover_photo.variant(resize: "1400x320"))
-    }
+  def cover_url(size = 640) # = 1920x640 default
+    return nil unless cover_photo.attached?
+    Rails.application.routes.url_helpers.rails_representation_path( cover_photo.representation(resize: "#{size*3}x#{size}"), only_path: true )
   end
 
   def existing_member_ids

@@ -6,26 +6,6 @@ describe Group do
   let(:discussion) { create :discussion, group: group }
   let(:discarded_discussion) { create :discussion, group: group, discarded_at: Time.now }
 
-  context 'default cover photo' do
-
-    it 'returns an uploaded cover url if one exists' do
-      group.cover_photo.attach(fixture_for('images/strongbad.png'))
-      expect(group.cover_photo.blob.filename).to eq "strongbad.png"
-      expect(group.cover_urls[:small]).to include "strongbad.png"
-    end
-
-    it 'returns the default cover photo for the group' do
-      group = create :group
-      expect(group.cover_urls[:small]).to include "default_group_cover.png"
-    end
-
-    it 'works for subgroup' do
-      parent = create :group
-      group = create :group, parent: parent
-      expect(group.cover_urls[:small]).to include "default_group_cover.png"
-    end
-  end
-
   context "memberships" do
     it "deletes memberships assoicated with it" do
       group = create :group

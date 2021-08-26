@@ -1,7 +1,7 @@
 module GroupService
   def self.remote_cover_photo
     # id like to use unsplash api but need to work out how to meet their attribution requirements
-    if Rails.env.production?
+    if !Rails.env.test?
       [
         "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/001/original/open-uri20150904-3-16e2exd?1441337903",
         "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/002/original/open-uri20150904-3-rdqbrq?1441337903",

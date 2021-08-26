@@ -5,8 +5,10 @@ class UserSerializer < AuthorSerializer
              :location,
              :email_verified,
              :has_password,
+             :avatar_url,
              :email,
              :attachments
+
   def avatar_kind
     if !object.email_verified && !object.name
       'mdi-email-outline'

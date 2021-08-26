@@ -184,7 +184,7 @@ export default
           v-list-item(v-for="membership in memberships" :key="membership.id")
             v-list-item-avatar(size='48')
               router-link(:to="urlFor(membership.user())")
-                user-avatar(:user='membership.user()' size='48')
+                user-avatar(:user='membership.user()' :size='48')
             v-list-item-content
               v-list-item-title
                 router-link(:to="urlFor(membership.user())") {{ membership.user().nameOrEmail() }}

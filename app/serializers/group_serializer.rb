@@ -7,7 +7,7 @@ class GroupSerializer < ApplicationSerializer
              :content_locale,
              :description,
              :description_format,
-             :logo_url_medium,
+             :logo_url,
              :created_at,
              :creator_id,
              :members_can_add_members,
@@ -37,7 +37,7 @@ class GroupSerializer < ApplicationSerializer
              :link_previews,
              :new_threads_max_depth,
              :new_threads_newest_first,
-             :cover_urls,
+             :cover_url,
              :experiences,
              :enable_experiments,
              :features,
@@ -107,10 +107,6 @@ class GroupSerializer < ApplicationSerializer
 
   def new_host
     object.info['new_host'] || nil
-  end
-
-  def logo_url_medium
-    object.logo_urls[:medium]
   end
 
   def is_subgroup_of_hidden_parent

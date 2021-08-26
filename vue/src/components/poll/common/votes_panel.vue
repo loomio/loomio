@@ -77,7 +77,7 @@ export default
   .poll-common-votes-panel__has-votes(v-if='poll.votersCount')
     .poll-common-votes-panel__stance(v-for='stance in stances' :key='stance.id')
       .poll-common-votes-panel__avatar.pr-3
-        user-avatar(:user='stance.participant()' size='24')
+        user-avatar(:user='stance.participant()' :size='24')
       .poll-common-votes-panel__stance-content
         .poll-common-votes-panel__stance-name-and-option
           v-layout.body-2(align-center)

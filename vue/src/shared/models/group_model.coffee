@@ -172,20 +172,6 @@ export default class GroupModel extends BaseModel
   isParent: ->
     !@parentId?
 
-  logoUrl: ->
-    if @logoUrlMedium
-      @logoUrlMedium
-    else if @parent()
-      @parent().logoUrl()
-    else
-      null
-
-  coverUrl: (size = 'large') ->
-    if @parentId && !@hasCustomCover
-      @parent().coverUrl(size)
-    else
-      @coverUrls[size]
-
   archive: =>
     @remote.patchMember(@key, 'archive').then =>
       @remove()

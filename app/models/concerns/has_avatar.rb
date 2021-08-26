@@ -20,20 +20,15 @@ module HasAvatar
   end
 
   def thumb_url
-    case avatar_kind.to_sym
-    when :gravatar
-      gravatar_url(size: 128, secure: Rails.env.production?, default: 'retro')
-    when :uploaded
-      Rails.application.routes.url_helpers.rails_representation_path( uploaded_avatar.representation(resize: '128x128'), only_path: true )
-    end
+    avatar_url(128)
   end
 
-  def avatar_url
+  def avatar_url(size = 512)
     case avatar_kind.to_sym
     when :gravatar
-      gravatar_url(size: 512, secure: Rails.env.production?, default: 'retro')
+      gravatar_url(size: size, secure: true, default: 'retro')
     when :uploaded
-      Rails.application.routes.url_helpers.rails_representation_path( uploaded_avatar.representation(resize: '512x512'), only_path: true )
+      Rails.application.routes.url_helpers.rails_representation_path( uploaded_avatar.representation(resize: "#{size}x#{size}"), only_path: true )
     end
   end
 

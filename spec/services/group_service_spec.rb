@@ -12,10 +12,6 @@ describe 'GroupService' do
       expect { GroupService.create(group: group, actor: user) }.to change { Group.count }.by(1)
       expect(group.reload.creator).to eq user
     end
-
-    it 'assigns a default group cover' do
-      expect(group.cover_urls[:medium]).to eq '/theme/default_group_cover.png'
-    end
   end
 
   describe' move' do

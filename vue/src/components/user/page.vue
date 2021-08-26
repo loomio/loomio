@@ -75,7 +75,7 @@ v-main.user-page__profile
             v-list-item.user-page__group(v-for='group in groups' :key='group.id' :to='urlFor(group)')
               v-list-item-avatar
                 v-avatar.mr-2(tile size="48")
-                  img(:src='group.logoUrl()')
+                  img(:src='group.logoUrl')
               v-list-item-title {{group.fullName}}
           loading(v-if='loadingGroupsForExecuting')
 </template>
