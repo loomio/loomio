@@ -51,7 +51,7 @@ export default
 
     coverImageSrc: ->
       if @group
-        @group.coverUrl()
+        @group.coverUrl
       else
         ''
 

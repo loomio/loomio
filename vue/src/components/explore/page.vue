@@ -53,7 +53,7 @@ export default
       Records.groups.fetchExploreGroups(@query, from: @groupIds.length, per: @perPage, order: @order).then(@handleSearchResults)
 
     groupCover: (group) ->
-      { 'background-image': "url(#{group.coverUrl('small')})" }
+      { 'background-image': "url(#{group.coverUrl})" }
 
     groupDescription: (group) ->
       description = group.description || ''
