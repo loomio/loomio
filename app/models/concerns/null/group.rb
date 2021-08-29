@@ -47,6 +47,8 @@ module Null::Group
       logo_or_parent_logo
       created_at
       creator_id
+      cover_url
+      logo_url
     )
   end
 
@@ -110,14 +112,6 @@ module Null::Group
 
   def group_privacy
     'private_only'
-  end
-
-  def cover_photo
-    Group.new.cover_photo
-  end
-
-  def logo
-    Group.new.logo
   end
 
   def parent_or_self
