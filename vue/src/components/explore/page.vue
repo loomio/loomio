@@ -104,7 +104,7 @@ v-main
     v-row.explore-page__groups.my-4(v-show="!searching" wrap)
       v-col(:lg="6" :md="6" :sm="12" v-for='group in orderedGroups', :key='group.id')
         v-card.explore-page__group.my-4(:to='urlFor(group)')
-          v-img.explore-page__group-cover(:src="group.coverUrl('small')")
+          v-img(max-height="120").explore-page__group-cover(:src="group.coverUrl")
           v-card-title {{ group.name }}
           v-card-text
             .explore-page__group-description {{groupDescription(group)}}

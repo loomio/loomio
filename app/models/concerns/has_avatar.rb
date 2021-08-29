@@ -27,8 +27,12 @@ module HasAvatar
     case avatar_kind.to_sym
     when :gravatar
       gravatar_url(size: size, secure: true, default: 'retro')
-    when :uploaded && uploaded_avatar.attachment.present?
-      Rails.application.routes.url_helpers.rails_representation_path( uploaded_avatar.representation(resize: "#{size}x#{size}"), only_path: true )
+    when :uploaded
+      if uploaded_avatar.attachment.nil?
+        MigrateAttachmentWorker.perform_async('User', id, 'uploaded_avatar') &&  nil
+      else
+        Rails.application.routes.url_helpers.rails_representation_path( uploaded_avatar.representation(resize: "#{size}x#{size}"), only_path: true )
+      end
     else
       nil
     end
