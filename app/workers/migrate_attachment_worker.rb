@@ -9,5 +9,7 @@ class MigrateAttachmentWorker
     else
       model.send(name).attach(io: open(paperclip.url), filename: File.basename(paperclip.url))
     end
+  rescue OpenURI::HTTPError
+    model.update_columns("#{name}_file_name": nil)
   end
 end
