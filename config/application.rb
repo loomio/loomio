@@ -19,7 +19,7 @@ end
 
 module Loomio
   class Application < Rails::Application
-    config.load_defaults 6.0
+    # config.load_defaults 6.0
     # config.autoloader = :classic
     config.middleware.use Rack::Attack
     # config.active_job.queue_adapter = :sidekiq
