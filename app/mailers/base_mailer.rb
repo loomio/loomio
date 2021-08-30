@@ -7,7 +7,7 @@ class BaseMailer < ActionMailer::Base
   helper :email
   helper :formatted_date
 
-  add_template_helper(PrettyUrlHelper)
+  # add_template_helper(PrettyUrlHelper)
 
   cattr_accessor :disabled
   def self.skip

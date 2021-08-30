@@ -1,5 +1,14 @@
 module HasRichText
-  PREVIEW_OPTIONS = {resize: "1200x1200>", quality: '85'}
+  PREVIEW_OPTIONS = {
+    resize_to_limit: [1280,1280],
+    format: :jpeg,
+    saver: {
+      quality: 80,
+      interlace: true,
+      strip: true,
+      subsample_mode: "on"
+    }
+  }
 
   extend ActiveSupport::Concern
 
@@ -70,7 +79,7 @@ module HasRichText
       self.files.each do |file|
         file.purge_later unless Array(params[:files]).include? file.signed_id
       end
-      # this is crazy, we shouldnt have to do this, rails 6 should replace the whole thing.
+      # this is crazy, we shouldnt have to do this, rails 6 should replace the whole thing... but I've not enabled it
       params[:files] = Array(params[:files]).reject {|sid| self.files.map(&:signed_id).include? sid}
       self.reload
     end

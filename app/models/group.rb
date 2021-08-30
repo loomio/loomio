@@ -158,12 +158,18 @@ class Group < ApplicationRecord
 
   def logo_url(size = 512)
     return nil unless logo.attached?
-    Rails.application.routes.url_helpers.rails_representation_path( logo.representation(resize: "#{size}x#{size}"), only_path: true )
+    Rails.application.routes.url_helpers.rails_representation_path(
+      logo.representation(HasRichText::PREVIEW_OPTIONS.merge(resize_to_limit: [size,size])),
+      only_path: true
+    )
   end
 
-  def cover_url(size = 640) # = 1920x640 default
+  def cover_url(size = 512) # 2048x512 or 1024x256 normal res
     return nil unless cover_photo.attached?
-    Rails.application.routes.url_helpers.rails_representation_path( cover_photo.representation(resize: "#{size*3}x#{size}"), only_path: true )
+    Rails.application.routes.url_helpers.rails_representation_path(
+      cover_photo.representation(HasRichText::PREVIEW_OPTIONS.merge(resize_to_limit: [size*4,size])),
+      only_path: true
+    )
   end
 
   def existing_member_ids
