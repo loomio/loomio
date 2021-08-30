@@ -1,12 +1,9 @@
 module HasRichText
   PREVIEW_OPTIONS = {
     resize_to_limit: [1280,1280],
-    format: :jpeg,
     saver: {
       quality: 80,
-      interlace: true,
-      strip: true,
-      subsample_mode: "on"
+      strip: true
     }
   }
 
