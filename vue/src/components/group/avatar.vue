@@ -6,7 +6,8 @@ export default
       default: 0
     group: Object
     size:
-      default: '28px'
+      type: Number
+      default: 28
 </script>
 
 <template lang="pug">
