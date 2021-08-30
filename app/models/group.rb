@@ -159,7 +159,7 @@ class Group < ApplicationRecord
   def logo_url(size = 512)
     return nil unless logo.attached?
     Rails.application.routes.url_helpers.rails_representation_path(
-      logo.representation(HasRichText::PREVIEW_OPTIONS.merge(resize_to_limit: [size,size])),
+      logo.representation(resize_to_limit: [size,size], saver: {quality: 80, strip: true}),
       only_path: true
     )
   end

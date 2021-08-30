@@ -32,7 +32,7 @@ module HasAvatar
         MigrateAttachmentWorker.perform_async('User', id, 'uploaded_avatar') &&  nil
       else
         Rails.application.routes.url_helpers.rails_representation_path(
-          uploaded_avatar.representation(HasRichText::PREVIEW_OPTIONS.merge(resize_to_limit: [size,size])),
+          uploaded_avatar.representation(resize_to_limit: [size,size], saver: {quality: 80, strip: true}),
           only_path: true
         )
       end
