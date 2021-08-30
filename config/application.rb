@@ -20,7 +20,7 @@ end
 module Loomio
   class Application < Rails::Application
     # we should work out how to enable this but I think it will be hard
-    # config.load_defaults 6.0
+    config.load_defaults 6.0
     # config.autoloader = :classic
     config.middleware.use Rack::Attack
     # config.active_job.queue_adapter = :sidekiq
@@ -78,6 +78,8 @@ module Loomio
 
     config.quiet_assets = true
     config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
+
+    config.active_storage.variant_processor = :vips
 
     if ENV['AWS_BUCKET']
       config.active_storage.service = :amazon

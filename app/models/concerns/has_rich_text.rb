@@ -1,5 +1,14 @@
 module HasRichText
-  PREVIEW_OPTIONS = {resize: "1200x1200>", quality: '85'}
+  PREVIEW_OPTIONS = {
+    resize_to_limit: [1280,1280],
+    format: :jpeg,
+    saver: {
+      quality: 80,
+      interlace: true,
+      strip: true,
+      subsample_mode: "on"
+    }
+  }
 
   extend ActiveSupport::Concern
 
