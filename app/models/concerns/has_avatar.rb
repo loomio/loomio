@@ -24,6 +24,7 @@ module HasAvatar
   end
 
   def avatar_url(size = 512)
+    size = size.to_i
     case avatar_kind.to_sym
     when :gravatar
       gravatar_url(size: size, secure: true, default: 'retro')
