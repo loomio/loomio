@@ -1,7 +1,7 @@
 .base-mailer__avatar.v-avatar{:title => user.name}
   - if user.presence
-    - if user.avatar_url(:medium)
-      = image_tag user.avatar_url(:medium), alt: "#{user.avatar_initials}", class: "base-mailer__avatar-image"
+    - if user.thumb_url
+      = image_tag user.thumb_url, alt: "#{user.avatar_initials}", class: "base-mailer__avatar-image"
     - else
       .base-mailer__avatar-initials= user.avatar_initials
   - else
