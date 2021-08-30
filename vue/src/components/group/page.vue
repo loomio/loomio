@@ -50,10 +50,7 @@ export default
 
 
     coverImageSrc: ->
-      if @group
-        @group.coverUrl
-      else
-        ''
+      (@group && @group.coverUrl) || (@group && @group.parent().coverUrl) || ''
 
   methods:
     init: ->
