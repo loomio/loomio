@@ -16,8 +16,8 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "@sentry/integrations": "^6.11.0",
     "@sentry/browser": "^6.11.0",
+    "@sentry/integrations": "^6.11.0",
     "@sentry/tracing": "^6.11.0",
     "activestorage": "^5.2.6",
     "ahoy.js": "^0.3.8",
@@ -74,7 +74,7 @@
     "vue-cli-plugin-pug": "^2.0.0",
     "vue-cli-plugin-vuetify": "latest",
     "vue-template-compiler": "2.6.14",
-    "vuetify-loader": "latest",
+    "vuetify-loader": "1.7.3",
     "webpack": "4.46.0"
   }
 }
