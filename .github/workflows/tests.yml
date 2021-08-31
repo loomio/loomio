@@ -113,7 +113,6 @@ jobs:
     - name: build client
       run: |
         cd vue
-        npm cache clean --force
         npm install
         npm run build
     - name: run e2es
