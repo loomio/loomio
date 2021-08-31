@@ -99,12 +99,12 @@ v-main
     v-text-field(v-model="query" :placeholder="$t('explore_page.search_placeholder')" id="search-field" append-icon="mdi-magnify")
     v-select(@change="handleOrderChange" :items="orderOptions" item-value="val" item-text="name" :placeholder="$t('explore_page.order_by')" :value="order")
     loading(:until="!searching")
-    .explore-page__no-results-found(v-show='noResultsFound', v-html="$t('explore_page.no_results_found')")
-    .explore-page__search-results(v-show='showMessage', v-html="$t(searchResultsMessage, {resultCount: resultsCount, searchTerm: query})")
+    .explore-page__no-results-found(v-show='noResultsFound' v-html="$t('explore_page.no_results_found')")
+    .explore-page__search-results(v-show='showMessage' v-html="$t(searchResultsMessage, {resultCount: resultsCount, searchTerm: query})")
     v-row.explore-page__groups.my-4(v-show="!searching" wrap)
-      v-col(:lg="6" :md="6" :sm="12" v-for='group in orderedGroups', :key='group.id')
+      v-col(:lg="6" :md="6" :sm="12" v-for='group in orderedGroups' :key='group.id')
         v-card.explore-page__group.my-4(:to='urlFor(group)')
-          v-img(max-height="120").explore-page__group-cover(:src="group.coverUrl")
+          v-img.explore-page__group-cover(:src="group.coverUrl" max-height="120")
           v-card-title {{ group.name }}
           v-card-text
             .explore-page__group-description {{groupDescription(group)}}

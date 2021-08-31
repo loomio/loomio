@@ -43,8 +43,7 @@ module.exports = env => {
     assetsDir: (process.env.NODE_ENV == 'production') ? '../../blient/vue' : 'blient/vue',
     devServer: {
      proxy: {
-     '^/(api|dev|brand|login_tokens|theme|fonts|img|join|invitations|system|direct_uploads|rails|slack|oauth|facebook|google|beta|admin|assets|upgrade|pricing|special_pricing|community_applications|417|saml_providers|merge_users|intro|bcorp|bhoy|sidekiq|message-bus|email_actions|help)': {target: 'http://localhost:3000'},
-       '^/(cable)': {target: 'ws://localhost:3000', ws: true, secure: false, changeOrigin: true},
+       '^/(api|dev|brand|login_tokens|theme|fonts|img|join|invitations|system|direct_uploads|rails|slack|oauth|facebook|google|beta|admin|assets|upgrade|pricing|special_pricing|community_applications|417|saml_providers|merge_users|intro|bcorp|bhoy|sidekiq|message-bus|email_actions|help)': {target: 'http://localhost:3000'}
      }
     },
     css: {
