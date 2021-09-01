@@ -7,7 +7,11 @@ class MigrateAttachmentWorker
     if paperclip.url == '/uploaded_avatars/original/missing.png'
       model.update_columns("#{name}_file_name": nil)
     else
-      model.send(name).attach(io: open(paperclip.url), filename: File.basename(paperclip.url))
+      if ENV['AWS_ACCESS_KEY_ID']
+        model.send(name).attach(io: open(paperclip.url), filename: File.basename(paperclip.url))
+      else
+        model.send(name).attach(io: open(paperclip.path), filename: File.basename(paperclip.path))
+      end
     end
   rescue OpenURI::HTTPError
     model.update_columns("#{name}_file_name": nil)
