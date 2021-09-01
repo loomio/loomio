@@ -42,7 +42,7 @@ class PollExporter
     ## for each participant show the
     @poll.stances.latest.each do |stance|
       user = stance.participant
-      row = [user.name, user.email]
+      row = [user.name, user.id]
 
       @poll.poll_options.each do |poll_option|
         # find the value for this stance_choice for poll option in this stance
@@ -60,12 +60,12 @@ class PollExporter
 
   def stance_list
     rows = []
-    rows << [["created_at", "author", 'email', "is_latest"].map{ |name_label| label(name_label) }, @poll.poll_options.map(&:display_name)].flatten
+    rows << [["created_at", "author", 'id', "is_latest"].map{ |name_label| label(name_label) }, @poll.poll_options.map(&:display_name)].flatten
 
     ## for each stance in chronological order
     @poll.stances.sort_by(&:created_at).each do |stance|
       user = stance.participant
-      row = [stance.created_at, user.name, user.email, stance.latest]
+      row = [stance.created_at, user.name, user.id, stance.latest]
 
       @poll.poll_options.each do |poll_option|
         # find the stance choice with this poll option and get its score
