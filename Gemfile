@@ -101,7 +101,6 @@ group :production do
   gem 'rails_12factor'
   gem 'rails_serve_static_assets'
   gem 'newrelic_rpm'
-  gem 'heroku-deflater'
 end
 
 Dir.glob(File.join(File.dirname(__FILE__), 'plugins', '**', "Gemfile")) do |gemfile|

@@ -323,8 +323,6 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
     hashdiff (1.0.1)
-    heroku-deflater (0.6.3)
-      rack (>= 1.4.5)
     hiredis (0.6.3)
     html2haml (2.2.0)
       erubis (~> 2.7.0)
@@ -666,7 +664,6 @@ DEPENDENCIES
   griddler!
   griddler-mailin!
   haml-rails (~> 2.0.1)
-  heroku-deflater
   hiredis
   http_accept_language
   httparty (~> 0.18.1)
