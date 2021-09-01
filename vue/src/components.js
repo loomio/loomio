@@ -112,6 +112,7 @@ module.exports = {
   PollCommonUndecidedUser: 'poll/common/undecided_user',
   PollCommonVoteForm: 'poll/common/vote_form',
   PollCommonVotesPanel: 'poll/common/votes_panel',
+  PollCommonWipField: 'poll/common/wip_field',
   PollCountForm: 'poll/count/form',
   PollCreated: 'thread/item/poll_created',
   PollDotVoteForm: 'poll/dot_vote/form',
