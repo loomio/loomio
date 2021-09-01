@@ -29,7 +29,7 @@ module MigrateEventsService
         model.where("#{attachment}_file_name is not null").send("with_attached_#{attachment}").find_each.each do |instance|
           if instance.send(attachment).attachment.nil?
             puts "#{instance.class} #{instance.id} " + instance.send("#{attachment}_file_name")
-            MigrateAttachmentWorker.perform_async(instance.class.to_s, instance.id, attachment)
+            MigrateAttachmentWorker.perform_async(attachment.record_type, instance.id, attachment)
           end
         end
       end
