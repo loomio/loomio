@@ -14,7 +14,7 @@ module MigrateEventsService
   end
 
   def self.migrate_paperclip
-    models = ActiveRecord::Base.descendants.reject(&:abstract_class?)
+    models = [Group, User, Discussion, Comment, Poll, Stance, Outcome, Document]
 
     models.each do |model|
       attachments = model.column_names.map do |c|
