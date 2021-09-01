@@ -13,7 +13,7 @@ RUN gem update --system
 RUN apt-get update -qq && apt-get install -y build-essential sudo apt-utils
 
 # for activestorage previews
-RUN apt-get install -y imagemagick ffmpeg mupdf
+RUN apt-get install -y imagemagick ffmpeg mupdf libvips-dev libvips libjpeg-turbo libpng libpng-dev
 
 # for postgres
 RUN apt-get install -y libpq-dev
