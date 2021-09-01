@@ -169,7 +169,7 @@ export default new class PollService
     export_poll:
       name: 'common.action.export'
       canPerform: ->
-        AbilityService.canExportPoll(poll) && false
+        AbilityService.canExportPoll(poll)
       perform: ->
         hardReload LmoUrlService.poll(poll, {export: 1}, {action: 'export', ext: 'csv', absolute: true})
 
