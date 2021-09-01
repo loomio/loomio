@@ -7,7 +7,7 @@ class BaseMailer < ActionMailer::Base
   helper :email
   helper :formatted_date
 
-  add_template_helper(PrettyUrlHelper)
+  # add_template_helper(PrettyUrlHelper)
 
   NOTIFICATIONS_EMAIL_ADDRESS = ENV.fetch('NOTIFICATIONS_EMAIL_ADDRESS', "notifications@#{ENV['SMTP_DOMAIN']}")
   default :from => "\"#{AppConfig.theme[:site_name]}\" <#{NOTIFICATIONS_EMAIL_ADDRESS}>"

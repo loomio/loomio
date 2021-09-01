@@ -3,12 +3,6 @@ module HasAvatar
   include Routing
   extend ActiveSupport::Concern
 
-  AVATAR_SIZES = {
-    small:  30,
-    medium: 50,
-    large:  170,
-  }.with_indifferent_access.freeze
-
   included do
     include Gravtastic
     gravtastic rating: :pg, default: :none
@@ -16,11 +10,7 @@ module HasAvatar
   end
 
   def set_default_avatar_kind
-    self.avatar_kind = if has_gravatar?
-      :gravatar
-    else
-      :initials
-    end
+    self.avatar_kind = :gravatar if !uploaded_avatar.attached? && has_gravatar?
   end
 
   def avatar_kind
@@ -29,27 +19,26 @@ module HasAvatar
     super
   end
 
-  def uploaded_avatar(size)
-    # NOOP: override for users who can upload avatars
+  def thumb_url
+    avatar_url(128)
   end
 
-  def avatar_url(size = :medium)
+  def avatar_url(size = 512)
+    size = size.to_i
     case avatar_kind.to_sym
-    when :gravatar then gravatar_url(size: AVATAR_SIZES[size])
-    when :uploaded then uploaded_avatar.url(size)
-    end
-  end
-
-  def absolute_avatar_url(size = :medium)
-    url = avatar_url(size)
-    if url =~ /https:\/\//
-      url
-    elsif url
-      [root_url(default_url_options).chomp('/'), url].join
-    elsif self == User.helper_bot
-      self.avatar_url
+    when :gravatar
+      gravatar_url(size: size, secure: true, default: 'retro')
+    when :uploaded
+      if uploaded_avatar.attachment.nil?
+        MigrateAttachmentWorker.perform_async('User', id, 'uploaded_avatar') &&  nil
+      else
+        Rails.application.routes.url_helpers.rails_representation_path(
+          uploaded_avatar.representation(resize_to_limit: [size,size], saver: {quality: 80, strip: true}),
+          only_path: true
+        )
+      end
     else
-      User.helper_bot.absolute_avatar_url
+      nil
     end
   end
 

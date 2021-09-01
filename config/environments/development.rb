@@ -1,6 +1,10 @@
-Loomio::Application.configure do
-  # In the development environment your application's code is reloaded on
-  # every request.  This slows down response time but is perfect for development
+require "active_support/core_ext/integer/time"
+
+Rails.application.configure do
+  # Settings specified here will take precedence over those in config/application.rb.
+
+  # In the development environment your application's code is reloaded any time
+  # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.log_level = ENV.fetch('RAILS_LOG_LEVEL', :debug)
   config.cache_classes = false
@@ -21,6 +25,8 @@ Loomio::Application.configure do
 
   # Do not compress assets
   config.assets.compress = false
+  # Highlight code that triggered database queries in logs.
+  config.active_record.verbose_query_logs = true
 
   # Expands the lines which load the assets
   config.assets.debug = true
@@ -32,6 +38,9 @@ Loomio::Application.configure do
   config.sass.line_comments = false
 
   config.eager_load = false
+  # Use an evented file watcher to asynchronously detect changes in source code,
+  # routes, locales, etc. This feature depends on the listen gem.
+  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_controller.action_on_unpermitted_parameters = :raise
   # config.after_initialize do

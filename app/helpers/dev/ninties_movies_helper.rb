@@ -12,12 +12,11 @@ module Dev::NintiesMoviesHelper
                               is_admin: false,
                               username: 'patrickswayze',
                               password: 'gh0stmovie',
-                              uploaded_avatar: File.new("#{Rails.root}/spec/fixtures/images/patrick.png"),
                               experiences: {changePicture: true},
                               detected_locale: 'en',
+                              avatar_kind: 'uploaded',
                               email_verified: true)
-
-    @patrick.update(avatar_kind: 'uploaded')
+    @patrick.uploaded_avatar.attach io: File.new("#{Rails.root}/spec/fixtures/images/patrick.png"), filename: 'patrick.jpg'
     @patrick
   end
 
@@ -34,10 +33,10 @@ module Dev::NintiesMoviesHelper
                   User.create!(name: 'Jennifer Grey',
                                email: 'jennifer_grey@example.com',
                                username: 'jennifergrey',
+                               avatar_kind: 'uploaded',
                                experiences: {changePicture: true},
-                               uploaded_avatar: File.new("#{Rails.root}/spec/fixtures/images/jennifer.png"),
                                email_verified: true)
-    @jennifer.update(avatar_kind: 'uploaded')
+    @jennifer.uploaded_avatar.attach io: File.new("#{Rails.root}/spec/fixtures/images/jennifer.png"), filename: 'jen.jpg'
     @jennifer
   end
 

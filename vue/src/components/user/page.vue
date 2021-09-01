@@ -58,7 +58,7 @@ v-main.user-page__profile
             h1.headline {{user.name}}
         v-card-text
           v-layout.user-page__info.mb-5.align-center.justify-center(column)
-            user-avatar.mb-5(v-if="user.hasProfilePhoto()" :user='user', size='featured' :no-link="true")
+            user-avatar.mb-5(v-if="user.avatarUrl" :user='user' :size='192' :no-link="true")
             .text--secondary @{{user.username}}
             formatted-text(v-if="user" :model="user" column="shortBio")
             div(v-t="{ path: 'user_page.locale_field', args: { value: user.localeName() } }", v-if='user.localeName()')
@@ -75,7 +75,7 @@ v-main.user-page__profile
             v-list-item.user-page__group(v-for='group in groups' :key='group.id' :to='urlFor(group)')
               v-list-item-avatar
                 v-avatar.mr-2(tile size="48")
-                  img(:src='group.logoUrl()')
+                  img(:src='group.logoUrl')
               v-list-item-title {{group.fullName}}
           loading(v-if='loadingGroupsForExecuting')
 </template>

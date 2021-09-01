@@ -77,7 +77,7 @@ v-card.change-picture-form
         v-list-item-title(v-t="{ path: 'change_picture_form.use_provider', args: { provider: capitalize(provider.name) } }")
       v-list-item.change-picture-form__option(@click="submit('gravatar')")
         v-list-item-avatar
-          v-gravatar(:hash='user.emailHash' :alt='user.name' :size='48')
+          v-gravatar(:email='user.email' :alt='user.name' :size='128')
         v-list-item-title(v-t="'change_picture_form.use_gravatar'")
       v-list-item.change-picture-form__option(@click="submit('initials')")
         v-list-item-avatar.user-avatar

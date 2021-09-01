@@ -1,5 +1,11 @@
 module HasRichText
-  PREVIEW_OPTIONS = {resize: "1200x1200>", quality: '85'}
+  PREVIEW_OPTIONS = {
+    resize_to_limit: [1280,1280],
+    saver: {
+      quality: 85,
+      strip: true
+    }
+  }
 
   extend ActiveSupport::Concern
 
@@ -75,7 +81,7 @@ module HasRichText
       i = file.blob.slice(:id, :filename, :content_type, :byte_size)
       i.merge!({ preview_url: Rails.application.routes.url_helpers.rails_representation_path(file.representation(PREVIEW_OPTIONS), only_path: true) }) if file.representable?
       i.merge!({ download_url: Rails.application.routes.url_helpers.rails_blob_path(file, only_path: true) })
-      i.merge!({ icon: attachment_icon(file.blob.content_type || file.blob.filename) })
+      i.merge!({ icon: attachment_icon(file.content_type || file.filename) })
       i.merge!({ signed_id: file.signed_id })
       i
     end
@@ -86,7 +92,7 @@ module HasRichText
       self.files.each do |file|
         file.purge_later unless Array(params[:files]).include? file.signed_id
       end
-      # this is crazy, we shouldnt have to do this, rails 6 should replace the whole thing.
+      # this is crazy, we shouldnt have to do this, rails 6 should replace the whole thing... but I've not enabled it
       params[:files] = Array(params[:files]).reject {|sid| self.files.map(&:signed_id).include? sid}
       self.reload
     end

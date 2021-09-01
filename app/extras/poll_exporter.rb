@@ -15,9 +15,6 @@ class PollExporter
 
   def meta_table
     outcome = @poll.current_outcome
-    voted = @poll.voters_count
-    total = @poll.members.count
-    engagement =  label('percent_voted', num:voted ,denom:total, percent:"#{(voted*100/total)}%") if total > 0
 
     {
       title: @poll.title,
@@ -25,7 +22,7 @@ class PollExporter
       created_at: @poll.created_at,
       closing_at:  (@poll.closing_at unless @poll.closed_at),
       closed_at: @poll.closed_at,
-      engagement:engagement,
+      engagement: I18n.t("poll.export.percent_voted", num: @poll.decided_voters_count, denom: @poll.voters_count, percent: "#{@poll.cast_stances_pct}%"),
       stances: @poll.voters_count,
       participants: @poll.members.count,
       details: @poll.details,
@@ -40,12 +37,12 @@ class PollExporter
 
   def stance_matrix
     rows = []
-    rows << [label("participant"), label("email"), @poll.poll_options.map(&:display_name), label("reason")].flatten
+    rows << [I18n.t("poll.export.participant"), @poll.poll_options.map(&:display_name), I18n.t("poll.export.reason")].flatten
 
     ## for each participant show the
     @poll.stances.latest.each do |stance|
       user = stance.participant
-      row = [user.name, user.email]
+      row = [user.name, user.id]
 
       @poll.poll_options.each do |poll_option|
         # find the value for this stance_choice for poll option in this stance
@@ -63,12 +60,12 @@ class PollExporter
 
   def stance_list
     rows = []
-    rows << [["created_at", "author", 'email', "is_latest"].map{ |name_label| label(name_label) }, @poll.poll_options.map(&:display_name)].flatten
+    rows << [["created_at", "author", 'id', "is_latest"].map{ |name_label| label(name_label) }, @poll.poll_options.map(&:display_name)].flatten
 
     ## for each stance in chronological order
     @poll.stances.sort_by(&:created_at).each do |stance|
       user = stance.participant
-      row = [stance.created_at, user.name, user.email, stance.latest]
+      row = [stance.created_at, user.name, user.id, stance.latest]
 
       @poll.poll_options.each do |poll_option|
         # find the stance choice with this poll option and get its score

@@ -6,52 +6,12 @@ describe Group do
   let(:discussion) { create :discussion, group: group }
   let(:discarded_discussion) { create :discussion, group: group, discarded_at: Time.now }
 
-  context 'default cover photo' do
-
-    it 'returns an uploaded cover url if one exists' do
-      cover_photo_stub = OpenStruct.new(url: 'test.jpg')
-      group = create :group, default_group_cover: create(:default_group_cover)
-      group.stub(:cover_photo).and_return(cover_photo_stub)
-      expect(cover_photo_stub.url).to match group.cover_photo.url
-    end
-
-    it 'returns the default cover photo for the group if it is a parent group' do
-      group = create :group, default_group_cover: create(:default_group_cover)
-      expect(group.default_group_cover.cover_photo.url).to match group.cover_photo.url
-    end
-
-    it 'returns the parents default cover photo if it is a subgroup' do
-      parent = create :group, default_group_cover: create(:default_group_cover)
-      group = create :group, parent: parent
-      expect(parent.default_group_cover.cover_photo.url).to match group.cover_photo.url
-    end
-  end
-
   context "memberships" do
     it "deletes memberships assoicated with it" do
       group = create :group
       membership = group.add_member! create :user
       group.destroy
       expect { membership.reload }.to raise_error ActiveRecord::RecordNotFound
-    end
-  end
-
-  context 'logo_or_parent_logo' do
-    it 'returns the group logo if it is a parent' do
-      group = create :group
-      expect(group.logo_or_parent_logo).to eq group.logo
-    end
-
-    it 'returns the parents logo if one does not exist' do
-      parent = create :group, logo: fixture_for('images/strongbad.png')
-      group = create :group, parent: parent
-      expect(group.logo_or_parent_logo).to eq parent.logo
-    end
-
-    it 'returns the group logo if one exists' do
-      parent = create :group
-      group = create :group, parent: parent, logo: fixture_for('images/strongbad.png')
-      expect(group.logo_or_parent_logo).to eq group.logo
     end
   end
 

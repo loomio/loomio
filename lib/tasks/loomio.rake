@@ -29,6 +29,11 @@ namespace :loomio do
     end
   end
 
+  task migrate_paperclip: :environment do
+    Rails.application.eager_load!
+    MigrateEventsService.migrate_paperclip
+  end
+
   task hourly_tasks: :environment do
     ThrottleService.reset!('hour')
     PollService.delay.expire_lapsed_polls

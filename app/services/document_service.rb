@@ -6,7 +6,6 @@ class DocumentService
     document.title ||= document.file_file_name
     return unless document.valid?
     document.save!
-    document.sync_urls!
 
     EventBus.broadcast 'document_create', document, actor
   end
@@ -18,7 +17,6 @@ class DocumentService
 
     return unless document.valid?
     document.save!
-    document.sync_urls!
 
     EventBus.broadcast 'document_update', document, params, actor
   end
