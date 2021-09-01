@@ -8,6 +8,7 @@ class PollsController < ApplicationController
   helper :email
 
   def export
+    raise "disabled for now"
     @exporter = PollExporter.new(load_and_authorize(:poll, :export))
     @recipient = current_user
     @action_name = :export
