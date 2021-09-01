@@ -1,5 +1,4 @@
 <script lang="coffee">
-import { is2x } from '@/shared/helpers/window'
 import Records from '@/shared/services/records'
 import AppConfig from '@/shared/services/app_config'
 import { pick } from 'lodash'
