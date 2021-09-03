@@ -23,8 +23,10 @@ module EmailHelper
   def render_rich_text(text, format = "md")
     return "" unless text
     if format == "md"
+      text.gsub!('](/rails/active_storage', ']('+lmo_asset_host+'/rails/active_storage')
       markdownify(text)
     else
+      text.gsub!('"/rails/active_storage', '"'+lmo_asset_host+'/rails/active_storage')
       replace_iframes(text)
     end.html_safe
   end
