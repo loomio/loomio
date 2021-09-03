@@ -617,6 +617,7 @@ en:
     outcome_announced: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> participated in: <strong>{{title}}</strong>"
     group_announced: "<strong>{{name}}</strong> invited you to the group <strong>{{title}}</strong>"
+    outcome_review_due: "It's time to review the outcome of: <strong>{{title}}</strong>"
 
   discussion_fork_actions:
     helptext: Select items you'd like to move to another thread
