@@ -17,6 +17,15 @@ export default
     colors: Object
 
   computed:
+    fontSize: ->
+      return '8px' if @size < 21
+      return '10px' if @size < 25
+      return '12px' if @size < 33
+      return '14px' if @size < 48
+      return '18px' if @size < 64
+      return '32px' if @size < 128
+      return '50px'
+
     imageUrl: ->
       if @size > 64
         @user.avatarUrl
@@ -39,7 +48,7 @@ export default
 component.user-avatar(aria-hidden="true" :is="componentType" :to="!noLink && user.id && urlFor(user)" :style="{ 'width': size + 'px', margin: '0' }")
   v-avatar(:title='user.name' :size='size' :color="user.avatarUrl ? undefined : color")
     img(v-if="['gravatar', 'uploaded'].includes(user.avatarKind)" :alt='user.avatarInitials' :src='imageUrl')
-    span.user-avatar--initials(v-if="user.avatarKind === 'initials'" :style="{width: size+'px', height: size+'px'}") {{user.avatarInitials}}
+    span.user-avatar--initials(v-if="user.avatarKind === 'initials'" :style="{'font-size': fontSize, width: size+'px', height: size+'px'}") {{user.avatarInitials}}
     v-icon(v-if="!['initials', 'gravatar', 'uploaded'].includes(user.avatarKind)") {{user.avatarKind}}
 </template>
 
