@@ -202,6 +202,7 @@ export default
 .strand-item__main
   flex-grow: 1
   padding-bottom: 8px
+  max-width: 100%
 
 .strand-item__stem-wrapper
   width: 36px
