@@ -81,6 +81,7 @@ ro:
   timezones:
     local: Ora locala ({{value}})
   common:
+    version: Versiune
     history: Istoric
     option: Opțiune
     add: Adaugă
@@ -463,6 +464,7 @@ ro:
     announcement_label: Anunturi
   dashboard_page:
     aria_label: 'Tablou de bord'
+    recent_threads: "Conversatii recente"
     no_threads:
       show_all: Nu ai nici o discutie recenta.
       show_muted: Nu ai nici o discutie dezactivata.

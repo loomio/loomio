@@ -15,6 +15,8 @@ it:
     400:
       title: Richiesta sfortunata
       body: Scusa, non siamo stati in grado di capire quella richiesta
+    401:
+      body: Non è consentito accedere a questa pagina. Potrebbe essere necessario accedere.
     403:
       title: Proibito
       body: Non è consentito accedere a questa pagina. Potrebbe essere necessario accedere.
@@ -137,7 +139,7 @@ it:
       body_html: |
           Scarica i dati del tuo gruppo <a href="%{url}">qui</a>. Tieni presente che questo link scade tra una settimana.
     deactivated:
-      subject: "Il tuo %{site_name}account utente è stato disattivato."
+      subject: "Il tuo %{site_name} account utente è stato disattivato."
       body_html: |
           Tu oppure un utente con accesso al proprio account ha disattivato l'account utente Loomio. <p>
           <p>Tutti i dati personali sono stati rimossi dal sistema.</p>
@@ -157,12 +159,11 @@ it:
       resend: Questo link scade tra 24 ore e può essere usato una sola volta.
     login:
       subject: Autenticati al sito %{site_name}
-      intro: Ciao %{name}, qui c'è il link per autenticarti all'account del sito %{site_name}.
       login: Autenticato come %{name}
     contact_request:
-      subject: "%{name}vorrebbe connettersi con te su%{site_name}!"
+      subject: "%{name}vorrebbe connettersi con te su %{site_name}!"
       intro: "%{name} (%{email}) ti ha inviato una richiesta di connessione."
-      footer: "Puoi rispondere a %{name}direttamente, rispondendo a questa emai."
+      footer: "Puoi rispondere a %{name} direttamente, rispondendo a questa emai."
     reset_password:
       link_text: Cambia password
     start_decision:
@@ -180,10 +181,9 @@ it:
       intro: "%{who} ha fatto un annuncio a %{group}:"
     by_who: da %{person}
     reply_to_this_discussion: Rispondi a questa discussione
-    value_proposition: "%{site_name}è un luogo  in cui i gruppi possono prendere decisioni insieme"
     view_group: Vedi gruppo
     to_join_group:
-      subject: "%{member}ti ha invitato ad unirti al gruppo %{group_name}sul sito %{site_name}"
+      subject: "%{member} ti ha invitato ad unirti al gruppo %{group_name}sul sito %{site_name}"
       invitation_text: "%{member} ti ha invito ad unirti al loro gruppo %{group_name}."
       invitation_text_html: "ti ha invitato ad unirti al loro gruppo"
       link_help: "Clicca sul link qui sotto per accettare l'invito:"
@@ -191,7 +191,7 @@ it:
     unsubscribe: 'Disiscriviti o cambia le preferenze email:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per disiscriverti o cambiare le preferenze email."
     catch_up:
-      daily_subject: Ieri su%{site_name}
+      daily_subject: Ieri su %{site_name}
       do_not_reply: Non rispondere a questa email
       mark_as_read: Contrassegnato come letto
       thanks_for_reading: Grazie per aver letto, buona giornata!
@@ -248,6 +248,6 @@ it:
       results: Risultati
       responses: Risposte
       create_outcome: Condividi risultati
-      more_undecided: "%{count}ancora.."
+      more_undecided: "%{count} ancora.."
       vote_now: Vota ora
   comment_by: Commento di %{comment_author}

@@ -102,6 +102,7 @@ tr:
   timezones:
     local: Yerel saat ({{value}})
   common:
+    version: Versiyon
     empty: Boş
     no_results_found: Sonuç bulunamadı
     view: İncele

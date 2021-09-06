@@ -15,6 +15,8 @@ nl_NL:
     400:
       title: Bad request
       body: Sorry, dat verzoek werd niet begrepen
+    401:
+      body: Je hebt geen toegang tot deze pagina. Misschien moet je inloggen.
     403:
       title: Verboden
       body: Je hebt geen toegang tot deze pagina. Misschien moet je inloggen.
@@ -174,7 +176,6 @@ nl_NL:
       resend: Deze link vervalt binnen 24 uur en kan slechts éénmalig gebruikt worden.
     login:
       subject: Log in op %{site_name}
-      intro: Hallo %{name}, hier is een link om in te loggen op je%{site_name} account.
       login: Log in als %{name}
     reactivate:
       subject: Je account %{site_name} heractiveren
@@ -208,7 +209,6 @@ nl_NL:
       intro: "%{who} maakte een aankondiging aan %{group}:"
     by_who: door %{person}
     reply_to_this_discussion: Antwoord op deze discussie
-    value_proposition: "%{site_name} is een plek om groepen samen beslissingen te laten maken"
     view_group: Bekijk groep
     to_join_group:
       subject: "%{member} heeft je uitgenodigd om lid te worden van %{group_name} op %{site_name}"

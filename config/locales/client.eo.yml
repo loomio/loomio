@@ -103,6 +103,7 @@ eo:
   timezones:
     local: Loka tempo ({{value}})
   common:
+    version: Versio
     no_results_found: Neniu rezulto trovita
     view: Vidi
     history: Historio
@@ -440,6 +441,7 @@ eo:
     edit: Redakti
   dashboard_page:
     aria_label: 'Supervidpanelo'
+    recent_threads: "Lastatempaj fadenoj"
     no_threads:
       show_all: Vi ne havas lastatempajn fadenojn.
     view_recent: Ĉu vidi ĉiujn lastatempajn fadenojn?

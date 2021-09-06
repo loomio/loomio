@@ -105,6 +105,7 @@ ca:
   timezones:
     local: Hora local ({{value}})
   common:
+    version: Versió
     empty: Buit
     no_results_found: No s'ha trobat cap resultat
     view: Visualitza
@@ -563,7 +564,6 @@ ca:
     privacy_private: 'El fil només serà visible pels membres del grup {{group}}.'
     privacy_organisation: 'El fil serà visible pels membres de {{parent}} i pels membres de {{group}}.'
     fork_notice: 'Es crearà un fil nou amb {{count}} elements de {{title}}'
-    one_person_notified: Es notificarà 1 persona.
     notify_group: Notifica al grup
   announcement:
     send_discussion: Envia fil
@@ -1160,6 +1160,7 @@ ca:
     unread_count: "{{count}} no llegits"
   dashboard_page:
     aria_label: 'Tauler'
+    recent_threads: "Fils recents"
     no_groups:
       show_all: Benvingut! Encara no sou membre de cap grup. <a href="/explore">Busqueu grups públics</a> o <a href="/g/new">Creeu un grup </a>.
       show_muted: No teniu cap fil silenciat perquè no sou membres de cap grup.
@@ -1329,8 +1330,6 @@ ca:
     confirm: 'Elimina el comentari'
   contact_message_form:
     title: "Com et podem ajudar?"
-    read_the_manual: |
-        Heu visitat el nostre<a href="{{link}}" target="_blank">manual d'ajuda</a>? S'actualitza regularment amb les preguntes més freqüents i les seves respostes.
     contact_us_email: "També ens podeu escriure un correu electrònic: <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Contacteu amb nosaltres'
     name_label: 'El vostre nom'
@@ -1892,8 +1891,6 @@ ca:
     enter_your_password: "Introduïu la contrasenya per continuar"
     check_spam_folder: Si no rebeu el correu aviat, comproveu la carpeta del correu brossa
     sign_up_helptext: Completeu aquest formulari per crear un compte d'usuari
-    i_accept: "Accepto els <a href='{{termsUrl}}' target='_blank'>termes del servei</a> i la <a href='{{privacyUrl}}' target='_blank'>política de privacitat</a>"
-    newsletter_label: "Vull rebre el <a href='https://help.loomio.org/en/newsletter/' target='_blank'>butlletí de Loomio</a>"
     name_placeholder: El teu nom
     name_required: 'Introduïu un nom '
     terms_required: Heu d'acceptar els termes de servei

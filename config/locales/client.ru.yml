@@ -74,6 +74,7 @@ ru:
   timezones:
     local: местное время ({{value}})
   common:
+    version: Версия
     history: История
     add: Добавить
     you: Ты
@@ -474,6 +475,7 @@ ru:
     edit: Редактировать
   dashboard_page:
     aria_label: 'Кабинет'
+    recent_threads: "Последние темы"
     mark_as_read: Отметить прочитанным
     dismiss: Отклонить
     filtering:

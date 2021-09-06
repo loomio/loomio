@@ -1,4 +1,19 @@
 zh_TW:
+  doctypes:
+    youtube_video: YouTube 影片
+    image: 圖片
+    pdf: PDF
+    excel: Excel 試算表
+    document: 文件
+    csv: CSV 檔案
+    video: 影片
+    text: 文字檔
+    google_doc: Google 文件
+    google_sheet: Google 試算表
+    google_drive: Google 雲端硬碟
+    pull_request: 拉取請求
+    trello_board: Trello 看板
+    trello_card: Trello 卡片
   loomio_onboarding:
     group_progress_card:
       title: 讓我們開始吧！
@@ -123,6 +138,7 @@ zh_TW:
   timezones:
     local: 本地時間 ({{value}})
   common:
+    version: 版本
     none: 無
     empty: 空
     no_results_found: 找不到結果
@@ -240,6 +256,8 @@ zh_TW:
       fork: 分支
       apply: 套用
       add_people: 新增夥伴
+      zoom: Zoom
+      align: 對齊
     formatting_help:
       label: '格式化'
       title: '學習如何使用 Markdown 來格式化您的文字'
@@ -559,6 +577,7 @@ zh_TW:
     outcome_announced: "<strong>{{name}}</strong> 分享了成果：<strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> 已參與：<strong>{{title}}</strong>"
     group_announced: "<strong>{{name}}</strong> 邀請您加入群組 <strong>{{title}}</strong>"
+    outcome_review_due: "是時候審閱結果了：<strong>{{title}}</strong>"
   discussion_fork_actions:
     helptext: 選取您想要移動到其他討論串的項目
     move: 移動
@@ -595,7 +614,6 @@ zh_TW:
     privacy_private: '此討論串只會被「{{group}}」群組的成員看到。'
     privacy_organisation: '此討論串只會被「{{parent}}」群組的成員以及「{{group}}」群組的成員看到。'
     fork_notice: '新的討論串將會從 {{title}} 中包含 {{count}} 來建立'
-    one_person_notified: 將通知 1 個人
     notify_group: 通知群組
   announcement:
     send_discussion: 傳送討論串
@@ -686,6 +704,9 @@ zh_TW:
       notified: '{{notified}} 個夥伴將會被通知。'
       notified_singular: '將通知 1 個人。'
       notified_none: '不會通知任何人。'
+      added: '將會新增 {{count}} 個夥伴。'
+      added_singular: '將會新增 1 個人。'
+      added_none: '不會新增任何人。'
       group_title: '{{name}}（{{count}} 個夥伴）'
       visible_to_group: '任何在 {{group}} 中的人都可以看到此討論串。'
       visible_to_guests: '僅被邀請的夥伴才能看到此討論串。'
@@ -1269,6 +1290,10 @@ zh_TW:
     unread_count: "{{count}} 個未讀"
   dashboard_page:
     aria_label: '儀表板'
+    polls_to_vote_on: "投票表決"
+    recent_polls: "近期投票"
+    current_polls: "目前投票"
+    recent_threads: "最近的討論串"
     no_groups:
       show_all: 歡迎！您還不是任何群組的成員。<a href="/explore">瀏覽公開群組</a>或<a href="/g/new">啟動群組</a>。
       show_muted: 您沒有任何已靜音的討論串，因為您不是任何群組的成員。
@@ -1443,9 +1468,11 @@ zh_TW:
     question: '您確定要刪除這個意見嗎？'
     confirm: '刪除意見'
   contact_message_form:
+    alt_title: "聯絡 Loomio 支援"
     title: "嗨，您好！我們可以怎麼協助您？"
+    this_is_for: 這是銷售、訓練或訂閱諮詢，或是尋求使用 Loomio 支援的好地方。
     read_the_manual: |
-        您已經看過我們的<a href="{{link}}" target="_blank">說明手冊</a>了嗎？我們會定期更新常見問題與答案。
+        您知道我們的<a href="{{link}}" target="_blank">說明手冊</a>包含了常見問題解答以及在 Loomio 上促進討論與決策的詳細指南嗎？
     contact_us_email: "您也可以寄電子郵件給我們：<a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: '聯絡我們'
     name_label: '您的大名'
@@ -1464,6 +1491,7 @@ zh_TW:
         我們的支援團隊會說英語，並會在必要的時候使用 Google 翻譯來翻譯您的訊息。<br />
         我們的目標是在24小時內回覆所有訊息。
     success: "感謝您的訊息，{{name}}。我們將會在收到訊息後很快地回覆您。"
+    success_via_email: "感謝您的訊息，{{name}}。我們將於24小時內透過電子郵件回覆。"
   hint:
     context: '使用論述控制板的小提示'
     discussion: '發起一段激動人心討論的小提示'
@@ -1593,6 +1621,7 @@ zh_TW:
     all: '全部'
     open: '公開'
     closed: '封閉'
+    need_vote: '需要投票'
     no_polls: '找不到投票'
   group_files_panel:
     no_files: 找不到檔案
@@ -1636,6 +1665,8 @@ zh_TW:
     specified_voters_only_false_group: 在群組中的任何人
     specified_voters_only_false_discussion: 在討論串中的任何人
     invite_people_next: 在您開始 {{poll_type}} 後，您可以選擇要邀請誰來投票
+    shuffle_options:
+      title: 投票者按隨機順序檢視選項
     multiple_choice:
       title: 多選
       helptext_on: 在選取時，參與者可以選取多個選項。
@@ -1661,6 +1692,8 @@ zh_TW:
     can_respond_maybe:
       title: 投票者可以回應「如果需要的話」
       helptext_on: 投票者可以將次數表示為「如果需要的話」
+    allow_long_reason:
+      title: 允許投票「理由」超過 500 個字元
     hide_results_until_closed:
       title: 隱藏結果直到關閉
       helptext_on: 在投票關閉前，不要顯示有多少人已投票
@@ -1752,9 +1785,14 @@ zh_TW:
     start: 啟動
     start_poll_type: 開始 {{poll_type}}
     share_poll_type: 分享 {{poll_type}}
+    who_may_vote: 誰可以在此 {{poll_type}} 中投票？
     update: 更新
+    add_voters: 新增投票者
+    notify_invitees: 傳送通知
     loomio_school_link: |
         <p>在 <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio 說明</a>取得更多資訊。</p>
+    no_notifications_warning: 投票者將不會被通知。如果您正在執行大量投票，且計畫在稍後通知每個人的話，這會非常有用。
+    count_voters_added: '已新增 {{count}} 個投票者'
   poll_proposal_form:
     tool_tip_expanded: |
         <p>提案是用來尋求關於一段陳述或是行動方針共識的工具。</p>
@@ -1873,6 +1911,8 @@ zh_TW:
     ranked_choice_updated: 已更新排序選擇
     rank: 排名
     points: 點
+    average: 平均
+    pct_of_points: '% 點數'
   poll_meeting_time_field:
     add_time_slot: 新增時間欄位
     new_time_slot: 新時間欄位
@@ -1905,6 +1945,7 @@ zh_TW:
     agree_disagree: '同意，不同意'
     agree_abstain_disagree: '同意、棄權、反對'
     consent_abstain_object: '同意、棄權、反對'
+    consent_object: '同意、反對'
     no_voting: '沒有投票'
   poll_count_options:
     'yes': '是'
@@ -1950,10 +1991,12 @@ zh_TW:
       new_comment: "{{actor}} 已留言。 {{when}}"
       poll_created: "{{actor}} 開始了 {{pollType}}。 {{when}}"
       stance_created: "{{actor}} 已投票。 {{when}}"
+      stance_updated: "{{actor}} 編輯了他們的投票。{{when}}"
       outcome_created: "{{actor}} 分享了成果。 {{when}}"
       poll_expired: "{{pollType}} 已關閉。 {{when}}"
     removed: "項目已移除"
     deleted_group: "已刪除的群組"
+    invite_only_thread: "僅邀請的討論串"
     comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 在回覆 <strong>{{title}}</strong>"
     discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 已編輯討論串標題"
     discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 已編輯討論串內容"
@@ -1974,6 +2017,7 @@ zh_TW:
     poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 已新增選項至 {{polltype}}"
     poll_expired: "{{polltype}} 已關閉"
     stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 已投票：<strong>{{title}}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> 更新了他們的投票於：<strong>{{title}}</strong>"
     event_removed: "從討論串中移除"
   poll_common_subscribe_form:
     receive_updates_title: 您的投票已記錄
@@ -2020,8 +2064,8 @@ zh_TW:
     enter_your_password: "輸入您的密碼以繼續"
     check_spam_folder: 如果電子郵件未在短時間內抵達，請檢查您的垃圾信資料夾。
     sign_up_helptext: 請完成此表單以建立使用者帳號
-    i_accept: "我接受<a href='{{termsUrl}}' target='_blank'>服務條款</a>與<a href='{{privacyUrl}}' target='_blank'>隱私權政策</a>"
-    newsletter_label: "我想要收到 <a href='https://help.loomio.org/en/newsletter/' target='_blank'>Loomio 電子報</a>"
+    i_accept_all: "我接受 {{termsLink}} 與 {{privacyLink}}"
+    newsletter_label: "我想要收到 {{link}}"
     name_placeholder: 您的大名
     name_required: 請輸入名稱
     terms_required: 您必須同意服務條款

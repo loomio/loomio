@@ -15,6 +15,9 @@ zh_TW:
     400:
       title: 錯誤的請求
       body: 抱歉，我們無法理解該請求
+    401:
+      title: 未經授權
+      body: 您無權存取此頁面。您可能需要登入。
     403:
       title: 禁止
       body: 您無權存取此頁面。您可能需要登入。
@@ -90,6 +93,7 @@ zh_TW:
       title: 標題
       author: 作者
       email: 電子郵件
+      user_id: 使用者 ID
       created_at: 建立於
       closing_at: 定案於
       closed_at: 定案於
@@ -174,7 +178,9 @@ zh_TW:
       resend: 這個連結將會在24小時後過期且僅可使用一次。
     login:
       subject: 登入到 %{site_name}
-      intro: 嗨 %{name}，這是用來登入您的 %{site_name} 帳號的連結。
+      intro: 嗨 %{name}，這是您用來登入 %{site_name} 的連結。
+      intro_html: |
+          嗨 %{name}，<br>這是您用來登入 %{site_name} 的連結：
       login: 以 %{name} 的身份登入
     reactivate:
       subject: 重新啟用您的 %{site_name} 帳號
@@ -208,7 +214,7 @@ zh_TW:
       intro: "%{who} 在 %{group}裡發布了一則公告："
     by_who: '%{person}'
     reply_to_this_discussion: 回應此討論串
-    value_proposition: "%{site_name} 是一個讓群組共同做出決策的地方"
+    value_proposition: "%{site_name} 是一個討論與做出決定的地方"
     view_group: 檢視群組
     to_join_group:
       subject: "%{member} 已邀請您加入在 %{site_name} 上的 %{group_name}"

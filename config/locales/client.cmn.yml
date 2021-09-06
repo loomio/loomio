@@ -77,6 +77,7 @@ cmn:
   timezones:
     local: 当地时间 ({{value}})
   common:
+    version: 版本
     view: 查看
     history: 历史
     option: 选项
@@ -778,6 +779,7 @@ cmn:
     unread_count: "{{count}} 个未读"
   dashboard_page:
     aria_label: '仪表板'
+    recent_threads: "最近的话题"
     no_groups:
       show_all: 欢迎！您还不是任何群组的成员。<a href="/explore">浏览公开群组</a>或<a href="/g/new">发起群组</a>。
       show_muted: 您没有任何已静音的话题，因为您不是任何群组的成员。

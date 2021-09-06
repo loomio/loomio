@@ -1,4 +1,19 @@
 es:
+  doctypes:
+    youtube_video: Video Youtube
+    image: Imagen
+    pdf: PDF
+    excel: Hoja de cálculo Excel
+    document: Documento
+    csv: Fichero CSV
+    video: Video
+    text: Archivo texto
+    google_doc: Documento Google
+    google_sheet: Hoja de cálculo Google
+    google_drive: Google Drive
+    pull_request: Solicitud de sondeo
+    trello_board: Tablero Trello
+    trello_card: Tarjeta Trello
   loomio_onboarding:
     group_progress_card:
       title: Primeros pasos
@@ -123,6 +138,7 @@ es:
   timezones:
     local: Hora local ({{value}})
   common:
+    version: Versión
     none: Ninguno
     empty: Vacío
     no_results_found: No hemos encontrado nada
@@ -240,6 +256,8 @@ es:
       fork: Bifurcar
       apply: Enviar una solicitud
       add_people: Añadir gente
+      zoom: Zoom
+      align: Alinear
     formatting_help:
       label: 'Formato '
       title: 'Aprenda a usar Markdown para dar formato a su texto'
@@ -595,7 +613,6 @@ es:
     privacy_private: 'Los hilos solo serán visibles para integrantes de {{group}}.'
     privacy_organisation: 'Los hilos serán visibles para integrantes de {{parent}} e integrantes de {{group}}.'
     fork_notice: 'Un nuevo hilo será creado con {{count}} items de {{title}}'
-    one_person_notified: 1 persona será notificada
     notify_group: Grupo de notificación
   announcement:
     send_discussion: Manda hilo
@@ -686,6 +703,9 @@ es:
       notified: '{{notified}} gente será notificada.'
       notified_singular: '1 persona será notificada'
       notified_none: 'Nadie será notificado.'
+      added: '{{count}} personas serán añadidas'
+      added_singular: '1 persona será añadida'
+      added_none: 'Nadie será añadido'
       group_title: '{{name}} ({{count}} personas)'
       visible_to_group: 'Cualquiera en {{group}} será capaz de ver este hilo.'
       visible_to_guests: 'Solamente la gente invitada puede ver este hilo.'
@@ -1269,6 +1289,10 @@ es:
     unread_count: "{{count}} no leídos"
   dashboard_page:
     aria_label: 'Escritorio'
+    polls_to_vote_on: "Sondeos para votar"
+    recent_polls: "Sondeos recientes"
+    current_polls: "Sondeos actuales"
+    recent_threads: "Hilos recientes"
     no_groups:
       show_all: Bienvenido! Todavía no eres miembro de ningún grupo. <a href="/explore"> Explora grupos públicos</a> o <a href="/g/new"> comienza un grupo</a>.
       show_muted: No tienes ningún hilo silenciado porque no eres miembro de ningún grupo.
@@ -1442,9 +1466,11 @@ es:
     question: '¿Estás seguro de que quieres borrar este comentario?'
     confirm: 'Borrar comentario'
   contact_message_form:
+    alt_title: "Contacta soporte al usuario"
     title: "¡Hola! ¿Cómo podemos ayudarle?"
+    this_is_for: Este es un sitio estupendo para ventas, formación o preguntas de subscripciones o para pedir ayuda usando Loomio
     read_the_manual: |
-        ¿Has visto nuestro <a href="{{link}}" target="_blank">Manual de Ayuda</a>? Lo actualizamos a menudo con preguntas y respuestas más comunes.
+        ¿Sabías que nuestro <a href="{{link}}" target="_blank">Manual de Ayuda</a>contiene FAQ así como guías detalladas para facilitar debates y decisiones en Loomio?
     contact_us_email: "También puedes enviarnos un email: <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Contáctanos'
     name_label: 'Su nombre'
@@ -1463,6 +1489,7 @@ es:
         Nuestro equipo de apoyo habla Inglés y si fuera necesario traducirá tu mensaje con el Traductor de Google. <br />
         Esperamos responder todos nuestros mensajes en el espacio de 24 horas.
     success: "Gracias por tu mensaje, {{name}}. Nos pondremos en contacto contigo."
+    success_via_email: "Gracias por tu mensaje, {{name}}. Responderemos por email en el plazo de 24 horas."
   hint:
     context: 'Consejos para usar el panel de contexto'
     discussion: 'Consejos para empezar una discusión participativa'
@@ -1592,6 +1619,7 @@ es:
     all: 'Todos/as'
     open: 'Abierto'
     closed: 'Cerrado '
+    need_vote: 'Se necesita votar'
     no_polls: 'No se encontraron encuestas'
   group_files_panel:
     no_files: No se encontraron archivos
@@ -1635,6 +1663,8 @@ es:
     specified_voters_only_false_group: Cualquiera en el grupo
     specified_voters_only_false_discussion: Cualquiera en el hilo
     invite_people_next: Puedes elegir a quien se le invita a votar después de empezar {{poll_type}}
+    shuffle_options:
+      title: Votantes ven opciones en un orden al azar
     multiple_choice:
       title: Opción multiple
       helptext_on: Si es seleccionado, los participantes podrán seleccionar múltiples opciones
@@ -1660,6 +1690,8 @@ es:
     can_respond_maybe:
       title: Los votantes pueden responder 'de ser necesario'
       helptext_on: Los votantes pueden indicar tiempos como 'de ser necesario'
+    allow_long_reason:
+      title: Permitir que la "razón" del voto tenga más de 500 caracteres
     hide_results_until_closed:
       title: Oculta resultados hasta el cierre
       helptext_on: No muestra como la gente ha votado hasta que se cierre el sondeo
@@ -1751,9 +1783,14 @@ es:
     start: Iniciar
     start_poll_type: Comenzar {{poll_type}}
     share_poll_type: Compartir {{poll-type}}
+    who_may_vote: ¿Quién debería votar en este {{poll_type}}?
     update: Actualizar
+    add_voters: Añadir votantes
+    notify_invitees: Envía notificaciones
     loomio_school_link: |
         <p>Descubre más en <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Ayuda Loomio</a>.</p>
+    no_notifications_warning: Los votantes serán notificados. Esto es útil si están llevando a cabo muchos sondeos y planeas notificar a todo el mundo más adelante.
+    count_voters_added: '{{count}} votantes añadidos'
   poll_proposal_form:
     tool_tip_expanded: |
         <p>Una propuesta es una herramienta para buscar el acuerdo colectivo sobre una declaración o curso de acción</p>
@@ -1872,6 +1909,8 @@ es:
     ranked_choice_updated: 'Opción priorizada actualizada '
     rank: Rango
     points: Puntos
+    average: Media
+    pct_of_points: '0% de puntos'
   poll_meeting_time_field:
     add_time_slot: Añadir intervalo de tiempo
     new_time_slot: Nuevo horario
@@ -1904,6 +1943,7 @@ es:
     agree_disagree: 'De acuerdo, en desacuerdo'
     agree_abstain_disagree: 'De acuerdo, abstenerse, en desacuerdo'
     consent_abstain_object: 'Consentir, abstenerse, objeción'
+    consent_object: 'Consentir, objeción'
     no_voting: 'No votar'
   poll_count_options:
     'yes': 'Si'
@@ -1949,10 +1989,12 @@ es:
       new_comment: "{{actor}} comentado. {{when}}"
       poll_created: "{{actor}} ha iniciado un {{pollType}}. {{when}}"
       stance_created: "{{actor}} ha votado. {{when}}"
+      stance_updated: "{{actor}} han editado su voto. {{when}}"
       outcome_created: "{{actor}} ha compartido un  resultado.{{when}}"
       poll_expired: "{{pollType}} cerrado. {{when}}"
     removed: "Elemento eliminado"
     deleted_group: "Grupo eliminado"
+    invite_only_thread: "Hilo sólo con invitación"
     comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>en respuesta a <strong>{{título}}</strong>"
     discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>editó el título del hilo"
     discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>editó el contexto del hilo"
@@ -1973,6 +2015,7 @@ es:
     poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>editó opciones al {{polltype}}"
     poll_expired: "{{polltype}} cerrado"
     stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>votó en: <strong>{{title}}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>editó su voto en: <strong>{{title}}</strong>"
     event_removed: "Eliminado del hilo"
   poll_common_subscribe_form:
     receive_updates_title: Su voto ha sido enviado
@@ -2019,8 +2062,8 @@ es:
     enter_your_password: "Introduce tu contraseña para continuar"
     check_spam_folder: Si no te llega el email pronto consulta la carpeta de correo spam.
     sign_up_helptext: Porfavor completa este formulario para crear una cuenta de usuario
-    i_accept: "Acepto los <a href='{{termsUrl}}' target='_blank'>Términos del servicio</a> y la <a href='{{privacyUrl}}' target='_blank'>Política de privacidad</a>"
-    newsletter_label: "Quiero recibir la <a href='https://help.loomio.org/en/newsletter/' target='_blank'>Loomio newsletter</a>"
+    i_accept_all: "Acepto el {{termsLink}} y {{privacyLink}}"
+    newsletter_label: "Quiero recibir el {{link}}"
     name_placeholder: Su nombre
     name_required: Por favor ingresa un nombre
     terms_required: 'Debes aceptar los Términos del Servicio '

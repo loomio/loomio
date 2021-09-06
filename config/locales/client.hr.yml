@@ -2,6 +2,7 @@ hr:
   subscription_status:
     members: "Članovi"
   common:
+    version: Verzija
     privacy:
       public: 'Javno'
     models:

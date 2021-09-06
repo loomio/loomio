@@ -32,6 +32,7 @@ cs:
   timezones:
     local: Místní čas ({{value}})
   common:
+    version: Verze
     no_results_found: Žádné výsledky nenalezeny
     you: Vy
     expand: Rozbalit
@@ -510,6 +511,7 @@ cs:
     edit: Upravit
   dashboard_page:
     aria_label: 'Ovládací panel'
+    recent_threads: "Aktuální vlákna"
     no_threads:
       show_all: Nemáte žádná aktuální vlákna
       show_proposals: Žádné návrhy nejsou momentálně aktivní.

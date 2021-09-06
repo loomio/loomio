@@ -109,6 +109,7 @@ pl:
   timezones:
     local: Czas lokalny ({{value}})
   common:
+    version: Wersja
     empty: Pusty
     no_results_found: Nie znaleziono żadnych plików.
     view: Podgląd
@@ -573,7 +574,6 @@ pl:
     privacy_private: 'Wątek będzie widoczny tylko dla osób z grupy {{group}}.'
     privacy_organisation: 'Wątek będzie widoczny dla osób z {{parent}} i osób z grupy {{group}}.'
     fork_notice: 'Nowy wątek zostanie utworzony z {{count}} elementów z {{title}}'
-    one_person_notified: 1 osoba zostanie powiadomiona
     notify_group: Powiadom grupę
   announcement:
     send_discussion: Wyślij wątek
@@ -1171,6 +1171,7 @@ pl:
     unread_count: "{{count}} nieprzeczytane"
   dashboard_page:
     aria_label: 'Pulpit'
+    recent_threads: "Najnowsze wątki"
     no_groups:
       show_all: Witamy! Nie jesteś jeszcze członkiem żadnej grupy. <a href="/explore">Przeglądaj grupy publiczne</a> lub <a href="/g/new">Utwórz grupę</a>.
       show_muted: Nie masz wyciszonych wątków, ponieważ nie jesteś członkiem żadnej grupy.
@@ -1341,8 +1342,6 @@ pl:
     confirm: 'Usuń komentarz'
   contact_message_form:
     title: "Cześć! Jak możemy pomóc?"
-    read_the_manual: |
-        Znasz nasze <a href="{{link}}" target="_blank">Centrum Pomocy</a>? Aktualizujemy je regularnie o często zadawane pytania i odpowiedzi.
     contact_us_email: "Możesz również wysłać do nas wiadomość e-mail: <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Kontakt z nami'
     name_label: 'Twoja nazwa'
@@ -1892,8 +1891,6 @@ pl:
     enter_your_password: "Wprowadź hasło, aby kontynuować"
     check_spam_folder: Jeśli nie widzisz wiadomości e-mail z kodem, sprawdź folder spam.
     sign_up_helptext: 'Uzupełnij ten formularz w celu stworzenia konta użytkownika. '
-    i_accept: "Akceptuję <a href='{{termsUrl}}' target='_blank'>Warunki Świadczenia Usług</a> oraz <a href='{{privacyUrl}}' target='_blank'>Politykę prywatności</a>"
-    newsletter_label: "Chcę otrzymywać <a href='https://help.loomio.org/en/newsletter/' target='_blank'>newsletter Loomio</a>"
     name_placeholder: Twoja nazwa
     name_required: Wpisz swoje imię
     terms_required: Musisz wyrazić zgodę na Warunki Świadczenia Usług

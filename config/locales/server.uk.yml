@@ -108,7 +108,6 @@ uk:
       resend: Термін дії цього посилання закінчиться через 24 години і воно може бути використано лише один раз.
     login:
       subject: Увійтни до %{site_name}
-      intro: Вітаємо %{name}, ось посилання для входу до вашого облікового запису %{site_name}.
       login: Увійти як %{name}
     reactivate:
       subject: Відновити обліковий запис %{site_name}
@@ -142,7 +141,6 @@ uk:
       intro: "%{who} опублікував оголошення в %{group}:"
     by_who: користувачем %{person}
     reply_to_this_discussion: Відповісти в цьому обговоренні
-    value_proposition: "%{site_name} це місце для спільного прийняття рішень в групах"
     view_group: Переглянути групу
     to_join_group:
       subject: "%{member} запросив(ла) вас долучитись до %{group_name} на %{site_name}"
