@@ -58,7 +58,6 @@ body { max-width: 600px; font-family: "Helvetica Neue", Helvetica, Arial, sans-s
 
 .base-mailer__avatar {
   border-radius: 50%;
-  object-fit: contain;
 }
 
 .base-mailer__avatar-initials {
@@ -76,9 +75,11 @@ body { max-width: 600px; font-family: "Helvetica Neue", Helvetica, Arial, sans-s
 
 .base-mailer__avatar-image {
   border-radius: 50%;
-  width: auto;
-  height: auto;
+  object-fit: contain;
+  width: 100%;
   max-width: 100%;
+  height: auto;
+  max-height: 100%;
 }
 
 .invite-people-mailer {
