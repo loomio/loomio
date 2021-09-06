@@ -17,7 +17,7 @@ module Dev::NintiesMoviesHelper
                               avatar_kind: 'uploaded',
                               email_verified: true)
     @patrick.uploaded_avatar.attach io: File.new("#{Rails.root}/spec/fixtures/images/patrick.png"), filename: 'patrick.jpg'
-    @jennifer.update(avatar_kind: :uploaded)
+    @patrick.update(avatar_kind: :uploaded)
     @patrick
   end
 
