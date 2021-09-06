@@ -101,6 +101,14 @@ class GroupSerializer < ApplicationSerializer
     current_user_membership && current_user_membership.admin
   end
 
+  def logo_url
+    object.logo_url || (parent && parent.logo_url) || nil
+  end
+
+  def cover_url
+    object.cover_url || (parent && parent.cover_url) || nil
+  end
+
   def tag_names
     object.info['tag_names'] || []
   end
