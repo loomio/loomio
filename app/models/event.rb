@@ -76,13 +76,6 @@ class Event < ApplicationRecord
     event
   end
 
-  def self.bulk_publish!(eventables, **args)
-    raise 'i hope we dont use this'
-    Array(eventables).map { |eventable| build(eventable, **args) }
-                     .tap { |events| import(events) }
-                     .tap { |events| events.map(&:trigger!) }
-  end
-
   def self.build(eventable, **args)
     new({
       kind:       name.demodulize.underscore,
@@ -216,10 +209,6 @@ class Event < ApplicationRecord
     else
       original_parent
     end
-  end
-
-  def recipient_message=(val)
-    self.custom_fields[:recipient_message] = strip_tags(val)
   end
 
   def email_recipients

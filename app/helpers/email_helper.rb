@@ -33,7 +33,7 @@ module EmailHelper
 
   def render_plain_text(text, format = 'md')
     return "" unless text
-    ActionController::Base.helpers.strip_tags(render_rich_text(text, format))
+    ActionController::Base.helpers.strip_tags(render_rich_text(text, format)).gsub(/(?:\n\r?|\r\n?)/, '<br>')
   end
 
   def replace_iframes(str)
