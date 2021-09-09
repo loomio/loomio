@@ -29,9 +29,28 @@ module Dev::FakeDataHelper
 
   # todo fake_group ?
   def fake_group(args = {})
-    name = Faker::Company.name
-    Group.new({name: name, handle: name.parameterize,
-      features: {use_polls: true, enable_communities: true}}.merge(args))
+    defaults = {
+      name: Faker::Company.name,
+      description: Faker::Marketing.buzzwords
+    }
+
+    values = defaults.merge(args)
+    values[:handle] = values[:name].parameterize
+    group = Group.new(values)
+    group.tags = [fake_tag]
+
+    group.logo.attach(io: File.open(Rails.root.join('public/brand/icon_sky_300h.png')), filename: 'loomiologo.png')
+    group.cover_photo.attach(io: File.open(Rails.root.join('public/brand/logo_sky_256h.png')), filename: 'loomiocover.png')
+
+    group
+  end
+
+  def fake_tag(args = {})
+    defaults = {
+      name: Faker::Space.planet,
+      color: Faker::Color.hex_color
+    }
+    Tag.new(defaults.merge(args))
   end
 
   def fake_discussion(args = {})
