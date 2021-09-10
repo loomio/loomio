@@ -3,13 +3,23 @@ require 'rails_helper'
 include Dev::FakeDataHelper
 
 describe 'DemoService' do
-  let(:actor) { create(:user) }
+  let(:actor) { saved fake_user }
   let(:group) { saved(fake_group) }
+  let(:author) { saved(fake_user) }
+  let(:poll) { fake_poll(group: group, discussion: discussion) }
+  let(:discussion) { fake_discussion(author: author, group: group) }
+  let(:new_discussion_event) { fake_new_discussion_event(discussion) }
+  let(:poll_created_event) { fake_poll_created_event(poll) }
 
   describe 'clone_group' do
+    before do
+      group.add_admin! author
+      new_discussion_event.save!
+      poll_created_event.save!
+    end
 
     it 'creates a new group' do
-      clone = DemoService.clone_group(group: group, actor: actor)
+      clone = DemoService.create_clone_group_for_actor(group, actor)
 
       %w[
         name
@@ -52,6 +62,31 @@ describe 'DemoService' do
       expect(clone.subscription.plan).to eq 'demo'
 
       expect(clone.creator).to eq actor
+
+      expect(clone.discussions.length).to eq 1
+      expect(clone.polls.length).to eq 1
+    end
+
+    it 'creates a clone discussion' do
+      clone = DemoService.new_clone_discussion(discussion)
+      clone.save!
+      clone.reload
+      expect(clone.title).to eq discussion.title
+      expect(clone.description).to eq discussion.description
+      expect(clone.description_format).to eq discussion.description_format
+      expect(clone.items.count).to eq discussion.items.count
+      expect(clone.comments.count).to eq discussion.comments.count
+      expect(clone.polls.count).to eq discussion.polls.count
+    end
+
+    it 'creates a clone poll' do
+      clone = DemoService.new_clone_poll(poll)
+      clone.save!
+      clone.reload
+      expect(clone.title).to eq poll.title
+      expect(clone.details).to eq poll.details
+      expect(clone.details_format).to eq poll.details_format
+      expect(clone.stances.count).to eq poll.stances.count
     end
   end
 end

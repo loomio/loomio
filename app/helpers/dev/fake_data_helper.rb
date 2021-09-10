@@ -39,8 +39,15 @@ module Dev::FakeDataHelper
     group = Group.new(values)
     group.tags = [fake_tag]
 
-    group.logo.attach(io: File.open(Rails.root.join('public/brand/icon_sky_300h.png')), filename: 'loomiologo.png')
-    group.cover_photo.attach(io: File.open(Rails.root.join('public/brand/logo_sky_256h.png')), filename: 'loomiocover.png')
+    # puts 'attaching'
+    # group.logo.attach(
+    #   io: URI.open(Rails.root.join('public/brand/icon_sky_300h.png')),
+    #   filename: 'loomiologo.png',
+    #   identify: false,
+    #   content_type: 'image/png'
+    # )
+    # puts 'attached'
+    # group.cover_photo.attach(io: URI.open(Rails.root.join('public/brand/logo_sky_256h.png')), filename: 'loomiocover.png')
 
     group
   end
@@ -59,6 +66,24 @@ module Dev::FakeDataHelper
                     private: true,
                     group: fake_group,
                     author: fake_user}.merge(args))
+  end
+
+
+  def fake_new_discussion_event(discussion = fake_discussion)
+    Events::NewDiscussion.new(
+      user: discussion.author,
+      kind: 'new_discussion',
+      eventable: discussion
+    )
+  end
+
+  def fake_poll_created_event(poll = fake_poll)
+    Events::PollCreated.new(
+      user: poll.author,
+      kind: 'poll_created',
+      eventable: poll,
+      discussion: poll.discussion
+    )
   end
 
   def fake_membership(args = {})

@@ -1,5 +1,15 @@
 class DemoService
-  def self.clone_group(group: , actor: )
+  @cache = {}
+
+  def self.create_clone_group_for_actor(group, actor)
+    clone_group = new_clone_group(group)
+    clone_group.creator = actor
+    clone_group.subscription = Subscription.new(plan: 'demo', owner: actor)
+    clone_group.save!
+    clone_group.reload
+  end
+
+  def self.new_clone_group(group)
     copy_fields = %w[
       name
       description
@@ -18,6 +28,8 @@ class DemoService
       members_can_add_guests
       members_can_delete_comments
       link_previews
+      created_at
+      updated_at
     ]
 
     required_values = {
@@ -29,26 +41,20 @@ class DemoService
       listed_in_explore: false
     }
 
-    clone = new_clone(group, copy_fields, required_values)
+    clone_group = new_clone(group, copy_fields, required_values)
 
-    clone.tags = group.tags.map do |t|
-      Tag.new({ name: t.name, color: t.color, priority: t.priority })
-    end
+    clone_group.tags = group.tags.map { |t| new_clone_tag(t) }
 
-    clone.creator = actor
-    clone.subscription = Subscription.new(plan: 'demo')
-    clone.discussions = group.discussions.map {|d| clone_discussion(d) }
-    clone.polls = group.polls.map {|p| clone_poll(p) }
 
-    clone.save!
-    clone.reload
-    clone
+    clone_group.discussions = group.discussions.map {|d| new_clone_discussion(d) }
+    clone_group.polls = group.polls.map {|p| new_clone_poll(p) }
+
+    clone_group
   end
 
-  def self.clone_discussion(discussion)
+  def self.new_clone_discussion(discussion)
     copy_fields = %w[
       author_id
-      group_id
       title
       description
       description_format
@@ -58,31 +64,111 @@ class DemoService
       newest_first
       content_locale
       link_previews
+      created_at
+      updated_at
     ]
-
     required_values = {
       private: true
     }
 
-    clone = Discussion.new
+    clone_discussion = new_clone(discussion, copy_fields, required_values)
 
-    copy_fields.each do |field|
-      clone[field] = discussion[field]
-    end
+    created_event = new_clone_event(discussion.created_event)
+    created_event.eventable = clone_discussion
+    clone_discussion.events << created_event
+    clone_discussion.items = discussion.items.map { |event| new_clone_event_and_eventable(event) }
+    clone_discussion.polls = discussion.polls.map {|p| new_clone_poll(p) }
 
-    required_values.each_pair do |key, value|
-      clone[key] = value
-    end
+    clone_discussion
+  end
 
-      kind: 'created_event',
-      user: actor
-    )
+  def self.new_clone_poll(poll)
+    copy_fields = %w[
+      author_id
+      title
+      details
+      closing_at
+      closed_at
+      poll_type
+      multiple_choice
+      voter_can_add_options
+      anonymous
+      details_format
+      anyone_can_participate
+      hide_results_until_closed
+      stances_in_discussion
+      discarded_at
+      discarded_by
+      specified_voters_only
+      notify_on_closing_soon
+      content_locale
+      link_previews
+      shuffle_options
+      allow_long_reason
+      created_at
+      updated_at
+    ]
 
-    item_copy_fields = %w[
+    required_values = {}
+
+    clone_poll = new_clone(poll, copy_fields, required_values)
+    clone_poll.poll_options = poll.poll_options.map {|poll_option| new_clone_poll_option(poll_option) }
+    clone_poll.stances = poll.stances.map {|stance| new_clone_stance(stance) }
+    clone_poll.outcomes = poll.outcomes.map {|outcome| new_clone_outcome(outcome) }
+    clone_poll
+  end
+
+  def self.new_clone_poll_option(poll_option)
+    copy_fields = %w[
+      name
+      priority
+      score_counts
+      voter_scores
+      total_score
+    ]
+    clone_poll_option = new_clone(poll_option, copy_fields)
+  end
+
+  def self.new_clone_stance(stance)
+    copy_fields = %w[
+      participant_id
+      reason
+      reason_format
+      latest
+      cast_at
+      revoked_at
+      admin
+      inviter_id
+      volume
+      accepted_at
+      content_locale
+      link_previews
+      created_at
+      updated_at
+    ]
+    clone_stance = new_clone(stance, copy_fields)
+  end
+
+  def self.new_clone_outcome(outcome)
+    copy_fields = %w[
+      statement
+      latest
+      statement_format
+      author_id
+      review_on
+      content_locale
+      link_previews
+      created_at
+      updated_at
+    ]
+    clone_outcome = new_clone(outcome, copy_fields)
+  end
+
+  def self.new_clone_event(event)
+    copy_fields = %w[
       user_id
       kind
       depth
-      discussion_id
       sequence_id
       position
       position_key
@@ -91,31 +177,52 @@ class DemoService
       descendant_count
       custom_fields
     ]
-
-    clone.created_event = new_clone(discussion.created_event, item_copy_fields, item_required_values)
-
-    clone.items = discussion.items.map do |item|
-      new_clone(item, item_copy_fields, item_required_values)
-      item.eventable = new_clone(item.eventable,
-    end
-
-    clone.save!
-    clone.reload
-    clone
+    new_clone(event, copy_fields)
   end
 
-  def new_clone(record, copy_fields, required_values)
-    clone = record.class.new
+  def self.new_clone_event_and_eventable(event)
+    clone_event = new_clone_event(event)
 
+    case event.eventable_type
+    when 'Poll'
+      clone_event.eventable = new_clone_poll(event.eventable)
+    when 'Comment'
+      clone_event.eventable = new_clone_comment(event.eventable)
+    when nil
+      # nothing
+    else
+      raise "unrecognised eventable_type #{event.eventable_type}"
+    end
+
+    clone_event
+  end
+
+
+  def self.new_clone_tag(tag)
+    new_clone(tag, %w[name color priority])
+  end
+
+  def self.new_clone(record, copy_fields = [], required_values = {})
+    @cache["#{record.class}#{record.id}"] ||= begin
+      clone = record.class.new
+      record_type = record.class.to_s.underscore.to_sym
+
+      clone.attributes = new_clone_attributes(record, copy_fields, required_values)
+
+      clone
+    end
+  end
+
+  def self.new_clone_attributes(record, copy_fields = [], required_values = {})
+    attrs = {}
     copy_fields.each do |field|
-      clone[field] = record[field]
+      attrs[field] = record[field]
     end
 
-    required_values.each do |key, value|
-      clone[key] = value
+    required_values.each_pair do |key, value|
+      attrs[key] = value
     end
 
-    clone
+    attrs
   end
-
 end
