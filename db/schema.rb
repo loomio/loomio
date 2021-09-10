@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_07_042638) do
+ActiveRecord::Schema.define(version: 2021_09_10_045651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -231,6 +231,16 @@ ActiveRecord::Schema.define(version: 2021_09_07_042638) do
     t.datetime "cover_photo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "demos", force: :cascade do |t|
+    t.integer "group_id", null: false
+    t.string "name", null: false
+    t.string "description"
+    t.datetime "recorded_at", null: false
+    t.boolean "published", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "discussion_readers", id: :serial, force: :cascade do |t|
