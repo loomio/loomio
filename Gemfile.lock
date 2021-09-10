@@ -564,11 +564,11 @@ GEM
     sentry-rails (4.7.1)
       railties (>= 5.0)
       sentry-ruby-core (~> 4.7.0)
-    sentry-ruby (4.7.1)
+    sentry-ruby (4.7.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       faraday (>= 1.0)
-      sentry-ruby-core (= 4.7.1)
-    sentry-ruby-core (4.7.1)
+      sentry-ruby-core (= 4.7.2)
+    sentry-ruby-core (4.7.2)
       concurrent-ruby
       faraday
     sentry-sidekiq (4.7.1)
