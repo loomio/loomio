@@ -25,7 +25,7 @@ describe 'DemoService' do
     end
 
     it 'creates a new group' do
-      clone = DemoService.create_clone_group_for_actor(group, actor)
+      clone = DemoService.new(recorded_at: 2.days.ago).create_clone_group_for_actor(group, actor)
 
       %w[
         name
@@ -60,6 +60,7 @@ describe 'DemoService' do
       expect(clone.listed_in_explore).to be false
       expect(clone.secret_token.present?).to be true
       expect(clone.secret_token).not_to eq group.secret_token
+      expect(clone.created_at).to be > DateTime.now
 
       # check that the group has copied the tags
       expect(clone.tags.map(&:id)).not_to eq group.tags.map(&:id)
@@ -75,7 +76,7 @@ describe 'DemoService' do
     end
 
     it 'creates a clone discussion' do
-      clone = DemoService.new_clone_discussion(discussion)
+      clone = DemoService.new(recorded_at: 2.days.ago).new_clone_discussion(discussion)
       clone.save!
       clone.reload
       expect(clone.title).to eq discussion.title
@@ -87,12 +88,14 @@ describe 'DemoService' do
     end
 
     it 'creates a clone poll' do
-      clone = DemoService.new_clone_poll(poll)
+      clone = DemoService.new(recorded_at: 2.days.ago).new_clone_poll(poll)
       clone.save!
       clone.reload
       expect(clone.title).to eq poll.title
       expect(clone.details).to eq poll.details
       expect(clone.details_format).to eq poll.details_format
+      expect(clone.closing_at).to be > poll.closing_at
+      expect(clone.created_at).to be > poll.created_at
 
       expect(clone.poll_options.count).to eq poll.poll_options.count
       expect(clone.poll_options.first.name).to eq poll.poll_options.first.name

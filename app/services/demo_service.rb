@@ -1,7 +1,10 @@
 class DemoService
-  @cache = {}
+  def initialize(recorded_at:)
+    @recorded_at = recorded_at
+    @cache = {}
+  end
 
-  def self.create_clone_group_for_actor(group, actor)
+  def create_clone_group_for_actor(group, actor)
     clone_group = new_clone_group(group)
     clone_group.creator = actor
     clone_group.subscription = Subscription.new(plan: 'demo', owner: actor)
@@ -9,7 +12,7 @@ class DemoService
     clone_group.reload
   end
 
-  def self.new_clone_group(group)
+  def new_clone_group(group)
     copy_fields = %w[
       name
       description
@@ -51,13 +54,12 @@ class DemoService
     clone_group
   end
 
-  def self.new_clone_discussion(discussion)
+  def new_clone_discussion(discussion)
     copy_fields = %w[
       author_id
       title
       description
       description_format
-      closed_at
       pinned
       max_depth
       newest_first
@@ -65,7 +67,11 @@ class DemoService
       link_previews
       created_at
       updated_at
+      closed_at
+      last_activity_at
+      discarded_at
     ]
+
     required_values = {
       private: true
     }
@@ -81,13 +87,16 @@ class DemoService
     clone_discussion
   end
 
-  def self.new_clone_poll(poll)
+  def new_clone_poll(poll)
     copy_fields = %w[
       author_id
-      title
-      details
       closing_at
       closed_at
+      created_at
+      updated_at
+      discarded_at
+      title
+      details
       poll_type
       multiple_choice
       voter_can_add_options
@@ -96,7 +105,6 @@ class DemoService
       anyone_can_participate
       hide_results_until_closed
       stances_in_discussion
-      discarded_at
       discarded_by
       specified_voters_only
       notify_on_closing_soon
@@ -104,48 +112,44 @@ class DemoService
       link_previews
       shuffle_options
       allow_long_reason
-      created_at
-      updated_at
     ]
 
-    required_values = {}
-
-    clone_poll = new_clone(poll, copy_fields, required_values)
+    clone_poll = new_clone(poll, copy_fields)
     clone_poll.poll_options = poll.poll_options.map {|poll_option| new_clone_poll_option(poll_option) }
     clone_poll.stances = poll.stances.map {|stance| new_clone_stance(stance) }
     clone_poll.outcomes = poll.outcomes.map {|outcome| new_clone_outcome(outcome) }
     clone_poll
   end
 
-  def self.new_clone_poll_option(poll_option)
+  def new_clone_poll_option(poll_option)
     copy_fields = %w[
       name
       priority
       score_counts
-      voter_scores
       total_score
+      voter_scores
     ]
     clone_poll_option = new_clone(poll_option, copy_fields)
     clone_poll_option.poll = existing_clone(poll_option.poll)
     clone_poll_option
   end
 
-  def self.new_clone_stance(stance)
+  def new_clone_stance(stance)
     copy_fields = %w[
+      accepted_at
+      admin
+      cast_at
+      content_locale
+      inviter_id
+      latest
+      link_previews
       participant_id
       reason
       reason_format
-      latest
-      cast_at
       revoked_at
-      admin
-      inviter_id
-      volume
-      accepted_at
-      content_locale
-      link_previews
       created_at
       updated_at
+      volume
     ]
     clone_stance = new_clone(stance, copy_fields)
     clone_stance.stance_choices = stance.stance_choices.map {|sc| new_clone_stance_choice(sc) }
@@ -153,18 +157,14 @@ class DemoService
     clone_stance
   end
 
-  def self.new_clone_stance_choice(sc)
-    copy_fields = %w[
-      score
-      created_at
-      updated_at
-    ]
+  def new_clone_stance_choice(sc)
+    copy_fields = %w[ score ]
     clone_sc = new_clone(sc, copy_fields)
     clone_sc.poll_option = existing_clone(sc.poll_option)
     clone_sc
   end
 
-  def self.new_clone_outcome(outcome)
+  def new_clone_outcome(outcome)
     copy_fields = %w[
       statement
       latest
@@ -179,7 +179,7 @@ class DemoService
     clone_outcome = new_clone(outcome, copy_fields)
   end
 
-  def self.new_clone_event(event)
+  def new_clone_event(event)
     copy_fields = %w[
       user_id
       kind
@@ -195,7 +195,7 @@ class DemoService
     new_clone(event, copy_fields)
   end
 
-  def self.new_clone_event_and_eventable(event)
+  def new_clone_event_and_eventable(event)
     clone_event = new_clone_event(event)
 
     case event.eventable_type
@@ -216,7 +216,7 @@ class DemoService
     clone_event
   end
 
-  def self.new_clone_membership(membership)
+  def new_clone_membership(membership)
     copy_fields = %w[
       user_id
       inviter_id
@@ -233,11 +233,11 @@ class DemoService
   end
 
 
-  def self.new_clone_tag(tag)
+  def new_clone_tag(tag)
     new_clone(tag, %w[name color priority])
   end
 
-  def self.new_clone(record, copy_fields = [], required_values = {})
+  def new_clone(record, copy_fields = [], required_values = {})
     @cache["#{record.class}#{record.id}"] ||= begin
       clone = record.class.new
       record_type = record.class.to_s.underscore.to_sym
@@ -248,10 +248,18 @@ class DemoService
     end
   end
 
-  def self.new_clone_attributes(record, copy_fields = [], required_values = {})
+  def new_clone_attributes(record, copy_fields = [], required_values = {})
     attrs = {}
     copy_fields.each do |field|
-      attrs[field] = record[field]
+      if record[field].nil?
+        attrs[field] = record[field]
+      elsif field.ends_with?('_at')
+        attrs[field] = record[field].to_datetime + (DateTime.now - @recorded_at.to_datetime)
+      elsif field.ends_with?('_on')
+        attrs[field] = record[field].to_date + (Date.today - @recorded_at.to_date)
+      else
+        attrs[field] = record[field]
+      end
     end
 
     required_values.each_pair do |key, value|
@@ -261,7 +269,7 @@ class DemoService
     attrs
   end
 
-  def self.existing_clone(record)
+  def existing_clone(record)
     @cache["#{record.class}#{record.id}"]
   end
 end
