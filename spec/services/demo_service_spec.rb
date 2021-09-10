@@ -8,14 +8,20 @@ describe 'DemoService' do
   let(:author) { saved(fake_user) }
   let(:poll) { fake_poll(group: group, discussion: discussion) }
   let(:discussion) { fake_discussion(author: author, group: group) }
+  let(:stance) { fake_stance(poll: poll, participant: author) }
+  let(:outcome) { fake_outcome(poll: poll, author: author) }
   let(:new_discussion_event) { fake_new_discussion_event(discussion) }
   let(:poll_created_event) { fake_poll_created_event(poll) }
+  let(:stance_created_event) { fake_stance_created_event(stance) }
+  let(:outcome_created_event) { fake_outcome_created_event(outcome) }
 
   describe 'clone_group' do
     before do
       group.add_admin! author
       new_discussion_event.save!
       poll_created_event.save!
+      stance_created_event.save!
+      outcome_created_event.save!
     end
 
     it 'creates a new group' do
@@ -63,8 +69,9 @@ describe 'DemoService' do
 
       expect(clone.creator).to eq actor
 
-      expect(clone.discussions.length).to eq 1
-      expect(clone.polls.length).to eq 1
+      expect(clone.discussions.count).to eq group.discussions.count
+      expect(clone.polls.count).to eq group.polls.count
+      expect(clone.memberships.count).to eq group.memberships.count
     end
 
     it 'creates a clone discussion' do
@@ -86,7 +93,17 @@ describe 'DemoService' do
       expect(clone.title).to eq poll.title
       expect(clone.details).to eq poll.details
       expect(clone.details_format).to eq poll.details_format
-      expect(clone.stances.count).to eq poll.stances.count
+
+      expect(clone.poll_options.count).to eq poll.poll_options.count
+      expect(clone.poll_options.first.name).to eq poll.poll_options.first.name
+
+      expect(clone.stances.count).to eq 1
+      expect(clone.stances.first.participant_id).to eq poll.stances.first.participant_id
+      expect(clone.stances.first.stance_choices.count).to eq poll.stances.first.stance_choices.count
+      expect(clone.stances.first.stance_choices.first.score).to eq poll.stances.first.stance_choices.first.score
+
+      expect(clone.outcomes.count).to eq 1
+      expect(clone.outcomes.first.statement).to eq poll.outcomes.first.statement
     end
   end
 end

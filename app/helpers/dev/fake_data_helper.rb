@@ -6,7 +6,6 @@ module Dev::FakeDataHelper
   end
 
   # only return new'd objects
-
   def fake_user(args = {})
     User.new({
       name: Faker::Name.name,
@@ -18,7 +17,6 @@ module Dev::FakeDataHelper
       experiences: {changePicture: true}
     }.merge(args))
   end
-
 
   def fake_unverified_user(args = {})
     User.new({
@@ -83,6 +81,24 @@ module Dev::FakeDataHelper
       kind: 'poll_created',
       eventable: poll,
       discussion: poll.discussion
+    )
+  end
+
+  def fake_stance_created_event(stance = fake_stance)
+    Events::StanceCreated.new(
+      user_id: stance[:participant_id],
+      kind: 'stance_created',
+      eventable: stance,
+      discussion: stance.poll.discussion
+    )
+  end
+
+  def fake_outcome_created_event(outcome = fake_outcome)
+    Events::OutcomeCreated.new(
+      user_id: outcome.author_id,
+      kind: 'outcome_created',
+      eventable: outcome,
+      discussion: outcome.discussion
     )
   end
 

@@ -43,11 +43,10 @@ class DemoService
 
     clone_group = new_clone(group, copy_fields, required_values)
 
-    clone_group.tags = group.tags.map { |t| new_clone_tag(t) }
-
-
+    clone_group.memberships = group.memberships.map {|m| new_clone_membership(m) }
     clone_group.discussions = group.discussions.map {|d| new_clone_discussion(d) }
     clone_group.polls = group.polls.map {|p| new_clone_poll(p) }
+    clone_group.tags = group.tags.map { |t| new_clone_tag(t) }
 
     clone_group
   end
@@ -127,6 +126,8 @@ class DemoService
       total_score
     ]
     clone_poll_option = new_clone(poll_option, copy_fields)
+    clone_poll_option.poll = existing_clone(poll_option.poll)
+    clone_poll_option
   end
 
   def self.new_clone_stance(stance)
@@ -147,6 +148,20 @@ class DemoService
       updated_at
     ]
     clone_stance = new_clone(stance, copy_fields)
+    clone_stance.stance_choices = stance.stance_choices.map {|sc| new_clone_stance_choice(sc) }
+    clone_stance.poll = existing_clone(stance.poll)
+    clone_stance
+  end
+
+  def self.new_clone_stance_choice(sc)
+    copy_fields = %w[
+      score
+      created_at
+      updated_at
+    ]
+    clone_sc = new_clone(sc, copy_fields)
+    clone_sc.poll_option = existing_clone(sc.poll_option)
+    clone_sc
   end
 
   def self.new_clone_outcome(outcome)
@@ -188,6 +203,10 @@ class DemoService
       clone_event.eventable = new_clone_poll(event.eventable)
     when 'Comment'
       clone_event.eventable = new_clone_comment(event.eventable)
+    when 'Stance'
+      clone_event.eventable = new_clone_stance(event.eventable)
+    when 'Outcome'
+      clone_event.eventable = new_clone_outcome(event.eventable)
     when nil
       # nothing
     else
@@ -195,6 +214,22 @@ class DemoService
     end
 
     clone_event
+  end
+
+  def self.new_clone_membership(membership)
+    copy_fields = %w[
+      user_id
+      inviter_id
+      archived_at
+      admin
+      volume
+      experiences
+      accepted_at
+      title
+    ]
+    clone_membership = new_clone(membership, copy_fields)
+    clone_membership.group = existing_clone(membership.group)
+    clone_membership
   end
 
 
@@ -224,5 +259,9 @@ class DemoService
     end
 
     attrs
+  end
+
+  def self.existing_clone(record)
+    @cache["#{record.class}#{record.id}"]
   end
 end
