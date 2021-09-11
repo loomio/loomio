@@ -1,7 +1,6 @@
 class Document < ApplicationRecord
   belongs_to :model, polymorphic: true, required: false
   belongs_to :author, class_name: 'User', required: true
-  validates :url, format: { with: AppConfig::URL_REGEX, message: I18n.t(:"document.error.invalid_format") }, if: :manual_url?
   validates :title, presence: true
   validates :doctype, presence: true
   validates :color, presence: true
@@ -31,11 +30,9 @@ class Document < ApplicationRecord
     metadata['icon'] == 'image'
   end
 
-  def manual_url?
-    self.file.attached?
-  end
-
   def url
+    return file.url if file.attached?
+    return nil unless self[:url]
     self[:url].to_s.starts_with?("http") ? self[:url] : "#{lmo_asset_host}#{self[:url]}"
   end
 
