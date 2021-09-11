@@ -49,6 +49,6 @@ class Document < ApplicationRecord
   end
 
   def metadata
-    @metadata ||= Hash(AppConfig.doctypes.detect { |type| /#{type['regex']}/.match(file_content_type || url) })
+    @metadata ||= Hash(AppConfig.doctypes.detect { |type| /#{type['regex']}/.match(file.content_type || url) })
   end
 end
