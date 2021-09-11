@@ -56,6 +56,8 @@ Rails.application.routes.draw do
         get :version, on: :collection
       end
 
+      resources :demos, only: [:create]
+      
       resources :group_surveys, only: [:create]
 
       resources :link_previews, only: [:create]
@@ -288,6 +290,7 @@ Rails.application.routes.draw do
 
   get '/start_group', to: redirect('/g/new')
 
+  get 'demos'                              => 'application#index', as: :demos
   get 'dashboard'                          => 'application#index', as: :dashboard
   get 'dashboard/:filter'                  => 'application#index'
   get 'inbox'                              => 'application#index', as: :inbox
