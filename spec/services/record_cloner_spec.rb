@@ -2,7 +2,7 @@ require 'rails_helper'
 
 include Dev::FakeDataHelper
 
-describe 'DemoService' do
+describe 'RecordCloner' do
   let(:actor) { saved fake_user }
   let(:group) { saved(fake_group) }
   let(:author) { saved(fake_user) }
@@ -25,7 +25,7 @@ describe 'DemoService' do
     end
 
     it 'creates a new group' do
-      clone = DemoService.new(recorded_at: 2.days.ago).create_clone_group_for_actor(group, actor)
+      clone = RecordCloner.new(recorded_at: 2.days.ago).create_clone_group_for_actor(group, actor)
 
       %w[
         name
@@ -76,7 +76,7 @@ describe 'DemoService' do
     end
 
     it 'creates a clone discussion' do
-      clone = DemoService.new(recorded_at: 2.days.ago).new_clone_discussion(discussion)
+      clone = RecordCloner.new(recorded_at: 2.days.ago).new_clone_discussion(discussion)
       clone.save!
       clone.reload
       expect(clone.title).to eq discussion.title
@@ -88,7 +88,7 @@ describe 'DemoService' do
     end
 
     it 'creates a clone poll' do
-      clone = DemoService.new(recorded_at: 2.days.ago).new_clone_poll(poll)
+      clone = RecordCloner.new(recorded_at: 2.days.ago).new_clone_poll(poll)
       clone.save!
       clone.reload
       expect(clone.title).to eq poll.title

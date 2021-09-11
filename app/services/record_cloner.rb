@@ -1,4 +1,4 @@
-class DemoService
+class RecordCloner
   def initialize(recorded_at:)
     @recorded_at = recorded_at
     @cache = {}
