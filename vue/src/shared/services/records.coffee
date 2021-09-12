@@ -29,6 +29,7 @@ import AttachmentRecordsInterface from '@/shared/interfaces/attachment_records_i
 import LoginTokenRecordsInterface from '@/shared/interfaces/login_token_records_interface'
 import MessageChannelRecordsInterface from '@/shared/interfaces/message_channel_records_interface'
 import TagRecordsInterface from '@/shared/interfaces/tag_records_interface'
+import TemplateRecordsInterface from '@/shared/interfaces/template_records_interface'
 import SamlProviderRecordsInterface from '@/shared/interfaces/saml_provider_records_interface'
 import WebhookRecordsInterface from '@/shared/interfaces/webhook_records_interface'
 
@@ -62,6 +63,7 @@ records.addRecordsInterface AttachmentRecordsInterface
 records.addRecordsInterface LoginTokenRecordsInterface
 records.addRecordsInterface MessageChannelRecordsInterface
 records.addRecordsInterface TagRecordsInterface
+records.addRecordsInterface TemplateRecordsInterface
 records.addRecordsInterface SamlProviderRecordsInterface
 records.addRecordsInterface WebhookRecordsInterface
 

@@ -233,16 +233,6 @@ ActiveRecord::Schema.define(version: 2021_09_10_045651) do
     t.datetime "updated_at"
   end
 
-  create_table "demos", force: :cascade do |t|
-    t.integer "group_id", null: false
-    t.string "name", null: false
-    t.string "description"
-    t.datetime "recorded_at", null: false
-    t.boolean "published", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "discussion_readers", id: :serial, force: :cascade do |t|
     t.integer "user_id", null: false
     t.datetime "created_at"
@@ -788,6 +778,21 @@ ActiveRecord::Schema.define(version: 2021_09_10_045651) do
     t.integer "priority", default: 0, null: false
     t.index ["group_id", "name"], name: "index_tags_on_group_id_and_name", unique: true
     t.index ["name"], name: "index_tags_on_name"
+  end
+
+  create_table "templates", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "author_id", null: false
+    t.integer "record_id", null: false
+    t.string "record_type", null: false
+    t.string "name", null: false
+    t.string "description"
+    t.datetime "recorded_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_templates_on_author_id"
+    t.index ["group_id"], name: "index_templates_on_group_id"
+    t.index ["record_type", "record_id"], name: "index_templates_on_record_type_and_record_id"
   end
 
   create_table "translations", id: :serial, force: :cascade do |t|

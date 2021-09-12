@@ -1,0 +1,10 @@
+class TemplateSerializer < ApplicationSerializer
+  attributes :id,
+             :name,
+             :description,
+             :record_type,
+             :record_id
+
+  has_one :author, serializer: AuthorSerializer, root: :users
+  has_one :record, polymorphic: true, :key => :useless_record
+end

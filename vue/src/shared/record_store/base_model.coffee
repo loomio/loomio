@@ -140,6 +140,22 @@ export default class BaseModel
       return @recordStore[args.from].nullModel()
     @[name+'Is'] = (obj) => @recordStore[args.from].find(@[args.by]) == obj
 
+  belongsToPolymorphic: (name) ->
+    typeMap =
+      Group: 'groups'
+      Discussion: 'discussions'
+      Poll: 'polls'
+      Outcome: 'outcomes'
+      Stance: 'stances'
+      Comment: 'comments'
+      CommentVote: 'comments'
+      Membership: 'memberships'
+      MembershipRequest: 'membershipRequests'
+    @[name] = =>
+      typeColumn = "#{name}Type"
+      idColumn = "#{name}Id"
+      @recordStore[typeMap[@[typeColumn]]].find(@[idColumn])
+
   translationOptions: ->
 
   isA: (models...) ->
