@@ -1,6 +1,7 @@
 en:
   templates:
     start_demo: Start a demo group
+    demo_created: Demo group created, just for you!
   doctypes:
     youtube_video: YouTube Video
     image: Image

@@ -19,6 +19,9 @@ export default class RecordStore
   fetch: (args) ->
     @remote().fetch(args)
 
+  post: ({path, params}) ->
+    @remote().post(path, params)
+
   addRecordsInterface: (recordsInterfaceClass) ->
     recordsInterface = new recordsInterfaceClass(@)
     name = camelCase(recordsInterface.model.plural)

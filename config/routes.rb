@@ -56,7 +56,9 @@ Rails.application.routes.draw do
         get :version, on: :collection
       end
 
-      resources :templates, only: [:index]
+      resources :templates, only: [:index] do
+        post :clone, on: :collection
+      end
 
       resources :group_surveys, only: [:create]
 

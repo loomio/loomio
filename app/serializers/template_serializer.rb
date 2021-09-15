@@ -6,5 +6,5 @@ class TemplateSerializer < ApplicationSerializer
              :record_id
 
   has_one :author, serializer: AuthorSerializer, root: :users
-  has_one :record, polymorphic: true, :key => :useless_record
+  has_one :record, polymorphic: true, :key => :ignore_me
 end

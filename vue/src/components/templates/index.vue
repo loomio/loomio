@@ -3,6 +3,7 @@ import AppConfig          from '@/shared/services/app_config'
 import Records            from '@/shared/services/records'
 import Session            from '@/shared/services/session'
 import EventBus           from '@/shared/services/event_bus'
+import Flash              from '@/shared/services/flash'
 import AbilityService     from '@/shared/services/ability_service'
 import RecordLoader       from '@/shared/services/record_loader'
 import { capitalize, take, keys, every, orderBy, debounce } from 'lodash'
@@ -42,6 +43,15 @@ export default
         query: =>
           @templates = Records.templates.find(groupId: null)
 
+    cloneTemplate: (id) ->
+      Records.post
+        path: 'templates/clone'
+        params:
+          id: id
+      .then (data) =>
+        Flash.success('templates.demo_created')
+        @$router.push @urlFor(Records.groups.find(data.groups[0].id))
+
 </script>
 
 <template lang="pug">
@@ -53,12 +63,10 @@ v-main
         loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]' :key='index' )
 
     div(v-if="loaded")
-      v-card.my-4(
-        v-for="template in templates"
-        :to='urlFor(template.record())')
+      v-card.my-4(v-for="template in templates")
         v-img(:src="template.record().coverUrl" max-height="120")
         v-card-title {{ template.name }}
         v-card-text {{ template.description }}
         v-card-actions
-          v-btn Start demo
+          v-btn(@click="cloneTemplate(template.id)") Start demo
 </template>
