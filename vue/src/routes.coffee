@@ -74,6 +74,8 @@ router = new Router
       { x: 0, y: 0 }
 
   routes: [
+    {path: '/users/sign_in', redirect: '/dashboard' },
+    {path: '/users/sign_up', redirect: '/dashboard' },
     {path: '/dashboard', component: DashboardPage},
     {path: '/dashboard/:filter', component: DashboardPage},
     {path: '/threads/direct', component: ThreadsPage},
