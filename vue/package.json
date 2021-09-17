@@ -31,7 +31,7 @@
     "jstimezonedetect": "~1.0.7",
     "lodash": "latest",
     "lokijs": "1.5.12",
-    "marked": "^3.0.3",
+    "marked": "^3.0.4",
     "md5": "2.3.0",
     "posthog-js": "^1.13.12",
     "pretty-bytes": "^5.6.0",
