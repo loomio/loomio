@@ -52,7 +52,8 @@ namespace :loomio do
 
   task delete_dangling_records: :environment do
     Group.empty_no_subscription.delete_all
-    Group.expired_trial.delete_all
+    # need to consider this more carefully
+    # Group.expired_trial.delete_all
     Membership.dangling.delete_all
     MembershipRequest.dangling.delete_all
     Discussion.dangling.delete_all
