@@ -4,7 +4,6 @@ import Session           from '@/shared/services/session'
 import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
 import { first, last } from 'lodash'
-import ahoy from '@/shared/services/ahoy'
 
 export default
 
@@ -46,11 +45,6 @@ export default
 
         window.location.host = @discussion.group().newHost if @discussion.group().newHost
 
-        ahoy.trackView
-          discussionId: @discussion.id
-          groupId: @discussion.groupId
-          organisationId: @discussion.group().parentOrSelf().id
-          pageType: 'threadPage'
         EventBus.$emit 'currentComponent',
           focusHeading: false
           page: 'threadPage'

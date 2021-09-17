@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_07_042638) do
+ActiveRecord::Schema.define(version: 2021_09_17_195133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -60,59 +60,6 @@ ActiveRecord::Schema.define(version: 2021_09_07_042638) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
-  end
-
-  create_table "ahoy_events", id: :uuid, default: nil, force: :cascade do |t|
-    t.uuid "visit_id"
-    t.integer "user_id"
-    t.string "name"
-    t.jsonb "properties"
-    t.datetime "time"
-    t.index ["name", "time"], name: "index_ahoy_events_on_name_and_time"
-  end
-
-  create_table "ahoy_messages", id: :serial, force: :cascade do |t|
-    t.string "token"
-    t.text "to"
-    t.integer "user_id"
-    t.string "user_type"
-    t.string "mailer"
-    t.datetime "sent_at"
-    t.datetime "opened_at"
-    t.datetime "clicked_at"
-    t.index ["token"], name: "index_ahoy_messages_on_token"
-    t.index ["user_id"], name: "index_ahoy_messages_on_user_id", where: "(user_id IS NOT NULL)"
-  end
-
-  create_table "ahoy_visits", id: :uuid, default: nil, force: :cascade do |t|
-    t.string "visitor_token"
-    t.string "ip"
-    t.text "user_agent"
-    t.text "referrer"
-    t.text "landing_page"
-    t.integer "user_id"
-    t.string "referring_domain"
-    t.string "search_keyword"
-    t.string "browser"
-    t.string "os"
-    t.string "device_type"
-    t.integer "screen_height"
-    t.integer "screen_width"
-    t.string "country"
-    t.string "region"
-    t.string "city"
-    t.string "utm_source"
-    t.string "utm_medium"
-    t.string "utm_term"
-    t.string "utm_content"
-    t.string "utm_campaign"
-    t.datetime "started_at"
-    t.string "gclid"
-    t.string "visit_token"
-    t.uuid "latitude"
-    t.uuid "longitude"
-    t.index ["user_id"], name: "index_ahoy_visits_on_user_id"
-    t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
   end
 
   create_table "attachments", id: :serial, force: :cascade do |t|

@@ -94,7 +94,6 @@ class AppConfig
       create_user:                !ENV['FEATURES_DISABLE_CREATE_USER'],
       create_group:               !ENV['FEATURES_DISABLE_CREATE_GROUP'],
       public_groups:              !ENV['FEATURES_DISABLE_PUBLIC_GROUPS'],
-      ahoy_tracking:              !ENV['FEATURES_DISABLE_AHOY_TRACKING'],
       help_link:                  !ENV['FEATURES_DISABLE_HELP_LINK'],
       example_content:            !ENV['FEATURES_DISABLE_EXAMPLE_CONTENT'],
       proposal_consent_default:   ENV.fetch('FEATURES_PROPOSAL_CONSENT_DEFAULT', false),
