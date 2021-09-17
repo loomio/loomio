@@ -7,7 +7,6 @@ import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
 import LmoUrlService     from '@/shared/services/lmo_url_service'
 import {compact, head, includes, filter} from 'lodash'
-import ahoy from '@/shared/services/ahoy'
 import OldPlanBanner from '@/components/group/old_plan_banner'
 
 export default
@@ -48,7 +47,6 @@ export default
         {id: 6, name: 'settings',  route: @urlFor(@group, 'settings')}
       ].filter (obj) => !(obj.name == "subgroups" && @group.parentId)
 
-
   methods:
     init: ->
       Records.samlProviders.authenticateForGroup(@$route.params.key)
@@ -56,10 +54,6 @@ export default
       .then (group) =>
         @group = group
         window.location.host = @group.newHost if @group.newHost
-        ahoy.trackView
-          groupId: @group.id
-          organisationId: @group.parentOrSelf().id
-          pageType: 'groupPage'
       .catch (error) =>
         EventBus.$emit 'pageError', error
         EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()

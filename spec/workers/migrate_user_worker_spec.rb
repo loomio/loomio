@@ -4,11 +4,6 @@ include Dev::FakeDataHelper
 describe MigrateUserWorker do
   let!(:patrick)            { saved fake_user(name: "Patrick Swayze") }
   let!(:jennifer)           { saved fake_user(name: "Jennifer Grey") }
-
-  let!(:visit)              { Ahoy::Visit.create(user: patrick, id: SecureRandom.uuid) }
-  let!(:ahoy_message)       { Ahoy::Message.create(user: patrick) }
-  let!(:ahoy_event)         { Ahoy::Event.create(id: SecureRandom.uuid, visit: visit, user: patrick) }
-
   let!(:group)              { saved fake_group(name: "Dirty Dancing Shoes") }
   let!(:another_group)      { saved fake_group(name: "another group") }
   let!(:discussion)         { saved fake_discussion(group: group) }
@@ -58,8 +53,6 @@ describe MigrateUserWorker do
     patrick.reload
     jennifer.reload
 
-    assert_equal ahoy_event.reload.user, jennifer
-    assert_equal ahoy_message.reload.user, jennifer
     assert_equal patrick_comment.reload.author, jennifer
     assert_equal pending_membership.reload.inviter, jennifer
     assert_equal group.reload.creator, jennifer

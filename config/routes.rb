@@ -28,9 +28,6 @@ Rails.application.routes.draw do
     end
   end
 
-  mount Ahoy::Engine => "/bhoy", as: :bhoy if Ahoy.api
-  mount AhoyEmail::Engine => "/bhoy", as: :bhoyemail
-
   get '/discussions/:id', to: 'redirect#discussion'
   get '/groups/:id',      to: 'redirect#group'
 
