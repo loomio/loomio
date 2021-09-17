@@ -11,7 +11,6 @@ class API::V1::RestfulController < API::V1::SnorlaxBase
   before_action :set_paper_trail_whodunnit  # gem 'paper_trail'
   before_action :set_sentry_context          # SentryHelper
   before_action :deny_spam_users            # CurrentUserHelper
-  after_action :associate_user_to_visit
 
   private
   def require_current_user
