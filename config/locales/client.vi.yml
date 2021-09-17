@@ -4,6 +4,7 @@ vi:
   loomio_tags:
     name_label: Tên
   common:
+    version: Phiên bản
     group: 'Nhóm'
     groups: 'Các nhóm'
     email_address: Địa chỉ email

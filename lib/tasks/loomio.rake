@@ -29,6 +29,11 @@ namespace :loomio do
     end
   end
 
+  task migrate_paperclip: :environment do
+    Rails.application.eager_load!
+    MigrateEventsService.migrate_paperclip
+  end
+
   task hourly_tasks: :environment do
     ThrottleService.reset!('hour')
     PollService.delay.expire_lapsed_polls
@@ -36,14 +41,12 @@ namespace :loomio do
 
     SendDailyCatchUpEmailWorker.perform_async
 
-    LocateUsersAndGroupsWorker.perform_async
     if (Time.now.hour == 0)
       ThrottleService.reset!('day')
       OutcomeService.delay.publish_review_due
       UsageReportService.send
       ExamplePollService.delay.cleanup
       LoginToken.where("created_at < ?", 24.hours.ago).delete_all
-      Ahoy::Message.where('sent_at < ?', 6.months.ago).delete_all
     end
   end
 

@@ -28,7 +28,9 @@ class AppConfig
   end
 
   def self.release
-    `git rev-parse HEAD`.strip.presence || File.mtime("app").to_i.to_s
+    @release ||= begin
+      (`git rev-parse HEAD`.strip.presence || File.mtime("app").to_i.to_s)
+    end
   end
 
   def self.image_regex
@@ -62,7 +64,6 @@ class AppConfig
       icon_src:                          ENV.fetch('THEME_ICON_SRC',                "/brand/icon_#{logo_color}_150h.png"),
       app_logo_src:                      ENV.fetch('THEME_APP_LOGO_SRC',            "/brand/logo_#{logo_color}.svg"),
       default_group_cover_src:           ENV.fetch('THEME_DEFAULT_GROUP_COVER_SRC', '/theme/default_group_cover.png'),
-      dont_notify_new_thread:            ENV['DONT_NOTIFY_NEW_THREAD'],
 
       # used in emails
       email_header_logo_src:             ENV.fetch('THEME_EMAIL_HEADER_LOGO_SRC',   "/brand/logo_#{logo_color}_128h.png"),
@@ -93,7 +94,6 @@ class AppConfig
       create_user:                !ENV['FEATURES_DISABLE_CREATE_USER'],
       create_group:               !ENV['FEATURES_DISABLE_CREATE_GROUP'],
       public_groups:              !ENV['FEATURES_DISABLE_PUBLIC_GROUPS'],
-      ahoy_tracking:              !ENV['FEATURES_DISABLE_AHOY_TRACKING'],
       help_link:                  !ENV['FEATURES_DISABLE_HELP_LINK'],
       example_content:            !ENV['FEATURES_DISABLE_EXAMPLE_CONTENT'],
       proposal_consent_default:   ENV.fetch('FEATURES_PROPOSAL_CONSENT_DEFAULT', false),

@@ -10,7 +10,7 @@ end
 
 require 'sidekiq/web'
 
-Loomio::Application.routes.draw do
+Rails.application.routes.draw do
   authenticate :user, lambda { |u| u.is_admin? } do
     mount Sidekiq::Web => '/admin/sidekiq'
     mount Blazer::Engine, at: "/admin/blazer"
@@ -27,9 +27,6 @@ Loomio::Application.routes.draw do
       get '/:action', to: 'nightwatch#:action'
     end
   end
-
-  mount Ahoy::Engine => "/bhoy", as: :bhoy if Ahoy.api
-  mount AhoyEmail::Engine => "/bhoy", as: :bhoyemail
 
   get '/discussions/:id', to: 'redirect#discussion'
   get '/groups/:id',      to: 'redirect#group'

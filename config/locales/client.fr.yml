@@ -1,4 +1,19 @@
 fr:
+  doctypes:
+    youtube_video: Video Youtube
+    image: Image
+    pdf: PDF
+    excel: Feuille de Calcul Excel
+    document: Document
+    csv: 'Fichier CSV '
+    video: Video
+    text: Fichier texte
+    google_doc: Google Doc
+    google_sheet: Google Feuille de Calcul
+    google_drive: Google Drive
+    pull_request: Pull Request
+    trello_board: Conseil Trello
+    trello_card: Carte Trello
   loomio_onboarding:
     group_progress_card:
       title: Commençons!
@@ -69,6 +84,8 @@ fr:
     tag_destroyed: Tag supprimé
     tags_marked: Discussions marquées « {{name}} » dans {{groupName}}
     no_tags_present: Aucune discussion n’a été trouvée avec ce tag ! Essayez avec un autre.
+    no_tags_in_group: Le groupe n'a pas encore de tags de catégories
+    only_admins_can_edit_tags: Excusez-moi, juste les admins du {{group}} peuvent créer, renommer ou supprimer des tags
   reactions:
     slight_smile: J’aime
     heart: J’adore
@@ -121,6 +138,8 @@ fr:
   timezones:
     local: Heure locale ({{value}})
   common:
+    version: Version
+    none: Aucun
     empty: Vide
     no_results_found: Aucun résultat trouvé
     view: voir
@@ -136,6 +155,7 @@ fr:
     time_zone: Fuseau horaire
     local_time: Heure locale
     attachments: Pièces jointes
+    links: Liens
     active_time_ago: Actif pour la dernière fois {{time_ago}}
     confirm_discard_changes: Annuler vos modifications ?
     time:
@@ -236,6 +256,8 @@ fr:
       fork: Scinder
       apply: Appliquer
       add_people: Ajouter des personnes
+      zoom: Zoom
+      align: Alignement
     formatting_help:
       label: 'Mise en forme'
       title: 'Apprenez à utiliser Markdown pour mettre en forme votre texte'
@@ -481,12 +503,16 @@ fr:
     unpin_sidebar: "Dés-épingler la barre latérale"
     enable_beta_features: "Activer les fonctionnalités expérimentales"
     disable_beta_features: "Désactiver les fonctionnalités expérimentales"
+    enable_dark_mode: "Activer le mode sombre"
+    disable_dark_mode: "Désactiver le mode sombre"
     button_label: 'Menu de l''utilisateur'
     edit_profile: 'Modifier mon profil'
     email_settings: 'Paramètres de notification'
     help: 'Aide'
     contact_site_name: 'Contacter {{site_name}}'
+    contact_support: 'Contacter le support'
     sign_out: 'Se déconnecter'
+    beta_collab: "Fonctionnalités bêta activées!"
   membership_card:
     group_members: "Membres du groupe"
     discussion_members: "Membres de la discussion"
@@ -586,7 +612,6 @@ fr:
     privacy_private: 'La discussion sera visible uniquement aux membres de {{group}}.'
     privacy_organisation: 'La discussion sera visible uniquement pour les membres de {{parent}} et les membres de {{group}}.'
     fork_notice: 'Une nouvelle discussion sera créée avec {{count}} items de {{title}}'
-    one_person_notified: 1 personne sera notifiée
     notify_group: Notifier le groupe
   announcement:
     send_discussion: Envoyer la discussion
@@ -670,15 +695,20 @@ fr:
         helptext: 'Qui voulez-vous notifier à propos de cette mise à jour ? '
       outcome_announced:
         title: Partager le résultat
+        helptext: Résumer les résultats du processus, y compris les compréhensions trouvées ou les problèmes mis en lumière.
       anyone_can_participate: N’importe qui ayant un lien peut participer.
       placeholder: Vous pouvez saisir les noms ou les adresses mail
       notified_empty: 'Personne n''est encore sélectionné'
       notified: 'Les personnes {{notified}} seront notifiées'
       notified_singular: '1 personne sera notifiée'
       notified_none: 'Personne ne sera notifié'
+      added: '{{count}} personnes seront ajoutés'
+      added_singular: '1 personne sera ajouté'
+      added_none: 'Personne sera ajouté'
       group_title: '{{name}} ({{count}} personnes)'
       visible_to_group: 'N''importe qui dans {{group}} pourra voir cette discussion'
       visible_to_guests: 'Seules les personnes invitées peuvent voir cette discussion'
+      click_group_to_see_individuals: Cliquez sur groupe pour voir les individus
     members_list:
       title: Partagé avec
       last_notified: Notifié⋅e(s)
@@ -687,6 +717,7 @@ fr:
       group_admin: "Administrateur du groupe"
       thread_admin: "Discussion admin"
       last_read_at: "Dernière visite {{time}}"
+      has_not_read_thread: "N’a pas thread vu"
     group_form:
       search_placeholder: Chercher des personnes...
       modal_title: Sélectionner des membres du groupe
@@ -827,6 +858,7 @@ fr:
     comment_header: Discussion privée
     poll_header: Éditions du sondage
     outcome_header: Modification des résultats
+    stance_header: Modifications de position
     started_by: 'Démarrée par <strong>{{name}}</strong>'
     edited_by: 'Édité par <strong>{{name}}</strong>'
     edit_by: "Modifier par {{name}} · {{date}}"
@@ -957,22 +989,31 @@ fr:
         Une personne peut avoir deux niveaux d'adhésion dans un groupe: administrateur ou membre.
         Les administrateurs peuvent modifier les paramètres du groupe, nommer d'autres administrateurs et faire les actions suivantes:
     aria_label: Forme du groupe
+    parent_group: Groupe parent
     new_organisation: Nouveau groupe
     new_group: Nouveau groupe
     new_subgroup: Nouveau sous-groupe
+    new_group_explainer: Démarrez un nouveau groupe Loomio - une maison en ligne pour les discussions et les décisions de votre organisation
+    new_subgroup_explainer: Démarrer un sous-groupe au sein d’un groupe existant - un espace privé pour une équipe de personnes de l’organisation
     start_group_heading: Créer un groupe
     start_subgroup_heading: Créer un sous-groupe
     edit_group_heading: Modifier les paramètres du groupe
     edit_subgroup_heading: Modifier les paramètres du sous-groupe
+    group_settings: Paramètres de groupe
+    subgroup_settings: Paramètres de sous-groupe
     group_name: Nom du groupe
     subgroup_name: Nom du sous-groupe
+    organization_name: Nom de l’organisation
     handle: Gérer
+    group_handle_placeholder: "Utilisé dans l’URL de votre groupe : www.loomio.org/{{handle}}"
     start_organization_heading: Nouveau groupe
     edit_organization_heading: Modifier les paramètres de l'organisation
     group_name_placeholder: 'Quel est le nom de votre groupe ?'
+    subgroup_name_placeholder: 'Quel est le nom de votre sous-groupe?'
     organization_name_placeholder: 'Quel est le nom de votre organisation ?'
     description: 'Description'
     description_placeholder: 'Utilisez cet espace pour décrire le but de votre groupe afin que vos membres sachent pourquoi ils sont là.'
+    secret_by_default: Votre groupe ne sera accessible qu’aux personnes invitées à s’y joindre. Vous pouvez modifier cela ultérieurement.
     privacy_statement:
       public_on_web: 'Le nom, la description et les pièces-jointes seront visibles par tous sur le web'
       private_to_group: 'Le nom et la description ne seront visibles que par les membres du groupe.'
@@ -1006,15 +1047,23 @@ fr:
     private_threads: 'Seuls les membres peuvent voir les discussions'
     allow_public_threads: 'Autoriser les discussions publiques dans ce groupe.'
     parent_members_can_see_discussions: 'Les membres de {{parent}} peuvent voir les discussions privées'
+    parent_members_can_see_discussions_help: 'Autoriser les membres du groupe parent à voir, mais pas à participer, les threads et les sondages au sein de ce groupe'
     members_can_announce: 'Les membres peuvent notifier n''importe qui dans le groupe'
     members_can_announce_help: 'Autoriser les membres à notifier tout le monde dans le groupe à propos d''une discussion ou d''un sondage'
     members_can_add_members: 'Les membres peuvent envoyer des invitations à d''autres membres'
+    members_can_add_members_help: "Permettre aux membres d’inviter des personnes à rejoindre ce groupe"
     members_can_add_guests: 'Les membres peuvent envoyer des invitations à participer à une discussion ou à un sondage'
+    members_can_add_guests_help: 'Autoriser les membres à inviter des invités dans des threads ou des interrogations de ce groupe'
     members_can_create_subgroups: 'Les membres peuvent créer des sous-groupes'
+    members_can_create_subgroups_help: 'Autoriser les membres à créer et à devenir administrateurs de nouveaux sous-groupes'
     members_can_edit_discussions: 'Les membres peuvent gérer les discussions et les commentaires'
+    members_can_edit_discussions_help: 'Autoriser les membres à modifier, déplacer, épingler, tag ou fermer des threads'
     members_can_edit_comments: 'Les membres peuvent modifier leurs propres commentaires'
     members_can_edit_comments_help: 'Autoriser les membres à modifier leurs propres commentaires à n''importe quel moment'
+    members_can_delete_comments: 'Les membres peuvent supprimer leurs propres commentaires'
+    members_can_delete_comments_help: 'Autoriser les membres à supprimer leurs propres commentaires des threads'
     members_can_start_discussions: 'Les membres peuvent commencer de nouvelles discussions'
+    members_can_start_discussions_help: 'Autoriser les membres à démarrer de nouveaux threads au sein du groupe'
     members_can_raise_motions: 'Les membres peuvent commencer de nouveaux sondages'
     members_can_raise_motions_help: 'Autoriser les membres à commencer des sondages et des propositions à partir des discussions ou du groupe'
     admins_can_edit_user_content: "Les administrateurs peuvent modifier les commentaires des membres"
@@ -1118,6 +1167,8 @@ fr:
     membership:
       title: Supprimer le membre
       message: Êtes-vous certain⋅e de vouloir retirer {{name}} ?
+      impact_for_subgroup: Cela supprimera leur accès au sous-groupe (y compris les threads et les interrogations), mais ils resteront membres du groupe parent.
+      impact_for_group: Cela supprimera leur accès au groupe (y compris les threads et les interrogations) et à tous les sous-groupes.
       flash: Membre supprimé
       submit: Supprimer le membre
   memberships_panel:
@@ -1205,17 +1256,23 @@ fr:
     friday: Vendredi
     saturday: Samedi
     sunday: Dimanche
+    every_day: Tous les jours
+    every_second_day: Tous les deux jours
     header: Paramètres de notification
     account_deactivated: Votre compte a été désactivé. Vous ne recevrez désormais plus d'emails, pour toujours.
     deactivate_header: Arrêtez tous les courriels, pour toujours.
     deactivate_description: Si vous souhaitez ne plus jamais recevoir de courriels de notre part, vous pouvez désactiver votre compte utilisateur.
     email_newsletter: Bulletin d'information de Loomio
     email_newsletter_description: "Etre averti des nouvelles fonctionnalités, formation, évènements dans votre ville et du futur de Loomio. 2 à 3 e-mails par an."
+    email_catch_up_day: e-mail de synthèse de rattrapage
+    daily_summary_description: |
+        Choisissez quand recevoir l’e-mail récapitulatif de rattrapage. Cet e-mail contient toute nouvelle activité que vous n’avez pas vue. Un bon moyen de rester à jour si vous n’êtes pas un utilisateur régulier.
     on_participation_label: Notification sur les discussions auxquelles je participe
     on_participation_description: "Lorsque vous participez à une discussion, toute activité ultérieure vous sera immédiatement envoyée par courriel."
     announcement_label: Nouvelles discussions et décisions
     announcement_description: "Vous recevrez un courriel à chaque nouvelle discussion ou proposition annoncée par un membre dans l'un de vos groupes."
     mentioned_label: Mentions et réponses
+    mentioned_description: "Lorsque quelqu’un vous @mentions dans un commentaire ou vous répond, vous recevez un e-mail de notification"
     update_settings: Sauvegarder les modifications
     specific_groups: Paramètres pour certains groupes
     default_settings:
@@ -1231,6 +1288,10 @@ fr:
     unread_count: "{{count}} non lus"
   dashboard_page:
     aria_label: 'Tableau de bord'
+    polls_to_vote_on: "Sondages sur les votes"
+    recent_polls: "Sondages récents"
+    current_polls: "Sondages actuels"
+    recent_threads: "Discussions récentes"
     no_groups:
       show_all: Bienvenue ! Vous n'êtes membres d'aucun groupe pour le moment. <a href="/explore">Parcourir la liste des groupes publics</a> ou <a href="/g/new">Démarrer un groupe</a>.
       show_muted: Aucune discussion ignorée car vous n’êtes membre d’aucun groupe.
@@ -1378,7 +1439,10 @@ fr:
     replies: Comment afficher les réponses ?
     linear: Liste fixe.
     linear_description: Les éléments ont été listés au fur et à mesure de leur occurrence, l'un après l'autre.
+    nested_once: Réponses d’imbrication - première réponse uniquement
     nested_once_description: Placer les réponses sous le commentaire original
+    nested_twice: Deux niveaux de réponses imbriquées
+    nested_twice_description: Indent répond jusqu’à 2 fois.
     changing_nesting_is_slow: Les changements à l'imbrication peuvent prendre quelques minutes à traiter.
   delete_thread_form:
     aria_label: 'Supprimer la discussion'
@@ -1400,9 +1464,11 @@ fr:
     question: 'Êtes-vous certain de vouloir effacer ce commentaire ?'
     confirm: 'Effacer le commentaire'
   contact_message_form:
+    alt_title: "Contacter le support Loomio"
     title: "Salut ! Comment puis-je vous aider ?"
+    this_is_for: C’est un endroit idéal pour les demandes de vente, de formation ou d’abonnement, ou pour demander de l’aide en utilisant Loomio.
     read_the_manual: |
-        Avez-vous vu notre<a href="{{link}}" target="_blank">Manuel d'utilisation</a> ? Nous le mettons à jour régulièrement avec les questions fréquemment posées et leurs réponses.
+        Saviez-vous que notre <a href="{{link}}" target="_blank">manuel d’aide</a> contient des FAQ ainsi que des guides détaillés pour faciliter les discussions et les décisions sur Loomio?
     contact_us_email: "Vous pouvez aussi nous contacter par e-mail : <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Contactez-nous'
     name_label: 'Votre nom'
@@ -1421,6 +1487,7 @@ fr:
         Notre équipe d'aide parle anglais et traduira votre message avec Google Traduction si nécessaire.<br />
         Notre objectif est de répondre à tous vos messages en moins de 24 heures.
     success: "Merci pour votre message, {{name}}. Nous prendrons rapidement contact."
+    success_via_email: "Merci pour votre message, {{name}}. Nous vous répondrons par e-mail dans les 24 heures."
   hint:
     context: 'Conseils pour l’utilisation de la zone de contexte'
     discussion: 'Conseils pour démarrer une discussion stimulante'
@@ -1453,6 +1520,7 @@ fr:
     ranked_choice_title: Classement par préférence
   poll_common:
     vote_now: Votez maintenant
+    review_due: Examen dû
     have_your_say: Prenez la parole
     your_response: Votre réponse
     change_your_response: Modifier la réponse
@@ -1549,6 +1617,7 @@ fr:
     all: 'Tous'
     open: 'Ouvert'
     closed: 'Clôturée'
+    need_vote: 'Besoin d’un vote'
     no_polls: 'Pas de sondage trouvé'
   group_files_panel:
     no_files: Pas de fichiers trouvés
@@ -1592,6 +1661,8 @@ fr:
     specified_voters_only_false_group: N'importe qui dans le groupe
     specified_voters_only_false_discussion: N'importe-qui de la discussion
     invite_people_next: Vous pouvez choisir qui sera invité une fois que vous aurez démarré le {{poll_type}}
+    shuffle_options:
+      title: Les électeurs voient les options dans un ordre aléatoire
     multiple_choice:
       title: Choix multiple
       helptext_on: Si coché, les participants pourront choisir plusieurs options.
@@ -1599,6 +1670,7 @@ fr:
       title: N’importe qui ayant un lien peut participer.
       helptext_on: Si coché, n'importe qui disposant du lien de ce sondage pourra participer.
     notify_on_closing_soon:
+      closes_too_soon: Étant donné que ce {{pollType}} se ferme dans les 24 heures, aucun rappel de fermeture ne sera envoyé.
       title: 24 heures avant que le {{pollType}} ne ferme, envoyer un rappel à
       nobody: Personne
       author: Auteur (moi)
@@ -1616,6 +1688,8 @@ fr:
     can_respond_maybe:
       title: Les participants peuvent répondre « si besoin »
       helptext_on: Les participants peuvent indiquer « si besoin » sur des horaires
+    allow_long_reason:
+      title: Autoriser la « raison » du vote à plus de 500 caractères
     hide_results_until_closed:
       title: Cacher les résultats jusqu'à la cloture
       helptext_on: Ne pas montrer comment les gens ont voté avant la cloture du sondage
@@ -1707,9 +1781,14 @@ fr:
     start: Démarrer
     start_poll_type: Démarrer {{poll_type}}
     share_poll_type: Partager {{poll_type}}
+    who_may_vote: Qui peut voter dans ce {{poll_type}} ?
     update: Mettre à jour
+    add_voters: Ajouter des électeurs
+    notify_invitees: Envoyer des notifications
     loomio_school_link: |
         <p>Apprenez-en plus sur <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">l'aide de Loomio</a>.</p>
+    no_notifications_warning: Les électeurs ne seront pas avisés. Ceci est utile si vous exécutez beaucoup de sondages et prévoyez d’informer tout le monde plus tard.
+    count_voters_added: '{{nombre}} électeurs ajoutés'
   poll_proposal_form:
     tool_tip_expanded: |
         <p>Une proposition est un outil de recherche d’accord collectif à propos d’une déclaration ou d’un plan d’action.</p>
@@ -1827,6 +1906,8 @@ fr:
     ranked_choice_updated: Classement par préférence mis à jour
     rank: Classer
     points: Points
+    average: Moyenne
+    pct_of_points: '% de points'
   poll_meeting_time_field:
     add_time_slot: Ajouter un créneau
     new_time_slot: Nouveau créneau horaire
@@ -1859,6 +1940,7 @@ fr:
     agree_disagree: 'en accord, en désaccord'
     agree_abstain_disagree: 'en accord, s''abstenir, en désaccord'
     consent_abstain_object: 'Autorisation, Abstention, Objection'
+    consent_object: 'Consentement, opposition'
     no_voting: 'Pas de vote '
   poll_count_options:
     'yes': 'Oui'
@@ -1904,10 +1986,12 @@ fr:
       new_comment: "{{actor}} a laissé un commentaire. {{when}}"
       poll_created: "{{actor}} a démarré un {{pollType}}. {{when}}"
       stance_created: "{{actor}} a voté. {{when}}"
+      stance_updated: "{{actor}} a modifié son vote. {{when}}"
       outcome_created: "{{actor}} a partagé un résultat. {{when}}"
       poll_expired: "{{pollType}} fermé. {{when}}"
     removed: "Elément supprimé"
     deleted_group: "Groupe supprimé"
+    invite_only_thread: "Discussion accessible uniquement sur invitation"
     comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> en réponse à <strong>{{title}}</strong>"
     discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>a modifié le titre de la discussion"
     discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a édité le contexte de la discussion"
@@ -1928,6 +2012,7 @@ fr:
     poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a ajouté des options de réponse au {{polltype}}"
     poll_expired: "{{polltype}} fermé"
     stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a voté sur: <strong>{{title}}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a actualisé son vote sur: <strong>{{title}}</strong>"
     event_removed: "retiré de la discussion"
   poll_common_subscribe_form:
     receive_updates_title: Votre vote a bien été enregistré
@@ -1946,12 +2031,16 @@ fr:
     youre_invited: Vous avez été invité à rejoindre le groupe {{group_name}}.
     youre_invited_discussion: Vous avez été invité à rejoindre la discussion.
     youre_invited_poll: Vous avez été invité à voter.
+    existing_account_can_sign_in: Si vous êtes déjà un utilisateur {{site_name}}, connectez-vous avec votre compte existant
+    sign_up_or_log_in: Créer un compte ou vous connecter à {{site_name}}
     sign_in_to_loomio: Connectez-vous à {{site_name}}
     sign_in_help: Vous rencontrez des difficultés pour vous connecter ?
     sign_in: Se connecter
     continue: Continuer
     create_account: Créez un compte
+    sign_up_as: Créer un compte en tant que {{email}}
     sign_in_as: Se connecter comme  {{name}}
+    continue_with_provider: Continuer avec {{fournisseur}}
     continue_with_email: Connectez-vous avec votre adresse mail
     or_enter_your_email: Ou saisir votre adresse e-mail
     enter_your_name: Entrez votre nom
@@ -1970,8 +2059,8 @@ fr:
     enter_your_password: "Saisissez votre mot de passe pour continuer"
     check_spam_folder: Si vous ne recevez pas l'e-mail, veuillez vérifier le répertoire des spams.
     sign_up_helptext: Merci de remplir ce formulaire pour créer un compte
-    i_accept: "J'accepte les <a href='{{termsUrl}}' target='_blank'>Conditions d'utilisation</a> et la <a href='{{privacyUrl}}' target='_blank'>Politique de vie privée</a>"
-    newsletter_label: "Je souhaite recevoir la <a href='https://help.loomio.org/en/newsletter/' target='_blank'>lettre d'information Loomio</a>"
+    i_accept_all: "J’accepte les {{termsLink}} et {{privacyLink}}"
+    newsletter_label: "Je veux recevoir le {{lien}}"
     name_placeholder: Votre nom
     name_required: Entrez un nom
     terms_required: Vous devez accepter les Conditions d'utilisation
@@ -1992,6 +2081,7 @@ fr:
     check_your_email: Vérifier votre e-mail !
     login_link_sent: "Ok, nous avons envoyé un message à {{email}}."
     instructions: "Cliquez sur le lien pour vous connecter, ou entrez le code ci-dessous:"
+    too_many_attempts: "Trop de tentatives; essayez de cliquer sur le lien dans l’e-mail pour vous connecter."
     invalid_code: "Désolé, le code ne correspond pas. Vérifiez le courriel et essayez de nouveau."
     password_link_sent: "Nous avons envoyé un courriel à {{email}} avec les instructions pour définir votre mot de passe."
     reactivate_link_sent: "Nous vous avons envoyé un mail avec des instructions pour réactiver votre compte"
@@ -2004,12 +2094,15 @@ fr:
   webhook:
     integrations: Integrations
     webhooks: Webhooks
+    webhook: Webhook
     api: API
     format: Formatter
     formats:
       markdown: Markdown (pour Mattermost, Zapier et autres)
       microsoft: Microsoft Teams
       slack: Slack
+      discord: Discorde
+    subtitle: Connectez-vous à Loomio au reste de vos outils avec notre API d’intégration et nos webhooks
     we_have_guides: |
         Lisez notre <a href="{{url}}" target="_blank">guide de configuration webhook</a> pour connecter votre propre service.
     add_webhook: Ajouter un webhook
@@ -2024,6 +2117,7 @@ fr:
     url_placeholder: https://hooks.example.com/...
     name_label: Nom
     name_placeholder: Donnez un nom à cette intégration de manière à pouvoir l'identifier
+    event_kind_helptext: De quels événements souhaitez-vous que le webhook soit notifié ?
     event_kinds:
       new_discussion: 'Une discussion a été commencée '
       discussion_edited: Une discussion a été modifiée
@@ -2036,11 +2130,13 @@ fr:
       poll_closed_by_user: Un sondage a été cloturé manuellement
       poll_reopened: Un sondage a été rouvert aux votes
       outcome_created: Un résultat a été partagé
+    permissions_explaination: Sélectionner les actions qui peuvent être effectuées par cette intégration
     permissions:
       show_discussion: Montrer la discussion
       create_discussion: Créer une discussion
       create_poll: Créer un sondage
       show_poll: Montrer le sondage
+      read_memberships: lire les appartenances
     include_body_label: Inclure le corps du message dans la notification
     include_subgroups_label: Faire suivre les événement des sous-groupes
   configure_sso:
@@ -2069,10 +2165,14 @@ fr:
     subtitle: Aidez-nous à mieux vous connaître. Nous ne partagerons aucune information fournie dans ce formulaire sans votre autorisation.
     validation_error: Merci de remplir tous les champs obligatoires.
     success: Merci!
+    describe_other: Quelle catégorie donneriez-vous à votre groupe ?
     categories:
       party: Parti politique
       coop: Cooperative
       union: Syndicat
+      board: Conseil d’administration ou comité
+      nonprofit: Organisme à but non lucratif ou ONG
+      professional: Entreprise de services professionnels
       community: Groupe communautaire
       government: Gouvernement ou collectivités locales
       other: Autre

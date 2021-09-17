@@ -66,6 +66,7 @@ he:
   timezones:
     local: זמן מקומי ({{value}})
   common:
+    version: גירסא
     you: אתה
     expand: הרחבה
     all_day: כל יום
@@ -821,6 +822,7 @@ he:
     learn_more: למד עוד על הגדרות מייל...
   dashboard_page:
     aria_label: 'לוח מכוונים'
+    recent_threads: "שיחות אחרונות"
     no_groups:
       show_all: ברוך הבא! אתה עוד לא חבר באף קבוצה עוד. <a href="/explore">חפש בקבוצות הפומביות</a> או <a href="/g/new">פתח קבוצה</a>.
       show_muted: אין לך אף שיחה מושתקת כי אתה לא חבר באף קבוצה.
@@ -952,8 +954,6 @@ he:
     confirm: 'מחקו תגובה'
   contact_message_form:
     title: "היי! איך נוכל לעזור?"
-    read_the_manual: |
-        האם ראית את <a href="{{link}}" target="_blank">מדריך העזרה שלנו</a>? אנחנו מעדכנים אותו בקביעות עם שאלות ותשובות נפוצות.
     contact_us_email: "אתה גם יכול לשלוח לנו מייל: <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'צור קשר'
     name_label: 'שמך'
@@ -1344,7 +1344,6 @@ he:
     login_link_helptext: לחץ על הכפתור למטה ואנחנו נשלח לך לינק להתחברות.
     check_spam_folder: אם המייל לא מגיע אליך בקרוב, בדוק בתיקיית הספאם.
     sign_up_helptext: אנא השלם טופס זה ליצירת חשבון משתמש
-    i_accept: "אני מאשר את <a href='{{termsUrl}}' target='_blank'>תנאי השימוש</a> ואת <a href='{{privacyUrl}}' target='_blank'>מדיניות הפרטיות</a>"
     name_placeholder: שמך
     name_required: אנה הכנס שם
     terms_required: עליך לאשר את תנאי השימוש

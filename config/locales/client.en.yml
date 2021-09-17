@@ -617,6 +617,7 @@ en:
     outcome_announced: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> participated in: <strong>{{title}}</strong>"
     group_announced: "<strong>{{name}}</strong> invited you to the group <strong>{{title}}</strong>"
+    outcome_review_due: "It's time to review the outcome of: <strong>{{title}}</strong>"
 
   discussion_fork_actions:
     helptext: Select items you'd like to move to another thread
@@ -2160,6 +2161,7 @@ en:
       poll_expired: "{{pollType}} closed. {{when}}"
     removed: "Item removed"
     deleted_group: "Deleted group"
+    invite_only_thread: "Invite only thread"
     comment_replied_to:            "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> in reply to <strong>{{title}}</strong>"
     discussion_title_edited:       "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> edited the thread title"
     discussion_context_edited:     "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> edited the thread context"

@@ -4,7 +4,6 @@ import Session           from '@/shared/services/session'
 import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
 import ThreadLoader      from '@/shared/loaders/thread_loader'
-import ahoy from '@/shared/services/ahoy'
 
 export default
   data: ->
@@ -33,11 +32,6 @@ export default
         @discussion = discussion
         @loader = new ThreadLoader(@discussion)
         @respondToRoute()
-        ahoy.trackView
-          discussionId: @discussion.id
-          groupId: @discussion.groupId
-          organisationId: @discussion.group().parentOrSelf().id
-          pageType: 'threadPage'
         EventBus.$emit 'currentComponent',
           focusHeading: false
           page: 'threadPage'

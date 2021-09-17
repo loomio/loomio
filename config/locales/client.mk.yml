@@ -4,6 +4,7 @@ mk:
   loomio_tags:
     name_label: Име
   common:
+    version: Верзија
     group: 'Група'
     groups: 'Групи'
     email_address: Електронска пошта

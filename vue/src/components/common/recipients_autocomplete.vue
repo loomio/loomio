@@ -306,7 +306,7 @@ div.recipients-autocomplete
           span ({{ $t('common.you') }})
     template(v-slot:item='data')
       v-list-item-avatar
-        user-avatar(v-if="data.item.type == 'user'" :user="data.item.user" size="small" no-link)
+        user-avatar(v-if="data.item.type == 'user'" :user="data.item.user" :size="24" no-link)
         v-icon.mr-1(v-else small) {{data.item.icon}}
       v-list-item-content.announcement-chip__content
         v-list-item-title

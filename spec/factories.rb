@@ -213,13 +213,6 @@ FactoryBot.define do
     query { "test query" }
   end
 
-  factory :default_group_cover do
-    cover_photo_file_name { "test.jpg" }
-    cover_photo_file_size { 10000 }
-    cover_photo_content_type { "image/jpeg" }
-    cover_photo_updated_at { 10.days.ago }
-  end
-
   factory :poll_option do
     name { "Plan A" }
   end

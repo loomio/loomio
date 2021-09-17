@@ -23,7 +23,10 @@ export eventTitle = (event) ->
     when 'Stance'              then event.model().poll().title
     when 'Discussion'
       if event.kind == 'discussion_moved'
-        (Records.groups.find(event.sourceGroupId) || {fullName: I18n.t('thread_item.deleted_group')}).fullName
+        if event.sourceGroupId
+          (Records.groups.find(event.sourceGroupId) || {fullName: I18n.t('thread_item.deleted_group')}).fullName
+        else
+          I18n.t('thread_item.invite_only_thread')
       else
         event.model().title
 

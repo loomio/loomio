@@ -25,7 +25,7 @@ export default new class AuthService
     EventBus.$emit('closeModal')
     Flash.success('auth_form.signed_in')
 
-    if user && !user.hasProfilePhoto() && !user.hasExperienced('changePicture')
+    if user && !user.avatarUrl && !user.hasExperienced('changePicture')
       EventBus.$emit 'openModal', {component: 'ChangePictureForm'}
 
 
@@ -55,7 +55,7 @@ export default new class AuthService
       data
     , (data) => data.json().then (data) =>
       user.errors = data.errors
-      
+
   reactivate: (user) ->
     Records.users.reactivate(user).then ->
       user.update({sentLoginLink: true})

@@ -103,6 +103,7 @@ ko:
   timezones:
     local: 현지시간 ({{value}})
   common:
+    version: 버젼
     empty: 비었음
     no_results_found: 결과를 찾을 수 없습니다.
     view: 보기
@@ -559,7 +560,6 @@ ko:
     privacy_private: '이 쓰레드는 {{group}}의 멤버만 볼 수 있습니다.'
     privacy_organisation: '이 쓰레드는 {{parent}}와 {{group}}의 멤버만 볼 수 있습니다.'
     fork_notice: '새 스레드는 {{title}}의 {{count}}개 항목으로 생성됩니다.'
-    one_person_notified: 1명에게만 알림이 전송됩니다.
     notify_group: 그룹 알림
   announcement:
     send_discussion: 스레드 전송
@@ -1153,6 +1153,7 @@ ko:
     unread_count: "{{count}} 개 읽지 않음"
   dashboard_page:
     aria_label: '대시보드'
+    recent_threads: "최근 스레드"
     no_groups:
       show_all: 환영합니다! 당신은 아직 그룹의 회원이 아닙니다. 공개 그룹을 찾아보거나 그룹을 만들어 보십시오.
       show_muted: 가입된 그룹이 없기 때문에 대기중인 모둠이 없습니다.

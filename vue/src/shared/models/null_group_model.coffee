@@ -65,5 +65,4 @@ export default class NullGroupModel
   hasSubscription: -> false
   isSubgroupOfSecretParent: -> false
   hasPendingMembershipRequestFrom: -> false
-  logoUrl: -> ''
   subscription: {}

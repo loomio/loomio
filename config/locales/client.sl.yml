@@ -44,6 +44,7 @@ sl:
     thumbsup: Palec gor
     thumbsdown: Palec dol
   common:
+    version: Verzija
     time_zone: Časovni pas
     local_time: Lokalni čas
     attachments: Priloge
@@ -339,6 +340,7 @@ sl:
       updated: Email nastavitve posodobljene
   dashboard_page:
     aria_label: 'Nadzorna plošča'
+    recent_threads: "Nedavne teme"
     mark_as_read: Označi kot prebrano
     filtering:
       proposals: Predlogi

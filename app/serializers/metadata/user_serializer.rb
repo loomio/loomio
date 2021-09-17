@@ -10,6 +10,6 @@ class Metadata::UserSerializer < MetadataSerializer
   end
 
   def image_urls
-    [object.avatar_url(:large)]
+    [object.avatar_url]
   end
 end

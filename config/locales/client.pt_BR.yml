@@ -103,6 +103,7 @@ pt_BR:
   timezones:
     local: Hora local ({{value}})
   common:
+    version: Versão
     empty: Vazio
     no_results_found: Nenhum resultado encontrado
     view: Visualizar
@@ -1073,6 +1074,7 @@ pt_BR:
     unread_count: "{{count}} não lidas"
   dashboard_page:
     aria_label: 'Painel'
+    recent_threads: "Conversas recentes"
     no_groups:
       show_all: Bem vindo! Você ainda não é membro de nenhum grupo. <a href="/explore">Explore grupos públicos</a> ou <a href="/g/new">Inicie um novo grupo</a>.
       show_muted: Você não possui nenhuma conversa silenciada, porque você não é membro de nenhum grupo.
@@ -1235,8 +1237,6 @@ pt_BR:
     confirm: 'Apagar comentário'
   contact_message_form:
     title: "Olá! Como podemos ajudar?"
-    read_the_manual: |
-        Você já viu o nosso <a href="{{link}}" target="_blank">Manual de Ajuda</a>? Nós o atualizamos regularmente com as perguntas e respostas mais frequentes.
     contact_us_email: "Você também pode nos mandar um email: <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Contato'
     name_label: 'Seu nome'
@@ -1719,8 +1719,6 @@ pt_BR:
     login_link_helptext: Clique no botão abaixo e nós enviaremos um link para você entrar.
     check_spam_folder: Se um email não chegar logo, verifique sua pasta de Mensagens Indesejadas (Spam).
     sign_up_helptext: Por favor, complete esse formulário para criar seu perfil de usuário
-    i_accept: "Eu aceito os <a href='{{termsUrl}}' target='_blank'>Termos do serviço</a>, e a <a href='{{privacyUrl}}' target='_blank'>Política de privacidade</a>"
-    newsletter_label: "Eu quero receber o <a href='https://help.loomio.org/en/newsletter/' target='_blank'>Informativo Loomio</a>"
     name_placeholder: Seu nome
     name_required: Por favor digite um nome
     terms_required: Você deve concordar como os Termos de Serviço

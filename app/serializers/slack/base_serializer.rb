@@ -28,7 +28,7 @@ class Slack::BaseSerializer < ActiveModel::Serializer
     {
       author_name: author.name,
       author_link: slack_link_for(author),
-      author_icon: author.avatar_url(:small),
+      author_icon: author.thumb_url,
       title:       slack_title,
       title_link:  slack_link_for(model, grant_membership: true),
       text:        slack_text,

@@ -42,6 +42,8 @@ img.emoji
     span[style="color:#000000;"],
     span[style="color: #000000"],
     span[style="color: #000000;"],
+    span[style="color:#000"],
+    span[style="color: #000;"],
     span[style="color:rgba(0, 0, 0, 0.87);"],
     span[style="color:rgba(0, 0, 0, 0.87)"],
     span[style="color:rgba(0, 0, 0, 1);"],
@@ -49,8 +51,36 @@ img.emoji
     span[style="color:rgb(0, 0, 0);"],
     span[style="color:rgb(0, 0, 0)"],
     span[style="color:rgb(0,0,0);"],
-    span[style="color:rgb(0,0,0)"]
+    span[style="color:rgb(0,0,0)"],
+    span[style="color: rgba(0, 0, 0, 0.87);"],
+    span[style="color: rgba(0, 0, 0, 0.87)"],
+    span[style="color: rgba(0, 0, 0, 1);"],
+    span[style="color: rgba(0, 0, 0, 1)"],
+    span[style="color: rgb(0, 0, 0);"],
+    span[style="color: rgb(0, 0, 0)"],
+    span[style="color: rgb(0,0,0);"],
+    span[style="color: rgb(0,0,0)"]
       color: #fff !important
+
+.theme--light
+  .lmo-markdown-wrapper
+    span[style="color:rgb(255, 255, 255);"],
+    span[style="color:rgb(255, 255, 255)"],
+    span[style="color: rgb(255, 255, 255);"],
+    span[style="color: rgb(255, 255, 255)"],
+    span[style="color:rgb(255,255,255);"],
+    span[style="color:rgb(255,255,255)"],
+    span[style="color: rgb(255,255,255);"],
+    span[style="color: rgb(255,255,255)"],
+    span[style="color: #fff"],
+    span[style="color: #fff;"],
+    span[style="color:#fff"],
+    span[style="color:#fff;"],
+    span[style="color: #ffffff"],
+    span[style="color: #ffffff;"],
+    span[style="color:#ffffff"],
+    span[style="color:#ffffff;"]
+      color: rgba(0, 0, 0, 0.87) !important
 
 .lmo-markdown-wrapper
 

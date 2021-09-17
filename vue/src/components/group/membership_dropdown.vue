@@ -29,7 +29,6 @@ export default
       AbilityService.canResendMembership(@membership)
 
     resendMembership: ->
-      FlashService.loading()
       @membership.resend().then ->
         FlashService.success "membership_dropdown.invitation_resent"
 

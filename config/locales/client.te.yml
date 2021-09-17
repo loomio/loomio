@@ -6,6 +6,7 @@ te:
   reactions:
     ok_hand: సరే
   common:
+    version: రూపాంతరం
     you: మీరు
     ok_got_it: సరే, అర్థమయింది
     learn_more: మరింత తెలుసుకోండి

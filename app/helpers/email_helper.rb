@@ -23,15 +23,17 @@ module EmailHelper
   def render_rich_text(text, format = "md")
     return "" unless text
     if format == "md"
+      text.gsub!('](/rails/active_storage', ']('+lmo_asset_host+'/rails/active_storage')
       markdownify(text)
     else
+      text.gsub!('"/rails/active_storage', '"'+lmo_asset_host+'/rails/active_storage')
       replace_iframes(text)
     end.html_safe
   end
 
   def render_plain_text(text, format = 'md')
     return "" unless text
-    ActionController::Base.helpers.strip_tags(render_rich_text(text, format))
+    ActionController::Base.helpers.strip_tags(render_rich_text(text, format)).gsub(/(?:\n\r?|\r\n?)/, '<br>')
   end
 
   def replace_iframes(str)
@@ -77,7 +79,7 @@ module EmailHelper
   end
 
   def google_pie_chart_url(poll)
-    URI.escape("https://chart.googleapis.com/chart?cht=p&chma=0,0,0,0|0,0&chs=200x200&chd=t:#{proposal_sparkline(poll)}&chco=#{proposal_colors(poll)}")
+    CGI.escape("https://chart.googleapis.com/chart?cht=p&chma=0,0,0,0|0,0&chs=200x200&chd=t:#{proposal_sparkline(poll)}&chco=#{proposal_colors(poll)}")
   end
 
   def proposal_sparkline(poll)

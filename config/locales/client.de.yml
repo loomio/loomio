@@ -1,4 +1,6 @@
 de:
+  doctypes:
+    document: 'Dokument '
   loomio_onboarding:
     group_progress_card:
       title: Los geht's
@@ -31,7 +33,7 @@ de:
     change_plan: Preisplan ändern
     view_plans: Preispläne ansehen
     free_trial: Kostenloser Test. {{days}} Tage verbleiben.
-    trial_expired: Dein Test ist abgelaufen. Upgrade um Loomio weiter zu nutzen.
+    trial_expired: Dein kostenloser Testzeitraum ist abgelaufen. Wähle ein Upgrade, um Loomio weiter zu nutzen.
     tooltip: "Unsere Preise sind fantastisch! Upgrade heute und geniesse was Loomio deiner Gruppe bieten kann."
     was_gift_trial: "Deine Gruppe nutzt Loomio kostenlos seit {{createdDate}}. Es ist uns unmöglich diesen freien Service weiterhin zu bieten. Bitte upgrade um Loomio weiterhin zu nutzen. <a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>Mehr Informationen.</a>"
     was_gift_remaining: "{{days}} Tage verbleiben."
@@ -123,6 +125,7 @@ de:
   timezones:
     local: Ortszeit ({{value}})
   common:
+    version: Version
     none: Keine
     empty: Leer
     no_results_found: Keine Ergebnisse gefunden
@@ -231,7 +234,7 @@ de:
       remind: Erinnern
       resend: Neu senden
       send: Senden
-      joined: Eingetreten
+      joined: Beigetreten
       last_seen: Zuletzt gesehen
       invite: Einladen
       resent: Einladung erneut versendet
@@ -239,6 +242,7 @@ de:
       fork: Abzweigung
       apply: Anwenden
       add_people: Leute hinzufügen
+      zoom: Zoom
     formatting_help:
       label: 'Markdown-Formatierung'
       title: 'Mehr über die Textformatierung mit Markdown lernen'
@@ -590,7 +594,6 @@ de:
     privacy_private: 'Diese Diskussion wird nur für Mitglieder von {{group}} sichtbar sein.'
     privacy_organisation: 'Diese Diskussion wird nur für Mitglieder von {{parent}} und {{group}} sichtbar sein.'
     fork_notice: 'Es wird eine neue Diskussion mit {{count}} Einträgen aus {{title}} angelegt'
-    one_person_notified: 1 Person wird benachrichtigt
     notify_group: Gruppe benachrichtigen
   announcement:
     send_discussion: Diskussion teilen
@@ -1086,7 +1089,7 @@ de:
   group_decisions_card:
     see_more: "Zeige alle ({{count}}) Entscheidungen"
   invitation_form:
-    group_url: Gruppen URL
+    group_url: Gruppen-URL
     reusable_invitation_link: Wiederverwendabrer Einladungslink
     error: "Fehler beim Kopieren in die Zwischenablage"
     aria_label: 'Einladungsformular'
@@ -1097,13 +1100,13 @@ de:
     group: 'Gruppe'
     group_placeholder: 'Gruppe auswählen'
     shareable_link: 'Teilbarer Link'
-    share_group: 'Teile deine Gruppe'
+    share_group: 'Gruppe teilen'
     copy_link: 'Kopieren'
     email_addresses: 'E-Mail-Adressen'
     email_addresses_placeholder: 'z. B. helperbot@loomio.org, friendlybot@loomio.org'
     secret_group_url_explanation: "Dieses ist die Adresse deiner Gruppe. Nur eingeladenen Mitglieder werden deine Gruppe sehen können."
-    shareable_group_url_explanation: 'Du kannst diesen Link öffentlich teilen. Menschen können eine Mitgliedschaft anfragen und du kannst diese annehmen oder ablehnen.'
-    shareable_invitation_explanation: 'Teile diesen Link nicht öffentlich. Mit ihm könnnen alle Mitglieder der Gruppe werden ohne dein Einverständnis. Teile diesen Link nur in privaten Kommunikationeninnerhalb deiner Organisation.'
+    shareable_group_url_explanation: 'Du kannst diesen Link öffentlich teilen. Interessenten können eine Mitgliedschaft beantragen und du kannst diese annehmen oder ablehnen.'
+    shareable_invitation_explanation: 'Teile diesen Link nicht öffentlich. Wer diesen Link anklickt, wird automatisch Mitglied der Gruppe. Teile diesen Link nur in privaten Kommunikationen innerhalb deiner Organisation.'
     shareable_link_reset: 'Der teilbare Link wurde zurückgesetzt. Der vorherige Link funktioniert nicht mehr.'
     email_explanation: 'Alternativ kannst du im Folgenden E-Mail-Adressen eingeben, um Einladungen per E-Mail zu senden.'
     add_custom_message: 'Mache die Einladung persönlicher'
@@ -1258,6 +1261,7 @@ de:
     unread_count: "{{count}} ungelesen"
   dashboard_page:
     aria_label: 'Schreibtisch'
+    recent_threads: "Aktuelle Diskussionen"
     no_groups:
       show_all: Willkommen! Du bist noch kein Mitglied dieser Gruppe. <a href="/explore">Siehe öffentliche Gruppen</a>oder<a href="/g/new">Eröffne eine Gruppe
       show_muted: Sie haben keine stummgeschalteten Diskussionen, weil Sie kein Mitglied einer Gruppe sind.
@@ -1429,8 +1433,6 @@ de:
     confirm: 'Kommentar löschen'
   contact_message_form:
     title: "Hey! Wie können wir dir helfen?"
-    read_the_manual: |
-        Schon unser <a href="{{link}}" target="_blank">Hilfe-Handbuch</a> gesehen? Wir aktualisieren es regelmäßig mit häufig gestellten Fragen und den zugehörigen Antworten.
     contact_us_email: "Oder schicke uns eine E-Mail: <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Kontakt aufnehmen'
     name_label: 'Dein Name'
@@ -1462,7 +1464,7 @@ de:
     multiple_search_results: "{{resultCount}} öffentliche Gruppen für <strong>{{searchTerm}}</strong> gefunden:"
     no_results_found: "<strong>Kannst die Gruppe die du suchst nicht finden?</strong> Wenn eine Gruppe als 'privat' eingestellt ist, wird sie hier nicht erscheinen. "
     newest_first: Neueste zuerst
-    biggest_first: Grösste zuerst
+    biggest_first: Größte zuerst
     order_by: Sortiere Gruppen nach
   global:
     messages:
@@ -1546,7 +1548,7 @@ de:
     no_results_found: 'Keine Ergebnisse für "{{search}}" gefunden '
   members_panel:
     no_results: 'Keine Mitglieder gefunden'
-    everyone: 'Jeder'
+    everyone: 'Alle'
     sort: 'Ordnen'
     order_label: "Ordnung"
     order_by_name: 'Name'
@@ -1983,7 +1985,7 @@ de:
     youre_invited_discussion: Du wurdest zur Teilnahme an der Diskussion eingeladen.
     youre_invited_poll: Du wurdest zur Abstimmung eingeladen.
     existing_account_can_sign_in: Wenn Du bereits ein {{site_name}} Mitglied bist, melde Dich mit Deinem bestehenden Konto an
-    sign_up_or_log_in: Erstelle ein Benutzerkonto oder logge Dich ein in {{site_name}}
+    sign_up_or_log_in: Benutzerkonto erstellen oder einloggen auf {{site_name}}
     sign_in_to_loomio: Einloggen bei {{site_name}}
     sign_in_help: Probleme beim Anmelden?
     sign_in: einloggen
@@ -1995,7 +1997,7 @@ de:
     continue_with_email: Weiter mit E-Mail
     or_enter_your_email: oder gib deine E-Mail-Adresse ein
     enter_your_name: Name einfügen
-    invitation_required: 'Du benötigst eine Einladung um ein Konto zu erstellen. '
+    invitation_required: 'Du benötigst eine Einladung, um ein Konto erstellen zu können. '
     more_providers: mehr
     email_not_present: Eine Mailadresse ist erforderlich
     invalid_email: "Entschuldigung, diese E-Mail-Adresse scheint ungültig zu sein."
@@ -2008,10 +2010,8 @@ de:
     login_with_token: 'Fertig! Klicke auf den folgenden Link, um fortzufahren. '
     login_link_helptext: 'Klicke auf den folgenden Button um einen Link für deine Anmeldung zu erhalten. '
     enter_your_password: "Passwort eingeben, um fortzufahren"
-    check_spam_folder: 'Solltest du keine E-mail erhalten, überprüfe bitte deinen Spam Ordner. '
+    check_spam_folder: 'Solltest du keine E-Mail erhalten, überprüfe bitte deinen Spam-Ordner. '
     sign_up_helptext: Bitte füllen Sie dieses Formular aus, um ein Benutzerkonto zu erstellen
-    i_accept: "Ich akzeptiere die <a href='{{termsUrl}}' target='_blank'>Nutzungsbedingungen</a> und <a href='{{privacyUrl}}' target='_blank'>Datenschutzerklärung</a>"
-    newsletter_label: "Ich möchte den <a href='https://help.loomio.org/en/newsletter/' target='_blank'>Loomio Newsletter</a> erhalten"
     name_placeholder: Ihr Name
     name_required: Bitte geben Sie einen Namen ein.
     terms_required: Sie müssen die Nutzungsbedingungen bestätigen.

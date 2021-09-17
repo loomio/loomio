@@ -15,7 +15,6 @@ class Dev::NightwatchController < Dev::BaseController
   include Dev::Scenarios::Notification
   include Dev::Scenarios::Profile
   include Dev::Scenarios::Tags
-  # include Dev::Scenarios::Legacy
 
   before_action :redis_flushall, except: [
     :last_email,

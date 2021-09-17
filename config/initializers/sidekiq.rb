@@ -10,11 +10,10 @@ CHANNELS_REDIS_POOL = ConnectionPool.new(size: ENV.fetch('REDIS_POOL_SIZE', 30),
 Redis.exists_returns_integer = false
 Redis::Objects.redis = CHANNELS_REDIS_POOL
 
-if Rails.env.test?
+if Rails.env.test? || ENV['SIDEKIQ_INLINE']
   require 'sidekiq/testing'
   Sidekiq::Testing.inline!
 else
-
   Sidekiq.configure_server do |config|
     config.redis = SIDEKIQ_REDIS_POOL
   end

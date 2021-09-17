@@ -37,7 +37,7 @@ v-card.auth-identity-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.
   v-sheet.mx-4.pb-4
     .mb-4.text-center
       v-layout(justify-center)
-        auth-avatar(:user='user')
+        user-avatar(:user='user')
     .mb-4.text-center
     .auth-identity-form__options
       .auth-identity-form__new-account.mb-8

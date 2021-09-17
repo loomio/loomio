@@ -40,7 +40,7 @@ class Webhook::Microsoft::BaseSerializer < Webhook::Markdown::BaseSerializer
   end
 
   def section_image
-    user.absolute_avatar_url
+    user.avatar_url
   end
 
   def section_facts

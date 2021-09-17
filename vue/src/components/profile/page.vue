@@ -108,7 +108,7 @@ v-main
                     a.email-taken-find-out-more(@click="openSendVerificationModal" v-t="'merge_accounts.find_out_more'")
 
                 .profile-page__avatar.d-flex.flex-column.justify-center.align-center.mx-12(@click="changePicture()")
-                  user-avatar.mb-4(:user='originalUser' size='featured' :no-link="true")
+                  user-avatar.mb-4(:user='originalUser' :size='192' :no-link="true")
                   v-btn(color="accent" @click="changePicture" v-t="'profile_page.change_picture_link'")
 
               lmo-textarea(:model='user' field="shortBio" :label="$t('profile_page.short_bio_label')" :placeholder="$t('profile_page.short_bio_placeholder')")

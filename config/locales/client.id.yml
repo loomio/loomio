@@ -4,6 +4,7 @@ id:
   loomio_tags:
     name_label: Nama
   common:
+    version: Versi
     group: 'Kelompok'
     groups: 'Kelompok'
     email_address: Alamat sure

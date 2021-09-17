@@ -79,13 +79,13 @@ div(v-if="group")
     v-list(v-else avatar three-line)
       v-list-item.subgroups-card__list-item(v-if="group.subgroups().length > 0" :to="urlFor(group)+'?subgroups=none'")
         v-list-item-avatar.subgroups-card__list-item-logo
-          group-avatar(:group="group" size="28px")
+          group-avatar(:group="group" :size="28")
         v-list-item-content
           v-list-item-title(v-t="{path: 'subgroups_panel.group_without_subgroups', args: {name: group.name}}")
           v-list-item-subtitle {{ stripDescription(group.description) }}
       v-list-item.subgroups-card__list-item(v-for='group in subgroups', :key='group.id' :to='urlFor(group)')
         v-list-item-avatar.subgroups-card__list-item-logo
-          group-avatar(:group="group" size="28px")
+          group-avatar(:group="group" :size="28")
         v-list-item-content
           v-list-item-title {{ group.name }}
           v-list-item-subtitle {{ stripDescription(group.description) }}
