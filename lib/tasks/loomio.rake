@@ -41,7 +41,6 @@ namespace :loomio do
 
     SendDailyCatchUpEmailWorker.perform_async
 
-    LocateUsersAndGroupsWorker.perform_async
     if (Time.now.hour == 0)
       ThrottleService.reset!('day')
       OutcomeService.delay.publish_review_due
