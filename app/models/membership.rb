@@ -26,6 +26,7 @@ class Membership < ApplicationRecord
   belongs_to :invitation
   has_many :events, as: :eventable, dependent: :destroy
 
+  scope :dangling,      -> { joins('left join groups g on memberships.group_id = g.id').where('group_id is not null and g.id is null')  }
   scope :active,        -> { not_archived.accepted }
   scope :archived,      -> { where('archived_at IS NOT NULL') }
   scope :not_archived,  -> { where(archived_at: nil) }

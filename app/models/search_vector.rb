@@ -28,6 +28,7 @@ class SearchVector < ApplicationRecord
   validates :discussion, presence: true
   validates :search_vector, presence: true
 
+  scope :dangling, -> { joins('left join discussions on discussion_id = discussions.id').where('discussions.id is null') }
   scope :search_for, ->(query, user, opts = {}) do
     DiscussionQuery.visible_to(chain: search_without_privacy!(query),
       user: user,

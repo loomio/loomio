@@ -13,6 +13,9 @@ class DiscussionReader < ApplicationRecord
   delegate :importance, to: :discussion
   delegate :message_channel, to: :user
 
+  scope :dangling, -> { joins('left join discussions on discussions.id = discussion_id left join users on users.id = user_id').where('discussions.id is null or users.id is null') }
+  # scope :spammy, -> { joins('left join users on users.id = user_id').where('users.email_verified = false') }
+
   scope :not_revoked, -> { where("discussion_readers.revoked_at IS NULL") }
 
   scope :guests, -> { where("discussion_readers.inviter_id IS NOT NULL
