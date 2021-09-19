@@ -19,6 +19,7 @@ class Discussion < ApplicationRecord
 
   no_spam_for :title, :description
 
+  scope :dangling, -> { joins('left join groups g on discussions.group_id = g.id').where('group_id is not null and g.id is null') }
   scope :in_organisation, -> (group) { includes(:author).where(group_id: group.id_and_subgroup_ids) }
   scope :last_activity_after, -> (time) { where('last_activity_at > ?', time) }
   scope :order_by_latest_activity, -> { order(last_activity_at: :desc) }
