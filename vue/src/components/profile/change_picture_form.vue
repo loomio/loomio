@@ -70,7 +70,7 @@ v-card.change-picture-form
         v-list-item-avatar
           v-icon mdi-camera
         v-list-item-title(v-t="'change_picture_form.use_uploaded'")
-          input.hidden.change-picture-form__file-input(type="file" ref="fileInput" @change='uploadFile' accept="image/*")
+          input.hidden.change-picture-form__file-input(type="file" ref="fileInput" @change='uploadFile' accept="image/png, image/gif, image/jpeg, image/webp")
       v-list-item(v-for="provider in providers" :key="provider.id" @click="selectProvider(provider)")
         v-list-item-avatar
           v-icon {{ iconClass(provider.name) }}

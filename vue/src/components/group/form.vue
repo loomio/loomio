@@ -151,8 +151,8 @@ v-card.group-form
           validation-errors(:subject="group" field="handle")
         v-spacer
 
-        input.hidden.change-picture-form__file-input(type="file" ref="coverPhotoInput" @change='uploadCoverPhoto' accept="image/*")
-        input.hidden.change-picture-form__file-input(type="file" ref="logoInput" @change='uploadLogo' accept="image/*")
+        input.hidden.change-picture-form__file-input(type="file" ref="coverPhotoInput" @change='uploadCoverPhoto' accept="image/png, image/gif, image/jpeg, image/webp")
+        input.hidden.change-picture-form__file-input(type="file" ref="logoInput" @change='uploadLogo' accept="image/png, image/gif, image/jpeg, image/webp")
 
         lmo-textarea.group-form__group-description(:model='group' field="description" :placeholder="$t('group_form.description_placeholder')" :label="$t('group_form.description')")
         validation-errors(:subject="group" field="name")
