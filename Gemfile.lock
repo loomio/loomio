@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/customerio/customerio-ruby
-  revision: 86c7813c7a21ad40328d8b0612e72583854d4b77
+  revision: 2234128cfec20cbf90aede5be40aa7a549607fa6
   specs:
-    customerio (4.0.1)
+    customerio (4.1.0)
       addressable (~> 2.8.0)
       multi_json (~> 1.0)
 
