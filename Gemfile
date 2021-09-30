@@ -25,7 +25,7 @@ gem 'redcarpet', '~> 3.5.1'
 gem 'paper_trail', '~> 12.1.0'
 gem 'sidekiq'
 gem 'friendly_id', '~> 5.3.0'
-gem 'httparty', '~> 0.19.0'
+gem 'httparty', '~> 0.20.0'
 gem 'browser', '~> 5.3.1'
 gem "aws-sdk-s3", require: false
 gem 'mini_magick'
