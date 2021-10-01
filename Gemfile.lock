@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/customerio/customerio-ruby
-  revision: 86c7813c7a21ad40328d8b0612e72583854d4b77
+  revision: 2234128cfec20cbf90aede5be40aa7a549607fa6
   specs:
-    customerio (4.0.1)
+    customerio (4.1.0)
       addressable (~> 2.8.0)
       multi_json (~> 1.0)
 
@@ -320,7 +320,7 @@ GEM
       ruby_parser (~> 3.5)
     htmlentities (4.3.4)
     http_accept_language (2.1.1)
-    httparty (0.19.0)
+    httparty (0.20.0)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
     i18n (1.8.10)
@@ -393,13 +393,13 @@ GEM
     net_http_timeout_errors (0.3.5)
     newrelic_rpm (8.0.0)
     nio4r (2.5.8)
-    nokogiri (1.12.4)
+    nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
     oga (3.3)
       ast
       ruby-ll (~> 2.1)
-    oj (3.13.7)
+    oj (3.13.8)
     orm_adapter (0.5.0)
     os (1.1.1)
     paper_trail (12.1.0)
@@ -653,7 +653,7 @@ DEPENDENCIES
   haml-rails (~> 2.0.1)
   hiredis
   http_accept_language
-  httparty (~> 0.19.0)
+  httparty (~> 0.20.0)
   icalendar
   image_processing (~> 1.12)
   kt-paperclip
