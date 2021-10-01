@@ -393,7 +393,7 @@ GEM
     net_http_timeout_errors (0.3.5)
     newrelic_rpm (8.0.0)
     nio4r (2.5.8)
-    nokogiri (1.12.4)
+    nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
     oga (3.3)
