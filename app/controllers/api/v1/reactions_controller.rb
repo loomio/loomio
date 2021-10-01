@@ -2,7 +2,7 @@ class API::V1::ReactionsController < API::V1::RestfulController
   alias :create :update
 
   def index
-    %w[comment_ids discussion_ids outcome_ids poll_ids].each do |key|
+    %w[comment_ids discussion_ids outcome_ids poll_ids stance_ids].each do |key|
       next unless params.has_key? key
       params[key] = params[key].split('x').map(&:to_i)
     end
