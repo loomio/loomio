@@ -26,10 +26,10 @@ class ReactionQuery
   def self.unsafe_where(params)
     ids = {
       discussion_ids: Array(params[:discussion_ids]),
-      outcome_ids: Array(params[:outcome_ids]),
-      comment_ids: Array(params[:comment_ids]),
-      poll_ids:    Array(params[:poll_ids]),
-      stance_ids:    Array(params[:stance_ids])
+      outcome_ids:    Array(params[:outcome_ids]),
+      comment_ids:    Array(params[:comment_ids]),
+      poll_ids:       Array(params[:poll_ids]),
+      stance_ids:     Array(params[:stance_ids])
     }
     Reaction.where(
       "(reactable_type = 'Discussion' AND reactable_id IN (:discussion_ids)) OR
