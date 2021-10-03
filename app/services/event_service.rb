@@ -84,6 +84,16 @@ class EventService
     discussion.update_items_count
     discussion.update_sequence_info!
     Redis::Counter.new("sequence_id_counter_#{discussion_id}").delete
+
+    # ensure all the discussion_readers have valid read_ranges values
+    DiscussionReader.where(discussion_id: discussion_id).each do |reader|
+      reader.update_columns(
+        read_ranges_string: RangeSet.serialize(
+          RangeSet.intersect_ranges(reader.read_ranges, discussion.ranges)
+        )
+      )
+    end
+
   end
 
   def self.reset_child_positions(parent_id, parent_position_key)
