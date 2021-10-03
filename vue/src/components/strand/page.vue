@@ -51,7 +51,6 @@ export default
       return unless @discussion
       return if @discussion.key != @$route.params.key
       return if @discussion.createdEvent.childCount == 0
-      @loader.reset()
 
       if @$route.query.k
         @loader.addLoadPositionKeyRule(@$route.query.k)
