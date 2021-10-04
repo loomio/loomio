@@ -194,7 +194,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion 
     .thread-nav__presets
       router-link.thread-nav__preset(v-for="event in presets" :key="event.id" :to="urlFor(event)" :style="{top: offsetFor(keys.indexOf(event.positionKey))+'px'}")
         .thread-nav__preset--line
-        .thread-nav__preset--title {{event.pinnedTitle || event.suggestedTitle()}}
+        .thread-nav__preset--title {{event.pinnedTitle || event.fillPinnedTitle() }}
         .thread-nav__stance-icon-container(v-if="event.model().isA('poll') && event.model().iCanVote()")
           poll-common-stance-icon.thread-nav__stance-icon(:poll="event.model()" :stance="event.model().myStance()" :size='18')
     .thread-nav__knob(:style="{top: knobOffset+'px', height: knobHeight+'px'}" ref="knob" @mousedown="onMouseDown" v-touch:start="onTouchStart" v-observe-visibility="{callback: setKnobVisible}")

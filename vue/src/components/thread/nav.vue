@@ -189,7 +189,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
         .thread-nav__preset--line
         //- poll-common-chart-preview.thread-nav__poll-chart-preview(v-if="event.model().isA('poll')" :poll="event.model()" :size='18' :showMyStance="false")
         .thread-nav__preset--title
-          span {{event.pinnedTitle || event.suggestedTitle()}}
+          span {{event.pinnedTitle || event.fillPinnedTitle()}}
         .thread-nav__stance-icon-container(v-if="event.model().isA('poll') && event.model().iCanVote()")
           poll-common-stance-icon.thread-nav__stance-icon(:poll="event.model()" :stance="event.model().myStance()" :size='18')
     .thread-nav__knob(:style="{top: knobOffset+'px', height: knobHeight+'px'}" ref="knob" @mousedown="onMouseDown" v-touch:start="onTouchStart" v-observe-visibility="{callback: setKnobVisible}")

@@ -70,6 +70,9 @@ export default class EventModel extends BaseModel
   pin: (title) ->
     @remote.patchMember(@id, 'pin', {pinned_title: title})
 
+  fillPinnedTitle: ->
+    @pinnedTitle = @suggestedTitle()
+
   suggestedTitle: ->
     model = @model()
     return '' unless model

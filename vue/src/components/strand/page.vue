@@ -129,12 +129,6 @@ export default
         @loader.focusAttrs = {commentId: parseInt(@$route.query.comment_id)}
 
       if @loader.rules.length == 0
-        console.log "loader rules", @loader.rules
-        # # never read, or all read?
-        # # console.log "0 rules"
-        # console.log "ranges", @discussion.ranges
-        # console.log "readRanges", @discussion.readRanges
-        # console.log "@discussion.unreadItemsCount()", @discussion.unreadItemsCount()
         if @discussion.lastReadAt
           if @discussion.unreadItemsCount() == 0
             @loader.addLoadNewestRule()
