@@ -32,10 +32,7 @@ export default
 <template lang="pug">
 .poll-common-stance-choices.pl-2(v-if="!poll.singleChoice()")
   span.caption(v-if='stance.castAt && stance.totalScore() == 0' v-t="'poll_common_votes_panel.none_of_the_above'" )
-  template(v-if="datesAsOptions")
-    v-chip.mr-1.my-1(v-if="choice.show" v-for="choice in choices" :key="choice.pollOption.id" outlined :color="colorFor(choice.score)" @click="emitClick")
-      poll-meeting-time(:name="choice.pollOption.name")
-  template(v-else)
+  template(v-if="!datesAsOptions")
     v-chip.poll-common-stance-choice(
       v-for="choice in choices"
       v-if="choice.score > 0 || pollType == 'score'"
