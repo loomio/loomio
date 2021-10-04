@@ -1,7 +1,7 @@
 import DashboardPage from './components/dashboard/page.vue'
 import InboxPage from './components/inbox/page.vue'
 import ExplorePage from './components/explore/page.vue'
-import ThreadPage from './components/thread/page.vue'
+# import ThreadPage from './components/thread/page.vue'
 import StrandPage from './components/strand/page.vue'
 import ProfilePage from './components/profile/page.vue'
 import PollPage from './components/poll/page.vue'
@@ -26,7 +26,7 @@ import StartDiscussionPage from './components/start_discussion/page.vue'
 import UserPage from './components/user/page.vue'
 import ThreadsPage from './components/threads/page.vue'
 
-import ThreadNav from './components/thread/nav'
+# import ThreadNav from './components/thread/nav'
 
 import './config/catch_navigation_duplicated.js'
 import Vue from 'vue'
@@ -50,11 +50,11 @@ groupPageChildren = [
   {path: ':stub?', component: GroupDiscussionsPanel, meta: {noScroll: true}}
 ]
 
-threadPageChildren = [
-  {path: 'comment/:comment_id', components: {nav: ThreadNav}}
-  {path: ':stub?/:sequence_id?', components: {nav: ThreadNav}}
-  {path: '', components: {nav: ThreadNav}}
-]
+# threadPageChildren = [
+#   {path: 'comment/:comment_id', components: {nav: ThreadNav}}
+#   {path: ':stub?/:sequence_id?', components: {nav: ThreadNav}}
+#   {path: '', components: {nav: ThreadNav}}
+# ]
 
 strandPageChildren = [
   {path: 'comment/:comment_id'}
@@ -92,13 +92,8 @@ router = new Router
     {
       path: '/d/:key',
       name: 'discussion',
-      component: ThreadPage,
-      children: threadPageChildren,
-      beforeEnter: (to, from, next) ->
-        if Session.user().experiences['betaFeatures']
-          next(name: 'strand', params: to.params, query: to.query)
-        else
-          next()
+      component: StrandPage,
+      children: strandPageChildren
     },
     {path: '/s/:key', name: 'strand', component: StrandPage, children: strandPageChildren },
     {path: '/g/new', component: StartGroupPage},

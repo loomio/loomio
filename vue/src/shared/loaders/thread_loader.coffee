@@ -15,6 +15,7 @@ export default class ThreadLoader
     @collection = Vue.observable([])
     @rules = []
     @ruleStrings = []
+    @fetchedRules = []
     @readRanges = cloneDeep @discussion.readRanges
     @focusAttrs = {}
     @visibleKeys = {}
@@ -323,7 +324,6 @@ export default class ThreadLoader
   addRule: (rule) ->
     ruleString = JSON.stringify(rule)
 
-    console.log "ruleString", ruleString
     if !@ruleStrings.includes(ruleString)
       @rules.push(rule)
       @ruleStrings.push(ruleString)
@@ -332,17 +332,20 @@ export default class ThreadLoader
       false
 
   addRuleAndFetch: (rule) ->
-    if @addRule(rule)
-      params = Object.assign {}, rule.remote, {exclude_types: 'group discussion'}
-      Records.events.fetch(params: params).finally => @loading = false
+    @fetch() if @addRule(rule)
 
   fetch:  ->
-    console.log 'here', @rules
-    promises = @rules.filter((rule) -> rule.remote).map (rule) =>
+    newRules = []
+    promises = @rules.filter((rule) -> rule.remote)
+                     .filter((rule) => !@fetchedRules.includes(JSON.stringify(rule.remote)))
+                     .map (rule) =>
+      newRules.push(JSON.stringify(rule.remote))
       params = Object.assign {}, rule.remote, {exclude_types: 'group discussion'}
       Records.events.fetch(params: params)
-    # console.log promises
-    Promise.all(promises).finally => @loading = false
+
+    Promise.all(promises).finally =>
+      @fetchedRules = uniq @fetchedRules.concat(newRules)
+      @loading = false
 
   updateCollection: ->
     @records = []
@@ -361,11 +364,6 @@ export default class ThreadLoader
     @records = uniq @records.concat(compact(@records.map (o) -> o.parent()))
     @records = orderBy @records, 'positionKey'
 
-    @recordSequenceIds  = @records.map (event) -> event.sequenceId
-    @recordPositionKeys = @records.map (event) -> event.positionKey
-    @recordPositions    = @records.map (event) -> event.position
-    @r
-
     eventIds = @records.map (event) -> event.id
 
     orphans = @records.filter (event) ->
@@ -381,10 +379,6 @@ export default class ThreadLoader
       # orderBy r, 'positionKey'
 
     @collection = nest(orphans)
-
-    # console.log 'rules', rules.length, rules
-    # console.log 'eventIds', eventIds.length, eventIds
-    # console.log 'orphans', orphans.length, orphans
-    # console.log 'collection', @collection.length, @collection
+    EventBus.$emit('collectionUpdated', @discussion.id)
 
     @collection
