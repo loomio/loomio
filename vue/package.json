@@ -32,7 +32,7 @@
     "lokijs": "1.5.12",
     "marked": "^3.0.4",
     "md5": "2.3.0",
-    "posthog-js": "^1.13.15",
+    "posthog-js": "^1.13.17",
     "pretty-bytes": "^5.6.0",
     "raven-js": "latest",
     "socket.io-client": "^2.3.1",
@@ -46,7 +46,7 @@
     "vue": "^2.6.14",
     "vue-clipboard2": "^0.3.3",
     "vue-gravatar": "^1.4.1",
-    "vue-i18n": "8.26.3",
+    "vue-i18n": "8.26.5",
     "vue-observe-visibility": "^1.0.0",
     "vue-recaptcha": "^1.2.0",
     "vue-router": "^3.5.2",
@@ -55,7 +55,7 @@
     "vuetify": "2.5.9"
   },
   "devDependencies": {
-    "@mdi/font": "^5.9.55",
+    "@mdi/font": "^6.2.95",
     "@vue/cli-plugin-pwa": "^4.5.13",
     "@vue/cli-plugin-babel": "^4.5.13",
     "@vue/cli-plugin-e2e-nightwatch": "^4.5.13",
