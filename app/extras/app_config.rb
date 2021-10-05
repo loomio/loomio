@@ -98,6 +98,7 @@ class AppConfig
       example_content:            !ENV['FEATURES_DISABLE_EXAMPLE_CONTENT'],
       proposal_consent_default:   ENV.fetch('FEATURES_PROPOSAL_CONSENT_DEFAULT', false),
       show_contact:               ENV.fetch('FEATURES_SHOW_CONTACT', false),
+      thread_page_v3:             ENV.fetch('FEATURES_THREAD_PAGE_V3', false),
       show_contact_consent:       ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false),
       group_survey:               ENV.fetch('FEATURES_GROUP_SURVEY', false),
       group_sso:                  ENV.fetch('FEATURES_GROUP_SSO', false),

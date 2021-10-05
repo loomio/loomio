@@ -12,6 +12,7 @@ export default
     position: 0
     group: null
     discussionFetchError: null
+    lastFocus: null
 
   mounted: -> @init()
 
@@ -43,15 +44,73 @@ export default
           key: 'strand'+@discussion.id
           collections: ['events']
           query: => @loader.updateCollection()
+
       .catch (error) =>
         EventBus.$emit 'pageError', error
         EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()
+
+    focusSelector: ->
+      if @loader.focusAttrs.newest
+        if @discussion.lastSequenceId()
+          return ".sequenceId-#{@discussion.lastSequenceId()}"
+        else
+          return ".context-panel"
+
+      if @loader.focusAttrs.unread
+        # how do we know when the context was updated?
+        if @loader.firstUnreadSequenceId()
+          # console.log 'scroll to unread items'
+          return ".sequenceId-#{@loader.firstUnreadSequenceId()}"
+        else
+          # console.log 'scroll to unread context'
+          return '.context-panel'
+
+      if @loader.focusAttrs.oldest
+        # console.log 'scroll to oldest, context'
+        return '.context-panel'
+
+      if @loader.focusAttrs.commentId
+        # console.log 'scroll to comment'
+        return ".commendId-#{@loader.focusAttrs.commentId}"
+
+      if @loader.focusAttrs.sequenceId
+        return ".sequenceId-#{@loader.focusAttrs.sequenceId}"
+
+      if @loader.focusAttrs.position
+        return ".position-#{@loader.focusAttrs.position}"
+
+      if @loader.focusAttrs.positionKey
+        return ".positionKey-#{@loader.focusAttrs.positionKey}"
+
+    scrollToFocusIfPresent: ->
+      selector = @focusSelector()
+      if document.querySelector(selector)
+        @scrollTo(selector)
+        @lastFocus = selector
+
+    scrollToFocusUnlessFocused: ->
+      selector = @focusSelector()
+      unless @lastFocus == selector
+        @scrollTo(selector)
+        @lastFocus = selector
+
+    elementInView: (el) ->
+      rect = el.getBoundingClientRect()
+      (rect.top >= 0 && rect.left >= 0 &&
+       rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+       rect.right <= (window.innerWidth || document.documentElement.clientWidth))
+
+    refocusIfOffscreen: ->
+      if @lastFocus &&
+         el = document.querySelector(@lastFocus) &&
+         !@elementInView(el)
+        console.log "refocusing #{@lastFocus}"
+        @scrollTo(@lastFocus)
 
     respondToRoute: ->
       return unless @discussion
       return if @discussion.key != @$route.params.key
       return if @discussion.createdEvent.childCount == 0
-      @loader.reset()
 
       if @$route.query.k
         @loader.addLoadPositionKeyRule(@$route.query.k)
@@ -70,11 +129,6 @@ export default
         @loader.focusAttrs = {commentId: parseInt(@$route.query.comment_id)}
 
       if @loader.rules.length == 0
-        # # never read, or all read?
-        # # console.log "0 rules"
-        # console.log "ranges", @discussion.ranges
-        # console.log "readRanges", @discussion.readRanges
-        # console.log "@discussion.unreadItemsCount()", @discussion.unreadItemsCount()
         if @discussion.lastReadAt
           if @discussion.unreadItemsCount() == 0
             @loader.addLoadNewestRule()
@@ -86,46 +140,13 @@ export default
           @loader.addLoadOldestRule()
           @loader.focusAttrs = {oldest: 1}
 
-      if @discussion.itemsCount <= @loader.padding
-        @loader.rules = []
-        @loader.loadEverything()
-
       @loader.addContextRule()
-      # console.log 'fetching', @loader.focusAttrs, @loader.rules
+
+      @scrollToFocusIfPresent()
+
       @loader.fetch().finally =>
-        setTimeout =>
-          if @loader.focusAttrs.newest
-            if @discussion.lastSequenceId()
-              @scrollTo ".sequenceId-#{@discussion.lastSequenceId()}"
-            else
-              @scrollTo ".context-panel"
+        setTimeout => @scrollToFocusUnlessFocused()
 
-          if @loader.focusAttrs.unread
-            # how do we know when the context was updated?
-            if @loader.firstUnreadSequenceId()
-              # console.log 'scroll to unread items'
-              @scrollTo ".sequenceId-#{@loader.firstUnreadSequenceId()}"
-            else
-              # console.log 'scroll to unread context'
-              @scrollTo '.context-panel'
-
-          if @loader.focusAttrs.oldest
-            # console.log 'scroll to oldest, context'
-            @scrollTo '.context-panel'
-
-          if @loader.focusAttrs.commentId
-            # console.log 'scroll to comment'
-            @scrollTo ".commendId-#{@loader.focusAttrs.commentId}"
-
-          if @loader.focusAttrs.sequenceId
-            # console.log 'scroll to sequenceId'
-            @scrollTo ".sequenceId-#{@loader.focusAttrs.sequenceId}"
-
-          if @loader.focusAttrs.position
-            @scrollTo ".position-#{@loader.focusAttrs.position}"
-
-          if @loader.focusAttrs.positionKey
-            @scrollTo ".positionKey-#{@loader.focusAttrs.positionKey}"
       .catch (res) =>
         console.log 'promises failed', res
 

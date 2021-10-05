@@ -3,6 +3,7 @@ import Vue from 'vue'
 import AppConfig from '@/shared/services/app_config'
 import vuetify from '@/vuetify'
 import router from '@/routes.coffee'
+import strandRouter from '@/strand_routes.coffee'
 import i18n from '@/i18n.coffee'
 import app from '@/app.vue'
 import marked from '@/marked'
@@ -43,10 +44,15 @@ boot (data) ->
     Sentry.configureScope (scope) ->
       scope.setUser pick(Session.user(), ['id', 'name', 'email', 'username'])
 
+  if Session.user().experiences['betaFeatures'] || AppConfig.features.app.thread_page_v3
+    bestRouter = strandRouter
+  else
+    bestRouter = router
+
   initContent()
   new Vue(
     render: (h) -> h(app)
-    router: router
+    router: bestRouter
     vuetify: vuetify
     i18n: i18n
   ).$mount('#app')

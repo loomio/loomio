@@ -34,7 +34,6 @@ export default
       return if @knobVisible or !document.querySelector('.thread-sidebar .v-navigation-drawer__content')
       @$vuetify.goTo('.thread-nav__knob', { container: '.thread-sidebar .v-navigation-drawer__content', offset: 100 })
 
-
     Records.events.fetch
       params:
         exclude_types: 'group discussion'
@@ -195,7 +194,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion 
     .thread-nav__presets
       router-link.thread-nav__preset(v-for="event in presets" :key="event.id" :to="urlFor(event)" :style="{top: offsetFor(keys.indexOf(event.positionKey))+'px'}")
         .thread-nav__preset--line
-        .thread-nav__preset--title {{event.pinnedTitle || event.suggestedTitle()}}
+        .thread-nav__preset--title {{event.pinnedTitle || event.fillPinnedTitle() }}
         .thread-nav__stance-icon-container(v-if="event.model().isA('poll') && event.model().iCanVote()")
           poll-common-stance-icon.thread-nav__stance-icon(:poll="event.model()" :stance="event.model().myStance()" :size='18')
     .thread-nav__knob(:style="{top: knobOffset+'px', height: knobHeight+'px'}" ref="knob" @mousedown="onMouseDown" v-touch:start="onTouchStart" v-observe-visibility="{callback: setKnobVisible}")
@@ -207,4 +206,114 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion 
 </template>
 
 <style lang="sass">
+.thread-nav
+  position: relative
+
+  .poll-common-chart-preview__stance i
+    top: -4px
+
+.thread-nav__stance-icon-container
+  position: relative
+  width: 16px
+  height: 16px
+
+.thread-nav__poll-chart-preview
+  margin-right: 2px
+  position: relative
+  top: -10px
+  left: -2px
+
+.thread-nav__stance-icon
+  position: relative
+  top: -10px
+  left: 4px
+
+.thread-nav__date
+  font-size: 12px
+  display: block
+  margin: 8px 8px
+  // text-align: right
+  color: var(--text-primary) !important
+
+.thread-nav__preset
+  display: flex
+  position: absolute
+  align-items: flex-start
+  width: 220px
+
+// .thread-nav__preset:last-child
+//   margin-top: 4px
+//   align-items: flex-end
+
+.thread-nav__preset--title
+  font-size: 12px
+  margin-top: -10px
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+.thread-nav__preset--title:hover
+  overflow: visible !important
+  white-space: normal !important
+  // text-overflow: inherit
+  // overflow: visible
+  // white-space: normal
+  background-color: #eee
+  z-index: 1000
+
+.thread-nav__preset--line
+  height: 2px
+  min-width: 22px
+  background-color: #aaa
+  margin-right: 4px
+  // margin-left: 10px
+  // margin-left: 12px
+  // margin-right: 8px
+  // margin-left: 11px
+  // left: 11px
+
+.thread-nav__track
+  position: absolute
+  width: 24px
+  cursor: pointer
+  z-index: 1000
+
+.thread-nav__track-line
+  height: 100%
+  position: absolute
+  background-color: var(--v-primary-base)
+  width: 2px
+  margin: 0 11px
+
+// 123456789012345678901234
+// ------------------------ track 24
+// -----------||----------- track-line 11 2 11
+// --------########-------- knob 8 8 8
+// ------############------ knob:hover 6 12 6
+// ######################## preset-line 0 24 0
+
+.thread-nav__knob
+  position: absolute
+  display: flex
+  flex-direction: column
+  width: 8px
+  background-color: var(--v-primary-base)
+  cursor: ns-resize
+  border-radius: 4px
+  transition: top 0.1s linear, height 0.3s linear
+  margin: 0 8px
+  z-index: 1001
+  min-height: 16px
+
+.thread-nav__knob:hover
+  transition: none
+  width: 12px
+  margin: 0 6px
+
+.disable-select
+  user-select: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
 </style>

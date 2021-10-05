@@ -14,6 +14,8 @@ export default class ThreadLoader
   reset: ->
     @collection = Vue.observable([])
     @rules = []
+    @ruleStrings = []
+    @fetchedRules = []
     @readRanges = cloneDeep @discussion.readRanges
     @focusAttrs = {}
     @visibleKeys = {}
@@ -38,30 +40,25 @@ export default class ThreadLoader
     Vue.set(@collapsed, event.id, false)
 
   jumpToEarliest: ->
-    @reset()
     @addLoadOldestFirstRule()
     @fetch()
 
   jumpToLatest: ->
-    @reset()
     @addLoadNewestFirstRule()
     @fetch()
 
   jumpToUnread: ->
-    @reset()
     @addLoadUnreadRule()
     @fetch()
 
   jumpToSequenceId: (id) ->
-    @reset()
     @addLoadSequenceIdRule(id)
     @fetch()
-
 
   loadEverything: ->
     @loading = true
     @titleKey = 'strand_nav.whole_thread'
-    @addRule
+    @addRuleAndFetch
       local:
         find:
           discussionId: @discussion.id
@@ -72,7 +69,7 @@ export default class ThreadLoader
   loadChildren: (event) ->
     @loading = 'children'+event.id
     if event.kind == "new_discussion"
-      @addRule
+      @addRuleAndFetch
         name: "load discussion children"
         local:
           find:
@@ -84,7 +81,7 @@ export default class ThreadLoader
           order_by: 'position_key'
           per: @padding
     else
-      @addRule
+      @addRuleAndFetch
         name: "load children (prefix #{event.positionKey})"
         local:
           find:
@@ -116,7 +113,7 @@ export default class ThreadLoader
     positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
     positionKey = event.positionKey
 
-    @addRule
+    @addRuleAndFetch
       name: "load after (prefix #{positionKeyPrefix})"
       local:
         find:
@@ -137,7 +134,7 @@ export default class ThreadLoader
     @loading = 'before'+event.id
     positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
 
-    @addRule
+    @addRuleAndFetch
       name: "load before (prefix #{positionKeyPrefix})"
       local:
         find:
@@ -158,7 +155,7 @@ export default class ThreadLoader
 
   addLoadCommentRule: (commentId) ->
     @titleKey = 'strand_nav.from_comment'
-    @rules.push
+    @addRule
       name: "comment from url"
       local:
         find:
@@ -172,7 +169,7 @@ export default class ThreadLoader
 
   addLoadPinnedRule: ->
     @titleKey = 'strand_nav.all_pinned'
-    @rules.push
+    @addRule
       name: "all pinned events"
       local:
         find:
@@ -185,7 +182,7 @@ export default class ThreadLoader
         per: 200
 
   addLoadPositionRule: (position) ->
-    @rules.push
+    @addRule
       name: "position from url"
       local:
         find:
@@ -201,7 +198,7 @@ export default class ThreadLoader
 
   addLoadPositionKeyRule: (positionKey) ->
     @loading = positionKey
-    @rules.push
+    @addRule
       name: "positionKey from url"
       local:
         find:
@@ -215,7 +212,7 @@ export default class ThreadLoader
         order_by: 'position_key'
         per: parseInt(@padding/2)
 
-    @rules.push
+    @addRule
       name: "positionKey rollback"
       local:
         find:
@@ -235,7 +232,7 @@ export default class ThreadLoader
     id = max([parseInt(sequenceId) - parseInt(@padding/2), 0])
     @loading = id
     @titleKey = 'strand_nav.from_sequence_id'
-    @rules.push
+    @addRule
       name: "sequenceId from url"
       local:
         find:
@@ -251,7 +248,7 @@ export default class ThreadLoader
 
   addLoadNewestRule: () ->
     @titleKey = 'strand_nav.newest_first'
-    @rules.push
+    @addRule
       local:
         find:
           discussionId: @discussion.id
@@ -265,7 +262,7 @@ export default class ThreadLoader
         per: @padding
 
   addContextRule: ->
-    @rules.push
+    @addRule
       name: 'context'
       local:
         find:
@@ -273,7 +270,7 @@ export default class ThreadLoader
 
   addLoadOldestRule: ->
     @titleKey = 'strand_nav.oldest_first'
-    @rules.push
+    @addRule
       name: 'oldest'
       local:
         find:
@@ -288,7 +285,7 @@ export default class ThreadLoader
   addLoadUnreadRule: ->
     @titleKey = 'strand_nav.unread'
     if @discussion.updatedAt > @discussion.lastReadAt
-      @rules.push
+      @addRule
         name: "context updated"
         local:
           find:
@@ -310,7 +307,7 @@ export default class ThreadLoader
 
     # padding around new to you
     id = max([@firstUnreadSequenceId() - parseInt(@padding/2), @discussion.firstSequenceId()])
-    @rules.push
+    @addRule
       name: {path: "strand_nav.new_to_you"}
       local:
         find:
@@ -325,18 +322,30 @@ export default class ThreadLoader
         per: @padding
 
   addRule: (rule) ->
-    @rules.push(rule)
-    params = Object.assign {}, rule.remote, {exclude_types: 'group discussion'}
-    Records.events.fetch(params: params).finally => @loading = false
-    # @updateCollection()
-    # Records.events.fetch(params: params).then (data) => @updateCollection()
+    ruleString = JSON.stringify(rule)
+
+    if !@ruleStrings.includes(ruleString)
+      @rules.push(rule)
+      @ruleStrings.push(ruleString)
+      true
+    else
+      false
+
+  addRuleAndFetch: (rule) ->
+    @fetch() if @addRule(rule)
 
   fetch:  ->
-    promises = @rules.filter((rule) -> rule.remote).map (rule) =>
+    newRules = []
+    promises = @rules.filter((rule) -> rule.remote)
+                     .filter((rule) => !@fetchedRules.includes(JSON.stringify(rule.remote)))
+                     .map (rule) =>
+      newRules.push(JSON.stringify(rule.remote))
       params = Object.assign {}, rule.remote, {exclude_types: 'group discussion'}
       Records.events.fetch(params: params)
-    # console.log promises
-    Promise.all(promises).finally => @loading = false
+
+    Promise.all(promises).finally =>
+      @fetchedRules = uniq @fetchedRules.concat(newRules)
+      @loading = false
 
   updateCollection: ->
     @records = []
@@ -354,6 +363,7 @@ export default class ThreadLoader
 
     @records = uniq @records.concat(compact(@records.map (o) -> o.parent()))
     @records = orderBy @records, 'positionKey'
+
     eventIds = @records.map (event) -> event.id
 
     orphans = @records.filter (event) ->
@@ -369,10 +379,6 @@ export default class ThreadLoader
       # orderBy r, 'positionKey'
 
     @collection = nest(orphans)
-
-    # console.log 'rules', rules.length, rules
-    # console.log 'eventIds', eventIds.length, eventIds
-    # console.log 'orphans', orphans.length, orphans
-    # console.log 'collection', @collection.length, @collection
+    EventBus.$emit('collectionUpdated', @discussion.id)
 
     @collection
