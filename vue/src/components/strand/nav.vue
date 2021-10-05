@@ -198,7 +198,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion 
         .thread-nav__stance-icon-container(v-if="event.model().isA('poll') && event.model().iCanVote()")
           poll-common-stance-icon.thread-nav__stance-icon(:poll="event.model()" :stance="event.model().myStance()" :size='18')
     .thread-nav__knob(:style="{top: knobOffset+'px', height: knobHeight+'px'}" ref="knob" @mousedown="onMouseDown" v-touch:start="onTouchStart" v-observe-visibility="{callback: setKnobVisible}")
-      span(style="display: block; white-space: nowrap; overflow: visible;") {{displayPosition}} / {{keys.length - 1}}
+      //- span(style="display: block; white-space: nowrap; overflow: visible;") {{displayPosition}} / {{keys.length - 1}}
 
   router-link.thread-nav__date(:to="{query:{k: lastKey}, params: {sequence_id: null}}") {{approximateDate(bottomDate)}}
   //- | {{keys.indexOf(visibleKeys[visibleKeys.length -1])}}
