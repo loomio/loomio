@@ -158,7 +158,7 @@ module.exports = {
   StrandPage: 'strand/page',
   StrandWall: 'strand/wall',
   StrandTitle: 'strand/title',
-  StrandNav: 'strand/nav',
+  StrandTocNav: 'strand/toc_nav',
   StrandItemHeadline: 'strand/item/headline',
   StrandMembers: 'strand/members',
   DiscussionPrivacyBadge: 'discussion/privacy_badge',

@@ -59,12 +59,6 @@ export default
       (event.sequenceId == @loader.focusAttrs.sequenceId) ||
       (event.eventableType == 'Comment' && event.eventableId == @loader.focusAttrs.commentId)
 
-    isUnread: (event) ->
-      if event.kind == "new_discussion"
-        @loader.discussion.updatedAt > @loader.discussion.lastReadAt
-      else
-        !RangeSet.includesValue(@loader.readRanges, event.sequenceId)
-
     positionKeyPrefix: (event) ->
       if event.depth < 1
         event.positionKey.split('-').slice(0, event.depth - 1)
@@ -122,7 +116,7 @@ export default
           template(v-else)
             user-avatar(:user="obj.event.actor()" :size="(obj.event.depth > 1) ? 28 : 36" no-link)
         .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event)")
-          .strand-item__stem(:class="{'strand-item__stem--unread': isUnread(obj.event), 'strand-item__stem--focused': isFocused(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
+          .strand-item__stem(:class="{'strand-item__stem--unread': loader.isUnread(obj.event), 'strand-item__stem--focused': isFocused(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
       .strand-item__main
         //- div {{[obj.event.sequenceId]}} {{obj.event.positionKey}} {{isFocused(obj.event)}} {{loader.focusAttrs}}
         div(v-observe-visibility="{intersection: {threshold: 0.05}, callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
@@ -223,8 +217,6 @@ export default
   // background-size: 24.00px 24.00px
   // background-size: 32.00px 32.00px
   background-repeat: repeat-y
-
-
 
 .strand-item__stem--unread
   background-color: var(--v-primary-base)!important

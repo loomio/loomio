@@ -16,7 +16,7 @@ export default
   computed:
     eventable: -> @event.model()
     poll: -> @eventable.poll()
-    showResults: -> @eventable.poll().showResults()
+    # showResults: -> @eventable.poll().showResults()
     actions: -> StanceService.actions(@eventable)
 
     componentType:  ->
@@ -33,8 +33,8 @@ section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id"
     .d-flex
       component(:is="componentType" :to="event.actor() && urlFor(event.actor())") {{event.actorName()}}
       space
-      poll-common-stance-choice(v-if="showResults" :poll="poll" :stance-choice="eventable.stanceChoice()")
-  .poll-common-stance(v-if="showResults && !collapsed")
+      poll-common-stance-choice(:poll="poll" :stance-choice="eventable.stanceChoice()")
+  .poll-common-stance(v-if="!collapsed")
     v-layout(v-if="!eventable.singleChoice()" wrap align-center)
       strand-item-headline(:event="event" :eventable="eventable")
       poll-common-stance-choices(:stance="eventable")

@@ -36,6 +36,12 @@ export default class ThreadLoader
       @visibleKeys[key] = false if key.startsWith(event.positionKey)
     Vue.set(@collapsed, event.id, true)
 
+  isUnread: (event) ->
+    if event.kind == "new_discussion"
+      @discussion.updatedAt > @discussion.lastReadAt
+    else
+      !RangeSet.includesValue(@readRanges, event.sequenceId)
+
   expand: (event) ->
     Vue.set(@collapsed, event.id, false)
 
