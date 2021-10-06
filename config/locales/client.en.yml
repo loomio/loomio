@@ -576,8 +576,9 @@ en:
   notification_models:
     discussion: 'thread: '
     comment: 'comment in '
-    poll: 'decision: '
+    poll: 'poll: '
     outcome: 'outcome: '
+    stance: 'vote: '
 
   notifications:
     header: "Notifications"
