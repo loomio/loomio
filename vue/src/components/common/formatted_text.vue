@@ -113,10 +113,11 @@ img.emoji
   blockquote, pre
     margin: 0.5rem 0
 
-  h1, h2, h3
+  h1, h2
     margin-top: 1rem
+    margin-bottom: 0.5rem
 
-  h1:first-child, h2:first-child, h3:first-child
+  h1:first-child, h2:first-child
     margin-top: 0
 
   h1
@@ -130,9 +131,9 @@ img.emoji
     letter-spacing: normal
 
   h3
-    font-size: 1.25rem
-    font-weight: 500
-    letter-spacing: 0.009375rem
+    font-size: 1rem
+    font-weight: 700
+    letter-spacing: normal
 
   strong
     font-weight: 700
