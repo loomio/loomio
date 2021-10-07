@@ -53,16 +53,21 @@ export default
              .find({discussionId: @discussion.id, pinned: true})
              .simplesort('positionKey')
              .data().forEach (event) =>
-        if event.kind = "poll_created"
-          poll = event.model()
-          stance = poll.myStance()
         @$set @items, event.positionKey,
           sequenceId: event.sequenceId
-          title: event.pinned && (event.pinnedTitle || event.fillPinnedTitle()) || null
+          createdAt: event.createdAt
+          actorId: event.actorId
+          title: event.pinnedTitle || event.fillPinnedTitle()
           visible: false
           unread: @loader.sequenceIdIsUnread(event.sequenceId)
-          poll: poll
-          stance: stance
+          poll: null
+          stance: null
+          headings: []
+
+        if event.kind == "poll_created"
+          poll = event.model().poll()
+          @items[event.positionKey].poll = poll
+          @items[event.positionKey].stance = poll.myStance()
 
       @visibleKeys.forEach (key) =>
         @items[key].visible = true if @items[key]
