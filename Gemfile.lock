@@ -187,8 +187,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.9.4)
-      devise (>= 4.7.1)
+    devise-i18n (1.10.0)
+      devise (>= 4.8.0)
     diff-lcs (1.4.4)
     discard (1.2.0)
       activerecord (>= 4.2, < 7)
@@ -356,7 +356,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
-    kt-paperclip (7.0.0)
+    kt-paperclip (7.0.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       marcel (~> 1.0.1)
@@ -375,7 +375,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    marcel (1.0.1)
+    marcel (1.0.2)
     maxminddb (0.1.22)
     memoist (0.16.2)
     method_source (1.0.0)
@@ -399,7 +399,7 @@ GEM
     oga (3.3)
       ast
       ruby-ll (~> 2.1)
-    oj (3.13.8)
+    oj (3.13.9)
     orm_adapter (0.5.0)
     os (1.1.1)
     paper_trail (12.1.0)
