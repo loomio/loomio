@@ -1539,6 +1539,7 @@ en:
     pin_thread: Pin thread
 
   thread_arrangement_form:
+    edit: Edit layout
     title: Thread layout
     for_everyone: This changes the layout for everyone, not just you.
     sorting: Oldest or Newest first?
