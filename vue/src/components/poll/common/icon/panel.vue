@@ -11,6 +11,8 @@ export default
   props:
     poll: Object
     showMyStance: Boolean
+    stanceSize: Number
+      default: 20
     size:
       type: Number
       default: 40
@@ -26,17 +28,15 @@ export default
   count-icon(v-if="chartType == 'count'" :poll="poll" :size='size')
   pie-icon(v-if="chartType == 'pie'" :poll="poll" :size='size')
   grid-icon(v-if="chartType == 'grid'" :poll="poll" :size='size')
-  .poll-common-chart-preview__stance-container(v-if='showMyStance && poll.iCanVote()')
-    poll-common-stance-icon(:poll="poll" :stance="myStance")
+  .poll-common-chart-preview__stance-container(v-if='showMyStance && myStance || poll.iCanVote()')
+    poll-common-stance-icon(:poll="poll" :stance="myStance" :size="stanceSize")
 
 </template>
 
 <style lang="sass">
 .poll-common-chart-preview__stance-container
-  width: 20px
-  height: 20px
   position: absolute
-  left: -4px
+  left: -3px
   bottom: -4px
   border-radius: 100%
   box-shadow: 0 2px 1px rgba(0,0,0,.15)
@@ -45,6 +45,7 @@ export default
   width: 100%
   height: 100%
   background-repeat: no-repeat
+  line-height: 0.9
 
 .poll-common-chart-preview
   position: relative

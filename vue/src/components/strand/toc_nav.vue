@@ -33,6 +33,8 @@ export default
         visible: false
         unread: false
         event: @discussion.createdEvent()
+        poll: null
+        stance: null
 
       @bootData.forEach (row) =>
         # row: 0 positionKey, 1 sequenceId, 2 createdAt, 3 userId
@@ -44,16 +46,23 @@ export default
           actorId: row[3]
           visible: false
           unread: @loader.sequenceIdIsUnread(row[1])
+          poll: null
+          stance: null
 
       Records.events.collection.chain()
              .find({discussionId: @discussion.id, pinned: true})
              .simplesort('positionKey')
              .data().forEach (event) =>
+        if event.kind = "poll_created"
+          poll = event.model()
+          stance = poll.myStance()
         @$set @items, event.positionKey,
           sequenceId: event.sequenceId
           title: event.pinned && (event.pinnedTitle || event.fillPinnedTitle()) || null
           visible: false
           unread: @loader.sequenceIdIsUnread(event.sequenceId)
+          poll: poll
+          stance: stance
 
       @visibleKeys.forEach (key) =>
         @items[key].visible = true if @items[key]
@@ -98,13 +107,16 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
     :class="{'strand-nav__entry--visible': item.visible, 'strand-nav__entry--unread': item.unread}"
     v-for="item, key in items"
     :key="key"
-    :to="baseUrl+'/'+item.sequenceId") {{item.title}}
-    //- .thread-nav__stance-icon-container(v-if="item.model().isA('poll') && event.model().iCanVote()")
-    //-   poll-common-stance-icon.thread-nav__stance-icon(:poll="event.model()" :stance="event.model().myStance()" :size='18')
-    //- span.text-caption {{item.href}}
+    :to="baseUrl+'/'+item.sequenceId")
+      .strand-nav__stance-icon-container(v-if="item.poll")
+        poll-common-icon-panel.poll-proposal-chart-panel__chart.mr-1(:poll="item.poll" show-my-stance :size="18" :stanceSize="12")
+        //- poll-common-stance-icon.thread-nav__stance-icon(:poll="item.poll" :stance="item.stance" :size='18')
+      span {{item.title}}
 </template>
 
 <style lang="sass">
+.strand-nav__stance-icon-container
+  display: inline-block
 .strand-nav__entry
   display: block
   min-height: 4px
