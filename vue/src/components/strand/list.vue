@@ -219,10 +219,10 @@ export default
   background-repeat: repeat-y
 
 .strand-item__stem--unread
-  background-color: var(--v-primary-base)!important
+  background-color: var(--v-accent-lighten1)!important
 
 .strand-item__stem--focused
-  background-color: var(--v-accent-base)!important
+  background-color: var(--v-primary-darken1)!important
 
 // .strand-item__stem--last
 //   height: calc(100% - 44px)

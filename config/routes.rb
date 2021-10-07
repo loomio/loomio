@@ -127,6 +127,7 @@ Rails.application.routes.draw do
         patch :unpin, on: :member
         get :comment, on: :collection
         get :position_keys, on: :collection
+        get :timeline, on: :collection
         patch :remove_from_thread, on: :member
       end
 

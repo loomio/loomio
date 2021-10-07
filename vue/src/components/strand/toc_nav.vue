@@ -13,45 +13,47 @@ export default
     open: null
     items: {}
     visibleKeys: []
-    initialKeys: []
+    bootData: []
+    baseUrl: ''
 
   methods:
     buildItems: ->
       console.log "building items"
       @items = {}
 
+      @baseUrl = @urlFor(@discussion)
       # parser = new DOMParser()
       # doc = parser.parseFromString(@context, 'text/html')
       # headings = Array.from(doc.querySelectorAll('h1,h2,h3')).map (el) =>
       #   {id: el.id, name: el.textContent}
       @$set @items, @discussion.createdEvent().positionKey,
         title: @$t('activity_card.context')
-        # headings: headings
-        href: @urlFor(@discussion)+"#context"
+        headings: []
+        sequenceId: 0
         visible: false
         unread: false
+        event: @discussion.createdEvent()
 
-      @initialKeys.forEach (key) =>
-        @$set @items, key,
+      @bootData.forEach (row) =>
+        # row: 0 positionKey, 1 sequenceId, 2 createdAt, 3 userId
+        @$set @items, row[0],
           title: null
-          href: "?k=#{key}"
+          headings: []
+          sequenceId: row[1]
+          createdAt: row[2]
+          actorId: row[3]
           visible: false
-          unread: false
+          unread: @loader.sequenceIdIsUnread(row[1])
 
       Records.events.collection.chain()
-             .find({discussionId: @discussion.id})
+             .find({discussionId: @discussion.id, pinned: true})
              .simplesort('positionKey')
              .data().forEach (event) =>
         @$set @items, event.positionKey,
+          sequenceId: event.sequenceId
           title: event.pinned && (event.pinnedTitle || event.fillPinnedTitle()) || null
-          headings: {}
-          href: @urlFor(@discussion)+"/#{event.sequenceId}"
           visible: false
-          unread: @loader.isUnread(event)
-          event: event
-          #
-          # eventable: event.model()
-          # stance:
+          unread: @loader.sequenceIdIsUnread(event.sequenceId)
 
       @visibleKeys.forEach (key) =>
         @items[key].visible = true if @items[key]
@@ -67,11 +69,11 @@ export default
         per: 200
 
     Records.events.remote.fetch
-      path: 'position_keys'
+      path: 'timeline'
       params:
         discussion_id: @discussion.id
     .then (data) =>
-      @initialKeys = data.position_keys
+      @bootData = data
       @buildItems()
 
     @watchRecords
@@ -93,10 +95,10 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
   div.mt-12
 
   router-link.strand-nav__entry.text-caption(
-    :class="{'strand-nav__entry--visible': item.visible && !item.unread, 'strand-nav__entry--unread': item.unread}"
+    :class="{'strand-nav__entry--visible': item.visible, 'strand-nav__entry--unread': item.unread}"
     v-for="item, key in items"
     :key="key"
-    :to="item.href") {{item.title}}
+    :to="baseUrl+'/'+item.sequenceId") {{item.title}}
     //- .thread-nav__stance-icon-container(v-if="item.model().isA('poll') && event.model().iCanVote()")
     //-   poll-common-stance-icon.thread-nav__stance-icon(:poll="event.model()" :stance="event.model().myStance()" :size='18')
     //- span.text-caption {{item.href}}
@@ -105,20 +107,20 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
 <style lang="sass">
 .strand-nav__entry
   display: block
-  min-height: 2px
-  border-left: 2px solid grey
-  padding-left: 2px
+  min-height: 4px
+  border-left: 2px solid #eee
+  padding-left: 4px
+  padding-right: 4px
 
 .strand-nav__entry--unread
-  border-left: 3px solid orange
-  border-color: var(--v-primary-base)!important
+  border-color: var(--v-accent-lighten1)!important
 
 .strand-nav__entry--visible
-  border-left: 3px solid blue
-  border-color: var(--v-primary-accent)!important
+  border-color: var(--v-primary-darken1)!important
 
 .strand-nav__entry:hover
-  border-left: 2px solid red
-  background-color: #eee
+  border-color: var(--v-primary-darken1)!important
+//
+// .strand-nav__entry:hover::before
 
 </style>

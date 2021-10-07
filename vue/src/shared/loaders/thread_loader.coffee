@@ -42,6 +42,12 @@ export default class ThreadLoader
     else
       !RangeSet.includesValue(@readRanges, event.sequenceId)
 
+  sequenceIdIsUnread: (id) ->
+    if id == 0
+      @discussion.updatedAt > @discussion.lastReadAt
+    else
+      !RangeSet.includesValue(@readRanges, id)
+
   expand: (event) ->
     Vue.set(@collapsed, event.id, false)
 
