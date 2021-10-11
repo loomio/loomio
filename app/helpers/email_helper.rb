@@ -23,15 +23,17 @@ module EmailHelper
   def render_rich_text(text, format = "md")
     return "" unless text
     if format == "md"
+      text.gsub!('](/rails/active_storage', ']('+lmo_asset_host+'/rails/active_storage')
       markdownify(text)
     else
+      text.gsub!('"/rails/active_storage', '"'+lmo_asset_host+'/rails/active_storage')
       replace_checkboxes(replace_iframes(text))
     end.html_safe
   end
 
   def render_plain_text(text, format = 'md')
     return "" unless text
-    ActionController::Base.helpers.strip_tags(render_rich_text(text, format))
+    ActionController::Base.helpers.strip_tags(render_rich_text(text, format)).gsub(/(?:\n\r?|\r\n?)/, '<br>')
   end
 
   def replace_iframes(str)

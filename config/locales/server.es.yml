@@ -15,6 +15,9 @@ es:
     400:
       title: Mala petición
       body: Lo sentimos, no pudimos entender esa petición
+    401:
+      title: No autorizado
+      body: No tienes permiso para acceder a esta página. Tal vez necesitas iniciar sesión.
     403:
       title: Prohibido
       body: No tienes permiso para acceder a esta página. Tal vez necesitas iniciar sesión.
@@ -174,7 +177,9 @@ es:
       resend: 'Este enlace perderá validez en 24 horas y solo puede ser usado una vez. '
     login:
       subject: Ingresa a %{site_name}
-      intro: Hola %{name}, aquí esta el enlace para ingresar en tu cuenta en %{site_name}
+      intro: Hola %{name},<br>aquí está tu enlace para registrarte en %{site_name}.
+      intro_html: |
+          Hola %{name},<br>aquí está tu enlace para registrarte en %{site_name}:
       login: Ingresa como %{name}
     reactivate:
       subject: 'Reactiva tu %{site_name} cuenta '
@@ -208,7 +213,7 @@ es:
       intro: "%{who} hizo un anuncio en %{group}:"
     by_who: por %{person}
     reply_to_this_discussion: Contestar a esta discusión
-    value_proposition: "%{site_name} es un espacio para que grupos tomen decisiones juntos. "
+    value_proposition: "%{site_name} es un lugar para tener discusiones y tomar decisiones"
     view_group: Ver grupo
     to_join_group:
       subject: "%{member} te ha invitado a unirte a %{group_name} en %{site_name}"

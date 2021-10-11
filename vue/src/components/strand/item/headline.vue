@@ -42,6 +42,7 @@ h3.strand-item__headline.thread-item__title.body-2.pb-1(tabindex="-1" :id="'even
     router-link.grey--text(:to='link')
       time-ago(:date='eventable.discardedAt')
   div.d-flex.align-center(v-else)
+    //- v-icon(v-if="event.pinned") mdi-pin
     slot(name="headline")
       span.strand-item__headline.text--secondary(v-html='headline')
     mid-dot

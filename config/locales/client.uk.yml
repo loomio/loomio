@@ -1,4 +1,6 @@
 uk:
+  doctypes:
+    document: Документ
   loomio_onboarding:
     group_progress_card:
       activities:
@@ -96,6 +98,7 @@ uk:
   timezones:
     local: За місцевим часом ({{value}})
   common:
+    version: Версія
     no_results_found: Нічого не знайдено
     view: Переглянути
     history: Історія
@@ -204,6 +207,7 @@ uk:
       fork: Гілкування
       apply: Застосувати
       add_people: Додати людей
+      zoom: Zoom
     formatting_help:
       label: 'Форматувати'
       title: 'Дізнайтесь як використовувати Markdown для форматування текту'
@@ -1018,6 +1022,7 @@ uk:
     unread_count: "{{count}} не прочитано"
   dashboard_page:
     aria_label: 'Інформаційна панель'
+    recent_threads: "Нещодавні теми"
     no_groups:
       show_all: Ласкаво просимо! Ви ще не є членом жодної групи. <a href="/explore">Переглянути відкриті групи</a> або <a href="/g/new">Створіть групу</a>.
       show_muted: У Вас нема вимкнутих тем, бо Ви не є учасником жодної групи.
@@ -1179,8 +1184,6 @@ uk:
     confirm: 'Видалити коментар'
   contact_message_form:
     title: "Привіт! Чим ми можемо допомогти?"
-    read_the_manual: |
-        Ви дивились нашу <a href="{{link}}" target="_blank">Довідку</a>? Ми регулярно оновлюємо його щодо поширених запитань та відповідей.
     contact_us_email: "Ви також можете надіслати нам листа: <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Контакти'
     name_label: 'Ваше ім''я'
@@ -1656,7 +1659,6 @@ uk:
     login_link_helptext: Натисніть кнопку нижче, і ми надішлемо вам посилання для входу.
     check_spam_folder: Якщо лист не надійшов, перевірте папку зі спамом.
     sign_up_helptext: Заповніть цю форму, щоб створити обліковий запис
-    i_accept: "Я погоджуюсь з <a href='{{termsUrl}}' target='_blank'>Умовами використання</a> та <a href='{{privacyUrl}}' target='_blank'>Політикою конфіденційності</a>"
     name_placeholder: Ваше ім'я
     name_required: Бідь ласка введіть ім'я
     terms_required: Ви маєте прийняти Умови використання

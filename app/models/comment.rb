@@ -28,6 +28,7 @@ class Comment < ApplicationRecord
   alias_attribute :author, :user
   alias_attribute :author_id, :user_id
 
+  scope :dangling, -> { joins('left join discussions on discussion_id = discussions.id').where('discussion_id is not null and discussions.id is null') }
   scope :in_organisation, ->(group) { includes(:user, :discussion).joins(:discussion).where("discussions.group_id": group.id_and_subgroup_ids) }
 
   delegate :name, to: :user, prefix: :user

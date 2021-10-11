@@ -7,7 +7,6 @@ import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
 import LmoUrlService     from '@/shared/services/lmo_url_service'
 import {compact, head, includes, filter} from 'lodash'
-import ahoy from '@/shared/services/ahoy'
 import OldPlanBanner from '@/components/group/old_plan_banner'
 
 export default
@@ -48,10 +47,6 @@ export default
         {id: 6, name: 'settings',  route: @urlFor(@group, 'settings')}
       ].filter (obj) => !(obj.name == "subgroups" && @group.parentId)
 
-
-    coverImageSrc: ->
-      (@group && @group.coverUrl) || (@group && @group.parent().coverUrl) || ''
-
   methods:
     init: ->
       Records.samlProviders.authenticateForGroup(@$route.params.key)
@@ -59,10 +54,6 @@ export default
       .then (group) =>
         @group = group
         window.location.host = @group.newHost if @group.newHost
-        ahoy.trackView
-          groupId: @group.id
-          organisationId: @group.parentOrSelf().id
-          pageType: 'groupPage'
       .catch (error) =>
         EventBus.$emit 'pageError', error
         EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()
@@ -80,15 +71,14 @@ export default
 v-main
   loading(v-if="!group")
   v-container.group-page.max-width-1024(v-if="group")
-    v-img(style="border-radius: 8px" max-height="256" :src="coverImageSrc" eager)
+    v-img(style="border-radius: 8px" max-height="256" :src="group.coverUrl" eager)
     h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
       span(v-if="group && group.parentId")
         router-link(:to="urlFor(group.parent())") {{group.parent().name}}
         space
         span.grey--text.text--lighten-1 &gt;
         space
-      span.group-page__name.mr-4
-        | {{group.name}}
+      span.group-page__name.mr-4 {{group.name}}
     old-plan-banner(:group="group")
     trial-banner(:group="group")
     group-onboarding-card(:group="group")

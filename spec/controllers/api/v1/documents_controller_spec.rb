@@ -52,16 +52,16 @@ describe API::V1::DocumentsController do
     describe 'closed' do
       before { group.update(group_privacy: 'closed') }
 
-      it 'displays public documents for non-members' do
-        sign_in user
-        get :for_group, params: { group_id: group.id }
-        json = JSON.parse response.body
-        document_ids = json['documents'].map { |d| d['id'] }
-
-        expect(document_ids).to include group_document.id
-        expect(document_ids).to include public_discussion_document.id
-        expect(document_ids).to_not include private_discussion_document.id
-      end
+      # it 'displays public documents for non-members' do
+      #   sign_in user
+      #   get :for_group, params: { group_id: group.id }
+      #   json = JSON.parse response.body
+      #   document_ids = json['documents'].map { |d| d['id'] }
+      #
+      #   expect(document_ids).to include group_document.id
+      #   expect(document_ids).to include public_discussion_document.id
+      #   expect(document_ids).to_not include private_discussion_document.id
+      # end
 
       it 'displays all documents for members' do
         sign_in user
@@ -75,15 +75,15 @@ describe API::V1::DocumentsController do
         expect(document_ids).to include private_discussion_document.id
       end
 
-      it 'displays public documents for visitors' do
-        get :for_group, params: { group_id: group.id }
-        json = JSON.parse response.body
-        document_ids = json['documents'].map { |d| d['id'] }
-
-        expect(document_ids).to include group_document.id
-        expect(document_ids).to include public_discussion_document.id
-        expect(document_ids).to_not include private_discussion_document.id
-      end
+      # it 'displays public documents for visitors' do
+      #   get :for_group, params: { group_id: group.id }
+      #   json = JSON.parse response.body
+      #   document_ids = json['documents'].map { |d| d['id'] }
+      #
+      #   expect(document_ids).to include group_document.id
+      #   expect(document_ids).to include public_discussion_document.id
+      #   expect(document_ids).to_not include private_discussion_document.id
+      # end
     end
 
     describe 'secret' do

@@ -126,7 +126,6 @@ pt_BR:
       resend: Esse link irá expirar em 24 horas e só pode ser acessado uma única vez.
     login:
       subject: Fazer login em %{site_name}
-      intro: Olá %{name}, aqui está o link para acessar a sua conta em %{site_name}.
       login: Efetuar login como %{name}
     reactivate:
       subject: Reativar a sua conta %{site_name}
@@ -160,7 +159,6 @@ pt_BR:
       intro: "%{who} anunciou para %{group}:"
     by_who: por %{person}
     reply_to_this_discussion: Responder a esta discussão
-    value_proposition: "%{site_name} é um local para grupos tomarem decisões conjuntamente"
     view_group: Ver grupo
     to_join_group:
       subject: "%{member} convidou você para entrar em %{group_name} no %{site_name}"

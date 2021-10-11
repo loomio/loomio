@@ -28,7 +28,6 @@ eo:
   email:
     login:
       subject: Ensaluti al %{site_name}.
-      intro: Saluton %{name}, jen estas ligilo por ensaluti al via %{site_name} konto.
       login: Ensaluti kiel %{name}
     reset_password:
       link_text: Restarigi vian pasvorton

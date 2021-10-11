@@ -41,6 +41,7 @@ sv:
   timezones:
     local: Lokal tid ({{value}})
   common:
+    version: Version
     you: Du
     expand: Expandera
     all_day: Hela dagen
@@ -378,6 +379,7 @@ sv:
     announcement_label: Meddelanden
   dashboard_page:
     aria_label: 'Instrumentbräda'
+    recent_threads: "Senaste trådarna"
     mark_as_read: Markera som läst
     filtering:
       dropdown_heading: Filtrera instrumentbrädan.

@@ -17,6 +17,7 @@ module Dev::NintiesMoviesHelper
                               avatar_kind: 'uploaded',
                               email_verified: true)
     @patrick.uploaded_avatar.attach io: File.new("#{Rails.root}/spec/fixtures/images/patrick.png"), filename: 'patrick.jpg'
+    @patrick.update(avatar_kind: :uploaded)
     @patrick
   end
 
@@ -33,10 +34,11 @@ module Dev::NintiesMoviesHelper
                   User.create!(name: 'Jennifer Grey',
                                email: 'jennifer_grey@example.com',
                                username: 'jennifergrey',
-                               avatar_kind: 'uploaded',
                                experiences: {changePicture: true},
                                email_verified: true)
     @jennifer.uploaded_avatar.attach io: File.new("#{Rails.root}/spec/fixtures/images/jennifer.png"), filename: 'jen.jpg'
+    @jennifer.update(avatar_kind: :uploaded)
+
     @jennifer
   end
 

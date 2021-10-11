@@ -4,6 +4,7 @@ sr:
   loomio_tags:
     name_label: Ime
   common:
+    version: Verzija
     no_results_found: Nisu pronađeni rezultati
     confirm_discard_changes: Otkaži promene?
     time:

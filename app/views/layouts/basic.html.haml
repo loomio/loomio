@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     %link{rel: "shortcut icon",    href: AppConfig.theme[:icon_src]}
     = stylesheet_link_tag 'basic/all'
+    = render 'posthog'
   %body
     %header
       %a{href: '/'}
@@ -15,4 +16,3 @@
     %footer
       - if @footer
         = render @footer
-    = javascript_include_tag 'angular_ahoy' if AppConfig.app_features[:ahoy_tracking]

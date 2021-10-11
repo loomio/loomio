@@ -104,7 +104,6 @@ hu:
       resend: Ez a link 24 órán belül lejár, és csak egyszer használható fel.
     login:
       subject: Bejelentkezés a(z) %{site_name} oldalra
-      intro: Üdvözlet%{name}, itt található egy hivatkozás%{site_name}a fiókjába való bejelentkezéshez.
       login: Bejelentkezés mint %{name}
     reactivate:
       subject: Aktiválja újra%{site_name} fiókját
@@ -136,7 +135,6 @@ hu:
       intro: "%{who} hirdetést tett a(z) %{group} felé:"
     by_who: általa%{person}
     reply_to_this_discussion: Válasz erre a beszélgetésre
-    value_proposition: "%{site_name}egy hely a csoportok számára, hogy együtt hozzanak döntéseket"
     view_group: Csoport megtekintése
     to_join_group:
       subject: "%{member} meghívott, hogy csatlakozzon a következőhöz:%{group_name}, a(z) %{site_name} oldalon"

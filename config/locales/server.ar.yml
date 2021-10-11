@@ -14,6 +14,8 @@ ar:
     400:
       title: 'اقتراح غير جيد '
       body: عذرًا ، لم نتمكن من فهم هذا الطلب
+    401:
+      body: .لا يسمح لك بالوصول إلى هذه الصفحة.  قد تحتاج لتسجيل الدخول
     403:
       title: 'ممنوع '
       body: .لا يسمح لك بالوصول إلى هذه الصفحة.  قد تحتاج لتسجيل الدخول
@@ -148,7 +150,6 @@ ar:
       resend: ستنتهي صلاحية هذا الرابط في غضون 24 ساعة ويمكن استخدامه مرة واحدة فقط.
     login:
       subject: تسجيل دخول الى %{site_name}
-      intro: مرحبا %{name}، هنا رابط لتسجيل الدخول إلى حساب%{site_name} الخاص بك.
       login: تسجيل الدخول باسم %{name}
     reactivate:
       subject: إعادة تنشيط حسابك %{site_name}
@@ -182,7 +183,6 @@ ar:
       intro: "%{who}قام بإعلان على %{group}:"
     by_who: من قبل %{person}
     reply_to_this_discussion: شارك في هذا النقاش
-    value_proposition: "%{site_name}هو مكان للمجموعات لاتخاذ القرارات معا"
     view_group: عرض المجموعة
     to_join_group:
       subject: "%{member}دعاك للانضمام إلى%{group_name} في%{site_name}"

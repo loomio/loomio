@@ -577,6 +577,7 @@ en:
     invite_to_group: "Invite to group"
     invite_to_discussion: "Invite to thread"
     invite_to_poll: "Invite to vote"
+    invite_to_wip_poll: "Invite to give feedback"
     invitations: "Invitations"
 
   membership_dropdown:
@@ -594,8 +595,9 @@ en:
   notification_models:
     discussion: 'thread: '
     comment: 'comment in '
-    poll: 'decision: '
+    poll: 'poll: '
     outcome: 'outcome: '
+    stance: 'vote: '
 
   notifications:
     header: "Notifications"
@@ -635,6 +637,7 @@ en:
     outcome_announced: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> participated in: <strong>{{title}}</strong>"
     group_announced: "<strong>{{name}}</strong> invited you to the group <strong>{{title}}</strong>"
+    outcome_review_due: "It's time to review the outcome of: <strong>{{title}}</strong>"
 
   discussion_fork_actions:
     helptext: Select items you'd like to move to another thread
@@ -753,11 +756,19 @@ en:
       poll_announced:
         title: Invite to vote
         helptext: Who would you like to invite to vote?
+      wip_poll_announced:
+        title: Invite to give feedback
+        helptext: Who would you like to invite to give feedback?
       poll_reminder:
         title: Remind to vote
         helptext: Who would you like to remind to vote?
         message_label: Message
         message_placeholder: Optional message to tell people why they should vote
+      wip_poll_reminder:
+        title: Remind to give feedback
+        helptext: Who would you like to remind to give feedback?
+        message_label: Message
+        message_placeholder: Optional message to include in notification email
       poll_edited:
         title: Notify of edits
         helptext: Who would you like to notify about this update?
@@ -1555,6 +1566,7 @@ en:
     pin_thread: Pin thread
 
   thread_arrangement_form:
+    edit: Edit layout
     title: Thread layout
     for_everyone: This changes the layout for everyone, not just you.
     sorting: Oldest or Newest first?
@@ -1568,7 +1580,7 @@ en:
     nested_once: Nest replies - first reply only
     nested_once_description: Indent replies under original comment
     nested_twice: Two levels of nested replies
-    nested_twice_description: Indent replies upto 2 times.
+    nested_twice_description: Indent replies at most two times.
     changing_nesting_is_slow: Changes to nesting can take a couple of minutes to process.
 
   delete_thread_form:
@@ -1779,7 +1791,7 @@ en:
     anonymous: Votes are anonymous
     results_hidden_until_closed: Results are hidden until the %{poll_type} has closed
     unable_to_vote: You have not been invited to vote in this %{poll_type}.
-    draft_mode: This %{poll_type} is a work in progress. Voting is disabled.
+    draft_mode: Voting disabled. This %{poll_type} is a work in progress.
 
   current_polls_card:
     title: Current decisions
@@ -1871,8 +1883,9 @@ en:
     success: "{{poll_type}} moved to {{group}}"
 
   poll_common_wip_field:
-    title: Work in progress
-    helptext: 'Use "Work in progress" to collaborate on the %{poll_type} before voting'
+    title: Disable voting
+    past_tense: Voting disabled
+    helptext: 'This %{poll_type} is a work in progress. You can enable voting later.'
 
   poll_common_closing_at_field:
     closing: Closing

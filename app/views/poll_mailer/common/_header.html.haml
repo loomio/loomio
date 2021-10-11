@@ -8,4 +8,4 @@
     %tr
       %td{colspan: "2" }
         %p
-          %i=raw strip_tags(event.recipient_message.to_s).gsub(/(?:\n\r?|\r\n?)/, '<br>')
+          %i=raw render_plain_text event.recipient_message

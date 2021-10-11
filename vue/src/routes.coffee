@@ -51,11 +51,7 @@ groupPageChildren = [
   {path: ':stub?', component: GroupDiscussionsPanel, meta: {noScroll: true}}
 ]
 
-threadPageChildren = [
-  {path: 'comment/:comment_id', components: {nav: ThreadNav}}
-  {path: ':stub?/:sequence_id?', components: {nav: ThreadNav}}
-  {path: '', components: {nav: ThreadNav}}
-]
+# threadPageChildren =
 
 strandPageChildren = [
   {path: 'comment/:comment_id'}
@@ -75,6 +71,8 @@ router = new Router
       { x: 0, y: 0 }
 
   routes: [
+    {path: '/users/sign_in', redirect: '/dashboard' },
+    {path: '/users/sign_up', redirect: '/dashboard' },
     {path: '/tasks', component: TasksPage},
     {path: '/dashboard', component: DashboardPage},
     {path: '/dashboard/:filter', component: DashboardPage},
@@ -91,16 +89,22 @@ router = new Router
     {path: '/d/:key/edit', component: StartDiscussionPage },
     {
       path: '/d/:key',
-      name: 'discussion',
       component: ThreadPage,
-      children: threadPageChildren,
-      beforeEnter: (to, from, next) ->
-        if Session.user().experiences['betaFeatures']
-          next(name: 'strand', params: to.params, query: to.query)
-        else
-          next()
+      children: [
+        {path: 'comment/:comment_id', components: {nav: ThreadNav}}
+        {path: ':stub?/:sequence_id?', components: {nav: ThreadNav}}
+        {path: '', components: {nav: ThreadNav}}
+      ]
     },
-    {path: '/s/:key', name: 'strand', component: StrandPage, children: strandPageChildren },
+    {
+      path: '/s/:key',
+      component: StrandPage,
+      children: [
+        {path: 'comment/:comment_id'}
+        {path: ':stub?/:sequence_id?'}
+        {path: ''}
+      ]
+    },
     {path: '/g/new', component: StartGroupPage},
     {path: '/g/:key', component: GroupPage, children: groupPageChildren, name: 'groupKey'},
     {path: '/:key', component: GroupPage, children: groupPageChildren},

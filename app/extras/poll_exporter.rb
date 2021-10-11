@@ -37,7 +37,7 @@ class PollExporter
 
   def stance_matrix
     rows = []
-    rows << [I18n.t("poll.export.participant"), @poll.poll_options.map(&:display_name), I18n.t("poll.export.reason")].flatten
+    rows << [I18n.t("poll.export.participant"), I18n.t("poll.export.user_id"), @poll.poll_options.map(&:display_name), I18n.t("poll.export.reason")].flatten
 
     ## for each participant show the
     @poll.stances.latest.each do |stance|

@@ -38,6 +38,7 @@ class Event < ApplicationRecord
   validates :kind, presence: true
   validates :eventable, presence: true
 
+  scope :dangling, -> { joins('left join discussions d on events.discussion_id = d.id').where('d.id is null and discussion_id is not null') }
   scope :unreadable, -> { where.not(kind: 'discussion_closed') }
 
   scope :invitations_in_period, ->(since, till) {
@@ -74,13 +75,6 @@ class Event < ApplicationRecord
     end
     PublishEventWorker.perform_async(event.id)
     event
-  end
-
-  def self.bulk_publish!(eventables, **args)
-    raise 'i hope we dont use this'
-    Array(eventables).map { |eventable| build(eventable, **args) }
-                     .tap { |events| import(events) }
-                     .tap { |events| events.map(&:trigger!) }
   end
 
   def self.build(eventable, **args)
@@ -216,10 +210,6 @@ class Event < ApplicationRecord
     else
       original_parent
     end
-  end
-
-  def recipient_message=(val)
-    self.custom_fields[:recipient_message] = strip_tags(val)
   end
 
   def email_recipients

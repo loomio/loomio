@@ -4,6 +4,7 @@ bg_BG:
   loomio_tags:
     name_label: Име
   common:
+    version: Версия
     group: 'Група'
     groups: 'Групи'
     email_address: E-mail адрес

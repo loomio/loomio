@@ -26,9 +26,9 @@ export default
         each Records.reactions.find(@reactionParams), (reaction) =>
           unless @reactionHash[reaction.reaction]?
             @reactionHash[reaction.reaction] = []
-          user = Records.users.find(reaction.userId)
-          @reactionHash[reaction.reaction].push(user)
-          @reactionHash['all'].push(user)
+          if user = Records.users.find(reaction.userId)
+            @reactionHash[reaction.reaction].push(user)
+            @reactionHash['all'].push(user)
           true
 
     # Records.reactions.enqueueFetch(@reactionParams)

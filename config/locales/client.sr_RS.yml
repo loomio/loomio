@@ -6,6 +6,7 @@ sr_RS:
   reactions:
     slight_smile: Свиђа ми се
   common:
+    version: Верзија
     confirm_discard_changes: Поништити промене?
     time:
       am: ам

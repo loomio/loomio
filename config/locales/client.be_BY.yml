@@ -4,6 +4,7 @@ be_BY:
   loomio_tags:
     name_label: Імя
   common:
+    version: Версія
     confirm_discard_changes: Скасаваць змены?
     time:
       am: am

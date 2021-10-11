@@ -68,7 +68,7 @@ export default
         order: 'lastActivityAt'
         params:
           group_id: @group.id
-          exclude_types: 'group outcome'
+          exclude_types: 'group outcome poll'
           filter: @$route.query.t
           subgroups: @$route.query.subgroups || 'mine'
           tags: @$route.query.tag

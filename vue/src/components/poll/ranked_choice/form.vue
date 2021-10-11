@@ -13,6 +13,7 @@ export default
 .poll-ranked-choice-form
   poll-common-form-fields(:poll="poll")
   poll-common-form-options-field(:poll="poll")
+  poll-common-wip-field(:poll="poll")
   poll-common-closing-at-field(:poll="poll")
 
   .lmo-flex.lmo-flex__center(layout="row")
