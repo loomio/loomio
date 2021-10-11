@@ -27,6 +27,7 @@ export default class BaseModel
     @_version = 0
     @attributeNames = []
     @unmodified = {}
+    @afterUpdateFns = []
     @setErrors()
     Object.defineProperty(@, 'recordsInterface', value: recordsInterface, enumerable: false)
     Object.defineProperty(@, 'recordStore', value: recordsInterface.recordStore, enumerable: false)
@@ -59,6 +60,9 @@ export default class BaseModel
   update: (attributes) ->
     @baseUpdate(attributes)
 
+  afterUpdate: (fn) ->
+    @afterUpdateFns.push fn
+
   baseUpdate: (attributes) ->
     @bumpVersion()
     @attributeNames = union @attributeNames, keys(attributes)
@@ -68,6 +72,8 @@ export default class BaseModel
       true
 
     @recordsInterface.collection.update(@) if @inCollection()
+
+    @afterUpdateFns.forEach (fn) => fn(@)
 
   attributeIsModified: (attributeName) ->
     original = @unmodified[attributeName]

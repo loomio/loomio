@@ -17,7 +17,7 @@ describe Dev::PollsController do
 
     # it "#{poll_type} created wip email" do
     #   get :test_poll_scenario, params: {scenario: 'poll_created', poll_type: poll_type, email: true, wip: true}
-    #   expect_text('.poll-mailer__subject', "shared a work in progress")
+    #   expect_text('.poll-mailer__subject', "invited you to give feedback on a")
     #   expect_subject("poll_mailer.header.poll_announced_wip")
     #   expect_element('.poll-mailer-common-summary')
     #   expect_text('.poll-mailer__vote', "is a work in progress. Voting is disabled.")

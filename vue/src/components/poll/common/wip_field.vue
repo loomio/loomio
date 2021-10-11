@@ -19,5 +19,5 @@ export default
   v-checkbox(hide-details v-model="draft")
     div(slot="label")
       span(v-t="'poll_common_wip_field.title'")
-      .caption(v-t="{path: 'poll_common_wip_field.helptext', args: {poll_type: poll.translatedPollType()}}")
+      .caption(v-if="draft" v-t="{path: 'poll_common_wip_field.helptext', args: {poll_type: poll.translatedPollType()}}")
 </template>

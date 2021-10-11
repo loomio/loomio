@@ -386,7 +386,7 @@ class Poll < ApplicationRecord
   end
 
   def closes_in_future
-    return if (closed_at || (closing_at && closing_at > Time.zone.now))
+    return if closing_at.nil? || (closed_at || (closing_at && closing_at > Time.zone.now))
     errors.add(:closing_at, I18n.t(:"validate.motion.must_close_in_future"))
   end
 

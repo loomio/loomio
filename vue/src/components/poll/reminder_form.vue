@@ -29,6 +29,7 @@ export default
     query: ''
 
   computed:
+    wipOrEmpty: -> if @poll.closingAt then '' else 'wip_'
     someRecipients: ->
       @poll.recipientAudience ||
       @poll.recipientUserIds.length ||
@@ -55,11 +56,11 @@ export default
 .poll-remind
   .pa-4
     .d-flex.justify-space-between
-      h1.headline(v-t="'announcement.form.poll_reminder.title'")
+      h1.headline(v-t="'announcement.form.'+wipOrEmpty+'poll_reminder.title'")
       dismiss-modal-button
     recipients-autocomplete(
       existingOnly
-      :label="$t('announcement.form.poll_reminder.helptext')"
+      :label="$t('announcement.form.'+wipOrEmpty+'poll_reminder.helptext')"
       :placeholder="$t('announcement.form.placeholder')"
       :model="poll"
       :reset="reset"
