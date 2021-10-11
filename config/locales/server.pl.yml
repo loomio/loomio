@@ -15,6 +15,8 @@ pl:
     400:
       title: Zła prośba
       body: Przepraszamy, nie mogliśmy zrozumieć tej prośby
+    401:
+      body: Nie masz dostępu do tej strony. Może być konieczne zalogowanie się.
     403:
       title: Zakazane
       body: Nie masz dostępu do tej strony. Może być konieczne zalogowanie się.
@@ -172,7 +174,6 @@ pl:
       resend: Link wygaśnie za 24 godziny i można go użyć tylko raz.
     login:
       subject: Zaloguj się do %{site_name}
-      intro: Cześć %{name}, oto link do zalogowania się na Twoje konto %{site_name}.
       login: Zaloguj się jako %{name}
     reactivate:
       subject: Ponownie aktywuj swoje konto %{site_name}
@@ -206,7 +207,6 @@ pl:
       intro: "%{who} ogłosił/a w %{group}; "
     by_who: przez %{person}
     reply_to_this_discussion: Odpowiedz na tę dyskusję
-    value_proposition: "%{site_name} jest miejscem, w którym grupy mogą wspólnie podejmować decyzje"
     view_group: Wyświetl grupę
     to_join_group:
       subject: "%{member} zaprasza Cię do przyłączenia się do grupy %{group_name} na %{site_name} "

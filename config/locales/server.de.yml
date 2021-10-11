@@ -15,6 +15,8 @@ de:
     400:
       title: Schlechte Anfrage
       body: Sorry, wir konnten diese Anfrage nicht verstehen
+    401:
+      body: Du bist nicht berechtigt, auf diese Seite zuzugreifen. Möglicherweise musst du dich anmelden.
     403:
       title: Verbotene
       body: Du bist nicht berechtigt, auf diese Seite zuzugreifen. Möglicherweise musst du dich anmelden.
@@ -176,7 +178,6 @@ de:
       resend: Dieser Link wird 24 Stunden verfügbar sein und kann nur einmal genutzt werden.
     login:
       subject: Bei %{site_name}anmelden
-      intro: 'Hallo %{name}, hier ist der Link um dich in deinem Account %{site_name}anzumelden '
       login: Als %{name} einloggen
     reactivate:
       subject: Dein %{site_name} Konto wieder aktivieren
@@ -210,7 +211,6 @@ de:
       intro: "%{who} hat eine Ankündigung zu %{group}gemacht:"
     by_who: von %{person}
     reply_to_this_discussion: Direkt auf diese Diskussion antworten
-    value_proposition: "%{site_name} ist ein Ort, wo Gruppen gemeinsam Entscheidungen treffen können. "
     view_group: Gruppe ansehen
     to_join_group:
       subject: "%{member} hat dich eingeladen %{group_name} auf %{site_name} beizutreten"

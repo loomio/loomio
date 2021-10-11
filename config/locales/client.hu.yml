@@ -1,4 +1,6 @@
 hu:
+  doctypes:
+    document: Dokumentum
   loomio_onboarding:
     group_progress_card:
       activities:
@@ -90,6 +92,7 @@ hu:
   timezones:
     local: Helyi idő ({{value}})
   common:
+    version: Verzió
     no_results_found: Nem található eredmény
     view: Megnéz
     history: Előzmény
@@ -199,6 +202,7 @@ hu:
       fork: Elágaztatás
       apply: Alkalmaz
       add_people: Adj hozzá embereket
+      zoom: Zoomolás
     formatting_help:
       label: 'Formázás'
       title: 'Így használhatod a Markdown-t a szöveg formázására'
@@ -959,6 +963,7 @@ hu:
     unread_count: "{{count}} olvasatlan"
   dashboard_page:
     aria_label: 'Műszerfal'
+    recent_threads: "Új témák"
     no_groups:
       show_all: Üdvözöljük! Még nem tagja egyetlen csoportnak sem. <a href="/explore">Böngészd a nyilvános csoportokat</a> vagy <a href="/g/new">Indítsd egy csoportot</a>.
       show_muted: Nincs elnémított témája, mert nem tagja egyetlen csoportnak sem.
@@ -1106,8 +1111,6 @@ hu:
     confirm: 'Hozzászólás törlése'
   contact_message_form:
     title: "Szia! Hogyan segíthetünk?"
-    read_the_manual: |
-        Láttad már a <a href="{{link}}" target="_blank"> Súgó kézikönyvet </a>?  Rendszeresen frissítjük a gyakran feltett kérdésekkel és válaszokkal.
     contact_us_email: "E-mailt is küldhetsz nekünk: <a href=\"mailto:{{email}}\"> {{email}} </a>"
     contact_us: 'Lépjen kapcsolatba velünk'
     name_label: 'Neved'
@@ -1564,7 +1567,6 @@ hu:
     login_link_helptext: Kattintson az alábbi gombra, és küldünk egy linket a bejelentkezéshez.
     check_spam_folder: Ha az e-mail nem érkezik meg hamarosan, ellenőrizze a spam mappát.
     sign_up_helptext: Kérjük, töltse ki ezt az űrlapot felhasználói fiók létrehozásához
-    i_accept: "Elfogadom a <a href='{{termsUrl}}' target='_blank'>Szolgáltatási feltételeket</a> és az <a href='{{privacyUrl}}' target='_blank'>Adatvédelmi szabályzatot</a>"
     name_placeholder: Neved
     name_required: Adjon meg egy nevet
     terms_required: El kell fogadnia a Szolgáltatási feltételeket

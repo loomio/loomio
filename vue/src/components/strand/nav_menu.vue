@@ -69,7 +69,7 @@ div
         v-list-item(v-for="heading, index in headings" :key="index") {{heading.name}}
         div(v-if="presets.length")
           v-subheader Pinned events
-          v-list-item(v-for="event in presets" :key="event.id" @click="loader.jumpToSequenceId(event.sequenceId)") {{event.pinnedTitle || event.suggestedTitle()}}
+          v-list-item(v-for="event in presets" :key="event.id" @click="loader.jumpToSequenceId(event.sequenceId)") {{event.pinnedTitle || event.fillPinnedTitle() }}
       //- hr
       //- input(type="text" placeholder="search")
       //- li(v-for="pin in pins")

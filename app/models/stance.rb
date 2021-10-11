@@ -32,6 +32,7 @@ class Stance < ApplicationRecord
   alias :user :participant
   alias :author :participant
 
+  scope :dangling,       -> { joins('left join polls on polls.id = poll_id').where('polls.id is null') }
   scope :latest,         -> { where(latest: true).where(revoked_at: nil) }
   scope :admin,         ->  { where(admin: true) }
   scope :newest_first,   -> { order("cast_at DESC NULLS LAST") }

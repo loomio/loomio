@@ -10,7 +10,13 @@ module HasAvatar
   end
 
   def set_default_avatar_kind
-    self.avatar_kind = :gravatar if !uploaded_avatar.attached? && has_gravatar?
+    if uploaded_avatar.attached?
+      self.avatar_kind = :uploaded
+    elsif has_gravatar?
+      self.avatar_kind = :gravatar
+    else
+      self.avatar_kind = :initials
+    end
   end
 
   def avatar_kind
@@ -24,22 +30,24 @@ module HasAvatar
   end
 
   def avatar_url(size = 512)
-    size = size.to_i
-    case avatar_kind.to_sym
-    when :gravatar
+    if avatar_kind == 'uploaded' && (!uploaded_avatar.attached? or uploaded_avatar.attachment.nil?)
+      update_columns(avatar_kind: set_default_avatar_kind)
+    end
+
+    case avatar_kind
+    when 'gravatar'
       gravatar_url(size: size, secure: true, default: 'retro')
-    when :uploaded
-      if uploaded_avatar.attachment.nil?
-        MigrateAttachmentWorker.perform_async('User', id, 'uploaded_avatar') &&  nil
-      else
-        Rails.application.routes.url_helpers.rails_representation_path(
-          uploaded_avatar.representation(resize_to_limit: [size,size], saver: {quality: 80, strip: true}),
-          only_path: true
-        )
-      end
+    when 'uploaded'
+      Rails.application.routes.url_helpers.rails_representation_path(
+        uploaded_avatar.representation(resize_to_limit: [size,size], saver: {quality: 80, strip: true}),
+        only_path: true
+      )
     else
       nil
     end
+  rescue ActiveStorage::UnrepresentableError
+    update_columns(avatar_kind: :initials)
+    nil
   end
 
   def has_gravatar?(options = {})

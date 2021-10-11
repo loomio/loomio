@@ -511,6 +511,7 @@ nb_NO:
     update_settings: Lagre endringer
     edit: Rediger
   dashboard_page:
+    recent_threads: "Siste tråder"
     filtering:
       proposals: Forslag
     threads_from:

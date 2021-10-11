@@ -7,7 +7,6 @@ import AbilityService           from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
 import Records from '@/shared/services/records'
 import Flash   from '@/shared/services/flash'
-import { print } from '@/shared/helpers/window'
 import ThreadService  from '@/shared/services/thread_service'
 import StrandActionsPanel from './actions_panel'
 

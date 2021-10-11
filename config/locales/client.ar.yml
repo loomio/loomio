@@ -109,6 +109,7 @@ ar:
   timezones:
     local: التوقيت المحلي ({{قيمة}})
   common:
+    version: النسخة
     empty: فارغ
     no_results_found: لم يتم العثور على نتائج
     view: رأي
@@ -572,7 +573,6 @@ ar:
     privacy_private: 'سيكون الموضوع ظاهراً فقط لأعضاء مجموعة {{group}}.'
     privacy_organisation: 'سيكون الموضوع ظاهراً لأعضاء {{parent}} و أعضاء {{group}}.'
     fork_notice: 'سيتم إنشاء سلسلة محادثات جديدة مع {{عدد}} من العناصر من {{العنوان}}'
-    one_person_notified: سيتم إخطار شخص واحد
     notify_group: إخطار المجموعة
   announcement:
     send_discussion: إرسال الموضوع
@@ -1166,6 +1166,7 @@ ar:
     unread_count: "{{عدد}} غير مقروءة"
   dashboard_page:
     aria_label: 'لوحة التحكم'
+    recent_threads: "المواضيع الأخيرة"
     no_groups:
       show_all: أهلا بك! أنت لست عضوا في أي مجموعة حتى الآن. تصفح المجموعات العامة أو ابدأ مجموعة.
       show_muted: ليس لديك أي سلاسل رسائل تم تجاهلها لأنك لست عضوًا في أي مجموعة
@@ -1336,8 +1337,6 @@ ar:
     confirm: 'احذف التعليق'
   contact_message_form:
     title: "مرحبا! كيف يمكن أن نساعد؟"
-    read_the_manual: |
-        هل رأيت دليل المساعدة الخاص بنا؟ نقوم بتحديثه بانتظام بأسئلة وأجوبة متكررة.
     contact_us_email: "يمكنك أيضًا مراسلتنا عبر البريد الإلكتروني: {{البريد الإلكتروني}}"
     contact_us: 'اتصل بنا'
     name_label: 'اسمك'
@@ -1887,8 +1886,6 @@ ar:
     enter_your_password: "أدخل كلمة المرور الخاصة بك للمتابعة"
     check_spam_folder: إذا لم يصل البريد الإلكتروني قريبًا ، فتحقق من مجلد البريد العشوائي.
     sign_up_helptext: يرجى إكمال هذا النموذج لإنشاء حساب مستخدم
-    i_accept: "أوافق على شروط الخدمة وسياسة الخصوصية"
-    newsletter_label: "أريد تلقي نشرة Loomio الإخبارية"
     name_placeholder: اسمك
     name_required: الرجاء إدخال اسم
     terms_required: يجب أن توافق على شروط الخدمة

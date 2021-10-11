@@ -11,6 +11,7 @@ el:
   timezones:
     local: Τοπική ώρα ({{value}})
   common:
+    version: Έκδοση
     expand: Επέκταση
     all_day: Όλη μέρα
     ok_got_it: Εντάξει, το κατάλαβα
@@ -385,6 +386,7 @@ el:
     announcement_label: Ανακοινώσεις
   dashboard_page:
     aria_label: 'Πίνακας Εργαλείων'
+    recent_threads: "Πρόσφατα θέματα"
     mark_as_read: Σημείωσε ως διαβασμένα
     filtering:
       proposals: Προτάσεις

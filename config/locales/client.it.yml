@@ -120,6 +120,7 @@ it:
   timezones:
     local: Ora locale ({{value}})
   common:
+    version: Versione
     none: Nessuno
     empty: Vuoto
     no_results_found: Nessun risultato trovato
@@ -588,7 +589,6 @@ it:
     privacy_private: 'La discussione sarà visibile solamente ai membri di {{group}}.'
     privacy_organisation: 'La discussione sarà visibile ai membri di {{parent}} e ai membri di {{group}}.'
     fork_notice: 'Una nuova discussione è stata creata con {{count}} argomenti da {{title}}'
-    one_person_notified: 1 persona verrà avvisata
     notify_group: Gruppo di notifica
   announcement:
     send_discussion: Invia thread
@@ -1229,6 +1229,7 @@ it:
     learn_more: Impara di più sulle impostazioni email...
   dashboard_page:
     aria_label: 'Dashboard'
+    recent_threads: "Discussioni recenti"
     no_groups:
       show_muted: Non ci sono discussioni silenziate perchè non sei membro di alcun gruppo.
     no_threads:

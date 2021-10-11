@@ -4,6 +4,7 @@ sk:
   loomio_tags:
     name_label: Meno
   common:
+    version: Verzia
     time:
       am: dop.
       pm: odp.

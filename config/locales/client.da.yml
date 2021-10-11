@@ -28,6 +28,7 @@ da:
   timezones:
     local: Lokal tid ({{value}})
   common:
+    version: Version
     no_results_found: Ingen resultater fundet
     expand: Udvid
     all_day: Hele dagen
@@ -547,6 +548,7 @@ da:
       updated: Emailindstillinger gemt
   dashboard_page:
     aria_label: 'Dashboard'
+    recent_threads: "Seneste debatter"
     no_groups:
       show_muted: Du har ikke nogen debatter uden notifikationer da du ikke er medlem af nogen grupper.
     no_threads:

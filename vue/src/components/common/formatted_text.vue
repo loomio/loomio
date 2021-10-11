@@ -42,6 +42,8 @@ img.emoji
     span[style="color:#000000;"],
     span[style="color: #000000"],
     span[style="color: #000000;"],
+    span[style="color:#000"],
+    span[style="color: #000;"],
     span[style="color:rgba(0, 0, 0, 0.87);"],
     span[style="color:rgba(0, 0, 0, 0.87)"],
     span[style="color:rgba(0, 0, 0, 1);"],
@@ -49,8 +51,36 @@ img.emoji
     span[style="color:rgb(0, 0, 0);"],
     span[style="color:rgb(0, 0, 0)"],
     span[style="color:rgb(0,0,0);"],
-    span[style="color:rgb(0,0,0)"]
+    span[style="color:rgb(0,0,0)"],
+    span[style="color: rgba(0, 0, 0, 0.87);"],
+    span[style="color: rgba(0, 0, 0, 0.87)"],
+    span[style="color: rgba(0, 0, 0, 1);"],
+    span[style="color: rgba(0, 0, 0, 1)"],
+    span[style="color: rgb(0, 0, 0);"],
+    span[style="color: rgb(0, 0, 0)"],
+    span[style="color: rgb(0,0,0);"],
+    span[style="color: rgb(0,0,0)"]
       color: #fff !important
+
+.theme--light
+  .lmo-markdown-wrapper
+    span[style="color:rgb(255, 255, 255);"],
+    span[style="color:rgb(255, 255, 255)"],
+    span[style="color: rgb(255, 255, 255);"],
+    span[style="color: rgb(255, 255, 255)"],
+    span[style="color:rgb(255,255,255);"],
+    span[style="color:rgb(255,255,255)"],
+    span[style="color: rgb(255,255,255);"],
+    span[style="color: rgb(255,255,255)"],
+    span[style="color: #fff"],
+    span[style="color: #fff;"],
+    span[style="color:#fff"],
+    span[style="color:#fff;"],
+    span[style="color: #ffffff"],
+    span[style="color: #ffffff;"],
+    span[style="color:#ffffff"],
+    span[style="color:#ffffff;"]
+      color: rgba(0, 0, 0, 0.87) !important
 
 .lmo-markdown-wrapper
 
@@ -83,10 +113,11 @@ img.emoji
   blockquote, pre
     margin: 0.5rem 0
 
-  h1, h2, h3
+  h1, h2
     margin-top: 1rem
+    margin-bottom: 0.5rem
 
-  h1:first-child, h2:first-child, h3:first-child
+  h1:first-child, h2:first-child
     margin-top: 0
 
   h1
@@ -100,9 +131,9 @@ img.emoji
     letter-spacing: normal
 
   h3
-    font-size: 1.25rem
-    font-weight: 500
-    letter-spacing: 0.009375rem
+    font-size: 1rem
+    font-weight: 700
+    letter-spacing: normal
 
   strong
     font-weight: 700

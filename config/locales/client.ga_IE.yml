@@ -38,6 +38,7 @@ ga_IE:
   timezones:
     local: An t-am áitiúil ({{luach}})
   common:
+    version: Leagan
     no_results_found: Níor aimsíodh aon rud
     option: Rogha
     add: Cuir leis

@@ -101,7 +101,6 @@ he:
       resend: הלינק הזה יבוטל תוך 24 שעות וניתן לשימוש רק פעם אחת.
     login:
       subject: התחבר ל%{site_name}
-      intro: היי %{name}, הנה הלינק להתחבר לחשבונך %{site_name}.
       login: התחבר כ%{name}
     reactivate:
       subject: 'אקטב מחדש את חשבונך %{site_name} '
@@ -135,7 +134,6 @@ he:
       intro: "%{who} ביצע הכרזה ב%{group}:"
     by_who: לפי %{person}
     reply_to_this_discussion: השב לדיון זה
-    value_proposition: "%{site_name} הוא מקום לקבוצות לקבל החלטות יחד"
     view_group: צפיה בקבוצה
     to_join_group:
       subject: "%{member} הזמין אותך להצטטרף ל%{group_name} ב%{site_name}"

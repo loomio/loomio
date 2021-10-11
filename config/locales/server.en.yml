@@ -102,7 +102,7 @@ en:
       title: Title
       author: Author
       email: Email
-      id: ID
+      user_id: User ID
       created_at: Created At
       closing_at: Closing At
       closed_at: Closed At

@@ -183,7 +183,7 @@ module Dev::Scenarios::Discussion
 
     @discussion = Discussion.new(title: 'What star sign are you?',
                                  group: @group,
-                                 description: "hey @patrickswayze wanna dance?",
+                                 description: "hey @#{patrick.username} wanna dance?",
                                  author: jennifer)
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     last_email

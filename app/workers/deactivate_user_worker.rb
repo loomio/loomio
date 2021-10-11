@@ -39,7 +39,6 @@ class DeactivateUserWorker
       Group.where(id: group_ids).map(&:update_memberships_count)
 
       MembershipRequest.where(requestor_id: user_id, responded_at: nil).destroy_all
-      Ahoy::Message.where(user_id: user_id).delete_all
       UserMailer.deactivated(email, user.email, locale).deliver_now
     end
   end

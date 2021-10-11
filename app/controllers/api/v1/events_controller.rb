@@ -5,6 +5,14 @@ class API::V1::EventsController < API::V1::RestfulController
     render json: keys, root: 'position_keys'
   end
 
+  def timeline
+    load_and_authorize(:discussion)
+    data = Event.where(discussion_id: params[:discussion_id])
+                .order(:position_key)
+                .pluck(:position_key, :sequence_id, :created_at, :user_id)
+    render json: data.to_json, root: 'timeline'
+  end
+
   def remove_from_thread
     service.remove_from_thread(event: load_resource, actor: current_user)
     respond_with_resource

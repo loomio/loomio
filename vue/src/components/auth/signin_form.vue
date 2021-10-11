@@ -1,6 +1,5 @@
 <script lang="coffee">
 import AuthService  from '@/shared/services/auth_service'
-import { hardReload } from '@/shared/helpers/window'
 import Session from '@/shared/services/session'
 import AuthModalMixin from '@/mixins/auth_modal'
 import AppConfig from '@/shared/services/app_config'

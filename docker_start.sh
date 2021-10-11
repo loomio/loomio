@@ -1,4 +1,5 @@
 #!/bin/bash -e
+mkdir -p tmp/pids
 if [ "$TASK" = "worker" ];
 then
   bundle exec sidekiq

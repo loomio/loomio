@@ -25,8 +25,6 @@ class ApplicationController < ActionController::Base
   helper_method :supported_locales
   helper_method :is_old_browser?
 
-  after_action :associate_user_to_visit
-
   def index
     boot_app
   end

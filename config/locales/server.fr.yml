@@ -15,6 +15,9 @@ fr:
     400:
       title: Mauvaise requête
       body: Désolé, nous ne sommes pas capable de comprendre votre requête
+    401:
+      title: Non autorisée
+      body: Vous n'êtes pas autorisé à accéder à cette page. Vous devez peut-être vous connecter.
     403:
       title: Accès interdit
       body: Vous n'êtes pas autorisé à accéder à cette page. Vous devez peut-être vous connecter.
@@ -174,7 +177,9 @@ fr:
       resend: Ce lien expirera dans 24 heures et ne peut être utilisé qu'une seule fois.
     login:
       subject: Identifiez-vous sur %{site_name}
-      intro: Bonjour %{name},  voici votre lien de connexion à votre compte sur %{site_name}.
+      intro: Salut %{name}, ici ton lien pour s'enregistrer dans %{site_name}.
+      intro_html: |
+          Salut %{name}, ici ton lien pour s'enregistrer dans %{site_name}:
       login: Se connecter comme %{name}
     reactivate:
       subject: Réactiver votre compte sur %{site_name}
@@ -208,7 +213,7 @@ fr:
       intro: "%{who} a fait une annonce pour %{group} :"
     by_who: par %{person}
     reply_to_this_discussion: Répondre à cette discussion
-    value_proposition: "%{site_name} est un espace où les groupes peuvent prendre des décisions collectivement"
+    value_proposition: "%{site_name}est un endroit pour avoir des discussions et prendre des décisions"
     view_group: Voir le groupe
     to_join_group:
       subject: "%{member} vous a invité·e à rejoindre le groupe %{group_name} sur %{site_name}"

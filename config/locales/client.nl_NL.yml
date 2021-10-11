@@ -1,4 +1,19 @@
 nl_NL:
+  doctypes:
+    youtube_video: YouTube Video
+    image: Afbeelding
+    pdf: PDF
+    excel: Excel Spreadsheet
+    document: Document
+    csv: CSV Bestand
+    video: Video
+    text: Tekstbestand
+    google_doc: Google Doc
+    google_sheet: Google Spreadsheet
+    google_drive: Google Drive
+    pull_request: Pull Request
+    trello_board: Trello Board
+    trello_card: Trello Card
   loomio_onboarding:
     group_progress_card:
       title: Laten we beginnen!
@@ -122,6 +137,7 @@ nl_NL:
   timezones:
     local: Plaatselijke tijd ({{value}})
   common:
+    version: Versie
     none: Geen
     empty: Leeg
     no_results_found: Geen resultaten gevonden
@@ -589,7 +605,6 @@ nl_NL:
     privacy_private: 'Het bord is enkel zichtbaar voor leden van {{group}}'
     privacy_organisation: 'Het bord zal zichtbaar zijn voor leden van {{parent}} en leden van {{group}}'
     fork_notice: 'Een nieuw bord wordt gemaakt met {{count}} items van {{title}}'
-    one_person_notified: 1 persoon krijgt een melding.
     notify_group: stuur melding naar groep
   announcement:
     send_discussion: Bord verzenden
@@ -665,6 +680,9 @@ nl_NL:
       notified: '{{notified}} mensen krijgen een melding.'
       notified_singular: '1 persoon krijgt een melding.'
       notified_none: 'Niemand krijgt een melding.'
+      added: 'Er zullen {{count}} personen worden toegevoegd.'
+      added_singular: 'Er zal 1 persoon worden toegevoegd.'
+      added_none: 'Er zal niemand worden toegevoegd.'
       group_title: '{{name}} ({{count}} personen)'
       visible_to_group: 'Iedereen in {{group}} kunnen dit bord zien.'
       visible_to_guests: 'Alleen uitgenodigde mensen kunnen dit bord zien.'
@@ -999,6 +1017,8 @@ nl_NL:
     public_or_private_threads: 'Sta openbare en privéborden toe'
     private_threads: 'Enkel leden kunnen discussies zien'
     allow_public_threads: 'Sta openbare borden toe in deze groep.'
+    members_can_start_discussions_help: 'Sta leden toe nieuwe borden te starten binnen de groep'
+    members_can_raise_motions: 'Leden kunnen polls starten'
     submit_start_group: 'Start groep'
     submit_start_subgroup: 'Start subgroep'
     submit_update: 'Instellingen bijwerken'
@@ -1211,6 +1231,7 @@ nl_NL:
     unread_count: "{{count}} ongelezen"
   dashboard_page:
     aria_label: 'Dashboard'
+    recent_threads: "Recente borden"
     no_groups:
       show_all: Welkom! Je bent van nog geen enkele groep lid. <a href="/explore">Browse publieke groepen</a> of <a href="/g/new">Start een groep</a>.
       show_muted: Je hebt geen gedempte borden, omdat je geen lid bent van een groep.
@@ -1382,8 +1403,6 @@ nl_NL:
     confirm: 'Verwijder reactie'
   contact_message_form:
     title: "Hallo! Hoe kunnen we helpen?"
-    read_the_manual: |
-        Heb je onze <a href="{{link}}" target="_blank">Help handleiding</a> gezien? We vernieuwen het regelmatig met vaak gestelde vragen en antwoorden.
     contact_us_email: "Je kunt ons ook mailen: <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Neem contact met ons op'
     name_label: 'Je naam'
@@ -1937,8 +1956,6 @@ nl_NL:
     enter_your_password: "Voer je wachtwoord in om door te gaan"
     check_spam_folder: Als de e-mail niet snel aankomt, kijk dan in je spam map.
     sign_up_helptext: Vul alsjeblieft in om een gebruikersaccount te maken
-    i_accept: "Ik accepteer de <a href='{{termsUrl}}' target='_blank'>Servicevoorwaarden</a> en het <a href='{{privacyUrl}}' target='_blank'>Privacybeleid</a>"
-    newsletter_label: "Ik wil de <a href='https://help.loomio.org/en/newsletter/' target='_blank'>Loomio nieuwsbrief</a> ontvangen"
     name_placeholder: Je naam
     name_required: Geef aub een naam in
     terms_required: Je moet instemmen met de gebruiksvoorwaarden

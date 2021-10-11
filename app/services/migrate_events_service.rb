@@ -43,7 +43,7 @@ module MigrateEventsService
       next unless record[column_name].present?
 
       host ||= Regexp.escape ENV['CANONICAL_HOST']
-      regex = /https:\/\/#{host}\/rails\/active_storage\/representations\/.*#{Regexp.escape attachment.filename.to_s}/
+      regex = /https:\/\/#{host}\/rails\/active_storage\/representations\/.*#{Regexp.escape URI.escape(attachment.filename.to_s)}/
 
       if record[column_name].match?(regex)
         path = Rails.application.routes.url_helpers.rails_representation_path(

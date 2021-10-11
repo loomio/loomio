@@ -103,7 +103,6 @@ ru:
       resend: Это одноразовая ссылка, и действует она 24 часа.
     login:
       subject: Войти на %{site_name}
-      intro: '%{name}, вот ссылка для входа в ваш аккаунт на сайте %{site_name}.'
       login: Войти как %{name}
     reactivate:
       subject: Возобновите ваш аккаунт на %{site_name}
@@ -137,7 +136,6 @@ ru:
       intro: "Объявление от %{who} в %{group}:"
     by_who: от %{person}
     reply_to_this_discussion: Ответить в этой дискуссии
-    value_proposition: "%{site_name} — место, где решают вместе"
     view_group: Смотреть группу
     to_join_group:
       subject: "%{member} приглашает вас вступить в %{group_name} на %{site_name}"

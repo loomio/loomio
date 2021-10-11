@@ -32,7 +32,7 @@ v-card.membership-requests-card(v-if='canManageMembershipRequests() && membershi
     v-subheader(v-t="'membership_requests_card.heading'")
     v-list-item.membership-requests-card__request(v-for='request in orderedPendingMembershipRequests()', :key='request.id' :to="urlFor(group, 'membership_requests')")
       v-list-item-avatar
-        user-avatar(:user='request.actor()', size='forty')
+        user-avatar(:user='request.actor()' :size='40')
       v-list-item-content
         v-list-item-title.membership-requests-card__requestor-name {{request.actor().name || request.actor().email}}
         v-list-item-subtitle.membership-requests-card__requestor-introduction {{request.introduction}}

@@ -576,8 +576,9 @@ en:
   notification_models:
     discussion: 'thread: '
     comment: 'comment in '
-    poll: 'decision: '
+    poll: 'poll: '
     outcome: 'outcome: '
+    stance: 'vote: '
 
   notifications:
     header: "Notifications"
@@ -617,6 +618,7 @@ en:
     outcome_announced: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> participated in: <strong>{{title}}</strong>"
     group_announced: "<strong>{{name}}</strong> invited you to the group <strong>{{title}}</strong>"
+    outcome_review_due: "It's time to review the outcome of: <strong>{{title}}</strong>"
 
   discussion_fork_actions:
     helptext: Select items you'd like to move to another thread
@@ -1537,6 +1539,7 @@ en:
     pin_thread: Pin thread
 
   thread_arrangement_form:
+    edit: Edit layout
     title: Thread layout
     for_everyone: This changes the layout for everyone, not just you.
     sorting: Oldest or Newest first?

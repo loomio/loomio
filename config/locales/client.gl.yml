@@ -4,6 +4,7 @@ gl:
   loomio_tags:
     name_label: Nome
   common:
+    version: Versión
     time:
       am: am
       pm: pm

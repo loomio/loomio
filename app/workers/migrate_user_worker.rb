@@ -16,9 +16,6 @@ class MigrateUserWorker
   end
 
   SCHEMA = {
-    ahoy_visits: :user_id,
-    ahoy_events: :user_id,
-    ahoy_messages: :user_id,
     attachments: :user_id,
     documents: :author_id,
     comments: :user_id,
