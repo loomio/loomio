@@ -76,5 +76,5 @@ v-card.thread-arrangement-form
     v-alert(type="warning" v-if="clone.maxDepth != discussion.maxDepth" v-t="'thread_arrangement_form.changing_nesting_is_slow'")
   v-card-actions
     v-spacer
-    v-btn(color="primary" @click="submit()" v-t="'common.action.save'")
+    v-btn(color="primary" @click="submit()" v-t="'common.action.save'" :loading="clone.processing")
 </template>
