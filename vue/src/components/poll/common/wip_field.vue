@@ -15,7 +15,7 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-wip-field(v-if="false")
+.poll-common-wip-field
   v-checkbox(hide-details v-model="draft")
     div(slot="label")
       span(v-t="'poll_common_wip_field.title'")

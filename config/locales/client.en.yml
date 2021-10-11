@@ -1764,7 +1764,7 @@ en:
     anonymous: Votes are anonymous
     results_hidden_until_closed: Results are hidden until the %{poll_type} has closed
     unable_to_vote: You have not been invited to vote in this %{poll_type}.
-    draft_mode: This %{poll_type} is a work in progress. Voting is disabled.
+    draft_mode: Voting disabled. This %{poll_type} is a work in progress.
 
   current_polls_card:
     title: Current decisions
@@ -1856,8 +1856,8 @@ en:
     success: "{{poll_type}} moved to {{group}}"
 
   poll_common_wip_field:
-    title: Work in progress
-    helptext: 'Use "Work in progress" to collaborate on the %{poll_type} before voting'
+    title: Disable voting
+    helptext: 'This %{poll_type} is a work in progress. You can enable voting later.'
 
   poll_common_closing_at_field:
     closing: Closing
