@@ -131,8 +131,9 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
   display: block
   flex-grow: 1
   border-left: 2px solid #eee
-  padding-left: 4px
-  padding-right: 4px
+  padding-left: 8px
+  padding-right: 8px
+  margin-left: 8px
 
 .strand-nav__entry--unread
   border-color: var(--v-accent-lighten1)!important
