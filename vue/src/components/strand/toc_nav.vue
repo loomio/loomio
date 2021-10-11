@@ -106,24 +106,30 @@ export default
 <template lang="pug">
 v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion" v-model="open" :permanent="$vuetify.breakpoint.mdAndUp" width="230px" app fixed right clipped color="background" floating)
   div.mt-12
-
-  router-link.strand-nav__entry.text-caption(
-    :class="{'strand-nav__entry--visible': item.visible, 'strand-nav__entry--unread': item.unread}"
-    v-for="item, key in items"
-    :key="key"
-    :to="baseUrl+'/'+item.sequenceId")
-      .strand-nav__stance-icon-container(v-if="item.poll")
-        poll-common-icon-panel.poll-proposal-chart-panel__chart.mr-1(:poll="item.poll" show-my-stance :size="18" :stanceSize="12")
-        //- poll-common-stance-icon.thread-nav__stance-icon(:poll="item.poll" :stance="item.stance" :size='18')
-      span {{item.title}}
+  div.strand-nav__toc
+    router-link.strand-nav__entry.text-caption(
+      :class="{'strand-nav__entry--visible': item.visible, 'strand-nav__entry--unread': item.unread}"
+      v-for="item, key in items"
+      :key="key"
+      :to="baseUrl+'/'+item.sequenceId")
+        .strand-nav__stance-icon-container(v-if="item.poll")
+          poll-common-icon-panel.poll-proposal-chart-panel__chart.mr-1(:poll="item.poll" show-my-stance :size="18" :stanceSize="12")
+          //- poll-common-stance-icon.thread-nav__stance-icon(:poll="item.poll" :stance="item.stance" :size='18')
+        span {{item.title}}
 </template>
 
 <style lang="sass">
 .strand-nav__stance-icon-container
   display: inline-block
+
+.strand-nav__toc
+  display: flex
+  flex-direction: column
+  height: 70%
+
 .strand-nav__entry
   display: block
-  min-height: 4px
+  flex-grow: 1
   border-left: 2px solid #eee
   padding-left: 4px
   padding-right: 4px
