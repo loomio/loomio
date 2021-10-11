@@ -118,7 +118,7 @@ class EventService
 
   def self.repair_all_threads
     Discussion.pluck(:id).each do |id|
-      EventService.delay.repair_thread(id)
+      RepairThreadWorker.perform_async(id)
     end
   end
 end
