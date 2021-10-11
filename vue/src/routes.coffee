@@ -50,14 +50,6 @@ groupPageChildren = [
   {path: ':stub?', component: GroupDiscussionsPanel, meta: {noScroll: true}}
 ]
 
-# threadPageChildren =
-
-strandPageChildren = [
-  {path: 'comment/:comment_id'}
-  {path: ':stub?/:sequence_id?'}
-  {path: ''}
-]
-
 router = new Router
   mode: 'history'
 
