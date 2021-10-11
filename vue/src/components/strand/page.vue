@@ -54,7 +54,7 @@ export default
         if @discussion.lastSequenceId()
           return ".sequenceId-#{@discussion.lastSequenceId()}"
         else
-          return ".context-panel"
+          return "#add-comment"
 
       if @loader.focusAttrs.unread
         # how do we know when the context was updated?
@@ -129,16 +129,20 @@ export default
         @loader.focusAttrs = {commentId: parseInt(@$route.query.comment_id)}
 
       if @loader.rules.length == 0
-        if @discussion.lastReadAt
-          if @discussion.unreadItemsCount() == 0
-            @loader.addLoadNewestRule()
-            @loader.focusAttrs = {newest: 1}
-          else
-            @loader.addLoadUnreadRule()
-            @loader.focusAttrs = {unread: 1}
+        if @discussion.newestFirst
+          @loader.addLoadNewestRule()
+          @loader.focusAttrs = {newest: 1}
         else
-          @loader.addLoadOldestRule()
-          @loader.focusAttrs = {oldest: 1}
+          if @discussion.lastReadAt
+            if @discussion.unreadItemsCount() == 0
+              @loader.addLoadNewestRule()
+              @loader.focusAttrs = {newest: 1}
+            else
+              @loader.addLoadUnreadRule()
+              @loader.focusAttrs = {unread: 1}
+          else
+            @loader.addLoadOldestRule()
+            @loader.focusAttrs = {oldest: 1}
 
       @loader.addContextRule()
 

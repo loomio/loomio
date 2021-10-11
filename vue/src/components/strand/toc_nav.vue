@@ -18,7 +18,6 @@ export default
 
   methods:
     buildItems: ->
-      console.log "building items"
       @items = {}
 
       @baseUrl = @urlFor(@discussion)
