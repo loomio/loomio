@@ -81,7 +81,7 @@ v-list-item.thread-preview.thread-preview__link(:class="{'thread-preview--unread
 .thread-preview
   border-left: 2px solid transparent
 .thread-preview--unread-border
-  border-color: var(--v-primary-base)
+  border-color: var(--v-accent-lighten1)
 // .thread-preview__position-icon-container
 //   width: 23px
 //   height: 23px

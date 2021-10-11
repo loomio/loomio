@@ -49,14 +49,14 @@ export default
           stance: null
 
       Records.events.collection.chain()
-             .find({discussionId: @discussion.id, pinned: true})
+             .find({discussionId: @discussion.id})
              .simplesort('positionKey')
              .data().forEach (event) =>
         @$set @items, event.positionKey,
           sequenceId: event.sequenceId
           createdAt: event.createdAt
           actorId: event.actorId
-          title: event.pinnedTitle || event.fillPinnedTitle()
+          title: if event.pinned then (event.pinnedTitle || event.fillPinnedTitle()) else null
           visible: false
           unread: @loader.sequenceIdIsUnread(event.sequenceId)
           poll: null
