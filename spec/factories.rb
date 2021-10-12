@@ -129,15 +129,7 @@ FactoryBot.define do
     association :group, :factory => :group
     title { Faker::Name.name }
     description_format { 'html' }
-    description { "<p>A description for this discussion. Should this be <em>rich</em>?</p>
-      <ul data-type=\"taskList\">
-        <li data-uid=\"23706511\" data-checked=\"false\" data-due-on=\"2021-06-30\" data-type=\"taskItem\">
-          <p>a task for you, <span class=\"mention\" data-mention-id=\"patrickswayze\">@Patrick Swayze</span> </p>
-        </li>
-        <li data-uid=\"17087224\" data-checked=\"true\" data-type=\"taskItem\">
-          <p>and this is done <span class=\"mention\" data-mention-id=\"jennifergrey\">@Jennifer Grey</span> </p>
-        </li>
-      </ul>" }
+    description { "<p>A description for this discussion. Should this be <em>rich</em>?</p>" }
     link_previews { [{'title': 'link title', 'url': 'https://www.example.com', 'description': 'a link to a page', 'image': 'https://www.loomio.org/theme/logo.svg', 'hostname':'www.example.com'}] }
     private { true }
     tags { group ? group.tags : [] }
