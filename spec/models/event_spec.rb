@@ -18,7 +18,7 @@ describe Event do
   let(:user_unsubscribed) { create :user, name: 'user unsubscribed' }
 
   let(:author) { create :user }
-  let(:discussion) { create :discussion, description: user_mentioned_text, author: author }
+  let(:discussion) { create :discussion, description: user_mentioned_text, description_format: 'md', author: author }
   let(:mentioned_user) {create :user, username: 'sam', email_when_mentioned: true }
   let(:parent_comment) { create :comment, discussion: discussion}
   let(:comment) { create :comment, parent: parent_comment, discussion: discussion, body: 'hey @sam' }
