@@ -125,7 +125,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
 .strand-nav__toc
   display: flex
   flex-direction: column
-  height: 70%
+  min-height: 70%
 
 .strand-nav__entry
   display: block
@@ -134,6 +134,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
   padding-left: 8px
   padding-right: 8px
   margin-left: 8px
+  min-height: 1px
 
 .strand-nav__entry--unread
   border-color: var(--v-accent-lighten1)!important
