@@ -96,6 +96,8 @@ export default class StanceModel extends BaseModel
         show: (score > 0) || poll.pollType == "score",
         pollOption: optionsById[pollOptionId]
       }
+      
+    choices = choices.filter (c) -> c.pollOption
 
     if poll.pollType == 'meeting'
       sortBy choices, (c) -> c.pollOption.priority
