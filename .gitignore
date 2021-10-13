@@ -38,6 +38,7 @@ public/service-worker.js
 dump.rdb
 
 vue/node_modules
+vue/tt_node_modules
 vue/tests/reports
 vue/tests/screenshots
 
