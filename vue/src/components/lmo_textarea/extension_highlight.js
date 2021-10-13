@@ -48,20 +48,14 @@ export const Highlight = Mark.create({
     return {
       color: {
         default: null,
-        parseHTML: element => {
-          console.log('we parsin')
-          return {
-            color: element.getAttribute('data-color') || element.style.backgroundColor,
-          }
-        },
+        parseHTML: element => ( element.getAttribute('data-color') || element.style.backgroundColor ),
         renderHTML: attributes => {
           if (!attributes.color) {
             return {}
           }
 
           return {
-            'data-color': attributes.color,
-            style: `background-color: ${attributes.color}`,
+            'data-color': attributes.color
           }
         },
       },

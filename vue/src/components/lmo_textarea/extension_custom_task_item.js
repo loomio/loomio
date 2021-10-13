@@ -8,9 +8,7 @@ export const CustomTaskItem = TaskItem.extend({
     return {
       uid: {
         default: Math.floor(Math.random() * 90000000),
-        parseHTML: element => ({
-          uid: parseInt(element.getAttribute('data-uid'))
-        }),
+        parseHTML: element => ( parseInt(element.getAttribute('data-uid')) ),
         renderHTML: attributes => ({
           'data-uid': attributes.uid,
         }),
@@ -20,9 +18,7 @@ export const CustomTaskItem = TaskItem.extend({
       checked: {
         default: false,
         // Take the attribute values
-        parseHTML: element => ({
-          checked: element.getAttribute('data-checked') === 'true'
-        }),
+        parseHTML: element => ( element.getAttribute('data-checked') === 'true' ),
         renderHTML: attributes => ({
           'data-checked': attributes.checked,
         }),
@@ -31,9 +27,7 @@ export const CustomTaskItem = TaskItem.extend({
 
       dueOn: {
         default: null,
-        parseHTML: element => ({
-          dueOn: element.getAttribute('data-due-on')
-        }),
+        parseHTML: element => ( element.getAttribute('data-due-on') ),
         renderHTML: attributes => ({
           'data-due-on': attributes.dueOn,
         }),
@@ -42,9 +36,7 @@ export const CustomTaskItem = TaskItem.extend({
 
       remind: {
         default: null,
-        parseHTML: element => ({
-          remind: element.getAttribute('data-remind')
-        }),
+        parseHTML: element => ( element.getAttribute('data-remind') ),
         renderHTML: attributes => ({
           'data-remind': attributes.remind,
         }),
@@ -53,9 +45,7 @@ export const CustomTaskItem = TaskItem.extend({
 
       authorId: {
         default: Session.user().id,
-        parseHTML: element => ({
-          authorId: parseInt(element.getAttribute('data-author-id'))
-        }),
+        parseHTML: element => ( parseInt(element.getAttribute('data-author-id')) ),
         renderHTML: attributes => ({
           'data-author-id': attributes.authorId,
         }),

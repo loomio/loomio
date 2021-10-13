@@ -9,29 +9,12 @@ export const CustomMention = Mention.extend({
     return {
       id: {
         default: null,
-        parseHTML: element => {
-          return {
-            id: element.getAttribute('data-mention-id'),
-            label: element.innerText.split('@').join('')
-          }
-        },
-        renderHTML: attributes => {
-          if (!attributes.id) {
-            return {}
-          }
-
-          return {
-            'data-mention-id': attributes.id,
-          }
-        },
+        parseHTML: element => ( element.getAttribute('data-mention-id') ),
+        renderHTML: attributes => ( { 'data-mention-id': attributes.id } ),
       },
       label: {
         default: null,
-        parseHTML: element => {
-          return {
-            label: element.getAttribute('data-label'),
-          }
-        },
+        parseHTML: element => ( element.getAttribute('data-label') || element.innerText.split('@').join('') )
       },
     }
   },
