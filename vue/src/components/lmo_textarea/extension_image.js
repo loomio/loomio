@@ -123,10 +123,13 @@ export const CustomImage = Image.extend({
   },
   addInputRules() {
     return [
-      nodeInputRule(inputRegex, this.type, match => {
-        const [, alt, src, title, width, height] = match
-
-        return { src, alt, title, width, height }
+      nodeInputRule({
+        find: inputRegex,
+        type: this.type,
+        getAttributes: match => {
+          const [, alt, src, title, width, height] = match
+          return { src, alt, title, width, height }
+        }
       }),
     ]
   },

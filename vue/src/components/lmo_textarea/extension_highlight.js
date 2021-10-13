@@ -29,8 +29,8 @@ import {
 //   }
 // }
 
-export const inputRegex = /(?:^|\s)((?:==)((?:[^~]+))(?:==))$/gm
-export const pasteRegex = /(?:^|\s)((?:==)((?:[^~]+))(?:==))/gm
+export const inputRegex = /(?:^|\s)((?:==)((?:[^~]+))(?:==))$/
+export const pasteRegex = /(?:^|\s)((?:==)((?:[^~]+))(?:==))/g
 
 export const Highlight = Mark.create({
   name: 'highlight',
@@ -107,13 +107,19 @@ export const Highlight = Mark.create({
 
   addInputRules() {
     return [
-      markInputRule(inputRegex, this.type),
+      markInputRule({
+        find: inputRegex,
+        type: this.type,
+      }),
     ]
   },
 
   addPasteRules() {
     return [
-      markPasteRule(inputRegex, this.type),
+      markPasteRule({
+        find: pasteRegex,
+        type: this.type,
+      }),
     ]
   },
 })

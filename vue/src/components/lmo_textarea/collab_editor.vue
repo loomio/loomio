@@ -38,7 +38,6 @@ import {CustomTaskList} from './extension_custom_task_list'
 import TextStyle from '@tiptap/extension-text-style'
 # import TextAlign from '@tiptap/extension-text-align'
 import Text from '@tiptap/extension-text'
-import Typography from '@tiptap/extension-typography'
 import Underline from '@tiptap/extension-underline'
 import {CustomMention} from './extension_mention'
 import {CustomImage} from './extension_image'
@@ -128,7 +127,6 @@ export default
         CustomTaskList
         CustomTaskItem
         CustomMention.configure(MentionPluginConfig.bind(@)())
-        # Typography
         TextStyle
         TextAlign.configure({ types: ['heading', 'paragraph'] })
         Underline
@@ -214,7 +212,7 @@ export default
           @model.linkPreviews = uniqBy(@model.linkPreviews.concat(data.previews), 'url')
 
   beforeDestroy: ->
-    # @editor.destroy() if @editor
+    @editor.destroy() if @editor
     # @socket.close() if @socket
 
 </script>

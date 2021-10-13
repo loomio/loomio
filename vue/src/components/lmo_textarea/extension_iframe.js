@@ -57,9 +57,13 @@ export const Iframe = Node.create({
 
   addInputRules() {
     return [
-      nodeInputRule(inputRegex, this.type, match => {
-        const [, src] = match
-        return { src }
+      nodeInputRule({
+        find: inputRegex,
+        type: this.type,
+        getAttributes: match => {
+          const [, src] = match
+          return { src }
+        }
       }),
     ]
   },
