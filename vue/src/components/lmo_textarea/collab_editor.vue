@@ -282,7 +282,7 @@ div
             template(v-if="expanded")
               //- v-btn(icon @click='editor.chain().focus().setParagraph().run()' :outlined="editor.isActive('paragraph')" :title="$t('formatting.paragraph')")
               //-   v-icon mdi-format-pilcrow
-              template(v-for="i in 2")
+              template(v-for="i in [2,3]")
                 v-btn(icon @click='editor.chain().focus().toggleHeading({ level: i }).run()' :outlined="editor.isActive('heading', { level: i })" :title="$t('formatting.heading'+i)")
                   v-icon {{'mdi-format-header-'+i}}
 
@@ -298,18 +298,18 @@ div
             //- v-btn(icon v-if="expanded" @click='editor.chain().toggleStrike().focus().run()' :outlined="editor.isActive('strike')"  :title="$t('formatting.strikethrough')")
             //-   v-icon mdi-format-strikethrough
             //- underline
-            v-btn(icon v-if="expanded" @click='editor.chain().toggleUnderline().focus().run()' :outlined="editor.isActive('underline')",  :title="$t('formatting.underline')")
-              v-icon mdi-format-underline
+            //- v-btn(icon v-if="expanded" @click='editor.chain().toggleUnderline().focus().run()' :outlined="editor.isActive('underline')",  :title="$t('formatting.underline')")
+            //-   v-icon mdi-format-underline
             //-
             text-highlight-btn(v-if="expanded" :editor="editor")
             text-align-btn(v-if="expanded" :editor="editor")
 
             v-btn(icon v-if="expanded" @click='editor.chain().toggleBulletList().focus().run()' :outlined="editor.isActive('bulletList')"  :title="$t('formatting.bullet_list')")
               v-icon mdi-format-list-bulleted
-            v-btn(icon v-if="expanded" @click='editor.chain().toggleOrderedList().focus().run()' :outlined="editor.isActive('orderedList')"  :title="$t('formatting.number_list')")
-              v-icon mdi-format-list-numbered
+            //- v-btn(icon v-if="expanded" @click='editor.chain().toggleOrderedList().focus().run()' :outlined="editor.isActive('orderedList')"  :title="$t('formatting.number_list')")
+            //-   v-icon mdi-format-list-numbered
             v-btn(icon v-if="expanded" @click='editor.chain().toggleTaskList().focus().run()' :outlined="editor.isActive('taskList')"  :title="$t('formatting.check_list')")
-              v-icon mdi-format-list-checks
+              v-icon mdi-checkbox-marked-outline
 
             //- extra text marks
             template(v-if="expanded")
@@ -382,9 +382,9 @@ div
 .ProseMirror [contenteditable="true"]
   white-space: pre-wrap
 
-.ProseMirror
-  > * + *
-    margin-top: 0.75em
+// .ProseMirror
+//   > * + *
+//     margin-top: 0.75em
 
 /* Placeholder (at the top) */
 .ProseMirror p.is-editor-empty:first-child::before

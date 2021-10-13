@@ -10,7 +10,7 @@ export default
       type: Function
 </script>
 <template lang="pug">
-.link-previews.mb-3
+.link-previews.mb-3(v-if="model.linkPreviews && model.linkPreviews.length")
   link-preview(v-for="preview in model.linkPreviews"
                :key="preview.url"
                :model="model"

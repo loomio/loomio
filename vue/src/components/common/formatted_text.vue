@@ -152,11 +152,11 @@ img.emoji
   blockquote, pre
     margin: 0.5rem 0
 
-  h1, h2
+  h1, h2, h3
     margin-top: 1rem
     margin-bottom: 0.5rem
 
-  h1:first-child, h2:first-child
+  h1:first-child, h2:first-child, h3:first-child
     margin-top: 0
 
   h1
@@ -269,9 +269,6 @@ img.emoji
       border-color: var(--v-primary-lighten1)
       // background-color: none !important
 
-    // li[data-checked="true"]:hover:before
-    //   border-color: red
-
   ol
     list-style: decimal
 
@@ -292,24 +289,7 @@ img.emoji
 
   p code
     display: inline-block
-    // padding: 0 .4rem
-    // border-radius: 5px
-    // font-size: .8rem
-    // font-weight: 700
     background: rgba(0, 0, 0, .1)
-    // color: rgba(0, 0, 0, .8)
-
-  // pre:last-of-type
-  //   padding-bottom: 16px
-
-  // code
-  //   background-color: transparent
-  //   color: rgba(#000, 0.88)
-  //   box-shadow: none
-  //   border-radius: 0
-  //   white-space: normal
-  //   font-weight: 400
-  //   font-family: 'Roboto mono', monospace, monospace
 
   blockquote
     font-style: italic
