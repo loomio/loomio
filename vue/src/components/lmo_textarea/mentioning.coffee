@@ -13,6 +13,7 @@ export CommonMentioning =
 
   mounted: ->
     @fetchMentionable = debounce ->
+      return unless @query
       @fetchingMentions = true
       Records.users.fetchMentionable(@query, @model).then (response) =>
         @fetchingMentions = false
