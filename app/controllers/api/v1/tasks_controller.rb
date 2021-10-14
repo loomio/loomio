@@ -1,7 +1,11 @@
 class API::V1::TasksController < API::V1::RestfulController
   def index
     # return tasks
-    Task.joins(:tasks_users).where("author_id = :user_id OR doer_id = :user_id OR tasks_users.user_id = :user_id", user_id: current_user.id)
+
+    self.collection = Task.joins(:tasks_users)
+        .where("author_id = :user_id OR doer_id = :user_id OR tasks_users.user_id = :user_id", user_id: current_user.id)
+
+    respond_with_collection
   end
 
   def update_done
