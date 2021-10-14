@@ -2,6 +2,7 @@
 import AppConfig          from '@/shared/services/app_config'
 import Records            from '@/shared/services/records'
 import Session            from '@/shared/services/session'
+import Flash              from '@/shared/services/flash'
 import EventBus           from '@/shared/services/event_bus'
 import AbilityService     from '@/shared/services/ability_service'
 
@@ -24,7 +25,11 @@ export default
 
   methods:
     toggleDone: (task) ->
-      task.toggleDone()
+      task.toggleDone().then ->
+        if task.done
+          Flash.success 'tasks.task_updated_done'
+        else
+          Flash.success 'tasks.task_updated_not_done'
 
 </script>
 

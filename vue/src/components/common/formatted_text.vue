@@ -3,6 +3,7 @@ import { emojiReplaceText } from '@/shared/helpers/emojis.coffee'
 import { merge } from 'lodash'
 import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
+import Flash from '@/shared/services/flash'
 import AbilityService from '@/shared/services/ability_service'
 
 export default
@@ -29,6 +30,10 @@ export default
           checked = e.target.getAttribute('data-checked') == 'true'
           params = merge(@model.namedId(), {uid: uid, done: ((!checked && 'true') || 'false') })
           Records.remote.post('tasks/update_done', params).finally =>
+            if !checked
+              Flash.success 'tasks.task_updated_done'
+            else
+              Flash.success 'tasks.task_updated_not_done'
             e.target.classList.remove('task-item-busy')
         else
           alert(@$t('tasks.permission_denied'))
