@@ -18,7 +18,7 @@ export const CustomTaskItem = TaskItem.extend({
       checked: {
         default: false,
         // Take the attribute values
-        parseHTML: element => ( element.getAttribute('data-checked') === 'true' ),
+        parseHTML: element => ( (element.getAttribute('data-checked') || element.getAttribute('data-done')) === 'true' ),
         renderHTML: attributes => ({
           'data-checked': attributes.checked,
         }),

@@ -9,7 +9,7 @@ export const CustomTaskList = TaskList.extend({
         priority: 51,
       },
       {
-        tag: 'ul[data-type="task_list"]',
+        tag: 'ul[data-type="todo_list"]',
         priority: 51,
       },
     ]

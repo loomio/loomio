@@ -2,7 +2,7 @@ class API::V1::TasksController < API::V1::RestfulController
   def index
     # return tasks
 
-    self.collection = Task.joins(:tasks_users)
+    self.collection = Task.joins('left outer join tasks_users on tasks_users.task_id = tasks.id')
         .where("author_id = :user_id OR doer_id = :user_id OR tasks_users.user_id = :user_id", user_id: current_user.id)
 
     respond_with_collection

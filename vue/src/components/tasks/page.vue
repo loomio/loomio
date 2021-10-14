@@ -24,6 +24,12 @@ export default
       @tasksByRecordKey = groupBy tasks, (t) -> t.recordType + t.recordId
 
   methods:
+    taskUrlFor: (record) ->
+      if record.isA('discussion')
+        @urlFor(record)+'/0'
+      else
+        @urlFor(record)
+
     toggleDone: (task) ->
       task.toggleDone().then ->
         if task.done
@@ -42,7 +48,7 @@ v-main
     template(v-for="(tasks, recordKey) in tasksByRecordKey")
       v-card.mb-3
         v-card-title
-          router-link(:to="urlFor(records[recordKey])") {{records[recordKey].discussion().title}}
+          router-link(:to="taskUrlFor(records[recordKey])") {{records[recordKey].discussion().title}}
         v-list(subheader)
           v-list-item(v-for="task in tasks" :key="task.id")
             v-list-item-action

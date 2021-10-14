@@ -64,7 +64,7 @@ node-view-wrapper(as="li")
   v-simple-checkbox(contenteditable="false" color="accent" :ripple="false" type="checkbox" :value="checked" @click="onCheckboxChange")
   node-view-content(as="span" :class="{'task-item-text': true, 'task-item-is-empty': isEmpty}" :data-placeholder="$t('tasks.task_placeholder')")
   v-chip.ml-2(v-if="hasMention" contenteditable="false" color="accent" x-small @click="openModal")
-    v-icon mdi-calendar
+    | 📅
     span.ml-1(v-if="node.attrs.dueOn") {{node.attrs.dueOn}}
     span.ml-1(v-else v-t="'tasks.add_due_date'")
   v-dialog(contenteditable="false" ref="dialog" v-model="modalOpen" persistent width="290px")
