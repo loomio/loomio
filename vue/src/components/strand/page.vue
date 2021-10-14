@@ -57,21 +57,16 @@ export default
           return "#add-comment"
 
       if @loader.focusAttrs.unread
-        # how do we know when the context was updated?
         if @loader.firstUnreadSequenceId()
-          # console.log 'scroll to unread items'
           return ".sequenceId-#{@loader.firstUnreadSequenceId()}"
         else
-          # console.log 'scroll to unread context'
           return '.context-panel'
 
       if @loader.focusAttrs.oldest
-        # console.log 'scroll to oldest, context'
         return '.context-panel'
 
       if @loader.focusAttrs.commentId
-        # console.log 'scroll to comment'
-        return ".commendId-#{@loader.focusAttrs.commentId}"
+        return "#comment-#{@loader.focusAttrs.commentId}"
 
       if @loader.focusAttrs.sequenceId
         return ".sequenceId-#{@loader.focusAttrs.sequenceId}"
@@ -124,9 +119,9 @@ export default
         @loader.addLoadSequenceIdRule(parseInt(@$route.params.sequence_id))
         @loader.focusAttrs = {sequenceId: parseInt(@$route.params.sequence_id)}
 
-      if @$route.query.comment_id
+      if @$route.params.comment_id
         @loader.addLoadCommentRule(parseInt(@$route.params.comment_id))
-        @loader.focusAttrs = {commentId: parseInt(@$route.query.comment_id)}
+        @loader.focusAttrs = {commentId: parseInt(@$route.params.comment_id)}
 
       if @loader.rules.length == 0
         if @discussion.newestFirst

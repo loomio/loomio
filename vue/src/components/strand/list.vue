@@ -92,13 +92,16 @@ export default
 
     classes: (event) ->
       return [] unless event
-      ["lmo-action-dock-wrapper", "positionKey-#{event.positionKey}", "sequenceId-#{event.sequenceId}", "position-#{event.position}"]
+      ["lmo-action-dock-wrapper",
+       "positionKey-#{event.positionKey}",
+       "sequenceId-#{event.sequenceId}",
+       "position-#{event.position}"]
 
 </script>
 
 <template lang="pug">
 .strand-list
-  .strand-item(v-for="obj, index in collection" :event='obj.event' :key="obj.event.id" :class="{'strand-item--deep': obj.event.depth > 1}")
+  .strand-item(v-for="obj, index in collection" :key="obj.event.id" :class="{'strand-item--deep': obj.event.depth > 1}")
     .strand-item__row(v-if="parentExists && obj.event.position != 1 && isFirstInRange(obj.event.position)")
       .strand-item__gutter
         .strand-item__stem-wrapper
@@ -119,8 +122,8 @@ export default
           .strand-item__stem(:class="{'strand-item__stem--unread': loader.isUnread(obj.event), 'strand-item__stem--focused': isFocused(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
       .strand-item__main
         //- div {{[obj.event.sequenceId]}} {{obj.event.positionKey}} {{isFocused(obj.event)}} {{loader.focusAttrs}}
-        div(v-observe-visibility="{intersection: {threshold: 0.05}, callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
-          component(:class="classes(obj.event)" :is="componentForKind(obj.event.kind)" :event='obj.event')
+        div(:class="classes(obj.event)" v-observe-visibility="{intersection: {threshold: 0.05}, callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
+          component( :is="componentForKind(obj.event.kind)" :event='obj.event')
 
         .strand-list__children.mt-2(v-if="obj.event.childCount")
           strand-list.flex-grow-1(v-if="obj.children.length" :loader="loader" :collection="obj.children")
