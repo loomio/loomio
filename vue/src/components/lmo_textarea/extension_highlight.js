@@ -5,30 +5,6 @@ import {
   mergeAttributes,
 } from '@tiptap/core'
 
-// export interface HighlightOptions {
-//   multicolor: boolean,
-//   HTMLAttributes: Record<string, any>,
-// }
-//
-// declare module '@tiptap/core' {
-//   interface Commands<ReturnType> {
-//     highlight: {
-//       /**
-//        * Set a highlight mark
-//        */
-//       setHighlight: (attributes?: { color: string }) => ReturnType,
-//       /**
-//        * Toggle a highlight mark
-//        */
-//       toggleHighlight: (attributes?: { color: string }) => ReturnType,
-//       /**
-//        * Unset a highlight mark
-//        */
-//       unsetHighlight: () => ReturnType,
-//     }
-//   }
-// }
-
 export const inputRegex = /(?:^|\s)((?:==)((?:[^~]+))(?:==))$/
 export const pasteRegex = /(?:^|\s)((?:==)((?:[^~]+))(?:==))/g
 
@@ -36,27 +12,18 @@ export const Highlight = Mark.create({
   name: 'highlight',
 
   defaultOptions: {
-    multicolor: false,
     HTMLAttributes: {},
   },
 
   addAttributes() {
-    if (!this.options.multicolor) {
-      return {}
-    }
-
     return {
       color: {
         default: null,
-        parseHTML: element => ( element.getAttribute('data-color') || element.style.backgroundColor ),
+        parseHTML: element => ( element.getAttribute('data-color') ),
         renderHTML: attributes => {
-          if (!attributes.color) {
-            return {}
-          }
+          if (!attributes.color) { return {} }
 
-          return {
-            'data-color': attributes.color
-          }
+          return { 'data-color': attributes.color }
         },
       },
     }
@@ -64,11 +31,6 @@ export const Highlight = Mark.create({
 
   parseHTML() {
     return [
-      {
-        tag: 'span',
-        priority: 51,
-        getAttrs: node => node.style.backgroundColor.length > 0,
-      },
       {
         tag: 'mark',
       },

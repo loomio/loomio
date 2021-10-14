@@ -1,32 +1,41 @@
 <script lang="coffee">
 import colors from 'vuetify/lib/util/colors'
-import {map, compact, pick} from 'lodash'
-
-ourColors = pick(colors, "red pink purple deepPurple indigo blue lightBlue cyan teal green lightGreen lime yellow amber orange deepOrange brown grey".split(" "))
+import {map, compact, pick, keys} from 'lodash'
 
 export default
   props:
     editor: Object
 
   data: ->
-    highlights: compact(map(ourColors, (value, key) => value.lighten3))
+    colors: pick(colors, "red pink purple blue green yellow orange brown grey".split(" "))
 
   computed:
-    activeHighlight: ->
+    activeColorKey: ->
       return null unless @editor.isActive('highlight')
-      @highlights.find (v) => @editor.isActive('highlight', {color: v})
+      keys(@colors).find (name) => @editor.isActive('highlight', {color: name})
+
+    buttonBgColor: ->
+      (@colors[@activeColorKey] || {lighten1: null}).lighten2
+    buttonFgColor: ->
+      if @buttonBgColor
+        '#000'
+      else
+        undefined
 </script>
 
 <template lang="pug">
 v-menu
   template(v-slot:activator="{ on, attrs }")
     div.rounded-lg.color-picker-btn
-      v-btn.drop-down-button(:style="{'background-color': activeHighlight}" icon v-on="on" v-bind="attrs" :title="$t('formatting.colors')")
+      //- v-btn.drop-down-button(icon v-on="on" v-bind="attrs" :title="$t('formatting.colors')")
+      v-btn.drop-down-button(:style="{'background-color': buttonBgColor, color: buttonFgColor}" icon v-on="on" v-bind="attrs" :title="$t('formatting.colors')")
         v-icon mdi-palette
         v-icon.menu-down-arrow mdi-menu-down
   v-card.color-picker.pa-2
-    .caption(v-t="'formatting.background_color'")
-    .swatch.swatch-color(v-for="color in highlights" :class="{'swatch--white': color == '#ffffff', 'swatch--selected': color == activeHighlight }" :style="{'background-color': color}" @click="editor.chain().setHighlight({color: color}).focus().run()") &nbsp;
+    .swatch.swatch-color(v-for="(value, key) in colors"
+                         :class="{'swatch--selected': key == activeColorKey }"
+                         :style="{'background-color': value.lighten1}"
+                         @click="editor.chain().setHighlight({color: key}).focus().run()") &nbsp;
     v-btn.mt-2(block x-small outlined @click="editor.chain().unsetHighlight().focus().run()" v-t="'formatting.reset'")
 </template>
 

@@ -56,6 +56,8 @@ div.lmo-markdown-wrapper
 </template>
 
 <style lang="sass">
+@import '~vuetify/src/styles/settings/_colors'
+
 img.emoji
   width: 1.4em !important
   vertical-align: top
@@ -139,6 +141,30 @@ img.emoji
     text-align: right !important
   *[data-text-align="justify"]
     text-align: justify !important
+
+  mark
+    background-color: var(--v-primary-lighten1)
+    color: #000
+    padding: 0.2em 0.3em
+
+  mark[data-color="red"]
+    background-color: map-get($red, lighten-1)
+  mark[data-color="pink"]
+    background-color: map-get($pink, lighten-3)
+  mark[data-color="purple"]
+    background-color: map-get($purple, lighten-3)
+  mark[data-color="blue"]
+    background-color: map-get($blue, lighten-3)
+  mark[data-color="green"]
+    background-color: map-get($green, lighten-3)
+  mark[data-color="yellow"]
+    background-color: map-get($yellow, lighten-3)
+  mark[data-color="orange"]
+    background-color: map-get($orange, lighten-3)
+  mark[data-color="brown"]
+    background-color: map-get($brown, lighten-3)
+  mark[data-color="grey"]
+    background-color: map-get($grey, lighten-2)
 
   .cursor
     font-size: 0.8rem

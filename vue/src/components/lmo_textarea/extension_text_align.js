@@ -45,7 +45,7 @@ export const TextAlign = Extension.create({
                 return {}
               }
 
-              return { style: `text-align: ${attributes.textAlign}` }
+              return { 'data-text-align': attributes.textAlign }
             },
           },
         },
