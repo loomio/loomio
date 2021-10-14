@@ -125,7 +125,7 @@ img.emoji
 
 .lmo-markdown-wrapper
 
-  a:hover
+  a
     text-decoration: underline
   p
     margin-bottom: 0.5rem

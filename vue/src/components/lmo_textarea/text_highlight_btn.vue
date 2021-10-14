@@ -27,7 +27,6 @@ export default
 v-menu
   template(v-slot:activator="{ on, attrs }")
     div.rounded-lg.color-picker-btn
-      //- v-btn.drop-down-button(icon v-on="on" v-bind="attrs" :title="$t('formatting.colors')")
       v-btn.drop-down-button(:style="{'background-color': buttonBgColor, color: buttonFgColor}" icon v-on="on" v-bind="attrs" :title="$t('formatting.colors')")
         v-icon mdi-palette
         v-icon.menu-down-arrow mdi-menu-down
@@ -45,7 +44,7 @@ v-menu
   padding-left: 1px
 
 .color-picker
-  width: 280px
+  width: 250px
 
 .swatch
   box-sizing: border-box
