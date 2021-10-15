@@ -80,7 +80,7 @@ export default
     socket: null
     count: 0
     editor: null
-    expanded: true
+    expanded: false
     closeEmojiMenu: false
     linkUrl: ""
     iframeUrl: ""
@@ -93,7 +93,7 @@ export default
       @model["#{@field}Format"]
 
   mounted: ->
-    # @expanded = Session.user().experiences['html-editor.expanded']
+    @expanded = Session.user().experiences['html-editor.expanded']
     @editor = new Editor
       editorProps:
         scrollThreshold: 100
