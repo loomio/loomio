@@ -5,7 +5,7 @@ class API::B1::DiscussionsController < API::B1::BaseController
   end
 
   def create
-    @discussion = Discussion.new(params.slice(*PermittedParams.new.discussion_attributes).permit(*PermittedParams.new.discussion_attributes))
+    instantiate_resource
     @discussion.group_id = current_webhook.group_id
     DiscussionService.create(actor: current_user, discussion: @discussion)
     respond_with_resource
