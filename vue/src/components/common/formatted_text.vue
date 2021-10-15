@@ -177,7 +177,7 @@ img.emoji
     line-height: 20px
     letter-spacing: normal
 
-  span.mention
+  span[data-mention-id]
     color: var(--v-anchor-base)
 
   blockquote, pre

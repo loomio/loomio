@@ -13,7 +13,7 @@ module HasMentions
     if text_format == "md"
       extract_mentioned_screen_names(mentionable_text).uniq - [self.author&.username]
     else
-      Nokogiri::HTML::fragment(mentionable_text).search("span.mention[data-mention-id]").map do |el|
+      Nokogiri::HTML::fragment(mentionable_text).search("span[data-mention-id]").map do |el|
         el['data-mention-id']
       end.filter { |id_or_username| id_or_username.to_i.to_s != id_or_username }
     end
@@ -22,7 +22,7 @@ module HasMentions
   def mentioned_user_ids
     # html text could use ids or usernames depending on the age of the content
     return [] if text_format == "md"
-    Nokogiri::HTML::fragment(mentionable_text).search("span.mention[data-mention-id]").map do |el|
+    Nokogiri::HTML::fragment(mentionable_text).search("span[data-mention-id]").map do |el|
       el['data-mention-id']
     end.filter { |id_or_username| id_or_username.to_i.to_s == id_or_username }
   end
