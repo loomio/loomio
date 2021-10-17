@@ -59,6 +59,17 @@ Rails.application.routes.draw do
 
       resources :usage_reports, only: [:create]
 
+      resources :tasks, only: [:index] do
+        collection do
+          post :update_done
+        end
+
+        member do
+          post :mark_as_done
+          post :mark_as_not_done
+        end
+      end
+
       resources :groups, only: [:index, :show, :create, :update, :destroy] do
         member do
           get :token
@@ -174,7 +185,6 @@ Rails.application.routes.draw do
           post :priority
         end
       end
-
 
       resources :search, only: :index
 
@@ -309,6 +319,7 @@ Rails.application.routes.draw do
   get 'd/new'                              => 'application#index', as: :new_discussion
   get 'p/new(/:type)'                      => 'application#index', as: :new_poll
   get 'threads/direct'                     => 'application#index', as: :groupless_threads
+  get 'tasks'                              => 'application#index', as: :tasks
 
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'g/:key/stats'                       => 'groups#stats',                as: :group_stats

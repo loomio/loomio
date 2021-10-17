@@ -210,6 +210,7 @@ module.exports = {
 
     page.loadPath('setup_discussion')
     page.click('.html-editor__expand')
+    // page.click('i.mdi-chevron-right')
     page.click('i.mdi-language-markdown-outline')
     page.acceptConfirm()
     page.fillIn('.comment-form .lmo-textarea textarea', '@jennifer')

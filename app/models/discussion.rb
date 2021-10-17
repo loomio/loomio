@@ -177,6 +177,10 @@ class Discussion < ApplicationRecord
     self
   end
 
+  def body=(val)
+    self.description=(val)
+  end
+
   def body
     self.description
   end

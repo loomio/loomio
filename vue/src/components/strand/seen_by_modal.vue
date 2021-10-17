@@ -10,7 +10,7 @@ export default
     historyError: false
   created: ->
     @historyLoading = true
-    Records.remote().fetch(path: "discussions/#{@discussion.id}/history").then (data) =>
+    Records.fetch(path: "discussions/#{@discussion.id}/history").then (data) =>
       @historyLoading = false
       @historyData = orderBy(data, ['last_read_at'], ['desc']) || []
     , (err) =>

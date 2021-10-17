@@ -14,7 +14,7 @@ export default
 <template lang="pug">
 .poll-proposal-chart-panel
   .poll-proposal-chart-panel__chart-container.d-flex.align-center
-    poll-common-icon-panel.poll-proposal-chart-panel__chart.mr-4(:poll="poll" :size="128")
+    poll-common-icon-panel.poll-proposal-chart-panel__chart.mr-4.mt-8(:poll="poll" :size="128")
     poll-common-chart-table(:poll="poll" :options="options")
 </template>
 

@@ -5,7 +5,7 @@ export default
   data: ->
     flash: {}
     isOpen: false
-    timeout: 6000
+    timeout: 3000
     message: ''
     options: {}
   created: ->

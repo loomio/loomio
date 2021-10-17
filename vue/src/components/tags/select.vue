@@ -58,7 +58,7 @@ export default
 
     sortEnded: ->
       setTimeout =>
-        Records.remote().post 'tags/priority',
+        Records.remote.post 'tags/priority',
           group_id: @model.groupId
           ids: @allTags.map (t) -> t.id
 
