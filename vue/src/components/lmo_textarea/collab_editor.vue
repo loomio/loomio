@@ -56,6 +56,14 @@ import TextAlignBtn from './text_align_btn'
 import { TextAlign } from './extension_text_align'
 import { Highlight } from './extension_highlight'
 
+isValidHttpUrl = (string) ->
+  url = undefined
+  try
+    url = new URL(string)
+  catch _
+    return false
+  url.protocol == 'http:' or url.protocol == 'https:'
+
 export default
   mixins: [CommonMentioning, HtmlMentioning, Attaching]
   props:
@@ -179,9 +187,11 @@ export default
       @linkDialogIsOpen = false
 
     setIframeUrl: () ->
+      return unless isValidHttpUrl(@iframeUrl)
       @editor.chain().setIframe(src: getEmbedLink(@iframeUrl)).focus().run()
       @iframeUrl = null
       @iframeDialogIsOpen = false
+
 
     emojiPicked: (shortcode, unicode) ->
       @editor.chain()
@@ -527,5 +537,6 @@ input[type="file"]
       left: 0
       width: 100%
       height: 100%
+      outline: 2px solid #68CEF8
 
 </style>
