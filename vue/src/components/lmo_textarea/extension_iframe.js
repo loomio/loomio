@@ -33,7 +33,7 @@ export const Iframe = Node.create({
   },
 
   renderHTML({ HTMLAttributes }) {
-    return ['div', {class: 'iframe-container'}, ['iframe', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes)]]
+    return ['div', {'data-iframe-container': '1'}, ['iframe', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes)]]
   },
 
   renderText({ node }) {
