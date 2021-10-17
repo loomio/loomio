@@ -459,6 +459,53 @@ progress::-moz-progress-bar
 //   font-size: 16px
 //   padding-bottom: 16px
 
+ul[data-type="todo_list"]
+  padding-left: 0
+
+li[data-type="todo_item"]
+  display: flex
+  flex-direction: row
+
+.todo-checkbox
+  border: 1px solid #999
+  height: 1.3em
+  width: 1.3em
+  box-sizing: border-box
+  margin-right: 8px
+  margin-top: 0px
+  user-select: none
+  border-radius: 0.2em
+  background-color: transparent
+  &:hover
+    border: 1px solid var(--v-primary-base)
+    // background: #eee
+
+.lmo-textarea .todo-checkbox
+  cursor: pointer
+
+.todo-content
+  flex: 1
+  > p:last-of-type
+    margin-bottom: 0
+  > ul[data-type="todo_list"]
+    margin: .5rem 0
+  p
+    margin: 0
+
+li[data-done="true"]
+  > .todo-content
+    > p
+      text-decoration: line-through
+  > .todo-checkbox::before
+    position: relative
+    top: -6px
+    color: var(--v-accent-base)
+    font-size: 1.5rem
+    content: "✓"
+
+li[data-done="false"]
+  text-decoration: none
+
 input[type="file"]
   display: none
 
