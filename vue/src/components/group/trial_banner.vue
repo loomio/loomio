@@ -8,7 +8,7 @@ export default
     isWasGift: ->
       @group.subscription.plan == 'was-gift'
     isTrialing: ->
-      @group.membersInclude(Session.user()) && @group.subscription.plan == 'trial'
+      @group.isMember && @group.subscription.plan == 'trial'
     isExpired: ->
       @isTrialing && !@group.subscription.active
     daysRemaining: ->

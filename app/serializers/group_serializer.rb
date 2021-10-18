@@ -44,6 +44,8 @@ class GroupSerializer < ApplicationSerializer
              :open_discussions_count,
              :closed_discussions_count,
              :recent_activity_count,
+             :is_member,
+             :is_admin,
              :is_visible_to_public,
              :is_subgroup_of_hidden_parent,
              :is_visible_to_parent_members,
@@ -64,6 +66,14 @@ class GroupSerializer < ApplicationSerializer
   has_one :parent, serializer: GroupSerializer, root: :parent_groups
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
   has_many :tags, serializer: TagSerializer, root: :tags
+
+  def is_member
+    current_user_membership.present?
+  end
+
+  def is_admin
+    is_member && current_user_membership.admin
+  end
 
   def current_user_membership
     cache_fetch(:memberships_by_group_id, object.id) { nil }
