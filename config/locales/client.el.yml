@@ -81,6 +81,7 @@ el:
       share: Μοίρασμα
       ok: Εντάξει
       retry: Ξαναδοκιμάστε
+      clear: Καθάρισμα
       done: Έγινε
       start: Εκίνηση
       delete: Διαγραφή
@@ -227,7 +228,6 @@ el:
     title_label: 'Τίτλος'
     title_placeholder: 'Ποιο είναι το θέμα που θέλετε να συζητήσετε;'
     context_label: 'Περιεχόμενο'
-    context_placeholder: 'Δώστε επαρκή πληροφορίες για την ομάδα ώστε να έχετε μια επικοδομητική συζήτηση. Αυτή μπορεί να ανανεωθεί καθώς προχωρά η συζήτηση.'
     privacy_label: 'Απόρρητο'
     privacy_public: 'Οποιοσδήποτε μπορεί να δει αυτό το θέμα. Μόνο μέλη μπορούν να συμμετάσχουν.'
     privacy_private: 'Το θέμα θα είναι ορατό μόνο στα μέλη της ομάδας {{group}}.'
@@ -236,6 +236,8 @@ el:
     form:
       invitation_message_label: Μήνυμα
       poll_reminder:
+        message_label: Μήνυμα
+      wip_poll_reminder:
         message_label: Μήνυμα
   action_dock:
     edit_stance: Αλλάξε θέση

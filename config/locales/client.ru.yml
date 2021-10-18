@@ -157,6 +157,7 @@ ru:
       share: Поделиться
       ok: Хорошо
       retry: Повторите попытку
+      clear: Очистить
       done: Сделано
       start: Начать
       delete: Удалить
@@ -346,6 +347,8 @@ ru:
       group_announced:
         title: Пригласите в группу
       poll_reminder:
+        message_label: Сообщение
+      wip_poll_reminder:
         message_label: Сообщение
       outcome_announced:
         title: Поделиться результатами

@@ -164,6 +164,7 @@ cmn:
       share: 分享
       ok: 好
       retry: 重试
+      clear: 清除
       done: 完成
       start: 开始
       delete: 删除
@@ -397,7 +398,6 @@ cmn:
     cancel_invitation: 取消邀请
   notification_models:
     discussion: '话题：'
-    poll: '决策：'
   notifications:
     header: "通知"
     new_motion: "<strong>{{name}}</strong> 创建了一个提案 <strong>{{title}}</strong>"
@@ -439,7 +439,6 @@ cmn:
     title_label: '标题'
     title_placeholder: '您想讨论的主题是？'
     context_label: '上下文'
-    context_placeholder: '给予群组足够的背景资讯，创造出有生产力的讨论。论述可以随着讨论的过程一边更新'
     privacy_label: '隐私'
     privacy_public: '任何人都可以看到此话题。只有成员才能参与。'
     privacy_private: '此话题只会被“{{group}}”群组的成员看到。'
@@ -478,6 +477,8 @@ cmn:
         title: 邀请到投票
         helptext: 您想要邀请谁来投票？
       poll_reminder:
+        message_label: 信息
+      wip_poll_reminder:
         message_label: 信息
       outcome_announced:
         title: 分享成果

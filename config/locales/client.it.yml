@@ -220,6 +220,7 @@ it:
       share: Condividi
       ok: Ok
       retry: Riprova
+      clear: Pulisci
       done: Fatto
       start: Avvio
       delete: Cancella
@@ -513,7 +514,6 @@ it:
   notification_models:
     discussion: 'discussione'
     comment: 'commenta in '
-    poll: 'decisione:'
     outcome: 'risultato:'
   notifications:
     header: "Notifiche"
@@ -583,7 +583,6 @@ it:
     title_label: 'Titolo'
     title_placeholder: 'Di quale argomento ti piacerebbe discutere?'
     context_label: 'Contesto'
-    context_placeholder: 'Fornisci le informazioni necessarie al gruppo per avere una discussione produttiva. Puoi aggiornarle nel mentre continua la discussione.'
     privacy_label: 'Privacy'
     privacy_public: 'Tutti possono vedere la discussione. Solo i membri possono partecipare.'
     privacy_private: 'La discussione sarà visibile solamente ai membri di {{group}}.'
@@ -667,6 +666,8 @@ it:
         helptext: Chi vorresti ricordare di votare?
         message_label: Messaggio
         message_placeholder: Messaggio facoltativo per dire alle persone perché dovrebbero votare
+      wip_poll_reminder:
+        message_label: Messaggio
       poll_edited:
         title: Notifica le modifiche
         helptext: Chi si desidera notificare di questo aggiornamento?
@@ -1176,7 +1177,6 @@ it:
     deactivate_account: 'Disattivare l''account utente'
     help_translate: "Aiutaci a tradurre Loomio"
   text_editor:
-    select_text_to_link: Prima, seleziona un poco del testo da collegare
     insert_link: Inserisci collegamento
     insert_embedded_url: Incorporare video
   change_picture_form:

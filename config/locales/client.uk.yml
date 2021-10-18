@@ -191,6 +191,7 @@ uk:
       share: Поширити
       ok: Гаразд
       retry: Спробувати знов
+      clear: Очистити
       done: Виконано
       start: Почати
       delete: Видалити
@@ -455,7 +456,6 @@ uk:
   notification_models:
     discussion: 'тема:'
     comment: 'прокоментувати в'
-    poll: 'рішення:'
     outcome: 'результат:'
   notifications:
     header: "Сповіщення"
@@ -510,7 +510,6 @@ uk:
     title_label: 'Назва'
     title_placeholder: 'Яку саме тему ви хочете обговорити?'
     context_label: 'Контекст'
-    context_placeholder: 'Дайте достатньо вихідної інформації для групи, щоб мати продуктивне обговорення. Вона може бути оновлена по ходу дискусії.'
     privacy_label: 'Конфіденційність'
     privacy_public: 'Будь-хто може бачити тему. Тільки учасники можуть брати участь в обговоренні.'
     privacy_private: 'Тему можуть бачити тільки учасники групи {{group}}.'
@@ -558,6 +557,8 @@ uk:
         title: Запросити до голосування
         helptext: Кого ви хотіли б долучити до голосування?
       poll_reminder:
+        message_label: Повідомлення
+      wip_poll_reminder:
         message_label: Повідомлення
       poll_edited:
         title: Сповіщати про зміни

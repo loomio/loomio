@@ -25,6 +25,7 @@ an:
       like: 'Me fa goyo'
       unlike: 'Ya no me fa goyo'
       cancel: 'Cancelar'
+      clear: Limpiar
   emoji_picker:
     search: Buscar
   error_page:
@@ -60,6 +61,8 @@ an:
     form:
       invitation_message_label: Mensache
       poll_reminder:
+        message_label: Mensache
+      wip_poll_reminder:
         message_label: Mensache
   action_dock:
     edited: Editau

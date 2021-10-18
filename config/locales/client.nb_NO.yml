@@ -110,6 +110,7 @@ nb_NO:
       share: Del
       ok: Ok
       retry: Prøv igjen
+      clear: Tøm
       done: Ferdig
       start: Start
       delete: Slett
@@ -316,7 +317,6 @@ nb_NO:
   notification_models:
     discussion: 'tråd:'
     comment: 'kommenter i'
-    poll: 'beslutning:'
     outcome: 'resultat:'
   notifications:
     header: "Varslinger"
@@ -363,7 +363,6 @@ nb_NO:
     title_label: 'Tittel'
     title_placeholder: 'Hvilket tema vil du diskutere?'
     context_label: 'Kontekst'
-    context_placeholder: 'Gi nok bakgrunnsinformasjon for at gruppen skal ha en produkutiv diskusjon. Denne kan oppdateres underveis i diskusjonen.'
     privacy_label: 'Personvern'
     privacy_public: 'Alle kan se denne tråden. Bare medlemmer kan delta i tråden.'
     privacy_private: 'Denne tråden er bare synlig for medlemmer i {{group}}.'

@@ -149,6 +149,7 @@ he:
       share: שיתוף
       ok: אוקיי
       retry: נסה שוב
+      clear: נקה/י
       done: סיום
       start: התחלה
       delete: מחיקה
@@ -361,7 +362,6 @@ he:
   notification_models:
     discussion: 'שיחה:'
     comment: 'הערה ב'
-    poll: 'החלטה:'
     outcome: 'תוצאה:'
   notifications:
     header: "התרעות"
@@ -410,7 +410,6 @@ he:
     title_label: 'תואר'
     title_placeholder: 'על איזה נושא תרצה לדון?'
     context_label: 'הקשר'
-    context_placeholder: 'ספק/י מספיק מידע לקבוצה כדי שיהיה דיון פרודוקטיבי. ניתן גם לעדכן עם התקדמות הדיון.'
     privacy_label: 'פרטיות'
     privacy_public: 'כל אחד יכול לראות את השיחה. רק משתמשים יכולים להשתתף.'
     privacy_private: 'רק משתמשים של ה{{group}} יכולים לצפות בשיחה.'
@@ -439,6 +438,8 @@ he:
         title: הזמן לבחור
         helptext: מי היית רוצה להזמין להצביע?
       poll_reminder:
+        message_label: הודעה
+      wip_poll_reminder:
         message_label: הודעה
       poll_edited:
         title: עידכוני עריכות

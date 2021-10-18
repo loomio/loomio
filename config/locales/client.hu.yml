@@ -185,6 +185,7 @@ hu:
       share: Megoszt
       ok: Rendben
       retry: Újra
+      clear: Töröl
       done: Kész
       start: Indítás
       delete: Törlés
@@ -440,7 +441,6 @@ hu:
   notification_models:
     discussion: 'téma:'
     comment: 'hozzászólás itt'
-    poll: 'döntés:'
     outcome: 'eredmény:'
   notifications:
     header: "Értesítések"
@@ -482,7 +482,6 @@ hu:
     title_label: 'Cím'
     title_placeholder: 'Mit szeretnél megtárgyalni?'
     context_label: 'Leírás'
-    context_placeholder: 'Adj elegendő háttér-információt a csoport számára a hatékony megbeszéléshez. Ezt a beszélgetés előrehaladtával frissíthetjük'
     privacy_label: 'Adatvédelem'
     privacy_public: 'Bárki láthatja a témát. Csak a tagok vehetnek részt.'
     privacy_private: 'A téma csak a(z) {{group}} tagjai számára lesz látható.'
@@ -518,6 +517,8 @@ hu:
         title: Meghívás szavazásra
         helptext: Kit szeretnél meghívni a szavazásra?
       poll_reminder:
+        message_label: Üzenet
+      wip_poll_reminder:
         message_label: Üzenet
       poll_edited:
         title: Értesítés a módosításokról

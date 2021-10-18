@@ -87,6 +87,7 @@ sl:
       new_thread: "Nova tema"
       loading: 'Nalagam'
       ok: V redu
+      clear: Počisti
       invite: Povabi
       resent: Povabilo ponovno poslano
   emoji_picker:
@@ -217,6 +218,8 @@ sl:
       poll_announced:
         title: Povabi h glasovanju
       poll_reminder:
+        message_label: Sporočilo
+      wip_poll_reminder:
         message_label: Sporočilo
     group_form:
       modal_title: Izberi člane skupine

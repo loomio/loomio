@@ -49,6 +49,8 @@ vi:
       invitation_message_label: Tin nhắn
       poll_reminder:
         message_label: Tin nhắn
+      wip_poll_reminder:
+        message_label: Tin nhắn
   join_group_button:
     membership_requested: Đã gửi yêu cầu làm thành viên
   membership_request_form:

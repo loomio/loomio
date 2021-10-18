@@ -239,6 +239,7 @@ fr:
       share: Partager
       ok: Ok
       retry: Réessayer
+      clear: Vider
       done: Terminé
       start: Démarrer
       delete: Supprimer
@@ -536,7 +537,6 @@ fr:
   notification_models:
     discussion: 'discussion :'
     comment: 'commentaire dans'
-    poll: 'décision :'
     outcome: 'résultat :'
   notifications:
     header: "Notifications"
@@ -606,7 +606,6 @@ fr:
     title_label: 'Titre'
     title_placeholder: 'De quel sujet souhaitez-vous discuter ?'
     context_label: 'Contexte'
-    context_placeholder: 'Donnez assez d’informations préalables pour que le groupe ait une discussion productive. Ça pourra être mis à jour durant la discussion'
     privacy_label: 'Privé'
     privacy_public: 'N’importe qui peut voir la discussion. Seuls les membres de {{groupName}} peuvent participer.'
     privacy_private: 'La discussion sera visible uniquement aux membres de {{group}}.'
@@ -690,6 +689,8 @@ fr:
         helptext: 'A qui voulez-vous rappeler de voter ? '
         message_label: Message
         message_placeholder: Message facultatif pour expliquer aux gens pourquoi ils devraient voter
+      wip_poll_reminder:
+        message_label: Message
       poll_edited:
         title: Notifier des modifications
         helptext: 'Qui voulez-vous notifier à propos de cette mise à jour ? '
@@ -1222,7 +1223,6 @@ fr:
     deactivate_account: 'Désactiver le compte utilisateur'
     help_translate: "Aidez-nous à traduire Loomio"
   text_editor:
-    select_text_to_link: Sélectionnez le texte du lien
     insert_link: Insérer un lien
     insert_embedded_url: Intégrer la vidéo
   change_picture_form:
@@ -1442,7 +1442,6 @@ fr:
     nested_once: Réponses d’imbrication - première réponse uniquement
     nested_once_description: Placer les réponses sous le commentaire original
     nested_twice: Deux niveaux de réponses imbriquées
-    nested_twice_description: Indent répond jusqu’à 2 fois.
     changing_nesting_is_slow: Les changements à l'imbrication peuvent prendre quelques minutes à traiter.
   delete_thread_form:
     aria_label: 'Supprimer la discussion'
@@ -1633,7 +1632,6 @@ fr:
     anonymous: Les votes sont anonymes
     results_hidden_until_closed: Les résultats sont cachés jusquà la cloture du %{poll_type}
     unable_to_vote: Vous n'avez pas été invité à voter dans ce %{poll_type}
-    draft_mode: Ce %{poll_type} est en cours de construction. Les votes sont désactivés.
   current_polls_card:
     title: Décisions en cours
     start_poll: Nouvelle décision
@@ -1715,9 +1713,6 @@ fr:
   poll_common_move_form:
     title: "Déplacer le {{poll_type}}"
     success: "{{poll_type}} déplacé vers le groupe {{group}}"
-  poll_common_wip_field:
-    title: Travail en cours
-    helptext: 'Utiliez "Travail en cours" pour collaborer sur le %{poll_type} avant le vote'
   poll_common_closing_at_field:
     closing: Fermeture
     no_closing_date: Pas de date de cloture

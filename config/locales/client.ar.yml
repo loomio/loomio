@@ -208,6 +208,7 @@ ar:
       share: شارك
       ok: نعم
       retry: أعد المحاولة
+      clear: مسح
       done: منجز
       start: بداية
       delete: حذف
@@ -499,7 +500,6 @@ ar:
   notification_models:
     discussion: 'موضوع:'
     comment: 'التعليق في'
-    poll: 'القرار:'
     outcome: 'النتيجة:'
   notifications:
     header: "تبليغات"
@@ -567,7 +567,6 @@ ar:
     title_label: 'العنوان'
     title_placeholder: 'ماهو الموضوع الذي ترغب في مناقشته؟'
     context_label: 'سياق النقاش'
-    context_placeholder: 'قم بتزويد معلومات كافية حول خلفية الموضوع للمجموعة ليكون النقاش مفيداً. يمكن تحديث هذا خلال سير النقاش. '
     privacy_label: 'الخصوصية'
     privacy_public: 'يمكن للجميع رؤية الموضوع. يمكن للأعضاء فقط المشاركة.'
     privacy_private: 'سيكون الموضوع ظاهراً فقط لأعضاء مجموعة {{group}}.'
@@ -625,6 +624,8 @@ ar:
         title: دعوة للتصويت
         helptext: من تريد دعوته للتصويت؟
       poll_reminder:
+        message_label: رسالة
+      wip_poll_reminder:
         message_label: رسالة
       poll_edited:
         title: إخطار بالتعديلات
@@ -1107,7 +1108,6 @@ ar:
     deactivate_account: 'قم بإلغاء تنشيط حساب المستخدم'
     help_translate: "ساعدنا في ترجمة Loomio"
   text_editor:
-    select_text_to_link: أولاً ، حدد نصًا لربطه
     insert_link: أدخل الرابط
     insert_embedded_url: تضمين الفيديو
   change_picture_form:
@@ -1498,7 +1498,6 @@ ar:
     anonymous: الأصوات مجهولة
     results_hidden_until_closed: يتم إخفاء النتائج حتى يتم إغلاق٪ {نوع الاستطلاع}
     unable_to_vote: لم تتم دعوتك للتصويت في٪ {نوع الاستطلاع} هذا.
-    draft_mode: ٪ {نوع الاستطلاع} هذا عمل قيد التقدم. التصويت معطل.
   current_polls_card:
     title: القرارات الحالية
     start_poll: قرار جديد
@@ -1576,9 +1575,6 @@ ar:
   poll_common_move_form:
     title: "نقل {{نوع الاستطلاع}}"
     success: "تم نقل {{نوع الاستطلاع}} إلى {{مجموعة}}"
-  poll_common_wip_field:
-    title: العمل في التقدم
-    helptext: 'استخدم "العمل قيد التقدم" للتعاون في٪ {نوع الاستطلاع} قبل التصويت'
   poll_common_closing_at_field:
     closing: إغلاق
     no_closing_date: لا يوجد تاريخ إغلاق

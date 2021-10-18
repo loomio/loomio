@@ -237,6 +237,7 @@ nl_NL:
       share: Delen
       ok: Ok
       retry: Probeer opnieuw
+      clear: Leegmaken
       done: Gedaan
       start: Start
       delete: Delete
@@ -529,7 +530,6 @@ nl_NL:
   notification_models:
     discussion: 'bord:'
     comment: 'reactie in'
-    poll: 'beslissing:'
     outcome: 'resultaat:'
   notifications:
     header: "Meldingen"
@@ -599,7 +599,6 @@ nl_NL:
     title_label: 'Titel'
     title_placeholder: 'Welk onderwerp wil je bediscussiëren?'
     context_label: 'Beschrijving'
-    context_placeholder: 'Geef voldoende achtergrondinformatie voor de groep om een productief gesprek te hebben. De info kan worden aangevuld als het gesprek voortgaat'
     privacy_label: 'Privacy'
     privacy_public: 'Iedereen kan het bord zien. Alleen leden kunnen deelnemen.'
     privacy_private: 'Het bord is enkel zichtbaar voor leden van {{group}}'
@@ -668,6 +667,8 @@ nl_NL:
         helptext: Wie wil je herinneren om te stemmen?
         message_label: Bericht
         message_placeholder: Optioneel bericht om te vertellen waarom mensen zouden moeten stemmen
+      wip_poll_reminder:
+        message_label: Bericht
       poll_edited:
         title: Wijzigingen melden
         helptext: Wie wil je een melding sturen over deze wijziging?
@@ -1171,7 +1172,6 @@ nl_NL:
     deactivate_account: 'Deactiveer gebruikersaccount'
     help_translate: "Help ons Loomio te vertalen"
   text_editor:
-    select_text_to_link: Selecteer eerst wat tekst om te linken
     insert_link: Link invoegen
     insert_embedded_url: Video integreren
   change_picture_form:
@@ -1564,7 +1564,6 @@ nl_NL:
     anonymous: Stemmen zijn anoniem
     results_hidden_until_closed: Resultaten zijn verborgen totdat de %{poll_type} is gesloten
     unable_to_vote: Je bent niet uitgenodigd om in te stemmen in deze %{poll_type}.
-    draft_mode: Aan deze %{poll_type} wordt nog gewerkt. Stemmen is uitgeschakeld.
   current_polls_card:
     title: Lopende beslissingen
     start_poll: Nieuwe beslissing
@@ -1642,9 +1641,6 @@ nl_NL:
   poll_common_move_form:
     title: "Verplaats {{poll_type}}"
     success: "{{poll_type}} verplaatst naar {{group}}"
-  poll_common_wip_field:
-    title: Werk in uitvoering
-    helptext: 'Gebruik "Werk in uitvoering" om samen te werken op de %{poll_type} voor het stemmen'
   poll_common_closing_at_field:
     closing: Sluit
     no_closing_date: Geen sluitdatum
