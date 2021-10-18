@@ -1,4 +1,13 @@
 require('intersection-observer')
+
+fromEntries = require('object.fromentries');
+fromEntries.shim() unless Object.fromEntries
+
+matchall = require('string.prototype.matchall')
+matchAll.shim()
+
+import 'array-flat-polyfill';
+
 import Vue from 'vue'
 import AppConfig from '@/shared/services/app_config'
 import vuetify from '@/vuetify'
