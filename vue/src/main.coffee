@@ -3,7 +3,7 @@ require('intersection-observer')
 fromEntries = require('object.fromentries');
 fromEntries.shim() unless Object.fromEntries
 
-matchall = require('string.prototype.matchall')
+matchAll = require('string.prototype.matchall')
 matchAll.shim()
 
 import 'array-flat-polyfill';
