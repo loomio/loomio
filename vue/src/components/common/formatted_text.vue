@@ -251,6 +251,7 @@ img.emoji
       div
         display: inline-block
       p
+        flex-shrink: 10000
         display: inline-block
         margin: 0
 
