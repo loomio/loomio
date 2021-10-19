@@ -91,7 +91,7 @@
     "vuetify": "2.5.10"
   },
   "devDependencies": {
-    "@mdi/font": "^6.2.95",
+    "@mdi/font": "^6.3.95",
     "@vue/cli-plugin-pwa": "^4.5.14",
     "@vue/cli-plugin-babel": "^4.5.14",
     "@vue/cli-plugin-e2e-nightwatch": "^4.5.14",
