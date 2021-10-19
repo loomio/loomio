@@ -31,7 +31,6 @@
     "@tiptap/extension-gapcursor": "latest",
     "@tiptap/extension-hard-break": "latest",
     "@tiptap/extension-heading": "latest",
-    "@tiptap/extension-highlight": "latest",
     "@tiptap/extension-history": "latest",
     "@tiptap/extension-horizontal-rule": "latest",
     "@tiptap/extension-image": "latest",
