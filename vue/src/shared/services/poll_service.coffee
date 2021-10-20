@@ -151,7 +151,7 @@ export default new class PollService
                       pollId: poll.id
                       statementFormat: Session.defaultFormat()
               text:
-                title: 'poll_common_close_form.title'
+                raw_title: i18n.t('poll_common_close_form.title', poll_type: i18n.t(poll.pollTypeKey()))
                 raw_helptext: i18n.t('poll_common_close_form.helptext', poll_type: i18n.t(poll.pollTypeKey()))
                 confirm: 'poll_common_close_form.close_poll'
                 flash: 'poll_common_close_form.poll_closed'

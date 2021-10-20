@@ -1860,8 +1860,8 @@ en:
       helptext_on: Don't show the how people have voted until the poll is closed
 
   poll_common_close_form:
-    title: Close a poll early
-    helptext: Are you sure you want to close this %{poll_type} early?
+    title: Close %{poll_type} now?
+    helptext: Are you sure you want to close this %{poll_type} early and share an outcome?
     close_proposal: Close proposal
     close_poll: Close poll
     close_count: Close check
