@@ -76,7 +76,7 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def current_user_membership
-    cache_fetch(:memberships_by_group_id, object.id) { nil }
+    cache_fetch(:memberships_by_group_id, object.id) { scope[:current_user_id] && group.memberships.find_by(group_id: object.id, user_id: scope[:current_user_id]) }
   end
 
   def parent
