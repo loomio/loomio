@@ -58,7 +58,6 @@ class Group < ApplicationRecord
   has_many :comment_documents,           through: :comments,           source: :documents
   has_many :tags, foreign_key: :group_id
 
-  has_one :saml_provider, required: false, foreign_key: :group_id
   has_one :group_survey, required: false, foreign_key: :group_id
 
   belongs_to :subscription

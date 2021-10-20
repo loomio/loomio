@@ -49,7 +49,6 @@ export default
 
   methods:
     init: ->
-      Records.samlProviders.authenticateForGroup(@$route.params.key)
       Records.groups.findOrFetch(@$route.params.key)
       .then (group) =>
         @group = group
