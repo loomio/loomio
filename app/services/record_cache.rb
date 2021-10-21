@@ -180,11 +180,12 @@ class RecordCache
       scope[:memberships_by_id][m.id] = m
     end
 
+    # is this buggy?
     # our cache.fetch method benefits from knowing it is nil
-    group_ids.each do |id|
-      next if scope[:memberships_by_group_id].has_key?(id)
-      scope[:memberships_by_group_id][id] = nil
-    end
+    # group_ids.each do |id|
+    #   next if scope[:memberships_by_group_id].has_key?(id)
+    #   scope[:memberships_by_group_id][id] = nil
+    # end
   end
 
   def add_polls_options_stances_outcomes(collection)
