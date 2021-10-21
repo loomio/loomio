@@ -353,6 +353,9 @@ export default class ThreadLoader
     if !@ruleStrings.includes(ruleString)
       @rules.push(rule)
       @ruleStrings.push(ruleString)
+      # if @rules.length > 5
+      #   @rules.shift()
+      #   @ruleStrings.shift()
       true
     else
       false
