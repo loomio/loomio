@@ -200,10 +200,11 @@ export default
           .run()
       @closeEmojiMenu = false
 
-    updateModel: ->
+    updateModel: throttle ->
       @model[@field] = @editor.getHTML()
       @updateFiles()
       @scrapeLinkPreviews() if @model.isNew()
+    , 100
 
     removeLinkPreview: (url) ->
       @model.linkPreviews = reject(@model.linkPreviews, (p) -> p.url == url)
