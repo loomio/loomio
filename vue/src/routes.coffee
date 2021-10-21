@@ -20,7 +20,7 @@ import EmailSettingsPage from './components/email_settings/page'
 import StartDiscussionPage from './components/start_discussion/page'
 import UserPage from './components/user/page'
 import ThreadsPage from './components/threads/page'
-import StrandPage from './components/thread/page'
+import StrandPage from './components/strand/page'
 
 import './config/catch_navigation_duplicated.js'
 import Vue from 'vue'

@@ -6,9 +6,6 @@ import EventService from '@/shared/services/event_service'
 import { pick, assign } from 'lodash'
 
 export default
-  components:
-    ThreadItem: -> import('@/components/thread/item.vue')
-
   props:
     event: Object
     isReturning: Boolean

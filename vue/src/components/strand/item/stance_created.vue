@@ -5,9 +5,6 @@ import AbilityService from '@/shared/services/ability_service'
 import openModal from '@/shared/helpers/open_modal'
 
 export default
-  components:
-    ThreadItem: -> import('@/components/thread/item.vue')
-
   props:
     event: Object
     isReturning: Boolean
