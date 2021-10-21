@@ -76,7 +76,7 @@ export default class DiscussionModel extends BaseModel
   adminsInclude: (user) ->
     @authorId == user.id ||
     (@inviterId && @admin && !@revokedAt && AppConfig.currentUserId == user.id) ||
-    @group().adminsInclude(user) ||
+    @group().adminsInclude(user)
 
   # known current participants for quick mentioning
   participantIds: ->
