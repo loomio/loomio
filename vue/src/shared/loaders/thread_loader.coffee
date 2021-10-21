@@ -1,5 +1,5 @@
 import Records from '@/shared/services/records'
-import { cloneDeep, max, isNumber, uniq, compact, orderBy, camelCase, forEach, isObject, sortedUniq, sortBy, without, map } from 'lodash'
+import { some, last, cloneDeep, max, isNumber, uniq, compact, orderBy, camelCase, forEach, isObject, sortedUniq, sortBy, without, map } from 'lodash'
 import Vue from 'vue'
 import RangeSet         from '@/shared/services/range_set'
 import EventBus         from '@/shared/services/event_bus'
@@ -22,6 +22,7 @@ export default class ThreadLoader
     @collapsed = Vue.observable({})
     @loading = false
     @padding = 20
+    @maxAutoLoadMore = 10
 
   firstUnreadSequenceId: ->
     (RangeSet.subtractRanges(@discussion.ranges, @readRanges)[0] || [])[0]
@@ -108,13 +109,23 @@ export default class ThreadLoader
           order_by: 'position_key'
           per: @padding
 
-  autoLoadAfter: (event) ->
-    @loadAfter(event) if event.depth == 1
+  autoLoadAfter: (obj) ->
+    console.log "auto load after #{obj.missingAfterCount}"
+    @loadAfter(obj.event) if (obj.event.depth == 1) || (obj.missingAfterCount && obj.missingAfterCount < @maxAutoLoadMore)
 
-  autoLoadBefore: (event) ->
-    @loadBefore(event) if event.depth == 1
+  autoLoadBefore: (obj) ->
+    console.log "auto load before #{obj.missingEarlierCount}"
+    @loadBefore(obj.event) if (obj.missingEarlierCount && obj.missingEarlierCount < @maxAutoLoadMore)
+
+  autoLoadChildren: (obj) ->
+    console.log "auto load children #{obj.event.childCount}"
+    @loadChildren(obj.event) if  obj.event.childCount < @maxAutoLoadMore
 
   loadAfter: (event) ->
+    @addLoadAfterRule(event)
+    @fetch()
+
+  addLoadAfterRule: (event) ->
     # keys = event.positionKey.split('-')
     # num = parseInt(keys[keys.length - 1]) + 1
     # key = "0".repeat(5 - (""+num).length) + num
@@ -125,7 +136,7 @@ export default class ThreadLoader
     positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
     positionKey = event.positionKey
 
-    @addRuleAndFetch
+    @addRule
       name: "load after (prefix #{positionKeyPrefix})"
       local:
         find:
@@ -144,9 +155,12 @@ export default class ThreadLoader
 
   loadBefore: (event) ->
     @loading = 'before'+event.id
-    positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
+    @addLoadBeforeRule(event)
+    @fetch()
 
-    @addRuleAndFetch
+  addLoadBeforeRule: (event) ->
+    positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
+    @addRule
       name: "load before (prefix #{positionKeyPrefix})"
       local:
         find:
@@ -391,6 +405,37 @@ export default class ThreadLoader
       # orderBy r, 'positionKey'
 
     @collection = nest(orphans)
+
+    @addMetaData(@collection)
+
     EventBus.$emit('collectionUpdated', @discussion.id)
 
     @collection
+
+  addMetaData: (collection) ->
+    positions = collection.map (e) -> e.event.position
+    ranges = RangeSet.arrayToRanges(positions)
+    parentExists = collection[0] && collection[0].event && collection[0].event.parent()
+    lastPosition = (parentExists && (collection[0].event.parent().childCount)) || 0
+
+
+    collection.forEach (obj) =>
+      obj.isUnread = @isUnread(obj.event)
+      isFirstInRange = some(ranges, (range) -> range[0] == obj.event.position)
+      isLastInLastRange = last(ranges)[1] == obj.event.position
+      missingEarlier = parentExists && (obj.event.position != 1 && isFirstInRange)
+      obj.missingEarlierCount = 0
+      if missingEarlier
+        lastPos = 1
+        val = 0
+        ranges.forEach (range) ->
+          if range[0] == obj.event.position
+            val = (obj.event.position - lastPos)
+          else
+            lastPos = range[1]
+        obj.missingEarlierCount = val
+
+      missingAfter = lastPosition != 0 && isLastInLastRange && (obj.event.position != lastPosition)
+      obj.missingAfterCount = (missingAfter && lastPosition - last(ranges)[1]) || 0
+
+      @addMetaData(obj.children) if obj.children.length
