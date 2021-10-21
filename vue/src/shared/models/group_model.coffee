@@ -139,16 +139,10 @@ export default class GroupModel extends BaseModel
     @parentAndSelfMembers().map (u) -> u.id
 
   membersInclude: (user) ->
-    if (user.id == AppConfig.currentUserId)
-      @isMember
-    else
-      @membershipFor(user) || false
+    @membershipFor(user) || false
 
   adminsInclude: (user) ->
-    if (user.id == AppConfig.currentUserId)
-      @isAdmin
-    else
-      @recordStore.memberships.find(groupId: @id, userId: user.id, admin: true)[0] || false
+    @recordStore.memberships.find(groupId: @id, userId: user.id, admin: true)[0] || false
 
   adminMemberships: ->
     @recordStore.memberships.find(groupId: @id, admin: true)
