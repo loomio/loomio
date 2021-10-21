@@ -435,7 +435,6 @@ es:
       poll_edited: '%{actor}editado el%{poll_type}:%{title}'
       poll_reminder: '%{actor}te está recordando que votes:%{title}'
       poll_announced: '%{actor}te invitó a votar en un %{poll_type}:%{title}'
-      poll_announced_wip: '%{actor}ha compartido un trabajo en proceso%{poll_type}:%{title}'
       poll_closing_soon: '%{poll_type}cierra en 24 horas:%{title}'
       poll_closing_soon_author: 'Tu %{poll_type}cierra en 24 horas:%{title}'
       poll_expired: "%{poll_type}ha cerrado:%{title}"
@@ -456,7 +455,6 @@ es:
       poll_edited: '<strong>%{actor}</strong>editado un%{poll_type}'
       poll_reminder: '<strong>%{actor}</strong> te está recordando que votes'
       poll_announced: '<strong>%{actor}</strong>te invitó a votar en un %{poll_type}'
-      poll_announced_wip: '<strong>%{actor}</strong>ha compartido un trabajo en proceso%{poll_type}'
       poll_closing_soon: '<strong>%{actor}</strong>''s%{poll_type} cerrará en 24 horas. Ahora es una buena oportunidad para votar, cambiar de opinión o animar a otros para que participen.'
       poll_closing_soon_author: 'Tu %{poll_type}cerrará en 24 horas - ahora es una oportunidad estupenda para recordar a la gente de esto o prolongar la fecha límite si fuera necesario.'
       poll_expired: "<strong>%{actor}'s</strong>%{poll_type} ha cerrado:%{title}"

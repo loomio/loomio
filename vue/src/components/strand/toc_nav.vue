@@ -16,6 +16,10 @@ export default
     bootData: []
     baseUrl: ''
 
+  computed:
+    selectedSequenceId: -> parseInt(@$route.params.sequence_id)
+    selectedCommentId: -> parseInt(@$route.params.comment_id)
+
   methods:
     buildItems: ->
       @items = {}
@@ -53,6 +57,7 @@ export default
              .simplesort('positionKey')
              .data().forEach (event) =>
         @$set @items, event.positionKey,
+          commentId: if event.eventableType == 'Comment' then event.eventableId else null
           sequenceId: event.sequenceId
           createdAt: event.createdAt
           actorId: event.actorId
@@ -108,7 +113,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
   div.mt-12
   div.strand-nav__toc
     router-link.strand-nav__entry.text-caption(
-      :class="{'strand-nav__entry--visible': item.visible, 'strand-nav__entry--unread': item.unread}"
+      :class="{'strand-nav__entry--visible': item.visible, 'strand-nav__entry--selected': (item.sequenceId == selectedSequenceId || item.commentId == selectedCommentId), 'strand-nav__entry--unread': item.unread}"
       v-for="item, key in items"
       :key="key"
       :to="baseUrl+'/'+item.sequenceId")
@@ -125,7 +130,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
 .strand-nav__toc
   display: flex
   flex-direction: column
-  height: 70%
+  min-height: 70%
 
 .strand-nav__entry
   display: block
@@ -134,16 +139,25 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
   padding-left: 8px
   padding-right: 8px
   margin-left: 8px
+  min-height: 1px
 
 .strand-nav__entry--unread
   border-color: var(--v-accent-lighten1)!important
 
-.strand-nav__entry--visible
+.strand-nav__entry--selected
   border-color: var(--v-primary-darken1)!important
+// .strand-nav__entry--visible
+//   border-color: var(--v-primary-darken1)!important
 
 .strand-nav__entry:hover
   border-color: var(--v-primary-darken1)!important
-//
-// .strand-nav__entry:hover::before
+
+.theme--dark
+  .strand-nav__entry:hover, .strand-nav__entry--visible
+    background-color: #222
+
+.theme--light
+  .strand-nav__entry:hover, .strand-nav__entry--visible
+    background-color: #f8f8f8
 
 </style>

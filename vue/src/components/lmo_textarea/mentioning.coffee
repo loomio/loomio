@@ -13,6 +13,7 @@ export CommonMentioning =
 
   mounted: ->
     @fetchMentionable = debounce ->
+      return unless @query
       @fetchingMentions = true
       Records.users.fetchMentionable(@query, @model).then (response) =>
         @fetchingMentions = false
@@ -102,16 +103,16 @@ export HtmlMentioning =
       @selectUser(user) if user
 
     selectUser: (user) ->
+      # range: @suggestionRange
+      # attrs:
       @insertMention
-        range: @suggestionRange
-        attrs:
-          id: user.username,
-          label: user.name
-      @editor.focus()
+        id: user.username
+        label: user.name
+      @editor.chain().focus()
 
-    updatePopup: (node) ->
-      return unless node
-      coords = node.getBoundingClientRect()
+    updatePopup: (coords) ->
+      # return unless node
+      # coords = node.getBoundingClientRect()
       @suggestionListStyles =
         position: 'fixed'
         top: coords.y + 24 + 'px'
@@ -119,44 +120,49 @@ export HtmlMentioning =
 
 export MentionPluginConfig = ->
   # is called when a suggestion starts
-  onEnter: ({ query, range, command, virtualNode }) =>
-    @query = query.toLowerCase()
-    @suggestionRange = range
-    @insertMention = command
-    @updatePopup(virtualNode)
-    @fetchMentionable()
-    @findMentionable()
+  HTMLAttributes:
+    class: 'mention'
+  suggestion:
+    render: =>
+      onStart: ( props ) =>
+        @query = props.query.toLowerCase()
+        @suggestionRange = props.range
+        @insertMention = props.command
+        @updatePopup(props.clientRect())
+        @fetchMentionable()
+        @findMentionable()
 
-  # is called when a suggestion has changed
-  onChange: ({query, range, virtualNode}) =>
-    @query = query.toLowerCase()
-    @suggestionRange = range
-    @navigatedUserIndex = 0
-    @updatePopup(virtualNode)
-    @fetchMentionable()
-    @findMentionable()
+      # is called when a suggestion has changed
+      onUpdate: (props) =>
+        @query = props.query.toLowerCase()
+        @suggestionRange = props.range
+        @insertMention = props.command
+        @navigatedUserIndex = 0
+        @updatePopup(props.clientRect())
+        @fetchMentionable()
+        @findMentionable()
 
-  # is called when a suggestion is cancelled
-  onExit: =>
-    @query = null
-    @suggestionRange = null
-    @navigatedUserIndex = 0
+      # is called when a suggestion is cancelled
+      onExit: (props) =>
+        @query = null
+        @suggestionRange = null
+        @navigatedUserIndex = 0
 
-  # is called on every keyDown event while a suggestion is active
-  onKeyDown: ({ event }) =>
-    # pressing up arrow
-    if (event.keyCode == 38)
-      @upHandler()
-      return true
+      # is called on every keyDown event while a suggestion is active
+      onKeyDown: (props) =>
+        # pressing up arrow
+        if (props.event.keyCode == 38)
+          @upHandler()
+          return true
 
-    # pressing down arrow
-    if (event.keyCode == 40)
-      @downHandler()
-      return true
+        # pressing down arrow
+        if (props.event.keyCode == 40)
+          @downHandler()
+          return true
 
-    # pressing enter or tab
-    if [13,9].includes(event.keyCode)
-      @enterHandler()
-      return true
+        # pressing enter or tab
+        if [13,9].includes(props.event.keyCode)
+          @enterHandler()
+          return true
 
-    return false
+        return false

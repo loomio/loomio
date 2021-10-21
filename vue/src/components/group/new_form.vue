@@ -74,7 +74,7 @@ export default
         Flash.success "group_form.messages.group_#{@actionName}"
         Records.groups.findOrFetchById(groupKey, {}, true).then (group) =>
           if !group.parentId && AppConfig.features.app.group_survey
-            Records.remote().post 'group_surveys',
+            Records.remote.post 'group_surveys',
               group_id: group.id
               category: (@group.category == 'other' && @group.otherCategory) || @group.category
           EventBus.$emit 'closeModal'

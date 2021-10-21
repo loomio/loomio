@@ -7,6 +7,8 @@ hr:
       public: 'Javno'
     models:
       proposal: 'Prijedlog'
+    action:
+      clear: Obriši
   error_page:
     forbidden: 'Nepostojeća dozvola za izvršenje.'
   change_volume_form:

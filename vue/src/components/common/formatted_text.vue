@@ -1,5 +1,10 @@
 <script lang="coffee">
 import { emojiReplaceText } from '@/shared/helpers/emojis.coffee'
+import { merge } from 'lodash'
+import Records from '@/shared/services/records'
+import Session from '@/shared/services/session'
+import Flash from '@/shared/services/flash'
+import AbilityService from '@/shared/services/ability_service'
 
 export default
   props:
@@ -9,7 +14,32 @@ export default
     column:
       type: String
       required: true
+
+  mounted: ->
+    @$el.addEventListener 'click', @onClick
+
+  destroyed: ->
+    @$el.removeEventListener 'click', @onClick
+
+  methods:
+    onClick: (e) ->
+      if e.target.getAttribute('data-type') == 'taskItem' && (e.offsetX < e.target.offsetLeft) && !e.target.classList.contains('task-item-busy')
+        if (@canEdit || e.target.querySelectorAll('span[data-mention-id="'+Session.user().username+'"]').length)
+          e.target.classList.add('task-item-busy')
+          uid = e.target.getAttribute('data-uid')
+          checked = e.target.getAttribute('data-checked') == 'true'
+          params = merge(@model.namedId(), {uid: uid, done: ((!checked && 'true') || 'false') })
+          Records.remote.post('tasks/update_done', params).finally =>
+            if !checked
+              Flash.success 'tasks.task_updated_done'
+            else
+              Flash.success 'tasks.task_updated_not_done'
+            e.target.classList.remove('task-item-busy')
+        else
+          alert(@$t('tasks.permission_denied'))
+
   computed:
+    canEdit: -> AbilityService.canEdit(@model)
     isMd: -> @format == 'md'
     isHtml: -> @format == 'html'
     format: -> @model[@column+"Format"]
@@ -31,10 +61,26 @@ div.lmo-markdown-wrapper
 </template>
 
 <style lang="sass">
+@import '~vuetify/src/styles/settings/_colors'
+
 img.emoji
   width: 1.4em !important
   vertical-align: top
   margin: 0 .05em
+
+.editor
+  .lmo-markdown-wrapper
+    ul[data-type="taskList"]
+      li::before
+        content: none
+        margin-right: 8px
+
+      li[data-checked="true"]
+        label::before
+          content: none
+
+      li[data-checked="true"]::before
+        content: none
 
 .theme--dark
   .lmo-markdown-wrapper
@@ -84,7 +130,7 @@ img.emoji
 
 .lmo-markdown-wrapper
 
-  a:hover
+  a
     text-decoration: underline
   p
     margin-bottom: 0.5rem
@@ -101,23 +147,47 @@ img.emoji
   *[data-text-align="justify"]
     text-align: justify !important
 
+  mark
+    background-color: var(--v-primary-lighten1)
+    color: #000
+    padding: 0.2em 0.3em
+
+  mark[data-color="red"]
+    background-color: map-get($red, lighten-1)
+  mark[data-color="pink"]
+    background-color: map-get($pink, lighten-3)
+  mark[data-color="purple"]
+    background-color: map-get($purple, lighten-3)
+  mark[data-color="blue"]
+    background-color: map-get($blue, lighten-3)
+  mark[data-color="green"]
+    background-color: map-get($green, lighten-3)
+  mark[data-color="yellow"]
+    background-color: map-get($yellow, lighten-3)
+  mark[data-color="orange"]
+    background-color: map-get($orange, lighten-3)
+  mark[data-color="brown"]
+    background-color: map-get($brown, lighten-3)
+  mark[data-color="grey"]
+    background-color: map-get($grey, lighten-2)
+
   .cursor
     font-size: 0.8rem
     font-weight: normal
     line-height: 20px
     letter-spacing: normal
 
-  span.mention
+  span[data-mention-id]
     color: var(--v-anchor-base)
 
   blockquote, pre
     margin: 0.5rem 0
 
-  h1, h2
+  h1, h2, h3
     margin-top: 1rem
     margin-bottom: 0.5rem
 
-  h1:first-child, h2:first-child
+  h1:first-child, h2:first-child, h3:first-child
     margin-top: 0
 
   h1
@@ -161,6 +231,76 @@ img.emoji
   ul
     list-style: disc
 
+  ul[data-type="taskList"]
+    list-style: none
+    padding: 0
+
+    // task item is
+    // li
+    //   label
+    //     input
+    //     span
+
+    li
+      display: flex
+      align-items: center
+
+      input[type="checkbox"]
+        margin-right: 8px
+
+      div
+        display: inline-block
+      p
+        flex-shrink: 10000
+        display: inline-block
+        margin: 0
+
+    li[data-due-on]:not([data-due-on=""])::after
+      font-size: 10px
+      color: #fff
+      content: " 📅 " attr(data-due-on) ""
+      border-radius: 8px
+      background-color: var(--v-primary-base)
+      margin-left: 8px
+      padding: 2px 8px
+      height: 16px
+      display: flex
+      align-items: center
+      // border: 1px solid var(--v-primary-base)
+
+    li::before
+      content: ""
+      display: inline-block
+      vertical-align: bottom
+      width: 1rem
+      height: 1rem
+      border-radius: 30%
+      border-style: solid
+      border-width: 0.1rem
+      line-height: 100%
+      margin-right: 8px
+      border-color: var(--v-grey-lighten1)
+
+    li[data-checked="true"]::before
+      display: inline-block
+      vertical-align: middle
+      position: relative
+      content: "✓"
+      color: white
+      text-align: center
+      vertical-align: middle
+      background-color: var(--v-primary-base)
+      border-color: var(--v-primary-base)
+
+    li:hover:before
+      cursor: pointer
+      border-color: var(--v-primary-lighten1)
+
+    li.task-item-busy::before
+      background-color: var(--v-primary-lighten1)
+      border-color: var(--v-primary-lighten1)
+      // background-color: none !important
+
   ol
     list-style: decimal
 
@@ -181,24 +321,7 @@ img.emoji
 
   p code
     display: inline-block
-    // padding: 0 .4rem
-    // border-radius: 5px
-    // font-size: .8rem
-    // font-weight: 700
     background: rgba(0, 0, 0, .1)
-    // color: rgba(0, 0, 0, .8)
-
-  // pre:last-of-type
-  //   padding-bottom: 16px
-
-  // code
-  //   background-color: transparent
-  //   color: rgba(#000, 0.88)
-  //   box-shadow: none
-  //   border-radius: 0
-  //   white-space: normal
-  //   font-weight: 400
-  //   font-family: 'Roboto mono', monospace, monospace
 
   blockquote
     font-style: italic

@@ -59,6 +59,7 @@ sr_RS:
       translate: 'Преведи'
       upload: 'Отпремљено'
       uploading: 'Отпремање'
+      clear: Очисти
   emoji_picker:
     search: Тражи
   error_page:
@@ -106,6 +107,10 @@ sr_RS:
     title_label: 'Наслов'
     context_label: 'Контекст'
     privacy_label: 'Приватност'
+  announcement:
+    form:
+      wip_poll_reminder:
+        message_label: Порука
   action_dock:
     edit_comment: Измени коментар
     delete_comment: Обриши коментар

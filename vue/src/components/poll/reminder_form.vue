@@ -38,7 +38,7 @@ export default
   methods:
     submit: ->
       @saving = true
-      Records.remote().post "polls/#{@poll.id}/remind",
+      Records.remote.post "polls/#{@poll.id}/remind",
         poll:
           recipient_audience: @poll.recipientAudience
           recipient_user_ids: @poll.recipientUserIds

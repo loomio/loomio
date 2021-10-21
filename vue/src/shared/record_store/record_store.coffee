@@ -8,16 +8,15 @@ export default class RecordStore
     @db = db
     @collectionNames = []
     @views = {}
-
-  remote: ->
-    client = new RestfulClient
-    client.onSuccess = (data) =>
+    @remote = new RestfulClient
+    @remote.onSuccess = (data) =>
       @importJSON(data)
       data
-    client
 
   fetch: (args) ->
-    @remote().fetch(args)
+    @remote.fetch(args)
+  post: (args) ->
+    @remote.post(args)
 
   addRecordsInterface: (recordsInterfaceClass) ->
     recordsInterface = new recordsInterfaceClass(@)

@@ -28,12 +28,13 @@ module MigrateEventsService
       attachments.each do |attachment|
         model.where("#{attachment}_file_name is not null").send("with_attached_#{attachment}").find_each.each do |instance|
           if instance.send(attachment).attachment.nil?
-            puts "#{instance.class} #{instance.id} " + instance.send("#{attachment}_file_name")
-            MigrateAttachmentWorker.perform_async(attachment.record_type, instance.id, attachment)
+            puts "#{model.to_s} #{instance.id} " + instance.send("#{attachment}_file_name")
+            MigrateAttachmentWorker.perform_async(model.to_s, instance.id, attachment)
           end
         end
       end
     end
+    User.where("uploaded_avatar_file_name is not null").update_all(avatar_kind: "uploaded")
   end
 
   def self.rewrite_inline_images(host = nil)

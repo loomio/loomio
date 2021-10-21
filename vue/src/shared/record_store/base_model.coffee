@@ -146,6 +146,40 @@ export default class BaseModel
       return @recordStore[args.from].nullModel()
     @[name+'Is'] = (obj) => @recordStore[args.from].find(@[args.by]) == obj
 
+  belongsToPolymorphic: (name) ->
+    # belongsToPolymorphic('model', with: 'record')
+    # name is record in record_type
+    # handle is the method name we give it to access it. defaults to name
+
+    # opts['with'] = name unless opts['with']?
+    typeMap = {
+      Group: 'groups'
+      Discussion: 'discussions'
+      Poll: 'polls'
+      Outcome: 'outcomes'
+      Stance: 'stances'
+      Comment: 'comments'
+      CommentVote: 'comments'
+      Membership: 'memberships'
+      MembershipRequest: 'membershipRequests'
+    }
+
+    assoc = name
+    @[name] = =>
+      recordType = @[assoc+'Type']
+      recordId = @[assoc+'Id']
+      collection = typeMap[recordType]
+      return unless recordType
+      # console.log 'called.. @, name, assoc, recordType, recordId, collection', @, @id, name, assoc, recordType, recordId, collection
+
+      return @recordStore[collection].find(recordId)
+
+      # if recordId
+      #   @recordStore[collection].find(recordId)
+      # else
+      #   @recordStore[collection].nullModel()
+
+
   translationOptions: ->
 
   isA: (models...) ->

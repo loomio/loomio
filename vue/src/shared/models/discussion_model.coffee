@@ -70,13 +70,13 @@ export default class DiscussionModel extends BaseModel
     @recordStore.users.find(@group().memberIds().concat(map(@discussionReaders(), 'userId')))
 
   membersInclude: (user) ->
-    (@inviterId && !@revokedAt && Session.user() == user) or
-    @group().membersInclude(user)
+    @group().membersInclude(user) ||
+    (@inviterId && !@revokedAt && AppConfig.currentUserId == user.id)
 
   adminsInclude: (user) ->
-    @author() == user or
-    (@inviterId && @admin && !@revokedAt && Session.user() == user) or
-    @group().adminsInclude(user)
+    @authorId == user.id ||
+    @group().adminsInclude(user) ||
+    (@inviterId && @admin && !@revokedAt && AppConfig.currentUserId == user.id)
 
   # known current participants for quick mentioning
   participantIds: ->

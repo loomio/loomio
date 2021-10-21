@@ -15,6 +15,8 @@ class CommentSerializer < ApplicationSerializer
              :discarded_at
 
   has_one :author, serializer: AuthorSerializer, root: :users
+  has_one :discussion, serializer: DiscussionSerializer, root: :discussions
+  
 
   hide_when_discarded [:body]
 

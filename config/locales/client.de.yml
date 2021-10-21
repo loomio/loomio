@@ -225,6 +225,7 @@ de:
       share: Teilen
       ok: Ok
       retry: Nochmal versuchen
+      clear: 'Löschen '
       done: Fertig
       start: Beginnen
       delete: Löschen
@@ -518,7 +519,6 @@ de:
   notification_models:
     discussion: 'Diskussion:'
     comment: 'kommentieren in'
-    poll: 'Entscheidung:'
     outcome: 'Ergebnis:'
   notifications:
     header: "Benachrichtigungen"
@@ -588,7 +588,6 @@ de:
     title_label: 'Titel'
     title_placeholder: 'Welches Thema möchtest du besprechen?'
     context_label: 'Kontext'
-    context_placeholder: 'Stelle der Gruppe ausreichend Hintergrundinformationen zur Verfügung, um eine konstruktive Diskussion zu ermöglichen. Diese Informationen können im Verlauf der Diskussion entsprechend aktualisiert werden'
     privacy_label: 'Datenschutz'
     privacy_public: 'Jede.r kann die Diskussion sehen. Nur Mitglieder können teilnehmen.'
     privacy_private: 'Diese Diskussion wird nur für Mitglieder von {{group}} sichtbar sein.'
@@ -672,6 +671,8 @@ de:
         helptext: Wen möchtest du an die Stimmabgabe erinnern?
         message_label: Nachricht
         message_placeholder: Optionale Nachricht, um Personen mitzuteilen, warum sie wählen sollten
+      wip_poll_reminder:
+        message_label: Nachricht
       poll_edited:
         title: Über Änderungen benachrichtigen
         helptext: Wen möchtest du über diese Aktualisierung benachrichtigen?
@@ -1201,7 +1202,6 @@ de:
     deactivate_account: 'Benutzerkonto deaktivieren'
     help_translate: "Hilf mit Loomio zu übersetzen"
   text_editor:
-    select_text_to_link: Zuerst Text zum Verlinken auswählen
     insert_link: Link einfügen
     insert_embedded_url: Video einfügen
   change_picture_form:
@@ -1595,7 +1595,6 @@ de:
     anonymous: Stimmabgaben sind anonym
     results_hidden_until_closed: Ergebnisse sind unsichtbar bis %{poll_type} geschlossen wurde
     unable_to_vote: Du wurdest nicht eingeladen in diesem %{poll_type} abzustimmen.
-    draft_mode: Diese %{poll_type} wird gerade bearbeitet. Abstimmungen sind deaktiviert.
   current_polls_card:
     title: Aktuelle Abstimmungen
     start_poll: Neue Abstimmung
@@ -1673,9 +1672,6 @@ de:
   poll_common_move_form:
     title: "{{poll_type}} bewegen"
     success: "{{poll_type}} wurde nach {{group}} verschoben"
-  poll_common_wip_field:
-    title: In Arbeit
-    helptext: 'Nutze "In Arbeit" um vor der Abstimmung gemeinsam an %{poll_type} zu arbeiten'
   poll_common_closing_at_field:
     closing: Schluss
     no_closing_date: Kein Abschlussdatum

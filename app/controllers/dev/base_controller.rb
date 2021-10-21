@@ -22,14 +22,10 @@ class Dev::BaseController < ApplicationController
     end.last
     render template: 'dev/main/last_email', layout: false
   end
+
   private
 
   def ensure_not_production
     raise "Development and testing only" if Rails.env.production?
   end
-
-  def dont_send_emails
-    BaseMailer.skip { yield }
-  end
-
 end

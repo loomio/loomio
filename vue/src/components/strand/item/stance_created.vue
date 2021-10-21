@@ -14,13 +14,14 @@ export default
     collapsed: Boolean
 
   computed:
+    actor: -> @event.actor()
+    actorName: -> @event.actorName()
     eventable: -> @event.model()
     poll: -> @eventable.poll()
     showResults: -> @eventable.poll().showResults()
     actions: -> StanceService.actions(@eventable)
-
     componentType:  ->
-      if @event.actor()
+      if @actor
         'router-link'
       else
         'div'
@@ -31,12 +32,12 @@ export default
 section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id" :event="event" :is-returning="isReturning")
   template(v-if="eventable.singleChoice()")
     .d-flex
-      component(:is="componentType" :to="event.actor() && urlFor(event.actor())") {{event.actorName()}}
+      component.text--secondary(:is="componentType" :to="actor && urlFor(actor)") {{actorName}}
       space
       poll-common-stance-choice(v-if="showResults" :poll="poll" :stance-choice="eventable.stanceChoice()")
   .poll-common-stance(v-if="showResults && !collapsed")
     v-layout(v-if="!eventable.singleChoice()" wrap align-center)
-      strand-item-headline(:event="event" :eventable="eventable")
+      strand-item-headline.text--secondary(:event="event" :eventable="eventable")
       poll-common-stance-choices(:stance="eventable")
     formatted-text.poll-common-stance-created__reason(:model="eventable" column="reason")
     link-previews(:model="eventable")

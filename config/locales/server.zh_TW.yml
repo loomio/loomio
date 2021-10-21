@@ -407,6 +407,14 @@ zh_TW:
           圖片的用法也相同，但必須多一個驚嘆號前綴。標題是替代用的文字。
 
           ![loomio 圖示](https://i.imgur.com/Fvtworb.png)
+  task_mailer:
+    task_due_reminder:
+      subject: "工作提醒：%{name}"
+      greeting: "嗨 %{name}，以下的工作於 %{due} 到期："
+      view_task: "在 %{site_name} 上檢視"
+      update_or_comment: "如果您已完成此工作，請勾選它。若其不完整，請分享進度更新。"
+      due_today: '今天'
+      due_in_count_days: '%{count} 天內'
   group_mailer:
     resend: '提醒：%{member} 正等候您加入 %{group_name}'
   poll_mailer:
@@ -436,7 +444,7 @@ zh_TW:
       poll_edited: '%{actor} 編輯了 %{poll_type}：%{title}l'
       poll_reminder: '%{actor} 正在提醒您要投票：%{title}'
       poll_announced: '%{actor} 邀請您在 %{poll_type} 投票：%{title}'
-      poll_announced_wip: '%{actor} 分享了一個正在進行的 %{poll_type}：%{title}'
+      poll_announced_wip: '%{actor} 邀請您在 %{poll_type} 上給予回饋：%{title}'
       poll_closing_soon: '%{poll_type} 將於24小時內關閉：%{title}'
       poll_closing_soon_author: '您的 %{poll_type} 將於24小時內關閉：%{title}'
       poll_expired: "%{poll_type} 已關閉：%{title}"
@@ -456,8 +464,9 @@ zh_TW:
       poll_created: '<strong>%{actor}</strong> 啟動了一個 %{poll_type}'
       poll_edited: '<strong>%{actor}</strong> 編輯了一個 %{poll_type}'
       poll_reminder: '<strong>%{actor}</strong> 正在提醒您投票'
+      poll_reminder_wip: '<strong>%{actor}</strong> 正在提醒您給予回饋'
       poll_announced: '<strong>%{actor}</strong> 邀請您在 %{poll_type} 投票'
-      poll_announced_wip: '<strong>%{actor}</strong> 分享了一個正在進行的 %{poll_type}'
+      poll_announced_wip: '<strong>%{actor}</strong> 已邀請您在 %{poll_type} 上給予回饋'
       poll_closing_soon: '<strong>%{actor}</strong> 的 %{poll_type} 將於24小時內關閉。現在正是投票、變更您的心意或是鼓勵其他人來參與的好時機。'
       poll_closing_soon_author: '您的 %{poll_type} 將於24小時內關閉 ── 現在正是您提醒其他人關於這個投票或是展延期限的絕佳時機。'
       poll_expired: "<strong>%{actor} 的</strong> %{poll_type} 已關閉：%{title}"

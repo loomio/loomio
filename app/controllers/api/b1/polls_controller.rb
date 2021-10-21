@@ -5,9 +5,10 @@ class API::B1::PollsController < API::B1::BaseController
   end
 
   def create
-    @poll = Poll.new(poll_attributes)
+    instantiate_resource
     @poll.group_id = current_webhook.group_id
     PollService.create(actor: current_user, poll: @poll)
+    PollService.invite(actor: current_user, poll: @poll, params: params)
     respond_with_resource
   end
 

@@ -418,7 +418,6 @@ pl:
       poll_created: '%{actor}utworzył/a %{poll_type}: %{title}'
       poll_edited: '%{actor} edytował/a %{poll_type}: %{title}'
       poll_announced: '%{actor} zaprasza Cię do głosowania w %{poll_type}:%{title}'
-      poll_announced_wip: '%{actor} udostępnił/a pracę w toku%{poll_type}:%{title}'
       poll_closing_soon: '%{poll_type} zostanie zamknięte w ciągu 24 godzin: %{title}'
       poll_closing_soon_author: 'Twoje %{poll_type} zakończy się w ciągu 24 godzin: %{title}'
       poll_expired: "%{poll_type} zakończone: %{title}"
@@ -438,7 +437,6 @@ pl:
       poll_created: '<strong>%{actor}</strong> utworzył/a %{poll_type}'
       poll_edited: '<strong>%{actor}</strong> edytował/a %{poll_type}'
       poll_announced: '<strong>%{actor}</strong> zaprasza Cię do oddania głosu w %{poll_type}'
-      poll_announced_wip: '<strong>%{actor}</strong> udostępnił/a pracę w toku %{poll_type}'
       poll_closing_soon: '<strong>%{actor}</strong> %{poll_type} zakończy się w ciągu 24 godzin. To idealny moment, by zagłosować, zmienić zdanie lub zachęcić innych do wzięcia udziału.'
       poll_closing_soon_author: 'Twoje %{poll_type} zakończy się w ciągu 24 godzin- to idealny moment, by przypomnieć o nim ludziom lub wydłużyć czas trwania, jeśli to konieczne.'
       poll_expired: "<strong>%{actor}</strong>%{poll_type}zakończył/a %{title}"

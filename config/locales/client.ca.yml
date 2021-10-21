@@ -204,6 +204,7 @@ ca:
       share: Comparteix
       ok: D'acord
       retry: Reintentar
+      clear: Esborra
       done: Fet
       start: Comença
       delete: Elimina
@@ -491,7 +492,6 @@ ca:
   notification_models:
     discussion: 'fil:'
     comment: 'Comenta a'
-    poll: 'decisió:'
     outcome: 'resultat:'
   notifications:
     header: "Notificacions"
@@ -558,7 +558,6 @@ ca:
     title_label: 'Títol'
     title_placeholder: 'Quin és el tema que voleu discutir?'
     context_label: 'Context'
-    context_placeholder: 'Doneu suficient informació de context perquè el grup pugui tingui una discussió productiva. Aquesta informació es pot anar actualitzant a mesura que avanci la discussió.'
     privacy_label: 'Privacitat'
     privacy_public: 'Tothom pot veure el fil. Només els membres hi poden participar.'
     privacy_private: 'El fil només serà visible pels membres del grup {{group}}.'
@@ -617,6 +616,8 @@ ca:
         title: Convida a la votació
         helptext: A qui voleu convidar a la votació?
       poll_reminder:
+        message_label: Missatge
+      wip_poll_reminder:
         message_label: Missatge
       poll_edited:
         title: Notifica les edicions
@@ -1100,7 +1101,6 @@ ca:
     deactivate_account: 'Desactiva el compte d''usuari'
     help_translate: "Ajuda'ns a traduir Loomio"
   text_editor:
-    select_text_to_link: Comença per seleccionar part del text per introduir-hi l'enllaç
     insert_link: Insereix enllaç
     insert_embedded_url: Incrusta un vídeo
   change_picture_form:
@@ -1489,7 +1489,6 @@ ca:
     anonymous: Els vots són anònims
     results_hidden_until_closed: Els resultats s'oculten fins que hagi tancat %{poll_type}
     unable_to_vote: No heu estat convidat a votar en aquesta%{poll_type}.
-    draft_mode: Aquesta %{poll_type} està en procés de creació. La votació està desactivada.
   current_polls_card:
     title: Decisions actuals
     start_poll: Nova decisió
@@ -1567,9 +1566,6 @@ ca:
   poll_common_move_form:
     title: "Mou {{poll_type}}"
     success: "S'ha mogut {{poll_type}} a {{group}}"
-  poll_common_wip_field:
-    title: Feina en curs
-    helptext: 'Utilitza "feina en curs" per colaborar en  %{poll_type} abans de la votació'
   poll_common_closing_at_field:
     closing: S'està tancant
     no_closing_date: No hi ha data de tancament

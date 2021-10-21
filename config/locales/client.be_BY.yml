@@ -36,6 +36,7 @@ be_BY:
       like: 'Падабаецца'
       unlike: 'Не падабаецца'
       cancel: 'Скасаваць'
+      clear: Ачысціць
   emoji_picker:
     search: Пошук
   error_page:
@@ -79,6 +80,8 @@ be_BY:
     form:
       invitation_message_label: Паведамленне
       poll_reminder:
+        message_label: Паведамленне
+      wip_poll_reminder:
         message_label: Паведамленне
   action_dock:
     edited: Адрэдагавана

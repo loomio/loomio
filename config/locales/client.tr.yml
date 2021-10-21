@@ -195,6 +195,7 @@ tr:
       share: Paylaş
       ok: Tamam
       retry: Yeniden dene
+      clear: Temizle
       done: Tamamlandı
       start: Başla
       delete: Sil
@@ -348,7 +349,6 @@ tr:
     title_label: 'Başlık'
     title_placeholder: 'Müzakere etmek istediğiniz konu nedir?'
     context_label: 'İçerik'
-    context_placeholder: 'Üretken bir tartışma grubuna sahip olmak için yeterli derecede arka plan bilgisi veriniz. Bu alan müzakere ilerledikçe güncellenebilir'
     privacy_label: 'Gizlilik'
     privacy_public: 'Herhangi bir kişi müzakereyi görebilir. Sadece üyeler katılım gösterebilir.'
     privacy_private: 'Müzakere sadece {{group}} grubunun üyelerine görünür olacaktır.'
@@ -357,6 +357,8 @@ tr:
     form:
       invitation_message_label: Mesaj
       poll_reminder:
+        message_label: Mesaj
+      wip_poll_reminder:
         message_label: Mesaj
   action_dock:
     edit_stance: Konumunu değiştir

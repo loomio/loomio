@@ -40,6 +40,8 @@ export default class GroupModel extends BaseModel
     recipientUserIds: []
     recipientEmails: []
     notifyRecipients: true
+    isMember: false
+    isAdmin: false
 
   afterConstruction: ->
     if @privacyIsClosed()
@@ -137,10 +139,16 @@ export default class GroupModel extends BaseModel
     @parentAndSelfMembers().map (u) -> u.id
 
   membersInclude: (user) ->
-    @membershipFor(user) || false
+    if (user.id == AppConfig.currentUserId)
+      @isMember
+    else
+      @membershipFor(user) || false
 
   adminsInclude: (user) ->
-    @recordStore.memberships.find(groupId: @id, userId: user.id, admin: true)[0] || false
+    if (user.id == AppConfig.currentUserId)
+      @isAdmin
+    else
+      @recordStore.memberships.find(groupId: @id, userId: user.id, admin: true)[0] || false
 
   adminMemberships: ->
     @recordStore.memberships.find(groupId: @id, admin: true)

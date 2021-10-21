@@ -38,6 +38,7 @@ namespace :loomio do
     ThrottleService.reset!('hour')
     PollService.delay.expire_lapsed_polls
     PollService.delay.publish_closing_soon
+    TaskService.delay.send_task_reminders
 
     SendDailyCatchUpEmailWorker.perform_async
 
@@ -76,8 +77,6 @@ namespace :loomio do
       PaperTrail::Version.joins("left join #{table} on #{table}.id = item_id and item_type = '#{model}'").where("#{table}.id is null").delete_all
     end
 
-    Ahoy::Visit.joins('left join users on users.id = user_id').where('users.id is null').delete_all
-    Ahoy::Event.joins('left join visits on visits.id = visit_id').where('visits.id is null').delete_all
     # vacuum full groups;
     # vacuum full memberships;
     # vacuum full membership_requests;

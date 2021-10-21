@@ -11,6 +11,11 @@ class Queries::AdminGroupPage
     "select date_trunc('day', created_at) date, count(id) from polls where group_id IN (#{group.id_and_subgroup_ids.join(',')}) group by date order by date"
   end
 
+  def self.thread_events_per_day(group)
+    ids = Discussion.where(group_id: group.id_and_subgroup_ids).pluck(:id)
+    "select date_trunc('day', created_at) date, count(id) from events where discussion_id IN (#{ids.join(',')}) group by date order by date"
+  end
+
   def self.execute(sql)
     ActiveRecord::Base.connection.execute(sql)
   end
@@ -25,6 +30,7 @@ class Queries::AdminGroupPage
 
   def self.fetch_data(group)
     {
+      events: run_per_day(thread_events_per_day(group)),
       members: run_per_day(members_per_day_sql(group)),
       threads: run_per_day(threads_per_day_sql(group)),
       polls: run_per_day(polls_per_day_sql(group))

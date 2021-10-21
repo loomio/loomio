@@ -17,15 +17,24 @@ export default
     @event.model().fetchUsersNotifiedCount()
 
   computed:
+    author: ->
+      @discussion.author()
+
+    authorName: ->
+      @discussion.authorName()
+
     discussion: ->
       @event.model()
+
+    group: ->
+      @discussion.group()
 
     arrangementAction: -> @actions['edit_arrangement']
 
     editThread: -> @actions['edit_thread']
 
     dockActions: ->
-      pick @actions, ['react', 'translate_thread', 'add_comment', 'subscribe', 'unsubscribe', 'unignore', 'edit_thread', 'announce_thread']
+      pick @actions, ['translate_thread', 'subscribe', 'unsubscribe', 'unignore', 'announce_thread', 'react', 'add_comment', 'edit_thread']
 
     menuActions: ->
       pick @actions, ['show_history', 'notification_history', 'close_thread', 'reopen_thread', 'move_thread', 'discard_thread', 'export_thread']
@@ -57,7 +66,7 @@ export default
 </script>
 
 <template lang="pug">
-.strand-new-discussion.context-panel#context(:aria-label="$t('context_panel.aria_intro', {author: discussion.authorName(), group: discussion.group().fullName})" v-observe-visibility="{callback: viewed, once: true}")
+.strand-new-discussion.context-panel#context(:aria-label="$t('context_panel.aria_intro', {author: authorName, group: group.fullName})" v-observe-visibility="{callback: viewed, once: true}")
   v-layout.ml-n2(align-center wrap)
     v-breadcrumbs.context-panel__breadcrumbs(:items="groups" divider=">")
     tags-display(:tags="discussion.tags()")
@@ -70,11 +79,11 @@ export default
         i.mdi.mdi-earth
         span.text--secondary(v-t="'common.privacy.public'")
 
-  strand-title.context-panel__heading(:discussion="discussion")
+  strand-title(:discussion="discussion")
 
   .mb-2.d-flex.align-center
-    user-avatar.mr-2(:user='discussion.author()' :size='36')
-    router-link(:to="urlFor(discussion.author())") {{discussion.authorName()}}
+    user-avatar.mr-2(:user='author' :size='36')
+    router-link(:to="urlFor(author)") {{authorName}}
     mid-dot
     router-link.grey--text.body-2(:to='urlFor(discussion)')
       time-ago(:date='discussion.createdAt')

@@ -25,6 +25,7 @@ gl:
       like: 'Gústame'
       unlike: 'Desgustar'
       cancel: 'Cancelar'
+      clear: Eliminar
   emoji_picker:
     search: Buscar
   error_page:
@@ -59,6 +60,8 @@ gl:
     form:
       invitation_message_label: Mensaxe
       poll_reminder:
+        message_label: Mensaxe
+      wip_poll_reminder:
         message_label: Mensaxe
   action_dock:
     edited: Editado

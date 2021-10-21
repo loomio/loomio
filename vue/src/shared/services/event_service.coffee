@@ -25,7 +25,7 @@ export default new class EventService
 
     pin_event:
       name: 'common.action.pin'
-      icon: 'mdi-pin'
+      icon: 'mdi-pin-outline'
       canPerform: -> !event.model().discardedAt && AbilityService.canPinEvent(event)
       perform: ->
         openModal

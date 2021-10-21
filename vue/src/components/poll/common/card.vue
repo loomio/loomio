@@ -36,11 +36,11 @@ export default
 
     menuActions: ->
       @myStance
-      pick PollService.actions(@poll, @), ['edit_poll', 'close_poll', 'reopen_poll', 'notification_history', 'show_history', 'move_poll', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread', 'translate_poll']
+      pick PollService.actions(@poll, @), ['edit_poll', 'notification_history', 'show_history', 'move_poll', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread', 'translate_poll']
 
     dockActions: ->
       @myStance
-      pick PollService.actions(@poll, @), ['show_results', 'hide_results', 'edit_stance', 'announce_poll', 'remind_poll']
+      pick PollService.actions(@poll, @), ['show_results', 'hide_results', 'edit_stance', 'announce_poll', 'remind_poll', 'close_poll', 'reopen_poll']
 
 </script>
 
@@ -63,7 +63,7 @@ v-sheet
     .poll-common-card__results-shown(v-if='showResults')
       poll-common-chart-panel(:poll='poll')
     poll-common-action-panel(:poll='poll')
-    action-dock(:actions="dockActions" :menu-actions="menuActions")
+    action-dock.mt-4(:actions="dockActions" :menu-actions="menuActions")
 
     .poll-common-card__results-shown.mt-4
       poll-common-votes-panel(:poll='poll')
