@@ -4,14 +4,11 @@ import Session from '@/shared/services/session'
 import FilesList from './files_list.vue'
 import EventBus  from '@/shared/services/event_bus'
 
-# import HtmlEditor from './html_editor'
 import CollabEditor from './collab_editor'
 import MdEditor from './md_editor'
 import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service'
 
 export default
-
-
   props:
     model: Object
     field: String
@@ -22,7 +19,6 @@ export default
     shouldReset: Boolean
 
   components:
-    # 'html-editor': HtmlEditor
     'md-editor': MdEditor
     'collab-editor': CollabEditor
 
@@ -32,9 +28,6 @@ export default
   computed:
     format: ->
       @model["#{@field}Format"]
-
-    betaFeatures: ->
-      false # Session.user().experiences['betaFeatures']
 
 </script>
 

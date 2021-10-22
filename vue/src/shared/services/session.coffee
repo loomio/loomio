@@ -49,7 +49,7 @@ export default new class Session
     Vue.set(AppConfig, 'currentUserId', data.current_user_id)
     Vue.set(AppConfig, 'pendingIdentity', data.pending_identity)
     Records.importJSON(data)
-
+    @userId = data.current_user_id
     user = @user()
     @updateLocale(user.locale)
 

@@ -62,7 +62,9 @@ export default
 <template lang="pug">
 .strand-new-discussion.context-panel#context(:aria-label="$t('context_panel.aria_intro', {author: authorName, group: group.fullName})" v-observe-visibility="{callback: viewed, once: true}")
   v-layout.ml-n2(align-center wrap)
-    v-breadcrumbs.context-panel__breadcrumbs(:items="groups" divider=">")
+    v-breadcrumbs.context-panel__breadcrumbs(:items="groups")
+      template(v-slot:divider)
+        v-icon mdi-chevron-right
     tags-display(:tags="discussion.tags()")
     v-spacer
     span
@@ -101,7 +103,7 @@ export default
 
 .context-panel
   .v-breadcrumbs
-    padding: 0px 10px
+    padding: 4px 10px 4px 10px
     // margin-left: 0;
 
 .context-panel__discussion-privacy i

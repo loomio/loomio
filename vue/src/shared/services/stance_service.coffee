@@ -13,7 +13,6 @@ export default new class StanceService
       dock: 1
       canPerform: ->
         !stance.discardedAt &&
-        AppConfig.features.app.vote_reactions &&
         stance.poll().membersInclude(Session.user())
 
     edit_stance:

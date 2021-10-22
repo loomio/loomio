@@ -16,15 +16,13 @@ export default
 
   methods:
     srcForEmoji: srcForEmoji
-    bannedEmoji: (name) ->
-      @isPoll && ['thumbsup', 'thumbs_up', 'thumbsdown', 'thumbs_down', 'hand'].includes(name)
 
   computed:
     emojis: ->
       if @showMore
         emojisByCategory
       else
-        pick(emojisByCategory, (@isPoll && ['common', 'expressions']) || ['common', 'hands', 'expressions'])
+        pick(emojisByCategory, ['common', 'hands', 'expressions'])
 
 </script>
 
@@ -33,7 +31,7 @@ v-sheet.emoji-picker.pa-2
   div(v-for='(emojiGroup, category) in emojis', :key='category')
     h5(v-t="'emoji_picker.'+category")
     div.emoji-picker__emojis
-      span(v-for='(emoji, emojiName) in emojiGroup' v-if="!bannedEmoji(emojiName)" :key='emojiName' @click='insert(emojiName, emoji)' :title='emojiName') {{ emoji }}
+      span(v-for='(emoji, emojiName) in emojiGroup' :key='emojiName' @click='insert(emojiName, emoji)' :title='emojiName') {{ emoji }}
   .d-flex.justify-center.pb-2
     v-btn(v-if="!showMore" x-small @click.stop="showMore = true" v-t="'common.action.show_more'")
     v-btn(v-if="showMore" x-small @click.stop="showMore = false" v-t="'common.action.show_fewer'")

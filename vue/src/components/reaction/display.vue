@@ -44,10 +44,10 @@ export default
 
     myReaction: ->
       return unless Session.isSignedIn()
-      Records.reactions.find(merge({}, @reactionParams, userId: Session.user().id))[0]
+      Records.reactions.find(merge({}, @reactionParams, userId: Session.userId))[0]
 
     otherReaction: ->
-      Records.reactions.find(merge({}, @reactionParams, {userId: {'$ne': Session.user().id}}))[0]
+      Records.reactions.find(merge({}, @reactionParams, {userId: {'$ne': Session.userId}}))[0]
 
     reactionTypes: ->
       difference keys(@reactionHash), ['all']
