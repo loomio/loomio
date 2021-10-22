@@ -8,7 +8,6 @@ import { pick, pickBy, assign } from 'lodash'
 export default
   props:
     event: Object
-    isReturning: Boolean
     collapsed: Boolean
     eventable: Object
 

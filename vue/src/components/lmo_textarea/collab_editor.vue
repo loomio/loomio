@@ -102,6 +102,7 @@ export default
 
   mounted: ->
     @expanded = Session.user().experiences['html-editor.expanded']
+    @model.beforeSave = => @updateModel()
     @editor = new Editor
       editorProps:
         scrollThreshold: 100
@@ -140,7 +141,8 @@ export default
         Underline
       ]
       content: @model[@field]
-      onUpdate: @updateModel
+      onUpdate: =>
+        @scrapeLinkPreviews() if @model.isNew()
 
   watch:
     'shouldReset': 'reset'
@@ -203,17 +205,18 @@ export default
     updateModel: ->
       @model[@field] = @editor.getHTML()
       @updateFiles()
-      @scrapeLinkPreviews() if @model.isNew()
 
     removeLinkPreview: (url) ->
       @model.linkPreviews = reject(@model.linkPreviews, (p) -> p.url == url)
 
     scrapeLinkPreviews: throttle ->
       parser = new DOMParser()
-      doc = parser.parseFromString(@model[@field], 'text/html')
+      doc = parser.parseFromString(@editor.getHTML(), 'text/html')
       @fetchLinkPreviews difference((Array.from(doc.querySelectorAll('a')).map (el) => el.href), @fetchedUrls)
     ,
       500
+    ,
+      {leading: false}
 
     fetchLinkPreviews: (urls) ->
       if urls.length

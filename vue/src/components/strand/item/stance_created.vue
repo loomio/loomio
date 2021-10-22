@@ -8,7 +8,6 @@ export default
   props:
     event: Object
     eventable: Object
-    isReturning: Boolean
     collapsed: Boolean
 
   computed:
@@ -26,7 +25,7 @@ export default
 
 <template lang="pug">
 
-section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id" :event="event" :is-returning="isReturning")
+section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id" :event="event")
   template(v-if="eventable.singleChoice()")
     .d-flex
       component.text--secondary(:is="componentType" :to="actor && urlFor(actor)") {{actorName}}

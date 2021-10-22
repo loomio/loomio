@@ -10,7 +10,6 @@ export default
   props:
     event: Object
     eventable: Object
-    isReturning: Boolean
 
   data: ->
     confirmOpts: null

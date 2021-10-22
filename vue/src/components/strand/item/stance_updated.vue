@@ -24,7 +24,7 @@ export default
 
 <template lang="pug">
 
-section.strand-item__stance-created.stance-updated(id="'comment-'+ eventable.id" :event="event" :is-returning="isReturning")
+section.strand-item__stance-created.stance-updated(id="'comment-'+ eventable.id" :event="event")
   template(v-if="eventable.singleChoice()")
     .d-flex
       component(:is="componentType" :to="event.actor() && urlFor(event.actor())") {{event.actorName()}}
