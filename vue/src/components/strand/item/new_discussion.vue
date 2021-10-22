@@ -3,7 +3,6 @@ import ThreadService  from '@/shared/services/thread_service'
 import { map, compact, pick, pickBy } from 'lodash'
 import EventBus from '@/shared/services/event_bus'
 import openModal      from '@/shared/helpers/open_modal'
-import DiscussionPrivacyBadge from '@/components/discussion/privacy_badge'
 
 export default
   props:
@@ -72,7 +71,7 @@ export default
         i.mdi.mdi-lock-outline
         span.text--secondary(v-t="'common.privacy.private'")
       span.nowrap(v-show='!discussion.private')
-        i.mdi.mdi-earth
+        i.mdi.mdi-earth.mr-1
         span.text--secondary(v-t="'common.privacy.public'")
 
   strand-title(:discussion="discussion")

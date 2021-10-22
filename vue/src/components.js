@@ -148,7 +148,6 @@ module.exports = {
   StrandTocNav: 'strand/toc_nav',
   StrandItemHeadline: 'strand/item/headline',
   StrandMembers: 'strand/members',
-  DiscussionPrivacyBadge: 'discussion/privacy_badge',
   ThreadActionsPanel: 'thread/actions_panel',
   ThreadCard: 'thread/card',
   ThreadCardNew: 'thread/card_new',
