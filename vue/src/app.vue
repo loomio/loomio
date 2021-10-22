@@ -20,7 +20,11 @@ export default
   created: ->
     Session.updateLocale(@$route.query.locale) if @$route.query.locale
 
-    @$vuetify.theme.dark = Session.user().experiences['darkMode']
+    if Session.user().experiences.darkMode?
+      @$vuetify.theme.dark = Session.user().experiences['darkMode']
+    else
+      @$vuetify.theme.dark = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+
     each AppConfig.theme.vuetify, (value, key) =>
       @$vuetify.theme.themes.light[key] = value if value
       @$vuetify.theme.themes.dark[key] = value if value
@@ -109,6 +113,10 @@ a
 .max-width-1024
   max-width: 1024px
 
+@media (prefers-color-scheme: dark)
+  body
+    background-color: #000
+    
 @media print
   .lmo-no-print
     display: none !important

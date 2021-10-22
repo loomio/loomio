@@ -21,17 +21,18 @@ export default
         Flash.success("user_dropdown.beta_collab")
 
     toggleDark: ->
-      if @user.experiences['darkMode']
-        Records.users.removeExperience('darkMode')
+      if @isDark
+        Records.users.saveExperience('darkMode', false)
         @$vuetify.theme.dark = false
       else
-        Records.users.saveExperience('darkMode')
+        Records.users.saveExperience('darkMode', true)
         @$vuetify.theme.dark = true
 
     signOut: ->
       Session.signOut()
 
   computed:
+    isDark:   -> @$vuetify.theme.dark
     version:  -> AppConfig.version
     release:  -> AppConfig.release
     siteName: -> AppConfig.theme.site_name
@@ -61,11 +62,11 @@ div.user-dropdown
     v-list-item-title(v-t="'user_dropdown.email_settings'")
     v-list-item-icon
       v-icon mdi-cog-outline
-  v-list-item(v-if="!user.experiences['darkMode']" @click="toggleDark" dense)
+  v-list-item(v-if="!isDark" @click="toggleDark" dense)
       v-list-item-title(v-t="'user_dropdown.enable_dark_mode'")
       v-list-item-icon
         v-icon mdi-weather-night
-  v-list-item(v-if="user.experiences['darkMode']" @click="toggleDark" dense)
+  v-list-item(v-if="isDark" @click="toggleDark" dense)
       v-list-item-title(v-t="'user_dropdown.disable_dark_mode'")
       v-list-item-icon
         v-icon mdi-white-balance-sunny
