@@ -22,7 +22,7 @@ export default class ThreadLoader
     @collapsed = Vue.observable({})
     @loading = false
     @padding = 20
-    @maxAutoLoadMore = 3
+    @maxAutoLoadMore = 5
 
   firstUnreadSequenceId: ->
     (RangeSet.subtractRanges(@discussion.ranges, @readRanges)[0] || [])[0]
@@ -109,14 +109,17 @@ export default class ThreadLoader
           order_by: 'position_key'
           per: @padding
 
-  autoLoadAfter: (obj) ->
-    @loadAfter(obj.event) if (obj.event.depth == 1) || (obj.missingAfterCount && obj.missingAfterCount < @maxAutoLoadMore)
-
   autoLoadBefore: (obj) ->
-    @loadBefore(obj.event) if obj.missingEarlierCount && obj.missingEarlierCount < @maxAutoLoadMore
+    if obj.missingEarlierCount && obj.missingEarlierCount < @maxAutoLoadMore
+      @loadBefore(obj.event)
 
   autoLoadChildren: (obj) ->
-    @loadChildren(obj.event) if obj.event.missingChildCount && (obj.event.missingChildCount < @maxAutoLoadMore)
+    if obj.missingChildCount && (obj.missingChildCount < @maxAutoLoadMore)
+      @loadChildren(obj.event)
+
+  autoLoadAfter: (obj) ->
+    if (obj.event.depth == 1) || (obj.missingAfterCount && obj.missingAfterCount < @maxAutoLoadMore)
+      @loadAfter(obj.event)
 
   loadAfter: (event) ->
     @addLoadAfterRule(event)

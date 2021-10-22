@@ -70,7 +70,7 @@ export default
           .strand-item__stem.strand-item__stem--broken
       //- | {{loader.loading}} == {{'before'+obj.event.id}}
       strand-load-more(
-        v-observe-visibility="{callback: (isVisible, entry) => isVisible && loader.autoLoadBefore(obj), once: true}"
+        v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadBefore(obj)}"
         :label="{path: 'common.action.count_more', args: {count: obj.missingEarlierCount}}"
         @click="loader.loadBefore(obj.event)"
         :loading="loader.loading == 'before'+obj.event.id")
@@ -94,13 +94,11 @@ export default
             .strand-item__gutter
               .strand-item__stem-wrapper
                 .strand-item__stem.strand-item__stem--broken
-            .strand-item__load-more
-              //- | {{loader.loading}} == {{'children'+obj.event.id}}
-              strand-load-more(
-                v-observe-visibility="{callback: (isVisible, entry) => isVisible && loader.autoLoadChildren(obj), once: true}"
-                :label="{path: 'common.action.count_more', args: {count: obj.event.descendantCount}}"
-                @click="loader.loadChildren(obj.event)"
-                :loading="loader.loading == 'children'+obj.event.id")
+            strand-load-more(
+              v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadChildren(obj) }"
+              :label="{path: 'common.action.count_more', args: {count: obj.event.descendantCount}}"
+              @click="loader.loadChildren(obj.event)"
+              :loading="loader.loading == 'children'+obj.event.id")
 
     .strand-item__row(v-if="loader.collapsed[obj.event.id]")
       .d-flex.align-center
@@ -112,7 +110,7 @@ export default
     .strand-item__row( v-if="obj.missingAfterCount" )
       //- | {{loader.loading}} == {{'after'+obj.event.id}}
       strand-load-more(
-        v-observe-visibility="{callback: (isVisible, entry) => isVisible && loader.autoLoadAfter(obj), once: true}"
+        v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadAfter(obj)}"
         :label="{path: 'common.action.count_more', args: {count: obj.missingAfterCount}}"
         @click="loader.loadAfter(obj.event)"
         :loading="loader.loading == 'after'+obj.event.id")
