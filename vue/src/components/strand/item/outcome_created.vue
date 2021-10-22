@@ -7,11 +7,9 @@ import { pick } from 'lodash'
 export default
   props:
     event: Object
-    isReturning: Boolean
+    eventable: Object
 
   computed:
-    eventable: -> @event.model()
-    poll: -> @eventable.poll()
     dockActions: ->
       OutcomeService.actions(@eventable, @)
     menuActions: ->

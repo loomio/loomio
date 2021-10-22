@@ -404,7 +404,9 @@ export default class ThreadLoader
 
     nest = (records) ->
       r = records.map (event) ->
-        {event: event, children: (eventsByParentId[event.id] && nest(eventsByParentId[event.id])) || []}
+        event: event
+        children: (eventsByParentId[event.id] && nest(eventsByParentId[event.id])) || []
+        eventable: event.model()
       # orderBy r, 'positionKey'
 
     @collection = nest(orphans)

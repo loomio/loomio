@@ -86,7 +86,7 @@ export default
       .strand-item__main
         //- div {{[obj.event.sequenceId]}} {{obj.event.positionKey}} {{isFocused(obj.event)}} {{loader.focusAttrs}}
         div(:class="classes(obj.event)" v-observe-visibility="{intersection: {threshold: 0.05}, callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
-          component( :is="componentForKind(obj.event.kind)" :event='obj.event')
+          component( :is="componentForKind(obj.event.kind)" :event='obj.event' :eventable="obj.eventable")
 
         .strand-list__children.mt-2(v-if="obj.event.childCount")
           strand-list.flex-grow-1(v-if="obj.children.length" :loader="loader" :collection="obj.children")
@@ -106,7 +106,7 @@ export default
       .d-flex.align-center
         .strand-item__circle.mr-2(v-if="loader.collapsed[obj.event.id]" @click.stop="loader.expand(obj.event)")
           v-icon mdi-unfold-more-horizontal
-        strand-item-headline.text--secondary(:event="obj.event" :eventable="obj.event.model()" collapsed)
+        strand-item-headline.text--secondary(:event="obj.event" :eventable="obj.eventable" collapsed)
 
     //- | {{lastPosition}} {{ranges[ranges.length -1][1]}}
     .strand-item__row( v-if="obj.missingAfterCount" )

@@ -8,11 +8,13 @@ export default new class OutcomeService
     poll = outcome.poll()
 
     react:
+      dock: 1
       canPerform: -> AbilityService.canParticipateInPoll(poll)
 
     edit_outcome:
       name: 'common.action.edit'
       icon: 'mdi-pencil'
+      dock: 1
       canPerform: -> AbilityService.canSetPollOutcome(poll)
       perform: ->
         openModal
@@ -23,6 +25,7 @@ export default new class OutcomeService
     show_history:
       icon: 'mdi-history'
       name: 'action_dock.show_edits'
+      dock: 1
       canPerform: -> outcome.edited()
       perform: ->
         openModal
@@ -33,6 +36,7 @@ export default new class OutcomeService
     notification_history:
       name: 'action_dock.show_notifications'
       icon: 'mdi-alarm-check'
+      menu: true
       perform: ->
         openModal
           component: 'AnnouncementHistory'
@@ -40,10 +44,10 @@ export default new class OutcomeService
             model: outcome
       canPerform: -> true
 
-
     translate_outcome:
       name: 'common.action.translate'
       icon: 'mdi-translate'
+      dock: 2
       canPerform: ->
         AbilityService.canTranslate(outcome)
       perform: ->

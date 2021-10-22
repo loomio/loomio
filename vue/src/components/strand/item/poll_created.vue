@@ -10,6 +10,7 @@ export default
     event: Object
     isReturning: Boolean
     collapsed: Boolean
+    eventable: Object
 
   created: ->
     EventBus.$on 'stanceSaved', => EventBus.$emit 'refreshStance'
@@ -27,7 +28,6 @@ export default
     myStance: null
 
   computed:
-    eventable: -> @event.model()
     poll: -> @eventable
     showResults: -> @poll.showResults()
 
@@ -38,7 +38,7 @@ export default
         pick PollService.actions(@poll, @), ['edit_poll', 'notification_history', 'show_history', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread']
       )
     dockActions: ->
-      pick PollService.actions(@poll, @), ['reopen_poll', 'show_results', 'hide_results', 'translate_poll', 'edit_stance', 'announce_poll', 'remind_poll', 'close_poll']
+      pick PollService.actions(@poll, @), ['translate_poll', 'reopen_poll', 'show_results', 'hide_results', 'edit_stance', 'announce_poll', 'remind_poll', 'close_poll']
 
 </script>
 
@@ -64,6 +64,6 @@ section.strand-item.poll-created
         poll-common-chart-panel(:poll='poll')
       poll-common-action-panel(:poll='poll')
     .caption(v-t="{path: 'poll_common_action_panel.draft_mode', args: {poll_type: poll.pollType}}" v-if='!poll.closingAt')
-    action-dock.my-2(small :actions="dockActions" :menu-actions="menuActions")
+    action-dock.my-2(:actions="dockActions" :menu-actions="menuActions")
     poll-common-votes-panel(v-if="!poll.stancesInDiscussion && poll.showResults()" :poll="poll")
 </template>

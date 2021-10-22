@@ -8,13 +8,14 @@ import DiscussionPrivacyBadge from '@/components/discussion/privacy_badge'
 export default
   props:
     event: Object
+    eventable: Object
     collapsed: Boolean
 
   data: ->
-    actions: ThreadService.actions(@event.model(), @)
+    actions: ThreadService.actions(@eventable, @)
 
   mounted: ->
-    @event.model().fetchUsersNotifiedCount()
+    @eventable.fetchUsersNotifiedCount()
 
   computed:
     author: ->
@@ -23,18 +24,13 @@ export default
     authorName: ->
       @discussion.authorName()
 
-    discussion: ->
-      @event.model()
+    discussion: -> @eventable
 
     group: ->
       @discussion.group()
 
-    arrangementAction: -> @actions['edit_arrangement']
-
-    editThread: -> @actions['edit_thread']
-
     dockActions: ->
-      pick @actions, ['translate_thread', 'subscribe', 'unsubscribe', 'unignore', 'announce_thread', 'react', 'add_comment', 'edit_thread']
+      pick @actions, ['react', 'add_comment', 'edit_thread', 'translate_thread', 'subscribe', 'unsubscribe', 'unignore', 'announce_thread']
 
     menuActions: ->
       pick @actions, ['show_history', 'notification_history', 'close_thread', 'reopen_thread', 'move_thread', 'discard_thread', 'export_thread']
@@ -54,8 +50,6 @@ export default
   methods:
     viewed: (viewed) ->
       @discussion.markAsSeen() if viewed
-
-    openArrangementForm: -> @actions['edit_arrangement'].perform()
 
     openSeenByModal: ->
       openModal
@@ -98,7 +92,7 @@ export default
     link-previews(:model="discussion")
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
-    action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions' icons)
+    action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions')
 </template>
 <style lang="sass">
 @import '@/css/variables'

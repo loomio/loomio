@@ -10,6 +10,7 @@ export default new class CommentService
     notification_history:
       name: 'action_dock.notification_history'
       icon: 'mdi-alarm-check'
+      menu: true
       perform: ->
         openModal
           component: 'AnnouncementHistory'
@@ -18,11 +19,13 @@ export default new class CommentService
       canPerform: -> !comment.discardedAt
 
     react:
+      dock: 1
       canPerform: -> !comment.discardedAt && AbilityService.canAddComment(comment.discussion())
 
     reply_to_comment:
       name: 'common.action.reply'
       icon: 'mdi-reply'
+      dock: 1
       canPerform: -> AbilityService.canRespondToComment(comment)
       perform: ->
         vm.newComment = Records.comments.build
@@ -36,6 +39,7 @@ export default new class CommentService
     edit_comment:
       name: 'common.action.edit'
       icon: 'mdi-pencil'
+      dock: 1
       canPerform: -> !comment.discardedAt && comment.authorIs(Session.user()) && AbilityService.canEditComment(comment)
       perform: ->
         openModal
@@ -47,6 +51,7 @@ export default new class CommentService
     admin_edit_comment:
       name: 'common.action.edit'
       icon: 'mdi-pencil'
+      menu: true
       canPerform: ->
         !comment.authorIs(Session.user()) && AbilityService.canEditComment(comment)
       perform: ->
@@ -58,6 +63,7 @@ export default new class CommentService
     translate_comment:
       name: 'common.action.translate'
       icon: 'mdi-translate'
+      dock: 2
       canPerform: ->
         comment.body && AbilityService.canTranslate(comment)
       perform: ->
@@ -66,7 +72,7 @@ export default new class CommentService
     show_history:
       name: 'action_dock.show_edits'
       icon: 'mdi-history'
-      menu: true
+      dock: 1
       canPerform: ->
         comment.edited() && (!comment.discardedAt ||
                              comment.discussion().adminsInclude(Session.user()))
@@ -79,6 +85,7 @@ export default new class CommentService
     discard_comment:
       icon: 'mdi-delete'
       name: 'common.action.delete'
+      menu: true
       canPerform: -> AbilityService.canDiscardComment(comment)
       perform: ->
         openModal
@@ -93,6 +100,7 @@ export default new class CommentService
                 flash: 'comment_form.messages.destroyed'
 
     undiscard_comment:
+      menu: true
       icon: 'mdi-delete-restore'
       name: 'common.action.undo_remove'
       canPerform: -> AbilityService.canUndiscardComment(comment)

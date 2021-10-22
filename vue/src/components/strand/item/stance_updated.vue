@@ -7,13 +7,12 @@ import openModal from '@/shared/helpers/open_modal'
 export default
   props:
     event: Object
-    isReturning: Boolean
+    eventable: Object
     collapsed: Boolean
 
   computed:
-    eventable: -> @event.model()
     poll: -> @eventable.poll()
-    showResults: -> @eventable.poll().showResults()
+    showResults: -> @poll.showResults()
     actions: -> StanceService.actions(@eventable)
 
     componentType:  ->
