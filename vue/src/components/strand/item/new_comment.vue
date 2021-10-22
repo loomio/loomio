@@ -1,7 +1,7 @@
 <script lang="coffee">
 import AbilityService from '@/shared/services/ability_service'
 
-import { pick, assign, compact } from 'lodash'
+import { pick, pickBy, assign, compact } from 'lodash'
 import CommentService from '@/shared/services/comment_service'
 import EventService from '@/shared/services/event_service'
 import Session from '@/shared/services/session'
@@ -21,27 +21,17 @@ export default
 
   computed:
     dockActions: ->
-      if AbilityService.canEditOwnComment(@eventable)
-        edit_comment = 'edit_comment'
-      else
-        reply_to_comment = 'reply_to_comment'
-        show_history = 'show_history'
-
       assign(
-        pick @commentActions, compact ['react', 'translate_comment', reply_to_comment, edit_comment, show_history]
+        pickBy @commentActions, (v) -> v.dock
       ,
         pick @eventActions, []
       )
 
     menuActions: ->
-      if AbilityService.canEditOwnComment(@eventable)
-        show_history = 'show_history'
-        reply_to_comment = 'reply_to_comment'
-
       assign(
         pick @eventActions, ['pin_event', 'unpin_event', 'move_event', 'copy_url']
       ,
-        pick @commentActions, compact [reply_to_comment, 'admin_edit_comment', show_history, 'notification_history', 'discard_comment', 'undiscard_comment']
+        pickBy @commentActions, (v) -> v.menu
       )
 
 </script>
