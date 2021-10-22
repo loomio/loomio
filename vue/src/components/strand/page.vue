@@ -26,7 +26,6 @@ export default
 
   methods:
     init: ->
-      Records.samlProviders.authenticateForDiscussion(@$route.params.key)
       Records.discussions.findOrFetchById(@$route.params.key, exclude_types: 'poll outcome')
       .then (discussion) =>
         window.location.host = discussion.group().newHost if discussion.group().newHost

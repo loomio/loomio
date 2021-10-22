@@ -2350,19 +2350,6 @@ en:
     include_body_label: Include message body with notification
     include_subgroups_label: Relay events from subgroups
 
-  configure_sso:
-    redirecting: Please wait, redirecting to sign-in provider
-    title: Single sign-on
-    enabled: Single sign-on is enabled
-    helptext: Integrate with OneLogin, Auth0, Microsoft Active Directory, or any other SAML Provider. <a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">Learn more</a>.
-    warning_helptext: "Warning: You'll be required to authenticate with your provider after you click save."
-    idp_metadata_url: IDP Metadata URL
-    idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
-    success: Single sign-on successfully configured
-    destroyed: Single sign-on removed
-    invalid_idp_metadata_url: Invalid IDP metadata URL
-    sp_metadata_url: SP Metadata URL
-
   browser_warning:
     message: "IMPORTANT! You are using an outdated browser ({{name}} {{version}}) which is not supported by {{site}}."
     link: Please switch to another browser
