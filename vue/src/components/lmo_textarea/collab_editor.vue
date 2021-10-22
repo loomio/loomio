@@ -203,6 +203,7 @@ export default
       @closeEmojiMenu = false
 
     updateModel: ->
+      return unless @format == 'html'
       @model[@field] = @editor.getHTML()
       @updateFiles()
 

@@ -7,7 +7,7 @@ import Flash from '@/shared/services/flash'
 
 export default new class CommentService
   actions: (comment, vm) ->
-    isOwnComment = comment.authorId == Session.user().id
+    isOwnComment = comment.authorId == Session.userId
 
     notification_history:
       name: 'action_dock.notification_history'
@@ -28,6 +28,7 @@ export default new class CommentService
       name: 'common.action.reply'
       icon: 'mdi-reply'
       dock: (!isOwnComment && 1) || 0
+      menu: isOwnComment
       canPerform: -> AbilityService.canRespondToComment(comment)
       perform: ->
         vm.newComment = Records.comments.build

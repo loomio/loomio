@@ -27,11 +27,12 @@ export default
       )
 
     menuActions: ->
-      assign(
+      actions = assign(
         pick @eventActions, ['pin_event', 'unpin_event', 'move_event', 'copy_url']
       ,
         pickBy @commentActions, (v) -> v.menu
       )
+      pick actions, ['pin_event', 'unpin_event', 'reply_to_comment',  'admin_edit_comment', 'copy_url', 'notification_history', 'move_event', 'discard_comment', 'undiscard_comment']
 
 </script>
 
