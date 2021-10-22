@@ -8,9 +8,9 @@ export default new class EventService
     move_event:
       name: 'action_dock.move_item'
       menu: true
+      kinds: ['new_discussion']
       perform: ->
         event.discussion().forkedEventIds.push(event.id)
-
       canPerform: ->
         !event.model().discardedAt && AbilityService.canMoveThread(event.discussion())
 
@@ -18,6 +18,7 @@ export default new class EventService
       name: 'action_dock.pin_event'
       icon: 'mdi-pin-outline'
       menu: true
+      kinds: ['new_comment', 'poll_created']
       canPerform: -> !event.model().discardedAt && AbilityService.canPinEvent(event)
       perform: ->
         openModal
@@ -28,12 +29,14 @@ export default new class EventService
       name: 'action_dock.unpin_event'
       icon: 'mdi-pin-off'
       menu: true
+      kinds: ['new_comment', 'poll_created']
       canPerform: -> !event.model().discardedAt && AbilityService.canUnpinEvent(event)
       perform: -> event.unpin().then -> Flash.success('activity_card.event_unpinned')
 
     copy_url:
       icon: 'mdi-link'
       menu: true
+      kinds: ['new_comment', 'poll_created', 'stance_created', 'stance_updated']
       canPerform: -> !event.model().discardedAt
       perform:    ->
         link = LmoUrlService.event(event, {}, absolute: true)
