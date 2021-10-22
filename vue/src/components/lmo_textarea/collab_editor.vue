@@ -410,6 +410,7 @@ div
 
 .ProseMirror
   outline: none
+  min-height: 64px
 
 progress
   width: 50%!important
