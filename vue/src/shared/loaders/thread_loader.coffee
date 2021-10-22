@@ -22,7 +22,7 @@ export default class ThreadLoader
     @collapsed = Vue.observable({})
     @loading = false
     @padding = 20
-    @maxAutoLoadMore = 10
+    @maxAutoLoadMore = 3
 
   firstUnreadSequenceId: ->
     (RangeSet.subtractRanges(@discussion.ranges, @readRanges)[0] || [])[0]
@@ -110,16 +110,13 @@ export default class ThreadLoader
           per: @padding
 
   autoLoadAfter: (obj) ->
-    console.log "auto load after #{obj.missingAfterCount}"
     @loadAfter(obj.event) if (obj.event.depth == 1) || (obj.missingAfterCount && obj.missingAfterCount < @maxAutoLoadMore)
 
   autoLoadBefore: (obj) ->
-    console.log "auto load before #{obj.missingEarlierCount}"
-    @loadBefore(obj.event) if (obj.missingEarlierCount && obj.missingEarlierCount < @maxAutoLoadMore)
+    @loadBefore(obj.event) if obj.missingEarlierCount && obj.missingEarlierCount < @maxAutoLoadMore
 
   autoLoadChildren: (obj) ->
-    console.log "auto load children #{obj.event.childCount}"
-    @loadChildren(obj.event) if  obj.event.childCount < @maxAutoLoadMore
+    @loadChildren(obj.event) if obj.event.missingChildCount && (obj.event.missingChildCount < @maxAutoLoadMore)
 
   loadAfter: (event) ->
     @addLoadAfterRule(event)
@@ -442,5 +439,6 @@ export default class ThreadLoader
 
       missingAfter = lastPosition != 0 && isLastInLastRange && (obj.event.position != lastPosition)
       obj.missingAfterCount = (missingAfter && lastPosition - last(ranges)[1]) || 0
+      obj.missingChildCount = obj.event.childCount - obj.children.length
 
       @addMetaData(obj.children) if obj.children.length

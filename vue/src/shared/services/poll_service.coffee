@@ -9,7 +9,7 @@ import i18n          from '@/i18n'
 import { hardReload } from '@/shared/helpers/window'
 
 export default new class PollService
-  actions: (poll, vm) ->
+  actions: (poll) ->
     show_results:
       name: 'poll_common_card.show_results'
       dock: 2
@@ -82,22 +82,6 @@ export default new class PollService
           props:
             poll: poll.clone()
 
-    edit_poll:
-      name: 'action_dock.edit_poll_type'
-      dock: 3
-      nameArgs: ->
-        {pollType: poll.translatedPollType()}
-      icon: 'mdi-pencil'
-      canPerform: ->
-        AbilityService.canEditPoll(poll)
-      to: ->
-        "/p/#{poll.key}/edit"
-      perform: ->
-        openModal
-          component: 'PollCommonModal'
-          props:
-            poll: poll.clone()
-
     # edit_tags:
     #   icon: 'mdi-tag-outline'
     #   name: 'loomio_tags.card_title'
@@ -140,10 +124,8 @@ export default new class PollService
 
     close_poll:
       icon: 'mdi-close-circle-outline'
-      name: 'poll_common.close_poll_type'
+      name: 'poll_common.close_early'
       dock: 2
-      nameArgs: ->
-        {pollType: poll.translatedPollType()}
       canPerform: ->
         AbilityService.canClosePoll(poll)
       perform: ->
@@ -176,6 +158,22 @@ export default new class PollService
         openModal
           component: 'PollCommonReopenModal'
           props: { poll: poll }
+
+    edit_poll:
+      name: 'action_dock.edit_poll_type'
+      dock: 1
+      nameArgs: ->
+        {pollType: poll.translatedPollType()}
+      icon: 'mdi-pencil'
+      canPerform: ->
+        AbilityService.canEditPoll(poll)
+      to: ->
+        "/p/#{poll.key}/edit"
+      perform: ->
+        openModal
+          component: 'PollCommonModal'
+          props:
+            poll: poll.clone()
 
     export_poll:
       name: 'common.action.export'

@@ -39,5 +39,5 @@ section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id"
     formatted-text.poll-common-stance-created__reason(:model="eventable" column="reason")
     link-previews(:model="eventable")
     attachment-list(:attachments="eventable.attachments")
-  action-dock(:model='eventable' :actions='actions' icons small)
+  action-dock(:model='eventable' :actions='actions' small)
 </template>

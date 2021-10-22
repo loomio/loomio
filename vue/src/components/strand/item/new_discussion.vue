@@ -1,6 +1,6 @@
 <script lang="coffee">
 import ThreadService  from '@/shared/services/thread_service'
-import { map, compact, pick } from 'lodash'
+import { map, compact, pick, pickBy } from 'lodash'
 import EventBus from '@/shared/services/event_bus'
 import openModal      from '@/shared/helpers/open_modal'
 import DiscussionPrivacyBadge from '@/components/discussion/privacy_badge'
@@ -30,10 +30,10 @@ export default
       @discussion.group()
 
     dockActions: ->
-      pick @actions, ['react', 'add_comment', 'edit_thread', 'translate_thread', 'subscribe', 'unsubscribe', 'unignore', 'announce_thread']
+      pickBy @actions, (v) -> v.dock
 
     menuActions: ->
-      pick @actions, ['show_history', 'notification_history', 'close_thread', 'reopen_thread', 'move_thread', 'discard_thread', 'export_thread']
+      pickBy @actions, (v) -> v.menu
 
     status: ->
       return 'pinned' if @discussion.pinned

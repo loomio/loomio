@@ -9,37 +9,12 @@ import { hardReload } from '@/shared/helpers/window'
 
 export default new class ThreadService
   actions: (discussion, vm) ->
-    react:
-      dock: 1
-      canPerform: -> AbilityService.canAddComment(discussion)
-
     translate_thread:
       icon: 'mdi-translate'
       name: 'common.action.translate'
       dock: 2
       canPerform: -> AbilityService.canTranslate(discussion)
       perform: -> Session.user() && discussion.translate(Session.user().locale)
-
-    add_comment:
-      icon: 'mdi-reply'
-      dockDisplay: 'icon'
-      dock: 1
-      canPerform: -> AbilityService.canAddComment(discussion)
-      perform: -> vm.$vuetify.goTo('#add-comment')
-
-    edit_thread:
-      name: 'common.action.edit'
-      icon: 'mdi-pencil'
-      dock: 1
-      canPerform: -> AbilityService.canEditThread(discussion)
-      to: ->
-        "/d/#{discussion.key}/edit"
-      perform: ->
-        Records.discussions.remote.fetchById(discussion.key, {exclude_types: 'group user poll event'}).then ->
-          openModal
-            component: 'DiscussionForm',
-            props:
-              discussion: discussion.clone()
 
     subscribe:
       name: 'common.action.subscribe'
@@ -88,6 +63,31 @@ export default new class ThreadService
           component: 'StrandMembersList',
           props: { discussion: discussion }
 
+    react:
+      dock: 1
+      canPerform: -> AbilityService.canAddComment(discussion)
+
+    add_comment:
+      icon: 'mdi-reply'
+      dockDisplay: 'icon'
+      dock: 1
+      canPerform: -> AbilityService.canAddComment(discussion)
+      perform: -> vm.$vuetify.goTo('#add-comment')
+
+    edit_thread:
+      name: 'common.action.edit'
+      icon: 'mdi-pencil'
+      dock: 1
+      canPerform: -> AbilityService.canEditThread(discussion)
+      to: ->
+        "/d/#{discussion.key}/edit"
+      perform: ->
+        Records.discussions.remote.fetchById(discussion.key, {exclude_types: 'group user poll event'}).then ->
+          openModal
+            component: 'DiscussionForm',
+            props:
+              discussion: discussion.clone()
+
     show_history:
       icon: 'mdi-history'
       name: 'action_dock.show_edits'
@@ -98,6 +98,7 @@ export default new class ThreadService
           component: 'RevisionHistoryModal'
           props:
             model: discussion
+
 
     notification_history:
       name: 'action_dock.show_notifications'
@@ -122,21 +123,20 @@ export default new class ThreadService
     pin_thread:
       icon: 'mdi-pin'
       name: 'action_dock.pin_thread'
-      dock: 1
+      menu: true
       canPerform: -> AbilityService.canPinThread(discussion)
       perform: => @pin(discussion)
 
     unpin_thread:
       icon: 'mdi-pin-off'
       name: 'action_dock.unpin_thread'
-      dock: 1
+      menu: true
       canPerform: -> AbilityService.canUnpinThread(discussion)
       perform: => @unpin(discussion)
 
     dismiss_thread:
       name: 'dashboard_page.mark_as_read'
       icon: 'mdi-check'
-      dock: 1
       canPerform: -> discussion.isUnread()
       perform: => @dismiss(discussion)
 
@@ -153,7 +153,6 @@ export default new class ThreadService
     edit_arrangement:
       icon: 'mdi-directions-fork'
       name: 'thread_arrangement_form.edit'
-      menu: true
       canPerform: -> AbilityService.canEditThread(discussion)
       perform: ->
         openModal
