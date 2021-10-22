@@ -74,19 +74,6 @@ export default new class GroupService
           props:
             group: group
 
-
-    # configure_sso:
-    #   name: 'configure_sso.title'
-    #   icon: 'mdi-key-variant'
-    #   canPerform: ->
-    #     AppConfig.features.app.group_sso &&
-    #     AbilityService.canAdminister(group) && group.isParent()
-    #   perform: ->
-    #     openModal
-    #       component: 'InstallSamlProviderModal'
-    #       props:
-    #         group: group
-
     leave_group:
       name: 'group_page.options.leave_group'
       icon: 'mdi-exit-to-app'

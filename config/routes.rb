@@ -43,7 +43,6 @@ Rails.application.routes.draw do
     end
 
     namespace :v1 do
-      resources :saml_providers, only: [:create, :destroy, :index]
       resources :attachments, only: [:index, :destroy]
       resources :webhooks, only: [:create, :destroy, :index, :update]
 
@@ -357,20 +356,6 @@ Rails.application.routes.draw do
   get '/crowdfunding_celebration'          => 'application#crowdfunding'
   get '/brand'                      => 'application#brand'
 
-
-  resources :saml_providers, only: [] do
-    collection do
-      get :auth
-      get :should_auth
-      get :invitation_created
-      post :callback
-    end
-
-    member do
-      get :metadata
-      get :logout
-    end
-  end
 
   Identities::Base::PROVIDERS.each do |provider|
     scope provider do
