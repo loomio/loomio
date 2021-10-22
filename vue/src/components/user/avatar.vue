@@ -18,6 +18,7 @@ export default
 
   computed:
     fontSize: ->
+      return '6px' if @size < 19
       return '8px' if @size < 21
       return '10px' if @size < 25
       return '12px' if @size < 33
