@@ -48,12 +48,15 @@ export default
 <template lang="pug">
 section.strand-item.poll-created
   v-layout(justify-space-between)
-    h1.poll-common-card__title.headline.pb-1(tabindex="-1")
-      poll-common-type-icon.mr-2(:poll="poll")
+    .poll-common-card__title.headline.pb-1(tabindex="-1")
+      poll-common-type-icon(:poll="poll")
+      space
       router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
       translation(v-if="poll.translation.title" :model='poll', field='title')
       tags-display(:tags="poll.tags()")
-  poll-common-closing-at(:poll='poll')
+      space
+      small.text-caption
+        poll-common-closing-at(:poll='poll')
   .pt-2(v-if="!collapsed")
     poll-common-set-outcome-panel(:poll='poll' v-if="!poll.outcome()")
     poll-common-outcome-panel(:outcome='poll.outcome()' v-if='poll.outcome()')

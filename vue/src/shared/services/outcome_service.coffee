@@ -19,7 +19,6 @@ export default new class OutcomeService
 
     react:
       dock: 1
-      icon: 'mdi-emoticon-outline'
       canPerform: -> poll.membersInclude(user)
 
     edit_outcome:
