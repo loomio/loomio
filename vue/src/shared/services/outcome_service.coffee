@@ -6,10 +6,21 @@ import Session from '@/shared/services/session'
 export default new class OutcomeService
   actions: (outcome) ->
     poll = outcome.poll()
+    user = Session.user()
+
+    translate_outcome:
+      name: 'common.action.translate'
+      icon: 'mdi-translate'
+      dock: 2
+      canPerform: ->
+        AbilityService.canTranslate(outcome)
+      perform: ->
+        Session.user() && outcome.translate(user.locale)
 
     react:
       dock: 1
-      canPerform: -> AbilityService.canParticipateInPoll(poll)
+      icon: 'mdi-emoticon-outline'
+      canPerform: -> poll.membersInclude(user)
 
     edit_outcome:
       name: 'common.action.edit'
@@ -43,12 +54,3 @@ export default new class OutcomeService
           props:
             model: outcome
       canPerform: -> true
-
-    translate_outcome:
-      name: 'common.action.translate'
-      icon: 'mdi-translate'
-      dock: 2
-      canPerform: ->
-        AbilityService.canTranslate(outcome)
-      perform: ->
-        Session.user() && outcome.translate(Session.user().locale)

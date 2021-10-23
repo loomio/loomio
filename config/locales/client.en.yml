@@ -165,6 +165,7 @@ en:
     local: Local time ({{value}})
 
   common:
+    optional: (Optional)
     version: Version
     none: None
     empty: Empty
@@ -1936,7 +1937,9 @@ en:
     score: 'This score poll has closed. <strong>Share an outcome</strong> with the group.'
 
   poll_common_outcome_form:
-    who_to_notify: Who do you want to notify about this outcome?
+    review_date: Review date
+    review_date_hint: Set date of reminder to review outcome (optional)
+    who_to_notify: Who do you want to notify about this outcome? (optional)
     new_title: Enter an outcome
     update_title: Update outcome
     outcome_created: Outcome created

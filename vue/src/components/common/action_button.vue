@@ -6,7 +6,7 @@ export default
     nameArgs: Object
     small: Boolean
   computed:
-    text: -> @$t(@action.name || 'action_dock.'+@name, @nameArgs || {})
+    text: -> @$t((@action.name || 'action_dock.'+@name), (@nameArgs || {}))
     cssClass: -> "action-dock__button--#{@name}"
 </script>
 

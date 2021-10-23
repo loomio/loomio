@@ -20,8 +20,10 @@ export default
 </script>
 
 <template lang="pug">
-v-layout.poll-common-card-header(align-center mr-3 ml-2 pt-2 wrap)
-  v-breadcrumbs(:items="groups" divider=">")
+.poll-common-card-header.d-flex.align-center.mr-3.ml-2.py-3.flex-wrap
+  v-breadcrumbs(:items="groups")
+    template(v-slot:divider)
+      v-icon mdi-chevron-right
   v-spacer
   span.grey--text.body-2
     time-ago(:date='poll.createdAt')

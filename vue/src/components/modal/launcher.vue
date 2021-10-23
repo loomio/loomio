@@ -94,7 +94,7 @@ export default
 
   methods:
     openModal: (opts) ->
-      @maxWidth = opts.maxWidth || 640
+      @maxWidth = opts.maxWidth || 720
       @componentName = opts.component
       @componentProps = opts.props
       @componentKey = (new Date()).getTime()

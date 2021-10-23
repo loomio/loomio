@@ -10,6 +10,14 @@ import { hardReload } from '@/shared/helpers/window'
 
 export default new class PollService
   actions: (poll) ->
+    translate_poll:
+      icon: 'mdi-translate'
+      name: 'common.action.translate'
+      dock: 2
+      canPerform: ->
+        AbilityService.canTranslate(poll)
+      perform: -> Session.user() && poll.translate(Session.user().locale)
+
     show_results:
       name: 'poll_common_card.show_results'
       dock: 2
@@ -38,17 +46,6 @@ export default new class PollService
           maxWidth: 720
           props:
             stance: poll.myStance().clone()
-
-    notification_history:
-      name: 'action_dock.show_notifications'
-      icon: 'mdi-alarm-check'
-      menu: true
-      perform: ->
-        openModal
-          component: 'AnnouncementHistory'
-          props:
-            model: poll
-      canPerform: -> !poll.discardedAt
 
     announce_poll:
       icon: 'mdi-send'
@@ -81,46 +78,6 @@ export default new class PollService
           component: 'PollReminderForm'
           props:
             poll: poll.clone()
-
-    # edit_tags:
-    #   icon: 'mdi-tag-outline'
-    #   name: 'loomio_tags.card_title'
-    #   canPerform: -> AbilityService.canEditPoll(poll)
-    #   perform: ->
-    #     openModal
-    #       component: 'TagsSelect',
-    #       props: { model: poll.clone() }
-    #
-    move_poll:
-      name: 'common.action.move'
-      icon: 'mdi-folder-swap-outline'
-      menu: true
-      canPerform: ->
-        AbilityService.canMovePoll(poll)
-      perform: ->
-        openModal
-          component: 'PollCommonMoveForm'
-          props:
-            poll: poll.clone()
-
-    show_history:
-      icon: 'mdi-history'
-      name: 'action_dock.show_edits'
-      dock: 1
-      canPerform: -> !poll.discardedAt && poll.edited()
-      perform: ->
-        openModal
-          component: 'RevisionHistoryModal'
-          props:
-            model: poll
-
-    translate_poll:
-      icon: 'mdi-translate'
-      name: 'common.action.translate'
-      dock: 2
-      canPerform: ->
-        AbilityService.canTranslate(poll)
-      perform: -> Session.user() && poll.translate(Session.user().locale)
 
     close_poll:
       icon: 'mdi-close-circle-outline'
@@ -174,6 +131,41 @@ export default new class PollService
           component: 'PollCommonModal'
           props:
             poll: poll.clone()
+
+    show_history:
+      icon: 'mdi-history'
+      name: 'action_dock.show_edits'
+      dock: 1
+      canPerform: -> !poll.discardedAt && poll.edited()
+      perform: ->
+        openModal
+          component: 'RevisionHistoryModal'
+          props:
+            model: poll
+            
+    notification_history:
+      name: 'action_dock.show_notifications'
+      icon: 'mdi-alarm-check'
+      menu: true
+      perform: ->
+        openModal
+          component: 'AnnouncementHistory'
+          props:
+            model: poll
+      canPerform: -> !poll.discardedAt
+
+    move_poll:
+      name: 'common.action.move'
+      icon: 'mdi-folder-swap-outline'
+      menu: true
+      canPerform: ->
+        AbilityService.canMovePoll(poll)
+      perform: ->
+        openModal
+          component: 'PollCommonMoveForm'
+          props:
+            poll: poll.clone()
+
 
     export_poll:
       name: 'common.action.export'
