@@ -115,20 +115,21 @@ export default class ThreadLoader
           order_by: 'position_key'
           per: @padding
     else
-      @addRuleAndFetch
-        name: "load children (prefix #{event.positionKey})"
-        local:
-          find:
-            discussionId: @discussion.id
-            positionKey: {'$regex': "^#{event.positionKey}"}
-          simplesort: 'positionKey'
-          limit: @padding
-        remote:
-          discussion_id: @discussion.id
-          position_key_sw: event.positionKey
-          depth_gt: event.depth
-          order_by: 'position_key'
-          per: @padding
+      @addLoadAfterRule(event)
+      # @addRuleAndFetch
+      #   name: "load children (prefix #{event.positionKey})"
+      #   local:
+      #     find:
+      #       discussionId: @discussion.id
+      #       positionKey: {'$regex': "^#{event.positionKey}"}
+      #     simplesort: 'positionKey'
+      #     limit: @padding
+      #   remote:
+      #     discussion_id: @discussion.id
+      #     position_key_sw: event.positionKey
+      #     depth_gt: event.depth
+      #     order_by: 'position_key'
+      #     per: @padding
 
   addLoadAfterRule: (event) ->
     # keys = event.positionKey.split('-')
@@ -142,19 +143,19 @@ export default class ThreadLoader
     positionKey = event.positionKey
 
     @addRule
-      name: "load after (prefix #{positionKeyPrefix})"
+      name: "load after positionKey #{positionKey}"
       local:
         find:
           discussionId: @discussion.id
           positionKey:
             $jgt: positionKey
-            $regex: (positionKeyPrefix && "^#{positionKeyPrefix}") || undefined
+            # $regex: (positionKeyPrefix && "^#{positionKeyPrefix}") || undefined
         simplesort: 'id'
         limit: @padding
       remote:
         discussion_id: @discussion.id
         position_key_gt: positionKey
-        position_key_sw: positionKeyPrefix || null
+        # position_key_sw: positionKeyPrefix || null
         order_by: 'position_key'
         per: @padding
 
