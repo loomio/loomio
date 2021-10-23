@@ -45,6 +45,7 @@ export default class DiscussionModel extends BaseModel
     groupId: null
     usersNotifiedCount: null
     discussionReaderUserId: null
+    pinnedAt: null
 
   audienceValues: ->
     name: @group().name
@@ -229,6 +230,10 @@ export default class DiscussionModel extends BaseModel
   savePin: =>
     @processing = true
     @remote.patchMember(@keyOrId(), 'pin').finally => @processing = false
+
+  saveUnpin: =>
+    @processing = true
+    @remote.patchMember(@keyOrId(), 'unpin').finally => @processing = false
 
   close: =>
     @processing = true

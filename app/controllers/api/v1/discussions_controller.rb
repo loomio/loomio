@@ -121,6 +121,11 @@ class API::V1::DiscussionsController < API::V1::RestfulController
     respond_with_resource
   end
 
+  def unpin
+    service.unpin discussion: load_resource, actor: current_user
+    respond_with_resource
+  end
+
   def set_volume
     update_reader volume: params[:volume]
   end

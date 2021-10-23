@@ -135,7 +135,15 @@ class DiscussionService
   def self.pin(discussion:, actor:)
     actor.ability.authorize! :pin, discussion
 
-    discussion.update(pinned: !discussion.pinned)
+    discussion.update(pinned_at: Time.now)
+
+    EventBus.broadcast('discussion_pin', discussion, actor)
+  end
+
+  def self.unpin(discussion:, actor:)
+    actor.ability.authorize! :pin, discussion
+
+    discussion.update(pinned_at: nil)
 
     EventBus.broadcast('discussion_pin', discussion, actor)
   end

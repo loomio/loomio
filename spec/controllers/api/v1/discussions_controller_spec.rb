@@ -688,15 +688,15 @@ describe API::V1::DiscussionsController do
         sign_in user
         discussion.group.add_admin! user
         post :pin, params: { id: discussion.id }
-        expect(discussion.reload.pinned).to eq true
+        expect(discussion.reload.pinned_at).to be_present
       end
 
       it 'allows admins to unpin a thread' do
         sign_in user
         discussion.group.add_admin! user
         discussion.update(pinned: true)
-        post :pin, params: { id: discussion.id }
-        expect(discussion.reload.pinned).to eq false
+        post :unpin, params: { id: discussion.id }
+        expect(discussion.reload.pinned_at).to be nil
       end
 
       it 'does not allow non-admins to pin a thread' do

@@ -29,7 +29,7 @@ class DiscussionSerializer < ApplicationSerializer
              :private,
              :versions_count,
              :importance,
-             :pinned,
+             :pinned_at,
              :attachments,
              :link_previews,
              :mentioned_usernames,

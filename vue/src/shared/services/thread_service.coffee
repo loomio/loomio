@@ -297,5 +297,5 @@ export default new class ThreadService
         Flash.success "discussion.pin.pinned", 'undo', => @unpin(thread)
 
   unpin: (thread) ->
-    thread.savePin().then =>
+    thread.saveUnpin().then =>
       Flash.success "discussion.pin.unpinned", 'undo', => @pin(thread)
