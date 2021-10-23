@@ -86,6 +86,9 @@ img.emoji
   span[style^="color"]
     color: inherit !important
 
+  span[style^="background"], td[style^="background"], p[style^="background"]
+    background: inherit !important
+
   a
     text-decoration: underline
   p

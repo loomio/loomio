@@ -519,8 +519,10 @@ en:
       user_list: 'User actions'
 
   strand_nav:
-    newest_first: Latest activity
-    oldest_first: Beginning of the thread
+    newest: Newest
+    oldest: Oldest
+    newest_first: Newest first
+    oldest_first: Oldest first
     all_pinned: All pinned items
     whole_thread: The whole thread
     from_comment: From a comment url
@@ -1573,9 +1575,9 @@ en:
     for_everyone: This changes the layout for everyone, not just you.
     sorting: Oldest or Newest first?
     latest: Newest
-    latest_description: Read the newest things first
+    latest_description: Read the newest items first
     earliest: Oldest
-    earliest_description: Read from beginning to end
+    earliest_description: Catch up on older comments before seeing newer ones
     replies: How to display replies?
     linear: Flat list
     linear_description: Items listed as they happened, one after the other.
