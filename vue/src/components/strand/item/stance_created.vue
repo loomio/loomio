@@ -5,20 +5,16 @@ import AbilityService from '@/shared/services/ability_service'
 import openModal from '@/shared/helpers/open_modal'
 
 export default
-  components:
-    ThreadItem: -> import('@/components/thread/item.vue')
-
   props:
     event: Object
-    isReturning: Boolean
+    eventable: Object
     collapsed: Boolean
 
   computed:
     actor: -> @event.actor()
     actorName: -> @event.actorName()
-    eventable: -> @event.model()
     poll: -> @eventable.poll()
-    showResults: -> @eventable.poll().showResults()
+    showResults: -> @poll.showResults()
     actions: -> StanceService.actions(@eventable)
     componentType:  ->
       if @actor
@@ -29,7 +25,7 @@ export default
 
 <template lang="pug">
 
-section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id" :event="event" :is-returning="isReturning")
+section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id" :event="event")
   template(v-if="eventable.singleChoice()")
     .d-flex
       component.text--secondary(:is="componentType" :to="actor && urlFor(actor)") {{actorName}}
@@ -42,5 +38,5 @@ section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id"
     formatted-text.poll-common-stance-created__reason(:model="eventable" column="reason")
     link-previews(:model="eventable")
     attachment-list(:attachments="eventable.attachments")
-  action-dock(:model='eventable' :actions='actions' icons small)
+  action-dock(:model='eventable' :actions='actions' small)
 </template>

@@ -8,9 +8,10 @@ import { colonToUnicode, stripColons, imgForEmoji, srcForEmoji, emojiSupported }
 export default
   props:
     model: Object
+    small: Boolean
 
   data: ->
-    diameter: 20
+    diameter: (@small && 16) || 24
     maxNamesCount: 10
     reactionHash: {all: []}
     emojiSupported: emojiSupported
@@ -43,10 +44,10 @@ export default
 
     myReaction: ->
       return unless Session.isSignedIn()
-      Records.reactions.find(merge({}, @reactionParams, userId: Session.user().id))[0]
+      Records.reactions.find(merge({}, @reactionParams, userId: Session.userId))[0]
 
     otherReaction: ->
-      Records.reactions.find(merge({}, @reactionParams, {userId: {'$ne': Session.user().id}}))[0]
+      Records.reactions.find(merge({}, @reactionParams, {userId: {'$ne': Session.userId}}))[0]
 
     reactionTypes: ->
       difference keys(@reactionHash), ['all']
@@ -80,7 +81,7 @@ export default
       v-tooltip(bottom)
         template(v-slot:activator="{ on, attrs }")
           .reactions-display__group(v-on="on" v-bind="attrs")
-            span(v-if="emojiSupported") {{colonToUnicode(reaction)}}
+            span(:class="(small &&'small') || undefined" v-if="emojiSupported") {{colonToUnicode(reaction)}}
             img.emoji(v-else :src="srcForEmoji(colonToUnicode(reaction))")
             user-avatar.reactions-display__author(no-link v-for="user in reactionHash[reaction]" :key="user.id" :user="user" :size="diameter")
         .reactions-display__name(v-for="user in reactionHash[reaction]" :key="user.id")
@@ -94,8 +95,11 @@ export default
   align-items: center
   margin-right: 2px
   span
-    font-size: 20px
+    font-size: 22px
     line-height: 20px
+  span.small
+    font-size: 16px
+    line-height: 16px
 
   .user-avatar
     span

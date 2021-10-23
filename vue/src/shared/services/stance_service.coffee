@@ -10,14 +10,15 @@ import openModal      from '@/shared/helpers/open_modal'
 export default new class StanceService
   actions: (stance) ->
     react:
+      dock: 1
       canPerform: ->
         !stance.discardedAt &&
-        AppConfig.features.app.vote_reactions &&
         stance.poll().membersInclude(Session.user())
 
     edit_stance:
       name: 'poll_common.change_vote'
       icon: 'mdi-pencil'
+      dock: 1
       canPerform: ->
         (Session.user() && stance.participant()) &&
         stance.latest && stance.poll().isActive() && stance.participant() == Session.user()
@@ -30,6 +31,7 @@ export default new class StanceService
     translate_stance:
       icon: 'mdi-translate'
       name: 'common.action.translate'
+      dock: 2
       canPerform: ->
         (stance.author() && Session.user()) &&
         stance.author().locale != Session.user().locale &&
@@ -40,6 +42,7 @@ export default new class StanceService
     show_history:
       name: 'action_dock.edited'
       icon: 'mdi-history'
+      dock: 1
       canPerform: -> stance.edited()
       perform: ->
         openModal

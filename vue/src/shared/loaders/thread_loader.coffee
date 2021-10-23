@@ -1,5 +1,5 @@
 import Records from '@/shared/services/records'
-import { cloneDeep, max, isNumber, uniq, compact, orderBy, camelCase, forEach, isObject, sortedUniq, sortBy, without, map } from 'lodash'
+import { some, last, cloneDeep, max, isNumber, uniq, compact, orderBy, camelCase, forEach, isObject, sortedUniq, sortBy, without, map } from 'lodash'
 import Vue from 'vue'
 import RangeSet         from '@/shared/services/range_set'
 import EventBus         from '@/shared/services/event_bus'
@@ -22,6 +22,7 @@ export default class ThreadLoader
     @collapsed = Vue.observable({})
     @loading = false
     @padding = 20
+    @maxAutoLoadMore = 5
 
   firstUnreadSequenceId: ->
     (RangeSet.subtractRanges(@discussion.ranges, @readRanges)[0] || [])[0]
@@ -78,7 +79,28 @@ export default class ThreadLoader
         discussion_id: @discussion.id
         per: 1000
 
-  loadChildren: (event) ->
+  autoLoadAfter: (obj) ->
+    if (obj.event.depth == 1) || (obj.missingAfterCount && obj.missingAfterCount < @maxAutoLoadMore)
+      @loadAfter(obj.event, obj.missingAfterCount)
+
+  loadAfter: (event, limit = null) ->
+    @addLoadAfterRule(event, limit)
+    @fetch()
+
+  autoLoadBefore: (obj) ->
+    if obj.missingEarlierCount && obj.missingEarlierCount < @maxAutoLoadMore
+      @loadBefore(obj.event, obj.missingEarlierCount)
+
+  loadBefore: (event, limit = null) ->
+    @loading = 'before'+event.id
+    @addLoadBeforeRule(event, limit)
+    @fetch()
+
+  autoLoadChildren: (obj) ->
+    if obj.missingChildCount && (obj.missingChildCount < @maxAutoLoadMore)
+      @loadChildren(obj.event, obj.missingChildCount)
+
+  loadChildren: (event, limit = null) ->
     @loading = 'children'+event.id
     if event.kind == "new_discussion"
       @addRuleAndFetch
@@ -87,11 +109,11 @@ export default class ThreadLoader
           find:
             discussionId: @discussion.id
           simplesort: 'id'
-          limit: @padding
+          limit: limit || @padding
         remote:
           discussion_id: @discussion.id
           order_by: 'position_key'
-          per: @padding
+          per: limit || @padding
     else
       @addRuleAndFetch
         name: "load children (prefix #{event.positionKey})"
@@ -100,21 +122,15 @@ export default class ThreadLoader
             discussionId: @discussion.id
             positionKey: {'$regex': "^#{event.positionKey}"}
           simplesort: 'positionKey'
-          limit: @padding
+          limit: limit || @padding
         remote:
           discussion_id: @discussion.id
           position_key_sw: event.positionKey
           depth_gt: event.depth
           order_by: 'position_key'
-          per: @padding
+          per: limit || @padding
 
-  autoLoadAfter: (event) ->
-    @loadAfter(event) if event.depth == 1
-
-  autoLoadBefore: (event) ->
-    @loadBefore(event) if event.depth == 1
-
-  loadAfter: (event) ->
+  addLoadAfterRule: (event, limit = null) ->
     # keys = event.positionKey.split('-')
     # num = parseInt(keys[keys.length - 1]) + 1
     # key = "0".repeat(5 - (""+num).length) + num
@@ -125,7 +141,7 @@ export default class ThreadLoader
     positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
     positionKey = event.positionKey
 
-    @addRuleAndFetch
+    @addRule
       name: "load after (prefix #{positionKeyPrefix})"
       local:
         find:
@@ -140,13 +156,11 @@ export default class ThreadLoader
         position_key_gt: positionKey
         position_key_sw: positionKeyPrefix || null
         order_by: 'position_key'
-        per: @padding
+        per: limit || @padding
 
-  loadBefore: (event) ->
-    @loading = 'before'+event.id
+  addLoadBeforeRule: (event, limit = nil) ->
     positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
-
-    @addRuleAndFetch
+    @addRule
       name: "load before (prefix #{positionKeyPrefix})"
       local:
         find:
@@ -163,7 +177,7 @@ export default class ThreadLoader
         position_key_sw: positionKeyPrefix || null
         order_by: 'position_key'
         order_desc: 1
-        per: @padding
+        per: limit || @padding
 
   addLoadCommentRule: (commentId) ->
     @titleKey = 'strand_nav.from_comment'
@@ -339,6 +353,9 @@ export default class ThreadLoader
     if !@ruleStrings.includes(ruleString)
       @rules.push(rule)
       @ruleStrings.push(ruleString)
+      # if @rules.length > 5
+      #   @rules.shift()
+      #   @ruleStrings.shift()
       true
     else
       false
@@ -387,10 +404,44 @@ export default class ThreadLoader
 
     nest = (records) ->
       r = records.map (event) ->
-        {event: event, children: (eventsByParentId[event.id] && nest(eventsByParentId[event.id])) || []}
+        event: event
+        children: (eventsByParentId[event.id] && nest(eventsByParentId[event.id])) || []
+        eventable: event.model()
       # orderBy r, 'positionKey'
 
     @collection = nest(orphans)
+
+    @addMetaData(@collection)
+
     EventBus.$emit('collectionUpdated', @discussion.id)
 
     @collection
+
+  addMetaData: (collection) ->
+    positions = collection.map (e) -> e.event.position
+    ranges = RangeSet.arrayToRanges(positions)
+    parentExists = collection[0] && collection[0].event && collection[0].event.parent()
+    lastPosition = (parentExists && (collection[0].event.parent().childCount)) || 0
+
+
+    collection.forEach (obj) =>
+      obj.isUnread = @isUnread(obj.event)
+      isFirstInRange = some(ranges, (range) -> range[0] == obj.event.position)
+      isLastInLastRange = last(ranges)[1] == obj.event.position
+      missingEarlier = parentExists && (obj.event.position != 1 && isFirstInRange)
+      obj.missingEarlierCount = 0
+      if missingEarlier
+        lastPos = 1
+        val = 0
+        ranges.forEach (range) ->
+          if range[0] == obj.event.position
+            val = (obj.event.position - lastPos)
+          else
+            lastPos = range[1]
+        obj.missingEarlierCount = val
+
+      missingAfter = lastPosition != 0 && isLastInLastRange && (obj.event.position != lastPosition)
+      obj.missingAfterCount = (missingAfter && lastPosition - last(ranges)[1]) || 0
+      obj.missingChildCount = obj.event.childCount - obj.children.length
+
+      @addMetaData(obj.children) if obj.children.length

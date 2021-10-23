@@ -1,13 +1,21 @@
 <script lang="coffee">
 import OutcomeService from '@/shared/services/outcome_service'
 import parseISO from 'date-fns/parseISO'
+import { pickBy } from 'lodash'
 export default
   props:
     outcome: Object
   methods:
     parseISO: parseISO
+
+  data: ->
+    actions: OutcomeService.actions(@outcome, @)
+
   computed:
-    actions: -> OutcomeService.actions(@outcome, @)
+    menuActions: ->
+      pickBy OutcomeService.actions(@outcome, @), (v, k) -> v.menu
+    dockActions: ->
+      pickBy OutcomeService.actions(@outcome, @), (v, k) -> v.dock > 0
 
 </script>
 
@@ -36,5 +44,5 @@ v-alert.my-4.poll-common-outcome-panel(
   link-previews(:model="outcome")
   document-list(:model="outcome")
   attachment-list(:attachments="outcome.attachments")
-  action-dock(small :model="outcome" :actions="actions")
+  action-dock(:model="outcome" :actions="dockActions" :menuActions="menuActions")
 </template>

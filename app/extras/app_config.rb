@@ -103,7 +103,6 @@ class AppConfig
       group_survey:               ENV.fetch('FEATURES_GROUP_SURVEY', false),
       group_sso:                  ENV.fetch('FEATURES_GROUP_SSO', false),
       sentry_sample_rate:         ENV.fetch('SENTRY_SAMPLE_RATE', '0.1').to_f,
-      vote_reactions:             ENV.fetch('FEATURES_VOTE_REACTIONS', false)
     }
   end
 

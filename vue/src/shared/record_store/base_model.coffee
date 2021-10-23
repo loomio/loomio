@@ -229,8 +229,11 @@ export default class BaseModel
     .finally =>
       @processing = false
 
+  beforeSave: -> true
+
   save: =>
     @processing = true
+    @beforeSave()
     if @isNew()
       @remote.create(@serialize())
       .then(@saveSuccess, @saveError)

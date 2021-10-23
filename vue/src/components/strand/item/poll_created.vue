@@ -3,22 +3,21 @@ import PollService    from '@/shared/services/poll_service'
 import AbilityService from '@/shared/services/ability_service'
 import EventBus       from '@/shared/services/event_bus'
 import EventService from '@/shared/services/event_service'
-import { pick, assign } from 'lodash'
+import { pick, pickBy, assign } from 'lodash'
 
 export default
-  components:
-    ThreadItem: -> import('@/components/thread/item.vue')
-
   props:
     event: Object
-    isReturning: Boolean
     collapsed: Boolean
+    eventable: Object
 
   created: ->
     EventBus.$on 'stanceSaved', => EventBus.$emit 'refreshStance'
     @watchRecords
-      collections: ["stances"]
+      collections: ["stances", "polls"]
       query: (records) =>
+        @pollActions = PollService.actions(@poll)
+        @eventActions = EventService.actions(@event, @)
         @myStance = @poll.myStance()
 
   beforeDestroy: ->
@@ -28,20 +27,21 @@ export default
   data: ->
     buttonPressed: false
     myStance: null
+    pollActions: null
+    eventActions: null
 
   computed:
-    eventable: -> @event.model()
     poll: -> @eventable
     showResults: -> @poll.showResults()
 
     menuActions: ->
       assign(
-        pick EventService.actions(@event, @), ['pin_event', 'unpin_event', 'move_event', 'copy_url']
+        pick @eventActions, (v) -> v.menu
       ,
-        pick PollService.actions(@poll, @), ['edit_poll', 'notification_history', 'show_history', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread']
+        pickBy @pollActions, (v) -> v.menu
       )
     dockActions: ->
-      pick PollService.actions(@poll, @), ['reopen_poll', 'show_results', 'hide_results', 'translate_poll', 'edit_stance', 'announce_poll', 'remind_poll', 'close_poll']
+      pickBy @pollActions, (v) -> v.dock
 
 </script>
 
@@ -67,6 +67,6 @@ section.strand-item.poll-created
         poll-common-chart-panel(:poll='poll')
       poll-common-action-panel(:poll='poll')
     .caption(v-t="{path: 'poll_common_action_panel.draft_mode', args: {poll_type: poll.pollType}}" v-if='!poll.closingAt')
-    action-dock.my-2(small :actions="dockActions" :menu-actions="menuActions")
+    action-dock.my-2(:actions="dockActions" :menu-actions="menuActions")
     poll-common-votes-panel(v-if="!poll.stancesInDiscussion && poll.showResults()" :poll="poll")
 </template>

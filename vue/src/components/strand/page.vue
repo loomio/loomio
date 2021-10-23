@@ -44,9 +44,9 @@ export default
           collections: ['events']
           query: => @loader.updateCollection()
 
-      .catch (error) =>
-        EventBus.$emit 'pageError', error
-        EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()
+      # .catch (error) =>
+      #   EventBus.$emit 'pageError', error
+      #   EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()
 
     focusSelector: ->
       if @loader.focusAttrs.newest

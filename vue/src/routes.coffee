@@ -20,8 +20,7 @@ import EmailSettingsPage from './components/email_settings/page'
 import StartDiscussionPage from './components/start_discussion/page'
 import UserPage from './components/user/page'
 import ThreadsPage from './components/threads/page'
-import ThreadPage from './components/thread/page'
-import ThreadNav from './components/thread/nav'
+import StrandPage from './components/strand/page'
 
 import './config/catch_navigation_duplicated.js'
 import Vue from 'vue'
@@ -75,11 +74,11 @@ router = new Router
     {path: '/d/:key/edit', component: StartDiscussionPage },
     {
       path: '/d/:key',
-      component: ThreadPage,
+      component: StrandPage,
       children: [
-        {path: 'comment/:comment_id', components: {nav: ThreadNav}}
-        {path: ':stub?/:sequence_id?', components: {nav: ThreadNav}}
-        {path: '', components: {nav: ThreadNav}}
+        {path: 'comment/:comment_id'}
+        {path: ':stub?/:sequence_id?'}
+        {path: ''}
       ]
     },
     {path: '/g/new', component: StartGroupPage},

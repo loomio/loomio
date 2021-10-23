@@ -1680,6 +1680,7 @@ en:
     results: Results
     responses: Responses
     close_poll_type: Close {{pollType}}
+    close_early: Close early
     totals: Totals
     participate: Participate
     vote: Vote

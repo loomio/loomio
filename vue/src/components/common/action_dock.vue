@@ -1,7 +1,6 @@
 <script lang="coffee">
 export default
   props:
-    icons: Boolean
     model: Object
     actions: Object
     menuActions: Object
@@ -14,8 +13,8 @@ section.d-flex.align-center.action-dock(:aria-label="$t('action_dock.actions_men
   v-spacer(v-if="!left")
   reaction-display(:model="model" v-if="Object.keys(actions).includes('react')" :small="small")
   .action-dock__action(v-for='(action, name) in actions' v-if='action.canPerform()' :key="name")
-    reaction-input.action-dock__button--react(:model="model" v-if="name == 'react'" :icon="icons" :small="small")
-    action-button(v-if="name != 'react'" :icon="icons" :action="action" :name="name" :small="small" :nameArgs="action.nameArgs && action.nameArgs()")
+    reaction-input.action-dock__button--react(:model="model" v-if="name == 'react'" :small="small")
+    action-button(v-if="name != 'react'" :action="action" :name="name" :small="small" :nameArgs="action.nameArgs && action.nameArgs()")
   action-menu(v-if="menuActions" :actions='menuActions' :small="small")
   v-spacer(v-if="left")
 </template>

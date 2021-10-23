@@ -9,9 +9,10 @@ import i18n          from '@/i18n'
 import { hardReload } from '@/shared/helpers/window'
 
 export default new class PollService
-  actions: (poll, vm) ->
+  actions: (poll) ->
     show_results:
       name: 'poll_common_card.show_results'
+      dock: 2
       canPerform: ->
         !poll.discardedAt && poll.closingAt && !poll.hideResultsUntilClosed && !poll.showResults()
       perform: ->
@@ -19,6 +20,7 @@ export default new class PollService
 
     hide_results:
       name: 'poll_common_card.hide_results'
+      dock: 2
       canPerform: ->
         !poll.discardedAt && poll.showResults() && !poll.closedAt && !poll.iHaveVoted()
       perform: ->
@@ -27,6 +29,7 @@ export default new class PollService
     edit_stance:
       name: 'poll_common.change_vote'
       icon: 'mdi-pencil'
+      dock: 2
       canPerform: =>
         poll.isActive() && Session.user() && poll.iHaveVoted()
       perform: =>
@@ -39,6 +42,7 @@ export default new class PollService
     notification_history:
       name: 'action_dock.show_notifications'
       icon: 'mdi-alarm-check'
+      menu: true
       perform: ->
         openModal
           component: 'AnnouncementHistory'
@@ -49,6 +53,7 @@ export default new class PollService
     announce_poll:
       icon: 'mdi-send'
       name: 'common.action.invite'
+      dock: 2
       canPerform: ->
         return false if (poll.discardedAt || poll.closedAt)
         poll.adminsInclude(Session.user()) ||
@@ -64,6 +69,7 @@ export default new class PollService
     remind_poll:
       icon: 'mdi-send'
       name: 'common.action.remind'
+      dock: 2
       canPerform: ->
         return false if (poll.discardedAt || poll.closedAt || poll.votersCount < 2)
         poll.adminsInclude(Session.user()) ||
@@ -76,33 +82,19 @@ export default new class PollService
           props:
             poll: poll.clone()
 
-    edit_poll:
-      name: 'action_dock.edit_poll_type'
-      nameArgs: ->
-        {pollType: poll.translatedPollType()}
-      icon: 'mdi-pencil'
-      canPerform: ->
-        AbilityService.canEditPoll(poll)
-      to: ->
-        "/p/#{poll.key}/edit"
-      perform: ->
-        openModal
-          component: 'PollCommonModal'
-          props:
-            poll: poll.clone()
-
-    edit_tags:
-      icon: 'mdi-tag-outline'
-      name: 'loomio_tags.card_title'
-      canPerform: -> AbilityService.canEditPoll(poll)
-      perform: ->
-        openModal
-          component: 'TagsSelect',
-          props: { model: poll.clone() }
-
+    # edit_tags:
+    #   icon: 'mdi-tag-outline'
+    #   name: 'loomio_tags.card_title'
+    #   canPerform: -> AbilityService.canEditPoll(poll)
+    #   perform: ->
+    #     openModal
+    #       component: 'TagsSelect',
+    #       props: { model: poll.clone() }
+    #
     move_poll:
       name: 'common.action.move'
       icon: 'mdi-folder-swap-outline'
+      menu: true
       canPerform: ->
         AbilityService.canMovePoll(poll)
       perform: ->
@@ -114,6 +106,7 @@ export default new class PollService
     show_history:
       icon: 'mdi-history'
       name: 'action_dock.show_edits'
+      dock: 1
       canPerform: -> !poll.discardedAt && poll.edited()
       perform: ->
         openModal
@@ -124,16 +117,15 @@ export default new class PollService
     translate_poll:
       icon: 'mdi-translate'
       name: 'common.action.translate'
-      menu: true
+      dock: 2
       canPerform: ->
         AbilityService.canTranslate(poll)
       perform: -> Session.user() && poll.translate(Session.user().locale)
 
     close_poll:
       icon: 'mdi-close-circle-outline'
-      name: 'poll_common.close_poll_type'
-      nameArgs: ->
-        {pollType: poll.translatedPollType()}
+      name: 'poll_common.close_early'
+      dock: 2
       canPerform: ->
         AbilityService.canClosePoll(poll)
       perform: ->
@@ -159,6 +151,7 @@ export default new class PollService
     reopen_poll:
       icon: 'mdi-refresh'
       name: 'common.action.reopen'
+      dock: 2
       canPerform: ->
         AbilityService.canReopenPoll(poll)
       perform: ->
@@ -166,8 +159,25 @@ export default new class PollService
           component: 'PollCommonReopenModal'
           props: { poll: poll }
 
+    edit_poll:
+      name: 'action_dock.edit_poll_type'
+      dock: 1
+      nameArgs: ->
+        {pollType: poll.translatedPollType()}
+      icon: 'mdi-pencil'
+      canPerform: ->
+        AbilityService.canEditPoll(poll)
+      to: ->
+        "/p/#{poll.key}/edit"
+      perform: ->
+        openModal
+          component: 'PollCommonModal'
+          props:
+            poll: poll.clone()
+
     export_poll:
       name: 'common.action.export'
+      menu: true
       canPerform: ->
         AbilityService.canExportPoll(poll)
       perform: ->
@@ -175,6 +185,7 @@ export default new class PollService
 
     print_poll:
       name: 'common.action.print'
+      menu: true
       canPerform: ->
         AbilityService.canExportPoll(poll)
       perform: ->
@@ -197,6 +208,7 @@ export default new class PollService
 
     discard_poll:
       name: 'common.action.delete'
+      menu: true
       canPerform: ->
         AbilityService.canDeletePoll(poll)
       perform: ->
@@ -211,6 +223,7 @@ export default new class PollService
                 flash: 'poll_common_delete_modal.success'
 
     add_poll_to_thread:
+      menu: true
       name: 'action_dock.add_poll_to_thread'
       canPerform: ->
         AbilityService.canAddPollToThread(poll)

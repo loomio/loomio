@@ -1,20 +1,20 @@
 <script lang="coffee">
 import ThreadService  from '@/shared/services/thread_service'
-import { map, compact, pick } from 'lodash'
+import { map, compact, pick, pickBy } from 'lodash'
 import EventBus from '@/shared/services/event_bus'
 import openModal      from '@/shared/helpers/open_modal'
-import DiscussionPrivacyBadge from '@/components/discussion/privacy_badge'
 
 export default
   props:
     event: Object
+    eventable: Object
     collapsed: Boolean
 
   data: ->
-    actions: ThreadService.actions(@event.model(), @)
+    actions: ThreadService.actions(@eventable, @)
 
   mounted: ->
-    @event.model().fetchUsersNotifiedCount()
+    @eventable.fetchUsersNotifiedCount()
 
   computed:
     author: ->
@@ -23,21 +23,16 @@ export default
     authorName: ->
       @discussion.authorName()
 
-    discussion: ->
-      @event.model()
+    discussion: -> @eventable
 
     group: ->
       @discussion.group()
 
-    arrangementAction: -> @actions['edit_arrangement']
-
-    editThread: -> @actions['edit_thread']
-
     dockActions: ->
-      pick @actions, ['translate_thread', 'subscribe', 'unsubscribe', 'unignore', 'announce_thread', 'react', 'add_comment', 'edit_thread']
+      pickBy @actions, (v) -> v.dock
 
     menuActions: ->
-      pick @actions, ['show_history', 'notification_history', 'close_thread', 'reopen_thread', 'move_thread', 'discard_thread', 'export_thread']
+      pickBy @actions, (v) -> v.menu
 
     status: ->
       return 'pinned' if @discussion.pinned
@@ -55,8 +50,6 @@ export default
     viewed: (viewed) ->
       @discussion.markAsSeen() if viewed
 
-    openArrangementForm: -> @actions['edit_arrangement'].perform()
-
     openSeenByModal: ->
       openModal
         component: 'SeenByModal'
@@ -68,7 +61,9 @@ export default
 <template lang="pug">
 .strand-new-discussion.context-panel#context(:aria-label="$t('context_panel.aria_intro', {author: authorName, group: group.fullName})" v-observe-visibility="{callback: viewed, once: true}")
   v-layout.ml-n2(align-center wrap)
-    v-breadcrumbs.context-panel__breadcrumbs(:items="groups" divider=">")
+    v-breadcrumbs.context-panel__breadcrumbs(:items="groups")
+      template(v-slot:divider)
+        v-icon mdi-chevron-right
     tags-display(:tags="discussion.tags()")
     v-spacer
     span
@@ -76,7 +71,7 @@ export default
         i.mdi.mdi-lock-outline
         span.text--secondary(v-t="'common.privacy.private'")
       span.nowrap(v-show='!discussion.private')
-        i.mdi.mdi-earth
+        i.mdi.mdi-earth.mr-1
         span.text--secondary(v-t="'common.privacy.public'")
 
   strand-title(:discussion="discussion")
@@ -98,7 +93,7 @@ export default
     link-previews(:model="discussion")
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
-    action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions' icons)
+    action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions')
 </template>
 <style lang="sass">
 @import '@/css/variables'
@@ -107,7 +102,7 @@ export default
 
 .context-panel
   .v-breadcrumbs
-    padding: 0px 10px
+    padding: 4px 10px 4px 10px
     // margin-left: 0;
 
 .context-panel__discussion-privacy i

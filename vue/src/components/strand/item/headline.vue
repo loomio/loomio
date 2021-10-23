@@ -48,7 +48,7 @@ h3.strand-item__headline.thread-item__title.body-2.pb-1(tabindex="-1" :id="'even
     mid-dot
     router-link.grey--text.body-2(:to='link')
       time-ago(:date='event.createdAt')
-    mid-dot
+    mid-dot(v-if="event.pinned")
     v-icon(v-if="event.pinned") mdi-pin-outline
 
 </template>
