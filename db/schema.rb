@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_20_024555) do
+ActiveRecord::Schema.define(version: 2021_10_22_235050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -244,6 +244,7 @@ ActiveRecord::Schema.define(version: 2021_10_20_024555) do
     t.integer "anonymous_polls_count", default: 0, null: false
     t.string "content_locale"
     t.jsonb "link_previews", default: [], null: false
+    t.datetime "pinned_at"
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["group_id"], name: "index_discussions_on_group_id"

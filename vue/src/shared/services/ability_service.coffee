@@ -49,10 +49,10 @@ export default new class AbilityService
     thread.closedAt && @canEditThread(thread)
 
   canPinThread: (thread) ->
-    !thread.closedAt && !thread.pinned && @canEditThread(thread)
+    !thread.closedAt && !thread.pinnedAt && @canEditThread(thread)
 
   canUnpinThread: (thread) ->
-    !thread.closedAt && thread.pinned && @canEditThread(thread)
+    !thread.closedAt && thread.pinnedAt && @canEditThread(thread)
 
   canExportThread: (thread) ->
     !thread.discardedAt && thread.membersInclude(Session.user())
