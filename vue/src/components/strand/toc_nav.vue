@@ -11,9 +11,8 @@ export default
 
   data: ->
     open: null
-    items: {}
+    items: []
     visibleKeys: []
-    bootData: []
     baseUrl: ''
 
   computed:
@@ -21,42 +20,46 @@ export default
     selectedCommentId: -> parseInt(@$route.params.comment_id)
 
   methods:
-    buildItems: ->
-      @items = {}
+    buildItems: (bootData) ->
+      itemsHash = {}
 
       @baseUrl = @urlFor(@discussion)
       # parser = new DOMParser()
       # doc = parser.parseFromString(@context, 'text/html')
       # headings = Array.from(doc.querySelectorAll('h1,h2,h3')).map (el) =>
       #   {id: el.id, name: el.textContent}
-      @$set @items, @discussion.createdEvent().positionKey,
-        title: @$t('activity_card.context')
-        headings: []
-        sequenceId: 0
-        visible: false
-        unread: false
-        event: @discussion.createdEvent()
-        poll: null
-        stance: null
-
-      @bootData.forEach (row) =>
-        # row: 0 positionKey, 1 sequenceId, 2 createdAt, 3 userId
-        @$set @items, row[0],
+      bootData.forEach (row) =>
+        # row indexes
+        # 0 positionKey,
+        # 1 sequenceId,
+        # 2 createdAt,
+        # 3 userId,
+        # 4 depth,
+        # 5 descendantCount
+        itemsHash[row[0]] =
+          key: row[0]
           title: null
           headings: []
           sequenceId: row[1]
           createdAt: row[2]
           actorId: row[3]
           visible: false
+          depth: row[4]
+          descendantCount: row[5]
           unread: @loader.sequenceIdIsUnread(row[1])
           poll: null
           stance: null
+          visible: @visibleKeys.includes(row[0])
 
       Records.events.collection.chain()
              .find({discussionId: @discussion.id})
-             .simplesort('positionKey')
+             .simplesort('positionKey', @discussion.newestFirst)
              .data().forEach (event) =>
-        @$set @items, event.positionKey,
+        if event.kind == "poll_created"
+          poll = event.model().poll()
+
+        itemsHash[event.positionKey] =
+          key: event.positionKey
           commentId: if event.eventableType == 'Comment' then event.eventableId else null
           sequenceId: event.sequenceId
           createdAt: event.createdAt
@@ -64,17 +67,54 @@ export default
           title: if event.pinned then (event.pinnedTitle || event.fillPinnedTitle()) else null
           visible: false
           unread: @loader.sequenceIdIsUnread(event.sequenceId)
-          poll: null
-          stance: null
           headings: []
+          depth: event.depth
+          descendantCount: event.descendantCount
+          visible: @visibleKeys.includes(event.positionKey)
+          poll: poll
+          stance: (poll && poll.myStance()) || null
 
-        if event.kind == "poll_created"
-          poll = event.model().poll()
-          @items[event.positionKey].poll = poll
-          @items[event.positionKey].stance = poll.myStance()
+      itemsArray = Object.values(itemsHash)
 
-      @visibleKeys.forEach (key) =>
-        @items[key].visible = true if @items[key]
+      if @discussion.newestFirst
+        newItems = []
+        parentIndexes = []
+
+        console.log "before:"
+        itemsArray.forEach (item, index) =>
+          console.log "index #{index} item.key #{item.key} item.depth #{item.depth} descendantCount #{item.descendantCount}"
+          parentIndexes.push index if item.depth == 1
+
+        parentIndexes.reverse()
+
+        parentIndexes.forEach (index) =>
+          item = itemsArray[index]
+          slice = itemsArray.slice(index, index + item.descendantCount + 1)
+          console.log "index: #{index} slice: #{slice}"
+          Array.prototype.push.apply newItems, slice
+
+        console.log "reversed:"
+        newItems.forEach (item, index) =>
+          console.log "index #{index} item.key #{item.key} item.depth #{item.depth} descendantCount #{item.descendantCount}"
+
+
+        @items = newItems
+      else
+        @items = itemsArray
+
+      createdEvent = @discussion.createdEvent()
+      @items.unshift
+        key: createdEvent.positionKey
+        title: @$t('activity_card.context')
+        headings: []
+        sequenceId: 0
+        visible: @visibleKeys.includes(createdEvent.positionKey)
+        unread: false
+        event: createdEvent
+        poll: null
+        stance: null
+        depth: 1
+        descendantCount: 0
 
   mounted: ->
     EventBus.$on 'toggleThreadNav', => @open = !@open
@@ -86,25 +126,25 @@ export default
         pinned: true
         per: 200
 
+    bootData = []
     Records.events.remote.fetch
       path: 'timeline'
       params:
         discussion_id: @discussion.id
     .then (data) =>
-      @bootData = data
-      @buildItems()
+      bootData = data
+      @buildItems bootData
 
     @watchRecords
       key: 'thread-nav'+@discussion.id
       collections: ["events", "discussions"]
-      query: => @buildItems()
+      query: => @buildItems(bootData)
 
     EventBus.$on 'visibleKeys', (keys) =>
       @visibleKeys = keys
-      Object.keys(@items).forEach (key) =>
-        @items[key].visible = false
-      @visibleKeys.forEach (key) =>
-        @items[key].visible = true if @items[key]
+      @items.forEach (item) =>
+        item.visible = @visibleKeys.includes(item.key)
+      console.log @visibleKeys
 
 </script>
 
@@ -112,14 +152,15 @@ export default
 v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion" v-model="open" :permanent="$vuetify.breakpoint.mdAndUp" width="230px" app fixed right clipped color="background" floating)
   div.mt-12
   div.strand-nav__toc
+    //- | {{items}}
     router-link.strand-nav__entry.text-caption(
       :class="{'strand-nav__entry--visible': item.visible, 'strand-nav__entry--selected': (item.sequenceId == selectedSequenceId || item.commentId == selectedCommentId), 'strand-nav__entry--unread': item.unread}"
-      v-for="item, key in items"
-      :key="key"
+      v-for="item in items"
+      :key="item.key"
       :to="baseUrl+'/'+item.sequenceId")
         .strand-nav__stance-icon-container(v-if="item.poll")
           poll-common-icon-panel.poll-proposal-chart-panel__chart.mr-1(:poll="item.poll" show-my-stance :size="18" :stanceSize="12")
-          //- poll-common-stance-icon.thread-nav__stance-icon(:poll="item.poll" :stance="item.stance" :size='18')
+        span {{item.key}}
         span {{item.title}}
 </template>
 

@@ -151,8 +151,10 @@ export default new class ThreadService
             model: discussion.clone()
 
     edit_arrangement:
-      icon: 'mdi-directions-fork'
-      name: 'thread_arrangement_form.edit'
+      icon: (discussion.newestFirst && 'mdi-arrow-up') || 'mdi-arrow-down'
+      name: (discussion.newestFirst && 'strand_nav.newest_first') || 'strand_nav.oldest_first'
+      dock: 3
+      dockLeft: true
       canPerform: -> AbilityService.canEditThread(discussion)
       perform: ->
         openModal
