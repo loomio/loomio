@@ -9,16 +9,9 @@ export default
   methods:
     togglePinned: ->
       if @user.experiences['sidebar']
-        Records.users.removeExperience('sidebar')
+        Records.users.saveExperience('sidebar', false)
       else
-        Records.users.saveExperience('sidebar')
-
-    toggleBeta: ->
-      if @user.experiences['betaFeatures']
-        Records.users.removeExperience('betaFeatures')
-      else
-        Records.users.saveExperience('betaFeatures')
-        Flash.success("user_dropdown.beta_collab")
+        Records.users.saveExperience('sidebar', true)
 
     toggleDark: ->
       if @isDark
