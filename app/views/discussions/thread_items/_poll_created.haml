@@ -10,7 +10,7 @@
             =raw t(:"poll_mailer.header.poll_created", actor: poll.user.name, title: poll.title, poll_type: t("poll_types.#{poll.poll_type}"))
             %span
               %span{"aria-hidden" => "true"}  ·
-            %span.grey--text.body-2
+            %span.text--secondary.body-2
               = render 'discussions/time_ago', time: poll.created_at
         .layout.justify-space-between
           %h1.poll-common-card__title.headline

@@ -199,11 +199,11 @@ export default
                   space
                   v-chip(small outlined label v-t="'members_panel.admin'")
                   space
-                span.caption.grey--text(v-if="membership.acceptedAt")
+                span.caption.text--secondary(v-if="membership.acceptedAt")
                   span(v-t="'common.action.joined'")
                   space
                   time-ago(:date="membership.acceptedAt")
-                span.caption.grey--text(v-if="!membership.acceptedAt")
+                span.caption.text--secondary(v-if="!membership.acceptedAt")
                   template(v-if="membership.inviterId")
                     span(v-t="{path: 'members_panel.invited_by_name', args: {name: membership.inviter().name}}")
                     space

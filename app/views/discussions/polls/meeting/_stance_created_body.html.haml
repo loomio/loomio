@@ -3,7 +3,7 @@
     %a{:href => user_url(voter)}= voter.name
     %span
       %span{"aria-hidden" => "true"}  ·
-    %span.grey--text.body-2
+    %span.text--secondary.body-2
       = render 'discussions/time_ago', time: stance.created_at
 - stance.stance_choices.each do |stance_choice|
   .poll-common-stance-choice.mr-1.mb-1.poll-common-stance-choice--poll.body-2{:row => ""}

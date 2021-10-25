@@ -84,7 +84,7 @@ export default
     user-avatar.mr-2(:user='author' :size='36')
     router-link(:to="urlFor(author)") {{authorName}}
     mid-dot
-    router-link.grey--text.body-2(:to='urlFor(discussion)')
+    router-link.text--secondary.body-2(:to='urlFor(discussion)')
       time-ago(:date='discussion.createdAt')
     span(v-show='discussion.seenByCount > 0')
       mid-dot

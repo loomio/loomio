@@ -37,16 +37,16 @@ h3.strand-item__headline.thread-item__title.body-2.pb-1(tabindex="-1" :id="'even
     | childCount: {{event.childCount}}
     | eid: {{event.eventableId}}
   div(v-if="eventable.discardedAt")
-    span.grey--text(v-t="'thread_item.removed'")
+    span.text--secondary(v-t="'thread_item.removed'")
     mid-dot
-    router-link.grey--text(:to='link')
+    router-link.text--secondary(:to='link')
       time-ago(:date='eventable.discardedAt')
   div.d-flex.align-center(v-else)
     //- v-icon(v-if="event.pinned") mdi-pin
     slot(name="headline")
       span.strand-item__headline.text--secondary(v-html='headline')
     mid-dot
-    router-link.grey--text.body-2(:to='link')
+    router-link.text--secondary.body-2(:to='link')
       time-ago(:date='event.createdAt')
     mid-dot(v-if="event.pinned")
     v-icon(v-if="event.pinned") mdi-pin-outline
@@ -56,4 +56,6 @@ h3.strand-item__headline.thread-item__title.body-2.pb-1(tabindex="-1" :id="'even
 .strand-item__headline
   strong
     font-weight: 400
+  a
+    color: rgba(0,0,0,.6) !important
 </style>

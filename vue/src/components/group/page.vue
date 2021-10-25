@@ -75,7 +75,7 @@ v-main
       span(v-if="group && group.parentId")
         router-link(:to="urlFor(group.parent())") {{group.parent().name}}
         space
-        span.grey--text.text--lighten-1 &gt;
+        span.text--secondary.text--lighten-1 &gt;
         space
       span.group-page__name.mr-4 {{group.name}}
     old-plan-banner(:group="group")

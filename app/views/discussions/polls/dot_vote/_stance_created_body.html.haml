@@ -3,7 +3,7 @@
     %a{:href => user_url(voter)}= voter.name
     %span
       %span{"aria-hidden" => "true"}  ·
-    %span.grey--text.body-2
+    %span.text--secondary.body-2
       = render 'discussions/time_ago', time: stance.created_at
 %table{style: "width: 100%"}
   - stance.stance_choices.order('score desc').each do |stance_choice|

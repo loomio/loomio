@@ -25,7 +25,7 @@ export default
     template(v-slot:divider)
       v-icon mdi-chevron-right
   v-spacer
-  span.grey--text.body-2
+  span.text--secondary.body-2
     time-ago(:date='poll.createdAt')
 </template>
 

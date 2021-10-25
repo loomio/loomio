@@ -11,7 +11,7 @@
                     %a{href: group_url(@discussion.group)}=@discussion.group.full_name
                 %div.thread-tags
                 %div.spacer
-                %span.grey--text.body-2
+                %span.text--secondary.body-2
                   = render 'discussions/time_ago', time: @discussion.created_at
               %h1#sequence-0.display-1.context-panel__heading.px-3
                 = @discussion.title
