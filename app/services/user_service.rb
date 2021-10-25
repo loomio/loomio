@@ -100,7 +100,7 @@ class UserService
 
   def self.save_experience(user:, actor:, params:)
     actor.ability.authorize! :update, user
-    name = params.fetch(:name, params[:experience])
+    name = params[:experience]
     value = if params.has_key?(:remove_experience)
       nil
     else
