@@ -100,7 +100,14 @@ class UserService
 
   def self.save_experience(user:, actor:, params:)
     actor.ability.authorize! :update, user
-    user.experienced!(params[:experience], !params[:remove_experience])
+    name = params[:experience]
+    value = if params.has_key?(:remove_experience)
+      nil
+    else
+      params.fetch(:value, true)
+    end
+    user.experiences[name] = value
+    user.save!
     EventBus.broadcast('user_save_experience', user, actor, params)
   end
 end

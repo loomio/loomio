@@ -9,16 +9,9 @@ export default
   methods:
     togglePinned: ->
       if @user.experiences['sidebar']
-        Records.users.removeExperience('sidebar')
+        Records.users.saveExperience('sidebar', false)
       else
-        Records.users.saveExperience('sidebar')
-
-    toggleBeta: ->
-      if @user.experiences['betaFeatures']
-        Records.users.removeExperience('betaFeatures')
-      else
-        Records.users.saveExperience('betaFeatures')
-        Flash.success("user_dropdown.beta_collab")
+        Records.users.saveExperience('sidebar', true)
 
     toggleDark: ->
       if @isDark
@@ -27,6 +20,9 @@ export default
       else
         Records.users.saveExperience('darkMode', true)
         @$vuetify.theme.dark = true
+
+    defaultDark: ->
+      (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
 
     signOut: ->
       Session.signOut()
@@ -70,15 +66,6 @@ div.user-dropdown
       v-list-item-title(v-t="'user_dropdown.disable_dark_mode'")
       v-list-item-icon
         v-icon mdi-white-balance-sunny
-  template(v-if="showBeta")
-    v-list-item(v-if="!user.experiences['betaFeatures']" @click="toggleBeta" dense)
-        v-list-item-title(v-t="'user_dropdown.enable_beta_features'")
-        v-list-item-icon
-          v-icon mdi-flask-outline
-    v-list-item(v-if="user.experiences['betaFeatures']" @click="toggleBeta" dense)
-        v-list-item-title(v-t="'user_dropdown.disable_beta_features'")
-        v-list-item-icon
-          v-icon mdi-flask-empty-off-outline
   v-list-item(v-if="showHelp", :href="helpLink", target="_blank" dense)
     v-list-item-title(v-t="'user_dropdown.help'")
     v-list-item-icon

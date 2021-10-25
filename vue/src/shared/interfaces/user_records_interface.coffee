@@ -45,11 +45,8 @@ export default class UserRecordsInterface extends BaseRecordsInterface
 
   destroy: => @remote.delete '/'
 
-  saveExperience: (experience) =>
-    @remote.post('save_experience', experience: experience)
-
-  removeExperience: (experience) =>
-    @remote.post('save_experience', experience: experience, remove_experience: 1)
+  saveExperience: (name, value = true) =>
+    @remote.post('save_experience', experience: name, value: value)
 
   emailStatus: (email, token) ->
     @fetch
