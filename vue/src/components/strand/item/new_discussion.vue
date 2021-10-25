@@ -10,6 +10,10 @@ export default
     eventable: Object
     collapsed: Boolean
 
+  watch:
+    'eventable.newestFirst': ->
+      @actions = ThreadService.actions(@eventable, @)
+
   data: ->
     actions: ThreadService.actions(@eventable, @)
 

@@ -80,9 +80,7 @@ export default
         newItems = []
         parentIndexes = []
 
-        console.log "before:"
         itemsArray.forEach (item, index) =>
-          console.log "index #{index} item.key #{item.key} item.depth #{item.depth} descendantCount #{item.descendantCount}"
           parentIndexes.push index if item.depth == 1
 
         parentIndexes.reverse()
@@ -90,13 +88,7 @@ export default
         parentIndexes.forEach (index) =>
           item = itemsArray[index]
           slice = itemsArray.slice(index, index + item.descendantCount + 1)
-          console.log "index: #{index} slice: #{slice}"
-          Array.prototype.push.apply newItems, slice
-
-        console.log "reversed:"
-        newItems.forEach (item, index) =>
-          console.log "index #{index} item.key #{item.key} item.depth #{item.depth} descendantCount #{item.descendantCount}"
-
+          Array.prototype.push.apply(newItems, slice)
 
         @items = newItems
       else
@@ -138,13 +130,13 @@ export default
     @watchRecords
       key: 'thread-nav'+@discussion.id
       collections: ["events", "discussions"]
-      query: => @buildItems(bootData)
+      query: =>
+        @buildItems(bootData) if bootData.length
 
     EventBus.$on 'visibleKeys', (keys) =>
       @visibleKeys = keys
       @items.forEach (item) =>
         item.visible = @visibleKeys.includes(item.key)
-      console.log @visibleKeys
 
 </script>
 
@@ -160,7 +152,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
       :to="baseUrl+'/'+item.sequenceId")
         .strand-nav__stance-icon-container(v-if="item.poll")
           poll-common-icon-panel.poll-proposal-chart-panel__chart.mr-1(:poll="item.poll" show-my-stance :size="18" :stanceSize="12")
-        span {{item.key}}
+        //- span {{item.key}}
         span {{item.title}}
 </template>
 

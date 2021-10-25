@@ -80,7 +80,7 @@ export default class ThreadLoader
         per: 1000
 
   autoLoadAfter: (obj) ->
-    if (obj.event.depth == 1) || (obj.missingAfterCount && obj.missingAfterCount < @maxAutoLoadMore)
+    if (!@discussion.newestFirst && obj.event.depth == 1) || (obj.missingAfterCount && obj.missingAfterCount < @maxAutoLoadMore)
       @loadAfter(obj.event)
 
   loadAfter: (event) ->
@@ -88,7 +88,7 @@ export default class ThreadLoader
     @fetch()
 
   autoLoadBefore: (obj) ->
-    if obj.missingEarlierCount && obj.missingEarlierCount < @maxAutoLoadMore
+    if (@discussion.newestFirst && obj.event.depth == 1) || (obj.missingEarlierCount && obj.missingEarlierCount < @maxAutoLoadMore)
       @loadBefore(obj.event)
 
   loadBefore: (event) ->
