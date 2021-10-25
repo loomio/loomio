@@ -173,12 +173,8 @@ export default
         Records.users.saveExperience('html-editor.uses-markdown')
 
     toggleExpanded: ->
-      if !@expanded
-        @expanded = true
-        Records.users.saveExperience('html-editor.expanded')
-      else
-        @expanded = false
-        Records.users.removeExperience('html-editor.expanded')
+      @expanded = !@expanded
+      Records.users.saveExperience('html-editor.expanded', @expanded)
 
     setLinkUrl: ->
       if @linkUrl
