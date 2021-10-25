@@ -80,58 +80,58 @@ export default class ThreadLoader
         per: 1000
 
   autoLoadAfter: (obj) ->
-    if (obj.event.depth == 1) || (obj.missingAfterCount && obj.missingAfterCount < @maxAutoLoadMore)
-      @loadAfter(obj.event)
+    if (!@discussion.newestFirst && obj.event.depth == 1) || (obj.missingAfterCount && obj.missingAfterCount < @maxAutoLoadMore)
+      @loadAfter(obj.event, obj.missingAfterCount)
 
-  loadAfter: (event) ->
-    @addLoadAfterRule(event)
+  loadAfter: (event, limit = null) ->
+    @addLoadAfterRule(event, limit)
     @fetch()
 
   autoLoadBefore: (obj) ->
-    if obj.missingEarlierCount && obj.missingEarlierCount < @maxAutoLoadMore
-      @loadBefore(obj.event)
+    if (@discussion.newestFirst && obj.event.depth == 1) || (obj.missingEarlierCount && obj.missingEarlierCount < @maxAutoLoadMore)
+      @loadBefore(obj.event, obj.missingEarlierCount)
 
-  loadBefore: (event) ->
+  loadBefore: (event, limit = null) ->
     @loading = 'before'+event.id
-    @addLoadBeforeRule(event)
+    @addLoadBeforeRule(event, limit)
     @fetch()
 
-  autoLoadChildren: (obj) ->
-    if obj.missingChildCount && (obj.missingChildCount < @maxAutoLoadMore)
-      @loadChildren(obj.event)
+  # autoLoadChildren: (obj) ->
+  #   if obj.missingChildCount && (obj.missingChildCount < @maxAutoLoadMore)
+  #     @loadChildren(obj.event)
+  #
+  # loadChildren: (event) ->
+  #   @loading = 'children'+event.id
+  #   if event.kind == "new_discussion"
+  #     @addRuleAndFetch
+  #       name: "load discussion children"
+  #       local:
+  #         find:
+  #           discussionId: @discussion.id
+  #         simplesort: 'id'
+  #         limit: @padding
+  #       remote:
+  #         discussion_id: @discussion.id
+  #         order_by: 'position_key'
+  #         per: @padding
+  #   else
+  #     @addLoadAfterRule(event)
+  #     # @addRuleAndFetch
+  #     #   name: "load children (prefix #{event.positionKey})"
+  #     #   local:
+  #     #     find:
+  #     #       discussionId: @discussion.id
+  #     #       positionKey: {'$regex': "^#{event.positionKey}"}
+  #     #     simplesort: 'positionKey'
+  #     #     limit: @padding
+  #     #   remote:
+  #     #     discussion_id: @discussion.id
+  #     #     position_key_sw: event.positionKey
+  #     #     depth_gt: event.depth
+  #     #     order_by: 'position_key'
+  #     #     per: @padding
 
-  loadChildren: (event) ->
-    @loading = 'children'+event.id
-    if event.kind == "new_discussion"
-      @addRuleAndFetch
-        name: "load discussion children"
-        local:
-          find:
-            discussionId: @discussion.id
-          simplesort: 'id'
-          limit: @padding
-        remote:
-          discussion_id: @discussion.id
-          order_by: 'position_key'
-          per: @padding
-    else
-      @addLoadAfterRule(event)
-      # @addRuleAndFetch
-      #   name: "load children (prefix #{event.positionKey})"
-      #   local:
-      #     find:
-      #       discussionId: @discussion.id
-      #       positionKey: {'$regex': "^#{event.positionKey}"}
-      #     simplesort: 'positionKey'
-      #     limit: @padding
-      #   remote:
-      #     discussion_id: @discussion.id
-      #     position_key_sw: event.positionKey
-      #     depth_gt: event.depth
-      #     order_by: 'position_key'
-      #     per: @padding
-
-  addLoadAfterRule: (event) ->
+  addLoadAfterRule: (event, limit = null) ->
     # keys = event.positionKey.split('-')
     # num = parseInt(keys[keys.length - 1]) + 1
     # key = "0".repeat(5 - (""+num).length) + num
@@ -151,15 +151,15 @@ export default class ThreadLoader
             $jgt: positionKey
             # $regex: (positionKeyPrefix && "^#{positionKeyPrefix}") || undefined
         simplesort: 'id'
-        limit: @padding
+        limit: limit || @padding
       remote:
         discussion_id: @discussion.id
         position_key_gt: positionKey
         # position_key_sw: positionKeyPrefix || null
         order_by: 'position_key'
-        per: @padding
+        per: limit || @padding
 
-  addLoadBeforeRule: (event) ->
+  addLoadBeforeRule: (event, limit) ->
     positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
     @addRule
       name: "load before (prefix #{positionKeyPrefix})"
@@ -171,14 +171,14 @@ export default class ThreadLoader
             $regex: (positionKeyPrefix && "^#{positionKeyPrefix}") || undefined
         simplesort: 'sequenceId'
         simplesortDesc: true
-        limit: @padding
+        limit: limit || @padding
       remote:
         discussion_id: @discussion.id
         position_key_lt: event.positionKey
         position_key_sw: positionKeyPrefix || null
         order_by: 'position_key'
         order_desc: 1
-        per: @padding
+        per: limit || @padding
 
   addLoadCommentRule: (commentId) ->
     @titleKey = 'strand_nav.from_comment'

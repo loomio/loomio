@@ -9,7 +9,7 @@ class API::V1::EventsController < API::V1::RestfulController
     load_and_authorize(:discussion)
     data = Event.where(discussion_id: params[:discussion_id])
                 .order(:position_key)
-                .pluck(:position_key, :sequence_id, :created_at, :user_id)
+                .pluck(:position_key, :sequence_id, :created_at, :user_id, :depth, :descendant_count)
     render json: data.to_json, root: 'timeline'
   end
 
