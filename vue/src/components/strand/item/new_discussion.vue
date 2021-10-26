@@ -3,8 +3,11 @@ import ThreadService  from '@/shared/services/thread_service'
 import { map, compact, pick, pickBy } from 'lodash'
 import EventBus from '@/shared/services/event_bus'
 import openModal      from '@/shared/helpers/open_modal'
+import StrandActionsPanel from '@/components/strand/actions_panel'
 
 export default
+  components:
+    StrandActionsPanel: StrandActionsPanel
   props:
     event: Object
     eventable: Object
@@ -98,6 +101,7 @@ export default
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
     action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions')
+  strand-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
 </template>
 <style lang="sass">
 @import '@/css/variables'
