@@ -194,19 +194,19 @@ export default class ThreadLoader
         discussion_id: @discussion.id
         comment_id: commentId
 
-  addLoadPinnedRule: ->
-    @titleKey = 'strand_nav.all_pinned'
-    @addRule
-      name: "all pinned events"
-      local:
-        find:
-          discussionId: @discussion.id
-          pinned: true
-        # position: {$gte: position}
-      remote:
-        discussion_id: @discussion.id
-        pinned: true
-        per: 200
+  # addLoadPinnedRule: ->
+  #   @titleKey = 'strand_nav.all_pinned'
+  #   @addRule
+  #     name: "all pinned events"
+  #     local:
+  #       find:
+  #         discussionId: @discussion.id
+  #         pinned: true
+  #       # position: {$gte: position}
+  #     remote:
+  #       discussion_id: @discussion.id
+  #       pinned: true
+  #       per: 200
 
   addLoadPositionRule: (position) ->
     @addRule
