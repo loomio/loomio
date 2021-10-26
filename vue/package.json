@@ -66,7 +66,7 @@
     "jstimezonedetect": "~1.0.7",
     "lodash": "latest",
     "lokijs": "1.5.12",
-    "marked": "^3.0.4",
+    "marked": "^3.0.8",
     "md5": "2.3.0",
     "object.fromentries": "^2.0.5",
     "posthog-js": "^1.15.3",
