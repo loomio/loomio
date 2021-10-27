@@ -7,6 +7,7 @@ import PollCreated from '@/components/strand/item/poll_created.vue'
 import StanceCreated from '@/components/strand/item/stance_created.vue'
 import StanceUpdated from '@/components/strand/item/stance_updated.vue'
 import OutcomeCreated from '@/components/strand/item/outcome_created.vue'
+import StrandItemRemoved from '@/components/strand/item/removed.vue'
 import StrandLoadMore from '@/components/strand/load_more.vue'
 import OtherKind from '@/components/strand/item/other_kind.vue'
 import RangeSet from '@/shared/services/range_set'
@@ -33,6 +34,7 @@ export default
     OtherKind: OtherKind
     StrandLoadMore: StrandLoadMore
     DiscussionEdited: DiscussionEdited
+    StrandItemRemoved: StrandItemRemoved
 
   computed:
     directedCollection: ->
@@ -103,10 +105,11 @@ export default
         .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event)")
           .strand-item__stem(:class="{'strand-item__stem--unread': obj.isUnread, 'strand-item__stem--focused': isFocused(obj.event)}")
       .strand-item__main
-        //- div {{[obj.event.sequenceId]}} {{obj.event.positionKey}} {{isFocused(obj.event)}} {{loader.focusAttrs}}
+        //- div {{obj.event.kind}} {{obj.event.discussionId}} {{obj.event.model().id}} {{[obj.event.sequenceId]}} {{obj.event.positionKey}} {{isFocused(obj.event)}} {{loader.focusAttrs}}
+        //- | obj.event.kind
         div(:class="classes(obj.event)" v-observe-visibility="{callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
-          component( :is="componentForKind(obj.event.kind)" :event='obj.event' :eventable="obj.eventable")
-
+          strand-item-removed(v-if="obj.eventable && obj.eventable.discardedAt" :event="obj.event" :eventable="obj.eventable")
+          component(v-else :is="componentForKind(obj.event.kind)" :event='obj.event' :eventable="obj.eventable")
         .strand-list__children.mt-2(v-if="obj.event.childCount")
           strand-list.flex-grow-1(:loader="loader" :collection="obj.children" :newest-first="obj.event.kind == 'new_discussion' && loader.discussion.newestFirst")
 
