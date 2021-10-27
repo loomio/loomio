@@ -86,8 +86,10 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
     end
 
     if body_format == 'html'
+      text.gsub!('"/rails/active_storage', '"'+lmo_asset_host+'/rails/active_storage')
       ReverseMarkdown.convert(var)
     else
+      text.gsub!('](/rails/active_storage', ']('+lmo_asset_host+'/rails/active_storage')
       var
     end
   end
