@@ -4,8 +4,12 @@ import {pickBy} from 'lodash'
 export default
   props:
     model: Object
-    actions: Object
-    menuActions: Object
+    actions:
+      type: Object
+      default: -> {}
+    menuActions:
+      type: Object
+      default: -> {}
     small: Boolean
     left: Boolean
   computed:
