@@ -8,6 +8,7 @@ export default new class RescueUnsavedEditsService
   okToLeave: (model) ->
     attrs = ['description', 'title', 'body', 'details', 'name', 'reason', 'statement']
     models = ((model && [model]) || @models)
+    models.forEach (m) -> m.beforeSave()
     if some(models, (m) -> intersection(attrs, m.modifiedAttributes()).length > 0)
       # console.log 'some modified', @models.map (m) ->
       #   modifiedAttrs = intersection(attrs, m.modifiedAttributes())
