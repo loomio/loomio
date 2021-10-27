@@ -311,15 +311,16 @@ div
             //- v-btn(icon v-if="expanded" @click='editor.chain().toggleUnderline().focus().run()' :outlined="editor.isActive('underline')",  :title="$t('formatting.underline')")
             //-   v-icon mdi-format-underline
             //-
-            text-highlight-btn(v-if="expanded" :editor="editor")
-            text-align-btn(v-if="expanded" :editor="editor")
 
             v-btn(icon v-if="expanded" @click='editor.chain().toggleBulletList().focus().run()' :outlined="editor.isActive('bulletList')"  :title="$t('formatting.bullet_list')")
               v-icon mdi-format-list-bulleted
-            //- v-btn(icon v-if="expanded" @click='editor.chain().toggleOrderedList().focus().run()' :outlined="editor.isActive('orderedList')"  :title="$t('formatting.number_list')")
-            //-   v-icon mdi-format-list-numbered
+            v-btn(icon v-if="expanded" @click='editor.chain().toggleOrderedList().focus().run()' :outlined="editor.isActive('orderedList')"  :title="$t('formatting.number_list')")
+              v-icon mdi-format-list-numbered
             v-btn(icon v-if="expanded" @click='editor.chain().toggleTaskList().focus().run()' :outlined="editor.isActive('taskList')"  :title="$t('formatting.check_list')")
               v-icon mdi-checkbox-marked-outline
+
+            text-highlight-btn(v-if="expanded" :editor="editor")
+            text-align-btn(v-if="expanded" :editor="editor")
 
             //- extra text marks
             template(v-if="expanded")

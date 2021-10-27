@@ -29,9 +29,8 @@ export default
 v-menu
   template(v-slot:activator="{ on, attrs }")
     div.rounded-lg
-      v-btn.drop-down-button.pl-1(icon v-on="on" :outlined="showOutline" :title="$t('formatting.alignment')")
+      v-btn.drop-down-button(icon v-on="on" :outlined="showOutline" :title="$t('formatting.alignment')")
         v-icon mdi-format-align-{{current}}
-        v-icon.menu-down-arrow mdi-menu-down
   v-list(dense)
     v-list-item(v-for="(item, index) in alignments" :key="index" :class="{ 'v-list-item--active': editor.isActive({ textAlign: item.value }) }" @click="editor.chain().focus().setTextAlign(item.value).run()")
       v-list-item-icon

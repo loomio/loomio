@@ -866,6 +866,7 @@ en:
   formatting:
     formatting_tools: Text formatting tools
     colors: Colors
+    highlight: Highlight
     alignment: Alignment
     lists: Lists
     expand: Show more formatting tools

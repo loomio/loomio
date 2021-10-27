@@ -29,7 +29,6 @@ v-menu
     div.rounded-lg.color-picker-btn
       v-btn.drop-down-button(:style="{'background-color': buttonBgColor, color: buttonFgColor}" icon v-on="on" v-bind="attrs" :title="$t('formatting.colors')")
         v-icon mdi-palette
-        v-icon.menu-down-arrow mdi-menu-down
   v-card.color-picker.pa-2
     .swatch.swatch-color(v-for="(value, key) in colors"
                          :class="{'swatch--selected': key == activeColorKey }"
