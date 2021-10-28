@@ -166,6 +166,7 @@ export default
     reset: ->
       @editor.chain().clearContent().run()
       @resetFiles()
+      @model.beforeSave = => @updateModel()
 
     convertToMd: ->
       if confirm I18n.t('formatting.markdown_confirm')
