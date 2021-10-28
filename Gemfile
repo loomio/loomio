@@ -97,7 +97,7 @@ group :production do
   gem 'rack-timeout'
   gem 'rails_12factor'
   gem 'rails_serve_static_assets'
-  gem 'newrelic_rpm'
+  # gem 'newrelic_rpm'
 end
 
 Dir.glob(File.join(File.dirname(__FILE__), 'plugins', '**', "Gemfile")) do |gemfile|
