@@ -15,6 +15,9 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
              :blocks
 
   def blocks
+    object.eventable.image_files.map do |file|
+      { type: 'image', image_url: file.url }
+    end
   end
 
   def icon_url
