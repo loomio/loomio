@@ -1,7 +1,7 @@
 class Slack::BaseSerializer < ActiveModel::Serializer
   include PrettyUrlHelper
-  attributes :text, :username, :icon_url, :channel, :attachments, :blocks
-
+  attributes :text, :username, :icon_url, :channel, :attachments
+  
   def text
     I18n.t(:"slack.#{object.kind}", text_options)
   end

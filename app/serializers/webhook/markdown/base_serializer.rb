@@ -11,7 +11,11 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
              :actor_name,
              :poll_type,
              :title,
-             :attachments
+             :attachments,
+             :blocks
+
+  def blocks
+  end
 
   def icon_url
     object.eventable.group.logo_url
