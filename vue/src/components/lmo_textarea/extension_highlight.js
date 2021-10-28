@@ -11,7 +11,7 @@ export const pasteRegex = /(?:^|\s)((?:==)((?:[^~]+))(?:==))/g
 export const Highlight = Mark.create({
   name: 'highlight',
 
-  defaultOptions: {
+  addOptions: {
     HTMLAttributes: {},
   },
 

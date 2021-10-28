@@ -11,8 +11,10 @@ export const Iframe = Node.create({
   group: 'block',
   selectable: false,
 
-  defaultOptions: {
-    HTMLAttributes: {},
+  addOptions() {
+    return {
+      HTMLAttributes: {}
+    }
   },
 
   addAttributes() {
