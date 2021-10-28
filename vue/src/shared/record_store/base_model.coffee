@@ -78,8 +78,6 @@ export default class BaseModel
   attributeIsModified: (attributeName) ->
     original = @unmodified[attributeName]
     current = @[attributeName]
-    original = '' if original == '<p></p>'
-    current = '' if current == '<p></p>' 
     if utils.isTimeAttribute(attributeName)
       !(original == current or isEqual(original, current))
     else
