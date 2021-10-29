@@ -15,16 +15,14 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
              :blocks
 
   def blocks
-    b = (object.eventable.image_files.concat object.eventable.files).map do |file|
-      if file.representable?
-        url = Rails.application.routes.url_helpers.rails_representation_url(
-          file.representation(HasRichText::PREVIEW_OPTIONS), host: ENV['CANONICAL_HOST']
-        )
-        { type: 'image', image_url: url }
+    (object.eventable.image_files.concat object.eventable.files).map do |file|
+      if file.previewable?
+        # url = Rails.application.routes.url_helpers.rails_representation_url(
+        #   file.representation(HasRichText::PREVIEW_OPTIONS), host: ENV['CANONICAL_HOST']
+        # )
+        { type: 'image', image_url: file.blob.preview(HasRichText::PREVIEW_OPTIONS).processed.service_url, alt_text: 'image' }
       end
     end.compact
-    puts "blocks!",b
-    b
   end
 
   def icon_url
