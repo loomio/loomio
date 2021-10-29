@@ -107,6 +107,7 @@ export default
       editorProps:
         scrollThreshold: 100
         scrollMargin: 100
+      autofocus: @autofocus
       extensions: [
         Blockquote
         Bold
