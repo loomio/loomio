@@ -8,6 +8,7 @@ export default new class EventService
     move_event:
       name: 'action_dock.move_item'
       menu: true
+      icon: 'mdi-call-split'
       kinds: ['new_discussion']
       perform: ->
         event.discussion().forkedEventIds.push(event.id)

@@ -7,11 +7,13 @@ class Group < ApplicationRecord
   include MessageChannel
   include GroupPrivacy
   include HasEvents
+  include Translatable
 
   extend HasTokens
   extend NoSpam
 
   is_rich_text    on: :description
+  is_translatable on: :description
   initialized_with_token :token
   no_spam_for :name, :description
 
