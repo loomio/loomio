@@ -54,9 +54,13 @@ module EmailHelper
     frag = Nokogiri::HTML::DocumentFragment.parse(str)
     frag.css('li[data-type="taskItem"]').each do |node|
       if node['data-checked'] == 'true'
-        node.prepend_child '<div class="email-checkbox">&nbsp;</div>'
-      else
         node.prepend_child '<div class="email-checkbox">✔️</div>'
+      else
+        node.prepend_child '<div class="email-checkbox">&nbsp;</div>'
+      end
+
+      if node['data-due-on']
+        node.add_child '<span class="mailer-tag">📅 '+node['data-due-on']+'</div>'
       end
     end
     frag.to_s
