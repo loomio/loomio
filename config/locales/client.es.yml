@@ -244,7 +244,7 @@ es:
       start: 'Empezar '
       delete: Eliminar
       unsubscribe: Cancelar suscripción
-      subscribe: Suscribirme a la lista de correo electrónico
+      subscribe: Suscribirme
       unignore: Dejar de ignorar
       remind: 'Recordar '
       resend: 'Reenviar '
