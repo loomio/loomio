@@ -8,7 +8,7 @@ export const CustomTaskItem = TaskItem.extend({
     return {
       uid: {
         default: Math.floor(Math.random() * 90000000),
-        parseHTML: element => ( parseInt(element.getAttribute('data-uid')) ),
+        parseHTML: element => ( parseInt(element.getAttribute('data-uid')) || Math.floor(Math.random() * 90000000) ),
         renderHTML: attributes => ({
           'data-uid': attributes.uid,
         }),
