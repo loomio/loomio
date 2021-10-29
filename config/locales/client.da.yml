@@ -227,6 +227,9 @@ da:
       threads_list: 'Debat handlinger'
       groups_list: 'Grupper'
       user_list: 'Bruger handlinger'
+  strand_nav:
+    newest_first: Nyeste først
+    oldest_first: Ældste først
   navbar:
     recent_title: 'Vis dashboard'
     unread_title: 'Vis ulæste aktiviteter'
@@ -729,7 +732,6 @@ da:
     notify_on_participate:
       title: Send en notifikation til mig når folk deltager
   poll_common_close_form:
-    title: Afslut en meningsmåling før tid
     close_proposal: Luk forslag
     close_poll: Afslut meningsmåling
     close_count: Afslut checkmåling

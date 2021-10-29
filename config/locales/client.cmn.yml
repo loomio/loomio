@@ -349,6 +349,9 @@ cmn:
       heading: '侧边栏'
       groups_list: '群组'
       user_list: '用户操作'
+  strand_nav:
+    newest: 最新
+    oldest: 最早
   navbar:
     search_all_threads: 搜索所有话题
     search_threads: '在 {{name}} 中搜索话题'
@@ -881,9 +884,7 @@ cmn:
   thread_arrangement_form:
     sorting: 最早还是最新优先？
     latest: 最新
-    latest_description: 先阅读最近更新
     earliest: 最早
-    earliest_description: 从开始阅读到结束
     replies: 如何显示回复？
   delete_thread_form:
     aria_label: '删除话题'

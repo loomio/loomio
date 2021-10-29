@@ -417,6 +417,11 @@ pt_BR:
       threads_list: 'Ações das conversas'
       groups_list: 'Grupos'
       user_list: 'Ações do usuário'
+  strand_nav:
+    newest: Mais recente
+    oldest: Mais antigo
+    newest_first: Mais recentes primeiro
+    oldest_first: Mais antigos primeiro
   navbar:
     search_all_threads: Buscar em todas as conversas
     search_threads: 'Buscar conversas em {{name}}'
@@ -1209,9 +1214,7 @@ pt_BR:
     for_everyone: Isso muda a disposição das coisas para todos, não só pra você.
     sorting: Mais antigo ou Mais recente primeiro?
     latest: Mais recente
-    latest_description: Ler o mais recente primeiro
     earliest: Mais antigo
-    earliest_description: Ler do início ao final
     replies: 'Como mostrar as respostas? '
     linear: Lista plana
     linear_description: Itens listados como aconteceram, um seguido de outro.
@@ -1424,7 +1427,6 @@ pt_BR:
       title: Eleitores podem responder "caso necessário"
       helptext_on: Eleitores podem indicar horários como "caso seja necessário".
   poll_common_close_form:
-    title: Encerrar uma consulta antes
     close_proposal: Encerrar proposta
     close_poll: Fechar enquete de escolha
     close_count: Fechar enquete de verificação
@@ -1766,18 +1768,6 @@ pt_BR:
       poll_reopened: Uma consulta foi reaberta para votação
     include_body_label: Incluir a mensagem na notificação.
     include_subgroups_label: Retransmitir eventos dos subgrupos
-  configure_sso:
-    redirecting: Por favor aguarde, redirecionando para o provedor
-    title: Conexão única
-    enabled: Single sign-on está habilitado
-    helptext: Integrar com OneLogin, Auth0, Microsoft Active Directory, ou outro provedor de SAML. <a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">Descubra mais</a>.
-    warning_helptext: "Atenção: Requer que você autentique com o seu provedor depois que clicar em Salvar."
-    idp_metadata_url: URL de Metadados IDP
-    idp_metadata_url_placeholder: https://app.meuprovedor.com/saml/metadata/abc123
-    success: Single sign-on configurado com sucesso
-    destroyed: Single sign-on eliminado
-    invalid_idp_metadata_url: URL de Metadados IDP inválido
-    sp_metadata_url: URL de Metadados SP
   browser_warning:
     message: "IMPORTANTE! Você está usando um navegador desatualizado {{name}} ({{version}}) que não é suportado pelo {{site}}."
     link: Por favor mude para outro navegador

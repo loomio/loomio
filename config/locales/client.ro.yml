@@ -586,8 +586,6 @@ ro:
     name: Nume
   webhook:
     name_label: Nume
-  configure_sso:
-    title: Autentificarea sign-on unic
   group_survey:
     success: Multumim!
     categories:

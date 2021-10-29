@@ -433,8 +433,10 @@ pl:
       groups_list: 'Grupy'
       user_list: 'Działania użytkownika'
   strand_nav:
-    newest_first: Najnowsza aktywność
-    oldest_first: Początek wątku
+    newest: Najnowsze
+    oldest: 'Od najstarszych '
+    newest_first: Od najnowszych
+    oldest_first: 'Od najstarszych '
     all_pinned: Wszystkie przypięte elementy
     whole_thread: Cały wątek
     from_comment: Z adresu URL komentarza
@@ -1313,9 +1315,7 @@ pl:
     for_everyone: To zmienia układ dla wszystkich, nie tylko dla ciebie.
     sorting: Od najstarszych czy od najnowszych?
     latest: Najnowsze
-    latest_description: 'przeczytaj najpierw najnowsze '
     earliest: 'Od najstarszych '
-    earliest_description: Czytaj od początku do końca
     replies: W jaki sposób wyświetlać odpowiedzi?
     linear: Płaska lista
     linear_description: Elementy wymienione tak, jak się pojawiły, jedna po drugiej.
@@ -1559,8 +1559,6 @@ pl:
       title: Ukryj wyniki aż do zakończenia
       helptext_on: Nie pokazuj, jak inni głosowali, dopóki ankieta nie zostanie zakończona
   poll_common_close_form:
-    title: Zakończ ankietę wcześniej
-    helptext: Czy na pewno chcesz zakończyć tą %{poll_type}wcześniej?
     close_proposal: Zamknij propozycję
     close_poll: Zamknij ankietę
     close_count: Zamknij sprawdzanie
@@ -1618,7 +1616,6 @@ pl:
     ranked_choice: 'Ta ankieta rankingowa została zakończona. <strong>Udostępnij wyniki</strong> grupie.'
     score: 'Ta ocena została zakończona. <strong>Udostępnij wyniki</strong> grupie.'
   poll_common_outcome_form:
-    who_to_notify: Kogo chcesz poinformować o tym wyniku?
     new_title: 'Wprowadź wynik '
     update_title: Zaktualizuj wynik
     outcome_created: Wynik utworzony
@@ -1944,18 +1941,6 @@ pl:
       outcome_created: 'Wynik jest udostępniony '
     include_body_label: 'Dołącz w powiadomieniu treść wiadomości '
     include_subgroups_label: Przekazywanie wydarzeń z podgrup
-  configure_sso:
-    redirecting: Proszę czekać, trwa przekierowywanie na stronę logowania
-    title: 'Pojedyncze logowanie '
-    enabled: Pojedyncze logowanie jest włączone
-    helptext: Integruj z OneLogin, Auth0, Microsoft Active Directory lub innym dostawcą SAML. <a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">Dowiedz się więcej</a>.
-    warning_helptext: "Uwaga: Po zapisaniu konieczne będzie uwierzytelnienie u dostawcy."
-    idp_metadata_url: Adres URL metadanych dostawcy tożsamości
-    idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
-    success: 'Pojedyncze logowanie zostało pomyślnie skonfigurowane '
-    destroyed: 'Wyłączono pojedyncze logowanie '
-    invalid_idp_metadata_url: Nieprawidłowy adres URL metadanych dostawcy tożsamości
-    sp_metadata_url: Adres URL metadanych usługodawcy
   browser_warning:
     message: "WAŻNE! Używasz nieaktualnej wersji przeglądarki ({{name}} {{version}}), która nie jest obsługiwana przez {{site}}."
     link: Przełącz się na inną przeglądarkę

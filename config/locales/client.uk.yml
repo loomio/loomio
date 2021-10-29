@@ -400,6 +400,11 @@ uk:
       threads_list: 'Пов''язані дії'
       groups_list: 'Групи'
       user_list: 'Дії користувача'
+  strand_nav:
+    newest: Найновіші
+    oldest: Найстарші
+    newest_first: Спочатку нові
+    oldest_first: Спочатку старі
   navbar:
     search_all_threads: Шукати у всіх темах
     search_threads: 'Шукати теми у {{name}}'
@@ -1158,9 +1163,7 @@ uk:
     for_everyone: Це змінює показ для всіх, не тільки для вас.
     sorting: Спочатку старі чи нові?
     latest: Найновіші
-    latest_description: Спочатку прочитайте найновіші дописи
     earliest: Найстарші
-    earliest_description: Читати від початку до кінця
     replies: Як відображати відповіді?
     linear: Плаский список
     linear_description: Елементи надані в тій послідовності, як вони відбувалися, один за одним.
@@ -1370,7 +1373,6 @@ uk:
       title: Виборці можуть відповісти "у разі потреби"
       helptext_on: Виборці можуть вказувати час як "у разі потреби"
   poll_common_close_form:
-    title: Закрити опитування раніше
     close_proposal: Закрити пропозицію
     close_poll: Закрити опитування
     close_count: Закрити контрольний список

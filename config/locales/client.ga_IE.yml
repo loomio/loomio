@@ -613,8 +613,6 @@ ga_IE:
       microsoft: Microsoft Teams
       slack: Slack
     name_label: Ainm
-  configure_sso:
-    idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
   group_survey:
     success: Go raibh maith agat!
     categories:

@@ -515,8 +515,6 @@ sr:
     name_placeholder: Tvoje ime
   webhook:
     name_label: Ime
-  configure_sso:
-    title: Jednokratni upis
   group_survey:
     categories:
       community: Grupa zajednice

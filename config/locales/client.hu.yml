@@ -385,6 +385,11 @@ hu:
       threads_list: 'Téma műveletek'
       groups_list: 'Csoportok'
       user_list: 'Felhasználói tevékenység'
+  strand_nav:
+    newest: Legújabb
+    oldest: Legrégebbi
+    newest_first: Először a legújabb
+    oldest_first: A legrégebbi előbb
   navbar:
     search_all_threads: Keresés minden témában
     search_threads: 'Keresés a témákban itt: {{name}}'
@@ -1287,7 +1292,6 @@ hu:
       title: A szavazók válaszolhatnak "ha szükséges"
       helptext_on: A szavazók jelölhetik az időpontokat "ha szükséges"
   poll_common_close_form:
-    title: Szavazás lezárása a határidő előtt
     close_proposal: Bezárja a javaslatot
     close_poll: Bezárja a szavazást
     close_count: Felmérés lezárása
@@ -1601,8 +1605,6 @@ hu:
     name_label: Név
     event_kinds:
       poll_closing_soon: A szavazás hamarosan lejár
-  configure_sso:
-    title: Egyszeri felíratkozás
   browser_warning:
     message: "FONTOS! Egy elavult böngészőt használsz ({{name}} {{version}}), amelyet a {{site}} nem támogat."
     link: Kérünk válts egy másik böngészőre

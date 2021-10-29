@@ -1,10 +1,6 @@
 ar:
   explore:
     header: استكشف المجموعات العامة
-  saml_providers:
-    invitation_created:
-      success: "نجاح!  يرجى التحقق من البريد الوارد%{email} الخاص بك للحصول على رابط للانضمام إلى%{group_name}."
-      error: "تعذر على مقدم خدمة SAML مصادقة%{email} لـ%{group_name}."
   activerecord:
     errors:
       messages:

@@ -154,6 +154,7 @@ zh_TW:
   timezones:
     local: 本地時間 ({{value}})
   common:
+    optional: （選擇性）
     version: 版本
     none: 無
     empty: 空
@@ -484,8 +485,10 @@ zh_TW:
       groups_list: '群組'
       user_list: '使用者動作'
   strand_nav:
-    newest_first: 最後活動
-    oldest_first: 討論串開始
+    newest: 最新
+    oldest: 最舊
+    newest_first: 最新的放在最前面
+    oldest_first: 最舊的放在最前面
     all_pinned: 所有釘選的項目
     whole_thread: 整個討論串
     from_comment: 從留言 URL
@@ -810,6 +813,7 @@ zh_TW:
   formatting:
     formatting_tools: 文字格式化工具
     colors: 顏色
+    highlight: 強調
     alignment: 對齊
     lists: 列表
     expand: 顯示更多格式化工具
@@ -1467,9 +1471,9 @@ zh_TW:
     for_everyone: 這會對所有人變更佈局，不是只有你。
     sorting: 最舊還是最新優先？
     latest: 最新
-    latest_description: 先閱讀最新的東西
+    latest_description: 先閱讀最新的項目
     earliest: 最舊
-    earliest_description: 從開始閱讀到結束
+    earliest_description: 在檢視新評論前先顯示舊評論
     replies: 如何顯示回覆？
     linear: 扁平清單
     linear_description: 列出發生的項目，一個接著一個。
@@ -1564,6 +1568,7 @@ zh_TW:
     results: 結果
     responses: 回應
     close_poll_type: 關閉 {{pollType}}
+    close_early: 提早關閉
     totals: 全部
     participate: 參與
     vote: 投票
@@ -1728,8 +1733,8 @@ zh_TW:
       title: 隱藏結果直到關閉
       helptext_on: 在投票關閉前，不要顯示有多少人已投票
   poll_common_close_form:
-    title: 提前關閉投票
-    helptext: 您確定您想要提早關閉此 %{poll_type}？
+    title: 立刻關閉 %{poll_type}？
+    helptext: 您確定您想要提早關閉此 %{poll_type} 並分享結果？
     close_proposal: 提議定案
     close_poll: 關閉投票
     close_count: 關閉勾選
@@ -1791,7 +1796,9 @@ zh_TW:
     ranked_choice: '這個排序投票已關閉。與群組<strong>分享結果</strong>。'
     score: '此分數投票已關閉。與群組<strong>分享結果</strong>。'
   poll_common_outcome_form:
-    who_to_notify: 您想通知此結果給誰？
+    review_date: 審閱日期
+    review_date_hint: 設定提醒審查結果的日期（選擇性）
+    who_to_notify: 您想將此結果通知誰？（選擇性）
     new_title: 輸入結果
     update_title: 更新結果
     outcome_created: 結果已建立
@@ -2175,18 +2182,6 @@ zh_TW:
       read_memberships: 讀取成員資格
     include_body_label: 在通知中包含訊息正文
     include_subgroups_label: 中繼來自子群組的事件
-  configure_sso:
-    redirecting: 請稍候，正在重新島向到登入提供者
-    title: 單一登入
-    enabled: 單一登入已啟用
-    helptext: 整合 OneLogin、Auth0、Microsoft Active Directory 或其他 SAML 提供者。<a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">取得更多資訊</a>。
-    warning_helptext: "警告：點擊儲存後，您將必須與提供商進行身份驗證。"
-    idp_metadata_url: IDP 詮釋資料 URL
-    idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
-    success: 已成功設定單一登入
-    destroyed: 已移除單一登入
-    invalid_idp_metadata_url: 無效的 IDP 詮釋資料 URL
-    sp_metadata_url: SP 詮釋資料 URL
   browser_warning:
     message: "重要！您正在使用已不被 {{site}} 支援的舊版瀏覽器 ({{name}} {{version}})。"
     link: 請切換到其他瀏覽器

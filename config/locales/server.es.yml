@@ -1,10 +1,6 @@
 es:
   explore:
     header: Explorar grupos públicos
-  saml_providers:
-    invitation_created:
-      success: "Victoria! por favor verifique su %{email} bandeja de entrada para un enlace para unirte a %{group_name}."
-      error: "Su proveedor SAML no pudo autentificar %{email} para %{group_name}."
   activerecord:
     errors:
       messages:
@@ -93,6 +89,7 @@ es:
       title: Título
       author: Autor
       email: Correo Electrónico
+      user_id: Usuario ID
       created_at: 'Creada en '
       closing_at: Cerrando en
       closed_at: 'Cerró a '
@@ -406,6 +403,14 @@ es:
           Las imágenes son las mismas, pero prefijadas con un signo de exclamación. El título se usa como texto alternativo.
 
           ![El logo de loomio](https://i.imgur.com/Fvtworb.png)
+  task_mailer:
+    task_due_reminder:
+      subject: "Recordatorio de tarea: %{name}"
+      greeting: "Hola %{name}, la siguiente tarea debe realizarse %{due}:"
+      view_task: "Ver en %{site_name}"
+      update_or_comment: "Si ya has completado esta tarea, por favor haz clic. Si no está completa, por favor comparte una actualización de progreso."
+      due_today: 'hoy'
+      due_in_count_days: '%{count} días'
   group_mailer:
     resend: 'RECORDATORIO: %{member} está esperando que te unas %{group_name}'
   poll_mailer:
@@ -435,6 +440,7 @@ es:
       poll_edited: '%{actor}editado el%{poll_type}:%{title}'
       poll_reminder: '%{actor}te está recordando que votes:%{title}'
       poll_announced: '%{actor}te invitó a votar en un %{poll_type}:%{title}'
+      poll_announced_wip: '%{actor} te ha invitado a dar una opinión sobre %{poll_type}: %{title}'
       poll_closing_soon: '%{poll_type}cierra en 24 horas:%{title}'
       poll_closing_soon_author: 'Tu %{poll_type}cierra en 24 horas:%{title}'
       poll_expired: "%{poll_type}ha cerrado:%{title}"
@@ -454,7 +460,9 @@ es:
       poll_created: '<strong>%{actor}</strong>comenzó un %{poll_type}'
       poll_edited: '<strong>%{actor}</strong>editado un%{poll_type}'
       poll_reminder: '<strong>%{actor}</strong> te está recordando que votes'
+      poll_reminder_wip: '<strong>%{actor}</strong>te recuerda dejar comentarios'
       poll_announced: '<strong>%{actor}</strong>te invitó a votar en un %{poll_type}'
+      poll_announced_wip: '<strong>%{actor}</strong> te invitó a dar comentarios acerca de %{poll_type}'
       poll_closing_soon: '<strong>%{actor}</strong>''s%{poll_type} cerrará en 24 horas. Ahora es una buena oportunidad para votar, cambiar de opinión o animar a otros para que participen.'
       poll_closing_soon_author: 'Tu %{poll_type}cerrará en 24 horas - ahora es una oportunidad estupenda para recordar a la gente de esto o prolongar la fecha límite si fuera necesario.'
       poll_expired: "<strong>%{actor}'s</strong>%{poll_type} ha cerrado:%{title}"

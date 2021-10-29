@@ -423,8 +423,6 @@ ko:
       groups_list: '그룹'
       user_list: '사용자 액션'
   strand_nav:
-    newest_first: 최근 활동
-    oldest_first: 스레드 시작
     all_pinned: 고정된 모든 항목
     whole_thread: 전체 스레드
     from_comment: 댓글 url로부터

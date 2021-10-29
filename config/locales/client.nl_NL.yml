@@ -462,8 +462,10 @@ nl_NL:
       groups_list: 'Groepen'
       user_list: 'Gebruikersacties'
   strand_nav:
-    newest_first: Laatste activiteit
-    oldest_first: Start van het bord
+    newest: Nieuwste
+    oldest: Oudste
+    newest_first: Nieuwste eerst
+    oldest_first: Oudste eerst
     all_pinned: Alle vastgeprikte items
     whole_thread: Het hele bord
     from_comment: Van een reactie url
@@ -1374,9 +1376,7 @@ nl_NL:
     for_everyone: Dit veranderd de layout voor iedereen, niet enkel voor jou.
     sorting: Oudste of nieuwste eerst?
     latest: Nieuwste
-    latest_description: Lees de nieuwste dingen eerst
     earliest: Oudste
-    earliest_description: Lees van begin tot einde
     replies: Hoe antwoorden weergeven?
     linear: Platte lijst
     linear_description: Items opgelijst zoals plaatsgevonden, één voor één achter elkaar.
@@ -1620,8 +1620,6 @@ nl_NL:
       title: Verberg resultaten tot sluiting van de peiling
       helptext_on: Toon niet hoe mensen stemmen tot de peiling gesloten is
   poll_common_close_form:
-    title: Sluit een peiling voortijdig
-    helptext: Weet je zeker dat je deze %{poll_type} vervroegd wil sluiten?
     close_proposal: Voorstel sluiten
     close_poll: Peiling sluiten
     close_count: '''Check'' sluiten'
@@ -1679,7 +1677,6 @@ nl_NL:
     ranked_choice: 'Deze ''Keuzes rangschikken'' peiling werd gesloten<strong> Deel het resultaat</strong> met de groep.'
     score: 'De score peiling is gesloten. <strong>Deel het resultaat</strong> met de groep.'
   poll_common_outcome_form:
-    who_to_notify: Wil je iemand een melding geven over dit resultaat?
     new_title: Voer een resultaat in
     update_title: Resultaat vernieuwen
     outcome_created: Resultaat aangemaakt
@@ -2018,18 +2015,6 @@ nl_NL:
       show_poll: toon peiling
     include_body_label: inclusief message body met melding
     include_subgroups_label: Inclusief gebeurtenissen van sub-groepen
-  configure_sso:
-    redirecting: Even geduld, je wordt omgeleid naar je sign-in leverancier
-    title: Enkelvoudig aanmelden
-    enabled: Single sign-on werd geactiveerd
-    helptext: Integreer met OneLogin, Auth0, Microsoft Active Directory, of elke andere SAML Provider. <a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">Meer informatie</a>.
-    warning_helptext: "Waarschuwing: Je moet jezelf nu authenticeren bij de provider nadat je op bewaren klikt."
-    idp_metadata_url: IDP Metadata URL
-    idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
-    success: Single sign-on is geconfigureerd.
-    destroyed: Single sign-on verwijderd
-    invalid_idp_metadata_url: Ongeldige IDP metadata URL
-    sp_metadata_url: SP Metadata URL
   browser_warning:
     message: "BELANGRIJK! Je gebruikt een verouderde browser ({{name}} {{version}}) welke {{site}} niet ondersteund."
     link: Gelieve over te schakelen op een andere browser

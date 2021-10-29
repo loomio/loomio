@@ -318,6 +318,9 @@ he:
       threads_list: 'פעולות בשיחות'
       groups_list: 'קבוצות'
       user_list: 'פעולות משתמש'
+  strand_nav:
+    newest_first: הכי חדש קודם
+    oldest_first: הכי ישן קודם
   navbar:
     recent_title: 'עבור לדשבורד'
     unread_title: 'צפה בפעילות שלא נקראה'
@@ -1095,7 +1098,6 @@ he:
       title: מצביעים יכולים להשיב "אם נדרש"
       helptext_on: מצביעעים יכולים לציין זמנים כ-"אם יש צורך"
   poll_common_close_form:
-    title: סגור סקר מוקדם
     close_proposal: סגור הצעה
     close_poll: סגור סקר
     close_count: סגור בדיקה

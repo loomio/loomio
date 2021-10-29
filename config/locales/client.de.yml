@@ -451,8 +451,10 @@ de:
       groups_list: 'Gruppen'
       user_list: 'Benutzer-Aktionen'
   strand_nav:
-    newest_first: Letzte Aktivität
-    oldest_first: Anfang der Diskussion
+    newest: Neueste
+    oldest: 'Älteste '
+    newest_first: Neueste zuerst
+    oldest_first: Älteste zuerst
     all_pinned: Alle angehefteten Elemente
     whole_thread: Die ganze Diskussion
     from_comment: Von einer Kommentar URL
@@ -1404,9 +1406,7 @@ de:
     for_everyone: Dies ändert die Anordnung für alle, nicht nur für dich.
     sorting: Älteste oder Neueste zuerst?
     latest: Neueste
-    latest_description: Neueste Beiträge zuerst lesen
     earliest: 'Älteste '
-    earliest_description: Von Anfang bis Ende lesen
     replies: Wie sollen Antworten angezeigt werden?
     linear: Flache Liste
     linear_description: Einträge in der Reihenfolge des Erstellens auflisten
@@ -1651,8 +1651,6 @@ de:
       title: Ergebnisse ausblenden bis Abstimmung geschlossen
       helptext_on: Zeigen nicht an, wie Personen abgestimmt haben, bis die Umfrage geschlossen ist
   poll_common_close_form:
-    title: Umfrage früher beenden
-    helptext: Bis Du sicher, dass du diese %{poll_type}frühzeitig schließen möchtest?
     close_proposal: Vorschlag schließen
     close_poll: Abstimmung vorzeitig beenden
     close_count: Bestätigung vorzeitig beenden
@@ -1710,7 +1708,6 @@ de:
     ranked_choice: 'Diese Prioritätensetzung wurde beendet. <strong>Verkünde das Ergebnis</strong> mit der Gruppe.'
     score: 'Diese Bewertungsumfrage ist abgeschlossen. <storng>Teile ein Ergebnis</strong> mit der Gruppe.'
   poll_common_outcome_form:
-    who_to_notify: Wen möchtest du über das Ergebnis benachrichtigen?
     new_title: 'Ergebnis einfügen '
     update_title: Abstimmungsergebnis aktualisieren
     outcome_created: Ergebnis erschaffen
@@ -2086,18 +2083,6 @@ de:
       read_memberships: Lese Mitgliedschaften
     include_body_label: Nachrichtentext in die Benachrichtigung aufnehmen
     include_subgroups_label: Übertrage Ereignisse von Untergruppen
-  configure_sso:
-    redirecting: TODO_DE_Please wait, redirecting to sign-in provider
-    title: Einfaches Registrieren
-    enabled: TODO_DE_Single sign-on is enabled
-    helptext: TODO_DE_Integrate with OneLogin, Auth0, Microsoft Active Directory, or any other SAML Provider. <a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">Learn more</a>.
-    warning_helptext: "TODO_DE_Warning: You'll be required to authenticate with your provider after you click save."
-    idp_metadata_url: TODO_DE_IDP Metadata URL
-    idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
-    success: TODO_DE_Single sign-on successfully configured
-    destroyed: TODO_DE_Single sign-on removed
-    invalid_idp_metadata_url: TODO_DE_Invalid IDP metadata URL
-    sp_metadata_url: TODO_DE_SP Metadata URL
   browser_warning:
     message: "WICHTIG! Sie verwenden einen veralteten Browser ({{name}} {{version}}), der von {{site}} nicht unterstützt wird."
     link: Bitte wechseln Sie zu einem anderen Browser
