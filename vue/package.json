@@ -56,7 +56,6 @@
     "@tiptap/vue-2": "latest",
     "activestorage": "^5.2.6",
     "array-flat-polyfill": "^1.0.1",
-    "core-js": "^2.6.11",
     "date-fns": "2.25.0",
     "date-fns-tz": "1.1.6",
     "deepmerge": "^4.2.2",
