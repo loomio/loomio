@@ -9,7 +9,7 @@ export default new class EventService
       name: 'action_dock.move_item'
       menu: true
       icon: 'mdi-call-split'
-      kinds: ['new_discussion']
+      kinds: ['new_discussion', 'poll_created', 'new_comment']
       perform: ->
         event.discussion().forkedEventIds.push(event.id)
       canPerform: ->
