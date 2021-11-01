@@ -140,9 +140,10 @@ export default class BaseModel
     @[name] = =>
       if @[args.by]
         return obj if obj = @recordStore[args.from].find(@[args.by])
-        obj = @recordStore[args.from].create(id: @[args.by])
-        @recordStore[args.from].addMissing(@[args.by])
-        return obj
+        if @constructor.lazyLoad
+          obj = @recordStore[args.from].create(id: @[args.by])
+          @recordStore[args.from].addMissing(@[args.by])
+          return obj
       return @recordStore[args.from].nullModel()
     @[name+'Is'] = (obj) => @recordStore[args.from].find(@[args.by]) == obj
 
@@ -169,16 +170,7 @@ export default class BaseModel
       recordType = @[assoc+'Type']
       recordId = @[assoc+'Id']
       collection = typeMap[recordType]
-      return unless recordType
-      # console.log 'called.. @, name, assoc, recordType, recordId, collection', @, @id, name, assoc, recordType, recordId, collection
-
-      return @recordStore[collection].find(recordId)
-
-      # if recordId
-      #   @recordStore[collection].find(recordId)
-      # else
-      #   @recordStore[collection].nullModel()
-
+      @recordStore[collection].find(recordId)
 
   translationOptions: ->
 
