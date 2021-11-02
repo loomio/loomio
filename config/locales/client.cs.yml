@@ -98,6 +98,7 @@ cs:
       show_more: "Zobrazit více"
       view_all: "Zobrazit vše"
       new_thread: "Nové vlákno"
+      add_subgroup: 'Nová podskupina'
       loading: 'Načítá se'
       translate: 'Přeložit'
       upload: 'Nahrát'
@@ -106,6 +107,7 @@ cs:
       share: Sdílet
       ok: Ok
       retry: Opakovat
+      clear: Vyčistit
       done: Hotovo
       start: Zahájit
       delete: Odstranit
@@ -217,6 +219,7 @@ cs:
     cancel_reply: 'Zrušit odpověď'
     confirm_delete_message: 'Opravdu chcete odstranit tento komentář?'
     confirm_delete: 'Odstranit komentář'
+    in_reply_to: "Odpovědět {{name}}"
     post_comment: "Odeslat komentář"
     submit_button:
       label: 'Odeslat'
@@ -228,6 +231,7 @@ cs:
     recent_threads: 'Aktuální vlákna'
     unread_threads: 'Nepřečtená vlákna ({{count}})'
     muted_threads: 'Ztlumená vlákna'
+    start_subgroup: 'Nová podskupina'
     explore: 'Veřejné skupiny'
     explore_groups: Prozkoumat skupiny
     start_thread: Nové vlákno
@@ -311,6 +315,8 @@ cs:
         title: Pozvat k hlasování
       poll_reminder:
         message_label: Zpráva
+      wip_poll_reminder:
+        message_label: Zpráva
       outcome_announced:
         title: Sdílet výsledek
       anyone_can_participate: Kdokoli s odkazem se může účastnit
@@ -369,6 +375,8 @@ cs:
     settings: Nastavení
     subgroups: Podskupiny
     messages:
+      privacy:
+        members: 'Tato skupina je nyní viditelná pouze pro členy'
       leave_group_success: 'Tuto skupinu jste opustil(a)'
       archive_group_success: 'Tato skupina byla deaktivována'
     group_logo: 'Logo skupiny'
@@ -402,6 +410,7 @@ cs:
     submit: 'Ano, deaktivovat tuto skupinu'
   group_form:
     new_group: Nová skupina
+    new_subgroup: Nová podskupina
     start_group_heading: Vytvořit skupinu
     start_subgroup_heading: Vytvořit podskupinu
     edit_group_heading: Upravit nastavení skupiny

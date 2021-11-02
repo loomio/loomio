@@ -85,8 +85,6 @@ te:
     invitations: "ఆహ్వానాలు"
   membership_dropdown:
     cancel_invitation: ఆహ్వానం రద్దుచేయి
-  notification_models:
-    poll: 'నిర్ణయం:'
   notifications:
     header: "గమనికలు"
   discussion_form:
@@ -99,6 +97,8 @@ te:
     form:
       invitation_message_label: సందేశం
       poll_reminder:
+        message_label: సందేశం
+      wip_poll_reminder:
         message_label: సందేశం
   join_group_button:
     membership_requested: సభ్యత్వం అభ్యర్థించబడింది

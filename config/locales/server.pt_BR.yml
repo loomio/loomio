@@ -1,9 +1,6 @@
 pt_BR:
   explore:
     header: Explore grupos publicos
-  saml_providers:
-    invitation_created:
-      success: "Sucesso! Por favor verifique seu %{email}email com o link para se juntar ao %{group_name}."
   activerecord:
     errors:
       messages:

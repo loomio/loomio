@@ -8,7 +8,7 @@
             %img{:alt => t("poll_#{poll.poll_type}_options.#{stance_choice.poll_option.name}"), :src => "/img/#{stance_choice.poll_option.name}.svg"}/
     %span
       %span{"aria-hidden" => "true"}  ·
-    %span.grey--text.body-2
+    %span.text--secondary.body-2
       = render 'discussions/time_ago', time: stance.created_at
 .poll-common-stance
   .lmo-markdown-wrapper.body-2.text--primary.poll-common-stance-created__reason

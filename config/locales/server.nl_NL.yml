@@ -428,7 +428,6 @@ nl_NL:
       poll_edited: '%{actor} wijzigde de %{poll_type}: %{title}'
       poll_reminder: '%{actor} herinnert je er aan om te stemmen: %{title}'
       poll_announced: '%{actor} heeft je uitgenodigd om te stemmen in %{poll_type}: %{title}'
-      poll_announced_wip: '%{actor} deelde werk in uitvoering %{poll_type}: %{title}'
       poll_closing_soon: '%{poll_type} sluit binnen 24 uur: %{title}'
       poll_closing_soon_author: 'Je %{poll_type} sluit over 24 hours: %{title}'
       poll_expired: "%{poll_type} gesloten: %{title}"
@@ -449,7 +448,6 @@ nl_NL:
       poll_edited: '<strong>%{actor}</strong> wijzigde een %{poll_type}'
       poll_reminder: '<strong>%{actor}</strong> herinnert je er aan om te stemmen'
       poll_announced: '<strong>%{actor}</strong> heeft je uitgenodigd om te stemmen in %{poll_type}'
-      poll_announced_wip: '<strong>%{actor}</strong> deelde werk in uitvoering %{poll_type}'
       poll_closing_soon: '<strong>%{actor}</strong>''s %{poll_type} sluit binnen 24 uur. Nu is het moment om te stemmen, van gedachten te veranderen of anderen aan te moedigen om mee te doen.'
       poll_closing_soon_author: 'Je %{poll_type} sluit binnen 24 uur. Nu is het moment om mensen er aan te herinneren, of -indien nodig- de sluiting uit te stellen.'
       poll_expired: "<strong>%{actor}'s</strong> %{poll_type} is gesloten: %{title}"

@@ -29,6 +29,7 @@ export default
     query: ''
 
   computed:
+    wipOrEmpty: -> if @poll.closingAt then '' else 'wip_'
     someRecipients: ->
       @poll.recipientAudience ||
       @poll.recipientUserIds.length ||
@@ -37,7 +38,7 @@ export default
   methods:
     submit: ->
       @saving = true
-      Records.remote().post "polls/#{@poll.id}/remind",
+      Records.remote.post "polls/#{@poll.id}/remind",
         poll:
           recipient_audience: @poll.recipientAudience
           recipient_user_ids: @poll.recipientUserIds
@@ -55,11 +56,11 @@ export default
 .poll-remind
   .pa-4
     .d-flex.justify-space-between
-      h1.headline(v-t="'announcement.form.poll_reminder.title'")
+      h1.headline(v-t="'announcement.form.'+wipOrEmpty+'poll_reminder.title'")
       dismiss-modal-button
     recipients-autocomplete(
       existingOnly
-      :label="$t('announcement.form.poll_reminder.helptext')"
+      :label="$t('announcement.form.'+wipOrEmpty+'poll_reminder.helptext')"
       :placeholder="$t('announcement.form.placeholder')"
       :model="poll"
       :reset="reset"
@@ -74,6 +75,6 @@ export default
 
     .d-flex
       v-spacer
-      v-btn.poll-members-list__submit(color="primary" :disabled="!someRecipients" :loading="saving" @click="submit" )
+      v-btn.poll-members-form__submit(color="primary" :disabled="!someRecipients" :loading="saving" @click="submit" )
         span(v-t="'common.action.remind'")
 </template>

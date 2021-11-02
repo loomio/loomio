@@ -1,10 +1,6 @@
 it:
   explore:
     header: Esplora i gruppi pubblici
-  saml_providers:
-    invitation_created:
-      success: "Successo! Controlla la tua %{email}casella di posta per un link a cui partecipare %{group_name}."
-      error: "Il provider SAML non è stato in grado di eseguire l'autenticazione %{email} per %{group_name}."
   activerecord:
     errors:
       messages:

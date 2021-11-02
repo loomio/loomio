@@ -67,8 +67,8 @@ class API::V1::ProfileController < API::V1::RestfulController
   end
 
   def save_experience
-    raise ActionController::ParameterMissing.new(:experience) unless params[:experience]
-    service.save_experience user: current_user, actor: current_user, params: { experience: params[:experience], remove_experience: params[:remove_experience]}
+    raise ActionController::ParameterMissing.new(:experience) unless params.has_key?(:experience)
+    service.save_experience(user: current_user, actor: current_user, params: params)
     respond_with_resource
   end
 

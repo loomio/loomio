@@ -46,7 +46,7 @@ export default
         collection: 'discussions'
         path: 'dashboard'
         params:
-          exclude_types: 'group'
+          exclude_types: 'group poll'
           filter: @filter
           per: 60
 

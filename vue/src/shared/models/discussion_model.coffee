@@ -45,6 +45,7 @@ export default class DiscussionModel extends BaseModel
     groupId: null
     usersNotifiedCount: null
     discussionReaderUserId: null
+    pinnedAt: null
 
   audienceValues: ->
     name: @group().name
@@ -70,12 +71,12 @@ export default class DiscussionModel extends BaseModel
     @recordStore.users.find(@group().memberIds().concat(map(@discussionReaders(), 'userId')))
 
   membersInclude: (user) ->
-    (@inviterId && !@revokedAt && Session.user() == user) or
+    (@inviterId && !@revokedAt && Session.user().id == user.id) ||
     @group().membersInclude(user)
 
   adminsInclude: (user) ->
-    @author() == user or
-    (@inviterId && @admin && !@revokedAt && Session.user() == user) or
+    @authorId == user.id ||
+    (@inviterId && @admin && !@revokedAt && AppConfig.currentUserId == user.id) ||
     @group().adminsInclude(user)
 
   # known current participants for quick mentioning
@@ -229,6 +230,10 @@ export default class DiscussionModel extends BaseModel
   savePin: =>
     @processing = true
     @remote.patchMember(@keyOrId(), 'pin').finally => @processing = false
+
+  saveUnpin: =>
+    @processing = true
+    @remote.patchMember(@keyOrId(), 'unpin').finally => @processing = false
 
   close: =>
     @processing = true

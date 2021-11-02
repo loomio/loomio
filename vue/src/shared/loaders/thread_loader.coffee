@@ -1,5 +1,5 @@
 import Records from '@/shared/services/records'
-import { cloneDeep, max, isNumber, uniq, compact, orderBy, camelCase, forEach, isObject, sortedUniq, sortBy, without, map } from 'lodash'
+import { some, last, cloneDeep, max, isNumber, uniq, compact, orderBy, camelCase, forEach, isObject, sortedUniq, sortBy, without, map } from 'lodash'
 import Vue from 'vue'
 import RangeSet         from '@/shared/services/range_set'
 import EventBus         from '@/shared/services/event_bus'
@@ -14,12 +14,15 @@ export default class ThreadLoader
   reset: ->
     @collection = Vue.observable([])
     @rules = []
+    @ruleStrings = []
+    @fetchedRules = []
     @readRanges = cloneDeep @discussion.readRanges
     @focusAttrs = {}
     @visibleKeys = {}
     @collapsed = Vue.observable({})
     @loading = false
-    @padding = 50
+    @padding = 20
+    @maxAutoLoadMore = 5
 
   firstUnreadSequenceId: ->
     (RangeSet.subtractRanges(@discussion.ranges, @readRanges)[0] || [])[0]
@@ -34,34 +37,41 @@ export default class ThreadLoader
       @visibleKeys[key] = false if key.startsWith(event.positionKey)
     Vue.set(@collapsed, event.id, true)
 
+  isUnread: (event) ->
+    if event.kind == "new_discussion"
+      @discussion.updatedAt > @discussion.lastReadAt
+    else
+      !RangeSet.includesValue(@readRanges, event.sequenceId)
+
+  sequenceIdIsUnread: (id) ->
+    if id == 0
+      @discussion.updatedAt > @discussion.lastReadAt
+    else
+      !RangeSet.includesValue(@readRanges, id)
+
   expand: (event) ->
     Vue.set(@collapsed, event.id, false)
 
   jumpToEarliest: ->
-    @reset()
     @addLoadOldestFirstRule()
     @fetch()
 
   jumpToLatest: ->
-    @reset()
     @addLoadNewestFirstRule()
     @fetch()
 
   jumpToUnread: ->
-    @reset()
     @addLoadUnreadRule()
     @fetch()
 
   jumpToSequenceId: (id) ->
-    @reset()
     @addLoadSequenceIdRule(id)
     @fetch()
-
 
   loadEverything: ->
     @loading = true
     @titleKey = 'strand_nav.whole_thread'
-    @addRule
+    @addRuleAndFetch
       local:
         find:
           discussionId: @discussion.id
@@ -69,43 +79,63 @@ export default class ThreadLoader
         discussion_id: @discussion.id
         per: 1000
 
-  loadChildren: (event) ->
-    @loading = 'children'+event.id
-    if event.kind == "new_discussion"
-      @addRule
-        name: "load discussion children"
-        local:
-          find:
-            discussionId: @discussion.id
-          simplesort: 'id'
-          limit: @padding
-        remote:
-          discussion_id: @discussion.id
-          order_by: 'position_key'
-          per: @padding
-    else
-      @addRule
-        name: "load children (prefix #{event.positionKey})"
-        local:
-          find:
-            discussionId: @discussion.id
-            positionKey: {'$regex': "^#{event.positionKey}"}
-          simplesort: 'positionKey'
-          limit: @padding
-        remote:
-          discussion_id: @discussion.id
-          position_key_sw: event.positionKey
-          depth_gt: event.depth
-          order_by: 'position_key'
-          per: @padding
+  autoLoadAfter: (obj) ->
+    if (!@discussion.newestFirst && obj.event.depth == 1) || (obj.missingAfterCount && obj.missingAfterCount < @maxAutoLoadMore)
+      # @loadAfter(obj.event, obj.missingAfterCount)
+      @loadAfter(obj.event)
 
-  autoLoadAfter: (event) ->
-    @loadAfter(event) if event.depth == 1
+  loadAfter: (event, limit = null) ->
+    # @addLoadAfterRule(event, limit)
+    @addLoadAfterRule(event)
+    @fetch()
 
-  autoLoadBefore: (event) ->
-    @loadBefore(event) if event.depth == 1
+  autoLoadBefore: (obj) ->
+    if (@discussion.newestFirst && obj.event.depth == 1) || (obj.missingEarlierCount && obj.missingEarlierCount < @maxAutoLoadMore)
+      # @loadBefore(obj.event, obj.missingEarlierCount)
+      @loadBefore(obj.event)
 
-  loadAfter: (event) ->
+  loadBefore: (event, limit = null) ->
+    @loading = 'before'+event.id
+    # @addLoadBeforeRule(event, limit)
+    @addLoadBeforeRule(event)
+    @fetch()
+
+  # autoLoadChildren: (obj) ->
+  #   if obj.missingChildCount && (obj.missingChildCount < @maxAutoLoadMore)
+  #     @loadChildren(obj.event)
+  #
+  # loadChildren: (event) ->
+  #   @loading = 'children'+event.id
+  #   if event.kind == "new_discussion"
+  #     @addRuleAndFetch
+  #       name: "load discussion children"
+  #       local:
+  #         find:
+  #           discussionId: @discussion.id
+  #         simplesort: 'id'
+  #         limit: @padding
+  #       remote:
+  #         discussion_id: @discussion.id
+  #         order_by: 'position_key'
+  #         per: @padding
+  #   else
+  #     @addLoadAfterRule(event)
+  #     # @addRuleAndFetch
+  #     #   name: "load children (prefix #{event.positionKey})"
+  #     #   local:
+  #     #     find:
+  #     #       discussionId: @discussion.id
+  #     #       positionKey: {'$regex': "^#{event.positionKey}"}
+  #     #     simplesort: 'positionKey'
+  #     #     limit: @padding
+  #     #   remote:
+  #     #     discussion_id: @discussion.id
+  #     #     position_key_sw: event.positionKey
+  #     #     depth_gt: event.depth
+  #     #     order_by: 'position_key'
+  #     #     per: @padding
+
+  addLoadAfterRule: (event, limit = null) ->
     # keys = event.positionKey.split('-')
     # num = parseInt(keys[keys.length - 1]) + 1
     # key = "0".repeat(5 - (""+num).length) + num
@@ -117,26 +147,24 @@ export default class ThreadLoader
     positionKey = event.positionKey
 
     @addRule
-      name: "load after (prefix #{positionKeyPrefix})"
+      name: "load after positionKey #{positionKey}"
       local:
         find:
           discussionId: @discussion.id
           positionKey:
             $jgt: positionKey
-            $regex: (positionKeyPrefix && "^#{positionKeyPrefix}") || undefined
+            # $regex: (positionKeyPrefix && "^#{positionKeyPrefix}") || undefined
         simplesort: 'id'
-        limit: @padding
+        limit: limit || @padding
       remote:
         discussion_id: @discussion.id
         position_key_gt: positionKey
-        position_key_sw: positionKeyPrefix || null
+        # position_key_sw: positionKeyPrefix || null
         order_by: 'position_key'
-        per: @padding
+        per: limit || @padding
 
-  loadBefore: (event) ->
-    @loading = 'before'+event.id
+  addLoadBeforeRule: (event, limit) ->
     positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
-
     @addRule
       name: "load before (prefix #{positionKeyPrefix})"
       local:
@@ -147,18 +175,18 @@ export default class ThreadLoader
             $regex: (positionKeyPrefix && "^#{positionKeyPrefix}") || undefined
         simplesort: 'sequenceId'
         simplesortDesc: true
-        limit: @padding
+        limit: limit || @padding
       remote:
         discussion_id: @discussion.id
         position_key_lt: event.positionKey
         position_key_sw: positionKeyPrefix || null
         order_by: 'position_key'
         order_desc: 1
-        per: @padding
+        per: limit || @padding
 
   addLoadCommentRule: (commentId) ->
     @titleKey = 'strand_nav.from_comment'
-    @rules.push
+    @addRule
       name: "comment from url"
       local:
         find:
@@ -170,22 +198,22 @@ export default class ThreadLoader
         discussion_id: @discussion.id
         comment_id: commentId
 
-  addLoadPinnedRule: ->
-    @titleKey = 'strand_nav.all_pinned'
-    @rules.push
-      name: "all pinned events"
-      local:
-        find:
-          discussionId: @discussion.id
-          pinned: true
-        # position: {$gte: position}
-      remote:
-        discussion_id: @discussion.id
-        pinned: true
-        per: 200
+  # addLoadPinnedRule: ->
+  #   @titleKey = 'strand_nav.all_pinned'
+  #   @addRule
+  #     name: "all pinned events"
+  #     local:
+  #       find:
+  #         discussionId: @discussion.id
+  #         pinned: true
+  #       # position: {$gte: position}
+  #     remote:
+  #       discussion_id: @discussion.id
+  #       pinned: true
+  #       per: 200
 
   addLoadPositionRule: (position) ->
-    @rules.push
+    @addRule
       name: "position from url"
       local:
         find:
@@ -201,7 +229,7 @@ export default class ThreadLoader
 
   addLoadPositionKeyRule: (positionKey) ->
     @loading = positionKey
-    @rules.push
+    @addRule
       name: "positionKey from url"
       local:
         find:
@@ -215,7 +243,7 @@ export default class ThreadLoader
         order_by: 'position_key'
         per: parseInt(@padding/2)
 
-    @rules.push
+    @addRule
       name: "positionKey rollback"
       local:
         find:
@@ -235,7 +263,7 @@ export default class ThreadLoader
     id = max([parseInt(sequenceId) - parseInt(@padding/2), 0])
     @loading = id
     @titleKey = 'strand_nav.from_sequence_id'
-    @rules.push
+    @addRule
       name: "sequenceId from url"
       local:
         find:
@@ -251,7 +279,7 @@ export default class ThreadLoader
 
   addLoadNewestRule: () ->
     @titleKey = 'strand_nav.newest_first'
-    @rules.push
+    @addRule
       local:
         find:
           discussionId: @discussion.id
@@ -265,7 +293,7 @@ export default class ThreadLoader
         per: @padding
 
   addContextRule: ->
-    @rules.push
+    @addRule
       name: 'context'
       local:
         find:
@@ -273,7 +301,7 @@ export default class ThreadLoader
 
   addLoadOldestRule: ->
     @titleKey = 'strand_nav.oldest_first'
-    @rules.push
+    @addRule
       name: 'oldest'
       local:
         find:
@@ -288,7 +316,7 @@ export default class ThreadLoader
   addLoadUnreadRule: ->
     @titleKey = 'strand_nav.unread'
     if @discussion.updatedAt > @discussion.lastReadAt
-      @rules.push
+      @addRule
         name: "context updated"
         local:
           find:
@@ -310,7 +338,7 @@ export default class ThreadLoader
 
     # padding around new to you
     id = max([@firstUnreadSequenceId() - parseInt(@padding/2), @discussion.firstSequenceId()])
-    @rules.push
+    @addRule
       name: {path: "strand_nav.new_to_you"}
       local:
         find:
@@ -325,18 +353,33 @@ export default class ThreadLoader
         per: @padding
 
   addRule: (rule) ->
-    @rules.push(rule)
-    params = Object.assign {}, rule.remote, {exclude_types: 'group discussion'}
-    Records.events.fetch(params: params).finally => @loading = false
-    # @updateCollection()
-    # Records.events.fetch(params: params).then (data) => @updateCollection()
+    ruleString = JSON.stringify(rule)
+
+    if !@ruleStrings.includes(ruleString)
+      @rules.push(rule)
+      @ruleStrings.push(ruleString)
+      # if @rules.length > 5
+      #   @rules.shift()
+      #   @ruleStrings.shift()
+      true
+    else
+      false
+
+  addRuleAndFetch: (rule) ->
+    @fetch() if @addRule(rule)
 
   fetch:  ->
-    promises = @rules.filter((rule) -> rule.remote).map (rule) =>
+    newRules = []
+    promises = @rules.filter((rule) -> rule.remote)
+                     .filter((rule) => !@fetchedRules.includes(JSON.stringify(rule.remote)))
+                     .map (rule) =>
+      newRules.push(JSON.stringify(rule.remote))
       params = Object.assign {}, rule.remote, {exclude_types: 'group discussion'}
       Records.events.fetch(params: params)
-    # console.log promises
-    Promise.all(promises).finally => @loading = false
+
+    Promise.all(promises).finally =>
+      @fetchedRules = uniq @fetchedRules.concat(newRules)
+      @loading = false
 
   updateCollection: ->
     @records = []
@@ -354,6 +397,7 @@ export default class ThreadLoader
 
     @records = uniq @records.concat(compact(@records.map (o) -> o.parent()))
     @records = orderBy @records, 'positionKey'
+
     eventIds = @records.map (event) -> event.id
 
     orphans = @records.filter (event) ->
@@ -365,14 +409,44 @@ export default class ThreadLoader
 
     nest = (records) ->
       r = records.map (event) ->
-        {event: event, children: (eventsByParentId[event.id] && nest(eventsByParentId[event.id])) || []}
+        event: event
+        children: (eventsByParentId[event.id] && nest(eventsByParentId[event.id])) || []
+        eventable: event.model()
       # orderBy r, 'positionKey'
 
     @collection = nest(orphans)
 
-    # console.log 'rules', rules.length, rules
-    # console.log 'eventIds', eventIds.length, eventIds
-    # console.log 'orphans', orphans.length, orphans
-    # console.log 'collection', @collection.length, @collection
+    @addMetaData(@collection)
+
+    EventBus.$emit('collectionUpdated', @discussion.id)
 
     @collection
+
+  addMetaData: (collection) ->
+    positions = collection.map (e) -> e.event.position
+    ranges = RangeSet.arrayToRanges(positions)
+    parentExists = collection[0] && collection[0].event && collection[0].event.parent()
+    lastPosition = (parentExists && (collection[0].event.parent().childCount)) || 0
+
+
+    collection.forEach (obj) =>
+      obj.isUnread = @isUnread(obj.event)
+      isFirstInRange = some(ranges, (range) -> range[0] == obj.event.position)
+      isLastInLastRange = last(ranges)[1] == obj.event.position
+      missingEarlier = parentExists && (obj.event.position != 1 && isFirstInRange)
+      obj.missingEarlierCount = 0
+      if missingEarlier
+        lastPos = 1
+        val = 0
+        ranges.forEach (range) ->
+          if range[0] == obj.event.position
+            val = (obj.event.position - lastPos)
+          else
+            lastPos = range[1]
+        obj.missingEarlierCount = val
+
+      missingAfter = lastPosition != 0 && isLastInLastRange && (obj.event.position != lastPosition)
+      obj.missingAfterCount = (missingAfter && lastPosition - last(ranges)[1]) || 0
+      obj.missingChildCount = obj.event.childCount - obj.children.length
+
+      @addMetaData(obj.children) if obj.children.length

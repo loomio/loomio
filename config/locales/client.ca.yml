@@ -204,6 +204,7 @@ ca:
       share: Comparteix
       ok: D'acord
       retry: Reintentar
+      clear: Esborra
       done: Fet
       start: Comença
       delete: Elimina
@@ -423,8 +424,10 @@ ca:
       groups_list: 'Grups'
       user_list: 'Accions dels usuaris'
   strand_nav:
-    newest_first: Última activitat
-    oldest_first: Principi del fil
+    newest: Més recent
+    oldest: Més antic
+    newest_first: El més recent primer
+    oldest_first: El més antic primer
     all_pinned: Tots els elements fixats
     whole_thread: Mostra tot el fil
     from_comment: Des de l'url d'un comentari
@@ -491,7 +494,6 @@ ca:
   notification_models:
     discussion: 'fil:'
     comment: 'Comenta a'
-    poll: 'decisió:'
     outcome: 'resultat:'
   notifications:
     header: "Notificacions"
@@ -558,7 +560,6 @@ ca:
     title_label: 'Títol'
     title_placeholder: 'Quin és el tema que voleu discutir?'
     context_label: 'Context'
-    context_placeholder: 'Doneu suficient informació de context perquè el grup pugui tingui una discussió productiva. Aquesta informació es pot anar actualitzant a mesura que avanci la discussió.'
     privacy_label: 'Privacitat'
     privacy_public: 'Tothom pot veure el fil. Només els membres hi poden participar.'
     privacy_private: 'El fil només serà visible pels membres del grup {{group}}.'
@@ -617,6 +618,8 @@ ca:
         title: Convida a la votació
         helptext: A qui voleu convidar a la votació?
       poll_reminder:
+        message_label: Missatge
+      wip_poll_reminder:
         message_label: Missatge
       poll_edited:
         title: Notifica les edicions
@@ -1100,7 +1103,6 @@ ca:
     deactivate_account: 'Desactiva el compte d''usuari'
     help_translate: "Ajuda'ns a traduir Loomio"
   text_editor:
-    select_text_to_link: Comença per seleccionar part del text per introduir-hi l'enllaç
     insert_link: Insereix enllaç
     insert_embedded_url: Incrusta un vídeo
   change_picture_form:
@@ -1301,9 +1303,7 @@ ca:
     for_everyone: Això modifica el format per tothom, no només per tu.
     sorting: Més antic o més recent primer?
     latest: Més recent
-    latest_description: Llegeix el més recent primer
     earliest: Més antic
-    earliest_description: Llegeix des del principi fins al final
     replies: Com es mostren les respostes?
     linear: Llista plana
     linear_description: Els elements es mostren tal com han tingut lloc, un després de l'altre.
@@ -1489,7 +1489,6 @@ ca:
     anonymous: Els vots són anònims
     results_hidden_until_closed: Els resultats s'oculten fins que hagi tancat %{poll_type}
     unable_to_vote: No heu estat convidat a votar en aquesta%{poll_type}.
-    draft_mode: Aquesta %{poll_type} està en procés de creació. La votació està desactivada.
   current_polls_card:
     title: Decisions actuals
     start_poll: Nova decisió
@@ -1546,8 +1545,6 @@ ca:
       title: Amaga els resultats fins al tancament
       helptext_on: No mostris què han votat els usuaris fins que l'enquesta estigui tancada
   poll_common_close_form:
-    title: Tanca l'enquesta abans d'hora
-    helptext: Esteu segurs de que voleu tancar aquesta %{poll_type} abans d'hora?
     close_proposal: Tanca la proposta
     close_poll: Tanca l'enquesta
     close_count: Tanca la verificació
@@ -1567,9 +1564,6 @@ ca:
   poll_common_move_form:
     title: "Mou {{poll_type}}"
     success: "S'ha mogut {{poll_type}} a {{group}}"
-  poll_common_wip_field:
-    title: Feina en curs
-    helptext: 'Utilitza "feina en curs" per colaborar en  %{poll_type} abans de la votació'
   poll_common_closing_at_field:
     closing: S'està tancant
     no_closing_date: No hi ha data de tancament
@@ -1608,7 +1602,6 @@ ca:
     ranked_choice: 'Aquesta enquesta de vot preferencial ja està tancada. <strong>Comparteix el resultat </strong> amb el grup.'
     score: 'Aquesta enquesta de vot amb puntuació ja està tancada. <strong>Comparteix el resultat </strong> amb el grup.'
   poll_common_outcome_form:
-    who_to_notify: A qui voleu notificar aquest resultat?
     new_title: Introdueix un resultat
     update_title: Actualitza el resultat
     outcome_created: Resultat creat
@@ -1948,17 +1941,6 @@ ca:
       outcome_created: S'ha compartit un resultat
     include_body_label: Inclou cos del missatge amb notificació
     include_subgroups_label: Transmet els esdeveniments dels subgrups
-  configure_sso:
-    redirecting: Espereu, s'està redirigint al proveïdor d'inici de sessió
-    title: Autenticació única
-    enabled: Autenticació única activada
-    helptext: Integrar amb OneLogin, Auth0, Mictrosoft Active Directory i altres proveïdors de SAML <a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">Més informació</a>.
-    warning_helptext: "Avís: Haureu d'autenticar-vos amb el vostre proveïdor després de clicar guardar."
-    idp_metadata_url: URL de les metadades IDP
-    idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
-    success: S'ha configurat correctament l'autenticació única
-    destroyed: S'ha eliminat l'autenticació única
-    invalid_idp_metadata_url: URL de les metadades IDP invàlida
   browser_warning:
     message: "IMPORTANT! Esteu utilitzant un navegador obsolet ({{name}} {{version}}) que no està suportat per {{site}}."
     link: Canvieu a un altre navegador

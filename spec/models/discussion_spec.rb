@@ -147,7 +147,7 @@ describe Discussion do
   end
 
   describe 'mentioning' do
-    let(:discussion) { build(:discussion, description: "Hello @#{user.username}!") }
+    let(:discussion) { build(:discussion, description: "Hello @#{user.username}!", description_format: 'md') }
     let(:another_user) { create(:user) }
 
     describe '#mentionable_text' do

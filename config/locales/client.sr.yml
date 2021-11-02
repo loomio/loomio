@@ -60,6 +60,7 @@ sr:
       upload: 'Prosledi'
       uploading: 'Prosleđivanje'
       ok: U redu
+      clear: Očisti
   emoji_picker:
     search: Traži
     people: Ljudi
@@ -183,7 +184,6 @@ sr:
     title_label: 'Naslov'
     title_placeholder: 'Koja je tema o kojoj želiš diskutovati?'
     context_label: 'Kontekst'
-    context_placeholder: 'Daj dovoljno pozadinskih informacija za grupu da bi diskusija bila produktivna. Ovo može biti izmenjeno kako diskusija bude napredovala'
     privacy_label: 'Privatnost'
     privacy_public: 'Svako može videti nit. Samo se članovi mogu pridružiti.'
     privacy_private: 'Nit će biti vidljiva isključivo članovima {{group}}.'
@@ -192,6 +192,8 @@ sr:
     form:
       invitation_message_label: Poruka
       poll_reminder:
+        message_label: Poruka
+      wip_poll_reminder:
         message_label: Poruka
   action_dock:
     copy_url: Kopiraj vezu
@@ -513,8 +515,6 @@ sr:
     name_placeholder: Tvoje ime
   webhook:
     name_label: Ime
-  configure_sso:
-    title: Jednokratni upis
   group_survey:
     categories:
       community: Grupa zajednice

@@ -29,6 +29,8 @@ module Boot
         # these can be deleted after angular is really really gone
 
         sentry_dsn:          ENV['SENTRY_PUBLIC_DSN'],
+        posthog_key:         ENV['POSTHOG_KEY'],
+        posthog_host:        ENV['POSTHOG_HOST'],
         features: {
           app:               AppConfig.app_features
         },

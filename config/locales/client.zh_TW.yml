@@ -1,4 +1,20 @@
 zh_TW:
+  tasks:
+    tasks: 工作
+    your_tasks: 您的工作
+    permission_denied: 您無權更新此工作的權限
+    due_date: 到期日
+    send_reminder: 傳送提醒（若未完成）
+    no_reminder: 無提醒
+    on_due_date: 到期日
+    1_day_before: 1天前
+    2_day_before: 2天前
+    3_day_before: 3天前
+    7_day_before: 7天前
+    task_placeholder: 輸入任務並 @ 提及某人來指派它
+    add_due_date: 新增到期日
+    task_updated_done: '工作已標記為完成！'
+    task_updated_not_done: '工作被標記為未完成'
   doctypes:
     youtube_video: YouTube 影片
     image: 圖片
@@ -138,6 +154,7 @@ zh_TW:
   timezones:
     local: 本地時間 ({{value}})
   common:
+    optional: （選擇性）
     version: 版本
     none: 無
     empty: 空
@@ -184,6 +201,8 @@ zh_TW:
       private: '非公開'
       secret: '私密'
     selected: '已選取'
+    today: '今天'
+    in_x_days: '%{x} 天內'
     date_range:
       today: '今天'
       yesterday: '昨日'
@@ -239,6 +258,7 @@ zh_TW:
       share: 分享
       ok: 好
       retry: 重試
+      clear: 清除
       done: 完成
       start: 啟動
       delete: 刪除
@@ -465,8 +485,10 @@ zh_TW:
       groups_list: '群組'
       user_list: '使用者動作'
   strand_nav:
-    newest_first: 最後活動
-    oldest_first: 討論串開始
+    newest: 最新
+    oldest: 最舊
+    newest_first: 最新的放在最前面
+    oldest_first: 最舊的放在最前面
     all_pinned: 所有釘選的項目
     whole_thread: 整個討論串
     from_comment: 從留言 URL
@@ -522,6 +544,7 @@ zh_TW:
     invite_to_group: "邀請至群組"
     invite_to_discussion: "邀請至討論串"
     invite_to_poll: "邀請投票"
+    invite_to_wip_poll: "邀請給予回饋"
     invitations: "邀請函"
   membership_dropdown:
     set_title: "設定標題"
@@ -537,8 +560,9 @@ zh_TW:
   notification_models:
     discussion: '討論串：'
     comment: '評論於'
-    poll: '決策：'
+    poll: '投票：'
     outcome: '結果：'
+    stance: '投票：'
   notifications:
     header: "通知"
     no_notifications: "您沒有任何通知"
@@ -608,7 +632,7 @@ zh_TW:
     title_label: '標題'
     title_placeholder: '您想討論的主題是？'
     context_label: '論述'
-    context_placeholder: '給予群組足夠的背景資訊，創造出有生產力的討論。論述可以隨著討論的過程一邊更新'
+    context_placeholder: "提供此討論的部份內容，如此人們就可以很好地參與"
     privacy_label: '隱私權'
     privacy_public: '任何人都可以看到此討論串。只有成員才能參與。'
     privacy_private: '此討論串只會被「{{group}}」群組的成員看到。'
@@ -687,11 +711,19 @@ zh_TW:
       poll_announced:
         title: 邀請投票
         helptext: 您想要邀請誰來投票？
+      wip_poll_announced:
+        title: 邀請給予回饋
+        helptext: 您想邀請誰來提供回饋？
       poll_reminder:
         title: 提醒投票
         helptext: 您想要提醒誰投票？
         message_label: 訊息
         message_placeholder: 選擇性的訊息，告訴夥伴為什麼他們應該要投票
+      wip_poll_reminder:
+        title: 提醒給予回饋
+        helptext: 您想提醒誰來給予回饋？
+        message_label: 訊息
+        message_placeholder: 包含在通知電子郵件中的選擇性訊息
       poll_edited:
         title: 編輯的通知
         helptext: 您想通知此更新給誰？
@@ -781,6 +813,7 @@ zh_TW:
   formatting:
     formatting_tools: 文字格式化工具
     colors: 顏色
+    highlight: 強調
     alignment: 對齊
     lists: 列表
     expand: 顯示更多格式化工具
@@ -1224,7 +1257,7 @@ zh_TW:
     deactivate_account: '停用使用者帳號'
     help_translate: "協助我們翻譯 Loomio"
   text_editor:
-    select_text_to_link: 首先，選取一些文字來進行連結
+    select_text_to_link: 選取要連結的文字並再試一次
     insert_link: 插入連結
     insert_embedded_url: 嵌入影片
   change_picture_form:
@@ -1433,20 +1466,21 @@ zh_TW:
     helptext_two: "您可以在任何時候透過從討論串下拉式選單選取「取消釘選」來移除釘選"
     pin_thread: 釘選討論串
   thread_arrangement_form:
+    edit: 編輯佈局
     title: 討論串佈局
     for_everyone: 這會對所有人變更佈局，不是只有你。
     sorting: 最舊還是最新優先？
     latest: 最新
-    latest_description: 先閱讀最新的東西
+    latest_description: 先閱讀最新的項目
     earliest: 最舊
-    earliest_description: 從開始閱讀到結束
+    earliest_description: 在檢視新評論前先顯示舊評論
     replies: 如何顯示回覆？
     linear: 扁平清單
     linear_description: 列出發生的項目，一個接著一個。
     nested_once: 巢狀回覆 - 僅第一個回覆
     nested_once_description: 讓原始留言底下的回覆縮排
     nested_twice: 兩個等級的巢狀回覆
-    nested_twice_description: 最多縮排 2 次。
+    nested_twice_description: 最多縮排兩次。
     changing_nesting_is_slow: 更改巢狀排列方式可能需要幾分鐘的時間來處理。
   delete_thread_form:
     aria_label: '刪除討論串'
@@ -1534,6 +1568,7 @@ zh_TW:
     results: 結果
     responses: 回應
     close_poll_type: 關閉 {{pollType}}
+    close_early: 提早關閉
     totals: 全部
     participate: 參與
     vote: 投票
@@ -1637,7 +1672,7 @@ zh_TW:
     anonymous: 匿名投票
     results_hidden_until_closed: 結果會一直隱藏到 %{poll_type} 關閉
     unable_to_vote: 您尚未被邀請到此 %{poll_type} 進行投票。
-    draft_mode: 此 %{poll_type} 正在進行。投票已停用。
+    draft_mode: 投票已停用。這個 %{poll_type} 仍在進行中。
   current_polls_card:
     title: 目前的決策
     start_poll: 新決策
@@ -1698,8 +1733,8 @@ zh_TW:
       title: 隱藏結果直到關閉
       helptext_on: 在投票關閉前，不要顯示有多少人已投票
   poll_common_close_form:
-    title: 提前關閉投票
-    helptext: 您確定您想要提早關閉此 %{poll_type}？
+    title: 立刻關閉 %{poll_type}？
+    helptext: 您確定您想要提早關閉此 %{poll_type} 並分享結果？
     close_proposal: 提議定案
     close_poll: 關閉投票
     close_count: 關閉勾選
@@ -1720,8 +1755,9 @@ zh_TW:
     title: "移動 {{poll_type}}"
     success: "{{poll_type}} 已移動至 {{group}}"
   poll_common_wip_field:
-    title: 正在進行
-    helptext: '使用「正在進行」以在投票前於 %{poll_type} 上協作'
+    title: 停用投票
+    past_tense: 投票已停用
+    helptext: '這個 %{poll_type} 正在進行。您可以在稍後啟用投票。'
   poll_common_closing_at_field:
     closing: 關閉
     no_closing_date: 無關閉日期
@@ -1760,7 +1796,9 @@ zh_TW:
     ranked_choice: '這個排序投票已關閉。與群組<strong>分享結果</strong>。'
     score: '此分數投票已關閉。與群組<strong>分享結果</strong>。'
   poll_common_outcome_form:
-    who_to_notify: 您想通知此結果給誰？
+    review_date: 審閱日期
+    review_date_hint: 設定提醒審查結果的日期（選擇性）
+    who_to_notify: 您想將此結果通知誰？（選擇性）
     new_title: 輸入結果
     update_title: 更新結果
     outcome_created: 結果已建立
@@ -2144,18 +2182,6 @@ zh_TW:
       read_memberships: 讀取成員資格
     include_body_label: 在通知中包含訊息正文
     include_subgroups_label: 中繼來自子群組的事件
-  configure_sso:
-    redirecting: 請稍候，正在重新島向到登入提供者
-    title: 單一登入
-    enabled: 單一登入已啟用
-    helptext: 整合 OneLogin、Auth0、Microsoft Active Directory 或其他 SAML 提供者。<a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">取得更多資訊</a>。
-    warning_helptext: "警告：點擊儲存後，您將必須與提供商進行身份驗證。"
-    idp_metadata_url: IDP 詮釋資料 URL
-    idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
-    success: 已成功設定單一登入
-    destroyed: 已移除單一登入
-    invalid_idp_metadata_url: 無效的 IDP 詮釋資料 URL
-    sp_metadata_url: SP 詮釋資料 URL
   browser_warning:
     message: "重要！您正在使用已不被 {{site}} 支援的舊版瀏覽器 ({{name}} {{version}})。"
     link: 請切換到其他瀏覽器

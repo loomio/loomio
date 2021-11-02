@@ -1,4 +1,13 @@
 require('intersection-observer')
+
+fromEntries = require('object.fromentries');
+fromEntries.shim() unless Object.fromEntries
+
+matchAll = require('string.prototype.matchall')
+matchAll.shim()
+
+import 'array-flat-polyfill';
+
 import Vue from 'vue'
 import AppConfig from '@/shared/services/app_config'
 import vuetify from '@/vuetify'
@@ -16,7 +25,7 @@ import CloseModal from '@/mixins/close_modal'
 import UrlFor from '@/mixins/url_for'
 import FormatDate from '@/mixins/format_date'
 import Vue2TouchEvents from 'vue2-touch-events'
-import { initContent } from '@/shared/services/ssr_content'
+import posthog from 'posthog-js';
 
 Vue.use(Vue2TouchEvents)
 
@@ -34,11 +43,14 @@ import Session from '@/shared/services/session'
 boot (data) ->
   Session.apply(data)
 
+  if AppConfig.posthog_key
+    posthog.init(AppConfig.posthog_key, {api_host: AppConfig.posthog_host});
+    posthog.identify Session.user().id, pick(Session.user(), ['name', 'email', 'username'])
+
   if AppConfig.sentry_dsn
     Sentry.configureScope (scope) ->
-      scope.setUser pick(Session.user(), ['id', 'email', 'username'])
+      scope.setUser pick(Session.user(), ['id', 'name', 'email', 'username'])
 
-  initContent()
   new Vue(
     render: (h) -> h(app)
     router: router

@@ -161,6 +161,10 @@ class User < ApplicationRecord
       'html'
     end
   end
+  
+  def author
+    self
+  end
 
   def is_paying?
     group_ids = self.group_ids.concat(self.groups.pluck(:parent_id).compact).uniq

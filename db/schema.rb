@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_10_045651) do
+ActiveRecord::Schema.define(version: 2021_10_22_235050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -60,59 +60,6 @@ ActiveRecord::Schema.define(version: 2021_09_10_045651) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
-  end
-
-  create_table "ahoy_events", id: :uuid, default: nil, force: :cascade do |t|
-    t.uuid "visit_id"
-    t.integer "user_id"
-    t.string "name"
-    t.jsonb "properties"
-    t.datetime "time"
-    t.index ["name", "time"], name: "index_ahoy_events_on_name_and_time"
-  end
-
-  create_table "ahoy_messages", id: :serial, force: :cascade do |t|
-    t.string "token"
-    t.text "to"
-    t.integer "user_id"
-    t.string "user_type"
-    t.string "mailer"
-    t.datetime "sent_at"
-    t.datetime "opened_at"
-    t.datetime "clicked_at"
-    t.index ["token"], name: "index_ahoy_messages_on_token"
-    t.index ["user_id"], name: "index_ahoy_messages_on_user_id", where: "(user_id IS NOT NULL)"
-  end
-
-  create_table "ahoy_visits", id: :uuid, default: nil, force: :cascade do |t|
-    t.string "visitor_token"
-    t.string "ip"
-    t.text "user_agent"
-    t.text "referrer"
-    t.text "landing_page"
-    t.integer "user_id"
-    t.string "referring_domain"
-    t.string "search_keyword"
-    t.string "browser"
-    t.string "os"
-    t.string "device_type"
-    t.integer "screen_height"
-    t.integer "screen_width"
-    t.string "country"
-    t.string "region"
-    t.string "city"
-    t.string "utm_source"
-    t.string "utm_medium"
-    t.string "utm_term"
-    t.string "utm_content"
-    t.string "utm_campaign"
-    t.datetime "started_at"
-    t.string "gclid"
-    t.string "visit_token"
-    t.uuid "latitude"
-    t.uuid "longitude"
-    t.index ["user_id"], name: "index_ahoy_visits_on_user_id"
-    t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
   end
 
   create_table "attachments", id: :serial, force: :cascade do |t|
@@ -297,6 +244,7 @@ ActiveRecord::Schema.define(version: 2021_09_10_045651) do
     t.integer "anonymous_polls_count", default: 0, null: false
     t.string "content_locale"
     t.jsonb "link_previews", default: [], null: false
+    t.datetime "pinned_at"
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["group_id"], name: "index_discussions_on_group_id"
@@ -692,13 +640,6 @@ ActiveRecord::Schema.define(version: 2021_09_10_045651) do
     t.index ["user_id"], name: "index_reactions_on_user_id"
   end
 
-  create_table "saml_providers", force: :cascade do |t|
-    t.integer "group_id", null: false
-    t.string "idp_metadata_url", null: false
-    t.integer "authentication_duration", default: 24, null: false
-    t.index ["group_id"], name: "index_saml_providers_on_group_id"
-  end
-
   create_table "stance_choices", id: :serial, force: :cascade do |t|
     t.integer "stance_id"
     t.integer "poll_option_id"
@@ -793,6 +734,38 @@ ActiveRecord::Schema.define(version: 2021_09_10_045651) do
     t.index ["author_id"], name: "index_templates_on_author_id"
     t.index ["group_id"], name: "index_templates_on_group_id"
     t.index ["record_type", "record_id"], name: "index_templates_on_record_type_and_record_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "record_type"
+    t.bigint "record_id"
+    t.bigint "author_id", null: false
+    t.integer "uid", null: false
+    t.string "name", null: false
+    t.boolean "done", null: false
+    t.datetime "done_at"
+    t.date "due_on"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "discarded_at"
+    t.integer "doer_id"
+    t.integer "remind"
+    t.datetime "remind_at"
+    t.index ["author_id"], name: "index_tasks_on_author_id"
+    t.index ["discarded_at"], name: "index_tasks_on_discarded_at"
+    t.index ["done"], name: "index_tasks_on_done"
+    t.index ["due_on"], name: "index_tasks_on_due_on"
+    t.index ["record_type", "record_id"], name: "index_tasks_on_record_type_and_record_id"
+    t.index ["remind_at"], name: "index_tasks_on_remind_at"
+  end
+
+  create_table "tasks_users", force: :cascade do |t|
+    t.bigint "task_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["task_id"], name: "index_tasks_users_on_task_id"
+    t.index ["user_id"], name: "index_tasks_users_on_user_id"
   end
 
   create_table "translations", id: :serial, force: :cascade do |t|

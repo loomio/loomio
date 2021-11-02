@@ -9,29 +9,26 @@ export default
   methods:
     togglePinned: ->
       if @user.experiences['sidebar']
-        Records.users.removeExperience('sidebar')
+        Records.users.saveExperience('sidebar', false)
       else
-        Records.users.saveExperience('sidebar')
-
-    toggleBeta: ->
-      if @user.experiences['betaFeatures']
-        Records.users.removeExperience('betaFeatures')
-      else
-        Records.users.saveExperience('betaFeatures')
-        Flash.success("user_dropdown.beta_collab")
+        Records.users.saveExperience('sidebar', true)
 
     toggleDark: ->
-      if @user.experiences['darkMode']
-        Records.users.removeExperience('darkMode')
+      if @isDark
+        Records.users.saveExperience('darkMode', false)
         @$vuetify.theme.dark = false
       else
-        Records.users.saveExperience('darkMode')
+        Records.users.saveExperience('darkMode', true)
         @$vuetify.theme.dark = true
+
+    defaultDark: ->
+      (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
 
     signOut: ->
       Session.signOut()
 
   computed:
+    isDark:   -> @$vuetify.theme.dark
     version:  -> AppConfig.version
     release:  -> AppConfig.release
     siteName: -> AppConfig.theme.site_name
@@ -39,6 +36,7 @@ export default
     helpLink: -> UserHelpService.helpLink()
     showHelp: -> AppConfig.features.app.help_link
     showContact: -> AppConfig.features.app.show_contact
+    showBeta: -> !AppConfig.features.app.thread_page_v3
 
 </script>
 
@@ -60,22 +58,14 @@ div.user-dropdown
     v-list-item-title(v-t="'user_dropdown.email_settings'")
     v-list-item-icon
       v-icon mdi-cog-outline
-  v-list-item(v-if="!user.experiences['darkMode']" @click="toggleDark" dense)
+  v-list-item(v-if="!isDark" @click="toggleDark" dense)
       v-list-item-title(v-t="'user_dropdown.enable_dark_mode'")
       v-list-item-icon
         v-icon mdi-weather-night
-  v-list-item(v-if="user.experiences['darkMode']" @click="toggleDark" dense)
+  v-list-item(v-if="isDark" @click="toggleDark" dense)
       v-list-item-title(v-t="'user_dropdown.disable_dark_mode'")
       v-list-item-icon
         v-icon mdi-white-balance-sunny
-  v-list-item(v-if="!user.experiences['betaFeatures']" @click="toggleBeta" dense)
-      v-list-item-title(v-t="'user_dropdown.enable_beta_features'")
-      v-list-item-icon
-        v-icon mdi-flask-outline
-  v-list-item(v-if="user.experiences['betaFeatures']" @click="toggleBeta" dense)
-      v-list-item-title(v-t="'user_dropdown.disable_beta_features'")
-      v-list-item-icon
-        v-icon mdi-flask-empty-off-outline
   v-list-item(v-if="showHelp", :href="helpLink", target="_blank" dense)
     v-list-item-title(v-t="'user_dropdown.help'")
     v-list-item-icon

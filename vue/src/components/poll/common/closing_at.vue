@@ -47,5 +47,5 @@ export default
 span(:style="styles")
   abbr.closing-in.timeago--inline(v-if="poll.closingAt")
     span(v-t="{ path: translationKey, args: { time: timeMethod(time) } }" :title="exact(time)")
-  span(v-else v-t="'poll_common_wip_field.title'")
+  span(v-else v-t="'poll_common_wip_field.past_tense'")
 </template>

@@ -128,15 +128,17 @@ FactoryBot.define do
     association :author, :factory => :user
     association :group, :factory => :group
     title { Faker::Name.name }
-    description { 'A description for this discussion. Should this be *rich*?' }
-    uses_markdown { true }
+    description_format { 'html' }
+    description { "<p>A description for this discussion. Should this be <em>rich</em>?</p>" }
     link_previews { [{'title': 'link title', 'url': 'https://www.example.com', 'description': 'a link to a page', 'image': 'https://www.loomio.org/theme/logo.svg', 'hostname':'www.example.com'}] }
     private { true }
     tags { group ? group.tags : [] }
+
     before(:create) do |discussion|
       discussion.group.parent&.add_member!(discussion.author)
       discussion.group.add_member!(discussion.author)
     end
+
     after(:create) do |discussion|
       discussion.create_missing_created_event!
       discussion.group.save if discussion.group.presence

@@ -23,7 +23,7 @@ module Loomio
     config.autoloader = :zeitwerk if Rails.env.development? || ENV['LOOMIO_ZEITWERK']
     config.middleware.use Rack::Deflater
     config.middleware.use Rack::Attack
-    # config.active_job.queue_adapter = :sidekiq
+    config.active_job.queue_adapter = :sidekiq
 
     config.generators do |g|
       g.template_engine :haml

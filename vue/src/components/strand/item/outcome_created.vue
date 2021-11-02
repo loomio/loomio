@@ -5,16 +5,11 @@ import EventService from '@/shared/services/event_service'
 import { pick } from 'lodash'
 
 export default
-  components:
-    ThreadItem: -> import('@/components/thread/item.vue')
-
   props:
     event: Object
-    isReturning: Boolean
+    eventable: Object
 
   computed:
-    eventable: -> @event.model()
-    poll: -> @eventable.poll()
     dockActions: ->
       OutcomeService.actions(@eventable, @)
     menuActions: ->

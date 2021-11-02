@@ -7,6 +7,7 @@ import PollCreated from '@/components/strand/item/poll_created.vue'
 import StanceCreated from '@/components/strand/item/stance_created.vue'
 import StanceUpdated from '@/components/strand/item/stance_updated.vue'
 import OutcomeCreated from '@/components/strand/item/outcome_created.vue'
+import StrandItemRemoved from '@/components/strand/item/removed.vue'
 import StrandLoadMore from '@/components/strand/load_more.vue'
 import OtherKind from '@/components/strand/item/other_kind.vue'
 import RangeSet from '@/shared/services/range_set'
@@ -17,6 +18,7 @@ export default
   name: 'strand-list'
   props:
     loader: Object
+    newestFirst: Boolean
     collection:
       type: Array
       required: true
@@ -32,25 +34,14 @@ export default
     OtherKind: OtherKind
     StrandLoadMore: StrandLoadMore
     DiscussionEdited: DiscussionEdited
+    StrandItemRemoved: StrandItemRemoved
 
   computed:
-    parentExists: ->
-      @collection[0] && @collection[0].event && @collection[0].event.parent()
-
-    lastPosition: ->
-      (@parentExists && @collection[0].event.parent().childCount) || 0
-
-    positions: ->
-      @collection.map (e) -> e.event.position
-
-    ranges: ->
-      RangeSet.arrayToRanges(@positions)
-
-    siblingCount: ->
-      (@collection &&
-      @collection.length &&
-      @collection[0].event.parent() &&
-      @collection[0].event.parent().childCount) || 1
+    directedCollection: ->
+      if @newestFirst
+        @collection.reverse()
+      else
+        @collection
 
   methods:
     isFocused: (event) ->
@@ -59,36 +50,11 @@ export default
       (event.sequenceId == @loader.focusAttrs.sequenceId) ||
       (event.eventableType == 'Comment' && event.eventableId == @loader.focusAttrs.commentId)
 
-    isUnread: (event) ->
-      if event.kind == "new_discussion"
-        @loader.discussion.updatedAt > @loader.discussion.lastReadAt
-      else
-        !RangeSet.includesValue(@loader.readRanges, event.sequenceId)
-
     positionKeyPrefix: (event) ->
       if event.depth < 1
         event.positionKey.split('-').slice(0, event.depth - 1)
       else
         null
-
-    isFirstInRange: (pos) ->
-      some(@ranges, (range) -> range[0] == pos)
-
-    countEarlierMissing: (pos) ->
-      lastPos = 1
-      val = 0
-      @ranges.forEach (range) ->
-        if range[0] == pos
-          val = (pos - lastPos)
-        else
-          lastPos = range[1]
-      val
-
-    countLaterMissing: ->
-      @lastPosition - last(@ranges)[1]
-
-    isLastInLastRange: (pos) ->
-      last(@ranges)[1] == pos
 
     componentForKind: (kind) ->
       camelCase if ['stance_created', 'stance_updated', 'discussion_edited', 'new_comment', 'outcome_created', 'poll_created', 'new_discussion'].includes(kind)
@@ -98,22 +64,37 @@ export default
 
     classes: (event) ->
       return [] unless event
-      ["lmo-action-dock-wrapper", "positionKey-#{event.positionKey}", "sequenceId-#{event.sequenceId}", "position-#{event.position}"]
+      ["lmo-action-dock-wrapper",
+       "positionKey-#{event.positionKey}",
+       "sequenceId-#{event.sequenceId}",
+       "position-#{event.position}"]
 
 </script>
 
 <template lang="pug">
 .strand-list
-  .strand-item(v-for="obj, index in collection" :event='obj.event' :key="obj.event.id" :class="{'strand-item--deep': obj.event.depth > 1}")
-    .strand-item__row(v-if="parentExists && obj.event.position != 1 && isFirstInRange(obj.event.position)")
+  .strand-item(v-for="obj in directedCollection" :key="obj.event.id" :class="{'strand-item--deep': obj.event.depth > 1}")
+    .strand-item__row(v-if="!newestFirst && obj.missingEarlierCount")
       .strand-item__gutter
         .strand-item__stem-wrapper
           .strand-item__stem.strand-item__stem--broken
-      //- | {{loader.loading}} == {{'before'+obj.event.id}}
+      //- | top !newestFirst && obj.missingEarlierCount
       strand-load-more(
-        :label="{path: 'common.action.count_more', args: {count: countEarlierMissing(obj.event.position)}}"
+        v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadBefore(obj)}"
+        :label="{path: 'common.action.count_more', args: {count: obj.missingEarlierCount}}"
         @click="loader.loadBefore(obj.event)"
         :loading="loader.loading == 'before'+obj.event.id")
+
+    .strand-item__row(v-if="newestFirst && obj.missingAfterCount")
+      .strand-item__gutter
+        .strand-item__stem-wrapper
+          .strand-item__stem.strand-item__stem--broken
+      //- | top newestFirst && obj.missingAfterCount
+      strand-load-more(
+        v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadAfter(obj)}"
+        :label="{path: 'common.action.count_more', args: {count: obj.missingAfterCount}}"
+        @click="loader.loadAfter(obj.event)"
+        :loading="loader.loading == 'after'+obj.event.id")
 
     .strand-item__row(v-if="!loader.collapsed[obj.event.id]")
       .strand-item__gutter(v-if="obj.event.depth > 0")
@@ -122,39 +103,35 @@ export default
           template(v-else)
             user-avatar(:user="obj.event.actor()" :size="(obj.event.depth > 1) ? 28 : 36" no-link)
         .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event)")
-          .strand-item__stem(:class="{'strand-item__stem--unread': isUnread(obj.event), 'strand-item__stem--focused': isFocused(obj.event), 'strand-item__stem--last': obj.event.position == siblingCount}")
+          .strand-item__stem(:class="{'strand-item__stem--unread': obj.isUnread, 'strand-item__stem--focused': isFocused(obj.event)}")
       .strand-item__main
-        //- div {{[obj.event.sequenceId]}} {{obj.event.positionKey}} {{isFocused(obj.event)}} {{loader.focusAttrs}}
-        div(v-observe-visibility="{intersection: {threshold: 0.05}, callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
-          component(:class="classes(obj.event)" :is="componentForKind(obj.event.kind)" :event='obj.event')
-
+        //- div {{obj.event.kind}} {{obj.event.discussionId}} {{obj.event.model().id}} {{[obj.event.sequenceId]}} {{obj.event.positionKey}} {{isFocused(obj.event)}} {{loader.focusAttrs}}
+        //- | obj.event.kind
+        div(:class="classes(obj.event)" v-observe-visibility="{callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
+          strand-item-removed(v-if="obj.eventable && obj.eventable.discardedAt" :event="obj.event" :eventable="obj.eventable")
+          component(v-else :is="componentForKind(obj.event.kind)" :event='obj.event' :eventable="obj.eventable")
         .strand-list__children.mt-2(v-if="obj.event.childCount")
-          strand-list.flex-grow-1(v-if="obj.children.length" :loader="loader" :collection="obj.children")
-          .strand-item__row(v-else)
-            .strand-item__gutter
-              .strand-item__stem-wrapper
-                .strand-item__stem.strand-item__stem--broken
-            .strand-item__load-more
-              //- | {{loader.loading}} == {{'children'+obj.event.id}}
-              strand-load-more(
-                :label="{path: 'common.action.count_more', args: {count: obj.event.descendantCount}}"
-                @click="loader.loadChildren(obj.event)"
-                :loading="loader.loading == 'children'+obj.event.id")
+          strand-list.flex-grow-1(:loader="loader" :collection="obj.children" :newest-first="obj.event.kind == 'new_discussion' && loader.discussion.newestFirst")
 
     .strand-item__row(v-if="loader.collapsed[obj.event.id]")
       .d-flex.align-center
         .strand-item__circle.mr-2(v-if="loader.collapsed[obj.event.id]" @click.stop="loader.expand(obj.event)")
           v-icon mdi-unfold-more-horizontal
-        strand-item-headline.text--secondary(:event="obj.event" :eventable="obj.event.model()" collapsed)
+        strand-item-headline.text--secondary(:event="obj.event" :eventable="obj.eventable" collapsed)
 
-    //- | {{lastPosition}} {{ranges[ranges.length -1][1]}}
-    .strand-item__row(
-      v-if="lastPosition != 0 && isLastInLastRange(obj.event.position) && obj.event.position != lastPosition"
-      v-observe-visibility="{callback: (isVisible, entry) => isVisible && loader.autoLoadAfter(obj.event), once: true}"
-      )
-      //- | {{loader.loading}} == {{'after'+obj.event.id}}
+    .strand-item__row(v-if="newestFirst && obj.missingEarlierCount" )
+      //- | bottom newestFirst && obj.missingEarlierCount
       strand-load-more(
-        :label="{path: 'common.action.count_more', args: {count: countLaterMissing()}}"
+        v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadBefore(obj)}"
+        :label="{path: 'common.action.count_more', args: {count: obj.missingEarlierCount}}"
+        @click="loader.loadBefore(obj.event)"
+        :loading="loader.loading == 'before'+obj.event.id")
+
+    .strand-item__row(v-if="!newestFirst && obj.missingAfterCount" )
+      //- | bottom !newestFirst && obj.missingAfterCount
+      strand-load-more(
+        v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadAfter(obj)}"
+        :label="{path: 'common.action.count_more', args: {count: obj.missingAfterCount}}"
         @click="loader.loadAfter(obj.event)"
         :loading="loader.loading == 'after'+obj.event.id")
 </template>
@@ -224,25 +201,11 @@ export default
   // background-size: 32.00px 32.00px
   background-repeat: repeat-y
 
-
-
 .strand-item__stem--unread
-  background-color: var(--v-primary-base)!important
+  background-color: var(--v-accent-lighten1)!important
 
 .strand-item__stem--focused
-  background-color: var(--v-accent-base)!important
-
-// .strand-item__stem--last
-//   height: calc(100% - 44px)
-//
-// .strand-item__stem-stop
-//   position: relative
-//   left: -16px
-//   width: 24px
-//   height: 2px
-//   background-color: #ddd
-//   margin: 0 24px
-
+  background-color: var(--v-primary-darken1)!important
 
 .strand-item__circle
   display: flex

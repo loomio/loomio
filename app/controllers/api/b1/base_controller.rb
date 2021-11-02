@@ -3,7 +3,7 @@ class API::B1::BaseController < API::V1::SnorlaxBase
   include ::LoadAndAuthorize
 
   def authenticate_api_key!
-    raise CanCan::AccessDenied unless Webhook.where(token: params[:api_key]).exists?
+    raise CanCan::AccessDenied unless current_webhook
   end
 
   def current_user
@@ -11,6 +11,16 @@ class API::B1::BaseController < API::V1::SnorlaxBase
   end
 
   def current_webhook
-    Webhook.find_by(token: params[:api_key])
+    @current_webhook ||= Webhook.find_by(token: params[:api_key])
+  end
+
+  private
+  def permitted_params
+    jarams = params.dup
+    if jarams[:api_key]
+      jarams.delete(:api_key)
+      jarams = ActionController::Parameters.new({resource_name => jarams})
+    end
+    @permitted_params ||= PermittedParams.new(jarams)
   end
 end

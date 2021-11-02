@@ -239,6 +239,7 @@ fr:
       share: Partager
       ok: Ok
       retry: Réessayer
+      clear: Vider
       done: Terminé
       start: Démarrer
       delete: Supprimer
@@ -464,8 +465,10 @@ fr:
       groups_list: 'Groupes'
       user_list: 'Actions utilisateur'
   strand_nav:
-    newest_first: Activités récentes
-    oldest_first: Début de la discussion
+    newest: Les plus récents
+    oldest: Les plus anciens
+    newest_first: Les plus récents en premier
+    oldest_first: Les plus anciens en premier
     all_pinned: Tous les éléments épinglés
     whole_thread: La discussion dans son intégralité
     from_comment: Depuis un lien hypertexte en commentaire
@@ -536,7 +539,6 @@ fr:
   notification_models:
     discussion: 'discussion :'
     comment: 'commentaire dans'
-    poll: 'décision :'
     outcome: 'résultat :'
   notifications:
     header: "Notifications"
@@ -606,7 +608,6 @@ fr:
     title_label: 'Titre'
     title_placeholder: 'De quel sujet souhaitez-vous discuter ?'
     context_label: 'Contexte'
-    context_placeholder: 'Donnez assez d’informations préalables pour que le groupe ait une discussion productive. Ça pourra être mis à jour durant la discussion'
     privacy_label: 'Privé'
     privacy_public: 'N’importe qui peut voir la discussion. Seuls les membres de {{groupName}} peuvent participer.'
     privacy_private: 'La discussion sera visible uniquement aux membres de {{group}}.'
@@ -690,6 +691,8 @@ fr:
         helptext: 'A qui voulez-vous rappeler de voter ? '
         message_label: Message
         message_placeholder: Message facultatif pour expliquer aux gens pourquoi ils devraient voter
+      wip_poll_reminder:
+        message_label: Message
       poll_edited:
         title: Notifier des modifications
         helptext: 'Qui voulez-vous notifier à propos de cette mise à jour ? '
@@ -1222,7 +1225,6 @@ fr:
     deactivate_account: 'Désactiver le compte utilisateur'
     help_translate: "Aidez-nous à traduire Loomio"
   text_editor:
-    select_text_to_link: Sélectionnez le texte du lien
     insert_link: Insérer un lien
     insert_embedded_url: Intégrer la vidéo
   change_picture_form:
@@ -1433,16 +1435,13 @@ fr:
     for_everyone: Cela modifiera la mise en page pour tous, pas uniquement vous.
     sorting: Les plus anciens ou les plus récents en premier ?
     latest: Les plus récents
-    latest_description: Lire les éléments les plus récents en premier
     earliest: Les plus anciens
-    earliest_description: Lire du début à la fin
     replies: Comment afficher les réponses ?
     linear: Liste fixe.
     linear_description: Les éléments ont été listés au fur et à mesure de leur occurrence, l'un après l'autre.
     nested_once: Réponses d’imbrication - première réponse uniquement
     nested_once_description: Placer les réponses sous le commentaire original
     nested_twice: Deux niveaux de réponses imbriquées
-    nested_twice_description: Indent répond jusqu’à 2 fois.
     changing_nesting_is_slow: Les changements à l'imbrication peuvent prendre quelques minutes à traiter.
   delete_thread_form:
     aria_label: 'Supprimer la discussion'
@@ -1633,7 +1632,6 @@ fr:
     anonymous: Les votes sont anonymes
     results_hidden_until_closed: Les résultats sont cachés jusquà la cloture du %{poll_type}
     unable_to_vote: Vous n'avez pas été invité à voter dans ce %{poll_type}
-    draft_mode: Ce %{poll_type} est en cours de construction. Les votes sont désactivés.
   current_polls_card:
     title: Décisions en cours
     start_poll: Nouvelle décision
@@ -1694,8 +1692,6 @@ fr:
       title: Cacher les résultats jusqu'à la cloture
       helptext_on: Ne pas montrer comment les gens ont voté avant la cloture du sondage
   poll_common_close_form:
-    title: Fermer un sondage en avance
-    helptext: Etes-vous sûr de vouloir cloturer ce %{poll_type} avant la fin ?
     close_proposal: Clôturer la proposition
     close_poll: Fermer le sondage
     close_count: Clôturer la vérification
@@ -1715,9 +1711,6 @@ fr:
   poll_common_move_form:
     title: "Déplacer le {{poll_type}}"
     success: "{{poll_type}} déplacé vers le groupe {{group}}"
-  poll_common_wip_field:
-    title: Travail en cours
-    helptext: 'Utiliez "Travail en cours" pour collaborer sur le %{poll_type} avant le vote'
   poll_common_closing_at_field:
     closing: Fermeture
     no_closing_date: Pas de date de cloture
@@ -1756,7 +1749,6 @@ fr:
     ranked_choice: 'Ce classement par préférence est fermé. <strong>Partagez un résultat</strong> avec le groupe.'
     score: 'Ce sondage a été clôturé. <strong>Partager un résultat</strong> avec le groupe.'
   poll_common_outcome_form:
-    who_to_notify: 'Qui voulez-vous notifier à propos de ces résultats ? '
     new_title: Entrer un résultat
     update_title: Mettre à jour le résultat
     outcome_created: Résultat créé
@@ -2139,18 +2131,6 @@ fr:
       read_memberships: lire les appartenances
     include_body_label: Inclure le corps du message dans la notification
     include_subgroups_label: Faire suivre les événement des sous-groupes
-  configure_sso:
-    redirecting: Veuillez patienter, vous allez être redirigé vers le service d'identification
-    title: Authentification unique (SSO)
-    enabled: L'authentification unique (SSO) est activée
-    helptext: Integrer à un service OneLogin, Auth0, Microsoft Active Directory, ou tout fournisseur de service SAML. <a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">En savoir plus</a>.
-    warning_helptext: "Attention: vous devrez vous identifier auprès de votre fournisseur de service une fois que vous aurez cliqué sur le bouton sauvegarder"
-    idp_metadata_url: URL des métadonnées du fournisseur d'identité (IdP)
-    idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
-    success: L'authentification unique (SSO) est correctement configurée
-    destroyed: L'authentification unique (SSO) a été supprimée
-    invalid_idp_metadata_url: URL des métadonnées du fournisseur d'identité (IdP) invalide
-    sp_metadata_url: URL des métadonnées du fournisseur de service (SP)
   browser_warning:
     message: "IMPORTANT: votre navigateur ({{name}} {{version}})  est obsolète et n'est pas compatible avec {{site}}."
     link: Merci de mettre à jour ou de changer de navigateur

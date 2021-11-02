@@ -3,10 +3,6 @@ en:
   explore:
     header: Explore public groups
 
-  saml_providers:
-    invitation_created:
-      success: "Success! Please check your %{email} inbox for a link to join %{group_name}."
-      error: "Your SAML provider could not authenticate %{email} for %{group_name}."
   activerecord:
     errors:
       messages:
@@ -464,6 +460,15 @@ en:
 
         ![loomio logo](https://i.imgur.com/Fvtworb.png)
 
+  task_mailer:
+    task_due_reminder:
+      subject: "Task reminder: %{name}"
+      greeting: "Hi %{name}, the following task is due %{due}:"
+      view_task: "View on %{site_name}"
+      update_or_comment: "If you have already completed this task, please tick it off. If it is not complete, please share a progress update."
+      due_today: 'today'
+      due_in_count_days: 'in %{count} days'
+
   group_mailer:
     resend: 'REMINDER: %{member} is waiting for you to join %{group_name}'
 
@@ -495,7 +500,7 @@ en:
       poll_edited: '%{actor} edited the %{poll_type}: %{title}'
       poll_reminder: '%{actor} is reminding you to vote: %{title}'
       poll_announced: '%{actor} invited you to vote in a %{poll_type}: %{title}'
-      poll_announced_wip: '%{actor} shared a work in progress %{poll_type}: %{title}'
+      poll_announced_wip: '%{actor} invited you to give feedback on a %{poll_type}: %{title}'
       poll_closing_soon: '%{poll_type} closing in 24 hours: %{title}'
       poll_closing_soon_author: 'Your %{poll_type} closes in 24 hours: %{title}'
       poll_expired: "%{poll_type} closed: %{title}"
@@ -516,8 +521,9 @@ en:
       poll_created: '<strong>%{actor}</strong> started a %{poll_type}'
       poll_edited: '<strong>%{actor}</strong> edited a %{poll_type}'
       poll_reminder: '<strong>%{actor}</strong> is reminding you to vote'
+      poll_reminder_wip: '<strong>%{actor}</strong> is reminding you to give feedback'
       poll_announced: '<strong>%{actor}</strong> invited you to vote in a %{poll_type}'
-      poll_announced_wip: '<strong>%{actor}</strong> shared a work in progress %{poll_type}'
+      poll_announced_wip: '<strong>%{actor}</strong> invited you to give feedback on a %{poll_type}'
       poll_closing_soon: '<strong>%{actor}</strong>''s %{poll_type} is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
       poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
       poll_expired: "<strong>%{actor}'s</strong> %{poll_type} has closed: %{title}"

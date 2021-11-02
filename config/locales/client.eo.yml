@@ -188,6 +188,7 @@ eo:
       load_more: 'Montri pli'
       ok: Enorde
       retry: Reprovi
+      clear: Klara
       done: Fini
       send: Sendi
       joined: Aliĝis
@@ -335,6 +336,8 @@ eo:
         title: Inviti homojn voĉdoni
         helptext: Kiun vi volas inviti voĉdoni?
       poll_reminder:
+        message_label: Mesaĝo
+      wip_poll_reminder:
         message_label: Mesaĝo
   action_dock:
     add_comment: Komenti

@@ -41,6 +41,7 @@ export default
       query: (records) => @updateStances()
 
   computed:
+    wipOrEmpty: -> if @poll.closingAt then '' else 'wip_'
     someRecipients: ->
       @poll.recipientAudience ||
       @poll.recipientUserIds.length ||
@@ -130,14 +131,16 @@ export default
 </script>
 
 <template lang="pug">
-.poll-members-list
+.poll-members-form
   .px-4.pt-4
     .d-flex.justify-space-between
-      h1.headline(v-if="poll.notifyRecipients" v-t="'announcement.form.poll_announced.title'")
-      h1.headline(v-else v-t="'poll_common_form.add_voters'")
+      //- template(v-if="poll.notifyRecipients")
+      h1.headline(v-t="'announcement.form.'+wipOrEmpty+'poll_announced.title'")
+      //- h1.headline(v-if="!poll.closingAt" v-t="'announcement.form.wip_poll_announced.title'")
+      //- h1.headline(v-else v-t="'poll_common_form.add_voters'")
       dismiss-modal-button
     recipients-autocomplete(
-      :label="poll.notifyRecipients ? $t('announcement.form.poll_announced.helptext') : $t('poll_common_form.who_may_vote', {poll_type: poll.translatedPollType()})"
+      :label="poll.notifyRecipients ? $t('announcement.form.'+wipOrEmpty+'poll_announced.helptext') : $t('poll_common_form.who_may_vote', {poll_type: poll.translatedPollType()})"
       :placeholder="$t('announcement.form.placeholder')"
       :model="poll"
       :reset="reset"
@@ -150,13 +153,13 @@ export default
     .d-flex.align-center
       v-checkbox(:disabled="!someRecipients" :label="$t('poll_common_form.notify_invitees')" v-model="poll.notifyRecipients")
       v-spacer
-      v-btn.poll-members-list__submit(color="primary" :disabled="!someRecipients" :loading="saving" @click="inviteRecipients" )
+      v-btn.poll-members-form__submit(color="primary" :disabled="!someRecipients" :loading="saving" @click="inviteRecipients" )
         span(v-t="'common.action.invite'" v-if="poll.notifyRecipients")
         span(v-t="'poll_common_form.add_voters'" v-else)
     v-alert(dense type="warning" text v-if="someRecipients && !poll.notifyRecipients")
       span(v-t="'poll_common_form.no_notifications_warning'")
     v-textarea(v-if="poll.notifyRecipients && someRecipients" rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
-  v-list
+  v-list.poll-members-form__list
     v-subheader
       span(v-t="'membership_card.voters'")
       space

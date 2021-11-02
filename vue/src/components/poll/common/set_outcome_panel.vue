@@ -26,11 +26,15 @@ export default
 
 <template lang="pug">
 v-alert.my-4.poll-common-set-outcome-panel(
-  v-if="showPanel()"
+  icon="mdi-flag-checkered"
+  prominent
   outlined
+  v-if="showPanel()"
   color="primary"
   elevation="3")
-  p.text--secondary(v-html="$t('poll_common_set_outcome_panel.' + poll.pollType)")
-  v-layout(justify-space-around)
-    v-btn.poll-common-set-outcome-panel__submit(color="primary" @click="openOutcomeForm()" v-t="'poll_common_set_outcome_panel.enter_outcome'")
+  v-row(align="center")
+    v-col.grow
+      span(v-html="$t('poll_common_set_outcome_panel.' + poll.pollType)")
+    v-col.shrink
+      v-btn.poll-common-set-outcome-panel__submit(color="primary" @click="openOutcomeForm()" v-t="'poll_common_set_outcome_panel.enter_outcome'")
 </template>

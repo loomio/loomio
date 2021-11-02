@@ -40,7 +40,6 @@ class API::V1::DocumentsController < API::V1::RestfulController
     Queries::UnionQuery.for(:documents, [
       @group.documents,
       @group.public_discussion_documents,
-      @group.public_poll_documents,
       @group.public_comment_documents ])
 
   end

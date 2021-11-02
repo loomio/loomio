@@ -6,12 +6,6 @@ class MembershipService
   def self.redeem(membership:, actor:, notify: true)
     raise Membership::InvitationAlreadyUsed.new(membership) if membership.accepted_at
 
-    expires_at = if membership.group.parent_or_self.saml_provider
-      Time.current
-    else
-      nil
-    end
-
     # so we want to accept all the pending invitations this person has been sent within this org
     # and we dont want any surprises if they already have some memberships.
     # they may be accepting memberships send to a different email (unverified_user)
@@ -27,8 +21,7 @@ class MembershipService
       group_id: (group_ids - existing_group_ids)).
     update_all(
       user_id: actor.id,
-      accepted_at: DateTime.now,
-      saml_session_expires_at: expires_at)
+      accepted_at: DateTime.now)
 
     membership.reload
     Events::InvitationAccepted.publish!(membership) if notify && membership.accepted_at

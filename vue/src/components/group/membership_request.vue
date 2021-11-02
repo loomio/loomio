@@ -25,7 +25,7 @@ div
       user-avatar(:user='request.actor()' :size='40')
     v-list-item-content
       v-list-item-title.membership-request__name
-        span {{request.actor().name || request.actor().email || request.name || request.email }}
+        span {{request.nameAndEmail()}}
         span.caption.text--secondary(v-if="!request.respondedAt")
           space
           mid-dot

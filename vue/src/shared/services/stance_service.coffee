@@ -10,14 +10,15 @@ import openModal      from '@/shared/helpers/open_modal'
 export default new class StanceService
   actions: (stance) ->
     react:
+      dock: 1
       canPerform: ->
         !stance.discardedAt &&
-        AppConfig.features.app.vote_reactions &&
         stance.poll().membersInclude(Session.user())
 
     edit_stance:
       name: 'poll_common.change_vote'
       icon: 'mdi-pencil'
+      dock: 1
       canPerform: ->
         (Session.user() && stance.participant()) &&
         stance.latest && stance.poll().isActive() && stance.participant() == Session.user()
@@ -30,6 +31,7 @@ export default new class StanceService
     translate_stance:
       icon: 'mdi-translate'
       name: 'common.action.translate'
+      dock: 2
       canPerform: ->
         (stance.author() && Session.user()) &&
         stance.author().locale != Session.user().locale &&
@@ -40,6 +42,7 @@ export default new class StanceService
     show_history:
       name: 'action_dock.edited'
       icon: 'mdi-history'
+      dock: 1
       canPerform: -> stance.edited()
       perform: ->
         openModal
@@ -51,20 +54,20 @@ export default new class StanceService
     canPerform: (poll, user) ->
       poll.adminsInclude(Session.user()) && !poll.adminsInclude(user)
     perform: (poll, user) ->
-      Records.remote().post 'stances/make_admin', participant_id: user.id, poll_id: poll.id, exclude_types: 'discussion'
+      Records.remote.post 'stances/make_admin', participant_id: user.id, poll_id: poll.id, exclude_types: 'discussion'
 
   removeAdmin:
     name: 'membership_dropdown.demote_coordinator'
     canPerform: (poll, user) ->
       poll.adminsInclude(Session.user()) && poll.adminsInclude(user)
     perform: (poll, user) ->
-      Records.remote().post 'stances/remove_admin', participant_id: user.id, poll_id: poll.id, exclude_types: 'discussion'
+      Records.remote.post 'stances/remove_admin', participant_id: user.id, poll_id: poll.id, exclude_types: 'discussion'
 
   revoke:
     name: 'membership_dropdown.remove_from.poll'
     canPerform: (poll, user) ->
       poll.adminsInclude(Session.user())
     perform: (poll, user) ->
-      Records.remote().post 'stances/revoke', {participant_id: user.id, poll_id: poll.id}
+      Records.remote.post 'stances/revoke', {participant_id: user.id, poll_id: poll.id}
       .then ->
         Flash.success "membership_remove_modal.invitation.flash"

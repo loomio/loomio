@@ -19,9 +19,12 @@ class Group < ApplicationRecord
   alias_method :author, :creator
 
   belongs_to :parent, class_name: 'Group'
+  scope :empty_no_subscription, -> { joins('left join subscriptions on subscription_id = groups.subscription_id').where('subscriptions.id is null and groups.parent_id is null').where('memberships_count < 2 AND discussions_count < 3 and polls_count < 2 and subgroups_count = 0').where('groups.created_at < ?', 1.year.ago) }
+  scope :all_unused, -> { where('groups.parent_id is null').where('memberships_count < 2 AND discussions_count < 3 and polls_count < 2 and subgroups_count = 0').where('groups.created_at < ?', 1.year.ago) }
+  scope :expired_trial, -> { joins(:subscription).where('subscriptions.plan = ?', 'trial').where('groups.created_at < ?', 1.year.ago) }
 
-  has_many :discussions,             foreign_key: :group_id, dependent: :destroy
-  has_many :public_discussions, -> { visible_to_public }, foreign_key: :group_id, dependent: :destroy, class_name: 'Discussion'
+  has_many :discussions, dependent: :destroy
+  has_many :public_discussions, -> { visible_to_public }, foreign_key: :group_id, class_name: 'Discussion'
   has_many :comments, through: :discussions
 
   has_many :all_memberships, dependent: :destroy, class_name: 'Membership'
@@ -39,8 +42,7 @@ class Group < ApplicationRecord
   has_many :membership_requests, dependent: :destroy
   has_many :pending_membership_requests, -> { where response: nil }, class_name: 'MembershipRequest'
 
-  has_many :polls, foreign_key: :group_id, dependent: :destroy
-  has_many :public_polls, through: :public_discussions, source: :polls
+  has_many :polls, dependent: :destroy
 
   has_many :documents, as: :model, dependent: :destroy
   has_many :requested_users, through: :membership_requests, source: :user
@@ -54,12 +56,8 @@ class Group < ApplicationRecord
   has_many :discussion_documents,        through: :discussions,        source: :documents
   has_many :poll_documents,              through: :polls,              source: :documents
   has_many :comment_documents,           through: :comments,           source: :documents
-  has_many :public_discussion_documents, through: :public_discussions, source: :documents
-  has_many :public_poll_documents,       through: :public_polls,       source: :documents
-  has_many :public_comment_documents,    through: :public_comments,    source: :documents
   has_many :tags, foreign_key: :group_id
 
-  has_one :saml_provider, required: false, foreign_key: :group_id
   has_one :group_survey, required: false, foreign_key: :group_id
 
   belongs_to :subscription

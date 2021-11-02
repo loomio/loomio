@@ -64,7 +64,7 @@ div
               @click="editing = true"
               :title="$t('common.action.edit')")
           v-icon mdi-pencil
-          
+
         template(v-if="preview.image")
           v-btn.link-preview__btn(@click="preview.fit = (preview.fit == 'cover' ? 'contain' : 'cover')"
                 color="primary" icon outlined
@@ -111,5 +111,4 @@ div
 .link-preview__btn
   top: 8px
   position: absolute
-  z-index: 1000
 </style>

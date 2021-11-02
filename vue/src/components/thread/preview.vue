@@ -43,8 +43,8 @@ v-list-item.thread-preview.thread-preview__link(:class="{'thread-preview--unread
     user-avatar(:user='thread.author()' :size='40' no-link)
   v-list-item-content
     v-list-item-title(style="align-items: center")
-      span(v-if='thread.pinned' :title="$t('context_panel.thread_status.pinned')")
-        v-icon(small) mdi-pin
+      span(v-if='thread.pinnedAt' :title="$t('context_panel.thread_status.pinned')")
+        v-icon(small) mdi-pin-outline
       span.thread-preview__title(:class="{'thread-preview--unread': thread.isUnread() }") {{thread.title}}
       v-chip.ml-1(small label outlined color="warning" v-if='thread.closedAt' v-t="'common.privacy.closed'")
       tags-display(:tags="thread.tags()")
@@ -81,7 +81,7 @@ v-list-item.thread-preview.thread-preview__link(:class="{'thread-preview--unread
 .thread-preview
   border-left: 2px solid transparent
 .thread-preview--unread-border
-  border-color: var(--v-primary-base)
+  border-color: var(--v-accent-lighten1)
 // .thread-preview__position-icon-container
 //   width: 23px
 //   height: 23px

@@ -185,6 +185,7 @@ hu:
       share: Megoszt
       ok: Rendben
       retry: Újra
+      clear: Töröl
       done: Kész
       start: Indítás
       delete: Törlés
@@ -384,6 +385,11 @@ hu:
       threads_list: 'Téma műveletek'
       groups_list: 'Csoportok'
       user_list: 'Felhasználói tevékenység'
+  strand_nav:
+    newest: Legújabb
+    oldest: Legrégebbi
+    newest_first: Először a legújabb
+    oldest_first: A legrégebbi előbb
   navbar:
     search_all_threads: Keresés minden témában
     search_threads: 'Keresés a témákban itt: {{name}}'
@@ -440,7 +446,6 @@ hu:
   notification_models:
     discussion: 'téma:'
     comment: 'hozzászólás itt'
-    poll: 'döntés:'
     outcome: 'eredmény:'
   notifications:
     header: "Értesítések"
@@ -482,7 +487,6 @@ hu:
     title_label: 'Cím'
     title_placeholder: 'Mit szeretnél megtárgyalni?'
     context_label: 'Leírás'
-    context_placeholder: 'Adj elegendő háttér-információt a csoport számára a hatékony megbeszéléshez. Ezt a beszélgetés előrehaladtával frissíthetjük'
     privacy_label: 'Adatvédelem'
     privacy_public: 'Bárki láthatja a témát. Csak a tagok vehetnek részt.'
     privacy_private: 'A téma csak a(z) {{group}} tagjai számára lesz látható.'
@@ -518,6 +522,8 @@ hu:
         title: Meghívás szavazásra
         helptext: Kit szeretnél meghívni a szavazásra?
       poll_reminder:
+        message_label: Üzenet
+      wip_poll_reminder:
         message_label: Üzenet
       poll_edited:
         title: Értesítés a módosításokról
@@ -1286,7 +1292,6 @@ hu:
       title: A szavazók válaszolhatnak "ha szükséges"
       helptext_on: A szavazók jelölhetik az időpontokat "ha szükséges"
   poll_common_close_form:
-    title: Szavazás lezárása a határidő előtt
     close_proposal: Bezárja a javaslatot
     close_poll: Bezárja a szavazást
     close_count: Felmérés lezárása
@@ -1600,8 +1605,6 @@ hu:
     name_label: Név
     event_kinds:
       poll_closing_soon: A szavazás hamarosan lejár
-  configure_sso:
-    title: Egyszeri felíratkozás
   browser_warning:
     message: "FONTOS! Egy elavult böngészőt használsz ({{name}} {{version}}), amelyet a {{site}} nem támogat."
     link: Kérünk válts egy másik böngészőre

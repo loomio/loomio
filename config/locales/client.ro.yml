@@ -168,6 +168,7 @@ ro:
       share: Distribuie
       ok: Ok
       retry: Reincearca
+      clear: Curata
       done: Gata
       start: Incepe
       delete: Sterge
@@ -336,6 +337,8 @@ ro:
     form:
       invitation_message_label: Mesaj
       poll_reminder:
+        message_label: Mesaj
+      wip_poll_reminder:
         message_label: Mesaj
   action_dock:
     add_resource: Adauga atasament
@@ -583,8 +586,6 @@ ro:
     name: Nume
   webhook:
     name_label: Nume
-  configure_sso:
-    title: Autentificarea sign-on unic
   group_survey:
     success: Multumim!
     categories:

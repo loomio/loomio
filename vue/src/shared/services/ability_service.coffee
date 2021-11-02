@@ -28,6 +28,12 @@ export default new class AbilityService
     !comment.discardedAt &&
     comment.discussion().membersInclude(Session.user())
 
+  canEdit: (model) ->
+    (model.isA('discussion') && @canEditThread(model)) ||
+    (model.isA('comment') && @canEditComment(model)) ||
+    (model.isA('poll') && @canEditPoll(model)) ||
+    (model.isA('stance') && @canEditStance(model))
+
   canEditStance: (stance) ->
     Session.user() == stance.author()
 
@@ -43,10 +49,10 @@ export default new class AbilityService
     thread.closedAt && @canEditThread(thread)
 
   canPinThread: (thread) ->
-    !thread.closedAt && !thread.pinned && @canEditThread(thread)
+    !thread.closedAt && !thread.pinnedAt && @canEditThread(thread)
 
   canUnpinThread: (thread) ->
-    !thread.closedAt && thread.pinned && @canEditThread(thread)
+    !thread.closedAt && thread.pinnedAt && @canEditThread(thread)
 
   canExportThread: (thread) ->
     !thread.discardedAt && thread.membersInclude(Session.user())

@@ -101,6 +101,7 @@ da:
       share: Del
       ok: Ok
       retry: Forsøg igen
+      clear: Ryd
       done: Færdig
       start: Start
       delete: Slet
@@ -226,6 +227,9 @@ da:
       threads_list: 'Debat handlinger'
       groups_list: 'Grupper'
       user_list: 'Bruger handlinger'
+  strand_nav:
+    newest_first: Nyeste først
+    oldest_first: Ældste først
   navbar:
     recent_title: 'Vis dashboard'
     unread_title: 'Vis ulæste aktiviteter'
@@ -288,7 +292,6 @@ da:
     title_label: 'Titel'
     title_placeholder: 'Hvilket emne ønsker du at have en debat om?'
     context_label: 'Beskrivelse'
-    context_placeholder: 'Giv nok baggrundsinformation så at gruppen kan have en produktiv debat.  Beskrivelsen kan opdateres undervejs alt eftersom man bliver klogere på emnet.'
     privacy_label: 'Privatinstillinger'
     privacy_public: 'Alle kan se debatten. Kun medlemmer kan deltage.'
     privacy_private: 'Debatten kan kun ses af medlemmer af gruppen {{group}}.'
@@ -297,6 +300,8 @@ da:
     form:
       invitation_message_label: Besked
       poll_reminder:
+        message_label: Besked
+      wip_poll_reminder:
         message_label: Besked
       outcome_announced:
         title: Del resultat
@@ -727,7 +732,6 @@ da:
     notify_on_participate:
       title: Send en notifikation til mig når folk deltager
   poll_common_close_form:
-    title: Afslut en meningsmåling før tid
     close_proposal: Luk forslag
     close_poll: Afslut meningsmåling
     close_count: Afslut checkmåling

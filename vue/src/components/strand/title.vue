@@ -25,5 +25,5 @@ export default
     span(v-if='!discussion.translation.title') {{discussion.title}}
     span(v-if='discussion.translation.title')
       translation(:model='discussion', field='title')
-    i.mdi.mdi-pin.context-panel__heading-pin(v-if="status == 'pinned'")
+    i.mdi.mdi-pin-outline.context-panel__heading-pin(v-if="status == 'pinned'")
 </template>

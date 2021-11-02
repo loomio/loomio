@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   authenticate :user, lambda { |u| u.is_admin? } do
     mount Sidekiq::Web => '/admin/sidekiq'
     mount Blazer::Engine, at: "/admin/blazer"
-    mount PgHero::Engine, at: "/admin/pghero"
+    # mount PgHero::Engine, at: "/admin/pghero"
   end
 
   if !Rails.env.production?
@@ -27,9 +27,6 @@ Rails.application.routes.draw do
       get '/:action', to: 'nightwatch#:action'
     end
   end
-
-  mount Ahoy::Engine => "/bhoy", as: :bhoy if Ahoy.api
-  mount AhoyEmail::Engine => "/bhoy", as: :bhoyemail
 
   get '/discussions/:id', to: 'redirect#discussion'
   get '/groups/:id',      to: 'redirect#group'
@@ -46,7 +43,6 @@ Rails.application.routes.draw do
     end
 
     namespace :v1 do
-      resources :saml_providers, only: [:create, :destroy, :index]
       resources :attachments, only: [:index, :destroy]
       resources :webhooks, only: [:create, :destroy, :index, :update]
 
@@ -65,6 +61,17 @@ Rails.application.routes.draw do
       resources :link_previews, only: [:create]
 
       resources :usage_reports, only: [:create]
+
+      resources :tasks, only: [:index] do
+        collection do
+          post :update_done
+        end
+
+        member do
+          post :mark_as_done
+          post :mark_as_not_done
+        end
+      end
 
       resources :groups, only: [:index, :show, :create, :update, :destroy] do
         member do
@@ -134,6 +141,7 @@ Rails.application.routes.draw do
         patch :unpin, on: :member
         get :comment, on: :collection
         get :position_keys, on: :collection
+        get :timeline, on: :collection
         patch :remove_from_thread, on: :member
       end
 
@@ -180,7 +188,6 @@ Rails.application.routes.draw do
           post :priority
         end
       end
-
 
       resources :search, only: :index
 
@@ -316,6 +323,7 @@ Rails.application.routes.draw do
   get 'd/new'                              => 'application#index', as: :new_discussion
   get 'p/new(/:type)'                      => 'application#index', as: :new_poll
   get 'threads/direct'                     => 'application#index', as: :groupless_threads
+  get 'tasks'                              => 'application#index', as: :tasks
 
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'g/:key/stats'                       => 'groups#stats',                as: :group_stats
@@ -353,20 +361,6 @@ Rails.application.routes.draw do
   get '/crowdfunding_celebration'          => 'application#crowdfunding'
   get '/brand'                      => 'application#brand'
 
-
-  resources :saml_providers, only: [] do
-    collection do
-      get :auth
-      get :should_auth
-      get :invitation_created
-      post :callback
-    end
-
-    member do
-      get :metadata
-      get :logout
-    end
-  end
 
   Identities::Base::PROVIDERS.each do |provider|
     scope provider do

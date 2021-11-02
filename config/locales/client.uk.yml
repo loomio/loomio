@@ -191,6 +191,7 @@ uk:
       share: Поширити
       ok: Гаразд
       retry: Спробувати знов
+      clear: Очистити
       done: Виконано
       start: Почати
       delete: Видалити
@@ -399,6 +400,11 @@ uk:
       threads_list: 'Пов''язані дії'
       groups_list: 'Групи'
       user_list: 'Дії користувача'
+  strand_nav:
+    newest: Найновіші
+    oldest: Найстарші
+    newest_first: Спочатку нові
+    oldest_first: Спочатку старі
   navbar:
     search_all_threads: Шукати у всіх темах
     search_threads: 'Шукати теми у {{name}}'
@@ -455,7 +461,6 @@ uk:
   notification_models:
     discussion: 'тема:'
     comment: 'прокоментувати в'
-    poll: 'рішення:'
     outcome: 'результат:'
   notifications:
     header: "Сповіщення"
@@ -510,7 +515,6 @@ uk:
     title_label: 'Назва'
     title_placeholder: 'Яку саме тему ви хочете обговорити?'
     context_label: 'Контекст'
-    context_placeholder: 'Дайте достатньо вихідної інформації для групи, щоб мати продуктивне обговорення. Вона може бути оновлена по ходу дискусії.'
     privacy_label: 'Конфіденційність'
     privacy_public: 'Будь-хто може бачити тему. Тільки учасники можуть брати участь в обговоренні.'
     privacy_private: 'Тему можуть бачити тільки учасники групи {{group}}.'
@@ -558,6 +562,8 @@ uk:
         title: Запросити до голосування
         helptext: Кого ви хотіли б долучити до голосування?
       poll_reminder:
+        message_label: Повідомлення
+      wip_poll_reminder:
         message_label: Повідомлення
       poll_edited:
         title: Сповіщати про зміни
@@ -1157,9 +1163,7 @@ uk:
     for_everyone: Це змінює показ для всіх, не тільки для вас.
     sorting: Спочатку старі чи нові?
     latest: Найновіші
-    latest_description: Спочатку прочитайте найновіші дописи
     earliest: Найстарші
-    earliest_description: Читати від початку до кінця
     replies: Як відображати відповіді?
     linear: Плаский список
     linear_description: Елементи надані в тій послідовності, як вони відбувалися, один за одним.
@@ -1369,7 +1373,6 @@ uk:
       title: Виборці можуть відповісти "у разі потреби"
       helptext_on: Виборці можуть вказувати час як "у разі потреби"
   poll_common_close_form:
-    title: Закрити опитування раніше
     close_proposal: Закрити пропозицію
     close_poll: Закрити опитування
     close_count: Закрити контрольний список

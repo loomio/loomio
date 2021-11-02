@@ -164,7 +164,7 @@ module Dev::PollsScenarioHelper
                                                      wip: params[:wip],
                                                      notify_on_closing_soon: params[:notify_on_closing_soon] || 'voters',
                                                      created_at: 6.days.ago,
-                                                     closing_at: 1.day.from_now))
+                                                     closing_at: if params[:wip] then nil else 1.day.from_now end))
 
     PollService.create(poll: poll, actor: actor)
     # Stance.create(poll: poll, participant: non_voter)
@@ -196,7 +196,7 @@ module Dev::PollsScenarioHelper
                                                      wip: params[:wip],
                                                      notify_on_closing_soon: params[:notify_on_closing_soon] || 'voters',
                                                      created_at: 6.days.ago,
-                                                     closing_at: 1.day.from_now))
+                                                     closing_at: if params[:wip] then nil else 1.day.from_now end))
 
     PollService.create(poll: poll, actor: actor)
     # Stance.create(poll: poll, participant: non_voter)
@@ -228,7 +228,7 @@ module Dev::PollsScenarioHelper
                                                      anonymous: !!params[:anonymous],
                                                      hide_results_until_closed: !!params[:hide_results_until_closed],
                                                      discussion: discussion,
-                                                     closing_at: 1.day.from_now))
+                                                     closing_at: if params[:wip] then nil else 1.day.from_now end))
     voter      = poll.stances.last.real_participant
     discussion.add_guest! voter, discussion.author
     PollService.create(poll: poll, actor: actor)

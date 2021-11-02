@@ -26,8 +26,7 @@ module Ability::Group
          :destroy,
          :publish,
          :export,
-         :view_pending_invitations,
-         :set_saml_provider], ::Group do |group|
+         :view_pending_invitations], ::Group do |group|
       group.admins.exists?(user.id)
     end
 

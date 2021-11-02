@@ -39,7 +39,7 @@ export default
         key: 'dashboard'
         collections: ['discussions', 'searchResults']
         query: =>
-          @threads = Records.discussions.find(groupId: null)
+          @threads = Records.discussions.collection.chain().find(groupId: null).simplesort('lastActivityAt', true).data()
 
 </script>
 

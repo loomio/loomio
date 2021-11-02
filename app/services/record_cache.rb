@@ -146,7 +146,7 @@ class RecordCache
   def add_groups_subscriptions_memberships(collection)
     return [] if exclude_types.include?('group')
     group_ids = add_groups(collection)
-    add_memberships(Membership.where(group_id: group_ids, user_id: current_user_id))
+    add_memberships(Membership.where(group_id: group_ids, user_id: current_user_id), group_ids)
     add_subscriptions(collection)
   end
 
@@ -169,7 +169,7 @@ class RecordCache
     end
   end
 
-  def add_memberships(collection)
+  def add_memberships(collection, group_ids)
     return if exclude_types.include?('membership')
     scope[:memberships_by_group_id] ||= {}
     scope[:memberships_by_id] ||= {}
@@ -179,6 +179,13 @@ class RecordCache
       scope[:memberships_by_group_id][m.group_id] = m
       scope[:memberships_by_id][m.id] = m
     end
+
+    # is this buggy?
+    # our cache.fetch method benefits from knowing it is nil
+    # group_ids.each do |id|
+    #   next if scope[:memberships_by_group_id].has_key?(id)
+    #   scope[:memberships_by_group_id][id] = nil
+    # end
   end
 
   def add_polls_options_stances_outcomes(collection)

@@ -28,30 +28,26 @@ export default
 </script>
 
 <template lang="pug">
-h3.strand-item__headline.thread-item__title.body-2.pb-1(tabindex="-1" :id="'event-' + event.id")
-  //- div
-    | id: {{event.id}}
-    | pos {{event.position}}
-    | sid {{event.sequenceId}}
-    | depth: {{event.depth}}
-    | childCount: {{event.childCount}}
-    | eid: {{event.eventableId}}
-  div(v-if="eventable.discardedAt")
-    span.grey--text(v-t="'thread_item.removed'")
-    mid-dot
-    router-link.grey--text(:to='link')
-      time-ago(:date='eventable.discardedAt')
-  div.d-flex.align-center(v-else)
-    v-icon(v-if="event.pinned") mdi-pin
+h3.strand-item__headline.thread-item__title.body-2.pb-1(tabindex="-1")
+  div.d-flex.align-center
+    //- v-icon(v-if="event.pinned") mdi-pin
     slot(name="headline")
       span.strand-item__headline.text--secondary(v-html='headline')
     mid-dot
-    router-link.grey--text.body-2(:to='link')
+    router-link.text--secondary.body-2(:to='link')
       time-ago(:date='event.createdAt')
+    mid-dot(v-if="event.pinned")
+    v-icon(v-if="event.pinned") mdi-pin-outline
 
 </template>
 <style lang="sass">
 .strand-item__headline
   strong
     font-weight: 400
+  .actor-link
+    color: inherit
+.text--secondary
+  .actor-link
+    color: inherit
+
 </style>

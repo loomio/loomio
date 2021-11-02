@@ -1,6 +1,7 @@
 <script lang="coffee">
 import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
+import ThreadService from '@/shared/services/thread_service'
 import { map, sortBy, filter, debounce, without, uniq, find, compact } from 'lodash'
 import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
@@ -69,6 +70,9 @@ export default
     updateCount: ->
       Records.announcements.fetchNotificationsCount(@model).then (data) =>
         @notificationsCount = data.count
+
+    openEditLayout: ->
+      ThreadService.actions(@discussion, @)['edit_arrangement'].perform()
 
   computed:
     maxThreads: ->
@@ -139,6 +143,8 @@ export default
       common-notify-fields(:model="discussion")
       //- p.discussion-form__visibility
       v-card-actions
+        v-btn.discussion-form__edit-layout(v-if="!discussion.isNew()" outlined @click="openEditLayout")
+          span(v-t="'thread_arrangement_form.edit'")
         v-spacer
         v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-if="!discussion.id" :loading="discussion.processing")
           span(v-t="'discussion_form.start_thread'")

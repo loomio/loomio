@@ -208,6 +208,7 @@ ar:
       share: شارك
       ok: نعم
       retry: أعد المحاولة
+      clear: مسح
       done: منجز
       start: بداية
       delete: حذف
@@ -431,8 +432,10 @@ ar:
       groups_list: 'الفِرَق'
       user_list: 'إجراءات المستخدم'
   strand_nav:
-    newest_first: النشاط الاخير
-    oldest_first: بداية الموضوع
+    newest: الأحدث
+    oldest: الأقدم
+    newest_first: الأحدث أولاً
+    oldest_first: الأقدم أولا
     all_pinned: كافة العناصر المثبتة
     whole_thread: الموضوع كله
     from_comment: من عنوان url للتعليق
@@ -499,7 +502,6 @@ ar:
   notification_models:
     discussion: 'موضوع:'
     comment: 'التعليق في'
-    poll: 'القرار:'
     outcome: 'النتيجة:'
   notifications:
     header: "تبليغات"
@@ -567,7 +569,6 @@ ar:
     title_label: 'العنوان'
     title_placeholder: 'ماهو الموضوع الذي ترغب في مناقشته؟'
     context_label: 'سياق النقاش'
-    context_placeholder: 'قم بتزويد معلومات كافية حول خلفية الموضوع للمجموعة ليكون النقاش مفيداً. يمكن تحديث هذا خلال سير النقاش. '
     privacy_label: 'الخصوصية'
     privacy_public: 'يمكن للجميع رؤية الموضوع. يمكن للأعضاء فقط المشاركة.'
     privacy_private: 'سيكون الموضوع ظاهراً فقط لأعضاء مجموعة {{group}}.'
@@ -625,6 +626,8 @@ ar:
         title: دعوة للتصويت
         helptext: من تريد دعوته للتصويت؟
       poll_reminder:
+        message_label: رسالة
+      wip_poll_reminder:
         message_label: رسالة
       poll_edited:
         title: إخطار بالتعديلات
@@ -1107,7 +1110,6 @@ ar:
     deactivate_account: 'قم بإلغاء تنشيط حساب المستخدم'
     help_translate: "ساعدنا في ترجمة Loomio"
   text_editor:
-    select_text_to_link: أولاً ، حدد نصًا لربطه
     insert_link: أدخل الرابط
     insert_embedded_url: تضمين الفيديو
   change_picture_form:
@@ -1308,9 +1310,7 @@ ar:
     for_everyone: هذا يغير التخطيط للجميع ، وليس أنت فقط.
     sorting: الأقدم أم الأحدث أولاً؟
     latest: الأحدث
-    latest_description: اقرأ أحدث الأشياء أولاً
     earliest: الأقدم
-    earliest_description: اقرأ من البداية إلى النهاية
     replies: كيف يتم عرض الردود؟
     linear: قائمة مسطحة
     linear_description: العناصر المذكورة كما حدثت ، واحدة تلو الأخرى.
@@ -1498,7 +1498,6 @@ ar:
     anonymous: الأصوات مجهولة
     results_hidden_until_closed: يتم إخفاء النتائج حتى يتم إغلاق٪ {نوع الاستطلاع}
     unable_to_vote: لم تتم دعوتك للتصويت في٪ {نوع الاستطلاع} هذا.
-    draft_mode: ٪ {نوع الاستطلاع} هذا عمل قيد التقدم. التصويت معطل.
   current_polls_card:
     title: القرارات الحالية
     start_poll: قرار جديد
@@ -1555,8 +1554,6 @@ ar:
       title: إخفاء النتائج حتى الإغلاق
       helptext_on: لا تظهر كيف صوت الناس حتى يتم إغلاق الاقتراع
   poll_common_close_form:
-    title: إغلاق الاستطلاع مبكرًا
-    helptext: هل أنت متأكد أنك تريد إغلاق٪ {نوع الاستطلاع} مبكرًا؟
     close_proposal: اقتراح وثيق
     close_poll: إغلاق الاقتراع
     close_count: إغلاق الشيك
@@ -1576,9 +1573,6 @@ ar:
   poll_common_move_form:
     title: "نقل {{نوع الاستطلاع}}"
     success: "تم نقل {{نوع الاستطلاع}} إلى {{مجموعة}}"
-  poll_common_wip_field:
-    title: العمل في التقدم
-    helptext: 'استخدم "العمل قيد التقدم" للتعاون في٪ {نوع الاستطلاع} قبل التصويت'
   poll_common_closing_at_field:
     closing: إغلاق
     no_closing_date: لا يوجد تاريخ إغلاق
@@ -1617,7 +1611,6 @@ ar:
     ranked_choice: 'تم إغلاق هذا الاستطلاع النتيجة. شارك نتيجة مع المجموعة.'
     score: 'من الذي تريد إبلاغه بهذه النتيجة؟'
   poll_common_outcome_form:
-    who_to_notify: أدخل نتيجة
     new_title: أدخل نتيجة
     update_title: نتيجة التحديث
     outcome_created: تم إنشاء النتيجة
@@ -1942,17 +1935,6 @@ ar:
       outcome_created: النتيجة مشتركة
     include_body_label: تضمين نص الرسالة مع الإخطار
     include_subgroups_label: أحداث الترحيل من المجموعات الفرعية
-  configure_sso:
-    redirecting: الرجاء الانتظار ، إعادة التوجيه إلى موفر تسجيل الدخول
-    title: علامة واحدة على
-    enabled: تم تمكين تسجيل الدخول الأحادي
-    helptext: التكامل مع OneLogin أو Auth0 أو Microsoft Active Directory أو أي مقدم خدمة SAML آخر. أعرف أكثر.
-    warning_helptext: "تحذير: سيُطلب منك المصادقة مع الموفر الخاص بك بعد النقر فوق حفظ."
-    idp_metadata_url: عنوان URL للبيانات الوصفية لـ IDP
-    success: تم تكوين تسجيل الدخول الأحادي بنجاح
-    destroyed: تمت إزالة تسجيل الدخول الأحادي
-    invalid_idp_metadata_url: عنوان URL للبيانات الوصفية لموفر الهوية غير صالح
-    sp_metadata_url: URL الخاص ببيانات تعريف SP
   browser_warning:
     message: "أنت تستخدم متصفحًا قديمًا ({{الاسم}} {{النسخة}}) لا يدعمه {{الموقع}}."
     link: يرجى التبديل إلى متصفح آخر

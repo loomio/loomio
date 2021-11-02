@@ -8,9 +8,10 @@ export default class BaseRecordsInterface
   model: 'undefinedModel'
 
   missingIds: []
+  fetchedIds: []
 
   fetchMissing: debounce ->
-    xids = @missingIds.join('x')
+    xids = difference(@missingIds, @fetchedIds).join('x')
     return if xids.length == 0
 
     @fetch
@@ -18,6 +19,7 @@ export default class BaseRecordsInterface
       params:
         xids: xids
 
+    @fetchedIds = uniq @fetchedIds.concat(@missingIds)
     @missingIds = []
   , 500
 

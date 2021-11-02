@@ -1,33 +1,28 @@
-import DashboardPage from './components/dashboard/page.vue'
-import InboxPage from './components/inbox/page.vue'
-import ExplorePage from './components/explore/page.vue'
-import ThreadPage from './components/thread/page.vue'
-import StrandPage from './components/strand/page.vue'
-import ProfilePage from './components/profile/page.vue'
-import PollPage from './components/poll/page.vue'
-import PollFormPage from './components/poll/form_page.vue'
-
+import DashboardPage from './components/dashboard/page'
+import InboxPage from './components/inbox/page'
+import ExplorePage from './components/explore/page'
+import ProfilePage from './components/profile/page'
+import PollPage from './components/poll/page'
+import PollFormPage from './components/poll/form_page'
+import TasksPage from './components/tasks/page'
 import GroupPage from './components/group/page.vue'
 import GroupDiscussionsPanel from './components/group/discussions_panel'
-
 import GroupPollsPanel from './components/group/polls_panel'
-
 import MembersPanel from './components/group/members_panel'
 import GroupTagsPanel from './components/group/tags_panel'
 import GroupSubgroupsPanel from './components/group/subgroups_panel'
 import GroupFilesPanel from './components/group/files_panel'
 import MembershipRequestsPanel from './components/group/requests_panel'
 import GroupSettingsPanel from './components/group/settings_panel'
-
-import StartGroupPage from './components/start_group/page.vue'
-import ContactPage from './components/contact/page.vue'
-import EmailSettingsPage from './components/email_settings/page.vue'
-import StartDiscussionPage from './components/start_discussion/page.vue'
-import UserPage from './components/user/page.vue'
-import ThreadsPage from './components/threads/page.vue'
+import StartGroupPage from './components/start_group/page'
+import ContactPage from './components/contact/page'
+import EmailSettingsPage from './components/email_settings/page'
+import StartDiscussionPage from './components/start_discussion/page'
+import UserPage from './components/user/page'
+import ThreadsPage from './components/threads/page'
+import StrandPage from './components/strand/page'
 import TemplatesPage from './components/templates/index.vue'
 
-import ThreadNav from './components/thread/nav'
 
 import './config/catch_navigation_duplicated.js'
 import Vue from 'vue'
@@ -51,18 +46,6 @@ groupPageChildren = [
   {path: ':stub?', component: GroupDiscussionsPanel, meta: {noScroll: true}}
 ]
 
-threadPageChildren = [
-  {path: 'comment/:comment_id', components: {nav: ThreadNav}}
-  {path: ':stub?/:sequence_id?', components: {nav: ThreadNav}}
-  {path: '', components: {nav: ThreadNav}}
-]
-
-strandPageChildren = [
-  {path: 'comment/:comment_id'}
-  {path: ':stub?/:sequence_id?'}
-  {path: ''}
-]
-
 router = new Router
   mode: 'history'
 
@@ -75,6 +58,9 @@ router = new Router
       { x: 0, y: 0 }
 
   routes: [
+    {path: '/users/sign_in', redirect: '/dashboard' },
+    {path: '/users/sign_up', redirect: '/dashboard' },
+    {path: '/tasks', component: TasksPage},
     {path: '/templates', component: TemplatesPage},
     {path: '/dashboard', component: DashboardPage},
     {path: '/dashboard/:filter', component: DashboardPage},
@@ -91,16 +77,13 @@ router = new Router
     {path: '/d/:key/edit', component: StartDiscussionPage },
     {
       path: '/d/:key',
-      name: 'discussion',
-      component: ThreadPage,
-      children: threadPageChildren,
-      beforeEnter: (to, from, next) ->
-        if Session.user().experiences['betaFeatures']
-          next(name: 'strand', params: to.params, query: to.query)
-        else
-          next()
+      component: StrandPage,
+      children: [
+        {path: 'comment/:comment_id'}
+        {path: ':stub?/:sequence_id?'}
+        {path: ''}
+      ]
     },
-    {path: '/s/:key', name: 'strand', component: StrandPage, children: strandPageChildren },
     {path: '/g/new', component: StartGroupPage},
     {path: '/g/:key', component: GroupPage, children: groupPageChildren, name: 'groupKey'},
     {path: '/:key', component: GroupPage, children: groupPageChildren},

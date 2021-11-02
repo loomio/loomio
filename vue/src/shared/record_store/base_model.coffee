@@ -27,6 +27,7 @@ export default class BaseModel
     @_version = 0
     @attributeNames = []
     @unmodified = {}
+    @afterUpdateFns = []
     @setErrors()
     Object.defineProperty(@, 'recordsInterface', value: recordsInterface, enumerable: false)
     Object.defineProperty(@, 'recordStore', value: recordsInterface.recordStore, enumerable: false)
@@ -59,6 +60,9 @@ export default class BaseModel
   update: (attributes) ->
     @baseUpdate(attributes)
 
+  afterUpdate: (fn) ->
+    @afterUpdateFns.push fn
+
   baseUpdate: (attributes) ->
     @bumpVersion()
     @attributeNames = union @attributeNames, keys(attributes)
@@ -68,6 +72,8 @@ export default class BaseModel
       true
 
     @recordsInterface.collection.update(@) if @inCollection()
+
+    @afterUpdateFns.forEach (fn) => fn(@)
 
   attributeIsModified: (attributeName) ->
     original = @unmodified[attributeName]
@@ -134,9 +140,10 @@ export default class BaseModel
     @[name] = =>
       if @[args.by]
         return obj if obj = @recordStore[args.from].find(@[args.by])
-        obj = @recordStore[args.from].create(id: @[args.by])
-        @recordStore[args.from].addMissing(@[args.by])
-        return obj
+        if @constructor.lazyLoad
+          obj = @recordStore[args.from].create(id: @[args.by])
+          @recordStore[args.from].addMissing(@[args.by])
+          return obj
       return @recordStore[args.from].nullModel()
     @[name+'Is'] = (obj) => @recordStore[args.from].find(@[args.by]) == obj
 
@@ -151,6 +158,7 @@ export default class BaseModel
       CommentVote: 'comments'
       Membership: 'memberships'
       MembershipRequest: 'membershipRequests'
+
     @[name] = =>
       typeColumn = "#{name}Type"
       idColumn = "#{name}Id"
@@ -205,8 +213,11 @@ export default class BaseModel
     .finally =>
       @processing = false
 
+  beforeSave: -> true
+
   save: =>
     @processing = true
+    @beforeSave()
     if @isNew()
       @remote.create(@serialize())
       .then(@saveSuccess, @saveError)

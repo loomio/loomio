@@ -11,7 +11,19 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
              :actor_name,
              :poll_type,
              :title,
-             :attachments
+             :attachments,
+             :blocks
+
+  def blocks
+    (object.eventable.image_files.concat object.eventable.files).map do |file|
+      if file.previewable?
+        # url = Rails.application.routes.url_helpers.rails_representation_url(
+        #   file.representation(HasRichText::PREVIEW_OPTIONS), host: ENV['CANONICAL_HOST']
+        # )
+        { type: 'image', image_url: file.blob.preview(HasRichText::PREVIEW_OPTIONS).processed.service_url, alt_text: 'image' }
+      end
+    end.compact
+  end
 
   def icon_url
     object.eventable.group.logo_url
@@ -86,8 +98,10 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
     end
 
     if body_format == 'html'
+      var.gsub!('"/rails/active_storage', '"'+lmo_asset_host+'/rails/active_storage')
       ReverseMarkdown.convert(var)
     else
+      var.gsub!('](/rails/active_storage', ']('+lmo_asset_host+'/rails/active_storage')
       var
     end
   end

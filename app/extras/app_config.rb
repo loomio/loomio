@@ -94,16 +94,15 @@ class AppConfig
       create_user:                !ENV['FEATURES_DISABLE_CREATE_USER'],
       create_group:               !ENV['FEATURES_DISABLE_CREATE_GROUP'],
       public_groups:              !ENV['FEATURES_DISABLE_PUBLIC_GROUPS'],
-      ahoy_tracking:              !ENV['FEATURES_DISABLE_AHOY_TRACKING'],
       help_link:                  !ENV['FEATURES_DISABLE_HELP_LINK'],
       example_content:            !ENV['FEATURES_DISABLE_EXAMPLE_CONTENT'],
       proposal_consent_default:   ENV.fetch('FEATURES_PROPOSAL_CONSENT_DEFAULT', false),
       show_contact:               ENV.fetch('FEATURES_SHOW_CONTACT', false),
+      thread_page_v3:             ENV.fetch('FEATURES_THREAD_PAGE_V3', false),
       show_contact_consent:       ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false),
       group_survey:               ENV.fetch('FEATURES_GROUP_SURVEY', false),
       group_sso:                  ENV.fetch('FEATURES_GROUP_SSO', false),
       sentry_sample_rate:         ENV.fetch('SENTRY_SAMPLE_RATE', '0.1').to_f,
-      vote_reactions:             ENV.fetch('FEATURES_VOTE_REACTIONS', false)
     }
   end
 

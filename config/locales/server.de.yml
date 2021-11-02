@@ -432,7 +432,6 @@ de:
       poll_edited: '%{actor} bearbeitete die %{poll_type}: %{title}'
       poll_reminder: '%{actor} erinnert dich deine Stimme in %{title} abzugeben'
       poll_announced: '%{actor} läd dich zu einer Abstimmung in einem %{poll_type}: %{title}'
-      poll_announced_wip: '%{actor} eine unfertige Arbeit geteilt%{poll_type}: %{title}'
       poll_closing_soon: '%{poll_type} endet in 24 Stunden: %{title}'
       poll_closing_soon_author: 'Dein %{poll_type} Schließt in 24 Stunden: %{title}'
       poll_expired: "%{poll_type} geschlossen: %{title}"
@@ -453,7 +452,6 @@ de:
       poll_edited: '<strong>%{actor}</strong> bearbeitet ein %{poll_type}'
       poll_reminder: '<strong>%{actor}</strong> erinnert dich daran, zu wählen'
       poll_announced: '<strong>%{actor}</strong> läd dich zur Abstimmung in einem %{poll_type}'
-      poll_announced_wip: '<strong>%{actor}</strong> eine unfertige Arbeit geteilt %{poll_type}'
       poll_closing_soon: '%{poll_type} von <strong>%{actor}</strong> endet in 24 Stunden. Jetzt ist eine gute Gelegenheit, um abzustimmen, deine Entscheidung noch einmal zu ändern oder auch um andere zur Teilnahme zu ermuntern.'
       poll_closing_soon_author: 'Dein %{poll_type} endet in 24 Stunden - jetzt ist eine gute Gelegenheit, um andere an die Teilnahme zu erinnern oder ggf. die Deadline zu verlängern.'
       poll_expired: "<strong>%{actor}'s</strong> %{poll_type} hat geschlossen: %{title}"

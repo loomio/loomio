@@ -25,6 +25,7 @@ sk:
       like: 'To sa mi páči'
       unlike: 'To sa mi nepáči'
       cancel: 'Zrušiť'
+      clear: Vyčistiť
   emoji_picker:
     search: Vyhľadávať
   error_page:
@@ -60,6 +61,8 @@ sk:
     form:
       invitation_message_label: Správa
       poll_reminder:
+        message_label: Správa
+      wip_poll_reminder:
         message_label: Správa
   action_dock:
     edited: Aktualizovaný

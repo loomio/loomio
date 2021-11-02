@@ -31,7 +31,7 @@ body { max-width: 600px; font-family: "Helvetica Neue", Helvetica, Arial, sans-s
 
 .mailer-tag {
   font-size: small;
-  border: 1px solid grey;
+  border: 1px solid #90CAF9;
   border-radius: 16px;
   padding: 4px 8px;
 }
@@ -124,6 +124,18 @@ body { max-width: 600px; font-family: "Helvetica Neue", Helvetica, Arial, sans-s
   padding: 16px;
 }
 
+mark { color: #000; padding: 0.2em 0.3em; }
+mark[data-color=red] { background-color: #EF5350; }
+mark[data-color=pink] { background-color: #f48fb1; }
+mark[data-color=purple] { background-color: #ce93d8; }
+mark[data-color=blue] { background-color: #90CAF9; }
+mark[data-color=green] { background-color: #A5D6A7; }
+mark[data-color=yellow] { background-color: #fff59d; }
+mark[data-color=orange] { background-color: #ffcc80; }
+mark[data-color=brown] { background-color: #bcaaa4; }
+mark[data-color=grey] { background-color: #e0e0e0; }
+
+
 .base-mailer__button--primary {
   background-color: $primary-color;
   color: $text-on-primary-color;
@@ -159,6 +171,24 @@ body { max-width: 600px; font-family: "Helvetica Neue", Helvetica, Arial, sans-s
 .thread-mailer__list-item {
   list-style-type: none;
   margin-left: 0px;
+}
+
+ul[data-type='taskList'] {
+  list-style-type: none;
+  padding-left: 16px
+}
+
+li[data-type='taskItem'] p {
+  display: inline-block;
+}
+
+.email-checkbox {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
 .thread-mailer__avatar-initials {

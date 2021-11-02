@@ -18,7 +18,7 @@ export default
     @loader = new RecordLoader
       collection: 'polls'
       params:
-        exclude_types: 'group discussion'
+        exclude_types: 'group'
         status: 'recent'
 
     @loader.fetchRecords()

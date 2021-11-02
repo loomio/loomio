@@ -45,6 +45,9 @@ module HasAvatar
     else
       nil
     end
+  rescue ActiveStorage::UnrepresentableError
+    update_columns(avatar_kind: :initials)
+    nil
   end
 
   def has_gravatar?(options = {})

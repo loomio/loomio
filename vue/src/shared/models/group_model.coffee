@@ -40,6 +40,8 @@ export default class GroupModel extends BaseModel
     recipientUserIds: []
     recipientEmails: []
     notifyRecipients: true
+    isMember: false
+    isAdmin: false
 
   afterConstruction: ->
     if @privacyIsClosed()

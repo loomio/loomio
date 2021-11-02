@@ -5,6 +5,7 @@ export default class ReactionModel extends BaseModel
   @singular: 'reaction'
   @plural: 'reactions'
   @indices: ['userId', 'reactableId']
+  @lazyLoad: true
 
   relationships: ->
     @belongsTo 'user'

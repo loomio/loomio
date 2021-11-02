@@ -37,7 +37,7 @@ export default
 
     convertToHtml: ->
       convertToHtml(@model, @field)
-      Records.users.removeExperience('html-editor.uses-markdown')
+      Records.users.saveExperience('html-editor.uses-markdown', false)
 
     onPaste: (event) ->
       items = Array.from(event.clipboardData.items)

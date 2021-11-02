@@ -105,7 +105,8 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
     .outcome-review-on
       v-menu(ref='menu' v-model='isShowingDatePicker' :close-on-content-click='false' offset-y min-width="290px")
         template(v-slot:activator='{ on, attrs }')
-          v-text-field(clearable v-model='outcome.reviewOn' label="Review date" placeholder="2000-12-30" v-on='on' v-bind="attrs" prepend-icon="mdi-calendar")
+          v-text-field(clearable v-model='outcome.reviewOn' placeholder="2050-12-31" :label="$t('poll_common_outcome_form.review_date')" :hint="$t('poll_common_outcome_form.review_date_hint')" v-on='on' v-bind="attrs" prepend-icon="mdi-calendar")
+
         v-date-picker.outcome-review-on__datepicker(v-model='outcome.reviewOn' :min='dateToday' no-title @input="isShowingDatePicker = false")
       p(v-if="outcome.reviewOn" v-t="$t('poll_common_outcome_form.you_will_be_notified')")
 

@@ -68,7 +68,7 @@ export default
         order: 'lastActivityAt'
         params:
           group_id: @group.id
-          exclude_types: 'group outcome'
+          exclude_types: 'group outcome poll'
           filter: @$route.query.t
           subgroups: @$route.query.subgroups || 'mine'
           tags: @$route.query.tag
@@ -167,10 +167,10 @@ export default
       Math.ceil(parseFloat(@loader.total) / parseFloat(@per))
 
     pinnedDiscussions: ->
-      orderBy(@discussions.filter((discussion) -> discussion.pinned), ['title'], ['asc'])
+      orderBy(@discussions.filter((discussion) -> discussion.pinnedAt), ['pinnedAt'], ['desc'])
 
     regularDiscussions: ->
-      orderBy(@discussions.filter((discussion) -> !discussion.pinned), ['lastActivityAt'], ['desc'])
+      orderBy(@discussions.filter((discussion) -> !discussion.pinnedAt), ['lastActivityAt'], ['desc'])
 
     groupTags: ->
       @group && @group.parentOrSelf().tags().filter (tag) -> tag.taggingsCount > 0

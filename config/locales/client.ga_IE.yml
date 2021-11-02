@@ -121,6 +121,7 @@ ga_IE:
       share: Comhroinn é
       ok: Tá go maith
       retry: Atriail
+      clear: Glan
       done: Déanta
       start: Tosaigh
       delete: Scrios
@@ -239,7 +240,6 @@ ga_IE:
   membership_dropdown:
     cancel_invitation: 'Cealaigh an cuireadh '
   notification_models:
-    poll: 'cinneadh:'
     outcome: 'toradh:'
   notifications:
     header: "Fógraí"
@@ -262,12 +262,13 @@ ga_IE:
     title_label: 'Teideal'
     title_placeholder: 'Cad é an t-ábhar is mian leat a phlé?'
     context_label: 'Comhthéacs'
-    context_placeholder: 'Cuir dóthain eolas cúlra ar fáil don bhaicle le go mbeidh an plé torthúil. Is féidir seo a nuashonrú fad is atá an plé ar bun'
     privacy_label: 'Príobháideachas'
   announcement:
     form:
       invitation_message_label: Teachtaireacht
       poll_reminder:
+        message_label: Teachtaireacht
+      wip_poll_reminder:
         message_label: Teachtaireacht
   action_dock:
     edit_stance: Athraigh do sheasamh
@@ -612,8 +613,6 @@ ga_IE:
       microsoft: Microsoft Teams
       slack: Slack
     name_label: Ainm
-  configure_sso:
-    idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
   group_survey:
     success: Go raibh maith agat!
     categories:

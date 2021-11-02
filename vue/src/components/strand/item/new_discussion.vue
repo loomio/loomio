@@ -1,34 +1,45 @@
 <script lang="coffee">
 import ThreadService  from '@/shared/services/thread_service'
-import { map, compact, pick } from 'lodash'
+import { map, compact, pick, pickBy } from 'lodash'
 import EventBus from '@/shared/services/event_bus'
 import openModal      from '@/shared/helpers/open_modal'
-import DiscussionPrivacyBadge from '@/components/discussion/privacy_badge'
+import StrandActionsPanel from '@/components/strand/actions_panel'
 
 export default
+  components:
+    StrandActionsPanel: StrandActionsPanel
   props:
     event: Object
+    eventable: Object
     collapsed: Boolean
 
+  watch:
+    'eventable.newestFirst': ->
+      @actions = ThreadService.actions(@eventable, @)
+
   data: ->
-    actions: ThreadService.actions(@event.model(), @)
+    actions: ThreadService.actions(@eventable, @)
 
   mounted: ->
-    @event.model().fetchUsersNotifiedCount()
+    @eventable.fetchUsersNotifiedCount()
 
   computed:
-    discussion: ->
-      @event.model()
+    author: ->
+      @discussion.author()
 
-    arrangementAction: -> @actions['edit_arrangement']
+    authorName: ->
+      @discussion.authorName()
 
-    editThread: -> @actions['edit_thread']
+    discussion: -> @eventable
+
+    group: ->
+      @discussion.group()
 
     dockActions: ->
-      pick @actions, ['react', 'translate_thread', 'add_comment', 'subscribe', 'unsubscribe', 'unignore', 'edit_thread', 'announce_thread']
+      pickBy @actions, (v) -> v.dock
 
     menuActions: ->
-      pick @actions, ['show_history', 'notification_history', 'close_thread', 'reopen_thread', 'move_thread', 'discard_thread', 'export_thread']
+      pickBy @actions, (v) -> v.menu
 
     status: ->
       return 'pinned' if @discussion.pinned
@@ -46,8 +57,6 @@ export default
     viewed: (viewed) ->
       @discussion.markAsSeen() if viewed
 
-    openArrangementForm: -> @actions['edit_arrangement'].perform()
-
     openSeenByModal: ->
       openModal
         component: 'SeenByModal'
@@ -57,9 +66,11 @@ export default
 </script>
 
 <template lang="pug">
-.strand-new-discussion.context-panel#context(:aria-label="$t('context_panel.aria_intro', {author: discussion.authorName(), group: discussion.group().fullName})" v-observe-visibility="{callback: viewed, once: true}")
+.strand-new-discussion.context-panel#context(:aria-label="$t('context_panel.aria_intro', {author: authorName, group: group.fullName})" v-observe-visibility="{callback: viewed, once: true}")
   v-layout.ml-n2(align-center wrap)
-    v-breadcrumbs.context-panel__breadcrumbs(:items="groups" divider=">")
+    v-breadcrumbs.context-panel__breadcrumbs(:items="groups")
+      template(v-slot:divider)
+        v-icon mdi-chevron-right
     tags-display(:tags="discussion.tags()")
     v-spacer
     span
@@ -67,16 +78,16 @@ export default
         i.mdi.mdi-lock-outline
         span.text--secondary(v-t="'common.privacy.private'")
       span.nowrap(v-show='!discussion.private')
-        i.mdi.mdi-earth
+        i.mdi.mdi-earth.mr-1
         span.text--secondary(v-t="'common.privacy.public'")
 
-  strand-title.context-panel__heading(:discussion="discussion")
+  strand-title(:discussion="discussion")
 
   .mb-2.d-flex.align-center
-    user-avatar.mr-2(:user='discussion.author()' :size='36')
-    router-link(:to="urlFor(discussion.author())") {{discussion.authorName()}}
+    user-avatar.mr-2(:user='author' :size='36')
+    router-link.text--secondary(:to="urlFor(author)") {{authorName}}
     mid-dot
-    router-link.grey--text.body-2(:to='urlFor(discussion)')
+    router-link.text--secondary(:to='urlFor(discussion)')
       time-ago(:date='discussion.createdAt')
     span(v-show='discussion.seenByCount > 0')
       mid-dot
@@ -89,7 +100,8 @@ export default
     link-previews(:model="discussion")
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
-    action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions' icons)
+    action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions')
+  strand-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
 </template>
 <style lang="sass">
 @import '@/css/variables'
@@ -98,7 +110,7 @@ export default
 
 .context-panel
   .v-breadcrumbs
-    padding: 0px 10px
+    padding: 4px 10px 4px 10px
     // margin-left: 0;
 
 .context-panel__discussion-privacy i

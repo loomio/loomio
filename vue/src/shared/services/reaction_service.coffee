@@ -8,6 +8,7 @@ resetIds = ->
     discussion_ids: []
     poll_ids: []
     outcome_ids: []
+    stance_ids: []
   }
 
 resetIds()
@@ -27,6 +28,7 @@ fetch = debounce ->
 
 export default new class ReactionService
   enqueueFetch: (model) ->
+    ids['stance_ids'].push(model.id) if model.isA?('stance')
     ids['comment_ids'].push(model.id) if model.isA?('comment')
     ids['discussion_ids'].push(model.id) if model.isA?('discussion')
     ids['poll_ids'].push(model.id) if model.isA?('poll')

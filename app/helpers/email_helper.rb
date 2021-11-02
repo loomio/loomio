@@ -27,7 +27,7 @@ module EmailHelper
       markdownify(text)
     else
       text.gsub!('"/rails/active_storage', '"'+lmo_asset_host+'/rails/active_storage')
-      replace_iframes(text)
+      replace_checkboxes(replace_iframes(text))
     end.html_safe
   end
 
@@ -48,6 +48,22 @@ module EmailHelper
       end
     end
     out
+  end
+
+  def replace_checkboxes(str)
+    frag = Nokogiri::HTML::DocumentFragment.parse(str)
+    frag.css('li[data-type="taskItem"]').each do |node|
+      if node['data-checked'] == 'true'
+        node.prepend_child '<div class="email-checkbox">✔️</div>'
+      else
+        node.prepend_child '<div class="email-checkbox">&nbsp;</div>'
+      end
+
+      if node['data-due-on']
+        node.add_child '<span class="mailer-tag">📅 '+node['data-due-on']+'</div>'
+      end
+    end
+    frag.to_s
   end
 
   def markdownify(text)
@@ -79,7 +95,7 @@ module EmailHelper
   end
 
   def google_pie_chart_url(poll)
-    CGI.escape("https://chart.googleapis.com/chart?cht=p&chma=0,0,0,0|0,0&chs=200x200&chd=t:#{proposal_sparkline(poll)}&chco=#{proposal_colors(poll)}")
+    "https://chart.googleapis.com/chart?cht=p&chma=0,0,0,0|0,0&chs=200x200&chd=t:#{proposal_sparkline(poll)}&chco=#{proposal_colors(poll)}"
   end
 
   def proposal_sparkline(poll)

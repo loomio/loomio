@@ -23,6 +23,7 @@ class PollMailer < BaseMailer
      poll_option_added
      poll_option_added_author
      stance_created
+     stance_updated
      user_mentioned
      user_reminded
    ).each do |action|

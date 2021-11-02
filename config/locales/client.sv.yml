@@ -1,4 +1,9 @@
 sv:
+  doctypes:
+    youtube_video: YouTubevideo
+    image: Bild
+    pdf: PDF
+    document: Dokument
   current_plan_button:
     upgrade: Uppgradera
   subscription_status:
@@ -115,6 +120,7 @@ sv:
       share: Dela
       ok: Ok
       retry: Försök igen
+      clear: Klar
       done: Klar
       start: Starta
       delete: Radera
@@ -301,6 +307,8 @@ sv:
     form:
       invitation_message_label: Meddelande
       poll_reminder:
+        message_label: Meddelande
+      wip_poll_reminder:
         message_label: Meddelande
   action_dock:
     delete_comment: Ta bort kommentar

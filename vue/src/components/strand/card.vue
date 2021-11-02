@@ -34,6 +34,6 @@ export default
 v-sheet.strand-card.thread-card.mb-8
   //- p(v-for="rule in loader.rules") {{rule.name}}
   strand-list.pt-3.px-3(:loader="loader" :collection="loader.collection")
-  strand-actions-panel(:discussion="discussion")
+  strand-actions-panel(v-if="!discussion.newestFirst" :discussion="discussion")
   //- thread-actions-panel(v-if="!discussion.newestFirst" :discussion="discussion")
 </template>
