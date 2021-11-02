@@ -75,6 +75,6 @@ export default
 
     .d-flex
       v-spacer
-      v-btn.poll-members-list__submit(color="primary" :disabled="!someRecipients" :loading="saving" @click="submit" )
+      v-btn.poll-members-form__submit(color="primary" :disabled="!someRecipients" :loading="saving" @click="submit" )
         span(v-t="'common.action.remind'")
 </template>
