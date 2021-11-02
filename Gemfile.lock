@@ -492,7 +492,7 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
-    reverse_markdown (2.0.0)
+    reverse_markdown (2.1.1)
       nokogiri
     rexml (3.2.5)
     rspec-activemodel-mocks (1.1.0)
