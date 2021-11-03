@@ -3,11 +3,11 @@ import Records  from  '@/shared/services/records'
 import {map, parseInt, slice} from 'lodash'
 import I18n from '@/i18n'
 
-
 export default class PollOptionModel extends BaseModel
   @singular: 'pollOption'
   @plural: 'pollOptions'
   @indices: ['pollId']
+  @uniqueIndices: ['id']
 
   defaultValues: ->
     voterScores: {}
@@ -40,6 +40,6 @@ export default class PollOptionModel extends BaseModel
 
   scorePercent: ->
     parseInt(parseFloat(@totalScore) / parseFloat(@poll().totalScore) * 100) || 0
-    
+
   rawScorePercent: ->
     parseFloat(@totalScore) / parseFloat(@poll().totalScore) * 100
