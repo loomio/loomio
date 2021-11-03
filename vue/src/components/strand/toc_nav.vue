@@ -57,6 +57,7 @@ export default
              .data().forEach (event) =>
         if event.kind == "poll_created"
           poll = event.model().poll()
+          return if poll.discardedAt
 
         itemsHash[event.positionKey] =
           key: event.positionKey

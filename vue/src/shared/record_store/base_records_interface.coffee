@@ -41,7 +41,7 @@ export default class BaseRecordsInterface
 
   baseConstructor: (recordStore) ->
     @recordStore = recordStore
-    @collection = @recordStore.db.addCollection(@collectionName or @model.plural, {indices: @model.indices})
+    @collection = @recordStore.db.addCollection((@collectionName || @model.plural), {indices: @model.indices})
     each @model.uniqueIndices, (name) =>
       @collection.ensureUniqueIndex(name)
 

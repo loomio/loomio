@@ -66,8 +66,8 @@ class AppConfig
       default_group_cover_src:           ENV.fetch('THEME_DEFAULT_GROUP_COVER_SRC', '/theme/default_group_cover.png'),
 
       # used in emails
-      email_header_logo_src:             ENV.fetch('THEME_EMAIL_HEADER_LOGO_SRC',   "/brand/logo_#{logo_color}_128h.png"),
-      email_footer_logo_src:             ENV.fetch('THEME_EMAIL_FOOTER_LOGO_SRC',   "/brand/logo_#{logo_color}_64h.png"),
+      email_header_logo_src:             ENV.fetch('THEME_EMAIL_HEADER_LOGO_SRC',   "/brand/logo_#{logo_color}_96h.png"),
+      email_footer_logo_src:             ENV.fetch('THEME_EMAIL_FOOTER_LOGO_SRC',   "/brand/logo_#{logo_color}_48h.png"),
       primary_color:                     ENV.fetch('THEME_PRIMARY_COLOR',           brand_colors[:sky]),
       accent_color:                      ENV.fetch('THEME_ACCENT_COLOR',            brand_colors[:gold]),
       text_on_primary_color:             ENV.fetch('THEME_TEXT_ON_PRIMARY_COLOR',   '#ffffff'),

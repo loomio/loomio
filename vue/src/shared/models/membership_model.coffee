@@ -7,6 +7,7 @@ export default class MembershipModel extends BaseModel
   @singular: 'membership'
   @plural: 'memberships'
   @indices: ['userId', 'groupId']
+  @uniqueIndices: ['id']
   @searchableFields: ['userName', 'userUsername']
 
   defaultValues: ->
