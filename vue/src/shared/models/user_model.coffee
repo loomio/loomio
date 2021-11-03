@@ -6,7 +6,7 @@ export default class UserModel extends BaseModel
   @singular: 'user'
   @plural: 'users'
   @lazyLoad: true
-  @uniqueIndices: ['id', 'key', 'username', 'email']
+  @uniqueIndices: ['id']
 
   relationships: ->
     @hasMany 'memberships'
