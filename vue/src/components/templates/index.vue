@@ -63,7 +63,7 @@ v-main
         loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]' :key='index' )
 
     div(v-if="loaded")
-      v-card.my-4(v-for="template in templates")
+      v-card.my-4(v-for="template in templates" :key="template.id")
         v-img(:src="template.record().coverUrl" max-height="120")
         v-card-title {{ template.name }}
         v-card-text {{ template.description }}

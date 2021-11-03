@@ -50,7 +50,42 @@ class PollSerializer < ApplicationSerializer
   has_many :poll_options, serializer: PollOptionSerializer, root: :poll_options
   has_many :tags, serializer: TagSerializer, root: :tags
 
-  hide_when_discarded [:details, :title, :author_id]
+  hide_when_discarded [
+    :attachments,
+    :link_previews,
+    :author_id,
+    :anyone_can_participate,
+    :anonymous,
+    :can_respond_maybe,
+    :closed_at,
+    :closing_at,
+    :created_at,
+    :content_locale,
+    :cast_stances_pct,
+    :custom_fields,
+    :decided_voters_count,
+    :details,
+    :details_format,
+    :hide_results_until_closed,
+    :allow_long_reason,
+    :multiple_choice,
+    :notify_on_closing_soon,
+    :poll_type,
+    :poll_option_names,
+    :mentioned_usernames,
+    :material_icon,
+    :shuffle_options,
+    :stance_counts,
+    :total_score,
+    :stances_in_discussion,
+    :specified_voters_only,
+    :secret_token,
+    :title,
+    :undecided_voters_count,
+    :voter_can_add_options,
+    :voters_count,
+    :versions_count
+  ]
 
   def current_outcome
     cache_fetch(:outcomes_by_poll_id, object.id) { nil }
