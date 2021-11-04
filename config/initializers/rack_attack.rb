@@ -41,14 +41,14 @@ class Rack::Attack
 
   IP_POST_LIMITS.each_pair do |route, limit|
     throttle("post/ip/hour #{route}", limit: limit * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).hour) do |req|
-      req.remote_ip if req.post? && req.path.starts_with?(route)
+      req.remote_ip if (req.post? || req.put? || req.patch?) && req.path.starts_with?(route)
     end
   end
 
   # MAX posts per day is 3 times the posts per hour
   IP_POST_LIMITS.each_pair do |route, limit|
     throttle("post/ip/day #{route}", limit: limit * 3 * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).day) do |req|
-      req.remote_ip if req.post? && req.path.starts_with?(route)
+      req.remote_ip if (req.post? || req.put? || req.patch?) && req.path.starts_with?(route)
     end
   end
 

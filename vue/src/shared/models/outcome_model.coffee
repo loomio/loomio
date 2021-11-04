@@ -9,6 +9,7 @@ export default class OutcomeModel extends BaseModel
   @singular: 'outcome'
   @plural: 'outcomes'
   @indices: ['pollId', 'authorId']
+  @uniqueIndices: ['id']
 
   defaultValues: ->
     statement: ''

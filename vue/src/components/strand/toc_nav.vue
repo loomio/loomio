@@ -57,6 +57,7 @@ export default
              .data().forEach (event) =>
         if event.kind == "poll_created"
           poll = event.model().poll()
+          return if poll.discardedAt
 
         itemsHash[event.positionKey] =
           key: event.positionKey
@@ -191,6 +192,6 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
 
 .theme--light
   .strand-nav__entry:hover, .strand-nav__entry--visible
-    background-color: #f8f8f8
+    background-color: #f4f4f4
 
 </style>

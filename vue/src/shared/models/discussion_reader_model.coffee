@@ -5,6 +5,7 @@ export default class DiscussionReaderModel extends BaseModel
   @singular: 'discussionReader'
   @plural: 'discussionReaders'
   @indices: ['discussionId', 'userId']
+  @uniqueIndices: ['id']
 
   defaultValues: ->
     discussionId: null

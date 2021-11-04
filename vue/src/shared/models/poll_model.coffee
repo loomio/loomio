@@ -12,6 +12,7 @@ import { compact, head, orderBy, sortBy, map, includes, difference, invokeMap, e
 export default class PollModel extends BaseModel
   @singular: 'poll'
   @plural: 'polls'
+  @uniqueIndices: ['id', 'key']
   @indices: ['discussionId', 'authorId', 'groupId']
 
   afterConstruction: ->

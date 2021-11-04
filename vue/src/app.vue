@@ -10,7 +10,6 @@ import openModal from '@/shared/helpers/open_modal'
 import { initLiveUpdate, closeLiveUpdate } from '@/shared/helpers/message_bus'
 import CustomCss from '@/components/custom_css'
 
-
 export default
   components: {CustomCss}
   mixins: [AuthModalMixin]
@@ -116,8 +115,50 @@ a
 @media (prefers-color-scheme: dark)
   body
     background-color: #000
-    
+
 @media print
   .lmo-no-print
     display: none !important
+
+/* roboto-300 - latin
+@font-face
+  font-family: 'Roboto'
+  font-style: normal
+  font-weight: 300
+  src: local(""), url('/fonts/roboto-v29-latin-300.woff2') format("woff2")
+
+/* roboto-regular - latin
+@font-face
+  font-family: 'Roboto'
+  font-style: normal
+  font-weight: 400
+  src: local(""), url('/fonts/roboto-v29-latin-regular.woff2') format("woff2")
+
+/* roboto-italic - latin
+@font-face
+  font-family: 'Roboto'
+  font-style: italic
+  font-weight: 400
+  src: local(""), url('/fonts/roboto-v29-latin-italic.woff2') format("woff2")
+
+/* roboto-500 - latin
+@font-face
+  font-family: 'Roboto'
+  font-style: normal
+  font-weight: 500
+  src: local(""), url('/fonts/roboto-v29-latin-500.woff2') format("woff2")
+
+/* roboto-700 - latin
+@font-face
+  font-family: 'Roboto'
+  font-style: normal
+  font-weight: 700
+  src: local(""), url('/fonts/roboto-v29-latin-700.woff2') format("woff2")
+
+/* roboto-mono-regular - latin
+@font-face
+  font-family: 'Roboto Mono'
+  font-style: normal
+  font-weight: 400
+  src: local(""), url('/fonts/roboto-mono-v13-latin-regular.woff2') format("woff2")
 </style>
