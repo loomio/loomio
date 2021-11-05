@@ -287,6 +287,7 @@ Rails.application.routes.draw do
     get 'mark_discussion_as_read/:discussion_id/:event_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
   end
 
+  post '/bug_tunnel' => 'application#bug_tunnel'
 
   get '/robots'     => 'robots#show'
   get '/manifest'   => 'manifest#show', format: :json

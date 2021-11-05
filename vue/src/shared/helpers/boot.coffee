@@ -36,6 +36,7 @@ export default (callback) ->
           "Permission denied to access property \"dispatchEvent\" on cross-origin object"
         ]
         dsn: AppConfig.sentry_dsn
+        tunnel: '/bug_tunnel'
         integrations: [
           new Integrations.BrowserTracing(),
           new VueIntegration({Vue: Vue, attachProps: true, logErrors: true, tracing: true})
