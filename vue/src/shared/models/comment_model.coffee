@@ -8,6 +8,7 @@ export default class CommentModel extends BaseModel
   @singular: 'comment'
   @plural: 'comments'
   @indices: ['discussionId', 'authorId']
+  @uniqueIndices: ['id']
 
   afterConstruction: ->
     HasDocuments.apply @

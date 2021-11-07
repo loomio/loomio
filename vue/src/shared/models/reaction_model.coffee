@@ -4,7 +4,7 @@ import AppConfig from '@/shared/services/app_config'
 export default class ReactionModel extends BaseModel
   @singular: 'reaction'
   @plural: 'reactions'
-  @indices: ['userId', 'reactableId']
+  @indices: ['userId', 'reactableId', 'reactableType']
   @lazyLoad: true
 
   relationships: ->

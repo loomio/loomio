@@ -52,6 +52,32 @@ class ApplicationController < ActionController::Base
     render layout: 'basic'
   end
 
+  def bug_tunnel
+    raise "no sentry dsn" unless ENV['SENTRY_PUBLIC_DSN']
+
+    uri = URI(ENV['SENTRY_PUBLIC_DSN'])
+    known_host = uri.host
+    known_project_id = uri.path.tr('/', '')
+
+    envelope = request.body.read
+    piece = envelope.split("\n").first
+    header = JSON.parse(piece)
+    dsn = URI.parse(header['dsn'])
+    project_id = dsn.path.tr('/', '')
+
+    raise "Invalid sentry hostname: #{dsn.hostname}" if dsn.hostname != known_host
+    raise "Invalid sentry project id: #{project_id}" if project_id != known_project_id
+
+    upstream_sentry_url = "https://#{known_host}/api/#{known_project_id}/envelope/"
+    Net::HTTP.post(URI(upstream_sentry_url), envelope)
+
+    head(:ok)
+  rescue => e
+    # handle exception in your preferred style,
+    # e.g. by logging or forwarding to server Sentry project
+    Rails.logger.error('error tunneling to sentry')
+  end
+
   def ok
     head :ok
   end

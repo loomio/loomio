@@ -6,6 +6,7 @@ export default class EventModel extends BaseModel
   @singular: 'event'
   @plural: 'events'
   @indices: ['discussionId', 'sequenceId', 'position', 'depth', 'parentId', 'positionKey']
+  @uniqueIndices: ['id']
 
   @eventTypeMap:
     Group: 'groups'
