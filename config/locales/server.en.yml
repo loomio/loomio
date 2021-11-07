@@ -504,7 +504,7 @@ en:
       poll_closing_soon: '%{poll_type} closing in 24 hours: %{title}'
       poll_closing_soon_author: 'Your %{poll_type} closes in 24 hours: %{title}'
       poll_expired: "%{poll_type} closed: %{title}"
-      poll_expired_author: 'Your %{poll_type} has closed. Share an outcome for: %{title}'
+      poll_expired_author: 'Share an outcome for: %{title}'
       poll_option_added: '%{actor} added options to: %{title}'
       poll_option_added_author: '%{actor} added options to: %{title}'
       outcome_created: '%{actor} shared a %{poll_type} outcome: %{title}'
