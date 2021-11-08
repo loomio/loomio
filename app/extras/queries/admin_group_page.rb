@@ -13,7 +13,7 @@ class Queries::AdminGroupPage
 
   def self.thread_events_per_day(group)
     ids = Discussion.where(group_id: group.id_and_subgroup_ids).pluck(:id)
-    if ids.length
+    if ids.any?
       "select date_trunc('day', created_at) date, count(id) from events where discussion_id IN (#{ids.join(',')}) group by date order by date"
     else
       "select date_trunc('day', created_at) date, count(id) from events where discussion_id = 0 group by date order by date"
