@@ -1,4 +1,20 @@
 fr:
+  tasks:
+    tasks: Tâches
+    your_tasks: Vos tâches
+    permission_denied: Vous n’avez pas la permission de faire cette tâche.
+    due_date: Échéance
+    send_reminder: Envoyer un rappel (si ce n'est pas fait)
+    no_reminder: Pas rappel
+    on_due_date: 'Dans échéance '
+    1_day_before: 1 jour avant
+    2_day_before: 2 jours avant
+    3_day_before: 3 jours avant
+    7_day_before: 7 jours avant
+    task_placeholder: Entrez une tâche et @mention quelqu’un pour l’assigner
+    add_due_date: Ajouter échéance
+    task_updated_done: 'Tâche marquée comme terminée !'
+    task_updated_not_done: 'Tâche marquée comme pas terminée !'
   doctypes:
     youtube_video: Video Youtube
     image: Image
@@ -138,6 +154,7 @@ fr:
   timezones:
     local: Heure locale ({{value}})
   common:
+    optional: (Optionale)
     version: Version
     none: Aucun
     empty: Vide
@@ -184,6 +201,8 @@ fr:
       private: 'Privé'
       secret: 'Secret'
     selected: 'Sélectionné'
+    today: 'aujourd’hui'
+    in_x_days: 'dans %{x} jours'
     date_range:
       today: 'Aujourd’hui'
       yesterday: 'Hier'
@@ -524,6 +543,7 @@ fr:
     invite_to_group: "Inviter au groupe"
     invite_to_discussion: "Inviter à la discussion"
     invite_to_poll: "Inviter au vote"
+    invite_to_wip_poll: "Inviter à donner des commentaires"
     invitations: "Invitations"
   membership_dropdown:
     set_title: "Définir un rôle"
@@ -539,7 +559,9 @@ fr:
   notification_models:
     discussion: 'discussion :'
     comment: 'commentaire dans'
+    poll: 'sondage:'
     outcome: 'résultat :'
+    stance: 'vote:'
   notifications:
     header: "Notifications"
     no_notifications: "Aucune nouvelle notification"
@@ -578,6 +600,7 @@ fr:
     outcome_announced: "<strong>{{name}}</strong> a renseigné un résultat <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> a participé à : <strong>{{title}}</strong>"
     group_announced: "{{name}} vous a invité dans le groupe {{title}}"
+    outcome_review_due: "C'est le moment d'analyser les résultats du<strong>{{title}}</strong>"
   discussion_fork_actions:
     helptext: 'Sélectionnez les éléments que vous souhaitez placer dans d''autres discussions '
     move: Déplacer
@@ -608,6 +631,7 @@ fr:
     title_label: 'Titre'
     title_placeholder: 'De quel sujet souhaitez-vous discuter ?'
     context_label: 'Contexte'
+    context_placeholder: "Fournir du contexte pour cette discussion, afin que les gens puissent bien participer"
     privacy_label: 'Privé'
     privacy_public: 'N’importe qui peut voir la discussion. Seuls les membres de {{groupName}} peuvent participer.'
     privacy_private: 'La discussion sera visible uniquement aux membres de {{group}}.'
@@ -686,13 +710,19 @@ fr:
       poll_announced:
         title: Inviter au vote
         helptext: Qui voulez-vous inviter à voter ?
+      wip_poll_announced:
+        title: Inviter à donner des commentaires
+        helptext: Qui voulez-vous inviter à donner des commentaires ?
       poll_reminder:
         title: Rappel pour voter
         helptext: 'A qui voulez-vous rappeler de voter ? '
         message_label: Message
         message_placeholder: Message facultatif pour expliquer aux gens pourquoi ils devraient voter
       wip_poll_reminder:
+        title: Rappelez-vous de donner feedback
+        helptext: Qui voulez-vous rappeler à donner des commentaires ?
         message_label: Message
+        message_placeholder: Message facultatif à inclure dans l’e-mail de notification
       poll_edited:
         title: Notifier des modifications
         helptext: 'Qui voulez-vous notifier à propos de cette mise à jour ? '
@@ -782,6 +812,7 @@ fr:
   formatting:
     formatting_tools: Outils de formatage du texte
     colors: Couleurs
+    highlight: Souligner
     alignment: Alignement
     lists: Listes
     expand: Montrer plus d'outils de formatage du texte
@@ -1225,6 +1256,7 @@ fr:
     deactivate_account: 'Désactiver le compte utilisateur'
     help_translate: "Aidez-nous à traduire Loomio"
   text_editor:
+    select_text_to_link: Sélectionnez le texte à lier et réessayez
     insert_link: Insérer un lien
     insert_embedded_url: Intégrer la vidéo
   change_picture_form:
@@ -1241,14 +1273,11 @@ fr:
     set_password: Définir un mot de passe
     password_changed: Votre mot de passe a été mis à jour
   deactivation_modal:
-    aria_label: 'Désactiver le compte utilisateur'
-    introduction: 'Quand vous désactivez votre compte :'
+    introduction: 'Lorsque vous supprimez votre compte:'
     you_will_be_deleted: "Votre compte d'utilisateur, y compris votre nom, votre adresse e-mail et d'autres données d'identification personnelle seront supprimés de nos systèmes."
     name_removed: 'Les commentaires, les décisions et les discussions que vous avez fait resteront mais votre nom en sera retiré'
     no_longer_group_member: 'Vous ne serez plus enregistré comme membre d’aucun groupe'
     no_emails: 'Vous ne recevrez plus de courriels de notification'
-    you_can_reactivate: "Vous pouvez réactiver votre compte ultérieurement si vous le souhaitez."
-    submit: 'Oui, je veux désactiver'
     submit_delete: 'Supprimer mon compte maintenant'
   email_settings_page:
     monday: Lundi
@@ -1431,17 +1460,21 @@ fr:
     helptext_two: "Vous pouvez retirer la discussion mise en avant à tout moment en choisissant « Ne plus mettre en avant » dans la liste déroulante de la discussion"
     pin_thread: Épingler la discussion
   thread_arrangement_form:
+    edit: Modifier la disposition
     title: Mise en page de la discussion
     for_everyone: Cela modifiera la mise en page pour tous, pas uniquement vous.
     sorting: Les plus anciens ou les plus récents en premier ?
     latest: Les plus récents
+    latest_description: Lisez d’abord les éléments les plus récents
     earliest: Les plus anciens
+    earliest_description: Rattrapez les commentaires plus anciens avant de voir les plus récents
     replies: Comment afficher les réponses ?
     linear: Liste fixe.
     linear_description: Les éléments ont été listés au fur et à mesure de leur occurrence, l'un après l'autre.
     nested_once: Réponses d’imbrication - première réponse uniquement
     nested_once_description: Placer les réponses sous le commentaire original
     nested_twice: Deux niveaux de réponses imbriquées
+    nested_twice_description: Indent répond au plus deux fois.
     changing_nesting_is_slow: Les changements à l'imbrication peuvent prendre quelques minutes à traiter.
   delete_thread_form:
     aria_label: 'Supprimer la discussion'
@@ -1529,6 +1562,7 @@ fr:
     results: Résultats
     responses: Réponses
     close_poll_type: Fermer {{pollType}}
+    close_early: Fermer tôt
     totals: Totaux
     participate: Participer
     vote: Vote
@@ -1632,6 +1666,7 @@ fr:
     anonymous: Les votes sont anonymes
     results_hidden_until_closed: Les résultats sont cachés jusquà la cloture du %{poll_type}
     unable_to_vote: Vous n'avez pas été invité à voter dans ce %{poll_type}
+    draft_mode: Vote désactivé. C'est %{poll_type} un travail en cours.
   current_polls_card:
     title: Décisions en cours
     start_poll: Nouvelle décision
@@ -1692,6 +1727,8 @@ fr:
       title: Cacher les résultats jusqu'à la cloture
       helptext_on: Ne pas montrer comment les gens ont voté avant la cloture du sondage
   poll_common_close_form:
+    title: Fermer %{poll_type} maintenant?
+    helptext: Etes-vous sûr de vouloir clôturer ce %{poll_type} tôt et partager un résultat ?
     close_proposal: Clôturer la proposition
     close_poll: Fermer le sondage
     close_count: Clôturer la vérification
@@ -1711,6 +1748,10 @@ fr:
   poll_common_move_form:
     title: "Déplacer le {{poll_type}}"
     success: "{{poll_type}} déplacé vers le groupe {{group}}"
+  poll_common_wip_field:
+    title: Désactiver le vote
+    past_tense: Vote désactivé
+    helptext: 'Il s’agit %{poll_type} d’un travail en cours. Vous pouvez activer le vote ultérieurement.'
   poll_common_closing_at_field:
     closing: Fermeture
     no_closing_date: Pas de date de cloture
@@ -1749,6 +1790,9 @@ fr:
     ranked_choice: 'Ce classement par préférence est fermé. <strong>Partagez un résultat</strong> avec le groupe.'
     score: 'Ce sondage a été clôturé. <strong>Partager un résultat</strong> avec le groupe.'
   poll_common_outcome_form:
+    review_date: Date de révision
+    review_date_hint: Fixer la date du rappel pour examiner les résultats (facultatif)
+    who_to_notify: Qui voulez-vous informer de ce résultat?
     new_title: Entrer un résultat
     update_title: Mettre à jour le résultat
     outcome_created: Résultat créé

@@ -1137,14 +1137,10 @@ pl:
     set_password: Ustaw hasło
     password_changed: Twoje hasło zostało zaktualizowane
   deactivation_modal:
-    aria_label: 'Dezaktywuj konto użytkownika'
-    introduction: 'Po dezaktywacji konta:'
     you_will_be_deleted: "Twoje konto użytkownika, w tym imię i nazwisko, adres e-mail i inne dane osobowe, zostaną usunięte z naszych systemów."
     name_removed: 'Komentarze, propozycje i dyskusje, które wykonałeś, pozostaną, ale Twoje imię i nazwisko zostanie z nich usunięte'
     no_longer_group_member: 'Nie będziesz już wyświetlany jako członek żadnej grupy'
     no_emails: 'Nie będziesz już otrzymywać powiadomień e-mail'
-    you_can_reactivate: "Możesz później ponownie aktywować swoje konto, jeśli będziesz chciał/a"
-    submit: 'Tak, chcę dezaktywować'
     submit_delete: 'Usuń moje konto '
   email_settings_page:
     header: Ustawienia powiadomień

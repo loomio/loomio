@@ -1195,14 +1195,10 @@ it:
     set_password: Imposta password
     password_changed: La tua password è stata aggiornata
   deactivation_modal:
-    aria_label: 'Disattiva l''account utente'
-    introduction: 'Quando disattivi il tuo account:'
     you_will_be_deleted: "Il tuo account, compresi nome, indirizzo email e gli altri dati personali verranno cancellati dal nostro sistema."
     name_removed: 'I tuoi commenti, le tue proposte e le tue discussioni rimarranno, ma il tuo nome verrà rimosso'
     no_longer_group_member: 'Non sarai più listato/a come membro di alcun gruppo.'
     no_emails: 'Non riceverai più email di notifica'
-    you_can_reactivate: "Se tu vorrai, potrai riattivare il tuo account in futuro"
-    submit: 'Sì, voglio disattivare'
     submit_delete: 'Elimina subito l''account personale'
   email_settings_page:
     monday: Lunedì

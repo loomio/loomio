@@ -1037,14 +1037,10 @@ pt_BR:
     set_password: Configurar a senha
     password_changed: Sua senha foi atualizada
   deactivation_modal:
-    aria_label: 'Desativar conta de usuário'
-    introduction: 'Quando você desativa sua conta:'
     you_will_be_deleted: "Sua conta de usuário, incluindo seu nome, endereço de email e outras informações e dados pessoais serão removidas do nosso sistema."
     name_removed: 'Comentários, propostas e discussões feitas por você permanecerão, mas seu nome será removido dos mesmos'
     no_longer_group_member: 'Você deixará de ser listado como membro de todos os grupos'
     no_emails: 'Você não receberá mais notificações por email'
-    you_can_reactivate: "Você poderá reativar sua conta de usuário depois, se quiser"
-    submit: 'Sim, eu quero desativar'
   email_settings_page:
     monday: Segunda-feira
     tuesday: Terça-feira

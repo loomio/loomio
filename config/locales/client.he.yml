@@ -792,13 +792,10 @@ he:
     set_password: הגדר סיסמה
     password_changed: סיסמתך עודכנה
   deactivation_modal:
-    introduction: 'כשאתה משבית את חשבונך:'
     you_will_be_deleted: "חשבון המשתמש שלך כולל שמך, כתובת הדוא\"ל ופרטי זיהוי נוספים ימחקו מהמערכות שלנו."
     name_removed: 'הערות, הצעות ודיונים שביצעת ישראו אבל השם שלך יוסר מהם'
     no_longer_group_member: 'אתה לא תהיה רשום יותר כמשתתף באף קבוצה'
     no_emails: 'לא תקבל/י יותר עדכונים במייל.'
-    you_can_reactivate: "אם תרצה, תוכל לאקטב את החשבון שלך מחדש בשלב מאוחר יותר "
-    submit: 'כן, אני רוצה להשבית'
   email_settings_page:
     monday: יום שני
     tuesday: יום שלישי

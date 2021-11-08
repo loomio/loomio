@@ -527,10 +527,8 @@ da:
     use_initials: 'Benyt initialer'
     use_gravatar: 'Brug Gravatar'
   deactivation_modal:
-    introduction: 'Når du deaktiverer din konto:'
     name_removed: 'Kommentarer, forslag og debatter som du har lavet vil forblive men dit navn vil blive fjernet fra dem'
     no_longer_group_member: 'Du vil ikke længere bliver vist som medlem i nogen grupper'
-    submit: 'Ja, jeg vil stadig gerne deaktivere'
   email_settings_page:
     monday: Mandag
     tuesday: Tirsdag
