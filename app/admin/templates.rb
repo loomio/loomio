@@ -3,6 +3,8 @@ ActiveAdmin.register Template do
   includes :record
   includes :author
 
+  filter :name
+
   controller do
     def permitted_params
       params.permit!

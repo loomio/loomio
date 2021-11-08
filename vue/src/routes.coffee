@@ -58,10 +58,10 @@ router = new Router
       { x: 0, y: 0 }
 
   routes: [
+    {path: '/try', component: TemplatesPage},
     {path: '/users/sign_in', redirect: '/dashboard' },
     {path: '/users/sign_up', redirect: '/dashboard' },
     {path: '/tasks', component: TasksPage},
-    {path: '/templates', component: TemplatesPage},
     {path: '/dashboard', component: DashboardPage},
     {path: '/dashboard/:filter', component: DashboardPage},
     {path: '/threads/direct', component: ThreadsPage},

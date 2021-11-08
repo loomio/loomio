@@ -23,7 +23,7 @@ export default
   mounted: ->
     EventBus.$emit('content-title-visible', false)
     EventBus.$emit 'currentComponent',
-      titleKey: @titleKey
+      titleKey: 'templates.try_loomio'
       page: 'threadsPage'
       search:
         placeholder: @$t('navbar.search_all_threads')
@@ -57,7 +57,9 @@ export default
 <template lang="pug">
 v-main
   v-container.templates-page.max-width-1024
-    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'templates.start_demo'")
+    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'templates.try_loomio'")
+    p(v-html="$t('templates.we_have_demos')")
+    p(v-html="$t('templates.start_a_trial')")
     v-card.mb-3(v-if='!loaded' aria-hidden='true')
       v-list(two-line)
         loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]' :key='index' )
@@ -69,4 +71,10 @@ v-main
         v-card-text {{ template.description }}
         v-card-actions
           v-btn(@click="cloneTemplate(template.id)") Start demo
+
+      v-card.my-4
+        v-card-title Start a free trial
+        v-card-text Start a group for your organisation to try Loomio together
+        v-card-actions
+          v-btn(to="/g/new") Start trial
 </template>
