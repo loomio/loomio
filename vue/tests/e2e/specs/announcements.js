@@ -67,13 +67,13 @@ module.exports = {
     page.expectFlash('Proposal started')
     page.pause(500)
 
-    page.expectElement('.poll-members-list')
+    page.expectElement('.poll-members-form')
     page.fillIn('.recipients-autocomplete input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
     page.escape()
     page.expectElement('.headline')
-    page.click('.poll-members-list__submit')
+    page.click('.poll-members-form__submit')
     page.expectFlash('1 notifications sent')
   },
 

@@ -6,6 +6,8 @@ import AnonymousUserModel   from '@/shared/models/anonymous_user_model'
 export default class NotificationModel extends BaseModel
   @singular: 'notification'
   @plural: 'notifications'
+  @uniqueIndices: ['id']
+  @indices: ['eventId', 'userId']
 
   relationships: ->
     @belongsTo 'event'

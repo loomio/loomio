@@ -5,7 +5,6 @@ import RangeSet         from '@/shared/services/range_set'
 import EventBus         from '@/shared/services/event_bus'
 import Session from '@/shared/services/session'
 
-
 export default class ThreadLoader
   constructor: (discussion) ->
     @discussion = discussion
@@ -70,7 +69,6 @@ export default class ThreadLoader
 
   loadEverything: ->
     @loading = true
-    @titleKey = 'strand_nav.whole_thread'
     @addRuleAndFetch
       local:
         find:
@@ -81,19 +79,23 @@ export default class ThreadLoader
 
   autoLoadAfter: (obj) ->
     if (!@discussion.newestFirst && obj.event.depth == 1) || (obj.missingAfterCount && obj.missingAfterCount < @maxAutoLoadMore)
-      @loadAfter(obj.event, obj.missingAfterCount)
+      # @loadAfter(obj.event, obj.missingAfterCount)
+      @loadAfter(obj.event)
 
-  loadAfter: (event, limit = null) ->
-    @addLoadAfterRule(event, limit)
+  loadAfter: (event) ->
+    # @addLoadAfterRule(event, limit)
+    @addLoadAfterRule(event)
     @fetch()
 
   autoLoadBefore: (obj) ->
     if (@discussion.newestFirst && obj.event.depth == 1) || (obj.missingEarlierCount && obj.missingEarlierCount < @maxAutoLoadMore)
-      @loadBefore(obj.event, obj.missingEarlierCount)
+      # @loadBefore(obj.event, obj.missingEarlierCount)
+      @loadBefore(obj.event)
 
-  loadBefore: (event, limit = null) ->
+  loadBefore: (event) ->
     @loading = 'before'+event.id
-    @addLoadBeforeRule(event, limit)
+    # @addLoadBeforeRule(event, limit)
+    @addLoadBeforeRule(event)
     @fetch()
 
   # autoLoadChildren: (obj) ->
@@ -131,57 +133,41 @@ export default class ThreadLoader
   #     #     order_by: 'position_key'
   #     #     per: @padding
 
-  addLoadAfterRule: (event, limit = null) ->
-    # keys = event.positionKey.split('-')
-    # num = parseInt(keys[keys.length - 1]) + 1
-    # key = "0".repeat(5 - (""+num).length) + num
-    # keys[keys.length - 1] = key
-    # positionKey = keys.join('-')
-    # positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
-    # positionKeyPrefix = undefined if keys.length == 1
-    positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
-    positionKey = event.positionKey
-
+  addLoadAfterRule: (event) ->
     @addRule
-      name: "load after positionKey #{positionKey}"
+      name: "load after #{event.positionKey}"
       local:
         find:
           discussionId: @discussion.id
           positionKey:
-            $jgt: positionKey
-            # $regex: (positionKeyPrefix && "^#{positionKeyPrefix}") || undefined
-        simplesort: 'id'
-        limit: limit || @padding
+            $jgt: event.positionKey
+        simplesort: 'positionKey'
+        limit: @padding
       remote:
         discussion_id: @discussion.id
-        position_key_gt: positionKey
-        # position_key_sw: positionKeyPrefix || null
+        position_key_gt: event.positionKey
         order_by: 'position_key'
-        per: limit || @padding
+        per: @padding
 
-  addLoadBeforeRule: (event, limit) ->
-    positionKeyPrefix = event.positionKey.split('-').slice(0,-1).join('-')
+  addLoadBeforeRule: (event) ->
     @addRule
-      name: "load before (prefix #{positionKeyPrefix})"
+      name: "load before #{event.positionKey}"
       local:
         find:
           discussionId: @discussion.id
           positionKey:
             $jlt: event.positionKey
-            $regex: (positionKeyPrefix && "^#{positionKeyPrefix}") || undefined
-        simplesort: 'sequenceId'
+        simplesort: 'positionKey'
         simplesortDesc: true
-        limit: limit || @padding
+        limit: @padding
       remote:
         discussion_id: @discussion.id
         position_key_lt: event.positionKey
-        position_key_sw: positionKeyPrefix || null
         order_by: 'position_key'
         order_desc: 1
-        per: limit || @padding
+        per: @padding
 
   addLoadCommentRule: (commentId) ->
-    @titleKey = 'strand_nav.from_comment'
     @addRule
       name: "comment from url"
       local:
@@ -193,20 +179,6 @@ export default class ThreadLoader
         order: 'sequence_id'
         discussion_id: @discussion.id
         comment_id: commentId
-
-  # addLoadPinnedRule: ->
-  #   @titleKey = 'strand_nav.all_pinned'
-  #   @addRule
-  #     name: "all pinned events"
-  #     local:
-  #       find:
-  #         discussionId: @discussion.id
-  #         pinned: true
-  #       # position: {$gte: position}
-  #     remote:
-  #       discussion_id: @discussion.id
-  #       pinned: true
-  #       per: 200
 
   addLoadPositionRule: (position) ->
     @addRule
@@ -244,7 +216,7 @@ export default class ThreadLoader
       local:
         find:
           discussionId: @discussion.id
-          positionKey: {$lt: positionKey}
+          positionKey: {$jlt: positionKey}
         simplesort: 'positionKey'
         simplesortDesc: true
         limit: parseInt(@padding/2)
@@ -258,7 +230,6 @@ export default class ThreadLoader
   addLoadSequenceIdRule: (sequenceId) ->
     id = max([parseInt(sequenceId) - parseInt(@padding/2), 0])
     @loading = id
-    @titleKey = 'strand_nav.from_sequence_id'
     @addRule
       name: "sequenceId from url"
       local:
@@ -273,8 +244,7 @@ export default class ThreadLoader
         order: 'sequence_id'
         per: @padding
 
-  addLoadNewestRule: () ->
-    @titleKey = 'strand_nav.newest_first'
+  addLoadNewestRule: ->
     @addRule
       local:
         find:
@@ -296,7 +266,6 @@ export default class ThreadLoader
           id: @discussion.createdEvent().id
 
   addLoadOldestRule: ->
-    @titleKey = 'strand_nav.oldest_first'
     @addRule
       name: 'oldest'
       local:
@@ -310,7 +279,6 @@ export default class ThreadLoader
         per: @padding
 
   addLoadUnreadRule: ->
-    @titleKey = 'strand_nav.unread'
     if @discussion.updatedAt > @discussion.lastReadAt
       @addRule
         name: "context updated"
@@ -318,21 +286,6 @@ export default class ThreadLoader
           find:
             id: @discussion.createdEvent().id
 
-    # I don't think we need this..
-    # @rules.push
-    #   name: {path: "strand_nav.new_to_you"}
-    #   local:
-    #     find:
-    #       discussionId: @discussion.id
-    #       sequenceId: {$or: @discussion.unreadRanges().map((r) -> {$between: r} )}
-    #     limit: @padding
-    #   remote:
-    #     discussion_id: @discussion.id
-    #     unread: true
-    #     order_by: "sequence_id"
-    #     per: @padding
-
-    # padding around new to you
     id = max([@firstUnreadSequenceId() - parseInt(@padding/2), @discussion.firstSequenceId()])
     @addRule
       name: {path: "strand_nav.new_to_you"}
@@ -393,7 +346,6 @@ export default class ThreadLoader
 
     @records = uniq @records.concat(compact(@records.map (o) -> o.parent()))
     @records = orderBy @records, 'positionKey'
-
     eventIds = @records.map (event) -> event.id
 
     orphans = @records.filter (event) ->

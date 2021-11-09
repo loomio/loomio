@@ -26,7 +26,10 @@ export default class MembershipRequestModel extends BaseModel
       avatarInitials: name.split(' ').map((t) -> t[0]).join('')
 
   nameAndEmail: ->
-    "#{@actor().name} <#{@actor().email}>"
+    if @actor().email
+      "#{@actor().name} <#{@actor().email}>"
+    else
+      @actor().name
 
   actor: ->
     if @byExistingUser() then @requestor() else @fakeUser

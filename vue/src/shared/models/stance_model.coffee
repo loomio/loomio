@@ -10,7 +10,8 @@ stancesBecameUpdatable = new Date("2020-08-11")
 export default class StanceModel extends BaseModel
   @singular: 'stance'
   @plural: 'stances'
-  @indices: ['pollId', 'latest']
+  @indices: ['pollId', 'latest', 'participantId']
+  @uniqueIndices: ['id']
 
   afterConstruction: ->
     HasTranslations.apply @
@@ -96,7 +97,7 @@ export default class StanceModel extends BaseModel
         show: (score > 0) || poll.pollType == "score",
         pollOption: optionsById[pollOptionId]
       }
-      
+
     choices = choices.filter (c) -> c.pollOption
 
     if poll.pollType == 'meeting'

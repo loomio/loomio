@@ -1,4 +1,20 @@
 es:
+  tasks:
+    tasks: Tareas
+    your_tasks: Tus tareas
+    permission_denied: No tiene permiso para hacer esta tarea
+    due_date: Fecha de vencimiento
+    send_reminder: Enviar recordatorio (si no se ha enviado todavía)
+    no_reminder: No hay recordatorio
+    on_due_date: En fecha de vencimiento
+    1_day_before: 1 día antes
+    2_day_before: 2 días antes
+    3_day_before: 3 días antes
+    7_day_before: 7 días antes
+    task_placeholder: Introduce una tarea y @menciona alguien para asignarla
+    add_due_date: Añadir fecha de vencimiento
+    task_updated_done: '¡Tarea señalada como hecha!'
+    task_updated_not_done: '¡Tarea señalada como no hecha!'
   doctypes:
     youtube_video: Video Youtube
     image: Imagen
@@ -138,6 +154,7 @@ es:
   timezones:
     local: Hora local ({{value}})
   common:
+    optional: (opcional)
     version: Versión
     none: Ninguno
     empty: Vacío
@@ -184,6 +201,8 @@ es:
       private: 'Privado'
       secret: 'Secreto '
     selected: 'Seleccionado'
+    today: 'Hoy'
+    in_x_days: 'en %{x} días'
     date_range:
       today: 'Hoy'
       yesterday: 'Ayer'
@@ -244,7 +263,7 @@ es:
       start: 'Empezar '
       delete: Eliminar
       unsubscribe: Cancelar suscripción
-      subscribe: Suscribirme
+      subscribe: Suscribirme a la lista de correo electrónico
       unignore: Dejar de ignorar
       remind: 'Recordar '
       resend: 'Reenviar '
@@ -466,8 +485,10 @@ es:
       groups_list: 'Grupos'
       user_list: 'Acciones de usuario'
   strand_nav:
-    newest_first: Última actividad
-    oldest_first: Principio del hilo
+    newest: El más nuevo
+    oldest: El más viejo
+    newest_first: El más reciente primero
+    oldest_first: Los más viejos primero
     all_pinned: Todos elementos anclados
     whole_thread: Todo el hilo
     from_comment: Desde un comentario url
@@ -523,6 +544,7 @@ es:
     invite_to_group: "Invitar al grupo"
     invite_to_discussion: "Invitar al hilo"
     invite_to_poll: "Invitar a votar "
+    invite_to_wip_poll: "Invitar para hacer comentarios"
     invitations: "Invitaciones"
   membership_dropdown:
     set_title: "Añada un título"
@@ -538,7 +560,9 @@ es:
   notification_models:
     discussion: 'Hilo:'
     comment: 'comentar en'
+    poll: 'sondeo:'
     outcome: 'resultado:'
+    stance: 'votar:'
   notifications:
     header: "Notificaciones"
     no_notifications: "No tienes notificaciones"
@@ -577,6 +601,7 @@ es:
     outcome_announced: "<strong>{{name}}</strong> compartió un resultado: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> participó en: <strong>{{title}}</strong>"
     group_announced: "<strong>{{name}}</strong> te invitó al grupo <strong>{{title}}</strong>"
+    outcome_review_due: "Es hora para revisar el resultado de;<strong>{{title}}</strong>"
   discussion_fork_actions:
     helptext: Selecciona puntos que te gustaría mover a otro hilo.
     move: Mover
@@ -607,6 +632,7 @@ es:
     title_label: 'Título'
     title_placeholder: '¿Cuál es el tema que quieres discutir?'
     context_label: 'Contexto'
+    context_placeholder: "Aportar algo de contexto para esta debate, para que la gente pueda participar bien "
     privacy_label: 'Privacidad'
     privacy_public: 'Cualquier persona puede ver los hilos. Solo integrantes pueden participar. '
     privacy_private: 'Los hilos solo serán visibles para integrantes de {{group}}.'
@@ -685,13 +711,19 @@ es:
       poll_announced:
         title: 'Invitar a votar '
         helptext: ¿A quién le gustaría invitar a la votación?
+      wip_poll_announced:
+        title: Invitar para hacer comentarios
+        helptext: ¿A quién le gustaría invitar a dejar comentarios?
       poll_reminder:
         title: Recuerda votar
         helptext: ¿A quién te gustaría recordar que vote?
         message_label: Mensaje
         message_placeholder: Mensaje opcional para decir a la gente porque deberían votar
       wip_poll_reminder:
+        title: Recordar para hacer comentarios
+        helptext: ¿A quién le gustaría recordar a dejar comentarios?
         message_label: Mensaje
+        message_placeholder: Mensaje opcional para incluir en el email de notificación
       poll_edited:
         title: Notificar cambios
         helptext: ¿A quién te gustaría notificar sobre esta notificación?
@@ -781,6 +813,7 @@ es:
   formatting:
     formatting_tools: Herramientas formateo de texto
     colors: Colores
+    highlight: Subrayar
     alignment: Alineación
     lists: Listados
     expand: Mostrar más herramientas de formateo
@@ -1224,6 +1257,7 @@ es:
     deactivate_account: 'Desactivar la cuenta de usuario'
     help_translate: "Ayúdanos a traducir Loomio"
   text_editor:
+    select_text_to_link: Selecciona el texto del enlace e inténtalo de nuevo
     insert_link: Inserte un enlace
     insert_embedded_url: Video integrado
   change_picture_form:
@@ -1240,14 +1274,11 @@ es:
     set_password: Configura la contraseña
     password_changed: Su contraseña ha sido actualizada.
   deactivation_modal:
-    aria_label: 'Desactivar la cuenta de usuario'
-    introduction: 'Cuando desactiva su cuenta:'
+    introduction: 'Cuando borras tu cuenta:'
     you_will_be_deleted: "Su cuenta de usuario, incluyendo nombre, correo electrónico y otros datos personales serán eliminados del sistema."
     name_removed: 'Los comentarios, propuestas e hilos que ha realizado permanecerán, pero su nombre será retirado de los mismos'
     no_longer_group_member: 'Ya no serás listado como miembro en ningún grupo'
     no_emails: 'Ya no recibirás notificaciones por correo electrónico'
-    you_can_reactivate: "Podrá reactivar su cuenta si lo desea"
-    submit: 'Si, quiero desactivar mi cuenta'
     submit_delete: 'Borrar mi cuenta ahora'
   email_settings_page:
     monday: Lunes
@@ -1431,19 +1462,21 @@ es:
     helptext_two: "En cualquier momento puedes liberar nuevamente los hilos fijados, seleccionando 'Liberar' desde el menú desplegable del hilo."
     pin_thread: 'Fijar hilo '
   thread_arrangement_form:
+    edit: Editar diseño
     title: Diseño del hilo
     for_everyone: Esto cambia el diseño para todo el mundo, no solamente el tuyo.
     sorting: ¿El más viejo o el más nuevo primero?
     latest: El más nuevo
     latest_description: Lee primero las cosas más nuevas
     earliest: El más viejo
-    earliest_description: Leer desde el principio hasta el final
+    earliest_description: Ponte al día con viejos comentarios antes de ver los nuevos
     replies: ¿Cómo mostrar las respuestas?
     linear: Lista plana
     linear_description: Temas se listan según se han desarrollado, uno después de otro.
     nested_once: Respuestas agrupadas - solamente la primera respuesta
     nested_once_description: Marca las respuestas bajo un comentario original
     nested_twice: Dos niveles de respuestas agrupadas
+    nested_twice_description: Marca las respuestas como mucho dos veces
     changing_nesting_is_slow: Cambios para anidación pueden llevar un par de minutos para procesarse.
   delete_thread_form:
     aria_label: 'Borrar hilo '
@@ -1531,6 +1564,7 @@ es:
     results: Resultados
     responses: Respuestas
     close_poll_type: Cerrar {{pollType}}
+    close_early: Cierre temprano
     totals: Total
     participate: 'Participar '
     vote: Votar
@@ -1634,6 +1668,7 @@ es:
     anonymous: Los votos son anónimos
     results_hidden_until_closed: Los resultados se esconden hasta que el %{poll_type} ha cerrado
     unable_to_vote: No has sido invitado a votar en este %{poll_type}.
+    draft_mode: Votación desactivada. Este %{poll_type} es un trabajo en progreso
   current_polls_card:
     title: Decisiones actuales
     start_poll: 'Nueva decisión  '
@@ -1694,8 +1729,8 @@ es:
       title: Oculta resultados hasta el cierre
       helptext_on: No muestra como la gente ha votado hasta que se cierre el sondeo
   poll_common_close_form:
-    title: Cerrar una encuesta antes
-    helptext: ¿Estás seguro de que quieres cerrar este %{poll_type}pronto?
+    title: ¿Cerrar %{poll_type} ahora?
+    helptext: ¿Estás seguro de que quieres cerrar este %{poll_type}pronto y compartir el resultado?
     close_proposal: Cerrar la propuesta
     close_poll: Cerrar la encuesta
     close_count: Cerrar comprobación
@@ -1715,6 +1750,10 @@ es:
   poll_common_move_form:
     title: "Mover {{poll_type}}"
     success: "{{poll_type}} se ha movido a {{group}}"
+  poll_common_wip_field:
+    title: Desactivar votación
+    past_tense: Votación desactivada
+    helptext: 'Este %{poll_type} es un trabajo en progreso. Puedes activar la votación más tarde.'
   poll_common_closing_at_field:
     closing: Cerrando
     no_closing_date: Sin fecha de cierre
@@ -1753,7 +1792,9 @@ es:
     ranked_choice: 'Esta encuesta de opción priorizada ha cerrado. <strong>Comparte el resultado</strong> con el grupo.'
     score: 'Este resultado de la encuesta ha cerrado. <strong>Comparte un resultado</strong>con el grupo.'
   poll_common_outcome_form:
-    who_to_notify: ¿A quién quieres notificar sobre este resultado?
+    review_date: Revisar fecha
+    review_date_hint: Establecer fecha de recordatorio para revisar el resultado (opcional)
+    who_to_notify: ¿A quién quieres notificar sobre este resultado? (opcional)
     new_title: Introducir un resultado
     update_title: Actualizar el resultado
     outcome_created: Resultado creado
@@ -2137,18 +2178,6 @@ es:
       read_memberships: leer membresías
     include_body_label: Incluye el cuerpo del mensaje con notificación
     include_subgroups_label: Pasar eventos desde subgrupos
-  configure_sso:
-    redirecting: Por favor espere, redirigiendo al registro del proveedor
-    title: Entrada de validación única
-    enabled: Se permite registro individual
-    helptext: Integrar con OneLogin, Auth0, Directorio Activo de Microsoft o cualquier otro proveedor de SAML. <a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">Conoce más</a>.
-    warning_helptext: "Advertencia: Se te requerirá autentificar con tu proveedor después de clicar guardar"
-    idp_metadata_url: IDP Metadatos URL
-    idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
-    success: Registro individual se ha configurado con éxito
-    destroyed: Se ha eliminado el registro individual
-    invalid_idp_metadata_url: IDP Metadatos URL inválida
-    sp_metadata_url: SP Metadatos URL
   browser_warning:
     message: "IMPORTANTE: estas usando un navegador anticuado ({{name}} {{version}}) que no es soportado por {{site}}."
     link: 'Por favor intenta con otro navegador '

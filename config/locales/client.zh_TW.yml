@@ -1274,14 +1274,11 @@ zh_TW:
     set_password: 設定密碼
     password_changed: 您的密碼已更新
   deactivation_modal:
-    aria_label: '停用使用者帳號'
-    introduction: '當您停用您的帳號：'
+    introduction: '當您刪除帳號時：'
     you_will_be_deleted: "您的使用者帳號，包含您的名字、電子郵件地址與其他可識別個人的資料，都將會從我們的系統中刪除。"
     name_removed: '您在群組中作出的意見、提案與討論串會留下，但您的大名將會從中移除。'
     no_longer_group_member: '您將不會再被任何群組列為成員'
     no_emails: '您將不會再收到電子郵件通知'
-    you_can_reactivate: "如果您想要的話，您可以在稍後重新啟用您的帳號"
-    submit: '是的，我想要停用'
     submit_delete: '現在刪除我的帳號'
   email_settings_page:
     monday: 星期一

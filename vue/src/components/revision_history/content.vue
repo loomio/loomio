@@ -103,14 +103,16 @@ export default
 
   .mb-3(v-if="!stanceChoices && otherFields.length")
     v-simple-table(dense)
-      tr
-        th(v-t="'revision_history_modal.field'")
-        th(v-t="'revision_history_modal.before'")
-        th(v-t="'revision_history_modal.after'")
-      tr(v-for="field in otherFields")
-        td {{field.key}}
-        td {{field.was}}
-        td {{field.now}}
+      thead
+        tr
+          th(v-t="'revision_history_modal.field'")
+          th(v-t="'revision_history_modal.before'")
+          th(v-t="'revision_history_modal.after'")
+      tbody
+        tr(v-for="field in otherFields")
+          td {{field.key}}
+          td {{field.was}}
+          td {{field.now}}
 
   .mb-3(v-if="stanceChoices")
     .text-secondary(v-t="'revision_history_modal.before'")

@@ -1220,14 +1220,10 @@ de:
     set_password: Passwort festlegen
     password_changed: Ihr Passwort wurde aktualisiert
   deactivation_modal:
-    aria_label: 'Benutzerkonto deaktivieren'
-    introduction: 'Wenn du dein Benutzerkonto deaktivierst'
     you_will_be_deleted: "Ihr Account mit Name, Mailadresse und anderen persönlichen Daten wird vom System gelöscht werden"
     name_removed: 'Deine bereits erstellten Kommentare, Vorschläge und Diskussionen bleiben weiterhin sichtbar, allerdings wird dabei dein Name nicht mehr angezeigt'
     no_longer_group_member: 'Du wirst nicht mehr als Mitglied in deinen Gruppen angezeigt'
     no_emails: 'Du wirst keine Benachrichtigungs-E-Mails mehr erhalten.'
-    you_can_reactivate: "Du kannst dein Benutzerkonto zu einem späteren Zeitpunkt jederzeit wieder aktivieren."
-    submit: 'Ja, deaktiveren'
     submit_delete: 'Lösche meinen Account jetzt'
   email_settings_page:
     monday: Montag

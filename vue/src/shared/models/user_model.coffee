@@ -5,6 +5,8 @@ import { find, invokeMap, filter, flatten, uniq, head, compact, some, map, trunc
 export default class UserModel extends BaseModel
   @singular: 'user'
   @plural: 'users'
+  @lazyLoad: true
+  @uniqueIndices: ['id']
 
   relationships: ->
     @hasMany 'memberships'

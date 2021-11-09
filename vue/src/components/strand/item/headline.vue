@@ -46,5 +46,8 @@ h3.strand-item__headline.thread-item__title.body-2.pb-1(tabindex="-1")
     font-weight: 400
   .actor-link
     color: inherit
+.text--secondary
+  .actor-link
+    color: inherit
 
 </style>

@@ -1,10 +1,6 @@
 zh_TW:
   explore:
     header: 探索公開群組
-  saml_providers:
-    invitation_created:
-      success: "成功！請檢查您的 %{email} 收件匣，並尋找連結來加入 %{group_name}。"
-      error: "您的 SAML 提供者無法為 %{group_name} 驗證 %{email}。"
   activerecord:
     errors:
       messages:
@@ -448,7 +444,7 @@ zh_TW:
       poll_closing_soon: '%{poll_type} 將於24小時內關閉：%{title}'
       poll_closing_soon_author: '您的 %{poll_type} 將於24小時內關閉：%{title}'
       poll_expired: "%{poll_type} 已關閉：%{title}"
-      poll_expired_author: '您的 %{poll_type} 已關閉。請分享結果：%{title}'
+      poll_expired_author: '分享結果：%{title}'
       poll_option_added: '%{actor} 新增選項給：%{title}'
       poll_option_added_author: '%{actor} 新增選項給：%{title}'
       outcome_created: '%{actor} 分享了 %{poll_type} 的結果：%{title} '

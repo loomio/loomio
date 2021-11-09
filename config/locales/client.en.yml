@@ -1368,14 +1368,11 @@ en:
     password_changed: Your password has been updated
 
   deactivation_modal:
-    aria_label: 'Deactivate user account'
-    introduction: 'When you deactivate your account:'
+    introduction: 'When you delete your account:'
     you_will_be_deleted: "Your user account including your name, email address and other personally identifying data will be deleted from our systems."
     name_removed: 'Comments, proposals and discussions you’ve made will remain but your name will be removed from them'
     no_longer_group_member: 'You will no longer be listed as a member of any groups'
     no_emails: 'You will no longer receive notification emails'
-    you_can_reactivate: "You can reactivate your account later if you wish"
-    submit: 'Yes, I want to deactivate'
     submit_delete: 'Delete my account now'
 
   email_settings_page:
