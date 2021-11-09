@@ -5,8 +5,9 @@ import Session           from '@/shared/services/session'
 import Records           from '@/shared/services/records'
 import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
+import GroupService    from '@/shared/services/group_service'
 import LmoUrlService     from '@/shared/services/lmo_url_service'
-import {compact, head, includes, filter} from 'lodash'
+import {compact, head, includes, filter, pickBy} from 'lodash'
 import OldPlanBanner from '@/components/group/old_plan_banner'
 
 export default
@@ -30,6 +31,12 @@ export default
     '$route.params.key': 'init'
 
   computed:
+    dockActions: ->
+      pickBy GroupService.actions(@group), (v) -> v.dock
+
+    menuActions: ->
+      pickBy GroupService.actions(@group), (v) -> v.menu
+
     canEditGroup: ->
       AbilityService.canEditGroup(@group)
 
@@ -44,7 +51,7 @@ export default
         {id: 2, name: 'members',   route: @urlFor(@group, 'members')+query},
         {id: 4, name: 'files',     route: @urlFor(@group, 'files')+query}
         {id: 5, name: 'subgroups',  route: @urlFor(@group, 'subgroups')+query}
-        {id: 6, name: 'settings',  route: @urlFor(@group, 'settings')}
+        # {id: 6, name: 'settings',  route: @urlFor(@group, 'settings')}
       ].filter (obj) => !(obj.name == "subgroups" && @group.parentId)
 
   methods:
@@ -82,6 +89,7 @@ v-main
     trial-banner(:group="group")
     group-onboarding-card(:group="group")
     formatted-text.group-page__description(v-if="group" :model="group" column="description")
+    action-dock(:model='group' :actions='dockActions' :menu-actions='menuActions')
     join-group-button(:group='group')
     link-previews(:model="group")
     document-list(:model='group')

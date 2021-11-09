@@ -106,8 +106,8 @@ module.exports = {
   //   page = pageHelper(test)
   //
   //   page.loadPath('setup_group')
-  //   page.click('.group-page-settings-tab')
-  //   page.click('.group-page-actions__change_volume')
+  //   page.click('.action-menu')
+  //   page.click('.action-dock__button--change_volume')
   //   page.click('.volume-loud')
   //   page.click('.change-volume-form__submit')
   //   page.expectFlash('Notification settings updated')

@@ -42,6 +42,7 @@ export default new class ThreadService
 
     unignore:
       name: 'common.action.unignore'
+      icon: 'mdi-bell-outline'
       dock: 2
       canPerform: ->
         discussion.volume() == 'quiet' && AbilityService.canChangeVolume(discussion)
@@ -102,7 +103,7 @@ export default new class ThreadService
 
     notification_history:
       name: 'action_dock.show_notifications'
-      icon: 'mdi-alarm-check'
+      icon: 'mdi-bell-ring-outline'
       menu: true
       perform: ->
         openModal
@@ -113,6 +114,7 @@ export default new class ThreadService
 
     export_thread:
       name: 'common.action.print'
+      icon: 'mdi-printer-outline'
       dock: 0
       menu: true
       canPerform: ->
@@ -121,7 +123,7 @@ export default new class ThreadService
         hardReload LmoUrlService.discussion(discussion, {export: 1}, {absolute: true, print: true})
 
     pin_thread:
-      icon: 'mdi-pin'
+      icon: 'mdi-pin-outline'
       name: 'action_dock.pin_thread'
       menu: true
       canPerform: -> AbilityService.canPinThread(discussion)
@@ -164,17 +166,20 @@ export default new class ThreadService
 
     close_thread:
       menu: true
+      icon: 'mdi-archive-outline'
       canPerform: -> !discussion.closedAt
       perform: => @close(discussion)
 
     reopen_thread:
       menu: true
+      icon: 'mdi-refresh'
       dock: 2
       canPerform: -> AbilityService.canReopenThread(discussion)
       perform: => @reopen(discussion)
 
     move_thread:
       menu: true
+      icon: 'mdi-arrow-right'
       canPerform: -> AbilityService.canMoveThread(discussion)
       perform: ->
         openModal
@@ -199,6 +204,7 @@ export default new class ThreadService
 
     discard_thread:
       name: 'action_dock.delete_thread'
+      icon: 'mdi-delete-outline'
       menu: true
       canPerform: -> AbilityService.canDeleteThread(discussion)
       perform: ->

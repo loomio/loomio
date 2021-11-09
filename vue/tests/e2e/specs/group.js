@@ -113,8 +113,8 @@ module.exports = {
     page.expectFlash('Group started')
     page.pause(500)
 
-    page.click('.group-page-settings-tab')
-    page.click('.group-page-actions__edit_group')
+    page.click('.action-menu')
+    page.click('.action-dock__button--edit_group')
     page.click('.group-form__permissions-tab')
 
     page.expectNoElement('.group-form__parent-members-can-see-discussions')
@@ -134,8 +134,8 @@ module.exports = {
     page.expectFlash('Group started')
     page.pause(500)
 
-    page.click('.group-page-settings-tab')
-    page.click('.group-page-actions__edit_group')
+    page.click('.action-menu')
+    page.click('.action-dock__button--edit_group')
     page.click('.group-form__permissions-tab')
 
     page.expectElement('.group-form__parent-members-can-see-discussions')
@@ -155,8 +155,8 @@ module.exports = {
     page.expectFlash('Group started')
     page.pause(500)
 
-    page.click('.group-page-settings-tab')
-    page.click('.group-page-actions__edit_group')
+    page.click('.action-menu')
+    page.click('.action-dock__button--edit_group')
     page.click('.group-form__permissions-tab')
 
     page.expectNoElement('.group-form__parent-members-can-see-discussions')
@@ -166,8 +166,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
-    page.click('.group-page-settings-tab')
-    page.click('.group-page-actions__edit_group')
+    page.click('.action-menu')
+    page.click('.action-dock__button--edit_group')
 
     page.fillIn('#group-name', 'Clean Dancing Shoes')
     page.fillIn('.group-form__group-description .lmo-textarea textarea', 'Dusty sandles')
@@ -182,8 +182,8 @@ module.exports = {
   //   page = pageHelper(test)
   //
   //   page.loadPath('setup_group')
-  //   page.click('.group-page-actions__button')
-  //   page.click('.group-page-actions__edit-group-link')
+  //   page.click('.action-dock__button--button')
+  //   page.click('.action-dock__button--edit-group-link')
   //   page.fillIn('.group-form__name input', '') // TODO: GK: setValue is not clearing the input
   //   page.click('.group-form__submit-button')
   //   page.pause()
@@ -195,8 +195,8 @@ module.exports = {
   //
   //   page.loadPath('setup_group')
   //
-  //   page.click('.group-page-settings-tab')
-  //   page.click('.group-page-actions__edit_group')
+  //   page.click('.action-menu')
+  //   page.click('.action-dock__button--edit_group')
   //
   //   page.click('.group-form__privacy-tab')
   //   page.click('.group-form__privacy-open')
@@ -210,8 +210,8 @@ module.exports = {
   //   page.acceptConfirm()
   //
   //   // reopen form
-  //   page.click('.group-page-settings-tab')
-  //   page.click('.group-page-actions__edit_group')
+  //   page.click('.action-menu')
+  //   page.click('.action-dock__button--edit_group')
   //
   //
   //   // confirm the settings have stuck
@@ -227,8 +227,8 @@ module.exports = {
   //   page = pageHelper(test)
   //
   //   page.loadPath('setup_group')
-  //   page.click('.group-page-settings-tab')
-  //   page.click('.group-page-actions__edit_group')
+  //   page.click('.action-menu')
+  //   page.click('.action-dock__button--edit_group')
   //
   //   page.click('.group-form__privacy-tab')
   //   page.click('.group-form__privacy-secret')
@@ -248,8 +248,8 @@ module.exports = {
   //   page.pause(500)
   //
   //   // reopen form
-  //   page.click('.group-page-settings-tab', 500)
-  //   page.click('.group-page-actions__edit_group', 500)
+  //   page.click('.action-menu', 500)
+  //   page.click('.action-dock__button--edit_group', 500)
   //
   //   // confirm the settings have stuck
   //   page.click('.group-form__privacy-tab', 500)
@@ -267,8 +267,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_group_with_multiple_coordinators')
-    page.click('.group-page-settings-tab')
-    page.click('.group-page-actions__leave_group')
+    page.click('.action-menu')
+    page.click('.action-dock__button--leave_group')
     page.click('.confirm-modal__submit')
     page.expectFlash('You have left this group')
     page.expectText('.dashboard-page__empty', 'Welcome! You are not a member of any groups yet.')
@@ -291,8 +291,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
-    page.click('.group-page-settings-tab')
-    page.click('.group-page-actions__change_volume')
+    page.click('.action-menu')
+    page.click('.action-dock__button--change_volume')
 
     page.click('.volume-loud label')
     page.click('.change-volume-form__submit')
@@ -303,8 +303,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_group_super_admin')
-    page.click('.group-page-settings-tab')
-    page.click('.group-page-actions__destroy_group')
+    page.click('.action-menu')
+    page.click('.action-dock__button--destroy_group')
 
     page.fillIn('.confirm-text-field input', 'shoes')
     page.click('.confirm-modal__submit')

@@ -9,12 +9,22 @@ import AppConfig      from '@/shared/services/app_config'
 import i18n from '@/i18n.coffee'
 
 export default new class GroupService
-  actions: (group, vm) ->
+  actions: (group) ->
     membership = group.membershipFor(Session.user())
+
+    translate_group:
+      name: 'common.action.translate'
+      icon: 'mdi-translate'
+      dock: 2
+      canPerform: ->
+        group.description && AbilityService.canTranslate(group)
+      perform: ->
+        Session.user() && group.translate(Session.user().locale)
 
     change_volume:
       name: 'group_page.options.email_settings'
       icon: 'mdi-email'
+      dock: 1
       canPerform: ->
         AbilityService.canChangeGroupVolume(group)
       perform: ->
@@ -26,6 +36,7 @@ export default new class GroupService
     edit_group:
       name: 'group_page.options.edit_group'
       icon: 'mdi-cog'
+      dock: 1
       canPerform: ->
         AbilityService.canEditGroup(group)
       perform: ->
@@ -37,6 +48,7 @@ export default new class GroupService
     become_coordinator:
       name: 'group_page.options.become_coordinator'
       icon: 'mdi-shield-star'
+      menu: true
       canPerform: ->
         membership && membership.admin == false &&
           (group.adminMembershipsCount == 0 or group.parentOrSelf().adminsInclude(Session.user()))
@@ -47,6 +59,7 @@ export default new class GroupService
     group_stats:
       name: 'group_page.stats'
       icon: 'mdi-chart-bar'
+      menu: true
       canPerform: ->
         AbilityService.canAdminister(group)
       perform: ->
@@ -55,6 +68,7 @@ export default new class GroupService
     export_data:
       name: 'group_page.options.export_data'
       icon: 'mdi-database-export'
+      menu: true
       canPerform: ->
         membership && group.adminsInclude(Session.user())
       perform: ->
@@ -66,6 +80,7 @@ export default new class GroupService
     webhooks:
       name: 'webhook.integrations'
       icon: 'mdi-webhook'
+      menu: true
       canPerform: ->
         group.adminsInclude(Session.user())
       perform: ->
@@ -77,6 +92,7 @@ export default new class GroupService
     leave_group:
       name: 'group_page.options.leave_group'
       icon: 'mdi-exit-to-app'
+      menu: true
       canPerform: ->
         AbilityService.canRemoveMembership(membership)
       perform: ->
@@ -98,6 +114,7 @@ export default new class GroupService
     destroy_group:
       name: 'delete_group_modal.title'
       icon: 'mdi-delete'
+      menu: true
       canPerform: ->
         AbilityService.canArchiveGroup(group)
       perform: ->
