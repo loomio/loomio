@@ -47,7 +47,7 @@ class RecordCloner
     clone_group = new_clone(group, copy_fields, required_values)
 
     clone_group.memberships = group.memberships.map {|m| new_clone_membership(m) }
-    clone_group.discussions = group.discussions.map {|d| new_clone_discussion(d) }
+    clone_group.discussions = group.discussions.map {|d| new_clone_discussion_and_events(d) }
     clone_group.polls = group.polls.map {|p| new_clone_poll(p) }
     clone_group.tags = group.tags.map { |t| new_clone_tag(t) }
 
@@ -76,14 +76,16 @@ class RecordCloner
       private: true
     }
 
-    clone_discussion = new_clone(discussion, copy_fields, required_values)
+    new_clone(discussion, copy_fields, required_values)
+  end
 
+  def new_clone_discussion_and_events(discussion)
+    clone_discussion = new_clone_discussion(discussion)
     created_event = new_clone_event(discussion.created_event)
     created_event.eventable = clone_discussion
     clone_discussion.events << created_event
     clone_discussion.items = discussion.items.map { |event| new_clone_event_and_eventable(event) }
     clone_discussion.polls = discussion.polls.map {|p| new_clone_poll(p) }
-
     clone_discussion
   end
 
@@ -112,6 +114,14 @@ class RecordCloner
       link_previews
       shuffle_options
       allow_long_reason
+      meeting_duration
+      time_zone
+      dots_per_person
+      pending_emails
+      minimum_stance_choices
+      can_respond_maybe
+      deanonymize_after_close
+      max_score
     ]
 
     clone_poll = new_clone(poll, copy_fields)
@@ -207,6 +217,8 @@ class RecordCloner
       clone_event.eventable = new_clone_stance(event.eventable)
     when 'Outcome'
       clone_event.eventable = new_clone_outcome(event.eventable)
+    when 'Discussion'
+      clone_event.eventable = new_clone_discussion(event.eventable)
     when nil
       # nothing
     else
@@ -232,6 +244,21 @@ class RecordCloner
     clone_membership
   end
 
+  def new_clone_comment(comment)
+    copy_fields = %w[
+      user_id
+      body
+      body_format
+      discarded_at
+      discarded_by
+      content_locale
+      link_previews
+      created_at
+    ]
+    clone_comment = new_clone(comment, copy_fields)
+    clone_comment.discussion = existing_clone(comment.discussion)
+    clone_comment
+  end
 
   def new_clone_tag(tag)
     new_clone(tag, %w[name color priority])
@@ -251,14 +278,15 @@ class RecordCloner
   def new_clone_attributes(record, copy_fields = [], required_values = {})
     attrs = {}
     copy_fields.each do |field|
-      if record[field].nil?
-        attrs[field] = record[field]
+      value = record.send(field)
+      if value.nil?
+        attrs[field] = value
       elsif field.ends_with?('_at')
-        attrs[field] = record[field].to_datetime + (DateTime.now - @recorded_at.to_datetime)
+        attrs[field] = value.to_datetime + (DateTime.now - @recorded_at.to_datetime)
       elsif field.ends_with?('_on')
-        attrs[field] = record[field].to_date + (Date.today - @recorded_at.to_date)
+        attrs[field] = value.to_date + (Date.today - @recorded_at.to_date)
       else
-        attrs[field] = record[field]
+        attrs[field] = value
       end
     end
 

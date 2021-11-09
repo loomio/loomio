@@ -15,11 +15,9 @@ export default class RecordStore
 
   fetch: (args) ->
     @remote.fetch(args)
-  post: (args) ->
-    @remote.post(args)
 
   post: ({path, params}) ->
-    @remote().post(path, params)
+    @remote.post(path, params)
 
   addRecordsInterface: (recordsInterfaceClass) ->
     recordsInterface = new recordsInterfaceClass(@)

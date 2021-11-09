@@ -13,6 +13,7 @@ export default
   data: ->
     templates: []
     loaded: false
+    processing: false
 
   created: ->
     EventBus.$on 'signedIn', @init
@@ -44,6 +45,7 @@ export default
           @templates = Records.templates.find(groupId: null)
 
     cloneTemplate: (id) ->
+      @processing = true
       Records.post
         path: 'templates/clone'
         params:
@@ -51,6 +53,8 @@ export default
       .then (data) =>
         Flash.success('templates.demo_created')
         @$router.push @urlFor(Records.groups.find(data.groups[0].id))
+      .finally =>
+        @processing = false
 
 </script>
 
@@ -70,7 +74,7 @@ v-main
         v-card-title {{ template.name }}
         v-card-text {{ template.description }}
         v-card-actions
-          v-btn(@click="cloneTemplate(template.id)") Start demo
+          v-btn(@click="cloneTemplate(template.id)" :loading="processing" v-t="'templates.start_demo'")
 
       v-card.my-4
         v-card-title Start a free trial
