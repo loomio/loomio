@@ -58,6 +58,9 @@ export default class GroupModel extends BaseModel
     @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id', orderBy: 'name'
     @belongsTo 'parent', from: 'groups'
 
+  isBlank: ->
+    @description == '' or @description == null or @description == '<p></p>'
+
   tags: ->
     @recordStore.tags.collection.chain().find(id: {$in: @tagIds}).simplesort('priority').data()
 

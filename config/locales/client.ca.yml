@@ -1119,14 +1119,10 @@ ca:
     set_password: Estableix la contrasenya
     password_changed: S'ha actualitzar la contrasenya
   deactivation_modal:
-    aria_label: 'Desactiva el compte d''usuari'
-    introduction: 'Quan desactiveu el vostre compte:'
     you_will_be_deleted: "El vostre compte d'usuari, inclosos el nom, adreça de correu electrònic i dades personals s'eliminaran del nostre sistema."
     name_removed: 'Els comentaris, les propostes i les discussions que hàgiu fet romandran, però el vostre nom en serà eliminat.'
     no_longer_group_member: 'Ja no apareixereu entre els membres de cap grup'
     no_emails: 'No rebreu més correus electrònics relacionats amb Loomio.'
-    you_can_reactivate: "Podeu reactivar el compte més endavant si així ho desitgeu"
-    submit: 'Si, vull desactivar-lo'
     submit_delete: 'Elimina el meu compte ara'
   email_settings_page:
     monday: Dilluns

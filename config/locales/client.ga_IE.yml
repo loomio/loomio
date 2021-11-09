@@ -427,8 +427,6 @@ ga_IE:
     update_profile: 'Nuashonraigh an bheathaisnéisín'
   change_picture_form:
     use_gravatar: 'Bain feidhm as Gravatar'
-  deactivation_modal:
-    introduction: 'Nuair a dhíghníomhachtaíonn tú do chuntas:'
   email_settings_page:
     monday: Dé Luain
     tuesday: Dé Máirt

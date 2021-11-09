@@ -1,10 +1,6 @@
 pl:
   explore:
     header: Przeglądaj grupy publiczne
-  saml_providers:
-    invitation_created:
-      success: "Sukces! Sprawdź w swojej skrzynce odbiorczej %{email} link do dołączenia do grupy%{group_name}."
-      error: "Twój dostawca SAML nie mógł uwierzytelnić %{email}dla%{group_name}."
   activerecord:
     errors:
       messages:
@@ -421,7 +417,6 @@ pl:
       poll_closing_soon: '%{poll_type} zostanie zamknięte w ciągu 24 godzin: %{title}'
       poll_closing_soon_author: 'Twoje %{poll_type} zakończy się w ciągu 24 godzin: %{title}'
       poll_expired: "%{poll_type} zakończone: %{title}"
-      poll_expired_author: 'Twoje %{poll_type} zostało zakończone. Udostępnij wynik dla: %{title}'
       poll_option_added: '%{actor}dodał/a opcje do: %{title}'
       poll_option_added_author: '%{actor}dodał/a opcje do: %{title}'
       outcome_created: '%{actor} udostępnił/a %{poll_type} wynik: %{title}'

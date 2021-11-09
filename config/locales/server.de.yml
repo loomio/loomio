@@ -1,10 +1,6 @@
 de:
   explore:
     header: Öffentliche Gruppen erkunden
-  saml_providers:
-    invitation_created:
-      success: "Erfolg! Bitte überprüfe deine %{email} Postfach für einen Registrierungslink der Gruppe%{group_name}."
-      error: "Dein SAML Provider konnte die Email %{email} für die Gruppe %{group_name} nicht authentifizieren."
   activerecord:
     errors:
       messages:
@@ -435,7 +431,6 @@ de:
       poll_closing_soon: '%{poll_type} endet in 24 Stunden: %{title}'
       poll_closing_soon_author: 'Dein %{poll_type} Schließt in 24 Stunden: %{title}'
       poll_expired: "%{poll_type} geschlossen: %{title}"
-      poll_expired_author: 'Dein %{poll_type} ist geschlossen. Teile dein Ergebnis für: %{title}'
       poll_option_added: '%{actor} hat die Umfrageoptionen in %{title} erweitert'
       poll_option_added_author: '%{actor} hat die Umfrageoptionen in %{title} erweitert'
       outcome_created: '%{actor} teilte eine %{poll_type} Ergebnis: %{title}'

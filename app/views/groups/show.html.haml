@@ -25,7 +25,7 @@
                     %span= t(:'group_page.files')
                   %a.v-tab.group-page-subgroups-tab{"aria-selected" => "false", :href => "/g/#{@group.key}/subgroups", :role => "tab", :tabindex => "0"}
                     %span= t(:'group_page.subgroups')
-                  %a.v-tab.group-page-settings-tab{"aria-selected" => "false", :href => "/g/#{@group.key}/settings", :role => "tab", :tabindex => "0"}
+                  %a.v-tab.action-menu{"aria-selected" => "false", :href => "/g/#{@group.key}/settings", :role => "tab", :tabindex => "0"}
                     %span= t(:'group_page.settings')
           .discussions-panel
             -# .layout.py-3.align-center.wrap

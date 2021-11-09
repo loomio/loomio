@@ -1,10 +1,6 @@
 fr:
   explore:
     header: Explorer les groupes publics
-  saml_providers:
-    invitation_created:
-      success: "Succès ! Relevez votre boite de réception %{email} pour obtenir le lien pour rejoindre %{group_name}."
-      error: "Votre fournisseur SAML ne peut pas authentifier %{email}pour %{group_name}."
   activerecord:
     errors:
       messages:
@@ -93,6 +89,7 @@ fr:
       title: Titre
       author: Auteur
       email: Adresse e-mail
+      user_id: Utilisateur ID
       created_at: Créé à
       closing_at: Fermera à
       closed_at: Fermé à
@@ -406,6 +403,14 @@ fr:
           Les images sont les mêmes, mais préfixées par un point d'exclamation. Le titre est utilisé comme texte alternatif.
 
           ![loomio logo](https://i.imgur.com/Fvtworb.png)
+  task_mailer:
+    task_due_reminder:
+      subject: "Rappel de tâche: %{name}"
+      greeting: "Salut %{name}, la tâche suivante est due %{due}:"
+      view_task: "Voir sur %{site_name}"
+      update_or_comment: "Si vous avez déjà terminé cette tâche, veuillez la cocher. Si elle n’est pas complète, veuillez partager une mise à jour de l’avancement."
+      due_today: 'aujourd’hui'
+      due_in_count_days: 'dans %{count} jours'
   group_mailer:
     resend: 'RAPPEL : %{member} attend que vous rejoignez %{group_name}'
   poll_mailer:
@@ -435,10 +440,10 @@ fr:
       poll_edited: '%{actor} a édité le %{poll_type}: %{title}'
       poll_reminder: '%{actor} vous rappelle de voter: %{title}'
       poll_announced: '%{actor} vous a invité à un vote dans %{poll_type}: %{title}'
+      poll_announced_wip: '%{actor} vous a invité a donner votre avis sur %{poll_type}: %{title}'
       poll_closing_soon: '%{poll_type} va fermer dans 24 heures: %{title}'
       poll_closing_soon_author: 'Votre %{poll_type} ferme dans les 24 heures : %{title}'
       poll_expired: "%{poll_type} est fermé: %{title}"
-      poll_expired_author: 'Votre %{poll_type} a fermé. Partagez un résultat pour : %{title}'
       poll_option_added: '%{actor} a ajouté des options à: %{title}'
       poll_option_added_author: '%{actor} a ajouté des options à: %{title}'
       outcome_created: '%{actor} a partagé un %{poll_type} résultat: %{title}'
@@ -454,7 +459,9 @@ fr:
       poll_created: '<strong>%{actor}</strong> a commencé un %{poll_type}'
       poll_edited: '<strong>%{actor}</strong> a édité un %{poll_type}'
       poll_reminder: '<strong>%{actor}</strong> vous rappelle de voter'
+      poll_reminder_wip: '<strong>%{actor}</strong>est en train de vous rappeler donner des commentaires'
       poll_announced: '<strong>%{actor}</strong> vous a invité à voter dans un %{poll_type}'
+      poll_announced_wip: '<strong>%{actor}</strong> vous a invité à donner des commentaires sur un %{poll_type}'
       poll_closing_soon: 'Le %{poll_type} de <strong>%{actor}</strong> ferme dans 24 heures. C''est le bon moment pour voter, modifier votre d''avis ou encourager les autres à participer.'
       poll_closing_soon_author: 'Votre %{poll_type} ferme dans 24 heures - c''est le moment idéal pour le rappeler ou prolonger le délai si nécessaire.'
       poll_expired: "Le %{poll_type} de <strong>%{actor}</strong> est fermé: %{title}"

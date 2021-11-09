@@ -1190,14 +1190,10 @@ nl_NL:
     set_password: Wachtwoord instellen
     password_changed: Je wachtwoord is geüpdatet
   deactivation_modal:
-    aria_label: 'Deactiveer gebruikersaccount'
-    introduction: 'Als je je account deactiveert:'
     you_will_be_deleted: "Jouw gebruikersnaam inclusief jouw naam, e-mailadres en andere persoonlijke identificeerbare data zullen verwijderd worden uit onze systemen."
     name_removed: 'Reacties, voorstellen en gesprekken die je gemaakt hebt blijven bewaard, maar je naam wordt erbij verwijderd'
     no_longer_group_member: 'Je staat bij geen enkele groep meer geregistreerd als lid '
     no_emails: 'Je zal niet langer meldings e-mails ontvangen'
-    you_can_reactivate: "Je kan je account later activeren indien gewenst"
-    submit: 'Ja ik wil deactiveren'
     submit_delete: 'Verwijder mijn account nu'
   email_settings_page:
     monday: maandag

@@ -1,10 +1,6 @@
 nl_NL:
   explore:
     header: Verken openbare groepen
-  saml_providers:
-    invitation_created:
-      success: "Succes! Kijk in de inbox van %{email} voor een link om deel te nemen aan %{group_name} ."
-      error: "Jouw SAML provider kon %{email} voor %{group_name} niet authenticeren."
   activerecord:
     errors:
       messages:
@@ -431,7 +427,6 @@ nl_NL:
       poll_closing_soon: '%{poll_type} sluit binnen 24 uur: %{title}'
       poll_closing_soon_author: 'Je %{poll_type} sluit over 24 hours: %{title}'
       poll_expired: "%{poll_type} gesloten: %{title}"
-      poll_expired_author: 'Je %{poll_type} is gesloten. Deel een resultaat voor: %{title}'
       poll_option_added: '%{actor} voegde opties toe aan: %{title}'
       poll_option_added_author: '%{actor} voegde opties toe aan: %{title}'
       outcome_created: '%{actor} deelde een %{poll_type} resultaat: %{title}'

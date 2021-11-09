@@ -19,6 +19,7 @@ uk:
     error:
       handle_must_begin_with_parent_handle: "Має починатись з %{parent_handle}-"
     stats:
+      group_stats: Статистика групи
       members: Учасники
       subgroups: Підгрупи
       threads: Теми
@@ -102,6 +103,9 @@ uk:
           Вітаємо %{name},
           Ваші два облікових записи Loomio були об'єднані в один.
           Відтепер для входу в Loomio, будь ласка, використовуйте <strong>%{email}</strong>.
+    merge_verification:
+      confirm_page:
+        merge: Об’єднати облікові записи
   email:
     common:
       or_enter_code: Або введіть код нижче
@@ -280,6 +284,9 @@ uk:
     links:
       title: |
           ## Посилання та зображення
+  task_mailer:
+    task_due_reminder:
+      due_today: 'сьогодні'
   group_mailer:
     resend: 'НАГАДУВАННЯ: %{member} очікує вашого долучення до %{group_name}'
   poll_mailer:

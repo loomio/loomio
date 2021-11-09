@@ -763,7 +763,6 @@ cmn:
     you_will_be_deleted: "您的使用者帐号，包含您的名字、电子邮件地址与其他可识别个人的资料，都将会从我们的系统中删除。"
     name_removed: '您在群组中作出的意见、提案与话题会留下，但您的名字将会从中移除。'
     no_longer_group_member: '您将不会再被任何群组列为成员'
-    you_can_reactivate: "如果您想要的话，您可以在稍后重新启用您的帐号"
   email_settings_page:
     account_deactivated: 您的帐号已被停用。您将不会再收到任何电子邮件。
     deactivate_header: 永远停止所有电子邮件

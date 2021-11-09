@@ -927,14 +927,10 @@ hu:
     set_password: Állítsd be a jelszót
     password_changed: Jelszava frissült
   deactivation_modal:
-    aria_label: 'Deaktiválja a felhasználói fiókot'
-    introduction: 'A fiók deaktiválásakor:'
     you_will_be_deleted: "Felhasználói fiókját, beleértve a nevét, e-mail címét és egyéb személyes azonosító adatait, rendszerünkből töröljük."
     name_removed: 'Az észrevételek, javaslatok és megbeszélések megmaradnak, de a nevét eltávolítják róluk'
     no_longer_group_member: 'Már nem kerülnek felsorolásra egyetlen csoport tagjaként sem'
     no_emails: 'Többé nem kap értesítési e-maileket'
-    you_can_reactivate: "Később újra aktiválhatja fiókját, ha szeretné"
-    submit: 'Igen, szeretnék kikapcsolni'
   email_settings_page:
     monday: Hétfő
     tuesday: Kedd

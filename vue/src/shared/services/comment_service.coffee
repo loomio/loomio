@@ -8,6 +8,14 @@ import Flash from '@/shared/services/flash'
 export default new class CommentService
   actions: (comment, vm) ->
     isOwnComment = comment.authorId == Session.userId
+    translate_comment:
+      name: 'common.action.translate'
+      icon: 'mdi-translate'
+      dock: 2
+      canPerform: ->
+        comment.body && AbilityService.canTranslate(comment)
+      perform: ->
+        Session.user() && comment.translate(Session.user().locale)
 
     notification_history:
       name: 'action_dock.notification_history'
@@ -62,15 +70,6 @@ export default new class CommentService
           component: 'EditCommentForm'
           props:
             comment: comment.clone()
-
-    translate_comment:
-      name: 'common.action.translate'
-      icon: 'mdi-translate'
-      dock: 2
-      canPerform: ->
-        comment.body && AbilityService.canTranslate(comment)
-      perform: ->
-        Session.user() && comment.translate(Session.user().locale)
 
     show_history:
       name: 'action_dock.show_edits'
