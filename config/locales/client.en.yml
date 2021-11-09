@@ -179,6 +179,7 @@ en:
     local: Local time ({{value}})
 
   common:
+    please_wait: Please wait
     optional: (Optional)
     version: Version
     none: None

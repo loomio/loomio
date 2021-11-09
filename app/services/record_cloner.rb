@@ -9,10 +9,11 @@ class RecordCloner
     clone_group.creator = actor
     clone_group.subscription = Subscription.new(plan: 'demo', owner: actor)
     clone_group.save!
+    clone_group.add_member! actor
     clone_group.reload
   end
 
-  def new_clone_group(group)
+  def new_clone_group(group, clone_parent = nil)
     copy_fields = %w[
       name
       description
@@ -45,9 +46,11 @@ class RecordCloner
     }
 
     clone_group = new_clone(group, copy_fields, required_values)
+    clone_group.parent = clone_parent
 
     clone_group.memberships = group.memberships.map {|m| new_clone_membership(m) }
     clone_group.discussions = group.discussions.map {|d| new_clone_discussion_and_events(d) }
+    clone_group.subgroups = group.subgroups.map {|g| new_clone_group(g, clone_group) }
     clone_group.polls = group.polls.map {|p| new_clone_poll(p) }
     clone_group.tags = group.tags.map { |t| new_clone_tag(t) }
 

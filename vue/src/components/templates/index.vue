@@ -45,6 +45,7 @@ export default
           @templates = Records.templates.find(groupId: null)
 
     cloneTemplate: (id) ->
+      Flash.success('common.please_wait')
       @processing = true
       Records.post
         path: 'templates/clone'
@@ -68,13 +69,14 @@ v-main
       v-list(two-line)
         loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]' :key='index' )
 
+    v-overlay(:value="processing")
     div(v-if="loaded")
       v-card.my-4(v-for="template in templates" :key="template.id")
         v-img(:src="template.record().coverUrl" max-height="120")
         v-card-title {{ template.name }}
         v-card-text {{ template.description }}
         v-card-actions
-          v-btn(@click="cloneTemplate(template.id)" :loading="processing" v-t="'templates.start_demo'")
+          v-btn(@click="cloneTemplate(template.id)" v-t="'templates.start_demo'")
 
       v-card.my-4
         v-card-title Start a free trial
