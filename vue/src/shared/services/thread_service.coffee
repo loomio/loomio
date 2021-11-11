@@ -139,6 +139,7 @@ export default new class ThreadService
     dismiss_thread:
       name: 'dashboard_page.mark_as_read'
       icon: 'mdi-check'
+      dock: 1
       canPerform: -> discussion.isUnread()
       perform: => @dismiss(discussion)
 
