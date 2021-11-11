@@ -80,14 +80,13 @@ export default new class ThreadService
       icon: 'mdi-pencil'
       dock: 1
       canPerform: -> AbilityService.canEditThread(discussion)
-      to: ->
-        "/d/#{discussion.key}/edit"
-      perform: ->
-        Records.discussions.remote.fetchById(discussion.key, {exclude_types: 'group user poll event'}).then ->
-          openModal
-            component: 'DiscussionForm',
-            props:
-              discussion: discussion.clone()
+      to: "/d/#{discussion.key}/edit"
+      # perform: ->
+      #   Records.discussions.remote.fetchById(discussion.key, {exclude_types: 'group user poll event'}).then ->
+      #     openModal
+      #       component: 'DiscussionForm',
+      #       props:
+      #         discussion: discussion.clone()
 
     show_history:
       icon: 'mdi-history'

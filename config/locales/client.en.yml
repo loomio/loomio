@@ -85,6 +85,7 @@ en:
     chargify_link: "Billing portal"
     referral_code_help: "Give a friend a discount, get yourself some credit!"
     manage_payment_details: "Manage payment details"
+    manage_subscription: "Manage Subscription"
 
   loomio_tags:
     all_tags: All tags

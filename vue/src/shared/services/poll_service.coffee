@@ -124,13 +124,12 @@ export default new class PollService
       icon: 'mdi-pencil'
       canPerform: ->
         AbilityService.canEditPoll(poll)
-      to: ->
-        "/p/#{poll.key}/edit"
-      perform: ->
-        openModal
-          component: 'PollCommonModal'
-          props:
-            poll: poll.clone()
+      to: "/p/#{poll.key}/edit"
+      # perform: ->
+      #   openModal
+      #     component: 'PollCommonModal'
+      #     props:
+      #       poll: poll.clone()
 
     show_history:
       icon: 'mdi-history'
@@ -142,7 +141,7 @@ export default new class PollService
           component: 'RevisionHistoryModal'
           props:
             model: poll
-            
+
     notification_history:
       name: 'action_dock.show_notifications'
       icon: 'mdi-alarm-check'

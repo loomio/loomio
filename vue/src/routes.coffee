@@ -13,7 +13,6 @@ import GroupTagsPanel from './components/group/tags_panel'
 import GroupSubgroupsPanel from './components/group/subgroups_panel'
 import GroupFilesPanel from './components/group/files_panel'
 import MembershipRequestsPanel from './components/group/requests_panel'
-import GroupSettingsPanel from './components/group/settings_panel'
 import StartGroupPage from './components/start_group/page'
 import ContactPage from './components/contact/page'
 import EmailSettingsPage from './components/email_settings/page'
@@ -40,7 +39,6 @@ groupPageChildren = [
   {path: 'members/requests', redirect: 'membership_requests', meta: {noScroll: true}}
   {path: 'subgroups', component: GroupSubgroupsPanel, meta: {noScroll: true}}
   {path: 'files', component: GroupFilesPanel, meta: {noScroll: true}}
-  {path: 'settings', component: GroupSettingsPanel, meta: {noScroll: true}}
   {path: ':stub?', component: GroupDiscussionsPanel, meta: {noScroll: true}}
 ]
 

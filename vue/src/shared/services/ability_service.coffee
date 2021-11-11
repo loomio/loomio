@@ -81,13 +81,6 @@ export default new class AbilityService
 
   canChangeVolume: (discussion) -> discussion.membersInclude(Session.user())
 
-  canManageGroupSubscription: (group) ->
-    group.isParent() and
-    group.adminsInclude(Session.user()) and
-    group.subscriptionKind? and
-    group.subscriptionKind != 'trial' and
-    group.subscriptionPaymentMethod != 'manual'
-
   canStartThread: (group) ->
     group.adminsInclude(user()) or
     (group.membersInclude(user()) and group.membersCanStartDiscussions)
