@@ -1,0 +1,25 @@
+$viewport-m: 32rem !default;
+$viewport-l: 48rem !default;
+$viewport-xl: 62rem !default;
+
+$border-radius: 3px !default;
+
+$accent-color: #00BDD4;
+$primary-color: #F08B00;
+$font-color: rgba(0,0,0,0.8) !default;
+$link-color: $accent-color !default;
+$alpha-value: .99;
+$gray-light-5: rgba(#d8d8d8, $alpha-value);
+$gray-light-8: rgba(#fafafa, $alpha-value);
+$gray-mid-6: rgba(#909090, $alpha-value);
+$gray-dark-9: rgba(#484848, $alpha-value);
+$red: #e74c3c !default;
+$orange: #f39c12 !default;
+$loomio-orange: #FFA726;
+$blue: #3498db !default;
+$green: #25ba84 !default;
+$off-white: $gray-light-8 !default;
+$light-gray: $gray-light-5 !default;
+$mid-gray: $gray-mid-6 !default;
+$dark-gray: $gray-dark-9 !default;
+$white: #fff !default;

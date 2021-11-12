@@ -6,13 +6,15 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     %link{rel: "shortcut icon",    href: AppConfig.theme[:icon_src]}
     = stylesheet_link_tag 'basic/all'
+    = stylesheet_link_tag 'marketing/all'
+    = stylesheet_link_tag 'vtfy/all'
     = render 'posthog'
   %body
     %header
       %a{href: '/'}
-        %img{style: 'max-width: 100%', src: AppConfig.theme[:app_logo_src]}
-    %main
+        %img{style: 'max-width: 256px', src: AppConfig.theme[:app_logo_src]}
+    .container
       = yield
-    %footer
-      - if @footer
-        = render @footer
+
+    - if @footer
+      %footer= render @footer

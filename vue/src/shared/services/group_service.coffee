@@ -56,6 +56,18 @@ export default new class GroupService
         Records.memberships.makeAdmin(membership).then ->
           Flash.success "memberships_page.messages.make_admin_success", name: Session.user().name
 
+    webhooks:
+      name: 'webhook.integrations'
+      icon: 'mdi-webhook'
+      menu: true
+      canPerform: ->
+        group.adminsInclude(Session.user())
+      perform: ->
+        openModal
+          component: 'WebhookList'
+          props:
+            group: group
+
     group_stats:
       name: 'group_page.stats'
       icon: 'mdi-chart-bar'
@@ -77,17 +89,16 @@ export default new class GroupService
           props:
             group: group
 
-    webhooks:
-      name: 'webhook.integrations'
-      icon: 'mdi-webhook'
+    manage_subscription:
+      name: 'subscription_status.manage_subscription'
+      icon: 'mdi-credit-card-outline'
       menu: true
-      canPerform: ->
-        group.adminsInclude(Session.user())
       perform: ->
-        openModal
-          component: 'WebhookList'
-          props:
-            group: group
+        window.location = "/upgrade/#{group.id}"
+      canPerform: ->
+        AppConfig.features.app.subscriptions &&
+        group.isParent() &&
+        group.adminsInclude(Session.user())
 
     leave_group:
       name: 'group_page.options.leave_group'

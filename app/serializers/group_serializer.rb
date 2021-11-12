@@ -84,7 +84,6 @@ class GroupSerializer < ApplicationSerializer
         active:          sub.is_active?,
         renews_at:       sub.renews_at,
         expires_at:      sub.expires_at,
-        management_link: sub.management_link,
         members_count:   sub.members_count
       }
     else
