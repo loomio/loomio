@@ -93,7 +93,8 @@ export default new class GroupService
       name: 'subscription_status.manage_subscription'
       icon: 'mdi-credit-card-outline'
       menu: true
-      to: "/upgrade/#{group.id}"
+      perform: ->
+        window.location = "/upgrade/#{group.id}"
       canPerform: ->
         AppConfig.features.app.subscriptions &&
         group.isParent() &&

@@ -1,0 +1,123 @@
+.theme--light.v-application{
+  background: #FFFFFF;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.v-application {
+    font-family: "Roboto", sans-serif;
+    line-height: 1.5;
+}
+
+.v-application {
+    display: flex;
+}
+
+.v-application--wrap {
+    flex: 1 1 auto;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 100%;
+    position: relative;
+}
+
+.v-main {
+    display: flex;
+    flex: 1 0 auto;
+    max-width: 100%;
+    transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.v-main__wrap {
+    flex: 1 1 auto;
+    max-width: 100%;
+    position: relative;
+}
+.v-sheet.v-card {
+    border-radius: 4px;
+}
+.theme--light.v-sheet--outlined {
+    border: thin solid rgba(0, 0, 0, 0.12);
+}
+.theme--light.v-sheet {
+    background-color: #FFFFFF;
+    border-color: #FFFFFF;
+    color: rgba(0, 0, 0, 0.87);
+}
+.v-card {
+    border-width: thin;
+    display: block;
+    max-width: 100%;
+    outline: none;
+    text-decoration: none;
+    transition-property: box-shadow, opacity;
+    overflow-wrap: break-word;
+    position: relative;
+    white-space: normal;
+}
+.theme--light.v-card {
+    background-color: #FFFFFF;
+    color: rgba(0, 0, 0, 0.87);
+}
+.theme--light.v-card--outlined {
+    border: thin solid rgba(0, 0, 0, 0.12);
+}
+.v-sheet {
+    border-radius: 0;
+}
+.max-width-640{
+  max-width: 640px;
+}
+
+.max-width-800{
+  max-width: 800px;
+}
+
+.max-width-1024{
+  max-width: 1024px;
+}
+
+.v-chip {
+  position: relative;
+  bottom: 4px;
+  font-size: small;
+  border: 1px solid grey;
+  border-radius: 16px;
+  padding: 4px 8px;
+}
+
+.v-avatar {
+  border-radius: 50%;
+}
+
+.v-divider {
+  height: 1px;
+  border: 0;
+  border-top: 1px solid grey;
+  width: 100%
+}
+
+.v-avatar__initials {
+  margin: 4px auto;
+  border: 1px solid #dcdcdc;
+  border-radius: 50%;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+}
+
+.v-avatar__image {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+}
+
+.l-table {
+  border: 0
+}

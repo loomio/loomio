@@ -1,0 +1,425 @@
+.main--landing {
+  section {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  h1, h2 {
+    line-height: 120%;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  p, li, blockquote {
+    line-height: 140%;
+  }
+
+  small {
+    font-size: 13px;
+  }
+}
+
+.inner--landing {
+  max-width: 70rem;
+}
+
+p.quote-citation {
+  color: rgba($font-color, 0.5);
+  text-align: center;
+  font-weight: 600;
+  font-size: 22px;
+  margin-top: 10px;
+}
+
+.narrow--landing {
+  max-width: 55rem;
+
+  h2 {
+    text-align: center;
+  }
+
+  @media screen and (max-width: $viewport-m) {
+    max-width: none;
+  }
+}
+
+.landing-header {
+  background-color: $primary-color;
+
+  .inner--landing {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.nav-link-text--header {
+  font-size: 16px;
+  font-weight: 400;
+  a {
+    text-decoration: none;
+  }
+  a:hover {
+    border-bottom: 2px solid $accent-color;
+  }
+}
+
+.btn--base--landing {
+  @extend .btn--primary;
+
+  border-radius: 6px;
+  text-transform: uppercase;
+  padding: 15px 20px;
+  font-size: 16px;
+  font-weight: normal;
+  letter-spacing: .75px;
+  display: inline-block;
+
+}
+
+.btn--landing--header {
+  @extend .btn--base--landing;
+
+  padding: 10px 15px;
+  border: 1px solid white;
+  &:hover {
+    border-bottom: 1px solid white !important;
+  }
+
+  @media screen and (max-width: $viewport-m) {
+    display: none;
+  }
+}
+
+.btn--primary--landing {
+  @extend .btn--base--landing;
+}
+
+.btn--secondary--landing {
+  @extend .btn--base--landing;
+  color: $primary-color;
+  border: 1px solid $primary-color;
+  background: white;
+}
+
+.btn--primary--action--landing {
+  @extend .btn--base--landing;
+  background-color: white;
+  color: $accent-color;
+  border: 1px solid $accent-color;
+}
+
+.btn--secondary--action--landing {
+  @extend .btn--base--landing;
+  color: white;
+  background: $accent-color;
+
+  &:hover {
+    background-color: rgba($accent-color, 0.8);
+  }
+}
+
+.divider {
+  border-bottom: 1px solid #ddd;
+}
+
+.hero-section--landing {
+  margin-top: 40px;
+  margin-bottom: 40px;
+
+  @media screen and (max-width: $viewport-m) {
+    margin-bottom: 20px;
+  }
+}
+
+.hero-text--landing {
+  padding-top: 20px;
+  margin-bottom: 4px;
+  font-size: 47px;
+
+  @media screen and (max-width: $viewport-m) {
+    padding-top: 0;
+    margin-top: 0;
+    font-size: 40px;
+  }
+}
+
+.nobr {
+  white-space: nowrap;
+}
+
+.hero-image--landing {
+  img {
+    max-height: 400px;
+    width: auto;
+  }
+
+  &.remote-users {
+    img {
+      max-height: 420px;
+    }
+  }
+
+  @media screen and (max-width: $viewport-m) {
+    display:none;
+  }
+}
+
+
+.decision-tools-image--landing {
+  img {
+    max-height: 250px;
+    width: auto;
+  }
+
+  @media screen and (max-width: $viewport-m) {
+    display:none;
+  }
+}
+
+.contrast-panel {
+  background-color: rgba($primary-color, 0.15);
+}
+
+.ticks--landing {
+  list-style: outside none;
+  margin: 0;
+  padding-left: 1em;
+  text-indent: -1em;
+  li {
+    padding-left: 1em;
+    margin-bottom: 15px;
+  }
+  li:before {
+    content: '✓';
+  }
+}
+
+.testimonials {
+  font-size: 18px;
+  margin-top: 64px;
+  margin-bottom: 64px;
+
+  img {
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+  blockquote {
+    margin: 10px 0;
+  }
+  .person {
+    font-weight: 500;
+    font-size: 15px;
+  }
+  .position {
+    font-size: 15px;
+    font-weight: 300;
+    a {
+      white-space: nowrap;
+    }
+  }
+
+  .flex-column {
+    width: 27%;
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: $viewport-m) {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    img {
+      margin-left: auto;
+      margin-right: auto;
+      width: 130px;
+      height: 130px;
+    }
+    .flex-column {
+      width: inherit;
+    }
+  }
+}
+
+.iframe-border--landing {
+  border: 1px solid #ddd;
+}
+
+.action-panel {
+  background-color: $accent-color;
+
+  h1 {
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    @media screen and (max-width: $viewport-m) {
+      font-size: 33px;
+    }
+  }
+  p {
+    text-align: center;
+  }
+}
+
+.footer--landing {
+  background-color: white;
+  h2 {
+    font-size: 14px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    font-size: 14px;
+  }
+}
+
+.footer--landing {
+  h2 {
+    color: #777;
+  }
+  a:hover {
+    border-bottom: 2px solid $accent-color;
+  }
+  a:link, a:visited {
+    color: #777;
+    text-decoration: none;
+  }
+
+  @media screen and (max-width: $viewport-m) {
+    .inner {
+      flex-direction: row;
+    }
+    .flex-column {
+      width: 25%;
+    }
+    .flex-column:first-child {
+      display: none;
+    }
+  }
+}
+
+.footer--logo {
+  img {
+    max-width: 126px;
+  }
+}
+
+.footer__trademark--landing {
+  color: #777;
+  background-color: rgba($accent-color, 0.1);
+
+  p {
+    font-size: 12px;
+    margin: 0 0 5px;
+  }
+}
+
+
+.hero-text--pricing {
+  margin-bottom: 4px;
+  margin-top: 20px;
+  font-size: 47px;
+  font-weight: 400;
+  strong {
+    font-weight: 500;
+  }
+
+  @media screen and (max-width: $viewport-m) {
+    padding-top: 0;
+    margin-top: 0;
+    font-size: 32px;
+  }
+}
+
+.hero-text-smaller--pricing {
+  margin-bottom: 4px;
+  margin-top: 20px;
+  font-size: 37px;
+
+  @media screen and (max-width: $viewport-m) {
+    padding-top: 0;
+    margin-top: 0;
+    font-size: 23px;
+  }
+}
+
+
+.price-box {
+  background-color: rgba($accent-color, 0.15);
+  margin: 0 20px 20px;
+  padding-bottom: 20px;
+  border-radius: 6px;
+  width: 300px;
+
+  h2 {
+    margin: 0;
+    background-color: $accent-color;
+    border-radius: 6px 6px 0 0;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  &.primary {
+    background-color: rgba($primary-color, 0.15);
+
+    h2 {
+      background-color: $primary-color;
+    }
+  }
+
+  .invitation {
+    text-align: center;
+    font-size: 19px;
+    margin-bottom: 20px;
+  }
+}
+
+.full-height--pricing {
+  height: 100%;
+}
+
+
+.price-large {
+  font-size: 19px;
+  margin: 0;
+  text-align: center;
+
+  strong {
+    font-size: 33px;
+  }
+}
+
+.price-medium {
+  font-size: 15px;
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.ticks--pricing {
+  list-style: outside none;
+  margin: 0 0 30px;
+  padding-left: 1em;
+  text-indent: -1em;
+  li {
+    margin-bottom: 10px;
+    font-size: 15.5px;
+  }
+  li:before {
+    content: '✓  ';
+  }
+}
