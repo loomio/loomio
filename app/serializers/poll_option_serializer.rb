@@ -1,10 +1,6 @@
 class PollOptionSerializer < ApplicationSerializer
   attributes :name, :id, :poll_id, :priority, :voter_scores, :color, :total_score
 
-  def color
-    AppConfig.colors.dig(poll.poll_type, object.priority % AppConfig.colors.length)
-  end
-
   def voter_scores
     if ENV['JIT_POLL_COUNTS'] &&
        object.voter_scores == {} &&
