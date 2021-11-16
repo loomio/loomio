@@ -165,14 +165,23 @@ export default new class AbilityService
      comment.discussion().membersInclude(Session.user()))
 
   canDeleteComment: (comment) ->
-    (comment.group().membersCanDeleteComments && comment.authorIs(Session.user())) ||
-    comment.discussion().adminsInclude(Session.user())
+    comment.discardedAt &&
+    (
+      comment.discussion().adminsInclude(Session.user()) ||
+      (comment.group().membersCanDeleteComments && comment.authorIs(Session.user()))
+    )
 
   canDiscardComment: (comment) ->
-    !comment.discardedAt && @canDeleteComment(comment)
+    !comment.discardedAt && (
+      comment.authorIs(Session.user()) ||
+      comment.discussion().adminsInclude(Session.user())
+    )
 
   canUndiscardComment: (comment) ->
-    comment.discardedAt && @canDeleteComment(comment)
+    comment.discardedAt && (
+      comment.authorIs(Session.user()) ||
+      comment.discussion().adminsInclude(Session.user())
+    )
 
   canRemoveMembership: (membership) ->
     membership and

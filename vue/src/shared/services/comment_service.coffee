@@ -85,40 +85,32 @@ export default new class CommentService
             model: comment
 
     discard_comment:
-      icon: 'mdi-delete'
-      name: 'common.action.delete'
+      name: 'common.action.discard'
+      icon: 'mdi-delete-outline'
       menu: true
       canPerform: -> AbilityService.canDiscardComment(comment)
+      perform: -> comment.discard()
+
+    undiscard_comment:
+      name: 'common.action.restore'
+      icon: 'mdi-delete-restore'
+      menu: true
+      canPerform: -> AbilityService.canUndiscardComment(comment)
+      perform: -> comment.undiscard()
+
+    delete_comment:
+      name: 'common.action.delete'
+      icon: 'mdi-delete'
+      menu: true
+      canPerform: -> AbilityService.canDeleteComment(comment)
       perform: ->
         openModal
           component: 'ConfirmModal',
           props:
             confirm:
-              submit: -> comment.discard()
+              submit: -> comment.destroy().then -> window.location.reload()
               text:
                 title: 'delete_comment_dialog.title'
                 helptext: 'delete_comment_dialog.question'
-                confirm: 'delete_comment_dialog.confirm'
+                confirm: 'delete_comment_dialog.title'
                 flash: 'comment_form.messages.destroyed'
-
-    undiscard_comment:
-      menu: true
-      icon: 'mdi-delete-restore'
-      name: 'common.action.undo_remove'
-      canPerform: -> AbilityService.canUndiscardComment(comment)
-      perform: -> comment.undiscard()
-
-    # delete_comment:
-    #   icon: 'mdi-delete'
-    #   canPerform: -> AbilityService.canDeleteComment(comment)
-    #   perform: ->
-    #     openModal
-    #       component: 'ConfirmModal',
-    #       props:
-    #         confirm:
-    #           submit: -> comment.destroy()
-    #           text:
-    #             title: 'delete_comment_dialog.title'
-    #             helptext: 'delete_comment_dialog.question'
-    #             confirm: 'delete_comment_dialog.confirm'
-    #             flash: 'comment_form.messages.destroyed'

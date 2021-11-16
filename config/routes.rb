@@ -214,7 +214,7 @@ Rails.application.routes.draw do
 
       resources :outcomes,    only: [:create, :update]
 
-      resources :comments,    only: [:create, :update] do
+      resources :comments,    only: [:create, :update, :destroy] do
         delete :discard, on: :member
         post :undiscard, on: :member
       end
