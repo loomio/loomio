@@ -94,6 +94,7 @@ class EventService
       )
     end
 
+    MessageChannelService.publish_models(items.reload, group_id: discussion.group_id) if discussion.group_id
   end
 
   def self.reset_child_positions(parent_id, parent_position_key)

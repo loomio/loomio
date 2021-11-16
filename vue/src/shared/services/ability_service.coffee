@@ -243,8 +243,14 @@ export default new class AbilityService
   canEditPoll: (poll) ->
     poll.isActive() and poll.adminsInclude(Session.user())
 
-  canDeletePoll: (poll) ->
+  canDiscardPoll: (poll) ->
     !poll.discardedAt && poll.adminsInclude(Session.user())
+
+  canUndiscardPoll: (poll) ->
+    poll.discardedAt && poll.adminsInclude(Session.user())
+
+  canDeletePoll: (poll) ->
+    poll.discardedAt && poll.adminsInclude(Session.user())
 
   canExportPoll: (poll) ->
     !poll.discardedAt && poll.membersInclude(Session.user()) && (!poll.hideResultsUntilClosed || poll.closedAt)

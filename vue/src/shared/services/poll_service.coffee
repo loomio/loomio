@@ -102,10 +102,12 @@ export default new class PollService
                       pollId: poll.id
                       statementFormat: Session.defaultFormat()
               text:
-                raw_title: i18n.t('poll_common_close_form.title', poll_type: i18n.t(poll.pollTypeKey()))
-                raw_helptext: i18n.t('poll_common_close_form.helptext', poll_type: i18n.t(poll.pollTypeKey()))
+                title: 'poll_common_close_form.title'
+                helptext: 'poll_common_close_form.helptext'
                 confirm: 'poll_common_close_form.close_poll'
                 flash: 'poll_common_close_form.poll_closed'
+                params:
+                  poll_type: poll.translatedPollType()
 
     reopen_poll:
       icon: 'mdi-refresh'
@@ -167,6 +169,17 @@ export default new class PollService
           props:
             poll: poll.clone()
 
+    add_poll_to_thread:
+      menu: true
+      name: 'action_dock.add_poll_to_thread'
+      icon: 'mdi-comment-plus-outline'
+      canPerform: ->
+        AbilityService.canAddPollToThread(poll)
+      perform: ->
+        openModal
+          component: 'AddPollToThreadModal'
+          props:
+            poll: poll
 
     export_poll:
       name: 'common.action.export'
@@ -186,6 +199,20 @@ export default new class PollService
       perform: ->
         hardReload LmoUrlService.poll(poll, {export: 1}, {action: 'export', ext: 'html', absolute: true})
 
+    discard_poll:
+      name: 'common.action.discard'
+      menu: true
+      icon: 'mdi-delete'
+      canPerform: -> AbilityService.canDiscardPoll(poll)
+      perform: -> poll.discard()
+
+    # undiscard_poll:
+    #   name: 'common.action.restore'
+    #   menu: true
+    #   icon: 'mdi-delete-restore'
+    #   canPerform: -> AbilityService.canUndiscardPoll(poll)
+    #   perform: -> poll.undiscard()
+    #
     # delete_poll:
     #   name: 'common.action.delete'
     #   canPerform: ->
@@ -198,34 +225,8 @@ export default new class PollService
     #           submit: -> poll.destroy()
     #           text:
     #             title: 'poll_common_delete_modal.title'
-    #             confirm: 'poll_common_delete_modal.question'
+    #             helptext: 'poll_common_delete_modal.body'
+    #             submit: 'common.action.delete'
     #             flash: 'poll_common_delete_modal.success'
-
-    discard_poll:
-      name: 'common.action.delete'
-      menu: true
-      icon: 'mdi-delete'
-      canPerform: ->
-        AbilityService.canDeletePoll(poll)
-      perform: ->
-        openModal
-          component: 'ConfirmModal'
-          props:
-            confirm:
-              submit: -> poll.discard()
-              text:
-                raw_title: i18n.t('poll_common_delete_modal.title', pollType: i18n.t(poll.pollTypeKey()))
-                helptext: 'poll_common_delete_modal.question'
-                flash: 'poll_common_delete_modal.success'
-
-    add_poll_to_thread:
-      menu: true
-      name: 'action_dock.add_poll_to_thread'
-      icon: 'mdi-comment-plus-outline'
-      canPerform: ->
-        AbilityService.canAddPollToThread(poll)
-      perform: ->
-        openModal
-          component: 'AddPollToThreadModal'
-          props:
-            poll: poll
+    #             params:
+    #               pollType: poll.translatedPollType()

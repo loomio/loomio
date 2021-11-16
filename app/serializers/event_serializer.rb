@@ -11,11 +11,21 @@ class EventSerializer < ApplicationSerializer
   # for discussion moved event
   has_one :source_group, serializer: GroupSerializer, root: :groups
 
+  def eventable_is_discarded?
+    %w[Comment Poll].include?(object.eventable_type) && eventable.discarded_at
+  end
+
+  def include_actor?
+    return false if eventable_is_discared?
+    super
+  end
+
   def parent
     cache_fetch(:events_by_id, object.parent_id) { object.parent }
   end
 
   def include_eventable?
+    return false if eventable_is_discarded?
     !(object.kind == "new_discussion" && exclude_type?('discussion'))
   end
 
