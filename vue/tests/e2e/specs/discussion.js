@@ -262,9 +262,27 @@ module.exports = {
     page.click('.comment-form__submit-button')
     page.click('.new-comment .action-menu')
     page.click('.action-dock__button--discard_comment')
-    page.click('.confirm-modal__submit')
     page.expectNoText('.thread-card', 'original comment right thur')
     page.expectText('.thread-card', 'Item removed')
+  },
+
+  'discards_restores_deletes_a_comment': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion')
+    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'original comment right hur')
+    page.click('.comment-form__submit-button')
+    page.click('.new-comment .action-menu')
+    page.click('.action-dock__button--discard_comment')
+    page.expectNoText('.thread-card', 'original comment right thur')
+    page.expectText('.thread-card', 'Item removed')
+    page.click('.strand-item__removed .action-menu')
+    page.click('.action-dock__button--undiscard_comment')
+    page.click('.new-comment .action-menu')
+    page.click('.action-dock__button--discard_comment')
+    page.click('.strand-item__removed .action-menu')
+    page.click('.action-dock__button--delete_comment')
+    page.click('.confirm-modal__submit')
   },
 
   'sign_in_from_discussion_announced_email': (test) => {
