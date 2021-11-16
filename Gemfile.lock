@@ -592,7 +592,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.7)
     uuidtools (2.2.0)
-    video_info (3.0.1)
+    video_info (3.0.2)
       iso8601 (~> 0.9.1)
       net_http_timeout_errors (~> 0.3.0)
       oga (~> 3.0)
