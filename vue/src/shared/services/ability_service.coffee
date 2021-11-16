@@ -81,13 +81,6 @@ export default new class AbilityService
 
   canChangeVolume: (discussion) -> discussion.membersInclude(Session.user())
 
-  canManageGroupSubscription: (group) ->
-    group.isParent() and
-    group.adminsInclude(Session.user()) and
-    group.subscriptionKind? and
-    group.subscriptionKind != 'trial' and
-    group.subscriptionPaymentMethod != 'manual'
-
   canStartThread: (group) ->
     group.adminsInclude(user()) or
     (group.membersInclude(user()) and group.membersCanStartDiscussions)
@@ -172,14 +165,23 @@ export default new class AbilityService
      comment.discussion().membersInclude(Session.user()))
 
   canDeleteComment: (comment) ->
-    (comment.group().membersCanDeleteComments && comment.authorIs(Session.user())) ||
-    comment.discussion().adminsInclude(Session.user())
+    comment.discardedAt &&
+    (
+      comment.discussion().adminsInclude(Session.user()) ||
+      (comment.group().membersCanDeleteComments && comment.authorIs(Session.user()))
+    )
 
   canDiscardComment: (comment) ->
-    !comment.discardedAt && @canDeleteComment(comment)
+    !comment.discardedAt && (
+      comment.authorIs(Session.user()) ||
+      comment.discussion().adminsInclude(Session.user())
+    )
 
   canUndiscardComment: (comment) ->
-    comment.discardedAt && @canDeleteComment(comment)
+    comment.discardedAt && (
+      comment.authorIs(Session.user()) ||
+      comment.discussion().adminsInclude(Session.user())
+    )
 
   canRemoveMembership: (membership) ->
     membership and

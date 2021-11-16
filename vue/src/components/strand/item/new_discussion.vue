@@ -1,6 +1,6 @@
 <script lang="coffee">
 import ThreadService  from '@/shared/services/thread_service'
-import { map, compact, pick, pickBy } from 'lodash'
+import { map, compact, pick, pickBy, omit } from 'lodash'
 import EventBus from '@/shared/services/event_bus'
 import openModal      from '@/shared/helpers/open_modal'
 import StrandActionsPanel from '@/components/strand/actions_panel'
@@ -15,10 +15,10 @@ export default
 
   watch:
     'eventable.newestFirst': ->
-      @actions = ThreadService.actions(@eventable, @)
+      @actions = omit(ThreadService.actions(@eventable, @), ['dismiss_thread'])
 
   data: ->
-    actions: ThreadService.actions(@eventable, @)
+    actions: omit(ThreadService.actions(@eventable, @), ['dismiss_thread'])
 
   mounted: ->
     @eventable.fetchUsersNotifiedCount()

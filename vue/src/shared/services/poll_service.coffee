@@ -19,6 +19,7 @@ export default new class PollService
       perform: -> Session.user() && poll.translate(Session.user().locale)
 
     show_results:
+      icon: 'mdi-eye-outline'
       name: 'poll_common_card.show_results'
       dock: 2
       canPerform: ->
@@ -27,6 +28,7 @@ export default new class PollService
         poll.pleaseShowResults = true
 
     hide_results:
+      icon: 'mdi-eye-off-outline'
       name: 'poll_common_card.hide_results'
       dock: 2
       canPerform: ->
@@ -124,13 +126,12 @@ export default new class PollService
       icon: 'mdi-pencil'
       canPerform: ->
         AbilityService.canEditPoll(poll)
-      to: ->
-        "/p/#{poll.key}/edit"
-      perform: ->
-        openModal
-          component: 'PollCommonModal'
-          props:
-            poll: poll.clone()
+      to: "/p/#{poll.key}/edit"
+      # perform: ->
+      #   openModal
+      #     component: 'PollCommonModal'
+      #     props:
+      #       poll: poll.clone()
 
     show_history:
       icon: 'mdi-history'
@@ -142,7 +143,7 @@ export default new class PollService
           component: 'RevisionHistoryModal'
           props:
             model: poll
-            
+
     notification_history:
       name: 'action_dock.show_notifications'
       icon: 'mdi-alarm-check'
@@ -169,6 +170,7 @@ export default new class PollService
 
     export_poll:
       name: 'common.action.export'
+      icon: 'mdi-database-arrow-right-outline'
       menu: true
       canPerform: ->
         AbilityService.canExportPoll(poll)
@@ -177,6 +179,7 @@ export default new class PollService
 
     print_poll:
       name: 'common.action.print'
+      icon: 'mdi-printer-outline'
       menu: true
       canPerform: ->
         AbilityService.canExportPoll(poll)
@@ -201,6 +204,7 @@ export default new class PollService
     discard_poll:
       name: 'common.action.delete'
       menu: true
+      icon: 'mdi-delete'
       canPerform: ->
         AbilityService.canDeletePoll(poll)
       perform: ->
@@ -217,6 +221,7 @@ export default new class PollService
     add_poll_to_thread:
       menu: true
       name: 'action_dock.add_poll_to_thread'
+      icon: 'mdi-comment-plus-outline'
       canPerform: ->
         AbilityService.canAddPollToThread(poll)
       perform: ->

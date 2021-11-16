@@ -50,7 +50,6 @@ module.exports = {
   GroupOnboardingCard: 'group/onboarding_card',
   GroupPrivacyButton: 'group/privacy_button',
   GroupStart: 'group/start',
-  GroupSubscriptionCard: 'group/subscription_card',
   HelpBubble: 'common/help_bubble',
   WebhookForm: 'webhook/form',
   WebhookList: 'webhook/list',

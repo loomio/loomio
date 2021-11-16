@@ -57,7 +57,7 @@ v-list-item.thread-preview.thread-preview__link(:class="{'thread-preview--unread
       mid-dot
       active-time-ago(:date="thread.lastActivityAt")
   v-list-item-action(v-if='$vuetify.breakpoint.mdAndUp')
-    action-dock(:actions="dockActions" icons)
+    action-dock(:actions="dockActions")
   v-list-item-action(v-if='canPerformAny')
     action-menu(:actions="menuActions")
 </template>

@@ -9,7 +9,7 @@ export default
   computed:
     menuActions: ->
       if @event.kind == 'new_comment'
-        pick(CommentService.actions(@eventable, @), 'undiscard_comment')
+        pick(CommentService.actions(@eventable, @), 'undiscard_comment', 'delete_comment')
       else
         {}
 </script>

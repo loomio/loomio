@@ -10,8 +10,12 @@ module Ability::Comment
       (comment.discussion.members.exists?(user.id) && comment.author == user && comment.can_be_edited?) ||
       (comment.discussion.admins.exists?(user.id) && comment.group.admins_can_edit_user_content)
     end
+    can [:discard, :undiscard], ::Comment do |comment|
+      (comment.author == user && comment.discussion.members.exists?(user.id)) ||
+      comment.discussion.admins.exists?(user.id)
+    end
 
-    can [:destroy, :discard, :undiscard], ::Comment do |comment|
+    can [:destroy], ::Comment do |comment|
       (comment.author == user && comment.discussion.members.exists?(user.id) && comment.group.members_can_delete_comments) ||
       comment.discussion.admins.exists?(user.id)
     end

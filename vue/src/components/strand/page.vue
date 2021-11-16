@@ -163,5 +163,5 @@ export default
       thread-current-poll-banner(:discussion="discussion")
       discussion-fork-actions(:discussion='discussion' :key="'fork-actions'+ discussion.id")
       strand-card(v-if="loader" :discussion='discussion' :loader="loader")
-  strand-toc-nav(v-if="loader" :discussion="discussion" :loader="loader")
+  strand-toc-nav(v-if="loader" :discussion="discussion" :loader="loader" :key="discussion.id")
 </template>

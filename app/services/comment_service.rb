@@ -35,7 +35,7 @@ class CommentService
     comment.destroy
 
     Comment.where(parent_id: comment_id).update_all(parent_id: nil)
-    EventService.delay.repair_thread(discussion_id)
+    RepairThreadWorker.perform_async(discussion_id)
   end
 
   def self.update(comment:, params:, actor:)

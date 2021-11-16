@@ -1,0 +1,187 @@
+.text--orange {
+  color: #F08B00;
+}
+.text--light-orange {
+  color: rgba(#F08B00, 0.3);
+}
+.text--blue {
+  color: #00BDD4;
+}
+.text--light-blue {
+  color: rgba(#00BDD4, .09);
+}
+.text--black {
+  color: black;
+}
+.text--dark-gray {
+  color: $gray-mid-6;
+}
+.text--white {
+  color: white;
+}
+
+.body {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 26px;
+  @media screen and (min-width: $viewport-m) {
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 300;
+  }
+}
+
+.text--justify {
+  text-align: justify;
+}
+
+.body-small {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 300;
+}
+
+.body-smaller {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.body-large {
+  font-size: 36px;
+  font-weight: 300;
+}
+
+.body-xlarge {
+  font-size: 48px;
+  font-weight: 300;
+  @media screen and (min-width: $viewport-m) {
+    font-size: 72px;
+  }
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.boldish {
+  font-weight: 500;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.font-weight-black {
+  font-weight: 900 !important;
+}
+.font-weight-bold {
+  font-weight: 700 !important;
+}
+.font-weight-medium {
+  font-weight: 500 !important;
+}
+.font-weight-regular {
+  font-weight: 400 !important;
+}
+.font-weight-light {
+  font-weight: 300 !important;
+}
+.font-weight-thin {
+  font-weight: 100 !important;
+}
+.font-italic {
+  font-style: italic !important;
+}
+
+.text-decoration-none {
+  text-decoration: none !important;
+}
+.text-decoration-none a {
+  text-decoration: none !important;
+}
+
+.text-h1 {
+  font-weight: 300;
+  font-size: 6rem;
+  letter-spacing: -.015625em;
+}
+
+.text-h2 {
+  font-weight: 300;
+  font-size: 3.75rem;
+  letter-spacing: -.0083333333em;
+}
+
+.text-h3 {
+  font-weight: 400;
+  font-size: 3rem;
+  letter-spacing: normal;
+}
+
+.text-h4 {
+  font-weight: 400;
+  font-size: 2.125rem;
+  letter-spacing: 0.0073529412em;
+}
+
+.text-h5 {
+  font-weight: 400;
+  font-size: 1.5rem;
+  letter-spacing: normal;
+}
+
+.text-h6 {
+  font-weight: 500;
+  font-size: 1.25rem;
+  letter-spacing: 0.0125em;
+}
+
+.text-subtitle-1{
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: .009375em;
+}
+
+.text-subtitle-2{
+  font-weight: 500;
+  font-size: 0.875em;
+  letter-spacing: .0071428571em;
+}
+
+.text-body-1{
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: .03125em;
+}
+
+.text-body-2{
+  font-weight: 400;
+  font-size: 0.875rem;
+  letter-spacing: .0178571429em;
+}
+
+.text-button{
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: .0892857143em;
+}
+
+.text-caption{
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0.0083333333em;
+}
+
+.text-overline{
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: .1666666667em;
+}

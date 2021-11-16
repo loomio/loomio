@@ -57,7 +57,10 @@ export default class GroupModel extends BaseModel
     @hasMany 'allDocuments', from: 'documents', with: 'groupId', of: 'id'
     @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id', orderBy: 'name'
     @belongsTo 'parent', from: 'groups'
+    @belongsTo 'creator', from: 'users'
 
+
+  author: -> @creator()
   isBlank: ->
     @description == '' or @description == null or @description == '<p></p>'
 
