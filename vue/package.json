@@ -68,7 +68,7 @@
     "marked": "^3.0.8",
     "md5": "2.3.0",
     "object.fromentries": "^2.0.5",
-    "posthog-js": "^1.16.2",
+    "posthog-js": "^1.16.3",
     "pretty-bytes": "^5.6.0",
     "raven-js": "latest",
     "socket.io-client": "^2.4.0",
@@ -89,7 +89,7 @@
     "vuetify": "2.5.10"
   },
   "devDependencies": {
-    "@mdi/font": "^6.4.95",
+    "@mdi/font": "^6.5.95",
     "@vue/cli-plugin-pwa": "^4.5.15",
     "@vue/cli-plugin-babel": "^4.5.15",
     "@vue/cli-plugin-e2e-nightwatch": "^4.5.15",
