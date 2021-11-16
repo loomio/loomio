@@ -72,11 +72,11 @@ describe 'RecordCloner' do
 
       expect(clone.discussions.count).to eq group.discussions.count
       expect(clone.polls.count).to eq group.polls.count
-      expect(clone.memberships.count).to eq group.memberships.count
+      expect(clone.memberships.count).to eq (group.memberships.count + 1)
     end
 
     it 'creates a clone discussion' do
-      clone = RecordCloner.new(recorded_at: 2.days.ago).new_clone_discussion(discussion)
+      clone = RecordCloner.new(recorded_at: 2.days.ago).new_clone_discussion_and_events(discussion)
       clone.save!
       clone.reload
       expect(clone.title).to eq discussion.title
