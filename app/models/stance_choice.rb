@@ -25,6 +25,8 @@ class StanceChoice < ApplicationRecord
 
   private
   def total_score_is_valid
+    return unless poll # when we are cloning records and poll is not saved yet
+    
     if poll.custom_fields['min_score'] && score < poll.custom_fields['min_score'].to_i
       errors.add(:score, "Score lower than permitted min")
     end

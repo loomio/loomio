@@ -148,12 +148,7 @@ export default class BaseModel
     @[name+'Is'] = (obj) => @recordStore[args.from].find(@[args.by]) == obj
 
   belongsToPolymorphic: (name) ->
-    # belongsToPolymorphic('model', with: 'record')
-    # name is record in record_type
-    # handle is the method name we give it to access it. defaults to name
-
-    # opts['with'] = name unless opts['with']?
-    typeMap = {
+    typeMap =
       Group: 'groups'
       Discussion: 'discussions'
       Poll: 'polls'
@@ -163,14 +158,11 @@ export default class BaseModel
       CommentVote: 'comments'
       Membership: 'memberships'
       MembershipRequest: 'membershipRequests'
-    }
 
-    assoc = name
     @[name] = =>
-      recordType = @[assoc+'Type']
-      recordId = @[assoc+'Id']
-      collection = typeMap[recordType]
-      @recordStore[collection].find(recordId)
+      typeColumn = "#{name}Type"
+      idColumn = "#{name}Id"
+      @recordStore[typeMap[@[typeColumn]]].find(@[idColumn])
 
   translationOptions: ->
 

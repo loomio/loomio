@@ -16,6 +16,20 @@ en:
     task_updated_done: 'Task marked as done!'
     task_updated_not_done: 'Task marked as not done'
 
+  templates:
+    try_loomio: Try Loomio
+    we_have_demos: |
+      If you've never used Loomio before, you might be wondering what it looks like and how it works.
+      To help answer that, we have <b>demo groups</b> you can play with. Each demo group is created just for you
+      and will be automatically deleted after a few days.
+
+    start_a_trial: |
+      Once you know what Loomio is about, you can <b>start a free trial</b> group for
+      your organization. A trial group could turn into your permanent home on Loomio, so we won't automatically delete it.
+
+    demo_created: Demo group created, just for you!
+    start_demo: Start demo
+
   doctypes:
     youtube_video: YouTube Video
     image: Image
@@ -167,6 +181,7 @@ en:
     local: Local time ({{value}})
 
   common:
+    please_wait: Please wait
     optional: (Optional)
     version: Version
     none: None

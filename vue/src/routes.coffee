@@ -20,6 +20,8 @@ import StartDiscussionPage from './components/start_discussion/page'
 import UserPage from './components/user/page'
 import ThreadsPage from './components/threads/page'
 import StrandPage from './components/strand/page'
+import TemplatesPage from './components/templates/index.vue'
+
 
 import './config/catch_navigation_duplicated.js'
 import Vue from 'vue'
@@ -54,6 +56,7 @@ router = new Router
       { x: 0, y: 0 }
 
   routes: [
+    {path: '/try', component: TemplatesPage},
     {path: '/users/sign_in', redirect: '/dashboard' },
     {path: '/users/sign_up', redirect: '/dashboard' },
     {path: '/tasks', component: TasksPage},

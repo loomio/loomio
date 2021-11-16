@@ -52,6 +52,10 @@ Rails.application.routes.draw do
         get :version, on: :collection
       end
 
+      resources :templates, only: [:index] do
+        post :clone, on: :collection
+      end
+
       resources :group_surveys, only: [:create]
 
       resources :link_previews, only: [:create]
@@ -296,6 +300,7 @@ Rails.application.routes.draw do
 
   get '/start_group', to: redirect('/g/new')
 
+  get 'try'                                => 'application#index'
   get 'dashboard'                          => 'application#index', as: :dashboard
   get 'dashboard/:filter'                  => 'application#index'
   get 'inbox'                              => 'application#index', as: :inbox

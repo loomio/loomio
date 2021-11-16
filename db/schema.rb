@@ -753,6 +753,21 @@ ActiveRecord::Schema.define(version: 2021_10_22_235050) do
     t.index ["user_id"], name: "index_tasks_users_on_user_id"
   end
 
+  create_table "templates", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "author_id", null: false
+    t.integer "record_id", null: false
+    t.string "record_type", null: false
+    t.string "name", null: false
+    t.string "description"
+    t.datetime "recorded_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_templates_on_author_id"
+    t.index ["group_id"], name: "index_templates_on_group_id"
+    t.index ["record_type", "record_id"], name: "index_templates_on_record_type_and_record_id"
+  end
+
   create_table "translations", id: :serial, force: :cascade do |t|
     t.integer "translatable_id"
     t.string "translatable_type", limit: 255

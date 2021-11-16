@@ -6,7 +6,6 @@ module Dev::FakeDataHelper
   end
 
   # only return new'd objects
-
   def fake_user(args = {})
     User.new({
       name: Faker::Name.name,
@@ -19,7 +18,6 @@ module Dev::FakeDataHelper
     }.merge(args))
   end
 
-
   def fake_unverified_user(args = {})
     User.new({
       email: Faker::Internet.email,
@@ -29,9 +27,35 @@ module Dev::FakeDataHelper
 
   # todo fake_group ?
   def fake_group(args = {})
-    name = Faker::Company.name
-    Group.new({name: name, handle: name.parameterize,
-      features: {use_polls: true, enable_communities: true}}.merge(args))
+    defaults = {
+      name: Faker::Company.name,
+      description: Faker::Marketing.buzzwords
+    }
+
+    values = defaults.merge(args)
+    values[:handle] = values[:name].parameterize
+    group = Group.new(values)
+    group.tags = [fake_tag]
+
+    # puts 'attaching'
+    # group.logo.attach(
+    #   io: URI.open(Rails.root.join('public/brand/icon_sky_300h.png')),
+    #   filename: 'loomiologo.png',
+    #   identify: false,
+    #   content_type: 'image/png'
+    # )
+    # puts 'attached'
+    # group.cover_photo.attach(io: URI.open(Rails.root.join('public/brand/logo_sky_256h.png')), filename: 'loomiocover.png')
+
+    group
+  end
+
+  def fake_tag(args = {})
+    defaults = {
+      name: Faker::Space.planet,
+      color: Faker::Color.hex_color
+    }
+    Tag.new(defaults.merge(args))
   end
 
   def fake_discussion(args = {})
@@ -40,6 +64,42 @@ module Dev::FakeDataHelper
                     private: true,
                     group: fake_group,
                     author: fake_user}.merge(args))
+  end
+
+
+  def fake_new_discussion_event(discussion = fake_discussion)
+    Events::NewDiscussion.new(
+      user: discussion.author,
+      kind: 'new_discussion',
+      eventable: discussion
+    )
+  end
+
+  def fake_poll_created_event(poll = fake_poll)
+    Events::PollCreated.new(
+      user: poll.author,
+      kind: 'poll_created',
+      eventable: poll,
+      discussion: poll.discussion
+    )
+  end
+
+  def fake_stance_created_event(stance = fake_stance)
+    Events::StanceCreated.new(
+      user_id: stance[:participant_id],
+      kind: 'stance_created',
+      eventable: stance,
+      discussion: stance.poll.discussion
+    )
+  end
+
+  def fake_outcome_created_event(outcome = fake_outcome)
+    Events::OutcomeCreated.new(
+      user_id: outcome.author_id,
+      kind: 'outcome_created',
+      eventable: outcome,
+      discussion: outcome.discussion
+    )
   end
 
   def fake_membership(args = {})
