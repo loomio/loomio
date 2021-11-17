@@ -222,7 +222,6 @@ class PollService
 
   def self.destroy(poll:, actor:)
     actor.ability.authorize! :destroy, poll
-    byebug
     poll.destroy
     RepairThreadWorker.perform_async(poll.discussion_id) if poll.discussion_id
 
