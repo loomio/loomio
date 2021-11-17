@@ -38,6 +38,12 @@ class API::V1::PollsController < API::V1::RestfulController
     respond_with_resource
   end
 
+  def undiscard
+    load_resource
+    @event = service.undiscard(poll: resource, actor: current_user)
+    respond_with_resource
+  end
+
   def add_to_thread
     @event = service.add_to_thread(poll: load_resource, params: params, actor: current_user)
     respond_with_resource

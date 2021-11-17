@@ -25,7 +25,7 @@ class EventSerializer < ApplicationSerializer
   end
 
   def include_eventable?
-    !(object.kind == "new_discussion" && exclude_type?('discussion')) && !eventable_is_discarded?
+    !eventable_is_discarded? && !(object.kind == "new_discussion" && exclude_type?('discussion'))
   end
 
   def eventable
