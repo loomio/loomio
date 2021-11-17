@@ -180,21 +180,6 @@ export default class ThreadLoader
         discussion_id: @discussion.id
         comment_id: commentId
 
-  addLoadPositionRule: (position) ->
-    @addRule
-      name: "position from url"
-      local:
-        find:
-          discussionId: @discussion.id
-          depth: 1
-          position: {$gte: position}
-        simplesort: 'positionKey'
-        limit: @padding
-      remote:
-        discussion_id: @discussion.id
-        from_sequence_id_of_position: position
-        order: 'position_key'
-
   addLoadPositionKeyRule: (positionKey) ->
     @loading = positionKey
     @addRule

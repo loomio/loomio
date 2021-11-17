@@ -18,6 +18,7 @@ class DiscussionSerializer < ApplicationSerializer
              :description,
              :description_format,
              :ranges,
+             :ignored_ranges,
              :items_count,
              :last_comment_at,
              :last_activity_at,

@@ -42,7 +42,7 @@ class Queries::AdminGroupPage
   end
 
   def self.thread_items_count(group)
-    Discussion.where(group_id: group.id_and_subgroup_ids).sum(:items_count)
+    Discussion.where(group_id: group.id_and_subgroup_ids).map(&:items_count).sum
   end
 
   def self.discussions_count(group)

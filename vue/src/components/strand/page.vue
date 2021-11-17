@@ -70,9 +70,6 @@ export default
       if @loader.focusAttrs.sequenceId
         return ".sequenceId-#{@loader.focusAttrs.sequenceId}"
 
-      if @loader.focusAttrs.position
-        return ".position-#{@loader.focusAttrs.position}"
-
       if @loader.focusAttrs.positionKey
         return ".positionKey-#{@loader.focusAttrs.positionKey}"
 
@@ -109,10 +106,6 @@ export default
       if @$route.query.k
         @loader.addLoadPositionKeyRule(@$route.query.k)
         @loader.focusAttrs = {positionKey: @$route.query.k}
-
-      if @$route.query.p
-        @loader.addLoadPositionRule(parseInt(@$route.params.p))
-        @loader.focusAttrs = {position: @$route.query.p}
 
       if @$route.params.sequence_id
         @loader.addLoadSequenceIdRule(parseInt(@$route.params.sequence_id))

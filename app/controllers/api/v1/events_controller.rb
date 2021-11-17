@@ -1,7 +1,9 @@
 class API::V1::EventsController < API::V1::RestfulController
   def position_keys
     load_and_authorize(:discussion)
-    keys = Event.where(discussion_id: params[:discussion_id]).pluck(:position_key).sort
+    keys = Event.where(discussion_id: params[:discussion_id]).
+                 where.not(sequence_id: RangeSet.ranges_to_list(@discussion.ignored_ranges)).
+                 pluck(:position_key).sort
     render json: keys, root: 'position_keys'
   end
 
@@ -49,22 +51,7 @@ class API::V1::EventsController < API::V1::RestfulController
   end
 
   def from
-    # if params[:from_unread]
-    #   reader = DiscussionReader.for(user: current_user, discussion: @discussion)
-    #   if reader.unread_items_count == 0
-    #     id = @discussion.last_sequence_id - per + 2
-    #     if id > 0
-    #       id
-    #     else
-    #       @discussion.first_sequence_id
-    #     end
-    #   else
-    #     reader.first_unread_sequence_id
-    #   end
-    if params[:from_sequence_id_of_position]
-      position = [params[:from_sequence_id_of_position].to_i, 1].max
-      Event.find_by!(discussion: @discussion, depth: 1, position: position)&.sequence_id
-    elsif params[:comment_id]
+    if params[:comment_id]
       Event.find_by!(kind: "new_comment", eventable_type: "Comment", eventable_id: params[:comment_id])&.sequence_id
     else
       params[:from] || 0

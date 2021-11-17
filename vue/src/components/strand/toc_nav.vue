@@ -55,6 +55,8 @@ export default
              .find({discussionId: @discussion.id})
              .simplesort('positionKey', @discussion.newestFirst)
              .data().forEach (event) =>
+        return if RangeSet.includesValue(@discussion.ignoredRanges, event.sequenceId)
+
         if event.kind == "poll_created"
           poll = event.model().poll()
           return if poll.discardedAt

@@ -208,7 +208,7 @@ export default class DiscussionModel extends BaseModel
     RangeSet.rangesToArray(@readRanges)
 
   unreadRanges: ->
-    RangeSet.subtractRanges(@ranges, @readRanges)
+    RangeSet.subtractRanges(RangeSet.subtractRanges(@ranges, @ignoredRanges), @readRanges)
 
   unreadSequenceIds: ->
     RangeSet.rangesToArray(@unreadRanges())
