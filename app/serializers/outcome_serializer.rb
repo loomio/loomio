@@ -5,7 +5,8 @@ class OutcomeSerializer < ApplicationSerializer
              :content_locale,
              :latest,
              :created_at,
-             :custom_fields,
+             :event_summary,
+             :event_location,
              :attachments,
              :link_previews,
              :event_summary,
@@ -19,10 +20,6 @@ class OutcomeSerializer < ApplicationSerializer
              :versions_count
 
   has_one :author, serializer: AuthorSerializer, root: :users
-
-  def custom_fields
-    object.custom_fields.except('calendar_invite')
-  end
 
   def group_id
     (cache_fetch(:polls_by_id, poll_id) { object.poll }).group_id
