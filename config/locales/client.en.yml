@@ -1673,7 +1673,7 @@ en:
 
   global:
     messages:
-      app_update: 'A new version of the app is available'
+      app_update: 'A new version of Loomio has been released. Please save your work and reload.'
       reload: 'Reload'
 
   decision_tools_card:
