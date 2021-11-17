@@ -284,9 +284,10 @@ img.emoji
 
   blockquote
     font-style: italic
-    border-left: 3px solid rgba(0,0,0,.1)
-    // color: rgba(0,0,0,.8)
+    border-left: 4px solid rgba(0,0,0,.1)
     padding-left: .8rem
+    padding: .5rem 0 0.5rem 0.8rem
+    background-color: rgba(0,0,0,0.05)
 
   table
     table-layout: fixed
