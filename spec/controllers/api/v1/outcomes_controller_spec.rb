@@ -9,7 +9,7 @@ describe API::V1::OutcomesController do
   let(:another_poll) { create :poll, discussion: discussion, closed_at: 1.day.ago, author: user }
   let(:discussion) { create :discussion, group: group }
   let(:group) { create :group }
-  let(:outcome_params) {{ poll_id: poll.id, statement: "We should do this", custom_fields: {} }}
+  let(:outcome_params) {{ poll_id: poll.id, statement: "We should do this" }}
   let(:meeting_params) { outcome_params.merge(
     poll_id: meeting_poll.id,
     poll_option_id: meeting_poll.poll_option_ids.first,
@@ -86,12 +86,13 @@ describe API::V1::OutcomesController do
     it 'can store a calendar invite for date polls' do
       sign_in user
       expect { post :create, params: { outcome: meeting_params } }.to change { Outcome.count }.by(1)
+
       outcome = Outcome.last
-      expect(outcome.event_description).to eq meeting_params[:custom_fields][:event_description]
-      expect(outcome.event_location).to eq meeting_params[:custom_fields][:event_location]
+      expect(outcome.event_description).to eq meeting_params[:event_description]
+      expect(outcome.event_location).to eq meeting_params[:event_location]
       expect(outcome.calendar_invite).to be_present
-      expect(outcome.calendar_invite).to match /#{meeting_params[:custom_fields][:event_description]}/
-      expect(outcome.calendar_invite).to match /#{meeting_params[:custom_fields][:event_location]}/
+      expect(outcome.calendar_invite).to match /#{meeting_params[:event_description]}/
+      expect(outcome.calendar_invite).to match /#{meeting_params[:event_location]}/
     end
   end
 
