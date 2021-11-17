@@ -1970,7 +1970,7 @@ en:
 
   poll_common_delete_modal:
     title: 'Delete {{pollType}}'
-    body: 'This will permanently delete this {{pollType}}. If you proceed, it cannot be restored.'
+    body: 'This will permanently delete this {{pollType}}. If you proceed, it cannot ever be restored.'
     success: '{{pollType}} deleted'
 
   poll_common_form:

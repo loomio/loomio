@@ -81,7 +81,6 @@ class EventService
 
     discussion.created_event.update_child_count
     discussion.created_event.update_descendant_count
-    discussion.update_items_count
     discussion.update_sequence_info!
     Redis::Counter.new("sequence_id_counter_#{discussion_id}").delete
 

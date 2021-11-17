@@ -191,7 +191,7 @@ Rails.application.routes.draw do
 
       resources :search, only: :index
 
-      resources :polls, only: [:show, :index, :create, :update] do
+      resources :polls, only: [:show, :index, :create, :update, :destroy] do
         member do
           post :remind
           delete :discard

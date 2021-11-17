@@ -52,7 +52,7 @@ v-card.confirm-modal
     v-spacer
     v-btn.confirm-modal__submit(
       :disabled="!canProceed"
-      color="primary"
+      :color="confirm.text.submit_color || 'primary'"
       @click="(confirm.submit && submit()) || close()")
       span(v-html="confirm.text.raw_submit || $t((confirm.text.submit || 'common.action.ok'), confirm.text.params)")
 </template>

@@ -215,6 +215,7 @@ export default new class PollService
 
     delete_poll:
       name: 'common.action.delete'
+      icon: 'mdi-delete'
       canPerform: ->
         AbilityService.canDeletePoll(poll)
       perform: ->
@@ -222,10 +223,12 @@ export default new class PollService
           component: 'ConfirmModal'
           props:
             confirm:
-              submit: -> poll.destroy()
+              submit: -> poll.destroy().then -> window.location.reload()
               text:
                 title: 'poll_common_delete_modal.title'
-                confirm: 'poll_common_delete_modal.question'
+                helptext: 'poll_common_delete_modal.body'
                 flash: 'poll_common_delete_modal.success'
+                submit: 'common.action.delete'
+                submit_color: 'error'
                 params:
                   pollType: poll.translatedPollType()

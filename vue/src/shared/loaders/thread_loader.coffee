@@ -361,7 +361,6 @@ export default class ThreadLoader
     parentExists = collection[0] && collection[0].event && collection[0].event.parent()
     lastPosition = (parentExists && (collection[0].event.parent().childCount)) || 0
 
-
     collection.forEach (obj) =>
       obj.isUnread = @isUnread(obj.event)
       isFirstInRange = some(ranges, (range) -> range[0] == obj.event.position)
