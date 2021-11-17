@@ -110,7 +110,7 @@ export default
         div(:class="classes(obj.event)" v-observe-visibility="{callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
           strand-item-removed(v-if="obj.eventable && obj.eventable.discardedAt" :event="obj.event" :eventable="obj.eventable")
           component(v-else :is="componentForKind(obj.event.kind)" :event='obj.event' :eventable="obj.eventable")
-        .strand-list__children.mt-2(v-if="obj.event.childCount")
+        .strand-list__children.mt-2(v-if="obj.event.childCount && !obj.eventable.discardedAt")
           strand-list.flex-grow-1(:loader="loader" :collection="obj.children" :newest-first="obj.event.kind == 'new_discussion' && loader.discussion.newestFirst")
 
     .strand-item__row(v-if="loader.collapsed[obj.event.id]")

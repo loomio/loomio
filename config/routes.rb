@@ -199,6 +199,7 @@ Rails.application.routes.draw do
           post :reopen
           post :add_options
           patch :add_to_thread
+          post :undiscard
         end
         get  :closed, on: :collection
       end

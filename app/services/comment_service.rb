@@ -12,19 +12,17 @@ class CommentService
 
   def self.discard(comment:, actor:)
     actor.ability.authorize!(:discard, comment)
-    ActiveRecord::Base.transaction do
-      comment.update(discarded_at: Time.now, discarded_by: actor.id)
-      comment.created_event.update(user_id: nil, pinned: false)
-    end
+    comment.update(discarded_at: Time.now, discarded_by: actor.id)
+    comment.discussion.update_sequence_info!
+    MessageChannelService.publish_models([comment.created_event], group_id: comment.group_id)
     comment.created_event
   end
 
   def self.undiscard(comment:, actor:)
     actor.ability.authorize!(:undiscard, comment)
-    ActiveRecord::Base.transaction do
-      comment.update(discarded_at: nil, discarded_by: nil)
-      comment.created_event.update(user_id: comment.user_id)
-    end
+    comment.update(discarded_at: nil, discarded_by: nil)
+    comment.discussion.update_sequence_info!
+    MessageChannelService.publish_models([comment.created_event], group_id: comment.group_id)
     comment.created_event
   end
 

@@ -39,16 +39,20 @@ export default
 v-card.confirm-modal
   submit-overlay(:value='isDisabled')
   v-card-title
-    h1.headline(tabindex="-1" v-html="confirm.text.raw_title || $t(confirm.text.title)", v-if="confirm.text.raw_title || confirm.text.title")
+    h1.headline(tabindex="-1" v-html="confirm.text.raw_title || $t(confirm.text.title, confirm.text.params)")
     v-spacer
     dismiss-modal-button(v-if="!confirm.forceSubmit")
   v-card-text
-    p(v-html="confirm.text.raw_helptext || $t(confirm.text.helptext)", v-if="confirm.text.raw_helptext || confirm.text.helptext")
+    p(v-html="confirm.text.raw_helptext || $t(confirm.text.helptext, confirm.text.params)")
     div(v-if="confirm.text.confirm_text")
       p.font-weight-bold {{confirm.text.raw_confirm_text_placeholder}}
-      v-text-field.confirm-text-field( v-model="confirmText" v-on:keyup.enter="canProceed && submit()")
+      v-text-field.confirm-text-field(v-model="confirmText" v-on:keyup.enter="canProceed && submit()")
   v-card-actions
     v-btn(text v-if="!confirm.forceSubmit" @click="close()" v-t="'common.action.cancel'")
     v-spacer
-    v-btn.confirm-modal__submit(:disabled="!canProceed" color="primary" @click="(confirm.submit && submit()) || close()" v-t="confirm.text.submit || 'common.action.ok'")
+    v-btn.confirm-modal__submit(
+      :disabled="!canProceed"
+      color="primary"
+      @click="(confirm.submit && submit()) || close()")
+      span(v-html="confirm.text.raw_submit || $t((confirm.text.submit || 'common.action.ok'), confirm.text.params)")
 </template>

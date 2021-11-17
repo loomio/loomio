@@ -11,12 +11,21 @@ class EventSerializer < ApplicationSerializer
   # for discussion moved event
   has_one :source_group, serializer: GroupSerializer, root: :groups
 
+  def eventable_is_discarded?
+    object.eventable_id && eventable.respond_to?(:discarded_at) && eventable.discarded_at
+  end
+
+  def include_actor?
+    return false if eventable_is_discared?
+    super
+  end
+
   def parent
     cache_fetch(:events_by_id, object.parent_id) { object.parent }
   end
 
   def include_eventable?
-    !(object.kind == "new_discussion" && exclude_type?('discussion'))
+    !(object.kind == "new_discussion" && exclude_type?('discussion')) && !eventable_is_discarded?
   end
 
   def eventable
@@ -50,6 +59,10 @@ class EventSerializer < ApplicationSerializer
 
   def include_source_group?
     object.kind == "discussion_moved" && object.custom_fields['source_group_id'].present?
+  end
+
+  def include_pinned_title?
+    !eventable_is_discarded?
   end
 
   def pinned_title

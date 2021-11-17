@@ -1969,10 +1969,10 @@ en:
     authored_by: 'By {{name}}'
 
   poll_common_delete_modal:
-    question: Are you sure you want to delete this?
-    title: Delete {{pollType}}
-    success: Successfully deleted
-
+    title: 'Delete {{pollType}}'
+    body: 'This will permanently delete this {{pollType}}. If you proceed, it cannot be restored.'
+    success: {{pollType}} deleted
+    
   poll_common_form:
     title: Title
     details: Details

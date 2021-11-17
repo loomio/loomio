@@ -165,6 +165,12 @@ class Discussion < ApplicationRecord
   def update_sequence_info!
     discussion.ranges_string =
      RangeSet.serialize RangeSet.reduce RangeSet.ranges_from_list discussion.items.order(:sequence_id).pluck(:sequence_id)
+
+    ignored_parents = discussion.items.includes(:eventable).filter {|e| e.kind == 'discussion_closed' or e.eventable.discarded_at }
+    ignored_children = discussion.items.where(parent_id: ignored_parents.map(&:id))
+    ignored_sequence_ids = ignored_parents.map(&:sequence_id).concat(ignored_children.pluck(:sequence_id)).flatten.uniq
+
+    discussion.ignored_ranges_string = RangeSet.serialize RangeSet.reduce RangeSet.ranges_from_list ignored_sequence_ids
     discussion.last_activity_at = discussion.items.unreadable.order(:sequence_id).last&.created_at || created_at
     update_columns(ranges_string: discussion.ranges_string, last_activity_at: discussion.last_activity_at)
   end

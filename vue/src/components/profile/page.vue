@@ -60,9 +60,12 @@ export default
             submit: => Records.users.sendMergeVerificationEmail(@user.email)
             text:
               title:    'merge_accounts.modal.title'
-              raw_helptext: @$t('merge_accounts.modal.helptext', sourceEmail: @originalUser.email, targetEmail: @user.email)
+              helptext: 'merge_accounts.modal.helptext'
               submit:   'merge_accounts.modal.submit'
               flash:    'merge_accounts.modal.flash'
+              params:
+                sourceEmail: @originalUser.email
+                targetEmail: @user.email
 
     checkEmailExistence: debounce ->
       return if @originalUser.email == @user.email

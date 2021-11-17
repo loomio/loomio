@@ -28,7 +28,7 @@ export default new class UserService
             confirm:
               text:
                 title: 'merge_accounts.modal.title'
-                raw_helptext: vm.$t('merge_accounts.placeholder_modal_text')
+                helptext: 'merge_accounts.placeholder_modal_text'
 
     deactivate_user:
       icon: 'mdi-exit-run'

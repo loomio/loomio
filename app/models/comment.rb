@@ -8,7 +8,7 @@ class Comment < ApplicationRecord
   include HasEvents
   include HasRichText
 
-  has_paper_trail only: [:body, :body_format, :user_id, :discarded_at, :discarded_by]
+  has_paper_trail only: [:body, :body_format, :user_id, :discarded_at, :discarded_by, :parent_id]
 
   is_translatable on: :body
   is_mentionable  on: :body
