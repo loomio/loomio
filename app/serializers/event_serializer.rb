@@ -16,7 +16,7 @@ class EventSerializer < ApplicationSerializer
   end
 
   def include_actor?
-    return false if eventable_is_discared?
+    return false if eventable_is_discarded?
     super
   end
 
