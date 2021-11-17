@@ -1365,6 +1365,7 @@ en:
     update_profile: 'Update profile'
     deactivate_account: 'Deactivate user account'
     help_translate: "Help us translate Loomio"
+    updated_on_sign_in: Provided by your browser and updated when you sign in
 
   text_editor:
     select_text_to_link: Select text to link and try again

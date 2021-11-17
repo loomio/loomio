@@ -120,6 +120,15 @@ v-main
               validation-errors(:subject='user', field='selectedLocale')
               p(v-if='showHelpTranslate')
                 a(v-t="'profile_page.help_translate'" href='https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation' target='_blank')
+              p
+                span(v-t="'common.time_zone'")
+                space
+                span {{user.timeZone}}
+                space
+                v-tooltip(top)
+                  template(v-slot:activator="{on, attrs}")
+                    v-icon(v-bind="attrs" v-on="on" small) mdi-information-outline
+                  span(v-t="'profile_page.updated_on_sign_in'")
         v-card-actions.profile-page__update-account
           v-spacer
           v-btn.profile-page__update-button(color="primary" @click='submit()' :disabled='emailExists' :loading="user.processing")
