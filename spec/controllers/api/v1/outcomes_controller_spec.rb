@@ -13,8 +13,9 @@ describe API::V1::OutcomesController do
   let(:meeting_params) { outcome_params.merge(
     poll_id: meeting_poll.id,
     poll_option_id: meeting_poll.poll_option_ids.first,
-    custom_fields: { event_description: "Eat those krabs", event_location: "The Krusty Krab", should_send_calendar_invite: "1" })
-  }
+    event_description: "Eat those krabs",
+    event_location: "The Krusty Krab",
+    should_send_calendar_invite: "1") }
 
   before { group.add_member! user }
 
