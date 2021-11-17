@@ -202,7 +202,7 @@ export default new class PollService
     discard_poll:
       name: 'common.action.discard'
       menu: true
-      icon: 'mdi-delete'
+      icon: 'mdi-trash-can-outline'
       canPerform: -> AbilityService.canDiscardPoll(poll)
       perform: -> poll.discard()
 

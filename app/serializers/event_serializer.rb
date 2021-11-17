@@ -15,6 +15,10 @@ class EventSerializer < ApplicationSerializer
     object.eventable_id && eventable.respond_to?(:discarded_at) && eventable.discarded_at
   end
 
+  def include_actor_id?
+    include_actor?
+  end
+
   def include_actor?
     return false if eventable_is_discarded?
     super

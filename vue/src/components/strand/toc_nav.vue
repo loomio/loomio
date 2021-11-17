@@ -1,7 +1,8 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
-import {marked} from '@/shared/helpers/marked.coffee'
+import RangeSet from '@/shared/services/range_set'
+import { marked } from '@/shared/helpers/marked'
 import { each, debounce, truncate, first, last, some, drop, min, compact, without, sortedUniq } from 'lodash'
 
 export default
@@ -36,6 +37,7 @@ export default
         # 3 userId,
         # 4 depth,
         # 5 descendantCount
+        return if RangeSet.includesValue(@discussion.ignoredRanges, row[1])
         itemsHash[row[0]] =
           key: row[0]
           title: null
@@ -55,6 +57,7 @@ export default
              .find({discussionId: @discussion.id})
              .simplesort('positionKey', @discussion.newestFirst)
              .data().forEach (event) =>
+
         return if RangeSet.includesValue(@discussion.ignoredRanges, event.sequenceId)
 
         if event.kind == "poll_created"

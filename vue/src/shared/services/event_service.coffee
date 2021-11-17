@@ -35,7 +35,7 @@ export default new class EventService
       perform: -> event.unpin().then -> Flash.success('activity_card.event_unpinned')
 
     copy_url:
-      icon: 'mdi-link'
+      icon: 'mdi-link-variant'
       menu: true
       kinds: ['new_comment', 'poll_created', 'stance_created', 'stance_updated']
       canPerform: -> !event.model().discardedAt

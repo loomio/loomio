@@ -86,7 +86,7 @@ export default new class CommentService
 
     discard_comment:
       name: 'common.action.discard'
-      icon: 'mdi-delete-outline'
+      icon: 'mdi-trash-can-outline'
       menu: true
       canPerform: -> AbilityService.canDiscardComment(comment)
       perform: -> comment.discard()

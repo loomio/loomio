@@ -1,5 +1,6 @@
 <script lang="coffee">
 import CommentService from '@/shared/services/comment_service'
+import PollService from '@/shared/services/poll_service'
 import { pick } from 'lodash'
 export default
   props:
@@ -10,6 +11,8 @@ export default
     menuActions: ->
       if @event.kind == 'new_comment'
         pick(CommentService.actions(@eventable, @), 'undiscard_comment', 'delete_comment')
+      else if @event.kind == 'poll_created'
+        pick(PollService.actions(@eventable, @), 'undiscard_poll', 'delete_poll')
       else
         {}
 </script>

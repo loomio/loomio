@@ -1,9 +1,7 @@
 class API::V1::EventsController < API::V1::RestfulController
   def position_keys
     load_and_authorize(:discussion)
-    keys = Event.where(discussion_id: params[:discussion_id]).
-                 where.not(sequence_id: RangeSet.ranges_to_list(@discussion.ignored_ranges)).
-                 pluck(:position_key).sort
+    keys = Event.where(discussion_id: params[:discussion_id]).pluck(:position_key).sort
     render json: keys, root: 'position_keys'
   end
 
