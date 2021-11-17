@@ -173,7 +173,6 @@ describe API::V1::CommentsController do
           comment.reload
           expect(comment.discarded?).to be true
           expect(comment.discarded_by).to eq user.id
-          expect(comment.created_event.user_id).to be nil
         end
       end
 
@@ -187,7 +186,6 @@ describe API::V1::CommentsController do
           expect(comment.discarded?).to be false
           expect(comment.body).to_not be nil
           expect(comment.user_id).to_not be nil
-          expect(comment.created_event.user_id).to_not be nil
         end
       end
     end
