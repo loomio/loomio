@@ -155,7 +155,6 @@ describe API::V1::PollsController do
             poll.reload
             expect(poll.discarded?).to be true
             expect(poll.discarded_by).to eq user.id
-            expect(poll.created_event.reload.user_id).to be nil
           end
         end
 
