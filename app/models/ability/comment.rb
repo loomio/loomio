@@ -7,11 +7,13 @@ module Ability::Comment
     end
 
     can [:update], ::Comment do |comment|
-      (comment.discussion.members.exists?(user.id) && comment.author == user && comment.can_be_edited?) ||
-      (comment.discussion.admins.exists?(user.id) && comment.group.admins_can_edit_user_content)
+      !comment.discarded_at &&
+      ((comment.discussion.members.exists?(user.id) && comment.author == user && comment.can_be_edited?) ||
+      (comment.discussion.admins.exists?(user.id) && comment.group.admins_can_edit_user_content))
     end
+    
     can [:discard, :undiscard], ::Comment do |comment|
-      (comment.author == user && comment.discussion.members.exists?(user.id)) ||
+      (comment.author == user && can?(:update, comment)) ||
       comment.discussion.admins.exists?(user.id)
     end
 

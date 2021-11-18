@@ -158,6 +158,7 @@ export default new class AbilityService
     comment.authorIs(Session.user()) && @canEditComment(comment)
 
   canEditComment: (comment) ->
+    return false if comment.discardedAt
     (comment.discussion().adminsInclude(Session.user()) and comment.group().adminsCanEditUserContent) or
 
     (comment.authorIs(Session.user()) and
@@ -172,16 +173,12 @@ export default new class AbilityService
     )
 
   canDiscardComment: (comment) ->
-    !comment.discardedAt && (
-      comment.authorIs(Session.user()) ||
-      comment.discussion().adminsInclude(Session.user())
-    )
+    !comment.discardedAt &&
+    (@canEditComment(comment) || comment.discussion().adminsInclude(Session.user()))
 
   canUndiscardComment: (comment) ->
-    comment.discardedAt && (
-      comment.authorIs(Session.user()) ||
-      comment.discussion().adminsInclude(Session.user())
-    )
+    comment.discardedAt &&
+    (@canEditComment(comment) || comment.discussion().adminsInclude(Session.user()))
 
   canRemoveMembership: (membership) ->
     membership and
