@@ -52,7 +52,7 @@ export default
         params:
           id: id
       .then (data) =>
-        Flash.success('templates.demo_created')
+        Flash.success('templates.demo_created', 30000)
         @$router.push @urlFor(Records.groups.find(data.groups[0].id))
       .finally =>
         @processing = false

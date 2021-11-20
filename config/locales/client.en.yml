@@ -451,22 +451,6 @@ en:
       <p>Anyone may still comment or start a poll in a closed thread, but it will not appear in the group's thread list or on the dashboard.</p>
     image_alt: Closing threads all
 
-  mute_explanation_modal:
-    aria_label: Mute thread
-    mute_thread: Mute thread
-    body_html: |
-      Muting means you <strong>won't be notified about proposals</strong>, or any other activity in this thread, unless someone <strong>@mentions you</strong>.
-    body_html_2: |
-      Muted threads are hidden from <strong>Recent</strong> and <strong>Unread</strong> pages too. To find your Muted threads, select the <strong>Muted</strong> option in the sidebar
-    image_alt: Muted threads option in sidebar
-
-  dismiss_explanation_modal:
-    aria_label: Dismiss thread
-    dismiss_thread: Dismiss thread
-    body_html: |
-      <p>Dismissing a thread removes it from your unread items. If any new
-        activity occurs in the thread, it will show as unread again.</p>
-
   inbox:
     clear: 'Clear'
     latest: 'Latest'
