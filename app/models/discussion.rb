@@ -166,7 +166,11 @@ class Discussion < ApplicationRecord
     discussion.ranges_string =
      RangeSet.serialize RangeSet.reduce RangeSet.ranges_from_list discussion.items.order(:sequence_id).pluck(:sequence_id)
 
-    ignored_parents = discussion.items.includes(:eventable).filter {|e| e.kind == 'discussion_closed' || (e.eventable.respond_to?(:discarded_at) && e.eventable.discarded_at) }
+    ignored_parents = discussion.items.includes(:eventable).filter do |e|
+      ['discussion_closed', 'poll_expired', 'poll_closed_by_user'].include?(e.kind) ||
+      (e.eventable.respond_to?(:discarded_at) && e.eventable.discarded_at) }
+    end
+
     ignored_children = discussion.items.where(parent_id: ignored_parents.map(&:id))
     ignored_sequence_ids = ignored_parents.map(&:sequence_id).concat(ignored_children.pluck(:sequence_id)).flatten.uniq
 
