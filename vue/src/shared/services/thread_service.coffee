@@ -268,21 +268,8 @@ export default new class ThreadService
       Flash.success "discussion.closed.reopened", {}, 'undo', => @close(thread)
 
   dismiss: (thread) ->
-    if !Session.user().hasExperienced("dismissThread")
-      Records.users.saveExperience("dismissThread")
-      openModal
-        component: 'ConfirmModal'
-        props:
-          confirm:
-            submit: => @dismiss(thread)
-            text:
-              title: 'dismiss_explanation_modal.dismiss_thread'
-              helptext: 'dismiss_explanation_modal.body_html'
-              submit: 'dismiss_explanation_modal.dismiss_thread'
-              flash: 'dashboard_page.thread_dismissed'
-    else
-      thread.dismiss().then =>
-        Flash.success "dashboard_page.thread_dismissed", {}, 'undo', => @recall(thread)
+    thread.dismiss().then =>
+      Flash.success "dashboard_page.thread_dismissed", {}, 'undo', => @recall(thread)
 
   recall: (thread) ->
     thread.recall().then =>
