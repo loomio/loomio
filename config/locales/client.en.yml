@@ -860,6 +860,7 @@ en:
     close_thread: Close thread
     reopen_thread: Re-open thread
     delete_thread: Delete thread
+    discard_thread: Discard thread
     notification_history: Notification history
     move_item: Move item
     add_poll_to_thread: Add to thread
@@ -1591,6 +1592,7 @@ en:
     changing_nesting_is_slow: Changes to nesting can take a couple of minutes to process.
 
   delete_thread_form:
+    thread_discarded: Thread discarded
     aria_label: 'Delete thread'
     title: Delete thread
     body: Are you sure you want to delete this thread?

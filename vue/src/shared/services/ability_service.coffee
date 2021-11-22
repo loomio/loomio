@@ -67,8 +67,15 @@ export default new class AbilityService
 
   canMoveThread: (thread) -> @canEditThread(thread)
 
+  canDiscardThread: (thread) ->
+    !thread.discardedAt && thread.adminsInclude(Session.user())
+
   canDeleteThread: (thread) ->
-    thread.adminsInclude(Session.user()) or thread.author() == Session.user()
+    return false unless thread.discardedAt
+    if thread.groupId
+      thread.group().adminsInclude(Session.user())
+    else
+      thread.adminsInclude(Session.user())
 
   canChangeGroupVolume: (group) ->
     group.membersInclude(Session.user())
@@ -247,7 +254,11 @@ export default new class AbilityService
     poll.discardedAt && poll.adminsInclude(Session.user())
 
   canDeletePoll: (poll) ->
-    poll.discardedAt && poll.adminsInclude(Session.user())
+    return false if !poll.discardedAt
+    if poll.groupId
+      poll.group().adminsInclude(Session.user())
+    else
+      poll.adminsInclude(Session.user())
 
   canExportPoll: (poll) ->
     !poll.discardedAt && poll.membersInclude(Session.user()) && (!poll.hideResultsUntilClosed || poll.closedAt)

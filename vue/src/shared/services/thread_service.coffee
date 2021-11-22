@@ -186,33 +186,17 @@ export default new class ThreadService
           component: 'MoveThreadForm'
           props: { discussion: discussion.clone() }
 
-    # delete_thread:
-    #   menu: true
-    #   canPerform: -> AbilityService.canDeleteThread(discussion)
-    #   perform: ->
-    #     openModal
-    #       component: 'ConfirmModal',
-    #       props:
-    #         confirm:
-    #           submit: discussion.destroy
-    #           text:
-    #             title: 'delete_thread_form.title'
-    #             helptext: 'delete_thread_form.body'
-    #             submit: 'delete_thread_form.confirm'
-    #             flash: 'delete_thread_form.messages.success'
-    #           redirect: LmoUrlService.group discussion.group()
-
-    discard_thread:
-      name: 'action_dock.delete_thread'
-      icon: 'mdi-delete-outline'
+    delete_thread:
       menu: true
+      icon: 'mdi-delete'
+      name: 'action_dock.delete_thread'
       canPerform: -> AbilityService.canDeleteThread(discussion)
       perform: ->
         openModal
           component: 'ConfirmModal',
           props:
             confirm:
-              submit: discussion.discard
+              submit: discussion.destroy
               text:
                 title: 'delete_thread_form.title'
                 helptext: 'delete_thread_form.body'
@@ -220,31 +204,41 @@ export default new class ThreadService
                 flash: 'delete_thread_form.messages.success'
               redirect: LmoUrlService.group discussion.group()
 
-  mute: (thread, override = false) ->
-    if !Session.user().hasExperienced("mutingThread") and !override
-      Records.users.saveExperience("mutingThread")
-      Records.users.updateProfile(Session.user()).then ->
-        openModal
-          component: 'ConfirmModal'
-          props:
-            confirm:
-              submit: -> thread.saveVolume('mute', true)
-              text:
-                title: 'mute_explanation_modal.mute_thread'
-                flash: 'discussion.volume.mute_message'
-                fragment: 'mute_thread'
-    else
-      previousVolume = thread.volume()
-      thread.saveVolume('mute').then =>
-        Flash.success "discussion.volume.mute_message",
-          name: thread.title
-        , 'undo', => @unmute(thread, previousVolume)
+    discard_thread:
+      name: 'action_dock.discard_thread'
+      icon: 'mdi-trash-can-outline'
+      menu: true
+      canPerform: -> AbilityService.canDiscardThread(discussion)
+      perform: ->
+        discussion.discard().then ->
+          Flash.success('delete_thread_form.thread_discarded')
+          @$router.push LmoUrlService.group discussion.group()
 
-  unmute: (thread, previousVolume = 'normal') ->
-    thread.saveVolume(previousVolume).then =>
-      Flash.success "discussion.volume.unmute_message",
-        name: thread.title
-      , 'undo', => @mute(thread)
+  # mute: (thread, override = false) ->
+  #   if !Session.user().hasExperienced("mutingThread") and !override
+  #     Records.users.saveExperience("mutingThread")
+  #     Records.users.updateProfile(Session.user()).then ->
+  #       openModal
+  #         component: 'ConfirmModal'
+  #         props:
+  #           confirm:
+  #             submit: -> thread.saveVolume('mute', true)
+  #             text:
+  #               title: 'mute_explanation_modal.mute_thread'
+  #               flash: 'discussion.volume.mute_message'
+  #               fragment: 'mute_thread'
+  #   else
+  #     previousVolume = thread.volume()
+  #     thread.saveVolume('mute').then =>
+  #       Flash.success "discussion.volume.mute_message",
+  #         name: thread.title
+  #       , 'undo', => @unmute(thread, previousVolume)
+  #
+  # unmute: (thread, previousVolume = 'normal') ->
+  #   thread.saveVolume(previousVolume).then =>
+  #     Flash.success "discussion.volume.unmute_message",
+  #       name: thread.title
+  #     , 'undo', => @mute(thread)
 
   close: (thread) ->
     if !Session.user().hasExperienced("closingThread")
