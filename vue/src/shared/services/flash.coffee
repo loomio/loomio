@@ -5,7 +5,7 @@ createFlashLevel = (level, duration) ->
   (translateKey, translateValues, actionKey, actionFn) ->
     EventBus.$emit("flashMessage",
       level:     level
-      duration:  duration or 3500
+      duration:  duration || 4000
       message:   translateKey
       options:   translateValues
       action:    actionKey
