@@ -125,7 +125,7 @@ module Loomio
     config.action_dispatch.use_cookies_with_metadata = false
 
     config.action_dispatch.default_headers = {
-      # 'X-Frame-Options' => 'SAMEORIGIN',
+      'X-Frame-Options' => 'SAMEORIGIN',
       'X-XSS-Protection' => '1; mode=block',
       'X-Content-Type-Options' => 'nosniff',
       'X-Download-Options' => 'noopen',
