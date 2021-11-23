@@ -11,6 +11,7 @@ class API::V1::TemplatesController < API::V1::RestfulController
     template = Template.find(params[:id])
     clone = RecordCloner.new(recorded_at: template.recorded_at)
                        .create_clone_group_for_actor(template.record, current_user)
+    clone.discussion_ids.each {|id| RepairThreadWorker.perform_async(id) }
     self.collection = [clone]
     respond_with_collection
   end

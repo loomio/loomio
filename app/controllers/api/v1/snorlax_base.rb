@@ -282,7 +282,7 @@ class API::V1::SnorlaxBase < ActionController::Base
     render json: {exception: "#{error.class} #{error.to_s}"}, root: false, status: status
   end
 
-  def respond_with_errors
-    render json: {errors: resource.errors.as_json}, root: false, status: 422
+  def respond_with_errors(record = resource)
+    render json: {errors: record.errors.as_json}, root: false, status: 422
   end
 end

@@ -8,9 +8,12 @@ class RecordCloner
     clone_group = new_clone_group(group)
     clone_group.creator = actor
     clone_group.subscription = Subscription.new(plan: 'demo', owner: actor)
-    clone_group.save!
-    clone_group.add_admin! actor
-    clone_group.reload
+    if clone_group.save
+      clone_group.add_admin! actor
+      clone_group.reload
+    else
+      clone_group
+    end
   end
 
   def new_clone_group(group, clone_parent = nil)
@@ -63,7 +66,7 @@ class RecordCloner
       title
       description
       description_format
-      pinned
+      pinned_at
       max_depth
       newest_first
       content_locale
