@@ -27,6 +27,7 @@ en:
       Once you know what Loomio is about, you can <b>start a free trial</b> group for
       your organization. A trial group could turn into your permanent home on Loomio, so we won't automatically delete it.
 
+    generating_demo: 'Ok, wait right there! Generating a demo takes around 20 seconds.'
     demo_created: Demo group created, just for you!
     start_demo: Start demo
 

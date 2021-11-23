@@ -17,5 +17,6 @@ export default class Flash
   @info:    createFlashLevel 'info'
   @warning: createFlashLevel 'warning'
   @error:   createFlashLevel 'error'
+  @wait:    createFlashLevel 'wait', 30000
 
 window.Loomio.flash = Flash

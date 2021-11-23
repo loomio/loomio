@@ -45,14 +45,14 @@ export default
           @templates = Records.templates.find(groupId: null)
 
     cloneTemplate: (id) ->
-      Flash.success('common.please_wait')
+      Flash.wait('templates.generating_demo')
       @processing = true
       Records.post
         path: 'templates/clone'
         params:
           id: id
       .then (data) =>
-        Flash.success('templates.demo_created', 30000)
+        Flash.success('templates.demo_created')
         @$router.push @urlFor(Records.groups.find(data.groups[0].id))
       .finally =>
         @processing = false
