@@ -9,7 +9,8 @@ class RecordCloner
     clone_group.creator = actor
     clone_group.subscription = Subscription.new(plan: 'demo', owner: actor)
     if clone_group.save
-      clone_group.add_admin! actor
+      Stance.where(poll_id: clone_group.poll_ids).each(&:update_option_scores!)
+      clone_group.add_member! actor
       clone_group.reload
     else
       clone_group

@@ -21,8 +21,9 @@ class StanceService
 
     actor.ability.authorize! :vote_in, stance.poll
 
+    # this is the problem...
     if params.keys.any?
-      stance.stance_choices.clear
+      stance.stance_choices.each(&:mark_for_destruction)
       stance.assign_attributes_and_files(params)
     end
 
