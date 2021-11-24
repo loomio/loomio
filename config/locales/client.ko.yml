@@ -1,4 +1,6 @@
 ko:
+  templates:
+    try_loomio: 루미오 사용해보기
   loomio_onboarding:
     group_progress_card:
       activities:
@@ -347,19 +349,6 @@ ko:
         <p>보기에서 오래되거나 관련없는 스레드를 제거하고 토론이 닫혔음을 알립니다.</p>
         <p>누구나 닫힌 스레드에서 여전히 댓글을 달거나 설문조사를 할 수 있지만 그룹의 스레드 목록이나 대시보드에는 나타나지 않습니다.</p>
     image_alt: 모든 스레드 닫기
-  mute_explanation_modal:
-    aria_label: 스레드 알림 해제
-    mute_thread: 스레드 알림 해제
-    body_html: |
-        스레드 알림을 해제 한다는 것은 누군가가 <strong> 당신을 @언급</strong>하지 않는 이상, 제안이나 어떠한 스레드에 대한 활동내역에 대한 알림을 받지 않는 것을 의미합니다.
-    body_html_2: |
-        알림 해제된 스레드는 <strong>최근</strong> 및 <strong>읽지 않은</strong> 페이지에서도 숨겨집니다. 알림 해제 된 스레드를 찾기 위해서는, 사이드바에서 <strong> 알림 해제</strong> 옵션을 선택하십시오.
-    image_alt: 사이드바에 있는 대기중인 스레드 선택
-  dismiss_explanation_modal:
-    aria_label: 스레드를 기각합니다.
-    dismiss_thread: 스레드를 기각합니다.
-    body_html: |
-        <p>스레드를 닫으면 읽지 않은 항목 중에서 해당 스레드가 제거됩니다. 만약 어떤 새로운 활동이 있을 경우 스레드는 다시 읽지 않음 으로 표시됩니다.</p>
   inbox:
     clear: '지우기'
     latest: '최신'
@@ -1256,8 +1245,6 @@ ko:
       success: 쓰레드가 {{name}} 으로 이동되었습니다.
   delete_comment_dialog:
     title: '댓글삭제'
-    question: '댓글을 지우시겠습니까?'
-    confirm: '댓글삭제'
   contact_message_form:
     contact_us: '연락하기'
     name_label: '이름'

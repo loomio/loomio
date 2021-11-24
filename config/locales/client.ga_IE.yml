@@ -1,4 +1,6 @@
 ga_IE:
+  templates:
+    try_loomio: Bain triail as Loomio
   plan_names:
     free: Saor in aisce
     pro: Pro
@@ -38,6 +40,7 @@ ga_IE:
   timezones:
     local: An t-am áitiúil ({{luach}})
   common:
+    please_wait: Fan le do thoil
     version: Leagan
     no_results_found: Níor aimsíodh aon rud
     option: Rogha
@@ -175,12 +178,6 @@ ga_IE:
     user:
       title: Socruithe ríomhphoist i gcomhair baiclí nua
       apply_to_all: "Cuir na socruithe seo i bhfeidhm ar gach ceann de mo bhaiclí."
-  mute_explanation_modal:
-    aria_label: Balbhaigh an tsnáthaid
-    mute_thread: Balbhaigh an tsnáthaid
-  dismiss_explanation_modal:
-    aria_label: Déan neamhaird den snáthaid
-    dismiss_thread: Déan neamhaird den snáthaid
   inbox:
     clear: 'Glan'
     latest: 'Is déanaí'
@@ -514,8 +511,6 @@ ga_IE:
     confirm: Bog an snáithe
   delete_comment_dialog:
     title: 'Scrios an trácht'
-    question: 'An bhfuil tú cinnte go dteastaíonn uait an trácht seo a scriosadh?'
-    confirm: 'Scrios an trácht'
   contact_message_form:
     contact_us: 'Déan teagmháil linn'
     name_label: 'D''ainm'

@@ -278,20 +278,6 @@ cmn:
   close_explanation_modal:
     aria_label: 关闭话题
     close_thread: 关闭话题
-  mute_explanation_modal:
-    aria_label: 话题设为静音
-    mute_thread: 话题设为静音
-    body_html: |
-        静音代表您<strong>不会被通知关于此提案的讯息</strong>，或是其他在此话题的活动，除非有某人<strong>@提及您</strong>。
-    body_html_2: |
-        已静音的话题也会从<strong>最近</strong>与<strong>未读</strong>页面中隐藏。要寻找您的静音话题，在侧边栏中选取<strong>已静音</strong>选项
-    image_alt: 在侧边栏中的已静音话题选项
-  dismiss_explanation_modal:
-    aria_label: 暂时忽略话题
-    dismiss_thread: 暂时忽略话题
-    body_html: |
-        <p>暂时忽略话题会将其从您的未读项目中移除。若有任何新的
-        动态在该话题发生，它将会再次显示在您的未读项目中。</p>
   inbox:
     clear: '清除'
     latest: '最新'
@@ -900,8 +886,6 @@ cmn:
       success: 话题已被移动到 {{name}}
   delete_comment_dialog:
     title: '删除意见'
-    question: '你确定你想要删除这条意见吗？'
-    confirm: '删除意见'
   contact_message_form:
     subject_label: "主题"
   hint:

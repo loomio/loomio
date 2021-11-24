@@ -444,6 +444,7 @@ es:
       poll_closing_soon: '%{poll_type}cierra en 24 horas:%{title}'
       poll_closing_soon_author: 'Tu %{poll_type}cierra en 24 horas:%{title}'
       poll_expired: "%{poll_type}ha cerrado:%{title}"
+      poll_expired_author: 'Comparte un resultado para: %{title}'
       poll_option_added: '%{actor} añadió opciones en: %{title}'
       poll_option_added_author: '%{actor} añadió opciones en: %{title}'
       outcome_created: '%{actor}compartió un %{poll_type} resultado:%{title}'

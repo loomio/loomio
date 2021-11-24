@@ -1,4 +1,6 @@
 nl_NL:
+  templates:
+    try_loomio: Probeer Loomio
   doctypes:
     youtube_video: YouTube Video
     image: Afbeelding
@@ -137,6 +139,7 @@ nl_NL:
   timezones:
     local: Plaatselijke tijd ({{value}})
   common:
+    please_wait: Even geduld
     version: Versie
     none: Geen
     empty: Leeg
@@ -383,20 +386,6 @@ nl_NL:
         <p>Sluit oude of onbelangrijke borden zodat deze niet meer zichtbaar zijn, en om aan te geven dat de discussie gesloten is.</p>
         <p>Op een gesloten bord kan nog steeds iedereen reacties plaatsen of een peiling starten, maar deze zullen niet verschijnen op de groep's bordenlijst, of op het dashboard.</p>
     image_alt: Sluit alle borden
-  mute_explanation_modal:
-    aria_label: Bord dempen
-    mute_thread: Bord dempen
-    body_html: |
-        Dempen betekend dat je <strong>geen meldingen krijgt over voorstellen</strong>, noch alle andere activiteiten op dit bord, tenzij iemand je <strong>@noemt</strong>.
-    body_html_2: |
-        'Gedempte borden' zijn ook verborgen op <strong>Recente</strong> en <strong>Ongelezen</strong> pagina's. Selecteer de <strong>Dedempt</strong> optie in de zijbalk om gedempte borden te vinden
-    image_alt: '''Gedempte borden'' optie is terug te vinden in de zijbalk'
-  dismiss_explanation_modal:
-    aria_label: Bord afwijzen
-    dismiss_thread: 'Negeer bord '
-    body_html: |
-        <p>Het afwijzen van een bord verwijdert deze uit je ongelezen items. Wanneer er nieuwe
-        activiteit is op het bord verschijnt deze opnieuw als ongelezen.</p>
   inbox:
     clear: 'Leegmaken'
     latest: 'Laatste'
@@ -1395,8 +1384,6 @@ nl_NL:
       success: Bord is verplaatst naar {{name}}
   delete_comment_dialog:
     title: 'Verwijder reactie'
-    question: 'Weet je zeker dat je deze reactie wilt verwijderen?'
-    confirm: 'Verwijder reactie'
   contact_message_form:
     title: "Hallo! Hoe kunnen we helpen?"
     contact_us_email: "Je kunt ons ook mailen: <a href=\"mailto:{{email}}\">{{email}}</a>"
@@ -1434,7 +1421,6 @@ nl_NL:
     order_by: Sorteer groepen op
   global:
     messages:
-      app_update: 'Er is een nieuwe versie van de app beschikbaar'
       reload: 'Herladen'
   decision_tools_card:
     choose_type: Kies peiling type

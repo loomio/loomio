@@ -15,6 +15,11 @@ zh_TW:
     add_due_date: 新增到期日
     task_updated_done: '工作已標記為完成！'
     task_updated_not_done: '工作被標記為未完成'
+  templates:
+    try_loomio: 試試 Loomio
+    generating_demo: '好的，請稍等！產生範例大概需要 20 秒。'
+    demo_created: 示範用群組已建立，只為您！
+    start_demo: 試用範例
   doctypes:
     youtube_video: YouTube 影片
     image: 圖片
@@ -80,6 +85,8 @@ zh_TW:
     chargify_link: "計費入口"
     referral_code_help: "給朋友折扣，也為您贏得一些可用餘額！"
     manage_payment_details: "管理付款詳細資訊"
+    manage_subscription: "管理訂閱"
+    amount: 數量
   loomio_tags:
     all_tags: 所有標籤
     tags: 標籤
@@ -154,6 +161,7 @@ zh_TW:
   timezones:
     local: 本地時間 ({{value}})
   common:
+    please_wait: 請稍候
     optional: （選擇性）
     version: 版本
     none: 無
@@ -262,6 +270,8 @@ zh_TW:
       done: 完成
       start: 啟動
       delete: 刪除
+      discard: 丟棄
+      restore: 還原
       unsubscribe: 取消訂閱
       subscribe: 訂閱
       unignore: 取消忽略
@@ -406,20 +416,6 @@ zh_TW:
         <p>關閉舊或無關的討論串以將其從檢視畫面中移除，並指出討論已結束。</p>
         <p>每個人都還是可以在已關閉的討論串中發表評論或發起投票，但它不會再出現在群組的討論串清單與儀表板上。</p>
     image_alt: 關閉討論串所有
-  mute_explanation_modal:
-    aria_label: 討論串設為靜音
-    mute_thread: 討論串設為靜音
-    body_html: |
-        靜音代表您<strong>不會被通知關於此提案的訊息</strong>，或是其他在此討論串的活動，除非有某人<strong>@提及您</strong>。
-    body_html_2: |
-        已靜音的討論串也會從<strong>最近</strong>與<strong>未讀</strong>頁面中隱藏。要尋找您的靜音討論串，在側邊欄中選取<strong>已靜音</strong>選項
-    image_alt: 在側邊欄中的已靜音討論串選項
-  dismiss_explanation_modal:
-    aria_label: 暫時忽略討論串
-    dismiss_thread: 暫時忽略討論串
-    body_html: |
-        <p>暫時忽略討論串會將其從您的未讀項目中移除。若有任何新的
-        動態在該討論串發生，它將會再次顯示在您的未讀項目中。</p>
   inbox:
     clear: '清除'
     latest: '最新'
@@ -1256,6 +1252,7 @@ zh_TW:
     update_profile: '更新簡歷'
     deactivate_account: '停用使用者帳號'
     help_translate: "協助我們翻譯 Loomio"
+    updated_on_sign_in: 由您的瀏覽器提供並在您登入時更新
   text_editor:
     select_text_to_link: 選取要連結的文字並再試一次
     insert_link: 插入連結
@@ -1496,8 +1493,7 @@ zh_TW:
       success: 討論串已被移動到 {{name}}
   delete_comment_dialog:
     title: '刪除意見'
-    question: '您確定要刪除這個意見嗎？'
-    confirm: '刪除意見'
+    question: '這將會永久刪除此留言。若您繼續，其將無法還原。'
   contact_message_form:
     alt_title: "聯絡 Loomio 支援"
     title: "嗨，您好！我們可以怎麼協助您？"
@@ -1540,7 +1536,7 @@ zh_TW:
     order_by: 群組排序由
   global:
     messages:
-      app_update: '新版的應用程式已經可用'
+      app_update: '新版的 Loomio 已發佈。請儲存您的工作並重新載入。'
       reload: '重新整理'
   decision_tools_card:
     choose_type: 選擇投票類型

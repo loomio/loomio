@@ -1,4 +1,6 @@
 hu:
+  templates:
+    try_loomio: Próbáld ki a Loomio-t
   doctypes:
     document: Dokumentum
   loomio_onboarding:
@@ -92,6 +94,7 @@ hu:
   timezones:
     local: Helyi idő ({{value}})
   common:
+    please_wait: Pillanat
     version: Verzió
     no_results_found: Nem található eredmény
     view: Megnéz
@@ -311,19 +314,6 @@ hu:
     aria_label: Téma lezárása
     close_thread: Téma lezárása
     image_alt: Minden téma lezárása
-  mute_explanation_modal:
-    aria_label: Téma némítása
-    mute_thread: Téma némítása
-    body_html: |
-        A némítás azt jelenti, hogy <strong>nem kapsz értesítést a javaslatokról</strong>, vagy bármi más tevékenységről a témában, kivéve, ha valaki <strong>@megemlít téged</strong>.
-    body_html_2: |
-        A némított témák nincsenek feltüntetve a <strong>Friss</strong> és <strong>Olvasatlan</strong> oldalakon. Némított témáid megtalálásához válaszd ki a <strong>Némított</strong> menüpontot az oldalsávban.
-    image_alt: Némított témák beállításai az oldalsávban
-  dismiss_explanation_modal:
-    aria_label: Téma elvetése
-    dismiss_thread: Téma elvetése
-    body_html: |
-        <p>Ha elvetsz egy témát, eltűnik az olvasatlan témáid közül. Ha bármi történik, újra bekerül az olvastlanok közé.</p>
   inbox:
     clear: 'Töröl'
     latest: 'Legutóbbi'
@@ -1109,8 +1099,6 @@ hu:
       success: A téma áthelyezve a(z) {{name}} mappába
   delete_comment_dialog:
     title: 'Hozzászólás törlése'
-    question: 'Biztosan törölni akarod ezt a hozzászólást?'
-    confirm: 'Hozzászólás törlése'
   contact_message_form:
     title: "Szia! Hogyan segíthetünk?"
     contact_us_email: "E-mailt is küldhetsz nekünk: <a href=\"mailto:{{email}}\"> {{email}} </a>"
@@ -1145,7 +1133,6 @@ hu:
     newest_first: Először a legújabb
   global:
     messages:
-      app_update: 'Az alkalmazás új verziója elérhető'
       reload: 'Reload'
   decision_tools_card:
     title: Döntéstámogatás

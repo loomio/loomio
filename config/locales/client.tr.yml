@@ -1,4 +1,6 @@
 tr:
+  templates:
+    try_loomio: Loomio'yu deneyin
   loomio_onboarding:
     group_progress_card:
       activities:
@@ -102,6 +104,7 @@ tr:
   timezones:
     local: Yerel saat ({{value}})
   common:
+    please_wait: Lütfen bekleyin
     version: Versiyon
     empty: Boş
     no_results_found: Sonuç bulunamadı
@@ -660,8 +663,6 @@ tr:
       success: 'Müzakere {{name}} grubuna taşındı '
   delete_comment_dialog:
     title: 'Yorumu sil'
-    question: 'Bu yorumu silmek istediğinden emin misin?'
-    confirm: 'Yorumu sil'
   contact_message_form:
     contact_us: 'Bizimle iletişime geçin'
     name_label: 'Adın'

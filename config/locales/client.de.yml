@@ -1,4 +1,6 @@
 de:
+  templates:
+    try_loomio: Loomio ausprobieren
   doctypes:
     document: 'Dokument '
   loomio_onboarding:
@@ -125,6 +127,7 @@ de:
   timezones:
     local: Ortszeit ({{value}})
   common:
+    please_wait: Bitte warte
     version: Version
     none: Keine
     empty: Leer
@@ -372,20 +375,6 @@ de:
         <p>Schliesse alte oder irrelevante Diskussionen um sie aus der Ansicht zu entfernen und um anzuzeigen das die Diskussion beendet wurde.</p>
         <p>Alle können auch weiterhin in geschlossenen Diskussionen Kommentare verfassen oder Umfragen starten, aber die Diskussion wird nicht mehr in der Diskussionsliste der Gruppe oder dem Schreibtisch erscheinen.</p>
     image_alt: Alle Diskussionen schließen
-  mute_explanation_modal:
-    aria_label: Diskussion stummschalten
-    mute_thread: Diskussion stummschalten
-    body_html: |
-        Stummschaltung bedeutet, dass du <strong>über Vorschläge</strong> oder andere Aktivitäten in dieser Diskussion nicht benachrichtigt wirst, es sei denn du wirst von jemandem mit <strong>@</strong> markiert.
-    body_html_2: |
-        Stummgeschaltete Diskussionen sind auch auf den Seiten <strong>"Zuletzt"</strong> und <strong>"Ungelesen"</strong> verborgen. Um deine stummgeschalteten Diskussionen zu finden, wähle die Option <strong>"stumm"</strong> in der Seitenleiste
-    image_alt: Option für stummgeschaltete Diskussionen in der Seitenleiste
-  dismiss_explanation_modal:
-    aria_label: Diskussion ausblenden
-    dismiss_thread: Diskussion ausblenden
-    body_html: |
-        <p>Eine ausgeblendete Diskussion wird aus der ungelesenen Diskussionen-Übersicht entfernt.
-        Erst bei neuen Aktivitäten wird die Diskussion wieder als ungelesen angezeigt.</p>
   inbox:
     clear: 'Löschen '
     latest: 'Letzte'
@@ -1425,8 +1414,6 @@ de:
       success: Diskussion wurde nach {{name}} verschoben
   delete_comment_dialog:
     title: 'Kommentar löschen'
-    question: 'Bist du sicher, dass du dieses Kommentar löschen möchtest?'
-    confirm: 'Kommentar löschen'
   contact_message_form:
     title: "Hey! Wie können wir dir helfen?"
     contact_us_email: "Oder schicke uns eine E-Mail: <a href=\"mailto:{{email}}\">{{email}}</a>"
@@ -1464,7 +1451,6 @@ de:
     order_by: Sortiere Gruppen nach
   global:
     messages:
-      app_update: 'Eine neue Version der App ist verfügbar'
       reload: 'Reload'
   decision_tools_card:
     choose_type: Wähle den Abstimmungstyp

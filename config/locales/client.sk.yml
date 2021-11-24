@@ -1,9 +1,12 @@
 sk:
+  templates:
+    try_loomio: Vyskúšajte Loomio
   subscription_status:
     members: "Členovia"
   loomio_tags:
     name_label: Meno
   common:
+    please_wait: Počkajte prosím
     version: Verzia
     time:
       am: dop.
@@ -130,8 +133,6 @@ sk:
     close_thread: 'Uzatvoriť'
   delete_comment_dialog:
     title: 'Odstrániť komentár'
-    question: 'Naozaj chcete odstrániť tento komentár?'
-    confirm: 'Odstrániť komentár'
   contact_message_form:
     name_label: 'Vaše meno'
     subject_label: "Téma"

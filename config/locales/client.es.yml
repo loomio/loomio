@@ -15,6 +15,10 @@ es:
     add_due_date: Añadir fecha de vencimiento
     task_updated_done: '¡Tarea señalada como hecha!'
     task_updated_not_done: '¡Tarea señalada como no hecha!'
+  templates:
+    try_loomio: Prueba Loomio
+    demo_created: Grupo de demostración creado, ¡solo para ti!
+    start_demo: Iniciar demo
   doctypes:
     youtube_video: Video Youtube
     image: Imagen
@@ -80,6 +84,8 @@ es:
     chargify_link: "Factura electrónica"
     referral_code_help: "Da a un amigo un descuento, consigue para ti un crédito"
     manage_payment_details: "Gestionar detalles del pago"
+    manage_subscription: "Administrar suscripción"
+    amount: Cantidad
   loomio_tags:
     all_tags: Todas las etiquetas
     tags: Etiquetas
@@ -154,6 +160,7 @@ es:
   timezones:
     local: Hora local ({{value}})
   common:
+    please_wait: Por favor espera
     optional: (opcional)
     version: Versión
     none: Ninguno
@@ -262,6 +269,8 @@ es:
       done: Listo
       start: 'Empezar '
       delete: Eliminar
+      discard: Descartar
+      restore: Restaurar
       unsubscribe: Cancelar suscripción
       subscribe: Suscribirme a la lista de correo electrónico
       unignore: Dejar de ignorar
@@ -406,20 +415,6 @@ es:
         <p>Cierra hilos viejos e irrelevantes para que no sean visibles e indicar que la discusión se ha cerrado.</p>
         <p>Cualquiera puede comentar o iniciar un sondeo sobre un hilo cerrado, pero no aparecerá en el listado de los hilos del grupo o en el página de inicio. </p>
     image_alt: Todos los hilos cerrados
-  mute_explanation_modal:
-    aria_label: 'Silenciar hilo '
-    mute_thread: Silenciar hilo
-    body_html: |
-        Silenciar significa que <strong>no se te enviarán notificaciones sobre propuestas</strong>, o cualquier otra actividad en este hilo, a menos que alguien te <strong>@mencione</strong>.
-    body_html_2: |
-        Los hilos silenciados no serán visibles ni en la página <strong>Recientes</strong> ni en la de <strong>No leído</strong>. Para encontrar sus hilos silenciados, seleccione la opción <strong>Silenciado</strong> en la barra lateral de navegación.
-    image_alt: 'Opción de hilos silenciados en la barra lateral '
-  dismiss_explanation_modal:
-    aria_label: Ignorar hilo
-    dismiss_thread: Ignorar hilo
-    body_html: |
-        <p>Ignorar un hilo lo elimina de la lista de no leídos. Si alguna nueva
-        actividad ocurre en el hilo, volverá a aparecer como no leído otra vez.</p>
   inbox:
     clear: 'Limpiar'
     latest: 'Últimos'
@@ -1256,6 +1251,7 @@ es:
     update_profile: 'Actualizar perfil'
     deactivate_account: 'Desactivar la cuenta de usuario'
     help_translate: "Ayúdanos a traducir Loomio"
+    updated_on_sign_in: Proporcionado por su navegador y actualizado al iniciar sesión
   text_editor:
     select_text_to_link: Selecciona el texto del enlace e inténtalo de nuevo
     insert_link: Inserte un enlace
@@ -1495,8 +1491,7 @@ es:
       success: El hilo ha sido movido a {{name}}
   delete_comment_dialog:
     title: 'Borrar comentario'
-    question: '¿Estás seguro de que quieres borrar este comentario?'
-    confirm: 'Borrar comentario'
+    question: 'Esto eliminará permanentemente este comentario. Si continúa, no se puede restaurar.'
   contact_message_form:
     alt_title: "Contacta soporte al usuario"
     title: "¡Hola! ¿Cómo podemos ayudarle?"
@@ -1539,7 +1534,7 @@ es:
     order_by: Grupos ordenados por
   global:
     messages:
-      app_update: 'Una nueva versión de la app está disponible '
+      app_update: 'Se ha lanzado una nueva versión de Loomio. Por favor, guarde su trabajo y vuelva a cargar.'
       reload: 'Actualizar'
   decision_tools_card:
     choose_type: Elegir tipo de sondeo

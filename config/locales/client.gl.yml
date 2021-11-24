@@ -1,9 +1,12 @@
 gl:
+  templates:
+    try_loomio: Proba Loomio
   subscription_status:
     members: "Membros"
   loomio_tags:
     name_label: Nome
   common:
+    please_wait: Agarde, por favor
     version: Versión
     time:
       am: am
@@ -128,7 +131,6 @@ gl:
     close_thread: 'Pechar'
   delete_comment_dialog:
     title: 'Borrar comentario'
-    confirm: 'Borrar comentario'
   contact_message_form:
     name_label: 'O teu nome'
     subject_label: "Tema"

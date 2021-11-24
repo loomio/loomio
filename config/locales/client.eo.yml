@@ -1,4 +1,6 @@
 eo:
+  templates:
+    try_loomio: Provu uzi Loomio-n
   loomio_onboarding:
     group_progress_card:
       activities:
@@ -103,6 +105,7 @@ eo:
   timezones:
     local: Loka tempo ({{value}})
   common:
+    please_wait: Bonvolu atendi
     version: Versio
     no_results_found: Neniu rezulto trovita
     view: Vidi
@@ -239,9 +242,6 @@ eo:
   close_explanation_modal:
     aria_label: Fermigi fadenon
     close_thread: Fermigi fadenon
-  mute_explanation_modal:
-    aria_label: Silentigi fadenon
-    mute_thread: Silentigi fadenon
   inbox:
     clear: 'Klara'
     latest: 'Plej lasta'
@@ -490,8 +490,6 @@ eo:
     confirm: Movi fadenon
   delete_comment_dialog:
     title: 'Forigi komenton'
-    question: 'Ĉu vi certas, ke vi volas forigi tiun ĉi komenton?'
-    confirm: 'Forigi komenton'
   contact_message_form:
     title: "Saluton! Kiel ni povas helpi?"
     contact_us: 'Kontakti nin'

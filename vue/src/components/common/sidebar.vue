@@ -102,6 +102,7 @@ export default
     setProfilePicture: -> EventBus.$emit 'openModal', {component: 'ChangePictureForm'}
 
   computed:
+    isSignedIn: -> Session.isSignedIn()
     user: -> Session.user()
     activeGroup: -> if @group then [@group.id] else []
     logoUrl: -> AppConfig.theme.app_logo_src

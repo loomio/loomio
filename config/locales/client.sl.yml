@@ -1,4 +1,6 @@
 sl:
+  templates:
+    try_loomio: Preizkusi Loomio
   current_plan_button:
     upgrade: Nadgradi
   subscription_status:
@@ -44,6 +46,7 @@ sl:
     thumbsup: Palec gor
     thumbsdown: Palec dol
   common:
+    please_wait: Prosim, počakaj
     version: Verzija
     time_zone: Časovni pas
     local_time: Lokalni čas
@@ -110,12 +113,6 @@ sl:
   close_explanation_modal:
     aria_label: Zapri temo
     close_thread: Zapri temo
-  mute_explanation_modal:
-    aria_label: Utišaj temo
-    mute_thread: Utišaj temo
-  dismiss_explanation_modal:
-    aria_label: Opusti temo
-    dismiss_thread: Opusti temo
   inbox:
     clear: 'Počisti'
     unread: 'Neprebrano'
@@ -370,8 +367,6 @@ sl:
     confirm: 'Izbriši temo'
   delete_comment_dialog:
     title: 'Izbriši komentar'
-    question: 'Si prepričan/a, da želiš izbrisati ta komentar?'
-    confirm: 'Izbriši komentar'
   contact_message_form:
     name_label: 'Tvoje ime'
     subject_label: "Naslov"

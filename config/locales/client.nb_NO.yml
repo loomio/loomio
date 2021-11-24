@@ -211,17 +211,6 @@ nb_NO:
     aria_label: Lukk tråd
     close_thread: Lukk tråd
     image_alt: Lukker alle tråder
-  mute_explanation_modal:
-    aria_label: Demp tråd
-    mute_thread: Demp tråd
-    body_html: |
-        Demping betyr at du <strong> ikke vil motta varslinger om beslutninger </strong>, annen aktivitet i denne tråden, med mindre noen <strong> @nevner deg.</strong>.
-    body_html_2: |
-        Dempede tråder er skult fra <strong>SIste</strong> og <strong>Uleste </strong> sider også. For å finne dine dempede tråder så kan du velge <strong>Dempede</strong> i sidemenyen
-    image_alt: Alternativer for dempede tråder i sidemenyen.
-  dismiss_explanation_modal:
-    aria_label: Avslutt tråd
-    dismiss_thread: Avslutt tråd
   inbox:
     clear: 'Tøm'
     latest: 'Siste'
@@ -538,8 +527,6 @@ nb_NO:
     pin_thread: Fest tråd
   delete_comment_dialog:
     title: 'Slett kommentar'
-    question: 'Er du sikker på at du vil slette denne kommentaren?'
-    confirm: 'Slett kommentar'
   decision_tools_card:
     proposal_title: Forslag
     count_title: Ja / Nei

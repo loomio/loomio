@@ -1,4 +1,6 @@
 he:
+  templates:
+    try_loomio: נסו את Loomio
   loomio_onboarding:
     group_progress_card:
       activities:
@@ -66,6 +68,7 @@ he:
   timezones:
     local: זמן מקומי ({{value}})
   common:
+    please_wait: נא להמתין
     version: גירסא
     you: אתה
     expand: הרחבה
@@ -249,19 +252,6 @@ he:
     aria_label: סגור שיחה
     close_thread: סגור שיחה
     image_alt: סוגר את כל השיחות
-  mute_explanation_modal:
-    aria_label: השתק שיחה
-    mute_thread: השתק שיחה
-    body_html: |
-        השתקה אומרת ש <strong>לא תקבלו עדכונים על הצעות</strong>, או כל פעילות אחרת בשיחה זו, אלא אם מישהו  <strong>מזכיר אותך עם @</strong>.
-    body_html_2: |
-        שיחות מושתקות מוסתרות מדפים <strong>אחרונים</strong> ו<strong>לא נקראו</strong>. לחיפוש אחר השיחות המושתקות, בחר את אופציית <strong>הושתק</strong> בתפריט הצידי
-    image_alt: אפשרות השיחות שהושתקו בתפריט הצידי
-  dismiss_explanation_modal:
-    aria_label: שחרר שיחה
-    dismiss_thread: שחרר שיחה
-    body_html: |
-        <p>שחרור שיחה מסירה אותה מרשימת הפריטים שלא נקראו. אם תהיה פעילות חדשה בשיחה, היא תופיע ברשימה שוב</p>
   inbox:
     clear: 'נקה/י'
     latest: 'אחרונים'
@@ -951,8 +941,6 @@ he:
       success: השיחה הועברה ל{{name}}
   delete_comment_dialog:
     title: 'מחקו תגובה'
-    question: 'למחוק את התגובה? בטוחים?'
-    confirm: 'מחקו תגובה'
   contact_message_form:
     title: "היי! איך נוכל לעזור?"
     contact_us_email: "אתה גם יכול לשלוח לנו מייל: <a href=\"mailto:{{email}}\">{{email}}</a>"
@@ -987,7 +975,6 @@ he:
     newest_first: הכי חדש קודם
   global:
     messages:
-      app_update: 'גרסה חדשה של האפליקציה זמינה לעדכון'
       reload: 'טען מחדש'
   decision_tools_card:
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">עזרה</a>

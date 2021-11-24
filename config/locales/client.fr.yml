@@ -15,6 +15,10 @@ fr:
     add_due_date: Ajouter échéance
     task_updated_done: 'Tâche marquée comme terminée !'
     task_updated_not_done: 'Tâche marquée comme pas terminée !'
+  templates:
+    try_loomio: Essayez Loomio
+    demo_created: Groupe de démonstration créé, rien que pour vous !
+    start_demo: Démarrer la démo
   doctypes:
     youtube_video: Video Youtube
     image: Image
@@ -80,6 +84,8 @@ fr:
     chargify_link: "Portail de facturation"
     referral_code_help: "Sponsorisez un ami!"
     manage_payment_details: "Gérez les informations de paiement"
+    manage_subscription: "Gérer l’abonnement"
+    amount: Montant
   loomio_tags:
     all_tags: Tous les mots-clés
     tags: Mots-clés
@@ -154,6 +160,7 @@ fr:
   timezones:
     local: Heure locale ({{value}})
   common:
+    please_wait: Patientez
     optional: (Optionale)
     version: Version
     none: Aucun
@@ -262,6 +269,8 @@ fr:
       done: Terminé
       start: Démarrer
       delete: Supprimer
+      discard: Jeter
+      restore: Restaurer
       unsubscribe: Se désinscrire
       subscribe: S’inscrire
       unignore: Prendre en compte
@@ -406,19 +415,6 @@ fr:
         <p>Fermer les discussions anciennes ou non pertinentes pour les supprimer de la vue et indiquer que la discussion a été clôturée.</p>
         <p>N'importe qui peut toujours commenter ou démarrer un sondage sur une discussion close, mais elle n'apparaitra pas dans la liste des discussion du groupe ni sur le tableau de bord.</p>
     image_alt: Clore toutes les discussions
-  mute_explanation_modal:
-    aria_label: Ignorer la discussion
-    mute_thread: Ignorer la discussion
-    body_html: |
-        Ignorer la discussion signifie que vous <strong>ne recevrez aucune notification concernant les décisions</strong>, ni sur aucune activité de ce fil de discussion, sauf si quelqu’un vous <strong>@mentionne.</strong>
-    body_html_2: |
-        Les fils de discussion ignorés sont également invisibles dans les pages <strong>Récents</strong> et <strong>Non lus</strong>. Pour retrouver vos discussions ignorées, sélectionnez l’option <strong>Discussions ignorées</strong> de la barre latérale :
-    image_alt: Option discussions ignorées dans la barre latérale
-  dismiss_explanation_modal:
-    aria_label: Marquer la discussion comme lue
-    dismiss_thread: Marquer la discussion comme lue
-    body_html: |
-        <p>Marquer comme lue une discussion la retire de vos discussions non-lues. S’il y a une nouvelle activité dans la discussion, elle sera affichée de nouveau comme non-lue.</p>
   inbox:
     clear: 'Vider'
     latest: 'Dernier'
@@ -1255,6 +1251,7 @@ fr:
     update_profile: 'Mettre à jour mon profil'
     deactivate_account: 'Désactiver le compte utilisateur'
     help_translate: "Aidez-nous à traduire Loomio"
+    updated_on_sign_in: Fourni par votre navigateur et mis à jour lorsque vous vous connectez
   text_editor:
     select_text_to_link: Sélectionnez le texte à lier et réessayez
     insert_link: Insérer un lien
@@ -1493,8 +1490,7 @@ fr:
       success: La discussion a été déplacée vers {{name}}
   delete_comment_dialog:
     title: 'Effacer le commentaire'
-    question: 'Êtes-vous certain de vouloir effacer ce commentaire ?'
-    confirm: 'Effacer le commentaire'
+    question: 'Cela supprimera définitivement ce commentaire. Si vous continuez, il ne peut pas être restauré.'
   contact_message_form:
     alt_title: "Contacter le support Loomio"
     title: "Salut ! Comment puis-je vous aider ?"
@@ -1537,7 +1533,7 @@ fr:
     order_by: Trier les groupes par
   global:
     messages:
-      app_update: 'Une nouvelle version de l’application est disponible'
+      app_update: 'Une nouvelle version de Loomio a été publiée. Veuillez enregistrer votre travail et recharger.'
       reload: 'Recharger'
   decision_tools_card:
     choose_type: Choisissez le type de sondage

@@ -1,9 +1,12 @@
 mk:
+  templates:
+    try_loomio: Пробај го Loomio
   subscription_status:
     members: "Членови"
   loomio_tags:
     name_label: Име
   common:
+    please_wait: Ве молиме почекајте
     version: Верзија
     group: 'Група'
     groups: 'Групи'
@@ -116,8 +119,6 @@ mk:
     close_thread: 'Затвори'
   delete_comment_dialog:
     title: 'Избриши го коментарот'
-    question: 'Дали си сигурен/а дека сакаш да го избришиш коментарот?'
-    confirm: 'Избриши го коментарот'
   contact_message_form:
     name_label: 'Твоето име'
     subject_label: "Тема"
