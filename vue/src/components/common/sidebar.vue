@@ -107,7 +107,8 @@ export default
     logoUrl: -> AppConfig.theme.app_logo_src
     canStartGroups: -> AbilityService.canStartGroups()
     canStartDemo: -> AppConfig.features.app.subscriptions
-    needProfilePicture: -> @user && !@user.avatarUrl && !@user.hasExperienced('changePicture')
+    needProfilePicture: ->
+      Session.isSignedIn() && @user && !@user.avatarUrl && !@user.hasExperienced('changePicture')
 
 
 </script>
