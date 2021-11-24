@@ -203,7 +203,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   v-list-item.sidebar__list-item-button--start-group(v-if="canStartDemo" to="/try" dense)
     v-list-item-title(v-t="'templates.start_a_demo'")
     v-list-item-avatar(:size="28")
-      v-icon(tile) mdi-rocket
+      v-icon(tile) mdi-car-convertible
   v-list-item(dense to="/explore" v-if="!canStartDemo")
     v-list-item-title(v-t="'sidebar.explore_groups'")
 </template>
