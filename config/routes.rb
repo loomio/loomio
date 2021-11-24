@@ -298,7 +298,7 @@ Rails.application.routes.draw do
   get '/help/markdown' => 'help#markdown'
   get '/help/api'   => 'help#api'
 
-  get '/start_group', to: redirect('/g/new')
+  get '/start_group', to: redirect('/try')
 
   get 'try'                                => 'application#index'
   get 'dashboard'                          => 'application#index', as: :dashboard

@@ -8,7 +8,7 @@ export default
   data: ->
     email: @user.email
     loading: false
-    
+
   watch:
     # GK: NB: not sure why this hack is necessary, but email is not set otherwise
     'user.email': ->

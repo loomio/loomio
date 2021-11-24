@@ -40,6 +40,9 @@ export default
     pendingIdentity: ->
       (AppConfig.pending_identity || {})
 
+    startDemo: ->
+      @$route.path == '/try'
+
 </script>
 <template lang="pug">
 v-card.auth-form
@@ -51,6 +54,7 @@ v-card.auth-form
     v-spacer
     dismiss-modal-button(v-if='!preventClose')
   v-sheet.py-4.pb-4
+    p.text-center(v-if="startDemo" v-t="'templates.demo_needs_user'")
     p.headline.text-center(v-if="pendingGroup" v-t="{path: 'auth_form.youre_invited', args: {group_name: pendingGroup.name}}")
     p.headline.text-center(v-if="pendingDiscussion" v-t="'auth_form.youre_invited_discussion'")
     p.headline.text-center(v-if="pendingPoll" v-t="'auth_form.youre_invited_poll'")

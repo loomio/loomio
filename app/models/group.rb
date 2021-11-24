@@ -23,7 +23,8 @@ class Group < ApplicationRecord
   belongs_to :parent, class_name: 'Group'
   scope :empty_no_subscription, -> { joins('left join subscriptions on subscription_id = groups.subscription_id').where('subscriptions.id is null and groups.parent_id is null').where('memberships_count < 2 AND discussions_count < 3 and polls_count < 2 and subgroups_count = 0').where('groups.created_at < ?', 1.year.ago) }
   scope :all_unused, -> { where('groups.parent_id is null').where('memberships_count < 2 AND discussions_count < 3 and polls_count < 2 and subgroups_count = 0').where('groups.created_at < ?', 1.year.ago) }
-  scope :expired_trial, -> { joins(:subscription).where('subscriptions.plan = ?', 'trial').where('groups.created_at < ?', 1.year.ago) }
+  scope :expired_trial, -> { joins(:subscription).where('subscriptions.plan = ?', 'trial').where('groups.created_at < ?', 90.days.ago) }
+  scope :expired_demo, -> { joins(:subscription).where('subscriptions.plan = ?', 'demo').where('groups.created_at < ?', 24.hours.ago) }
 
   has_many :discussions, dependent: :destroy
   has_many :public_discussions, -> { visible_to_public }, foreign_key: :group_id, class_name: 'Discussion'

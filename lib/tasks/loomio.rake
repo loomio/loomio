@@ -51,10 +51,11 @@ namespace :loomio do
     end
   end
 
-  task delete_dangling_records: :environment do
+  task delete_expired_records: :environment do
+    Group.expired_demo.delete_all
+    Group.expired_trial.delete_all
     Group.empty_no_subscription.delete_all
-    # need to consider this more carefully
-    # Group.expired_trial.delete_all
+
     Membership.dangling.delete_all
     MembershipRequest.dangling.delete_all
     Discussion.dangling.delete_all
@@ -76,6 +77,8 @@ namespace :loomio do
       puts PaperTrail::Version.joins("left join #{table} on #{table}.id = item_id and item_type = '#{model}'").where("#{table}.id is null").count
       PaperTrail::Version.joins("left join #{table} on #{table}.id = item_id and item_type = '#{model}'").where("#{table}.id is null").delete_all
     end
+
+    # real delete of dangling active storage objects
 
     # vacuum full groups;
     # vacuum full memberships;
