@@ -18,18 +18,19 @@ en:
 
   templates:
     try_loomio: Try Loomio
-    we_have_demos: |
-      If you've never used Loomio before, you might be wondering what it looks like and how it works.
-      To help answer that, we have <b>demo groups</b> you can play with. Each demo group is created just for you
-      and will be automatically deleted after a few days.
-
-    start_a_trial: |
-      Once you know what Loomio is about, you can <b>start a free trial</b> group for
-      your organization. A trial group could turn into your permanent home on Loomio, so we won't automatically delete it.
-
+    start_a_demo_group: Start a demo group
+    start_a_demo: Start a demo
+    look_and_feel: Start a demo to see what Loomio looks like and test some of the features.
+    demos_expire: Demos are deleted after 24 hours. Feel free to start another if you need.
     generating_demo: 'Ok, wait right there! Generating a demo takes around 20 seconds.'
+    start_a_x_day_free_trial: Start a {{day}} day free trial
+    ready_to_trial: Ready to try Loomio with your organization?
+    start_a_no_obligation_x_day_trial: Start a Loomio group for your orgnization with a free, no obligation, {{day}} day trial.
+    you_can_test_it_out: |
+      You can invite other people to join, integrate it with your other tools, and see if it works for your group.
     demo_created: Demo group created, just for you!
     start_demo: Start demo
+    demo_needs_user: To start a demo, you need to sign up (or sign in) as a Loomio user. This is free and only takes a minute.
 
   doctypes:
     youtube_video: YouTube Video
@@ -1324,6 +1325,8 @@ en:
     email_sent: "Email sent to {{name}}"
 
   profile_page:
+    incomplete_profile: Incomplete profile!
+    set_your_profile_picture: Set your profile picture
     messages:
       updated: 'Profile updated'
       picture_changed: 'Profile picture updated'

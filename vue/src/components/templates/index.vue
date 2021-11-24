@@ -1,4 +1,5 @@
 <script lang="coffee">
+import AuthModalMixin      from '@/mixins/auth_modal'
 import AppConfig          from '@/shared/services/app_config'
 import Records            from '@/shared/services/records'
 import Session            from '@/shared/services/session'
@@ -10,6 +11,7 @@ import { capitalize, take, keys, every, orderBy, debounce } from 'lodash'
 import { subDays, addDays, subWeeks, subMonths } from 'date-fns'
 
 export default
+  mixins: [ AuthModalMixin ]
   data: ->
     templates: []
     loaded: false
@@ -44,6 +46,12 @@ export default
         query: =>
           @templates = Records.templates.find(groupId: null)
 
+    startDemo: (id) ->
+      if Session.isSignedIn()
+        @cloneTemplate(id)
+      else
+        @openAuthModal()
+
     cloneTemplate: (id) ->
       Flash.wait('templates.generating_demo')
       @processing = true
@@ -63,8 +71,11 @@ export default
 v-main
   v-container.templates-page.max-width-1024
     h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'templates.try_loomio'")
-    p(v-html="$t('templates.we_have_demos')")
-    p(v-html="$t('templates.start_a_trial')")
+    h2.text-title.my-4(v-t="'templates.start_a_demo'")
+    p
+      span(v-t="'templates.look_and_feel'")
+      space
+      span(v-t="'templates.demos_expire'")
     v-card.mb-3(v-if='!loaded' aria-hidden='true')
       v-list(two-line)
         loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]' :key='index' )
@@ -76,11 +87,17 @@ v-main
         v-card-title {{ template.name }}
         v-card-text {{ template.description }}
         v-card-actions
-          v-btn(@click="cloneTemplate(template.id)" v-t="'templates.start_demo'")
+          v-spacer
+          v-btn(@click="startDemo(template.id)" v-t="'templates.start_demo'" color="primary")
 
-      v-card.my-4
-        v-card-title Start a free trial
-        v-card-text Start a group for your organisation to try Loomio together
-        v-card-actions
-          v-btn(to="/g/new") Start trial
+    h2.mt-8.text-title(v-t="'templates.ready_to_trial'")
+    v-card.my-4
+      v-card-title(v-t="{path:'templates.start_a_x_day_free_trial', args: {day: 7}}")
+      v-card-text
+        span(v-t="{path: 'templates.start_a_no_obligation_x_day_trial', args: {day: 7}}")
+        space
+        span(v-t="'templates.you_can_test_it_out'")
+      v-card-actions
+        v-spacer
+        v-btn(to="/g/new" color="primary") Start trial
 </template>

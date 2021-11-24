@@ -73,7 +73,10 @@ export default
         if @$router.history.current.path == "/dashboard" && Session.user().groups().length == 1
           @$router.replace("/g/#{Session.user().groups()[0].key}")
         if @$router.history.current.path == "/dashboard" && Session.user().groups().length == 0
-          @$router.replace("/g/new")
+          if AppConfig.features.app.subscriptions
+            @$router.replace("/try")
+          else
+            @$router.replace("/g/new")
 
       InboxService.load()
 
@@ -96,12 +99,16 @@ export default
       InboxService.unreadCount()
 
     canViewPublicGroups: -> AbilityService.canViewPublicGroups()
+    setProfilePicture: -> EventBus.$emit 'openModal', {component: 'ChangePictureForm'}
 
   computed:
     user: -> Session.user()
     activeGroup: -> if @group then [@group.id] else []
     logoUrl: -> AppConfig.theme.app_logo_src
     canStartGroups: -> AbilityService.canStartGroups()
+    canStartDemo: -> AppConfig.features.app.subscriptions
+    needProfilePicture: -> @user && !@user.avatarUrl && !@user.hasExperienced('changePicture')
+
 
 </script>
 
@@ -114,11 +121,22 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
 
   v-list-group.sidebar__user-dropdown
     template(v-slot:activator)
+      v-list-item-icon.mr-2
+        user-avatar(:user="user")
       v-list-item-content
         v-list-item-title {{user.name}}
         v-list-item-subtitle {{user.email}}
     user-dropdown
+  template(v-if="needProfilePicture")
+    v-divider
+    v-list-item.sidebar__list-item-button--recent(@click="setProfilePicture" color="warning")
+      v-list-item-icon
+        v-icon mdi-emoticon-outline
+      v-list-item-content
+        v-list-item-title(v-t="'profile_page.incomplete_profile'")
+        v-list-item-subtitle(v-t="'profile_page.set_your_profile_picture'")
   v-divider
+
   v-list-item.sidebar__list-item-button--recent(dense to="/dashboard")
     v-list-item-title(v-t="'dashboard_page.aria_label'")
   v-list-item(dense to="/inbox")
@@ -182,7 +200,11 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
     v-list-item-avatar(:size="28")
       v-icon(tile) mdi-plus
   v-divider
-  v-list-item(dense to="/explore")
+  v-list-item.sidebar__list-item-button--start-group(v-if="canStartDemo" to="/try" dense)
+    v-list-item-title(v-t="'templates.start_a_demo'")
+    v-list-item-avatar(:size="28")
+      v-icon(tile) mdi-rocket
+  v-list-item(dense to="/explore" v-if="!canStartDemo")
     v-list-item-title(v-t="'sidebar.explore_groups'")
 </template>
 <style lang="sass">
