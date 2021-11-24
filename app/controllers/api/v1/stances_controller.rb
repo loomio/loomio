@@ -1,6 +1,7 @@
 class API::V1::StancesController < API::V1::RestfulController
   def create_action
     @event = service.create({resource_symbol => resource, params: resource_params, actor: current_user})
+    self.resource = @event if !@event.valid?
   end
 
   def update_action

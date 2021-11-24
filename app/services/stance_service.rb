@@ -29,7 +29,7 @@ class StanceService
 
     actor.ability.authorize! :vote_in, stance.poll
 
-    return false unless stance.valid?
+    return stance unless stance.valid?
 
     stance.participant = actor
     stance.cast_at ||= Time.zone.now

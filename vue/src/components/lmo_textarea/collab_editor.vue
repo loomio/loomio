@@ -13,7 +13,6 @@ import Bold from '@tiptap/extension-bold'
 import BulletList from '@tiptap/extension-bullet-list'
 import CodeBlock from '@tiptap/extension-code-block'
 import Code from '@tiptap/extension-code'
-import CharacterCount from '@tiptap/extension-character-count'
 import Document from '@tiptap/extension-document'
 import Dropcursor from '@tiptap/extension-dropcursor'
 import GapCursor from '@tiptap/extension-gapcursor'
@@ -113,7 +112,7 @@ export default
         Bold
         BulletList
         CodeBlock
-        CustomImage.configure({attachFile: @attachFile, attachImageFile: @attachImageFile}),
+        CustomImage.configure({attachFile: @attachFile, attachImageFile: @attachImageFile})
         Document
         Dropcursor
         GapCursor
@@ -143,12 +142,16 @@ export default
       ]
       content: @model[@field]
       onUpdate: =>
+        @checkLength() if @maxLength
         @scrapeLinkPreviews() if @model.isNew()
 
   watch:
     'shouldReset': 'reset'
 
   methods:
+    checkLength: ->
+      @model.saveDisabled = @editor.getCharacterCount() > @maxLength
+
     setCount: (count) ->
       @count = count
 
@@ -191,7 +194,6 @@ export default
       @editor.chain().setIframe(src: getEmbedLink(@iframeUrl)).focus().run()
       @iframeUrl = null
       @iframeDialogIsOpen = false
-
 
     emojiPicked: (shortcode, unicode) ->
       @editor.chain()
@@ -366,9 +368,9 @@ div
     div.d-flex(v-if="expanded" name="actions")
       v-spacer
       slot(name="actions")
-    //-
-    //- v-alert(v-if="maxLength && model[field] && model[field].length > maxLength" color='error')
-    //-   span( v-t="'poll_common.too_long'")
+
+    v-alert.text-right(dense v-if="maxLength" :color='((maxLength < editor.getCharacterCount()) && "error" ) || ""')
+      span(v-t="{path: 'text_editor.x_of_y_characters', args: {x: editor.getCharacterCount(), y: maxLength}}")
 
   link-previews(:model="model" :remove="removeLinkPreview")
   suggestion-list(:query="query" :loading="fetchingMentions" :mentionable="mentionable" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" @select-user="selectUser")

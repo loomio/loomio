@@ -1356,6 +1356,7 @@ en:
     updated_on_sign_in: Provided by your browser and updated when you sign in
 
   text_editor:
+    x_of_y_characters: "{{x}} / {{y}} characters"
     select_text_to_link: Select text to link and try again
     insert_link: Insert link
     insert_embedded_url: Embed video

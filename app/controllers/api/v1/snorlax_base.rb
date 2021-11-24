@@ -21,18 +21,10 @@ class API::V1::SnorlaxBase < ActionController::Base
     create_response
   end
 
-  def create_action
-    resource.save
-  end
-
   def update
     load_resource
     update_action
     update_response
-  end
-
-  def update_action
-    resource.update(resource_params)
   end
 
   def destroy
