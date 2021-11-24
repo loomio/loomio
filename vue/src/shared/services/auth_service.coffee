@@ -25,8 +25,6 @@ export default new class AuthService
     EventBus.$emit('closeModal')
     Flash.success('auth_form.signed_in')
 
-    if user && !user.avatarUrl && !user.hasExperienced('changePicture')
-      EventBus.$emit 'openModal', {component: 'ChangePictureForm'}
 
 
   signIn: (user = {} , onSuccess = -> , onFailure = ->) ->

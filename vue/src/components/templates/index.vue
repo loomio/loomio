@@ -71,7 +71,7 @@ export default
 v-main
   v-container.templates-page.max-width-1024
     h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'templates.try_loomio'")
-    h2.text-title.my-4(v-t="'templates.start_a_demo_group'")
+    h2.text-title.my-4(v-t="'templates.start_a_demo'")
     p
       span(v-t="'templates.look_and_feel'")
       space
