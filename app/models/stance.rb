@@ -52,7 +52,7 @@ class Stance < ApplicationRecord
 
   validate :enough_stance_choices
   validate :total_score_is_valid
-  validates :reason, length: { maximum: 700 }, unless: -> { poll.allow_long_reason }
+  validate :reason_length_permitted
 
   delegate :group,          to: :poll, allow_nil: true
   delegate :mailer,         to: :poll, allow_nil: true
@@ -146,6 +146,12 @@ class Stance < ApplicationRecord
   end
 
   private
+
+
+  def reason_length_permitted
+    return if poll.allow_long_reason
+    errors.add(:reason, I18n.t(:"poll_common.too_long")) if reason_visible_text.length > 500
+  end
 
   def enough_stance_choices
     return unless self.cast_at
