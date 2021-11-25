@@ -53,29 +53,33 @@ namespace :loomio do
 
   task delete_expired_records: :environment do
     Group.expired_demo.delete_all
-    Group.expired_trial.delete_all
-    Group.empty_no_subscription.delete_all
+    # Group.expired_trial.delete_all
+    # Group.empty_no_subscription.delete_all
 
-    Membership.dangling.delete_all
-    MembershipRequest.dangling.delete_all
-    Discussion.dangling.delete_all
-    DiscussionReader.dangling.delete_all
-    SearchVector.dangling.delete_all
-    Comment.dangling.delete_all
-    Poll.dangling.delete_all
-    PollOption.dangling.delete_all
-    Stance.dangling.delete_all
-    StanceChoice.dangling.delete_all
-    Outcome.dangling.delete_all
-    Event.dangling.delete_all
-    Notification.dangling.delete_all
+    [Membership,
+     MembershipRequest,
+     Discussion,
+     DiscussionReader,
+     SearchVector,
+     Comment,
+     Poll,
+     PollOption,
+     Stance,
+     StanceChoice,
+     Outcome,
+     Event,
+     Notification].each do |model|
+      count = model.dangling.delete_all
+      puts "deleted #{count} dangling #{model.to_s} records"
+    end
 
     PaperTrail::Version.where(item_type: 'Motion').delete_all
     ["Comment", "Discussion", "Group", "Membership", "Outcome", "Poll", "Stance", "User"].each do |model|
       table = model.pluralize.downcase
-      puts PaperTrail::Version.joins("left join #{table} on #{table}.id = item_id and item_type = '#{model}'").where("#{table}.id is null").to_sql
-      puts PaperTrail::Version.joins("left join #{table} on #{table}.id = item_id and item_type = '#{model}'").where("#{table}.id is null").count
-      PaperTrail::Version.joins("left join #{table} on #{table}.id = item_id and item_type = '#{model}'").where("#{table}.id is null").delete_all
+      # puts PaperTrail::Version.joins("left join #{table} on #{table}.id = item_id and item_type = '#{model}'").where("#{table}.id is null").to_sql
+      # puts PaperTrail::Version.joins("left join #{table} on #{table}.id = item_id and item_type = '#{model}'").where("#{table}.id is null").count
+      count = PaperTrail::Version.joins("left join #{table} on #{table}.id = item_id and item_type = '#{model}'").where("#{table}.id is null").delete_all
+      puts "deleted #{count} dangling #{table} version records"
     end
 
     # real delete of dangling active storage objects
