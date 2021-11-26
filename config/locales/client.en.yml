@@ -194,6 +194,7 @@ en:
     option: Option
     add: Add
     you: You
+    off: Off
     expand: Expand
     all_day: All day
     ok_got_it: Ok, got it
@@ -1733,6 +1734,9 @@ en:
   poll_common_card:
     show_results: Show results
     hide_results: Hide results
+    until_vote: Until vote is cast
+    until_poll_type_closed: Until {{pollType}} is closed
+
     deleted: This poll has been deleted
 
   poll_common_index_card:
@@ -1802,6 +1806,7 @@ en:
   poll_common_action_panel:
     anonymous: Votes are anonymous
     results_hidden_until_closed: Results are hidden until the %{poll_type} has closed
+    results_hidden_until_vote: Results are hidden until you have voted
     unable_to_vote: You have not been invited to vote in this %{poll_type}.
     draft_mode: Voting disabled. This %{poll_type} is a work in progress.
 

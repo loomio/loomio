@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_23_072649) do
+ActiveRecord::Schema.define(version: 2021_11_26_003954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -619,6 +619,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_072649) do
     t.jsonb "link_previews", default: [], null: false
     t.boolean "shuffle_options", default: false, null: false
     t.boolean "allow_long_reason", default: false, null: false
+    t.integer "hide_results", default: 0, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"

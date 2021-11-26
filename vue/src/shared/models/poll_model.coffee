@@ -50,6 +50,7 @@ export default class PollModel extends BaseModel
     notifyRecipients: true
     shuffleOptions: false
     tagIds: []
+    hideResults: 'off'
 
   audienceValues: ->
     name: @group().name

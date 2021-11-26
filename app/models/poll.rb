@@ -50,8 +50,8 @@ class Poll < ApplicationRecord
   belongs_to :group, class_name: "Group"
 
   enum notify_on_closing_soon: {nobody: 0, author: 1, undecided_voters: 2, voters: 3}
+  enum hide_results: {off: 0, until_vote: 1, until_closed: 2}
 
-  before_save :set_stances_in_discussion
   after_save :update_counts!
 
   has_many :stances, dependent: :destroy
@@ -125,7 +125,7 @@ class Poll < ApplicationRecord
     :specified_voters_only,
     :notify_on_closing_soon,
     :poll_option_names,
-    :hide_results_until_closed]
+    :hide_results]
 
   update_counter_cache :group, :polls_count
   update_counter_cache :group, :closed_polls_count
@@ -187,10 +187,6 @@ class Poll < ApplicationRecord
     custom_fields.fetch('time_zone', author.time_zone)
   end
 
-  def show_results?
-    closed? || !hide_results_until_closed
-  end
-
   def parent_event
     if discussion
       discussion.created_event
@@ -214,10 +210,17 @@ class Poll < ApplicationRecord
     super || NullGroup.new
   end
 
-  def stance_counts
-    show_results? ? super : []
+  def show_results?(voted: false)
+    case hide_results
+    when 'until_closed'
+      closed_at
+    when 'until_vote'
+      closed_at || voted
+    else
+      true
+    end
   end
-
+  
   # this should not be run on anonymous polls
   def reset_latest_stances!
     self.transaction do
@@ -326,6 +329,10 @@ class Poll < ApplicationRecord
   alias options= poll_option_names=
   alias options poll_option_names
 
+  def hide_results_until_closed
+    self.hide_results == 'until_closed'
+  end
+
   def is_new_version?
     !self.poll_options.map(&:persisted?).all? ||
     (['title', 'details', 'closing_at'] & self.changes.keys).any?
@@ -357,11 +364,6 @@ class Poll < ApplicationRecord
     end
   end
 
-  def set_stances_in_discussion
-    return unless has_attribute?(:stances_in_discussion) # allow older migrations to pass
-    self.stances_in_discussion = false if anonymous or hide_results_until_closed
-  end
-
   def cannot_deanonymize
     if anonymous_changed? && anonymous_was == true
       errors.add :anonymous, :cannot_deanonymize
@@ -369,8 +371,8 @@ class Poll < ApplicationRecord
   end
 
   def cannot_reveal_results_early
-    if hide_results_until_closed_changed? && hide_results_until_closed_was == true
-      errors.add :hide_results_until_closed, :cannot_show_results_early
+    if hide_results_changed? && (hide_results_was == :before_closed)
+      errors.add :hide_results, :cannot_show_results_early
     end
   end
 

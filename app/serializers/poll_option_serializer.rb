@@ -17,6 +17,11 @@ class PollOptionSerializer < ApplicationSerializer
   end
 
   def include_voter_scores?
-    !poll.anonymous? && poll.show_results?
+    !poll.anonymous? && poll.show_results?(voted: current_user_voted)
+  end
+
+  def current_user_voted
+    stance = cache_fetch(:stances_by_poll_id, object.poll_id) { nil }
+    stance && stance.cast_at
   end
 end

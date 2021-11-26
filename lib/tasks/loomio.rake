@@ -43,6 +43,11 @@ namespace :loomio do
     SendDailyCatchUpEmailWorker.perform_async
 
     if (Time.now.hour == 0)
+      # Group.expired_trial.delete_all
+      # Group.empty_no_subscription.delete_all
+      Group.expired_demo.delete_all
+      CleanupService.delay.delete_orphan_records
+
       ThrottleService.reset!('day')
       OutcomeService.delay.publish_review_due
       UsageReportService.send
@@ -52,55 +57,6 @@ namespace :loomio do
   end
 
   task delete_expired_records: :environment do
-    Group.expired_demo.delete_all
-    # Group.expired_trial.delete_all
-    # Group.empty_no_subscription.delete_all
-
-    [Membership,
-     MembershipRequest,
-     Discussion,
-     DiscussionReader,
-     SearchVector,
-     Comment,
-     Poll,
-     PollOption,
-     Stance,
-     StanceChoice,
-     Outcome,
-     Event,
-     Notification].each do |model|
-      count = model.dangling.delete_all
-      puts "deleted #{count} dangling #{model.to_s} records"
-    end
-
-    PaperTrail::Version.where(item_type: 'Motion').delete_all
-    ["Comment", "Discussion", "Group", "Membership", "Outcome", "Poll", "Stance", "User"].each do |model|
-      table = model.pluralize.downcase
-      # puts PaperTrail::Version.joins("left join #{table} on #{table}.id = item_id and item_type = '#{model}'").where("#{table}.id is null").to_sql
-      # puts PaperTrail::Version.joins("left join #{table} on #{table}.id = item_id and item_type = '#{model}'").where("#{table}.id is null").count
-      count = PaperTrail::Version.joins("left join #{table} on #{table}.id = item_id and item_type = '#{model}'").where("#{table}.id is null").delete_all
-      puts "deleted #{count} dangling #{table} version records"
-    end
-
-    # real delete of dangling active storage objects
-
-    # vacuum full groups;
-    # vacuum full memberships;
-    # vacuum full membership_requests;
-    # vacuum full discussions;
-    # vacuum full discussion_readers;
-    # vacuum full search_vectors;
-    # vacuum full comments;
-    # vacuum full polls;
-    # vacuum full poll_options;
-    # vacuum full stances;
-    # vacuum full stance_choices;
-    # vacuum full outcomes;
-    # vacuum full events;
-    # vacuum full notifications;
-    # vacuum full versions;
-    # vacuum full ahoy_events;
-    # vacuum full ahoy_visits;
   end
 
   task generate_error: :environment do

@@ -87,6 +87,10 @@ class PollSerializer < ApplicationSerializer
     :versions_count
   ]
 
+  def include_stance_counts?
+    poll.show_results?(voted: (my_stance && mystance.cast_at))
+  end
+
   def current_outcome
     cache_fetch(:outcomes_by_poll_id, object.id) { nil }
   end
