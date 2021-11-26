@@ -51,6 +51,7 @@ export default class PollModel extends BaseModel
     shuffleOptions: false
     tagIds: []
     hideResults: 'off'
+    stanceCounts: []
 
   audienceValues: ->
     name: @group().name

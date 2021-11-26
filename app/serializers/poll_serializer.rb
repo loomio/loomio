@@ -19,7 +19,7 @@ class PollSerializer < ApplicationSerializer
              :discarded_by,
              :discussion_id,
              :group_id,
-             :hide_results_until_closed,
+             :hide_results,
              :key,
              :allow_long_reason,
              :multiple_choice,
@@ -88,7 +88,7 @@ class PollSerializer < ApplicationSerializer
   ]
 
   def include_stance_counts?
-    poll.show_results?(voted: (my_stance && mystance.cast_at))
+    poll.show_results?(voted: (my_stance && my_stance.cast_at))
   end
 
   def current_outcome

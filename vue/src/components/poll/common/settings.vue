@@ -6,6 +6,7 @@ export default
   props:
     poll: Object
   data: ->
+    currentHideResults: @poll.hideResults
     settings:
       compact [
         ('multipleChoice'         if @poll.pollType == 'poll'),
@@ -22,10 +23,9 @@ export default
       { text: @$t('poll_common_card.until_poll_type_closed', pollType: @poll.translatedPollType()), value: 'until_closed' }
     ]
 
-
   methods:
     settingDisabled: (setting) ->
-      !@poll.closingAt || (!@poll.isNew() && ['anonymous', 'hideResultsUntilClosed'].includes(setting))
+      !@poll.closingAt || (!@poll.isNew() && setting == 'anonymous')
     snakify: (setting) -> snakeCase setting
     kebabify: (setting) -> kebabCase setting
 
@@ -40,6 +40,7 @@ export default
     :label="$t('poll_common_card.hide_results')"
     :items="hideResultsItems"
     v-model="poll.hideResults"
+    :disabled="!poll.closingAt || (!poll.isNew() && currentHideResults == 'until_closed')"
   )
   v-radio-group(v-model="poll.specifiedVotersOnly" :disabled="!poll.closingAt" :label="$t('poll_common_settings.who_can_vote')")
     v-radio(v-if="poll.discussionId && !poll.groupId" :value="false" :label="$t('poll_common_settings.specified_voters_only_false_discussion')")
