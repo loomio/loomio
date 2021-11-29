@@ -33,6 +33,8 @@ export default class PollOptionModel extends BaseModel
     Math.round( (@totalScore / voterIds.length) * 10 + Number.EPSILON ) / 10
 
   voterIds: ->
+    # this is a hack, we both know this
+    # some polls 0 is a vote, others it is not
     if @poll().pollType == 'meeting'
       Object.entries(@voterScores).map((e) -> parseInt(e[0]))
     else
