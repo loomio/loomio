@@ -33,7 +33,10 @@ export default class PollOptionModel extends BaseModel
     Math.round( (@totalScore / voterIds.length) * 10 + Number.EPSILON ) / 10
 
   voterIds: ->
-    Object.entries(@voterScores).filter((e) -> e[1] > 0).map((e) -> parseInt(e[0]))
+    if @poll().pollType == 'meeting'
+      Object.entries(@voterScores).map((e) -> parseInt(e[0]))
+    else
+      Object.entries(@voterScores).filter((e) -> e[1] > 0).map((e) -> parseInt(e[0]))
 
   voters: (limit = 1000) ->
     @recordStore.users.find(slice(@voterIds(), 0, limit))
