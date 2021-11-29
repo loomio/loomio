@@ -12,8 +12,6 @@ export default
 .poll-poll-form
   poll-common-form-fields(:poll="poll")
   poll-common-form-options-field(:poll="poll")
-
-  validation-errors(:subject="poll" field="pollOptions")
   poll-common-closing-at-field(:poll="poll")
   poll-common-settings(:poll="poll")
   common-notify-fields(:model="poll")
