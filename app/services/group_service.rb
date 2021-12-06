@@ -104,7 +104,7 @@ module GroupService
   def self.destroy(group:, actor:)
     actor.ability.authorize! :destroy, group
     group.archive!
-    DestroyGroupWorker.perform_in(2.weeks, group.id)
+    DestroyGroupWorker.perform_in(90.days, group.id)
     EventBus.broadcast('group_destroy', group, actor)
   end
 
