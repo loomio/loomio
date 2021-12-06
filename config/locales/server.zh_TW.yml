@@ -453,6 +453,7 @@ zh_TW:
       outcome_review_due: "是時候審閱 %{poll_type} 結果了：%{title}"
       outcome_announced: '%{actor} 分享了 %{poll_type} 的結果：%{title}'
       stance_created: "%{actor} 已經投票：%{title}"
+      stance_updated: "%{actor} 已經投票：%{title}"
       stance_created_author: "請驗證您的投票：%{title}"
       user_mentioned: '%{actor} 提到您在：%{title}'
       user_reminded: '%{actor} 正在提醒您要投票：%{title}'
@@ -475,6 +476,7 @@ zh_TW:
       outcome_created_author: '您分享了 %{poll_type} 的結果。'
       outcome_announced: '<strong>%{actor}</strong> 已分享 %{poll_type} 的結果。'
       stance_created: "<strong>%{actor}</strong> 已經投票：%{title}"
+      stance_updated: "<strong>%{actor}</strong> 已經投票：%{title}"
       user_mentioned: '<strong>%{actor}</strong> 提到您在：%{title}'
       user_reminded: '<strong>%{actor}</strong>正在提醒您要投票：%{title}'
     body:
@@ -513,6 +515,7 @@ zh_TW:
       poll_created: "**%{actor}** 在 %{group} 中開始了 %{poll_type}：[%{title}](%{url})"
       poll_edited: "**%{actor}** 編輯了 %{poll_type} 在 %{group} 之中：[%{title}](%{url})"
       stance_created: "**%{actor}** 在 [%{title}](%{url}) 中投票了"
+      stance_updated: "**%{actor}** 在 [%{title}](%{url}) 中投票了"
       poll_closing_soon: "剩下 24 小時：[%{title}](%{url})"
       poll_expired: "%{poll_type}：[%{title}](%{url}) 已關閉"
       poll_closed_by_user: "**%{actor}** 關閉了 %{poll_type}：[%{title}](%{url})"

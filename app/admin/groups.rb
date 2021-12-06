@@ -9,6 +9,10 @@ ActiveAdmin.register Group, as: 'Group' do
     def find_resource
       Group.friendly.find(params[:id])
     end
+
+    def scoped_collection
+      end_of_association_chain.not_demo
+    end
   end
 
   actions :index, :show, :new, :edit, :update, :create

@@ -471,6 +471,13 @@ en:
 
   group_mailer:
     resend: 'REMINDER: %{member} is waiting for you to join %{group_name}'
+    destroy_warning:
+      subject: Your Loomio group is scheduled for deletion.
+      body: |
+        Your Loomio group: "%{group}" has been scheduled for deletion by %{deletor}.
+        If you do not want your group to be deleted, please reply to this email.
+        If you're sure you want to delete the group, you do not need to do anything.
+        Thank you.
 
   poll_mailer:
     resend: '%{actor} is reminding you to vote in: %{title}'

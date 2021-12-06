@@ -301,6 +301,7 @@ ru:
       poll_option_added: '%{actor} добавили вариантов к: %{title}'
       poll_option_added_author: '%{actor} добавили вариантов к: %{title}'
       stance_created: "%{actor} проголосовали в: %{title}"
+      stance_updated: "%{actor} проголосовали в: %{title}"
       stance_created_author: "Подтвердите, пожалуйста, ваш голос в: %{title}"
       user_mentioned: '%{actor} упомянули вас в: %{title}'
       user_reminded: '%{actor} напоминает, чтобы вы проголосовали за: %{title}'
@@ -308,6 +309,7 @@ ru:
       poll_option_added: '<strong>%{actor}</strong> добавили вариантов к: %{title}'
       poll_option_added_author: '<strong>%{actor}</strong> добавили вариантов к: %{title}'
       stance_created: "<strong>%{actor}</strong> проголосовали в: %{title}"
+      stance_updated: "<strong>%{actor}</strong> проголосовали в: %{title}"
       user_mentioned: '<strong>%{actor}</strong> упомянули вас в: %{title}'
       user_reminded: '<strong>%{actor}</strong> напоминает, чтобы вы проголосовали в: %{title}'
     body:

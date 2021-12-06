@@ -53,8 +53,8 @@ namespace :loomio do
 
   task delete_expired_records: :environment do
     Group.expired_demo.delete_all
-    # Group.expired_trial.delete_all
-    # Group.empty_no_subscription.delete_all
+    Group.expired_trial.delete_all
+    Group.empty_no_subscription.delete_all
 
     [Membership,
      MembershipRequest,

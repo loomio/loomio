@@ -425,6 +425,7 @@ pl:
       outcome_review_due: "Już czas by przejrzeć %{poll_type} wynik: %{title}"
       outcome_announced: '%{actor} udostępnił/a %{poll_type} wynik: %{title}'
       stance_created: "%{actor} zagłosował/a w: %{title}"
+      stance_updated: "%{actor} zagłosował/a w: %{title}"
       stance_created_author: "Zweryfikuj swój głos w: %{title}"
       user_mentioned: '%{actor} wspomniał/a o Tobie w: %{title}'
       user_reminded: '%{actor}przypomina Ci o głosowaniu w:%{title}'
@@ -444,6 +445,7 @@ pl:
       outcome_created_author: 'Udostępniłeś/aś %{poll_type} wynik.'
       outcome_announced: '<strong>%{actor}</strong> udostępnił/a %{poll_type}wynik.'
       stance_created: "<strong>%{actor}</strong> zagłosował/a na: %{title}"
+      stance_updated: "<strong>%{actor}</strong> zagłosował/a na: %{title}"
       user_mentioned: '<strong>%{actor}</strong> wspomniał/a o Tobie w: %{title}'
       user_reminded: '<strong>%{actor}</strong> przypomina Ci, aby zagłosować w: %{title}'
     body:
@@ -482,6 +484,7 @@ pl:
       poll_created: "**%{actor}** utworzył/a %{poll_type} w %{group}: [%{title}](%{url})"
       poll_edited: "**%{actor}** edytował/a %{poll_type} w %{group}: [%{title}](%{url})"
       stance_created: "**%{actor}** zagłosował/a w [%{title}](%{url})"
+      stance_updated: "**%{actor}** zagłosował/a w [%{title}](%{url})"
       poll_closing_soon: "Pozostały 24 godziny: [%{title}](%{url})"
       poll_expired: "%{poll_type}: [%{title}](%{url}) zakończyło się "
       poll_closed_by_user: "**%{actor}** zakończył/a %{poll_type}: [%{title}](%{url})"

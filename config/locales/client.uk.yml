@@ -17,8 +17,19 @@ uk:
     task_updated_not_done: 'Завдання позначено як невиконане'
   templates:
     try_loomio: Спробуйте Loomio
+    start_a_demo_group: Почати з демонстраційної групи
+    start_a_demo: Почати з демо-бази
+    look_and_feel: Почніть демо-бази, щоб побачити, як Loomio виглядає, та протестуйте деякі функції.
+    demos_expire: Демо-база видаляється через 24 години. Не соромтеся почати іншу, якщо вам потрібно.
+    generating_demo: 'Чудово, зачекайте! Створення демо-бази займає близько 20 секунд.'
+    start_a_x_day_free_trial: Почніть {{day}}-денну безплатну пробну версію
+    ready_to_trial: Готові спробувати Loomio у своїй організації?
+    start_a_no_obligation_x_day_trial: Створіть групу Loomio для своєї організації з безплатною, без зобов’язань, {{day}}-денною пробною версією.
+    you_can_test_it_out: |
+        Ви можете запросити інших людей приєднатися, інтегрувати її з іншими інструментами та перевірити, чи це працює у вашій групі.
     demo_created: Демо-група створена саме для вас!
     start_demo: Створити демо
+    demo_needs_user: Щоб створити демо-базу, вам потрібно зареєструватися (або увійти) як користувач Loomio. Це безплатно і займає лише хвилину.
   doctypes:
     youtube_video: Відео YouTube
     image: Зображення
@@ -1225,6 +1236,8 @@ uk:
     helptext: "{{name}} буде надіслано ваше ім'я, поштова адреса та повідомлення"
     email_sent: "Лист надіслано до {{name}}"
   profile_page:
+    incomplete_profile: Неповний профіль!
+    set_your_profile_picture: Виберіть картинку профілю
     messages:
       updated: 'Профіль оновлено'
       picture_changed: 'Обкладинку профілю оновлено'
@@ -1372,6 +1385,7 @@ uk:
       thismonth: 'Цього місяця'
       older: 'Більше ніж місяць тому'
   threads_page:
+    no_direct_threads: "У вас нема особистих тем"
     no_invite_only_threads: "У вас немає ланцюжків з запрошеннями"
   inbox_page:
     no_threads: Вау! Ви прочитали всі теми у вашій скриньці.
@@ -1548,6 +1562,7 @@ uk:
     ranked_choice_title: Ранговий вибір
   poll_common:
     vote_now: Проголосувати зараз
+    review_due: Дата підсумків
     have_your_say: Висловіть свою думку
     your_response: Ваша відповідь
     change_your_response: Редагувати відповідь
@@ -1793,6 +1808,7 @@ uk:
     outcome_created: Результат створено
     outcome_updated: Результат оновлено
     statement_placeholder: Узагальнити відповіді і пояснити що буде відбуватися далі.
+    you_will_be_notified: Ви отримаєте повідомлені про дату підсумків.
     submit: Поширити результат
   poll_common_outcome_panel:
     authored_by: 'від {{name}}'
@@ -2124,6 +2140,8 @@ uk:
     reactivate: Відновити обліковий запис
   webhook:
     integrations: Інтеграція
+    webhooks: Веб-хуки
+    webhook: Веб-хук
     api: API
     format: Формат
     formats:
@@ -2131,6 +2149,10 @@ uk:
       microsoft: Microsoft Teams
       slack: Slack
       discord: Discord
+    subtitle: Підключіть Loomio до решти своїх інструментів за допомогою нашого API для інтеграції та веб-хуків
+    we_have_guides: |
+        Перегляньте наш <a href="{{url}}" target="_blank">посібник з налаштування веб-хуків</a>, для допомоги в підключенні ваших сервісів.
+    add_webhook: Додати векб-хук
     show_docs: Див. використання API
     edit_integration: Редагувати інтеграцію
     add_integration: Додати інтеграцію
@@ -2138,9 +2160,11 @@ uk:
     remove: Видалити інтеграцію
     confirm_remove: "Ви дійсно хочете видалити інтеграцію: {{name}}?"
     removed: Інтеграцію видалено
+    url_label: URL-адреса веб-хук
     url_placeholder: https://hooks.example.com/...
     name_label: Ім'я
     name_placeholder: Дайте цій інтеграції назву, щоб ви могли її ідентифікувати
+    event_kind_helptext: Щодо яких подій ви хочете, щоб веб-хук отримував сповіщення?
     event_kinds:
       new_discussion: Тему розпочато
       discussion_edited: Тему відредаговано

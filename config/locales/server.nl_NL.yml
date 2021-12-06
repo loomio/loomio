@@ -435,6 +435,7 @@ nl_NL:
       outcome_review_due: "Het is tijd voor de beoordeling van het %{poll_type} resultaat: %{title}"
       outcome_announced: '%{actor} deelde een %{poll_type} resultaat: %{title}'
       stance_created: "%{actor} stemde op: %{title}"
+      stance_updated: "%{actor} stemde op: %{title}"
       stance_created_author: "Gelieve je stem te bevestigen op: %{title}"
       user_mentioned: '%{actor} noemde je in: %{title}'
       user_reminded: '%{actor} herinnert je er aan om te stemmen in : %{title}'
@@ -455,6 +456,7 @@ nl_NL:
       outcome_created_author: 'Je deelde een %{poll_type} resultaat:'
       outcome_announced: '<strong>%{actor}</strong> deelde een %{poll_type} resultaat.'
       stance_created: "<strong>%{actor}</strong> stemde op: %{title}"
+      stance_updated: "<strong>%{actor}</strong> stemde op: %{title}"
       user_mentioned: '<strong>%{actor}</strong> noemde je in: %{title}'
       user_reminded: '<strong>%{actor}</strong> herinnert je er aan om te stemmen in: %{title}'
     body:
@@ -493,6 +495,7 @@ nl_NL:
       poll_created: "**%{actor}** startte een %{poll_type} in %{group}: [%{title}](%{url})"
       poll_edited: "**%{actor}** wijzigde een %{poll_type} in %{group}: [%{title}](%{url})"
       stance_created: "**%{actor}** stemde in [%{title}](%{url})"
+      stance_updated: "**%{actor}** stemde in [%{title}](%{url})"
       poll_closing_soon: "24 uur over: [%{title}](%{url})"
       poll_expired: "%{poll_type}: [%{title}](%{url}) is gesloten"
       poll_closed_by_user: "**%{actor}** sloot de %{poll_type}: [%{title}](%{url})"

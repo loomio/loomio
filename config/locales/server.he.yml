@@ -299,6 +299,7 @@ he:
       poll_option_added: '%{actor} הוסיף אפשרויות ל:%{title}'
       poll_option_added_author: '%{actor} הוסיף אפשרויות ל:%{title}'
       stance_created: "%{actor} הצביע על: %{title}"
+      stance_updated: "%{actor} הצביע על: %{title}"
       stance_created_author: "אנא אשר את הצבעתך ב:%{title}"
       user_mentioned: '%{actor} הזכיר אותך ב: %{title}'
       user_reminded: '%{actor} מזכיר לך להצביע ב:%{title}'
@@ -306,6 +307,7 @@ he:
       poll_option_added: '<strong>%{actor}</strong> הוסיף אפשרויות ל:%{title}'
       poll_option_added_author: '<strong>%{actor}</strong> הוסיף אפשרויות ל:%{title}'
       stance_created: "<strong>%{actor}</strong> הצביע על: %{title}"
+      stance_updated: "<strong>%{actor}</strong> הצביע על: %{title}"
       user_mentioned: '<strong>%{actor}</strong> ציין אותך ב:%{title}'
       user_reminded: '<strong>%{actor}</strong> מזכיר לך להצביע ב:%{title}'
     body:
