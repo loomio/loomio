@@ -1805,8 +1805,8 @@ en:
 
   poll_common_action_panel:
     anonymous: Votes are anonymous
-    results_hidden_until_closed: Results are hidden until the %{poll_type} has closed
-    results_hidden_until_vote: Results are hidden until you have voted
+    results_hidden_until_closed: Results will be shown after voting has closed
+    results_hidden_until_vote: Results will be shown after you vote
     unable_to_vote: You have not been invited to vote in this %{poll_type}.
     draft_mode: Voting disabled. This %{poll_type} is a work in progress.
 
