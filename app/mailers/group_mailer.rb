@@ -29,4 +29,15 @@ class GroupMailer < BaseMailer
                       subject_params: {who: @membership_request.name, which_group: @group.full_name, site_name: AppConfig.theme[:site_name]},
                       locale: recipient.locale
   end
+
+  def destroy_warning(group_id, recipient_id, deletor_id)
+    @group = Group.find(group_id)
+    @recipient = User.find(recipient_id)
+    @deletor = User.find(deletor_id)
+
+    send_single_mail  to: @recipient.name_and_email,
+                      reply_to: ENV['SUPPORT_EMAIL'],
+                      subject_key: "group_mailer.destroy_warning.subject",
+                      locale: @recipient.locale
+  end
 end

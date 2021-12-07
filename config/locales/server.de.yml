@@ -439,6 +439,7 @@ de:
       outcome_review_due: "Es ist an der Zeit, die %{poll_type} Ergebnis: %{title}"
       outcome_announced: '%{actor} teilte eine %{poll_type} Ergebnis: %{title}'
       stance_created: "%{actor} hat hier abgestimmt: %{title}"
+      stance_updated: "%{actor} hat hier abgestimmt: %{title}"
       stance_created_author: "Bitte bestätige hier %{title} deine Stimme"
       user_mentioned: '%{actor} hat dich in %{title} erwähnt'
       user_reminded: '%{actor} erinnert dich deine Stimme in %{title} abzugeben'
@@ -459,6 +460,7 @@ de:
       outcome_created_author: 'DU teilst ein%{poll_type} Ergebnis.'
       outcome_announced: '<strong>%{actor}</strong> teilen ein %{poll_type} Ergbnis.'
       stance_created: "<strong>%{actor}</strong> hat in%{title}abgestimmt"
+      stance_updated: "<strong>%{actor}</strong> hat in%{title}abgestimmt"
       user_mentioned: '<strong>%{actor}</strong> hat dich in %{title} erwähnt'
       user_reminded: '<strong>%{actor}</strong> erinnert dich deine Stimme in %{title} abzugeben'
     body:
@@ -497,6 +499,7 @@ de:
       poll_created: "**%{actor}** startete eine %{poll_type} in %{group}: [%{title}](%{url})"
       poll_edited: "**%{actor}** bearbeitet ein %{poll_type} in %{group}: [%{title}](%{url})"
       stance_created: "**%{actor}** gewählt [%{title}](%{url})"
+      stance_updated: "**%{actor}** gewählt [%{title}](%{url})"
       poll_closing_soon: "24 Stunden verbleibend: [%{title}](%{url})"
       poll_expired: "%{poll_type}: [%{title}](%{url}) hat geschlossen"
       poll_closed_by_user: "**%{actor}** schloss die %{poll_type}: [%{title}](%{url})"

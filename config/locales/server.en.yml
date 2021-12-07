@@ -471,6 +471,13 @@ en:
 
   group_mailer:
     resend: 'REMINDER: %{member} is waiting for you to join %{group_name}'
+    destroy_warning:
+      subject: Your Loomio group is scheduled for deletion.
+      body: |
+        Your Loomio group: "%{group}" has been scheduled for deletion by %{deletor}.
+        If you do not want your group to be deleted, please reply to this email.
+        If you're sure you want to delete the group, you do not need to do anything.
+        Thank you.
 
   poll_mailer:
     resend: '%{actor} is reminding you to vote in: %{title}'
@@ -513,6 +520,7 @@ en:
       outcome_review_due: "It's time to review the %{poll_type} outcome: %{title}"
       outcome_announced: '%{actor} shared a %{poll_type} outcome: %{title}'
       stance_created: "%{actor} voted on: %{title}"
+      stance_updated: "%{actor} voted on: %{title}"
       stance_created_author: "Please verify your vote on: %{title}"
       user_mentioned: '%{actor} mentioned you in: %{title}'
       user_reminded: '%{actor} is reminding you to vote in: %{title}'
@@ -536,6 +544,7 @@ en:
       outcome_created_author: 'You shared a %{poll_type} outcome.'
       outcome_announced: '<strong>%{actor}</strong> shared a %{poll_type} outcome.'
       stance_created: "<strong>%{actor}</strong> voted on: %{title}"
+      stance_updated: "<strong>%{actor}</strong> voted on: %{title}"
       user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
       user_reminded: '<strong>%{actor}</strong> is reminding you to vote in: %{title}'
 
@@ -580,6 +589,7 @@ en:
       poll_created: "**%{actor}** started a %{poll_type} in %{group}: [%{title}](%{url})"
       poll_edited: "**%{actor}** edited a %{poll_type} in %{group}: [%{title}](%{url})"
       stance_created: "**%{actor}** voted in [%{title}](%{url})"
+      stance_updated: "**%{actor}** voted in [%{title}](%{url})"
       poll_closing_soon: "24 hours remaining: [%{title}](%{url})"
       poll_expired: "%{poll_type}: [%{title}](%{url}) has closed"
       poll_closed_by_user: "**%{actor}** closed the %{poll_type}: [%{title}](%{url})"

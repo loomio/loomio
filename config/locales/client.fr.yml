@@ -17,8 +17,19 @@ fr:
     task_updated_not_done: 'Tâche marquée comme pas terminée !'
   templates:
     try_loomio: Essayez Loomio
+    start_a_demo_group: Créez un groupe demo
+    start_a_demo: Démarrer la démo
+    look_and_feel: Commencez une démo pour voir à quoi ressemble Loomio et testez certaines des fonctionnalités.
+    demos_expire: Les démos sont supprimées après 24 heures. N’hésitez pas à en commencer une autre si vous en avez besoin.
+    generating_demo: 'Ok, attendez juste là! La génération d’une démo prend environ 20 secondes.'
+    start_a_x_day_free_trial: Commencer un essai gratuit {{day}}
+    ready_to_trial: Prêt à essayer Loomio avec votre organisation?
+    start_a_no_obligation_x_day_trial: Démarrez un groupe Loomio pour votre organisation avec un essai gratuit, sans obligation, {{day}}.
+    you_can_test_it_out: |
+        Vous pouvez inviter d’autres personnes à se joindre, l’intégrer à vos autres outils et voir si cela fonctionne pour votre groupe.
     demo_created: Groupe de démonstration créé, rien que pour vous !
     start_demo: Démarrer la démo
+    demo_needs_user: Pour démarrer une démo, vous devez vous inscrire (ou vous connecter) en tant qu’utilisateur Loomio. Ceci est gratuit et ne prend qu’une minute.
   doctypes:
     youtube_video: Video Youtube
     image: Image
@@ -1225,6 +1236,8 @@ fr:
     helptext: "Votre nom, adresse e-mail et message seront envoyés à {{name}}"
     email_sent: "Courriel envoyé à {{name}}"
   profile_page:
+    incomplete_profile: Profil incomplet!
+    set_your_profile_picture: Définir votre photo de profil
     messages:
       updated: 'Profil mis à jour'
       picture_changed: 'Photo de profil mise à jour'
@@ -1253,6 +1266,7 @@ fr:
     help_translate: "Aidez-nous à traduire Loomio"
     updated_on_sign_in: Fourni par votre navigateur et mis à jour lorsque vous vous connectez
   text_editor:
+    x_of_y_characters: "{{x}} / {{y}} caractères"
     select_text_to_link: Sélectionnez le texte à lier et réessayez
     insert_link: Insérer un lien
     insert_embedded_url: Intégrer la vidéo

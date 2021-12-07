@@ -9,6 +9,10 @@ ActiveAdmin.register Group, as: 'Group' do
     def find_resource
       Group.friendly.find(params[:id])
     end
+
+    def scoped_collection
+      end_of_association_chain.not_demo
+    end
   end
 
   actions :index, :show, :new, :edit, :update, :create
@@ -23,10 +27,9 @@ ActiveAdmin.register Group, as: 'Group' do
 
   batch_action :delete_spam do |group_ids|
     group_ids.each do |group_id|
-      if Group.exists?(group_id)
+      if Group.any_trial.exists?(group_id)
         group = Group.find(group_id)
-        user = group.creator || group.admins.first
-        if user
+        if user = group.creator || group.admins.first
           DestroyUserWorker.perform_async(user.id)
         end
       end

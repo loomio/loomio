@@ -17,9 +17,19 @@ zh_TW:
     task_updated_not_done: '工作被標記為未完成'
   templates:
     try_loomio: 試試 Loomio
+    start_a_demo_group: 啟動展示用群組
+    start_a_demo: 試用範例
+    look_and_feel: 開始試用以檢視 Loomio 的外觀與測試部份功能。
+    demos_expire: 範例將會在24小時後刪除。如果您需要的話，可再啟動新的。
     generating_demo: '好的，請稍等！產生範例大概需要 20 秒。'
+    start_a_x_day_free_trial: 開始{{day}}天的免費試用
+    ready_to_trial: 準備好與您的組織一起使用 Loomio 了嗎？
+    start_a_no_obligation_x_day_trial: 透過免費且無擔保的{{day}}天試用為您的組織建立 Loomio 群組。
+    you_can_test_it_out: |
+        您可以邀請其他人加入，將其與您的其他工具整合，並看看其是否適用於您的團隊。
     demo_created: 示範用群組已建立，只為您！
     start_demo: 試用範例
+    demo_needs_user: 要啟動範例，您必須註冊（或登入）為 Loomio 使用者。這是免費的，且僅需一分鐘。
   doctypes:
     youtube_video: YouTube 影片
     image: 圖片
@@ -1226,6 +1236,8 @@ zh_TW:
     helptext: "{{name}} 將會寄送包含您的名字、電子郵件地址與訊息的電子郵件"
     email_sent: "電子郵件傳送給 {{name}}"
   profile_page:
+    incomplete_profile: 資料不完整！
+    set_your_profile_picture: 設定您的個人檔案照片
     messages:
       updated: '簡歷已更新'
       picture_changed: '簡歷照片已更新'
@@ -1254,6 +1266,7 @@ zh_TW:
     help_translate: "協助我們翻譯 Loomio"
     updated_on_sign_in: 由您的瀏覽器提供並在您登入時更新
   text_editor:
+    x_of_y_characters: "{{x}} / {{y}} 個字元"
     select_text_to_link: 選取要連結的文字並再試一次
     insert_link: 插入連結
     insert_embedded_url: 嵌入影片

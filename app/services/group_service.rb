@@ -103,7 +103,13 @@ module GroupService
 
   def self.destroy(group:, actor:)
     actor.ability.authorize! :destroy, group
+
+    group.admins.each do |admin|
+      GroupMailer.delay.destroy_warning(group.id, admin.id, actor.id)
+    end
+
     group.archive!
+
     DestroyGroupWorker.perform_in(2.weeks, group.id)
     EventBus.broadcast('group_destroy', group, actor)
   end

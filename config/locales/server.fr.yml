@@ -453,6 +453,7 @@ fr:
       outcome_review_due: "C'est le moment de vérifier les résultats du %{poll_type}: %{title}"
       outcome_announced: '%{actor} a partagé un %{poll_type} résultat: %{title}'
       stance_created: "%{actor} a voté sur : %{title}"
+      stance_updated: "%{actor} a voté sur : %{title}"
       stance_created_author: "Merci de vérifier votre vote sur :%{title}"
       user_mentioned: '%{actor} vous a mentionné·e dans : %{title}'
       user_reminded: '%{actor} attend votre vote sur : %{title}'
@@ -475,6 +476,7 @@ fr:
       outcome_created_author: 'Vous avez partagé un résultat de %{poll_type}'
       outcome_announced: '<strong>%{actor}</strong> a partagé un résultat de %{poll_type}'
       stance_created: "<strong>%{actor}</strong> a voté sur : %{title}"
+      stance_updated: "<strong>%{actor}</strong> a voté sur : %{title}"
       user_mentioned: '<strong>%{actor}</strong> vous a mentionné·e dans : %{title}'
       user_reminded: '<strong>%{actor}</strong> attend votre vote sur : %{title}'
     body:
@@ -513,6 +515,7 @@ fr:
       poll_created: "**%{actor}** a commencé un %{poll_type} dans %{group}: [%{title}](%{url})"
       poll_edited: "**%{actor}** a édité un %{poll_type} dans %{group}: [%{title}](%{url})"
       stance_created: "**%{actor}** a voté dans [%{title}](%{url})"
+      stance_updated: "**%{actor}** a voté dans [%{title}](%{url})"
       poll_closing_soon: "Plus que 24 heures pour: [%{title}](%{url})"
       poll_expired: "%{poll_type}:[%{title}](%{url}) est fermé"
       poll_closed_by_user: "**%{actor}** a fermé le %{poll_type}: [%{title}](%{url})"
