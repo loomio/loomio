@@ -107,7 +107,7 @@ export default
     activeGroup: -> if @group then [@group.id] else []
     logoUrl: -> AppConfig.theme.app_logo_src
     canStartGroups: -> AbilityService.canStartGroups()
-    canStartDemo: -> AppConfig.features.app.subscriptions
+    canStartDemo: -> AppConfig.features.app.demos
     needProfilePicture: ->
       Session.isSignedIn() && @user && !@user.avatarUrl && !@user.hasExperienced('changePicture')
 
