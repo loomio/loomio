@@ -211,7 +211,7 @@ class Poll < ApplicationRecord
   end
 
   def show_results?(voted: false)
-    case hide_results
+    !! case hide_results
     when 'until_closed'
       closed_at
     when 'until_vote'
@@ -220,7 +220,7 @@ class Poll < ApplicationRecord
       true
     end
   end
-  
+
   # this should not be run on anonymous polls
   def reset_latest_stances!
     self.transaction do

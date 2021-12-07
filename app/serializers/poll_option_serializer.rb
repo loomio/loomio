@@ -22,6 +22,6 @@ class PollOptionSerializer < ApplicationSerializer
 
   def current_user_voted
     stance = cache_fetch(:stances_by_poll_id, object.poll_id) { nil }
-    stance && stance.cast_at
+    !!(stance && stance.cast_at)
   end
 end
