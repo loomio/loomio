@@ -45,8 +45,8 @@ namespace :loomio do
     if (Time.now.hour == 0)
       # Group.expired_trial.delete_all
       # Group.empty_no_subscription.delete_all
-      Group.expired_demo.delete_all
-      CleanupService.delay.delete_orphan_records
+      # Group.expired_demo.delete_all
+      # CleanupService.delay.delete_orphan_records
 
       ThrottleService.reset!('day')
       OutcomeService.delay.publish_review_due
