@@ -51,7 +51,6 @@ namespace :loomio do
       ThrottleService.reset!('day')
       OutcomeService.delay.publish_review_due
       UsageReportService.send
-      ExamplePollService.delay.cleanup
       LoginToken.where("created_at < ?", 24.hours.ago).delete_all
     end
   end
