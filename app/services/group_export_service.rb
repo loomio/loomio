@@ -3,7 +3,6 @@ class GroupExportService
     all_users
     all_events
     all_notifications
-    all_documents
     all_reactions
     all_taggings
     memberships

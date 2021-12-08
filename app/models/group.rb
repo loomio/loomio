@@ -23,7 +23,7 @@ class Group < ApplicationRecord
   belongs_to :parent, class_name: 'Group'
   scope :dangling, -> { joins('left join groups parents on parents.id = groups.parent_id').where('groups.parent_id is not null and parents.id is null')  }
   scope :empty_no_subscription, -> { joins('left join subscriptions on subscription_id = groups.subscription_id').where('subscriptions.id is null and groups.parent_id is null').where('memberships_count < 2 AND discussions_count < 3 and polls_count < 2 and subgroups_count = 0').where('groups.created_at < ?', 1.year.ago) }
-  scope :expired_trial, -> { joins(:subscription).where('subscriptions.plan = ?', 'trial').where('subscription.expires_at < ?', 12.months.ago) }
+  scope :expired_trial, -> { joins(:subscription).where('subscriptions.plan = ?', 'trial').where('subscriptions.expires_at < ?', 12.months.ago) }
   scope :any_trial, -> { joins(:subscription).where('subscriptions.plan = ?', 'trial') }
   scope :expired_demo, -> { joins(:subscription).where('subscriptions.plan = ?', 'demo').where('groups.created_at < ?', 24.hours.ago) }
   scope :not_demo, -> { joins(:subscription).where('subscriptions.plan != ?', 'demo') }
