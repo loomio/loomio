@@ -154,7 +154,7 @@ fr:
     thumbsdown: ' Pouce baissé'
   poll_types:
     proposal: Proposition
-    count: Vérification
+    count: Binaire
     poll: Sondage
     dot_vote: Vote à points
     meeting: Sondage horaire de réunion
