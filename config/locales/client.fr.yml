@@ -861,7 +861,7 @@ fr:
     add_row_after: Insérer une ligne derrière
     remove_row: Retirer une ligne
     merge_selected: Fusionner les cellules sélectionnées
-    wysiwyg: WYSIWIG (Tel écran, tel écrit)
+    wysiwyg: WYSIWIG (Éditeur Visuel)
     edit_markdown: Editer Markdown
     markdown_confirm: Certains formats peuvent être perdus lors du passage du mode WYSIWIG (tel écran, tel écrit) au mode Markdown
     upload_failed: Echec du téléversement
