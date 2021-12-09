@@ -1572,7 +1572,7 @@ fr:
     results: Résultats
     responses: Réponses
     close_poll_type: Fermer {{pollType}}
-    close_early: Fermer tôt
+    close_early: Clôture anticipé
     totals: Totaux
     participate: Participer
     vote: Vote
