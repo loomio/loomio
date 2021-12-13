@@ -10,6 +10,7 @@ describe StanceService do
   let(:public_poll) { create :poll, anyone_can_participate: true }
   let(:public_stance) { build :stance, poll: public_poll, stance_choices: [agree_choice], participant: nil }
   let(:user) { create :user }
+  let(:voter) { create :user }
   let(:another_group_member) { create :user }
   let(:another_user) { create :user }
   let(:stance) { create :stance, poll: poll, stance_choices: [agree_choice], participant: user, reason: "Old one" }
@@ -22,6 +23,7 @@ describe StanceService do
   before do
     discussion.created_event
     group.add_member! user
+    group.add_member! voter
     group.add_member! another_group_member
   end
 
@@ -38,7 +40,7 @@ describe StanceService do
 
     it 'sets event parent to the poll created event' do
       poll_created_event
-      event = StanceService.create(stance: stance_created, actor: user, force_create: true)
+      event = StanceService.create(stance: stance_created, actor: voter)
       expect(event.parent.id).to eq poll_created_event.id
     end
 

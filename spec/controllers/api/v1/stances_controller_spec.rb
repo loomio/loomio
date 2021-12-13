@@ -178,9 +178,9 @@ describe API::V1::StancesController do
     describe "verified user votes" do
       it "creates stance and updates name and email" do
         user.update(email_verified: true)
-        poll.add_guest! user, poll.author
+        stance = poll.add_guest! user, poll.author
         sign_in user
-        expect { post :create, params: {stance: stance_params } }.to_not change {ActionMailer::Base.deliveries.count}
+        expect { post :update, params: {id: stance.id, stance: stance_params } }.to_not change {ActionMailer::Base.deliveries.count}
         expect(user.stances.latest.count).to eq 1
         expect(response.status).to eq 200
         expect(user.reload.email_verified).to eq true
@@ -191,8 +191,8 @@ describe API::V1::StancesController do
       poll.update(anonymous: true)
       user.update(email_verified: true)
       sign_in user
-      poll.add_guest! user, poll.author
-      post :create, params: { stance: stance_params }
+      stance = poll.add_guest! user, poll.author
+      post :update, params: { id: stance.id, stance: stance_params }
       json = JSON.parse(response.body)
       expect(response.status).to eq 200
       expect(json['stances'][0]['my_stance']).to be true
@@ -221,8 +221,8 @@ describe API::V1::StancesController do
       end
 
       it 'guest of poll can vote' do
-        poll.add_guest! user, poll.author
-        post :create, params: { stance: stance_params }
+        stance = poll.add_guest! user, poll.author
+        post :update, params: { id: stance.id, stance: stance_params }
         expect(response.status).to eq 200
       end
     end
@@ -247,8 +247,8 @@ describe API::V1::StancesController do
       end
 
       it 'guest of poll can vote' do
-        poll.add_guest! user, poll.author
-        post :create, params: { stance: stance_params }
+        stance = poll.add_guest! user, poll.author
+        post :update, params: { id: stance.id, stance: stance_params }
         expect(response.status).to eq 200
       end
     end
@@ -322,7 +322,7 @@ describe API::V1::StancesController do
     it 'updates existing stances' do
       sign_in user
       old_stance
-      expect { post :create, params: { stance: stance_params } }.to change { Stance.count }.by(0)
+      expect { post :update, params: {id: old_stance.id, stance: stance_params } }.to change { Stance.count }.by(0)
       expect(response.status).to eq 200
       expect(old_stance.reload.latest).to eq true
     end

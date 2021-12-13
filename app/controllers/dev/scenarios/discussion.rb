@@ -46,7 +46,7 @@ module Dev::Scenarios::Discussion
     poll = fake_poll(discussion: create_discussion, group: create_discussion.group)
     PollService.create(poll: poll, actor: patrick)
     stance = fake_stance(poll: poll, reason: 'yes yes')
-    stance_event = StanceService.create(stance: stance, actor: patrick, force_create: true)
+    stance_event = StanceService.create(stance: stance, actor: patrick)
     PollService.update(poll: poll, actor: patrick, params: {recipient_message: 'updated the poll here <br> newline'})
     DiscussionService.close(discussion: create_discussion, actor: patrick)
     UserMailer.catch_up(jennifer.id, 1.hour.ago).deliver_now

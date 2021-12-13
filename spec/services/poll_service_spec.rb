@@ -272,7 +272,7 @@ describe PollService do
       poll_created.hide_results_until_closed = true
       PollService.create(poll: poll_created, actor: user)
 
-      StanceService.create(stance: stance, actor: stance.participant, force_create: true)
+      StanceService.create(stance: stance, actor: stance.participant)
       expect(poll_created.stance_counts).to eq []
       PollService.close(poll: poll_created, actor: user)
 

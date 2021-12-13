@@ -32,7 +32,7 @@ describe EventService do
     end
 
     let!(:stance_created_event) do
-      StanceService.create(stance: stance, actor: discussion.author, force_create: true)
+      StanceService.create(stance: stance, actor: user)
     end
 
 

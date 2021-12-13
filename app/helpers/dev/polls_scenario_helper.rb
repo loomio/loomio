@@ -46,9 +46,10 @@ module Dev::PollsScenarioHelper
                      wip: params[:wip])
 
     event = PollService.create(poll: poll, actor: observer)
+    Stance.where(poll_id: poll.id, participant_id: observer.id).delete_all
 
     stance = fake_stance(poll: poll)
-    StanceService.create(stance: stance, actor: observer, force_create: true)
+    StanceService.create(stance: stance, actor: observer)
 
     PollService.close(poll: poll, actor: observer)
 
