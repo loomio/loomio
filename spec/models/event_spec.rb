@@ -327,7 +327,6 @@ describe Event do
     end
 
     it 'sends invitations' do
-      stance = Stance.create(participant: user_thread_normal, poll: poll)
       expect {
         Events::PollAnnounced.publish!(poll: poll, actor: poll.author, stances: [stance_for(user_thread_normal)])
       }.to change { emails_sent }.by(1)

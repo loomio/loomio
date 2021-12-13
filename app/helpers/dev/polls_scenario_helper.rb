@@ -48,7 +48,7 @@ module Dev::PollsScenarioHelper
     event = PollService.create(poll: poll, actor: observer)
 
     stance = fake_stance(poll: poll)
-    StanceService.create(stance: stance, actor: observer, force_create: true)
+    StanceService.create(stance: stance, actor: observer)
 
     PollService.close(poll: poll, actor: observer)
 
