@@ -150,7 +150,7 @@ export default
 
   methods:
     checkLength: ->
-      @model.saveDisabled = @editor.getCharacterCount() > @maxLength
+      @model.saveDisabled = @editor.storage.characterCount.characters() > @maxLength
 
     setCount: (count) ->
       @count = count
