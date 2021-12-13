@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_23_072649) do
+ActiveRecord::Schema.define(version: 2021_12_13_053922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -673,6 +673,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_072649) do
     t.jsonb "option_scores", default: {}, null: false
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id", "cast_at"], name: "index_stances_on_poll_id_and_cast_at", order: "NULLS FIRST"
+    t.index ["poll_id", "participant_id", "latest"], name: "index_stances_on_poll_id_and_participant_id_and_latest", unique: true, where: "(latest = true)"
     t.index ["poll_id"], name: "index_stances_on_poll_id"
     t.index ["token"], name: "index_stances_on_token", unique: true
   end
