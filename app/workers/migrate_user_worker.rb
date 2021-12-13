@@ -60,7 +60,7 @@ class MigrateUserWorker
   end
 
   def migrate_stances
-    Stance.where(participant: source).update_all(participant_id: destination.id)
+    Stance.where(participant: source).update_all(participant_id: destination.id, latest: false)
     Stance.where(participant: destination).update_all(latest: false)
 
     poll_ids = Stance.where(participant: destination).pluck(:poll_id).uniq

@@ -6,7 +6,7 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-details-panel
+.poll-common-details-panel.pt-2
   v-subheader.ml-n4(v-t="'poll_common.details'" v-if='poll.outcome()')
   .poll-common-details-panel__started-by.text--secondary.mb-4
     span(v-t="{ path: 'poll_card.started_by', args: { name: poll.authorName() } }")

@@ -56,8 +56,9 @@ namespace :loomio do
   end
 
   task delete_expired_records: :environment do
+    puts "Deleting expired demos"
     Group.expired_demo.delete_all
-    Group.expired_trial.delete_all
+    # Group.expired_trial.delete_all
     # Group.empty_no_subscription.delete_all
     CleanupService.delete_orphan_records
   end

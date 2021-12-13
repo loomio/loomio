@@ -13,10 +13,10 @@ describe GroupExportService do
   let!(:discussion_poll)  { create :poll, discussion: discussion, group: group }
   let!(:comment)          { create :comment, discussion: discussion }
   let!(:sub_comment)      { create :comment, discussion: sub_discussion }
-  let!(:group_doc)        { create :document, model: group }
-  let!(:discussion_doc)   { create :document, model: discussion }
-  let!(:poll_doc)         { create :document, model: poll }
-  let!(:comment_doc)      { create :document, model: comment }
+  # let!(:group_doc)        { create :document, model: group }
+  # let!(:discussion_doc)   { create :document, model: discussion }
+  # let!(:poll_doc)         { create :document, model: poll }
+  # let!(:comment_doc)      { create :document, model: comment }
   let!(:reader)           { create :discussion_reader, discussion: discussion, user: another_user }
   let!(:discussion_event) { DiscussionService.create(discussion: discussion, actor: discussion.author) }
   let!(:notification)     { discussion_event.notifications.create!(user: another_user, url: 'test.com') }
@@ -56,10 +56,10 @@ describe GroupExportService do
       expect(discussion_poll.reload).to be_present
       expect(comment.reload).to be_present
       expect(sub_comment.reload).to be_present
-      expect(group_doc.reload).to be_present
-      expect(discussion_doc.reload).to be_present
-      expect(poll_doc.reload).to be_present
-      expect(comment_doc.reload).to be_present
+      # expect(group_doc.reload).to be_present
+      # expect(discussion_doc.reload).to be_present
+      # expect(poll_doc.reload).to be_present
+      # expect(comment_doc.reload).to be_present
       expect(discussion_reaction.reload).to be_present
       expect(poll_reaction.reload).to be_present
       expect(comment_reaction.reload).to be_present

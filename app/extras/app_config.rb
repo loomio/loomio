@@ -90,6 +90,7 @@ class AppConfig
     {
       env: Rails.env,
       subscriptions:              !!ENV.fetch('CHARGIFY_API_KEY', false),
+      demos:                      ENV.fetch('FEATURES_DEMO_GROUPS', false),
       email_login:                !ENV['FEATURES_DISABLE_EMAIL_LOGIN'],
       create_user:                !ENV['FEATURES_DISABLE_CREATE_USER'],
       create_group:               !ENV['FEATURES_DISABLE_CREATE_GROUP'],

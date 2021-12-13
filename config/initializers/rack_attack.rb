@@ -17,6 +17,7 @@ class Rack::Attack
   IP_POST_LIMITS = {
     '/api/v1/announcements' => 100,
     '/api/v1/groups' => 10,
+    '/api/v1/templates' => 10,
     '/api/v1/group_surveys' => 10,
     '/api/v1/login_tokens' => 10,
     '/api/v1/membership_requests' => 100,
