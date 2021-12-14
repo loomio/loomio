@@ -137,7 +137,6 @@ v-card.group-form
     p.text--secondary(v-if='group.parentId' v-t="'group_form.new_subgroup_explainer'")
     v-select.group-form__parent-group(v-if="parentGroups.length > 1" v-model='group.parentId' :items="parentGroups" :label="$t('group_form.parent_group')")
     v-text-field.group-form__name#group-name(
-      hint="The shorter, the better"
       v-model='group.name'
       :placeholder="$t(groupNamePlaceholder)"
       :rules='[rules.required]'
