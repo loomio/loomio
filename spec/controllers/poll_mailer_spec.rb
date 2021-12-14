@@ -71,7 +71,7 @@ describe Dev::PollsController do
     end
 
     it "results_hidden #{poll_type} stance_created email" do
-      get :test_poll_scenario, params: {scenario: 'poll_stance_created', poll_type: poll_type, hide_results_until_closed: true, email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_stance_created', poll_type: poll_type, hide_results: 'until_closed', email: true}
       expect_subject("poll_mailer.header.stance_created")
       # TODO expect to see user, but not their position or reason
       expect_element('.poll-mailer__stance')
@@ -93,7 +93,7 @@ describe Dev::PollsController do
     end
 
     it "hide_results #{poll_type} poll_closing_soon email" do
-      get :test_poll_scenario, params: {scenario: 'poll_closing_soon', poll_type: poll_type, hide_results_until_closed: true, email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_closing_soon', poll_type: poll_type, hide_results: 'until_closed', email: true}
       expect_subject("poll_mailer.header.poll_closing_soon")
       expect_element('.poll-mailer-common-summary')
       #TODO expect no results panel, just a summary of how many people have voted
@@ -121,7 +121,7 @@ describe Dev::PollsController do
 
     it "hide_results #{poll_type} poll_closing_soon_with_vote email" do
       next unless AppConfig.poll_templates.dig(poll_type, 'voters_review_responses')
-      get :test_poll_scenario, params: {scenario: 'poll_closing_soon_with_vote', poll_type: poll_type, hide_results_until_closed: true, email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_closing_soon_with_vote', poll_type: poll_type, hide_results: 'until_closed', email: true}
       expect_subject("poll_mailer.header.poll_closing_soon")
       expect_text('.poll-mailer__vote', "You voted:")
       expect_text('.poll-mailer-common-responses', I18n.t(:'poll_common_action_panel.results_hidden_until_closed', poll_type: I18n.t(:"poll_types.#{poll_type}")))
@@ -148,7 +148,7 @@ describe Dev::PollsController do
     end
 
     it "hidden #{poll_type} poll_user_mentioned_email" do
-      get :test_poll_scenario, params: {scenario: 'poll_user_mentioned', hide_results_until_closed: true, poll_type: poll_type, email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_user_mentioned', hide_results: 'until_closed', poll_type: poll_type, email: true}
       expect_text('.error', "no emails sent")
     end
 
