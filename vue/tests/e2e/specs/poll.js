@@ -22,7 +22,7 @@ module.exports = {
       page.click('.poll-common-vote-form__submit')
     })
 
-    page.scrollTo('.stance-updated', () => {
+    page.scrollTo('.stance-created', () => {
       page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
   },
@@ -47,7 +47,7 @@ module.exports = {
     page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
     page.click('.poll-common-vote-form__submit')
 
-    page.scrollTo('.stance-updated', () => {
+    page.scrollTo('.stance-created', () => {
       page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
   },
@@ -75,7 +75,7 @@ module.exports = {
     page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
     page.click('.poll-common-vote-form__submit')
 
-    page.scrollTo('.stance-updated', () => {
+    page.scrollTo('.stance-created', () => {
       page.expectText('.poll-common-stance-choice', 'An option')
       page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
@@ -132,7 +132,7 @@ module.exports = {
     page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
     page.click('.poll-common-vote-form__submit', 1000)
 
-    page.scrollTo('.stance-updated', () => {
+    page.scrollTo('.stance-created', () => {
       page.expectText('.poll-common-stance-choice--score', 'An option')
       page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
@@ -158,7 +158,7 @@ module.exports = {
     page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
     page.click('.poll-common-vote-form__submit', 2000)
 
-    page.scrollTo('.stance-updated', () => {
+    page.scrollTo('.stance-created', () => {
       // page.expectText('.poll-meeting-time', '8am')
       page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
@@ -188,7 +188,7 @@ module.exports = {
     page.pause(500)
     page.click('.poll-common-vote-form__submit')
 
-    page.scrollTo('.stance-updated', () => {
+    page.scrollTo('.stance-created', () => {
       page.expectText('.poll-common-stance-choice--ranked_choice:first-child', 'An option')
       page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
@@ -372,7 +372,7 @@ module.exports = {
       page.click('.poll-common-vote-form__submit')
     })
 
-    page.scrollTo('.stance-updated', () => {
+    page.scrollTo('.stance-created', () => {
       page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
   },
@@ -399,7 +399,7 @@ module.exports = {
   //   page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
   //   page.click('.poll-common-vote-form__submit')
   //
-  //   page.scrollTo('.stance-updated', () => {
+  //   page.scrollTo('.stance-created', () => {
   //     page.expectText('.poll-common-stance-choice', 'An option')
   //     page.expectText('.poll-common-stance-created__reason', 'A reason')
   //   })
@@ -433,7 +433,7 @@ module.exports = {
   //   page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
   //   page.click('.poll-common-vote-form__submit')
   //
-  //   page.scrollTo('.stance-updated', () => {
+  //   page.scrollTo('.stance-created', () => {
   //     page.expectText('.poll-common-stance-choice', 'An option')
   //     page.expectText('.poll-common-stance-created__reason', 'A reason')
   //   })
