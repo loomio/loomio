@@ -77,7 +77,9 @@ export default
 v-main
   loading(v-if="!group")
   v-container.group-page.max-width-1024(v-if="group")
-    v-img(style="border-radius: 8px" max-height="256" :src="group.coverUrl" eager)
+    div(style="position: relative")
+      v-img(style="border-radius: 8px" max-height="256" :src="group.coverUrl" eager)
+      v-img(v-if="group.logoUrl" style="border-radius: 8px; position: absolute; bottom: 0" height="128" width="128" :src="group.logoUrl" eager)
     h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
       span(v-if="group && group.parentId")
         router-link(:to="urlFor(group.parent())") {{group.parent().name}}

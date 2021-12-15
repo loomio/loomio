@@ -682,7 +682,7 @@ en:
     title_label: 'Title'
     title_placeholder: 'What is the topic you want to discuss?'
     context_label: 'Context'
-    context_placeholder: "Provide some context for this discussion, so people can pariticpate well"
+    context_placeholder: "Provide some context for this discussion, so people know how to participate"
     privacy_label: 'Privacy'
     privacy_public: 'Anyone can see the thread. Only members can participate.'
     privacy_private: 'The thread will only be visible to members of {{group}}.'
