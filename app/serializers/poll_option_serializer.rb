@@ -13,7 +13,7 @@ class PollOptionSerializer < ApplicationSerializer
   end
 
   def include_total_score?
-    poll.show_results?
+    poll.show_results?(voted: current_user_voted)
   end
 
   def include_voter_scores?
@@ -21,7 +21,7 @@ class PollOptionSerializer < ApplicationSerializer
   end
 
   def current_user_voted
-    stance = cache_fetch(:stances_by_poll_id, object.poll_id) { nil }
+    stance = cache_fetch(:stances_by_poll_id, object.poll_id) { Stance.latest.find_by(poll_id: object.poll_id, participant_id: scope[:current_user_id]) }
     !!(stance && stance.cast_at)
   end
 end

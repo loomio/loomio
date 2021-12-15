@@ -51,6 +51,7 @@ export default class PollModel extends BaseModel
     shuffleOptions: false
     tagIds: []
     hideResults: 'off'
+    showResults: false
     stanceCounts: []
 
   audienceValues: ->
@@ -166,11 +167,6 @@ export default class PollModel extends BaseModel
 
   isClosed: ->
     @closedAt?
-
-  showResults: ->
-    return false if !@closingAt
-    return false if @hideResultsUntilClosed && !@closedAt
-    @closedAt || !@iCanVote() || (@myStance() || {}).castAt || @pleaseShowResults
 
   close: =>
     @processing = true

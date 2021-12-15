@@ -31,6 +31,7 @@ class PollSerializer < ApplicationSerializer
              :shuffle_options,
              :stance_counts,
              :total_score,
+             :show_results,
              :stances_in_discussion,
              :specified_voters_only,
              :secret_token,
@@ -66,7 +67,8 @@ class PollSerializer < ApplicationSerializer
     :decided_voters_count,
     :details,
     :details_format,
-    :hide_results_until_closed,
+    :hide_results,
+    :show_results,
     :allow_long_reason,
     :multiple_choice,
     :notify_on_closing_soon,
@@ -86,6 +88,10 @@ class PollSerializer < ApplicationSerializer
     :voters_count,
     :versions_count
   ]
+
+  def show_results
+    poll.show_results?(voted: (my_stance && my_stance.cast_at))
+  end
 
   def include_stance_counts?
     poll.show_results?(voted: (my_stance && my_stance.cast_at))
@@ -116,6 +122,6 @@ class PollSerializer < ApplicationSerializer
   end
 
   def my_stance
-    cache_fetch(:stances_by_poll_id, object.id) { nil }
+    cache_fetch(:stances_by_poll_id, object.id) { Stance.latest.find_by(poll_id: object.id, participant_id: scope[:current_user_id]) }
   end
 end

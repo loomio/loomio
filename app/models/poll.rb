@@ -329,10 +329,6 @@ class Poll < ApplicationRecord
   alias options= poll_option_names=
   alias options poll_option_names
 
-  def hide_results_until_closed
-    self.hide_results == 'until_closed'
-  end
-
   def is_new_version?
     !self.poll_options.map(&:persisted?).all? ||
     (['title', 'details', 'closing_at'] & self.changes.keys).any?
