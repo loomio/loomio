@@ -61,10 +61,10 @@ export default
       switch @$route.query.subgroups
         when 'mine'
           chain = chain.find(groupId: {$in: intersection(@group.organisationIds(), Session.user().groupIds())})
-        when 'none'
-          chain = chain.find(groupId: @group.id)
-        else
+        when 'all'
           chain = chain.find(groupId: {$in: @group.organisationIds()})
+        else
+          chain = chain.find(groupId: @group.id)
 
       chain = chain.sort (a, b) =>
         return -1 if (a.groupId == @group.id)
