@@ -371,7 +371,7 @@ class Poll < ApplicationRecord
   end
 
   def cannot_reveal_results_early
-    if hide_results_changed? && (hide_results_was == :before_closed)
+    if hide_results_changed? && (hide_results_was == 'until_closed')
       errors.add :hide_results, :cannot_show_results_early
     end
   end
