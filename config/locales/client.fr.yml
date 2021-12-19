@@ -638,7 +638,6 @@ fr:
     title_label: 'Titre'
     title_placeholder: 'De quel sujet souhaitez-vous discuter ?'
     context_label: 'Contexte'
-    context_placeholder: "Fournir du contexte pour cette discussion, afin que les gens puissent bien participer"
     privacy_label: 'Privé'
     privacy_public: 'N’importe qui peut voir la discussion. Seuls les membres de {{groupName}} peuvent participer.'
     privacy_private: 'La discussion sera visible uniquement aux membres de {{group}}.'
@@ -1572,7 +1571,7 @@ fr:
     results: Résultats
     responses: Réponses
     close_poll_type: Fermer {{pollType}}
-    close_early: Fermer tôt
+    close_early: Clôture anticipée
     totals: Totaux
     participate: Participer
     vote: Vote
@@ -2147,7 +2146,7 @@ fr:
       markdown: Markdown (pour Mattermost, Zapier et autres)
       microsoft: Microsoft Teams
       slack: Slack
-      discord: Discorde
+      discord: Discord
     subtitle: Connectez-vous à Loomio au reste de vos outils avec notre API d’intégration et nos webhooks
     we_have_guides: |
         Lisez notre <a href="{{url}}" target="_blank">guide de configuration webhook</a> pour connecter votre propre service.

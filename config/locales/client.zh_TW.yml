@@ -638,7 +638,7 @@ zh_TW:
     title_label: '標題'
     title_placeholder: '您想討論的主題是？'
     context_label: '論述'
-    context_placeholder: "提供此討論的部份內容，如此人們就可以很好地參與"
+    context_placeholder: "提供此討論的部份內容，如此人們才能知道如何參與"
     privacy_label: '隱私權'
     privacy_public: '任何人都可以看到此討論串。只有成員才能參與。'
     privacy_private: '此討論串只會被「{{group}}」群組的成員看到。'
