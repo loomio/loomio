@@ -638,7 +638,6 @@ es:
     title_label: 'Título'
     title_placeholder: '¿Cuál es el tema que quieres discutir?'
     context_label: 'Contexto'
-    context_placeholder: "Aportar algo de contexto para esta debate, para que la gente pueda participar bien "
     privacy_label: 'Privacidad'
     privacy_public: 'Cualquier persona puede ver los hilos. Solo integrantes pueden participar. '
     privacy_private: 'Los hilos solo serán visibles para integrantes de {{group}}.'

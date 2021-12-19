@@ -110,10 +110,12 @@ module.exports = (test, browser) ->
     @pause()
     @execute("document.querySelector('.md-autocomplete-suggestions li').click()")
 
-  selectOption: (selector, option) ->
-    # TODO
-    # @click selector
-    # element(By.cssContainingText('md-option', option)).click()
+  # selectOption: (selector, option) ->
+  #   @waitFor(selector, 3000)
+  #   test.setValue(selector, option)
+  #   # TODO
+  #   # @click selector
+  #   # element(By.cssContainingText('md-option', option)).click()
 
   expectValue: (selector, value, wait) ->
     @waitFor(selector, wait)

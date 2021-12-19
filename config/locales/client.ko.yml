@@ -22,6 +22,7 @@ ko:
     yearly: 매년
   current_plan_button:
     upgrade: 업그레이드
+    buy_now: 구매하기
     free_trial: 무료체험. {{days}} 일 남았습니다.
     trial_expired: 체험이 종료되었습니다. 루미오를 계속 사용하시려면 업그레이드 하십시오.
     tooltip: "저희 가격은 멋집니다! 지금 바로 업그레이드하여 루미오가 당신에게 제공하는 그룹을을 즐기십시오."

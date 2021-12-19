@@ -413,6 +413,13 @@ fr:
       due_in_count_days: 'dans %{count} jours'
   group_mailer:
     resend: 'RAPPEL : %{member} attend que vous rejoignez %{group_name}'
+    destroy_warning:
+      subject: La suppression de vôtre groupe Loomio est programmée
+      body: |
+          La suppression de vôtre groupe: « %{group} » a été programmée par %{deletor}.
+          Reppndez à cet e-mail si vous souhaitez annuler la suppression de vôtre groupe.
+          Si vous êtes certains de vouloir supprimer vôtre groupe, aucune action supplémentaire n'est requise.
+          Merci.
   poll_mailer:
     resend: '%{actor} attend votre vote sur : %{title}'
     common:
