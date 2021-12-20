@@ -34,7 +34,6 @@ export default
 
 <template lang="pug">
 .poll-common-settings
-  | {{allowAnonymous}} {{settings}}
   v-select.poll-common-settings__hide-results(
     v-if="allowAnonymous"
     :label="$t('poll_common_card.hide_results')"
