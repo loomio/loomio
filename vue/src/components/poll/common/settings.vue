@@ -7,16 +7,6 @@ export default
     poll: Object
   data: ->
     currentHideResults: @poll.hideResults
-    settings:
-      compact [
-        ('multipleChoice'         if @poll.pollType == 'poll'),
-        ('shuffleOptions'         if ['poll', 'score', 'ranked_choice', 'dot_vote'].includes(@poll.pollType)),
-        ('canRespondMaybe'        if @poll.pollType == 'meeting'),
-        ('anonymous'              if @allowAnonymous),
-        # ('hideResults' if !fieldFromTemplate(@poll.pollType, 'prevent_anonymous')),
-        ('voterCanAddOptions'     if fieldFromTemplate(@poll.pollType, 'can_add_options') && @poll.pollType != 'proposal'),
-        ('allowLongReason')
-      ]
     hideResultsItems: [
       { text: @$t('common.off'), value: 'off' }
       { text: @$t('poll_common_card.until_vote'), value: 'until_vote' }
@@ -31,10 +21,20 @@ export default
 
   computed:
     allowAnonymous: -> !fieldFromTemplate(@poll.pollType, 'prevent_anonymous')
+    settings: ->
+      compact [
+        ('multipleChoice'         if @poll.pollType == 'poll'),
+        ('shuffleOptions'         if ['poll', 'score', 'ranked_choice', 'dot_vote'].includes(@poll.pollType)),
+        ('canRespondMaybe'        if @poll.pollType == 'meeting'),
+        ('anonymous'              if @allowAnonymous),
+        ('voterCanAddOptions'     if fieldFromTemplate(@poll.pollType, 'can_add_options') && @poll.pollType != 'proposal'),
+        ('allowLongReason')
+      ]
 </script>
 
 <template lang="pug">
 .poll-common-settings
+  | {{allowAnonymous}} {{settings}}
   v-select.poll-common-settings__hide-results(
     v-if="allowAnonymous"
     :label="$t('poll_common_card.hide_results')"
