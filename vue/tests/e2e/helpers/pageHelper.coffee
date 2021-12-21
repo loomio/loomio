@@ -82,7 +82,7 @@ module.exports = (test, browser) ->
   fillIn: (selector, value, wait) ->
     @pause(200)
     @waitFor(selector, wait)
-    test.clearValue(selector)
+    # test.clearValue(selector)
     test.setValue(selector, value)
 
   fillInAndEnter: (selector, value, wait) ->
