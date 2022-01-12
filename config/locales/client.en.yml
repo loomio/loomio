@@ -21,7 +21,7 @@ en:
     start_a_demo_group: Start a demo group
     start_a_demo: Start a demo
     look_and_feel: Start a demo to see what Loomio looks like and test some of the features.
-    demos_expire: Demos are deleted after 24 hours. Feel free to start another if you need.
+    demos_expire: Demo groups are automatically deleted after 3 days. Feel free to start another if you need.
     generating_demo: 'Ok, wait right there! Generating a demo takes around 20 seconds.'
     start_a_x_day_free_trial: Start a {{day}} day free trial
     ready_to_trial: Ready to try Loomio with your organization?
