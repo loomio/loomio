@@ -8,13 +8,10 @@ class RecordCloner
     clone_group = new_clone_group(group)
     clone_group.creator = actor
     clone_group.subscription = Subscription.new(plan: 'demo', owner: actor)
-    if clone_group.save
-      Stance.where(poll_id: clone_group.poll_ids).each(&:update_option_scores!)
-      clone_group.add_member! actor
-      clone_group.reload
-    else
-      clone_group
-    end
+    clone_group.save!
+    Stance.where(poll_id: clone_group.poll_ids).each(&:update_option_scores!)
+    clone_group.add_member! actor
+    clone_group.reload
   end
 
   def new_clone_group(group, clone_parent = nil)
@@ -135,6 +132,9 @@ class RecordCloner
     clone_poll.poll_options = poll.poll_options.map {|poll_option| new_clone_poll_option(poll_option) }
     clone_poll.stances = poll.stances.map {|stance| new_clone_stance(stance) }
     clone_poll.outcomes = poll.outcomes.map {|outcome| new_clone_outcome(outcome) }
+    clone_poll.closed_at = nil if clone_poll.closed_at && clone_poll.closed_at > DateTime.now
+    clone_poll.closing_at = nil if clone_poll.closing_at && clone_poll.closing_at < DateTime.now
+
     clone_poll
   end
 
