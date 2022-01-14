@@ -20,7 +20,6 @@ es:
     start_a_demo_group: Empezar un grupo de demostración
     start_a_demo: Iniciar demo
     look_and_feel: Inicie una demostración para ver cómo se ve Loomio y probar algunas de las características.
-    demos_expire: Las demostraciones se eliminan después de 24 horas. Siéntase libre de comenzar otro si lo necesita.
     generating_demo: 'Vale, ¡espera allí mismo! Generar una demostración toma alrededor de 20 segundos.'
     start_a_x_day_free_trial: Iniciar una prueba gratuita de {{day}} día
     ready_to_trial: ¿Listo para probar Loomio con su organización?
