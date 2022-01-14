@@ -61,25 +61,3 @@ v-main
           v-card.mb-3.thread-preview-collection__container
             thread-preview-collection.thread-previews-container(:threads='threads')
 </template>
-<style lang="sass">
-// .threads-page
-// 	.thread-preview__pin
-// 		display: none
-// .threads-page__heading
-// 	margin: 20px 0 20px 13px
-// .threads-page__date-range
-// .threads-page__no-threads,
-// .threads-page__no-groups,
-// .threads-page__explain-mute
-// .threads-page__footer
-// 	height: 1px
-// 	position: relative
-// 	bottom: 200px
-// .threads-page__mute-image--large
-// 	text-align: center
-// 	margin: 0 0 10px
-// .threads-page__mute-image--small
-// 	text-align: center
-// 	margin: 0 0 10px
-
-</style>

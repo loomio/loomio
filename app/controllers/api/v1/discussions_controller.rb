@@ -43,7 +43,12 @@ class API::V1::DiscussionsController < API::V1::RestfulController
   end
 
   def direct
-    @accessible_records = DiscussionQuery.visible_to(user: current_user, or_public: false, or_subgroups: false, group_ids: nil)
+    @accessible_records = DiscussionQuery.visible_to(
+                          user: current_user,
+                          or_public: false,
+                          or_subgroups: false,
+                          group_ids: nil,
+                          only_direct: true)
     instantiate_collection { |collection| collection.order_by_latest_activity }
     respond_with_collection
   end
