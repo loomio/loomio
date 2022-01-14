@@ -82,7 +82,7 @@
     "vue-gravatar": "^1.4.1",
     "vue-i18n": "8.26.8",
     "vue-observe-visibility": "^1.0.0",
-    "vue-recaptcha": "^1.2.0",
+    "vue-recaptcha": "^2.0.1",
     "vue-router": "^3.5.3",
     "vue-slicksort": "^1.2.0",
     "vue2-touch-events": "^3.2.2",
