@@ -46,7 +46,6 @@ class SearchVector < ApplicationRecord
    .order('rank DESC')
   end
 
-
   def self.recency_multiplier
     "CASE WHEN date_part('day', current_date - last_activity_at) BETWEEN 0 AND 7   THEN #{RECENCY_VALUES[0]}
           WHEN date_part('day', current_date - last_activity_at) BETWEEN 7 AND 21  THEN #{RECENCY_VALUES[1]}
