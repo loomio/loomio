@@ -1,5 +1,5 @@
 Loomio::Application.configure do
-  config.cache_classes = true
+  config.cache_classes = false
   config.serve_static_files = true
   config.log_level = ENV.fetch('RAILS_LOG_LEVEL', :info)
 

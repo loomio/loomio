@@ -69,7 +69,7 @@ gem 'blazer'
 # gem 'pg_query', '>= 0.9.0'
 
 group :development, :test do
-  gem 'listen'
+  # gem 'listen'
   gem 'byebug'
   gem 'factory_bot_rails'
   gem 'faker'
