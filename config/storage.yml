@@ -19,4 +19,13 @@ digitalocean:
   access_key_id: <%= ENV['DO_ACCESS_KEY_ID'] %>
   secret_access_key: <%= ENV['DO_SECRET_ACCESS_KEY'] %>
   bucket: <%= ENV['DO_BUCKET'] %>
-  region: <%= ENV['DO_REGION'] || 'unused' %>
+  region: ignored
+
+s3_compatible:
+  service: S3
+  endpoint: <%= ENV.fetch('STORAGE_ENDPOINT', '') %>
+  access_key_id: <%= ENV.fetch('STORAGE_ACCESS_KEY_ID', '') %>
+  secret_access_key: <%= ENV.fetch('STORAGE_SECRET_ACCESS_KEY', '') %>
+  region: <%= ENV.fetch('STORAGE_REGION', '') %>
+  bucket: <%= ENV.fetch('STORAGE_BUCKET_NAME', '') %>
+  force_path_style: <%= ENV.fetch('STORAGE_FORCE_PATH_STYLE', false) %>
