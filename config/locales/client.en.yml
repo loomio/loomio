@@ -30,6 +30,7 @@ en:
       You can invite other people to join, integrate it with your other tools, and see if it works for your group.
     demo_created: Demo group created, just for you!
     start_demo: Start demo
+    start_trial: Start trial
     demo_needs_user: To start a demo, you need to sign up (or sign in) as a Loomio user. This is free and only takes a minute.
 
   doctypes:
