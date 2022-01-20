@@ -13,6 +13,15 @@ class BaseMailer < ActionMailer::Base
   default :from => "\"#{AppConfig.theme[:site_name]}\" <#{NOTIFICATIONS_EMAIL_ADDRESS}>"
   before_action :utm_hash
 
+  def contact_message(name, email, subject, body)
+    @body = body
+    mail(
+      to: ENV['SUPPORT_EMAIL'],
+      reply_to: "\"#{name}\" <#{email}>",
+      subject: subject,
+    )
+  end
+
   protected
   def utm_hash
     @utm_hash = { utm_medium: 'email', utm_source: action_name, utm_campaign: mailer_name }

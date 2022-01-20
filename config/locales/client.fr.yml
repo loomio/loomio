@@ -20,7 +20,6 @@ fr:
     start_a_demo_group: Créez un groupe demo
     start_a_demo: Démarrer la démo
     look_and_feel: Commencez une démo pour voir à quoi ressemble Loomio et testez certaines des fonctionnalités.
-    demos_expire: Les démos sont supprimées après 24 heures. N’hésitez pas à en commencer une autre si vous en avez besoin.
     generating_demo: 'Ok, attendez juste là! La génération d’une démo prend environ 20 secondes.'
     start_a_x_day_free_trial: Commencer un essai gratuit {{day}}
     ready_to_trial: Prêt à essayer Loomio avec votre organisation?

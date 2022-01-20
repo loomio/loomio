@@ -32,16 +32,16 @@ class SearchVector < ApplicationRecord
   scope :search_for, ->(query, user, opts = {}) do
     DiscussionQuery.visible_to(chain: search_without_privacy!(query),
       user: user,
-      group_ids: user.group_ids,
+      or_public: false
     ).offset(opts.fetch(:from, 0)).limit(opts.fetch(:per, 10))
   end
 
   scope :search_without_privacy!, ->(query) do
     query = connection.quote(query)
 
-    joins(discussion: :group)
+   joins(:discussion).joins("LEFT OUTER JOIN groups on discussions.group_id = groups.id")
    .select(:discussion_id, :search_vector)
-   .select("ts_rank_cd('{#{WEIGHT_VALUES.join(',')}}', search_vector, plainto_tsquery(#{query})) * #{recency_multiplier} as rank")
+   .select("ts_rank_cd('{#{WEIGHT_VALUES.join(',')}}', search_vector, plainto_tsquery(#{query})) as rank")
    .where("search_vector @@ plainto_tsquery(#{query})")
    .order('rank DESC')
   end

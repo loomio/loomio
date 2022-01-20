@@ -20,7 +20,7 @@ zh_TW:
     start_a_demo_group: 啟動展示用群組
     start_a_demo: 試用範例
     look_and_feel: 開始試用以檢視 Loomio 的外觀與測試部份功能。
-    demos_expire: 範例將會在24小時後刪除。如果您需要的話，可再啟動新的。
+    demos_expire: 展示用群組將會自動在三天後刪除。若您需要的話，可再啟動新的。
     generating_demo: '好的，請稍等！產生範例大概需要 20 秒。'
     start_a_x_day_free_trial: 開始{{day}}天的免費試用
     ready_to_trial: 準備好與您的組織一起使用 Loomio 了嗎？

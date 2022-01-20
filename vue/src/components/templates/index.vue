@@ -16,6 +16,7 @@ export default
     templates: []
     loaded: false
     processing: false
+    trials: AppConfig.features.app.trials
 
   created: ->
     EventBus.$on 'signedIn', @init
@@ -90,14 +91,15 @@ v-main
           v-spacer
           v-btn(@click="startDemo(template.id)" v-t="'templates.start_demo'" color="primary")
 
-    h2.mt-8.text-title(v-t="'templates.ready_to_trial'")
-    v-card.my-4
-      v-card-title(v-t="{path:'templates.start_a_x_day_free_trial', args: {day: 7}}")
-      v-card-text
-        span(v-t="{path: 'templates.start_a_no_obligation_x_day_trial', args: {day: 7}}")
-        space
-        span(v-t="'templates.you_can_test_it_out'")
-      v-card-actions
-        v-spacer
-        v-btn(to="/g/new" color="primary") Start trial
+    template(v-if="trials")
+      h2.mt-8.text-title(v-t="'templates.ready_to_trial'")
+      v-card.my-4
+        v-card-title(v-t="{path:'templates.start_a_x_day_free_trial', args: {day: 7}}")
+        v-card-text
+          span(v-t="{path: 'templates.start_a_no_obligation_x_day_trial', args: {day: 7}}")
+          space
+          span(v-t="'templates.you_can_test_it_out'")
+        v-card-actions
+          v-spacer
+          v-btn(to="/g/new" color="primary" v-t="'templates.start_trial'")
 </template>

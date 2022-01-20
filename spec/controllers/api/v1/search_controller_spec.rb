@@ -24,7 +24,7 @@ describe API::V1::SearchController do
       search_for('find')
 
       expect(@result_keys).to include discussion.key
-      expect(@ranks).to include SearchVector::WEIGHT_VALUES[3] * SearchVector::RECENCY_VALUES[0]
+      expect(@ranks).to include SearchVector::WEIGHT_VALUES[3]
     end
 
     it "does not return discarded discussions" do
@@ -38,15 +38,15 @@ describe API::V1::SearchController do
       DiscussionService.update discussion: discussion, params: { title: 'find me' }, actor: user
       discussion.update(last_activity_at: 10.days.ago)
       result = search_for('find')
-      expect(@ranks).to include SearchVector::WEIGHT_VALUES[3] * 0.8
+      expect(@ranks).to include SearchVector::WEIGHT_VALUES[3]
 
       discussion.update(last_activity_at: 30.days.ago)
       result = search_for('find')
-      expect(@ranks).to include SearchVector::WEIGHT_VALUES[3] * 0.5
+      expect(@ranks).to include SearchVector::WEIGHT_VALUES[3]
 
       discussion.update(last_activity_at: 60.days.ago)
       result = search_for('find')
-      expect(@ranks).to include SearchVector::WEIGHT_VALUES[3] * 0.1
+      expect(@ranks).to include SearchVector::WEIGHT_VALUES[3]
     end
 
     it "can find a discussion by description" do
@@ -54,7 +54,7 @@ describe API::V1::SearchController do
       search_for('find')
 
       expect(@result_keys).to include discussion.key
-      expect(@ranks).to include SearchVector::WEIGHT_VALUES[1] * SearchVector::RECENCY_VALUES[0]
+      expect(@ranks).to include SearchVector::WEIGHT_VALUES[1]
     end
 
     it "can find a discussion by comment body" do
@@ -62,7 +62,7 @@ describe API::V1::SearchController do
       SearchIndexWorker.new.perform([comment.discussion_id])
       result = search_for('find')
       expect(@result_keys).to include discussion.key
-      expect(@ranks).to include SearchVector::WEIGHT_VALUES[0] * SearchVector::RECENCY_VALUES[0]
+      expect(@ranks).to include SearchVector::WEIGHT_VALUES[0]
     end
 
     it "does not display content the user does not have access to" do

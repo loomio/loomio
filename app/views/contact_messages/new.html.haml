@@ -1,0 +1,20 @@
+%body
+  %form{:action => "/contact_messages", :method => "POST"}
+    %p
+      Your name:
+      %input{:name => "name", :type => "text"}/
+    %p
+      Your email:
+      %input{:name => "email", :type => "email"}/
+    %p
+      Subject:
+      %input{:name => "subject", :type => "text"}/
+    %p
+      Message:
+      %textarea{:name => "body"}
+    %p
+      %input{:type => "submit", :value => "Send"}/
+
+    %p
+      If you prefer, you can email us:
+      %a{href: "mailto: #{ENV['SUPPORT_EMAIL']}"}=ENV['SUPPORT_EMAIL']

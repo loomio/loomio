@@ -61,26 +61,7 @@ module Loomio
     if ENV['AWS_BUCKET']
       config.active_storage.service = :amazon
     else
-      config.active_storage.service = :local
-    end
-
-    # we plan to remove fog and paperclip once we've migrated to active storage
-    if ENV['FOG_PROVIDER']
-      def self.fog_credentials
-        env = Rails.application.secrets
-        case env.fog_provider
-        when 'AWS'   then { aws_access_key_id: env.aws_access_key_id, aws_secret_access_key: env.aws_secret_access_key }
-        when 'Local' then { local_root: [Rails.root, 'public'].join('/'), endpoint: env.canonical_host }
-        end.merge(provider: env.fog_provider)
-      end
-
-      # Store avatars on Amazon S3
-      config.paperclip_defaults = {
-        storage: :fog,
-        fog_credentials: fog_credentials,
-        fog_directory: Rails.application.secrets.fog_uploads_directory,
-        fog_public: true
-      }
+      config.active_storage.service = ENV.fetch('ACTIVE_STORAGE_SERVICE', :local)
     end
 
     config.action_mailer.raise_delivery_errors = true
