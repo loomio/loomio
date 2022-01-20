@@ -282,6 +282,10 @@ Rails.application.routes.draw do
     post :webhook
   end
 
+  resources :contact_messages, only: [:new, :create] do
+    get :show, on: :collection
+  end
+  
   resources :received_emails, only: :create
   post :email_processor, to: 'received_emails#reply'
 
