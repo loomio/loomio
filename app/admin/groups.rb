@@ -45,6 +45,10 @@ ActiveAdmin.register Group, as: 'Group' do
       g.full_name
     end
 
+    column :privacy do |g|
+      g.group_privacy
+    end
+
     column "Members", :memberships_count
     column "Discussions", :discussions_count
     column :created_at
