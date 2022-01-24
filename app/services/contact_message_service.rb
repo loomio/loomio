@@ -5,7 +5,12 @@ class ContactMessageService
         contact_message.name,
         contact_message.email,
         contact_message.subject,
-        contact_message.message
+        contact_message.message,
+        {
+          site: ENV['CANONICAL_HOST'],
+          form_type: 'Support',
+          user_id: actor.id
+        }
       )
     else
       raise "failed to send a contact message. name: #{contact_message.name}, #{contact_message.email}, #{contact_message.subject}"
