@@ -8,7 +8,7 @@
       %tr
         %td= time_zone
         - poll.decided_voters.each do |user|
-          %td=render 'base_mailer/avatar', user: user, size: 'small'
+          %td=render 'base_mailer/avatar', user: user, size: 24
         %td= t(:'poll.export.total')
     %tbody
       - poll.poll_options.each do |poll_option|
