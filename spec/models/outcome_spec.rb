@@ -11,11 +11,6 @@ describe Outcome do
       expect(meeting_outcome.calendar_invite).to be_present
     end
 
-    it 'does nothing for non-meeting polls' do
-      outcome.store_calendar_invite
-      expect(outcome.calendar_invite).to be_nil
-    end
-
     it 'does nothing when no poll option is set' do
       meeting_outcome.update(poll_option: nil)
       expect(meeting_outcome.calendar_invite).to be_nil
