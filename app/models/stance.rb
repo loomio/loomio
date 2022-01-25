@@ -94,7 +94,7 @@ class Stance < ApplicationRecord
 
   def add_to_discussion?
     poll.discussion_id &&
-    poll.stances_in_discussion &&
+    poll.hide_results != 'until_closed' &&
     !body_is_blank? &&
     !Event.where(eventable: self,
                  discussion_id: poll.discussion_id,

@@ -7,4 +7,4 @@
 
     = render "poll_mailer/#{poll.poll_type}/responses", poll: poll, recipient: recipient
 - if !poll.show_results?
-  %p= t(:"poll_common_action_panel.results_hidden_until_closed", poll_type: t("poll_types.#{poll.poll_type}"))
+  %p= t(:"poll_common_action_panel.results_hidden_until_closed")

@@ -11,7 +11,7 @@ describe PollService do
   let(:another_group) { create :group }
 
   let(:discussion) { create :discussion, group: group }
-  let(:stance) { create :stance, poll: poll_created, choice: poll_created.poll_options.first.name }
+  let(:stance) { create :stance, poll: poll_created, choice: poll_created.poll_options.first.name, reason: 'good idea' }
   let(:identity) { create :slack_identity }
 
 
@@ -224,9 +224,9 @@ describe PollService do
     end
 
     it 'does not allow results early if hidden' do
-      poll_created.hide_results_until_closed = true
+      poll_created.hide_results = :until_closed
       expect(poll_created.save).to eq true
-      poll_created.hide_results_until_closed = false
+      poll_created.hide_results = :off
       expect(poll_created.save).to eq false
     end
 
@@ -261,23 +261,25 @@ describe PollService do
     end
 
     it 'stances_in_discussion is false' do
-      poll_created.hide_results_until_closed = true
+      poll_created.hide_results = :until_closed
       PollService.create(poll: poll_created, actor: user)
-      expect(poll_created.reload.stances_in_discussion).to be false
       event = StanceService.create(stance: stance, actor: stance.participant)
       expect(event.discussion).to be nil
+      PollService.close(poll: poll_created, actor: user)
+      expect(event.reload.discussion_id).to be_present
+
     end
 
     it 'hides and reveals results correctly' do
-      poll_created.hide_results_until_closed = true
+      poll_created.hide_results = 'until_closed'
       PollService.create(poll: poll_created, actor: user)
 
       StanceService.create(stance: stance, actor: stance.participant)
-      expect(poll_created.stance_counts).to eq []
+      expect(PollSerializer.new(poll_created).as_json[:poll][:stance_counts]).to be nil
       PollService.close(poll: poll_created, actor: user)
 
       poll_created.reload
-      expect(poll_created.stance_counts).to eq [1]
+      expect(PollSerializer.new(poll_created).as_json[:poll][:stance_counts]).to eq [1]
     end
 
     it 'disallows the creation of new stances' do

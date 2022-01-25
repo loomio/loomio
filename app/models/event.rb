@@ -142,6 +142,11 @@ class Event < ApplicationRecord
     self.position_key = self_and_parents.reverse.map(&:position).map{|p| Event.zero_fill(p) }.join('-')
   end
 
+  def set_sequences!
+    set_sequences
+    save!
+  end
+
   def reset_sequences
     position_counter.delete
     sequence_id_counter.delete

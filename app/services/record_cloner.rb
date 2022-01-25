@@ -111,7 +111,7 @@ class RecordCloner
       anonymous
       details_format
       anyone_can_participate
-      hide_results_until_closed
+      hide_results
       stances_in_discussion
       discarded_by
       specified_voters_only

@@ -32,15 +32,13 @@ export default
       EventBus.$emit('content-title-visible', visible) if @isPage
 
   computed:
-    showResults: -> @poll.showResults()
-
     menuActions: ->
       @myStance
       pick PollService.actions(@poll, @), ['edit_poll', 'notification_history', 'show_history', 'move_poll', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread', 'translate_poll']
 
     dockActions: ->
       @myStance
-      pick PollService.actions(@poll, @), ['show_results', 'hide_results', 'edit_stance', 'announce_poll', 'remind_poll', 'close_poll', 'reopen_poll']
+      pick PollService.actions(@poll, @), ['edit_stance', 'announce_poll', 'remind_poll', 'close_poll', 'reopen_poll']
 
 </script>
 
@@ -60,8 +58,7 @@ v-sheet
     poll-common-set-outcome-panel(:poll='poll' v-if="!outcome")
     poll-common-outcome-panel(:outcome='outcome' v-if="outcome")
     poll-common-details-panel(:poll='poll')
-    .poll-common-card__results-shown(v-if='showResults')
-      poll-common-chart-panel(:poll='poll')
+    poll-common-chart-panel(:poll='poll')
     poll-common-action-panel(:poll='poll')
     action-dock.mt-4(:actions="dockActions" :menu-actions="menuActions")
 

@@ -80,11 +80,13 @@ module.exports = (test, browser) ->
       test.pause(2000)
 
   fillIn: (selector, value, wait) ->
+    @pause(200)
     @waitFor(selector, wait)
     # test.clearValue(selector)
     test.setValue(selector, value)
 
   fillInAndEnter: (selector, value, wait) ->
+    @pause(100)
     @waitFor(selector, wait)
     # test.clearValue(selector)
     test.setValue(selector, [value, test.Keys.ENTER])
@@ -110,10 +112,12 @@ module.exports = (test, browser) ->
     @pause()
     @execute("document.querySelector('.md-autocomplete-suggestions li').click()")
 
-  selectOption: (selector, option) ->
-    # TODO
-    # @click selector
-    # element(By.cssContainingText('md-option', option)).click()
+  # selectOption: (selector, option) ->
+  #   @waitFor(selector, 3000)
+  #   test.setValue(selector, option)
+  #   # TODO
+  #   # @click selector
+  #   # element(By.cssContainingText('md-option', option)).click()
 
   expectValue: (selector, value, wait) ->
     @waitFor(selector, wait)
