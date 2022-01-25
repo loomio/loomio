@@ -65,7 +65,7 @@ class PermittedParams < Struct.new(:params)
 
   def outcome_attributes
     [:statement, :statement_format, :poll_id, :poll_option_id, :review_on, :recipient_audience, :include_actor,
-     :event_location, :event_summary, :event_description, :should_send_calendar_invite,
+     :event_location, :event_summary, :event_description,
      :notify_recipients,
      :recipient_user_ids, {recipient_user_ids: []},
      :recipient_emails, {recipient_emails: []},
