@@ -57,7 +57,7 @@ class OutcomeService
                            model: outcome,
                            actor: actor)
 
-    outcome.assign_attributes_and_files(params.slice(:statement, :statement_format, :event_summary, :event_location, :files, :image_files, :link_previews))
+    outcome.assign_attributes_and_files(params.slice(:statement, :statement_format, :event_summary, :event_location, :files, :image_files, :link_previews, :poll_option_id))
     return false unless outcome.valid?
 
     outcome.save!
