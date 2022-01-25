@@ -1,5 +1,3 @@
-- stances_by_user_id = {}
-- poll.stances.latest.each { |stance| stances_by_user_id[stance.participant_id] = stance }
 - time_zone = (recipient || poll).time_zone
 
 .poll-meeting-chart.pb-2
@@ -8,7 +6,7 @@
       %tr
         %td= time_zone
         - poll.decided_voters.each do |user|
-          %td=render 'base_mailer/avatar', user: user, size: 'small'
+          %td=render 'base_mailer/avatar', user: user, size: 24
         %td= t(:'poll.export.total')
     %tbody
       - poll.poll_options.each do |poll_option|
@@ -17,8 +15,9 @@
             = poll_option.display_name(zone: time_zone)
 
           - poll.decided_voters.each do |user|
+
             %td
-              - score = (stances_by_user_id[user.id] && stances_by_user_id[user.id].score_for(poll_option)) || 0
+              - score = poll_option.voter_scores.fetch(user.id.to_s, 0)
               - class_for_score = 'poll-meeting-chart__cell--yes' if score == 2
               - class_for_score = 'poll-meeting-chart__cell--maybe' if score == 1
               - class_for_score = 'poll-meeting-chart__cell--no' if score == 0

@@ -11,7 +11,7 @@ class Outcome < ApplicationRecord
 
   is_rich_text    on: :statement
 
-  set_custom_fields :calendar_invite, :event_summary, :event_description, :event_location, :should_send_calendar_invite
+  set_custom_fields :event_summary, :event_description, :event_location
 
   scope :dangling, -> { joins('left join polls on polls.id = poll_id').where('polls.id is null') }
   scope :in_organisation, -> (group) { joins(:poll).where('polls.group_id': group.id_and_subgroup_ids) }
@@ -60,8 +60,9 @@ class Outcome < ApplicationRecord
     .pluck(:"users.email").flatten.compact.uniq
   end
 
-  def store_calendar_invite
-    self.calendar_invite = CalendarInvite.new(self).to_ical
+  def calendar_invite
+    return nil unless self.poll_option && self.dates_as_options
+    CalendarInvite.new(self).to_ical
   end
 
   def has_valid_poll_option

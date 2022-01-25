@@ -16,7 +16,8 @@ describe Poll do
 
   it 'does not allow higher minimum stance choices than number of poll options' do
     ranked_choice.minimum_stance_choices = ranked_choice.poll_options.length + 1
-    expect(ranked_choice).to_not be_valid
+    ranked_choice.valid?
+    expect(ranked_choice.minimum_stance_choices).to eq ranked_choice.poll_options.length
   end
 
   it 'allows closing dates in the future' do

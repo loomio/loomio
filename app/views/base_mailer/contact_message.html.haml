@@ -1,1 +1,12 @@
-= @body
+%table
+  - @details.each_pair do |key, value|
+    %tr
+      %td=key
+      - if key == :user_id
+        %td= link_to value, admin_user_url(value)
+      - else
+        %td=value
+
+%hr
+
+=raw MarkdownService.render_html(@body)

@@ -126,8 +126,8 @@ class Group < ApplicationRecord
   delegate :slack_team_name, to: :slack_identity, allow_nil: true
   delegate :slack_channel_name, to: :slack_identity, allow_nil: true
 
-  has_one_attached :cover_photo
-  has_one_attached :logo
+  has_one_attached :cover_photo, dependent: :detach
+  has_one_attached :logo, dependent: :detach
 
   has_paper_trail only: [:name,
                          :parent_id,

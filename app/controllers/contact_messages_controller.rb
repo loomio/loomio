@@ -9,7 +9,11 @@ class ContactMessagesController < ApplicationController
       params[:name],
       params[:email],
       params[:subject],
-      params[:body]
+      params[:body],
+      {
+        site: ENV['CANONICAL_HOST'],
+        form_type: 'Sales'
+      }
     )
     redirect_to contact_messages_path(params: {name: params[:name]})
   end

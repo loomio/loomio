@@ -409,7 +409,7 @@ class Poll < ApplicationRecord
   def valid_minimum_stance_choices
     return unless require_stance_choices
     if minimum_stance_choices > poll_options.length
-      self.errors.add(:minimum_stance_choices, I18n.t(:"poll.error.minimum_too_high"))
+      self.minimum_stance_choices = poll_options.length
     end
   end
 
