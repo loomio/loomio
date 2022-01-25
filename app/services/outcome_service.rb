@@ -31,7 +31,6 @@ class OutcomeService
     outcome.assign_attributes(author: actor)
     return false unless outcome.valid?
     outcome.poll.outcomes.update_all(latest: false)
-    outcome.store_calendar_invite if outcome.should_send_calendar_invite
 
     outcome.save!
 
@@ -60,7 +59,6 @@ class OutcomeService
 
     outcome.assign_attributes_and_files(params.slice(:statement, :statement_format, :event_summary, :event_location, :files, :image_files, :link_previews))
     return false unless outcome.valid?
-    outcome.store_calendar_invite if outcome.should_send_calendar_invite
 
     outcome.save!
     outcome.update_versions_count

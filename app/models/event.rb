@@ -170,10 +170,6 @@ class Event < ApplicationRecord
     "0" * (5 - num.to_s.length) + num.to_s
   end
 
-  def calendar_invite
-    nil # only for announcement_created events for outcomes
-  end
-
   def find_parent_event
     case kind
     when 'discussion_closed'   then eventable.created_event

@@ -13,7 +13,6 @@ class CalendarInvite
   private
 
   def build_calendar(outcome)
-    return unless outcome.poll_option && outcome.dates_as_options
     Icalendar::Calendar.new.tap do |calendar|
       calendar.event do |event|
         if outcome.poll_option.name.match /^\d+-\d+-\d+$/
