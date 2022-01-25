@@ -12,6 +12,10 @@ i18n.dateLocale = defaultLocale
 # when same year give month and date
 # otherwise give iso formatted date
 
+export day = (date, zone) ->
+  throw {"invalid date", date} unless isValid(date)
+  format(utcToZonedTime(date, zone), 'EEE', {timeZone: zone, locale: i18n.dateLocale})
+
 export approximate = (date, zone) ->
   throw {"invalid date", date} unless isValid(date)
   now = new Date
