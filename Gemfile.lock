@@ -404,7 +404,7 @@ GEM
     oj (3.13.11)
     orm_adapter (0.5.0)
     os (1.1.4)
-    paper_trail (12.1.0)
+    paper_trail (12.2.0)
       activerecord (>= 5.2)
       request_store (~> 1.1)
     pg (1.2.3)
@@ -491,7 +491,7 @@ GEM
       redis-store (>= 1.2, < 2)
     redis-store (1.9.0)
       redis (>= 4, < 5)
-    request_store (1.5.0)
+    request_store (1.5.1)
       rack (>= 1.4)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -658,7 +658,7 @@ DEPENDENCIES
   mini_magick
   nokogiri
   oj
-  paper_trail (~> 12.1.0)
+  paper_trail (~> 12.2.0)
   pg
   premailer-rails
   puma
