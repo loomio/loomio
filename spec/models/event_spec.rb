@@ -264,7 +264,7 @@ describe Event do
     let(:poll_meeting) { create :poll_meeting, discussion: discussion }
 
     before do
-      outcome.update(poll: poll_meeting, calendar_invite: "SOME_EVENT_INFO")
+      outcome.update(poll: poll_meeting)
     end
 
     it 'notifies mentioned users and the author' do
