@@ -5,15 +5,16 @@
     %thead
       %tr
         %td= time_zone
+        %td= t(:'poll_common.votes')
         - poll.decided_voters.each do |user|
           %td=render 'base_mailer/avatar', user: user, size: 24
-        %td= t(:'poll.export.total')
     %tbody
       - poll.poll_options.each do |poll_option|
         %tr
           %td.poll-meeting-chart__meeting-time
             = poll_option.display_name(zone: time_zone)
-
+          %td.total.text-center
+            %strong=((poll_option.total_score.to_f)/2).to_s.gsub('.0','')
           - poll.decided_voters.each do |user|
 
             %td
@@ -21,9 +22,5 @@
               - class_for_score = 'poll-meeting-chart__cell--yes' if score == 2
               - class_for_score = 'poll-meeting-chart__cell--maybe' if score == 1
               - class_for_score = 'poll-meeting-chart__cell--no' if score == 0
-
               .poll-meeting-chart__cell{class: class_for_score}
                 %span &nbsp;
-
-          %td.total
-            %strong=poll_option.total_score/2

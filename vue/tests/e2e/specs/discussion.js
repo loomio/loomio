@@ -178,8 +178,8 @@ module.exports = {
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'hi this is my comment')
     page.click('.comment-form__submit-button')
 
-    page.expectText('.thread-card', 'hi this is my comment')
-    page.expectFlash('Patrick Swayze notified of reply')
+    page.expectText('.strand-item__new-comment', 'hi this is my comment')
+    // page.expectFlash('Patrick Swayze notified of reply')
   },
 
   'can_react_to_a_discussion': (test) => {

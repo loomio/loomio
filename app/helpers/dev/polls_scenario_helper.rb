@@ -16,7 +16,7 @@ module Dev::PollsScenarioHelper
     poll = fake_poll(group: group,
                      discussion: params[:standalone] ? nil : discussion,
                      poll_type: params[:poll_type],
-                     hide_results_until_closed: !!params[:hide_results_until_closed],
+                     hide_results: (params[:hide_results] || :off),
                      wip: params[:wip],
                      anonymous: !!params[:anonymous])
 
@@ -40,7 +40,7 @@ module Dev::PollsScenarioHelper
     group.add_admin!(observer)
     poll = fake_poll(poll_type: params[:poll_type],
                      anonymous: !!params[:anonymous],
-                     hide_results_until_closed: !!params[:hide_results_until_closed],
+                     hide_results: (params[:hide_results] || :off),
                      group: group,
                      discussion: nil,
                      wip: params[:wip])
@@ -160,7 +160,7 @@ module Dev::PollsScenarioHelper
     poll       = saved(create_fake_poll_with_stances(author: actor,
                                                      poll_type: params[:poll_type],
                                                      anonymous: !!params[:anonymous],
-                                                     hide_results_until_closed: !!params[:hide_results_until_closed],
+                                                     hide_results: (params[:hide_results] || :off),
                                                      discussion: discussion,
                                                      wip: params[:wip],
                                                      notify_on_closing_soon: params[:notify_on_closing_soon] || 'voters',
@@ -192,7 +192,7 @@ module Dev::PollsScenarioHelper
     poll       = saved(create_fake_poll_with_stances(author: actor,
                                                      poll_type: params[:poll_type],
                                                      anonymous: !!params[:anonymous],
-                                                     hide_results_until_closed: !!params[:hide_results_until_closed],
+                                                     hide_results: (params[:hide_results] || :off),
                                                      discussion: discussion,
                                                      wip: params[:wip],
                                                      notify_on_closing_soon: params[:notify_on_closing_soon] || 'voters',
@@ -227,7 +227,7 @@ module Dev::PollsScenarioHelper
     poll       = saved(create_fake_poll_with_stances(author: actor,
                                                      poll_type: params[:poll_type],
                                                      anonymous: !!params[:anonymous],
-                                                     hide_results_until_closed: !!params[:hide_results_until_closed],
+                                                     hide_results: (params[:hide_results] || :off),
                                                      discussion: discussion,
                                                      closing_at: if params[:wip] then nil else 1.day.from_now end))
     voter      = poll.stances.last.real_participant
@@ -256,7 +256,7 @@ module Dev::PollsScenarioHelper
     poll       = create_fake_poll_with_stances(discussion: discussion,
                                                poll_type: params[:poll_type],
                                                anonymous: !!params[:anonymous],
-                                               hide_results_until_closed: !!params[:hide_results_until_closed])
+                                               hide_results: (params[:hide_results] || :off))
     poll.update_attribute(:closing_at, 1.day.ago)
     poll.discussion.group.add_member! poll.author
     Events::PollCreated.publish!(poll, poll.author)
@@ -276,7 +276,7 @@ module Dev::PollsScenarioHelper
     discussion.group.add_member! observer
     poll       = create_fake_poll_with_stances(poll_type: params[:poll_type],
                                                anonymous: !!params[:anonymous],
-                                               hide_results_until_closed: !!params[:hide_results_until_closed],
+                                               hide_results: (params[:hide_results] || :off),
                                                discussion: discussion,
                                                closed_at: 1.day.ago,
                                                closing_at: 1.day.ago)
@@ -300,7 +300,7 @@ module Dev::PollsScenarioHelper
     discussion.group.add_member! observer
     poll       = create_fake_poll_with_stances(poll_type: params[:poll_type],
                                                anonymous: !!params[:anonymous],
-                                               hide_results_until_closed: !!params[:hide_results_until_closed],
+                                               hide_results: (params[:hide_results] || :off),
                                                discussion: discussion,
                                                closed_at: 1.day.ago,
                                                closing_at: 1.day.ago)

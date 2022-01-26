@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "@sentry/browser": "^6.16.1",
-    "@sentry/integrations": "^6.16.1",
-    "@sentry/tracing": "^6.16.1",
+    "@sentry/browser": "^6.17.2",
+    "@sentry/integrations": "^6.17.2",
+    "@sentry/tracing": "^6.17.2",
     "@tiptap/core": "latest",
     "@tiptap/extension-blockquote": "latest",
     "@tiptap/extension-bold": "latest",
@@ -80,13 +80,13 @@
     "vue": "^2.6.14",
     "vue-clipboard2": "^0.3.3",
     "vue-gravatar": "^1.4.1",
-    "vue-i18n": "8.26.8",
+    "vue-i18n": "8.27.0",
     "vue-observe-visibility": "^1.0.0",
     "vue-recaptcha": "^1.2.0",
     "vue-router": "^3.5.3",
     "vue-slicksort": "^1.2.0",
     "vue2-touch-events": "^3.2.2",
-    "vuetify": "2.6.2"
+    "vuetify": "2.6.3"
   },
   "devDependencies": {
     "@mdi/font": "^6.5.95",
@@ -99,7 +99,7 @@
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "coffee-loader": "latest",
     "coffeescript": "^2.6.1",
-    "fibers": "^5.0.0",
+    "fibers": "^5.0.1",
     "js-yaml-loader": "^1.2.2",
     "sass": "^1.49.0",
     "sass-loader": "^10.1.1",

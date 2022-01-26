@@ -198,6 +198,13 @@ class PollService
   def self.do_closing_work(poll:)
     return if poll.closed_at
     poll.stances.update_all(participant_id: nil) if poll.anonymous
+    if poll.discussion_id && poll.hide_results == 'until_closed'
+      stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
+      events = Event.where(eventable_type: "Stance", eventable_id: stance_ids)
+      events.update_all(discussion_id: poll.discussion_id)
+      events.each(&:set_sequences!)
+      EventService.repair_thread(poll.discussion_id)
+    end
     poll.update_attribute(:closed_at, Time.now)
   end
 

@@ -619,6 +619,7 @@ ActiveRecord::Schema.define(version: 2021_12_13_053922) do
     t.jsonb "link_previews", default: [], null: false
     t.boolean "shuffle_options", default: false, null: false
     t.boolean "allow_long_reason", default: false, null: false
+    t.integer "hide_results", default: 0, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"
