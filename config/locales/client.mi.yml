@@ -103,9 +103,6 @@ mi:
       label: Ngā kōrero pūrongo
     aria_label: "Whakahuritia ngā kōwhiringa īmēra"
     mute_label: "Whakahāngūtia"
-  mute_explanation_modal:
-    aria_label: Whakahāngūtia te miro
-    mute_thread: Whakahāngūtia te miro
   inbox:
     latest: 'Hou ake'
     unread: 'Kāhore anō kia kitea'

@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe StanceChoice do
   let(:poll) { create :poll }
-  let(:choice) { build :stance_choice, poll: poll, score: 1 }
+  let(:stance) { build :stance, poll: poll }
+  let(:choice) { build :stance_choice, poll: poll, stance: stance, score: 1 }
 
   it 'allows scores == 1' do
     expect(choice).to be_valid

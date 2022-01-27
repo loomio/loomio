@@ -1,4 +1,6 @@
 da:
+  templates:
+    try_loomio: Prøv Loomio
   loomio_onboarding:
     group_progress_card:
       activities:
@@ -28,6 +30,7 @@ da:
   timezones:
     local: Lokal tid ({{value}})
   common:
+    please_wait: Vent venligst
     version: Version
     no_results_found: Ingen resultater fundet
     expand: Udvid
@@ -172,15 +175,6 @@ da:
         loud: "Du vil få emails ved enhver aktivitet i alle nye grupper du bliver medlem af."
         normal: "Du vil få emails ved publiceringer i alle nye grupper du bliver medlem af."
         quiet: "Du vil ikke få emails ved nogen aktivitet i nogen af de nye fupper du bliver medlem af."
-  mute_explanation_modal:
-    aria_label: Slå notifikationer fra
-    mute_thread: Slå notifikationer fra
-    image_alt: Uden notifikationer i menuen i siden
-  dismiss_explanation_modal:
-    aria_label: Afvis debat
-    dismiss_thread: Afvis debat
-    body_html: |
-        <p>Ved at afvise en debat så fjerner du den også fra din ulæste liste. Hvis en ny aktivitet sker i debatten, så vil den blive vist i din ulæste liste igen.</p>
   inbox:
     clear: 'Ryd'
     latest: 'Seneste'
@@ -649,8 +643,6 @@ da:
       success: Debatten er flyttet til {{name}}
   delete_comment_dialog:
     title: 'Slet kommentar'
-    question: 'Er du sikker på at du vil slette denne kommentar?'
-    confirm: 'Slet kommentar'
   contact_message_form:
     contact_us: 'Kontakt os'
     name_label: 'Dit navn'

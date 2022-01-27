@@ -3,7 +3,6 @@ class GroupExportService
     all_users
     all_events
     all_notifications
-    all_documents
     all_reactions
     all_taggings
     memberships
@@ -67,6 +66,7 @@ class GroupExportService
         group_ids << record.id if table == "groups"
         record
       end.compact!
+      return unless Array(new_records).any?
       klass.import(new_records, validate: false, on_duplicate_key_ignore: true)
     end
     SearchIndexWorker.new.perform(Discussion.where(group_id: group_ids).pluck(:id))

@@ -283,6 +283,10 @@ Rails.application.routes.draw do
     post :webhook
   end
 
+  resources :contact_messages, only: [:new, :create] do
+    get :show, on: :collection
+  end
+  
   resources :received_emails, only: :create
   post :email_processor, to: 'received_emails#reply'
 
@@ -299,7 +303,7 @@ Rails.application.routes.draw do
   get '/help/markdown' => 'help#markdown'
   get '/help/api'   => 'help#api'
 
-  get '/start_group', to: redirect('/g/new')
+  get '/start_group', to: redirect('/try')
 
   get 'try'                                => 'application#index'
   get 'dashboard'                          => 'application#index', as: :dashboard
@@ -378,12 +382,12 @@ Rails.application.routes.draw do
     get :webview,                         to: 'identities/facebook#webview',  as: :facebook_webview
   end
 
-  scope :slack do
-    get  :install,                        to: 'identities/slack#install',     as: :slack_install
-    get  :authorized,                     to: 'identities/slack#authorized',  as: :slack_authorized
-    post :participate,                    to: 'identities/slack#participate', as: :slack_participate
-    post :initiate,                       to: 'identities/slack#initiate',    as: :slack_initiate
-  end
+  # scope :slack do
+  #   get  :install,                        to: 'identities/slack#install',     as: :slack_install
+  #   get  :authorized,                     to: 'identities/slack#authorized',  as: :slack_authorized
+  #   post :participate,                    to: 'identities/slack#participate', as: :slack_participate
+  #   post :initiate,                       to: 'identities/slack#initiate',    as: :slack_initiate
+  # end
 
   scope :saml do
     post :oauth,                          to: 'identities/saml#create',   as: :saml_oauth_callback

@@ -264,7 +264,7 @@ describe Event do
     let(:poll_meeting) { create :poll_meeting, discussion: discussion }
 
     before do
-      outcome.update(poll: poll_meeting, calendar_invite: "SOME_EVENT_INFO")
+      outcome.update(poll: poll_meeting)
     end
 
     it 'notifies mentioned users and the author' do
@@ -327,7 +327,6 @@ describe Event do
     end
 
     it 'sends invitations' do
-      stance = Stance.create(participant: user_thread_normal, poll: poll)
       expect {
         Events::PollAnnounced.publish!(poll: poll, actor: poll.author, stances: [stance_for(user_thread_normal)])
       }.to change { emails_sent }.by(1)
@@ -340,7 +339,7 @@ describe Event do
     end
 
     it 'can send an ical attachment with an outcome' do
-      outcome.update(poll: poll_meeting, calendar_invite: "SOME_EVENT_INFO")
+      outcome.update(poll: poll_meeting, poll_option_id: poll_meeting.poll_option_ids.first)
       expect {
         Events::OutcomeCreated.publish!(outcome: outcome, recipient_user_ids: [poll.author.id, user_thread_normal.id])
       }.to change { emails_sent }

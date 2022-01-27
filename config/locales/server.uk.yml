@@ -314,6 +314,7 @@ uk:
       poll_option_added: '%{actor} додав(ла) варіанти до: %{title}'
       poll_option_added_author: '%{actor} додав(ла) варіанти до: %{title}'
       stance_created: "%{actor} проголосував щодо: %{title}"
+      stance_updated: "%{actor} проголосував щодо: %{title}"
       stance_created_author: "Підтвердіть ваш вибір в: %{title}"
       user_mentioned: '%{actor} згадав вас в: %{title}'
       user_reminded: '%{actor} нагадує вам щодо голосування: %{title}'
@@ -321,6 +322,7 @@ uk:
       poll_option_added: '<strong>%{actor}</strong> додав(ла) варіанти до: %{title}'
       poll_option_added_author: '<strong>%{actor}</strong> додав(ла) варіанти до: %{title}'
       stance_created: "<strong>%{actor}</strong> проголосував щодо: %{title}"
+      stance_updated: "<strong>%{actor}</strong> проголосував щодо: %{title}"
       user_mentioned: '<strong>%{actor}</strong> згадав(ла) вас в: %{title}'
       user_reminded: '<strong>%{actor}</strong> нагадує вам щодо участі в голосуванні в: %{title}'
     body:

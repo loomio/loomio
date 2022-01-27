@@ -1,4 +1,6 @@
 it:
+  templates:
+    try_loomio: Prova Loomio
   loomio_onboarding:
     group_progress_card:
       title: Per cominciare
@@ -120,6 +122,7 @@ it:
   timezones:
     local: Ora locale ({{value}})
   common:
+    please_wait: Attendere prego
     version: Versione
     none: Nessuno
     empty: Vuoto
@@ -366,21 +369,6 @@ it:
         <p>Chiudi i thread vecchi o irrilevanti per rimuoverli dalla visualizzazione e indicare che la discussione è stata chiusa.</p>
         <p>Chiunque può comunque commentare o avviare un sondaggio in un thread chiuso, ma non verrà visualizzato nell'elenco dei thread del gruppo o nel dashboard.</p>
     image_alt: Chiudi tutte le discussioni
-  mute_explanation_modal:
-    aria_label: Silenzia discussione
-    mute_thread: Silenzia discussione
-    body_html: |
-        Silenziare <strong>significa che non riceverai notifiche sulle proposte</strong>, o nessun altra attività in questa discussione a meno che qualcuno <strong>non ti menzioni.</strong>
-    body_html_2: |
-        Le discussioni silenziate sono nascoste anche dalle pagine <strong>Recenti</strong> e <strong>Non Lette</strong>. Per trovare le discussioni <strong>Silenziate</strong>, seleziona l'opzione Silenziate nella barra laterale.
-    image_alt: Opzione discussioni silenziate nella colonna laterale
-  dismiss_explanation_modal:
-    aria_label: Ignora discussione
-    dismiss_thread: Ignora discussione
-    body_html: |+
-        <p>Ignorando una discussione la rimovi dai tuoi testi non letti. Se in questa
-        discussione avviene una nuova attività, apparirà nuovamente come non letta.</p>
-
   inbox:
     clear: 'Pulisci'
     latest: 'Più recente'
@@ -1363,8 +1351,6 @@ it:
     confirm: 'Cancella discussione'
   delete_comment_dialog:
     title: 'Cancella il commento'
-    question: 'Sei sicuro che vuoi cancellare questo commento?'
-    confirm: 'Cancella il commento'
   contact_message_form:
     contact_us: 'Contattaci'
     name_label: 'Nominativo'

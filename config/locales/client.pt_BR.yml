@@ -1,4 +1,6 @@
 pt_BR:
+  templates:
+    try_loomio: Experimente Loomio
   loomio_onboarding:
     group_progress_card:
       activities:
@@ -103,6 +105,7 @@ pt_BR:
   timezones:
     local: Hora local ({{value}})
   common:
+    please_wait: Por favor, aguarde
     version: Versão
     empty: Vazio
     no_results_found: Nenhum resultado encontrado
@@ -343,19 +346,6 @@ pt_BR:
         <p>Fechar conversas antigas ou irrelevantes para escondê-las e indicar que a discussão foi fechada.</p>
         <p>Ainda será possível comentar ou iniciar uma enquete numa conversa fechada, mas não aparecerão na lista de conversas do grupo ou no dashboard.</p>
     image_alt: Fechando todas as conversas
-  mute_explanation_modal:
-    aria_label: Silenciar conversa
-    mute_thread: Silenciar conversa
-    body_html: |
-        Silenciar significa que você <strong>não será notificado de novas propostas</strong>, ou quaisquer outras atividades nessa conversa exceto <strong>@mentions você</strong>
-    body_html_2: |
-        Conversas silenciadas são escondidas nas páginas <strong>Recente</strong> e <strong>Não Lidas</strong>. Para encontrar suas conversas silenciadas, selecione a opção <strong>Silenciadas</strong> na barra lateral
-    image_alt: Opção de conversas silenciadas na barra lateral
-  dismiss_explanation_modal:
-    aria_label: Dispensar conversa
-    dismiss_thread: Dispensar conversa
-    body_html: |
-        <p>Ao dispensar uma conversa, ela é removida dos itens não-lidos. Caso ocorra qualquer nova atividade na conversa, a mesma será novamente marcado como não-lida.</p>
   inbox:
     clear: 'Limpar'
     latest: 'Último'
@@ -1232,8 +1222,6 @@ pt_BR:
       success: Essa conversa foi movida para {{name}}
   delete_comment_dialog:
     title: 'Apagar comentário'
-    question: 'Você tem certeza que deseja apagar este comentário?'
-    confirm: 'Apagar comentário'
   contact_message_form:
     title: "Olá! Como podemos ajudar?"
     contact_us_email: "Você também pode nos mandar um email: <a href=\"mailto:{{email}}\">{{email}}</a>"
@@ -1271,7 +1259,6 @@ pt_BR:
     order_by: Ordenar grupos por
   global:
     messages:
-      app_update: 'Uma nova versão do app está disponível'
       reload: 'Recarregar'
   decision_tools_card:
     title: Facilitar

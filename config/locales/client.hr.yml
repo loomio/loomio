@@ -1,4 +1,6 @@
 hr:
+  templates:
+    try_loomio: Isprobaj Loomio
   subscription_status:
     members: "Članovi"
   common:
@@ -54,7 +56,5 @@ hr:
     aria_label: Ime grupe
   delete_comment_dialog:
     title: 'Obriši komentar'
-    question: 'Jeste li sigurni da želite obrisati komentar?'
-    confirm: 'Obriši komentar'
   members_panel:
     accepted: 'Članovi'

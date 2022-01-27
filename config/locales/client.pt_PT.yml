@@ -1,4 +1,6 @@
 pt_PT:
+  templates:
+    try_loomio: Experimentar o Loomio
   current_plan_button:
     upgrade: Upgrade
   error_page:

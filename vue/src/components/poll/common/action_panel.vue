@@ -37,8 +37,6 @@ export default
 .poll-common-action-panel(v-if='!poll.closedAt')
   v-alert.poll-common-action-panel__anonymous-message.my-2(dense outlined type="info" v-if='poll.anonymous')
     span(v-t="'poll_common_action_panel.anonymous'")
-  v-alert.poll-common-action-panel__results-hidden-until-closed.my-2(dense outlined type="info" v-if='poll.hideResultsUntilClosed')
-    span( v-t="{path: 'poll_common_action_panel.results_hidden_until_closed', args: {poll_type: poll.pollType}}" )
   div(v-if="poll.closingAt")
     .poll-common-vote-form(v-if='stance && !stance.castAt')
       h3.title.py-3(v-t="'poll_common.have_your_say'")

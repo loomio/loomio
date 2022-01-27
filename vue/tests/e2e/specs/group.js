@@ -19,8 +19,6 @@ module.exports = {
     page.click('.join-group-button')
     page.signUpViaEmail('new@account.com')
     page.pause(500)
-
-    page.click('.dismiss-modal-button')
     page.click('.join-group-button', 500)
     page.ensureSidebar()
     page.expectText('.sidebar__groups', 'Open Dirty Dancing Shoes')

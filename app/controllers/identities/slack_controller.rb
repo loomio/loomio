@@ -3,40 +3,40 @@ class Identities::SlackController < Identities::BaseController
 
   rescue_from(ActionController::ParameterMissing) { head :bad_request }
 
-  def install
-    if current_user.identities.find_by(identity_type: :slack) || pending_identity
-      index
-    else
-      params[:back_to] = slack_install_url
-      oauth
-    end
-  end
-
-  def initiate
-    if params['token'] == ENV['SLACK_VERIFICATION_TOKEN']
-      render plain: ::Slack::Initiator.new(params).initiate
-    else
-      head :bad_request
-    end
-  end
-
-  def participate
-    payload = JSON.parse(params.require(:payload))
-    if payload['token'] == ENV['SLACK_VERIFICATION_TOKEN']
-      render json: ::Slack::Participator.new(JSON.parse(params.require(:payload))).participate
-    else
-      head :bad_request
-    end
-  end
-
-  def authorized
-    @team, @channel = params[:slack].to_s.split("-")
-    if user_to_join
-      Group.by_slack_channel(@channel).each { |g| g.add_member! user_to_join }
-      sign_in user_to_join
-    end
-    render template: 'slack/authorized', layout: 'basic'
-  end
+  # def install
+  #   if current_user.identities.find_by(identity_type: :slack) || pending_identity
+  #     index
+  #   else
+  #     params[:back_to] = slack_install_url
+  #     oauth
+  #   end
+  # end
+  #
+  # def initiate
+  #   if params['token'] == ENV['SLACK_VERIFICATION_TOKEN']
+  #     render plain: ::Slack::Initiator.new(params).initiate
+  #   else
+  #     head :bad_request
+  #   end
+  # end
+  #
+  # def participate
+  #   payload = JSON.parse(params.require(:payload))
+  #   if payload['token'] == ENV['SLACK_VERIFICATION_TOKEN']
+  #     render json: ::Slack::Participator.new(JSON.parse(params.require(:payload))).participate
+  #   else
+  #     head :bad_request
+  #   end
+  # end
+  #
+  # def authorized
+  #   @team, @channel = params[:slack].to_s.split("-")
+  #   if user_to_join
+  #     Group.by_slack_channel(@channel).each { |g| g.add_member! user_to_join }
+  #     sign_in user_to_join
+  #   end
+  #   render template: 'slack/authorized', layout: 'basic'
+  # end
 
   private
 

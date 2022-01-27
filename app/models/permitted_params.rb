@@ -29,7 +29,7 @@ class PermittedParams < Struct.new(:params)
 
   def poll_attributes
     [ :title, :details, :details_format, :poll_type, :discussion_id, :group_id,
-      :closing_at, :anonymous, :hide_results_until_closed, :multiple_choice, :key,
+      :closing_at, :anonymous, :hide_results, :multiple_choice, :key,
       :allow_long_reason,
       :shuffle_options,
       :anyone_can_participate,
@@ -65,7 +65,7 @@ class PermittedParams < Struct.new(:params)
 
   def outcome_attributes
     [:statement, :statement_format, :poll_id, :poll_option_id, :review_on, :recipient_audience, :include_actor,
-     :event_location, :event_summary, :event_description, :should_send_calendar_invite,
+     :event_location, :event_summary, :event_description,
      :notify_recipients,
      :recipient_user_ids, {recipient_user_ids: []},
      :recipient_emails, {recipient_emails: []},

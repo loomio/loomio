@@ -18,24 +18,6 @@ export default new class PollService
         AbilityService.canTranslate(poll)
       perform: -> Session.user() && poll.translate(Session.user().locale)
 
-    show_results:
-      icon: 'mdi-eye-outline'
-      name: 'poll_common_card.show_results'
-      dock: 2
-      canPerform: ->
-        !poll.discardedAt && poll.closingAt && !poll.hideResultsUntilClosed && !poll.showResults()
-      perform: ->
-        poll.pleaseShowResults = true
-
-    hide_results:
-      icon: 'mdi-eye-off-outline'
-      name: 'poll_common_card.hide_results'
-      dock: 2
-      canPerform: ->
-        !poll.discardedAt && poll.showResults() && !poll.closedAt && !poll.iHaveVoted()
-      perform: ->
-        poll.pleaseShowResults = false
-
     edit_stance:
       name: 'poll_common.change_vote'
       icon: 'mdi-pencil'

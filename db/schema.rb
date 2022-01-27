@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_17_110346) do
+ActiveRecord::Schema.define(version: 2021_12_13_053922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -620,6 +620,7 @@ ActiveRecord::Schema.define(version: 2021_11_17_110346) do
     t.jsonb "link_previews", default: [], null: false
     t.boolean "shuffle_options", default: false, null: false
     t.boolean "allow_long_reason", default: false, null: false
+    t.integer "hide_results", default: 0, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"
@@ -668,13 +669,13 @@ ActiveRecord::Schema.define(version: 2021_11_17_110346) do
     t.integer "inviter_id"
     t.integer "volume", default: 2, null: false
     t.datetime "accepted_at"
-    t.jsonb "stance_choices_cache", default: []
     t.string "content_locale"
     t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.jsonb "link_previews", default: [], null: false
     t.jsonb "option_scores", default: {}, null: false
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id", "cast_at"], name: "index_stances_on_poll_id_and_cast_at", order: "NULLS FIRST"
+    t.index ["poll_id", "participant_id", "latest"], name: "index_stances_on_poll_id_and_participant_id_and_latest", unique: true, where: "(latest = true)"
     t.index ["poll_id"], name: "index_stances_on_poll_id"
     t.index ["token"], name: "index_stances_on_token", unique: true
   end

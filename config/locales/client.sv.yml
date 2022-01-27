@@ -1,4 +1,6 @@
 sv:
+  templates:
+    try_loomio: Prova Loomio
   doctypes:
     youtube_video: YouTubevideo
     image: Bild
@@ -46,6 +48,7 @@ sv:
   timezones:
     local: Lokal tid ({{value}})
   common:
+    please_wait: Vänlig vänta
     version: Version
     you: Du
     expand: Expandera
@@ -223,20 +226,6 @@ sv:
     aria_label: Stäng tråd
     close_thread: Stäng tråd
     image_alt: Stänger alla trådar
-  mute_explanation_modal:
-    aria_label: Gör tråd stum
-    mute_thread: Gör tråd stum
-    body_html: |
-        Att göra tråden stum betyder att du <strong>inte kommer bli notifierad kring förslag</strong> eller andra aktiviteter i denna tråd, ifall inte någon <strong>@omnämner dig</strong>.
-    body_html_2: |
-        Stumma trådar är gömda från <strong>Senaste</strong> och <strong>Olästa</strong> sidor också. För att hitta dina Stumma trådar, välj <strong>Stumma</strong>valmöjligheten i sidomenyn
-    image_alt: Stumma trådar valmöjligheten i sidomenyn
-  dismiss_explanation_modal:
-    aria_label: Avfärda tråd
-    dismiss_thread: Avfärda tråd
-    body_html: |
-        <p>Genom att avfärda en tråd så försvinner den från ditt olästa innehåll. Om någon ny
-        aktivitet händer i tråden så kommer den att visas som oläst igen</p>
   inbox:
     clear: 'Klar'
     latest: 'Senaste'
@@ -410,8 +399,6 @@ sv:
     delete_thread: 'Radera'
   delete_comment_dialog:
     title: 'Ta bort kommentaren'
-    question: 'Är du säker på att du vill ta bort denna kommentaren?'
-    confirm: 'Ta bort kommentaren'
   contact_message_form:
     name_label: 'Ditt namn'
     subject_label: "Ämne"

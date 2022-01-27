@@ -156,8 +156,10 @@ da:
       time_zone: (Tider er vist i %{zone})
     subject:
       stance_created: "%{actor} stemte på: %{title}"
+      stance_updated: "%{actor} stemte på: %{title}"
     header:
       stance_created: "<strong>%{actor}</strong> stemte på: %{title}"
+      stance_updated: "<strong>%{actor}</strong> stemte på: %{title}"
     body:
       voted: '<strong>%{participant}</strong>:'
   comment_by: Kommentar fra %{comment_author}

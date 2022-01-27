@@ -10,6 +10,7 @@ module GroupPrivacy
     validate :validate_parent_members_can_see_discussions
     validate :validate_is_visible_to_parent_members
     validate :validate_discussion_privacy_options
+    validate :validate_trial_group_cannot_be_public
     validates_inclusion_of :discussion_privacy_options, in: DISCUSSION_PRIVACY_OPTIONS
     validates_inclusion_of :membership_granted_upon, in: MEMBERSHIP_GRANTED_UPON_OPTIONS
   end
@@ -112,6 +113,15 @@ module GroupPrivacy
 
   def validate_is_visible_to_parent_members
     self.errors.add(:is_visible_to_parent_members) unless visible_to_parent_members_is_valid?
+  end
+
+  def validate_trial_group_cannot_be_public
+    if !self.parent_id &&
+       self.subscription &&
+       self.subscription.plan == 'trial' &&
+       self.is_visible_to_public
+      self.errors.add(:group_privacy, I18n.t('group.error.no_public_trials'))
+    end
   end
 
   def parent_members_can_see_discussions_is_valid?

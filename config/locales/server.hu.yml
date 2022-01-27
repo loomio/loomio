@@ -297,6 +297,7 @@ hu:
       poll_option_added: '%{actor} hozzáadott lehetőségeket ehhez: %{title}'
       poll_option_added_author: '%{actor} hozzáadott lehetőségeket ehhez: %{title}'
       stance_created: "%{actor} szavazott: %{title}"
+      stance_updated: "%{actor} szavazott: %{title}"
       stance_created_author: "Kérünk ellenőrizd a szavazatod: %{title}"
       user_mentioned: '%{actor} megemlített téged a következőben: %{title}'
       user_reminded: '%{actor} emlékeztet, hogy szavazz: %{title}'
@@ -304,6 +305,7 @@ hu:
       poll_option_added: '<strong>%{actor}</strong> hozzáadott lehetőségeket ehhez: %{title}'
       poll_option_added_author: '<strong>%{actor}</strong> hozzáadott lehetőségeket ehhez: %{title}'
       stance_created: "<strong>%{actor}</strong> szavazott erre: %{title}"
+      stance_updated: "<strong>%{actor}</strong> szavazott erre: %{title}"
       user_mentioned: '<strong>%{actor}</strong> megemlített téged itt: %{title}'
       user_reminded: '<strong>%{actor}</strong> emlékeztet, hogy szavazz: %{title}'
     body:

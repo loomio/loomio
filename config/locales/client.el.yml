@@ -1,4 +1,6 @@
 el:
+  templates:
+    try_loomio: Δοκιμάστε το Loomio
   plan_names:
     free: Δωρεάν
     pro: Επαγγελματικό
@@ -11,6 +13,7 @@ el:
   timezones:
     local: Τοπική ώρα ({{value}})
   common:
+    please_wait: Παρακαλούμε περιμένετε
     version: Έκδοση
     expand: Επέκταση
     all_day: Όλη μέρα
@@ -412,8 +415,6 @@ el:
     delete_thread: 'Διαγραφή'
   delete_comment_dialog:
     title: 'Διαγραφή σχόλιου'
-    question: 'Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το σχόλιο?'
-    confirm: 'Διαγραφή σχόλιου'
   contact_message_form:
     name_label: 'Το όνομα σας'
     subject_label: "Θέμα"

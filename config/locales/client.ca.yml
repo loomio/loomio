@@ -1,4 +1,6 @@
 ca:
+  templates:
+    try_loomio: Prova Loomio
   loomio_onboarding:
     group_progress_card:
       activities:
@@ -105,6 +107,7 @@ ca:
   timezones:
     local: Hora local ({{value}})
   common:
+    please_wait: Espera siusplau
     version: Versió
     empty: Buit
     no_results_found: No s'ha trobat cap resultat
@@ -346,19 +349,6 @@ ca:
         <p>Tanca fils vells o irrellevants per deixar de visualitzar-los i indica que la discussió s'ha tancat. </p>
         <p>És possible que usuaris comentin o comencin una votació en un fil tancat, però no apareixerà a la llista de fils del grup ni al quadre de controls.</p>
     image_alt: Tanca tots els fils de discussió
-  mute_explanation_modal:
-    aria_label: Silencia el fil
-    mute_thread: Silencia el fil
-    body_html: |
-        "Silenciar" significa que <strong> no rebreu notificacions sobre les propostes</strong>, ni sobre cap altra activitat d'aquest fil, a menys que algun usuari <strong>us @mencioni</strong>.
-    body_html_2: |
-        Els fils silenciats s'oculten de les pàgines <strong>Recent </strong> i <strong>No llegit</strong>. Per trobar els fils silenciats, seleccioneu l'opció  <strong>Silenciats</strong> de la barra lateral
-    image_alt: L'opció de silenciar fils es troba a la barra lateral
-  dismiss_explanation_modal:
-    aria_label: Descarta el fil
-    dismiss_thread: Descarta el fil
-    body_html: |
-        <p>Descartar un fil el suprimeix de la categoria "no llegit". Si hi torna a haver activitat apareixerà com a pendent per llegir de nou.</p>
   inbox:
     clear: 'Esborra'
     latest: 'Últim'
@@ -1322,8 +1312,6 @@ ca:
       success: S'ha mogut el fil a {{name}}
   delete_comment_dialog:
     title: 'Elimina el comentari'
-    question: 'Esteu segur que voleu eliminar aquest comentari?'
-    confirm: 'Elimina el comentari'
   contact_message_form:
     title: "Com et podem ajudar?"
     contact_us_email: "També ens podeu escriure un correu electrònic: <a href=\"mailto:{{email}}\">{{email}}</a>"
@@ -1359,7 +1347,6 @@ ca:
     order_by: Endreça els grups per
   global:
     messages:
-      app_update: 'Ja està disponible una nova versió de l''app.'
       reload: 'Recarrega'
   decision_tools_card:
     choose_type: Escull el tipus d'enquesta

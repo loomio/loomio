@@ -7,7 +7,7 @@ class Dev::PollsController < Dev::NightwatchController
     scenario = send(:"#{params[:scenario]}_scenario", {
                       poll_type: params[:poll_type],
                       anonymous: !!params[:anonymous],
-                      hide_results_until_closed: !!params[:hide_results_until_closed],
+                      hide_results: (params[:hide_results] || :off),
                       admin: !!params[:admin],
                       guest: !!params[:guest],
                       standalone: !!params[:standalone],

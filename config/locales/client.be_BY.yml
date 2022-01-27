@@ -1,9 +1,12 @@
 be_BY:
+  templates:
+    try_loomio: Паспрабаваць Loomio
   subscription_status:
     members: "Удзельнікі"
   loomio_tags:
     name_label: Імя
   common:
+    please_wait: Пачакайце, калі ласка
     version: Версія
     confirm_discard_changes: Скасаваць змены?
     time:
@@ -162,8 +165,6 @@ be_BY:
     close_thread: 'Зачыніць'
   delete_comment_dialog:
     title: 'Выдаліць каментар'
-    question: 'Вы ўпэўнены, што хаціце выдаліць гэты каментар?'
-    confirm: 'Выдаліць каментар'
   contact_message_form:
     name_label: 'Ваша імя'
     subject_label: "Тэма"

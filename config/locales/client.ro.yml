@@ -1,4 +1,6 @@
 ro:
+  templates:
+    try_loomio: Incearca Loomio
   loomio_onboarding:
     group_progress_card:
       activities:
@@ -81,6 +83,7 @@ ro:
   timezones:
     local: Ora locala ({{value}})
   common:
+    please_wait: Te rugam asteapta
     version: Versiune
     history: Istoric
     option: Opțiune
@@ -239,9 +242,6 @@ ro:
     user:
       title: Setari de email pentru grupurile noi
       apply_to_all: "Aplica aceste setari pentru toate grupurile mele"
-  mute_explanation_modal:
-    aria_label: Ascunde notificari
-    mute_thread: Ascunde notificari
   inbox:
     clear: 'Curata'
     latest: 'Cel mai nou'
@@ -529,8 +529,6 @@ ro:
       success: Aceasta discutie a fost mutata la {{name}}
   delete_comment_dialog:
     title: 'Sterge comentariu'
-    question: 'Esti sigur ca vrei sa stergi acest comentariu?'
-    confirm: 'Sterge comentariu'
   contact_message_form:
     name_label: 'Nume'
     subject_label: "Subiect"

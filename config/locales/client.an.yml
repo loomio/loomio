@@ -1,9 +1,12 @@
 an:
+  templates:
+    try_loomio: Preba Loomio
   subscription_status:
     members: "Miembros"
   loomio_tags:
     name_label: Nombre
   common:
+    please_wait: Aguarda, por favor
     version: Versión
     time:
       am: am
@@ -130,8 +133,6 @@ an:
     close_thread: 'Zarrar'
   delete_comment_dialog:
     title: 'Borrar comentario'
-    question: 'Yes seguro que quiers borrar iste comentario?'
-    confirm: 'Borrar comentario'
   contact_message_form:
     name_label: 'O tuyo nombre'
     subject_label: "Titol"

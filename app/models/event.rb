@@ -142,6 +142,11 @@ class Event < ApplicationRecord
     self.position_key = self_and_parents.reverse.map(&:position).map{|p| Event.zero_fill(p) }.join('-')
   end
 
+  def set_sequences!
+    set_sequences
+    save!
+  end
+
   def reset_sequences
     position_counter.delete
     sequence_id_counter.delete
@@ -168,10 +173,6 @@ class Event < ApplicationRecord
 
   def self.zero_fill(num)
     "0" * (5 - num.to_s.length) + num.to_s
-  end
-
-  def calendar_invite
-    nil # only for announcement_created events for outcomes
   end
 
   def find_parent_event

@@ -21,18 +21,10 @@ class API::V1::SnorlaxBase < ActionController::Base
     create_response
   end
 
-  def create_action
-    resource.save
-  end
-
   def update
     load_resource
     update_action
     update_response
-  end
-
-  def update_action
-    resource.update(resource_params)
   end
 
   def destroy
@@ -282,7 +274,7 @@ class API::V1::SnorlaxBase < ActionController::Base
     render json: {exception: "#{error.class} #{error.to_s}"}, root: false, status: status
   end
 
-  def respond_with_errors
-    render json: {errors: resource.errors.as_json}, root: false, status: 422
+  def respond_with_errors(record = resource)
+    render json: {errors: record.errors.as_json}, root: false, status: 422
   end
 end

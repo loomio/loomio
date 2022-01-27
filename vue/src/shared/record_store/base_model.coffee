@@ -28,6 +28,7 @@ export default class BaseModel
     @attributeNames = []
     @unmodified = {}
     @afterUpdateFns = []
+    @saveDisabled = false
     @setErrors()
     Object.defineProperty(@, 'recordsInterface', value: recordsInterface, enumerable: false)
     Object.defineProperty(@, 'recordStore', value: recordsInterface.recordStore, enumerable: false)

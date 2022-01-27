@@ -5,7 +5,7 @@ createFlashLevel = (level, duration) ->
   (translateKey, translateValues, actionKey, actionFn) ->
     EventBus.$emit("flashMessage",
       level:     level
-      duration:  duration or 3500
+      duration:  duration || 4000
       message:   translateKey
       options:   translateValues
       action:    actionKey
@@ -17,5 +17,6 @@ export default class Flash
   @info:    createFlashLevel 'info'
   @warning: createFlashLevel 'warning'
   @error:   createFlashLevel 'error'
+  @wait:    createFlashLevel 'wait', 30000
 
 window.Loomio.flash = Flash

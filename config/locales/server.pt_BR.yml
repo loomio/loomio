@@ -321,6 +321,7 @@ pt_BR:
       poll_option_added: '%{actor} adicionou opções em %{title}'
       poll_option_added_author: '%{actor} adicionou opções em %{title}'
       stance_created: "%{actor} votou em %{title}"
+      stance_updated: "%{actor} votou em %{title}"
       stance_created_author: "Por favor verifique seu voto em %{title}"
       user_mentioned: '%{actor} mencionou você em %{title}'
       user_reminded: '%{actor} lembrou você de votar em %{title}'
@@ -328,6 +329,7 @@ pt_BR:
       poll_option_added: '<strong>%{actor}</strong> adicionou opções a %{title}'
       poll_option_added_author: '<strong>%{actor}</strong> adicionou opções a %{title}'
       stance_created: "<strong>%{actor}</strong> votou em %{title}"
+      stance_updated: "<strong>%{actor}</strong> votou em %{title}"
       user_mentioned: '<strong>%{actor}</strong> mencionou você em %{title}'
       user_reminded: '<strong>%{actor}</strong> está lhe lembrando de votar em %{title}'
     body:

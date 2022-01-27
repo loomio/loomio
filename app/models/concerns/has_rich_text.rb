@@ -22,6 +22,14 @@ module HasRichText
           self[field] = TaskService.rewrite_uids(self[field])
         end
 
+        define_method "#{field}_visible_text" do
+          if self.send("#{field}_format") == 'html'
+            Nokogiri::HTML(self[field]).text
+          else
+            Nokogiri::HTML(MarkdownService.render_html(self[field])).text
+          end
+        end
+
         define_method "body_is_blank?" do
           self[field] == '' ||
           self[field] == nil ||
@@ -50,8 +58,8 @@ module HasRichText
   end
 
   included do
-    has_many_attached :files
-    has_many_attached :image_files
+    has_many_attached :files, dependent: :detach
+    has_many_attached :image_files, dependent: :detach
     has_many :tasks, as: :record
     before_save :caclulate_content_locale
     before_save :build_attachments

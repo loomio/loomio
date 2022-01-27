@@ -1,4 +1,6 @@
 pl:
+  templates:
+    try_loomio: Wypróbuj Loomio
   loomio_onboarding:
     group_progress_card:
       activities:
@@ -354,20 +356,6 @@ pl:
         <p>Zamknij stare lub nieistotne wątki, aby usunąć je z widoku i wskazać, że dyskusja została zamknięta.</p>
         <p>Każdy może nadal komentować lub stworzyć ankietę w zamkniętym wątku, ale nie pojawi się ona na liście wątków grupy ani na pulpicie nawigacyjnym.</p>
     image_alt: Zamykanie wszystkich wątków
-  mute_explanation_modal:
-    aria_label: Wycisz wątek
-    mute_thread: Wycisz wątek
-    body_html: |
-        Wyciszanie wątku oznacza, że <strong>nie będziesz powiadamiany/a o propozycjach</strong> oraz innych aktywnościach w tym wątku, chyba że ktoś <strong>@wspomni o Tobie</strong>.
-    body_html_2: |
-        Wyciszone wątki są również ukrywane na stronach <strong>Ostatnie</strong> i <strong>Nieprzeczytane</strong>. Aby znaleźć wyciszone wątki, wybierz opcję <strong>Wyciszone</strong> na pasku bocznym
-    image_alt: Opcja wyciszonych wątków na pasku bocznym
-  dismiss_explanation_modal:
-    aria_label: Zamknij wątek
-    dismiss_thread: Zamknij wątek
-    body_html: |
-        <p>Zamknięcie wątku usuwa go z nieprzeczytanych elementów. Jeśli w wątku pojawi się jakakolwiek nowa
-        aktywność, zostanie ona ponownie wyświetlona jako nieprzeczytana</p>
   inbox:
     clear: 'Wyczyść'
     latest: 'Najnowsze'
@@ -1334,8 +1322,6 @@ pl:
       success: Wątek został przeniesiony do {{name}}
   delete_comment_dialog:
     title: 'Usuń komentarz'
-    question: 'Czy na pewno chcesz usunąć ten komentarz?'
-    confirm: 'Usuń komentarz'
   contact_message_form:
     title: "Cześć! Jak możemy pomóc?"
     contact_us_email: "Możesz również wysłać do nas wiadomość e-mail: <a href=\"mailto:{{email}}\">{{email}}</a>"
@@ -1373,7 +1359,6 @@ pl:
     order_by: Sortuj grupy według
   global:
     messages:
-      app_update: 'Dostępna jest nowa wersja aplikacji'
       reload: 'Załaduj ponownie'
   decision_tools_card:
     choose_type: Wybierz typ ankiety

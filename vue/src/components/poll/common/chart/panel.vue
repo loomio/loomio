@@ -41,17 +41,23 @@ export default
 
 <template lang="pug">
 .poll-common-chart-panel
-  v-subheader.ml-n4(v-t="'poll_common.results'")
-  poll-common-chart-poll(v-if="['poll', 'score', 'dot_vote', 'ranked_choice'].includes(pollType)"
-    :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
-  poll-common-chart-count(v-if="pollType == 'count'"
-    :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
-  poll-common-chart-proposal(v-if="pollType == 'proposal'"
-    :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
-  poll-common-chart-meeting(v-if="pollType == 'meeting'"
-    :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
-  //- poll-common-chart-ranked-choice(v-if="pollType == 'ranked_choice'"
-  //-   :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
+  template(v-if="!poll.showResults")
+    v-alert.poll-common-action-panel__results-hidden-until-closed.my-2(dense outlined type="info" v-if='poll.hideResults == "until_closed"')
+      span( v-t="{path: 'poll_common_action_panel.results_hidden_until_closed', args: {poll_type: poll.pollType}}" )
+    v-alert.poll-common-action-panel__results-hidden-until-vote.my-2(dense outlined type="info" v-if='!poll.iHaveVoted() && poll.hideResults == "until_vote"')
+      span( v-t="'poll_common_action_panel.results_hidden_until_vote'")
+  template(v-else)
+    v-subheader.ml-n4(v-t="'poll_common.results'")
+    poll-common-chart-poll(v-if="['poll', 'score', 'dot_vote', 'ranked_choice'].includes(pollType)"
+      :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
+    poll-common-chart-count(v-if="pollType == 'count'"
+      :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
+    poll-common-chart-proposal(v-if="pollType == 'proposal'"
+      :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
+    poll-common-chart-meeting(v-if="pollType == 'meeting'"
+      :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
+    //- poll-common-chart-ranked-choice(v-if="pollType == 'ranked_choice'"
+    //-   :poll="poll" :options="options" :votersByOptionId="votersByOptionId")
   poll-common-percent-voted(:poll="poll")
 </template>
 

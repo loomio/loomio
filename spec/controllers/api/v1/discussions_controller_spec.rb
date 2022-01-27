@@ -930,14 +930,18 @@ describe API::V1::DiscussionsController do
 
       describe 'move poll, stance, outcome' do
         let!(:poll)    { build(:poll, discussion: source_discussion, group: source_discussion.group)}
-        let!(:stance)  { build(:stance, poll: poll) }
         let!(:outcome) { build(:outcome, poll: poll) }
 
         let!(:poll_event) { PollService.create(poll: poll, actor: user) }
-        let!(:stance_event) { StanceService.create(stance: stance, actor: user) }
         let(:outcome_event) { OutcomeService.create(outcome: outcome, actor: user) }
 
         before do
+          stance = Stance.find_by(poll: poll, participant: user)
+          params = {
+            stance_choices_attributes: [{poll_option_id: poll.poll_options.first.id}],
+            reason: "here is my stance"
+          }
+          @stance_event = StanceService.update(stance: stance, actor: user, params: params)
           poll.update(closed_at: Time.now)
           outcome_event
         end
@@ -947,7 +951,7 @@ describe API::V1::DiscussionsController do
           expect(response.status).to eq 200
 
           expect(target_discussion.reload.items).to include poll_event
-          expect(target_discussion.reload.items).to include stance_event
+          expect(target_discussion.reload.items).to include @stance_event
           expect(target_discussion.reload.items).to include outcome_event
 
           expect(poll_event.reload.eventable.discussion_id).to eq target_discussion.id
@@ -955,7 +959,7 @@ describe API::V1::DiscussionsController do
           expect(poll_event.reload.parent_id).to eq target_discussion.created_event.id
 
           expect(poll_event.reload.depth).to eq 1
-          expect(stance_event.reload.depth).to eq 2
+          expect(@stance_event.reload.depth).to eq 2
           expect(outcome_event.reload.depth).to eq 2
         end
       end

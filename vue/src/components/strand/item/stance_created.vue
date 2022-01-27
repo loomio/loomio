@@ -3,6 +3,7 @@ import Session        from '@/shared/services/session'
 import StanceService        from '@/shared/services/stance_service'
 import AbilityService from '@/shared/services/ability_service'
 import openModal from '@/shared/helpers/open_modal'
+import LmoUrlService  from '@/shared/services/lmo_url_service'
 
 export default
   props:
@@ -14,13 +15,14 @@ export default
     actor: -> @event.actor()
     actorName: -> @event.actorName()
     poll: -> @eventable.poll()
-    showResults: -> @poll.showResults()
     actions: -> StanceService.actions(@eventable)
     componentType:  ->
       if @actor
         'router-link'
       else
         'div'
+    link: ->
+      LmoUrlService.event @event
 </script>
 
 <template lang="pug">
@@ -30,8 +32,11 @@ section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id"
     .d-flex
       component.text--secondary(:is="componentType" :to="actor && urlFor(actor)") {{actorName}}
       space
-      poll-common-stance-choice(v-if="showResults" :poll="poll" :stance-choice="eventable.stanceChoice()")
-  .poll-common-stance(v-if="showResults && !collapsed")
+      poll-common-stance-choice(v-if="poll.showResults" :poll="poll" :stance-choice="eventable.stanceChoice()")
+      space
+      router-link.text--secondary(:to='link')
+        time-ago(:date='event.createdAt')
+  .poll-common-stance(v-if="poll.showResults && !collapsed")
     v-layout(v-if="!eventable.singleChoice()" wrap align-center)
       strand-item-headline.text--secondary(:event="event" :eventable="eventable")
       poll-common-stance-choices(:stance="eventable")

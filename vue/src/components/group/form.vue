@@ -167,6 +167,7 @@ v-card.group-form
                   strong(v-t="'common.privacy.' + privacy")
                   mid-dot
                   span {{ privacyStringFor(privacy) }}
+          validation-errors(:subject="group" field="groupPrivacy")
         p.group-form__privacy-statement.text--secondary {{privacyStatement}}
         .group-form__section.group-form__joining.lmo-form-group(v-if='group.privacyIsOpen()')
           v-subheader(v-t="'group_form.how_do_people_join'")

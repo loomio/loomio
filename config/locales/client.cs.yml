@@ -1,4 +1,6 @@
 cs:
+  templates:
+    try_loomio: Vyzkoušejte Loomio
   loomio_onboarding:
     group_progress_card:
       activities:
@@ -32,6 +34,7 @@ cs:
   timezones:
     local: Místní čas ({{value}})
   common:
+    please_wait: Prosím vyčkejte
     version: Verze
     no_results_found: Žádné výsledky nenalezeny
     you: Vy
@@ -186,12 +189,6 @@ cs:
     aria_label: Zavřít vlákno
     close_thread: Zavřít vlákno
     image_alt: Zavírají všechny vlákna
-  mute_explanation_modal:
-    aria_label: Ztlumit vlákno
-    mute_thread: Ztlumit vlákno
-  dismiss_explanation_modal:
-    aria_label: Odmítnout vlákno
-    dismiss_thread: Odmítnout vlákno
   inbox:
     clear: 'Vyčistit'
     latest: 'Nejnovější'
@@ -598,8 +595,6 @@ cs:
       success: Téma bylo přesunuto {{name}}
   delete_comment_dialog:
     title: 'Odstranit komentář'
-    question: 'Opravdu chcete odstranit tento komentář?'
-    confirm: 'Odstranit komentář'
   contact_message_form:
     contact_us: 'Kontakt'
     name_label: 'Vaše jméno'

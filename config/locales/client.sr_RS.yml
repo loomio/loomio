@@ -1,4 +1,6 @@
 sr_RS:
+  templates:
+    try_loomio: Пробај Лумио
   subscription_status:
     members: "Чланови"
   loomio_tags:
@@ -6,6 +8,7 @@ sr_RS:
   reactions:
     slight_smile: Свиђа ми се
   common:
+    please_wait: Молим сачекајте
     version: Верзија
     confirm_discard_changes: Поништити промене?
     time:
@@ -210,8 +213,6 @@ sr_RS:
     mute_thread: 'Искључено'
   delete_comment_dialog:
     title: 'Обриши коментар'
-    question: 'Да ли сте сигурни да желите обрисати овај коментар?'
-    confirm: 'Обриши коментар'
   contact_message_form:
     name_label: 'Твоје име'
     subject_label: "Тема"

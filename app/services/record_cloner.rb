@@ -9,7 +9,8 @@ class RecordCloner
     clone_group.creator = actor
     clone_group.subscription = Subscription.new(plan: 'demo', owner: actor)
     clone_group.save!
-    clone_group.add_admin! actor
+    Stance.where(poll_id: clone_group.poll_ids).each(&:update_option_scores!)
+    clone_group.add_member! actor
     clone_group.reload
   end
 
@@ -44,8 +45,9 @@ class RecordCloner
       membership_granted_upon: 'approval',
       listed_in_explore: false
     }
+    attachments = [:cover_photo, :logo, :files, :image_files]
 
-    clone_group = new_clone(group, copy_fields, required_values)
+    clone_group = new_clone(group, copy_fields, required_values, attachments)
     clone_group.parent = clone_parent
 
     clone_group.memberships = group.memberships.map {|m| new_clone_membership(m) }
@@ -63,7 +65,7 @@ class RecordCloner
       title
       description
       description_format
-      pinned
+      pinned_at
       max_depth
       newest_first
       content_locale
@@ -79,7 +81,8 @@ class RecordCloner
       private: true
     }
 
-    new_clone(discussion, copy_fields, required_values)
+    attachments = [:files, :image_files]
+    new_clone(discussion, copy_fields, required_values, attachments)
   end
 
   def new_clone_discussion_and_events(discussion)
@@ -108,7 +111,7 @@ class RecordCloner
       anonymous
       details_format
       anyone_can_participate
-      hide_results_until_closed
+      hide_results
       stances_in_discussion
       discarded_by
       specified_voters_only
@@ -126,11 +129,15 @@ class RecordCloner
       deanonymize_after_close
       max_score
     ]
+    attachments = [:files, :image_files]
 
-    clone_poll = new_clone(poll, copy_fields)
+    clone_poll = new_clone(poll, copy_fields, {}, attachments)
     clone_poll.poll_options = poll.poll_options.map {|poll_option| new_clone_poll_option(poll_option) }
     clone_poll.stances = poll.stances.map {|stance| new_clone_stance(stance) }
     clone_poll.outcomes = poll.outcomes.map {|outcome| new_clone_outcome(outcome) }
+    clone_poll.closed_at = nil if clone_poll.closed_at && clone_poll.closed_at > DateTime.now
+    clone_poll.closing_at = nil if clone_poll.closing_at && clone_poll.closing_at < DateTime.now
+
     clone_poll
   end
 
@@ -164,7 +171,8 @@ class RecordCloner
       updated_at
       volume
     ]
-    clone_stance = new_clone(stance, copy_fields)
+    attachments = [:files, :image_files]
+    clone_stance = new_clone(stance, copy_fields, {}, attachments)
     clone_stance.stance_choices = stance.stance_choices.map {|sc| new_clone_stance_choice(sc) }
     clone_stance.poll = existing_clone(stance.poll)
     clone_stance
@@ -189,7 +197,9 @@ class RecordCloner
       created_at
       updated_at
     ]
-    clone_outcome = new_clone(outcome, copy_fields)
+
+    attachments = [:files, :image_files]
+    clone_outcome = new_clone(outcome, copy_fields, {}, attachments)
   end
 
   def new_clone_event(event)
@@ -258,7 +268,8 @@ class RecordCloner
       link_previews
       created_at
     ]
-    clone_comment = new_clone(comment, copy_fields)
+    attachments = [:files, :image_files]
+    clone_comment = new_clone(comment, copy_fields, {}, attachments)
     clone_comment.discussion = existing_clone(comment.discussion)
     clone_comment
   end
@@ -267,12 +278,20 @@ class RecordCloner
     new_clone(tag, %w[name color priority])
   end
 
-  def new_clone(record, copy_fields = [], required_values = {})
+  def new_clone(record, copy_fields = [], required_values = {}, attachments = [])
     @cache["#{record.class}#{record.id}"] ||= begin
       clone = record.class.new
       record_type = record.class.to_s.underscore.to_sym
 
       clone.attributes = new_clone_attributes(record, copy_fields, required_values)
+
+      attachments.each do |name|
+        if clone.send(name).class == ActiveStorage::Attached::Many
+          clone.send(name).attach(record.send(name).blobs)
+        else
+          clone.send(name).attach record.send(name).blob
+        end
+      end
 
       clone
     end

@@ -1,4 +1,6 @@
 ru:
+  templates:
+    try_loomio: Попробуйте Loomio
   loomio_onboarding:
     group_progress_card:
       activities:
@@ -74,6 +76,7 @@ ru:
   timezones:
     local: местное время ({{value}})
   common:
+    please_wait: Пожалуйста, подождите
     version: Версия
     history: История
     add: Добавить
@@ -239,12 +242,6 @@ ru:
   close_explanation_modal:
     aria_label: Закрыть тему
     close_thread: Закрыть тему
-  mute_explanation_modal:
-    aria_label: Выключить уведомления
-    mute_thread: Выключить уведомления
-  dismiss_explanation_modal:
-    aria_label: Отклонить тему
-    dismiss_thread: Отклонить тему
   inbox:
     clear: 'Очистить'
     latest: 'Последний'
@@ -531,8 +528,6 @@ ru:
       success: Тема удалена
   delete_comment_dialog:
     title: 'Удалить комментарий'
-    question: 'Вы уверены что хотите удалить комментарий?'
-    confirm: 'Удалить комментарий'
   contact_message_form:
     contact_us: 'Наши контакты'
     name_label: 'Ваше имя'

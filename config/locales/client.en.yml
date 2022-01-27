@@ -18,17 +18,20 @@ en:
 
   templates:
     try_loomio: Try Loomio
-    we_have_demos: |
-      If you've never used Loomio before, you might be wondering what it looks like and how it works.
-      To help answer that, we have <b>demo groups</b> you can play with. Each demo group is created just for you
-      and will be automatically deleted after a few days.
-
-    start_a_trial: |
-      Once you know what Loomio is about, you can <b>start a free trial</b> group for
-      your organization. A trial group could turn into your permanent home on Loomio, so we won't automatically delete it.
-
+    start_a_demo_group: Start a demo group
+    start_a_demo: Start a demo
+    look_and_feel: Start a demo to see what Loomio looks like and test some of the features.
+    demos_expire: Demo groups are automatically deleted after 3 days. Feel free to start another if you need.
+    generating_demo: 'Ok, wait right there! Generating a demo takes around 20 seconds.'
+    start_a_x_day_free_trial: Start a {{day}} day free trial
+    ready_to_trial: Ready to try Loomio with your organization?
+    start_a_no_obligation_x_day_trial: Start a Loomio group for your orgnization with a free, no obligation, {{day}} day trial.
+    you_can_test_it_out: |
+      You can invite other people to join, integrate it with your other tools, and see if it works for your group.
     demo_created: Demo group created, just for you!
     start_demo: Start demo
+    start_trial: Start trial
+    demo_needs_user: To start a demo, you need to sign up (or sign in) as a Loomio user. This is free and only takes a minute.
 
   doctypes:
     youtube_video: YouTube Video
@@ -192,6 +195,7 @@ en:
     option: Option
     add: Add
     you: You
+    off: Off
     expand: Expand
     all_day: All day
     ok_got_it: Ok, got it
@@ -642,6 +646,7 @@ en:
     poll_expired: "{{poll_type}} closed: <strong>{{title}}</strong>"
     poll_option_added: "<strong>{{name}}</strong> added options to: <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
+    outcome_updated: "<strong>{{name}}</strong> updated the outcome: <strong>{{title}}</strong>"
     outcome_announced: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> participated in: <strong>{{title}}</strong>"
     group_announced: "<strong>{{name}}</strong> invited you to the group <strong>{{title}}</strong>"
@@ -679,7 +684,7 @@ en:
     title_label: 'Title'
     title_placeholder: 'What is the topic you want to discuss?'
     context_label: 'Context'
-    context_placeholder: "Provide some context for this discussion, so people can pariticpate well"
+    context_placeholder: "Provide some context for this discussion, so people know how to participate"
     privacy_label: 'Privacy'
     privacy_public: 'Anyone can see the thread. Only members can participate.'
     privacy_private: 'The thread will only be visible to members of {{group}}.'
@@ -1324,6 +1329,8 @@ en:
     email_sent: "Email sent to {{name}}"
 
   profile_page:
+    incomplete_profile: Incomplete profile!
+    set_your_profile_picture: Set your profile picture
     messages:
       updated: 'Profile updated'
       picture_changed: 'Profile picture updated'
@@ -1353,6 +1360,7 @@ en:
     updated_on_sign_in: Provided by your browser and updated when you sign in
 
   text_editor:
+    x_of_y_characters: "{{x}} / {{y}} characters"
     select_text_to_link: Select text to link and try again
     insert_link: Insert link
     insert_embedded_url: Embed video
@@ -1730,6 +1738,9 @@ en:
   poll_common_card:
     show_results: Show results
     hide_results: Hide results
+    until_vote: Until vote is cast
+    until_poll_type_closed: Until {{pollType}} is closed
+
     deleted: This poll has been deleted
 
   poll_common_index_card:
@@ -1798,7 +1809,8 @@ en:
 
   poll_common_action_panel:
     anonymous: Votes are anonymous
-    results_hidden_until_closed: Results are hidden until the %{poll_type} has closed
+    results_hidden_until_closed: Results will be shown after voting has closed
+    results_hidden_until_vote: Results will be shown after you vote
     unable_to_vote: You have not been invited to vote in this %{poll_type}.
     draft_mode: Voting disabled. This %{poll_type} is a work in progress.
 

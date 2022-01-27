@@ -15,6 +15,20 @@ es:
     add_due_date: Añadir fecha de vencimiento
     task_updated_done: '¡Tarea señalada como hecha!'
     task_updated_not_done: '¡Tarea señalada como no hecha!'
+  templates:
+    try_loomio: Prueba Loomio
+    start_a_demo_group: Empezar un grupo de demostración
+    start_a_demo: Iniciar demo
+    look_and_feel: Inicie una demostración para ver cómo se ve Loomio y probar algunas de las características.
+    generating_demo: 'Vale, ¡espera allí mismo! Generar una demostración toma alrededor de 20 segundos.'
+    start_a_x_day_free_trial: Iniciar una prueba gratuita de {{day}} día
+    ready_to_trial: ¿Listo para probar Loomio con su organización?
+    start_a_no_obligation_x_day_trial: Inicie un grupo de Loomio para su organización con una prueba gratuita, sin compromiso, {{day}}.
+    you_can_test_it_out: |
+        Puede invitar a otras personas a unirse, integrarlo con sus otras herramientas y ver si funciona para su grupo.
+    demo_created: Grupo de demostración creado, ¡solo para ti!
+    start_demo: Iniciar demo
+    demo_needs_user: Para iniciar una demostración, debe registrarse (o iniciar sesión) como usuario de Loomio. Esto es gratis y solo toma un minuto.
   doctypes:
     youtube_video: Video Youtube
     image: Imagen
@@ -80,6 +94,8 @@ es:
     chargify_link: "Factura electrónica"
     referral_code_help: "Da a un amigo un descuento, consigue para ti un crédito"
     manage_payment_details: "Gestionar detalles del pago"
+    manage_subscription: "Administrar suscripción"
+    amount: Cantidad
   loomio_tags:
     all_tags: Todas las etiquetas
     tags: Etiquetas
@@ -154,6 +170,7 @@ es:
   timezones:
     local: Hora local ({{value}})
   common:
+    please_wait: Por favor espera
     optional: (opcional)
     version: Versión
     none: Ninguno
@@ -262,6 +279,8 @@ es:
       done: Listo
       start: 'Empezar '
       delete: Eliminar
+      discard: Descartar
+      restore: Restaurar
       unsubscribe: Cancelar suscripción
       subscribe: Suscribirme a la lista de correo electrónico
       unignore: Dejar de ignorar
@@ -406,20 +425,6 @@ es:
         <p>Cierra hilos viejos e irrelevantes para que no sean visibles e indicar que la discusión se ha cerrado.</p>
         <p>Cualquiera puede comentar o iniciar un sondeo sobre un hilo cerrado, pero no aparecerá en el listado de los hilos del grupo o en el página de inicio. </p>
     image_alt: Todos los hilos cerrados
-  mute_explanation_modal:
-    aria_label: 'Silenciar hilo '
-    mute_thread: Silenciar hilo
-    body_html: |
-        Silenciar significa que <strong>no se te enviarán notificaciones sobre propuestas</strong>, o cualquier otra actividad en este hilo, a menos que alguien te <strong>@mencione</strong>.
-    body_html_2: |
-        Los hilos silenciados no serán visibles ni en la página <strong>Recientes</strong> ni en la de <strong>No leído</strong>. Para encontrar sus hilos silenciados, seleccione la opción <strong>Silenciado</strong> en la barra lateral de navegación.
-    image_alt: 'Opción de hilos silenciados en la barra lateral '
-  dismiss_explanation_modal:
-    aria_label: Ignorar hilo
-    dismiss_thread: Ignorar hilo
-    body_html: |
-        <p>Ignorar un hilo lo elimina de la lista de no leídos. Si alguna nueva
-        actividad ocurre en el hilo, volverá a aparecer como no leído otra vez.</p>
   inbox:
     clear: 'Limpiar'
     latest: 'Últimos'
@@ -632,7 +637,6 @@ es:
     title_label: 'Título'
     title_placeholder: '¿Cuál es el tema que quieres discutir?'
     context_label: 'Contexto'
-    context_placeholder: "Aportar algo de contexto para esta debate, para que la gente pueda participar bien "
     privacy_label: 'Privacidad'
     privacy_public: 'Cualquier persona puede ver los hilos. Solo integrantes pueden participar. '
     privacy_private: 'Los hilos solo serán visibles para integrantes de {{group}}.'
@@ -1230,6 +1234,8 @@ es:
     helptext: "A {{name}} se le enviará su nombre, dirección de correo electrónico y mensaje."
     email_sent: "Correo electrónico enviado a {{name}}"
   profile_page:
+    incomplete_profile: ¡Perfil incompleto!
+    set_your_profile_picture: Establecer tu foto de perfil
     messages:
       updated: 'Perfil actualizado'
       picture_changed: 'Imagen de perfil actualizada'
@@ -1256,7 +1262,9 @@ es:
     update_profile: 'Actualizar perfil'
     deactivate_account: 'Desactivar la cuenta de usuario'
     help_translate: "Ayúdanos a traducir Loomio"
+    updated_on_sign_in: Proporcionado por su navegador y actualizado al iniciar sesión
   text_editor:
+    x_of_y_characters: "{{x}} / {{y}} caractéres"
     select_text_to_link: Selecciona el texto del enlace e inténtalo de nuevo
     insert_link: Inserte un enlace
     insert_embedded_url: Video integrado
@@ -1495,8 +1503,7 @@ es:
       success: El hilo ha sido movido a {{name}}
   delete_comment_dialog:
     title: 'Borrar comentario'
-    question: '¿Estás seguro de que quieres borrar este comentario?'
-    confirm: 'Borrar comentario'
+    question: 'Esto eliminará permanentemente este comentario. Si continúa, no se puede restaurar.'
   contact_message_form:
     alt_title: "Contacta soporte al usuario"
     title: "¡Hola! ¿Cómo podemos ayudarle?"
@@ -1539,7 +1546,7 @@ es:
     order_by: Grupos ordenados por
   global:
     messages:
-      app_update: 'Una nueva versión de la app está disponible '
+      app_update: 'Se ha lanzado una nueva versión de Loomio. Por favor, guarde su trabajo y vuelva a cargar.'
       reload: 'Actualizar'
   decision_tools_card:
     choose_type: Elegir tipo de sondeo

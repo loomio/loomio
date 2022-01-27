@@ -14,8 +14,8 @@ describe API::V1::OutcomesController do
     poll_id: meeting_poll.id,
     poll_option_id: meeting_poll.poll_option_ids.first,
     event_description: "Eat those krabs",
-    event_location: "The Krusty Krab",
-    should_send_calendar_invite: "1") }
+    event_location: "The Krusty Krab"
+    ) }
 
   before { group.add_member! user }
 

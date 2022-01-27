@@ -1,17 +1,6 @@
 module EmailHelper
   include PrettyUrlHelper
 
-  MARKDOWN_OPTIONS = [
-    no_intra_emphasis:    true,
-    tables:               true,
-    fenced_code_blocks:   true,
-    autolink:             true,
-    strikethrough:        true,
-    space_after_headers:  true,
-    superscript:          true,
-    underline:            true
-  ].freeze
-
   def stance_icon_for(poll, stance_choice)
     case stance_choice&.score.to_i
       when 0 then "disagree"
@@ -24,7 +13,7 @@ module EmailHelper
     return "" unless text
     if format == "md"
       text.gsub!('](/rails/active_storage', ']('+lmo_asset_host+'/rails/active_storage')
-      markdownify(text)
+      MarkdownService.render_html(text)
     else
       text.gsub!('"/rails/active_storage', '"'+lmo_asset_host+'/rails/active_storage')
       replace_checkboxes(replace_iframes(text))
@@ -64,11 +53,6 @@ module EmailHelper
       end
     end
     frag.to_s
-  end
-
-  def markdownify(text)
-    renderer = LoomioMarkdown.new(filter_html: true, hard_wrap: true, link_attributes: {rel: "nofollow ugc noreferrer noopener", target: :_blank})
-    Redcarpet::Markdown.new(renderer, *MARKDOWN_OPTIONS).render(text)
   end
 
   def reply_to_address(model:, user: )

@@ -43,57 +43,24 @@ namespace :loomio do
     SendDailyCatchUpEmailWorker.perform_async
 
     if (Time.now.hour == 0)
+      # Group.expired_trial.delete_all
+      # Group.empty_no_subscription.delete_all
+      Group.expired_demo.delete_all
+      CleanupService.delay.delete_orphan_records
+
       ThrottleService.reset!('day')
       OutcomeService.delay.publish_review_due
       UsageReportService.send
-      ExamplePollService.delay.cleanup
       LoginToken.where("created_at < ?", 24.hours.ago).delete_all
     end
   end
 
-  task delete_dangling_records: :environment do
-    Group.empty_no_subscription.delete_all
-    # need to consider this more carefully
+  task delete_expired_records: :environment do
+    puts "Deleting expired demos"
+    Group.expired_demo.delete_all
     # Group.expired_trial.delete_all
-    Membership.dangling.delete_all
-    MembershipRequest.dangling.delete_all
-    Discussion.dangling.delete_all
-    DiscussionReader.dangling.delete_all
-    SearchVector.dangling.delete_all
-    Comment.dangling.delete_all
-    Poll.dangling.delete_all
-    PollOption.dangling.delete_all
-    Stance.dangling.delete_all
-    StanceChoice.dangling.delete_all
-    Outcome.dangling.delete_all
-    Event.dangling.delete_all
-    Notification.dangling.delete_all
-
-    PaperTrail::Version.where(item_type: 'Motion').delete_all
-    ["Comment", "Discussion", "Group", "Membership", "Outcome", "Poll", "Stance", "User"].each do |model|
-      table = model.pluralize.downcase
-      puts PaperTrail::Version.joins("left join #{table} on #{table}.id = item_id and item_type = '#{model}'").where("#{table}.id is null").to_sql
-      puts PaperTrail::Version.joins("left join #{table} on #{table}.id = item_id and item_type = '#{model}'").where("#{table}.id is null").count
-      PaperTrail::Version.joins("left join #{table} on #{table}.id = item_id and item_type = '#{model}'").where("#{table}.id is null").delete_all
-    end
-
-    # vacuum full groups;
-    # vacuum full memberships;
-    # vacuum full membership_requests;
-    # vacuum full discussions;
-    # vacuum full discussion_readers;
-    # vacuum full search_vectors;
-    # vacuum full comments;
-    # vacuum full polls;
-    # vacuum full poll_options;
-    # vacuum full stances;
-    # vacuum full stance_choices;
-    # vacuum full outcomes;
-    # vacuum full events;
-    # vacuum full notifications;
-    # vacuum full versions;
-    # vacuum full ahoy_events;
-    # vacuum full ahoy_visits;
+    # Group.empty_no_subscription.delete_all
+    CleanupService.delete_orphan_records
   end
 
   task generate_error: :environment do

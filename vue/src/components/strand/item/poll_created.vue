@@ -21,7 +21,6 @@ export default
         @myStance = @poll.myStance()
 
   beforeDestroy: ->
-    EventBus.$off 'showResults'
     EventBus.$off 'stanceSaved'
 
   data: ->
@@ -32,7 +31,6 @@ export default
 
   computed:
     poll: -> @eventable
-    showResults: -> @poll.showResults()
 
     menuActions: ->
       assign(
@@ -66,10 +64,9 @@ section.strand-item.poll-created
     document-list(:model='poll')
     //- p.caption(v-if="!poll.pollOptionNames.length" v-t="'poll_common.no_voting'")
     div.body-2(v-if="poll.pollOptionNames.length")
-      .poll-common-card__results-shown(v-if='showResults')
-        poll-common-chart-panel(:poll='poll')
+      poll-common-chart-panel(:poll='poll')
       poll-common-action-panel(:poll='poll')
     .caption(v-t="{path: 'poll_common_action_panel.draft_mode', args: {poll_type: poll.pollType}}" v-if='!poll.closingAt')
     action-dock.my-2(:actions="dockActions" :menu-actions="menuActions")
-    poll-common-votes-panel(v-if="!poll.stancesInDiscussion && poll.showResults()" :poll="poll")
+    poll-common-votes-panel(v-if="!poll.stancesInDiscussion && poll.showResults" :poll="poll")
 </template>

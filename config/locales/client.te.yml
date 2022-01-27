@@ -159,7 +159,6 @@ te:
     delete_thread: 'తొలగించు'
   delete_comment_dialog:
     title: 'వ్యాఖ్యను తొలగించు'
-    confirm: 'వ్యాఖ్యను తొలగించు'
   contact_message_form:
     name_label: 'మీ పేరు'
     subject_label: "విషయం"

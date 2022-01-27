@@ -7,7 +7,10 @@ module Ability::Stance
     end
 
     can [:update], ::Stance do |stance|
-      user.email_verified? && stance.real_participant == user && stance.latest?
+      user.email_verified? &&
+      stance.real_participant == user &&
+      stance.latest? &&
+      can?(:vote_in, stance.poll)
     end
 
     can [:create], ::Stance do |stance|
