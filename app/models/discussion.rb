@@ -168,7 +168,7 @@ class Discussion < ApplicationRecord
 
     ignored_parents = discussion.items.includes(:eventable).filter do |e|
       ['discussion_closed', 'poll_expired', 'poll_closed_by_user'].include?(e.kind) ||
-      (e.eventable.respond_to?(:discarded_at) && e.eventable.discarded_at) }
+      (e.eventable.respond_to?(:discarded_at) && e.eventable.discarded_at) 
     end
 
     ignored_children = discussion.items.where(parent_id: ignored_parents.map(&:id))
