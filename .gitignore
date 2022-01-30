@@ -20,6 +20,7 @@ Session.vim
 bin/
 .powenv
 .byebug_history
+logfile
 
 /client
 public/client
