@@ -71,7 +71,7 @@
     "posthog-js": "^1.17.5",
     "pretty-bytes": "^5.6.0",
     "raven-js": "latest",
-    "socket.io-client": "^2.4.0",
+    "socket.io-client": "^4.4.1",
     "string.prototype.matchall": "^4.0.6",
     "svg.js": "^2.7.1",
     "textarea-caret": "^3.1.0",

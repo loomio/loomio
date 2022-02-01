@@ -21,6 +21,7 @@ export initLiveUpdate = ->
     if data.notice
       EventBus.$emit('systemNotice', data)
     else
+      # console.log 'records update', data.room, data.records
       roomScores[data.room] = data.score
       Records.importJSON(data.records)
 
