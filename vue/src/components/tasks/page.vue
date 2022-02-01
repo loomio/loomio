@@ -12,6 +12,7 @@ export default
   data: ->
     records: {}
     tasksByRecordKey: {}
+    loading: true
 
   mounted: ->
     Records.tasks.remote.fetch('/').then (data) =>
@@ -22,6 +23,8 @@ export default
         if !@records[recordKey]?
           @records[recordKey] = t.record()
       @tasksByRecordKey = groupBy tasks, (t) -> t.recordType + t.recordId
+    .finally =>
+      @loading = false
 
   methods:
     taskUrlFor: (record) ->
@@ -43,8 +46,7 @@ export default
 v-main
   v-container.dashboard-page.max-width-1024
     h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'tasks.your_tasks'")
-
-    loading(v-if="Object.keys(records).length == 0")
+    loading(v-if="loading")
     template(v-for="(tasks, recordKey) in tasksByRecordKey")
       v-card.mb-3
         v-card-title
@@ -56,4 +58,12 @@ v-main
                 v-icon(v-if="task.done") mdi-checkbox-marked
                 v-icon(v-else) mdi-checkbox-blank-outline
             v-list-item-title {{task.name}}
+    p(v-if="!loading && Object.keys(records).length == 0" v-t="'tasks.no_tasks_assigned'")
+    .d-flex.justify-center
+      v-chip(outlined href="https://help.loomio.org/en/user_manual/threads/thread_admin/tasks.html" target="_blank")
+        v-icon.mr-2 mdi-help-circle-outline
+        span(v-t="'common.help'")
+        span :
+        space
+        span(v-t="'tasks.tasks'")
 </template>

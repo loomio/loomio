@@ -15,6 +15,7 @@ en:
     add_due_date: Add due date
     task_updated_done: 'Task marked as done!'
     task_updated_not_done: 'Task marked as not done'
+    no_tasks_assigned: There are no tasks assigned to you
 
   templates:
     try_loomio: Try Loomio
