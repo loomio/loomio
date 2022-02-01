@@ -144,11 +144,7 @@ module Dev::NintiesMoviesHelper
 
   def create_discussion
     unless @discussion
-      @discussion = Discussion.create(title: 'What star sign are you?',
-                                       private: false,
-                                       group: create_group,
-                                       link_previews: [{'title': 'link title', 'url': 'https://www.example.com', 'description': 'a link to a page', 'image': 'https://www.loomio.org/theme/logo.svg', 'hostname':'www.example.com'}],
-                                       author: jennifer)
+      @discussion = Discussion.create(title: 'What star sign are you?', private: false, group: create_group, link_previews: [{'title': 'link title', 'url': 'https://www.example.com', 'description': 'a link to a page', 'image': 'https://www.loomio.org/theme/logo.svg', 'hostname':'www.example.com'}], author: jennifer)
       DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     end
     @discussion
