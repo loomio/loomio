@@ -901,6 +901,7 @@ en:
     bullet_list: List
     number_list: Numbered list
     check_list: Checklist
+    task_list: Task list
     reset: Reset
     text_color: Text color
     background_color: Background color
