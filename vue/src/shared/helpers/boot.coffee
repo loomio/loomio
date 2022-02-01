@@ -46,7 +46,7 @@ export default (callback) ->
       Sentry.configureScope (scope) ->
         scope.setTag("loomio_version", AppConfig.version)
 
-    ['shortcut icon', 'apple-touch-icon'].forEach (name) ->
+    ['shortcut icon'].forEach (name) ->
       link = document.createElement('link')
       link.rel = name
       link.href = AppConfig.theme.icon_src
