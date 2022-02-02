@@ -70,10 +70,9 @@ class DiscussionSerializer < ApplicationSerializer
     cache_fetch(:discussion_readers_by_discussion_id, object.id) do
       return nil unless scope[:current_user_id]
       m = cache_fetch(:memberships_by_group_id, object.group_id) { nil }
-      # DiscussionReader.find_or_initialize_by(user_id: scope[:current_user_id], discussion_id: object.id) do |dr|
-      #   dr.volume = (m && m.volume) || 'normal'
-      # end
-      DiscussionReader.new(user_id: scope[:current_user_id], discussion_id: object.id, volume: (m && m.volume) || 'normal')
+      DiscussionReader.find_or_initialize_by(user_id: scope[:current_user_id], discussion_id: object.id) do |dr|
+        dr.volume = (m && m.volume) || 'normal'
+      end
     end
   end
 
