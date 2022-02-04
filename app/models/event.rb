@@ -143,8 +143,15 @@ class Event < ApplicationRecord
   end
 
   def set_sequences!
-    set_sequences
-    save!
+    count = 0
+    begin
+      count += 1
+      save!
+    rescue ActiveRecord::RecordNotUnique
+      raise if count > 5
+      reset_sequences
+      retry
+    end
   end
 
   def reset_sequences
