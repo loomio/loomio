@@ -146,6 +146,7 @@ class Event < ApplicationRecord
     count = 0
     begin
       count += 1
+      set_sequences
       save!
     rescue ActiveRecord::RecordNotUnique
       raise if count > 5
