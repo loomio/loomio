@@ -12,38 +12,33 @@ export default
     group: Object
 
   data: ->
-    webhooks: []
-    loading: true
+    chatbot: null
 
   mounted: ->
-    Records.webhooks.fetch(params: {group_id: @group.id}).then => @loading = false
-    @watchRecords
-      collections: ["webhooks"]
-      query: (records) =>
-        @webhooks = records.webhooks.find(groupId: @group.id)
+    Records.chatbots.fetch(params: {group_id: @group.id}).then =>
+      @chatbot = Records.chatbots.findOrNull(groupId: @group.id)
+      if !@chatbot
+        @chatbot = Records.chatbots.build(groupId: @group.id)
 
   methods:
-    addAction: (group) ->
+    save: ->
       WebhookService.addAction(group)
-    webhookActions: (webhook) ->
-      WebhookService.webhookActions(webhook)
 
 </script>
 <template lang="pug">
 v-card.webhook-list
   v-card-title
-    h1.headline(tabindex="-1" v-t="'matrix_box.setup_matrix_bot'")
+    h1.headline(tabindex="-1" v-t="'chatbot.chatbot'") Chatbot
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text
-    loading(v-if="loading")
-    v-list(v-if="!loading")
-      v-list-item(v-for="webhook in webhooks" :key="webhook.id")
-        v-list-item-content
-          v-list-item-title {{webhook.name}}
-        v-list-item-action
-          action-menu(:actions="webhookActions(webhook)")
-  v-card-actions
-    v-spacer
-    v-btn(color='primary' @click='addAction(group).perform()' v-t="addAction(group).name")
+    loading(v-if="!chatbot")
+    template(v-else)
+      v-text-field(:label="$t('chatbot.homeserver_url')"  v-model="chatbot.server")
+      v-text-field(:label="$t('chatbot.username')" v-model="chatbot.username")
+      v-text-field(:label="$t('chatbot.password')" v-model="chatbot.password")
+      v-text-field(:label="$t('chatbot.channel')" v-model="chatbot.channel")
+      v-card-actions
+        v-spacer
+        v-btn(color='primary' @click='save' v-t="'common.action.save'")
 </template>

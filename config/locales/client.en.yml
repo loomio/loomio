@@ -2321,9 +2321,14 @@ en:
     password: Password
     reactivate: Reactivate account
 
-  matrix_bot:
-    setup_matrix_bot: Setup Matrix Bot
-    
+  chatbot:
+    configure_chatbot: Configure chatbot
+    chatbot: Chatbot
+    homeserver_url: Homeserver URL
+    channel: Channel
+    username: Username
+    password: Password
+
   webhook:
     integrations: Integrations
     webhooks: Webhooks

@@ -57,14 +57,14 @@ export default new class GroupService
           Flash.success "memberships_page.messages.make_admin_success", name: Session.user().name
 
     chatbots:
-      name: 'Setup Chat bot'
+      name: 'chatbot.chatbot'
       icon: 'mdi-robot'
       menu: true
       canPerform: ->
         group.adminsInclude(Session.user())
       perform: ->
         openModal
-          component: 'MatrixBotForm'
+          component: 'ChatbotForm'
           props:
             group: group
 
