@@ -1482,7 +1482,6 @@ pl:
     group_without_subgroups: '{{name}} bez podgrup'
   poll_common_action_panel:
     anonymous: Głosy są anonimowe
-    results_hidden_until_closed: Wyniki są ukryte aż %{poll_type}zostanie zakończona
     unable_to_vote: Nie zostałeś zaproszony do głosowania w %{poll_type}
   current_polls_card:
     title: Bieżące decyzje

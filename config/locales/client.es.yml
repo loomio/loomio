@@ -1673,7 +1673,6 @@ es:
     group_without_subgroups: '{{name}} sin subgrupos'
   poll_common_action_panel:
     anonymous: Los votos son anónimos
-    results_hidden_until_closed: Los resultados se esconden hasta que el %{poll_type} ha cerrado
     unable_to_vote: No has sido invitado a votar en este %{poll_type}.
     draft_mode: Votación desactivada. Este %{poll_type} es un trabajo en progreso
   current_polls_card:

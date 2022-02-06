@@ -29,6 +29,7 @@ zh_TW:
         您可以邀請其他人加入，將其與您的其他工具整合，並看看其是否適用於您的團隊。
     demo_created: 示範用群組已建立，只為您！
     start_demo: 試用範例
+    start_trial: 開始試用
     demo_needs_user: 要啟動範例，您必須註冊（或登入）為 Loomio 使用者。這是免費的，且僅需一分鐘。
   doctypes:
     youtube_video: YouTube 影片
@@ -604,6 +605,7 @@ zh_TW:
     poll_expired: "{{poll_type}} 已關閉：<strong>{{title}}</strong>"
     poll_option_added: "<strong>{{name}}</strong>新增選項至：<strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> 分享了成果：<strong>{{title}}</strong>"
+    outcome_updated: "<strong>{{name}}</strong> 更新了成果：<strong>{{title}}</strong>"
     outcome_announced: "<strong>{{name}}</strong> 分享了成果：<strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> 已參與：<strong>{{title}}</strong>"
     group_announced: "<strong>{{name}}</strong> 邀請您加入群組 <strong>{{title}}</strong>"
@@ -1615,6 +1617,8 @@ zh_TW:
   poll_common_card:
     show_results: 顯示結果
     hide_results: 隱藏結果
+    until_vote: 直到投票結束
+    until_poll_type_closed: 直到 {{pollType}} 關閉
     deleted: 此投票已刪除
   poll_common_index_card:
     title: 之前的決策
@@ -1676,7 +1680,8 @@ zh_TW:
     group_without_subgroups: '{{name}} 無子群組'
   poll_common_action_panel:
     anonymous: 匿名投票
-    results_hidden_until_closed: 結果會一直隱藏到 %{poll_type} 關閉
+    results_hidden_until_closed: 投票結束後將顯示結果
+    results_hidden_until_vote: 結果將在您投票後顯示
     unable_to_vote: 您尚未被邀請到此 %{poll_type} 進行投票。
     draft_mode: 投票已停用。這個 %{poll_type} 仍在進行中。
   current_polls_card:
