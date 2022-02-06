@@ -2321,6 +2321,9 @@ en:
     password: Password
     reactivate: Reactivate account
 
+  matrix_bot:
+    setup_matrix_bot: Setup Matrix Bot
+    
   webhook:
     integrations: Integrations
     webhooks: Webhooks
