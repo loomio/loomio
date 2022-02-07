@@ -152,6 +152,8 @@ ActiveRecord::Schema.define(version: 2022_02_05_073807) do
     t.string "password"
     t.integer "author_id"
     t.integer "group_id"
+    t.jsonb "event_kinds", default: [], null: false
+    t.boolean "include_body", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["group_id"], name: "index_chatbots_on_group_id"
