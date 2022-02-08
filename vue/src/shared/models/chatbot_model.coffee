@@ -10,7 +10,10 @@ export default class ChatbotModel extends BaseModel
     server: null
     username: null
     password: []
-    authorId: []
+    eventKinds: 'new_discussion discussion_edited poll_created poll_edited poll_closing_soon poll_expired poll_reopened outcome_created'.split(' ')
+    kind: 'matrix'
+    includeBody: true
+    errors: {}
 
   relationships: ->
     @belongsTo 'group'

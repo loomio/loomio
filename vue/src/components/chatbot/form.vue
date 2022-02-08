@@ -20,8 +20,13 @@ export default
         @chatbot = Records.chatbots.build(groupId: @group.id)
 
   methods:
-    save: ->
-      WebhookService.addAction(group)
+    submit: ->
+      @chatbot.save()
+      .then =>
+        Flash.success 'chatbot.saved'
+        @close()
+      .catch (b) =>
+        console.log @chatbot.errors
 
 </script>
 <template lang="pug">
@@ -37,11 +42,11 @@ v-card.webhook-list
       v-text-field(:label="$t('chatbot.username')" v-model="chatbot.username")
       v-text-field(:label="$t('chatbot.password')" v-model="chatbot.password")
       v-text-field(:label="$t('chatbot.channel')" v-model="chatbot.channel")
-      v-checkbox.webhook-form__include-body(v-model="chatbot.includeBody" :label="$t('webhook.include_body_label')" hide-details)
+      //- v-checkbox.webhook-form__include-body(v-model="chatbot.includeBody" :label="$t('webhook.include_body_label')" hide-details)
       p.mt-4.text--secondary(v-t="'webhook.event_kind_helptext'")
       v-checkbox.webhook-form__event-kind(hide-details v-for='kind in kinds' v-model='chatbot.eventKinds' :key="kind" :label="$t('webhook.event_kinds.' + kind)" :value="kind")
 
       v-card-actions
         v-spacer
-        v-btn(color='primary' @click='save' v-t="'common.action.save'")
+        v-btn(color='primary' @click='submit' v-t="'common.action.save'")
 </template>

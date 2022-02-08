@@ -11,7 +11,7 @@ export default class WebhookModel extends BaseModel
     format: 'markdown'
     eventKinds: []
     permissions: []
-    includeBody: false
+    includeBody: true
     errors: {}
 
   relationships: ->

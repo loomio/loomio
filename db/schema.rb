@@ -145,7 +145,7 @@ ActiveRecord::Schema.define(version: 2022_02_05_073807) do
   end
 
   create_table "chatbots", force: :cascade do |t|
-    t.string "service"
+    t.string "kind"
     t.string "server"
     t.string "channel"
     t.string "username"

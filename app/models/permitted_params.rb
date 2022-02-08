@@ -3,7 +3,7 @@ class PermittedParams < Struct.new(:params)
     user group membership_request membership poll outcome
     stance discussion discussion_reader comment
     contact_message announcement document
-    webhook contact_request reaction tag group_survey
+    webhook chatbot contact_request reaction tag group_survey
   )
 
   MODELS.each do |kind|
@@ -105,6 +105,10 @@ class PermittedParams < Struct.new(:params)
 
   def webhook_attributes
    [:group_id, :url, :name, :format, :include_body, :include_subgroups, :permissions, :event_kinds, {event_kinds: [], permissions: []}]
+  end
+
+  def chatbot_attributes
+   [:group_id, :kind, :server, :username, :password, :channel, :include_body, :event_kinds, {event_kinds: []}]
   end
 
   def discussion_attributes

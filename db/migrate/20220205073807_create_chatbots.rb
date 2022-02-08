@@ -1,7 +1,7 @@
 class CreateChatbots < ActiveRecord::Migration[6.1]
   def change
     create_table :chatbots do |t|
-      t.string :service
+      t.string :kind
       t.string :server
       t.string :channel
       t.string :username
