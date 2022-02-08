@@ -580,6 +580,7 @@ en:
     group_identity_created: "Events from %{group} will now appear in this channel"
 
   webhook:
+    test_message: "Hello from Loomio! If you can see this, the chatbot settings are correct."
     markdown:
       new_discussion: "**%{actor}** started a discussion in %{group}: [%{title}](%{url})"
       discussion_edited: "**%{actor}** edited a discussion in %{group}: [%{title}](%{url})"

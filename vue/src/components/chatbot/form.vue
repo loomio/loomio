@@ -12,6 +12,7 @@ export default
   data: ->
     chatbot: null
     kinds: AppConfig.webhookEventKinds
+    testing: false
 
   mounted: ->
     Records.chatbots.fetch(params: {group_id: @group.id}).then =>
@@ -26,6 +27,20 @@ export default
         @close()
       .catch (b) =>
         console.log @chatbot.errors
+
+    testConnection: ->
+      @testing = true
+      Records.remote.post('chatbots/test',
+        server: @chatbot.server
+        username: @chatbot.username
+        password: @chatbot.password
+        channel: @chatbot.channel
+      ).then =>
+        Flash.success('chatbot.test_connection_ok')
+      , =>
+        Flash.error('chatbot.test_connection_bad')
+      .finally =>
+        @testing = false
 
 </script>
 <template lang="pug">
@@ -47,5 +62,6 @@ v-card.webhook-list
 
       v-card-actions
         v-spacer
+        v-btn(@click='testConnection' v-t="'chatbot.test_connection'" :loading="testing")
         v-btn(color='primary' @click='submit' v-t="'common.action.save'")
 </template>

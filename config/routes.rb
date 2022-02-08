@@ -45,7 +45,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :attachments, only: [:index, :destroy]
       resources :webhooks, only: [:create, :destroy, :index, :update]
-      resources :chatbots, only: [:create, :destroy, :index, :update]
+      resources :chatbots, only: [:create, :destroy, :index, :update] do
+        post :test, on: :collection
+      end
 
       resources :boot, only: [] do
         get :site, on: :collection

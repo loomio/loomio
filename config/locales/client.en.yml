@@ -2323,6 +2323,9 @@ en:
 
   chatbot:
     configure_chatbot: Configure chatbot
+    test_connection: Test connection
+    test_connection_ok: Looks good! You should see a message in the channel
+    test_connection_bad: Something is wrong with the settings
     chatbot: Chatbot
     saved: Chatbot saved!
     homeserver_url: Homeserver URL
