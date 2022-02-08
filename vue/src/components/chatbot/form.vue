@@ -15,9 +15,8 @@ export default
 
   mounted: ->
     Records.chatbots.fetch(params: {group_id: @group.id}).then =>
-      @chatbot = Records.chatbots.findOrNull(groupId: @group.id)
-      if !@chatbot
-        @chatbot = Records.chatbots.build(groupId: @group.id)
+      @chatbot = Records.chatbots.find(groupId: @group.id)[0] ||
+                 Records.chatbots.build(groupId: @group.id)
 
   methods:
     submit: ->

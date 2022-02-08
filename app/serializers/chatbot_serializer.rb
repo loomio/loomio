@@ -1,3 +1,3 @@
 class ChatbotSerializer < ApplicationSerializer
-  attributes :id, :group_id, :server, :username, :password, :channel
+  attributes :id, :kind, :group_id, :server, :username, :password, :channel, :event_kinds
 end

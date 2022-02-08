@@ -18,6 +18,7 @@ module Ability
     prepend Ability::Tag
     prepend Ability::Event
     prepend Ability::Webhook
+    prepend Ability::Chatbot
     prepend Ability::Attachment
     prepend Ability::Task
 
