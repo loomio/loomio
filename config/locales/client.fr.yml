@@ -15,11 +15,13 @@ fr:
     add_due_date: Ajouter échéance
     task_updated_done: 'Tâche marquée comme terminée !'
     task_updated_not_done: 'Tâche marquée comme pas terminée !'
+    no_tasks_assigned: Aucune tâche ne vous a été assignée
   templates:
     try_loomio: Essayez Loomio
     start_a_demo_group: Créez un groupe demo
     start_a_demo: Démarrer la démo
     look_and_feel: Commencez une démo pour voir à quoi ressemble Loomio et testez certaines des fonctionnalités.
+    demos_expire: Les groupes de démo sont automatiquement supprimés après 3 jours. N'hésitez pas à en commencer un autre si nécessaire.
     generating_demo: 'Ok, attendez juste là! La génération d’une démo prend environ 20 secondes.'
     start_a_x_day_free_trial: Commencer un essai gratuit {{day}}
     ready_to_trial: Prêt à essayer Loomio avec votre organisation?
@@ -28,6 +30,7 @@ fr:
         Vous pouvez inviter d’autres personnes à se joindre, l’intégrer à vos autres outils et voir si cela fonctionne pour votre groupe.
     demo_created: Groupe de démonstration créé, rien que pour vous !
     start_demo: Démarrer la démo
+    start_trial: Commencer un essai
     demo_needs_user: Pour démarrer une démo, vous devez vous inscrire (ou vous connecter) en tant qu’utilisateur Loomio. Ceci est gratuit et ne prend qu’une minute.
   doctypes:
     youtube_video: Video Youtube
@@ -603,6 +606,7 @@ fr:
     poll_expired: "{{poll_type}} fermé : <strong>{{title}}</strong>"
     poll_option_added: "<strong>{{name}}</strong> a ajouté des options à : <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> a renseigné un résultat <strong>{{title}}</strong>"
+    outcome_updated: "<strong>{{name}}</strong> a mis à jour le résultat : <strong>{{title}}</strong>"
     outcome_announced: "<strong>{{name}}</strong> a renseigné un résultat <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> a participé à : <strong>{{title}}</strong>"
     group_announced: "{{name}} vous a invité dans le groupe {{title}}"
@@ -637,6 +641,7 @@ fr:
     title_label: 'Titre'
     title_placeholder: 'De quel sujet souhaitez-vous discuter ?'
     context_label: 'Contexte'
+    context_placeholder: "Veuillez indiquer le contexte de cette discussion, pour que les participants sachent comment y prendre part"
     privacy_label: 'Privé'
     privacy_public: 'N’importe qui peut voir la discussion. Seuls les membres de {{groupName}} peuvent participer.'
     privacy_private: 'La discussion sera visible uniquement aux membres de {{group}}.'
@@ -844,6 +849,7 @@ fr:
     bullet_list: Liste
     number_list: Liste numérotée
     check_list: Checkliste
+    task_list: Liste des tâches
     reset: Réinitialiser
     text_color: Couleur du texte
     background_color: Couleur du fond
@@ -1611,6 +1617,8 @@ fr:
   poll_common_card:
     show_results: Afficher les résultats
     hide_results: Cacher les résulats
+    until_vote: Jusqu'à la fin du vote
+    until_poll_type_closed: Jusqu'à la fermeture de {{pollType}}
     deleted: Ce sondage a été supprimé
   poll_common_index_card:
     title: Décisions précédentes
@@ -1672,7 +1680,8 @@ fr:
     group_without_subgroups: '{{name}} sans sous-groupes'
   poll_common_action_panel:
     anonymous: Les votes sont anonymes
-    results_hidden_until_closed: Les résultats sont cachés jusquà la cloture du %{poll_type}
+    results_hidden_until_closed: Les résultats seront affichés après la fin du vote
+    results_hidden_until_vote: Les résultats seront affichés après votre vote
     unable_to_vote: Vous n'avez pas été invité à voter dans ce %{poll_type}
     draft_mode: Vote désactivé. C'est %{poll_type} un travail en cours.
   current_polls_card:

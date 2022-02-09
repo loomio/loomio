@@ -1479,7 +1479,6 @@ ar:
     group_without_subgroups: '{{اسم}} بدون مجموعات فرعية'
   poll_common_action_panel:
     anonymous: الأصوات مجهولة
-    results_hidden_until_closed: يتم إخفاء النتائج حتى يتم إغلاق٪ {نوع الاستطلاع}
     unable_to_vote: لم تتم دعوتك للتصويت في٪ {نوع الاستطلاع} هذا.
   current_polls_card:
     title: القرارات الحالية

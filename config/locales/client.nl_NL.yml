@@ -1544,7 +1544,6 @@ nl_NL:
     group_without_subgroups: '{{name}} zonder subgroepen'
   poll_common_action_panel:
     anonymous: Stemmen zijn anoniem
-    results_hidden_until_closed: Resultaten zijn verborgen totdat de %{poll_type} is gesloten
     unable_to_vote: Je bent niet uitgenodigd om in te stemmen in deze %{poll_type}.
   current_polls_card:
     title: Lopende beslissingen

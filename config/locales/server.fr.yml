@@ -47,6 +47,7 @@ fr:
   group:
     error:
       handle_must_begin_with_parent_handle: "Doit commencer par %{parent_handle}"
+      no_public_trials: "Veuillez quitter la version d'essai pour modifier les paramètres de vie privée du groupe"
     stats:
       group_stats: Statistiques du groupe
       org_stats: Statistiques de l'organisation (y compris les sous-groupes)

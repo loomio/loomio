@@ -1470,7 +1470,6 @@ ca:
     group_without_subgroups: '{{name}} sense subgrups'
   poll_common_action_panel:
     anonymous: Els vots són anònims
-    results_hidden_until_closed: Els resultats s'oculten fins que hagi tancat %{poll_type}
     unable_to_vote: No heu estat convidat a votar en aquesta%{poll_type}.
   current_polls_card:
     title: Decisions actuals

@@ -1672,7 +1672,6 @@ uk:
     group_without_subgroups: '{{name}} без підгруп'
   poll_common_action_panel:
     anonymous: Анонімне голосування
-    results_hidden_until_closed: Результати приховані, доки %{poll_type} не закриється
     unable_to_vote: Вас не запросили голосувати в %{poll_type}.
     draft_mode: Голосування вимкнено. З %{poll_type} продовжується робота.
   current_polls_card:
