@@ -541,16 +541,16 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sentry-rails (5.0.2)
+    sentry-rails (5.1.0)
       railties (>= 5.0)
-      sentry-ruby-core (~> 5.0.2)
-    sentry-ruby (5.0.2)
+      sentry-ruby-core (~> 5.1.0)
+    sentry-ruby (5.1.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-      sentry-ruby-core (= 5.0.2)
-    sentry-ruby-core (5.0.2)
+      sentry-ruby-core (= 5.1.0)
+    sentry-ruby-core (5.1.0)
       concurrent-ruby
-    sentry-sidekiq (5.0.2)
-      sentry-ruby-core (~> 5.0.2)
+    sentry-sidekiq (5.1.0)
+      sentry-ruby-core (~> 5.1.0)
       sidekiq (>= 3.0)
     sexp_processor (4.15.3)
     sidekiq (6.4.1)
