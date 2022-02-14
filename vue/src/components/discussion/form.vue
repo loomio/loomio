@@ -47,6 +47,7 @@ export default
           user: u
         @initialRecipients = []
         @initialRecipients = @initialRecipients.concat(users)
+        @discussion.private = @discussion.privateDefaultValue()
         @reset = !@reset
 
   methods:
@@ -63,9 +64,6 @@ export default
 
     updateGroupItems: ->
       @groupItems = [{text: @$t('discussion_form.none_invite_only_thread'), value: null}].concat Session.user().groups().map (g) -> {text: g.fullName, value: g.id}
-
-    updatePrivacy: ->
-      @discussion.private = @discussion.privateDefaultValue()
 
     updateCount: ->
       Records.announcements.fetchNotificationsCount(@model).then (data) =>
