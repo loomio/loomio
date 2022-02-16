@@ -19,8 +19,12 @@ class API::B1::BaseController < API::V1::SnorlaxBase
     jarams = params.dup
     if jarams[:api_key]
       jarams.delete(:api_key)
+      jarams.delete(:format)
+      jarams.delete(:discussion)
+      jarams.delete(:poll)
       jarams = ActionController::Parameters.new({resource_name => jarams})
     end
+
     @permitted_params ||= PermittedParams.new(jarams)
   end
 end
