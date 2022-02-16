@@ -12,7 +12,7 @@ class API::V1::ChatbotsController < API::V1::RestfulController
         username: params[:username],
         password: params[:password],
         channel: params[:channel],
-      ).post_test_message
+      ).post_test_message(params[:group_name])
       success_response
     rescue
       error_response

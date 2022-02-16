@@ -2367,11 +2367,14 @@ en:
       new_comment: A comment is made
       poll_created: A poll is started
       stance_created: A vote is cast
+      stance_updated: A vote is changed
       poll_closing_soon: A poll is closing soon
       poll_expired: A poll expires
       poll_closed_by_user: A poll is closed manually
       poll_reopened: A poll is re-opened for voting
       outcome_created: An outcome is shared
+      outcome_updated: An outcome is updated
+      outcome_review_due: An outcome review is due
     permissions_explaination: Select which actions can be performed by this integration
     permissions:
       show_discussion: show discussion

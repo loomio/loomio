@@ -6,9 +6,9 @@ class Clients::Matrix
     @channel = channel
   end
 
-  def post_test_message
+  def post_test_message(group_name)
     in_room do |room|
-      room.send_text I18n.t('webhook.hello')
+      room.send_text I18n.t('webhook.hello', group: group_name)
     end
   end
 

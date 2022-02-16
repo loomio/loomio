@@ -35,6 +35,7 @@ export default
         username: @chatbot.username
         password: @chatbot.password
         channel: @chatbot.channel
+        group_name: @group.name
       ).then =>
         Flash.success('chatbot.test_connection_ok')
       , =>
