@@ -17,7 +17,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@sentry/browser": "^6.17.8",
-    "@sentry/integrations": "^6.17.7",
+    "@sentry/integrations": "^6.17.8",
     "@sentry/tracing": "^6.17.8",
     "@tiptap/core": "latest",
     "@tiptap/extension-blockquote": "latest",
