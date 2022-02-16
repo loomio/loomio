@@ -67,10 +67,10 @@
       %td string. required. values: 'proposal', 'poll', 'count', 'score', 'ranked_choice', 'meeting', 'dot_vote'
     %tr
       %td details
-      %td string. optional. the body text of the poll in markdown or html.
+      %td string. optional. the body text of the poll
     %tr
       %td details_format
-      %td string. optional. default: md. values: 'md' or 'html'
+      %td string. optional. default: md. values: 'md' or 'html'.
     %tr
       %td closing_at
       %td iso8601 string or null. default: null. Specify when the poll closes with an iso8601 string such as '#{closing_at}'. If null then voting is disabled and poll is considered "Work in progress".
@@ -110,7 +110,7 @@
       %td array of user ids to notify or invite
     %tr
       %td recipient_emails
-      %td array of email addresses of people to invite to the thread
+      %td array of email addresses of people to invite to vote
     %tr
       %td recipient_message
       %td message to include in the email invitation
