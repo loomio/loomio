@@ -8,7 +8,7 @@ class Clients::Matrix
 
   def post_test_message
     in_room do |room|
-      room.send_text I18n.t('webhook.test_message')
+      room.send_text I18n.t('webhook.hello')
     end
   end
 

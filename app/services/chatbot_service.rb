@@ -19,7 +19,7 @@ class ChatbotService
 
   def self.test(chatbot:, actor:)
     actor.ability.authorize! :test, chatbot
-    chatbot.client.post_message('webhook.test_message', group: chatbot.group.name)
+    chatbot.client.post_message('webhook.hello', group: chatbot.group.name)
   end
 
   def self.list_channels
@@ -35,5 +35,8 @@ class ChatbotService
       "Webhook::#{format.classify}::BaseSerializer"
     ].detect { |str| str.constantize rescue nil }.constantize
     serializer.new(event, root: false, scope: {webhook: webhook}).as_json
+  end
+
+  def publish_event(chatbot:, event:)
   end
 end
