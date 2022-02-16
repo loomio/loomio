@@ -9,6 +9,28 @@ body {
   line-height: 1.5;
 }
 
+h1,h2 {
+  margin: 1em 0;
+}
+h3 {
+  margin: 0.5em 0;
+}
+
+table {
+  width: 100%
+}
+table td {
+  padding: 0.2em
+}
+
+pre {
+  border-radius: 4px;
+  padding: 1em;
+  background: #eee;
+  word-wrap: normal;
+  white-space: pre-wrap;
+}
+
 header {
   text-align: center;
   img {
