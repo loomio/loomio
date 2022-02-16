@@ -2,7 +2,6 @@ import RecordStore from '@/shared/record_store/record_store'
 import AppConfig   from '@/shared/services/app_config'
 import loki        from '@/shared/record_store/loki'
 
-import AnnouncementRecordsInterface from '@/shared/interfaces/announcement_records_interface'
 import CommentRecordsInterface from '@/shared/interfaces/comment_records_interface'
 import ChatbotRecordsInterface from '@/shared/interfaces/chatbot_records_interface'
 import DiscussionRecordsInterface from '@/shared/interfaces/discussion_records_interface'
@@ -37,7 +36,6 @@ import WebhookRecordsInterface from '@/shared/interfaces/webhook_records_interfa
 db      = new loki('default.db')
 records = new RecordStore(db)
 
-records.addRecordsInterface AnnouncementRecordsInterface
 records.addRecordsInterface CommentRecordsInterface
 records.addRecordsInterface ChatbotRecordsInterface
 records.addRecordsInterface DiscussionRecordsInterface
