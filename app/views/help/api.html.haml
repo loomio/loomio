@@ -1,13 +1,13 @@
 %main
-  %h1 Loomio Integration API
+  %h1 Loomio API
 
   %p
-    Hi. We've created this API for people who are writing integrations for Loomio.
-    At this stage it's still very new, and development is user request driven -
-    meaning that if you are needing help or want to see a new function then
+    Hi, welcome! We've created this API for people who are writing integrations for Loomio.
+    At this stage it's still new and development is request driven -
+    meaning that if you want to see a new feature, please
     %a{href: "https://www.loomio.org/community-product-development/", target: "_blank"}
       join the product development group
-    and tell us.
+    and explain what you would like to do.
 
   %h2 create discussion
 
@@ -80,6 +80,9 @@
     %tr
       %td hide_results
       %td string. optional. default: 'off'. values: 'off', 'until_vote', 'until_closed'. allow voters to see the results before the poll has closed
+    %td
+      %td shuffle_options
+      %td boolean. default false. display options to voters in random order.
     %tr
       %td anonymous
       %td boolean. optional. default: false. true: hide identities of voters.
@@ -111,6 +114,9 @@
     %tr
       %td recipient_message
       %td message to include in the email invitation
+    %tr
+      %td notify_recipients
+      %td boolean. default true. set this to false if you want to add people to a poll without sending notifications.
 
   %h2 show poll
   %p Fetch a poll using the poll id (an integer) or key (a string)
