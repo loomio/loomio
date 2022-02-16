@@ -15,7 +15,7 @@
   -# %pre
   -#   curl -X POST -d 'title=example thread&recipient_emails[]=guest@example.com&api_key=#{params['api_key']}' #{root_url}api/b1/discussions
   %pre
-    curl -X POST -H 'Content-Type: application/json' -d '{"title":"example thread", "recipient_emails":["guest@example.com"], "api_key": "#{params['api_key']}"}' #{root_url}api/b1/discussions
+    curl -X POST -H 'Content-Type: application/json' -d '{"title":"example thread", "recipient_emails":["#{current_user.email}"], "api_key": "#{params['api_key']}"}' #{root_url}api/b1/discussions
 
   %h3 params
   %table
@@ -27,10 +27,10 @@
       %td context for the thread (optional)
     %tr
       %td description_format
-      %td either 'md' or 'html' (optional, default: md)
+      %td string. either 'md' or 'html' (optional, default: md)
     %tr
       %td recipient_audience
-      %td 'group' or null. if 'group' whole group will be notified about the new thread (optional)
+      %td string 'group' or null. if 'group' whole group will be notified about the new thread (optional)
     %tr
       %td recipient_user_ids
       %td array of user ids to notify or invite to the thread (optional)
@@ -39,14 +39,14 @@
       %td array of email addresses of people to invite to the thread (optional)
     %tr
       %td recipient_message
-      %td message to include in the email invitation (optional)
+      %td string. message to include in the email invitation (optional)
 
   %h2 show discussion
   %p Fetch a discussion using the discussion id (an integer) or key (a string) using the following request format
 
   %h3 example
   %pre
-    curl http://localhost:3000/api/b1/discussions/aBcD123?api_key=#{params['api_key']}
+    curl #{root_url}api/b1/discussions/aBcD123?api_key=#{params['api_key']}
 
 
   %h2 create poll
@@ -117,10 +117,10 @@
 
   %h3 example
   %pre
-    curl http://localhost:3000/api/b1/polls/aBcD123?api_key=#{params['api_key']}
+    curl #{root_url}api/b1/polls/aBcD123?api_key=#{params['api_key']}
 
   %h2 list memberships
-  - url = "http://localhost:3000/api/b1/memberships?api_key=#{params['api_key']}"
+  - url = "#{root_url}api/b1/memberships?api_key=#{params['api_key']}"
   %a{href: url}=url
   %pre
-    curl -d 'api_key=#{params['api_key']}' http://localhost:3000/api/b1/memberships
+    curl -d 'api_key=#{params['api_key']}' #{root_url}api/b1/memberships
