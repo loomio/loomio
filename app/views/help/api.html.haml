@@ -72,6 +72,13 @@
       %td details_format
       %td string. optional. default: md. values: 'md' or 'html'.
     %tr
+      %td options
+      %td
+        array of strings.
+        If poll_type is proposal then valid values are 'agree', 'disagree', 'abstain', 'block'.
+        If poll_type is meeting then a provide iso8601 date or datetime strings '2021-02-01' or '2022-02-15T23:32:39Z'.
+        For all other poll_types, any string is valid.
+    %tr
       %td closing_at
       %td iso8601 string or null. default: null. Specify when the poll closes with an iso8601 string such as '#{closing_at}'. If null then voting is disabled and poll is considered "Work in progress".
     %tr
@@ -98,13 +105,6 @@
     %tr
       %td notify_on_closing_soon
       %td string. optional. default: 'nobody'. values: 'nobody', 'author', 'undecided_voters' or 'voters'. specify the who to send a reminder notification to, 24 hours before the poll closes.
-    %tr
-      %td options
-      %td
-        array of strings.
-        If poll_type is proposal then valid values are 'agree', 'disagree', 'abstain', 'block'.
-        If poll_type is meeting then a provide iso8601 date or datetime strings '2021-02-01' or '2022-02-15T23:32:39Z'.
-        For all other poll_types, any string is valid.
     %tr
       %td recipient_user_ids
       %td array of user ids to notify or invite
