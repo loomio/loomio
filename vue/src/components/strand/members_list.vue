@@ -62,7 +62,7 @@ export default
         recipient_user_ids: @discussion.recipientUserIds
         recipient_emails: @discussion.recipientEmails
         recipient_message: @message
-      Records.announcements.remote.post '', params
+      Records.remote.post 'announcements', params
       .then =>
         @reset = !@reset
         Flash.success('announcement.flash.success', { count: count })

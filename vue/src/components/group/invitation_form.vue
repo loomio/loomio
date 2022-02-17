@@ -53,7 +53,7 @@ export default
 
     inviteRecipients: ->
       @saving = true
-      Records.announcements.remote.post '',
+      Records.remote.post 'announcements',
         group_id: @group.id
         message: @message
         invited_group_ids: @groupIds

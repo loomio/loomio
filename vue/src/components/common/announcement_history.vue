@@ -22,7 +22,10 @@ export default
     historyError: false
   created: ->
     @historyLoading = true
-    Records.announcements.fetchHistoryFor(@model).then (data) =>
+    Records.fetch
+      path: 'announcements/history'
+      params: @model.namedId()
+    .then (data) =>
       @historyLoading = false
       @historyData = data || []
     , (err) =>
