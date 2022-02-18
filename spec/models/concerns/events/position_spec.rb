@@ -1,6 +1,6 @@
 require "rails_helper"
 
-xdescribe "Events::Position" do
+describe "Events::Position" do
   let(:group) { FactoryBot.create :group }
   let(:discussion) { create :discussion, group: group }
   let(:comment1) { create :comment, discussion: discussion }
@@ -9,10 +9,6 @@ xdescribe "Events::Position" do
   let(:comment4) { create :comment, discussion: discussion }
   let(:comment5) { create :comment, discussion: discussion }
   let(:comment6) { create :comment, discussion: discussion }
-
-  before do
-    discussion.create_missing_created_event!
-  end
 
   it "gives events with a parent_id a pos sequence" do
     e1 = Event.create!(kind: "new_comment", discussion: discussion, eventable: comment1)
@@ -51,6 +47,7 @@ xdescribe "Events::Position" do
     e1 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment1)
     e2 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment2)
     Event.where(id: e2.id).update_all(sequence_id: 3, position: 10)
+    e2.reload
 
     # publishing e3 causes a repair thread, which resets position to correct value, and takes the next available sequence_id
     e3 = Events::NewComment.publish!(comment3)

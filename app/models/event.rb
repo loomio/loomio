@@ -127,14 +127,6 @@ class Event < ApplicationRecord
     update_columns(parent_id: parent_id, depth: depth)
   end
 
-  def position_counter
-    Redis::Counter.new("position_counter_#{parent_id}")
-  end
-
-  def sequence_id_counter
-    Redis::Counter.new("sequence_id_counter_#{discussion_id}")
-  end
-
   def set_sequences
     return unless discussion_id
     self.sequence_id = next_sequence_id!
@@ -143,40 +135,58 @@ class Event < ApplicationRecord
   end
 
   def set_sequences!
-    count = 0
-    begin
-      count += 1
-      set_sequences
-      save!
-    rescue ActiveRecord::RecordNotUnique
-      raise if count > 5
-      reset_sequences
-      retry
-    end
+    set_sequences
+    save!
   end
 
   def reset_sequences
-    position_counter.delete
-    sequence_id_counter.delete
+    drop_seq!(position_seq)
+    drop_seq!(sequence_id_seq)
+  end
+
+  def sequence_id_seq
+    "discussion_#{self.discussion_id}_sequence_id_seq"
+  end
+
+  def position_seq
+    "event_#{self.parent_id}_position_seq"
+  end
+
+  def seq_present?(name)
+    ActiveRecord::Base.connection.execute("SELECT 0 FROM pg_class where relname = '#{name}'" ).first.present?
+  end
+
+  def create_seq!(name, start, owner)
+    ActiveRecord::Base.connection.execute("CREATE SEQUENCE #{name} START #{start} OWNED BY #{owner}")
+  end
+
+  def next_seq!(name)
+    ActiveRecord::Base.connection.execute("SELECT NEXTVAL('#{name}')")[0]["nextval"]
+  end
+
+  def drop_seq!(name)
+    ActiveRecord::Base.connection.execute("DROP SEQUENCE IF EXISTS #{name}")
   end
 
   def next_sequence_id!
-    if sequence_id_counter.nil?
-      sequence_id_counter.reset(
-        Event.where(discussion_id: discussion_id).
-              order(sequence_id: :desc).limit(1).pluck(:sequence_id).last || 0)
+    unless seq_present?(sequence_id_seq)
+      val = Event.where(discussion_id: discussion_id).
+            where("sequence_id is not null").
+            order(sequence_id: :desc).
+            limit(1).pluck(:sequence_id).last || 1
+      create_seq!(sequence_id_seq, val, "events.sequence_id")
     end
-    sequence_id_counter.increment
+    next_seq!(sequence_id_seq)
   end
 
   def next_position!
     return 0 unless (discussion_id and parent_id)
-    if position_counter.nil?
-      position_counter.reset(
-        Event.where(parent_id: parent_id, discussion_id: discussion_id).
-              order(position: :desc).limit(1).pluck(:position).last || 0)
+    unless seq_present?(position_seq)
+      val = Event.where(parent_id: parent_id, discussion_id: discussion_id).
+                  order(position: :desc).limit(1).pluck(:position).last || 1
+      create_seq!(position_seq, val, "events.position")
     end
-    position_counter.increment
+    next_seq!(position_seq)
   end
 
   def self.zero_fill(num)

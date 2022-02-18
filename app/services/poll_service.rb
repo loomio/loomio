@@ -202,7 +202,6 @@ class PollService
       stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
       events = Event.where(eventable_type: "Stance", eventable_id: stance_ids)
       events.update_all(discussion_id: poll.discussion_id)
-      events.each(&:set_sequences!)
       EventService.repair_thread(poll.discussion_id)
     end
     poll.update_attribute(:closed_at, Time.now)
