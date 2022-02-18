@@ -163,7 +163,7 @@ class Event < ApplicationRecord
   end
 
   def create_seq!(name, start, owner)
-    ActiveRecord::Base.connection.execute("CREATE SEQUENCE #{name} START #{start} OWNED BY #{owner}")
+    ActiveRecord::Base.connection.execute("CREATE SEQUENCE IF NOT EXISTS #{name} START #{start} OWNED BY #{owner}")
   end
 
   def next_seq!(name)
