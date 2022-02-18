@@ -142,7 +142,7 @@ class Event < ApplicationRecord
 
   def set_sequence_id!
     return unless discussion_id
-    udpate_attribute(:sequence_id, next_sequence_id!)
+    update_attribute(:sequence_id, next_sequence_id!)
   end
 
   def reset_sequences
