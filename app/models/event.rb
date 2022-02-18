@@ -18,6 +18,7 @@ class Event < ApplicationRecord
 
   after_create  :update_sequence_info!
   after_destroy :update_sequence_info!
+  after_destroy :reset_sequences
 
   define_counter_cache(:child_count) { |e| e.children.count  }
   define_counter_cache(:descendant_count) { |e|
@@ -170,10 +171,10 @@ class Event < ApplicationRecord
 
   def next_sequence_id!
     unless seq_present?(sequence_id_seq)
-      val = Event.where(discussion_id: discussion_id).
-            where("sequence_id is not null").
-            order(sequence_id: :desc).
-            limit(1).pluck(:sequence_id).last || 1
+      val = 1 + (Event.where(discussion_id: discussion_id).
+                       where("sequence_id is not null").
+                       order(sequence_id: :desc).
+                       limit(1).pluck(:sequence_id).last || 0)
       create_seq!(sequence_id_seq, val, "events.sequence_id")
     end
     next_seq!(sequence_id_seq)
@@ -182,8 +183,10 @@ class Event < ApplicationRecord
   def next_position!
     return 0 unless (discussion_id and parent_id)
     unless seq_present?(position_seq)
-      val = Event.where(parent_id: parent_id, discussion_id: discussion_id).
-                  order(position: :desc).limit(1).pluck(:position).last || 1
+      val = 1 + (Event.where(parent_id: parent_id,
+                             discussion_id: discussion_id).
+                       order(position: :desc).
+                       limit(1).pluck(:position).last || 0)
       create_seq!(position_seq, val, "events.position")
     end
     next_seq!(position_seq)

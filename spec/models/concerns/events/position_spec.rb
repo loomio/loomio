@@ -47,17 +47,17 @@ describe "Events::Position" do
     e1 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment1)
     e2 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment2)
     Event.where(id: e2.id).update_all(sequence_id: 3, position: 10)
-    e2.reload
 
     # publishing e3 causes a repair thread, which resets position to correct value, and takes the next available sequence_id
     e3 = Events::NewComment.publish!(comment3)
+    e2.reload
 
     expect(e1.position).to eq 1
     expect(e1.sequence_id).to eq 1
     expect(e1.position_key).to eq "00001"
 
     expect(e2.position).to eq 2
-    expect(e2.sequence_id).to eq 2
+    expect(e2.sequence_id).to eq 3
     expect(e2.position_key).to eq "00002"
 
     expect(e3.position).to eq 3

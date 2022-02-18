@@ -87,7 +87,6 @@ class EventService
     discussion.created_event.update_descendant_count
     discussion.update_items_count
     discussion.update_sequence_info!
-    Redis::Counter.new("sequence_id_counter_#{discussion_id}").delete
 
     # ensure all the discussion_readers have valid read_ranges values
     DiscussionReader.where(discussion_id: discussion_id).each do |reader|
@@ -117,7 +116,7 @@ class EventService
         ) AS t
       WHERE events.id = t.id and
             events.position is distinct from t.seq")
-    Redis::Counter.new("position_counter_#{parent_id}").delete
+    ActiveRecord::Base.connection.execute("DROP SEQUENCE IF EXISTS event_#{parent_id}_position_seq")
   end
 
   def self.repair_all_threads
