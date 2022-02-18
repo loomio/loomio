@@ -53,9 +53,7 @@ class EventService
       discussion.reload
     end
 
-    Event.where(discussion_id: discussion_id, sequence_id: nil).each do |event|
-      event.set_sequences!
-    end
+    Event.where(discussion_id: discussion_id, sequence_id: nil).each(&:set_sequence_id!)
 
     # rebuild ancestry of events based on eventable relationships
     items = Event.where(discussion_id: discussion.id).order(:sequence_id)

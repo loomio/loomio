@@ -140,6 +140,11 @@ class Event < ApplicationRecord
     save!
   end
 
+  def set_sequence_id!
+    return unless discussion_id
+    udpate_attribute(:sequence_id, next_sequence_id!)
+  end
+
   def reset_sequences
     drop_seq!(position_seq)
     drop_seq!(sequence_id_seq)
