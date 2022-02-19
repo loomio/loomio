@@ -12,14 +12,14 @@ class Event < ApplicationRecord
   has_many :children, (-> { where("discussion_id is not null") }), class_name: "Event", foreign_key: :parent_id
   set_custom_fields :pinned_title, :recipient_user_ids, :recipient_message, :recipient_audience, :stance_ids
 
-  before_create :set_sequences, if: :discussion_id
-  after_rollback :reset_sequences, if: :discussion_id
-  before_destroy :reset_sequences, if: :discussion_id
+  before_create :set_sequences #, if: :discussion_id
+  after_rollback :reset_sequences #, if: :discussion_id
+  before_destroy :reset_sequences #, if: :discussion_id
 
-  after_create  :update_sequence_info!, if: :discussion_id
-  after_destroy :update_sequence_info!, if: :discussion_id
+  after_create  :update_sequence_info! #, if: :discussion_id
+  after_destroy :update_sequence_info! #, if: :discussion_id
 
-  before_create :set_parent_and_depth, if: :discussion_id
+  before_create :set_parent_and_depth # , if: :discussion_id
   define_counter_cache(:child_count) { |e| e.children.count  }
   define_counter_cache(:descendant_count) { |e|
     if e.kind == "new_discussion"
@@ -131,6 +131,7 @@ class Event < ApplicationRecord
     self.sequence_id = next_sequence_id!
     self.position = next_position!
     self.position_key = self_and_parents.reverse.map(&:position).map{|p| Event.zero_fill(p) }.join('-')
+    # self.position_key = [parent&.position_key, Event.zero_fill(position)].compact.join('-')
   end
 
   def set_sequence_id!
