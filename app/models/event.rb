@@ -34,7 +34,6 @@ class Event < ApplicationRecord
   }
   update_counter_cache :parent, :child_count
   update_counter_cache :parent, :descendant_count
-  update_counter_cache :discussion, :items_count
 
   validates :kind, presence: true
   validates :eventable, presence: true
