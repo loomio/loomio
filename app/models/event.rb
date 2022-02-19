@@ -12,14 +12,14 @@ class Event < ApplicationRecord
   has_many :children, (-> { where("discussion_id is not null") }), class_name: "Event", foreign_key: :parent_id
   set_custom_fields :pinned_title, :recipient_user_ids, :recipient_message, :recipient_audience, :stance_ids
 
-  before_create :set_parent_and_depth
-  before_create :set_sequences
-  after_rollback :reset_sequences
+  before_create :set_sequences, if: :discussion_id
+  after_rollback :reset_sequences, if: :discussion_id
+  before_destroy :reset_sequences, if: :discussion_id
 
-  after_create  :update_sequence_info!
-  after_destroy :update_sequence_info!
-  before_destroy :reset_sequences
+  after_create  :update_sequence_info!, if: :discussion_id
+  after_destroy :update_sequence_info!, if: :discussion_id
 
+  before_create :set_parent_and_depth, if: :discussion_id
   define_counter_cache(:child_count) { |e| e.children.count  }
   define_counter_cache(:descendant_count) { |e|
     if e.kind == "new_discussion"
@@ -60,19 +60,20 @@ class Event < ApplicationRecord
   end
 
   def self.publish!(eventable, **args)
-    fails = 0
     event = build(eventable, **args)
-    begin
-      event.save!
-    rescue ActiveRecord::RecordNotUnique => e
-      fails += 1
-      if fails < 3
-        EventService.repair_thread(event.discussion_id)
-        retry
-      else
-        raise e
-      end
-    end
+    event.save!
+    # fails = 0
+    # begin
+    #   event.save!
+    # rescue ActiveRecord::RecordNotUnique => e
+    #   fails += 1
+    #   if fails < 3
+    #     EventService.repair_thread(event.discussion_id)
+    #     retry
+    #   else
+    #     raise e
+    #   end
+    # end
     PublishEventWorker.perform_async(event.id)
     event
   end
@@ -117,7 +118,6 @@ class Event < ApplicationRecord
   end
 
   def set_parent_and_depth
-    return unless discussion_id
     self.parent = max_depth_adjusted_parent
     self.depth = parent ? parent.depth + 1 : 0
   end
@@ -128,7 +128,6 @@ class Event < ApplicationRecord
   end
 
   def set_sequences
-    return unless discussion_id
     self.sequence_id = next_sequence_id!
     self.position = next_position!
     self.position_key = self_and_parents.reverse.map(&:position).map{|p| Event.zero_fill(p) }.join('-')
@@ -141,6 +140,7 @@ class Event < ApplicationRecord
   def reset_sequences
     drop_seq!(position_seq)
     drop_seq!(sequence_id_seq)
+    EventService.reset_child_positions(parent.id, parent.position_key)
   end
 
   def sequence_id_seq
@@ -220,7 +220,6 @@ class Event < ApplicationRecord
   def self_and_parents
     [self, (parent && parent.discussion_id && parent.self_and_parents)].flatten.compact
   end
-
 
   def max_depth_adjusted_parent
     original_parent = find_parent_event
