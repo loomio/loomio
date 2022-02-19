@@ -141,7 +141,7 @@ class Event < ApplicationRecord
   def reset_sequences
     # drop_seq!(position_seq)
     # drop_seq!(sequence_id_seq)
-    EventService.reset_child_positions(parent.id, parent.position_key)
+    EventService.reset_child_positions(parent.id, parent.position_key) if parent_id
   end
 
   def sequence_id_seq
