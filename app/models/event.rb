@@ -130,8 +130,8 @@ class Event < ApplicationRecord
   def set_sequences
     self.sequence_id = next_sequence_id!
     self.position = next_position!
-    self.position_key = self_and_parents.reverse.map(&:position).map{|p| Event.zero_fill(p) }.join('-')
-    # self.position_key = [parent&.position_key, Event.zero_fill(position)].compact.join('-')
+    # self.position_key = self_and_parents.reverse.map(&:position).map{|p| Event.zero_fill(p) }.join('-')
+    self.position_key = [parent&.position_key, Event.zero_fill(position)].compact.join('-')
   end
 
   def set_sequence_id!
