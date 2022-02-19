@@ -10,22 +10,6 @@ class EventService
     event
   end
 
-  def self.readd_to_thread(kind:)
-    Event.where(kind: kind, discussion_id: nil).where("sequence_id is not null").find_each do |event|
-      next unless event.eventable
-
-      if Event.exists?(sequence_id: event.sequence_id, discussion_id: event.eventable.discussion_id)
-        Event.where(discussion_id: event.eventable.discussion_id)
-             .where("sequence_id >= ?", event.sequence_id)
-             .order(sequence_id: :desc)
-             .each { |event| event.increment!(:sequence_id) }
-      end
-
-      event.update_attribute(:discussion_id, event.eventable.discussion_id)
-      event.reload.discussion.update_sequence_info!
-    end
-  end
-
   def self.move_comments(discussion:, actor:, params:)
     # handle parent comments = events where parent_id is source.created_event.id
       # move all events which are children of above parents (comment parent id untouched)
