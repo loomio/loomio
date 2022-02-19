@@ -83,7 +83,6 @@ class EventService
 
     discussion.created_event.update_child_count
     discussion.created_event.update_descendant_count
-    discussion.update_items_count
     discussion.update_sequence_info!
 
     # ensure all the discussion_readers have valid read_ranges values
