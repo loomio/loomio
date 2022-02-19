@@ -43,7 +43,8 @@ describe "Events::Position" do
     expect(e6.position_key).to eq "00006"
   end
 
-  it 'handles clash' do
+  # dont need this any more.. but im still interested in it
+  xit 'handles clash' do
     e1 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment1)
     e2 = Event.create!(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment2)
     Event.where(id: e2.id).update_all(sequence_id: 3, position: 10)

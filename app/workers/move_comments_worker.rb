@@ -22,14 +22,9 @@ class MoveCommentsWorker
 
     ActiveRecord::Base.transaction do
       # ensure you're not moving events you're not allowed to move
-      all_events.update_all(sequence_id: nil, discussion_id: target_discussion.id)
-
-      # update parent_id on all_events (flattening everything) to target's created event id
-      parent_events.update_all(parent_id: target_discussion.created_event.id)
-      orphan_events.update_all(parent_id: target_discussion.created_event.id)
-
-      # update depth=1 on orphan_events (flattening everything)
-      orphan_events.update_all(depth: 1)
+      all_events.update_all(sequence_id: nil,
+                            discussion_id: target_discussion.id,
+                            parent_id: nil)
 
       # update comments' parent_id=null (flattening everything)
       Comment.where(id: orphan_events.pluck(:eventable_id)).update_all(parent_id: nil)
@@ -39,30 +34,10 @@ class MoveCommentsWorker
 
       Poll.where(id: all_events.where(eventable_type: 'Poll').pluck(:eventable_id)).update_all(discussion_id: target_discussion.id)
       Poll.where(id: all_events.where(eventable_type: 'Poll').pluck(:eventable_id)).update_all(group_id: target_discussion.group_id)
-
-      # apply missing sequence ids to all_events
-      discussion_max_sequence_id = target_discussion.items.where.not(sequence_id: nil).maximum('sequence_id') || 0
-      target_discussion.items.where(sequence_id: nil).order(created_at: :asc).each do |event|
-        discussion_max_sequence_id = discussion_max_sequence_id + 1
-        event.update(sequence_id: discussion_max_sequence_id)
-      end
     end
 
     EventService.repair_thread(target_discussion.id)
     EventService.repair_thread(source_discussion.id)
-    # # update reader info on target target_discussion
-    # target_discussion.update_sequence_info!
-    # # update reader info on source_discussion target_discussion
-    # source_discussion.update_sequence_info!
-
-    # # update items count on target target_discussion
-    # target_discussion.created_event.update_child_count
-    # target_discussion.items.each(&:update_child_count)
-    # target_discussion.update_items_count
-    # update items count on source_discussion target_discussion
-    # source_discussion.created_event.update_child_count
-    # source_discussion.update_items_count
-    # source_discussion.items.each(&:update_child_count)
 
     ActiveStorage::Attachment.where(record: all_events.map(&:eventable).compact).update_all(group_id: target_discussion.group_id)
 
