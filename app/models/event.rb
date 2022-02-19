@@ -62,18 +62,6 @@ class Event < ApplicationRecord
   def self.publish!(eventable, **args)
     event = build(eventable, **args)
     event.save!
-    # fails = 0
-    # begin
-    #   event.save!
-    # rescue ActiveRecord::RecordNotUnique => e
-    #   fails += 1
-    #   if fails < 3
-    #     EventService.repair_thread(event.discussion_id)
-    #     retry
-    #   else
-    #     raise e
-    #   end
-    # end
     PublishEventWorker.perform_async(event.id)
     event
   end
@@ -105,6 +93,7 @@ class Event < ApplicationRecord
   def message_channel
     eventable.group.message_channel
   end
+
   # this is called after create, and calls methods defined by the event concerns
   # included per event type
   def trigger!
