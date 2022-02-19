@@ -135,11 +135,6 @@ class Event < ApplicationRecord
     self.position_key = self_and_parents.reverse.map(&:position).map{|p| Event.zero_fill(p) }.join('-')
   end
 
-  def set_sequences!
-    set_sequences
-    save!
-  end
-
   def set_sequence_id!
     return unless discussion_id
     update_attribute(:sequence_id, next_sequence_id!)
