@@ -18,7 +18,7 @@ class Event < ApplicationRecord
 
   after_create  :update_sequence_info!
   after_destroy :update_sequence_info!
-  after_destroy :reset_sequences
+  before_destroy :reset_sequences
 
   define_counter_cache(:child_count) { |e| e.children.count  }
   define_counter_cache(:descendant_count) { |e|
@@ -135,7 +135,6 @@ class Event < ApplicationRecord
   end
 
   def set_sequence_id!
-    return unless discussion_id
     update_attribute(:sequence_id, next_sequence_id!)
   end
 
