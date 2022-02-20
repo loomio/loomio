@@ -139,7 +139,6 @@ describe Dev::PollsController do
       get :test_poll_scenario, params: {scenario: 'poll_user_mentioned', poll_type: poll_type, email: true}
       expect_subject("poll_mailer.header.user_mentioned")
       expect_element('.poll-mailer-common-summary')
-      expect_text('.poll-mailer__vote', "Please respond")
     end
 
     it "anonymous #{poll_type} poll_user_mentioned_email" do
