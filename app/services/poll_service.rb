@@ -200,8 +200,8 @@ class PollService
     poll.stances.update_all(participant_id: nil) if poll.anonymous
     if poll.discussion_id && poll.hide_results == 'until_closed'
       stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
-      events = Event.where(eventable_type: "Stance", eventable_id: stance_ids)
-      events.update_all(discussion_id: poll.discussion_id)
+      Event.where(kind: 'stance_created', eventable_id: stance_ids, discussion_id: nil).
+            update_all(discussion_id: poll.discussion_id)
       EventService.repair_thread(poll.discussion_id)
     end
     poll.update_attribute(:closed_at, Time.now)
