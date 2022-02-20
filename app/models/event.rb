@@ -12,12 +12,13 @@ class Event < ApplicationRecord
   has_many :children, (-> { where("discussion_id is not null") }), class_name: "Event", foreign_key: :parent_id
   set_custom_fields :pinned_title, :recipient_user_ids, :recipient_message, :recipient_audience, :stance_ids
 
-  before_create :set_parent_and_depth
-  before_create :set_sequences
-  after_rollback :reset_sequences
+  before_create :set_parent_and_depth, if: :discussion_id
+  before_create :set_sequences, if: :discussion_id
+  after_rollback :reset_sequences, if: :discussion_id
+  before_destroy :reset_sequences, if: :discussion_id
 
-  after_create  :update_sequence_info!
-  after_destroy :update_sequence_info!
+  after_create  :update_sequence_info!, if: :discussion_id
+  after_destroy :update_sequence_info!, if: :discussion_id
 
   define_counter_cache(:child_count) { |e| e.children.count  }
   define_counter_cache(:descendant_count) { |e|
@@ -33,7 +34,6 @@ class Event < ApplicationRecord
   }
   update_counter_cache :parent, :child_count
   update_counter_cache :parent, :descendant_count
-  update_counter_cache :discussion, :items_count
 
   validates :kind, presence: true
   validates :eventable, presence: true
@@ -60,19 +60,8 @@ class Event < ApplicationRecord
   end
 
   def self.publish!(eventable, **args)
-    fails = 0
     event = build(eventable, **args)
-    begin
-      event.save!
-    rescue ActiveRecord::RecordNotUnique => e
-      fails += 1
-      if fails < 3
-        EventService.repair_thread(event.discussion_id)
-        retry
-      else
-        raise e
-      end
-    end
+    event.save!
     PublishEventWorker.perform_async(event.id)
     event
   end
@@ -104,6 +93,7 @@ class Event < ApplicationRecord
   def message_channel
     eventable.group.message_channel
   end
+
   # this is called after create, and calls methods defined by the event concerns
   # included per event type
   def trigger!
@@ -117,7 +107,6 @@ class Event < ApplicationRecord
   end
 
   def set_parent_and_depth
-    return unless discussion_id
     self.parent = max_depth_adjusted_parent
     self.depth = parent ? parent.depth + 1 : 0
   end
@@ -127,56 +116,68 @@ class Event < ApplicationRecord
     update_columns(parent_id: parent_id, depth: depth)
   end
 
-  def position_counter
-    Redis::Counter.new("position_counter_#{parent_id}")
-  end
-
-  def sequence_id_counter
-    Redis::Counter.new("sequence_id_counter_#{discussion_id}")
-  end
-
   def set_sequences
-    return unless discussion_id
     self.sequence_id = next_sequence_id!
     self.position = next_position!
-    self.position_key = self_and_parents.reverse.map(&:position).map{|p| Event.zero_fill(p) }.join('-')
+    # self.position_key = self_and_parents.reverse.map(&:position).map{|p| Event.zero_fill(p) }.join('-')
+    self.position_key = [parent&.position_key, Event.zero_fill(position)].compact.join('-')
   end
 
-  def set_sequences!
-    count = 0
-    begin
-      count += 1
-      set_sequences
-      save!
-    rescue ActiveRecord::RecordNotUnique
-      raise if count > 5
-      reset_sequences
-      retry
-    end
+  def set_sequence_id!
+    update_attribute(:sequence_id, next_sequence_id!)
   end
 
   def reset_sequences
-    position_counter.delete
-    sequence_id_counter.delete
+    # drop_seq!(position_seq)
+    drop_seq!(sequence_id_seq)
+    EventService.reset_child_positions(parent.id, parent.position_key) if parent_id && parent
+  end
+
+  def sequence_id_seq
+    "discussion_#{self.discussion_id}_sequence_id_seq"
+  end
+
+  def position_seq
+    "event_#{self.parent_id}_position_seq"
+  end
+
+  def seq_present?(name)
+    ActiveRecord::Base.connection.execute("SELECT 0 FROM pg_class where relname = '#{name}'" ).first.present?
+  end
+
+  def create_seq!(name, start, owner)
+    ActiveRecord::Base.connection.execute("CREATE SEQUENCE IF NOT EXISTS #{name} START #{start} OWNED BY #{owner}")
+  end
+
+  def next_seq!(name)
+    ActiveRecord::Base.connection.execute("SELECT NEXTVAL('#{name}')")[0]["nextval"]
+  end
+
+  def drop_seq!(name)
+    ActiveRecord::Base.connection.execute("DROP SEQUENCE IF EXISTS #{name}")
   end
 
   def next_sequence_id!
-    if sequence_id_counter.nil?
-      sequence_id_counter.reset(
-        Event.where(discussion_id: discussion_id).
-              order(sequence_id: :desc).limit(1).pluck(:sequence_id).last || 0)
+    unless seq_present?(sequence_id_seq)
+      val = 1 + (Event.where(discussion_id: discussion_id).
+                       where("sequence_id is not null").
+                       order(sequence_id: :desc).
+                       limit(1).pluck(:sequence_id).last || 0)
+      create_seq!(sequence_id_seq, val, "events.sequence_id")
     end
-    sequence_id_counter.increment
+    next_seq!(sequence_id_seq)
   end
 
   def next_position!
     return 0 unless (discussion_id and parent_id)
-    if position_counter.nil?
-      position_counter.reset(
-        Event.where(parent_id: parent_id, discussion_id: discussion_id).
-              order(position: :desc).limit(1).pluck(:position).last || 0)
+    unless seq_present?(position_seq)
+      val = 1 + (Event.where(parent_id: parent_id,
+                             discussion_id: discussion_id).
+                       order(position: :desc).
+                       limit(1).pluck(:position).last || 0)
+      create_seq!(position_seq, val, "events.position")
     end
-    position_counter.increment
+    next_seq!(position_seq)
   end
 
   def self.zero_fill(num)
@@ -209,7 +210,6 @@ class Event < ApplicationRecord
   def self_and_parents
     [self, (parent && parent.discussion_id && parent.self_and_parents)].flatten.compact
   end
-
 
   def max_depth_adjusted_parent
     original_parent = find_parent_event

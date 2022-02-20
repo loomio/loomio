@@ -91,7 +91,6 @@ class Discussion < ApplicationRecord
 
   define_counter_cache(:closed_polls_count)         { |d| d.polls.closed.count }
   define_counter_cache(:versions_count)             { |d| d.versions.count }
-  define_counter_cache(:items_count)                { |d| d.items.count }
   define_counter_cache(:seen_by_count)              { |d| d.discussion_readers.where("last_read_at is not null").count }
   define_counter_cache(:members_count)              { |d| d.discussion_readers.where("revoked_at is null").count }
   define_counter_cache(:anonymous_polls_count)      { |d| d.polls.where(anonymous: true).count }
@@ -163,10 +162,13 @@ class Discussion < ApplicationRecord
   end
 
   def update_sequence_info!
-    discussion.ranges_string =
-     RangeSet.serialize RangeSet.reduce RangeSet.ranges_from_list discussion.items.order(:sequence_id).pluck(:sequence_id)
+    sequence_ids = discussion.items.order(:sequence_id).pluck(:sequence_id)
+    discussion.ranges_string = RangeSet.serialize RangeSet.reduce RangeSet.ranges_from_list sequence_ids
     discussion.last_activity_at = discussion.items.unreadable.order(:sequence_id).last&.created_at || created_at
-    update_columns(ranges_string: discussion.ranges_string, last_activity_at: discussion.last_activity_at)
+    update_columns(
+      items_count: sequence_ids.count,
+      ranges_string: discussion.ranges_string,
+      last_activity_at: discussion.last_activity_at)
   end
 
   def public?
