@@ -186,7 +186,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.10.1)
+    devise-i18n (1.10.2)
       devise (>= 4.8.0)
     diff-lcs (1.5.0)
     discard (1.2.1)
