@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_13_053922) do
+ActiveRecord::Schema.define(version: 2022_02_22_021324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -698,6 +698,7 @@ ActiveRecord::Schema.define(version: 2021_12_13_053922) do
     t.datetime "renews_at"
     t.datetime "renewed_at"
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
+    t.index ["plan"], name: "index_subscriptions_on_plan"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
