@@ -26,7 +26,7 @@ class Group < ApplicationRecord
   scope :expired_trial, -> { joins(:subscription).where('subscriptions.plan = ?', 'trial').where('subscriptions.expires_at < ?', 12.months.ago) }
   scope :any_trial, -> { joins(:subscription).where('subscriptions.plan = ?', 'trial') }
   scope :expired_demo, -> { joins(:subscription).where('subscriptions.plan = ?', 'demo').where('groups.created_at < ?', 3.days.ago) }
-  scope :not_demo, -> { joins('left join subscriptions on subscription_id = groups.subscription_id').where('subscriptions.plan != ?', 'demo') }
+  scope :not_demo, -> { joins(:subscription).where('subscriptions.plan != ?', 'demo') }
 
   has_many :discussions, dependent: :destroy
   has_many :public_discussions, -> { visible_to_public }, foreign_key: :group_id, class_name: 'Discussion'
