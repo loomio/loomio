@@ -360,6 +360,7 @@ en:
 
   error_page:
     forbidden: 'You do not have permission to do this.'
+    forbidden_view: 'You do not have permission to view this.'
     page_not_found: 'We were unable to find that. It may have been deleted or moved.'
     internal_server_error: 'We''re sorry, but something went wrong. Please try again.'
 
