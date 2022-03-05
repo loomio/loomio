@@ -97,7 +97,7 @@ class EventService
         ) AS t
       WHERE events.id = t.id and
             events.position is distinct from t.seq")
-    ActiveRecord::Base.connection.execute("DROP SEQUENCE IF EXISTS event_#{parent_id}_position_seq")
+    SequenceService.drop_seq!('events_position', parent_id)
   end
 
   def self.repair_all_threads

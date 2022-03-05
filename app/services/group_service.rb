@@ -79,6 +79,7 @@ module GroupService
       group.cover_photo.attach(io: URI.open(url), filename: File.basename(url))
       group.creator = actor if actor.is_logged_in?
       ExampleContent.new(group).add_to_group! if AppConfig.app_features[:example_content]
+      group.subscription = Subscription.new
     end
 
     group.save!

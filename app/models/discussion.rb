@@ -88,6 +88,7 @@ class Discussion < ApplicationRecord
   delegate :locale, to: :author
 
   after_create :set_last_activity_at_to_created_at
+  after_destroy :drop_sequence_id_sequence
 
   define_counter_cache(:closed_polls_count)         { |d| d.polls.closed.count }
   define_counter_cache(:versions_count)             { |d| d.versions.count }
@@ -169,6 +170,10 @@ class Discussion < ApplicationRecord
       items_count: sequence_ids.count,
       ranges_string: discussion.ranges_string,
       last_activity_at: discussion.last_activity_at)
+  end
+
+  def drop_sequence_id_sequence
+    SequenceService.drop_seq!('discussions_sequence_id', id)
   end
 
   def public?

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_05_073807) do
+ActiveRecord::Schema.define(version: 2022_03_04_235224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -577,6 +577,12 @@ ActiveRecord::Schema.define(version: 2022_02_05_073807) do
     t.index ["poll_id"], name: "index_outcomes_on_poll_id"
   end
 
+  create_table "partition_sequences", primary_key: ["key", "id"], force: :cascade do |t|
+    t.text "key", null: false
+    t.integer "id", null: false
+    t.integer "counter", default: 0
+  end
+
   create_table "poll_options", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.integer "poll_id"
@@ -713,6 +719,7 @@ ActiveRecord::Schema.define(version: 2022_02_05_073807) do
     t.datetime "renews_at"
     t.datetime "renewed_at"
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
+    t.index ["plan"], name: "index_subscriptions_on_plan"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
