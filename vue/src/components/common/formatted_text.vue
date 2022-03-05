@@ -63,6 +63,15 @@ div.lmo-markdown-wrapper
 <style lang="sass">
 @import '~vuetify/src/styles/settings/_colors'
 
+.theme--dark
+  .lmo-markdown-wrapper
+    p
+      color: #FFFE
+    blockquote
+      background-color: rgba(0,0,0,0.3)
+      border-left: 4px solid #000
+
+
 img.emoji
   width: 1.4em !important
   vertical-align: top
