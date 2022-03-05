@@ -128,56 +128,32 @@ class Event < ApplicationRecord
   end
 
   def reset_sequences
-    # drop_seq!(position_seq)
-    drop_seq!(sequence_id_seq)
+    SequenceService.drop_seq!('discussions_sequence_id', discussion_id)
     EventService.reset_child_positions(parent.id, parent.position_key) if parent_id && parent
   end
 
-  def sequence_id_seq
-    "discussion_#{self.discussion_id}_sequence_id_seq"
-  end
-
-  def position_seq
-    "event_#{self.parent_id}_position_seq"
-  end
-
-  def seq_present?(name)
-    ActiveRecord::Base.connection.execute("SELECT 0 FROM pg_class where relname = '#{name}'" ).first.present?
-  end
-
-  def create_seq!(name, start, owner)
-    ActiveRecord::Base.connection.execute("CREATE SEQUENCE IF NOT EXISTS #{name} START #{start} OWNED BY #{owner}")
-  end
-
-  def next_seq!(name)
-    ActiveRecord::Base.connection.execute("SELECT NEXTVAL('#{name}')")[0]["nextval"]
-  end
-
-  def drop_seq!(name)
-    ActiveRecord::Base.connection.execute("DROP SEQUENCE IF EXISTS #{name}")
-  end
-
   def next_sequence_id!
-    unless seq_present?(sequence_id_seq)
-      val = 1 + (Event.where(discussion_id: discussion_id).
-                       where("sequence_id is not null").
-                       order(sequence_id: :desc).
-                       limit(1).pluck(:sequence_id).last || 0)
-      create_seq!(sequence_id_seq, val, "events.sequence_id")
+    unless SequenceService.seq_present?('discussions_sequence_id', discussion_id)
+      val = Event.
+            where(discussion_id: discussion_id).
+            where("sequence_id is not null").
+            order(sequence_id: :desc).
+            limit(1).pluck(:sequence_id).last || 0
+      SequenceService.create_seq!('discussions_sequence_id', discussion_id, val)
     end
-    next_seq!(sequence_id_seq)
+    SequenceService.next_seq!('discussions_sequence_id', discussion_id)
   end
 
   def next_position!
     return 0 unless (discussion_id and parent_id)
-    unless seq_present?(position_seq)
-      val = 1 + (Event.where(parent_id: parent_id,
-                             discussion_id: discussion_id).
+    unless SequenceService.seq_present?('events_position', parent_id)
+      val = Event.where(parent_id: parent_id,
+                       discussion_id: discussion_id).
                        order(position: :desc).
-                       limit(1).pluck(:position).last || 0)
-      create_seq!(position_seq, val, "events.position")
+                       limit(1).pluck(:position).last || 0
+      SequenceService.create_seq!('events_position', parent_id, val)
     end
-    next_seq!(position_seq)
+    SequenceService.next_seq!('events_position', parent_id)
   end
 
   def self.zero_fill(num)
