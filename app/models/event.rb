@@ -128,7 +128,7 @@ class Event < ApplicationRecord
   end
 
   def reset_sequences
-    drop_seq!('discussions_sequence_id', discussion_id)
+    SequenceService.drop_seq!('discussions_sequence_id', discussion_id)
     EventService.reset_child_positions(parent.id, parent.position_key) if parent_id && parent
   end
 

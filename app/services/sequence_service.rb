@@ -17,9 +17,9 @@ class SequenceService
     )[0]["counter"]
   end
 
-  def self.drop_seq!(name)
+  def self.drop_seq!(key, id)
     ActiveRecord::Base.connection.execute(
-    "DELETE FROM partition_sequences WHERE key = '#{key}' AND id = #{id} LIMIT 1"
+    "DELETE FROM partition_sequences WHERE key = '#{key}' AND id = #{id}"
     )
   end
 end
