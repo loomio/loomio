@@ -6,16 +6,10 @@ class API::V1::ChatbotsController < API::V1::RestfulController
   end
 
   def test
-    begin
-      Clients::Matrix.new(
-        server: params[:server],
-        username: params[:username],
-        password: params[:password],
-        channel: params[:channel],
-      ).post_test_message(params[:group_name])
-      success_response
-    rescue
-      error_response
+    CHANNELS_REDIS_POOL.with do |client|
+      data = params.slice(:server, :access_token, :channel)
+      data.merge!(message: I18n.t('webhook.hello', group: params[:group_name]))
+      client.publish("/chatbots/test", data.to_json)
     end
   end
 end

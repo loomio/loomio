@@ -4,8 +4,7 @@ class CreateChatbots < ActiveRecord::Migration[6.1]
       t.string :kind
       t.string :server
       t.string :channel
-      t.string :username
-      t.string :password
+      t.string :access_token
       t.integer :author_id
       t.integer :group_id
       t.jsonb "event_kinds", default: [], null: false

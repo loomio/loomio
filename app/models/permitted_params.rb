@@ -108,7 +108,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def chatbot_attributes
-   [:group_id, :kind, :server, :username, :password, :channel, :include_body, :event_kinds, {event_kinds: []}]
+   [:group_id, :kind, :server, :access_token, :channel, :event_kinds, {event_kinds: []}]
   end
 
   def discussion_attributes

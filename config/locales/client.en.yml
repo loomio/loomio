@@ -2333,6 +2333,7 @@ en:
     channel: Channel
     username: Username
     password: Password
+    access_token: Access Token
 
   webhook:
     integrations: Integrations

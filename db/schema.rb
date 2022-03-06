@@ -148,8 +148,7 @@ ActiveRecord::Schema.define(version: 2022_03_05_055732) do
     t.string "kind"
     t.string "server"
     t.string "channel"
-    t.string "username"
-    t.string "password"
+    t.string "access_token"
     t.integer "author_id"
     t.integer "group_id"
     t.jsonb "event_kinds", default: [], null: false
