@@ -64,7 +64,6 @@ en:
       votes: Votes
       comments: Comments
       general: General
-      polls: Polls
       poll_types:
         proposal: Proposal
         count: Count
