@@ -6,10 +6,7 @@ class API::V1::ChatbotsController < API::V1::RestfulController
   end
 
   def test
-    CHANNELS_REDIS_POOL.with do |client|
-      data = params.slice(:server, :access_token, :channel)
-      data.merge!(message: I18n.t('webhook.hello', group: params[:group_name]))
-      client.publish("/chatbots/test", data.to_json)
-    end
+    ChatbotService.test_config(params)
+    head :ok
   end
 end

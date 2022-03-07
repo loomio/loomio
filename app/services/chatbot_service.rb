@@ -22,6 +22,26 @@ class ChatbotService
     chatbot.client.post_message('webhook.hello', group: chatbot.group.name)
   end
 
+  def self.publish_config!
+    CHANNELS_REDIS_POOL.with do |client|
+      config = Chatbot.all.map do |bot|
+        { id: bot.id,
+          server: bot.server,
+          access_token: bot.access_token,
+          channel: bot.channel }
+      end
+      client.set("/chatbots/config", config.to_json)
+    end
+  end
+
+  def self.test_config(params)
+    CHANNELS_REDIS_POOL.with do |client|
+      data = params.slice(:server, :access_token, :channel)
+      data.merge!(message: I18n.t('webhook.hello', group: params[:group_name]))
+      client.publish("/chatbots/test", data.to_json)
+    end
+  end
+
   def self.list_channels
   end
 

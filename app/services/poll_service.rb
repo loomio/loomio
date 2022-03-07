@@ -196,7 +196,20 @@ class PollService
     poll.stances.update_all(participant_id: nil) if poll.anonymous
     if poll.discussion_id && poll.hide_results == 'until_closed'
       stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
+<<<<<<< Updated upstream
       Event.where(kind: 'stance_created', eventable_id: stance_ids, discussion_id: nil).update_all(discussion_id: poll.discussion_id)
+||||||| constructed merge base
+      events = Event.where(eventable_type: "Stance", eventable_id: stance_ids)
+      events.update_all(discussion_id: poll.discussion_id)
+=======
+      Event.where(
+        kind: 'stance_created',
+        eventable_type: "Stance",
+        eventable_id: stance_ids
+      ).update_all(
+        discussion_id: poll.discussion_id
+      )
+>>>>>>> Stashed changes
       EventService.repair_thread(poll.discussion_id)
     end
     poll.update_attribute(:closed_at, Time.now)
