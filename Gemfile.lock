@@ -530,8 +530,8 @@ GEM
       sentry-ruby-core (= 5.1.1)
     sentry-ruby-core (5.1.1)
       concurrent-ruby
-    sentry-sidekiq (5.1.0)
-      sentry-ruby-core (~> 5.1.0)
+    sentry-sidekiq (5.1.1)
+      sentry-ruby-core (~> 5.1.1)
       sidekiq (>= 3.0)
     sexp_processor (4.15.3)
     sidekiq (6.4.1)
