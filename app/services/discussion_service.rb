@@ -30,6 +30,7 @@ class DiscussionService
     EventBus.broadcast('discussion_create', discussion, actor)
     Events::NewDiscussion.publish!(discussion: discussion,
                                    recipient_user_ids: users.pluck(:id),
+                                   recipient_chatbot_ids: params[:recipient_chatbot_ids],
                                    recipient_audience: params[:recipient_audience])
 
   end
@@ -63,6 +64,7 @@ class DiscussionService
     Events::DiscussionEdited.publish!(discussion: discussion,
                                       actor: actor,
                                       recipient_user_ids: users.pluck(:id),
+                                      recipient_chatbot_ids: params[:recipient_chatbot_ids],
                                       recipient_audience: params[:recipient_audience],
                                       recipient_message: params[:recipient_message])
   end
@@ -83,6 +85,7 @@ class DiscussionService
     Events::DiscussionAnnounced.publish!(discussion: discussion,
                                          actor: actor,
                                          recipient_user_ids: users.pluck(:id),
+                                         recipient_chatbot_ids: params[:recipient_chatbot_ids],
                                          recipient_audience: params[:recipient_audience],
                                          recipient_message: params[:recipient_message])
   end

@@ -38,6 +38,7 @@ export default
     hasRecipients: ->
       @discussion.recipientAudience ||
       @discussion.recipientUserIds.length ||
+      @discussion.recipientChatbotIds.length ||
       @discussion.recipientEmails.length
 
     model: -> @discussion
@@ -60,6 +61,7 @@ export default
       ,
         recipient_audience: @discussion.recipientAudience
         recipient_user_ids: @discussion.recipientUserIds
+        recipient_chatbot_ids: @discussion.recipientChatbotIds
         recipient_emails: @discussion.recipientEmails
         recipient_message: @message
       Records.remote.post 'announcements', params

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'ThrottleService' do
   it 'limits the number of times i can do something' do
-    CHANNELS_REDIS_POOL.with do |client|
+    CACHE_REDIS_POOL.with do |client|
       client.flushall
     end
     expect(ThrottleService.can?(key: 'jump', max: 5, per: 'hour', inc: 1)).to be true
@@ -14,7 +14,7 @@ describe 'ThrottleService' do
   end
 
   it 'limits the number of times i can do something, with inc' do
-    CHANNELS_REDIS_POOL.with do |client|
+    CACHE_REDIS_POOL.with do |client|
       client.flushall
     end
     expect(ThrottleService.can?(key: 'jump', max: 5, per: 'hour', inc: 2)).to be true
@@ -26,7 +26,7 @@ describe 'ThrottleService' do
   end
 
   it 'correctly resets a throttle' do
-    CHANNELS_REDIS_POOL.with do |client|
+    CACHE_REDIS_POOL.with do |client|
       client.flushall
     end
     expect(ThrottleService.can?(key: 'jump', max: 5, per: 'hour', inc: 2)).to be true
@@ -37,7 +37,7 @@ describe 'ThrottleService' do
   end
 
   it 'does not reset all throttles' do
-    CHANNELS_REDIS_POOL.with do |client|
+    CACHE_REDIS_POOL.with do |client|
       client.flushall
     end
     expect(ThrottleService.can?(key: 'jump', max: 5, per: 'hour', inc: 2)).to be true
@@ -48,7 +48,7 @@ describe 'ThrottleService' do
   end
 
   it "raises exception for limit!" do
-    CHANNELS_REDIS_POOL.with do |client|
+    CACHE_REDIS_POOL.with do |client|
       client.flushall
     end
     expect(ThrottleService.limit!(key: 'jump', max: 1, per: 'hour', inc: 1)).to be true

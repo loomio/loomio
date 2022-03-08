@@ -6,7 +6,7 @@ class API::V1::ChatbotsController < API::V1::RestfulController
   end
 
   def test
-    ChatbotService.test_config(params)
+    ChatbotService.publish_test!(params)
     head :ok
   end
 end

@@ -7,6 +7,7 @@ class ChatbotService
 
   def self.update(chatbot:, params:, actor:)
     actor.ability.authorize! :update, chatbot
+    params.delete(:access_token) unless params[:access_token].present?
     chatbot.assign_attributes(params)
     return false unless chatbot.valid?
     chatbot.save!
@@ -17,46 +18,52 @@ class ChatbotService
     chatbot.destroy
   end
 
-  def self.test(chatbot:, actor:)
-    actor.ability.authorize! :test, chatbot
-    chatbot.client.post_message('webhook.hello', group: chatbot.group.name)
-  end
-
-  def self.publish_config!
-    CHANNELS_REDIS_POOL.with do |client|
-      config = Chatbot.all.map do |bot|
-        { id: bot.id,
-          server: bot.server,
-          access_token: bot.access_token,
-          channel: bot.channel }
+  def self.publish_event!(event)
+    return unless Array(event.recipient_chatbot_ids).any?
+    chatbots = event.eventable.group.chatbots
+    MAIN_REDIS_POOL.with do |client|
+      chatbots.where(id: event.recipient_chatbot_ids).each do |chatbot|
+        # later, make a list and rpush into it. i guess
+        client.publish("chatbot/publish", {
+          chatbot_id: chatbot.id,
+          payload: serialize(event, 'html').as_json
+        }.to_json)
       end
-      client.set("/chatbots/config", config.to_json)
     end
   end
 
-  def self.test_config(params)
-    CHANNELS_REDIS_POOL.with do |client|
+  def self.publish_configs!
+    MAIN_REDIS_POOL.with do |client|
+      client.del("chatbot/configs")
+      config = Chatbot.all.map do |bot|
+        client.hset("chatbot/configs", bot.id, bot.config.to_json)
+      end
+      client.publish("chatbot/configs_updated", true)
+    end
+  end
+
+  def self.publish_config!(bot)
+    MAIN_REDIS_POOL.with do |client|
+      client.hset("chatbot/configs", bot.id, bot.config.to_json)
+      client.publish("chatbot/new_config", bot.config.to_json)
+    end
+  end
+
+  def self.publish_test!(params)
+    MAIN_REDIS_POOL.with do |client|
       data = params.slice(:server, :access_token, :channel)
       data.merge!(message: I18n.t('webhook.hello', group: params[:group_name]))
-      client.publish("/chatbots/test", data.to_json)
+      client.publish("chatbot/test", data.to_json)
     end
   end
 
-  def self.list_channels
-  end
-
-  def self.publish_poll
-  end
-
-  def serialized_event(event, format, webhook)
+  def self.serialize(event, format)
     serializer = [
       "Webhook::#{format.classify}::#{event.kind.classify}Serializer",
       "Webhook::#{format.classify}::#{event.eventable.class}Serializer",
       "Webhook::#{format.classify}::BaseSerializer"
     ].detect { |str| str.constantize rescue nil }.constantize
-    serializer.new(event, root: false, scope: {webhook: webhook}).as_json
-  end
-
-  def publish_event(chatbot:, event:)
+    # serializer.new(event, root: false, scope: {webhook: webhook})
+    serializer.new(event, root: false)
   end
 end

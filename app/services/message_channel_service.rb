@@ -14,7 +14,7 @@ class MessageChannelService
   end
 
   def self.publish_serialized_records(data, group_id: nil, user_id: nil)
-    CHANNELS_REDIS_POOL.with do |client|
+    CACHE_REDIS_POOL.with do |client|
       room = "user-#{user_id}" if user_id
       room = "group-#{group_id}" if group_id
       data_str = data.as_json.as_json
@@ -27,7 +27,7 @@ class MessageChannelService
   end
 
   def self.publish_system_notice(notice, reload = false)
-    CHANNELS_REDIS_POOL.with do |client|
+    CACHE_REDIS_POOL.with do |client|
       client.publish("/system_notice", {version: Loomio::Version.current,
                                         notice: notice,
                                         reload: reload}.to_json)
