@@ -46,6 +46,7 @@ export default class PollModel extends BaseModel
     recipientMessage: null
     recipientAudience: null
     recipientUserIds: []
+    recipientChatbotIds: []
     recipientEmails: []
     notifyRecipients: true
     shuffleOptions: false

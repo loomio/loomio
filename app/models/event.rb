@@ -10,7 +10,7 @@ class Event < ApplicationRecord
   belongs_to :user, required: false
   belongs_to :parent, class_name: "Event", required: false
   has_many :children, (-> { where("discussion_id is not null") }), class_name: "Event", foreign_key: :parent_id
-  set_custom_fields :pinned_title, :recipient_user_ids, :recipient_message, :recipient_audience, :stance_ids
+  set_custom_fields :pinned_title, :recipient_user_ids, :recipient_chatbot_ids, :recipient_message, :recipient_audience, :stance_ids
 
   before_create :set_parent_and_depth, if: :discussion_id
   before_create :set_sequences, if: :discussion_id

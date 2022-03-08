@@ -56,7 +56,8 @@ class Group < ApplicationRecord
 
   has_many :group_identities, dependent: :destroy, foreign_key: :group_id
   has_many :identities, through: :group_identities
-  has_many :webhooks, foreign_key: 'group_id', dependent: :destroy
+  has_many :webhooks, dependent: :destroy
+  has_many :chatbots, dependent: :destroy
 
   has_many :discussion_documents,        through: :discussions,        source: :documents
   has_many :poll_documents,              through: :polls,              source: :documents

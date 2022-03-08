@@ -63,7 +63,6 @@ gem 'lograge'
 gem 'video_info'
 gem 'customerio', :git => 'https://github.com/customerio/customerio-ruby'
 gem 'blazer'
-gem 'matrix_sdk'
 # gem 'pghero'
 # gem 'pg_query', '>= 0.9.0'
 

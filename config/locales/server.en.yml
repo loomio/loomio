@@ -579,16 +579,17 @@ en:
     group_identity_created: "Events from %{group} will now appear in this channel"
 
   webhook:
-    hello: "Hello! I will keep you updated about %{group} on Loomio."
+    hello: "Hello from Loomio!"
     markdown:
-      new_discussion: "**%{actor}** started a discussion in %{group}: [%{title}](%{url})"
-      discussion_edited: "**%{actor}** edited a discussion in %{group}: [%{title}](%{url})"
+      discussion_announced: "**%{actor}** shared a discussion: [%{title}](%{url})"
+      new_discussion: "**%{actor}** started a discussion: [%{title}](%{url})"
+      discussion_edited: "**%{actor}** edited a discussion: [%{title}](%{url})"
       new_comment: "**%{actor}** commented in [%{title}](%{url})"
       outcome_created: "**%{actor}** shared an outcome of the %{poll_type}: [%{title}](%{url})"
       outcome_update: "**%{actor}** edited the outcome of the %{poll_type}: [%{title}](%{url})"
       outcome_review_due: "It's time to review the outcome of the %{poll_type}: [%{title}](%{url})"
-      poll_created: "**%{actor}** started a %{poll_type} in %{group}: [%{title}](%{url})"
-      poll_edited: "**%{actor}** edited a %{poll_type} in %{group}: [%{title}](%{url})"
+      poll_created: "**%{actor}** started a %{poll_type}: [%{title}](%{url})"
+      poll_edited: "**%{actor}** edited a %{poll_type}: [%{title}](%{url})"
       stance_created: "**%{actor}** voted in [%{title}](%{url})"
       stance_updated: "**%{actor}** voted in [%{title}](%{url})"
       poll_closing_soon: "24 hours remaining: [%{title}](%{url})"

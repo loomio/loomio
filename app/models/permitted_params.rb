@@ -41,6 +41,7 @@ class PermittedParams < Struct.new(:params)
       :tag_ids, {tag_ids: []},
       :notify_recipients,
       :recipient_user_ids, {recipient_user_ids: []},
+      :recipient_chatbot_ids, {recipient_chatbot_ids: []},
       :recipient_emails, {recipient_emails: []},
       :custom_fields, {custom_fields: [:can_respond_maybe, :dots_per_person, :max_score,
                                        :min_score, :time_zone, :meeting_duration,
@@ -68,6 +69,7 @@ class PermittedParams < Struct.new(:params)
      :event_location, :event_summary, :event_description,
      :notify_recipients,
      :recipient_user_ids, {recipient_user_ids: []},
+     :recipient_chatbot_ids, {recipient_chatbot_ids: []},
      :recipient_emails, {recipient_emails: []},
      :document_ids, {document_ids: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
@@ -99,10 +101,6 @@ class PermittedParams < Struct.new(:params)
    ]
   end
 
-  def announcement_attributes
-    [:kind, :message, :recipients, {recipients: [:audience, {user_ids: []}, {emails: []}]}, :invited_group_ids, {invited_group_ids: []}]
-  end
-
   def webhook_attributes
    [:group_id, :url, :name, :format, :include_body, :include_subgroups, :permissions, :event_kinds, {event_kinds: [], permissions: []}]
   end
@@ -119,6 +117,7 @@ class PermittedParams < Struct.new(:params)
      :recipient_message,
      :tag_ids, {tag_ids: []},
      :recipient_user_ids, {recipient_user_ids: []},
+     :recipient_chatbot_ids, {recipient_chatbot_ids: []},
      :recipient_emails, {recipient_emails: []},
      :forked_event_ids, {forked_event_ids: []},
      :document_ids, {document_ids: []},

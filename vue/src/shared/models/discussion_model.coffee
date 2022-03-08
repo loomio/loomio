@@ -40,6 +40,7 @@ export default class DiscussionModel extends BaseModel
     recipientMessage: null
     recipientAudience: null
     recipientUserIds: []
+    recipientChatbotIds: []
     recipientEmails: []
     notifyRecipients: true
     groupId: null

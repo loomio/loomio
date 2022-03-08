@@ -22,6 +22,7 @@ export default class OutcomeModel extends BaseModel
     attachments: []
     linkPreviews: []
     recipientUserIds: []
+    recipientChatbotIds: []
     recipientEmails: []
     recipientAudience: null
     notifyRecipients: true
