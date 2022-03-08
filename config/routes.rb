@@ -302,7 +302,6 @@ Rails.application.routes.draw do
 
   get '/robots'     => 'robots#show'
   get '/manifest'   => 'manifest#show', format: :json
-  get '/help/markdown' => 'help#markdown'
   get '/help/api'   => 'help#api'
 
   get '/start_group', to: redirect('/try')

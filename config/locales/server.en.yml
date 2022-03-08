@@ -319,8 +319,6 @@ en:
     unsubscribe_from_comment_replied_to_html: "This is a reply notification."
     unsubscribe_from_user_mentioned_html: "This is a mention notification."
 
-
-
   footer:
     about: About
     blog: Blog
@@ -393,72 +391,6 @@ en:
       You can change your position while it is open (perhaps responding to new info).
 
       **Try participating! Click one of the buttons.**
-
-  markdown:
-    intro:
-      title: |
-        # What is markdown?
-
-      body: |
-        Markdown is a way of writing plain text (left),
-        so that it can be converted to rich text (right).
-
-        This page is written in markdown to show how it works.
-
-    headers:
-      body: |
-        ## Headings
-
-        Prefix with a hash and a space to turn text into a heading.
-
-        # This is an h1
-        ## This is an h2
-        #### This is an h4
-
-    paragraphs:
-      title: |
-        ## Paragraphs
-
-      body: |
-        You need
-        to put a
-        blank line
-        in between lines.
-
-        Or it will end up as one big paragraph!
-
-    emphasis:
-      title: |
-        ## Emphasis
-
-      body: |
-        You can italicize a word with _underscore_ or *star*.
-
-        __Bold__ a word by doubling the **emphasis**.
-
-    lists:
-      title: |
-        ## Lists
-
-      body: |
-        Here's how to make a list:
-
-        * leave a blank line before your list
-        * use stars (*)
-        * leave a space after the star
-
-    links:
-      title: |
-        ## Links and Images
-
-      body: |
-        Square brackets with title, round brackets with URL. No spaces between the brackets.
-
-        [Loomio Homepage](https://www.loomio.org/)
-
-        Images are the same, but prefixed with an exclamation mark. Title is used as alt text.
-
-        ![loomio logo](https://i.imgur.com/Fvtworb.png)
 
   task_mailer:
     task_due_reminder:
