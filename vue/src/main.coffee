@@ -44,7 +44,7 @@ boot (data) ->
   Session.apply(data)
 
   if AppConfig.posthog_key
-    posthog.init(AppConfig.posthog_key, {api_host: AppConfig.posthog_host});
+    posthog.init(AppConfig.posthog_key, {api_host: AppConfig.posthog_host, autocapture: false});
     posthog.identify Session.user().id, pick(Session.user(), ['name', 'email', 'username'])
 
   if AppConfig.sentry_dsn
