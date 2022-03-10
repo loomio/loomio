@@ -22,6 +22,7 @@ class Events::PollAnnounced < Event
   end
 
   private
+
   def stances
     Stance.where(id: self.stance_ids)
   end

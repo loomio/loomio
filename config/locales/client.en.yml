@@ -1018,7 +1018,6 @@ en:
     name_and_count_more: "{{name}} and {{count}} more"
 
   context_panel:
-    aria_intro: "Thread context by {{author}}"
     thread_status:
       pinned: "This thread has been pinned. It will remain at the top of the group's list of threads for all users."
       closed: "This thread has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page"
@@ -1188,7 +1187,6 @@ en:
     membership_granted_upon_approval_secret_parent: '<strong>By request</strong>  anyone from {{parent}} can ask to join the group.'
 
     permissions: 'Permissions'
-    features: 'Group-specific features'
     thread_privacy: 'Thread privacy'
     public_threads: 'Public threads only'
     public_discussions_subgroup: 'Anyone in {{parentGroupName}} can see discussions'
@@ -1261,13 +1259,6 @@ en:
       request_approved_success: Membership request approved
       request_ignored_success: Membership request ignored
 
-  group_previous_proposals_card:
-    heading: Previous proposals
-    see_more: See more
-
-  group_decisions_card:
-    see_more: "See all: ({{count}}) decisions"
-
   invitation_form:
     group_url: Group URL
     reusable_invitation_link: Reusable invitation link
@@ -1293,8 +1284,6 @@ en:
     add_custom_message_link: 'add a custom message.'
     custom_message: 'Custom message'
     custom_message_placeholder: 'Enter a personal message to include with the invitation.'
-    team_invitation_message: 'Alternatively, '
-    team_invitation_link:  'get a link to share.'
     add_members: 'Add members'
     from_parent_group: 'from {{name}}.'
     send: 'Send'
@@ -1334,7 +1323,6 @@ en:
       submit: Remove member
 
   memberships_panel:
-
     add_coordinator: Make Admin
     remove_coordinator: Demote admin
 
@@ -1502,10 +1490,6 @@ en:
       muted: Muted Threads
       muted_aria_label: Current showing muted threads
       muted_description: View only threads which have been muted
-    aria_thread:
-      unread: '{{count}} unread items.'
-      current_proposal: 'Current proposal: {{name}}.'
-      you_voted: 'You voted: {{position}}.'
     thread_preview:
       you_voted: 'You voted {{position}}'
       undecided: 'You are undecided'
@@ -1679,13 +1663,6 @@ en:
     success: "Thanks for your message, {{name}}. You'll hear back from us soon."
     success_via_email: "Thanks for your message, {{name}}. We'll respond via email within 24 hours."
 
-  hint:
-    context: 'Tips for using the context panel'
-    discussion: 'Tips for starting an engaging discussion'
-    invitation: 'Tips for writing a great invitation'
-    proposal: 'Tips for writing a clear proposal'
-    vote: 'You can change your position at any time'
-
   explore_page:
     header: Explore groups
     search_placeholder: Search for public groups
@@ -1773,11 +1750,6 @@ en:
 
     deleted: This poll has been deleted
 
-  poll_common_index_card:
-    title: Previous decisions
-    no_polls: No previous decisions found
-    count: "See all: ({{count}}) decisions"
-
   discussions_panel:
     open: Open
     all: All
@@ -1844,17 +1816,8 @@ en:
     unable_to_vote: You have not been invited to vote in this %{poll_type}.
     draft_mode: Voting disabled. This %{poll_type} is a work in progress.
 
-  current_polls_card:
-    title: Current decisions
-    start_poll: New decision
-    no_polls: There are no active decisions right now.
-
   poll_common_collapsed:
     by_who: "by {{name}}"
-
-  poll_common_select_group:
-    loomio_group: Group
-    loomio_group_placeholder: (no group selected)
 
   poll_common_calendar_invite:
     calendar_invite: Include a calendar invitation with this outcome
@@ -2247,19 +2210,6 @@ en:
     stance_created:                "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> voted on: <strong>{{title}}</strong>"
     stance_updated:                "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> updated their vote on: <strong>{{title}}</strong>"
     event_removed:                 "Removed from thread"
-
-  poll_common_subscribe_form:
-    receive_updates_title: Your vote has been recorded
-    receive_updates_helptext: If you'd like to receive an email about the outcome of this poll, enter your email address below
-    email_saved: You will receive an email about the outcome of this poll
-    subscribe: Subscribe
-    no_thanks: No thanks
-
-  poll_common_example_card:
-    what_is_this: "This is a live example of a {{type}}. You're a participant - give it a try!"
-
-  share_poll_page:
-    title: Share poll - {{title}}
 
   add_poll_to_thread_modal:
     success: "Success, {{pollType}} added to thread!"
