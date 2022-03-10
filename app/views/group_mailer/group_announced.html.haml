@@ -19,4 +19,4 @@
   .invite-people-mailer__email-settings
 
   %p.thread-mailer__footer
-    %a{href: email_preferences_url(unsubscribe_token: @recipient.unsubscribe_token, use_vue: 1)}= t(:"email.to_join_group.stop_emails", site_name: AppConfig.theme[:site_name])
+    %a{href: email_preferences_url(unsubscribe_token: @recipient.unsubscribe_token)}= t(:"email.to_join_group.stop_emails", site_name: AppConfig.theme[:site_name])

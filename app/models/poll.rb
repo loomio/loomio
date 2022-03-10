@@ -6,14 +6,13 @@ class Poll < ApplicationRecord
   include HasMentions
   include MessageChannel
   include SelfReferencing
-  include HasMailer
   include Reactable
   include HasCreatedEvent
   include HasRichText
   include HasTags
   include Discard::Model
 
-  is_rich_text    on: :details
+  is_rich_text on: :details
 
   extend  NoSpam
   no_spam_for :title, :details
@@ -133,6 +132,33 @@ class Poll < ApplicationRecord
   update_counter_cache :discussion, :anonymous_polls_count
 
   delegate :locale, to: :author
+
+  def chart_type
+    case poll_type
+    when 'proposal' then 'pie'
+    when 'meeting' then 'meeting'
+    else
+      'bar'
+    end
+  end
+
+  def table_type
+    case poll_type
+    when 'proposal' then 'pie'
+    when 'meeting' then 'meeting'
+    when 'ranked_choice' then 'ranked_choice'
+    else
+      'bar'
+    end
+  end
+
+  def responses_type
+    case poll_type
+    when 'proposal' then 'grouped_by_choice'
+    else
+      'chronological'
+    end
+  end
 
   def user_id
     author_id

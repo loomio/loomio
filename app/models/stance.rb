@@ -54,14 +54,9 @@ class Stance < ApplicationRecord
   validate :total_score_is_valid
   validate :reason_length_permitted
 
-  delegate :group,          to: :poll, allow_nil: true
-  delegate :mailer,         to: :poll, allow_nil: true
-  delegate :group_id,       to: :poll
-  delegate :discussion_id,  to: :poll
-  delegate :discussion,     to: :poll
-  delegate :members,        to: :poll
-  delegate :guests,         to: :poll
-  delegate :title,          to: :poll
+  %w(group mailer group_id discussion_id discussion members guests title tags).each do |message|
+    delegate(message, to: :poll)
+  end
 
   alias :author :participant
 

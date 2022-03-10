@@ -52,6 +52,7 @@ v-card.webhook-list
   v-card-text
     loading(v-if="!chatbot")
     template(v-else)
+      v-text-field(:label="$t('chatbot.name')" v-model="chatbot.name" hint="The name of your chatroom")
       v-text-field(:label="$t('chatbot.homeserver_url')"  v-model="chatbot.server" hint="https://example.com")
       v-text-field(
         :label="$t('chatbot.access_token')"

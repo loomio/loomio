@@ -10,7 +10,6 @@ class Discussion < ApplicationRecord
   include HasImportance
   include MessageChannel
   include SelfReferencing
-  include HasMailer
   include HasCreatedEvent
   include HasRichText
   include HasTags

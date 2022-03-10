@@ -1,0 +1,10 @@
+%table.poll-mailer-common__discussion-info
+  %tr
+    %td
+      = render 'base_mailer/group_avatar', group: discussion.group
+    %td
+      = link_to discussion.group.full_name, tracked_url(discussion.group)
+      %span -
+      = link_to discussion.title, tracked_url(discussion)
+%p= render_rich_text(discussion.body, discussion.body_format)
+= render "event_mailer/attachments", resource: discussion

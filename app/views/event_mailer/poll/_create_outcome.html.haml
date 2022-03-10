@@ -1,0 +1,4 @@
+- poll = event.eventable.poll
+- if poll.closed_at && !poll.current_outcome
+  %p.poll-mailer__text-align-center.poll-mailer__create_outcome
+    = link_to t('poll_mailer.common.create_outcome'), tracked_url(event.eventable.poll, set_outcome: 1), class: 'base-mailer__button base-mailer__button--accent'

@@ -201,10 +201,6 @@ class Group < ApplicationRecord
     nil
   end
 
-  def mailer
-    GroupMailer
-  end
-
   def title
     name
   end

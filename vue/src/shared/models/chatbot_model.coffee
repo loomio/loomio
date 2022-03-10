@@ -7,6 +7,7 @@ export default class ChatbotModel extends BaseModel
 
   defaultValues: ->
     groupId: null
+    name: null
     server: null
     accessToken: null
     eventKinds: 'new_discussion discussion_edited poll_created poll_edited poll_closing_soon poll_expired poll_reopened outcome_created'.split(' ')

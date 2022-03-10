@@ -9,7 +9,7 @@ describe Dev::PollsController do
   poll_types.each do |poll_type|
     it "#{poll_type} created email" do
       get :test_poll_scenario, params: {scenario: 'poll_created', poll_type: poll_type, email: true}
-      expect_text('.poll-mailer__subject', "invited you to")
+      expect_text('.base-mailer__event-headline', "invited you to")
       expect_subject("poll_mailer.header.poll_announced")
       expect_element('.poll-mailer-common-summary')
       expect_text('.poll-mailer__vote', "Please respond")
@@ -17,7 +17,7 @@ describe Dev::PollsController do
 
     # it "#{poll_type} created wip email" do
     #   get :test_poll_scenario, params: {scenario: 'poll_created', poll_type: poll_type, email: true, wip: true}
-    #   expect_text('.poll-mailer__subject', "invited you to give feedback on a")
+    #   expect_text('.base-mailer__event-headline', "invited you to give feedback on a")
     #   expect_subject("poll_mailer.header.poll_announced_wip")
     #   expect_element('.poll-mailer-common-summary')
     #   expect_text('.poll-mailer__vote', "is a work in progress. Voting is disabled.")
@@ -66,7 +66,7 @@ describe Dev::PollsController do
     it "anonymous #{poll_type} stance_created email" do
       get :test_poll_scenario, params: {scenario: 'poll_stance_created', poll_type: poll_type, anonymous: true, email: true}
       expect_subject("poll_mailer.header.stance_created")
-      expect_text(".poll-mailer__subject", "Anonymous")
+      expect_text(".base-mailer__event-headline", "Anonymous")
       expect_element('.poll-mailer__stance')
     end
 
@@ -173,7 +173,7 @@ describe Dev::PollsController do
     it "#{poll_type} poll_options_added_author_email" do
       next if poll_type != "poll"
       get :test_poll_scenario, params: {scenario: 'poll_options_added_author', poll_type: poll_type, email: true}
-      expect_text('.poll-mailer__subject', "added options to")
+      expect_text('.base-mailer__event-headline', "added options to")
       expect_subject("poll_mailer.header.poll_option_added_author")
       expect_element('.poll-mailer-common-option-added')
       expect_element('.poll-mailer__vote')
@@ -182,7 +182,7 @@ describe Dev::PollsController do
     it "anonymous #{poll_type} poll_options_added_author_email" do
       next if poll_type != "poll"
       get :test_poll_scenario, params: {scenario: 'poll_options_added_author', anonymous: true, poll_type: poll_type, email: true}
-      expect_text('.poll-mailer__subject', "added options to")
+      expect_text('.base-mailer__event-headline', "added options to")
       expect_subject("poll_mailer.header.poll_option_added_author")
       expect_element('.poll-mailer-common-option-added')
       expect_element('.poll-mailer__vote')

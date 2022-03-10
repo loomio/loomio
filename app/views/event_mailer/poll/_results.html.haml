@@ -1,0 +1,5 @@
+%table
+	%tr
+		%td= render "chart/#{poll.chart_type}", poll: poll, event: event
+	%tr
+		%td= render "table/#{poll.table_type}", poll: poll, event: event

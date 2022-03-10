@@ -1,6 +1,5 @@
 class UserMailer < BaseMailer
-  helper PollEmailHelper
-  layout 'invite_people_mailer', only: [:deactivated, :membership_request_approved, :contact_request, :user_added_to_group, :login, :start_decision, :accounts_merged, :user_reactivated, :group_export_ready]
+  layout 'invite_people_mailer', only: [:deactivated, :membership_request_approved, :contact_request, :user_added_to_group, :login, :start_decision, :accounts_merged, :group_export_ready]
 
   def deactivated(email, recovery_code, locale)
     @recovery_code = recovery_code
@@ -105,16 +104,6 @@ class UserMailer < BaseMailer
     @token = LoginToken.find_by!(id: token_id)
     send_single_mail to: @user.email,
                      subject_key: "email.login.subject",
-                     subject_params: {site_name: AppConfig.theme[:site_name]},
-                     locale: @user.locale
-  end
-
-  def user_reactivated(recipient_id, event_id)
-    @user = User.find_by!(id: recipient_id)
-
-    @token = @user.login_tokens.create(is_reactivation: true)
-    send_single_mail to: @user.email,
-                     subject_key: "email.reactivate.subject",
                      subject_params: {site_name: AppConfig.theme[:site_name]},
                      locale: @user.locale
   end

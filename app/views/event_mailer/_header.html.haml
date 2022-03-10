@@ -1,0 +1,17 @@
+%table.base-mailer__event-headline
+  %tr
+    - if event.user
+      %td= render "avatar", user: event.user
+    %td
+      - title = link_to(event.eventable.title, tracked_url(event.eventable))
+      - poll_type = @poll ? t("poll_types.#{@poll.poll_type}") : nil
+      %span.ml-2=raw t(:"notifications.without_title.#{event.kind}", actor: event.user.name, title: title, poll_type: poll_type)
+      %br
+      - event.eventable.tags.each do |tag|
+        %span.mailer-tag{style: "color: #{tag.color}; border-color: #{tag.color}"}=tag.name
+
+  - if event.recipient_message.present?
+    %tr
+      %td{colspan: "2" }
+        %p
+          %i=raw render_plain_text(event.recipient_message)

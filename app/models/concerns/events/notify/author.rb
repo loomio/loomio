@@ -5,7 +5,7 @@ module Events::Notify::Author
   end
 
   def email_author!
-    eventable.send(:mailer).send(:"#{kind}_author", author, self).deliver_now if notify_author?
+    EventMailer.event(author, self).deliver_later if notify_author?
   end
 
   private

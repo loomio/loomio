@@ -4,7 +4,6 @@ class PollsController < ApplicationController
   include LoadAndAuthorize
   include EmailHelper
 
-  helper PollEmailHelper
   helper :email
 
   def export

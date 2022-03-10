@@ -1,0 +1,12 @@
+= render "event_mailer/header", event: @event
+- if @event.eventable.is_a? Stance
+	= render "event_mailer/poll/stance", stance: @event.eventable
+- if @event.eventable.is_a? Poll
+	= render "event_mailer/poll/create_outcome", event: @event
+	= render "event_mailer/poll/summary", event: @event
+	= render "event_mailer/poll/vote", event: @event
+- if %w[poll_announced poll_created].include?(@event.kind)
+	= render "event_mailer/poll/discussion_info", discussion: @discussion, poll: @poll
+- else
+	= render "event_mailer/poll/responses", event: @event
+= render "event_mailer/footer", poll: @poll
