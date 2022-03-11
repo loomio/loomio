@@ -40,7 +40,7 @@ class Stance < ApplicationRecord
   scope :oldest_first,   -> { order(created_at: :asc) }
   scope :priority_first, -> { joins(:poll_options).order('poll_options.priority ASC') }
   scope :priority_last,  -> { joins(:poll_options).order('poll_options.priority DESC') }
-  scope :with_reason,    -> { where("reason IS NOT NULL OR reason != ''") }
+  scope :with_reason,    -> { where("reason IS NOT NULL AND reason != ''") }
   scope :in_organisation, ->(group) { joins(:poll).where("polls.group_id": group.id_and_subgroup_ids) }
   scope :decided,        -> { where("stances.cast_at IS NOT NULL") }
   scope :undecided,      -> { where("stances.cast_at IS NULL") }

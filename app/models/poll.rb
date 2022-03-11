@@ -144,11 +144,9 @@ class Poll < ApplicationRecord
 
   def table_type
     case poll_type
-    when 'proposal' then 'pie'
     when 'meeting' then 'meeting'
-    when 'ranked_choice' then 'ranked_choice'
     else
-      'bar'
+      'simple'
     end
   end
 

@@ -21,10 +21,11 @@ module Dev::PollsHelper
   end
 
   def create_fake_stances(poll:)
-    (2..4).to_a.sample.times do
+    (2..7).to_a.sample.times do
       u = fake_user
       poll.group.add_member!(u) if poll.group
-      fake_stance(poll: poll).save
+      stance = fake_stance(poll: poll)
+      stance.save!
     end
     poll.update_counts!
   end

@@ -2,7 +2,7 @@
   %table{style: "width: 100%"}
     - poll.poll_options.each_with_index do |poll_option, index|
       %tr
-        %td #{poll_option.display_name(zone: time_zone(recipient, poll))}
+        %td #{poll_option.display_name(zone: @recipient.time_zone || poll.time_zone)}
       %tr
         %td
           %table{style: "width: #{percentage_for(poll, index)}%"}

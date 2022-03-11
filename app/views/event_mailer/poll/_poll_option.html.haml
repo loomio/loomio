@@ -17,15 +17,15 @@
     - if stance_choice.present? && icon_name = stance_icon_for(poll, stance_choice)
       %td= image_tag "poll_mailer/vote-icon-#{icon_name}.png", alt: "#{icon_name} icon", class: "poll-mailer-meeting__option-icon"
     - else
-      %td= render 'poll_mailer/common/chip', color: poll_option.color
+      %td= render 'event_mailer/poll/chip', color: poll_option.color
     %td= poll_option.display_name(zone: time_zone)
 
   - else
     - if show_link
       %td= stance_choice.rank_or_score if show_score
-      %td= render 'poll_mailer/common/chip', color: poll_option.color
+      %td= render 'event_mailer/poll/chip', color: poll_option.color
       %td= link_to poll_option.display_name(zone: time_zone), tracked_url(poll, poll_option_id: poll_option.id)
     - else
       %td= stance_choice.rank_or_score if show_score
-      %td= render 'poll_mailer/common/chip', color: poll_option.color
+      %td= render 'event_mailer/poll/chip', color: poll_option.color
       %td= poll_option.display_name(zone: time_zone)

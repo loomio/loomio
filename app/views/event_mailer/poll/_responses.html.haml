@@ -1,7 +1,7 @@
 - poll = event.eventable.poll
 - if poll.show_results? && (poll.decided_voters.exists?(@recipient.id) || poll.closed_at?)
   .poll-mailer-common-responses
-    %h3= t(:"poll_mailer.common.responses")
+    -# %h3= t(:"poll_mailer.common.responses")
 
     - if poll.anonymous?
       %p= t(:"poll_common_action_panel.anonymous")

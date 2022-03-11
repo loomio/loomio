@@ -36,6 +36,26 @@ class PollOption < ApplicationRecord
     super(value || self.name)
   end
 
+  def average_score
+    voters_count = voter_ids.length
+    return 0 if voters_count == 0
+    (total_score.to_f / voters_count.to_f).round(1)
+  end
+
+  def voter_ids
+    # this is a hack, we both know this
+    # some polls 0 is a vote, others it is not
+    if poll.poll_type == 'meeting'
+      voter_scores.keys.map(&:to_i)
+    else
+      voter_scores.filter{|id, score| score > 0 }.keys.map(&:to_i)
+    end
+  end
+
+  def score_percent
+    (total_score.to_f / poll.total_score.to_f) * 100
+  end
+
   def display_name(zone: nil)
     if poll.dates_as_options
       format_iso8601_for_humans(name, zone || poll.time_zone)

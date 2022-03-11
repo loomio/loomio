@@ -8,7 +8,11 @@ module Dev::FakeDataHelper
   # only return new'd objects
   def fake_user(args = {})
     User.new({
-      name: Faker::Name.name,
+      name: [Faker::Name.name,
+             Faker::TvShows::RuPaul.queen,
+             Faker::Superhero.name,
+             Faker::TvShows::BojackHorseman.character,
+             Faker::Movies::BackToTheFuture.character].sample.truncate(100),
       email: Faker::Internet.email,
       password: 'loginlogin',
       detected_locale: 'en',
@@ -25,11 +29,12 @@ module Dev::FakeDataHelper
     }.merge(args))
   end
 
-  # todo fake_group ?
   def fake_group(args = {})
     defaults = {
       name: Faker::Company.name,
-      description: Faker::Marketing.buzzwords
+      description: [
+        Faker::TvShows::BojackHorseman.quote,
+        Faker::Movies::BackToTheFuture.quote].sample
     }
 
     values = defaults.merge(args)
@@ -59,11 +64,17 @@ module Dev::FakeDataHelper
   end
 
   def fake_discussion(args = {})
-    Discussion.new({title: Faker::TvShows::Friends.quote.first(150),
-                    description: Faker::TvShows::Simpsons.quote,
-                    private: true,
-                    group: fake_group,
-                    author: fake_user}.merge(args))
+    Discussion.new({
+      title: [Faker::TvShows::BojackHorseman.tongue_twister,
+              Faker::TvShows::Friends.quote,
+              Faker::Quote.yoda,
+              Faker::Quote.robin].sample.truncate(250),
+      description: [Faker::TvShows::BojackHorseman.quote,
+                    Faker::TvShows::Simpsons.quote,
+                    Faker::Quote.famous_last_words].sample,
+      private: true,
+      group: fake_group,
+      author: fake_user}.merge(args))
   end
 
 
@@ -127,62 +138,101 @@ module Dev::FakeDataHelper
 
   def option_names(option_count)
     seed = (0..20).to_a.sample
+    options = option_count.times.map do
+      [
+        Faker::Food.ingredient,
+        Faker::Movies::StarWars.call_squadron
+      ].sample.truncate(250)
+    end
     {
-      poll: option_count.times.map{ Faker::Food.ingredient },
+      poll: options,
       proposal: %w[agree abstain disagree block],
       count: %w[yes no],
-      dot_vote: option_count.times.map{ Faker::Artist.name },
+      dot_vote: options,
       meeting: option_count.times.map { |i| (seed+i).days.from_now.to_date.iso8601},
-      # meeting: option_count.times.map { |i| (seed+i).hours.from_now.utc.iso8601},
-      ranked_choice: option_count.times.map { Faker::Food.ingredient },
-      score: option_count.times.map{ Faker::Food.ingredient }
+      ranked_choice: options,
+      score: options
     }.with_indifferent_access
   end
 
   def fake_poll(args = {})
-    names = option_names(args.delete(:option_count) || 3)
+    names = option_names(args.delete(:option_count) || (2..7).to_a.sample)
 
     closing_at = args[:wip] ? nil : 3.days.from_now
     options = {
       author: fake_user,
       discussion: fake_discussion,
       poll_type: 'poll',
-      title: Faker::Superhero.name,
+      title: [Faker::Superhero.name, Faker::Movies::StarWars.quote].sample.truncate(140),
+      details: [
+        Faker::Movies::StarWars.quote,
+        Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote,
+        Faker::Movies::PrincessBride.quote,
+        Faker::Movies::Lebowski.quote,
+        Faker::Movies::HitchhikersGuideToTheGalaxy.quote].sample,
       poll_option_names: names[args.fetch(:poll_type, :poll)],
       closing_at: closing_at,
       multiple_choice: false,
-      details: with_markdown(Faker::Hipster.paragraph),
       custom_fields: {}
     }.merge args.tap {|a| a.delete(:wip)}
 
     case options[:poll_type].to_s
-    when 'dot_vote'      then options[:custom_fields][:dots_per_person] = 10
+    when 'dot_vote'
+      options[:custom_fields][:dots_per_person] = 10
     when 'meeting'
       options[:custom_fields][:time_zone] = 'Asia/Seoul'
       options[:custom_fields][:can_respond_maybe] = true
-    when 'ranked_choice' then options[:custom_fields][:minimum_stance_choices] = 2
-    when 'score'         then options[:custom_fields][:max_score] = 9
+    when 'ranked_choice'
+      options[:custom_fields][:minimum_stance_choices] = 3
+    when 'score'
+      options[:custom_fields][:max_score] = 9
     end
 
     Poll.new(options)
   end
 
+
+  def fake_score(poll)
+    case poll.poll_type
+    when 'score', 'ranked_choice'
+      (1..8).to_a.sample
+    when 'meeting'
+      if poll.can_respond_maybe
+        [0,1,2].sample
+      else
+        [0,1].sample
+      end
+    else
+      1
+    end
+  end
+
   def fake_stance(args = {})
     poll = args[:poll] || saved(fake_poll)
 
-    index = 0
+
     choice = if poll.minimum_stance_choices > 1
       poll.poll_options.sample(poll.minimum_stance_choices).map do |option|
-        [option.name, index+=1]
+        [option.name, fake_score(poll)]
       end.to_h
     elsif poll.require_all_choices
       poll.poll_options.map do |option|
-        [option.name, index+=1]
+        [option.name, fake_score(poll)]
       end.to_h
     else
       poll.poll_option_names.sample
     end
-    Stance.new({ poll: poll, participant: fake_user, reason: [Faker::Hipster.sentence, ""].sample, choice: choice }.merge(args))
+
+    Stance.new({
+      poll: poll,
+      participant: fake_user,
+      reason: [
+        Faker::Hipster.sentence,
+        Faker::GreekPhilosophers.quote,
+        Faker::TvShows::RuPaul.quote,
+        ""].sample,
+      choice: choice
+    }.merge(args))
   end
 
   def fake_comment(args = {})

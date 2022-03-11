@@ -12,8 +12,8 @@ module EmailHelper
     poll.poll.stances.latest.find_by(participant: recipient) || Stance.new(poll: poll, participant: recipient)
   end
 
-  def formatted_time_zone(recipient, poll)
-    time_zone = time_zone(recipient, poll)
+  def formatted_time_zone(poll)
+    time_zone = (@recipient || poll).time_zone
     ActiveSupport::TimeZone[time_zone].to_s if time_zone
   end
 
@@ -94,12 +94,12 @@ module EmailHelper
   end
 
   def google_pie_chart_url(poll)
-    "https://chart.googleapis.com/chart?cht=p&chma=0,0,0,0|0,0&chs=200x200&chd=t:#{proposal_sparkline(poll)}&chco=#{proposal_colors(poll)}"
+    "https://chart.googleapis.com/chart?cht=p&chma=0,0,0,0|0,0&chs=256x256&chd=t:#{proposal_sparkline(poll)}&chco=#{proposal_colors(poll)}"
   end
 
   def proposal_sparkline(poll)
     if poll.stance_counts.max.to_i > 0
-      poll.stance_counts.join(',')
+      poll.stance_counts.reverse.join(',')
     else
       '1'
     end
@@ -107,17 +107,9 @@ module EmailHelper
 
   def proposal_colors(poll)
     if poll.stance_counts.max.to_i > 0
-      poll.poll_options.map {|option| option.color.gsub('#', '') }.join('|')
+      poll.poll_options.reverse.map {|option| option.color.gsub('#', '') }.join('|')
     else
       'aaaaaa'
-    end
-  end
-
-  def percentage_for(poll, index)
-    if poll.stance_counts.max.to_i > 0
-      (100 * poll.stance_counts[index].to_f / poll.stance_counts.max).to_i
-    else
-      0
     end
   end
 

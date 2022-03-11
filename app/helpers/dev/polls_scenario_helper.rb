@@ -228,6 +228,7 @@ module Dev::PollsScenarioHelper
                                                      poll_type: params[:poll_type],
                                                      anonymous: !!params[:anonymous],
                                                      hide_results: (params[:hide_results] || :off),
+                                                     notify_on_closing_soon: :voters,
                                                      discussion: discussion,
                                                      closing_at: if params[:wip] then nil else 1.day.from_now end))
     voter      = poll.stances.last.real_participant
@@ -335,70 +336,7 @@ module Dev::PollsScenarioHelper
 
     scenario.merge(observer: observer)
   end
-
-  # def poll_notifications_scenario(params)
-  #   discussion = saved fake_discussion(group: create_group_with_members)
-  #   observer   = saved fake_user
-  #   admin      = saved fake_user
-  #   discussion.group.add_member! observer
-  #   discussion.group.add_admin! admin
-  #   admin_poll = fake_poll(discussion: discussion, poll_type: params[:poll_type], closing_at: 24.hours.from_now)
-  #   observer_poll = saved fake_poll(discussion: discussion, author: observer, poll_type: params[:poll_type])
-  #
-  #   # poll_created
-  #   PollService.create(poll: admin_poll, actor: admin)
-  #
-  #   # poll closing soon
-  #   PollService.publish_closing_soon # (closing soon for admin_poll)
-  #
-  #   # poll_edited
-  #   StanceService.create(stance: fake_stance(poll: admin_poll), actor: observer)
-  #   PollService.update(poll: admin_poll, params: { title: "New title" }, actor: admin)
-  #
-  #   # poll expired
-  #   observer_poll.update_attribute(:closing_at, 1.day.ago)
-  #   admin_poll.update_attribute(:closing_at, 1.day.ago)
-  #   PollService.expire_lapsed_polls # (closes observer_poll)
-  #
-  #   # outcome_created
-  #   OutcomeService.create(outcome: fake_outcome(poll: admin_poll.reload), actor: admin)
-  #
-  #   {discussion: discussion,
-  #    group: discussion.group,
-  #    observer:   observer,
-  #    poll:       observer_poll,
-  #    admin:      admin}
-  # end
-
-  # def poll_with_guest_scenario(params)
-  #   group = create_group_with_members
-  #   user  = saved fake_user
-  #   another_user = saved fake_user
-  #   group.add_member!(user)
-  #   group.add_member!(another_user)
-  #
-  #   poll = fake_poll(poll_type: params[:poll_type], discussion: fake_discussion(group: group))
-  #   PollService.create(poll: poll, actor: another_user)
-  #   Stance.create(poll: poll, participant: user, choice: poll.poll_option_names.first)
-  #   poll.update_counts!
-  #
-  #   GroupInviter.new(
-  #     group:    poll.guest_group,
-  #     inviter:  user,
-  #     user_ids: [saved(fake_user).id],
-  #     emails:   ['bill@example.com']
-  #   ).invite!
-  #
-  #   {group: group,
-  #    poll: poll,
-  #    observer: user}
-  # end
-  #
-  # def poll_with_guest_as_author_scenario(params)
-  #   scenario = poll_with_guest_scenario(poll_type: params[:poll_type])
-  #   scenario.merge(observer: scenario[:poll].author)
-  # end
-  #
+  
   def alternative_poll_option_selection (poll_option_ids, i)
     poll_option_ids.each_with_index.map {|id, j| {poll_option_id: id, score: (i+j)%3}}
   end

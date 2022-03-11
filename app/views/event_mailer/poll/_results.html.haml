@@ -1,5 +1,4 @@
-%table
-	%tr
-		%td= render "chart/#{poll.chart_type}", poll: poll, event: event
-	%tr
-		%td= render "table/#{poll.table_type}", poll: poll, event: event
+.poll-mailer-common-results
+	%h3= t(:"poll_mailer.common.results")
+	- poll = event.eventable.poll
+	= render "event_mailer/poll/table/#{poll.table_type}", poll: poll, event: event

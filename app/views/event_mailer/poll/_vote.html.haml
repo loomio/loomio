@@ -7,11 +7,11 @@
 
   - if stance.cast_at
     %h3= t(:"poll_mailer.common.your_response")
-    = render 'event_mailer/poll/stance', stance: stance, poll: poll, recipient: recipient
+    = render 'event_mailer/poll/stance', stance: stance
   - elsif poll.active?
     %h3= t(:"poll_mailer.common.please_respond")
     - if poll.poll_type == 'meeting'
-      %p= t(:"poll_mailer.common.time_zone", zone: formatted_time_zone(@recipient, poll)) 
+      %p= t(:"poll_mailer.common.time_zone", zone: formatted_time_zone(poll)) 
     %table{class: "poll-mailer-#{poll.poll_type}__poll-options"}
       - poll.poll_options.each do |option|
         = render 'event_mailer/poll/poll_option', poll: poll, poll_option: option, link: poll.active?

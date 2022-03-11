@@ -2100,6 +2100,7 @@ en:
     points: Points
     average: Average
     pct_of_points: '% of points'
+    percent: Percent
 
   poll_meeting_time_field:
     add_time_slot: Add time slot
