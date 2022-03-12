@@ -52,7 +52,7 @@
         %td
           - if (poll.chart_type == 'pie')
             %div.d-inline-block{style: 'width: 2px'}
-          Undecided
+          = t('poll_common_votes_panel.undecided')
         - if poll.poll_type == 'ranked_choice'
           %td
         %td.text-right=#points
