@@ -1,7 +1,7 @@
-.poll-mailer__vote.pb-4
-  - poll = event.eventable.poll
-  - stance = recipient_stance(@recipient, poll)
+- poll = event.eventable.poll
+- stance = recipient_stance(@recipient, poll)
 
+.poll-mailer__vote.pb-4
   - if poll.anonymous?
     %p= t(:"poll_common_action_panel.anonymous")
 
@@ -15,7 +15,7 @@
     %table{class: "poll-mailer-#{poll.poll_type}__poll-options"}
       - poll.poll_options.each do |option|
         = render 'event_mailer/poll/poll_option', poll: poll, poll_option: option, link: poll.active?
+    - unless poll.is_single_vote?
+      = link_to t(:"poll_common.vote_now"), tracked_url(poll), class: "base-mailer__button base-mailer__button--accent"
   - if poll.wip?
     %p= t(:"poll_common_action_panel.draft_mode", poll_type: t("poll_types.#{poll.poll_type}"))
-  - unless poll.is_single_vote?
-    = link_to t(:"poll_common.vote_now"), tracked_url(poll), class: "base-mailer__button base-mailer__button--accent"

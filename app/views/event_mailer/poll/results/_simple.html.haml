@@ -2,7 +2,7 @@
 - simple = ['proposal', 'count', 'poll'].include?(poll.poll_type)
 - poll_options = simple ? poll.poll_options : poll.poll_options.sort_by {|o| -(o.total_score)}
 
-%table.v-table
+%table.v-table{style: 'min-width: 600px'}
   %thead
     %tr
       %th
