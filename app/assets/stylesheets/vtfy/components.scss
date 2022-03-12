@@ -132,3 +132,14 @@
   }
 }
 
+.v-layout-table {
+  border-spacing: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  td, tr, th {
+    margin: 0;
+    padding: 0;
+  }
+}
+

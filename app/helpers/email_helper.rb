@@ -4,6 +4,10 @@ module EmailHelper
     recipient.login_tokens.create!(redirect: redirect_path)
   end
 
+  def render_plain_text(str, fmt = 'md')
+    MarkdownService.render_plain_text(str, fmt)
+  end
+  
   def render_rich_text(str, fmt = 'md')
     MarkdownService.render_rich_text(str, fmt)
   end
