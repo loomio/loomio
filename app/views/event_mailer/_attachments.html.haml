@@ -1,6 +1,6 @@
 .max-width-600
   - if resource.link_previews.any?
-    %h4.text-subtitle-1= t :'common.links'
+    %h4.text-subtitle-2= t :'common.links'
     %ul.thread-mailer__list
       - resource.link_previews.each do |preview|
         %div{style: "border: 1px solid #eee; border-radius: 4px; margin-bottom: 8px"}
@@ -12,7 +12,7 @@
             %p= preview['description']
 
   - if resource.attachments.any?
-    %h4= t :'common.attachments'
+    %h4.text-subtitle-2= t :'common.attachments'
     %ul.thread-mailer__list
       - resource.files.each do |file|
         - download_url = Rails.application.routes.url_helpers.rails_blob_url(file, only_path: false, host: ENV['CANONICAL_HOST'])

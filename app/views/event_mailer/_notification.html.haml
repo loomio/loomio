@@ -12,7 +12,6 @@
           - key = "notifications.without_title.#{event.kind}"
 
         %h2.text-subtitle-1.ml-2=raw t(key, actor: event.user.name, title: title, poll_type: poll_type)
-
     - if event.recipient_message.present?
       %tr
         %td{colspan: "2" }
