@@ -2,14 +2,12 @@
 @import 'variables';
 // @import 'email_vuetify';
 
-.everything{width: 600px;}
 .icon { width: 50px; vertical-align: top }
 .light-discussion .icon img { width: 40px }
 .light-discussion .activity-icon img{ width: 18px; height: 18px; margin-left: 22px;}
 .light-discussion .description {margin-bottom: 1em;}
 .activity-feed {margin-top: 1em;}
 .light-proposal .icon img { width: 50px; padding-top: 10px }
-table { max-width: 600px }
 
 table.stats-table {
   text-align: center;
@@ -23,7 +21,7 @@ table.stats-table th { font-weight: bold; color: #666; }
 .footer { font-size: 12px; color: #666; }
 img { max-width: 500px; height: auto }
 img.emojione { width: 25px; vertical-align: bottom; }
-body { max-width: 600px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+body { font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 .thread-mailer__subject--text {
   line-height: 150%;
@@ -62,7 +60,7 @@ body { max-width: 600px; font-family: "Helvetica Neue", Helvetica, Arial, sans-s
 }
 
 .base-mailer__avatar-initials {
-  margin: 4px auto;
+  margin: 2px auto;
   border: 1px solid #dcdcdc;
   max-width: 100%;
   max-height: 100%;
@@ -133,7 +131,6 @@ mark[data-color=yellow] { background-color: #fff59d; }
 mark[data-color=orange] { background-color: #ffcc80; }
 mark[data-color=brown] { background-color: #bcaaa4; }
 mark[data-color=grey] { background-color: #e0e0e0; }
-
 
 .base-mailer__button--primary {
   background-color: $primary-color;
@@ -223,14 +220,6 @@ li[data-type='taskItem'] div {
   width: 55px;
 }
 
-.center {
-  text-align: center;
-}
-
-.text-center {
-  text-align: center;
-}
-
 .thread-mailer__vote-button-link {
   text-decoration: none;
 }
@@ -277,7 +266,7 @@ li[data-type='taskItem'] div {
 }
 
 .thread-mailer__footer-logo{
-  height: 32px;
+  height: 24px;
 }
 
 .user-mailer__contact-request-context {
@@ -316,10 +305,93 @@ li[data-type='taskItem'] div {
   letter-spacing: 15px;
 }
 
-.align-left {
-  text-align: left;
+//= depend_on "_variables.scss.erb"
+@import 'variables';
+
+.poll-mailer-common-responses__poll-option {
+  border-left: 5px solid;
+  padding-left: 10px;
 }
 
-.align-right {
-  text-align: right;
+.poll-mailer-common__discussion-info {
+  margin-top: 20px;
+}
+
+.poll-mailer-common__avatar {
+  vertical-align: top;
+}
+
+.poll-mailer-common-avatar__initials {
+  margin-right: 10px;
+  border: 1px solid #dcdcdc;
+  font-size: 12px;
+  line-height: 30px;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+}
+
+.poll-mailer-common-avatar__image {
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  float: left;
+}
+
+.poll-mailer-common-footer {
+  margin-top: 20px;
+  clear: both;
+  color: #666;
+  font-size: small;
+}
+
+.poll-mailer-common-footer__text {
+  margin-bottom: 20px;
+}
+
+.poll-mailer-count__option-icon {
+  width: 18px;
+}
+
+.poll-mailer-count__option-icon--small {
+  width: 18px;
+}
+
+.poll-mailer-proposal__option-icon {
+  width: 55px;
+}
+
+.poll-mailer-proposal__option-icon--small {
+  width: 24px;
+}
+.poll-mailer-count__poll-options .poll-mailer__poll-option,
+.poll-mailer-proposal__poll-options .poll-mailer__poll-option {
+  float: left;
+  text-align: center;
+  margin: 0 5px;
+  td { display: block; }
+}
+
+.poll-meeting-chart {
+  td {
+    height: 24px;
+    font-size: 0.8rem;
+  }
+}
+.poll-meeting-chart__cell {
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+}
+
+.poll-meeting-chart__cell--yes {
+  background-color: #00D177
+}
+
+.poll-meeting-chart__cell--maybe{
+  background-color: #F6A82B
+}
+.poll-mailer-meeting__option-icon {
+  width:34px;
 }

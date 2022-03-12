@@ -1,6 +1,6 @@
 import BaseModel  from  '@/shared/record_store/base_model'
 import Records  from  '@/shared/services/records'
-import {map, parseInt, slice} from 'lodash'
+import {map, parseInt, slice, max} from 'lodash'
 import I18n from '@/i18n'
 
 export default class PollOptionModel extends BaseModel
@@ -48,3 +48,6 @@ export default class PollOptionModel extends BaseModel
 
   rawScorePercent: ->
     parseFloat(@totalScore) / parseFloat(@poll().totalScore) * 100
+
+  barChartPct: ->
+    parseInt((100 * parseFloat(@totalScore) / max(@poll().stanceCounts)))

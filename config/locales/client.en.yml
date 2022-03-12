@@ -129,40 +129,6 @@ en:
     no_tags_in_group: This group has no category tags yet
     only_admins_can_edit_tags: Sorry, only admins of {{group}} can create, rename or delete tags
 
-  reactions:
-    slight_smile: Like
-    heart: Love
-    laughing: Laugh
-    clap: Clap
-    hugging: Hug
-    sunglasses: Cool
-    wink: Wink
-    nerd: Smart
-    relieved: Relieved
-    worried: Worried
-    confused: Confused
-    confounded: Confounded
-    neutral_face: Neutral
-    slight_frown: Frown
-    disappointed: Disappointed
-    angry: Angry
-    weary: Weary
-    astonished: Astonished
-    rolling_eyes: Rolling eyes
-    cry: Cry
-    scream: Scream
-    sleeping: Bored
-    thinking: Thinking
-    raised_hands: Raised hands
-    pray: Pray
-    fingers_crossed: Fingers crossed
-    v: Peace
-    metal: Metal
-    ok_hand: Ok
-    wave: Wave
-    thumbsup: Thumb up
-    thumbsdown: Thumb down
-
   poll_types:
     proposal: proposal
     count: check
@@ -956,14 +922,12 @@ en:
     upload_failed: Upload failed
 
   cover_photo_form:
-    aria_label: 'Change cover photo form'
     heading: 'New cover photo'
     upload_link: 'Upload new cover photo'
     image_size_helptext: 'Ideal image size is 1400×320px'
     upload_success: 'Cover photo successfully updated'
 
   logo_photo_form:
-    aria_label: 'Change group logo form'
     heading: 'New group logo'
     upload_link: 'Upload new group logo'
     image_size_helptext: 'Ideal image size is 100×100px'
@@ -1695,10 +1659,12 @@ en:
     have_your_say: Have your say
     your_response: Your response
     change_your_response: Edit response
+    please_vote: Please vote
     reason: Reason
     reason_placeholder: "Briefly explain why you voted this way, then click 'Submit Vote'"
     message: Message
     results: Results
+    current_results: Current results
     responses: Responses
     close_poll_type: Close {{pollType}}
     close_early: Close early
@@ -1721,6 +1687,7 @@ en:
     share_count: Share check
     start_poll: Start a decision
     publish_poll: Share poll
+    share_outcome: Share outcome
     view_all: View all
     save_changes: Save
     change_vote: Change your vote
@@ -1925,7 +1892,6 @@ en:
 
   poll_common_set_outcome_panel:
     enter_outcome: Enter outcome
-    share_outcome: Share outcome
     poll: 'This poll has closed. <strong>Share the outcome</strong> with the group.'
     proposal: 'This proposal has closed. Please consider what as been said and <strong>share an outcome</strong>, so people know what’ll happen next.'
     count: 'This check has closed. <strong>Share an outcome</strong> to complete the process.'

@@ -5,10 +5,12 @@
     %td
       - title = link_to(event.eventable.title, tracked_url(event.eventable))
       - poll_type = @poll ? t("poll_types.#{@poll.poll_type}") : nil
-      %span.ml-2=raw t(:"notifications.without_title.#{event.kind}", actor: event.user.name, title: title, poll_type: poll_type)
-      %br
-      - event.eventable.tags.each do |tag|
-        %span.mailer-tag{style: "color: #{tag.color}; border-color: #{tag.color}"}=tag.name
+      - if @recipient.id == event.eventable.author_id && I18n.exists?("notifications.with_title.#{event.kind}_author")
+        - key = "notifications.with_title.#{event.kind}_author"
+      - else
+        - key = "notifications.with_title.#{event.kind}"
+
+      %h2.text-subtitle-1.ml-2=raw t(key, actor: event.user.name, title: title, poll_type: poll_type)
 
   - if event.recipient_message.present?
     %tr

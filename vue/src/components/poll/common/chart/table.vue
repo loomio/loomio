@@ -7,6 +7,7 @@ export default
   props:
     poll: Object
     options: Array
+    showBars: Boolean
 
   data: ->
     votersByOptionId: {}
@@ -29,6 +30,7 @@ export default
   v-simple-table(dense)
     thead
       tr
+        th(v-if="showBars")
         th(v-t="'common.option'")
         th(v-if="!simple" v-t="'poll_ranked_choice_form.rank'")
         th.text-right(v-t="'poll_ranked_choice_form.points'")
@@ -38,7 +40,9 @@ export default
         th(v-if="poll.pollType != 'ranked_choice'" v-t="'membership_card.voters'")
     tbody
       tr(v-for="option, index in options" :key="option.id")
-        td(:style="'border-left: solid 4px '+option.color")  {{option.optionName()}}
+        td(v-if="showBars" style="width: 128px; padding: 0 8px 0 0")
+          div.rounded(:style="{width: option.barChartPct()+'%', height: '24px', 'background-color': option.color}")
+        td {{option.optionName()}}
         td.text-right(v-if="!simple") {{index+1}}
         td.text-right {{option.totalScore}}
         td.text-right(v-if="!simple") {{option.voterIds().length}}

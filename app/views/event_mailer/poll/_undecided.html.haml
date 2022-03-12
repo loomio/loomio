@@ -1,8 +1,4 @@
-- if poll.undecided_voters_count > 0
-  .poll-mailer-common-undecided
-    %h3= t(:"poll_mailer.common.undecided_members", count: poll.undecided_voters_count)
-    %table
-      - poll.undecided_voters.each do |user|
-        %tr
-          %td= render 'base_mailer/avatar', user: user
-          %td= user.name
+- nom = poll.decided_voters_count
+- dnom = poll.specified_voters_only ? poll.voters_count : poll.group.memberships_count
+- pct = (nom.to_f / dnom.to_f * 100).to_i
+%p.text-subtitle-2= t('poll_mailer.common.people_have_voted', nom: nom, dnom: dnom , pct: pct)

@@ -84,10 +84,6 @@ en:
       bad_login: "Sorry, that password doesn't match the one we have on file"
       username_must_be_alphanumeric: "Usernames must be lower case letters and numbers only"
 
-  attachment:
-    error:
-      too_large: The file you tried to attach is larger than 100 Megabytes, please choose a smaller file.
-
   poll:
     error:
       cannot_add_options: Cannot add options to this poll
@@ -124,11 +120,6 @@ en:
   invitation:
     invitation_cancelled: Sorry, this invitation has been revoked by the group cooordinator. Please request another invitation from your group.
     invitation_already_used: This invitation has already been used. Please sign in to loomio directly to continue to your group.
-
-  validate:
-    motion:
-      must_close_in_future: Proposal must close in the future.
-      one_at_a_time: There is another active proposal.
 
   subscriptions:
     active: Active
@@ -278,12 +269,6 @@ en:
     terms: Terms
     independent_install_html: '%{hostname} is running an independent copy of Loomio: <a href="http://github.com/loomio/loomio">find out more</a>.'
 
-  invitation_form:
-    error:
-      too_many_pending: "You have more than the maximum %{count} pending invitations for this group"
-      too_many_cancelled: "You have more than the maximum %{count} cancelled invitations for this group"
-      all_email_addresses_belong_to_members: "These people are already members of the group."
-
   password_reset:
     change_your_password: Change your password
     change_my_password: Change password
@@ -361,13 +346,8 @@ en:
 
   poll_mailer:
     common:
-      or: or
       why_send_this: You are receiving this email because %{reason}
       view_on_loomio: View it on %{site_name}
-      unsubscribe: Unsubscribe
-      results: Results
-      responses: Responses
-      change_your_stance: Change
       create_outcome: Share outcome
       your_response: "You voted:"
       please_respond: Please respond
@@ -376,9 +356,7 @@ en:
       undecided_visitors: Undecided Guests (%{count})
       more_undecided: "%{count} more..."
       vote_now: Vote now
-      verify_stance_for_unverified_user: "Thanks for voting in %{title}. Please verify your email address, so we can send you the results when they're ready."
-      verify_stance_for_verified_user: "It looks like you voted in %{title}. If this was you, please click the link below to confirm your vote."
       you_have_until: You have until %{when} to participate.
-      people_have_voted: "%{num} people have voted (%{pct}%)"
+      people_have_voted: "%{nom} of %{dnom} people have voted (%{pct}%)"
 
 

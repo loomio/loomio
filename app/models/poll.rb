@@ -28,7 +28,7 @@ class Poll < ApplicationRecord
 
   TEMPLATE_FIELDS = %w(material_icon translate_option_name can_vote_anonymously
                        can_add_options can_remove_options author_receives_outcome
-                       must_have_options chart_type has_option_icons
+                       must_have_options has_option_icons
                        has_variable_score voters_review_responses
                        dates_as_options required_custom_fields has_option_score_counts
                        require_stance_choices require_all_choices prevent_anonymous
@@ -136,25 +136,19 @@ class Poll < ApplicationRecord
   def chart_type
     case poll_type
     when 'proposal' then 'pie'
-    when 'meeting' then 'meeting'
+    when 'meeting' then 'grid'
     else
       'bar'
     end
   end
 
-  def table_type
+  def icon_type
     case poll_type
-    when 'meeting' then 'meeting'
+    when 'proposal' then 'pie'
+    when 'meeting' then 'grid'
+    when 'count' then 'count'
     else
-      'simple'
-    end
-  end
-
-  def responses_type
-    case poll_type
-    when 'proposal' then 'grouped_by_choice'
-    else
-      'chronological'
+      'bar'
     end
   end
 

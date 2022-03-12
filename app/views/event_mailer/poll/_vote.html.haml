@@ -1,4 +1,4 @@
-.poll-mailer__vote
+.poll-mailer__vote.pb-4
   - poll = event.eventable.poll
   - stance = recipient_stance(@recipient, poll)
 
@@ -6,16 +6,16 @@
     %p= t(:"poll_common_action_panel.anonymous")
 
   - if stance.cast_at
-    %h3= t(:"poll_mailer.common.your_response")
+    %h2.text-subtitle-2= t(:"poll_common.your_response")
     = render 'event_mailer/poll/stance', stance: stance
   - elsif poll.active?
-    %h3= t(:"poll_mailer.common.please_respond")
+    %h2.text-subtitle-2= t(:"poll_common.please_vote")
     - if poll.poll_type == 'meeting'
-      %p= t(:"poll_mailer.common.time_zone", zone: formatted_time_zone(poll)) 
+      %p= t(:"common.time_zone", zone: formatted_time_zone(poll)) 
     %table{class: "poll-mailer-#{poll.poll_type}__poll-options"}
       - poll.poll_options.each do |option|
         = render 'event_mailer/poll/poll_option', poll: poll, poll_option: option, link: poll.active?
   - if poll.wip?
     %p= t(:"poll_common_action_panel.draft_mode", poll_type: t("poll_types.#{poll.poll_type}"))
-  - if poll.multiple_choice
-    = link_to t(:"poll_mailer.common.vote_now"), tracked_url(poll), class: "base-mailer__button base-mailer__button--accent"
+  - unless poll.is_single_vote?
+    = link_to t(:"poll_common.vote_now"), tracked_url(poll), class: "base-mailer__button base-mailer__button--accent"

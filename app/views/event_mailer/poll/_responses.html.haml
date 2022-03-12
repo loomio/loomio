@@ -1,11 +1,20 @@
 - poll = event.eventable.poll
 - if poll.show_results? && (poll.decided_voters.exists?(@recipient.id) || poll.closed_at?)
   .poll-mailer-common-responses
-    -# %h3= t(:"poll_mailer.common.responses")
+    -# %h3= t(:"poll_common.responses")
 
     - if poll.anonymous?
       %p= t(:"poll_common_action_panel.anonymous")
 
-  = render "event_mailer/poll/responses/#{poll.responses_type}", poll: poll
+  %table
+    - poll.stances.latest.with_reason.each do |stance|
+      %tr
+        %td= render partial: 'avatar', locals: { user: stance.participant }
+        %td.poll-mailer-common-responses__reason
+          %span.text-subtitle-2
+            #{stance.participant.name}:
+            %br
+          %span{style: 'display: inline-block'}= render_rich_text(stance.reason, stance.reason_format)
+
 - if !poll.show_results?
   %p= t(:"poll_common_action_panel.results_hidden_until_closed")

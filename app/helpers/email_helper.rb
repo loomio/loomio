@@ -49,10 +49,10 @@ module EmailHelper
     tracked_url(email_preferences_url(unsubscribe_token: @recipient.unsubscribe_token))
   end
 
-  def pixel_src
+  def pixel_src(event)
     email_actions_mark_discussion_as_read_url(
-      discussion_id: @discussion.id,
-      event_id: @event.id,
+      discussion_id: event.eventable.discussion.id,
+      event_id: event.id,
       unsubscribe_token: @recipient.unsubscribe_token,
       format: 'gif'
     )

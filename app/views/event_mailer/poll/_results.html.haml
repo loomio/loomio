@@ -1,4 +1,6 @@
 .poll-mailer-common-results
-	%h3= t(:"poll_mailer.common.results")
 	- poll = event.eventable.poll
-	= render "event_mailer/poll/table/#{poll.table_type}", poll: poll, event: event
+	- if poll.poll_type == "meeting"
+		= render "event_mailer/poll/results/meeting", poll: poll, event: event
+	- else
+		= render "event_mailer/poll/results/simple", poll: poll, event: event

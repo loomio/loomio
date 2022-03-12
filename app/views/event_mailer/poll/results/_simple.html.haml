@@ -1,0 +1,67 @@
+- poll = event.eventable.poll
+- simple = ['proposal', 'count', 'poll'].include?(poll.poll_type)
+- poll_options = simple ? poll.poll_options : poll.poll_options.sort_by {|o| -(o.total_score)}
+
+%table.v-table
+  %thead
+    %tr
+      %th
+        - if poll.closed_at
+          %h2.text-left.text-subtitle-2= t(:"poll_common.results")
+        - else
+          %h2.text-left.text-subtitle-2= t(:"poll_common.current_results")
+      %th.text-left.text-subtitle-2= t('common.option')
+      - if poll.poll_type == 'ranked_choice'
+        %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.rank')
+      %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.points')
+      - if !simple
+        %th.text-right.text-subtitle-2= t('membership_card.voters')
+        %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.average')
+      %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.percent')
+      - if poll.poll_type != 'ranked_choice'
+        %th.text-left.text-subtitle-2= t('membership_card.voters')
+  %tbody
+    - poll_options.each_with_index do |option, index|
+      %tr
+        - if (index == 0 && poll.chart_type == 'pie')
+          %td.pr-2.py-2{rowspan: poll.poll_options.size+1} 
+            .poll-mailer-proposal__chart.poll-mailer__results-chart.d-flex.align-center
+              %img.poll-mailer-proposal__chart-image{style: "height: 128px; width: 128px", src: google_pie_chart_url(poll)}
+        - if  poll.chart_type == 'bar'
+          %td.pr-2.py-2{style: 'width: 128px'}
+            -if option.total_score > 0
+              %div.rounded{style: "background-color: #{option.color}; height: 24px; width: #{(100 * option.total_score.to_f / poll.stance_counts.max).to_i}%"} 
+        %td{style: "border-left: solid #{(poll.chart_type == 'pie') ? 4 : 0}px #{option.color}"}= option.display_name(zone: @recipient.time_zone)
+        - if poll.poll_type == 'ranked_choice'
+          %td.text-right=index+1
+        %td.text-right= option.total_score
+        - if !simple
+          %td.text-right= option.voter_ids.length
+          %td.text-right= option.average_score
+        %td.text-right #{ (option.total_score > 0) ? option.score_percent.round : 0}%
+        - if poll.poll_type != 'ranked_choice'
+          %td.text-left
+            .d-flex.align-center
+              %div{style: 'display: inline-block; height: 32px; width:1px'}
+              - User.where(id: option.voter_ids).each do |user|
+                =render 'base_mailer/avatar', user: user, size: 24
+    - if (poll.specified_voters_only && poll.undecided_voters_count > 0)
+      %tr
+        - if (poll.chart_type != 'pie')
+          %td
+        %td
+          - if (poll.chart_type == 'pie')
+            %div.d-inline-block{style: 'width: 2px'}
+          Undecided
+        - if poll.poll_type == 'ranked_choice'
+          %td
+        %td.text-right=#points
+        - if !simple
+          %td.text-right=#poll.specified_voters_only ? poll.undecided_voters_count : ''
+          %td.text-right=#average
+        %td.text-right=#percent
+        %td
+          %div.d-flex
+            - poll.undecided_voters.each do |user|
+              =render 'base_mailer/avatar', user: user, size: 24
+

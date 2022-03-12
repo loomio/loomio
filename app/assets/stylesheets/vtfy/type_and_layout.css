@@ -9,6 +9,14 @@ html{
   -webkit-tap-highlight-color:rgba(0,0,0,0)
 }
 
+p {
+    line-height: 1.5;
+}
+
+.max-width-600 {
+  max-width: 600px;
+}
+
 code,kbd{
     border-radius:3px;
     font-size:85%;

@@ -68,7 +68,7 @@ module Dev::FakeDataHelper
       title: [Faker::TvShows::BojackHorseman.tongue_twister,
               Faker::TvShows::Friends.quote,
               Faker::Quote.yoda,
-              Faker::Quote.robin].sample.truncate(250),
+              Faker::Quote.robin].sample.truncate(150),
       description: [Faker::TvShows::BojackHorseman.quote,
                     Faker::TvShows::Simpsons.quote,
                     Faker::Quote.famous_last_words].sample,
@@ -173,6 +173,7 @@ module Dev::FakeDataHelper
       poll_option_names: names[args.fetch(:poll_type, :poll)],
       closing_at: closing_at,
       multiple_choice: false,
+      specified_voters_only: [true].sample,
       custom_fields: {}
     }.merge args.tap {|a| a.delete(:wip)}
 

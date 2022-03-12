@@ -1,13 +1,34 @@
-= render "event_mailer/header", event: @event
+
+- if @event.eventable.is_a?(Discussion) 
+	-# = render "event_mailer/breadcrumbs", eventable: @event.eventable.discussion
+	= render "event_mailer/notification", event: @event
+	= render "event_mailer/title", eventable: @event.eventable.discussion
+	= render "event_mailer/tags", eventable: @event.eventable.discussion
+	= render "event_mailer/body", eventable: @event.eventable
+
+- if @event.eventable.is_a?(Comment)
+	= render "event_mailer/notification_with_title", event: @event
+	= render "event_mailer/body", eventable: @event.eventable
+
 - if @event.eventable.is_a? Stance
+	= render "event_mailer/notification_with_title", event: @event
 	= render "event_mailer/poll/stance", stance: @event.eventable
+
 - if @event.eventable.is_a?(Poll) or @event.eventable.is_a?(Outcome)
-	= render "event_mailer/poll/create_outcome", event: @event
+	= render "event_mailer/notification", event: @event
+	= render "event_mailer/poll/share_outcome", event: @event
+	= render "event_mailer/title", eventable: @event.eventable.poll
+	= render "event_mailer/tags", eventable: @event.eventable.poll
 	= render "event_mailer/poll/summary", event: @event
 	= render "event_mailer/poll/vote", event: @event
-	= render "event_mailer/poll/results", event: @event
-- if %w[poll_announced poll_created].include?(@event.kind)
-	= render "event_mailer/poll/discussion_info", discussion: @discussion, poll: @poll
-- else
-	= render "event_mailer/poll/responses", event: @event
-= render "event_mailer/footer", poll: @poll
+	- if @event.eventable.poll.show_results? && @event.kind != "poll_created" && (@event.kind != "poll_announced" && @event.eventable.poll.decided_voters_count > 0)
+		= render "event_mailer/poll/results", event: @event
+		= render "event_mailer/poll/undecided", poll: @event.eventable.poll
+	- if %w[poll_announced poll_created].include?(@event.kind)
+		%hr
+		= render "event_mailer/title", eventable: @event.eventable.discussion
+		= render "event_mailer/body", eventable: @event.eventable
+	- else
+		= render "event_mailer/poll/responses", event: @event
+
+= render "event_mailer/footer", event: @event

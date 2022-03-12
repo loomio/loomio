@@ -21,6 +21,7 @@ class PollSerializer < ApplicationSerializer
              :group_id,
              :hide_results,
              :key,
+             :chart_type,
              :allow_long_reason,
              :multiple_choice,
              :notify_on_closing_soon,

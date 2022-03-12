@@ -15,8 +15,7 @@ export default
 
 <template lang="pug">
 .poll-common-chart-poll
-  poll-common-chart-bar.mb-2(:poll="poll" :options="options")
-  poll-common-chart-table(:poll="poll" :options="options")
+  poll-common-chart-table(:poll="poll" :options="options" show-bars)
 </template>
 <style lang="sass">
 
