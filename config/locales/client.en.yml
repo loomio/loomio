@@ -2066,6 +2066,7 @@ en:
     points: Points
     average: Average
     pct_of_points: '% of points'
+    pct_of_voters: '% of voters'
     percent: Percent
 
   poll_meeting_time_field:

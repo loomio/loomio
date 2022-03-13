@@ -11,7 +11,7 @@
     - poll.poll_options.each do |poll_option|
       %tr
         %td.poll-meeting-chart__meeting-time
-          = poll_option.display_name(zone: time_zone)
+          = option_name(poll_option.name, poll_option.name_format, time_zone)
         %td.total.text-center
           %strong=((poll_option.total_score.to_f)/2).to_s.gsub('.0','')
         - poll.decided_voters.each do |user|

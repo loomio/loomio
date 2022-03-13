@@ -173,7 +173,7 @@ module Dev::FakeDataHelper
       poll_option_names: names[args.fetch(:poll_type, :poll)],
       closing_at: closing_at,
       multiple_choice: false,
-      specified_voters_only: [true].sample,
+      specified_voters_only: [true,false].sample,
       custom_fields: {}
     }.merge args.tap {|a| a.delete(:wip)}
 

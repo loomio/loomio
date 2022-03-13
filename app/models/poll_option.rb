@@ -1,6 +1,4 @@
 class PollOption < ApplicationRecord
-  include FormattedDateHelper
-
   belongs_to :poll
   validates :name, presence: true
 
@@ -8,6 +6,15 @@ class PollOption < ApplicationRecord
   has_many :stances, through: :stance_choices
 
   scope :dangling, -> { joins('left join polls on polls.id = poll_id').where('polls.id is null') }
+
+  def name_format
+    case poll.poll_type
+    when 'proposal', 'count' then 'i18n'
+    when 'meeting' then 'iso1806'
+    else
+      'none'
+    end
+  end
 
   def update_counts!
     update_columns(
@@ -37,9 +44,8 @@ class PollOption < ApplicationRecord
   end
 
   def average_score
-    voters_count = voter_ids.length
-    return 0 if voters_count == 0
-    (total_score.to_f / voters_count.to_f).round(1)
+    return 0 if voter_count == 0
+    (total_score.to_f / voter_count.to_f)
   end
 
   def voter_ids
@@ -52,17 +58,19 @@ class PollOption < ApplicationRecord
     end
   end
 
+  def voter_count
+    voter_ids.length
+  end
+
   def score_percent
     (total_score.to_f / poll.total_score.to_f) * 100
   end
 
-  def display_name(zone: nil)
-    if poll.dates_as_options
-      format_iso8601_for_humans(name, zone || poll.time_zone)
-    elsif poll.poll_options_attributes.any?
-      name.humanize
-    else
-      name
-    end
+  def max_score_percent
+    (total_score.to_f / poll.stance_counts.max.to_f) * 100
+  end
+
+  def voter_percent
+    (voter_count.to_f / poll.voters_count.to_f) * 100
   end
 end

@@ -12,7 +12,9 @@ module Dev::PollsHelper
   def create_group_with_members
     group = saved(fake_group)
     group.add_admin!(saved(fake_user))
-    group.add_member!(saved(fake_user))
+    (7..9).to_a.sample.times do 
+      group.add_member!(saved(fake_user))
+    end
     group
   end
 

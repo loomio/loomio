@@ -97,24 +97,27 @@ module EmailHelper
                                                   format: format)
   end
 
+  def option_name(name, format, zone)
+    case format
+    when 'i18n'
+      t(name)
+    when 'iso1806'
+      format_iso8601_for_humans(name, zone)
+    else
+      name
+    end
+  end
+
   def google_pie_chart_url(poll)
     "https://chart.googleapis.com/chart?cht=p&chma=0,0,0,0|0,0&chs=256x256&chd=t:#{proposal_sparkline(poll)}&chco=#{proposal_colors(poll)}"
   end
 
   def proposal_sparkline(poll)
-    if poll.stance_counts.max.to_i > 0
-      poll.stance_counts.reverse.join(',')
-    else
-      '1'
-    end
+    poll.results.map {|h| h[:voter_count] }.join(',')
   end
 
   def proposal_colors(poll)
-    if poll.stance_counts.max.to_i > 0
-      poll.poll_options.reverse.map {|option| option.color.gsub('#', '') }.join('|')
-    else
-      'aaaaaa'
-    end
+    poll.results.map{|h|h[:color]}.map{|c| c.gsub('#', '')}.join('|')
   end
 
   def dot_vote_stance_choice_percentage_for(stance, stance_choice)

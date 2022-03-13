@@ -133,10 +133,25 @@ class Poll < ApplicationRecord
 
   delegate :locale, to: :author
 
+  def chart_column
+    case poll_type
+    when 'proposal', 'count' then 'voter_percent'
+    when 'poll'
+      if poll.multiple_choice
+        'max_score_percent'
+      else
+        'voter_percent'
+      end
+    else
+      'max_score_percent'
+    end
+  end
+
   def chart_type
     case poll_type
     when 'proposal' then 'pie'
     when 'meeting' then 'grid'
+    # when 'meeting' then 'count'
     else
       'bar'
     end
@@ -151,6 +166,64 @@ class Poll < ApplicationRecord
       'bar'
     end
   end
+
+  def result_columns
+    case poll_type
+    when 'proposal', 'count'
+      %w[chart name voter_percent voter_count voters]
+    when 'ranked_choice'
+      %w[chart name rank score_percent score average]
+    when 'dot_vote', 'score'
+      %w[chart name score_percent score average voter_count voters]
+    when 'meeting'
+      %w[chart name score voters]
+    end
+  end
+
+  def results
+    # poll.poll_options : poll.poll_options.sort_by {|o| -(o.total_score)}
+
+    l = PollOption.where(poll: self).order(results_order).each_with_index.map do |option, index|
+      {
+        name: option.name,
+        name_format: option.name_format,
+        rank: index+1,
+        score: option.total_score,
+        score_percent: option.score_percent,
+        max_score_percent: option.max_score_percent,
+        voter_percent: option.voter_percent,
+        average: option.average_score,
+        voter_scores: option.voter_scores,
+        voter_ids: option.voter_ids,
+        voter_count: option.voter_count,
+        color: option.color
+      }
+    end
+    l.push({
+        name: 'poll_common_votes_panel.undecided',
+        name_format: 'i18n',
+        rank: nil,
+        score: 0,
+        score_percent: 0,
+        max_score_percent: 0,
+        voter_percent: poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100,
+        average: 0,
+        voter_scores: {},
+        voter_ids: poll.undecided_voters.map(&:id),
+        voter_count: poll.undecided_voters_count,
+        color: '#dddddd'
+    })
+    l
+  end
+
+  def results_order
+    case poll_type
+    when 'proposal', 'count', 'meeting' then 'priority'
+    else
+      'total_score DESC'
+    end
+  end
+
 
   def user_id
     author_id
@@ -259,7 +332,7 @@ class Poll < ApplicationRecord
     poll_options.reload.each(&:update_counts!)
     update_columns(
       stance_counts: poll_options.map(&:total_score), # should rename to option scores
-      voters_count: stances.latest.count,
+      voters_count: stances.latest.count, # should rename to stances_count
       undecided_voters_count: stances.latest.undecided.count,
       versions_count:  versions.count
     )
