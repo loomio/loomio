@@ -101,7 +101,7 @@ module EmailHelper
     case format
     when 'i18n'
       t(name)
-    when 'iso1806'
+    when 'iso8601'
       format_iso8601_for_humans(name, zone)
     else
       name

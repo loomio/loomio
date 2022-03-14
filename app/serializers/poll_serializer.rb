@@ -42,7 +42,6 @@ class PollSerializer < ApplicationSerializer
              :voters_count,
              :versions_count
 
-
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_one :created_event, serializer: EventSerializer, root: :events
   has_one :group, serializer: GroupSerializer, root: :groups

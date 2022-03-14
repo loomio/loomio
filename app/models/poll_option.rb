@@ -10,7 +10,7 @@ class PollOption < ApplicationRecord
   def name_format
     case poll.poll_type
     when 'proposal', 'count' then 'i18n'
-    when 'meeting' then 'iso1806'
+    when 'meeting' then 'iso8601'
     else
       'none'
     end

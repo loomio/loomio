@@ -151,7 +151,6 @@ class Poll < ApplicationRecord
     case poll_type
     when 'proposal' then 'pie'
     when 'meeting' then 'grid'
-    # when 'meeting' then 'count'
     else
       'bar'
     end
@@ -224,7 +223,6 @@ class Poll < ApplicationRecord
     end
   end
 
-
   def user_id
     author_id
   end
@@ -284,17 +282,6 @@ class Poll < ApplicationRecord
     else
       nil
     end
-  end
-
-  # creates a hash which has a PollOption as a key, and a list of stance
-  # choices associated with that PollOption as a value
-  def grouped_stance_choices(since: nil)
-    @grouped_stance_choices ||= stance_choices.reasons_first
-                                              .where("stance_choices.created_at > ?", since || 100.years.ago)
-                                              .includes(:poll_option, stance: :participant)
-                                              .where("stances.latest": true)
-                                              .to_a
-                                              .group_by(&:poll_option)
   end
 
   def group
