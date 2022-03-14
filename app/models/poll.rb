@@ -179,48 +179,17 @@ class Poll < ApplicationRecord
     end
   end
 
-  def results
-    # poll.poll_options : poll.poll_options.sort_by {|o| -(o.total_score)}
-
-    l = PollOption.where(poll: self).order(results_order).each_with_index.map do |option, index|
-      {
-        name: option.name,
-        name_format: option.name_format,
-        rank: index+1,
-        score: option.total_score,
-        score_percent: option.score_percent,
-        max_score_percent: option.max_score_percent,
-        voter_percent: option.voter_percent,
-        average: option.average_score,
-        voter_scores: option.voter_scores,
-        voter_ids: option.voter_ids,
-        voter_count: option.voter_count,
-        color: option.color
-      }
+  def poll_option_name_format
+    case poll_type
+    when 'proposal', 'count' then 'i18n'
+    when 'meeting' then 'iso8601'
+    else
+      'none'
     end
-    l.push({
-        name: 'poll_common_votes_panel.undecided',
-        name_format: 'i18n',
-        rank: nil,
-        score: 0,
-        score_percent: 0,
-        max_score_percent: 0,
-        voter_percent: poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100,
-        average: 0,
-        voter_scores: {},
-        voter_ids: poll.undecided_voters.map(&:id),
-        voter_count: poll.undecided_voters_count,
-        color: '#dddddd'
-    })
-    l
   end
 
-  def results_order
-    case poll_type
-    when 'proposal', 'count', 'meeting' then 'priority'
-    else
-      'total_score DESC'
-    end
+  def results
+    PollService.calculate_results(self, self.poll_options)
   end
 
   def user_id

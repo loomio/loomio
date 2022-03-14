@@ -7,15 +7,6 @@ class PollOption < ApplicationRecord
 
   scope :dangling, -> { joins('left join polls on polls.id = poll_id').where('polls.id is null') }
 
-  def name_format
-    case poll.poll_type
-    when 'proposal', 'count' then 'i18n'
-    when 'meeting' then 'iso8601'
-    else
-      'none'
-    end
-  end
-
   def update_counts!
     update_columns(
       voter_scores: stance_choices.latest.where('stances.participant_id is not null').includes(:stance).map { |c| [c.stance.participant_id, c.score] }.to_h,
@@ -39,15 +30,6 @@ class PollOption < ApplicationRecord
     end
   end
 
-  def has_time?(value = nil)
-    super(value || self.name)
-  end
-
-  def average_score
-    return 0 if voter_count == 0
-    (total_score.to_f / voter_count.to_f)
-  end
-
   def voter_ids
     # this is a hack, we both know this
     # some polls 0 is a vote, others it is not
@@ -62,15 +44,8 @@ class PollOption < ApplicationRecord
     voter_ids.length
   end
 
-  def score_percent
-    (total_score.to_f / poll.total_score.to_f) * 100
-  end
-
-  def max_score_percent
-    (total_score.to_f / poll.stance_counts.max.to_f) * 100
-  end
-
-  def voter_percent
-    (voter_count.to_f / poll.voters_count.to_f) * 100
+  def average_score
+    return 0 if voter_count == 0
+    (total_score.to_f / voter_count.to_f)
   end
 end

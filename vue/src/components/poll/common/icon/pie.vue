@@ -8,16 +8,10 @@ export default
   props:
     poll: Object
     size: Number
+
   data: ->
     svgEl: null
     shapes: []
-    options: []
-
-  created: ->
-    @watchRecords
-      collections: ['pollOptions']
-      query: =>
-        @options = @poll.pollOptions()
 
   computed:
     radius: ->
@@ -36,21 +30,23 @@ export default
       @shapes.forEach (shape) -> shape.remove()
       start = 90
 
-      switch @poll.stanceCounts.filter((c) -> c > 0).length
+      switch @poll.results.length
         when 0
           @shapes.push @svgEl.circle(@size).attr
             'stroke-width': 0
-            fill: '#aaa'
+            fill: '#000'
         when 1
-          each @options, (option) =>
-            return unless option.totalScore > 0
+          each @poll.results, (option) =>
             @shapes.push @svgEl.circle(@size).attr
               'stroke-width': 0
               fill: option.color
         else
-          each @options, (option) =>
-            return unless option.totalScore > 0
-            angle = 360 / @poll.totalScore * option.totalScore
+          each @poll.results, (option) =>
+            return unless option.score > 0
+            # poll.total_score * option.total_score
+            console.log parseFloat(option.voter_count), parseFloat(@poll.votersCount), parseFloat(option.voter_count) / parseFloat(@poll.votersCount)
+            angle = 360 * (parseFloat(option.voter_count) / parseFloat(@poll.votersCount))
+            # angle = 44
             @shapes.push @svgEl.path(@arcPath(start, start + angle)).attr
               'stroke-width': 0
               fill: option.color

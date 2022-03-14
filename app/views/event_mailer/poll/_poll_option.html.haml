@@ -4,7 +4,7 @@
 - show_link  = local_assigns[:link]
 - stance_choice = local_assigns.fetch(:stance_choice, nil)
 - show_score = poll.has_variable_score && stance_choice
-- display_name = case poll_option.name_format
+- display_name = case poll.poll_option_name_format
 - when 'i18n' then t(poll_option.name)
 - when 'iso8601' then format_iso8601_for_humans(poll_option.name, @recipient.time_zone || poll.time_zone)
 - else

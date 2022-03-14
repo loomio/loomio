@@ -130,7 +130,7 @@ export default class PollModel extends BaseModel
     @recordStore.reactions.find(reactableId: @id, reactableType: "Poll")
 
   decidedVoterIds: ->
-    uniq flatten @pollOptions().map((o) -> o.voterIds())
+    uniq flatten @results.map((o) -> o.voterIds)
 
   # who's voted?
   decidedVoters: ->
