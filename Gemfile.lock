@@ -438,9 +438,9 @@ GEM
       rake (>= 0.13)
       thor (~> 1.0)
     rake (13.0.6)
-    ransack (2.5.0)
-      activerecord (>= 5.2.4)
-      activesupport (>= 5.2.4)
+    ransack (2.6.0)
+      activerecord (>= 6.0.4)
+      activesupport (>= 6.0.4)
       i18n
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
@@ -641,7 +641,7 @@ DEPENDENCIES
   rails_12factor
   rails_serve_static_assets
   rake
-  ransack (= 2.5.0)
+  ransack (= 2.6.0)
   redcarpet (~> 3.5.1)
   redis-objects
   redis-rails
