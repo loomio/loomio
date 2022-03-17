@@ -31,7 +31,7 @@ class GroupExportService
                            :secret_token,
                            :unsubscribe_token] }
   }.with_indifferent_access.freeze
-  
+
   BACK_REFERENCES = {
     comments: {
       comments: %w[parent_id],
@@ -77,10 +77,6 @@ class GroupExportService
       events: %w[eventable],
       discussions: %w[author_id discarded_by],
       attachments: %w[user_id],
-      blazer_audits: %w[user_id],
-      blazer_checks: %w[creator_id],
-      blazer_dashboards: %w[creator_id],
-      blazer_queries: %w[creator_id],
       comments: %w[user_id discarded_by] ,
       discussion_readers: %w[user_id inviter_id],
       discussions: %w[author_id],
@@ -114,6 +110,30 @@ class GroupExportService
             puts_record(record, file, ids)
           end
         end
+
+        user_attachments = group.all_users.map(&:uploaded_avatar_attachment)
+        own_attachments = [group.cover_photo_attachment,
+                           group.logo_attachment,
+                           group.files_attachments,
+                           group.image_files_attachments]
+
+        (user_attachments + own_attachments + group.related_attachments).
+        compact.flatten.uniq.each do |attachment|
+          download_path = Rails.application.routes.url_helpers.rails_blob_path(attachment, only_path: true)
+          obj = {
+            id: attachment.id,
+            host: ENV['CANONICAL_HOST'],
+            record_type: attachment.record_type,
+            record_id: attachment.record_id,
+            name: attachment.name,
+            filename: attachment.filename,
+            content_type: attachment.content_type,
+            path: download_path,
+            url: "https://#{ENV['CANONICAL_HOST']}#{download_path}"
+          }
+
+          file.puts({table: 'attachments', record: obj}.to_json)
+        end
       end
     end
     filename
@@ -133,15 +153,15 @@ class GroupExportService
   def self.import(filename, reset_keys: false)
     group_ids = []
     migrate_ids = {}
-    tables = File.open(filename, 'r').map { |line| JSON.parse(line)['table'] }.uniq
+    datas = URI.open(filename, 'r').map { |line| JSON.parse(line) }
+    tables = datas.map{ |data| data['table'] }.uniq
 
     ActiveRecord::Base.transaction do
       #import the records, remember old with new ids
-      tables.each do |table|
+      (tables - ['attachments']).each do |table|
         migrate_ids[table] = {}
         klass = table.classify.constantize
-        File.open(filename, 'r').map do |line|
-          data = JSON.parse(line)
+        datas.each do |data|
           next unless (data['table'] == table)
           record = klass.new(data['record'])
 
@@ -172,12 +192,17 @@ class GroupExportService
             if table == 'users'
               migrate_ids[table][old_id] = User.find_by(email: record.email).id
             else
-              byebug
               raise "failed to import #{table} record - conflict on unique column. handle that here"
             end
           end
         end
       end
+
+      # # changes to REDIS_CONNECTION_POOL
+      # SIDEKIQ_REDIS_POOL.with_client do |client|
+      #   client.set "import_records_id_map_#{filename}", migrate_ids.to_json
+      #   puts "saved id map: redis.get import_records_id_map_#{filename}"
+      # end
 
       # rewrite references to old ids
       tables.each do |table|
@@ -202,39 +227,37 @@ class GroupExportService
           end
         end
       end
+
+      if tables.include?('attachments')
+        File.open(filename, 'r').map do |line|
+          data = JSON.parse(line)
+          next unless (data['table'] == 'attachments')
+          table = data['record']['record_type'].tableize
+          DownloadAttachmentWorker.perform_async(
+            host: origin_host,
+            record_type: data['record']['record_type'],
+            record_id: migrate_ids[table][data['record']['record_id']],
+            old_record_id: data['record']['record_id'],
+            filename: data['record']['filename'],
+            content_type: data['record']['content_type'],
+            url: data['record']['url']
+          )
+        end
+      end
     end
 
     # SearchIndexWorker.new.perform(Discussion.where(group_id: group_ids).pluck(:id))
   end
 
-  def self.pull_paperclips(filename, base_url = 'https://loomio-uploads.s3.amazonaws.com')
-    tables = {'users' => ['uploaded_avatar'], 'groups' => ['cover_photo', 'logo'], 'documents' => ['file']}
-    File.open(filename, 'r').each do |line|
-      data = JSON.parse(line)
-      record = data['record']
-
-      klass = data['table'].classify.constantize
-      model = klass.new(data['record'])
-
-      if tables.keys.include? data['table']
-        tables[data['table']].each do |attr|
-          next unless model.send(attr).present?
-          self.update_paperclip_attachment(data['table'].classify, record['id'], attr, base_url)
-          # self.delay.update_paperclip_attachment(data['table'].classify, record['id'], attr, base_url)
-        end
-      end
-    rescue OpenURI::HTTPError
-      next
+  def self.download_attachment(host: ,
+                               record_type: ,
+                               record_id: ,
+                               old_record_id: ,
+                               filename: ,
+                               content_type: ,
+                               url: )
+    URI.open(url) do |file|
+      # record_type.constantize.find(record_id).files.attach file
     end
-  end
-
-  def self.update_paperclip_attachment(class_name, id, attr, base_url)
-    model = class_name.constantize.find(id)
-    source = model.send(attr).url(:original).gsub('/system', base_url)
-    model.send "#{attr}=", URI(source)
-    model.save
-    puts "class, id: #{class_name}, #{id}"
-    puts "source: #{source}"
-    puts "copy: #{model.send(attr).url(:original)}"
   end
 end
