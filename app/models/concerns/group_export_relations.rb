@@ -15,6 +15,19 @@ module GroupExportRelations
     has_many :exportable_stances,               through: :exportable_polls, source: :stances
     has_many :exportable_stance_choices,        through: :exportable_stances, source: :stance_choices
 
+    # attachments
+    has_many :comment_files,          through: :comments,            source: :files_attachments
+    has_many :comment_image_files,    through: :comments,            source: :image_files_attachments
+    has_many :discussion_files,       through: :discussions,         source: :files_attachments
+    has_many :discussion_image_files, through: :discussions,         source: :image_files_attachments
+    has_many :poll_files,             through: :exportable_polls,    source: :files_attachments
+    has_many :poll_image_files,       through: :exportable_polls,    source: :image_files_attachments
+    has_many :outcome_files,          through: :exportable_outcomes, source: :files_attachments
+    has_many :outcome_image_files,    through: :exportable_outcomes, source: :image_files_attachments
+    has_many :subgroup_files,         through: :subgroups,           source: :files_attachments
+    has_many :subgroup_image_files,   through: :subgroups,           source: :image_files_attachments
+    has_many :subgroup_cover_photos,  through: :subgroups,           source: :cover_photo_attachment
+    has_many :subgroup_logos,         through: :subgroups,           source: :logo_attachment
 
     # documents
     has_many :discussion_documents,        through: :discussions,        source: :documents
@@ -36,7 +49,6 @@ module GroupExportRelations
 
     # users
     has_many :discussion_authors,         through: :discussions,                    source: :author
-    # has_many :discussion_reader_users, through: :discussion_readers, source: :user
     has_many :comment_authors,            through: :comments,                       source: :user
     has_many :exportable_poll_authors,    through: :exportable_polls,               source: :author
     has_many :exportable_outcome_authors, through: :exportable_outcomes,            source: :author
@@ -52,17 +64,6 @@ module GroupExportRelations
     has_many :exportable_stance_events,   through: :exportable_stances,   source: :events
   end
 
-  def all_taggings
-    Queries::UnionQuery.for(:taggings, [
-      self.discussion_taggings,
-      self.poll_taggings
-    ])
-  end
-
-  def all_groups
-    Group.where(id: id_and_subgroup_ids)
-  end
-
   def all_users
     Queries::UnionQuery.for(:users, [
       self.members,
@@ -75,6 +76,35 @@ module GroupExportRelations
       self.reader_users
     ])
   end
+
+  def related_attachments
+    Queries::UnionQuery.for(:taggings, [
+      self.comment_files,
+      self.comment_image_files,
+      self.discussion_files,
+      self.discussion_image_files,
+      self.poll_files,
+      self.poll_image_files,
+      self.outcome_files,
+      self.outcome_image_files,
+      self.subgroup_files,
+      self.subgroup_image_files,
+      self.subgroup_cover_photos,
+      self.subgroup_logos,
+    ])
+  end
+
+  def all_taggings
+    Queries::UnionQuery.for(:taggings, [
+      self.discussion_taggings,
+      self.poll_taggings
+    ])
+  end
+
+  def all_groups
+    Group.where(id: id_and_subgroup_ids)
+  end
+
 
   def all_events
     Queries::UnionQuery.for(:events, [
