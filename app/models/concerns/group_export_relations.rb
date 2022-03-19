@@ -77,22 +77,22 @@ module GroupExportRelations
     ])
   end
 
-  def related_attachments
-    Queries::UnionQuery.for(:taggings, [
-      self.comment_files,
-      self.comment_image_files,
-      self.discussion_files,
-      self.discussion_image_files,
-      self.poll_files,
-      self.poll_image_files,
-      self.outcome_files,
-      self.outcome_image_files,
-      self.subgroup_files,
-      self.subgroup_image_files,
-      self.subgroup_cover_photos,
-      self.subgroup_logos,
-    ])
-  end
+  # def related_attachments
+  #   Queries::UnionQuery.for(:attachments, [
+  #     self.comment_files,
+  #     self.comment_image_files,
+  #     self.discussion_files,
+  #     self.discussion_image_files,
+  #     self.poll_files,
+  #     self.poll_image_files,
+  #     self.outcome_files,
+  #     self.outcome_image_files,
+  #     self.subgroup_files,
+  #     self.subgroup_image_files,
+  #     self.subgroup_cover_photos,
+  #     self.subgroup_logos,
+  #   ])
+  # end
 
   def all_taggings
     Queries::UnionQuery.for(:taggings, [

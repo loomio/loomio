@@ -117,7 +117,20 @@ class GroupExportService
                            group.files_attachments,
                            group.image_files_attachments]
 
-        (user_attachments + own_attachments + group.related_attachments).
+        related_attachments = [group.comment_files,
+                              group.comment_image_files,
+                              group.discussion_files,
+                              group.discussion_image_files,
+                              group.poll_files,
+                              group.poll_image_files,
+                              group.outcome_files,
+                              group.outcome_image_files,
+                              group.subgroup_files,
+                              group.subgroup_image_files,
+                              group.subgroup_cover_photos,
+                              group.subgroup_logos]
+
+        (user_attachments + own_attachments + related_attachments).
         compact.flatten.uniq.each do |attachment|
           download_path = Rails.application.routes.url_helpers.rails_blob_path(attachment, only_path: true)
           obj = {
