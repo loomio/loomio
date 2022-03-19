@@ -36,7 +36,7 @@ describe GroupExportService do
     [comment, sub_comment].each {|c| CommentService.create(comment: c, actor: c.author)}
   end
 
-  describe 'export and import' do
+  xdescribe 'export and import' do
     it 'can export a group' do
       filename = GroupExportService.export(group.all_groups, group.name)
       # puts "exported: #{filename}"
