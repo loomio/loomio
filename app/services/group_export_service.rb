@@ -211,14 +211,12 @@ class GroupExportService
         end
       end
 
-      # # changes to REDIS_CONNECTION_POOL
       # SIDEKIQ_REDIS_POOL.with_client do |client|
-      #   client.set "import_records_id_map_#{filename}", migrate_ids.to_json
-      #   puts "saved id map: redis.get import_records_id_map_#{filename}"
+      #   client.set "last_migrate_ids", migrate_ids.to_json
       # end
 
       # rewrite references to old ids
-      tables.each do |table|
+      (tables - ['attachments']).each do |table|
         migrate_ids[table].each_pair do |old_id, new_id|
           next unless BACK_REFERENCES.has_key?(table)
           BACK_REFERENCES[table].each_pair do |ref_table, columns|
@@ -242,19 +240,13 @@ class GroupExportService
       end
 
       if tables.include?('attachments')
-        File.open(filename, 'r').map do |line|
-          data = JSON.parse(line)
+        datas.each do |data|
           next unless (data['table'] == 'attachments')
           table = data['record']['record_type'].tableize
-          DownloadAttachmentWorker.perform_async(
-            host: origin_host,
-            record_type: data['record']['record_type'],
-            record_id: migrate_ids[table][data['record']['record_id']],
-            old_record_id: data['record']['record_id'],
-            filename: data['record']['filename'],
-            content_type: data['record']['content_type'],
-            url: data['record']['url']
-          )
+          # DownloadAttachmentWorker.perform_async(data['record'])
+          table = data['record']['record_type'].tableize
+          new_id = migrate_ids[table][data['record']['record_id']]
+          DownloadAttachmentWorker.perform_async(data['record'], new_id)
         end
       end
     end
@@ -262,15 +254,13 @@ class GroupExportService
     # SearchIndexWorker.new.perform(Discussion.where(group_id: group_ids).pluck(:id))
   end
 
-  def self.download_attachment(host: ,
-                               record_type: ,
-                               record_id: ,
-                               old_record_id: ,
-                               filename: ,
-                               content_type: ,
-                               url: )
-    URI.open(url) do |file|
-      # record_type.constantize.find(record_id).files.attach file
+  def self.download_attachment(record_data, new_id)
+    model = record_data['record_type'].classify.constantize.find(new_id)
+    file = URI.open(record_data['url'])
+    model.send(record_data['name']).attach(io: file, filename: record_data['filename'])
+    if model.respond_to?(:attachments)
+      model.update_attribute(:attachments, model.build_attachments)
     end
+    file.close
   end
 end
