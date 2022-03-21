@@ -54,10 +54,9 @@ export default
           td.text-right(v-if="col == 'score'") {{option.score}}
           td.text-right(v-if="col == 'voter_count'") {{option.voter_count}}
           td.text-right(v-if="col == 'average'") {{option.average}}
-          td.text-right(v-if="col == 'voter_percent'") {{option.voter_percent.toFixed(0)}}
+          td.text-right(v-if="col == 'voter_percent'") {{option.voter_percent.toFixed(0)}}%
           td.text-right(v-if="col == 'score_percent'") {{option.score_percent.toFixed(0)}}%
           td.text-right(v-if="col == 'voters'")
-            | {{option.voter_ids}}
             user-avatar.float-left(v-for="voter in votersByOptionId[option.id]" :key="voter.id" :user="voter" :size="24" no-link)
 </template>
 <style lang="sass">

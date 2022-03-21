@@ -42,11 +42,8 @@ export default
               fill: option.color
         else
           each @poll.results, (option) =>
-            return unless option.score > 0
-            # poll.total_score * option.total_score
-            console.log parseFloat(option.voter_count), parseFloat(@poll.votersCount), parseFloat(option.voter_count) / parseFloat(@poll.votersCount)
+            return unless option.voter_count > 0
             angle = 360 * (parseFloat(option.voter_count) / parseFloat(@poll.votersCount))
-            # angle = 44
             @shapes.push @svgEl.path(@arcPath(start, start + angle)).attr
               'stroke-width': 0
               fill: option.color

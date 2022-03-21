@@ -257,6 +257,7 @@ class PollService
     l = sorted_poll_options.each_with_index.map do |option, index|
       option_name = poll.poll_option_name_format == 'i18n' ? "poll_#{poll.poll_type}_options."+option.name : option.name
       {
+        id: option.id,
         name: option_name,
         name_format: poll.poll_option_name_format,
         rank: index+1,
@@ -283,7 +284,7 @@ class PollService
         voter_scores: {},
         voter_ids: poll.undecided_voters.map(&:id),
         voter_count: poll.undecided_voters_count,
-        color: '#dddddd'
+        color: '#DDDDDD'
     })
     l
   end
