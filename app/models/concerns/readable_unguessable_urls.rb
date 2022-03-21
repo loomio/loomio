@@ -10,13 +10,13 @@ module ReadableUnguessableUrls
     base.send :validates, :key, presence: true
   end
 
-  private
   def set_key
     if self.key.blank?
       self.key = generate_unique_key
     end
   end
 
+  private
   def generate_unique_key
     begin
       key = generate_key
