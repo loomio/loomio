@@ -72,12 +72,6 @@ export default class PollModel extends BaseModel
     else
       @pollOptions()
 
-  pollOptionsForResults: ->
-    if ['dot_vote', 'ranked_choice', 'score', 'poll'].includes(@pollType)
-      orderBy(@pollOptions(), 'totalScore', 'desc')
-    else
-      @pollOptions()
-
   bestNamedId: ->
     ((@id && @) || (@discusionId && @discussion()) || (@groupId && @group()) || {namedId: ->}).namedId()
 
@@ -130,7 +124,7 @@ export default class PollModel extends BaseModel
     @recordStore.reactions.find(reactableId: @id, reactableType: "Poll")
 
   decidedVoterIds: ->
-    uniq flatten @results.map((o) -> o.voterIds)
+    uniq flatten @results.map((o) -> o.voter_ids)
 
   # who's voted?
   decidedVoters: ->

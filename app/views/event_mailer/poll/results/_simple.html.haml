@@ -7,7 +7,7 @@
       %tr
       - poll.result_columns.each do |col|
         - case col
-        - when 'chart'
+        - when 'pie', 'bar', 'grid'
           %th.text-left.text-subtitle-2
             = poll.closed_at ? t(:"poll_common.results") : t(:"poll_common.current_results")
         - when 'name'
@@ -21,7 +21,7 @@
         - when 'score'
           %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.points')
         - when 'average'
-          %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.average')
+          %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.mean')
         - when 'voter_count'
           %th.text-right.text-subtitle-2= t('membership_card.voters')
         - when 'voters'
@@ -31,20 +31,18 @@
         %tr
           - poll.result_columns.each do |col|
             - case col
-            - when 'chart'
-              - case poll.chart_type
-              - when 'pie'
-                - if (index == 0)
-                  %td.pr-2.py-2{rowspan: results.size} 
-                    .poll-mailer-proposal__chart.poll-mailer__results-chart.d-flex.align-center
-                      %img.poll-mailer-proposal__chart-image{style: "height: 128px; width: 128px", src: google_pie_chart_url(poll)}
-              - when 'bar'
-                %td.pr-2.py-2{style: 'width: 128px'}
-                  %div.rounded{style: "background-color: #{option[:color]}; height: 24px; width: #{option[poll.chart_column.to_sym].round}%"} 
-              - when 'grid'
-                / - if (index == 0)
-                /   %td.pr-2.py-2{rowspan: results.size} 
-                /       %img.poll-mailer-proposal__chart-image{style: "height: 128px; width: 128px", src: google_pie_chart_url(poll)}
+            - when 'pie'
+              - if (index == 0)
+                %td.pr-2.py-2{rowspan: results.size} 
+                  .poll-mailer-proposal__chart.poll-mailer__results-chart.d-flex.align-center
+                    %img.poll-mailer-proposal__chart-image{style: "height: 128px; width: 128px", src: google_pie_chart_url(poll)}
+            - when 'bar'
+              %td.pr-2.py-2{style: 'width: 128px'}
+                %div.rounded{style: "background-color: #{option[:color]}; height: 24px; width: #{option[poll.chart_column.to_sym].round}%"} 
+            - when 'grid'
+              / - if (index == 0)
+              /   %td.pr-2.py-2{rowspan: results.size} 
+              /       %img.poll-mailer-proposal__chart-image{style: "height: 128px; width: 128px", src: google_pie_chart_url(poll)}
             - when 'name'
               %td{style: "border-left: solid #{(poll.chart_type == 'pie') ? 4 : 0}px #{option[:color]}"}
                 - case option[:name_format]

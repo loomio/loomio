@@ -2065,6 +2065,7 @@ en:
     rank: Rank
     points: Points
     average: Average
+    mean: Mean
     pct_of_points: '% of points'
     pct_of_voters: '% of voters'
     percent: Percent

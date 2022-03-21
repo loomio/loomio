@@ -272,20 +272,22 @@ class PollService
         color: option.color
       }
     end
-    l.push({
-        name: 'poll_common_votes_panel.undecided',
-        name_format: 'i18n',
-        rank: nil,
-        score: 0,
-        score_percent: 0,
-        max_score_percent: 0,
-        voter_percent: poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100,
-        average: 0,
-        voter_scores: {},
-        voter_ids: poll.undecided_voters.map(&:id),
-        voter_count: poll.undecided_voters_count,
-        color: '#DDDDDD'
-    })
+    if poll.results_include_undecided
+      l.push({
+          name: 'poll_common_votes_panel.undecided',
+          name_format: 'i18n',
+          rank: nil,
+          score: 0,
+          score_percent: 0,
+          max_score_percent: 0,
+          voter_percent: poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100,
+          average: 0,
+          voter_scores: {},
+          voter_ids: poll.undecided_voters.map(&:id),
+          voter_count: poll.undecided_voters_count,
+          color: '#DDDDDD'
+      })
+    end
     l
   end
 end

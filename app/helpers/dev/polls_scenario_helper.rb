@@ -340,20 +340,4 @@ module Dev::PollsScenarioHelper
   def alternative_poll_option_selection (poll_option_ids, i)
     poll_option_ids.each_with_index.map {|id, j| {poll_option_id: id, score: (i+j)%3}}
   end
-
-  def poll_meeting_populated_scenario(params)
-    user = saved fake_user
-
-    poll = fake_poll(poll_type: params[:poll_type], option_count: 5)
-    PollService.create(poll: poll, actor: user)
-
-    5.times do |i|
-      choices = alternative_poll_option_selection(poll.poll_option_ids, i)
-      stance = saved fake_stance(poll:poll, participant:saved(fake_user), stance_choices_attributes: choices)
-    end
-
-    { poll: poll,
-      group: poll.group,
-      observer: user}
-  end
 end

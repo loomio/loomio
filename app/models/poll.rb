@@ -147,6 +147,10 @@ class Poll < ApplicationRecord
     end
   end
 
+  def results_include_undecided
+    poll_type != "meeting"
+  end
+  
   def chart_type
     case poll_type
     when 'proposal' then 'pie'
@@ -168,14 +172,22 @@ class Poll < ApplicationRecord
 
   def result_columns
     case poll_type
-    when 'proposal', 'count'
-      %w[chart name voter_percent voter_count voters]
+    when 'proposal'
+      %w[pie name voter_percent voter_count voters]
+    when 'count'
+      %w[bar name voter_percent voter_count voters]
     when 'ranked_choice'
-      %w[chart name rank score_percent score average]
+      %w[bar name rank score_percent score average]
     when 'dot_vote', 'score'
-      %w[chart name score_percent score average voter_count voters]
+      %w[bar name score_percent score average voter_count voters]
+    when 'poll'
+      if poll.multiple_choice
+        %w[bar name score_percent voter_count voters]
+      else
+        %w[bar name voter_percent voter_count voters]
+      end
     when 'meeting'
-      %w[chart name score voters]
+      %w[grid name score voters]
     end
   end
 
