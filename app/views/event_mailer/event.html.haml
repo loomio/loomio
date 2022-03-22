@@ -24,10 +24,10 @@
 	= render "event_mailer/poll/vote", poll: poll
 	- if @event.kind != "poll_created" && (@event.kind != "poll_announced" && poll.decided_voters_count > 0)
 		= render "event_mailer/poll/results", poll: poll
-	- if %w[poll_announced poll_created].include?(@event.kind)
+	- if %w[poll_announced poll_created].include?(@event.kind) && @event.eventable.discussion
 		%hr
 		= render "event_mailer/title", eventable: @event.eventable.discussion
-		= render "event_mailer/body", eventable: @event.eventable
+		= render "event_mailer/body", eventable: @event.eventable.discussion
 	- else
 		= render "event_mailer/poll/responses", event: @event
 

@@ -7,7 +7,8 @@
 
 .thread-mailer__footer
   - if @recipient.is_logged_in?
-    %img.thread-mailer__footer-image{src: pixel_src(event), alt: '', width: 1, height: 1}
+    - if event.eventable.discussion
+      %img.thread-mailer__footer-image{src: pixel_src(event), alt: '', width: 1, height: 1}
 
     %p.thread-mailer__footer-links
       &mdash;
