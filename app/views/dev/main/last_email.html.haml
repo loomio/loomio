@@ -17,18 +17,18 @@
             .title= @scenario[:poll]&.title
             .poll_type= t("poll_types.#{@scenario[:poll]&.poll_type}")
 
-      %table
-        %tr
-          %td To
-          %td= Array(@email.to).join(', ')
-        %tr
-          %td From
-          %td= Array(@email.from).join(', ')
-        %tr
-          %td Subject
-          %td= @email.subject
-        %tr
-          %td Reply to
-          %td= Array(@email.reply_to).join(', ')
-      %hr
-    %main{style:"margin: 8px"}=  raw @email.body.parts.last.decoded
+        %table
+          %tr
+            %td To
+            %td= Array(@email.to).join(', ')
+          %tr
+            %td From
+            %td= Array(@email.from).join(', ')
+          %tr
+            %td Subject
+            %td= @email.subject
+          %tr
+            %td Reply to
+            %td= Array(@email.reply_to).join(', ')
+        %hr
+        %main{style:"margin: 8px"}=  raw @email.body.parts.last.decoded

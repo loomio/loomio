@@ -3,7 +3,7 @@
     %tr
       - if event.user
         %td= render "avatar", user: event.user
-      %td
+      %td.base-mailer__event-headline
         - title = link_to(event.eventable.title, tracked_url(event.eventable))
         - poll_type = @poll ? t("poll_types.#{@poll.poll_type}") : nil
         - if @recipient.id == event.eventable.author_id && I18n.exists?("notifications.without_title.#{event.kind}_author")
