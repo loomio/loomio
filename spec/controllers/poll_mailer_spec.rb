@@ -174,7 +174,7 @@ describe Dev::PollsController do
       next if poll_type != "poll"
       get :test_poll_scenario, params: {scenario: 'poll_options_added_author', poll_type: poll_type, email: true}
       expect_text('.base-mailer__event-headline', "added options to")
-      expect_notification_headline("notifications.without_title.poll_option_added_author")
+      expect_notification_headline("notifications.without_title.poll_option_added")
       expect_element('.poll-mailer-common-option-added')
       expect_element('.poll-mailer__vote')
     end
@@ -183,7 +183,7 @@ describe Dev::PollsController do
       next if poll_type != "poll"
       get :test_poll_scenario, params: {scenario: 'poll_options_added_author', anonymous: true, poll_type: poll_type, email: true}
       expect_text('.base-mailer__event-headline', "added options to")
-      expect_notification_headline("notifications.without_title.poll_option_added_author")
+      expect_notification_headline("notifications.without_title.poll_option_added")
       expect_element('.poll-mailer-common-option-added')
       expect_element('.poll-mailer__vote')
     end
