@@ -1,4 +1,3 @@
-- poll = event.eventable.poll
 .poll-mailer-common-summary.max-width-600
   - if poll.current_outcome
     %h2.text-subtitle-2= t(:"poll_common.outcome")
@@ -14,4 +13,4 @@
       = t(:"poll_common_form.closed")
       = format_date_for_humans(poll.closed_at, @recipient.time_zone || poll.time_zone)
 
-  = render "attachments", resource: poll
+  = render "event_mailer/attachments", resource: poll

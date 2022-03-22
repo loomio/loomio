@@ -15,15 +15,15 @@
 	= render "event_mailer/poll/stance", stance: @event.eventable
 
 - if @event.eventable.is_a?(Poll) or @event.eventable.is_a?(Outcome)
+	- poll = @event.eventable.poll
 	= render "event_mailer/notification", event: @event
 	= render "event_mailer/poll/share_outcome", event: @event
-	= render "event_mailer/title", eventable: @event.eventable.poll
-	= render "event_mailer/tags", eventable: @event.eventable.poll
-	= render "event_mailer/poll/summary", event: @event
-	= render "event_mailer/poll/vote", event: @event
-	- if @event.eventable.poll.show_results? && @event.kind != "poll_created" && (@event.kind != "poll_announced" && @event.eventable.poll.decided_voters_count > 0)
-		= render "event_mailer/poll/results", event: @event
-		= render "event_mailer/poll/undecided", poll: @event.eventable.poll
+	= render "event_mailer/title", eventable: poll
+	= render "event_mailer/tags", eventable: poll
+	= render "event_mailer/poll/summary", poll: poll
+	= render "event_mailer/poll/vote", poll: poll
+	- if @event.kind != "poll_created" && (@event.kind != "poll_announced" && poll.decided_voters_count > 0)
+		= render "event_mailer/poll/results", poll: poll
 	- if %w[poll_announced poll_created].include?(@event.kind)
 		%hr
 		= render "event_mailer/title", eventable: @event.eventable.discussion

@@ -1,4 +1,3 @@
-- poll = event.eventable.poll
 - results = poll.results
 
 .poll-mailer-common-results
@@ -34,11 +33,11 @@
             - when 'pie'
               - if (index == 0)
                 %td.pr-2.py-2{rowspan: results.size} 
-                  .poll-mailer-proposal__chart.poll-mailer__results-chart.d-flex.align-center
+                  .poll-mailer-proposal__chart.poll-mailer__results-chart.d-flex.align-center.justify-center
                     %img.poll-mailer-proposal__chart-image{style: "height: 128px; width: 128px", src: google_pie_chart_url(poll)}
             - when 'bar'
               %td.pr-2.py-2{style: 'width: 128px'}
-                %div.rounded{style: "background-color: #{option[:color]}; height: 24px; width: #{option[poll.chart_column.to_sym].round}%"} 
+                %div.rounded{style: "background-color: #{option[:color]}; height: 24px; width: #{option[poll.chart_column]}%"} 
             - when 'grid'
               / - if (index == 0)
               /   %td.pr-2.py-2{rowspan: results.size} 

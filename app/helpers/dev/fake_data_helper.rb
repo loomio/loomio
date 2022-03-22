@@ -269,6 +269,93 @@ module Dev::FakeDataHelper
     })
   end
 
+  def create_fake_poll_with_stances(args = {})
+    poll = saved fake_poll(args)
+    create_fake_stances(poll: poll)
+    poll
+  end
+
+  def create_group_with_members
+    group = saved(fake_group)
+    group.add_admin!(saved(fake_user))
+    (7..9).to_a.sample.times do 
+      group.add_member!(saved(fake_user))
+    end
+    group
+  end
+
+  def create_fake_poll_in_group(args = {})
+    saved(build_fake_poll_in_group)
+  end
+
+  def create_fake_stances(poll:)
+    (2..7).to_a.sample.times do
+      u = fake_user
+      poll.group.add_member!(u) if poll.group
+      stance = fake_stance(poll: poll)
+      stance.save!
+    end
+    poll.update_counts!
+  end
+
+  def create_discussion_with_nested_comments
+    group = create_group_with_members
+    group.reload
+    discussion    = saved fake_discussion(group: group)
+    DiscussionService.create(discussion: discussion, actor: group.admins.first)
+
+    15.times do
+      parent_author = fake_user
+      group.add_member! parent_author
+      parent = fake_comment(discussion: discussion)
+      CommentService.create(comment: parent, actor: parent_author)
+
+      (0..3).to_a.sample.times do
+        reply_author = fake_user
+        group.add_member! reply_author
+        reply = fake_comment(discussion: discussion, parent: parent)
+        CommentService.create(comment: reply, actor: reply_author)
+      end
+    end
+
+    discussion.reload
+    EventService.repair_thread(discussion.id)
+    discussion.reload
+  end
+
+  def create_discussion_with_sampled_comments
+    group = create_group_with_members
+
+    discussion = saved fake_discussion(group: group)
+    DiscussionService.create(discussion: discussion, actor: group.admins.first)
+    discussion.update(max_depth: 3)
+
+    5.times do
+      group.add_member! saved(fake_user)
+    end
+
+    10.times do
+      CommentService.create(comment: fake_comment(discussion: discussion), actor: group.members.sample)
+    end
+    comments = discussion.reload.comments
+
+    10.times do
+      CommentService.create(comment: fake_comment(discussion: discussion, parent: comments.sample), actor: group.members.sample)
+    end
+
+    comments = discussion.reload.comments
+
+    10.times do
+      CommentService.create(comment: fake_comment(discussion: discussion, parent: comments.sample), actor: group.members.sample)
+    end
+
+    discussion.reload
+    EventService.repair_thread(discussion.id)
+    discussion.reload
+    discussion
+  end
+
+
   private
 
   def with_markdown(text)

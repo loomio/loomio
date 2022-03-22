@@ -43,8 +43,9 @@ export default
     tbody
       tr(v-for="option, index in poll.results" :key="option.id")
         template(v-for="col in poll.resultColumns")
-          td.pr-2.py-2(v-if="col == 'pie' && index == 0" :rowspan="poll.results.length")
-            pie-icon(:poll="poll" :size='128')
+          td.pa-0(v-if="col == 'pie' && index == 0" :rowspan="poll.results.length")
+            v-sheet.d-flex.justify-center.align-center(style="height: 100%; border: 0")
+              pie-icon(:poll="poll" :size='128')
           td.pr-2.py-2(v-if="col == 'bar'" style="width: 128px; padding: 0 8px 0 0")
             div.rounded(:style="{width: option[poll.chartColumn]+'%', height: '24px', 'background-color': option.color}")
           td(v-if="col == 'name' && option.name_format == 'iso8601'")

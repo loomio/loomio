@@ -22,7 +22,7 @@ module EmailHelper
   end
 
   def tracked_url(model, args = {})
-    args.merge!({utm_medium: 'email', utm_campaign: @event.kind })
+    args.merge!({utm_medium: 'email', utm_campaign: @event&.kind })
 
     if model.is_a?(Poll) or model.is_a?(Outcome)
       if stance = model.poll.stances.latest.find_by(participant: @recipient)

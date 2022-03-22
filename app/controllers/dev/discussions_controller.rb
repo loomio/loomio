@@ -1,5 +1,4 @@
 class Dev::DiscussionsController < Dev::BaseController
-  include Dev::DiscussionsHelper
 
   def test_none_read
     discussion = create_discussion_with_nested_comments
@@ -38,4 +37,8 @@ class Dev::DiscussionsController < Dev::BaseController
     sign_in discussion.author
     redirect_to discussion_url(discussion)
   end
+
+  private
+
+
 end

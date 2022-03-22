@@ -264,13 +264,13 @@ class PollService
         score: option.total_score,
         score_percent: (option.total_score.to_f / poll.total_score.to_f) * 100,
         max_score_percent: (option.total_score.to_f / poll.stance_counts.max.to_f) * 100,
-        voter_percent: (option.voter_count.to_f / poll.voters_count.to_f) * 100,
+        voter_percent: poll.voters_count > 0 ? ((option.voter_count.to_f / poll.voters_count.to_f) * 100) : 0,
         average: option.average_score,
         voter_scores: option.voter_scores,
         voter_ids: option.voter_ids,
         voter_count: option.voter_count,
         color: option.color
-      }
+      }.with_indifferent_access.freeze
     end
     if poll.results_include_undecided
       l.push({
@@ -280,13 +280,13 @@ class PollService
           score: 0,
           score_percent: 0,
           max_score_percent: 0,
-          voter_percent: poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100,
+          voter_percent: poll.voters_count > 0 ? (poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100) : 0,
           average: 0,
           voter_scores: {},
           voter_ids: poll.undecided_voters.map(&:id),
           voter_count: poll.undecided_voters_count,
           color: '#DDDDDD'
-      })
+      }.with_indifferent_access.freeze)
     end
     l
   end
