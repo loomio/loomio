@@ -9,7 +9,10 @@
         - if @recipient.id == event.eventable.author_id && I18n.exists?("notifications.without_title.#{event.kind}_author")
           - key = "notifications.without_title.#{event.kind}_author"
         - else
-          - key = "notifications.without_title.#{event.kind}"
+          - if event.kind == "user_mentioned"
+            - key = "notifications.with_title.#{event.kind}"
+          - else
+            - key = "notifications.without_title.#{event.kind}"
 
         %h2.text-subtitle-1.ml-2=raw t(key, actor: event.user.name, title: title, poll_type: poll_type)
     - if event.recipient_message.present?

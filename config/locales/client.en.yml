@@ -584,15 +584,15 @@ en:
     no_notifications: "You don't have any notifications"
 
     with_title:
-      comment_replied_to: "%{actor} replied to you in %{title}"
-      discussion_announced: "%{actor} shared a thread: %{title}"
+      comment_replied_to: "%{actor} replied to you in: %{title}"
+      discussion_announced: "%{actor} invited you to a thread: %{title}"
       discussion_edited: "%{actor} edited the thread context: %{title}"
       discussion_closed: "%{actor} closed the thread: %{title}"
-      group_announced: "%{actor} invited you to the group %{title}"
+      group_announced: "%{actor} invited you to a group: %{title}"
       invitation_accepted: "%{actor} accepted your invitation to join %{title}"
       membership_requested: "%{actor} requested membership to %{title}"
       membership_request_approved: "%{actor} approved your request to join %{title}"
-      new_comment: "%{actor} commented in %{title}"
+      new_comment: "%{actor} commented in: %{title}"
       new_coordinator: "%{actor} made you an admin of %{title}"
       new_discussion: "%{actor} started a thread: %{title}"
       outcome_announced: "%{actor} shared a %{poll_type} outcome: %{title}"
@@ -620,9 +620,10 @@ en:
       user_reminded: "%{actor} is reminding you to vote in: %{title}"
 
     without_title:
-      discussion_announced: '%{actor} shared a thread'
+      discussion_announced: '%{actor} invited you to a thread'
       discussion_edited: '%{actor} edited the thread context'
       discussion_closed: "%{actor} closed the thread"
+      group_announced: "%{actor} invited you to a group"
       comment_replied_to: '%{actor} replied to you'
       new_discussion: "%{actor} started a thread"
       outcome_announced: '%{actor} shared a %{poll_type} outcome'
