@@ -1,7 +1,7 @@
 module Dev::Scenarios::Auth
   def setup_invitation_email_to_visitor
     group = create_group
-    params = {recipient_emails: ['newuser@example.com']}
+    params = {recipient_emails: ['newuser@example.com'], recipient_message: 'Hey this is the app I told you about. please accept the inviitation!'}
 
     GroupService.invite(group:group, params: params, actor: group.creator)
 
@@ -54,7 +54,7 @@ module Dev::Scenarios::Auth
     another_group.add_member! group.creator
     user.reload
     group.creator.reload
-    params = {recipient_user_ids: [user.id], message: "click accept,
+    params = {recipient_user_ids: [user.id], recipient_message: "click accept,
     please
     thanks" }
 

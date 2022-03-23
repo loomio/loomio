@@ -626,7 +626,7 @@ en:
       group_announced: "%{actor} invited you to a group"
       comment_replied_to: '%{actor} replied to you'
       new_discussion: "%{actor} started a thread"
-      membership_created: "%{actor} invited you to join %{title} on %{site_name}"
+      membership_created: "%{actor} invited you to join a group"
       membership_requested: "%{actor} requested to join %{title}"
       membership_request_approved: "%{actor} approved your request to join %{title}"
       outcome_announced: '%{actor} shared a %{poll_type} outcome'

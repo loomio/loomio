@@ -3,7 +3,7 @@ pageHelper = require('../helpers/pageHelper.coffee')
 
 notificationTexts = [
   'accepted your invitation to join',
-  'invited you to the group',
+  'invited you to join',
   'approved your request',
   'requested membership to',
   'mentioned you in',

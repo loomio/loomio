@@ -6,7 +6,12 @@
   - membership = group.memberships.where(user_id: @recipient.id).first
 
 
-= render "event_mailer/common/notification", event: @event
+= render "event_mailer/common/notification_with_title", event: @event, url: membership_url(membership)
+= render "event_mailer/group/cover_and_logo", group: group
+
+%h1.text-h5=group.full_name
+
+=raw render_plain_text(group.description, group.description_format)
 
 %div.max-width-600.px-2.py-1
   .text-center
