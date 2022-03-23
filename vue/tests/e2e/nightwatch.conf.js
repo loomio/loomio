@@ -26,7 +26,7 @@ module.exports = {
       skip_testcases_on_fail: false,
       desiredCapabilities: {
         browserName: 'chrome',
-        chromeOptions : { w3c: true, args: chromeOptions },
+        chromeOptions : { w3c: false, args: chromeOptions },
         javascriptEnabled: true,
         acceptSslCerts: true,
         loggingPrefs: { 'browser': 'ALL' }
