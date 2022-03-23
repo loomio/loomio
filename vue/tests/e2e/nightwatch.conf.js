@@ -12,10 +12,7 @@ module.exports = {
   webdriver: {
     start_process: true,
     server_path: "node_modules/.bin/chromedriver",
-    cli_args: [
-      "--verbose"
-    ],
-    port: 9515
+    cli_args: ["--verbose"]
   },
   test_settings: {
     default: {
@@ -27,11 +24,9 @@ module.exports = {
       },
       launch_url: "about:blank",
       skip_testcases_on_fail: false,
-      selenium_port: 4444,
-      selenium_host: 'localhost',
       desiredCapabilities: {
         browserName: 'chrome',
-        chromeOptions : { w3c: false, args: chromeOptions },
+        chromeOptions : { w3c: true, args: chromeOptions },
         javascriptEnabled: true,
         acceptSslCerts: true,
         loggingPrefs: { 'browser': 'ALL' }
