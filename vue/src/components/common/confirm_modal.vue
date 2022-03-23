@@ -22,7 +22,7 @@ export default
         @close()
         @$router.push "#{@confirm.redirect}"     if @confirm.redirect?
         @confirm.successCallback()        if typeof @confirm.successCallback is 'function'
-        Flash.success(@confirm.text.flash, @confim.textArgs) if @confirm.text.flash
+        Flash.success(@confirm.text.flash, @confirm.textArgs) if @confirm.text.flash
       .finally =>
         @isDisabled = false
 
@@ -59,5 +59,5 @@ v-card.confirm-modal
       :disabled="!canProceed"
       color="primary"
       @click="(confirm.submit && submit()) || close()"
-      v-t="{path: (confirm.text.submit || 'common.action.ok'), args: config.textArgs}")
+      v-t="{path: (confirm.text.submit || 'common.action.ok'), args: confirm.textArgs}")
 </template>
