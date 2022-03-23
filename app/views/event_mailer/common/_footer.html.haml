@@ -23,9 +23,9 @@
       -# new_comment
       -# user_mentioned
       - if action_name == 'discussion_announced'
-        = t :'discussion_mailer.unsubscribe_from_discussion_announced_html', url: unfollow_url(@event.eventable.discussion, action_name, new_volume: :quiet)
+        = t :'discussion_mailer.unsubscribe_from_discussion_announced_html', url: unfollow_url(@discussion, action_name, new_volume: :quiet)
       - if ['new_discussion', 'new_comment'].include? action_name
-        = t :'discussion_mailer.unsubscribe_from_new_comment_html', url: unfollow_url(@event.eventable.discussion, action_name, new_volume: :normal)
+        = t :'discussion_mailer.unsubscribe_from_new_comment_html', url: unfollow_url(@discussion, action_name, new_volume: :normal)
       - if action_name == 'comment_replied_to'
         = t :'discussion_mailer.unsubscribe_from_comment_replied_to_html'
         = t :"discussion_mailer.change_email_preferences_html", email_preferences_url: preferences_url(action_name)

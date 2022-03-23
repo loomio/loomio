@@ -342,7 +342,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPathNoApp('polls/test_poll_scenario?poll_type=proposal&scenario=poll_created&email=1&anonymous=1&guest=1')
-    page.click('.poll-mailer__poll-title')
+    page.click('.event-mailer__title')
     page.click('.poll-proposal-vote-form__button')
     page.fillIn('.html-editor__textarea .ProseMirror', "reason")
     page.click('.poll-common-vote-form__submit')
