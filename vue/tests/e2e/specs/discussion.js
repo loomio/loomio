@@ -307,7 +307,7 @@ module.exports = {
     page.loadPathNoApp('setup_discussion_mailer_invitation_created_email')
     page.expectText('.base-mailer__event-headline', "invited you to a thread")
     page.expectText('.thread-mailer__body', "A description for this discussion. Should this be rich?")
-    page.click('.base-mailer__event-headline a', 2000)
+    page.click('.event-mailer__title a', 2000)
     page.expectValue('.auth-email-form__email input', 'jen@example.com')
     page.signUpViaInvitation("Jennifer")
     page.expectFlash('Signed in successfully')
