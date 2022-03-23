@@ -1,3 +1,4 @@
+- message = local_assigns.fetch(:message, event.recipient_message)
 %div.rounded.max-width-600.px-2.py-1{style: 'border: 1px solid #eee'}
   %table.v-layout-table
     %tr
@@ -15,8 +16,8 @@
             - key = "notifications.without_title.#{event.kind}"
 
         %h2.text-subtitle-1.ml-2=raw t(key, actor: event.user.name, title: title, poll_type: poll_type, site_name: AppConfig.theme[:site_name])
-    - if event.recipient_message.present?
+    - if message.present?
       %tr
         %td{colspan: "2" }
           %p
-            %i=raw render_plain_text(event.recipient_message)
+            %i=raw render_plain_text(message)

@@ -31,6 +31,14 @@ class MembershipRequest < ApplicationRecord
   delegate :email,                to: :requestor, allow_nil: true
   delegate :name,                 to: :requestor, allow_nil: true
 
+  def author_id
+    requestor_id
+  end
+  
+  def title
+    group.full_name
+  end
+
   def user_id
     requestor_id
   end

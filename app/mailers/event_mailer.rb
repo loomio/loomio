@@ -46,19 +46,22 @@ class EventMailer < BaseMailer
     template_name = 'poll' if @event.eventable_type == 'Outcome'
     template_name = 'group' if @event.eventable_type == 'Membership'
 
+    subject_key = "notifications.with_title.#{@event.kind}" 
+    subject_params = {
+      title: @event.eventable.title,
+      poll_type: @poll && I18n.t("poll_types.#{@poll.poll_type}"),
+      actor: @event.user.name,
+      site_name: AppConfig.theme[:site_name]
+    }
+
     send_single_mail(
       to: @recipient.email,
       from: from_user_via_loomio(@event.user),
       locale: @recipient.locale,
       reply_to: reply_to_address_with_group_name(model: @event.eventable, user: @recipient),
       subject_prefix: group_name_prefix(@event),
-      subject_key: "notifications.with_title.#{@event.kind}",
-      subject_params: {
-        title: @event.eventable.title,
-        poll_type: @poll && I18n.t("poll_types.#{@poll.poll_type}"),
-        actor: @event.user.name,
-        site_name: AppConfig.theme[:site_name]
-      },
+      subject_key: subject_key,
+      subject_params: subject_params,
       subject_is_title: thread_kinds.include?(@event.kind),
       template_name: template_name
     )
