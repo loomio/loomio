@@ -291,7 +291,7 @@ module.exports = {
     page.loadPathNoApp('setup_discussion_mailer_discussion_announced_email')
     page.expectText('.base-mailer__event-headline', "invited you to a thread")
     page.expectText('.thread-mailer__body', "A description for this discussion. Should this be rich?")
-    page.click('.base-mailer__title a', 2000)
+    page.click('.event-mailer__title a', 2000)
     page.expectText('.context-panel__heading', 'go to the moon')
     page.expectText('.context-panel__description', 'A description for this discussion')
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Hello world!')
