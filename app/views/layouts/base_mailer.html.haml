@@ -7,4 +7,5 @@
     = stylesheet_link_tag 'vtfy/components'
   %body
     = raw EventMailer::REPLY_DELIMITER
-    = yield
+    .base-mailer__body
+      = yield

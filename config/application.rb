@@ -22,6 +22,7 @@ module Loomio
     config.load_defaults 5.0
     # config.autoloader = :zeitwerk if Rails.env.development? || ENV['LOOMIO_ZEITWERK']
     config.autoloader = :classic
+    config.action_mailer.delivery_job "ActionMailer::MailDeliveryJob"
     config.middleware.use Rack::Deflater
     config.middleware.use Rack::Attack
     config.active_job.queue_adapter = :sidekiq
