@@ -1,0 +1,7 @@
+- cover_url = (root_url.chomp('/') + group.cover_url(256))
+
+%table.max-width-600{width: "100%", border: "0", cellspacing: "0", cellpadding: "20"}
+  %tr
+    %td{align: "left",valign: "bottom", bgcolor: "#000000", background: cover_url, width:"600", height:"150", style: "background: url('#{cover_url}') center / cover no-repeat #000000;"}
+      %img{src: group.logo_url(64)}
+
