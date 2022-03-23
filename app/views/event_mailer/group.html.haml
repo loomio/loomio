@@ -1,0 +1,18 @@
+- if @event.kind == "membership_request_approved"
+  - group = @event.eventable.group
+  - membership = @event.eventable
+- else
+  - group = @event.eventable
+  - membership = group.memberships.where(user_id: @recipient.id).first
+
+
+= render "event_mailer/common/notification", event: @event
+
+%div.max-width-600.px-2.py-1
+  .text-center
+    %br
+      = link_to t(:"email.to_join_group.accept_invitation"), membership_url(membership), class: "base-mailer__button base-mailer__button--primary"
+
+%p= t(:"email.loomio_app_description", site_name: AppConfig.theme[:site_name])
+= image_tag AppConfig.theme[:email_footer_logo_src], alt: "Logo", class: "thread-mailer__footer-logo"
+

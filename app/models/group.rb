@@ -181,6 +181,10 @@ class Group < ApplicationRecord
     member_ids
   end
 
+  def author_id
+    creator_id
+  end
+  
   def user_id
     creator_id
   end

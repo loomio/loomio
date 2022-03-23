@@ -16,7 +16,13 @@ module Dev::Scenarios::Auth
                        email_verified: true,
                        password: 'veryeasytoguess123')
 
-    GroupService.invite(group:group, params: {recipient_emails: ['newuser@example.com']}, actor: group.creator)
+    GroupService.invite(
+      group:group,
+      params: {
+        recipient_message: "hi, please join our sweet group!",
+        recipient_emails: ['newuser@example.com']
+      },
+      actor: group.creator)
 
     sign_in user if params[:signed_in]
 
@@ -31,7 +37,7 @@ module Dev::Scenarios::Auth
                        email_verified: true,
                        password: 'veryeasytoguess123')
 
-    params = {recipient_emails: ['existing-user@example.com']}
+    params = {recipient_emails: ['existing-user@example.com'], recipient_message: "hi, please join our sweet group!"}
 
     GroupService.invite(group:group, params: params, actor: group.creator)
 

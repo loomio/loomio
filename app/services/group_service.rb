@@ -57,14 +57,15 @@ module GroupService
       g.update_memberships_count
     end
 
-    # email should say, so and so has invited you to the following loomio groups.
-    # or so and so has added you to the following loomio groups.
-    all_memberships = Membership.not_archived.where(group_id: group.id, user_id: users.pluck(:id))
-    Events::AnnouncementCreated.publish!(group, actor, all_memberships, params[:message])
+    Events::MembershipCreated.publish!(
+      group: group,
+      actor: actor,
+      recipient_user_ids: users.pluck(:id),
+      recipient_message: params[:recipient_message])
 
-    EventBus.broadcast('group_invite', group, actor, all_memberships.size)
+    # EventBus.broadcast('group_invite', group, actor, all_memberships.size)
+    Membership.not_archived.where(group_id: group.id, user_id: users.pluck(:id))
 
-    all_memberships
   end
 
   def self.create(group:, actor: )

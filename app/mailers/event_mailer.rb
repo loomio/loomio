@@ -4,17 +4,17 @@ class EventMailer < BaseMailer
   def event(recipient_id, event_id)
     @recipient = User.find_by!(id: recipient_id)
     @event = Event.find_by!(id: event_id)
+    return if @event.eventable.respond_to?(:discarded?) && @event.eventable.discarded?
 
     if %w[Poll Stance Outcome].include? @event.eventable_type
       @poll = @event.eventable.poll 
     end
 
-    @discussion = @event.eventable.discussion
-    @utm_hash = { utm_medium: 'email', utm_campaign: @event.kind }
+    if @event.eventable.respond_to? :discussion
+      @discussion = @event.eventable.discussion
+    end
 
-    return if ENV['SPAM_REGEX'] && Regexp.new(ENV['SPAM_REGEX']).match(@recipient.email)
-    return if User::BOT_EMAILS.values.include?(@recipient.email)
-    return if @event.eventable.discarded?
+    @utm_hash = { utm_medium: 'email', utm_campaign: @event.kind }
 
     thread_kinds = %w[
       new_comment
@@ -42,21 +42,41 @@ class EventMailer < BaseMailer
       }
     end
 
+    template_name = @event.eventable_type.tableize.singularize
+    template_name = 'poll' if @event.eventable_type == 'Outcome'
+    template_name = 'group' if @event.eventable_type == 'Membership'
+
     send_single_mail(
       to: @recipient.email,
       from: from_user_via_loomio(@event.user),
       locale: @recipient.locale,
       reply_to: reply_to_address_with_group_name(model: @event.eventable, user: @recipient),
-      subject_prefix: group_name_prefix(@event.eventable),
+      subject_prefix: group_name_prefix(@event),
       subject_key: "notifications.with_title.#{@event.kind}",
       subject_params: {
         title: @event.eventable.title,
         poll_type: @poll && I18n.t("poll_types.#{@poll.poll_type}"),
-        actor: @event.user.name 
+        actor: @event.user.name,
+        site_name: AppConfig.theme[:site_name]
       },
-      subject_is_title: thread_kinds.include?(@event.kind)
+      subject_is_title: thread_kinds.include?(@event.kind),
+      template_name: template_name
     )
   end
 
+  private
+  def group_name_prefix(event)
+    model = event.eventable
+    if event.kind == "membership_created"
+      ''
+    else
+      model.group.present? ? "[#{model.group.handle || model.group.full_name}] " : ''
+    end
+  end
 
+  def reply_to_address_with_group_name(model:, user:)
+    return nil unless user.is_logged_in?
+    return nil unless model.respond_to?(:discussion_id) && model.discussion_id
+    "\"#{I18n.transliterate(model.discussion.group.full_name).truncate(50).delete('"')}\" <#{reply_to_address(model: model, user: user)}>"
+  end
 end

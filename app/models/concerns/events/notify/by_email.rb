@@ -10,9 +10,4 @@ module Events::Notify::ByEmail
       EventMailer.event(recipient_id, self.id).deliver_later
     end
   end
-
-  private
-  def email_method
-    kind
-  end
 end

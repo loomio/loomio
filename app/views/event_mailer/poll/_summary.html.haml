@@ -13,4 +13,4 @@
       = t(:"poll_common_form.closed")
       = format_date_for_humans(poll.closed_at, @recipient.time_zone || poll.time_zone)
 
-  = render "event_mailer/attachments", resource: poll
+  = render "event_mailer/common/attachments", resource: poll

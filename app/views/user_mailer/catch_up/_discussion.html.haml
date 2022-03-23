@@ -6,8 +6,8 @@
     .description= render_rich_text(discussion.description, discussion.description_format)
 
   - discussion.polls.active_or_closed_after(@time_start).each do |poll|
-    = render "event_mailer/title", eventable: poll
-    = render "event_mailer/tags", eventable: poll
+    = render "event_mailer/common/title", eventable: poll
+    = render "event_mailer/common/tags", eventable: poll
     = render "event_mailer/poll/summary", poll: poll
     = render "event_mailer/poll/vote", poll: poll
     = render "event_mailer/poll/results", poll: poll

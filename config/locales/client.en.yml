@@ -588,8 +588,8 @@ en:
       discussion_announced: "%{actor} invited you to a thread: %{title}"
       discussion_edited: "%{actor} edited the thread context: %{title}"
       discussion_closed: "%{actor} closed the thread: %{title}"
-      group_announced: "%{actor} invited you to a group: %{title}"
       invitation_accepted: "%{actor} accepted your invitation to join %{title}"
+      membership_created: "%{actor} invited you to join %{title} on %{site_name}"
       membership_requested: "%{actor} requested membership to %{title}"
       membership_request_approved: "%{actor} approved your request to join %{title}"
       new_comment: "%{actor} commented in: %{title}"
@@ -626,6 +626,9 @@ en:
       group_announced: "%{actor} invited you to a group"
       comment_replied_to: '%{actor} replied to you'
       new_discussion: "%{actor} started a thread"
+      membership_created: "%{actor} invited you to join %{title} on %{site_name}"
+      membership_requested: "%{actor} requested membership to %{title}"
+      membership_request_approved: "%{actor} approved your request to join %{title}"
       outcome_announced: '%{actor} shared a %{poll_type} outcome'
       outcome_created: "%{actor} shared a %{poll_type} outcome"
       outcome_updated: "%{actor} updated the outcome"
