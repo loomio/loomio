@@ -5,7 +5,7 @@
     = stylesheet_link_tag 'vtfy/type_and_layout'
     = stylesheet_link_tag 'vtfy/round'
     = stylesheet_link_tag 'vtfy/components'
-  %body
-    = raw EventMailer::REPLY_DELIMITER
-    .base-mailer__body
-      = yield
+  %body.max-width-600.text-center
+    = render 'base_mailer/app_logo'
+    = yield
+

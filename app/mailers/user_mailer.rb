@@ -1,5 +1,4 @@
 class UserMailer < BaseMailer
-  layout 'invite_people_mailer', only: [:deactivated, :membership_request_approved, :contact_request, :user_added_to_group, :login, :start_decision, :accounts_merged, :group_export_ready]
 
   def deactivated(email, recovery_code, locale)
     @recovery_code = recovery_code
