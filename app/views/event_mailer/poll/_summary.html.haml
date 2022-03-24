@@ -1,4 +1,4 @@
-.poll-mailer-common-summary.max-width-600
+.poll-mailer-common-summary
   - if poll.current_outcome
     %h2.text-subtitle-2= t(:"poll_common.outcome")
     %p= render_rich_text(poll.current_outcome.statement, poll.current_outcome.statement_format)

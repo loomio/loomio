@@ -6,7 +6,7 @@
 - with_author = (@recipient.id == event.eventable.author_id && I18n.exists?("notifications.#{with_title}.#{event.kind}_author")) ? "_author" : ''
 - key = "notifications.#{with_title}.#{event.kind}#{with_author}"
 
-%div.rounded.max-width-600.mb-4{style: 'border: 1px solid #eee'}
+.rounded.mb-4{style: 'border: 1px solid #eee'}
   .px-2.py-1
     %table.v-layout-table
       %tr
