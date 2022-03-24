@@ -7,6 +7,7 @@ if (process.env.RAILS_ENV == 'test' ||
     process.env.CHROME_HEADLESS ) { chromeOptions.push("headless") }
 
 module.exports = {
+  detailed_output: false,
   src_folders: ['./tests/e2e/specs'],
   output_folder: './tests/reports',
   webdriver: {
