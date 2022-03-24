@@ -47,7 +47,7 @@ module.exports = {
     page.click('.join-group-button')
     page.fillIn('.membership-request-form__introduction textarea', 'I have a reason')
     page.click('.membership-request-form__submit-btn')
-    page.expectFlash('You have requested membership')
+    page.expectFlash('You have requested to join')
   },
 
   'secret_group': (test) => {
