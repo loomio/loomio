@@ -242,10 +242,15 @@ class GroupExportService
         datas.each do |data|
           next unless (data['table'] == 'attachments')
           table = data['record']['record_type'].tableize
-          # DownloadAttachmentWorker.perform_async(data['record'])
-          table = data['record']['record_type'].tableize
           new_id = migrate_ids[table][data['record']['record_id']]
           DownloadAttachmentWorker.perform_async(data['record'], new_id)
+        end
+      end
+
+      datas.each do |data|
+        if data['table'] == 'polls'
+          new_id = migrate_ids['polls'][data['record']['id']]
+          Poll.find(new_id).update_counts!
         end
       end
     end
