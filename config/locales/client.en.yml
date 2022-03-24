@@ -590,14 +590,14 @@ en:
       discussion_closed: "%{actor} closed the thread: %{title}"
       invitation_accepted: "%{actor} accepted your invitation to join %{title}"
       membership_created: "%{actor} invited you to join %{title} on %{site_name}"
-      membership_requested: "%{actor} requested to join to %{title}"
+      membership_requested: "%{actor} requested to join %{title}"
       membership_request_approved: "%{actor} approved your request to join %{title}"
       new_comment: "%{actor} commented in: %{title}"
       new_coordinator: "%{actor} made you an admin of %{title}"
       new_discussion: "%{actor} started a thread: %{title}"
       outcome_announced: "%{actor} shared a %{poll_type} outcome: %{title}"
       outcome_created: "%{actor} shared a %{poll_type} outcome: %{title}"
-      outcome_updated: "%{actor} updated the outcome: %{title}"
+      outcome_updated: "%{actor} updated the %{poll_type} outcome: %{title}"
       outcome_review_due: "It's time to review the outcome of: %{title}"
       poll_announced: "%{actor} invited you to vote: %{title}"
       poll_closed_by_user: "%{actor} closed the %{poll_type}: %{title}"
@@ -612,11 +612,11 @@ en:
       poll_reminder: "%{actor} is reminding you to vote on %{title}"
       poll_reminder_wip: "%{actor} is reminding you to give feedback: %{title}"
       reaction_created: "%{actor} reacted %{reaction} to your %{model} in %{title}"
-      stance_created: "%{actor} voted in %{title}"
-      stance_updated: "%{actor} voted in %{title}"
+      stance_created: "%{actor} voted in: %{title}"
+      stance_updated: "%{actor} voted in: %{title}"
       stance_created_option: "%{actor} voted %{option} in %{title}"
       user_added_to_group: "%{actor} added you to the group: %{title}"
-      user_mentioned: "%{actor} mentioned you in %{title}"
+      user_mentioned: "%{actor} mentioned you in: %{title}"
       user_reminded: "%{actor} is reminding you to vote in: %{title}"
 
     without_title:
@@ -953,7 +953,7 @@ en:
     submit_button: Ask to join
     introduction_over_limit: Response too long
     messages:
-      membership_requested: 'You have requested membership to {{group}}'
+      membership_requested: 'You have requested to join {{group}}'
 
   revision_history_modal:
     aria_label: Revision history
