@@ -75,7 +75,7 @@ class GroupExportService
     },
     users: {
       events: %w[eventable],
-      discussions: %w[author_id],
+      discussions: %w[author_id discarded_by],
       attachments: %w[user_id],
       comments: %w[user_id discarded_by] ,
       discussion_readers: %w[user_id inviter_id],
