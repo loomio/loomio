@@ -70,7 +70,7 @@ class EventMailer < BaseMailer
   private
   def group_name_prefix(event)
     model = event.eventable
-    if event.kind == "membership_created"
+    if %w[membership_requested membership_created].include? event.kind
       ''
     else
       model.group.present? ? "[#{model.group.handle || model.group.full_name}] " : ''
