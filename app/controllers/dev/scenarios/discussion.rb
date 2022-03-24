@@ -178,15 +178,13 @@ module Dev::Scenarios::Discussion
   end
 
   def setup_discussion_mailer_user_mentioned_email
-    @group = Group.create!(name: 'Dirty Dancing Shoes')
-    @group.add_admin!(patrick)
-    @group.add_member! jennifer
+    @group = saved fake_group
+    GroupService.create(group: @group, actor: patrick)
 
-    @discussion = Discussion.new(title: 'What star sign are you?',
-                                 group: @group,
-                                 description: "hey @#{patrick.username} wanna dance?",
-                                 author: jennifer)
-    DiscussionService.create(discussion: @discussion, actor: @discussion.author)
+    @group.add_member! jennifer
+    @discussion = fake_discussion(group: @group,
+                                 description: "hey @#{patrick.username} wanna dance?")
+    DiscussionService.create(discussion: @discussion, actor: jennifer)
     last_email
   end
 

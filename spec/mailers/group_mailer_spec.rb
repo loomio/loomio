@@ -11,7 +11,7 @@ describe GroupMailer do
     end
 
     it 'renders the subject' do
-      expect(@mail.subject).to eq "#{@membership_request.name} has requested to join #{@group.full_name}"
+      expect(@mail.subject).to eq "#{@membership_request.name} requested to join #{@group.full_name}"
     end
 
     it "sends email to group admins" do

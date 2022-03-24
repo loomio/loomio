@@ -10,7 +10,8 @@ html{
 }
 
 p {
-    line-height: 1.5;
+    /*margin-bottom:16px*/
+    /*line-height: 1.5;*/
 }
 
 .max-width-600 {
@@ -43,9 +44,6 @@ html.overflow-y-hidden{
 }
 ol,ul{
     padding-left:24px
-}
-p{
-    margin-bottom:16px
 }
 .blockquote{
     padding:16px 0 16px 24px;

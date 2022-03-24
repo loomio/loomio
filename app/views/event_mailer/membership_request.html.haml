@@ -1,3 +1,8 @@
-= render 'event_mailer/common/notification_with_title', event: @event, message: @event.eventable.introduction
-= link_to t(:"email.membership_request.button_text"), group_membership_requests_url(@event.eventable.group, @utm_hash), class: "base-mailer__button base-mailer__button--accent"
+- group = @event.eventable.group
+- url = group_membership_requests_url(@event.eventable.group, @utm_hash)
+= render "event_mailer/group/cover_and_logo", group: group
+= render 'event_mailer/common/notification', with_title: true, url: url, event: @event, message: @event.eventable.introduction
+.max-width-600
+	.text-center
+		= link_to t(:"email.membership_request.button_text"), url, class: "base-mailer__button base-mailer__button--accent"
 = render 'event_mailer/common/footer', event: @event

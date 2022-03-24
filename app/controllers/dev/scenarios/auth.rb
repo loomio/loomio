@@ -63,6 +63,22 @@ module Dev::Scenarios::Auth
     last_email
   end
 
+  def setup_membership_request_email
+    group = saved fake_group(is_visible_to_public: true, membership_granted_upon: 'approval')
+    admin = saved fake_user
+    GroupService.create(group: group, actor: admin)
+    user = saved fake_user
+    membership_request = ::MembershipRequest.new(requestor: user, group: group, introduction: "Hey, I'm a shady person who just wants to post spam into your group!")
+
+    MembershipRequestService.create(
+      membership_request: membership_request,
+      actor: user
+    )
+    
+    sign_in admin
+    last_email
+  end
+
   def setup_deactivated_user
     patrick.update(deactivated_at: 1.day.ago)
     redirect_to dashboard_url

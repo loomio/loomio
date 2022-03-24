@@ -6,9 +6,8 @@
   - membership = group.memberships.where(user_id: @recipient.id).first
 
 
-= render "event_mailer/common/notification_with_title", event: @event, url: membership_url(membership)
+= render "event_mailer/common/notification", with_title: true, event: @event, url: membership_url(membership)
 = render "event_mailer/group/cover_and_logo", group: group
-
 %h1.text-h5=group.full_name
 
 =raw render_plain_text(group.description, group.description_format)
