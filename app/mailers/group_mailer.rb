@@ -1,6 +1,4 @@
 class GroupMailer < BaseMailer
-  layout 'invite_people_mailer'
-  
   def destroy_warning(group_id, recipient_id, deletor_id)
     @group = Group.find(group_id)
     @recipient = User.find(recipient_id)
