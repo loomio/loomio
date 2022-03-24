@@ -248,6 +248,7 @@ img.emoji
       line-height: 100%
       margin-right: 8px
       border-color: var(--v-grey-lighten1)
+      min-width: 15px
 
     li[data-checked="true"]::before
       display: inline-block
