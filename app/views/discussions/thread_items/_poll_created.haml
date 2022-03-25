@@ -39,5 +39,5 @@
         .lmo-markdown-wrapper.body-2.text--primary.poll-common-details-panel__details
           %p= render_rich_text(poll.details, poll.details_format)
 
-    = render "event_mailer/poll/results", event: event
+    = render "event_mailer/poll/results", poll: poll
 
