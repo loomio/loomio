@@ -1,10 +1,10 @@
 <% cover_url = (root_url.chomp('/') + (group.cover_url(300) || '')) %>
- 
+<% logo_url =  (root_url.chomp('/') + (group.logo_url(128) || '')) %>
 <table style="padding: 0" class="container" role="presentation" cellpadding=0 cellspacing=0 border=0 width=600 height=150>
 <tr>
     <td class="rounded" valign="bottom" style="background: url(<%=cover_url%>) #B5CFE3; background-size:cover; background-position:center;">
       <!--[if gte mso 9]>
-      <img style="object-fit: contain; width: 64px; height: 64px" src="<%=group.logo_url(128)%>" height=64 width=64>
+      <img src="<%=cover_url%>" height="150" width="600">
       <![endif]-->
       <img style="width: 64px; height: 64px" src="<%=group.logo_url(128)%>" height=64 width=64>
     </td>
