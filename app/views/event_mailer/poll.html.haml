@@ -5,7 +5,7 @@
 = render "event_mailer/common/tags", eventable: poll
 = render "event_mailer/poll/summary", poll: poll
 = render "event_mailer/poll/vote", poll: poll
-- if @event.kind != "poll_created" && (@event.kind != "poll_announced" && poll.decided_voters_count > 0)
+- if poll.decided_voters_count > 0
 	= render "event_mailer/poll/results", poll: poll
 - if %w[poll_announced poll_created].include?(@event.kind) && @event.eventable.discussion
 	%hr
