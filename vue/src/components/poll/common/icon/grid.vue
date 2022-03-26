@@ -4,22 +4,19 @@ import {sum, map, sortBy, find, compact, uniq, slice, parseInt} from 'lodash'
 export default
   props:
     poll: Object
-    zone: Object
     size: Number
-  data: ->
-    pollOptions: []
 
   created: ->
     @watchRecords
       collections: ['pollOptions']
       query: (store) =>
         max = 10
-        @pollOptions = slice @poll.pollOptions(), 0, max
-        @decidedVoterIds = slice @poll.decidedVoterIds(), 0, max
+        @results = slice @poll.results, 0, max
+        @voterIds = slice @poll.decidedVoterIds(), 0, max
 
   computed:
-    cellHeight: -> @size / @pollOptions.length
-    cellWidth: -> @size / @decidedVoterIds.length
+    cellHeight: -> @size / @results.length
+    cellWidth: -> @size / @voterIds.length
     cellSize: -> if (@cellHeight > @cellWidth) then @cellWidth else @cellHeight
 
   methods:
@@ -35,14 +32,14 @@ export default
 
 <template lang="pug">
 div.poll-common-icon-grid.d-flex.align-center.justify-center
-  table(v-if="decidedVoterIds.length")
-    tr(v-for="option in pollOptions" :key="option.id")
-      td( v-for="id in decidedVoterIds" :key="id")
-        .poll-meeting-icon__cell(:style="{height: cellSize+'px', width: cellSize +'px'}" :class="classForScore(option.voterScores[id])")
+  table(v-if="voterIds.length")
+    tr(v-for="option in results" :key="option.id")
+      td( v-for="id in voterIds" :key="id")
+        .poll-meeting-icon__cell(:style="{height: cellSize+'px', width: cellSize +'px'}" :class="classForScore(option.voter_scores[id])")
           | &nbsp;
-  table(v-if="decidedVoterIds.length == 0")
-    tr(v-for="option in pollOptions" :key="option.id")
-      td(v-for="option in pollOptions" :key="option.id")
+  table(v-if="voterIds.length == 0")
+    tr(v-for="option in results" :key="option.id")
+      td(v-for="option in results" :key="option.id")
         .poll-meeting-icon__cell.poll-meeting-chart__cell--empty(:style="{height: cellSize+'px', width: cellSize +'px'}")
           | &nbsp;
 </template>

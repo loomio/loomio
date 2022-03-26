@@ -15,6 +15,6 @@
       - poll.poll_options.each do |option|
         = render 'event_mailer/poll/poll_option', poll: poll, poll_option: option, link: poll.active?
     - unless poll.is_single_vote?
-      = link_to t(:"poll_common.vote_now"), tracked_url(poll), class: "base-mailer__button base-mailer__button--accent"
+      = render 'base_mailer/button', url: tracked_url(poll), text: t(:"poll_common.vote_now")
   - if poll.wip?
     %p= t(:"poll_common_action_panel.draft_mode", poll_type: t("poll_types.#{poll.poll_type}"))

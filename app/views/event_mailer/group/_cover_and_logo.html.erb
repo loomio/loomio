@@ -4,17 +4,12 @@
 <tr>
     <td class="rounded" valign="bottom" style="background: url(<%=cover_url%>) #B5CFE3; background-size:cover; background-position:center;">
       <!--[if gte mso 9]>
-      <v:rect xmlns_v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px; background-color:#B5CFE3;">
-        <v:fill type="frame" src="<%=cover_url%>" />
-        <v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0">
-          <![endif]-->
-          <div>
-            <!--add your content here-->
-            <img style="object-fit: contain; width: 64px; height: 64px" src="<%=group.logo_url(128)%>" height=64 width=64>
-          </div>
-          <!--[if gte mso 9]>
-        </v:textbox>
-      </v:rect>
+      <img style="object-fit: contain; width: 64px; height: 64px" src="<%=group.logo_url(128)%>" height=64 width=64>
+      <div class="text-center">
+      <![endif]-->
+      <img style="width: 64px; height: 64px" src="<%=group.logo_url(128)%>" height=64 width=64>
+      <!--[if gte mso 9]>
+      </div>
       <![endif]-->
     </td>
 </tr>
