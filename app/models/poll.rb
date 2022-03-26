@@ -136,12 +136,6 @@ class Poll < ApplicationRecord
   def chart_column
     case poll_type
     when 'proposal', 'count' then 'voter_percent'
-    when 'poll'
-      if poll.multiple_choice
-        'max_score_percent'
-      else
-        'voter_percent'
-      end
     else
       'max_score_percent'
     end
