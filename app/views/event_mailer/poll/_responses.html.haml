@@ -6,7 +6,7 @@
     - if poll.anonymous?
       %p= t(:"poll_common_action_panel.anonymous")
 
-  %table.v-layout-table
+  %table.v-layout-table{cellspacing: 0}
     - poll.stances.latest.with_reason.each do |stance|
       %tr
         %td{style: 'width: 36px; height: 36px'}
