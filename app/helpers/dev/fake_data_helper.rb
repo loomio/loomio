@@ -7,7 +7,7 @@ module Dev::FakeDataHelper
 
   # only return new'd objects
   def fake_user(args = {})
-    User.new({
+    u = User.new({
       name: [Faker::Name.name,
              Faker::TvShows::RuPaul.queen,
              Faker::Superhero.name,
@@ -20,6 +20,11 @@ module Dev::FakeDataHelper
       legal_accepted: true,
       experiences: {changePicture: true}
     }.merge(args))
+    # # u.attach io: open(Faker::Avatar.image)
+    # u.uploaded_avatar.attach io: File.new("#{Rails.root}/spec/fixtures/images/patrick.png"), filename: 'patrick.jpg'
+    # u.update(avatar_kind: :uploaded)
+    u
+
   end
 
   def fake_unverified_user(args = {})
