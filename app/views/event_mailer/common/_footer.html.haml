@@ -32,4 +32,4 @@
         - if action_name == 'user_mentioned'
           = t :'discussion_mailer.unsubscribe_from_user_mentioned_html'
           = t :"discussion_mailer.change_email_preferences_html", email_preferences_url: preferences_url(action_name)
-  = image_tag AppConfig.theme[:email_footer_logo_src], alt: "Logo", class: "thread-mailer__footer-logo"
+  = image_tag AppConfig.theme[:email_footer_logo_src], height: 24, alt: "Logo", class: "thread-mailer__footer-logo"
