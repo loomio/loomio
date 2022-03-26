@@ -9,7 +9,8 @@
   %table.v-layout-table
     - poll.stances.latest.with_reason.each do |stance|
       %tr
-        %td= render partial: 'base_mailer/avatar', locals: { user: stance.participant }
+        %td{style: 'width: 36px; height: 36px'}
+          = render partial: 'base_mailer/avatar', locals: { user: stance.participant }
         %td.poll-mailer-common-responses__reason.pl-2
           %span.text-subtitle-2
             #{stance.participant.name}:
