@@ -2,10 +2,7 @@
 %html
   %head
     = stylesheet_link_tag 'email'
-    = stylesheet_link_tag 'vtfy/type_and_layout'
-    = stylesheet_link_tag 'vtfy/round'
-    = stylesheet_link_tag 'vtfy/components'
   %body.max-width-600
     = raw EventMailer::REPLY_DELIMITER
-    .base-mailer__body
+    %main.base-mailer__body
       = yield
