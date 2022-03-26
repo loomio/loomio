@@ -2,7 +2,7 @@ class EventMailer < BaseMailer
   REPLY_DELIMITER = "﻿﻿"*4 # surprise! this is actually U+FEFF
 
   def event(recipient_id, event_id)
-    @recipient = User.find_by!(id: recipient_id)
+    @current_user = @recipient = User.find_by!(id: recipient_id)
     @event = Event.find_by!(id: event_id)
     return if @event.eventable.respond_to?(:discarded?) && @event.eventable.discarded?
 
