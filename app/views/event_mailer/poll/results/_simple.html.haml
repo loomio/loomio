@@ -37,7 +37,11 @@
                     %img.poll-mailer-proposal__chart-image{style: "height: 128px; width: 128px", src: google_pie_chart_url(poll), width: 128, height: 128}
             - when 'bar'
               %td.pr-2.py-2{style: 'width: 128px'}
-                %div.rounded{style: "background-color: #{option[:color]}; height: 24px; width: #{option[poll.chart_column]}%"} 
+                - if option[poll.chart_column] > 0
+                  %table{width: '100%'}
+                    %tr
+                      %td.no-border.rounded{style: "background-color: #{option[:color]}; height: 24px", height: 24, width: "#{option[poll.chart_column]}%"}
+                      %td.no-border
             - when 'grid'
               / - if (index == 0)
               /   %td.pr-2.py-2{rowspan: results.size} 
