@@ -185,7 +185,7 @@ module.exports = {
 
     page.loadPathNoApp('setup_invitation_email_to_user_with_password')
     page.expectText('.base-mailer__body', 'Accept invitation')
-    page.click('.base-mailer__button--primary', 2000)
+    page.click('.base-mailer__button', 2000)
     page.click('.auth-email-form__submit')
     page.expectText('.auth-signin-form', 'Welcome back,')
     page.click('.auth-signin-form__submit')
@@ -202,7 +202,7 @@ module.exports = {
 
     page.loadPathNoApp('setup_invitation_email_to_visitor')
     page.expectText('.base-mailer__body', 'Accept invitation')
-    page.click('.base-mailer__button--primary', 2000)
+    page.click('.base-mailer__button', 2000)
     page.expectText('.auth-form', 'You have been invited to join Dirty Dancing Shoes')
     page.click('.auth-email-form__submit')
     page.expectText('.auth-signup-form', 'New to')
@@ -219,7 +219,7 @@ module.exports = {
 
     page.loadPathNoApp('setup_invitation_email_to_visitor')
     page.expectText('.base-mailer__body', 'Accept invitation')
-    page.click('.base-mailer__button--primary', 2000)
+    page.click('.base-mailer__button', 2000)
     page.clearField('.auth-email-form__email input')
     page.fillIn('.auth-email-form__email input', 'max_von_sydow@merciless.com')
     // GK: NB: clearValue is not working right now - so the existing input value is being appended to instead
@@ -240,7 +240,7 @@ module.exports = {
 
     page.loadPathNoApp('setup_invite_user_with_alternative_email')
     page.expectText('.base-mailer__body', 'Accept invitation')
-    page.click('.base-mailer__button--primary', 2000)
+    page.click('.base-mailer__button', 2000)
     page.expectText('.auth-form', 'If you are already a Loomio user, sign in with your existing account')
     page.clearField('.auth-email-form__email input')
     page.fillIn('.auth-email-form__email input', 'existing-user@example.com')
@@ -256,7 +256,7 @@ module.exports = {
 
     page.loadPathNoApp('setup_invite_user_with_alternative_email?signed_in=1')
     page.expectText('.base-mailer__body', 'Accept invitation')
-    page.click('.base-mailer__button--primary', 2000)
+    page.click('.base-mailer__button', 2000)
     page.expectNoElement('.auth-modal')
     page.expectText('.group-page__name', 'Dirty Dancing Shoes')
   },
@@ -266,7 +266,7 @@ module.exports = {
 
     page.loadPathNoApp('setup_invite_user_with_correct_email')
     page.expectText('.base-mailer__body', 'Accept invitation')
-    page.click('.base-mailer__button--primary', 2000)
+    page.click('.base-mailer__button', 2000)
     // page.clearField('.auth-email-form__email input')
     // page.fillIn('.auth-email-form__email input', 'existing-user@example.com')
     page.click('.auth-email-form__submit')
@@ -281,7 +281,7 @@ module.exports = {
 
     page.loadPathNoApp('setup_invite_user_with_correct_email?signed_in=1')
     page.expectText('.base-mailer__body', 'Accept invitation')
-    page.click('.base-mailer__button--primary', 2000)
+    page.click('.base-mailer__button', 2000)
     page.expectText('.group-page__name', 'Dirty Dancing Shoes')
   }
 
