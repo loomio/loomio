@@ -272,7 +272,9 @@ module.exports = {
     // change dropdown here
 
     page.click('.poll-common-form__submit')
+    page.pause(300)
     page.expectElement('.poll-members-form__submit')
+    page.pause(300)
     page.click('.dismiss-modal-button')
 
     page.expectText('.poll-common-card__title', 'A new proposal')
