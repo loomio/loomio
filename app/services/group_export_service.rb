@@ -74,12 +74,11 @@ class GroupExportService
       events: %w[eventable]
     },
     users: {
-      events: %w[eventable],
+      events: %w[eventable user_id],
       discussions: %w[author_id discarded_by],
       attachments: %w[user_id],
       comments: %w[user_id discarded_by] ,
       discussion_readers: %w[user_id inviter_id],
-      events: %w[user_id],
       groups: %w[creator_id],
       membership_requests: %w[requestor_id responder_id],
       memberships: %w[user_id inviter_id],
