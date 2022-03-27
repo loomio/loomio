@@ -8,6 +8,7 @@ import {sum, map, sortBy, find, compact, uniq} from 'lodash'
 export default
   props:
     poll: Object
+    zone: Object
 
   data: ->
     decidedVoters: []
