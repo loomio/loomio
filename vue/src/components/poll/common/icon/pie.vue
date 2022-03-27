@@ -17,6 +17,9 @@ export default
     radius: ->
       @size / 2.0
 
+    results: ->
+      @poll.results.filter((r) => r[@poll.chartColumn]).length
+
   methods:
     arcPath: (startAngle, endAngle) ->
       rad = Math.PI / 180
@@ -30,7 +33,7 @@ export default
       @shapes.forEach (shape) -> shape.remove()
       start = 90
 
-      switch @poll.results.length
+      switch @results
         when 0
           @shapes.push @svgEl.circle(@size).attr
             'stroke-width': 0
