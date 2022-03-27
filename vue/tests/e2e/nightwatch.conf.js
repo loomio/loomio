@@ -10,6 +10,9 @@ module.exports = {
   detailed_output: false,
   src_folders: ['./tests/e2e/specs'],
   output_folder: './tests/reports',
+  selenium: {
+    start_process: false
+  },
   webdriver: {
     start_process: true,
     server_path: "node_modules/.bin/chromedriver",
@@ -27,7 +30,7 @@ module.exports = {
       skip_testcases_on_fail: false,
       desiredCapabilities: {
         browserName: 'chrome',
-        chromeOptions : { w3c: false, args: chromeOptions },
+        chromeOptions : { w3c: true, args: chromeOptions },
         javascriptEnabled: true,
         acceptSslCerts: true,
         loggingPrefs: { 'browser': 'ALL' }
