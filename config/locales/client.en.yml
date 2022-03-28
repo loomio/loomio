@@ -1096,7 +1096,7 @@ en:
 
   group_form:
     thread_defaults_help: Default settings for new threads
-    click_to_change_image: Cover Image and Logo (click to change)
+    click_to_change_image: Click to change the cover image (4x1) or logo (1x1)
     permissions_explaination: |
       There are two levels of membership a person can have to a group: admin and member.
       Admins can edit group settings, make other people admins, and perform all the actions listed below.
