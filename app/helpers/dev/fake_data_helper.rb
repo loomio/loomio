@@ -202,7 +202,7 @@ module Dev::FakeDataHelper
   def fake_score(poll)
     case poll.poll_type
     when 'score'
-      ((-9)..0).to_a.sample
+      ((poll.min_score)..(poll.max_score)).to_a.sample
     when 'ranked_choice'
       (1..8).to_a.sample
     when 'meeting'
@@ -218,7 +218,6 @@ module Dev::FakeDataHelper
 
   def fake_stance(args = {})
     poll = args[:poll] || saved(fake_poll)
-
 
     choice = if poll.minimum_stance_choices > 1
       poll.poll_options.sample(poll.minimum_stance_choices).map do |option|
