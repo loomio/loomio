@@ -36,7 +36,7 @@ class PollOption < ApplicationRecord
     if poll.poll_type == 'meeting'
       voter_scores.keys.map(&:to_i)
     else
-      voter_scores.filter{|id, score| score > 0 }.keys.map(&:to_i)
+      voter_scores.filter{|id, score| score != 0 }.keys.map(&:to_i)
     end
   end
 

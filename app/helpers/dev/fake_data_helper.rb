@@ -192,6 +192,7 @@ module Dev::FakeDataHelper
       options[:custom_fields][:minimum_stance_choices] = 3
     when 'score'
       options[:custom_fields][:max_score] = 9
+      options[:custom_fields][:min_score] = -9
     end
 
     Poll.new(options)
@@ -200,7 +201,9 @@ module Dev::FakeDataHelper
 
   def fake_score(poll)
     case poll.poll_type
-    when 'score', 'ranked_choice'
+    when 'score'
+      ((-9)..0).to_a.sample
+    when 'ranked_choice'
       (1..8).to_a.sample
     when 'meeting'
       if poll.can_respond_maybe

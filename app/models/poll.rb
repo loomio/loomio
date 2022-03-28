@@ -172,8 +172,10 @@ class Poll < ApplicationRecord
       %w[bar name voter_percent voter_count voters]
     when 'ranked_choice'
       %w[bar name rank score_percent score average]
-    when 'dot_vote', 'score'
+    when 'dot_vote'
       %w[bar name score_percent score average voter_count voters]
+    when 'score'
+      %w[bar name score average voter_count voters]
     when 'poll'
       if poll.multiple_choice
         %w[bar name score_percent voter_count voters]
