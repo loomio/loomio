@@ -14,6 +14,6 @@ To learn about working within the Loomio Co-op, read the [Loomio Coop Handbook](
 
 ### Contact
 
-If you want to get in touch with us, send an [email](mailto:contact@loomio.com) or a [tweet](https://twitter.com/Loomio).
+If you want to get in touch with us, send us an [email](mailto:contact@loomio.com) or a [tweet](https://twitter.com/Loomio).
 
 Loomio is free software released under the [GNU Affero General Public License](LICENSE.txt)
