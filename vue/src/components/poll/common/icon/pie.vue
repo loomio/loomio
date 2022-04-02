@@ -18,7 +18,7 @@ export default
       @size / 2.0
 
     results: ->
-      @poll.results.filter((r) => r[@poll.chartColumn]).length
+      @poll.results.filter((r) => r[@poll.chartColumn])
 
   methods:
     arcPath: (startAngle, endAngle) ->
@@ -33,18 +33,18 @@ export default
       @shapes.forEach (shape) -> shape.remove()
       start = 90
 
-      switch @results
+      switch @results.length
         when 0
           @shapes.push @svgEl.circle(@size).attr
             'stroke-width': 0
             fill: '#000'
         when 1
-          each @poll.results, (option) =>
+          each @results, (option) =>
             @shapes.push @svgEl.circle(@size).attr
               'stroke-width': 0
               fill: option.color
         else
-          each @poll.results, (option) =>
+          each @results, (option) =>
             return unless option.voter_count > 0
             angle = 360 * (parseFloat(option.voter_count) / parseFloat(@poll.votersCount))
             @shapes.push @svgEl.path(@arcPath(start, start + angle)).attr
