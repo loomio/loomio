@@ -9,6 +9,7 @@ class PollService
     poll.save!
 
     Stance.create!(participant: actor, poll: poll, admin: true, reason_format: actor.default_format)
+    poll.update_counts!
     EventBus.broadcast('poll_create', poll, actor)
     Events::PollCreated.publish!(poll, actor)
   end
@@ -69,7 +70,6 @@ class PollService
                              user_ids: params[:recipient_user_ids],
                              emails: params[:recipient_emails],
                              audience: params[:recipient_audience])
-
 
     # params[:notify_recipients] will often be nil/undefined, which means we do want to notify
     unless params[:notify_recipients] == false
@@ -133,7 +133,15 @@ class PollService
       end
     end
 
-    new_stances = users.map do |user|
+    reinvited_user_ids = Stance.revoked.where(poll_id: poll.id).
+                                pluck(:participant_id) & users.pluck(:id)
+    Stance.where(
+      poll_id: poll.id,
+      participant_id: reinvited_user_ids).each do |stance|
+      stance.update(revoked_at: nil, inviter_id: actor.id)
+    end
+
+    new_stances = users.where.not(id: reinvited_user_ids).map do |user|
       Stance.new(participant: user,
                  poll: poll,
                  inviter: actor,
@@ -143,7 +151,7 @@ class PollService
                  created_at: Time.zone.now)
     end
 
-    Stance.import(new_stances, on_duplicate_key_ignore: true)
+    Stance.import(new_stances)
 
     poll.reset_latest_stances!
     poll.update_counts!

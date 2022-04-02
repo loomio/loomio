@@ -52,8 +52,6 @@ class Poll < ApplicationRecord
   enum notify_on_closing_soon: {nobody: 0, author: 1, undecided_voters: 2, voters: 3}
   enum hide_results: {off: 0, until_vote: 1, until_closed: 2}
 
-  after_save :update_counts!
-
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
   has_many :voters,       -> { merge(Stance.latest) }, through: :stances, source: :participant

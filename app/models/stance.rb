@@ -23,7 +23,7 @@ class Stance < ApplicationRecord
   has_many :stance_choices, dependent: :destroy
   has_many :poll_options, through: :stance_choices
 
-  has_paper_trail only: [:reason, :option_scores]
+  has_paper_trail only: [:reason, :option_scores, :revoked_at, :inviter_id]
 
   accepts_nested_attributes_for :stance_choices
 
@@ -44,6 +44,7 @@ class Stance < ApplicationRecord
   scope :in_organisation, ->(group) { joins(:poll).where("polls.group_id": group.id_and_subgroup_ids) }
   scope :decided,        -> { where("stances.cast_at IS NOT NULL") }
   scope :undecided,      -> { where("stances.cast_at IS NULL") }
+  scope :revoked,  -> { where("revoked_at IS NOT NULL") }
 
   scope :redeemable, -> { where('stances.inviter_id IS NOT NULL
                              AND stances.cast_at IS NULL
