@@ -3,6 +3,7 @@ class ChatbotService
     actor.ability.authorize! :create, chatbot
     return false unless chatbot.valid?
     chatbot.save!
+    publish_configs!
   end
 
   def self.update(chatbot:, params:, actor:)
@@ -11,6 +12,7 @@ class ChatbotService
     chatbot.assign_attributes(params)
     return false unless chatbot.valid?
     chatbot.save!
+    publish_configs!
   end
 
   def self.destroy(chatbot:, actor:)
