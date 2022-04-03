@@ -241,6 +241,10 @@ class DiscussionService
                      user_id: users.pluck(:id)).find_each do |m|
       volumes[m.user_id] = m.volume
     end
+    
+    DiscussionReader.
+      where(discussion_id: discussion.id, user_id: users.map(&:id)).
+      where("revoked_at is not null").update_all(revoked_at: nil)
 
     new_discussion_readers = users.map do |user|
       DiscussionReader.new(user: user,
