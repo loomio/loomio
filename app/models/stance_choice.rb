@@ -8,8 +8,8 @@ class StanceChoice < ApplicationRecord
   validate :total_score_is_valid
   validates :score, numericality: { equal_to: 1 }, if: Proc.new { |sc| sc.stance && !sc.stance.cast_at && sc.poll && !sc.has_variable_score }
 
-  scope :dangling, -> { joins('left join stances on stances.id = stance_id').where('stances.id is null') }
-  scope :latest, -> { joins(:stance).where("stances.latest": true) }
+  scope :dangling, -> { joins('left join stances on stances.id = stance_id').where('stances.id': nil) }
+  scope :latest, -> { joins(:stance).where('stances.latest': true).where('stances.revoked_at': nil) }
   scope :reasons_first, -> {
     joins(:stance).order(Arel.sql("CASE coalesce(stances.reason, '') WHEN '' THEN 1 ELSE 0 END"))
                   .order(:created_at)
