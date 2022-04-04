@@ -3,7 +3,7 @@ class Events::MembershipRequested < Event
   include Events::Notify::ByEmail
 
   def self.publish!(membership_request)
-    super membership_request
+    super membership_request, user: membership_request.requestor
   end
 
   private

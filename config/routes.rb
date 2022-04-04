@@ -45,6 +45,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :attachments, only: [:index, :destroy]
       resources :webhooks, only: [:create, :destroy, :index, :update]
+      resources :chatbots, only: [:create, :destroy, :index, :update] do
+        post :test, on: :collection
+      end
 
       resources :boot, only: [] do
         get :site, on: :collection
@@ -285,7 +288,7 @@ Rails.application.routes.draw do
   resources :contact_messages, only: [:new, :create] do
     get :show, on: :collection
   end
-  
+
   resources :received_emails, only: :create
   post :email_processor, to: 'received_emails#reply'
 
@@ -299,7 +302,6 @@ Rails.application.routes.draw do
 
   get '/robots'     => 'robots#show'
   get '/manifest'   => 'manifest#show', format: :json
-  get '/help/markdown' => 'help#markdown'
   get '/help/api'   => 'help#api'
 
   get '/start_group', to: redirect('/try')
@@ -375,11 +377,11 @@ Rails.application.routes.draw do
     end
   end
 
-  scope :facebook do
-    get :webhook,                         to: 'identities/facebook#verify',   as: :facebook_verify
-    post :webhook,                        to: 'identities/facebook#webhook',  as: :facebook_webhook
-    get :webview,                         to: 'identities/facebook#webview',  as: :facebook_webview
-  end
+  # scope :facebook do
+  #   get :webhook,                         to: 'identities/facebook#verify',   as: :facebook_verify
+  #   post :webhook,                        to: 'identities/facebook#webhook',  as: :facebook_webhook
+  #   get :webview,                         to: 'identities/facebook#webview',  as: :facebook_webview
+  # end
 
   # scope :slack do
   #   get  :install,                        to: 'identities/slack#install',     as: :slack_install

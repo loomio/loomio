@@ -79,7 +79,7 @@ v-main
   v-container.group-page.max-width-1024(v-if="group")
     div(style="position: relative")
       v-img(style="border-radius: 8px" max-height="256" :src="group.coverUrl" eager)
-      v-img(v-if="group.logoUrl" style="border-radius: 8px; position: absolute; bottom: 0" height="128" width="128" :src="group.logoUrl" eager)
+      v-img.ma-2.rounded(v-if="group.logoUrl" style="border-radius: 8px; position: absolute; bottom: 0" height="96" width="96" :src="group.logoUrl" eager)
     h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
       span(v-if="group && group.parentId")
         router-link(:to="urlFor(group.parent())") {{group.parent().name}}

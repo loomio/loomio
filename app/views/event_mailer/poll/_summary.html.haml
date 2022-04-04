@@ -1,0 +1,16 @@
+.poll-mailer-common-summary
+  - if poll.current_outcome
+    %h2.text-subtitle-2= t(:"poll_common.outcome")
+    %p= render_rich_text(poll.current_outcome.statement, poll.current_outcome.statement_format)
+    %h2.text-subtitle-2= t(:"poll_types.#{poll.poll_type}")
+
+  %p= render_rich_text(poll.details, poll.details_format)
+
+  - if poll.active?
+    %p= t(:"poll_mailer.common.you_have_until", when: format_date_for_humans(poll.closing_at, @recipient.time_zone || poll.time_zone))
+  - if poll.closed?
+    %h3.text-subtitle-2
+      = t(:"poll_common_form.closed")
+      = format_date_for_humans(poll.closed_at, @recipient.time_zone || poll.time_zone)
+
+  = render "event_mailer/common/attachments", resource: poll

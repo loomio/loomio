@@ -1,0 +1,19 @@
+- stance = item.eventable
+- participant = stance.participant
+
+%table
+  %tr
+    %td.icon
+      = link_to user_url(participant) do
+        %div{class: "medium-user-avatar #{participant.avatar_kind}-user-avatar avatar-canvas"}
+          = render "avatar", user: participant
+    %td= participant.name
+    %td
+      %table
+        - stance.stance_choices.order("score desc").limit(5).each do |choice|
+          = render "poll_mailer/common/poll_option", poll_option: choice.poll_option, stance_choice: choice, small: true, recipient: recipient
+      - if stance.stance_choices.count > 5
+        = t 'poll_mailer.common.more_undecided', {count: (stance.stance_choices.count - 5)}
+
+
+%p= render_rich_text(stance.reason, stance.reason_format)

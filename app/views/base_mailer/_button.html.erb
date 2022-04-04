@@ -1,0 +1,13 @@
+<% bgcolor = AppConfig.theme[:primary_color] %>
+<% fgcolor = "#ffffff" %>
+<a class="base-mailer__button"
+   href="<%=url%>"
+   style="background-color: <%=bgcolor%>; font-size: 18px; font-weight: bold; text-decoration: none; padding: 12px 24px; color: <%=fgcolor%>; border-radius: 5px; display: inline-block; mso-padding-alt: 0;">
+  <!--[if mso]>
+  <i style="letter-spacing: 25px; mso-font-width: -100%; mso-text-raise: 30pt;">&nbsp;</i>
+  <![endif]-->
+  <span style="mso-text-raise: 15pt; color: <%=fgcolor%>"><%=text%></span>
+  <!--[if mso]>
+  <i style="letter-spacing: 25px; mso-font-width: -100%;">&nbsp;</i>
+  <![endif]-->
+</a>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_05_055732) do
+ActiveRecord::Schema.define(version: 2022_03_24_091325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -144,6 +144,21 @@ ActiveRecord::Schema.define(version: 2022_03_05_055732) do
     t.index ["creator_id"], name: "index_blazer_queries_on_creator_id"
   end
 
+  create_table "chatbots", force: :cascade do |t|
+    t.string "kind"
+    t.string "server"
+    t.string "channel"
+    t.string "access_token"
+    t.integer "author_id"
+    t.integer "group_id"
+    t.jsonb "event_kinds", default: [], null: false
+    t.boolean "include_body", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.index ["group_id"], name: "index_chatbots_on_group_id"
+  end
+
   create_table "cohorts", id: :serial, force: :cascade do |t|
     t.date "start_on"
     t.date "end_on"
@@ -245,6 +260,7 @@ ActiveRecord::Schema.define(version: 2022_03_05_055732) do
     t.string "content_locale"
     t.jsonb "link_previews", default: [], null: false
     t.datetime "pinned_at"
+    t.integer "discarded_by"
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["group_id"], name: "index_discussions_on_group_id"

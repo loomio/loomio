@@ -8,6 +8,7 @@ export default
   props:
     attachments: [Array, Object]
 </script>
+
 <template lang="pug">
 .attachment-list(v-if="attachments && attachments.length")
   attachment-list-item(v-for="attachment in attachments" :key="attachment.id" :attachment="attachment")

@@ -1,0 +1,7 @@
+%div.poll-mailer__stance
+  %table
+    - stance.stance_choices.each do |choice|
+      = render 'event_mailer/poll/poll_option', poll_option: choice.poll_option, stance_choice: choice
+  - if stance.participant == @recipient && stance.poll.active?
+    = link_to t(:"poll_common.change_vote"), tracked_url(stance.poll, change_vote: 1)
+  %p= render_rich_text(stance.reason, stance.reason_format)

@@ -1,0 +1,8 @@
+<!DOCTYPE HTML>
+%html
+  %head
+    = stylesheet_link_tag 'email'
+  %body.max-width-600
+    = raw EventMailer::REPLY_DELIMITER
+    %main.base-mailer__body
+      = yield

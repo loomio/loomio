@@ -45,7 +45,8 @@ export default
     someRecipients: ->
       @poll.recipientAudience ||
       @poll.recipientUserIds.length ||
-      @poll.recipientEmails.length
+      @poll.recipientEmails.length ||
+      @poll.recipientChatbotIds.length
 
   methods:
     canPerform: (action, poll, user) ->
@@ -67,10 +68,11 @@ export default
 
     inviteRecipients: ->
       @saving = true
-      Records.announcements.remote.post '',
+      Records.remote.post 'announcements',
         poll_id: @poll.id
         recipient_audience: @poll.recipientAudience
         recipient_user_ids: @poll.recipientUserIds
+        recipient_chatbot_ids: @poll.recipientChatbotIds
         recipient_emails: @poll.recipientEmails
         recipient_message: @message
         exclude_members: true

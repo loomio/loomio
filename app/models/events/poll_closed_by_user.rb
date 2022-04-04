@@ -1,6 +1,7 @@
 class Events::PollClosedByUser < Event
   include Events::LiveUpdate
   include Events::Notify::ThirdParty
+  
   def self.publish!(poll, actor)
     super poll,
           user: actor,

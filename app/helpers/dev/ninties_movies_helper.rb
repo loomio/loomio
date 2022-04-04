@@ -79,9 +79,12 @@ module Dev::NintiesMoviesHelper
   def create_group
     unless @group
       @group = Group.new(name: 'Dirty Dancing Shoes',
-                                  group_privacy: 'closed',
-                                  handle: 'shoes',
-                                  discussion_privacy_options: 'public_or_private', creator: patrick)
+                        description: 'The best place for dancing shoes. _every_ shoe is **dirty**!',
+                        group_privacy: 'closed',
+                        handle: 'shoes',
+                        discussion_privacy_options: 'public_or_private', creator: patrick)
+      file = open(Rails.root.join('public','brand','icon_sky_150h.png'))
+      @group.logo.attach(io: file, filename: 'logo.png')
       GroupService.create(group: @group, actor: @group.creator)
       @group.add_admin!  patrick
       @group.add_member! jennifer

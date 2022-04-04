@@ -6,14 +6,13 @@ class Poll < ApplicationRecord
   include HasMentions
   include MessageChannel
   include SelfReferencing
-  include HasMailer
   include Reactable
   include HasCreatedEvent
   include HasRichText
   include HasTags
   include Discard::Model
 
-  is_rich_text    on: :details
+  is_rich_text on: :details
 
   extend  NoSpam
   no_spam_for :title, :details
@@ -25,11 +24,12 @@ class Poll < ApplicationRecord
                     :minimum_stance_choices,
                     :can_respond_maybe,
                     :deanonymize_after_close,
-                    :max_score
+                    :max_score,
+                    :min_score
 
   TEMPLATE_FIELDS = %w(material_icon translate_option_name can_vote_anonymously
                        can_add_options can_remove_options author_receives_outcome
-                       must_have_options chart_type has_option_icons
+                       must_have_options has_option_icons
                        has_variable_score voters_review_responses
                        dates_as_options required_custom_fields has_option_score_counts
                        require_stance_choices require_all_choices prevent_anonymous
@@ -51,8 +51,6 @@ class Poll < ApplicationRecord
 
   enum notify_on_closing_soon: {nobody: 0, author: 1, undecided_voters: 2, voters: 3}
   enum hide_results: {off: 0, until_vote: 1, until_closed: 2}
-
-  after_save :update_counts!
 
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
@@ -134,6 +132,73 @@ class Poll < ApplicationRecord
 
   delegate :locale, to: :author
 
+  def chart_column
+    case poll_type
+    when 'proposal', 'count' then 'voter_percent'
+    else
+      'max_score_percent'
+    end
+  end
+
+  def results_include_undecided
+    poll_type != "meeting"
+  end
+  
+  def chart_type
+    case poll_type
+    when 'proposal' then 'pie'
+    when 'meeting' then 'grid'
+    else
+      'bar'
+    end
+  end
+
+  def icon_type
+    case poll_type
+    when 'proposal' then 'pie'
+    when 'meeting' then 'grid'
+    when 'count' then 'count'
+    else
+      'bar'
+    end
+  end
+
+  def result_columns
+    case poll_type
+    when 'proposal'
+      %w[pie name voter_percent voter_count voters]
+    when 'count'
+      %w[bar name voter_percent voter_count voters]
+    when 'ranked_choice'
+      %w[bar name rank score_percent score average]
+    when 'dot_vote'
+      %w[bar name score_percent score average voter_count voters]
+    when 'score'
+      %w[bar name score average voter_count voters]
+    when 'poll'
+      if poll.multiple_choice
+        %w[bar name score_percent voter_count voters]
+      else
+        %w[bar name voter_percent voter_count voters]
+      end
+    when 'meeting'
+      %w[grid name score voters]
+    end
+  end
+
+  def poll_option_name_format
+    case poll_type
+    when 'proposal', 'count' then 'i18n'
+    when 'meeting' then 'iso8601'
+    else
+      'none'
+    end
+  end
+
+  def results
+    PollService.calculate_results(self, self.poll_options)
+  end
+
   def user_id
     author_id
   end
@@ -195,17 +260,6 @@ class Poll < ApplicationRecord
     end
   end
 
-  # creates a hash which has a PollOption as a key, and a list of stance
-  # choices associated with that PollOption as a value
-  def grouped_stance_choices(since: nil)
-    @grouped_stance_choices ||= stance_choices.reasons_first
-                                              .where("stance_choices.created_at > ?", since || 100.years.ago)
-                                              .includes(:poll_option, stance: :participant)
-                                              .where("stances.latest": true)
-                                              .to_a
-                                              .group_by(&:poll_option)
-  end
-
   def group
     super || NullGroup.new
   end
@@ -241,7 +295,7 @@ class Poll < ApplicationRecord
     poll_options.reload.each(&:update_counts!)
     update_columns(
       stance_counts: poll_options.map(&:total_score), # should rename to option scores
-      voters_count: stances.latest.count,
+      voters_count: stances.latest.count, # should rename to stances_count
       undecided_voters_count: stances.latest.undecided.count,
       versions_count:  versions.count
     )

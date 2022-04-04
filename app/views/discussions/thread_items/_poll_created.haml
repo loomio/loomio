@@ -1,4 +1,5 @@
 - poll = item.eventable
+- event = item
 .poll-created
   .thread-item.px-3.pb-1
     #sequence-3.layout.lmo-action-dock-wrapper{:style => "margin-left: 0px;"}
@@ -38,4 +39,5 @@
         .lmo-markdown-wrapper.body-2.text--primary.poll-common-details-panel__details
           %p= render_rich_text(poll.details, poll.details_format)
 
-    = render "discussions/polls/#{poll.poll_type}/chart", poll: poll
+        = render "event_mailer/poll/results", poll: poll
+

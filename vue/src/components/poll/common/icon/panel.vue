@@ -17,17 +17,16 @@ export default
       type: Number
       default: 40
   computed:
-    chartType: -> @poll.chartType()
     myStance: -> myLastStanceFor(@poll)
     showPosition: -> 'proposal count'.split(' ').includes(@poll.pollType)
 </script>
 
 <template lang="pug">
 .poll-common-chart-preview(:style="{width: size+'px', height: size+'px'}" aria-hidden="true")
-  bar-icon(v-if="chartType == 'bar'" :poll="poll" :size='size')
-  count-icon(v-if="chartType == 'count'" :poll="poll" :size='size')
-  pie-icon(v-if="chartType == 'pie'" :poll="poll" :size='size')
-  grid-icon(v-if="chartType == 'grid'" :poll="poll" :size='size')
+  bar-icon(v-if="poll.iconType == 'bar'" :poll="poll" :size='size')
+  count-icon(v-if="poll.iconType == 'count'" :poll="poll" :size='size')
+  pie-icon(v-if="poll.iconType == 'pie'" :poll="poll" :size='size')
+  grid-icon(v-if="poll.iconType == 'grid'" :poll="poll" :size='size')
   .poll-common-chart-preview__stance-container(v-if='showMyStance && (myStance || poll.iCanVote())')
     poll-common-stance-icon(:poll="poll" :stance="myStance" :size="stanceSize")
 

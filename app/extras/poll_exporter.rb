@@ -18,11 +18,13 @@ class PollExporter
 
     {
       title: @poll.title,
-      author: @poll.author.name,
+      author_id: @poll.author.id,
+      author_name: @poll.author.name,
       created_at: @poll.created_at,
-      closing_at:  (@poll.closing_at unless @poll.closed_at),
       closed_at: @poll.closed_at,
-      engagement: I18n.t("poll.export.percent_voted", num: @poll.decided_voters_count, denom: @poll.voters_count, percent: "#{@poll.cast_stances_pct}%"),
+      decided_voters_count: @poll.decided_voters_count,
+      undecided_voters_count: @poll.undecided_voters_count,
+      voters_count: @poll.voters_count,
       stances: @poll.voters_count,
       participants: @poll.members.count,
       details: @poll.details,
@@ -37,7 +39,7 @@ class PollExporter
 
   def stance_matrix
     rows = []
-    rows << [I18n.t("poll.export.participant"), I18n.t("poll.export.user_id"), @poll.poll_options.map(&:display_name), I18n.t("poll.export.reason")].flatten
+    rows << [I18n.t("poll.export.participant"), I18n.t("poll.export.user_id"), @poll.poll_options.map(&:name), I18n.t("poll.export.reason")].flatten
 
     ## for each participant show the
     @poll.stances.latest.each do |stance|

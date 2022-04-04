@@ -43,10 +43,11 @@ module Dev::Scenarios::Discussion
     DiscussionService.update(discussion: create_discussion,
                              params: {recipient_message: 'this is an edit message'},
                              actor: patrick)
-    poll = fake_poll(discussion: create_discussion, group: create_discussion.group)
-    PollService.create(poll: poll, actor: patrick)
-    stance = fake_stance(poll: poll, reason: 'yes yes')
-    stance_event = StanceService.create(stance: stance, actor: patrick)
+    poll = fake_poll
+    poll = create_fake_poll_with_stances(discussion: create_discussion, group: create_discussion.group)
+    # PollService.create(poll: poll, actor: patrick)
+    # stance = fake_stance(poll: poll, reason: 'yes yes')
+    # stance_event = StanceService.create(stance: stance, actor: patrick)
     PollService.update(poll: poll, actor: patrick, params: {recipient_message: 'updated the poll here <br> newline'})
     DiscussionService.close(discussion: create_discussion, actor: patrick)
     UserMailer.catch_up(jennifer.id, 1.hour.ago).deliver_now
@@ -177,15 +178,13 @@ module Dev::Scenarios::Discussion
   end
 
   def setup_discussion_mailer_user_mentioned_email
-    @group = Group.create!(name: 'Dirty Dancing Shoes')
-    @group.add_admin!(patrick)
-    @group.add_member! jennifer
+    @group = saved fake_group
+    GroupService.create(group: @group, actor: patrick)
 
-    @discussion = Discussion.new(title: 'What star sign are you?',
-                                 group: @group,
-                                 description: "hey @#{patrick.username} wanna dance?",
-                                 author: jennifer)
-    DiscussionService.create(discussion: @discussion, actor: @discussion.author)
+    @group.add_member! jennifer
+    @discussion = fake_discussion(group: @group,
+                                 description: "hey @#{patrick.username} wanna dance?")
+    DiscussionService.create(discussion: @discussion, actor: jennifer)
     last_email
   end
 

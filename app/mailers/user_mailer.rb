@@ -1,6 +1,4 @@
 class UserMailer < BaseMailer
-  helper PollEmailHelper
-  layout 'invite_people_mailer', only: [:deactivated, :membership_request_approved, :contact_request, :user_added_to_group, :login, :start_decision, :accounts_merged, :user_reactivated, :group_export_ready]
 
   def deactivated(email, recovery_code, locale)
     @recovery_code = recovery_code
@@ -32,7 +30,7 @@ class UserMailer < BaseMailer
   def catch_up(user_id, time_since = nil, frequency = 'daily')
     user = User.find(user_id)
     return unless user.email_catch_up_day
-    @recipient = @user = user
+    @current_user = @recipient = @user = user
 
     if frequency == 'daily'
       @time_start = time_since || 24.hours.ago
@@ -105,16 +103,6 @@ class UserMailer < BaseMailer
     @token = LoginToken.find_by!(id: token_id)
     send_single_mail to: @user.email,
                      subject_key: "email.login.subject",
-                     subject_params: {site_name: AppConfig.theme[:site_name]},
-                     locale: @user.locale
-  end
-
-  def user_reactivated(recipient_id, event_id)
-    @user = User.find_by!(id: recipient_id)
-
-    @token = @user.login_tokens.create(is_reactivation: true)
-    send_single_mail to: @user.email,
-                     subject_key: "email.reactivate.subject",
                      subject_params: {site_name: AppConfig.theme[:site_name]},
                      locale: @user.locale
   end

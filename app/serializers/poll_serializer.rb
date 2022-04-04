@@ -1,11 +1,13 @@
 class PollSerializer < ApplicationSerializer
   attributes :id,
+             :allow_long_reason,
              :attachments,
-             :link_previews,
              :author_id,
              :anyone_can_participate,
              :anonymous,
              :can_respond_maybe,
+             :chart_type,
+             :chart_column,
              :closed_at,
              :closing_at,
              :created_at,
@@ -21,20 +23,24 @@ class PollSerializer < ApplicationSerializer
              :group_id,
              :hide_results,
              :key,
-             :allow_long_reason,
+             :link_previews,
+             :material_icon,
+             :mentioned_usernames,
              :multiple_choice,
              :notify_on_closing_soon,
              :poll_type,
              :poll_option_names,
-             :mentioned_usernames,
-             :material_icon,
+             :results,
+             :result_columns,
+             :poll_option_name_format,
+             :icon_type,
              :shuffle_options,
              :stance_counts,
-             :total_score,
              :show_results,
              :stances_in_discussion,
              :specified_voters_only,
              :secret_token,
+             :total_score,
              :title,
              :undecided_voters_count,
              :voter_can_add_options,
@@ -76,6 +82,7 @@ class PollSerializer < ApplicationSerializer
     :poll_option_names,
     :mentioned_usernames,
     :material_icon,
+    :results,
     :shuffle_options,
     :stance_counts,
     :total_score,
@@ -94,6 +101,14 @@ class PollSerializer < ApplicationSerializer
   end
 
   def include_stance_counts?
+    poll.show_results?(voted: (my_stance && my_stance.cast_at))
+  end
+
+  def results
+    PollService.calculate_results(object, poll_options)
+  end
+
+  def include_results?
     poll.show_results?(voted: (my_stance && my_stance.cast_at))
   end
 

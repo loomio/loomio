@@ -1,0 +1,35 @@
+/ .poll-mailer-common-footer
+/   .poll-mailer-common-footer__spacer --
+/   .poll-mailer-common-footer__text
+/     = link_to t(:"poll_mailer.common.view_on_loomio", site_name: AppConfig.theme[:site_name]), tracked_url(poll)
+/   = image_tag AppConfig.theme[:email_footer_logo_src], alt: "Logo", class: "thread-mailer__footer-logo"
+/   %p= t(:'email.value_proposition', site_name: AppConfig.theme[:site_name])
+
+.thread-mailer__footer
+  - if @recipient.is_logged_in?
+    - if @discussion
+      %img.thread-mailer__footer-image{src: pixel_src(@event), alt: '', width: 1, height: 1}
+
+      %p.thread-mailer__footer-links
+        &mdash;
+        %br
+        = t(:'discussion_mailer.reply_or_view_online_html', url: tracked_url(@event.eventable), hostname: AppConfig.theme[:site_name])
+        %br
+        -# comment_replied_to
+        -# invitation_created
+        -# discussion_edited
+        -# discussion_announced
+        -# new_discussion
+        -# new_comment
+        -# user_mentioned
+        - if action_name == 'discussion_announced'
+          = t :'discussion_mailer.unsubscribe_from_discussion_announced_html', url: unfollow_url(@discussion, action_name, new_volume: :quiet)
+        - if ['new_discussion', 'new_comment'].include? action_name
+          = t :'discussion_mailer.unsubscribe_from_new_comment_html', url: unfollow_url(@discussion, action_name, new_volume: :normal)
+        - if action_name == 'comment_replied_to'
+          = t :'discussion_mailer.unsubscribe_from_comment_replied_to_html'
+          = t :"discussion_mailer.change_email_preferences_html", email_preferences_url: preferences_url(action_name)
+        - if action_name == 'user_mentioned'
+          = t :'discussion_mailer.unsubscribe_from_user_mentioned_html'
+          = t :"discussion_mailer.change_email_preferences_html", email_preferences_url: preferences_url(action_name)
+  = image_tag AppConfig.theme[:email_footer_logo_src], height: 24, alt: "Logo", class: "thread-mailer__footer-logo"

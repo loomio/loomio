@@ -1,0 +1,13 @@
+- my_stance = Stance.latest.find_by(poll_id: poll.id, participant_id: @current_user.id)
+.poll-mailer__results-chart.poll-mailer-common-results
+  - if poll.show_results?(voted: my_stance && my_stance.cast_at)
+    %h3= t(poll.closed_at ? :'poll_common.results' : :'poll_common.current_results')
+    - if poll.poll_type == "meeting"
+      = render "event_mailer/poll/results/meeting", poll: poll
+    - else
+      = render "event_mailer/poll/results/simple", poll: poll
+  - else 
+    %h3= t('poll_common_action_panel.results_hidden_until_closed')
+
+= render "event_mailer/poll/undecided", poll: poll
+

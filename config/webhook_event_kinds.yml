@@ -8,4 +8,7 @@
 - poll_closed_by_user
 - poll_reopened
 - outcome_created
+- outcome_updated
+- outcome_review_due
 - stance_created
+- stance_updated

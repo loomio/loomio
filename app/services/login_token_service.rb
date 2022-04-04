@@ -4,7 +4,7 @@ class LoginTokenService
 
     token = LoginToken.create!(redirect: (uri.path if uri&.host == ENV['CANONICAL_HOST']), user: actor)
 
-    UserMailer.delay.login(actor.id, token.id)
+    UserMailer.login(actor.id, token.id).deliver_later
     EventBus.broadcast('login_token_create', token, actor)
   end
 end

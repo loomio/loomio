@@ -93,6 +93,7 @@ class AppConfig
       subscriptions:              !!ENV.fetch('CHARGIFY_API_KEY', false),
       demos:                      ENV.fetch('FEATURES_DEMO_GROUPS', false),
       trials:                     ENV.fetch('FEATURES_TRIALS', false),
+      chatbots:                   ENV.fetch('FEATURES_CHATBOTS', false),
       email_login:                !ENV['FEATURES_DISABLE_EMAIL_LOGIN'],
       create_user:                !ENV['FEATURES_DISABLE_CREATE_USER'],
       create_group:               !ENV['FEATURES_DISABLE_CREATE_GROUP'],

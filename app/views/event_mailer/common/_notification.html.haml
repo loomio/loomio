@@ -1,0 +1,21 @@
+- url = local_assigns.fetch(:url, tracked_url(event.eventable))
+- message = local_assigns.fetch(:message, event.recipient_message)
+- title = link_to(event.eventable.title, url)
+- poll_type = @poll ? t("poll_types.#{@poll.poll_type}") : nil
+- with_title = local_assigns.fetch(:with_title, false) ? "with_title" : "without_title"
+- with_author = (@recipient.id == event.eventable.author_id && I18n.exists?("notifications.#{with_title}.#{event.kind}_author")) ? "_author" : ''
+- key = "notifications.#{with_title}.#{event.kind}#{with_author}"
+
+.rounded.mb-4{style: 'border: 1px solid #eee'}
+  .px-2.py-1
+    %table.v-layout-table
+      %tr
+        - if event.user
+          %td= render "avatar", user: event.user
+        %td.base-mailer__event-headline
+          %h2.text-subtitle-1.ml-2=raw t(key, actor: event.user.name, title: title, poll_type: poll_type, site_name: AppConfig.theme[:site_name])
+      - if message.present?
+        %tr
+          %td{colspan: "2" }
+            %p
+              %i=raw render_plain_text(message)

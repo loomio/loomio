@@ -30,6 +30,7 @@ class DiscussionService
     EventBus.broadcast('discussion_create', discussion, actor)
     Events::NewDiscussion.publish!(discussion: discussion,
                                    recipient_user_ids: users.pluck(:id),
+                                   recipient_chatbot_ids: params[:recipient_chatbot_ids],
                                    recipient_audience: params[:recipient_audience])
 
   end
@@ -63,6 +64,7 @@ class DiscussionService
     Events::DiscussionEdited.publish!(discussion: discussion,
                                       actor: actor,
                                       recipient_user_ids: users.pluck(:id),
+                                      recipient_chatbot_ids: params[:recipient_chatbot_ids],
                                       recipient_audience: params[:recipient_audience],
                                       recipient_message: params[:recipient_message])
   end
@@ -83,6 +85,7 @@ class DiscussionService
     Events::DiscussionAnnounced.publish!(discussion: discussion,
                                          actor: actor,
                                          recipient_user_ids: users.pluck(:id),
+                                         recipient_chatbot_ids: params[:recipient_chatbot_ids],
                                          recipient_audience: params[:recipient_audience],
                                          recipient_message: params[:recipient_message])
   end
@@ -96,7 +99,7 @@ class DiscussionService
 
   def self.discard(discussion:, actor:)
     actor.ability.authorize!(:discard, discussion)
-    discussion.discard!
+    discussion.update(discarded_at: Time.now, discarded_by: actor.id)
     EventBus.broadcast('discussion_discard', discussion, actor)
     discussion.created_event
   end
@@ -238,6 +241,10 @@ class DiscussionService
                      user_id: users.pluck(:id)).find_each do |m|
       volumes[m.user_id] = m.volume
     end
+    
+    DiscussionReader.
+      where(discussion_id: discussion.id, user_id: users.map(&:id)).
+      where("revoked_at is not null").update_all(revoked_at: nil)
 
     new_discussion_readers = users.map do |user|
       DiscussionReader.new(user: user,

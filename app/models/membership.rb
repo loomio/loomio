@@ -55,6 +55,14 @@ class Membership < ApplicationRecord
 
   before_create :set_volume
 
+  def author_id
+    inviter_id
+  end
+
+  def author
+    inviter
+  end
+
   def message_channel
     "membership-#{token}"
   end

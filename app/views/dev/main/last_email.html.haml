@@ -1,12 +1,10 @@
 <!DOCTYPE HTML>
 %html
   %head
-    = stylesheet_link_tag 'email'
-    = stylesheet_link_tag 'poll_mailer'
     %title=action_name
 
   %body
-    %main
+    %header
       - if @email.nil?
         %p.error no emails sent
       - else
@@ -19,22 +17,18 @@
             .title= @scenario[:poll]&.title
             .poll_type= t("poll_types.#{@scenario[:poll]&.poll_type}")
 
-        %p.email-to
-          to:
-          = @email.to
-
-        %p.email-from
-          from:
-          = @email.from
-
-        %p.email-subject
-          subject:
-          = @email.subject
-
-        %p.email-reply-to
-          reply to:
-          = @email.reply_to
-
-        %p.email-body
-          body:
-          =  raw @email.body.parts.last.decoded
+        %table
+          %tr
+            %td To
+            %td= Array(@email.to).join(', ')
+          %tr
+            %td From
+            %td= Array(@email.from).join(', ')
+          %tr
+            %td Subject
+            %td= @email.subject
+          %tr
+            %td Reply to
+            %td= Array(@email.reply_to).join(', ')
+        %hr
+        %main{style:"margin: 8px"}=  raw @email.body.parts.last.decoded

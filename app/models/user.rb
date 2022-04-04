@@ -6,7 +6,6 @@ class User < ApplicationRecord
   include HasAvatar
   include SelfReferencing
   include NoForbiddenEmails
-  include HasMailer
   include CustomCounterCache::Model
   include HasRichText
   include LocalesHelper

@@ -129,40 +129,6 @@ en:
     no_tags_in_group: This group has no category tags yet
     only_admins_can_edit_tags: Sorry, only admins of {{group}} can create, rename or delete tags
 
-  reactions:
-    slight_smile: Like
-    heart: Love
-    laughing: Laugh
-    clap: Clap
-    hugging: Hug
-    sunglasses: Cool
-    wink: Wink
-    nerd: Smart
-    relieved: Relieved
-    worried: Worried
-    confused: Confused
-    confounded: Confounded
-    neutral_face: Neutral
-    slight_frown: Frown
-    disappointed: Disappointed
-    angry: Angry
-    weary: Weary
-    astonished: Astonished
-    rolling_eyes: Rolling eyes
-    cry: Cry
-    scream: Scream
-    sleeping: Bored
-    thinking: Thinking
-    raised_hands: Raised hands
-    pray: Pray
-    fingers_crossed: Fingers crossed
-    v: Peace
-    metal: Metal
-    ok_hand: Ok
-    wave: Wave
-    thumbsup: Thumb up
-    thumbsdown: Thumb down
-
   poll_types:
     proposal: proposal
     count: check
@@ -616,43 +582,81 @@ en:
   notifications:
     header: "Notifications"
     no_notifications: "You don't have any notifications"
-    new_discussion: "<strong>{{name}}</strong> started a thread <strong>{{title}}</strong>"
-    discussion_edited: "<strong>{{name}}</strong> edited the thread <strong>{{title}}</strong>"
-    discussion_announced: "<strong>{{name}}</strong> shared a thread <strong>{{title}}</strong>"
-    new_motion: "<strong>{{name}}</strong> created a proposal <strong>{{title}}</strong>"
-    motion_closed: "Proposal closed: <strong>{{title}}</strong>"
-    publish_outcome: "Publish an outcome"
-    motion_closed_by_user: "<strong>{{name}}</strong> closed the proposal <strong>{{title}}</strong>"
-    motion_closed_by_expiry: "Proposal has closed <strong>{{title}}</strong>"
-    new_vote: "<strong>{{name}}</strong> {{position}} on the proposal <strong>{{title}}</strong>"
-    new_comment: "<strong>{{name}}</strong> commented on <strong>{{title}}</strong>"
-    comment_replied_to: "<strong>{{name}}</strong> replied to your comment in <strong>{{title}}</strong>"
-    reaction_created: "<strong>{{name}}</strong> reacted <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> to your {{model}}<strong>{{title}}</strong>"
-    reaction_created_vue: "<strong>{{name}}</strong> reacted {{reaction}} to your {{model}}<strong>{{title}}</strong>"
-    user_mentioned: "<strong>{{name}}</strong> mentioned you in <strong>{{title}}</strong>"
-    user_reminded: "<strong>{{name}}</strong> is waiting on you to participate in <strong>{{title}}</strong>"
-    membership_requested: "<strong>{{name}}</strong> requested membership to <strong>{{title}}</strong>"
-    membership_request_approved: '<strong>{{name}}</strong> approved your request to join <strong>{{title}}</strong>'
-    user_added_to_group: "<strong>{{name}}</strong> added you to the group <strong>{{title}}</strong>"
-    user_added_to_group_no_inviter: "You were added the group <strong>{{title}}</strong>"
-    motion_closing_soon: "Proposal is closing soon: <strong>{{title}}</strong>"
-    motion_outcome_created: "<strong>{{name}}</strong> published an outcome for the proposal <strong>{{title}}</strong>"
-    motion_outcome_updated: "<strong>{{name}}</strong> updated the outcome for the proposal <strong>{{title}}</strong>"
-    invitation_accepted: "<strong>{{name}}</strong> accepted your invitation to join <strong>{{title}}</strong>"
-    new_coordinator: "<strong>{{name}}</strong> made you an admin of <strong>{{title}}</strong>"
-    poll_created: "<strong>{{name}}</strong> started a {{poll_type}}: <strong>{{title}}</strong>"
-    poll_edited: "<strong>{{name}}</strong> edited a {{poll_type}}: <strong>{{title}}</strong>"
-    poll_reminder: "<strong>{{name}}</strong> is reminding you to vote in: <strong>{{title}}</strong>"
-    poll_announced: "<strong>{{name}}</strong> shared a {{poll_type}}: <strong>{{title}}</strong>"
-    poll_closing_soon: "{{poll_type}} is closing soon: <strong>{{title}}</strong>"
-    poll_expired: "{{poll_type}} closed: <strong>{{title}}</strong>"
-    poll_option_added: "<strong>{{name}}</strong> added options to: <strong>{{title}}</strong>"
-    outcome_created: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
-    outcome_updated: "<strong>{{name}}</strong> updated the outcome: <strong>{{title}}</strong>"
-    outcome_announced: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
-    stance_created: "<strong>{{name}}</strong> participated in: <strong>{{title}}</strong>"
-    group_announced: "<strong>{{name}}</strong> invited you to the group <strong>{{title}}</strong>"
-    outcome_review_due: "It's time to review the outcome of: <strong>{{title}}</strong>"
+
+    with_title:
+      comment_replied_to: "%{actor} replied to you in: %{title}"
+      discussion_announced: "%{actor} invited you to a thread: %{title}"
+      discussion_edited: "%{actor} edited the thread context: %{title}"
+      discussion_closed: "%{actor} closed the thread: %{title}"
+      invitation_accepted: "%{actor} accepted your invitation to join %{title}"
+      membership_created: "%{actor} invited you to join %{title} on %{site_name}"
+      membership_requested: "%{actor} requested to join %{title}"
+      membership_request_approved: "%{actor} approved your request to join %{title}"
+      new_comment: "%{actor} commented in: %{title}"
+      new_coordinator: "%{actor} made you an admin of %{title}"
+      new_discussion: "%{actor} started a thread: %{title}"
+      outcome_announced: "%{actor} shared a %{poll_type} outcome: %{title}"
+      outcome_created: "%{actor} shared a %{poll_type} outcome: %{title}"
+      outcome_updated: "%{actor} updated the %{poll_type} outcome: %{title}"
+      outcome_review_due: "It's time to review the outcome of: %{title}"
+      poll_announced: "%{actor} invited you to vote: %{title}"
+      poll_closed_by_user: "%{actor} closed the %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} closing in 24 hours: %{title}"
+      poll_closing_soon_author: "Your %{poll_type} is closing in 24 hours: %{title}"
+      poll_created: "%{actor} started a %{poll_type}: %{title}"
+      poll_edited: "%{actor} updated the %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} has closed: %{title}"
+      poll_expired_author: "Share the outcome of your %{poll_type}: %{title}"
+      poll_option_added: "%{actor} added options to %{title}"
+      poll_reopened: "%{actor} reopened the %{poll_type}: %{title}"
+      poll_reminder: "%{actor} is reminding you to vote on %{title}"
+      poll_reminder_wip: "%{actor} is reminding you to give feedback: %{title}"
+      reaction_created: "%{actor} reacted %{reaction} to your %{model} in %{title}"
+      stance_created: "%{actor} voted in: %{title}"
+      stance_updated: "%{actor} voted in: %{title}"
+      stance_created_option: "%{actor} voted %{option} in %{title}"
+      user_added_to_group: "%{actor} added you to the group: %{title}"
+      user_mentioned: "%{actor} mentioned you in: %{title}"
+      user_reminded: "%{actor} is reminding you to vote in: %{title}"
+
+    without_title:
+      discussion_announced: '%{actor} invited you to a thread'
+      discussion_edited: '%{actor} edited the thread context'
+      discussion_closed: "%{actor} closed the thread"
+      group_announced: "%{actor} invited you to a group"
+      comment_replied_to: '%{actor} replied to you'
+      new_discussion: "%{actor} started a thread"
+      membership_created: "%{actor} invited you to join a group"
+      membership_requested: "%{actor} requested to join your group"
+      membership_request_approved: "%{actor} approved your request to join %{title}"
+      outcome_announced: '%{actor} shared a %{poll_type} outcome'
+      outcome_created: "%{actor} shared a %{poll_type} outcome"
+      outcome_updated: "%{actor} updated the outcome"
+      outcome_review_due: "It's time to review the %{poll_type} outcome"
+      poll_announced: '%{actor} invited you to vote on a %{poll_type}'
+      poll_announced_wip: '%{actor} wants your feedback on a %{poll_type}'
+      poll_closed_by_user: "%{actor} closed the %{poll_type}"
+      poll_closing_soon: '%{poll_type} closing in 24 hours'
+      poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours'
+      poll_created: "%{actor} started a %{poll_type"
+      poll_edited: "%{actor} updated the %{poll_type}"
+      poll_expired: "%{poll_type} has closed"
+      poll_expired_author: 'Share the outcome of your %{poll_type}'
+      poll_option_added: '%{actor} added options to the %{poll_type}'
+      poll_reopened: "%{actor} reopened the %{poll_type}"
+      poll_reminder: '%{actor} is reminding you to vote'
+      poll_reminder_wip: '%{actor} is reminding you to give feedback'
+      reaction_created: "%{actor} reacted %{reaction} to your %{model}"
+      stance_created: "%{actor} voted"
+      stance_updated: "%{actor} voted"
+      stance_created_option: "%{actor} voted %{option}"
+      user_mentioned: '%{actor} mentioned you'
+      user_reminded: '%{actor} is reminding you to vote'
+
+    hints:
+      poll_closing_soon: 'Now is a good time to vote, change your mind or encourage others to participate.'
+      poll_closing_soon_author: 'You may wish to remind people to vote or extend the deadline.'
+      outcome_review_due: "Consider starting a feedback poll or a new thread inviting reflections on how the decision has been implemented."
 
   discussion_fork_actions:
     helptext: Select items you'd like to move to another thread
@@ -697,13 +701,10 @@ en:
 
   announcement:
     send_discussion: Send thread
-    send_discussion_explain: Invite people to participate in the discussion
     send_group: Invite people to {{name}}
     send_group_explain: ''
     send_poll: Send {{type}}
-    send_poll_explain: Invite people to participate in the {{type}}
     send_outcome: Send outcome
-    send_outcome_explain: Notify people about the outcome of the {{type}}
     discussion_notification_history: Thread notification history
     group_notification_history: Group invitation history
     poll_notification_history: Poll notification history
@@ -925,14 +926,12 @@ en:
     upload_failed: Upload failed
 
   cover_photo_form:
-    aria_label: 'Change cover photo form'
     heading: 'New cover photo'
     upload_link: 'Upload new cover photo'
     image_size_helptext: 'Ideal image size is 1400×320px'
     upload_success: 'Cover photo successfully updated'
 
   logo_photo_form:
-    aria_label: 'Change group logo form'
     heading: 'New group logo'
     upload_link: 'Upload new group logo'
     image_size_helptext: 'Ideal image size is 100×100px'
@@ -954,7 +953,7 @@ en:
     submit_button: Ask to join
     introduction_over_limit: Response too long
     messages:
-      membership_requested: 'You have requested membership to {{group}}'
+      membership_requested: 'You have requested to join {{group}}'
 
   revision_history_modal:
     aria_label: Revision history
@@ -987,7 +986,6 @@ en:
     name_and_count_more: "{{name}} and {{count}} more"
 
   context_panel:
-    aria_intro: "Thread context by {{author}}"
     thread_status:
       pinned: "This thread has been pinned. It will remain at the top of the group's list of threads for all users."
       closed: "This thread has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page"
@@ -1098,7 +1096,7 @@ en:
 
   group_form:
     thread_defaults_help: Default settings for new threads
-    click_to_change_image: Cover Image and Logo (click to change)
+    click_to_change_image: Click to change the cover image (4x1) or logo (1x1)
     permissions_explaination: |
       There are two levels of membership a person can have to a group: admin and member.
       Admins can edit group settings, make other people admins, and perform all the actions listed below.
@@ -1157,7 +1155,6 @@ en:
     membership_granted_upon_approval_secret_parent: '<strong>By request</strong>  anyone from {{parent}} can ask to join the group.'
 
     permissions: 'Permissions'
-    features: 'Group-specific features'
     thread_privacy: 'Thread privacy'
     public_threads: 'Public threads only'
     public_discussions_subgroup: 'Anyone in {{parentGroupName}} can see discussions'
@@ -1230,13 +1227,6 @@ en:
       request_approved_success: Membership request approved
       request_ignored_success: Membership request ignored
 
-  group_previous_proposals_card:
-    heading: Previous proposals
-    see_more: See more
-
-  group_decisions_card:
-    see_more: "See all: ({{count}}) decisions"
-
   invitation_form:
     group_url: Group URL
     reusable_invitation_link: Reusable invitation link
@@ -1262,8 +1252,6 @@ en:
     add_custom_message_link: 'add a custom message.'
     custom_message: 'Custom message'
     custom_message_placeholder: 'Enter a personal message to include with the invitation.'
-    team_invitation_message: 'Alternatively, '
-    team_invitation_link:  'get a link to share.'
     add_members: 'Add members'
     from_parent_group: 'from {{name}}.'
     send: 'Send'
@@ -1303,7 +1291,6 @@ en:
       submit: Remove member
 
   memberships_panel:
-
     add_coordinator: Make Admin
     remove_coordinator: Demote admin
 
@@ -1471,10 +1458,6 @@ en:
       muted: Muted Threads
       muted_aria_label: Current showing muted threads
       muted_description: View only threads which have been muted
-    aria_thread:
-      unread: '{{count}} unread items.'
-      current_proposal: 'Current proposal: {{name}}.'
-      you_voted: 'You voted: {{position}}.'
     thread_preview:
       you_voted: 'You voted {{position}}'
       undecided: 'You are undecided'
@@ -1531,7 +1514,6 @@ en:
     no_one: No one has seen this yet
 
   activity_card:
-    aria_label: "Comment or start a poll"
     count_responses: "{{count}} responses"
     event_pinned: "Pinned to timeline"
     event_unpinned: "Unpinned from timeline"
@@ -1649,13 +1631,6 @@ en:
     success: "Thanks for your message, {{name}}. You'll hear back from us soon."
     success_via_email: "Thanks for your message, {{name}}. We'll respond via email within 24 hours."
 
-  hint:
-    context: 'Tips for using the context panel'
-    discussion: 'Tips for starting an engaging discussion'
-    invitation: 'Tips for writing a great invitation'
-    proposal: 'Tips for writing a clear proposal'
-    vote: 'You can change your position at any time'
-
   explore_page:
     header: Explore groups
     search_placeholder: Search for public groups
@@ -1674,12 +1649,11 @@ en:
   decision_tools_card:
     choose_type: Choose poll type
     title: Facilitate
-    help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Help</a>
     proposal_title: Proposal
     count_title: Check
     poll_title: Poll
     score_title: Score poll
-    dot_vote_title: Dot Vote
+    dot_vote_title: Dot vote
     meeting_title: Time poll
     ranked_choice_title: Ranked choice
 
@@ -1689,10 +1663,12 @@ en:
     have_your_say: Have your say
     your_response: Your response
     change_your_response: Edit response
+    please_vote: Please vote
     reason: Reason
     reason_placeholder: "Briefly explain why you voted this way, then click 'Submit Vote'"
     message: Message
     results: Results
+    current_results: Current results
     responses: Responses
     close_poll_type: Close {{pollType}}
     close_early: Close early
@@ -1715,6 +1691,7 @@ en:
     share_count: Share check
     start_poll: Start a decision
     publish_poll: Share poll
+    share_outcome: Share outcome
     view_all: View all
     save_changes: Save
     change_vote: Change your vote
@@ -1743,11 +1720,6 @@ en:
     until_poll_type_closed: Until {{pollType}} is closed
 
     deleted: This poll has been deleted
-
-  poll_common_index_card:
-    title: Previous decisions
-    no_polls: No previous decisions found
-    count: "See all: ({{count}}) decisions"
 
   discussions_panel:
     open: Open
@@ -1815,17 +1787,8 @@ en:
     unable_to_vote: You have not been invited to vote in this %{poll_type}.
     draft_mode: Voting disabled. This %{poll_type} is a work in progress.
 
-  current_polls_card:
-    title: Current decisions
-    start_poll: New decision
-    no_polls: There are no active decisions right now.
-
   poll_common_collapsed:
     by_who: "by {{name}}"
-
-  poll_common_select_group:
-    loomio_group: Group
-    loomio_group_placeholder: (no group selected)
 
   poll_common_calendar_invite:
     calendar_invite: Include a calendar invitation with this outcome
@@ -1880,20 +1843,10 @@ en:
       helptext_on: Don't show the how people have voted until the poll is closed
 
   poll_common_close_form:
-    title: Close %{poll_type} now?
-    helptext: Are you sure you want to close this %{poll_type} early and share an outcome?
-    close_proposal: Close proposal
-    close_poll: Close poll
-    close_count: Close check
-    close_dot_vote: Close dot vote
-    close_meeting: Close time poll
-    close_ranked_choice: Close ranked choice poll
-    proposal_closed: Proposal closed
-    poll_closed: Poll closed
-    count_closed: Check closed
-    dot_vote_closed: Dote vote closed
-    meeting_closed: Time poll closed
-    ranked_choice_closed: Ranked choice poll closed
+    title: "Close %{poll_type} now?"
+    helptext: "Are you sure you want to close this %{poll_type} early and share an outcome?"
+    close_poll_type: "Close %{poll_type}"
+    poll_type_closed: "%{poll_type} closed"
 
   poll_common_reopen_form:
     title: "Reopen {{poll_type}}"
@@ -1943,7 +1896,6 @@ en:
 
   poll_common_set_outcome_panel:
     enter_outcome: Enter outcome
-    share_outcome: Share outcome
     poll: 'This poll has closed. <strong>Share the outcome</strong> with the group.'
     proposal: 'This proposal has closed. Please consider what as been said and <strong>share an outcome</strong>, so people know what’ll happen next.'
     count: 'This check has closed. <strong>Share an outcome</strong> to complete the process.'
@@ -2117,7 +2069,10 @@ en:
     rank: Rank
     points: Points
     average: Average
+    mean: Mean
     pct_of_points: '% of points'
+    pct_of_voters: '% of voters'
+    percent: Percent
 
   poll_meeting_time_field:
     add_time_slot: Add time slot
@@ -2205,21 +2160,12 @@ en:
     stance_updated: Choice updated
 
   thread_item:
-    aria:
-      deleted: Item deleted
-      new_comment: "{{actor}} commented. {{when}}"
-      poll_created: "{{actor}} started a {{pollType}}. {{when}}"
-      stance_created: "{{actor}} voted. {{when}}"
-      stance_updated: "{{actor}} edited their vote. {{when}}"
-      outcome_created: "{{actor}} shared an outcome. {{when}}"
-      poll_expired: "{{pollType}} closed. {{when}}"
     removed: "Item removed"
     deleted_group: "Deleted group"
     invite_only_thread: "Invite only thread"
     comment_replied_to:            "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> in reply to <strong>{{title}}</strong>"
     discussion_title_edited:       "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> edited the thread title"
     discussion_context_edited:     "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> edited the thread context"
-    discussion_attachments_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> edited the thread's attachments"
     discussion_privacy_edited:     "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> changed the thread privacy"
     discussion_edited:             "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> edited the thread"
     discussion_moved:              "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> moved the thread from <strong>{{title}}</strong>"
@@ -2231,26 +2177,12 @@ en:
     poll_reopened:                 "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> reopened the {{polltype}}"
     poll_closed_by_user:           "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> closed the {{polltype}}"
     poll_created:                  "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> started a {{polltype}}"
-    poll_created_no_title:         "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> started a {{polltype}}"
     poll_edited:                   "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> edited the {{polltype}}"
     poll_option_added:             "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> added options to the {{polltype}}"
     poll_expired:                  "{{polltype}} closed"
     stance_created:                "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> voted on: <strong>{{title}}</strong>"
     stance_updated:                "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> updated their vote on: <strong>{{title}}</strong>"
     event_removed:                 "Removed from thread"
-
-  poll_common_subscribe_form:
-    receive_updates_title: Your vote has been recorded
-    receive_updates_helptext: If you'd like to receive an email about the outcome of this poll, enter your email address below
-    email_saved: You will receive an email about the outcome of this poll
-    subscribe: Subscribe
-    no_thanks: No thanks
-
-  poll_common_example_card:
-    what_is_this: "This is a live example of a {{type}}. You're a participant - give it a try!"
-
-  share_poll_page:
-    title: Share poll - {{title}}
 
   add_poll_to_thread_modal:
     success: "Success, {{pollType}} added to thread!"
@@ -2322,6 +2254,19 @@ en:
     password: Password
     reactivate: Reactivate account
 
+  chatbot:
+    configure_chatbot: Configure chatbot
+    test_connection: Test connection
+    test_connection_ok: Looks good! You should see a message in the channel
+    test_connection_bad: Something is wrong with the settings
+    chatbot: Chatbot
+    saved: Chatbot saved!
+    homeserver_url: Homeserver URL
+    channel: Channel
+    username: Username
+    password: Password
+    access_token: Access Token
+
   webhook:
     integrations: Integrations
     webhooks: Webhooks
@@ -2356,11 +2301,14 @@ en:
       new_comment: A comment is made
       poll_created: A poll is started
       stance_created: A vote is cast
-      poll_closing_soon: A poll is expiring soon
+      stance_updated: A vote is changed
+      poll_closing_soon: A poll is closing soon
       poll_expired: A poll expires
       poll_closed_by_user: A poll is closed manually
       poll_reopened: A poll is re-opened for voting
       outcome_created: An outcome is shared
+      outcome_updated: An outcome is updated
+      outcome_review_due: An outcome review is due
     permissions_explaination: Select which actions can be performed by this integration
     permissions:
       show_discussion: show discussion
@@ -2371,10 +2319,6 @@ en:
     include_body_label: Include message body with notification
     include_subgroups_label: Relay events from subgroups
 
-  browser_warning:
-    message: "IMPORTANT! You are using an outdated browser ({{name}} {{version}}) which is not supported by {{site}}."
-    link: Please switch to another browser
-
   powered_by:
     slogan: Better decisions together
     powered_by_loomio: Powered by Loomio
@@ -2383,10 +2327,6 @@ en:
     front_page: Front page
 
   group_survey:
-    title: Success! Just a few more details
-    subtitle: Please help us get to know you better. We will not share any information provided in this form without your permission.
-    validation_error: Please fill out all required fields.
-    success: Thank you!
     describe_other: What category would you give your group?
     categories:
       party: Political party
@@ -2398,44 +2338,3 @@ en:
       community: Community group
       government: Government/Local Government
       other: Other
-    sizes:
-      ten: "< 10"
-      twenty: "11 - 20"
-      fifty: "21 - 50"
-      two_hundred: "51 - 200"
-      five_hundred: "201 - 500"
-      two_thousand: "501 - 2000"
-      else: "> 2000"
-    uses:
-      governance: Governance for Board, Committee or Trust
-      collaboration: Collaborative working group
-      engagement: Stakeholder or member engagement
-      self_management: Self-management (collaborative workplace)
-      remote: Remote working
-      document: Collaborative document development, e.g. a strategic plan
-      decision_making: Decision-making processes (Advice, Consent)
-      funding: Funding or Grant decisions
-      project: Project team
-      forum: Forum
-      other: Other
-    desired_features:
-      polls: Running polls for my team to vote on
-      discussions: Holding discussions online and getting input
-      archive: Recording decisions we make or archiving information
-    referrers:
-      google: Google search
-      invitation: Invited to a Loomio group
-      referral: Referral
-      social: Social media (Facebook, Twitter, LinkedIn)
-      capterra: Capterra
-      other: Other
-    location: Where is your group based?
-    purpose: "What is the purpose of your group?"
-    category_question: "Select which category best describes your group"
-    anything_else: "Is there anything else you'd like to tell us?"
-    size_question: "How many people are in your group?"
-    role: "What is your role in the group?"
-    website: "Website URL"
-    usage: "How do you plan to use Loomio? Choose the best fit"
-    desired_feature: "What is the main thing you're looking to use Loomio for?"
-    referrer: "How did you hear about Loomio?"

@@ -3,13 +3,13 @@ pageHelper = require('../helpers/pageHelper.coffee')
 
 notificationTexts = [
   'accepted your invitation to join',
-  'invited you to the group',
+  'invited you to join',
   'approved your request',
-  'requested membership to',
+  'requested to join',
   'mentioned you in',
-  'replied to your comment',
-  'shared an outcome',
-  'poll is closing soon',
+  'replied to you in' ,
+  'shared a poll outcome',
+  'poll closing in 24 hours',
   'shared a poll',
   'reacted 🙂 to your comment',
   'made you an admin',

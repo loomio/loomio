@@ -1,4 +1,0 @@
-%table.poll-mailer__subject
-  %tr
-    %td
-      %span=raw t(:"poll_mailer.header.#{action_name}", actor: (event.user.presence || poll.author).name, title: poll.title, poll_type: t("poll_types.#{poll.poll_type}"))

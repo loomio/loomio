@@ -74,12 +74,11 @@ class GroupExportService
       events: %w[eventable]
     },
     users: {
-      events: %w[eventable],
-      discussions: %w[author_id],
+      events: %w[eventable user_id],
+      discussions: %w[author_id discarded_by],
       attachments: %w[user_id],
       comments: %w[user_id discarded_by] ,
       discussion_readers: %w[user_id inviter_id],
-      events: %w[user_id],
       groups: %w[creator_id],
       membership_requests: %w[requestor_id responder_id],
       memberships: %w[user_id inviter_id],
@@ -242,10 +241,15 @@ class GroupExportService
         datas.each do |data|
           next unless (data['table'] == 'attachments')
           table = data['record']['record_type'].tableize
-          # DownloadAttachmentWorker.perform_async(data['record'])
-          table = data['record']['record_type'].tableize
           new_id = migrate_ids[table][data['record']['record_id']]
           DownloadAttachmentWorker.perform_async(data['record'], new_id)
+        end
+      end
+
+      datas.each do |data|
+        if data['table'] == 'polls'
+          new_id = migrate_ids['polls'][data['record']['id']]
+          Poll.find(new_id).update_counts!
         end
       end
     end

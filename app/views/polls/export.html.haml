@@ -1,5 +1,4 @@
-= stylesheet_link_tag "poll_mailer"
--# = stylesheet_link_tag "email"
+= stylesheet_link_tag "email"
 
 .thread-page.mt-12
   %main.v-main
@@ -8,7 +7,4 @@
         .container.thread-page.max-width-800
           %div.thread-card.v-card.v-card--outlined.v-sheet.theme--light.pa-4
             = render "discussions/thread_items/poll_created", item: @poll.created_event
-
-            = render "poll_mailer/common/responses", poll: @poll, recipient: @recipient, event: @poll.created_event
-
-            = render "poll_mailer/common/undecided", poll: @poll
+            = render "event_mailer/poll/responses", event: @poll.created_event

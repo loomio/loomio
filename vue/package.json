@@ -89,6 +89,7 @@
     "vuetify": "2.6.4"
   },
   "devDependencies": {
+    "chromedriver": "98.0.1",
     "@mdi/font": "^6.6.96",
     "@vue/cli-plugin-pwa": "^4.5.15",
     "@vue/cli-plugin-babel": "^4.5.15",
@@ -103,7 +104,6 @@
     "js-yaml-loader": "^1.2.2",
     "sass": "^1.49.11",
     "sass-loader": "^10.1.1",
-    "selenium-server-standalone-jar": "latest",
     "vue-cli-plugin-coffee": "1.0.0",
     "vue-cli-plugin-pug": "^2.0.0",
     "vue-cli-plugin-vuetify": "latest",

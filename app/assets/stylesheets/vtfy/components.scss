@@ -4,58 +4,58 @@
 }
 
 .v-application {
-    font-family: "Roboto", sans-serif;
-    line-height: 1.5;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.5;
 }
 
 .v-application {
-    display: flex;
+  display: flex;
 }
 
 .v-application--wrap {
-    flex: 1 1 auto;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    max-width: 100%;
-    position: relative;
+  flex: 1 1 auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 100%;
+  position: relative;
 }
 
 .v-main {
-    display: flex;
-    flex: 1 0 auto;
-    max-width: 100%;
-    transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex: 1 0 auto;
+  max-width: 100%;
+  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .v-main__wrap {
-    flex: 1 1 auto;
-    max-width: 100%;
-    position: relative;
+  flex: 1 1 auto;
+  max-width: 100%;
+  position: relative;
 }
 .v-sheet.v-card {
-    border-radius: 4px;
+  border-radius: 4px;
 }
 .theme--light.v-sheet--outlined {
-    border: thin solid rgba(0, 0, 0, 0.12);
+  border: thin solid rgba(0, 0, 0, 0.12);
 }
 .theme--light.v-sheet {
-    background-color: #FFFFFF;
-    border-color: #FFFFFF;
-    color: rgba(0, 0, 0, 0.87);
+  background-color: #FFFFFF;
+  border-color: #FFFFFF;
+  color: rgba(0, 0, 0, 0.87);
 }
 .v-card {
-    border-width: thin;
-    display: block;
-    max-width: 100%;
-    outline: none;
-    text-decoration: none;
-    transition-property: box-shadow, opacity;
-    overflow-wrap: break-word;
-    position: relative;
-    white-space: normal;
+  border-width: thin;
+  display: block;
+  max-width: 100%;
+  outline: none;
+  text-decoration: none;
+  transition-property: box-shadow, opacity;
+  overflow-wrap: break-word;
+  position: relative;
+  white-space: normal;
 }
 .theme--light.v-card {
     background-color: #FFFFFF;
@@ -118,6 +118,32 @@
   height: 36px;
 }
 
-.l-table {
-  border: 0
+.v-table {
+  border-radius: 4px;
+  border-spacing: 0;
+  line-height: 1.5;
+  max-width: 800px;
+  margin-bottom: 16px;
+  td, th {
+    font-size: .8rem;
+    // height: 32px;
+    padding: 0 4px;
+    border-bottom: thin solid rgba(0,0,0,.12);
+  }
+  td.no-border {
+    border-bottom: none;
+    border: 0;
+  }
 }
+
+.v-layout-table {
+  border-spacing: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  td, tr, th {
+    margin: 0;
+    padding: 0;
+  }
+}
+

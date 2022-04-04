@@ -84,10 +84,6 @@ en:
       bad_login: "Sorry, that password doesn't match the one we have on file"
       username_must_be_alphanumeric: "Usernames must be lower case letters and numbers only"
 
-  attachment:
-    error:
-      too_large: The file you tried to attach is larger than 100 Megabytes, please choose a smaller file.
-
   poll:
     error:
       cannot_add_options: Cannot add options to this poll
@@ -125,26 +121,13 @@ en:
     invitation_cancelled: Sorry, this invitation has been revoked by the group cooordinator. Please request another invitation from your group.
     invitation_already_used: This invitation has already been used. Please sign in to loomio directly to continue to your group.
 
-  date:
-    formats:
-      for_this_year: "%e %b"
-      for_another_year: "%-d/%-m/%y"
-  time:
-    formats:
-      closing_soon_subject: "%d %b %H:%M"
-      for_today: "%l:%M %P"
-
-  validate:
-    motion:
-      must_close_in_future: Proposal must close in the future.
-      one_at_a_time: There is another active proposal.
-
   subscriptions:
     active: Active
     inactive: Inactive
 
   base_mailer:
     via_loomio: '%{name} (via %{site_name})'
+
   user_mailer:
     group_export_ready:
       subject: Group data export for %{group_name}
@@ -189,18 +172,17 @@ en:
   email:
     common:
       or_enter_code: Or, enter the code below
-      resend: This link will expire in 24 hours and can only be used once.
+      resend: This will expire in 24 hours and can only be used once
 
     login:
       subject: Sign in to %{site_name}
-      intro: Hi %{name}, here is your link to sign in to %{site_name}.
-      intro_html: |
-        Hi %{name}, <br> here is your link to sign in to %{site_name}:
+      intro: Hi %{name}, here is your link to sign in to %{site_name}
+      intro_code: Hi %{name}, here is your code to sign in to %{site_name}
       login: Sign in as %{name}
 
     reactivate:
       subject: Reactivate your %{site_name} account
-      intro: Hi %{name}, here is a link to reactivate your %{site_name} account.
+      intro: Hi %{name}, here is a link to reactivate your %{site_name} account
       login: Reactivate %{name}
 
     contact_request:
@@ -218,23 +200,10 @@ en:
         However, your password will not be changed until you follow the link above and complete the form.
         If you continue to have problems logging in, reply to this email to contact a support person.
 
-    start_decision:
-      subject: Start a decision on Loomio
-      intro: Hello, <strong>%{name}</strong>!
-      action: What would you like to do?
-      proposal: Raise a proposal
-      count: Start a check
-      poll: Start a poll
-      dot_vote: Start a dot vote
-      meeting: Schedule a time
-      ranked_choice: Start a ranked choice
-
-    custom: "%{text}"
-    group_email:
-      intro: "%{who} made an announcement to %{group}:"
     by_who: by %{person}
     reply_to_this_discussion: Reply to this discussion
     value_proposition: "%{site_name} is a place to have discussions and make decisions"
+    loomio_app_description: "%{site_name} is a collaborative decision making tool for inclusive organizations"
     view_group: View group
     to_join_group:
       subject: "%{member} has invited you to join %{group_name} on %{site_name}"
@@ -281,45 +250,13 @@ en:
     unfollowed_discussion: You have turned off emails for the thread.
 
   discussion_mailer:
-    resend: 'REMINDER: %{actor} is waiting for you to join %{discussion}'
-
-    new_discussion:
-      subject: "%{discussion}"
-      subject_html: "<strong>%{actor}</strong> started a thread: %{discussion}"
-
-    discussion_edited:
-      subject: "%{discussion}"
-      inline:  "%{actor} edited the thread"
-      subject_html: "<strong>%{actor}</strong> edited the thread: %{discussion}"
-
-    discussion_announced:
-      subject: "%{discussion}"
-      subject_html: "<strong>%{actor}</strong> invited you to join: %{discussion}"
-
-    discussion_closed:
-      inline: "%{actor} closed the thread"
-
-    new_comment:
-      subject: "%{discussion}"
-      subject_html: "<strong>%{actor}</strong> commented in: %{discussion}"
-
-    comment_replied_to:
-      subject: '%{actor} replied to you in: %{discussion}'
-      subject_html: '<strong>%{actor}</strong> replied to you in: %{discussion}'
-
-    user_mentioned:
-      subject: '%{actor} mentioned you in: %{discussion}'
-      subject_html: "<strong>%{actor}</strong> mentioned you in %{discussion}"
-
-    reply_or_view_online_html: Reply to this email directly or <a href='%{url}'>view it on %{hostname}</a>.
+    reply_or_view_online_html: "Reply to this email directly or <a href='%{url}'>view it on %{hostname}</a>."
     turn_off_notifications_html: "<a href='%{url}'>Turn off emails</a> for this discussion."
     change_email_preferences_html: "Change your <a href='%{email_preferences_url}'>email preferences</a>."
     unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Unsubscribe</a> from further announcements in this thread."
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Unsubscribe</a> from comments in this thread."
     unsubscribe_from_comment_replied_to_html: "This is a reply notification."
     unsubscribe_from_user_mentioned_html: "This is a mention notification."
-
-
 
   footer:
     about: About
@@ -331,12 +268,6 @@ en:
     public_groups: Public groups
     terms: Terms
     independent_install_html: '%{hostname} is running an independent copy of Loomio: <a href="http://github.com/loomio/loomio">find out more</a>.'
-
-  invitation_form:
-    error:
-      too_many_pending: "You have more than the maximum %{count} pending invitations for this group"
-      too_many_cancelled: "You have more than the maximum %{count} cancelled invitations for this group"
-      all_email_addresses_belong_to_members: "These people are already members of the group."
 
   password_reset:
     change_your_password: Change your password
@@ -394,72 +325,6 @@ en:
 
       **Try participating! Click one of the buttons.**
 
-  markdown:
-    intro:
-      title: |
-        # What is markdown?
-
-      body: |
-        Markdown is a way of writing plain text (left),
-        so that it can be converted to rich text (right).
-
-        This page is written in markdown to show how it works.
-
-    headers:
-      body: |
-        ## Headings
-
-        Prefix with a hash and a space to turn text into a heading.
-
-        # This is an h1
-        ## This is an h2
-        #### This is an h4
-
-    paragraphs:
-      title: |
-        ## Paragraphs
-
-      body: |
-        You need
-        to put a
-        blank line
-        in between lines.
-
-        Or it will end up as one big paragraph!
-
-    emphasis:
-      title: |
-        ## Emphasis
-
-      body: |
-        You can italicize a word with _underscore_ or *star*.
-
-        __Bold__ a word by doubling the **emphasis**.
-
-    lists:
-      title: |
-        ## Lists
-
-      body: |
-        Here's how to make a list:
-
-        * leave a blank line before your list
-        * use stars (*)
-        * leave a space after the star
-
-    links:
-      title: |
-        ## Links and Images
-
-      body: |
-        Square brackets with title, round brackets with URL. No spaces between the brackets.
-
-        [Loomio Homepage](https://www.loomio.org/)
-
-        Images are the same, but prefixed with an exclamation mark. Title is used as alt text.
-
-        ![loomio logo](https://i.imgur.com/Fvtworb.png)
-
   task_mailer:
     task_due_reminder:
       subject: "Task reminder: %{name}"
@@ -480,15 +345,9 @@ en:
         Thank you.
 
   poll_mailer:
-    resend: '%{actor} is reminding you to vote in: %{title}'
     common:
-      or: or
       why_send_this: You are receiving this email because %{reason}
       view_on_loomio: View it on %{site_name}
-      unsubscribe: Unsubscribe
-      results: Results
-      responses: Responses
-      change_your_stance: Change
       create_outcome: Share outcome
       your_response: "You voted:"
       please_respond: Please respond
@@ -497,146 +356,7 @@ en:
       undecided_visitors: Undecided Guests (%{count})
       more_undecided: "%{count} more..."
       vote_now: Vote now
-      verify_stance_for_unverified_user: "Thanks for voting in %{title}. Please verify your email address, so we can send you the results when they're ready."
-      verify_stance_for_verified_user: "It looks like you voted in %{title}. If this was you, please click the link below to confirm your vote."
       you_have_until: You have until %{when} to participate.
-      people_have_voted: "%{num} people have voted (%{pct}%)"
+      people_have_voted: "%{nom} of %{dnom} people have voted (%{pct}%)"
 
-    subject:
-      poll_created: '%{actor} started a %{poll_type}: %{title}'
-      poll_edited: '%{actor} edited the %{poll_type}: %{title}'
-      poll_reminder: '%{actor} is reminding you to vote: %{title}'
-      poll_announced: '%{actor} invited you to vote in a %{poll_type}: %{title}'
-      poll_announced_wip: '%{actor} invited you to give feedback on a %{poll_type}: %{title}'
-      poll_closing_soon: '%{poll_type} closing in 24 hours: %{title}'
-      poll_closing_soon_author: 'Your %{poll_type} closes in 24 hours: %{title}'
-      poll_expired: "%{poll_type} closed: %{title}"
-      poll_expired_author: 'Share an outcome for: %{title}'
-      poll_option_added: '%{actor} added options to: %{title}'
-      poll_option_added_author: '%{actor} added options to: %{title}'
-      outcome_created: '%{actor} shared a %{poll_type} outcome: %{title}'
-      outcome_updated: '%{actor} updated the %{poll_type} outcome: %{title}'
-      outcome_created_author: 'You shared a %{poll_type} outcome: %{title}'
-      outcome_review_due: "It's time to review the %{poll_type} outcome: %{title}"
-      outcome_announced: '%{actor} shared a %{poll_type} outcome: %{title}'
-      stance_created: "%{actor} voted on: %{title}"
-      stance_updated: "%{actor} voted on: %{title}"
-      stance_created_author: "Please verify your vote on: %{title}"
-      user_mentioned: '%{actor} mentioned you in: %{title}'
-      user_reminded: '%{actor} is reminding you to vote in: %{title}'
 
-    header:
-      poll_created: '<strong>%{actor}</strong> started a %{poll_type}'
-      poll_edited: '<strong>%{actor}</strong> edited a %{poll_type}'
-      poll_reminder: '<strong>%{actor}</strong> is reminding you to vote'
-      poll_reminder_wip: '<strong>%{actor}</strong> is reminding you to give feedback'
-      poll_announced: '<strong>%{actor}</strong> invited you to vote in a %{poll_type}'
-      poll_announced_wip: '<strong>%{actor}</strong> invited you to give feedback on a %{poll_type}'
-      poll_closing_soon: '<strong>%{actor}</strong>''s %{poll_type} is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
-      poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
-      poll_expired: "<strong>%{actor}'s</strong> %{poll_type} has closed: %{title}"
-      poll_expired_author: 'Your %{poll_type} has <strong>closed</strong>. Please take time to consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
-      poll_option_added: '<strong>%{actor}</strong> added options to: %{title}'
-      poll_option_added_author: '<strong>%{actor}</strong> added options to: %{title}'
-      outcome_created: '<strong>%{actor}</strong> shared a %{poll_type} outcome.'
-      outcome_updated: '<strong>%{actor}</strong> updated the %{poll_type} outcome.'
-      outcome_review_due: "It's time to review the %{poll_type} outcome: %{title}. Consider starting a feedback poll or a new thread inviting reflections on how the decision has been implemented."
-      outcome_created_author: 'You shared a %{poll_type} outcome.'
-      outcome_announced: '<strong>%{actor}</strong> shared a %{poll_type} outcome.'
-      stance_created: "<strong>%{actor}</strong> voted on: %{title}"
-      stance_updated: "<strong>%{actor}</strong> voted on: %{title}"
-      user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
-      user_reminded: '<strong>%{actor}</strong> is reminding you to vote in: %{title}'
-
-    body:
-      voted: '<strong>%{participant}</strong>:'
-
-  comment_by: Comment by %{comment_author}
-
-  notified:
-    no_matches_found: "No results found matching '%{query}'"
-    group_users: "(%{count} people)"
-    group_title: "%{name} (%{count} people)"
-    public_title: Public (Anyone with link)
-
-  poll_unsubscribe:
-    title: You have been unsubscribed from %{title}
-    helptext: You will no longer receive emails about this decision.
-    visit_poll: View poll
-    go_to_dashboad: Go to dashboard
-
-  microsoft:
-    section_title: "[%{title}](%{url})"
-    new_discussion: "New thread in %{group}"
-    new_comment: "New comment in %{group}"
-    outcome_created: "Outcome posted in %{group}"
-    outcome_updated: "Outcome updated in %{group}"
-    outcome_review_due: "Outcome review due in %{group}"
-    poll_created: "New %{poll_type} in %{group}"
-    stance_created: "New response to %{poll}"
-    poll_closing_soon: "%{poll_type} is closing in 24 hours"
-    poll_expired: "%{poll_type} has closed"
-    group_identity_created: "Events from %{group} will now appear in this channel"
-
-  webhook:
-    markdown:
-      new_discussion: "**%{actor}** started a discussion in %{group}: [%{title}](%{url})"
-      discussion_edited: "**%{actor}** edited a discussion in %{group}: [%{title}](%{url})"
-      new_comment: "**%{actor}** commented in [%{title}](%{url})"
-      outcome_created: "**%{actor}** shared an outcome of the %{poll_type}: [%{title}](%{url})"
-      outcome_update: "**%{actor}** edited the outcome of the %{poll_type}: [%{title}](%{url})"
-      outcome_review_due: "It's time to review the outcome of the %{poll_type}: [%{title}](%{url})"
-      poll_created: "**%{actor}** started a %{poll_type} in %{group}: [%{title}](%{url})"
-      poll_edited: "**%{actor}** edited a %{poll_type} in %{group}: [%{title}](%{url})"
-      stance_created: "**%{actor}** voted in [%{title}](%{url})"
-      stance_updated: "**%{actor}** voted in [%{title}](%{url})"
-      poll_closing_soon: "24 hours remaining: [%{title}](%{url})"
-      poll_expired: "%{poll_type}: [%{title}](%{url}) has closed"
-      poll_closed_by_user: "**%{actor}** closed the %{poll_type}: [%{title}](%{url})"
-      poll_reopened: "**%{actor}** reopened %{poll_type}: [%{title}](%{url})"
-
-  slack:
-    new_discussion: "New thread in *%{group}*: *%{discussion}*"
-    outcome_created: "Outcome posted in *%{group}*: *%{poll}*"
-    outcome_updated: "Outcome edited in *%{group}*: *%{poll}*"
-    outcome_review_due: "It's time to review the outcome of *%{group}*: *%{poll}*"
-    poll_created: "New *%{poll_type}* in *%{group}*: *%{poll}*"
-    poll_closing_soon: "Reminder: *%{poll}* is closing in 24 hours"
-    poll_expired: "*%{poll}* has closed"
-    poll_not_found: "Sorry, that poll was not found. Type '/loomio <poll_type> <title>' to start another one?"
-    unknown_channel: |
-      Sorry, it looks like there's not a loomio group associated with this channel.
-      Try running '/loomio' in one of the following channels instead?
-      %{integrations}
-    stance_not_valid: "Sorry, we weren't able to create a stance for *%{poll}*. <%{url}|Click here> to vote on the poll directly."
-    group_identity_created: |
-      Hello, I'm Loomio Bot! *%{author}* added me.
-      I'll tell you whenever there are new threads or polls within *%{group}*
-
-      If you haven't joined *%{group}* yet, <%{url}|Click here> to do so.
-    request_authorization_message: "Just one more step: <%{url}|Click here> to authorize your slack account to use Loomio. (You'll only have to do this once)"
-    poll_closed: "*%{title}* has closed already! <%{url}|Click here> to view the results."
-    go_to_slack: Go to Slack
-    stance_created: Thanks for participating! You voted *%{position}* on the poll <%{poll_url}|%{title}>. If you''d like to change your vote, or give a reason for why you feel this way, <%{stance_url}|click here>.
-    click_to_vote: "Select an option below to vote:"
-    time_zone_message: (all times are in the %{zone} time zone)
-    authorized_message: Success! You're all set up to vote on slack now.
-    initiate: |
-      Okay, let's do this! <%{url}|Click here to start your %{type}>.
-      (note: we'll post into this channel once it's created, so that everyone can participate)
-    slash_command_help: |
-      Just enter a decision type and a question, and we'll take it from there.
-      You can choose from the following decision types:
-      'proposal': Seek collective agreement
-      'count':      Track participation and find volunteers
-      'poll':         Measure popularity of options
-      'dot_vote': Prioritise a list of options
-      'meeting': Find a time to meet
-      Or, start a conversation with '/loomio thread <title>'.
-
-      For example:
-      /loomio count Who's coming to the party on Sunday?
-      In order to start a new count.
-      or
-      /loomio thread Let's talk about the company direction
-      To start a new thread

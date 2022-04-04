@@ -15,7 +15,7 @@ def body
 end
 
 def expect_text(selector, val)
-  expect(Nokogiri::HTML(body).css(selector).to_s).to include val
+  expect(Nokogiri::HTML(body).css(selector).to_s.downcase).to include val.downcase
 end
 
 def expect_text_no_tags(selector, val)
@@ -34,6 +34,6 @@ def expect_no_element(selector)
   expect Nokogiri::HTML(body).css(selector).to_s.length == 0
 end
 
-def expect_subject(key)
-  expect(Nokogiri::HTML(body).css('.poll-mailer__subject').to_s).to include I18n.t(key, i18n_params)
+def expect_notification_headline(key)
+  expect(Nokogiri::HTML(body).css('.base-mailer__event-headline').to_s).to include I18n.t(key, i18n_params)
 end

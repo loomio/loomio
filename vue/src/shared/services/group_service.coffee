@@ -56,6 +56,18 @@ export default new class GroupService
         Records.memberships.makeAdmin(membership).then ->
           Flash.success "memberships_page.messages.make_admin_success", name: Session.user().name
 
+    chatbots:
+      name: 'chatbot.chatbot'
+      icon: 'mdi-robot'
+      menu: true
+      canPerform: ->
+        AppConfig.features.app.chatbots && group.adminsInclude(Session.user())
+      perform: ->
+        openModal
+          component: 'ChatbotForm'
+          props:
+            group: group
+
     webhooks:
       name: 'webhook.integrations'
       icon: 'mdi-webhook'

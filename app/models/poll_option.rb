@@ -1,6 +1,4 @@
 class PollOption < ApplicationRecord
-  include FormattedDateHelper
-
   belongs_to :poll
   validates :name, presence: true
 
@@ -32,17 +30,22 @@ class PollOption < ApplicationRecord
     end
   end
 
-  def has_time?(value = nil)
-    super(value || self.name)
+  def voter_ids
+    # this is a hack, we both know this
+    # some polls 0 is a vote, others it is not
+    if poll.poll_type == 'meeting'
+      voter_scores.keys.map(&:to_i)
+    else
+      voter_scores.filter{|id, score| score != 0 }.keys.map(&:to_i)
+    end
   end
 
-  def display_name(zone: nil)
-    if poll.dates_as_options
-      format_iso8601_for_humans(name, zone || poll.time_zone)
-    elsif poll.poll_options_attributes.any?
-      name.humanize
-    else
-      name
-    end
+  def voter_count
+    voter_ids.length
+  end
+
+  def average_score
+    return 0 if voter_count == 0
+    (total_score.to_f / voter_count.to_f)
   end
 end

@@ -2,6 +2,7 @@
 %html
   %head
     = stylesheet_link_tag 'email'
-    = stylesheet_link_tag 'poll_mailer'
-  %body
+  %body.max-width-600
+    = render 'base_mailer/app_logo'
     = yield
+

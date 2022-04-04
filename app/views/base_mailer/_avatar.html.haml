@@ -1,9 +1,6 @@
 - size = local_assigns.fetch(:size, 36)
-.base-mailer__avatar.v-avatar{title: user.name, style: "width: #{size}px; height: #{size}px"}
-  - if user.presence
-    - if user.thumb_url
-      = image_tag user.thumb_url, alt: "#{user.avatar_initials}", class: "base-mailer__avatar-image",  style: "width: #{size}px; height: #{size}px"
-    - else
-      .base-mailer__avatar-initials= user.avatar_initials
-  - else
-    .base-mailer__avatar-initials 👤
+- initials = user.presence ? user.avatar_initials :  '👤'
+- if user.presence && user.thumb_url
+  = image_tag user.thumb_url, alt: initials, class: "base-mailer__avatar-image", style: "width: #{size}px; height: #{size}px", width: size, height: size
+- else
+  %span.base-mailer__avatar-initials.text-center{style: "display:inline-block; width: #{size}px; height: #{size}px"}= initials

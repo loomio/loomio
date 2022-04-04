@@ -22,13 +22,6 @@ class UserService
     User.verified.find_by(email: user.email) || user.tap{ |u| u.update(email_verified: true) }
   end
 
-  def self.remind(model:, actor:, user:)
-    actor.ability.authorize! :remind, model
-
-    EventBus.broadcast 'user_remind', model, actor, user
-    Events::UserReminded.publish!(model, actor, user)
-  end
-
   def self.move_records(from: , to: )
     poll_ids = from.participated_poll_ids & to.participated_poll_ids
     Stance.where(participant_id: from.id).update_all(participant_id: to.id)

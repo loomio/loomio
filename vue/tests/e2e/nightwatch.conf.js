@@ -1,17 +1,22 @@
-var selenium = require('selenium-server-standalone-jar');
-// var chromedriver = require('chromedriver');
+// var selenium = require('selenium-server-standalone-jar');
+var chromedriver = require('chromedriver');
 
 var chromeOptions = ["window-size=1280,1500"]
-if (process.env.RAILS_ENV == 'test') { chromeOptions.push("headless") }
+
+if (process.env.RAILS_ENV == 'test' || 
+    process.env.CHROME_HEADLESS ) { chromeOptions.push("headless") }
 
 module.exports = {
+  detailed_output: false,
   src_folders: ['./tests/e2e/specs'],
   output_folder: './tests/reports',
   selenium: {
+    start_process: false
+  },
+  webdriver: {
     start_process: true,
-    server_path: selenium.path,
-    check_process_delay: 5000,
-    log_path: './tests/reports'
+    server_path: "node_modules/.bin/chromedriver",
+    cli_args: ["--verbose"]
   },
   test_settings: {
     default: {
@@ -23,8 +28,6 @@ module.exports = {
       },
       launch_url: "about:blank",
       skip_testcases_on_fail: false,
-      selenium_port: 4444,
-      selenium_host: 'localhost',
       desiredCapabilities: {
         browserName: 'chrome',
         chromeOptions : { w3c: false, args: chromeOptions },

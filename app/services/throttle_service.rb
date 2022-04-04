@@ -3,7 +3,7 @@ module ThrottleService
   end
 
   def self.reset!(per)
-    CHANNELS_REDIS_POOL.with do |client|
+    CACHE_REDIS_POOL.with do |client|
       client.scan_each(match: "THROTTLE-#{per.upcase}*") { |key| client.del(key) }
     end
   end

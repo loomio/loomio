@@ -65,10 +65,6 @@ export default
     updateGroupItems: ->
       @groupItems = [{text: @$t('discussion_form.none_invite_only_thread'), value: null}].concat Session.user().groups().map (g) -> {text: g.fullName, value: g.id}
 
-    updateCount: ->
-      Records.announcements.fetchNotificationsCount(@model).then (data) =>
-        @notificationsCount = data.count
-
     openEditLayout: ->
       ThreadService.actions(@discussion, @)['edit_arrangement'].perform()
 

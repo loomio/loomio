@@ -26,7 +26,6 @@ describe Events::CommentRepliedTo do
     it 'does not email when the comment and reply author are the same' do
       parent.update author: comment.author
       expect(Event).to_not receive(:create!)
-      expect(DiscussionMailer).to_not receive(:delay)
       expect { Events::CommentRepliedTo.publish!(comment) }.to_not change { Notification.count }
     end
   end

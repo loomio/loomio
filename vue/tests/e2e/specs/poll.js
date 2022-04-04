@@ -12,6 +12,7 @@ module.exports = {
     page.fillIn('.poll-common-form-fields .lmo-textarea div[contenteditable=true]', 'Some details')
     page.click('.poll-common-form__submit')
     page.expectElement('.poll-members-form__submit')
+    page.pause(300)
     page.click('.dismiss-modal-button')
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
@@ -249,6 +250,7 @@ module.exports = {
 
     page.click('.poll-common-form__submit')
     page.expectElement('.poll-members-form__submit')
+    page.pause(500)
     page.click('.dismiss-modal-button')
 
     page.expectText('.poll-common-card__title', 'A new proposal')
@@ -271,7 +273,9 @@ module.exports = {
     // change dropdown here
 
     page.click('.poll-common-form__submit')
+    page.pause(300)
     page.expectElement('.poll-members-form__submit')
+    page.pause(300)
     page.click('.dismiss-modal-button')
 
     page.expectText('.poll-common-card__title', 'A new proposal')
@@ -342,7 +346,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPathNoApp('polls/test_poll_scenario?poll_type=proposal&scenario=poll_created&email=1&anonymous=1&guest=1')
-    page.click('.poll-mailer__poll-title')
+    page.click('.event-mailer__title a')
+    page.pause(1000)
     page.click('.poll-proposal-vote-form__button')
     page.fillIn('.html-editor__textarea .ProseMirror', "reason")
     page.click('.poll-common-vote-form__submit')

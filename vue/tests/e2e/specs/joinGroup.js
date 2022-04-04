@@ -42,7 +42,7 @@ module.exports = {
     page.loadPath('setup_closed_group_to_join')
     page.click('.join-group-button')
     page.click('.membership-request-form__submit-btn')
-    page.expectFlash('You have requested membership')
+    page.expectFlash('You have requested to join')
   },
 
   'can_join_closed_subgroup_when_admin_of_parent_group': (test) => {

@@ -41,12 +41,14 @@ export default
 
   mounted: ->
     @recipients = @initialRecipients
+    @fetchChatbots()
     @fetchAndUpdateSuggestions()
 
   watch:
     'model.groupId': (groupId) ->
       @suggestedUserIds = []
       @newRecipients(@initialRecipients)
+      @fetchChatbots()
       @fetchAndUpdateSuggestions()
 
     reset: ->
@@ -64,6 +66,14 @@ export default
       @fetchAndUpdateSuggestions()
 
   methods:
+    fetchChatbots: ->
+      Records.fetch
+        path: 'chatbots'
+        params:
+          group_id: @model.groupId
+      .then (data) =>
+        @updateSuggestions()
+
     fetchSuggestions: debounce ->
       return unless @query
       existingOnly = (@existingOnly && {existing_only: 1}) || {}
@@ -91,8 +101,9 @@ export default
 
     newRecipients: (val) ->
       @model.recipientAudience = (find(val, (o) -> o.type == 'audience') || {}).id
-      @model.recipientUserIds = map filter(val, (o) -> o.type == 'user'), 'id'
-      @model.recipientEmails = map filter(val, (o) -> o.type == 'email'), 'name'
+      @model.recipientUserIds = map(filter(val, (o) -> o.type == 'user'), 'id')
+      @model.recipientEmails = map(filter(val, (o) -> o.type == 'email'), 'name')
+      @model.recipientChatbotIds = map(filter(val, (o) -> o.type == 'chatbot'), 'id')
 
     findUsers: ->
       return [] unless @query
@@ -151,13 +162,13 @@ export default
 
         # catch paste of multiple email addresses, or failure to press enter after an email address
         if emails.length > 1 or (emails.length == 1 && [',', ' '].includes(@query.slice(-1)))
-          objs = uniqBy @recipients.concat(emails.map(@emailToRecipient)), 'id'
+          objs = uniqBy(@recipients.concat(emails.map(@emailToRecipient)), 'id')
           @recipients = objs
           @suggestions = objs
           @query = ''
           return
         else if emails.length == 1
-          @suggestions = @recipients.concat emails.map(@emailToRecipient)
+          @suggestions = @recipients.concat(emails.map(@emailToRecipient))
           return
 
       members = @findUsers().map (u) ->
@@ -173,7 +184,13 @@ export default
         name: a.name
         size: a.size
 
-      @suggestions = @recipients.concat(audiences).concat(members)
+      chatbots = @model.group().chatbots().map (b) ->
+        id: b.id
+        type: 'chatbot'
+        icon: 'mdi-robot'
+        name: b.channel
+
+      @suggestions = @recipients.concat(audiences).concat(members).concat(chatbots)
 
   computed:
     canAddGuests: -> AbilityService.canAddGuests(@model)

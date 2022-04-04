@@ -1,7 +1,6 @@
 class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
   include PrettyUrlHelper
-  include PollEmailHelper
-
+  
   attributes :text,
              :icon_url,
              :username,

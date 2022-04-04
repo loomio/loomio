@@ -13,6 +13,7 @@ import AuthModal from '@/components/auth/modal'
 import MembershipRequestForm from '@/components/group/membership_request_form'
 import MembershipModal from '@/components/group/membership_modal'
 import ChangePasswordForm from '@/components/profile/change_password_form'
+import ChatbotForm from '@/components/chatbot/form'
 import PollCommonOutcomeModal from '@/components/poll/common/outcome_modal'
 import PollCommonReopenModal from '@/components/poll/common/reopen_modal'
 import PollCommonStartForm from '@/components/poll/common/start_form'
@@ -45,6 +46,7 @@ export default
     EditCommentForm
     ConfirmModal
     ChangeVolumeForm
+    ChatbotForm
     PollCommonModal
     PollCommonEditVoteModal
     ContactRequestForm
