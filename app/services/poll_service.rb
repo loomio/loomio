@@ -275,7 +275,7 @@ class PollService
         voter_percent: poll.voters_count > 0 ? ((option.voter_count.to_f / poll.voters_count.to_f) * 100) : 0,
         average: option.average_score,
         voter_scores: option.voter_scores,
-        voter_ids: option.voter_ids,
+        voter_ids: option.voter_ids.shuffle.take(100),
         voter_count: option.voter_count,
         color: option.color
       }.with_indifferent_access.freeze
@@ -291,7 +291,7 @@ class PollService
           voter_percent: poll.voters_count > 0 ? (poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100) : 0,
           average: 0,
           voter_scores: {},
-          voter_ids: poll.undecided_voters.map(&:id),
+          voter_ids: poll.undecided_voters.map(&:id).shuffle.take(100),
           voter_count: poll.undecided_voters_count,
           color: '#DDDDDD'
       }.with_indifferent_access.freeze)
