@@ -167,7 +167,7 @@ class Poll < ApplicationRecord
   def result_columns
     case poll_type
     when 'proposal'
-      %w[pie name voter_percent voter_count voters]
+      %w[pie name score_percent voter_count voters]
     when 'count'
       %w[bar name voter_percent voter_count voters]
     when 'ranked_choice'
