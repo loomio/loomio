@@ -162,8 +162,9 @@ class Discussion < ApplicationRecord
   end
 
   def update_sequence_info!
+    sequence_ids = discussion.items.order(:sequence_id).pluck(:sequence_id)
     discussion.ranges_string =
-     RangeSet.serialize RangeSet.reduce RangeSet.ranges_from_list discussion.items.order(:sequence_id).pluck(:sequence_id)
+     RangeSet.serialize RangeSet.reduce RangeSet.ranges_from_list sequence_ids
 
     ignored_parents = discussion.items.includes(:eventable).filter do |e|
       ['discussion_closed', 'poll_expired', 'poll_closed_by_user'].include?(e.kind) ||
