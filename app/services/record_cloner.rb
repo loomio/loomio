@@ -148,6 +148,7 @@ class RecordCloner
       score_counts
       total_score
       voter_scores
+      voter_count
     ]
     clone_poll_option = new_clone(poll_option, copy_fields)
     clone_poll_option.poll = existing_clone(poll_option.poll)

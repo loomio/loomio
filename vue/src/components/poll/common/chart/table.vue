@@ -76,9 +76,6 @@ export default
   position: relative
   max-height: 72px
   overflow: hidden
-  background: -webkit-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1))
-  -webkit-background-clip: text
-  -webkit-text-fill-color: transparent
 
 .poll-common-chart-table__voter-avatars:hover
   max-height: none

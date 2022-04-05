@@ -10,7 +10,8 @@ class PollOption < ApplicationRecord
   def update_counts!
     update_columns(
       voter_scores: stance_choices.latest.where('stances.participant_id is not null').includes(:stance).map { |c| [c.stance.participant_id, c.score] }.to_h,
-      total_score: stance_choices.latest.sum(:score)
+      total_score: stance_choices.latest.sum(:score),
+      voter_count: stances.latest.count
     )
   end
 
@@ -38,10 +39,6 @@ class PollOption < ApplicationRecord
     else
       voter_scores.filter{|id, score| score != 0 }.keys.map(&:to_i)
     end
-  end
-
-  def voter_count
-    voter_ids.length
   end
 
   def average_score

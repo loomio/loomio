@@ -294,7 +294,7 @@ class Poll < ApplicationRecord
       stance_counts: poll_options.map(&:total_score), # should rename to option scores
       voters_count: stances.latest.count, # should rename to stances_count
       undecided_voters_count: stances.latest.undecided.count,
-      versions_count:  versions.count
+      versions_count: versions.count
     )
   end
 
