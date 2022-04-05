@@ -108,7 +108,7 @@ module EmailHelper
   end
 
   def proposal_sparkline(poll)
-    poll.results.map {|h| h[:voter_count] }.join(',')
+    poll.results.map {|h| h[:score] }.join(',')
   end
 
   def proposal_colors(poll)

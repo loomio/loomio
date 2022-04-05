@@ -177,11 +177,7 @@ class Poll < ApplicationRecord
     when 'score'
       %w[bar name score average voter_count voters]
     when 'poll'
-      if poll.multiple_choice
-        %w[bar name score_percent voter_count voters]
-      else
-        %w[bar name voter_percent voter_count voters]
-      end
+      %w[bar name score_percent voter_count voters]
     when 'meeting'
       %w[grid name score voters]
     end

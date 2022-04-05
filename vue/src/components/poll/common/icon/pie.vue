@@ -45,7 +45,7 @@ export default
               fill: option.color
         else
           each @results, (option) =>
-            angle = 360 * option[@poll.chartColumn] 
+            angle = 360 * option[@poll.chartColumn] / 100
             @shapes.push @svgEl.path(@arcPath(start, start + angle)).attr
               'stroke-width': 0
               fill: option.color

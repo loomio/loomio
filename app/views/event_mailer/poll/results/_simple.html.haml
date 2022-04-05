@@ -63,7 +63,7 @@
             - when 'voter_count'
               %td.text-right= option[:voter_count]
             - when 'average'
-              %td.text-right= option[:average]
+              %td.text-right= option[:average].round(1)
             - when 'voter_percent'
               %td.text-right #{option[:voter_percent].round}%
             - when 'score_percent'
