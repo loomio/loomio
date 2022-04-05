@@ -24,7 +24,6 @@ export default
     groupIds: [@group.id]
     excludedUserIds: []
     message: ''
-    withMessage: false
     subscription: {}
     cannotInvite: false
     upgradeUrl: AppConfig.baseUrl + 'upgrade'
@@ -53,12 +52,12 @@ export default
 
     inviteRecipients: ->
       @saving = true
-      Records.announcements.remote.post '',
+      Records.remote.post 'announcements',
         group_id: @group.id
-        message: @message
         invited_group_ids: @groupIds
         recipient_emails: @recipients.filter((r) -> r.type == 'email').map((r) -> r.id)
         recipient_user_ids: @recipients.filter((r) -> r.type == 'user').map((r) -> r.id)
+        recipient_message: @message
 
       .then (data) =>
         Flash.success('announcement.flash.success', { count: data.memberships.length })
@@ -139,10 +138,6 @@ export default
           v-checkbox.invitation-form__select-groups(:class="{'ml-4': !group.isParent()}" v-model="groupIds" :label="group.name" :value="group.id" hide-details)
 
       v-textarea(rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
-
-      //- a(@click="withMessage = !withMessage")
-      //-   span(v-if="!withMessage") Include an invitation message
-      //-   span(v-if="withMessage") Remove message
 
       v-card-actions
         v-spacer

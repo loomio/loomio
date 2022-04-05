@@ -44,9 +44,6 @@ export default
     status: ->
       return 'pinned' if @discussion.pinned
 
-    statusTitle: ->
-      @$t("context_panel.thread_status.#{@status}")
-
     groups: ->
       @discussion.group().parentsAndSelf().map (group) =>
         text: group.name
@@ -66,7 +63,7 @@ export default
 </script>
 
 <template lang="pug">
-.strand-new-discussion.context-panel#context(:aria-label="$t('context_panel.aria_intro', {author: authorName, group: group.fullName})" v-observe-visibility="{callback: viewed, once: true}")
+.strand-new-discussion.context-panel#context(v-observe-visibility="{callback: viewed, once: true}")
   v-layout.ml-n2(align-center wrap)
     v-breadcrumbs.context-panel__breadcrumbs(:items="groups")
       template(v-slot:divider)

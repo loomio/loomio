@@ -10,7 +10,6 @@ class Discussion < ApplicationRecord
   include HasImportance
   include MessageChannel
   include SelfReferencing
-  include HasMailer
   include HasCreatedEvent
   include HasRichText
   include HasTags
@@ -88,10 +87,10 @@ class Discussion < ApplicationRecord
   delegate :locale, to: :author
 
   after_create :set_last_activity_at_to_created_at
+  after_destroy :drop_sequence_id_sequence
 
   define_counter_cache(:closed_polls_count)         { |d| d.polls.closed.count }
   define_counter_cache(:versions_count)             { |d| d.versions.count }
-  # define_counter_cache(:items_count)                { |d| d.items.count }
   define_counter_cache(:seen_by_count)              { |d| d.discussion_readers.where("last_read_at is not null").count }
   define_counter_cache(:members_count)              { |d| d.discussion_readers.where("revoked_at is null").count }
   define_counter_cache(:anonymous_polls_count)      { |d| d.polls.where(anonymous: true).count }
@@ -179,8 +178,12 @@ class Discussion < ApplicationRecord
     update_columns(
       ranges_string: discussion.ranges_string,
       ignored_ranges_string: discussion.ignored_ranges_string,
-      last_activity_at: discussion.last_activity_at
-    )
+      items_count: sequence_ids.count,
+      last_activity_at: discussion.last_activity_at)
+  end
+
+  def drop_sequence_id_sequence
+    SequenceService.drop_seq!('discussions_sequence_id', id)
   end
 
   def public?

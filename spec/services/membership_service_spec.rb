@@ -38,15 +38,28 @@ describe MembershipService do
 
   describe 'redeem' do
     let!(:another_subgroup) { create :group, parent: group }
-    before do
-      MembershipService.redeem(membership: membership, actor: user)
-    end
+    let!(:discussion) { create :discussion, group: group, private: false }
+    let!(:poll) { create :poll, group: group }
 
     it 'sets accepted_at' do
+      MembershipService.redeem(membership: membership, actor: user)
       membership.accepted_at.should be_present
     end
 
+    it 'unrevokes discussion readers and stances' do
+      reader = discussion.add_guest! user, discussion.author
+      stance = poll.add_guest!(user, discussion.author)
+      reader.update(revoked_at: DateTime.now)
+      stance.update(revoked_at: DateTime.now)
+      expect(stance.revoked_at).to_not eq nil
+      expect(reader.revoked_at).to_not eq nil
+      MembershipService.redeem(membership: membership, actor: user)
+      expect(stance.reload.revoked_at).to eq nil
+      expect(reader.reload.revoked_at).to eq nil
+    end
+
     it 'notifies the invitor of acceptance' do
+      MembershipService.redeem(membership: membership, actor: user)
       expect(Event.last.kind).to eq 'invitation_accepted'
     end
 

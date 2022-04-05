@@ -1,0 +1,37 @@
+- poll       = poll_option.poll
+- time_zone  = @recipient.time_zone || poll.time_zone
+- class_name = local_assigns[:small] ? "poll-mailer-#{poll.poll_type}__option-icon--small" : "poll-mailer-#{poll.poll_type}__option-icon"
+- show_link  = local_assigns[:link]
+- stance_choice = local_assigns.fetch(:stance_choice, nil)
+- show_score = poll.has_variable_score && stance_choice
+- display_name = case poll.poll_option_name_format
+- when 'i18n' then t(poll_option.name)
+- when 'iso8601' then format_iso8601_for_humans(poll_option.name, @recipient.time_zone || poll.time_zone)
+- else
+  - poll_option.name
+
+
+%tr.poll-mailer__poll-option
+  - if poll.has_option_icons
+    - if show_link
+      %td= link_to image_tag("poll_mailer/vote-button-#{poll_option.name}.png", width: 55, height: 55, alt: poll_option.name, class: class_name), tracked_url(poll, poll_option_id: poll_option.id)
+      %td{class: "poll-mailer-#{poll.poll_type}__option-name"}= link_to t("poll_#{poll.poll_type}_options.#{poll_option.name}"), tracked_url(poll, poll_option_id: poll_option.id)
+    - else
+      %td= image_tag("poll_mailer/vote-button-#{poll_option.name}.png", width: 55, height: 55, alt: "#{poll_option.name} icon", class: class_name)
+      %td= t("poll_#{poll.poll_type}_options.#{poll_option.name}")
+  - elsif poll.has_score_icons
+    - if stance_choice.present? && icon_name = stance_icon_for(poll, stance_choice)
+      %td= image_tag "poll_mailer/vote-icon-#{icon_name}.png", width: 24, height: 24, alt: "#{icon_name} icon", class: "poll-mailer-meeting__option-icon"
+    - else
+      %td= render 'event_mailer/poll/chip', color: poll_option.color
+    %td= display_name
+
+  - else
+    - if show_link
+      %td= stance_choice.rank_or_score if show_score
+      %td= render 'event_mailer/poll/chip', color: poll_option.color
+      %td= link_to display_name, tracked_url(poll, poll_option_id: poll_option.id)
+    - else
+      %td= stance_choice.rank_or_score if show_score
+      %td= render 'event_mailer/poll/chip', color: poll_option.color
+      %td= display_name

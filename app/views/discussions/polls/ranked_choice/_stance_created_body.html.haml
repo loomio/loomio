@@ -5,10 +5,10 @@
       %span{"aria-hidden" => "true"}  ·
     %span.text--secondary.body-2
       = render 'discussions/time_ago', time: stance.created_at
-%table{style: "width: 100%"}
+%table{style: "width: 100%", cellspacing: 0}
   - stance.stance_choices.order('score desc').each do |stance_choice|
     %tr
-      %td= render "poll_mailer/common/chip", color: stance_choice.poll_option.color
+      %td= render "event_mailer/poll/chip", color: stance_choice.poll_option.color
       %td= "#{stance_choice.rank} - #{stance_choice.poll_option.name}"
 .poll-common-stance
   .lmo-markdown-wrapper.body-2.text--primary.poll-common-stance-created__reason

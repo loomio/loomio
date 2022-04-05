@@ -1,6 +1,4 @@
 class TaskMailer < BaseMailer
-  layout 'invite_people_mailer'
-
   def task_due_reminder(recipient, task)
     @recipient = recipient
     @task = task

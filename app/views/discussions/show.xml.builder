@@ -11,7 +11,7 @@ atom_feed do |feed|
     next if item.nil?
     next if item.author.blank?
     feed.entry(event, url: discussion_url(@discussion)) do |entry|
-      entry.title t(:comment_by, comment_author: item.author_name)
+      entry.title t(:'notifications.without_title.new_comment', actor: item.author_name)
       entry.content item.body, type: :text
       entry.published item.created_at
       entry.author do |author|

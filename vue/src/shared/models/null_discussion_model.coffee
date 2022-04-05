@@ -29,6 +29,7 @@ export default class NullDiscussionModel
       recipientMessage: null
       recipientAudience: null
       recipientUserIds: []
+      recipientChatbotIds: []
       recipientEmails: []
       notifyRecipients: true
       groupId: null

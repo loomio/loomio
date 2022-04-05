@@ -79,9 +79,12 @@ module Dev::NintiesMoviesHelper
   def create_group
     unless @group
       @group = Group.new(name: 'Dirty Dancing Shoes',
-                                  group_privacy: 'closed',
-                                  handle: 'shoes',
-                                  discussion_privacy_options: 'public_or_private', creator: patrick)
+                        description: 'The best place for dancing shoes. _every_ shoe is **dirty**!',
+                        group_privacy: 'closed',
+                        handle: 'shoes',
+                        discussion_privacy_options: 'public_or_private', creator: patrick)
+      file = open(Rails.root.join('public','brand','icon_sky_150h.png'))
+      @group.logo.attach(io: file, filename: 'logo.png')
       GroupService.create(group: @group, actor: @group.creator)
       @group.add_admin!  patrick
       @group.add_member! jennifer
@@ -144,11 +147,7 @@ module Dev::NintiesMoviesHelper
 
   def create_discussion
     unless @discussion
-      @discussion = Discussion.create(title: 'What star sign are you?',
-                                       private: false,
-                                       group: create_group,
-                                       link_previews: [{'title': 'link title', 'url': 'https://www.example.com', 'description': 'a link to a page', 'image': 'https://www.loomio.org/theme/logo.svg', 'hostname':'www.example.com'}],
-                                       author: jennifer)
+      @discussion = Discussion.create(title: 'What star sign are you?', private: false, group: create_group, link_previews: [{'title': 'link title', 'url': 'https://www.example.com', 'description': 'a link to a page', 'image': 'https://www.loomio.org/theme/logo.svg', 'hostname':'www.example.com'}], author: jennifer)
       DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     end
     @discussion

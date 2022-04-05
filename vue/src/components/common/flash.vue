@@ -21,7 +21,11 @@ export default
 </script>
 
 <template lang="pug">
-v-snackbar.flash-root(:color="flash.level == 'success' ? 'primary' : flash.level" v-model="isOpen" :timeout="flash.duration" top)
+v-snackbar.flash-root(
+  top
+  v-model="isOpen"
+  :color="flash.level == 'success' ? 'primary' : flash.level"
+  :timeout="flash.duration")
   span.flash-root__message(role="status" aria-live="assertive" v-t="{path: flash.message, args: flash.options}")
   v-progress-linear.mt-2(v-if="flash.level == 'wait'" :value="seconds")
   .flash-root__action(v-if="flash.actionFn")

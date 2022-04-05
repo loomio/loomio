@@ -27,7 +27,6 @@ EventBus.configure do |config|
                 'poll_create',
                 'poll_update') { |model| SearchIndexWorker.perform_async(Array(model.discussion_id)) }
 
-
   # if the user marks a discussion as read, update their other open tabs
   config.listen('discussion_mark_as_read',
                 'discussion_dismiss',

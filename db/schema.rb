@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_13_053922) do
+ActiveRecord::Schema.define(version: 2022_04_05_030616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -144,6 +144,21 @@ ActiveRecord::Schema.define(version: 2021_12_13_053922) do
     t.index ["creator_id"], name: "index_blazer_queries_on_creator_id"
   end
 
+  create_table "chatbots", force: :cascade do |t|
+    t.string "kind"
+    t.string "server"
+    t.string "channel"
+    t.string "access_token"
+    t.integer "author_id"
+    t.integer "group_id"
+    t.jsonb "event_kinds", default: [], null: false
+    t.boolean "include_body", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.index ["group_id"], name: "index_chatbots_on_group_id"
+  end
+
   create_table "cohorts", id: :serial, force: :cascade do |t|
     t.date "start_on"
     t.date "end_on"
@@ -246,6 +261,7 @@ ActiveRecord::Schema.define(version: 2021_12_13_053922) do
     t.jsonb "link_previews", default: [], null: false
     t.datetime "pinned_at"
     t.string "ignored_ranges_string"
+    t.integer "discarded_by"
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["group_id"], name: "index_discussions_on_group_id"
@@ -563,6 +579,12 @@ ActiveRecord::Schema.define(version: 2021_12_13_053922) do
     t.index ["poll_id"], name: "index_outcomes_on_poll_id"
   end
 
+  create_table "partition_sequences", primary_key: ["key", "id"], force: :cascade do |t|
+    t.text "key", null: false
+    t.integer "id", null: false
+    t.integer "counter", default: 0
+  end
+
   create_table "poll_options", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.integer "poll_id"
@@ -570,6 +592,7 @@ ActiveRecord::Schema.define(version: 2021_12_13_053922) do
     t.jsonb "score_counts", default: {}, null: false
     t.jsonb "voter_scores", default: {}, null: false
     t.integer "total_score", default: 0, null: false
+    t.integer "voter_count", default: 0, null: false
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
   end
 
@@ -699,6 +722,7 @@ ActiveRecord::Schema.define(version: 2021_12_13_053922) do
     t.datetime "renews_at"
     t.datetime "renewed_at"
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
+    t.index ["plan"], name: "index_subscriptions_on_plan"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|

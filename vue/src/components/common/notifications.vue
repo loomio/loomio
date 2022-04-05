@@ -48,9 +48,9 @@ v-menu.notifications(v-model="open" offset-y bottom)
           user-avatar(v-if="n.actor()" :user="n.actor()" :size="36")
         v-list-item-content
           v-list-item-title.notification__content
-            span(v-html="$t(n.path(), n.args())")
+            span(v-t="{path: 'notifications.with_title.'+n.kind, args: n.args()}")
             space
-            span(aria-hidden='true') ·
+            mid-dot
             space
             time-ago(:date="n.createdAt")
     template(v-if="notifications.length == 0")

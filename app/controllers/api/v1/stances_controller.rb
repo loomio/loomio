@@ -1,4 +1,14 @@
 class API::V1::StancesController < API::V1::RestfulController
+  def create
+    super
+  rescue ActiveRecord::RecordNotUnique
+    self.resource = resource_class.find_by!(
+      poll_id: params[:stance][:poll_id],
+      participant_id: current_user.id)
+    update_action
+    update_response
+  end
+
   def index
     instantiate_collection do |collection|
       if query = params[:query]

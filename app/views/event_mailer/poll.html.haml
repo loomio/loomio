@@ -1,0 +1,16 @@
+- poll = @event.eventable.poll
+= render "event_mailer/common/notification", event: @event
+= render "event_mailer/poll/share_outcome", event: @event
+= render "event_mailer/common/title", eventable: poll
+= render "event_mailer/common/tags", eventable: poll
+= render "event_mailer/poll/summary", poll: poll
+= render "event_mailer/poll/vote", poll: poll
+- if poll.decided_voters_count > 0
+	= render "event_mailer/poll/results", poll: poll
+- if %w[poll_announced poll_created].include?(@event.kind) && @event.eventable.discussion
+	%hr
+	= render "event_mailer/common/title", eventable: @event.eventable.discussion
+	= render "event_mailer/common/body", eventable: @event.eventable.discussion
+- else
+	= render "event_mailer/poll/responses", event: @event
+= render "event_mailer/common/footer", event: @event

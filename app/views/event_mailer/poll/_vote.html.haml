@@ -1,0 +1,20 @@
+- stance = recipient_stance(@recipient, poll)
+
+.poll-mailer__vote.pb-4
+  - if poll.anonymous?
+    %p= t(:"poll_common_action_panel.anonymous")
+
+  - if stance.cast_at
+    %h2.text-subtitle-2= t(:"poll_common.your_response")
+    = render 'event_mailer/poll/stance', stance: stance
+  - elsif poll.active?
+    %h2.text-subtitle-2= t(:"poll_common.please_vote")
+    - if poll.poll_type == 'meeting'
+      %p= t(:"common.time_zone", zone: formatted_time_zone(poll)) 
+    %table{class: "poll-mailer-#{poll.poll_type}__poll-options"}
+      - poll.poll_options.each do |option|
+        = render 'event_mailer/poll/poll_option', poll: poll, poll_option: option, link: poll.active?
+    - unless poll.is_single_vote?
+      = render 'base_mailer/button', url: tracked_url(poll), text: t(:"poll_common.vote_now")
+  - if poll.wip?
+    %p= t(:"poll_common_action_panel.draft_mode", poll_type: t("poll_types.#{poll.poll_type}"))

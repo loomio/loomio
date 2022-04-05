@@ -3,6 +3,7 @@ import PageLoader         from '@/shared/services/page_loader'
 import Records from '@/shared/services/records'
 import EventBus     from '@/shared/services/event_bus'
 import { fieldFromTemplate } from '@/shared/helpers/poll'
+import { parseISO } from 'date-fns'
 
 export default
   props:
@@ -24,7 +25,7 @@ export default
     @loader.fetch(@page)
 
     @watchRecords
-      collections: ['stances']
+      collections: ['stances', 'polls']
       query: => @findRecords()
 
   computed:
@@ -44,10 +45,11 @@ export default
         find(revokedAt: null)
 
       if @loader.pageWindow[@page]
-        if @page == 1
-          chain = chain.find(orderAt: {$gte: @loader.pageWindow[@page][0]})
-        else
-          chain = chain.find(orderAt: {$jbetween: @loader.pageWindow[@page]})
+        chain = chain.find
+          orderAt: 
+            $and:
+              $jgte: @loader.pageWindow[@page][0]
+              $jlte: @loader.pageWindow[@page][1]
         chain = chain.simplesort('orderAt', true)
       else
         @stances = []

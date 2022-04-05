@@ -289,9 +289,9 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPathNoApp('setup_discussion_mailer_discussion_announced_email')
-    page.expectText('.thread-mailer__subject', "invited you to join")
+    page.expectText('.base-mailer__event-headline', "invited you to a thread")
     page.expectText('.thread-mailer__body', "A description for this discussion. Should this be rich?")
-    page.click('.thread-mailer__subject--text a', 2000)
+    page.click('.event-mailer__title a', 2000)
     page.expectText('.context-panel__heading', 'go to the moon')
     page.expectText('.context-panel__description', 'A description for this discussion')
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Hello world!')
@@ -305,9 +305,9 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPathNoApp('setup_discussion_mailer_invitation_created_email')
-    page.expectText('.thread-mailer__subject', "invited you to join")
+    page.expectText('.base-mailer__event-headline', "invited you to a thread")
     page.expectText('.thread-mailer__body', "A description for this discussion. Should this be rich?")
-    page.click('.thread-mailer__subject--text a', 2000)
+    page.click('.event-mailer__title a', 2000)
     page.expectValue('.auth-email-form__email input', 'jen@example.com')
     page.signUpViaInvitation("Jennifer")
     page.expectFlash('Signed in successfully')

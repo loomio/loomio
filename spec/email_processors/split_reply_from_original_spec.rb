@@ -19,7 +19,7 @@ describe "Splitting replies from the original message on incoming emails" do
 
   it "splits the email on the hidden chars" do
     input_body = "Hi I'm the bit you want,
-    #{DiscussionMailer::REPLY_DELIMITER}
+    #{EventMailer::REPLY_DELIMITER}
     This is the bit that you don't want"
     output_body = Griddler::EmailParser.extract_reply_body(input_body)
     expect(output_body).to eq "Hi I'm the bit you want,"

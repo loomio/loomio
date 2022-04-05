@@ -23,6 +23,23 @@ class MembershipService
       user_id: actor.id,
       accepted_at: DateTime.now)
 
+    member_group_ids = actor.group_ids & membership.group.parent_or_self.id_and_subgroup_ids
+
+    # make sure they're not banned from anything
+    DiscussionReader.joins(:discussion).
+      where(user_id: actor.id).
+      where('discussions.group_id': member_group_ids).
+      where('revoked_at is not null').
+      update_all(revoked_at: nil)
+
+    # give them any votes they were previously granted (if they're still useful)
+    Stance.joins(:poll).
+      where(participant_id: actor.id).
+      where('polls.group_id': member_group_ids).
+      where('revoked_at is not null').
+      where('polls.closed_at is null').
+      update_all(revoked_at: nil)
+
     membership.reload
     Events::InvitationAccepted.publish!(membership) if notify && membership.accepted_at
   end
@@ -111,7 +128,9 @@ class MembershipService
 
     DiscussionReader.joins(:discussion).where(
       'discussions.group_id': membership.group.id_and_subgroup_ids,
-      user_id: membership.user_id).update_all(revoked_at: now)
+                     user_id: membership.user_id).
+      where("inviter_id IS NOT NULL").
+      update_all(revoked_at: now)
 
     Stance.joins(:poll).where(
       'polls.group_id': membership.group.id_and_subgroup_ids,

@@ -41,16 +41,6 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
   end
 
   def create
-    # juggle data for older clients
-    if params.dig(:announcement, :recipients)
-      params[:recipient_user_ids] = params.dig(:announcement, :recipients, :user_ids)
-      params[:recipient_emails] = params.dig(:announcement, :recipients, :emails)
-    end
-
-    %w[recipient_user_ids recipient_emails recipient_audience invited_group_ids message].each do |name|
-      params[name] = params.dig(:announcement, name) if params.dig(:announcement, name)
-    end
-
     if target_model.is_a?(Group)
       self.collection = GroupService.invite(group: target_model, actor: current_user, params: params)
       respond_with_collection serializer: MembershipSerializer, root: :memberships

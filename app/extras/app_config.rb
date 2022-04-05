@@ -63,6 +63,7 @@ class AppConfig
       help_url:                          ENV.fetch('HELP_URL',                      'https://help.loomio.org/'),
       icon_src:                          ENV.fetch('THEME_ICON_SRC',                "/brand/icon_#{logo_color}_150h.png"),
       app_logo_src:                      ENV.fetch('THEME_APP_LOGO_SRC',            "/brand/logo_#{logo_color}.svg"),
+      apple_touch_src:                   ENV.fetch('APPLE_TOUCH_SRC',               "/brand/touch_icon_gold.png"),
       default_group_cover_src:           ENV.fetch('THEME_DEFAULT_GROUP_COVER_SRC', '/theme/default_group_cover.png'),
 
       # used in emails
@@ -92,6 +93,7 @@ class AppConfig
       subscriptions:              !!ENV.fetch('CHARGIFY_API_KEY', false),
       demos:                      ENV.fetch('FEATURES_DEMO_GROUPS', false),
       trials:                     ENV.fetch('FEATURES_TRIALS', false),
+      chatbots:                   ENV.fetch('FEATURES_CHATBOTS', false),
       email_login:                !ENV['FEATURES_DISABLE_EMAIL_LOGIN'],
       create_user:                !ENV['FEATURES_DISABLE_CREATE_USER'],
       create_group:               !ENV['FEATURES_DISABLE_CREATE_GROUP'],
@@ -103,7 +105,6 @@ class AppConfig
       thread_page_v3:             ENV.fetch('FEATURES_THREAD_PAGE_V3', false),
       show_contact_consent:       ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false),
       group_survey:               ENV.fetch('FEATURES_GROUP_SURVEY', false),
-      group_sso:                  ENV.fetch('FEATURES_GROUP_SSO', false),
       sentry_sample_rate:         ENV.fetch('SENTRY_SAMPLE_RATE', '0.1').to_f,
     }
   end

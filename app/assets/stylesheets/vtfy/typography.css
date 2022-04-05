@@ -1,0 +1,222 @@
+html{
+  font-size:16px;
+  font-family:Roboto, Helvetica, Arial, sans-serif;
+  line-height:1.5;
+  overflow-x:hidden;
+  text-rendering:optimizeLegibility;
+}
+
+p {
+    /*margin-bottom:16px*/
+    /*line-height: 1.5;*/
+}
+
+code,kbd{
+    border-radius:3px;
+    font-size:85%;
+    font-weight:400
+}
+code{
+    padding:.2em .4em
+}
+kbd{
+    padding:.2em .4rem;
+    box-shadow:0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12)
+}
+.theme--light.heading{
+    color:rgba(0,0,0,.87)
+}
+.theme--dark.heading{
+    color:#fff
+}
+ol,ul{
+    padding-left:24px
+}
+.blockquote{
+    padding:16px 0 16px 24px;
+    font-size:18px;
+    font-weight:300
+}
+
+.font-weight-thin{
+    font-weight:100!important
+}
+.font-weight-light{
+    font-weight:300!important
+}
+.font-weight-regular{
+    font-weight:400!important
+}
+.font-weight-medium{
+    font-weight:500!important
+}
+.font-weight-bold{
+    font-weight:700!important
+}
+.font-weight-black{
+    font-weight:900!important
+}
+.font-italic{
+    font-style:italic!important
+}
+
+.text-left{
+    text-align:left!important
+}
+.text-right{
+    text-align:right!important
+}
+.text-center{
+    text-align:center!important
+}
+.text-justify{
+    text-align:justify!important
+}
+.text-start{
+    text-align:start!important
+}
+.text-end{
+    text-align:end!important
+}
+.text-decoration-line-through{
+    text-decoration:line-through!important
+}
+.text-decoration-none{
+    text-decoration:none!important
+}
+.text-decoration-overline{
+    text-decoration:overline!important
+}
+.text-decoration-underline{
+    text-decoration:underline!important
+}
+.text-wrap{
+    white-space:normal!important
+}
+.text-no-wrap{
+    white-space:nowrap!important
+}
+.text-pre{
+    white-space:pre!important
+}
+.text-pre-line{
+    white-space:pre-line!important
+}
+.text-pre-wrap{
+    white-space:pre-wrap!important
+}
+.text-break{
+    overflow-wrap:break-word!important;
+    word-break:break-word!important
+}
+.text-truncate{
+    white-space:nowrap!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important
+}
+.text-none{
+    text-transform:none!important
+}
+.text-capitalize{
+    text-transform:capitalize!important
+}
+.text-lowercase{
+    text-transform:lowercase!important
+}
+.text-uppercase{
+    text-transform:uppercase!important
+}
+.text-h1{
+    font-size:6rem!important;
+    line-height:6rem;
+    letter-spacing:-.015625em!important
+}
+.text-h1,.text-h2{
+    font-weight:300;
+    font-family:Roboto,sans-serif!important
+}
+.text-h2{
+    font-size:3.75rem!important;
+    line-height:3.75rem;
+    letter-spacing:-.0083333333em!important
+}
+.text-h3{
+    font-size:3rem!important;
+    line-height:3.125rem;
+    letter-spacing:normal!important
+}
+.text-h3,.text-h4{
+    font-weight:400;
+    font-family:Roboto,sans-serif!important
+}
+.text-h4{
+    font-size:2.125rem!important;
+    line-height:2.5rem;
+    letter-spacing:.0073529412em!important
+}
+.text-h5{
+    font-size:1.5rem!important;
+    font-weight:400;
+    letter-spacing:normal!important
+}
+.text-h5,.text-h6{
+    line-height:2rem;
+    font-family:Roboto,sans-serif!important
+}
+.text-h6{
+    font-size:1.25rem!important;
+    font-weight:500;
+    letter-spacing:.0125em!important
+}
+.text-subtitle-1{
+    font-size:1rem!important;
+    font-weight:400;
+    line-height:1.75rem;
+    letter-spacing:.009375em!important;
+    font-family:Roboto,sans-serif!important
+}
+.text-subtitle-2{
+    font-size:.875rem!important;
+    font-weight:500;
+    line-height:1.375rem;
+    letter-spacing:.0071428571em!important;
+    font-family:Roboto,sans-serif!important
+}
+.text-body-1{
+    font-size:1rem!important;
+    font-weight:400;
+    line-height:1.5rem;
+    letter-spacing:.03125em!important;
+    font-family:Roboto,sans-serif!important
+}
+.text-body-2{
+    font-weight:400;
+    line-height:1.25rem;
+    letter-spacing:.0178571429em!important
+}
+.text-body-2,.text-button{
+    font-size:.875rem!important;
+    font-family:Roboto,sans-serif!important
+}
+.text-button{
+    font-weight:500;
+    line-height:2.25rem;
+    letter-spacing:.0892857143em!important;
+    text-transform:uppercase!important
+}
+.text-caption{
+    font-weight:400;
+    line-height:1.25rem;
+    letter-spacing:.0333333333em!important
+}
+.text-caption,.text-overline{
+    font-size:.75rem!important;
+    font-family:Roboto,sans-serif!important
+}
+.text-overline{
+    font-weight:500;
+    line-height:2rem;
+    letter-spacing:.1666666667em!important;
+    text-transform:uppercase!important
+}
+

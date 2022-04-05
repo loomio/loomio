@@ -13,10 +13,6 @@ export default
     status: ->
       return 'pinned' if @discussion.pinned
 
-    statusTitle: ->
-      @$t("context_panel.thread_status.#{@status}")
-
-
 </script>
 
 <template lang="pug">

@@ -1,0 +1,5 @@
+- poll = event.eventable.poll
+- if poll.closed_at && !poll.current_outcome
+  %p.poll-mailer__create_outcome.text-center
+    = render 'base_mailer/button', url: tracked_url(poll, set_outcome: 1), text: t('poll_mailer.common.create_outcome')
+

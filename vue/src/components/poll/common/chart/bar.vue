@@ -18,8 +18,11 @@ export default
       v-if="option.rawScorePercent() > 0"
       :style="{width: option.rawScorePercent()+'%', 'background-color': option.color}"
     )
-      span {{option.optionName()}} {{option.scorePercent()}}%
+      span {{option.optionName()}}
+      //- span {{option.optionName()}} {{option.scorePercent()}}%
 </template>
 <style lang="sass">
-
+.theme--dark
+  .poll-common-chart-bar
+    color: #000E
 </style>

@@ -36,7 +36,7 @@ export default (callback) ->
           "Permission denied to access property \"dispatchEvent\" on cross-origin object"
         ]
         dsn: AppConfig.sentry_dsn
-        tunnel: '/bug_tunnel'
+        # tunnel: '/bug_tunnel'
         integrations: [
           new Integrations.BrowserTracing(),
           new VueIntegration({Vue: Vue, attachProps: true, logErrors: true, tracing: true})
@@ -46,7 +46,7 @@ export default (callback) ->
       Sentry.configureScope (scope) ->
         scope.setTag("loomio_version", AppConfig.version)
 
-    ['shortcut icon', 'apple-touch-icon'].forEach (name) ->
+    ['shortcut icon'].forEach (name) ->
       link = document.createElement('link')
       link.rel = name
       link.href = AppConfig.theme.icon_src

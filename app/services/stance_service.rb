@@ -8,7 +8,6 @@ class StanceService
     stance.poll.update_counts!
 
     event = Events::StanceCreated.publish!(stance)
-    MessageChannelService.publish_models([event], scope: {current_user_id: actor.id}, user_id: actor.id)
     event
   end
 
@@ -20,7 +19,6 @@ class StanceService
     stance.save!
     stance.poll.update_counts!
     event = Events::StanceUpdated.publish!(stance)
-    MessageChannelService.publish_models([event], scope: {current_user_id: actor.id}, user_id: actor.id)
     event
   end
 

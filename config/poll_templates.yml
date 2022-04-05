@@ -4,7 +4,6 @@ proposal:
     - name:                "abstain"
     - name:                "disagree"
     - name:                "block"
-  chart_type:              pie
   material_icon:           mdi-thumbs-up-down
   has_option_icons:        true
   translate_option_name:   true
@@ -25,7 +24,6 @@ count:
   poll_options_attributes:
     - name:               "yes"
     - name:               "no"
-  chart_type:             progress
   material_icon:          mdi-check-circle
   has_option_icons:       true
   must_have_options:      true
@@ -42,7 +40,6 @@ count:
 
 poll:
   poll_options_attributes: []
-  chart_type:         bar
   material_icon:      mdi-poll
   can_add_options:    true
   can_remove_options: true
@@ -56,7 +53,6 @@ poll:
 
 dot_vote:
   poll_options_attributes: []
-  chart_type:              bar
   material_icon:           mdi-chart-bar-stacked
   can_add_options:         true
   can_remove_options:      true
@@ -72,7 +68,6 @@ dot_vote:
 
 score:
   poll_options_attributes: []
-  chart_type:              bar
   material_icon:           mdi-chart-gantt
   can_add_options:         true
   can_remove_options:      true
@@ -88,7 +83,6 @@ score:
 
 ranked_choice:
   poll_options_attributes: []
-  chart_type:              bar
   material_icon:           mdi-format-list-numbered
   can_add_options:         true
   can_remove_options:      true
@@ -106,7 +100,6 @@ ranked_choice:
 
 meeting:
   poll_options_attributes: []
-  chart_type:              matrix
   material_icon:           mdi-calendar-question
   can_add_options:         true
   can_remove_options:      true

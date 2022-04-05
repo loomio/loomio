@@ -23,7 +23,7 @@ class Stance < ApplicationRecord
   has_many :stance_choices, dependent: :destroy
   has_many :poll_options, through: :stance_choices
 
-  has_paper_trail only: [:reason, :option_scores]
+  has_paper_trail only: [:reason, :option_scores, :revoked_at, :inviter_id]
 
   accepts_nested_attributes_for :stance_choices
 
@@ -40,10 +40,11 @@ class Stance < ApplicationRecord
   scope :oldest_first,   -> { order(created_at: :asc) }
   scope :priority_first, -> { joins(:poll_options).order('poll_options.priority ASC') }
   scope :priority_last,  -> { joins(:poll_options).order('poll_options.priority DESC') }
-  scope :with_reason,    -> { where("reason IS NOT NULL OR reason != ''") }
+  scope :with_reason,    -> { where("reason IS NOT NULL AND reason != ''") }
   scope :in_organisation, ->(group) { joins(:poll).where("polls.group_id": group.id_and_subgroup_ids) }
   scope :decided,        -> { where("stances.cast_at IS NOT NULL") }
   scope :undecided,      -> { where("stances.cast_at IS NULL") }
+  scope :revoked,  -> { where("revoked_at IS NOT NULL") }
 
   scope :redeemable, -> { where('stances.inviter_id IS NOT NULL
                              AND stances.cast_at IS NULL
@@ -54,14 +55,9 @@ class Stance < ApplicationRecord
   validate :total_score_is_valid
   validate :reason_length_permitted
 
-  delegate :group,          to: :poll, allow_nil: true
-  delegate :mailer,         to: :poll, allow_nil: true
-  delegate :group_id,       to: :poll
-  delegate :discussion_id,  to: :poll
-  delegate :discussion,     to: :poll
-  delegate :members,        to: :poll
-  delegate :guests,         to: :poll
-  delegate :title,          to: :poll
+  %w(group mailer group_id discussion_id discussion members guests title tags).each do |message|
+    delegate(message, to: :poll)
+  end
 
   alias :author :participant
 

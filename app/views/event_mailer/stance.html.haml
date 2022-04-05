@@ -1,0 +1,3 @@
+= render "event_mailer/common/notification", with_title: true, event: @event
+= render "event_mailer/poll/stance", stance: @event.eventable
+= render "event_mailer/common/footer", event: @event

@@ -86,10 +86,9 @@ export default new class PollService
               text:
                 title: 'poll_common_close_form.title'
                 helptext: 'poll_common_close_form.helptext'
-                confirm: 'poll_common_close_form.close_poll'
-                flash: 'poll_common_close_form.poll_closed'
-                params:
-                  poll_type: poll.translatedPollType()
+                flash: 'poll_common_close_form.poll_type_closed'
+              textArgs:
+                poll_type: poll.translatedPollType()
 
     reopen_poll:
       icon: 'mdi-refresh'

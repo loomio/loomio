@@ -27,7 +27,7 @@ class StanceSerializer < ApplicationSerializer
   def order_at
     object.cast_at || object.created_at
   end
-  
+
   def option_scores
     if ENV['JIT_POLL_COUNTS'] && object.option_scores == {} && object.cast_at
       object.update_option_scores!
@@ -61,8 +61,13 @@ class StanceSerializer < ApplicationSerializer
     scope[:current_user_id] && object[:participant_id] == scope[:current_user_id]
   end
 
+  def current_user_has_voted
+    s = cache_fetch(:stances_by_poll_id, object.poll_id) { Stance.latest.find_by(poll_id: object.poll_id, participant_id: scope[:current_user_id]) }
+    s && s.cast_at
+  end
+
   def include_reason?
-    my_stance || poll.show_results?
+    my_stance || poll.show_results?(voted: current_user_has_voted)
   end
 
   def include_mentioned_usernames?

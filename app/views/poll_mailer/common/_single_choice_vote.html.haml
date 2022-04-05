@@ -1,7 +1,0 @@
-- if stance.cast_at
-  = render 'poll_mailer/common/stance', stance: stance, poll: poll, recipient: recipient
-- else
-  %p= t(:"poll_mailer.common.time_zone", zone: formatted_time_zone(recipient, poll)) if poll.poll_type == 'meeting'
-  %table{class: "poll-mailer-#{poll.poll_type}__poll-options"}
-    - poll.poll_options.each do |option|
-      = render 'poll_mailer/common/poll_option', poll: poll, recipient: recipient, poll_option: option, link: poll.active?

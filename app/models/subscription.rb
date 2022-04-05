@@ -15,6 +15,10 @@ class Subscription < ApplicationRecord
     end
   end
 
+  def config
+    SubscriptionService::PLANS[Subscription.last.plan.to_sym]
+  end
+
   def is_active?
     # allow groups in dunning or on hold to continue using the app
     self.state == 'active' or self.state == 'past_due' or self.state == 'on_hold' or (self.state == 'trialing' && self.expires_at > Time.current)

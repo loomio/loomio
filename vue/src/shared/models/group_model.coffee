@@ -38,6 +38,7 @@ export default class GroupModel extends BaseModel
     recipientMessage: null
     recipientAudience: null
     recipientUserIds: []
+    recipientChatbotIds: []
     recipientEmails: []
     notifyRecipients: true
     isMember: false
@@ -54,6 +55,7 @@ export default class GroupModel extends BaseModel
     @hasMany 'polls', find: {discardedAt: null}
     @hasMany 'membershipRequests'
     @hasMany 'memberships'
+    @hasMany 'chatbots'
     @hasMany 'allDocuments', from: 'documents', with: 'groupId', of: 'id'
     @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id', orderBy: 'name'
     @belongsTo 'parent', from: 'groups'

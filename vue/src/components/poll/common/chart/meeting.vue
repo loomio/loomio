@@ -9,7 +9,6 @@ export default
   props:
     poll: Object
     zone: Object
-    options: Array
 
   data: ->
     decidedVoters: []
@@ -31,9 +30,6 @@ export default
       switch score
         when 2 then "rgba(0, 209, 119, 0.5)"
         when 1 then "rgba(246, 168, 43, 0.5)"
-
-    barLength: (count) ->
-      ((count * 32)) + 'px'
 
     classForScore: (score) ->
       switch score
@@ -57,13 +53,12 @@ export default
         td(v-for="user in decidedVoters" :key="user.id")
           user-avatar(:user="user" :size="24")
     tbody
-      tr(v-for="option in options" :key="option.id")
+      tr(v-for="option in poll.results" :key="option.id")
         td.poll-meeting-chart__meeting-time
           poll-meeting-time(:name='option.name' :zone='zone')
-        td.total.text-right.pr-2 {{option.totalScore/2}}
-
+        td.total.text-right.pr-2 {{option.score/2}}
         td(v-for="user in decidedVoters" :key="user.id")
-          .poll-meeting-chart__cell(:class="classForScore(option.voterScores[user.id])")
+          .poll-meeting-chart__cell(:class="classForScore(option.voter_scores[user.id])")
             | &nbsp;
 </template>
 

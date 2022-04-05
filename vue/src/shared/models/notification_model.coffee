@@ -9,6 +9,13 @@ export default class NotificationModel extends BaseModel
   @uniqueIndices: ['id']
   @indices: ['eventId', 'userId']
 
+  defaultValues: ->
+    title: null
+    model: null
+    pollType: null
+    name: null 
+    reaction: null
+
   relationships: ->
     @belongsTo 'event'
     @belongsTo 'user'
@@ -27,24 +34,18 @@ export default class NotificationModel extends BaseModel
     else
       "/" + @.url
 
-  path: ->
-    if @kind == "reaction_created"
-      "notifications.reaction_created_vue"
-    else
-      "notifications.#{@kind}"
-
   args: ->
-    name: @translationValues.name
-    reaction: colonToUnicode(@translationValues.reaction) if @kind == "reaction_created"
-    title: @translationValues.title
-    poll_type: @translationValues.poll_type
-    model: @translationValues.model
+    actor: @name
+    reaction: colonToUnicode(@reaction) if @kind == "reaction_created"
+    title: @title
+    poll_type: @pollType
+    model: @model
 
   actor: ->
     @actor() || @membershipRequestActor()
 
   membershipRequestActor: ->
-    name = (@translationValues.name || @translationValues.email || '').toString()
+    name = (@name || '').toString()
     Records.users.build
       name: name
       avatarInitials: name.split(' ').map((n) -> n[0]).join('')

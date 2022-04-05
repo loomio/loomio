@@ -9,7 +9,6 @@ Devise.setup do |config|
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
   config.parent_mailer = "BaseMailer"
-  Devise::Mailer.layout "invite_people_mailer"
   # Automatically apply schema changes in tableless databases
 
   # ==> ORM configuration

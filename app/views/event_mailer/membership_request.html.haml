@@ -1,0 +1,7 @@
+- group = @event.eventable.group
+- url = group_membership_requests_url(@event.eventable.group, @utm_hash)
+= render "event_mailer/group/cover_and_logo", group: group
+= render 'event_mailer/common/notification', with_title: true, url: url, event: @event, message: @event.eventable.introduction
+.text-center
+  = render 'base_mailer/button', url: url, text: t(:"email.membership_request.button_text")
+= render 'event_mailer/common/footer', event: @event

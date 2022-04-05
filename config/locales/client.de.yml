@@ -1575,7 +1575,6 @@ de:
     group_without_subgroups: '{{name}} ohne Untergruppen'
   poll_common_action_panel:
     anonymous: Stimmabgaben sind anonym
-    results_hidden_until_closed: Ergebnisse sind unsichtbar bis %{poll_type} geschlossen wurde
     unable_to_vote: Du wurdest nicht eingeladen in diesem %{poll_type} abzustimmen.
   current_polls_card:
     title: Aktuelle Abstimmungen

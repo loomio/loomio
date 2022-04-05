@@ -31,7 +31,7 @@ class Dev::NightwatchController < Dev::BaseController
 
 
   def redis_flushall
-    CHANNELS_REDIS_POOL.with do |client|
+    CACHE_REDIS_POOL.with do |client|
       client.flushall
     end
   end

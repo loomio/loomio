@@ -1,0 +1,6 @@
+- if eventable.group.present?
+	= link_to eventable.group.full_name, tracked_url(eventable.group)
+- if eventable.discussion.present? && eventable.discussion != eventable
+	-
+	= link_to eventable.discussion, tracked_url(eventable.discussion)
+

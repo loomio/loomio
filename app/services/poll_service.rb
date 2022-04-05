@@ -9,6 +9,7 @@ class PollService
     poll.save!
 
     Stance.create!(participant: actor, poll: poll, admin: true, reason_format: actor.default_format)
+    poll.update_counts!
     EventBus.broadcast('poll_create', poll, actor)
     Events::PollCreated.publish!(poll, actor)
   end
@@ -44,6 +45,7 @@ class PollService
     Events::PollEdited.publish!(poll: poll,
                                 actor: actor,
                                 recipient_user_ids: users.pluck(:id),
+                                recipient_chatbot_ids: params[:recipient_chatbot_ids],
                                 recipient_audience: params[:recipient_audience],
                                 recipient_message: params[:recipient_message])
   end
@@ -69,13 +71,13 @@ class PollService
                              emails: params[:recipient_emails],
                              audience: params[:recipient_audience])
 
-
     # params[:notify_recipients] will often be nil/undefined, which means we do want to notify
     unless params[:notify_recipients] == false
       Events::PollAnnounced.publish!(poll: poll,
                                      actor: actor,
                                      stances: stances,
                                      recipient_user_ids: params[:recipient_user_ids],
+                                     recipient_chatbot_ids: params[:recipient_chatbot_ids],
                                      recipient_audience: params[:recipient_audience],
                                      recipient_message:  params[:recipient_message] )
     end
@@ -93,6 +95,7 @@ class PollService
     Events::PollReminder.publish!(poll: poll,
                                   actor: actor,
                                   recipient_user_ids: users.pluck(:id),
+                                  recipient_chatbot_ids: params[:recipient_chatbot_ids],
                                   recipient_audience: params[:recipient_audience],
                                   recipient_message: params[:recipient_message])
   end
@@ -130,7 +133,15 @@ class PollService
       end
     end
 
-    new_stances = users.map do |user|
+    reinvited_user_ids = Stance.revoked.where(poll_id: poll.id).
+                                pluck(:participant_id) & users.pluck(:id)
+    Stance.where(
+      poll_id: poll.id,
+      participant_id: reinvited_user_ids).each do |stance|
+      stance.update(revoked_at: nil, inviter_id: actor.id)
+    end
+
+    new_stances = users.where.not(id: reinvited_user_ids).map do |user|
       Stance.new(participant: user,
                  poll: poll,
                  inviter: actor,
@@ -140,7 +151,7 @@ class PollService
                  created_at: Time.zone.now)
     end
 
-    Stance.import(new_stances, on_duplicate_key_ignore: true)
+    Stance.import(new_stances)
 
     poll.reset_latest_stances!
     poll.update_counts!
@@ -167,7 +178,6 @@ class PollService
   def self.close(poll:, actor:)
     actor.ability.authorize! :close, poll
     do_closing_work(poll: poll)
-    EventBus.broadcast('poll_close', poll, actor)
     Events::PollClosedByUser.publish!(poll, actor)
   end
 
@@ -194,10 +204,7 @@ class PollService
 
   def self.expire_lapsed_polls
     Poll.lapsed_but_not_closed.each do |poll|
-      next if poll.closed_at
-      do_closing_work(poll: poll)
-      EventBus.broadcast('poll_expire', poll)
-      Events::PollExpired.publish!(poll)
+      CloseExpiredPollWorker.perform_async(poll.id)
     end
   end
 
@@ -206,9 +213,7 @@ class PollService
     poll.stances.update_all(participant_id: nil) if poll.anonymous
     if poll.discussion_id && poll.hide_results == 'until_closed'
       stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
-      events = Event.where(eventable_type: "Stance", eventable_id: stance_ids)
-      events.update_all(discussion_id: poll.discussion_id)
-      events.each(&:set_sequences!)
+      Event.where(kind: 'stance_created', eventable_id: stance_ids, discussion_id: nil).update_all(discussion_id: poll.discussion_id)
       EventService.repair_thread(poll.discussion_id)
     end
     poll.update_attribute(:closed_at, Time.now)
@@ -256,4 +261,49 @@ class PollService
     poll.created_event
   end
 
+  def self.calculate_results(poll, poll_options)
+    sorted_poll_options = case poll.poll_type
+    when 'proposal', 'count', 'meeting'
+      poll_options.sort_by {|o| o.priority }
+    else
+      poll_options.sort_by {|o| -(o.total_score)}
+    end
+
+    l = sorted_poll_options.each_with_index.map do |option, index|
+      option_name = poll.poll_option_name_format == 'i18n' ? "poll_#{poll.poll_type}_options."+option.name : option.name
+      {
+        id: option.id,
+        name: option_name,
+        name_format: poll.poll_option_name_format,
+        rank: index+1,
+        score: option.total_score,
+        score_percent: poll.total_score > 0 ? ((option.total_score.to_f / poll.total_score.to_f) * 100) : 0,
+        max_score_percent: poll.total_score > 0 ? ((option.total_score.to_f / poll.stance_counts.max.to_f) * 100) : 0,
+        voter_percent: poll.voters_count > 0 ? ((option.voter_count.to_f / poll.voters_count.to_f) * 100) : 0,
+        average: option.average_score,
+        voter_scores: option.voter_scores,
+        voter_ids: option.voter_ids.shuffle.take(500),
+        voter_count: option.voter_count,
+        color: option.color
+      }.with_indifferent_access.freeze
+    end
+    if poll.results_include_undecided
+      l.push({
+          id: 0,
+          name: 'poll_common_votes_panel.undecided',
+          name_format: 'i18n',
+          rank: nil,
+          score: 0,
+          score_percent: 0,
+          max_score_percent: 0,
+          voter_percent: poll.voters_count > 0 ? (poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100) : 0,
+          average: 0,
+          voter_scores: {},
+          voter_ids: poll.undecided_voters.map(&:id).shuffle.take(500),
+          voter_count: poll.undecided_voters_count,
+          color: '#DDDDDD'
+      }.with_indifferent_access.freeze)
+    end
+    l
+  end
 end
