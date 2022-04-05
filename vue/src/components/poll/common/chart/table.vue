@@ -57,7 +57,7 @@ export default
           td.text-right(v-if="col == 'rank'") {{option.rank}}
           td.text-right(v-if="col == 'score'") {{option.score}}
           td.text-right(v-if="col == 'voter_count'") {{option.voter_count}}
-          td.text-right(v-if="col == 'average'") {{option.average}}
+          td.text-right(v-if="col == 'average'") {{Math.round((option.average + Number.EPSILON) * 100) / 100}}
           td.text-right(v-if="col == 'voter_percent'") {{option.voter_percent.toFixed(0)}}%
           td.text-right(v-if="col == 'score_percent'") {{option.score_percent.toFixed(0)}}%
           td.text-right(v-if="col == 'voters'")
