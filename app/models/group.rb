@@ -177,6 +177,14 @@ class Group < ApplicationRecord
     )
   end
 
+  def self_or_parent_logo_url(size = 512)
+    logo_url(size) || (parent && parent.logo_url(size))
+  end
+
+  def self_or_parent_cover_url(size = 512)
+    cover_url(size) || (parent && parent.cover_url(size))
+  end
+
   def existing_member_ids
     member_ids
   end

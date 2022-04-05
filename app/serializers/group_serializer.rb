@@ -101,11 +101,11 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def logo_url
-    object.logo_url || (parent && parent.logo_url) || nil
+    object.self_or_parent_logo_url
   end
 
   def cover_url
-    object.cover_url || (parent && parent.cover_url) || nil
+    object.self_or_parent_cover_url
   end
 
   def tag_names

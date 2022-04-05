@@ -117,6 +117,14 @@ module Null::Group
   def parent_or_self
     self
   end
+  
+  def self_or_parent_logo_url(size)
+    nil
+  end
+
+  def self_or_parent_cover_url(size)
+    nil
+  end
 
   def id_and_subgroup_ids
     []
