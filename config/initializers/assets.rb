@@ -1,6 +1,7 @@
 Rails.application.config.assets.precompile += %w(
   email.css
   web.css
+  basic/all.css
   vtfy/typography.css
   vtfy/layout.css
   vtfy/round.css
