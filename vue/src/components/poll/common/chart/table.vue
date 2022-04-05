@@ -51,7 +51,8 @@ export default
             div.rounded(:style="{width: option[poll.chartColumn]+'%', height: '24px', 'background-color': option.color}")
           td(v-if="col == 'name' && option.name_format == 'iso8601'")
             // poll-meeting-time(:name='option.name')
-          td(v-if="col == 'name' && option.name_format == 'i18n'" v-t="option.name" :style="{'border-left': '4px solid ' + option.color}")
+          td(v-if="col == 'name' && option.name_format == 'i18n' && poll.chartType == 'pie'" v-t="option.name" :style="{'border-left': '4px solid ' + option.color}")
+          td(v-if="col == 'name' && option.name_format == 'i18n' && poll.chartType != 'pie'" v-t="option.name")
           td(v-if="col == 'name' && option.name_format == 'none'") {{option.name}} 
           td.text-right(v-if="col == 'rank'") {{option.rank}}
           td.text-right(v-if="col == 'score'") {{option.score}}
