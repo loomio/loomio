@@ -1,8 +1,7 @@
 - poll = event.eventable.poll
-- if poll.show_results? && (poll.decided_voters.exists?(@recipient.id) || poll.closed_at?)
+- my_stance = @recipient && Stance.latest.find_by(poll_id: poll.id, participant_id: @recipient.id)
+- if poll.show_results?(voted: my_stance && my_stance.cast_at)
   .poll-mailer-common-responses
-    -# %h3= t(:"poll_common.responses")
-
     - if poll.anonymous?
       %p= t(:"poll_common_action_panel.anonymous")
 
@@ -15,6 +14,5 @@
           %span.text-subtitle-2
             #{stance.participant.name}:
           = render_rich_text(stance.reason, stance.reason_format)
-
-- if !poll.show_results?
+- else
   %p= t(:"poll_common_action_panel.results_hidden_until_closed")
