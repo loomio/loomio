@@ -3,10 +3,10 @@
     .v-main__wrap
       %div
         .container.thread-page.max-width-800
-          %div.thread-card.v-card.v-card--outlined.v-sheet.theme--light
+          %div.thread-card.v-sheet.theme--auto.v-sheet--outlined
             %div#context.context-panel
               %div.layout.align-center.mr-3.ml-2.pt-2.wrap
-                %ul.v-breadcrumbs.context-panel__breadcrumbs.theme--light
+                %ul.v-breadcrumbs.context-panel__breadcrumbs.theme--auto
                   %li
                     %a{href: group_url(@discussion.group)}=@discussion.group.full_name
                 %div.thread-tags
@@ -39,7 +39,7 @@
                         = @discussion.seen_by_count
                 .lmo-markdown-wrapper.body-2.text--primary.context-panel__description
                   = render_rich_text(@discussion.body, @discussion.body_format)
-              %hr.v-divider.my-4.theme--light{"aria-orientation" => "horizontal", :role => "separator"}
+              %hr.v-divider.my-4.theme--auto{"aria-orientation" => "horizontal", :role => "separator"}
             .activity-panel
               - @discussion.items.includes(:eventable, :user).order("position_key #{@discussion.newest_first ? 'desc' : 'asc'}").where(kind: ['new_comment', 'poll_created', 'stance_created', 'stance_updated']).limit(@pagination[:limit]).offset(@pagination[:offset]).each do |item|
                 = render "discussions/thread_items/thread_item", item: item

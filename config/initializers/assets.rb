@@ -5,6 +5,7 @@ Rails.application.config.assets.precompile += %w(
   vtfy/layout.css
   vtfy/round.css
   vtfy/components.css
+  vtfy/themeauto.css
   marketing/all.css
   active_admin.css
   active_admin.js
