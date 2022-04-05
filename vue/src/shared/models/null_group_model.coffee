@@ -36,6 +36,7 @@ export default class NullGroupModel
       Vue.set(@, key, value)
       true
 
+  chatbots: -> []
   poll: -> []
   discussions: -> []
   memberships: -> []
