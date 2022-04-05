@@ -80,7 +80,7 @@ en:
   current_plan_button:
     upgrade: Upgrade
     buy_now: Buy now
-    is_old_plan: Loomio's simplified pricing plans include unlimited users
+    is_old_plan: Loomio has new simple pricing plans
     change_plan: Change plan
     view_plans: View plans
     free_trial: Free trial. {{days}} days remaining.
