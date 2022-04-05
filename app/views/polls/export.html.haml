@@ -5,6 +5,6 @@
     .v-main__wrap
       %div
         .container.thread-page.max-width-800
-          %div.thread-card.v-card.v-card--outlined.v-sheet.theme--light.pa-4
+          %div.thread-card.v-card.v-sheet--outlined.v-sheet.theme--auto.pa-4
             = render "discussions/thread_items/poll_created", item: @poll.created_event
             = render "event_mailer/poll/responses", event: @poll.created_event
