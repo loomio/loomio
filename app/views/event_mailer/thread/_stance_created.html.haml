@@ -11,7 +11,7 @@
     %td
       %table
         - stance.stance_choices.order("score desc").limit(5).each do |choice|
-          = render "poll_mailer/common/poll_option", poll_option: choice.poll_option, stance_choice: choice, small: true, recipient: recipient
+          = render "event_mailer/poll/poll_option", poll_option: choice.poll_option, stance_choice: choice, small: true
       - if stance.stance_choices.count > 5
         = t 'poll_mailer.common.more_undecided', {count: (stance.stance_choices.count - 5)}
 
