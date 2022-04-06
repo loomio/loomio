@@ -9,7 +9,7 @@ class RecordCloner
     clone_group.creator = actor
     clone_group.subscription = Subscription.new(plan: 'demo', owner: actor)
     clone_group.save!
-    clone_group.poll_ids.each {|id| UpdatePollCountsWorker.perform_async(id) }
+    clone_group.polls.each {|poll| poll.update_counts! }
     clone_group.add_member! actor
     clone_group.reload
   end
