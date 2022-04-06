@@ -9,7 +9,10 @@ class RecordCloner
     clone_group.creator = actor
     clone_group.subscription = Subscription.new(plan: 'demo', owner: actor)
     clone_group.save!
-    clone_group.polls.each {|poll| poll.update_counts! }
+    clone_group.polls.each do |poll|
+      poll.update_counts!
+      poll.stances.each {|s| s.update_option_scores!}
+    end
     clone_group.discussions.each {|d| EventService.repair_thread(d.id) }
     clone_group.add_member! actor
     clone_group.reload
