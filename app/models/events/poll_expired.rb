@@ -6,7 +6,7 @@ class Events::PollExpired < Event
   def self.publish!(poll)
     super poll,
           user: poll.author,
-          discussion: poll.discussion,
+          discussion: nil,
           created_at: poll.closed_at
   end
 
