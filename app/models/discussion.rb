@@ -162,7 +162,7 @@ class Discussion < ApplicationRecord
   end
 
   def update_sequence_info!
-    sequence_ids = discussion.items.order(:sequence_id).pluck(:sequence_id)
+    sequence_ids = discussion.items.order(:sequence_id).pluck(:sequence_id).compact
     discussion.ranges_string = RangeSet.serialize RangeSet.reduce RangeSet.ranges_from_list sequence_ids
     discussion.last_activity_at = discussion.items.unreadable.order(:sequence_id).last&.created_at || created_at
     update_columns(
