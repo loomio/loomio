@@ -29,8 +29,6 @@ cs:
     discussions_count_singular: ({{count}} vlákno)
     discussions_count_plural: ({{count}} vláken)
     tags_marked: Vlákna označená '{{name}}' ve skupině {{groupName}}
-  reactions:
-    ok_hand: Ok
   timezones:
     local: Místní čas ({{value}})
   common:
@@ -274,15 +272,6 @@ cs:
   notifications:
     header: "Upozornění"
     no_notifications: "Nemáte žádná upozornění."
-    new_motion: "<strong>{{name}}</strong> vytvořil(a) návrh <span>{{title}}</span>"
-    motion_closed: "Uzavření návrhu: <strong>{{title}}</strong>"
-    publish_outcome: "Zveřejnit výsledek"
-    motion_closed_by_user: "<strong>{{name}}</strong> uzavřel návrh <strong>{{title}}</strong>"
-    motion_closed_by_expiry: "Byl uzavřen návrh <strong>{{title}}</strong>"
-    new_comment: "<strong>{{name}}</strong> okomentoval(a) <strong>{{title}}</strong>"
-    user_added_to_group: "Uživatel <strong>{{name}}</strong> Vás přidal do skupiny <strong>{{title}}</strong>"
-    user_added_to_group_no_inviter: "Byli jste přidáni do skupiny <strong>{{title}}</strong>"
-    motion_closing_soon: "Návrh brzy končí: <strong>{{title}}</strong>"
   discussion_fork_actions:
     move: Přesunout
   discussion_form:
@@ -336,7 +325,6 @@ cs:
     image_size_helptext: 'Ideální velikost obrázku je 1400 x 320px'
     upload_success: 'Titulní fotka byla úspěšně aktualizována'
   logo_photo_form:
-    aria_label: 'Formulář pro změnu loga skupiny'
     heading: 'Nové logo skupiny'
     upload_link: 'Nahrát nové logo skupiny'
     image_size_helptext: 'Ideální velikost obrázku je 100 x 100px'
@@ -353,8 +341,6 @@ cs:
     introduction_label: Proč se chcete přidat?
     submit_button: Požádat o připojení
     introduction_over_limit: Odpověď je příliš dlouhá
-    messages:
-      membership_requested: 'Zažádali jste o členství v {{group}}'
   revision_history_modal:
     aria_label: Historie revizí
     edited_by: 'Upravil/a <strong>{{name}}</strong>'
@@ -442,10 +428,6 @@ cs:
     messages:
       request_approved_success: Žádost o členství schválena
       request_ignored_success: Žádost o členství ignorována
-  group_previous_proposals_card:
-    heading: Předchozí návrhy
-  group_decisions_card:
-    see_more: "Zobrazit všechna: ({{count}}) rozhodnutí"
   invitation_form:
     invite_people: 'Pozvat další'
     group: 'Skupina'
@@ -536,10 +518,6 @@ cs:
       proposals_description: Zobrazit jen vlákna s aktivními návrhy
       muted_aria_label: Momentálně se zobrazují ztlumená vlákna
       muted_description: Zobrazit jen ztlumená vlákna
-    aria_thread:
-      unread: '{{count}} nepřečtených položek.'
-      current_proposal: 'Současný návrh: {{name}}.'
-      you_voted: 'Volil(a) jste: {{position}}.'
     threads_from:
       group: 'Vlákna z'
       today: 'Dnes'
@@ -604,12 +582,6 @@ cs:
     email_placeholder: 'Zadejte svou emailovou adresu...'
     message_label: 'Vaše zpráva'
     send_message: 'Odeslat zprávu'
-  hint:
-    context: 'Rady pro používání kontextového panelu'
-    discussion: 'Rady k zahájení poutavé diskuze'
-    invitation: 'Rady pro napsání senzační pozvánky'
-    proposal: 'Rady pro napsání jasného návrhu'
-    vote: 'Můžete kdykoliv svůj postoj změnit'
   explore_page:
     header: Prozkoumat skupiny
   global:
@@ -632,6 +604,7 @@ cs:
     share_proposal: Sdílet návrh
     start_poll: Spuštění rozhodování
     publish_poll: Sdílet hlasování
+    share_outcome: Sdílet výsledek
     save_changes: Uložit
   poll_common_add_option:
     button:
@@ -641,9 +614,6 @@ cs:
     form:
       add_options: Přidat možnosti
       options_added: Volba byla přidána
-  poll_common_index_card:
-    title: Předchozí rozhodnutí
-    count: "Zobrazit všechna: ({{count}}) rozhodnutí"
   discussions_panel:
     open: Otevřená
     all: Vše
@@ -657,24 +627,11 @@ cs:
     all: 'Vše'
     open: 'Otevřená'
     closed: 'Zavřená'
-  current_polls_card:
-    title: Aktuální rozhodnutí
-    start_poll: Nové rozhodnutí
-  poll_common_select_group:
-    loomio_group: Skupina
-    loomio_group_placeholder: (nebyla vybrána žádná skupina)
   poll_common_settings:
     anyone_can_participate:
       title: Kdokoli s odkazem se může účastnit
     voter_can_add_options:
       title: Hlasující mohou přidávat nové možnosti
-  poll_common_close_form:
-    close_proposal: Uzavřít návrh
-    close_poll: Uzavřít hlasování
-    proposal_closed: Uzavření návrhu
-    poll_closed: Hlasování ukončeno
-  poll_common_set_outcome_panel:
-    share_outcome: Sdílet výsledek
   poll_common_outcome_form:
     submit: Sdílet výsledek
   poll_common_form:
@@ -700,11 +657,6 @@ cs:
     'no': 'Ne'
   poll_meeting_chart_panel:
     total: Celkem
-  poll_common_subscribe_form:
-    receive_updates_title: Vaše hlasování bylo zaznamenáno
-    receive_updates_helptext: Chcete-li obdržet e-mail s výsledky tohoto hlasování, zadejte níže svou e-mailovou adresu
-    subscribe: Přihlásit odběr
-    no_thanks: Ne, díky
   auth_form:
     sign_in: Přihlásit se
     create_account: Vytvořit účet
@@ -725,13 +677,12 @@ cs:
     name: Jméno
     email: Email
     password: Heslo
+  chatbot:
+    username: Uživatelské jméno
+    password: Heslo
   webhook:
     name_label: Název
   group_survey:
     categories:
       community: Komunitní skupiny
-      other: Ostatní
-    uses:
-      other: Ostatní
-    referrers:
       other: Ostatní

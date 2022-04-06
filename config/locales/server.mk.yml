@@ -12,8 +12,6 @@ mk:
       email: Email
       details: Детали
   email:
-    group_email:
-      intro: "%{who} направи најава во %{group}:"
     reply_to_this_discussion: Врати на дискусијата
     catch_up:
       mark_as_read: Означи го како прочитано

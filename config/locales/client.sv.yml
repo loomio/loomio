@@ -12,39 +12,6 @@ sv:
     members: "Medlemmar"
   loomio_tags:
     name_label: Namn
-  reactions:
-    slight_smile: Gilla
-    heart: Älska
-    laughing: Skratta
-    clap: Applådera
-    hugging: Krama
-    sunglasses: Coolt
-    wink: Blinka
-    nerd: Smart
-    relieved: Lättad
-    worried: Bekymrad
-    confused: Förvirrad
-    confounded: Förväxlas
-    neutral_face: Neutral
-    slight_frown: Rynka pannan
-    disappointed: Besviken
-    angry: Arg
-    weary: Trött
-    astonished: Förvånad
-    rolling_eyes: Rullar ögon
-    cry: Gråter
-    scream: Skriker
-    sleeping: Utråkad
-    thinking: Tänker
-    raised_hands: Händerna i luften
-    pray: Ber
-    fingers_crossed: Fingrarna i kors
-    v: Fred
-    metal: Metall
-    ok_hand: Ok
-    wave: Vinka
-    thumbsup: Tumme upp
-    thumbsdown: Tumme ner
   timezones:
     local: Lokal tid ({{value}})
   common:
@@ -404,12 +371,6 @@ sv:
     subject_label: "Ämne"
     email_label: 'Din emailadress'
     message_label: 'Ditt meddelande'
-  hint:
-    context: 'Tips för att använda Context Panel'
-    discussion: 'Tips för att starta en engagerande diskussion'
-    invitation: 'Tips för att skriva en bra inbjudan'
-    proposal: 'Tips för att skriva ett tydligt förslag'
-    vote: 'Du kan ändra din ståndpunkt när som helst'
   decision_tools_card:
     proposal_title: Förslag
     count_title: Bock
@@ -433,8 +394,6 @@ sv:
     all: 'Alla'
     open: 'Öppen'
     closed: 'Stängd'
-  current_polls_card:
-    start_poll: Nytt beslut
   poll_common_form:
     closed: Stängd
     start: Starta
@@ -443,17 +402,14 @@ sv:
     'no': 'Nej'
   poll_meeting_chart_panel:
     total: Totalt
-  poll_common_subscribe_form:
-    subscribe: Prenumerera
   auth_form:
     name_placeholder: Ditt namn
+  chatbot:
+    username: Användarnamn
+    password: Lösenord
   webhook:
     name_label: Namn
   group_survey:
     categories:
       community: Gemenskap grupp
-      other: Andra
-    uses:
-      other: Andra
-    referrers:
       other: Andra

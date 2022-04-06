@@ -53,10 +53,10 @@ nl_NL:
       members: Leden
       subgroups: Subgroepen
       threads: Borden
+      polls: Peilingen
       votes: Stemmen
       comments: Commentaren
       general: Algemeen
-      polls: Peilingen
       poll_types:
         proposal: Voorstel
         count: Aantal
@@ -75,9 +75,6 @@ nl_NL:
       recaptcha: "We waren niet in staat om te verifiëren dat je geen robot bent. Probeer het nog eens!"
       bad_login: "Mijn excuses, het wachtwoord komt niet overeen met degene die we hebben"
       username_must_be_alphanumeric: "Gebruikersnamen mogen alleen uit kleine letters en cijfers bestaan"
-  attachment:
-    error:
-      too_large: Het bestand dat je probeerde bij te voegen is groter dan 100 Megabyte, gelieve een kleiner bestand te kiezen.
   poll:
     error:
       cannot_add_options: Er kunnen geen opties aan deze peiling toegevoegd worden
@@ -112,18 +109,6 @@ nl_NL:
   invitation:
     invitation_cancelled: Sorry, deze uitnodiging is door de groepscoördinator ingetrokken. Gelieve opnieuw een uitnoding aan te vragen bij je groep.
     invitation_already_used: Deze uitnodiging is al gebruikt geweest. Gelieve rechtstreeks in te loggen op Loomio om verder te gaan naar je groep.
-  date:
-    formats:
-      for_this_year: "%e %b"
-      for_another_year: "%-d/%-m/%y"
-  time:
-    formats:
-      closing_soon_subject: "%d %b %H:%M"
-      for_today: "%l:%M %P"
-  validate:
-    motion:
-      must_close_in_future: '''Voorstel'' moet in de toekomst sluiten.'
-      one_at_a_time: Er is een ander 'Voorstel' actief.
   subscriptions:
     active: Actief
     inactive: Inactief
@@ -169,13 +154,11 @@ nl_NL:
   email:
     common:
       or_enter_code: Of, voer de code hieronder in
-      resend: Deze link vervalt binnen 24 uur en kan slechts éénmalig gebruikt worden.
     login:
       subject: Log in op %{site_name}
       login: Log in als %{name}
     reactivate:
       subject: Je account %{site_name} heractiveren
-      intro: Hallo %{name}, hier is een link om je account%{site_name} te heractiveren.
       login: Heractiveer %{name}
     contact_request:
       subject: "%{name} zou graag in contact staan met jou op %{site_name}!"
@@ -190,19 +173,6 @@ nl_NL:
           Je hebt dit ontvangen omdat je e-mailadres ingevoerd is in het "Wachtwoord vergeten" formulier op %{hostname}.
           Je wachtwoord wordt echter niet veranderd totdat je de link hierboven volgt en het formulier invult.
           Als je problemen blijft hebben met inloggen, reageer dan op deze e-mail om contact op te nemen met iemand van de helpdesk.
-    start_decision:
-      subject: Start een beslissing op Loomio
-      intro: Hallo, <strong>%{name}</strong>!
-      action: Wat wil jij graag doen?
-      proposal: Doe een 'Voorstel'
-      count: Start een 'Check'
-      poll: Start een 'Peiling'
-      dot_vote: Start een 'Dotmocracy'
-      meeting: Plan een moment
-      ranked_choice: Start een 'Keuzes rangschikken'
-    custom: "%{text}"
-    group_email:
-      intro: "%{who} maakte een aankondiging aan %{group}:"
     by_who: door %{person}
     reply_to_this_discussion: Antwoord op deze discussie
     view_group: Bekijk groep
@@ -245,29 +215,7 @@ nl_NL:
   email_actions:
     unfollowed_discussion: Je hebt de e-mails voor het bord afgezet.
   discussion_mailer:
-    resend: 'HERINNERING: %{actor} wacht op jou om mee te doen met %{discussion}'
-    new_discussion:
-      subject: "%{discussion}"
-      subject_html: "<strong>%{actor}</strong> heeft een bord gestart: %{discussion}"
-    discussion_edited:
-      subject: "%{discussion}"
-      inline: "%{actor} wijzigde het bord"
-      subject_html: "<strong>%{actor}</strong> heeft het bord %{discussion} gewijzigd"
-    discussion_announced:
-      subject: "%{discussion}"
-      subject_html: "<strong>%{actor}</strong> heeft je uitgenodigd om mee te doen met %{discussion}"
-    discussion_closed:
-      inline: "%{actor} sloot het bord"
-    new_comment:
-      subject: "%{discussion}"
-      subject_html: "<strong>%{actor}</strong> gaf commentaar in: %{discussion}"
-    comment_replied_to:
-      subject: '%{actor} heeft je beantwoord in: %{discussion}'
-      subject_html: '<strong>%{actor}</strong> heeft je beantwoord in: %{discussion}'
-    user_mentioned:
-      subject: '%{actor} heeft je vermeld in: %{discussion}'
-      subject_html: "<strong>%{actor}</strong> heeft je vermeld in: %{discussion}"
-    reply_or_view_online_html: Beantwoord deze e-mail onmiddelijk of <a href='%{url}'>bekijk het op %{hostname}</a>.
+    reply_or_view_online_html: "Beantwoord deze e-mail onmiddelijk of <a href='%{url}'>bekijk het op %{hostname}</a>."
     turn_off_notifications_html: "<a href='%{url}'>Zet E-mails af</a> voor deze discussie."
     change_email_preferences_html: "Verander je <a href='%{email_preferences_url}'>e-mailvoorkeuren</a>."
     unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Afmelden</a> van aankondigingen op dit bord."
@@ -284,11 +232,6 @@ nl_NL:
     public_groups: Openbare groepen
     terms: Voorwaarden
     independent_install_html: '%{hostname} voert een onafhankelijke kopie van Loomio uit: <a href="http://github.com/loomio/loomio">meer uitleg</a>.'
-  invitation_form:
-    error:
-      too_many_pending: "Je hebt meer dan het toegelaten maximum aantal uitnodigingen in afwachting voor deze groep, zijnde %{count}"
-      too_many_cancelled: "Je hebt meer dan het toegelaten maximum aantal geweigerde uitnodigingen voor deze groep, zijnde %{count}"
-      all_email_addresses_belong_to_members: "Deze mensen zijn al leden van de groep"
   password_reset:
     change_your_password: Verander je wachtwoord
     change_my_password: Wachtwoord veranderen
@@ -340,73 +283,12 @@ nl_NL:
         Je kunt je positie veranderen zolang het open is (misschien als reactie op nieuwe informatie).
 
         **Probeer mee te doen! Klik op een van de knoppen.**
-  markdown:
-    intro:
-      title: |
-          # Wat is markdown?
-      body: |
-          Markdown is een manier om platte tekst te schrijven (links),
-          zodat het geconverteerd kan worden naar tekst met opmaak (rechts).
-
-          Deze pagina is geschreven in markdown om te laten zien hoe het werkt.
-    headers:
-      body: |
-          ## Koppen
-
-          Prefix met een hekje en een spatie om tekst in een kop te veranderen.
-
-          # Dit is een h1
-          ## Dit is een h2
-          #### Dit is een h4
-    paragraphs:
-      title: |
-          ## Paragrafen
-      body: |
-          Je moet
-          een
-          blanco regel
-          tussen regels zetten.
-
-          Of het wordt een grote paragraaf!
-    emphasis:
-      title: |
-          ## Nadruk
-      body: |
-          Je kunt een woord schuingedrukt maken met_underscore_ of *ster*.
-
-          Maak een woord _vet_ door de **nadruk** te verdubbelen.
-    lists:
-      title: |
-          ## Lijsten
-      body: |
-          Zo maak je een lijst:
-
-          * laat een regel leeg voor je lijst
-          * gebruik sterren (*)
-          * voer een spatie in na de ster
-    links:
-      title: |
-          ## Links en afbeeldingen
-      body: |
-          Vierkante haken met titel, ronde haken met URL. Geen spaties tussen de haakjes.
-
-          [Loomio Homepagina](https://www.loomio.org/)
-
-          Afbeeldingen zijn hetzelfde maar worden voorafgegaan door een uitroepteken. De titel wordt gebruikt als 'alt' tekst.
-
-          ![loomio logo](https://i.imgur.com/Fvtworb.png)
   group_mailer:
     resend: 'HERINNERING: %{member} wacht op jou om mee te doen met %{group_name}'
   poll_mailer:
-    resend: '%{actor} herinnert je er aan om te stemmen in : %{title}'
     common:
-      or: of
       why_send_this: Je ontvangt deze e-mail omdat %{reason}
       view_on_loomio: Bekijk het op %{site_name}
-      unsubscribe: Abonnement opzeggen
-      results: Resultaten
-      responses: Antwoorden
-      change_your_stance: Veranderen
       create_outcome: Deel uitkomst
       your_response: "Jij stemde:"
       please_respond: Graag antwoorden
@@ -415,133 +297,4 @@ nl_NL:
       undecided_visitors: Onbesliste gasten (%{count})
       more_undecided: "%{count} meer..."
       vote_now: Stem nu
-      verify_stance_for_unverified_user: "Bedankt voor het stemmen in %{title}. Verifieer aub je e-mailadres zodat we je het resultaat kunnen sturen zodra deze klaar zijn."
-      verify_stance_for_verified_user: "Het lijkt er op dat je stemde in %{title}. Als jij het was, klik dan aub op onderstaande link om jouw stem te bevestigen."
       you_have_until: Je hebt tot %{when} om mee te doen.
-      people_have_voted: "%{num} mensen hebben gestemd (%{pct}%)"
-    subject:
-      poll_created: '%{actor} startte een %{poll_type}: %{title}'
-      poll_edited: '%{actor} wijzigde de %{poll_type}: %{title}'
-      poll_reminder: '%{actor} herinnert je er aan om te stemmen: %{title}'
-      poll_announced: '%{actor} heeft je uitgenodigd om te stemmen in %{poll_type}: %{title}'
-      poll_closing_soon: '%{poll_type} sluit binnen 24 uur: %{title}'
-      poll_closing_soon_author: 'Je %{poll_type} sluit over 24 hours: %{title}'
-      poll_expired: "%{poll_type} gesloten: %{title}"
-      poll_option_added: '%{actor} voegde opties toe aan: %{title}'
-      poll_option_added_author: '%{actor} voegde opties toe aan: %{title}'
-      outcome_created: '%{actor} deelde een %{poll_type} resultaat: %{title}'
-      outcome_updated: '%{actor} wijzigde het %{poll_type} resultaat: %{title}'
-      outcome_created_author: 'Je deelde een %{poll_type} resultaat: %{title}'
-      outcome_review_due: "Het is tijd voor de beoordeling van het %{poll_type} resultaat: %{title}"
-      outcome_announced: '%{actor} deelde een %{poll_type} resultaat: %{title}'
-      stance_created: "%{actor} stemde op: %{title}"
-      stance_updated: "%{actor} stemde op: %{title}"
-      stance_created_author: "Gelieve je stem te bevestigen op: %{title}"
-      user_mentioned: '%{actor} noemde je in: %{title}'
-      user_reminded: '%{actor} herinnert je er aan om te stemmen in : %{title}'
-    header:
-      poll_created: '<strong>%{actor}</strong> startte een %{poll_type}'
-      poll_edited: '<strong>%{actor}</strong> wijzigde een %{poll_type}'
-      poll_reminder: '<strong>%{actor}</strong> herinnert je er aan om te stemmen'
-      poll_announced: '<strong>%{actor}</strong> heeft je uitgenodigd om te stemmen in %{poll_type}'
-      poll_closing_soon: '<strong>%{actor}</strong>''s %{poll_type} sluit binnen 24 uur. Nu is het moment om te stemmen, van gedachten te veranderen of anderen aan te moedigen om mee te doen.'
-      poll_closing_soon_author: 'Je %{poll_type} sluit binnen 24 uur. Nu is het moment om mensen er aan te herinneren, of -indien nodig- de sluiting uit te stellen.'
-      poll_expired: "<strong>%{actor}'s</strong> %{poll_type} is gesloten: %{title}"
-      poll_expired_author: 'Je %{poll_type} is <strong>gesloten</strong>. Neem de tijd om te overwegen wat er gezegd is en <strong>deel een resultaat</strong> met de groep zodat iedereen weet wat er hierna gaat gebeuren.'
-      poll_option_added: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
-      poll_option_added_author: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
-      outcome_created: '<strong>%{actor}</strong> deelde een %{poll_type} resultaat.'
-      outcome_updated: '<strong>%{actor}</strong> wijzigde het %{poll_type} resultaat.'
-      outcome_review_due: "Het is tijd voor de beoordeling van het %{poll_type} resultaat: %{title}. Overweeg om een feedback peiling te starten of start een nieuw bord om te reflecteren op hoe het besluit is geïmplementeerd."
-      outcome_created_author: 'Je deelde een %{poll_type} resultaat:'
-      outcome_announced: '<strong>%{actor}</strong> deelde een %{poll_type} resultaat.'
-      stance_created: "<strong>%{actor}</strong> stemde op: %{title}"
-      stance_updated: "<strong>%{actor}</strong> stemde op: %{title}"
-      user_mentioned: '<strong>%{actor}</strong> noemde je in: %{title}'
-      user_reminded: '<strong>%{actor}</strong> herinnert je er aan om te stemmen in: %{title}'
-    body:
-      voted: '<strong>%{participant}</strong>:'
-  comment_by: Reactie door %{comment_author}
-  notified:
-    no_matches_found: "Geen resultaten gevonden voor '%{query}'"
-    group_users: "(%{count} mensen)"
-    group_title: "%{name} (%{count} mensen)"
-    public_title: Openbaar (Iedereen met link)
-  poll_unsubscribe:
-    title: Je bent uitgeschreven van %{title}
-    helptext: Je ontvangt geen e-mails meer over dit besluit.
-    visit_poll: Peiling bekijken
-    go_to_dashboad: Ga naar het dashboard
-  microsoft:
-    section_title: "[%{title}](%{url})"
-    new_discussion: "Nieuw bord in %{group}"
-    new_comment: "Nieuwe reactie in %{group}"
-    outcome_created: "Resultaat geplaatst in %{group}"
-    outcome_updated: "Resultaat gewijzigd in %{group}"
-    outcome_review_due: "Tijd voor beoordeling van het resultaat in %{group}"
-    poll_created: "Nieuw %{poll_type} in %{group}"
-    stance_created: "Nieuwe reactie in %{poll}"
-    poll_closing_soon: "%{poll_type} sluit binnen 24 uur"
-    poll_expired: "%{poll_type} is gesloten"
-    group_identity_created: "Gebeurtenissen van %{group} zullen hier verschijnen"
-  webhook:
-    markdown:
-      new_discussion: "**%{actor}** startte een discussie in %{group}: [%{title}](%{url})"
-      discussion_edited: "**%{actor}** wijzigde een discussie in %{group}: [%{title}](%{url})"
-      new_comment: "**%{actor}** reageerde in [%{title}](%{url})"
-      outcome_created: "**%{actor}** deelde een resultaat van de %{poll_type}: [%{title}](%{url})"
-      outcome_update: "**%{actor}** wijzigde het resultaat van de %{poll_type}: [%{title}](%{url})"
-      outcome_review_due: "Het is tijd om het resultaat van %{poll_type}: [%{title}](%{url}) te beoordelen"
-      poll_created: "**%{actor}** startte een %{poll_type} in %{group}: [%{title}](%{url})"
-      poll_edited: "**%{actor}** wijzigde een %{poll_type} in %{group}: [%{title}](%{url})"
-      stance_created: "**%{actor}** stemde in [%{title}](%{url})"
-      stance_updated: "**%{actor}** stemde in [%{title}](%{url})"
-      poll_closing_soon: "24 uur over: [%{title}](%{url})"
-      poll_expired: "%{poll_type}: [%{title}](%{url}) is gesloten"
-      poll_closed_by_user: "**%{actor}** sloot de %{poll_type}: [%{title}](%{url})"
-      poll_reopened: "**%{actor}** heropende %{poll_type}: [%{title}](%{url})"
-  slack:
-    new_discussion: "Nieuw bord in *%{group}*: *%{discussion}*"
-    outcome_created: "Resultaat geplaatst in *%{group}*: *%{poll}*"
-    outcome_updated: "Resultaat gewijzigd in *%{group}*: *%{poll}*"
-    outcome_review_due: "Het is tijd om het resultaat van *%{group}*: *%{poll}* te beoordelen"
-    poll_created: "Nieuw *%{poll_type}* in *%{group}*: *%{poll}*"
-    poll_closing_soon: "Herinnering: *%{poll}* sluit binnen 24 uur"
-    poll_expired: "*%{poll}* werd gesloten"
-    poll_not_found: "Sorry, die peiling is niet gevonden. Type '/loomio <poll_type> <title>' om een nieuwe te starten?"
-    unknown_channel: |
-        Sorry, het lijkt er op dat er geen Loomio groep bij dit kanaal hoort.
-        Misschien '/loomio' proberen in een van de volgende kanalen?
-        %{integrations}
-    stance_not_valid: "Sorry, we konden geen standpunt innemen over *%{poll}*. <%{url}|Klik hier> om direct op de peiling te stemmen."
-    group_identity_created: |
-        Hallo, ik ben Loomio Bot! *%{author}* heeft me toegevoegd.
-        Ik vertel je wanneer er nieuwe borden of peilingen zijn in *%{group}*
-
-        Als je nog niet aan *%{group}* deelneemt, <%{url}|Klik hier> om mee te doen.
-    request_authorization_message: "Nog maar één stap: <%{url}|Klik hier> om jouw Slack account te autoriseren om Loomio te gebruiken. (Dit hoef je maar één keer te doen.)"
-    poll_closed: "*%{title}* werd al gesloten! <%{url}|Klik hier> om de resultaten te zien."
-    go_to_slack: Ga naar Slack
-    stance_created: Bedankt voor het mee doen! Je stemde *%{position}* op de peiling <%{poll_url}|%{title}>. Als je je stem wilt veranderen, of als je wilt vertellen geven waarom je je zo voelt, <%{stance_url}|klik hier>.
-    click_to_vote: "Kies hieronder een optie om te stemmen:"
-    time_zone_message: (alle tijden zijn in de %{zone} tijdzone)
-    authorized_message: Succes! Je kunt nu via Slack stemmen
-    initiate: |
-        Oké, we gaan het doen! <%{url}|Klik hier om te starten met %{type}>.
-        (merk op: we berichten in dit kanaal zodra het is gemaakt zodat iedereen mee kan doen)
-    slash_command_help: |
-        Type gewoon een besluit-type plus een vraag en wij doen de rest..
-        Je kunt kiezen uit de volgende besluit typen:
-        'proposal': Zoek collectieve overeenkomst
-        'count': Meet deelname en vind vrijwilligers
-        'poll': Meet populariteit van opties
-        'dot_vote': Prioriseer een lijst van opties
-        'meeting': Vind een tijdstip om te vergaderen
-        Of, start een gesprek met '/loomio thread 1'.
-
-        Bijvoorbeeld:
-        /loomio count Wie komt er zondag naar het feestje?
-        om een nieuwe telling te starten.
-        of
-        /loomio thread Laten we het hebben over de richting van het bedrijf
-        om een nieuw bord te starten

@@ -94,12 +94,6 @@ km:
     title: 'លុបមតិយោបល់ '
   contact_message_form:
     subject_label: "ប្រធានបទ​"
-  hint:
-    context: 'ពត៏មានជំនួយសម្រាប់ការប្រើបន្ទះបរិបទនេះ'
-    discussion: 'គន្លឹះសម្រាប់ការចាប់ផ្តើមជាមួយការពិភាក្សារដ៏គួរឲ្យចាប់ចិត្ត'
-    invitation: 'គន្លឹះសម្រាប់ការសរសេរការអញ្ចើញដ៏អស្ចារ្យ'
-    proposal: 'គន្លឹះសម្រាប់ការសរសេរសំណើរច្បាស់លាស់'
-    vote: 'អ្នកអាចផ្លាស់ប្ដូរទីតាំងរបស់អ្នកនៅពេលណាមួួយ'
   poll_common:
     have_your_say: ការនិយាយរបស់អ្នក
     save_changes: រក្សាទុក​
@@ -116,12 +110,10 @@ km:
   poll_count_options:
     'yes': 'បាទ/ចាស!'
     'no': 'ទេ'
+  chatbot:
+    password: លេខសម្ងាត់
   webhook:
     name_label: ឈ្មោះ
   group_survey:
     categories:
-      other: 'ផ្សេងទៀត '
-    uses:
-      other: 'ផ្សេងទៀត '
-    referrers:
       other: 'ផ្សេងទៀត '

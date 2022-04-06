@@ -1,15 +1,15 @@
 [main]
 host = https://www.transifex.com
 
-[loomio-1.main-app-loomio-10]
+[o:rdbartlett:p:loomio-1:r:main-app-loomio-10]
 file_filter = config/locales/client.<lang>.yml
 source_file = config/locales/client.en.yml
 source_lang = en
-type = YAML
+type        = YAML
 
-[loomio-1.server]
+[o:rdbartlett:p:loomio-1:r:server]
 file_filter = config/locales/server.<lang>.yml
 source_file = config/locales/server.en.yml
 source_lang = en
-type = YAML
+type        = YAML
 

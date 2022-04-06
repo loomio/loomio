@@ -53,10 +53,10 @@ it:
       members: Membri
       subgroups: Sottogruppi
       threads: Discussioni
+      polls: Sondaggi
       votes: Voti
       comments: Commenti
       general: Generale
-      polls: Sondaggi
       poll_types:
         proposal: Proposta
         count: Conteggio
@@ -75,9 +75,6 @@ it:
       recaptcha: "Non siamo stati in grado di verificare che tu non sia un robot. Per favore riprova ancora!"
       bad_login: "Spiacente, ma la password non corrisponde con quella che abbiamo archiviato."
       username_must_be_alphanumeric: "I nomi utente devono avere solo lettere minuscole e numeri"
-  attachment:
-    error:
-      too_large: Il file che hai tentato di allegare è maggiore di 100 Megabytes, scegli un file più piccolo.
   poll:
     error:
       cannot_add_options: Impossibile aggiungere opzioni a questo sondaggio
@@ -112,18 +109,6 @@ it:
   invitation:
     invitation_cancelled: 'Questo invito è stato revocato dal coordinatore del gruppo. Chiedi un altro invito al tuo gruppo. '
     invitation_already_used: L'invito è già stato usato. Iscriviti a Loomio per andare al tuo gruppo.
-  date:
-    formats:
-      for_this_year: "%e %b"
-      for_another_year: "%-d/%-m/%y"
-  time:
-    formats:
-      closing_soon_subject: "%d %b %H:%M"
-      for_today: "%l:%M %P"
-  validate:
-    motion:
-      must_close_in_future: La proposta sarà presto chiusa.
-      one_at_a_time: C'è un altra proposta attiva.
   subscriptions:
     active: Attivo
     inactive: Inattivo
@@ -152,7 +137,6 @@ it:
   email:
     common:
       or_enter_code: Oppure inserisci il codice qui sotto
-      resend: Questo link scade tra 24 ore e può essere usato una sola volta.
     login:
       subject: Autenticati al sito %{site_name}
       login: Autenticato come %{name}
@@ -162,19 +146,6 @@ it:
       footer: "Puoi rispondere a %{name} direttamente, rispondendo a questa emai."
     reset_password:
       link_text: Cambia password
-    start_decision:
-      subject: Inizia una decisione su Loomio
-      intro: Ciao, <strong>%{name}</strong>!
-      action: Che cosa vuoi fare?
-      proposal: Solleva una proposta
-      count: Inizia una verifica
-      poll: Inizia un sondaggio
-      dot_vote: Inizia un voto a punti
-      meeting: Inizia un sondaggio per evento
-      ranked_choice: Inizia una scelta di preferenze
-    custom: "%{text}"
-    group_email:
-      intro: "%{who} ha fatto un annuncio a %{group}:"
     by_who: da %{person}
     reply_to_this_discussion: Rispondi a questa discussione
     view_group: Vedi gruppo
@@ -199,17 +170,7 @@ it:
       subject: "%{who} ha richiesto di entrare in %{which_group}"
       view_group: Puoi approvare o rifiutare la richiesta qui
   discussion_mailer:
-    new_discussion:
-      subject_html: "<strong>%{actor}</strong> ha iniziato una discussione: %{discussion}"
-    new_comment:
-      subject_html: "<strong>%{actor}</strong> ha commentato in: %{discussion}"
-    comment_replied_to:
-      subject: '%{actor} ti ha risposto in: %{discussion}'
-      subject_html: '<strong>%{actor}</strong>  ti hai risposto in: %{discussion}'
-    user_mentioned:
-      subject: '%{actor} ti ha menzionato in: %{discussion}'
-      subject_html: "<strong>%{actor}</strong> ti ha menzionato in %{discussion}"
-    reply_or_view_online_html: Rispondi a questa email direttamente o <a href='%{url}'> leggila su %{hostname}</a>.
+    reply_or_view_online_html: "Rispondi a questa email direttamente o <a href='%{url}'> leggila su %{hostname}</a>."
     turn_off_notifications_html: "<a href='%{url}'> Escludi le email di notifica</a> per questa discussione."
     change_email_preferences_html: "Cambia le tue<a href='%{email_preferences_url}'>preferenze email</a>."
   footer:
@@ -240,10 +201,6 @@ it:
     title: Come usare Loomio
   poll_mailer:
     common:
-      unsubscribe: Discriviti
-      results: Risultati
-      responses: Risposte
       create_outcome: Condividi risultati
       more_undecided: "%{count} ancora.."
       vote_now: Vota ora
-  comment_by: Commento di %{comment_author}

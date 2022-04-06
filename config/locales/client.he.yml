@@ -32,39 +32,6 @@ he:
     discussions_count_plural: ({{count}} שיחות)
     tag_created: תגית נשמרה
     tags_marked: שיחה סומנה כ'{{name}}' ב{{groupName}}
-  reactions:
-    slight_smile: לייק
-    heart: אהבה
-    laughing: צחוק
-    clap: מחיאת כף
-    hugging: חיבוק
-    sunglasses: מגניב
-    wink: קריצה
-    nerd: חכם
-    relieved: חש הקלה
-    worried: מודאג
-    confused: מבולבל
-    confounded: מבולבל
-    neutral_face: ניטרלי
-    slight_frown: מזעיף פנים
-    disappointed: מאוכזב
-    angry: כועס
-    weary: עייף
-    astonished: נדהם
-    rolling_eyes: מגלגל עינים
-    cry: בכי
-    scream: צעקה
-    sleeping: משועמם
-    thinking: חושב
-    raised_hands: ידיים מורמות
-    pray: מתפלל
-    fingers_crossed: מחזיק אצבעות
-    v: שלום
-    metal: מתכת
-    ok_hand: אוקיי
-    wave: גל
-    thumbsup: אגודל למעלה להסכמה
-    thumbsdown: אגודל למטה לשלילה
   timezones:
     local: זמן מקומי ({{value}})
   common:
@@ -359,34 +326,11 @@ he:
   notifications:
     header: "התרעות"
     no_notifications: "אין לך עדכונים"
-    new_motion: "<strong>{{name}}</strong> יצר הצעה <strong>{{title}}</strong>"
-    motion_closed: "הצעה נסגרה: <strong>{{title}}</strong>"
-    publish_outcome: "פרסם תוצאה"
-    motion_closed_by_user: "<strong>{{name}}</strong> סגר/ה את ההצעה<strong>{{title}}</strong>"
-    motion_closed_by_expiry: "ההצעה נסגרה <strong>{{title}}</strong>"
-    new_vote: "<strong>{{name}}</strong> {{position}} על ההצעה <strong>{{title}}</strong>"
-    new_comment: "<strong>{{name}}</strong> העיר/ה על <strong>{{title}}</strong>"
-    comment_replied_to: "<strong>{{name}}</strong> הגיב/ה להערה ב<strong>{{title}}</strong>"
-    reaction_created: "<strong>{{name}}</strong> הגיב <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> ל{{model}}<strong>{{title}}</strong>"
-    user_mentioned: "<strong>{{name}}</strong> ציין אותך ב<strong>{{title}}</strong>"
-    user_reminded: "<strong>{{name}}</strong> ממתינ/ה להשתתפותך ב<strong>{{title}}</strong>"
-    membership_requested: "<strong>{{name}}</strong> ביקש/ה חברות ל<strong>{{title}}</strong>"
-    membership_request_approved: '<strong>{{name}}</strong> אישר/ה בקשתך להצטרף ל<strong>{{title}}</strong>'
-    user_added_to_group: "<strong>{{name}}</strong> הוסיף אותך לקבוצה <strong>{{title}}</strong>"
-    user_added_to_group_no_inviter: "צורפת לקבוצה <strong>{{title}}</strong>"
-    motion_closing_soon: "הצעה נסגרת בקרוב: <strong>{{title}}</strong>"
-    motion_outcome_created: "<strong>{{name}}</strong> פרסמ/ה תוצאה להצעה <strong>{{title}}</strong>"
-    motion_outcome_updated: "<strong>{{name}}</strong> עדכן את התוצאה להצעה <strong>{{title}}</strong>"
-    invitation_accepted: "<strong>{{name}}</strong> אישר את הזמנתך להצטרפות <strong>{{title}}</strong>"
-    poll_created: "<strong>{{name}}</strong> התחיל את {{poll_type}}: <strong>{{title}}</strong>"
-    poll_edited: "<strong>{{name}}</strong> ערך את {{poll_type}}: <strong>{{title}}</strong>"
-    poll_announced: "<strong>{{name}}</strong> שיתף את {{poll_type}}: <strong>{{title}}</strong>"
-    poll_closing_soon: "{{poll_type}} נסגר בקרוב:<strong>{{title}}</strong>"
-    poll_expired: "{{poll_type}} נסגר: <strong>{{title}}</strong>"
-    poll_option_added: "<strong>{{name}}</strong> הוסיף את האפשרויות ל<strong>{{title}}</strong>"
-    outcome_created: "<strong>{{name}}</strong> שיתפ/ה את התוצאה: <strong>{{title}}</strong>"
-    outcome_announced: "<strong>{{name}}</strong> שיתפ/ה את התוצאה: <strong>{{title}}</strong>"
-    stance_created: "<strong>{{name}}</strong> השתתף ב: <strong>{{title}}</strong>"
+    with_title:
+      user_mentioned: "%{actor} הזכיר אותך ב: %{title}"
+      user_reminded: "%{actor} מזכיר לך להצביע ב:%{title}"
+    without_title:
+      poll_expired: "%{poll_type} נסגר"
   discussion_fork_actions:
     move: העבר
   discussion_form:
@@ -485,13 +429,11 @@ he:
     link: הכנס לינק
     attach: צרוף קובץ
   cover_photo_form:
-    aria_label: 'שנה תמונת קאבר של הטופס'
     heading: 'תמונת קאבר חדשה'
     upload_link: 'העלה תמונת קאבר חדשה'
     image_size_helptext: 'גודל תמונה אידיאלי הוא 1400px רוחב על 320px גובה'
     upload_success: 'תמונת קאבר עודכנה בהצלחה'
   logo_photo_form:
-    aria_label: 'שנה את לוגו הקבוצה בטופס'
     heading: 'לוגו קבוצה חדש'
     upload_link: 'העלה לוגו קבוצה חדש'
     image_size_helptext: 'גודל תמונה אידאלי 100*100 פיקסלים'
@@ -508,8 +450,6 @@ he:
     introduction_label: למה אתה מעוניין להצטרף?
     submit_button: בקש/י להצטרף
     introduction_over_limit: תגובה ארוכה מידי
-    messages:
-      membership_requested: 'ביקשת להיות חבר ב{{group}}'
   revision_history_modal:
     aria_label: היסטוריית שינויים
     started_by: 'התחיל ע"י <strong>{{name}}</strong>'
@@ -638,7 +578,6 @@ he:
     membership_granted_upon_approval: 'כל אחד יכול לבקש להצטרף אבל חייב לקבל אישור.'
     membership_granted_upon_approval_secret_parent: '<strong>כל אחד מה{{parent}} יכול לבקש להצטרף לקבוצה</strong>.'
     permissions: 'הרשאות'
-    features: 'מאפייני הקבוצה'
     thread_privacy: 'פרטיות השיחה'
     public_threads: 'שיחות פומביות בלבד'
     public_discussions_subgroup: 'כל אחד מ{{parentGroupName}} יכול לצפות בדיונים'
@@ -679,11 +618,6 @@ he:
     messages:
       request_approved_success: בקשת מנוי אושרה
       request_ignored_success: בקשת מנוי ללא התייחסות
-  group_previous_proposals_card:
-    heading: בקשות קודמות
-    see_more: צפה בעוד
-  group_decisions_card:
-    see_more: "צפה בכל: ({{count}}) ההחלטות"
   invitation_form:
     aria_label: 'טופס הזמנה'
     invite_people: 'הזמינו אנשים'
@@ -699,8 +633,6 @@ he:
     add_custom_message_link: 'הוסף הודעה אישית.'
     custom_message: 'הודעה אישית'
     custom_message_placeholder: 'הוסף הודעה אישית לשליחה עם ההזמנה.'
-    team_invitation_message: 'לחלופין,'
-    team_invitation_link: 'קבל לינק לשיתוף.'
     add_members: 'הוסף חברים'
     from_parent_group: 'מאת {{name}}.'
     send: 'שליחה'
@@ -847,10 +779,6 @@ he:
       muted: שיחות מושתקות
       muted_aria_label: כרגע מראה שיחות מושתקות
       muted_description: הצג רק שיחות שהושתקו
-    aria_thread:
-      unread: '{{count}} פריטים שלא נקראו.'
-      current_proposal: 'הצעה נוכחית: {{name}}.'
-      you_voted: 'את/ה הצבעת: {{position}}.'
     thread_preview:
       you_voted: 'את/ה הצבעת {{position}}'
       undecided: 'את/ה מתלבט/ת'
@@ -961,12 +889,6 @@ he:
         צוות התמיכה דובר אנגלית ויתרגם את ההודעה שלך עם Google Translate, במידת וידרש. <br />
         אנחנו מתכננים לענות לכל ההודעות אלינו תוך 24 שעות.
     success: "תודה על הודעתך, {{name}}. נחזור אליך בקרוב."
-  hint:
-    context: 'טיפים לשימוש בפאנל התוכן'
-    discussion: 'טיפים להתחלת דיון מרתק'
-    invitation: 'טיפים לכתיבת הזמנה מעולה'
-    proposal: 'טיפים לכתיבת הצעה ברורה'
-    vote: 'אתה יכול לשנות את בחירתך בכל עת'
   explore_page:
     header: חקור קבוצות
     search_placeholder: חיפוש בקבוצות פומביות
@@ -977,12 +899,10 @@ he:
     messages:
       reload: 'טען מחדש'
   decision_tools_card:
-    help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">עזרה</a>
     proposal_title: הצעה
     count_title: בדיקה
     poll_title: סקר
     score_title: ניקוד סקר
-    dot_vote_title: הצבעת נקודה
     meeting_title: הצבעת זמן
     ranked_choice_title: דירוג בחירה
   poll_common:
@@ -1011,6 +931,7 @@ he:
     share_count: שתף בדיקה
     start_poll: התחל החלטה
     publish_poll: שתף סקר
+    share_outcome: שתפ/י תוצאה
     view_all: צפה בכל
     save_changes: שמירה
   poll_common_attachment_form:
@@ -1025,9 +946,6 @@ he:
       options_added: אפשרויות חדשות נוספו
   poll_common_card:
     show_results: הראה תוצאות
-  poll_common_index_card:
-    title: החלטות קודמות
-    count: "צפה בכל: ({{count}}) ההחלטות"
   discussions_panel:
     open: פתוח
     all: הכל
@@ -1042,15 +960,8 @@ he:
     all: 'הכל'
     open: 'פתוח'
     closed: 'סגור'
-  current_polls_card:
-    title: החלטות עדכניות
-    start_poll: החלטה חדשה
-    no_polls: אין החלטות פעילות כרגע.
   poll_common_collapsed:
     by_who: "על פי {{name}}"
-  poll_common_select_group:
-    loomio_group: קבוצה
-    loomio_group_placeholder: (לא נבחרה קבוצה)
   poll_common_calendar_invite:
     calendar_invite: הוסף הזמנה ליומן עם תוצאה זו
     poll_option_id: זמן פגישה
@@ -1081,19 +992,6 @@ he:
     can_respond_maybe:
       title: מצביעים יכולים להשיב "אם נדרש"
       helptext_on: מצביעעים יכולים לציין זמנים כ-"אם יש צורך"
-  poll_common_close_form:
-    close_proposal: סגור הצעה
-    close_poll: סגור סקר
-    close_count: סגור בדיקה
-    close_dot_vote: סגור בחירה של נקודות
-    close_meeting: סגור סקר תחום בזמן
-    close_ranked_choice: סגור סקר לפי דרוג
-    proposal_closed: הצעה סגורה
-    poll_closed: סקר סגור
-    count_closed: בחירה סגורה
-    dot_vote_closed: בחירת נקודות סגורה
-    meeting_closed: סקר תחום בזמן סגור
-    ranked_choice_closed: סקר לפי דרוג סגור
   poll_common_closing_at_field:
     closing: סוגרים
   poll_card:
@@ -1116,7 +1014,6 @@ he:
     reminded: תזכורת נשלחה!
     reminder_sent: הודעת תזכורת נשלחה
   poll_common_set_outcome_panel:
-    share_outcome: שתפ/י תוצאה
     poll: 'סקר זה נסגר <strong>שתף את התוצאה </strong> עם הקבוצה.'
     proposal: 'הצעה זו נסגרה. אנא שקול מה נאמר בה ו- <strong>שתף את התוצאה </strong>, כך שאנשים ידעו מה הצעד הבא.'
     count: 'בדיקה זו נסגרה. <strong>שתף את התוצאה</strong> לסיום התהליך.'
@@ -1302,16 +1199,6 @@ he:
     stance_updated: בחירה עודכנה
   thread_item:
     event_removed: "הוסר מהשיחה"
-  poll_common_subscribe_form:
-    receive_updates_title: הצבעתך תועדה ונשמרה במערכת
-    receive_updates_helptext: אם ברצונך לקבל מייל על התוצאה של סקר זה, הכנס את המייל שלך למטה
-    email_saved: אתה תקבל מייל על תוצאת סקר זה
-    subscribe: מינוי
-    no_thanks: לא תודה
-  poll_common_example_card:
-    what_is_this: "זוהי דוגמא חיה של {{type}}. אתה משתתף - נסה אותה!"
-  share_poll_page:
-    title: שתף סקר - {{title}}
   auth_form:
     sign_in: התחבר
     continue: המשך
@@ -1352,15 +1239,13 @@ he:
     email: דואר אלקטרוני
     password: סיסמה
     reactivate: אקטב מחדש את החשבון
+  chatbot:
+    username: שם משתמש
+    password: סיסמה
   webhook:
     removed: אינטגרציה הוסרה
     url_label: Webhook URL
     name_label: שם
-    event_kinds:
-      poll_closing_soon: הסקר מסתיים בקרוב
-  browser_warning:
-    message: "חשוב מאוד! אתה משתמש בגרסת דפדפן ישנה ({{name}} {{version}}) שלא נתמכת ע\"י {{site}}."
-    link: אנא החלף לדפדפן אחר
   powered_by:
     powered_by_loomio: מופעל ע"י לומיו
     privacy_policy: מדיניות פרטיות
@@ -1369,8 +1254,4 @@ he:
   group_survey:
     categories:
       community: קבוצה קהילתית
-      other: אחר
-    uses:
-      other: אחר
-    referrers:
       other: אחר

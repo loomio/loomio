@@ -3,8 +3,6 @@ te:
     members: "సభ్యులు"
   loomio_tags:
     name_label: పేరు
-  reactions:
-    ok_hand: సరే
   common:
     version: రూపాంతరం
     you: మీరు
@@ -185,12 +183,10 @@ te:
     total: మొత్తం
   auth_form:
     name_placeholder: మీ పేరు
+  chatbot:
+    password: సంకేతపదం
   webhook:
     name_label: పేరు
   group_survey:
     categories:
-      other: ఇతరాలు
-    uses:
-      other: ఇతరాలు
-    referrers:
       other: ఇతరాలు

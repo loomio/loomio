@@ -42,39 +42,6 @@ hu:
     discussions_count_plural: ({{count}} témák)
     tag_created: Címke mentve
     tags_marked: 'A(z) ''{{name}}'' jelöléssel ellátott témák itt: {{groupName}}'
-  reactions:
-    slight_smile: Tetszik
-    heart: Szeret
-    laughing: Nevet
-    clap: Taps
-    hugging: Ölel
-    sunglasses: Menő
-    wink: Kacsint
-    nerd: Okos
-    relieved: Megkönnyebült
-    worried: Aggódó
-    confused: Összezavart
-    confounded: Felkavart
-    neutral_face: Semleges
-    slight_frown: Szomorú
-    disappointed: Csalódott
-    angry: Mérges
-    weary: Fáradt
-    astonished: Döbbent
-    rolling_eyes: Szemet forgat
-    cry: Sír
-    scream: Sikolt
-    sleeping: Unott
-    thinking: Gondolkodik
-    raised_hands: Kezet felemel
-    pray: Imádkozik
-    fingers_crossed: Drukkol
-    v: Béke
-    metal: Metál
-    ok_hand: Rendben
-    wave: Integet
-    thumbsup: Egyetért
-    thumbsdown: Nem ért egyet
   poll_types:
     proposal: javaslat
     count: ellenőrzés
@@ -440,27 +407,11 @@ hu:
   notifications:
     header: "Értesítések"
     no_notifications: "Nincsenek új értesítéseid"
-    new_motion: "<strong>{{name}}</strong>  elindított egy szavazást<strong>{{title}}</strong> címmel"
-    motion_closed: "Szavazás vége: <strong>{{title}}</strong>"
-    publish_outcome: "Eredmény közzététele"
-    motion_closed_by_user: "<strong>{{name}}</strong> lezárta a  <strong>{{title}}</strong> szavazást"
-    motion_closed_by_expiry: "A <strong>{{title}}</strong> szavazás lezárult"
-    new_vote: "<strong>{{name}}</strong>álláspontja {{position}}  a <strong>{{title}}</strong> javaslatban"
-    new_comment: "<strong>{{name}}</strong> hozzászólt a <strong>{{title}}</strong> témához"
-    comment_replied_to: "<strong>{{name}}</strong> válaszolt a hozzászólásodra a <strong>{{title}}</strong>témában"
-    reaction_created: "<strong>{{name}}</strong> reagált<img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> a hozzászólásodra itt: {{model}}<strong>{{title}}</strong>"
-    user_mentioned: "<strong>{{name}}</strong> megemlített téged itt: <strong>{{title}}</strong>"
-    user_reminded: "<strong>{{name}}</strong> vár a visszaigazolásodra itt: <strong>{{title}}</strong>"
-    membership_requested: "<strong>{{name}}</strong> szeretne csatlakozni ide: <strong>{{title}}</strong>"
-    membership_request_approved: '<strong>{{name}}</strong> elfogadta a csatlakozási kérelmed a <strong>{{title}}</strong> témába'
-    user_added_to_group: "<strong>{{name}}</strong> felvett a <strong>{{title}}</strong> csoportba"
-    user_added_to_group_no_inviter: "Csatlakoztál ide: <strong>{{title}}</strong>"
-    motion_closing_soon: "Javaslat hamarosan lezárul: <strong>{{title}}</strong>"
-    motion_outcome_created: "<strong>{{name}}</strong> közzétett egy végeredményt a <strong>{{title}}</strong> szavazásban"
-    motion_outcome_updated: "<strong>{{name}}</strong> frissített egy végeredményt a <strong>{{title}}</strong>szavazásban"
-    invitation_accepted: "<strong>{{name}}</strong> elfogadta a csatlakozási kérelmed itt: <strong>{{title}}</strong>"
-    poll_closing_soon: "A {{poll_type}} hamarosan lezárul: <strong> {{title}} </strong>"
-    poll_expired: "{{poll_type}} lezárult: <strong>{{title}}</strong>"
+    with_title:
+      user_mentioned: "%{actor} megemlített téged a következőben: %{title}"
+      user_reminded: "%{actor} emlékeztet, hogy szavazz: %{title}"
+    without_title:
+      poll_expired: "%{poll_type} lezárult"
   discussion_fork_actions:
     move: Mozgat
   discussion_form:
@@ -484,7 +435,6 @@ hu:
     fork_notice: 'Új témát hozunk létre {{count}} elemmel innen: {{title}}'
   announcement:
     send_discussion: Téma küldése
-    send_discussion_explain: Emberek meghívása, hogy részt vegyenek ebben a megbeszélésben
     send_group: 'Meghívás a következőhöz: {{name}}'
     send_poll: Elküld {{type}}
     send_outcome: Oszd meg a végeredményt
@@ -598,13 +548,11 @@ hu:
     remove_row: Sor eltávolítása
     merge_selected: Kiválaszott cellák egyesítése
   cover_photo_form:
-    aria_label: 'Borítófotó csere'
     heading: 'Új borítókép'
     upload_link: 'Tölts fel új borítófotót'
     image_size_helptext: 'Az ideális képméret 1400 × 320px'
     upload_success: 'A borítókép sikeresen frissítve'
   logo_photo_form:
-    aria_label: 'A csoport logójának módosítása'
     heading: 'Új csoport embléma'
     upload_link: 'Tölts fel új csoportlogót'
     image_size_helptext: 'Az ideális képméret 100 × 100 képpont'
@@ -622,8 +570,6 @@ hu:
     introduction_label: Miért akarsz csatlakozni?
     submit_button: Kérdezz a csatlakozáshoz
     introduction_over_limit: A válasz túl hosszú
-    messages:
-      membership_requested: 'Ön a(z) {{group}} tagságát kérte'
   revision_history_modal:
     aria_label: Módosítási előzmények
     started_by: 'Indította: <strong> {{name}} </strong>'
@@ -761,7 +707,6 @@ hu:
     membership_granted_upon_approval: 'Bárki kérheti a csatlakozást, de jóvá kell hagynia.'
     membership_granted_upon_approval_secret_parent: '<strong> Kérésre </strong>bárki a(z) {{parent}} -től, kérheti, hogy csatlakozzon a csoporthoz.'
     permissions: 'Engedélyek'
-    features: 'Csoportra jellemző lehetőségek'
     thread_privacy: 'Téma adatvédelme'
     public_threads: 'Csak nyilvános témák'
     public_discussions_subgroup: 'Bárki a(z) {{parentGroupName}} csoport tagjai közül láthatják a beszélgetéseket'
@@ -795,11 +740,6 @@ hu:
     messages:
       request_approved_success: A tagsági kérelem jóváhagyva
       request_ignored_success: A tagsági kérelmet figyelmen kívül hagyták
-  group_previous_proposals_card:
-    heading: Előző javaslatok
-    see_more: Többet látni
-  group_decisions_card:
-    see_more: "Lásd az összes: ({{count}}) döntést"
   invitation_form:
     aria_label: 'Meghívó'
     invite_people: 'Hívj meg embereket'
@@ -818,8 +758,6 @@ hu:
     add_custom_message_link: 'adjon hozzá egyéni üzenetet.'
     custom_message: 'Egyéni üzenet'
     custom_message_placeholder: 'Írjon be egy személyes üzenetet, amelyet a meghívóhoz mellékel.'
-    team_invitation_message: 'Egy másik változat szerint'
-    team_invitation_link: 'kap egy linket a megosztáshoz.'
     add_members: 'Tagok felvétele'
     from_parent_group: 'tőle {{name}}.'
     send: 'Küldés'
@@ -990,10 +928,6 @@ hu:
       muted: Néma témák
       muted_aria_label: A jelenlegi néma témák
       muted_description: Csak a néma témák megtekintése
-    aria_thread:
-      unread: '{{count}} olvasatlan elem.'
-      current_proposal: 'Jelenlegi javaslat: {{name}}.'
-      you_voted: 'Szavaztál: {{position}}.'
     thread_preview:
       you_voted: 'Erre szavaztál {{position}}'
       undecided: 'Még nem szavaztál'
@@ -1119,12 +1053,6 @@ hu:
         Ügyfélszolgálatunk angolul beszél, és szükség esetén lefordítja az üzenetet a Google Translate segítségével. <br />
         Célunk, hogy minden üzenetre 24 órán belül válaszoljunk.
     success: "Köszönöm az üzenetet, {{name}}. Hamarosan vissza fog hallani."
-  hint:
-    context: 'Hogyan használd a téma leírását'
-    discussion: 'Hogyan kezdj izgalmas témát'
-    invitation: 'Hogyan írj jó meghívót'
-    proposal: 'Hogyan írj egyértelmű javaslatot'
-    vote: 'Bármikor megváltoztathatod az álláspontodat'
   explore_page:
     header: Fedezze fel a csoportokat
     search_placeholder: Keress nyilvános csoportokat
@@ -1136,12 +1064,10 @@ hu:
       reload: 'Reload'
   decision_tools_card:
     title: Döntéstámogatás
-    help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Súgó</a>
     proposal_title: Javaslat
     count_title: Ellenőrzés
     poll_title: Szavazás
     score_title: Pontszám-felmérés
-    dot_vote_title: Pontozó szavazás
     meeting_title: Időpont választás
     ranked_choice_title: Sorrend választás
   poll_common:
@@ -1171,6 +1097,7 @@ hu:
     share_count: Ellenőrzés megosztása
     start_poll: Döntés elindítása
     publish_poll: Osszd meg a szavazást
+    share_outcome: Oszd meg az eredményt
     view_all: Összes megtekintése
     save_changes: Mentés
     max_score: Maximális pontszám
@@ -1188,10 +1115,6 @@ hu:
       options_added: Új lehetőségek hozzáadva
   poll_common_card:
     show_results: Eredmények mutatása
-  poll_common_index_card:
-    title: Korábbi döntések
-    no_polls: Nem található korábbi döntés
-    count: "Lásd az összes: ({{count}}) döntést"
   discussions_panel:
     open: Nyitva
     all: Minden
@@ -1234,15 +1157,8 @@ hu:
     filename: Fájlnév
     uploaded_by: Feltöltötte
     uploaded_at: Feltöltve
-  current_polls_card:
-    title: Jelenlegi döntések
-    start_poll: Új döntés
-    no_polls: Jelenleg nincs éppen futó döntés.
   poll_common_collapsed:
     by_who: "tőle {{name}}"
-  poll_common_select_group:
-    loomio_group: Csoport
-    loomio_group_placeholder: (nincs kiválasztva csoport)
   poll_common_calendar_invite:
     calendar_invite: Mellékelj egy naptármeghívást ezzel az eredménnyel
     poll_option_id: Találkozási idő
@@ -1274,19 +1190,6 @@ hu:
     can_respond_maybe:
       title: A szavazók válaszolhatnak "ha szükséges"
       helptext_on: A szavazók jelölhetik az időpontokat "ha szükséges"
-  poll_common_close_form:
-    close_proposal: Bezárja a javaslatot
-    close_poll: Bezárja a szavazást
-    close_count: Felmérés lezárása
-    close_dot_vote: Bezárásos szavazás
-    close_meeting: Záró időmérő
-    close_ranked_choice: Lezárja a rangsorolásos szavazást
-    proposal_closed: A javaslat lezárva
-    poll_closed: A szavazás lezárult
-    count_closed: Az ellenőrzés zárva van
-    dot_vote_closed: A pontozó szavazás lezárult
-    meeting_closed: Időpont-felmérés lezárva
-    ranked_choice_closed: A rangsoroló szavazás lezárva
   poll_common_closing_at_field:
     closing: Záródik
     closing_hour: Záróra
@@ -1312,7 +1215,6 @@ hu:
     reminder_sent: Emlékeztető értesítés elküldve
   poll_common_set_outcome_panel:
     enter_outcome: Írd be a végeredményt
-    share_outcome: Oszd meg az eredményt
     poll: 'Ez a szavazás lezárult. <strong> Ossza meg az eredményt </strong> a csoporttal.'
     proposal: 'Ez a javaslat  <strong>lezárult</strong>. Kérjük szentelj egy kis időt az elhangzottak figyelembe vételére, és <strong>oszd meg az eredményt</strong> a csoporttal, hogy az emberek tudják, mi fog történni ezután.'
     count: 'Ez a felmérés lezárult. <strong> Oszd meg az eredményt </strong>, hogy befejezd a folyamatot.'
@@ -1524,16 +1426,6 @@ hu:
     stance_updated: A választás frissítve
   thread_item:
     event_removed: "Eltávolítva a témából"
-  poll_common_subscribe_form:
-    receive_updates_title: Szavazatát rögzítették
-    receive_updates_helptext: Ha e-mailt szeretne kapni a szavazás eredményéről, írja be az e-mail címét alább
-    email_saved: E-mailt kap a szavazás eredményéről
-    subscribe: Feliratkozás
-    no_thanks: Nem köszönöm
-  poll_common_example_card:
-    what_is_this: "Ez a {{type}} élő példája. Ön résztvevő - próbáld ki!"
-  share_poll_page:
-    title: Közvélemény-kutatás megosztása - {{title}}
   auth_form:
     code: '000000'
     sign_in: Bejelentkezés
@@ -1579,6 +1471,9 @@ hu:
     email: E-mail
     password: Jelszó
     reactivate: A fiók újraaktiválása
+  chatbot:
+    username: Felhasználónév
+    password: Jelszó
   webhook:
     formats:
       microsoft: Microsoft csapatok
@@ -1586,11 +1481,6 @@ hu:
     removed: Az összekapcsolás eltávolítva
     url_label: Webhook URL
     name_label: Név
-    event_kinds:
-      poll_closing_soon: A szavazás hamarosan lejár
-  browser_warning:
-    message: "FONTOS! Egy elavult böngészőt használsz ({{name}} {{version}}), amelyet a {{site}} nem támogat."
-    link: Kérünk válts egy másik böngészőre
   powered_by:
     slogan: Jobb döntések közösen
     powered_by_loomio: A Loomio az oldal motorja
@@ -1598,11 +1488,6 @@ hu:
     terms_of_service: Szolgáltatási feltételek
     front_page: Címlap
   group_survey:
-    success: Köszi!
     categories:
       community: Közösségi csoport
-      other: Egyéb
-    uses:
-      other: Egyéb
-    referrers:
       other: Egyéb

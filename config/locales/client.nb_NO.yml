@@ -1,39 +1,6 @@
 nb_NO:
   loomio_tags:
     name_label: Navn
-  reactions:
-    slight_smile: Liker
-    heart: Elsker
-    laughing: Ler
-    clap: Klappe
-    hugging: Klem
-    sunglasses: Kul
-    wink: Vinke
-    nerd: Smart
-    relieved: Beroliget
-    worried: Bekymret
-    confused: Forvirret
-    confounded: Forvirret
-    neutral_face: Nøytral
-    slight_frown: Rynker på nesa
-    disappointed: Skuffet
-    angry: Sinna
-    weary: Sliten
-    astonished: Forbauset
-    rolling_eyes: Ruller med øynene
-    cry: Gråter
-    scream: Skriker
-    sleeping: Kjeder seg
-    thinking: Tenker
-    raised_hands: Henda i været
-    pray: Ber
-    fingers_crossed: Kryssede fingere
-    v: Fred
-    metal: Metal
-    ok_hand: Ok
-    wave: Vinke
-    thumbsup: Tommel opp
-    thumbsdown: Tommel ned
   timezones:
     local: Lokal tid ({{value}})
   common:
@@ -310,34 +277,6 @@ nb_NO:
   notifications:
     header: "Varslinger"
     no_notifications: "Du har ingen ny varslinger"
-    new_motion: "<strong>{{name}}</strong>  started en beslutning  <strong>{{title}}</strong>"
-    motion_closed: "Beslutning lukket:<strong>{{title}}</strong>"
-    publish_outcome: "Publiser et resultat"
-    motion_closed_by_user: "<strong>{{name}}</strong> stengte beslutningen <strong>{{title}}</strong>"
-    motion_closed_by_expiry: "Beslutningen er lukket <strong>{{title}}</strong>"
-    new_vote: "<strong>{{name}}</strong> {{position}} på beslutningen <strong>{{title}}</strong>"
-    new_comment: "<strong>{{name}}</strong> kommenterte på <strong>{{title}}</strong>"
-    comment_replied_to: "<strong>{{name}}</strong>svarte på din kommentar i <strong>{{title}}</strong>"
-    reaction_created: "<strong>{{name}}</strong> reagerte <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> på din {{model}}<strong>{{title}}</strong>"
-    user_mentioned: "<strong>{{name}}</strong> nevnte deg i <strong>{{title}}</strong>"
-    user_reminded: "<strong>{{name}}</strong> venter på at du skal delta i <strong>{{title}}</strong>"
-    membership_requested: "<strong>{{name}}</strong> forespurte medlemskap i  <strong>{{title}}</strong>"
-    membership_request_approved: '<strong>{{name}}</strong> godkjente din forespørsel om å bli med i  <strong>{{title}}</strong>'
-    user_added_to_group: "<strong>{{name}}</strong> la deg til i gruppen  <strong>{{title}}</strong>"
-    user_added_to_group_no_inviter: "Du ble lagt til i gruppen  <strong>{{title}}</strong>"
-    motion_closing_soon: "Beslutninger som snart stenger: <strong>{{title}}</strong>"
-    motion_outcome_created: "<strong>{{name}}</strong> publiserte resultatet fra beslutningen <strong>{{title}}</strong>"
-    motion_outcome_updated: "<strong>{{name}}</strong> oppdaterte resultatet for beslutningen <strong>{{title}}</strong>"
-    invitation_accepted: "<strong>{{name}}</strong> godkjente din invitasjon til å bli med i  <strong>{{title}}</strong>"
-    poll_created: "<strong>{{name}}</strong> startet en {{poll_type}}: <strong>{{title}}</strong>"
-    poll_edited: "<strong>{{name}}</strong> redigerte en {{poll_type}}: <strong>{{title}}</strong>"
-    poll_announced: "<strong>{{name}}</strong> delte en {{poll_type}}: <strong>{{title}}</strong>"
-    poll_closing_soon: "{{poll_type}} stenger snart: <strong>{{title}}</strong>"
-    poll_expired: "{{poll_type}} stengt: <strong>{{title}}</strong>"
-    poll_option_added: "<strong>{{name}}</strong>  la til valg for: <strong>{{title}}</strong>"
-    outcome_created: "<strong>{{name}}</strong> delte et resulat: <strong>{{title}}</strong>"
-    outcome_announced: "<strong>{{name}}</strong> delte et resulat: <strong>{{title}}</strong>"
-    stance_created: "<strong>{{name}}</strong> deltok i: <strong>{{title}}</strong>"
   discussion_form:
     invite: Inviter
     aria_label: 'Trådskjema'
@@ -418,13 +357,11 @@ nb_NO:
   formatting:
     attach: Legg ved fil
   cover_photo_form:
-    aria_label: 'Bytt forsidebilde skjema'
     heading: 'Nytt forsidebilde'
     upload_link: 'Last opp nytt forsidebilde'
     image_size_helptext: 'Den beste bildeoppløsningen er 1400×320px'
     upload_success: 'Forsidebilde oppdatert'
   logo_photo_form:
-    aria_label: 'Bytt gruppelogo skjema'
     heading: 'Ny gruppelogo'
     upload_link: 'Last opp ny gruppelogo'
     image_size_helptext: 'Den beste oppløsningen er 100×100px'
@@ -441,8 +378,6 @@ nb_NO:
     introduction_label: Hvorfor vil du bli med i gruppen?
     submit_button: Spør om å få bli med i gruppen
     introduction_over_limit: Svaret er for langt
-    messages:
-      membership_requested: 'Du har forespurt medlemskap i gruppen: {{group}}'
   revision_history_modal:
     aria_label: Revisjonshistorikk
     started_by: 'Startet av <strong>{{name}}</strong>'
@@ -535,6 +470,7 @@ nb_NO:
     ranked_choice_title: Rangering
   poll_common:
     have_your_say: Si det du vil
+    share_outcome: Del resultat
     save_changes: Lagre
   discussions_panel:
     open: Åpen
@@ -546,15 +482,9 @@ nb_NO:
   polls_panel:
     open: 'Åpen'
     closed: 'Lukket'
-  current_polls_card:
-    start_poll: Ny beslutning
-  poll_common_select_group:
-    loomio_group: Gruppe
   poll_common_settings:
     anyone_can_participate:
       title: Alle med link kan delta
-  poll_common_set_outcome_panel:
-    share_outcome: Del resultat
   poll_common_outcome_form:
     submit: Del resultat
   poll_common_form:
@@ -566,8 +496,6 @@ nb_NO:
     edit_header: Rediger avstemning
   poll_meeting_chart_panel:
     total: Totalt
-  poll_common_subscribe_form:
-    subscribe: Meld deg på
   auth_form:
     name: Navn
     email: E-post

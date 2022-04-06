@@ -8,9 +8,9 @@ ca:
       members: Membres
       subgroups: Subgrups
       threads: Fils
+      polls: Enquestes
       votes: Vots
       comments: Comentaris
-      polls: Enquestes
       poll_types:
         proposal: Proposta
         rank: Ordena
@@ -28,9 +28,6 @@ ca:
       group_name: Nom del grup
       reason: Motiu
       total: Total
-  validate:
-    motion:
-      one_at_a_time: Hi ha una altra proposta activa.
   user_mailer:
     merge_verification:
       confirm_page:
@@ -41,9 +38,6 @@ ca:
           Hola %{name}
           Aquí teniu un enllaç per reiniciar la contrasenya del vostre compte de Loomio:
       link_text: Reinicieu la contrasenya
-    custom: "%{text}"
-    group_email:
-      intro: "%{who} ha fet un anunci a %{group}:"
     by_who: per %{person}
     reply_to_this_discussion: Responeu a aquesta discussió
     view_group: Mostra el grup
@@ -75,26 +69,7 @@ ca:
     terms: Condicions
   password_reset:
     forbidden_passwords: Les contrasenyes com "password" estan prohibides per raons de seguretat.
-  markdown:
-    paragraphs:
-      title: |
-          ## Paràgrafs
-    emphasis:
-      title: |
-          ## Èmfasis
-    lists:
-      title: |
-          ## Llistes
-    links:
-      title: |
-          ## Enllaços i imatges
   poll_mailer:
     common:
-      unsubscribe: Cancel·lar la subscripció
-      results: Resultats
-      responses: Respostes
       create_outcome: Comparteix el resultat
       vote_now: Votar ara
-  comment_by: Comentari per %{comment_author}
-  poll_unsubscribe:
-    go_to_dashboad: Vés al panell de control

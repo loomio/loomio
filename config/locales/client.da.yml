@@ -18,15 +18,6 @@ da:
     modal_destroy_title: Slet mærke
     discussions_count_singular: ({{count}} debat)
     discussions_count_plural: ({{count}} debatter)
-  reactions:
-    laughing: Grine
-    clap: Klappe
-    hugging: Kram
-    sunglasses: Sej
-    nerd: Smart
-    worried: Bekymret
-    neutral_face: Neutral
-    angry: Sur
   timezones:
     local: Lokal tid ({{value}})
   common:
@@ -247,30 +238,6 @@ da:
   notifications:
     header: "Notifikationer"
     no_notifications: "Du har ikke nogen notifikationer"
-    new_motion: "<strong>{{name}}</strong> oprettede et forslag <strong>{{title}}</strong>"
-    motion_closed: "Forslag lukket: <strong>{{title}}</strong>"
-    publish_outcome: "Publicer et resultat"
-    motion_closed_by_user: "<strong>{{name}}</strong> lukkede forslaget <strong>{{title}}</strong>"
-    motion_closed_by_expiry: "Forslaget <strong>{{title}}</strong> er lukket"
-    new_vote: "<strong>{{name}}</strong> {{position}} på forlaget <strong>{{title}}</strong>"
-    new_comment: "<strong>{{name}}</strong> kommenterede på <strong>{{title}}</strong>"
-    comment_replied_to: "<strong>{{name}}</strong> svarede på din kommentar i <strong>{{title}}</strong>"
-    user_mentioned: "<strong>{{name}}</strong> nævnte dig i <strong>{{title}}</strong>"
-    membership_requested: "<strong>{{name}}</strong> ønsker at blive medlem af <strong>{{title}}</strong>"
-    membership_request_approved: '<strong>{{name}}</strong> godkendte dit ønske om at blive medlem <strong>{{title}}</strong>'
-    user_added_to_group: "<strong>{{name}}</strong> tilføjede dig til gruppen <strong>{{title}}</strong>"
-    user_added_to_group_no_inviter: "Du blev tilfæjet til gruppen <strong>{{title}}</strong>"
-    motion_closing_soon: "Forslag: <strong>{{title}}</strong> lukker snart"
-    motion_outcome_created: "<strong>{{name}}</strong> publicerede et resultat af forslaget <strong>{{title}}</strong>"
-    motion_outcome_updated: "<strong>{{name}}</strong> opdaterede resultatet af forslaget <strong>{{title}}</strong>"
-    invitation_accepted: "<strong>{{name}}</strong> accepterede din invitation til at blev medlem af <strong>{{title}}</strong>"
-    poll_created: "<strong>{{name}}</strong> startede en {{poll_type}}: <strong>{{title}}</strong>"
-    poll_edited: "<strong>{{name}}</strong> redigerede en  {{poll_type}}: <strong>{{title}}</strong>"
-    poll_closing_soon: "{{poll_type}} lukker snart: <strong>{{title}}</strong>"
-    poll_expired: "{{poll_type}} lukkede: <strong>{{title}}</strong>"
-    outcome_created: "<strong>{{name}}</strong> delte er resultat: <strong>{{title}}</strong>"
-    outcome_announced: "<strong>{{name}}</strong> delte er resultat: <strong>{{title}}</strong>"
-    stance_created: "<strong>{{name}}</strong> deltog i: <strong>{{title}}</strong>"
   discussion_fork_actions:
     move: Flyt
   discussion_form:
@@ -307,13 +274,11 @@ da:
   formatting:
     attach: Vedhæft fil
   cover_photo_form:
-    aria_label: 'Skift forsidefoto'
     heading: 'Nyt forsidefoto'
     upload_link: 'Upload er nyt forsidefoto'
     image_size_helptext: 'Ideel billedstørrelse er 1400x320px'
     upload_success: 'Forside foto gemt'
   logo_photo_form:
-    aria_label: 'Skift gruppelogo'
     heading: 'Nyt gruppelogo'
     upload_link: 'Upload nyt gruppelogo'
     image_size_helptext: 'Ideel  billedstørrelse er 100x100px'
@@ -331,8 +296,6 @@ da:
     introduction_label: Hvorfor vil du være medlem?
     submit_button: Anmod om medlemskab
     introduction_over_limit: Din introduktion er for lang
-    messages:
-      membership_requested: 'Du har anmodet om at blive medlem af {{group}}'
   revision_history_modal:
     aria_label: Versionshistorik
     started_by: 'Oprette af <strong>{{name}}</strong>'
@@ -458,9 +421,6 @@ da:
     messages:
       request_approved_success: Andmodning om medlemskab godkendt
       request_ignored_success: Andmodning om medlemskab ignoréret
-  group_previous_proposals_card:
-    heading: Tidligere anmodninger
-    see_more: Se mere
   invitation_form:
     aria_label: 'Invitation form'
     invite_people: 'Inviter folk'
@@ -474,8 +434,6 @@ da:
     add_custom_message_link: 'skriv en personlig besked.'
     custom_message: 'Personlig besked'
     custom_message_placeholder: 'Indtast en personlig besked som bliver sendt med invitationen.'
-    team_invitation_message: 'Alternativt, '
-    team_invitation_link: 'hent et link som du kan dele.'
     add_members: 'Tilføj medlemmer'
     from_parent_group: 'fra {{name}}.'
     send: 'Send'
@@ -576,10 +534,6 @@ da:
       proposals_description: Vis kun debatter med aktive forslag
       muted_aria_label: Viser pt. debatter uden notifikationer
       muted_description: Vis kun debatter uden notifikationer
-    aria_thread:
-      unread: '{{count}} ulæste.'
-      current_proposal: 'Nuværende forslag: {{name}}.'
-      you_voted: 'Du stemte: {{position}}.'
     thread_preview:
       you_voted: 'Du stemte {{position}}'
       undecided: 'De har ikke stemt'
@@ -652,12 +606,6 @@ da:
     email_placeholder: 'Indtast din emailadresse...'
     message_label: 'Din besked'
     send_message: 'Send besked'
-  hint:
-    context: 'Tips for at bruge kontekst panelet'
-    discussion: 'Tips for at starte en engagerende debat'
-    invitation: 'Tips for skrive en god invitation'
-    proposal: 'Tips for at skrive et tydeligt forslag'
-    vote: 'Du kan skifte mening til enhver tid'
   explore_page:
     single_search_result: "1 offentlig gruppe der matcher <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "{{resultCount}} offentlige grupper der matcher <strong>{{searchTerm}}:</strong>"
@@ -669,7 +617,6 @@ da:
     proposal_title: Forslag
     count_title: Checkmåling
     poll_title: Meningsmåling
-    dot_vote_title: Prikafstemning
     meeting_title: Find et tidspunkt
   poll_common:
     have_your_say: Giv din mening til kende
@@ -692,6 +639,7 @@ da:
     share_count: Del checkmåling
     start_poll: Opret en beslutning
     publish_poll: Den meningsmåling
+    share_outcome: Del resultat
     save_changes: Gem
   poll_common_attachment_form:
     label: Vedhæftede filer
@@ -710,8 +658,6 @@ da:
     all: 'Alle'
     open: 'Offentlig'
     closed: 'Lukket'
-  current_polls_card:
-    start_poll: Opret stillingtagen
   poll_common_collapsed:
     by_who: "af {{name}}"
   poll_common_settings:
@@ -721,17 +667,6 @@ da:
       title: Alle kan deltage
     notify_on_participate:
       title: Send en notifikation til mig når folk deltager
-  poll_common_close_form:
-    close_proposal: Luk forslag
-    close_poll: Afslut meningsmåling
-    close_count: Afslut checkmåling
-    close_dot_vote: Afslut prikafstemning
-    close_meeting: Afslut find tidspunkt
-    proposal_closed: Forslag lukket
-    poll_closed: Meningsmåling afsluttet
-    count_closed: Checkmåling afsluttet
-    dot_vote_closed: Prikafstemning afsluttet
-    meeting_closed: Find tidspunkt afsluttet
   poll_common_closing_at_field:
     closing: Lukker
   poll_card:
@@ -745,7 +680,6 @@ da:
     change_results_order: Skift sorteringsrækkefølge for resultat
     none_of_the_above: (Ingen af de tidligere)
   poll_common_set_outcome_panel:
-    share_outcome: Del resultat
     poll: 'Denne meningsmåling er afsluttet. <strong>Del resultatet</strong> med gruppen.'
     proposal: 'Dette forslag er lukket. Overvej de forskellige holdninger og <strong>del et resultat</strong>, så folk ved hvad der sker nu.'
     count: 'Denne checkmåling er afsluttet. <strong>Del resultatet</strong> for at afslutte processen.'
@@ -853,26 +787,17 @@ da:
   poll_dot_vote_vote_form:
     stance_created: Stemme afgivet
     stance_updated: Stemme redigeret
-  poll_common_subscribe_form:
-    receive_updates_title: Din stemme er noteret
-    receive_updates_helptext: Hvis du ønsker at modtage en email om resultatet af denne måling, så indtast venligst din email herunder
-    email_saved: Du vil modtage en email med resultatet af denne måling
-    subscribe: Abonnér
-    no_thanks: Nej tak
-  share_poll_page:
-    title: Del måling - {{title}}
   auth_form:
     email_placeholder: you@example.com
     name_placeholder: Dit navn
     name: Navn
     email: Email
+  chatbot:
+    username: Brugernavn
+    password: Adgangskode
   webhook:
     name_label: Navn
   group_survey:
     categories:
       community: Lokalgruppe
-      other: Andre
-    uses:
-      other: Andre
-    referrers:
       other: Andre

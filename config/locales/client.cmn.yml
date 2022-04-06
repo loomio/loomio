@@ -25,39 +25,6 @@ cmn:
     discussions_count_plural: （{{count}} 个话题）
     tag_created: 标签已保存
     tags_marked: 话题已标记为在 {{groupName}} 中的 '{{name}}'
-  reactions:
-    slight_smile: 喜欢
-    heart: 喜爱
-    laughing: 大笑
-    clap: 鼓掌
-    hugging: 抱抱
-    sunglasses: 酷
-    wink: 眨眼
-    nerd: 聪明
-    relieved: 轻松
-    worried: 担忧
-    confused: 懵
-    confounded: 讨厌
-    neutral_face: 中立
-    slight_frown: 皱眉
-    disappointed: 失望
-    angry: 愤怒
-    weary: 疲惫
-    astonished: 震惊
-    rolling_eyes: 转眼珠
-    cry: 哭
-    scream: 尖叫
-    sleeping: 无聊
-    thinking: 思考
-    raised_hands: 举手
-    pray: 祈祷
-    fingers_crossed: 求好运
-    v: 和平
-    metal: 金属
-    ok_hand: 好
-    wave: 挥手
-    thumbsup: 赞成
-    thumbsdown: 反对
   poll_types:
     proposal: 提议
     count: 勾选
@@ -389,29 +356,6 @@ cmn:
     discussion: '话题：'
   notifications:
     header: "通知"
-    new_motion: "<strong>{{name}}</strong> 创建了一个提案 <strong>{{title}}</strong>"
-    publish_outcome: "发布成果"
-    new_vote: "<strong>{{name}}</strong> {{position}} 在提案 <strong>{{title}}</strong>"
-    new_comment: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 上评论"
-    comment_replied_to: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 回复了您的评论"
-    reaction_created: "<strong>{{name}}</strong> 对您的 {{model}}<strong>{{title}}</strong> 做出了回应 <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/>"
-    reaction_created_vue: "<strong>{{name}}</strong> 做出了 {{reaction}} 反应到您的 {{model}}<strong>{{title}}</strong>"
-    user_mentioned: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 中提到您"
-    user_reminded: "<strong>{{name}}</strong> 正在等候您参与 <strong>{{title}}</strong>"
-    membership_requested: "<strong>{{name}}</strong> 申请 <strong>{{title}}</strong> 的成员资格"
-    membership_request_approved: '<strong>{{name}}</strong> 接受您加入 <strong>{{title}}</strong> 的申请'
-    user_added_to_group: "<strong>{{name}}</strong> 将您加入到群组 <strong>{{title}}</strong>"
-    user_added_to_group_no_inviter: "您被加入到群组 <strong>{{title}}</strong>"
-    motion_outcome_created: "<strong>{{name}}</strong> 发布了提案 <strong>{{title}}</strong> 的成果"
-    motion_outcome_updated: "<strong>{{name}}</strong> 更新了提案 <strong>{{title}}</strong> 的成果"
-    new_coordinator: "<strong>{{name}}</strong> 设置您为 <strong>{{title}}</strong> 的管理员"
-    poll_created: "<strong>{{name}}</strong> 启动了一个 {{poll_type}}：<strong>{{title}}</strong>"
-    poll_edited: "<strong>{{name}}</strong> 编辑了一个 {{poll_type}}：<strong>{{title}}</strong>"
-    poll_announced: "<strong>{{name}}</strong> 分享了 {{poll_type}}: <strong>{{title}}</strong>"
-    poll_closing_soon: "{{poll_type}} 即将关闭：<strong>{{title}}</strong>"
-    poll_expired: "{{poll_type}} 已关闭：<strong>{{title}}</strong>"
-    poll_option_added: "<strong>{{name}}</strong>新增选项至：<strong>{{title}}</strong>"
-    stance_created: "<strong>{{name}}</strong> 已参与：<strong>{{title}}</strong>"
   discussion_fork_actions:
     search_placeholder: 搜索话题标题
     moved: 正在移动留言，这可能需要一点时间
@@ -435,10 +379,7 @@ cmn:
     fork_notice: '新的话题将会从 {{title}} 中包含 {{count}} 来建立'
   announcement:
     send_discussion: 发送话题
-    send_discussion_explain: 邀请伙伴参与讨论
     send_group: 邀请伙伴到 {{name}}
-    send_poll_explain: 邀请伙伴参与 {{type}}
-    send_outcome_explain: 提醒伙伴关于 {{type}} 的结果
     discussion_notification_history: 话题通知历史
     group_notification_history: 群组邀请历史
     quick_add: "快速添加"
@@ -530,8 +471,6 @@ cmn:
     email_label: 邮件
     introduction_label: 为什么您想要加入？
     submit_button: 申请加入
-    messages:
-      membership_requested: '您已经申请 {{group}} 的成员资格'
   revision_history_modal:
     started_by: '由 <strong>{{name}}</strong> 所启动'
     posted: 已发表
@@ -656,10 +595,6 @@ cmn:
     messages:
       request_approved_success: 成员资格申请已批准
       request_ignored_success: 成员资格申请已忽略
-  group_previous_proposals_card:
-    see_more: 查看详细信息
-  group_decisions_card:
-    see_more: "查看全部：({{count}}) 个决策"
   invitation_form:
     invite_people: '邀请伙伴'
     invite_guests: '邀请访客'
@@ -675,8 +610,6 @@ cmn:
     add_custom_message_link: '加入一段自定义的消息。'
     custom_message: '自定义消息'
     custom_message_placeholder: '输入要包含在邀请函内的私人讯息。'
-    team_invitation_message: '或者，'
-    team_invitation_link: '取得链接以分享。'
     add_members: '添加成员'
     from_parent_group: '从 {{name}}'
     send: '发送'
@@ -800,10 +733,6 @@ cmn:
       muted: 已静音的话题
       muted_aria_label: 目前正在显示已静音的话题
       muted_description: 仅查看已被静音的话题
-    aria_thread:
-      unread: '{{count}} 个未读的项目。'
-      current_proposal: '当前提案：{{name}}.'
-      you_voted: '您已经投票：{{position}}.'
     threads_from:
       group: '话题从'
       pinned: '已置顶的话题'
@@ -888,9 +817,6 @@ cmn:
     title: '删除意见'
   contact_message_form:
     subject_label: "主题"
-  hint:
-    discussion: '发起一段激动人心讨论的小技巧'
-    vote: '任何时候您都能改变您的立场'
   explore_page:
     header: 探索群组
     search_placeholder: 搜索公开群组
@@ -901,13 +827,12 @@ cmn:
     have_your_say: 拥有发言权
     load_more: 载入更多
     details: 详细内容
+    share_outcome: 分享成果
     view_all: 查看全部
     save_changes: 保存
     edit_warning: 小变动或修正拼字错误建议使用编辑。若是重大变更，请关闭此 {{pollType}} 并开始一个新的。
   poll_common_attachment_form:
     label: 附件
-  poll_common_index_card:
-    count: "查看全部：({{count}}) 个决策"
   discussions_panel:
     open: 开放
     unread: 未读 ({{count}})
@@ -923,10 +848,6 @@ cmn:
   polls_panel:
     open: '开放'
     closed: '已关闭'
-  current_polls_card:
-    title: 当前的决策
-    start_poll: 新决策
-    no_polls: 当前没有活跃的决策
   poll_common_calendar_invite:
     helptext_on: 用户将可以加入这个会面到他们的日程表中
     event_duration: 时长
@@ -942,8 +863,6 @@ cmn:
       helptext_on: 当选取时，参与者可以在投票时加新增他们自己的选项。
     can_respond_maybe:
       title: 投票者可以回应“如果需要的话”
-  poll_common_close_form:
-    close_poll: 关闭投票
   poll_common_closing_at_field:
     invalid_date: 日期无效
   poll_common_votes_panel:
@@ -958,7 +877,6 @@ cmn:
   poll_common_undecided_user:
     reminded: 提醒已发送！
   poll_common_set_outcome_panel:
-    share_outcome: 分享成果
     poll: '此提案已关闭。与群组<strong>分享成果</strong>。'
   poll_common_outcome_form:
     submit: 分享成果
@@ -1062,8 +980,6 @@ cmn:
     total: 总共
   poll_ranked_choice_vote_form:
     helptext: 拖放偏好顺序的选项（1 是您最偏好的选项）。您的前 {{count}} 个选项将会被记录。
-  poll_common_subscribe_form:
-    subscribe: 订阅
   auth_form:
     invalid_email: "抱歉，这看起来不是有效的电子邮件地址"
     account_locked: "您的帐号因为太多次失败的登入尝试而被锁定。请检查您的电子邮件以取得解锁连结"
@@ -1071,12 +987,11 @@ cmn:
     set_password: 设置密码
     name: 名称
     email: 电子邮件
+  chatbot:
+    username: 用户名
+    password: 密码
   webhook:
     name_label: 名称
   group_survey:
     categories:
-      other: 其他的
-    uses:
-      other: 其他的
-    referrers:
       other: 其他的

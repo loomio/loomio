@@ -34,36 +34,13 @@ ro:
   stance:
     error:
       too_short: Te rog selecteaza o optiune
-  date:
-    formats:
-      for_this_year: "%e %b"
-      for_another_year: "%-d/%-m/%y"
-  time:
-    formats:
-      closing_soon_subject: "%d %b %H:%M"
-      for_today: "%l:%M %P"
-  validate:
-    motion:
-      must_close_in_future: Propunerea trebuie sa se inchida in viitor.
-      one_at_a_time: Exista o alta propunere activa.
   email:
-    common:
-      resend: Acest link expira in 24 de ore si poate fi folosit o singura data.
     login:
       login: Intra in contul %{name}
     contact_request:
       footer: "Poti sa raspunzi direct %{name} prin raspuns la acest email"
     reset_password:
       link_text: Reseteaza-ti parola
-    start_decision:
-      subject: Creeaza o decizie in Loomio
-      intro: Salut, <strong>%{name}</strong>!
-      action: Ce doresti sa faci?
-      proposal: Creezi o propunere
-      poll: Incepi un sondaj
-    custom: "%{text}"
-    group_email:
-      intro: "%{who} a facut un anunt in %{group}:"
     by_who: de catre %{person}
     reply_to_this_discussion: Raspunde acestei discutii
     view_group: Vizualizeaza grupul
@@ -92,15 +69,7 @@ ro:
       view_group: Aici poti aproba sau nu cererea
       button_text: Vizualizeaza cerere
   discussion_mailer:
-    new_discussion:
-      subject_html: "<strong>%{actor}</strong> a inceput o conversatie: %{discussion}"
-    new_comment:
-      subject_html: "<strong>%{actor}</strong> a comentat in: %{discussion}"
-    comment_replied_to:
-      subject: '%{actor} ti-a raspuns in: %{discussion}'
-    user_mentioned:
-      subject: '%{actor} te-a mentionat in: %{discussion}'
-    reply_or_view_online_html: Raspunde acestui email direct sau <a href='%{url}'>vezi pe %{hostname}</a>.
+    reply_or_view_online_html: "Raspunde acestui email direct sau <a href='%{url}'>vezi pe %{hostname}</a>."
     turn_off_notifications_html: "<a href='%{url}'>Nu mai trimite email</a> pentru aceasta discutie."
     change_email_preferences_html: "Modifica-ti <a href='%{email_preferences_url}'> preferintele de email</a>."
   footer:
@@ -117,7 +86,3 @@ ro:
     reset_email_timeframe: In aproximativ 5 minute vei primi un email. Daca nu apare verifica si recipientul spam.
     length_restriction: Parola trebuie sa contina cel putin 8 caractere.
     forbidden_passwords: Parole comune cum ar fi “parola” nu sunt permise, in vederea sigurantei contului tau.
-  poll_mailer:
-    common:
-      unsubscribe: Dezabonare
-  comment_by: Comentariul lui %{comment_author}

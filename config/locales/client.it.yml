@@ -29,7 +29,6 @@ it:
   current_plan_button:
     upgrade: Aggiorna
     buy_now: Compra ora
-    is_old_plan: I piani tariffari semplificati di Loomio includono utenti illimitati
     change_plan: Cambia di piano
     view_plans: Vedi piani
     free_trial: Prova gratuita. {{days]} giorni restanti.
@@ -70,39 +69,6 @@ it:
     tag_created: Etichetta salvata
     tag_destroyed: Tag eliminato
     tags_marked: Discussioni marcate con '{{name}}' nel gruppo {{groupName}}
-  reactions:
-    slight_smile: Mi piace
-    heart: Amore
-    laughing: Risata
-    clap: Applauso
-    hugging: Abbraccio
-    sunglasses: Fico
-    wink: Occhiolino
-    nerd: Intelligente
-    relieved: Sollevato
-    worried: Preoccupato
-    confused: Confuso
-    confounded: Sconcertato
-    neutral_face: Neutrale
-    slight_frown: Accigliato
-    disappointed: Deluso
-    angry: Arrabbiato
-    weary: Stanco
-    astonished: Stupito
-    rolling_eyes: Occhi roteanti
-    cry: Piangente
-    scream: Urlante
-    sleeping: Annoiato
-    thinking: Pensieroso
-    raised_hands: A mani alzate
-    pray: Implorante
-    fingers_crossed: A dita incrociate
-    v: Pace
-    metal: Metal
-    ok_hand: Ok
-    wave: Onda
-    thumbsup: Pollice su
-    thumbsdown: Pollice verso
   poll_types:
     proposal: Proposizione
     count: check
@@ -508,41 +474,6 @@ it:
   notifications:
     header: "Notifiche"
     no_notifications: "Non hai notifiche"
-    new_discussion: "<strong>{{name}}</strong> ha avviato un thread <strong>{{title}}</strong>"
-    discussion_edited: "<strong>{{name}}</strong> ha modificato il thread <strong>{{title}}</strong>"
-    discussion_announced: "<strong>{{name}}</strong> ha condiviso un thread <strong>{{title}}</strong>"
-    new_motion: "<strong>{{name}}</strong> ha creato una proposta <strong>{{title}}</strong>"
-    motion_closed: "Proposta chiusa: <strong>{{title}}</strong>"
-    publish_outcome: "Pubblica un risultato"
-    motion_closed_by_user: "<strong>{{name}}</strong> ha chiuso la proposta <strong>{{title}}</strong>"
-    motion_closed_by_expiry: "La proposta è chiusa <strong>{{title}}</strong>"
-    new_vote: "<strong>{{name}}</strong> {{position}} sulla proposta <strong>{{title}}</strong>"
-    new_comment: "<strong>{{name}}</strong> ha commentato su <strong>{{title}}</strong>"
-    comment_replied_to: "<strong>{{name}}</strong> ha risposto al tuo commento nella discussione con titolo <strong>{{title}}</strong>"
-    reaction_created: "<strong>{{name}}</strong> ha reagito con <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> al tuo {{model}}<strong>{{title}}</strong>"
-    reaction_created_vue: "<strong>{{name}}</strong> ha reagito con {{reaction}} al tuo {{model}}<strong>{{title}}</strong>"
-    user_mentioned: "<strong>{{name}}</strong> ti ha menzionato in <strong>{{title}}</strong>"
-    user_reminded: "<strong>{{name}}</strong>sta aspettando di partecipare a <strong>{{title}}</strong>"
-    membership_requested: "<strong>{{name}}</strong> ha chiesto di iscriversi a <strong>{{title}}</strong>"
-    membership_request_approved: '<strong>{{name}}</strong> ha approvato la tua richiesta di iscriverti a <strong>{{title}}</strong>'
-    user_added_to_group: "<strong>{{name}}</strong> ti ha iscritto al gruppo <strong>{{title}}</strong>"
-    user_added_to_group_no_inviter: "Sei stato aggiunto al gruppo <strong>{{title}}</strong>"
-    motion_closing_soon: "Questa proposta si chiude tra poco: <strong>{{title}}</strong>"
-    motion_outcome_created: "<strong>{{name}}</strong> ha pubblicato un risultato per la proposta <strong>{{title}}</strong>"
-    motion_outcome_updated: "<strong>{{name}}</strong> ha aggiornato il risultato della proposta <strong>{{title}}</strong>"
-    invitation_accepted: "<strong>{{name}}</strong> ha accettato il tuo invito a iscriversi a <strong>{{title}}</strong>"
-    new_coordinator: "<strong>{{name}}</strong> ti ha nominato amministratore di <strong>{{title}}</strong>"
-    poll_created: "<strong>{{name}}</strong> ha lanciato {{poll_type}}: <strong>{{title}}</strong>"
-    poll_edited: "<strong>{{name}}</strong> ha modificato {{poll_type}}: <strong>{{title}}</strong>"
-    poll_reminder: "<strong>{{name}}</strong> ricorda di votare in: <strong>{{title}}</strong>"
-    poll_announced: "<strong>{{name}}</strong> ha condiviso un {{poll_type}}: <strong>{{title}}</strong>"
-    poll_closing_soon: "{{poll_type}} si chiude tra poco: <strong>{{title}}</strong>"
-    poll_expired: "{{poll_type}} si è chiuso: <strong>{{title}}</strong>"
-    poll_option_added: "<strong>{{name}}</strong> ha aggiunto un'opzione a: <strong>{{title}}</strong>"
-    outcome_created: "<strong>{{name}}</strong> ha condiviso un risultato: <strong>{{title}}</strong>"
-    outcome_announced: "<strong>{{name}}</strong> ha condiviso un risultato: <strong>{{title}}</strong>"
-    stance_created: "<strong>{{name}}</strong>ha partecipato a:<strong>{{title}}</strong>"
-    group_announced: "<strong>{{name}}</strong> invited you to the gruppo <strong>{{title}}</strong>"
   discussion_fork_actions:
     helptext: Seleziona gli elementi da spostare in un altro thread
     move: Sposta
@@ -581,12 +512,9 @@ it:
     notify_group: Gruppo di notifica
   announcement:
     send_discussion: Invia thread
-    send_discussion_explain: Invita le persone a partecipare alla discussione
     send_group: Invita persone a {{name}}
     send_poll: Invia {{type}}
-    send_poll_explain: Invitare persone a partecipare a {{type}}
     send_outcome: Invia risultato
-    send_outcome_explain: Notifica agli utenti il risultato di {{type}}
     discussion_notification_history: Cronologia delle notifiche dei thread
     group_notification_history: Cronologia degli inviti di gruppo
     poll_notification_history: Cronologia delle notifiche di sondaggio
@@ -790,13 +718,11 @@ it:
     markdown_confirm: Alcune formattazione potrebbero andare perse convertendo il contenuto wysiwyg in riduzione.
     upload_failed: Caricamento non riuscito
   cover_photo_form:
-    aria_label: 'Cambia modulo dell''immagine di copertina'
     heading: 'Nuova immagine di copertina'
     upload_link: 'Carica nuova immagine di copertina'
     image_size_helptext: 'Le dimensioni ideali dell''immagine sono 1400x320px'
     upload_success: 'Immagine di copertina aggiornata con successo'
   logo_photo_form:
-    aria_label: 'Formulario di modifica del logo di gruppo'
     heading: 'Logo nuovo gruppo'
     upload_link: 'Carica logo nuovo gruppo'
     image_size_helptext: 'Le dimensioni dell''immagine ideale sono 100×100px'
@@ -815,8 +741,6 @@ it:
     introduction_label: Perché vuoi iscriverti?
     submit_button: Chiedi di iscriverti
     introduction_over_limit: Risposta troppo lunga
-    messages:
-      membership_requested: 'Hai richiesto di partecipare al gruppo {{group}}'
   revision_history_modal:
     aria_label: Registro delle revisioni
     discussion_header: Modifiche alla discussione
@@ -845,7 +769,6 @@ it:
     you_and_name_and_count_more: "Tu, {{name}} e altri {{count}} "
     name_and_count_more: "{{name}} e altri {{count}}"
   context_panel:
-    aria_intro: "Contesto del thread di {{author}}"
     thread_status:
       pinned: "Questo thread è stato bloccato. Rimarrà in cima all'elenco dei thread del gruppo per tutti gli utenti."
       closed: "Questo thread è stato chiuso. Non apparirà più nella dashboard e sarà elencato sotto \"chiuso\" nella pagina del gruppo"
@@ -949,7 +872,6 @@ it:
     submit: 'Sì, disattiva questo gruppo'
   group_form:
     thread_defaults_help: Impostazioni predefinite per i nuovi thread
-    click_to_change_image: Immagine di copertina e logo (fare clic per cambiare)
     permissions_explaination: |
         Esistono due livelli di appartenenza che una persona può avere a un gruppo: amministratore e membro.
         Gli amministratori possono modificare le impostazioni del gruppo, rendere amministratori altre persone ed eseguire tutte le azioni elencate di seguito.
@@ -1004,7 +926,6 @@ it:
     membership_granted_upon_approval: 'Chiunque può richiedere di essere aggiunto ma dev''essere approvato.'
     membership_granted_upon_approval_secret_parent: '<strong>Su richiesta</strong> chiunque da {{parent}} può chiedere di unirsi al gruppo.'
     permissions: 'Permessi'
-    features: 'Caratteristiche specifiche del gruppo'
     thread_privacy: 'Pricacy della discussione'
     public_threads: 'Solo discussioni pubbliche'
     public_discussions_subgroup: 'Chiunque nel gruppo {{parentGroupName}} può vedere le discussioni'
@@ -1060,11 +981,6 @@ it:
     messages:
       request_approved_success: Richiesta di partecipazione approvata
       request_ignored_success: Richiesta di partecipazione ignorata
-  group_previous_proposals_card:
-    heading: Proposte precedenti
-    see_more: Vedi di più
-  group_decisions_card:
-    see_more: "Vedi tutto:  ({{count}}) decisioni"
   invitation_form:
     group_url: Gruppo URL
     reusable_invitation_link: Collegamento invito riutilizzabile
@@ -1086,8 +1002,6 @@ it:
     add_custom_message_link: 'aggiungi un messaggio.'
     custom_message: 'Messaggio personale'
     custom_message_placeholder: 'Scrivi un messaggio personale da allegare all''invito.'
-    team_invitation_message: 'In alternativa,'
-    team_invitation_link: 'genera un link da condividere.'
     add_members: 'Aggiungi membri'
     from_parent_group: 'da {{name}}.'
     send: 'Invia'
@@ -1249,10 +1163,6 @@ it:
       muted: Discussioni silenziate.
       muted_aria_label: Discussioni attualmente silenziate
       muted_description: Visualizza solo le discussioni che sono state silenziate.
-    aria_thread:
-      unread: '{{count}} item non letti.'
-      current_proposal: 'Attuale proposta: {{name}}.'
-      you_voted: 'Il tuo voto: {{position}}.'
     thread_preview:
       you_voted: 'Tu hai votato  {{position}}'
       undecided: 'Tu non hai votato'
@@ -1298,7 +1208,6 @@ it:
     title: Visto da
     no_one: Nessuno l'ha ancora visto
   activity_card:
-    aria_label: "Commenta o avvia un sondaggio"
     count_responses: "{{count}} risposte"
     event_pinned: "Aggiunto alla sequenza temporale"
     event_unpinned: "Nonpinto dalla sequenza temporale"
@@ -1360,24 +1269,16 @@ it:
     email_placeholder: 'Inserisci il tuo indirizzo email'
     message_label: 'Messaggio'
     send_message: 'Invia Messaggio'
-  hint:
-    context: 'Consigli per utilizzare il pannello contestuale'
-    discussion: 'Consigli per iniziare una discussione coinvolgente'
-    invitation: 'Consigli per scrivere un bell''invito '
-    proposal: 'Consigli per scrivere una proposta chiara'
-    vote: 'Puoi cambiare la tua posizione in ogni momento'
   explore_page:
     header: Esplora gruppi
     search_placeholder: Cerca tra i gruppi pubblici
     newest_first: I voti più nuovi prima
   decision_tools_card:
     title: Agevolare
-    help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Aiuto</a>
     proposal_title: Proposta
     count_title: Verifica
     poll_title: Sondaggio
     score_title: Punteggio votazione
-    dot_vote_title: Voto a punti
     meeting_title: Sondaggio per incontro
     ranked_choice_title: Scelta di preferenze
   poll_common:
@@ -1409,6 +1310,7 @@ it:
     share_count: Condividi controllo
     start_poll: Inizia una decisione
     publish_poll: Condividi sondaggio
+    share_outcome: Condividi risultati
     view_all: Visualizza tutto
     save_changes: Salva
     change_vote: Cambia il tuo voto.
@@ -1430,10 +1332,6 @@ it:
     show_results: Mostra risultati
     hide_results: Nascondere i risultati
     deleted: Questo sondaggio è stato eliminato
-  poll_common_index_card:
-    title: Decisioni precedenti
-    no_polls: Nessuna decisione precedente trovata
-    count: "Vedi tutto:  ({{count}}) decisioni"
   discussions_panel:
     open: Aperto
     all: Tutte
@@ -1471,14 +1369,8 @@ it:
     all: 'Tutte'
     open: 'Aperto'
     closed: 'Chiuso'
-  current_polls_card:
-    title: Decisioni in corso
-    start_poll: Nuova decisione
-    no_polls: Non ci sono decisioni attive al momento.
   poll_common_collapsed:
     by_who: "di {{name}}"
-  poll_common_select_group:
-    loomio_group: Gruppo
   poll_common_calendar_invite:
     poll_option_id: Ora dell'incontro
     event_duration: Durata
@@ -1505,8 +1397,6 @@ it:
     can_respond_maybe:
       title: I votanti possono rispondere 'solo se necessario'
       helptext_on: 'I votanti possono indicare ''solo se necessario'' negli orari '
-  poll_common_close_form:
-    close_proposal: Chiudi la proposta
   poll_common_votes_panel:
     newest_first: I voti più nuovi prima
     oldest_first: I voti più vecchi prima
@@ -1516,7 +1406,6 @@ it:
     show_undecided: "Mostra i {{count}} che non hanno votato"
     show_invitations: Mostra inviti pendenti
   poll_common_set_outcome_panel:
-    share_outcome: Condividi risultati
     count: 'Questa verifica è chiusa. <strong>Condividi il risultato</strong> per completare il processo.'
     meeting: 'Questo sondaggio per incontro è chiuso. <strong>Condividi il risultato </strong> per far sapere ai partecipanti quando l''incontro avverrà.'
     dot_vote: 'Questo voto a punti è chiuso. <storng>Condividi il risultato </strong> con il gruppo.'
@@ -1636,10 +1525,6 @@ it:
     stance_updated: Voto aggiornato
   thread_item:
     event_removed: "Rimosso dalla discussione"
-  poll_common_subscribe_form:
-    receive_updates_title: Il tuo voto è stato acquisito
-    receive_updates_helptext: Se vuoi ricevere un'email sul risultato del sondaggio, inserisci la tua email qui sotto
-    subscribe: Iscriviti
   auth_form:
     sign_in: Iscriviti
     sign_in_as: Autenticati come {{name}}
@@ -1650,11 +1535,11 @@ it:
     set_password: Imposta password
     check_your_email: Guarda nella tua casella di posta!
     name: Nome
+  chatbot:
+    username: Nome Utente
+    password: Password
   webhook:
     name_label: Nome
-  browser_warning:
-    message: "IMPORTANTE! Tu stai usando un browser obsoleto ({{name}} {{version}}) che non è supportato da {{site}}."
-    link: Per favore passa a un altro browser
   powered_by:
     powered_by_loomio: Fatto con Loomio
     privacy_policy: Policy della Privacy
@@ -1663,8 +1548,4 @@ it:
   group_survey:
     categories:
       community: Comunità
-      other: Altro
-    uses:
-      other: Altro
-    referrers:
       other: Altro

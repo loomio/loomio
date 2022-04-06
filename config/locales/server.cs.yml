@@ -28,9 +28,6 @@ cs:
     error:
       bad_login: "Omlouváme se, toto heslo neodpovídá heslu již zadanému"
       username_must_be_alphanumeric: "Uživatelské jméno musí obsahovat pouze malá písmena a číslice"
-  attachment:
-    error:
-      too_large: Soubor, který jste se pokusili přiložit, je větší než 100MB. Prosím, vyberte menší soubor.
   poll:
     export:
       title: Název
@@ -42,32 +39,11 @@ cs:
   stance:
     error:
       too_short: Proveďte prosím výběr
-  date:
-    formats:
-      for_this_year: "%e %b"
-      for_another_year: "%-d/%-m/%y"
-  time:
-    formats:
-      closing_soon_subject: "%d %b %H:%M"
-      for_today: "%l:%M %P"
-  validate:
-    motion:
-      must_close_in_future: Návrh musí být uzavřen v budoucnu.
-      one_at_a_time: Existuje další aktivní návrh.
   email:
-    common:
-      resend: Platnost tohoto odkazu vyprší za 24 hodin a může být použit pouze jednou.
     login:
       login: Přihlášen jako %{name}
     reset_password:
       link_text: Obnovit heslo
-    start_decision:
-      subject: Spuštění rozhodování na Loomio
-      intro: Ahoj, <strong>%{name}</strong>!
-      action: Co bys rád dělal?
-      count: Spustit kontrolu
-    group_email:
-      intro: "%{who} oznámil(a) skupině %{group}:"
     by_who: od %{person}
     reply_to_this_discussion: Odpovědět na této diskusi
     view_group: Zobrazit skupinu
@@ -111,24 +87,9 @@ cs:
     title: Vítejte! Prosím, představte se
   how_it_works_thread:
     title: Jak používat Loomio
-  markdown:
-    intro:
-      title: |
-          # Co je markdown?
-    lists:
-      title: |
-          ## Seznamy
-    links:
-      title: |
-          ## Odkazy a obrázky
   poll_mailer:
     common:
-      or: nebo
       why_send_this: Tento e-mail jste obdrželi, protože %{reason}
-      unsubscribe: Odhlásit odběr
-      results: Výsledky
-      responses: Odpovědi
-      change_your_stance: Změnit
       create_outcome: Sdílet výsledek
       your_response: "Hlasovali jste:"
       please_respond: Prosím odpovězte
