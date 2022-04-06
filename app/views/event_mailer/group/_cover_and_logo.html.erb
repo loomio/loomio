@@ -1,6 +1,6 @@
 <% cover_url = (root_url.chomp('/') + (group.self_or_parent_cover_url(300) || '')) %>
 <% logo_url = (root_url.chomp('/') + (group.self_or_parent_logo_url(128) || '')) %>
-<table style="padding: 0" class="container" role="presentation" cellpadding=0 cellspacing=0 border=0 width=600 height=150>
+<table style="padding: 0; margin-bottom: 8px" class="container" role="presentation" cellpadding=0 cellspacing=0 border=0 width=600 height=150>
 <tr>
     <td class="rounded" valign="bottom" style="background: url(<%=cover_url%>) #ffffff; background-size:cover; background-position:center;">
       <!--[if gte mso 9]>

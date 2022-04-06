@@ -7,7 +7,7 @@ class API::B1::DiscussionsController < API::B1::BaseController
   def create
     instantiate_resource
     @discussion.group_id = current_webhook.group_id
-    DiscussionService.create(actor: current_user, discussion: @discussion)
+    DiscussionService.create(actor: current_user, discussion: @discussion, params: params)
     respond_with_resource
   end
 end
