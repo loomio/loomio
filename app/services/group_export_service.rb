@@ -33,6 +33,9 @@ class GroupExportService
   }.with_indifferent_access.freeze
 
   BACK_REFERENCES = {
+    outcomes: {
+      events: %w[eventable]
+    },
     comments: {
       comments: %w[parent_id],
       events: %w[eventable]

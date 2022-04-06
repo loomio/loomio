@@ -10,6 +10,7 @@ class RecordCloner
     clone_group.subscription = Subscription.new(plan: 'demo', owner: actor)
     clone_group.save!
     clone_group.polls.each {|poll| poll.update_counts! }
+    clone_group.discussions.each {|d| EventService.repair_thread(d.id) }
     clone_group.add_member! actor
     clone_group.reload
   end
@@ -90,7 +91,8 @@ class RecordCloner
     created_event = new_clone_event(discussion.created_event)
     created_event.eventable = clone_discussion
     clone_discussion.events << created_event
-    clone_discussion.items = discussion.items.map { |event| new_clone_event_and_eventable(event) }
+    drop_kinds = %w[poll_closed_by_user poll_expired poll_reopened]
+    clone_discussion.items = discussion.items.order(:sequence_id).select{|i| !drop_kinds.include?(i.kind) }.map { |event| new_clone_event_and_eventable(event) }
     clone_discussion.polls = discussion.polls.map {|p| new_clone_poll(p) }
     clone_discussion
   end
@@ -217,6 +219,7 @@ class RecordCloner
       pinned
       descendant_count
       custom_fields
+      created_at
     ]
     new_clone(event, copy_fields)
   end
