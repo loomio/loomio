@@ -13,6 +13,7 @@ export default class TemplateModel extends BaseModel
     groupId: null
     recordId: null
     recordType: null
+    demoHandle: null
 
   relationships: ->
     @belongsTo 'group'

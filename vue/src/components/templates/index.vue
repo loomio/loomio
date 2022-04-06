@@ -45,26 +45,26 @@ export default
         key: 'templatesIndex'
         collections: ['templates']
         query: =>
-          @templates = Records.templates.collection.chain().find(groupId: null).simplesort('priority', true).data()
+          @templates = Records.templates.collection.chain().find(demoHandle: {$ne: null}).simplesort('priority', true).data()
 
-    startDemo: (id) ->
-      if Session.isSignedIn()
-        @cloneTemplate(id)
-      else
-        @openAuthModal()
+    # startDemo: (id) ->
+    #   if Session.isSignedIn()
+    #     @cloneTemplate(id)
+    #   else
+    #     @openAuthModal()
 
-    cloneTemplate: (id) ->
-      Flash.wait('templates.generating_demo')
-      @processing = true
-      Records.post
-        path: 'templates/clone'
-        params:
-          id: id
-      .then (data) =>
-        Flash.success('templates.demo_created')
-        @$router.push @urlFor(Records.groups.find(data.groups[0].id))
-      .finally =>
-        @processing = false
+    # cloneTemplate: (id) ->
+    #   Flash.wait('templates.generating_demo')
+    #   @processing = true
+    #   Records.post
+    #     path: 'templates/clone'
+    #     params:
+    #       id: id
+    #   .then (data) =>
+    #     Flash.success('templates.demo_created')
+    #     @$router.push @urlFor(Records.groups.find(data.groups[0].id))
+    #   .finally =>
+    #     @processing = false
 
 </script>
 
@@ -89,7 +89,7 @@ v-main
         v-card-text {{ template.description }}
         v-card-actions
           v-spacer
-          v-btn(@click="startDemo(template.id)" v-t="'templates.start_demo'" color="primary")
+          v-btn(:to="'/'+template.demoHandle" v-t="'templates.view_demo'" color="primary")
 
     template(v-if="trials")
       h2.mt-8.text-title(v-t="'templates.ready_to_trial'")

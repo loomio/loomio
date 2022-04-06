@@ -40,10 +40,15 @@ namespace :loomio do
     if (Time.now.hour == 0)
       # Group.expired_trial.delete_all
       # Group.empty_no_subscription.delete_all
-      Group.expired_demo.delete_all
-      CleanupService.delay.delete_orphan_records
 
       ThrottleService.reset!('day')
+      
+      if ENV['FEATURES_DEMO_GROUPS']
+        Group.expired_demo.delete_all
+        TemplateService.delay.generate_demo_groups 
+      end
+
+      CleanupService.delay.delete_orphan_records
       OutcomeService.delay.publish_review_due
       UsageReportService.send
       LoginToken.where("created_at < ?", 24.hours.ago).delete_all

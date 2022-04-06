@@ -4,7 +4,9 @@ class TemplateSerializer < ApplicationSerializer
              :description,
              :record_type,
              :record_id,
-             :priority
+             :priority,
+             :demo_handle
+
 
   has_one :author, serializer: AuthorSerializer, root: :users
   has_one :record, polymorphic: true, :key => :ignore_me
