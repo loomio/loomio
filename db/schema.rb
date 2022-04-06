@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_06_012734) do
+ActiveRecord::Schema.define(version: 2022_04_06_053008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -788,6 +788,7 @@ ActiveRecord::Schema.define(version: 2022_04_06_012734) do
     t.datetime "recorded_at", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "priority", default: 0, null: false
     t.index ["author_id"], name: "index_templates_on_author_id"
     t.index ["group_id"], name: "index_templates_on_group_id"
     t.index ["record_type", "record_id"], name: "index_templates_on_record_type_and_record_id"

@@ -45,7 +45,7 @@ export default
         key: 'templatesIndex'
         collections: ['templates']
         query: =>
-          @templates = Records.templates.find(groupId: null)
+          @templates = Records.templates.collection.chain().find(groupId: null).simplesort('priority', true).data()
 
     startDemo: (id) ->
       if Session.isSignedIn()
