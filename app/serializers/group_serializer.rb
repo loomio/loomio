@@ -90,6 +90,7 @@ class GroupSerializer < ApplicationSerializer
       {
         max_members:     sub.max_members,
         max_threads:     sub.max_threads,
+        plan:            sub.plan,
         active:          sub.is_active?,
         members_count:   sub.members_count
       }

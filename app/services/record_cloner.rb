@@ -12,6 +12,7 @@ class RecordCloner
     clone_group.discussion_privacy_options = 'public_only'
     clone_group.membership_granted_upon = 'request'
     clone_group.discussions.each {|d| d.private = false }
+    clone_group.polls.each {|p| p.specified_voters_only = false }
     clone_group.save!
     clone_group.polls.each do |poll|
       poll.update_counts!
@@ -159,8 +160,10 @@ class RecordCloner
     clone_poll.stances = poll.stances.map {|stance| new_clone_stance(stance) }
     clone_poll.outcomes = poll.outcomes.map {|outcome| new_clone_outcome(outcome) }
     if poll.outcomes.empty?
-      clone_poll.closed_at = nil if clone_poll.closed_at && clone_poll.closed_at > DateTime.now
-      clone_poll.closing_at = nil if clone_poll.closing_at && clone_poll.closing_at < DateTime.now
+      clone_poll.closed_at = nil
+      clone_poll.closing_at = 3.days.from_now
+    else
+      clone_poll.closed_at = poll.outcomes.first.created_at
     end
 
     clone_poll
