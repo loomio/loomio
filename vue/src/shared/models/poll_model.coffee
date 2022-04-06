@@ -42,6 +42,7 @@ export default class PollModel extends BaseModel
     attachments: []
     linkPreviews: []
     notifyOnClosingSoon: 'undecided_voters'
+    results: []
     pleaseShowResults: false
     recipientMessage: null
     recipientAudience: null
