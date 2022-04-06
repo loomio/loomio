@@ -15,36 +15,6 @@ sl:
     modal_destroy_title: Odstrani oznako
     tag_created: Oznaka shranjena
     tags_marked: Razprave z oznako '{{name}}' v {{groupName}}
-  reactions:
-    slight_smile: Všečkaj
-    heart: Ljubezen
-    laughing: Smeh
-    clap: Ploskanje
-    hugging: Objem
-    wink: Mežik
-    nerd: Pameten
-    relieved: Olajšanje
-    worried: Zaskrbljen
-    confused: Zmeden
-    slight_frown: Namrščen
-    disappointed: Razočaran
-    angry: Jezen
-    weary: Utrujen
-    astonished: Začuden
-    rolling_eyes: Kolutne oči
-    cry: Jok
-    scream: Krik
-    sleeping: Dolgčas
-    thinking: Zamišljen
-    raised_hands: Dvignjene roke
-    pray: Molitev
-    fingers_crossed: Držim pesti
-    v: Mir
-    metal: Metal
-    ok_hand: V redu
-    wave: Mahanje
-    thumbsup: Palec gor
-    thumbsdown: Palec dol
   common:
     please_wait: Prosim, počakaj
     version: Verzija
@@ -247,8 +217,6 @@ sl:
     heading: Prosi za pridružitev skupini
     name_label: Ime
     email_label: Email
-    messages:
-      membership_requested: 'Zaprosil/a si za članstvo v {{group}}'
   group_page:
     threads: Razprave
     members: Člani
@@ -373,12 +341,6 @@ sl:
     email_label: 'Tvoj email naslov'
     email_placeholder: 'Vnesi svoj email ...'
     message_label: 'Tvoje sporočilo'
-  hint:
-    context: 'Nasveti za uporabo polja Opis'
-    discussion: 'Nasveti za začetek angažirane razprave'
-    invitation: 'Nasveti za pisanje prepričljivih vabil'
-    proposal: 'Nasveti za pisanje jasnih predlogov'
-    vote: 'Svojo odločitev lahko spremeniš kadarkoli'
   decision_tools_card:
     proposal_title: Predlog
     poll_title: Anketa
@@ -399,8 +361,6 @@ sl:
   polls_panel:
     all: 'Vse'
     closed: 'Zaprto'
-  current_polls_card:
-    start_poll: Nova odločitev
   poll_common_form:
     closed: Zaprto
   poll_poll_form:
@@ -411,13 +371,12 @@ sl:
   auth_form:
     name_placeholder: Tvoje ime
     name: Ime
+  chatbot:
+    username: Uporabniško ime
+    password: Geslo
   webhook:
     name_label: Ime
   group_survey:
     categories:
       community: Skupina za skupnost
-      other: Drugo
-    uses:
-      other: Drugo
-    referrers:
       other: Drugo

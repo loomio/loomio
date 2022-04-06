@@ -19,23 +19,12 @@ eo:
       details: Detaloj
       reason: Kialo
       total: Entute
-  date:
-    formats:
-      for_another_year: "%-d-%-m-%y"
-  time:
-    formats:
-      closing_soon_subject: "%d %b %H:%M"
   email:
     login:
       subject: Ensaluti al %{site_name}.
       login: Ensaluti kiel %{name}
     reset_password:
       link_text: Restarigi vian pasvorton
-    start_decision:
-      intro: Saluton, <strong>%{name}</strong>!
-      poll: Startigi enketon
-    group_email:
-      intro: "%{who} anoncis al %{group}"
     by_who: de %{person}
     reply_to_this_discussion: Respondi al ĉi tiu diskuto
     view_group: Vidi grupon
@@ -71,37 +60,10 @@ eo:
     new_password: Nova pasvorto
   how_it_works_thread:
     title: Kiel uzi Loomio-n
-  markdown:
-    intro:
-      title: |
-          # Kio estas markdown?
-    lists:
-      title: |
-          ## Listoj
-    links:
-      title: |
-          ## Ligiloj kaj bildoj
   poll_mailer:
     common:
-      or: aŭ
       view_on_loomio: Vidi ĝin en %{site_name}
-      results: Rezultoj
-      responses: Respondoj
-      change_your_stance: Ŝanĝi
       your_response: "Vi voĉdonis:"
       please_respond: Bonvolu respondi
       more_undecided: "%{count} pli…"
       vote_now: Voĉdonu nun
-    subject:
-      stance_created_author: "Bonvolu kontroli vian voĉdonon pri: %{title}"
-    body:
-      voted: '<strong>%{participant}</strong>:'
-  comment_by: Komentis %{comment_author}
-  poll_unsubscribe:
-    visit_poll: Vidi enketon
-    go_to_dashboad: Iri al supervidpanelo
-  slack:
-    poll_closing_soon: "Rememoro: *%{poll}* fermiĝos en 24 horoj"
-    poll_expired: "*%{poll}* fermiĝis"
-    poll_closed: "*%{title}* jam fermiĝis! <%{url}|klaku ĉi tie> por vidi la rezultojn."
-    go_to_slack: Iri al Slack

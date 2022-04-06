@@ -39,7 +39,3 @@ ga_IE:
     public_groups: Baiclí poiblí
     terms: Coinníollacha
     independent_install_html: 'Tá leagan neamhspleách de Loomio á rith ag %{hostname}: <a href="http://github.com/loomio/loomio">find out more</a>.'
-  poll_mailer:
-    common:
-      unsubscribe: Díliostáil
-  comment_by: Trácht ó %{comment_author}

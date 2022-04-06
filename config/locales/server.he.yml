@@ -32,9 +32,6 @@ he:
       recaptcha: "לא הצלחנו לאשר שאינך רובוט. אנא נסה שוב!"
       bad_login: "סליחה, סיסמה זו לא תואמת לזו שבמערכת"
       username_must_be_alphanumeric: "שם המשתמש נדרש להיות באותיות אנגלית קטנות ומספרים בלבד"
-  attachment:
-    error:
-      too_large: הקובץ שניסית לצרף גדול מ100 מ"ב, אנא בחר קובץ קטן יותר.
   poll:
     error:
       cannot_add_options: לא יכול להוסיף אפשרויות לסקר זה
@@ -69,18 +66,6 @@ he:
   invitation:
     invitation_cancelled: מצטערים, הזמנה זו בוטלה ע"י מתאם הקבוצה. אנא בקש הזמנה נוספת מהקבוצה.
     invitation_already_used: הזמנה זו כבר היתה בשימוש. אנא היכנס ל- loomio ישירות כדי להמשיך לקבוצה שלך.
-  date:
-    formats:
-      for_this_year: "%e %b"
-      for_another_year: "%-d/%-m/%y"
-  time:
-    formats:
-      closing_soon_subject: "%d %b %H:%M"
-      for_today: "%l:%M %P"
-  validate:
-    motion:
-      must_close_in_future: הצעה נדרשת להסגר בעתיד
-      one_at_a_time: יש עוד הצעה פעילה.
   subscriptions:
     active: פעיל
     inactive: לא פעיל
@@ -98,13 +83,11 @@ he:
   email:
     common:
       or_enter_code: או, הזן את הקוד למטה
-      resend: הלינק הזה יבוטל תוך 24 שעות וניתן לשימוש רק פעם אחת.
     login:
       subject: התחבר ל%{site_name}
       login: התחבר כ%{name}
     reactivate:
       subject: 'אקטב מחדש את חשבונך %{site_name} '
-      intro: היי %{name}, הנה הלינק כדי לאקטב מחדש את חשבונך %{site_name}.
       login: אקטב מחדש%{name}
     contact_request:
       subject: "%{name} מעוניין להתחבר איתך ב%{site_name}!"
@@ -119,19 +102,6 @@ he:
           קיבלת הודעה זו בגלל שהמייל שהזנת לטופס "שכחתי את הסיסמה" באתר %{hostname}.
           הסיסמה לא תשתנה עד שתלחץ על הלינק למטה ותמלא את הטופס שנפתח.
           אם בעיות ההתחברות ממשיכים, השב למייל זה ליצירת קשר עם איש תמיכה.
-    start_decision:
-      subject: התחל החלטה במערכת
-      intro: שלום, <strong>%{name}</strong>!
-      action: מה תרצה לעשות?
-      proposal: העלה הצעה
-      count: התחל בדיקה
-      poll: התחל סקר
-      dot_vote: התחל הצבעת נקודות
-      meeting: קבע זמן
-      ranked_choice: התחל בחירה מדורגת
-    custom: "%{text}"
-    group_email:
-      intro: "%{who} ביצע הכרזה ב%{group}:"
     by_who: לפי %{person}
     reply_to_this_discussion: השב לדיון זה
     view_group: צפיה בקבוצה
@@ -173,22 +143,7 @@ he:
   email_actions:
     unfollowed_discussion: השבתת הודעות אימייל עבור השיחה הזו.
   discussion_mailer:
-    resend: 'תזכורת: %{actor} ממתין שתצטרף ל%{discussion}'
-    new_discussion:
-      subject_html: "<strong>%{actor}</strong> התחיל שיחה: %{discussion}"
-    discussion_edited:
-      subject_html: "<strong>%{actor}</strong> ערך את השיחה: %{discussion}"
-    discussion_announced:
-      subject_html: "<strong>%{actor}</strong> הזמין אותך להצטרף ל: %{discussion}"
-    new_comment:
-      subject_html: "<strong>%{actor}</strong> הגיב ב: %{discussion}"
-    comment_replied_to:
-      subject: '%{actor} הגיב לך ב: %{discussion}'
-      subject_html: '<strong>%{actor}</strong> הגיב לך ב: %{discussion}'
-    user_mentioned:
-      subject: '%{actor} הזכיר אותך ב: %{discussion}'
-      subject_html: "<strong>%{actor}</strong> הזכיר אותך ב%{discussion}"
-    reply_or_view_online_html: הגב ישירות למייל זה או <a href='%{url}'>צפה בו ב%{hostname}</a>.
+    reply_or_view_online_html: "הגב ישירות למייל זה או <a href='%{url}'>צפה בו ב%{hostname}</a>."
     turn_off_notifications_html: "<a href='%{url}'>השבת מיילים</a> לדיון זה."
     change_email_preferences_html: "שנה את<a href='%{email_preferences_url}'>העדפות הדוא\"ל שלך</a>."
   footer:
@@ -201,11 +156,6 @@ he:
     public_groups: קבוצות ציבוריות
     terms: תנאי שימוש
     independent_install_html: '%{hostname} מריץ עותק עצמאי של לומיו: <a href="http://github.com/loomio/loomio">לפרטים נוספים</a>.'
-  invitation_form:
-    error:
-      too_many_pending: "יש לך יותר מ%{count}, הכמות המקסימלית של הזמנות ממתינות לקבוצה זו."
-      too_many_cancelled: "יש לך יותר מ%{count}, הכמות המקסימלית של ביטולי הזמנות לקבוצה זו"
-      all_email_addresses_belong_to_members: "אנשים אלה כבר חברים בקבוצה."
   password_reset:
     change_your_password: שנה את הסיסמה שלך
     change_my_password: שנה סיסמה
@@ -225,65 +175,12 @@ he:
         מה תפקידך או מהו אופן השתתפותך בקבוצה זו? מה אנשים צריכים לדעת עלייך כדי להבין מאיפה אתה בא?
   how_it_works_thread:
     title: איך להשתמש בלומיו
-  markdown:
-    intro:
-      title: |
-          # מהו markdown?
-      body: |
-          Markdown היא דרך לכתוב טקסט רגיל (משמאל),
-          כך שניתן להמירה טקסט עשיר (מימין).
-
-          דף זה נכתב ב- Markdown כדי להראות כיצד הוא פועל.
-    headers:
-      body: |
-          ## כותרות
-
-          קידומת עם סולמית ורווח להפוך טקסט לכותרת.
-
-          # זה h1
-          ## זה h2
-          #### זה h4
-    paragraphs:
-      title: |
-          ## פסקאות
-      body: |
-          אתה צריך
-          לשים
-          שורה ריקה
-          בין קווים.
-
-          או שבסוף תקבל פסקה אחת גדולה!
-    emphasis:
-      title: |
-          ## הדגשות
-      body: |
-          אתה יכול להדגיש מילה עם _קו תחתון_ או *כוכב*.
-
-          __הדגשת__ מילה על ידי הכפלת **הדגש**.
-    lists:
-      title: |
-          ## רשימות
-      body: |
-          הנה הנחיות להכנת רשימה:
-
-          * השאר שורה ריקה לפני הרשימה שלך
-          * השתמש בכוכביות (*)
-          * השאר רווח אחרי הכוכבית
-    links:
-      title: |
-          ## קישורים ותמונות
   group_mailer:
     resend: 'תזכורת: %{member} ממתין שתצטרף %{group_name}'
   poll_mailer:
-    resend: '%{actor} מזכיר לך להצביע ב: %{title}'
     common:
-      or: או
       why_send_this: אתה מקבל את המייל הזה בגלל %{reason}
       view_on_loomio: צפה בו ב-%{site_name}
-      unsubscribe: ביטול מינוי
-      results: תוצאות
-      responses: תגובות
-      change_your_stance: שנה
       create_outcome: שתפ/י תוצאה
       your_response: "בחירתך:"
       please_respond: אנא הגב
@@ -292,82 +189,4 @@ he:
       undecided_visitors: אורחים שטרם החליטו (%{count})
       more_undecided: "%{count} עוד..."
       vote_now: הצבע עכשיו
-      verify_stance_for_unverified_user: "תודה על שבחרת ב-%{title}. אנא אשר את הכתובת הדואר שלך, כך שנוכל לשלוח לך את התוצאות כשהן תהיינה מוכנות."
-      verify_stance_for_verified_user: "נראה שהצבעת ב-%{title}. אם זה אכן היית אתה, אנא הקלק על הלינק מטה לאישור הצבעתך."
       you_have_until: יש לך עד %{when} להשתתף.
-    subject:
-      poll_option_added: '%{actor} הוסיף אפשרויות ל:%{title}'
-      poll_option_added_author: '%{actor} הוסיף אפשרויות ל:%{title}'
-      stance_created: "%{actor} הצביע על: %{title}"
-      stance_updated: "%{actor} הצביע על: %{title}"
-      stance_created_author: "אנא אשר את הצבעתך ב:%{title}"
-      user_mentioned: '%{actor} הזכיר אותך ב: %{title}'
-      user_reminded: '%{actor} מזכיר לך להצביע ב:%{title}'
-    header:
-      poll_option_added: '<strong>%{actor}</strong> הוסיף אפשרויות ל:%{title}'
-      poll_option_added_author: '<strong>%{actor}</strong> הוסיף אפשרויות ל:%{title}'
-      stance_created: "<strong>%{actor}</strong> הצביע על: %{title}"
-      stance_updated: "<strong>%{actor}</strong> הצביע על: %{title}"
-      user_mentioned: '<strong>%{actor}</strong> ציין אותך ב:%{title}'
-      user_reminded: '<strong>%{actor}</strong> מזכיר לך להצביע ב:%{title}'
-    body:
-      voted: '<strong>%{participant}</strong>:'
-  comment_by: תגובה של %{comment_author}
-  notified:
-    no_matches_found: "לא נמצאו תוצאות התואמות ל'%{query}'"
-    group_users: "(%{count} אנשים)"
-    group_title: "%{name} (%{count} אנשים)"
-    public_title: ציבורי (כל אחד עם הקישור)
-  poll_unsubscribe:
-    title: בוטלה הרשמתך ל%{title}
-    helptext: לא תקבל עוד מיילים על החלטה זו.
-    visit_poll: הצג סקר
-    go_to_dashboad: עבור לדשבורד
-  microsoft:
-    section_title: "[%{title}](%{url})"
-    new_discussion: "שירשור חדש ב%{group}"
-    new_comment: "תגובה חדשה ב%{group}"
-    outcome_created: "תוצאה פורסמה ב%{group}"
-    poll_created: "%{poll_type} חדש ב%{group}"
-    stance_created: "תגובה חדשה ל%{poll}"
-    poll_closing_soon: "%{poll_type} נסגר בעוד 24 שעות"
-    poll_expired: "%{poll_type} נסגר"
-    group_identity_created: "אירועים מ%{group} יופיעו עכשיו בערוץ זה"
-  slack:
-    new_discussion: "שירשור חדש ב*%{group}*: *%{discussion}*"
-    outcome_created: "תוצאה פורסמה ב*%{group}*: *%{poll}*"
-    poll_created: "*%{poll_type}* חדש ב*%{group}*: *%{poll}*"
-    poll_closing_soon: "תזכורת: *%{poll}* נסגר בעוד 24 שעות"
-    poll_expired: "*%{poll}* נסגר"
-    poll_not_found: "מצטערים, סקר זה לא נמצא, הקלד '/loomio <poll_type> <title>' להתחיל עוד אחד?"
-    unknown_channel: |
-        מצטערים, נראה שאין קבוצת loomio המקושרת לערוץ זה.
-        נסה להריץ '/loomio' באחד הערוצים הבאים במקום?
-        %{integrations}
-    stance_not_valid: "מצטערים, לא הצלחנו לייצר מקרה עבור  *%{poll}*. <%{url}|הקלק כאן> כדי להצביע ישירות בסקר."
-    request_authorization_message: "רק צעד אחד נוסף: <%{url}|לחץ כאן> כדי לאשר את חשבון הSlack שלך להשתמש ב-Loomio. (אתה רק צריך לעשות את זה פעם אחת)"
-    poll_closed: "*%{title}* נסגר כבר! <%{url}|לחץ כאן> לצפיה בתוצאות."
-    go_to_slack: עבור לSlack
-    stance_created: תודה שהשתתפתם! ההצבעה שלך *%{position}* על הסקר <%{poll_url}|%{title}>. אם תרצו לשנות את  הצבעתכם, או להסביר למה אתה מרגיש כך <%{stance_url}|לחץ כאן>.
-    click_to_vote: "בחר אפשרות מטה כדי להצביע:"
-    time_zone_message: (כל הזמנים הם באזור זמן %{zone})
-    authorized_message: הצלחה! אתה מוכן להצביע בSlack עכשיו.
-    initiate: |
-        אוקיי, בוא נעשה את זה! <%{url}|לחץ כאן כדי להתחיל ב-%{type} שלך>.
-        (הערה: אנחנו נפרסם זאת לתוך הערוץ לכשתיווצר, כדי שכולם יוכלו להשתתף)
-    slash_command_help: |
-        הזן סוג החלטה ושאלה, ואנחנו ניקח את זה משם.
-        תוכל לבחור מבין סוגי ההחלטות הבאים:
-        'proposal': חפש הסכמה קולקטיבית
-        'count': עקוב אחר השתתפות ומצא מתנדבים
-        'poll': מדוד פופולריות של אפשרויות
-        'dot_vote': קבע סדר עדיפויות של רשימת אפשרויות
-        'meeting': מצא זמן להיפגש
-        לחלופין, התחל שיחה עם '/loomio thread'.
-
-        לדוגמה:
-        /loomio count מי מגיע למסיבה ביום ראשון?
-        כדי להתחיל ספירה חדשה.
-        או
-        /loomio thread בוא נדבר על כיוון החברה
-        כדי להתחיל שירשור חדש

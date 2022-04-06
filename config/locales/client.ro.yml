@@ -33,37 +33,6 @@ ro:
     discussions_count_plural: ({{count}} discutii)
     tag_created: Etichetă salvată
     tags_marked: Conversatii marcate '{{name}}' in {{groupName}}
-  reactions:
-    slight_smile: Imi place
-    heart: Apreciaza
-    laughing: Zambet
-    clap: Aplauda
-    hugging: Imbratisare
-    sunglasses: Interesant
-    wink: Faceți cu ochiul
-    nerd: Inteligent
-    relieved: Impacat
-    worried: Ingrijorat
-    confused: Confuz
-    confounded: Confuz
-    neutral_face: Neutru
-    slight_frown: Incruntat
-    disappointed: Dezamagit
-    angry: Suparat
-    weary: Satul
-    astonished: Uimit
-    cry: Plans
-    scream: Striga
-    sleeping: Plictisit
-    thinking: Gandind
-    pray: Mă rog
-    fingers_crossed: Degete incrucisate
-    v: Pace
-    metal: Metal
-    ok_hand: Ok
-    wave: Val
-    thumbsup: Aprobă
-    thumbsdown: Dezaprobă
   poll_types:
     proposal: propunere
     count: verifică
@@ -364,7 +333,6 @@ ro:
     attach: Ataseaza fisier
     reset: Resetează
   cover_photo_form:
-    aria_label: 'Modificare poza fundal'
     heading: 'Poza noua de fundal'
     upload_link: 'Uploadeaza o noua poza de fundal'
   logo_photo_form:
@@ -436,8 +404,6 @@ ro:
   membership_requests_page:
     approve: Aproba
     ignore: 'Ignora '
-  group_previous_proposals_card:
-    heading: Propuneri anterioare
   invitation_form:
     invite_people: 'Invita oameni'
     copy_link: 'Copiaza'
@@ -534,12 +500,6 @@ ro:
     subject_label: "Subiect"
     email_label: 'Adresa ta de email'
     message_label: 'Mesaj'
-  hint:
-    context: 'Sfaturi pentru folosirea panel-ului context'
-    discussion: 'Sfaturi pentru a initia o discutie captivanta'
-    invitation: 'Sfaturi pentru a scrie o invitatie'
-    proposal: 'Sfaturi pentru a scrie o propunere clara'
-    vote: 'Poti sa-ti modifici pozitia oricand doresti'
   decision_tools_card:
     proposal_title: Propunere
     count_title: Verifica
@@ -564,8 +524,6 @@ ro:
     all: 'Toate'
     open: 'Deschis'
     closed: 'Inchis'
-  current_polls_card:
-    start_poll: Decizie noua
   poll_common_form:
     closed: Inchis
     start: Incepe
@@ -576,20 +534,16 @@ ro:
     'no': 'Nu'
   poll_meeting_chart_panel:
     total: Total
-  poll_common_subscribe_form:
-    subscribe: Subscrie
   auth_form:
     enter_your_name: Introdu numele tau
     name_placeholder: Nume
     name: Nume
+  chatbot:
+    username: Nume utilizator
+    password: Parola
   webhook:
     name_label: Nume
   group_survey:
-    success: Multumim!
     categories:
       community: Comunitate
-      other: Altele
-    uses:
-      other: Altele
-    referrers:
       other: Altele

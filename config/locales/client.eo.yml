@@ -53,39 +53,6 @@ eo:
     discussions_count_plural: ({{count}} fadenoj)
     tag_created: Etikedo konservita
     tags_marked: Fadenoj markitaj kiel  '{{name}}' en {{groupName}}
-  reactions:
-    slight_smile: Ŝati
-    heart: Ŝategi
-    laughing: Ridi
-    clap: Klapi
-    hugging: Brakumi
-    sunglasses: Mojose
-    wink: Palpebrumi
-    nerd: Saĝe
-    relieved: Trankvilige
-    worried: Maltrankvilige
-    confused: Konfuze
-    confounded: Frenezige
-    neutral_face: Neŭtrale
-    slight_frown: paŭte
-    disappointed: Seniluzige
-    angry: Furioze
-    weary: Maltrankvile
-    astonished: Surprizite
-    rolling_eyes: Sinĝene rigardi
-    cry: Krii
-    scream: Kriegi
-    sleeping: Enue
-    thinking: Penseme
-    raised_hands: Manleve
-    pray: Preĝe
-    fingers_crossed: Bonŝancon!
-    v: Pacon!
-    metal: Metalo
-    ok_hand: Bone!
-    wave: Svingi manon
-    thumbsup: Mi aprobas!
-    thumbsdown: Mi malaprobas!
   poll_types:
     proposal: propono
     count: kontrolo
@@ -301,9 +268,6 @@ eo:
     invite_to_poll: "Inviti homojn voĉdoni"
   notifications:
     header: "Sciigoj"
-    new_motion: "<strong>{{name}}</strong> kreis proponon <strong>{{title}}</strong>"
-    motion_closed_by_user: "<strong>{{name}}</strong> fermis proponon <strong>{{title}}</strong>"
-    membership_requested: "<strong>{{name}}</strong> petis membriĝi al <strong>{{title}}</strong>"
   discussion_fork_actions:
     move: Movi
     search_placeholder: Serĉu iun fadenon per titolo
@@ -402,9 +366,6 @@ eo:
     approve: Aprobi
     ignore: Ignori
     previous_requests: Antaŭaj petoj
-  group_previous_proposals_card:
-    heading: Antaŭaj proponoj
-    see_more: Vidi pli
   invitation_form:
     invite_people: 'Inviti personojn'
     group: 'Grupo'
@@ -455,8 +416,6 @@ eo:
       all_aria_label: Nun montras lastatempajn fadenojn
       all_description: Montri lastatempajn fadenojn
       proposals: Propozicioj
-    aria_thread:
-      you_voted: 'Vi voĉdonis: {{position}}.'
     thread_preview:
       you_voted: 'Vi voĉdonis {{position}}'
     threads_from:
@@ -499,12 +458,6 @@ eo:
     email_label: 'Via retpoŝtadreso'
     message_label: 'Via mesaĝo'
     send_message: 'Sendi mesaĝon'
-  hint:
-    context: 'Konsiloj por uzo de la kunteksto-panelo'
-    discussion: 'Konsiloj por komenci engaĝigan diskuton'
-    invitation: 'Konsiloj por verki bonegan inviton'
-    proposal: 'Konsiloj por verki klaran proponon'
-    vote: 'Vi povas ŝanĝi vian sintenon iam ajn'
   explore_page:
     header: Esplori grupojn
   global:
@@ -514,7 +467,6 @@ eo:
     proposal_title: Propozicio
     count_title: Kontroli
     poll_title: Enketo
-    dot_vote_title: Punkto-Voĉdonado
   poll_common:
     vote_now: Voĉdonu nun
     have_your_say: Donu vian opinion
@@ -552,8 +504,6 @@ eo:
     closed: 'Fermita'
   poll_common_action_panel:
     anonymous: Voĉdonoj ne montros uzantnomojn
-  poll_common_select_group:
-    loomio_group: Grupo
   poll_common_calendar_invite:
     event_duration: Daŭro
   poll_common_settings:
@@ -561,9 +511,6 @@ eo:
       title: Nescieblaj voĉdonantoj
     voter_can_add_options:
       title: Voĉdonantoj rajtas aldoni elektojn
-  poll_common_close_form:
-    close_dot_vote: Fermigi la punkto-voĉdonadon
-    dot_vote_closed: Fermiĝis la punkto-voĉdonado
   poll_common_votes_panel:
     no_votes_yet: Ĝis nun, neniu voĉdonis.
   poll_common_set_outcome_panel:
@@ -631,15 +578,12 @@ eo:
     name: Nomo
     email: Retadreso
     password: Pasvorto
+  chatbot:
+    username: Uzantnomo
+    password: Pasvorto
   webhook:
     name_label: Nomo
-  browser_warning:
-    link: Bonvolu komuti al alia retumilo
   group_survey:
     categories:
       community: Komunuma grupo
-      other: Alia
-    uses:
-      other: Alia
-    referrers:
       other: Alia

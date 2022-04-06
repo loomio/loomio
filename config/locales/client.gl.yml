@@ -136,10 +136,6 @@ gl:
     subject_label: "Tema"
     email_label: 'A túa dirección de correo electrónico'
     message_label: 'A túa mensaxe'
-  hint:
-    discussion: 'Recomendacións para comezar un debate aberto'
-    proposal: 'Trucos para escribir unha proposta clara'
-    vote: 'Podes cambiar a proposta en calquera momento'
   poll_common:
     save_changes: Gardar
   discussions_panel:
@@ -160,13 +156,12 @@ gl:
     'no': 'Non'
   auth_form:
     name_placeholder: O teu nome
+  chatbot:
+    username: Usuario
+    password: Contrasinal
   webhook:
     name_label: Nome
   group_survey:
     categories:
       community: Comunidade
-      other: Outro
-    uses:
-      other: Outro
-    referrers:
       other: Outro

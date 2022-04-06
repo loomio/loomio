@@ -90,12 +90,6 @@ vi:
     title: 'Xóa bình luận'
   contact_message_form:
     subject_label: "Chủ đề"
-  hint:
-    context: 'Gợi ý về cách sử dụng khung điều khiển nội dung'
-    discussion: 'Gợi ý về cách bắt đầu tham gia thảo luận'
-    invitation: 'Gợi ý về cách viết các lời mời để kết nối thêm thành viên'
-    proposal: 'Gợi ý về việc viết lời đề nghị theo hướng rõ ràng nhất'
-    vote: 'Bạn có thể thay đổi kiến nghị của bạn vào bất kỳ thời điểm nào'
   poll_common:
     have_your_say: Phát biểu ý kiến của bạn
     save_changes: Lưu
@@ -113,12 +107,10 @@ vi:
   poll_count_options:
     'yes': 'Đồng Ý'
     'no': 'Không đồng ý'
+  chatbot:
+    password: Mật khẩu
   webhook:
     name_label: Tên
   group_survey:
     categories:
-      other: Khác
-    uses:
-      other: Khác
-    referrers:
       other: Khác

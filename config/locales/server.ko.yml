@@ -8,8 +8,8 @@ ko:
       members: 멤버
       subgroups: 소그룹
       threads: 토론 주제
-      comments: 댓글
       polls: 투표
+      comments: 댓글
       poll_types:
         proposal: 제안
   poll:
@@ -26,8 +26,6 @@ ko:
       confirm_page:
         merge: 연결계정
   email:
-    group_email:
-      intro: "%{group} 그룹에 %{who}님이 알림글을 올렸습니다."
     unsubscribe: '구독중지 혹은 이메일 설정을 변경하세요.'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>구독중지 혹은 이메일 설정 변경하기"
     catch_up:
@@ -47,5 +45,4 @@ ko:
     terms: 정책
   poll_mailer:
     common:
-      unsubscribe: 구독취소
       create_outcome: 결과 공유

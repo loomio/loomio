@@ -12,8 +12,6 @@ sk:
       email: E-mail
       details: Podrobnosti
   email:
-    group_email:
-      intro: "%{who} oznámil(a) skupine %{group}:"
     by_who: od člena %{person}
     reply_to_this_discussion: Odpovedať na diskusiu
     unsubscribe: 'Odhláste sa alebo si zmeňte nastavenia emailu:'
@@ -35,4 +33,3 @@ sk:
     pricing: Cenník
     public_groups: Verejné skupiny
     terms: Podmienky
-  comment_by: Komentár od %{comment_author}

@@ -96,12 +96,6 @@ id:
     title: 'Hapus komentar'
   contact_message_form:
     subject_label: "Perihal"
-  hint:
-    context: 'Tips menggunakan panel konteks'
-    discussion: 'Tips memulai diskusi yang menarik'
-    invitation: 'Tips menulis undangan yang baik'
-    proposal: 'Tips untuk menulis usulan yang baik'
-    vote: 'Anda dapat mengubah pendapat Anda kapanpun'
   poll_common:
     have_your_say: Berikan pendapat Anda
     save_changes: Simpan
@@ -118,12 +112,10 @@ id:
   poll_count_options:
     'yes': 'Ya'
     'no': 'Tidak'
+  chatbot:
+    password: Kata sandi
   webhook:
     name_label: Nama
   group_survey:
     categories:
-      other: Lainnya
-    uses:
-      other: Lainnya
-    referrers:
       other: Lainnya

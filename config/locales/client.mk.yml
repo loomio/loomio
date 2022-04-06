@@ -142,12 +142,10 @@ mk:
     'no': 'Не'
   auth_form:
     name_placeholder: Твоето име
+  chatbot:
+    password: Лозинка
   webhook:
     name_label: Име
   group_survey:
     categories:
-      other: Друго
-    uses:
-      other: Друго
-    referrers:
       other: Друго

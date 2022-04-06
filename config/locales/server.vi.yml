@@ -12,8 +12,6 @@ vi:
       email: Email
       details: Chi tiết
   email:
-    group_email:
-      intro: "%{who} đã tạo một tuyên bố mới trong %{group}:"
     unsubscribe: 'Bỏ việc đăng ký theo dõi hoặc thay đổi tùy chọn về địa chỉ email của bạn:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> để bỏ việc đăng ký theo dõi hoặc thay đổi tùy chọn về địa chỉ email của bạn."
     catch_up:

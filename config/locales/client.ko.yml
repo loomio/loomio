@@ -1,11 +1,50 @@
 ko:
+  tasks:
+    tasks: 할일
+    your_tasks: 나의 할일
+    permission_denied: 수정할 권한이 없습니다
+    due_date: 마감일
+    send_reminder: (완료되지 않은 경우) 리마인더 보내기
+    no_reminder: 리마인더 보내지 않기
+    on_due_date: 마감일에
+    1_day_before: 하루전에
+    2_day_before: 이틀전에
+    3_day_before: 삼일전에
+    7_day_before: 일주일 전에
+    task_placeholder: 사용자를 지정하려면 '@사용자명'과 함께 할일을 입력하세요.
+    add_due_date: 마감일 지정하기
+    task_updated_done: '완료 표기하기!'
+    task_updated_not_done: '완료되지 않았음으로 표기하기<br>'
+    no_tasks_assigned: '나에게 지정된 할일이 없습니다 '
   templates:
     try_loomio: 루미오 사용해보기
+    start_a_demo_group: 데모 그룹 시작하기
+    start_a_demo: 데모 시작하기
+    look_and_feel: Loomio가 어떻게 작동하는지 데모를 통해 알아보세요!
+    demos_expire: 데모 그룹은 3일 뒤에 삭제 됩니다. 이후에도 언제든 새 데모그룹을 만들어 테스트 하실 수 있습니다.<br>
+    generating_demo: '잠시만 기다려주세요! 데모를 만드는데 20초 정도 필요합니다!'
+    start_a_x_day_free_trial: '{{day}} 일 무료 체험을 시작합니다.<br>'
+  doctypes:
+    youtube_video: 유튜브 비디오
+    image: 이미지
+    pdf: PDF
+    excel: 엑셀 파일
+    document: 문서
+    csv: CSV 파일
+    video: 비디오
+    text: 텍스트 파일
+    google_doc: 구글 문서
+    google_sheet: 구글 스프레드시트
+    google_drive: 구글드라이브
+    trello_board: 트렐로 보드
+    trello_card: 트렐로 카드
   loomio_onboarding:
     group_progress_card:
+      title: 자! 시작합시다!
       activities:
         set_description: 그룹 설명 설정하기
         set_cover_photo: 그룹의 커버 사진 & 로고 업로드
+        customize_group: 그룹 프로필 사진, 로고, 설명 추가하기
         invite_people_in: 초대하기
         start_thread: 스레드 시작하기
         make_decision: 의사결정 시작하기
@@ -45,48 +84,23 @@ ko:
     all_tags: 모든 태그
     tags: 태그
     apply_tags: 태그 적용
+    new_tag: 새로운 태그 생성하기
     name_label: 이름
     color_label: 색깔
     card_title: 카테고리 태그
     modal_title: 새 태그 만들기
     modal_edit_title: 태그 수정
-    modal_destroy_title: 태그 삭제
+    modal_destroy_title: 태그 제거
+    destroy_tag: 태그 삭제
+    destroy_helptext: 태그가 삭제되고 모든 토론에서 태그가 제거됩니다. 정말 진행하시겠습니까?
     helptext: 태그는 당신이 토론들을 분류할 수 있게해주고 쉽게 찾을 수 있게 해줍니다.
     discussions_count_singular: ({{count}}개의 스레드)
     discussions_count_plural: ({{count}}개의 스레드)
     tag_created: 태그 저장됨
+    tag_destroyed: 태그 삭제됨
     tags_marked: 스레드는 {{GroupName}}에 '{{name}}'으로 표기되어있습니다.
-  reactions:
-    slight_smile: 좋아요
-    heart: 사랑
-    laughing: 웃음
-    clap: 박수
-    hugging: 포옹
-    sunglasses: 멋진
-    wink: 윙크
-    nerd: 똑똑함
-    relieved: 안도함
-    worried: 걱정됨
-    confused: 혼란스러움
-    confounded: 당황스러움
-    neutral_face: 중립
-    slight_frown: 눈살을 찌푸림
-    disappointed: 실망함
-    angry: 화남
-    weary: 지침
-    astonished: 놀람
-    rolling_eyes: 두리번거림
-    cry: 울음
-    scream: 소리침
-    sleeping: 지루함
-    thinking: 생각중
-    raised_hands: 손들기
-    pray: 기도하기
-    fingers_crossed: 행운을 빌어
-    ok_hand: Ok
-    wave: 손 흔들기
-    thumbsup: 찬성
-    thumbsdown: 반대
+    no_tags_in_group: 이 그룹은 카테고리나 태그가 아직 설정되지 않았습니다.
+    only_admins_can_edit_tags: 앗! {{group}}의 관리자에게 태그 생성, 수정, 삭제 권한이 있습니다.
   poll_types:
     proposal: 제안
     count: 체크
@@ -483,40 +497,6 @@ ko:
   notifications:
     header: "알림"
     no_notifications: "알림이 없습니다."
-    new_discussion: "<strong>{{name}}</strong>이 스레드 <strong>{{title}}</strong>을 시작합니다."
-    discussion_edited: "<strong>{{name}}</strong>이 스레드 <strong>{{title}}</strong>을 수정합니다."
-    discussion_announced: "<strong>{{name}}</strong>가 스레드 <strong>{{title}}</strong>을 공유합니다."
-    new_motion: "<strong>{{name}}</strong>가 제안 <strong>{{title}}</strong>을 제안합니다."
-    motion_closed: "제안종료: <strong>{{title}}</strong>"
-    publish_outcome: "결과 인쇄하기"
-    motion_closed_by_user: "<strong>{{name}}</strong>가 제안 <strong>{{title}}</strong>을 종료합니다."
-    motion_closed_by_expiry: "<strong>{{title}}</strong> 제안이 종료되었습니다."
-    new_vote: " 제안 <strong>{{title}}</strong>에 대한  <strong>{{name}}</strong> {{position}}"
-    new_comment: "<strong>{{name}}</strong>가 <strong> {{title}}</strong>에 댓글을 남겼습니다."
-    comment_replied_to: "<strong>{{name}}</strong>가 <strong>{{title}}</strong>의 당신의 댓글에 답변했습니다."
-    reaction_created: "<strong>{{name}}</strong>가 당신의 {{model}}<strong>{{title}}</strong>에 응답<img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/>합니다."
-    reaction_created_vue: "<strong>{{name}}</strong>가 당신의 {{model}} <strong>{{title}}</strong>에 {{reaction}}으로 응답합니다."
-    user_mentioned: "<strong>{{name}}</strong>가 <strong>{{title}}</strong>에서 당신을 언급하였습니다."
-    user_reminded: "<strong>{{name}}</strong>가 <strong> {{title}}</strong>에 당신이 참여하기를 기다리고 있습니다."
-    membership_requested: "<strong>{{name}}</strong>가 <strong>{{title}}</strong>에 가입하도록 요청합니다."
-    membership_request_approved: '<strong>{{name}}</strong>가 당신의 <strong>{{title}}</strong> 가입 요청을 승인하였습니다.'
-    user_added_to_group: "<strong>{{name}}</strong>가 당신을 그룹 <strong>{{title}}</strong>에 추가하였습니다."
-    user_added_to_group_no_inviter: "그룹 <strong>{{title}}</strong>에 추가되었습니다."
-    motion_closing_soon: "제안이 곧 종료됩니다: <strong>{{title}}</strong>"
-    motion_outcome_created: "<strong>{{name}}</strong>가 제안 <strong>{{title}}</strong>의 결과를 게시했습니다."
-    motion_outcome_updated: "<strong>{{name}}</strong>가 제안 <strong>{{title}}</strong>의 결과를 업데이트하였습니다."
-    invitation_accepted: "<strong>{{name}}</strong>가 당신의 <strong>{{title}}</strong>으로의 초대를 수락하였습니다."
-    new_coordinator: "<strong>{{name}}</strong>가 당신을 <strong>{{title}}</strong>의 관리자로 임명하였습니다."
-    poll_created: "<strong>{{name}}</strong>가 {{poll_type}}을 시작: <strong>{{title}}</strong>"
-    poll_edited: "<strong>{{name}}</strong>가 {{poll_type}}을 수정: <strong>{{title}}</strong>"
-    poll_announced: "<strong>{{name}}</strong>가 {{poll_type}}을 공유: <strong>{{title}}</strong>"
-    poll_closing_soon: "{{poll_type}}이 곧 종료됩니다: <strong>{{title}}</strong>"
-    poll_expired: "{{poll_type}} 종료: <strong>{{title}}</strong>"
-    poll_option_added: "<strong>{{name}}</strong>가 옵션 추가: <strong>{{title}}</strong>"
-    outcome_created: "<strong>{{name}}</strong>가 결과 공유: <strong>{{title}}</strong>"
-    outcome_announced: "<strong>{{name}}</strong>가 결과 공유: <strong>{{title}}</strong>"
-    stance_created: "<strong>{{name}}</strong>가 참여: <strong>{{title}}</strong> "
-    group_announced: "<strong>{{name}}</strong>가 당신을 그룹 <strong>{{title}}</strong>에 초대했습니다."
   discussion_fork_actions:
     helptext: 다른 스레드로 이동할 항목을 선택하십시오.
     move: 이동
@@ -550,12 +530,9 @@ ko:
     notify_group: 그룹 알림
   announcement:
     send_discussion: 스레드 전송
-    send_discussion_explain: 토론에 참여하도록 사람들을 초대
     send_group: '{{name}}으로 초대'
     send_poll: '{{type}} 전송'
-    send_poll_explain: '{{type}}에 참여하도록 사람들을 초대'
     send_outcome: 결과 전송
-    send_outcome_explain: '{{type}}의 결과를 사람들에게 전송'
     discussion_notification_history: 스레드 알림 이력
     group_notification_history: 그룹 초대 이력
     poll_notification_history: 투표 알림 이력
@@ -730,13 +707,11 @@ ko:
     markdown_confirm: wysiwyg 형식을 Markdown으로 변환 할 때 일부 형식이 손실될 수 있습니다.
     upload_failed: 업로드 실패
   cover_photo_form:
-    aria_label: '커버 사진 양식 교체'
     heading: '새로운 커버 사진'
     upload_link: '새로운 커버 사진 올리기'
     image_size_helptext: '이미지 크기는 1400 x 320px입니다.'
     upload_success: '커버 사진을 수정하였습니다.'
   logo_photo_form:
-    aria_label: '그룹 로고 양식 변경'
     heading: '새로운 그룹 로고'
     upload_link: '새로운 그룹 로고 올리기'
     image_size_helptext: '이미지 크기는 100x100px 입니다'
@@ -755,8 +730,6 @@ ko:
     introduction_label: 참여 사유는?
     submit_button: 가입신청하기
     introduction_over_limit: 답변이 너무 깁니다.
-    messages:
-      membership_requested: '{{group}}에 가입을 요청하였습니다'
   revision_history_modal:
     aria_label: 검토 이력
     discussion_header: 토론 수정
@@ -785,7 +758,6 @@ ko:
     you_and_name_and_count_more: "당신, {{name}} 그외 {{count}}명"
     name_and_count_more: "{{name}}, 그외 {{count}}명"
   context_panel:
-    aria_intro: "{{author}}가 작성한 스레드"
     thread_status:
       pinned: "이 스레드는 고정되어있습니다. 스레드의 모든 사용자들의 그룹 목록의 가장 위에 표시됩니다."
       closed: "이 스레드는 종료되었습니다. 더이상 대시보드에 나타나지 않으며, 그룹페이지의 '종료됨' 목록에 추가 될 것입니다."
@@ -889,7 +861,6 @@ ko:
     submit: '네, 이 그룹을 비활성화하겠습니다.'
   group_form:
     thread_defaults_help: 새 스레드의 기본 설정
-    click_to_change_image: 커버 이미지와 로고 (클릭해서 바꾸기)
     aria_label: 그룹 형태
     new_organisation: 새로운 조직
     new_group: 새 그룹
@@ -931,7 +902,6 @@ ko:
     membership_granted_upon_approval: '누구나 가입 신청을 할 수 있습니다만, 가입 허가가 필요합니다.'
     membership_granted_upon_approval_secret_parent: '<strong>요청에 의해</strong> {{parent}}의 누구나 그룹에 가입신청을 할 수 있습니다.'
     permissions: '허용'
-    features: '그룹 별 기능'
     thread_privacy: '쓰레드 프라이버시'
     public_threads: '공개 쓰레드만'
     public_discussions_subgroup: '{{parentGroupName}}의 누구나 이 토론을 볼 수 있습니다.'
@@ -973,11 +943,6 @@ ko:
     messages:
       request_approved_success: 멤버십 요청이 승인되었습니다.
       request_ignored_success: 멤버십 요청이 거절되었습니다.
-  group_previous_proposals_card:
-    heading: 이전 제안
-    see_more: 더보기
-  group_decisions_card:
-    see_more: "모두 보기: ({{count}})개 결정"
   invitation_form:
     group_url: 그룹 URL
     reusable_invitation_link: 재사용 가능한 초대 링크
@@ -1003,8 +968,6 @@ ko:
     add_custom_message_link: '개인 메시지 추가'
     custom_message: '개인 메시지'
     custom_message_placeholder: '초대의 글을 입력해주세요.'
-    team_invitation_message: '대안으로'
-    team_invitation_link: '공유용 링크 주소 얻기'
     add_members: '멤버 추가'
     from_parent_group: '{{name}} 로부터'
     send: '전송'
@@ -1172,10 +1135,6 @@ ko:
       muted: 음소거된 스레드
       muted_aria_label: 알림 비활성화된 주제 보기
       muted_description: 알림 비활성화된 주제만 보기
-    aria_thread:
-      unread: '읽지 않은 아이템 {{count}}개'
-      current_proposal: '현재 제안: {{name}}.'
-      you_voted: '투표 완료: {{position}}.'
     thread_preview:
       you_voted: '{{position}}에 투표했습니다.'
       undecided: '당신은 아직 결정하지 않았습니다.'
@@ -1255,12 +1214,6 @@ ko:
     email_placeholder: '이메일 주소'
     message_label: '메시지'
     send_message: '메시지 보내기'
-  hint:
-    context: '켄텍스트 패널 사용을 위한 도움말'
-    discussion: '토론 참여를 시작하기 위한 도움말'
-    invitation: '훌륭한 초대를 쓰기 위한 도움말'
-    proposal: '명확한 제안을 쓰기을 위한 도움말'
-    vote: '선택은 언제나 변경할 수 있습니다.'
   explore_page:
     header: 그룹 탐색
   global:
@@ -1269,11 +1222,10 @@ ko:
   poll_common:
     have_your_say: 한말씀
     start_poll: 의사 결정 시작하기
+    share_outcome: 결과 공유
     save_changes: 저장
   poll_common_attachment_form:
     label: 첨부파일
-  poll_common_index_card:
-    count: "모두 보기: ({{count}})개 결정"
   discussions_panel:
     open: 진행중
     closed: 종료
@@ -1287,8 +1239,6 @@ ko:
   polls_panel:
     open: '진행중'
     closed: '종료'
-  current_polls_card:
-    start_poll: 새로운 의사결정
   poll_common_calendar_invite:
     location: 장소
   poll_common_settings:
@@ -1296,8 +1246,6 @@ ko:
       title: 링크가 있으면 누구나 참여할 수 있습니다.
     notify_on_closing_soon:
       undecided_voters: 결정하지 않은 투표자들
-  poll_common_set_outcome_panel:
-    share_outcome: 결과 공유
   poll_common_outcome_form:
     submit: 결과 공유
   poll_common_form:
@@ -1310,17 +1258,14 @@ ko:
     'no': '아니요'
   poll_meeting_chart_panel:
     total: 총
-  poll_common_subscribe_form:
-    subscribe: 구독하기
   auth_form:
     name_placeholder: 이름
     set_password: 비밀번호가 설정됨
+  chatbot:
+    username: 아이디
+    password: 비밀번호
   webhook:
     name_label: 이름
   group_survey:
     categories:
-      other: 다른것
-    uses:
-      other: 다른것
-    referrers:
       other: 다른것

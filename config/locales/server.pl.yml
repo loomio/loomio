@@ -53,10 +53,10 @@ pl:
       members: Członkowie
       subgroups: Podgrupy
       threads: Wątki
+      polls: Ankiety
       votes: Głosy
       comments: Komentarze
       general: Generalne
-      polls: Ankiety
       poll_types:
         proposal: Propozycja
         count: Licz
@@ -75,9 +75,6 @@ pl:
       recaptcha: "Nie byliśmy w stanie zweryfikować, czy nie jesteś robotem. Proszę spróbuj ponownie!"
       bad_login: "Przepraszamy, to hasło nie zgadza się z tym, które mamy zapisane"
       username_must_be_alphanumeric: "Nazwy użytkowników muszą składać się wyłącznie z małych liter i cyfr"
-  attachment:
-    error:
-      too_large: Plik, który próbujesz załączyć, jest większy niż 100 megabajtów. Wybierz mniejszy plik.
   poll:
     error:
       cannot_add_options: Nie można dodać opcji do tej ankiety
@@ -112,18 +109,6 @@ pl:
   invitation:
     invitation_cancelled: Przepraszamy, to zaproszenie zostało odwołane przez koordynatora grupy. Poproś o kolejne zaproszenie od swojej grupy.
     invitation_already_used: To zaproszenie zostało już wykorzystane. Zaloguj się bezpośrednio do Loomio, aby przejść do grupy.
-  date:
-    formats:
-      for_this_year: " %e%b"
-      for_another_year: "%-d/%-m/%y"
-  time:
-    formats:
-      closing_soon_subject: "%d %b %H:%M"
-      for_today: "%l:%M %P"
-  validate:
-    motion:
-      must_close_in_future: Propozycja musi zostać w przyszłości zamknięta.
-      one_at_a_time: Jest kolejna aktywna propozycja.
   subscriptions:
     active: Aktywny
     inactive: Nieaktywny
@@ -167,13 +152,11 @@ pl:
   email:
     common:
       or_enter_code: Lub wprowadź kod poniżej
-      resend: Link wygaśnie za 24 godziny i można go użyć tylko raz.
     login:
       subject: Zaloguj się do %{site_name}
       login: Zaloguj się jako %{name}
     reactivate:
       subject: Ponownie aktywuj swoje konto %{site_name}
-      intro: Cześć %{name}, oto link do ponownej aktywacji konta%{site_name}.
       login: Ponownie aktywuj %{name}
     contact_request:
       subject: "%{name} chce się z Tobą połączyć na %{site_name}!"
@@ -188,19 +171,6 @@ pl:
           Otrzymałeś to, ponieważ Twój adres e-mail został wpisany w formularzu „Nie pamiętam hasła” w dniu %{hostname}.
           Jednak Twoje hasło nie zostanie zmienione, dopóki nie klikniesz powyższego linku i nie wypełnisz formularza.
           Jeśli nadal będziesz mieć problemy z zalogowaniem się, odpowiedz na tą wiadomość e-mail, aby skontaktować się z obsługą klienta.
-    start_decision:
-      subject: Rozpocznij decyzję na Loomio
-      intro: Dzień dobry,<strong>%{name}</strong>!
-      action: Co chcesz zrobić?
-      proposal: Wznieś propozycję
-      count: Rozpocznij głosowanie
-      poll: Rozpocznij ankietę
-      dot_vote: Rozpocznij głosowanie kropkowe
-      meeting: Zaplanuj czas
-      ranked_choice: Rozpocznij wybór rankingowy
-    custom: "%{text}"
-    group_email:
-      intro: "%{who} ogłosił/a w %{group}; "
     by_who: przez %{person}
     reply_to_this_discussion: Odpowiedz na tę dyskusję
     view_group: Wyświetl grupę
@@ -243,22 +213,7 @@ pl:
   email_actions:
     unfollowed_discussion: Wyłączono wiadomości e-mail dla wątku.
   discussion_mailer:
-    resend: 'PRZYPOMNIENIE: %{actor} czeka, aż dołączysz do %{discussion}'
-    new_discussion:
-      subject_html: "<strong>%{actor}</strong>utworzył/a wątek:%{discussion}"
-    discussion_edited:
-      subject_html: "<strong>%{actor}</strong> edytował/a wątek: %{discussion}"
-    discussion_announced:
-      subject_html: "<strong>%{actor}</strong> zaprasza Cię do przyłączenia się do %{discussion}"
-    new_comment:
-      subject_html: "<strong>%{actor}</strong> skomentował/a w:%{discussion}"
-    comment_replied_to:
-      subject: '%{actor} odpowiedział/a na: %{discussion}'
-      subject_html: '<strong>%{actor}</strong> odpowiedział/a na: %{discussion}'
-    user_mentioned:
-      subject: '%{actor} wspomniał/a o Tobie w: %{discussion}'
-      subject_html: "<strong>%{actor}</strong> wspomniał/a o Tobie w: %{discussion}"
-    reply_or_view_online_html: Odpowiedz bezpośrednio na tego e-maila lub <a href='%{url}'>wyświetl go na %{hostname}</a>.
+    reply_or_view_online_html: "Odpowiedz bezpośrednio na tego e-maila lub <a href='%{url}'>wyświetl go na %{hostname}</a>."
     turn_off_notifications_html: "<a href='%{url}'>Wyłącz wiadomości e-mail</a> dla tej dyskusji."
     change_email_preferences_html: "Zmień swoje <a href='%{email_preferences_url}'>preferencje e-mail</a>."
     unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Zakończ subskrypcję</a> dalszych powiadomień w tym wątku."
@@ -275,11 +230,6 @@ pl:
     public_groups: Grupy publiczne
     terms: Regulamin
     independent_install_html: '%{hostname} korzysta z niezależnej kopii Loomio: <a href="http://github.com/loomio/loomio">dowiedz się więcej</a>.'
-  invitation_form:
-    error:
-      too_many_pending: "Masz więcej niż maksymalną liczbę (%{count}) oczekujących zaproszeń dla tej grupy."
-      too_many_cancelled: "Masz więcej niż maksymalną liczbę (%{count}) anulowanych zaproszeń dla tej grupy"
-      all_email_addresses_belong_to_members: "Ci ludzie są już członkami grupy."
   password_reset:
     change_your_password: Zmień swoje hasło
     change_my_password: Zmień hasło
@@ -332,72 +282,12 @@ pl:
         Możesz zmienić swoją odpowiedź, gdy ankieta jest otwarta (być może w reakcji na nowe informacje).
 
         ** Zobacz jak to działa! Kliknij jeden z przycisków. **
-  markdown:
-    intro:
-      title: |
-          # Co to jest markdown?
-      body: |
-          Markdown to sposób pisania zwykłego tekstu (po lewej),
-          dzięki czemu można go przekonwertować na tekst sformatowany (po prawej).
-
-          Ta strona jest napisana w markdown, aby pokazać, jak to działa.
-    headers:
-      body: |
-          ## Nagłówki
-
-          Poprzedź znakiem # i spacją, by zmienić tekst w nagłówek.
-
-          # To jest h1
-          ## To jest h2
-          #### To jest h4
-    paragraphs:
-      title: |
-          ## Akapity
-      body: |
-          Musisz
-          pozostawić
-          pusty wiersz
-          pomiędzy linijkami.
-
-          Albo zakończy się to jako jeden duży paragraf!
-    emphasis:
-      title: |
-          ## Podkreślenie
-      body: |
-          Możesz wykursywić słowo używając _podkreślenia_ lub *gwiazdek*.
-
-          __Pogrub__ słowo podwajając **podkreślenie**.
-    lists:
-      title: |
-          ## Listy
-      body: |
-          Oto jak utworzyć listę:
-
-          *pozostaw pusty wiersz zanim rozpoczniesz listę
-          *użyj gwiazdek (*)
-          * zostaw wolne miejsce za gwiazdką
-    links:
-      title: |
-          ## Linki i zdjęcia
-      body: |
-          Kwadratowe nawiasy z tytułem, okrągłe z adresem URL. Bez spacji między nawiasami.
-
-          [Loomio Homepage](https://www.loomio.org/)
-
-          Zdjęcia są takie same, ale poprzedzone wykrzyknikiem. Tytuł używany jest jako tekst alternatywny.
-          ![loomio logo](https://i.imgur.com/Fvtworb.png)
   group_mailer:
     resend: 'PRZYPOMNIENIE: %{member} czeka, aż dołączysz do %{group_name}'
   poll_mailer:
-    resend: '%{actor}przypomina ci o głosowaniu w:%{title}'
     common:
-      or: lub
       why_send_this: Otrzymujesz tę wiadomość e-mail, ponieważ %{reason}
       view_on_loomio: Zobacz na %{site_name}
-      unsubscribe: Zrezygnuj z subskrypcji
-      results: Wyniki
-      responses: Odpowiedzi
-      change_your_stance: Zmień
       create_outcome: Udostępnij wynik
       your_response: "Twój głos:"
       please_respond: Odpowiedz
@@ -406,131 +296,4 @@ pl:
       undecided_visitors: Niezdecydowane zaproszone osoby (%{count})
       more_undecided: "%{count} więcej..."
       vote_now: Głosuj teraz
-      verify_stance_for_unverified_user: "Dziękujemy za oddanie głosu w %{title}. Prosimy o zweryfikowanie twojego adresu e-mail, żebyśmy mogli przesłać Ci wyniki, kiedy będą gotowe."
-      verify_stance_for_verified_user: "Wygląda na to, że oddałaś/eś głos w %{title}. Jeśli to Ty, kliknij  link poniżej w celu potwierdzenia Twojego głosu."
       you_have_until: Masz czas do %{when}  na wzięcie udziału
-      people_have_voted: "%{num} osób zagłosowało (%{pct}%)"
-    subject:
-      poll_created: '%{actor}utworzył/a %{poll_type}: %{title}'
-      poll_edited: '%{actor} edytował/a %{poll_type}: %{title}'
-      poll_announced: '%{actor} zaprasza Cię do głosowania w %{poll_type}:%{title}'
-      poll_closing_soon: '%{poll_type} zostanie zamknięte w ciągu 24 godzin: %{title}'
-      poll_closing_soon_author: 'Twoje %{poll_type} zakończy się w ciągu 24 godzin: %{title}'
-      poll_expired: "%{poll_type} zakończone: %{title}"
-      poll_option_added: '%{actor}dodał/a opcje do: %{title}'
-      poll_option_added_author: '%{actor}dodał/a opcje do: %{title}'
-      outcome_created: '%{actor} udostępnił/a %{poll_type} wynik: %{title}'
-      outcome_updated: '%{actor} zaktualizował/a %{poll_type} wynik: %{title}'
-      outcome_created_author: 'Udostępniłeś/aś %{poll_type} wynik: %{title}'
-      outcome_review_due: "Już czas by przejrzeć %{poll_type} wynik: %{title}"
-      outcome_announced: '%{actor} udostępnił/a %{poll_type} wynik: %{title}'
-      stance_created: "%{actor} zagłosował/a w: %{title}"
-      stance_updated: "%{actor} zagłosował/a w: %{title}"
-      stance_created_author: "Zweryfikuj swój głos w: %{title}"
-      user_mentioned: '%{actor} wspomniał/a o Tobie w: %{title}'
-      user_reminded: '%{actor}przypomina Ci o głosowaniu w:%{title}'
-    header:
-      poll_created: '<strong>%{actor}</strong> utworzył/a %{poll_type}'
-      poll_edited: '<strong>%{actor}</strong> edytował/a %{poll_type}'
-      poll_announced: '<strong>%{actor}</strong> zaprasza Cię do oddania głosu w %{poll_type}'
-      poll_closing_soon: '<strong>%{actor}</strong> %{poll_type} zakończy się w ciągu 24 godzin. To idealny moment, by zagłosować, zmienić zdanie lub zachęcić innych do wzięcia udziału.'
-      poll_closing_soon_author: 'Twoje %{poll_type} zakończy się w ciągu 24 godzin- to idealny moment, by przypomnieć o nim ludziom lub wydłużyć czas trwania, jeśli to konieczne.'
-      poll_expired: "<strong>%{actor}</strong>%{poll_type}zakończył/a %{title}"
-      poll_expired_author: 'Twoje %{poll_type} zostało <strong>zakończone</strong>. Poświęć proszę czas na zastanowienie się nad tym, co zostało powiedziane i <strong>podziel się wynikiem</strong> z grupą, żeby ludzie wiedzieli co stanie się następnie.'
-      poll_option_added: '<strong>%{actor}</strong>dodał/a opcje do: %{title}'
-      poll_option_added_author: '<strong>%{actor}</strong>dodał/a opcje do: %{title}'
-      outcome_created: '<strong>%{actor}</strong> udostępnił/a %{poll_type}wynik.'
-      outcome_updated: '<strong>%{actor}</strong> zaktualizował/a %{poll_type}wynik.'
-      outcome_review_due: "Już czas przyjrzeć się %{poll_type}wynikowi: %{title}. Rozważ rozpoczęcie wymiany poglądów na temat ankiety lub utworzenie nowego wątku skłaniającego do refleksji nad tym, w jaki sposób decyzja została wprowadzona w życie."
-      outcome_created_author: 'Udostępniłeś/aś %{poll_type} wynik.'
-      outcome_announced: '<strong>%{actor}</strong> udostępnił/a %{poll_type}wynik.'
-      stance_created: "<strong>%{actor}</strong> zagłosował/a na: %{title}"
-      stance_updated: "<strong>%{actor}</strong> zagłosował/a na: %{title}"
-      user_mentioned: '<strong>%{actor}</strong> wspomniał/a o Tobie w: %{title}'
-      user_reminded: '<strong>%{actor}</strong> przypomina Ci, aby zagłosować w: %{title}'
-    body:
-      voted: '<strong>%{participant}</strong>:'
-  comment_by: Komentarz %{comment_author}
-  notified:
-    no_matches_found: "Nie znaleziono wyników pasujących do '%{query}'"
-    group_users: "(%{count} osób)"
-    group_title: "%{name} (%{count} osób)"
-    public_title: Publiczne (Każdy w linkiem)
-  poll_unsubscribe:
-    title: Zostałeś wypisany z subskrypcji %{title}
-    helptext: Nie będziesz już dłużej otrzymywać wiadomości e-mail odnośnie tej decyzji.
-    visit_poll: Zobacz ankietę
-    go_to_dashboad: Przejdź do pulpitu
-  microsoft:
-    section_title: "[%{title}](%{url})"
-    new_discussion: "Nowy wątek w %{group}"
-    new_comment: "Nowy komentarz w %{group}"
-    outcome_created: "Wynik opublikowany w %{group}"
-    outcome_updated: "Wynik zaktualizowany w %{group}"
-    outcome_review_due: "Przegląd wyników z %{group}"
-    poll_created: "Nowa %{poll_type} w %{group}"
-    stance_created: "Nowa odpowiedź do %{poll}"
-    poll_closing_soon: "%{poll_type} zakończy się w ciągu 24 godzin"
-    poll_expired: "%{poll_type} zakończyła się "
-    group_identity_created: "Wydarzenia z %{group} będą się teraz wyświetlać na tym kanale"
-  webhook:
-    markdown:
-      new_discussion: "**%{actor}** utworzył/a dyskusję w %{group}: [%{title}](%{url})"
-      discussion_edited: "**%{actor}** edytował/a dyskusję w %{group}: [%{title}](%{url})"
-      new_comment: "**%{actor}** skomentował/a w [%{title}](%{url})"
-      outcome_created: "**%{actor}** udostępnił/a wynik %{poll_type}: [%{title}](%{url})"
-      outcome_update: "**%{actor}** edytował/a wynik %{poll_type}: [%{title}](%{url})"
-      outcome_review_due: "Czas przyjrzeć się wynikowi %{poll_type}: [%{title}](%{url})"
-      poll_created: "**%{actor}** utworzył/a %{poll_type} w %{group}: [%{title}](%{url})"
-      poll_edited: "**%{actor}** edytował/a %{poll_type} w %{group}: [%{title}](%{url})"
-      stance_created: "**%{actor}** zagłosował/a w [%{title}](%{url})"
-      stance_updated: "**%{actor}** zagłosował/a w [%{title}](%{url})"
-      poll_closing_soon: "Pozostały 24 godziny: [%{title}](%{url})"
-      poll_expired: "%{poll_type}: [%{title}](%{url}) zakończyło się "
-      poll_closed_by_user: "**%{actor}** zakończył/a %{poll_type}: [%{title}](%{url})"
-      poll_reopened: "**%{actor}** otworzył/a ponownie %{poll_type}: [%{title}](%{url})"
-  slack:
-    new_discussion: "Nowy wątek w *%{group}*: *%{discussion}*"
-    outcome_created: "Wynik opublikowany w *%{group}*: *%{poll}*"
-    outcome_updated: "Wynik edytowany w *%{group}*: *%{poll}*"
-    outcome_review_due: "Już czas przyjrzeć się wynikowi *%{group}*: *%{poll}*"
-    poll_created: "Nowe *%{poll_type}* w *%{group}*: *%{poll}*"
-    poll_closing_soon: "Przypomnienie: *%{poll}* zakończy się za 24 godziny "
-    poll_expired: "*%{poll}* zakończyło się "
-    poll_not_found: "Przepraszamy, nie odnaleziono tego głosowania. Wpisać '/loomio <poll_type> <title>' by zacząć kolejne?"
-    unknown_channel: |
-        Przepraszamy, wygląda na to, że nie ma grupy Loomio powiązanej w tym kanałem.
-        Spróbuj uruchomić 'Loomio'  na jednym z poniższych kanałów
-    stance_not_valid: "Przepraszamy, nie byliśmy w stanie stworzyć stanowiska dla *%{poll}*. <%{url}| Kliknij tutaj>, aby zagłosować bezpośrednio w ankiecie."
-    group_identity_created: |
-        Cześć, jestem botem Loomio! Zostałem dodany przez  *%{author}*.
-        Poinformuję Cię, kiedy tylko pojawią się nowe wątki lub ankiety w obrębie grupy *%{group}*
-
-        Jeśli jeszcze nie jesteś w grupie  *%{group}*, <%{url}|Kliknij tutaj> aby to zrobić.
-    request_authorization_message: "Jeszcze tylko jeden krok: <%{url}|Kliknij tutaj> żeby autoryzować Twoje konto na Slack i używać Loomio. (Trzeba zrobić to tylko raz)"
-    poll_closed: "*%{title}* już się zakończyła! <%{url}|Kliknij tutaj> żeby zobaczyć wyniki."
-    go_to_slack: Przejdź do Slack
-    stance_created: Dziękujemy za wzięcie udziału! Zagłosowałeś/aś *%{position}* w ankiecie <%{poll_url}|%{title}>. Jeśli zechcesz zmienić swój głos, lub podać powód dlaczego tak czujesz, <%{stance_url}|kliknij tutaj>.
-    click_to_vote: "Wybierz opcję poniżej, aby zagłosować:"
-    time_zone_message: (wszystkie godziny podane są w %{zone} strefie czasowej)
-    authorized_message: Świetnie! Możesz już głosować na Slack.
-    initiate: |
-        Okay, zróbmy to! <%{url}|Kliknij tutaj by rozpocząć swoją %{type}>.
-        (uwaga: opublikujemy ją na tym kanale w momencie, kiedy będzie utworzona, żeby każdy mógł wziąć w niej udział)
-    slash_command_help: |
-        Wpisz typ decyzji i pytanie, a my zajmiemy się resztą.
-        Możesz wybrać jeden z następujących typów decyzji:
-        „propozycja”: Szukaj porozumienia zbiorowego
-        „liczenie”: Śledź udział i znajdź wolontariuszy
-        „ankieta”: Mierz popularność opcji
-        „głosowanie kropkowe": Ustal priorytety z listy opcji
-        „spotkanie”: Znajdź czas na spotkanie
-        Lub rozpocznij rozmowę za pomocą „wątek Loomio"<title>
-
-        Na przykład:
-        Liczenie Loomio Kto przyjdzie na imprezę w niedzielę?
-        Aby rozpocząć nowe liczenie.
-        lub
-
-        Wątek Loomio Porozmawiajmy o kierunku  firmy
-        Aby rozpocząć nowy wątek

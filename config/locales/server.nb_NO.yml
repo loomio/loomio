@@ -23,7 +23,4 @@ nb_NO:
     public_groups: Offentlige grupper
   poll_mailer:
     common:
-      unsubscribe: Meld deg av
       create_outcome: Del resultat
-  poll_unsubscribe:
-    go_to_dashboad: Gå til skrivebordet

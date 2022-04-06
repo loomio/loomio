@@ -39,38 +39,6 @@ ru:
     discussions_count_plural: ({{count}} ветвей)
     tag_created: Метка записана
     tags_marked: Ветви, помеченные '{{name}}' в {{groupName}}
-  reactions:
-    slight_smile: Нравиться
-    heart: Люблю
-    laughing: Смех
-    clap: Хлопать в ладоши
-    hugging: Обнимать
-    sunglasses: Круто
-    wink: Подмигивать
-    nerd: Умный
-    relieved: Освобожденный
-    worried: Взволнован
-    confused: Смущенный
-    confounded: Посрамленный
-    neutral_face: Нейтральный
-    slight_frown: Хмуриться
-    disappointed: Разочарованный
-    angry: Рассерженный
-    weary: Утомлённый
-    astonished: Изумлённый
-    rolling_eyes: Закатить глаза
-    cry: Плакать
-    scream: Кричать
-    sleeping: Скучающий
-    thinking: Думать
-    raised_hands: Поднятые руки
-    pray: Молиться
-    fingers_crossed: Скрестить пальцы
-    v: Мир
-    metal: Метал
-    ok_hand: Хорошо
-    thumbsup: Одобрение
-    thumbsdown: Осуждение
   new_poll_types:
     poll: выбирать
   timezones:
@@ -323,6 +291,11 @@ ru:
   notifications:
     header: "Уведомления"
     no_notifications: "У Вас нет уведомлений"
+    with_title:
+      user_mentioned: "%{actor} упомянули вас в: %{title}"
+      user_reminded: "%{actor} напоминает, чтобы вы проголосовали за: %{title}"
+    without_title:
+      poll_expired: "%{poll_type} закрылся"
   discussion_fork_actions:
     move: Переместить
   discussion_form:
@@ -379,7 +352,6 @@ ru:
     upload_link: 'Загрузить новое фото обложки'
     upload_success: 'Фото обложки успешно загружено'
   logo_photo_form:
-    aria_label: 'Изменить логотип группы'
     heading: ' Новый логотип группы'
     upload_link: 'Загрузить новый логотип группы'
     image_size_helptext: 'Идеальный размер изображения 100х100px'
@@ -444,8 +416,6 @@ ru:
   membership_requests_page:
     approve: Подтвердить
     ignore: Игнорировать
-  group_previous_proposals_card:
-    heading: Предыдущие предложения
   invitation_form:
     invite_people: 'Пригласите людей'
     copy_link: 'Копировать'
@@ -482,9 +452,6 @@ ru:
       filter_threads: Фильтр Темы
       filter_threads_aria_label: Фильтр Темы
       proposals: Голосования
-    aria_thread:
-      current_proposal: 'Текущее голосование: {{name}}.'
-      you_voted: 'Ваш голос: {{position}}.'
     thread_preview:
       you_voted: 'Ваш голос {{position}}.'
     threads_from:
@@ -537,12 +504,6 @@ ru:
     email_placeholder: 'Введите ваш электронный адрес...'
     message_label: 'Ваше сообщение'
     send_message: 'Отправить сообщение'
-  hint:
-    context: 'Подсказки для использования контекстной панели'
-    discussion: 'Подсказки для начала увлекательного обсуждения'
-    invitation: 'Подсказки для написания отличного приглашения'
-    proposal: 'Подсказки для написания понятного предложения'
-    vote: 'Вы можете изменить вашу позицию в любое время'
   decision_tools_card:
     proposal_title: Предложение
     count_title: Проверка
@@ -557,6 +518,7 @@ ru:
     results: Результаты
     responses: Ответы
     start_poll: Начните решение
+    share_outcome: Поделиться результатом
     save_changes: Сохранить
   discussions_panel:
     open: Открыто
@@ -570,10 +532,6 @@ ru:
     all: 'Все'
     open: 'Открыто'
     closed: 'Закрыто'
-  current_polls_card:
-    start_poll: Новое решение
-  poll_common_set_outcome_panel:
-    share_outcome: Поделиться результатами
   poll_common_outcome_form:
     submit: Поделиться результатами
   poll_common_form:
@@ -586,22 +544,19 @@ ru:
     'no': 'Нет'
   poll_meeting_chart_panel:
     total: Всего
-  poll_common_subscribe_form:
-    subscribe: Подписаться
   auth_form:
     enter_your_name: Введите свое имя
     invalid_password: "Извините, этот пароль не совпадает с тем, который у нас есть в файле"
     email_placeholder: You@example.com
     name_placeholder: Ваше имя
     name: Название
+  chatbot:
+    password: Пароль
   webhook:
     formats:
       microsoft: Microsoft Teams
       slack: Slack
     name_label: Название
-  browser_warning:
-    message: "ВАЖНО! Вы используете устаревший браузер ({{имя}} {{версия}}), который нами не поддерживается {{сайт}}."
-    link: Пожалуйста, используйте другой браузер
   powered_by:
     privacy_policy: Политика конфиденциальности
     terms_of_service: Условия использования

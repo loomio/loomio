@@ -138,12 +138,6 @@ sk:
     subject_label: "Téma"
     email_label: 'Vaša emailová adresa'
     message_label: 'Vaša správa'
-  hint:
-    context: 'Rady pre používánie kontextového panelu'
-    discussion: 'Rady na zahájenie pútavej diskusie'
-    invitation: 'Rady na napísanie neodolateľnej pozvánky'
-    proposal: 'Rady na napísanie jasného návrhu'
-    vote: 'Môžete kdykoľvek svoj postoj zmeniť'
   poll_common:
     have_your_say: Vyjadrite svoj názor
     save_changes: Uložiť
@@ -165,13 +159,12 @@ sk:
     'no': 'Nie'
   auth_form:
     name_placeholder: Vaše meno
+  chatbot:
+    username: Prihlasovacie meno
+    password: Heslo
   webhook:
     name_label: Meno
   group_survey:
     categories:
       community: Komunitná skupina
-      other: Ostatné
-    uses:
-      other: Ostatné
-    referrers:
       other: Ostatné
