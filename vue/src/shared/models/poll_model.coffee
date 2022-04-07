@@ -63,9 +63,14 @@ export default class PollModel extends BaseModel
     @belongsTo 'author', from: 'users'
     @belongsTo 'discussion'
     @belongsTo 'group'
-    @hasMany   'pollOptions', orderBy: 'priority'
+    # @hasMany   'pollOptions', orderBy: 'priority'
     @hasMany   'stances'
     @hasMany   'versions'
+
+  pollOptions: ->
+    ids = @results.map((o) -> o.id).filter( (id) -> id != 0)
+    options = (@recordStore.pollOptions.collection.chain().find(id: {$in:ids}).data())
+    orderBy(options, 'priority')
 
   pollOptionsForVoting: ->
     if @shuffleOptions
