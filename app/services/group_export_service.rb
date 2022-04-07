@@ -253,6 +253,7 @@ class GroupExportService
         if data['table'] == 'polls'
           new_id = migrate_ids['polls'][data['record']['id']]
           Poll.find(new_id).update_counts!
+          Poll.find(new_id).stances.each(&:update_option_scores!)
         end
       end
     end
