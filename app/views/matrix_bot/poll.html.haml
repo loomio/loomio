@@ -1,0 +1,7 @@
+= render "matrix_bot/common/notification", event: @event
+= render "matrix_bot/common/title", eventable: @poll
+= render "matrix_bot/poll/summary", poll: @poll
+= render "matrix_bot/poll/vote", poll: @poll
+- if @poll.decided_voters_count > 0
+	= render "matrix_bot/poll/results", poll: @poll
+

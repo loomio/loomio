@@ -1,0 +1,10 @@
+- if resource.attachments.any?
+  %h4= t :'common.attachments'
+  %ul
+    - resource.files.each do |file|
+      - download_url = Rails.application.routes.url_helpers.rails_blob_url(file, only_path: false, host: ENV['CANONICAL_HOST'])
+      %li{style: "border: 1px solid #eee; border-radius: 4px; margin-bottom: 8px"}
+        %span 📎
+        %a.thread-mailer__file-attachment{href: download_url, target: '_blank'}
+          %span.thread-mailer__file-attachment-filername
+            = file.blob.filename

@@ -33,7 +33,8 @@ export default
     someRecipients: ->
       @poll.recipientAudience ||
       @poll.recipientUserIds.length ||
-      @poll.recipientEmails.length
+      @poll.recipientEmails.length ||
+      @poll.recipientChatbotIds.length
 
   methods:
     submit: ->
@@ -42,6 +43,7 @@ export default
         poll:
           recipient_audience: @poll.recipientAudience
           recipient_user_ids: @poll.recipientUserIds
+          recipient_chatbot_ids: @poll.recipientChatbotIds
           recipient_message: @poll.recipientMessage
       .then (data) =>
         count = data.count

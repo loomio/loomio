@@ -2,7 +2,6 @@ class Dev::PollsController < Dev::NightwatchController
   include Dev::ScenariosHelper
 
   def test_poll_scenario
-
     scenario =send(:"#{params[:scenario]}_scenario", {
                       poll_type: params[:poll_type],
                       anonymous: !!params[:anonymous],
@@ -12,6 +11,21 @@ class Dev::PollsController < Dev::NightwatchController
                       standalone: !!params[:standalone],
                       wip: !!params[:wip]
                     })
+
+    if ENV['TEST_MATRIX_SERVER']
+      Chatbot.create!(
+        group: scenario[:group],
+        kind: "matrix",
+        server: ENV['TEST_MATRIX_SERVER'],
+        channel: ENV['TEST_MATRIX_CHANNEL'], 
+        access_token: ENV['TEST_MATRIX_ACCESS_TOKEN'], 
+        event_kinds: ["new_discussion", "discussion_edited", "poll_created", "poll_edited", "poll_closing_soon", "poll_expired", "poll_reopened", "outcome_created"],
+        name: "Matrix chatbot"
+      )
+      ChatbotService.publish_configs!
+    end
+
+    scenario[:group].add_admin! scenario[:observer]
 
     sign_in(scenario[:observer]) if scenario[:observer].is_a?(User)
 

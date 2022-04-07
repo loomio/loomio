@@ -1,0 +1,20 @@
+- if poll.active?
+  %h5= t(:'poll_common.have_your_say')
+
+  - if poll.is_single_vote?
+    %ul
+      - poll.results.each do |option|
+        - next if option[:id] == 0
+        %li
+          %a{href: polymorphic_url(poll, poll_option_id: option[:id])}
+            - case option[:name_format]
+            - when 'i18n'
+              = t(option[:name])
+            - when 'iso8601'
+              = format_iso8601_for_humans(option[:name], @recipient.time_zone || poll.time_zone)
+            - else
+              = option[:name]
+  - else
+    %h3= link_to t('poll_common.vote_now'), polymorphic_url(poll)
+- if poll.wip?
+  %p= t(:"poll_common_action_panel.draft_mode", poll_type: t("poll_types.#{poll.poll_type}"))

@@ -1,0 +1,24 @@
+%table
+  %thead
+    %tr
+      %td= poll.time_zone
+      %td= t(:'poll_common.votes')
+      - poll.decided_voters.each do |user|
+        %td=render 'base_mailer/avatar', user: user, size: 24
+  %tbody
+    - poll.poll_options.each do |poll_option|
+      %tr
+        %td
+          = option_name(poll_option.name, poll.poll_option_name_format, poll.time_zone)
+        %td
+          %strong=((poll_option.total_score.to_f)/2).to_s.gsub('.0','')
+        - poll.decided_voters.each do |user|
+          %td
+            - score = poll_option.voter_scores.fetch(user.id.to_s, 0)
+            - if score == 2
+              ▓▓
+            - if score == 1
+              ▒▒
+▓▓ #{t('poll_meeting_vote_form.can_attend')}.
+▒▒ #{t('poll_meeting_vote_form.if_need_be')}.
+#{t('common.empty')} #{t('poll_meeting_vote_form.unable')}.

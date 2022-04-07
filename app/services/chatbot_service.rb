@@ -26,9 +26,19 @@ class ChatbotService
     MAIN_REDIS_POOL.with do |client|
       chatbots.where(id: event.recipient_chatbot_ids).each do |chatbot|
         # later, make a list and rpush into it. i guess
+        template_name = event.eventable_type.tableize.singularize
+        template_name = 'poll' if event.eventable_type == 'Outcome'
+        template_name = 'group' if event.eventable_type == 'Membership'
+
+        if %w[Poll Stance Outcome].include? event.eventable_type
+          poll = event.eventable.poll 
+        end
+
         client.publish("chatbot/publish", {
           chatbot_id: chatbot.id,
-          payload: serialize(event, 'html').as_json
+          payload: {
+            html: ApplicationController.renderer.render(layout: nil, template: "matrix_bot/#{template_name}", assigns: { poll: poll, event: event } )
+          }
         }.to_json)
       end
     end
@@ -59,13 +69,13 @@ class ChatbotService
     end
   end
 
-  def self.serialize(event, format)
-    serializer = [
-      "Webhook::#{format.classify}::#{event.kind.classify}Serializer",
-      "Webhook::#{format.classify}::#{event.eventable.class}Serializer",
-      "Webhook::#{format.classify}::BaseSerializer"
-    ].detect { |str| str.constantize rescue nil }.constantize
-    # serializer.new(event, root: false, scope: {webhook: webhook})
-    serializer.new(event, root: false)
-  end
+  # def self.serialize(event, format)
+  #   serializer = [
+  #     "Webhook::#{format.classify}::#{event.kind.classify}Serializer",
+  #     "Webhook::#{format.classify}::#{event.eventable.class}Serializer",
+  #     "Webhook::#{format.classify}::BaseSerializer"
+  #   ].detect { |str| str.constantize rescue nil }.constantize
+  #   # serializer.new(event, root: false, scope: {webhook: webhook})
+  #   serializer.new(event, root: false)
+  # end
 end
