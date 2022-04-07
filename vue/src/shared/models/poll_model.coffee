@@ -69,7 +69,7 @@ export default class PollModel extends BaseModel
 
   pollOptions: ->
     ids = @results.map((o) -> o.id).filter( (id) -> id != 0)
-    options = (@recordStore.pollOptions.collection.chain().find(id: {$in:ids}).data())
+    options = (@recordStore.pollOptions.collection.chain().find(pollId: @id, id: {$in:ids}).data())
     orderBy(options, 'priority')
 
   pollOptionsForVoting: ->
