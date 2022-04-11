@@ -157,11 +157,15 @@ zh_TW:
   email:
     common:
       or_enter_code: 或是在下方輸入代碼
+      resend: 這個將會在24小時後過期且僅可使用一次
     login:
       subject: 登入到 %{site_name}
+      intro: 嗨 %{name}，這是您用來登入 %{site_name} 的連結
+      intro_code: 嗨 %{name}，這是您用來登入 %{site_name} 的代碼
       login: 以 %{name} 的身份登入
     reactivate:
       subject: 重新啟用您的 %{site_name} 帳號
+      intro: 嗨 %{name}，這是用來重新啟用您的 %{site_name} 帳號的連結
       login: 重新啟用 %{name}
     contact_request:
       subject: "%{name} 想要與您在 %{site_name} 上連線！"
@@ -179,6 +183,7 @@ zh_TW:
     by_who: '%{person}'
     reply_to_this_discussion: 回應此討論串
     value_proposition: "%{site_name} 是一個討論與做出決定的地方"
+    loomio_app_description: "%{site_name} 是一個包容性組織的協作決策工具"
     view_group: 檢視群組
     to_join_group:
       subject: "%{member} 已邀請您加入在 %{site_name} 上的 %{group_name}"
@@ -319,3 +324,4 @@ zh_TW:
       more_undecided: "%{count} 更多……"
       vote_now: 現在投票
       you_have_until: 您到 %{when} 前都可以參與。
+      people_have_voted: "%{dnom} 中的 %{nom} 個人已投票 (%{pct}%)"

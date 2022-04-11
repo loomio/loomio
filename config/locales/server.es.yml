@@ -157,11 +157,15 @@ es:
   email:
     common:
       or_enter_code: O, ingresa el código debajo
+      resend: 'Este enlace perderá validez en 24 horas y solo puede ser usado una vez. '
     login:
       subject: Ingresa a %{site_name}
+      intro: Hola %{name},aquí está tu enlace para registrarte en %{site_name}.
+      intro_code: Hola %{name}, aquí está tu enlace para registrarte en %{site_name}.
       login: Ingresa como %{name}
     reactivate:
       subject: 'Reactiva tu %{site_name} cuenta '
+      intro: Hola %{name}, aquí esta el enlace para reactivar tu cuenta en %{site_name}
       login: Reactivar %{name}
     contact_request:
       subject: "%{name}quiere conectarse contigo en %{site_name}"
@@ -179,6 +183,7 @@ es:
     by_who: por %{person}
     reply_to_this_discussion: Contestar a esta discusión
     value_proposition: "%{site_name} es un lugar para tener discusiones y tomar decisiones"
+    loomio_app_description: "%{site_name} es una herramienta colaborativa de toma de decisiones para organizaciones inclusivas"
     view_group: Ver grupo
     to_join_group:
       subject: "%{member} te ha invitado a unirte a %{group_name} en %{site_name}"
@@ -319,3 +324,4 @@ es:
       more_undecided: "%{count} más..."
       vote_now: Votar ahora
       you_have_until: 'Tienes hasta %{when} para participar '
+      people_have_voted: "%{nom} de %{dnom} personas han votado (%{pct}%)"
