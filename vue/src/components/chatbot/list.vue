@@ -1,49 +1,61 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import AppConfig from '@/shared/services/app_config'
-import WebhookService from '@/shared/services/webhook_service'
+import ChatbotService from '@/shared/services/chatbot_service'
 import Records from '@/shared/services/records'
 import Flash  from '@/shared/services/flash'
 import openModal from '@/shared/helpers/open_modal'
 
 export default
   props:
-    close: Function
     group: Object
 
   data: ->
-    webhooks: []
+    chatbots: []
+    kinds: ['matrix', 'slack', 'discord', 'mattermost', 'teams']
     loading: true
+    addActions: {}
+    icons:
+      matrix: 'mdi-matrix'
+      slack: 'mdi-slack'
+      discord: 'mdi-discord'
+      mattermost: 'mdi-chat-processing'
+      teams: 'mdi-microsoft-teams'
 
   mounted: ->
-    Records.webhooks.fetch(params: {group_id: @group.id}).then => @loading = false
+    @addActions = ChatbotService.addActions(@group)
+
     @watchRecords
-      collections: ["webhooks"]
+      collections: ["chatbots"]
       query: (records) =>
-        @webhooks = records.webhooks.find(groupId: @group.id)
+        @chatbots = Records.chatbots.find(groupId: @group.id)
+
+    Records.chatbots.fetch(params: {group_id: @group.id}).then =>
+      @loading = false
 
   methods:
-    addAction: (group) ->
-      WebhookService.addAction(group)
-    webhookActions: (webhook) ->
-      WebhookService.webhookActions(webhook)
+    editChatbot: (bot) ->
+      openModal
+        component: 'ChatbotMatrixForm'
+        props:
+          chatbot: bot
+ 
 
 </script>
 <template lang="pug">
-v-card.webhook-list
+v-card.chatbot-list
   v-card-title
-    h1.headline(tabindex="-1" v-t="'matrix_box.setup_matrix_bot'")
+    h1.headline(tabindex="-1") Chatbots
     v-spacer
-    dismiss-modal-button(:close="close")
+    dismiss-modal-button
   v-card-text
     loading(v-if="loading")
-    v-list(v-if="!loading")
-      v-list-item(v-for="webhook in webhooks" :key="webhook.id")
+    template(v-if="!loading")
+      v-list-item(v-for="bot in chatbots" :key="bot.id" @click="editChatbot(bot)")
         v-list-item-content
-          v-list-item-title {{webhook.name}}
-        v-list-item-action
-          action-menu(:actions="webhookActions(webhook)")
+          v-list-item-title {{bot.name}}
+          v-list-item-subtitle {{bot.kind}} {{bot.server}} {{bot.channel}}
   v-card-actions
     v-spacer
-    v-btn(color='primary' @click='addAction(group).perform()' v-t="addAction(group).name")
+    action-menu(:actions='addActions' :name="$t('chatbot.add_chatbot')")
 </template>

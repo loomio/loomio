@@ -64,7 +64,7 @@ export default new class GroupService
         AppConfig.features.app.chatbots && group.adminsInclude(Session.user())
       perform: ->
         openModal
-          component: 'ChatbotForm'
+          component: 'ChatbotList'
           props:
             group: group
 

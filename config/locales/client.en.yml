@@ -2259,6 +2259,8 @@ en:
     test_connection: Test connection
     test_connection_ok: Looks good! You should see a message in the channel
     test_connection_bad: Something is wrong with the settings
+    name: Chatbot name
+    connection_test_successful: Loomio bot connection test successful!
     chatbot: Chatbot
     saved: Chatbot saved!
     homeserver_url: Homeserver URL
@@ -2266,6 +2268,9 @@ en:
     username: Username
     password: Password
     access_token: Access Token
+    add_chatbot: Add chatbot
+    matrix: Matrix
+    slack: Slack
 
   webhook:
     integrations: Integrations

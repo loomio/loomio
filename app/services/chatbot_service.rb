@@ -64,7 +64,7 @@ class ChatbotService
   def self.publish_test!(params)
     MAIN_REDIS_POOL.with do |client|
       data = params.slice(:server, :access_token, :channel)
-      data.merge!(message: I18n.t('webhook.hello', group: params[:group_name]))
+      data.merge!(message: I18n.t('chatbot.connection_test_successful', group: params[:group_name]))
       client.publish("chatbot/test", data.to_json)
     end
   end

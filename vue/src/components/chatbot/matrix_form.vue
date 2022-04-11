@@ -6,18 +6,12 @@ import Flash  from '@/shared/services/flash'
 
 export default
   props:
-    close: Function
-    group: Object
+    chatbot: Object
 
   data: ->
     chatbot: null
     kinds: AppConfig.webhookEventKinds
     testing: false
-
-  mounted: ->
-    Records.chatbots.fetch(params: {group_id: @group.id}).then =>
-      @chatbot = Records.chatbots.find(groupId: @group.id)[0] ||
-                 Records.chatbots.build(groupId: @group.id)
 
   methods:
     submit: ->
@@ -34,7 +28,7 @@ export default
         server: @chatbot.server
         access_token: @chatbot.accessToken
         channel: @chatbot.channel
-        group_name: @group.name
+        group_name: "group name was here"
       ).then =>
         Flash.success('chatbot.test_connection_ok')
       , =>
@@ -44,11 +38,11 @@ export default
 
 </script>
 <template lang="pug">
-v-card.webhook-list
+v-card.chatbot-matrix-form
   v-card-title
     h1.headline(tabindex="-1" v-t="'chatbot.chatbot'")
     v-spacer
-    dismiss-modal-button(:close="close")
+    dismiss-modal-button
   v-card-text
     loading(v-if="!chatbot")
     template(v-else)

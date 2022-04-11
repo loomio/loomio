@@ -43,7 +43,7 @@ v-card.webhook-list
         v-list-item-content
           v-list-item-title {{webhook.name}}
         v-list-item-action
-          action-menu(:actions="webhookActions(webhook)")
+          action-menu(:actions="webhookActions(webhook)" icon)
   v-card-actions
     v-spacer
     v-btn(color='primary' @click='addAction(group).perform()' v-t="addAction(group).name")
