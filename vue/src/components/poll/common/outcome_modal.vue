@@ -104,7 +104,7 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
           validation-errors(:subject='outcome' field='event_summary')
           v-text-field.poll-common-calendar-invite__location(v-model='outcome.eventLocation' type='text' :placeholder="$t('poll_common_calendar_invite.location_placeholder')" :label="$t('poll_common_calendar_invite.location')")
 
-    .outcome-review-on
+    .outcome-review-on(v-if="outcome.poll().pollType == 'proposal'")
       v-menu(ref='menu' v-model='isShowingDatePicker' :close-on-content-click='false' offset-y min-width="290px")
         template(v-slot:activator='{ on, attrs }')
           v-text-field(clearable v-model='outcome.reviewOn' placeholder="2050-12-31" :label="$t('poll_common_outcome_form.review_date')" :hint="$t('poll_common_outcome_form.review_date_hint')" v-on='on' v-bind="attrs" prepend-icon="mdi-calendar")

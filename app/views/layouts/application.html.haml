@@ -30,7 +30,7 @@
         %footer.v-footer.v-sheet.v-sheet--tile.theme--auto
           .layout.justify-space-around
             .powered-by.caption
-              %a{:href => "/?frontpage", :target => "_blank"}= t(:'powered_by.powered_by_loomio')
+              %a{:href => "https://www.loomio.com?utm_source=#{ENV['CANONICAL_HOST']}&utm_campaign=appfooter}", :target => "_blank"}= t(:'powered_by.powered_by_loomio')
               %span ·
               %a{:href => AppConfig.theme[:privacy_url], :target => "_blank"}= t(:'powered_by.privacy_policy')
               %span ·
