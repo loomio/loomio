@@ -20,7 +20,7 @@ export default class ThreadLoader
     @visibleKeys = {}
     @collapsed = Vue.observable({})
     @loading = false
-    @padding = 20
+    @padding = 50
     @maxAutoLoadMore = 5
 
   firstUnreadSequenceId: ->
