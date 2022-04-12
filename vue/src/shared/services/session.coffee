@@ -37,7 +37,7 @@ loadLocale = (locale) ->
         loadedLocales.push(locale)
         i18n.setLocaleMessage(locale, data)
         setI18nLanguage(locale)
-        Vue.forceUpdate()
+        EventBus.$emit('VueForceUpdate')
 
 export default new class Session
   defaultFormat: ->
