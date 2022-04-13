@@ -38,7 +38,7 @@ class Webhook::Html::BaseSerializer < ActiveModel::Serializer
   end
 
   def headline
-    MarkdownService.render_html(I18n.t(:"webhook.markdown.#{object.kind}", text_options))
+    MarkdownService.render_html(I18n.t(:"notifications.with_title.#{object.kind}", text_options))
   end
 
   private
