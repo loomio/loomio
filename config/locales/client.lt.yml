@@ -6,34 +6,6 @@ lt:
     modal_title: Sukurti naują žymę
     modal_edit_title: Taisyti žymę
     modal_destroy_title: Šalinti žymę
-  reactions:
-    heart: Meilė
-    laughing: Juokas
-    clap: Ploti
-    hugging: Apkabinimas
-    sunglasses: Šaunus
-    wink: Mirktelėti
-    nerd: Protingas
-    worried: Neramus
-    confused: Sumišęs
-    confounded: Suglumintas
-    neutral_face: Neutralus
-    slight_frown: Susiraukti
-    disappointed: Nusivylęs
-    angry: Piktas
-    weary: pavargęs
-    astonished: Apstulbintas
-    cry: Verkti
-    scream: Šaukti
-    sleeping: Nuobodžiaujantis
-    thinking: Galvojau
-    raised_hands: Pakeltos rankos
-    pray: Melstis
-    fingers_crossed: Sukryžiuoti pirštai
-    v: Taika
-    metal: Metalas
-    ok_hand: Gerai
-    wave: Banga
   common:
     no_results_found: Rezultatų nerasta
     you: Tu
@@ -201,8 +173,6 @@ lt:
     privacy: 'Privatumas'
     profile: Profilis
     submit_update: 'Atnaujinti nustatymus'
-  group_previous_proposals_card:
-    heading: Ankstesni pasiūlymai
   invitation_form:
     invite_people: 'Pakviesti žmones'
     group: 'Grupė'
@@ -247,8 +217,6 @@ lt:
       all: Paskiausios gijos
       all_description: Rodyti paskiausias gijas
       proposals: Pasiūlymai
-    aria_thread:
-      current_proposal: 'Esamas pasiūlymas: {{name}}.'
     threads_from:
       today: 'Šiandien'
       yesterday: 'Vakar'
@@ -299,3 +267,5 @@ lt:
     'no': 'Ne'
   poll_meeting_chart_panel:
     total: Iš viso
+  chatbot:
+    username: Naudotojo vardas

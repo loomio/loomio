@@ -48,8 +48,4 @@ cmn:
     public_groups: 公共组团
   poll_mailer:
     common:
-      or: 或者
-      unsubscribe: 取消订阅
       create_outcome: 分享成果
-  poll_unsubscribe:
-    go_to_dashboad: 访问仪表板

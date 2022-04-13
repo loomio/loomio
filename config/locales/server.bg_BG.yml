@@ -12,8 +12,6 @@ bg_BG:
       email: E-mail
       details: Подробности
   email:
-    group_email:
-      intro: "%{who} направи обявление в %{group}:"
     unsubscribe: 'Отписване или промяна на вашите e-mail предпочитания:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> за да се отпишете или смените e-mail предпочитаията си."
     catch_up:

@@ -85,12 +85,6 @@ bg_BG:
     title: 'Изтрий коментар'
   contact_message_form:
     subject_label: "Тема"
-  hint:
-    context: 'Насоки за използване на панела за контекста'
-    discussion: 'Насоки за започване на дискусия за приобщаване'
-    invitation: 'Насоки за писане на страхотни покани'
-    proposal: 'Насоки за писане на чисти предложения'
-    vote: 'Можете да промените позицията си по всяко време'
   poll_common:
     have_your_say: Кажете си думата
     save_changes: Запис
@@ -105,12 +99,10 @@ bg_BG:
     closed: 'Затворен'
   poll_common_form:
     closed: Затворен
+  chatbot:
+    password: Парола
   webhook:
     name_label: Име
   group_survey:
     categories:
-      other: Друго
-    uses:
-      other: Друго
-    referrers:
       other: Друго

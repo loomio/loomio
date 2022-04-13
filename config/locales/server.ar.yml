@@ -50,10 +50,10 @@ ar:
       members: أعضاء
       subgroups: الفِرَق الفرعية
       threads: المواضيع
+      polls: استطلاعات
       votes: أصوات
       comments: التعليقات
       general: جنرال لواء
-      polls: استطلاعات
       poll_types:
         proposal: اقتراح
         count: العد
@@ -72,9 +72,6 @@ ar:
       recaptcha: "لم نتمكن من التحقق من أنك لست روبوتًا.  حاول مرة اخرى!"
       bad_login: "عذرًا ، كلمة المرور هذه لا تتطابق مع كلمة المرور المسجلة لدينا"
       username_must_be_alphanumeric: "يجب أن تكون أسماء المستخدمين أحرف وأرقام صغيرة فقط"
-  attachment:
-    error:
-      too_large: الملف الذي حاولت إرفاقه أكبر من 100 ميغابايت ، يرجى اختيار ملف أصغر.
   poll:
     error:
       cannot_add_options: لا يمكن إضافة خيارات لهذا الاستطلاع
@@ -106,18 +103,6 @@ ar:
   invitation:
     invitation_cancelled: عذرًا ، تم إلغاء هذه الدعوة من قبل منسق المجموعة.  يرجى طلب دعوة أخرى من مجموعتك.
     invitation_already_used: تم استخدام هذه الدعوة بالفعل.  يرجى تسجيل الدخول إلى loomio مباشرة للمتابعة إلى مجموعتك.
-  date:
-    formats:
-      for_this_year: " %b%e"
-      for_another_year: "%-d/%-m/%y"
-  time:
-    formats:
-      closing_soon_subject: "%b %H:%M  %d"
-      for_today: "%l:%M %P"
-  validate:
-    motion:
-      must_close_in_future: يجب إغلاق الاقتراح في المستقبل.
-      one_at_a_time: هناك اقتراح نشط آخر.
   subscriptions:
     active: 'نشيط '
     inactive: غير نشط
@@ -143,13 +128,11 @@ ar:
   email:
     common:
       or_enter_code: أو أدخل الرمز أدناه
-      resend: ستنتهي صلاحية هذا الرابط في غضون 24 ساعة ويمكن استخدامه مرة واحدة فقط.
     login:
       subject: تسجيل دخول الى %{site_name}
       login: تسجيل الدخول باسم %{name}
     reactivate:
       subject: إعادة تنشيط حسابك %{site_name}
-      intro: مرحبا %{name}، هنا رابط لإعادة تنشيط حسابك %{site_name}.
       login: اعادة تفعيل %{name}
     contact_request:
       subject: "%{name} تود التواصل معك في%{site_name}! "
@@ -164,19 +147,6 @@ ar:
           لقد تلقيت هذا لأنه تم إدخال بريدك الإلكتروني في نموذج "نسيت كلمة المرور" في%{hostname} .
           ومع ذلك ، لن يتم تغيير كلمة المرور الخاصة بك حتى تتبع الرابط أعلاه وتكمل النموذج.
           إذا كنت لا تزال تواجه مشاكل في تسجيل الدخول ، فقم بالرد على هذا البريد الإلكتروني للاتصال بشخص الدعم.
-    start_decision:
-      subject: ابدأ اتخاذ قرار في Loomio
-      intro: 'مرحبا، <strong>%{name}</strong>! '
-      action: ماذا تريد ان تفعل؟
-      proposal: رفع مقترح
-      count: ابدأ فحصًا
-      poll: ابدأ الاستطلاع
-      dot_vote: بدء تصويت نقطي
-      meeting: حدد موعدًا
-      ranked_choice: ابدأ باختيار مرتبة
-    custom: "%{text}"
-    group_email:
-      intro: "%{who}قام بإعلان على %{group}:"
     by_who: من قبل %{person}
     reply_to_this_discussion: شارك في هذا النقاش
     view_group: عرض المجموعة
@@ -219,14 +189,7 @@ ar:
   email_actions:
     unfollowed_discussion: لقد أوقفت رسائل البريد الإلكتروني لموضوع التنفيذ.
   discussion_mailer:
-    resend: 'تذكير: %{actor} في انتظارك للانضمام%{discussion}'
-    new_discussion:
-      subject_html: "<strong>%{actor}</strong> بدأ موضوع:%{discussion}"
-    discussion_edited:
-      subject_html: "<strong>%{actor}</strong>حرر موضوع:%{discussion}"
-    new_comment:
-      subject_html: "%{discussion}:علق في<strong>%{actor}</strong>"
-    reply_or_view_online_html: قم بالرد مباشرة على هذه الرسالة أو <a href='%{url}'>استعرضها على %{hostname}</a>.
+    reply_or_view_online_html: "قم بالرد مباشرة على هذه الرسالة أو <a href='%{url}'>استعرضها على %{hostname}</a>."
     turn_off_notifications_html: "<a href='%{url}'>أطفئ الرسائل الالكترونية</a> لهذا النقاش."
   footer:
     about: حول
@@ -238,11 +201,6 @@ ar:
     public_groups: المجموعات العامة
     terms: شروط الخدمة
     independent_install_html: '%{hostname} يقوم بتشغيل نسخة مستقلة من لوميو:  <a href="http://github.com/loomio/loomio">قم بمعرفة المزيد</a>.'
-  invitation_form:
-    error:
-      too_many_pending: "لديك أكثر من الحد الأقصى للدعوات المعلقة لهذه المجموعة %{count}"
-      too_many_cancelled: "لديك أكثر من الحد الأقصى من الدعوات الملغاة لهذه المجموعة %{count}"
-      all_email_addresses_belong_to_members: "هؤلاء الأشخاص هم بالفعل أعضاء في المجموعة."
   password_reset:
     change_your_password: قم بتغيير كلمة السر
     change_my_password: تغيير كلمة المرور
@@ -264,29 +222,8 @@ ar:
     title: كيفية استخدام لوميو
   first_proposal:
     name: ' ؟ Loomio هل لديك أي أسئلة حول استخدام '
-  markdown:
-    intro:
-      body: |
-          التخفيض هو طريقة لكتابة نص عادي (يسار) ،
-          بحيث يمكن تحويله إلى نص منسق (يمين).
-
-          هذه الصفحة مكتوبة بخط اليد لإظهار كيفية عملها.
-    paragraphs:
-      title: |
-          ## الفقرات
-    lists:
-      title: |
-          ## القوائم
-    links:
-      title: |
-          ## الروابط والصور
   poll_mailer:
     common:
-      or: أو
-      unsubscribe: إلغاء الاشتراك
-      results: النتائج
-      responses: استجابات
-      change_your_stance: 'تغير '
       create_outcome: نتائج حصة
       your_response: "انت ادليت بصوتك:"
       please_respond: يرجى الرد
@@ -294,5 +231,3 @@ ar:
       undecided_members: 'الأعضاء غير محددين (%{count}) '
       undecided_visitors: 'ضيوف غير محددين ( %{count}) '
       vote_now: صوت الان
-  poll_unsubscribe:
-    visit_poll: مشاهدة الاستطلاع

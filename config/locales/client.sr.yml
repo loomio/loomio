@@ -170,7 +170,6 @@ sr:
   notifications:
     header: "Obaveštenja"
     no_notifications: "Nemate nikakvih obaveštenja"
-    publish_outcome: "Objavi jedan ishod"
   discussion_fork_actions:
     move: Premesti
   discussion_form:
@@ -210,8 +209,6 @@ sr:
     heading: Pitaj da se pridružiš grupi
     name_label: Ime
     email_label: ePošta
-    messages:
-      membership_requested: 'Zahtevali ste članstvo u {{group}}'
   revision_history_modal:
     started_by: 'Pokrenuto od <strong>{{name}}</strong>'
     edited_by: 'Izmenjeno od <strong>{{name}}</strong>'
@@ -314,9 +311,6 @@ sr:
     messages:
       request_approved_success: Zahtev za članstvom odobren
       request_ignored_success: Zahtev za članstvom je ignorisan
-  group_previous_proposals_card:
-    heading: Prethodni predlozi
-    see_more: Vidi još
   invitation_form:
     invite_people: 'Pozovi ljude'
     group: 'Grupa'
@@ -328,8 +322,6 @@ sr:
     add_custom_message_link: 'dodaj svoju poruku.'
     custom_message: 'Tvoja poruka'
     custom_message_placeholder: 'Unesite ličnu poruku koja će biti deo pozivnice.'
-    team_invitation_message: 'Alternativno,'
-    team_invitation_link: 'uzmi vezu za prosleđivanje.'
     add_members: 'Dodaj članove'
     from_parent_group: 'od {{name}}.'
     send: 'Pošalji'
@@ -411,10 +403,6 @@ sr:
       proposals_description: Vidi samo niti sa aktivnim predlozima
       muted_aria_label: Trenutno prikazuje utišane niti
       muted_description: Vidi samo niti koje su utišane
-    aria_thread:
-      unread: '{{count}} nepročitanih stavki.'
-      current_proposal: 'Trenutni predlog: {{name}}.'
-      you_voted: 'Vaš glas: {{position}}.'
     thread_preview:
       you_voted: 'Glasali ste {{position}}'
       undecided: 'Neodlučni ste'
@@ -477,12 +465,6 @@ sr:
     email_placeholder: 'Upiši svoju adresu ePošte'
     message_label: 'Tvoja poruka'
     send_message: 'Pošalji Poruku'
-  hint:
-    context: 'Saveti za upotrebu kontekstualnog panela'
-    discussion: 'Saveti za pokretanje zanimljive diskusije'
-    invitation: 'Saveti za pisanje sjajnog poziva'
-    proposal: 'Saveti za pisanje jasnog predloga'
-    vote: 'Možete promeniti svoj stav bilo kada'
   explore_page:
     single_search_result: "1 javna grupa se podudara sa <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "{{resultCount}} javnih grupa se podudara sa <strong>{{searchTerm}}:</strong>"
@@ -512,13 +494,12 @@ sr:
     'no': 'Ne'
   auth_form:
     name_placeholder: Tvoje ime
+  chatbot:
+    username: Korisničko Ime
+    password: Lozinka
   webhook:
     name_label: Ime
   group_survey:
     categories:
       community: Grupa zajednice
-      other: Ostalo
-    uses:
-      other: Ostalo
-    referrers:
       other: Ostalo

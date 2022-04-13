@@ -1,27 +1,6 @@
 fa_IR:
   subscription_status:
     members: "اعضا"
-  reactions:
-    slight_smile: دوست داشتن
-    heart: عشق
-    laughing: خنده
-    clap: دست زدن
-    hugging: بغل کردن
-    sunglasses: باحال
-    nerd: باهوش
-    worried: نگران
-    confused: حیران
-    neutral_face: طبیعی
-    disappointed: نا امید
-    angry: عصبانی
-    cry: گریه
-    scream: جیغ
-    sleeping: یک نواختی
-    thinking: در حال تفکر
-    pray: عبادت
-    v: صلح
-    ok_hand: باشه!
-    wave: دست تکان دادن
   common:
     you: شما
     ok_got_it: باشه، فهمیدم!
@@ -186,13 +165,9 @@ fa_IR:
   polls_panel:
     open: 'باز'
     closed: 'بسته'
-  poll_common_select_group:
-    loomio_group: گروه
   poll_common_form:
     closed: بسته
     start: شروع
     update: به روز رسانی
   poll_meeting_chart_panel:
     total: مقدار کلی
-  poll_common_subscribe_form:
-    subscribe: دنبال کردن

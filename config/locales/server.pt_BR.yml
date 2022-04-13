@@ -24,10 +24,10 @@ pt_BR:
       members: Membros
       subgroups: Subgrupos
       threads: Conversas
+      polls: Enquetes
       votes: Votos
       comments: Comentários
       general: Geral
-      polls: Enquetes
       poll_types:
         proposal: Proposta
         count: Contagem
@@ -46,9 +46,6 @@ pt_BR:
       recaptcha: "Não pudemos verificar que você não é um robô, por favor tente novamente."
       bad_login: "Desculpe, essa senha não confere com a que temos em arquivo"
       username_must_be_alphanumeric: "Nomes de usuário devem conter apenas letras minúsculas e números"
-  attachment:
-    error:
-      too_large: O arquivo que você tentou anexar é maior do que 100 megabytes, por favor escolha um arquivo menor.
   poll:
     error:
       cannot_add_options: Não é permitido adicionar opções a essa enquete
@@ -83,18 +80,6 @@ pt_BR:
   invitation:
     invitation_cancelled: Este convite foi revogado pela coordenação do grupo. Por favor solicite outro convite do seu grupo.
     invitation_already_used: Esse convite já foi usado. Por favor faça o login no Loomio diretamente para continuar no seu grupo.
-  date:
-    formats:
-      for_this_year: "%e %b"
-      for_another_year: "%-d/%-m/%y"
-  time:
-    formats:
-      closing_soon_subject: "%d %b %H:%M"
-      for_today: "%l:%M %P"
-  validate:
-    motion:
-      must_close_in_future: Proposta deve encerrar no futuro.
-      one_at_a_time: Há outra proposta ativa.
   subscriptions:
     active: Ativo
     inactive: Inativo
@@ -120,13 +105,11 @@ pt_BR:
   email:
     common:
       or_enter_code: Ou insira o código abaixo
-      resend: Esse link irá expirar em 24 horas e só pode ser acessado uma única vez.
     login:
       subject: Fazer login em %{site_name}
       login: Efetuar login como %{name}
     reactivate:
       subject: Reativar a sua conta %{site_name}
-      intro: Olá %{name}, aqui está o link para reativar sua conta em %{site_name}.
       login: Reativar %{name}
     contact_request:
       subject: "%{name} gostaria de se conectar com você em %{site_name}!"
@@ -141,19 +124,6 @@ pt_BR:
           Você recebeu este e-mail porque o seu foi requerido no formulário "Esqueci minha senha" em %{hostname}.
           No entanto, sua senha não será alterada até que você siga o link acima e preencha o formulário.
           Se você continuar a ter problemas de login, responda a este e-mail para entrar em contato com uma pessoa do suporte técnico.
-    start_decision:
-      subject: Comece a decisão no Loomio
-      intro: Olá, <strong>%{name}</strong>!
-      action: O que você gostaria de fazer?
-      proposal: Comece uma proposta
-      count: Iniciar uma checagem
-      poll: Iniciar uma enquete
-      dot_vote: Iniciar uma votação por pontos
-      meeting: Agende o horário
-      ranked_choice: Iniciar uma escolha classificada
-    custom: "%{text}"
-    group_email:
-      intro: "%{who} anunciou para %{group}:"
     by_who: por %{person}
     reply_to_this_discussion: Responder a esta discussão
     view_group: Ver grupo
@@ -196,22 +166,7 @@ pt_BR:
   email_actions:
     unfollowed_discussion: Você desativou emails para esse tópico.
   discussion_mailer:
-    resend: 'LEMBRETE: %{actor} está esperando você se juntar à discussão %{discussion}'
-    new_discussion:
-      subject_html: "<strong>%{actor}</strong> iniciou um tópico: %{discussion}"
-    discussion_edited:
-      subject_html: "<strong>%{actor}</strong> editou o tópico: %{discussion}"
-    discussion_announced:
-      subject_html: "<strong>%{actor}</strong> convidou você para participar de: %{discussion}"
-    new_comment:
-      subject_html: "<strong>%{actor}</strong> comentou em: %{discussion}"
-    comment_replied_to:
-      subject: '%{actor} respondeu a você em: %{discussion}'
-      subject_html: '<strong>%{actor}</strong> respondeu a você em: %{discussion}'
-    user_mentioned:
-      subject: '%{actor} mencionou você em: %{discussion}'
-      subject_html: "<strong>%{actor}</strong> mencionou você em %{discussion}"
-    reply_or_view_online_html: Responda a este e-mail diretamente ou <a href='%{url}'>veja em %{hostname}</a>.
+    reply_or_view_online_html: "Responda a este e-mail diretamente ou <a href='%{url}'>veja em %{hostname}</a>."
     turn_off_notifications_html: "<a href='%{url}'>Desligar e-mails</a> para esta discussão."
     change_email_preferences_html: "Altere suas <a href='%{email_preferences_url}'>preferências de e-mail</a>."
   footer:
@@ -224,11 +179,6 @@ pt_BR:
     public_groups: Grupos públicos
     terms: Termos
     independent_install_html: '%{hostname} está executando uma cópia independente do Loomio: <a href="http://github.com/loomio/loomio">saiba mais</a>.'
-  invitation_form:
-    error:
-      too_many_pending: "Você tem mais do que o máximo de %{count} convites pendentes neste grupo"
-      too_many_cancelled: "Você tem mais do que o máximo de %{count} convites cancelados neste grupo"
-      all_email_addresses_belong_to_members: "Estas pessoas já são membros deste grupo"
   password_reset:
     change_your_password: Mude sua senha
     change_my_password: Mudar senha
@@ -248,64 +198,12 @@ pt_BR:
         Qual é o seu papel ou caminho até chegar a participar deste grupo? O que as pessoas precisam saber de você para entender de onde você veio?
   how_it_works_thread:
     title: Como utilizar o Loomio
-  markdown:
-    intro:
-      title: |
-          # O que é remarcação?
-      body: |
-          Markdown é uma maneira de escrever texto simples (esquerda)
-          de modo que possa ser convertido para texto rico (direita).
-          Esta página está escrita com remarcação para mostrar como funciona.
-    headers:
-      body: |
-          ## Cabeçalhos
-
-          Comece com um jogo da velha e um espaço para transformar o texto em cabeçalho.
-
-          # Este é um h1
-          ## Este é um h2
-          #### Este é um h4
-    paragraphs:
-      title: |
-          ## Parágrafos
-      body: |
-          Você precisa
-          colocar uma
-          linha em branco
-          entre as linhas.
-
-          Ou vai acabar com um grande parágrafo!
-    emphasis:
-      title: |
-          ## Itálico
-      body: |
-          Você pode colocar em itálico uma palavra com _underscore_ ou *asterístico*.
-
-          __Negrito__ duplicando o **asterístico**.
-    lists:
-      title: |
-          ## Listas
-      body: |
-          Veja como fazer uma lista:
-
-          * deixe uma linha em branco antes da sua lista
-          * use asterístico (*)
-          * deixe um espaço depois do asterisco
-    links:
-      title: |
-          ## Links e Imagens
   group_mailer:
     resend: 'LEMBRETE: %{member} está esperando você participar de %{group_name}'
   poll_mailer:
-    resend: '%{actor} lembrou você de votar em %{title}'
     common:
-      or: ou
       why_send_this: 'Você está recebendo este e-mail pelo seguinte motivo: %{reason}'
       view_on_loomio: Visualizar em %{site_name}
-      unsubscribe: Cancelar subscrição
-      results: Resultados
-      responses: Respostas
-      change_your_stance: Mudar
       create_outcome: Compartilhar resultado
       your_response: "Você votou:"
       please_respond: Por favor responda
@@ -314,85 +212,4 @@ pt_BR:
       undecided_visitors: Convidados indecisos (%{count})
       more_undecided: "%{count} mais..."
       vote_now: Vote agora
-      verify_stance_for_unverified_user: "Obrigado por votar em %{title}. Fique de olho no seu e-mail, para que possamos lhe enviar os resultados ao fim da votação."
-      verify_stance_for_verified_user: "Parece que você votou em %{title}. Se foi você, por favor clique no link abaixo para confirmar seu voto."
       you_have_until: Você tem até %{when} para participar.
-    subject:
-      poll_option_added: '%{actor} adicionou opções em %{title}'
-      poll_option_added_author: '%{actor} adicionou opções em %{title}'
-      stance_created: "%{actor} votou em %{title}"
-      stance_updated: "%{actor} votou em %{title}"
-      stance_created_author: "Por favor verifique seu voto em %{title}"
-      user_mentioned: '%{actor} mencionou você em %{title}'
-      user_reminded: '%{actor} lembrou você de votar em %{title}'
-    header:
-      poll_option_added: '<strong>%{actor}</strong> adicionou opções a %{title}'
-      poll_option_added_author: '<strong>%{actor}</strong> adicionou opções a %{title}'
-      stance_created: "<strong>%{actor}</strong> votou em %{title}"
-      stance_updated: "<strong>%{actor}</strong> votou em %{title}"
-      user_mentioned: '<strong>%{actor}</strong> mencionou você em %{title}'
-      user_reminded: '<strong>%{actor}</strong> está lhe lembrando de votar em %{title}'
-    body:
-      voted: '<strong>%{participant}</strong>:'
-  comment_by: Comentário por %{comment_author}
-  notified:
-    no_matches_found: "Nenhum resultado encontrado para '%{query}'"
-    group_users: "(%{count} pessoa[s])"
-    group_title: "%{name} (%{count} pessoa[s])"
-    public_title: Público (qualquer pessoa com o link)
-  poll_unsubscribe:
-    title: Você não receberá mais notificações sobre %{title}
-    helptext: Você não receberá mais e-mails sobre essa decisão.
-    visit_poll: Ver enquete
-    go_to_dashboad: Ir à visualização geral
-  microsoft:
-    new_discussion: "Nova conversa em %{group}"
-    new_comment: "Novo comentário em %{group}"
-    outcome_created: "Resultado publicado em %{group}"
-    poll_created: "Nova %{poll_type} em %{group}"
-    stance_created: "Nova resposta à %{poll}"
-  webhook:
-    markdown:
-      poll_closing_soon: "24 horas sobrando: [%{title}](%{url})"
-  slack:
-    new_discussion: "Novo tópico em *%{group}*: *%{discussion}*"
-    outcome_created: "Proposta criada em *%{group}*> *%{poll}*"
-    poll_created: "Nova *%{poll_type}* em *%{group}*: *%{poll}*"
-    poll_closing_soon: "Lembrete: *%{poll}* encerrará em 24 horas"
-    poll_expired: "*%{poll}* encerrou"
-    poll_not_found: "Desculpe, enquete não encontrada. Digite \"/loomio <poll_type><title>\" (sem as aspas) para iniciar uma nova."
-    unknown_channel: |
-        Desculpe, não parece haver um grupo do Loomio associado a este canal.
-        Gostaria de tentar executar "/loomio" em um dos canais a seguir?
-        %{integrations}
-    stance_not_valid: "Desculpe, não foi possível criar um posicionamento em *%{poll}*. <%{url}|Clique aqui> para votar diretamente na enquete."
-    group_identity_created: |
-        Olá! Eu sou o Loomio Bot! *%{author}* me adicionou.
-        Eu avisarei você sempre que houver uma nova conversa ou enquete dentro do *%{group}*
-        Se você não assinou *%{group}* ainda, <%{url}|Clique aqui> para fazê-lo.
-    request_authorization_message: "Só mais uma etapa: <%{url}|clique aqui> para autorizar a sua conta do Slack a acessar o Loomio (você só precisará fazer isso uma vez)."
-    poll_closed: "*%{title}* Já encerrou! <%{url}|Clique aqui> para ver os resultados."
-    go_to_slack: Ir pro Slack
-    stance_created: Obrigado por participar! Você votou em *%{position}* na enquete <%{poll_url}|%{title}>, Se você quiser mudar seu voto, ou comentar por que escolheu essa opção, <%{stance_url}|clique aqui>.
-    click_to_vote: "Selecione uma opção abaixo para votar:"
-    time_zone_message: (Horários exibidos no fuso-horário %{zone})
-    authorized_message: Tudo certo! Você já pode votar utilizando o Slack.
-    initiate: |
-        Ok, vamos lá! <%{url}|Clique aqui para criar %{type}>.
-        (atenção: nós postaremos no canal uma vez que esteja concluído, para que todo o mundo possa participar)
-    slash_command_help: |
-        Basta escolher um tipo de decisão e uma pergunta, e nós faremos o resto.
-        Você pode escolher os seguintes tipos de decisão:
-        Proposta ('proposal'): buscar consenso entre participantes
-        Contagem ('count'): Verificar participações e pessoas voluntárias
-        Enquete ('poll'): Medir a popularidade de diversas opções
-        Votação por pontos ('dot_vote'): Priorizar opções de uma lista
-        Reunião ('meeting'): Escolher dia e hora para as pessoas se encontrarem
-        Ou apenas iniciar um tópico com '/loomio thread<title>'.
-
-        Por exemplo:
-        /loomio count Quem vem à festa no domingo?
-        Para criar uma contagem
-        ou
-        /loomio thread Vamos conversar sobre os caminhos da empresa
-        Para iniciar um novo tópico

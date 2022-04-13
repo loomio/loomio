@@ -21,22 +21,6 @@ ga_IE:
     modal_title: Cruthaigh clib nua
     modal_edit_title: Cuir clib in eagar
     modal_destroy_title: Bain clib
-  reactions:
-    laughing: Gáire
-    clap: Bualadh bos
-    hugging: Barróg
-    sunglasses: Seolta
-    nerd: Cliste
-    worried: Buartha
-    confused: Mearbhall
-    neutral_face: Neodrach
-    angry: Feargach
-    cry: Ag gol
-    scream: Scread
-    ok_hand: Tá go maith
-    wave: Crith láimhe
-    thumbsup: Ordóg in airde
-    thumbsdown: Ordóg thíos
   timezones:
     local: An t-am áitiúil ({{luach}})
   common:
@@ -241,9 +225,6 @@ ga_IE:
   notifications:
     header: "Fógraí"
     no_notifications: "Níl aon fhógra agat"
-    motion_closed: "Dúnadh an togra: <strong>{{title}}</strong>"
-    publish_outcome: "Foilsigh toradh"
-    poll_expired: "Tá {{poll_type}} dúnta: <strong>{{title}}</strong>"
   discussion_fork_actions:
     move: Bog é
   discussion_form:
@@ -287,8 +268,6 @@ ga_IE:
     name_label: Ainm
     email_label: Seoladh ríomhphoist
     introduction_label: Cén fáth is mian leat bheith mar chuid de?
-    messages:
-      membership_requested: 'D''iarr tú cead bheith i do chomhalta de {{group}}'
   revision_history_modal:
     posted: Foilsithe
     current_revision: Is déanaí
@@ -369,9 +348,6 @@ ga_IE:
     messages:
       request_approved_success: Iarratas le bheith mar chomhalta ceadaithe
       request_ignored_success: Déanadh neamhaird ar iarratas le bheith mar chomhalta
-  group_previous_proposals_card:
-    heading: Tograí Roimhe Seo
-    see_more: Féach tuilleadh
   invitation_form:
     invite_people: 'Tabhair cuirí do dhaoine'
     group: 'Baicle'
@@ -380,7 +356,6 @@ ga_IE:
     email_addresses: 'Seoltaí ríomhphoist'
     email_addresses_placeholder: 'm.sh. helperbot@loomio.org, friendlybot@loomio.org'
     custom_message: 'Teachtaireacht saincheaptha'
-    team_invitation_link: 'faigh nasc le roinnt ar dhaoine.'
     add_members: 'Cuir comhaltaí leis'
     from_parent_group: 'ó {{name}}.'
     send: 'Seol'
@@ -458,10 +433,6 @@ ga_IE:
       proposals_description: Féach ar snáitheanna le tograí gníomhacha amháin
       muted_aria_label: Ag taispeáint faoi láthair na snáitheanna balbhaithe
       muted_description: Taispeáin na snáitheanna balbhaithe amháin
-    aria_thread:
-      unread: '{{count}} míreanna nár léadh.'
-      current_proposal: 'An togra reatha: {{name}}.'
-      you_voted: 'Is mar seo a chaith tú do ghuth: {{position}}.'
     thread_preview:
       undecided: 'Níl cinneadh déanta agat'
     threads_from:
@@ -520,11 +491,6 @@ ga_IE:
     email_placeholder: 'Cuir isteach do sheoladh ríomhphoist...'
     message_label: 'Do theachtaireacht'
     send_message: 'Seol an teachtaireacht'
-  hint:
-    discussion: 'Leideanna chun tús a chur le plé mealltach'
-    invitation: 'Leideanna chun cuireadh den scoth a scríobh'
-    proposal: 'Leideanna chun togra soiléir a scríobh'
-    vote: 'Tig leat do sheasamh a athrú am ar bith'
   global:
     messages:
       reload: 'Athluchtaigh é'
@@ -552,14 +518,10 @@ ga_IE:
     all: 'Uile'
     open: 'Ar oscailt'
     closed: 'Dúnta'
-  current_polls_card:
-    start_poll: Cinneadh nua
   poll_common_calendar_invite:
     event_duration: Fad
     event_summary: Ainm an chruinnithe
     location: Suíomh
-  poll_common_close_form:
-    close_proposal: Dún an togra
   poll_common_closing_at_field:
     closing: Ag dúnadh
   poll_common_form:
@@ -583,9 +545,6 @@ ga_IE:
     reason_label: Teachtaireacht
   poll_meeting_chart_panel:
     total: Iomlán
-  poll_common_subscribe_form:
-    subscribe: Liostáil
-    no_thanks: Níor mhaith liom é
   auth_form:
     code: '000000'
     continue: Lean ar aghaidh
@@ -601,25 +560,14 @@ ga_IE:
     name: Ainm
     email: Seoladh ríomhphoist
     password: Focal faire
+  chatbot:
+    username: Ainm úsáideora
+    password: Focal faire
   webhook:
     formats:
       microsoft: Microsoft Teams
       slack: Slack
     name_label: Ainm
   group_survey:
-    success: Go raibh maith agat!
     categories:
       other: Eile
-    sizes:
-      ten: "< 10"
-      twenty: "11 - 20"
-      fifty: "21 - 50"
-      two_hundred: "51 - 200"
-      five_hundred: "201 - 500"
-      two_thousand: "501 - 2000"
-      else: "> 2000"
-    uses:
-      other: Eile
-    referrers:
-      other: Eile
-    referrer: "Cén chaoi a chuir tú eolas ar Loomio?"

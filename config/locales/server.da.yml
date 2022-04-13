@@ -21,13 +21,6 @@ da:
       group_name: Gruppenavn
       reason: Begrundelse
       total: Total
-  time:
-    formats:
-      closing_soon_subject: "%d %b %H:%M"
-  validate:
-    motion:
-      must_close_in_future: Forlag skal lukkes frem i tiden.
-      one_at_a_time: Der er en andet aktivt forslag.
   email:
     reset_password:
       greeting: |+
@@ -39,9 +32,6 @@ da:
           Du modtager denne email fordi din email adresse blev indtastet i "Jeg har glemt min adgangskode"  formular on %{hostname}.
           Din adgangkode vil først blive ændret når du klikker på linket herover og udfylder formularen.
           Hvis du stadig har problemer med at logge ind, besvar denne email for at kontakte support.
-    custom: "%{text}"
-    group_email:
-      intro: "%{who} oprettede en bekendtgørelse til %{group}:"
     by_who: af %{person}
     reply_to_this_discussion: Svar på denne diskussion
     view_group: Vis gruppe
@@ -72,7 +62,7 @@ da:
       view_group: Du kan godkende eller afvise anmodningen her
       button_text: Vis anmodning
   discussion_mailer:
-    reply_or_view_online_html: Svar på denne e-mail eller <a href='%{url}'>se det på %{hostname}</a>.
+    reply_or_view_online_html: "Svar på denne e-mail eller <a href='%{url}'>se det på %{hostname}</a>."
     turn_off_notifications_html: "<a href='%{url}'>Slå email notifikationer fra</a> for denne diskussion."
   footer:
     about: Om
@@ -96,70 +86,9 @@ da:
         Hvad er din rolle eller tilgang til at deltaget i denne gruppe? Hvad er vigtigt for andre deltagere at vide om dig for at bedre forstå dit perspektiv?
   how_it_works_thread:
     title: Sådan bruger du Loomio
-  markdown:
-    intro:
-      title: |
-          # Hvad er markdown?
-      body: |
-          Markdown er en måde at formattere rå tekst (venstre),
-          så det kan vises som formateret tekst (højre).
-
-          Denne side er skrevet i markdown for at vise hvordan det virker.
-    headers:
-      body: |
-          ## Overskrift
-
-          Skriv en eller flere "havelåger" og afslut med et mellemrum for at lave teksten til en overskrift.
-
-          # Dette er en h1
-          ## Dette er en h2
-          #### Dette er en h4
-    paragraphs:
-      title: |
-          ## Paragraffer
-      body: |
-          Du skal
-          oprette en
-          blank linje
-          mellem linjer.
-
-          Ellers bliver det til en stor paragraf!
-    emphasis:
-      title: |
-          ## Fed skrift
-      body: |
-          Du kan lave skrå skrift ved at omringe den relevante tekst med  _underscore_ eller *star*.
-
-          __Fed skrift__ opnås ved at omringe den tekst med 2 stjerner foran og bagved **emphasis**.
-    lists:
-      title: |
-          ## Lister
-      body: |
-          Man kan lave en liste ved at:
-
-          * hav en blank linie før din liste
-          * start linien med en stjerne (*)
-          * efterfulgt af et mellemrum og så din tekst
-    links:
-      title: |
-          ## Link og billeder
   poll_mailer:
     common:
-      or: eller
       why_send_this: Du modtager denne email fordi %{reason}
-      unsubscribe: Afmeld
-      results: Resultater
-      responses: Svar
-      change_your_stance: Redigér
       create_outcome: Del resultat
       please_respond: Svar venligst
       time_zone: (Tider er vist i %{zone})
-    subject:
-      stance_created: "%{actor} stemte på: %{title}"
-      stance_updated: "%{actor} stemte på: %{title}"
-    header:
-      stance_created: "<strong>%{actor}</strong> stemte på: %{title}"
-      stance_updated: "<strong>%{actor}</strong> stemte på: %{title}"
-    body:
-      voted: '<strong>%{participant}</strong>:'
-  comment_by: Kommentar fra %{comment_author}

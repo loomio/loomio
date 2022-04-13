@@ -42,7 +42,8 @@ export default class PollModel extends BaseModel
     attachments: []
     linkPreviews: []
     notifyOnClosingSoon: 'undecided_voters'
-    pleaseShowResults: false
+    results: []
+    pollOptionIds: []
     recipientMessage: null
     recipientAudience: null
     recipientUserIds: []
@@ -62,9 +63,13 @@ export default class PollModel extends BaseModel
     @belongsTo 'author', from: 'users'
     @belongsTo 'discussion'
     @belongsTo 'group'
-    @hasMany   'pollOptions', orderBy: 'priority'
+    # @hasMany   'pollOptions', orderBy: 'priority'
     @hasMany   'stances'
     @hasMany   'versions'
+
+  pollOptions: ->
+    options = (@recordStore.pollOptions.collection.chain().find(pollId: @id, id: {$in: @pollOptionIds}).data())
+    orderBy(options, 'priority')
 
   pollOptionsForVoting: ->
     if @shuffleOptions

@@ -52,39 +52,6 @@ tr:
     discussions_count_plural: ({{count}} müzakereler)
     tag_created: Etiket kaydedildi
     tags_marked: 'Müzakereler {{groupName}} içinde ''{{name}}'' ile işaretlendi '
-  reactions:
-    slight_smile: Beğen
-    heart: Aşk
-    laughing: Kahkaha
-    clap: Alkış
-    hugging: Kucaklama
-    sunglasses: Harika
-    wink: Göz kırp
-    nerd: Zeki
-    relieved: Rahatlamış
-    worried: Endişeli
-    confused: Aklı karışmış
-    confounded: Şaşkın
-    neutral_face: Tarafsız
-    slight_frown: Hoşnutsuz
-    disappointed: Hayal kırıklığına uğramış
-    angry: Kızgın
-    weary: Yorgun
-    astonished: Hayrete düşmüş
-    rolling_eyes: Gözlerini devir
-    cry: Ağla
-    scream: Çığlık
-    sleeping: Canı sıkkın
-    thinking: Düşünceli
-    raised_hands: Heyecanlı
-    pray: Dua etmek
-    fingers_crossed: Şans dilemek
-    v: Huzur
-    metal: Metal
-    ok_hand: Tamam
-    wave: Dalga
-    thumbsup: Onayla
-    thumbsdown: Reddet
   poll_types:
     proposal: öneri
     count: kontrol et
@@ -336,7 +303,6 @@ tr:
     cancel_invitation: Davetiyeyi iptal et
   notifications:
     header: "Bildirimler"
-    publish_outcome: "Bir sonuç yayınla"
   discussion_fork_actions:
     move: Taşı
   discussion_form:
@@ -391,8 +357,6 @@ tr:
     introduction_label: Neden katılmak istiyorsun?
     submit_button: Katılmak için talep gönder
     introduction_over_limit: Yanıt çok uzun
-    messages:
-      membership_requested: '{{group}} grubuna üyelik talebi gönderdin.'
   revision_history_modal:
     aria_label: Revizyon geçmişi
     started_by: '<strong>{{name}}</strong> tarafından başlatıldı'
@@ -507,9 +471,6 @@ tr:
     messages:
       request_approved_success: Üyelik talebi onaylandı
       request_ignored_success: Üyelik talebi yok sayıldı.
-  group_previous_proposals_card:
-    heading: Geçmiş öneriler
-    see_more: Daha fazlasını görün
   invitation_form:
     invite_people: 'Kişileri davet et'
     group: 'Grup'
@@ -521,8 +482,6 @@ tr:
     add_custom_message_link: 'özel bir mesaj ekleyin.'
     custom_message: 'Özel mesaj'
     custom_message_placeholder: 'Davetiyeye dahil etmek için bir kişisel mesaj girin.'
-    team_invitation_message: 'Alternatif olarak,'
-    team_invitation_link: 'paylaşmak için bir bağlantı edinin.'
     add_members: 'Üyeleri ekle'
     from_parent_group: '{{name}} tarafından.'
     send: 'Gönder'
@@ -599,10 +558,6 @@ tr:
       muted: Sesi Kısılmış Müzakereler
       muted_aria_label: Şu anda sesi kısılmış müzakereler görüntüleniyor
       muted_description: Sadece sesi kısılmış müzakereleri görüntüleyin
-    aria_thread:
-      unread: '{{count}} okunmamış öğe.'
-      current_proposal: 'Güncel öneri: {{name}}.'
-      you_voted: 'Oy verdiniz: {{position}}.'
     threads_from:
       group: 'tarafından müzakereler'
       proposals: 'Aktif kararları olan müzakereler'
@@ -672,12 +627,6 @@ tr:
     email_placeholder: 'Eposta adresinizi giriniz...'
     message_label: 'Mesajın'
     send_message: 'Mesaj gönder'
-  hint:
-    context: 'İçerik panelini kullanmak için ipuçları'
-    discussion: 'İlgi çekici bir müzakere başlatmak için ipuçları'
-    invitation: 'Harika bir davetiye yazmak için ipuçları'
-    proposal: 'Anlaşılır bir öneri yazmak için ipuçları'
-    vote: 'Konumunu istediğin zaman değiştirebilirsin'
   global:
     messages:
       reload: 'Tekrar yükle'
@@ -704,8 +653,6 @@ tr:
     all: 'Hepsi'
     open: 'Açık'
     closed: 'Kapalı'
-  poll_common_close_form:
-    close_proposal: Öneriyi kapat
   poll_common_form:
     closed: Kapalı
     start: Başla
@@ -714,18 +661,15 @@ tr:
     'no': 'Hayır'
   poll_meeting_chart_panel:
     total: Toplam
-  poll_common_subscribe_form:
-    subscribe: Abone ol
   auth_form:
     name_placeholder: Adın
     name: İsim
+  chatbot:
+    username: Kullanıcı adı
+    password: Şifre
   webhook:
     name_label: İsim
   group_survey:
     categories:
       community: Topluluk grubu
-      other: Diğer
-    uses:
-      other: Diğer
-    referrers:
       other: Diğer

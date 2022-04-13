@@ -18,13 +18,6 @@ tr:
       details: Detaylar
       group_name: Grup adı
       total: Toplam
-  time:
-    formats:
-      closing_soon_subject: "%d %b %H:%M"
-  validate:
-    motion:
-      must_close_in_future: Teklif gelecekte kapatılmalıdır.
-      one_at_a_time: Başka bir aktif teklif var.
   user_mailer:
     merge_verification:
       confirm_page:
@@ -32,9 +25,6 @@ tr:
   email:
     reset_password:
       link_text: Parolanızı sıfırlayın
-    custom: "%{text}"
-    group_email:
-      intro: "%{who} %{group} grubunda yeni bir duyuru yaptı:"
     by_who: '%{person} tarafından'
     reply_to_this_discussion: Bu müzakereyi yanıtla
     view_group: Grubu gör
@@ -56,7 +46,7 @@ tr:
       subject: "%{who} %{which_group} grubuna katılmak için talep gönderdi"
       view_group: Burada isteği onaylayabilir ya da reddedebilirsin
   discussion_mailer:
-    reply_or_view_online_html: Bu e-postayı doğrudan yanıtlayın veya <a href='%{url}'>%{hostname} üzerinde görüntüleyin</a>.
+    reply_or_view_online_html: "Bu e-postayı doğrudan yanıtlayın veya <a href='%{url}'>%{hostname} üzerinde görüntüleyin</a>."
     turn_off_notifications_html: "Bu müzakere için <a href='%{url}'>e-postaları devre dışı bırakın</a>."
   footer:
     about: Hakkında
@@ -72,7 +62,3 @@ tr:
     reset_email_timeframe: E-postanın ulaşması 5 dakikaya kadar sürebilir. Eğer e-posta ulaşmazsa, spam klasörünüzü kontrol ettiğinizden emin olun.
     length_restriction: Şifreler en az 8 karakter uzunluğunda olmalıdır.
     forbidden_passwords: ' "12345" gibi yaygın şifreler hesabınızın güvenliği için yasaklanmıştır.'
-  poll_mailer:
-    common:
-      unsubscribe: Aboneliği iptal et
-  comment_by: '%{comment_author} tarafından yapılan yorum'

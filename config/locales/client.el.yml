@@ -248,13 +248,11 @@ el:
   formatting:
     attach: Επισυνάψτε αρχείο
   cover_photo_form:
-    aria_label: 'Αλλάξτε την φωτογραφία φόρμας εξωφύλλου'
     heading: 'Νέα φωτογραφία εξωφύλλου'
     upload_link: 'Ανεβάστε νέα φωτογραφία εξωφύλλου'
     image_size_helptext: 'Το καταλληλότερο μέγεθος εικόνας είναι 1400×320px'
     upload_success: 'Η φωτογραφία εξωφύλλου ανανεώθηκε επιτυχώς'
   logo_photo_form:
-    aria_label: 'Αλλάξτε την φόρμα λογότυπου της ομάδας'
     heading: 'Νέο λογότυπο ομάδας'
     upload_link: 'Ανεβάστε νέο λογότυπο ομάδας'
     image_size_helptext: 'Ιδανικό μέγεθος είναι 100×100px'
@@ -272,8 +270,6 @@ el:
     introduction_label: Γιατί θέλετε να συμμετάσχετε;
     submit_button: Ρωτήστε για να συμμετάσχετε
     introduction_over_limit: Η απάντηση είναι πολύ μεγάλη
-    messages:
-      membership_requested: 'Έχετε αιτηθεί εγγραφή μέλους στην ομάδα {{group}}'
   revision_history_modal:
     aria_label: Αναθεώρηση ιστορικού
     started_by: 'Ξεκίνησε από <strong>{{name}}</strong>'
@@ -361,8 +357,6 @@ el:
     heading: Αιτήσεις εγγραφής μελών
     approve: Έγκριση
     ignore: Αγνοήστε
-  group_previous_proposals_card:
-    heading: Προηγούμενες προτάσεις
   invitation_form:
     invite_people: 'Προσκαλέστε άτομα'
     copy_link: 'Αντιγραφή'
@@ -420,12 +414,6 @@ el:
     subject_label: "Θέμα"
     email_label: 'Η Ηλεκτρονική Διεύθυνση σας'
     message_label: 'Το μήνυμα σας'
-  hint:
-    context: 'Συμβουλές για να χρησιμοποιήτε τον πίνακα περιεχόμενων'
-    discussion: 'Συμβουλές για να ξεκινήσετε μια ενδιαφέρουσα συζήτηση'
-    invitation: 'Συμβουλές για να γράψετε μια  μεγάλη πρόσκληση'
-    proposal: 'Συμβουλές για να γράψετε καθαρά μια πρόταση'
-    vote: 'Μπορείτε να αλλάξετε την θέση σας ανά πάσα στιγμή'
   decision_tools_card:
     proposal_title: Πρόταση
     count_title: Έλεγχος
@@ -448,29 +436,21 @@ el:
     all: 'Όλα'
     open: 'Άνοιγμα'
     closed: 'Έκλεισε'
-  current_polls_card:
-    start_poll: Νέα απόφαση
-  poll_common_close_form:
-    close_proposal: Κλείσιμο πρότασης
   poll_common_form:
     closed: Έκλεισε
     start: Εκίνηση
   poll_count_options:
     'yes': 'Ναι'
     'no': 'Όχι'
-  poll_common_subscribe_form:
-    subscribe: Εγγραφή
   auth_form:
     email_placeholder: you@example.com
     name_placeholder: Το όνομα σας
+  chatbot:
+    username: Όνομα χρήστη
+    password: Κωδικός
   webhook:
     name_label: Όνομα
   group_survey:
-    success: Ευχαριστούμε!
     categories:
       community: Ομάδα Κοινότητας
-      other: Άλλο
-    uses:
-      other: Άλλο
-    referrers:
       other: Άλλο

@@ -19,8 +19,6 @@ el:
       details: Λεπτομέρειες
       group_name: Όνομα ομάδας
   email:
-    group_email:
-      intro: "Ο/Η %{who} έκανε μια ανακοίνωση στην ομάδα %{group}:"
     by_who: από τον/την %{person}
     reply_to_this_discussion: Απαντήστε σε αυτή την συζήτηση
     unsubscribe: 'Διαγραφείτε ή αλλάξτε τις ρυθμίσεις του ηλεκτρονικού ταχυδρομείου:'
@@ -34,7 +32,7 @@ el:
       subject: "%{who} έχει αιτηθεί να συμμετάσχει στην ομάδα %{which_group}"
       view_group: Μπορείς να εγκρίνεις ή να απορρίψεις την αίτηση εδώ
   discussion_mailer:
-    reply_or_view_online_html: Απαντήστε άμεσα σε αυτό το ηλεκτρονικό μήνυμα ή <a href='%{url}'>δείτε το στο %{hostname}</a>.
+    reply_or_view_online_html: "Απαντήστε άμεσα σε αυτό το ηλεκτρονικό μήνυμα ή <a href='%{url}'>δείτε το στο %{hostname}</a>."
     turn_off_notifications_html: "<a href='%{url}'> Απενεργοποίηση ηλεκτρονικών μηνυμάτων </a> για αυτή τη συζήτηση."
   footer:
     about: Σχετικά
@@ -49,7 +47,3 @@ el:
   password_reset:
     length_restriction: Οι κωδικοί πρέπει να είναι τουλάχιστον 8 χαρακτήρες.
     forbidden_passwords: Κοινοί κωδικοί όπως "password" απαγορεύονται για να προστατευτεί ο λογαριασμός σου.
-  poll_mailer:
-    common:
-      unsubscribe: Κατάργηση εγγραφής
-  comment_by: Σχόλιο από %{comment_author}

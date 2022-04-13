@@ -3,8 +3,6 @@ mi:
     members: "Ngā Mema"
   loomio_tags:
     name_label: Ingoa
-  reactions:
-    slight_smile: Rawe
   common:
     expand: Whakanui
     ok_got_it: Kei te pai, kua mau
@@ -213,14 +211,10 @@ mi:
     start: Tīmatatia
   poll_meeting_chart_panel:
     total: Tapeke
-  poll_common_subscribe_form:
-    subscribe: Ohauru
+  chatbot:
+    password: Kupuhipa
   webhook:
     name_label: Ingoa
   group_survey:
     categories:
-      other: Ētahi atu
-    uses:
-      other: Ētahi atu
-    referrers:
       other: Ētahi atu

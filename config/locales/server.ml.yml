@@ -12,8 +12,6 @@ ml:
       email: ഈമെയില്‍
       details: വിശദാംശങ്ങള്‍
   email:
-    group_email:
-      intro: "%{who}   %{group}-ല്‍ പ്രസ്താവന ഇറക്കി:"
     unsubscribe: '<a href=''%{link_path}''>%{link_text}</a>വരികാരവുന്നത് നിര്‍ത്താന്‍ അലെങ്കില്‍ ഇമെയില്‍ താത്പര്യങ്ങള്‍ മാറ്റുവാന്‍.'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>വരികാരവുന്നത് നിര്‍ത്താന്‍ അലെങ്കില്‍ ഇമെയില്‍ താത്പര്യങ്ങള്‍ മാറ്റുവാന്‍."
     catch_up:

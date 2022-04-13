@@ -60,7 +60,8 @@ class AppConfig
       channels_uri:                      ENV.fetch('CHANNELS_URI',                  'ws://localhost:5000'),
       terms_url:                         ENV['TERMS_URL'],
       privacy_url:                       ENV['PRIVACY_URL'],
-      help_url:                          ENV.fetch('HELP_URL',                      'https://help.loomio.org/'),
+      canonical_host:                    ENV['CANONICAL_HOST'],
+      help_url:                          ENV.fetch('HELP_URL',                      'https://help.loomio.com/'),
       icon_src:                          ENV.fetch('THEME_ICON_SRC',                "/brand/icon_#{logo_color}_150h.png"),
       app_logo_src:                      ENV.fetch('THEME_APP_LOGO_SRC',            "/brand/logo_#{logo_color}.svg"),
       apple_touch_src:                   ENV.fetch('APPLE_TOUCH_SRC',               "/brand/touch_icon_gold.png"),
@@ -105,7 +106,7 @@ class AppConfig
       thread_page_v3:             ENV.fetch('FEATURES_THREAD_PAGE_V3', false),
       show_contact_consent:       ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false),
       group_survey:               ENV.fetch('FEATURES_GROUP_SURVEY', false),
-      sentry_sample_rate:         ENV.fetch('SENTRY_SAMPLE_RATE', '0.1').to_f,
+      sentry_sample_rate:         ENV.fetch('SENTRY_SAMPLE_RATE', 0.1).to_f,
     }
   end
 

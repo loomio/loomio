@@ -34,9 +34,6 @@ ru:
       recaptcha: "Мы не убедились, что вы не робот! Еще раз!"
       bad_login: "Извините, этот пароль не совпадает с тем, который у нас есть в файле"
       username_must_be_alphanumeric: "В имени пользователя должны быть только маленькие английские буквы и цифры."
-  attachment:
-    error:
-      too_large: Вы пытаетесь присоединить файл, который больше 100 мегабайт; пожалуйста выберите файл поменьше.
   poll:
     error:
       cannot_add_options: Не получается добавить вариантов к этому опросу
@@ -71,18 +68,6 @@ ru:
   invitation:
     invitation_cancelled: К сожалению, координатор группы отозвал это приглашение. Попросите, пожалуйста, новое приглашение от своей группы.
     invitation_already_used: Этим приглашением уже воспользовались. Пожалуйста, зайдите напрямую в Loomio и продолжите в своей группе.
-  date:
-    formats:
-      for_this_year: "%e%b"
-      for_another_year: "%-d.%-m.%-y"
-  time:
-    formats:
-      closing_soon_subject: "%d %b %H:%M"
-      for_today: "%l:%M %P"
-  validate:
-    motion:
-      must_close_in_future: Предложение должно закрываться в будущем.
-      one_at_a_time: Есть другое активное предложение.
   subscriptions:
     active: Активный
     inactive: Неактивный
@@ -100,13 +85,11 @@ ru:
   email:
     common:
       or_enter_code: Или введите внизу код
-      resend: Это одноразовая ссылка, и действует она 24 часа.
     login:
       subject: Войти на %{site_name}
       login: Войти как %{name}
     reactivate:
       subject: Возобновите ваш аккаунт на %{site_name}
-      intro: '%{name}, вот ссылка для возобновления вашего аккаунта на %{site_name}.'
       login: Возобновить %{name}
     contact_request:
       subject: "%{name}хочет связаться с вами на %{site_name}!"
@@ -121,19 +104,6 @@ ru:
           Вы получили это письмо, потому что кто-то ввел вашу почту в форму восстановления пароля на сайте %{hostname}.
           Однако, ваш пароль не поменяется, пока вы не пройдете по ссылке выше и не заполните форму.
           Если вам по-прежнему трудно войти, свяжитесь с поддержкой, ответив на это письмо.
-    start_decision:
-      subject: Принять решение на Loomio
-      intro: Здравствуйте, <strong>%{name}</strong>!
-      action: Что бы вы хотели сделать?
-      proposal: Выступить с предложением
-      count: Начать перекличку
-      poll: Начать опрос
-      dot_vote: Начать голосование точками
-      meeting: Запланировать время
-      ranked_choice: Начать ранжированное голосование
-    custom: "%{text}"
-    group_email:
-      intro: "Объявление от %{who} в %{group}:"
     by_who: от %{person}
     reply_to_this_discussion: Ответить в этой дискуссии
     view_group: Смотреть группу
@@ -176,22 +146,7 @@ ru:
   email_actions:
     unfollowed_discussion: Вы отключили письма этой ветки.
   discussion_mailer:
-    resend: 'НАПОМИНАЕМ: %{actor} ждет, когда вы присоединитесь к %{discussion}'
-    new_discussion:
-      subject_html: "<strong>%{actor}</strong> открывает ветку: %{discussion}"
-    discussion_edited:
-      subject_html: "<strong>%{actor}</strong> редактирует ветку: %{discussion}"
-    discussion_announced:
-      subject_html: "<strong>%{actor}</strong> приглашает вас присоединиться: %{discussion}"
-    new_comment:
-      subject_html: "<strong>%{actor}</strong> комментирует в: %{discussion}"
-    comment_replied_to:
-      subject: '%{actor} отвечает вам в: %{discussion}'
-      subject_html: 'у вас ответ от <strong>%{actor}</strong> в %{discussion}'
-    user_mentioned:
-      subject: 'вы упомянуты %{actor} в %{discussion}'
-      subject_html: "вы упомянуты <strong>%{actor}</strong> в %{discussion}"
-    reply_or_view_online_html: Ответьте на это письмо напрямую или <a href='%{url}'>посмотрите его на %{hostname}</a>.
+    reply_or_view_online_html: "Ответьте на это письмо напрямую или <a href='%{url}'>посмотрите его на %{hostname}</a>."
     turn_off_notifications_html: "<a href='%{url}'>Отключить почтовые уведомления</a> для этой дискуссии."
     change_email_preferences_html: "Изменить ваши <a href='%{email_preferences_url}'>почтовые предпочтения</a>."
   footer:
@@ -204,11 +159,6 @@ ru:
     public_groups: Oбщедоступные группы
     terms: Условия
     independent_install_html: '%{hostname} работает с независимой копией Loomio: <a href="http://github.com/loomio/loomio">разузнать побольше</a>.'
-  invitation_form:
-    error:
-      too_many_pending: "У вас больше максимального %{count} числа неподтвержденных приглашений в эту группу"
-      too_many_cancelled: "У вас больше максимального %{count} числа отмененных приглашений в эту группу"
-      all_email_addresses_belong_to_members: "Эти люди уже в группе."
   password_reset:
     change_your_password: Сменить ваш пароль
     change_my_password: Сменить пароль
@@ -227,65 +177,12 @@ ru:
         Какова ваша роль или подход к участию в этой группе? Что людям стоит о вас знать, чтобы понимать, из чего вы исходите?
   how_it_works_thread:
     title: Как пользоваться Loomio
-  markdown:
-    intro:
-      title: |
-          # Что такое markdown?
-      body: |
-          Markdown — это способ писать простой текст (слева) так,
-          чтобы его можно было отформатировать (справа).
-
-          Эта страница написана в markdown и показывает, как он работает.
-    headers:
-      body: |
-          ## Заголовки
-
-          Чтобы сделать текст заголовком, поставьте вначале решетку и пробел.
-
-          # Это h1
-          ## Это h2
-          #### Это h4
-    paragraphs:
-      title: |
-          ## Абзацы
-      body: |
-          Обязательно
-          вставьте
-          пустую строку
-          между строчками.
-
-          Иначе они отформатируются в один большой абзац!
-    emphasis:
-      title: |
-          ## Выделение
-      body: |
-          Выделите слово курсивом, с помощью _подчеркивания_ или *звездочки*.
-
-          Выделите слово __жирным__ с помощью двойного **выделение**.
-    lists:
-      title: |
-          ## Списки
-      body: |
-          Как сделать список:
-
-          * оставьте пустую строку перед списком
-          * используйте звездочки (*)
-          * оставьте пробел после звездочки
-    links:
-      title: |
-          ## Ссылки и изображения
   group_mailer:
     resend: 'НАПОМИНАЕМ: %{member} ждет, когда вы вступите в %{group_name}'
   poll_mailer:
-    resend: '%{actor} напоминает, чтобы вы проголосовали за: %{title}'
     common:
-      or: или
       why_send_this: Вы получили это письмо, потому что %{reason}
       view_on_loomio: Посмотреть на %{site_name}
-      unsubscribe: Отписаться
-      results: Результаты
-      responses: Ответы
-      change_your_stance: Изменить
       create_outcome: Поделиться результатом
       your_response: "Ваш голос:"
       please_respond: Пожалуйста ответьте
@@ -294,82 +191,4 @@ ru:
       undecided_visitors: Неопределившиеся гости (%{count})
       more_undecided: "Еще %{count}..."
       vote_now: Голосовать!
-      verify_stance_for_unverified_user: "Спасибо, что проголосовали в %{title}. Подтвердите, пожалуйста, свой адрес электронной почты, и мы сможем послать вам результаты, когда они будут готовы."
-      verify_stance_for_verified_user: "Кажется, вы проголосовали в %{title}. Если это и правда были вы, щелкните, пожалуйста, по ссылке внизу, чтобы подтвердить свой голос."
       you_have_until: Поучаствовать можно до %{when}.
-    subject:
-      poll_option_added: '%{actor} добавили вариантов к: %{title}'
-      poll_option_added_author: '%{actor} добавили вариантов к: %{title}'
-      stance_created: "%{actor} проголосовали в: %{title}"
-      stance_updated: "%{actor} проголосовали в: %{title}"
-      stance_created_author: "Подтвердите, пожалуйста, ваш голос в: %{title}"
-      user_mentioned: '%{actor} упомянули вас в: %{title}'
-      user_reminded: '%{actor} напоминает, чтобы вы проголосовали за: %{title}'
-    header:
-      poll_option_added: '<strong>%{actor}</strong> добавили вариантов к: %{title}'
-      poll_option_added_author: '<strong>%{actor}</strong> добавили вариантов к: %{title}'
-      stance_created: "<strong>%{actor}</strong> проголосовали в: %{title}"
-      stance_updated: "<strong>%{actor}</strong> проголосовали в: %{title}"
-      user_mentioned: '<strong>%{actor}</strong> упомянули вас в: %{title}'
-      user_reminded: '<strong>%{actor}</strong> напоминает, чтобы вы проголосовали в: %{title}'
-    body:
-      voted: '<strong>%{participant}</strong>:'
-  comment_by: Комментарий %{comment_author}
-  notified:
-    no_matches_found: "Ничего похожего на '%{query}'"
-    group_users: "(%{count} человек)"
-    group_title: "%{name} (%{count} человек)"
-    public_title: Публично (для всех, у кого есть ссылка)
-  poll_unsubscribe:
-    title: Вы отписались от %{title}
-    helptext: Вы не будете больше получать писем по поводу этого решения.
-    visit_poll: Смотреть опрос
-    go_to_dashboad: В панель управления
-  microsoft:
-    section_title: "[%{title}](%{url})"
-    new_discussion: "Новая тема в %{group}"
-    new_comment: "Новый комментарий в %{group}"
-    outcome_created: "Результат опубликован в %{group}"
-    poll_created: "Новый %{poll_type} в %{group}"
-    stance_created: "Новый ответ на %{poll}"
-    poll_closing_soon: "%{poll_type} закрывается через 24 часа"
-    poll_expired: "%{poll_type} закрылся"
-    group_identity_created: "События от %{group} теперь будут появляться в этом канале"
-  slack:
-    new_discussion: "Новая ветка в *%{group}*: *%{discussion}*"
-    outcome_created: "В *%{group}* опубликован результат: *%{poll}*"
-    poll_created: "Новый *%{poll_type}* в *%{group}*: *%{poll}*"
-    poll_closing_soon: "Напоминаем: *%{poll}* закрывается через 24 часа"
-    poll_expired: "*%{poll}* закрылся"
-    poll_not_found: "К сожалению, этот опрос не найден. Напечатайте '/loomio <poll_type><title>', чтобы начать новый?"
-    unknown_channel: |
-        Простите, но похоже, что с этим каналом никаких групп loomio не связано.
-        Попробовать сказать "/loomio" в одном из следующих каналов?
-        %{integrations}
-    stance_not_valid: "Увы, мы не смогли создать позицию для *%{poll}*. <%{url}|Щелкните здесь>, чтобы проголосовать напрямую в опросе."
-    request_authorization_message: "Остался лишь один шаг: <%{url}|Щелкните здесь>, чтобы авторизовать использование Loomio для вашей учетки slack. (Это нужно сделать только один раз)"
-    poll_closed: "*%{title}* уже закрыли! <%{url}|Щелкните здесь>, чтобы посмотреть результаты."
-    go_to_slack: В Slack
-    stance_created: Спасибо, что поучаствовали! Вы проголосовали *%{position}* в опросе <%{poll_url}|%{title}>. Если хотите пояснить, почему проголосовали именно так или изменить свой голос, <%{stance_url}|нажмите сюда>.
-    click_to_vote: "Выберите один из вариантов ниже и проголосуйте:"
-    time_zone_message: (все время в часовом поясе %{zone})
-    authorized_message: Получилось! Теперь вы готовы голосовать в slack.
-    initiate: |
-        Хорошо, начнем! <%{url}|Щелкните, чтобы начать %{type}>.
-        (внимание: мы напишем в этот канал после создания, чтобы все смогли поучаствовать)
-    slash_command_help: |
-        Просто введите вид решения и вопрос, и поехали.
-        Выберите один из следующих видов решений:
-        'proposal' (предложение): принимаем решение вместе
-        'count' (перекличка): отследить участие и найти добровольцев
-        'poll' (опрос): измерить популярность вариантов
-        'dot_vote' (точечное голосование): расставить приоритеты по списку вариантов
-        'meeting' (встреча): найти время, чтобы встретиться
-        Или начните разговор с помощью '/loomion thread <title>'.
-
-        К примеру:
-        /loomio count Кто придет на вечеринку в воскресенье?
-        чтобы начать перекличку
-        или
-        /loomio thread Давайте поговорим об управлении компанией
-        чтобы начать новую ветку

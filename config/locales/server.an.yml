@@ -12,8 +12,6 @@ an:
       email: Correu electronico
       details: Detalles
   email:
-    group_email:
-      intro: "%{who} fació un anuncio en %{group}:"
     by_who: por %{person}
     reply_to_this_discussion: Contestar a ista discusión
     unsubscribe: 'Da de baixa u cambea as preferencias d''o tuyo correu electronico:   '
@@ -35,4 +33,3 @@ an:
     pricing: Pres
     public_groups: Grupos Publicos
     terms: Termens
-  comment_by: Comentario de %{comment_author}

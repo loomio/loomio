@@ -20,9 +20,9 @@ hu:
       members: Tagok
       subgroups: alcsoportok
       threads: Témák
+      polls: Szavazások
       votes: Szavazatok
       comments: Hozzászólások
-      polls: Szavazások
       poll_types:
         proposal: Javaslat
         rank: Rangsorolás
@@ -37,9 +37,6 @@ hu:
       recaptcha: "Nem tudtuk ellenőrizni, hogy nem robot vagy-e. Kérlek próbáld újra!"
       bad_login: "Sajnáljuk, de ez a jelszó nem egyezik meg a korábban megadottal."
       username_must_be_alphanumeric: "A felhasználónevek csak kisbetűsek és számok lehetnek"
-  attachment:
-    error:
-      too_large: A csatolni kívánt fájl nagyobb, mint 100 MB, kérjük, válasszon egy kisebb fájlt.
   poll:
     error:
       cannot_add_options: Nem lehet lehetőségeket hozzáadni ehhez a szavazáshoz
@@ -74,18 +71,6 @@ hu:
   invitation:
     invitation_cancelled: Sajnos ezt a meghívást a csoportkoordinátor visszavonta. Kérjen újabb meghívást a csoportjától.
     invitation_already_used: Ezt a meghívást már felhasználták. Jelentkezz be közvetlenül a loomio-ba, hogy beléphess a csoportodba.
-  date:
-    formats:
-      for_this_year: "%e %b"
-      for_another_year: "%-d/%-m/%y"
-  time:
-    formats:
-      closing_soon_subject: "%d %b %H:%M"
-      for_today: "%l:%M %P"
-  validate:
-    motion:
-      must_close_in_future: A javaslatnak a jövőben le kell záródnia.
-      one_at_a_time: Van egy másik folyamatban lévő javaslat.
   subscriptions:
     active: Elérhető
     inactive: Tétlen
@@ -101,13 +86,11 @@ hu:
   email:
     common:
       or_enter_code: Vagy írja be az alábbi kódot
-      resend: Ez a link 24 órán belül lejár, és csak egyszer használható fel.
     login:
       subject: Bejelentkezés a(z) %{site_name} oldalra
       login: Bejelentkezés mint %{name}
     reactivate:
       subject: Aktiválja újra%{site_name} fiókját
-      intro: Üdvözlet%{name}, itt található egy hivatkozás a%{site_name} fiók újraaktiválásához.
       login: Újraaktivál%{name}
     contact_request:
       subject: "%{name} szeretne kapcsolatba lépni veled a%{site_name} oldalon!"
@@ -120,19 +103,6 @@ hu:
       link_text: Állítsd vissza a jelszavad
       signoff: |
           Azért kaptad ezt, mert e-mail címed a%{hostname} "Elfelejtett jelszó" űrlapon meg lett adva. A jelszavad azonban nem változik meg, amíg nem követed a fenti hivatkozást és ki nem töltöd az űrlapot. Ha továbbra is problémáid vannak a bejelentkezéssel, válaszolj erre az e-mailre, hogy felvedd a kapcsolatot egy csoportot támogató személlyel.
-    start_decision:
-      subject: Indíts el egy döntést a Loomion
-      intro: Üdvözlet, <strong>%{name}</strong>!
-      action: Mit szeretnél csinálni?
-      proposal: Tégy egy javaslatot
-      count: Indítsd el az ellenőrzést
-      poll: Indíts szavazást
-      dot_vote: Indíts el pontozott szavazást
-      meeting: Ütemezz egy időpontot
-      ranked_choice: Indíts el a rangsorolt választást
-    custom: "%{text}"
-    group_email:
-      intro: "%{who} hirdetést tett a(z) %{group} felé:"
     by_who: általa%{person}
     reply_to_this_discussion: Válasz erre a beszélgetésre
     view_group: Csoport megtekintése
@@ -175,22 +145,7 @@ hu:
   email_actions:
     unfollowed_discussion: Kikapcsoltad a téma e-maileit.
   discussion_mailer:
-    resend: 'EMLÉKEZTETŐ: %{actor} arra vár, hogy csatlakozzon %{discussion}'
-    new_discussion:
-      subject_html: "<strong>%{actor}</strong> elkezdett egy témát: %{discussion}"
-    discussion_edited:
-      subject_html: "<strong>%{actor}</strong> szerkesztette a témát: %{discussion}"
-    discussion_announced:
-      subject_html: "<strong>%{actor}</strong> meghívott hogy csatlakozz: %{discussion}"
-    new_comment:
-      subject_html: "<strong>%{actor}</strong> hozzászólt itt: %{discussion}"
-    comment_replied_to:
-      subject: '%{actor} válaszolt neked itt: %{discussion}'
-      subject_html: '<strong>%{actor}</strong> válaszolt neked itt: %{discussion}'
-    user_mentioned:
-      subject: '%{actor} megemlített téged itt: %{discussion}'
-      subject_html: "<strong>%{actor}</strong> megemlített téged itt: %{discussion}"
-    reply_or_view_online_html: Válaszolj erre az e-mailre közvetlenül, vagy <a href='%{url}'>tekintsd meg itt%{hostname}</a>.
+    reply_or_view_online_html: "Válaszolj erre az e-mailre közvetlenül, vagy <a href='%{url}'>tekintsd meg itt%{hostname}</a>."
     turn_off_notifications_html: "<a href='%{url}'>Kapcsold ki az emaileket</a> ehhez a beszélgetéshez."
     change_email_preferences_html: "Módosítsa <a href='%{email_preferences_url}'> e-mail beállításait </a>"
   footer:
@@ -203,11 +158,6 @@ hu:
     public_groups: Nyilvános csoportok
     terms: Felhasználási feltételek
     independent_install_html: '%{hostname} a Loomio független példányát futtatja: <a href="http://github.com/loomio/loomio">tudj meg többet</a>.'
-  invitation_form:
-    error:
-      too_many_pending: "Ennek a csoportnak a maximális%{count} függőben lévő meghívása van"
-      too_many_cancelled: "A csoportnál meghaladja a%{count} maximális meghívást"
-      all_email_addresses_belong_to_members: "Ezek az emberek már tagjai a csoportnak."
   password_reset:
     change_your_password: Változtasd meg a jelszavadat
     change_my_password: Jelszó módosítása
@@ -231,57 +181,12 @@ hu:
     name: Bemutató javaslat
     description: |-
         Ez egy ** javaslat **, amelyben együtt dönthet. A vita elindításával elindíthatja a javaslatot.Mindenkit felkérünk, hogy ** nyújtson be ** álláspontot ** ** határidőig **. Meghosszabbíthatja a határidőt, ha szüksége van rá, vagy korábban bezárhatja a javaslatot.** Megváltoztathatja pozícióját **, amíg a javaslat nyitva van. Lehet, hogy átgondolja véleményét, amikor másokkal hallgat.A csoportok néha ** javaslat-sorozaton ** dolgoznak **, hogy együtt dolgozzanak ki megoldásokat. Ebben a témákban sorozatos javaslatokat vehet fel.** Próbálja ki a részvételt! Kattintson a négy gomb egyikére **.
-  markdown:
-    intro:
-      title: |
-          # Mi a markdown?
-      body: |-
-          A jelölés egy egyszerű szöveg írási módja (balra),úgy, hogy átalakítható gazdag szöveggé (jobbra).Ezt az oldalt jelöléssel írják le, hogy megmutatják, hogyan működik.
-    headers:
-      body: |
-          ## Fejlécek
-
-          Előtag #-el és szóközzel a szöveg fejléccé történő átalakításához.
-          # Ez egy h1
-          ## Ez egy h2
-          #### Ez egy h4
-    paragraphs:
-      title: |
-          ## Bekezdések
-      body: |
-          Hagyj
-          egy
-          üres sort
-          a sorok között.
-
-          Egyébként egyetlen nagy bekezdés lesz!
-    emphasis:
-      title: |-
-          ## Hangsúly
-      body: |
-          Egy szót dőltté tehet a _aláhúzás_ vagy a *csillag* segítségével.
-
-          __Félkövérré__  tehetsz egy szót a **hangsúly** megduplázásával.
-    lists:
-      title: |
-          ## Listák
-      body: |-
-          Így készíthet egy listát:* hagyjon üres sort a lista előtt* csillagok használata (*)* hagyjon szóközt a csillag után
-    links:
-      title: |-
-          ## Hivatkozások és képek
   group_mailer:
     resend: 'EMLÉKEZTETÉS: %{member} arra vár, hogy csatlakozzon ide: %{group_name}'
   poll_mailer:
-    resend: '%{actor} emlékeztet, hogy szavazz: %{title}'
     common:
-      or: vagy
       why_send_this: Azért kapja ezt az e-mailt, mert %{reason}
       view_on_loomio: 'Tekintsd meg itt: %{site_name} '
-      unsubscribe: Leiratkozás
-      results: Eredmények
-      responses: Válaszok
-      change_your_stance: Változtatás
       create_outcome: Oszd meg az eredményt
       your_response: "Szavaztál:"
       please_respond: Kérlek válaszolj
@@ -290,80 +195,4 @@ hu:
       undecided_visitors: Bizonytalan vendégek (%{count})
       more_undecided: "%{count} további ..."
       vote_now: Szavazz most
-      verify_stance_for_unverified_user: "Köszönjük, hogy szavaztál itt: %{title}. Kérjük ellenőrizd az e-mail címed, hogy elküldhessük az eredményeket, amikor azok készen állnak."
-      verify_stance_for_verified_user: "Úgy tűnik, hogy szavaztál erre: %{title} Ha te voltál, kérjük hogy kattints az alábbi hivatkozásra a szavazat megerősítéséhez."
       you_have_until: '%{when} -ig van lehetőséged részt venni.'
-    subject:
-      poll_option_added: '%{actor} hozzáadott lehetőségeket ehhez: %{title}'
-      poll_option_added_author: '%{actor} hozzáadott lehetőségeket ehhez: %{title}'
-      stance_created: "%{actor} szavazott: %{title}"
-      stance_updated: "%{actor} szavazott: %{title}"
-      stance_created_author: "Kérünk ellenőrizd a szavazatod: %{title}"
-      user_mentioned: '%{actor} megemlített téged a következőben: %{title}'
-      user_reminded: '%{actor} emlékeztet, hogy szavazz: %{title}'
-    header:
-      poll_option_added: '<strong>%{actor}</strong> hozzáadott lehetőségeket ehhez: %{title}'
-      poll_option_added_author: '<strong>%{actor}</strong> hozzáadott lehetőségeket ehhez: %{title}'
-      stance_created: "<strong>%{actor}</strong> szavazott erre: %{title}"
-      stance_updated: "<strong>%{actor}</strong> szavazott erre: %{title}"
-      user_mentioned: '<strong>%{actor}</strong> megemlített téged itt: %{title}'
-      user_reminded: '<strong>%{actor}</strong> emlékeztet, hogy szavazz: %{title}'
-    body:
-      voted: '<strong>%{participant}</strong>:'
-  comment_by: '%{Comment_author} megjegyzése'
-  notified:
-    no_matches_found: "Nem található eredmény a következőre: '%{query}'"
-    group_users: "(%{count} ember)"
-    group_title: "%{name} (%{count} ember)"
-    public_title: Nyilvános (bárkinek aki linkkel rendelkezik)
-  poll_unsubscribe:
-    title: 'Leiratkoztál innen:%{title} '
-    helptext: A továbbiakban nem fog e-maileket kapni erről a döntésről.
-    visit_poll: Nézd meg a szavazást
-    go_to_dashboad: Ugrás az irányítópultra
-  microsoft:
-    section_title: "[%{title}](%{url})"
-    new_discussion: "Új téma %{group}"
-    new_comment: "Új megjegyzés %{group}"
-    outcome_created: "Eredmény: %{group}"
-    poll_created: "Új %{poll_type} itt %{group}"
-    stance_created: "Új válasz a következőre: %{poll}"
-    poll_closing_soon: "A%{poll_type} 24 óra múlva zárul"
-    poll_expired: "%{poll_type} lezárult"
-    group_identity_created: "A %{group} eseményei megjelennek ebben a csatornában"
-  slack:
-    new_discussion: "Új téma itt *%{group}*: *%{discussion}*"
-    outcome_created: "Eredmény: *%{group} *: *%{poll} *"
-    poll_created: "Új *%{poll_type} * a *%{group} * kategóriában: *%{poll} *"
-    poll_closing_soon: "Emlékeztető: *%{poll} * 24 óra múlva zárul le"
-    poll_expired: "*%{poll} * bezárt"
-    poll_not_found: "Sajnos a szavazást nem található. Írd be hogy '/loomio <poll_type> <title>' hogy elindíts egy újat"
-    unknown_channel: |
-        Sajnáljuk, úgy tűnik, hogy nincs ehhez a csatornához csatolt loomio csoport. Próbáld futtatni a '/loomio' ehelyett a következő csatornák egyikén
-        %{integrations}
-    stance_not_valid: "Sajnáljuk, nem tudtunk kialakítani álláspontot a *%{poll} * számára. <%{url} | Kattints ide> közvetlenül a szavazáshoz történő szavazáshoz."
-    request_authorization_message: "Még egy lépés: <%{url} |Kattints ide>, hogy engedélyezze a Slack fiókját a Loomio használatához (ezt csak egyszer kell megtenned)."
-    poll_closed: "*%{title} * már bezárt! <%{url} | Kattints ide> az eredmények megtekintéséhez."
-    go_to_slack: Ugrás a Slack-be
-    stance_created: 'Köszönjük a részvételt! Így szavaztál *%{Position} * ezen a szavazáson: <%{poll_url} |%{title}>  Ha meg szeretnéd változtatni a szavazatod, vagy indokolná, hogy miért érzi ezt így, <%{stance_url} |kattints ide>.'
-    click_to_vote: "Válassz az alábbi lehetőségek közül a szavazáshoz:"
-    time_zone_message: (minden idő a%{zone}időzónában van)
-    authorized_message: Siker! Most már készen áll arra, hogy a Slack-en szavazzanak.
-    initiate: |
-        Rendben, csináljuk! <%{url}| Kattints ide a%{type}> elindításához.
-        (Megjegyzés: Miután elkészítjük, elküldjük erre a csatornára, hogy mindenki részt vehessen)
-    slash_command_help: |
-        Csak írja be a döntés típusát és a kérdést, és onnan vesszük.
-        A következő döntéstípusok közül választhat:
-        „javaslat”: Keresse meg a kollektív szerződést
-        'létszám': A részvétel nyomon követése és az önkéntesek keresése
-        'szavazás': A lehetőségek népszerűségének mérése
-        'pontszavazás': A lehetőségek listájának prioritása'találkozó': találjon időt találkozásra
-        Vagy kezdjen beszélgetést a "<title>
-
-        Például:
-        /loomio létszám Ki jön a partira vasárnap?
-        Új létszám szavazás elindításához.
-        vagy
-        /loomio thread Beszéljünk a cég irányáról
-        Új téma indításához

@@ -147,12 +147,6 @@ ja:
     subject_label: "主題"
     email_label: 'あなたのメールアドレス'
     message_label: 'あなたのメッセージ'
-  hint:
-    context: 'ディスカッション情報を使うアドバイス'
-    discussion: 'ディスカッションを開始する際のアドバイス'
-    invitation: '素晴らしい招待を書くアドバイス'
-    proposal: 'はっきりした提案を書くアドバイス'
-    vote: 'いつでも意見を変更することができます'
   poll_common:
     have_your_say: 意見を言う
     save_changes: 保存
@@ -166,8 +160,6 @@ ja:
   polls_panel:
     open: '議論中'
     closed: '議論終了'
-  poll_common_select_group:
-    loomio_group: グループ
   poll_common_form:
     closed: 議論終了
   poll_count_options:
@@ -175,12 +167,10 @@ ja:
     'no': 'いいえ'
   auth_form:
     name_placeholder: あなたの名前
+  chatbot:
+    password: パスワード
   webhook:
     name_label: 氏名
   group_survey:
     categories:
-      other: その他
-    uses:
-      other: その他
-    referrers:
       other: その他

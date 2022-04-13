@@ -170,12 +170,6 @@ be_BY:
     subject_label: "Тэма"
     email_label: 'Ваш email адрас '
     message_label: 'Ваша паведамленне'
-  hint:
-    context: 'Парады, як карыстацца панэллю кантэксту'
-    discussion: 'Парады, як распачаць і ўдзельнічаць у абмеркаванні'
-    invitation: 'Парады, як пісаць файныя запрашэнні'
-    proposal: 'Парады, як пісаць зразумелыя прапановы'
-    vote: 'Вы здольны змяніць свой голас у любы час'
   poll_common:
     have_your_say: Скажыце сваё слова
     save_changes: Захаваць
@@ -197,13 +191,12 @@ be_BY:
     'no': 'Не'
   auth_form:
     name_placeholder: Ваша імя
+  chatbot:
+    username: Імя карыстальніка
+    password: Пароль
   webhook:
     name_label: Імя
   group_survey:
     categories:
       community: Група супольнасці
-      other: Іншы
-    uses:
-      other: Іншы
-    referrers:
       other: Іншы

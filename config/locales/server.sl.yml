@@ -31,8 +31,6 @@ sl:
       email: Email
       details: Podrobnosti
   email:
-    group_email:
-      intro: "%{who} je sporočil/a skupini %{group}:"
     by_who: '%{person}'
     reply_to_this_discussion: Odgovori na to razpravo
     unsubscribe: 'Odjavi se ali spremeni svoje email nastavitve:'
@@ -46,7 +44,7 @@ sl:
       subject: "%{who} je zaprosil za vstop v %{which_group}"
       view_group: Prošnjo lahko odobriš ali zavrneš tukaj
   discussion_mailer:
-    reply_or_view_online_html: Odgovori na ta email, ali <a href='%{url}'>ga poglej na %{hostname}</a>.
+    reply_or_view_online_html: "Odgovori na ta email, ali <a href='%{url}'>ga poglej na %{hostname}</a>."
     turn_off_notifications_html: "<a href='%{url}'>Izklopi emaile</a> za to razpravo."
   footer:
     about: O nas
@@ -58,4 +56,3 @@ sl:
     public_groups: Javne skupine
     terms: Pogoji
     independent_install_html: '%{hostname} uporablja neodvisno kopijo Loomia: <a href="http://github.com/loomio/loomio">več informacij</a>.'
-  comment_by: Komentiral/a %{comment_author}

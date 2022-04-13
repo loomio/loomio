@@ -138,12 +138,6 @@ an:
     subject_label: "Titol"
     email_label: 'O tuyo correu electronico'
     message_label: 'O tuyo mensache'
-  hint:
-    context: 'Consellos ta usar o panel de contexto'
-    discussion: 'Consellos ta empecipiar una discusión participativa'
-    invitation: 'Consellos ta redactar una buena invitación'
-    proposal: 'Consellos ta redactar una propuesta clara'
-    vote: 'Puetz cambiar a tuya posición en qualsiquier inte'
   poll_common:
     have_your_say: 'Da a tuya opinión '
     save_changes: Alzar
@@ -165,13 +159,12 @@ an:
     'no': 'No'
   auth_form:
     name_placeholder: O tuyo nombre
+  chatbot:
+    username: Nombre d'usuario
+    password: Clau
   webhook:
     name_label: Nombre
   group_survey:
     categories:
       community: Comunidat
-      other: Unatro
-    uses:
-      other: Unatro
-    referrers:
       other: Unatro
