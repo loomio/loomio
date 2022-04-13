@@ -84,7 +84,7 @@ class ApplicationController < ActionController::Base
 
   protected
   def pagination_params
-    default_limit = params[:export] ? 1000 : 50
+    default_limit = (params[:export] || browser.bot?) ? 2000 : 50
     { limit: params.fetch(:limit, default_limit).to_i, offset: params.fetch(:offset, 0).to_i }
   end
 
