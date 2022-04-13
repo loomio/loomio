@@ -120,8 +120,8 @@ en:
     destroy_tag: Delete tag
     destroy_helptext: This will delete this tag and remove it from all threads in the group. Are you sure?
     helptext: Tags allow you to categorize conversations and easily find them later
-    discussions_count_singular: ({{count}} thread)
-    discussions_count_plural: ({{count}} threads)
+    discussions_count_singular: (%{count} thread)
+    discussions_count_plural: (%{count} threads)
     tag_created: Tag saved
     tag_destroyed: Tag deleted
     tags_marked: Threads marked '{{name}}' in {{groupName}}
@@ -242,10 +242,10 @@ en:
       cancel: 'Cancel'
       show_more: "Show more"
       show_fewer: "Show fewer"
-      view_count_more: "View {{count}} more"
-      view_count_responses: "View {{count}} responses"
-      count_more: "{{count}} more"
-      count_responses: "{{count}} responses"
+      view_count_more: "View %{count} more"
+      view_count_responses: "View %{count} responses"
+      count_more: "%{count} more"
+      count_responses: "%{count} responses"
       view_all: "View All"
       new_thread: "New thread"
       add_subgroup: 'New subgroup'
@@ -479,7 +479,7 @@ en:
     recent_threads: 'Recent threads'
     invite_only_threads: 'Invite-only threads'
     direct_threads: 'Direct threads'
-    unread_threads: 'Unread threads ({{count}})'
+    unread_threads: 'Unread threads (%{count})'
     muted_threads: 'Muted threads'
     start_group: 'New organization'
     start_subgroup: 'New subgroup'
@@ -695,7 +695,7 @@ en:
     privacy_public: 'Anyone can see the thread. Only members can participate.'
     privacy_private: 'The thread will only be visible to members of {{group}}.'
     privacy_organisation: 'The thread will be visible to members of {{parent}} and members of {{group}}.'
-    fork_notice: 'A new thread will be created with {{count}} items from {{title}}'
+    fork_notice: 'A new thread will be created with %{count} items from {{title}}'
     notify_group: Notify group
 
 
@@ -755,7 +755,7 @@ en:
         <p>You have used all {{maxMembers}} invitations available to this group.</p>
         <p>Next step, <a href="{{upgradeUrl}}" target="_blank">choose a plan</a> to continue collaborating on Loomio.</p>
 
-      invitations_remaining: '{{count}} invitations remaining. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>'
+      invitations_remaining: '%{count} invitations remaining. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>'
       who_to_invite: Who would you like to invite?
       invitation_message_placeholder: A message to include in the invitation email. (optional)
       invitation_message_label: Message
@@ -797,10 +797,10 @@ en:
       notified: '{{notified}} people will be notified.'
       notified_singular: '1 person will be notified.'
       notified_none: 'Nobody will be notified.'
-      added: '{{count}} people will be added.'
+      added: '%{count} people will be added.'
       added_singular: '1 person will be added.'
       added_none: 'Nobody will be added.'
-      group_title: '{{name}} ({{count}} people)'
+      group_title: '{{name}} (%{count} people)'
       visible_to_group: 'Anyone in {{group}} will be able to see this thread.'
       visible_to_guests: 'Only invited people can see this thread.'
       click_group_to_see_individuals: Click group to see individuals
@@ -818,7 +818,7 @@ en:
       search_placeholder: Search for people...
       modal_title: Select group members
     flash:
-      success: '{{count}} notifications sent'
+      success: '%{count} notifications sent'
 
   action_dock:
     actions_menu: Actions menu
@@ -871,8 +871,8 @@ en:
     notification_history: Notification history
     move_item: Move item
     add_poll_to_thread: Add to thread
-    count_members: "{{count}} members"
-    count_voters: "{{count}} voters"
+    count_members: "%{count} members"
+    count_voters: "%{count} voters"
 
   formatting:
     formatting_tools: Text formatting tools
@@ -979,11 +979,11 @@ en:
     add_your_reaction: Add your reaction
 
   reactions_display:
-    more_reactions: "{{count}} more"
+    more_reactions: "%{count} more"
     you: "You"
     you_and_name: "You and {{name}}"
-    you_and_name_and_count_more: "You, {{name}} and {{count}} more"
-    name_and_count_more: "{{name}} and {{count}} more"
+    you_and_name_and_count_more: "You, {{name}} and %{count} more"
+    name_and_count_more: "{{name}} and %{count} more"
 
   context_panel:
     thread_status:
@@ -1007,8 +1007,8 @@ en:
     files: Files
     settings: Settings
     subgroups: Subgroups
-    show_opened: '{{count}} Open'
-    show_closed: '{{count}} Closed'
+    show_opened: '%{count} Open'
+    show_closed: '%{count} Closed'
     no_threads_here: No threads to see here!
     search_threads: Search for threads...
     private_threads: You'll need to be a member to view private threads in this group
@@ -1030,8 +1030,8 @@ en:
     discussions_placeholder: 'A thread is where everyone can discuss a topic and make decisions together.'
     members_placeholder: 'You''re the only one here: invite some people to join you!'
     member_options: Member options
-    see_all_members: 'See all {{count}} members'
-    pending_invitations: '+ {{count}} pending'
+    see_all_members: 'See all %{count} members'
+    pending_invitations: '+ %{count} pending'
     subgroups_placeholder: 'Subgroups give teams their own space and keep notifications focused to the right people.'
     invite_people: 'Invite'
     visibility_label: 'Visibility'
@@ -1213,7 +1213,7 @@ en:
   membership_requests_card:
     heading: 'Membership Requests'
     manage_requests: Manage requests
-    manage_requests_with_count: Manage requests ({{count}})
+    manage_requests_with_count: Manage requests (%{count})
 
   membership_requests_page:
     heading: Membership Requests
@@ -1258,7 +1258,7 @@ en:
     done: 'Done'
     messages:
       invitation_sent: 'Invitation sent.'
-      invitations_sent: '{{count}} invitations sent.'
+      invitations_sent: '%{count} invitations sent.'
       no_invitations: 'Uhoh! Please verify the email address is correct and try again.'
       max_invitations: 'If you want to send more than 100 invitations, use a team link.'
 
@@ -1415,8 +1415,8 @@ en:
     learn_more: Learn more about email settings...
 
   thread_preview:
-    replies_count: "{{count}} replies"
-    unread_count: "{{count}} unread"
+    replies_count: "%{count} replies"
+    unread_count: "%{count} unread"
 
   dashboard_page:
     aria_label: 'Dashboard'
@@ -1514,12 +1514,12 @@ en:
     no_one: No one has seen this yet
 
   activity_card:
-    count_responses: "{{count}} responses"
+    count_responses: "%{count} responses"
     event_pinned: "Pinned to timeline"
     event_unpinned: "Unpinned from timeline"
     beginning: Beginning
     end: End
-    unread: "Unread ({{count}})"
+    unread: "Unread (%{count})"
     latest: Latest
     context: Context
     chronological: Chronological
@@ -1527,8 +1527,8 @@ en:
     attachment_display:
       aria_label: 'File attached:'
       image_alt: 'Attached image'
-    n_previous: 'Load {{count}} previous responses'
-    n_more: 'Load {{count}} responses'
+    n_previous: 'Load %{count} previous responses'
+    n_more: 'Load %{count} responses'
     add_comment: Add comment
     add_poll: Add poll
     add_outcome: Add outcome
@@ -1555,8 +1555,8 @@ en:
     print_thread: 'Print'
     delete_thread: 'Delete'
     add_comment: 'Comment'
-    seen_by_count: 'Seen by {{count}}'
-    count_notified: 'Notified {{count}}'
+    seen_by_count: 'Seen by %{count}'
+    count_notified: 'Notified %{count}'
     forked_from: "Forked from"
 
   pin_thread_modal:
@@ -1724,7 +1724,7 @@ en:
   discussions_panel:
     open: Open
     all: All
-    unread: Unread ({{count}})
+    unread: Unread (%{count})
     closed: Closed
     include_subgroups_mine: '{{name}} and my subgroups'
     include_subgroups_all: '{{name}} and all subgroups'
@@ -1884,11 +1884,11 @@ en:
     none_of_the_above: (None of the above)
 
   poll_common_undecided_panel:
-    show_undecided: "Show {{count}} undecided"
+    show_undecided: "Show %{count} undecided"
     show_invitations: Show Pending Invitations
-    undecided_users: "Undecided ({{count}})"
+    undecided_users: "Undecided (%{count})"
     invitation_count_singular: "1 additional person has been invited to participate via email"
-    invitation_count_plural: "{{count}} additional people have been invited to participate via email"
+    invitation_count_plural: "%{count} additional people have been invited to participate via email"
 
   poll_common_undecided_user:
     reminded: Reminder sent!
@@ -1942,7 +1942,7 @@ en:
     loomio_school_link: |
       <p>Find out more at <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio Help</a>.</p>
     no_notifications_warning: Voters will not be notified. This is useful if you're running a lot of polls and plan to notify everyone later on.
-    count_voters_added: '{{count}} voters added'
+    count_voters_added: '%{count} voters added'
 
   poll_proposal_form:
     tool_tip_expanded: |
@@ -2149,13 +2149,13 @@ en:
     reason_placeholder: Explain when you're free (or busy), in case the author wants to add options.
 
   poll_dot_vote_vote_form:
-    dots_remaining: "{{count}} dots remaining"
+    dots_remaining: "%{count} dots remaining"
     too_many_dots: You have used too many dots
     stance_created: Vote created
     stance_updated: Vote updated
 
   poll_ranked_choice_vote_form:
-    helptext: Drag and drop options in order of preference (1 being your most preferred option). Your top {{count}} choices will be recorded.
+    helptext: Drag and drop options in order of preference (1 being your most preferred option). Your top %{count} choices will be recorded.
     stance_created: Choice recorded
     stance_updated: Choice updated
 

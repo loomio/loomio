@@ -64,8 +64,6 @@ it:
     destroy_tag: Elimina il tag
     destroy_helptext: Questo eliminerà questo tag e lo rimuoverà da tutti i thread del gruppo. Sei sicuro?
     helptext: 'Le etichette ti permettono di categorizzare le conversazioni e trovarle facilmente dopo '
-    discussions_count_singular: ({{count}} discussione)
-    discussions_count_plural: ({{count}} discussioni)
     tag_created: Etichetta salvata
     tag_destroyed: Tag eliminato
     tags_marked: Discussioni marcate con '{{name}}' nel gruppo {{groupName}}
@@ -174,10 +172,6 @@ it:
       cancel: 'Annulla'
       show_more: "Mostra di più"
       show_fewer: "Mostra meno"
-      view_count_more: "Vista {{count}} più"
-      view_count_responses: "Vista {{count}} risposte"
-      count_more: "altri {{count}}"
-      count_responses: "{{count}} risposte"
       view_all: "Vedi tutti"
       new_thread: "Nuova discussione"
       add_subgroup: 'Nuovo sottogruppo'
@@ -385,7 +379,6 @@ it:
     recent_threads: 'Discussioni recenti'
     invite_only_threads: 'Thread di sola invito'
     direct_threads: 'Thread diretti'
-    unread_threads: 'Discussioni non lette ({{count}})'
     muted_threads: 'Discussioni silenziate'
     start_group: 'Nuova organizzazione'
     start_subgroup: 'Nuovo sottogruppo'
@@ -508,7 +501,6 @@ it:
     privacy_public: 'Tutti possono vedere la discussione. Solo i membri possono partecipare.'
     privacy_private: 'La discussione sarà visibile solamente ai membri di {{group}}.'
     privacy_organisation: 'La discussione sarà visibile ai membri di {{parent}} e ai membri di {{group}}.'
-    fork_notice: 'Una nuova discussione è stata creata con {{count}} argomenti da {{title}}'
     notify_group: Gruppo di notifica
   announcement:
     send_discussion: Invia thread
@@ -562,7 +554,6 @@ it:
       no_invitations_remaining: |
           <p>sono stati utilizzati tutti gli inviti {{maxMembers}} disponibili per questo gruppo.</p>
           <p>Il passaggio successivo, <a href="{{upgradeUrl}}" target="_blank">scegliere un piano</a> per continuare a collaborare a Loomio.</p>
-      invitations_remaining: '{{count}} inviti rimanenti. <a href="{{upgradeUrl}}" target="_blank">Aggiorna</a>'
       who_to_invite: Chi vorresti invitare?
       invitation_message_placeholder: Messaggio da includere nel messaggio di posta elettronica di invito. (facoltativo)
       invitation_message_label: Messaggio
@@ -598,7 +589,6 @@ it:
       notified: 'La gente {{notified}} sarà notificata:'
       notified_singular: '1 persona sarà avvisata'
       notified_none: 'Nessuno sarà avisato'
-      group_title: '{{name}} ({{count}} persone)'
       visible_to_group: 'Chiunque in {{group}} sarà in grado di vedere questo thread.'
       visible_to_guests: 'Solo le persone invitate possono vedere questo thread.'
       click_group_to_see_individuals: Fai clic sul gruppo per visualizzare gli individui
@@ -614,8 +604,6 @@ it:
     group_form:
       search_placeholder: Cerca persone...
       modal_title: Seleziona i membri del gruppo
-    flash:
-      success: '{{count}} notifiche inviate'
   action_dock:
     actions_menu: Menu Azioni
     more_actions: Altre azioni
@@ -667,8 +655,6 @@ it:
     notification_history: Cronologia delle notifiche
     move_item: Sposta l'elemento
     add_poll_to_thread: Aggiungi al thread
-    count_members: "{{count}} membri"
-    count_voters: "{{count}} votanti"
   formatting:
     formatting_tools: Strumenti di formattazione del testo
     colors: Colori
@@ -763,11 +749,8 @@ it:
   reactions_input:
     add_your_reaction: Aggiungi la tua reazione
   reactions_display:
-    more_reactions: "altri {{count}}"
     you: "Tu"
     you_and_name: "Tu e {{name}}"
-    you_and_name_and_count_more: "Tu, {{name}} e altri {{count}} "
-    name_and_count_more: "{{name}} e altri {{count}}"
   context_panel:
     thread_status:
       pinned: "Questo thread è stato bloccato. Rimarrà in cima all'elenco dei thread del gruppo per tutti gli utenti."
@@ -788,8 +771,6 @@ it:
     files: File
     settings: Configurazione
     subgroups: Sottogruppi
-    show_opened: '{{count}} Aperto'
-    show_closed: '{{count}} Chiuso'
     no_threads_here: Nessuno filo da vedere qui!
     search_threads: Cerca discussioni...
     private_threads: Dovrai essere un membro per visualizzare i thread privati in questo gruppo
@@ -811,8 +792,6 @@ it:
     discussions_placeholder: 'La discussione è il luogo dove tutti possono dibattere su un tema e prendere assieme delle decisioni.'
     members_placeholder: 'Sei da solo qui: invita altre persone!'
     member_options: Opzioni dei membri del gruppo
-    see_all_members: 'Vedi tutti i {{count}} membri'
-    pending_invitations: '+ {{count}} in attesa'
     subgroups_placeholder: 'I sottogruppi danno ai gruppi il proprio spazio e permettono di inviare notiifiche focalizzate sulle persone giuste. '
     invite_people: 'Invita'
     visibility_label: 'Visibilità'
@@ -969,7 +948,6 @@ it:
   membership_requests_card:
     heading: 'Richieste di partecipazione'
     manage_requests: Gestisci richieste
-    manage_requests_with_count: Gestisci richieste ({{count}})
   membership_requests_page:
     heading: Richieste di partecipazione
     approve: Approva
@@ -1008,7 +986,6 @@ it:
     done: 'Fatto'
     messages:
       invitation_sent: 'Invito spedito.'
-      invitations_sent: '{{count}} inviti spediti.'
       no_invitations: 'Oh-oh! Per favore verifica che l''indirizzo email è corretto e riprova.'
       max_invitations: 'Se vuoi inviare più di 100 inviti, usa un team link.'
   memberships_page:
@@ -1208,12 +1185,10 @@ it:
     title: Visto da
     no_one: Nessuno l'ha ancora visto
   activity_card:
-    count_responses: "{{count}} risposte"
     event_pinned: "Aggiunto alla sequenza temporale"
     event_unpinned: "Nonpinto dalla sequenza temporale"
     beginning: Iniziale
     end: Fine
-    unread: "Discussioni non lette ({{count}})"
     latest: Più recente
     context: Contesto
     chronological: Cronologico
@@ -1221,8 +1196,6 @@ it:
     attachment_display:
       aria_label: 'File allegato:'
       image_alt: 'Immagine allegata'
-    n_previous: 'Carica {{count}} risposte precedenti'
-    n_more: 'Carica risposte {{count}}'
     add_comment: Aggiungi un commento
     add_poll: Aggiungi sondaggio
     add_outcome: Aggiungere il risultato
@@ -1246,7 +1219,6 @@ it:
     print_thread: 'Stampa'
     delete_thread: 'Cancella'
     add_comment: 'Commenta'
-    seen_by_count: 'Visto da {{count}}'
   pin_thread_modal:
     title: Fissa in alto la discussione
     pin_thread: Fissa in alto la discussione
@@ -1335,7 +1307,6 @@ it:
   discussions_panel:
     open: Aperto
     all: Tutte
-    unread: Discussioni non lette ({{count}})
     closed: Chiuso
     include_subgroups_mine: '{{name}} e i sottogruppi'
     include_subgroups_all: '{{name}} e tutti i sottogruppi'
@@ -1403,7 +1374,6 @@ it:
     priority_first: I voti favorevole prima
     priority_last: 'I voti blocco prima '
   poll_common_undecided_panel:
-    show_undecided: "Mostra i {{count}} che non hanno votato"
     show_invitations: Mostra inviti pendenti
   poll_common_set_outcome_panel:
     count: 'Questa verifica è chiusa. <strong>Condividi il risultato</strong> per completare il processo.'

@@ -29,8 +29,6 @@ ro:
     modal_edit_title: Editeaza eticheta
     modal_destroy_title: Sterge eticheta
     helptext: Etichetele te ajuta sa clasifici discutiile si sa le gasesti mai usor
-    discussions_count_singular: ({{count}} discutie)
-    discussions_count_plural: ({{count}} discutii)
     tag_created: Etichetă salvată
     tags_marked: Conversatii marcate '{{name}}' in {{groupName}}
   poll_types:
@@ -128,7 +126,6 @@ ro:
       update: 'Actualizeaza'
       cancel: 'Anuleaza'
       show_more: "Vezi mai mult"
-      count_more: "{{count}} mai multe"
       view_all: "Vezi tot"
       new_thread: "Discutie noua"
       add_subgroup: 'Grup nou subordonat'
@@ -252,7 +249,6 @@ ro:
   sidebar:
     threads: 'Discutii'
     recent_threads: 'Conversatii recente'
-    unread_threads: 'Conversatii necitite ({{count}})'
     start_subgroup: 'Grup nou subordonat'
     explore: 'Grupuri publice'
     start_thread: Conversatie noua
@@ -329,6 +325,7 @@ ro:
     pin_thread: Marcheaza conversatie
     unpin_thread: De-marcheaza conversatie
     delete_thread: Sterge discutia
+    count_members: "%{count} membri"
   formatting:
     attach: Ataseaza fisier
     reset: Resetează
@@ -356,7 +353,6 @@ ro:
   reactions_input:
     add_your_reaction: Adauga reactie
   reactions_display:
-    more_reactions: "{{count}} mai multe"
     you: "Tu"
     you_and_name: "Tu si {{name}}"
   group_page:

@@ -87,7 +87,7 @@ zh_TW:
   subscription_status:
     plan: "方案"
     state: "狀態"
-    members: "成員 ({{count}})"
+    members: "成員 (%{count})"
     active_members: "活躍成員"
     max_threads: "最大討論串"
     max_members: "最大成員"
@@ -113,8 +113,6 @@ zh_TW:
     destroy_tag: 刪除標籤
     destroy_helptext: 這將會刪除此標籤將其從群組中的所有討論串移除。您確定嗎？
     helptext: 標籤讓您可以分類討論，就可以較容易地在稍後找到它們
-    discussions_count_singular: （{{count}} 個討論串）
-    discussions_count_plural: （{{count}} 個討論串）
     tag_created: 標籤已儲存
     tag_destroyed: 標籤已刪除
     tags_marked: 討論串已標記為在 {{groupName}} 中的 '{{name}}'
@@ -230,10 +228,6 @@ zh_TW:
       cancel: '取消'
       show_more: "顯示詳細內容"
       show_fewer: "顯示較少"
-      view_count_more: "再檢視 {{count}} 個"
-      view_count_responses: "檢視 {{count}} 個回應"
-      count_more: "{{count}} 更多"
-      count_responses: "{{count}} 個回應"
       view_all: "檢視所有"
       new_thread: "新討論串"
       add_subgroup: '新的子群組'
@@ -446,7 +440,6 @@ zh_TW:
     recent_threads: '最近的討論串'
     invite_only_threads: '僅邀請的討論串'
     direct_threads: '直接討論串'
-    unread_threads: '未讀的討論串 ({{count}})'
     muted_threads: '已靜音的討論串'
     start_group: '新組織'
     start_subgroup: '新的子群組'
@@ -649,7 +642,6 @@ zh_TW:
     privacy_public: '任何人都可以看到此討論串。只有成員才能參與。'
     privacy_private: '此討論串只會被「{{group}}」群組的成員看到。'
     privacy_organisation: '此討論串只會被「{{parent}}」群組的成員以及「{{group}}」群組的成員看到。'
-    fork_notice: '新的討論串將會從 {{title}} 中包含 {{count}} 來建立'
     notify_group: 通知群組
   announcement:
     send_discussion: 傳送討論串
@@ -703,7 +695,6 @@ zh_TW:
       no_invitations_remaining: |
           <p>您已經使用了此群組可用的全部 {{maxMembers}} 個邀請。</p>
           <p>下一步，<a href="{{upgradeUrl}}" target="_blank">選擇一個計畫</a>以繼續在 Loomio 上協作。</p>
-      invitations_remaining: '剩餘 {{count}} 個邀請。<a href="{{upgradeUrl}}" target="_blank">升級</a>'
       who_to_invite: 您想要邀請誰？
       invitation_message_placeholder: 邀請電子郵件中要包含的訊息。（選擇性）
       invitation_message_label: 訊息
@@ -745,10 +736,8 @@ zh_TW:
       notified: '{{notified}} 個夥伴將會被通知。'
       notified_singular: '將通知 1 個人。'
       notified_none: '不會通知任何人。'
-      added: '將會新增 {{count}} 個夥伴。'
       added_singular: '將會新增 1 個人。'
       added_none: '不會新增任何人。'
-      group_title: '{{name}}（{{count}} 個夥伴）'
       visible_to_group: '任何在 {{group}} 中的人都可以看到此討論串。'
       visible_to_guests: '僅被邀請的夥伴才能看到此討論串。'
       click_group_to_see_individuals: 點擊群組以檢視個人
@@ -764,8 +753,6 @@ zh_TW:
     group_form:
       search_placeholder: 搜尋夥伴……
       modal_title: 選取群組成員
-    flash:
-      success: '已傳送 {{count}} 個通知'
   action_dock:
     actions_menu: 動作選單
     more_actions: 更多動作
@@ -817,8 +804,7 @@ zh_TW:
     notification_history: 通知歷史
     move_item: 移動項目
     add_poll_to_thread: 新增至討論串
-    count_members: "{{count}} 位成員"
-    count_voters: "{{count}} 票"
+    count_members: "%{count} 位成員"
   formatting:
     formatting_tools: 文字格式化工具
     colors: 顏色
@@ -917,11 +903,8 @@ zh_TW:
   reactions_input:
     add_your_reaction: 新增您的反應
   reactions_display:
-    more_reactions: "{{count}} 更多"
     you: "您"
     you_and_name: "您與 {{name}}"
-    you_and_name_and_count_more: "您、{{name}} 與 {{count}} 更多"
-    name_and_count_more: "{{name}} 與 {{count}} 更多"
   context_panel:
     thread_status:
       pinned: "這個討論串已被釘選。它將會保留在群組討論串清單的頂部供所有使用者閱讀。"
@@ -938,12 +921,10 @@ zh_TW:
     stats: 群組統計
     threads: 討論串
     polls: 投票
-    members: 成員 ({{count}})
+    members: 成員 (%{count})
     files: 檔案
     settings: 設定
     subgroups: 子群組
-    show_opened: '{{count}} 開啟'
-    show_closed: '{{count}} 已關閉'
     no_threads_here: 這裡沒有討論串可以檢視！
     search_threads: 搜尋討論串……
     private_threads: 您需要是成員才能檢視群組中的私密討論串
@@ -965,8 +946,6 @@ zh_TW:
     discussions_placeholder: '討論串是供每個人討論主題並共同作出決策的地方。'
     members_placeholder: '不能只有你 ── 邀請一些夥伴來加入吧！'
     member_options: 成員選項
-    see_all_members: '檢視全部 {{count}} 個成員'
-    pending_invitations: '+ {{count}} 個擱置'
     subgroups_placeholder: '子群組給團隊擁有自己的空間，並可以注重於通知對的夥伴。'
     invite_people: '邀請'
     visibility_label: '能見度'
@@ -1133,7 +1112,6 @@ zh_TW:
   membership_requests_card:
     heading: '申請成員資格'
     manage_requests: 管理申請
-    manage_requests_with_count: 管理申請 ({{count}})
   membership_requests_page:
     heading: 申請成員資格
     approve: 批准
@@ -1176,7 +1154,6 @@ zh_TW:
     done: '完成'
     messages:
       invitation_sent: '邀請函已寄出。'
-      invitations_sent: '{{count}} 封邀請函已寄出。'
       no_invitations: '喔喔！請檢查您的電子郵件地址是否正確，並再試一次。'
       max_invitations: '若您想要寄出多於 100 封邀請函，使用團隊連結。'
   memberships_page:
@@ -1318,9 +1295,6 @@ zh_TW:
     messages:
       updated: 電子郵件設定已更新
     learn_more: 取得更多關於電子郵件設定的詳細資訊……
-  thread_preview:
-    replies_count: "{{count}} 個回覆"
-    unread_count: "{{count}} 個未讀"
   dashboard_page:
     aria_label: '儀表板'
     polls_to_vote_on: "投票表決"
@@ -1413,12 +1387,10 @@ zh_TW:
     title: 被這些人看過：
     no_one: 還沒有人看過這個
   activity_card:
-    count_responses: "{{count}} 個回應"
     event_pinned: "已釘選至時間軸"
     event_unpinned: "已從時間軸取消釘選"
     beginning: 開始
     end: 結束
-    unread: "未讀 ({{count}})"
     latest: 最新
     context: 論述
     chronological: 年代
@@ -1426,8 +1398,6 @@ zh_TW:
     attachment_display:
       aria_label: '已附加檔案'
       image_alt: '已附加的圖片'
-    n_previous: '載入 {{count}} 個先前的回應'
-    n_more: '載入 {{count}} 個回應'
     add_comment: 加入意見
     add_poll: 新增投票
     add_outcome: 新增結果
@@ -1452,8 +1422,6 @@ zh_TW:
     print_thread: '列印'
     delete_thread: '刪除'
     add_comment: '意見'
-    seen_by_count: '被 {{count}} 個人看過'
-    count_notified: '通知了 {{count}}'
     forked_from: "分支自"
   pin_thread_modal:
     title: 釘選討論串
@@ -1605,7 +1573,6 @@ zh_TW:
   discussions_panel:
     open: 公開
     all: 全部
-    unread: 未讀 ({{count}})
     closed: 封閉
     include_subgroups_mine: '{{name}} 與我的子群組'
     include_subgroups_all: '{{name}} 與所有子群組'
@@ -1636,7 +1603,7 @@ zh_TW:
     sharable_link: '可分享的連結'
     last_seen: '最後檢視 {{date}}'
     invited_by_name: '被 {{name}} 邀請'
-    accepted: '成員 ({{count}})'
+    accepted: '成員 (%{count})'
   polls_panel:
     new_poll: 新投票
     any_type: '所有類型'
@@ -1749,11 +1716,8 @@ zh_TW:
     change_results_order: 變更您的結果順序
     none_of_the_above: （以上皆非）
   poll_common_undecided_panel:
-    show_undecided: "顯示 {{count}} 個未決定"
     show_invitations: 顯示擱置中的邀請函
-    undecided_users: "未決定的 ({{count}})"
     invitation_count_singular: "已透過電子郵件邀請 1 個額外的夥伴參與"
-    invitation_count_plural: "已透過電子郵件邀請 {{count}} 個額外的夥伴參與"
   poll_common_undecided_user:
     reminded: 提醒已傳送！
     reminder_sent: 提醒通知已傳送
@@ -1801,7 +1765,6 @@ zh_TW:
     loomio_school_link: |
         <p>在 <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio 說明</a>取得更多資訊。</p>
     no_notifications_warning: 投票者將不會被通知。如果您正在執行大量投票，且計畫在稍後通知每個人的話，這會非常有用。
-    count_voters_added: '已新增 {{count}} 個投票者'
   poll_proposal_form:
     tool_tip_expanded: |
         <p>提案是用來尋求關於一段陳述或是行動方針共識的工具。</p>
@@ -1989,12 +1952,10 @@ zh_TW:
     stance_updated: 可用度已更新
     reason_placeholder: 解釋您何時有空（或是忙碌），讓作者新增新的選項。
   poll_dot_vote_vote_form:
-    dots_remaining: "剩 {{count}} 點"
     too_many_dots: 您已使用了太多點
     stance_created: 已建立投票
     stance_updated: 已更新投票
   poll_ranked_choice_vote_form:
-    helptext: 拖放偏好順序的選項（1 是您最偏好的選項）。您的頭 {{count}} 個將會被記錄。
     stance_created: 已記錄選擇
     stance_updated: 已更新選擇
   thread_item:

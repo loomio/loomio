@@ -48,8 +48,6 @@ tr:
     modal_edit_title: Etiketi düzenle
     modal_destroy_title: Etiketi kaldır
     helptext: Etiketler, konuşmaları kategorilere ayırmanızı ve daha sonra kolayca bulmanızı sağlar
-    discussions_count_singular: ({{count}} müzakere)
-    discussions_count_plural: ({{count}} müzakereler)
     tag_created: Etiket kaydedildi
     tags_marked: 'Müzakereler {{groupName}} içinde ''{{name}}'' ile işaretlendi '
   poll_types:
@@ -459,7 +457,6 @@ tr:
   membership_requests_card:
     heading: 'Üyelik talepleri'
     manage_requests: Talepleri yönet
-    manage_requests_with_count: Talepleri yönet ({{count}})
   membership_requests_page:
     heading: Üyelik talepleri
     approve: Onayla
@@ -488,7 +485,6 @@ tr:
     done: 'Tamamlandı'
     messages:
       invitation_sent: 'Davetiye gönderildi.'
-      invitations_sent: '{{count}} davetiye gönderildi.'
       max_invitations: 'Eğer 100''den fazla davetiye göndermek istiyorsanız, bir takım linki kullanınız.'
   memberships_page:
     members: 'Üyeler'

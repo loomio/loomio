@@ -94,8 +94,6 @@ ko:
     destroy_tag: 태그 삭제
     destroy_helptext: 태그가 삭제되고 모든 토론에서 태그가 제거됩니다. 정말 진행하시겠습니까?
     helptext: 태그는 당신이 토론들을 분류할 수 있게해주고 쉽게 찾을 수 있게 해줍니다.
-    discussions_count_singular: ({{count}}개의 스레드)
-    discussions_count_plural: ({{count}}개의 스레드)
     tag_created: 태그 저장됨
     tag_destroyed: 태그 삭제됨
     tags_marked: 스레드는 {{GroupName}}에 '{{name}}'으로 표기되어있습니다.
@@ -204,10 +202,6 @@ ko:
       cancel: '취소'
       show_more: "더 보기"
       show_fewer: "간략히"
-      view_count_more: "{{count}}개 더 보기"
-      view_count_responses: "응답 {{count}}개 보기"
-      count_more: "{{count}}개 더"
-      count_responses: "{{count}}개 응답"
       view_all: "모두 보기"
       new_thread: "새로운 쓰레드"
       add_subgroup: '새로운 소그룹'
@@ -412,7 +406,6 @@ ko:
     other_groups: '다른 그룹'
     all_groups: '모든 그룹'
     recent_threads: '최근 스레드'
-    unread_threads: '읽지 않은 스레드 ({{count}})'
     muted_threads: '알림 해제 된 스레드'
     start_group: '새로운 조직'
     start_subgroup: '새로운 소그룹'
@@ -526,7 +519,6 @@ ko:
     privacy_public: '누구나 이 쓰레드를 볼 수 있지만, 회원만 참여할 수 있습니다.'
     privacy_private: '이 쓰레드는 {{group}}의 멤버만 볼 수 있습니다.'
     privacy_organisation: '이 쓰레드는 {{parent}}와 {{group}}의 멤버만 볼 수 있습니다.'
-    fork_notice: '새 스레드는 {{title}}의 {{count}}개 항목으로 생성됩니다.'
     notify_group: 그룹 알림
   announcement:
     send_discussion: 스레드 전송
@@ -559,7 +551,6 @@ ko:
       no_invitations_remaining: |
           <p>당신은 이 그룹에 사용할 수 있는 {{maxMembers}}개의 초대를 모두 사용하였습니다.</p>
           <p>다음 단계는 Loomio와 계속 작업할 <a href="{{upgradeUrl}}" target="_blank">계획을 선택</a>합니다.</p>
-      invitations_remaining: '{{count}}개의 초대가 남아있습니다. <a href="{{upgradeUrl}}" target="_blank">업그레이드</a>'
       who_to_invite: 누구를 초대하고 싶으십니까?
       invitation_message_placeholder: 초대 메일에 메시지를 추가하기.(선택)
       invitation_message_label: 메시지
@@ -589,10 +580,9 @@ ko:
       anyone_can_participate: 링크가 있으면 누구나 참여할 수 있습니다.
       placeholder: 이름이나 이메일 주소를 입력할 수 있습니다.
       notified_empty: '아직 아무도 선택하지 않음'
-      notified: '{{count}}명에게 알림이 전송됩니다.'
+      notified: '%{count}명에게 알림이 전송됩니다.'
       notified_singular: '1명에게 알림이 전송됩니다.'
       notified_none: '아무도 알림을 받지 않습니다.'
-      group_title: '{{name}} ({{count}} 명)'
       visible_to_group: '{{group}} 내의 모두가 이 스레드를 볼 수 있습니다'
       visible_to_guests: '초대된 사람들만 이 스레드를 볼 수 있습니다.'
     members_list:
@@ -607,8 +597,6 @@ ko:
     group_form:
       search_placeholder: 사람들을 검색합니다...
       modal_title: 그룹 멤버 선택
-    flash:
-      success: '{{count}}개 알림이 전송되었습니다.'
   action_dock:
     actions_menu: 액션 메뉴
     more_actions: 더 많은 액션
@@ -660,8 +648,6 @@ ko:
     notification_history: 알림 이력
     move_item: 항목 이동
     add_poll_to_thread: 스레드 추가
-    count_members: "{{count}} 멤버"
-    count_voters: "{{count}} 투표자"
   formatting:
     formatting_tools: 텍스트 서식 도구
     expand: 서식 도구 자세히 보기
@@ -752,11 +738,8 @@ ko:
   reactions_input:
     add_your_reaction: 반응 추가
   reactions_display:
-    more_reactions: "{{count}}개 더 있음"
     you: "당신"
     you_and_name: "당신과 {{name}}"
-    you_and_name_and_count_more: "당신, {{name}} 그외 {{count}}명"
-    name_and_count_more: "{{name}}, 그외 {{count}}명"
   context_panel:
     thread_status:
       pinned: "이 스레드는 고정되어있습니다. 스레드의 모든 사용자들의 그룹 목록의 가장 위에 표시됩니다."
@@ -777,8 +760,6 @@ ko:
     files: 파일
     settings: 설정
     subgroups: 소그룹
-    show_opened: '{{count}} 열기'
-    show_closed: '{{count}} 닫기'
     no_threads_here: 볼 수 있는 스레드가 없습니다!
     search_threads: 스레드 검색...
     private_threads: 이 그룹의 private 스레드를 확인하기 위해서는 멤버가 되어야 합니다.
@@ -800,8 +781,6 @@ ko:
     discussions_placeholder: '이 쓰레드는 누구나 토론할 수 있고, 함께 의사결정을 하는 곳입니다.'
     members_placeholder: '이 그룹에 현재 회원님 뿐입니다. 다른 사람들을 초대해 보세요.'
     member_options: 멤버 옵션
-    see_all_members: '{{count}}명 멤버 모두 보기'
-    pending_invitations: '+ {{count}} 개의 대기'
     subgroups_placeholder: '소그룹은 팀에게 고유 공간을 제공하고 적절한 사람들에게 알림을 보냅니다.'
     invite_people: '초대'
     visibility_label: '공개도'
@@ -931,7 +910,6 @@ ko:
   membership_requests_card:
     heading: '멤버십 요청'
     manage_requests: 요청 관리
-    manage_requests_with_count: 요청 관리 ({{count}})
   membership_requests_page:
     heading: 멤버십 요청
     approve: 승인
@@ -974,7 +952,6 @@ ko:
     done: '완료'
     messages:
       invitation_sent: '초대가 전송됨'
-      invitations_sent: '{{count}}개의 초대장 발송'
       no_invitations: '이런! 이메일 주소가 올바른지 확인하고 재시도 하십시오.'
       max_invitations: '만일 100개 이상의 초대장을 보내려면 팀 링크를 사용하세요.'
   memberships_page:
@@ -1095,9 +1072,6 @@ ko:
     messages:
       updated: 이메일 설정을 저장했습니다.
     learn_more: 이메일 세팅에 대해 더 배우기
-  thread_preview:
-    replies_count: "{{count}} 개 응답"
-    unread_count: "{{count}} 개 읽지 않음"
   dashboard_page:
     aria_label: '대시보드'
     recent_threads: "최근 스레드"
@@ -1164,7 +1138,6 @@ ko:
     load_previous: '이전 활동내역 보기'
     started_by: '<strong>{{name}}</strong>님이 시작하였습니다.'
   activity_card:
-    count_responses: "{{count}}개 응답"
     latest: 최신
     context: 내용
     attachment_display:

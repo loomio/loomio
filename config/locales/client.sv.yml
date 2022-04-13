@@ -235,7 +235,6 @@ sv:
   sidebar:
     threads: 'Trådar'
     recent_threads: 'Senaste trådarna'
-    unread_threads: 'Olästa trådar ({{count}})'
     muted_threads: 'Stumma trådar'
     explore: 'Publika grupper'
     start_thread: Ny tråd

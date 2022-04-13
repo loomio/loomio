@@ -14,7 +14,7 @@ cmn:
       email: 您输入的不是有效的电子邮件地址
   group:
     stats:
-      members: 成员 ({{count}})
+      members: 成员 (%{count})
       threads: 话题
       comments: 意见
       poll_types:

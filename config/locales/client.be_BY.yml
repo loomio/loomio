@@ -88,6 +88,7 @@ be_BY:
         message_label: Паведамленне
   action_dock:
     edited: Адрэдагавана
+    count_members: "Удзельнікаў: %{count}"
   join_group_button:
     join_group: Далучыцца да групы
     membership_requested: Запыт чалецтва

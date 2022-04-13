@@ -55,43 +55,8 @@ ar:
     modal_edit_title: تعديل الوسم
     modal_destroy_title: إزالة العلامة
     helptext: تتيح لك العلامات تصنيف المحادثات والعثور عليها بسهولة لاحقًا
-    discussions_count_singular: ({{عدد}} موضوع)
-    discussions_count_plural: ({{عدد}} موضوع)
     tag_created: تم حفظ العلامة
     tags_marked: تم وضع علامة "{{اسم}}" على المواضيع في {{اسم المجموعة}}
-  reactions:
-    slight_smile: مثل
-    heart: حب
-    laughing: يضحك
-    clap: صفق
-    hugging: عناق
-    sunglasses: رائع
-    wink: غمزة
-    nerd: ذكي
-    relieved: خُفف عنه
-    worried: قلق
-    confused: مشوش
-    confounded: مرتبك
-    neutral_face: محايد
-    slight_frown: عبوس
-    disappointed: خائب الامل
-    angry: غاضب
-    weary: المرهق
-    astonished: مندهش
-    rolling_eyes: تعبير عن الإنزعاج بتدوير العين
-    cry: يبكي
-    scream: يصرخ
-    sleeping: ضجر
-    thinking: التفكير
-    raised_hands: رفع اليدين
-    pray: صلى
-    fingers_crossed: تشابك الاصابع
-    v: سلام
-    metal: معدن
-    ok_hand: نعم
-    wave: تلويح
-    thumbsup: 'الإبهام لأعلى '
-    thumbsdown: الإبهام لأسفل
   poll_types:
     proposal: اقتراح
     count: التحقق من
@@ -196,10 +161,6 @@ ar:
       cancel: 'إلغاء'
       show_more: "أظهر المزيد"
       show_fewer: "عرض أقل"
-      view_count_more: "عرض {{عدد}} المزيد"
-      view_count_responses: "عرض {{عدد}} ردود"
-      count_more: "{{عدد}} أخرى"
-      count_responses: "{{عدد}} ردود"
       view_all: "استعراض الكل"
       new_thread: "موضوع جديد"
       add_subgroup: 'مجموعة فرعية جديدة'
@@ -407,7 +368,6 @@ ar:
     recent_threads: 'المواضيع الأخيرة'
     invite_only_threads: 'مواضيع للدعوة فقط'
     direct_threads: 'الخيوط المباشرة'
-    unread_threads: 'المواضيع غير المقروءة ({{عدد}})'
     muted_threads: 'مواضيع صامتة'
     start_group: 'منظمة جديدة'
     start_subgroup: 'مجموعة فرعية جديدة'
@@ -496,40 +456,6 @@ ar:
   notifications:
     header: "تبليغات"
     no_notifications: "ليس لديك أي إشعارات"
-    new_discussion: "بدأ {{اسم}} سلسلة رسائل {{عنوان}}"
-    discussion_edited: "قام {{اسم}} بتحرير الموضوع {{عنوان}}"
-    discussion_announced: "شارك {{اسم}} سلسلة رسائل {{عنوان}}"
-    new_motion: "<strong> {{name}} </strong>انشاء اقتراح <strong>{{title}} </strong>"
-    motion_closed: "<strong>{{title}}</strong> :تم إغلاق الاقتراح"
-    publish_outcome: "قم بنشر النتيجة"
-    motion_closed_by_user: "<strong>{{title}}</strong>  إغلاق الاقتراح <strong>{{name}}</strong> "
-    motion_closed_by_expiry: "<strong>{{title}}</strong> الاقتراح أغلق "
-    new_vote: "<strong>{{title}}</strong> موقع}} على الاقتراح}} <strong>{{name}} </strong>"
-    new_comment: "<strong>{{title}}</strong>  علق على <strong>{{name}}</strong>"
-    comment_replied_to: "<strong>{{title}} </strong> رد على تعليقك في <strong>{{name}}</strong>"
-    reaction_created: "تفاعل {{اسم}} مع {{نموذج}} {{عنوان}}"
-    reaction_created_vue: "{{اسم}} رد فعل {{رد فعل}} على {{نموذج}} {{عنوان}}"
-    user_mentioned: "<strong>{{title}}</strong> اشار اليك في <strong>{{name}}</strong> "
-    user_reminded: "{{اسم}} في انتظارك للمشاركة في {{عنوان}}"
-    membership_requested: "<strong>{{title}}</strong> طلب العضوية إلى <strong>{{name}}</strong>"
-    membership_request_approved: '<strong>{{title}}</strong> وافق على طلبك للانضمام <strong>{{name}}</strong> '
-    user_added_to_group: "<strong>{{title}}</strong> أضافك إلى المجموعة <strong>{{name}}</strong> "
-    user_added_to_group_no_inviter: "لقد أضفت المجموعة {{عنوان}}"
-    motion_closing_soon: "سيتم إغلاق الاقتراح قريبًا: {{عنوان}}"
-    motion_outcome_created: "نشر {{اسم}} نتيجة الاقتراح {{عنوان}}"
-    motion_outcome_updated: "قام {{اسم}} بتحديث نتيجة الاقتراح {{عنوان}}"
-    invitation_accepted: "<strong>{{title}}</strong> لقد قبل طلبك للانضمام إلى <strong>{{name}}</strong>"
-    new_coordinator: "<strong>{{title}}</strong> جعلك مشرف على <strong>{{name}}</strong>"
-    poll_created: "بدأ {{اسم}} إجراء {{نوع الاستطلاع}}: {{عنوان}}"
-    poll_edited: "قام {{اسم}} بتحرير {{نوع الاستطلاع}}: {{عنوان}}"
-    poll_announced: "شارك {{اسم}} {{نوع الاستطلاع}}: {{عنوان}}"
-    poll_closing_soon: "يغلق {{نوع الاستطلاع}} قريبًا: {{عنوان}}"
-    poll_expired: "تم إغلاق {{نوع الاستطلاع}}: {{عنوان}}"
-    poll_option_added: "أضاف {{اسم}} خيارات إلى: {{عنوان}}"
-    outcome_created: "شارك {{اسم}} نتيجة: {{عنوان}}"
-    outcome_announced: "شارك {{اسم}} نتيجة: {{عنوان}}"
-    stance_created: "شارك {{اسم}} نتيجة: {{عنوان}}"
-    group_announced: "دعاك {{اسم}} للانضمام إلى المجموعة {{عنوان}}"
   discussion_fork_actions:
     helptext: حدد العناصر التي تريد نقلها إلى موضوع آخر
     move: نقل
@@ -563,16 +489,12 @@ ar:
     privacy_public: 'يمكن للجميع رؤية الموضوع. يمكن للأعضاء فقط المشاركة.'
     privacy_private: 'سيكون الموضوع ظاهراً فقط لأعضاء مجموعة {{group}}.'
     privacy_organisation: 'سيكون الموضوع ظاهراً لأعضاء {{parent}} و أعضاء {{group}}.'
-    fork_notice: 'سيتم إنشاء سلسلة محادثات جديدة مع {{عدد}} من العناصر من {{العنوان}}'
     notify_group: إخطار المجموعة
   announcement:
     send_discussion: إرسال الموضوع
-    send_discussion_explain: ادعُ الناس للمشاركة في المناقشة
     send_group: دعوة الأشخاص إلى {{اسم}}
     send_poll: إرسال {{نوع}}
-    send_poll_explain: دعوة الأشخاص للمشاركة في {{نوع}}
     send_outcome: إرسال النتيجة
-    send_outcome_explain: أبلغ الناس بنتيجة {{نوع}}
     discussion_notification_history: سجل إخطار الموضوع
     group_notification_history: سجل دعوة المجموعة
     poll_notification_history: سجل إعلام الاستطلاع
@@ -599,7 +521,6 @@ ar:
       no_invitations_remaining: |
           لقد استخدمت جميع دعوات {{الحد الأقصى للأعضاء}} المتاحة لهذه المجموعة.
           الخطوة التالية ، اختر خطة لمواصلة التعاون في Loomio.
-      invitations_remaining: 'بقي {{عدد}} من الدعوات. تطوير'
       who_to_invite: من تريد دعوته؟
       invitation_message_placeholder: رسالة لتضمينها في البريد الإلكتروني للدعوة. (اختياري)
       invitation_message_label: رسالة
@@ -628,7 +549,6 @@ ar:
       anyone_can_participate: يمكن لأي شخص لديه رابط المشاركة
       notified_empty: 'لم يتم اختيار أحد حتى الآن'
       notified_singular: 'سيتم إعلام شخص واحد.'
-      group_title: '{{اسم}} ({{عدد}} شخصًا)'
     members_list:
       title: مشترك مع
       last_notified: أخطر
@@ -641,8 +561,6 @@ ar:
     group_form:
       search_placeholder: ابحث عن الناس...
       modal_title: حدد أعضاء المجموعة
-    flash:
-      success: 'تم إرسال {{عدد}} من الإشعارات'
   action_dock:
     actions_menu: قائمة الإجراءات
     more_actions: المزيد من الإجراءات
@@ -694,8 +612,6 @@ ar:
     notification_history: تاريخ الإخطار
     move_item: نقل العنصر
     add_poll_to_thread: أضف إلى الموضوع
-    count_members: "{{عدد}} أعضاء"
-    count_voters: "{{عدد}} ناخبين"
   formatting:
     formatting_tools: أدوات تنسيق النص
     expand: عرض المزيد من أدوات التنسيق
@@ -741,13 +657,11 @@ ar:
     markdown_confirm: قد يتم فقد بعض التنسيقات عند تحويل محتوى wysiwyg إلى تخفيض السعر.
     upload_failed: التحميل فشل
   cover_photo_form:
-    aria_label: 'تغيير شكل صورة الغلاف'
     heading: 'صورة غلاف جديدة'
     upload_link: 'تحميل صورة غلاف جديدة'
     image_size_helptext: 'حجم الصورة المثالي هو 1400 × 320 بكسل'
     upload_success: 'تم تحديث صورة الغلاف بنجاح'
   logo_photo_form:
-    aria_label: 'تغيير شكل شعار المجموعة'
     heading: 'شعار المجموعة الجديد'
     upload_link: 'تحميل شعار المجموعة الجديد'
     image_size_helptext: 'حجم الصورة المثالي هو 100 × 100 بكسل'
@@ -766,8 +680,6 @@ ar:
     introduction_label: لماذا ترغب في الانضمام؟
     submit_button: قم بطلب الانضمام إلى الفريق
     introduction_over_limit: الاستجابة طويلة جدًا
-    messages:
-      membership_requested: 'لقد قمت بطلب الانضمام لمجموعة {{group}}'
   revision_history_modal:
     aria_label: مراجعة التاريخ
     discussion_header: تعديلات المناقشة
@@ -790,13 +702,9 @@ ar:
   reactions_input:
     add_your_reaction: أضف رد فعلك
   reactions_display:
-    more_reactions: "{{عدد}} أخرى"
     you: "أنت"
     you_and_name: "أنت و {{اسم}}"
-    you_and_name_and_count_more: "أنت و {{اسم}} و {{عدد}} آخرين"
-    name_and_count_more: "{{اسم}} و {{عدد}} أخرى"
   context_panel:
-    aria_intro: "سياق الموضوع بواسطة {{الكاتب}}"
     thread_status:
       pinned: "تم تثبيت هذا الموضوع.سيبقى في الجزء العلوي من قائمة مواضيع المجموعة لجميع المستخدمين."
       closed: "تم إغلاق هذا الموضوع. لن يظهر بعد الآن على لوحة المعلومات ، وسيتم إدراجه ضمن \"مغلق\" في صفحة المجموعة"
@@ -816,8 +724,6 @@ ar:
     files: الملفات
     settings: الإعدادات
     subgroups: الفِرَق الفرعية
-    show_opened: '{{عدد}} فتح'
-    show_closed: '{{عدد}} مغلق'
     no_threads_here: لا توجد مواضيع لترى هنا!
     search_threads: البحث عن المواضيع ...
     private_threads: ستحتاج إلى أن تكون عضوًا لعرض المواضيع الخاصة في هذه المجموعة
@@ -838,8 +744,6 @@ ar:
     discussions_placeholder: 'الموضوع هو حيث يمكن للجميع مناقشة نقاط معينة و صنع قرارات معاً.'
     members_placeholder: 'أنت الشخص الوحيد هنا: قم بدعوة أشخاص للانضمام!'
     member_options: خيارات الأعضاء
-    see_all_members: 'شاهد جميع الأعضاء {{عدد}}'
-    pending_invitations: '+ {{عدد}} معلق'
     subgroups_placeholder: 'تمنح المجموعات الفرعية الفرق مساحة خاصة بها وتركز الإشعارات على الأشخاص المناسبين'
     invite_people: 'دعوة'
     visibility_label: 'الظهور'
@@ -899,7 +803,6 @@ ar:
     submit: 'نعم ، قم بإلغاء تنشيط هذه المجموعة'
   group_form:
     thread_defaults_help: الإعدادات الافتراضية للمواضيع الجديدة
-    click_to_change_image: صورة الغلاف والشعار (انقر للتغيير)
     aria_label: شكل المجموعة
     new_organisation: منظمة جديدة
     new_group: مجموعة جديدة
@@ -941,7 +844,6 @@ ar:
     membership_granted_upon_approval: 'يمكن لأي شخص طلب الانضمام و لكن يجب الموافقة على طلب الانضمام.'
     membership_granted_upon_approval_secret_parent: 'حسب الطلب<strong> يمكن لأي شخص من {{الأب}} أن يطلب الانضمام إلى المجموعة</strong>'
     permissions: 'السماح'
-    features: 'ميزات خاصة بالمجموعة'
     thread_privacy: 'خصوصية المواضيع'
     public_threads: 'المواضيع العامة فقط'
     public_discussions_subgroup: 'يمكن لأي شخص من {{parentGroupName}} رؤية النقاش'
@@ -972,7 +874,6 @@ ar:
   membership_requests_card:
     heading: 'طلبات العضوية'
     manage_requests: إدارة الطلبات
-    manage_requests_with_count: إدارة الطلبات ({{count}})
   membership_requests_page:
     heading: طلبات العضوية
     approve: موافقة
@@ -984,11 +885,6 @@ ar:
     messages:
       request_approved_success: تمت الموافقة على طلب العضوية
       request_ignored_success: تم تجاهل طلب العضوية
-  group_previous_proposals_card:
-    heading: المقترحات السابقة
-    see_more: إظهار المزيد
-  group_decisions_card:
-    see_more: "مشاهدة كافة: ({عدد}}) القرارات"
   invitation_form:
     group_url: عنوان URL للمجموعة
     reusable_invitation_link: رابط دعوة قابل لإعادة الاستخدام
@@ -1014,15 +910,12 @@ ar:
     add_custom_message_link: 'قم بإضافة رسالة مخصصة.'
     custom_message: 'تخصيص الرسالة'
     custom_message_placeholder: 'قم بإدخال رسالة شخصية لإرفاقها مع الدعوة.'
-    team_invitation_message: 'عوضاً عن ذلك، '
-    team_invitation_link: 'احصل على رابط للمشاركة.'
     add_members: 'قم بإضافة أعضاء.'
     from_parent_group: 'من {{name}}.'
     send: 'أرسل'
     done: 'تم'
     messages:
       invitation_sent: 'تم إرسال الدعوة.'
-      invitations_sent: 'تم إرسال {{count}} دعوات.'
       no_invitations: 'عذرًا!  يرجى التحقق من صحة عنوان البريد الإلكتروني والمحاولة مرة أخرى'
       max_invitations: 'إن كنت تريد إرسال أكثر من 100 دعوة، قم باستخدام رابط فريق.'
   memberships_page:
@@ -1149,9 +1042,6 @@ ar:
     messages:
       updated: تم تحديث إعدادات البريد الإلكتروني
     learn_more: تعرف على المزيد حول إعدادات البريد الإلكتروني ...
-  thread_preview:
-    replies_count: "{{عدد}} ردود"
-    unread_count: "{{عدد}} غير مقروءة"
   dashboard_page:
     aria_label: 'لوحة التحكم'
     recent_threads: "المواضيع الأخيرة"
@@ -1189,10 +1079,6 @@ ar:
       muted: المواضيع المكتومة
       muted_aria_label: يتم إظهار المواضيع الصامتة
       muted_description: إظهار المواضيع الصامتة فقط
-    aria_thread:
-      unread: '{{عدد}} مادة غير مقروءة'
-      current_proposal: 'الموضوع الحالي: {{اسم}}.'
-      you_voted: 'لقد قمت بالتصويت: {{موضع}}.'
     thread_preview:
       you_voted: ' {{موضع}} انت ادليت بصوتك'
       undecided: 'أنت متردد'
@@ -1244,13 +1130,10 @@ ar:
     title: تمت رؤيته بواسطة
     no_one: لم ير أحد هذا حتى الآن
   activity_card:
-    aria_label: "التعليق أو بدء التصويت"
-    count_responses: "{{عدد}} ردود"
     event_pinned: "مثبت في المخطط الزمني"
     event_unpinned: "غير مثبت من الجدول الزمني"
     beginning: البداية
     end: النهاية
-    unread: "غير مقروءة ({{عدد}})"
     latest: الأحدث
     context: سياق النقاش
     chronological: ترتيب زمني
@@ -1258,8 +1141,6 @@ ar:
     attachment_display:
       aria_label: 'الملف المرفق: '
       image_alt: 'صورة مرفقة'
-    n_previous: 'تحميل {{عدد}} من الردود السابقة'
-    n_more: 'تحميل {{عدد}} ردود'
     add_comment: أضف تعليق
     add_poll: إضافة استطلاع
     add_outcome: أضف النتيجة
@@ -1284,7 +1165,6 @@ ar:
     print_thread: 'طباعة'
     delete_thread: 'حذف'
     add_comment: 'تعليق'
-    seen_by_count: 'تمت رؤيته من قِبل {{عدد}}'
     forked_from: "متشعب من"
   pin_thread_modal:
     title: دبوس الخيط
@@ -1339,12 +1219,6 @@ ar:
         فريق الدعم لدينا يتحدث الإنجليزية وسيقوم بترجمة رسالتك باستخدام خدمة الترجمة من Google إذا لزم الأمر.
         نهدف للرد على جميع الرسائل خلال 24 ساعة.
     success: "شكرًا على رسالتك ، {{اسم}}. سوف تتلقى ردًا منا قريبًا."
-  hint:
-    context: 'نصائح حول استخدام منصة السياق'
-    discussion: 'نصائح للبدء بنقاش تشاركي'
-    invitation: 'نصائح لكتابة دعوة رائعة'
-    proposal: 'نصائح لكتابة مقترح واضح'
-    vote: 'يمكنك تغيير رأيك في أي وقت'
   explore_page:
     header: استكشف المجموعات
     search_placeholder: ابحث عن المجموعات العامة
@@ -1360,12 +1234,10 @@ ar:
   decision_tools_card:
     choose_type: اختر نوع الاستطلاع
     title: تسهيل
-    help_text: مساعدة
     proposal_title: اقتراح
     count_title: التحقق من
     poll_title: استطلاع رأي
     score_title: يسجل الاستطلاع
-    dot_vote_title: نقطة التصويت
     meeting_title: استطلاع الوقت
     ranked_choice_title: اختيار مصنف
   poll_common:
@@ -1399,6 +1271,7 @@ ar:
     share_count: حصة الشيك
     start_poll: بدء قرار
     publish_poll: مشاركة الاستطلاع
+    share_outcome: نتائج حصة
     view_all: مشاهدة الكل
     save_changes: حفظ
     change_vote: غيّر تصويتك
@@ -1421,14 +1294,9 @@ ar:
     show_results: أظهر النتائج
     hide_results: إخفاء النتائج
     deleted: تم حذف هذا الاستطلاع
-  poll_common_index_card:
-    title: قرارات سابقة
-    no_polls: لم يتم العثور على قرارات سابقة
-    count: "مشاهدة كافة: ({عدد}}) القرارات"
   discussions_panel:
     open: مفتوحة
     all: الكل
-    unread: غير مقروءة ({{عدد}})
     closed: مغلقة
     include_subgroups_mine: '{{اسم}} ومجموعاتي الفرعية'
     include_subgroups_all: '{{اسم}} وجميع المجموعات الفرعية'
@@ -1480,15 +1348,8 @@ ar:
   poll_common_action_panel:
     anonymous: الأصوات مجهولة
     unable_to_vote: لم تتم دعوتك للتصويت في٪ {نوع الاستطلاع} هذا.
-  current_polls_card:
-    title: القرارات الحالية
-    start_poll: قرار جديد
-    no_polls: لا توجد قرارات نشطة الآن.
   poll_common_collapsed:
     by_who: "ب{{الاسم}}"
-  poll_common_select_group:
-    loomio_group: الفريق
-    loomio_group_placeholder: (لم يتم اختيار أي مجموعة)
   poll_common_calendar_invite:
     calendar_invite: تضمين دعوة التقويم مع هذه النتيجة
     poll_option_id: وقت الاجتماع
@@ -1535,19 +1396,6 @@ ar:
     hide_results_until_closed:
       title: إخفاء النتائج حتى الإغلاق
       helptext_on: لا تظهر كيف صوت الناس حتى يتم إغلاق الاقتراع
-  poll_common_close_form:
-    close_proposal: اقتراح وثيق
-    close_poll: إغلاق الاقتراع
-    close_count: إغلاق الشيك
-    close_dot_vote: إغلاق نقطة التصويت
-    close_meeting: إغلاق وقت الاستطلاع
-    close_ranked_choice: إغلاق استطلاع الاختيار المرتبة
-    proposal_closed: تم إغلاق الاقتراح
-    poll_closed: استطلاع مغلقة
-    count_closed: الشيك مغلق
-    dot_vote_closed: تم إغلاق التصويت عن بعد
-    meeting_closed: تم إغلاق وقت الاستطلاع
-    ranked_choice_closed: تم إغلاق استطلاع الاختيار المصنف
   poll_common_reopen_form:
     title: "إعادة فتح {{نوع الاستطلاع}}"
     helptext: "أعد فتح {{نوع الاستطلاع}} إذا احتاج الأشخاص إلى مزيد من الوقت للمشاركة"
@@ -1574,17 +1422,13 @@ ar:
     change_results_order: ترتيب النتائج
     none_of_the_above: (لا شيء مما سبق)
   poll_common_undecided_panel:
-    show_undecided: "إظهار {{عدد}} متردد"
     show_invitations: إظهار الدعوات المعلقة
-    undecided_users: "غير محدد ({{عدد}})"
     invitation_count_singular: "تمت دعوة شخص إضافي واحد للمشاركة عبر البريد الإلكتروني"
-    invitation_count_plural: "تمت دعوة {{عدد}} أشخاص آخرين للمشاركة عبر البريد الإلكتروني"
   poll_common_undecided_user:
     reminded: تم إرسال إشعار التذكير
     reminder_sent: أدخل النتيجة
   poll_common_set_outcome_panel:
     enter_outcome: تم إغلاق هذا الاستطلاع. شارك النتيجة مع المجموعة.
-    share_outcome: نتائج حصة
     poll: 'تم إغلاق هذا الاقتراح. يرجى النظر فيما قيل ومشاركة النتيجة ، حتى يعرف الناس ما سيحدث بعد ذلك.'
     proposal: 'تم إغلاق هذا الشيك. شارك النتيجة لإكمال العملية.'
     count: 'تم إغلاق الاستطلاع هذا الوقت. شارك بنتيجة لإعلام الآخرين بموعد الاجتماع.'
@@ -1800,36 +1644,17 @@ ar:
     stance_updated: توفر تحديث
     reason_placeholder: اشرح متى تكون متفرغًا (أو مشغولاً) ، في حالة رغبة المؤلف في إضافة خيارات.
   poll_dot_vote_vote_form:
-    dots_remaining: "يتبقى {{عدد}} نقطة"
     too_many_dots: لقد استخدمت عددًا كبيرًا جدًا من النقاط
     stance_created: تم إنشاء التصويت
     stance_updated: تم تحديث التصويت
   poll_ranked_choice_vote_form:
-    helptext: قم بسحب وإفلات الخيارات بترتيب التفضيل (1 هو الخيار المفضل لديك). سيتم تسجيل أهم {{عدد}} اختياراتك.
     stance_created: تم تسجيل الاختيار
     stance_updated: تم تحديث الاختيار
   thread_item:
-    aria:
-      deleted: تم حذف العنصر
-      new_comment: "علق {{ممثل}}. {{متى}}"
-      poll_created: "بدأ {{ممثل}} {{نوع استطلاع}}. {{متى}}"
-      stance_created: "صوّت {{ممثل}}. {{متى}}"
-      outcome_created: "شارك {{ممثل}} نتيجة. {{متى}}"
-      poll_expired: "{{نوع الاستطلاع}} مغلق. {{متى}}"
     removed: "تمت إزالة العنصر"
     deleted_group: "المجموعة المحذوفة"
     poll_expired: "تم إغلاق {{نوع الاستطلاع}}"
     event_removed: "تمت إزالته من الموضوع"
-  poll_common_subscribe_form:
-    receive_updates_title: تم تسجيل تصويتك
-    receive_updates_helptext: إذا كنت ترغب في تلقي بريد إلكتروني حول نتيجة هذا الاستطلاع ، أدخل عنوان بريدك الإلكتروني أدناه
-    email_saved: سوف تتلقى رسالة بريد إلكتروني حول نتيجة هذا الاستطلاع
-    subscribe: الإشتراك
-    no_thanks: لا شكرًا
-  poll_common_example_card:
-    what_is_this: "هذا مثال حي على {{نوع}}. أنت مشارك - جربه!"
-  share_poll_page:
-    title: مشاركة الاستطلاع - {{عنوان}}
   add_poll_to_thread_modal:
     success: "تم بنجاح ، تمت إضافة {{نوع الاستطلاع}} إلى الموضوع!"
   auth_form:
@@ -1890,6 +1715,9 @@ ar:
     email: البريد الإلكتروني
     password: الكلمة السرية
     reactivate: تنشيط الحساب
+  chatbot:
+    username: إسم المستخدم
+    password: الكلمة السرية
   webhook:
     integrations: تكاملات
     webhooks: ويب هوك
@@ -1910,16 +1738,12 @@ ar:
       new_comment: يتم إجراء تعليق
       poll_created: بدأ استطلاع
       stance_created: يتم التصويت
-      poll_closing_soon: استطلاع على وشك الانتهاء
       poll_expired: انتهاء صلاحية الاستطلاع
       poll_closed_by_user: يتم إغلاق الاستطلاع يدويًا
       poll_reopened: إعادة فتح الاستطلاع للتصويت
       outcome_created: النتيجة مشتركة
     include_body_label: تضمين نص الرسالة مع الإخطار
     include_subgroups_label: أحداث الترحيل من المجموعات الفرعية
-  browser_warning:
-    message: "أنت تستخدم متصفحًا قديمًا ({{الاسم}} {{النسخة}}) لا يدعمه {{الموقع}}."
-    link: يرجى التبديل إلى متصفح آخر
   powered_by:
     slogan: قرارات أفضل معًا
     powered_by_loomio: مدعوم من Loomio
@@ -1927,10 +1751,6 @@ ar:
     terms_of_service: شروط الخدمة
     front_page: الصفحة الأمامية
   group_survey:
-    title: نجاح! فقط بضع تفاصيل أخرى
-    subtitle: الرجاء مساعدتنا في التعرف عليك بشكل أفضل. لن نشارك أي معلومات مقدمة في هذا النموذج دون إذنك.
-    validation_error: يرجى ملء جميع الحقول المطلوبة.
-    success: شكرا جزيلا!
     categories:
       party: 'حزب سياسي '
       coop: 'تعاوني '
@@ -1938,44 +1758,3 @@ ar:
       community: مجتمع محلي
       government: الحكومة / الحكومة المحلية
       other: اخر
-    sizes:
-      ten: "<10"
-      twenty: "11-20"
-      fifty: "21-50"
-      two_hundred: "51-200"
-      five_hundred: "201-500"
-      two_thousand: "501-2000"
-      else: ">2000"
-    uses:
-      governance: الحوكمة لمجلس الإدارة أو اللجنة أو الأمانة
-      collaboration: مجموعة عمل تعاونية
-      engagement: مشاركة أصحاب المصلحة أو الأعضاء
-      self_management: الإدارة الذاتية (مكان العمل التعاوني)
-      remote: العمل عن بعد
-      document: تطوير المستندات التعاونية ، على سبيل المثال  خطة إستراتيجية
-      decision_making: عمليات صنع القرار (نصيحة ، موافقة)
-      funding: قرارات التمويل أو المنح
-      project: 'فريق المشروع '
-      forum: المنتدى
-      other: اخر
-    desired_features:
-      polls: إجراء استطلاعات الرأي لفريقي للتصويت عليها
-      discussions: عقد المناقشات على الإنترنت والحصول على المدخلات
-      archive: تسجيل القرارات التي نتخذها أو أرشفة المعلومات
-    referrers:
-      google: 'بحث غوغيل '
-      invitation: مدعو الى مجموعة لوميو
-      referral: الإحالة
-      social: وسائل التواصل الاجتماعي (Facebook و Twitter و LinkedIn)
-      capterra: كابترا
-      other: اخر
-    location: أين مقر مجموعتك؟
-    purpose: "ما هو هدف مجموعتك؟"
-    category_question: "حدد أفضل فئة تصف مجموعتك"
-    anything_else: "هل هناك أي شيء آخر تود إخبارنا به؟"
-    size_question: "كم عدد الأشخاص في مجموعتك؟"
-    role: "ما هو دورك في المجموعة؟"
-    website: "رابط الموقع"
-    usage: "كيف تخطط لاستخدام Loomio؟  اختر الأنسب"
-    desired_feature: "ما هو الشيء الرئيسي الذي تبحث عنه لاستخدام Loomio؟"
-    referrer: "كيف سمعت عن Loomio؟"

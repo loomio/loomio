@@ -66,7 +66,6 @@ nb_NO:
       update: 'Oppdater'
       cancel: 'Avbryt'
       show_more: "Vis mer"
-      count_more: "{{count}} flere"
       view_all: "Vis alle"
       new_thread: "Ny tråd"
       loading: 'Laster'
@@ -219,7 +218,6 @@ nb_NO:
   sidebar:
     threads: 'Tråder'
     recent_threads: 'Siste tråder'
-    unread_threads: 'Uleste tråder ({{count}})'
     muted_threads: 'Dempede tråder'
     explore: 'Offentlige grupper'
     start_thread: Ny tråd
@@ -295,7 +293,6 @@ nb_NO:
     privacy_public: 'Alle kan se denne tråden. Bare medlemmer kan delta i tråden.'
     privacy_private: 'Denne tråden er bare synlig for medlemmer i {{group}}.'
     privacy_organisation: 'Denne tråden vil være synlig for medlemmer i {{parent}} og medlemmer i gruppen: {{group}}.'
-    fork_notice: 'En ny tråd vil bli opprettet med {{count}} innlegg fra  {{title}}'
   announcement:
     audiences:
       group: Medlemmer av {{name}}
@@ -316,7 +313,6 @@ nb_NO:
       outcome_announced:
         title: Del resultat
       anyone_can_participate: Alle med link kan delta
-      group_title: '{{name}} ({{count}} folk)'
     members_list:
       title: Delt med
       last_notified: Varslet
@@ -325,8 +321,6 @@ nb_NO:
     group_form:
       search_placeholder: Søk etter folk...
       modal_title: Velg gruppemedlemmer
-    flash:
-      success: '{{count}} varslinger sendt'
   action_dock:
     add_resource: Legg til vedlegg
     edit_group: Rediger gruppens kontekst
@@ -391,11 +385,8 @@ nb_NO:
   reactions_input:
     add_your_reaction: Legg til din reaksjon
   reactions_display:
-    more_reactions: "{{count}} flere"
     you: "Du"
     you_and_name: "Du og {{name}}"
-    you_and_name_and_count_more: "Du, {{name}} og {{count}} flere"
-    name_and_count_more: "{{name}} og {{count}} flere"
   context_panel:
     thread_status:
       pinned: "Denne tråden er festet. Den vil forbli på toppen av gruppelista for alle brukere."
@@ -403,8 +394,6 @@ nb_NO:
   group_page:
     threads: Tråder
     settings: Innstillinger
-    show_opened: '{{count}} Åpne'
-    show_closed: '{{count}} Lukket'
     no_threads_here: Ingen tråder å se her!
     search_threads: Søk etter tråder...
     new_cover_photo: 'Last opp nytt forsidebilde'

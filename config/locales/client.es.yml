@@ -113,8 +113,6 @@ es:
     destroy_tag: Borrar etiqueta
     destroy_helptext: Esto borrará la etiqueta y la eliminará de todos los hilos en el grupo. ¿Estás seguro?
     helptext: Las etiquetas permiten categorizar conversaciones para encontrarlas más fácilmente después.
-    discussions_count_singular: ({{count}} hilo)
-    discussions_count_plural: ({{count}} hilos)
     tag_created: Etiqueta guardada
     tag_destroyed: Etiqueta eliminada
     tags_marked: Hilos marcados con '{{name}}' en {{groupName}}
@@ -230,10 +228,6 @@ es:
       cancel: 'Cancelar'
       show_more: "Mostrar más"
       show_fewer: "Mostrar menos"
-      view_count_more: "Ver {{count}} mas"
-      view_count_responses: "Ver {{count}} respuestas"
-      count_more: "{{count}}  más"
-      count_responses: "{{count}} respuestas"
       view_all: "Mostrar todo"
       new_thread: "Nuevo hilo"
       add_subgroup: 'Nuevo subgrupo'
@@ -446,7 +440,6 @@ es:
     recent_threads: 'Hilos recientes'
     invite_only_threads: 'Hilos sólo con invitación'
     direct_threads: 'Hilos directos'
-    unread_threads: 'No leído ({{count}})'
     muted_threads: 'Hilos silenciados '
     start_group: 'Nueva organización'
     start_subgroup: 'Nuevo subgrupo'
@@ -649,7 +642,6 @@ es:
     privacy_public: 'Cualquier persona puede ver los hilos. Solo integrantes pueden participar. '
     privacy_private: 'Los hilos solo serán visibles para integrantes de {{group}}.'
     privacy_organisation: 'Los hilos serán visibles para integrantes de {{parent}} e integrantes de {{group}}.'
-    fork_notice: 'Un nuevo hilo será creado con {{count}} items de {{title}}'
     notify_group: Grupo de notificación
   announcement:
     send_discussion: Manda hilo
@@ -703,7 +695,6 @@ es:
       no_invitations_remaining: |
           <p>Ha usado todas las {{maxMembers}} invitaciones disponibles para este grupo.</p>
           <p>Si quiere puede, <a href="{{upgradeUrl}}" target="_blank">elegir un abono</a> para continuar colaborando en Loomio.</p>
-      invitations_remaining: '{{count}} invitaciones disponibles. <a href="{{upgradeUrl}}" target="_blank">Mejore su abono</a>'
       who_to_invite: ¿A quién te gustaría invitar?
       invitation_message_placeholder: Un mensaje a incluir en el email de invitación. (opcional)
       invitation_message_label: Mensaje
@@ -745,10 +736,8 @@ es:
       notified: '{{notified}} gente será notificada.'
       notified_singular: '1 persona será notificada'
       notified_none: 'Nadie será notificado.'
-      added: '{{count}} personas serán añadidas'
       added_singular: '1 persona será añadida'
       added_none: 'Nadie será añadido'
-      group_title: '{{name}} ({{count}} personas)'
       visible_to_group: 'Cualquiera en {{group}} será capaz de ver este hilo.'
       visible_to_guests: 'Solamente la gente invitada puede ver este hilo.'
       click_group_to_see_individuals: Clica grupo para ver individual
@@ -764,8 +753,6 @@ es:
     group_form:
       search_placeholder: Buscar personas...
       modal_title: Selecciona integrantes del grupo
-    flash:
-      success: '{{count}} notificaciones enviadas'
   action_dock:
     actions_menu: Menú de acciones
     more_actions: Más acciones
@@ -817,8 +804,7 @@ es:
     notification_history: Historial de notificación
     move_item: Mover elemento
     add_poll_to_thread: Añadir al hilo
-    count_members: "{{count}} miembros"
-    count_voters: "{{count}} votantes"
+    count_members: "%{count} miembros"
   formatting:
     formatting_tools: Herramientas formateo de texto
     colors: Colores
@@ -917,11 +903,8 @@ es:
   reactions_input:
     add_your_reaction: 'Añadir reacción '
   reactions_display:
-    more_reactions: "{{count}}  más"
     you: "Tú"
     you_and_name: "Tú y {{name}}"
-    you_and_name_and_count_more: "Tú, {{name}} y {{count}} más"
-    name_and_count_more: "{{name}} y {{count}} más"
   context_panel:
     thread_status:
       pinned: "Este hilo ha sido fijado. Permanecerá en la parte superior de la lista de hilos del grupo para todos los integrantes."
@@ -942,8 +925,6 @@ es:
     files: Archivos
     settings: 'Configuración '
     subgroups: Subgrupos
-    show_opened: '{{count}} Abierto'
-    show_closed: '{{count}} Cerrado '
     no_threads_here: Ningún hilo para ver aquí!
     search_threads: Buscar hilos ...
     private_threads: Usted debe ser un integrante para ver los hilos privados de este grupo
@@ -965,8 +946,6 @@ es:
     discussions_placeholder: 'Un hilo es donde todo el mundo puede discutir un tema y tomar decisiones juntos.'
     members_placeholder: 'Está solo aquí: ¡Invite a otras personas! '
     member_options: Opciones de membresía
-    see_all_members: 'Mostrar los ({{count}}) integrantes'
-    pending_invitations: '+ {{count}} pendientes'
     subgroups_placeholder: 'Los subgrupos le dan su propio espacio a los equipos y mantienen las notificaciones enfocadas en las personas indicadas.'
     invite_people: 'Invitar'
     visibility_label: 'Visibilidad'
@@ -1133,7 +1112,6 @@ es:
   membership_requests_card:
     heading: 'Pedidos de membresía '
     manage_requests: 'Gestionar peticiones '
-    manage_requests_with_count: Gestionar peticiones ({{count}})
   membership_requests_page:
     heading: Solicitudes de ingreso
     approve: 'Aprobar '
@@ -1176,7 +1154,6 @@ es:
     done: 'Listo'
     messages:
       invitation_sent: 'Invitación enviada.'
-      invitations_sent: '{{count}} invitaciones enviadas.'
       no_invitations: '¡Uh oh! Comprueba que la dirección de correo electrónico es correcta e inténtalo de nuevo.'
       max_invitations: 'Si quiere enviar mas de 100 invitaciones, utilice un enlace de grupo.'
   memberships_page:
@@ -1318,9 +1295,6 @@ es:
     messages:
       updated: Configuración del correo electrónico actualizada
     learn_more: Aprende más sobre la configuración de correo electrónico...
-  thread_preview:
-    replies_count: "{{count}} respuestas"
-    unread_count: "{{count}} no leídos"
   dashboard_page:
     aria_label: 'Escritorio'
     polls_to_vote_on: "Sondeos para votar"
@@ -1412,12 +1386,10 @@ es:
     title: Visto por
     no_one: Nadie ha visto esto todavía
   activity_card:
-    count_responses: "{{count}} respuestas"
     event_pinned: "Anclado para cronograma"
     event_unpinned: "Desanclado de cronograma"
     beginning: 'Inicio '
     end: Final
-    unread: "No leídos {{count}"
     latest: Últimos
     context: Contexto
     chronological: 'Cronológico '
@@ -1425,8 +1397,6 @@ es:
     attachment_display:
       aria_label: 'Archivo adjunto:'
       image_alt: 'Imagen adjunta'
-    n_previous: 'Mostrar {{count}} respuestas previas'
-    n_more: 'Mostrar {{count}} respuestas'
     add_comment: Añadir comentario
     add_poll: Añadir sondeo
     add_outcome: Añadir resultado
@@ -1451,8 +1421,6 @@ es:
     print_thread: 'Imprimir '
     delete_thread: 'Eliminar'
     add_comment: 'Comentar '
-    seen_by_count: 'Visto por {{count}} '
-    count_notified: 'Avisado {{count}}'
     forked_from: "Bifurcado de"
   pin_thread_modal:
     title: Fijar hilo
@@ -1604,7 +1572,6 @@ es:
   discussions_panel:
     open: Abierto
     all: Todos/as
-    unread: No leídos ({{count}})
     closed: 'Cerrado '
     include_subgroups_mine: '{{name}} y mis subgrupos'
     include_subgroups_all: '{{name}} y todos los subgrupos'
@@ -1748,11 +1715,8 @@ es:
     change_results_order: Cambiar orden de resultados
     none_of_the_above: '(Ninguno de los mencionados) '
   poll_common_undecided_panel:
-    show_undecided: "Mostrar {{count}} indecisos"
     show_invitations: Mostrar invitaciones pendientes
-    undecided_users: "Indecisos ({{count}})  "
     invitation_count_singular: "Una persona más ha sido invitada a participar vía correo electrónico "
-    invitation_count_plural: "{{count}} personas adicionales han sido invitadas a participar vía correo electrónico"
   poll_common_undecided_user:
     reminded: 'Recordatorio enviado '
     reminder_sent: 'Recordatorio de notificación enviado '
@@ -1800,7 +1764,6 @@ es:
     loomio_school_link: |
         <p>Descubre más en <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Ayuda Loomio</a>.</p>
     no_notifications_warning: Los votantes serán notificados. Esto es útil si están llevando a cabo muchos sondeos y planeas notificar a todo el mundo más adelante.
-    count_voters_added: '{{count}} votantes añadidos'
   poll_proposal_form:
     tool_tip_expanded: |
         <p>Una propuesta es una herramienta para buscar el acuerdo colectivo sobre una declaración o curso de acción</p>
@@ -1988,12 +1951,10 @@ es:
     stance_updated: Disponibilidad actualizada
     reason_placeholder: Explica cuando estarás libre (u ocupado), para el caso de que el autor quiera agregar opciones.
   poll_dot_vote_vote_form:
-    dots_remaining: "{{count}} puntos restantes"
     too_many_dots: Has usado demasiados puntos
     stance_created: Voto creado
     stance_updated: Voto actualizado
   poll_ranked_choice_vote_form:
-    helptext: Arrastre y suelte las opciones en orden de preferencia (1 la opción preferida). Sus {{count}} opciones preferidas serán registradas.
     stance_created: 'Opción registrada '
     stance_updated: Opción actualizada
   thread_item:
