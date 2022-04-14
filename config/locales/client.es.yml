@@ -539,7 +539,7 @@ es:
       comment_replied_to: "%{actor} te respondió en: %{title}"
       discussion_announced: "%{actor} te invitó al hilo: %{title}"
       discussion_edited: "%{actor} editó el contenido del hilo: %{title}"
-      discussion_closed: "%{actor}cerró el hilo: %{title}"
+      discussion_closed: "%{actor} cerró el hilo: %{title}"
       invitation_accepted: "%{actor} aceptó tu invitación a unirte a %{title}"
       membership_created: "%{member} te ha invitado a unirte a %{group_name} en %{site_name}"
       membership_requested: "%{actor} solicitó unirse a %{title} "
@@ -547,33 +547,33 @@ es:
       new_comment: "%{actor} comentó en: %{title}"
       new_coordinator: "%{actor} te hizo administrador de %{title}"
       new_discussion: "*%{actor} comenzó un hilo: %{title}"
-      outcome_announced: "%{actor}compartió un %{poll_type} resultado:%{title}"
-      outcome_created: "%{actor}compartió un %{poll_type} resultado:%{title}"
-      outcome_updated: "%{actor} actualizado el %{poll_type} resultado:%{title}"
+      outcome_announced: "%{actor} compartió un %{poll_type} resultado: %{title}"
+      outcome_created: "%{actor} compartió un %{poll_type} resultado: %{title}"
+      outcome_updated: "%{actor} actualizado el %{poll_type} resultado: %{title}"
       outcome_review_due: "Es la hora de revisar el resultado: %{title}"
       poll_announced: "%{actor} te invitó a votar: %{title}"
-      poll_closed_by_user: "%{actor}cerró el%{poll_type}:%{title}"
-      poll_closing_soon: "%{poll_type}cierra en 24 horas:%{title}"
-      poll_closing_soon_author: "Tu %{poll_type}cierra en 24 horas:%{title}"
-      poll_created: "%{actor}comenzó en %{poll_type}:%{title}"
-      poll_edited: "%{actor}ha editado el%{poll_type}:%{title}"
-      poll_expired: "%{poll_type}ha cerrado:%{title}"
+      poll_closed_by_user: "%{actor} cerró el %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} cierra en 24 horas: %{title}"
+      poll_closing_soon_author: "Tu %{poll_type} cierra en 24 horas: %{title}"
+      poll_created: "%{actor} comenzó en %{poll_type}: %{title}"
+      poll_edited: "%{actor} ha editado el %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} ha cerrado: %{title}"
       poll_expired_author: "Compartió el resultado de tu %{poll_type}:%{title}"
       poll_option_added: "%{actor} añadió opciones en %{title}"
-      poll_reopened: "%{actor}ha vuelto a abrir el%{poll_type}:%{title}"
+      poll_reopened: "%{actor} ha vuelto a abrir el %{poll_type}: %{title}"
       poll_reminder: "%{actor} te está recordando que votes en %{title} "
       poll_reminder_wip: "%{actor} te está recordando que dejes comentarios en %{title} "
-      reaction_created: "%{actor} ha reaccionado %{reaction}a tu %{model} en %{title}"
+      reaction_created: "%{actor} ha reaccionado %{reaction} a tu %{model} en %{title}"
       stance_created: "%{actor} votó en: %{title}"
       stance_updated: "%{actor} votó en: %{title}"
       stance_created_option: "%{actor} votó %{option} en %{title} "
       user_added_to_group: "%{actor} te añadió en el grupo: %{title}"
-      user_mentioned: "%{actor} te mencionó en:%{title} "
-      user_reminded: "%{actor} te está recordando que votes en %{title} "
+      user_mentioned: "%{actor} te mencionó en: %{title}"
+      user_reminded: "%{actor} te está recordando que votes en %{title}"
     without_title:
       discussion_announced: '%{actor} te invitó al hilo'
       discussion_edited: '%{actor} editó el contenido del hilo'
-      discussion_closed: "%{actor}cerró el hilo"
+      discussion_closed: "%{actor} cerró el hilo"
       group_announced: "%{actor} te invitó al grupo"
       comment_replied_to: '%{actor} te respondió'
       new_discussion: "%{actor} inicio un hilo"
@@ -584,25 +584,25 @@ es:
       outcome_created: "%{actor} compartió %{poll_type} un resultado"
       outcome_updated: "%{actor} actualizó un resultado"
       outcome_review_due: "Es la hora de revisar el %{poll_type} resultado"
-      poll_announced: '%{actor}te invitó a votar en un %{poll_type}'
-      poll_announced_wip: '%{actor}quiere tu feedback en un %{poll_type}'
-      poll_closed_by_user: "%{actor}cerró el%{poll_type}"
-      poll_closing_soon: '%{poll_type}cerrará en 24 horas'
-      poll_closing_soon_author: 'Tu %{poll_type}cerrará en 24 horas'
-      poll_created: "%{actor}comenzó en %{poll_type}"
-      poll_edited: "%{actor}ha editado el%{poll_type}"
+      poll_announced: '%{actor} te invitó a votar en un %{poll_type}'
+      poll_announced_wip: '%{actor} quiere tu feedback en un %{poll_type}'
+      poll_closed_by_user: "%{actor} cerró el %{poll_type}"
+      poll_closing_soon: '%{poll_type} cerrará en 24 horas'
+      poll_closing_soon_author: 'Tu %{poll_type} cerrará en 24 horas'
+      poll_created: "%{actor} comenzó en %{poll_type}"
+      poll_edited: "%{actor} ha editado el %{poll_type}"
       poll_expired: "%{poll_type} ha cerrado"
       poll_expired_author: 'Compartió el resultado de tu %{poll_type}'
-      poll_option_added: '%{actor} añadió opciones en  %{poll_type}'
-      poll_reopened: "%{actor}ha vuelto a abrir el%{poll_type}"
-      poll_reminder: '%{actor}te está recordando que votes'
+      poll_option_added: '%{actor} añadió opciones en %{poll_type}'
+      poll_reopened: "%{actor} ha vuelto a abrir el %{poll_type}"
+      poll_reminder: '%{actor} te está recordando que votes'
       poll_reminder_wip: '%{actor} te está recordando que dejes comentarios'
-      reaction_created: "%{actor} ha reaccionado %{reaction}a tu %{model}"
+      reaction_created: "%{actor} ha reaccionado %{reaction} a tu %{model}"
       stance_created: "%{actor} votó"
       stance_updated: "%{actor} votó"
       stance_created_option: "%{actor} votó %{option}"
       user_mentioned: '%{actor} te mencionó'
-      user_reminded: '%{actor}te está recordando que votes'
+      user_reminded: '%{actor} te está recordando que votes'
     hints:
       poll_closing_soon: 'Ahora es un buen momento para votar, cambiar de opinión o animar a otros a participar.'
       poll_closing_soon_author: 'Es posible que desee recordar a las personas que voten o extiendan la fecha límite.'
