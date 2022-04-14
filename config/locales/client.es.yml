@@ -536,7 +536,7 @@ es:
     header: "Notificaciones"
     no_notifications: "No tienes notificaciones"
     with_title:
-      comment_replied_to: "%{actor} te respondió en: %{discussion}"
+      comment_replied_to: "%{actor} te respondió en: %{title}"
       discussion_announced: "%{actor} te invitó al hilo: %{title}"
       discussion_edited: "%{actor} editó el contenido del hilo: %{title}"
       discussion_closed: "%{actor}cerró el hilo: %{title}"
