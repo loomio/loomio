@@ -38,8 +38,6 @@ hu:
     modal_edit_title: Címke szerkesztése
     modal_destroy_title: Címke eltávolítása
     helptext: A címkék lehetővé teszik a beszélgetések kategorizálását, és hogy később könnyebben megtalálhatóak legyenek.
-    discussions_count_singular: ({{count}} téma)
-    discussions_count_plural: ({{count}} témák)
     tag_created: Címke mentve
     tags_marked: 'A(z) ''{{name}}'' jelöléssel ellátott témák itt: {{groupName}}'
   poll_types:
@@ -142,8 +140,6 @@ hu:
       update: 'Frissít'
       cancel: 'Mégse'
       show_more: "Bővebben"
-      count_more: "{{count}} további"
-      count_responses: "{{count}} válasz"
       view_all: "Mutasd mind"
       new_thread: "Új téma"
       add_subgroup: 'Új alcsoport'
@@ -328,7 +324,6 @@ hu:
     other_groups: 'Más csoportok'
     all_groups: 'Összes csoport'
     recent_threads: 'Új témák'
-    unread_threads: 'Olvasatlan szálak ({{count}})'
     muted_threads: 'Némított témák'
     start_group: 'Új szervezet'
     start_subgroup: 'Új alcsoport'
@@ -432,7 +427,6 @@ hu:
     privacy_public: 'Bárki láthatja a témát. Csak a tagok vehetnek részt.'
     privacy_private: 'A téma csak a(z) {{group}} tagjai számára lesz látható.'
     privacy_organisation: 'A téma látható lesz a(z) {{parent}} és a(z) {{group}} tagjai számára.'
-    fork_notice: 'Új témát hozunk létre {{count}} elemmel innen: {{title}}'
   announcement:
     send_discussion: Téma küldése
     send_group: 'Meghívás a következőhöz: {{name}}'
@@ -448,7 +442,6 @@ hu:
     form:
       too_many_invitations: |
           A meghívási korlátot meghaladtad. <a href="{{upgradeUrl}}" target="_blank"> Frissítés </a>
-      invitations_remaining: '{{count}} meghívó maradt. <a href="{{upgradeUrl}}" target="_blank"> Frissítés </a>'
       invitation_message_label: Üzenet
       group_announced:
         title: Meghívás a csoportba
@@ -470,7 +463,6 @@ hu:
       outcome_announced:
         title: Oszd meg az eredményt
       anyone_can_participate: Bárki részt vehet, akinek megvan ez a link
-      group_title: '{{name}} ({{count}} ember)'
     members_list:
       title: Megosztva vele
       last_notified: Értesített
@@ -479,8 +471,6 @@ hu:
     group_form:
       search_placeholder: Emberek keresése ...
       modal_title: Válassza ki a csoporttagokat
-    flash:
-      success: '{{count}} értesítés elküldve'
   action_dock:
     react: Érzelmi válasz
     notify: Értesít
@@ -522,6 +512,7 @@ hu:
     reopen_thread: Téma újranyitása
     delete_thread: Téma törlése
     notification_history: Értesítési előtörténet
+    count_members: "%{count} tag"
   formatting:
     bold: Félkövér
     italicize: Dőlt
@@ -584,11 +575,8 @@ hu:
   reactions_input:
     add_your_reaction: Válasz hozzáadása
   reactions_display:
-    more_reactions: "{{count}} további"
     you: "Te"
     you_and_name: "Te és {{name}}"
-    you_and_name_and_count_more: "Te, {{name}} és még {{count}}"
-    name_and_count_more: "{{name}} és még {{count}}"
   context_panel:
     thread_status:
       pinned: "Ezt a témát rögzítették. Az összes felhasználó számára a témák listájának tetején fog maradni."
@@ -600,8 +588,6 @@ hu:
     files: Fájlok
     settings: Beállítások
     subgroups: Alcsoportok
-    show_opened: '{{count}} nyitott'
-    show_closed: '{{count}} lezárt'
     no_threads_here: Nincsenek témák itt!
     search_threads: Témák keresése ...
     private_threads: Tagnak kell lenned ahhoz, hogy megtekintsd a csoport zártkörű témáit
@@ -621,8 +607,6 @@ hu:
     discussions_placeholder: 'Egy téma az, ahol mindenki megbeszélhet egy témát és együtt hozhat döntéseket.'
     members_placeholder: 'Te vagy az egyetlen itt: hívj meg embereket, hogy csatlakozzanak hozzád!'
     member_options: Tagság beállítások
-    see_all_members: 'Az összes {{count}} tag megtekintése'
-    pending_invitations: '{{count}} függőben van'
     subgroups_placeholder: 'Az alcsoportok a csapatok számára saját teret biztosítanak, és az értesítéseket a megfelelő emberekre összpontosítják.'
     invite_people: 'Meghív'
     visibility_label: 'Láthatóság'
@@ -728,7 +712,6 @@ hu:
   membership_requests_card:
     heading: 'Tagsági kérelmek'
     manage_requests: Kezeld a kéréseket
-    manage_requests_with_count: Kezeld a kérelmeket ({{count}})
   membership_requests_page:
     heading: Tagsági kérelmek
     approve: Érvényesítés
@@ -764,7 +747,6 @@ hu:
     done: 'Kész'
     messages:
       invitation_sent: 'Meghívó elküldve.'
-      invitations_sent: '{{count}} meghívó elküldve.'
       no_invitations: 'UH Oh! Ellenőrizze, hogy az e-mail cím helyes-e, és próbálja újra.'
       max_invitations: 'Ha több mint 100 meghívót szeretne küldeni, használjon egy csapat linket.'
   memberships_page:
@@ -888,9 +870,6 @@ hu:
     messages:
       updated: Az e-mail beállítások frissítve
     learn_more: További információ az e-mail beállításokról ...
-  thread_preview:
-    replies_count: "{{count}} válasz"
-    unread_count: "{{count}} olvasatlan"
   dashboard_page:
     aria_label: 'Műszerfal'
     recent_threads: "Új témák"
@@ -967,12 +946,10 @@ hu:
     title: Látta
     no_one: Még senki sem látta
   activity_card:
-    count_responses: "{{count}} válasz"
     event_pinned: "Idővonalhoz rögzítve"
     event_unpinned: "Nem szerepel az idővonalon"
     beginning: Kezdet
     end: Vége
-    unread: "Olvasatlan ({{count}})"
     latest: Legutóbbi
     context: Háttér
     chronological: Időrendi
@@ -980,8 +957,6 @@ hu:
     attachment_display:
       aria_label: 'Fájl csatolva:'
       image_alt: 'Csatolt kép'
-    n_previous: 'Tölts be a(z) {{count}} korábbi választ'
-    n_more: '{{count}} válasz betöltése'
     add_comment: Megjegyzés hozzáadása
     add_poll: Szavazás hozzáadása
     add_outcome: Végeredmény hozzáadása
@@ -1004,7 +979,6 @@ hu:
     print_thread: 'Nyomtatás'
     delete_thread: 'Törlés'
     add_comment: 'Megjegyzés'
-    seen_by_count: 'Látta: {{count}}'
     forked_from: "Leágaztatva innen: "
   pin_thread_modal:
     title: Téma rögzítése
@@ -1118,7 +1092,6 @@ hu:
   discussions_panel:
     open: Nyitva
     all: Minden
-    unread: Olvasatlan ({{count}})
     closed: Zárva
     include_subgroups_mine: '{{name}} és az alcsoportjaim'
     include_subgroups_all: '{{name}} és minden alcsoport'
@@ -1205,11 +1178,8 @@ hu:
     change_results_order: Az eredmények sorrendjének módosítása
     none_of_the_above: (A fentiek egyike sem)
   poll_common_undecided_panel:
-    show_undecided: "Mutasd a(z) {{count}} -ot határozatlanul"
     show_invitations: A függőben lévő meghívók megjelenítése
-    undecided_users: "Meghatározatlan ({{count}})"
     invitation_count_singular: "1 további személyt hívtak meg e-mailben a részvételre"
-    invitation_count_plural: "{{count}} további embert hívtak meg e-mailben a részvételre"
   poll_common_undecided_user:
     reminded: Emlékeztető elküldve!
     reminder_sent: Emlékeztető értesítés elküldve
@@ -1416,12 +1386,10 @@ hu:
     stance_updated: A rendelkezésre állás frissítve
     reason_placeholder: Mondd el, hogy mikor vagy szabad (vagy elfoglalt), hogy a szavazás elindítója könnyebben tudjon további lehetőségeket hozzáadni, ha szükséges.
   poll_dot_vote_vote_form:
-    dots_remaining: "{{count}} pont maradt"
     too_many_dots: Túl sok pontot használt
     stance_created: Szavazás létrehozva
     stance_updated: A szavazás frissítve
   poll_ranked_choice_vote_form:
-    helptext: Állítsd a lehetőségeket fontossági sorrendbe a fogd és vidd módszerrel (az 1 a legelőnyösebb lehetőség). A legfontosabb {{count}} választásodat rögzítjük.
     stance_created: A választást rögzítették
     stance_updated: A választás frissítve
   thread_item:

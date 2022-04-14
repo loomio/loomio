@@ -252,6 +252,7 @@ ga_IE:
     edit_stance: Athraigh do sheasamh
     edited: Curtha in eagar
     delete_thread: Scriosadh an tsnáith
+    count_members: "%{count} chomhalta"
   formatting:
     attach: Ceangail comhad
     reset: Athshocraigh é
@@ -362,7 +363,6 @@ ga_IE:
     done: 'Déanta'
     messages:
       invitation_sent: 'Seoladh an cuireadh.'
-      invitations_sent: 'Seoladh {{count}} cuireadh'
   memberships_page:
     members: 'Comhaltaí'
     name_label: 'Ainm'

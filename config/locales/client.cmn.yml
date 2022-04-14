@@ -10,7 +10,7 @@ cmn:
   current_plan_button:
     upgrade: 升级
   subscription_status:
-    members: "成员 ({{count}})"
+    members: "成员 (%{count})"
   loomio_tags:
     tags: 标签
     apply_tags: 应用标签
@@ -21,8 +21,6 @@ cmn:
     modal_edit_title: 编辑标签
     modal_destroy_title: 删除标签
     helptext: 标签让您可以分类讨论，就可以较容易地在稍后找到它们
-    discussions_count_singular: （{{count}} 个话题）
-    discussions_count_plural: （{{count}} 个话题）
     tag_created: 标签已保存
     tags_marked: 话题已标记为在 {{groupName}} 中的 '{{name}}'
   poll_types:
@@ -289,7 +287,6 @@ cmn:
     other_groups: '其他群组'
     all_groups: '所有群组'
     recent_threads: '最近的话题'
-    unread_threads: '未读的话题 ({{count}})'
     muted_threads: '已静音的话题'
     start_group: '新组织'
     start_subgroup: '新的子群组'
@@ -376,7 +373,6 @@ cmn:
     privacy_public: '任何人都可以看到此话题。只有成员才能参与。'
     privacy_private: '此话题只会被“{{group}}”群组的成员看到。'
     privacy_organisation: '此话题只会被“{{parent}}”群组的成员以及“{{group}}”群组的成员看到。'
-    fork_notice: '新的话题将会从 {{title}} 中包含 {{count}} 来建立'
   announcement:
     send_discussion: 发送话题
     send_group: 邀请伙伴到 {{name}}
@@ -395,7 +391,6 @@ cmn:
       no_invitations_remaining: |
           <p>您已经使用了此群组可用的全部 {{maxMembers}} 个邀请。</p>
           <p>下一步，<a href="{{upgradeUrl}}" target="_blank">选择一个计划</a>以继续在 Loomio 上协作。</p>
-      invitations_remaining: '剩余 {{count}} 个邀请。<a href="{{upgradeUrl}}" target="_blank">升级</a>'
       invitation_message_label: 信息
       group_announced:
         title: 邀请加入群组
@@ -413,15 +408,12 @@ cmn:
       outcome_announced:
         title: 分享成果
       anyone_can_participate: 任何有链接的人都可以参与
-      group_title: '{{name}}（{{count}} 个伙伴）'
     members_list:
       last_notified: 已通知
       not_notified: 尚未通知
     group_form:
       search_placeholder: 搜索伙伴……
       modal_title: 选择群组成员
-    flash:
-      success: '已发送 {{count}} 个通知'
   action_dock:
     announce_thread: 发送话题
     invite_guests: 邀请访客
@@ -484,7 +476,7 @@ cmn:
       closed: "这个话题已经关闭。它将不会再出现在仪表板上，并将会在群组页面中列在“已关闭”下。"
   group_page:
     threads: 话题
-    members: 成员 ({{count}})
+    members: 成员 (%{count})
     settings: 设置
     no_threads_here: 这里没有话题可以查看！
     search_threads: 搜寻话题……
@@ -501,7 +493,6 @@ cmn:
     closed_discussions: '已关闭的话题'
     discussions_placeholder: '话题是供每个人讨论主题并共同作出决策的地方。'
     members_placeholder: '不能只有你 ── 邀请一些伙伴来加入吧！'
-    see_all_members: '查看全部 {{count}} 个成员'
     subgroups_placeholder: '子群组给团队拥有自己的空间，并可以注重于通知相关的伙伴。'
     invite_people: '邀请'
     options_label: '选项'
@@ -696,9 +687,6 @@ cmn:
       quiet_description: "当您加入新群组时，您将<strong>不会收到关于动态</strong>的电子邮件。"
     edit: 编辑
     learn_more: 了解更多关于电子邮件设定的详细信息……
-  thread_preview:
-    replies_count: "{{count}} 个回复"
-    unread_count: "{{count}} 个未读"
   dashboard_page:
     aria_label: '仪表板'
     recent_threads: "最近的话题"
@@ -776,7 +764,6 @@ cmn:
   activity_card:
     beginning: 开始
     end: 结束
-    unread: "未读 ({{count}})"
     latest: 最新
     context: 上下文
     attachment_display:
@@ -835,7 +822,6 @@ cmn:
     label: 附件
   discussions_panel:
     open: 开放
-    unread: 未读 ({{count}})
     closed: 已关闭
   members_panel:
     everyone: '每一位成员'
@@ -844,7 +830,7 @@ cmn:
     order_by_created_desc: '最新'
     header_name: '名字'
     header_username: '用户名'
-    accepted: '成员 ({{count}})'
+    accepted: '成员 (%{count})'
   polls_panel:
     open: '开放'
     closed: '已关闭'
@@ -871,9 +857,7 @@ cmn:
     none_of_the_above: （以上皆否）
   poll_common_undecided_panel:
     show_invitations: 显示未确认的邀请
-    undecided_users: "未决定的 ({{count}})"
     invitation_count_singular: "已通过电子邮件邀请 1 个额外的伙伴参与"
-    invitation_count_plural: "已通过电子邮件邀请 {{count}} 个额外的伙伴参与"
   poll_common_undecided_user:
     reminded: 提醒已发送！
   poll_common_set_outcome_panel:
@@ -978,8 +962,6 @@ cmn:
     'no': '否'
   poll_meeting_chart_panel:
     total: 总共
-  poll_ranked_choice_vote_form:
-    helptext: 拖放偏好顺序的选项（1 是您最偏好的选项）。您的前 {{count}} 个选项将会被记录。
   auth_form:
     invalid_email: "抱歉，这看起来不是有效的电子邮件地址"
     account_locked: "您的帐号因为太多次失败的登入尝试而被锁定。请检查您的电子邮件以取得解锁连结"

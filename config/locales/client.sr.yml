@@ -200,6 +200,7 @@ sr:
     edit_stance: Promeni poziciju
     edited: Izmenjeno
     delete_thread: Obriši nit
+    count_members: "%{count} članova"
   join_group_button:
     join_group: Pridruži se grupi
     membership_requested: Članstvo je zatraženo
@@ -299,7 +300,6 @@ sr:
   membership_requests_card:
     heading: 'Zahtevi'
     manage_requests: Upravljanje zahtevima
-    manage_requests_with_count: Upravljanje zahtevima ({{count}})
   membership_requests_page:
     heading: Zahtevi
     approve: Odobri
@@ -328,7 +328,6 @@ sr:
     done: 'Urađeno'
     messages:
       invitation_sent: 'Poziv poslat.'
-      invitations_sent: '{{count}} pozivnica poslato.'
       max_invitations: 'Ako želite da pošaljete više od 100 pozivnica, upotrebite tim vezu.'
   memberships_page:
     members: 'Članovi'

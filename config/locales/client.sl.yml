@@ -114,7 +114,6 @@ sl:
   sidebar:
     threads: 'Razprave'
     recent_threads: 'Nedavne teme'
-    unread_threads: 'Neprebrane teme ({{count}})'
     muted_threads: 'Utišane teme'
     start_group: 'Nova organizacija'
     explore: 'Javne skupine'
@@ -223,8 +222,6 @@ sl:
     files: Datoteke
     settings: Nastavitve
     subgroups: Podskupine
-    show_opened: '{{count}} Odprtih'
-    show_closed: '{{count}} Zaprtih'
     no_threads_here: Tukaj ni nobenih razprav!
     search_threads: Iskanje razprav...
     messages:

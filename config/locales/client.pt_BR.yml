@@ -49,8 +49,6 @@ pt_BR:
     modal_edit_title: Editar tag
     modal_destroy_title: Remover tag
     helptext: Tags permitem que você categorize conversas e encontre-as facilmente mais tarde
-    discussions_count_singular: ({{count}} tópico)
-    discussions_count_plural: ({{count}} tópicos)
     tag_created: Tags salvas
     tags_marked: Tópicos marcados '{{name}}' em {{groupName}}
   poll_types:
@@ -155,8 +153,6 @@ pt_BR:
       update: 'Atualização'
       cancel: 'Cancelar'
       show_more: "Mostrar mais"
-      count_more: "{{count}} mais"
-      count_responses: "{{count}} respostas"
       view_all: "Ver Tudo"
       new_thread: "Nova conversa"
       add_subgroup: 'Novo subgrupo'
@@ -360,7 +356,6 @@ pt_BR:
     other_groups: 'Outros grupos'
     all_groups: 'Todos os grupos'
     recent_threads: 'Conversas recentes'
-    unread_threads: 'Conversas não lidas ({{count}})'
     muted_threads: 'Conversas silenciadas'
     start_group: 'Nova organização'
     start_subgroup: 'Novo subgrupo'
@@ -469,7 +464,6 @@ pt_BR:
     privacy_public: 'Qualquer um pode ver a conversa. Apenas membros podem participar.'
     privacy_private: 'A conversa será visível apenas para os membros de {{group}}.'
     privacy_organisation: 'A conversa será visível para os membros de {{parent}} e membros de {{group}}.'
-    fork_notice: 'A nova conversa será criada com {{count}} itens de {{title}}'
   announcement:
     send_discussion: Mandar tópico
     send_group: Convidar pessoas para {{name}}
@@ -495,7 +489,6 @@ pt_BR:
       no_invitations_remaining: |
           <p>Você usou todos os {{maxMembers}}  convites disponíveis para esse grupo.</p>
           <p>Próxima etapa, <a href="{{upgradeUrl}}" target="_blank">escolha um plano</a> para continuar colaborando no Loomio.</p>
-      invitations_remaining: '{{count}} convites sobrando.<a href="{{upgradeUrl}}" target="_blank">Assine</a>'
       invitation_message_label: Mensagem
       group_announced:
         title: Convidar para o grupo
@@ -517,7 +510,6 @@ pt_BR:
       outcome_announced:
         title: Compartilhar resultado
       anyone_can_participate: Qualquer pessoa com o link pode participar
-      group_title: '{{name}} ({{count}} pessoa(s))'
     members_list:
       title: Compartilhado com
       last_notified: Notificado
@@ -526,8 +518,6 @@ pt_BR:
     group_form:
       search_placeholder: Buscar pessoas…
       modal_title: Selecionar membros do grupo
-    flash:
-      success: '{{count}} notificações enviadas'
   action_dock:
     react: Reagir
     notify: Notificar
@@ -573,6 +563,7 @@ pt_BR:
     delete_thread: Apagar conversa
     notification_history: Histórico de notificações
     move_item: Mover item
+    count_members: "%{count} membros"
   formatting:
     bold: Negrito
     italicize: Italico
@@ -646,11 +637,8 @@ pt_BR:
   reactions_input:
     add_your_reaction: Adicione sua reação
   reactions_display:
-    more_reactions: "{{count}} mais"
     you: "Você"
     you_and_name: "Você e {{name}}"
-    you_and_name_and_count_more: "Você, {{name}} e {{count}} mais"
-    name_and_count_more: "{{name}} e {{count}} mais"
   context_panel:
     thread_status:
       pinned: "Esta conversa foi afixada. Ela permanecerá no topo da lista de conversas do grupo para todos os usuários."
@@ -663,8 +651,6 @@ pt_BR:
     files: Arquivos
     settings: Configurações
     subgroups: Subgrupos
-    show_opened: '{{count}} Aberto'
-    show_closed: '{{count}} Encerrado'
     no_threads_here: Nenhuma conversa para ler aqui!
     search_threads: Buscar por conversas…
     private_threads: 'Você precisa ser membro para ver conversas privadas nesse grupo. '
@@ -684,8 +670,6 @@ pt_BR:
     discussions_placeholder: 'A conversa é o lugar onde todos podem discutir um tema e tomar decisões juntos.'
     members_placeholder: 'Você é a única pessoa aqui: convide outras para se juntar a você!'
     member_options: Opçoes de membros
-    see_all_members: 'Ver todos {{count}} membros'
-    pending_invitations: '+ {{count}} pendente'
     subgroups_placeholder: 'Subgrupos dão às equipes seu próprio espaço e mantem as notificações direcionadas nos participantes focados no assunto.'
     invite_people: 'Convidar'
     visibility_label: 'Visibilidade'
@@ -814,7 +798,6 @@ pt_BR:
   membership_requests_card:
     heading: 'Pedidos para inclusão de membros'
     manage_requests: Gerenciar solicitações
-    manage_requests_with_count: Gerenciar solicitações ({{count}})
   membership_requests_page:
     heading: Solicitações para inclusão de membros
     approve: Aprovar
@@ -857,7 +840,6 @@ pt_BR:
     done: 'Pronto'
     messages:
       invitation_sent: 'Convite enviado.'
-      invitations_sent: '{{count}} convites enviados.'
       no_invitations: 'Uou! Por favor verifique se o endereço de email abaixo está correto e tente novamente.'
       max_invitations: 'Se você quiser enviar mais de 100 convites, use um link de equipe.'
   memberships_page:
@@ -983,9 +965,6 @@ pt_BR:
     messages:
       updated: Configurações de e-mail atualizadas
     learn_more: Aprenda mais sobre as configurações de email…
-  thread_preview:
-    replies_count: "{{count}} respostas"
-    unread_count: "{{count}} não lidas"
   dashboard_page:
     aria_label: 'Painel'
     recent_threads: "Conversas recentes"
@@ -1069,12 +1048,10 @@ pt_BR:
     title: Visto por
     no_one: Ninguém viu isso ainda
   activity_card:
-    count_responses: "{{count}} respostas"
     event_pinned: "Fixado na timeline"
     event_unpinned: "Desafixado da timeline"
     beginning: Início
     end: Fim
-    unread: "Não lidas {{count}}"
     latest: Último
     context: Contexto
     chronological: Cronológico
@@ -1082,8 +1059,6 @@ pt_BR:
     attachment_display:
       aria_label: 'Arquivo anexo:'
       image_alt: 'Imagem anexa'
-    n_previous: 'Carregar {{count}} respostas anteriores'
-    n_more: 'Carregar {{count}} respostas'
     add_comment: Adicionar comentário
     add_poll: Criar enquete de escolha
     add_outcome: Criar resultado
@@ -1107,7 +1082,6 @@ pt_BR:
     print_thread: 'Imprimir'
     delete_thread: 'Apagar'
     add_comment: 'Comentario '
-    seen_by_count: 'Visto por {{count}}'
     forked_from: "Bifurcado de"
   pin_thread_modal:
     title: Afixar conversa
@@ -1231,7 +1205,6 @@ pt_BR:
   discussions_panel:
     open: Aberto
     all: Tudo
-    unread: Não lidas {{count}}
     closed: Encerrado
     include_subgroups_mine: '{{name}} e meus subgrupos'
     include_subgroups_all: '{{name}} e todos os subgrupos'
@@ -1327,11 +1300,8 @@ pt_BR:
     change_results_order: Mudar ordem dos resultados
     none_of_the_above: (Nenhuma das opções acima)
   poll_common_undecided_panel:
-    show_undecided: "Mostrar {{count}} indecisos"
     show_invitations: Mostrar Convites Pendentes
-    undecided_users: "Indecisos ({{count}})"
     invitation_count_singular: "Mais 1 pessoa foi convidada para participar por email"
-    invitation_count_plural: "Mais {{count}} pessoas foram convidadas para participar por email"
   poll_common_undecided_user:
     reminded: Lembrete enviado!
     reminder_sent: Notificação de lembrete enviado
@@ -1548,12 +1518,10 @@ pt_BR:
     stance_updated: Disponibilidade atualizada
     reason_placeholder: Explique quando você está disponível (ou ocupado), para caso o autor queira acrescentar outras opções.
   poll_dot_vote_vote_form:
-    dots_remaining: "{{count}} pontos sobrando"
     too_many_dots: Você usou muitos pontos
     stance_created: Votação criada
     stance_updated: Voto atualizado
   poll_ranked_choice_vote_form:
-    helptext: Arraste as opções para a ordem de sua preferencia (1 sendo sua primeira opção). Suas {{count}} opções serão registradas.
     stance_created: Escolha registrada
     stance_updated: Escolha atualizada
   thread_item:

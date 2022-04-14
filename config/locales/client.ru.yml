@@ -35,8 +35,6 @@ ru:
     modal_edit_title: Править метку
     modal_destroy_title: Удалить метку
     helptext: Метки позволяют разбивать обсуждения на категории и легко их потом находить
-    discussions_count_singular: ({{count}} ветвь)
-    discussions_count_plural: ({{count}} ветвей)
     tag_created: Метка записана
     tags_marked: Ветви, помеченные '{{name}}' в {{groupName}}
   new_poll_types:

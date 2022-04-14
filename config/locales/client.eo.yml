@@ -49,8 +49,6 @@ eo:
     modal_edit_title: Redakti etikedon
     modal_destroy_title: Forigi etikedon
     helptext: Etikedoj permesas al vi grupigi fadenojn por facile trovi ilin poste.
-    discussions_count_singular: ({{count}} fadeno)
-    discussions_count_plural: ({{count}} fadenoj)
     tag_created: Etikedo konservita
     tags_marked: Fadenoj markitaj kiel  '{{name}}' en {{groupName}}
   poll_types:
@@ -233,7 +231,6 @@ eo:
     threads: 'Fadenoj'
     all_groups: 'Ĉiuj grupoj'
     recent_threads: 'Lastatempaj fadenoj'
-    unread_threads: 'Nelegitaj fadenoj ({{count}})'
     muted_threads: 'Silentigitaj fadenoj'
     start_subgroup: 'Nova subgrupo'
     explore_groups: Esplori grupojn
@@ -332,14 +329,11 @@ eo:
   reactions_display:
     you: "Vi"
     you_and_name: "Vi kaj {{name}}"
-    you_and_name_and_count_more: "Vi, {{name}} kaj {{count}} pli"
-    name_and_count_more: "{{name}} kaj {{count}} pli"
   group_page:
     threads: Fadenoj
     members: Membroj
     settings: Agordoj
     subgroups: Subgrupoj
-    show_closed: '{{count}} Fermita'
     new_group_logo: 'Alŝuti novan emblemon de grupo'
     invite_people: 'Inviti'
     options_label: 'Opcioj'

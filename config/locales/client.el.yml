@@ -184,7 +184,6 @@ el:
   sidebar:
     threads: 'Θέματα'
     recent_threads: 'Πρόσφατα θέματα'
-    unread_threads: 'Αδιάβαστα θέματα ({{count}})'
     muted_threads: 'Θέματα σε σίγαση'
     explore: 'Δημόσιες ομάδες'
     start_thread: Νέο θέμα
@@ -245,6 +244,7 @@ el:
   action_dock:
     edit_stance: Αλλάξε θέση
     edited: Επεξεργάστηκε
+    count_members: "%{count} μέλη "
   formatting:
     attach: Επισυνάψτε αρχείο
   cover_photo_form:
@@ -352,7 +352,6 @@ el:
   membership_requests_card:
     heading: 'Αιτήσεις εγγραφής μελών'
     manage_requests: Διαχείριση αιτήσεων
-    manage_requests_with_count: Διαχείριση αιτήσεων ({{count}})
   membership_requests_page:
     heading: Αιτήσεις εγγραφής μελών
     approve: Έγκριση

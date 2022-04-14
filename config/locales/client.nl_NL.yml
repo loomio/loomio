@@ -43,7 +43,6 @@ nl_NL:
   current_plan_button:
     upgrade: Upgrade
     buy_now: Koop nu
-    is_old_plan: Loomio's eenvoudige abonnementen hebben een onbeperkt aantal gebruikers
     change_plan: Verander abonnement
     view_plans: Toon abonnementen
     free_trial: Gratis uitproberen. {{days}} dagen resterend.
@@ -79,47 +78,12 @@ nl_NL:
     destroy_tag: Verwijder label
     destroy_helptext: Verwijdert het label en verwijdert het van all borden in de groep. Weet je het zeker?
     helptext: Labels laten je toe conversaties te categoriseren en deze later sneller terug te vinden
-    discussions_count_singular: ({{count}} bord)
-    discussions_count_plural: ({{count}} borden)
     tag_created: Label opgeslagen
     tag_destroyed: Label verwijderd
     tags_marked: 'Borden gemarkeerd met ''{{name}}'' in {{groupName}} '
     no_tags_present: Geen borden gevonden met dat label! Probeer een andere
     no_tags_in_group: Deze groep heeft nog geen categorielabel
     only_admins_can_edit_tags: Sorry, alleen admins van groep {{group}} kunnen labels maken, hernoemen of verwijderen
-  reactions:
-    slight_smile: Vind ik leuk
-    heart: Liefde
-    laughing: Lach
-    clap: Klappen
-    hugging: Knuffel
-    sunglasses: Cool
-    wink: Knipoog
-    nerd: Slim
-    relieved: Opgelucht
-    worried: Bezorgd
-    confused: Verward
-    confounded: Overstuur
-    neutral_face: Neutraal
-    slight_frown: Frons
-    disappointed: Teleurgesteld
-    angry: Boos
-    weary: Vermoeid
-    astonished: Verbaasd
-    rolling_eyes: Ogen rollen
-    cry: Wenen
-    scream: Roepen
-    sleeping: Verveeld
-    thinking: Denken
-    raised_hands: Omhooggestoken handen
-    pray: Bidden
-    fingers_crossed: Gekruiste vingers
-    v: Vrede
-    metal: Metaal
-    ok_hand: Ok
-    wave: Golf
-    thumbsup: Duim omhoog
-    thumbsdown: Duim omlaag
   poll_types:
     proposal: voorstel
     count: controleer
@@ -225,10 +189,6 @@ nl_NL:
       cancel: 'Annuleren'
       show_more: "Laat meer zien"
       show_fewer: "Toon minder"
-      view_count_more: "Toon {{count}} meer"
-      view_count_responses: "Toon {{count}} reacties"
-      count_more: "{{count}} meer"
-      count_responses: "{{count}} antwoorden"
       view_all: "Bekijk alles"
       new_thread: "Nieuw bord"
       add_subgroup: 'Nieuwe subgroep'
@@ -436,7 +396,6 @@ nl_NL:
     recent_threads: 'Recente borden'
     invite_only_threads: 'Alleen op uitnodiging borden'
     direct_threads: 'Directe borden'
-    unread_threads: 'Ongelezen borden ({{count}})'
     muted_threads: 'Gedempte borden'
     start_group: 'Nieuwe organisatie'
     start_subgroup: 'Nieuwe subgroep'
@@ -525,41 +484,17 @@ nl_NL:
   notifications:
     header: "Meldingen"
     no_notifications: "Je hebt geen meldingen"
-    new_discussion: "<strong>{{name}}</strong> startte het bord <strong>{{title}}</strong>"
-    discussion_edited: "<strong>{{name}}</strong> wijzigde het bord <strong>{{title}}</strong>"
-    discussion_announced: "<strong>{{name}}</strong> deelde het bord <strong>{{title}}</strong>"
-    new_motion: "<strong>{{name}}</strong> heeft een voorstel gemaakt <strong>{{title}}</strong>"
-    motion_closed: "Voorstel gesloten: <strong>{{title}}</strong>"
-    publish_outcome: "Publiceer een resultaat"
-    motion_closed_by_user: "<strong>{{name}}</strong> heeft het voorstel gesloten <strong>{{title}}</strong>"
-    motion_closed_by_expiry: "Voorstel is gesloten: <strong>{{title}}</strong>"
-    new_vote: "<strong>{{name}}</strong> {{position}} ten aanzien van het voorstel <strong>{{title}}</strong>"
-    new_comment: "<strong>{{name}}</strong> heeft gereageerd op <strong>{{title}}</strong>"
-    comment_replied_to: "<strong>{{name}}</strong> heeft geantwoord op je reactie in <strong>{{title}}</strong>"
-    reaction_created: "<strong>{{name}}</strong> reageerde<img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> op jouw {{model}}<strong>{{title}}</strong>"
-    reaction_created_vue: "<strong>{{name}}</strong> heeft gereageerd {{reaction}} op je {{model}}<strong>{{title}}</strong>"
-    user_mentioned: "<strong>{{name}}</strong> heeft je vermeld in <strong>{{title}}</strong>"
-    user_reminded: "<strong>{{name}}</strong> wacht op jouw participatie in <strong>{{title}}</strong>"
-    membership_requested: "<strong>{{name}}</strong> heeft gevraagd lid te mogen worden van <strong>{{title}}</strong>"
-    membership_request_approved: '<strong>{{name}}</strong> heeft je deelnameverzoek goedgekeurd <strong>{{title}}</strong>'
-    user_added_to_group: "<strong>{{name}}</strong> heeft je toegevoegd aan de groep <strong>{{title}}</strong>"
-    user_added_to_group_no_inviter: "Je bent toegevoegd aan de groep <strong>{{title}}</strong>"
-    motion_closing_soon: "Voorstel sluit binnenkort: <strong>{{title}}</strong>"
-    motion_outcome_created: "<strong>{{name}}</strong> heeft een resultaat gepubliceerd voor het voorstel <strong>{{title}}</strong>"
-    motion_outcome_updated: "<strong>{{name}}</strong> heeft de resultaat voor het voorstel <strong>{{title}}</strong> geactualiseerd"
-    invitation_accepted: "<strong>{{name}}</strong> heeft je uitnodiging geaccepteerd om deel te nemen aan <strong>{{title}}</strong>"
-    new_coordinator: "<strong>{{name}}</strong> maakte van jou een admin in <strong>{{title}}</strong>"
-    poll_created: "<strong>{{name}}</strong> heeft een {{poll_type}} gestart <strong>{{title}}</strong>"
-    poll_edited: "<strong>{{name}}</strong> heeft een {{poll_type}} aangepast <strong>{{title}}</strong>"
-    poll_reminder: "<strong>{{name}}</strong> herinnert je er aan om te stemmen in: <strong>{{title}}</strong>"
-    poll_announced: "<strong>{{name}}</strong> deelde een {{poll_type}}: <strong>{{title}}</strong>"
-    poll_closing_soon: "{{poll_type}} sluit binnenkort <strong>{{title}}</strong>"
-    poll_expired: "{{poll_type}} gesloten: <strong>{{title}}</strong>"
-    poll_option_added: "<strong>{{name}}</strong> voegde opties toe: {{title}}</strong>"
-    outcome_created: "<strong>{{name}}</strong> heeft een resultaat gedeeld <strong>{{title}}</strong>"
-    outcome_announced: "<strong>{{name}}</strong> heeft een resultaat gedeeld <strong>{{title}}</strong>"
-    stance_created: "<strong>{{name}}</strong> heeft geparticipeerd aan: <strong>{{title}}</strong>"
-    group_announced: "<strong>{{name}}</strong> heeft je uitgenodigd voor de groep <strong>{{title}}</strong>"
+    with_title:
+      outcome_announced: "%{actor} deelde een %{poll_type} resultaat: %{title}"
+      outcome_created: "%{actor} deelde een %{poll_type} resultaat: %{title}"
+      outcome_updated: "%{actor} wijzigde het %{poll_type} resultaat: %{title}"
+      poll_closing_soon: "%{poll_type} sluit binnen 24 uur: %{title}"
+      poll_created: "%{actor} startte een %{poll_type}: %{title}"
+      user_mentioned: "%{actor} noemde je in: %{title}"
+      user_reminded: "%{actor} herinnert je er aan om te stemmen in : %{title}"
+    without_title:
+      discussion_closed: "%{actor} sloot het bord"
+      poll_expired: "%{poll_type} is gesloten"
   discussion_fork_actions:
     helptext: Selecteer items die je wilt verplaatsen naar een ander bord
     move: Verplaatsen
@@ -594,16 +529,12 @@ nl_NL:
     privacy_public: 'Iedereen kan het bord zien. Alleen leden kunnen deelnemen.'
     privacy_private: 'Het bord is enkel zichtbaar voor leden van {{group}}'
     privacy_organisation: 'Het bord zal zichtbaar zijn voor leden van {{parent}} en leden van {{group}}'
-    fork_notice: 'Een nieuw bord wordt gemaakt met {{count}} items van {{title}}'
     notify_group: stuur melding naar groep
   announcement:
     send_discussion: Bord verzenden
-    send_discussion_explain: Nodig mensen uit op te participeren in de discussie
     send_group: Nodig mensen uit voor {{name}}
     send_poll: Verstuur {{type}}
-    send_poll_explain: Nodig mensen uit om te participeren in {{type}}
     send_outcome: Stuur de resultaat
-    send_outcome_explain: Meld mensen over de resultaat van {{type}}
     discussion_notification_history: Bord meldingen geschiedenis
     group_notification_history: Groep uitnodigingen
     poll_notification_history: Peiling meldingen geschiedenis
@@ -636,7 +567,6 @@ nl_NL:
       no_invitations_remaining: |
           <p>Je hebt alle {{maxMembers}} uitnodigingen gebruikt die voor deze groep beschikbaar zijn.</p>
           <p><a href="{{upgradeUrl}}" target="_blank">Kies een abonnement</a> om te blijven samenwerken op Loomio.</p>
-      invitations_remaining: '{{count}} uitnodigingen resterend. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>'
       who_to_invite: Wie wil je uitnodigen?
       invitation_message_placeholder: Een bericht voor in de uitnodigingse-mail. (optioneel)
       invitation_message_label: Bericht
@@ -672,10 +602,8 @@ nl_NL:
       notified: '{{notified}} mensen krijgen een melding.'
       notified_singular: '1 persoon krijgt een melding.'
       notified_none: 'Niemand krijgt een melding.'
-      added: 'Er zullen {{count}} personen worden toegevoegd.'
       added_singular: 'Er zal 1 persoon worden toegevoegd.'
       added_none: 'Er zal niemand worden toegevoegd.'
-      group_title: '{{name}} ({{count}} personen)'
       visible_to_group: 'Iedereen in {{group}} kunnen dit bord zien.'
       visible_to_guests: 'Alleen uitgenodigde mensen kunnen dit bord zien.'
       click_group_to_see_individuals: Klik groep om individuen te zien
@@ -691,8 +619,6 @@ nl_NL:
     group_form:
       search_placeholder: Zoek naar mensen...
       modal_title: Selecteer groepsleden
-    flash:
-      success: '{{count}} meldingen verzonden'
   action_dock:
     actions_menu: Actie menu
     more_actions: Meer acties
@@ -744,8 +670,6 @@ nl_NL:
     notification_history: Meldingen geschiedenis
     move_item: Verplaats item
     add_poll_to_thread: Voeg toe aan bord
-    count_members: "{{count}} leden"
-    count_voters: "{{count}} stemmers"
   formatting:
     formatting_tools: Tekst-formatteer tools
     colors: Kleuren
@@ -795,13 +719,11 @@ nl_NL:
     markdown_confirm: Bepaalde opmaak kan verloren gaan bij het converteren van wysiwg-inhoud naar Markdown.
     upload_failed: Upload gefaald
   cover_photo_form:
-    aria_label: 'Formulier groepsfoto veranderen'
     heading: 'Nieuwe groepsfoto'
     upload_link: 'Nieuwe groepsfoto uploaden'
     image_size_helptext: '1400x320pixels is het ideale afbeeldingsformaat'
     upload_success: 'Groepsfoto succesvol bijgewerkt'
   logo_photo_form:
-    aria_label: 'Formulier groepslogo veranderen'
     heading: 'Nieuw groepslogo'
     upload_link: 'Upload een nieuw groepslogo'
     image_size_helptext: 'Ideaal afbeeldingsformaat is 100x100px'
@@ -820,8 +742,6 @@ nl_NL:
     introduction_label: Waarom wil je lid worden?
     submit_button: Vraag om lid te worden
     introduction_over_limit: Antwoord te lang
-    messages:
-      membership_requested: 'Je hebt het lidmaatschap aangevraagd voor {{group}}'
   revision_history_modal:
     aria_label: Mutatiegeschiedenis
     discussion_header: Discussie wijzigingen
@@ -844,13 +764,9 @@ nl_NL:
   reactions_input:
     add_your_reaction: Voeg je reactie toe
   reactions_display:
-    more_reactions: "{{count}} meer"
     you: "Jij"
     you_and_name: "Jij en {{name}}"
-    you_and_name_and_count_more: "Jij, {{name}} en {{count}} meer"
-    name_and_count_more: "{{name}} en {{count}} meer"
   context_panel:
-    aria_intro: "Bord context door {{author}}"
     thread_status:
       pinned: "Dit bord is vastgeprikt. Het zal voor alle gebruikers bovenaan de lijst van borden van de groepslijst blijven staan."
       closed: "Dit bord is gesloten. Het verschijnt niet langer op het dashboard, en het staat onder 'gesloten' op de groep pagina"
@@ -870,8 +786,6 @@ nl_NL:
     files: Bestanden
     settings: Instellingen
     subgroups: Subgroepen
-    show_opened: '{{count}} Open'
-    show_closed: '{{count}} Afgesloten'
     no_threads_here: Geen borden te zien hier!
     search_threads: Zoeken voor borden...
     private_threads: Je moet lid zijn om de privé borden in deze groep te zien.
@@ -893,8 +807,6 @@ nl_NL:
     discussions_placeholder: 'Op een bord kan iedereen over een onderwerp discussiëren en gezamenlijk beslissingen nemen.'
     members_placeholder: 'Je bent de enige hier: nodig mensen uit om zich bij je aan te sluiten!'
     member_options: Opties voor leden
-    see_all_members: 'Bekijk alle {{count}} leden'
-    pending_invitations: '+ {{count}} bezig'
     subgroups_placeholder: 'Subgroepen geven teams hun eigen ruimte en beperken meldingen tot de relevante personen.'
     invite_people: 'Uitnodigen'
     visibility_label: 'Zichtbaarheid'
@@ -954,7 +866,6 @@ nl_NL:
     submit: 'Ja, deactiveer deze groep'
   group_form:
     thread_defaults_help: Standaard instellingen voor nieuwe borden
-    click_to_change_image: Cover-afbeelding en logo (klik om te wijzigen)
     aria_label: Groepsformulier
     parent_group: Bovenliggende groep
     new_organisation: Nieuwe organisatie
@@ -1002,7 +913,6 @@ nl_NL:
     membership_granted_upon_approval: 'Iedereen kan verzoeken om mee te mogen doen, maar moet goedgekeurd worden.'
     membership_granted_upon_approval_secret_parent: '<strong>Op verzoek</strong> kan iedereen van {{parent}} vragen om deel te nemen aan de groep.'
     permissions: 'Toestemmingen'
-    features: 'Groep-specifieke features'
     thread_privacy: 'Bordprivacy'
     public_threads: 'Alleen openbare borden'
     public_discussions_subgroup: 'Iedereen in {{parentGroupName}} kan discussies zien'
@@ -1035,7 +945,6 @@ nl_NL:
   membership_requests_card:
     heading: 'Lidmaatschapsverzoeken'
     manage_requests: Beheer verzoeken
-    manage_requests_with_count: Beheer verzoeken ({{count}})
   membership_requests_page:
     heading: Lidmaatschapsverzoeken
     approve: Goedkeuren
@@ -1047,11 +956,6 @@ nl_NL:
     messages:
       request_approved_success: Lidmaatschapsverzoek goedgekeurd
       request_ignored_success: Lidmaatschapsverzoek genegeerd
-  group_previous_proposals_card:
-    heading: Vorige voorstellen
-    see_more: Zie meer
-  group_decisions_card:
-    see_more: "Zie alles: ({{count}}) beslissingen"
   invitation_form:
     group_url: Groep URL
     reusable_invitation_link: Herbruikbare uitnodigingslink
@@ -1077,15 +981,12 @@ nl_NL:
     add_custom_message_link: 'voeg een aangepast bericht toe.'
     custom_message: 'Aangepast bericht'
     custom_message_placeholder: 'Voeg een persoonlijke boodschap toe aan de uitnodiging.'
-    team_invitation_message: 'Anders,'
-    team_invitation_link: 'verkrijg een link om te delen.'
     add_members: 'Voeg leden toe'
     from_parent_group: 'van {{name}}'
     send: 'Versturen'
     done: 'Klaar'
     messages:
       invitation_sent: 'Uitnodiging verstuurd.'
-      invitations_sent: '{{count}} uitnodigingen verstuurd.'
       no_invitations: 'Uhoh! Controleer alsjeblieft of het e-mailadres correct is en probeer het opnieuw.'
       max_invitations: 'Alls je meer dan 100 uitnodigingen wil versturen, gebruik een team link.'
   memberships_page:
@@ -1213,9 +1114,6 @@ nl_NL:
     messages:
       updated: E-mailinstellingen bijgewerkt
     learn_more: Leer meer over e-mailinstellingen...
-  thread_preview:
-    replies_count: "{{count}} antwoorden"
-    unread_count: "{{count}} ongelezen"
   dashboard_page:
     aria_label: 'Dashboard'
     recent_threads: "Recente borden"
@@ -1253,10 +1151,6 @@ nl_NL:
       muted: Gedempte borden
       muted_aria_label: Toont de momenteel gedempte borden
       muted_description: Bekijk alleen borden die gedempt zijn
-    aria_thread:
-      unread: '{{count}} ongelezen items.'
-      current_proposal: 'Lopend voorstel: {{name}}.'
-      you_voted: 'Je hebt gestemd: {{position}}'
     thread_preview:
       you_voted: 'Je hebt {{position}} gestemd'
       undecided: 'Je bent onbeslist'
@@ -1308,13 +1202,10 @@ nl_NL:
     title: Gezien door
     no_one: Nog niemand heeft dit gezien
   activity_card:
-    aria_label: "Reageer of start een peiling"
-    count_responses: "{{count}} antwoorden"
     event_pinned: "Vastgeprikt op de tijdslijn"
     event_unpinned: "Loggeprikt van de tijdslijn"
     beginning: Eerste
     end: Einde
-    unread: "Ongelezen ({{count}})"
     latest: Laatste
     context: Beschrijving
     chronological: Chronologisch
@@ -1322,8 +1213,6 @@ nl_NL:
     attachment_display:
       aria_label: 'Bestand toegevoegd:'
       image_alt: 'Toegevoegde afbeelding'
-    n_previous: 'Laad {{count}} eerdere antwoorden'
-    n_more: 'Laad {{count}} antwoorden'
     add_comment: Reactie toevoegen
     add_poll: Voeg peiling toe
     add_outcome: Voeg resultaat toe
@@ -1348,8 +1237,6 @@ nl_NL:
     print_thread: 'Afdrukken'
     delete_thread: 'Verwijderen'
     add_comment: 'Geef reactie'
-    seen_by_count: 'Gezien door {{count}} mensen'
-    count_notified: 'Gemeld {{count}}'
     forked_from: "Geforked van"
   pin_thread_modal:
     title: Bord vastprikken
@@ -1404,12 +1291,6 @@ nl_NL:
         Ons ondersteuningsteam spreekt Engels en zal Google Translate gebruiken indien nodig. <br />
         We proberen binnen 24 uur te reageren op alle berichten.
     success: "Bedankt voor je bericht, {{name}}. We zullen snel reageren."
-  hint:
-    context: 'Tips voor het gebruik van het omschrijvingenveld'
-    discussion: 'Tips voor het beginnen van een boeiende discussie'
-    invitation: 'Tips voor het schrijven van een goede uitnodiging'
-    proposal: 'Tips voor het schrijven van een helder voorstel'
-    vote: 'Je kunt je standpunt ten alle tijde veranderen'
   explore_page:
     header: Verken groepen
     search_placeholder: Zoek naar openbare groepen
@@ -1425,12 +1306,10 @@ nl_NL:
   decision_tools_card:
     choose_type: Kies peiling type
     title: Faciliteren
-    help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Hulp</a>
     proposal_title: Voorstel
     count_title: Check
     poll_title: Peiling
     score_title: Peiling scoren
-    dot_vote_title: Dotmocracy
     meeting_title: Moment bevragen
     ranked_choice_title: Keuzes rangschikken
   poll_common:
@@ -1464,6 +1343,7 @@ nl_NL:
     share_count: '''Check'' delen'
     start_poll: Start een beslissing
     publish_poll: '''Peiling'' delen'
+    share_outcome: Deel resultaat
     view_all: Bekijk alles
     save_changes: Bewaren
     change_vote: Verander je stem
@@ -1486,14 +1366,9 @@ nl_NL:
     show_results: Toon resultaten
     hide_results: Verberg resultaat
     deleted: Deze peiling is verwijderd
-  poll_common_index_card:
-    title: Vorige beslissingen
-    no_polls: Geen oudere beslissingen gevonden
-    count: "Zie alles: ({{count}}) beslissingen"
   discussions_panel:
     open: Openen
     all: Alle
-    unread: Ongelezen ({{count}})
     closed: Gesloten
     include_subgroups_mine: '{{name}} en mijn subgroepen'
     include_subgroups_all: '{{name}} en alle subgroepen'
@@ -1545,15 +1420,8 @@ nl_NL:
   poll_common_action_panel:
     anonymous: Stemmen zijn anoniem
     unable_to_vote: Je bent niet uitgenodigd om in te stemmen in deze %{poll_type}.
-  current_polls_card:
-    title: Lopende beslissingen
-    start_poll: Nieuwe beslissing
-    no_polls: Er zijn momenteel geen actieve beslissingen.
   poll_common_collapsed:
     by_who: "door {{name}}"
-  poll_common_select_group:
-    loomio_group: Groep
-    loomio_group_placeholder: (geen groep geselecteerd)
   poll_common_calendar_invite:
     calendar_invite: Voeg een kalenderuitnodiging toe met dit resultaat
     poll_option_id: Tijd van de vergadering
@@ -1600,19 +1468,6 @@ nl_NL:
     hide_results_until_closed:
       title: Verberg resultaten tot sluiting van de peiling
       helptext_on: Toon niet hoe mensen stemmen tot de peiling gesloten is
-  poll_common_close_form:
-    close_proposal: Voorstel sluiten
-    close_poll: Peiling sluiten
-    close_count: '''Check'' sluiten'
-    close_dot_vote: '''Dotmocracy'' sluiten'
-    close_meeting: '''Moment bevragen'' sluiten'
-    close_ranked_choice: Sluit de peiling 'Keuzes rangschikken'
-    proposal_closed: Voorstel gesloten
-    poll_closed: Peiling gesloten
-    count_closed: '''Check'' gesloten'
-    dot_vote_closed: '''Dotmocracy'' gesloten'
-    meeting_closed: '''Moment bevragen'' gesloten'
-    ranked_choice_closed: De peiling 'Keuzes rangschikken' is gesloten
   poll_common_reopen_form:
     title: "Heropen {{poll_type}}"
     helptext: "Heropen de {{poll_type}} als mensen meer tijd nodig hebben om mee te doen"
@@ -1639,17 +1494,13 @@ nl_NL:
     change_results_order: Verander volgorde resultaten
     none_of_the_above: (Geen van bovenstaande)
   poll_common_undecided_panel:
-    show_undecided: "Toon {{count}} onbeslist "
     show_invitations: Toon uitnodigingen in afwachting
-    undecided_users: "Onbeslist ({{count}})"
     invitation_count_singular: "1 extra persoon werd uigenodigd om deel te nemen via e-mail"
-    invitation_count_plural: "{{count}} extra mensen werden uitgenodigd om deel te nemen via e-mail"
   poll_common_undecided_user:
     reminded: Herinnering gestuurd!
     reminder_sent: Herinneringsmelding verstuurd
   poll_common_set_outcome_panel:
     enter_outcome: Voer resultaat in
-    share_outcome: Deel resultaat
     poll: 'Deze peiling is gesloten. <strong>Deel het resultaat</strong> met de groep.'
     proposal: 'Dit voorstel is gesloten. Denk na over wat er gezegd is en <strong>deel een resultaat</strong>, zodat mensen weten wat er daarna gebeurt.'
     count: 'Deze ''Check'' werd gesloten. <strong>Deel het resultaat</strong> om het proces af te sluiten.'
@@ -1866,36 +1717,17 @@ nl_NL:
     stance_updated: Beschikbaarheid geactualiseerd
     reason_placeholder: Leg uit wanneer je vrij (of bezet) bent, voor het geval de auteur opties wil toevoegen.
   poll_dot_vote_vote_form:
-    dots_remaining: "{{count}} overblijvende stippen"
     too_many_dots: Je hebt teveel stippen gebruikt
     stance_created: Stemming aangemaakt
     stance_updated: Stemming geactualiseerd
   poll_ranked_choice_vote_form:
-    helptext: Sleep en drop opties in de volgorde van voorkeur (waarbij 1 de meest geprefereerde optie is). Je {{count}}  beste keuzes zullen worden opgenomen.
     stance_created: Keuze opgenomen
     stance_updated: Keuze upgedatet
   thread_item:
-    aria:
-      deleted: Item verwijderd
-      new_comment: "{{actor}} reageerde. {{when}}"
-      poll_created: "{{actor}} startte een {{pollType}}. {{when}}"
-      stance_created: "{{actor}} heeft gestemd. {{when}}"
-      outcome_created: "{{actor}} deelde een resultaat. {{when}}"
-      poll_expired: "{{pollType}} sloot. {{when}}"
     removed: "Item verwijderd"
     deleted_group: "Verwijderde groep"
     poll_expired: "{{polltype}} gesloten"
     event_removed: "Van bord verwijderd"
-  poll_common_subscribe_form:
-    receive_updates_title: Je stem is opgenomen
-    receive_updates_helptext: Als je een e-mail wil krijgen over het resultaat van deze peiling, voer dan je e-mail adres hieronder in.
-    email_saved: Je krijgt een e-mail over het resultaat van deze peiling
-    subscribe: Schrijf in
-    no_thanks: Nee dankjewel
-  poll_common_example_card:
-    what_is_this: "Dit is een live voorbeeld van een {{type}}. Je ben een deelnemer - doe eens een poging!"
-  share_poll_page:
-    title: Deel peiling - {{title}}
   add_poll_to_thread_modal:
     success: "Gelukt, {{pollType}} aan bord toegevoegd!"
   auth_form:
@@ -1960,6 +1792,9 @@ nl_NL:
     email: E-mail
     password: Wachtwoord
     reactivate: Heractiveer account
+  chatbot:
+    username: Gebruikersnaam
+    password: Wachtwoord
   webhook:
     integrations: Integraties
     webhooks: Webhooks
@@ -1984,7 +1819,6 @@ nl_NL:
       new_comment: Reactie geplaatst
       poll_created: Een peiling is gestart
       stance_created: Een stem is uitgebracht
-      poll_closing_soon: Een peiling eindigt binnenkort
       poll_expired: Een peiling verloopt
       poll_closed_by_user: Een peiling is handmatig gesloten
       poll_reopened: Een peiling werd heropend om te stemmen
@@ -1996,9 +1830,6 @@ nl_NL:
       show_poll: toon peiling
     include_body_label: inclusief message body met melding
     include_subgroups_label: Inclusief gebeurtenissen van sub-groepen
-  browser_warning:
-    message: "BELANGRIJK! Je gebruikt een verouderde browser ({{name}} {{version}}) welke {{site}} niet ondersteund."
-    link: Gelieve over te schakelen op een andere browser
   powered_by:
     slogan: Samen betere beslissingen
     powered_by_loomio: Powered by Loomio
@@ -2006,10 +1837,6 @@ nl_NL:
     terms_of_service: Service voorwaarden
     front_page: Voorpagina
   group_survey:
-    title: Succes! Nog maar enkele details
-    subtitle: We leren je graag beter kennen. We zullen de informatie in dit formulier met niemand delen zonder jouw toestemming.
-    validation_error: Vul alsjeblieft alle verplichte velden in.
-    success: Bedankt!
     categories:
       party: Politieke partij
       coop: Coöperatie
@@ -2019,44 +1846,3 @@ nl_NL:
       community: Community groep
       government: Overheid/lokale overheid
       other: Andere
-    sizes:
-      ten: "< 10"
-      twenty: "11 - 20"
-      fifty: "21 - 50"
-      two_hundred: "51 - 200"
-      five_hundred: "201 - 500"
-      two_thousand: "501 - 2000"
-      else: "> 2000"
-    uses:
-      governance: Besturen van raad, commissie of stichting
-      collaboration: Collaboratieve werkgroep
-      engagement: Belanghebbenden of deelnemer engagement
-      self_management: Zelf-bestuurd (collaboratieve werkplaats)
-      remote: Telewerk
-      document: Collaboratieve document ontwikkeling, bijvoorbeeld een strategisch plan
-      decision_making: Beslissings-proces (Advies, Toestemming)
-      funding: Steun beslissingen
-      project: Project team
-      forum: Forum
-      other: Andere
-    desired_features:
-      polls: Houd peilingen waar mijn team op kan stemmen
-      discussions: Houd discussies online en verzamel input
-      archive: Leg gemaakte besluiten vast of archiveer informatie
-    referrers:
-      google: Google search
-      invitation: Uitgenodigd op een Loomio groep
-      referral: Verwijzing
-      social: Social media (Facebook, Twitter, LinkedIn)
-      capterra: Capterra
-      other: Andere
-    location: Waar is jouw groep gebasseerd?
-    purpose: "Wat is het doel van je groep?"
-    category_question: "Welke categorie beschrijft jouw groep het best?"
-    anything_else: "Nog iets anders dat je met ons zou willen vertellen?"
-    size_question: "Hoeveel mensen zitten er in jouw groep?"
-    role: "Wat is jouw rol in de groep?"
-    website: "Website URL"
-    usage: "Hoe ga je Loomio gebruiken? Kies wat het beste past"
-    desired_feature: "Wat is het belangrijkste dat je met Loomio wil doen?"
-    referrer: "Hoe heb je van Loomio eerst gehoord?"

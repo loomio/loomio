@@ -26,8 +26,6 @@ cs:
     modal_edit_title: Upravit štítek
     modal_destroy_title: Odebrat štítek
     helptext: Štítky umožňují rozdělit konverzace do kategorií a snadno je později najít
-    discussions_count_singular: ({{count}} vlákno)
-    discussions_count_plural: ({{count}} vláken)
     tags_marked: Vlákna označená '{{name}}' ve skupině {{groupName}}
   timezones:
     local: Místní čas ({{value}})
@@ -224,7 +222,6 @@ cs:
   sidebar:
     threads: 'Vlákna'
     recent_threads: 'Aktuální vlákna'
-    unread_threads: 'Nepřečtená vlákna ({{count}})'
     muted_threads: 'Ztlumená vlákna'
     start_subgroup: 'Nová podskupina'
     explore: 'Veřejné skupiny'
@@ -348,7 +345,6 @@ cs:
   reactions_display:
     you: "Vy"
     you_and_name: "Vy a {{name}}"
-    you_and_name_and_count_more: "Vy, {{name}} a {{count}} dalších"
   context_panel:
     thread_status:
       pinned: "Toto vlákno bylo připnuté. Zůstane v horní části seznamu témat pro všechny uživatele."
@@ -442,7 +438,6 @@ cs:
     done: 'Hotovo'
     messages:
       invitation_sent: 'Pozvánka odeslána.'
-      invitations_sent: 'Odesláno {{count}} pozvánek.'
   memberships_page:
     members: 'Členové'
     name_label: 'Jméno'

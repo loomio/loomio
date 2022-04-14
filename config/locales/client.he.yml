@@ -28,8 +28,6 @@ he:
     modal_edit_title: עריכת תגית
     modal_destroy_title: הסרת תגית
     helptext: תגיות מאפשרות לך לקטלג את השיחות ולמצוא אותם בקלות אחר כך
-    discussions_count_singular: ({{count}} שיחה)
-    discussions_count_plural: ({{count}} שיחות)
     tag_created: תגית נשמרה
     tags_marked: שיחה סומנה כ'{{name}}' ב{{groupName}}
   timezones:
@@ -108,7 +106,6 @@ he:
       update: 'עדכון'
       cancel: 'ביטול'
       show_more: "הראה עוד"
-      count_more: "עוד {{count}}"
       view_all: "צפייה בכל"
       new_thread: "שיחה חדשה"
       loading: 'נטען'
@@ -263,7 +260,6 @@ he:
   sidebar:
     threads: 'שיחות'
     recent_threads: 'שיחות אחרונות'
-    unread_threads: 'שיחות שלא נקראו ({{count}})'
     muted_threads: 'שיחות שהושתקו'
     start_group: 'ארגון חדש'
     explore: 'קבוצות ציבוריות'
@@ -351,7 +347,6 @@ he:
     privacy_public: 'כל אחד יכול לראות את השיחה. רק משתמשים יכולים להשתתף.'
     privacy_private: 'רק משתמשים של ה{{group}} יכולים לצפות בשיחה.'
     privacy_organisation: 'משתמשי {{parent}} וה{{group}} יכולו לצפות בשיחה.'
-    fork_notice: 'שיחה חדשה תיווצר עם {{count}} פריטים מ{{title}}'
   announcement:
     audiences:
       group: משתתפי ה{{name}}
@@ -361,7 +356,6 @@ he:
       no_invitations_remaining: |
           <p>השתמשת בכל {{maxMembers}} ההזמנות האפשרויות לקבוצה זו.</p>
           <p>שלב הבא, <a href="{{upgradeUrl}}" target="_blank">בחר חבילה</a> כדי להמשיך לשתף פעולה ב-Loomio.</p>
-      invitations_remaining: '{{count}} הזמנות נותרו. <a href="{{upgradeUrl}}" target="_blank">שדרג</a>'
       invitation_message_label: הודעה
       group_announced:
         title: הזמן לקבוצה
@@ -383,7 +377,6 @@ he:
       outcome_announced:
         title: שתפ/י תוצאה
       anyone_can_participate: כל אחד עם לינק יכול להשתתף
-      group_title: '{{name}} ({{count}} אנשים)'
     members_list:
       title: שותף עם
       last_notified: עודכן
@@ -392,8 +385,6 @@ he:
     group_form:
       search_placeholder: חפש אנשים...
       modal_title: בחר את חברי הקבוצה
-    flash:
-      success: '{{count}} עדכונים נשלחו'
   action_dock:
     add_resource: צרוף קובץ
     edit_group: עריכת תוכן הקבוצה
@@ -463,11 +454,8 @@ he:
   reactions_input:
     add_your_reaction: הוסף את תגובתך
   reactions_display:
-    more_reactions: "עוד {{count}}"
     you: "אתה"
     you_and_name: "את/ה ו{{name}}"
-    you_and_name_and_count_more: "את/ה, {{name}} ועוד {{count}}"
-    name_and_count_more: "{{name}} ועוד {{count}}"
   context_panel:
     thread_status:
       pinned: "השיחה הזו הוצמדה למעלה. היא תשאר בראש רשימת השיחות בקבוצה לכל המשתמשים."
@@ -477,8 +465,6 @@ he:
     members: חברים
     settings: הגדרות
     subgroups: תת קבוצה
-    show_opened: '{{count}} פתוחים'
-    show_closed: '{{count}} סגורים'
     no_threads_here: אין שיחות פה!
     search_threads: חפש/י שיחות....
     private_threads: אתם צריכים להיות חבר לצפיה בשיחות פרטיות של הקבוצה
@@ -497,8 +483,6 @@ he:
     discussions_placeholder: 'שיחה היא מקום מפגש משותף לדיון על נושא וקבלת החלטות משותפת.'
     members_placeholder: 'רק אתה פה בינתיים... הזמן כמה אנשים להצטרף אליך!'
     member_options: אפשרויות חבר
-    see_all_members: 'ראה את כל {{count}} החברים'
-    pending_invitations: '+ {{count}} ממתינים'
     subgroups_placeholder: 'תת קבוצות נותנות לצוותים את המקום שלהם להתעדכן לתכנים הרלוונטיים להם.'
     invite_people: 'הזמן'
     visibility_label: 'נראות'
@@ -606,7 +590,6 @@ he:
   membership_requests_card:
     heading: 'בקשות חברות'
     manage_requests: ניהול בקשות
-    manage_requests_with_count: ניהול בקשות ({{count}})
   membership_requests_page:
     heading: בקשות חברות
     approve: אישור
@@ -639,7 +622,6 @@ he:
     done: 'סיום'
     messages:
       invitation_sent: 'הזמנה נשלחה.'
-      invitations_sent: '{{count}} הזמנה נשלחה.'
       no_invitations: 'אוי לא! אנא ודא שכתובת המייל שלך נכונה ותקנית ונסה שוב.'
       max_invitations: 'אם אתה רוצה לשלוח יותר מ100 הזמנות, השתמש בלינק צוות.'
   memberships_page:
@@ -827,8 +809,6 @@ he:
     attachment_display:
       aria_label: 'קובץ מצורף:'
       image_alt: 'תמונה מצורפת'
-    n_previous: 'טען  {{count}} תגובות קודמות'
-    n_more: 'טען {{count}} תגובות'
     comment: הערה
   thread_group:
     aria_label: שם הקבוצה
@@ -846,7 +826,6 @@ he:
     print_thread: 'הדפס'
     delete_thread: 'מחיקה'
     add_comment: 'הערה'
-    seen_by_count: 'נצפה ע"י {{count}}'
     forked_from: "פוצל מ-"
   pin_thread_modal:
     title: דקור שיחה
@@ -1005,11 +984,8 @@ he:
     change_results_order: שנה סדר התוצאות
     none_of_the_above: (אף אחד מהנ"ל)
   poll_common_undecided_panel:
-    show_undecided: "הראה {{count}} שלא הוכרעו"
     show_invitations: הראה הצעות ממתינות
-    undecided_users: "({{count}}) לא הוכרעו"
     invitation_count_singular: "אדם אחד נוסף הוזמן דרך המייל להשתתף"
-    invitation_count_plural: "{{count}} אנשים נוספים הוזמנו דרך המייל להשתתף"
   poll_common_undecided_user:
     reminded: תזכורת נשלחה!
     reminder_sent: הודעת תזכורת נשלחה
@@ -1194,7 +1170,6 @@ he:
     stance_created: הצבעה נוצרה
     stance_updated: הצבעה עודכנה
   poll_ranked_choice_vote_form:
-    helptext: גרור את האפשרויות לפי סדר עדיפותם (כאשר 1 היא האפשרות המועדפת ביותר. {{count}} ההעדפות הראשונות יתועדו במערכת.
     stance_created: בחירה תועדה במערכת
     stance_updated: בחירה עודכנה
   thread_item:

@@ -174,6 +174,7 @@ export default
 
     convertToMd: ->
       if confirm I18n.t('formatting.markdown_confirm')
+        @updateModel()
         convertToMd(@model, @field)
         Records.users.saveExperience('html-editor.uses-markdown')
 

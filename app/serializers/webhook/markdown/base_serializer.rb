@@ -49,7 +49,7 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
   end
 
   def headline
-    I18n.t(:"webhook.markdown.#{object.kind}", text_options)
+    I18n.t(:"notifications.with_title.#{object.kind}", text_options)
   end
 
   private
