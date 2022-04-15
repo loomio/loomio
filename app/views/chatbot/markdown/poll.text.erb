@@ -1,9 +1,9 @@
 <%= render "chatbot/markdown/notification", event: @event %>
-# <%= render "chatbot/markdown/title", eventable: @poll %>
+<%= render "chatbot/markdown/title", eventable: @poll %>
 <% if @poll.current_outcome %>
-### <%= t(:"poll_common.outcome") %>
+*<%= t(:"poll_common.outcome") %>*
 = render_markdown(poll.current_outcome.statement, poll.current_outcome.statement_format)
-### <%= t(:"poll_types.#{poll.poll_type}") %>
+*<%= t(:"poll_types.#{poll.poll_type}") %>*
 <% end %>
 <%= render "chatbot/markdown/body", eventable: @poll %>
 <%= render "chatbot/markdown/vote", poll: @poll %>

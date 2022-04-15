@@ -18,7 +18,8 @@
 - [<%= name %>](<%= polymorphic_url(poll, poll_option_id: option[:id]) %>)
 <% end %>
 <% else %>
-**<%= t(:'poll_common.have_your_say') %>** **[<%= t('poll_common.vote_now') %>](<%= polymorphic_url(poll) %>)**
+**[<%= t('poll_common.vote_now') %>](<%= polymorphic_url(poll) %>)**
+
 <%= t(:"poll_mailer.common.you_have_until", when: format_date_for_humans(poll.closing_at, poll.time_zone)) %>
 <% end %>
 <% end %>

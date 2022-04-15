@@ -5,5 +5,6 @@
 <% key = "notifications.#{with_title}.#{event.kind}" %>
 <%= t(key, actor: event.user.name, title: "[#{event.eventable.title}](#{url})", poll_type: poll_type, site_name: AppConfig.theme[:site_name]) %>
 <% if message.present? %>
+
 _<%= raw render_plain_text(message) %>_
 <% end %>
