@@ -2,7 +2,8 @@ class Chatbot < ApplicationRecord
   belongs_to :group
   belongs_to :author
 
-  validates_inclusion_of :kind, in: ['matrix', 'slack', 'discord', 'mattermost', 'teams']
+  validates_inclusion_of :kind, in: ['matrix', 'webhook']
+  validates_inclusion_of :webhook_kind, in: ['slack', 'microsoft', 'discord', nil]
 
   def config
     {

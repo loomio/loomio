@@ -1,0 +1,27 @@
+<% if poll.anonymous? %>
+<%= t(:"poll_common_action_panel.anonymous") %>
+<% end %>
+<% if poll.closed? %>
+<%= t(:"poll_common_form.closed") %> <%= format_date_for_humans(poll.closed_at, poll.time_zone)  %>
+<% end %>
+<% if poll.active? %>
+<% if poll.is_single_vote? %>
+**<%= t(:'poll_common.have_your_say') %>**
+<% poll.results.each do |option| %>
+<% next if option[:id] == 0 %>
+<% name = case option[:name_format] %>
+<% when 'i18n' then t(option[:name]) %>
+<% when 'iso8601' then format_iso8601_for_humans(option[:name], @recipient.time_zone || poll.time_zone) %>
+<% else %>
+<% option[:name] %>
+<% end %>
+- [<%= name %>](<%= polymorphic_url(poll, poll_option_id: option[:id]) %>)
+<% end %>
+<% else %>
+**<%= t(:'poll_common.have_your_say') %>** **[<%= t('poll_common.vote_now') %>](<%= polymorphic_url(poll) %>)**
+<%= t(:"poll_mailer.common.you_have_until", when: format_date_for_humans(poll.closing_at, poll.time_zone)) %>
+<% end %>
+<% end %>
+<% if poll.wip? %>
+<%= t(:"poll_common_action_panel.draft_mode", poll_type: t("poll_types.#{poll.poll_type}")) %>
+<% end %>

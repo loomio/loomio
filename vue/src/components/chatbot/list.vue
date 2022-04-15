@@ -34,11 +34,21 @@ export default
       @loading = false
 
   methods:
+    deleteChatbot: (bot) ->
+      # confirm modal then
+      bot.destroy()
+
     editChatbot: (bot) ->
-      openModal
-        component: 'ChatbotMatrixForm'
-        props:
-          chatbot: bot
+      if bot.kind == "webhook"
+        openModal
+          component: 'ChatbotWebhookForm'
+          props:
+            chatbot: bot
+      else
+        openModal
+          component: 'ChatbotMatrixForm'
+          props:
+            chatbot: bot
  
 
 </script>

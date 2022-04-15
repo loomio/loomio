@@ -1,0 +1,14 @@
+
+<% if poll.show_results? %>
+**<%= t(poll.closed_at ? :'poll_common.results' : :'poll_common.current_results') %>**
+<% if poll.poll_type == "meeting" %>
+<%= render "chatbot/markdown/meeting", poll: poll %>
+
+<% else %>
+<%= render "chatbot/markdown/simple", poll: poll %>
+
+<% end %>
+<% else %>
+**<%= t('poll_common_action_panel.results_hidden_until_closed') %>**
+<% end %>
+<%= render "chatbot/markdown/undecided", poll: poll %>

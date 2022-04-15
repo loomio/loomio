@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_07_200039) do
+ActiveRecord::Schema.define(version: 2022_04_15_072245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -151,11 +151,12 @@ ActiveRecord::Schema.define(version: 2022_04_07_200039) do
     t.string "access_token"
     t.integer "author_id"
     t.integer "group_id"
-    t.jsonb "event_kinds", default: [], null: false
-    t.boolean "include_body", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
+    t.boolean "notification_only", default: false, null: false
+    t.string "webhook_kind"
+    t.string "event_kinds", array: true
     t.index ["group_id"], name: "index_chatbots_on_group_id"
   end
 

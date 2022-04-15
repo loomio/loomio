@@ -15,6 +15,7 @@ import MembershipModal from '@/components/group/membership_modal'
 import ChangePasswordForm from '@/components/profile/change_password_form'
 import ChatbotList from '@/components/chatbot/list'
 import ChatbotMatrixForm from '@/components/chatbot/matrix_form'
+import ChatbotWebhookForm from '@/components/chatbot/webhook_form'
 import PollCommonOutcomeModal from '@/components/poll/common/outcome_modal'
 import PollCommonReopenModal from '@/components/poll/common/reopen_modal'
 import PollCommonStartForm from '@/components/poll/common/start_form'
@@ -49,6 +50,7 @@ export default
     ChangeVolumeForm
     ChatbotList
     ChatbotMatrixForm
+    ChatbotWebhookForm
     PollCommonModal
     PollCommonEditVoteModal
     ContactRequestForm

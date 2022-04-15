@@ -134,6 +134,7 @@ module Dev::ScenariosHelper
     # Stance.create(poll: poll, participant: non_voter)
     PollService.invite(poll: poll, params: {recipient_user_ids: [non_voter.id]}, actor: actor)
 
+    
     PollService.publish_closing_soon
 
     {

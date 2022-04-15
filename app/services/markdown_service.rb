@@ -10,6 +10,10 @@ module MarkdownService
     underline:            true
   ].freeze
 
+  def self.render_markdown(text, fmt = 'md')
+    ReverseMarkdown.convert(text)
+  end
+
   def self.render_html(text)
     return '' if text.nil?
     renderer = LoomioMarkdown.new(filter_html: true, hard_wrap: true, link_attributes: {rel: "nofollow ugc noreferrer noopener", target: :_blank})

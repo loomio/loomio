@@ -1,4 +1,4 @@
-class Webhook::Microsoft::BaseSerializer < Webhook::Markdown::BaseSerializer
+class Webhook::Microsoft::EventSerializer < Webhook::Markdown::EventSerializer
   attribute :type, key: :"@type"
   attribute :context, key: :"@context"
   attribute :theme_color, key: :themeColor

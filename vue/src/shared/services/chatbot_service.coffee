@@ -15,7 +15,10 @@ export default new class ChatbotService
         openModal
           component: 'ChatbotMatrixForm'
           props:
-            chatbot: Records.chatbots.build(groupId: group.id)
+            chatbot: Records.chatbots.build
+              groupId: group.id
+              kind: "matrix"
+
     slack:
       name: 'chatbot.slack'
       icon: 'mdi-slack'
@@ -23,6 +26,9 @@ export default new class ChatbotService
       canPerform: -> true
       perform: ->
         openModal
-          component: 'ChatbotSlackForm'
+          component: 'ChatbotWebhookForm'
           props:
-            group: group
+            chatbot: Records.chatbots.build
+              groupId: group.id
+              kind: "webhook"
+              webhookKind: "slack"

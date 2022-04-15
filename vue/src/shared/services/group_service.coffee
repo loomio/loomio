@@ -57,7 +57,7 @@ export default new class GroupService
           Flash.success "memberships_page.messages.make_admin_success", name: Session.user().name
 
     chatbots:
-      name: 'chatbot.chatbot'
+      name: 'chatbot.chatbots'
       icon: 'mdi-robot'
       menu: true
       canPerform: ->

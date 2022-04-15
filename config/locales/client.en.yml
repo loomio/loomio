@@ -2262,7 +2262,9 @@ en:
     name: Chatbot name
     connection_test_successful: Loomio bot connection test successful!
     chatbot: Chatbot
+    chatbots: Chatbots
     saved: Chatbot saved!
+    webhook_url: Webhook URL
     homeserver_url: Homeserver URL
     channel: Channel
     username: Username
@@ -2271,6 +2273,9 @@ en:
     add_chatbot: Add chatbot
     matrix: Matrix
     slack: Slack
+    event_kind_helptext: Select events the bot will always be notified about. If you're not sure, just leave them all off.
+    notification_only_label: Send notification headline only
+    check_for_test_message: Check your chatroom for a message from the bot!
 
   webhook:
     integrations: Integrations
@@ -2322,7 +2327,6 @@ en:
       show_poll: show poll
       read_memberships: read memberships
     include_body_label: Include message body with notification
-    include_subgroups_label: Relay events from subgroups
 
   powered_by:
     slogan: Better decisions together

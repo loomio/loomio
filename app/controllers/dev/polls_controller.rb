@@ -12,19 +12,6 @@ class Dev::PollsController < Dev::NightwatchController
                       wip: !!params[:wip]
                     })
 
-    if ENV['TEST_MATRIX_SERVER']
-      Chatbot.create!(
-        group: scenario[:group],
-        kind: "matrix",
-        server: ENV['TEST_MATRIX_SERVER'],
-        channel: ENV['TEST_MATRIX_CHANNEL'], 
-        access_token: ENV['TEST_MATRIX_ACCESS_TOKEN'], 
-        event_kinds: ["new_discussion", "discussion_edited", "poll_created", "poll_edited", "poll_closing_soon", "poll_expired", "poll_reopened", "outcome_created"],
-        name: "Matrix chatbot"
-      )
-      ChatbotService.publish_configs!
-    end
-
     scenario[:group].add_admin! scenario[:observer]
 
     sign_in(scenario[:observer]) if scenario[:observer].is_a?(User)

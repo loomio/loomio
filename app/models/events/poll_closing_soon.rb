@@ -3,6 +3,7 @@ class Events::PollClosingSoon < Event
   include Events::Notify::Author
   include Events::Notify::ByEmail
   include Events::Notify::ThirdParty
+  include Events::Notify::Chatbots
 
   def self.publish!(poll)
     super poll,
