@@ -1,50 +1,49 @@
 ```<%= Terminal::Table.new do |table| %>
-  <% table << poll.result_columns.map do |col| %>
-  <%  case col %>
-  <%  when 'pie', 'bar', 'grid' %>
-  <%  t(:"poll_common.results") %>
-  <%  when 'name' %>
-  <%  t('common.option') %>
-  <%  when 'score_percent' %>
-  <%  t('poll_ranked_choice_form.pct_of_points') %>
-  <%  when 'voter_percent' %>
-  <%  t('poll_ranked_choice_form.pct_of_voters') %>
-  <%  when 'rank' %>
-  <%  t('poll_ranked_choice_form.rank') %>
-  <%  when 'score' %>
-  <%  t('poll_ranked_choice_form.points') %>
-  <%  when 'average' %>
-  <%  t('poll_ranked_choice_form.mean') %>
-  <%  when 'voter_count' %>
-  <%  t('membership_card.voters') %>
-  <%  when 'voters' then nil %>
-  <%  end %>
-  <%  end.compact %>
-  <% table.add_separator %>
-  <% poll.results.each do |option| %>
-    <% table << poll.result_columns.map do |col| %>
-      <% case col %>
-      <% when 'pie', 'bar' %>
-      <% '▒' * (option[:max_score_percent].to_i/10) %>
-      <% when 'grid' then nil%>
-      <% when 'name' %>
-        <% case option[:name_format] %>
-        <% when 'i18n' %>
-        <% t(option[:name]) %>
-        <% when 'iso8601' %>
-        <% format_iso8601_for_humans(option[:name], @recipient.time_zone || poll.time_zone) %>
-        <% else %>
-        <% option[:name] %>
-        <% end %>
-      <% when 'rank' then option[:rank] %>
-      <% when 'score' then option[:score] %>
-      <% when 'voter_count' then option[:voter_count] %>
-      <% when 'average' then option[:average].round(1) %>
-      <% when 'voter_percent' then option[:voter_percent].round %>
-      <% when 'score_percent' then option[:score_percent].round(1) %>
-      <% end %>
-    <% end.compact %>
-  <% end %>
+<% table << poll.result_columns.map do |col| %>
+<% case col %>
+<% when 'pie', 'bar', 'grid' %>
+<% t(:"poll_common.results") %>
+<% when 'name' %>
+<% t('common.option') %>
+<% when 'score_percent' %>
+<% t('poll_ranked_choice_form.pct_of_points') %>
+<% when 'voter_percent' %>
+<% t('poll_ranked_choice_form.pct_of_voters') %>
+<% when 'rank' %>
+<% t('poll_ranked_choice_form.rank') %>
+<% when 'score' %>
+<% t('poll_ranked_choice_form.points') %>
+<% when 'average' %>
+<% t('poll_ranked_choice_form.mean') %>
+<% when 'voter_count' %>
+<% t('membership_card.voters') %>
+<% when 'voters' then nil %>
 <% end %>
-
+<% end.compact %>
+<% table.add_separator %>
+<% poll.results.each do |option| %>
+<% table << poll.result_columns.map do |col| %>
+  <% case col %>
+  <% when 'pie', 'bar' %>
+  <% '▒' * (option[:max_score_percent].to_i/10) %>
+  <% when 'grid' then nil%>
+  <% when 'name' %>
+    <% case option[:name_format] %>
+    <% when 'i18n' %>
+    <% t(option[:name]) %>
+    <% when 'iso8601' %>
+    <% format_iso8601_for_humans(option[:name], @recipient.time_zone || poll.time_zone) %>
+    <% else %>
+    <% option[:name] %>
+    <% end %>
+  <% when 'rank' then option[:rank] %>
+  <% when 'score' then option[:score] %>
+  <% when 'voter_count' then option[:voter_count] %>
+  <% when 'average' then option[:average].round(1) %>
+  <% when 'voter_percent' then option[:voter_percent].round %>
+  <% when 'score_percent' then option[:score_percent].round(1) %>
+  <% end %>
+<% end.compact %>
+<% end %>
+<% end %>
 ```
