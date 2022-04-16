@@ -113,12 +113,12 @@ export default class PollModel extends BaseModel
 
   showResults: ->
     switch @hideResults
-    when "until_closed"
-      @closed_at
-    when "until_vote"
-      @closed_at || @iHaveVoted() # || !iCanVote()
-    else
-      true
+      when "until_closed"
+        @closed_at
+      when "until_vote"
+        @closed_at || @iHaveVoted()
+      else
+        true
 
   optionsDiffer: (options) ->
     !isEqual(sortBy(@pollOptionNames), sortBy(map(options, 'name')))
