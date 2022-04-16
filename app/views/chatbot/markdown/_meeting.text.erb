@@ -1,12 +1,12 @@
-```
-<%= Terminal::Table.new do |table| %>
-<% table << [poll.time_zone, t(:'poll_common.votes'), poll.decided_voters.map {|u| u.avatar_initials }].flatten %>
-<% table.add_separator %>
-<% blocks = {0 => '  ', 1 => '░░', 2 => '▓▓'} %>
+```<%= Terminal::Table.new do |table| %>
+<% table.style = { border: :unicode } %>
+<% table.headings = [poll.time_zone, t(:'poll_common.votes'), poll.decided_voters.map {|u| u.avatar_initials }].flatten %>
+<% blocks = {0 => '  ', 1 => '░░', 2 => '██'} %>
 <% poll.poll_options.each do |poll_option| %>
 <% table << [option_name(poll_option.name, poll.poll_option_name_format, poll.time_zone),
 	           ((poll_option.total_score.to_f)/2).to_s.gsub('.0',''),
 	           poll.decided_voters.map { |user| blocks[poll_option.voter_scores.fetch(user.id.to_s, 0)] }].flatten %>
 <% end %>
 <% end %>
+
 ```

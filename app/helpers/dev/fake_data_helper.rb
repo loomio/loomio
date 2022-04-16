@@ -312,7 +312,6 @@ module Dev::FakeDataHelper
         server: ENV['TEST_MATRIX_SERVER'],
         channel: ENV['TEST_MATRIX_CHANNEL'], 
         access_token: ENV['TEST_MATRIX_ACCESS_TOKEN'], 
-        server: ENV['TEST_TEAMS_WEBHOOK'],
         event_kinds: event_kinds,
         name: "Matrix"
       )
