@@ -36,7 +36,6 @@ class PollSerializer < ApplicationSerializer
              :icon_type,
              :shuffle_options,
              :stance_counts,
-             :show_results,
              :stances_in_discussion,
              :specified_voters_only,
              :secret_token,
