@@ -112,7 +112,7 @@ export default class PollModel extends BaseModel
     @myStance() && @myStance().castAt
 
   showResults: ->
-    case @hideResults
+    switch @hideResults
     when "until_closed"
       @closed_at
     when "until_vote"
