@@ -47,7 +47,6 @@ class PollSerializer < ApplicationSerializer
              :voters_count,
              :versions_count
 
-
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_one :created_event, serializer: EventSerializer, root: :events
   has_one :group, serializer: GroupSerializer, root: :groups
@@ -74,7 +73,6 @@ class PollSerializer < ApplicationSerializer
     :details,
     :details_format,
     :hide_results,
-    :show_results,
     :allow_long_reason,
     :multiple_choice,
     :notify_on_closing_soon,
@@ -96,10 +94,6 @@ class PollSerializer < ApplicationSerializer
     :versions_count
   ]
 
-  def show_results
-    poll.show_results?(voted: (my_stance && my_stance.cast_at))
-  end
-
   def include_stance_counts?
     poll.show_results?(voted: (my_stance && my_stance.cast_at))
   end
@@ -109,6 +103,7 @@ class PollSerializer < ApplicationSerializer
   end
 
   def include_results?
+    # so long as it's not show results on close
     poll.show_results?(voted: (my_stance && my_stance.cast_at))
   end
 

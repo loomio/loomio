@@ -32,11 +32,11 @@ section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id"
     .d-flex
       component.text--secondary(:is="componentType" :to="actor && urlFor(actor)") {{actorName}}
       space
-      poll-common-stance-choice(v-if="poll.showResults" :poll="poll" :stance-choice="eventable.stanceChoice()")
+      poll-common-stance-choice(v-if="poll.showResults()" :poll="poll" :stance-choice="eventable.stanceChoice()")
       space
       router-link.text--secondary(:to='link')
         time-ago(:date='event.createdAt')
-  .poll-common-stance(v-if="poll.showResults && !collapsed")
+  .poll-common-stance(v-if="poll.showResults() && !collapsed")
     v-layout(v-if="!eventable.singleChoice()" wrap align-center)
       strand-item-headline.text--secondary(:event="event" :eventable="eventable")
       poll-common-stance-choices(:stance="eventable")
