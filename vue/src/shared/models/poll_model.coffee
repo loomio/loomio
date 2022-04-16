@@ -53,7 +53,6 @@ export default class PollModel extends BaseModel
     shuffleOptions: false
     tagIds: []
     hideResults: 'off'
-    showResults: false
     stanceCounts: []
 
   audienceValues: ->
@@ -111,6 +110,15 @@ export default class PollModel extends BaseModel
 
   iHaveVoted: ->
     @myStance() && @myStance().castAt
+
+  showResults: ->
+    switch @hideResults
+      when "until_closed"
+        @closed_at
+      when "until_vote"
+        @closed_at || @iHaveVoted()
+      else
+        true
 
   optionsDiffer: (options) ->
     !isEqual(sortBy(@pollOptionNames), sortBy(map(options, 'name')))
