@@ -113,9 +113,9 @@ export default class PollModel extends BaseModel
   showResults: ->
     switch @hideResults
       when "until_closed"
-        @closed_at
+        @closedAt
       when "until_vote"
-        @closed_at || @iHaveVoted()
+        @closedAt || @iHaveVoted()
       else
         true
 
