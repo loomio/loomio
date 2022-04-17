@@ -157,7 +157,7 @@ export default
 .strand-page
   v-main
     v-container.max-width-800(v-if="discussion")
-      //- p(v-for="rule in loader.rules") {{rule}}
+      p(v-if="$route.query.debug" v-for="rule in loader.rules") {{rule}}
       //- p loader: {{loader.focusAttrs}}
       //- p ranges: {{discussion.ranges}}
       //- p read ranges: {{loader.readRanges}}
