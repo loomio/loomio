@@ -84,10 +84,10 @@ export default
         .poll-common-votes-panel__stance-name-and-option
           v-layout.body-2(align-center)
             .pr-2.text--secondary {{ stance.participantName() }}
-            poll-common-stance-choice(v-if="poll.showResults && stance.castAt && poll.singleChoice()" :poll="poll" :stance-choice="stance.stanceChoice()")
+            poll-common-stance-choice(v-if="poll.showResults() && stance.castAt && poll.singleChoice()" :poll="poll" :stance-choice="stance.stanceChoice()")
             span.caption(v-if='!stance.castAt' v-t="'poll_common_votes_panel.undecided'" )
             time-ago.text--secondary(v-if="stance.castAt" :date="stance.castAt")
-        .poll-common-stance(v-if="poll.showResults && stance.castAt")
+        .poll-common-stance(v-if="poll.showResults() && stance.castAt")
           poll-common-stance-choices(:stance='stance')
           formatted-text.poll-common-stance-created__reason(:model="stance" column="reason")
     loading(v-if="loader.loading")
