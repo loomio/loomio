@@ -130,7 +130,7 @@ describe API::V1::StancesController do
       user_ids   = json['stances'].map { |u| u['participant_id'] }
 
       expect(stance_ids).to include my_stance.id
-      expect(json['stances'].find{|s| s['my_stance']}['id'] ).to eq my_stance.id
+      expect(json['polls'][0]['my_stance_id']).to eq my_stance.id
       expect(stance_ids).to include other_stance.id
       expect(user_ids).to_not include my_stance.participant_id
       expect(user_ids).to_not include other_stance.participant_id
@@ -195,7 +195,7 @@ describe API::V1::StancesController do
       post :update, params: { id: stance.id, stance: stance_params }
       json = JSON.parse(response.body)
       expect(response.status).to eq 200
-      expect(json['stances'][0]['my_stance']).to be true
+      expect(json['polls'][0]['my_stance_id']).to be json['stances'][0]['id']
       expect(json['stances'][0]['participant_id']).to be nil
       expect(json['events'][0]['actor_id']).to be nil
     end
