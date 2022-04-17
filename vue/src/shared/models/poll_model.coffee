@@ -79,7 +79,6 @@ export default class PollModel extends BaseModel
   bestNamedId: ->
     ((@id && @) || (@discusionId && @discussion()) || (@groupId && @group()) || {namedId: ->}).namedId()
 
-
   tags: ->
     @recordStore.tags.collection.chain().find(id: {$in: @tagIds}).simplesort('priority').data()
 
@@ -106,10 +105,10 @@ export default class PollModel extends BaseModel
     head orderBy(@recordStore.stances.find(pollId: @id, participantId: user.id, latest: true, revokedAt: null), 'createdAt', 'desc')
 
   myStance: ->
-    head orderBy(@recordStore.stances.find(pollId: @id, myStance: true, latest: true, revokedAt: null), 'createdAt', 'desc')
+    @recordStore.stances.find(@myStanceId)
 
   iHaveVoted: ->
-    @myStance() && @myStance().castAt
+    @myStanceId && @myStance().castAt
 
   showResults: ->
     switch @hideResults

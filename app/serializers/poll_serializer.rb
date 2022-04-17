@@ -94,7 +94,7 @@ class PollSerializer < ApplicationSerializer
   ]
 
   def include_stance_counts?
-    poll.show_results?(voted: (my_stance && my_stance.cast_at))
+    poll.show_results?(voted: true)
   end
 
   def results
@@ -102,8 +102,7 @@ class PollSerializer < ApplicationSerializer
   end
 
   def include_results?
-    # so long as it's not show results on close
-    poll.show_results?(voted: (my_stance && my_stance.cast_at))
+    poll.show_results?(voted: true)
   end
 
   def current_outcome
@@ -111,11 +110,11 @@ class PollSerializer < ApplicationSerializer
   end
 
   def poll_options
-    cache_fetch(:poll_options_by_poll_id, object.id) { [] }
+    cache_fetch(:poll_options_by_poll_id, object.id) { object.poll_options }
   end
 
   def poll_option_names
-    cache_fetch(:poll_options_by_poll_id, object.id) { [] }.map(&:name)
+    cache_fetch(:poll_options_by_poll_id, object.id) { poll_options }.map(&:name)
   end
 
   def created_event
@@ -132,5 +131,9 @@ class PollSerializer < ApplicationSerializer
 
   def my_stance
     cache_fetch(:stances_by_poll_id, object.id) { Stance.latest.find_by(poll_id: object.id, participant_id: scope[:current_user_id]) }
+  end
+
+  def include_my_stance?
+    my_stance.present?
   end
 end
