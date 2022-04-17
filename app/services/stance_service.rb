@@ -24,7 +24,7 @@ class StanceService
 
   def self.redeem(stance:, actor:)
     actor.ability.authorize! :redeem, stance
-    return if Stance.where(participant_id: actor_id, poll_id: stance.poll_id, latest: true).exists?
+    return if Stance.where(participant_id: actor.id, poll_id: stance.poll_id, latest: true).exists?
     stance.update(participant: actor, accepted_at: Time.zone.now)
   end
 
