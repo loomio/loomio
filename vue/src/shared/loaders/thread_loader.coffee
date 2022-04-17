@@ -173,8 +173,8 @@ export default class ThreadLoader
       local:
         find:
           discussionId: @discussion.id
-          commentId: {$gte: commentId}
-        limit: @padding
+          eventableId: commentId
+          eventableType: 'Comment'
       remote:
         order: 'sequence_id'
         discussion_id: @discussion.id
