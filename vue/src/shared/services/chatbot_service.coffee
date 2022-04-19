@@ -32,3 +32,31 @@ export default new class ChatbotService
               groupId: group.id
               kind: "webhook"
               webhookKind: "slack"
+
+    discord:
+      name: 'chatbot.discord'
+      icon: 'mdi-discord'
+      menu: true
+      canPerform: -> true
+      perform: ->
+        openModal
+          component: 'ChatbotWebhookForm'
+          props:
+            chatbot: Records.chatbots.build
+              groupId: group.id
+              kind: "webhook"
+              webhookKind: "discord"
+              
+    microsoft:
+      name: 'chatbot.microsoft_teams'
+      icon: 'mdi-microsoft-teams'
+      menu: true
+      canPerform: -> true
+      perform: ->
+        openModal
+          component: 'ChatbotWebhookForm'
+          props:
+            chatbot: Records.chatbots.build
+              groupId: group.id
+              kind: "webhook"
+              webhookKind: "microsoft"

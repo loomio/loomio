@@ -10,8 +10,15 @@ module MarkdownService
     underline:            true
   ].freeze
 
-  def self.render_markdown(text, fmt = 'md')
-    ReverseMarkdown.convert(text)
+  def self.render_markdown(text, format = 'md')
+    text.gsub!('](/rails/active_storage', ']('+lmo_asset_host+'/rails/active_storage')
+    text.gsub!('"/rails/active_storage', '"'+lmo_asset_host+'/rails/active_storage')
+    
+    if format == "md"
+      text
+    else
+      ReverseMarkdown.convert(text)
+    end
   end
 
   def self.render_html(text)
@@ -22,11 +29,11 @@ module MarkdownService
 
   def self.render_rich_text(text, format = "md")
     return "" unless text
+    text.gsub!('](/rails/active_storage', ']('+lmo_asset_host+'/rails/active_storage')
+    text.gsub!('"/rails/active_storage', '"'+lmo_asset_host+'/rails/active_storage')
     if format == "md"
-      text.gsub!('](/rails/active_storage', ']('+lmo_asset_host+'/rails/active_storage')
       MarkdownService.render_html(text)
     else
-      text.gsub!('"/rails/active_storage', '"'+lmo_asset_host+'/rails/active_storage')
       replace_checkboxes(replace_iframes(text))
     end.html_safe
   end

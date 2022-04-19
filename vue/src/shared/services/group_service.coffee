@@ -61,7 +61,7 @@ export default new class GroupService
       icon: 'mdi-robot'
       menu: true
       canPerform: ->
-        AppConfig.features.app.chatbots && group.adminsInclude(Session.user())
+        group.adminsInclude(Session.user())
       perform: ->
         openModal
           component: 'ChatbotList'
