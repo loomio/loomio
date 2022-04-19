@@ -30,10 +30,12 @@ class Webhook::Markdown::EventSerializer < ActiveModel::Serializer
   end
 
   def text
-    ApplicationController.renderer.render(
-      layout: nil,
-      template: "chatbot/markdown/#{scope[:template_name]}",
-      assigns: { poll: object.eventable.poll, event: object } )
+    I18n.with_locale(object.eventable.group.locale) do
+      ApplicationController.renderer.render(
+        layout: nil,
+        template: "chatbot/markdown/#{scope[:template_name]}",
+        assigns: { poll: object.eventable.poll, event: object } )
+    end
   end
 
   private
