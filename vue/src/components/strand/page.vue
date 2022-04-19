@@ -13,6 +13,7 @@ export default
     group: null
     discussionFetchError: null
     lastFocus: null
+    showFocusButton: true
 
   mounted: -> @init()
 
@@ -85,6 +86,11 @@ export default
         @scrollTo(selector)
         @lastFocus = selector
 
+    scrollToFocus: ->
+      selector = @focusSelector()
+      if document.querySelector(selector)
+        @scrollTo(selector)
+
     scrollToFocusUnlessFocused: ->
       selector = @focusSelector()
       unless @lastFocus == selector
@@ -97,12 +103,8 @@ export default
        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
        rect.right <= (window.innerWidth || document.documentElement.clientWidth))
 
-    refocusIfOffscreen: ->
-      if @lastFocus &&
-         el = document.querySelector(@lastFocus) &&
-         !@elementInView(el)
-        console.log "refocusing #{@lastFocus}"
-        @scrollTo(@lastFocus)
+    focusIsOffscreen: ->
+      el = document.querySelector(@focusSelector()) && !@elementInView(el)
 
     respondToRoute: ->
       return unless @discussion
