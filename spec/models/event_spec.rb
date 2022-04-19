@@ -23,9 +23,17 @@ describe Event do
   let(:parent_comment) { create :comment, discussion: discussion}
   let(:comment) { create :comment, parent: parent_comment, discussion: discussion, body: 'hey @sam' }
   let(:poll) { create :poll, discussion: discussion, details: user_mentioned_text, author: author }
-  let!(:markdown_webhook) { create(:webhook, group: discussion.group, format: 'markdown') }
-  let!(:slack_webhook) { create(:webhook, group: discussion.group, format: 'slack') }
-  let!(:microsoft_webhook) { create(:webhook, group: discussion.group, format: 'microsoft') }
+  let!(:markdown_webhook) { create(:chatbot, group: discussion.group, webhook_kind: 'markdown', kind: 'webhook', event_kinds: %w[
+      new_discussion
+      discussion_edited
+      poll_created
+      poll_edited
+      poll_closing_soon
+      poll_expired
+      poll_announced
+      poll_reopened
+      outcome_created
+    ]) }
 
   def emails_sent
     ActionMailer::Base.deliveries.count
@@ -148,7 +156,7 @@ describe Event do
 
     it 'notifies webhook if one exists' do
       Events::PollCreated.publish!(poll, poll.author)
-      expect(WebMock).to have_requested(:post, markdown_webhook.url).at_least_once
+      expect(WebMock).to have_requested(:post, markdown_webhook.server).at_least_once
     end
   end
 
