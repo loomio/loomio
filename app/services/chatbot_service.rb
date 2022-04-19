@@ -30,6 +30,7 @@ class ChatbotService
         template_name = event.eventable_type.tableize.singularize
         template_name = 'poll' if event.eventable_type == 'Outcome'
         template_name = 'group' if event.eventable_type == 'Membership'
+        template_name = 'notification' if chatbot.notification_only
 
         if %w[Poll Stance Outcome].include? event.eventable_type
           poll = event.eventable.poll 
@@ -38,7 +39,7 @@ class ChatbotService
         I18n.with_locale(chatbot.group.locale) do
           if chatbot.kind == "webhook"
             serializer = "Webhook::#{chatbot.webhook_kind.classify}::EventSerializer".constantize
-            payload = serializer.new(event, root: false, scope: {notification_only: chatbot.notification_only, template_name: template_name}).as_json
+            payload = serializer.new(event, root: false, scope: {template_name: template_name}).as_json
             Clients::Webhook.new.post(chatbot.server, params: payload)
           else
             client.publish("chatbot/publish", {

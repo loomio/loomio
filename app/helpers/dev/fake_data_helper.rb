@@ -313,6 +313,7 @@ module Dev::FakeDataHelper
         channel: ENV['TEST_MATRIX_CHANNEL'], 
         access_token: ENV['TEST_MATRIX_ACCESS_TOKEN'], 
         event_kinds: event_kinds,
+        # notification_only: true,
         name: "Matrix"
       )
       ChatbotService.publish_configs!
@@ -325,6 +326,7 @@ module Dev::FakeDataHelper
         webhook_kind: "microsoft",
         server: ENV['TEST_TEAMS_WEBHOOK'],
         event_kinds: event_kinds,
+        # notification_only: true,
         name: "Microsoft Teams"
       )
     end
@@ -336,6 +338,7 @@ module Dev::FakeDataHelper
         webhook_kind: "slack",
         server: ENV['TEST_SLACK_WEBHOOK'],
         event_kinds: event_kinds,
+        # notification_only: true,
         name: "Slack"
       )
     end
@@ -347,6 +350,7 @@ module Dev::FakeDataHelper
         webhook_kind: "discord",
         server: ENV['TEST_DISCORD_WEBHOOK'],
         event_kinds: event_kinds,
+        # notification_only: true,
         name: "Discord"
       )
     end

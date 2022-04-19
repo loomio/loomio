@@ -3,7 +3,7 @@ class Chatbot < ApplicationRecord
   belongs_to :author
 
   validates_inclusion_of :kind, in: ['matrix', 'webhook']
-  validates_inclusion_of :webhook_kind, in: ['slack', 'microsoft', 'discord', nil]
+  validates_inclusion_of :webhook_kind, in: ['slack', 'microsoft', 'discord', 'markdown', nil]
 
   def config
     {
