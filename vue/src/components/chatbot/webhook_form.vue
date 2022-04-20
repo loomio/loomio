@@ -35,6 +35,13 @@ export default
       ).finally =>
         Flash.success('chatbot.check_for_test_message')
         @testing = false
+  computed:
+    url: ->
+      switch @chatbot.webhookKind
+        when "slack" then "https://help.loomio.com/en/user_manual/groups/integrations/slack"
+        when "discord" then "https://help.loomio.com/en/user_manual/groups/integrations/discord"
+        when "microsoft" then "https://help.loomio.com/en/user_manual/groups/integrations/microsoft_teams"
+        when "mattermost" then "https://help.loomio.com/en/user_manual/groups/integrations/mattermost"
 
 </script>
 <template lang="pug">
@@ -48,8 +55,10 @@ v-card.chatbot-matrix-form
     dismiss-modal-button
   v-card-text
     v-text-field(:label="$t('chatbot.name')" v-model="chatbot.name" hint="The name of your chatroom")
-    v-text-field(:label="$t('chatbot.webhook_url')"  v-model="chatbot.server" hint="https://hooks.slack.com/services/BLA/BLA/BLA")
-    v-select(v-model="chatbot.webhookKind" :items="formats" :label="$t('webhook.format')")
+    v-text-field(:label="$t('chatbot.webhook_url')"  v-model="chatbot.server" hint="Looks like: https://hooks.example.com/services/abc/xyz/123")
+
+    p.mt-2.mb-2(v-html="$t('webhook.we_have_guides', {url: url})")
+    //- v-select(v-model="chatbot.webhookKind" :items="formats" :label="$t('webhook.format')")
 
     v-checkbox.webhook-form__include-body(v-model="chatbot.notificationOnly" :label="$t('chatbot.notification_only_label')" hide-details)
     p.mt-4.text--secondary(v-t="'chatbot.event_kind_helptext'")

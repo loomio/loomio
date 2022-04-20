@@ -2281,8 +2281,11 @@ en:
 
   webhook:
     integrations: Integrations
+    api_keys: API keys
     webhooks: Webhooks
     webhook: Webhook
+    add_api_key: Add API key
+    edit_api_key: Edit API key
     api: API
     format: Format
     formats:
@@ -2290,11 +2293,12 @@ en:
       microsoft: Microsoft Teams
       slack: Slack
       discord: Discord
-    subtitle: Connect to Loomio to the rest of your tools with our integration API and webhooks
+    subtitle: Connect to Loomio to the rest of your tools with our API
     we_have_guides: |
       See our <a href="{{url}}" target="_blank">webhook setup guides</a> for help connecting your service.
     add_webhook: Add webhook
     show_docs: See API usage
+    save_to_show_docs: After you save, return here to find your API key
     edit_integration: Edit integration
     add_integration: Add integration
     success: Integration added!

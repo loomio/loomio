@@ -69,7 +69,7 @@ export default new class GroupService
             group: group
 
     webhooks:
-      name: 'webhook.integrations'
+      name: 'webhook.api_keys'
       icon: 'mdi-webhook'
       menu: true
       canPerform: ->
