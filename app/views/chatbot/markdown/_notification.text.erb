@@ -4,5 +4,5 @@
 <%= t("notifications.without_title.#{event.kind}", actor: event.user.name, title: "[#{event.eventable.title}](#{url})", poll_type: poll_type, site_name: AppConfig.theme[:site_name]) %>
 <% if message.present? %>
 
-<%= raw render_plain_text(message) %>
+<%= message %>
 <% end %>
