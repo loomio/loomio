@@ -7,7 +7,7 @@ class Chatbot < ApplicationRecord
 
   def config
     {
-      id: self.id,
+      # id: self.id,
       server: self.server,
       access_token: self.access_token,
       channel: self.channel

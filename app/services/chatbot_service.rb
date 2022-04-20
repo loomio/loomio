@@ -3,7 +3,6 @@ class ChatbotService
     actor.ability.authorize! :create, chatbot
     return false unless chatbot.valid?
     chatbot.save!
-    publish_configs!
   end
 
   def self.update(chatbot:, params:, actor:)
@@ -12,7 +11,6 @@ class ChatbotService
     chatbot.assign_attributes(params)
     return false unless chatbot.valid?
     chatbot.save!
-    publish_configs!
   end
 
   def self.destroy(chatbot:, actor:)
@@ -43,7 +41,7 @@ class ChatbotService
             Clients::Webhook.new.post(chatbot.server, params: payload)
           else
             client.publish("chatbot/publish", {
-              chatbot_id: chatbot.id,
+              config: chatbot.config,
               payload: {
                 html: ApplicationController.renderer.render(layout: nil, template: "chatbot/matrix/#{template_name}", assigns: { poll: poll, event: event } )
               }
@@ -51,23 +49,6 @@ class ChatbotService
           end
         end
       end
-    end
-  end
-
-  def self.publish_configs!
-    MAIN_REDIS_POOL.with do |client|
-      client.del("chatbot/configs")
-      config = Chatbot.all.map do |bot|
-        client.hset("chatbot/configs", bot.id, bot.config.to_json)
-      end
-      client.publish("chatbot/configs_updated", true)
-    end
-  end
-
-  def self.publish_config!(bot)
-    MAIN_REDIS_POOL.with do |client|
-      client.hset("chatbot/configs", bot.id, bot.config.to_json)
-      client.publish("chatbot/new_config", bot.config.to_json)
     end
   end
 

@@ -316,7 +316,6 @@ module Dev::FakeDataHelper
         # notification_only: true,
         name: "Matrix"
       )
-      ChatbotService.publish_configs!
     end
 
     if ENV['TEST_TEAMS_WEBHOOK']
