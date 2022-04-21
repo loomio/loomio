@@ -753,6 +753,7 @@ en:
 
     form:
       help_notifying_people: 'Help: Notifying people'
+      help_invite_voters: 'Help: Inviting voters'
       too_many_invitations: |
         Invitation limit exceeded. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
       no_invitations_remaining: |
@@ -1100,6 +1101,7 @@ en:
     submit: 'Yes, Deactivate this group'
 
   group_form:
+    help_starting_a_group: 'Help: Starting a group'
     thread_defaults_help: Default settings for new threads
     click_to_change_image: Click to change the cover image (4x1) or logo (1x1)
     permissions_explaination: |
@@ -1421,7 +1423,7 @@ en:
     messages:
       updated: Email settings updated
     learn_more: Learn more about email settings...
-    help_email_settings: 'Help: Notification setttings'
+    help_email_settings: 'Help: User email settings'
 
   thread_preview:
     replies_count: "%{count} replies"
