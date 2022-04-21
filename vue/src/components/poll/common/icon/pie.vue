@@ -37,7 +37,7 @@ export default
         when 0
           @shapes.push @svgEl.circle(@size).attr
             'stroke-width': 0
-            fill: '#000'
+            fill: '#BBBBBB'
         when 1
           each @results, (option) =>
             @shapes.push @svgEl.circle(@size).attr
