@@ -130,7 +130,7 @@ class PollSerializer < ApplicationSerializer
   end
 
   def my_stance
-    cache_fetch(:stances_by_poll_id, object.id) { Stance.latest.find_by(poll_id: object.id, participant_id: scope[:current_user_id]) }
+    cache_fetch(:my_stances_by_poll_id, object.id) { Stance.latest.find_by(poll_id: object.id, participant_id: scope[:current_user_id]) }
   end
 
   def include_my_stance?
