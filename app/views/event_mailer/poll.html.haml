@@ -1,4 +1,5 @@
 - poll = @event.eventable.poll
+= render "event_mailer/group/cover_and_logo", group: @event.eventable.poll.group
 = render "event_mailer/common/notification", event: @event
 = render "event_mailer/poll/share_outcome", event: @event
 = render "event_mailer/common/title", eventable: poll
