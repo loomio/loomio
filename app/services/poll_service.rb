@@ -294,7 +294,7 @@ class PollService
           voter_scores: {},
           voter_ids: poll.undecided_voters.map(&:id).shuffle.take(500),
           voter_count: poll.undecided_voters_count,
-          color: '#DDDDDD'
+          color: '#BBBBBB'
       }.with_indifferent_access.freeze)
     end
     l
