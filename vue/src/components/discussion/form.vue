@@ -137,7 +137,11 @@ export default
       common-notify-fields(:model="discussion")
       //- p.discussion-form__visibility
       v-card-actions
-        v-btn.discussion-form__edit-layout(v-if="!discussion.isNew()" outlined @click="openEditLayout")
+        help-link(
+          v-if="!discussion.id"
+          text='discussion_form.help_starting_threads'
+          path='en/user_manual/threads/starting_threads')
+        v-btn.discussion-form__edit-layout(v-if="discussion.id" outlined @click="openEditLayout")
           span(v-t="'thread_arrangement_form.edit'")
         v-spacer
         v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-if="!discussion.id" :loading="discussion.processing")

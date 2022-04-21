@@ -60,3 +60,17 @@ export default new class ChatbotService
               groupId: group.id
               kind: "webhook"
               webhookKind: "microsoft"
+
+    mattermost:
+      name: 'chatbot.mattermost'
+      icon: 'mdi-chat-processing'
+      menu: true
+      canPerform: -> true
+      perform: ->
+        openModal
+          component: 'ChatbotWebhookForm'
+          props:
+            chatbot: Records.chatbots.build
+              groupId: group.id
+              kind: "webhook"
+              webhookKind: "markdown"

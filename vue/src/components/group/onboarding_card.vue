@@ -20,6 +20,15 @@ export default
           props:
             group: @group
     ,
+      icon: 'mdi-robot'
+      translate: "setup_chatbot"
+      complete:  => @group.chatbots().length
+      click:     =>
+        openModal
+          component: 'ChatbotList'
+          props:
+            group: @group
+    ,
       icon: 'mdi-account-multiple-plus'
       translate: "invite_people_in"
       complete:  => @group.membershipsCount > 1 or @group.invitationsCount > 0

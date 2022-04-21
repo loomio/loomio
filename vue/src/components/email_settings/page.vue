@@ -112,7 +112,7 @@ v-main
                 //-     strong(v-t="'email_settings_page.daily_summary_label'")
                 //-     .email-settings-page__input-description(v-t="'email_settings_page.daily_summary_description'")
       v-card-actions
-        a.email-settings-page__learn-more-link(href='https://help.loomio.org/en/user_manual/users/email_settings/' target='_blank' v-t="'email_settings_page.learn_more'")
+        help-link(path="user_manual/users/email_settings" text="email_settings_page.help_email_settings")
         v-spacer
         v-btn.email-settings-page__update-button(color="primary" @click="submit()" v-t="'email_settings_page.update_settings'")
 

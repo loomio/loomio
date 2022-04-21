@@ -301,6 +301,7 @@ v-card.group-form
             //-     span(v-t="'thread_arrangement_form.nested_twice_description'")
 
   v-card-actions
+    help-link(path="en/user_manual/groups/settings" text="group_form.help_group_settings")
     v-spacer
     v-btn.group-form__submit-button(color="primary" @click='submit()')
       span(v-if='group.isNew() && group.isParent()' v-t="'group_form.submit_start_group'")
