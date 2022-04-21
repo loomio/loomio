@@ -12,3 +12,13 @@ export default
     v-t="text"
     target="_blank")
 </template>
+
+<style lang="sass">
+.help-link
+  a
+    color: rgba(0, 0, 0, 0.6)
+
+.theme--dark .help-link
+  a
+    color: rgba(255, 255, 255, 0.7)
+</style>
