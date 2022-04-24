@@ -541,7 +541,7 @@ es:
       discussion_edited: "%{actor} editó el contenido del hilo: %{title}"
       discussion_closed: "%{actor} cerró el hilo: %{title}"
       invitation_accepted: "%{actor} aceptó tu invitación a unirte a %{title}"
-      membership_created: "%{member} te ha invitado a unirte a %{group_name} en %{site_name}"
+      membership_created: "%{actor} te ha invitado a unirte a %{group_name} en %{site_name}"
       membership_requested: "%{actor} solicitó unirse a %{title} "
       membership_request_approved: "%{actor} aprobó tu solicitud a unirte a %{title}"
       new_comment: "%{actor} comentó en: %{title}"
