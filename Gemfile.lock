@@ -1,12 +1,4 @@
 GIT
-  remote: https://github.com/customerio/customerio-ruby
-  revision: 2234128cfec20cbf90aede5be40aa7a549607fa6
-  specs:
-    customerio (4.1.0)
-      addressable (~> 2.8.0)
-      multi_json (~> 1.0)
-
-GIT
   remote: https://github.com/loomio/custom_counter_cache.git
   revision: 7a4ed2c70c6a00cbee468d81295bdb3d4a86f2a7
   branch: rails5
@@ -601,7 +593,6 @@ DEPENDENCIES
   coffee-rails
   connection_pool
   custom_counter_cache!
-  customerio!
   database_cleaner-active_record
   database_cleaner-redis
   devise (~> 4.8.1)
