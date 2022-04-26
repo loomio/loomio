@@ -29,7 +29,7 @@ section.d-flex.align-center.action-dock(:aria-label="$t('action_dock.actions_men
   .action-dock__action(v-for='(action, name) in rightActions' v-if='action.canPerform()' :key="name")
     reaction-input.action-dock__button--react(:model="model" v-if="name == 'react'" :small="small")
     action-button(v-if="name != 'react'" :action="action" :name="name" :small="small" :nameArgs="action.nameArgs && action.nameArgs()")
-  action-menu(v-if="menuActions" :actions='menuActions' :small="small")
+  action-menu(v-if="menuActions" :actions='menuActions' :small="small" icon :name="$t('action_dock.more_actions')")
   v-spacer(v-if="left")
 </template>
 

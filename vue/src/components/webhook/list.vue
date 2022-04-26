@@ -32,7 +32,7 @@ export default
 <template lang="pug">
 v-card.webhook-list
   v-card-title
-    h1.headline(tabindex="-1" v-t="'webhook.integrations'")
+    h1.headline(tabindex="-1" v-t="'webhook.api_keys'")
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text
@@ -43,7 +43,7 @@ v-card.webhook-list
         v-list-item-content
           v-list-item-title {{webhook.name}}
         v-list-item-action
-          action-menu(:actions="webhookActions(webhook)")
+          action-menu(:actions="webhookActions(webhook)" icon)
   v-card-actions
     v-spacer
     v-btn(color='primary' @click='addAction(group).perform()' v-t="addAction(group).name")

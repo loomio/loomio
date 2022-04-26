@@ -67,6 +67,7 @@ module Null::Group
   def webhooks
     Webhook.none
   end
+
   def admins
     User.none
   end
@@ -81,6 +82,10 @@ module Null::Group
 
   def tags
     Tag.none
+  end
+
+  def chatbots
+    Chatbot.none
   end
 
   def false_methods

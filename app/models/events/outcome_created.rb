@@ -1,5 +1,4 @@
 class Events::OutcomeCreated < Event
-  include Events::Notify::ThirdParty
   include Events::Notify::Mentions
   include Events::Notify::InApp
   include Events::Notify::ByEmail

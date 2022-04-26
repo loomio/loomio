@@ -186,4 +186,8 @@ export default
 
     v-list-item(v-if="query && users.length == 0")
       v-list-item-title(v-t="{ path: 'discussions_panel.no_results_found', args: { search: query }}")
+  .d-flex.justify-end.mr-4.pb-4
+    help-link(
+      path="en/user_manual/polls/starting_proposals/index.html#invite-members" 
+      text="announcement.form.help_invite_voters")
 </template>

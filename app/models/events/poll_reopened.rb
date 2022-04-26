@@ -1,5 +1,5 @@
 class Events::PollReopened < Event
-  include Events::Notify::ThirdParty
+  include Events::Notify::Chatbots
 
   def self.publish!(poll, actor)
     create(kind: "poll_reopened",

@@ -1,0 +1,10 @@
+<% if poll.active? && poll.undecided_voters.any? %>
+**<%= t('poll.waiting_for_votes_from') %>**: <%= poll.undecided_voters.map(&:username).join(', ') %>
+<% end %>
+
+<% nom = poll.decided_voters_count %>
+<% dnom = poll.voters_count %>
+<% pct = dnom > 0 ? (nom.to_f / dnom.to_f * 100).to_i : 0 %>
+
+<%= t('poll_mailer.common.people_have_voted', nom: nom, num: nom, dnom: dnom , pct: pct) %>
+

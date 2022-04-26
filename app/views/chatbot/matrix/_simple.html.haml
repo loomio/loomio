@@ -1,0 +1,59 @@
+- results = poll.results
+%table
+  %thead
+    %tr
+    - poll.result_columns.each do |col|
+      - case col
+      - when 'pie', 'bar', 'grid'
+        %th= poll.closed_at ? t(:"poll_common.results") : t(:"poll_common.current_results")
+      - when 'name'
+        %th= t('common.option')
+      - when 'score_percent'
+        %th= t('poll_ranked_choice_form.pct_of_points')
+      - when 'voter_percent'
+        %th= t('poll_ranked_choice_form.pct_of_voters')
+      - when 'rank'
+        %th= t('poll_ranked_choice_form.rank')
+      - when 'score'
+        %th= t('poll_ranked_choice_form.points')
+      - when 'average'
+        %th= t('poll_ranked_choice_form.mean')
+      - when 'voter_count'
+        %th= t('membership_card.voters')
+      - when 'voters'
+        %th
+  %tbody
+    - results.each_with_index do |option, index|
+      %tr
+        - poll.result_columns.each do |col|
+          - case col
+          - when 'pie', 'bar'
+            %td= '▒' * (option[:max_score_percent].to_i/10)
+          - when 'grid'
+          - when 'name'
+            %td
+              - case option[:name_format]
+              - when 'i18n'
+                = t(option[:name])
+              - when 'iso8601'
+                = format_iso8601_for_humans(option[:name], @recipient.time_zone || poll.time_zone)
+              - else
+                = option[:name]
+          - when 'rank'
+            %td= option[:rank]
+          - when 'score'
+            %td= option[:score]
+          - when 'voter_count'
+            %td= option[:voter_count]
+          - when 'average'
+            %td= option[:average].round(1)
+          - when 'voter_percent'
+            %td #{option[:voter_percent].round}%
+          - when 'score_percent'
+            %td #{option[:score_percent].round(1)}%
+          - when 'voters'
+            %td
+              - User.where(id: option[:voter_ids]).each do |user|
+                =render 'base_mailer/avatar', user: user, size: 24
+              - if  option[:voter_ids].length == 0
+                %span{style: 'display: inline-block; height: 24px'} &nbsp;

@@ -182,7 +182,8 @@ v-card.group-form
 
       v-text-field(v-if="group.category == 'other'" :label="$t('group_survey.describe_other')" v-model="group.otherCategory")
 
-  v-card-actions
+  v-card-actions.ma-2
+    help-link(path="en/user_manual/groups/starting_a_group" text="group_form.help_starting_a_group")
     v-spacer
     v-btn.group-form__submit-button(:loading="group.processing" color="primary" @click='submit()')
       span(v-if='group.isParent()' v-t="'group_form.submit_start_group'")

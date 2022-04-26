@@ -96,6 +96,7 @@ v-card.change-volume-form
       p.mt-4(v-if="model.isA('membership')")
         a(@click="openUserPreferences()" v-t="'change_volume_form.discussion.user'")
     v-card-actions(align-center)
+      help-link(path="en/user_manual/users/email_settings/#group-email-notification-settings" text="change_volume_form.help_notifications")
       v-spacer
       v-btn.change-volume-form__submit(type='button', :disabled='!formChanged', v-t="'common.action.update'" @click='submit()' color="primary")
 </template>
