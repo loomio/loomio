@@ -45,6 +45,7 @@ class OutcomeService
 
     Events::OutcomeCreated.publish!(outcome: outcome,
                                     recipient_user_ids: users.pluck(:id),
+                                    recipient_chatbot_ids: params[:recipient_chatbot_ids],
                                     recipient_audience: params[:recipient_audience])
   end
 
@@ -75,6 +76,7 @@ class OutcomeService
     Events::OutcomeUpdated.publish!(outcome: outcome,
                                     actor: actor,
                                     recipient_user_ids: users.pluck(:id),
+                                    recipient_chatbot_ids: params[:recipient_chatbot_ids],
                                     recipient_audience: params[:recipient_audience])
   end
 

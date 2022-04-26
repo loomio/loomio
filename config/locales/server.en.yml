@@ -113,6 +113,7 @@ en:
       participant: Participant
       also_available: Also available in
       total: Total
+    waiting_for_votes_from: "Waiting for votes from"
   stance:
     error:
       too_short: Please make a selection

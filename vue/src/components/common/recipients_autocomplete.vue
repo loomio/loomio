@@ -188,9 +188,9 @@ export default
         id: b.id
         type: 'chatbot'
         icon: 'mdi-robot'
-        name: b.channel
+        name: b.name
 
-      @suggestions = @recipients.concat(audiences).concat(members).concat(chatbots)
+      @suggestions = @recipients.concat(chatbots).concat(audiences).concat(members)
 
   computed:
     canAddGuests: -> AbilityService.canAddGuests(@model)

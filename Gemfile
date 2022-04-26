@@ -62,6 +62,7 @@ gem 'discard', '~> 1.2'
 gem 'lograge'
 gem 'video_info'
 gem 'blazer'
+gem 'terminal-table'
 # gem 'pghero'
 # gem 'pg_query', '>= 0.9.0'
 

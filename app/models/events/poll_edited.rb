@@ -2,7 +2,6 @@ class Events::PollEdited < Event
   include Events::Notify::InApp
   include Events::Notify::ByEmail
   include Events::Notify::Mentions
-  include Events::Notify::ThirdParty
   include Events::Notify::Chatbots
 
   def self.publish!(

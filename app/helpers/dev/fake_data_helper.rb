@@ -288,7 +288,71 @@ module Dev::FakeDataHelper
     (7..9).to_a.sample.times do 
       group.add_member!(saved(fake_user))
     end
+    create_chatbots_for_group(group)
     group
+  end
+
+  def create_chatbots_for_group(group)
+    event_kinds = %w[
+      new_discussion
+      discussion_edited
+      poll_created
+      poll_edited
+      poll_closing_soon
+      poll_expired
+      poll_announced
+      poll_reopened
+      outcome_created
+    ]
+    
+    if ENV['TEST_MATRIX_SERVER']
+      Chatbot.create!(
+        group: group,
+        kind: "matrix",
+        server: ENV['TEST_MATRIX_SERVER'],
+        channel: ENV['TEST_MATRIX_CHANNEL'], 
+        access_token: ENV['TEST_MATRIX_ACCESS_TOKEN'], 
+        event_kinds: event_kinds,
+        # notification_only: true,
+        name: "Matrix"
+      )
+    end
+
+    if ENV['TEST_TEAMS_WEBHOOK']
+      Chatbot.create!(
+        group: group,
+        kind: "webhook",
+        webhook_kind: "microsoft",
+        server: ENV['TEST_TEAMS_WEBHOOK'],
+        event_kinds: event_kinds,
+        # notification_only: true,
+        name: "Microsoft Teams"
+      )
+    end
+
+    if ENV['TEST_SLACK_WEBHOOK']
+      Chatbot.create!(
+        group: group,
+        kind: "webhook",
+        webhook_kind: "slack",
+        server: ENV['TEST_SLACK_WEBHOOK'],
+        event_kinds: event_kinds,
+        # notification_only: true,
+        name: "Slack"
+      )
+    end
+
+    if ENV['TEST_DISCORD_WEBHOOK']
+      Chatbot.create!(
+        group: group,
+        kind: "webhook",
+        webhook_kind: "discord",
+        server: ENV['TEST_DISCORD_WEBHOOK'],
+        event_kinds: event_kinds,
+        # notification_only: true,
+        name: "Discord"
+      )
+    end
   end
 
   def create_fake_poll_in_group(args = {})

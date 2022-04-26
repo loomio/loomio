@@ -57,7 +57,8 @@ en:
         set_description: Set your group's description
         set_cover_photo: Upload a cover photo & logo for your group
         customize_group: Add a group picture, logo and description
-        invite_people_in: Invite people in
+        setup_chatbot: "Add a Loomio bot to your chatroom (e.g. Slack, Discord, Teams or other)"
+        invite_people_in: Invite people in by email, or with a link to join.
         start_thread: Start a discussion thread
         make_decision: Start a decision
       learn_more: Learn more at Loomio Help
@@ -351,6 +352,7 @@ en:
     hint: 'Hint for next time: Try highlighting some text before you click "Pin".'
 
   change_volume_form:
+    help_notifications: 'Help: Notifications'
     explain_scope:
       thread: This changes when you'll be notified about this thread
       group: This changes when you'll be notified about all threads in the group
@@ -675,6 +677,7 @@ en:
     none_invite_only_thread: "Invite-only thread (no group)"
     change_log_placeholder: Optionally, describe your changes. This message will be added to the thread.
     change_log_label: What's changed?
+    help_starting_threads: 'Help: Starting threads'
     invite: Invite
     aria_label: 'Thread form'
     start_thread: Start thread
@@ -749,6 +752,8 @@ en:
       non_voters: Members of {{name}} not yet invited
 
     form:
+      help_notifying_people: 'Help: Notifying people'
+      help_invite_voters: 'Help: Inviting voters'
       too_many_invitations: |
         Invitation limit exceeded. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
       no_invitations_remaining: |
@@ -1075,6 +1080,7 @@ en:
     as_csv: Open it in a spreadsheet
     as_html: Open it in a browser
     as_json: Host this group on my own server
+    help_exporting_data: 'Help: Exporting data'
 
   description_card:
     title: 'Group description'
@@ -1095,12 +1101,14 @@ en:
     submit: 'Yes, Deactivate this group'
 
   group_form:
+    help_starting_a_group: 'Help: Starting a group'
     thread_defaults_help: Default settings for new threads
     click_to_change_image: Click to change the cover image (4x1) or logo (1x1)
     permissions_explaination: |
       There are two levels of membership a person can have to a group: admin and member.
       Admins can edit group settings, make other people admins, and perform all the actions listed below.
     aria_label: Group form
+    help_group_settings: 'Help: Group settings'
     parent_group: Parent group
     new_organisation: New organization
     new_group: New group
@@ -1230,6 +1238,7 @@ en:
   invitation_form:
     group_url: Group URL
     reusable_invitation_link: Reusable invitation link
+    help_inviting_people: 'Help: Inviting people'
     error: "Error when trying to copy to clipboard"
     aria_label: 'Invitation form'
     invite_people: 'Invite people'
@@ -1318,6 +1327,7 @@ en:
     email_sent: "Email sent to {{name}}"
 
   profile_page:
+    help_profile: 'Help: Your profile'
     incomplete_profile: Incomplete profile!
     set_your_profile_picture: Set your profile picture
     messages:
@@ -1345,7 +1355,7 @@ en:
     location_placeholder: 'Where are you based?'
     update_profile: 'Update profile'
     deactivate_account: 'Deactivate user account'
-    help_translate: "Help us translate Loomio"
+    help_translate: "Can you help us translate Loomio?"
     updated_on_sign_in: Provided by your browser and updated when you sign in
 
   text_editor:
@@ -1413,6 +1423,7 @@ en:
     messages:
       updated: Email settings updated
     learn_more: Learn more about email settings...
+    help_email_settings: 'Help: User email settings'
 
   thread_preview:
     replies_count: "%{count} replies"
@@ -1961,6 +1972,7 @@ en:
     proposal_updated: Proposal updated
 
   poll_poll_form:
+    help_starting_polls: 'Help: Starting polls'
     tool_tip_expanded: |
       <p>Use a poll to measure popularity or offer a choice.</p>
       <p>Provide some options to choose from. Decide if participants choose single or multiple options as their response.</p>
@@ -2259,18 +2271,34 @@ en:
     test_connection: Test connection
     test_connection_ok: Looks good! You should see a message in the channel
     test_connection_bad: Something is wrong with the settings
+    name: Chatbot name
+    connection_test_successful: Loomio bot connection test successful!
     chatbot: Chatbot
+    chatbots: Chatbots
     saved: Chatbot saved!
+    webhook_url: Webhook URL
     homeserver_url: Homeserver URL
     channel: Channel
     username: Username
     password: Password
     access_token: Access Token
+    add_chatbot: Add chatbot
+    matrix: Matrix
+    slack: Slack
+    discord: Discord
+    mattermost: Mattermost
+    microsoft_teams: Microsoft Teams
+    event_kind_helptext: Select events the bot will always be notified about. If you're not sure, just leave them all off.
+    notification_only_label: Send notification headline only
+    check_for_test_message: Check your chatroom for a message from the bot!
 
   webhook:
     integrations: Integrations
+    api_keys: API keys
     webhooks: Webhooks
     webhook: Webhook
+    add_api_key: Add API key
+    edit_api_key: Edit API key
     api: API
     format: Format
     formats:
@@ -2278,11 +2306,12 @@ en:
       microsoft: Microsoft Teams
       slack: Slack
       discord: Discord
-    subtitle: Connect to Loomio to the rest of your tools with our integration API and webhooks
+    subtitle: Connect to Loomio to the rest of your tools with our API
     we_have_guides: |
       See our <a href="{{url}}" target="_blank">webhook setup guides</a> for help connecting your service.
     add_webhook: Add webhook
     show_docs: See API usage
+    save_to_show_docs: After you save, return here to find your API key
     edit_integration: Edit integration
     add_integration: Add integration
     success: Integration added!
@@ -2317,7 +2346,6 @@ en:
       show_poll: show poll
       read_memberships: read memberships
     include_body_label: Include message body with notification
-    include_subgroups_label: Relay events from subgroups
 
   powered_by:
     slogan: Better decisions together

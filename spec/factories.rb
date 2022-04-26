@@ -92,11 +92,12 @@ FactoryBot.define do
     end
   end
 
-  factory :webhook do
-    name {"webhook"}
-    url {"https://outlook.office.com/webhook.url"}
+  factory :chatbot do
+    name {"chatbot"}
+    server {"https://outlook.office.com/webhook.url"}
     event_kinds {['poll_created']}
-    format {"markdown"}
+    webhook_kind {"markdown"}
+    kind {"webhook"}
     association :group
   end
 

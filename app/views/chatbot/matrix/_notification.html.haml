@@ -1,0 +1,8 @@
+- url = local_assigns.fetch(:url, polymorphic_url(event.eventable))
+- message = local_assigns.fetch(:message, event.recipient_message)
+- title = link_to(event.eventable.title, url)
+- poll_type = @poll ? t("poll_types.#{@poll.poll_type}") : nil
+
+%p=raw t("notifications.without_title.#{event.kind}", actor: event.user.name, title: title, poll_type: poll_type, site_name: AppConfig.theme[:site_name])
+- if message.present?
+  %i=raw render_plain_text(message)
