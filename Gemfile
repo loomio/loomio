@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.7.5'
+ruby '2.7.6'
 gem 'rack', '2.2.3'
 gem 'rails', '6.1.4.6'
 gem 'rake'
@@ -82,7 +82,7 @@ end
 group :test do
   gem 'webmock'
   gem 'rack_session_access'
-  gem 'rspec-rails', '~> 5.1.0'
+  gem 'rspec-rails', '~> 5.1.2'
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'rspec-activemodel-mocks'
