@@ -79,6 +79,10 @@ module Null::Group
     Membership.none
   end
 
+  def tags
+    Tag.none
+  end
+
   def false_methods
     %w(
       private_discussions_only?
