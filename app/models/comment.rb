@@ -46,6 +46,15 @@ class Comment < ApplicationRecord
 
   define_counter_cache(:versions_count) { |comment| comment.versions.count }
 
+
+  def poll
+    nil
+  end
+
+  def poll_id
+    nil
+  end
+
   def user
     super || AnonymousUser.new
   end
