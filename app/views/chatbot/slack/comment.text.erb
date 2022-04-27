@@ -1,0 +1,3 @@
+<%=SlackMrkdwn.from render "chatbot/markdown/notification", event: @event %>
+<%=SlackMrkdwn.from render "chatbot/markdown/title", eventable: @event.eventable.discussion %>
+<%=SlackMrkdwn.from render "chatbot/markdown/body", eventable: @event.eventable %>
