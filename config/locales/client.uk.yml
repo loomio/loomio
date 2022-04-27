@@ -50,7 +50,6 @@ uk:
         set_description: Додайте опис для групи
         set_cover_photo: Завантажте обкладинку та логотип для своєї групи
         customize_group: Додайте зображення, логотип та опис для групи
-        invite_people_in: Запросіть людей долучитись
         start_thread: Розпочніть тему для обговорення
         make_decision: Розпочати процес прийняття рішення
       learn_more: Дізнайтеся більше в Довідці Loomio
@@ -1155,7 +1154,6 @@ uk:
     location_placeholder: 'Де ви знаходитесь?'
     update_profile: 'Оновити профіль'
     deactivate_account: 'Відключити обліковий запис'
-    help_translate: "Допоможіть нам перекласти Loomio"
     updated_on_sign_in: Забезпечується вашим браузером і оновлюється під час входу
   text_editor:
     select_text_to_link: Виберіть текст для посилання та повторіть спробу
@@ -1958,8 +1956,12 @@ uk:
     password: Пароль
     reactivate: Відновити обліковий запис
   chatbot:
+    webhook_url: URL-адреса веб-хук
     username: Ім’я користувача
     password: Пароль
+    slack: Slack
+    discord: Discord
+    microsoft_teams: Microsoft Teams
   webhook:
     integrations: Інтеграція
     webhooks: Веб-хуки
@@ -1971,7 +1973,6 @@ uk:
       microsoft: Microsoft Teams
       slack: Slack
       discord: Discord
-    subtitle: Підключіть Loomio до решти своїх інструментів за допомогою нашого API для інтеграції та веб-хуків
     we_have_guides: |
         Перегляньте наш <a href="{{url}}" target="_blank">посібник з налаштування веб-хуків</a>, для допомоги в підключенні ваших сервісів.
     add_webhook: Додати векб-хук
@@ -2006,7 +2007,6 @@ uk:
       show_poll: показати опитування
       read_memberships: переглянути учасників
     include_body_label: Включити тіло повідомлення в сповіщення
-    include_subgroups_label: Передати події з підгруп
   powered_by:
     slogan: Кращі рішення приймаються разом
     powered_by_loomio: Працює на Loomio

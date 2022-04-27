@@ -660,7 +660,6 @@ cmn:
     locale_label: '语言'
     short_bio_placeholder: '请自我介绍，包含专业领域、有兴趣的主题与其他附属机构'
     locale_placeholder: 选取您偏好的语言
-    help_translate: "协助我们翻译 Loomio"
   text_editor:
     insert_link: 插入链接
     insert_embedded_url: 嵌入影片

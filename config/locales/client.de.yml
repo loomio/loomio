@@ -10,7 +10,6 @@ de:
         set_description: Gruppen-Beschreibung festlegen
         set_cover_photo: Lade ein Titelbild und ein Logo für deine Gruppe hoch
         customize_group: Füge ein Gruppenbild, ein Logo und eine Beschreibung hinzu
-        invite_people_in: Personen einladen
         start_thread: Neue Diskussion eröffnen
         make_decision: Entscheidung vorbereiten
       learn_more: Mehr bei Loomio Help lernen
@@ -1094,7 +1093,6 @@ de:
     location_placeholder: 'Wo wohnst du?'
     update_profile: 'Profil aktualisieren'
     deactivate_account: 'Benutzerkonto deaktivieren'
-    help_translate: "Hilf mit Loomio zu übersetzen"
   text_editor:
     insert_link: Link einfügen
     insert_embedded_url: Video einfügen
@@ -1849,8 +1847,12 @@ de:
     password: Passwort
     reactivate: Account wieder aktivieren
   chatbot:
+    webhook_url: WebHooks-URL
     username: Benutzername
     password: Passwort
+    slack: Slack
+    discord: Discord
+    microsoft_teams: Microsoft Teams
   webhook:
     integrations: Integrationen
     webhooks: Webhooks
@@ -1862,7 +1864,6 @@ de:
       microsoft: Microsoft Teams
       slack: Slack
       discord: Discord
-    subtitle: Verbinden Sie Loomio mit dem Rest Deiner Tools über unsere Integrations-API und Webhooks
     we_have_guides: |
         In unseren <a href="{{url}}" target="_blank">Webhook-Einrichtungsanleitungen</a> findest Du Hilfe beim Verbinden des Dienstes.
     add_webhook: Webhook hinzufügen
@@ -1897,7 +1898,6 @@ de:
       show_poll: Abstimmung anzeigen
       read_memberships: Lese Mitgliedschaften
     include_body_label: Nachrichtentext in die Benachrichtigung aufnehmen
-    include_subgroups_label: Übertrage Ereignisse von Untergruppen
   powered_by:
     slogan: Bessere Entscheidungen gemeinsam treffen
     powered_by_loomio: Powered by Loomio

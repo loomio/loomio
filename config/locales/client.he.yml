@@ -5,7 +5,6 @@ he:
     group_progress_card:
       activities:
         set_description: הגדר את תאור הקבוצה
-        invite_people_in: הזמן אנשים
         start_thread: התחל דיון
         make_decision: התחל החלטה
       learn_more: למד עוד בעזרה של לומיו
@@ -685,7 +684,6 @@ he:
     location_label: 'מיקום'
     location_placeholder: 'איפה אתה ממוקם?'
     update_profile: 'עדכן פרופיל'
-    help_translate: "עזור לנו לתרגם את המערכת"
   text_editor:
     insert_link: הכנס לינק
   change_picture_form:
@@ -1215,6 +1213,7 @@ he:
     password: סיסמה
     reactivate: אקטב מחדש את החשבון
   chatbot:
+    webhook_url: Webhook URL
     username: שם משתמש
     password: סיסמה
   webhook:

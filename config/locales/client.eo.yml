@@ -5,7 +5,6 @@ eo:
     group_progress_card:
       activities:
         set_description: Grupa priskribo
-        invite_people_in: Inviti homojn
         start_thread: Komenci fadedon por diskuti
         make_decision: Komenci decidon
       learn_more: 'Pli da informoj pri la funkciado de Loomio '
@@ -385,7 +384,6 @@ eo:
     locale_label: 'Lingvo'
     location_placeholder: 'Kie vi estas bazita?'
     update_profile: 'Ĝisdatigi profilon'
-    help_translate: "Helpu nin traduki Loomion!"
   change_picture_form:
     use_gravatar: 'Uzi Gravataron'
   email_settings_page:

@@ -6,7 +6,6 @@ ar:
       activities:
         set_description: ضع وصف لمجموعتك
         set_cover_photo: قم بتحميل صورة الغلاف والشعار لمجموعتك
-        invite_people_in: قم بدعوة أشخاص
         start_thread: ابدأ نقاشا
         make_decision: بدء قرار
       learn_more: تعرف على المزيد في تعليمات لوميو
@@ -991,7 +990,6 @@ ar:
     location_placeholder: 'اين تقيم؟'
     update_profile: 'تحديث الملف الشخصي'
     deactivate_account: 'قم بإلغاء تنشيط حساب المستخدم'
-    help_translate: "ساعدنا في ترجمة Loomio"
   text_editor:
     insert_link: أدخل الرابط
     insert_embedded_url: تضمين الفيديو
@@ -1716,8 +1714,11 @@ ar:
     password: الكلمة السرية
     reactivate: تنشيط الحساب
   chatbot:
+    webhook_url: عنوان URL للويب هوك
     username: إسم المستخدم
     password: الكلمة السرية
+    slack: تثاقل
+    microsoft_teams: فرق مايكروسوفت
   webhook:
     integrations: تكاملات
     webhooks: ويب هوك
@@ -1743,7 +1744,6 @@ ar:
       poll_reopened: إعادة فتح الاستطلاع للتصويت
       outcome_created: النتيجة مشتركة
     include_body_label: تضمين نص الرسالة مع الإخطار
-    include_subgroups_label: أحداث الترحيل من المجموعات الفرعية
   powered_by:
     slogan: قرارات أفضل معًا
     powered_by_loomio: مدعوم من Loomio

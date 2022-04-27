@@ -23,7 +23,6 @@ nl_NL:
         set_description: Omschrijf je groep
         set_cover_photo: Upload een foto en logo voor jouw groep
         customize_group: Voeg een groepsfoto, logo en omschrijving toe
-        invite_people_in: Nodig mensen uit
         start_thread: Start een discussiebord
         make_decision: Start een beslissing
       learn_more: Meer informatie bij Loomio Hulp
@@ -1062,7 +1061,6 @@ nl_NL:
     location_placeholder: 'Waar ben je gevestigd?'
     update_profile: 'Bijwerken profiel'
     deactivate_account: 'Deactiveer gebruikersaccount'
-    help_translate: "Help ons Loomio te vertalen"
   text_editor:
     insert_link: Link invoegen
     insert_embedded_url: Video integreren
@@ -1793,8 +1791,11 @@ nl_NL:
     password: Wachtwoord
     reactivate: Heractiveer account
   chatbot:
+    webhook_url: Webhook URL
     username: Gebruikersnaam
     password: Wachtwoord
+    slack: Slack
+    microsoft_teams: Microsoft Teams
   webhook:
     integrations: Integraties
     webhooks: Webhooks
@@ -1829,7 +1830,6 @@ nl_NL:
       create_poll: start peiling
       show_poll: toon peiling
     include_body_label: inclusief message body met melding
-    include_subgroups_label: Inclusief gebeurtenissen van sub-groepen
   powered_by:
     slogan: Samen betere beslissingen
     powered_by_loomio: Powered by Loomio

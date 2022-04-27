@@ -6,7 +6,6 @@ pl:
       activities:
         set_description: Ustaw opis swojej grupy
         set_cover_photo: Prześlij zdjęcie w tle i logo swojej grupy
-        invite_people_in: 'Zaproś ludzi '
         start_thread: Rozpocznij wątek dyskusyjny
         make_decision: Rozpocznij decyzję
       learn_more: Dowiedz się więcej w Loomio Help
@@ -1011,7 +1010,6 @@ pl:
     location_placeholder: 'Gdzie mieszkasz?'
     update_profile: 'Zaktualizuj profil'
     deactivate_account: 'Dezaktywuj konto użytkownika'
-    help_translate: "Pomóż nam przetłumaczyć Loomio"
   text_editor:
     insert_link: Wstaw link
     insert_embedded_url: Wstaw wideo
@@ -1730,8 +1728,11 @@ pl:
     password: Hasło
     reactivate: Reaktywuj konto
   chatbot:
+    webhook_url: Webhook URL
     username: Nazwa użytkownika
     password: Hasło
+    slack: Slack
+    microsoft_teams: 'Microsoft Teams '
   webhook:
     integrations: Integracje
     webhooks: Webhooki
@@ -1758,7 +1759,6 @@ pl:
       poll_reopened: Ankieta zostaje ponownie otwarta do głosowania
       outcome_created: 'Wynik jest udostępniony '
     include_body_label: 'Dołącz w powiadomieniu treść wiadomości '
-    include_subgroups_label: Przekazywanie wydarzeń z podgrup
   powered_by:
     slogan: Lepsze decyzje razem
     powered_by_loomio: Wspierany przez Loomio

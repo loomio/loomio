@@ -8,7 +8,6 @@ it:
         set_description: 'Scrivi la descrizione del tuo gruppo '
         set_cover_photo: Carica una foto di copertina ed un logo per il tuo gruppo
         customize_group: Aggiungere un'immagine di gruppo, un logo e una descrizione
-        invite_people_in: Invita persone in
         start_thread: Inizia un thread di discussione
         make_decision: Inizia una decisione
       learn_more: Impara più con Loomio Aiuto
@@ -1056,7 +1055,6 @@ it:
     location_placeholder: 'Di dove sei?'
     update_profile: 'Aggiorna profilo'
     deactivate_account: 'Disattivare l''account utente'
-    help_translate: "Aiutaci a tradurre Loomio"
   text_editor:
     insert_link: Inserisci collegamento
     insert_embedded_url: Incorporare video

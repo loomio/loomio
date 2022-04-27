@@ -6,7 +6,6 @@ ca:
       activities:
         set_description: Configureu la descripció del grup
         set_cover_photo: Carregueu una foto de portada i un logotip per al grup
-        invite_people_in: Convideu a gent
         start_thread: Obriu un fil de discussió
         make_decision: Inicieu una decisió
       learn_more: Més informació a l'ajuda de Loomio
@@ -984,7 +983,6 @@ ca:
     location_placeholder: 'D''on sou?'
     update_profile: 'Actualitza el perfil'
     deactivate_account: 'Desactiva el compte d''usuari'
-    help_translate: "Ajuda'ns a traduir Loomio"
   text_editor:
     insert_link: Insereix enllaç
     insert_embedded_url: Incrusta un vídeo
@@ -1719,8 +1717,11 @@ ca:
     password: Contrasenya
     reactivate: Reactiva el compte
   chatbot:
+    webhook_url: URL del webhook
     username: Nom d'usuari
     password: Contrasenya
+    slack: Slack
+    microsoft_teams: Microsoft Teams
   webhook:
     integrations: Integracions
     webhooks: Webhooks
@@ -1747,7 +1748,6 @@ ca:
       poll_reopened: S'ha reobert la votació d'una enquesta
       outcome_created: S'ha compartit un resultat
     include_body_label: Inclou cos del missatge amb notificació
-    include_subgroups_label: Transmet els esdeveniments dels subgrups
   powered_by:
     slogan: Prenem millors decisions junts
     powered_by_loomio: Impulsat per Loomio

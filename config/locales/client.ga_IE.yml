@@ -563,6 +563,8 @@ ga_IE:
   chatbot:
     username: Ainm úsáideora
     password: Focal faire
+    slack: Slack
+    microsoft_teams: Microsoft Teams
   webhook:
     formats:
       microsoft: Microsoft Teams

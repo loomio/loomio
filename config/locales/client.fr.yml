@@ -54,7 +54,6 @@ fr:
         set_description: Saisissez une description pour votre groupe
         set_cover_photo: Envoyez une image de couverture ainsi qu'un logo pour votre groupe
         customize_group: Ajoutez une photo de groupe, un logo et une description
-        invite_people_in: Invitez des personnes
         start_thread: Lancez une discussion
         make_decision: Prenez une décision
       learn_more: Apprenez-en plus dans l'aide Loomio
@@ -1256,7 +1255,6 @@ fr:
     location_placeholder: 'Où êtes-vous ?'
     update_profile: 'Mettre à jour mon profil'
     deactivate_account: 'Désactiver le compte utilisateur'
-    help_translate: "Aidez-nous à traduire Loomio"
     updated_on_sign_in: Fourni par votre navigateur et mis à jour lorsque vous vous connectez
   text_editor:
     x_of_y_characters: "{{x}} / {{y}} caractères"
@@ -2092,11 +2090,15 @@ fr:
     test_connection_bad: Quelque chose ne va pas avec les paramètres
     chatbot: Chatbot
     saved: Chatbot enregistré!
+    webhook_url: L'URL webhook
     homeserver_url: URL du serveur d’accueil
     channel: Canal
     username: Identifiant utilisateur
     password: Mot de passe
     access_token: Jeton d’accès
+    slack: Slack
+    discord: Discord
+    microsoft_teams: Microsoft Teams
   webhook:
     integrations: Integrations
     webhooks: Webhooks
@@ -2108,7 +2110,6 @@ fr:
       microsoft: Microsoft Teams
       slack: Slack
       discord: Discord
-    subtitle: Connectez-vous à Loomio au reste de vos outils avec notre API d’intégration et nos webhooks
     we_have_guides: |
         Lisez notre <a href="{{url}}" target="_blank">guide de configuration webhook</a> pour connecter votre propre service.
     add_webhook: Ajouter un webhook
@@ -2147,7 +2148,6 @@ fr:
       show_poll: Montrer le sondage
       read_memberships: lire les appartenances
     include_body_label: Inclure le corps du message dans la notification
-    include_subgroups_label: Faire suivre les événement des sous-groupes
   powered_by:
     slogan: De meilleures décisions ensemble
     powered_by_loomio: Propulsé par Loomio

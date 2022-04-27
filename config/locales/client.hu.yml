@@ -7,7 +7,6 @@ hu:
     group_progress_card:
       activities:
         set_description: Állítsd be a csoportod leírását
-        invite_people_in: Hívj meg embereket
         start_thread: Indíts el egy beszélgetési témát
         make_decision: Döntéshozatal elindítása
       learn_more: További információ a Loomio Súgóban
@@ -819,7 +818,6 @@ hu:
     location_placeholder: 'Hol vagy?'
     update_profile: 'Profil frissítése'
     deactivate_account: 'Deaktiválja a felhasználói fiókot'
-    help_translate: "Segítsen a Loomio fordításában"
   text_editor:
     insert_link: Illessz be egy hivatkozást
     insert_embedded_url: Videó beágyazása
@@ -1440,8 +1438,11 @@ hu:
     password: Jelszó
     reactivate: A fiók újraaktiválása
   chatbot:
+    webhook_url: Webhook URL
     username: Felhasználónév
     password: Jelszó
+    slack: Laza
+    microsoft_teams: Microsoft csapatok
   webhook:
     formats:
       microsoft: Microsoft csapatok
