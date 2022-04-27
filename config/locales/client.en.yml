@@ -2293,6 +2293,7 @@ en:
     check_for_test_message: Check your chatroom for a message from the bot!
 
   webhook:
+    help_api: "Help: API"
     integrations: Integrations
     api_keys: API keys
     webhooks: Webhooks
