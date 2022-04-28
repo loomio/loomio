@@ -6,85 +6,62 @@ class PollExporter
   end
 
   def file_name
-    "#{@poll.title.parameterize}-#{I18n.t("common.action.export").downcase}.csv"
-  end
-
-  def label(key, *opts)
-    I18n.t("poll.export.#{key}", *opts)
+    "poll-#{@poll.id}-#{@poll.key}-#{@poll.title.parameterize}.csv"
   end
 
   def meta_table
     outcome = @poll.current_outcome
 
     {
-      title: @poll.title,
+      id: @poll.id,
+      group_id: @poll.group_id,
+      discussion_id: @poll.discussion_id,
       author_id: @poll.author.id,
+      title: @poll.title,
       author_name: @poll.author.name,
       created_at: @poll.created_at,
       closed_at: @poll.closed_at,
       decided_voters_count: @poll.decided_voters_count,
       undecided_voters_count: @poll.undecided_voters_count,
       voters_count: @poll.voters_count,
-      stances: @poll.voters_count,
-      participants: @poll.members.count,
       details: @poll.details,
       group_name: @poll.group&.full_name,
       discussion_title: @poll.discussion&.title,
-      outcome_author: outcome&.author,
+      outcome_author_id: outcome&.author_id,
+      outcome_author_name: outcome&.author.name,
       outcome_created_at: outcome&.created_at,
       outcome_statement: outcome&.statement,
       poll_url: poll_url(@poll)
     }.compact
   end
 
-  def stance_matrix
-    rows = []
-    rows << [I18n.t("poll.export.participant"), I18n.t("poll.export.user_id"), @poll.poll_options.map(&:name), I18n.t("poll.export.reason")].flatten
-
-    ## for each participant show the
-    @poll.stances.latest.each do |stance|
-      user = stance.participant
-      row = [user.name, user.id]
-
-      @poll.poll_options.each do |poll_option|
-        # find the value for this stance_choice for poll option in this stance
-        stance_choice = stance.stance_choices.find_by(poll_option: poll_option)
-        row << (stance_choice&.score||0).to_s
-      end
-      row << stance.reason
-
-      rows << row
-    end
-
-    rows << [label("total"), @poll.poll_options.map(&:total_score)].flatten
-    rows
-  end
-
-  def stance_list
-    rows = []
-    rows << [["created_at", "author", 'id', "is_latest"].map{ |name_label| label(name_label) }, @poll.poll_options.map(&:display_name)].flatten
-
-    ## for each stance in chronological order
-    @poll.stances.sort_by(&:created_at).each do |stance|
-      user = stance.participant
-      row = [stance.created_at, user.name, user.id, stance.latest]
-
-      @poll.poll_options.each do |poll_option|
-        # find the stance choice with this poll option and get its score
-        stance_choice = stance.stance_choices.find_by(poll_option: poll_option)
-        row << (stance_choice&.score||0).to_s
-      end
-
-      rows << row
-    end
-    rows
-  end
-
   def to_csv(opts={})
     CSV.generate do |csv|
-      meta_table.each {|key, value| csv << [I18n.t("poll.export.#{key}"), value]}
-      csv << []
-      stance_matrix.each {|row| csv << row}
+      csv << ['poll']
+      csv << meta_table.keys
+      csv << meta_table.values
+      csv << ['poll_options']
+      results = PollService.calculate_results(@poll, @poll.poll_options)
+      keys = %w[id poll_id name name_format rank score score_percent max_score_percent voter_percent average voter_count color]
+      csv << keys
+      results.each { |r| csv << r.slice(*keys).values }
+      csv << ['votes']
+      csv << ['id', 'poll_id', 'voter_id', 'created_at', 'updated_at', 'reason', 'reason_format'] + @poll.poll_option_names
+      @poll.stances.latest.each do |stance|
+        line = [
+          stance.id,
+          stance.poll_id,
+          stance.participant_id,
+          stance.created_at.iso8601,
+          stance.updated_at.iso8601,
+          stance.reason,
+          stance.reason_format]
+
+        @poll.poll_options.each do |poll_option|
+          line.push(stance.option_scores[poll_option.id.to_s] || nil)
+        end
+        csv << line
+      end
     end
   end
 end

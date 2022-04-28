@@ -266,6 +266,7 @@ class PollService
       option_name = poll.poll_option_name_format == 'i18n' ? "poll_#{poll.poll_type}_options."+option.name : option.name
       {
         id: option.id,
+        poll_id: option.poll_id,
         name: option_name,
         name_format: poll.poll_option_name_format,
         rank: index+1,
@@ -283,6 +284,7 @@ class PollService
     if poll.results_include_undecided
       l.push({
           id: 0,
+          poll_id: poll.id,
           name: 'poll_common_votes_panel.undecided',
           name_format: 'i18n',
           rank: nil,
