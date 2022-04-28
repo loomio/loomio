@@ -799,6 +799,8 @@ en:
       anyone_can_participate: Anyone with link can participate
       placeholder: You can enter names or email addresses
       notified_empty: 'Nobody selected yet'
+      single_notification: '1 notification will be sent.'
+      multiple_notifications: '{{notified}} notifications will be sent.'
       notified: '{{notified}} people will be notified.'
       notified_singular: '1 person will be notified.'
       notified_none: 'Nobody will be notified.'

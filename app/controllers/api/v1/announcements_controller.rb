@@ -18,6 +18,7 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
       model: target_model,
       emails: String(params[:recipient_emails_cmr]).split(','),
       user_ids: String(params[:recipient_user_xids]).split('x').map(&:to_i),
+      chatbot_ids: String(params[:recipient_chatbot_xids]).split('x').map(&:to_i),
       audience: params[:recipient_audience],
       usernames: String(params[:recipient_usernames]).split(','),
       exclude_members: params[:exclude_members].present?,
