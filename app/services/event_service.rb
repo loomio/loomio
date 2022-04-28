@@ -45,6 +45,13 @@ class EventService
     items.reload.compact.each(&:set_parent_and_depth!)
 
     parent_ids = items.pluck(:parent_id).compact.uniq
+
+    # cant work out order by case, so just repeat the code.
+    Event.where(id: parent_ids).where(kind: 'new_discussion').order(:id).each do |parent_event|
+      parent_event.reload
+      reset_child_positions(parent_event.id, parent_event.position_key)
+    end
+
     Event.where(id: parent_ids).order(:id).each do |parent_event|
       parent_event.reload
       reset_child_positions(parent_event.id, parent_event.position_key)
