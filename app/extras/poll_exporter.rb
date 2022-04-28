@@ -28,7 +28,7 @@ class PollExporter
       group_name: @poll.group&.full_name,
       discussion_title: @poll.discussion&.title,
       outcome_author_id: outcome&.author_id,
-      outcome_author_name: outcome&.author.name,
+      outcome_author_name: outcome&.author&.name,
       outcome_created_at: outcome&.created_at,
       outcome_statement: outcome&.statement,
       poll_url: poll_url(@poll)
