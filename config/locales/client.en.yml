@@ -175,6 +175,7 @@ en:
     links: Links
     active_time_ago: Last active {{time_ago}}
     confirm_discard_changes: Discard your changes?
+    something_went_wrong: Uh oh! Something went wrong.
     time:
       am: am
       pm: pm

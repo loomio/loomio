@@ -19,12 +19,21 @@ export default
     ]
 
   methods:
+    destroy: ->
+      @chatbot.destroy().then =>
+        Flash.success 'poll_common_delete_modal.success'
+        EventBus.$emit('closeModal')
+      .catch (b) =>
+        Flash.error 'common.something_went_wrong'
+        console.log @chatbot.errors
+        
     submit: ->
       @chatbot.save()
       .then =>
         Flash.success 'chatbot.saved'
         EventBus.$emit('closeModal')
       .catch (b) =>
+        Flash.error 'common.something_went_wrong'
         console.log @chatbot.errors
 
     testConnection: ->
@@ -35,6 +44,7 @@ export default
       ).finally =>
         Flash.success('chatbot.check_for_test_message')
         @testing = false
+
   computed:
     url: ->
       switch @chatbot.webhookKind
@@ -65,7 +75,7 @@ v-card.chatbot-matrix-form
     v-checkbox.webhook-form__event-kind(hide-details v-for='kind in kinds' v-model='chatbot.eventKinds' :key="kind" :label="$t('webhook.event_kinds.' + kind)" :value="kind")
 
     v-card-actions
-      v-btn(v-if="chatbot.id" @click='destroyBot' v-t="'common.action.delete'")
+      v-btn(v-if="chatbot.id" @click='destroy' v-t="'common.action.delete'")
       v-spacer
       v-btn(@click='testConnection' v-t="'chatbot.test_connection'" :loading="testing")
       v-btn(color='primary' @click='submit' v-t="'common.action.save'")
