@@ -68,6 +68,6 @@ v-card.chatbot-matrix-form
     v-card-actions
       v-btn(v-if="chatbot.id" @click='destroy' v-t="'common.action.delete'")
       v-spacer
-      v-btn(@click='testConnection' v-t="'chatbot.test_connection'" :loading="testing")
+      v-btn(:disabled="!chatbot.accessToken" @click='testConnection' v-t="'chatbot.test_connection'" :loading="testing")
       v-btn(color='primary' @click='submit' v-t="'common.action.save'")
 </template>
