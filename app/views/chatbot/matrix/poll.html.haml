@@ -3,8 +3,8 @@
 
 - if @poll.current_outcome
   %h5= t(:"poll_common.outcome")
-  %p= render_rich_text(poll.current_outcome.statement, poll.current_outcome.statement_format)
-  %h5= t(:"poll_types.#{poll.poll_type}")
+  %p= render_rich_text(@poll.current_outcome.statement, @poll.current_outcome.statement_format)
+  %h5= t(:"poll_types.#{@poll.poll_type}")
 
 = render "chatbot/matrix/body", eventable: @poll
 = render "chatbot/matrix/vote", poll: @poll
