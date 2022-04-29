@@ -21,7 +21,7 @@ class ChatbotService
   def self.publish_event!(event)
     chatbots = event.eventable.group.chatbots
 
-    MAIN_REDIS_POOL.with do |client|
+    CACHE_REDIS_POOL.with do |client|
       chatbots.where(id: event.recipient_chatbot_ids).
                   or(chatbots.where.any(event_kinds: event.kind)).each do |chatbot|
         # later, make a list and rpush into it. i guess
