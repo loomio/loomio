@@ -123,6 +123,7 @@ export default
 
       if @$route.params.comment_id
         @loader.addLoadCommentRule(parseInt(@$route.params.comment_id))
+        @loader.addLoadNewestRule()
         @loader.focusAttrs = {commentId: parseInt(@$route.params.comment_id)}
 
       if @loader.rules.length == 0
