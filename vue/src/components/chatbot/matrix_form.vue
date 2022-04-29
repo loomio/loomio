@@ -28,11 +28,8 @@ export default
         access_token: @chatbot.accessToken
         channel: @chatbot.channel
         group_name: "group name was here"
-      ).then =>
-        Flash.success('chatbot.test_connection_ok')
-      , =>
-        Flash.error('chatbot.test_connection_bad')
-      .finally =>
+      ).finally =>
+        Flash.success('chatbot.check_for_test_message')
         @testing = false
 
 </script>
