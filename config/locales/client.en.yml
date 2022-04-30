@@ -1572,6 +1572,7 @@ en:
     seen_by_count: 'Seen by %{count}'
     count_notified: 'Notified %{count}'
     forked_from: "Forked from"
+    make_a_copy: "Make a copy"
 
   pin_thread_modal:
     title: Pin thread
