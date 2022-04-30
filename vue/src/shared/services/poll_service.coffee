@@ -10,6 +10,23 @@ import { hardReload } from '@/shared/helpers/window'
 
 export default new class PollService
   actions: (poll) ->
+    # make_a_copy:
+    #   icon: 'mdi-content-copy'
+    #   name: 'thread_context.make_a_copy'
+    #   menu: true
+    #   canPerform: -> Session.user()
+    #   perform: ->
+    #     clone = poll.clone()
+    #     clone.id = null
+    #     clone.authorId = Session.user().id
+    #     clone.groupId = null
+    #     clone.discussionId = null
+    #     if poll.groupId && AbilityService.canStartThread(poll.group())
+    #       clone.groupId = discussion.groupId
+    #     EventBus.$emit 'openModal',
+    #       component: 'DiscussionForm'
+    #       props:
+    #         discussion:  clone
     translate_poll:
       icon: 'mdi-translate'
       name: 'common.action.translate'

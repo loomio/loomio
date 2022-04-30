@@ -47,7 +47,7 @@ v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.c
     v-spacer
     dismiss-modal-button(:model='poll')
   div.px-4
-    poll-common-directive(:poll='poll', name='form', :modal='true')
+    poll-form(:poll='poll')
   v-card-actions.poll-common-form-actions.mr-2.ml-2.mt-4
     help-link(path="en/user_manual/polls/starting_proposals" text="poll_poll_form.help_starting_polls")
     v-spacer
