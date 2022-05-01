@@ -114,6 +114,8 @@ export default
             chain = chain.where (discussion) -> discussion.isUnread()
           when 'closed'
             chain = chain.find(closedAt: {$ne: null})
+          when 'templates'
+            chain = chain.find(template: true)
           when 'all'
             true # noop
           else
@@ -144,6 +146,7 @@ export default
         when 'unread' then 'discussions_panel.unread'
         when 'all' then 'discussions_panel.all'
         when 'closed' then 'discussions_panel.closed'
+        when 'templates' then 'templates.templates'
         when 'subscribed' then 'change_volume_form.simple.loud'
         else
           'discussions_panel.open'
@@ -211,6 +214,8 @@ div.discussions-panel(v-if="group")
           v-list-item-title(v-t="'discussions_panel.open'")
         v-list-item.discussions-panel__filters-all(@click="routeQuery({t: 'all'})")
           v-list-item-title(v-t="'discussions_panel.all'")
+        v-list-item.discussions-panel__filters-closed(@click="routeQuery({t: 'templates'})")
+          v-list-item-title(v-t="'templates.templates'")
         v-list-item.discussions-panel__filters-closed(@click="routeQuery({t: 'closed'})")
           v-list-item-title(v-t="'discussions_panel.closed'")
         v-list-item.discussions-panel__filters-unread(@click="routeQuery({t: 'unread'})")

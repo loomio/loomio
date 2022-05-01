@@ -18,6 +18,7 @@ en:
     no_tasks_assigned: There are no tasks assigned to you
 
   templates:
+    templates: Templates
     try_loomio: Try Loomio
     start_a_demo_group: Start a demo group
     start_a_demo: Start a demo
