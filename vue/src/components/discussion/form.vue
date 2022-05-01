@@ -133,6 +133,7 @@ export default
         :reset="reset")
       tags-field(:model="discussion")
       lmo-textarea(:model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")
+      v-checkbox(v-if="discussion.id" v-model="discussion.template" :label="$t('templates.this_is_a_template_for_new_threads')")
 
       common-notify-fields(:model="discussion")
       //- p.discussion-form__visibility

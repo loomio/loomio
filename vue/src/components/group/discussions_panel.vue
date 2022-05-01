@@ -224,8 +224,17 @@ div.discussions-panel(v-if="group")
           v-icon mdi-menu-down
       v-sheet.pa-1
         tags-display(:tags="group.parentOrSelf().tags()" show-counts)
-    v-text-field.mr-2.flex-grow-1(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_threads', {name: group.name})" append-icon="mdi-magnify" :loading="searchLoader.loading")
-    v-btn.discussions-panel__new-thread-button(:to="'/d/new?group_id='+group.id" color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
+    v-text-field.mr-2.flex-grow-1(
+      clearable solo hide-details :value="$route.query.q"
+      @input="onQueryInput"
+      :placeholder="$t('navbar.search_threads', {name: group.name})"
+      append-icon="mdi-magnify"
+      :loading="searchLoader.loading")
+    v-btn.discussions-panel__new-thread-button(
+      v-if='canStartThread'
+      v-t="'navbar.start_thread'"
+      :to="'/d/new?group_id='+group.id"
+      color='primary')
 
   v-card.discussions-panel(outlined)
     div(v-if="loader.status == 403")

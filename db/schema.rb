@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_19_062017) do
+ActiveRecord::Schema.define(version: 2022_04_30_223952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -262,6 +262,7 @@ ActiveRecord::Schema.define(version: 2022_04_19_062017) do
     t.jsonb "link_previews", default: [], null: false
     t.datetime "pinned_at"
     t.integer "discarded_by"
+    t.boolean "template", default: false, null: false
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["group_id"], name: "index_discussions_on_group_id"
