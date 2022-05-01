@@ -47,7 +47,7 @@ v-list-item.thread-preview.thread-preview__link(:class="{'thread-preview--unread
         v-icon(small) mdi-pin-outline
       span.thread-preview__title(:class="{'thread-preview--unread': thread.isUnread() }") {{thread.title}}
       v-chip.ml-1(small label outlined color="warning" v-if='thread.closedAt' v-t="'common.privacy.closed'")
-      tags-display(:tags="thread.tags()")
+      tags-display.ml-1(:tags="thread.tags()" smaller)
     v-list-item-subtitle
       span.thread-preview__group-name(v-if="showGroupName") {{ thread.group().name }}
       mid-dot(v-if="showGroupName")
