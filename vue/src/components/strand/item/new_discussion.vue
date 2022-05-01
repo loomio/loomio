@@ -69,23 +69,17 @@ export default
       template(v-slot:divider)
         v-icon mdi-chevron-right
     v-spacer
-    v-chip.mr-2(
-      v-if="discussion.template"
-      small label outlined
-      :title="$t('templates.this_is_a_template_for_new_threads')"
-      )
-      i.mdi.mdi-content-copy.mr-1
-      span(v-t="'common.template'")
+    discussion-template-badge.mr-2(:discussion="discussion")
     v-chip(
       v-if="discussion.private"
-      small label outlined
+      small outlined
       :title="$t('discussion_form.privacy_private')"
       )
       i.mdi.mdi-lock-outline.mr-1
       span(v-t="'common.privacy.private'")
     v-chip(
       v-if="!discussion.private"
-      small label outlined
+      small outlined
       :title="$t('discussion_form.privacy_public')"
       )
       i.mdi.mdi-earth.mr-1

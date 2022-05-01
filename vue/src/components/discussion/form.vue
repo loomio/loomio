@@ -106,12 +106,6 @@ export default
     v-btn(v-if="isPage && discussion.id" icon  aria-hidden='true' :to="urlFor(discussion)")
       v-icon mdi-close
   .pa-4
-    v-alert(v-if="discussion.template" color="info" outlined)
-      .d-flex.align-center
-        div(v-t="'templates.this_thread_is_a_template'")
-        v-spacer
-        v-btn(:to="'/d/new?template_discussion_id='+discussion.id")
-          span(v-t="'templates.make_a_copy'") 
     v-select(v-if="!discussion.id" v-model="discussion.groupId" :items="groupItems" :label="$t('common.group')")
     p.text--secondary.caption
       span(v-if="!discussion.groupId" v-t="'announcement.form.visible_to_guests'")
