@@ -115,6 +115,7 @@ class PermittedParams < Struct.new(:params)
      :notify_recipients,
      :recipient_audience,
      :recipient_message,
+     :template,
      :tag_ids, {tag_ids: []},
      :recipient_user_ids, {recipient_user_ids: []},
      :recipient_chatbot_ids, {recipient_chatbot_ids: []},

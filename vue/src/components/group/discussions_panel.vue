@@ -114,6 +114,8 @@ export default
             chain = chain.where (discussion) -> discussion.isUnread()
           when 'closed'
             chain = chain.find(closedAt: {$ne: null})
+          when 'templates'
+            chain = chain.find(template: true)
           when 'all'
             true # noop
           else
@@ -144,6 +146,7 @@ export default
         when 'unread' then 'discussions_panel.unread'
         when 'all' then 'discussions_panel.all'
         when 'closed' then 'discussions_panel.closed'
+        when 'templates' then 'templates.templates'
         when 'subscribed' then 'change_volume_form.simple.loud'
         else
           'discussions_panel.open'
@@ -211,6 +214,8 @@ div.discussions-panel(v-if="group")
           v-list-item-title(v-t="'discussions_panel.open'")
         v-list-item.discussions-panel__filters-all(@click="routeQuery({t: 'all'})")
           v-list-item-title(v-t="'discussions_panel.all'")
+        v-list-item.discussions-panel__filters-templates(@click="routeQuery({t: 'templates'})")
+          v-list-item-title(v-t="'templates.templates'")
         v-list-item.discussions-panel__filters-closed(@click="routeQuery({t: 'closed'})")
           v-list-item-title(v-t="'discussions_panel.closed'")
         v-list-item.discussions-panel__filters-unread(@click="routeQuery({t: 'unread'})")
@@ -224,8 +229,17 @@ div.discussions-panel(v-if="group")
           v-icon mdi-menu-down
       v-sheet.pa-1
         tags-display(:tags="group.parentOrSelf().tags()" show-counts)
-    v-text-field.mr-2.flex-grow-1(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_threads', {name: group.name})" append-icon="mdi-magnify" :loading="searchLoader.loading")
-    v-btn.discussions-panel__new-thread-button(:to="'/d/new?group_id='+group.id" color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
+    v-text-field.mr-2.flex-grow-1(
+      clearable solo hide-details :value="$route.query.q"
+      @input="onQueryInput"
+      :placeholder="$t('navbar.search_threads', {name: group.name})"
+      append-icon="mdi-magnify"
+      :loading="searchLoader.loading")
+    v-btn.discussions-panel__new-thread-button(
+      v-if='canStartThread'
+      v-t="'navbar.start_thread'"
+      :to="'/d/new?group_id='+group.id + (group.templateDiscussionsCount ? '' : '&no_template=1')"
+      color='primary')
 
   v-card.discussions-panel(outlined)
     div(v-if="loader.status == 403")

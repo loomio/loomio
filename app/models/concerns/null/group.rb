@@ -35,6 +35,7 @@ module Null::Group
       update_public_discussions_count
       update_open_discussions_count
       update_closed_discussions_count
+      update_template_discussions_count
       presence
       present?
       content_locale
@@ -110,6 +111,7 @@ module Null::Group
       discussions_count
       public_discussions_count
       pending_memberships_count
+      template_discussions_count
     ]
   end
 

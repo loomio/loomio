@@ -11,23 +11,10 @@ export default new class ThreadService
   actions: (discussion, vm) ->
     make_a_copy:
       icon: 'mdi-content-copy'
-      name: 'thread_context.make_a_copy'
+      name: 'templates.make_a_copy'
       menu: true
       canPerform: -> Session.user()
-      perform: ->
-        clone = discussion.clone()
-        clone.id = null
-        clone.authorId = Session.user().id
-        clone.pinnedAt = null
-        clone.forkedEventIds = []
-        clone.groupId = null
-        if discussion.groupId && AbilityService.canStartThread(discussion.group())
-          clone.groupId = discussion.groupId
-          
-        EventBus.$emit 'openModal',
-          component: 'DiscussionForm'
-          props:
-            discussion:  clone
+      to: "/d/new?template_discussion_id=#{discussion.id}"
 
     translate_thread:
       icon: 'mdi-translate'

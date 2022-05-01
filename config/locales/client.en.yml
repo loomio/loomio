@@ -18,6 +18,9 @@ en:
     no_tasks_assigned: There are no tasks assigned to you
 
   templates:
+    templates: Templates
+    make_a_copy: "Make a copy"
+    this_thread_is_a_template: This thread is a template, make a copy if you want to use it.
     try_loomio: Try Loomio
     start_a_demo_group: Start a demo group
     start_a_demo: Start a demo
@@ -33,6 +36,8 @@ en:
     start_demo: Start demo
     start_trial: Start trial
     demo_needs_user: To start a demo, you need to sign up (or sign in) as a Loomio user. This is free and only takes a minute.
+    this_is_a_template_for_new_threads: This is a template for new threads
+
 
   doctypes:
     youtube_video: YouTube Video
@@ -172,6 +177,7 @@ en:
     time_zone: Time zone
     local_time: Local time
     attachments: Attachments
+    template: Template
     links: Links
     active_time_ago: Last active {{time_ago}}
     confirm_discard_changes: Discard your changes?
@@ -696,8 +702,8 @@ en:
     context_label: 'Context'
     context_placeholder: "Provide some context for this discussion, so people know how to participate"
     privacy_label: 'Privacy'
-    privacy_public: 'Anyone can see the thread. Only members can participate.'
-    privacy_private: 'The thread will only be visible to members of {{group}}.'
+    privacy_public: 'Anyone can view this thread if they have the link'
+    privacy_private: 'Only members of the group can view this thread'
     privacy_organisation: 'The thread will be visible to members of {{parent}} and members of {{group}}.'
     fork_notice: 'A new thread will be created with %{count} items from {{title}}'
     notify_group: Notify group
@@ -1572,7 +1578,6 @@ en:
     seen_by_count: 'Seen by %{count}'
     count_notified: 'Notified %{count}'
     forked_from: "Forked from"
-    make_a_copy: "Make a copy"
 
   pin_thread_modal:
     title: Pin thread

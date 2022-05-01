@@ -68,19 +68,28 @@ export default
     v-breadcrumbs.context-panel__breadcrumbs(:items="groups")
       template(v-slot:divider)
         v-icon mdi-chevron-right
-    tags-display(:tags="discussion.tags()")
     v-spacer
-    span
-      span.nowrap(v-show='discussion.private')
-        i.mdi.mdi-lock-outline
-        span.text--secondary(v-t="'common.privacy.private'")
-      span.nowrap(v-show='!discussion.private')
-        i.mdi.mdi-earth.mr-1
-        span.text--secondary(v-t="'common.privacy.public'")
+    discussion-template-badge.mr-2(:discussion="discussion")
+    v-chip(
+      v-if="discussion.private"
+      small outlined
+      :title="$t('discussion_form.privacy_private')"
+      )
+      i.mdi.mdi-lock-outline.mr-1
+      span(v-t="'common.privacy.private'")
+    v-chip(
+      v-if="!discussion.private"
+      small outlined
+      :title="$t('discussion_form.privacy_public')"
+      )
+      i.mdi.mdi-earth.mr-1
+      span(v-t="'common.privacy.public'")
 
   strand-title(:discussion="discussion")
 
-  .mb-2.d-flex.align-center
+  .my-1.mb-2(v-if="discussion.tags().length")
+    tags-display(:tags="discussion.tags()")
+  .mb-2
     user-avatar.mr-2(:user='author' :size='36')
     router-link.text--secondary(:to="urlFor(author)") {{authorName}}
     mid-dot
