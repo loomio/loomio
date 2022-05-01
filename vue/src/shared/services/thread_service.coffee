@@ -11,7 +11,7 @@ export default new class ThreadService
   actions: (discussion, vm) ->
     make_a_copy:
       icon: 'mdi-content-copy'
-      name: 'thread_context.make_a_copy'
+      name: 'templates.make_a_copy'
       menu: true
       canPerform: -> Session.user()
       to: "/d/new?template_discussion_id=#{discussion.id}"

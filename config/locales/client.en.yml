@@ -19,6 +19,8 @@ en:
 
   templates:
     templates: Templates
+    make_a_copy: "Make a copy"
+    this_thread_is_a_template: This thread is a template, make a copy if you want to use it.
     try_loomio: Try Loomio
     start_a_demo_group: Start a demo group
     start_a_demo: Start a demo
@@ -1576,7 +1578,6 @@ en:
     seen_by_count: 'Seen by %{count}'
     count_notified: 'Notified %{count}'
     forked_from: "Forked from"
-    make_a_copy: "Make a copy"
 
   pin_thread_modal:
     title: Pin thread
