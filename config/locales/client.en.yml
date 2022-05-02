@@ -119,7 +119,7 @@ en:
     new_tag: New tag
     name_label: Name
     color_label: Color
-    card_title: Category Tags
+    card_title: Category tags
     modal_title: Create a new tag
     modal_edit_title: Edit tag
     modal_destroy_title: Remove tag
