@@ -8,13 +8,7 @@ namespace :loomio do
   end
 
   task update_blocked_domains: :environment do
-    hostsfile = 'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts'
-    BlockedDomain.delete_all
-    URI.open(hostsfile, 'r').map do |line|
-      if line.starts_with?('0.0.0.0 ')
-        BlockedDomain.new(name: line.split(" ")[1]).save
-      end
-    end
+    UpdateBlockedDomainsWorker.perform_async
   end
 
   task generate_static_error_pages: :environment do
@@ -57,6 +51,10 @@ namespace :loomio do
       OutcomeService.delay.publish_review_due
       UsageReportService.send
       LoginToken.where("created_at < ?", 24.hours.ago).delete_all
+    end
+    
+    if (Time.now.hour == 0 && Time.now.mday == 1)
+      UpdateBlockedDomainsWorker.perform_async
     end
   end
 
