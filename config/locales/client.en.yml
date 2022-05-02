@@ -2300,6 +2300,7 @@ en:
     event_kind_helptext: Select events the bot will always be notified about. If you're not sure, just leave them all off.
     notification_only_label: Send notification headline only
     check_for_test_message: Check your chatroom for a message from the bot!
+    help_chatbots: 'Help: Chatbots'
 
   webhook:
     help_api: "Help: API"
