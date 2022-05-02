@@ -7,6 +7,16 @@ namespace :loomio do
     puts Loomio::Version.current
   end
 
+  task update_blocked_domains: :environment do
+    hostsfile = 'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts'
+    BlockedDomain.delete_all
+    URI.open(hostsfile, 'r').map do |line|
+      if line.starts_with?('0.0.0.0 ')
+        BlockedDomain.new(name: line.split(" ")[1]).save
+      end
+    end
+  end
+
   task generate_static_error_pages: :environment do
     [400, 404, 403, 410, 417, 422, 429, 500].each do |code|
       ['html'].each do |format|

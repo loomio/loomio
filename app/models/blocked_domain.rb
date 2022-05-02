@@ -1,0 +1,2 @@
+class BlockedDomain < ApplicationRecord
+end

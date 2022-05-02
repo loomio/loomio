@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_01_043729) do
+ActiveRecord::Schema.define(version: 2022_05_02_022118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -142,6 +142,11 @@ ActiveRecord::Schema.define(version: 2022_05_01_043729) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["creator_id"], name: "index_blazer_queries_on_creator_id"
+  end
+
+  create_table "blocked_domains", force: :cascade do |t|
+    t.string "name"
+    t.index ["name"], name: "index_blocked_domains_on_name", unique: true
   end
 
   create_table "chatbots", force: :cascade do |t|
