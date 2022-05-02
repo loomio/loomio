@@ -1,4 +1,4 @@
-Loomio is a collaborative decision-making tool for organizations.
+# Loomio is a collaborative decision-making tool for organizations.
 
 To learn about, or try Loomio, visit [Loomio.com](https://www.loomio.com).
 
