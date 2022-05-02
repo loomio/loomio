@@ -1,6 +1,6 @@
 # Loomio is a collaborative decision-making tool for organizations.
 
-To learn about, or try Loomio, visit [Loomio.com](https://www.loomio.com).
+To learn about or try Loomio, visit [Loomio.com](https://www.loomio.com).
 
 To setup your own Loomio instance see [loomio/loomio-deploy](https://github.com/loomio/loomio-deploy)
 
