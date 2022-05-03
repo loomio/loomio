@@ -13,7 +13,6 @@ class PollSerializer < ApplicationSerializer
              :created_at,
              :content_locale,
              :cast_stances_pct,
-             :custom_fields,
              :decided_voters_count,
              :details,
              :details_format,
@@ -44,7 +43,12 @@ class PollSerializer < ApplicationSerializer
              :undecided_voters_count,
              :voter_can_add_options,
              :voters_count,
-             :versions_count
+             :versions_count,
+             :dots_per_person,
+             :max_score,
+             :min_score,
+             :minimum_stance_choices,
+             :meetingDuration
 
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_one :created_event, serializer: EventSerializer, root: :events

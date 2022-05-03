@@ -13,7 +13,6 @@ export default
     stanceChoices: []
     pollOptions: []
     zone: null
-    canRespondMaybe: null
     stanceValues: []
 
   beforeDestroy: ->
@@ -24,8 +23,7 @@ export default
     @watchRecords
       collections: ['pollOptions']
       query: (records) =>
-        @canRespondMaybe =  @stance.poll().customFields.can_respond_maybe
-        @stanceValues = if @stance.poll().customFields.can_respond_maybe then [2,1,0] else [2, 0]
+        @stanceValues = if @poll.canRespondMaybe then [2,1,0] else [2, 0]
         if @stance.poll().optionsDiffer(@pollOptions)
           @pollOptions = @stance.poll().pollOptionsForVoting()
           @stanceChoices = @pollOptions.map (option) =>
@@ -62,7 +60,7 @@ export default
       "/img/#{name}.svg"
 
     incrementScore: (choice) ->
-      if @canRespondMaybe
+      if @poll.canRespondMaybe
         choice.score = (choice.score + 5) % 3
       else
         choice.score = if choice.score == 2
@@ -71,6 +69,7 @@ export default
           2
 
   computed:
+    poll: -> @stance.poll()
     currentUserTimeZone: ->
       Session.user().timeZone
 
@@ -83,10 +82,6 @@ export default
 form.poll-meeting-vote-form(@submit.prevent='submit()')
   p.text--secondary(v-t="{path: 'poll_meeting_vote_form.local_time_zone', args: {zone: currentUserTimeZone}}")
   .poll-common-vote-form__options
-    //- h3.lmo-h3.poll-meeting-vote-form--box(v-t="'poll_meeting_vote_form.can_attend'")
-    //- h3.lmo-h3.poll-meeting-vote-form--box(v-t="'poll_meeting_vote_form.if_need_be'", v-if='canRespondMaybe')
-    //- h3.lmo-h3.poll-meeting-vote-form--box(v-t="'poll_meeting_vote_form.unable'")
-    //- time-zone-select.lmo-margin-left
     v-layout.poll-common-vote-form__option(wrap v-for='choice in stanceChoices' :key='choice.id')
       poll-common-stance-choice(:poll="stance.poll()" :stance-choice='choice' :zone='zone' @click="incrementScore(choice)")
       v-spacer

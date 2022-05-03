@@ -52,29 +52,6 @@ FactoryBot.define do
     end
   end
 
-  factory :slack_identity, class: Identities::Slack do
-    user
-    identity_type { "slack" }
-    access_token { "dat_access" }
-    uid { "U123" }
-    sequence(:name) { Faker::Name.name }
-    sequence(:email) { Faker::Internet.email }
-    custom_fields {{
-      slack_team_id: "T123",
-      slack_team_name: "Hojo's Honchos"
-    }}
-  end
-
-  factory :facebook_identity, class: Identities::Facebook do
-    user
-    identity_type { "facebook" }
-    access_token { "access_dat" }
-    uid { "U123" }
-    sequence(:name) { Faker::Name.name }
-    sequence(:email) { Faker::Internet.email }
-    custom_fields { { facebook_group_id: "G123" } }
-  end
-
   factory :group do
     sequence(:name) { Faker::Name.name }
     description { 'A description for this group' }
@@ -99,11 +76,6 @@ FactoryBot.define do
     webhook_kind {"markdown"}
     kind {"webhook"}
     association :group
-  end
-
-  factory :group_identity do
-    association :group, factory: :group
-    association :identity, factory: :slack_identity
   end
 
   factory :event do

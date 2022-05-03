@@ -128,10 +128,8 @@ class RecordCloner
       meeting_duration
       time_zone
       dots_per_person
-      pending_emails
       minimum_stance_choices
       can_respond_maybe
-      deanonymize_after_close
       max_score
     ]
     attachments = [:files, :image_files]

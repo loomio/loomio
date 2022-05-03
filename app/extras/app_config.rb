@@ -37,10 +37,6 @@ class AppConfig
     doctypes.detect { |type| type['name'] == 'image' }['regex']
   end
 
-  def self.poll_types
-    poll_templates.keys - ENV['FEATURES_DISABLE_POLL_TYPES'].to_s.split(' ')
-  end
-
   def self.theme
     brand_colors = {
       gold: "#DCA034",

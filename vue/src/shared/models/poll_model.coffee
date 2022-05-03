@@ -33,10 +33,12 @@ export default class PollModel extends BaseModel
     specifiedVotersOnly: false
     pollOptionNames: []
     pollType: 'single_choice'
-    customFields:
-      minimum_stance_choices: null
-      max_score: null
-      min_score: null
+    minimumStanceChoices: null
+    canRespondMaybe: true
+    dotsPerPerson: null
+    maxScore: null
+    minScore: null
+    meetingDuration: null
     allowLongReason: false
     files: []
     imageFiles: []
@@ -230,7 +232,7 @@ export default class PollModel extends BaseModel
     AppConfig.pollTemplates[@pollType]['translate_option_name']
 
   datesAsOptions: ->
-    AppConfig.pollTemplates[@pollType]['dates_as_options']
+    @pollOptionNameFormat == 'iso8601'
 
   removeOrphanOptions: ->
     @pollOptions().forEach (option) =>

@@ -20,20 +20,13 @@ class Poll < ApplicationRecord
   set_custom_fields :meeting_duration,
                     :time_zone,
                     :dots_per_person,
-                    :pending_emails,
                     :minimum_stance_choices,
                     :can_respond_maybe,
-                    :deanonymize_after_close,
                     :max_score,
                     :min_score
 
-  TEMPLATE_FIELDS = %w(material_icon translate_option_name can_vote_anonymously
-                       can_add_options can_remove_options author_receives_outcome
-                       must_have_options has_option_icons
-                       has_variable_score voters_review_responses
-                       dates_as_options required_custom_fields has_option_score_counts
-                       require_stance_choices require_all_choices prevent_anonymous
-                       poll_options_attributes experimental has_score_icons).freeze
+  TEMPLATE_FIELDS = %w(dates_as_options
+                       prevent_anonymous).freeze
   TEMPLATE_FIELDS.each do |field|
     define_method field, -> { AppConfig.poll_templates.dig(self.poll_type, field) }
   end
@@ -132,63 +125,30 @@ class Poll < ApplicationRecord
 
   delegate :locale, to: :author
 
-  def chart_column
-    case poll_type
-    when 'proposal' then 'score_percent'
-    when 'count' then 'voter_percent'
-    else
-      'max_score_percent'
-    end
+  def is_single_vote?
+    poll_type != "single_choice"
   end
 
   def results_include_undecided
     poll_type != "meeting"
   end
   
-  def chart_type
-    case poll_type
-    when 'proposal' then 'pie'
-    when 'meeting' then 'grid'
-    else
-      'bar'
-    end
-  end
-
-  def icon_type
-    case poll_type
-    when 'proposal' then 'pie'
-    when 'meeting' then 'grid'
-    when 'count' then 'count'
-    else
-      'bar'
-    end
-  end
-
   def result_columns
     case poll_type
-    when 'proposal'
+    when 'single_choice'
       %w[pie name score_percent voter_count voters]
-    when 'count'
-      %w[bar name voter_percent voter_count voters]
+    when 'multiple_choice'
+      %w[bar name score_percent voter_count voters]
+    # when 'count'
+    #   %w[bar name voter_percent voter_count voters]
     when 'ranked_choice'
       %w[bar name rank score_percent score average]
     when 'dot_vote'
       %w[bar name score_percent score average voter_count voters]
     when 'score'
       %w[bar name score average voter_count voters]
-    when 'poll'
-      %w[bar name score_percent voter_count voters]
     when 'meeting'
       %w[grid name score voters]
-    end
-  end
-
-  def poll_option_name_format
-    case poll_type
-    when 'proposal', 'count' then 'i18n'
-    when 'meeting' then 'iso8601'
-    else
-      'none'
     end
   end
 
@@ -357,10 +317,6 @@ class Poll < ApplicationRecord
     !!closed_at
   end
 
-  def is_single_vote?
-    AppConfig.poll_templates.dig(self.poll_type, 'single_choice') && !self.multiple_choice
-  end
-
   def poll_option_names
     poll_options.map(&:name)
   end
@@ -393,10 +349,6 @@ class Poll < ApplicationRecord
     super.tap { self.group_id = self.discussion&.group_id }
   end
 
-  def minimum_stance_choices
-    self.custom_fields.fetch('minimum_stance_choices', 1).to_i
-  end
-
   def prioritise_poll_options!
     if self.poll_type == 'meeting'
       self.poll_options.sort {|a,b| a.name <=> b.name }.each_with_index {|o, i| o.priority = i }
@@ -423,17 +375,6 @@ class Poll < ApplicationRecord
     end
   end
 
-  # provides a base hash of 0's to merge with stance data
-  def zeroed_poll_options
-    self.poll_options.map { |option| [option.name, 0] }.to_h
-  end
-
-  def poll_options_are_valid
-    prevent_added_options   unless can_add_options
-    prevent_removed_options unless can_remove_options
-    prevent_empty_options   if     must_have_options
-  end
-
   def closes_in_future
     return if closing_at.nil? || (closed_at || (closing_at && closing_at > Time.zone.now))
     errors.add(:closing_at, I18n.t(:"validate.motion.must_close_in_future"))
@@ -445,33 +386,11 @@ class Poll < ApplicationRecord
     end
   end
 
-  def prevent_added_options
-    if (self.poll_options.map(&:name) - template_poll_options).any?
-      self.errors.add(:poll_options, I18n.t(:"poll.error.cannot_add_options"))
-    end
-  end
-
-  def prevent_removed_options
-    if (template_poll_options - self.poll_options.map(&:name)).any?
-      self.errors.add(:poll_options, I18n.t(:"poll.error.cannot_remove_options"))
-    end
-  end
-
   def valid_minimum_stance_choices
     return unless require_stance_choices
     if minimum_stance_choices > poll_options.length
       self.minimum_stance_choices = poll_options.length
     end
-  end
-
-  def prevent_empty_options
-    if (self.poll_options.map(&:name)).empty?
-      self.errors.add(:poll_options, I18n.t(:"poll.error.must_have_options"))
-    end
-  end
-
-  def template_poll_options
-    Array(poll_options_attributes).map { |o| o['name'] }
   end
 
   def require_custom_fields

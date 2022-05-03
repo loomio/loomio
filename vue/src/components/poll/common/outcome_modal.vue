@@ -31,7 +31,7 @@ export default
     dateToday: format(new Date, 'yyyy-MM-dd')
 
   created: ->
-    if @datesAsOptions()
+    if @poll.datesAsOptions()
       @options = map @outcome.poll().pollOptions(), (option) ->
         id:        option.id
         value:     exact(parseISO(option.name))
@@ -48,12 +48,14 @@ export default
       Vue.set(@outcome, 'calendarInvite', true)
 
       @outcome.pollOptionId = @outcome.pollOptionId or @bestOption.id
-      @outcome.customFields.event_summary = @outcome.customFields.event_summary or @outcome.poll().title
+      @outcome.eventSummary = @outcome.eventSummary or @outcome.poll().title
+      
+  computed:
+    poll: -> @outcome.poll()
 
   methods:
-
     submit: ->
-      @outcome.customFields.event_description = @outcome.statement if @datesAsOptions()
+      @outcome.eventDescription = @outcome.statement if @poll.datesAsOptions()
       @outcome.includeActor = 1 if @outcome.calendarInvite
 
       if @outcome.isNew()
@@ -66,9 +68,6 @@ export default
         Flash.success("poll_common_outcome_form.outcome_#{actionName}")
         @closeModal()
       .catch (error) => true
-
-    datesAsOptions: ->
-      fieldFromTemplate @outcome.poll().pollType, 'dates_as_options'
 
     newRecipients: (val) ->
       @recipients = val
@@ -95,7 +94,7 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
       :include-actor="outcome.calendarInvite"
       :model="outcome")
 
-    .poll-common-calendar-invite(v-if='datesAsOptions()')
+    .poll-common-calendar-invite(v-if='poll.datesAsOptions()')
       .poll-common-calendar-invite__form
         .poll-common-calendar-invite--pad-top
           v-select.lmo-flex__grow(v-model='outcome.pollOptionId' :items="options" item-value="id" item-text="value" :label="$t('poll_common_calendar_invite.poll_option_id')")

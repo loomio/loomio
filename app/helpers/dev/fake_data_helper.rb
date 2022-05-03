@@ -184,15 +184,15 @@ module Dev::FakeDataHelper
 
     case options[:poll_type].to_s
     when 'dot_vote'
-      options[:custom_fields][:dots_per_person] = 10
+      options[:dots_per_person] = 10
     when 'meeting'
-      options[:custom_fields][:time_zone] = 'Asia/Seoul'
-      options[:custom_fields][:can_respond_maybe] = true
+      options[:time_zone] = 'Asia/Seoul'
+      options[:can_respond_maybe] = true
     when 'ranked_choice'
-      options[:custom_fields][:minimum_stance_choices] = 3
+      options[:minimum_stance_choices] = 3
     when 'score'
-      options[:custom_fields][:max_score] = 9
-      options[:custom_fields][:min_score] = -9
+      options[:max_score] = 9
+      options[:min_score] = -9
     end
 
     Poll.new(options)

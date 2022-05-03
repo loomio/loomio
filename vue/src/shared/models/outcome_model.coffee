@@ -14,8 +14,9 @@ export default class OutcomeModel extends BaseModel
   defaultValues: ->
     statement: ''
     statementFormat: 'html'
-    customFields: {}
     calendarInvite: false
+    eventSummary: null
+    eventDescription: null
     includeActor: false
     files: []
     imageFiles: []

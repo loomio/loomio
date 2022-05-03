@@ -39,7 +39,6 @@ module Boot
           supportedLangs:    AppConfig.translate_languages
         },
         pollTemplates:     AppConfig.poll_templates,
-        pollTypes:         AppConfig.poll_types,
         pollColors:        AppConfig.colors,
         webhookEventKinds: AppConfig.webhook_event_kinds,
         identityProviders: AppConfig.providers.fetch('identity', []).map do |provider|
