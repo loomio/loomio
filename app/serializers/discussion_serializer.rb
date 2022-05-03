@@ -36,7 +36,8 @@ class DiscussionSerializer < ApplicationSerializer
              :newest_first,
              :max_depth,
              :discarded_at,
-             :secret_token
+             :secret_token,
+             :template
 
   attributes_from_reader :discussion_reader_id,
                          :discussion_reader_volume,

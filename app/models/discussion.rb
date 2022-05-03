@@ -30,6 +30,7 @@ class Discussion < ApplicationRecord
 
   scope :is_open, -> { kept.where(closed_at: nil) }
   scope :is_closed, -> { kept.where("closed_at is not null") }
+  scope :templates, -> { kept.where(template: true) }
 
   validates_presence_of :title, :group, :author
   validates :title, length: { maximum: 150 }
@@ -100,6 +101,7 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :open_discussions_count
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
+  update_counter_cache :group, :template_discussions_count
 
 
   def poll

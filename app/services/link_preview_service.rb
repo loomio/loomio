@@ -18,10 +18,6 @@ module LinkPreviewService
              doc.css('img[itemprop="image"]').attr('src')&.text,
              doc.css('link[rel="image_src"]').attr('href')&.text].reject(&:blank?).first
 
-    # url = [doc.css('meta[property="og:url"]').attr('content')&.text,
-    #       doc.css('link[rel="canonical"]').attr('href')&.text,
-    #       url].reject(&:blank?).first
-
     {title: title,
      description: description,
      image: image,
@@ -34,7 +30,7 @@ module LinkPreviewService
   def self.fetch_urls(urls)
     previews = []
     threads = []
-    urls.each do |u|
+    urls.reject {|u| BlockedDomain.where(name: URI(u).host).exists? }.each do |u|
       # spawn a new thread for each url
       threads << Thread.new do
         previews.push fetch(u)

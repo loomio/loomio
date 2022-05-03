@@ -11,7 +11,7 @@ import i18n from '@/i18n.coffee'
 export default new class GroupService
   actions: (group) ->
     membership = group.membershipFor(Session.user())
-
+    
     translate_group:
       name: 'common.action.translate'
       icon: 'mdi-translate'
@@ -44,6 +44,17 @@ export default new class GroupService
           component: 'GroupForm'
           props:
             group: group.clone()
+
+    edit_tags: 
+      icon: 'mdi-tag-outline'
+      name: 'loomio_tags.card_title'
+      menu: true
+      canPerform: -> AbilityService.canAdminister(group)
+      perform: ->
+        EventBus.$emit 'openModal',
+          component: 'TagsSelect',
+          props:
+            model: group.clone()
 
     become_coordinator:
       name: 'group_page.options.become_coordinator'

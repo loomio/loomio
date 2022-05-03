@@ -6,6 +6,7 @@ export default
     tags: Array
     showCounts: Boolean
     selected: String
+    smaller: Boolean
 
 </script>
 <template lang="pug">
@@ -14,8 +15,9 @@ span.tags-display
     :class="{'mb-1': showCounts}"
     v-for="tag in tags"
     :key="tag.id"
-    small
     :outlined="tag.name != selected"
+    :small="!smaller"
+    :xSmall="smaller"
     :color="tag.color"
     :to="'/g/'+tag.group().key+'/tags/'+tag.name"
   )
