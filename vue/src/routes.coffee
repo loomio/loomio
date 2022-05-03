@@ -69,6 +69,7 @@ router = new Router
     {path: '/contact', component: ContactPage},
     {path: '/email_preferences', component: EmailSettingsPage },
     {path: '/p/:key/edit', component: PollFormPage },
+    {path: '/p/new', component: PollFormPage },
     {path: '/p/:key/:stub?', component: PollPage},
     {path: '/u/:key/:stub?', component: UserPage },
     {path: '/d/new', component: StartDiscussionPage },

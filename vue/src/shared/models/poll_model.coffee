@@ -32,6 +32,7 @@ export default class PollModel extends BaseModel
     closingAt: startOfHour(addDays(new Date, 3))
     specifiedVotersOnly: false
     pollOptionNames: []
+    pollType: 'single_choice'
     customFields:
       minimum_stance_choices: null
       max_score: null
