@@ -275,6 +275,7 @@ class PollService
         max_score_percent: poll.total_score > 0 ? ((option.total_score.to_f / poll.stance_counts.max.to_f) * 100) : 0,
         voter_percent: poll.voters_count > 0 ? ((option.voter_count.to_f / poll.voters_count.to_f) * 100) : 0,
         average: option.average_score,
+        score_counts: option.score_counts,
         voter_scores: option.voter_scores,
         voter_ids: option.voter_ids.take(500),
         voter_count: option.voter_count,
@@ -294,6 +295,7 @@ class PollService
           voter_percent: poll.voters_count > 0 ? (poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100) : 0,
           average: 0,
           voter_scores: {},
+          score_counts: {},
           voter_ids: poll.undecided_voters.map(&:id).take(500),
           voter_count: poll.undecided_voters_count,
           color: '#BBBBBB'

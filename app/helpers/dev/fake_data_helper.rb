@@ -191,8 +191,8 @@ module Dev::FakeDataHelper
     when 'ranked_choice'
       options[:custom_fields][:minimum_stance_choices] = 3
     when 'score'
-      options[:custom_fields][:max_score] = 9
-      options[:custom_fields][:min_score] = -9
+      options[:custom_fields][:max_score] = 5
+      options[:custom_fields][:min_score] = -5
     end
 
     Poll.new(options)
@@ -218,12 +218,7 @@ module Dev::FakeDataHelper
 
   def fake_stance(args = {})
     poll = args[:poll] || saved(fake_poll)
-
-    choice = if poll.minimum_stance_choices > 1
-      poll.poll_options.sample(poll.minimum_stance_choices).map do |option|
-        [option.name, fake_score(poll)]
-      end.to_h
-    elsif poll.require_all_choices
+    choice = if poll.has_variable_score
       poll.poll_options.map do |option|
         [option.name, fake_score(poll)]
       end.to_h

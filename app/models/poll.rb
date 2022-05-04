@@ -149,6 +149,7 @@ class Poll < ApplicationRecord
     case poll_type
     when 'proposal' then 'pie'
     when 'meeting' then 'grid'
+    when 'score' then 'score_counts'
     else
       'bar'
     end
@@ -159,6 +160,7 @@ class Poll < ApplicationRecord
     when 'proposal' then 'pie'
     when 'meeting' then 'grid'
     when 'count' then 'count'
+    when 'score' then 'score_counts'
     else
       'bar'
     end

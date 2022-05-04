@@ -7,12 +7,21 @@ class PollOption < ApplicationRecord
 
   scope :dangling, -> { joins('left join polls on polls.id = poll_id').where('polls.id is null') }
 
+
   def update_counts!
     update_columns(
+      score_counts: calculate_score_counts,
       voter_scores: poll.anonymous ? {} : stance_choices.latest.where('stances.participant_id is not null').includes(:stance).map { |c| [c.stance.participant_id, c.score] }.to_h,
       total_score: stance_choices.latest.sum(:score),
       voter_count: stances.latest.count
     )
+  end
+
+  # what is the frequency of each of the scores chosen for this option?
+  def calculate_score_counts
+    h = {}
+    stance_choices.each { |c| h[c.score] = h.fetch(c.score, 0) + 1 }
+    h
   end
 
   def color
