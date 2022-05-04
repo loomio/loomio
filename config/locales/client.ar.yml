@@ -49,7 +49,6 @@ ar:
     apply_tags: تطبيق الوسوم
     name_label: 'الاسم '
     color_label: اللون
-    card_title: فئة الوسوم
     modal_title: إنشاء وسم جديد
     modal_edit_title: تعديل الوسم
     modal_destroy_title: إزالة العلامة
@@ -485,8 +484,6 @@ ar:
     title_placeholder: 'ماهو الموضوع الذي ترغب في مناقشته؟'
     context_label: 'سياق النقاش'
     privacy_label: 'الخصوصية'
-    privacy_public: 'يمكن للجميع رؤية الموضوع. يمكن للأعضاء فقط المشاركة.'
-    privacy_private: 'سيكون الموضوع ظاهراً فقط لأعضاء مجموعة {{group}}.'
     privacy_organisation: 'سيكون الموضوع ظاهراً لأعضاء {{parent}} و أعضاء {{group}}.'
     notify_group: إخطار المجموعة
   announcement:

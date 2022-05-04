@@ -17,6 +17,9 @@ zh_TW:
     task_updated_not_done: '工作被標記為未完成'
     no_tasks_assigned: 沒有分配給您的工作
   templates:
+    templates: 範本
+    make_a_copy: "複製"
+    this_thread_is_a_template: 此討論串為範本，若您想要使用它的話，請複製。
     try_loomio: 試試 Loomio
     start_a_demo_group: 啟動展示用群組
     start_a_demo: 試用範例
@@ -32,6 +35,7 @@ zh_TW:
     start_demo: 試用範例
     start_trial: 開始試用
     demo_needs_user: 要啟動範例，您必須註冊（或登入）為 Loomio 使用者。這是免費的，且僅需一分鐘。
+    this_is_a_template_for_new_threads: 這是新討論串的範本
   doctypes:
     youtube_video: YouTube 影片
     image: 圖片
@@ -160,9 +164,11 @@ zh_TW:
     time_zone: 時區
     local_time: 本地時間
     attachments: 附件
+    template: 範本
     links: 連結
     active_time_ago: 最後活躍 {{time_ago}}
     confirm_discard_changes: 丟棄您的變更？
+    something_went_wrong: 喔喔！似乎有些東西出問題了。
     time:
       am: am
       pm: pm
@@ -649,8 +655,8 @@ zh_TW:
     context_label: '論述'
     context_placeholder: "提供此討論的部份內容，如此人們才能知道如何參與"
     privacy_label: '隱私權'
-    privacy_public: '任何人都可以看到此討論串。只有成員才能參與。'
-    privacy_private: '此討論串只會被「{{group}}」群組的成員看到。'
+    privacy_public: '任何有連結的人都可以檢視此討論串'
+    privacy_private: '僅有群組的成員可以檢視此討論串'
     privacy_organisation: '此討論串只會被「{{parent}}」群組的成員以及「{{group}}」群組的成員看到。'
     fork_notice: '新的討論串將會從 {{title}} 中包含 %{count} 來建立'
     notify_group: 通知群組
@@ -747,6 +753,8 @@ zh_TW:
       anyone_can_participate: 任何有連結的人都可以參與
       placeholder: 您可以輸入名稱或電子郵件地址
       notified_empty: '尚未選取任何人'
+      single_notification: '將會傳送 1 則通知。'
+      multiple_notifications: '將會傳送 {{notified}} 則通知。'
       notified: '{{notified}} 個夥伴將會被通知。'
       notified_singular: '將通知 1 個人。'
       notified_none: '不會通知任何人。'
@@ -2125,7 +2133,9 @@ zh_TW:
     event_kind_helptext: 選取機器要一律通知的事件。若您不確定，請將它們維持在關閉狀態。
     notification_only_label: 僅傳送通知標題
     check_for_test_message: 檢查您的聊天室以取得來自機器人的訊息！
+    help_chatbots: '說明：聊天機器人'
   webhook:
+    help_api: "說明：API"
     integrations: 整合
     api_keys: API 金鑰
     webhooks: Webhooks

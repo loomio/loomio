@@ -43,7 +43,7 @@ pt_BR:
     apply_tags: Aplicar tags
     name_label: Nome
     color_label: Cor
-    card_title: Categoria de Tags
+    card_title: Categorização por tags
     modal_title: Criar uma nova tag
     modal_edit_title: Editar tag
     modal_destroy_title: Remover tag
@@ -460,8 +460,6 @@ pt_BR:
     title_placeholder: 'Qual tópico você quer discutir?'
     context_label: 'Contexto'
     privacy_label: 'Privacidade'
-    privacy_public: 'Qualquer um pode ver a conversa. Apenas membros podem participar.'
-    privacy_private: 'A conversa será visível apenas para os membros de {{group}}.'
     privacy_organisation: 'A conversa será visível para os membros de {{parent}} e membros de {{group}}.'
   announcement:
     send_discussion: Mandar tópico

@@ -56,7 +56,7 @@ it:
     new_tag: Nuovo tag
     name_label: Nome
     color_label: Colore
-    card_title: Etichette di categoria
+    card_title: Etichette di categorizzazione
     modal_title: Crea una nuova etichetta
     modal_edit_title: Modifica etichetta
     modal_destroy_title: Rimuovi etichetta
@@ -497,8 +497,6 @@ it:
     title_placeholder: 'Di quale argomento ti piacerebbe discutere?'
     context_label: 'Contesto'
     privacy_label: 'Privacy'
-    privacy_public: 'Tutti possono vedere la discussione. Solo i membri possono partecipare.'
-    privacy_private: 'La discussione sarà visibile solamente ai membri di {{group}}.'
     privacy_organisation: 'La discussione sarà visibile ai membri di {{parent}} e ai membri di {{group}}.'
     notify_group: Gruppo di notifica
   announcement:

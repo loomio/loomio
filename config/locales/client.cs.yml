@@ -20,7 +20,6 @@ cs:
     apply_tags: Použít štítek
     name_label: Název
     color_label: Barva
-    card_title: Kategorie štítků
     modal_title: Vytvořit nový štítek
     modal_edit_title: Upravit štítek
     modal_destroy_title: Odebrat štítek
@@ -284,8 +283,6 @@ cs:
     title_placeholder: 'O jakém tématu chcete diskutovat?'
     context_label: 'Souvislost'
     privacy_label: 'Soukromí'
-    privacy_public: 'Každý může vidět vlákno. Pouze členové se mohou účastnit.'
-    privacy_private: 'Vlákno bude vidět pouze pro členy {{group}}.'
     privacy_organisation: 'Vlákno bude vidět pro členy {{parent}} a členy {{group}}.'
   announcement:
     form:

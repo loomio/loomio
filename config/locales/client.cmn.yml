@@ -16,7 +16,6 @@ cmn:
     apply_tags: 应用标签
     name_label: 名字
     color_label: 颜色
-    card_title: 分类标签
     modal_title: 创建新标签
     modal_edit_title: 编辑标签
     modal_destroy_title: 删除标签
@@ -370,8 +369,6 @@ cmn:
     title_placeholder: '您想讨论的主题是？'
     context_label: '上下文'
     privacy_label: '隐私'
-    privacy_public: '任何人都可以看到此话题。只有成员才能参与。'
-    privacy_private: '此话题只会被“{{group}}”群组的成员看到。'
     privacy_organisation: '此话题只会被“{{parent}}”群组的成员以及“{{group}}”群组的成员看到。'
   announcement:
     send_discussion: 发送话题

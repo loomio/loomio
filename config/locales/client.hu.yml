@@ -32,7 +32,7 @@ hu:
     apply_tags: Címkék alkalmazása
     name_label: Név
     color_label: Szín
-    card_title: Kategória címkék
+    card_title: Kategóriacímkék
     modal_title: Címke létrehozása
     modal_edit_title: Címke szerkesztése
     modal_destroy_title: Címke eltávolítása
@@ -423,8 +423,6 @@ hu:
     title_placeholder: 'Mit szeretnél megtárgyalni?'
     context_label: 'Leírás'
     privacy_label: 'Adatvédelem'
-    privacy_public: 'Bárki láthatja a témát. Csak a tagok vehetnek részt.'
-    privacy_private: 'A téma csak a(z) {{group}} tagjai számára lesz látható.'
     privacy_organisation: 'A téma látható lesz a(z) {{parent}} és a(z) {{group}} tagjai számára.'
   announcement:
     send_discussion: Téma küldése

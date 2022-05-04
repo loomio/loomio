@@ -22,7 +22,6 @@ he:
     apply_tags: החל תגיות
     name_label: שם
     color_label: צבע
-    card_title: תגיות קטגוריה
     modal_title: יצירת תגית חדשה
     modal_edit_title: עריכת תגית
     modal_destroy_title: הסרת תגית
@@ -343,8 +342,6 @@ he:
     title_placeholder: 'על איזה נושא תרצה לדון?'
     context_label: 'הקשר'
     privacy_label: 'פרטיות'
-    privacy_public: 'כל אחד יכול לראות את השיחה. רק משתמשים יכולים להשתתף.'
-    privacy_private: 'רק משתמשים של ה{{group}} יכולים לצפות בשיחה.'
     privacy_organisation: 'משתמשי {{parent}} וה{{group}} יכולו לצפות בשיחה.'
   announcement:
     audiences:

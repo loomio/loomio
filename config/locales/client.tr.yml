@@ -42,7 +42,6 @@ tr:
     apply_tags: Etiketleri uygula
     name_label: İsim
     color_label: Renk
-    card_title: Kategori Etiketleri
     modal_title: Yeni bir etiket oluştur
     modal_edit_title: Etiketi düzenle
     modal_destroy_title: Etiketi kaldır
@@ -316,8 +315,6 @@ tr:
     title_placeholder: 'Müzakere etmek istediğiniz konu nedir?'
     context_label: 'İçerik'
     privacy_label: 'Gizlilik'
-    privacy_public: 'Herhangi bir kişi müzakereyi görebilir. Sadece üyeler katılım gösterebilir.'
-    privacy_private: 'Müzakere sadece {{group}} grubunun üyelerine görünür olacaktır.'
     privacy_organisation: 'Müzakere {{parent}} ve {{group}} gruplarının üyelerine görünür olacaktır.'
   announcement:
     form:

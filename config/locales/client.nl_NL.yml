@@ -70,7 +70,7 @@ nl_NL:
     new_tag: Nieuw label
     name_label: Naam
     color_label: Kleur
-    card_title: Labels categoriseren
+    card_title: Categorie labels
     modal_title: Maak een nieuw label aan
     modal_edit_title: Label bewerken
     modal_destroy_title: Label verwijderen
@@ -525,8 +525,6 @@ nl_NL:
     title_placeholder: 'Welk onderwerp wil je bediscussiëren?'
     context_label: 'Beschrijving'
     privacy_label: 'Privacy'
-    privacy_public: 'Iedereen kan het bord zien. Alleen leden kunnen deelnemen.'
-    privacy_private: 'Het bord is enkel zichtbaar voor leden van {{group}}'
     privacy_organisation: 'Het bord zal zichtbaar zijn voor leden van {{parent}} en leden van {{group}}'
     notify_group: stuur melding naar groep
   announcement:
