@@ -17,6 +17,9 @@ fr:
     task_updated_not_done: 'Tâche marquée comme pas terminée !'
     no_tasks_assigned: Aucune tâche ne vous a été assignée
   templates:
+    templates: Modèles
+    make_a_copy: "Faire une copie"
+    this_thread_is_a_template: Ce thread est un modèle, faites une copie si vous souhaitez l’utiliser.
     try_loomio: Essayez Loomio
     start_a_demo_group: Créez un groupe demo
     start_a_demo: Démarrer la démo
@@ -32,6 +35,7 @@ fr:
     start_demo: Démarrer la démo
     start_trial: Commencer un essai
     demo_needs_user: Pour démarrer une démo, vous devez vous inscrire (ou vous connecter) en tant qu’utilisateur Loomio. Ceci est gratuit et ne prend qu’une minute.
+    this_is_a_template_for_new_threads: Il s’agit d’un modèle pour les nouveaux threads
   doctypes:
     youtube_video: Video Youtube
     image: Image
@@ -54,6 +58,8 @@ fr:
         set_description: Saisissez une description pour votre groupe
         set_cover_photo: Envoyez une image de couverture ainsi qu'un logo pour votre groupe
         customize_group: Ajoutez une photo de groupe, un logo et une description
+        setup_chatbot: "Ajouter un bot Loomio à votre salon de discussion (par exemple, Slack, Discord, Teams ou autre)"
+        invite_people_in: Invitez des personnes par e-mail ou avec un lien à rejoindre.
         start_thread: Lancez une discussion
         make_decision: Prenez une décision
       learn_more: Apprenez-en plus dans l'aide Loomio
@@ -105,7 +111,7 @@ fr:
     new_tag: Nouveau tag
     name_label: Nom
     color_label: Couleur
-    card_title: Classement par mots-clés
+    card_title: Classement par tags
     modal_title: Créer un nouveau mot-clé
     modal_edit_title: Modifier un mot-clé
     modal_destroy_title: Supprimer le mot-clé
@@ -158,9 +164,11 @@ fr:
     time_zone: Fuseau horaire
     local_time: Heure locale
     attachments: Pièces jointes
+    template: Modèle
     links: Liens
     active_time_ago: Actif pour la dernière fois {{time_ago}}
     confirm_discard_changes: Annuler vos modifications ?
+    something_went_wrong: Euh oh! Quelque chose a mal tourné.
     time:
       am: le matin
       pm: l'après-midi
@@ -327,6 +335,7 @@ fr:
     title_label: Titre
     hint: 'Astuce pour la prochaine fois : surligner du texte avant de cliquer sur "Epingler".'
   change_volume_form:
+    help_notifications: 'Aide : Notifications'
     explain_scope:
       thread: Cela changera lorsque vous recevrez les notifications de ce groupe de discussion.
       group: Cela changera lorsque vous recevrez des notifications de tous les groupes de discussions dont vous faites partie.
@@ -628,6 +637,7 @@ fr:
     none_invite_only_thread: "Discussion accessible uniquement sur invitation (pas de groupe)"
     change_log_placeholder: 'Facultatif: décrivez les changement apportés. Ce message sera ajouté à la discussion.'
     change_log_label: 'Qu''est ce qui a changé ? '
+    help_starting_threads: 'Aide : Démarrage des threads'
     invite: Inviter
     aria_label: 'Forme de la discussion'
     start_thread: Démarrer une discussion
@@ -645,8 +655,8 @@ fr:
     context_label: 'Contexte'
     context_placeholder: "Veuillez indiquer le contexte de cette discussion, pour que les participants sachent comment y prendre part"
     privacy_label: 'Privé'
-    privacy_public: 'N’importe qui peut voir la discussion. Seuls les membres de {{groupName}} peuvent participer.'
-    privacy_private: 'La discussion sera visible uniquement aux membres de {{group}}.'
+    privacy_public: 'N’importe qui peut voir ce fil de discussion s’il a le lien'
+    privacy_private: 'Seulement les membres du groupe peuvent afficher ce fil de discussion'
     privacy_organisation: 'La discussion sera visible uniquement pour les membres de {{parent}} et les membres de {{group}}.'
     fork_notice: 'Une nouvelle discussion sera créée avec %{count} items de {{title}}'
     notify_group: Notifier le groupe
@@ -697,6 +707,8 @@ fr:
       undecided_voters: Votants indécis
       non_voters: Les membres de {{name}} n'ont pas encore été invités
     form:
+      help_notifying_people: 'Aide : Avertir les gens'
+      help_invite_voters: 'Aide : Inviter les électeurs'
       too_many_invitations: |
           Invitations maximum atteintes. <a href="{{upgradeUrl}}" target="_blank">Mettre à jour</a>
       no_invitations_remaining: |
@@ -741,6 +753,8 @@ fr:
       anyone_can_participate: N’importe qui ayant un lien peut participer.
       placeholder: Vous pouvez saisir les noms ou les adresses mail
       notified_empty: 'Personne n''est encore sélectionné'
+      single_notification: '1 notification sera envoyée.'
+      multiple_notifications: 'Des notifications {{notified}} seront envoyées.'
       notified: 'Les personnes {{notified}} seront notifiées'
       notified_singular: '1 personne sera notifiée'
       notified_none: 'Personne ne sera notifié'
@@ -1008,6 +1022,7 @@ fr:
     as_csv: Ouvrir dans une feuille de calcul
     as_html: Ouvrir dans un navigateur web
     as_json: Héberger ce groupe sur mon propre serveur
+    help_exporting_data: 'Aide : Exportation de données'
   description_card:
     title: 'Description du groupe'
     placeholder: 'Les administrateurs du groupe peuvent utiliser cet encart pour décrire l''objectif du groupe afin que chaque participant sache pourquoi il se trouve là'
@@ -1024,12 +1039,14 @@ fr:
     question: 'Êtes-vous sûr de vouloir désactiver ce groupe ?'
     submit: 'Oui, désactiver ce groupe'
   group_form:
+    help_starting_a_group: 'Aide : Création d’un groupe'
     thread_defaults_help: Paramètres par défaut pour les nouvelles discussions
     click_to_change_image: Cliquez pour modifier l’image de couverture (4x1) ou le logo (1x1)
     permissions_explaination: |
         Une personne peut avoir deux niveaux d'adhésion dans un groupe: administrateur ou membre.
         Les administrateurs peuvent modifier les paramètres du groupe, nommer d'autres administrateurs et faire les actions suivantes:
     aria_label: Forme du groupe
+    help_group_settings: 'Aide : Paramètres du groupe'
     parent_group: Groupe parent
     new_organisation: Nouveau groupe
     new_group: Nouveau groupe
@@ -1147,6 +1164,7 @@ fr:
   invitation_form:
     group_url: URL du groupe
     reusable_invitation_link: Lien d'invitation réutilisable
+    help_inviting_people: 'Aide : Inviter des personnes'
     error: "Erreur lors de la copie vers le presse-papier."
     aria_label: 'Formulaire d’invitation'
     invite_people: 'Inviter des personnes'
@@ -1228,6 +1246,7 @@ fr:
     helptext: "Votre nom, adresse e-mail et message seront envoyés à {{name}}"
     email_sent: "Courriel envoyé à {{name}}"
   profile_page:
+    help_profile: 'Aide : Votre profil'
     incomplete_profile: Profil incomplet!
     set_your_profile_picture: Définir votre photo de profil
     messages:
@@ -1255,6 +1274,7 @@ fr:
     location_placeholder: 'Où êtes-vous ?'
     update_profile: 'Mettre à jour mon profil'
     deactivate_account: 'Désactiver le compte utilisateur'
+    help_translate: "Pouvez vous nous aider à traduire Loomio?"
     updated_on_sign_in: Fourni par votre navigateur et mis à jour lorsque vous vous connectez
   text_editor:
     x_of_y_characters: "{{x}} / {{y}} caractères"
@@ -1316,6 +1336,7 @@ fr:
     messages:
       updated: Réglages de courriel mis à jour
     learn_more: En savoir plus sur les paramètres d’e-mail…
+    help_email_settings: 'Aide : Paramètres de messagerie utilisateur'
   thread_preview:
     replies_count: "%{count} réponses"
     unread_count: "%{count}non lus"
@@ -1814,6 +1835,7 @@ fr:
     proposal_created: Proposition démarrée
     proposal_updated: Proposition mise à jour
   poll_poll_form:
+    help_starting_polls: 'Aide : Lancement du sondage'
     tool_tip_expanded: |
         <p>Utilisez un sondage pour mesurer la popularité d’une idée ou offrir un choix.</p>
         <p>Fournissez quelques options parmi lesquelles choisir. Décidez si les participants peuvent choisir une ou plusieurs options dans leur réponse.</p>
@@ -2088,7 +2110,10 @@ fr:
     test_connection: Tester la connexion
     test_connection_ok: Ça a l’air bien! Vous devriez voir un message dans le canal
     test_connection_bad: Quelque chose ne va pas avec les paramètres
+    name: Le prénom de Chatbot!
+    connection_test_successful: Test de connexion de bot Loomio réussi!
     chatbot: Chatbot
+    chatbots: Chatbot
     saved: Chatbot enregistré!
     webhook_url: L'URL webhook
     homeserver_url: URL du serveur d’accueil
@@ -2096,13 +2121,24 @@ fr:
     username: Identifiant utilisateur
     password: Mot de passe
     access_token: Jeton d’accès
+    add_chatbot: Ajouter chatbot
+    matrix: Matrice
     slack: Slack
     discord: Discord
+    mattermost: Ce qui compte le plus
     microsoft_teams: Microsoft Teams
+    event_kind_helptext: Sélectionnez les événements dont le bot sera toujours informé. Si vous n’êtes pas sûr, laissez-les tous de côté.
+    notification_only_label: Envoyer le titre de notification uniquement
+    check_for_test_message: Vérifiez votre salon de discussion pour un message du bot!
+    help_chatbots: 'Aide : Chatbots'
   webhook:
+    help_api: "Aide : API"
     integrations: Integrations
+    api_keys: Clés API
     webhooks: Webhooks
     webhook: Webhook
+    add_api_key: Ajouter une clé API
+    edit_api_key: Modifier la clé API
     api: API
     format: Formatter
     formats:
@@ -2110,10 +2146,12 @@ fr:
       microsoft: Microsoft Teams
       slack: Slack
       discord: Discord
+    subtitle: Connectez-vous à Loomio au reste de vos outils avec notre API
     we_have_guides: |
         Lisez notre <a href="{{url}}" target="_blank">guide de configuration webhook</a> pour connecter votre propre service.
     add_webhook: Ajouter un webhook
     show_docs: Voir l'utilisation de l'API
+    save_to_show_docs: Après avoir enregistré, revenez ici pour trouver votre clé API
     edit_integration: Modifier l'intégration
     add_integration: Ajouter une intégration
     success: 'Intégration ajoutée ! '
