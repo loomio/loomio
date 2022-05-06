@@ -7,6 +7,9 @@ count:
   material_icon: mdi-check-circle
   poll_option_name_format: i18n
   defaults:
+    chart_column: voter_percent
+    chart_type: bar
+    icon_type: bar
     min_score: 1
     max_score: 1
     minimum_stance_choices: 1
@@ -20,6 +23,9 @@ proposal:
   vote_method: buttons
   poll_option_name_format: i18n
   defaults:
+    chart_column: score_percent
+    chart_type: pie
+    icon_type: pie
     min_score: 1
     max_score: 1
     minimum_stance_choices: 1
@@ -32,6 +38,9 @@ poll:
   enabled: true
   vote_method: single_choice
   defaults:
+    chart_column: max_score_percent
+    chart_type: bar
+    icon_type: bar
     min_score: 1
     max_score: 1
     minimum_stance_choices: 1
@@ -44,6 +53,9 @@ multiple_choice:
   enabled: true
   vote_method: multiple_choice
   defaults:
+    chart_column: max_score_percent
+    chart_type: bar
+    icon_type: bar
     min_score: 1
     max_score: 1
 
@@ -53,6 +65,9 @@ dot_vote:
   enabled: true
   vote_method: dot_vote
   defaults:
+    chart_column: max_score_percent
+    chart_type: bar
+    icon_type: bar
     dots_per_person: 8
   validate_presence_of:
     - dots_per_person
@@ -62,7 +77,11 @@ score:
   material_icon: mdi-chart-gantt
   enabled: true
   vote_method: score
+  chart_column: max_score_percent
   defaults:
+    chart_column: max_score_percent
+    chart_type: bar
+    icon_type: bar
     min_score: 1
     max_score: 5
   validate_presence_of:
@@ -74,7 +93,11 @@ ranked_choice:
   material_icon: mdi-format-list-numbered
   enabled: true
   vote_method: ranked_choice
+  chart_column: max_score_percent
   defaults:
+    chart_column: max_score_percent
+    chart_type: bar
+    icon_type: bar
     minimum_stance_choices: 2
   validate_presence_of:
     - mininimum_stance_choices
@@ -87,6 +110,7 @@ meeting:
   prevent_anonymous: true
   poll_option_name_format: iso8601
   defaults:
+    chart_column: max_score_percent
     chart_type: grid
     icon_type: grid
     min_score: 0

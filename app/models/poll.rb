@@ -31,9 +31,21 @@ class Poll < ApplicationRecord
                        vote_method
                        material_icon
                        poll_option_name_format).freeze
-                       
+
   TEMPLATE_FIELDS.each do |field|
     define_method field, -> { AppConfig.poll_types.dig(self.poll_type, field) }
+  end
+
+  def chart_type
+    self[:chart_type] || AppConfig.poll_types.dig(self.poll_type, :chart_type)
+  end
+
+  def icon_type
+    self[:icon_type] || AppConfig.poll_types.dig(self.poll_type, :icon_type)
+  end
+
+  def chart_column
+    self[:chart_column] || AppConfig.poll_types.dig(self.poll_type, :chart_column)
   end
 
   include Translatable
