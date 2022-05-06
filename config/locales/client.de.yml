@@ -58,7 +58,7 @@ de:
     new_tag: Neues Schlagwort
     name_label: Name
     color_label: Farbe
-    card_title: Schlagwort-Kategorie
+    card_title: Schlagwörter für Kategorien
     modal_title: Neues Schlagwort erstellen
     modal_edit_title: Schlagwort bearbeiten
     modal_destroy_title: Schlagwort entfernen
@@ -514,8 +514,6 @@ de:
     title_placeholder: 'Welches Thema möchtest du besprechen?'
     context_label: 'Kontext'
     privacy_label: 'Datenschutz'
-    privacy_public: 'Jede.r kann die Diskussion sehen. Nur Mitglieder können teilnehmen.'
-    privacy_private: 'Diese Diskussion wird nur für Mitglieder von {{group}} sichtbar sein.'
     privacy_organisation: 'Diese Diskussion wird nur für Mitglieder von {{parent}} und {{group}} sichtbar sein.'
     notify_group: Gruppe benachrichtigen
   announcement:

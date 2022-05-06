@@ -23,7 +23,6 @@ ro:
     apply_tags: Aplica etichete
     name_label: Nume
     color_label: Culoare
-    card_title: Categorii de etichete
     modal_title: Creeaza o noua eticheta
     modal_edit_title: Editeaza eticheta
     modal_destroy_title: Sterge eticheta
@@ -294,8 +293,6 @@ ro:
     title_label: 'Titlu'
     context_label: 'Context'
     privacy_label: 'Confidentialitate'
-    privacy_public: 'Oricine poate vedea o discutie. Doar membrii pot participa.'
-    privacy_private: 'Discutia va fi vizibila doar membrilor grupului {{group}}.'
     privacy_organisation: 'Discutiile vor fi vizibile doar membrilor din {{parent}} si membrilor grupului {{group}}.'
   announcement:
     form:

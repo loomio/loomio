@@ -45,7 +45,6 @@ ca:
     apply_tags: Aplica etiquetes
     name_label: Nom
     color_label: Color
-    card_title: Etiquetes de categoria
     modal_title: Crea una nova etiqueta
     modal_edit_title: Edita l'etiqueta
     modal_destroy_title: Elimina l'etiqueta
@@ -476,8 +475,6 @@ ca:
     title_placeholder: 'Quin és el tema que voleu discutir?'
     context_label: 'Context'
     privacy_label: 'Privacitat'
-    privacy_public: 'Tothom pot veure el fil. Només els membres hi poden participar.'
-    privacy_private: 'El fil només serà visible pels membres del grup {{group}}.'
     privacy_organisation: 'El fil serà visible pels membres de {{parent}} i pels membres de {{group}}.'
     notify_group: Notifica al grup
   announcement:

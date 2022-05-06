@@ -106,6 +106,7 @@ es:
       participant: Participante
       also_available: También disponible en
       total: Total
+    waiting_for_votes_from: "A la espera de votos de"
   stance:
     error:
       too_short: Por favor seleccione

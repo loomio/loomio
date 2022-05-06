@@ -565,8 +565,6 @@ uk:
     title_placeholder: 'Яку саме тему ви хочете обговорити?'
     context_label: 'Контекст'
     privacy_label: 'Конфіденційність'
-    privacy_public: 'Будь-хто може бачити тему. Тільки учасники можуть брати участь в обговоренні.'
-    privacy_private: 'Тему можуть бачити тільки учасники групи {{group}}.'
     privacy_organisation: 'Тему можуть бачити тільки учасники груп {{parent}} та {{group}}.'
     notify_group: Повідомити групу
   announcement:

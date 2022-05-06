@@ -20,7 +20,6 @@ class ChatbotService
 
   def self.publish_event!(event_id)
     event = Event.find(event_id)
-
     chatbots = event.eventable.group.chatbots
 
     CACHE_REDIS_POOL.with do |client|

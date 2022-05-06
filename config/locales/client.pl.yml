@@ -49,7 +49,6 @@ pl:
     apply_tags: Zastosuj tagi
     name_label: Nazwa
     color_label: Kolor
-    card_title: Tagi kategorii
     modal_title: Utwórz nowy tag
     modal_edit_title: Edytuj tag
     modal_destroy_title: Usuń tag
@@ -494,8 +493,6 @@ pl:
     title_placeholder: 'Jaki temat chcesz omówić?'
     context_label: 'Kontekst'
     privacy_label: 'Prywatność'
-    privacy_public: 'Każdy może zobaczyć ten wątek. Tylko osoby z tego wątku mogą brać udział.'
-    privacy_private: 'Wątek będzie widoczny tylko dla osób z grupy {{group}}.'
     privacy_organisation: 'Wątek będzie widoczny dla osób z {{parent}} i osób z grupy {{group}}.'
     notify_group: Powiadom grupę
   announcement:

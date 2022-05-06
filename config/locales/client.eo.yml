@@ -43,7 +43,6 @@ eo:
     apply_tags: Alkroĉi etikedon
     name_label: Nomo
     color_label: Koloro
-    card_title: Kategoriaj etikedoj
     modal_title: Krei novan etikedon
     modal_edit_title: Redakti etikedon
     modal_destroy_title: Forigi etikedon
@@ -284,8 +283,6 @@ eo:
     title_label: 'Titolo'
     context_label: 'Kunteksto'
     privacy_label: 'Privateco'
-    privacy_public: 'Ĉiu ajn rajtas vidi la fadenon.  Sole grupanoj povas partopreni.'
-    privacy_private: 'Nur membroj de {{group}} povos vidi ĉi tiun fadenon.'
     privacy_organisation: 'Kaj membroj de {{parent}}, kaj membroj de {{group}} povos vidi ĉi tiun fadenon'
   announcement:
     audiences:
