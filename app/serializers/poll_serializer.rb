@@ -41,6 +41,7 @@ class PollSerializer < ApplicationSerializer
              :total_score,
              :title,
              :undecided_voters_count,
+             :vote_method,
              :voter_can_add_options,
              :voters_count,
              :versions_count,

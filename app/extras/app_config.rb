@@ -5,7 +5,7 @@ class AppConfig
     durations
     emojis
     plugins
-    poll_templates
+    poll_types
     providers
     timezones
     notifications

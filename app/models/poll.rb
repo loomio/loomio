@@ -25,10 +25,9 @@ class Poll < ApplicationRecord
                     :max_score,
                     :min_score
 
-  TEMPLATE_FIELDS = %w(dates_as_options
-                       prevent_anonymous).freeze
+  TEMPLATE_FIELDS = %w(prevent_anonymous vote_method).freeze
   TEMPLATE_FIELDS.each do |field|
-    define_method field, -> { AppConfig.poll_templates.dig(self.poll_type, field) }
+    define_method field, -> { AppConfig.poll_type.dig(self.poll_type, field) }
   end
 
   include Translatable
@@ -84,7 +83,7 @@ class Poll < ApplicationRecord
                       events.kind           = 'poll_closing_soon')", recency_threshold)
   end
 
-  validates :poll_type, inclusion: { in: AppConfig.poll_templates.keys }
+  validates :poll_type, inclusion: { in: AppConfig.poll_types.keys }
   validates :details, length: {maximum: Rails.application.secrets.max_message_length }
 
   validate :poll_options_are_valid
@@ -386,7 +385,7 @@ class Poll < ApplicationRecord
     end
   end
 
-  def valid_minimum_stance_choices
+  def clamp_minimum_stance_choices
     return unless require_stance_choices
     if minimum_stance_choices > poll_options.length
       self.minimum_stance_choices = poll_options.length

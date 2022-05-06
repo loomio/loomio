@@ -1,18 +1,17 @@
 <script lang="coffee">
+import AppConfig from '@/shared/services/app_config'
+import { compact } from 'lodash'
+
 export default
   props:
     poll: Object
     shouldReset: Boolean
 
   data: ->
-    pollTypes: [
-      {text: @$t('poll_common_form.voting_methods.single_choice'), value: "single_choice"}
-      {text: @$t('poll_common_form.voting_methods.multiple_choice'), value: "multiple_choice"}
-      {text: @$t('poll_common_form.voting_methods.score'), value: "score"}
-      {text: @$t('poll_common_form.voting_methods.dot_vote'), value: "dot_vote"}
-      {text: @$t('poll_common_form.voting_methods.ranked_choice'), value: "ranked_choice"}
-      {text: @$t('poll_common_form.voting_methods.meeting'), value: "meeting"}
-    ]
+    pollTypes: compact Object.keys(AppConfig.pollTypes).map (type) ->
+      return null unless AppConfig.pollTypes[type].enabled
+      {text: @$t(AppConfig.pollTypes[type].label), value: type}
+
     durations:
       [5, 10, 15, 20, 30, 45, 60, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240, null].map (minutes) =>
         if minutes
@@ -20,7 +19,6 @@ export default
           {text: formatDuration(duration, { format: ['hours', 'minutes'] }), value: minutes}
         else
           {text: @$t('common.all_day'), value: null}
-
 
   methods:
     submit: ->

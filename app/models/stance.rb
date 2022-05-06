@@ -51,9 +51,10 @@ class Stance < ApplicationRecord
                              AND stances.accepted_at IS NULL
                              AND stances.revoked_at IS NULL') }
 
-  validate :enough_stance_choices
-  validate :total_score_is_valid
-  validate :reason_length_permitted
+  validate :valid_minimum_stance_choices
+  validate :valid_maximum_stance_choices
+  validate :valid_dots_per_person
+  validate :valid_reason_length
 
   %w(group mailer group_id discussion_id discussion members guests title tags).each do |message|
     delegate(message, to: :poll)
@@ -144,27 +145,41 @@ class Stance < ApplicationRecord
   private
 
 
-  def reason_length_permitted
+  def valid_min_score
+    if min_score > 
+  end
+
+  def valid_max_score
+  end
+
+  def valid_maximum_stance_choices
+  end
+
+
+  def valid_reason_length
     return if poll.allow_long_reason
     errors.add(:reason, I18n.t(:"poll_common.too_long")) if reason_visible_text.length > 500
   end
 
-  def enough_stance_choices
+  def valid_minimum_stance_choices
     return unless self.cast_at
-    if poll.require_stance_choices
+    if poll.minimum_stance_choices
       if stance_choices.length < poll.minimum_stance_choices
-        errors.add(:stance_choices, I18n.t(:"stance.error.too_short"))
-      end
-    end
-
-    if poll.require_all_choices
-      if stance_choices.length < poll.poll_options.length
-        errors.add(:stance_choices, I18n.t(:"stance.error.too_short"))
+        errors.add(:stance_choices, "too few stance choices")
       end
     end
   end
 
-  def total_score_is_valid
+  def valid_maximum_stance_choices
+    return unless self.cast_at
+    if poll.minimum_stance_choices
+      if stance_choices.length < poll.maximum_stance_choices
+        errors.add(:stance_choices, "too many stance choices")
+      end
+    end
+  end
+
+  def valid_dots_per_person
     return unless poll.poll_type == 'dot_vote'
     if stance_choices.map(&:score).sum > poll.dots_per_person.to_i
       errors.add(:dots_per_person, "Too many dots")

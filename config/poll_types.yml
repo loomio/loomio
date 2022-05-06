@@ -1,0 +1,85 @@
+# make as few migrations as possible .. none?
+
+count:
+  enabled: false
+  name: poll_common.count
+  vote_method: buttons
+  defaults:
+    minimum_stance_choices: 1
+    maximum_stance_choices: 1
+    min_score: 1
+    max_score: 1
+    dots_per_person: 1
+    poll_option_name_format: i18n
+
+proposal:
+  name: poll_common_form.voting_methods.agreement
+  enabled: true
+  vote_method: buttons
+  defaults:
+    minimum_stance_choices: 1
+    maximum_stance_choices: 1
+    min_score: 1
+    max_score: 1
+    dots_per_person: 1
+    poll_option_name_format: i18n
+
+poll:
+  name: poll_common_form.voting_methods.single_choice
+  enabled: true
+  vote_method: single_choice
+  defaults:
+    minimum_stance_choices: 1
+    maximum_stance_choices: 1
+    min_score: 1
+    max_score: 1
+    dots_per_person: 1
+
+multiple_choice:
+  name: poll_common_form.voting_methods.multiple_choice
+  enabled: true
+  vote_method: multiple_choice
+  defaults:
+    min_score: 1
+    max_score: 1
+
+dot_vote:
+  name: poll_common_form.voting_methods.allocate
+  enabled: true
+  vote_method: dot_vote
+  defaults:
+    dots_per_person: 8
+  validate_presence_of:
+    - dots_per_person
+
+score:
+  name: poll_common_form.voting_methods.score
+  enabled: true
+  vote_method: score
+  defaults:
+    min_score: 1
+    max_score: 5
+  validate_presence_of:
+    - min_score
+    - max_score
+
+ranked_choice:
+  name: poll_common_form.voting_methods.rank
+  enabled: true
+  vote_method: ranked_choice
+  defaults:
+    minimum_stance_choices: 2
+  validate_presence_of:
+    - mininimum_stance_choices
+
+meeting:
+  name: poll_common_form.voting_methods.time_poll
+  enabled: true
+  vote_method: meeting
+  prevent_anonymous: true
+  defaults:
+    chart_type: grid
+    icon_type: grid
+    min_score: 0
+    max_score: 2
+    poll_option_name_format: iso8601
