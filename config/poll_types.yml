@@ -4,39 +4,43 @@ count:
   enabled: false
   name: poll_common.count
   vote_method: buttons
+  material_icon: mdi-check-circle
+  poll_option_name_format: i18n
   defaults:
-    minimum_stance_choices: 1
-    maximum_stance_choices: 1
     min_score: 1
     max_score: 1
+    minimum_stance_choices: 1
+    maximum_stance_choices: 1
     dots_per_person: 1
-    poll_option_name_format: i18n
 
 proposal:
   name: poll_common_form.voting_methods.agreement
+  material_icon: mdi-thumbs-up-down
   enabled: true
   vote_method: buttons
+  poll_option_name_format: i18n
   defaults:
-    minimum_stance_choices: 1
-    maximum_stance_choices: 1
     min_score: 1
     max_score: 1
+    minimum_stance_choices: 1
+    maximum_stance_choices: 1
     dots_per_person: 1
-    poll_option_name_format: i18n
 
 poll:
   name: poll_common_form.voting_methods.single_choice
+  material_icon: mdi-poll
   enabled: true
   vote_method: single_choice
   defaults:
-    minimum_stance_choices: 1
-    maximum_stance_choices: 1
     min_score: 1
     max_score: 1
+    minimum_stance_choices: 1
+    maximum_stance_choices: 1
     dots_per_person: 1
 
 multiple_choice:
   name: poll_common_form.voting_methods.multiple_choice
+  material_icon: mdi-poll
   enabled: true
   vote_method: multiple_choice
   defaults:
@@ -45,6 +49,7 @@ multiple_choice:
 
 dot_vote:
   name: poll_common_form.voting_methods.allocate
+  material_icon: mdi-chart-bar-stacked
   enabled: true
   vote_method: dot_vote
   defaults:
@@ -54,6 +59,7 @@ dot_vote:
 
 score:
   name: poll_common_form.voting_methods.score
+  material_icon: mdi-chart-gantt
   enabled: true
   vote_method: score
   defaults:
@@ -65,6 +71,7 @@ score:
 
 ranked_choice:
   name: poll_common_form.voting_methods.rank
+  material_icon: mdi-format-list-numbered
   enabled: true
   vote_method: ranked_choice
   defaults:
@@ -74,12 +81,13 @@ ranked_choice:
 
 meeting:
   name: poll_common_form.voting_methods.time_poll
+  material_icon: mdi-calendar-question
   enabled: true
   vote_method: meeting
   prevent_anonymous: true
+  poll_option_name_format: iso8601
   defaults:
     chart_type: grid
     icon_type: grid
     min_score: 0
     max_score: 2
-    poll_option_name_format: iso8601

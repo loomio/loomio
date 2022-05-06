@@ -33,7 +33,7 @@ export default
     thead
       tr
         template(v-for="col in poll.resultColumns")
-          th.text-left(v-if="['pie', 'bar', 'grid'].includes(col)")
+          th.text-left(v-if="col == 'chart'")
           th.text-left(v-if="col == 'name'" v-t='"common.option"')
           th.text-right(v-if="col == 'score_percent'" v-t='"poll_ranked_choice_form.pct_of_points"')
           th.text-right(v-if="col == 'voter_percent'" v-t='"poll_ranked_choice_form.pct_of_voters"')
@@ -45,9 +45,16 @@ export default
     tbody
       tr(v-for="option, index in poll.results" :key="option.id")
         template(v-for="col in poll.resultColumns")
-          td.pa-0(style="vertical-align: top" v-if="col == 'pie' && index == 0" :rowspan="poll.results.length")
+          td.pa-0(
+            v-if="col == 'chart' && poll.chartType == 'pie' && index == 0"
+            style="vertical-align: top"
+            :rowspan="poll.results.length"
+          )
             pie-icon.ma-2(:poll="poll" :size='128')
-          td.pr-2.py-2(v-if="col == 'bar'" style="width: 128px; padding: 0 8px 0 0")
+          td.pr-2.py-2(
+            v-if="col == 'chart' && poll.chartType == 'bar'"
+            style="width: 128px; padding: 0 8px 0 0"
+          )
             div.rounded(:style="{width: option[poll.chartColumn]+'%', height: '24px', 'background-color': option.color}")
           td(v-if="col == 'name' && option.name_format == 'iso8601'")
             // poll-meeting-time(:name='option.name')

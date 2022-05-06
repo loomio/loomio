@@ -49,7 +49,7 @@ class PollSerializer < ApplicationSerializer
              :max_score,
              :min_score,
              :minimum_stance_choices,
-             :meetingDuration
+             :meeting_duration
 
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_one :created_event, serializer: EventSerializer, root: :events
@@ -72,7 +72,6 @@ class PollSerializer < ApplicationSerializer
     :created_at,
     :content_locale,
     :cast_stances_pct,
-    :custom_fields,
     :decided_voters_count,
     :details,
     :details_format,

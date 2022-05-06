@@ -144,45 +144,43 @@ class Stance < ApplicationRecord
 
   private
 
-
   def valid_min_score
-    if min_score > 
+    return if !cast_at
+    return if !poll.min_score
+    return if (stance_choices.map(&:score).min || 0) >= poll.min_score
+    errors.add(:stance_choices, "min_score validation failure")
   end
 
   def valid_max_score
+    return if !cast_at
+    return if !poll.max_score
+    return if (stance_choices.map(&:score).max) <= poll.max_score
+    errors.add(:stance_choices, "max_score validation failure")
   end
 
   def valid_maximum_stance_choices
+    return if !cast_at
+    return if !poll.maximum_stance_choices
+    return if stance_choices.length <= poll.maximum_stance_choices
+    errors.add(:stance_choices, "max_score validation failure")
   end
 
+  def valid_dots_per_person
+    return if !cast_at
+    return if !poll.dots_per_person
+    return if stance_choices.map(&:score).sum <= poll.dots_per_person
+    errors.add(:dots_per_person, "Too many dots")
+  end
+
+  def valid_minimum_stance_choices
+    return if !cast_at
+    return if !poll.minimum_stance_choices
+    return if stance_choices.length < poll.minimum_stance_choices
+    errors.add(:stance_choices, "too few stance choices")
+  end
 
   def valid_reason_length
     return if poll.allow_long_reason
     errors.add(:reason, I18n.t(:"poll_common.too_long")) if reason_visible_text.length > 500
-  end
-
-  def valid_minimum_stance_choices
-    return unless self.cast_at
-    if poll.minimum_stance_choices
-      if stance_choices.length < poll.minimum_stance_choices
-        errors.add(:stance_choices, "too few stance choices")
-      end
-    end
-  end
-
-  def valid_maximum_stance_choices
-    return unless self.cast_at
-    if poll.minimum_stance_choices
-      if stance_choices.length < poll.maximum_stance_choices
-        errors.add(:stance_choices, "too many stance choices")
-      end
-    end
-  end
-
-  def valid_dots_per_person
-    return unless poll.poll_type == 'dot_vote'
-    if stance_choices.map(&:score).sum > poll.dots_per_person.to_i
-      errors.add(:dots_per_person, "Too many dots")
-    end
   end
 end

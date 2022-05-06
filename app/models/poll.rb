@@ -19,15 +19,21 @@ class Poll < ApplicationRecord
 
   set_custom_fields :meeting_duration,
                     :time_zone,
-                    :dots_per_person,
-                    :minimum_stance_choices,
-                    :can_respond_maybe,
-                    :max_score,
-                    :min_score
+                    :can_respond_maybe
 
-  TEMPLATE_FIELDS = %w(prevent_anonymous vote_method).freeze
+  # these used to be custom fields, but we're migrating them to regular columns
+  deprecated_custom_fields :max_score,
+                           :min_score,
+                           :dots_per_person,
+                           :minimum_stance_choices
+
+  TEMPLATE_FIELDS = %w(prevent_anonymous
+                       vote_method
+                       material_icon
+                       poll_option_name_format).freeze
+                       
   TEMPLATE_FIELDS.each do |field|
-    define_method field, -> { AppConfig.poll_type.dig(self.poll_type, field) }
+    define_method field, -> { AppConfig.poll_types.dig(self.poll_type, field) }
   end
 
   include Translatable
@@ -65,13 +71,6 @@ class Poll < ApplicationRecord
   scope :active_or_closed_after, ->(since) { kept.where("polls.closed_at IS NULL OR polls.closed_at > ?", since) }
   scope :in_organisation, -> (group) { kept.where(group_id: group.id_and_subgroup_ids) }
 
-  scope :with_includes, -> { includes(
-    :documents,
-    :poll_options,
-    :outcomes,
-    {stances: [:stance_choices]})
-  }
-
   scope :closing_soon_not_published, ->(timeframe, recency_threshold = 24.hours.ago) do
      active
     .distinct
@@ -86,10 +85,8 @@ class Poll < ApplicationRecord
   validates :poll_type, inclusion: { in: AppConfig.poll_types.keys }
   validates :details, length: {maximum: Rails.application.secrets.max_message_length }
 
-  validate :poll_options_are_valid
-  validate :valid_minimum_stance_choices
+  before_save :clamp_minimum_stance_choices
   validate :closes_in_future
-  validate :require_custom_fields
   validate :discussion_group_is_poll_group
   validate :cannot_deanonymize
   validate :cannot_reveal_results_early
@@ -132,25 +129,26 @@ class Poll < ApplicationRecord
     poll_type != "meeting"
   end
   
-  def result_columns
+ def result_columns
     case poll_type
-    when 'single_choice'
-      %w[pie name score_percent voter_count voters]
-    when 'multiple_choice'
-      %w[bar name score_percent voter_count voters]
-    # when 'count'
-    #   %w[bar name voter_percent voter_count voters]
+    when 'proposal'
+      %w[chart name score_percent voter_count voters]
+    when 'count'
+      %w[chart name voter_percent voter_count voters]
     when 'ranked_choice'
-      %w[bar name rank score_percent score average]
+      %w[chart name rank score_percent score average]
     when 'dot_vote'
-      %w[bar name score_percent score average voter_count voters]
+      %w[chart name score_percent score average voter_count voters]
     when 'score'
-      %w[bar name score average voter_count voters]
+      %w[chart name score average voter_count voters]
+    when 'poll'
+      %w[chart name score_percent voter_count voters]
+    when 'multiple_choice'
+      %w[chart name score_percent voter_count voters]
     when 'meeting'
-      %w[grid name score voters]
+      %w[chart name score voters]
     end
   end
-
   def results
     PollService.calculate_results(self, self.poll_options)
   end
@@ -375,26 +373,23 @@ class Poll < ApplicationRecord
   end
 
   def closes_in_future
-    return if closing_at.nil? || (closed_at || (closing_at && closing_at > Time.zone.now))
+    return if closed_at
+    return if closing_at.nil? 
+    return if closing_at > Time.zone.now
     errors.add(:closing_at, I18n.t(:"validate.motion.must_close_in_future"))
   end
 
   def discussion_group_is_poll_group
-    if poll.group.present? and poll.discussion.present? and poll.discussion.group != poll.group
-      self.errors.add(:group, 'Poll group is not discussion group')
-    end
+    return if poll.group.nil?
+    return if poll.discussion.nil?
+    return if poll.discussion_id == poll.group_id
+    self.errors.add(:group, 'Poll group is not discussion group')
   end
 
   def clamp_minimum_stance_choices
-    return unless require_stance_choices
+    return if minimum_stance_choices.nil?
     if minimum_stance_choices > poll_options.length
       self.minimum_stance_choices = poll_options.length
-    end
-  end
-
-  def require_custom_fields
-    Array(required_custom_fields).each do |field|
-      errors.add(field, I18n.t(:"activerecord.errors.messages.blank")) if custom_fields[field].nil?
     end
   end
 end
