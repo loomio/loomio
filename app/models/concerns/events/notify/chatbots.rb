@@ -1,6 +1,6 @@
 module Events::Notify::Chatbots
   def trigger!
     super
-    ChatbotService.publish_event!(self)
+    ChatbotService.delay.publish_event!(self.id)
   end
 end
