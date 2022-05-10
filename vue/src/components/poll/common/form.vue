@@ -1,6 +1,9 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
-import { compact } from 'lodash'
+import { compact, without } from 'lodash'
+import Flash from '@/shared/services/flash'
+import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns'
+import { optionImages } from '@/shared/helpers/poll'
 
 export default
   props:
@@ -8,9 +11,13 @@ export default
     shouldReset: Boolean
 
   data: ->
-    pollTypes: compact Object.keys(AppConfig.pollTypes).map (type) ->
-      return null unless AppConfig.pollTypes[type].enabled
-      {text: @$t(AppConfig.pollTypes[type].label), value: type}
+    newOption: null
+    lastPollType: @poll.pollType
+    optionImages: optionImages()
+    pollTypeItems: compact Object.keys(AppConfig.pollTypes).map (key) =>
+      pollType = AppConfig.pollTypes[key]
+      return null unless pollType.enabled
+      {text: @$t('poll_common_form.voting_methods.'+pollType.vote_method), value: key}
 
     durations:
       [5, 10, 15, 20, 30, 45, 60, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240, null].map (minutes) =>
@@ -21,6 +28,20 @@ export default
           {text: @$t('common.all_day'), value: null}
 
   methods:
+    clearOptionsIfRequired: (newValue) ->
+      if newValue == 'meeting' || @lastPollType == 'meeting'
+        @poll.pollOptionNames = [] 
+      @lastPollType = newValue
+
+    removeOptionName: (optionName) ->
+      @poll.pollOptionNames = without(@poll.pollOptionNames, optionName)
+
+    addOption: ->
+      if @poll.addOption(@newOption)
+        @newOption = null
+      else
+        Flash.error('poll_poll_form.option_already_added')
+
     submit: ->
       actionName = if @poll.isNew() then 'created' else 'updated'
       @poll.setErrors({})
@@ -32,6 +53,14 @@ export default
           Flash.success "poll_#{poll.pollType}_form.#{poll.pollType}_#{actionName}"
       .catch => true
 
+  computed:
+    optionFormat: -> @$pollTypes[@poll.pollType].poll_option_name_format
+    i18nItems: -> 
+      compact 'agree abstain disagree yes no consent objection block'.split(' ').map (name) =>
+        return null if @poll.pollOptionNames.includes(name)
+        text: @$t('poll_proposal_options.'+name)
+        value: name
+
 </script>
 <template lang="pug">
 .poll-common-form
@@ -39,15 +68,9 @@ export default
      v-model="poll.processName"
     :label="$t('poll_common_form.process_name')"
     :hint="$t('poll_common_form.process_name_hint')")
+  validation-errors(:subject='poll' field='processName')
 
-  v-select(
-    v-model="poll.pollType"
-    :items="pollTypes"
-    :label="$t('poll_common_form.voting_method')")
-
-  p.text--secondary(v-if="poll.pollType" v-t="'poll_common_form.voting_methods.'+poll.pollType+'_hint'")
-
-  v-text-field.lmo-primary-form-input.poll-common-form-fields__title.text-h5(
+  v-text-field.poll-common-form-fields__title.text-h5(
     type='text'
     required='true'
     :placeholder="$t('poll_common_form.title_'+poll.pollType+'_placeholder')"
@@ -65,18 +88,60 @@ export default
     :label="$t('poll_common_form.details')"
     :should-reset="shouldReset")
 
-  template(v-if="poll.pollType == 'meeting'")
-    poll-meeting-form-options-field(
-      :poll="poll"
-      v-if="poll.pollType == 'meeting'")
+  v-select(
+    :label="$t('poll_common_form.voting_method')"
+    v-model="poll.pollType"
+    @change="clearOptionsIfRequired"
+    :hint="$t('poll_common_form.voting_methods.'+$pollTypes[poll.pollType].vote_method+'_hint')"
+    :items="pollTypeItems")
+
+  v-divider.my-4
+  v-list
+    v-subheader.px-0(v-t="'poll_common_form.options'")
+    v-subheader.px-0(v-if="!poll.pollOptionNames.length" v-t="'poll_common_form.no_options_add_some'")
+    v-list-item.px-0(:key="name" v-for="name in poll.pollOptionNames" v-if="poll.pollOptionNames.length")
+      v-list-item-icon(v-if="optionFormat == 'i18n'")
+        v-avatar(size="36px")
+          img(:src="'/img/' + optionImages[name] + '.svg'" aria-hidden="true")
+ 
+      v-list-item-content
+        v-list-item-title
+          span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+name") {{name}}
+          span(v-if="optionFormat == 'none'") {{name}}
+          span(v-if="optionFormat == 'iso8601'")
+            poll-meeting-time(:name="name")
+
+      v-list-item-action
+        v-btn(icon outlined @click="removeOptionName(name)")
+          v-icon mdi-minus
+
+  template(v-if="optionFormat == 'i18n'")
+    v-select(
+      outlined
+      v-model="newOption"
+      :items="i18nItems" 
+      :label="$t('poll_poll_form.add_option_placeholder')"
+      @change="addOption")
+
+  template(v-if="optionFormat == 'none'")
+    v-text-field(
+      v-model="newOption"
+      :label="$t('poll_poll_form.add_option_placeholder')"
+      @keydown.enter="addOption"
+      append-outer-icon="mdi-plus"
+      @click:append-outer="addOption"
+      outlined
+      color="primary"
+    )
+
+  template(v-if="optionFormat == 'iso8601'")
+    poll-meeting-add-option-menu(:poll="poll")
     v-select(
       v-model="poll.meetingDuration"
       :label="$t('poll_meeting_form.meeting_duration')"
-      :items="durations")
-  template(v-else)
-    poll-common-form-options-field(
-      :poll="poll"
-      v-if="poll.pollType != 'meeting'")
+      :items="durations"
+    )
+  v-divider.my-4
 
   .d-flex(v-if="poll.pollType == 'score'")
     v-text-field.poll-score-form__min(
@@ -103,18 +168,21 @@ export default
   template(v-if="poll.pollType == 'dot_vote'")
     v-subheader(v-t="'poll_dot_vote_form.dots_per_person'")
     v-text-field(type="number", min="1", v-model="poll.dotsPerPerson", single-line)
-    validation-errors(:subject="poll", field="dotsPerPerson")
+    validation-errors(:subject="poll" field="dotsPerPerson")
 
   poll-common-closing-at-field(:poll="poll")
   poll-common-settings(:poll="poll")
   common-notify-fields(:model="poll")
   v-card-actions.poll-common-form-actions
+    help-link(path="en/user_manual/polls/starting_proposals" text="poll_poll_form.help_starting_polls")
     v-spacer
-    v-btn.poll-common-form__submit(color="primary" @click='submit' v-if='!poll.isNew()' :loading="poll.processing")
-      span(v-t="'common.action.save_changes'")
-    v-btn.poll-common-form__submit(color="primary" @click='submit' v-if='poll.closingAt && poll.isNew()' :loading="poll.processing")
-      span(v-t="'poll_poll_form.start_header'")
-    v-btn.poll-common-form__submit(color="primary" @click='submit' v-if='!poll.closingAt && poll.isNew()' :loading="poll.processing")
-      span(v-t="{path: 'poll_common_form.start_poll_type', args: {poll_type: poll.translatedPollType()}}")
+    v-btn.poll-common-form__submit(
+      color="primary"
+      @click='submit()'
+      :loading="poll.processing"
+    )
+      span(v-if='!poll.id' v-t="'common.action.save_changes'")
+      span(v-if='poll.id && poll.closingAt' v-t="'poll_common_form.start_poll'")
+      span(v-if='poll.id && !poll.closingAt' v-t="'poll_common_form.save_poll'")
 
 </template>

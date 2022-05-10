@@ -7,7 +7,6 @@ import Session from '@/shared/services/session'
 import AuthModalMixin from '@/mixins/auth_modal'
 import Records from '@/shared/services/records'
 import { compact, snakeCase, camelCase, max, map } from 'lodash'
-import ThreadActivityMixin from '@/mixins/thread_activity'
 
 export default
   mixins: [ AuthModalMixin ]

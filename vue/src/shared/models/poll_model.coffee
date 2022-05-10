@@ -7,7 +7,7 @@ import EventBus         from '@/shared/services/event_bus'
 import I18n             from '@/i18n'
 import NullGroupModel   from '@/shared/models/null_group_model'
 import { addDays, startOfHour } from 'date-fns'
-import { compact, head, orderBy, sortBy, map, includes, difference, invokeMap, each, max, flatten, slice, uniq, isEqual, shuffle } from 'lodash'
+import { camelCase, compact, head, orderBy, sortBy, map, includes, difference, invokeMap, each, max, flatten, slice, uniq, isEqual, shuffle } from 'lodash'
 
 export default class PollModel extends BaseModel
   @singular: 'poll'
@@ -25,6 +25,7 @@ export default class PollModel extends BaseModel
   poll: -> @
 
   defaultValues: ->
+    # read defaults based on pollType and apply them
     discussionId: null
     title: ''
     details: ''
@@ -33,11 +34,15 @@ export default class PollModel extends BaseModel
     specifiedVotersOnly: false
     pollOptionNames: []
     pollType: 'single_choice'
-    minimumStanceChoices: null
-    canRespondMaybe: true
-    dotsPerPerson: null
-    maxScore: null
+    chartColumn: null
+    chartType: null
+    iconType: null
     minScore: null
+    maxScore: null
+    minimumStanceChoices: null
+    maximumStanceChoices: null
+    dotsPerPerson: null
+    canRespondMaybe: true
     meetingDuration: null
     allowLongReason: false
     files: []
@@ -57,6 +62,18 @@ export default class PollModel extends BaseModel
     tagIds: []
     hideResults: 'off'
     stanceCounts: []
+
+  applyPollTypeDefaults: ->
+    # chart_column
+    # chart_type
+    # icon_type
+    # min_score
+    # max_score
+    # minimum_stance_choices
+    # maximum_stance_choices
+    # dots_per_person
+    map AppConfig.pollTypes[@pollType].defaults, (value, key) =>
+      @[camelCase(key)] = value
 
   audienceValues: ->
     name: @group().name
@@ -210,17 +227,17 @@ export default class PollModel extends BaseModel
     return unless @isNew() and @hasRequiredField('minimum_stance_choices')
     @customFields.minimum_stance_choices = max [@pollOptionNames.length, 1]
 
-  hasRequiredField: (field) =>
-    includes AppConfig.pollTemplates[@pollType].required_custom_fields, field
+  # hasRequiredField: (field) =>
+  #   includes AppConfig.pollTemplates[@pollType].required_custom_fields, field
 
-  hasPollSetting: (setting) =>
-    AppConfig.pollTemplates[@pollType][setting]?
+  # hasPollSetting: (setting) =>
+  #   AppConfig.pollTemplates[@pollType][setting]?
 
-  hasVariableScore: ->
-    AppConfig.pollTemplates[@pollType]['has_variable_score']
+  # hasVariableScore: ->
+  #   AppConfig.pollTemplates[@pollType]['has_variable_score']
 
-  hasOptionIcons: ->
-    AppConfig.pollTemplates[@pollType]['has_option_icons']
+  # hasOptionIcons: ->
+  #   AppConfig.pollTemplates[@pollType]['has_option_icons']
 
   singleChoice: ->
     if @pollType == 'poll'

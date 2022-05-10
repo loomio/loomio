@@ -2,10 +2,9 @@
 
 count:
   enabled: false
-  name: poll_common.count
-  vote_method: buttons
   material_icon: mdi-check-circle
   poll_option_name_format: i18n
+  vote_method: show_thumbs
   defaults:
     chart_column: voter_percent
     chart_type: bar
@@ -17,11 +16,10 @@ count:
     dots_per_person: 1
 
 proposal:
-  name: poll_common_form.voting_methods.agreement
-  material_icon: mdi-thumbs-up-down
   enabled: true
-  vote_method: buttons
+  material_icon: mdi-thumbs-up-down
   poll_option_name_format: i18n
+  vote_method: show_thumbs
   defaults:
     chart_column: score_percent
     chart_type: pie
@@ -33,10 +31,11 @@ proposal:
     dots_per_person: 1
 
 poll:
-  name: poll_common_form.voting_methods.single_choice
-  material_icon: mdi-poll
   enabled: true
+  material_icon: mdi-poll
+  poll_option_name_format: 'none'
   vote_method: single_choice
+  can_shuffle_options: true
   defaults:
     chart_column: max_score_percent
     chart_type: bar
@@ -48,10 +47,11 @@ poll:
     dots_per_person: 1
 
 multiple_choice:
-  name: poll_common_form.voting_methods.multiple_choice
-  material_icon: mdi-poll
   enabled: true
+  material_icon: mdi-poll
+  poll_option_name_format: none
   vote_method: multiple_choice
+  can_shuffle_options: true
   defaults:
     chart_column: max_score_percent
     chart_type: bar
@@ -60,10 +60,11 @@ multiple_choice:
     max_score: 1
 
 dot_vote:
-  name: poll_common_form.voting_methods.allocate
-  material_icon: mdi-chart-bar-stacked
   enabled: true
-  vote_method: dot_vote
+  material_icon: mdi-chart-bar-stacked
+  poll_option_name_format: none
+  vote_method: allocate
+  can_shuffle_options: true
   defaults:
     chart_column: max_score_percent
     chart_type: bar
@@ -73,11 +74,11 @@ dot_vote:
     - dots_per_person
 
 score:
-  name: poll_common_form.voting_methods.score
-  material_icon: mdi-chart-gantt
   enabled: true
+  material_icon: mdi-chart-gantt
+  poll_option_name_format: none
   vote_method: score
-  chart_column: max_score_percent
+  can_shuffle_options: true
   defaults:
     chart_column: max_score_percent
     chart_type: bar
@@ -89,11 +90,11 @@ score:
     - max_score
 
 ranked_choice:
-  name: poll_common_form.voting_methods.rank
-  material_icon: mdi-format-list-numbered
   enabled: true
+  material_icon: mdi-format-list-numbered
+  poll_option_name_format: none
   vote_method: ranked_choice
-  chart_column: max_score_percent
+  can_shuffle_options: true
   defaults:
     chart_column: max_score_percent
     chart_type: bar
@@ -103,12 +104,11 @@ ranked_choice:
     - mininimum_stance_choices
 
 meeting:
-  name: poll_common_form.voting_methods.time_poll
-  material_icon: mdi-calendar-question
   enabled: true
-  vote_method: meeting
-  prevent_anonymous: true
+  material_icon: mdi-calendar-question
   poll_option_name_format: iso8601
+  prevent_anonymous: true
+  vote_method: time_poll
   defaults:
     chart_column: max_score_percent
     chart_type: grid

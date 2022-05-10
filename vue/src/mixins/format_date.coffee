@@ -7,6 +7,7 @@ import {each} from 'lodash'
 # this is a vue mixin
 export default
   computed:
+    $pollTypes: -> AppConfig.pollTypes
     currentUser: -> Session.user()
     currentUserId: -> AppConfig.currentUserId
 

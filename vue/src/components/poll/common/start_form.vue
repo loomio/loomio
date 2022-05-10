@@ -3,8 +3,7 @@ import AppConfig    from '@/shared/services/app_config'
 import Session      from '@/shared/services/session'
 import Records      from '@/shared/services/records'
 import EventBus     from '@/shared/services/event_bus'
-import { fieldFromTemplate } from '@/shared/helpers/poll'
-import {map, without} from 'lodash'
+import {map, without, compact} from 'lodash'
 
 export default
   props:
@@ -14,54 +13,47 @@ export default
     discussion:
       type: Object
       default: => {}
-    group: Object
-  methods:
-    openPollModal: (pollType) ->
-      EventBus.$emit 'openModal',
-        component: 'PollCommonModal'
-        maxWidth: 710
-        props:
-          poll: @newPoll(pollType)
+    group:
+      type: Object
+      default: => {}
 
-    pollTypes: ->
-      if @isModal
-        AppConfig.pollTypes
-      else
-        without AppConfig.pollTypes, 'proposal'
-
-    newPoll: (pollType) ->
-      Records.polls.build
+  data: ->
+    currentPoll: null
+    newPolls: compact Object.keys(AppConfig.pollTypes).map (pollType) =>
+      return null unless AppConfig.pollTypes[pollType].enabled
+      poll = Records.polls.build
         pollType: pollType
-        discussionId: @discussion.id
-        groupId: @discussion.groupId or @group.id
-        pollOptionNames: map @callFieldFromTemplate(pollType, 'poll_options_attributes'), 'name'
-        detailsFormat: Session.defaultFormat()
-
-    callFieldFromTemplate: (pollType, field) ->
-      fieldFromTemplate(pollType, field)
-
-    getAriaLabelForPollType: (pollType) ->
-      @$t("poll_types.#{pollType}")
+        groupId: @group.id
+        discussionId: @discussion.id 
+        voteMethod: AppConfig.pollTypes[pollType]
+      poll.applyPollTypeDefaults()
+      poll
 
 </script>
 
 <template lang="pug">
 .poll-common-start-form
-  v-list.decision-tools-card__poll-types(two-line dense)
+  v-list.decision-tools-card__poll-types(
+    v-if="!currentPoll"
+    two-line dense
+  )
     v-card-title(v-if="isModal")
       v-layout(justify-space-between style="align-items: center")
         .group-form__group-title
           h1.headline(v-t="'decision_tools_card.choose_type'")
         dismiss-modal-button
     v-list-item.decision-tools-card__poll-type(
-      :class="'decision-tools-card__poll-type--' + pollType"
-      @click='openPollModal(pollType)'
-      v-for='(pollType, index) in pollTypes()'
-      :key='index'
-      :aria-label='getAriaLabelForPollType(pollType)')
+      @click="currentPoll = poll"
+      :class="'decision-tools-card__poll-type--' + poll.pollType"
+      v-for='poll in newPolls'
+      :key='poll.pollType')
       v-list-item-avatar
-        v-icon {{callFieldFromTemplate(pollType, 'material_icon')}}
+        v-icon {{$pollTypes[poll.pollType].material_icon}}
       v-list-item-content
-        v-list-item-title.text-capitalize(v-t="'poll_types.' + pollType")
-        v-list-item-subtitle(v-t="'poll_' + pollType + '_form.tool_tip_collapsed'")
+        v-list-item-title(v-t="'poll_common_form.voting_methods.' + $pollTypes[poll.pollType].vote_method")
+        v-list-item-subtitle(v-t="'poll_common_form.voting_methods.' + $pollTypes[poll.pollType].vote_method + '_hint'")
+  poll-common-form.ma-4(
+    v-if="currentPoll"
+    :poll="currentPoll"
+  )
 </template>

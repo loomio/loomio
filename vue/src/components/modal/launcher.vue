@@ -21,7 +21,6 @@ import PollCommonReopenModal from '@/components/poll/common/reopen_modal'
 import PollCommonStartForm from '@/components/poll/common/start_form'
 import MoveThreadForm from '@/components/thread/move_thread_form'
 import PollCommonMoveForm from '@/components/poll/common/move_form'
-import PollCommonAddOptionModal from '@/components/poll/common/add_option_modal'
 import RevisionHistoryModal from '@/components/revision_history/modal'
 import TagsSelect from '@/components/tags/select'
 import TagsModal from '@/components/tags/modal'
@@ -63,7 +62,6 @@ export default
     PollCommonMoveForm
     ArrangementForm
     MoveThreadForm
-    PollCommonAddOptionModal
     PollCommonStartForm
     RevisionHistoryModal
     TagsModal

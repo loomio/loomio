@@ -10,6 +10,7 @@ module Ability::Comment
       (comment.discussion.members.exists?(user.id) && comment.author == user && comment.can_be_edited?) ||
       (comment.discussion.admins.exists?(user.id) && comment.group.admins_can_edit_user_content)
     end
+    
     can [:discard, :undiscard], ::Comment do |comment|
       (comment.author == user && comment.discussion.members.exists?(user.id)) ||
       comment.discussion.admins.exists?(user.id)

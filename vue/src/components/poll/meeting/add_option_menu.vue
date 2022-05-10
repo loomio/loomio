@@ -30,15 +30,19 @@ export default
 </script>
 <template lang="pug">
 .poll-meeting-add-option-menu
-  v-subheader(v-t="'poll_meeting_form.add_option_placeholder'")
-  date-time-picker(v-model="value" :min="min")
+  v-subheader.mx-0.px-0(v-t="'poll_poll_form.add_option_placeholder'")
+  .d-flex.align-center
+    date-time-picker(:min="min" v-model="value")
+    v-btn.poll-meeting-form__option-button.ml-4(
+      :title="$t('poll_meeting_time_field.add_time_slot')"
+      icon outlined color="primary"
+      @click='addOption()'
+    )
+      v-icon mdi-plus
   v-simple-table(dense style="max-height: 100px; overflow-y: scroll;")
     tbody
-      tr(v-for="z in zoneCounts" :key="z[0]")
+      tr(:key="z[0]" v-for="z in zoneCounts")
         td {{z[0].replace('_',' ')}}
         td {{timeInZone(z[0])}}
-
-  .d-flex.justify-end
-    v-btn.poll-meeting-form__option-button(outlined color="primary" @click='addOption()' v-t="'poll_meeting_time_field.add_time_slot'")
 
 </template>

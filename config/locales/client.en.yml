@@ -1948,18 +1948,20 @@ en:
   poll_common_form:
     voting_method: Voting method
     voting_methods:
+      show_thumbs: Show of thumbs
+      show_thumbs_hint: Voters agree or disagree by choosing thumbs up or down (or sideways)
       single_choice: Single choice
-      single_choice_hint: Voters choose one of the options
+      single_choice_hint: Voters select one of the options
       multiple_choice: Multiple choice
-      multiple_choice_hint: Voters choose one or more options
+      multiple_choice_hint: Voters select as many options as they need
       score: Score
-      score_hint: Voters assign each option a score between (for example) 0 and 5
-      dot_vote: Allocate
-      dot_vote_hint: Voters have a budget to allocate across the options. Also known as "Dot Vote".
+      score_hint: Voters give each option a score between (for example) 0 and 5
+      allocate: Allocate
+      allocate_hint: Voters allocate a budget across the options. Also known as "Dot Vote"
       ranked_choice: Ranked choice
-      ranked_choice_hint: Voters order the options from most to least favoured.
-      meeting: Time poll
-      meeting_hint: Voters indicate when they are available to meet.
+      ranked_choice_hint: Voters order the options from most to least favoured
+      time_poll: Time poll
+      time_poll_hint: Voters indicate when they are available from the list of options
 
     process_name: Process name
     process_name_hint: What does your group call this process? E.g. Proposal, Resolution, Agreement, Temperature check
@@ -1971,6 +1973,7 @@ en:
     title_dot_vote_placeholder: How should we allocate the budget within the company?
     title_ranked_choice_placeholder: Rank the candidates from most to least preferred
     title_meeting_placeholder: When are you available to meet?
+    no_options_add_some: This poll has no options, add some below.
     details: Details
     details_placeholder: Provide enough detail for voters to feel properly informed about their decision
     options: Options
@@ -1980,6 +1983,7 @@ en:
     closed: Closed
     start: Start
     start_poll: Start poll
+    save_poll: Save poll
     start_poll_type: Start {{poll_type}}
     share_poll_type: Share {{poll_type}}
     who_may_vote: Who may vote in this {{poll_type}}?
@@ -2013,6 +2017,8 @@ en:
     remove_option: Remove option
     poll_created: Poll created
     poll_updated: Poll updated
+    option_added: Option added
+    option_already_added: Option already added to poll
 
   poll_dot_vote_form:
     dots_per_person:  Points per person
@@ -2057,18 +2063,21 @@ en:
     vote: Vote
 
   poll_proposal_options:
+    select_an_option: Select an option
+    yes: 'Yes'
+    no: 'No'
     agree: Agree
     consent: Consent
-    agree_verb: "agreed"
-    agree_meaning: This proposal is good enough to be adopted by the group
     abstain: Abstain
-    abstain_verb: "abstained"
-    abstain_meaning: Not sure, don’t know or don’t mind. Will support the outcome either way
     disagree: Disagree
-    disagree_verb: "disagreed"
-    disagree_meaning: I don’t support the proposal. It should not go ahead.
     objection: Objection
     block: Block
+    disagree_verb: "disagreed"
+    abstain_verb: "abstained"
+    agree_verb: "agreed"
+    agree_meaning: This proposal is good enough to be adopted by the group
+    abstain_meaning: Not sure, don’t know or don’t mind. Will support the outcome either way
+    disagree_meaning: I don’t support the proposal. It should not go ahead.
     block_verb: "blocked"
     block_meaning: The urgent attention of the group is required to address a deep concern
     agree_abstain_disagree_block: 'Agree, Abstain, Disagree, Block'

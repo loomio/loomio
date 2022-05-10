@@ -1,6 +1,5 @@
 <script lang="coffee">
 import { compact, snakeCase, kebabCase } from 'lodash'
-import { fieldFromTemplate } from '@/shared/helpers/poll'
 
 export default
   props:
@@ -20,14 +19,12 @@ export default
     kebabify: (setting) -> kebabCase setting
 
   computed:
-    allowAnonymous: -> !fieldFromTemplate(@poll.pollType, 'prevent_anonymous')
+    allowAnonymous: -> !@$pollTypes[@poll.pollType].prevent_anonymous
     settings: ->
       compact [
-        ('multipleChoice'         if @poll.pollType == 'poll'),
-        ('shuffleOptions'         if ['poll', 'score', 'ranked_choice', 'dot_vote'].includes(@poll.pollType)),
+        ('shuffleOptions'         if @$pollTypes[@poll.pollType].can_shuffle_options),
         ('canRespondMaybe'        if @poll.pollType == 'meeting'),
         ('anonymous'              if @allowAnonymous),
-        ('voterCanAddOptions'     if fieldFromTemplate(@poll.pollType, 'can_add_options') && @poll.pollType != 'proposal'),
         ('allowLongReason')
       ]
 </script>

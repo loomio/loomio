@@ -1,6 +1,5 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
-import { fieldFromTemplate } from '@/shared/helpers/poll'
 import Flash from '@/shared/services/flash'
 import EventBus from '@/shared/services/event_bus'
 import Session        from '@/shared/services/session'
