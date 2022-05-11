@@ -19,10 +19,10 @@ export default
     kebabify: (setting) -> kebabCase setting
 
   computed:
-    allowAnonymous: -> !@$pollTypes[@poll.pollType].prevent_anonymous
+    allowAnonymous: -> !@poll.config().prevent_anonymous
     settings: ->
       compact [
-        ('shuffleOptions'         if @$pollTypes[@poll.pollType].can_shuffle_options),
+        ('shuffleOptions'         if @poll.config().can_shuffle_options),
         ('canRespondMaybe'        if @poll.pollType == 'meeting'),
         ('anonymous'              if @allowAnonymous),
         ('allowLongReason')

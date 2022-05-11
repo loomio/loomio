@@ -54,7 +54,7 @@ export default
       .catch => true
 
   computed:
-    optionFormat: -> @$pollTypes[@poll.pollType].poll_option_name_format
+    optionFormat: -> @poll.config().poll_option_name_format
     i18nItems: -> 
       compact 'agree abstain disagree yes no consent objection block'.split(' ').map (name) =>
         return null if @poll.pollOptionNames.includes(name)
@@ -92,7 +92,7 @@ export default
     :label="$t('poll_common_form.voting_method')"
     v-model="poll.pollType"
     @change="clearOptionsIfRequired"
-    :hint="$t('poll_common_form.voting_methods.'+$pollTypes[poll.pollType].vote_method+'_hint')"
+    :hint="$t('poll_common_form.voting_methods.'+poll.config().vote_method+'_hint')"
     :items="pollTypeItems")
 
   v-divider.my-4
@@ -173,7 +173,8 @@ export default
   poll-common-closing-at-field(:poll="poll")
   poll-common-settings(:poll="poll")
   common-notify-fields(:model="poll")
-  v-card-actions.poll-common-form-actions
+
+  .d-flex.justify-space-between.my-4.mt-8.poll-common-form-actions
     help-link(path="en/user_manual/polls/starting_proposals" text="poll_poll_form.help_starting_polls")
     v-spacer
     v-btn.poll-common-form__submit(

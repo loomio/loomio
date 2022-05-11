@@ -52,7 +52,7 @@ export default
       space
       v-chip.mr-2(:color="option.color" :index="index" :key="index") {{ option.name }}
   validation-errors(:subject='stance', field='stanceChoices')
-  poll-common-add-option-button(:poll='stance.poll()')
+  //- poll-common-add-option-button(:poll='stance.poll()')
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
     v-spacer

@@ -1,5 +1,3 @@
-# make as few migrations as possible .. none?
-
 count:
   enabled: false
   material_icon: mdi-check-circle
@@ -20,7 +18,13 @@ proposal:
   material_icon: mdi-thumbs-up-down
   poll_option_name_format: i18n
   vote_method: show_thumbs
+  i18n_defaults:
+    process_name: decision_tools_card.proposal_title
   defaults:
+    poll_option_names:
+      - agree
+      - abstain
+      - disagree
     chart_column: score_percent
     chart_type: pie
     icon_type: pie

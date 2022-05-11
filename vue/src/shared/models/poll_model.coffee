@@ -19,6 +19,9 @@ export default class PollModel extends BaseModel
     HasDocuments.apply @, showTitle: true
     HasTranslations.apply @
 
+  config: ->
+    AppConfig.pollTypes[@pollType]
+
   pollTypeKey: ->
     "poll_types.#{@pollType}"
 

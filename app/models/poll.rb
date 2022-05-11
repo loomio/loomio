@@ -394,7 +394,7 @@ class Poll < ApplicationRecord
   def discussion_group_is_poll_group
     return if poll.group.nil?
     return if poll.discussion.nil?
-    return if poll.discussion_id == poll.group_id
+    return if poll.discussion.group_id == poll.group_id
     self.errors.add(:group, 'Poll group is not discussion group')
   end
 

@@ -217,8 +217,6 @@ en:
       thismonth: 'This Month'
       older: 'Older'
     more_help: 'More help'
-    models:
-      proposal: 'Proposal'
     copy: 'Copy'
     reset: 'Reset'
     copy_text: 'Copy text'
@@ -1949,13 +1947,13 @@ en:
     voting_method: Voting method
     voting_methods:
       show_thumbs: Show of thumbs
-      show_thumbs_hint: Voters agree or disagree by choosing thumbs up or down (or sideways)
+      show_thumbs_hint: Voters agree or disagree by choosing thumbs up or down
       single_choice: Single choice
       single_choice_hint: Voters select one of the options
       multiple_choice: Multiple choice
       multiple_choice_hint: Voters select as many options as they need
       score: Score
-      score_hint: Voters give each option a score between (for example) 0 and 5
+      score_hint: Voters give each option a score between 0 and 5 (for example)
       allocate: Allocate
       allocate_hint: Voters allocate a budget across the options. Also known as "Dot Vote"
       ranked_choice: Ranked choice

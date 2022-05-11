@@ -25,7 +25,6 @@ export default
         pollType: pollType
         groupId: @group.id
         discussionId: @discussion.id 
-        voteMethod: AppConfig.pollTypes[pollType]
       poll.applyPollTypeDefaults()
       poll
 

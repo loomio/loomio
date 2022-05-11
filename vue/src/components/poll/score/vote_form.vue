@@ -57,7 +57,7 @@ form.poll-score-vote-form(@submit.prevent='submit()')
         //- template(v-slot:append)
         //-   v-text-field.poll-score-vote-form__score-input(v-model='choice.score' class="mt-0 pt-0" hide-details single-line type="number" style="width: 60px")
   validation-errors(:subject='stance', field='stanceChoices')
-  poll-common-add-option-button(:poll='poll')
+  //- poll-common-add-option-button(:poll='poll')
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
     v-spacer

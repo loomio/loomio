@@ -47,13 +47,12 @@ export default
 
 <template lang="pug">
 .poll-common-stance-choice.mr-1.mb-1(:class="'poll-common-stance-choice--' + pollType" row)
-  span(v-if="!poll.datesAsOptions()")
-    v-avatar(tile :size="size" v-if='poll.hasOptionIcons()')
-      img(:src="'/img/' + optionImages[pollOption.name] + '.svg'", :alt='optionName')
-    span.body-2(v-if='!poll.hasOptionIcons()')
-      v-icon.mr-2(small :color="pollOption.color") mdi-check
-      span {{ optionName }}
-  span(v-if="poll.datesAsOptions()")
-    v-chip(outlined :color="colorFor(stanceChoice.score)" @click="emitClick")
-      poll-meeting-time(:name="optionName")
+  v-avatar(tile :size="size" v-if='$pollTypes[poll.pollType].poll_option_name_format == "i18n"')
+    img(:src="'/img/' + optionImages[pollOption.name] + '.svg'", :alt='optionName')
+  span.body-2(v-if='$pollTypes[poll.pollType].poll_option_name_format == "none"')
+    v-icon.mr-2(small :color="pollOption.color") mdi-check
+    span {{ optionName }}
+  v-chip(v-if='$pollTypes[poll.pollType].poll_option_name_format == "iso8601"'
+    outlined :color="colorFor(stanceChoice.score)" @click="emitClick")
+    poll-meeting-time(:name="optionName")
 </template>

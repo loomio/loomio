@@ -53,7 +53,7 @@ export default
     v-checkbox.poll-common-vote-form__button(v-for='option in pollOptions' :key='option.id' v-model="selectedOptionIds" :value="option.id" :label="option.name" hide-details :color="option.color")
   v-radio-group.mb-6(v-if="!poll.multipleChoice" v-model="selectedOptionId")
     v-radio.poll-common-vote-form__button(v-for='option in pollOptions' :key='option.id' :value="option.id" :label="option.name" hide-details :color="option.color")
-  poll-common-add-option-button(:poll='stance.poll()')
+  //- poll-common-add-option-button(:poll='stance.poll()')
   validation-errors(:subject='stance', field='stanceChoices')
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions

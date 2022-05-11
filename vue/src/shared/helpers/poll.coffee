@@ -22,14 +22,6 @@ export optionImages = ->
   yes: 'yes'
   no: 'no'
 
-# A series of helpers for interacting with polls, such as template values for a
-# particular poll or getting the last stance from a given user
-export fieldFromTemplate = (pollType, field) ->
-  (AppConfig.pollTemplates[pollType] or {})[field]
-
-export iconFor = (poll) ->
-  fieldFromTemplate(poll.pollType, 'material_icon')
-
 export myLastStanceFor = (poll) ->
   head sortBy(Records.stances.find(
     pollId: poll.id,

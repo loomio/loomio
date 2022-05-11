@@ -1,6 +1,5 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
-import { iconFor }          from '@/shared/helpers/poll'
 import PollCommonDirective from '@/components/poll/common/directive.vue'
 import Flash   from '@/shared/services/flash'
 import { sortBy } from 'lodash'
@@ -19,10 +18,6 @@ export default
         Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
         @close()
       .catch (error) => true
-
-  computed:
-    icon: ->
-      iconFor(@stance.poll())
 </script>
 <template lang="pug">
 v-card.poll-common-edit-vote-modal
@@ -36,5 +31,4 @@ v-card.poll-common-edit-vote-modal
 
   v-sheet.pa-4
     poll-common-directive(name="vote-form" :stance="stance")
-
 </template>

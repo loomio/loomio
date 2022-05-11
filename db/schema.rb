@@ -653,6 +653,14 @@ ActiveRecord::Schema.define(version: 2022_05_06_042800) do
     t.boolean "shuffle_options", default: false, null: false
     t.boolean "allow_long_reason", default: false, null: false
     t.integer "hide_results", default: 0, null: false
+    t.string "chart_type"
+    t.string "chart_column"
+    t.string "icon_type"
+    t.integer "min_score"
+    t.integer "max_score"
+    t.integer "minimum_stance_choices"
+    t.integer "maximum_stance_choices"
+    t.integer "dots_per_person"
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"
