@@ -24,9 +24,10 @@ class MybbService
     	posts.each do |post|
     		# create user if not exists
     		unless user_ids[post['uid']]
-    			u = User.create!(
+    			email = "#{post['username'].parameterize.gsub('-','')}@mybb.example.com"
+    			u = User.find_by(email: email) || u = User.create!(
     				name: post['username'],
-    				email: "#{post['username'].parameterize.gsub('-','')}@mybb.example.com"
+    				email: email
   				)
     			user_ids[post['uid']] = u.id
     		end
@@ -38,7 +39,9 @@ class MybbService
     				author_id: user_ids[post['uid']],
     				title: post['subject'], 
     				description: convert_text(post['message']),
-    				created_at: Time.at(post['dateline'].to_i))
+    				created_at: Time.at(post['dateline'].to_i),
+    				updated_at: Time.at(post['dateline'].to_i)
+  				)
     			d.create_missing_created_event!
     			discussion_ids[post['tid']] = d.id
     		else
@@ -49,6 +52,7 @@ class MybbService
 	    				discussion_id: discussion_ids[post['tid']],
 	    				user_id: user_ids[post['uid']],
 	    				created_at: Time.at(post['dateline'].to_i),
+	    				updated_at: Time.at(post['dateline'].to_i),
 	    				body: convert_text(post['message'])
 	  				)
 	  				comment_ids[post['pid']] = comment.id
@@ -56,12 +60,14 @@ class MybbService
 	  					user_id: user_ids[post['uid']],
 	  					discussion_id: discussion_ids[post['tid']],
 	  					kind: "new_comment",
-	  					eventable: comment
+	  					eventable: comment,
+	  					created_at: Time.at(post['dateline'].to_i),
+	  					updated_at: Time.at(post['dateline'].to_i)
 						)
 	  			end
 	  		end
     	end
 		end
-		discussion_ids.each {|id| EventService.repair_thread(id)}
+		Discussion.where(group_id: group_id).pluck(:id).each {|id| EventService.repair_thread(id)}
 	end
 end
