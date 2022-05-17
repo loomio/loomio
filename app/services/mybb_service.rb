@@ -21,7 +21,7 @@ class MybbService
 
     ActiveRecord::Base.transaction do
     	# create discussions
-    	posts.each do |post|
+    	posts.sort_by {|post| post['replyto'].to_i }.each do |post|
     		# create user if not exists
     		unless user_ids[post['uid']]
     			email = "#{post['username'].parameterize.gsub('-','')}@mybb.example.com"
