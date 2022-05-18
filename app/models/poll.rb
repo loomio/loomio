@@ -298,35 +298,44 @@ class Poll < ApplicationRecord
     )
   end
 
-  # people who can vote.
-  def base_membership_query(admin: false)
-    if persisted? && specified_voters_only && !admin
-      # voters
+  # people who administer the poll (not necessarily vote)
+  def admins
+    User.active.
+      joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.discussion_id || 0} AND dr.user_id = users.id").
+      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
+      joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
+      joins("LEFT OUTER JOIN polls p ON p.author_id = users.id AND p.id = #{self.id || 0}").
+      where("(p.author_id = users.id) OR
+             (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL AND dr.admin = TRUE) OR
+             (m.id  IS NOT NULL AND m.archived_at IS NULL AND m.admin = TRUE) OR
+             (s.id  IS NOT NULL AND s.revoked_at  IS NULL AND latest = TRUE AND s.admin = TRUE)")
+  end
+
+  # people who can vote
+  def voters
+    if persisted? && specified_voters_only
       User.active.
-        joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
-        joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
-        where("s.id IS NOT NULL AND s.revoked_at IS NULL AND latest = TRUE")
+      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
+      joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
+      where("s.id IS NOT NULL AND s.revoked_at IS NULL AND latest = TRUE")
     else
-      User.active.
-        joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.discussion_id || 0} AND dr.user_id = users.id").
-        joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
-        joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
-        where("(dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL #{'AND dr.admin = TRUE' if admin}) OR
-               (m.id  IS NOT NULL AND m.archived_at IS NULL #{'AND m.admin = TRUE' if admin}) OR
-               (s.id  IS NOT NULL AND s.revoked_at  IS NULL AND latest = TRUE #{'AND s.admin = TRUE' if admin})")
+      members
     end
   end
 
-  def admins
-    base_membership_query(admin: true)
-  end
-
+  # people who can read the poll, not necessarily vote
   def members
-    base_membership_query
+      User.active.
+      joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.discussion_id || 0} AND dr.user_id = users.id").
+      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
+      joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
+      where("(dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
+             (m.id  IS NOT NULL AND m.archived_at IS NULL) OR
+             (s.id  IS NOT NULL AND s.revoked_at  IS NULL AND latest = TRUE)")
   end
 
-  def guests
-    base_membership_query.where('m.group_id is null')
+  def guest_voters
+    voters.where('m.group_id is null')
   end
 
   def non_voters

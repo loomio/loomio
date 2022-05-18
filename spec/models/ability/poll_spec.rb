@@ -14,7 +14,7 @@ describe "poll abilities" do
     context "as poll admin" do
       before { poll.stances.create!(participant_id: actor.id, admin: true, latest: true) }
       it {should be_able_to(:vote_in, poll)}
-      it {should be_able_to(:add_members, poll)}
+      it {should be_able_to(:add_voters, poll)}
       it {should be_able_to(:announce, poll)}
       it {should be_able_to(:add_guests, poll)}
     end
@@ -22,14 +22,14 @@ describe "poll abilities" do
     context "as poll member" do
       before { poll.stances.create!(participant_id: actor.id, latest: true) }
       it {should     be_able_to(:vote_in, poll)}
-      it {should     be_able_to(:add_members, poll)}
+      it {should_not be_able_to(:add_voters, poll)}
       it {should_not be_able_to(:announce, poll)}
       it {should_not be_able_to(:add_guests, poll)}
     end
 
     context "as unrelated" do
       it {should_not be_able_to(:vote_in, poll)}
-      it {should_not be_able_to(:add_members, poll)}
+      it {should_not be_able_to(:add_voters, poll)}
       it {should_not be_able_to(:announce, poll)}
       it {should_not be_able_to(:add_guests, poll)}
     end
@@ -46,7 +46,7 @@ describe "poll abilities" do
                      members_can_add_guests: false)
       end
 
-      it {should be_able_to(:add_members, poll)}
+      it {should be_able_to(:add_voters, poll)}
       it {should be_able_to(:announce, poll)}
       it {should be_able_to(:add_guests, poll)}
       it {should be_able_to(:update, poll)}

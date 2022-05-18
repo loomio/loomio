@@ -25,11 +25,15 @@ export default
 
   methods:
     lastStanceOrNew: ->
-      @poll.myStance() || Records.stances.build(
+      stance = @poll.myStance() || Records.stances.build(
         reasonFormat: Session.defaultFormat()
         pollId:    @poll.id,
         userId:    AppConfig.currentUserId
-      ).choose(@$route.params.poll_option_id)
+      )
+      if @$route.params.poll_option_id
+        stance.choose(@$route.params.poll_option_id)
+      stance
+
 
 </script>
 

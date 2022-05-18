@@ -65,8 +65,20 @@ describe PollService do
       expect(stance.reload.revoked_at).to be nil
       MembershipService.destroy(membership: membership, actor: poll.group.admins.first)
       expect(stance.reload.revoked_at).to be_present
+      poll.group.add_member!(member)
       PollService.create_stances(poll: poll, actor: actor, user_ids: [member.id])
       expect(stance.reload.revoked_at).to be_nil
+    end
+
+    it 'cant invite revoked users who are not in the group' do
+      PollService.create_stances(poll: poll, actor: actor, user_ids: [member.id])
+      stance = Stance.where(poll: poll, participant: member.id).first
+      membership = Membership.where(group: poll.group, user: member).first
+      expect(stance.reload.revoked_at).to be nil
+      MembershipService.destroy(membership: membership, actor: poll.group.admins.first)
+      expect(stance.reload.revoked_at).to be_present
+      PollService.create_stances(poll: poll, actor: actor, user_ids: [member.id])
+      expect(stance.reload.revoked_at).to be_present
     end
 
     it 'uses normal volume by default' do
