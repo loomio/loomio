@@ -276,7 +276,7 @@ class RecordCache
     collection.each do |stance|
       @user_ids.push stance.participant_id
       scope[:stances_by_id][stance.id] = stance
-      if stance.participant_id == current_user_id
+      if stance.participant_id == current_user_id && stance.revoked_at.nil?
         scope[:my_stances_by_poll_id][stance.poll_id] = stance 
       end
     end

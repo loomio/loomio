@@ -14,6 +14,10 @@ export default
     stance: null
 
   created: ->
+    EventBus.$on 'deleteMyStance', (pollId) =>
+      if pollId == @poll.id
+        @stance = null 
+
     @watchRecords
       collections: ["stances"]
       query: (records) =>

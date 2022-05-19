@@ -61,7 +61,7 @@ export default new class StanceService
     canPerform: (poll, user) ->
       poll.adminsInclude(Session.user()) && poll.adminsInclude(user)
     perform: (poll, user) ->
-      Records.remote.post 'stances/remove_admin', participant_id: user.id, poll_id: poll.id, exclude_types: 'discussion'
+      Records.remote.post('stances/remove_admin', participant_id: user.id, poll_id: poll.id, exclude_types: 'discussion')
 
   revoke:
     name: 'membership_dropdown.remove_from.poll'
@@ -69,5 +69,7 @@ export default new class StanceService
       poll.adminsInclude(Session.user())
     perform: (poll, user) ->
       Records.remote.post 'stances/revoke', {participant_id: user.id, poll_id: poll.id}
-      .then ->
+      .then =>
+        if user.id == Session.user().id
+          EventBus.$emit('deleteMyStance', poll.id) 
         Flash.success "membership_remove_modal.invitation.flash"
