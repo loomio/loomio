@@ -187,14 +187,6 @@ describe API::V1::AnnouncementsController do
             expect(response.status).to eq 200
               expect(JSON.parse(response.body)['stances'].length).to eq group.members.count
           end
-
-          describe 'specified_voters_only=true' do
-            before { poll.update(specified_voters_only: true) }
-            it 'prevents member notifying group' do
-              post :create, params: {poll_id: poll.id, recipient_audience: 'group'}
-              expect(response.status).to eq 403
-            end
-          end
         end
       end
 
