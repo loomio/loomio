@@ -12,6 +12,6 @@ class API::V1::NotificationsController < API::V1::RestfulController
   end
 
   def accessible_records
-    current_user.notifications.includes(:actor, :event).order(id: :desc)
+    current_user.notifications.includes(:actor, :event).order(created_at: :desc)
   end
 end
