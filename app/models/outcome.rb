@@ -13,6 +13,7 @@ class Outcome < ApplicationRecord
 
   set_custom_fields :event_summary, :event_description, :event_location
 
+  scope :latest, -> { where(latest: true) }
   scope :dangling, -> { joins('left join polls on polls.id = poll_id').where('polls.id is null') }
   scope :in_organisation, -> (group) { joins(:poll).where('polls.group_id': group.id_and_subgroup_ids) }
   belongs_to :poll, required: true
@@ -23,7 +24,7 @@ class Outcome < ApplicationRecord
 
   %w(
     title poll_type dates_as_options group group_id discussion discussion_id
-    locale mailer anyone_can_participate members admins guests discarded? tags
+    locale mailer anyone_can_participate members admins guest_voters discarded? tags
   ).each { |message| delegate message, to: :poll }
 
   is_mentionable on: :statement

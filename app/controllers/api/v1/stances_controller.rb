@@ -62,12 +62,14 @@ class API::V1::StancesController < API::V1::RestfulController
   def remove_admin
     current_user.ability.authorize! :remove_admin, stance
     stance.update(admin: false)
+    stance.poll.update_counts!
     respond_with_resource
   end
 
   def revoke
     current_user.ability.authorize! :remove, stance
     stance.update(revoked_at: Time.zone.now)
+    stance.poll.update_counts!
     respond_with_resource
   end
 

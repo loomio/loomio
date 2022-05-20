@@ -121,6 +121,12 @@ export default class PollModel extends BaseModel
     stance = @stanceFor(user)
     (stance && stance.admin) || (@discussionId && @discussion().adminsInclude(user)) || @group().adminsInclude(user)
 
+  votersInclude: (user) ->
+    if specifiedVotersOnly
+      @stanceFor(user)
+    else
+      @membersInclude(user)
+
   membersInclude: (user) ->
     @stanceFor(user) || (@discussionId && @discussion().membersInclude(user)) || @group().membersInclude(user)
 
@@ -128,10 +134,10 @@ export default class PollModel extends BaseModel
     head orderBy(@recordStore.stances.find(pollId: @id, participantId: user.id, latest: true, revokedAt: null), 'createdAt', 'desc')
 
   myStance: ->
-    @recordStore.stances.find(@myStanceId)
+    @recordStore.stances.find(id: @myStanceId, revokedAt: null)[0]
 
   iHaveVoted: ->
-    @myStanceId && @myStance().castAt
+    @myStanceId && @myStance() && @myStance().castAt
 
   showResults: ->
     switch @hideResults
