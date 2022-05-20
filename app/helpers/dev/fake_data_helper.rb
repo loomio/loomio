@@ -219,17 +219,10 @@ module Dev::FakeDataHelper
   def fake_stance(args = {})
     poll = args[:poll] || saved(fake_poll)
 
-    choice = if poll.minimum_stance_choices > 1
-      poll.poll_options.sample(poll.minimum_stance_choices).map do |option|
-        [option.name, fake_score(poll)]
-      end.to_h
-    elsif poll.require_all_choices
-      poll.poll_options.map do |option|
-        [option.name, fake_score(poll)]
-      end.to_h
-    else
-      poll.poll_option_names.sample
-    end
+    num_choices = (poll.minimum_stance_choices..poll.maximum_stance_choices).to_a.sample
+    choice =  poll.poll_options.sample(num_choices).map do |option|
+      [option.name, fake_score(poll)]
+    end.to_h
 
     Stance.new({
       poll: poll,
@@ -364,6 +357,9 @@ module Dev::FakeDataHelper
       u = fake_user
       poll.group.add_member!(u) if poll.group
       stance = fake_stance(poll: poll)
+      if !stance.valid?
+        byebug
+      end
       stance.save!
     end
     poll.update_counts!

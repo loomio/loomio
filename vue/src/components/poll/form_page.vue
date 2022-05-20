@@ -4,56 +4,67 @@ import EventBus from '@/shared/services/event_bus'
 import Session from '@/shared/services/session'
 import Flash  from '@/shared/services/flash'
 import PollCommonForm from '@/components/poll/common/form'
+import PollCommonChooseTemplate from '@/components/poll/common/choose_template'
 
 export default
-  components: {PollCommonForm}
+  components: {PollCommonForm, PollCommonChooseTemplate}
 
   data: ->
+    loading: false
     poll: null
+    group: null
+    discussion: null
 
-  created: -> @init()
+  created: ->
+    if discussionId = parseInt(@$route.query.discussion_id)
+      @loading = true
+      Records.discussions.findOrFetchById(discussionId).then (discussion) =>
+        @discussion = discussion
+        @group = discussion.group()
+        @loading = false
+
+    if groupId = parseInt(@$route.query.group_id)
+      @loading = true
+      Records.groups.findOrFetchById(groupId).then (group) =>
+        @group = group
+        @loading = false
+
+    if @$route.params.key
+      @loading = true
+      Records.polls.findOrFetchById(@$route.params.key)
+      .then (poll) =>
+        @poll = poll.clone()
+        EventBus.$emit 'currentComponent',
+          group: poll.group()
+          poll:  poll
+          title: poll.title
+          page: 'pollFormPage'
+        @loading = false
+      .catch (error) ->
+        EventBus.$emit 'pageError', error
+        if error.status == 403 && !Session.isSignedIn()
+          EventBus.$emit 'openAuthModal'
 
   methods:
-    init: ->
-      if @$route.params.key
-        Records.polls.findOrFetchById(@$route.params.key)
-        .then (poll) =>
-          @poll = poll.clone()
-
-          EventBus.$emit 'currentComponent',
-            group: poll.group()
-            poll:  poll
-            title: poll.title
-            page: 'pollFormPage'
-
-        .catch (error) ->
-          EventBus.$emit 'pageError', error
-          EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()
-      else
-        console.log "hi"
-        @poll = Records.polls.build()
-
-  computed:
-    title_key: ->
-      mode = if @poll.isNew()
-        'polls_panel.new_poll'
-      else
-        'actions_dock.edit_poll'
-
+    setPoll: (poll) ->
+      @poll = poll
 
 </script>
 <template lang="pug">
 .poll-form-page
   v-main
     v-container.max-width-800
-      loading(:until="poll")
-        v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" v-if="poll")
-          submit-overlay(:value="poll.processing")
-          v-card-title
-            h1.headline(tabindex="-1" v-t="title_key")
-            v-spacer
-            v-btn(icon :to="urlFor(poll)" aria-hidden='true')
-              v-icon mdi-close
+      loading(:until="!loading")
+        v-card.poll-common-modal
           div.pa-4
-            poll-common-form(:poll='poll')
+            poll-common-form(
+              v-if="poll"
+              :poll="poll"
+              @setPoll="setPoll")
+            poll-common-choose-template(
+              v-if="!poll"
+              @setPoll="setPoll"
+              :discussion="discussion"
+              :group="group"
+            )
 </template>

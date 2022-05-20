@@ -1,58 +1,24 @@
 <script lang="coffee">
-import AppConfig    from '@/shared/services/app_config'
-import Session      from '@/shared/services/session'
-import Records      from '@/shared/services/records'
-import EventBus     from '@/shared/services/event_bus'
-import {map, without, compact} from 'lodash'
+import Records from '@/shared/services/records'
+import EventBus from '@/shared/services/event_bus'
+import Session from '@/shared/services/session'
+import Flash  from '@/shared/services/flash'
+import PollCommonForm from '@/components/poll/common/form'
+import PollCommonChooseTemplate from '@/components/poll/common/choose_template'
 
 export default
-  props:
-    isModal:
-      type: Boolean
-      default: false
-    discussion:
-      type: Object
-      default: => {}
-    group:
-      type: Object
-      default: => {}
+  components: {PollCommonForm, PollCommonChooseTemplate}
 
   data: ->
-    currentPoll: null
-    newPolls: compact Object.keys(AppConfig.pollTypes).map (pollType) =>
-      return null unless AppConfig.pollTypes[pollType].enabled
-      poll = Records.polls.build
-        pollType: pollType
-        groupId: @group.id
-        discussionId: @discussion.id 
-      poll.applyPollTypeDefaults()
-      poll
+    poll: null
+
+  methods:
+    setPoll: (poll) -> @poll = poll
 
 </script>
-
 <template lang="pug">
 .poll-common-start-form
-  v-list.decision-tools-card__poll-types(
-    v-if="!currentPoll"
-    two-line dense
-  )
-    v-card-title(v-if="isModal")
-      v-layout(justify-space-between style="align-items: center")
-        .group-form__group-title
-          h1.headline(v-t="'decision_tools_card.choose_type'")
-        dismiss-modal-button
-    v-list-item.decision-tools-card__poll-type(
-      @click="currentPoll = poll"
-      :class="'decision-tools-card__poll-type--' + poll.pollType"
-      v-for='poll in newPolls'
-      :key='poll.pollType')
-      v-list-item-avatar
-        v-icon {{$pollTypes[poll.pollType].material_icon}}
-      v-list-item-content
-        v-list-item-title(v-t="'poll_common_form.voting_methods.' + $pollTypes[poll.pollType].vote_method")
-        v-list-item-subtitle(v-t="'poll_common_form.voting_methods.' + $pollTypes[poll.pollType].vote_method + '_hint'")
-  poll-common-form.ma-4(
-    v-if="currentPoll"
-    :poll="currentPoll"
-  )
+  div.pa-4
+    poll-common-form(:poll="poll" v-if="poll" @setPoll="setPoll")
+    poll-common-choose-template(v-if="!poll" @setPoll="setPoll")
 </template>

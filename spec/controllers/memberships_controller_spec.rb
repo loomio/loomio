@@ -90,7 +90,6 @@ describe MembershipsController do
     end
 
     context 'with an associated identity' do
-      before { group.group_identities.create(identity: create(:slack_identity)) }
 
       it 'redirects to the group if a member' do
         group.add_member! another_user

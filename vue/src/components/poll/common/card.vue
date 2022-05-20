@@ -52,7 +52,7 @@ v-sheet
     h1.poll-common-card__title.display-1(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
       poll-common-type-icon.mr-2(:poll="poll")
       span(v-if='!poll.translation.title') {{poll.title}}
-      translation(v-if="poll.translation.title" :model='poll', field='title')
+      translation(:model='poll' field='title' v-if="poll.translation.title")
       //- v-chip.ml-3(outlined label x-small color="info" v-t="'poll_types.' + poll.pollType")
       tags-display(:tags="poll.tags()")
     poll-common-set-outcome-panel(:poll='poll' v-if="!outcome")
@@ -60,8 +60,9 @@ v-sheet
     poll-common-details-panel(:poll='poll')
     poll-common-chart-panel(:poll='poll')
     poll-common-action-panel(:poll='poll')
-    action-dock.mt-4(:actions="dockActions" :menu-actions="menuActions")
-
+    action-dock.mt-4(
+      :menu-actions="menuActions"
+      :actions="dockActions")
     .poll-common-card__results-shown.mt-4
       poll-common-votes-panel(:poll='poll')
 </template>

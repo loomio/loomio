@@ -2,7 +2,7 @@ import DashboardPage from './components/dashboard/page'
 import InboxPage from './components/inbox/page'
 import ExplorePage from './components/explore/page'
 import ProfilePage from './components/profile/page'
-import PollPage from './components/poll/page'
+import PollShowPage from './components/poll/show_page'
 import PollFormPage from './components/poll/form_page'
 import TasksPage from './components/tasks/page'
 import GroupPage from './components/group/page.vue'
@@ -70,7 +70,7 @@ router = new Router
     {path: '/email_preferences', component: EmailSettingsPage },
     {path: '/p/:key/edit', component: PollFormPage },
     {path: '/p/new', component: PollFormPage },
-    {path: '/p/:key/:stub?', component: PollPage},
+    {path: '/p/:key/:stub?', component: PollShowPage},
     {path: '/u/:key/:stub?', component: UserPage },
     {path: '/d/new', component: StartDiscussionPage },
     {path: '/d/:key/edit', component: StartDiscussionPage },

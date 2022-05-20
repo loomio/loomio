@@ -123,11 +123,6 @@ class Group < ApplicationRecord
   delegate :include?, to: :users, prefix: true
   delegate :members, to: :parent, prefix: true
 
-  delegate :slack_team_id, to: :slack_identity, allow_nil: true
-  delegate :slack_channel_id, to: :slack_identity, allow_nil: true
-  delegate :slack_team_name, to: :slack_identity, allow_nil: true
-  delegate :slack_channel_name, to: :slack_identity, allow_nil: true
-
   has_one_attached :cover_photo, dependent: :detach
   has_one_attached :logo, dependent: :detach
 
@@ -323,10 +318,6 @@ class Group < ApplicationRecord
 
   def id_and_subgroup_ids
     subgroup_ids.concat([id]).compact
-  end
-
-  def slack_identity
-    identity_for(:slack)
   end
 
   def identity_for(type)

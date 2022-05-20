@@ -22,18 +22,34 @@ class Poll < ApplicationRecord
                     :can_respond_maybe
 
   # these used to be custom fields, but we're migrating them to regular columns
-  deprecated_custom_fields :max_score,
-                           :min_score,
-                           :dots_per_person,
-                           :minimum_stance_choices
+  TEMPLATE_DEFAULT_FIELDS = %w[
+    max_score
+    min_score
+    dots_per_person
+    minimum_stance_choices
+  ]
+
+  TEMPLATE_DEFAULT_FIELDS.each do |field|
+    define_method field,        -> { self[field] || self[:custom_fields][field] || AppConfig.poll_types.dig(self.poll_type, 'defaults', field) }
+    define_method :"#{field}=", ->(value) { self[:custom_fields].delete(field); self[field] = value }
+  end
 
   TEMPLATE_FIELDS = %w(prevent_anonymous
                        vote_method
                        material_icon
-                       poll_option_name_format).freeze
+                       poll_option_name_format
+                       require_all_choices).freeze
 
   TEMPLATE_FIELDS.each do |field|
     define_method field, -> { AppConfig.poll_types.dig(self.poll_type, field) }
+  end
+
+  def maximum_stance_choices
+    self[:maximum_stance_choices] || self[:custom_fields][:maximum_stance_choices] || poll.poll_options.length 
+  end
+
+  def poll_type_validations
+    AppConfig.poll_types.dig(self.poll_type, 'poll_type_validations') || []
   end
 
   def chart_type
@@ -133,6 +149,18 @@ class Poll < ApplicationRecord
 
   delegate :locale, to: :author
 
+  def has_score_icons
+    vote_method == "time_poll"
+  end
+
+  def has_option_icons
+    vote_method == "show_thumbs"
+  end
+
+  def has_variable_score
+    !(min_score == max_score)
+  end
+
   def is_single_vote?
     poll_type != "single_choice"
   end
@@ -141,7 +169,11 @@ class Poll < ApplicationRecord
     poll_type != "meeting"
   end
   
- def result_columns
+  def dates_as_options
+    poll_option_name_format == 'iso8601'
+  end
+
+  def result_columns
     case poll_type
     when 'proposal'
       %w[chart name score_percent voter_count voters]
@@ -161,6 +193,7 @@ class Poll < ApplicationRecord
       %w[chart name score voters]
     end
   end
+  
   def results
     PollService.calculate_results(self, self.poll_options)
   end
@@ -274,7 +307,7 @@ class Poll < ApplicationRecord
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
       joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
       joins("LEFT OUTER JOIN polls p ON p.author_id = users.id AND p.id = #{self.id || 0}").
-      where("(p.author_id = users.id) OR
+      where("(p.author_id = users.id AND m.id IS NOT NULL) OR
              (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL AND dr.admin = TRUE) OR
              (m.id  IS NOT NULL AND m.archived_at IS NULL AND m.admin = TRUE) OR
              (s.id  IS NOT NULL AND s.revoked_at  IS NULL AND latest = TRUE AND s.admin = TRUE)")

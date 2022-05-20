@@ -29,7 +29,7 @@ export default
       @poll.pollType
 
     optionName: ->
-      if @poll.translateOptionName()
+      if AppConfig.pollTypes[@poll.pollType].poll_option_name_format == 'i18n'
         @$t('poll_' + @pollType + '_options.' + @stanceChoice.pollOption.name)
       else
         @stanceChoice.pollOption.name

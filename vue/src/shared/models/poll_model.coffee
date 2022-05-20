@@ -232,27 +232,8 @@ export default class PollModel extends BaseModel
     @pollOptionNames.sort() if @pollType == "meeting"
     option
 
-  setMinimumStanceChoices: =>
-    return unless @isNew() and @hasRequiredField('minimum_stance_choices')
-    @customFields.minimum_stance_choices = max [@pollOptionNames.length, 1]
-
-  # hasRequiredField: (field) =>
-  #   includes AppConfig.pollTemplates[@pollType].required_custom_fields, field
-
-  # hasPollSetting: (setting) =>
-  #   AppConfig.pollTemplates[@pollType][setting]?
-
-  # hasVariableScore: ->
-  #   AppConfig.pollTemplates[@pollType]['has_variable_score']
-
-  # hasOptionIcons: ->
-  #   AppConfig.pollTemplates[@pollType]['has_option_icons']
-
-  singleChoice: ->
-    if @pollType == 'poll'
-      !@multipleChoice
-    else
-      AppConfig.pollTemplates[@pollType]['single_choice']
+  hasVariableScore: -> @minScore != @maxScore
+  singleChoice: -> @minimumStanceChoices == @maximumStanceChoices == 1
 
   translateOptionName: ->
     AppConfig.pollTemplates[@pollType]['translate_option_name']

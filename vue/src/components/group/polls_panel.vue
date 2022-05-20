@@ -148,7 +148,7 @@ export default
           v-list-item(v-for="pollType in pollTypes" :key="pollType" :to="mergeQuery({poll_type: pollType})" )
             v-list-item-title(v-t="'poll_types.'+pollType")
       v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_polls', {name: group.name})" append-icon="mdi-magnify")
-      v-btn.polls-panel__new-poll-button(@click='openSelectPollTypeModal' color='primary' v-if='canStartPoll' v-t="'polls_panel.new_poll'")
+      v-btn.polls-panel__new-poll-button(:to="'/p/new?group_id='+group.id" color='primary' v-if='canStartPoll' v-t="'polls_panel.new_poll'")
     v-card(outlined)
       div(v-if="loader.status == 403")
         p.pa-4.text-center(v-t="'error_page.forbidden'")

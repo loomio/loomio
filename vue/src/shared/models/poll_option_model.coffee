@@ -22,32 +22,7 @@ export default class PollOptionModel extends BaseModel
     @stances().forEach (stance) -> stance.remove()
 
   optionName: ->
-    if @poll().translateOptionName()
+    if @poll().config().poll_option_name_format == 'i18n'
       I18n.t('poll_' + @poll().pollType + '_options.' + @name)
     else
       @name
-
-  # averageScore: ->
-  #   voterIds = @voterIds()
-  #   return 0 unless voterIds.length
-  #   Math.round( (@totalScore / voterIds.length) * 10 + Number.EPSILON ) / 10
-
-  # voterIds: ->
-  #   # this is a hack, we both know this
-  #   # some polls 0 is a vote, others it is not
-  #   if @poll().pollType == 'meeting'
-  #     Object.entries(@voterScores).map((e) -> parseInt(e[0]))
-  #   else
-  #     Object.entries(@voterScores).filter((e) -> e[1] > 0).map((e) -> parseInt(e[0]))
-
-  # voters: (limit = 1000) ->
-  #   @recordStore.users.find(slice(@voterIds(), 0, limit))
-
-  # scorePercent: ->
-  #   parseInt(parseFloat(@totalScore) / parseFloat(@poll().totalScore) * 100) || 0
-
-  # rawScorePercent: ->
-  #   parseFloat(@totalScore) / parseFloat(@poll().totalScore) * 100
-
-  # barChartPct: ->
-  #   parseInt((100 * parseFloat(@totalScore) / max(@poll().stanceCounts)))

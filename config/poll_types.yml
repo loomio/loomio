@@ -1,9 +1,15 @@
 count:
-  enabled: false
+  template: false
   material_icon: mdi-check-circle
   poll_option_name_format: i18n
   vote_method: show_thumbs
+  i18n:
+    process_name: decision_tools_card.count_title
+    process_description: decision_tools_card.count_title
   defaults:
+    poll_option_names:
+      - 'yes'
+      - 'no'
     chart_column: voter_percent
     chart_type: bar
     icon_type: bar
@@ -12,14 +18,18 @@ count:
     minimum_stance_choices: 1
     maximum_stance_choices: 1
     dots_per_person: 1
+  poll_type_validations:
+    - minimum_stance_choices
+    - dots_per_person
 
 proposal:
-  enabled: true
+  template: true
   material_icon: mdi-thumbs-up-down
   poll_option_name_format: i18n
   vote_method: show_thumbs
-  i18n_defaults:
+  i18n:
     process_name: decision_tools_card.proposal_title
+    process_description: poll_proposal_form.tool_tip_collapsed
   defaults:
     poll_option_names:
       - agree
@@ -33,13 +43,19 @@ proposal:
     minimum_stance_choices: 1
     maximum_stance_choices: 1
     dots_per_person: 1
+  poll_type_validations:
+    - minimum_stance_choices
+    - dots_per_person
 
 poll:
-  enabled: true
+  template: true
   material_icon: mdi-poll
   poll_option_name_format: 'none'
   vote_method: single_choice
   can_shuffle_options: true
+  i18n:
+    process_name: poll_common_form.voting_methods.single_choice
+    process_description: poll_poll_form.tool_tip_collapsed
   defaults:
     chart_column: max_score_percent
     chart_type: bar
@@ -49,70 +65,95 @@ poll:
     minimum_stance_choices: 1
     maximum_stance_choices: 1
     dots_per_person: 1
+  poll_type_validations:
+    - minimum_stance_choices
+    - dots_per_person
 
 multiple_choice:
-  enabled: true
+  template: true
   material_icon: mdi-poll
   poll_option_name_format: none
   vote_method: multiple_choice
   can_shuffle_options: true
+  i18n:
+    process_name: poll_common_form.voting_methods.multiple_choice
+    process_description: poll_common_form.voting_methods.multiple_choice_hint
   defaults:
     chart_column: max_score_percent
     chart_type: bar
     icon_type: bar
     min_score: 1
     max_score: 1
+    minimum_stance_choices: 1
+  poll_type_validations:
+    - minimum_stance_choices
+    - max_score
 
 dot_vote:
-  enabled: true
+  template: true
   material_icon: mdi-chart-bar-stacked
   poll_option_name_format: none
   vote_method: allocate
   can_shuffle_options: true
+  i18n:
+    process_name: decision_tools_card.dot_vote_title
+    process_description: poll_common_form.voting_methods.allocate_hint
   defaults:
     chart_column: max_score_percent
     chart_type: bar
     icon_type: bar
     dots_per_person: 8
-  validate_presence_of:
+    min_score: 0
+  poll_type_validations:
+    - min_score
     - dots_per_person
 
 score:
-  enabled: true
+  template: true
   material_icon: mdi-chart-gantt
   poll_option_name_format: none
   vote_method: score
   can_shuffle_options: true
+  i18n:
+    process_name: decision_tools_card.score_title
+    process_description: poll_common_form.voting_methods.score_hint
   defaults:
     chart_column: max_score_percent
     chart_type: bar
     icon_type: bar
     min_score: 1
     max_score: 5
-  validate_presence_of:
+  poll_type_validations:
     - min_score
     - max_score
 
 ranked_choice:
-  enabled: true
+  template: true
   material_icon: mdi-format-list-numbered
   poll_option_name_format: none
   vote_method: ranked_choice
   can_shuffle_options: true
+  i18n:
+    process_name: decision_tools_card.ranked_choice_title
+    process_description: poll_common_form.voting_methods.ranked_choice_hint
   defaults:
     chart_column: max_score_percent
     chart_type: bar
     icon_type: bar
     minimum_stance_choices: 2
-  validate_presence_of:
-    - mininimum_stance_choices
+  poll_type_validations:
+    - minimum_stance_choices
 
 meeting:
-  enabled: true
+  template: true
   material_icon: mdi-calendar-question
   poll_option_name_format: iso8601
   prevent_anonymous: true
   vote_method: time_poll
+  require_all_choices: true
+  i18n:
+    process_name: decision_tools_card.meeting_title
+    process_description: poll_common_form.voting_methods.time_poll_hint
   defaults:
     chart_column: max_score_percent
     chart_type: grid
