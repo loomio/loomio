@@ -120,8 +120,7 @@ export default new class AbilityService
     return false if poll.discardedAt
     if poll.groupId
       poll.group().adminsInclude(user()) ||
-      (poll.group().membersCanAnnounce && poll.adminsInclude(user())) ||
-      (poll.group().membersCanAnnounce && !poll.specifiedVotersOnly && poll.membersInclude(user()))
+      (poll.group().membersCanAnnounce && poll.adminsInclude(user()))
     else
       poll.adminsInclude(user())
 
@@ -131,8 +130,7 @@ export default new class AbilityService
   canAddGuestsPoll: (poll) ->
     if poll.groupId
       poll.group().adminsInclude(user()) ||
-      (poll.group().membersCanAddGuests && poll.adminsInclude(user())) ||
-      (poll.group().membersCanAddGuests && !poll.specifiedVotersOnly && poll.membersInclude(user()))
+      (poll.group().membersCanAddGuests && poll.adminsInclude(user()))
     else
       poll.adminsInclude(user())
 

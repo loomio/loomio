@@ -38,22 +38,20 @@ module Ability::Poll
     can [:announce, :remind], ::Poll do |poll|
       if poll.group_id
         poll.group.admins.exists?(user.id) ||
-        (poll.group.members_can_announce && poll.admins.exists?(user.id)) ||
-        (poll.group.members_can_announce && !poll.specified_voters_only && poll.voters.exists?(user.id))
+        (poll.group.members_can_announce && poll.admins.exists?(user.id))
       else
         poll.admins.exists?(user.id)
       end
     end
 
     can [:add_voters, :add_members], ::Poll do |poll|
-      poll.admins.exists?(user.id) || (!poll.specified_voters_only && poll.voters.exists?(user.id))
+      poll.admins.exists?(user.id)
     end
 
     can [:add_guests], ::Poll do |poll|
       if poll.group_id
         poll.group.admins.exists?(user.id) ||
-        (poll.group.members_can_add_guests && poll.admins.exists?(user.id)) ||
-        (poll.group.members_can_add_guests && !poll.specified_voters_only && poll.voters.exists?(user.id))
+        (poll.group.members_can_add_guests && poll.admins.exists?(user.id))
       else
         poll.admins.exists?(user.id)
       end

@@ -46,7 +46,7 @@ class UserQuery
       )
     end
 
-    if model.present? and actor.can?(:add_members, model)
+    if model.present? && (actor.can?(:add_members, model) || actor.can?(:add_voters, model))
       if model.group.present?
         rels.push User.joins('LEFT OUTER JOIN memberships m ON m.user_id = users.id').
                        where('(m.group_id IN (:group_ids))', {group_ids: model.group.id})

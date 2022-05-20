@@ -115,17 +115,17 @@ describe "poll abilities" do
 
           describe "group.members_can_add_guests=true" do
             before { group.update(members_can_add_guests: true) }
-            it {should be_able_to(:add_guests, poll)}
+            it {should_not be_able_to(:add_guests, poll)}
           end
 
           describe "group.members_can_announce=true" do
             before { group.update(members_can_announce: true) }
-            it {should be_able_to(:announce, poll)}
+            it {should_not be_able_to(:announce, poll)}
           end
         end
       end
 
-      context "unrelated to poll" do
+      context "not member of to poll" do
         describe "poll.specified_voters_only=true" do
           before { poll.update(specified_voters_only: true) }
           it {should_not be_able_to(:vote_in, poll)}
@@ -147,12 +147,12 @@ describe "poll abilities" do
 
           describe "group.members_can_add_guests=true" do
             before { group.update(members_can_add_guests: true) }
-            it {should be_able_to(:add_guests, poll)}
+            it {should_not be_able_to(:add_guests, poll)}
           end
 
           describe "group.members_can_announce=true" do
             before { group.update(members_can_announce: true) }
-            it {should be_able_to(:announce, poll)}
+            it {should_not be_able_to(:announce, poll)}
           end
         end
       end

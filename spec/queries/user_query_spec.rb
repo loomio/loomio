@@ -147,9 +147,8 @@ describe UserQuery do
         end
 
         context "as member" do
-          it 'returns poll_guest and actor' do
-            expect(subject).to include *[poll_guest, actor].map(&:name)
-            expect(subject.size).to eq 2
+          it 'cannot invite to poll' do
+            expect(subject.size).to eq 0
           end
         end
       end
@@ -172,9 +171,9 @@ describe UserQuery do
         context "as discussion member" do
           before { discussion.discussion_readers.where(user_id: actor.id).update_all(admin: false) }
 
-          it 'returns existing members' do
-            expect(subject).to include *[poll_guest, thread_guest, actor].map(&:name)
-            expect(subject.count).to eq 3
+          it 'cannot invite to poll' do
+            expect(subject).to_not include *[poll_guest, thread_guest, actor].map(&:name)
+            expect(subject.count).to eq 0
           end
         end
       end
@@ -233,7 +232,7 @@ describe UserQuery do
               context "specified_voters_only=true" do
                 before { poll.update(specified_voters_only: true) }
 
-                it 'returns no body' do
+                it 'returns nobody' do
                   expect(subject.size).to be 0
                 end
               end
@@ -241,8 +240,8 @@ describe UserQuery do
               context "specified_voters_only=false" do
                 before { poll.update(specified_voters_only: false) }
 
-                it 'returns group, subgroup members, poll_guests' do
-                  expect(subject).to include *[member, subgroup_member, poll_guest, invited, inviter].map(&:name)
+                it 'returns nobody' do
+                  expect(subject.size).to be 0
                 end
               end
             end
@@ -261,9 +260,8 @@ describe UserQuery do
               context "specified_voters_only=false" do
                 before { poll.update(specified_voters_only: false) }
 
-                it 'returns only people already in the poll, or people in the group' do
-                  expect(subject).to include *[poll_guest, actor, member].map(&:name)
-                  expect(subject.size).to be 3
+                it 'you cant add people if youre a member' do
+                  expect(subject.size).to be 0
                 end
               end
             end
