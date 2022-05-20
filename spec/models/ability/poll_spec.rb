@@ -10,7 +10,7 @@ describe "poll abilities" do
   subject { ability }
 
   context "a poll without group" do
-    let(:poll) { create(:poll) }
+    let(:poll) { create(:poll, specified_voters_only: true) }
     context "as poll admin" do
       before { poll.stances.create!(participant_id: actor.id, admin: true, latest: true) }
       it {should be_able_to(:vote_in, poll)}
@@ -19,8 +19,8 @@ describe "poll abilities" do
       it {should be_able_to(:add_guests, poll)}
     end
 
-    context "as poll member" do
-      before { poll.stances.create!(participant_id: actor.id, latest: true) }
+    context "as poll voter" do
+      before { poll.stances.create!(participant_id: actor.id, admin: false, latest: true) }
       it {should     be_able_to(:vote_in, poll)}
       it {should_not be_able_to(:add_voters, poll)}
       it {should_not be_able_to(:announce, poll)}
