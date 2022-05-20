@@ -113,7 +113,6 @@ class PollService
                                          user_ids: user_ids,
                                          audience: audience,
                                          emails: emails).where.not(id: existing_voter_ids)
-
     volumes = {}
 
     # if the user has chosen to mute the thread or group then mute the poll too, but dont subsribe

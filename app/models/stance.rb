@@ -33,7 +33,7 @@ class Stance < ApplicationRecord
   alias :author :participant
 
   scope :dangling,       -> { joins('left join polls on polls.id = poll_id').where('polls.id is null') }
-  scope :latest,         -> { where(latest: true).where(revoked_at: nil) }
+  scope :latest,         -> { where(latest: true, revoked_at: nil) }
   scope :admin,         ->  { where(admin: true) }
   scope :newest_first,   -> { order("cast_at DESC NULLS LAST") }
   scope :undecided_first, -> { order("cast_at DESC NULLS FIRST") }
@@ -55,7 +55,7 @@ class Stance < ApplicationRecord
   validate :total_score_is_valid
   validate :reason_length_permitted
 
-  %w(group mailer group_id discussion_id discussion members guests title tags).each do |message|
+  %w(group mailer group_id discussion_id discussion members voters guest_voters title tags).each do |message|
     delegate(message, to: :poll)
   end
 

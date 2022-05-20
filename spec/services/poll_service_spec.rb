@@ -65,6 +65,7 @@ describe PollService do
       expect(stance.reload.revoked_at).to be nil
       MembershipService.destroy(membership: membership, actor: poll.group.admins.first)
       expect(stance.reload.revoked_at).to be_present
+      poll.group.add_member!(member)
       PollService.create_stances(poll: poll, actor: actor, user_ids: [member.id])
       expect(stance.reload.revoked_at).to be_nil
     end

@@ -49,7 +49,7 @@ class UserInviter
       []
     end
 
-    # guests are any user outside of the group
+    # guests are any user outside of the group, and not yet invited
     # either by email address or by user_id, but user_ids are limited to your org
     member_ids = model.members.where(id: user_ids).pluck(:id)
 
