@@ -19,8 +19,8 @@ export optionImages = ->
   block: 'block'
   consent: 'agree'
   objection: 'disagree'
-  yes: 'yes'
-  no: 'no'
+  yes: 'agree'
+  no: 'disagree'
 
 export myLastStanceFor = (poll) ->
   head sortBy(Records.stances.find(

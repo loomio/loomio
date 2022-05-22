@@ -27,6 +27,7 @@ export default
     @watchRecords
       collections: ["polls"]
       query: (records) =>
+        renderKey = 0
         threadPollIds = []
         groupId = (@discussion && @discussion.groupId) || (@group && @group.id) || null 
         discussionId = (@discussion && @discussion.id)  || null
@@ -35,6 +36,7 @@ export default
             discussionId: @discussion.sourceTemplateId).map (poll) =>
               threadPollIds.push(poll.id)
               clone = poll.cloneTemplate()
+              clone.renderKey == renderKey++
               clone.discussionId = discussionId
               clone.groupId = groupId
               clone
@@ -45,6 +47,7 @@ export default
             groupId: @group.id).filter((poll) => !threadPollIds.includes(poll.id))
           .map (poll) =>
             clone = poll.cloneTemplate()
+            clone.renderKey == renderKey++
             clone.discussionId =  discussionId
             clone.groupId = groupId
             clone
@@ -55,9 +58,9 @@ export default
             pollType: pollType
             groupId: groupId
             discussionId: discussionId
+            renderKey: renderKey++
           poll.applyPollTypeDefaults()
           poll
-
 
 </script>
 
@@ -71,7 +74,7 @@ export default
         @click="$emit('setPoll', poll)"
         :class="'decision-tools-card__poll-type--' + poll.pollType"
         v-for='poll in polls[kind]'
-        :key='poll.processName || poll.pollType'
+        :key='poll.renderKey'
       )
         v-list-item-avatar
           v-icon {{$pollTypes[poll.pollType].material_icon}}
