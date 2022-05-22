@@ -60,7 +60,9 @@ export default
             poll-common-form(
               v-if="poll"
               :poll="poll"
-              @setPoll="setPoll")
+              @setPoll="setPoll"
+              redirect-on-save
+            )
             poll-common-choose-template(
               v-if="!poll"
               @setPoll="setPoll"

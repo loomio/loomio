@@ -1,6 +1,6 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
-import { compact, without } from 'lodash'
+import { compact, without, kebabCase, snakeCase } from 'lodash'
 import Flash from '@/shared/services/flash'
 import Records from '@/shared/services/records'
 import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns'
@@ -11,6 +11,7 @@ export default
   props:
     poll: Object
     shouldReset: Boolean
+    redirectOnSave: Boolean
 
   data: ->
     tab: 0
@@ -30,7 +31,20 @@ export default
         else
           {text: @$t('common.all_day'), value: null}
 
+    currentHideResults: @poll.hideResults
+    hideResultsItems: [
+      { text: @$t('common.off'), value: 'off' }
+      { text: @$t('poll_common_card.until_vote'), value: 'until_vote' }
+      { text: @$t('poll_common_card.until_poll_type_closed', pollType: @poll.translatedPollType()), value: 'until_closed' }
+    ]
+
+
   methods:
+    settingDisabled: (setting) ->
+      !@poll.closingAt || (!@poll.isNew() && setting == 'anonymous')
+    snakify: (setting) -> snakeCase setting
+    kebabify: (setting) -> kebabCase setting
+
     clearOptionsIfRequired: (newValue) ->
       if newValue == 'meeting' || @lastPollType == 'meeting'
         @poll.pollOptionNames = [] 
@@ -51,7 +65,8 @@ export default
       @poll.save()
       .then (data) =>
         poll = Records.polls.find(data.polls[0].id)
-        @$router.replace(@urlFor(poll))
+        @$router.replace(@urlFor(poll)) if @redirectOnSave
+        @$emit('saveSuccess', poll)
         Flash.success "poll_common_form.poll_type_created", {poll_type: poll.translatedPollType()}
       .catch (error) =>
         Flash.error 'common.something_went_wrong'
@@ -59,11 +74,21 @@ export default
 
 
   computed:
+    allowAnonymous: -> !@poll.config().prevent_anonymous
+
+    settings: ->
+      compact [
+        ('shuffleOptions'         if @poll.config().can_shuffle_options),
+        ('canRespondMaybe'        if @poll.pollType == 'meeting'),
+        ('anonymous'              if @allowAnonymous),
+        ('allowLongReason')
+      ]
+
     title_key: ->
       mode = if @poll.isNew()
-        'polls_panel.new_poll'
+        'action_dock.new_poll_type'
       else
-        'actions_dock.edit_poll'
+        'action_dock.edit_poll_type'
 
     reminderEnabled: ->
       !@poll.closingAt || isAfter(@poll.closingAt, addHours(new Date(), 24))
@@ -82,7 +107,7 @@ export default
 <template lang="pug">
 .poll-common-form
   v-card-title
-    h1.ml-n4.headline(tabindex="-1" v-t="title_key")
+    h1.ml-n4.headline(tabindex="-1" v-t="{path: title_key, args: {'pollType': poll.translatedPollType()}}")
     v-spacer
     v-btn(v-if="poll.id" icon :to="urlFor(poll)" aria-hidden='true')
       v-icon mdi-close
@@ -91,11 +116,11 @@ export default
 
   v-tabs(v-model="tab")
    v-tabs-slider(color="yellow")
-   v-tab Details
-   v-tab Settings
+   v-tab(v-t="'poll_common.details'")
+   v-tab(v-t="'common.settings'")
   v-tabs-items(v-model="tab")
     v-tab-item.poll-common-form__details-tab
-      v-text-field.poll-common-form-fields__title.text-h5(
+      v-text-field.poll-common-form-fields__title.text-h5.mt-4(
         type='text'
         required='true'
         :hint="$t('poll_common_form.title_hint')"
@@ -205,14 +230,59 @@ export default
 
       .poll-common-notify-on-closing-soon
         p(v-if="!reminderEnabled" v-t="{path: 'poll_common_settings.notify_on_closing_soon.closes_too_soon', args: {pollType: poll.translatedPollType()}}")
-        v-select(v-if="reminderEnabled" :disabled="!poll.closingAt" :label="$t('poll_common_settings.notify_on_closing_soon.title', {pollType: poll.translatedPollType()})" v-model="poll.notifyOnClosingSoon" :items="closingSoonItems")
+        v-select(
+          v-if="reminderEnabled"
+          :disabled="!poll.closingAt"
+          :label="$t('poll_common_settings.notify_on_closing_soon.title', {pollType: poll.translatedPollType()})"
+          v-model="poll.notifyOnClosingSoon"
+          :items="closingSoonItems")
 
       template(v-if="poll.pollType == 'dot_vote'")
         v-subheader(v-t="'poll_dot_vote_form.dots_per_person'")
         v-text-field(type="number", min="1", v-model="poll.dotsPerPerson", single-line)
         validation-errors(:subject="poll" field="dotsPerPerson")
-      poll-common-settings(:poll="poll")
 
+      v-select.poll-common-settings__hide-results(
+        v-if="allowAnonymous"
+        :label="$t('poll_common_card.hide_results')"
+        :items="hideResultsItems"
+        v-model="poll.hideResults"
+        :disabled="!poll.closingAt || (!poll.isNew() && currentHideResults == 'until_closed')"
+      )
+
+      v-checkbox.poll-common-checkbox-option(
+        v-for="(setting, index) in settings"
+        hide-details
+        :disabled="settingDisabled(setting)"
+        :key="index"
+        v-model="poll[setting]"
+        :class="'poll-settings-' + kebabify(setting)"
+        :label="$t('poll_common_settings.' + snakify(setting) + '.title')")
+
+      v-radio-group(
+        v-model="poll.specifiedVotersOnly"
+        :disabled="!poll.closingAt"
+        :label="$t('poll_common_settings.who_can_vote')"
+      )
+        v-radio(
+          v-if="poll.discussionId && !poll.groupId"
+          :value="false"
+          :label="$t('poll_common_settings.specified_voters_only_false_discussion')")
+        v-radio(
+          v-if="poll.groupId"
+          :value="false"
+          :label="$t('poll_common_settings.specified_voters_only_false_group')")
+        v-radio.poll-common-settings__specified-voters-only(
+          :value="true"
+          :label="$t('poll_common_settings.specified_voters_only_true')")
+      .caption.mt-n4(
+        v-if="poll.specifiedVotersOnly"
+        v-t="$t('poll_common_settings.invite_people_next', {poll_type: poll.translatedPollType()})")
+
+      v-checkbox(
+        v-if="poll.id"
+        v-model="poll.template"
+        :label="$t('poll_common_form.this_is_a_template_for_new_decisions')")
 
   .d-flex.justify-space-between.my-4.mt-8.poll-common-form-actions
     help-link(path="en/user_manual/polls/starting_proposals" text="poll_poll_form.help_starting_polls")
@@ -222,8 +292,8 @@ export default
       @click='submit()'
       :loading="poll.processing"
     )
-      span(v-if='!poll.id' v-t="'common.action.save_changes'")
-      span(v-if='poll.id && poll.closingAt' v-t="'poll_common_form.start_poll'")
-      span(v-if='poll.id && !poll.closingAt' v-t="'poll_common_form.save_poll'")
+      span(v-if='poll.id' v-t="'common.action.save_changes'")
+      span(v-if='!poll.id && poll.closingAt' v-t="'poll_common_form.start_poll'")
+      span(v-if='!poll.id && !poll.closingAt' v-t="'poll_common_form.save_poll'")
 
 </template>

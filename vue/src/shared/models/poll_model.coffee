@@ -22,6 +22,9 @@ export default class PollModel extends BaseModel
   config: ->
     AppConfig.pollTypes[@pollType]
 
+  i18n: ->
+    AppConfig.pollTypes[@pollType].i18n
+
   pollTypeKey: ->
     "poll_types.#{@pollType}"
 
@@ -62,21 +65,33 @@ export default class PollModel extends BaseModel
     recipientEmails: []
     notifyRecipients: true
     shuffleOptions: false
+    template: false
     tagIds: []
     hideResults: 'off'
     stanceCounts: []
 
+  cloneTemplate: ->
+    clone = @clone()
+    clone.id = null
+    clone.sourceTemplateId = @id
+    clone.authorId = Session.user().id
+    clone.groupId = null
+    clone.discussionId = null
+    clone.closedAt = null
+    clone.createdAt = null
+    clone.updatedAt = null
+    clone.template = false
+    clone
+
   applyPollTypeDefaults: ->
-    # chart_column
-    # chart_type
-    # icon_type
-    # min_score
-    # max_score
-    # minimum_stance_choices
-    # maximum_stance_choices
-    # dots_per_person
     map AppConfig.pollTypes[@pollType].defaults, (value, key) =>
       @[camelCase(key)] = value
+
+  defaulted: (attr) ->
+    if @[attr] == null
+      AppConfig.pollTypes[@pollType].defaults[snakeCase(attr)]
+    else
+      @[attr]
 
   audienceValues: ->
     name: @group().name
@@ -224,7 +239,7 @@ export default class PollModel extends BaseModel
       'edit'
 
   translatedPollType: ->
-    I18n.t("poll_types.#{@pollType}")
+    @processName || I18n.t("poll_types.#{@pollType}")
 
   addOption: (option) =>
     return false if @pollOptionNames.includes(option) or !option
@@ -232,14 +247,14 @@ export default class PollModel extends BaseModel
     @pollOptionNames.sort() if @pollType == "meeting"
     option
 
-  hasVariableScore: -> @minScore != @maxScore
-  singleChoice: -> @minimumStanceChoices == @maximumStanceChoices == 1
+  hasVariableScore: -> 
+    @defaulted('minScore') != @defaulted('maxScore')
 
-  translateOptionName: ->
-    AppConfig.pollTemplates[@pollType]['translate_option_name']
+  singleChoice: ->
+    @defaulted('minimumStanceChoices') == @defaulted('maximumStanceChoices') == 1
 
   datesAsOptions: ->
-    @pollOptionNameFormat == 'iso8601'
+    @config().poll_option_name_format == 'iso8601'
 
   removeOrphanOptions: ->
     @pollOptions().forEach (option) =>

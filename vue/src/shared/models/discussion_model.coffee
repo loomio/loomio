@@ -52,11 +52,14 @@ export default class DiscussionModel extends BaseModel
   cloneTemplate: ->
     clone = @clone()
     clone.id = null
+    clone.sourceTemplateId = @id
     clone.authorId = Session.user().id
     clone.pinnedAt = null
     clone.forkedEventIds = []
     clone.groupId = null
     clone.closedAt = null
+    clone.createdAt = null
+    clone.updatedAt = null
     clone.template = false
     clone
 

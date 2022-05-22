@@ -139,6 +139,7 @@ en:
     proposal: proposal
     count: check
     poll: poll
+    multiple_choice: multiple choice
     dot_vote: dot vote
     meeting: time poll
     ranked_choice: ranked choice
@@ -848,6 +849,7 @@ en:
     translate_thread: Translate context
     edit_poll: Edit poll
     edit_poll_type: "Edit {{pollType}}"
+    new_poll_type: "New {{pollType}}"
     move_items: Move items
     announce_poll: Invite people to vote
     announce_poll_active: (No one has been invited yet)
@@ -1946,6 +1948,7 @@ en:
     success: Successfully deleted
 
   poll_common_form:
+    this_is_a_template_for_new_decisions: This is a template for new decisions
     voting_method: Voting method
     voting_methods:
       show_thumbs: Show of thumbs

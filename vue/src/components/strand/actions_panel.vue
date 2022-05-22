@@ -3,14 +3,15 @@ import AppConfig                from '@/shared/services/app_config'
 import EventBus                 from '@/shared/services/event_bus'
 import RecordLoader             from '@/shared/services/record_loader'
 import AbilityService           from '@/shared/services/ability_service'
-import PollCommonStartForm      from '@/components/poll/common/start_form'
+import PollCommonForm from '@/components/poll/common/form'
+import PollCommonChooseTemplate from '@/components/poll/common/choose_template'
 import Session from '@/shared/services/session'
 import AuthModalMixin from '@/mixins/auth_modal'
 import Records from '@/shared/services/records'
 import { compact, snakeCase, camelCase, max, map } from 'lodash'
 
 export default
-  components: { PollCommonStartForm }
+  components: {PollCommonForm, PollCommonChooseTemplate}
   mixins: [ AuthModalMixin ]
 
   props:
@@ -20,29 +21,27 @@ export default
     canAddComment: false
     currentAction: 'add-comment'
     newComment: null
+    poll: null
 
   created: ->
-    @init()
-    EventBus.$on 'pollSaved', =>
-      @currentAction = 'add-comment'
-
-  beforeDestroy: ->
-    EventBus.$off 'pollSaved'
+    @watchRecords
+      key: @discussion.id
+      collections: ['groups', 'memberships']
+      query: (store) =>
+        @canAddComment = AbilityService.canAddComment(@discussion)
+    @resetComment()
 
   methods:
-    init: ->
-      @watchRecords
-        key: @discussion.id
-        collections: ['groups', 'memberships']
-        query: (store) =>
-          @canAddComment = AbilityService.canAddComment(@discussion)
-      @reset()
-
-    reset: ->
+    resetComment: ->
       @newComment = Records.comments.build
         bodyFormat: Session.defaultFormat()
         discussionId: @discussion.id
         authorId: Session.user().id
+
+    setPoll: (poll) -> @poll = poll
+    resetPoll: ->
+      @poll = null
+      @currentAction = 'add-comment'
 
     signIn:     -> @openAuthModal()
     isLoggedIn: -> Session.isSignedIn()
@@ -71,7 +70,7 @@ section.actions-panel#add-comment(:aria-label="$t('activity_card.aria_label')")
         comment-form(
           v-if='canAddComment'
           :comment="newComment"
-          @comment-submitted="reset()")
+          @comment-submitted="resetComment")
         .add-comment-panel__join-actions(v-if='!canAddComment')
           join-group-button(
             v-if='isLoggedIn()'
@@ -79,11 +78,19 @@ section.actions-panel#add-comment(:aria-label="$t('activity_card.aria_label')")
             :block='true')
           v-btn.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'" @click='signIn()' v-if='!isLoggedIn()')
     v-tab-item(value="add-poll" v-if="canStartPoll")
-      poll-common-start-form(
-        :discussion='discussion'
-        :group="discussion.group()")
-
+      .poll-common-start-form.ma-3
+        poll-common-form(
+          v-if="poll"
+          :poll="poll"
+          @setPoll="setPoll"
+          @saveSuccess="resetPoll")
+        poll-common-choose-template(
+          v-if="!poll"
+          @setPoll="setPoll"
+          :discussion="discussion"
+          :group="discussion.group()")
 </template>
+
 <style lang="sass">
 .add-comment-panel__sign-in-btn
 	width: 100%

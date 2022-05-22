@@ -102,8 +102,15 @@ export default
         span(v-if="!discussion.id" v-t="'discussion_form.new_discussion_title'")
         span(v-if="discussion.id" v-t="'discussion_form.edit_discussion_title'")
     v-spacer
-    dismiss-modal-button(v-if="!isPage" aria-hidden='true' :model="discussion")
-    v-btn(v-if="isPage && discussion.id" icon  aria-hidden='true' :to="urlFor(discussion)")
+    dismiss-modal-button(
+      v-if="!isPage"
+      aria-hidden='true'
+      :model="discussion")
+    v-btn(
+      v-if="isPage && discussion.id"
+      icon
+      aria-hidden='true'
+      :to="urlFor(discussion)")
       v-icon mdi-close
   .pa-4
     v-select(v-if="!discussion.id" v-model="discussion.groupId" :items="groupItems" :label="$t('common.group')")
