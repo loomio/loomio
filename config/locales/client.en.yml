@@ -1804,6 +1804,9 @@ en:
     group_without_subgroups: '{{name}} without subgroups'
 
   poll_common_action_panel:
+    from_the_thread: From the thread template
+    from_the_group: From the group
+    default_templates: Default templates
     anonymous: Votes are anonymous
     results_hidden_until_closed: Results will be shown after voting has closed
     results_hidden_until_vote: Results will be shown after you vote

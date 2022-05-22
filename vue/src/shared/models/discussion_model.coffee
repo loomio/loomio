@@ -52,6 +52,7 @@ export default class DiscussionModel extends BaseModel
   cloneTemplate: ->
     clone = @clone()
     clone.id = null
+    clone.key = null
     clone.sourceTemplateId = @id
     clone.authorId = Session.user().id
     clone.pinnedAt = null

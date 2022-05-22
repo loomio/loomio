@@ -73,11 +73,13 @@ export default class PollModel extends BaseModel
   cloneTemplate: ->
     clone = @clone()
     clone.id = null
+    clone.key = null
     clone.sourceTemplateId = @id
     clone.authorId = Session.user().id
     clone.groupId = null
     clone.discussionId = null
     clone.closedAt = null
+    clone.closingAt = null
     clone.createdAt = null
     clone.updatedAt = null
     clone.template = false

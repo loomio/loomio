@@ -13,7 +13,11 @@ export default
   data: ->
     polls: {threadPolls: [], groupPolls: [], defaultPolls: []}
   computed:
-    pollKinds: -> Object.keys(@polls)
+    pollKinds: -> Object.keys(@polls).filter (key) => @polls[key].length
+    i18nForKind: ->
+      threadPolls: 'poll_common_action_panel.from_the_thread'
+      groupPolls: 'poll_common_action_panel.from_the_group'
+      defaultPolls: 'poll_common_action_panel.default_templates'
 
   created: ->
     if @group && @group.id
@@ -27,7 +31,6 @@ export default
         groupId = (@discussion && @discussion.groupId) || (@group && @group.id) || null 
         discussionId = (@discussion && @discussion.id)  || null
         if @discussion && @discussion.sourceTemplateId
-          console.log "hello", @discussion.sourceTemplateId
           @polls['threadPolls'] = Records.polls.find(
             discussionId: @discussion.sourceTemplateId).map (poll) =>
               threadPollIds.push(poll.id)
@@ -62,7 +65,7 @@ export default
 .poll-common-templates-list
   v-card-title(v-t="'poll_common.decision_templates'")
   template(v-for="kind in pollKinds")
-    | {{kind}}
+    v-subheader(v-t="i18nForKind[kind]")
     v-list.decision-tools-card__poll-types(two-line dense)
       v-list-item.decision-tools-card__poll-type(
         @click="$emit('setPoll', poll)"
