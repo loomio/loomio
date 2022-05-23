@@ -79,7 +79,7 @@ GEM
       activerecord (>= 5.1, < 7.1.0)
       ar_outer_joins (~> 0.2)
       pg (< 3.0)
-    activeadmin (2.13.0)
+    activeadmin (2.13.1)
       arbre (~> 1.2, >= 1.2.1)
       formtastic (>= 3.1, < 5.0)
       formtastic_i18n (~> 0.4)
@@ -339,7 +339,7 @@ GEM
       activesupport (>= 4)
       railties (>= 4)
       request_store (~> 1.0)
-    loofah (2.17.0)
+    loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -584,7 +584,7 @@ DEPENDENCIES
   actionpack-page_caching
   active_model_serializers (~> 0.8.1)
   active_record_extended
-  activeadmin (~> 2.13.0)
+  activeadmin (~> 2.13.1)
   activerecord-import (= 1.4.0)
   aws-sdk-s3
   blazer
