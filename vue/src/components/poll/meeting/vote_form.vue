@@ -80,12 +80,29 @@ export default
 
 <template lang='pug'>
 form.poll-meeting-vote-form(@submit.prevent='submit()')
-  p.text--secondary(v-t="{path: 'poll_meeting_vote_form.local_time_zone', args: {zone: currentUserTimeZone}}")
+  p.text--secondary(
+    v-t="{path: 'poll_meeting_vote_form.local_time_zone', args: {zone: currentUserTimeZone}}"
+  )
   .poll-common-vote-form__options
-    v-layout.poll-common-vote-form__option(wrap v-for='choice in stanceChoices' :key='choice.id')
-      poll-common-stance-choice(:poll="stance.poll()" :stance-choice='choice' :zone='zone' @click="incrementScore(choice)")
+    v-layout.poll-common-vote-form__option(
+      v-for='choice in stanceChoices'
+      :key='choice.id'
+      wrap 
+    )
+      poll-common-stance-choice(
+        :poll="stance.poll()"
+        :stance-choice='choice'
+        :zone='zone'
+        @click="incrementScore(choice)"
+      )
       v-spacer
-      v-btn.poll-meeting-vote-form--box(icon :style="buttonStyleFor(choice, i)" v-for='i in stanceValues', :key='i', @click='choice.score = i')
+      v-btn.poll-meeting-vote-form--box(
+        v-for='i in stanceValues'
+        :key='i'
+        @click='choice.score = i'
+        :style="buttonStyleFor(choice, i)"
+        icon
+      )
         v-avatar(:size="36")
           img.poll-common-form__icon(:src="imgForScore(i)")
   validation-errors(:subject='stance', field='stanceChoices')
@@ -93,6 +110,10 @@ form.poll-meeting-vote-form(@submit.prevent='submit()')
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
     v-spacer
-    v-btn.poll-common-vote-form__submit(color="primary" type='submit' :loading="stance.processing")
+    v-btn.poll-common-vote-form__submit(
+      :loading="stance.processing"
+      color="primary"
+      type='submit'
+    )
       span(v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
 </template>

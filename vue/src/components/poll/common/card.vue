@@ -4,7 +4,7 @@ import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import PollCommonDirective from '@/components/poll/common/directive'
 import PollService from '@/shared/services/poll_service'
-import { pick } from 'lodash'
+import { pickBy } from 'lodash'
 
 export default
   components:
@@ -19,10 +19,12 @@ export default
     @watchRecords
       collections: ["stances", "outcomes"]
       query: (records) =>
+        @actions = PollService.actions(@poll)
         @myStance = @poll.myStance() || Records.stances.build()
         @outcome = @poll.outcome()
 
   data: ->
+    actions: {}
     buttonPressed: false
     myStance: null
     outcome: @poll.outcome()
@@ -33,12 +35,11 @@ export default
 
   computed:
     menuActions: ->
-      @myStance
-      pick PollService.actions(@poll, @), ['edit_poll', 'notification_history', 'show_history', 'move_poll', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread', 'translate_poll']
+      pickBy @actions, (v) -> v.menu
 
     dockActions: ->
-      @myStance
-      pick PollService.actions(@poll, @), ['edit_stance', 'announce_poll', 'remind_poll', 'close_poll', 'reopen_poll']
+      pickBy @actions, (v) -> v.dock
+
 
 </script>
 

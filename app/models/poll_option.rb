@@ -27,7 +27,11 @@ class PollOption < ApplicationRecord
         'objection' => AppConfig.colors['proposal'][2]
       }.fetch(name, AppConfig.colors['proposal'][0])
     else
-      AppConfig.colors.dig(poll.poll_type, self.priority % AppConfig.colors.length)
+      if %w[count proposal].include? poll.poll_type
+        AppConfig.colors.dig(poll.poll_type, self.priority % AppConfig.colors.length)
+      else
+        AppConfig.colors.dig('poll', self.priority % AppConfig.colors.length)
+      end
     end
   end
 

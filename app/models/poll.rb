@@ -32,8 +32,19 @@ class Poll < ApplicationRecord
   ]
 
   TEMPLATE_DEFAULT_FIELDS.each do |field|
-    define_method field,        -> { self[field] || self[:custom_fields][field] || AppConfig.poll_types.dig(self.poll_type, 'defaults', field) }
-    define_method :"#{field}=", ->(value) { self[:custom_fields].delete(field); self[field] = value }
+    define_method field, -> {
+      self[field] || self[:custom_fields][field] || AppConfig.poll_types.dig(self.poll_type, 'defaults', field) 
+    }
+
+    define_method :"#{field}=", ->(value) { 
+      self[:custom_fields].delete(field)
+      if value == AppConfig.poll_types.dig(self.poll_type, 'defaults', field)
+        self[field] = nil
+      else
+        self[field] = value
+      end
+      value
+    }
   end
 
   TEMPLATE_FIELDS = %w(prevent_anonymous

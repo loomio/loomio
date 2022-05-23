@@ -1,23 +1,39 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
+import Session from '@/shared/services/session'
 import { compact, without, kebabCase, snakeCase } from 'lodash'
 import Flash from '@/shared/services/flash'
 import Records from '@/shared/services/records'
 import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns'
 import { optionImages } from '@/shared/helpers/poll'
 import { addHours, isAfter } from 'date-fns'
+import PollCommonWipField from '@/components/poll/common/wip_field'
 
 export default
+  components: {PollCommonWipField}
+
   props:
     poll: Object
     shouldReset: Boolean
     redirectOnSave: Boolean
+
+  mounted: ->
+    Records.users.fetchGroups()
+    @watchRecords
+      collections: ['groups', 'memberships']
+      query: =>
+        @groupItems = [
+          {text: @$t('discussion_form.none_invite_only_thread'), value: null}
+        ].concat Session.user().groups().map (g) ->
+          {text: g.fullName, value: g.id}
+
 
   data: ->
     tab: 0
     newOption: null
     lastPollType: @poll.pollType
     optionImages: optionImages()
+    groupItems: []
     pollTypeItems: compact Object.keys(AppConfig.pollTypes).map (key) =>
       pollType = AppConfig.pollTypes[key]
       return null unless pollType.template
@@ -77,7 +93,6 @@ export default
         Flash.error 'common.something_went_wrong'
         console.error error
 
-
   computed:
     allowAnonymous: -> !@poll.config().prevent_anonymous
 
@@ -101,6 +116,7 @@ export default
     closingSoonItems: ->
       'nobody author undecided_voters voters'.split(' ').map (name) =>
         {text: @$t("poll_common_settings.notify_on_closing_soon.#{name}"), value: name}
+
     optionFormat: -> @poll.config().poll_option_name_format
     i18nItems: -> 
       compact 'agree abstain disagree yes no consent objection block'.split(' ').map (name) =>
@@ -111,6 +127,7 @@ export default
 </script>
 <template lang="pug">
 .poll-common-form
+  submit-overlay(:value="poll.processing")
   v-card-title
     h1.ml-n4.headline(tabindex="-1" v-t="{path: title_key, args: {'pollType': poll.translatedPollType()}}")
     v-spacer
@@ -120,11 +137,19 @@ export default
       v-icon mdi-close
 
   v-tabs(v-model="tab")
-   v-tabs-slider(color="yellow")
-   v-tab(v-t="'poll_common.details'")
-   v-tab(v-t="'common.settings'")
+    v-tabs-slider(color="primary")
+    v-tab(v-t="'poll_common.details'")
+    v-tab(v-t="'common.settings'")
+
   v-tabs-items(v-model="tab")
     v-tab-item.poll-common-form__details-tab
+      v-select(
+        v-if="!poll.id && !poll.discussionId"
+        v-model="poll.groupId"
+        :items="groupItems"
+        :label="$t('common.group')"
+      )
+
       v-text-field.poll-common-form-fields__title.text-h5.mt-4(
         type='text'
         required='true'
@@ -139,8 +164,10 @@ export default
         field="details"
         :placeholder="$t('poll_common_form.details_placeholder')"
         :label="$t('poll_common_form.details')"
-        :should-reset="shouldReset")
-          v-divider.my-4
+        :should-reset="shouldReset"
+      )
+
+      v-divider.my-4
 
       v-list
         v-subheader.px-0(v-t="'poll_common_form.options'")
@@ -187,8 +214,10 @@ export default
           :label="$t('poll_meeting_form.meeting_duration')"
           :items="durations"
         )
+       
       v-divider.my-4
 
+      poll-common-wip-field(:poll="poll")
       poll-common-closing-at-field(:poll="poll")
 
       common-notify-fields(:model="poll")

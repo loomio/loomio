@@ -151,6 +151,7 @@ module Dev::FakeDataHelper
     end.uniq
     {
       poll: options,
+      multiple_choice: options,
       proposal: %w[agree abstain disagree block],
       count: %w[yes no],
       dot_vote: options,

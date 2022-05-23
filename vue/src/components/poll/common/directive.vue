@@ -2,6 +2,7 @@
 import PollCommonVoteForm from '@/components/poll/common/vote_form.vue'
 import PollCommonChangeYourVote from '@/components/poll/common/change_your_vote.vue'
 import PollPollVoteForm from '@/components/poll/poll/vote_form.vue'
+import PollMultipleChoiceVoteForm from '@/components/poll/multiple_choice/vote_form.vue'
 import PollDotVoteVoteForm from '@/components/poll/dot_vote/vote_form.vue'
 import PollScoreVoteForm from '@/components/poll/score/vote_form.vue'
 import PollCommonStanceChoice from '@/components/poll/common/stance_choice.vue'
@@ -14,6 +15,7 @@ export default
     'poll-common-vote-form': PollCommonVoteForm
     'poll-common-change-your-vote': PollCommonChangeYourVote
     'poll-poll-vote-form': PollPollVoteForm
+    'poll-multiple_choice-vote-form': PollMultipleChoiceVoteForm
     'poll-dot_vote-vote-form': PollDotVoteVoteForm
     'poll-score-vote-form': PollScoreVoteForm
     'poll-common-stance-choice': PollCommonStanceChoice

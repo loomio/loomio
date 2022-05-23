@@ -78,10 +78,13 @@ export default class PollModel extends BaseModel
     clone.authorId = Session.user().id
     clone.groupId = null
     clone.discussionId = null
-    clone.closingAt = startOfHour(addHours(new Date(), differenceInHours(@closingAt, @createdAt)))
+    if @closingAt
+      clone.closingAt = startOfHour(addHours(new Date(), differenceInHours(@closingAt, @createdAt)))
     clone.closedAt = null
     clone.createdAt = null
     clone.updatedAt = null
+    clone.decidedVotersCount = null
+    clone.undecidedVotersCount = null
     clone.template = false
     clone
 

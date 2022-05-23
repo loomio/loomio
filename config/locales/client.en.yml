@@ -1884,9 +1884,11 @@ en:
     success: "{{poll_type}} moved to {{group}}"
 
   poll_common_wip_field:
+    voting_enabled: Voting enabled
+    enable_voting: Enable voting
     title: Disable voting
     past_tense: Voting disabled
-    helptext: 'This %{poll_type} is a work in progress. You can enable voting later.'
+    helptext: 'This %{poll_type} is a work in progress. You can enable voting later'
 
   poll_common_closing_at_field:
     closing: Closing

@@ -106,7 +106,6 @@ module.exports = {
   PollCommonUndecidedUser: 'poll/common/undecided_user',
   PollCommonVoteForm: 'poll/common/vote_form',
   PollCommonVotesPanel: 'poll/common/votes_panel',
-  PollCommonWipField: 'poll/common/wip_field',
   PollDotVoteVoteForm: 'poll/dot_vote/vote_form',
   PollMeetingChangeYourVote: 'poll/meeting/change_your_vote',
   PollMeetingStanceIcon: 'poll/meeting/stance_icon',

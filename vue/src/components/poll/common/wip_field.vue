@@ -5,19 +5,25 @@ export default
   props:
     poll: Object
   data: ->
-    draft: !@poll.closingAt
+    enabled: @poll.closingAt
   watch:
-    draft: (val) ->
+    enabled: (val) ->
       if val
-        @poll.closingAt = null
-      else
         @poll.closingAt = startOfHour(addDays(new Date, 3))
+      else
+        @poll.closingAt = null
 </script>
 
 <template lang="pug">
 .poll-common-wip-field
-  v-checkbox(hide-details v-model="draft")
+  v-checkbox(
+    v-model="enabled"
+    hide-details
+    :disabled="poll.decidedVotersCount > 0"
+  )
     div(slot="label")
-      span(v-t="'poll_common_wip_field.title'")
-      .caption(v-if="draft" v-t="{path: 'poll_common_wip_field.helptext', args: {poll_type: poll.translatedPollType()}}")
+      template(v-if="enabled")
+        span(v-t="'poll_common_wip_field.enable_voting'")
+      template(v-if="!enabled")
+        span(v-t="'poll_common_wip_field.enable_voting'")
 </template>

@@ -53,14 +53,17 @@ form.poll-score-vote-form(@submit.prevent='submit()')
         :thumb-size="24"
         :thumb-label="(choice.score > 0) ? 'always' : true"
         :min="poll.minScore"
-        :max="poll.maxScore")
-        //- template(v-slot:append)
-        //-   v-text-field.poll-score-vote-form__score-input(v-model='choice.score' class="mt-0 pt-0" hide-details single-line type="number" style="width: 60px")
+        :max="poll.maxScore"
+      )
   validation-errors(:subject='stance', field='stanceChoices')
   //- poll-common-add-option-button(:poll='poll')
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
     v-spacer
-    v-btn.poll-common-vote-form__submit(color="primary" type='submit' :loading="stance.processing")
+    v-btn.poll-common-vote-form__submit(
+      :loading="stance.processing"
+      color="primary"
+      type='submit'
+    )
       span(v-t="'poll_common.vote'")
 </template>
