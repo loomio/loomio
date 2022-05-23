@@ -35,8 +35,6 @@ export default
 
   computed:
     poll: -> @stance.poll()
-    reasonTooLong: ->
-      !@stance.poll().allowLongReason && @stance.reason && @stance.reason.length > 500
 </script>
 
 <template lang='pug'>

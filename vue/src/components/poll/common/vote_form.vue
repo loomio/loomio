@@ -23,11 +23,7 @@ export default
             [[options[0], options[1]], [options[2], options[3]]]
           else
             [options]
-
-  computed:
-    reasonTooLong: ->
-      !@stance.poll().allowLongReason && @stance.reason && @stance.reason.length > 500
-
+            
   methods:
     submit: ->
       actionName = if !@stance.castAt then 'created' else 'updated'
@@ -53,21 +49,51 @@ export default
 </script>
 
 <template lang="pug">
-form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
+form.poll-common-vote-form(
+  @keyup.ctrl.enter="submit()"
+  @keydown.meta.enter.stop.capture="submit()"
+)
   submit-overlay(:value="stance.processing")
   //- span(v-if="debug") {{stance}}
   v-layout(wrap)
-    v-layout.mb-4(justify-space-around v-for='(optionGroup, index) in optionGroups' :key="index")
-      label.poll-common-vote-form__button.poll-proposal-vote-form__button.rounded-lg.pa-2(:class="classes(option)" v-for='option in optionGroup' :key='option.id')
-        input(type="radio" v-model="selectedOptionId" :value="option.id" name="name" :aria-label="$t('poll_' + stance.poll().pollType + '_options.' + option.name)")
+    v-layout.mb-4(
+      v-for='(optionGroup, index) in optionGroups'
+      :key="index"
+      justify-space-around
+    )
+      label.poll-common-vote-form__button.poll-proposal-vote-form__button.rounded-lg.pa-2(
+        v-for='option in optionGroup'
+        :key='option.id'
+        :class="classes(option)"
+      )
+        input(
+          v-model="selectedOptionId"
+          :value="option.id"
+          :aria-label="$t('poll_' + stance.poll().pollType + '_options.' + option.name)"
+          type="radio"
+          name="name"
+        )
         v-layout(column align-center)
           v-avatar(size="52px")
-            img(aria-hidden="true" :src="'/img/' + optionImages[option.name] + '.svg'")
-          span(aria-hidden="true" v-t="'poll_' + stance.poll().pollType + '_options.' + option.name")
+            img(
+              aria-hidden="true"
+              :src="'/img/' + optionImages[option.name] + '.svg'"
+            )
+          span(
+            v-t="'poll_' + stance.poll().pollType + '_options.' + option.name"
+            aria-hidden="true"
+          )
   poll-common-stance-reason(:stance='stance' v-if='stance && selectedOptionId')
-  v-btn.poll-common-vote-form__submit(block color="primary" @click='submit()' :loading="stance.processing" :disabled='stance.saveDisabled || !selectedOptionId')
+  v-btn.poll-common-vote-form__submit(
+    @click='submit()'
+    :loading="stance.processing"
+    :disabled='stance.saveDisabled || !selectedOptionId'
+    color="primary"
+    block
+  )
     span(v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
 </template>
+
 <style lang="sass">
 .poll-proposal-vote-form__button--not-selected
   opacity: 0.3 !important
@@ -82,6 +108,4 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop
     height: 0
   &:hover
     border: 1px solid var(--v-primary-base)
-
-
 </style>

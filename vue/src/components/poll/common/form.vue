@@ -141,7 +141,7 @@ export default
     v-tab(v-t="'poll_common.details'")
     v-tab(v-t="'common.settings'")
 
-  v-tabs-items(v-model="tab")
+  v-tabs-items.pt-4(v-model="tab")
     v-tab-item.poll-common-form__details-tab
       v-select(
         v-if="!poll.id && !poll.discussionId"
@@ -150,7 +150,7 @@ export default
         :label="$t('common.group')"
       )
 
-      v-text-field.poll-common-form-fields__title.text-h5.mt-4(
+      v-text-field.poll-common-form-fields__title.text-h5(
         type='text'
         required='true'
         :hint="$t('poll_common_form.title_hint')"

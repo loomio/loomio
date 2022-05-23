@@ -67,7 +67,7 @@
               %td.text-right #{option[:score_percent].round(1)}%
             - when 'voters'
               %td.text-left
-                - User.where(id: option[:voter_ids]).each do |user|
-                  =render 'base_mailer/avatar', user: user, size: 24
+                - User.where(id: option[:voter_ids]).limit(20).each do |user|
+                  = render 'base_mailer/avatar', user: user, size: 24
                 - if  option[:voter_ids].length == 0
                   %span{style: 'display: inline-block; height: 24px'} &nbsp;

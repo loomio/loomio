@@ -160,6 +160,7 @@ export default class PollModel extends BaseModel
     @myStanceId && @myStance() && @myStance().castAt
 
   showResults: ->
+    !!@closingAt &&
     switch @hideResults
       when "until_closed"
         @closedAt
@@ -245,6 +246,9 @@ export default class PollModel extends BaseModel
 
   translatedPollType: ->
     @processName || I18n.t("poll_types.#{@pollType}")
+
+  translatedPollTypeCaps: ->
+    @processName || I18n.t("decision_tools_card.#{@pollType}_title")
 
   addOption: (option) =>
     return false if @pollOptionNames.includes(option) or !option

@@ -1674,6 +1674,7 @@ en:
     proposal_title: Proposal
     count_title: Check
     poll_title: Poll
+    multiple_choice_title: Multiple choice
     score_title: Score poll
     dot_vote_title: Dot vote
     meeting_title: Time poll
@@ -1898,6 +1899,7 @@ en:
     invalid_date: Invalid date
 
   poll_card:
+    poll_type_by_name: "%{poll_type} by %{name}"
     started_by: Started by {{name}}
 
   poll_common_votes_panel:

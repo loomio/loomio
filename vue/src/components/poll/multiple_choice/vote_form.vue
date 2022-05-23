@@ -19,8 +19,6 @@ export default
           @pollOptions = @stance.poll().pollOptionsForVoting() if @stance.poll()
 
   computed:
-    reasonTooLong: ->
-      !@stance.poll().allowLongReason && @stance.reason && @stance.reason.length > 500
     poll: -> @stance.poll()
     optionSelected: -> @selectedOptionIds.length
     submitText: ->

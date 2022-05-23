@@ -20,10 +20,11 @@ export default
       defaultPolls: 'poll_common_action_panel.default_templates'
 
   created: ->
+    exclude_types = 'group discussion stance'
     if @group && @group.id
-      Records.remote.fetch("polls?template=1&group_id=#{@group.id}")
+      Records.remote.fetch(path: "polls", params: {template: 1, group_id: @group.id, exclude_types: exclude_types})
     if @discussion && @discussion.sourceTemplateId
-      Records.remote.fetch("polls?template=1&discussion_id=#{@discussion.sourceTemplateId}")
+      Records.remote.fetch(path: "polls", params: {template: 1, discussion_id: @discussion.sourceTemplateId, exclude_types: exclude_types})
     @watchRecords
       collections: ["polls"]
       query: (records) =>

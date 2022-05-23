@@ -73,9 +73,6 @@ export default
     currentUserTimeZone: ->
       Session.user().timeZone
 
-    reasonTooLong: ->
-      @stance.reason && @stance.reason.length > 500 && !@stance.poll().allowLongReason
-
 </script>
 
 <template lang='pug'>

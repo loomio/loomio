@@ -20,8 +20,6 @@ export default
           @pollOptions = @stance.poll().pollOptionsForVoting() if @stance.poll()
 
   computed:
-    reasonTooLong: ->
-      !@stance.poll().allowLongReason && @stance.reason && @stance.reason.length > 500
     poll: -> @stance.poll()
     optionSelected: -> @selectedOptionIds.length or @selectedOptionId
     submitText: ->
@@ -50,14 +48,35 @@ export default
 .poll-poll-vote-form
   submit-overlay(:value="stance.processing")
   .mb-6(v-if="poll.multipleChoice")
-    v-checkbox.poll-common-vote-form__button(v-for='option in pollOptions' :key='option.id' v-model="selectedOptionIds" :value="option.id" :label="option.name" hide-details :color="option.color")
+    v-checkbox.poll-common-vote-form__button(
+      v-for='option in pollOptions'
+      :key='option.id'
+      v-model="selectedOptionIds"
+      :value="option.id"
+      :label="option.name"
+      hide-details
+      :color="option.color"
+  )
   v-radio-group.mb-6(v-if="!poll.multipleChoice" v-model="selectedOptionId")
-    v-radio.poll-common-vote-form__button(v-for='option in pollOptions' :key='option.id' :value="option.id" :label="option.name" hide-details :color="option.color")
+    v-radio.poll-common-vote-form__button(
+      v-for='option in pollOptions'
+      :key='option.id'
+      :value="option.id"
+      :label="option.name"
+      :color="option.color"
+      hide-details
+    )
   //- poll-common-add-option-button(:poll='stance.poll()')
-  validation-errors(:subject='stance', field='stanceChoices')
+  validation-errors(:subject='stance' field='stanceChoices')
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
     //- v-spacer
-    v-btn.poll-common-vote-form__submit(block :disabled='!optionSelected' color="primary" @click='submit()' :loading="stance.processing")
+    v-btn.poll-common-vote-form__submit(
+      @click='submit()'
+      :disabled='!optionSelected'
+      :loading="stance.processing"
+      color="primary"
+      block
+    )
       span(v-t="submitText")
 </template>
