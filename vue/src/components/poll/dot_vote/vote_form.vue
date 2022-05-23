@@ -62,7 +62,7 @@ export default
       @dotsPerPerson - sum(map(@stanceChoices, 'score'))
 
     dotsPerPerson: ->
-      @stance.poll().customFields.dots_per_person
+      @stance.poll().dotsPerPerson
     reasonTooLong: ->
       !@stance.poll().allowLongReason && @stance.reason && @stance.reason.length > 500
 

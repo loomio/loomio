@@ -147,44 +147,44 @@ class Stance < ApplicationRecord
 
   def valid_min_score
     return if !cast_at
-    return unless poll.poll_type_validations.include? 'min_score'
+    return unless poll.validate_min_score
     return if (stance_choices.map(&:score).min || 0) >= poll.min_score
     errors.add(:stance_choices, "min_score validation failure")
   end
 
   def valid_max_score
     return if !cast_at
-    return unless poll.poll_type_validations.include? 'max_score'
+    return unless poll.validate_max_score
     return if (stance_choices.map(&:score).max) <= poll.max_score
     errors.add(:stance_choices, "max_score validation failure")
   end
 
   def valid_dots_per_person
     return if !cast_at
-    return unless poll.poll_type_validations.include? 'dots_per_person'
+    return unless poll.validate_dots_per_person
     return if stance_choices.map(&:score).sum <= poll.dots_per_person
     errors.add(:dots_per_person, "Too many dots")
   end
 
   def valid_minimum_stance_choices
     return if !cast_at
-    return unless poll.poll_type_validations.include? 'minimum_stance_choices'
+    return unless poll.validate_minimum_stance_choices
     return if stance_choices.length >= poll.minimum_stance_choices
     errors.add(:stance_choices, "too few stance choices")
   end
 
   def valid_maximum_stance_choices
     return if !cast_at
-    return unless poll.poll_type_validations.include? 'maximum_stance_choices'
+    return unless poll.validate_maximum_stance_choices
     return if stance_choices.length <= poll.maximum_stance_choices
-    errors.add(:stance_choices, "max_score validation failure")
+    errors.add(:stance_choices, "too many stance choices")
   end
 
   def valid_require_all_choices
     return if !cast_at
     return unless poll.require_all_choices
     return if stance_choices.length == poll.poll_options.length
-    errors.add(:stance_choices, "eequire_all_stance_choices")
+    errors.add(:stance_choices, "require_all_stance_choices")
   end
 
   def valid_reason_length

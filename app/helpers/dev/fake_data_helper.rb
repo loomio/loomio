@@ -148,7 +148,7 @@ module Dev::FakeDataHelper
         Faker::Food.ingredient,
         Faker::Movies::StarWars.call_squadron
       ].sample.truncate(250)
-    end
+    end.uniq
     {
       poll: options,
       proposal: %w[agree abstain disagree block],
@@ -199,12 +199,12 @@ module Dev::FakeDataHelper
   end
 
 
-  def fake_score(poll)
+  def fake_score(poll, index = 0)
     case poll.poll_type
     when 'score'
       ((poll.min_score)..(poll.max_score)).to_a.sample
     when 'ranked_choice'
-      (1..8).to_a.sample
+      index + 1
     when 'meeting'
       if poll.can_respond_maybe
         [0,1,2].sample
@@ -219,9 +219,15 @@ module Dev::FakeDataHelper
   def fake_stance(args = {})
     poll = args[:poll] || saved(fake_poll)
 
-    num_choices = (poll.minimum_stance_choices..poll.maximum_stance_choices).to_a.sample
-    choice =  poll.poll_options.sample(num_choices).map do |option|
-      [option.name, fake_score(poll)]
+    if poll.require_all_choices
+      num_choices = poll.poll_options.length
+    else
+      num_choices = (poll.minimum_stance_choices..poll.maximum_stance_choices).to_a.sample
+    end
+
+    choice =  poll.poll_options.sample(num_choices).map.with_index do |option, index|
+      score = fake_score(poll)
+      [option.name, fake_score(poll, index)]
     end.to_h
 
     Stance.new({
@@ -357,9 +363,6 @@ module Dev::FakeDataHelper
       u = fake_user
       poll.group.add_member!(u) if poll.group
       stance = fake_stance(poll: poll)
-      if !stance.valid?
-        byebug
-      end
       stance.save!
     end
     poll.update_counts!

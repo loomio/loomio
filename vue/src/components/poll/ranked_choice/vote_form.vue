@@ -36,7 +36,7 @@ export default
         @stance.poll().pollOptionsForVoting()
 
   computed:
-    numChoices: -> @stance.poll().customFields.minimum_stance_choices
+    numChoices: -> @stance.poll().minimumStanceChoices
     reasonTooLong: ->
       !@stance.poll().allowLongReason && @stance.reason && @stance.reason.length > 500
 

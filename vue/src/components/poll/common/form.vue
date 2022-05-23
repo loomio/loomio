@@ -22,6 +22,11 @@ export default
       pollType = AppConfig.pollTypes[key]
       return null unless pollType.template
       {text: @$t('poll_common_form.voting_methods.'+pollType.vote_method), value: key}
+    chartTypeItems: [
+      {text: 'bar', value: 'bar'}
+      {text: 'pie', value: 'pie'}
+      {text: 'grid', value: 'grid'}
+    ]
 
     durations:
       [5, 10, 15, 20, 30, 45, 60, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240, null].map (minutes) =>
@@ -203,6 +208,10 @@ export default
         :hint="$t('poll_common_form.voting_methods.'+poll.config().vote_method+'_hint')"
         :items="pollTypeItems")
 
+      //- v-select(
+        :label="$t('poll_common_form.chart_type')"
+        v-model="poll.chartType"
+        :items="chartTypeItems")
       //- chartType
       //- chartColumn
 

@@ -52,8 +52,8 @@ form.poll-score-vote-form(@submit.prevent='submit()')
         :height="4"
         :thumb-size="24"
         :thumb-label="(choice.score > 0) ? 'always' : true"
-        :min="poll.customFields.min_score"
-        :max="poll.customFields.max_score")
+        :min="poll.minScore"
+        :max="poll.maxScore")
         //- template(v-slot:append)
         //-   v-text-field.poll-score-vote-form__score-input(v-model='choice.score' class="mt-0 pt-0" hide-details single-line type="number" style="width: 60px")
   validation-errors(:subject='stance', field='stanceChoices')

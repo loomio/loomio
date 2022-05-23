@@ -6,8 +6,8 @@ import HasTranslations  from '@/shared/mixins/has_translations'
 import EventBus         from '@/shared/services/event_bus'
 import I18n             from '@/i18n'
 import NullGroupModel   from '@/shared/models/null_group_model'
-import { addDays, startOfHour } from 'date-fns'
-import { camelCase, compact, head, orderBy, sortBy, map, includes, difference, invokeMap, each, max, flatten, slice, uniq, isEqual, shuffle } from 'lodash'
+import { addDays, startOfHour, differenceInHours, addHours } from 'date-fns'
+import { snakeCase, camelCase, compact, head, orderBy, sortBy, map, includes, difference, invokeMap, each, max, flatten, slice, uniq, isEqual, shuffle } from 'lodash'
 
 export default class PollModel extends BaseModel
   @singular: 'poll'
@@ -78,8 +78,8 @@ export default class PollModel extends BaseModel
     clone.authorId = Session.user().id
     clone.groupId = null
     clone.discussionId = null
+    clone.closingAt = startOfHour(addHours(new Date(), differenceInHours(@closingAt, @createdAt)))
     clone.closedAt = null
-    clone.closingAt = null
     clone.createdAt = null
     clone.updatedAt = null
     clone.template = false

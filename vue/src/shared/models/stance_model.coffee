@@ -93,7 +93,7 @@ export default class StanceModel extends BaseModel
     choices = map @optionScores, (score, pollOptionId) =>
       {
         score: score,
-        rank: (poll.pollType == 'ranked_choice') && (poll.customFields.minimum_stance_choices - score + 1),
+        rank: (poll.pollType == 'ranked_choice') && (poll.minimumStanceChoices - score + 1),
         show: (score > 0) || poll.pollType == "score",
         pollOption: optionsById[pollOptionId]
       }

@@ -131,10 +131,7 @@ module Dev::ScenariosHelper
                                                      closing_at: if params[:wip] then nil else 1.day.from_now end))
 
     PollService.create(poll: poll, actor: actor)
-    # Stance.create(poll: poll, participant: non_voter)
     PollService.invite(poll: poll, params: {recipient_user_ids: [non_voter.id]}, actor: actor)
-
-    
     PollService.publish_closing_soon
 
     {

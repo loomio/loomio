@@ -28,7 +28,6 @@ export default
 
 <template lang="pug">
 .poll-common-chart-table
-  //- p {{poll.results}}
   v-simple-table(dense)
     thead
       tr

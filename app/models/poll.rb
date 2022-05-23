@@ -26,7 +26,9 @@ class Poll < ApplicationRecord
     max_score
     min_score
     dots_per_person
-    minimum_stance_choices
+    chart_type
+    icon_type
+    chart_column
   ]
 
   TEMPLATE_DEFAULT_FIELDS.each do |field|
@@ -38,30 +40,37 @@ class Poll < ApplicationRecord
                        vote_method
                        material_icon
                        poll_option_name_format
-                       require_all_choices).freeze
+                       require_all_choices
+                       validate_minimum_stance_choices
+                       validate_maximum_stance_choices
+                       validate_min_score
+                       validate_max_score
+                       validate_dots_per_person).freeze
 
   TEMPLATE_FIELDS.each do |field|
     define_method field, -> { AppConfig.poll_types.dig(self.poll_type, field) }
   end
 
+  def minimum_stance_choices
+    if require_all_choices
+      poll.poll_options.length
+    else
+      self[:minimum_stance_choices] || 
+      self[:custom_fields][:maximum_stance_choices] || 
+      AppConfig.poll_types.dig(self.poll_type, 'defaults', 'minimum_stance_choices') ||
+      0
+    end
+  end
+
   def maximum_stance_choices
-    self[:maximum_stance_choices] || self[:custom_fields][:maximum_stance_choices] || poll.poll_options.length 
+    self[:maximum_stance_choices] ||
+    self[:custom_fields][:maximum_stance_choices] ||
+    AppConfig.poll_types.dig(self.poll_type, 'defaults', 'maximum_stance_choices') ||
+    poll.poll_options.length
   end
 
   def poll_type_validations
     AppConfig.poll_types.dig(self.poll_type, 'poll_type_validations') || []
-  end
-
-  def chart_type
-    self[:chart_type] || AppConfig.poll_types.dig(self.poll_type, :chart_type)
-  end
-
-  def icon_type
-    self[:icon_type] || AppConfig.poll_types.dig(self.poll_type, :icon_type)
-  end
-
-  def chart_column
-    self[:chart_column] || AppConfig.poll_types.dig(self.poll_type, :chart_column)
   end
 
   include Translatable

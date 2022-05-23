@@ -3,6 +3,8 @@ count:
   material_icon: mdi-check-circle
   poll_option_name_format: i18n
   vote_method: show_thumbs
+  validate_minimum_stance_choices: true
+  validate_dots_per_person: true
   i18n:
     process_name: decision_tools_card.count_title
     process_description: decision_tools_card.count_title
@@ -18,15 +20,14 @@ count:
     minimum_stance_choices: 1
     maximum_stance_choices: 1
     dots_per_person: 1
-  poll_type_validations:
-    - minimum_stance_choices
-    - dots_per_person
 
 proposal:
   template: true
   material_icon: mdi-thumbs-up-down
   poll_option_name_format: i18n
   vote_method: show_thumbs
+  validate_minimum_stance_choices: true
+  validate_dots_per_person: true
   i18n:
     process_name: decision_tools_card.proposal_title
     process_description: poll_proposal_form.tool_tip_collapsed
@@ -43,9 +44,6 @@ proposal:
     minimum_stance_choices: 1
     maximum_stance_choices: 1
     dots_per_person: 1
-  poll_type_validations:
-    - minimum_stance_choices
-    - dots_per_person
 
 poll:
   template: true
@@ -53,6 +51,8 @@ poll:
   poll_option_name_format: 'none'
   vote_method: single_choice
   can_shuffle_options: true
+  validate_minimum_stance_choices: true
+  validate_dots_per_person: true
   i18n:
     process_name: poll_common_form.voting_methods.single_choice
     process_description: poll_poll_form.tool_tip_collapsed
@@ -65,9 +65,6 @@ poll:
     minimum_stance_choices: 1
     maximum_stance_choices: 1
     dots_per_person: 1
-  poll_type_validations:
-    - minimum_stance_choices
-    - dots_per_person
 
 multiple_choice:
   template: true
@@ -75,6 +72,8 @@ multiple_choice:
   poll_option_name_format: none
   vote_method: multiple_choice
   can_shuffle_options: true
+  validate_minimum_stance_choices: true
+  validate_max_score: true
   i18n:
     process_name: poll_common_form.voting_methods.multiple_choice
     process_description: poll_common_form.voting_methods.multiple_choice_hint
@@ -85,9 +84,6 @@ multiple_choice:
     min_score: 1
     max_score: 1
     minimum_stance_choices: 1
-  poll_type_validations:
-    - minimum_stance_choices
-    - max_score
 
 dot_vote:
   template: true
@@ -95,6 +91,8 @@ dot_vote:
   poll_option_name_format: none
   vote_method: allocate
   can_shuffle_options: true
+  validate_min_score: true
+  validate_dots_per_person: true
   i18n:
     process_name: decision_tools_card.dot_vote_title
     process_description: poll_common_form.voting_methods.allocate_hint
@@ -104,9 +102,7 @@ dot_vote:
     icon_type: bar
     dots_per_person: 8
     min_score: 0
-  poll_type_validations:
-    - min_score
-    - dots_per_person
+    minimum_stance_choices: 0
 
 score:
   template: true
@@ -114,6 +110,8 @@ score:
   poll_option_name_format: none
   vote_method: score
   can_shuffle_options: true
+  validate_min_score: true
+  validate_max_score: true
   i18n:
     process_name: decision_tools_card.score_title
     process_description: poll_common_form.voting_methods.score_hint
@@ -123,9 +121,7 @@ score:
     icon_type: bar
     min_score: 1
     max_score: 5
-  poll_type_validations:
-    - min_score
-    - max_score
+    minimum_stance_choices: 1
 
 ranked_choice:
   template: true
@@ -133,6 +129,9 @@ ranked_choice:
   poll_option_name_format: none
   vote_method: ranked_choice
   can_shuffle_options: true
+  validate_minimum_stance_choices: true
+  require_all_choices: true
+  validate_min_score: true
   i18n:
     process_name: decision_tools_card.ranked_choice_title
     process_description: poll_common_form.voting_methods.ranked_choice_hint
@@ -141,8 +140,7 @@ ranked_choice:
     chart_type: bar
     icon_type: bar
     minimum_stance_choices: 2
-  poll_type_validations:
-    - minimum_stance_choices
+    min_score: 1
 
 meeting:
   template: true
@@ -158,5 +156,6 @@ meeting:
     chart_column: max_score_percent
     chart_type: grid
     icon_type: grid
+    minimum_stance_choices: 1
     min_score: 0
     max_score: 2
