@@ -298,7 +298,7 @@ div
             template(v-if="expanded")
               //- v-btn(icon @click='editor.chain().focus().setParagraph().run()' :outlined="editor.isActive('paragraph')" :title="$t('formatting.paragraph')")
               //-   v-icon mdi-format-pilcrow
-              template(v-for="i in [2,3]")
+              template(v-for="i in [1,2,3]")
                 v-btn(icon @click='editor.chain().focus().toggleHeading({ level: i }).run()' :outlined="editor.isActive('heading', { level: i })" :title="$t('formatting.heading'+i)")
                   v-icon {{'mdi-format-header-'+i}}
 
