@@ -48,7 +48,10 @@ export default
 <template lang="pug">
 v-layout.comment-form(:class="{'px-3': !comment.parentId}")
   .thread-item__avatar.mr-3.ml-1
-    user-avatar(:user='comment.author() || actor' :size='comment.parentId ? 24 : 40')
+    user-avatar(
+      :user='comment.author() || actor'
+      :size='comment.parentId ? 24 : 40'
+    )
   form.thread-item__body.comment-form__body(v-on:submit.prevent='submit()' @keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
     submit-overlay(:value='comment.processing')
     lmo-textarea(
@@ -64,7 +67,7 @@ v-layout.comment-form(:class="{'px-3': !comment.parentId}")
           color="primary"
           type='submit'
           v-t="comment.isNew() ? 'comment_form.post_comment' : 'common.action.save' ")
-    v-alert(color="error" v-if="comment.errors != null")
+    v-alert(color="error" v-if="comment.saveFailed")
       span(v-t="'common.something_went_wrong'")
       space
       span(v-t="'common.please_try_again'")

@@ -29,7 +29,8 @@ export default class BaseModel
     @unmodified = {}
     @afterUpdateFns = []
     @saveDisabled = false
-    @clearErrors()
+    @saveFailed = false
+    @setErrors()
     Object.defineProperty(@, 'recordsInterface', value: recordsInterface, enumerable: false)
     Object.defineProperty(@, 'recordStore', value: recordsInterface.recordStore, enumerable: false)
     Object.defineProperty(@, 'remote', value: recordsInterface.remote, enumerable: false)
@@ -229,20 +230,18 @@ export default class BaseModel
       .finally => @processing = false
 
   saveSuccess: (data) =>
-    @clearErrors()
+    @saveFailed = false
     @unmodified = pick(@, @attributeNames)
     data
 
   saveError: (data) =>
+    @saveFailed = true
     @setErrors(data.errors)
     throw data
 
   discardChanges: ->
     @attributeNames.forEach (key) =>
       Vue.set(@, key, @unmodified[key])
-
-  clearErrors: ->
-    @errors = null
 
   setErrors: (errorList = []) ->
     Vue.set(@, 'errors', {})
