@@ -5,7 +5,7 @@ class Webhook < ApplicationRecord
 
   belongs_to :group
   belongs_to :actor, class_name: 'User' # user or bot user that performs the actions
-  belongs_to :author
+  belongs_to :author, class_name: 'User'
 
   validates_presence_of :name
   validates_inclusion_of :format, in: ['markdown', 'microsoft', 'slack', 'discord'], if: :url

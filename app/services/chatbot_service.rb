@@ -2,6 +2,7 @@ class ChatbotService
   def self.create(chatbot:, actor:)
     actor.ability.authorize! :create, chatbot
     return false unless chatbot.valid?
+    chatbot.author = actor
     chatbot.save!
   end
 

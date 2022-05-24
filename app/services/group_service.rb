@@ -24,15 +24,13 @@ module GroupService
   end
 
   def self.invite(group:, params:, actor:)
-    actor.ability.authorize! :announce, group
-
     group_ids = if params[:invited_group_ids]
       Array(params[:invited_group_ids])
     else
       Array(group.id)
     end
 
-    groups = Group.where(id: group_ids).filter { |g| actor.can?(:add_members, g) }
+    groups = Group.where(id: group_ids).each { |g| actor.ability.authorize!(:add_members, g) }
 
     users = UserInviter.where_or_create!(actor: actor,
                                          model: group,
