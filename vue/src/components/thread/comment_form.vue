@@ -39,7 +39,9 @@ export default
                       else
                         'comment_form.messages.created'
         Flash.success flashMessage, {name: @comment.parent().authorName() if @comment.isReply()}
-      .catch => true
+      .catch (err) =>
+        Flash.error 'common.something_went_wrong'
+
 
 </script>
 
@@ -62,6 +64,10 @@ v-layout.comment-form(:class="{'px-3': !comment.parentId}")
           color="primary"
           type='submit'
           v-t="comment.isNew() ? 'comment_form.post_comment' : 'common.action.save' ")
+    v-alert(color="error" v-if="comment.errors != null")
+      span(v-t="'common.something_went_wrong'")
+      space
+      span(v-t="'common.please_try_again'")
 </template>
 
 <style lang="sass">
