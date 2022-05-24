@@ -100,8 +100,12 @@ img.emoji
 
   a
     text-decoration: underline
+
   p
-    margin-bottom: 0.5rem
+    margin-bottom: 0.75rem
+
+  p:empty
+    height: 1rem
 
   p:last-child
     margin-bottom: 0.25rem
@@ -153,7 +157,7 @@ img.emoji
 
   h1, h2, h3
     margin-top: 1rem
-    margin-bottom: 0.5rem
+    margin-bottom: 0.75rem
 
   h1:first-child, h2:first-child, h3:first-child
     margin-top: 0
@@ -194,7 +198,7 @@ img.emoji
 
   ol, ul
     padding-left: 24px
-    margin-bottom: .5rem
+    margin-bottom: .75rem
 
   ul
     list-style: disc
@@ -302,7 +306,7 @@ img.emoji
   table
     table-layout: fixed
     width: 100%
-    margin-bottom: 10px
+    margin-bottom: 12px
     border-collapse: collapse
 
   table td
