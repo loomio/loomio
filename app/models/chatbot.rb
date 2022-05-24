@@ -1,6 +1,6 @@
 class Chatbot < ApplicationRecord
   belongs_to :group
-  belongs_to :author
+  belongs_to :author, class_name: 'User'
 
   validates_inclusion_of :kind, in: ['matrix', 'webhook']
   validates_inclusion_of :webhook_kind, in: ['slack', 'microsoft', 'discord', 'markdown', nil]
