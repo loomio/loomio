@@ -15,6 +15,9 @@ h1,h2 {
 h3 {
   margin: 0.5em 0;
 }
+p {
+  margin-bottom: 16px;
+}
 
 table {
   width: 100%
@@ -29,6 +32,7 @@ pre {
   background: #eee;
   word-wrap: normal;
   white-space: pre-wrap;
+  margin-bottom: 16px;
 }
 
 header {

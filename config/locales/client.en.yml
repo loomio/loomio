@@ -2357,6 +2357,7 @@ en:
       create_poll: create poll
       show_poll: show poll
       read_memberships: read memberships
+      manage_memberships: manage memberships (add or remove group members)
     include_body_label: Include message body with notification
 
   powered_by:

@@ -2,7 +2,7 @@
   %h1 Loomio API
 
   %p
-    Hi, welcome! We've created this API for people who are writing integrations for Loomio.
+    Hi! We've created this API for people who are writing integrations for Loomio.
     At this stage it's still new and development is request driven -
     meaning that if you want to see a new feature, please
     %a{href: "https://www.loomio.org/community-product-development/", target: "_blank"}
@@ -51,7 +51,6 @@
 
 
   %h2 create poll
-
   %h3 example
   - closing_at = 7.days.from_now.at_beginning_of_hour.utc.iso8601
   %pre
@@ -131,3 +130,24 @@
   %a{href: url}=url
   %pre
     curl -d 'api_key=#{params['api_key']}' #{root_url}api/b1/memberships
+
+  %h2 manage memberships  
+  %p send a list of emails. it will invite all the new email addresses to the group. 
+  %pre
+    curl -X POST -H 'Content-Type: application/json' -d '{"emails":["person@example.com"], "api_key": "#{params['api_key']}"}' #{root_url}api/b1/memberships
+
+  %p if you pass remove_absent=1 then any members of the group who were not included in the list will be removed from the group. <b>be careful, you could remove everyone in your group!</b>
+  %pre
+    curl -X POST -H 'Content-Type: application/json' -d '{"emails":["person@example.com"], "remove_absent": 1, "api_key": "#{params['api_key']}"}' #{root_url}api/b1/memberships
+
+
+  %h3 params
+  %table
+    %tr
+      %td emails
+      %td array of strings. required. email addresses of people to invite into the group
+    %tr
+      %td remove_absent
+      %td boolean. If true, remove anyone from the group who's email is not present in the list
+
+  %p this returns an object with {added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}.
