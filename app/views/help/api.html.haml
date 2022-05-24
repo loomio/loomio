@@ -132,13 +132,14 @@
     curl -d 'api_key=#{params['api_key']}' #{root_url}api/b1/memberships
 
   %h2 manage memberships  
-  %p send this api a list of emails. it will invite all the new email addresses to the group. 
+  %p send a list of emails. it will invite all the new email addresses to the group. 
   %pre
     curl -X POST -H 'Content-Type: application/json' -d '{"emails":["person@example.com"], "api_key": "#{params['api_key']}"}' #{root_url}api/b1/memberships
 
   %p if you pass remove_absent=1 then any members of the group who were not included in the list will be removed from the group. <b>be careful, you could remove everyone in your group!</b>
   %pre
     curl -X POST -H 'Content-Type: application/json' -d '{"emails":["person@example.com"], "remove_absent": 1, "api_key": "#{params['api_key']}"}' #{root_url}api/b1/memberships
+
 
   %h3 params
   %table
@@ -149,4 +150,4 @@
       %td remove_absent
       %td boolean. If true, remove anyone from the group who's email is not present in the list
 
-  %h3 bulk delete memberships
+  %p this returns an object with {added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}.
