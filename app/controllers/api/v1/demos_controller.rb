@@ -10,7 +10,14 @@ class API::V1::DemosController < API::V1::RestfulController
     # require logged in user
     # find the demo id, and clone a group and put them in it
 
-    demo = Demo.find(params[:id])
+    if params[:id]
+      demo = Demo.find(params[:id])
+    elsif params[:group_id]
+      demo = Demo.find_by(group_id: params[:group_id])
+    else
+      raise "no params"
+    end
+
     clone = RecordCloner.new(recorded_at: demo.recorded_at)
                        .create_clone_group_for_actor(demo.group, current_user)
     self.collection = [clone]

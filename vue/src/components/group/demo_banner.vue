@@ -2,6 +2,8 @@
 import { differenceInDays, format, parseISO } from 'date-fns'
 import Session         from '@/shared/services/session'
 import AuthModalMixin      from '@/mixins/auth_modal'
+import Flash              from '@/shared/services/flash'
+import Records            from '@/shared/services/records'
 export default
   mixins: [ AuthModalMixin ]
   props:
@@ -9,6 +11,16 @@ export default
 
   methods:
     signIn: -> @openAuthModal()
+    cloneDemo: -> 
+      Flash.wait('templates.generating_demo')
+      Records.post
+        path: 'demos/clone'
+        params:
+          group_id: @group.id
+      .then (data) =>
+        Flash.success('templates.demo_created')
+        @$router.push @urlFor(Records.groups.find(data.groups[0].id))
+
 
   computed:
     isLoggedIn: -> Session.isSignedIn()
@@ -22,19 +34,26 @@ export default
 </script>
 <template lang="pug">
 v-alert(outlined color="primary" dense v-if="isDemo")
-  .d-flex.align-center
     template(v-if="!isLoggedIn")
-      span Welcome to the demo! To try voting and other features, please sign in. It only takes a few seconds.
-      v-spacer
-      v-btn(color="primary" @click="signIn" target="_blank")
-        span(v-t="'auth_form.sign_in'")
+      .d-flex.align-center
+        span(v-t="'templates.login_to_start_demo'")
+        v-spacer
+        v-btn(color="primary" @click="signIn" target="_blank")
+          span(v-t="'auth_form.sign_in'")
     template(v-if="isLoggedIn && isPublicDemo")
-      span Welcome to the demo! To test out voting and other Loomio features, click start demo.
-      v-spacer
-      v-btn(color="primary" @click="signIn" target="_blank")
-        span Start demo
-      //- v-spacer
-      //- v-btn(color="primary" to="/g/new" target="_blank")
-      //-   v-icon mdi-rocket
-      //-   span(v-t="'templates.start_trial'")
+      .d-flex.align-center
+        span(v-t="'templates.click_button_to_start_demo'")
+        v-spacer
+        v-btn(color="primary" @click="cloneDemo" target="_blank")
+          span(v-t="'templates.start_demo'")
+    template(v-if="isLoggedIn && !isPublicDemo")
+      p
+        span(v-t="'templates.welcome_to_your_demo'")
+        space
+        span(v-t="'templates.try_voting_to_see_it_work'")
+        br
+        span(v-t="'templates.to_use_loomio_with_your_org_start_trial'")
+
+      v-btn(block color="primary" to="/g/new" target="_blank")
+        span(v-t="'templates.start_free_trial'")
 </template>

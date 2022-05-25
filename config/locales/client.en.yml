@@ -18,6 +18,18 @@ en:
     no_tasks_assigned: There are no tasks assigned to you
 
   templates:
+    login_to_start_demo: |
+      This is a demo group! To vote or comment, you'll need to sign in. Don't worry - it's free and only takes a few clicks.
+    click_button_to_start_demo: |
+      Hooray, you did it! To start the demo, just click the button:
+    welcome_to_your_demo:
+      Welcome to your very own demo group!
+    try_voting_to_see_it_work:
+      Try voting in a proposal and get a feel for how Loomio works.
+    delete_will_be_deleted_in_x_days:
+      This demo will be deleted in %{x} days.
+    to_use_loomio_with_your_org_start_trial: 
+      When you're ready to try Loomio with your organization, start a free trial.
     templates: Templates
     make_a_copy: "Make a copy"
     this_thread_is_a_template: This thread is a template, make a copy if you want to use it.
@@ -29,13 +41,14 @@ en:
     generating_demo: 'Ok, wait right there! Generating a demo takes around 20 seconds.'
     start_a_x_day_free_trial: Start a {{day}} day free trial
     ready_to_trial: Ready to try Loomio with your organization?
-    start_a_no_obligation_x_day_trial: Start a Loomio group for your orgnization with a free, no obligation, {{day}} day trial.
+    start_a_no_obligation_x_day_trial: Start a Loomio group for your orgnization with a free {{day}} day trial.
     you_can_test_it_out: |
-      You can invite other people to join, integrate it with your other tools, and see if it works for your group.
+      You can invite other people to join, integrate it with your other tools, and try making some decisions.
     demo_created: Demo group created, just for you!
     start_demo: Start demo
     view_demo: View demo
     start_trial: Start trial
+    start_free_trial: Start free trial
     demo_needs_user: To start a demo, you need to sign up (or sign in) as a Loomio user. This is free and only takes a minute.
     this_is_a_template_for_new_threads: This is a template for new threads
 

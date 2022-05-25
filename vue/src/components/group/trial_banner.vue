@@ -24,7 +24,7 @@ export default
       format(new Date(@group.createdAt), 'do LLLL yyyy')
 </script>
 <template lang="pug">
-v-alert(outlined color="primary" dense v-if="isTrialing || isDemo")
+v-alert(outlined color="primary" dense v-if="isTrialing")
   .d-flex
     div.pr-1(v-if="isWasGift")
       span(v-if="isExpired" v-html="$t('current_plan_button.was_gift_expired')")
