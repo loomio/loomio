@@ -311,8 +311,8 @@ div
               v-icon mdi-format-italic
             //-
             //- //- strikethrough
-            //- v-btn(icon v-if="expanded" @click='editor.chain().toggleStrike().focus().run()' :outlined="editor.isActive('strike')"  :title="$t('formatting.strikethrough')")
-            //-   v-icon mdi-format-strikethrough
+            v-btn(icon v-if="expanded" @click='editor.chain().toggleStrike().focus().run()' :outlined="editor.isActive('strike')"  :title="$t('formatting.strikethrough')")
+              v-icon mdi-format-strikethrough
             //- underline
             //- v-btn(icon v-if="expanded" @click='editor.chain().toggleUnderline().focus().run()' :outlined="editor.isActive('underline')",  :title="$t('formatting.underline')")
             //-   v-icon mdi-format-underline
