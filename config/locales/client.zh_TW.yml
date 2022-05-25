@@ -592,6 +592,7 @@ zh_TW:
       group_announced: "%{actor} 邀請您加入群組"
       comment_replied_to: '%{actor} 回覆您'
       new_discussion: "%{actor} 啟動了討論串"
+      new_comment: "%{actor} 已在討論串中留言"
       membership_created: "%{actor} 邀請您加入群組"
       membership_requested: "%{actor} 請求加入您的群組"
       membership_request_approved: "%{actor} 接受您加入 %{title} 的請求"
