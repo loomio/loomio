@@ -1,0 +1,6 @@
+<%=SlackMrkdwn.from render "chatbot/markdown/notification", event: @event %>
+<%=SlackMrkdwn.from render "chatbot/markdown/title", eventable: @poll %>
+<%=SlackMrkdwn.from render "chatbot/markdown/body", eventable: @poll %>
+<%=SlackMrkdwn.from render "chatbot/markdown/outcome", poll: @poll %>
+<%=SlackMrkdwn.from render "chatbot/markdown/vote", poll: @poll %>
+<%=render "chatbot/slack/results", poll: @poll %>

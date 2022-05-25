@@ -61,7 +61,7 @@ class RecordCache
 
     when 'Stance'
       obj.add_stances(collection)
-      obj.add_polls_options_stances_outcomes Poll.where(id: collection.map(&:poll_id))
+      obj.add_polls_options_stances_outcomes Poll.kept.where(id: collection.map(&:poll_id))
 
     when 'User'
       # do nothing
@@ -193,8 +193,8 @@ class RecordCache
     collection_ids = collection.map(&:id)
     add_polls collection
     add_poll_options PollOption.where(poll_id: collection_ids)
-    add_stances Stance.where(poll_id: collection_ids, participant_id: current_user_id, latest: true)
-    add_outcomes Outcome.where(poll_id: collection_ids, latest: true)
+    add_stances Stance.latest.where(poll_id: collection_ids, participant_id: current_user_id)
+    add_outcomes Outcome.latest.where(poll_id: collection_ids)
   end
 
   def add_polls(collection)
@@ -272,11 +272,13 @@ class RecordCache
   def add_stances(collection)
     return [] if exclude_types.include?('stance')
     scope[:stances_by_id] ||= {}
-    scope[:stances_by_poll_id] ||= {}
+    scope[:my_stances_by_poll_id] ||= {}
     collection.each do |stance|
       @user_ids.push stance.participant_id
       scope[:stances_by_id][stance.id] = stance
-      scope[:stances_by_poll_id][stance.poll_id] = stance
+      if stance.participant_id == current_user_id && stance.revoked_at.nil?
+        scope[:my_stances_by_poll_id][stance.poll_id] = stance 
+      end
     end
   end
 

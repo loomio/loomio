@@ -2,7 +2,6 @@ class Dev::PollsController < Dev::NightwatchController
   include Dev::ScenariosHelper
 
   def test_poll_scenario
-
     scenario =send(:"#{params[:scenario]}_scenario", {
                       poll_type: params[:poll_type],
                       anonymous: !!params[:anonymous],
@@ -12,6 +11,8 @@ class Dev::PollsController < Dev::NightwatchController
                       standalone: !!params[:standalone],
                       wip: !!params[:wip]
                     })
+
+    scenario[:group].add_admin! scenario[:observer]
 
     sign_in(scenario[:observer]) if scenario[:observer].is_a?(User)
 

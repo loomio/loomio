@@ -43,6 +43,7 @@ class GroupSerializer < ApplicationSerializer
              :features,
              :open_discussions_count,
              :closed_discussions_count,
+             :template_discussions_count,
              :recent_activity_count,
              :is_visible_to_public,
              :is_subgroup_of_hidden_parent,

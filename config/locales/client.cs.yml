@@ -5,7 +5,6 @@ cs:
     group_progress_card:
       activities:
         set_description: Nastavit popis skupiny
-        invite_people_in: Pozvat lidi k účasti
         start_thread: Zahájit diskusní vlákno
         make_decision: Spuštění rozhodování
       dismiss_this_card: Tuto kartu zamítnout
@@ -21,13 +20,10 @@ cs:
     apply_tags: Použít štítek
     name_label: Název
     color_label: Barva
-    card_title: Kategorie štítků
     modal_title: Vytvořit nový štítek
     modal_edit_title: Upravit štítek
     modal_destroy_title: Odebrat štítek
     helptext: Štítky umožňují rozdělit konverzace do kategorií a snadno je později najít
-    discussions_count_singular: ({{count}} vlákno)
-    discussions_count_plural: ({{count}} vláken)
     tags_marked: Vlákna označená '{{name}}' ve skupině {{groupName}}
   timezones:
     local: Místní čas ({{value}})
@@ -224,7 +220,6 @@ cs:
   sidebar:
     threads: 'Vlákna'
     recent_threads: 'Aktuální vlákna'
-    unread_threads: 'Nepřečtená vlákna ({{count}})'
     muted_threads: 'Ztlumená vlákna'
     start_subgroup: 'Nová podskupina'
     explore: 'Veřejné skupiny'
@@ -288,8 +283,6 @@ cs:
     title_placeholder: 'O jakém tématu chcete diskutovat?'
     context_label: 'Souvislost'
     privacy_label: 'Soukromí'
-    privacy_public: 'Každý může vidět vlákno. Pouze členové se mohou účastnit.'
-    privacy_private: 'Vlákno bude vidět pouze pro členy {{group}}.'
     privacy_organisation: 'Vlákno bude vidět pro členy {{parent}} a členy {{group}}.'
   announcement:
     form:
@@ -348,7 +341,6 @@ cs:
   reactions_display:
     you: "Vy"
     you_and_name: "Vy a {{name}}"
-    you_and_name_and_count_more: "Vy, {{name}} a {{count}} dalších"
   context_panel:
     thread_status:
       pinned: "Toto vlákno bylo připnuté. Zůstane v horní části seznamu témat pro všechny uživatele."
@@ -442,7 +434,6 @@ cs:
     done: 'Hotovo'
     messages:
       invitation_sent: 'Pozvánka odeslána.'
-      invitations_sent: 'Odesláno {{count}} pozvánek.'
   memberships_page:
     members: 'Členové'
     name_label: 'Jméno'
@@ -478,7 +469,6 @@ cs:
     locale_label: 'Jazyk'
     locale_placeholder: Zvolte preferovaný jazyk
     update_profile: 'Aktualizovat profil'
-    help_translate: "Pomozte nám překládat Loomio"
   change_picture_form:
     use_gravatar: 'Použít Gravatar'
   change_password_form:

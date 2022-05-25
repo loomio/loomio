@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_06_081315) do
+ActiveRecord::Schema.define(version: 2022_05_02_022118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -144,6 +144,11 @@ ActiveRecord::Schema.define(version: 2022_04_06_081315) do
     t.index ["creator_id"], name: "index_blazer_queries_on_creator_id"
   end
 
+  create_table "blocked_domains", force: :cascade do |t|
+    t.string "name"
+    t.index ["name"], name: "index_blocked_domains_on_name", unique: true
+  end
+
   create_table "chatbots", force: :cascade do |t|
     t.string "kind"
     t.string "server"
@@ -151,11 +156,12 @@ ActiveRecord::Schema.define(version: 2022_04_06_081315) do
     t.string "access_token"
     t.integer "author_id"
     t.integer "group_id"
-    t.jsonb "event_kinds", default: [], null: false
-    t.boolean "include_body", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
+    t.boolean "notification_only", default: false, null: false
+    t.string "webhook_kind"
+    t.string "event_kinds", array: true
     t.index ["group_id"], name: "index_chatbots_on_group_id"
   end
 
@@ -261,12 +267,15 @@ ActiveRecord::Schema.define(version: 2022_04_06_081315) do
     t.jsonb "link_previews", default: [], null: false
     t.datetime "pinned_at"
     t.integer "discarded_by"
+    t.boolean "template", default: false, null: false
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
+    t.index ["discarded_at"], name: "index_discussions_on_discarded_at", where: "(discarded_at IS NULL)"
     t.index ["group_id"], name: "index_discussions_on_group_id"
     t.index ["key"], name: "index_discussions_on_key", unique: true
     t.index ["last_activity_at"], name: "index_discussions_on_last_activity_at", order: :desc
     t.index ["private"], name: "index_discussions_on_private"
+    t.index ["template"], name: "index_discussions_on_template", where: "(template IS TRUE)"
   end
 
   create_table "documents", id: :serial, force: :cascade do |t|
@@ -421,6 +430,7 @@ ActiveRecord::Schema.define(version: 2022_04_06_081315) do
     t.boolean "members_can_add_guests", default: true, null: false
     t.boolean "members_can_delete_comments", default: true, null: false
     t.jsonb "link_previews", default: [], null: false
+    t.integer "template_discussions_count", default: 0, null: false
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_groups_on_created_at"
     t.index ["full_name"], name: "index_groups_on_full_name"

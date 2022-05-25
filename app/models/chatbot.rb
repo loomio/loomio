@@ -1,12 +1,13 @@
 class Chatbot < ApplicationRecord
   belongs_to :group
-  belongs_to :author
+  belongs_to :author, class_name: 'User'
 
-  validates_inclusion_of :kind, in: ['matrix', 'slack', 'discord']
+  validates_inclusion_of :kind, in: ['matrix', 'webhook']
+  validates_inclusion_of :webhook_kind, in: ['slack', 'microsoft', 'discord', 'markdown', nil]
 
   def config
     {
-      id: self.id,
+      # id: self.id,
       server: self.server,
       access_token: self.access_token,
       channel: self.channel

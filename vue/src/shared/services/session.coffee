@@ -37,6 +37,7 @@ loadLocale = (locale) ->
         loadedLocales.push(locale)
         i18n.setLocaleMessage(locale, data)
         setI18nLanguage(locale)
+        EventBus.$emit('VueForceUpdate')
 
 export default new class Session
   defaultFormat: ->

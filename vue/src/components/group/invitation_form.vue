@@ -140,6 +140,7 @@ export default
       v-textarea(rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
 
       v-card-actions
+        help-link(path="en/user_manual/groups/membership" text="invitation_form.help_inviting_people")
         v-spacer
         v-btn.announcement-form__submit(color="primary" :disabled="!recipients.length || tooManyInvitations || groupIds.length == 0" @click="inviteRecipients" :loading="saving")
           span(v-t="'common.action.invite'")

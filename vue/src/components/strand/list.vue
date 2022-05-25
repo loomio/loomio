@@ -105,8 +105,7 @@ export default
         .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event)")
           .strand-item__stem(:class="{'strand-item__stem--unread': obj.isUnread, 'strand-item__stem--focused': isFocused(obj.event)}")
       .strand-item__main
-        //- div {{obj.event.kind}} {{obj.event.discussionId}} {{obj.event.sequenceId}} {{obj.isUnread}} {{obj.event.positionKey}} {{isFocused(obj.event)}}
-        //- | obj.event.kind
+        div(v-if="$route.query.debug") {{obj.event.kind}} {{obj.event.eventableId}} {{obj.event.sequenceId}} {{isFocused(obj.event)}} {{obj.event.childCount}} {{obj.children.length}}
         div(:class="classes(obj.event)" v-observe-visibility="{callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
           strand-item-removed(v-if="obj.eventable && obj.eventable.discardedAt" :event="obj.event" :eventable="obj.eventable")
           component(v-else :is="componentForKind(obj.event.kind)" :event='obj.event' :eventable="obj.eventable")

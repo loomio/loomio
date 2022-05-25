@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     namespace :b1 do
       resources :discussions, only: [:create, :show]
       resources :polls, only: [:create, :show]
-      resources :memberships, only: [:index]
+      resources :memberships, only: [:index, :create]
     end
 
     namespace :v1 do
@@ -326,6 +326,7 @@ Rails.application.routes.draw do
   get 'g/:key/settings'                    => 'application#index', as: :group_settings
   get 'g/:key/previous_polls'              => 'application#index', as: :group_previous_polls
   get 'g/:key/memberships/:username'       => 'application#index', as: :group_memberships_username
+  get 'g/:key/tags(/:tag_name)'            => 'application#index', as: :group_tags
   get 'g/new'                              => 'application#index', as: :new_group
   get 'd/new'                              => 'application#index', as: :new_discussion
   get 'p/new(/:type)'                      => 'application#index', as: :new_poll
@@ -338,7 +339,6 @@ Rails.application.routes.draw do
   get 'd/:key/export'                      => 'discussions#export',          as: :discussion_export
   get 'g/:key(/:slug)'                     => 'groups#show',                 as: :group
   get 'd/:key(/:slug)(/:sequence_id)'      => 'discussions#show',            as: :discussion
-  get 's/:key(/:slug)(/:sequence_id)'      => 'discussions#show'
   get 'd/:key/comment/:comment_id'         => 'discussions#show',            as: :comment
   get 'p/:key/unsubscribe'                 => 'polls#unsubscribe',           as: :poll_unsubscribe
   get 'p/:key(/:slug)'                     => 'polls#show',                  as: :poll

@@ -30,6 +30,7 @@ class Discussion < ApplicationRecord
 
   scope :is_open, -> { kept.where(closed_at: nil) }
   scope :is_closed, -> { kept.where("closed_at is not null") }
+  scope :templates, -> { kept.where(template: true) }
 
   validates_presence_of :title, :group, :author
   validates :title, length: { maximum: 150 }
@@ -100,7 +101,13 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :open_discussions_count
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
+  update_counter_cache :group, :template_discussions_count
 
+
+  def poll
+    nil
+  end
+  
   def group
     super || NullGroup.new
   end
@@ -162,7 +169,7 @@ class Discussion < ApplicationRecord
   end
 
   def update_sequence_info!
-    sequence_ids = discussion.items.order(:sequence_id).pluck(:sequence_id)
+    sequence_ids = discussion.items.order(:sequence_id).pluck(:sequence_id).compact
     discussion.ranges_string = RangeSet.serialize RangeSet.reduce RangeSet.ranges_from_list sequence_ids
     discussion.last_activity_at = discussion.items.unreadable.order(:sequence_id).last&.created_at || created_at
     update_columns(

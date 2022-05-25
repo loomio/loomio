@@ -7,6 +7,10 @@ namespace :loomio do
     puts Loomio::Version.current
   end
 
+  task update_blocked_domains: :environment do
+    UpdateBlockedDomainsWorker.perform_async
+  end
+
   task generate_static_error_pages: :environment do
     [400, 404, 403, 410, 417, 422, 429, 500].each do |code|
       ['html'].each do |format|
@@ -52,6 +56,10 @@ namespace :loomio do
       OutcomeService.delay.publish_review_due
       UsageReportService.send
       LoginToken.where("created_at < ?", 24.hours.ago).delete_all
+    end
+    
+    if (Time.now.hour == 0 && Time.now.mday == 1)
+      UpdateBlockedDomainsWorker.perform_async
     end
   end
 

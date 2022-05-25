@@ -128,7 +128,7 @@ div
             td
               time-ago(:date="item.createdAt")
             td(v-if="canAdminister")
-              action-menu(v-if="Object.keys(actionsFor(item)).length" :actions="actionsFor(item)")
+              action-menu(v-if="Object.keys(actionsFor(item)).length" :actions="actionsFor(item)" icon)
 
       v-layout(justify-center)
         .d-flex.flex-column.justify-center.align-center

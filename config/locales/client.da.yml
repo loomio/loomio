@@ -16,8 +16,6 @@ da:
     modal_title: Opret nyt mærke
     modal_edit_title: Rediger mærke
     modal_destroy_title: Slet mærke
-    discussions_count_singular: ({{count}} debat)
-    discussions_count_plural: ({{count}} debatter)
   timezones:
     local: Lokal tid ({{value}})
   common:
@@ -202,7 +200,6 @@ da:
   sidebar:
     threads: 'Debatter'
     recent_threads: 'Seneste debatter'
-    unread_threads: 'Ulæste debatter ({{count}})'
     muted_threads: 'Uden notifikationer'
     explore: 'Offentlige grupper'
     start_thread: Opret debat
@@ -409,7 +406,6 @@ da:
   membership_requests_card:
     heading: 'Anmodninger om medlemskab'
     manage_requests: Administrer anmodninger
-    manage_requests_with_count: Administrer anmodninger ({{count}})
   membership_requests_page:
     heading: Anmodninger om medlemskab
     approve: Godkend
@@ -440,7 +436,6 @@ da:
     done: 'Udført'
     messages:
       invitation_sent: 'Invitation sendt.'
-      invitations_sent: '{{count}} invitationer sendt.'
       no_invitations: 'Uha! Kontroller venligst at emailadressen er korrekt og prøv igen.'
       max_invitations: 'Hvis du ønsker at sende mere end 100 invitationer, så benyt et delbart link.'
   memberships_page:

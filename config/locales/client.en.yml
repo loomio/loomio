@@ -18,6 +18,9 @@ en:
     no_tasks_assigned: There are no tasks assigned to you
 
   templates:
+    templates: Templates
+    make_a_copy: "Make a copy"
+    this_thread_is_a_template: This thread is a template, make a copy if you want to use it.
     try_loomio: Try Loomio
     start_a_demo_group: Start a demo group
     start_a_demo: Start a demo
@@ -34,6 +37,8 @@ en:
     view_demo: View demo
     start_trial: Start trial
     demo_needs_user: To start a demo, you need to sign up (or sign in) as a Loomio user. This is free and only takes a minute.
+    this_is_a_template_for_new_threads: This is a template for new threads
+
 
   doctypes:
     youtube_video: YouTube Video
@@ -58,7 +63,8 @@ en:
         set_description: Set your group's description
         set_cover_photo: Upload a cover photo & logo for your group
         customize_group: Add a group picture, logo and description
-        invite_people_in: Invite people in
+        setup_chatbot: "Add a Loomio bot to your chatroom (e.g. Slack, Discord, Teams or other)"
+        invite_people_in: Invite people in by email, or with a link to join.
         start_thread: Start a discussion thread
         make_decision: Start a decision
       learn_more: Learn more at Loomio Help
@@ -114,15 +120,15 @@ en:
     new_tag: New tag
     name_label: Name
     color_label: Color
-    card_title: Category Tags
+    card_title: Category tags
     modal_title: Create a new tag
     modal_edit_title: Edit tag
     modal_destroy_title: Remove tag
     destroy_tag: Delete tag
     destroy_helptext: This will delete this tag and remove it from all threads in the group. Are you sure?
     helptext: Tags allow you to categorize conversations and easily find them later
-    discussions_count_singular: ({{count}} thread)
-    discussions_count_plural: ({{count}} threads)
+    discussions_count_singular: (%{count} thread)
+    discussions_count_plural: (%{count} threads)
     tag_created: Tag saved
     tag_destroyed: Tag deleted
     tags_marked: Threads marked '{{name}}' in {{groupName}}
@@ -172,9 +178,12 @@ en:
     time_zone: Time zone
     local_time: Local time
     attachments: Attachments
+    template: Template
     links: Links
     active_time_ago: Last active {{time_ago}}
     confirm_discard_changes: Discard your changes?
+    something_went_wrong: Uh oh! Something went wrong.
+    please_try_again: Please try again
     time:
       am: am
       pm: pm
@@ -243,10 +252,10 @@ en:
       cancel: 'Cancel'
       show_more: "Show more"
       show_fewer: "Show fewer"
-      view_count_more: "View {{count}} more"
-      view_count_responses: "View {{count}} responses"
-      count_more: "{{count}} more"
-      count_responses: "{{count}} responses"
+      view_count_more: "View %{count} more"
+      view_count_responses: "View %{count} responses"
+      count_more: "%{count} more"
+      count_responses: "%{count} responses"
       view_all: "View All"
       new_thread: "New thread"
       add_subgroup: 'New subgroup'
@@ -352,6 +361,7 @@ en:
     hint: 'Hint for next time: Try highlighting some text before you click "Pin".'
 
   change_volume_form:
+    help_notifications: 'Help: Notifications'
     explain_scope:
       thread: This changes when you'll be notified about this thread
       group: This changes when you'll be notified about all threads in the group
@@ -480,7 +490,7 @@ en:
     recent_threads: 'Recent threads'
     invite_only_threads: 'Invite-only threads'
     direct_threads: 'Direct threads'
-    unread_threads: 'Unread threads ({{count}})'
+    unread_threads: 'Unread threads (%{count})'
     muted_threads: 'Muted threads'
     start_group: 'New organization'
     start_subgroup: 'New subgroup'
@@ -627,6 +637,7 @@ en:
       group_announced: "%{actor} invited you to a group"
       comment_replied_to: '%{actor} replied to you'
       new_discussion: "%{actor} started a thread"
+      new_comment: "%{actor} commented in a thread"
       membership_created: "%{actor} invited you to join a group"
       membership_requested: "%{actor} requested to join your group"
       membership_request_approved: "%{actor} approved your request to join %{title}"
@@ -676,6 +687,7 @@ en:
     none_invite_only_thread: "Invite-only thread (no group)"
     change_log_placeholder: Optionally, describe your changes. This message will be added to the thread.
     change_log_label: What's changed?
+    help_starting_threads: 'Help: Starting threads'
     invite: Invite
     aria_label: 'Thread form'
     start_thread: Start thread
@@ -693,10 +705,10 @@ en:
     context_label: 'Context'
     context_placeholder: "Provide some context for this discussion, so people know how to participate"
     privacy_label: 'Privacy'
-    privacy_public: 'Anyone can see the thread. Only members can participate.'
-    privacy_private: 'The thread will only be visible to members of {{group}}.'
+    privacy_public: 'Anyone can view this thread if they have the link'
+    privacy_private: 'Only members of the group can view this thread'
     privacy_organisation: 'The thread will be visible to members of {{parent}} and members of {{group}}.'
-    fork_notice: 'A new thread will be created with {{count}} items from {{title}}'
+    fork_notice: 'A new thread will be created with %{count} items from {{title}}'
     notify_group: Notify group
 
 
@@ -750,13 +762,15 @@ en:
       non_voters: Members of {{name}} not yet invited
 
     form:
+      help_notifying_people: 'Help: Notifying people'
+      help_invite_voters: 'Help: Inviting voters'
       too_many_invitations: |
         Invitation limit exceeded. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
       no_invitations_remaining: |
         <p>You have used all {{maxMembers}} invitations available to this group.</p>
         <p>Next step, <a href="{{upgradeUrl}}" target="_blank">choose a plan</a> to continue collaborating on Loomio.</p>
 
-      invitations_remaining: '{{count}} invitations remaining. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>'
+      invitations_remaining: '%{count} invitations remaining. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>'
       who_to_invite: Who would you like to invite?
       invitation_message_placeholder: A message to include in the invitation email. (optional)
       invitation_message_label: Message
@@ -795,13 +809,15 @@ en:
       anyone_can_participate: Anyone with link can participate
       placeholder: You can enter names or email addresses
       notified_empty: 'Nobody selected yet'
+      single_notification: '1 notification will be sent.'
+      multiple_notifications: '{{notified}} notifications will be sent.'
       notified: '{{notified}} people will be notified.'
       notified_singular: '1 person will be notified.'
       notified_none: 'Nobody will be notified.'
-      added: '{{count}} people will be added.'
+      added: '%{count} people will be added.'
       added_singular: '1 person will be added.'
       added_none: 'Nobody will be added.'
-      group_title: '{{name}} ({{count}} people)'
+      group_title: '{{name}} (%{count} people)'
       visible_to_group: 'Anyone in {{group}} will be able to see this thread.'
       visible_to_guests: 'Only invited people can see this thread.'
       click_group_to_see_individuals: Click group to see individuals
@@ -819,7 +835,7 @@ en:
       search_placeholder: Search for people...
       modal_title: Select group members
     flash:
-      success: '{{count}} notifications sent'
+      success: '%{count} notifications sent'
 
   action_dock:
     actions_menu: Actions menu
@@ -872,8 +888,8 @@ en:
     notification_history: Notification history
     move_item: Move item
     add_poll_to_thread: Add to thread
-    count_members: "{{count}} members"
-    count_voters: "{{count}} voters"
+    count_members: "%{count} members"
+    count_voters: "%{count} voters"
 
   formatting:
     formatting_tools: Text formatting tools
@@ -980,11 +996,11 @@ en:
     add_your_reaction: Add your reaction
 
   reactions_display:
-    more_reactions: "{{count}} more"
+    more_reactions: "%{count} more"
     you: "You"
     you_and_name: "You and {{name}}"
-    you_and_name_and_count_more: "You, {{name}} and {{count}} more"
-    name_and_count_more: "{{name}} and {{count}} more"
+    you_and_name_and_count_more: "You, {{name}} and %{count} more"
+    name_and_count_more: "{{name}} and %{count} more"
 
   context_panel:
     thread_status:
@@ -1008,8 +1024,8 @@ en:
     files: Files
     settings: Settings
     subgroups: Subgroups
-    show_opened: '{{count}} Open'
-    show_closed: '{{count}} Closed'
+    show_opened: '%{count} Open'
+    show_closed: '%{count} Closed'
     no_threads_here: No threads to see here!
     search_threads: Search for threads...
     private_threads: You'll need to be a member to view private threads in this group
@@ -1031,8 +1047,8 @@ en:
     discussions_placeholder: 'A thread is where everyone can discuss a topic and make decisions together.'
     members_placeholder: 'You''re the only one here: invite some people to join you!'
     member_options: Member options
-    see_all_members: 'See all {{count}} members'
-    pending_invitations: '+ {{count}} pending'
+    see_all_members: 'See all %{count} members'
+    pending_invitations: '+ %{count} pending'
     subgroups_placeholder: 'Subgroups give teams their own space and keep notifications focused to the right people.'
     invite_people: 'Invite'
     visibility_label: 'Visibility'
@@ -1076,6 +1092,7 @@ en:
     as_csv: Open it in a spreadsheet
     as_html: Open it in a browser
     as_json: Host this group on my own server
+    help_exporting_data: 'Help: Exporting data'
 
   description_card:
     title: 'Group description'
@@ -1096,12 +1113,14 @@ en:
     submit: 'Yes, Deactivate this group'
 
   group_form:
+    help_starting_a_group: 'Help: Starting a group'
     thread_defaults_help: Default settings for new threads
     click_to_change_image: Click to change the cover image (4x1) or logo (1x1)
     permissions_explaination: |
       There are two levels of membership a person can have to a group: admin and member.
       Admins can edit group settings, make other people admins, and perform all the actions listed below.
     aria_label: Group form
+    help_group_settings: 'Help: Group settings'
     parent_group: Parent group
     new_organisation: New organization
     new_group: New group
@@ -1214,7 +1233,7 @@ en:
   membership_requests_card:
     heading: 'Membership Requests'
     manage_requests: Manage requests
-    manage_requests_with_count: Manage requests ({{count}})
+    manage_requests_with_count: Manage requests (%{count})
 
   membership_requests_page:
     heading: Membership Requests
@@ -1231,6 +1250,7 @@ en:
   invitation_form:
     group_url: Group URL
     reusable_invitation_link: Reusable invitation link
+    help_inviting_people: 'Help: Inviting people'
     error: "Error when trying to copy to clipboard"
     aria_label: 'Invitation form'
     invite_people: 'Invite people'
@@ -1259,7 +1279,7 @@ en:
     done: 'Done'
     messages:
       invitation_sent: 'Invitation sent.'
-      invitations_sent: '{{count}} invitations sent.'
+      invitations_sent: '%{count} invitations sent.'
       no_invitations: 'Uhoh! Please verify the email address is correct and try again.'
       max_invitations: 'If you want to send more than 100 invitations, use a team link.'
 
@@ -1319,6 +1339,7 @@ en:
     email_sent: "Email sent to {{name}}"
 
   profile_page:
+    help_profile: 'Help: Your profile'
     incomplete_profile: Incomplete profile!
     set_your_profile_picture: Set your profile picture
     messages:
@@ -1346,7 +1367,7 @@ en:
     location_placeholder: 'Where are you based?'
     update_profile: 'Update profile'
     deactivate_account: 'Deactivate user account'
-    help_translate: "Help us translate Loomio"
+    help_translate: "Can you help us translate Loomio?"
     updated_on_sign_in: Provided by your browser and updated when you sign in
 
   text_editor:
@@ -1414,10 +1435,11 @@ en:
     messages:
       updated: Email settings updated
     learn_more: Learn more about email settings...
+    help_email_settings: 'Help: User email settings'
 
   thread_preview:
-    replies_count: "{{count}} replies"
-    unread_count: "{{count}} unread"
+    replies_count: "%{count} replies"
+    unread_count: "%{count} unread"
 
   dashboard_page:
     aria_label: 'Dashboard'
@@ -1515,12 +1537,12 @@ en:
     no_one: No one has seen this yet
 
   activity_card:
-    count_responses: "{{count}} responses"
+    count_responses: "%{count} responses"
     event_pinned: "Pinned to timeline"
     event_unpinned: "Unpinned from timeline"
     beginning: Beginning
     end: End
-    unread: "Unread ({{count}})"
+    unread: "Unread (%{count})"
     latest: Latest
     context: Context
     chronological: Chronological
@@ -1528,8 +1550,8 @@ en:
     attachment_display:
       aria_label: 'File attached:'
       image_alt: 'Attached image'
-    n_previous: 'Load {{count}} previous responses'
-    n_more: 'Load {{count}} responses'
+    n_previous: 'Load %{count} previous responses'
+    n_more: 'Load %{count} responses'
     add_comment: Add comment
     add_poll: Add poll
     add_outcome: Add outcome
@@ -1556,8 +1578,8 @@ en:
     print_thread: 'Print'
     delete_thread: 'Delete'
     add_comment: 'Comment'
-    seen_by_count: 'Seen by {{count}}'
-    count_notified: 'Notified {{count}}'
+    seen_by_count: 'Seen by %{count}'
+    count_notified: 'Notified %{count}'
     forked_from: "Forked from"
 
   pin_thread_modal:
@@ -1725,7 +1747,7 @@ en:
   discussions_panel:
     open: Open
     all: All
-    unread: Unread ({{count}})
+    unread: Unread (%{count})
     closed: Closed
     include_subgroups_mine: '{{name}} and my subgroups'
     include_subgroups_all: '{{name}} and all subgroups'
@@ -1885,11 +1907,11 @@ en:
     none_of_the_above: (None of the above)
 
   poll_common_undecided_panel:
-    show_undecided: "Show {{count}} undecided"
+    show_undecided: "Show %{count} undecided"
     show_invitations: Show Pending Invitations
-    undecided_users: "Undecided ({{count}})"
+    undecided_users: "Undecided (%{count})"
     invitation_count_singular: "1 additional person has been invited to participate via email"
-    invitation_count_plural: "{{count}} additional people have been invited to participate via email"
+    invitation_count_plural: "%{count} additional people have been invited to participate via email"
 
   poll_common_undecided_user:
     reminded: Reminder sent!
@@ -1943,7 +1965,7 @@ en:
     loomio_school_link: |
       <p>Find out more at <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio Help</a>.</p>
     no_notifications_warning: Voters will not be notified. This is useful if you're running a lot of polls and plan to notify everyone later on.
-    count_voters_added: '{{count}} voters added'
+    count_voters_added: '%{count} voters added'
 
   poll_proposal_form:
     tool_tip_expanded: |
@@ -1962,6 +1984,7 @@ en:
     proposal_updated: Proposal updated
 
   poll_poll_form:
+    help_starting_polls: 'Help: Starting polls'
     tool_tip_expanded: |
       <p>Use a poll to measure popularity or offer a choice.</p>
       <p>Provide some options to choose from. Decide if participants choose single or multiple options as their response.</p>
@@ -2150,13 +2173,13 @@ en:
     reason_placeholder: Explain when you're free (or busy), in case the author wants to add options.
 
   poll_dot_vote_vote_form:
-    dots_remaining: "{{count}} dots remaining"
+    dots_remaining: "%{count} dots remaining"
     too_many_dots: You have used too many dots
     stance_created: Vote created
     stance_updated: Vote updated
 
   poll_ranked_choice_vote_form:
-    helptext: Drag and drop options in order of preference (1 being your most preferred option). Your top {{count}} choices will be recorded.
+    helptext: Drag and drop options in order of preference (1 being your most preferred option). Your top %{count} choices will be recorded.
     stance_created: Choice recorded
     stance_updated: Choice updated
 
@@ -2260,18 +2283,36 @@ en:
     test_connection: Test connection
     test_connection_ok: Looks good! You should see a message in the channel
     test_connection_bad: Something is wrong with the settings
+    name: Chatbot name
+    connection_test_successful: Loomio bot connection test successful!
     chatbot: Chatbot
+    chatbots: Chatbots
     saved: Chatbot saved!
+    webhook_url: Webhook URL
     homeserver_url: Homeserver URL
     channel: Channel
     username: Username
     password: Password
     access_token: Access Token
+    add_chatbot: Add chatbot
+    matrix: Matrix
+    slack: Slack
+    discord: Discord
+    mattermost: Mattermost
+    microsoft_teams: Microsoft Teams
+    event_kind_helptext: Select events the bot will always be notified about. If you're not sure, just leave them all off.
+    notification_only_label: Send notification headline only
+    check_for_test_message: Check your chatroom for a message from the bot!
+    help_chatbots: 'Help: Chatbots'
 
   webhook:
+    help_api: "Help: API"
     integrations: Integrations
+    api_keys: API keys
     webhooks: Webhooks
     webhook: Webhook
+    add_api_key: Add API key
+    edit_api_key: Edit API key
     api: API
     format: Format
     formats:
@@ -2279,11 +2320,12 @@ en:
       microsoft: Microsoft Teams
       slack: Slack
       discord: Discord
-    subtitle: Connect to Loomio to the rest of your tools with our integration API and webhooks
+    subtitle: Connect to Loomio to the rest of your tools with our API
     we_have_guides: |
       See our <a href="{{url}}" target="_blank">webhook setup guides</a> for help connecting your service.
     add_webhook: Add webhook
     show_docs: See API usage
+    save_to_show_docs: After you save, return here to find your API key
     edit_integration: Edit integration
     add_integration: Add integration
     success: Integration added!
@@ -2317,8 +2359,8 @@ en:
       create_poll: create poll
       show_poll: show poll
       read_memberships: read memberships
+      manage_memberships: manage memberships (add or remove group members)
     include_body_label: Include message body with notification
-    include_subgroups_label: Relay events from subgroups
 
   powered_by:
     slogan: Better decisions together

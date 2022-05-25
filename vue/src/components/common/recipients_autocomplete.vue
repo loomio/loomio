@@ -188,9 +188,9 @@ export default
         id: b.id
         type: 'chatbot'
         icon: 'mdi-robot'
-        name: b.channel
+        name: b.name
 
-      @suggestions = @recipients.concat(audiences).concat(members).concat(chatbots)
+      @suggestions = @recipients.concat(chatbots).concat(audiences).concat(members)
 
   computed:
     canAddGuests: -> AbilityService.canAddGuests(@model)
@@ -315,7 +315,7 @@ div.recipients-autocomplete
         @click:close='remove(data.item)')
         span
           user-avatar.mr-1(v-if="data.item.type == 'user'"
-                           :user="data.item.user" size="small" no-link)
+                           :user="data.item.user" :size="24" no-link)
           v-icon.mr-1(v-else small) {{data.item.icon}}
         span {{ data.item.name }}
         span(v-if="data.item.type == 'user' && currentUserId == data.item.id")

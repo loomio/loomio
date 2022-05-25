@@ -36,6 +36,10 @@ export default
     EventBus.$on 'openAuthModal',     => @openAuthModal()
     EventBus.$on 'pageError', (error) => @pageError = error
     EventBus.$on 'signedIn',          => @pageError = null
+    EventBus.$on 'VueForceUpdate',    => 
+      @$nextTick =>
+        console.log("forceupdate")
+        @$forceUpdate()
     Flash.success(AppConfig.flash.notice) if AppConfig.flash.notice
 
   destroyed: ->

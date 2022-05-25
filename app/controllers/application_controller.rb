@@ -84,7 +84,8 @@ class ApplicationController < ActionController::Base
 
   protected
   def pagination_params
-    { limit: params.fetch(:limit, 100).to_i, offset: params.fetch(:offset, 0).to_i }
+    default_limit = (params[:export] || browser.bot?) ? 2000 : 50
+    { limit: params.fetch(:limit, default_limit).to_i, offset: params.fetch(:offset, 0).to_i }
   end
 
   def prevent_caching

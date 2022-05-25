@@ -199,6 +199,9 @@ it:
         Qual'è il tuo approccio per partecipare a questo gruppo? Illustra agli altri partecipanti chi sei e qual'è la tua storia.
   how_it_works_thread:
     title: Come usare Loomio
+  task_mailer:
+    task_due_reminder:
+      due_today: 'oggi'
   poll_mailer:
     common:
       create_outcome: Condividi risultati

@@ -27,6 +27,11 @@ export default class EventModel extends BaseModel
 
   defaultValues: ->
     pinned: false
+    eventableId: null
+    eventableType: null
+    discussionId: null
+    sequenceId: null
+    positition: 0
 
   parentOrSelf: ->
     if @parentId

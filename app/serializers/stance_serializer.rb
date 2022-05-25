@@ -18,8 +18,7 @@ class StanceSerializer < ApplicationSerializer
              :participant_id,
              :revoked_at,
              :order_at,
-             :option_scores,
-             :my_stance
+             :option_scores
 
   has_one :poll, serializer: PollSerializer, root: :polls
   has_one :participant, serializer: AuthorSerializer, root: :users
@@ -57,17 +56,8 @@ class StanceSerializer < ApplicationSerializer
     object[:volume]
   end
 
-  def my_stance
-    scope[:current_user_id] && object[:participant_id] == scope[:current_user_id]
-  end
-
-  def current_user_has_voted
-    s = cache_fetch(:stances_by_poll_id, object.poll_id) { Stance.latest.find_by(poll_id: object.poll_id, participant_id: scope[:current_user_id]) }
-    s && s.cast_at
-  end
-
   def include_reason?
-    my_stance || poll.show_results?(voted: current_user_has_voted)
+    object.participant_id == scope[:current_user_id] || poll.show_results?(voted: true)
   end
 
   def include_mentioned_usernames?

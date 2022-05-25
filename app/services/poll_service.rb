@@ -113,7 +113,6 @@ class PollService
                                          user_ids: user_ids,
                                          audience: audience,
                                          emails: emails).where.not(id: existing_voter_ids)
-
     volumes = {}
 
     # if the user has chosen to mute the thread or group then mute the poll too, but dont subsribe
@@ -266,6 +265,7 @@ class PollService
       option_name = poll.poll_option_name_format == 'i18n' ? "poll_#{poll.poll_type}_options."+option.name : option.name
       {
         id: option.id,
+        poll_id: option.poll_id,
         name: option_name,
         name_format: poll.poll_option_name_format,
         rank: index+1,
@@ -275,7 +275,7 @@ class PollService
         voter_percent: poll.voters_count > 0 ? ((option.voter_count.to_f / poll.voters_count.to_f) * 100) : 0,
         average: option.average_score,
         voter_scores: option.voter_scores,
-        voter_ids: option.voter_ids.shuffle.take(500),
+        voter_ids: option.voter_ids.take(500),
         voter_count: option.voter_count,
         color: option.color
       }.with_indifferent_access.freeze
@@ -283,6 +283,7 @@ class PollService
     if poll.results_include_undecided
       l.push({
           id: 0,
+          poll_id: poll.id,
           name: 'poll_common_votes_panel.undecided',
           name_format: 'i18n',
           rank: nil,
@@ -292,9 +293,9 @@ class PollService
           voter_percent: poll.voters_count > 0 ? (poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100) : 0,
           average: 0,
           voter_scores: {},
-          voter_ids: poll.undecided_voters.map(&:id).shuffle.take(500),
+          voter_ids: poll.undecided_voters.map(&:id).take(500),
           voter_count: poll.undecided_voters_count,
-          color: '#DDDDDD'
+          color: '#BBBBBB'
       }.with_indifferent_access.freeze)
     end
     l

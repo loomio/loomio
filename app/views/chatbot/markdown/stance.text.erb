@@ -1,0 +1,4 @@
+<%= render "chatbot/markdown/notification", event: @event %>
+<%= render "chatbot/markdown/title", eventable: @event.eventable.poll %>
+<%= render "chatbot/markdown/stance_choices", stance: @event.eventable %>
+<%= render "chatbot/markdown/body", eventable: @event.eventable %>

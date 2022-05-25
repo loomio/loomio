@@ -20,7 +20,7 @@ export default class ThreadLoader
     @visibleKeys = {}
     @collapsed = Vue.observable({})
     @loading = false
-    @padding = 20
+    @padding = 50
     @maxAutoLoadMore = 5
 
   firstUnreadSequenceId: ->
@@ -173,8 +173,8 @@ export default class ThreadLoader
       local:
         find:
           discussionId: @discussion.id
-          commentId: {$gte: commentId}
-        limit: @padding
+          eventableId: commentId
+          eventableType: 'Comment'
       remote:
         order: 'sequence_id'
         discussion_id: @discussion.id

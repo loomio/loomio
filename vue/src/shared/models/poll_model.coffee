@@ -43,7 +43,7 @@ export default class PollModel extends BaseModel
     linkPreviews: []
     notifyOnClosingSoon: 'undecided_voters'
     results: []
-    pleaseShowResults: false
+    pollOptionIds: []
     recipientMessage: null
     recipientAudience: null
     recipientUserIds: []
@@ -53,7 +53,6 @@ export default class PollModel extends BaseModel
     shuffleOptions: false
     tagIds: []
     hideResults: 'off'
-    showResults: false
     stanceCounts: []
 
   audienceValues: ->
@@ -63,9 +62,13 @@ export default class PollModel extends BaseModel
     @belongsTo 'author', from: 'users'
     @belongsTo 'discussion'
     @belongsTo 'group'
-    @hasMany   'pollOptions', orderBy: 'priority'
+    # @hasMany   'pollOptions', orderBy: 'priority'
     @hasMany   'stances'
     @hasMany   'versions'
+
+  pollOptions: ->
+    options = (@recordStore.pollOptions.collection.chain().find(pollId: @id, id: {$in: @pollOptionIds}).data())
+    orderBy(options, 'priority')
 
   pollOptionsForVoting: ->
     if @shuffleOptions
@@ -75,7 +78,6 @@ export default class PollModel extends BaseModel
 
   bestNamedId: ->
     ((@id && @) || (@discusionId && @discussion()) || (@groupId && @group()) || {namedId: ->}).namedId()
-
 
   tags: ->
     @recordStore.tags.collection.chain().find(id: {$in: @tagIds}).simplesort('priority').data()
@@ -96,6 +98,12 @@ export default class PollModel extends BaseModel
     stance = @stanceFor(user)
     (stance && stance.admin) || (@discussionId && @discussion().adminsInclude(user)) || @group().adminsInclude(user)
 
+  votersInclude: (user) ->
+    if specifiedVotersOnly
+      @stanceFor(user)
+    else
+      @membersInclude(user)
+
   membersInclude: (user) ->
     @stanceFor(user) || (@discussionId && @discussion().membersInclude(user)) || @group().membersInclude(user)
 
@@ -103,10 +111,19 @@ export default class PollModel extends BaseModel
     head orderBy(@recordStore.stances.find(pollId: @id, participantId: user.id, latest: true, revokedAt: null), 'createdAt', 'desc')
 
   myStance: ->
-    head orderBy(@recordStore.stances.find(pollId: @id, myStance: true, latest: true, revokedAt: null), 'createdAt', 'desc')
+    @recordStore.stances.find(id: @myStanceId, revokedAt: null)[0]
 
   iHaveVoted: ->
-    @myStance() && @myStance().castAt
+    @myStanceId && @myStance() && @myStance().castAt
+
+  showResults: ->
+    switch @hideResults
+      when "until_closed"
+        @closedAt
+      when "until_vote"
+        @closedAt || @iHaveVoted()
+      else
+        true
 
   optionsDiffer: (options) ->
     !isEqual(sortBy(@pollOptionNames), sortBy(map(options, 'name')))

@@ -11,7 +11,7 @@ export default
     small: Boolean
 
   data: ->
-    diameter: (@small && 16) || 24
+    diameter: (@small && 20) || 24
     maxNamesCount: 10
     reactionHash: {all: []}
     emojiSupported: emojiSupported
@@ -98,8 +98,8 @@ export default
     font-size: 22px
     line-height: 20px
   span.small
-    font-size: 16px
-    line-height: 16px
+    font-size: 20px
+    line-height: 18px
 
   .user-avatar
     span

@@ -3,7 +3,7 @@ class Events::StanceCreated < Event
   include Events::Notify::ByEmail
   include Events::Notify::InApp
   include Events::Notify::Mentions
-  include Events::Notify::ThirdParty
+  include Events::Notify::Chatbots
 
   def self.publish!(stance)
     super stance,

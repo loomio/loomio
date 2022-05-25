@@ -47,6 +47,18 @@ export default class DiscussionModel extends BaseModel
     usersNotifiedCount: null
     discussionReaderUserId: null
     pinnedAt: null
+    template: false
+
+  cloneTemplate: ->
+    clone = @clone()
+    clone.id = null
+    clone.authorId = Session.user().id
+    clone.pinnedAt = null
+    clone.forkedEventIds = []
+    clone.groupId = null
+    clone.closedAt = null
+    clone.template = false
+    clone
 
   audienceValues: ->
     name: @group().name

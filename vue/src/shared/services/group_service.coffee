@@ -11,7 +11,7 @@ import i18n from '@/i18n.coffee'
 export default new class GroupService
   actions: (group) ->
     membership = group.membershipFor(Session.user())
-
+    
     translate_group:
       name: 'common.action.translate'
       icon: 'mdi-translate'
@@ -45,6 +45,17 @@ export default new class GroupService
           props:
             group: group.clone()
 
+    edit_tags: 
+      icon: 'mdi-tag-outline'
+      name: 'loomio_tags.card_title'
+      menu: true
+      canPerform: -> AbilityService.canAdminister(group)
+      perform: ->
+        EventBus.$emit 'openModal',
+          component: 'TagsSelect',
+          props:
+            model: group.clone()
+
     become_coordinator:
       name: 'group_page.options.become_coordinator'
       icon: 'mdi-shield-star'
@@ -57,19 +68,19 @@ export default new class GroupService
           Flash.success "memberships_page.messages.make_admin_success", name: Session.user().name
 
     chatbots:
-      name: 'chatbot.chatbot'
+      name: 'chatbot.chatbots'
       icon: 'mdi-robot'
       menu: true
       canPerform: ->
-        AppConfig.features.app.chatbots && group.adminsInclude(Session.user())
+        group.adminsInclude(Session.user())
       perform: ->
         openModal
-          component: 'ChatbotForm'
+          component: 'ChatbotList'
           props:
             group: group
 
     webhooks:
-      name: 'webhook.integrations'
+      name: 'webhook.api_keys'
       icon: 'mdi-webhook'
       menu: true
       canPerform: ->

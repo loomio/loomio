@@ -17,6 +17,9 @@ fr:
     task_updated_not_done: 'Tâche marquée comme pas terminée !'
     no_tasks_assigned: Aucune tâche ne vous a été assignée
   templates:
+    templates: Modèles
+    make_a_copy: "Faire une copie"
+    this_thread_is_a_template: Ce thread est un modèle, faites une copie si vous souhaitez l’utiliser.
     try_loomio: Essayez Loomio
     start_a_demo_group: Créez un groupe demo
     start_a_demo: Démarrer la démo
@@ -32,6 +35,7 @@ fr:
     start_demo: Démarrer la démo
     start_trial: Commencer un essai
     demo_needs_user: Pour démarrer une démo, vous devez vous inscrire (ou vous connecter) en tant qu’utilisateur Loomio. Ceci est gratuit et ne prend qu’une minute.
+    this_is_a_template_for_new_threads: Il s’agit d’un modèle pour les nouveaux threads
   doctypes:
     youtube_video: Video Youtube
     image: Image
@@ -54,7 +58,8 @@ fr:
         set_description: Saisissez une description pour votre groupe
         set_cover_photo: Envoyez une image de couverture ainsi qu'un logo pour votre groupe
         customize_group: Ajoutez une photo de groupe, un logo et une description
-        invite_people_in: Invitez des personnes
+        setup_chatbot: "Ajouter un bot Loomio à votre salon de discussion (par exemple, Slack, Discord, Teams ou autre)"
+        invite_people_in: Invitez des personnes par e-mail ou avec un lien à rejoindre.
         start_thread: Lancez une discussion
         make_decision: Prenez une décision
       learn_more: Apprenez-en plus dans l'aide Loomio
@@ -106,15 +111,15 @@ fr:
     new_tag: Nouveau tag
     name_label: Nom
     color_label: Couleur
-    card_title: Classement par mots-clés
+    card_title: Classement par tags
     modal_title: Créer un nouveau mot-clé
     modal_edit_title: Modifier un mot-clé
     modal_destroy_title: Supprimer le mot-clé
     destroy_tag: Supprimer le tag
     destroy_helptext: 'Ceci va détruire le tag et le supprimer de tous les fils de discussion du groupe. Êtes-vous sûr ? '
     helptext: Les mots-clés permettent de catégoriser les discussions pour les retrouver facilement par la suite.
-    discussions_count_singular: ({{count}} discussion)
-    discussions_count_plural: ({{count}} discussions)
+    discussions_count_singular: (%{count} discussion)
+    discussions_count_plural: (%{count} discussions)
     tag_created: Mot-clé sauvegardé
     tag_destroyed: Tag supprimé
     tags_marked: Discussions marquées « {{name}} » dans {{groupName}}
@@ -159,9 +164,11 @@ fr:
     time_zone: Fuseau horaire
     local_time: Heure locale
     attachments: Pièces jointes
+    template: Modèle
     links: Liens
     active_time_ago: Actif pour la dernière fois {{time_ago}}
     confirm_discard_changes: Annuler vos modifications ?
+    something_went_wrong: Euh oh! Quelque chose a mal tourné.
     time:
       am: le matin
       pm: l'après-midi
@@ -230,10 +237,10 @@ fr:
       cancel: 'Annuler'
       show_more: "Afficher davantage"
       show_fewer: "Montrer moins"
-      view_count_more: "Voir {{count}} de plus"
-      view_count_responses: "Voir {{count}} réponses"
-      count_more: "{{count}} de plus"
-      count_responses: "{{count}} réponses"
+      view_count_more: "Voir %{count} de plus"
+      view_count_responses: "Voir %{count} réponses"
+      count_more: "%{count} de plus"
+      count_responses: "%{count} réponses"
       view_all: "Tout afficher"
       new_thread: "Nouvelle discussion"
       add_subgroup: 'Nouveau sous-groupe'
@@ -328,6 +335,7 @@ fr:
     title_label: Titre
     hint: 'Astuce pour la prochaine fois : surligner du texte avant de cliquer sur "Epingler".'
   change_volume_form:
+    help_notifications: 'Aide : Notifications'
     explain_scope:
       thread: Cela changera lorsque vous recevrez les notifications de ce groupe de discussion.
       group: Cela changera lorsque vous recevrez des notifications de tous les groupes de discussions dont vous faites partie.
@@ -446,7 +454,7 @@ fr:
     recent_threads: 'Discussions récentes'
     invite_only_threads: 'Discussions accessibles uniquement sur invitation'
     direct_threads: 'Discussions directes'
-    unread_threads: 'Discussions non lues ({{count}})'
+    unread_threads: 'Discussions non lues (%{count})'
     muted_threads: 'Discussions ignorées'
     start_group: 'Nouveau groupe'
     start_subgroup: 'Ajouter un sous-groupe'
@@ -544,21 +552,21 @@ fr:
     no_notifications: "Aucune nouvelle notification"
     with_title:
       comment_replied_to: "%{actor} vous a repondu in: %{title}"
-      discussion_announced: "%{actor} vous a invité dans à fil de discussion : %{title}"
+      discussion_announced: "%{actor} vous a invité dans à fil de discussion: %{title}"
       discussion_edited: "%{actor} modifié le contexte du thread: %{title}"
       discussion_closed: "%{actor} a fermé le thread: %{title}"
       invitation_accepted: "%{actor}a accepté votre invitation à joindre %{title}"
       membership_created: "%{actor} vous a invité à rejoindre %{title} sur %{site_name}"
       membership_requested: "%{actor} a demandé à s'adhérer %{title}"
-      membership_request_approved: "%{actor}a accepté votre demande à joindre %{title}"
-      new_comment: "%{actor}a mentionné sur: %{title}"
-      new_coordinator: "%{actor}vous a fait admin de %{title}"
+      membership_request_approved: "%{actor} a accepté votre demande à joindre %{title}"
+      new_comment: "%{actor} a mentionné sur: %{title}"
+      new_coordinator: "%{actor} vous a fait admin de %{title}"
       new_discussion: "%{actor} a démarré un thread: %{title}"
       outcome_announced: "%{actor} a partagé un %{poll_type} résultat: %{title}"
       outcome_created: "%{actor} a partagé un %{poll_type} résultat: %{title}"
       outcome_updated: "%{actor} a mis à jour les résultats du %{poll_type}: %{title}"
       outcome_review_due: "C'est le moment de vérifier les résultats du: %{title}"
-      poll_announced: "%{actor} vous a invité à voter : %{title}"
+      poll_announced: "%{actor} vous a invité à voter: %{title}"
       poll_closed_by_user: "%{actor} a fermé le %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} va fermer dans 24 heures: %{title}"
       poll_closing_soon_author: "Ton %{poll_type} vas fermer dans 24 heures: %{title}"
@@ -571,20 +579,20 @@ fr:
       poll_reminder: "%{actor} vous rappelle de voter sur: %{title}"
       poll_reminder_wip: "%{actor} vous rappelle de donner du feedback: %{title}"
       reaction_created: "%{actor} a réagi %{reaction} à ton %{model} sur %{title}"
-      stance_created: "%{actor} a voté sur : %{title}"
-      stance_updated: "%{actor} a voté sur : %{title}"
-      stance_created_option: "%{actor}a voté %{option} sur %{title}"
+      stance_created: "%{actor} a voté sur: %{title}"
+      stance_updated: "%{actor} a voté sur: %{title}"
+      stance_created_option: "%{actor} a voté %{option} sur %{title}"
       user_added_to_group: "%{actor} vous a ajouté dans le group: %{title}"
-      user_mentioned: "%{actor} vous a mentionné·e dans : %{title}"
-      user_reminded: "%{actor} attend votre vote sur : %{title}"
+      user_mentioned: "%{actor} vous a mentionné·e dans: %{title}"
+      user_reminded: "%{actor} attend votre vote sur: %{title}"
     without_title:
-      discussion_announced: '%{actor} vous a invité à la discussion '
+      discussion_announced: '%{actor} vous a invité à la discussion'
       discussion_edited: '%{actor} a modifié le contexte de la discussion'
       discussion_closed: "%{actor} a fermé la discussion"
-      group_announced: "%{actor} vous a invité dans le group "
+      group_announced: "%{actor} vous a invité dans le group"
       comment_replied_to: '%{actor} vous a repondu'
       new_discussion: "%{actor} a commencé une discussion"
-      membership_created: "%{actor} vous a invité à joindre le group "
+      membership_created: "%{actor} vous a invité à joindre le group"
       membership_requested: "%{actor} a demandé à s'adhérer dans le group"
       membership_request_approved: "%{actor}a accepté votre demande à joindre %{title}"
       outcome_announced: '%{actor} a partagé un %{poll_type} résultat'
@@ -629,6 +637,7 @@ fr:
     none_invite_only_thread: "Discussion accessible uniquement sur invitation (pas de groupe)"
     change_log_placeholder: 'Facultatif: décrivez les changement apportés. Ce message sera ajouté à la discussion.'
     change_log_label: 'Qu''est ce qui a changé ? '
+    help_starting_threads: 'Aide : Démarrage des threads'
     invite: Inviter
     aria_label: 'Forme de la discussion'
     start_thread: Démarrer une discussion
@@ -646,10 +655,10 @@ fr:
     context_label: 'Contexte'
     context_placeholder: "Veuillez indiquer le contexte de cette discussion, pour que les participants sachent comment y prendre part"
     privacy_label: 'Privé'
-    privacy_public: 'N’importe qui peut voir la discussion. Seuls les membres de {{groupName}} peuvent participer.'
-    privacy_private: 'La discussion sera visible uniquement aux membres de {{group}}.'
+    privacy_public: 'N’importe qui peut voir ce fil de discussion s’il a le lien'
+    privacy_private: 'Seulement les membres du groupe peuvent afficher ce fil de discussion'
     privacy_organisation: 'La discussion sera visible uniquement pour les membres de {{parent}} et les membres de {{group}}.'
-    fork_notice: 'Une nouvelle discussion sera créée avec {{count}} items de {{title}}'
+    fork_notice: 'Une nouvelle discussion sera créée avec %{count} items de {{title}}'
     notify_group: Notifier le groupe
   announcement:
     send_discussion: Envoyer la discussion
@@ -698,12 +707,14 @@ fr:
       undecided_voters: Votants indécis
       non_voters: Les membres de {{name}} n'ont pas encore été invités
     form:
+      help_notifying_people: 'Aide : Avertir les gens'
+      help_invite_voters: 'Aide : Inviter les électeurs'
       too_many_invitations: |
           Invitations maximum atteintes. <a href="{{upgradeUrl}}" target="_blank">Mettre à jour</a>
       no_invitations_remaining: |
           <p>Vous avez épuisé toutes les {{maxMembers}} invitations disponible pour ce groupe.</p>
           <p>Étape suivante, <a href="{{upgradeUrl}}" target="_blank">choisissez un abonnement</a> pour continuer à utiliser Loomio.</p>
-      invitations_remaining: '{{count}} invitations restantes <a href="{{upgradeUrl}}" target="_blank">Mettre à jour</a>'
+      invitations_remaining: '%{count} invitations restantes. <a href="{{upgradeUrl}}" target="_blank">Mettre à jour</a>'
       who_to_invite: Qui voulez vous inviter ?
       invitation_message_placeholder: Message à joindre à l'invitation (facultatif)
       invitation_message_label: Message
@@ -742,13 +753,15 @@ fr:
       anyone_can_participate: N’importe qui ayant un lien peut participer.
       placeholder: Vous pouvez saisir les noms ou les adresses mail
       notified_empty: 'Personne n''est encore sélectionné'
+      single_notification: '1 notification sera envoyée.'
+      multiple_notifications: 'Des notifications {{notified}} seront envoyées.'
       notified: 'Les personnes {{notified}} seront notifiées'
       notified_singular: '1 personne sera notifiée'
       notified_none: 'Personne ne sera notifié'
-      added: '{{count}} personnes seront ajoutés'
+      added: '%{count} personnes seront ajoutés.'
       added_singular: '1 personne sera ajouté'
       added_none: 'Personne sera ajouté'
-      group_title: '{{name}} ({{count}} personnes)'
+      group_title: '{{name}} (%{count} personnes)'
       visible_to_group: 'N''importe qui dans {{group}} pourra voir cette discussion'
       visible_to_guests: 'Seules les personnes invitées peuvent voir cette discussion'
       click_group_to_see_individuals: Cliquez sur groupe pour voir les individus
@@ -765,7 +778,7 @@ fr:
       search_placeholder: Chercher des personnes...
       modal_title: Sélectionner des membres du groupe
     flash:
-      success: '{{count}} notifications envoyées'
+      success: '%{count} notifications envoyées'
   action_dock:
     actions_menu: Menu d'actions
     more_actions: Plus d'actions
@@ -817,8 +830,8 @@ fr:
     notification_history: Historique des notifications
     move_item: Déplacer l'élément
     add_poll_to_thread: Ajouter à la discussion
-    count_members: "{{count}} membres"
-    count_voters: "{{count}} votants"
+    count_members: "%{count} membres"
+    count_voters: "%{count} votants"
   formatting:
     formatting_tools: Outils de formatage du texte
     colors: Couleurs
@@ -917,11 +930,11 @@ fr:
   reactions_input:
     add_your_reaction: Ajouter votre réaction
   reactions_display:
-    more_reactions: "{{count}} de plus"
+    more_reactions: "%{count} de plus"
     you: "Vous"
     you_and_name: "Vous et {{name}}"
-    you_and_name_and_count_more: "Vous, {{name}} et {{count}} de plus"
-    name_and_count_more: "{{name}} et {{count}} de plus"
+    you_and_name_and_count_more: "Vous, {{name}} et %{count} de plus"
+    name_and_count_more: "{{name}} et %{count} de plus"
   context_panel:
     thread_status:
       pinned: "Cette discussion a été épinglée. Elle restera en haut de la liste des discussions du groupe pour l’ensemble des utilisateurs."
@@ -942,8 +955,8 @@ fr:
     files: Fichiers
     settings: Paramètres
     subgroups: Sous-groupes
-    show_opened: '{{count}} ouvertes'
-    show_closed: '{{count}} closes'
+    show_opened: '%{count} ouvertes'
+    show_closed: '%{count} fermés'
     no_threads_here: Pas de discussions à afficher ici !
     search_threads: Rechercher des discussions…
     private_threads: Vous devez être membre du groupe pour voir des discussions privées de ce groupe
@@ -965,8 +978,8 @@ fr:
     discussions_placeholder: 'Une discussion est l’endroit où tout le monde peut discuter d’un sujet et prendre des décisions collectives.'
     members_placeholder: 'Vous êtes le seul membre ici: invitez des personnes à vous rejoindre !'
     member_options: Options des membres
-    see_all_members: 'Voir les {{count}} membres'
-    pending_invitations: '+ {{count}} en attente'
+    see_all_members: 'Voir les %{count} membres'
+    pending_invitations: '+ %{count} en attente'
     subgroups_placeholder: 'Les sous-groupes permettent à chaque équipe de disposer de son propre espace et d’envoyer les notifications aux bonnes personnes.'
     invite_people: 'Inviter'
     visibility_label: 'Visibilité'
@@ -1009,6 +1022,7 @@ fr:
     as_csv: Ouvrir dans une feuille de calcul
     as_html: Ouvrir dans un navigateur web
     as_json: Héberger ce groupe sur mon propre serveur
+    help_exporting_data: 'Aide : Exportation de données'
   description_card:
     title: 'Description du groupe'
     placeholder: 'Les administrateurs du groupe peuvent utiliser cet encart pour décrire l''objectif du groupe afin que chaque participant sache pourquoi il se trouve là'
@@ -1025,12 +1039,14 @@ fr:
     question: 'Êtes-vous sûr de vouloir désactiver ce groupe ?'
     submit: 'Oui, désactiver ce groupe'
   group_form:
+    help_starting_a_group: 'Aide : Création d’un groupe'
     thread_defaults_help: Paramètres par défaut pour les nouvelles discussions
     click_to_change_image: Cliquez pour modifier l’image de couverture (4x1) ou le logo (1x1)
     permissions_explaination: |
         Une personne peut avoir deux niveaux d'adhésion dans un groupe: administrateur ou membre.
         Les administrateurs peuvent modifier les paramètres du groupe, nommer d'autres administrateurs et faire les actions suivantes:
     aria_label: Forme du groupe
+    help_group_settings: 'Aide : Paramètres du groupe'
     parent_group: Groupe parent
     new_organisation: Nouveau groupe
     new_group: Nouveau groupe
@@ -1133,7 +1149,7 @@ fr:
   membership_requests_card:
     heading: 'Demandes d’ajout'
     manage_requests: Gérer les demandes
-    manage_requests_with_count: Gérer les demandes ({{count}})
+    manage_requests_with_count: Gérer les demandes (%{count})
   membership_requests_page:
     heading: Demandes d’ajout
     approve: Approuver
@@ -1148,6 +1164,7 @@ fr:
   invitation_form:
     group_url: URL du groupe
     reusable_invitation_link: Lien d'invitation réutilisable
+    help_inviting_people: 'Aide : Inviter des personnes'
     error: "Erreur lors de la copie vers le presse-papier."
     aria_label: 'Formulaire d’invitation'
     invite_people: 'Inviter des personnes'
@@ -1176,7 +1193,7 @@ fr:
     done: 'Fait'
     messages:
       invitation_sent: 'Invitation envoyée.'
-      invitations_sent: '{{count}} invitation(s) envoyée(s).'
+      invitations_sent: '%{count}invitations envoyées.'
       no_invitations: 'Oh-oh ! Merci de vérifier l’adresse e-mail puis de réessayer.'
       max_invitations: 'Si vous voulez envoyer plus de 100 invitations, vous devez utiliser un lien d’invitation.'
   memberships_page:
@@ -1229,6 +1246,7 @@ fr:
     helptext: "Votre nom, adresse e-mail et message seront envoyés à {{name}}"
     email_sent: "Courriel envoyé à {{name}}"
   profile_page:
+    help_profile: 'Aide : Votre profil'
     incomplete_profile: Profil incomplet!
     set_your_profile_picture: Définir votre photo de profil
     messages:
@@ -1256,7 +1274,7 @@ fr:
     location_placeholder: 'Où êtes-vous ?'
     update_profile: 'Mettre à jour mon profil'
     deactivate_account: 'Désactiver le compte utilisateur'
-    help_translate: "Aidez-nous à traduire Loomio"
+    help_translate: "Pouvez vous nous aider à traduire Loomio?"
     updated_on_sign_in: Fourni par votre navigateur et mis à jour lorsque vous vous connectez
   text_editor:
     x_of_y_characters: "{{x}} / {{y}} caractères"
@@ -1318,9 +1336,10 @@ fr:
     messages:
       updated: Réglages de courriel mis à jour
     learn_more: En savoir plus sur les paramètres d’e-mail…
+    help_email_settings: 'Aide : Paramètres de messagerie utilisateur'
   thread_preview:
-    replies_count: "{{count}} réponses"
-    unread_count: "{{count}} non lus"
+    replies_count: "%{count} réponses"
+    unread_count: "%{count}non lus"
   dashboard_page:
     aria_label: 'Tableau de bord'
     polls_to_vote_on: "Sondages sur les votes"
@@ -1411,12 +1430,12 @@ fr:
     title: Vu par
     no_one: Personne n'a encore vu cela pour l'instant
   activity_card:
-    count_responses: "{{count}} réponses"
+    count_responses: "%{count} réponses"
     event_pinned: "Epinglé à la timeline"
     event_unpinned: "Dés-épinglé de la timeline"
     beginning: Début
     end: Fin
-    unread: "Non lus ({{count}})"
+    unread: "Non lus (%{count})"
     latest: Dernier
     context: Contexte
     chronological: Chronologique
@@ -1424,8 +1443,8 @@ fr:
     attachment_display:
       aria_label: 'Pièce jointe :'
       image_alt: 'Image jointe'
-    n_previous: 'Afficher {{count}} réponses précédentes'
-    n_more: 'Afficher {{count}} réponses'
+    n_previous: 'Afficher %{count} réponses précédentes'
+    n_more: 'Afficher %{count} réponses'
     add_comment: Ajouter un commentaire
     add_poll: Ajouter un sondage
     add_outcome: Ajouter un résultat
@@ -1450,8 +1469,8 @@ fr:
     print_thread: 'Imprimer'
     delete_thread: 'Supprimer'
     add_comment: 'Commentaire'
-    seen_by_count: 'Vu par {{count}} personnes'
-    count_notified: 'Notifiés {{count}}'
+    seen_by_count: 'Vu par %{count} personnes'
+    count_notified: 'Notifiés %{count}'
     forked_from: "Scindé depuis"
   pin_thread_modal:
     title: Épingler la discussion
@@ -1603,7 +1622,7 @@ fr:
   discussions_panel:
     open: Ouvert
     all: Tous
-    unread: Non lus ({{count}})
+    unread: Non lus (%{count})
     closed: Clôturée
     include_subgroups_mine: '{{name}} et mes sous-groupes'
     include_subgroups_all: '{{name}} et tous les sous-groupes'
@@ -1747,11 +1766,11 @@ fr:
     change_results_order: Changer l’ordre des résultats
     none_of_the_above: (Aucun des choix ci-dessus)
   poll_common_undecided_panel:
-    show_undecided: "Afficher les {{count}} indécis"
+    show_undecided: "Afficher les %{count} indécis"
     show_invitations: Montrer les invitations en attente
-    undecided_users: "Indécis ({{count}})"
+    undecided_users: "Indécis (%{count})"
     invitation_count_singular: "1 autre personne a été invitée à participer par courriel"
-    invitation_count_plural: "{{count}} autres personnes ont été invitées à participer par courriel"
+    invitation_count_plural: "%{count} autres personnes ont été invitées à participer par courriel"
   poll_common_undecided_user:
     reminded: Rappel envoyé !
     reminder_sent: Notification de rappel envoyée
@@ -1799,7 +1818,7 @@ fr:
     loomio_school_link: |
         <p>Apprenez-en plus sur <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">l'aide de Loomio</a>.</p>
     no_notifications_warning: Les électeurs ne seront pas avisés. Ceci est utile si vous exécutez beaucoup de sondages et prévoyez d’informer tout le monde plus tard.
-    count_voters_added: '{{nombre}} électeurs ajoutés'
+    count_voters_added: '%{count} électeurs ajoutés'
   poll_proposal_form:
     tool_tip_expanded: |
         <p>Une proposition est un outil de recherche d’accord collectif à propos d’une déclaration ou d’un plan d’action.</p>
@@ -1816,6 +1835,7 @@ fr:
     proposal_created: Proposition démarrée
     proposal_updated: Proposition mise à jour
   poll_poll_form:
+    help_starting_polls: 'Aide : Lancement du sondage'
     tool_tip_expanded: |
         <p>Utilisez un sondage pour mesurer la popularité d’une idée ou offrir un choix.</p>
         <p>Fournissez quelques options parmi lesquelles choisir. Décidez si les participants peuvent choisir une ou plusieurs options dans leur réponse.</p>
@@ -1986,12 +2006,12 @@ fr:
     stance_updated: Disponibilité mise à jour
     reason_placeholder: Expliquez quand vous êtes libre (ou occupé), dans le cas où l’auteur veut ajouter des options.
   poll_dot_vote_vote_form:
-    dots_remaining: "{{count}}  points restants"
+    dots_remaining: "%{count} points restants"
     too_many_dots: Vous avez utilisé trop de points
     stance_created: Vote créé
     stance_updated: Vote mis à jour
   poll_ranked_choice_vote_form:
-    helptext: Glissez et déposez les options par ordre décroissant de préférence (en premier, votre option préférée, en dernier celle que vous préférez le moins). Vos {{count}} premiers choix seront enregistrés.
+    helptext: Glissez et déposez les options par ordre décroissant de préférence (en premier, votre option préférée, en dernier celle que vous préférez le moins). Vos %{count} premiers choix seront enregistrés.
     stance_created: Choix enregistré
     stance_updated: Choix mis à jour
   thread_item:
@@ -2090,17 +2110,35 @@ fr:
     test_connection: Tester la connexion
     test_connection_ok: Ça a l’air bien! Vous devriez voir un message dans le canal
     test_connection_bad: Quelque chose ne va pas avec les paramètres
+    name: Le prénom de Chatbot!
+    connection_test_successful: Test de connexion de bot Loomio réussi!
     chatbot: Chatbot
+    chatbots: Chatbot
     saved: Chatbot enregistré!
+    webhook_url: L'URL webhook
     homeserver_url: URL du serveur d’accueil
     channel: Canal
     username: Identifiant utilisateur
     password: Mot de passe
     access_token: Jeton d’accès
+    add_chatbot: Ajouter chatbot
+    matrix: Matrice
+    slack: Slack
+    discord: Discord
+    mattermost: Ce qui compte le plus
+    microsoft_teams: Microsoft Teams
+    event_kind_helptext: Sélectionnez les événements dont le bot sera toujours informé. Si vous n’êtes pas sûr, laissez-les tous de côté.
+    notification_only_label: Envoyer le titre de notification uniquement
+    check_for_test_message: Vérifiez votre salon de discussion pour un message du bot!
+    help_chatbots: 'Aide : Chatbots'
   webhook:
+    help_api: "Aide : API"
     integrations: Integrations
+    api_keys: Clés API
     webhooks: Webhooks
     webhook: Webhook
+    add_api_key: Ajouter une clé API
+    edit_api_key: Modifier la clé API
     api: API
     format: Formatter
     formats:
@@ -2108,11 +2146,12 @@ fr:
       microsoft: Microsoft Teams
       slack: Slack
       discord: Discord
-    subtitle: Connectez-vous à Loomio au reste de vos outils avec notre API d’intégration et nos webhooks
+    subtitle: Connectez-vous à Loomio au reste de vos outils avec notre API
     we_have_guides: |
         Lisez notre <a href="{{url}}" target="_blank">guide de configuration webhook</a> pour connecter votre propre service.
     add_webhook: Ajouter un webhook
     show_docs: Voir l'utilisation de l'API
+    save_to_show_docs: Après avoir enregistré, revenez ici pour trouver votre clé API
     edit_integration: Modifier l'intégration
     add_integration: Ajouter une intégration
     success: 'Intégration ajoutée ! '
@@ -2147,7 +2186,6 @@ fr:
       show_poll: Montrer le sondage
       read_memberships: lire les appartenances
     include_body_label: Inclure le corps du message dans la notification
-    include_subgroups_label: Faire suivre les événement des sous-groupes
   powered_by:
     slogan: De meilleures décisions ensemble
     powered_by_loomio: Propulsé par Loomio

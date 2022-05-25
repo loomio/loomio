@@ -1,7 +1,8 @@
 class UserInviter
-  def self.count(emails: , user_ids:, audience:, model:, usernames: , actor:, exclude_members: false, include_actor: false)
+  def self.count(emails: , user_ids:, chatbot_ids:, audience:, model:, usernames: , actor:, exclude_members: false, include_actor: false)
     emails = Array(emails).map(&:presence).compact.uniq
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
+    chatbot_ids = Array(chatbot_ids).uniq.compact.map(&:to_i)
     usernames =  Array(usernames).map(&:presence).compact.uniq
 
     audience_ids = AnnouncementService.audience_users(
@@ -12,7 +13,7 @@ class UserInviter
                         usernames: usernames,
                         user_ids: user_ids.concat(audience_ids))
     users = users.where.not(id: model.voters.pluck(:id)) if exclude_members
-    email_count + users.count
+    email_count + users.count + chatbot_ids.length
   end
 
   def self.authorize!(emails: , user_ids:, audience:, model:, actor:)
@@ -48,7 +49,7 @@ class UserInviter
       []
     end
 
-    # guests are any user outside of the group
+    # guests are any user outside of the group, and not yet invited
     # either by email address or by user_id, but user_ids are limited to your org
     member_ids = model.members.where(id: user_ids).pluck(:id)
 

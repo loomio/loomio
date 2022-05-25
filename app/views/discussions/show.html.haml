@@ -26,20 +26,20 @@
                     - if @discussion.private
                       %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private
                         %i.mdi.mdi-lock-outline
-                        %span Private
+                        %span= t(:'common.privacy.private')
                     -else
                       %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public
                         %i.mdi.mdi-earth
-                        %span Public
+                        %span= t(:'common.privacy.public')
                     %span
-                      %span
-                        %span{"aria-hidden" => "true"} ·
-                      %span.context-panel__seen_by_count
-                        Seen by
-                        = @discussion.seen_by_count
+                      %span{"aria-hidden" => "true"} ·
+                      %span.context-panel__seen_by_count= t(:'thread_context.seen_by_count', count: @discussion.seen_by_count)
                 .lmo-markdown-wrapper.body-2.text--primary.context-panel__description
                   = render_rich_text(@discussion.body, @discussion.body_format)
               %hr.v-divider.my-4.theme--auto{"aria-orientation" => "horizontal", :role => "separator"}
             .activity-panel
-              - @discussion.items.includes(:eventable, :user).order("position_key #{@discussion.newest_first ? 'desc' : 'asc'}").where(kind: ['new_comment', 'poll_created', 'stance_created', 'stance_updated']).limit(@pagination[:limit]).offset(@pagination[:offset]).each do |item|
+              - items = @discussion.items.includes(:eventable, :user).order("position_key #{@discussion.newest_first ? 'desc' : 'asc'}").where(kind: ['new_comment', 'poll_created', 'stance_created', 'stance_updated'])
+              - items.limit(@pagination[:limit]).offset(@pagination[:offset]).each do |item|
                 = render "discussions/thread_items/thread_item", item: item
+              - if (@pagination[:offset] + @pagination[:limit]) < items.count
+                %a{href: "?offset=#{@pagination[:offset]+@pagination[:limit]}&limit=#{@pagination[:limit]}&export=1"}= t(:'common.action.load_more')

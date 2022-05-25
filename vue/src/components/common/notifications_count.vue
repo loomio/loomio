@@ -17,6 +17,7 @@ export default
       Records.remote.fetch(path: 'announcements/count', params: {
         recipient_emails_cmr: @model.recipientEmails.join(',')
         recipient_user_xids: @model.recipientUserIds.join('x')
+        recipient_chatbot_xids: @model.recipientChatbotIds.join('x')
         recipient_usernames_cmr: []
         recipient_audience: @model.recipientAudience
         include_actor: (@includeActor && 1) || null
@@ -37,8 +38,8 @@ export default
 p.common-notifications-count.text--secondary.caption
   template(v-if="model.notifyRecipients")
     span(v-if="count == 0" v-t="'announcement.form.notified_none'")
-    span(v-if="count == 1" v-t="'announcement.form.notified_singular'")
-    span(v-if="count > 1" v-t="{path: 'announcement.form.notified', args: {notified: count}}")
+    span(v-if="count == 1" v-t="'announcement.form.single_notification'")
+    span(v-if="count > 1" v-t="{path: 'announcement.form.multiple_notifications', args: {notified: count}}")
   template(v-else)
     span(v-if="count == 0" v-t="'announcement.form.added_none'")
     span(v-if="count == 1" v-t="'announcement.form.added_singular'")

@@ -119,7 +119,7 @@ v-main
               v-select#user-locale-field(:label="$t('profile_page.locale_label')" :items="availableLocales" v-model="user.selectedLocale" item-text="name" item-value="key")
               validation-errors(:subject='user', field='selectedLocale')
               p(v-if='showHelpTranslate')
-                a(v-t="'profile_page.help_translate'" href='https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation' target='_blank')
+                a(v-t="'profile_page.help_translate'" href='https://help.loomio.com/en/user_manual/users/translation' target='_blank')
               p
                 span(v-t="'common.time_zone'")
                 space
@@ -130,6 +130,7 @@ v-main
                     v-icon(v-bind="attrs" v-on="on" small) mdi-information-outline
                   span(v-t="'profile_page.updated_on_sign_in'")
         v-card-actions.profile-page__update-account
+          help-link(path="en/user_manual/users/user_profile" text="profile_page.help_profile")
           v-spacer
           v-btn.profile-page__update-button(color="primary" @click='submit()' :disabled='emailExists' :loading="user.processing")
             span(v-t="'profile_page.update_profile'")

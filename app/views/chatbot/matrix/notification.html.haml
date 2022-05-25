@@ -1,0 +1,3 @@
+- title = link_to(@event.eventable.title, polymorphic_url(@event.eventable))
+- poll_type = @poll ? t("poll_types.#{@poll.poll_type}") : nil
+=raw t("notifications.with_title.#{@event.kind}", actor: @event.user.name, title: title, poll_type: poll_type, site_name: AppConfig.theme[:site_name])

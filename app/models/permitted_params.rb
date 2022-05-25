@@ -106,7 +106,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def chatbot_attributes
-   [:name, :group_id, :kind, :server, :access_token, :channel, :event_kinds, {event_kinds: []}]
+   [:name, :group_id, :kind, :webhook_kind, :server, :access_token, :channel, :notification_only, :event_kinds, {event_kinds: []}]
   end
 
   def discussion_attributes
@@ -115,6 +115,7 @@ class PermittedParams < Struct.new(:params)
      :notify_recipients,
      :recipient_audience,
      :recipient_message,
+     :template,
      :tag_ids, {tag_ids: []},
      :recipient_user_ids, {recipient_user_ids: []},
      :recipient_chatbot_ids, {recipient_chatbot_ids: []},

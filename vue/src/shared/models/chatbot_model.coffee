@@ -10,9 +10,11 @@ export default class ChatbotModel extends BaseModel
     name: null
     server: null
     accessToken: null
-    eventKinds: 'new_discussion discussion_edited poll_created poll_edited poll_closing_soon poll_expired poll_reopened outcome_created'.split(' ')
-    kind: 'matrix'
+    eventKinds: []
+    kind: null
+    webhookKind: null
     errors: {}
+    notificationOnly: false
 
   relationships: ->
     @belongsTo 'group'

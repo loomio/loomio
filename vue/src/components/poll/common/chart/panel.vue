@@ -32,7 +32,7 @@ export default
 
 <template lang="pug">
 .poll-common-chart-panel
-  template(v-if="!poll.showResults")
+  template(v-if="!poll.showResults()")
     v-alert.poll-common-action-panel__results-hidden-until-closed.my-2(dense outlined type="info" v-if='poll.hideResults == "until_closed"')
       span( v-t="{path: 'poll_common_action_panel.results_hidden_until_closed', args: {poll_type: poll.pollType}}" )
     v-alert.poll-common-action-panel__results-hidden-until-vote.my-2(dense outlined type="info" v-if='!poll.iHaveVoted() && poll.hideResults == "until_vote"')

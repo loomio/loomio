@@ -1,5 +1,5 @@
 .layout.align-center.wrap
-  %h3.thread-item__title.body-2
+  %h3.thread-item__title.body-2.d-flex
     %a{:href => user_url(voter)}= voter.name
     - stance.stance_choices.each do |stance_choice|
       .poll-common-stance-choice.mr-1.mb-1{:row => ""}
