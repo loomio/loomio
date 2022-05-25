@@ -259,23 +259,23 @@ div
           v-btn(icon @click="editor.chain().mergeOrSplit().focus().run()" :title="$t('formatting.merge_selected')")
             v-icon mdi-table-merge-cells
 
-        v-layout.py-2.justify-space-between.flex-wrap(align-center)
-          section.d-flex.flex-wrap(:aria-label="$t('formatting.formatting_tools')")
+        .d-flex.py-2.justify-space-between.flex-wrap(align-center)
+          section.d-flex.flex-wrap.formatting-tools(:aria-label="$t('formatting.formatting_tools')")
             //- attach
-            v-btn(icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")
+            v-btn(:small="expanded" icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")
               v-icon mdi-paperclip
 
-            v-btn(icon @click='$refs.imagesField.click()' :title="$t('formatting.insert_image')")
+            v-btn(:small="expanded" icon @click='$refs.imagesField.click()' :title="$t('formatting.insert_image')")
               v-icon mdi-image
 
             //- link
             v-menu(:close-on-content-click="!selectedText()" v-model="linkDialogIsOpen" min-width="320px")
               template(v-slot:activator="{on, attrs}")
                 template(v-if="editor.isActive('link')")
-                  v-btn(icon @click="editor.chain().toggleLink().focus().run()" outlined :title="$t('formatting.link')")
+                  v-btn(small="expanded" icon @click="editor.chain().toggleLink().focus().run()" outlined :title="$t('formatting.link')")
                     v-icon mdi-link-variant
                 template(v-else)
-                  v-btn(icon v-on="on" v-bind="attrs" :title="$t('formatting.link')")
+                  v-btn(:small="expanded" icon v-on="on" v-bind="attrs" :title="$t('formatting.link')")
                     v-icon mdi-link-variant
               v-card
                 template(v-if="selectedText()")
@@ -284,14 +284,14 @@ div
                     v-text-field(type="url" label="https://www.example.com" v-model="linkUrl" autofocus ref="focus" v-on:keyup.enter="setLinkUrl()")
                   v-card-actions
                     v-spacer
-                    v-btn(color="primary" @click="setLinkUrl()" v-t="'common.action.apply'")
+                    v-btn(small color="primary" @click="setLinkUrl()" v-t="'common.action.apply'")
                 template(v-else)
                   v-card-title(v-t="'text_editor.select_text_to_link'")
 
             //- emoji
             v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
               template(v-slot:activator="{on, attrs}")
-                v-btn.emoji-picker__toggle(v-on="on" v-bind="attrs" icon :title="$t('formatting.insert_emoji')")
+                v-btn.emoji-picker__toggle(:small="expanded" v-on="on" v-bind="attrs" icon :title="$t('formatting.insert_emoji')")
                   v-icon mdi-emoticon-outline
               emoji-picker(:insert="emojiPicked")
 
@@ -299,30 +299,30 @@ div
               //- v-btn(icon @click='editor.chain().focus().setParagraph().run()' :outlined="editor.isActive('paragraph')" :title="$t('formatting.paragraph')")
               //-   v-icon mdi-format-pilcrow
               template(v-for="i in [1,2,3]")
-                v-btn(icon @click='editor.chain().focus().toggleHeading({ level: i }).run()' :outlined="editor.isActive('heading', { level: i })" :title="$t('formatting.heading'+i)")
+                v-btn(small icon @click='editor.chain().focus().toggleHeading({ level: i }).run()' :outlined="editor.isActive('heading', { level: i })" :title="$t('formatting.heading'+i)")
                   v-icon {{'mdi-format-header-'+i}}
 
             //- bold
-            v-btn(icon v-if="expanded" @click='editor.chain().toggleBold().focus().run()' :outlined="editor.isActive('bold')" :title="$t('formatting.bold')")
-              v-icon mdi-format-bold
+            v-btn(small icon v-if="expanded" @click='editor.chain().toggleBold().focus().run()' :outlined="editor.isActive('bold')" :title="$t('formatting.bold')")
+              v-icon(small) mdi-format-bold
 
             //- italic
-            v-btn(icon v-if="expanded" @click='editor.chain().toggleItalic().focus().run()' :outlined="editor.isActive('italic')" :title="$t('formatting.italicize')")
+            v-btn(small icon v-if="expanded" @click='editor.chain().toggleItalic().focus().run()' :outlined="editor.isActive('italic')" :title="$t('formatting.italicize')")
               v-icon mdi-format-italic
             //-
             //- //- strikethrough
-            v-btn(icon v-if="expanded" @click='editor.chain().toggleStrike().focus().run()' :outlined="editor.isActive('strike')"  :title="$t('formatting.strikethrough')")
+            v-btn(small icon v-if="expanded" @click='editor.chain().toggleStrike().focus().run()' :outlined="editor.isActive('strike')"  :title="$t('formatting.strikethrough')")
               v-icon mdi-format-strikethrough
             //- underline
             //- v-btn(icon v-if="expanded" @click='editor.chain().toggleUnderline().focus().run()' :outlined="editor.isActive('underline')",  :title="$t('formatting.underline')")
             //-   v-icon mdi-format-underline
             //-
 
-            v-btn(icon v-if="expanded" @click='editor.chain().toggleBulletList().focus().run()' :outlined="editor.isActive('bulletList')"  :title="$t('formatting.bullet_list')")
+            v-btn(small icon v-if="expanded" @click='editor.chain().toggleBulletList().focus().run()' :outlined="editor.isActive('bulletList')"  :title="$t('formatting.bullet_list')")
               v-icon mdi-format-list-bulleted
-            v-btn(icon v-if="expanded" @click='editor.chain().toggleOrderedList().focus().run()' :outlined="editor.isActive('orderedList')"  :title="$t('formatting.number_list')")
+            v-btn(small icon v-if="expanded" @click='editor.chain().toggleOrderedList().focus().run()' :outlined="editor.isActive('orderedList')"  :title="$t('formatting.number_list')")
               v-icon mdi-format-list-numbered
-            v-btn(icon v-if="expanded" @click='editor.chain().toggleTaskList().focus().run()' :outlined="editor.isActive('taskList')"  :title="$t('formatting.task_list')")
+            v-btn(small icon v-if="expanded" @click='editor.chain().toggleTaskList().focus().run()' :outlined="editor.isActive('taskList')"  :title="$t('formatting.task_list')")
               v-icon mdi-checkbox-marked-outline
 
             text-highlight-btn(v-if="expanded" :editor="editor")
@@ -331,9 +331,9 @@ div
             //- extra text marks
             template(v-if="expanded")
               //- strikethrough
-              v-menu(:close-on-content-click="false" v-model="iframeDialogIsOpen" min-width="320px")
+              v-menu(small :close-on-content-click="false" v-model="iframeDialogIsOpen" min-width="320px")
                 template(v-slot:activator="{on}")
-                  v-btn(icon v-on="on" :title="$t('formatting.embed')")
+                  v-btn(small icon v-on="on" :title="$t('formatting.embed')")
                     v-icon mdi-youtube
                 v-card
                   v-card-title.title(v-t="'text_editor.insert_embedded_url'")
@@ -341,27 +341,27 @@ div
                     v-text-field(type="url" label="e.g. https://www.youtube.com/watch?v=Zlzuqsunpxc" v-model="iframeUrl" ref="focus" autofocus v-on:keyup.enter="setIframeUrl()")
                   v-card-actions
                     v-spacer
-                    v-btn(color="primary" @click="setIframeUrl()" v-t="'common.action.apply'")
+                    v-btn(small color="primary" @click="setIframeUrl()" v-t="'common.action.apply'")
               //- blockquote
-              v-btn(icon @click='editor.chain().toggleBlockquote().focus().run()' :outlined="editor.isActive('blockquote')"  :title="$t('formatting.blockquote')")
+              v-btn(small icon @click='editor.chain().toggleBlockquote().focus().run()' :outlined="editor.isActive('blockquote')"  :title="$t('formatting.blockquote')")
                 v-icon mdi-format-quote-close
               //- //- code block
-              v-btn(icon @click='editor.chain().toggleCodeBlock().focus().run()' :outlined="editor.isActive('codeBlock')"  :title="$t('formatting.code_block')")
+              v-btn(small icon @click='editor.chain().toggleCodeBlock().focus().run()' :outlined="editor.isActive('codeBlock')"  :title="$t('formatting.code_block')")
                 v-icon mdi-code-braces
               //- embded
-              v-btn(icon @click='editor.chain().setHorizontalRule().focus().run()'  :title="$t('formatting.divider')")
+              v-btn(small icon @click='editor.chain().setHorizontalRule().focus().run()'  :title="$t('formatting.divider')")
                 v-icon mdi-minus
               //- table
-              v-btn(icon @click='editor.chain().insertTable({rows: 3, cols: 3, withHeaderRow: false }).focus().run()' :title="$t('formatting.add_table')" :outlined="editor.isActive('table')")
+              v-btn(small icon @click='editor.chain().insertTable({rows: 3, cols: 3, withHeaderRow: false }).focus().run()' :title="$t('formatting.add_table')" :outlined="editor.isActive('table')")
                 v-icon mdi-table
               //- markdown (save experience)
-              v-btn(icon @click="convertToMd" :title="$t('formatting.edit_markdown')")
+              v-btn(small icon @click="convertToMd" :title="$t('formatting.edit_markdown')")
                 v-icon mdi-language-markdown-outline
 
             v-btn.html-editor__expand(v-if="!expanded" icon @click="toggleExpanded" :title="$t('formatting.expand')")
               v-icon mdi-chevron-right
 
-            v-btn.html-editor__expand(v-if="expanded" icon @click="toggleExpanded" :title="$t('formatting.collapse')")
+            v-btn.html-editor__expand(small v-if="expanded" icon @click="toggleExpanded" :title="$t('formatting.collapse')")
               v-icon mdi-chevron-left
           //- save button?
           v-spacer
@@ -442,9 +442,9 @@ progress::-moz-progress-bar
     width: 40px !important
   .menu-down-arrow
     margin-left: -10px
-  .v-btn--icon
-    width: 32px
-    height: 32px
+  // .v-btn--icon
+  //   width: 32px
+  //   height: 32px
 
   .v-btn.v-btn--icon
     min-width: 0
