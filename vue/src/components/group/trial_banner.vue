@@ -12,8 +12,6 @@ export default
 
   computed:
     isLoggedIn: -> Session.isSignedIn()
-    isDemo: ->
-      @group.subscription.plan == 'demo'
     isWasGift: ->
       @group.subscription.plan == 'was-gift'
     isTrialing: ->
@@ -27,22 +25,7 @@ export default
 </script>
 <template lang="pug">
 v-alert(outlined color="primary" dense v-if="isTrialing || isDemo")
-  .d-flex.align-center(v-if="isDemo")
-    template(v-if="isLoggedIn")
-      span This is a demo! Try voting or leaving a comment.
-      v-spacer
-      v-btn(color="primary" @click="signIn" target="_blank")
-        span Start a free trial
-      //- v-spacer
-      //- v-btn(color="primary" to="/g/new" target="_blank")
-      //-   v-icon mdi-rocket
-      //-   span(v-t="'templates.start_trial'")
-    template(v-else)
-      span This is a demo! To try voting and other features, please sign in. It only takes a few seconds.
-      v-spacer
-      v-btn(color="primary" @click="signIn" target="_blank")
-        span(v-t="'auth_form.sign_in'")
-  .d-flex(v-else)
+  .d-flex
     div.pr-1(v-if="isWasGift")
       span(v-if="isExpired" v-html="$t('current_plan_button.was_gift_expired')")
       span(v-if="!isExpired" v-html="$t('current_plan_button.was_gift_remaining', { days: daysRemaining } )")
@@ -52,7 +35,12 @@ v-alert(outlined color="primary" dense v-if="isTrialing || isDemo")
       span(v-if="!isExpired" v-t="{ path: 'current_plan_button.free_trial', args: { days: daysRemaining }}")
       span(v-if="isExpired" v-t="'current_plan_button.trial_expired'")
     v-spacer
-    v-btn(color="primary" :href="'/upgrade/'+group.id" target="_blank" :title="$t('current_plan_button.tooltip')")
+    v-btn(
+      color="primary"
+      :href="'/upgrade/'+group.id"
+      target="_blank"
+      :title="$t('current_plan_button.tooltip')"
+    )
       v-icon mdi-rocket
       span(v-t="'current_plan_button.view_plans'")
 </template>

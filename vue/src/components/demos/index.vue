@@ -47,24 +47,24 @@ export default
         query: =>
           @demos = Records.demos.collection.chain().find(id: {$ne: null}).simplesort('priority', true).data()
 
-    # startDemo: (id) ->
-    #   if Session.isSignedIn()
-    #     @cloneTemplate(id)
-    #   else
-    #     @openAuthModal()
+    startDemo: (id) ->
+      if Session.isSignedIn()
+        @cloneTemplate(id)
+      else
+        @openAuthModal()
 
-    # cloneTemplate: (id) ->
-    #   Flash.wait('templates.generating_demo')
-    #   @processing = true
-    #   Records.post
-    #     path: 'templates/clone'
-    #     params:
-    #       id: id
-    #   .then (data) =>
-    #     Flash.success('templates.demo_created')
-    #     @$router.push @urlFor(Records.groups.find(data.groups[0].id))
-    #   .finally =>
-    #     @processing = false
+    cloneTemplate: (id) ->
+      Flash.wait('templates.generating_demo')
+      @processing = true
+      Records.post
+        path: 'demos/clone'
+        params:
+          id: id
+      .then (data) =>
+        Flash.success('templates.demo_created')
+        @$router.push @urlFor(Records.groups.find(data.groups[0].id))
+      .finally =>
+        @processing = false
 
 </script>
 
@@ -73,7 +73,7 @@ v-main
   v-container.templates-page.max-width-1024
     h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'templates.try_loomio'")
     h2.text-title.my-4(v-t="'templates.start_a_demo'")
-    id
+    p
       span(v-t="'templates.look_and_feel'")
       space
       span(v-t="'templates.demos_expire'")
@@ -89,7 +89,7 @@ v-main
         v-card-text {{ demo.description }}
         v-card-actions
           v-spacer
-          v-btn(:to="'/'+demo.demoHandle" v-t="'templates.view_demo'" color="primary")
+          v-btn(@click="startDemo(demo.id)" v-t="'templates.start_demo'" color="primary")
 
     template(v-if="trials")
       h2.mt-8.text-title(v-t="'templates.ready_to_trial'")
