@@ -38,14 +38,14 @@ export default
 
   methods:
     init: ->
-      Records.fetch(path: 'templates').then (data) =>
+      Records.fetch(path: 'demos').then (data) =>
         @loaded = true
 
       @watchRecords
-        key: 'templatesIndex'
-        collections: ['templates']
+        key: 'demosIndex'
+        collections: ['demos']
         query: =>
-          @templates = Records.templates.collection.chain().find(demoHandle: {$ne: null}).simplesort('priority', true).data()
+          @demos = Records.demos.collection.chain().find(id: {$ne: null}).simplesort('priority', true).data()
 
     # startDemo: (id) ->
     #   if Session.isSignedIn()
@@ -73,7 +73,7 @@ v-main
   v-container.templates-page.max-width-1024
     h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'templates.try_loomio'")
     h2.text-title.my-4(v-t="'templates.start_a_demo'")
-    p
+    id
       span(v-t="'templates.look_and_feel'")
       space
       span(v-t="'templates.demos_expire'")
@@ -83,13 +83,13 @@ v-main
 
     v-overlay(:value="processing")
     div(v-if="loaded")
-      v-card.my-4(v-for="template in templates" :key="template.id")
-        v-img(:src="template.record().coverUrl" max-height="120")
-        v-card-title {{ template.name }}
-        v-card-text {{ template.description }}
+      v-card.my-4(v-for="demo in demos" :key="demo.id")
+        v-img(:src="demo.group().coverUrl" max-height="120")
+        v-card-title {{ demo.name }}
+        v-card-text {{ demo.description }}
         v-card-actions
           v-spacer
-          v-btn(:to="'/'+template.demoHandle" v-t="'templates.view_demo'" color="primary")
+          v-btn(:to="'/'+demo.demoHandle" v-t="'templates.view_demo'" color="primary")
 
     template(v-if="trials")
       h2.mt-8.text-title(v-t="'templates.ready_to_trial'")

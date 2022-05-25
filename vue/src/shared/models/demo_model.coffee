@@ -1,8 +1,8 @@
 import BaseModel        from '@/shared/record_store/base_model'
 
 export default class DemoModel extends BaseModel
-  @singular: 'template'
-  @plural: 'templates'
+  @singular: 'demo'
+  @plural: 'demos'
   @uniqueIndices: ['id']
   @indices: ['groupId', 'authorId']
 
@@ -16,4 +16,3 @@ export default class DemoModel extends BaseModel
   relationships: ->
     @belongsTo 'group'
     @belongsTo 'author', from: 'users'
-    @belongsToPolymorphic 'record'
