@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_02_022118) do
+ActiveRecord::Schema.define(version: 2022_05_25_021621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -199,6 +199,19 @@ ActiveRecord::Schema.define(version: 2022_05_02_022118) do
     t.datetime "cover_photo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "demos", force: :cascade do |t|
+    t.integer "author_id", null: false
+    t.integer "group_id", null: false
+    t.string "name", null: false
+    t.string "description"
+    t.datetime "recorded_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "priority", default: 0, null: false
+    t.string "demo_handle"
+    t.index ["author_id"], name: "index_demos_on_author_id"
   end
 
   create_table "discussion_readers", id: :serial, force: :cascade do |t|
@@ -786,23 +799,6 @@ ActiveRecord::Schema.define(version: 2022_05_02_022118) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["task_id"], name: "index_tasks_users_on_task_id"
     t.index ["user_id"], name: "index_tasks_users_on_user_id"
-  end
-
-  create_table "templates", force: :cascade do |t|
-    t.integer "group_id"
-    t.integer "author_id", null: false
-    t.integer "record_id", null: false
-    t.string "record_type", null: false
-    t.string "name", null: false
-    t.string "description"
-    t.datetime "recorded_at", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "priority", default: 0, null: false
-    t.string "demo_handle"
-    t.index ["author_id"], name: "index_templates_on_author_id"
-    t.index ["group_id"], name: "index_templates_on_group_id"
-    t.index ["record_type", "record_id"], name: "index_templates_on_record_type_and_record_id"
   end
 
   create_table "translations", id: :serial, force: :cascade do |t|

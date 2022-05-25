@@ -1,13 +1,12 @@
-class TemplateSerializer < ApplicationSerializer
+class DemoSerializer < ApplicationSerializer
   attributes :id,
              :name,
              :description,
-             :record_type,
-             :record_id,
+             :group_id,
              :priority,
              :demo_handle
 
 
   has_one :author, serializer: AuthorSerializer, root: :users
-  has_one :record, polymorphic: true, :key => :ignore_me
+  has_one :group
 end

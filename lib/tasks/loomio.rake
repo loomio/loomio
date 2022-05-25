@@ -49,7 +49,7 @@ namespace :loomio do
       
       if ENV['FEATURES_DEMO_GROUPS']
         Group.expired_demo.delete_all
-        TemplateService.delay.generate_demo_groups 
+        DemoService.delay.generate_demo_groups 
       end
 
       CleanupService.delay.delete_orphan_records

@@ -1,6 +1,6 @@
 import BaseModel        from '@/shared/record_store/base_model'
 
-export default class TemplateModel extends BaseModel
+export default class DemoModel extends BaseModel
   @singular: 'template'
   @plural: 'templates'
   @uniqueIndices: ['id']
@@ -11,8 +11,6 @@ export default class TemplateModel extends BaseModel
     name: null
     description: null
     groupId: null
-    recordId: null
-    recordType: null
     demoHandle: null
 
   relationships: ->
