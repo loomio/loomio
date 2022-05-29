@@ -38,16 +38,20 @@ module HasAvatar
     when 'gravatar'
       gravatar_url(size: size, secure: true, default: 'retro')
     when 'uploaded'
-      Rails.application.routes.url_helpers.rails_representation_path(
-        uploaded_avatar.representation(resize_to_limit: [size,size], saver: {quality: 80, strip: true}),
-        only_path: true
-      )
+      uploaded_avatar_url(size)
     else
       nil
     end
   rescue ActiveStorage::UnrepresentableError
     update_columns(avatar_kind: :initials)
     nil
+  end
+
+  def uploaded_avatar_url(size = 512)
+    Rails.application.routes.url_helpers.rails_representation_path(
+        uploaded_avatar.representation(resize_to_limit: [size,size], saver: {quality: 80, strip: true}),
+        only_path: true
+    )
   end
 
   def has_gravatar?(options = {})

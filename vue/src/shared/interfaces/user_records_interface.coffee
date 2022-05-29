@@ -38,6 +38,10 @@ export default class UserRecordsInterface extends BaseRecordsInterface
   uploadAvatar: (file) =>
     @remote.upload 'upload_avatar', file
 
+  getAvatarUploaded: ->
+    @fetch
+      path: 'avatar_uploaded'
+
   changePassword: (user) =>
     user.processing = true
     @remote.post('change_password', user.serialize()).finally ->

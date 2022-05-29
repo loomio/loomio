@@ -15,6 +15,7 @@ export default
     providers: AppConfig.identityProviders
     uploading: false
     progress: 0
+    previous_uploaded_avatar: undefined
   methods:
     capitalize: capitalize
     iconClass: (provider) ->
@@ -53,6 +54,8 @@ export default
 
   created: ->
     Records.users.saveExperience("changePicture")
+    Records.users.getAvatarUploaded()
+    .then (res) => @previous_uploaded_avatar = res.avatar_uploaded
 
 </script>
 <template lang="pug">
@@ -71,10 +74,10 @@ v-card.change-picture-form
           v-icon mdi-camera
         v-list-item-title(v-t="'change_picture_form.use_uploaded'")
           input.hidden.change-picture-form__file-input(type="file" ref="fileInput" @change='uploadFile' accept="image/png, image/jpeg, image/webp")
-      v-list-item.change-picture-form__option(v-if="user.avatarKind !== 'uploaded'" @click="submit('uploaded')")
+      v-list-item.change-picture-form__option(v-if="previous_uploaded_avatar" @click="submit('uploaded')")
         v-list-item-avatar
-          v-icon mdi-file-undo
-        v-list-item-title(v-t="'change_picture_form.reuse_uploaded'")
+          img(:src="previous_uploaded_avatar")
+        v-list-item-title(v-t="'change_picture_form.existing_upload'")
       v-list-item(v-for="provider in providers" :key="provider.id" @click="selectProvider(provider)")
         v-list-item-avatar
           v-icon {{ iconClass(provider.name) }}
