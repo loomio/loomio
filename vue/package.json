@@ -18,7 +18,7 @@
     "@babel/polyfill": "^7.12.1",
     "@sentry/browser": "^6.19.7",
     "@sentry/integrations": "^6.19.7",
-    "@sentry/tracing": "^6.19.7",
+    "@sentry/tracing": "^7.0.0",
     "@tiptap/core": "latest",
     "@tiptap/extension-blockquote": "latest",
     "@tiptap/extension-bold": "latest",
