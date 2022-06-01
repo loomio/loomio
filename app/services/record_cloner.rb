@@ -9,6 +9,10 @@ class RecordCloner
     clone_group.subscription = Subscription.new(plan: 'demo')
     clone_group.handle = handle
     clone_group.is_visible_to_public = true
+    clone_group.members_can_create_subgroups = false
+    clone_group.members_can_add_members = false
+    clone_group.members_can_add_guests = false
+    clone_group.members_can_announce = true
     clone_group.discussion_privacy_options = 'public_only'
     clone_group.membership_granted_upon = 'request'
     clone_group.discussions.each {|d| d.private = false }

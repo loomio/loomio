@@ -13,7 +13,7 @@ class API::V1::DemosController < API::V1::RestfulController
     if params[:id]
       demo = Demo.find(params[:id])
     elsif params[:group_id]
-      demo = Demo.find_by(group_id: params[:group_id])
+      demo = Demo.find_by!(group_id: params[:group_id])
     else
       raise "no params"
     end
