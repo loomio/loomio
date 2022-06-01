@@ -19,7 +19,7 @@ en:
 
   templates:
     login_to_start_demo: |
-      This is a demo group! To vote or comment, you'll need to sign in. Don't worry - it's free and only takes a few clicks.
+      This a demo group to show you how Loomio is used. Take a look around :) If you'd like to try voting and other features, click sign in - it's free and only takes a second.
     click_button_to_start_demo: |
       Hooray, you're here! To start the demo, just click the button:
     welcome_to_your_demo:

@@ -38,13 +38,13 @@ v-alert(outlined color="primary" dense v-if="isDemo")
       .d-flex.align-center
         span(v-t="'templates.login_to_start_demo'")
         v-spacer
-        v-btn(color="primary" @click="signIn" target="_blank")
+        v-btn.ml-2(color="primary" @click="signIn" target="_blank")
           span(v-t="'auth_form.sign_in'")
     template(v-if="isLoggedIn && isPublicDemo")
       .d-flex.align-center
         span(v-t="'templates.click_button_to_start_demo'")
         v-spacer
-        v-btn(color="primary" @click="cloneDemo" target="_blank")
+        v-btn.ml-2(color="primary" @click="cloneDemo" target="_blank")
           span(v-t="'templates.start_demo'")
     template(v-if="isLoggedIn && !isPublicDemo")
       p
@@ -54,6 +54,6 @@ v-alert(outlined color="primary" dense v-if="isDemo")
         br
         span(v-t="'templates.to_use_loomio_with_your_org_start_trial'")
 
-      v-btn(block color="primary" to="/g/new" target="_blank")
+      v-btn.ml-2(block color="primary" to="/g/new" target="_blank")
         span(v-t="'templates.start_free_trial'")
 </template>
