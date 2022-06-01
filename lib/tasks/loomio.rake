@@ -42,15 +42,10 @@ namespace :loomio do
     SendDailyCatchUpEmailWorker.perform_async
 
     if (Time.now.hour == 0)
-      # Group.expired_trial.delete_all
-      # Group.empty_no_subscription.delete_all
-
       ThrottleService.reset!('day')
       
-      if ENV['FEATURES_DEMO_GROUPS']
-        Group.expired_demo.delete_all
-        DemoService.delay.generate_demo_groups 
-      end
+      Group.expired_demo.delete_all
+      DemoService.delay.generate_demo_groups 
 
       CleanupService.delay.delete_orphan_records
       OutcomeService.delay.publish_review_due
