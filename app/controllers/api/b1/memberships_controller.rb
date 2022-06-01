@@ -41,4 +41,8 @@ class API::B1::MembershipsController < API::B1::BaseController
   def accessible_records
     Membership.where(group_id: current_webhook.group_id)
   end
+
+  def default_scope
+    super.merge(include_email: true)
+  end
 end

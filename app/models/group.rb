@@ -315,7 +315,7 @@ class Group < ApplicationRecord
 
   def full_name
     if is_subgroup?
-      [parent.name, name].join(' - ')
+      [parent&.name, name].compact.join(' - ')
     else
       name
     end
