@@ -16,7 +16,7 @@
         .layout.justify-space-between
           %h1.poll-common-card__title.headline
             %span= poll.title
-            %span.ml-2.v-chip.v-chip--outlined.theme--light.v-size--small.warning.warning--text
+            %span.ml-2.v-chip.v-chip--outlined.theme--auto.v-size--small.warning.warning--text
               %span.v-chip__content
                 - if poll.active?
                   = t(:"poll_mailer.common.you_have_until", when: format_date_for_humans(poll.closing_at, poll.time_zone))
@@ -28,7 +28,7 @@
                 -# %abbr.closing-in.timeago--inline
                 -#   %span{:title => "January 21, 14:55"} Closed January 21, 14:55
         - if poll.current_outcome
-          .pa-4.my-4.poll-common-outcome-panel.v-sheet.theme--light.elevation-2.primary.lighten-5
+          .pa-4.my-4.poll-common-outcome-panel.v-sheet.theme--auto.elevation-2.primary.lighten-5
             .title= t(:"poll_common.outcome")
             .poll-common-outcome-panel__authored-by.caption.my-2
               %span= t(:'email.by_who', person: poll.current_outcome.author.name)

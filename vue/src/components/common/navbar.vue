@@ -82,5 +82,5 @@ v-app-bar.lmo-no-print(app clipped-right elevate-on-scroll color="background")
   v-spacer
   notifications(v-if='isLoggedIn')
   v-toolbar-items
-  v-btn.navbar__sign-in(text v-if='!isLoggedIn' v-t="'navbar.sign_in'" @click='signIn()')
+  v-btn.navbar__sign-in(text v-if='!isLoggedIn' v-t="'auth_form.sign_in'" @click='signIn()')
 </template>

@@ -4,6 +4,28 @@ class RecordCloner
     @cache = {}
   end
 
+  def create_clone_group_for_public_demo(group, handle)
+    clone_group = new_clone_group(group)
+    clone_group.subscription = Subscription.new(plan: 'demo')
+    clone_group.handle = handle
+    clone_group.is_visible_to_public = true
+    clone_group.members_can_create_subgroups = false
+    clone_group.members_can_add_members = false
+    clone_group.members_can_add_guests = false
+    clone_group.members_can_announce = true
+    clone_group.discussion_privacy_options = 'public_only'
+    clone_group.membership_granted_upon = 'request'
+    clone_group.discussions.each {|d| d.private = false }
+    clone_group.polls.each {|p| p.specified_voters_only = false }
+    clone_group.save!
+    clone_group.polls.each do |poll|
+      poll.update_counts!
+      poll.stances.each {|s| s.update_option_scores!}
+    end
+    clone_group.discussions.each {|d| EventService.repair_thread(d.id) }
+    clone_group.reload
+  end
+
   def create_clone_group_for_actor(group, actor)
     clone_group = new_clone_group(group)
     clone_group.creator = actor
@@ -17,6 +39,7 @@ class RecordCloner
     clone_group.add_member! actor
     clone_group.reload
   end
+
 
   def new_clone_group(group, clone_parent = nil)
     copy_fields = %w[
@@ -141,8 +164,10 @@ class RecordCloner
     clone_poll.stances = poll.stances.map {|stance| new_clone_stance(stance) }
     clone_poll.outcomes = poll.outcomes.map {|outcome| new_clone_outcome(outcome) }
     if poll.outcomes.empty?
-      clone_poll.closed_at = nil if clone_poll.closed_at && clone_poll.closed_at > DateTime.now
-      clone_poll.closing_at = nil if clone_poll.closing_at && clone_poll.closing_at < DateTime.now
+      clone_poll.closed_at = nil
+      clone_poll.closing_at = 3.days.from_now
+    else
+      clone_poll.closed_at = poll.outcomes.first.created_at
     end
 
     clone_poll
