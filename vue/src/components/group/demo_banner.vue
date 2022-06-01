@@ -9,9 +9,13 @@ export default
   props:
     group: Object
 
+  data: ->
+    loading: false
+
   methods:
     signIn: -> @openAuthModal()
     cloneDemo: -> 
+      @loading = true
       Flash.wait('templates.generating_demo')
       Records.post
         path: 'demos/clone'
@@ -20,7 +24,8 @@ export default
       .then (data) =>
         Flash.success('templates.demo_created')
         @$router.push @urlFor(Records.groups.find(data.groups[0].id))
-
+      .finally =>
+        @loading = false
 
   computed:
     isLoggedIn: -> Session.isSignedIn()
@@ -33,13 +38,14 @@ export default
       format(new Date(@group.createdAt), 'do LLLL yyyy')
 </script>
 <template lang="pug">
-v-alert(outlined color="primary" dense v-if="isDemo")
+div
+  v-overlay(:value="loading")
+  v-alert(outlined color="primary" dense v-if="isDemo")
     template(v-if="!isLoggedIn")
-      .d-flex.align-center
+      .text-center
         span(v-t="'templates.login_to_start_demo'")
-        v-spacer
-        v-btn.ml-2(color="primary" @click="signIn" target="_blank")
-          span(v-t="'auth_form.sign_in'")
+        br
+        span(v-t="'templates.sign_in_to_try_features'")
     template(v-if="isLoggedIn && isPublicDemo")
       .d-flex.align-center
         span(v-t="'templates.click_button_to_start_demo'")
@@ -47,13 +53,14 @@ v-alert(outlined color="primary" dense v-if="isDemo")
         v-btn.ml-2(color="primary" @click="cloneDemo" target="_blank")
           span(v-t="'templates.start_demo'")
     template(v-if="isLoggedIn && !isPublicDemo")
-      p
-        span(v-t="'templates.welcome_to_your_demo'")
-        space
-        span(v-t="'templates.try_voting_to_see_it_work'")
-        br
-        span(v-t="'templates.to_use_loomio_with_your_org_start_trial'")
+      .text-center
+        p
+          span(v-t="'templates.welcome_to_your_demo'")
+          space
+          span(v-t="'templates.try_voting_to_see_it_work'")
+          br
+          span(v-t="'templates.to_use_loomio_with_your_org_start_trial'")
 
-      v-btn.ml-2(block color="primary" to="/g/new" target="_blank")
-        span(v-t="'templates.start_free_trial'")
+        v-btn(outlined color="primary" to="/g/new" target="_blank")
+          span(v-t="'templates.start_free_trial'")
 </template>
