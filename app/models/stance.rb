@@ -65,7 +65,7 @@ class Stance < ApplicationRecord
   after_save :update_versions_count!
 
   def author_name
-    participant.name
+    participant&.name
   end
 
   def update_option_scores
