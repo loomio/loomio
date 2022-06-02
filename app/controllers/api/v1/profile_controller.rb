@@ -62,7 +62,7 @@ class API::V1::ProfileController < API::V1::RestfulController
   end
 
   def avatar_uploaded
-    render json: {avatar_uploaded: current_user.uploaded_avatar_url}
+    render json: {avatar_uploaded: current_user.uploaded_avatar_url_if_any}
   end
 
   def destroy

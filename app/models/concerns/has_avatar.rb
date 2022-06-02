@@ -54,6 +54,12 @@ module HasAvatar
     )
   end
 
+  def uploaded_avatar_url_if_any(size = 512)
+    uploaded_avatar_url(size)
+  rescue
+    nil
+  end
+
   def has_gravatar?(options = {})
     return false if Rails.env.test?
     hash = Digest::MD5.hexdigest(email.to_s.downcase)
