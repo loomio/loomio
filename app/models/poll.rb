@@ -131,6 +131,7 @@ class Poll < ApplicationRecord
   update_counter_cache :discussion, :anonymous_polls_count
 
   delegate :locale, to: :author
+  delegate :name, to: :author, prefix: true
 
   def chart_column
     case poll_type
