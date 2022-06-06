@@ -145,7 +145,7 @@ class Poll < ApplicationRecord
   def results_include_undecided
     poll_type != "meeting"
   end
-  
+
   def chart_type
     case poll_type
     when 'proposal' then 'pie'
@@ -240,6 +240,10 @@ class Poll < ApplicationRecord
 
   def body
     details
+  end
+
+  def body=(val)
+    self.details = val
   end
 
   def body_format
