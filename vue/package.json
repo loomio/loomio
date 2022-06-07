@@ -89,7 +89,7 @@
     "vuetify": "2.6.6"
   },
   "devDependencies": {
-    "chromedriver": "101.0.0",
+    "chromedriver": "102.0.0",
     "@mdi/font": "^6.7.96",
     "@vue/cli-plugin-pwa": "^4.5.15",
     "@vue/cli-plugin-babel": "^4.5.15",
