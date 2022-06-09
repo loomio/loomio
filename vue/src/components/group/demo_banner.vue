@@ -20,7 +20,7 @@ export default
       Records.post
         path: 'demos/clone'
         params:
-          group_id: @group.id
+          handle: @group.handle
       .then (data) =>
         Flash.success('templates.demo_created')
         @$router.push @urlFor(Records.groups.find(data.groups[0].id))

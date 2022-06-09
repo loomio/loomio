@@ -21,11 +21,11 @@ en:
     login_to_start_demo: |
       This a demo of Loomio in action. You're welcome to take a look around.
     sign_in_to_try_features: |
-      If you'd like to try voting and other fun features, click "sign in" and we'll generate a demo just for you. 
+      If you'd like to try voting in a demo decision, or to start a free trial for your organization, click "sign in".
     click_button_to_start_demo: |
-      Hooray, you're here! To start the demo, just click the button:
+      Welcome! To start your own demo, click the button:
     welcome_to_your_demo:
-      Welcome to your very own demo group!
+      This is your very own demo group!
     try_voting_to_see_it_work:
       Try voting in a proposal to get a sense of how Loomio works.
     delete_will_be_deleted_in_x_days:
@@ -53,7 +53,6 @@ en:
     start_free_trial: Start free trial
     demo_needs_user: To start a demo, you need to sign up (or sign in) as a Loomio user. This is free and only takes a minute.
     this_is_a_template_for_new_threads: This is a template for new threads
-
 
   doctypes:
     youtube_video: YouTube Video
