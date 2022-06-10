@@ -28,12 +28,10 @@ it:
     generating_demo: 'Ok, aspetta un attimo! Creare una demo impiega circa 20 secondi.'
     start_a_x_day_free_trial: Inizia una prova gratuita di {{day}} giorni
     ready_to_trial: Pronti per provare Loomio con la vostra organizzazione?
-    start_a_no_obligation_x_day_trial: Avvia un gruppo di Loomio per la tua organizzazione gratis, senza condizioni, per {{day}} giorni di prova.
-    you_can_test_it_out: |
-        Puoi invitare altre persone a unirsi, integrarlo con gli altri tuoi strumenti, e vedere se funziona per il tuo gruppo.
     demo_created: Gruppo demo creato, apposta per te!
     start_demo: Inizia una demo
     start_trial: Inizia una prova
+    start_free_trial: Inizia la prova gratuita
     demo_needs_user: Per iniziare una demo hai bisogno di registrarti (o di accedere) come utente di Loomio. E' gratuito e ci vuole solo un minuto.
     this_is_a_template_for_new_threads: Questo è un modello per nuove discussioni
   doctypes:

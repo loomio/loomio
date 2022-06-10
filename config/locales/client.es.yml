@@ -17,6 +17,14 @@ es:
     task_updated_not_done: '¡Tarea señalada como no hecha!'
     no_tasks_assigned: No hay tareas asignadas a ti
   templates:
+    login_to_start_demo: |
+        Esta es una demostración de Loomio en acción. Le invitamos a echar un vistazo.
+    try_voting_to_see_it_work: Intente votar en una propuesta para tener una idea de cómo funciona Loomio.
+    delete_will_be_deleted_in_x_days: Esta demostración se eliminará en %{x} días.
+    to_use_loomio_with_your_org_start_trial: Cuando esté listo para probar Loomio con su organización, inicie una prueba gratuita.
+    templates: Plantillas
+    make_a_copy: "Haz una copia"
+    this_thread_is_a_template: Este hilo es una plantilla, haz una copia si quieres usarla.
     try_loomio: Prueba Loomio
     start_a_demo_group: Empezar un grupo de demostración
     start_a_demo: Iniciar demo
@@ -25,13 +33,16 @@ es:
     generating_demo: 'Vale, ¡espera allí mismo! Generar una demostración toma alrededor de 20 segundos.'
     start_a_x_day_free_trial: Iniciar una prueba gratuita de {{day}} día
     ready_to_trial: ¿Listo para probar Loomio con su organización?
-    start_a_no_obligation_x_day_trial: Inicie un grupo de Loomio para su organización con una prueba gratuita, sin compromiso, {{day}}.
+    start_a_no_obligation_x_day_trial: Inicie un grupo de Loomio para su organización con una prueba gratuita de {{día}}.
     you_can_test_it_out: |
-        Puede invitar a otras personas a unirse, integrarlo con sus otras herramientas y ver si funciona para su grupo.
+        Puede invitar a otras personas a unirse, integrarlo con sus otras herramientas e intentar tomar algunas decisiones.
     demo_created: Grupo de demostración creado, ¡solo para ti!
     start_demo: Iniciar demo
+    view_demo: Ver demo
     start_trial: Comenzar prueba
+    start_free_trial: Comenzar prueba gratis
     demo_needs_user: Para iniciar una demostración, debe registrarse (o iniciar sesión) como usuario de Loomio. Esto es gratis y solo toma un minuto.
+    this_is_a_template_for_new_threads: Esta es una plantilla para nuevos hilos
   doctypes:
     youtube_video: Video Youtube
     image: Imagen
@@ -54,6 +65,8 @@ es:
         set_description: Configura la descripción de tu grupo
         set_cover_photo: Sube una foto de portada y logo para vuestro grupo
         customize_group: Editar descripción del grupo
+        setup_chatbot: "Añade un bot de Loomio a tu sala de chat (por ejemplo, Slack, Discord, Teams u otro)"
+        invite_people_in: Invite a las personas por correo electrónico o con un enlace para unirse.
         start_thread: Comience un hilo de discusión
         make_decision: 'Iniciar una decisión '
       learn_more: Conoce más en Ayuda Loomio
@@ -158,9 +171,12 @@ es:
     time_zone: 'Zona horaria '
     local_time: Hora local
     attachments: Adjuntos
+    template: Plantilla
     links: Enlaces
     active_time_ago: El último activo {{time_ago}}
     confirm_discard_changes: ¿Descartar tus cambios?
+    something_went_wrong: oh! Algo salió mal.
+    please_try_again: Inténtelo de nuevo
     time:
       am: am
       pm: pm
@@ -327,6 +343,7 @@ es:
     title_label: Título
     hint: 'Indicio para la próxima vez: Intenta resaltar algo de texto antes de clicar "Pin".'
   change_volume_form:
+    help_notifications: 'Ayuda: notificaciones'
     explain_scope:
       thread: Esto cambia cuando seas notificado sobre este hilo
       group: Estos cambios cuando serás notificado acerca de todos los hilos en el grupo
@@ -583,6 +600,7 @@ es:
       group_announced: "%{actor} te invitó al grupo"
       comment_replied_to: '%{actor} te respondió'
       new_discussion: "%{actor} inicio un hilo"
+      new_comment: "%{actor} comentado en un hilo"
       membership_created: "%{actor} te invitó a unirte al grupo"
       membership_requested: "%{actor} solicitó unirse a "
       membership_request_approved: "%{actor} aprobó tu solicitud a unirte a %{title}"
@@ -628,6 +646,7 @@ es:
     none_invite_only_thread: "Hilo sólo con invitación (no grupo)"
     change_log_placeholder: Opcionalmente, describe tus cambios. Este mensaje será añadido al hilo.
     change_log_label: ¿Qué ha cambiado?
+    help_starting_threads: 'Ayuda: Iniciar hilos'
     invite: Invitar
     aria_label: 'Formulario del hilo'
     start_thread: Empezar un hilo
@@ -645,6 +664,8 @@ es:
     context_label: 'Contexto'
     context_placeholder: "Aportar algo de contexto para esta debate, para que la gente sepa como participar"
     privacy_label: 'Privacidad'
+    privacy_public: 'Cualquiera puede ver este hilo si tiene el enlace'
+    privacy_private: 'Solo los miembros del grupo pueden ver este hilo'
     privacy_organisation: 'Los hilos serán visibles para integrantes de {{parent}} e integrantes de {{group}}.'
     fork_notice: 'Un nuevo hilo será creado con %{count} elementos de {{title}}'
     notify_group: Grupo de notificación
@@ -695,6 +716,8 @@ es:
       undecided_voters: Votantes indecisos
       non_voters: Miembros de {{name}} todavía no han sido invitados
     form:
+      help_notifying_people: 'Ayuda: Notificar a las personas'
+      help_invite_voters: 'Ayuda: Invitar a los votantes'
       too_many_invitations: |
           Límite de invitaciones excedido. <a href="{{upgradeUrl}}" target="_blank">Mejore su abono</a>
       no_invitations_remaining: |
@@ -739,6 +762,8 @@ es:
       anyone_can_participate: Cualquiera con el enlace puede paticipar
       placeholder: Puedes introducir nombres o direcciones de correo electrónico
       notified_empty: 'No se ha seleccionado a nadie todavía'
+      single_notification: 'Se enviará una notificación.'
+      multiple_notifications: '{{notified}} notificaciones se enviarán.'
       notified: '{{notified}} gente será notificada.'
       notified_singular: '1 persona será notificada'
       notified_none: 'Nadie será notificado.'
@@ -1006,6 +1031,7 @@ es:
     as_csv: Abrir en una hoja de cálculo
     as_html: Abrir en el navegador
     as_json: Presentar este grupo en mi propio servidor
+    help_exporting_data: 'Ayuda: Exportar datos'
   description_card:
     title: 'Descripción del Grupo '
     placeholder: 'Los administradores de grupo pueden usar este area para describir el propósito del grupo, con lo que todo el mundo sabe porqué están ahí.'
@@ -1022,12 +1048,14 @@ es:
     question: '¿Estás seguro de que quieres desactivar este grupo?'
     submit: 'Sí, desactivar este grupo'
   group_form:
+    help_starting_a_group: 'Ayuda: Iniciar un grupo'
     thread_defaults_help: Ajustes predeterminados para nuevos hilos
     click_to_change_image: Haga clic para cambiar la imagen de portada (4x1) o el logotipo (1x1)
     permissions_explaination: |
         Hay dos niveles de membresía a los que una persona puede optar para un grupo: admin y miembro.
         Los administradores pueden editar los ajustes del grupo, hacer a otras personas administradores y ejecutar todas la acciones que se listan a continuación.
     aria_label: Formulario de grupo
+    help_group_settings: 'Ayuda: Configuración de grupo'
     parent_group: Grupo de padres
     new_organisation: Nueva organización
     new_group: Nuevo grupo
@@ -1145,6 +1173,7 @@ es:
   invitation_form:
     group_url: Grupo URL
     reusable_invitation_link: Enlace de invitación reutilizable
+    help_inviting_people: 'Ayuda: Invitar a personas'
     error: "Error cuando se intenta copiar en el portapapeles"
     aria_label: 'Formulario de invitación'
     invite_people: 'Invitar personas'
@@ -1226,6 +1255,7 @@ es:
     helptext: "A {{name}} se le enviará su nombre, dirección de correo electrónico y mensaje."
     email_sent: "Correo electrónico enviado a {{name}}"
   profile_page:
+    help_profile: 'Ayuda: Tu perfil'
     incomplete_profile: ¡Perfil incompleto!
     set_your_profile_picture: Establecer tu foto de perfil
     messages:
@@ -1253,6 +1283,7 @@ es:
     location_placeholder: '¿Dónde estas basado?'
     update_profile: 'Actualizar perfil'
     deactivate_account: 'Desactivar la cuenta de usuario'
+    help_translate: "¿Puedes ayudarnos a traducir Loomio?"
     updated_on_sign_in: Proporcionado por su navegador y actualizado al iniciar sesión
   text_editor:
     x_of_y_characters: "{{x}} / {{y}} caractéres"
@@ -1314,6 +1345,7 @@ es:
     messages:
       updated: Configuración del correo electrónico actualizada
     learn_more: Aprende más sobre la configuración de correo electrónico...
+    help_email_settings: 'Ayuda: Configuración del correo electrónico del usuario'
   thread_preview:
     replies_count: "%{count} respuestas"
     unread_count: "%{count} no leídos"
@@ -1813,6 +1845,7 @@ es:
     proposal_created: Propuesta iniciada
     proposal_updated: Propuesta actualizada
   poll_poll_form:
+    help_starting_polls: 'Ayuda: Iniciar encuestas'
     tool_tip_expanded: |
         <p>Usa una encuesta para medir popularidad u ofrecer alternativas.</p>
         <p>Proporciona algunas opciones de dónde elegir. Decide si los participantes eligen opciones individuales o múltiples en su respuesta.</p>
@@ -2088,7 +2121,10 @@ es:
     test_connection: Conexión de prueba
     test_connection_ok: ¡Se ve bien! Deberías ver un mensaje en el canal
     test_connection_bad: Algo anda mal con la configuración
+    name: Nombre del chatbot
+    connection_test_successful: ¡La prueba de conexión del bot Loomio se realizó correctamente!
     chatbot: Chatbot
+    chatbots: Chatbots
     saved: ¡Chatbot guardado!
     webhook_url: Webhook URL
     homeserver_url: URL del servidor de inicio
@@ -2096,13 +2132,24 @@ es:
     username: Nombre de usuario
     password: Contraseña
     access_token: Token de acceso
+    add_chatbot: Añadir chatbot
+    matrix: Matriz
     slack: Aflojar
     discord: Discrepancia
+    mattermost: Lo más importante
     microsoft_teams: Equipos Microsoft
+    event_kind_helptext: Seleccione los eventos sobre los que siempre se notificará al bot. Si no está seguro, simplemente déjelos todos apagados.
+    notification_only_label: Enviar solo título de notificación
+    check_for_test_message: ¡Revisa tu sala de chat para ver si hay un mensaje del bot!
+    help_chatbots: 'Ayuda: Chatbots'
   webhook:
+    help_api: "Ayuda: API"
     integrations: Incorporaciones
+    api_keys: Claves de API
     webhooks: Webhooks
     webhook: Sistema de comunicación entre aplicaciones
+    add_api_key: Añade clave de API
+    edit_api_key: Edita clave de API
     api: 'API - Interfaz de Programación de Aplicaciones '
     format: Formato
     formats:
@@ -2110,10 +2157,12 @@ es:
       microsoft: Equipos Microsoft
       slack: Aflojar
       discord: Discrepancia
+    subtitle: 'Conectar Loomio con el resto de tus herramientas con nuestro API '
     we_have_guides: |
         Ver nuestros <a href="{{url}}" target="_blank">webhook guías de configuración</a>para ayudar tu servicio.
     add_webhook: Añadir webhook
     show_docs: 'Ver el uso de API '
+    save_to_show_docs: Después de guardar, vuelva aquí para encontrar su clave de API
     edit_integration: Editar integración
     add_integration: Añadir integración
     success: Integración añadida!
@@ -2147,6 +2196,7 @@ es:
       create_poll: crear sondeo
       show_poll: muestra encuesta
       read_memberships: leer membresías
+      manage_memberships: administrar pertenencias (agregar o quitar miembros del grupo)
     include_body_label: Incluye el cuerpo del mensaje con notificación
   powered_by:
     slogan: Mejor decisiones juntos
