@@ -53,8 +53,8 @@ class PollExporter
           stance.poll_id,
           stance.participant_id,
           stance.author_name,
-          stance.created_at.iso8601,
-          stance.updated_at.iso8601,
+          stance.created_at&.iso8601,
+          stance.updated_at&.iso8601,
           stance.reason,
           stance.reason_format]
 
