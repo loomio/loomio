@@ -88,7 +88,7 @@ export default
         poll = Records.polls.find(data.polls[0].id)
         @$router.replace(@urlFor(poll)) if @redirectOnSave
         @$emit('saveSuccess', poll)
-        Flash.success "poll_common_form.poll_type_created", {poll_type: poll.translatedPollType()}
+        Flash.success "poll_common_form.poll_type_started", {poll_type: poll.translatedPollTypeCaps()}
       .catch (error) =>
         Flash.error 'common.something_went_wrong'
         console.error error
@@ -142,7 +142,7 @@ export default
     v-tab(v-t="'common.settings'")
 
   v-tabs-items.pt-4(v-model="tab")
-    v-tab-item.poll-common-form__details-tab
+    v-tab-item.poll-common-form__details-tab.poll-common-form-fields
       v-select(
         v-if="!poll.id && !poll.discussionId"
         v-model="poll.groupId"
