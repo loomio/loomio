@@ -26,7 +26,7 @@ describe Stance do
   end
 
   describe 'choice shorthand' do
-    let(:poll) { Poll.create!(poll_type: 'poll', title: 'which pet?', poll_option_names: %w[dog cat], closing_at: 1.day.from_now, author: author)}
+    let(:poll) { Poll.create!(poll_type: 'multiple_choice', title: 'which pet?', poll_option_names: %w[dog cat], closing_at: 1.day.from_now, author: author)}
     let(:author) { FactoryBot.create(:user) }
 
     it "string" do
@@ -36,7 +36,7 @@ describe Stance do
     end
 
     it "array" do
-      Stance.create(poll: poll, participant: author, choice: ['dog', 'cat'])
+      stance = Stance.create!(poll: poll, participant: author, choice: ['dog', 'cat'])
       poll.update_counts!
       expect(poll.stance_counts).to eq([1,1])
     end
