@@ -79,7 +79,7 @@ GEM
       activerecord (>= 5.1, < 7.1.0)
       ar_outer_joins (~> 0.2)
       pg (< 3.0)
-    activeadmin (2.13.0)
+    activeadmin (2.13.1)
       arbre (~> 1.2, >= 1.2.1)
       formtastic (>= 3.1, < 5.0)
       formtastic_i18n (~> 0.4)
@@ -137,12 +137,12 @@ GEM
     aws-sigv4 (1.5.0)
       aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.16)
-    blazer (2.6.2)
+    blazer (2.6.4)
       activerecord (>= 5)
       chartkick (>= 3.2)
       railties (>= 5)
       safely_block (>= 0.1.1)
-    bootsnap (1.11.1)
+    bootsnap (1.12.0)
       msgpack (~> 1.2)
     browser (5.3.1)
     builder (3.2.4)
@@ -198,7 +198,7 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
-    faker (2.20.0)
+    faker (2.21.0)
       i18n (>= 1.8.11, < 2)
     faraday (1.9.3)
       faraday-em_http (~> 1.0)
@@ -339,7 +339,7 @@ GEM
       activesupport (>= 4)
       railties (>= 4)
       request_store (~> 1.0)
-    loofah (2.17.0)
+    loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -355,7 +355,7 @@ GEM
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
     minitest (5.15.0)
-    msgpack (1.4.5)
+    msgpack (1.5.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
@@ -367,7 +367,7 @@ GEM
     oga (3.3)
       ast
       ruby-ll (~> 2.1)
-    oj (3.13.11)
+    oj (3.13.14)
     orm_adapter (0.5.0)
     os (1.1.4)
     paper_trail (12.3.0)
@@ -385,12 +385,12 @@ GEM
     puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
-    rack (2.2.3)
+    rack (2.2.3.1)
     rack-attack (6.6.1)
       rack (>= 1.0, < 3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rack-timeout (0.6.0)
+    rack-timeout (0.6.3)
     rack_session_access (0.2.0)
       builder (>= 2.0.0)
       rack (>= 1.0.0)
@@ -514,19 +514,19 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sentry-rails (5.3.0)
+    sentry-rails (5.3.1)
       railties (>= 5.0)
-      sentry-ruby-core (~> 5.3.0)
-    sentry-ruby (5.3.0)
+      sentry-ruby-core (~> 5.3.1)
+    sentry-ruby (5.3.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-      sentry-ruby-core (= 5.3.0)
-    sentry-ruby-core (5.3.0)
+      sentry-ruby-core (= 5.3.1)
+    sentry-ruby-core (5.3.1)
       concurrent-ruby
-    sentry-sidekiq (5.3.0)
-      sentry-ruby-core (~> 5.3.0)
+    sentry-sidekiq (5.3.1)
+      sentry-ruby-core (~> 5.3.1)
       sidekiq (>= 3.0)
     sexp_processor (4.15.3)
-    sidekiq (6.4.2)
+    sidekiq (6.5.0)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
@@ -584,7 +584,7 @@ DEPENDENCIES
   actionpack-page_caching
   active_model_serializers (~> 0.8.1)
   active_record_extended
-  activeadmin (~> 2.13.0)
+  activeadmin (~> 2.13.1)
   activerecord-import (= 1.4.0)
   aws-sdk-s3
   blazer
@@ -626,7 +626,7 @@ DEPENDENCIES
   pg
   premailer-rails
   puma
-  rack (= 2.2.3)
+  rack (= 2.2.3.1)
   rack-attack
   rack-timeout
   rack_session_access

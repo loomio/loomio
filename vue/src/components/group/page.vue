@@ -9,11 +9,10 @@ import GroupService    from '@/shared/services/group_service'
 import LmoUrlService     from '@/shared/services/lmo_url_service'
 import {compact, head, includes, filter, pickBy} from 'lodash'
 import OldPlanBanner from '@/components/group/old_plan_banner'
+import DemoBanner from '@/components/group/demo_banner'
 
 export default
-  components: {
-    OldPlanBanner
-  }
+  components: { OldPlanBanner, DemoBanner }
 
   data: ->
     group: null
@@ -77,9 +76,20 @@ export default
 v-main
   loading(v-if="!group")
   v-container.group-page.max-width-1024(v-if="group")
+    demo-banner(:group="group")
     div(style="position: relative")
-      v-img(style="border-radius: 8px" max-height="256" :src="group.coverUrl" eager)
-      v-img.ma-2.rounded(v-if="group.logoUrl" style="border-radius: 8px; position: absolute; bottom: 0" height="96" width="96" :src="group.logoUrl" eager)
+      v-img(
+        :src="group.coverUrl"
+        style="border-radius: 8px"
+        max-height="256"
+        eager)
+      v-img.ma-2.rounded(
+        v-if="group.logoUrl"
+        :src="group.logoUrl"
+        style="border-radius: 8px; position: absolute; bottom: 0"
+        height="96"
+        width="96" 
+        eager)
     h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
       span(v-if="group && group.parentId")
         router-link(:to="urlFor(group.parent())") {{group.parent().name}}
@@ -90,16 +100,35 @@ v-main
     old-plan-banner(:group="group")
     trial-banner(:group="group")
     group-onboarding-card(:group="group")
-    formatted-text.group-page__description(v-if="group" :model="group" column="description")
-    action-dock(:model='group' :actions='dockActions' :menu-actions='menuActions')
+    formatted-text.group-page__description(
+      v-if="group"
+      :model="group"
+      column="description")
+    action-dock(
+      :model='group'
+      :actions='dockActions'
+      :menu-actions='menuActions')
     join-group-button(:group='group')
     link-previews(:model="group")
     document-list(:model='group')
     attachment-list(:attachments="group.attachments")
     v-divider.mt-4
-    v-tabs(v-model="activeTab" center-active background-color="transparent" centered grow show-arrows)
+    v-tabs(
+      v-model="activeTab"
+      center-active
+      background-color="transparent"
+      centered
+      grow
+      show-arrows
+    )
       v-tabs-slider
-      v-tab(v-for="tab of tabs" :key="tab.id" :to="tab.route" :class="'group-page-' + tab.name + '-tab' " exact)
+      v-tab(
+        v-for="tab of tabs"
+        :key="tab.id"
+        :to="tab.route"
+        :class="'group-page-' + tab.name + '-tab' "
+        exact
+      )
         span(v-t="'group_page.'+tab.name")
     router-view
 </template>

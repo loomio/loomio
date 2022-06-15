@@ -7,7 +7,7 @@
           .row.explore-page__groups.my-4
             - @groups.each do |group|
               .col-sm-12.col-md-6.col-lg-6.col
-                %a.explore-page__group.my-4.v-card.v-card--link.v-sheet.theme--light{ href: group_url(group) }
+                %a.explore-page__group.my-4.v-card.v-card--link.v-sheet.theme--auto{ href: group_url(group) }
                   .v-responsive.v-image.explore-page__group-cover
                     .v-responsive__sizer{style: "padding-bottom: 20.6186%;"}
                     .v-image__image.v-image__image--cover{style: "background-image: url(#{group.logo_url}); background-position: center center;" }
@@ -16,11 +16,11 @@
                   .v-card__text
                     .explore-page__group-description= strip_tags(render_rich_text(group.description, group.description_format)).truncate(100)
                     .layout.explore-page__group-stats.justify-start.align-center
-                      %i.v-icon.notranslate.mr-2.mdi.mdi-account-multiple.theme--light
+                      %i.v-icon.notranslate.mr-2.mdi.mdi-account-multiple.theme--auto
                       %span.mr-4= group.memberships_count
-                      %i.v-icon.notranslate.mr-2.mdi.mdi-comment-text-outline.theme--light
+                      %i.v-icon.notranslate.mr-2.mdi.mdi-comment-text-outline.theme--auto
                       %span.mr-4= group.discussions_count
-                      %i.v-icon.notranslate.mr-2.mdi.mdi-thumbs-up-down.theme--light
+                      %i.v-icon.notranslate.mr-2.mdi.mdi-thumbs-up-down.theme--auto
                       %span.mr-4= group.polls_count
           .row.align-center.justify-center
             %span <

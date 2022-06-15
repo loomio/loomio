@@ -68,6 +68,8 @@ class MybbService
 	  		end
     	end
 		end
-		Discussion.where(group_id: group_id).pluck(:id).each {|id| EventService.repair_thread(id)}
+		ids = Discussion.where(group_id: group_id).pluck(:id)
+		ids.each {|id| EventService.repair_thread(id)}
+		SearchIndexWorker.new.perform(ids)
 	end
 end

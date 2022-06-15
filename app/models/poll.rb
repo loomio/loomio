@@ -168,6 +168,7 @@ class Poll < ApplicationRecord
   update_counter_cache :discussion, :anonymous_polls_count
 
   delegate :locale, to: :author
+  delegate :name, to: :author, prefix: true
 
   def has_score_icons
     vote_method == "time_poll"
@@ -192,6 +193,25 @@ class Poll < ApplicationRecord
   def dates_as_options
     poll_option_name_format == 'iso8601'
   end
+  
+  # def chart_type
+  #   case poll_type
+  #   when 'proposal' then 'pie'
+  #   when 'meeting' then 'grid'
+  #   else
+  #     'bar'
+  #   end
+  # end
+
+  # def icon_type
+  #   case poll_type
+  #   when 'proposal' then 'pie'
+  #   when 'meeting' then 'grid'
+  #   when 'count' then 'count'
+  #   else
+  #     'bar'
+  #   end
+  # end
 
   def result_columns
     case poll_type
@@ -261,6 +281,10 @@ class Poll < ApplicationRecord
 
   def body
     details
+  end
+
+  def body=(val)
+    self.details = val
   end
 
   def body_format

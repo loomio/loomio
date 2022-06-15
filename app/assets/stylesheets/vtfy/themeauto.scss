@@ -23,6 +23,10 @@ color: rgba(0,0,0,.87);
 }
 
 @media (prefers-color-scheme: dark) {
+.theme--auto a{
+	color: #fff;
+}
+
 .theme--auto.v-application {
 background: #121212;
 color: #fff;

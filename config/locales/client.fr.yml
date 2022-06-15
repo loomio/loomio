@@ -17,6 +17,11 @@ fr:
     task_updated_not_done: 'Tâche marquée comme pas terminée !'
     no_tasks_assigned: Aucune tâche ne vous a été assignée
   templates:
+    login_to_start_demo: |
+        Ceci est une démo de Loomio en action. Vous êtes invités à jeter un coup d’œil autour de vous.
+    try_voting_to_see_it_work: Essayez de voter dans une proposition pour avoir une idée du fonctionnement de Loomio.
+    delete_will_be_deleted_in_x_days: Cette démo sera supprimée dans %{x} jours.
+    to_use_loomio_with_your_org_start_trial: Lorsque vous êtes prêt à essayer Loomio avec votre organisation, commencez un essai gratuit.
     templates: Modèles
     make_a_copy: "Faire une copie"
     this_thread_is_a_template: Ce thread est un modèle, faites une copie si vous souhaitez l’utiliser.
@@ -28,12 +33,14 @@ fr:
     generating_demo: 'Ok, attendez juste là! La génération d’une démo prend environ 20 secondes.'
     start_a_x_day_free_trial: Commencer un essai gratuit {{day}}
     ready_to_trial: Prêt à essayer Loomio avec votre organisation?
-    start_a_no_obligation_x_day_trial: Démarrez un groupe Loomio pour votre organisation avec un essai gratuit, sans obligation, {{day}}.
+    start_a_no_obligation_x_day_trial: Démarrez un groupe Loomio pour votre organisation avec un essai gratuit {{day}}.
     you_can_test_it_out: |
-        Vous pouvez inviter d’autres personnes à se joindre, l’intégrer à vos autres outils et voir si cela fonctionne pour votre groupe.
+        Vous pouvez inviter d’autres personnes à se joindre, l’intégrer à vos autres outils et essayer de prendre des décisions.
     demo_created: Groupe de démonstration créé, rien que pour vous !
     start_demo: Démarrer la démo
+    view_demo: Voir la démo
     start_trial: Commencer un essai
+    start_free_trial: Commencer l'essai gratuit
     demo_needs_user: Pour démarrer une démo, vous devez vous inscrire (ou vous connecter) en tant qu’utilisateur Loomio. Ceci est gratuit et ne prend qu’une minute.
     this_is_a_template_for_new_threads: Il s’agit d’un modèle pour les nouveaux threads
   doctypes:
@@ -169,6 +176,7 @@ fr:
     active_time_ago: Actif pour la dernière fois {{time_ago}}
     confirm_discard_changes: Annuler vos modifications ?
     something_went_wrong: Euh oh! Quelque chose a mal tourné.
+    please_try_again: Veuillez réessayer
     time:
       am: le matin
       pm: l'après-midi
@@ -592,6 +600,7 @@ fr:
       group_announced: "%{actor} vous a invité dans le group"
       comment_replied_to: '%{actor} vous a repondu'
       new_discussion: "%{actor} a commencé une discussion"
+      new_comment: "%{actor}commenté dans un thread"
       membership_created: "%{actor} vous a invité à joindre le group"
       membership_requested: "%{actor} a demandé à s'adhérer dans le group"
       membership_request_approved: "%{actor}a accepté votre demande à joindre %{title}"
@@ -2185,6 +2194,7 @@ fr:
       create_poll: Créer un sondage
       show_poll: Montrer le sondage
       read_memberships: lire les appartenances
+      manage_memberships: gérer les appartenances (ajouter ou supprimer des membres du groupe)
     include_body_label: Inclure le corps du message dans la notification
   powered_by:
     slogan: De meilleures décisions ensemble

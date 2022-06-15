@@ -1,10 +1,17 @@
 <script lang="coffee">
 import { differenceInDays, format, parseISO } from 'date-fns'
 import Session         from '@/shared/services/session'
+import AuthModalMixin      from '@/mixins/auth_modal'
 export default
+  mixins: [ AuthModalMixin ]
   props:
     group: Object
+
+  methods:
+    signIn: -> @openAuthModal()
+
   computed:
+    isLoggedIn: -> Session.isSignedIn()
     isWasGift: ->
       @group.subscription.plan == 'was-gift'
     isTrialing: ->
@@ -18,7 +25,7 @@ export default
 </script>
 <template lang="pug">
 v-alert(outlined color="primary" dense v-if="isTrialing")
-  v-layout(align-center)
+  .d-flex
     div.pr-1(v-if="isWasGift")
       span(v-if="isExpired" v-html="$t('current_plan_button.was_gift_expired')")
       span(v-if="!isExpired" v-html="$t('current_plan_button.was_gift_remaining', { days: daysRemaining } )")
@@ -28,7 +35,12 @@ v-alert(outlined color="primary" dense v-if="isTrialing")
       span(v-if="!isExpired" v-t="{ path: 'current_plan_button.free_trial', args: { days: daysRemaining }}")
       span(v-if="isExpired" v-t="'current_plan_button.trial_expired'")
     v-spacer
-    v-btn(color="primary" :href="'/upgrade/'+group.id" target="_blank" :title="$t('current_plan_button.tooltip')")
+    v-btn(
+      color="primary"
+      :href="'/upgrade/'+group.id"
+      target="_blank"
+      :title="$t('current_plan_button.tooltip')"
+    )
       v-icon mdi-rocket
       span(v-t="'current_plan_button.view_plans'")
 </template>

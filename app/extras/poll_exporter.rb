@@ -46,14 +46,15 @@ class PollExporter
       csv << keys
       results.each { |r| csv << r.slice(*keys).values }
       csv << ['votes']
-      csv << ['id', 'poll_id', 'voter_id', 'created_at', 'updated_at', 'reason', 'reason_format'] + @poll.poll_option_names
+      csv << ['id', 'poll_id', 'voter_id', 'voter_name', 'created_at', 'updated_at', 'reason', 'reason_format'] + @poll.poll_option_names
       @poll.stances.latest.each do |stance|
         line = [
           stance.id,
           stance.poll_id,
           stance.participant_id,
-          stance.created_at.iso8601,
-          stance.updated_at.iso8601,
+          stance.author_name,
+          stance.created_at&.iso8601,
+          stance.updated_at&.iso8601,
           stance.reason,
           stance.reason_format]
 

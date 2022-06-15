@@ -207,6 +207,7 @@ export default new class AbilityService
     group.membersInclude(Session.user())
 
   canJoinGroup: (group) ->
+    return false if group.subscription.plan == 'demo'
     return false if !@canViewGroup(group) or group.membersInclude(Session.user())
     group.membershipGrantedUpon == 'request' or group.parentOrSelf().adminsInclude(Session.user())
 

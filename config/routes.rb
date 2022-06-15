@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     namespace :b1 do
       resources :discussions, only: [:create, :show]
       resources :polls, only: [:create, :show]
-      resources :memberships, only: [:index]
+      resources :memberships, only: [:index, :create]
     end
 
     namespace :v1 do
@@ -55,7 +55,7 @@ Rails.application.routes.draw do
         get :version, on: :collection
       end
 
-      resources :templates, only: [:index] do
+      resources :demos, only: [:index] do
         post :clone, on: :collection
       end
 

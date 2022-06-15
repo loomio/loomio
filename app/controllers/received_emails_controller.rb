@@ -1,8 +1,10 @@
 class ReceivedEmailsController < Griddler::EmailsController
   # reply to discussion by email action
   def reply
-    normalized_params.each do |p|
-      process_email Griddler::Email.new(p)
+    unless is_autoresponse? 
+      normalized_params.each do |p|
+        process_email Griddler::Email.new(p)
+      end
     end
 
     head :ok
@@ -17,6 +19,34 @@ class ReceivedEmailsController < Griddler::EmailsController
   end
 
   private
+
+  def is_autoresponse?
+    return true if (mailin_params['headers'] || {}).keys.map(&:downcase).include?('x-autorespond')
+    return true if mailin_params.dig('headers', 'X-Precedence') ==  'auto_reply'
+
+    prefixes = [
+      'Auto:',
+      'Automatic reply',
+      'Autosvar',
+      'Automatisk svar',
+      'Automatisch antwoord',
+      'Abwesenheitsnotiz',
+      'Risposta Non al computer',
+      'Automatisch antwoord',
+      'Auto Response',
+      'Respuesta automática',
+      'Fuori sede',
+      'Out of Office',
+      'Frånvaro',
+      'Réponse automatique'
+    ]
+
+    return true if prefixes.any? do |prefix|
+      (mailin_params.dig('headers', 'subject') || '').downcase.starts_with?(prefix.downcase)
+    end
+
+    false
+  end
 
   def received_email_params
     {

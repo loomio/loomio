@@ -27,7 +27,13 @@ export default
 v-menu
   template(v-slot:activator="{ on, attrs }")
     div.rounded-lg.color-picker-btn
-      v-btn.drop-down-button(:style="{'background-color': buttonBgColor, color: buttonFgColor}" icon v-on="on" v-bind="attrs" :title="$t('formatting.colors')")
+      v-btn.drop-down-button(
+        small icon
+        :style="{'background-color': buttonBgColor, color: buttonFgColor}" 
+        v-on="on"
+        v-bind="attrs"
+        :title="$t('formatting.colors')"
+      )
         v-icon mdi-palette
   v-card.color-picker.pa-2
     .swatch.swatch-color(v-for="(value, key) in colors"

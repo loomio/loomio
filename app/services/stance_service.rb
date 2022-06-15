@@ -4,6 +4,7 @@ class StanceService
 
     stance.participant = actor
     stance.cast_at ||= Time.zone.now
+    stance.revoked_at = nil
     stance.save!
     stance.poll.update_counts!
 
@@ -16,6 +17,7 @@ class StanceService
     stance.stance_choices = []
     stance.assign_attributes_and_files(params)
     stance.cast_at ||= Time.zone.now
+    stance.revoked_at = nil
     stance.save!
     stance.poll.update_counts!
     event = Events::StanceUpdated.publish!(stance)

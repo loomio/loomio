@@ -30,7 +30,7 @@ import LoginTokenRecordsInterface from '@/shared/interfaces/login_token_records_
 import MessageChannelRecordsInterface from '@/shared/interfaces/message_channel_records_interface'
 import TagRecordsInterface from '@/shared/interfaces/tag_records_interface'
 import TaskRecordsInterface from '@/shared/interfaces/task_records_interface'
-import TemplateRecordsInterface from '@/shared/interfaces/template_records_interface'
+import DemoRecordsInterface from '@/shared/interfaces/demo_records_interface'
 import WebhookRecordsInterface from '@/shared/interfaces/webhook_records_interface'
 
 db      = new loki('default.db')
@@ -38,6 +38,7 @@ records = new RecordStore(db)
 
 records.addRecordsInterface CommentRecordsInterface
 records.addRecordsInterface ChatbotRecordsInterface
+records.addRecordsInterface DemoRecordsInterface
 records.addRecordsInterface DiscussionRecordsInterface
 records.addRecordsInterface DiscussionReaderRecordsInterface
 records.addRecordsInterface EventRecordsInterface
@@ -64,7 +65,6 @@ records.addRecordsInterface LoginTokenRecordsInterface
 records.addRecordsInterface MessageChannelRecordsInterface
 records.addRecordsInterface TagRecordsInterface
 records.addRecordsInterface TaskRecordsInterface
-records.addRecordsInterface TemplateRecordsInterface
 records.addRecordsInterface WebhookRecordsInterface
 
 AppConfig.records = records

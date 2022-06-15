@@ -38,14 +38,14 @@ export default
 
   methods:
     init: ->
-      Records.fetch(path: 'templates').then (data) =>
+      Records.fetch(path: 'demos').then (data) =>
         @loaded = true
 
       @watchRecords
-        key: 'templatesIndex'
-        collections: ['templates']
+        key: 'demosIndex'
+        collections: ['demos']
         query: =>
-          @templates = Records.templates.collection.chain().find(groupId: null).simplesort('priority', true).data()
+          @demos = Records.demos.collection.chain().find(id: {$ne: null}).simplesort('priority', true).data()
 
     startDemo: (id) ->
       if Session.isSignedIn()
@@ -57,7 +57,7 @@ export default
       Flash.wait('templates.generating_demo')
       @processing = true
       Records.post
-        path: 'templates/clone'
+        path: 'demos/clone'
         params:
           id: id
       .then (data) =>
@@ -83,13 +83,13 @@ v-main
 
     v-overlay(:value="processing")
     div(v-if="loaded")
-      v-card.my-4(v-for="template in templates" :key="template.id")
-        v-img(:src="template.record().coverUrl" max-height="120")
-        v-card-title {{ template.name }}
-        v-card-text {{ template.description }}
+      v-card.my-4(v-for="demo in demos" :key="demo.id")
+        v-img(:src="demo.group().coverUrl" max-height="120")
+        v-card-title {{ demo.name }}
+        v-card-text {{ demo.description }}
         v-card-actions
           v-spacer
-          v-btn(@click="startDemo(template.id)" v-t="'templates.start_demo'" color="primary")
+          v-btn(@click="startDemo(demo.id)" v-t="'templates.start_demo'" color="primary")
 
     template(v-if="trials")
       h2.mt-8.text-title(v-t="'templates.ready_to_trial'")

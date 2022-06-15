@@ -17,6 +17,11 @@ zh_TW:
     task_updated_not_done: '工作被標記為未完成'
     no_tasks_assigned: 沒有分配給您的工作
   templates:
+    login_to_start_demo: |
+        這是 Loomio 的展示。歡迎您到處看看。
+    try_voting_to_see_it_work: 嘗試對提案進行投票，以了解 Loomio 如何運作。
+    delete_will_be_deleted_in_x_days: 此展示將會在 %{x} 天內刪除。
+    to_use_loomio_with_your_org_start_trial: 當您準備好與您的組織一起試用 Loomio 時，開始免費試用。
     templates: 範本
     make_a_copy: "複製"
     this_thread_is_a_template: 此討論串為範本，若您想要使用它的話，請複製。
@@ -28,12 +33,14 @@ zh_TW:
     generating_demo: '好的，請稍等！產生範例大概需要 20 秒。'
     start_a_x_day_free_trial: 開始{{day}}天的免費試用
     ready_to_trial: 準備好與您的組織一起使用 Loomio 了嗎？
-    start_a_no_obligation_x_day_trial: 透過免費且無擔保的{{day}}天試用為您的組織建立 Loomio 群組。
+    start_a_no_obligation_x_day_trial: 免費試用{{day}}天，為您的組織建立 Loomio 群組。
     you_can_test_it_out: |
-        您可以邀請其他人加入，將其與您的其他工具整合，並看看其是否適用於您的團隊。
+        您可以邀請其他人加入，將其與您的其他工具整合，並試試看做出一些決策。
     demo_created: 示範用群組已建立，只為您！
     start_demo: 試用範例
+    view_demo: 檢視展示
     start_trial: 開始試用
+    start_free_trial: 開始免費試用
     demo_needs_user: 要啟動範例，您必須註冊（或登入）為 Loomio 使用者。這是免費的，且僅需一分鐘。
     this_is_a_template_for_new_threads: 這是新討論串的範本
   doctypes:
@@ -169,6 +176,7 @@ zh_TW:
     active_time_ago: 最後活躍 {{time_ago}}
     confirm_discard_changes: 丟棄您的變更？
     something_went_wrong: 喔喔！似乎有些東西出問題了。
+    please_try_again: 請重試
     time:
       am: am
       pm: pm
@@ -592,6 +600,7 @@ zh_TW:
       group_announced: "%{actor} 邀請您加入群組"
       comment_replied_to: '%{actor} 回覆您'
       new_discussion: "%{actor} 啟動了討論串"
+      new_comment: "%{actor} 已在討論串中留言"
       membership_created: "%{actor} 邀請您加入群組"
       membership_requested: "%{actor} 請求加入您的群組"
       membership_request_approved: "%{actor} 接受您加入 %{title} 的請求"
@@ -2188,6 +2197,7 @@ zh_TW:
       create_poll: 建立投票
       show_poll: 顯示投票
       read_memberships: 讀取成員資格
+      manage_memberships: 管理會員資格（新增或移除群組成員）
     include_body_label: 在通知中包含訊息正文
   powered_by:
     slogan: 一起做出更好的決策

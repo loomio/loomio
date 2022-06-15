@@ -66,6 +66,10 @@ class Stance < ApplicationRecord
   before_save :update_option_scores
   after_save :update_versions_count!
 
+  def author_name
+    participant&.name
+  end
+
   def update_option_scores
     self.option_scores = stance_choices.map { |sc| [sc.poll_option_id, sc.score] }.to_h
   end

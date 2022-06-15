@@ -1,6 +1,51 @@
 pl:
+  tasks:
+    tasks: Zadania
+    your_tasks: Twoje zadania
+    permission_denied: ' Nie masz uprawnień, aby zaktualizować to zadanie'
+    due_date: Termin
+    send_reminder: Wyślij przypomnienie (jeśli nie zostało zrobione)
+    no_reminder: Brak przypomnienia
+    on_due_date: W terminie
+    1_day_before: 1 dzień przed
+    2_day_before: 2 dni przed
+    3_day_before: 3 dni przed
+    7_day_before: 7 dni przed
+    task_placeholder: Wpisz zadanie i @wspomnij o kimś, kto je przydzieli
+    add_due_date: Dodaj termin
+    task_updated_done: 'Zadanie oznaczone jako wykonane!'
+    task_updated_not_done: 'Zadanie oznaczone jako niewykonane'
+    no_tasks_assigned: Nie ma przypisanych Ci zadań
   templates:
+    templates: Szablony
+    make_a_copy: "Zrób kopię"
+    this_thread_is_a_template: Ten wątek jest szablonem, skopiuj go, jeśli chcesz go użyć.
     try_loomio: Wypróbuj Loomio
+    start_a_demo_group: Załóż grupę demo
+    start_a_demo: Rozpocznij demo
+    look_and_feel: Rozpocznij demo, aby zobaczyć, jak wygląda Loomio i przetestować niektóre funkcje.
+    demos_expire: Grupy demonstracyjne są automatycznie usuwane po 3 dniach. Jeśli potrzebujesz, możesz rozpocząć kolejną.
+    generating_demo: 'Ok, czekaj tam! Wygenerowanie demo trwa około 20 sekund.'
+    start_a_x_day_free_trial: Rozpocznij {{day}} jednodniowy bezpłatny okres próbny
+    ready_to_trial: Gotowy wypróbować Loomio w swojej organizacji?
+    demo_created: Grupa demonstracyjna stworzona specjalnie dla Ciebie!
+    start_demo: Uruchom demo
+    start_trial: Rozpocznij próbę
+    start_free_trial: 'Rozpocznij bezpłatną wersję próbną '
+    demo_needs_user: Aby rozpocząć demo, musisz się zarejestrować (lub zalogować) jako użytkownik Loomio. Jest to bezpłatne i zajmuje tylko minutę.
+    this_is_a_template_for_new_threads: To jest szablon dla nowych wątków
+  doctypes:
+    youtube_video: Film z YouTube
+    image: Obraz
+    pdf: PDF
+    excel: arkusz kalkulacyjny Excel
+    document: Dokument
+    csv: Plik CSV
+    video: Wideo
+    text: Plik tekstowy
+    google_doc: Dokument Google
+    google_sheet: Arkusz kalkulacyjny Google
+    google_drive: dysk Google
   loomio_onboarding:
     group_progress_card:
       activities:
@@ -13,8 +58,10 @@ pl:
       dismiss_this_card: Odrzuć tę kartę
   plan_names:
     free: Darmowy
+    starter: Starter
     trial: Okres próbny
     pro: Pro
+    pro_nonprofit: Pro Nonprofit
     community: Społeczność
     small: Mały
     medium: Średni

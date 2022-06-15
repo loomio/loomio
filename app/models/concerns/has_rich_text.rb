@@ -17,6 +17,7 @@ module HasRichText
           tags = %w[strong em b i p s code pre big div small hr br span mark h1 h2 h3 ul ol li abbr a img blockquote table thead th tr td iframe u]
           attributes = %w[href src alt title data-type data-iframe-container data-done data-mention-id data-author-id data-uid data-checked data-due-on data-color data-remind width height target colspan rowspan data-text-align]
           self[field] = Rails::Html::WhiteListSanitizer.new.sanitize(self[field], tags: tags, attributes: attributes)
+          self[field] = HasRichText::strip_empty_paragraphs(self[field])
           self[field] = add_required_link_attributes(self[field])
           self[field] = HasRichText::add_heading_ids(self[field])
           self[field] = TaskService.rewrite_uids(self[field])
@@ -109,6 +110,16 @@ module HasRichText
 
   def attachment_icon(name)
     AppConfig.doctypes.detect{ |type| /#{type['regex']}/.match(name) }['icon']
+  end
+
+  def self.strip_empty_paragraphs(text)
+    fragment = Nokogiri::HTML::DocumentFragment.parse(text)
+    fragment.css('p').each do |node|
+      if node.content.match?(/^[[:space:]]+$/)
+        node.content = node.content.gsub(/^[[:space:]]+$/, '')
+      end
+    end
+    fragment.to_s
   end
 
   def self.add_heading_ids(text)

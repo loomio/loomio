@@ -1,6 +1,5 @@
-ActiveAdmin.register Template do
+ActiveAdmin.register Demo do
   includes :group
-  includes :record
   includes :author
 
   filter :name
@@ -15,10 +14,9 @@ ActiveAdmin.register Template do
     f.inputs "Details" do
       f.input :author_id
       f.input :group_id
-      f.input :record_id
-      f.input :record_type, as: :string
       f.input :recorded_at
       f.input :name
+      f.input :demo_handle
       f.input :priority
       f.input :description, as: :text
     end
