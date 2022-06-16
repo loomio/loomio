@@ -4,6 +4,7 @@ import Session from '@/shared/services/session'
 import { compact, without, kebabCase, snakeCase } from 'lodash'
 import Flash from '@/shared/services/flash'
 import Records from '@/shared/services/records'
+import EventBus from '@/shared/services/event_bus'
 import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns'
 import { optionImages } from '@/shared/helpers/poll'
 import { addHours, isAfter } from 'date-fns'
@@ -89,6 +90,11 @@ export default
         @$router.replace(@urlFor(poll)) if @redirectOnSave
         @$emit('saveSuccess', poll)
         Flash.success "poll_common_form.poll_type_started", {poll_type: poll.translatedPollTypeCaps()}
+        if actionName == 'created'
+          EventBus.$emit 'openModal',
+            component: 'PollMembers',
+            props:
+              poll: poll
       .catch (error) =>
         Flash.error 'common.something_went_wrong'
         console.error error
@@ -138,8 +144,8 @@ export default
 
   v-tabs(v-model="tab")
     v-tabs-slider(color="primary")
-    v-tab(v-t="'poll_common.details'")
-    v-tab(v-t="'common.settings'")
+    v-tab.poll-common-form__details-tab(v-t="'poll_common.details'")
+    v-tab.poll-common-form__settings-tab(v-t="'common.settings'")
 
   v-tabs-items.pt-4(v-model="tab")
     v-tab-item.poll-common-form__details-tab.poll-common-form-fields
@@ -197,7 +203,7 @@ export default
           @change="addOption")
 
       template(v-if="optionFormat == 'none'")
-        v-text-field(
+        v-text-field.poll-poll-form__add-option-input(
           v-model="newOption"
           :label="$t('poll_poll_form.add_option_placeholder')"
           @keydown.enter="addOption"
