@@ -142,7 +142,16 @@ v-card.group-form
     v-tab-item
       .mt-8.px-4
         .v-input
-          label.v-label.v-label--active.lmo-font-12px(v-t="'group_form.click_to_change_image'" @click="selectCoverPhoto()")
+          label.v-label.v-label--active.lmo-font-12px
+            a(v-t="'group_form.change_cover_image'" @click="selectCoverPhoto()")
+            space
+            | (2048x512)
+            space
+            span(v-t="'common.or'")
+            space
+            a(v-t="'group_form.change_logo'" @click="selectLogo()")
+            space
+            | (256x256)
         v-img.group_form__file-select(:src="realGroup.coverUrl" @click="selectCoverPhoto()")
         group-avatar.group_form__file-select.group_form__logo(:group="realGroup" :size="64" @click="selectLogo()")
         v-text-field.group-form__name#group-name.mt-4(v-model='group.name' :placeholder="$t(groupNamePlaceholder)" :rules='[rules.required]' maxlength='255' :label="$t(groupNameLabel)")
