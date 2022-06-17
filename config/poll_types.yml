@@ -51,6 +51,7 @@ poll:
   poll_option_name_format: 'none'
   vote_method: single_choice
   can_shuffle_options: true
+  can_add_options: true
   validate_minimum_stance_choices: true
   validate_dots_per_person: true
   i18n:
@@ -72,6 +73,7 @@ multiple_choice:
   poll_option_name_format: none
   vote_method: multiple_choice
   can_shuffle_options: true
+  can_add_options: true
   validate_minimum_stance_choices: true
   validate_max_score: true
   i18n:
@@ -149,6 +151,7 @@ meeting:
   prevent_anonymous: true
   vote_method: time_poll
   require_all_choices: true
+  can_add_options: true
   i18n:
     process_name: decision_tools_card.meeting_title
     process_description: poll_common_form.voting_methods.time_poll_hint

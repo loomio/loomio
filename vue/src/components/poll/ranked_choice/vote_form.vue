@@ -58,7 +58,7 @@ export default
         :key="index"
       ) {{ option.name }}
   validation-errors(:subject='stance' field='stanceChoices')
-  //- poll-common-add-option-button(:poll='stance.poll()')
+  poll-common-add-option-button(:poll='stance.poll()')
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
     v-spacer

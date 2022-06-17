@@ -66,7 +66,7 @@ export default
       :color="option.color"
       hide-details
     )
-  //- poll-common-add-option-button(:poll='stance.poll()')
+  poll-common-add-option-button(:poll='stance.poll()')
   validation-errors(:subject='stance' field='stanceChoices')
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions

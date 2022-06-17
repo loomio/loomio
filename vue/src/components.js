@@ -73,6 +73,8 @@ module.exports = {
   Notification: 'common/notification',
   Notifications: 'common/notifications',
   PollCommonActionPanel: 'poll/common/action_panel',
+  PollCommonAddOptionButton: 'poll/common/add_option_button',
+  PollCommonAddOptionModal: 'poll/common/add_option_modal',
   PollCommonCalendarInvite: 'poll/common/calendar_invite',
   PollCommonCard: 'poll/common/card',
   PollCommonCardHeader: 'poll/common/card_header',

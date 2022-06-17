@@ -18,25 +18,6 @@ export default
     isEditing: ->
       @poll.closingAt && !@poll.isNew()
 
-  # methods:
-  #   submit: ->
-  #     actionName = if @poll.isNew() then 'created' else 'updated'
-  #     @poll.setErrors({})
-  #     @poll.save()
-  #     .then (data) =>
-  #       pollKey = data.polls[0].key
-  #       Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
-  #         if !@poll.discussionId
-  #           @$router.replace(@urlFor(poll)).catch (err) => {}
-  #         Flash.success "poll_#{poll.pollType}_form.#{poll.pollType}_#{actionName}"
-  #         EventBus.$emit('closeModal')
-  #         return if actionName == 'updated'
-  #         EventBus.$emit 'openModal',
-  #           component: 'PollMembers',
-  #           props:
-  #             poll: poll
-  #     .catch (error) => true
-
 </script>
 <template lang="pug">
 v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()").pb-2

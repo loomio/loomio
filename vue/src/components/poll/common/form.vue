@@ -107,6 +107,7 @@ export default
         ('shuffleOptions'         if @poll.config().can_shuffle_options),
         ('canRespondMaybe'        if @poll.pollType == 'meeting'),
         ('anonymous'              if @allowAnonymous),
+        ('voterCanAddOptions'     if @poll.config().can_add_options),
         ('allowLongReason')
       ]
 
