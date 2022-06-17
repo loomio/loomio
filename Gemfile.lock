@@ -526,7 +526,7 @@ GEM
       sentry-ruby-core (~> 5.3.1)
       sidekiq (>= 3.0)
     sexp_processor (4.15.3)
-    sidekiq (6.5.0)
+    sidekiq (6.5.1)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
