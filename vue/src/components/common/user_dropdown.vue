@@ -2,7 +2,6 @@
 import AppConfig       from '@/shared/services/app_config'
 import Session         from '@/shared/services/session'
 import Records         from '@/shared/services/records'
-import UserHelpService from '@/shared/services/user_help_service'
 import Flash from '@/shared/services/flash'
 
 export default
@@ -33,8 +32,6 @@ export default
     release:  -> AppConfig.release
     siteName: -> AppConfig.theme.site_name
     user:     -> Session.user()
-    helpLink: -> UserHelpService.helpLink()
-    showHelp: -> AppConfig.features.app.help_link
     showContact: -> AppConfig.features.app.show_contact
     showBeta: -> !AppConfig.features.app.thread_page_v3
 
@@ -66,10 +63,6 @@ div.user-dropdown
       v-list-item-title(v-t="'user_dropdown.disable_dark_mode'")
       v-list-item-icon
         v-icon mdi-white-balance-sunny
-  v-list-item(v-if="showHelp", :href="helpLink", target="_blank" dense)
-    v-list-item-title(v-t="'user_dropdown.help'")
-    v-list-item-icon
-      v-icon mdi-help-circle-outline
   v-list-item(v-if="showContact" to="/contact" dense)
     v-list-item-title(v-t="{path: 'user_dropdown.contact_support', args: {site_name: siteName}}")
     v-list-item-icon

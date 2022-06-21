@@ -103,6 +103,7 @@ export default
 
   computed:
     isSignedIn: -> Session.isSignedIn()
+    showHelp: -> AppConfig.features.app.help_link
     user: -> Session.user()
     activeGroup: -> if @group then [@group.id] else []
     logoUrl: -> AppConfig.theme.app_logo_src
@@ -155,6 +156,10 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
       v-icon(tile) mdi-plus
   v-list-item(dense to="/tasks")
     v-list-item-title(v-t="'tasks.tasks'")
+  v-list-item(v-if="showHelp", href="https://help.loomio.com" target="_blank" dense)
+    v-list-item-title(v-t="'user_dropdown.help_docs'")
+    v-list-item-icon
+      v-icon mdi-help-circle-outline
   v-divider
 
   v-list.sidebar__groups(dense)
