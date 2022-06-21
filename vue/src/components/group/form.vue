@@ -141,19 +141,19 @@ v-card.group-form
 
     v-tab-item
       .mt-8.px-4
+        v-img.group_form__file-select(:src="realGroup.coverUrl" @click="selectCoverPhoto()")
+        group-avatar.group_form__file-select.group_form__logo(:group="realGroup" :size="64" @click="selectLogo()")
         .v-input
           label.v-label.v-label--active.lmo-font-12px
             a(v-t="'group_form.change_cover_image'" @click="selectCoverPhoto()")
             space
-            | (2048x512)
+            | (2048x512 px)
             space
             span(v-t="'common.or'")
             space
             a(v-t="'group_form.change_logo'" @click="selectLogo()")
             space
-            | (256x256)
-        v-img.group_form__file-select(:src="realGroup.coverUrl" @click="selectCoverPhoto()")
-        group-avatar.group_form__file-select.group_form__logo(:group="realGroup" :size="64" @click="selectLogo()")
+            | (256x256 px)
         v-text-field.group-form__name#group-name.mt-4(v-model='group.name' :placeholder="$t(groupNamePlaceholder)" :rules='[rules.required]' maxlength='255' :label="$t(groupNameLabel)")
         div(v-if="!group.parentId || (group.parentId && group.parent().handle)")
           v-text-field.group-form__handle#group-handle(v-model='group.handle', :hint="$t('group_form.group_handle_placeholder', {handle: group.handle})" maxlength='100' :label="$t('group_form.handle')")
