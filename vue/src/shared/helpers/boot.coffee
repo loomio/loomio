@@ -3,10 +3,10 @@ import RestfulClient from '@/shared/record_store/restful_client'
 import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import i18n from '@/i18n.coffee'
-import * as Sentry from '@sentry/browser'
-import { Vue as VueIntegration } from "@sentry/integrations"
-import { Integrations } from "@sentry/tracing"
+import * as Sentry from '@sentry/vue'
+import { BrowserTracing } from "@sentry/tracing"
 import { forEach } from 'lodash'
+import router from '@/routes.coffee'
 
 export default (callback) ->
   client = new RestfulClient('boot')
@@ -38,8 +38,10 @@ export default (callback) ->
         dsn: AppConfig.sentry_dsn
         tunnel: '/bug_tunnel'
         integrations: [
-          new Integrations.BrowserTracing(),
-          new VueIntegration({Vue: Vue, attachProps: true, logErrors: true, tracing: true})
+          new BrowserTracing({
+            routingInstrumentation: Sentry.vueRouterInstrumentation(router),
+            tracingOrigins: ["localhost", AppConfig.baseUrl, /^\//],
+          }),
         ]
         tracesSampleRate: AppConfig.features.app.sentry_sample_rate
 
