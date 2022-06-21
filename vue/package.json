@@ -25,7 +25,7 @@
     "@tiptap/extension-bullet-list": "2.0.0-beta.26",
     "@tiptap/extension-character-count": "2.0.0-beta.26",
     "@tiptap/extension-code": "2.0.0-beta.26",
-    "@tiptap/extension-code-block": "2.0.0-beta.37",
+    "@tiptap/extension-code-block": "2.0.0-beta.41",
     "@tiptap/extension-document": "2.0.0-beta.15",
     "@tiptap/extension-dropcursor": "2.0.0-beta.25",
     "@tiptap/extension-gapcursor": "2.0.0-beta.34",
