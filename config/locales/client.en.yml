@@ -1443,7 +1443,7 @@ en:
   dashboard_page:
     aria_label: 'Dashboard'
     polls_to_vote_on: "Polls to vote on"
-    no_polls_to_vote_on: "You don't have any pending polls."
+    no_polls_to_vote_on: "There are no polls you need to vote on"
     recent_polls: "Recent polls"
     current_polls: "Current polls"
     recent_threads: "Recent threads"
