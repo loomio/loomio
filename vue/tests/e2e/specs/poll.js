@@ -314,37 +314,6 @@ module.exports = {
     // page.expectText('.poll-common-outcome-panel .lmo-markdown-wrapper', 'Here is a statement')
   },
 
-  'can_add_an_option': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('polls/test_discussion')
-    page.click('.activity-panel__add-poll')
-    page.click('.decision-tools-card__poll-type--poll')
-    page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
-    page.fillIn('.poll-common-form-fields .lmo-textarea div[contenteditable=true]', 'Some details')
-    page.click('.poll-poll-form__add-option-input')
-    page.fillInAndEnter('.poll-poll-form__add-option-input input', 'An option')
-    page.fillInAndEnter('.poll-poll-form__add-option-input input', 'Another option')
-    page.click('.poll-common-form__settings-tab')
-    page.click('.poll-settings-voter-can-add-options')
-    page.click('.poll-common-form__submit')
-    page.expectElement('.poll-members-form__submit')
-    page.pause(500)
-    page.click('.dismiss-modal-button')
-
-    page.expectText('.poll-common-card__title', 'A new proposal')
-    page.expectText('.poll-common-details-panel__details p', 'Some details')
-
-    page.scrollTo('.poll-common-action-panel', () => {
-      page.click('.poll-common-add-option-button button')
-    })
-
-    page.click('.poll-poll-form__add-option-input')
-    page.fillInAndEnter('.poll-poll-form__add-option-input input', 'Yet another option')
-    page.click('.poll-add-option__submit')
-    page.expectFlash('New options added')
-  },
-
   'can_add_standalone_poll_to_thread': (test) => {
     page = pageHelper(test)
 

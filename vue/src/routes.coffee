@@ -22,7 +22,6 @@ import ThreadsPage from './components/threads/page'
 import StrandPage from './components/strand/page'
 import DemosPage from './components/demos/index.vue'
 
-
 import './config/catch_navigation_duplicated.js'
 import Vue from 'vue'
 import Router from 'vue-router'
