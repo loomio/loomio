@@ -19,15 +19,6 @@ module Boot
         contactEmail:        ENV['SUPPORT_EMAIL'],
         plugins:             { installed: [], outlets: [], routes: [] },
         theme:               AppConfig.theme,
-
-        # these can be deleted after angular is really really gone
-        flashTimeout:        { long: 9999999, short: 999999 },
-        pageSize:            { default: 10, groupThreads: 10, threadItems: 10, exploreGroups: 10 },
-        drafts:              { debounce: 1000},
-        searchFilters:       { status: %w(active closed) },
-        emojis:              { defaults:  [] },
-        # these can be deleted after angular is really really gone
-
         sentry_dsn:          ENV['SENTRY_PUBLIC_DSN'],
         posthog_key:         ENV['POSTHOG_KEY'],
         posthog_host:        ENV['POSTHOG_HOST'],
