@@ -382,7 +382,7 @@ module Dev::NintiesMoviesHelper
     # notify patrick that someone has voted on his proposal
     poll = FactoryBot.build(:poll, closing_at: 4.days.from_now, discussion: create_discussion, voter_can_add_options: true)
     PollService.create(poll: poll, actor: patrick)
-    jennifer_stance = FactoryBot.build(:stance, poll: poll, choice: "agree")
+    jennifer_stance = FactoryBot.build(:stance, poll: poll, choice: poll.poll_option_names.first)
     StanceService.create(stance: jennifer_stance, actor: jennifer)
 
     # create poll_option_added event (notifying author)
