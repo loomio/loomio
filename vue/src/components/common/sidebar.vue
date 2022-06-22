@@ -157,7 +157,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   v-list-item(dense to="/tasks")
     v-list-item-title(v-t="'tasks.tasks'")
   v-list-item(v-if="showHelp", href="https://help.loomio.com" target="_blank" dense)
-    v-list-item-title(v-t="'user_dropdown.help_docs'")
+    v-list-item-title(v-t="'common.loomio_help'")
     v-list-item-icon
       v-icon mdi-help-circle-outline
   v-divider

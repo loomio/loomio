@@ -173,6 +173,7 @@ en:
     local: Local time ({{value}})
 
   common:
+    loomio_help: Loomio help
     please_wait: Please wait
     optional: (Optional)
     version: Version
@@ -569,7 +570,6 @@ en:
     edit_profile: 'Edit profile'
     email_settings: 'Notification settings'
     help: 'Help'
-    help_docs: 'Help docs'
     contact_site_name: 'Contact {{site_name}}'
     contact_support: 'Contact support'
     sign_out: 'Sign out'
