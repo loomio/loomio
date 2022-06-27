@@ -18,7 +18,7 @@
     "@babel/polyfill": "^7.12.1",
     "@sentry/browser": "^7.2.0",
     "@sentry/vue": "^7.2.0",
-    "@sentry/tracing": "^7.2.0",
+    "@sentry/tracing": "^7.3.0",
     "@tiptap/core": "latest",
     "@tiptap/extension-blockquote": "latest",
     "@tiptap/extension-bold": "latest",
