@@ -18,6 +18,7 @@ class RecordCloner
     clone_group.discussions.each {|d| d.private = false }
     clone_group.polls.each {|p| p.specified_voters_only = false }
     clone_group.save!
+    copy_tags_over(group)
     clone_group.polls.each do |poll|
       poll.update_counts!
       poll.stances.each {|s| s.update_option_scores!}
@@ -31,6 +32,9 @@ class RecordCloner
     clone_group.creator = actor
     clone_group.subscription = Subscription.new(plan: 'demo', owner: actor)
     clone_group.save!
+
+    copy_tags_over(group)
+
     clone_group.polls.each do |poll|
       poll.update_counts!
       poll.stances.each {|s| s.update_option_scores!}
@@ -38,6 +42,18 @@ class RecordCloner
     clone_group.discussions.each {|d| EventService.repair_thread(d.id) }
     clone_group.add_member! actor
     clone_group.reload
+  end
+
+  def copy_tags_over(group)
+    group.discussions.each do |d|
+      clone_discussion = existing_clone(d)
+      d.tags.each {|t| clone_discussion.tags << existing_clone(t)}
+    end
+
+    group.polls.each do |p|
+      clone_poll = existing_clone(p)
+      p.tags.each {|t| clone_poll.tags << existing_clone(t)}
+    end
   end
 
 
@@ -309,7 +325,9 @@ class RecordCloner
   end
 
   def new_clone_tag(tag)
-    new_clone(tag, %w[name color priority])
+    clone_tag = new_clone(tag, %w[name color priority])
+    clone_tag.group = existing_clone(tag.group)
+    clone_tag
   end
 
   def new_clone(record, copy_fields = [], required_values = {}, attachments = [])
