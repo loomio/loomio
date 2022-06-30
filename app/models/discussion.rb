@@ -236,11 +236,11 @@ class Discussion < ApplicationRecord
 
   def privacy_is_permitted_by_group
     if self.public? and group.private_discussions_only?
-      errors.add(:private, "must be private in this group")
+      errors.add(:private, "must be private")
     end
 
     if self.private? and group.public_discussions_only?
-      errors.add(:private, "must be public in this group")
+      errors.add(:private, "must be public")
     end
   end
 end
