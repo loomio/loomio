@@ -3,7 +3,7 @@ module Ability::User
     super(user)
 
     can :show, ::User do |u|
-      u.deactivated_at.nil?
+      user.is_logged_in? && u.deactivated_at.nil?
     end
 
     can [:update,
