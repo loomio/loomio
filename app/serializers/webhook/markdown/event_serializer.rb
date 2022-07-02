@@ -34,7 +34,7 @@ class Webhook::Markdown::EventSerializer < ActiveModel::Serializer
       ApplicationController.renderer.render(
         layout: nil,
         template: "chatbot/markdown/#{scope[:template_name]}",
-        assigns: { poll: object.eventable.poll, event: object } )
+        assigns: { poll: object.eventable.poll, event: object, recipient: scope[:recipient] } )
     end
   end
 

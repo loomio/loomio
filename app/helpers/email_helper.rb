@@ -96,12 +96,12 @@ module EmailHelper
                                                   format: format)
   end
 
-  def option_name(name, format, zone)
+  def option_name(name, format, zone, date_time_pref)
     case format
     when 'i18n'
       t(name)
     when 'iso8601'
-      format_iso8601_for_humans(name, zone)
+      format_iso8601_for_humans(name, zone, date_time_pref)
     else
       name
     end

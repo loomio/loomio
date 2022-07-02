@@ -36,16 +36,22 @@ class ChatbotService
           poll = event.eventable.poll 
         end
 
+        recipient = LoggedOutUser.new(locale: chatbot.group.locale,
+                                      time_zone: chatbot.group.time_zone,
+                                      date_time_pref: chatbot.group.date_time_pref)
         I18n.with_locale(chatbot.group.locale) do
           if chatbot.kind == "webhook"
             serializer = "Webhook::#{chatbot.webhook_kind.classify}::EventSerializer".constantize
-            payload = serializer.new(event, root: false, scope: {template_name: template_name}).as_json
+            payload = serializer.new(event, root: false, scope: {template_name: template_name, recipient: recipient}).as_json
             Clients::Webhook.new.post(chatbot.server, params: payload)
           else
             client.publish("chatbot/publish", {
               config: chatbot.config,
               payload: {
-                html: ApplicationController.renderer.render(layout: nil, template: "chatbot/matrix/#{template_name}", assigns: { poll: poll, event: event } )
+                html: ApplicationController.renderer.render(
+                  layout: nil,
+                  template: "chatbot/matrix/#{template_name}",
+                  assigns: { poll: poll, event: event, recipient: recipient } )
               }
             }.to_json)
           end

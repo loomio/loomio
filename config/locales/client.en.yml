@@ -666,7 +666,7 @@ en:
       poll_closed_by_user: "%{actor} closed the %{poll_type}"
       poll_closing_soon: '%{poll_type} closing in 24 hours'
       poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours'
-      poll_created: "%{actor} started a %{poll_type"
+      poll_created: "%{actor} started a %{poll_type}"
       poll_edited: "%{actor} updated the %{poll_type}"
       poll_expired: "%{poll_type} has closed"
       poll_expired_author: 'Share the outcome of your %{poll_type}'
@@ -1365,6 +1365,7 @@ en:
       picture_changed: 'Profile picture updated'
       password_changed: 'Password updated'
       deactivated: 'Account deactivated'
+    date_time_pref_label: 'Date and time format'
     merge_accounts: Merge accounts
     change_picture_link: 'Change picture'
     change_password_link: 'Reset password'

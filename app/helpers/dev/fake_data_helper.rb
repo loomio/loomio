@@ -17,6 +17,7 @@ module Dev::FakeDataHelper
       password: 'loginlogin',
       detected_locale: 'en',
       email_verified: true,
+      date_time_pref: 'day_abbr',
       legal_accepted: true,
       experiences: {changePicture: true}
     }.merge(args))
@@ -154,7 +155,7 @@ module Dev::FakeDataHelper
       proposal: %w[agree abstain disagree block],
       count: %w[yes no],
       dot_vote: options,
-      meeting: option_count.times.map { |i| (seed+i).days.from_now.to_date.iso8601},
+      meeting: option_count.times.map { |i| (seed+i).days.from_now.iso8601},
       ranked_choice: options,
       score: options
     }.with_indifferent_access

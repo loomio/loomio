@@ -1,5 +1,5 @@
 <script lang="coffee">
-import { exact, day } from '@/shared/helpers/format_time'
+import { exact } from '@/shared/helpers/format_time'
 import { parseISO } from 'date-fns'
 
 export default
@@ -8,15 +8,15 @@ export default
     zone: String
   computed:
     time: -> exact(parseISO(@name), @zone)
-    day: -> day(parseISO(@name), @zone)
 </script>
 
 <template lang="pug">
-span.poll-meeting-time {{day}} {{time}}
+pre.poll-meeting-time {{time}}
 </template>
 
 <style lang="sass">
 .poll-meeting-time
-	white-space: nowrap
+  // white-space: pre
+
 
 </style>

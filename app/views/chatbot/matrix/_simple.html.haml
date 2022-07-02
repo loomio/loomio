@@ -36,7 +36,7 @@
               - when 'i18n'
                 = t(option[:name])
               - when 'iso8601'
-                = format_iso8601_for_humans(option[:name], @recipient.time_zone || poll.time_zone)
+                = format_iso8601_for_humans(option[:name], @recipient.time_zone, @recipient.date_time_pref)
               - else
                 = option[:name]
           - when 'rank'

@@ -1,2 +1,2 @@
 %abbr.time-ago{title: time.to_s}
-  = format_date_for_humans(time)
+  = format_date_for_humans(time, current_user.time_zone, current_user.date_time_pref)
