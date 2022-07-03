@@ -36,18 +36,20 @@ module FormattedDateHelper
 
   def format_date_or_datetime(value, date_time_pref)
     case date_time_pref
-    when 'day_abbr'
-      date_format = '%a %e %b %Y'
-      time_format = '%l:%M%p'
-    when 'abbr'
-      date_format = '%e %b %Y'
-      time_format = '%l:%M%p'
+    when 'iso'
+      date_format = '%Y-%m-%d'
+      time_format = '%H:%M'
     when 'day_iso'
       date_format = '%a %Y-%m-%d'
       time_format = '%H:%M'
-    else #iso
-      date_format = '%Y-%m-%d'
-      time_format = '%H:%M'
+    when 'abbr'
+      date_format = '%e %b %Y'
+      time_format = '%l:%M%p'
+    when 'day_abbr'
+      date_format = '%a %e %b %Y'
+      time_format = '%l:%M%p'
+    else
+      raise "unknown date pref"
     end
 
     if is_datetime?(value)

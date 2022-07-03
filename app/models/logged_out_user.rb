@@ -9,7 +9,7 @@ class LoggedOutUser
     Tag.none
   end
 
-  def initialize(name: nil, email: nil, token: nil, locale: I18n.locale, time_zone: 'UTC', date_time_pref: 'iso', params: {}, session: {})
+  def initialize(name: nil, email: nil, token: nil, locale: I18n.locale, time_zone: 'UTC', date_time_pref: 'day_abbr', params: {}, session: {})
     @name = name
     @email = email
     @token = token

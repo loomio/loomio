@@ -42,8 +42,10 @@ export exact = (date, zone = AppConfig.timeZone, dateTimePref = Session.user().d
       localFormat("#{spacePadDay()}d LLL yyyy #{spacePadHour()}h:mma")
     when 'day_abbr'
       localFormat("E #{spacePadDay()}d LLL yyyy #{spacePadHour()}h:mma")
-    else # iso
+    when 'iso'
       localFormat('yyyy-MM-dd HH:mm')
+    else
+      console.error('unknown date pref')
 
 export timeline = (date) -> format(date, "yyyy-MM-dd")
 
