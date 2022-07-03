@@ -31,6 +31,7 @@ class ApplicationController < ActionController::Base
 
   def show
     resource = ModelLocator.new(resource_name, params).locate!
+    @recipient = current_user
     if current_user.can? :show, resource
       assign_resource
       @pagination = pagination_params
