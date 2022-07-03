@@ -33,6 +33,7 @@ export default
     showHelpTranslate: -> AppConfig.features.app.help_link
     availableLocales: -> AppConfig.locales
     dateTimeFormats: ->
+      observeLocale = @user.selectedLocale # tell vue this matters
       'iso day_iso abbr day_abbr'.split(' ').map (pref) =>
         {value: pref, text: exact(@currentTime, @user.timeZone, pref)}
     actions: -> UserService.actions(Session.user(), @)
