@@ -48,16 +48,11 @@ module HasAvatar
   end
 
   def uploaded_avatar_url(size = 512)
+    return unless uploaded_avatar.attached?
     Rails.application.routes.url_helpers.rails_representation_path(
         uploaded_avatar.representation(resize_to_limit: [size,size], saver: {quality: 80, strip: true}),
         only_path: true
     )
-  end
-
-  def uploaded_avatar_url_if_any(size = 512)
-    uploaded_avatar_url(size)
-  rescue
-    nil
   end
 
   def has_gravatar?(options = {})

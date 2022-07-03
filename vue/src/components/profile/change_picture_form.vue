@@ -54,7 +54,8 @@ export default
 
   created: ->
     Records.users.saveExperience("changePicture")
-    Records.users.getAvatarUploaded()
+    Records.users.fetch
+      path: 'avatar_uploaded'
     .then (res) => @previous_uploaded_avatar = res.avatar_uploaded
 
 </script>
