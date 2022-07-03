@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset>
+<% @entries.each do |entry| %>
+	<url> <loc><%= entry[0] %></loc> <lastmod><%= entry[1] %></lastmod> </url>
+<% end %>
+</urlset>
+
+

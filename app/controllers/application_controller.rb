@@ -29,6 +29,17 @@ class ApplicationController < ActionController::Base
     boot_app
   end
 
+  def sitemap
+    @entries = []
+    Group.where(is_visible_to_public: true).find_each do |g|
+      @entries << [url_for(g), g.updated_at]
+    end
+
+    Discussion.where(private: false).find_each do |d|
+      @entries << [url_for(d), d.last_activity_at]
+    end
+  end
+
   def show
     resource = ModelLocator.new(resource_name, params).locate!
     @recipient = current_user

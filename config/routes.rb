@@ -367,6 +367,7 @@ Rails.application.routes.draw do
   get '/wp-login.php'                      => 'application#ok'
   get '/crowdfunding_celebration'          => 'application#crowdfunding'
   get '/brand'                      => 'application#brand'
+  get '/sitemap.xml' => 'application#sitemap'
 
 
   Identities::Base::PROVIDERS.each do |provider|
