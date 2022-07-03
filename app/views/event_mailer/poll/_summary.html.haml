@@ -7,7 +7,6 @@
   %p= render_rich_text(poll.details, poll.details_format)
 
   - if poll.active?
-    %p= poll.closing_at
     %p= t(:"poll_mailer.common.you_have_until", when: format_date_for_humans(poll.closing_at, @recipient.time_zone, @recipient.date_time_pref))
   - if poll.closed?
     %h3.text-subtitle-2

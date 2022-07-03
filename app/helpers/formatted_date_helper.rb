@@ -11,9 +11,13 @@ module FormattedDateHelper
     end.strftime(format_date_or_datetime(date, date_time_pref)).strip
   end
 
+  def is_datetime?(value)
+    value.is_a?(DateTime) or value.is_a?(Time) or value.is_a?(ActiveSupport::TimeWithZone)
+  end
+
   def parse_date_or_datetime(value)
     return parse_datetime(value) if is_datetime_string?(value)
-    if value.is_a?(DateTime) or value.is_a?(Time) or value.is_a?(ActiveSupport::TimeWithZone)
+    if is_datetime?(value)
       value 
     else
       value.to_date
@@ -46,7 +50,7 @@ module FormattedDateHelper
       time_format = '%H:%M'
     end
 
-    if value.is_a? DateTime
+    if is_datetime?(value)
       value.strftime("#{date_format} #{time_format}")
     else
       value.strftime("#{date_format}")
