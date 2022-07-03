@@ -161,6 +161,10 @@ class User < ApplicationRecord
     end
   end
 
+  def date_time_pref
+    self[:date_time_pref] || 'day_abbr'
+  end
+  
   def author
     self
   end

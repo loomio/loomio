@@ -4,7 +4,7 @@ class Webhook::Slack::EventSerializer < Webhook::Markdown::EventSerializer
       ApplicationController.renderer.render(
         layout: nil,
         template: "chatbot/slack/#{scope[:template_name]}",
-        assigns: { poll: object.eventable.poll, event: object } )
+        assigns: { poll: object.eventable.poll, event: object, recipient: scope[:recipient] } )
     end
   end
 end

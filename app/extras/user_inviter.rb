@@ -68,6 +68,7 @@ class UserInviter
     User.import(safe_emails(emails).map do |email|
       User.new(email: email,
                time_zone: actor.time_zone,
+               date_time_pref: actor.date_time_pref,
                detected_locale: actor.locale,
                email_catch_up_day: wday)
     end, on_duplicate_key_ignore: true)

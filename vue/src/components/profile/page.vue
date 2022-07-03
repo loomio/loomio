@@ -9,14 +9,17 @@ import openModal      from '@/shared/helpers/open_modal'
 import UserService    from '@/shared/services/user_service'
 import Flash   from '@/shared/services/flash'
 import { includes, uniq, debounce } from 'lodash'
+import {exact} from '@/shared/helpers/format_time'
 
 export default
   data: ->
     user: null
     originalUser: null
     existingEmails: []
+    currentTime: new Date()
 
   created: ->
+    setInterval((=> @currentTime = new Date()), 10000)
     @init()
     EventBus.$emit 'currentComponent', { titleKey: 'profile_page.edit_profile', page: 'profilePage'}
     EventBus.$on 'updateProfile', @init
@@ -29,6 +32,9 @@ export default
   computed:
     showHelpTranslate: -> AppConfig.features.app.help_link
     availableLocales: -> AppConfig.locales
+    dateTimeFormats: ->
+      'iso day_iso abbr day_abbr'.split(' ').map (pref) =>
+        {value: pref, text: exact(@currentTime, @user.timeZone, pref)}
     actions: -> UserService.actions(Session.user(), @)
     emailExists: -> includes(@existingEmails, @user.email)
 
@@ -108,15 +114,33 @@ v-main
                     a.email-taken-find-out-more(@click="openSendVerificationModal" v-t="'merge_accounts.find_out_more'")
 
                 .profile-page__avatar.d-flex.flex-column.justify-center.align-center.mx-12(@click="changePicture()")
-                  user-avatar.mb-4(:user='originalUser' :size='192' :no-link="true")
+                  user-avatar.mb-4(:user='originalUser', :size='192', :no-link="true")
                   v-btn(color="accent" @click="changePicture" v-t="'profile_page.change_picture_link'")
 
-              lmo-textarea(:model='user' field="shortBio" :label="$t('profile_page.short_bio_label')" :placeholder="$t('profile_page.short_bio_placeholder')")
+              lmo-textarea(
+                :model='user'
+                field="shortBio"
+                :label="$t('profile_page.short_bio_label')"
+                :placeholder="$t('profile_page.short_bio_placeholder')")
               validation-errors(:subject='user', field='shortBio')
 
-              v-text-field#user-location-field.profile-page__location-input(v-model='user.location' :label="$t('profile_page.location_label')" :placeholder="$t('profile_page.location_placeholder')")
+              v-text-field#user-location-field.profile-page__location-input(
+                v-model='user.location'
+                :label="$t('profile_page.location_label')"
+                :placeholder="$t('profile_page.location_placeholder')")
 
-              v-select#user-locale-field(:label="$t('profile_page.locale_label')" :items="availableLocales" v-model="user.selectedLocale" item-text="name" item-value="key")
+              v-select#user-date-time-format-field(
+                :label="$t('profile_page.date_time_pref_label')"
+                :items="dateTimeFormats"
+                v-model="user.dateTimePref")
+              validation-errors(:subject='user', field='dateTimeFormat')
+
+              v-select#user-locale-field(
+                :label="$t('profile_page.locale_label')"
+                :items="availableLocales"
+                v-model="user.selectedLocale"
+                item-text="name"
+                item-value="key")
               validation-errors(:subject='user', field='selectedLocale')
               p(v-if='showHelpTranslate')
                 a(v-t="'profile_page.help_translate'" href='https://help.loomio.com/en/user_manual/users/translation' target='_blank')

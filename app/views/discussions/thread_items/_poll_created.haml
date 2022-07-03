@@ -19,10 +19,10 @@
             %span.ml-2.v-chip.v-chip--outlined.theme--auto.v-size--small.warning.warning--text
               %span.v-chip__content
                 - if poll.active?
-                  = t(:"poll_mailer.common.you_have_until", when: format_date_for_humans(poll.closing_at, poll.time_zone))
+                  = t(:"poll_mailer.common.you_have_until", when: format_date_for_humans(poll.closing_at, current_user.time_zone, current_user.date_time_pref))
                 - if poll.closed?
                   = t(:"poll_common_form.closed")
-                  = format_date_for_humans(poll.closed_at, poll.time_zone)
+                  = format_date_for_humans(poll.closed_at, current_user.time_zone, current_user.date_time_pref)
                 - if poll.wip?
                   = t(:"poll_common_wip_field.title")
                 -# %abbr.closing-in.timeago--inline

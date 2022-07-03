@@ -29,7 +29,6 @@ export default
         each [1,2,3], (n) =>
           headingSelector = selector+" h#{n}[tabindex=\"-1\"]"
           if document.querySelector(headingSelector)
-            # console.log "focusing h#{n}", document.querySelector(selector+" h#{n}")
             document.querySelector(headingSelector).focus()
             return false
           else
