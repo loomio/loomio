@@ -1,5 +1,6 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
+import Session from '@/shared/services/session'
 import Flash   from '@/shared/services/flash'
 import { exact }   from '@/shared/helpers/format_time'
 
@@ -17,7 +18,10 @@ export default
     value: startOfHour(new Date)
     min: new Date
     zoneCounts: []
+    showTimeZones: false
 
+  computed:
+    currentTimeZone: -> Session.user().timeZone
   methods:
     addOption: ->
       if @poll.addOption(@value.toJSON())
@@ -39,7 +43,12 @@ export default
       @click='addOption()'
     )
       v-icon mdi-plus
-  v-simple-table(dense style="max-height: 100px; overflow-y: scroll;")
+  p.text-caption
+    span(v-t="{path: 'poll_common_form.your_in_zone', args: {zone: currentTimeZone}}")
+    space
+    a(v-if="!showTimeZones" @click="showTimeZones = true" v-t="'poll_common_form.show_other_zones'")
+    a(v-if="showTimeZones" @click="showTimeZones = false" v-t="'poll_common_form.hide_other_zones'")
+  v-simple-table(v-show="showTimeZones" dense style="max-height: 100px; overflow-y: scroll;")
     tbody
       tr(:key="z[0]" v-for="z in zoneCounts")
         td {{z[0].replace('_',' ')}}

@@ -1704,6 +1704,7 @@ en:
     ranked_choice_title: Ranked choice
 
   poll_common:
+    decision: Decision
     decision_templates: Decision templates
     vote_now: Vote now
     review_due: Review due
@@ -1976,6 +1977,9 @@ en:
     success: Successfully deleted
 
   poll_common_form:
+    your_in_zone:  You're in %{zone}
+    show_other_zones: Show other time zones
+    hide_other_zones: Hide other time zones
     this_is_a_template_for_new_decisions: This is a template for new decisions
     voting_method: Voting method
     voting_methods:
@@ -1994,8 +1998,13 @@ en:
       time_poll: Time poll
       time_poll_hint: Voters indicate when they are available from the list of options
 
-    process_name: Process name
-    process_name_hint: E.g. Proposal, Resolution, Agreement, Temperature check
+    process: Process
+    process_title: Process title
+    process_title_hint: E.g. Proposal, Resolution, Agreement, Temperature check
+    process_subtitle: Process subtitle
+    process_subtitle_hint: One line that explains what the process does
+    process_description: Process description
+    process_description_hint: Explain how the process works
 
     chart_type: Chart type
     title: Title
@@ -2024,6 +2033,12 @@ en:
 
   poll_proposal_form:
     tool_tip_collapsed: Seek agreement or feedback from others.
+    tool_tip_expanded: |
+      <p>A proposal is a tool for seeking collective agreement about a statement or course of action.</p>
+      <p>Participants can agree, abstain, disagree or block - and give a statement to explain their position.</p>
+      <p>A pie chart gives an overview of the positions in the group, while the statements allow individual voices to be heard. </p>
+      <p>Don't be discouraged if you don't see agreement at first, proposals are designed to surface issues that need resolving.</p>
+      <p>With good participation a proposal is a powerful mandate to take action.</p>
     start_header: Start proposal
     edit_header: Edit proposal
     tip: Seek collective agreement through a process which allows all voices to be heard. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Learn more</a>
@@ -2035,6 +2050,10 @@ en:
   poll_poll_form:
     help_starting_polls: 'Help: Starting polls'
     tool_tip_collapsed: Choose from a list of options
+    tool_tip_expanded: |
+      <p>Use a poll to measure popularity or offer a choice.</p>
+      <p>Provide some options to choose from. Decide if participants choose single or multiple options as their response.</p>
+      <p>Everyone votes, and can enter a statement too if they like. Results are represented in a bar graph.</p>
     start_header: Start poll
     edit_header: Edit poll
     tip: Offer a choice between options
@@ -2048,10 +2067,29 @@ en:
     option_already_added: Option already added to poll
 
   poll_dot_vote_form:
+    tool_tip_collapsed: Allocate a budget of points
+    tool_tip_expanded: |
+      <p>Dot voting is a way to prioritise a list of options.</p>
+      <p>Participants are given a limited number of ‘dots’ which they can allocate however they like among the options provided to represent their own preferences.</p>
+      <p>The totals of the results are shown, as well as and the individual votes, so you can consider various points of view.</p>
     dots_per_person:  Points per person
     dots_per_person_helptext: The total number of points each person is asked to allocate.
 
+  poll_score_form:
+    tool_tip_expanded: |
+      <p>Score polls allow people to express their degree of preference for each option.</p>
+      <p>The total score of each option is shown as part of the results.</p>
+    tool_tip_collapsed: Score options on a scale
+
   poll_meeting_form:
+    tool_tip_expanded: |
+      <p>Use a time poll to find when people are available to meet.</p>
+      <p>Enter a list of dates or times when you could have your meeting.</p>
+      <p>Participants tick those which they’re able to attend, or they can use the statement field to explain their circumstances, so you can update the options if necessary.</p>
+      <p>If you add new times during a time poll, people who have already voted are prompted to update their response.</p>
+      <p>You can then see who’s available when, and decide when to meet.</p>
+      <p>Times are automatically converted to the participant's local time zone.</p>
+    tool_tip_collapsed: Find when people are available to meet
     timeslots: Time slots
     no_options: Enter times in your current time zone ({{zone}}). Participants see times translated to their local time zone.
     meeting_duration: Meeting duration
@@ -2060,6 +2098,12 @@ en:
     time_slot_already_added: Time slot already added
 
   poll_ranked_choice_form:
+    tool_tip_expanded: |
+      <p>Ranked choice is a voting method which allows each voter to respond with their preferences in order.</p>
+      <p>It's preferable when 'vote stealing' is a concern (ie, two somewhat popular options are similar enough that they
+         end up sharing votes between them), and can be used to implement a Condorcet, or Instant Runoff style election.
+      </p>
+    tool_tip_collapsed: Rank options from first to last
     no_options: "You haven't added any options yet."
     add_option_placeholder: Enter a new choice
     minimum_stance_choices: Options to rank

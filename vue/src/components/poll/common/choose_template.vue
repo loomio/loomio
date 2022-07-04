@@ -56,6 +56,9 @@ export default
         @polls['defaultPolls'] = compact Object.keys(AppConfig.pollTypes).map (pollType) =>
           return null unless AppConfig.pollTypes[pollType].template
           poll = Records.polls.build
+            processTitle: @$t(AppConfig.pollTypes[pollType].i18n.process_title)
+            processSubtitle: @$t(AppConfig.pollTypes[pollType].i18n.process_subtitle)
+            processDescription: @$t(AppConfig.pollTypes[pollType].i18n.process_description)
             pollType: pollType
             groupId: groupId
             discussionId: discussionId
@@ -80,6 +83,6 @@ export default
         v-list-item-avatar
           v-icon {{$pollTypes[poll.pollType].material_icon}}
         v-list-item-content
-          v-list-item-title {{ poll.processName || $t(poll.config().i18n.process_name) }}
-          v-list-item-subtitle {{ poll.title || $t(poll.config().i18n.process_description) }}
+          v-list-item-title {{ poll.processTitle || $t(poll.config().i18n.process_title) }}
+          v-list-item-subtitle {{ poll.title || $t(poll.config().i18n.process_subtitle) }}
 </template>

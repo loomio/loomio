@@ -144,8 +144,8 @@ export default
 
   v-tabs(v-model="tab")
     v-tabs-slider(color="primary")
-    v-tab.poll-common-form__details-tab(v-t="'poll_common.details'")
-    v-tab.poll-common-form__settings-tab(v-t="'common.settings'")
+    v-tab.poll-common-form__details-tab(v-t="'poll_common.decision'")
+    v-tab.poll-common-form__settings-tab(v-t="'poll_common_form.process'")
 
   v-tabs-items.pt-4(v-model="tab")
     v-tab-item.poll-common-form__details-tab.poll-common-form-fields
@@ -230,10 +230,25 @@ export default
 
     v-tab-item.poll-common-form__settings-tab
       v-text-field(
-         v-model="poll.processName"
-        :label="$t('poll_common_form.process_name')"
-        :hint="$t('poll_common_form.process_name_hint')")
-      validation-errors(:subject='poll' field='processName')
+         v-model="poll.processTitle"
+        :label="$t('poll_common_form.process_title')"
+        :hint="$t('poll_common_form.process_title_hint')")
+      validation-errors(:subject='poll' field='processTitle')
+
+      v-text-field(
+         v-model="poll.processSubtitle"
+        :label="$t('poll_common_form.process_subtitle')"
+        :hint="$t('poll_common_form.process_subtitle_hint')")
+      validation-errors(:subject='poll' field='processSubtitle')
+
+      lmo-textarea(
+        :model='poll'
+        field="processDescription"
+        :placeholder="$t('poll_common_form.process_description')"
+        :label="$t('poll_common_form.process_description')"
+        :should-reset="shouldReset"
+      )
+
       tags-field(:model="poll")
 
       v-select(
