@@ -11,15 +11,26 @@ export day = (date, zone) ->
   throw {"invalid date", date} unless isValid(date)
   format(utcToZonedTime(date, zone), 'EEE', {timeZone: zone, locale: i18n.dateLocale})
 
-export approximate = (date, zone) ->
+export approximate = (date, zone = AppConfig.timeZone, dateTimePref = Session.user().dateTimePref) ->
   throw {"invalid date", date} unless isValid(date)
+
+  localFormat = (pattern) ->
+    format(utcToZonedTime(date, zone), pattern, {timeZone: zone, locale: i18n.dateLocale})
+
   now = new Date
   if differenceInHours(now, date) < 24
     formatDistanceStrict(date, new Date(), {addSuffix: true, locale: i18n.dateLocale})
   else if isSameYear(date, now)
     format(date, "MMMM d", {locale: i18n.dateLocale})
   else
-    format(date, "yyyy-MM-dd")
+    switch dateTimePref
+      when 'day_iso', 'iso'
+        localFormat('yyyy-MM-dd')
+      when 'abbr', 'day_abbr'
+        localFormat("d LLL yyyy")
+      else
+        console.error('unknown date pref')
+
 
 export exact = (date, zone = AppConfig.timeZone, dateTimePref = Session.user().dateTimePref) ->
   throw {"invalid date", date} unless isValid(date)
