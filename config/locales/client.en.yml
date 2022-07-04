@@ -1402,6 +1402,7 @@ en:
     use_initials: 'Use initials'
     use_gravatar: 'Use Gravatar'
     use_uploaded: 'Upload new photo'
+    existing_upload: 'Existing upload'
     use_provider: 'Use {{provider}} photo'
 
   change_password_form:
