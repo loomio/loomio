@@ -19,7 +19,7 @@ class AnnouncementService
       raise UnknownAudienceKindError.new
     end.active
 
-    users = users.where.not(id: model.voters.pluck(:id)) if exclude_members
+    users = users.where.not(id: (model.poll || NullPoll.new).invited_voters.pluck(:id)) if exclude_members
 
     include_actor ? users : users.where('users.id != ?', actor.id)
   end

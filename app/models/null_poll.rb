@@ -47,7 +47,9 @@ class NullPoll
       unmasked_decided_voters: :user,
       unmasked_undecided_voters: :user,
       unmasked_voters: :user,
-      non_voters: :user
+      non_voters: :user,
+      voters: :user,
+      invited_voters: :user
     }
   end
 end

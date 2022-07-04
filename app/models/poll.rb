@@ -214,10 +214,6 @@ class Poll < ApplicationRecord
     ((decided_voters_count.to_f / voters_count) * 100).to_i
   end
 
-  def voters
-    anonymous? ? User.none : super
-  end
-
   def undecided_voters
     anonymous? ? User.none : super
   end
@@ -319,15 +315,19 @@ class Poll < ApplicationRecord
   # people who can vote
   def voters
     if persisted? && specified_voters_only
-      User.active.
-      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
-      joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
-      where("s.id IS NOT NULL AND s.revoked_at IS NULL AND latest = TRUE")
+      invited_voters
     else
       members
     end
   end
 
+  def invited_voters
+    User.active.
+    joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
+    joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
+    where("s.id IS NOT NULL AND s.revoked_at IS NULL AND latest = TRUE")
+  end
+  
   # people who can read the poll, not necessarily vote
   def members
       User.active.
