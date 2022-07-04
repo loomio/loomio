@@ -20,8 +20,8 @@ module Boot
         plugins:             { installed: [], outlets: [], routes: [] },
         theme:               AppConfig.theme,
         sentry_dsn:          ENV['SENTRY_PUBLIC_DSN'],
-        posthog_key:         ENV['POSTHOG_KEY'],
-        posthog_host:        ENV['POSTHOG_HOST'],
+        plausable_src:       ENV['PLAUSABLE_SRC'],
+        plausable_site:      ENV['PLAUSABLE_SITE'],
         features: {
           app:               AppConfig.app_features
         },

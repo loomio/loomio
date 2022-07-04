@@ -665,7 +665,7 @@ en:
       poll_closed_by_user: "%{actor} closed the %{poll_type}"
       poll_closing_soon: '%{poll_type} closing in 24 hours'
       poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours'
-      poll_created: "%{actor} started a %{poll_type"
+      poll_created: "%{actor} started a %{poll_type}"
       poll_edited: "%{actor} updated the %{poll_type}"
       poll_expired: "%{poll_type} has closed"
       poll_expired_author: 'Share the outcome of your %{poll_type}'
@@ -1365,6 +1365,7 @@ en:
       picture_changed: 'Profile picture updated'
       password_changed: 'Password updated'
       deactivated: 'Account deactivated'
+    date_time_pref_label: 'Date and time format'
     merge_accounts: Merge accounts
     change_picture_link: 'Change picture'
     change_password_link: 'Reset password'
@@ -1401,6 +1402,7 @@ en:
     use_initials: 'Use initials'
     use_gravatar: 'Use Gravatar'
     use_uploaded: 'Upload new photo'
+    existing_upload: 'Existing upload'
     use_provider: 'Use {{provider}} photo'
 
   change_password_form:
@@ -1462,6 +1464,7 @@ en:
   dashboard_page:
     aria_label: 'Dashboard'
     polls_to_vote_on: "Polls to vote on"
+    no_polls_to_vote_on: "There are no polls you need to vote on"
     recent_polls: "Recent polls"
     current_polls: "Current polls"
     recent_threads: "Recent threads"

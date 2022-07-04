@@ -106,6 +106,8 @@ class Group < ApplicationRecord
   validates :handle, uniqueness: true, allow_nil: true
 
   delegate :locale, to: :creator, allow_nil: true
+  delegate :time_zone, to: :creator, allow_nil: true
+  delegate :date_time_pref, to: :creator, allow_nil: true
 
   define_counter_cache(:polls_count)                { |g| g.polls.count }
   define_counter_cache(:closed_polls_count)         { |g| g.polls.closed.count }

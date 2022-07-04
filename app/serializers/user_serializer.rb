@@ -7,7 +7,8 @@ class UserSerializer < AuthorSerializer
              :has_password,
              :avatar_url,
              :email,
-             :attachments
+             :attachments,
+             :date_time_pref
 
   def avatar_kind
     if !object.email_verified && !object.name

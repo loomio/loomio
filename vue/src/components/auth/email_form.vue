@@ -36,9 +36,6 @@ export default
 </template>
 
 <style lang="sass">
-.auth-email-form__email input
-  text-align: center
-
 .auth-email-form
   max-width: 400px
   margin: 0 auto

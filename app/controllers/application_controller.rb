@@ -29,8 +29,20 @@ class ApplicationController < ActionController::Base
     boot_app
   end
 
+  def sitemap
+    @entries = []
+    Group.published.where(is_visible_to_public: true).find_each do |g|
+      @entries << [url_for(g), g.updated_at]
+    end
+
+    Discussion.visible_to_public.joins(:group).where('groups.archived_at is null').find_each do |d|
+      @entries << [url_for(d), d.last_activity_at]
+    end
+  end
+
   def show
     resource = ModelLocator.new(resource_name, params).locate!
+    @recipient = current_user
     if current_user.can? :show, resource
       assign_resource
       @pagination = pagination_params

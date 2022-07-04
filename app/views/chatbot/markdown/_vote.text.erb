@@ -2,7 +2,7 @@
 <%= t(:"poll_common_action_panel.anonymous") %>
 <% end %>
 <% if poll.closed? %>
-<%= t(:"poll_common_form.closed") %> <%= format_date_for_humans(poll.closed_at, poll.time_zone)  %>
+<%= t(:"poll_common_form.closed") %> <%= format_date_for_humans(poll.closed_at, @recipient.time_zone, @recipient.date_time_pref)  %>
 <% end %>
 <% if poll.active? %>
 <% if poll.is_single_vote? %>
@@ -11,7 +11,7 @@
 <% next if option[:id] == 0 %>
 <% name = case option[:name_format] %>
 <% when 'i18n' then t(option[:name]) %>
-<% when 'iso8601' then format_iso8601_for_humans(option[:name], poll.time_zone) %>
+<% when 'iso8601' then format_iso8601_for_humans(option[:name], @recipient.time_zone, @recipient.date_time_pref) %>
 <% else %>
 <% option[:name] %>
 <% end %>
@@ -20,7 +20,7 @@
 <% else %>
 **[<%= t('poll_common.vote_now') %>](<%= polymorphic_url(poll) %>)**
 
-<%= t(:"poll_mailer.common.you_have_until", when: format_date_for_humans(poll.closing_at, poll.time_zone)) %>
+<%= t(:"poll_mailer.common.you_have_until", when: format_date_for_humans(poll.closing_at, @recipient.time_zone, @recipient.date_time_pref)) %>
 <% end %>
 <% end %>
 <% if poll.wip? %>

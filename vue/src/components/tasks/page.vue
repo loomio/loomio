@@ -17,7 +17,7 @@ export default
   mounted: ->
     Records.tasks.remote.fetch('/').then (data) =>
       ids = data['tasks'].map (t) -> t.id
-      tasks = Records.tasks.find(ids)
+      tasks = Records.tasks.find(ids).filter (t) -> t.record()?
       tasks.forEach (t) =>
         recordKey = t.recordType + t.recordId
         if !@records[recordKey]?

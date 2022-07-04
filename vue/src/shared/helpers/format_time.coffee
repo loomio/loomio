@@ -2,33 +2,61 @@ import { differenceInHours, formatDistanceStrict, isSameYear, isValid } from 'da
 import { format, utcToZonedTime } from 'date-fns-tz'
 import defaultLocale from 'date-fns/locale/en-US'
 import AppConfig from '@/shared/services/app_config'
+import Session from '@/shared/services/session'
 import i18n from '@/i18n'
 
 i18n.dateLocale = defaultLocale
-
-# human friendly date format
-# given a date
-# when within 24 hours... give time ago in hours/minutes
-# when same year give month and date
-# otherwise give iso formatted date
 
 export day = (date, zone) ->
   throw {"invalid date", date} unless isValid(date)
   format(utcToZonedTime(date, zone), 'EEE', {timeZone: zone, locale: i18n.dateLocale})
 
-export approximate = (date, zone) ->
+export approximate = (date, zone = AppConfig.timeZone, dateTimePref = Session.user().dateTimePref) ->
   throw {"invalid date", date} unless isValid(date)
+
+  localFormat = (pattern) ->
+    format(utcToZonedTime(date, zone), pattern, {timeZone: zone, locale: i18n.dateLocale})
+
   now = new Date
   if differenceInHours(now, date) < 24
     formatDistanceStrict(date, new Date(), {addSuffix: true, locale: i18n.dateLocale})
   else if isSameYear(date, now)
     format(date, "MMMM d", {locale: i18n.dateLocale})
   else
-    format(date, "yyyy-MM-dd")
+    switch dateTimePref
+      when 'day_iso', 'iso'
+        localFormat('yyyy-MM-dd')
+      when 'abbr', 'day_abbr'
+        localFormat("d LLL yyyy")
+      else
+        console.error('unknown date pref')
 
-export exact = (date, zone = AppConfig.timeZone) ->
+
+export exact = (date, zone = AppConfig.timeZone, dateTimePref = Session.user().dateTimePref) ->
   throw {"invalid date", date} unless isValid(date)
-  format(utcToZonedTime(date, zone), 'yyyy-MM-dd HH:mm', {timeZone: zone, locale: i18n.dateLocale})
+
+  spacePadHour = ->
+    pad = parseInt(format(utcToZonedTime(date, zone), "h", {timeZone: zone, locale: i18n.dateLocale})) < 10
+    if pad then ' ' else ''
+
+  spacePadDay = ->
+    pad = parseInt(format(utcToZonedTime(date, zone), "d", {timeZone: zone, locale: i18n.dateLocale})) < 10
+    if pad then ' ' else ''
+
+  localFormat = (pattern) ->
+    format(utcToZonedTime(date, zone), pattern, {timeZone: zone, locale: i18n.dateLocale})
+
+  switch dateTimePref
+    when 'day_iso'
+      localFormat('E yyyy-MM-dd HH:mm')
+    when 'abbr'
+      localFormat("#{spacePadDay()}d LLL yyyy #{spacePadHour()}h:mma")
+    when 'day_abbr'
+      localFormat("E #{spacePadDay()}d LLL yyyy #{spacePadHour()}h:mma")
+    when 'iso'
+      localFormat('yyyy-MM-dd HH:mm')
+    else
+      console.error('unknown date pref')
 
 export timeline = (date) -> format(date, "yyyy-MM-dd")
 

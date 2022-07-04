@@ -14,6 +14,7 @@ module Dev::NintiesMoviesHelper
                               password: 'gh0stmovie',
                               experiences: {changePicture: true},
                               detected_locale: 'en',
+                              date_time_pref: 'day_abbr',
                               avatar_kind: 'uploaded',
                               email_verified: true)
     @patrick.uploaded_avatar.attach io: File.new("#{Rails.root}/spec/fixtures/images/patrick.png"), filename: 'patrick.jpg'
@@ -25,6 +26,7 @@ module Dev::NintiesMoviesHelper
     if patrick.contacts.empty?
       patrick.contacts.create(name: 'Keanu Reeves',
                               email: 'keanu@example.com',
+                              date_time_pref: 'day_abbr',
                               source: 'gmail')
     end
   end
@@ -33,6 +35,7 @@ module Dev::NintiesMoviesHelper
     @jennifer ||= User.find_by(email: 'jennifer_grey@example.com') ||
                   User.create!(name: 'Jennifer Grey',
                                email: 'jennifer_grey@example.com',
+                               date_time_pref: 'day_abbr',
                                username: 'jennifergrey',
                                experiences: {changePicture: true},
                                email_verified: true)
@@ -48,6 +51,7 @@ module Dev::NintiesMoviesHelper
                           email: 'max@example.com',
                           password: 'gh0stmovie',
                           username: 'mingthemerciless',
+                          date_time_pref: 'day_abbr',
                           email_verified: true)
     @max
   end
@@ -57,6 +61,7 @@ module Dev::NintiesMoviesHelper
                 User.create!(name: 'Emilio Estevez',
                             email: 'emilio@loomio.org',
                             password: 'gh0stmovie',
+                            date_time_pref: 'day_abbr',
                             email_verified: true)
   end
 
@@ -65,6 +70,7 @@ module Dev::NintiesMoviesHelper
               User.create!(name: 'Judd Nelson',
                            email: 'judd@example.com',
                            password: 'gh0stmovie',
+                           date_time_pref: 'day_abbr',
                            email_verified: true)
   end
 
@@ -73,6 +79,7 @@ module Dev::NintiesMoviesHelper
               User.create!(name: 'Paul Rudd',
                            email: 'rudd@example.com',
                            password: 'gh0stmovie',
+                           date_time_pref: 'day_abbr',
                            email_verified: true)
   end
 

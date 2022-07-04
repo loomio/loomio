@@ -61,6 +61,10 @@ class API::V1::ProfileController < API::V1::RestfulController
     respond_with_resource
   end
 
+  def avatar_uploaded
+    render json: {avatar_uploaded: current_user.uploaded_avatar_url}
+  end
+
   def destroy
     service.deactivate(user: current_user)
     respond_with_resource

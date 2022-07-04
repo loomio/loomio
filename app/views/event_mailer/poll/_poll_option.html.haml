@@ -6,7 +6,7 @@
 - show_score = poll.has_variable_score && stance_choice
 - display_name = case poll.poll_option_name_format
 - when 'i18n' then t(poll_option.name)
-- when 'iso8601' then format_iso8601_for_humans(poll_option.name, @recipient.time_zone || poll.time_zone)
+- when 'iso8601' then format_iso8601_for_humans(poll_option.name, @recipient.time_zone, @recipient.date_time_pref)
 - else
   - poll_option.name
 

@@ -128,6 +128,7 @@ Rails.application.routes.draw do
           get  :email_exists
           get  :send_merge_verification_email
           get  :contactable
+          get  :avatar_uploaded
           post :update_profile
           post :set_volume
           post :upload_avatar
@@ -367,6 +368,7 @@ Rails.application.routes.draw do
   get '/wp-login.php'                      => 'application#ok'
   get '/crowdfunding_celebration'          => 'application#crowdfunding'
   get '/brand'                      => 'application#brand'
+  get '/sitemap.xml' => 'application#sitemap'
 
 
   Identities::Base::PROVIDERS.each do |provider|

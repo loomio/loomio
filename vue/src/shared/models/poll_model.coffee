@@ -151,7 +151,10 @@ export default class PollModel extends BaseModel
     @stanceFor(user) || (@discussionId && @discussion().membersInclude(user)) || @group().membersInclude(user)
 
   stanceFor: (user) ->
-    head orderBy(@recordStore.stances.find(pollId: @id, participantId: user.id, latest: true, revokedAt: null), 'createdAt', 'desc')
+    if user.id == AppConfig.currentUserId
+      @myStance() 
+    else
+      head orderBy(@recordStore.stances.find(pollId: @id, participantId: user.id, latest: true, revokedAt: null), 'createdAt', 'desc')
 
   myStance: ->
     @recordStore.stances.find(id: @myStanceId, revokedAt: null)[0]

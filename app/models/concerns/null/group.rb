@@ -54,7 +54,16 @@ module Null::Group
   end
 
   def true_methods
-    [:members_can_raise_motions, :members_can_edit_comments, :members_can_delete_comments, :discussion_private_default, :members_can_announce, :members_can_edit_discussions, :members_can_add_guests]
+    %w[
+      private_discussions_only?
+      members_can_raise_motions
+      members_can_edit_comments
+      members_can_delete_comments
+      discussion_private_default
+      members_can_announce
+      members_can_edit_discussions
+      members_can_add_guests
+    ]
   end
 
   def empty_methods
@@ -91,7 +100,6 @@ module Null::Group
 
   def false_methods
     %w(
-      private_discussions_only?
       public_discussions_only?
       is_visible_to_parent_members
       members_can_add_members

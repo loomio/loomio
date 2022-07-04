@@ -3,7 +3,7 @@ class RobotsController < ActionController::Base
 
   def show
     if ENV['ALLOW_ROBOTS']
-      head :ok
+      render :public_robots
     else
       render :private_robots
     end

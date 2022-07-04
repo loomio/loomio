@@ -11,7 +11,7 @@ export default
     submitted: false
     message: Records.contactMessages.build()
     isDisabled: false
-    helpLink: UserHelpService.helpLink()
+    helpLink: "https://help.loomio.com"
     contactEmail: AppConfig.contactEmail
 
   mounted: ->
