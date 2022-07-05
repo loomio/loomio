@@ -31,11 +31,11 @@ class ApplicationController < ActionController::Base
 
   def sitemap
     @entries = []
-    Group.published.where(is_visible_to_public: true).find_each do |g|
+    Group.published.where(is_visible_to_public: true).each do |g|
       @entries << [url_for(g), g.updated_at.to_date.iso8601]
     end
 
-    Discussion.visible_to_public.joins(:group).where('groups.archived_at is null').find_each do |d|
+    Discussion.visible_to_public.joins(:group).where('groups.archived_at is null').each do |d|
       @entries << [url_for(d), d.last_activity_at.to_date.iso8601]
     end
   end
