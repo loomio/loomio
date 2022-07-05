@@ -106,7 +106,6 @@ class Poll < ApplicationRecord
   has_many :decided_voters, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
 
   has_many :poll_options, -> { order('priority') }, dependent: :destroy, autosave: true
-  accepts_nested_attributes_for :poll_options, allow_destroy: true
 
   has_many :documents, as: :model, dependent: :destroy
 

@@ -109,7 +109,6 @@ export default class PollModel extends BaseModel
     @belongsTo 'author', from: 'users'
     @belongsTo 'discussion'
     @belongsTo 'group'
-    # @hasMany   'pollOptions', orderBy: 'priority'
     @hasMany   'stances'
     @hasMany   'versions'
 
@@ -233,11 +232,6 @@ export default class PollModel extends BaseModel
   reopen: =>
     @processing = true
     @remote.postMember(@key, 'reopen', poll: {closing_at: @closingAt})
-    .finally => @processing = false
-
-  addOptions: =>
-    @processing = true
-    @remote.postMember(@key, 'add_options', poll_option_names: @pollOptionNames)
     .finally => @processing = false
 
   addToThread: (discussionId) =>

@@ -27,11 +27,6 @@ class API::V1::PollsController < API::V1::RestfulController
     respond_with_resource
   end
 
-  def add_options
-    @event = service.add_options(poll: load_resource, params: params.slice(:poll_option_names), actor: current_user)
-    respond_with_resource
-  end
-
   def discard
     load_resource
     @event = service.discard(poll: resource, actor: current_user)
