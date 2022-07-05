@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
     end
 
     Discussion.visible_to_public.joins(:group).where('groups.archived_at is null').find_each do |d|
-      @entries << [url_for(d), d.last_activity_at]
+      @entries << [url_for(d), d.last_activity_at.to_date.iso8601]
     end
   end
 
