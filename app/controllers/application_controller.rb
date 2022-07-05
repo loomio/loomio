@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   def sitemap
     @entries = []
     Group.published.where(is_visible_to_public: true).find_each do |g|
-      @entries << [url_for(g), g.updated_at]
+      @entries << [url_for(g), g.updated_at.to_date.iso8601]
     end
 
     Discussion.visible_to_public.joins(:group).where('groups.archived_at is null').find_each do |d|
