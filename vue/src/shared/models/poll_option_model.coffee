@@ -8,9 +8,16 @@ export default class PollOptionModel extends BaseModel
   @plural: 'pollOptions'
   @indices: ['pollId']
   @uniqueIndices: ['id']
+  @serializableAttributes: ['id', 'name', 'icon', 'priority', 'meaning', 'prompt']
 
   defaultValues: ->
     voterScores: {}
+    name: null
+    icon: null
+    meaning: null
+    prompt: null
+    priority: null
+    _destroy: null
 
   relationships: ->
     @belongsTo 'poll'

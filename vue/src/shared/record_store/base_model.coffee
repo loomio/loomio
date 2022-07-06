@@ -100,6 +100,7 @@ export default class BaseModel
     data = {}
     paramKey = snakeCase(@constructor.serializationRoot or @constructor.singular)
 
+    data._destroy = @._destroy if @._destroy
     each @constructor.serializableAttributes or @attributeNames, (attributeName) =>
       snakeName = snakeCase(attributeName)
       camelName = camelCase(attributeName)

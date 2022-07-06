@@ -1,7 +1,6 @@
 <script lang="coffee">
 import { fieldFromTemplate } from '@/shared/helpers/poll'
 import AppConfig from '@/shared/services/app_config'
-import { optionColors, optionImages } from '@/shared/helpers/poll'
 
 export default
   props:
@@ -14,9 +13,6 @@ export default
     size:
       type: Number
       default: 24
-  data: ->
-    optionColors: optionColors()
-    optionImages: optionImages()
 
   computed:
     color: ->
@@ -47,9 +43,9 @@ export default
 
 <template lang="pug">
 .poll-common-stance-choice.mr-1.mb-1(:class="'poll-common-stance-choice--' + pollType" row)
-  v-avatar(tile :size="size" v-if='poll.config().poll_option_name_format == "i18n"')
-    img(:src="'/img/' + optionImages[pollOption.name] + '.svg'", :alt='optionName')
-  span.body-2(v-if='$pollTypes[poll.pollType].poll_option_name_format == "none"')
+  v-avatar(tile :size="size" v-if='poll.config().has_option_icon')
+    img(:src="'/img/' + pollOption.icon + '.svg'", :alt='optionName')
+  span.body-2(v-if='$pollTypes[poll.pollType].poll_option_name_format == "plain"')
     v-icon.mr-2(small :color="pollOption.color") mdi-check
     span {{ optionName }}
   v-chip(v-if='$pollTypes[poll.pollType].poll_option_name_format == "iso8601"'

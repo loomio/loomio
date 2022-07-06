@@ -1,6 +1,7 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
+import Records   from '@/shared/services/records'
 import { optionColors, optionImages } from '@/shared/helpers/poll'
 import { isEqual, map } from 'lodash'
 
@@ -24,6 +25,10 @@ export default
           else
             [options]
             
+  computed:
+    poll: -> @stance.poll()
+    selectedOption: -> Records.pollOptions.find(@selectedOptionId)
+
   methods:
     submit: ->
       actionName = if !@stance.castAt then 'created' else 'updated'
@@ -77,12 +82,18 @@ form.poll-common-vote-form(
           v-avatar(size="52px")
             img(
               aria-hidden="true"
-              :src="'/img/' + optionImages[option.name] + '.svg'"
+              :src="'/img/' + option.icon + '.svg'"
             )
           span(
+            v-if="poll.pollOptionNameFormat == 'i18n'"
             v-t="'poll_' + stance.poll().pollType + '_options.' + option.name"
             aria-hidden="true"
           )
+          span(
+            v-if="poll.pollOptionNameFormat == 'plain'"
+            aria-hidden="true"
+          ) {{option.name}}
+  p(v-if="selectedOption") {{selectedOption.meaning}}
   poll-common-stance-reason(:stance='stance' v-if='stance && selectedOptionId')
   v-btn.poll-common-vote-form__submit(
     @click='submit()'

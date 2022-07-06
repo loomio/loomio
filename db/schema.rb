@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_04_042153) do
+ActiveRecord::Schema.define(version: 2022_07_05_021042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -617,6 +617,9 @@ ActiveRecord::Schema.define(version: 2022_07_04_042153) do
     t.jsonb "voter_scores", default: {}, null: false
     t.integer "total_score", default: 0, null: false
     t.integer "voter_count", default: 0, null: false
+    t.string "icon"
+    t.string "meaning"
+    t.string "prompt"
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
   end
 
@@ -682,6 +685,7 @@ ActiveRecord::Schema.define(version: 2022_07_04_042153) do
     t.integer "source_template_id"
     t.string "process_subtitle"
     t.string "process_description_format", default: "md", null: false
+    t.string "poll_option_name_format", default: "plain"
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"

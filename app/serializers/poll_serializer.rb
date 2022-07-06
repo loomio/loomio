@@ -32,6 +32,7 @@ class PollSerializer < ApplicationSerializer
              :process_description_format,
              :poll_type,
              :poll_option_names,
+             :poll_option_name_format,
              :results,
              :result_columns,
              :icon_type,

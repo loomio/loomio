@@ -1,13 +1,13 @@
 count:
   template: false
   material_icon: mdi-check-circle
-  poll_option_name_format: i18n
   vote_method: show_thumbs
   validate_minimum_stance_choices: true
   validate_dots_per_person: true
-  i18n:
-    process_title: decision_tools_card.count_title
+  has_option_icon: true
   defaults:
+    poll_option_name_format: i18n
+    process_title_i18n: decision_tools_card.count_title
     poll_option_names:
       - 'yes'
       - 'no'
@@ -23,19 +23,58 @@ count:
 proposal:
   template: true
   material_icon: mdi-thumbs-up-down
-  poll_option_name_format: i18n
   vote_method: show_thumbs
   validate_minimum_stance_choices: true
   validate_dots_per_person: true
-  i18n:
-    process_title: decision_tools_card.proposal_title
-    process_subtitle: poll_proposal_form.tool_tip_collapsed
-    process_description: poll_proposal_form.tool_tip_expanded
+  has_option_icon: true
+  common_poll_options:
+    - name_i18n: poll_proposal_options.agree
+      icon: agree
+      meaning_i18n: poll_proposal_options.agree_meaning
+      prompt_i18n: poll_proposal_options.agree_prompt
+      color: '#70C9F8'
+      default: true
+    - name_i18n: poll_proposal_options.abstain
+      icon: abstain
+      meaning_i18n: poll_proposal_options.abstain_meaning
+      prompt_i18n: poll_proposal_options.abstain_prompt
+      color: "#C8E56E"
+      default: true
+    - name_i18n: poll_proposal_options.unsure
+      icon: abstain
+      color: "#C8E56E"
+      default: true
+    - name_i18n: poll_proposal_options.disagree
+      icon: disagree
+      meaning_i18n: poll_proposal_options.disagree_meaning
+      prompt_i18n: poll_proposal_options.disagree_prompt
+      color: "#D38FE1"
+      default: true
+    - name_i18n: poll_proposal_options.block
+      icon: block
+      meaning_i18n: poll_proposal_options.disagree_meaning
+      prompt_i18n: poll_proposal_options.disagree_prompt
+      color: "#999FDE"
+    - name_i18n: poll_proposal_options.consent
+      icon: agree
+      meaning_i18n: poll_proposal_options.consent_meaning
+      prompt_i18n: poll_proposal_options.consent_prompt
+      color: "#70C9F8"
+    - name_i18n: poll_proposal_options.objection
+      icon: disagree
+      meaning_i18n: poll_proposal_options.objection_meaning
+      prompt_i18n: poll_proposal_options.objection_prompt
+      color: "#D38FE1"
+    - name_i18n: poll_proposal_options.object
+      icon: disagree
+      meaning_i18n: poll_proposal_options.objection_meaning
+      prompt_i18n: poll_proposal_options.objection_prompt
+      color: "#D38FE1"
   defaults:
-    poll_option_names:
-      - agree
-      - abstain
-      - disagree
+    poll_option_name_format: plain
+    process_title_i18n: decision_tools_card.proposal_title
+    process_subtitle_i18n: poll_proposal_form.tool_tip_collapsed
+    process_description_i18n: poll_proposal_form.tool_tip_expanded
     chart_column: score_percent
     chart_type: pie
     icon_type: pie
@@ -48,16 +87,15 @@ proposal:
 poll:
   template: true
   material_icon: mdi-poll
-  poll_option_name_format: 'none'
   vote_method: single_choice
   can_shuffle_options: true
   validate_minimum_stance_choices: true
   validate_dots_per_person: true
-  i18n:
-    process_title: poll_common_form.voting_methods.single_choice
-    process_subtitle: poll_poll_form.tool_tip_collapsed
-    process_description: poll_poll_form.tool_tip_expanded
   defaults:
+    poll_option_name_format: plain
+    process_title_i18n: poll_common_form.voting_methods.single_choice
+    process_subtitle_i18n: poll_poll_form.tool_tip_collapsed
+    process_description_i18n: poll_poll_form.tool_tip_expanded
     chart_column: max_score_percent
     chart_type: bar
     icon_type: bar
@@ -70,16 +108,15 @@ poll:
 multiple_choice:
   template: true
   material_icon: mdi-poll
-  poll_option_name_format: none
   vote_method: multiple_choice
   can_shuffle_options: true
   validate_minimum_stance_choices: true
   validate_max_score: true
-  i18n:
-    process_title: poll_common_form.voting_methods.multiple_choice
-    process_subtitle: poll_common_form.voting_methods.multiple_choice_hint
-    process_description: poll_poll_form.tool_tip_expanded
   defaults:
+    poll_option_name_format: plain
+    process_title_i18n: poll_common_form.voting_methods.multiple_choice
+    process_subtitle_i18n: poll_common_form.voting_methods.multiple_choice_hint
+    process_description_i18n: poll_poll_form.tool_tip_expanded
     chart_column: max_score_percent
     chart_type: bar
     icon_type: bar
@@ -90,16 +127,15 @@ multiple_choice:
 dot_vote:
   template: true
   material_icon: mdi-chart-bar-stacked
-  poll_option_name_format: none
   vote_method: allocate
   can_shuffle_options: true
   validate_min_score: true
   validate_dots_per_person: true
-  i18n:
-    process_title: decision_tools_card.dot_vote_title
-    process_subtitle: poll_common_form.voting_methods.allocate_hint
-    process_description: poll_dot_vote_form.tool_tip_expanded
   defaults:
+    poll_option_name_format: plain
+    process_title_i18n: decision_tools_card.dot_vote_title
+    process_subtitle_i18n: poll_common_form.voting_methods.allocate_hint
+    process_description_i18n: poll_dot_vote_form.tool_tip_expanded
     chart_column: max_score_percent
     chart_type: bar
     icon_type: bar
@@ -110,16 +146,15 @@ dot_vote:
 score:
   template: true
   material_icon: mdi-chart-gantt
-  poll_option_name_format: none
   vote_method: score
   can_shuffle_options: true
   validate_min_score: true
   validate_max_score: true
-  i18n:
-    process_title: decision_tools_card.score_title
-    process_subtitle: poll_common_form.voting_methods.score_hint
-    process_description: poll_score_form.tool_tip_expanded
   defaults:
+    poll_option_name_format: plain
+    process_title_i18n: decision_tools_card.score_title
+    process_subtitle_i18n: poll_common_form.voting_methods.score_hint
+    process_description_i18n: poll_score_form.tool_tip_expanded
     chart_column: max_score_percent
     chart_type: bar
     icon_type: bar
@@ -130,17 +165,16 @@ score:
 ranked_choice:
   template: true
   material_icon: mdi-format-list-numbered
-  poll_option_name_format: none
   vote_method: ranked_choice
   can_shuffle_options: true
   validate_minimum_stance_choices: true
   require_all_choices: true
   validate_min_score: true
-  i18n:
-    process_title: decision_tools_card.ranked_choice_title
-    process_subtitle: poll_common_form.voting_methods.ranked_choice_hint
-    process_description: poll_ranked_choice_form.tool_tip_expanded
   defaults:
+    poll_option_name_format: plain
+    process_title_i18n: decision_tools_card.ranked_choice_title
+    process_subtitle_i18n: poll_common_form.voting_methods.ranked_choice_hint
+    process_description_18n: poll_ranked_choice_form.tool_tip_expanded
     chart_column: max_score_percent
     chart_type: bar
     icon_type: bar
@@ -150,15 +184,14 @@ ranked_choice:
 meeting:
   template: true
   material_icon: mdi-calendar-question
-  poll_option_name_format: iso8601
   prevent_anonymous: true
   vote_method: time_poll
   require_all_choices: true
-  i18n:
-    process_title: decision_tools_card.meeting_title
-    process_subtitle: poll_common_form.voting_methods.time_poll_hint
-    process_description: poll_meeting_form.tool_tip_expanded
   defaults:
+    poll_option_name_format: iso8601
+    process_title_i18n: decision_tools_card.meeting_title
+    process_subtitle_i18n: poll_common_form.voting_methods.time_poll_hint
+    process_description_i18n: poll_meeting_form.tool_tip_expanded
     chart_column: max_score_percent
     chart_type: grid
     icon_type: grid

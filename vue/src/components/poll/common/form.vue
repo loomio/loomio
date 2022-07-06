@@ -1,7 +1,7 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
 import Session from '@/shared/services/session'
-import { compact, without, kebabCase, snakeCase } from 'lodash'
+import { compact, without, kebabCase, snakeCase, some } from 'lodash'
 import Flash from '@/shared/services/flash'
 import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
@@ -28,12 +28,11 @@ export default
         ].concat Session.user().groups().map (g) ->
           {text: g.fullName, value: g.id}
 
-
   data: ->
     tab: 0
     newOption: null
     lastPollType: @poll.pollType
-    optionImages: optionImages()
+    pollOptions: @getPollOptions()
     groupItems: []
     pollTypeItems: compact Object.keys(AppConfig.pollTypes).map (key) =>
       pollType = AppConfig.pollTypes[key]
@@ -44,7 +43,6 @@ export default
       {text: 'pie', value: 'pie'}
       {text: 'grid', value: 'grid'}
     ]
-
     durations:
       [5, 10, 15, 20, 30, 45, 60, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240, null].map (minutes) =>
         if minutes
@@ -52,7 +50,6 @@ export default
           {text: formatDuration(duration, { format: ['hours', 'minutes'] }), value: minutes}
         else
           {text: @$t('common.all_day'), value: null}
-
     currentHideResults: @poll.hideResults
     hideResultsItems: [
       { text: @$t('common.off'), value: 'off' }
@@ -60,8 +57,27 @@ export default
       { text: @$t('poll_common_card.until_poll_type_closed', pollType: @poll.translatedPollType()), value: 'until_closed' }
     ]
 
-
   methods:
+    setPollOptionPriority: ->
+      i = 0
+      @pollOptions.forEach (o) -> o.priority = 0
+      @visiblePollOptions.forEach (o) -> o.priority = i++
+
+    getPollOptions: ->
+      if @poll.pollOptionNames.length
+        console.log 'names has length'
+        @poll.pollOptions()
+      else
+        common_poll_options = AppConfig.pollTypes[@poll.pollType].common_poll_options || []
+        options = common_poll_options.filter((o) -> o.default)
+          .map((o) -> structuredClone(o))
+          .map (o) =>
+            o.name = @$t(o.name_i18n)
+            o.meaning = @$t(o.meaning_i18n)
+            o.prompt = @$t(o.prompt_i18n)
+            o
+          .map (o) -> Records.pollOptions.build(o)
+        options
     settingDisabled: (setting) ->
       !@poll.closingAt || (!@poll.isNew() && setting == 'anonymous')
     snakify: (setting) -> snakeCase setting
@@ -69,21 +85,51 @@ export default
 
     clearOptionsIfRequired: (newValue) ->
       if newValue == 'meeting' || @lastPollType == 'meeting'
-        @poll.pollOptionNames = [] 
+        @pollOptions = []
       @lastPollType = newValue
 
-    removeOptionName: (optionName) ->
-      @poll.pollOptionNames = without(@poll.pollOptionNames, optionName)
+    removeOption: (option) ->
+      @newOption = null
+      if option.id
+        option.name = null
+        option['_destroy'] = 1
+      else
+        @pollOptions = without(@pollOptions, option)
 
     addOption: ->
-      if @poll.addOption(@newOption)
-        @newOption = null
-      else
+      if some(@pollOptions, (o) => o.name == @newOption)
         Flash.error('poll_poll_form.option_already_added')
+      else
+        knownOption = (AppConfig.pollTypes[@poll.pollType].common_poll_options || []).find (o) =>
+          @$t(o.name_i18n).toLowerCase() == @newOption.toLowerCase()
+
+        if knownOption
+          @pollOptions.push Records.pollOptions.build(
+            name: @newOption
+            icon:  knownOption.icon
+            meaning: @$t(knownOption.meaning_i18n)
+            meaning: @$t(knownOption.prompt_i18n)
+          )
+        else
+          @pollOptions.push Records.pollOptions.build(
+            name: @newOption
+            icon: 'agree'
+          )
+
+        @newOption = null
+
+    editOption: (option) ->
+      EventBus.$emit 'openModal',
+        component: 'PollOptionForm'
+        props:
+          pollOption: option
+          poll: @poll
 
     submit: ->
       actionName = if @poll.isNew() then 'created' else 'updated'
       @poll.setErrors({})
+      @setPollOptionPriority()
+      @poll.pollOptionsAttributes = @pollOptions.map (o) -> o.serialize().poll_option
       @poll.save()
       .then (data) =>
         poll = Records.polls.find(data.polls[0].id)
@@ -100,6 +146,7 @@ export default
         console.error error
 
   computed:
+    visiblePollOptions: -> @pollOptions.filter (o) -> !o._destroy
     allowAnonymous: -> !@poll.config().prevent_anonymous
 
     settings: ->
@@ -123,7 +170,8 @@ export default
       'nobody author undecided_voters voters'.split(' ').map (name) =>
         {text: @$t("poll_common_settings.notify_on_closing_soon.#{name}"), value: name}
 
-    optionFormat: -> @poll.config().poll_option_name_format
+    optionFormat: -> @poll.pollOptionNameFormat
+    hasOptionIcon: -> @poll.config().has_option_icon
     i18nItems: -> 
       compact 'agree abstain disagree yes no consent objection block'.split(' ').map (name) =>
         return null if @poll.pollOptionNames.includes(name)
@@ -174,24 +222,26 @@ export default
       )
 
       v-divider.my-4
-
       v-list
         v-subheader.px-0(v-t="'poll_common_form.options'")
-        v-subheader.px-0(v-if="!poll.pollOptionNames.length" v-t="'poll_common_form.no_options_add_some'")
-        v-list-item.px-0(dense :key="name" v-for="name in poll.pollOptionNames" v-if="poll.pollOptionNames.length")
-          v-list-item-icon(v-if="optionFormat == 'i18n'")
+        v-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
+        v-list-item.px-0(dense :key="option.name" v-for="option in visiblePollOptions" v-if="pollOptions.length")
+          v-list-item-icon(v-if="hasOptionIcon")
             v-avatar
-              img(:src="'/img/' + optionImages[name] + '.svg'" aria-hidden="true")
+              img(:src="'/img/' + option.icon + '.svg'" aria-hidden="true")
      
           v-list-item-content
             v-list-item-title
-              span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+name") {{name}}
-              span(v-if="optionFormat == 'none'") {{name}}
+              span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name")
+              span(v-if="optionFormat == 'plain'") {{option.name}}
               span(v-if="optionFormat == 'iso8601'")
-                poll-meeting-time(:name="name")
+                poll-meeting-time(:name="option.name")
 
           v-list-item-action
-            v-btn(icon outlined @click="removeOptionName(name)")
+            v-btn(icon outlined @click="editOption(option)")
+              v-icon() mdi-pencil
+          v-list-item-action
+            v-btn(icon outlined @click="removeOption(option)")
               v-icon() mdi-minus
 
       template(v-if="optionFormat == 'i18n'")
@@ -202,7 +252,7 @@ export default
           :label="$t('poll_poll_form.add_option_placeholder')"
           @change="addOption")
 
-      template(v-if="optionFormat == 'none'")
+      template(v-if="optionFormat == 'plain'")
         v-text-field.poll-poll-form__add-option-input(
           v-model="newOption"
           :label="$t('poll_poll_form.add_option_placeholder')"

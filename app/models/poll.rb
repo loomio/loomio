@@ -21,8 +21,8 @@ class Poll < ApplicationRecord
                     :time_zone,
                     :can_respond_maybe
 
-  # these used to be custom fields, but we're migrating them to regular columns
   TEMPLATE_DEFAULT_FIELDS = %w[
+    poll_option_name_format
     max_score
     min_score
     dots_per_person
@@ -47,10 +47,10 @@ class Poll < ApplicationRecord
     }
   end
 
-  TEMPLATE_FIELDS = %w(prevent_anonymous
+  TEMPLATE_FIELDS = %w(has_option_icon
+                       prevent_anonymous
                        vote_method
                        material_icon
-                       poll_option_name_format
                        require_all_choices
                        validate_minimum_stance_choices
                        validate_maximum_stance_choices
@@ -106,6 +106,7 @@ class Poll < ApplicationRecord
   has_many :decided_voters, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
 
   has_many :poll_options, -> { order('priority') }, dependent: :destroy, autosave: true
+  accepts_nested_attributes_for :poll_options, allow_destroy: true
 
   has_many :documents, as: :model, dependent: :destroy
 

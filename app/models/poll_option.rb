@@ -15,23 +15,29 @@ class PollOption < ApplicationRecord
     )
   end
 
+  def icon
+    self[:icon] || {
+      agree: 'agree',
+      disagree: 'disagree',
+      abstain: 'abstain',
+      block: 'block',
+      consent: 'agree',
+      objection: 'disagree',
+      yes: 'agree',
+      no: 'disagree'
+    }[name.to_sym]
+  end
+
   def color
-    if poll.poll_type == 'proposal'
+    if ['proposal', 'count'].include? poll.poll_type
       {
         'agree' => AppConfig.colors['proposal'][0],
         'abstain' => AppConfig.colors['proposal'][1],
         'disagree' => AppConfig.colors['proposal'][2],
         'block' => AppConfig.colors['proposal'][3],
-        'consent' => AppConfig.colors['proposal'][0],
-        'tension' => AppConfig.colors['proposal'][1],
-        'objection' => AppConfig.colors['proposal'][2]
-      }.fetch(name, AppConfig.colors['proposal'][0])
+      }.fetch(icon, AppConfig.colors['proposal'][0])
     else
-      if %w[count proposal].include? poll.poll_type
-        AppConfig.colors.dig(poll.poll_type, self.priority % AppConfig.colors.length)
-      else
-        AppConfig.colors.dig('poll', self.priority % AppConfig.colors.length)
-      end
+      AppConfig.colors.dig('poll', self.priority % AppConfig.colors.length)
     end
   end
 
