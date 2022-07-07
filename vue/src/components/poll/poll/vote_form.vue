@@ -1,6 +1,7 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
+import Records   from '@/shared/services/records'
 import { compact, sortBy, without, isEqual, map } from 'lodash'
 
 export default
@@ -58,16 +59,19 @@ export default
       :color="option.color"
   )
   v-radio-group.mb-6(v-if="!poll.multipleChoice" v-model="selectedOptionId")
-    v-radio.poll-common-vote-form__button(
+    v-radio.my-2.poll-common-vote-form__button(
       v-for='option in pollOptions'
       :key='option.id'
       :value="option.id"
-      :label="option.name"
       :color="option.color"
       hide-details
     )
+      template(v-slot:label)
+        div(style="display:block")
+          div {{option.name}}
+          div.caption {{option.meaning}}
   validation-errors(:subject='stance' field='stanceChoices')
-  poll-common-stance-reason(:stance='stance')
+  poll-common-stance-reason(:stance='stance', :selectedOptionId="selectedOptionId")
   v-card-actions.poll-common-form-actions
     //- v-spacer
     v-btn.poll-common-vote-form__submit(

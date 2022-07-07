@@ -25,6 +25,10 @@ export default
           else
             [options]
             
+  watch:
+    selectedOptionId: ->
+      EventBus.$emit('focusEditor')
+      
   computed:
     poll: -> @stance.poll()
     selectedOption: -> Records.pollOptions.find(@selectedOptionId)
@@ -93,8 +97,8 @@ form.poll-common-vote-form(
             v-if="poll.pollOptionNameFormat == 'plain'"
             aria-hidden="true"
           ) {{option.name}}
-  p(v-if="selectedOption") {{selectedOption.meaning}}
-  poll-common-stance-reason(:stance='stance' v-if='stance && selectedOptionId')
+  p.text--secondary(v-if="selectedOption") {{selectedOption.name}}: {{selectedOption.meaning}}
+  poll-common-stance-reason(:stance='stance' v-if='stance && selectedOptionId' :prompt="selectedOption.prompt")
   v-btn.poll-common-vote-form__submit(
     @click='submit()'
     :loading="stance.processing"

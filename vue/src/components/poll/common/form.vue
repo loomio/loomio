@@ -9,9 +9,11 @@ import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fn
 import { optionImages } from '@/shared/helpers/poll'
 import { addHours, isAfter } from 'date-fns'
 import PollCommonWipField from '@/components/poll/common/wip_field'
+import { HandleDirective } from 'vue-slicksort';
 
 export default
   components: {PollCommonWipField}
+  directives: { handle: HandleDirective }
 
   props:
     poll: Object
@@ -222,27 +224,35 @@ export default
       )
 
       v-divider.my-4
-      v-list
-        v-subheader.px-0(v-t="'poll_common_form.options'")
-        v-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
-        v-list-item.px-0(dense :key="option.name" v-for="option in visiblePollOptions" v-if="pollOptions.length")
-          v-list-item-icon(v-if="hasOptionIcon")
-            v-avatar
-              img(:src="'/img/' + option.icon + '.svg'" aria-hidden="true")
-     
-          v-list-item-content
-            v-list-item-title
-              span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name")
-              span(v-if="optionFormat == 'plain'") {{option.name}}
-              span(v-if="optionFormat == 'iso8601'")
-                poll-meeting-time(:name="option.name")
+      v-subheader.px-0(v-t="'poll_common_form.options'")
+      v-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
+      sortable-list(v-model="pollOptions" append-to=".app-is-booted" use-drag-handle)
+        sortable-item(
+          v-for="(option, priority) in visiblePollOptions"
+          :index="priority"
+          :key="option.name"
+          :item="option"
+          v-if="pollOptions.length"
+        )
+          v-list-item.d-flex.px-0.align-center(dense style="user-select: none")
+            div.d-flex.flex-grow-1.align-center(v-handle)
+              v-icon.text--secondary mdi-drag-vertical
+              div.mr-2(style="height: 48px; width: 48px" v-if="hasOptionIcon")
+                img(:src="'/img/' + option.icon + '.svg'" aria-hidden="true")
+         
+              div
+                //- v-list-item-title
+                span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name")
+                span(v-if="optionFormat == 'plain'") {{option.name}}
+                span(v-if="optionFormat == 'iso8601'")
+                  poll-meeting-time(:name="option.name")
 
-          v-list-item-action
-            v-btn(icon outlined @click="editOption(option)")
-              v-icon() mdi-pencil
-          v-list-item-action
-            v-btn(icon outlined @click="removeOption(option)")
-              v-icon() mdi-minus
+            v-list-item-action
+              v-btn(icon outlined @click="editOption(option)")
+                v-icon() mdi-pencil
+            v-list-item-action
+              v-btn(icon outlined @click="removeOption(option)")
+                v-icon() mdi-minus
 
       template(v-if="optionFormat == 'i18n'")
         v-select(

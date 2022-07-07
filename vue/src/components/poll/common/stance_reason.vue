@@ -2,6 +2,7 @@
 export default
   props:
     stance: Object
+    prompt: String
   computed:
     maxLength: ->
       if @stance.poll().allowLongReason
@@ -16,7 +17,7 @@ export default
     :model='stance'
     field="reason"
     :label="$t('poll_common.reason')"
-    :placeholder="$t('poll_common.reason_placeholder')"
+    :placeholder="prompt || $t('poll_common.reason_placeholder')"
     :max-length='maxLength'
     autofocus
   )
