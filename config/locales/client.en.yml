@@ -2159,12 +2159,10 @@ en:
     consent_prompt: Why do you consent? Is there anything you would like to change?
     objection_meaning: This proposal is not safe to try
     objection_prompt: What serious issue have you identified in this proposal that means it is unsafe to try?
-    abstain_meaning: Not sure, don’t know or don’t mind. Will support the outcome either way
-    abstain_prompt: Why did you choose abstain?
-    disagree_meaning: I don’t support the proposal. It should not go ahead.
-    disagree_prompt: What issue do you have with this proposal?
-    block_meaning: The urgent attention of the group is required to address a deep concern
-    block_prompt: Explain what would be required for you to change from block to another option.
+    abstain_meaning: Choosing not to, or unable to vote in this decision. 
+    abstain_prompt: Why are you opting out, or unable to vote in this decision?
+    disagree_meaning: Something in this proposal needs to be changed before I can support it.
+    block_meaning: The urgent attention of the group is required
     no_voting: 'No voting'
 
   poll_count_options:

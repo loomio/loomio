@@ -31,7 +31,7 @@ proposal:
     - name_i18n: poll_proposal_options.agree
       icon: agree
       meaning_i18n: poll_proposal_options.agree_meaning
-      prompt_i18n: poll_proposal_options.agree_prompt
+      prompt_i18n: poll_proposal_vote_form.agree_reason_placeholder
       color: '#70C9F8'
       default: true
     - name_i18n: poll_proposal_options.abstain
@@ -40,20 +40,16 @@ proposal:
       prompt_i18n: poll_proposal_options.abstain_prompt
       color: "#C8E56E"
       default: true
-    - name_i18n: poll_proposal_options.unsure
-      icon: abstain
-      color: "#C8E56E"
-      default: true
     - name_i18n: poll_proposal_options.disagree
       icon: disagree
       meaning_i18n: poll_proposal_options.disagree_meaning
-      prompt_i18n: poll_proposal_options.disagree_prompt
+      prompt_i18n: poll_proposal_vote_form.disagree_reason_placeholder
       color: "#D38FE1"
       default: true
     - name_i18n: poll_proposal_options.block
       icon: block
-      meaning_i18n: poll_proposal_options.disagree_meaning
-      prompt_i18n: poll_proposal_options.disagree_prompt
+      meaning_i18n: poll_proposal_options.block_meaning
+      prompt_i18n: poll_proposal_vote_form.block_reason_placeholder
       color: "#999FDE"
     - name_i18n: poll_proposal_options.consent
       icon: agree
@@ -61,11 +57,6 @@ proposal:
       prompt_i18n: poll_proposal_options.consent_prompt
       color: "#70C9F8"
     - name_i18n: poll_proposal_options.objection
-      icon: disagree
-      meaning_i18n: poll_proposal_options.objection_meaning
-      prompt_i18n: poll_proposal_options.objection_prompt
-      color: "#D38FE1"
-    - name_i18n: poll_proposal_options.object
       icon: disagree
       meaning_i18n: poll_proposal_options.objection_meaning
       prompt_i18n: poll_proposal_options.objection_prompt

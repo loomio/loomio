@@ -110,7 +110,7 @@ export default
             name: @newOption
             icon:  knownOption.icon
             meaning: @$t(knownOption.meaning_i18n)
-            meaning: @$t(knownOption.prompt_i18n)
+            prompt: @$t(knownOption.prompt_i18n)
           )
         else
           @pollOptions.push Records.pollOptions.build(
