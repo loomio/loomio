@@ -80,6 +80,7 @@ export default
             o
           .map (o) -> Records.pollOptions.build(o)
         options
+
     settingDisabled: (setting) ->
       !@poll.closingAt || (!@poll.isNew() && setting == 'anonymous')
     snakify: (setting) -> snakeCase setting
@@ -175,7 +176,7 @@ export default
     optionFormat: -> @poll.pollOptionNameFormat
     hasOptionIcon: -> @poll.config().has_option_icon
     i18nItems: -> 
-      compact 'agree abstain disagree yes no consent objection block'.split(' ').map (name) =>
+      compact 'agree abstain disagree consent objection block yes no'.split(' ').map (name) =>
         return null if @poll.pollOptionNames.includes(name)
         text: @$t('poll_proposal_options.'+name)
         value: name
@@ -234,25 +235,27 @@ export default
           :item="option"
           v-if="pollOptions.length"
         )
-          v-list-item.d-flex.px-0.align-center(dense style="user-select: none")
-            div.d-flex.flex-grow-1.align-center(v-handle)
-              v-icon.text--secondary mdi-drag-vertical
-              div.mr-2(style="height: 48px; width: 48px" v-if="hasOptionIcon")
+          v-list-item.px-0(style="user-select: none")
+            v-list-item-icon(v-handle)
+              v-avatar(size="48" v-if="hasOptionIcon")
                 img(:src="'/img/' + option.icon + '.svg'" aria-hidden="true")
          
-              div
-                //- v-list-item-title
+            v-list-item-content(v-handle)
+              v-list-item-title
                 span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name")
                 span(v-if="optionFormat == 'plain'") {{option.name}}
                 span(v-if="optionFormat == 'iso8601'")
                   poll-meeting-time(:name="option.name")
+              v-list-item-subtitle
+                | {{option.meaning}}
 
             v-list-item-action
-              v-btn(icon outlined @click="editOption(option)")
-                v-icon() mdi-pencil
-            v-list-item-action
-              v-btn(icon outlined @click="removeOption(option)")
-                v-icon() mdi-minus
+              v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
+                v-icon.text--secondary mdi-pencil
+            v-list-item-action.ml-0
+              v-btn(icon @click="removeOption(option)", :title="$t('common.action.delete')")
+                v-icon.text--secondary mdi-delete
+            v-icon.text--secondary(v-handle, :title="$t('common.action.move')") mdi-drag-vertical
 
       template(v-if="optionFormat == 'i18n'")
         v-select(
@@ -263,9 +266,10 @@ export default
           @change="addOption")
 
       template(v-if="optionFormat == 'plain'")
-        v-text-field.poll-poll-form__add-option-input(
+        v-text-field.poll-poll-form__add-option-input.mt-4(
           v-model="newOption"
           :label="$t('poll_poll_form.add_option_placeholder')"
+          :placeholder="$t('poll_poll_form.add_option_hint')"
           @keydown.enter="addOption"
           append-outer-icon="mdi-plus"
           @click:append-outer="addOption"

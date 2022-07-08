@@ -2068,6 +2068,7 @@ en:
     title_placeholder: E.g. Where do you want to go on holiday?
     details_placeholder: Provide any clarifying details people might need to answer the question.
     add_option_placeholder: Add option
+    add_option_hint: Enter short name for the option
     remove_option: Remove option
     poll_created: Poll created
     poll_updated: Poll updated

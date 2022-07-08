@@ -83,7 +83,7 @@ form.poll-common-vote-form(
     v-sheet.rounded(outlined :style="(option.id == selectedOptionId && {'border-color': option.color}) || {}")
       v-list-item
         v-list-item-icon
-          v-avatar.mr-2(size="52px")
+          v-avatar(size="48")
             img(
               aria-hidden="true"
               :src="'/img/' + option.icon + '.svg'"
