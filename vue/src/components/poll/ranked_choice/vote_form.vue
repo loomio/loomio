@@ -42,21 +42,23 @@ export default
 <template lang='pug'>
 .poll-ranked-choice-vote-form.lmo-relative
   p.text--secondary(v-t="{ path: 'poll_ranked_choice_vote_form.helptext', args: { count: numChoices } }")
-  sortable-list(v-model="pollOptions", lockAxis="y", axis="y")
+  sortable-list(v-model="pollOptions" lock-axis="y" axis="y" append-to=".app-is-booted")
     sortable-item(
       v-for="(option, index) in pollOptions"
       :index="index"
       :key="option.id"
       :item="option"
     )
-      v-icon(style="cursor: pointer") mdi-drag
-      span(v-if="index+1 <= numChoices") {{index+1}}
-      space
-      v-chip.mr-2(
-        :color="option.color"
-        :index="index"
-        :key="index"
-      ) {{ option.name }}
+      v-sheet.mb-2.rounded.poll-ranked-choice-vote-form__option(outlined :style="{'border-color': option.color}")
+        v-list-item
+          v-list-item-icon
+            v-icon(style="cursor: pointer", :color="option.color") mdi-drag
+          v-list-item-content
+            v-list-item-title {{option.name}}
+            v-list-item-subtitle {{option.meaning}}
+          v-list-item-action
+            span(style="font-size: 1.4rem" v-if="index+1 <= numChoices") # {{index+1}}
+
   validation-errors(:subject='stance' field='stanceChoices')
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
@@ -68,3 +70,11 @@ export default
     )
       span(v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
 </template>
+
+<style lang="sass">
+.poll-ranked-choice-vote-form__option
+  user-select: none
+
+.app-is-booted > .sortable-list-item
+  z-index: 10000
+</style>
