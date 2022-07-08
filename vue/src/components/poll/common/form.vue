@@ -227,7 +227,7 @@ export default
       v-divider.my-4
       v-subheader.px-0(v-t="'poll_common_form.options'")
       v-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
-      sortable-list(v-model="pollOptions" append-to=".app-is-booted" use-drag-handle)
+      sortable-list(v-model="pollOptions" append-to=".app-is-booted" use-drag-handle lock-axis="y")
         sortable-item(
           v-for="(option, priority) in visiblePollOptions"
           :index="priority"
@@ -246,15 +246,14 @@ export default
                 span(v-if="optionFormat == 'plain'") {{option.name}}
                 span(v-if="optionFormat == 'iso8601'")
                   poll-meeting-time(:name="option.name")
-              v-list-item-subtitle
-                | {{option.meaning}}
+              v-list-item-subtitle {{option.meaning}}
 
             v-list-item-action
-              v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
-                v-icon.text--secondary mdi-pencil
-            v-list-item-action.ml-0
               v-btn(icon @click="removeOption(option)", :title="$t('common.action.delete')")
                 v-icon.text--secondary mdi-delete
+            v-list-item-action.ml-0
+              v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
+                v-icon.text--secondary mdi-pencil
             v-icon.text--secondary(v-handle, :title="$t('common.action.move')") mdi-drag-vertical
 
       template(v-if="optionFormat == 'i18n'")

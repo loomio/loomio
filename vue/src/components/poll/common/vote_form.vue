@@ -82,7 +82,7 @@ form.poll-common-vote-form(
   )
     v-sheet.rounded(outlined :style="(option.id == selectedOptionId && {'border-color': option.color}) || {}")
       v-list-item
-        v-list-item-icon
+        v-list-item-icon.my-3
           v-avatar(size="48")
             img(
               aria-hidden="true"
@@ -107,7 +107,7 @@ form.poll-common-vote-form(
               aria-hidden="true"
             ) {{option.name}}
           v-list-item-subtitle(v-if="option.meaning") {{option.meaning}}
-  poll-common-stance-reason(:stance='stance' v-if='stance && selectedOptionId' :prompt="selectedOption.prompt")
+  poll-common-stance-reason(:stance='stance' v-if='stance && selectedOptionId', :prompt="selectedOption.prompt")
   v-btn.poll-common-vote-form__submit(
     @click='submit()'
     :loading="stance.processing"
