@@ -29,7 +29,9 @@ export default class PollOptionModel extends BaseModel
     @stances().forEach (stance) -> stance.remove()
 
   optionName: ->
-    if @poll().config().poll_option_name_format == 'i18n'
-      I18n.t('poll_' + @poll().pollType + '_options.' + @name)
-    else
-      @name
+    poll = @poll()
+    switch poll.pollOptionNameFormat
+      when 'plain' then @name
+      when 'i18n' then i18n.t('poll_' + poll.pollType + '_options.' + @name)
+      else
+        console.error 'unsupported option format', poll.pollOptionNameFormat

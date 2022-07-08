@@ -1,7 +1,6 @@
 <script lang="coffee">
 import PollCommonVoteForm from '@/components/poll/common/vote_form.vue'
 import PollCommonChangeYourVote from '@/components/poll/common/change_your_vote.vue'
-import PollPollVoteForm from '@/components/poll/poll/vote_form.vue'
 import PollMultipleChoiceVoteForm from '@/components/poll/multiple_choice/vote_form.vue'
 import PollDotVoteVoteForm from '@/components/poll/dot_vote/vote_form.vue'
 import PollScoreVoteForm from '@/components/poll/score/vote_form.vue'
@@ -14,7 +13,6 @@ export default
   components:
     'poll-common-vote-form': PollCommonVoteForm
     'poll-common-change-your-vote': PollCommonChangeYourVote
-    'poll-poll-vote-form': PollPollVoteForm
     'poll-multiple_choice-vote-form': PollMultipleChoiceVoteForm
     'poll-dot_vote-vote-form': PollDotVoteVoteForm
     'poll-score-vote-form': PollScoreVoteForm
@@ -31,15 +29,18 @@ export default
     name: String
     size: Number
     shouldReset: Boolean
+
   computed:
     componentName: ->
       pollType = (@stance or @outcome or @stanceChoice or @poll).poll().pollType
 
-      if @$options.components["poll-#{pollType}-#{@name}"]
-        "poll-#{pollType}-#{@name}"
+      if @name == 'vote-form' && ['proposal', 'count', 'poll', 'multiple_choice'].includes(pollType)
+        "poll-common-vote-form"
       else
-        # console.log 'no match, falling through to common ', "poll-common-#{@name}"
-        "poll-common-#{@name}"
+        if @$options.components["poll-#{pollType}-#{@name}"]
+          "poll-#{pollType}-#{@name}"
+        else
+          "poll-common-#{@name}"
 </script>
 
 <template>
