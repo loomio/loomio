@@ -119,6 +119,7 @@ ActiveAdmin.register User do
         column :volume
         column :admin
         column :accepted_at
+        column :archived_at
       end
     end
 
