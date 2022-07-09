@@ -1,22 +1,15 @@
 <script lang="coffee">
 import PollCommonVoteForm from '@/components/poll/common/vote_form.vue'
-import PollCommonChangeYourVote from '@/components/poll/common/change_your_vote.vue'
-import PollMultipleChoiceVoteForm from '@/components/poll/multiple_choice/vote_form.vue'
 import PollDotVoteVoteForm from '@/components/poll/dot_vote/vote_form.vue'
 import PollScoreVoteForm from '@/components/poll/score/vote_form.vue'
-import PollCommonStanceChoice from '@/components/poll/common/stance_choice.vue'
 import PollRankedChoiceVoteForm from '@/components/poll/ranked_choice/vote_form.vue'
 import PollMeetingVoteForm from '@/components/poll/meeting/vote_form.vue'
-import PollCommonVotesPanel from '@/components/poll/common/votes_panel.vue'
 
 export default
   components:
     'poll-common-vote-form': PollCommonVoteForm
-    'poll-common-change-your-vote': PollCommonChangeYourVote
-    'poll-multiple_choice-vote-form': PollMultipleChoiceVoteForm
     'poll-dot_vote-vote-form': PollDotVoteVoteForm
     'poll-score-vote-form': PollScoreVoteForm
-    'poll-common-stance-choice': PollCommonStanceChoice
     'poll-ranked_choice-vote-form': PollRankedChoiceVoteForm
     'poll-meeting-vote-form': PollMeetingVoteForm
 
@@ -44,5 +37,5 @@ export default
 </script>
 
 <template>
-  <component :is="componentName" :poll='poll' :stance='stance' :stance-choice='stanceChoice' :outcome='outcome' :back='back' :size="size" :should-reset="shouldReset"></component>
+<component :is="componentName" :poll='poll' :stance='stance' :stance-choice='stanceChoice' :outcome='outcome' :back='back' :size="size" :should-reset="shouldReset"></component>
 </template>
