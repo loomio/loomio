@@ -179,6 +179,7 @@ meeting:
   vote_method: time_poll
   require_all_choices: true
   defaults:
+    meeting_duration: 60
     poll_option_name_format: iso8601
     process_title_i18n: decision_tools_card.meeting_title
     process_subtitle_i18n: poll_common_form.voting_methods.time_poll_hint

@@ -4,26 +4,30 @@ import { startOfHour, addDays } from 'date-fns'
 export default
   props:
     poll: Object
+
   data: ->
-    enabled: @poll.closingAt
+    isDisabled: !@poll.closingAt
+
   watch:
-    enabled: (val) ->
+    isDisabled: (val) ->
       if val
-        @poll.closingAt = startOfHour(addDays(new Date, 3))
-      else
         @poll.closingAt = null
+      else
+        @poll.closingAt = startOfHour(addDays(new Date, 3))
 </script>
 
 <template lang="pug">
 .poll-common-wip-field
   v-checkbox(
-    v-model="enabled"
+    v-model="isDisabled"
     hide-details
     :disabled="poll.decidedVotersCount > 0"
   )
     div(slot="label")
-      template(v-if="enabled")
-        span(v-t="'poll_common_wip_field.enable_voting'")
-      template(v-if="!enabled")
-        span(v-t="'poll_common_wip_field.enable_voting'")
+      span {{$t('poll_common_wip_field.draft_mode')}}
+      space
+      | -
+      space
+      //- span.text-lowercase {{$t('poll_common_wip_field.title', {poll_type: poll.translatedPollType()})}}
+      span.text-lowercase {{$t('poll_common_wip_field.disable_voting_during_development', {poll_type: poll.translatedPollType()})}}
 </template>

@@ -62,6 +62,7 @@ export default class PollModel extends BaseModel
     processSubtitle: null
     processDescription: null
     processDescriptionFormat: 'html'
+    pollOptionNameFormat: null
     recipientMessage: null
     recipientAudience: null
     recipientUserIds: []

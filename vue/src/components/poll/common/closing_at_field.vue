@@ -47,15 +47,40 @@ div
     .poll-common-closing-at-field__inputs
       v-layout(wrap)
         v-flex
-          v-menu(ref='menu' v-model='isShowingDatePicker' :close-on-content-click='false' offset-y min-width="290px")
+          v-menu(
+            ref='menu'
+            v-model='isShowingDatePicker'
+            :close-on-content-click='false'
+            offset-y
+            min-width="290px"
+          )
             template(v-slot:activator='{ on, attrs }')
-              v-text-field(:disabled="!poll.closingAt" v-model='closingDate' :rules="[validDate]" placeholder="2000-12-30" v-on='on' v-bind="attrs" prepend-icon="mdi-calendar")
+              v-text-field(
+                :disabled="!poll.closingAt"
+                v-model='closingDate'
+                :rules="[validDate]"
+                placeholder="2000-12-30"
+                v-on='on'
+                v-bind="attrs"
+                prepend-icon="mdi-calendar"
+              )
                 template(v-slot:label)
-                  span(v-if="poll.closingAt" v-t="{ path: 'common.closing_in', args: { time: label } }" :title="exact(poll.closingAt)")
+                  span(v-if="poll.closingAt" v-t="{ path: 'common.closing_in', args: { time: label } }", :title="exact(poll.closingAt)")
                   span(v-if="!poll.closingAt" v-t="'poll_common_closing_at_field.no_closing_date'")
-            v-date-picker.poll-common-closing-at-field__datepicker(:disabled="!poll.closingAt" v-model='closingDate' :min='dateToday' no-title @input="isShowingDatePicker = false")
+            v-date-picker.poll-common-closing-at-field__datepicker(
+              :disabled="!poll.closingAt"
+              v-model='closingDate'
+              :min='dateToday'
+              no-title
+              @input="isShowingDatePicker = false")
         v-spacer
-        v-select.poll-common-closing-at-field__timepicker(:disabled="!poll.closingAt" prepend-icon="mdi-clock-outline" v-model='closingHour' :label="$t('poll_meeting_time_field.closing_hour')" :items="times")
+        v-select.poll-common-closing-at-field__timepicker(
+          :disabled="!poll.closingAt"
+          prepend-icon="mdi-clock-outline"
+          v-model='closingHour'
+          :label="$t('poll_meeting_time_field.closing_hour')"
+          :items="times"
+        )
     validation-errors(:subject="poll", field="closingAt")
 
 </template>

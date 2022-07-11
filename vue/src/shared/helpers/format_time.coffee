@@ -1,4 +1,4 @@
-import { differenceInHours, formatDistanceStrict, isSameYear, isValid } from 'date-fns'
+import { differenceInHours, formatDistanceStrict, isSameYear, isValid, parse } from 'date-fns'
 import { format, utcToZonedTime } from 'date-fns-tz'
 import defaultLocale from 'date-fns/locale/en-US'
 import AppConfig from '@/shared/services/app_config'
@@ -87,3 +87,6 @@ export hoursOfDay = [
   "23:00"
   "23:59"
 ]
+
+export hoursOfDay12 = hoursOfDay.map (s) -> 
+  format(parse(s, 'HH:mm', new Date()), "h:mm a", {locale: i18n.dateLocale})

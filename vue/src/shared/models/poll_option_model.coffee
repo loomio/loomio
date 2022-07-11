@@ -1,6 +1,8 @@
 import BaseModel  from  '@/shared/record_store/base_model'
 import Records  from  '@/shared/services/records'
 import {map, parseInt, slice, max} from 'lodash'
+import { exact } from '@/shared/helpers/format_time'
+import { parseISO } from 'date-fns'
 import I18n from '@/i18n'
 
 export default class PollOptionModel extends BaseModel
@@ -33,5 +35,6 @@ export default class PollOptionModel extends BaseModel
     switch poll.pollOptionNameFormat
       when 'plain' then @name
       when 'i18n' then i18n.t('poll_' + poll.pollType + '_options.' + @name)
+      when 'iso8601' then exact(parseISO(@name))
       else
         console.error 'unsupported option format', poll.pollOptionNameFormat

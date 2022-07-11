@@ -53,6 +53,8 @@ class PermittedParams < Struct.new(:params)
       :process_subtitle,
       :process_description,
       :process_description_format,
+      :poll_option_name_format,
+      :reason_prompt,
       :template,
       :time_zone,
       :meeting_duration,

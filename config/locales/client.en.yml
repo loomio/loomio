@@ -1704,12 +1704,14 @@ en:
     ranked_choice_title: Ranked choice
 
   poll_option_form:
+    edit_option: Edit option
     option_name: Option name
+    option_name_hint: A short name for this option
     icon: Icon
     meaning: Meaning
-    meaning_hint: Explain what this option means. (optional)
+    meaning_hint: A sentence that explains what this option means. (optional)
     prompt: Reason prompt
-    prompt_hint: A question that might help the voter explain their choice. (optional)
+    prompt_hint: A question to prompt voters to provide their reasoning or reconsider their position. (optional)
 
   poll_common:
     decision: Decision
@@ -1919,7 +1921,8 @@ en:
     enable_voting: Enable voting
     title: Disable voting
     past_tense: Voting disabled
-    helptext: 'This %{poll_type} is a work in progress. You can enable voting later'
+    draft_mode: 'Draft mode'
+    disable_voting_during_development: 'Disable voting while you develop the %{poll_type}'
 
   poll_common_closing_at_field:
     closing: Closing
@@ -2005,7 +2008,6 @@ en:
       ranked_choice_hint: Voters order the options from most to least favoured
       time_poll: Time poll
       time_poll_hint: Voters indicate when they are available from the list of options
-
     process: Process
     process_title: Process title
     process_title_hint: E.g. Proposal, Resolution, Agreement, Temperature check
@@ -2013,7 +2015,6 @@ en:
     process_subtitle_hint: One line that explains what the process does
     process_description: Process description
     process_description_hint: Explain how the process works
-
     chart_type: Chart type
     title: Title
     title_hint: A short statement or question
@@ -2038,6 +2039,7 @@ en:
     count_voters_added: '%{count} voters added'
     poll_type_created: '%{poll_type} created'
     poll_type_started: '%{poll_type} started'
+    reason_prompt: Reason prompt
 
   poll_proposal_form:
     tool_tip_collapsed: Seek agreement or feedback from others.

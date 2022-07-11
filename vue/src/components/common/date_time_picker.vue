@@ -13,15 +13,14 @@ export default
 
   created: ->
     @newValue = @value
-    @dateStr = format(@value, 'yyyy-MM-dd')
-    @timeStr = format(@value, 'HH:mm')
-    @minStr  = format(@min, 'yyyy-MM-dd')
 
   data: ->
-    dateStr: null
-    timeStr: null
+    dateStr: @value && format(@value, 'yyyy-MM-dd') || ''
+    timeStr: @value && format(@value, 'HH:mm') || ''
+    minStr:  @value && format(@min, 'yyyy-MM-dd') || ''
     dateMenu: false
     times: hoursOfDay
+    placeholder: format(new Date(), 'yyyy-MM-dd')
     validDate: (val) =>
       isValid(parse(val, "yyyy-MM-dd", new Date()))
 
@@ -45,7 +44,7 @@ v-layout.date-time-picker
         v-model='dateStr'
         v-on='on'
         v-bind='attrs'
-        placeholder="2000-12-31"
+        :placeholder="placeholder"
         :rules="[validDate]"
         prepend-icon="mdi-calendar")
     v-date-picker.date-time-picker__date-picker(

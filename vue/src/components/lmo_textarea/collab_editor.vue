@@ -241,7 +241,7 @@ export default
 div
   //- template(v-if="!editor || loading")
   //-   | Connecting to socket server …
-  .editor.mb-3(v-if="editor")
+  .editor(v-if="editor")
     editor-content.html-editor__textarea(ref="editor", :editor='editor').lmo-markdown-wrapper
     .menubar
       div

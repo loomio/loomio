@@ -10,6 +10,7 @@ import { optionImages } from '@/shared/helpers/poll'
 import { addHours, isAfter } from 'date-fns'
 import PollCommonWipField from '@/components/poll/common/wip_field'
 import { HandleDirective } from 'vue-slicksort';
+import { isSameYear, startOfHour }  from 'date-fns'
 
 export default
   components: {PollCommonWipField}
@@ -45,19 +46,14 @@ export default
       {text: 'pie', value: 'pie'}
       {text: 'grid', value: 'grid'}
     ]
-    durations:
-      [5, 10, 15, 20, 30, 45, 60, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240, null].map (minutes) =>
-        if minutes
-          duration = intervalToDuration({ start: new Date, end: addMinutes(new Date, minutes) })
-          {text: formatDuration(duration, { format: ['hours', 'minutes'] }), value: minutes}
-        else
-          {text: @$t('common.all_day'), value: null}
     currentHideResults: @poll.hideResults
     hideResultsItems: [
       { text: @$t('common.off'), value: 'off' }
       { text: @$t('poll_common_card.until_vote'), value: 'until_vote' }
       { text: @$t('poll_common_card.until_poll_type_closed', pollType: @poll.translatedPollType()), value: 'until_closed' }
     ]
+    newDateOption: null
+    minDate: new Date
 
   methods:
     setPollOptionPriority: ->
@@ -98,6 +94,10 @@ export default
         option['_destroy'] = 1
       else
         @pollOptions = without(@pollOptions, option)
+
+    addDateOption: ->
+      @newOption = @newDateOption.toJSON()
+      @addOption()
 
     addOption: ->
       if some(@pollOptions, (o) => o.name == @newOption)
@@ -149,7 +149,14 @@ export default
         console.error error
 
   computed:
+    formattedDuration: -> 
+      return '' unless @poll.meetingDuration
+      minutes = parseInt(@poll.meetingDuration)
+      duration = intervalToDuration({ start: new Date, end: addMinutes(new Date, minutes) })
+      formatDuration(duration, { format: ['hours', 'minutes'] })
+
     visiblePollOptions: -> @pollOptions.filter (o) -> !o._destroy
+    
     allowAnonymous: -> !@poll.config().prevent_anonymous
 
     settings: ->
@@ -224,8 +231,7 @@ export default
         :should-reset="shouldReset"
       )
 
-      v-divider.my-4
-      v-subheader.px-0(v-t="'poll_common_form.options'")
+      .v-label.v-label--active.px-0.text-caption.py-2(v-t="'poll_common_form.options'")
       v-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
       sortable-list(v-model="pollOptions" append-to=".app-is-booted" use-drag-handle lock-axis="y")
         sortable-item(
@@ -235,26 +241,27 @@ export default
           :item="option"
           v-if="pollOptions.length"
         )
-          v-list-item.px-0(style="user-select: none")
-            v-list-item-icon(v-handle)
-              v-avatar(size="48" v-if="hasOptionIcon")
-                img(:src="'/img/' + option.icon + '.svg'" aria-hidden="true")
-         
-            v-list-item-content(v-handle)
-              v-list-item-title
-                span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name")
-                span(v-if="optionFormat == 'plain'") {{option.name}}
-                span(v-if="optionFormat == 'iso8601'")
-                  poll-meeting-time(:name="option.name")
-              v-list-item-subtitle {{option.meaning}}
+          v-sheet.mb-2.rounded(outlined)
+            v-list-item(style="user-select: none")
+              v-list-item-icon(v-if="hasOptionIcon" v-handle)
+                v-avatar(size="48")
+                  img(:src="'/img/' + option.icon + '.svg'" aria-hidden="true")
+           
+              v-list-item-content(v-handle)
+                v-list-item-title
+                  span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name")
+                  span(v-if="optionFormat == 'plain'") {{option.name}}
+                  span(v-if="optionFormat == 'iso8601'")
+                    poll-meeting-time(:name="option.name")
+                v-list-item-subtitle {{option.meaning}}
 
-            v-list-item-action
-              v-btn(icon @click="removeOption(option)", :title="$t('common.action.delete')")
-                v-icon.text--secondary mdi-delete
-            v-list-item-action.ml-0
-              v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
-                v-icon.text--secondary mdi-pencil
-            v-icon.text--secondary(v-handle, :title="$t('common.action.move')") mdi-drag-vertical
+              v-list-item-action
+                v-btn(icon @click="removeOption(option)", :title="$t('common.action.delete')")
+                  v-icon.text--secondary mdi-delete
+              v-list-item-action.ml-0
+                v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
+                  v-icon.text--secondary mdi-pencil
+              v-icon.text--secondary(v-handle, :title="$t('common.action.move')") mdi-drag-vertical
 
       template(v-if="optionFormat == 'i18n'")
         v-select(
@@ -277,18 +284,32 @@ export default
         )
 
       template(v-if="optionFormat == 'iso8601'")
-        poll-meeting-add-option-menu(:poll="poll")
-        v-select(
-          v-model="poll.meetingDuration"
-          :label="$t('poll_meeting_form.meeting_duration')"
-          :items="durations"
-        )
+        .v-label.v-label--active.px-0.text-caption.pt-2 New option
+        .d-flex.align-center
+          date-time-picker(:min="minDate" v-model="newDateOption")
+          v-btn.poll-meeting-form__option-button.ml-4(
+            :title="$t('poll_meeting_time_field.add_time_slot')"
+            outlined color="primary"
+            @click='addDateOption()'
+            v-t="'poll_poll_form.add_option_placeholder'"
+          )
+      template(v-if="optionFormat == 'iso8601'")
+        .d-flex.align-center
+          v-text-field.text-right(
+            style="max-width: 120px; text-align: right"
+            :label="$t('poll_meeting_form.meeting_duration')"
+            v-model="poll.meetingDuration"
+            type="number"
+          )
+          span.pl-2 Minutes
+          span.pl-1.text--secondary(v-if="formattedDuration") ({{formattedDuration}})
+
        
       v-divider.my-4
 
       poll-common-wip-field(:poll="poll")
       poll-common-closing-at-field(:poll="poll")
-
+        
       common-notify-fields(:model="poll")
 
     v-tab-item.poll-common-form__settings-tab
@@ -311,6 +332,13 @@ export default
         :label="$t('poll_common_form.process_description')"
         :should-reset="shouldReset"
       )
+
+      v-text-field(
+        v-if="!poll.singleChoice()"
+        v-model="poll.reasonPrompt"
+        :label="$t('poll_common_form.reason_prompt')"
+        :hint="$t('poll_option_form.prompt_hint')"
+        :placeholder="$t('poll_common.reason_placeholder')")
 
       tags-field(:model="poll")
 
