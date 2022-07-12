@@ -2300,6 +2300,7 @@ en:
     check_your_email: Check your email!
     login_link_sent: "We've sent an email to {{email}}."
     instructions: "Click the link to sign in, or enter the code below:"
+    instructions_code: "Enter the code from that email:"
     too_many_attempts: "Too many attempts; try clicking the link in the email to sign in."
     invalid_code: "Sorry, that code didn't match. Check the email and try again."
     password_link_sent: "We've sent an email to {{email}} with instructions on how to set your password."
