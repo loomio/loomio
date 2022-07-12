@@ -1,7 +1,7 @@
-%p.user-mailer__context.text-center=t(:"email.login.intro", name: (@user.name || @user.email), site_name: AppConfig.theme[:site_name])
-%p.user-mailer__message-container.text-center
-  = render('base_mailer/button', url: login_token_url(@token.token, @utm_hash), text: t(:"email.login.login", name: (@user.name || @user.email), site_name: AppConfig.theme[:site_name]))
-%p.user-mailer__code-helptext.text-center= t(:"email.common.or_enter_code")
+%p.user-mailer__context.text-center=t(:"email.login.intro_code", name: (@user.name || @user.email), site_name: AppConfig.theme[:site_name])
+/ %p.user-mailer__message-container.text-center
+/   = render('base_mailer/button', url: login_token_url(@token.token, @utm_hash), text: t(:"email.login.login", name: (@user.name || @user.email), site_name: AppConfig.theme[:site_name]))
+/ %p.user-mailer__code-helptext.text-center= t(:"email.common.or_enter_code")
 %p.user-mailer__code.text-center= @token.code
 %p.user-mailer__resend.text-center
   %span= t(:"email.common.resend")

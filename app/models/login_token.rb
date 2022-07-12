@@ -3,7 +3,7 @@ class LoginToken < ApplicationRecord
   extend HasTokens
 
   initialized_with_token :token
-  initialized_with_token :code, -> { Random.new.rand(999999) }
+  initialized_with_token :code, -> { generate_code }
 
   EXPIRATION = ENV.fetch('LOGIN_TOKEN_EXPIRATION_MINUTES', 1440)
 
@@ -19,5 +19,13 @@ class LoginToken < ApplicationRecord
 
   def user
     User.verified.find_by(email: super.email) || super
+  end
+
+  def self.generate_code
+    code = 0
+    while code < 100000
+      code = Random.new.rand(999999)
+    end
+    code
   end
 end
