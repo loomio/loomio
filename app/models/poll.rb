@@ -67,7 +67,7 @@ class Poll < ApplicationRecord
       poll.poll_options.length
     else
       self[:minimum_stance_choices] || 
-      self[:custom_fields][:maximum_stance_choices] || 
+      self[:custom_fields][:minimum_stance_choices] || 
       AppConfig.poll_types.dig(self.poll_type, 'defaults', 'minimum_stance_choices') ||
       0
     end
@@ -182,8 +182,8 @@ class Poll < ApplicationRecord
     !(min_score == max_score)
   end
 
-  def is_single_vote?
-    poll_type != "single_choice"
+  def is_single_choice?
+    minimum_stance_choices == maximum_stance_choices
   end
 
   def results_include_undecided
@@ -421,7 +421,15 @@ class Poll < ApplicationRecord
     existing = Array(poll_options.pluck(:name))
     names = names.sort if poll_type == 'meeting'
     names.each_with_index do |name, priority|
-      poll_options.find_or_initialize_by(name: name).priority = priority
+      option = poll_options.find_or_initialize_by(name: name)
+      option.priority = priority
+      os = AppConfig.poll_types.dig(self.poll_type, 'common_poll_options') || []
+      if params = os.find {|o| o['icon'] == name } 
+        option.name = I18n.t(params['name_i18n'])
+        option.icon = name
+        option.meaning = I18n.t(params['meaning_i18n'])
+        option.prompt = I18n.t(params['prompt_i18n'])
+      end
     end
     removed = (existing - names)
     poll_options.each {|option| option.mark_for_destruction if removed.include?(option.name) }
