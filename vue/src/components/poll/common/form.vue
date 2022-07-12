@@ -293,6 +293,7 @@ export default
             @click='addDateOption()'
             v-t="'poll_poll_form.add_option_placeholder'"
           )
+        poll-meeting-add-option-menu(:poll="poll", :value="newDateOption")
       template(v-if="optionFormat == 'iso8601'")
         .d-flex.align-center
           v-text-field.text-right(
@@ -301,7 +302,7 @@ export default
             v-model="poll.meetingDuration"
             type="number"
           )
-          span.pl-2 Minutes
+          span.pl-2(v-t="'common.minutes'")
           span.pl-1.text--secondary(v-if="formattedDuration") ({{formattedDuration}})
 
        

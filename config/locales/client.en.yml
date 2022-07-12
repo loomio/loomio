@@ -219,6 +219,7 @@ en:
     anonymous: Anonymous
     required: Required
     email_address: Email address
+    minutes: Minutes
     privacy:
       privacy: 'Privacy'
       public: 'Public'
@@ -1988,7 +1989,7 @@ en:
     success: Successfully deleted
 
   poll_common_form:
-    your_in_zone:  You're in %{zone}
+    your_in_zone: 'Current time zone: %{zone}'
     show_other_zones: Show other time zones
     hide_other_zones: Hide other time zones
     this_is_a_template_for_new_decisions: This is a template for new decisions
