@@ -99,10 +99,8 @@ ActiveAdmin.register User do
       end
     end
 
-    if user.deactivated_at.present?
-      panel("Reactivate") do
-        button_to 'Reactivate User', reactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to reactivate this user?'}
-      end
+    panel("Reactivate") do
+      button_to 'Reactivate User', reactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to reactivate this user?'}
     end
 
     panel("Destroy") do
