@@ -258,10 +258,10 @@ export default
               v-list-item-action
                 v-btn(icon @click="removeOption(option)", :title="$t('common.action.delete')")
                   v-icon.text--secondary mdi-delete
-              v-list-item-action.ml-0
+              v-list-item-action.ml-0(v-if="poll.pollType != 'meeting'")
                 v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
                   v-icon.text--secondary mdi-pencil
-              v-icon.text--secondary(v-handle, :title="$t('common.action.move')") mdi-drag-vertical
+              v-icon.text--secondary(v-handle, :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") mdi-drag-vertical
 
       template(v-if="optionFormat == 'i18n'")
         v-select(
@@ -442,6 +442,7 @@ export default
       color="primary"
       @click='submit()'
       :loading="poll.processing"
+      :disabled="pollOptions.length == 0"
     )
       span(v-if='poll.id' v-t="'common.action.save_changes'")
       span(v-if='!poll.id && poll.closingAt' v-t="'poll_common_form.start_poll'")
