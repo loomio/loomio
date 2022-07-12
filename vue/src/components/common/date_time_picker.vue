@@ -1,7 +1,7 @@
 <script lang="coffee">
 import Records     from '@/shared/services/records'
 import { times } from 'lodash'
-import { hoursOfDay } from '@/shared/helpers/format_time'
+import { hoursOfDay, timeFormat } from '@/shared/helpers/format_time'
 import { format, parse, isValid } from 'date-fns'
 
 export default
@@ -16,19 +16,19 @@ export default
 
   data: ->
     dateStr: @value && format(@value, 'yyyy-MM-dd') || ''
-    timeStr: @value && format(@value, 'HH:mm') || ''
+    timeStr: @value && format(@value, timeFormat()) || ''
     minStr:  @value && format(@min, 'yyyy-MM-dd') || ''
     dateMenu: false
-    times: hoursOfDay
+    times: hoursOfDay()
     placeholder: format(new Date(), 'yyyy-MM-dd')
     validDate: (val) =>
       isValid(parse(val, "yyyy-MM-dd", new Date()))
 
-
   methods:
     updateNewValue: ->
-      return unless isValid(parse("#{@dateStr} #{@timeStr}", 'yyyy-MM-dd HH:mm', new Date))
-      @newValue = parse("#{@dateStr} #{@timeStr}", 'yyyy-MM-dd HH:mm', new Date)
+      val = parse("#{@dateStr} #{@timeStr}", "yyyy-MM-dd #{timeFormat()}", new Date)
+      return unless isValid(val)
+      @newValue = val
       @$emit('input', @newValue)
 
   watch:

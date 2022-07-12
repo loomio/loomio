@@ -10,7 +10,7 @@ import { optionImages } from '@/shared/helpers/poll'
 import { addHours, isAfter } from 'date-fns'
 import PollCommonWipField from '@/components/poll/common/wip_field'
 import { HandleDirective } from 'vue-slicksort';
-import { isSameYear, startOfHour }  from 'date-fns'
+import { isSameYear, startOfHour, setHours }  from 'date-fns'
 
 export default
   components: {PollCommonWipField}
@@ -52,8 +52,8 @@ export default
       { text: @$t('poll_common_card.until_vote'), value: 'until_vote' }
       { text: @$t('poll_common_card.until_poll_type_closed', pollType: @poll.translatedPollType()), value: 'until_closed' }
     ]
-    newDateOption: null
-    minDate: new Date
+    newDateOption: startOfHour(setHours(new Date(), 12))
+    minDate: new Date()
 
   methods:
     setPollOptionPriority: ->

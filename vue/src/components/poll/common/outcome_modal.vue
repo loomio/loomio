@@ -8,7 +8,7 @@ import AbilityService from '@/shared/services/ability_service'
 import Vue     from 'vue'
 import { uniq, map, sortBy, head, find, filter, sum } from 'lodash'
 import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter, parseISO } from 'date-fns'
-import { hoursOfDay, exact} from '@/shared/helpers/format_time'
+import { exact} from '@/shared/helpers/format_time'
 
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
 import I18n from '@/i18n'

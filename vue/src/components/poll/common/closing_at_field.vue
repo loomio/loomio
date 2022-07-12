@@ -1,25 +1,25 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
 import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter } from 'date-fns'
-import { hoursOfDay, exact} from '@/shared/helpers/format_time'
+import { hoursOfDay, exact, timeFormat} from '@/shared/helpers/format_time'
 
 export default
   props:
     poll: Object
 
   data: ->
-    closingHour: format(startOfHour(@poll.closingAt || new Date()), 'HH:mm')
+    closingHour: format(startOfHour(@poll.closingAt || new Date()), timeFormat())
     closingDate: format(@poll.closingAt || new Date(), 'yyyy-MM-dd')
     dateToday: format(new Date, 'yyyy-MM-dd')
-    times: hoursOfDay
+    times: hoursOfDay()
     timeZone: AppConfig.timeZone
     isShowingDatePicker: false
-    validDate: => isValid(parse("#{@closingDate} #{@closingHour}", "yyyy-MM-dd HH:mm", new Date()))
+    validDate: => isValid(parse("#{@closingDate} #{@closingHour}", "yyyy-MM-dd #{timeFormat()}", new Date()))
 
   methods:
     exact: exact
     updateClosingAt: ->
-      date = parse("#{@closingDate} #{@closingHour}", "yyyy-MM-dd HH:mm", new Date())
+      date = parse("#{@closingDate} #{@closingHour}", "yyyy-MM-dd #{timeFormat()}", new Date())
       if isValid(date)
         @poll.closingAt = date
 
@@ -32,7 +32,7 @@ export default
   watch:
     'poll.closingAt': (val) ->
       return unless val
-      @closingHour = format(startOfHour(val), 'HH:mm')
+      @closingHour = format(startOfHour(val), timeFormat())
       @closingDate = format(val, 'yyyy-MM-dd')
 
     closingDate: (val) ->
