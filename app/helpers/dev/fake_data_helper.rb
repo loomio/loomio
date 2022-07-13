@@ -211,7 +211,7 @@ module Dev::FakeDataHelper
       if poll.can_respond_maybe
         [0,1,2].sample
       else
-        [0,1].sample
+        [0,2].sample
       end
     else
       1

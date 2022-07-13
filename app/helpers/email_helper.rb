@@ -20,9 +20,8 @@ module EmailHelper
     poll.poll.stances.latest.find_by(participant: recipient) || Stance.new(poll: poll, participant: recipient)
   end
 
-  def formatted_time_zone(poll)
-    time_zone = (@recipient || poll).time_zone
-    ActiveSupport::TimeZone[time_zone].to_s if time_zone
+  def formatted_time_zone
+    ActiveSupport::TimeZone[@recipient.time_zone].to_s
   end
 
   def tracked_url(model, args = {})
@@ -68,14 +67,6 @@ module EmailHelper
 
   def can_unfollow?(discussion, recipient)
     DiscussionReader.for(discussion: discussion, user: recipient).volume_is_loud?
-  end
-
-  def stance_icon_for(poll, stance_choice)
-    case stance_choice&.score.to_i
-      when 0 then "disagree"
-      when 1 then "abstain"
-      when 2 then "agree"
-    end if poll.has_score_icons
   end
 
   def reply_to_address(model:, user: )
@@ -134,6 +125,18 @@ module EmailHelper
       (100 * stance_choice.score.to_f / max).to_i
     else
       0
+    end
+  end
+
+  def optional_link(url, attrs = {}, &block)
+    if url
+      content_tag(:a, {href: url}.merge(attrs)) do
+        block.call
+      end
+    else
+      content_tag(:span) do
+        block.call
+      end
     end
   end
 end

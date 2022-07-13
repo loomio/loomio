@@ -686,7 +686,7 @@ ActiveRecord::Schema.define(version: 2022_07_05_021042) do
     t.string "process_subtitle"
     t.string "process_description_format", default: "md", null: false
     t.string "reason_prompt"
-    t.string "poll_option_name_format", default: "plain"
+    t.string "poll_option_name_format"
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"

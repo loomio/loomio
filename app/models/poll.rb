@@ -183,7 +183,7 @@ class Poll < ApplicationRecord
   end
 
   def is_single_choice?
-    minimum_stance_choices == maximum_stance_choices
+    minimum_stance_choices == 1 && maximum_stance_choices == 1
   end
 
   def results_include_undecided

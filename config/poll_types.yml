@@ -178,6 +178,8 @@ meeting:
   prevent_anonymous: true
   vote_method: time_poll
   require_all_choices: true
+  validate_min_score: true
+  validate_max_score: true
   defaults:
     meeting_duration: 60
     poll_option_name_format: iso8601
@@ -187,6 +189,5 @@ meeting:
     chart_column: max_score_percent
     chart_type: grid
     icon_type: grid
-    minimum_stance_choices: 1
     min_score: 0
     max_score: 2
