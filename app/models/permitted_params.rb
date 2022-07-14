@@ -49,6 +49,7 @@ class PermittedParams < Struct.new(:params)
       :dots_per_person,
       :max_score,
       :min_score,
+      :options, {options: []},
       :process_title,
       :process_subtitle,
       :process_description,

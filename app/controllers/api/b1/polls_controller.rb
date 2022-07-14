@@ -14,9 +14,4 @@ class API::B1::PollsController < API::B1::BaseController
       respond_with_errors
     end
   end
-
-  private
-  def poll_attributes
-    params.slice(*PermittedParams.new.poll_attributes).permit(*PermittedParams.new.poll_attributes)
-  end
 end

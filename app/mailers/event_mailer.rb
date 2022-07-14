@@ -49,6 +49,7 @@ class EventMailer < BaseMailer
     subject_key = "notifications.with_title.#{@event.kind}" 
     subject_params = {
       title: @event.eventable.title,
+      group_name: @event.eventable.title, # cope for old translations
       poll_type: @poll && I18n.t("poll_types.#{@poll.poll_type}"),
       actor: @event.user.name,
       site_name: AppConfig.theme[:site_name]
