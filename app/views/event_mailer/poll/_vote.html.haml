@@ -3,7 +3,6 @@
 .poll-mailer__vote.pb-4
   - if poll.anonymous?
     %p= t(:"poll_common_action_panel.anonymous")
-
   - if stance.cast_at
     %h2.text-subtitle-2= t(:"poll_common.your_response")
     = render 'event_mailer/poll/stance', stance: stance

@@ -64,11 +64,16 @@ export default
     dotsPerPerson: ->
       @stance.poll().dotsPerPerson
 
+    alertColor: ->
+      return 'success' if @dotsRemaining == 0 
+      return 'primary' if @dotsRemaining > 0
+      return 'error'   if @dotsRemaining < 0
+
 </script>
 
 <template lang="pug">
 .poll-dot-vote-vote-form
-  v-subheader.poll-dot-vote-vote-form__dots-remaining(v-t="{ path: 'poll_dot_vote_vote_form.dots_remaining', args: { count: dotsRemaining } }")
+  v-alert(dense :color="alertColor").poll-dot-vote-vote-form__dots-remaining(v-t="{ path: 'poll_dot_vote_vote_form.dots_remaining', args: { count: dotsRemaining } }")
   .poll-dot-vote-vote-form__options
     .poll-dot-vote-vote-form__option(v-for='choice in stanceChoices', :key='choice.option.id')
       v-subheader.poll-dot-vote-vote-form__option-label {{ choice.option.name }}
