@@ -1,0 +1,16 @@
+- polls = @discussion.polls.active.order('closing_at asc')
+- if polls.any?
+  %h3.text-h6.mb-2= t('dashboard_page.current_polls')
+  %table{style: "padding: 0; margin-bottom: 8px"}
+    - polls.each do |poll|
+      - stance = recipient_stance(@recipient, poll)
+      %tr
+        %td= poll.title
+        %td
+          - if @recipient.can?(:vote_in, poll)
+            - if stance && stance.cast_at?
+              = t('poll_mailer.common.you_voted')
+            - else
+              = link_to t('poll_mailer.common.vote_now'), polymorphic_url(poll)
+          - else
+            = t('poll_mailer.common.not_invited')

@@ -351,6 +351,8 @@ en:
       view_on_loomio: View it on %{site_name}
       create_outcome: Share outcome
       your_response: "You voted:"
+      you_voted: "You voted!"
+      not_invited: "Not invited"
       please_respond: Please respond
       time_zone: (Times displayed in %{zone})
       undecided_members: Undecided Members (%{count})
