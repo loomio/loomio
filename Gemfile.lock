@@ -620,7 +620,6 @@ DEPENDENCIES
   listen
   lograge
   maxminddb
-  mini_magick
   nokogiri
   oj
   paper_trail (~> 12.3.0)
@@ -646,6 +645,7 @@ DEPENDENCIES
   rspec-its
   rspec-rails (~> 5.1.2)
   ruby-saml
+  ruby-vips
   sass-rails
   sentry-rails
   sentry-ruby

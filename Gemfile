@@ -26,8 +26,8 @@ gem 'friendly_id', '~> 5.4.2'
 gem 'httparty', '~> 0.20.0'
 gem 'browser', '~> 5.3.1'
 gem "aws-sdk-s3", require: false
-gem 'mini_magick'
 gem 'image_processing', '~> 1.12'
+gem "ruby-vips"
 gem "sentry-ruby"
 gem "sentry-rails"
 gem "sentry-sidekiq"
