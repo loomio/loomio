@@ -34,9 +34,10 @@ export default class PollModel extends BaseModel
     # read defaults based on pollType and apply them
     discussionId: null
     title: ''
+    closingAt: startOfHour(addDays(new Date, 3))
     details: ''
     detailsFormat: 'html'
-    closingAt: startOfHour(addDays(new Date, 3))
+    decidedVotersCount: 0
     specifiedVotersOnly: false
     pollOptionNames: []
     pollType: 'single_choice'
@@ -142,8 +143,10 @@ export default class PollModel extends BaseModel
     )
 
   adminsInclude: (user) ->
-    stance = @stanceFor(user)
-    (stance && stance.admin) || (@discussionId && @discussion().adminsInclude(user)) || @group().adminsInclude(user)
+    (@authorId == user.id && (!@groupId || @group().membersInclude(user))) ||
+    (stance = @stanceFor(user) && stance.admin) || 
+    (@discussionId && @discussion().adminsInclude(user)) || 
+    @group().adminsInclude(user)
 
   votersInclude: (user) ->
     if specifiedVotersOnly

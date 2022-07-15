@@ -149,6 +149,7 @@ export default
       :excludedAudiences="['voters', 'undecided_voters', 'non_voters', 'decided_voters']"
       :excludedUserIds="userIds"
       :initialRecipients="initialRecipients"
+      includeActor
       :excludeMembers="true"
       @new-query="newQuery")
 

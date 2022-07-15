@@ -7,8 +7,6 @@ class PollService
 
     return false unless poll.valid?
     poll.save!
-
-    Stance.create!(participant: actor, poll: poll, admin: true, reason_format: actor.default_format)
     poll.update_counts!
     EventBus.broadcast('poll_create', poll, actor)
     Events::PollCreated.publish!(poll, actor)

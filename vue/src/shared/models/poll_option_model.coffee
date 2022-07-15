@@ -34,7 +34,7 @@ export default class PollOptionModel extends BaseModel
     poll = @poll()
     switch poll.pollOptionNameFormat
       when 'plain' then @name
-      when 'i18n' then i18n.t('poll_' + poll.pollType + '_options.' + @name)
+      when 'i18n' then I18n.t('poll_' + poll.pollType + '_options.' + @name)
       when 'iso8601' then exact(parseISO(@name))
       else
         console.error 'unsupported option format', poll.pollOptionNameFormat
