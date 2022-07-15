@@ -543,6 +543,7 @@ input[type="file"]
     overflow: hidden
     width: 100%
     height: auto
+    margin: 0 auto
     &.ProseMirror-selectednode
       outline: 3px solid #68CEF8
     iframe
@@ -553,5 +554,13 @@ input[type="file"]
       width: 100%
       height: 100%
       outline: 2px solid #68CEF8
+
+@media screen and (min-width: 960px)
+  div[data-iframe-container], .iframe-container
+    padding-bottom: 432px !important
+    max-width: 768px
+
+
+
 
 </style>

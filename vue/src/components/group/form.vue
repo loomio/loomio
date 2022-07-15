@@ -124,7 +124,7 @@ export default
 <template lang="pug">
 v-card.group-form
   v-overlay(:value="uploading")
-    v-progress-circular(size="64" :value="progress")
+    v-progress-circular(size="64", :value="progress")
   submit-overlay(:value='group.processing')
   v-card-title
     v-layout(justify-space-between style="align-items: center")
@@ -141,10 +141,8 @@ v-card.group-form
 
     v-tab-item
       .mt-8.px-4
-        .v-input
-          label.v-label.v-label--active.lmo-font-12px(v-t="'group_form.click_to_change_image'" @click="selectCoverPhoto()")
-        v-img.group_form__file-select(:src="realGroup.coverUrl" @click="selectCoverPhoto()")
-        group-avatar.group_form__file-select.group_form__logo(:group="realGroup" :size="64" @click="selectLogo()")
+        v-img.group_form__file-select(:aspect-ratio="4/1", :src="realGroup.coverUrl" @click="selectCoverPhoto()")
+        group-avatar.group_form__file-select.group_form__logo(:group="realGroup", :size="64" @click="selectLogo()")
         .v-input
           label.v-label.v-label--active.lmo-font-12px
             a(v-t="'group_form.change_cover_image'" @click="selectCoverPhoto()")
@@ -156,23 +154,29 @@ v-card.group-form
             a(v-t="'group_form.change_logo'" @click="selectLogo()")
             space
             | (256x256 px)
-        v-text-field.group-form__name#group-name.mt-4(v-model='group.name' :placeholder="$t(groupNamePlaceholder)" :rules='[rules.required]' maxlength='255' :label="$t(groupNameLabel)")
+        v-text-field.group-form__name#group-name.mt-4(v-model='group.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]' maxlength='255', :label="$t(groupNameLabel)")
         div(v-if="!group.parentId || (group.parentId && group.parent().handle)")
-          v-text-field.group-form__handle#group-handle(v-model='group.handle', :hint="$t('group_form.group_handle_placeholder', {handle: group.handle})" maxlength='100' :label="$t('group_form.handle')")
+          v-text-field.group-form__handle#group-handle(v-model='group.handle', :hint="$t('group_form.group_handle_placeholder', {handle: group.handle})" maxlength='100', :label="$t('group_form.handle')")
           validation-errors(:subject="group" field="handle")
         v-spacer
 
         input.hidden.change-picture-form__file-input(type="file" ref="coverPhotoInput" @change='uploadCoverPhoto' accept="image/png, image/jpeg, image/webp")
         input.hidden.change-picture-form__file-input(type="file" ref="logoInput" @change='uploadLogo' accept="image/png, image/jpeg, image/webp")
 
-        lmo-textarea.group-form__group-description(:model='group' field="description" :placeholder="$t('group_form.description_placeholder')" :label="$t('group_form.description')")
+        lmo-textarea.group-form__group-description(:model='group' field="description", :placeholder="$t('group_form.description_placeholder')", :label="$t('group_form.description')")
         validation-errors(:subject="group" field="name")
 
     v-tab-item
       .mt-8.px-4
         .group-form__section.group-form__privacy
           v-radio-group(v-model='group.groupPrivacy')
-            v-radio(v-for='privacy in privacyOptions' :key="privacy" :class="'group-form__privacy-' + privacy" :value='privacy' :aria-label='privacy')
+            v-radio(
+              v-for='privacy in privacyOptions'
+              :key="privacy"
+              :class="'group-form__privacy-' + privacy"
+              :value='privacy'
+              :aria-label='privacy'
+            )
               template(slot='label')
                 .group-form__privacy-title
                   strong(v-t="'common.privacy.' + privacy")
@@ -183,7 +187,12 @@ v-card.group-form
         .group-form__section.group-form__joining.lmo-form-group(v-if='group.privacyIsOpen()')
           v-subheader(v-t="'group_form.how_do_people_join'")
           v-radio-group(v-model='group.membershipGrantedUpon')
-            v-radio(v-for="granted in ['request', 'approval']" :key="granted" :class="'group-form__membership-granted-upon-' + granted" :value='granted')
+            v-radio(
+              v-for="granted in ['request', 'approval']"
+              :key="granted"
+              :class="'group-form__membership-granted-upon-' + granted"
+              :value='granted'
+            )
               template(slot='label')
                 span(v-t="'group_form.membership_granted_upon_' + granted")
 
@@ -209,7 +218,11 @@ v-card.group-form
               span(v-t="'group_form.members_can_add_guests'")
               br
               span.caption(v-t="'group_form.members_can_add_guests_help'")
-        v-checkbox.group-form__members-can-announce(hide-details v-model='group["membersCanAnnounce"]' :label="$t('group_form.members_can_announce')")
+        v-checkbox.group-form__members-can-announce(
+          :label="$t('group_form.members_can_announce')"
+          v-model='group["membersCanAnnounce"]'
+          hide-details
+        )
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_announce'")
