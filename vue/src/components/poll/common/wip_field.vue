@@ -19,9 +19,9 @@ export default
 <template lang="pug">
 .poll-common-wip-field
   v-checkbox(
+    v-show="poll.decidedVotersCount == 0"
     v-model="isDisabled"
     hide-details
-    :disabled="poll.decidedVotersCount > 0"
   )
     div(slot="label")
       span {{$t('poll_common_wip_field.draft_mode')}}
