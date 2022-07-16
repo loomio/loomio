@@ -25,12 +25,15 @@ export default
     hasOptionIcon: -> @poll.config().has_option_icon
     poll: -> @stance.poll()
     optionSelected: -> @selectedOptionIds.length or @selectedOptionId
+    optionPrompt: -> @selectedOptionId && Records.pollOptions.find(@selectedOptionId).prompt
     submitText: ->
       if @stance.castAt
         'poll_common.update_vote'
       else
         'poll_common.submit_vote'
 
+  watch:
+    selectedOptionId: -> EventBus.$emit('focusEditor')
   methods:
     submit: ->
       if @singleChoice
@@ -101,7 +104,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
           v-list-item-title {{option.optionName()}}
           v-list-item-subtitle {{option.meaning}}
 
-  poll-common-stance-reason(:stance='stance', :poll='poll', :selectedOptionId="selectedOptionId")
+  poll-common-stance-reason(:stance='stance', :poll='poll', :selectedOptionId="selectedOptionId", :prompt="optionPrompt")
   v-card-actions.poll-common-form-actions
     v-btn.poll-common-vote-form__submit(
       @click='submit()'
