@@ -38,7 +38,6 @@ export default
         stance.choose(@$route.params.poll_option_id)
       stance
 
-
 </script>
 
 <template lang="pug">
