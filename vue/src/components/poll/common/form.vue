@@ -381,11 +381,12 @@ export default
       )
 
       v-text-field(
-        v-if="poll.stanceReasonRequired != 'disabled'"
+        v-if="poll.stanceReasonRequired != 'disabled' && (!poll.config().per_option_reason_prompt)"
         v-model="poll.reasonPrompt"
         :label="$t('poll_common_form.reason_prompt')"
         :hint="$t('poll_option_form.prompt_hint')"
         :placeholder="$t('poll_common.reason_placeholder')")
+      p.text-caption(v-else v-t="'poll_common_form.you_can_set_a_prompt_per_option'")
 
       v-checkbox.poll-common-checkbox-option.mt-0.mb-4(
         v-if="poll.stanceReasonRequired != 'disabled'"

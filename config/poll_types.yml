@@ -27,6 +27,7 @@ proposal:
   validate_minimum_stance_choices: true
   validate_dots_per_person: true
   has_option_icon: true
+  per_option_reason_prompt: true
   common_poll_options:
     - name_i18n: poll_proposal_options.agree
       icon: agree

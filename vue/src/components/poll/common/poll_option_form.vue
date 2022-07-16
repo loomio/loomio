@@ -19,7 +19,7 @@ export default
 
   computed:
     hasOptionIcon: -> @poll.config().has_option_icon
-    hasOptionPrompt: -> @poll.singleChoice()
+    hasOptionPrompt: -> @poll.config().per_option_reason_prompt
 
   methods:
     submit: ->

@@ -1710,9 +1710,9 @@ en:
     option_name_hint: A short name for this option
     icon: Icon
     meaning: Meaning
-    meaning_hint: A sentence that explains what this option means. (optional)
+    meaning_hint: A sentence that explains what this option means.
     prompt: Reason prompt
-    prompt_hint: A question to prompt voters to provide their reasoning or reconsider their position. (optional)
+    prompt_hint: A question to prompt voters to provide their reasoning or reconsider their position.
 
   poll_common:
     decision: Decision
@@ -2016,6 +2016,7 @@ en:
     process_subtitle_hint: One line that explains what the process does
     process_description: Process description
     process_description_hint: Explain how the process works
+    you_can_set_a_prompt_per_option: For this voting method, there is a prompt for each option. Edit options from the details tab.
     chart_type: Chart type
     title: Title
     title_hint: A short statement or question
