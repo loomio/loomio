@@ -55,6 +55,7 @@ class Stance < ApplicationRecord
   validate :valid_maximum_stance_choices
   validate :valid_dots_per_person
   validate :valid_reason_length
+  validate :valid_reason_required
   validate :valid_require_all_choices
 
   %w(group mailer group_id discussion_id discussion members voters guest_voters title tags).each do |message|
@@ -192,7 +193,14 @@ class Stance < ApplicationRecord
   end
 
   def valid_reason_length
-    return if poll.allow_long_reason
-    errors.add(:reason, I18n.t(:"poll_common.too_long")) if reason_visible_text.length > 500
+    return if !poll.limit_reason_length
+    return if reason_visible_text.length < 501
+    errors.add(:reason, I18n.t(:"poll_common.too_long"))
+  end
+
+  def valid_reason_required
+    return if poll.stance_reason_required != "required"
+    return if reason_visible_text.length > 5
+    errors.add(:reason, I18n.t(:"poll_common_form.stance_reason_is_required"))
   end
 end

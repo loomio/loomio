@@ -54,7 +54,7 @@ form.poll-score-vote-form(@submit.prevent='submit()')
         :max="poll.maxScore"
       )
   validation-errors(:subject='stance', field='stanceChoices')
-  poll-common-stance-reason(:stance='stance')
+  poll-common-stance-reason(:stance='stance', :poll='poll')
   v-card-actions.poll-common-form-actions
     v-spacer
     v-btn.poll-common-vote-form__submit(

@@ -31,7 +31,7 @@ class PermittedParams < Struct.new(:params)
   def poll_attributes
     [ :title, :details, :details_format, :poll_type, :discussion_id, :group_id,
       :closing_at, :anonymous, :hide_results, :multiple_choice, :key,
-      :allow_long_reason,
+      :limit_reason_length,
       :shuffle_options,
       :anyone_can_participate,
       :notify_on_closing_soon,
@@ -58,6 +58,7 @@ class PermittedParams < Struct.new(:params)
       :reason_prompt,
       :template,
       :time_zone,
+      :stance_reason_required,
       :meeting_duration,
       :minimum_stance_choices,
       :maximum_stance_choices,

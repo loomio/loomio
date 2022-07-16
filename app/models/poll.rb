@@ -97,6 +97,7 @@ class Poll < ApplicationRecord
 
   enum notify_on_closing_soon: {nobody: 0, author: 1, undecided_voters: 2, voters: 3}
   enum hide_results: {off: 0, until_vote: 1, until_closed: 2}
+  enum stance_reason_required: {disabled: 0, optional: 1, required: 2}
 
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
@@ -158,6 +159,7 @@ class Poll < ApplicationRecord
     :voter_can_add_options,
     :anyone_can_participate,
     :specified_voters_only,
+    :stance_reason_required,
     :notify_on_closing_soon,
     :poll_option_names,
     :hide_results]

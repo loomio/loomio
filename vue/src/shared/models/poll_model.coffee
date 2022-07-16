@@ -51,7 +51,8 @@ export default class PollModel extends BaseModel
     dotsPerPerson: null
     canRespondMaybe: true
     meetingDuration: null
-    allowLongReason: false
+    limitReasonLength: true
+    stanceReasonRequired: 'optional'
     files: []
     imageFiles: []
     attachments: []
@@ -143,8 +144,9 @@ export default class PollModel extends BaseModel
     )
 
   adminsInclude: (user) ->
+    stance = @stanceFor(user)
     (@authorId == user.id && (!@groupId || @group().membersInclude(user))) ||
-    (stance = @stanceFor(user) && stance.admin) || 
+    (stance && stance.admin) || 
     (@discussionId && @discussion().adminsInclude(user)) || 
     @group().adminsInclude(user)
 

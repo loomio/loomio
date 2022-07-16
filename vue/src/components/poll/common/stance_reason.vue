@@ -1,19 +1,21 @@
 <script lang="coffee">
 export default
   props:
+    poll: Object
     stance: Object
     prompt: String
   computed:
     maxLength: ->
-      if @stance.poll().allowLongReason
-        undefined
-      else
+      if @poll.limitReasonLength
         500
+      else
+        undefined
 </script>
 
 <template lang="pug">
 .poll-common-stance-reason
   lmo-textarea.poll-common-vote-form__reason(
+    v-if="poll.stanceReasonRequired != 'disabled'"
     :model='stance'
     field="reason"
     :label="$t('poll_common.reason')"

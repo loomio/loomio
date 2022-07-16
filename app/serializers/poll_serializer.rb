@@ -1,6 +1,6 @@
 class PollSerializer < ApplicationSerializer
   attributes :id,
-             :allow_long_reason,
+             :limit_reason_length,
              :attachments,
              :author_id,
              :anyone_can_participate,
@@ -49,6 +49,7 @@ class PollSerializer < ApplicationSerializer
              :undecided_voters_count,
              :voter_can_add_options,
              :voters_count,
+             :stance_reason_required,
              :versions_count,
              :dots_per_person,
              :max_score,
@@ -82,7 +83,7 @@ class PollSerializer < ApplicationSerializer
     :details,
     :details_format,
     :hide_results,
-    :allow_long_reason,
+    :limit_reason_length,
     :multiple_choice,
     :notify_on_closing_soon,
     :poll_type,
@@ -99,6 +100,7 @@ class PollSerializer < ApplicationSerializer
     :undecided_voters_count,
     :voter_can_add_options,
     :voters_count,
+    :stance_reason_required,
     :versions_count
   ]
 

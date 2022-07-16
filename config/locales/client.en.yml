@@ -2029,6 +2029,12 @@ en:
     closed: Closed
     start: Start
     start_poll: Start poll
+    stance_reason_required_label: Providing a reason when voting is ...
+    stance_reason_required: Required
+    stance_reason_optional: Optional
+    stance_reason_disabled: Disabled
+    stance_reason_is_required: You must provide a reason with your vote
+    limit_reason_length: Limit reason to maximum 500 characters
     save_poll: Save poll
     start_poll_type: Start {{poll_type}}
     share_poll_type: Share {{poll_type}}
@@ -2041,6 +2047,7 @@ en:
     poll_type_created: '%{poll_type} created'
     poll_type_started: '%{poll_type} started'
     reason_prompt: Reason prompt
+    votes_are_anonymous: Votes are anonymous
 
   poll_proposal_form:
     tool_tip_collapsed: Seek agreement or feedback from others.
@@ -2071,6 +2078,7 @@ en:
     title_placeholder: E.g. Where do you want to go on holiday?
     details_placeholder: Provide any clarifying details people might need to answer the question.
     add_option_placeholder: Add option
+    new_option: New option
     add_option_hint: Enter short name for the option
     remove_option: Remove option
     poll_created: Poll created

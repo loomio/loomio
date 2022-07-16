@@ -163,7 +163,7 @@ class RecordCloner
       content_locale
       link_previews
       shuffle_options
-      allow_long_reason
+      limit_reason_length
       meeting_duration
       time_zone
       dots_per_person

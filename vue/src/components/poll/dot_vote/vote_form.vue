@@ -91,7 +91,7 @@ export default
           :max="dotsPerPerson"
           :readonly="false")
     validation-errors(:subject='stance' field='stanceChoices')
-  poll-common-stance-reason(:stance='stance')
+  poll-common-stance-reason(:stance='stance', :poll='poll')
   v-card-actions.poll-common-form-actions
     v-spacer
     v-btn.poll-common-vote-form__submit(

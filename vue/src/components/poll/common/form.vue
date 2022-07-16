@@ -158,13 +158,17 @@ export default
     visiblePollOptions: -> @pollOptions.filter (o) -> !o._destroy
     
     allowAnonymous: -> !@poll.config().prevent_anonymous
+    stanceReasonRequiredItems: ->
+      [
+        {text: @$t('poll_common_form.stance_reason_required'), value: 'required'},
+        {text: @$t('poll_common_form.stance_reason_optional'), value: 'optional'},
+        {text: @$t('poll_common_form.stance_reason_disabled'), value: 'disabled'}
+      ]
 
     settings: ->
       compact [
         ('shuffleOptions'         if @poll.config().can_shuffle_options),
-        ('canRespondMaybe'        if @poll.pollType == 'meeting'),
-        ('anonymous'              if @allowAnonymous),
-        ('allowLongReason')
+        ('canRespondMaybe'        if @poll.pollType == 'meeting')
       ]
 
     title_key: ->
@@ -222,6 +226,7 @@ export default
         v-model='poll.title'
         maxlength='250')
       validation-errors(:subject='poll' field='title')
+      tags-field(:model="poll")
 
       lmo-textarea(
         :model='poll'
@@ -274,14 +279,16 @@ export default
       template(v-if="optionFormat == 'plain'")
         v-text-field.poll-poll-form__add-option-input.mt-4(
           v-model="newOption"
-          :label="$t('poll_poll_form.add_option_placeholder')"
+          :label="$t('poll_poll_form.new_option')"
           :placeholder="$t('poll_poll_form.add_option_hint')"
           @keydown.enter="addOption"
-          append-outer-icon="mdi-plus"
-          @click:append-outer="addOption"
-          outlined
+          filled
+          rounded
           color="primary"
         )
+          template(v-slot:append)
+            v-btn.mt-n2(@click="addOption", icon, :disabled="!newOption" color="primary" outlined :title="$t('poll_poll_form.add_option_placeholder')")
+              v-icon mdi-plus
 
       template(v-if="optionFormat == 'iso8601'")
         .v-label.v-label--active.px-0.text-caption.pt-2 New option
@@ -294,6 +301,7 @@ export default
             v-t="'poll_poll_form.add_option_placeholder'"
           )
         poll-meeting-add-option-menu(:poll="poll", :value="newDateOption")
+
       template(v-if="optionFormat == 'iso8601'")
         .d-flex.align-center
           v-text-field.text-right(
@@ -314,6 +322,8 @@ export default
       common-notify-fields(:model="poll")
 
     v-tab-item.poll-common-form__settings-tab
+
+      .text-h5.my-4 Process
       v-text-field(
          v-model="poll.processTitle"
         :label="$t('poll_common_form.process_title')"
@@ -334,21 +344,58 @@ export default
         :should-reset="shouldReset"
       )
 
-      v-text-field(
-        v-if="!poll.singleChoice()"
-        v-model="poll.reasonPrompt"
-        :label="$t('poll_common_form.reason_prompt')"
-        :hint="$t('poll_option_form.prompt_hint')"
-        :placeholder="$t('poll_common.reason_placeholder')")
-
-      tags-field(:model="poll")
-
       v-select(
         :label="$t('poll_common_form.voting_method')"
         v-model="poll.pollType"
         @change="clearOptionsIfRequired"
         :hint="$t('poll_common_form.voting_methods.'+poll.config().vote_method+'_hint')"
-        :items="pollTypeItems")
+        :items="pollTypeItems"
+      )
+
+      v-select.poll-common-settings__hide-results(
+        v-if="allowAnonymous"
+        :label="$t('poll_common_card.hide_results')"
+        :items="hideResultsItems"
+        v-model="poll.hideResults"
+        :disabled="!poll.closingAt || (!poll.isNew() && currentHideResults == 'until_closed')"
+      )
+
+      v-checkbox.poll-common-checkbox-option(
+        hide-details
+        v-if="allowAnonymous"
+        :disabled="!poll.closingAt || !poll.isNew()"
+        v-model="poll.anonymous"
+        :label="$t('poll_common_form.votes_are_anonymous')")
+
+      v-checkbox.poll-common-checkbox-option(
+        v-for="(setting, index) in settings"
+        hide-details
+        :disabled="settingDisabled(setting)"
+        :key="index"
+        v-model="poll[setting]"
+        :class="'poll-settings-' + kebabify(setting)"
+        :label="$t('poll_common_settings.' + snakify(setting) + '.title')")
+
+      .text-h5.mb-4.mt-8 Vote reason
+      v-select(
+        :label="$t('poll_common_form.stance_reason_required_label')"
+        :items="stanceReasonRequiredItems"
+        v-model="poll.stanceReasonRequired"
+      )
+
+      v-text-field(
+        v-if="!poll.singleChoice() && poll.stanceReasonRequired != 'disabled'"
+        v-model="poll.reasonPrompt"
+        :label="$t('poll_common_form.reason_prompt')"
+        :hint="$t('poll_option_form.prompt_hint')"
+        :placeholder="$t('poll_common.reason_placeholder')")
+
+      v-checkbox.poll-common-checkbox-option.mt-0.mb-4(
+        v-if="poll.stanceReasonRequired != 'disabled'"
+        hide-details
+        v-model="poll.limitReasonLength"
+        :label="$t('poll_common_form.limit_reason_length')"
+      )
 
       //- v-select(
         :label="$t('poll_common_form.chart_type')"
@@ -380,6 +427,7 @@ export default
         validation-errors(:subject="poll", field="minimumStanceChoices")
 
       .poll-common-notify-on-closing-soon
+        .text-h5.mb-4.mt-8 Reminder
         p(v-if="!reminderEnabled" v-t="{path: 'poll_common_settings.notify_on_closing_soon.closes_too_soon', args: {pollType: poll.translatedPollType()}}")
         v-select(
           v-if="reminderEnabled"
@@ -393,22 +441,6 @@ export default
         v-text-field(type="number", min="1", v-model="poll.dotsPerPerson", single-line)
         validation-errors(:subject="poll" field="dotsPerPerson")
 
-      v-select.poll-common-settings__hide-results(
-        v-if="allowAnonymous"
-        :label="$t('poll_common_card.hide_results')"
-        :items="hideResultsItems"
-        v-model="poll.hideResults"
-        :disabled="!poll.closingAt || (!poll.isNew() && currentHideResults == 'until_closed')"
-      )
-
-      v-checkbox.poll-common-checkbox-option(
-        v-for="(setting, index) in settings"
-        hide-details
-        :disabled="settingDisabled(setting)"
-        :key="index"
-        v-model="poll[setting]"
-        :class="'poll-settings-' + kebabify(setting)"
-        :label="$t('poll_common_settings.' + snakify(setting) + '.title')")
 
       v-radio-group(
         v-model="poll.specifiedVotersOnly"

@@ -131,7 +131,6 @@ export default
       :label="$t('announcement.form.discussion_announced.helptext')"
       :placeholder="$t('announcement.form.placeholder')"
       :model="discussion"
-      :excluded-user-ids="excludedUserIds"
       :excluded-audiences="['discussion_group']"
       :reset="reset"
       @new-query="newQuery"

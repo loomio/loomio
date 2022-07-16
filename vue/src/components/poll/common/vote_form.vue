@@ -101,7 +101,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
           v-list-item-title {{option.optionName()}}
           v-list-item-subtitle {{option.meaning}}
 
-  poll-common-stance-reason(:stance='stance', :selectedOptionId="selectedOptionId")
+  poll-common-stance-reason(:stance='stance', :poll='poll', :selectedOptionId="selectedOptionId")
   v-card-actions.poll-common-form-actions
     v-btn.poll-common-vote-form__submit(
       @click='submit()'
