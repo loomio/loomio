@@ -165,12 +165,6 @@ export default
         {text: @$t('poll_common_form.stance_reason_disabled'), value: 'disabled'}
       ]
 
-    settings: ->
-      compact [
-        ('shuffleOptions'         if @poll.config().can_shuffle_options),
-        ('canRespondMaybe'        if @poll.pollType == 'meeting')
-      ]
-
     title_key: ->
       mode = if @poll.isNew()
         'action_dock.new_poll_type'
@@ -291,7 +285,7 @@ export default
               v-icon mdi-plus
 
       template(v-if="optionFormat == 'iso8601'")
-        .v-label.v-label--active.px-0.text-caption.pt-2 New option
+        .v-label.v-label--active.px-0.text-caption.pt-2(v-t="'poll_poll_form.new_option'")
         .d-flex.align-center
           date-time-picker(:min="minDate" v-model="newDateOption")
           v-btn.poll-meeting-form__option-button.ml-4(
@@ -367,14 +361,17 @@ export default
         v-model="poll.anonymous"
         :label="$t('poll_common_form.votes_are_anonymous')")
 
-      v-checkbox.poll-common-checkbox-option(
-        v-for="(setting, index) in settings"
+      v-checkbox.poll-common-checkbox-option.poll-settings-shuffle-options(
+        v-if="poll.config().can_shuffle_options"
         hide-details
-        :disabled="settingDisabled(setting)"
-        :key="index"
-        v-model="poll[setting]"
-        :class="'poll-settings-' + kebabify(setting)"
-        :label="$t('poll_common_settings.' + snakify(setting) + '.title')")
+        v-model="poll.shuffleOptions"
+        :label="$t('poll_common_settings.shuffle_options.title')")
+
+      v-checkbox.poll-common-checkbox-option.poll-settings-can-respond-maybe(
+        v-if="poll.pollType == 'meeting'"
+        hide-details
+        v-model="poll.canRespondMaybe"
+        :label="$t('poll_common_settings.can_respond_maybe.title')")
 
       .text-h5.mb-4.mt-8 Vote reason
       v-select(
@@ -384,7 +381,7 @@ export default
       )
 
       v-text-field(
-        v-if="!poll.singleChoice() && poll.stanceReasonRequired != 'disabled'"
+        v-if="poll.stanceReasonRequired != 'disabled'"
         v-model="poll.reasonPrompt"
         :label="$t('poll_common_form.reason_prompt')"
         :hint="$t('poll_option_form.prompt_hint')"
