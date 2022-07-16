@@ -414,9 +414,13 @@ div
 .ProseMirror p.is-editor-empty:first-child::before
   content: attr(data-placeholder)
   float: left
-  color: #ced4da
+  color: rgba(0,0,0,0.25)
   pointer-events: none
   height: 0
+
+.theme--dark
+  .ProseMirror p.is-editor-empty:first-child::before
+    color: rgba(255,255,255,0.333)
 
 .ProseMirror
   outline: none
