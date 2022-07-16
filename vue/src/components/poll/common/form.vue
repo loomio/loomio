@@ -226,7 +226,7 @@ export default
         v-model='poll.title'
         maxlength='250')
       validation-errors(:subject='poll' field='title')
-      tags-field(:model="poll")
+      //- tags-field(:model="poll")
 
       lmo-textarea(
         :model='poll'
