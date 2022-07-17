@@ -1989,6 +1989,7 @@ en:
     success: Successfully deleted
 
   poll_common_form:
+    reminder: Reminder
     your_in_zone: 'Current time zone: %{zone}'
     show_other_zones: Show other time zones
     hide_other_zones: Hide other time zones
@@ -2048,7 +2049,17 @@ en:
     poll_type_created: '%{poll_type} created'
     poll_type_started: '%{poll_type} started'
     reason_prompt: Reason prompt
+    anonymous_voting: Anonymous voting
+    anonymous_voting_description: If enabled, the identity of voters will not be associated to their votes. This cannot be undone.
     votes_are_anonymous: Votes are anonymous
+    vote_reason: Vote reason
+    vote_reason_description: It can be helpful to understand why people voted the way they did. With this setting, you can prompt people to share their thoughts when they vote.
+    hide_results_description: If you want people to vote without knowing how others have voted, you can hide the results of the poll.
+    process_helptext: |
+      Name and describe the process that is being used to run this poll.
+    reminder_helptext: |
+      Send a 'Closing soon' notification before the poll closes.
+      This can be an opportunity for people to see how others have voted and reconsider their own vote, or just a way to increase participation in the poll. 
 
   poll_proposal_form:
     tool_tip_collapsed: Seek agreement or feedback from others.

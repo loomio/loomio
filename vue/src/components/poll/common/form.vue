@@ -317,91 +317,14 @@ export default
 
     v-tab-item.poll-common-form__settings-tab
 
-      .text-h5.my-4 Process
-      v-text-field(
-         v-model="poll.processTitle"
-        :label="$t('poll_common_form.process_title')"
-        :hint="$t('poll_common_form.process_title_hint')")
-      validation-errors(:subject='poll' field='processTitle')
-
-      v-text-field(
-         v-model="poll.processSubtitle"
-        :label="$t('poll_common_form.process_subtitle')"
-        :hint="$t('poll_common_form.process_subtitle_hint')")
-      validation-errors(:subject='poll' field='processSubtitle')
-
-      lmo-textarea(
-        :model='poll'
-        field="processDescription"
-        :placeholder="$t('poll_common_form.process_description')"
-        :label="$t('poll_common_form.process_description')"
-        :should-reset="shouldReset"
-      )
-
+      .text-h5.my-4 Voting method
       v-select(
         :label="$t('poll_common_form.voting_method')"
         v-model="poll.pollType"
         @change="clearOptionsIfRequired"
-        :hint="$t('poll_common_form.voting_methods.'+poll.config().vote_method+'_hint')"
         :items="pollTypeItems"
       )
-
-      v-select.poll-common-settings__hide-results(
-        v-if="allowAnonymous"
-        :label="$t('poll_common_card.hide_results')"
-        :items="hideResultsItems"
-        v-model="poll.hideResults"
-        :disabled="!poll.closingAt || (!poll.isNew() && currentHideResults == 'until_closed')"
-      )
-
-      v-checkbox.poll-common-checkbox-option(
-        hide-details
-        v-if="allowAnonymous"
-        :disabled="!poll.closingAt || !poll.isNew()"
-        v-model="poll.anonymous"
-        :label="$t('poll_common_form.votes_are_anonymous')")
-
-      v-checkbox.poll-common-checkbox-option.poll-settings-shuffle-options(
-        v-if="poll.config().can_shuffle_options"
-        hide-details
-        v-model="poll.shuffleOptions"
-        :label="$t('poll_common_settings.shuffle_options.title')")
-
-      v-checkbox.poll-common-checkbox-option.poll-settings-can-respond-maybe(
-        v-if="poll.pollType == 'meeting'"
-        hide-details
-        v-model="poll.canRespondMaybe"
-        :label="$t('poll_common_settings.can_respond_maybe.title')")
-
-      .text-h5.mb-4.mt-8 Vote reason
-      v-select(
-        :label="$t('poll_common_form.stance_reason_required_label')"
-        :items="stanceReasonRequiredItems"
-        v-model="poll.stanceReasonRequired"
-      )
-
-      v-text-field(
-        v-if="poll.stanceReasonRequired != 'disabled' && (!poll.config().per_option_reason_prompt)"
-        v-model="poll.reasonPrompt"
-        :label="$t('poll_common_form.reason_prompt')"
-        :hint="$t('poll_option_form.prompt_hint')"
-        :placeholder="$t('poll_common.reason_placeholder')")
-      p.text-caption.text--secondary(v-else v-t="'poll_common_form.you_can_set_a_prompt_per_option'")
-
-      v-checkbox.poll-common-checkbox-option.mt-0.mb-4(
-        v-if="poll.stanceReasonRequired != 'disabled'"
-        hide-details
-        v-model="poll.limitReasonLength"
-        :label="$t('poll_common_form.limit_reason_length')"
-      )
-
-      //- v-select(
-        :label="$t('poll_common_form.chart_type')"
-        v-model="poll.chartType"
-        :items="chartTypeItems")
-      //- chartType
-      //- chartColumn
-
+      p.text--secondary(v-t="'poll_common_form.voting_methods.'+poll.config().vote_method+'_hint'")
       .d-flex(v-if="poll.pollType == 'score'")
         v-text-field.poll-score-form__min(
           v-model="poll.minScore"
@@ -424,8 +347,100 @@ export default
           :max="poll.pollOptionNames.length")
         validation-errors(:subject="poll", field="minimumStanceChoices")
 
+      template(v-if="poll.pollType == 'dot_vote'")
+        v-text-field(:label="$t('poll_dot_vote_form.dots_per_person')" type="number", min="1", v-model="poll.dotsPerPerson")
+        validation-errors(:subject="poll" field="dotsPerPerson")
+
+      .text-h5.my-4 Process
+      p.text--secondary(v-t="'poll_common_form.process_helptext'")
+      v-text-field(
+         v-model="poll.processTitle"
+        :label="$t('poll_common_form.process_title')"
+        :hint="$t('poll_common_form.process_title_hint')")
+      validation-errors(:subject='poll' field='processTitle')
+
+      v-text-field(
+         v-model="poll.processSubtitle"
+        :label="$t('poll_common_form.process_subtitle')"
+        :hint="$t('poll_common_form.process_subtitle_hint')")
+      validation-errors(:subject='poll' field='processSubtitle')
+
+      lmo-textarea(
+        :model='poll'
+        field="processDescription"
+        :placeholder="$t('poll_common_form.process_description')"
+        :label="$t('poll_common_form.process_description')"
+        :should-reset="shouldReset"
+      )
+
+
+      .text-h5.mb-4.mt-8(v-t="'poll_common_card.hide_results'")
+      p.text--secondary(v-t="'poll_common_form.hide_results_description'")
+      v-select.poll-common-settings__hide-results(
+        v-if="allowAnonymous"
+        :label="$t('poll_common_card.hide_results')"
+        :items="hideResultsItems"
+        v-model="poll.hideResults"
+        :disabled="!poll.closingAt || (!poll.isNew() && currentHideResults == 'until_closed')"
+      )
+
+      .text-h5.mb-4.mt-8(v-t="'poll_common_form.anonymous_voting'")
+      p.text--secondary(v-t="'poll_common_form.anonymous_voting_description'")
+      v-checkbox.poll-common-checkbox-option(
+        hide-details
+        v-if="allowAnonymous"
+        :disabled="!poll.closingAt || !poll.isNew()"
+        v-model="poll.anonymous"
+        :label="$t('poll_common_form.votes_are_anonymous')")
+
+      v-checkbox.poll-common-checkbox-option.poll-settings-shuffle-options(
+        v-if="poll.config().can_shuffle_options"
+        hide-details
+        v-model="poll.shuffleOptions"
+        :label="$t('poll_common_settings.shuffle_options.title')")
+
+      v-checkbox.poll-common-checkbox-option.poll-settings-can-respond-maybe(
+        v-if="poll.pollType == 'meeting'"
+        hide-details
+        v-model="poll.canRespondMaybe"
+        :label="$t('poll_common_settings.can_respond_maybe.title')")
+
+      .text-h5.mb-4.mt-8(v-t="'poll_common_form.vote_reason'")
+      p.text--secondary(v-t="'poll_common_form.vote_reason_description'")
+      v-select(
+        :label="$t('poll_common_form.stance_reason_required_label')"
+        :items="stanceReasonRequiredItems"
+        v-model="poll.stanceReasonRequired"
+      )
+
+      v-text-field(
+        v-if="poll.stanceReasonRequired != 'disabled' && (!poll.config().per_option_reason_prompt)"
+        v-model="poll.reasonPrompt"
+        :label="$t('poll_common_form.reason_prompt')"
+        :hint="$t('poll_option_form.prompt_hint')"
+        :placeholder="$t('poll_common.reason_placeholder')")
+      p.text-caption.text--secondary(
+        v-if="poll.stanceReasonRequired != 'disabled' && poll.config().per_option_reason_prompt"
+        v-t="'poll_common_form.you_can_set_a_prompt_per_option'")
+
+      v-checkbox.poll-common-checkbox-option.mt-0.mb-4(
+        v-if="poll.stanceReasonRequired != 'disabled'"
+        hide-details
+        v-model="poll.limitReasonLength"
+        :label="$t('poll_common_form.limit_reason_length')"
+      )
+
+      //- v-select(
+        :label="$t('poll_common_form.chart_type')"
+        v-model="poll.chartType"
+        :items="chartTypeItems")
+      //- chartType
+      //- chartColumn
+
+
       .poll-common-notify-on-closing-soon
-        .text-h5.mb-4.mt-8 Reminder
+        .text-h5.mb-4.mt-8(v-t="'poll_common_form.reminder'")
+        p.text--secondary(v-t="'poll_common_form.reminder_helptext'")
         p(v-if="!reminderEnabled" v-t="{path: 'poll_common_settings.notify_on_closing_soon.closes_too_soon', args: {pollType: poll.translatedPollType()}}")
         v-select(
           v-if="reminderEnabled"
@@ -433,11 +448,6 @@ export default
           :label="$t('poll_common_settings.notify_on_closing_soon.title', {pollType: poll.translatedPollType()})"
           v-model="poll.notifyOnClosingSoon"
           :items="closingSoonItems")
-
-      template(v-if="poll.pollType == 'dot_vote'")
-        v-subheader(v-t="'poll_dot_vote_form.dots_per_person'")
-        v-text-field(type="number", min="1", v-model="poll.dotsPerPerson", single-line)
-        validation-errors(:subject="poll" field="dotsPerPerson")
 
 
       v-radio-group(
