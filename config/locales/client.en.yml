@@ -1903,6 +1903,8 @@ en:
     title: Disable voting
     past_tense: Voting disabled
     helptext: 'This %{poll_type} is a work in progress. You can enable voting later.'
+    draft_mode: 'Draft mode'
+    disable_voting_during_development: 'This %{poll_type} is not ready to be voted on'
 
   poll_common_closing_at_field:
     closing: Closing

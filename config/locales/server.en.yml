@@ -203,8 +203,8 @@ en:
 
     by_who: by %{person}
     reply_to_this_discussion: Reply to this discussion
-    value_proposition: "%{site_name} is a place to have discussions and make decisions"
-    loomio_app_description: "%{site_name} is a collaborative decision making tool for inclusive organizations"
+    loomio_app_description: "%{site_name} is a place to have discussions and make decisions"
+    loomio_app_description: "%{site_name} is a decision-making tool for collaborative organizations"
     view_group: View group
     to_join_group:
       subject: "%{member} has invited you to join %{group_name} on %{site_name}"
