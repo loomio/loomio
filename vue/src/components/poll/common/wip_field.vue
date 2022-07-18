@@ -7,6 +7,7 @@ export default
 
   data: ->
     isDisabled: !@poll.closingAt
+    isEnabled: !!@poll.closingAt
 
   watch:
     isDisabled: (val) ->
@@ -14,20 +15,25 @@ export default
         @poll.closingAt = null
       else
         @poll.closingAt = startOfHour(addDays(new Date, 3))
+
+    isEnabled: (val) ->
+      if val
+        @poll.closingAt = startOfHour(addDays(new Date, 3))
+      else
+        @poll.closingAt = null
 </script>
 
 <template lang="pug">
 .poll-common-wip-field
   v-checkbox(
-    v-show="poll.decidedVotersCount == 0"
-    v-model="isDisabled"
+    :disabled="poll.decidedVotersCount > 0"
+    v-model="isEnabled"
     hide-details
   )
     div(slot="label")
-      span {{$t('poll_common_wip_field.draft_mode')}}
+      span {{$t('poll_common_wip_field.voting_open')}}
       space
       | -
       space
-      //- span.text-lowercase {{$t('poll_common_wip_field.title', {poll_type: poll.translatedPollType()})}}
-      span.text-lowercase {{$t('poll_common_wip_field.disable_voting_during_development', {poll_type: poll.translatedPollType()})}}
+      span.text-lowercase {{$t('poll_common_wip_field.this_is_ready_for_voting', {poll_type: poll.translatedPollType()})}}
 </template>

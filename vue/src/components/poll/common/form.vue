@@ -368,7 +368,7 @@ export default
       lmo-textarea(
         :model='poll'
         field="processDescription"
-        :placeholder="$t('poll_common_form.process_description')"
+        :placeholder="$t('poll_common_form.process_description_hint')"
         :label="$t('poll_common_form.process_description')"
         :should-reset="shouldReset"
       )

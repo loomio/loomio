@@ -45,10 +45,10 @@ export default
 .poll-common-stance-choice.mr-1.mb-1(:class="'poll-common-stance-choice--' + pollType" row)
   v-avatar(tile :size="size" v-if='poll.config().has_option_icon')
     img(:src="'/img/' + pollOption.icon + '.svg'", :alt='optionName')
-  span.body-2(v-if='poll.pollOptionNameFormat == "plain"')
-    v-icon.mr-2(small :color="pollOption.color") mdi-check
-    span {{ optionName }}
   v-chip(v-if='poll.pollOptionNameFormat == "iso8601"'
     outlined :color="colorFor(stanceChoice.score)" @click="emitClick")
     poll-meeting-time(:name="optionName")
+  span.body-2(v-if='!poll.config().has_option_icon && !poll.pollOptionNameFormat == "iso8601"')
+    v-icon.mr-2(small :color="pollOption.color") mdi-check
+    span {{ optionName }}
 </template>

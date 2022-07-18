@@ -1923,7 +1923,11 @@ en:
     title: Disable voting
     past_tense: Voting disabled
     draft_mode: 'Draft mode'
-    disable_voting_during_development: 'Disable voting while you develop the %{poll_type}'
+    # disable_voting_during_development: 'Disable voting while you develop the %{poll_type}'
+    disable_voting_during_development: 'This %{poll_type} is not ready to be voted on'
+    helptext: 'This %{poll_type} is a work in progress. You can enable voting later.'
+    voting_open: Voting open
+    this_is_ready_for_voting: this %{poll_type} is ready for voting
 
   poll_common_closing_at_field:
     closing: Closing
@@ -2016,7 +2020,8 @@ en:
     process_subtitle: Process subtitle
     process_subtitle_hint: One line that explains what the process does
     process_description: Process description
-    process_description_hint: Explain how the process works
+    process_description_hint: |
+      How does this process work? What situations is it suited to? How do you facilitate the process? Where can people find more information?
     you_can_set_a_prompt_per_option: For this voting method you define a prompt for each option. Edit options from the details tab.
     chart_type: Chart type
     title: Title
