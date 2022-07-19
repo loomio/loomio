@@ -13,7 +13,7 @@ import { HandleDirective } from 'vue-slicksort';
 import { isSameYear, startOfHour, setHours }  from 'date-fns'
 
 export default
-  components: {PollCommonWipField}
+  components: { PollCommonWipField }
   directives: { handle: HandleDirective }
 
   props:
@@ -54,6 +54,7 @@ export default
     ]
     newDateOption: startOfHour(setHours(new Date(), 12))
     minDate: new Date()
+    closingAtWas: null
 
   methods:
     setPollOptionPriority: ->
@@ -147,6 +148,14 @@ export default
       .catch (error) =>
         Flash.error 'common.something_went_wrong'
         console.error error
+
+  watch:
+    'poll.template': (val) -> 
+      if val
+        @closingAtWas = @poll.closingAt
+        @poll.closingAt = null
+      else
+        @poll.closingAt = @closingAtWas
 
   computed:
     formattedDuration: -> 
@@ -316,15 +325,40 @@ export default
       common-notify-fields(:model="poll")
 
     v-tab-item.poll-common-form__settings-tab
+      v-checkbox(
+        v-if="poll.groupId && !poll.discussionId"
+        v-model="poll.template"
+        :label="$t('poll_common_form.this_is_a_template_for_new_decisions')"
+      ) 
+      template(v-if="poll.template")
+        v-text-field(
+           v-model="poll.processTitle"
+          :label="$t('poll_common_form.process_title')"
+          :hint="$t('poll_common_form.process_title_hint')")
+        validation-errors(:subject='poll' field='processTitle')
 
-      .text-h5.my-4 Voting method
-      v-select(
-        :label="$t('poll_common_form.voting_method')"
-        v-model="poll.pollType"
-        @change="clearOptionsIfRequired"
-        :items="pollTypeItems"
-      )
-      p.text--secondary(v-t="'poll_common_form.voting_methods.'+poll.config().vote_method+'_hint'")
+        v-text-field(
+           v-model="poll.processSubtitle"
+          :label="$t('poll_common_form.process_subtitle')"
+          :hint="$t('poll_common_form.process_subtitle_hint')")
+        validation-errors(:subject='poll' field='processSubtitle')
+
+        lmo-textarea(
+          :model='poll'
+          field="processDescription"
+          :placeholder="$t('poll_common_form.process_description_hint')"
+          :label="$t('poll_common_form.process_description')"
+          :should-reset="shouldReset"
+        )
+
+        .text-h5.my-4 Voting method
+        v-select(
+          :label="$t('poll_common_form.voting_method')"
+          v-model="poll.pollType"
+          @change="clearOptionsIfRequired"
+          :items="pollTypeItems"
+        )
+        p.text--secondary(v-t="'poll_common_form.voting_methods.'+poll.config().vote_method+'_hint'")
       .d-flex(v-if="poll.pollType == 'score'")
         v-text-field.poll-score-form__min(
           v-model="poll.minScore"
@@ -350,28 +384,6 @@ export default
       template(v-if="poll.pollType == 'dot_vote'")
         v-text-field(:label="$t('poll_dot_vote_form.dots_per_person')" type="number", min="1", v-model="poll.dotsPerPerson")
         validation-errors(:subject="poll" field="dotsPerPerson")
-
-      .text-h5.my-4 Process
-      p.text--secondary(v-t="'poll_common_form.process_helptext'")
-      v-text-field(
-         v-model="poll.processTitle"
-        :label="$t('poll_common_form.process_title')"
-        :hint="$t('poll_common_form.process_title_hint')")
-      validation-errors(:subject='poll' field='processTitle')
-
-      v-text-field(
-         v-model="poll.processSubtitle"
-        :label="$t('poll_common_form.process_subtitle')"
-        :hint="$t('poll_common_form.process_subtitle_hint')")
-      validation-errors(:subject='poll' field='processSubtitle')
-
-      lmo-textarea(
-        :model='poll'
-        field="processDescription"
-        :placeholder="$t('poll_common_form.process_description_hint')"
-        :label="$t('poll_common_form.process_description')"
-        :should-reset="shouldReset"
-      )
 
 
       .text-h5.mb-4.mt-8(v-t="'poll_common_card.hide_results'")
@@ -437,7 +449,6 @@ export default
       //- chartType
       //- chartColumn
 
-
       .poll-common-notify-on-closing-soon
         .text-h5.mb-4.mt-8(v-t="'poll_common_form.reminder'")
         p.text--secondary(v-t="'poll_common_form.reminder_helptext'")
@@ -448,7 +459,6 @@ export default
           :label="$t('poll_common_settings.notify_on_closing_soon.title', {pollType: poll.translatedPollType()})"
           v-model="poll.notifyOnClosingSoon"
           :items="closingSoonItems")
-
 
       v-radio-group(
         v-model="poll.specifiedVotersOnly"
@@ -469,11 +479,6 @@ export default
       .caption.mt-n4(
         v-if="poll.specifiedVotersOnly"
         v-t="$t('poll_common_settings.invite_people_next', {poll_type: poll.translatedPollType()})")
-
-      v-checkbox(
-        v-if="poll.id"
-        v-model="poll.template"
-        :label="$t('poll_common_form.this_is_a_template_for_new_decisions')")
 
   .d-flex.justify-space-between.my-4.mt-8.poll-common-form-actions
     help-link(path="en/user_manual/polls/starting_proposals" text="poll_poll_form.help_starting_polls")

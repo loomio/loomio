@@ -43,11 +43,6 @@ export default
       dense outlined type="info"
     )
       span(v-t="'poll_common_action_panel.results_hidden_until_vote'")
-    v-alert.poll-common-action-panel__results-hidden-until-vote.my-2(
-      v-if='!poll.closingAt'
-      dense outlined type="info"
-    )
-      span(v-t="{path: 'poll_common_action_panel.draft_mode', args: {poll_type: poll.translatedPollType()}}")
   template(v-else)
     v-subheader.ml-n4
       span(v-t="poll.closedAt ? 'poll_common.results' : 'poll_common.current_results'")

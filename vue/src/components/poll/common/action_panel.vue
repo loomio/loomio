@@ -41,13 +41,21 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-action-panel(v-if='!poll.closedAt')
-  v-alert.poll-common-action-panel__anonymous-message.my-2(dense outlined type="info" v-if='poll.anonymous')
+.poll-common-action-panel(v-if="!poll.closedAt")
+  v-alert.poll-common-action-panel__anonymous-message.mt-6(dense outlined type="info" v-if='poll.anonymous')
     span(v-t="'poll_common_action_panel.anonymous'")
-  div(v-if="poll.closingAt")
+      
+  template(v-if='poll.closingAt')
     .poll-common-vote-form(v-if='stance && !stance.castAt')
       h3.title.py-3(v-t="'poll_common.have_your_say'")
       poll-common-directive(:stance='stance' name='vote-form')
     .poll-common-unable-to-vote(v-if='!stance')
       v-alert.my-4(type="warning" outlined dense v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}")
+        
+  template(v-if="!poll.closingAt")
+    v-alert.poll-common-action-panel__results-hidden-until-vote.my-2(
+      v-if='!poll.closingAt'
+      dense outlined type="info"
+    )
+      span(v-t="{path: 'poll_common_action_panel.draft_mode', args: {poll_type: poll.translatedPollType()}}")
 </template>

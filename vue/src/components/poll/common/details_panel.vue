@@ -12,8 +12,6 @@ export default
     span(v-t="{ path: 'poll_card.poll_type_by_name', args: { name: poll.authorName(), poll_type: poll.translatedPollTypeCaps() } }")
     mid-dot
     poll-common-closing-at(:poll='poll')
-    mid-dot(v-if='poll.anonymous')
-    span(v-if='poll.anonymous', md-colors="{color: 'primary-600', 'border-color': 'primary-600'}" v-t="'common.anonymous'")
   formatted-text.poll-common-details-panel__details(:model="poll" column="details")
   link-previews(:model="poll")
   attachment-list(:attachments="poll.attachments")

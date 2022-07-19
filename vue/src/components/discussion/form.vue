@@ -113,7 +113,7 @@ export default
       :to="urlFor(discussion)")
       v-icon mdi-close
   .pa-4
-    v-select(v-if="!discussion.id" v-model="discussion.groupId" :items="groupItems" :label="$t('common.group')")
+    v-select(v-if="!discussion.id" v-model="discussion.groupId", :items="groupItems", :label="$t('common.group')")
     p.text--secondary.caption
       span(v-if="!discussion.groupId" v-t="'announcement.form.visible_to_guests'")
       span(v-if="discussion.groupId" v-t="{path: 'announcement.form.visible_to_group', args: {group: discussion.group().name}}")
@@ -128,7 +128,11 @@ export default
       p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
 
     .discussion-form__group-selected(v-if='!showUpgradeMessage')
-      v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input(:label="$t('discussion_form.title_label')" :placeholder="$t('discussion_form.title_placeholder')" v-model='discussion.title' maxlength='255' required)
+      v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input(
+        :label="$t('discussion_form.title_label')"
+        :placeholder="$t('discussion_form.title_placeholder')"
+        v-model='discussion.title' maxlength='255' required
+      )
       validation-errors(:subject='discussion', field='title')
       recipients-autocomplete(
         v-if="!discussion.id"
@@ -137,10 +141,27 @@ export default
         :initial-recipients="initialRecipients"
         :hint="$t('announcement.form.placeholder')"
         :model="discussion"
-        :reset="reset")
+        :reset="reset"
+      )
       tags-field(:model="discussion")
-      lmo-textarea(:model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")
-      v-checkbox(v-if="discussion.id" v-model="discussion.template" :label="$t('templates.this_is_a_template_for_new_threads')")
+      lmo-textarea(
+        :model='discussion'
+        field="description"
+        :label="$t('discussion_form.context_label')"
+        :placeholder="$t('discussion_form.context_placeholder')"
+      )
+
+      v-checkbox(
+        v-model="discussion.template"
+        :label="$t('templates.this_is_a_template_for_new_threads')"
+      )
+
+      template(v-if="discussion.template")
+        P.text--secondary When people click "Start thread" from your group page, this template will included in the list of suggested starter templates. Any polls you've used in this thread will be included in the template. Learn more at Loomio help.
+        v-text-field(label="Template title")
+        v-text-field(label="Template subtitle")
+        v-text-field(label="Template description")
+        v-checkbox(label="Make this template publically available in the template directory")
 
       common-notify-fields(:model="discussion")
       //- p.discussion-form__visibility

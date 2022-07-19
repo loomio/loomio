@@ -1843,6 +1843,9 @@ en:
     from_the_thread: From the thread template
     from_the_group: From the group
     default_templates: Default templates
+    suggested_templates: Suggested templates
+    group_templates: Group templates
+    basic_templates: Basic templates
     anonymous: Votes are anonymous
     results_hidden_until_closed: Results will be shown after voting has closed
     results_hidden_until_vote: Results will be shown after you vote
@@ -1923,7 +1926,6 @@ en:
     title: Disable voting
     past_tense: Voting disabled
     draft_mode: 'Draft mode'
-    # disable_voting_during_development: 'Disable voting while you develop the %{poll_type}'
     disable_voting_during_development: 'This %{poll_type} is not ready to be voted on'
     helptext: 'This %{poll_type} is a work in progress. You can enable voting later.'
     voting_open: Voting open
