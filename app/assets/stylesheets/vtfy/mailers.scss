@@ -49,6 +49,12 @@ body { font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif; }
   font-family: monospace;
 }
 
+pre {
+  margin: 0;
+  border: 0;
+  font-weight: 400;
+}
+
 .base-mailer__avatar-initials {
   margin: 2px auto;
   border: 1px solid #dcdcdc;
