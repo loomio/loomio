@@ -3,12 +3,8 @@ module FormattedDateHelper
     format_date_for_humans(parse_date_or_datetime(str), zone, date_time_pref)
   end
 
-  def format_date_for_humans(date, zone = nil, date_time_pref)
-    if zone
-      date.in_time_zone(zone)
-    else
-      date
-    end.strftime(format_date_or_datetime(date, date_time_pref)).strip
+  def format_date_for_humans(date, zone, date_time_pref)
+    format_date_or_datetime(date.in_time_zone(zone), date_time_pref)
   end
 
   def is_datetime?(value)
