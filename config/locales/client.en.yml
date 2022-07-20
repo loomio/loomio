@@ -2005,17 +2005,17 @@ en:
       show_thumbs: Show of thumbs
       show_thumbs_hint: Voters agree or disagree by choosing thumbs up or down
       single_choice: Single choice
-      single_choice_hint: Voters select one of the options
+      single_choice_hint: Voters choose one of the options
       multiple_choice: Multiple choice
-      multiple_choice_hint: Voters select as many options as they need
+      multiple_choice_hint: Voters choose as many options as required
       score: Score
-      score_hint: Voters give each option a score between 0 and 5 (for example)
+      score_hint: Voters assign a score to each option
       allocate: Allocate
-      allocate_hint: Voters allocate a budget of points across the options
+      allocate_hint: Voters allocate a budget of points between the options
       ranked_choice: Ranked choice
-      ranked_choice_hint: Voters order the options from most to least favoured
+      ranked_choice_hint: Voters arrange options in order from most to least preferred
       time_poll: Time poll
-      time_poll_hint: Voters indicate when they are available from the list of options
+      time_poll_hint: Voters indicate when they are available to meet
     process: Process
     process_title: Process title
     process_title_hint: E.g. Proposal, Resolution, Agreement, Temperature check
@@ -2070,6 +2070,7 @@ en:
 
   poll_proposal_form:
     tool_tip_collapsed: Seek agreement or feedback from others.
+    vote_method_hint: Voters agree or disagree with a statement
     tool_tip_expanded: |
       <p>A proposal is a tool for seeking collective agreement about a statement or course of action.</p>
       <p>Participants can agree, abstain, disagree or block - and give a statement to explain their position.</p>

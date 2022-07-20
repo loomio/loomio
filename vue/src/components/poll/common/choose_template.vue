@@ -12,6 +12,7 @@ export default
 
   data: ->
     polls: {threadPolls: [], groupPolls: [], defaultPolls: []}
+    newTemplate: null
   computed:
     pollKinds: -> Object.keys(@polls).filter (key) => @polls[key].length
     i18nForKind: ->
@@ -66,6 +67,18 @@ export default
           poll.applyPollTypeDefaults()
           poll
 
+        @newTemplate = Records.polls.build
+            processTitle: @$t(AppConfig.pollTypes['proposal'].defaults.process_title_i18n)
+            processSubtitle: @$t(AppConfig.pollTypes['proposal'].defaults.process_subtitle_i18n)
+            processDescription: @$t(AppConfig.pollTypes['proposal'].defaults.process_description_i18n)
+            pollType: 'proposal'
+            template: true
+            groupId: groupId
+            discussionId: discussionId
+            renderKey: renderKey++
+          poll.applyPollTypeDefaults()
+          poll
+
 </script>
 
 <template lang="pug">
@@ -85,4 +98,14 @@ export default
         v-list-item-content
           v-list-item-title {{ poll.processTitle }}
           v-list-item-subtitle {{ poll.processSubtitle }}
+      v-list-item.decision-tools-card__new-template(
+        @click="$emit('setPoll', newTemplate)"
+        :class="'decision-tools-card__poll-type--new-template'"
+        :key='123'
+      )
+        v-list-item-avatar
+          v-icon mdi-plus
+        v-list-item-content
+          v-list-item-title New template
+          v-list-item-subtitle Create a decision template with your own language and settings
 </template>
