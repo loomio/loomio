@@ -34,7 +34,7 @@ export default class PollModel extends BaseModel
     # read defaults based on pollType and apply them
     discussionId: null
     title: ''
-    closingAt: startOfHour(addDays(new Date, 3))
+    closingAt: null
     details: ''
     detailsFormat: 'html'
     decidedVotersCount: 0
@@ -98,6 +98,9 @@ export default class PollModel extends BaseModel
   applyPollTypeDefaults: ->
     map AppConfig.pollTypes[@pollType].defaults, (value, key) =>
       @[camelCase(key)] = value
+
+  setClosingAt: ->
+    @closingAt = startOfHour(addDays(new Date(), @daysDuration))
 
   defaulted: (attr) ->
     if @[attr] == null

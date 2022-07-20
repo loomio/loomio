@@ -697,6 +697,12 @@ en:
   discussion_form:
     to: To
     # visible_to_label: Privacy
+    process_title: Process title
+    process_title_hint: What do you call this process?
+    process_title_placeholder: E.g. Role advice process
+    process_subtitle: Process subtitle
+    process_subtitle_hint: What do you use this process for?
+    process_subtitle_placeholder: 'E.g. Find the overlap of what you are good at, what you love doing, and what is beneficial to the business.'
     direct_thread: "Direct thread"
     invite_only_thread: "Invite-only thread"
     none_direct_thread: "Direct thread (no group)"
@@ -1710,11 +1716,13 @@ en:
     option_name_hint: A short name for this option
     icon: Icon
     meaning: Meaning
-    meaning_hint: A sentence that explains what this option means.
+    meaning_hint: A sentence that explains what choosing this option means
     prompt: Reason prompt
     prompt_hint: A question to prompt voters to provide their reasoning or reconsider their position.
 
   poll_common:
+    poll_template: Poll template
+    poll_templates: Poll templates
     decision: Decision
     decision_templates: Decision templates
     vote_now: Vote now
@@ -1966,13 +1974,7 @@ en:
 
   poll_common_set_outcome_panel:
     enter_outcome: Enter outcome
-    poll: 'This poll has closed. <strong>Share the outcome</strong> with the group.'
-    proposal: 'This proposal has closed. Please consider what as been said and <strong>share an outcome</strong>, so people know what’ll happen next.'
-    count: 'This check has closed. <strong>Share an outcome</strong> to complete the process.'
-    meeting: 'This time poll has closed. <strong>Share an outcome</strong> to let others know when the meeting will happen.'
-    dot_vote: 'This dot vote has closed. <storng>Share an outcome</strong> with the group.'
-    ranked_choice: 'This ranked choice poll has closed. <strong>Share an outcome</strong> with the group.'
-    score: 'This score poll has closed. <strong>Share an outcome</strong> with the group.'
+    poll_type: "This %{poll_type} has closed. Take time to consider the results then share an outcome so people know what will happen next."
 
   poll_common_outcome_form:
     review_date: Review date
@@ -1995,6 +1997,7 @@ en:
     success: Successfully deleted
 
   poll_common_form:
+    content: Content
     reminder: Reminder
     your_in_zone: 'Current time zone: %{zone}'
     show_other_zones: Show other time zones
@@ -2027,10 +2030,12 @@ en:
     you_can_set_a_prompt_per_option: For this voting method you define a prompt for each option. Edit options from the details tab.
     chart_type: Chart type
     title: Title
-    title_hint: A short statement or question
+    example_title: Example title
+    title_hint: A short statement or question that encapsulates the decision
     no_options_add_some: This poll has no options, add some below.
     details: Details
-    details_placeholder: Provide enough detail for voters to feel properly informed about their decision
+    example_details: Example details
+    details_placeholder: This is your opportunity to explain what people are voting on
     options: Options
     options_placeholder: List the options available
     no_options: You haven't added any options yet.
@@ -2069,29 +2074,19 @@ en:
       This can be an opportunity for people to see how others have voted and reconsider their own vote, or just a way to increase participation in the poll. 
 
   poll_proposal_form:
-    tool_tip_collapsed: Seek agreement or feedback from others.
+    tool_tip_collapsed: Confirm support and surface any concerns
     vote_method_hint: Voters agree or disagree with a statement
-    tool_tip_expanded: |
-      <p>A proposal is a tool for seeking collective agreement about a statement or course of action.</p>
-      <p>Participants can agree, abstain, disagree or block - and give a statement to explain their position.</p>
-      <p>A pie chart gives an overview of the positions in the group, while the statements allow individual voices to be heard. </p>
-      <p>Don't be discouraged if you don't see agreement at first, proposals are designed to surface issues that need resolving.</p>
-      <p>With good participation a proposal is a powerful mandate to take action.</p>
     start_header: Start proposal
     edit_header: Edit proposal
-    tip: Seek collective agreement through a process which allows all voices to be heard. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Learn more</a>
     title_placeholder: E.g. Let's go to the moon!
-    details_placeholder: Give enough information so everyone knows what it means to agree or disagree
+    details_placeholder: What are the details of your proposal?
     proposal_created: Proposal started
     proposal_updated: Proposal updated
 
   poll_poll_form:
     help_starting_polls: 'Help: Starting polls'
-    tool_tip_collapsed: Choose from a list of options
-    tool_tip_expanded: |
-      <p>Use a poll to measure popularity or offer a choice.</p>
-      <p>Provide some options to choose from. Decide if participants choose single or multiple options as their response.</p>
-      <p>Everyone votes, and can enter a statement too if they like. Results are represented in a bar graph.</p>
+    multiple_choice_subtitle: A simple way to measure popularity
+    tool_tip_collapsed: Find the most popular option
     start_header: Start poll
     edit_header: Edit poll
     tip: Offer a choice between options
@@ -2107,28 +2102,14 @@ en:
     option_already_added: Option already added to poll
 
   poll_dot_vote_form:
-    tool_tip_collapsed: Allocate a budget of points
-    tool_tip_expanded: |
-      <p>Dot voting is a way to prioritise a list of options.</p>
-      <p>Participants are given a limited number of ‘dots’ which they can allocate however they like among the options provided to represent their own preferences.</p>
-      <p>The totals of the results are shown, as well as and the individual votes, so you can consider various points of view.</p>
+    tool_tip_collapsed: Allocate a budget of points to reveal priorities
     dots_per_person:  Points per person
     dots_per_person_helptext: The total number of points each person is asked to allocate.
 
   poll_score_form:
-    tool_tip_expanded: |
-      <p>Score polls allow people to express their degree of preference for each option.</p>
-      <p>The total score of each option is shown as part of the results.</p>
-    tool_tip_collapsed: Score options on a scale
+    tool_tip_collapsed: Measure the degree of support for each option
 
   poll_meeting_form:
-    tool_tip_expanded: |
-      <p>Use a time poll to find when people are available to meet.</p>
-      <p>Enter a list of dates or times when you could have your meeting.</p>
-      <p>Participants tick those which they’re able to attend, or they can use the statement field to explain their circumstances, so you can update the options if necessary.</p>
-      <p>If you add new times during a time poll, people who have already voted are prompted to update their response.</p>
-      <p>You can then see who’s available when, and decide when to meet.</p>
-      <p>Times are automatically converted to the participant's local time zone.</p>
     tool_tip_collapsed: Find when people are available to meet
     timeslots: Time slots
     no_options: Enter times in your current time zone ({{zone}}). Participants see times translated to their local time zone.
@@ -2138,16 +2119,12 @@ en:
     time_slot_already_added: Time slot already added
 
   poll_ranked_choice_form:
-    tool_tip_expanded: |
-      <p>Ranked choice is a voting method which allows each voter to respond with their preferences in order.</p>
-      <p>It's preferable when 'vote stealing' is a concern (ie, two somewhat popular options are similar enough that they
-         end up sharing votes between them), and can be used to implement a Condorcet, or Instant Runoff style election.
-      </p>
-    tool_tip_collapsed: Rank options from first to last
+    tool_tip_collapsed: Understand the ordered preference of options
     no_options: "You haven't added any options yet."
     add_option_placeholder: Enter a new choice
     minimum_stance_choices: Options to rank
-    minimum_stance_choices_helptext: Number of options each voter may rank
+    minimum_stance_choices_helptext: 'How many choices does the voter get?'
+    minimum_stance_choices_hint: 'i.e. Rank your top 3 flavours of ice cream'
     ranked_choice_created: Ranked choice created
     ranked_choice_updated: Ranked choice updated
     rank: Rank

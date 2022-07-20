@@ -34,7 +34,7 @@ v-alert.my-4.poll-common-set-outcome-panel(
   elevation="3")
   v-row(align="center")
     v-col.grow
-      span(v-html="$t('poll_common_set_outcome_panel.' + poll.pollType)")
+      span(v-t="{path: 'poll_common_set_outcome_panel.poll_type', args: {poll_type: poll.translatedPollType()}}")
     v-col.shrink
       v-btn.poll-common-set-outcome-panel__submit(color="primary" @click="openOutcomeForm()" v-t="'poll_common_set_outcome_panel.enter_outcome'")
 </template>

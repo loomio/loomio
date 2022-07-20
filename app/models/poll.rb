@@ -19,7 +19,8 @@ class Poll < ApplicationRecord
 
   set_custom_fields :meeting_duration,
                     :time_zone,
-                    :can_respond_maybe
+                    :can_respond_maybe,
+                    :days_duration
 
   TEMPLATE_DEFAULT_FIELDS = %w[
     poll_option_name_format
@@ -29,6 +30,7 @@ class Poll < ApplicationRecord
     chart_type
     icon_type
     chart_column
+    days_duration
   ]
 
   TEMPLATE_DEFAULT_FIELDS.each do |field|

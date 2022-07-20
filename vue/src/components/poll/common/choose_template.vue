@@ -68,22 +68,22 @@ export default
           poll
 
         @newTemplate = Records.polls.build
-            processTitle: @$t(AppConfig.pollTypes['proposal'].defaults.process_title_i18n)
-            processSubtitle: @$t(AppConfig.pollTypes['proposal'].defaults.process_subtitle_i18n)
-            processDescription: @$t(AppConfig.pollTypes['proposal'].defaults.process_description_i18n)
-            pollType: 'proposal'
-            template: true
-            groupId: groupId
-            discussionId: discussionId
-            renderKey: renderKey++
-          poll.applyPollTypeDefaults()
-          poll
+          processTitle: @$t(AppConfig.pollTypes['proposal'].defaults.process_title_i18n)
+          processSubtitle: @$t(AppConfig.pollTypes['proposal'].defaults.process_subtitle_i18n)
+          processDescription: @$t(AppConfig.pollTypes['proposal'].defaults.process_description_i18n)
+          pollType: 'proposal'
+          template: true
+          groupId: groupId
+          discussionId: discussionId
+          renderKey: renderKey++
+        @newTemplate.applyPollTypeDefaults()
+        @newTemplate
 
 </script>
 
 <template lang="pug">
 .poll-common-templates-list
-  v-card-title(v-t="'poll_common.decision_templates'")
+  v-card-title(v-t="'poll_common.poll_templates'")
   template(v-for="kind in pollKinds")
     v-subheader(v-t="i18nForKind[kind]")
     v-list.decision-tools-card__poll-types(two-line dense)

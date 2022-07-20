@@ -76,6 +76,7 @@ proposal:
     minimum_stance_choices: 1
     maximum_stance_choices: 1
     dots_per_person: 1
+    days_duration: 7
 
 meeting:
   template: true
@@ -90,17 +91,18 @@ meeting:
     meeting_duration: 60
     poll_option_name_format: iso8601
     process_title_i18n: decision_tools_card.meeting_title
-    process_subtitle_i18n: poll_common_form.voting_methods.time_poll_hint
+    process_subtitle_i18n: poll_meeting_form.tool_tip_collapsed
     process_description_i18n: poll_meeting_form.tool_tip_expanded
     chart_column: max_score_percent
     chart_type: grid
     icon_type: grid
     min_score: 0
     max_score: 2
+    days_duration: 3
 
 poll:
   template: true
-  material_icon: mdi-poll
+  material_icon: mdi-check
   vote_method: single_choice
   vote_method_hint_i18n: poll_common_form.voting_methods.single_choice_hint
   can_shuffle_options: true
@@ -119,10 +121,11 @@ poll:
     minimum_stance_choices: 1
     maximum_stance_choices: 1
     dots_per_person: 1
+    days_duration: 3
 
 multiple_choice:
   template: true
-  material_icon: mdi-poll
+  material_icon: mdi-check-all
   vote_method: multiple_choice
   vote_method_hint_i18n: poll_common_form.voting_methods.multiple_choice_hint
   can_shuffle_options: true
@@ -131,7 +134,7 @@ multiple_choice:
   defaults:
     poll_option_name_format: plain
     process_title_i18n: poll_common_form.voting_methods.multiple_choice
-    process_subtitle_i18n: poll_common_form.voting_methods.multiple_choice_hint
+    process_subtitle_i18n: poll_poll_form.multiple_choice_subtitle
     process_description_i18n: poll_poll_form.tool_tip_expanded
     chart_column: max_score_percent
     chart_type: bar
@@ -139,6 +142,7 @@ multiple_choice:
     min_score: 1
     max_score: 1
     minimum_stance_choices: 1
+    days_duration: 3
 
 dot_vote:
   template: true
@@ -151,7 +155,7 @@ dot_vote:
   defaults:
     poll_option_name_format: plain
     process_title_i18n: decision_tools_card.dot_vote_title
-    process_subtitle_i18n: poll_common_form.voting_methods.allocate_hint
+    process_subtitle_i18n: poll_dot_vote_form.tool_tip_collapsed
     process_description_i18n: poll_dot_vote_form.tool_tip_expanded
     chart_column: max_score_percent
     chart_type: bar
@@ -159,6 +163,7 @@ dot_vote:
     dots_per_person: 8
     min_score: 0
     minimum_stance_choices: 0
+    days_duration: 3
 
 score:
   template: true
@@ -171,7 +176,7 @@ score:
   defaults:
     poll_option_name_format: plain
     process_title_i18n: decision_tools_card.score_title
-    process_subtitle_i18n: poll_common_form.voting_methods.score_hint
+    process_subtitle_i18n: poll_score_form.tool_tip_collapsed
     process_description_i18n: poll_score_form.tool_tip_expanded
     chart_column: max_score_percent
     chart_type: bar
@@ -179,6 +184,7 @@ score:
     min_score: 1
     max_score: 5
     minimum_stance_choices: 1
+    days_duration: 3
 
 ranked_choice:
   template: true
@@ -192,11 +198,12 @@ ranked_choice:
   defaults:
     poll_option_name_format: plain
     process_title_i18n: decision_tools_card.ranked_choice_title
-    process_subtitle_i18n: poll_common_form.voting_methods.ranked_choice_hint
+    process_subtitle_i18n: poll_ranked_choice_form.tool_tip_collapsed
     process_description_18n: poll_ranked_choice_form.tool_tip_expanded
     chart_column: max_score_percent
     chart_type: bar
     icon_type: bar
     minimum_stance_choices: 2
     min_score: 1
+    days_duration: 3
 

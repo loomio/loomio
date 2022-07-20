@@ -157,12 +157,19 @@ export default
       )
 
       template(v-if="discussion.template")
-        P.text--secondary When people click "Start thread" from your group page, this template will included in the list of suggested starter templates. Any polls you've used in this thread will be included in the template. Learn more at Loomio help.
-        v-text-field(label="Template title")
-        v-text-field(label="Template subtitle")
-        v-text-field(label="Template description")
-        v-checkbox(label="Make this template publically available in the template directory")
-
+        P.text--secondary When people click "Start thread" from your group page, this thread will be included in the list of templates offered to the user. Learn more at Loomio help.
+        v-text-field(
+          :label="$t('discussion_form.process_title')"
+          :hint="$t('discussion_form.process_title_hint')"
+          :placeholder="$t('discussion_form.process_title_placeholder')"
+          v-model="discussion.processTitle"
+        )
+        v-text-field(
+          :label="$t('discussion_form.process_subtitle')"
+          :hint="$t('discussion_form.process_subtitle_hint')"
+          :placeholder="$t('discussion_form.process_subtitle_placeholder')"
+          v-model="discussion.processSubtitle"
+        )
       common-notify-fields(:model="discussion")
       //- p.discussion-form__visibility
   v-card-actions.ma-2

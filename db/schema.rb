@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_16_090631) do
+ActiveRecord::Schema.define(version: 2022_07_20_035917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -282,6 +282,8 @@ ActiveRecord::Schema.define(version: 2022_07_16_090631) do
     t.integer "discarded_by"
     t.boolean "template", default: false, null: false
     t.integer "source_template_id"
+    t.string "process_title"
+    t.string "process_subtitle"
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["discarded_at"], name: "index_discussions_on_discarded_at", where: "(discarded_at IS NULL)"

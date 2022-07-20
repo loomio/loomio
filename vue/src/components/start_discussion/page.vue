@@ -95,7 +95,7 @@ v-main
       div(v-if="!discussion && $route.query.group_id && !$route.query.no_template")
         v-card-title
           h1.headline(tabindex="-1") Start thread from template
-        v-list
+        v-list(two-line)
           v-list-item(
             :to="'/d/new?no_template=1&group_id='+$route.query.group_id"
           )
@@ -107,6 +107,7 @@ v-main
             :to="'/d/new?template_discussion_id='+template.id"
           )
             v-list-item-content
-              v-list-item-title {{template.title}}
+              v-list-item-title {{template.processTitle}}
+              v-list-item-subtitle {{template.processSubtitle}}
  
 </template>

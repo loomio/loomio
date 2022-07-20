@@ -86,7 +86,7 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
     v-spacer
     dismiss-modal-button(:model="outcome")
   .poll-common-outcome-form.px-4
-    p(v-t="'announcement.form.outcome_announced.helptext'")
+    p.text--secondary(v-t="'announcement.form.outcome_announced.helptext'")
     recipients-autocomplete(
       :label="$t('action_dock.notify')"
       :placeholder="$t('poll_common_outcome_form.who_to_notify')"

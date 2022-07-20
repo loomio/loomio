@@ -158,6 +158,9 @@ export default
         @poll.closingAt = @closingAtWas
 
   computed:
+    example_if_template: ->
+      (@poll.template && 'example_') || ''
+
     formattedDuration: -> 
       return '' unless @poll.meetingDuration
       minutes = parseInt(@poll.meetingDuration)
@@ -174,11 +177,11 @@ export default
         {text: @$t('poll_common_form.stance_reason_disabled'), value: 'disabled'}
       ]
 
-    title_key: ->
-      mode = if @poll.isNew()
-        'action_dock.new_poll_type'
-      else
-        'action_dock.edit_poll_type'
+    titlePath: ->
+      (@poll.isNew() && 'action_dock.new_poll_type') || 'action_dock.edit_poll_type'
+
+    titleArgs: -> 
+      {pollType: (@poll.template && @$t('poll_common.poll_template').toLowerCase()) || @poll.translatedPollType().toLowerCase()}
 
     reminderEnabled: ->
       !@poll.closingAt || isAfter(@poll.closingAt, addHours(new Date(), 24))
@@ -200,7 +203,7 @@ export default
 .poll-common-form
   submit-overlay(:value="poll.processing")
   v-card-title
-    h1.ml-n4.headline(tabindex="-1" v-t="{path: title_key, args: {'pollType': poll.translatedPollType()}}")
+    h1.ml-n4.headline(tabindex="-1" v-t="{path: titlePath, args: titleArgs}")
     v-spacer
     v-btn(v-if="poll.id" icon :to="urlFor(poll)" aria-hidden='true')
       v-icon mdi-close
@@ -209,23 +212,60 @@ export default
 
   v-tabs(v-model="tab")
     v-tabs-slider(color="primary")
-    v-tab.poll-common-form__details-tab(v-t="'poll_common.decision'")
-    v-tab.poll-common-form__settings-tab(v-t="'poll_common_form.process'")
+    v-tab.poll-common-form__details-tab(v-t="'poll_common_form.content'")
+    v-tab.poll-common-form__settings-tab(v-t="'common.settings'")
 
   v-tabs-items.pt-4(v-model="tab")
     v-tab-item.poll-common-form__details-tab.poll-common-form-fields
       v-select(
-        v-if="!poll.id && !poll.discussionId"
+        v-if="!poll.id && !poll.discussionId && !poll.groupId"
         v-model="poll.groupId"
         :items="groupItems"
         :label="$t('common.group')"
       )
 
+      //- v-checkbox(
+      //-   v-if="poll.groupId && !poll.discussionId"
+      //-   v-model="poll.template"
+      //-   :label="$t('poll_common_form.this_is_a_template_for_new_decisions')"
+      //- ) 
+
+      template(v-if="poll.template")
+        v-text-field(
+           v-model="poll.processTitle"
+          :label="$t('poll_common_form.process_title')"
+          :hint="$t('poll_common_form.process_title_hint')")
+        validation-errors(:subject='poll' field='processTitle')
+
+        v-text-field(
+           v-model="poll.processSubtitle"
+          :label="$t('poll_common_form.process_subtitle')"
+          :hint="$t('poll_common_form.process_subtitle_hint')")
+        validation-errors(:subject='poll' field='processSubtitle')
+
+        //- lmo-textarea(
+        //-   :model='poll'
+        //-   field="processDescription"
+        //-   :placeholder="$t('poll_common_form.process_description_hint')"
+        //-   :label="$t('poll_common_form.process_description')"
+        //-   :should-reset="shouldReset"
+        //- )
+
+        //- .text-h5.my-4 Voting method
+        v-select(
+          :label="$t('poll_common_form.voting_method')"
+          v-model="poll.pollType"
+          @change="clearOptionsIfRequired"
+          :items="pollTypeItems"
+          :hint="$t('poll_common_form.voting_methods.'+poll.config().vote_method+'_hint')"
+          persistent-hint
+        )
+
       v-text-field.poll-common-form-fields__title.text-h5(
         type='text'
         required='true'
         :hint="$t('poll_common_form.title_hint')"
-        :label="$t('poll_common_form.title')"
+        :label="$t('poll_common_form.'+example_if_template+'title')"
         v-model='poll.title'
         maxlength='250')
       validation-errors(:subject='poll' field='title')
@@ -235,9 +275,36 @@ export default
         :model='poll'
         field="details"
         :placeholder="$t('poll_common_form.details_placeholder')"
-        :label="$t('poll_common_form.details')"
+        :label="$t('poll_common_form.'+example_if_template+'details')"
         :should-reset="shouldReset"
       )
+
+      .d-flex(v-if="poll.pollType == 'score'")
+        v-text-field.poll-score-form__min(
+          v-model="poll.minScore"
+          type="number"
+          :step="1"
+          :label="$t('poll_common.min_score')")
+        v-spacer
+        v-text-field.poll-score-form__max(
+          v-model="poll.maxScore"
+          type="number"
+          :step="1"
+          :label="$t('poll_common.max_score')")
+
+      .d-flex.align-center(v-if="poll.pollType == 'ranked_choice'")
+        v-text-field.lmo-number-input(
+          v-model="poll.minimumStanceChoices"
+          :label="$t('poll_ranked_choice_form.minimum_stance_choices_helptext')"
+          :hint="$t('poll_ranked_choice_form.minimum_stance_choices_hint')"
+          type="number"
+          :min="1"
+          :max="poll.pollOptionNames.length")
+        validation-errors(:subject="poll", field="minimumStanceChoices")
+
+      template(v-if="poll.pollType == 'dot_vote'")
+        v-text-field(:label="$t('poll_dot_vote_form.dots_per_person')" type="number", min="1", v-model="poll.dotsPerPerson")
+        validation-errors(:subject="poll" field="dotsPerPerson")
 
       .v-label.v-label--active.px-0.text-caption.py-2(v-t="'poll_common_form.options'")
       v-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
@@ -319,72 +386,18 @@ export default
        
       v-divider.my-4
 
-      poll-common-wip-field(:poll="poll")
-      poll-common-closing-at-field(:poll="poll")
+      template(v-if="!poll.template")
+        poll-common-wip-field(:poll="poll")
+        poll-common-closing-at-field(:poll="poll")
+      template(v-else)
+        v-text-field(
+          label="How many days time should be allowed for voting?"
+          type="number"
+        )
         
       common-notify-fields(:model="poll")
 
     v-tab-item.poll-common-form__settings-tab
-      v-checkbox(
-        v-if="poll.groupId && !poll.discussionId"
-        v-model="poll.template"
-        :label="$t('poll_common_form.this_is_a_template_for_new_decisions')"
-      ) 
-      template(v-if="poll.template")
-        v-text-field(
-           v-model="poll.processTitle"
-          :label="$t('poll_common_form.process_title')"
-          :hint="$t('poll_common_form.process_title_hint')")
-        validation-errors(:subject='poll' field='processTitle')
-
-        v-text-field(
-           v-model="poll.processSubtitle"
-          :label="$t('poll_common_form.process_subtitle')"
-          :hint="$t('poll_common_form.process_subtitle_hint')")
-        validation-errors(:subject='poll' field='processSubtitle')
-
-        lmo-textarea(
-          :model='poll'
-          field="processDescription"
-          :placeholder="$t('poll_common_form.process_description_hint')"
-          :label="$t('poll_common_form.process_description')"
-          :should-reset="shouldReset"
-        )
-
-        .text-h5.my-4 Voting method
-        v-select(
-          :label="$t('poll_common_form.voting_method')"
-          v-model="poll.pollType"
-          @change="clearOptionsIfRequired"
-          :items="pollTypeItems"
-        )
-        p.text--secondary(v-t="'poll_common_form.voting_methods.'+poll.config().vote_method+'_hint'")
-      .d-flex(v-if="poll.pollType == 'score'")
-        v-text-field.poll-score-form__min(
-          v-model="poll.minScore"
-          type="number"
-          :step="1"
-          :label="$t('poll_common.min_score')")
-        v-spacer
-        v-text-field.poll-score-form__max(
-          v-model="poll.maxScore"
-          type="number"
-          :step="1"
-          :label="$t('poll_common.max_score')")
-
-      .d-flex.align-center(v-if="poll.pollType == 'ranked_choice'")
-        v-text-field.lmo-number-input(
-          v-model="poll.minimumStanceChoices"
-          :label="$t('poll_ranked_choice_form.minimum_stance_choices_helptext')"
-          type="number"
-          :min="1"
-          :max="poll.pollOptionNames.length")
-        validation-errors(:subject="poll", field="minimumStanceChoices")
-
-      template(v-if="poll.pollType == 'dot_vote'")
-        v-text-field(:label="$t('poll_dot_vote_form.dots_per_person')" type="number", min="1", v-model="poll.dotsPerPerson")
-        validation-errors(:subject="poll" field="dotsPerPerson")
-
 
       .text-h5.mb-4.mt-8(v-t="'poll_common_card.hide_results'")
       p.text--secondary(v-t="'poll_common_form.hide_results_description'")

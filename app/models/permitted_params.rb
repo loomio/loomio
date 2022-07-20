@@ -29,8 +29,18 @@ class PermittedParams < Struct.new(:params)
   end
 
   def poll_attributes
-    [ :title, :details, :details_format, :poll_type, :discussion_id, :group_id,
-      :closing_at, :anonymous, :hide_results, :multiple_choice, :key,
+    [ 
+      :title,
+      :details,
+      :details_format,
+      :poll_type,
+      :discussion_id,
+      :group_id,
+      :closing_at,
+      :anonymous,
+      :hide_results,
+      :multiple_choice,
+      :key,
       :limit_reason_length,
       :shuffle_options,
       :anyone_can_participate,
@@ -68,7 +78,7 @@ class PermittedParams < Struct.new(:params)
       :document_ids, {document_ids: []},
       :poll_options_attributes, {poll_options_attributes: [:id, :name, :icon, :meaning, :prompt, :priority, :_destroy]},
       :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
-   ]
+    ]
   end
 
   def stance_attributes
@@ -128,13 +138,20 @@ class PermittedParams < Struct.new(:params)
   end
 
   def discussion_attributes
-    [:title, :description, :description_format, :group_id,
-      :newest_first, :max_depth, :private,
+    [:title,
+     :description,
+     :description_format,
+     :group_id,
+     :newest_first,
+     :max_depth,
+     :private,
      :notify_recipients,
      :recipient_audience,
      :recipient_message,
      :template,
      :source_template_id,
+     :process_title,
+     :process_subtitle,
      :tag_ids, {tag_ids: []},
      :recipient_user_ids, {recipient_user_ids: []},
      :recipient_chatbot_ids, {recipient_chatbot_ids: []},
