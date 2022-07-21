@@ -26,6 +26,7 @@ export default
     subscription: @discussion.group().parentOrSelf().subscription
     groupItems: []
     initialRecipients: []
+    showTemplateCheckbox: @discussion.template
 
   mounted: ->
     Records.users.fetchGroups()
@@ -110,10 +111,29 @@ export default
       v-if="isPage && discussion.id"
       icon
       aria-hidden='true'
-      :to="urlFor(discussion)")
+      :to="urlFor(discussion)"
+    )
       v-icon mdi-close
   .pa-4
-    v-select(v-if="!discussion.id" v-model="discussion.groupId", :items="groupItems", :label="$t('common.group')")
+    v-select(v-model="discussion.groupId", :items="groupItems", :label="$t('common.group')")
+    v-checkbox(
+      v-if="showTemplateCheckbox"
+      v-model="discussion.template"
+      :label="$t('templates.this_is_a_template_for_new_threads')"
+    )
+    template(v-if="discussion.template")
+      v-text-field(
+        :label="$t('discussion_form.process_title')"
+        :hint="$t('discussion_form.process_title_hint')"
+        :placeholder="$t('discussion_form.process_title_placeholder')"
+        v-model="discussion.processTitle"
+      )
+      v-text-field(
+        :label="$t('discussion_form.process_subtitle')"
+        :hint="$t('discussion_form.process_subtitle_hint')"
+        :placeholder="$t('discussion_form.process_subtitle_placeholder')"
+        v-model="discussion.processSubtitle"
+      )
     p.text--secondary.caption
       span(v-if="!discussion.groupId" v-t="'announcement.form.visible_to_guests'")
       span(v-if="discussion.groupId" v-t="{path: 'announcement.form.visible_to_group', args: {group: discussion.group().name}}")
@@ -134,6 +154,7 @@ export default
         v-model='discussion.title' maxlength='255' required
       )
       validation-errors(:subject='discussion', field='title')
+
       recipients-autocomplete(
         v-if="!discussion.id"
         :label="$t(discussion.groupId ? 'action_dock.notify' : 'common.action.invite')"
@@ -144,6 +165,7 @@ export default
         :reset="reset"
       )
       tags-field(:model="discussion")
+
       lmo-textarea(
         :model='discussion'
         field="description"
@@ -151,25 +173,6 @@ export default
         :placeholder="$t('discussion_form.context_placeholder')"
       )
 
-      v-checkbox(
-        v-model="discussion.template"
-        :label="$t('templates.this_is_a_template_for_new_threads')"
-      )
-
-      template(v-if="discussion.template")
-        P.text--secondary When people click "Start thread" from your group page, this thread will be included in the list of templates offered to the user. Learn more at Loomio help.
-        v-text-field(
-          :label="$t('discussion_form.process_title')"
-          :hint="$t('discussion_form.process_title_hint')"
-          :placeholder="$t('discussion_form.process_title_placeholder')"
-          v-model="discussion.processTitle"
-        )
-        v-text-field(
-          :label="$t('discussion_form.process_subtitle')"
-          :hint="$t('discussion_form.process_subtitle_hint')"
-          :placeholder="$t('discussion_form.process_subtitle_placeholder')"
-          v-model="discussion.processSubtitle"
-        )
       common-notify-fields(:model="discussion")
       //- p.discussion-form__visibility
   v-card-actions.ma-2
@@ -180,8 +183,12 @@ export default
     v-btn.discussion-form__edit-layout(v-if="discussion.id" outlined @click="openEditLayout")
       span(v-t="'thread_arrangement_form.edit'")
     v-spacer
-    v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-if="!discussion.id" :loading="discussion.processing")
-      span(v-t="'discussion_form.start_thread'")
-    v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-if="discussion.id" :loading="discussion.processing")
-      span(v-t="'common.action.save'")
+    v-btn.discussion-form__submit(
+      color="primary"
+      @click="submit()"
+      :disabled="submitIsDisabled"
+      :loading="discussion.processing"
+    )
+      span(v-if="!discussion.id" v-t="'discussion_form.start_thread'")
+      span(v-if="discussion.id" v-t="'common.action.save'")
 </template>

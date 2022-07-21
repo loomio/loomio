@@ -695,6 +695,11 @@ en:
     start_new_thread: Or, start new thread
 
   discussion_form:
+    thread_templates: Thread templates
+    blank: Blank
+    blank_subtitle: Start a discussion and see where it takes you
+    new_template: New template
+    new_template_subtitle: Create an example that others can copy
     to: To
     # visible_to_label: Privacy
     process_title: Process title
@@ -2002,7 +2007,7 @@ en:
     your_in_zone: 'Current time zone: %{zone}'
     show_other_zones: Show other time zones
     hide_other_zones: Hide other time zones
-    this_is_a_template_for_new_decisions: This is a template for new decisions
+    this_is_a_template_for_new_polls: This is a template for new polls
     voting_method: Voting method
     voting_methods:
       show_thumbs: Show of thumbs

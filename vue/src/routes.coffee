@@ -16,7 +16,7 @@ import MembershipRequestsPanel from './components/group/requests_panel'
 import StartGroupPage from './components/start_group/page'
 import ContactPage from './components/contact/page'
 import EmailSettingsPage from './components/email_settings/page'
-import StartDiscussionPage from './components/start_discussion/page'
+import ThreadFormPage from './components/thread/form_page'
 import UserPage from './components/user/page'
 import ThreadsPage from './components/threads/page'
 import StrandPage from './components/strand/page'
@@ -71,8 +71,8 @@ router = new Router
     {path: '/p/new', component: PollFormPage },
     {path: '/p/:key/:stub?', component: PollShowPage},
     {path: '/u/:key/:stub?', component: UserPage },
-    {path: '/d/new', component: StartDiscussionPage },
-    {path: '/d/:key/edit', component: StartDiscussionPage },
+    {path: '/d/new', component: ThreadFormPage },
+    {path: '/d/:key/edit', component: ThreadFormPage },
     {
       path: '/d/:key',
       component: StrandPage,

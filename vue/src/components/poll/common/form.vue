@@ -55,6 +55,7 @@ export default
     newDateOption: startOfHour(setHours(new Date(), 12))
     minDate: new Date()
     closingAtWas: null
+    showTemplateCheckbox: @poll.template
 
   methods:
     setPollOptionPriority: ->
@@ -224,11 +225,11 @@ export default
         :label="$t('common.group')"
       )
 
-      //- v-checkbox(
-      //-   v-if="poll.groupId && !poll.discussionId"
-      //-   v-model="poll.template"
-      //-   :label="$t('poll_common_form.this_is_a_template_for_new_decisions')"
-      //- ) 
+      v-checkbox(
+        v-if="showTemplateCheckbox"
+        v-model="poll.template"
+        :label="$t('poll_common_form.this_is_a_template_for_new_polls')"
+      ) 
 
       template(v-if="poll.template")
         v-text-field(
@@ -269,7 +270,8 @@ export default
         v-model='poll.title'
         maxlength='250')
       validation-errors(:subject='poll' field='title')
-      //- tags-field(:model="poll")
+
+      //- tags-field(v-if="!poll.discussionId", :model="poll")
 
       lmo-textarea(
         :model='poll'

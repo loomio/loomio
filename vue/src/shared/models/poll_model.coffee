@@ -92,7 +92,7 @@ export default class PollModel extends BaseModel
     clone.updatedAt = null
     clone.decidedVotersCount = null
     clone.undecidedVotersCount = null
-    clone.template = false
+    clone.template = !@template
     clone
 
   applyPollTypeDefaults: ->
