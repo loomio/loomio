@@ -34,9 +34,9 @@ export default
 
     menuActions: ->
       assign(
-        pickBy @eventActions, (v) -> v.menu
-      ,
         pickBy @pollActions, (v) -> v.menu
+      ,
+        pickBy @eventActions, (v) -> v.menu
       )
     dockActions: ->
       pickBy @pollActions, (v) -> v.dock
