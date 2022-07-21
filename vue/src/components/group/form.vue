@@ -141,7 +141,7 @@ v-card.group-form
 
     v-tab-item
       .mt-8.px-4
-        v-img.group_form__file-select(:aspect-ratio="4/1", :src="realGroup.coverUrl" @click="selectCoverPhoto()")
+        v-img.group_form__file-select.rounded(:aspect-ratio="4/1", :src="realGroup.coverUrl" @click="selectCoverPhoto()")
         group-avatar.group_form__file-select.group_form__logo(:group="realGroup", :size="64" @click="selectLogo()")
         .v-input
           label.v-label.v-label--active.lmo-font-12px
