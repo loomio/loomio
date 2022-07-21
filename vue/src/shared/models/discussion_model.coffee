@@ -82,6 +82,9 @@ export default class DiscussionModel extends BaseModel
     # @belongsTo 'forkedEvent', from: 'events'
 
   discussion: -> @
+  
+  sourceTemplate: ->
+    @recordStore.discussions.find(@sourceTemplateId)
 
   tags: ->
     @recordStore.tags.collection.chain().find(id: {$in: @tagIds}).simplesort('priority').data()
