@@ -182,7 +182,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
                 template(v-if='openCounts[parentGroup.id]')
                   | &nbsp;
                   span ({{openCounts[parentGroup.id]}})
-          v-list-item(v-for="group in memberGroups(parentGroup)" :key="group.id" :to="urlFor(group)")
+          v-list-item(v-for="group in memberGroups(parentGroup)", :key="group.id", :to="urlFor(group)")
             v-list-item-content
               v-list-item-title
                 span {{group.name}}
