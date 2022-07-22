@@ -121,19 +121,6 @@ export default
       v-model="discussion.template"
       :label="$t('templates.this_is_a_template_for_new_threads')"
     )
-    template(v-if="discussion.template")
-      v-text-field(
-        :label="$t('discussion_form.process_title')"
-        :hint="$t('discussion_form.process_title_hint')"
-        :placeholder="$t('discussion_form.process_title_placeholder')"
-        v-model="discussion.processTitle"
-      )
-      v-text-field(
-        :label="$t('discussion_form.process_subtitle')"
-        :hint="$t('discussion_form.process_subtitle_hint')"
-        :placeholder="$t('discussion_form.process_subtitle_placeholder')"
-        v-model="discussion.processSubtitle"
-      )
     p.text--secondary.caption
       span(v-if="!discussion.groupId" v-t="'announcement.form.visible_to_guests'")
       span(v-if="discussion.groupId" v-t="{path: 'announcement.form.visible_to_group', args: {group: discussion.group().name}}")

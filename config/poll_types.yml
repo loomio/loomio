@@ -7,7 +7,7 @@ count:
   has_option_icon: true
   defaults:
     poll_option_name_format: i18n
-    process_title_i18n: decision_tools_card.count_title
+    process_name_i18n: decision_tools_card.count_title
     poll_option_names:
       - 'yes'
       - 'no'
@@ -65,9 +65,8 @@ proposal:
       color: "#D38FE1"
   defaults:
     poll_option_name_format: plain
-    process_title_i18n: decision_tools_card.proposal_title
+    process_name_i18n: decision_tools_card.proposal_title
     process_subtitle_i18n: poll_proposal_form.tool_tip_collapsed
-    process_description_i18n: poll_proposal_form.tool_tip_expanded
     chart_column: score_percent
     chart_type: pie
     icon_type: pie
@@ -90,9 +89,8 @@ meeting:
   defaults:
     meeting_duration: 60
     poll_option_name_format: iso8601
-    process_title_i18n: decision_tools_card.meeting_title
+    process_name_i18n: decision_tools_card.meeting_title
     process_subtitle_i18n: poll_meeting_form.tool_tip_collapsed
-    process_description_i18n: poll_meeting_form.tool_tip_expanded
     chart_column: max_score_percent
     chart_type: grid
     icon_type: grid
@@ -110,9 +108,8 @@ poll:
   validate_dots_per_person: true
   defaults:
     poll_option_name_format: plain
-    process_title_i18n: poll_common_form.voting_methods.single_choice
+    process_name_i18n: poll_common_form.voting_methods.single_choice
     process_subtitle_i18n: poll_poll_form.tool_tip_collapsed
-    process_description_i18n: poll_poll_form.tool_tip_expanded
     chart_column: max_score_percent
     chart_type: bar
     icon_type: bar
@@ -133,9 +130,8 @@ multiple_choice:
   validate_max_score: true
   defaults:
     poll_option_name_format: plain
-    process_title_i18n: poll_common_form.voting_methods.multiple_choice
+    process_name_i18n: poll_common_form.voting_methods.multiple_choice
     process_subtitle_i18n: poll_poll_form.multiple_choice_subtitle
-    process_description_i18n: poll_poll_form.tool_tip_expanded
     chart_column: max_score_percent
     chart_type: bar
     icon_type: bar
@@ -154,9 +150,8 @@ dot_vote:
   validate_dots_per_person: true
   defaults:
     poll_option_name_format: plain
-    process_title_i18n: decision_tools_card.dot_vote_title
+    process_name_i18n: decision_tools_card.dot_vote_title
     process_subtitle_i18n: poll_dot_vote_form.tool_tip_collapsed
-    process_description_i18n: poll_dot_vote_form.tool_tip_expanded
     chart_column: max_score_percent
     chart_type: bar
     icon_type: bar
@@ -175,9 +170,8 @@ score:
   validate_max_score: true
   defaults:
     poll_option_name_format: plain
-    process_title_i18n: decision_tools_card.score_title
+    process_name_i18n: decision_tools_card.score_title
     process_subtitle_i18n: poll_score_form.tool_tip_collapsed
-    process_description_i18n: poll_score_form.tool_tip_expanded
     chart_column: max_score_percent
     chart_type: bar
     icon_type: bar
@@ -197,9 +191,8 @@ ranked_choice:
   validate_min_score: true
   defaults:
     poll_option_name_format: plain
-    process_title_i18n: decision_tools_card.ranked_choice_title
+    process_name_i18n: decision_tools_card.ranked_choice_title
     process_subtitle_i18n: poll_ranked_choice_form.tool_tip_collapsed
-    process_description_18n: poll_ranked_choice_form.tool_tip_expanded
     chart_column: max_score_percent
     chart_type: bar
     icon_type: bar

@@ -702,12 +702,6 @@ en:
     new_template_subtitle: Create an example that others can copy
     to: To
     # visible_to_label: Privacy
-    process_title: Process title
-    process_title_hint: What do you call this process?
-    process_title_placeholder: E.g. Role advice process
-    process_subtitle: Process subtitle
-    process_subtitle_hint: What do you use this process for?
-    process_subtitle_placeholder: 'E.g. Find the overlap of what you are good at, what you love doing, and what is beneficial to the business.'
     direct_thread: "Direct thread"
     invite_only_thread: "Invite-only thread"
     none_direct_thread: "Direct thread (no group)"
@@ -2025,13 +2019,8 @@ en:
       time_poll: Time poll
       time_poll_hint: Voters indicate when they are available to meet
     process: Process
-    process_title: Process title
-    process_title_hint: E.g. Proposal, Resolution, Agreement, Temperature check
-    process_subtitle: Process subtitle
-    process_subtitle_hint: One line that explains what the process does
-    process_description: Process description
-    process_description_hint: |
-      How does this process work? What situations is it suited to? How do you facilitate the process? Where can people find more information?
+    process_name: Process name
+    process_name_hint: E.g. Proposal, Resolution, Agreement, Temperature check
     you_can_set_a_prompt_per_option: For this voting method you define a prompt for each option. Edit options from the details tab.
     chart_type: Chart type
     title: Title

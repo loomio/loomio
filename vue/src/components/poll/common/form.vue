@@ -233,10 +233,10 @@ export default
 
       template(v-if="poll.template")
         v-text-field(
-           v-model="poll.processTitle"
-          :label="$t('poll_common_form.process_title')"
-          :hint="$t('poll_common_form.process_title_hint')")
-        validation-errors(:subject='poll' field='processTitle')
+           v-model="poll.processName"
+          :label="$t('poll_common_form.process_name')"
+          :hint="$t('poll_common_form.process_name_hint')")
+        validation-errors(:subject='poll' field='processName')
 
         v-text-field(
            v-model="poll.processSubtitle"
@@ -244,15 +244,6 @@ export default
           :hint="$t('poll_common_form.process_subtitle_hint')")
         validation-errors(:subject='poll' field='processSubtitle')
 
-        //- lmo-textarea(
-        //-   :model='poll'
-        //-   field="processDescription"
-        //-   :placeholder="$t('poll_common_form.process_description_hint')"
-        //-   :label="$t('poll_common_form.process_description')"
-        //-   :should-reset="shouldReset"
-        //- )
-
-        //- .text-h5.my-4 Voting method
         v-select(
           :label="$t('poll_common_form.voting_method')"
           v-model="poll.pollType"

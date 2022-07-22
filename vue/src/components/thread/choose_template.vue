@@ -47,7 +47,7 @@ div
       :to="'/d/new?template_id='+template.id"
     )
       v-list-item-content
-        v-list-item-title {{template.processTitle}}
+        v-list-item-title {{template.processName}}
         v-list-item-subtitle {{template.processSubtitle}}
     v-list-item(
       :to="'/d/new?new_template=1&group_id='+$route.query.group_id"

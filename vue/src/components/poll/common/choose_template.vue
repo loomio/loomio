@@ -61,9 +61,8 @@ export default
         @polls['defaultPolls'] = compact Object.keys(AppConfig.pollTypes).map (pollType) =>
           return null unless AppConfig.pollTypes[pollType].template
           poll = Records.polls.build
-            processTitle: @$t(AppConfig.pollTypes[pollType].defaults.process_title_i18n)
+            processName: @$t(AppConfig.pollTypes[pollType].defaults.process_name_i18n)
             processSubtitle: @$t(AppConfig.pollTypes[pollType].defaults.process_subtitle_i18n)
-            processDescription: @$t(AppConfig.pollTypes[pollType].defaults.process_description_i18n)
             pollType: pollType
             groupId: groupId
             discussionId: discussionId
@@ -72,9 +71,8 @@ export default
           poll
 
         @newTemplate = Records.polls.build
-          processTitle: @$t(AppConfig.pollTypes['proposal'].defaults.process_title_i18n)
+          processName: @$t(AppConfig.pollTypes['proposal'].defaults.process_name_i18n)
           processSubtitle: @$t(AppConfig.pollTypes['proposal'].defaults.process_subtitle_i18n)
-          processDescription: @$t(AppConfig.pollTypes['proposal'].defaults.process_description_i18n)
           pollType: 'proposal'
           template: true
           groupId: groupId
@@ -91,7 +89,7 @@ export default
   template(v-for="kind in pollKinds")
     v-subheader(v-t="i18nForKind[kind]" v-if="kind == 'defaultPolls'")
     v-subheader(v-if="kind == 'groupPolls'") {{group.fullName}}
-    v-subheader(v-if="kind == 'threadPolls'") {{sourceTemplate.processTitle || sourceTemplate.title}}
+    v-subheader(v-if="kind == 'threadPolls'") {{sourceTemplate.processName || sourceTemplate.title}}
     v-list.decision-tools-card__poll-types(two-line dense)
       v-list-item.decision-tools-card__poll-type(
         @click="$emit('setPoll', poll)"
@@ -102,7 +100,7 @@ export default
         v-list-item-avatar
           v-icon {{$pollTypes[poll.pollType].material_icon}}
         v-list-item-content
-          v-list-item-title {{ poll.processTitle }}
+          v-list-item-title {{ poll.processName }}
           v-list-item-subtitle {{ poll.title || poll.processSubtitle }}
       v-list-item.decision-tools-card__new-template(
         v-if="kind == 'groupPolls' && !discussion"
