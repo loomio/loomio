@@ -238,12 +238,6 @@ export default
           :hint="$t('poll_common_form.process_name_hint')")
         validation-errors(:subject='poll' field='processName')
 
-        v-text-field(
-           v-model="poll.processSubtitle"
-          :label="$t('poll_common_form.process_subtitle')"
-          :hint="$t('poll_common_form.process_subtitle_hint')")
-        validation-errors(:subject='poll' field='processSubtitle')
-
         v-select(
           :label="$t('poll_common_form.voting_method')"
           v-model="poll.pollType"
@@ -384,6 +378,7 @@ export default
         poll-common-closing-at-field(:poll="poll")
       template(v-else)
         v-text-field(
+          v-model="poll.defaultDurationInDays"
           label="How many days time should be allowed for voting?"
           type="number"
         )

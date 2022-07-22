@@ -3,12 +3,12 @@ import Session  from '@/shared/services/session'
 import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import PollCommonDirective from '@/components/poll/common/directive'
+import PollTemplateBanner from '@/components/poll/template_banner'
 import PollService from '@/shared/services/poll_service'
 import { pickBy } from 'lodash'
 
 export default
-  components:
-    PollCommonDirective: PollCommonDirective
+  components: { PollCommonDirective, PollTemplateBanner}
 
   props:
     poll: Object
@@ -50,6 +50,7 @@ v-sheet
     v-card-text
       .text--secondary(v-t="'poll_common_card.deleted'")
   div.px-4.pb-4(v-else)
+    poll-template-banner(:poll="poll")
     h1.poll-common-card__title.display-1(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
       poll-common-type-icon.mr-2(:poll="poll")
       span(v-if='!poll.translation.title') {{poll.title}}

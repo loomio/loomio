@@ -19,8 +19,7 @@ class Poll < ApplicationRecord
 
   set_custom_fields :meeting_duration,
                     :time_zone,
-                    :can_respond_maybe,
-                    :duration_in_days
+                    :can_respond_maybe
 
   TEMPLATE_DEFAULT_FIELDS = %w[
     poll_option_name_format
@@ -30,7 +29,7 @@ class Poll < ApplicationRecord
     chart_type
     icon_type
     chart_column
-    duration_in_days
+    default_duration_in_days
   ]
 
   TEMPLATE_DEFAULT_FIELDS.each do |field|
@@ -138,6 +137,7 @@ class Poll < ApplicationRecord
 
   before_save :clamp_minimum_stance_choices
   validate :closes_in_future
+  validate :closes_at_nil_if_template
   validate :discussion_group_is_poll_group
   validate :cannot_deanonymize
   validate :cannot_reveal_results_early
@@ -486,7 +486,13 @@ class Poll < ApplicationRecord
     return if closed_at
     return if closing_at.nil? 
     return if closing_at > Time.zone.now
-    errors.add(:closing_at, I18n.t(:"validate.motion.must_close_in_future"))
+    errors.add(:closing_at, I18n.t(:"poll.error.must_be_in_the_future"))
+  end
+
+  def closes_at_nil_if_template
+    if template && closing_at
+      errors.add(:closing_at, I18n.t(:"poll.error.templates_cannot_close"))
+    end
   end
 
   def discussion_group_is_poll_group

@@ -34,7 +34,7 @@ class PermittedParams < Struct.new(:params)
       :details,
       :details_format,
       :discussion_id,
-      :duration_in_days,
+      :default_duration_in_days,
       :poll_type,
       :group_id,
       :closing_at,

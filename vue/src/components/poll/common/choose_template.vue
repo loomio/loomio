@@ -103,7 +103,7 @@ export default
           v-list-item-title {{ poll.processName }}
           v-list-item-subtitle {{ poll.title || poll.processSubtitle }}
       v-list-item.decision-tools-card__new-template(
-        v-if="kind == 'groupPolls' && !discussion"
+        v-if="kind == 'defaultPolls' && !discussion"
         @click="$emit('setPoll', newTemplate)"
         :class="'decision-tools-card__poll-type--new-template'"
         :key='123'

@@ -38,7 +38,7 @@ export default class PollModel extends BaseModel
     details: ''
     detailsFormat: 'html'
     decidedVotersCount: 0
-    durationInDays: null
+    defaultDurationInDays: null
     specifiedVotersOnly: false
     pollOptionNames: []
     pollType: 'single_choice'
@@ -87,23 +87,26 @@ export default class PollModel extends BaseModel
     clone.groupId = null
     clone.discussionId = null
 
-    #use durationInDays
-    if @closingAt
-      clone.closingAt = startOfHour(addHours(new Date(), differenceInHours(@closingAt, @createdAt)))
+    clone.template = !@template
+    if clone.template
+      clone.closingAt = null
+    else
+      clone.closingAt = startOfHour(addDays(new Date(), @defaultDurationInDays))
+
     clone.closedAt = null
     clone.createdAt = null
     clone.updatedAt = null
     clone.decidedVotersCount = null
     clone.undecidedVotersCount = null
-    clone.template = !@template
     clone
 
   applyPollTypeDefaults: ->
     map AppConfig.pollTypes[@pollType].defaults, (value, key) =>
       @[camelCase(key)] = value
-
-  setClosingAt: ->
-    @closingAt = startOfHour(addDays(new Date(), @durationInDays))
+    if @template
+      @closingAt = null
+    else
+      @closingAt = startOfHour(addDays(new Date(), @defaultDurationInDays))
 
   defaulted: (attr) ->
     if @[attr] == null
