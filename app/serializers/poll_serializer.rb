@@ -56,7 +56,8 @@ class PollSerializer < ApplicationSerializer
              :min_score,
              :minimum_stance_choices,
              :maximum_stance_choices,
-             :meeting_duration
+             :meeting_duration,
+             :duration_in_days
 
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_one :created_event, serializer: EventSerializer, root: :events
@@ -101,7 +102,9 @@ class PollSerializer < ApplicationSerializer
     :voter_can_add_options,
     :voters_count,
     :stance_reason_required,
-    :versions_count
+    :versions_count,
+    :meeting_duration,
+    :duration_in_days
   ]
 
   def include_stance_counts?

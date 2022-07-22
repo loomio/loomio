@@ -76,7 +76,7 @@ proposal:
     minimum_stance_choices: 1
     maximum_stance_choices: 1
     dots_per_person: 1
-    days_duration: 7
+    duration_in_days: 7
 
 meeting:
   template: true
@@ -98,7 +98,7 @@ meeting:
     icon_type: grid
     min_score: 0
     max_score: 2
-    days_duration: 3
+    duration_in_days: 3
 
 poll:
   template: true
@@ -121,7 +121,7 @@ poll:
     minimum_stance_choices: 1
     maximum_stance_choices: 1
     dots_per_person: 1
-    days_duration: 3
+    duration_in_days: 3
 
 multiple_choice:
   template: true
@@ -142,7 +142,7 @@ multiple_choice:
     min_score: 1
     max_score: 1
     minimum_stance_choices: 1
-    days_duration: 3
+    duration_in_days: 3
 
 dot_vote:
   template: true
@@ -163,7 +163,7 @@ dot_vote:
     dots_per_person: 8
     min_score: 0
     minimum_stance_choices: 0
-    days_duration: 3
+    duration_in_days: 3
 
 score:
   template: true
@@ -184,7 +184,7 @@ score:
     min_score: 1
     max_score: 5
     minimum_stance_choices: 1
-    days_duration: 3
+    duration_in_days: 3
 
 ranked_choice:
   template: true
@@ -205,5 +205,5 @@ ranked_choice:
     icon_type: bar
     minimum_stance_choices: 2
     min_score: 1
-    days_duration: 3
+    duration_in_days: 3
 

@@ -38,6 +38,7 @@ export default class PollModel extends BaseModel
     details: ''
     detailsFormat: 'html'
     decidedVotersCount: 0
+    durationInDays: null
     specifiedVotersOnly: false
     pollOptionNames: []
     pollType: 'single_choice'
@@ -85,6 +86,8 @@ export default class PollModel extends BaseModel
     clone.authorId = Session.user().id
     clone.groupId = null
     clone.discussionId = null
+
+    #use durationInDays
     if @closingAt
       clone.closingAt = startOfHour(addHours(new Date(), differenceInHours(@closingAt, @createdAt)))
     clone.closedAt = null
@@ -100,7 +103,7 @@ export default class PollModel extends BaseModel
       @[camelCase(key)] = value
 
   setClosingAt: ->
-    @closingAt = startOfHour(addDays(new Date(), @daysDuration))
+    @closingAt = startOfHour(addDays(new Date(), @durationInDays))
 
   defaulted: (attr) ->
     if @[attr] == null
