@@ -379,7 +379,7 @@ export default
       template(v-else)
         v-text-field(
           v-model="poll.defaultDurationInDays"
-          label="How many days time should be allowed for voting?"
+          label="How many days should be given for voting?"
           type="number"
         )
         
