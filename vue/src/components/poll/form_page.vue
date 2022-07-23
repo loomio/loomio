@@ -20,6 +20,7 @@ export default
       @loading = true
       Records.polls.findOrFetchById(templateId).then (poll) =>
         @poll = poll.cloneTemplate()
+        @group = @poll.group()
         @loading = false
 
     if discussionId = parseInt(@$route.query.discussion_id)

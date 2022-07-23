@@ -19,7 +19,7 @@ export default
     pollKinds: -> Object.keys(@polls).filter (key) => @polls[key].length
     i18nForKind: ->
       threadPolls: 'poll_common_action_panel.from_the_thread'
-      groupPolls: {path: 'poll_common_action_panel.name_templates', args: {name: @group.fullName}}
+      groupPolls: {path: 'poll_common_action_panel.name_templates', args: {name: @group && @group.fullName}}
       defaultPolls: 'poll_common_action_panel.default_templates'
 
   created: ->
