@@ -2091,7 +2091,7 @@ en:
     details_placeholder: Provide any clarifying details people might need to answer the question.
     add_option_placeholder: Add option
     new_option: New option
-    add_option_hint: Enter short name for the option
+    add_option_hint: Enter a short name for the option
     remove_option: Remove option
     poll_created: Poll created
     poll_updated: Poll updated

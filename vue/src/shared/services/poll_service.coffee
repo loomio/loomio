@@ -51,7 +51,7 @@ export default new class PollService
       name: 'templates.make_a_copy'
       menu: true
       canPerform: -> Session.user()
-      to: "/p/new?source_template_id=#{poll.id}"
+      to: "/p/new?template_id=#{poll.id}"
 
     add_poll_to_thread:
       menu: true

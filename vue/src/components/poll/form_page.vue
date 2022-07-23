@@ -16,7 +16,7 @@ export default
     discussion: null
 
   created: ->
-    if templateId = parseInt(@$route.query.source_template_id)
+    if templateId = parseInt(@$route.query.template_id)
       @loading = true
       Records.polls.findOrFetchById(templateId).then (poll) =>
         @poll = poll.cloneTemplate()

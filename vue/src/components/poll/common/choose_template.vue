@@ -112,5 +112,5 @@ export default
           v-icon mdi-plus
         v-list-item-content
           v-list-item-title New template
-          v-list-item-subtitle Create a decision template with your own language and settings
+          v-list-item-subtitle Customise with your preferred terminologly and settings
 </template>
