@@ -383,6 +383,25 @@ export default
           :hint="$t('poll_common_form.default_duration_in_days_hint')"
           type="number"
         )
+      v-radio-group(
+        v-model="poll.specifiedVotersOnly"
+        :disabled="!poll.closingAt"
+        :label="$t('poll_common_settings.who_can_vote')"
+      )
+        v-radio(
+          v-if="poll.discussionId && !poll.groupId"
+          :value="false"
+          :label="$t('poll_common_settings.specified_voters_only_false_discussion')")
+        v-radio(
+          v-if="poll.groupId"
+          :value="false"
+          :label="$t('poll_common_settings.specified_voters_only_false_group')")
+        v-radio.poll-common-settings__specified-voters-only(
+          :value="true"
+          :label="$t('poll_common_settings.specified_voters_only_true')")
+      .caption.mt-n4.text--secondary(
+        v-if="poll.specifiedVotersOnly"
+        v-t="$t('poll_common_settings.invite_people_next', {poll_type: poll.translatedPollType()})")
         
       common-notify-fields(:model="poll")
 
@@ -462,25 +481,6 @@ export default
           v-model="poll.notifyOnClosingSoon"
           :items="closingSoonItems")
 
-      v-radio-group(
-        v-model="poll.specifiedVotersOnly"
-        :disabled="!poll.closingAt"
-        :label="$t('poll_common_settings.who_can_vote')"
-      )
-        v-radio(
-          v-if="poll.discussionId && !poll.groupId"
-          :value="false"
-          :label="$t('poll_common_settings.specified_voters_only_false_discussion')")
-        v-radio(
-          v-if="poll.groupId"
-          :value="false"
-          :label="$t('poll_common_settings.specified_voters_only_false_group')")
-        v-radio.poll-common-settings__specified-voters-only(
-          :value="true"
-          :label="$t('poll_common_settings.specified_voters_only_true')")
-      .caption.mt-n4(
-        v-if="poll.specifiedVotersOnly"
-        v-t="$t('poll_common_settings.invite_people_next', {poll_type: poll.translatedPollType()})")
 
   .d-flex.justify-space-between.my-4.mt-8.poll-common-form-actions
     help-link(path="en/user_manual/polls/starting_proposals" text="poll_poll_form.help_starting_polls")
