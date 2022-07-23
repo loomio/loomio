@@ -1997,6 +1997,8 @@ en:
     success: Successfully deleted
 
   poll_common_form:
+    default_duration_in_days: Default duration in days
+    default_duration_in_days_hint: How many days should be given for people to vote?
     content: Content
     reminder: Reminder
     your_in_zone: 'Current time zone: %{zone}'

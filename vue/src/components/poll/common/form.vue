@@ -379,7 +379,8 @@ export default
       template(v-else)
         v-text-field(
           v-model="poll.defaultDurationInDays"
-          label="How many days should be given for voting?"
+          :label="$t('poll_common_form.default_duration_in_days')"
+          :hint="$t('poll_common_form.default_duration_in_days_hint')"
           type="number"
         )
         
