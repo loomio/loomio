@@ -61,8 +61,6 @@ export default
         @polls['defaultPolls'] = compact Object.keys(AppConfig.pollTypes).map (pollType) =>
           return null unless AppConfig.pollTypes[pollType].template
           poll = Records.polls.build
-            processName: @$t(AppConfig.pollTypes[pollType].defaults.process_name_i18n)
-            processSubtitle: @$t(AppConfig.pollTypes[pollType].defaults.process_subtitle_i18n)
             pollType: pollType
             groupId: groupId
             discussionId: discussionId
@@ -71,8 +69,6 @@ export default
           poll
 
         @newTemplate = Records.polls.build
-          processName: @$t(AppConfig.pollTypes['proposal'].defaults.process_name_i18n)
-          processSubtitle: @$t(AppConfig.pollTypes['proposal'].defaults.process_subtitle_i18n)
           pollType: 'proposal'
           template: true
           groupId: groupId

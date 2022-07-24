@@ -93,6 +93,12 @@ export default class PollModel extends BaseModel
     else
       clone.closingAt = startOfHour(addDays(new Date(), @defaultDurationInDays))
 
+    clone.pollOptionsAttributes = @pollOptions().map (o) =>
+        name: o.name
+        meaning: o.meaning
+        prompt: o.prompt
+        icon: o.icon
+
     clone.closedAt = null
     clone.createdAt = null
     clone.updatedAt = null
@@ -100,13 +106,32 @@ export default class PollModel extends BaseModel
     clone.undecidedVotersCount = null
     clone
 
+  clonePollOptions: ->
+    @pollOptions().map (o) =>
+        id: o.id
+        name: o.name
+        meaning: o.meaning
+        prompt: o.prompt
+        icon: o.icon
+
   applyPollTypeDefaults: ->
+    @processName = I18n.t(AppConfig.pollTypes[@pollType].defaults.process_name_i18n)
+    @processSubtitle = I18n.t(AppConfig.pollTypes[@pollType].defaults.process_subtitle_i18n)
+
     map AppConfig.pollTypes[@pollType].defaults, (value, key) =>
       @[camelCase(key)] = value
     if @template
       @closingAt = null
     else
       @closingAt = startOfHour(addDays(new Date(), @defaultDurationInDays))
+
+    common_poll_options = AppConfig.pollTypes[@pollType].common_poll_options || []
+    @pollOptionsAttributes = common_poll_options.filter((o) -> o.default)
+      .map (o) =>
+        name:  I18n.t(o.name_i18n)
+        meaning: I18n.t(o.meaning_i18n)
+        prompt: I18n.t(o.prompt_i18n)
+        icon: o.icon
 
   defaulted: (attr) ->
     if @[attr] == null

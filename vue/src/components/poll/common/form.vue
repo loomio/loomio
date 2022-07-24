@@ -35,7 +35,7 @@ export default
     tab: 0
     newOption: null
     lastPollType: @poll.pollType
-    pollOptions: @getPollOptions()
+    pollOptions: @poll.pollOptionsAttributes || @poll.clonePollOptions()
     groupItems: []
     pollTypeItems: compact Object.keys(AppConfig.pollTypes).map (key) =>
       pollType = AppConfig.pollTypes[key]
@@ -62,22 +62,6 @@ export default
       i = 0
       @pollOptions.forEach (o) -> o.priority = 0
       @visiblePollOptions.forEach (o) -> o.priority = i++
-
-    getPollOptions: ->
-      if @poll.pollOptionNames.length
-        console.log 'names has length'
-        @poll.pollOptions()
-      else
-        common_poll_options = AppConfig.pollTypes[@poll.pollType].common_poll_options || []
-        options = common_poll_options.filter((o) -> o.default)
-          .map((o) -> structuredClone(o))
-          .map (o) =>
-            o.name = @$t(o.name_i18n)
-            o.meaning = @$t(o.meaning_i18n)
-            o.prompt = @$t(o.prompt_i18n)
-            o
-          .map (o) -> Records.pollOptions.build(o)
-        options
 
     settingDisabled: (setting) ->
       !@poll.closingAt || (!@poll.isNew() && setting == 'anonymous')
@@ -134,7 +118,7 @@ export default
       actionName = if @poll.isNew() then 'created' else 'updated'
       @poll.setErrors({})
       @setPollOptionPriority()
-      @poll.pollOptionsAttributes = @pollOptions.map (o) -> o.serialize().poll_option
+      @poll.pollOptionsAttributes = @pollOptions
       @poll.save()
       .then (data) =>
         poll = Records.polls.find(data.polls[0].id)
