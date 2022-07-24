@@ -87,7 +87,8 @@ export default class PollModel extends BaseModel
     clone.groupId = null
     clone.discussionId = null
 
-    clone.template = !@template
+    clone.template = false
+    
     if clone.template
       clone.closingAt = null
     else
