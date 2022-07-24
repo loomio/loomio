@@ -21,6 +21,7 @@ export default
           @options = @poll.pollOptionsForVoting() if @poll
 
   computed:
+    votingEnabled: -> !@poll.template && !!@poll.closingAt
     singleChoice: -> @poll.singleChoice()
     hasOptionIcon: -> @poll.config().has_option_icon
     poll: -> @stance.poll()
@@ -34,6 +35,7 @@ export default
 
   watch:
     selectedOptionId: -> EventBus.$emit('focusEditor')
+
   methods:
     submit: ->
       if @singleChoice
@@ -55,15 +57,20 @@ export default
         @selectedOptionIds.includes(option.id)
 
     classes: (option) ->
+      if @votingEnabled
+        votingStatus = 'voting-enabled'
+      else
+        votingStatus = 'voting-disabled'
+
       if @optionSelected
         if @isSelected(option)
-          ['elevation-2']
+          ['elevation-2', votingStatus]
         else
-          ['poll-common-vote-form__button--not-selected']
+          ['poll-common-vote-form__button--not-selected', votingStatus]
 </script>
 
 <template lang="pug">
-form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.stop.capture="submit()")
+form.poll-common-vote-form(disabled @keyup.ctrl.enter="submit()", @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value="stance.processing")
 
   v-sheet.poll-common-vote-form__button.mb-2.rounded(
@@ -75,6 +82,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
   )
     label
       input(
+        :disabled="poll.template"
         v-if="singleChoice"
         v-model="selectedOptionId"
         :value="option.id"
@@ -83,6 +91,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
         name="name"
       )
       input(
+        :disabled="poll.template"
         v-if="!singleChoice"
         v-model="selectedOptionIds"
         :value="option.id"
@@ -90,11 +99,11 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
         type="checkbox"
         name="name"
       )
-      v-list-item
+      v-list-item(:style="!votingEnabled && 'opacity: 0.6'")
         v-list-item-icon
           template(v-if="hasOptionIcon")
             v-avatar(size="48")
-              img(aria-hidden="true", :src="'/img/' + option.icon + '.svg'")
+              img( aria-hidden="true", :src="'/img/' + option.icon + '.svg'")
           template(v-else)
             v-icon(v-if="singleChoice && !isSelected(option)", :color="option.color") mdi-radiobox-blank
             v-icon(v-if="singleChoice && isSelected(option)", :color="option.color") mdi-radiobox-marked
@@ -104,30 +113,33 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
           v-list-item-title {{option.optionName()}}
           v-list-item-subtitle {{option.meaning}}
 
-  poll-common-stance-reason(:stance='stance', :poll='poll', :selectedOptionId="selectedOptionId", :prompt="optionPrompt")
-  v-card-actions.poll-common-form-actions
-    v-btn.poll-common-vote-form__submit(
-      @click='submit()'
-      :disabled='!optionSelected'
-      :loading="stance.processing"
-      color="primary"
-      block
-    )
-      span(v-t="submitText")
+  template(v-if="votingEnabled")
+    poll-common-stance-reason(:stance='stance', :poll='poll', :selectedOptionId="selectedOptionId", :prompt="optionPrompt")
+    v-card-actions.poll-common-form-actions
+      v-btn.poll-common-vote-form__submit(
+        @click='submit()'
+        :disabled='!optionSelected'
+        :loading="stance.processing"
+        color="primary"
+        block
+      )
+        span(v-t="submitText")
 </template>
 <style lang="sass">
 .poll-common-vote-form__button--not-selected
   opacity: 0.33 !important
 
-.poll-common-vote-form__button label
+.poll-common-vote-form__button.voting-enabled label
   cursor: pointer
+
+.poll-common-vote-form__button label
   input
     position: absolute
     opacity: 0
     width: 0
     height: 0
 
-.poll-common-vote-form__button
+.poll-common-vote-form__button.voting-enabled
   &:hover
     border: 1px solid var(--v-primary-base)
 

@@ -45,17 +45,20 @@ export default
   v-alert.poll-common-action-panel__anonymous-message.mt-6(dense outlined type="info" v-if='poll.anonymous')
     span(v-t="'poll_common_action_panel.anonymous'")
       
-  template(v-if='poll.closingAt')
-    .poll-common-vote-form(v-if='stance && !stance.castAt')
-      h3.title.py-3(v-t="'poll_common.have_your_say'")
-      poll-common-directive(:stance='stance' name='vote-form')
-    .poll-common-unable-to-vote(v-if='!stance')
-      v-alert.my-4(type="warning" outlined dense v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}")
-        
   template(v-if="!poll.closingAt")
     v-alert.poll-common-action-panel__results-hidden-until-vote.my-2(
-      v-if='!poll.closingAt'
       dense outlined type="info"
     )
-      span(v-t="{path: 'poll_common_action_panel.draft_mode', args: {poll_type: poll.translatedPollType()}}")
+      span(v-if='poll.template' v-t="{path: 'poll_common_action_panel.voting_disabled_poll_is_template', args: {poll_type: poll.translatedPollType()}}")
+      span(v-else v-t="{path: 'poll_common_action_panel.draft_mode', args: {poll_type: poll.translatedPollType()}}")
+      
+  template(v-else)
+    .poll-common-vote-form(v-if='stance && !stance.castAt')
+      h3.title.py-3(v-t="'poll_common.have_your_say'")
+
+  poll-common-directive(v-if="stance && !stance.castAt", :stance='stance' name='vote-form')
+
+  .poll-common-unable-to-vote(v-if='!stance')
+    v-alert.my-4(type="warning" outlined dense v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}")
+        
 </template>

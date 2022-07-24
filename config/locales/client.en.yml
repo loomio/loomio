@@ -1859,6 +1859,7 @@ en:
     results_hidden_until_vote: Results will be shown after you vote
     unable_to_vote: You have not been invited to vote in this %{poll_type}.
     draft_mode: Voting disabled. This %{poll_type} is a work in progress.
+    voting_disabled_poll_is_template: Voting disabled. This is a template.
 
   poll_common_collapsed:
     by_who: "by {{name}}"
