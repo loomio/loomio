@@ -2002,6 +2002,8 @@ en:
     success: Successfully deleted
 
   poll_common_form:
+    please_review_the_form: Please review the form
+    option_added_please_add_details: Option added! Please add some details so people know what it means.
     default_duration_in_days: Default duration in days
     default_duration_in_days_hint: How many days should be given for people to vote?
     content: Content

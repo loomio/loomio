@@ -63,6 +63,11 @@ proposal:
       meaning_i18n: poll_proposal_options.objection_meaning
       prompt_i18n: poll_proposal_options.objection_prompt
       color: "#D38FE1"
+    - name_i18n: poll_proposal_options.object
+      icon: disagree
+      meaning_i18n: poll_proposal_options.objection_meaning
+      prompt_i18n: poll_proposal_options.objection_prompt
+      color: "#D38FE1"
   defaults:
     poll_option_name_format: plain
     process_name_i18n: decision_tools_card.proposal_title

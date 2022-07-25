@@ -133,7 +133,7 @@ export default
             props:
               poll: poll
       .catch (error) =>
-        Flash.error 'common.something_went_wrong'
+        Flash.warning 'poll_common_form.please_review_the_form'
         console.error error
 
   watch:
