@@ -93,17 +93,19 @@ export default
           @$t(o.name_i18n).toLowerCase() == @newOption.toLowerCase()
 
         if knownOption
-          @pollOptions.push Records.pollOptions.build(
+          @pollOptions.push
             name: @newOption
             icon:  knownOption.icon
             meaning: @$t(knownOption.meaning_i18n)
             prompt: @$t(knownOption.prompt_i18n)
-          )
         else
-          @pollOptions.push Records.pollOptions.build(
+          option = 
             name: @newOption
             icon: 'agree'
-          )
+          @pollOptions.push option
+          if @poll.pollType == 'proposal'
+            Flash.success('poll_common_form.option_added_please_add_details')
+            @editOption(option)
 
         @newOption = null
 
@@ -354,7 +356,6 @@ export default
           span.pl-2(v-t="'common.minutes'")
           span.pl-1.text--secondary(v-if="formattedDuration") ({{formattedDuration}})
 
-       
       v-divider.my-4
 
       template(v-if="!poll.template")
