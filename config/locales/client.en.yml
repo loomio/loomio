@@ -697,6 +697,8 @@ en:
 
   discussion_form:
     thread_templates: Thread templates
+    new_thread_template: New thread template
+    edit_thread_template: Edit thread template
     blank: Blank
     blank_subtitle: Start a discussion and see where it takes you
     new_template: New template

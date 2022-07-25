@@ -100,8 +100,12 @@ export default
     h1.headline(v-observe-visibility="{callback: titleVisible}")
       span(v-if="isMovingItems" v-t="'discussion_form.moving_items_title'")
       template(v-else)
-        span(v-if="!discussion.id" v-t="'discussion_form.new_discussion_title'")
-        span(v-if="discussion.id" v-t="'discussion_form.edit_discussion_title'")
+        template(v-if="discussion.template")
+          span(v-if="!discussion.id" v-t="'discussion_form.new_thread_template'")
+          span(v-if="discussion.id" v-t="'discussion_form.edit_thread_template'")
+        template(v-else)
+          span(v-if="!discussion.id" v-t="'discussion_form.new_discussion_title'")
+          span(v-if="discussion.id" v-t="'discussion_form.edit_discussion_title'")
     v-spacer
     dismiss-modal-button(
       v-if="!isPage"
