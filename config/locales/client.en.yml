@@ -696,6 +696,8 @@ en:
     start_new_thread: Or, start new thread
 
   discussion_form:
+    want_some_inspiration: Want some inspiration?
+    browse_public_templates: Browse public templates
     thread_templates: Thread templates
     new_thread_template: New thread template
     edit_thread_template: Edit thread template

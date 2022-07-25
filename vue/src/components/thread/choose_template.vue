@@ -57,8 +57,8 @@ div
         v-list-item-subtitle(v-t="'discussion_form.new_template_subtitle'")
   div
     p.text-center
-      span.text--secondary Need some inspiration?
+      span.text--secondary(v-t="'discussion_form.want_some_inspiration'")
       span &nbsp;
-      a(href="https://loomio.org/templates" target="_blank") Browse the template gallery
+      a(href="https://loomio.org/templates" target="_blank" v-t="'discussion_form.browse_public_templates'")
    
 </template>
