@@ -1,24 +1,38 @@
 count:
-  template: false
-  material_icon: mdi-check-circle
-  vote_method: show_thumbs
+  template: true
+  material_icon: mdi-human-greeting-variant
+  vote_method: opt_in
   validate_minimum_stance_choices: true
+  validate_maximum_stance_choices: true
   validate_dots_per_person: true
   has_option_icon: true
+  per_option_reason_prompt: true
+  common_poll_options:
+    - name_i18n: poll_count_options.accept
+      icon: agree
+      meaning_i18n: poll_count_vote_form.accept_meaning
+      prompt_i18n: poll_count_vote_form.accept_prompt
+      color: '#70C9F8'
+      default: true
+    - name_i18n: poll_count_options.decline
+      icon: disagree
+      meaning_i18n: poll_count_vote_form.decline_meaning
+      prompt_i18n: poll_count_vote_form.decline_prompt
+      color: "#C8E56E"
+      default: true
   defaults:
-    poll_option_name_format: i18n
-    process_name_i18n: decision_tools_card.count_title
-    poll_option_names:
-      - 'yes'
-      - 'no'
-    chart_column: voter_percent
-    chart_type: bar
-    icon_type: bar
+    poll_option_name_format: 'plain'
+    process_name_i18n: decision_tools_card.opt_in_title
+    process_subtitle_i18n: poll_count_form.tool_tip_collapsed
+    chart_column: target_percent
+    chart_type: pie
     min_score: 1
     max_score: 1
     minimum_stance_choices: 1
     maximum_stance_choices: 1
+    agree_target: 5
     dots_per_person: 1
+    default_duration_in_days: 3
 
 proposal:
   template: true
@@ -74,7 +88,6 @@ proposal:
     process_subtitle_i18n: poll_proposal_form.tool_tip_collapsed
     chart_column: score_percent
     chart_type: pie
-    icon_type: pie
     min_score: 1
     max_score: 1
     minimum_stance_choices: 1
@@ -98,7 +111,6 @@ meeting:
     process_subtitle_i18n: poll_meeting_form.tool_tip_collapsed
     chart_column: max_score_percent
     chart_type: grid
-    icon_type: grid
     min_score: 0
     max_score: 2
     default_duration_in_days: 3
@@ -106,43 +118,22 @@ meeting:
 poll:
   template: true
   material_icon: mdi-check
-  vote_method: single_choice
-  vote_method_hint_i18n: poll_common_form.voting_methods.single_choice_hint
+  vote_method: choose
+  vote_method_hint_i18n: poll_common_form.voting_methods.choose_hint
   can_shuffle_options: true
   validate_minimum_stance_choices: true
   validate_dots_per_person: true
   defaults:
     poll_option_name_format: plain
-    process_name_i18n: poll_common_form.voting_methods.single_choice
-    process_subtitle_i18n: poll_poll_form.tool_tip_collapsed
+    process_name_i18n: decision_tools_card.poll_title
+    process_subtitle_i18n: poll_poll_form.multiple_choice_subtitle
     chart_column: max_score_percent
     chart_type: bar
-    icon_type: bar
     min_score: 1
     max_score: 1
     minimum_stance_choices: 1
     maximum_stance_choices: 1
     dots_per_person: 1
-    default_duration_in_days: 3
-
-multiple_choice:
-  template: true
-  material_icon: mdi-check-all
-  vote_method: multiple_choice
-  vote_method_hint_i18n: poll_common_form.voting_methods.multiple_choice_hint
-  can_shuffle_options: true
-  validate_minimum_stance_choices: true
-  validate_max_score: true
-  defaults:
-    poll_option_name_format: plain
-    process_name_i18n: poll_common_form.voting_methods.multiple_choice
-    process_subtitle_i18n: poll_poll_form.multiple_choice_subtitle
-    chart_column: max_score_percent
-    chart_type: bar
-    icon_type: bar
-    min_score: 1
-    max_score: 1
-    minimum_stance_choices: 1
     default_duration_in_days: 3
 
 dot_vote:
@@ -159,7 +150,6 @@ dot_vote:
     process_subtitle_i18n: poll_dot_vote_form.tool_tip_collapsed
     chart_column: max_score_percent
     chart_type: bar
-    icon_type: bar
     dots_per_person: 8
     min_score: 0
     minimum_stance_choices: 0
@@ -179,7 +169,6 @@ score:
     process_subtitle_i18n: poll_score_form.tool_tip_collapsed
     chart_column: max_score_percent
     chart_type: bar
-    icon_type: bar
     min_score: 1
     max_score: 5
     minimum_stance_choices: 1
@@ -200,7 +189,6 @@ ranked_choice:
     process_subtitle_i18n: poll_ranked_choice_form.tool_tip_collapsed
     chart_column: max_score_percent
     chart_type: bar
-    icon_type: bar
     minimum_stance_choices: 2
     min_score: 1
     default_duration_in_days: 3

@@ -44,7 +44,6 @@ export default class PollModel extends BaseModel
     pollType: 'single_choice'
     chartColumn: null
     chartType: null
-    iconType: null
     minScore: null
     maxScore: null
     minimumStanceChoices: null
@@ -149,6 +148,29 @@ export default class PollModel extends BaseModel
     @belongsTo 'group'
     @hasMany   'stances'
     @hasMany   'versions'
+
+  pieSlices: ->
+    slices = []
+    if @pollType == 'proposal'
+      slices = @results.filter((r) => r[@chartColumn]).map (r) =>
+        value: r[@chartColumn]
+        color: r.color
+
+    if @pollType == 'count'
+      agree = @results.find((r) => r.icon == 'agree')
+      if agree.score < @agreeTarget
+        pct = (parseFloat(agree.score) / parseFloat(@agreeTarget)) * 100
+        slices.push
+          value: pct
+          color: agree.color
+        slices.push
+          value: 100 - pct
+          color: "#ddd"
+      else
+        slices.push
+          value: 100
+          color: agree.color
+    slices
 
   pollOptions: ->
     options = (@recordStore.pollOptions.collection.chain().find(pollId: @id, id: {$in: @pollOptionIds}).data())

@@ -63,11 +63,6 @@ export default
       @pollOptions.forEach (o) -> o.priority = 0
       @visiblePollOptions.forEach (o) -> o.priority = i++
 
-    settingDisabled: (setting) ->
-      !@poll.closingAt || (!@poll.isNew() && setting == 'anonymous')
-    snakify: (setting) -> snakeCase setting
-    kebabify: (setting) -> kebabCase setting
-
     clearOptionsIfRequired: (newValue) ->
       if newValue == 'meeting' || @lastPollType == 'meeting'
         @pollOptions = []
@@ -101,6 +96,8 @@ export default
         else
           option = 
             name: @newOption
+            meaning: ''
+            prompt: ''
             icon: 'agree'
           @pollOptions.push option
           if @poll.pollType == 'proposal'
@@ -252,32 +249,6 @@ export default
         :should-reset="shouldReset"
       )
 
-      .d-flex(v-if="poll.pollType == 'score'")
-        v-text-field.poll-score-form__min(
-          v-model="poll.minScore"
-          type="number"
-          :step="1"
-          :label="$t('poll_common.min_score')")
-        v-spacer
-        v-text-field.poll-score-form__max(
-          v-model="poll.maxScore"
-          type="number"
-          :step="1"
-          :label="$t('poll_common.max_score')")
-
-      .d-flex.align-center(v-if="poll.pollType == 'ranked_choice'")
-        v-text-field.lmo-number-input(
-          v-model="poll.minimumStanceChoices"
-          :label="$t('poll_ranked_choice_form.minimum_stance_choices_helptext')"
-          :hint="$t('poll_ranked_choice_form.minimum_stance_choices_hint')"
-          type="number"
-          :min="1"
-          :max="poll.pollOptionNames.length")
-        validation-errors(:subject="poll", field="minimumStanceChoices")
-
-      template(v-if="poll.pollType == 'dot_vote'")
-        v-text-field(:label="$t('poll_dot_vote_form.dots_per_person')" type="number", min="1", v-model="poll.dotsPerPerson")
-        validation-errors(:subject="poll" field="dotsPerPerson")
 
       .v-label.v-label--active.px-0.text-caption.py-2(v-t="'poll_common_form.options'")
       v-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
@@ -356,6 +327,59 @@ export default
           span.pl-2(v-t="'common.minutes'")
           span.pl-1.text--secondary(v-if="formattedDuration") ({{formattedDuration}})
 
+      template(v-if="poll.pollType == 'count'")
+        p.text--secondary(v-t="'poll_count_form.agree_target_helptext'")
+        .d-flex
+          v-text-field.poll-common-form__agree-target(
+            v-model="poll.agreeTarget"
+            type="number"
+            :step="1"
+            :label="$t('poll_count_form.agree_target_label')"
+          )
+
+      .d-flex(v-if="poll.pollType == 'score'")
+        v-text-field.poll-score-form__min(
+          v-model="poll.minScore"
+          type="number"
+          :step="1"
+          :label="$t('poll_common.min_score')")
+        v-spacer
+        v-text-field.poll-score-form__max(
+          v-model="poll.maxScore"
+          type="number"
+          :step="1"
+          :label="$t('poll_common.max_score')")
+
+      template(v-if="poll.pollType == 'poll'")
+        p.text--secondary(v-t="'poll_common_form.how_many_options_can_a_voter_choose'")
+        .d-flex
+          v-text-field.poll-common-form__minimum-stance-choices(
+            v-model="poll.minimumStanceChoices"
+            type="number"
+            :step="1"
+            hint="Voter must choose at least this many options"
+            :label="$t('poll_common_form.minimum_choices')")
+          v-spacer
+          v-text-field.poll-common-form__maximum-stance-choices(
+            v-model="poll.maximumStanceChoices"
+            type="number"
+            :step="1"
+            hint="Voter may choose up to this many options"
+            :label="$t('poll_common_form.maximum_choices')")
+
+      .d-flex.align-center(v-if="poll.pollType == 'ranked_choice'")
+        v-text-field.lmo-number-input(
+          v-model="poll.minimumStanceChoices"
+          :label="$t('poll_ranked_choice_form.minimum_stance_choices_helptext')"
+          :hint="$t('poll_ranked_choice_form.minimum_stance_choices_hint')"
+          type="number"
+          :min="1"
+          :max="poll.pollOptionNames.length")
+        validation-errors(:subject="poll", field="minimumStanceChoices")
+
+      template(v-if="poll.pollType == 'dot_vote'")
+        v-text-field(:label="$t('poll_dot_vote_form.dots_per_person')" type="number", min="1", v-model="poll.dotsPerPerson")
+        validation-errors(:subject="poll" field="dotsPerPerson")
       v-divider.my-4
 
       template(v-if="!poll.template")
@@ -448,7 +472,7 @@ export default
         :label="$t('poll_common_form.limit_reason_length')"
       )
 
-      //- v-select(
+      v-select(
         :label="$t('poll_common_form.chart_type')"
         v-model="poll.chartType"
         :items="chartTypeItems")

@@ -30,6 +30,7 @@ class PermittedParams < Struct.new(:params)
 
   def poll_attributes
     [ 
+      :agree_target,
       :title,
       :details,
       :details_format,

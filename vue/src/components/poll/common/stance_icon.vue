@@ -9,6 +9,7 @@ export default
       default: 20
 
   computed:
+    hasOptionIcon: -> @poll.config().has_option_icon
     pollOption: -> @stance.pollOption()
 
 </script>
@@ -16,20 +17,14 @@ export default
 <template lang="pug">
 .poll-common-stance-icon(:style="{width: size+'px', height: size+'px'}" aria-hidden="true")
   template(v-if='stance && stance.castAt && pollOption')
-    .poll-common-chart-preview__stance(v-if="poll.pollType == 'proposal'" :class="'poll-proposal-chart-preview__stance--'+pollOption.name")
-    .poll-common-chart-preview__stance(v-if="poll.pollType == 'count'")
-      v-icon(small :color="pollOption.color" v-if="pollOption.name == 'yes'") mdi-check
-      v-icon(small :color="pollOption.color" v-if="pollOption.name == 'no'") mdi-close
-    .poll-common-chart-preview__stance(v-if="poll.pollType == 'poll'")
-      v-icon(small :color="pollOption.color") mdi-check
-    .poll-common-chart-preview__stance(v-if="poll.pollType == 'ranked_choice'")
-      v-icon(small :color="pollOption.color") mdi-check
-    .poll-common-chart-preview__stance(v-if="poll.pollType == 'score'")
-      v-icon(small :color="pollOption.color") mdi-check
-    .poll-common-chart-preview__stance(v-if="poll.pollType == 'dot_vote'")
-      v-icon(small :color="pollOption.color") mdi-check
-    .poll-common-chart-preview__stance(v-if="poll.pollType == 'meeting'")
-      v-icon(small) mdi-check
+    .poll-common-chart-preview__stance(
+      v-if="hasOptionIcon"
+      :class="'poll-proposal-chart-preview__stance--'+pollOption.icon"
+    )
+    template(v-if="!hasOptionIcon")
+      .poll-common-chart-preview__stance
+        v-icon(v-if="poll.pollType != 'meeting'" small :color="pollOption.color") mdi-check
+        v-icon(v-else small) mdi-check
   .poll-common-chart-preview__stance.poll-proposal-chart-preview__stance--undecided(v-else)
     v-icon(:size="size - (size/4)" color="primary") mdi-help
 </template>

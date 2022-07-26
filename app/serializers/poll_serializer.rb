@@ -2,6 +2,7 @@ class PollSerializer < ApplicationSerializer
   attributes :id,
              :limit_reason_length,
              :attachments,
+             :agree_target,
              :author_id,
              :anyone_can_participate,
              :anonymous,

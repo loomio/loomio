@@ -3,22 +3,25 @@ import Records from '@/shared/services/records'
 import { fieldFromTemplate, myLastStanceFor } from '@/shared/helpers/poll'
 import { max, values, orderBy, compact } from 'lodash'
 import BarIcon from '@/components/poll/common/icon/bar.vue'
-import CountIcon from '@/components/poll/common/icon/count.vue'
 import PieIcon from '@/components/poll/common/icon/pie.vue'
 import GridIcon from '@/components/poll/common/icon/grid.vue'
 import Vue from 'vue'
 
 export default
-  components: {BarIcon, CountIcon, PieIcon, GridIcon}
+  components: {BarIcon, PieIcon, GridIcon}
   props:
     poll: Object
 
   data: ->
     users: {}
+    slices: []
 
+  watch:
+    'poll.stanceCounts': -> @slices = @poll.pieSlices()
+    
   created: ->
     @watchRecords
-      collections: ['users']
+      collections: ['users', 'stances']
       query: =>
         @poll.results.forEach (option) =>
           option.voter_ids.forEach (id) =>
@@ -34,6 +37,7 @@ export default
         template(v-for="col in poll.resultColumns")
           th.text-left(v-if="col == 'chart'")
           th.text-left(v-if="col == 'name'" v-t='"common.option"')
+          th.text-right(v-if="col == 'target_percent'" v-t='"poll_count_form.pct_of_target"')
           th.text-right(v-if="col == 'score_percent'" v-t='"poll_ranked_choice_form.pct_of_points"')
           th.text-right(v-if="col == 'voter_percent'" v-t='"poll_ranked_choice_form.pct_of_voters"')
           th.text-right(v-if="col == 'score'" v-t='"poll_ranked_choice_form.points"')
@@ -48,8 +52,8 @@ export default
             v-if="col == 'chart' && poll.chartType == 'pie' && index == 0"
             style="vertical-align: top"
             :rowspan="poll.results.length"
-          )
-            pie-icon.ma-2(:poll="poll", :size='128')
+          ) 
+            pie-icon.ma-2(:slices="slices", :size='128')
           td.pr-2.py-2(
             v-if="col == 'chart' && poll.chartType == 'bar'"
             style="width: 128px; padding: 0 8px 0 0"
@@ -59,6 +63,8 @@ export default
             span(v-if="option.name_format == 'plain'") {{option.name}}
             span(v-if="option.name_format == 'i18n'" v-t="option.name")
             // poll-meeting-time(:name='option.name')
+          td.text-right(v-if="col == 'target_percent' && option.icon == 'agree'") {{option.target_percent.toFixed(0)}}%
+          td.text-right(v-if="col == 'target_percent' && option.icon != 'agree'")
           td.text-right(v-if="col == 'rank'") {{option.rank}}
           td.text-right(v-if="col == 'score'") {{option.score}}
           td.text-right(v-if="col == 'voter_count'") {{option.voter_count}}

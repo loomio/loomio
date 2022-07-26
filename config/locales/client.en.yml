@@ -1706,6 +1706,7 @@ en:
     title: Facilitate
     proposal_title: Proposal
     count_title: Count
+    opt_in_title: Opt-in
     poll_title: Poll
     score_title: Score poll
     dot_vote_title: Dot vote
@@ -2179,21 +2180,23 @@ en:
 
   poll_count_form:
     pct_of_target: '% of target'
-    agree_target_helptext: What is the target number of agree votes you're looking for?
-    tool_tip_collapsed: Find a number of supporters or volunteers
+    agree_target_helptext: What is the target number of volunteers you'd like to have?
+    tool_tip_collapsed: Find a number of volunteers or participants
     title_placeholder: E.g. Who wants to join the working group?
     details_placeholder: Explain what commitment is involved, or give details about how to participate.
     agree_target_label: Target number
 
   poll_count_options:
+    accept: Accept
+    decline: Decline
     'yes': 'Yes'
     'no': 'No'
 
   poll_count_vote_form:
-    agree_meaning: I'm willing to volunteer
-    agree_prompt: Why are you volunteering for this?
-    abstain_meaning: This is not for me
-    abstain_prompt: Is there anything you'd like to say?
+    accept_meaning: I'm willing to participate
+    accept_prompt: Why are you volunteering for this?
+    decline_meaning: I'm unable to participate
+    decline_prompt: Is there anything you'd like to say?
     reason_label: Message
     reason_placeholder: Leave a message if you like
 
