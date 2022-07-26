@@ -152,7 +152,6 @@ module Dev::FakeDataHelper
     end.uniq
     {
       poll: options,
-      multiple_choice: options,
       proposal: %w[agree abstain disagree block],
       count: %w[yes no],
       dot_vote: options,
@@ -179,7 +178,6 @@ module Dev::FakeDataHelper
         Faker::Movies::HitchhikersGuideToTheGalaxy.quote].sample,
       poll_option_names: names[args.fetch(:poll_type, :poll)],
       closing_at: closing_at,
-      multiple_choice: false,
       specified_voters_only: false,
       custom_fields: {}
     }.merge args.tap {|a| a.delete(:wip)}

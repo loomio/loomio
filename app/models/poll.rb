@@ -27,7 +27,6 @@ class Poll < ApplicationRecord
     min_score
     dots_per_person
     chart_type
-    icon_type
     chart_column
     default_duration_in_days
   ]
@@ -207,22 +206,12 @@ class Poll < ApplicationRecord
   #   end
   # end
 
-  # def icon_type
-  #   case poll_type
-  #   when 'proposal' then 'pie'
-  #   when 'meeting' then 'grid'
-  #   when 'count' then 'count'
-  #   else
-  #     'bar'
-  #   end
-  # end
-
   def result_columns
     case poll_type
     when 'proposal'
       %w[chart name score_percent voter_count voters]
     when 'count'
-      %w[chart name voter_percent voter_count voters]
+      %w[chart name target_percent voter_count voters]
     when 'ranked_choice'
       %w[chart name rank score_percent score average]
     when 'dot_vote'
@@ -230,8 +219,6 @@ class Poll < ApplicationRecord
     when 'score'
       %w[chart name score average voter_count voters]
     when 'poll'
-      %w[chart name score_percent voter_count voters]
-    when 'multiple_choice'
       %w[chart name score_percent voter_count voters]
     when 'meeting'
       %w[chart name score voters]

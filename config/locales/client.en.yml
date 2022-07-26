@@ -155,7 +155,6 @@ en:
     proposal: proposal
     count: check
     poll: poll
-    multiple_choice: multiple choice
     dot_vote: dot vote
     meeting: time poll
     ranked_choice: ranked choice
@@ -1706,9 +1705,8 @@ en:
     choose_type: Choose poll type
     title: Facilitate
     proposal_title: Proposal
-    count_title: Check
+    count_title: Count
     poll_title: Poll
-    multiple_choice_title: Multiple choice
     score_title: Score poll
     dot_vote_title: Dot vote
     meeting_title: Time poll
@@ -2006,6 +2004,9 @@ en:
     option_added_please_add_details: Option added! Please add some details so people know what it means.
     default_duration_in_days: Default duration in days
     default_duration_in_days_hint: How many days should be given for people to vote?
+    how_many_options_can_a_voter_choose: How many of these options may a voter choose?
+    minimum_choices: Minimum choices
+    maximum_choices: Maximum choices
     content: Content
     reminder: Reminder
     your_in_zone: 'Current time zone: %{zone}'
@@ -2016,10 +2017,8 @@ en:
     voting_methods:
       show_thumbs: Show of thumbs
       show_thumbs_hint: Voters agree or disagree by choosing thumbs up or down
-      single_choice: Single choice
-      single_choice_hint: Voters choose one of the options
-      multiple_choice: Multiple choice
-      multiple_choice_hint: Voters choose as many options as required
+      choose: Choose
+      choose_hint: Voters choose the best option (or options)
       score: Score
       score_hint: Voters assign a score to each option
       allocate: Allocate
@@ -2089,7 +2088,7 @@ en:
 
   poll_poll_form:
     help_starting_polls: 'Help: Starting polls'
-    multiple_choice_subtitle: A simple way to measure popularity
+    multiple_choice_subtitle: A simple way to assess the popularity of options
     tool_tip_collapsed: Find the most popular option
     start_header: Start poll
     edit_header: Edit poll
@@ -2178,15 +2177,25 @@ en:
     block_meaning: The urgent attention of the group is required
     no_voting: 'No voting'
 
+  poll_count_form:
+    pct_of_target: '% of target'
+    agree_target_helptext: What is the target number of agree votes you're looking for?
+    tool_tip_collapsed: Find a number of supporters or volunteers
+    title_placeholder: E.g. Who wants to join the working group?
+    details_placeholder: Explain what commitment is involved, or give details about how to participate.
+    agree_target_label: Target number
+
   poll_count_options:
     'yes': 'Yes'
     'no': 'No'
 
   poll_count_vote_form:
+    agree_meaning: I'm willing to volunteer
+    agree_prompt: Why are you volunteering for this?
+    abstain_meaning: This is not for me
+    abstain_prompt: Is there anything you'd like to say?
     reason_label: Message
     reason_placeholder: Leave a message if you like
-    stance_created: Vote created
-    stance_updated: Vote updated
 
   poll_common_percent_voted:
     sentence: "{{numerator}} of {{denominator}} people have voted ({{percent}}%)"

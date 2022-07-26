@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_22_195633) do
+ActiveRecord::Schema.define(version: 2022_07_26_051108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -673,7 +673,6 @@ ActiveRecord::Schema.define(version: 2022_07_22_195633) do
     t.integer "hide_results", default: 0, null: false
     t.string "chart_type"
     t.string "chart_column"
-    t.string "icon_type"
     t.integer "min_score"
     t.integer "max_score"
     t.integer "minimum_stance_choices"
@@ -687,6 +686,7 @@ ActiveRecord::Schema.define(version: 2022_07_22_195633) do
     t.integer "stance_reason_required", default: 1, null: false
     t.boolean "limit_reason_length", default: true, null: false
     t.integer "default_duration_in_days"
+    t.integer "agree_target"
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"

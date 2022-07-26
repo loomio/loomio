@@ -150,7 +150,6 @@ class RecordCloner
       title
       details
       poll_type
-      multiple_choice
       voter_can_add_options
       anonymous
       details_format

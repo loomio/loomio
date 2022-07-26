@@ -2,11 +2,10 @@
 import svg from 'svg.js'
 import AppConfig from '@/shared/services/app_config'
 import { sum, values, compact, keys, each } from 'lodash'
-import { optionColors, optionImages } from '@/shared/helpers/poll'
 
 export default
   props:
-    poll: Object
+    slices: Array
     size: Number
 
   data: ->
@@ -16,9 +15,6 @@ export default
   computed:
     radius: ->
       @size / 2.0
-
-    results: ->
-      @poll.results.filter((r) => r[@poll.chartColumn])
 
   methods:
     arcPath: (startAngle, endAngle) ->
@@ -33,25 +29,26 @@ export default
       @shapes.forEach (shape) -> shape.remove()
       start = 90
 
-      switch @results.length
+      switch @slices.length
         when 0
           @shapes.push @svgEl.circle(@size).attr
             'stroke-width': 0
             fill: '#BBBBBB'
         when 1
-          each @results, (option) =>
+          each @slices, (option) =>
             @shapes.push @svgEl.circle(@size).attr
               'stroke-width': 0
               fill: option.color
         else
-          each @results, (option) =>
-            angle = 360 * option[@poll.chartColumn] / 100
+          each @slices, (option) =>
+            angle = 360 * option.value / 100
             @shapes.push @svgEl.path(@arcPath(start, start + angle)).attr
               'stroke-width': 0
               fill: option.color
             start += angle
+
   watch:
-    'poll.stanceCounts': -> @draw()
+    'slices': -> @draw()
 
   mounted: ->
     @svgEl = svg(@$el).size('100%', '100%')

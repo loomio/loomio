@@ -2,12 +2,11 @@
 import { fieldFromTemplate, myLastStanceFor } from '@/shared/helpers/poll'
 
 import BarIcon from '@/components/poll/common/icon/bar.vue'
-import CountIcon from '@/components/poll/common/icon/count.vue'
 import PieIcon from '@/components/poll/common/icon/pie.vue'
 import GridIcon from '@/components/poll/common/icon/grid.vue'
 
 export default
-  components: {BarIcon, CountIcon, PieIcon, GridIcon}
+  components: {BarIcon, PieIcon, GridIcon}
   props:
     poll: Object
     showMyStance: Boolean
@@ -16,6 +15,12 @@ export default
     size:
       type: Number
       default: 40
+  data: ->
+    slices: @poll.pieSlices()
+
+  watch:
+    'poll.stanceCounts': -> @slices = @poll.pieSlices()
+
   computed:
     myStance: -> myLastStanceFor(@poll)
     showPosition: -> 'proposal count'.split(' ').includes(@poll.pollType)
@@ -23,12 +28,11 @@ export default
 
 <template lang="pug">
 .poll-common-chart-preview(:style="{width: size+'px', height: size+'px'}" aria-hidden="true")
-  bar-icon(v-if="poll.iconType == 'bar'" :poll="poll" :size='size')
-  count-icon(v-if="poll.iconType == 'count'" :poll="poll" :size='size')
-  pie-icon(v-if="poll.iconType == 'pie'" :poll="poll" :size='size')
-  grid-icon(v-if="poll.iconType == 'grid'" :poll="poll" :size='size')
+  bar-icon(v-if="poll.chartType == 'bar'", :poll="poll", :size='size')
+  pie-icon(v-if="poll.chartType == 'pie'", :slices="slices", :size='size')
+  grid-icon(v-if="poll.chartType == 'grid'", :poll="poll", :size='size')
   .poll-common-chart-preview__stance-container(v-if='showMyStance && (myStance || poll.iCanVote())')
-    poll-common-stance-icon(:poll="poll" :stance="myStance" :size="stanceSize")
+    poll-common-stance-icon(:poll="poll", :stance="myStance", :size="stanceSize")
 
 </template>
 

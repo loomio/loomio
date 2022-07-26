@@ -27,7 +27,7 @@ export default
     componentName: ->
       pollType = (@stance or @outcome or @stanceChoice or @poll).poll().pollType
 
-      if @name == 'vote-form' && ['proposal', 'count', 'poll', 'multiple_choice'].includes(pollType)
+      if @name == 'vote-form' && ['proposal', 'count', 'poll'].includes(pollType)
         "poll-common-vote-form"
       else
         if @$options.components["poll-#{pollType}-#{@name}"]

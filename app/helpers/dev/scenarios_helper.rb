@@ -288,9 +288,7 @@ module Dev::ScenariosHelper
     discussion.group.add_member! observer
     scenario[:discussion].group.add_member! observer
     poll = scenario[:poll]
-    poll.update(multiple_choice: poll_type.to_sym == :poll)
     choices =  [{poll_option_id: poll.poll_option_ids[0]}]
-    choices += [{poll_option_id: poll.poll_option_ids[1]}] if poll.multiple_choice
 
     StanceService.create(stance: fake_stance(poll: poll, stance_choices_attributes: choices), actor: observer)
     UserMailer.catch_up(observer.id).deliver_now
